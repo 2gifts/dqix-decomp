@@ -365,7 +365,7 @@ src/Combat/Main/_fls.cpp:
 
 src/Combat/Main/_ll_sdiv_0200cd2c.s:
     complete
-    .text start:0x0200cd2c end:0x0200cedc
+    .text start:0x0200cd1c end:0x0200cedc
 
 src/Combat/Main/_s32_div_f.cpp:
     complete

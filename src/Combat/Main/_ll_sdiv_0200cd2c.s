@@ -10,13 +10,21 @@
 	.arm
 	.extern _s32_div_f
 
+	.global _ll_mod
 	.global _ll_sdiv
+
+_ll_mod:
+	stmdb sp!, {r4, r5, r6, r7, r11, ip, lr}
+	mov r4, r1
+	orr r4, r4, #1
+	b _ll_sdiv_body
 
 _ll_sdiv:
 	stmdb sp!, {r4, r5, r6, r7, r11, ip, lr}
 	eor r4, r1, r3
 	mov r4, r4, asr #1
 	mov r4, r4, lsl #1
+_ll_sdiv_body:
 	orrs r5, r3, r2
 	bne _L20
 	ldmia sp!, {r4, r5, r6, r7, r11, ip, lr}
