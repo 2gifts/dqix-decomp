@@ -17430,3 +17430,8 @@ src/Combat/Main/02000c9c.cpp:
 src/Combat/Main/0206f81c.cpp:
     complete
     .text start:0x0206f81c end:0x02070378
+
+
+src/Combat/Main/020c6938.cpp:
+    complete
+    .text start:0x020c6938 end:0x020c6954
