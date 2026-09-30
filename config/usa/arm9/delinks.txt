@@ -17440,3 +17440,8 @@ src/Combat/Main/020c6938.cpp:
 src/Combat/Main/func_02021f88.cpp:
     complete
     .text start:0x02021f88 end:0x020227dc
+
+
+src/Combat/Main/func_0201a600.cpp:
+    complete
+    .text start:0x0201a600 end:0x0201ae8c
