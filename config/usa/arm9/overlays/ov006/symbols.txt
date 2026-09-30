@@ -192,5 +192,6 @@ data_ov006_02160340 kind:data(any) addr:0x02160340
 data_ov006_02160359 kind:data(any) addr:0x02160359
 data_ov006_02160360 kind:data(any) addr:0x02160360
 data_ov006_02160380 kind:bss addr:0x02160380
+data_ov006_02160380_dup kind:bss addr:0x02160380
 data_ov006_0216038c kind:bss addr:0x0216038c
 data_ov006_02160398 kind:bss addr:0x02160398
