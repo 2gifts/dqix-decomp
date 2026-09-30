@@ -3090,3 +3090,8 @@ src/Combat/Overlay_23/CheckElemNearTouchPoint_021e63bc.cpp:
 src/Combat/Overlay_23/021eeaac.cpp:
     complete
     .text start:0x021eeaac end:0x021eefac
+
+
+src/Combat/Overlay_23/func_ov023_021f2e6c.cpp:
+    complete
+    .text start:0x021f2e6c end:0x021f3a8c
