@@ -33,3 +33,8 @@ src/Combat/Overlay_26/func_ov026_021d8ba0.cpp:
     complete
     .text start:0x021d8ba0 end:0x021dae60
     .data start:0x021de840 end:0x021de87c
+
+
+src/Combat/Overlay_26/func_ov026_021dddcc.cpp:
+    complete
+    .text start:0x021dddcc end:0x021de6a0
