@@ -18,7 +18,7 @@ extern "C" ARM void _Z24RunOverlayScript0216d1c4iP12StreamHeaderiPi(int arg0, st
 
 extern int data_ov025_021ef404;
 extern char data_ov025_021ef454[];
-extern char data_ov025_021ef974[];
+extern "C" char _ZZ16GetTimer021ef974vE1s[];
 
 struct SearchEntry_021dc694 {
     char pad0[4];
@@ -81,8 +81,8 @@ extern "C" ARM void func_ov025_021dc694(void* arg) {
             func_ov025_021db8d8(obj);
         } else {
             *(int*)(obj + 0xeac) = 5;
-            *(int*)(data_ov025_021ef974 + 0x10) = 0;
-            *(int*)(data_ov025_021ef974 + 8) = 0;
+            *(int*)(_ZZ16GetTimer021ef974vE1s + 0x10) = 0;
+            *(int*)(_ZZ16GetTimer021ef974vE1s + 8) = 0;
         }
     }
 
