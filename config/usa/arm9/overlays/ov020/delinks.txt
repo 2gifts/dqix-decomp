@@ -73,3 +73,8 @@ src/Combat/Overlay_20/RunFieldGroupInitAndDispatch_0218c98c.cpp:
 src/Combat/Overlay_20/func_ov020_0218d32c.cpp:
     complete
     .text start:0x0218d32c end:0x0218d644
+
+
+src/Combat/Overlay_20/func_ov020_0218b710.cpp:
+    complete
+    .text start:0x0218b710 end:0x0218c7bc
