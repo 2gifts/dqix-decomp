@@ -2317,3 +2317,8 @@ src/Combat/Overlay_0/func_ov000_021729ac.cpp:
 src/Combat/Overlay_0/func_ov000_02173954.cpp:
     complete
     .text start:0x02173954 end:0x021741e0
+
+
+src/Combat/Overlay_0/ProcessCombatTurn.cpp:
+    complete
+    .text start:0x0215d63c end:0x0215e6e8
