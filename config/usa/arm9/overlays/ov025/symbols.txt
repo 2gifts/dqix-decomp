@@ -401,7 +401,6 @@ data_ov025_021ef91f kind:data(any) addr:0x021ef91f
 data_ov025_021ef93c kind:data(any) addr:0x021ef93c
 data_ov025_021ef960 kind:bss addr:0x021ef960
 _ZZ16GetTimer021ef974vE1s kind:bss addr:0x021ef974
-data_ov025_021ef980 kind:bss addr:0x021ef980
 data_ov025_021ef988 kind:bss addr:0x021ef988
 data_ov025_021ef990 kind:bss addr:0x021ef990
 data_ov025_021ef994 kind:bss addr:0x021ef994

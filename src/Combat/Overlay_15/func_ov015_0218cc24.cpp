@@ -54,7 +54,7 @@ extern "C" void _ZN7Model3D33CreateBoneMatrixAndMaterialArraysEP13SafeAllocatori
 extern "C" void _ZN7Model3D39StoreBoneMatrixAndMaterialArrayPointersEv(void*);
 extern "C" int fix32_Divide(int, int);
 
-extern int data_0211e33c __attribute__((aligned(32)));
+extern int data_0211e33c __attribute__((aligned(4)));
 extern char data_ov015_021940c0;
 extern char data_ov015_021940db;
 extern char data_ov015_021940e1;

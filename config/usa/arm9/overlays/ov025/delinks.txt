@@ -49,9 +49,10 @@ src/Combat/Overlay_25/PushFrontNode021e23d0.cpp:
     complete
     .text start:0x021e23d0 end:0x021e23e8
 
-src/Combat/Overlay_25/ResetFields_021de110.cpp:
+src/Combat/Overlay_25/func_ov025_021dcf14.cpp:
     complete
-    .text start:0x021de110 end:0x021de124
+    .text start:0x021dcf14 end:0x021ded50
+    .bss start:0x021ef974 end:0x021ef988
 
 src/Combat/Overlay_25/ResetFields_021df554.cpp:
     complete
@@ -868,12 +869,6 @@ src/Combat/Overlay_25/func_ov025_021ebb90.cpp:
 src/Combat/Overlay_25/func_ov025_021d8c30.cpp:
     complete
     .text start:0x021d8c30 end:0x021dafd0
-
-
-src/Combat/Overlay_25/func_ov025_021dcf14.cpp:
-    complete
-    .text start:0x021dcf14 end:0x021de110
-    .bss start:0x021ef974 end:0x021ef980
 
 
 src/Combat/Overlay_25/func_ov025_021e8d20.cpp:
