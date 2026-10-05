@@ -105,3 +105,7 @@ src/Combat/Overlay_9/02188d9c.cpp:
 src/Combat/Overlay_9/func_ov009_02184bbc.cpp:
     complete
     .text start:0x02184bbc end:0x02184c30
+
+src/Menu/Overlay_9/GridTouchSelection.cpp:
+    complete
+    .text start:0x02189854 end:0x02189a4c
