@@ -107,3 +107,7 @@ src/Combat/Overlay_5/func_ov005_0215b520.cpp:
 src/Combat/Overlay_5/func_ov005_02157b74.cpp:
     complete
     .text start:0x02157b74 end:0x021583fc
+
+src/Menu/Overlay5EntryLayout.cpp:
+    complete
+    .text start:0x02155424 end:0x02155544
