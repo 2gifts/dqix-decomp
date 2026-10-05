@@ -1,0 +1,77 @@
+// External entry names follow the fork's symbols.txt at b399f53.
+// Local argument views remain provisional; see contribution interface notes.
+#include <globaldefs.h>
+#include <GameState/GameState.h>
+
+// Provisional entry views shared by the equipment source and battle selection list.
+struct BattleEquipmentEntry {
+    unsigned char unknown00[8];
+    unsigned int category : 4;
+    unsigned int unknownFlags : 28;
+    unsigned char unknown0c[0xc];
+    short count;
+    unsigned char unknown1a[6];
+};
+struct BattleEquipmentView {
+    unsigned char unknown00[0x194];
+    BattleEquipmentEntry entries[8];
+};
+struct BattleEquipmentList {
+    unsigned char unknown00[0x4c];
+    int partyIndex;
+    unsigned char unknown50[0x86 - 0x50];
+    signed char entryCount;
+    unsigned char unknown87[0x3f0 - 0x87];
+    BattleEquipmentEntry* entries[16];
+};
+extern "C" {
+    char* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState*, unsigned int);
+    void* _Z15GetFieldAt0x150Ph(void*);
+    extern unsigned char data_ov000_02183380[8];
+    void _Z28SetPointerField0x3f002171b68PviS_(BattleEquipmentList*, int, BattleEquipmentEntry*);
+}
+
+extern "C" ARM void func_ov000_02171c04(BattleEquipmentList* list)
+{
+    signed char partyIndex = list->partyIndex;
+    int valid = partyIndex >= 0 && partyIndex <= 3;
+    if (valid) {
+        char* actor = _Z25GetCombatantWithFlag0x100P9GameStatei(GameState::GetInstance(), partyIndex);
+        if (actor && _Z15GetFieldAt0x150Ph(actor)) {
+            list->entryCount = 0;
+            for (signed char slot = 0; slot < 16; ++slot) {
+                BattleEquipmentEntry* entry = list->entries[slot];
+                if (!entry)
+                    break;
+                int equipmentCategory = entry->category <= 7;
+                if (equipmentCategory)
+                    break;
+                ++list->entryCount;
+            }
+            unsigned char nextSlot = (list->entryCount + 3) & ~3;
+            for (unsigned char slot = nextSlot; slot < 16; ++slot)
+                list->entries[slot] = NULL;
+            unsigned char equipmentOrder[8];
+            unsigned int bytes = sizeof(equipmentOrder);
+            unsigned char* output = equipmentOrder;
+            const unsigned char* input = data_ov000_02183380;
+            do {
+                unsigned char value = *input;
+                *output = value;
+                ++input;
+                ++output;
+            } while (--bytes);
+            for (unsigned char slot = 0; slot < 8; ++slot) {
+                BattleEquipmentView* equipment = *reinterpret_cast<BattleEquipmentView**>(actor + 0x150);
+                BattleEquipmentEntry* entry = &equipment->entries[equipmentOrder[slot]];
+                if (entry && entry->count > 0) {
+                    int equipmentCategory = entry->category <= 7;
+                    if (equipmentCategory) {
+                        _Z28SetPointerField0x3f002171b68PviS_(list, nextSlot, entry);
+                        ++nextSlot;
+                    }
+                }
+            }
+        }
+    }
+}
