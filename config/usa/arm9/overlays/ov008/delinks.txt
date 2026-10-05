@@ -156,3 +156,19 @@ src/Combat/Overlay_8/02189c70.cpp:
 src/Combat/Overlay_8/func_ov008_02184a4c.cpp:
     complete
     .text start:0x02184a4c end:0x02185964
+
+src/Menu/Overlay_8/ListTouchSelection.cpp:
+    complete
+    .text start:0x02186b18 end:0x02186cec
+
+src/Menu/Overlay_8/AvailableEntries.cpp:
+    complete
+    .text start:0x02186cec end:0x02186e4c
+
+src/Menu/Overlay_8/EntryInitialization.cpp:
+    complete
+    .text start:0x0218712c end:0x02187278
+
+src/Menu/Overlay_8/ListSpriteRefresh.cpp:
+    complete
+    .text start:0x02188730 end:0x02188870
