@@ -6182,3 +6182,7 @@ src/Combat/Overlay_31/func_ov031_0223a374.cpp:
 src/Combat/Overlay_31/func_ov031_02218604.cpp:
     complete
     .text start:0x02218604 end:0x02218710
+
+src/Network/Overlay31AddressCache.cpp:
+    complete
+    .text start:0x02200e38 end:0x02200f74
