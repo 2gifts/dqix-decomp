@@ -2,7 +2,7 @@
 
 extern "C" int func_ov024_021edf00(int* a0, int a1, short* a2);
 extern "C" int func_ov000_0215e9fc(int a, short* buf, int max, int start);
-extern "C" int func_ov024_021ed8c0(void* obj, int b, int c, int* out, void* e);
+extern "C" void func_ov024_021ed8c0(void* context, int id, int recordAddress, int* count, short* ids);
 extern "C" int func_ov024_021eda78(int* obj, int id);
 
 extern unsigned short data_ov024_021febc4;

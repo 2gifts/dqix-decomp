@@ -19,15 +19,15 @@ struct AlchemyUpdateWorkView {
 extern "C" {
 void _Z18ResetFlags02153e54P24ResetFlags02153e54Struct(AlchemyEntryUpdateView*);
 void func_ov006_02153e8c(void*, AlchemyEntryUpdateView*);
-void func_ov006_02154138(void*);
+int func_ov006_02154138(void*);
 bool func_020ac2d4(int, short*, AlchemyEntryUpdateView*, int);
 void func_020ac104(void*, AlchemyEntryUpdateView*, int);
 AlchemyCatalogFlagsView* _Z22FindEntryByKey02071d60P12List02071d60i(void*, short);
 bool _Z24CopyOutBattleField0x7ac0Pv(unsigned int*);
 void _Z24CopyInBattleRegion0x7ac0Pv(unsigned int*);
-void _Z23LoadBattleBlock020ac4c0Pv(AlchemyUpdateWorkView*);
+int _Z23LoadBattleBlock020ac4c0Pv(void*);
 void _Z30AddClamped16BitFieldHighAt0x18P7S_a0228j(void*, int);
-void _Z23CopyInBattleField0x7540Pv(AlchemyUpdateWorkView*);
+int _Z23CopyInBattleField0x7540Pv(void*);
 }
 extern "C" ARM void func_ov006_02153cbc(void* state, short selectedItem, short addedItem, void* catalog)
 {

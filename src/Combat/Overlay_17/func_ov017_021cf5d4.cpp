@@ -1,11 +1,11 @@
 #include <globaldefs.h>
+#include "Combat/Main/CopyRecord0200fbb4.h"
 #include "GameState/GameState.h"
 
 struct S02046b1c;
 int GetField0x3acValue(GameState* battleStruct);
 int GetField0x0List02046b1c(struct S02046b1c* p);
 extern "C" void _Z18InitStruct02070378Pc(void* obj);
-extern "C" void _Z28CallFunc0200fbb4AtField0x3f8Pv(void* battle, void* obj);
 struct FieldFlagBlock;
 void ResetAndEnableFieldFlag(struct FieldFlagBlock* block);
 
