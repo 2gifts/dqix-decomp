@@ -1,6 +1,3 @@
-// External entry names follow the fork's symbols.txt at b399f53.
-// Local argument views remain provisional; see contribution interface notes.
-// Partial menu view. The entry meanings and the flag names remain provisional.
 struct Overlay8EntryView {
     unsigned char unknown000[0x744];
     unsigned char entries[8];
@@ -10,7 +7,6 @@ struct Overlay8EntryView {
 };
 
 extern "C" {
-    // Canonical signatures also declared in Graphics/LightingManager.cpp.
     char* func_0205ec34();
     bool _Z18TestBitInByteArrayiPhi(void*, void*, int);
 

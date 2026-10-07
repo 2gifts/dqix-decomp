@@ -1,11 +1,7 @@
-// External entry names follow the fork's symbols.txt at b399f53.
-// Local argument views remain provisional; see contribution interface notes.
 #include <globaldefs.h>
 #include "System/Memory.h"
 #include "System/Timing.h"
 
-// Eight entries associate an address with six identifying bytes and a timestamp.
-// The network address interpretation remains inferred.
 struct Overlay31AddressEntry {
     unsigned int address;
     unsigned char identifier[6];

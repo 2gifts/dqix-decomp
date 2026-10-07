@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 #include "Graphics/Vector.h"
 
-// Provisional triangle layout: three vertices and a normal, 48-byte stride.
 struct GeometryTriangle { Vector3fix vertices[3]; Vector3fix normal; };
 extern "C" {
     int func_02031b84(const Vector3fix*, const Vector3fix*, const Vector3fix*,

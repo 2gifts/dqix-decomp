@@ -1,11 +1,8 @@
-// External entry names follow the fork's symbols.txt at b399f53.
-// Local argument views remain provisional; see contribution interface notes.
 #include "globaldefs.h"
 #include "World/Object3D.h"
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
 
-// Partial bestiary state and descriptor views; input and rotation behavior are clear.
 struct BestiaryUpdateMonster { char unknown[0xc]; short id; };
 struct BestiaryUpdateDescriptor { char unknown[0x1c]; float rotationY; };
 struct BestiaryUpdateState {

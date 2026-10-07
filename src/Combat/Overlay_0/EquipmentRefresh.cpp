@@ -1,9 +1,6 @@
-// External entry names follow the fork's symbols.txt at b399f53.
-// Local argument views remain provisional; see contribution interface notes.
 #include <globaldefs.h>
 #include <GameState/GameState.h>
 
-// Provisional entry views shared by the equipment source and battle selection list.
 struct BattleEquipmentEntry {
     unsigned char unknown00[8];
     unsigned int category : 4;

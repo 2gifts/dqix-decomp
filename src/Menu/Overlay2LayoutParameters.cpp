@@ -23,7 +23,6 @@ struct Overlay2LayoutState {
 extern "C" const Overlay2LayoutPreset data_ov002_0216cb48[];
 extern "C" void func_ov002_02156080(Overlay2LayoutState*, short*, short*);
 
-// Install the selected table preset, including two special-case adjustments.
 extern "C" ARM void func_ov002_0215be00(Overlay2LayoutState* state, int id, short inputX, short inputY) {
     for (int i = 0; data_ov002_0216cb48[i].id != 255; ++i) {
         const Overlay2LayoutPreset* preset = &data_ov002_0216cb48[i];

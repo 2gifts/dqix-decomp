@@ -21,8 +21,6 @@ struct Overlay5Layout {
     Overlay5VisualEntry visuals[24];
 };
 
-// Bind the first eight entries to a shared position, then lay out sixteen
-// entries as four columns. Positions use 12 fractional bits.
 extern "C" ARM void func_ov005_02155424(Overlay5Layout* layout) {
     for (int i = 0; i < 8; ++i) {
         Overlay5LayoutEntry* entry = &layout->entries[i];

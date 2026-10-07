@@ -1,13 +1,8 @@
-// External entry names follow the fork's symbols.txt at b399f53.
-// Local argument views remain provisional; see contribution interface notes.
 #include <globaldefs.h>
 #include <GameState/GameState.h>
 
-// The inventory accessor consumes the game state pointer.
 extern "C" void* _Z17GetPtrField0x2a04P9GameState(GameState*);
 
-// Filters a party-index list, then fills holes while preserving index order.
-// Mode 1 keeps current party members; mode 2 removes one valid party index.
 extern "C" ARM void func_ov000_0217ee7c(signed char* indices, signed char* count,
                                      int removedIndex, int mode)
 {

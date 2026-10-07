@@ -1,6 +1,5 @@
 #include <globaldefs.h>
 
-// Provisional recipe and ingredient-table views used by the alchemy menu.
 struct AlchemyRecipeQuantityView {
     short unknown00[2];
     short firstIngredient;

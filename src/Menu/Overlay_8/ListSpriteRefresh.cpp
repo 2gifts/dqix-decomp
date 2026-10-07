@@ -1,6 +1,3 @@
-// External entry names follow the fork's symbols.txt at b399f53.
-// Local argument views remain provisional; see contribution interface notes.
-// Partial sprite record and menu view; field roles remain provisional.
 struct Overlay8SpriteEntry {
     unsigned char unknown00[0x14];
     int x, y;

@@ -1,6 +1,5 @@
 #include "std_library_functions.h"
 
-// Partial view shared by this preparation routine and the following renderer.
 struct Overlay8Preparation {
     unsigned char unknown000[0xb8];
     void* buffer;
@@ -16,7 +15,6 @@ struct Overlay8Preparation {
 };
 
 extern "C" {
-    // Inferred from original call sites; no existing src/include declaration.
     void func_ov008_02187278(Overlay8Preparation*, void*, int, void*);
     void func_0205d304(void*, void*, int, int, bool, bool, void*, bool);
 

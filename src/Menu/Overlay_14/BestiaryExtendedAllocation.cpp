@@ -1,9 +1,6 @@
-// External entry names follow the fork's symbols.txt at b399f53.
-// Local argument views remain provisional; see contribution interface notes.
 #include "globaldefs.h"
 #include "Memory/SafeAllocator.h"
 
-// Provisional extended menu buffers; renderer/object payloads remain opaque.
 struct BestiaryExtendedItem { char data[0x28]; };
 struct BestiaryExtendedGroup { char data[0x20]; };
 struct BestiaryExtendedObject { char data[0xe0]; };

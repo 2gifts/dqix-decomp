@@ -1,9 +1,6 @@
-// External entry names follow the fork's symbols.txt at b399f53.
-// Local argument views remain provisional; see contribution interface notes.
 #include "globaldefs.h"
 #include "World/Object3D.h"
 
-// Partial consumer views; record flags and attachment meanings are provisional.
 struct BestiaryDrawMonster {
     char unknown[0x13];
     unsigned char unknownFlag : 1;
@@ -41,7 +38,6 @@ struct BestiaryDrawState {
     unsigned char unknown93;
     unsigned char currentIcon;
 };
-// Whole-tree and both teams' exported patch audit found no prior declarations.
 extern "C" {
 void _Z25ComputeShortPair_021e2bdcPviPsS0_(void*, short, short*, short*);
 void func_0205ac40(void*, void*);

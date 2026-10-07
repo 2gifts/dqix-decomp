@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 #include "Graphics/Vector.h"
 
-// The unused normal argument and tri-state result are preserved from the binary.
 extern "C" ARM int func_02031b84(const Vector3fix* start, const Vector3fix* end,
                                  const Vector3fix* a, const Vector3fix* b,
                                  const Vector3fix* c, const Vector3fix* unusedNormal,

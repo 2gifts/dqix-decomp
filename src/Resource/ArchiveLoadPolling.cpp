@@ -1,10 +1,6 @@
-// External entry names follow the fork's symbols.txt at b399f53.
-// Local argument views remain provisional; see contribution interface notes.
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 
-// Partial loading records inferred from four 12-byte slots. Type names and
-// completion flag meanings remain provisional.
 struct ArchiveLoadSlot {
     int resourceID;
     int unknown04;

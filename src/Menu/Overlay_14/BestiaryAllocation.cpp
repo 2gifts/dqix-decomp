@@ -1,10 +1,7 @@
-// External entry names follow the fork's symbols.txt at b399f53.
-// Local argument views remain provisional; see contribution interface notes.
 #include "globaldefs.h"
 #include "Memory/SafeAllocator.h"
 #include "World/Object3D.h"
 
-// Provisional consumer views of the list widget and its three item records.
 struct BestiaryListItem { char unknown[0x28]; };
 struct BestiaryList {
     char unknown00[0x40];
@@ -35,8 +32,6 @@ struct BestiaryAllocationState {
     unsigned char tailFlags : 5;
 };
 struct BestiaryAllocationSizes { unsigned int values[6]; };
-// Baseline whole-tree audit found no declarations. Sprint interface review
-// reuses _Z12Init0205a198P14Struct0205a198(void*) from the independently reviewed alchemy lane.
 extern "C" {
 extern const BestiaryAllocationSizes data_ov014_02189498;
 extern const unsigned int data_ov014_02189480[3];

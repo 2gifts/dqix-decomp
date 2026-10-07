@@ -1,5 +1,3 @@
-// External entry names follow the fork's symbols.txt at b399f53.
-// Local argument views remain provisional; see contribution interface notes.
 struct Overlay9Grid {
     int x, y, width, height, stepX, stepY, columns, rows;
 };
@@ -17,7 +15,6 @@ struct Overlay9TouchView {
 };
 
 extern "C" {
-    // Inferred declarations, absent from existing source and headers.
     int _Z18GetField0_0205bafcPv(void*);
     int _Z24ComputeScaledSum0205bb84P15Struct_0205bb84(void*);
     void func_0205bb04(void*, int);

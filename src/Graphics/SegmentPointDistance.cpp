@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 #include "Graphics/Vector.h"
 
-// Geometric role inferred from vector operations; retain the original entry name.
 extern "C" ARM fix32_t func_02031468(const Vector3fix* start, const Vector3fix* end,
                                      const Vector3fix* point, Vector3fix* closest)
 {

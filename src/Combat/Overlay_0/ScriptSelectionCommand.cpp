@@ -2,7 +2,6 @@
 #include <Resource/Script.h>
 #include <Memory/SafeAllocator.h>
 
-// Tentative script command fields; bit widths follow the original access masks.
 struct BattleSelectionCommand {
     unsigned int opcode;
     BattleSelectionCommand* next;

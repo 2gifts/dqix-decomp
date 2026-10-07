@@ -1,8 +1,6 @@
 #include <globaldefs.h>
 #include <std_library_functions.h>
 
-// Six adjacent cells in a staggered grid. A missing neighbor is represented by 255.
-// The odd rows have eight cells; even rows have nine. Caller purpose is untraced.
 extern "C" ARM void func_ov000_0216f82c(unsigned char* output, const int* cell)
 {
     int column = *cell % 9;

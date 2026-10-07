@@ -13,7 +13,6 @@ extern "C" int func_02031b84(const Vector3fix*, const Vector3fix*, const Vector3
 extern "C" Vector3fix func_02031d20(const Vector3fix*, const Vector3fix*,
                                     const Vector3fix*, const Vector3fix*);
 
-// Triangle adjustment and backup-position rules; gameplay meanings remain provisional.
 extern "C" ARM int func_020315b8(const GeometryTriangle* triangles, int count,
                                   const Vector3fix* originalPosition, fix32_t radius,
                                   Vector3fix* position, const Vector3fix* backupPosition)

@@ -1,9 +1,6 @@
-// External entry names follow the fork's symbols.txt at b399f53.
-// Local argument views remain provisional; see contribution interface notes.
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
 
-// Partial alchemy menu view: buffer meanings remain provisional.
 struct AlchemyBufferInitializationView {
     char unknown00[0x180];
     SafeAllocator* allocators;

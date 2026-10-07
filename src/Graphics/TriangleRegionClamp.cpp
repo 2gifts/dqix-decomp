@@ -7,7 +7,6 @@ static inline fix32_t RoundedRegionProduct(fix32_t a, fix32_t b)
     return (fix32_t)((product + (int64_t)0x800) >> 12);
 }
 
-// Region tests clamp a point to triangle edges/vertices. Interior points pass through.
 // Keep widened dot products: their spill/reload behavior is present in the original.
 extern "C" ARM Vector3fix func_02031d20(const Vector3fix* point, const Vector3fix* a,
                                         const Vector3fix* b, const Vector3fix* c)

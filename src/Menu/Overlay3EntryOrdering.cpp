@@ -1,9 +1,5 @@
-// External entry names follow the fork's symbols.txt at b399f53.
-// Local argument views remain provisional; see contribution interface notes.
 #include "globaldefs.h"
 
-// These packed fields are compared by the original menu ordering routine;
-// their gameplay names are not established.
 struct Overlay3OrderedEntry {
     unsigned char unknown00[0xb];
     unsigned char rank : 7;
