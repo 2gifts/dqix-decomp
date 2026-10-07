@@ -1425,3 +1425,8 @@ src/Combat/Overlay_3/func_ov003_02174a80.cpp:
 src/Menu/Overlay3EntryOrdering.cpp:
     complete
     .text start:0x02170688 end:0x02170898
+
+
+src/Combat/Overlay_3/func_ov003_0217839c.cpp:
+    complete
+    .text start:0x0217839c end:0x021784bc
