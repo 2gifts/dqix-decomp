@@ -28,6 +28,7 @@ struct ModifiableCombatStats {
     signed int charmBuff : 3;
     signed int magicalMightBuff : 3;
     signed int magicalMendingBuff : 3;
+    signed int unkBuff18 : 3;
 };
 
 class GameState;

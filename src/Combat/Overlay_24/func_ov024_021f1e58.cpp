@@ -4,7 +4,7 @@
 
 extern "C" int func_ov024_021edf00(int* a0, int a1, short* a2);
 extern "C" int func_ov000_0215e9fc(int a, short* buf, int max, int start);
-extern "C" int func_ov024_021ed8c0(void* obj, int b, int c, int* out, void* e);
+extern "C" void func_ov024_021ed8c0(void* context, int id, int recordAddress, int* count, short* ids);
 
 struct FlagInner_021da9b0 { char unk[0x14]; int flags; };
 struct FlagObj_021da9b0 { char unk[0x138]; struct FlagInner_021da9b0* inner; };
