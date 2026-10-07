@@ -17478,3 +17478,23 @@ src/Graphics/TriangleRegionClamp.cpp:
 src/Resource/ArchiveLoadPolling.cpp:
     complete
     .text start:0x020da8e0 end:0x020daa20
+
+
+src/Combat/Main/DMA0InterruptHandler.cpp:
+    complete
+    .text start:0x020c6a54 end:0x020c6a64
+
+
+src/Combat/Main/DMA1InterruptHandler.cpp:
+    complete
+    .text start:0x020c6a64 end:0x020c6a74
+
+
+src/Combat/Main/DMA2InterruptHandler.cpp:
+    complete
+    .text start:0x020c6a74 end:0x020c6a84
+
+
+src/Combat/Main/DMA3InterruptHandler.cpp:
+    complete
+    .text start:0x020c6a84 end:0x020c6a94
