@@ -17474,3 +17474,7 @@ src/Graphics/TriangleSegmentWeights.cpp:
 src/Graphics/TriangleRegionClamp.cpp:
     complete
     .text start:0x02031d20 end:0x02032090
+
+src/Resource/ArchiveLoadPolling.cpp:
+    complete
+    .text start:0x020da8e0 end:0x020daa20
