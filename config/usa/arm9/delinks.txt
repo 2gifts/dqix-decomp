@@ -17493,3 +17493,8 @@ src/Combat/Main/func_0207267c.cpp:
 src/Combat/Main/func_02072e94.cpp:
     complete
     .text start:0x02072e94 end:0x020730e0
+
+
+src/Combat/Main/Z35NotifyOverlayIfFieldSet02073240i_02073240.cpp:
+    complete
+    .text start:0x02073240 end:0x020732a8
