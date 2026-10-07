@@ -17483,3 +17483,13 @@ src/Resource/ArchiveLoadPolling.cpp:
 src/Combat/Main/func_02072afc.cpp:
     complete
     .text start:0x02072afc end:0x02072c9c
+
+
+src/Combat/Main/func_0207267c.cpp:
+    complete
+    .text start:0x0207267c end:0x020727d8
+
+
+src/Combat/Main/func_02072e94.cpp:
+    complete
+    .text start:0x02072e94 end:0x020730e0
