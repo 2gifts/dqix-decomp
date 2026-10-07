@@ -17488,3 +17488,7 @@ src/System/DMAInterruptHandlers.cpp:
 src/System/TimerOverflowInterruptHandlers.cpp:
     complete
     .text start:0x020c6a94 end:0x020c6ad4
+
+src/System/InterruptRegistration.cpp:
+    complete
+    .text start:0x020c6aec end:0x020c6c90
