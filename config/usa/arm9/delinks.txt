@@ -17478,3 +17478,8 @@ src/Graphics/TriangleRegionClamp.cpp:
 src/Resource/ArchiveLoadPolling.cpp:
     complete
     .text start:0x020da8e0 end:0x020daa20
+
+
+src/Combat/Main/func_02072afc.cpp:
+    complete
+    .text start:0x02072afc end:0x02072c9c
