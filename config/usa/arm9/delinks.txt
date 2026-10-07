@@ -17488,3 +17488,53 @@ src/System/DMAInterruptHandlers.cpp:
 src/System/TimerOverflowInterruptHandlers.cpp:
     complete
     .text start:0x020c6a94 end:0x020c6ad4
+
+
+src/Combat/Main/func_02072afc.cpp:
+    complete
+    .text start:0x02072afc end:0x02072c9c
+
+
+src/Combat/Main/func_0207267c.cpp:
+    complete
+    .text start:0x0207267c end:0x020727d8
+
+
+src/Combat/Main/func_02072e94.cpp:
+    complete
+    .text start:0x02072e94 end:0x020730e0
+
+
+src/Combat/Main/Z35NotifyOverlayIfFieldSet02073240i_02073240.cpp:
+    complete
+    .text start:0x02073240 end:0x020732a8
+
+
+src/Combat/Main/_Z24InitCommandStreamSessioniiP12StreamHeaderi.cpp:
+    complete
+    .text start:0x0207249c end:0x020724f4
+
+
+src/Combat/Main/func_020732cc.cpp:
+    complete
+    .text start:0x020732cc end:0x020733c8
+
+
+src/Combat/Main/func_02072398.cpp:
+    complete
+    .text start:0x02072398 end:0x02072488
+
+
+src/Combat/Main/_Z25RunBufferedStream02071c00iiP12StreamHeaderi.cpp:
+    complete
+    .text start:0x02071c00 end:0x02071c64
+
+
+src/Combat/Main/_Z25RunBufferedStream0207416ciiP12StreamHeaderi.cpp:
+    complete
+    .text start:0x0207416c end:0x020741d0
+
+
+src/Combat/Main/_Z29TryDecodeGlobalBitstreamEntryPvi.cpp:
+    complete
+    .text start:0x02074114 end:0x0207416c
