@@ -17528,3 +17528,8 @@ src/Combat/Main/_Z25RunBufferedStream0207416ciiP12StreamHeaderi.cpp:
 src/Combat/Main/_Z29TryDecodeGlobalBitstreamEntryPvi.cpp:
     complete
     .text start:0x02074114 end:0x0207416c
+
+
+src/Combat/Main/func_02074060.cpp:
+    complete
+    .text start:0x02074060 end:0x02074114
