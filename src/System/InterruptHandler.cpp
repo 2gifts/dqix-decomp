@@ -88,11 +88,6 @@ void OnDMAOrTimerCompletion(int index)
     }
 }
 
-void Timer0OverflowInterruptHandler() { OnDMAOrTimerCompletion(4); }
-void Timer1OverflowInterruptHandler() { OnDMAOrTimerCompletion(5); }
-void Timer2OverflowInterruptHandler() { OnDMAOrTimerCompletion(6); }
-void Timer3OverflowInterruptHandler() { OnDMAOrTimerCompletion(7); }
-
 void InitializeInterruptContextBlock_020c6ad4()
 {
     BlockedContextList& list = GetInterruptDataBlockedContextList();

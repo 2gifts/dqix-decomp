@@ -17485,21 +17485,6 @@ src/System/DMAInterruptHandlers.cpp:
     .text start:0x020c6a54 end:0x020c6a94
 
 
-src/Combat/Main/Timer0OverflowInterruptHandler.cpp:
+src/System/TimerOverflowInterruptHandlers.cpp:
     complete
-    .text start:0x020c6a94 end:0x020c6aa4
-
-
-src/Combat/Main/Timer1OverflowInterruptHandler.cpp:
-    complete
-    .text start:0x020c6aa4 end:0x020c6ab4
-
-
-src/Combat/Main/Timer2OverflowInterruptHandler.cpp:
-    complete
-    .text start:0x020c6ab4 end:0x020c6ac4
-
-
-src/Combat/Main/Timer3OverflowInterruptHandler.cpp:
-    complete
-    .text start:0x020c6ac4 end:0x020c6ad4
+    .text start:0x020c6a94 end:0x020c6ad4
