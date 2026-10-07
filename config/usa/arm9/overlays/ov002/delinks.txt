@@ -434,3 +434,7 @@ src/Combat/Overlay_2/func_ov002_0216acf0.cpp:
 src/Combat/Overlay_2/func_ov002_02157d40.cpp:
     complete
     .text start:0x02157d40 end:0x021594e8
+
+src/Menu/Overlay2LayoutParameters.cpp:
+    complete
+    .text start:0x0215be00 end:0x0215bf34
