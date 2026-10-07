@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-extern "C" int _Z26GetGlobalField0x1c020421a0v();
+int GetGlobalField0x1c020421a0();
 extern "C" void func_02045f3c(void*, void*, int, int, int, int, int, int, int, int);
 
 // The six-byte records at context+0x3e0c appear to describe decimal glyphs.
@@ -9,7 +9,7 @@ extern "C" void func_02045f3c(void*, void*, int, int, int, int, int, int, int, i
 // GX port writes are ordered, including the repeated write to 0x04000470.
 // USA: func_ov005_02155258
 extern "C" ARM void func_ov005_02155258(void* context, int value, short x, short y, unsigned short color) {
-    int drawContext = _Z26GetGlobalField0x1c020421a0v();
+    int drawContext = GetGlobalField0x1c020421a0();
     volatile unsigned int* ports = (volatile unsigned int*)0x04000444;
     ports[0] = 0;
     ports[0x2f] = 1;
