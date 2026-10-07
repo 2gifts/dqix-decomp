@@ -17498,3 +17498,8 @@ src/Combat/Main/func_02072e94.cpp:
 src/Combat/Main/Z35NotifyOverlayIfFieldSet02073240i_02073240.cpp:
     complete
     .text start:0x02073240 end:0x020732a8
+
+
+src/Combat/Main/_Z24InitCommandStreamSessioniiP12StreamHeaderi.cpp:
+    complete
+    .text start:0x0207249c end:0x020724f4
