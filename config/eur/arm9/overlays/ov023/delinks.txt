@@ -1,0 +1,3107 @@
+    .text       start:0x021d8a40 end:0x021fd510 kind:code align:32
+    .rodata     start:0x021fd510 end:0x021fda54 kind:rodata align:4
+    .ctor       start:0x021fda54 end:0x021fda58 kind:rodata align:4
+    .data       start:0x021fda60 end:0x021ff9e0 kind:data align:32
+    .bss        start:0x021ff9e0 end:0x021fff40 kind:bss align:32
+
+src/Combat/Overlay_23/CallAppendStringIfSet_021e8cc0.cpp:
+    complete
+    .text start:0x021e8cc0 end:0x021e8cdc
+
+src/Combat/Overlay_23/CallIfFieldNot0Or3_021d8c94.cpp:
+    complete
+    .text start:0x021d8c94 end:0x021d8cb4
+
+src/Combat/Overlay_23/CallInitEntriesIfSet_021e76a8.cpp:
+    complete
+    .text start:0x021e76a8 end:0x021e76c4
+
+src/Combat/Overlay_23/ClearBg1Screen_021dcd78.cpp:
+    complete
+    .text start:0x021dcd78 end:0x021dcd90
+
+src/Combat/Overlay_23/ClearObj_021e1318.cpp:
+    complete
+    .text start:0x021e1318 end:0x021e1330
+
+src/Combat/Overlay_23/CopyAndStoreLen_021d9988.cpp:
+    complete
+    .text start:0x021d9988 end:0x021d99a4
+
+src/Combat/Overlay_23/CreateAndSetFields46_021e2ca8.cpp:
+    complete
+    .text start:0x021e2ca8 end:0x021e2cc8
+
+src/Combat/Overlay_23/CreateAndSetFields8A_021db544.cpp:
+    complete
+    .text start:0x021db544 end:0x021db564
+
+src/Combat/Overlay_23/CreateAndSetFields8A_021e2cc8.cpp:
+    complete
+    .text start:0x021e2cc8 end:0x021e2ce8
+
+src/Combat/Overlay_23/RunIfPtr_021e4e20.cpp:
+    complete
+    .text start:0x021e4e20 end:0x021e4e3c
+
+src/Combat/Overlay_23/SetByteField_021e29b8.cpp:
+    complete
+    .text start:0x021e29b8 end:0x021e29d0
+
+src/Combat/Overlay_23/SetWords_021e60c4_021e60c4.cpp:
+    complete
+    .text start:0x021e60c4 end:0x021e60e0
+
+src/Combat/Overlay_23/GetBit0_021f8ca8.cpp:
+    complete
+    .text start:0x021f8ca8 end:0x021f8cc0
+
+src/Combat/Overlay_23/GetHiNibble_021f86e4.cpp:
+    complete
+    .text start:0x021f86e4 end:0x021f86f4
+
+src/Combat/Overlay_23/GetValueTimes4_021f5524.cpp:
+    complete
+    .text start:0x021f5524 end:0x021f5534
+
+src/Combat/Overlay_23/SetDataPtr_021f5598.cpp:
+    complete
+    .text start:0x021f5598 end:0x021f55a8
+
+src/Combat/Overlay_23/SetFieldAndFlags3_021f79ec.cpp:
+    complete
+    .text start:0x021f79ec end:0x021f7a08
+
+src/Combat/Overlay_23/SetNibbleHiAt58_021f650c.cpp:
+    complete
+    .text start:0x021f650c end:0x021f6524
+
+src/Combat/Overlay_23/SetNibbleHiAt68_021f6444.cpp:
+    complete
+    .text start:0x021f6444 end:0x021f645c
+
+src/Combat/Overlay_23/SetOffset100Fields_021f8960.cpp:
+    complete
+    .text start:0x021f8960 end:0x021f8970
+
+src/Combat/Overlay_23/SetTextFromCurrentEntry_021ea958.cpp:
+    complete
+    .text start:0x021ea958 end:0x021ea978
+
+src/Combat/Overlay_23/SetWords_021edf38_021edf38.cpp:
+    complete
+    .text start:0x021edf38 end:0x021edf54
+
+src/Combat/Overlay_23/SetWords_021f7158_021f7158.cpp:
+    complete
+    .text start:0x021f7158 end:0x021f7174
+
+src/Combat/Overlay_23/SetWords_021f8cd4_021f8cd4.cpp:
+    complete
+    .text start:0x021f8cd4 end:0x021f8cf0
+
+src/Combat/Overlay_23/CopyPairFields_021fb878.cpp:
+    complete
+    .text start:0x021fb878 end:0x021fb88c
+
+src/Combat/Overlay_23/GetOffset32Triple_021fbcc0.cpp:
+    complete
+    .text start:0x021fbcc0 end:0x021fbcd4
+
+src/Combat/Overlay_23/IsFlagBit5Set_021fb28c.cpp:
+    complete
+    .text start:0x021fb28c end:0x021fb2a0
+
+src/Combat/Overlay_23/ResetSubAndSetState2_021fbd90.cpp:
+    complete
+    .text start:0x021fbd90 end:0x021fbdac
+
+src/Combat/Overlay_23/RunAndGetResult_021fcfd0.cpp:
+    complete
+    .text start:0x021fcfd0 end:0x021fcfe8
+
+src/Combat/Overlay_23/SetFieldThenTailCallOffset20_021fbdf4.cpp:
+    complete
+    .text start:0x021fbdf4 end:0x021fbe08
+
+src/Combat/Overlay_23/SetShorts_021fb25c.cpp:
+    complete
+    .text start:0x021fb25c end:0x021fb274
+
+src/Combat/Overlay_23/SetThreeFields_021fb23c.cpp:
+    complete
+    .text start:0x021fb23c end:0x021fb24c
+
+src/Combat/Overlay_23/SetWords_021fbcd4_021fbcd4.cpp:
+    complete
+    .text start:0x021fbcd4 end:0x021fbcf0
+
+src/Combat/Overlay_23/TailCallOffset20_021fbdac.cpp:
+    complete
+    .text start:0x021fbdac end:0x021fbdbc
+
+src/Combat/Overlay_23/TailCallOffset20_021fbdbc.cpp:
+    complete
+    .text start:0x021fbdbc end:0x021fbdcc
+
+src/Combat/Overlay_23/TailCallOffset20_021fbdcc.cpp:
+    complete
+    .text start:0x021fbdcc end:0x021fbddc
+
+src/Combat/Overlay_23/TailCallOffset20_021fbddc.cpp:
+    complete
+    .text start:0x021fbddc end:0x021fbdec
+
+src/Combat/Overlay_23/TailCallOffset20_021fc228.cpp:
+    complete
+    .text start:0x021fc228 end:0x021fc238
+
+src/Combat/Overlay_23/TailCallOffset20_021fce28.cpp:
+    complete
+    .text start:0x021fce28 end:0x021fce38
+
+src/Combat/Overlay_23/CallVTableFnAt184_021fd4f8.cpp:
+    complete
+    .text start:0x021fd4f8 end:0x021fd50c
+
+src/Combat/Overlay_23/GetOffset100Triple_021fd028.cpp:
+    complete
+    .text start:0x021fd028 end:0x021fd03c
+
+src/Combat/Overlay_23/SetWords_021fd00c_021fd00c.cpp:
+    complete
+    .text start:0x021fd00c end:0x021fd028
+
+src/Combat/Overlay_23/AppendEntryByKey_021e8ef8_021e8ef8.cpp:
+    complete
+    .text start:0x021e8ef8 end:0x021e8f28
+
+src/Combat/Overlay_23/ClearField784Array3_021dce88.cpp:
+    complete
+    .text start:0x021dce88 end:0x021dceac
+
+src/Combat/Overlay_23/ClearFields_021e20c0.cpp:
+    complete
+    .text start:0x021e20c0 end:0x021e20f0
+
+src/Combat/Overlay_23/ClearShortsAt_021e616c_021e616c.cpp:
+    complete
+    .text start:0x021e616c end:0x021e6194
+
+src/Combat/Overlay_23/ResetIfNonNeg_021db2e4.cpp:
+    complete
+    .text start:0x021db2e4 end:0x021db314
+
+src/Combat/Overlay_23/SetFieldFromBattleStruct5cbc_021e934c.cpp:
+    complete
+    .text start:0x021e934c end:0x021e9370
+
+src/Combat/Overlay_23/SetFieldFromBlock08_021e9944.cpp:
+    complete
+    .text start:0x021e9944 end:0x021e9974
+
+src/Combat/Overlay_23/SetFieldFromBlock1c_021ea854.cpp:
+    complete
+    .text start:0x021ea854 end:0x021ea884
+
+src/Combat/Overlay_23/SetFieldFromBlock20_021ea8b8.cpp:
+    complete
+    .text start:0x021ea8b8 end:0x021ea8e8
+
+src/Combat/Overlay_23/SetFieldFromBlock28_021e9f00.cpp:
+    complete
+    .text start:0x021e9f00 end:0x021e9f30
+
+src/Combat/Overlay_23/SetFieldFromBlock70_021ea0e8.cpp:
+    complete
+    .text start:0x021ea0e8 end:0x021ea118
+
+src/Combat/Overlay_23/SetFieldFromBlock74_021ea14c.cpp:
+    complete
+    .text start:0x021ea14c end:0x021ea17c
+
+src/Combat/Overlay_23/SetFieldFromBlock78_021ea1b0.cpp:
+    complete
+    .text start:0x021ea1b0 end:0x021ea1e0
+
+src/Combat/Overlay_23/SetFieldFromBlock7c_021ea248.cpp:
+    complete
+    .text start:0x021ea248 end:0x021ea278
+
+src/Combat/Overlay_23/SetFieldFromBlock80_021ea2ac.cpp:
+    complete
+    .text start:0x021ea2ac end:0x021ea2dc
+
+src/Combat/Overlay_23/SetFieldFromBlocka4_021eaddc.cpp:
+    complete
+    .text start:0x021eaddc end:0x021eae0c
+
+src/Combat/Overlay_23/SetFieldFromPtr2a04Offf68_021e9a78.cpp:
+    complete
+    .text start:0x021e9a78 end:0x021e9a9c
+
+src/Combat/Overlay_23/SetFieldFromPtr2a04Offf6c_021ea9dc.cpp:
+    complete
+    .text start:0x021ea9dc end:0x021eaa00
+
+src/Combat/Overlay_23/SetFields_021dceac.cpp:
+    complete
+    .text start:0x021dceac end:0x021dced4
+
+src/Combat/Overlay_23/SetFlagAndData_021dbfa8.cpp:
+    complete
+    .text start:0x021dbfa8 end:0x021dbfd0
+
+src/Combat/Overlay_23/AreFields64And68AllOnes_021f3a8c.cpp:
+    complete
+    .text start:0x021f3a8c end:0x021f3aac
+
+src/Combat/Overlay_23/CallFunc0204b04cIfNotFlag0Set_021f7884.cpp:
+    complete
+    .text start:0x021f7884 end:0x021f78a4
+
+src/Combat/Overlay_23/CallFunc021f6788ForIndexUnder3_021f6eb8.cpp:
+    complete
+    .text start:0x021f6eb8 end:0x021f6ed8
+
+src/Combat/Overlay_23/ClearBit_021f6e34.cpp:
+    complete
+    .text start:0x021f6e34 end:0x021f6e5c
+
+src/Combat/Overlay_23/ClearBufferIfNotFlag0Set_021f7864.cpp:
+    complete
+    .text start:0x021f7864 end:0x021f7884
+
+src/Combat/Overlay_23/ClearFlagBits10to24_021ed7e0.cpp:
+    complete
+    .text start:0x021ed7e0 end:0x021ed804
+
+src/Combat/Overlay_23/CopyToSlot_021f6e90.cpp:
+    complete
+    .text start:0x021f6e90 end:0x021f6eb8
+
+src/Combat/Overlay_23/DoThing_021f6590.cpp:
+    complete
+    .text start:0x021f6590 end:0x021f65b4
+
+src/Combat/Overlay_23/GetNthNode_021f68b8.cpp:
+    complete
+    .text start:0x021f68b8 end:0x021f68dc
+
+src/Combat/Overlay_23/GetShiftedOrDefault_021f5578.cpp:
+    complete
+    .text start:0x021f5578 end:0x021f5598
+
+src/Combat/Overlay_23/GetValueOrNibble_021f86b8.cpp:
+    complete
+    .text start:0x021f86b8 end:0x021f86dc
+
+src/Combat/Overlay_23/InitFlags_021eb414.cpp:
+    complete
+    .text start:0x021eb414 end:0x021eb43c
+
+src/Combat/Overlay_23/MaybeInit_021f7134.cpp:
+    complete
+    .text start:0x021f7134 end:0x021f7158
+
+src/Combat/Overlay_23/ResetAndInit_021f52a0.cpp:
+    complete
+    .text start:0x021f52a0 end:0x021f52c8
+
+src/Combat/Overlay_23/ResetAndReinit_021f52c8.cpp:
+    complete
+    .text start:0x021f52c8 end:0x021f52f8
+
+src/Combat/Overlay_23/ResetFields_021eefac.cpp:
+    complete
+    .text start:0x021eefac end:0x021eefd0
+
+src/Combat/Overlay_23/SetBit_021f6e10.cpp:
+    complete
+    .text start:0x021f6e10 end:0x021f6e34
+
+src/Combat/Overlay_23/SetFields5cAnd5e_021f65b4.cpp:
+    complete
+    .text start:0x021f65b4 end:0x021f65d4
+
+src/Combat/Overlay_23/SetOrClearBit10At400_38_021f2348.cpp:
+    complete
+    .text start:0x021f2348 end:0x021f2368
+
+src/Combat/Overlay_23/CallFunc02035a2cIfNotFlag3Set_021fcfe8.cpp:
+    complete
+    .text start:0x021fcfe8 end:0x021fd008
+
+src/Combat/Overlay_23/ClearBuffer_021f9c0c.cpp:
+    complete
+    .text start:0x021f9c0c end:0x021f9c30
+
+src/Combat/Overlay_23/DestroySafeAllocator_021fbe4c.cpp:
+    complete
+    .text start:0x021fbe4c end:0x021fbe70
+
+src/Combat/Overlay_23/GetEntryPtr_021fa854.cpp:
+    complete
+    .text start:0x021fa854 end:0x021fa87c
+
+src/Combat/Overlay_23/GetValOrTwo_021fd2f8.cpp:
+    complete
+    .text start:0x021fd2f8 end:0x021fd318
+
+src/Combat/Overlay_23/InitAndCopy3Words_021f8c1c.cpp:
+    complete
+    .text start:0x021f8c1c end:0x021f8c48
+
+src/Combat/Overlay_23/SetFieldE2AndMaybeCall_021f8944.cpp:
+    complete
+    .text start:0x021f8944 end:0x021f8960
+
+src/Combat/Overlay_23/SetFieldsAndInit_021fba80.cpp:
+    complete
+    .text start:0x021fba80 end:0x021fbaac
+
+src/Combat/Overlay_23/Check_021ddbf8.cpp:
+    complete
+    .text start:0x021ddbf8 end:0x021ddc34
+
+src/Combat/Overlay_23/CopyBytesToInts_021e31b0.cpp:
+    complete
+    .text start:0x021e31b0 end:0x021e31e4
+
+src/Combat/Overlay_23/DispatchByMode77c_021ddbb8.cpp:
+    complete
+    .text start:0x021ddbb8 end:0x021ddbf8
+
+src/Combat/Overlay_23/FindIndexByField8_021e1da4.cpp:
+    complete
+    .text start:0x021e1da4 end:0x021e1de8
+
+src/Combat/Overlay_23/Find_021d994c.cpp:
+    complete
+    .text start:0x021d994c end:0x021d9988
+
+src/Combat/Overlay_23/InitFields_021db0d4.cpp:
+    complete
+    .text start:0x021db0d4 end:0x021db110
+
+src/Combat/Overlay_23/LookupByField8_021dcb70.cpp:
+    complete
+    .text start:0x021dcb70 end:0x021dcba4
+
+src/Combat/Overlay_23/SetField8FromBit49c_021e93e0.cpp:
+    complete
+    .text start:0x021e93e0 end:0x021e9424
+
+src/Combat/Overlay_23/SetFieldFromLookupTable4_021e9864.cpp:
+    complete
+    .text start:0x021e9864 end:0x021e98a0
+
+src/Combat/Overlay_23/SetFieldFromLookupTable6_021e98a0.cpp:
+    complete
+    .text start:0x021e98a0 end:0x021e98dc
+
+src/Combat/Overlay_23/SetFieldsFromBattleGlobals_021e9208.cpp:
+    complete
+    .text start:0x021e9208 end:0x021e9244
+
+src/Combat/Overlay_23/SetFourWordBlocks_021e6088.cpp:
+    complete
+    .text start:0x021e6088 end:0x021e60c4
+
+src/Combat/Overlay_23/SetShiftedFieldsAndCall_021e32cc.cpp:
+    complete
+    .text start:0x021e32cc end:0x021e3304
+
+src/Combat/Overlay_23/SetThreeElementFields_021e6378.cpp:
+    complete
+    .text start:0x021e6378 end:0x021e63bc
+
+src/Combat/Overlay_23/TestFlagsAndActiveElement2_021e6e20.cpp:
+    complete
+    .text start:0x021e6e20 end:0x021e6e60
+
+src/Combat/Overlay_23/SetClampedFieldFromBlock44_021e9f64.cpp:
+    complete
+    .text start:0x021e9f64 end:0x021e9f9c
+
+src/Combat/Overlay_23/SetClampedFieldFromBlock48_021e9f9c.cpp:
+    complete
+    .text start:0x021e9f9c end:0x021e9fd4
+
+src/Combat/Overlay_23/SetFieldFromBlock90_021eab28.cpp:
+    complete
+    .text start:0x021eab28 end:0x021eab64
+
+src/Combat/Overlay_23/SetFieldFromBlock94_021eab64.cpp:
+    complete
+    .text start:0x021eab64 end:0x021eaba0
+
+src/Combat/Overlay_23/SetFieldWidth14Offset14_021e9910.cpp:
+    complete
+    .text start:0x021e9910 end:0x021e9944
+
+src/Combat/Overlay_23/SetFieldWidth14Offset8_021ead74.cpp:
+    complete
+    .text start:0x021ead74 end:0x021eada8
+
+src/Combat/Overlay_23/SetFieldWidth14Offset9_021e98dc.cpp:
+    complete
+    .text start:0x021e98dc end:0x021e9910
+
+src/Combat/Overlay_23/SetFieldWidth14Offset9_021ead40.cpp:
+    complete
+    .text start:0x021ead40 end:0x021ead74
+
+src/Combat/Overlay_23/SetFieldWidth8Offset0_021ead0c.cpp:
+    complete
+    .text start:0x021ead0c end:0x021ead40
+
+src/Combat/Overlay_23/SetFieldWidth9Offset0_021e9974.cpp:
+    complete
+    .text start:0x021e9974 end:0x021e99a8
+
+src/Combat/Overlay_23/SetFieldWidth9Offset0_021eacd8.cpp:
+    complete
+    .text start:0x021eacd8 end:0x021ead0c
+
+src/Combat/Overlay_23/SetFlagFromField0NonZero_021ea920.cpp:
+    complete
+    .text start:0x021ea920 end:0x021ea958
+
+src/Combat/Overlay_23/SetFromRegionMinus1_021ea3ac.cpp:
+    complete
+    .text start:0x021ea3ac end:0x021ea3ec
+
+src/Combat/Overlay_23/SetRoundedDown100_021ea978.cpp:
+    complete
+    .text start:0x021ea978 end:0x021ea9b0
+
+src/Combat/Overlay_23/SumMatchesIntoField8_021eaae8.cpp:
+    complete
+    .text start:0x021eaae8 end:0x021eab28
+
+src/Combat/Overlay_23/AppendNodeToList_021f67ac.cpp:
+    complete
+    .text start:0x021f67ac end:0x021f67ec
+
+src/Combat/Overlay_23/AreFields60And64AllOnes_021f21f4.cpp:
+    complete
+    .text start:0x021f21f4 end:0x021f222c
+
+src/Combat/Overlay_23/CallVTableFnAt240_021f66bc.cpp:
+    complete
+    .text start:0x021f66bc end:0x021f66f0
+
+src/Combat/Overlay_23/CallVTableFnAt244_021f66f4.cpp:
+    complete
+    .text start:0x021f66f4 end:0x021f6728
+
+src/Combat/Overlay_23/ClearNodeMaskById_021f6600.cpp:
+    complete
+    .text start:0x021f6600 end:0x021f6630
+
+src/Combat/Overlay_23/DispatchNodeIfState6_021f6680.cpp:
+    complete
+    .text start:0x021f6680 end:0x021f66bc
+
+src/Combat/Overlay_23/FindByByteAt118_021f0360.cpp:
+    complete
+    .text start:0x021f0360 end:0x021f03a0
+
+src/Combat/Overlay_23/FormatLabelIntoBufC_021f2304.cpp:
+    complete
+    .text start:0x021f2304 end:0x021f2348
+
+src/Combat/Overlay_23/GetField38IfKind8_021f6378.cpp:
+    complete
+    .text start:0x021f6378 end:0x021f63ac
+
+src/Combat/Overlay_23/InitBuffersIfFlag431_021eb4b8.cpp:
+    complete
+    .text start:0x021eb4b8 end:0x021eb4f4
+
+src/Combat/Overlay_23/SetFieldWidth24Offset0_021eada8.cpp:
+    complete
+    .text start:0x021eada8 end:0x021eaddc
+
+src/Combat/Overlay_23/ConfigureBg1Control_021ec420.cpp:
+    complete
+    .text start:0x021ec420 end:0x021ec454
+
+src/Combat/Overlay_23/ConfigureSubBg1Control_021ec368.cpp:
+    complete
+    .text start:0x021ec368 end:0x021ec39c
+
+src/Combat/Overlay_23/StoreField4IfMatch_021f5788.cpp:
+    complete
+    .text start:0x021f5788 end:0x021f57c4
+
+src/Combat/Overlay_23/ApplyFieldsToObj_021fb640.cpp:
+    complete
+    .text start:0x021fb640 end:0x021fb680
+
+src/Combat/Overlay_23/ComputeExtents_021fd420.cpp:
+    complete
+    .text start:0x021fd420 end:0x021fd45c
+
+src/Combat/Overlay_23/DivModField26_021f9bdc.cpp:
+    complete
+    .text start:0x021f9bdc end:0x021f9c0c
+
+src/Combat/Overlay_23/FindFreeSlot_021fa03c.cpp:
+    complete
+    .text start:0x021fa03c end:0x021fa078
+
+src/Combat/Overlay_23/Find_021f6dd8.cpp:
+    complete
+    .text start:0x021f6dd8 end:0x021f6e10
+
+src/Combat/Overlay_23/GetFixed12PairAndZero_021f7d48.cpp:
+    complete
+    .text start:0x021f7d48 end:0x021f7d88
+
+src/Combat/Overlay_23/GetTableEntry_021f9b6c.cpp:
+    complete
+    .text start:0x021f9b6c end:0x021f9ba0
+
+src/Combat/Overlay_23/SetFieldsAndDispatch_021f7c68.cpp:
+    complete
+    .text start:0x021f7c68 end:0x021f7ca0
+
+src/Combat/Overlay_23/SetShortsFromDiv4096_021f8aec.cpp:
+    complete
+    .text start:0x021f8aec end:0x021f8b30
+
+src/Combat/Overlay_23/SetShortsFromDiv4096_021fb498.cpp:
+    complete
+    .text start:0x021fb498 end:0x021fb4dc
+
+src/Combat/Overlay_23/SetTwoFieldsZeroMid_021fb1dc.cpp:
+    complete
+    .text start:0x021fb1dc end:0x021fb21c
+
+src/Combat/Overlay_23/SetTwoFieldsZeroMid_021fb88c.cpp:
+    complete
+    .text start:0x021fb88c end:0x021fb8cc
+
+src/Combat/Overlay_23/BuildChain_021e1814.cpp:
+    complete
+    .text start:0x021e1814 end:0x021e1870
+
+src/Combat/Overlay_23/BuildChain_021e1870.cpp:
+    complete
+    .text start:0x021e1870 end:0x021e18cc
+
+src/Combat/Overlay_23/BuildLinkedList_021e1564.cpp:
+    complete
+    .text start:0x021e1564 end:0x021e15b4
+
+src/Combat/Overlay_23/ClearElements_021e1518.cpp:
+    complete
+    .text start:0x021e1518 end:0x021e1564
+
+src/Combat/Overlay_23/ComputeShortPair_021e2bdc.cpp:
+    complete
+    .text start:0x021e2bdc end:0x021e2c38
+
+src/Combat/Overlay_23/DestroyTenAndOne_021e4f18.cpp:
+    complete
+    .text start:0x021e4f18 end:0x021e4f64
+
+src/Combat/Overlay_23/FindEntryById_021db08c.cpp:
+    complete
+    .text start:0x021db08c end:0x021db0d4
+
+src/Combat/Overlay_23/InitBlockArray_021e4fd8.cpp:
+    complete
+    .text start:0x021e4fd8 end:0x021e5020
+
+src/Combat/Overlay_23/InitCombatEntry_021d8b6c.cpp:
+    complete
+    .text start:0x021d8b6c end:0x021d8bb4
+
+src/Combat/Overlay_23/InitField744_021e07f8.cpp:
+    complete
+    .text start:0x021e07f8 end:0x021e0840
+
+src/Combat/Overlay_23/InitField748_021e0a48.cpp:
+    complete
+    .text start:0x021e0a48 end:0x021e0a90
+
+src/Combat/Overlay_23/InitField74c_021e0b54.cpp:
+    complete
+    .text start:0x021e0b54 end:0x021e0b9c
+
+src/Combat/Overlay_23/InitField750_021e0c38.cpp:
+    complete
+    .text start:0x021e0c38 end:0x021e0c80
+
+src/Combat/Overlay_23/InitWordsQuad_021e60e0.cpp:
+    complete
+    .text start:0x021e60e0 end:0x021e613c
+
+src/Combat/Overlay_23/Init_021e12cc.cpp:
+    complete
+    .text start:0x021e12cc end:0x021e1318
+
+src/Combat/Overlay_23/ResetAndApply_021e7fe4.cpp:
+    complete
+    .text start:0x021e7fe4 end:0x021e802c
+
+src/Combat/Overlay_23/SetEntryFields_021e23d0.cpp:
+    complete
+    .text start:0x021e23d0 end:0x021e2418
+
+src/Combat/Overlay_23/ClearBitsAfterLookup_021fae88.cpp:
+    complete
+    .text start:0x021fae88 end:0x021faed0
+
+src/Combat/Overlay_23/ComputeModHash_021f6324.cpp:
+    complete
+    .text start:0x021f6324 end:0x021f6378
+
+src/Combat/Overlay_23/DispatchNode_021f6630.cpp:
+    complete
+    .text start:0x021f6630 end:0x021f6680
+
+src/Combat/Overlay_23/InitAndDispatch_021f52f8.cpp:
+    complete
+    .text start:0x021f52f8 end:0x021f5340
+
+src/Combat/Overlay_23/InitObj_021f672c.cpp:
+    complete
+    .text start:0x021f672c end:0x021f6788
+
+src/Combat/Overlay_23/Lookup4Entry_021f63ac.cpp:
+    complete
+    .text start:0x021f63ac end:0x021f63f8
+
+src/Combat/Overlay_23/SetFieldFromLookup464_021e9818.cpp:
+    complete
+    .text start:0x021e9818 end:0x021e9864
+
+src/Combat/Overlay_23/SetFieldFromPopcount_021e9b00.cpp:
+    complete
+    .text start:0x021e9b00 end:0x021e9b48
+
+src/Combat/Overlay_23/SetFixed12PairZeroMid_021fb4dc.cpp:
+    complete
+    .text start:0x021fb4dc end:0x021fb524
+
+src/Combat/Overlay_23/SetFixed12PairZeroThird_021f8b30.cpp:
+    complete
+    .text start:0x021f8b30 end:0x021f8b78
+
+src/Combat/Overlay_23/SetFixed12PairZeroThird_021fbc68.cpp:
+    complete
+    .text start:0x021fbc68 end:0x021fbcb0
+
+src/Combat/Overlay_23/SetShortsFromDiv4096_021fbc24.cpp:
+    complete
+    .text start:0x021fbc24 end:0x021fbc68
+
+src/Combat/Overlay_23/InitEvent14_021fcdd4.cpp:
+    complete
+    .text start:0x021fcdd4 end:0x021fce28
+
+src/Combat/Overlay_23/InitEventD_021fd1e0.cpp:
+    complete
+    .text start:0x021fd1e0 end:0x021fd234
+
+src/Combat/Overlay_23/SetFixed12PairZeroThird_021fc4b4.cpp:
+    complete
+    .text start:0x021fc4b4 end:0x021fc4fc
+
+src/Combat/Overlay_23/SetFixed12PairZeroThird_021fd3d8.cpp:
+    complete
+    .text start:0x021fd3d8 end:0x021fd420
+
+src/Combat/Overlay_23/SetShortsFromDiv4096_021fc470.cpp:
+    complete
+    .text start:0x021fc470 end:0x021fc4b4
+
+src/Combat/Overlay_23/SetShortsFromDiv4096_021fd394.cpp:
+    complete
+    .text start:0x021fd394 end:0x021fd3d8
+
+src/Combat/Overlay_23/SomeFunc_021fc2b8.cpp:
+    complete
+    .text start:0x021fc2b8 end:0x021fc30c
+
+src/Combat/Overlay_23/FindEntryByKey_021e2450.cpp:
+    complete
+    .text start:0x021e2450 end:0x021e24b0
+
+src/Combat/Overlay_23/GetField2a_021f9bc0.cpp:
+    complete
+    .text start:0x021f9bc0 end:0x021f9bc8
+
+src/Combat/Overlay_23/GetShort28_021f9bb0.cpp:
+    complete
+    .text start:0x021f9bb0 end:0x021f9bb8
+
+src/Combat/Overlay_23/GetShort6_021f6f08.cpp:
+    complete
+    .text start:0x021f6f08 end:0x021f6f10
+
+src/Combat/Overlay_23/GetFieldPtrAt_021f79e4_021f79e4.cpp:
+    complete
+    .text start:0x021f79e4 end:0x021f79ec
+
+src/Combat/Overlay_23/BuildFieldTag_021d9e60.cpp:
+    complete
+    .text start:0x021d9e60 end:0x021d9f88
+
+src/Combat/Overlay_23/CallDispatchIfFlagSet_021eb4f4.cpp:
+    complete
+    .text start:0x021eb4f4 end:0x021eb564
+
+src/Combat/Overlay_23/HandleElementSpecial17_021e6a90.cpp:
+    complete
+    .text start:0x021e6a90 end:0x021e6b04
+
+src/Combat/Overlay_23/RefreshFieldIfFlag4000_021d9d34.cpp:
+    complete
+    .text start:0x021d9d34 end:0x021d9da4
+
+src/Combat/Overlay_23/SetByte38_021fb274.cpp:
+    complete
+    .text start:0x021fb274 end:0x021fb27c
+
+src/Combat/Overlay_23/SetByteAtOffset60_021f9da0.cpp:
+    complete
+    .text start:0x021f9da0 end:0x021f9da8
+
+src/Combat/Overlay_23/SetByteField39_021fb284.cpp:
+    complete
+    .text start:0x021fb284 end:0x021fb28c
+
+src/Combat/Overlay_23/SetFieldShortAt46_021f9c60.cpp:
+    complete
+    .text start:0x021f9c60 end:0x021f9c68
+
+src/Combat/Overlay_23/SetShortField44_021f9c58.cpp:
+    complete
+    .text start:0x021f9c58 end:0x021f9c60
+
+src/Combat/Overlay_23/FindEntryContaining_021e27f8.cpp:
+    complete
+    .text start:0x021e27f8 end:0x021e2868
+
+src/Combat/Overlay_23/InitBoxLayout_021d921c.cpp:
+    complete
+    .text start:0x021d921c end:0x021d9290
+
+src/Combat/Overlay_23/InitBufferFromDataField4_021ddc34.cpp:
+    complete
+    .text start:0x021ddc34 end:0x021ddc98
+
+src/Combat/Overlay_23/InitScriptAndRun_021e133c.cpp:
+    complete
+    .text start:0x021e133c end:0x021e13b0
+
+src/Combat/Overlay_23/NoOp_021e4e1c.cpp:
+    complete
+    .text start:0x021e4e1c end:0x021e4e20
+
+src/Combat/Overlay_23/SetShiftedFieldsAndCallTwice_021e31e4.cpp:
+    complete
+    .text start:0x021e31e4 end:0x021e3258
+
+src/Combat/Overlay_23/SetShiftedFieldsAndCallTwice_021e3258.cpp:
+    complete
+    .text start:0x021e3258 end:0x021e32cc
+
+src/Combat/Overlay_23/ApplyElemFieldsTwice_021e81f4.cpp:
+    complete
+    .text start:0x021e81f4 end:0x021e8270
+
+src/Combat/Overlay_23/CheckCombatantMaxHP_021ea77c.cpp:
+    complete
+    .text start:0x021ea77c end:0x021ea7e0
+
+src/Combat/Overlay_23/CheckFlag2Set_021ea71c.cpp:
+    complete
+    .text start:0x021ea71c end:0x021ea77c
+
+src/Combat/Overlay_23/CheckSlotMatchesBitfield_021e9a9c.cpp:
+    complete
+    .text start:0x021e9a9c end:0x021e9b00
+
+src/Combat/Overlay_23/CreateTenAndOne_021e4f64.cpp:
+    complete
+    .text start:0x021e4f64 end:0x021e4fd8
+
+src/Combat/Overlay_23/CreateThreeAllocators_021e71b4.cpp:
+    complete
+    .text start:0x021e71b4 end:0x021e7220
+
+src/Combat/Overlay_23/InitEntryListAndReset_021e7f68.cpp:
+    complete
+    .text start:0x021e7f68 end:0x021e7fe4
+
+src/Combat/Overlay_23/InitObj_021f222c.cpp:
+    complete
+    .text start:0x021f222c end:0x021f229c
+
+src/Combat/Overlay_23/PackAndForward_021eae38.cpp:
+    complete
+    .text start:0x021eae38 end:0x021eaea0
+
+src/Combat/Overlay_23/ScaleOrResetCombatants_021ed988.cpp:
+    complete
+    .text start:0x021ed988 end:0x021ed9f8
+
+src/Combat/Overlay_23/SetByteC11_021e6150.cpp:
+    complete
+    .text start:0x021e6150 end:0x021e6158
+
+src/Combat/Overlay_23/SetIntC0C_021e6198.cpp:
+    complete
+    .text start:0x021e6198 end:0x021e61a0
+
+src/Combat/Overlay_23/SetThreeFieldsFromSub150_021e9370.cpp:
+    complete
+    .text start:0x021e9370 end:0x021e93e0
+
+src/Combat/Overlay_23/SetThreeInts_021f00f4.cpp:
+    complete
+    .text start:0x021f00f4 end:0x021f00fc
+
+src/Combat/Overlay_23/SumClampedField_021ea7e0.cpp:
+    complete
+    .text start:0x021ea7e0 end:0x021ea854
+
+src/Combat/Overlay_23/SumTableBytes_021ea6bc.cpp:
+    complete
+    .text start:0x021ea6bc end:0x021ea71c
+
+src/Combat/Overlay_23/CheckThresholdOverAny_021f5228.cpp:
+    complete
+    .text start:0x021f5228 end:0x021f52a0
+
+src/Combat/Overlay_23/NoOpReturnTrue_021f55a8.cpp:
+    complete
+    .text start:0x021f55a8 end:0x021f55b0
+
+src/Combat/Overlay_23/NoOpReturnTrue_021f55b0.cpp:
+    complete
+    .text start:0x021f55b0 end:0x021f55b8
+
+src/Combat/Overlay_23/NoOpReturnTrue_021f5b94.cpp:
+    complete
+    .text start:0x021f5b94 end:0x021f5b9c
+
+src/Combat/Overlay_23/EmptyStub_021f66f0.cpp:
+    complete
+    .text start:0x021f66f0 end:0x021f66f4
+
+src/Combat/Overlay_23/GetField18_021f6f18.cpp:
+    complete
+    .text start:0x021f6f18 end:0x021f6f20
+
+src/Combat/Overlay_23/InitObjWithMisc_021f6f20.cpp:
+    complete
+    .text start:0x021f6f20 end:0x021f6f80
+
+src/Combat/Overlay_23/NoOp_021f6728.cpp:
+    complete
+    .text start:0x021f6728 end:0x021f672c
+
+src/Combat/Overlay_23/NoOp_021f6984.cpp:
+    complete
+    .text start:0x021f6984 end:0x021f6988
+
+src/Combat/Overlay_23/NoOp_021f6988.cpp:
+    complete
+    .text start:0x021f6988 end:0x021f698c
+
+src/Combat/Overlay_23/NoOp_021f69b8.cpp:
+    complete
+    .text start:0x021f69b8 end:0x021f69bc
+
+src/Combat/Overlay_23/NoOp_021f69e8.cpp:
+    complete
+    .text start:0x021f69e8 end:0x021f69ec
+
+src/Combat/Overlay_23/NoOp_021f6a18.cpp:
+    complete
+    .text start:0x021f6a18 end:0x021f6a1c
+
+src/Combat/Overlay_23/ReturnZero_021f6ab8.cpp:
+    complete
+    .text start:0x021f6ab8 end:0x021f6ac0
+
+src/Combat/Overlay_23/ReturnZero_021f6ac0.cpp:
+    complete
+    .text start:0x021f6ac0 end:0x021f6ac8
+
+src/Combat/Overlay_23/ReturnZero_021f6ba8.cpp:
+    complete
+    .text start:0x021f6ba8 end:0x021f6bb0
+
+src/Combat/Overlay_23/SetField2c_021f6504.cpp:
+    complete
+    .text start:0x021f6504 end:0x021f650c
+
+src/Combat/Overlay_23/DispatchByTableEntry_021f6f90.cpp:
+    complete
+    .text start:0x021f6f90 end:0x021f7010
+
+src/Combat/Overlay_23/GetField1c_021f7128.cpp:
+    complete
+    .text start:0x021f7128 end:0x021f7130
+
+src/Combat/Overlay_23/NoOp_021f7130.cpp:
+    complete
+    .text start:0x021f7130 end:0x021f7134
+
+src/Combat/Overlay_23/AddOffset20_021f7318.cpp:
+    complete
+    .text start:0x021f7318 end:0x021f7320
+
+src/Combat/Overlay_23/GetFieldA8_021f7190.cpp:
+    complete
+    .text start:0x021f7190 end:0x021f7198
+
+src/Combat/Overlay_23/GetFieldAA_021f71a0.cpp:
+    complete
+    .text start:0x021f71a0 end:0x021f71a8
+
+src/Combat/Overlay_23/NoOp_021f7344.cpp:
+    complete
+    .text start:0x021f7344 end:0x021f7348
+
+src/Combat/Overlay_23/NoOp_021f7350.cpp:
+    complete
+    .text start:0x021f7350 end:0x021f7354
+
+src/Combat/Overlay_23/NoOp_021f7354.cpp:
+    complete
+    .text start:0x021f7354 end:0x021f7358
+
+src/Combat/Overlay_23/NoOp_021f7358.cpp:
+    complete
+    .text start:0x021f7358 end:0x021f735c
+
+src/Combat/Overlay_23/NoOp_021f7388.cpp:
+    complete
+    .text start:0x021f7388 end:0x021f738c
+
+src/Combat/Overlay_23/NoOp_021f738c.cpp:
+    complete
+    .text start:0x021f738c end:0x021f7390
+
+src/Combat/Overlay_23/ReturnFifteen_021f7348.cpp:
+    complete
+    .text start:0x021f7348 end:0x021f7350
+
+src/Combat/Overlay_23/ReturnZero_021f732c.cpp:
+    complete
+    .text start:0x021f732c end:0x021f7334
+
+src/Combat/Overlay_23/ReturnZero_021f7334.cpp:
+    complete
+    .text start:0x021f7334 end:0x021f733c
+
+src/Combat/Overlay_23/ReturnZero_021f733c.cpp:
+    complete
+    .text start:0x021f733c end:0x021f7344
+
+src/Combat/Overlay_23/ReturnZero_021f7390.cpp:
+    complete
+    .text start:0x021f7390 end:0x021f7398
+
+src/Combat/Overlay_23/ReturnZero_021f7398.cpp:
+    complete
+    .text start:0x021f7398 end:0x021f73a0
+
+src/Combat/Overlay_23/SetField1cTo2_021f7320.cpp:
+    complete
+    .text start:0x021f7320 end:0x021f732c
+
+src/Combat/Overlay_23/SetFieldA8_021f7188.cpp:
+    complete
+    .text start:0x021f7188 end:0x021f7190
+
+src/Combat/Overlay_23/SetFieldAA_021f7198.cpp:
+    complete
+    .text start:0x021f7198 end:0x021f71a0
+
+src/Combat/Overlay_23/SetFlagFromBattleBlockBit_021e9190.cpp:
+    complete
+    .text start:0x021e9190 end:0x021e9208
+
+src/Combat/Overlay_23/NoOpHandler_021f73c8.cpp:
+    complete
+    .text start:0x021f73c8 end:0x021f73cc
+
+src/Combat/Overlay_23/NoOpHandler_021f73d4.cpp:
+    complete
+    .text start:0x021f73d4 end:0x021f73d8
+
+src/Combat/Overlay_23/NoOpHandler_021f73e0.cpp:
+    complete
+    .text start:0x021f73e0 end:0x021f73e4
+
+src/Combat/Overlay_23/NoOpHandler_021f73ec.cpp:
+    complete
+    .text start:0x021f73ec end:0x021f73f0
+
+src/Combat/Overlay_23/NoOpHandler_021f73f8.cpp:
+    complete
+    .text start:0x021f73f8 end:0x021f73fc
+
+src/Combat/Overlay_23/NoOpHandler_021f7404.cpp:
+    complete
+    .text start:0x021f7404 end:0x021f7408
+
+src/Combat/Overlay_23/NoOpHandler_021f7410.cpp:
+    complete
+    .text start:0x021f7410 end:0x021f7414
+
+src/Combat/Overlay_23/NoOp_021f73a8.cpp:
+    complete
+    .text start:0x021f73a8 end:0x021f73ac
+
+src/Combat/Overlay_23/NoOp_021f73ac.cpp:
+    complete
+    .text start:0x021f73ac end:0x021f73b0
+
+src/Combat/Overlay_23/NoOp_021f73b0.cpp:
+    complete
+    .text start:0x021f73b0 end:0x021f73b4
+
+src/Combat/Overlay_23/NoOp_021f73bc.cpp:
+    complete
+    .text start:0x021f73bc end:0x021f73c0
+
+src/Combat/Overlay_23/NullHandler_021f73c0.cpp:
+    complete
+    .text start:0x021f73c0 end:0x021f73c8
+
+src/Combat/Overlay_23/NullHandler_021f73cc.cpp:
+    complete
+    .text start:0x021f73cc end:0x021f73d4
+
+src/Combat/Overlay_23/NullHandler_021f73d8.cpp:
+    complete
+    .text start:0x021f73d8 end:0x021f73e0
+
+src/Combat/Overlay_23/NullHandler_021f73e4.cpp:
+    complete
+    .text start:0x021f73e4 end:0x021f73ec
+
+src/Combat/Overlay_23/NullHandler_021f73f0.cpp:
+    complete
+    .text start:0x021f73f0 end:0x021f73f8
+
+src/Combat/Overlay_23/NullHandler_021f73fc.cpp:
+    complete
+    .text start:0x021f73fc end:0x021f7404
+
+src/Combat/Overlay_23/NullHandler_021f7408.cpp:
+    complete
+    .text start:0x021f7408 end:0x021f7410
+
+src/Combat/Overlay_23/ReturnZero_021f73a0.cpp:
+    complete
+    .text start:0x021f73a0 end:0x021f73a8
+
+src/Combat/Overlay_23/ReturnZero_021f73b4.cpp:
+    complete
+    .text start:0x021f73b4 end:0x021f73bc
+
+src/Combat/Overlay_23/NoOpHandler_021f741c.cpp:
+    complete
+    .text start:0x021f741c end:0x021f7420
+
+src/Combat/Overlay_23/NoOpHandler_021f7428.cpp:
+    complete
+    .text start:0x021f7428 end:0x021f742c
+
+src/Combat/Overlay_23/NoOpHandler_021f7434.cpp:
+    complete
+    .text start:0x021f7434 end:0x021f7438
+
+src/Combat/Overlay_23/NullHandler_021f7414.cpp:
+    complete
+    .text start:0x021f7414 end:0x021f741c
+
+src/Combat/Overlay_23/NullHandler_021f7420.cpp:
+    complete
+    .text start:0x021f7420 end:0x021f7428
+
+src/Combat/Overlay_23/NullHandler_021f742c.cpp:
+    complete
+    .text start:0x021f742c end:0x021f7434
+
+src/Combat/Overlay_23/BlankFunction_021f7d90.cpp:
+    complete
+    .text start:0x021f7d90 end:0x021f7d94
+
+src/Combat/Overlay_23/BlankFunction_021f7d9c.cpp:
+    complete
+    .text start:0x021f7d9c end:0x021f7da0
+
+src/Combat/Overlay_23/BlankFunction_021f8190.cpp:
+    complete
+    .text start:0x021f8190 end:0x021f8194
+
+src/Combat/Overlay_23/BlankFunction_021f8194.cpp:
+    complete
+    .text start:0x021f8194 end:0x021f8198
+
+src/Combat/Overlay_23/BlankFunction_021f8ae8.cpp:
+    complete
+    .text start:0x021f8ae8 end:0x021f8aec
+
+src/Combat/Overlay_23/ConvertFixedPoint_021f8198.cpp:
+    complete
+    .text start:0x021f8198 end:0x021f81f4
+
+src/Combat/Overlay_23/GetByteAt_021f86f4_021f86f4.cpp:
+    complete
+    .text start:0x021f86f4 end:0x021f86fc
+
+src/Combat/Overlay_23/GetIntAt_021f86dc_021f86dc.cpp:
+    complete
+    .text start:0x021f86dc end:0x021f86e4
+
+src/Combat/Overlay_23/ReturnZero_021f7d88.cpp:
+    complete
+    .text start:0x021f7d88 end:0x021f7d90
+
+src/Combat/Overlay_23/ReturnZero_021f7d94.cpp:
+    complete
+    .text start:0x021f7d94 end:0x021f7d9c
+
+src/Combat/Overlay_23/EmptyStub_021f8cf0.cpp:
+    complete
+    .text start:0x021f8cf0 end:0x021f8cf4
+
+src/Combat/Overlay_23/EmptyStub_021f9b18.cpp:
+    complete
+    .text start:0x021f9b18 end:0x021f9b1c
+
+src/Combat/Overlay_23/GetFieldShort36_021f9ba0.cpp:
+    complete
+    .text start:0x021f9ba0 end:0x021f9ba8
+
+src/Combat/Overlay_23/GetFieldShort72_021f8c80.cpp:
+    complete
+    .text start:0x021f8c80 end:0x021f8c88
+
+src/Combat/Overlay_23/GetFieldShort74_021f8c90.cpp:
+    complete
+    .text start:0x021f8c90 end:0x021f8c98
+
+src/Combat/Overlay_23/GetFieldShort76_021f8ca0.cpp:
+    complete
+    .text start:0x021f8ca0 end:0x021f8ca8
+
+src/Combat/Overlay_23/GetShortAt_021f8c50_021f8c50.cpp:
+    complete
+    .text start:0x021f8c50 end:0x021f8c58
+
+src/Combat/Overlay_23/GetShortAt_021f8c60_021f8c60.cpp:
+    complete
+    .text start:0x021f8c60 end:0x021f8c68
+
+src/Combat/Overlay_23/GetShortAt_021f8c70_021f8c70.cpp:
+    complete
+    .text start:0x021f8c70 end:0x021f8c78
+
+src/Combat/Overlay_23/SetFieldByte98_021f9c30.cpp:
+    complete
+    .text start:0x021f9c30 end:0x021f9c38
+
+src/Combat/Overlay_23/SetFieldShort60_021f9c38.cpp:
+    complete
+    .text start:0x021f9c38 end:0x021f9c40
+
+src/Combat/Overlay_23/SetFieldShort62_021f9c40.cpp:
+    complete
+    .text start:0x021f9c40 end:0x021f9c48
+
+src/Combat/Overlay_23/SetFieldShort74_021f8c88.cpp:
+    complete
+    .text start:0x021f8c88 end:0x021f8c90
+
+src/Combat/Overlay_23/SetFieldShort76_021f8c98.cpp:
+    complete
+    .text start:0x021f8c98 end:0x021f8ca0
+
+src/Combat/Overlay_23/SetShortAt_021f8c48_021f8c48.cpp:
+    complete
+    .text start:0x021f8c48 end:0x021f8c50
+
+src/Combat/Overlay_23/SetShortAt_021f8c58_021f8c58.cpp:
+    complete
+    .text start:0x021f8c58 end:0x021f8c60
+
+src/Combat/Overlay_23/SetShortAt_021f8c68_021f8c68.cpp:
+    complete
+    .text start:0x021f8c68 end:0x021f8c70
+
+src/Combat/Overlay_23/SetShortAt_021f8c78_021f8c78.cpp:
+    complete
+    .text start:0x021f8c78 end:0x021f8c80
+
+src/Combat/Overlay_23/SetFieldShort64_021f9c48.cpp:
+    complete
+    .text start:0x021f9c48 end:0x021f9c50
+
+src/Combat/Overlay_23/SetFieldShort66_021f9c50.cpp:
+    complete
+    .text start:0x021f9c50 end:0x021f9c58
+
+src/Combat/Overlay_23/SetFieldShort72_021f9c68.cpp:
+    complete
+    .text start:0x021f9c68 end:0x021f9c70
+
+src/Combat/Overlay_23/SetFieldShort74_021f9c70.cpp:
+    complete
+    .text start:0x021f9c70 end:0x021f9c78
+
+src/Combat/Overlay_23/SetFieldShort76_021f9c78.cpp:
+    complete
+    .text start:0x021f9c78 end:0x021f9c80
+
+src/Combat/Overlay_23/SetFieldShort78_021f9c80.cpp:
+    complete
+    .text start:0x021f9c80 end:0x021f9c88
+
+src/Combat/Overlay_23/SetFieldShort80_021f9c88.cpp:
+    complete
+    .text start:0x021f9c88 end:0x021f9c90
+
+src/Combat/Overlay_23/BlankFunction_021fa038.cpp:
+    complete
+    .text start:0x021fa038 end:0x021fa03c
+
+src/Combat/Overlay_23/BlankFunction_021faa58.cpp:
+    complete
+    .text start:0x021faa58 end:0x021faa5c
+
+src/Combat/Overlay_23/BlankFunction_021faa5c.cpp:
+    complete
+    .text start:0x021faa5c end:0x021faa60
+
+src/Combat/Overlay_23/DispatchWithLocalTable_021fa87c.cpp:
+    complete
+    .text start:0x021fa87c end:0x021fa8fc
+
+src/Combat/Overlay_23/FindClearBit_021f6e5c.cpp:
+    complete
+    .text start:0x021f6e5c end:0x021f6e90
+
+src/Combat/Overlay_23/FindFileOrRecord_021fad20.cpp:
+    complete
+    .text start:0x021fad20 end:0x021fad84
+
+src/Combat/Overlay_23/GetField1c_021fa580.cpp:
+    complete
+    .text start:0x021fa580 end:0x021fa588
+
+src/Combat/Overlay_23/GetField1c_021faa50.cpp:
+    complete
+    .text start:0x021faa50 end:0x021faa58
+
+src/Combat/Overlay_23/GetLinkedNodeIfKind6_021f9cb8.cpp:
+    complete
+    .text start:0x021f9cb8 end:0x021f9d14
+
+src/Combat/Overlay_23/InitEvent4_021fa298.cpp:
+    complete
+    .text start:0x021fa298 end:0x021fa2f4
+
+src/Combat/Overlay_23/SetFieldShort82_021f9c90.cpp:
+    complete
+    .text start:0x021f9c90 end:0x021f9c98
+
+src/Combat/Overlay_23/SetFieldShort84_021f9c98.cpp:
+    complete
+    .text start:0x021f9c98 end:0x021f9ca0
+
+src/Combat/Overlay_23/SetFieldShort86_021f9ca0.cpp:
+    complete
+    .text start:0x021f9ca0 end:0x021f9ca8
+
+src/Combat/Overlay_23/SetFieldShort88_021f9ca8.cpp:
+    complete
+    .text start:0x021f9ca8 end:0x021f9cb0
+
+src/Combat/Overlay_23/SetFieldShort90_021f9cb0.cpp:
+    complete
+    .text start:0x021f9cb0 end:0x021f9cb8
+
+src/Combat/Overlay_23/GetField26_021fb224.cpp:
+    complete
+    .text start:0x021fb224 end:0x021fb22c
+
+src/Combat/Overlay_23/GetField3c_021fb234.cpp:
+    complete
+    .text start:0x021fb234 end:0x021fb23c
+
+src/Combat/Overlay_23/GetField42_021fb254.cpp:
+    complete
+    .text start:0x021fb254 end:0x021fb25c
+
+src/Combat/Overlay_23/SetField26_021fb21c.cpp:
+    complete
+    .text start:0x021fb21c end:0x021fb224
+
+src/Combat/Overlay_23/SetField3c_021fb22c.cpp:
+    complete
+    .text start:0x021fb22c end:0x021fb234
+
+src/Combat/Overlay_23/SetField42_021fb24c.cpp:
+    complete
+    .text start:0x021fb24c end:0x021fb254
+
+src/Combat/Overlay_23/SetField4b_021fb2a0.cpp:
+    complete
+    .text start:0x021fb2a0 end:0x021fb2a8
+
+src/Combat/Overlay_23/ClearBufferAndCheckField_021e05e4.cpp:
+    complete
+    .text start:0x021e05e4 end:0x021e0690
+
+src/Combat/Overlay_23/ConfigureBgSub1AndClear_021dcc58.cpp:
+    complete
+    .text start:0x021dcc58 end:0x021dcd18
+
+src/Combat/Overlay_23/FormatAndApplyPreferredField_021e0244.cpp:
+    complete
+    .text start:0x021e0244 end:0x021e0328
+
+src/Combat/Overlay_23/ParseCodeLetter_021db564.cpp:
+    complete
+    .text start:0x021db564 end:0x021db634
+
+src/Combat/Overlay_23/RefreshAndDispatch32_021dd974.cpp:
+    complete
+    .text start:0x021dd974 end:0x021dda04
+
+src/Combat/Overlay_23/SetupTag021d9c7c.cpp:
+    complete
+    .text start:0x021d9c7c end:0x021d9d34
+
+src/Combat/Overlay_23/SetupTag021d9da4.cpp:
+    complete
+    .text start:0x021d9da4 end:0x021d9e60
+
+src/Combat/Overlay_23/UpdateEntryAndReset_021db45c.cpp:
+    complete
+    .text start:0x021db45c end:0x021db4e4
+
+src/Combat/Overlay_23/BuildAndDispatchVariantMsg_021e11ec.cpp:
+    complete
+    .text start:0x021e11ec end:0x021e12cc
+
+src/Combat/Overlay_23/CleanupAndReinitCombatState_021e2f38.cpp:
+    complete
+    .text start:0x021e2f38 end:0x021e3030
+
+src/Combat/Overlay_23/ConvertModelDataToFloats_021dbc58.cpp:
+    complete
+    .text start:0x021dbc58 end:0x021dbd10
+
+src/Combat/Overlay_23/CopyAndClampShorts_021e5fdc.cpp:
+    complete
+    .text start:0x021e5fdc end:0x021e6088
+
+src/Combat/Overlay_23/DispatchEntryByIndex_021e7bc4.cpp:
+    complete
+    .text start:0x021e7bc4 end:0x021e7c58
+
+src/Combat/Overlay_23/DispatchEntryByIndex_021e7c58.cpp:
+    complete
+    .text start:0x021e7c58 end:0x021e7cec
+
+src/Combat/Overlay_23/DrawGrid2x2Cells_021e2030.cpp:
+    complete
+    .text start:0x021e2030 end:0x021e20c0
+
+src/Combat/Overlay_23/InitBuffersAndConfigureEntry_021e761c.cpp:
+    complete
+    .text start:0x021e761c end:0x021e76a8
+
+src/Combat/Overlay_23/InitTenAllocatorsAndClearFields_021e4e8c.cpp:
+    complete
+    .text start:0x021e4e8c end:0x021e4f18
+
+src/Combat/Overlay_23/RefreshEntryStatusFlags_021e1474.cpp:
+    complete
+    .text start:0x021e1474 end:0x021e1518
+
+src/Combat/Overlay_23/ResetAndApplyLoop_021e7eb0.cpp:
+    complete
+    .text start:0x021e7eb0 end:0x021e7f68
+
+src/Combat/Overlay_23/ResetPendingSlotsAndFlags_021dcdf4.cpp:
+    complete
+    .text start:0x021dcdf4 end:0x021dce88
+
+src/Combat/Overlay_23/SetPackedFields_021e24b0.cpp:
+    complete
+    .text start:0x021e24b0 end:0x021e2550
+
+src/Combat/Overlay_23/UpdateEntryFromDoublePtr_021e6b04.cpp:
+    complete
+    .text start:0x021e6b04 end:0x021e6b8c
+
+src/Combat/Overlay_23/InitAndAppendTextB_021e0eb8.cpp:
+    complete
+    .text start:0x021e0eb8 end:0x021e0f44
+
+src/Combat/Overlay_23/CopyEntryFields_021d8cb4.cpp:
+    complete
+    .text start:0x021d8cb4 end:0x021d8ddc
+
+src/Combat/Overlay_23/CountCombatantsByStatus1_021ea46c.cpp:
+    complete
+    .text start:0x021ea46c end:0x021ea51c
+
+src/Combat/Overlay_23/CountCombatantsByStatus2_021ea51c.cpp:
+    complete
+    .text start:0x021ea51c end:0x021ea5a4
+
+src/Combat/Overlay_23/AddOffset32_021fa598.cpp:
+    complete
+    .text start:0x021fa598 end:0x021fa5a0
+
+src/Combat/Overlay_23/AppendManagerFieldToBuffer_021e915c.cpp:
+    complete
+    .text start:0x021e915c end:0x021e9190
+
+src/Combat/Overlay_23/AreAllListedCombatantsFlagged_021ed92c.cpp:
+    complete
+    .text start:0x021ed92c end:0x021ed988
+
+src/Combat/Overlay_23/BlankFunction_021fc46c.cpp:
+    complete
+    .text start:0x021fc46c end:0x021fc470
+
+src/Combat/Overlay_23/DecodePacked021dbb34.cpp:
+    complete
+    .text start:0x021dbb34 end:0x021dbc58
+
+src/Combat/Overlay_23/FormatAndDispatchValue_021db3c0.cpp:
+    complete
+    .text start:0x021db3c0 end:0x021db45c
+
+src/Combat/Overlay_23/BuildChain_021e15b4.cpp:
+    complete
+    .text start:0x021e15b4 end:0x021e1604
+
+src/Combat/Overlay_23/BuildChain_021e1b0c.cpp:
+    complete
+    .text start:0x021e1b0c end:0x021e1b5c
+
+src/Combat/Overlay_23/BuildChain_021e1b5c.cpp:
+    complete
+    .text start:0x021e1b5c end:0x021e1bac
+
+src/Combat/Overlay_23/CallIfFieldNot0Or3_021d8c60.cpp:
+    complete
+    .text start:0x021d8c60 end:0x021d8c94
+
+src/Combat/Overlay_23/CallIfFlagValidAndFieldSet_021e3184.cpp:
+    complete
+    .text start:0x021e3184 end:0x021e31b0
+
+src/Combat/Overlay_23/ClearShortAndTwoBytes_021e71a0.cpp:
+    complete
+    .text start:0x021e71a0 end:0x021e71b4
+
+src/Combat/Overlay_23/CopyByteFieldToNextAndSet_021e33a0_021e33a0.cpp:
+    complete
+    .text start:0x021e33a0 end:0x021e33b4
+
+src/Combat/Overlay_23/CopyIntAndByte_021dbb20.cpp:
+    complete
+    .text start:0x021dbb20 end:0x021dbb34
+
+src/Combat/Overlay_23/DispatchIfFlagsOrByteSet_021ed014.cpp:
+    complete
+    .text start:0x021ed014 end:0x021ed064
+
+src/Combat/Overlay_23/GetByteViaFieldIndirectOffset_021e4250_021e4250.cpp:
+    complete
+    .text start:0x021e4250 end:0x021e4264
+
+src/Combat/Overlay_23/GetTableEntry138_021eea98.cpp:
+    complete
+    .text start:0x021eea98 end:0x021eeaac
+
+src/Combat/Overlay_23/ResetIntAndShortPair_021dad78.cpp:
+    complete
+    .text start:0x021dad78 end:0x021dad8c
+
+src/Combat/Overlay_23/ResetPendingSlotsIfActive_021dca88.cpp:
+    complete
+    .text start:0x021dca88 end:0x021dcae0
+
+src/Combat/Overlay_23/RunChainIfFlagSet_021e3134.cpp:
+    complete
+    .text start:0x021e3134 end:0x021e3184
+
+src/Combat/Overlay_23/SetBattleBlockBit_021e92f0.cpp:
+    complete
+    .text start:0x021e92f0 end:0x021e934c
+
+src/Combat/Overlay_23/SetFieldFromPercentOver232_021e9a10.cpp:
+    complete
+    .text start:0x021e9a10 end:0x021e9a44
+
+src/Combat/Overlay_23/SetFieldFromPercentOver448_021e99dc.cpp:
+    complete
+    .text start:0x021e99dc end:0x021e9a10
+
+src/Combat/Overlay_23/SetFieldFromPercentOver944_021e9a44.cpp:
+    complete
+    .text start:0x021e9a44 end:0x021e9a78
+
+src/Combat/Overlay_23/SetFlagt_021e338c_021e338c.cpp:
+    complete
+    .text start:0x021e338c end:0x021e33a0
+
+src/Combat/Overlay_23/TestBattleBlockBit_021ed6cc.cpp:
+    complete
+    .text start:0x021ed6cc end:0x021ed724
+
+src/Combat/Overlay_23/DispatchNodeVTableCallsIfState15_021f64a8.cpp:
+    complete
+    .text start:0x021f64a8 end:0x021f6504
+
+src/Combat/Overlay_23/FindNodeByShort6_021f6880.cpp:
+    complete
+    .text start:0x021f6880 end:0x021f68b8
+
+src/Combat/Overlay_23/GetField4_021f6bb8.cpp:
+    complete
+    .text start:0x021f6bb8 end:0x021f6bc0
+
+src/Combat/Overlay_23/GetNodeIfType7_021f6524.cpp:
+    complete
+    .text start:0x021f6524 end:0x021f6558
+
+src/Combat/Overlay_23/NoOp_021f7440.cpp:
+    complete
+    .text start:0x021f7440 end:0x021f7444
+
+src/Combat/Overlay_23/NoOp_021f744c.cpp:
+    complete
+    .text start:0x021f744c end:0x021f7450
+
+src/Combat/Overlay_23/NoOp_021f7458.cpp:
+    complete
+    .text start:0x021f7458 end:0x021f745c
+
+src/Combat/Overlay_23/ReleaseHandleAndClearFields_021f5410.cpp:
+    complete
+    .text start:0x021f5410 end:0x021f5448
+
+src/Combat/Overlay_23/ResetElemEntryAtField20_021f8120.cpp:
+    complete
+    .text start:0x021f8120 end:0x021f8130
+
+src/Combat/Overlay_23/ResetObjectAtField20_021f8130.cpp:
+    complete
+    .text start:0x021f8130 end:0x021f8140
+
+src/Combat/Overlay_23/ReturnZero_021f7444.cpp:
+    complete
+    .text start:0x021f7444 end:0x021f744c
+
+src/Combat/Overlay_23/ReturnZero_021f7450.cpp:
+    complete
+    .text start:0x021f7450 end:0x021f7458
+
+src/Combat/Overlay_23/SetBitsInArray021f6bec.cpp:
+    complete
+    .text start:0x021f6bec end:0x021f6c3c
+
+src/Combat/Overlay_23/SetFieldForListedCombatants021f50fc.cpp:
+    complete
+    .text start:0x021f50fc end:0x021f5150
+
+src/Combat/Overlay_23/SetShortsAndDispatch_021f7d14.cpp:
+    complete
+    .text start:0x021f7d14 end:0x021f7d48
+
+src/Combat/Overlay_23/Unlink_021f6d9c.cpp:
+    complete
+    .text start:0x021f6d9c end:0x021f6dd8
+
+src/Combat/Overlay_23/ClearFields0To3_021f9eb4.cpp:
+    complete
+    .text start:0x021f9eb4 end:0x021f9ec8
+
+src/Combat/Overlay_23/CopyFields28And2c_021fb1c8.cpp:
+    complete
+    .text start:0x021fb1c8 end:0x021fb1dc
+
+src/Combat/Overlay_23/GetField1c_021fc1e4.cpp:
+    complete
+    .text start:0x021fc1e4 end:0x021fc1ec
+
+src/Combat/Overlay_23/GetField26_021fb52c.cpp:
+    complete
+    .text start:0x021fb52c end:0x021fb534
+
+src/Combat/Overlay_23/GetFieldA4_021fb8d4.cpp:
+    complete
+    .text start:0x021fb8d4 end:0x021fb8dc
+
+src/Combat/Overlay_23/GetFieldPtr24_021fad18.cpp:
+    complete
+    .text start:0x021fad18 end:0x021fad20
+
+src/Combat/Overlay_23/GetFieldPtr34_021fc1ec.cpp:
+    complete
+    .text start:0x021fc1ec end:0x021fc1f4
+
+src/Combat/Overlay_23/GetField_021fbb40_021fbb40.cpp:
+    complete
+    .text start:0x021fbb40 end:0x021fbb48
+
+src/Combat/Overlay_23/InitField1cOrRegisterCallback_021fbef0.cpp:
+    complete
+    .text start:0x021fbef0 end:0x021fbf4c
+
+src/Combat/Overlay_23/NoOp_021fbc20.cpp:
+    complete
+    .text start:0x021fbc20 end:0x021fbc24
+
+src/Combat/Overlay_23/NoOp_021fbcf8.cpp:
+    complete
+    .text start:0x021fbcf8 end:0x021fbcfc
+
+src/Combat/Overlay_23/NoOp_021fbcfc.cpp:
+    complete
+    .text start:0x021fbcfc end:0x021fbd00
+
+src/Combat/Overlay_23/OrGlobalFlag40Trampoline_021fbb58.cpp:
+    complete
+    .text start:0x021fbb58 end:0x021fbb64
+
+src/Combat/Overlay_23/ReturnConst1_021fbb30.cpp:
+    complete
+    .text start:0x021fbb30 end:0x021fbb38
+
+src/Combat/Overlay_23/ReturnConst2_021fbb38.cpp:
+    complete
+    .text start:0x021fbb38 end:0x021fbb40
+
+src/Combat/Overlay_23/SetByte_021fba78_021fba78.cpp:
+    complete
+    .text start:0x021fba78 end:0x021fba80
+
+src/Combat/Overlay_23/SetCellIfInBounds_021f9b30.cpp:
+    complete
+    .text start:0x021f9b30 end:0x021f9b6c
+
+src/Combat/Overlay_23/SetCombatModeFromCaseZero_021fbb48.cpp:
+    complete
+    .text start:0x021fbb48 end:0x021fbb58
+
+src/Combat/Overlay_23/SetFieldB1_021fba70.cpp:
+    complete
+    .text start:0x021fba70 end:0x021fba78
+
+src/Combat/Overlay_23/SetField_021fbcb8_021fbcb8.cpp:
+    complete
+    .text start:0x021fbcb8 end:0x021fbcc0
+
+src/Combat/Overlay_23/BlankFunction_021fc514.cpp:
+    complete
+    .text start:0x021fc514 end:0x021fc518
+
+src/Combat/Overlay_23/BlankFunction_021fd390.cpp:
+    complete
+    .text start:0x021fd390 end:0x021fd394
+
+src/Combat/Overlay_23/GetField1c_021fc3f8.cpp:
+    complete
+    .text start:0x021fc3f8 end:0x021fc400
+
+src/Combat/Overlay_23/GetField2a_021fd464.cpp:
+    complete
+    .text start:0x021fd464 end:0x021fd46c
+
+src/Combat/Overlay_23/GetField2c_021fc504.cpp:
+    complete
+    .text start:0x021fc504 end:0x021fc50c
+
+src/Combat/Overlay_23/GetFieldPtr20_021fc400.cpp:
+    complete
+    .text start:0x021fc400 end:0x021fc408
+
+src/Combat/Overlay_23/InitAndDispatch_021fd2b8.cpp:
+    complete
+    .text start:0x021fd2b8 end:0x021fd2f8
+
+src/Combat/Overlay_23/ReinitEntriesAndAngle021fc6cc.cpp:
+    complete
+    .text start:0x021fc6cc end:0x021fc71c
+
+src/Combat/Overlay_23/SetField2e_021fc50c.cpp:
+    complete
+    .text start:0x021fc50c end:0x021fc514
+
+src/Combat/Overlay_23/AddOffset20_021fbdec.cpp:
+    complete
+    .text start:0x021fbdec end:0x021fbdf4
+
+src/Combat/Overlay_23/AdjustAngleField_021dac40.cpp:
+    complete
+    .text start:0x021dac40 end:0x021dacd4
+
+src/Combat/Overlay_23/AppendEntry_021e1410.cpp:
+    complete
+    .text start:0x021e1410 end:0x021e1474
+
+src/Combat/Overlay_23/AppendManagerFieldToBuffer_021e9244.cpp:
+    complete
+    .text start:0x021e9244 end:0x021e9278
+
+src/Combat/Overlay_23/ApplyAndClearListEntry_021e0b9c.cpp:
+    complete
+    .text start:0x021e0b9c end:0x021e0c38
+
+src/Combat/Overlay_23/ApplyScaleAndDispatch_021f8140.cpp:
+    complete
+    .text start:0x021f8140 end:0x021f8190
+
+src/Combat/Overlay_23/ApplyShortPairToEntry_021e4358.cpp:
+    complete
+    .text start:0x021e4358 end:0x021e43f0
+
+src/Combat/Overlay_23/BlankFunction_021e6194.cpp:
+    complete
+    .text start:0x021e6194 end:0x021e6198
+
+src/Combat/Overlay_23/BlankFunction_021fbaac.cpp:
+    complete
+    .text start:0x021fbaac end:0x021fbab0
+
+src/Combat/Overlay_23/BlankFunction_021fd008.cpp:
+    complete
+    .text start:0x021fd008 end:0x021fd00c
+
+src/Combat/Overlay_23/BlankFunction_021fd234.cpp:
+    complete
+    .text start:0x021fd234 end:0x021fd238
+
+src/Combat/Overlay_23/BlankFunction_021fd50c.cpp:
+    complete
+    .text start:0x021fd50c end:0x021fd510
+
+src/Combat/Overlay_23/BuildIndexTable_021eb000.cpp:
+    complete
+    .text start:0x021eb000 end:0x021eb080
+
+src/Combat/Overlay_23/BuildOrResetEntryList_021e1194.cpp:
+    complete
+    .text start:0x021e1194 end:0x021e11ec
+
+src/Combat/Overlay_23/CallVTableFnAt20Loop_021f69ec.cpp:
+    complete
+    .text start:0x021f69ec end:0x021f6a18
+
+src/Combat/Overlay_23/CallVTableFnAt4Loop_021f698c.cpp:
+    complete
+    .text start:0x021f698c end:0x021f69b8
+
+src/Combat/Overlay_23/CallVTableFnAt8Loop_021f69bc.cpp:
+    complete
+    .text start:0x021f69bc end:0x021f69e8
+
+src/Combat/Overlay_23/CheckAnyElementFlagged_021f4438.cpp:
+    complete
+    .text start:0x021f4438 end:0x021f44d0
+
+src/Combat/Overlay_23/CheckFlagOrActiveElement_021e6de4.cpp:
+    complete
+    .text start:0x021e6de4 end:0x021e6e20
+
+src/Combat/Overlay_23/ClearAndDispatchEntry_021ecdfc.cpp:
+    complete
+    .text start:0x021ecdfc end:0x021ece9c
+
+src/Combat/Overlay_23/ClearElementFlagBits_021e3d3c.cpp:
+    complete
+    .text start:0x021e3d3c end:0x021e3db0
+
+src/Combat/Overlay_23/ClearFieldTableAndDispatch_021e61a0.cpp:
+    complete
+    .text start:0x021e61a0 end:0x021e61f4
+
+src/Combat/Overlay_23/ClearFieldsAt32_021f9b1c.cpp:
+    complete
+    .text start:0x021f9b1c end:0x021f9b30
+
+src/Combat/Overlay_23/ClearObjBaseFields_021f6ed8.cpp:
+    complete
+    .text start:0x021f6ed8 end:0x021f6f08
+
+src/Combat/Overlay_23/ClearOwnerAndResetList_021f7984.cpp:
+    complete
+    .text start:0x021f7984 end:0x021f79e4
+
+src/Combat/Overlay_23/ClearShortAt2_021e6158.cpp:
+    complete
+    .text start:0x021e6158 end:0x021e616c
+
+src/Combat/Overlay_23/ComputeAreaPlusOffset_021f9bc8.cpp:
+    complete
+    .text start:0x021f9bc8 end:0x021f9bdc
+
+src/Combat/Overlay_23/ComputeScaleRatio_021f44d0.cpp:
+    complete
+    .text start:0x021f44d0 end:0x021f454c
+
+src/Combat/Overlay_23/ComputeScaledVec_021f81f4.cpp:
+    complete
+    .text start:0x021f81f4 end:0x021f8240
+
+src/Combat/Overlay_23/CopyBlockAt36_021f8cc0.cpp:
+    complete
+    .text start:0x021f8cc0 end:0x021f8cd4
+
+src/Combat/Overlay_23/CopyBlockAt60_021f7174.cpp:
+    complete
+    .text start:0x021f7174 end:0x021f7188
+
+src/Combat/Overlay_23/CopyBlockAt80_021e613c.cpp:
+    complete
+    .text start:0x021e613c end:0x021e6150
+
+src/Combat/Overlay_23/CopyHeaderAndFormatBuf_021f229c.cpp:
+    complete
+    .text start:0x021f229c end:0x021f2304
+
+src/Combat/Overlay_23/CountCombatantsByCondition_021ea3ec.cpp:
+    complete
+    .text start:0x021ea3ec end:0x021ea46c
+
+src/Combat/Overlay_23/CountCombatantsWithNonPositiveHP_021ea630.cpp:
+    complete
+    .text start:0x021ea630 end:0x021ea6bc
+
+src/Combat/Overlay_23/CountCombatantsWithPositiveHP_021ea5a4.cpp:
+    complete
+    .text start:0x021ea5a4 end:0x021ea630
+
+src/Combat/Overlay_23/DispatchAndResetSlots_021dc9e8.cpp:
+    complete
+    .text start:0x021dc9e8 end:0x021dca88
+
+src/Combat/Overlay_23/DispatchByField431_021eb43c.cpp:
+    complete
+    .text start:0x021eb43c end:0x021eb4b8
+
+src/Combat/Overlay_23/DispatchByStateField_021e3030.cpp:
+    complete
+    .text start:0x021e3030 end:0x021e3084
+
+src/Combat/Overlay_23/DispatchIfBothFound_021f7290.cpp:
+    complete
+    .text start:0x021f7290 end:0x021f7318
+
+src/Combat/Overlay_23/DispatchIfEntryFound_021f7a08.cpp:
+    complete
+    .text start:0x021f7a08 end:0x021f7aac
+
+src/Combat/Overlay_23/DispatchIfEntryFound_021fa5a0.cpp:
+    complete
+    .text start:0x021fa5a0 end:0x021fa644
+
+src/Combat/Overlay_23/DispatchIfFieldPresent_021f809c.cpp:
+    complete
+    .text start:0x021f809c end:0x021f8120
+
+src/Combat/Overlay_23/DispatchVTableFnAtD8_021f63f8.cpp:
+    complete
+    .text start:0x021f63f8 end:0x021f6444
+
+src/Combat/Overlay_23/DispatchWithLocalTable_021f7550.cpp:
+    complete
+    .text start:0x021f7550 end:0x021f75d0
+
+src/Combat/Overlay_23/DispatchWithLocalTable_021fb680.cpp:
+    complete
+    .text start:0x021fb680 end:0x021fb700
+
+src/Combat/Overlay_23/DispatchWithLocalTable_021fbab0.cpp:
+    complete
+    .text start:0x021fbab0 end:0x021fbb30
+
+src/Combat/Overlay_23/DispatchWithLocalTable_021fbe70.cpp:
+    complete
+    .text start:0x021fbe70 end:0x021fbef0
+
+src/Combat/Overlay_23/DispatchWithLocalTable_021fc238.cpp:
+    complete
+    .text start:0x021fc238 end:0x021fc2b8
+
+src/Combat/Overlay_23/DispatchWithLocalTable_021fce38.cpp:
+    complete
+    .text start:0x021fce38 end:0x021fceb8
+
+src/Combat/Overlay_23/DispatchWithLocalTable_021fd238.cpp:
+    complete
+    .text start:0x021fd238 end:0x021fd2b8
+
+src/Combat/Overlay_23/FindEntryByKey_021e2450_021e2b5c.cpp:
+    complete
+    .text start:0x021e2b5c end:0x021e2bdc
+
+src/Combat/Overlay_23/FindEntryByShortKey_021db4e4.cpp:
+    complete
+    .text start:0x021db4e4 end:0x021db544
+
+src/Combat/Overlay_23/FindEntryByValue_021f5534.cpp:
+    complete
+    .text start:0x021f5534 end:0x021f5578
+
+src/Combat/Overlay_23/GetField1c_021fd318.cpp:
+    complete
+    .text start:0x021fd318 end:0x021fd320
+
+src/Combat/Overlay_23/GetField2a_021fc4fc.cpp:
+    complete
+    .text start:0x021fc4fc end:0x021fc504
+
+src/Combat/Overlay_23/GetFieldShort4_021f6f10.cpp:
+    complete
+    .text start:0x021f6f10 end:0x021f6f18
+
+src/Combat/Overlay_23/HandleElementSpecial789_021e6a14.cpp:
+    complete
+    .text start:0x021e6a14 end:0x021e6a90
+
+src/Combat/Overlay_23/HandleFlag80AndUpdateEntry_021ecf78.cpp:
+    complete
+    .text start:0x021ecf78 end:0x021ed014
+
+src/Combat/Overlay_23/InitCaptureRegsOnce_021d8ea0.cpp:
+    complete
+    .text start:0x021d8ea0 end:0x021d8f2c
+
+src/Combat/Overlay_23/InitEntryList_021e13b0.cpp:
+    complete
+    .text start:0x021e13b0 end:0x021e1410
+
+src/Combat/Overlay_23/InitEvent10_021fa760.cpp:
+    complete
+    .text start:0x021fa760 end:0x021fa7d4
+
+src/Combat/Overlay_23/InitEvent13_021fc408.cpp:
+    complete
+    .text start:0x021fc408 end:0x021fc46c
+
+src/Combat/Overlay_23/InitFieldArrayFromLookup_021d8ddc.cpp:
+    complete
+    .text start:0x021d8ddc end:0x021d8e4c
+
+src/Combat/Overlay_23/InitObjAndSetShorts_021f6788.cpp:
+    complete
+    .text start:0x021f6788 end:0x021f67ac
+
+src/Combat/Overlay_23/InitObjFields_021fd320.cpp:
+    complete
+    .text start:0x021fd320 end:0x021fd390
+
+src/Combat/Overlay_23/InitObjFull_021fbe08.cpp:
+    complete
+    .text start:0x021fbe08 end:0x021fbe4c
+
+src/Combat/Overlay_23/InitObjWithSlots_021fbd00.cpp:
+    complete
+    .text start:0x021fbd00 end:0x021fbd90
+
+src/Combat/Overlay_23/InsertSorted_021f6d14.cpp:
+    complete
+    .text start:0x021f6d14 end:0x021f6d9c
+
+src/Combat/Overlay_23/IsPointInsideRect_021fd46c.cpp:
+    complete
+    .text start:0x021fd46c end:0x021fd4f8
+
+src/Combat/Overlay_23/IterateNodesAndDispatch_021f6a1c.cpp:
+    complete
+    .text start:0x021f6a1c end:0x021f6ab8
+
+src/Combat/Overlay_23/LookupChainedShorts_021e2acc.cpp:
+    complete
+    .text start:0x021e2acc end:0x021e2b5c
+
+src/Combat/Overlay_23/LookupEntryByKey_021e2418.cpp:
+    complete
+    .text start:0x021e2418 end:0x021e2450
+
+src/Combat/Overlay_23/RefreshCounterAndAdvanceState_021e3f34.cpp:
+    complete
+    .text start:0x021e3f34 end:0x021e3fc0
+
+src/Combat/Overlay_23/RefreshElemBuffer_021ed44c.cpp:
+    complete
+    .text start:0x021ed44c end:0x021ed4b8
+
+src/Combat/Overlay_23/RefreshTilemapPalette_021e7b34.cpp:
+    complete
+    .text start:0x021e7b34 end:0x021e7bc4
+
+src/Combat/Overlay_23/RemoveNodeFromList_021f67ec.cpp:
+    complete
+    .text start:0x021f67ec end:0x021f6844
+
+src/Combat/Overlay_23/ResetCombatEntry_021d8af8.cpp:
+    complete
+    .text start:0x021d8af8 end:0x021d8b6c
+
+src/Combat/Overlay_23/ResetFogAndSelectedEntryAngle_021fcc68.cpp:
+    complete
+    .text start:0x021fcc68 end:0x021fccec
+
+src/Combat/Overlay_23/ResetFogAndSelectedEntryAngle_021fccec.cpp:
+    complete
+    .text start:0x021fccec end:0x021fcd70
+
+src/Combat/Overlay_23/ReturnZero_021f7438.cpp:
+    complete
+    .text start:0x021f7438 end:0x021f7440
+
+src/Combat/Overlay_23/ReturnZero_021fbcf0.cpp:
+    complete
+    .text start:0x021fbcf0 end:0x021fbcf8
+
+src/Combat/Overlay_23/SelectAndDispatchPair_021fcd70.cpp:
+    complete
+    .text start:0x021fcd70 end:0x021fcdd4
+
+src/Combat/Overlay_23/SetBitFieldsF4_021f55e8.cpp:
+    complete
+    .text start:0x021f55e8 end:0x021f5680
+
+src/Combat/Overlay_23/SetCaptureRegField730_021dcd18.cpp:
+    complete
+    .text start:0x021dcd18 end:0x021dcd78
+
+src/Combat/Overlay_23/SetEntryFieldsAndRefresh_021e3304.cpp:
+    complete
+    .text start:0x021e3304 end:0x021e338c
+
+src/Combat/Overlay_23/SetEntryFieldsFromShortPair_021e43f0.cpp:
+    complete
+    .text start:0x021e43f0 end:0x021e447c
+
+src/Combat/Overlay_23/SetField22_021fb27c.cpp:
+    complete
+    .text start:0x021fb27c end:0x021fb284
+
+src/Combat/Overlay_23/SetField26_021fb524.cpp:
+    complete
+    .text start:0x021fb524 end:0x021fb52c
+
+src/Combat/Overlay_23/SetField28_021f9ba8.cpp:
+    complete
+    .text start:0x021f9ba8 end:0x021f9bb0
+
+src/Combat/Overlay_23/SetField2a_021f9bb8.cpp:
+    complete
+    .text start:0x021f9bb8 end:0x021f9bc0
+
+src/Combat/Overlay_23/SetField2a_021fd45c.cpp:
+    complete
+    .text start:0x021fd45c end:0x021fd464
+
+src/Combat/Overlay_23/SetField36_021fbcb0.cpp:
+    complete
+    .text start:0x021fbcb0 end:0x021fbcb8
+
+src/Combat/Overlay_23/SetField4_021f6bb0.cpp:
+    complete
+    .text start:0x021f6bb0 end:0x021f6bb8
+
+src/Combat/Overlay_23/SetField4a_021fb2a8.cpp:
+    complete
+    .text start:0x021fb2a8 end:0x021fb2b0
+
+src/Combat/Overlay_23/SetField799_021dced4.cpp:
+    complete
+    .text start:0x021dced4 end:0x021dcedc
+
+src/Combat/Overlay_23/SetFieldA4_021fb8cc.cpp:
+    complete
+    .text start:0x021fb8cc end:0x021fb8d4
+
+src/Combat/Overlay_23/SetFieldFromBlockPercent_021e99a8.cpp:
+    complete
+    .text start:0x021e99a8 end:0x021e99dc
+
+src/Combat/Overlay_23/SetFieldFromCheckField0NonZero_021ea8e8.cpp:
+    complete
+    .text start:0x021ea8e8 end:0x021ea920
+
+src/Combat/Overlay_23/SetFieldsIfBothNonZero_021eb564.cpp:
+    complete
+    .text start:0x021eb564 end:0x021eb578
+
+src/Combat/Overlay_23/SetShortIfFlagSet_021f55b8.cpp:
+    complete
+    .text start:0x021f55b8 end:0x021f55e8
+
+src/Combat/Overlay_23/SetSubEngineModeFlag_021f1818.cpp:
+    complete
+    .text start:0x021f1818 end:0x021f1868
+
+src/Combat/Overlay_23/SetTypeAndClear_021fc1f4.cpp:
+    complete
+    .text start:0x021fc1f4 end:0x021fc228
+
+src/Combat/Overlay_23/SetVariantBitFields_021f57c4.cpp:
+    complete
+    .text start:0x021f57c4 end:0x021f5848
+
+src/Combat/Overlay_23/SnapToTableAndClearFlags_021fb818.cpp:
+    complete
+    .text start:0x021fb818 end:0x021fb878
+
+src/Combat/Overlay_23/SomeFunc_021e2c38.cpp:
+    complete
+    .text start:0x021e2c38 end:0x021e2ca8
+
+src/Combat/Overlay_23/StoreAndDispatchEntry_021e8604.cpp:
+    complete
+    .text start:0x021e8604 end:0x021e868c
+
+src/Combat/Overlay_23/SyncNodeFlagsByShort6_021f88b8.cpp:
+    complete
+    .text start:0x021f88b8 end:0x021f8944
+
+src/Combat/Overlay_23/TailCallClearObj_021e1330.cpp:
+    complete
+    .text start:0x021e1330 end:0x021e133c
+
+src/Combat/Overlay_23/TailCallMaybeInvoke_021f6f80.cpp:
+    complete
+    .text start:0x021f6f80 end:0x021f6f90
+
+src/Combat/Overlay_23/TailCallResetListHeader_021fa588.cpp:
+    complete
+    .text start:0x021fa588 end:0x021fa598
+
+src/Combat/Overlay_23/UpdateBgClearFlag_021dcd90.cpp:
+    complete
+    .text start:0x021dcd90 end:0x021dcdf4
+
+src/Combat/Overlay_23/UpdateCaptureBit_021dfad8.cpp:
+    complete
+    .text start:0x021dfad8 end:0x021dfb4c
+
+src/Combat/Overlay_23/UpdateFieldOrDispatch_021dcae0.cpp:
+    complete
+    .text start:0x021dcae0 end:0x021dcb70
+
+src/Combat/Overlay_23/UpdateFlagsAndByte4e6_021e3e98.cpp:
+    complete
+    .text start:0x021e3e98 end:0x021e3f34
+
+src/Combat/Overlay_23/ClearEntriesAndSetGlobalFlags_021fa7d4.cpp:
+    complete
+    .text start:0x021fa7d4 end:0x021fa854
+
+src/Combat/Overlay_23/ClearEntryFlag8IfPending_021fb364.cpp:
+    complete
+    .text start:0x021fb364 end:0x021fb3c8
+
+src/Combat/Overlay_23/ComputeVecFromNode_021f8b78.cpp:
+    complete
+    .text start:0x021f8b78 end:0x021f8c1c
+
+src/Combat/Overlay_23/CreateAndInitSlot_021fa078.cpp:
+    complete
+    .text start:0x021fa078 end:0x021fa108
+
+src/Combat/Overlay_23/InitField1cOrRegisterZeroPadCallback_021fb700.cpp:
+    complete
+    .text start:0x021fb700 end:0x021fb76c
+
+src/Combat/Overlay_23/InitField1cOrRegisterZeroPadCallback_021fceb8.cpp:
+    complete
+    .text start:0x021fceb8 end:0x021fcf24
+
+src/Combat/Overlay_23/LookupTableEntryForNode_021f6558.cpp:
+    complete
+    .text start:0x021f6558 end:0x021f6590
+
+src/Combat/Overlay_23/TryFormatAndDispatch_021f7010.cpp:
+    complete
+    .text start:0x021f7010 end:0x021f707c
+
+src/Combat/Overlay_23/func_ov023_021f645c.cpp:
+    complete
+    .text start:0x021f645c end:0x021f64a8
+
+src/Combat/Overlay_23/AdvanceCombatState_021ecaa4.cpp:
+    complete
+    .text start:0x021ecaa4 end:0x021ecbbc
+
+src/Combat/Overlay_23/AppendCombatantTag_021e8e34.cpp:
+    complete
+    .text start:0x021e8e34 end:0x021e8ef8
+
+src/Combat/Overlay_23/AppendTagAndStoreEntries_021e853c.cpp:
+    complete
+    .text start:0x021e853c end:0x021e8604
+
+src/Combat/Overlay_23/BuildEntryBuffers_021e6594.cpp:
+    complete
+    .text start:0x021e6594 end:0x021e66ac
+
+src/Combat/Overlay_23/DispatchByField776_021dc488.cpp:
+    complete
+    .text start:0x021dc488 end:0x021dc520
+
+src/Combat/Overlay_23/DispatchCombatantEntry_021e456c.cpp:
+    complete
+    .text start:0x021e456c end:0x021e463c
+
+src/Combat/Overlay_23/FindBestEntry_021e1604.cpp:
+    complete
+    .text start:0x021e1604 end:0x021e170c
+
+src/Combat/Overlay_23/InitAndDispatchEntry_021ed600.cpp:
+    complete
+    .text start:0x021ed600 end:0x021ed6cc
+
+src/Combat/Overlay_23/InitObjAndRegisterListEntry_021fb2b0.cpp:
+    complete
+    .text start:0x021fb2b0 end:0x021fb364
+
+src/Combat/Overlay_23/InitObjWithBitAllocation_021fb534.cpp:
+    complete
+    .text start:0x021fb534 end:0x021fb640
+
+src/Combat/Overlay_23/RemoveMatchingNodesFromList_021f6844.cpp:
+    complete
+    .text start:0x021f6844 end:0x021f6880
+
+src/Combat/Overlay_23/RenderGridCellEntry_021e709c.cpp:
+    complete
+    .text start:0x021e709c end:0x021e71a0
+
+src/Combat/Overlay_23/SetCombatMode_021dd4cc.cpp:
+    complete
+    .text start:0x021dd4cc end:0x021dd59c
+
+src/Combat/Overlay_23/SetupTag021d99a4.cpp:
+    complete
+    .text start:0x021d99a4 end:0x021d9a6c
+
+src/Combat/Overlay_23/func_ov023_021d8a40.cpp:
+    complete
+    .text start:0x021d8a40 end:0x021d8af8
+
+src/Combat/Overlay_23/func_ov023_021d8e4c.cpp:
+    complete
+    .text start:0x021d8e4c end:0x021d8ea0
+
+src/Combat/Overlay_23/func_ov023_021da100.cpp:
+    complete
+    .text start:0x021da100 end:0x021da1dc
+
+src/Combat/Overlay_23/func_ov023_021db314.cpp:
+    complete
+    .text start:0x021db314 end:0x021db3c0
+
+src/Combat/Overlay_23/func_ov023_021dcba4.cpp:
+    complete
+    .text start:0x021dcba4 end:0x021dcc58
+
+src/Combat/Overlay_23/func_ov023_021dd344.cpp:
+    complete
+    .text start:0x021dd344 end:0x021dd404
+
+src/Combat/Overlay_23/func_ov023_021dda04.cpp:
+    complete
+    .text start:0x021dda04 end:0x021ddae4
+
+src/Combat/Overlay_23/func_ov023_021ddae4.cpp:
+    complete
+    .text start:0x021ddae4 end:0x021ddbb8
+
+src/Combat/Overlay_23/func_ov023_021e0328.cpp:
+    complete
+    .text start:0x021e0328 end:0x021e0414
+
+src/Combat/Overlay_23/func_ov023_021e0414.cpp:
+    complete
+    .text start:0x021e0414 end:0x021e04e8
+
+src/Combat/Overlay_23/func_ov023_021e170c.cpp:
+    complete
+    .text start:0x021e170c end:0x021e1814
+
+src/Combat/Overlay_23/func_ov023_021e29d0.cpp:
+    complete
+    .text start:0x021e29d0 end:0x021e2acc
+
+src/Combat/Overlay_23/func_ov023_021e3084.cpp:
+    complete
+    .text start:0x021e3084 end:0x021e3134
+
+src/Combat/Overlay_23/func_ov023_021e3db0.cpp:
+    complete
+    .text start:0x021e3db0 end:0x021e3e98
+
+src/Combat/Overlay_23/func_ov023_021e4264.cpp:
+    complete
+    .text start:0x021e4264 end:0x021e4358
+
+src/Combat/Overlay_23/func_ov023_021e447c.cpp:
+    complete
+    .text start:0x021e447c end:0x021e456c
+
+src/Combat/Overlay_23/func_ov023_021e8f28.cpp:
+    complete
+    .text start:0x021e8f28 end:0x021e8fe8
+
+src/Combat/Overlay_23/func_ov023_021e9278.cpp:
+    complete
+    .text start:0x021e9278 end:0x021e92f0
+
+src/Combat/Overlay_23/func_ov023_021eaa00.cpp:
+    complete
+    .text start:0x021eaa00 end:0x021eaae8
+
+src/Combat/Overlay_23/func_ov023_021eaea0.cpp:
+    complete
+    .text start:0x021eaea0 end:0x021eaf50
+
+src/Combat/Overlay_23/func_ov023_021eaf50.cpp:
+    complete
+    .text start:0x021eaf50 end:0x021eb000
+
+src/Combat/Overlay_23/func_ov023_021eb080.cpp:
+    complete
+    .text start:0x021eb080 end:0x021eb138
+
+src/Combat/Overlay_23/func_ov023_021ece9c.cpp:
+    complete
+    .text start:0x021ece9c end:0x021ecf78
+
+src/Combat/Overlay_23/func_ov023_021ed194.cpp:
+    complete
+    .text start:0x021ed194 end:0x021ed254
+
+src/Combat/Overlay_23/func_ov023_021ed254.cpp:
+    complete
+    .text start:0x021ed254 end:0x021ed354
+
+src/Combat/Overlay_23/func_ov023_021ed354.cpp:
+    complete
+    .text start:0x021ed354 end:0x021ed44c
+
+src/Combat/Overlay_23/func_ov023_021ed724.cpp:
+    complete
+    .text start:0x021ed724 end:0x021ed7e0
+
+src/Combat/Overlay_23/func_ov023_021f3fbc.cpp:
+    complete
+    .text start:0x021f3fbc end:0x021f4098
+
+src/Combat/Overlay_23/func_ov023_021f5340.cpp:
+    complete
+    .text start:0x021f5340 end:0x021f5410
+
+src/Combat/Overlay_23/func_ov023_021f5680.cpp:
+    complete
+    .text start:0x021f5680 end:0x021f5788
+
+src/Combat/Overlay_23/func_ov023_021f5a1c.cpp:
+    complete
+    .text start:0x021f5a1c end:0x021f5ad8
+
+src/Combat/Overlay_23/func_ov023_021f5cd8.cpp:
+    complete
+    .text start:0x021f5cd8 end:0x021f5d58
+
+src/Combat/Overlay_23/func_ov023_021f707c.cpp:
+    complete
+    .text start:0x021f707c end:0x021f7128
+
+src/Combat/Overlay_23/func_ov023_021f71a8.cpp:
+    complete
+    .text start:0x021f71a8 end:0x021f7290
+
+src/Combat/Overlay_23/func_ov023_021f745c.cpp:
+    complete
+    .text start:0x021f745c end:0x021f7550
+
+src/Combat/Overlay_23/func_ov023_021f75d0.cpp:
+    complete
+    .text start:0x021f75d0 end:0x021f7688
+
+src/Combat/Overlay_23/func_ov023_021f7784.cpp:
+    complete
+    .text start:0x021f7784 end:0x021f7864
+
+src/Combat/Overlay_23/func_ov023_021f78a4.cpp:
+    complete
+    .text start:0x021f78a4 end:0x021f7984
+
+src/Combat/Overlay_23/func_ov023_021f7aac.cpp:
+    complete
+    .text start:0x021f7aac end:0x021f7b98
+
+src/Combat/Overlay_23/func_ov023_021f89f4.cpp:
+    complete
+    .text start:0x021f89f4 end:0x021f8ae8
+
+src/Combat/Overlay_23/func_ov023_021f9ec8.cpp:
+    complete
+    .text start:0x021f9ec8 end:0x021f9f78
+
+src/Combat/Overlay_23/func_ov023_021fa4c8.cpp:
+    complete
+    .text start:0x021fa4c8 end:0x021fa580
+
+src/Combat/Overlay_23/func_ov023_021fa9a4.cpp:
+    complete
+    .text start:0x021fa9a4 end:0x021faa50
+
+src/Combat/Overlay_23/func_ov023_021faa60.cpp:
+    complete
+    .text start:0x021faa60 end:0x021fab48
+
+src/Combat/Overlay_23/func_ov023_021fb3c8.cpp:
+    complete
+    .text start:0x021fb3c8 end:0x021fb498
+
+src/Combat/Overlay_23/func_ov023_021fb76c.cpp:
+    complete
+    .text start:0x021fb76c end:0x021fb818
+
+src/Combat/Overlay_23/func_ov023_021fb8dc.cpp:
+    complete
+    .text start:0x021fb8dc end:0x021fb9c4
+
+src/Combat/Overlay_23/func_ov023_021fb9c4.cpp:
+    complete
+    .text start:0x021fb9c4 end:0x021fba70
+
+src/Combat/Overlay_23/func_ov023_021fbb64.cpp:
+    complete
+    .text start:0x021fbb64 end:0x021fbc20
+
+src/Combat/Overlay_23/func_ov023_021fc30c.cpp:
+    complete
+    .text start:0x021fc30c end:0x021fc3f8
+
+src/Combat/Overlay_23/func_ov023_021fc71c.cpp:
+    complete
+    .text start:0x021fc71c end:0x021fc7c8
+
+src/Combat/Overlay_23/func_ov023_021fcf24.cpp:
+    complete
+    .text start:0x021fcf24 end:0x021fcfd0
+
+src/Combat/Overlay_23/func_ov023_021fd03c.cpp:
+    complete
+    .text start:0x021fd03c end:0x021fd120
+
+src/Combat/Overlay_23/func_ov023_021fd120.cpp:
+    complete
+    .text start:0x021fd120 end:0x021fd1e0
+
+src/Combat/Overlay_23/CheckStateFlagsAndDispatch_021f4fc8.cpp:
+    complete
+    .text start:0x021f4fc8 end:0x021f50fc
+
+src/Combat/Overlay_23/DecryptAndRunBufferedScript_021f5d58.cpp:
+    complete
+    .text start:0x021f5d58 end:0x021f5e70
+
+src/Combat/Overlay_23/DestroySlotAllocatorsAndDispatch_021e7340.cpp:
+    complete
+    .text start:0x021e7340 end:0x021e7404
+
+src/Combat/Overlay_23/DispatchBufferedScriptsByTag_021f5b9c.cpp:
+    complete
+    .text start:0x021f5b9c end:0x021f5cd8
+
+src/Combat/Overlay_23/DispatchByFlag2_021f7ca0.cpp:
+    complete
+    .text start:0x021f7ca0 end:0x021f7d14
+
+src/Combat/Overlay_23/DispatchListEntryCodes_021e0a90.cpp:
+    complete
+    .text start:0x021e0a90 end:0x021e0b54
+
+src/Combat/Overlay_23/DispatchListThenCheck_021f68dc.cpp:
+    complete
+    .text start:0x021f68dc end:0x021f6984
+
+src/Combat/Overlay_23/InitEntryStateAndDispatchHandlers_021ed064.cpp:
+    complete
+    .text start:0x021ed064 end:0x021ed194
+
+src/Combat/Overlay_23/InitEvent7WithBuffer_021f8cf4.cpp:
+    complete
+    .text start:0x021f8cf4 end:0x021f8e1c
+
+src/Combat/Overlay_23/IsPointInScaledRect_021f8970.cpp:
+    complete
+    .text start:0x021f8970 end:0x021f89f4
+
+src/Combat/Overlay_23/ResetCombatOverlayState_021eb138.cpp:
+    complete
+    .text start:0x021eb138 end:0x021eb26c
+
+src/Combat/Overlay_23/TeardownStateAndAllocators_021dc354.cpp:
+    complete
+    .text start:0x021dc354 end:0x021dc488
+
+src/Combat/Overlay_23/func_ov023_021d90d0.cpp:
+    complete
+    .text start:0x021d90d0 end:0x021d921c
+
+src/Combat/Overlay_23/func_ov023_021dab5c.cpp:
+    complete
+    .text start:0x021dab5c end:0x021dac40
+
+src/Combat/Overlay_23/func_ov023_021dfb4c.cpp:
+    complete
+    .text start:0x021dfb4c end:0x021dfc90
+
+src/Combat/Overlay_23/func_ov023_021e18cc.cpp:
+    complete
+    .text start:0x021e18cc end:0x021e19ec
+
+src/Combat/Overlay_23/func_ov023_021e19ec.cpp:
+    complete
+    .text start:0x021e19ec end:0x021e1b0c
+
+src/Combat/Overlay_23/func_ov023_021e1de8.cpp:
+    complete
+    .text start:0x021e1de8 end:0x021e1f0c
+
+src/Combat/Overlay_23/func_ov023_021e1f0c.cpp:
+    complete
+    .text start:0x021e1f0c end:0x021e2030
+
+src/Combat/Overlay_23/func_ov023_021e2868.cpp:
+    complete
+    .text start:0x021e2868 end:0x021e29b8
+
+src/Combat/Overlay_23/func_ov023_021e2ce8.cpp:
+    complete
+    .text start:0x021e2ce8 end:0x021e2dd8
+
+src/Combat/Overlay_23/func_ov023_021e66ac.cpp:
+    complete
+    .text start:0x021e66ac end:0x021e67f4
+
+src/Combat/Overlay_23/func_ov023_021e7220.cpp:
+    complete
+    .text start:0x021e7220 end:0x021e7340
+
+src/Combat/Overlay_23/func_ov023_021e8270.cpp:
+    complete
+    .text start:0x021e8270 end:0x021e83c8
+
+src/Combat/Overlay_23/func_ov023_021e8cdc.cpp:
+    complete
+    .text start:0x021e8cdc end:0x021e8e34
+
+src/Combat/Overlay_23/func_ov023_021ed4b8.cpp:
+    complete
+    .text start:0x021ed4b8 end:0x021ed600
+
+src/Combat/Overlay_23/func_ov023_021f5150.cpp:
+    complete
+    .text start:0x021f5150 end:0x021f5228
+
+src/Combat/Overlay_23/func_ov023_021f5448.cpp:
+    complete
+    .text start:0x021f5448 end:0x021f5524
+
+src/Combat/Overlay_23/func_ov023_021f6ac8.cpp:
+    complete
+    .text start:0x021f6ac8 end:0x021f6ba8
+
+src/Combat/Overlay_23/func_ov023_021fa644.cpp:
+    complete
+    .text start:0x021fa644 end:0x021fa760
+
+src/Combat/Overlay_23/AppendLogEntryAndCheckFlag_021dde00.cpp:
+    complete
+    .text start:0x021dde00 end:0x021ddf5c
+
+src/Combat/Overlay_23/CheckBirthdayFlags_021e61f4.cpp:
+    complete
+    .text start:0x021e61f4 end:0x021e6378
+
+src/Combat/Overlay_23/ComputeUpdatedPlayClock_021e8fe8.cpp:
+    complete
+    .text start:0x021e8fe8 end:0x021e915c
+
+src/Combat/Overlay_23/FormatAndDispatchByField20_021fa8fc.cpp:
+    complete
+    .text start:0x021fa8fc end:0x021fa9a4
+
+src/Combat/Overlay_23/PackBitFieldsRecord_021ed804.cpp:
+    complete
+    .text start:0x021ed804 end:0x021ed92c
+
+src/Combat/Overlay_23/SetupTag021d9f88.cpp:
+    complete
+    .text start:0x021d9f88 end:0x021da100
+
+src/Combat/Overlay_23/func_ov023_021d8f2c.cpp:
+    complete
+    .text start:0x021d8f2c end:0x021d90d0
+
+src/Combat/Overlay_23/func_ov023_021db110.cpp:
+    complete
+    .text start:0x021db110 end:0x021db2b8
+
+src/Combat/Overlay_23/func_ov023_021e9be4.cpp:
+    complete
+    .text start:0x021e9be4 end:0x021e9c54
+
+src/Combat/Overlay_23/func_ov023_021e9c54.cpp:
+    complete
+    .text start:0x021e9c54 end:0x021e9cc4
+
+src/Combat/Overlay_23/func_ov023_021e9fd4.cpp:
+    complete
+    .text start:0x021e9fd4 end:0x021ea044
+
+src/Combat/Overlay_23/func_ov023_021ea044.cpp:
+    complete
+    .text start:0x021ea044 end:0x021ea0b4
+
+src/Combat/Overlay_23/func_ov023_021f7688.cpp:
+    complete
+    .text start:0x021f7688 end:0x021f7784
+
+src/Combat/Overlay_23/func_ov023_021f7da0.cpp:
+    complete
+    .text start:0x021f7da0 end:0x021f7eb8
+
+src/Combat/Overlay_23/func_ov023_021fa108.cpp:
+    complete
+    .text start:0x021fa108 end:0x021fa298
+
+src/Combat/Overlay_23/func_ov023_021fad84.cpp:
+    complete
+    .text start:0x021fad84 end:0x021fae88
+
+src/Combat/Overlay_23/AccumulateBlendDeltas_021e96a8.cpp:
+    complete
+    .text start:0x021e96a8 end:0x021e9818
+
+src/Combat/Overlay_23/BuildElemPaletteTags_021d9a6c.cpp:
+    complete
+    .text start:0x021d9a6c end:0x021d9c7c
+
+src/Combat/Overlay_23/FindEntryAndApply_021e7cec.cpp:
+    complete
+    .text start:0x021e7cec end:0x021e7d8c
+
+src/Combat/Overlay_23/FindSlotAndDispatch_021f9d14.cpp:
+    complete
+    .text start:0x021f9d14 end:0x021f9da0
+
+src/Combat/Overlay_23/ReleaseListEntryAndFinalizeDisplay_021e0690.cpp:
+    complete
+    .text start:0x021e0690 end:0x021e07f8
+
+src/Combat/Overlay_23/StoreCombatantFieldByIndex_021e94cc.cpp:
+    complete
+    .text start:0x021e94cc end:0x021e96a8
+
+src/Combat/Overlay_23/func_ov023_021e1bac.cpp:
+    complete
+    .text start:0x021e1bac end:0x021e1ca8
+
+src/Combat/Overlay_23/func_ov023_021e1ca8.cpp:
+    complete
+    .text start:0x021e1ca8 end:0x021e1da4
+
+src/Combat/Overlay_23/func_ov023_021e2dd8.cpp:
+    complete
+    .text start:0x021e2dd8 end:0x021e2f38
+
+src/Combat/Overlay_23/func_ov023_021e802c.cpp:
+    complete
+    .text start:0x021e802c end:0x021e81f4
+
+src/Combat/Overlay_23/func_ov023_021eb26c.cpp:
+    complete
+    .text start:0x021eb26c end:0x021eb414
+
+src/Combat/Overlay_23/func_ov023_021f5848.cpp:
+    complete
+    .text start:0x021f5848 end:0x021f5a1c
+
+src/Combat/Overlay_23/func_ov023_021f6158.cpp:
+    complete
+    .text start:0x021f6158 end:0x021f6324
+
+src/Combat/Overlay_23/func_ov023_021fa370.cpp:
+    complete
+    .text start:0x021fa370 end:0x021fa4c8
+
+src/Combat/Overlay_23/func_ov023_021fab48.cpp:
+    complete
+    .text start:0x021fab48 end:0x021fad18
+
+src/Combat/Overlay_23/AccumulateNodeVecByMode_021f98e0.cpp:
+    complete
+    .text start:0x021f98e0 end:0x021f9b18
+
+src/Combat/Overlay_23/AdvanceCombatPhaseAndDispatch_021f2638.cpp:
+    complete
+    .text start:0x021f2638 end:0x021f288c
+
+src/Combat/Overlay_23/AdvanceTargetCombatant_021e4c18.cpp:
+    complete
+    .text start:0x021e4c18 end:0x021e4e1c
+
+src/Combat/Overlay_23/AppendMatchedEntryTags_021d9290.cpp:
+    complete
+    .text start:0x021d9290 end:0x021d94e4
+
+src/Combat/Overlay_23/ConfigureEntryPositions_021da770.cpp:
+    complete
+    .text start:0x021da770 end:0x021da9b4
+
+src/Combat/Overlay_23/DispatchBoundsEdges_021f86fc.cpp:
+    complete
+    .text start:0x021f86fc end:0x021f88b8
+
+src/Combat/Overlay_23/ParseListValuesAndDispatch_021e0c80.cpp:
+    complete
+    .text start:0x021e0c80 end:0x021e0eb8
+
+src/Combat/Overlay_23/SomeDispatch_021dfc90.cpp:
+    complete
+    .text start:0x021dfc90 end:0x021dfecc
+
+src/Combat/Overlay_23/UpdateStateAndDispatch_021f288c.cpp:
+    complete
+    .text start:0x021f288c end:0x021f2a48
+
+src/Combat/Overlay_23/func_ov023_021dbfd0.cpp:
+    complete
+    .text start:0x021dbfd0 end:0x021dc134
+
+src/Combat/Overlay_23/func_ov023_021dc134.cpp:
+    complete
+    .text start:0x021dc134 end:0x021dc354
+
+src/Combat/Overlay_23/func_ov023_021e7404.cpp:
+    complete
+    .text start:0x021e7404 end:0x021e761c
+
+src/Combat/Overlay_23/func_ov023_021ecbe8.cpp:
+    complete
+    .text start:0x021ecbe8 end:0x021ecdfc
+
+src/Combat/Overlay_23/func_ov023_021ed9f8.cpp:
+    complete
+    .text start:0x021ed9f8 end:0x021edc08
+
+src/Combat/Overlay_23/ClearOrSetEntryFieldsBySlot_021dbd10.cpp:
+    complete
+    .text start:0x021dbd10 end:0x021dbfa8
+
+src/Combat/Overlay_23/ReleaseQueuedListEntry_021e04e8.cpp:
+    complete
+    .text start:0x021e04e8 end:0x021e05e4
+
+src/Combat/Overlay_23/ProcessEntries_021e257c.cpp:
+    complete
+    .text start:0x021e257c end:0x021e27f8
+
+src/Combat/Overlay_23/ReleaseListEntryAndUpdateFlags_021e0840.cpp:
+    complete
+    .text start:0x021e0840 end:0x021e0a48
+
+src/Combat/Overlay_23/SyncTagFieldsAndNotify_021e5628.cpp:
+    complete
+    .text start:0x021e5628 end:0x021e5974
+
+src/Combat/Overlay_23/func_ov023_021d8bb4.cpp:
+    complete
+    .text start:0x021d8bb4 end:0x021d8c60
+
+src/Combat/Overlay_23/func_ov023_021da9b4.cpp:
+    complete
+    .text start:0x021da9b4 end:0x021dab5c
+
+src/Combat/Overlay_23/func_ov023_021e20f0.cpp:
+    complete
+    .text start:0x021e20f0 end:0x021e23d0
+
+src/Combat/Overlay_23/func_ov023_021e83c8.cpp:
+    complete
+    .text start:0x021e83c8 end:0x021e853c
+
+src/Combat/Overlay_23/func_ov023_021f2368.cpp:
+    complete
+    .text start:0x021f2368 end:0x021f2638
+
+src/Combat/Overlay_23/func_ov023_021faed0.cpp:
+    complete
+    .text start:0x021faed0 end:0x021fb1c8
+
+src/Combat/Overlay_23/UpdateCombatOverlayState_021dd59c.cpp:
+    complete
+    .text start:0x021dd59c end:0x021dd974
+
+src/Combat/Overlay_23/func_ov023_021dfecc.cpp:
+    complete
+    .text start:0x021dfecc end:0x021e0244
+
+src/Combat/Overlay_23/func_ov023_021e463c.cpp:
+    complete
+    .text start:0x021e463c end:0x021e49a4
+
+src/Combat/Overlay_23/func_ov023_021e9424.cpp:
+    complete
+    .text start:0x021e9424 end:0x021e94cc
+
+src/Combat/Overlay_23/func_ov023_021f4098.cpp:
+    complete
+    .text start:0x021f4098 end:0x021f4438
+
+src/Combat/Overlay_23/Trans_021e4e3c.cpp:
+    complete
+    .text start:0x021e4e3c end:0x021e4e8c
+
+src/Combat/Overlay_23/Trans_021ea9b0.cpp:
+    complete
+    .text start:0x021ea9b0 end:0x021ea9dc
+
+src/Combat/Overlay_23/Trans_021ec39c.cpp:
+    complete
+    .text start:0x021ec39c end:0x021ec3c8
+
+src/Combat/Overlay_23/Trans_021ec3c8.cpp:
+    complete
+    .text start:0x021ec3c8 end:0x021ec3f4
+
+src/Combat/Overlay_23/Trans_021ec3f4.cpp:
+    complete
+    .text start:0x021ec3f4 end:0x021ec420
+
+src/Combat/Overlay_23/Trans_021ec454.cpp:
+    complete
+    .text start:0x021ec454 end:0x021ec480
+
+src/Combat/Overlay_23/GetBgBaseAddrBySelector_021db2b8.cpp:
+    complete
+    .text start:0x021db2b8 end:0x021db2e4
+
+src/Combat/Overlay_23/SetFieldWidth24Offset0_021e9cc4.cpp:
+    complete
+    .text start:0x021e9cc4 end:0x021e9cf8
+
+src/Combat/Overlay_23/SetFieldWidth24Offset0_021e9cf8.cpp:
+    complete
+    .text start:0x021e9cf8 end:0x021e9d2c
+
+src/Combat/Overlay_23/SetFieldWidth24Offset0_021e9d2c.cpp:
+    complete
+    .text start:0x021e9d2c end:0x021e9d60
+
+src/Combat/Overlay_23/SetFieldWidth24Offset0_021e9d60.cpp:
+    complete
+    .text start:0x021e9d60 end:0x021e9d94
+
+src/Combat/Overlay_23/SetFieldWidth24Offset0_021e9d94.cpp:
+    complete
+    .text start:0x021e9d94 end:0x021e9dc8
+
+src/Combat/Overlay_23/SetFieldWidth4Offset16_021e9bb0.cpp:
+    complete
+    .text start:0x021e9bb0 end:0x021e9be4
+
+src/Combat/Overlay_23/SetFieldWidth7Offset9_021e9b7c.cpp:
+    complete
+    .text start:0x021e9b7c end:0x021e9bb0
+
+src/Combat/Overlay_23/SetFieldWidth9Offset0_021e9b48.cpp:
+    complete
+    .text start:0x021e9b48 end:0x021e9b7c
+
+src/Combat/Overlay_23/SetTableEntryField_021e2550_021e2550.cpp:
+    complete
+    .text start:0x021e2550 end:0x021e257c
+
+src/Combat/Overlay_23/func_ov023_021e9dc8.cpp:
+    complete
+    .text start:0x021e9dc8 end:0x021e9dfc
+
+src/Combat/Overlay_23/func_ov023_021e9dfc.cpp:
+    complete
+    .text start:0x021e9dfc end:0x021e9e30
+
+src/Combat/Overlay_23/func_ov023_021e9e30.cpp:
+    complete
+    .text start:0x021e9e30 end:0x021e9e64
+
+src/Combat/Overlay_23/func_ov023_021eae0c.cpp:
+    complete
+    .text start:0x021eae0c end:0x021eae38
+
+src/Combat/Overlay_23/func_ov023_021ecbbc.cpp:
+    complete
+    .text start:0x021ecbbc end:0x021ecbe8
+
+src/Combat/Overlay_23/func_ov023_021f65d4.cpp:
+    complete
+    .text start:0x021f65d4 end:0x021f6600
+
+src/Combat/Overlay_23/func_ov023_021f6bc0.cpp:
+    complete
+    .text start:0x021f6bc0 end:0x021f6bec
+
+src/Combat/Overlay_23/func_ov023_021f735c.cpp:
+    complete
+    .text start:0x021f735c end:0x021f7388
+
+src/Combat/Overlay_23/SetFieldFromBattleField7ac0_021e9ecc.cpp:
+    complete
+    .text start:0x021e9ecc end:0x021e9f00
+
+src/Combat/Overlay_23/SetFieldFromBlock20_021ea884.cpp:
+    complete
+    .text start:0x021ea884 end:0x021ea8b8
+
+src/Combat/Overlay_23/SetFieldFromBlock24Low16_021e9f30.cpp:
+    complete
+    .text start:0x021e9f30 end:0x021e9f64
+
+src/Combat/Overlay_23/SetFieldFromBlock70Low16_021ea0b4.cpp:
+    complete
+    .text start:0x021ea0b4 end:0x021ea0e8
+
+src/Combat/Overlay_23/SetFieldFromBlock74Low16_021ea118.cpp:
+    complete
+    .text start:0x021ea118 end:0x021ea14c
+
+src/Combat/Overlay_23/SetFieldFromBlock78Low16_021ea17c.cpp:
+    complete
+    .text start:0x021ea17c end:0x021ea1b0
+
+src/Combat/Overlay_23/SetFieldFromBlock7cLow10_021ea1e0.cpp:
+    complete
+    .text start:0x021ea1e0 end:0x021ea214
+
+src/Combat/Overlay_23/SetFieldFromBlock88_021ea344.cpp:
+    complete
+    .text start:0x021ea344 end:0x021ea378
+
+src/Combat/Overlay_23/SetFieldFromBlock8c_021ea378.cpp:
+    complete
+    .text start:0x021ea378 end:0x021ea3ac
+
+src/Combat/Overlay_23/SetFieldWidth10Offset0_021ea2dc.cpp:
+    complete
+    .text start:0x021ea2dc end:0x021ea310
+
+src/Combat/Overlay_23/SetFieldWidth10Offset10_021ea214.cpp:
+    complete
+    .text start:0x021ea214 end:0x021ea248
+
+src/Combat/Overlay_23/SetFieldWidth16Offset0_021ea278.cpp:
+    complete
+    .text start:0x021ea278 end:0x021ea2ac
+
+src/Combat/Overlay_23/SetFieldWidth16Offset10_021ea310.cpp:
+    complete
+    .text start:0x021ea310 end:0x021ea344
+
+src/Combat/Overlay_23/SetFieldWidth16Offset1c_021e9e64.cpp:
+    complete
+    .text start:0x021e9e64 end:0x021e9e98
+
+src/Combat/Overlay_23/SetFieldWidth24Offset40_021e9e98.cpp:
+    complete
+    .text start:0x021e9e98 end:0x021e9ecc
+
+src/Combat/Overlay_23/func_ov023_021eaba0.cpp:
+    complete
+    .text start:0x021eaba0 end:0x021eabd4
+
+src/Combat/Overlay_23/func_ov023_021eabd4.cpp:
+    complete
+    .text start:0x021eabd4 end:0x021eac08
+
+src/Combat/Overlay_23/func_ov023_021eac08.cpp:
+    complete
+    .text start:0x021eac08 end:0x021eac3c
+
+src/Combat/Overlay_23/ApplyModeSetupAndDispatch_021dd404.cpp:
+    complete
+    .text start:0x021dd404 end:0x021dd4cc
+
+src/Combat/Overlay_23/func_ov023_021eac3c.cpp:
+    complete
+    .text start:0x021eac3c end:0x021eac70
+
+src/Combat/Overlay_23/func_ov023_021eac70.cpp:
+    complete
+    .text start:0x021eac70 end:0x021eaca4
+
+src/Combat/Overlay_23/func_ov023_021eaca4.cpp:
+    complete
+    .text start:0x021eaca4 end:0x021eacd8
+
+src/Combat/Overlay_23/ClearBitRange_021f6c3c.cpp:
+    complete
+    .text start:0x021f6c3c end:0x021f6c90
+
+src/Combat/Overlay_23/DrawFullscreenQuad_021dacd4.cpp:
+    complete
+    .text start:0x021dacd4 end:0x021dad78
+
+src/Combat/Overlay_23/func_ov023_021f4c04.cpp:
+    complete
+    .text start:0x021f4c04 end:0x021f4fc8
+    .bss start:0x021ffefc end:0x021fff08
+
+
+src/Combat/Overlay_23/CheckElemNearTouchPoint_021e63bc.cpp:
+    complete
+    .text start:0x021e63bc end:0x021e6448
+
+
+src/Combat/Overlay_23/021eeaac.cpp:
+    complete
+    .text start:0x021eeaac end:0x021eefac
+
+
+src/Combat/Overlay_23/func_ov023_021f2e6c.cpp:
+    complete
+    .text start:0x021f2e6c end:0x021f3a8c
+
+
+src/Combat/Overlay_23/func_ov023_021ddf5c.cpp:
+    complete
+    .text start:0x021ddf5c end:0x021df218
+
+
+src/Combat/Overlay_23/func_ov023_021eb578.cpp:
+    complete
+    .text start:0x021eb578 end:0x021ec368
