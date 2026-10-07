@@ -17508,3 +17508,8 @@ src/Combat/Main/_Z24InitCommandStreamSessioniiP12StreamHeaderi.cpp:
 src/Combat/Main/func_020732cc.cpp:
     complete
     .text start:0x020732cc end:0x020733c8
+
+
+src/Combat/Main/func_02072398.cpp:
+    complete
+    .text start:0x02072398 end:0x02072488
