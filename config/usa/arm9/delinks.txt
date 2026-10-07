@@ -17478,3 +17478,13 @@ src/Graphics/TriangleRegionClamp.cpp:
 src/Resource/ArchiveLoadPolling.cpp:
     complete
     .text start:0x020da8e0 end:0x020daa20
+
+
+src/System/DMAInterruptHandlers.cpp:
+    complete
+    .text start:0x020c6a54 end:0x020c6a94
+
+
+src/System/TimerOverflowInterruptHandlers.cpp:
+    complete
+    .text start:0x020c6a94 end:0x020c6ad4
