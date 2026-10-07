@@ -20,8 +20,6 @@ struct PackedDestination02083cbc {
     unsigned char tail[0x16];
 };
 
-// Copy the nine packed fields, preserving each destination word's upper two bits.
-// The optional tail replaces the default byte value 100 in all 22 positions.
 // USA: func_02083cbc
 extern "C" ARM void func_02083cbc(void* dst, void* src, void* tail) {
     ((PackedDestination02083cbc*)dst)->triples[0].fieldA = ((PackedSource02083cbc*)src)->triples[0].fieldA;

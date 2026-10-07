@@ -22,7 +22,6 @@ struct Params_021e95d4 {
     unsigned int high24 : 2;
 };
 
-// Selects a code from byte flags, a signed adjustment, and two packed 10-bit values.
 // USA: func_ov024_021e95d4
 extern "C" ARM int func_ov024_021e95d4(Ctx_021e95d4* ctx, int id,
     Params_021e95d4* params, int mode, signed char adjustment,
@@ -45,8 +44,6 @@ extern "C" ARM int func_ov024_021e95d4(Ctx_021e95d4* ctx, int id,
     }
     if (mode == 1) {
         if (flag != 0) return 0x1f;
-        // Read the battle flag first; a set flag skips the stats byte.
-        // Keep the byte promotion explicit for the signed comparison.
         if (ctx->battle->flag8e95 != 0 ||
             (int)((unsigned char*)combatant->currentStats_)[0x50] <= 0) {
             return SelectByIndexRange0to3_021da644(id, 0x26d, 0x1b);

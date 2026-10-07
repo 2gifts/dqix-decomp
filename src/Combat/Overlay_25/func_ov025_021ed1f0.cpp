@@ -1,6 +1,5 @@
 #include <globaldefs.h>
 
-// Local width/offset view only; member labels identify observed offsets.
 struct View021ed1f0 {
     unsigned short u16_00[16];
     short s16_20[16];
@@ -23,7 +22,6 @@ extern "C" ARM void func_ov025_021ed1f0(void* self) {
     if (count == 0) return;
     view->count150 = count - 1;
 
-    // Move the remaining entries from index i+1 to i; the ROM rereads the count at each test.
     for (int i = 0; i < view->count150; i++) {
         view->u16_00[i] = view->u16_00[i + 1];
         view->s16_20[i] = view->s16_20[i + 1];
@@ -34,7 +32,6 @@ extern "C" ARM void func_ov025_021ed1f0(void* self) {
         view->u16_80[i] = view->u16_80[i + 1];
     }
 
-    // Reload after the narrow store so the clamp tests the signed 16-bit result.
     view->s16_15c--;
     if (view->s16_15c < 0) view->s16_15c = 0;
 }

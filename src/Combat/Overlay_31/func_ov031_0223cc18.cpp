@@ -8,8 +8,6 @@ struct WindowBounds {
 };
 
 // USA: func_ov031_0223cc18
-// Set the selected display window's horizontal and vertical bounds.
-// Coordinates use their low byte; side 1 selects sub display, window 0 selects WIN0.
 extern "C" ARM void func_ov031_0223cc18(int side, int window, const WindowBounds* bounds) {
     if (side == 1) {
         if (window == 0) {

@@ -17,8 +17,6 @@ static inline unsigned short current020cdc7c() {
     return ((HistoryContext020cdc7c*)&data_021117b0)->current;
 }
 
-// Selects recent halfword values independently using the history entry's flag bits.
-// The IPC receive interrupt writes the ring entries; full copies retain halfword read order.
 // USA: func_020cdc7c
 extern "C" ARM void func_020cdc7c(void* result) {
     int i;
@@ -60,7 +58,7 @@ extern "C" ARM void func_020cdc7c(void* result) {
         }
         if ((output->flags & 1) && !(entry->flags & 1)) {
             output->first = entry->first;
-            if (i != 0) output->flags &= ~1; // The newest entry alone does not clear the search bit.
+            if (i != 0) output->flags &= ~1;
         }
         if ((output->flags & 2) && !(entry->flags & 2)) {
             output->second = entry->second;

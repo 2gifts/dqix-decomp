@@ -27,7 +27,6 @@ struct BattleStateView_021e97f4 {
 };
 
 static inline int ReadStatsByte52_021e97f4(ModifiableCombatStats* stats) {
-    // Read the observed byte of the canonical stats object's representation.
     return ((unsigned char*)stats)[0x52];
 }
 
@@ -38,7 +37,6 @@ extern "C" ARM int func_ov024_021e97f4(Context_021e97f4* ctx, int id,
     GameObject* combatant = GetCombatantByID((int)ctx->field10, id);
     if (!combatant) return 0;
 
-    // The fifth input is signed: the alternate branch distinguishes -2.
     if (useValue != 0) {
         if (flag == 0) {
             switch (value) {
@@ -60,7 +58,6 @@ extern "C" ARM int func_ov024_021e97f4(Context_021e97f4* ctx, int id,
             return SelectByIndexRange0to3_021da644(id, 0x26d, 0x1b);
         }
     }
-    // Select from the middle and upper ten-bit slices of the parameter word.
     return SelectByIndexRange0to3_021da644(id,
         parameters->packedParameterWord24.second,
         parameters->packedParameterWord24.third);

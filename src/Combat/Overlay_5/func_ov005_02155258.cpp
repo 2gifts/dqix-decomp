@@ -3,10 +3,6 @@
 int GetGlobalField0x1c020421a0();
 extern "C" void func_02045f3c(void*, void*, int, int, int, int, int, int, int, int);
 
-// The six-byte records at context+0x3e0c appear to describe decimal glyphs.
-// Draw a nonzero tens quotient and the units remainder; the narrow offsets for
-// digit 1 are observed positioning adjustments. The caller supplies table IDs.
-// GX port writes are ordered, including the repeated write to 0x04000470.
 // USA: func_ov005_02155258
 extern "C" ARM void func_ov005_02155258(void* context, int value, short x, short y, unsigned short color) {
     int drawContext = GetGlobalField0x1c020421a0();

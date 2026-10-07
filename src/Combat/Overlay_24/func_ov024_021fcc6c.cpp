@@ -40,8 +40,6 @@ struct WorkBuffer_021fcc6c {
     float threshold;
 };
 
-// Dispatch eligible entries using a cleared 0xc8-byte work buffer.
-// A missing state on an in-range entry terminates the whole callback.
 // USA: func_ov024_021fcc6c
 extern "C" ARM void func_ov024_021fcc6c(Obj_021fcc6c* obj) {
     float threshold = 1000.0f;

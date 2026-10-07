@@ -16,12 +16,7 @@ struct View021537bc {
     int z38;
 };
 
-// Updates four coordinate pairs through the mode's observed backing format.
-// Coordinates keep their upper fixed-point bits; unsigned additions preserve
-// the target's 32-bit arithmetic before mode one shifts signed values by 12.
 // USA: func_ov005_021537bc
-// The third input is consumed only by STRH; both observed callers pass 0x7fff.
-// Its unsigned-halfword declaration is inferred from that input contract.
 extern "C" ARM void func_ov005_021537bc(void* object, int mode, unsigned short value) {
     View021537bc* self = (View021537bc*)object;
     if (self->backing == 0) return;
@@ -42,7 +37,6 @@ extern "C" ARM void func_ov005_021537bc(void* object, int mode, unsigned short v
         int py = coords[i][1];
         switch (mode) {
         case 0: {
-            // These repeated stores are graphics FIFO commands, not RAM copies.
             GXFIFO_MATRIX_PUSH = 0;
             int z = self->z38;
             GXFIFO_MATRIX_TRANSLATE = px;

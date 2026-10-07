@@ -7,9 +7,6 @@ extern "C" int func_ov000_0215e9fc(int context, short* ids, int max, int start);
 extern "C" void func_ov024_021ed8c0(void* context, int id, int record, int* count, short* ids);
 extern unsigned short data_ov024_021febec[4];
 
-// Collect IDs whose signed defense buff is above -2, then dispatch the collection.
-// The callback's fifth input is an output halfword array; the dispatch helper
-// replaces it with its eight-halfword result when at least one ID qualifies.
 // USA: func_ov024_021f21b4
 extern "C" ARM int func_ov024_021f21b4(int* context, int id, int record, int* outCount, short* outIDs) {
     short buf[4];

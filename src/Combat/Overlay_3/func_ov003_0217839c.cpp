@@ -31,9 +31,6 @@ struct Mode0217839c {
 
 extern unsigned char data_ov003_0217fb60[];
 
-// Tests the observed kind-seven entry and a bounded table of combatant slots.
-// Address additions use the target's unsigned 32-bit representation: the ROM
-// checks the sum for zero, including wraparound, rather than checking its base.
 // USA: func_ov003_0217839c
 extern "C" ARM int func_ov003_0217839c(int id, void* entry) {
     if (((Entry0217839c*)entry)->kind != 7) return 0;

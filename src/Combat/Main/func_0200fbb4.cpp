@@ -1,6 +1,5 @@
 #include <globaldefs.h>
 
-// The field meanings are unknown. These names record observed offsets and widths.
 union CopyVector0200fbb4 { int words[3]; };
 union CopyBlock0200fbb4 { int words[12]; };
 
@@ -21,7 +20,6 @@ struct CopyRecord0200fbb4 {
     unsigned char field6e;
 };
 
-// Copy the observed members and return the destination. Padding is not copied.
 // USA: func_0200fbb4
 extern "C" ARM CopyRecord0200fbb4* func_0200fbb4(CopyRecord0200fbb4* dst, const CopyRecord0200fbb4* src) {
     dst->field00 = src->field00;

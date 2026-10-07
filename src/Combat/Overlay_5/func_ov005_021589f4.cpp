@@ -12,9 +12,6 @@ struct RenderView_021589f4 {
     unsigned char fieldb0, fieldb1, fieldb2, fieldb3, fieldb4, fieldb5, fieldb6, fieldb7;
 };
 
-// Prepare the observed menu view at object+0xee4 and its 0x960-byte buffer.
-// Byte3dd1 selects one of two layouts; its wider meaning is not established.
-// The four style bytes are local to this synchronous renderer submission.
 // USA: func_ov005_021589f4
 extern "C" ARM void func_ov005_021589f4(void* object) {
     unsigned char* base = (unsigned char*)object;

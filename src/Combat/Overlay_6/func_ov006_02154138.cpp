@@ -4,8 +4,6 @@ extern "C" void* __clear(void*, int);
 int LoadBattleBlock020ac4c0(void*);
 int CopyInBattleField0x7540(void*);
 
-// Partial local views: the item IDs and offsets are supported by this routine
-// and the neighboring alchemy sources; the complete record meanings are unknown.
 struct AlchemyStatus02154138 {
     short item;
     unsigned short selected : 1;
@@ -36,9 +34,6 @@ struct AlchemyWork02154138 {
     char unknown14[0x9c];
 };
 
-// Count IDs 1..471 present in both the selected-status scan and the negative
-// field16 record scan. Store the count in bits23..31 of the battle work block.
-// Signed item IDs index the scratch table; callers must supply valid IDs.
 // USA: func_ov006_02154138
 extern "C" ARM int func_ov006_02154138(void* context) {
     AlchemyState02154138* state = (AlchemyState02154138*)context;

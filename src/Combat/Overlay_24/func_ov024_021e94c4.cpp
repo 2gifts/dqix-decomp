@@ -17,8 +17,6 @@ struct Parameters_021e94c4 {
     unsigned int : 2;
 };
 
-// The three stack inputs are one signed byte followed by two unsigned bytes.
-// The packed selectors occupy bits 10..19 and 20..29 of parameter word 0x24.
 // USA: func_ov024_021e94c4
 extern "C" ARM int func_ov024_021e94c4(Ctx_021e94c4* ctx, int id,
     Parameters_021e94c4* parameters, int mode, signed char value,
@@ -41,7 +39,6 @@ extern "C" ARM int func_ov024_021e94c4(Ctx_021e94c4* ctx, int id,
     }
     if (mode == 1) {
         if (forceDefault != 0) return 0x1f;
-        // These two unsigned fields are not exposed by the canonical layouts.
         if (*(unsigned char*)(ctx->field10 + 0x8e95) != 0 ||
             (int)*((unsigned char*)combatant->currentStats_ + 0x4f) <= 0) {
             return SelectByIndexRange0to3_021da644(id, 0x26d, 0x1b);

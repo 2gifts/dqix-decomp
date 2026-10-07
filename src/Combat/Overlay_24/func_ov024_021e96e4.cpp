@@ -17,8 +17,6 @@ struct Params_021e96e4 {
     unsigned int reserved2 : 2;
 };
 
-// Select a code from the signed result byte and flags. When resultFlag
-// is clear, the two 10-bit fields of the parameter word may be used.
 // USA: func_ov024_021e96e4
 extern "C" ARM int func_ov024_021e96e4(Ctx_021e96e4* ctx, int id,
     Params_021e96e4* params, int mode, signed char result,
@@ -41,7 +39,6 @@ extern "C" ARM int func_ov024_021e96e4(Ctx_021e96e4* ctx, int id,
     }
     if (mode == 1) {
         if (specialFlag != 0) return 0x1f;
-        // These byte fields have no named canonical members yet.
         if (((unsigned char*)ctx->field10)[0x8e95] != 0 ||
             (int)((unsigned char*)combatant->currentStats_)[0x51] <= 0) {
             return SelectByIndexRange0to3_021da644(id, 0x26d, 0x1b);

@@ -16,7 +16,6 @@ extern "C" ARM int func_ov025_021ed380(char* obj, int id, int val2, int type, in
             count = *(unsigned char*)(obj + 0x150);
             *(int*)(obj + count * 4 + 0xb0) = val3;
 
-            // The signed halfword at +0x152 rolls at 0x7fff before assignment.
             if (*(short*)(obj + 0x152) == 0x7fff) {
                 *(short*)(obj + 0x152) = 0;
             }

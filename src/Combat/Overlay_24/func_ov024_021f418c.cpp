@@ -8,13 +8,10 @@ extern unsigned short data_ov024_021fec54[4];
 struct Ctx_021f418c { int battle; };
 
 static inline int BaseDefense_021f418c(BaseCombatStats* stats) {
-    // Keep the promoted defense read separate from the attack addition.
     int defense = stats->primaryStats.defense;
     return defense;
 }
 
-// Callback receives a byte ID and two output addresses from the dispatcher at 021f66cc.
-// Accumulated attack/defense sums wrap to 16 bits; outputs change only on success.
 // USA: func_ov024_021f418c
 extern "C" ARM int func_ov024_021f418c(Ctx_021f418c* ctx, unsigned char id,
     void* unused, int* outFlag, short* outID) {

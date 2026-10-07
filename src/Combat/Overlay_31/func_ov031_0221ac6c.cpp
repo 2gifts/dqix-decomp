@@ -1,8 +1,5 @@
 #include <globaldefs.h>
 
-// Decode the A-Z/a-z/0-9/./- alphabet in four-character groups. '*' adds no bits
-// to the reported size; unrecognized characters decode to zero. A null output
-// queries the size; capacity below that size returns -1 before writing.
 // USA: func_ov031_0221ac6c
 extern "C" ARM int func_ov031_0221ac6c(const char* input, unsigned int length, char* output, unsigned int capacity) {
     if (length & 3) return -1;
@@ -20,8 +17,6 @@ extern "C" ARM int func_ov031_0221ac6c(const char* input, unsigned int length, c
     if (length == 0) return 0;
     char* dst = output;
     int written;
-    // The original always writes the first byte for nonempty input, including
-    // all-padding input whose size query returned zero.
     do {
         char values[4];
         char* value = values;

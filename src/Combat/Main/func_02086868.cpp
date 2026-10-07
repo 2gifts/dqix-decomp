@@ -1,6 +1,5 @@
 #include <globaldefs.h>
 
-// These local views describe observed widths and offsets; field meanings are unknown.
 union CopyBytes13_02086868 { unsigned char bytes[13]; };
 union CopyWords13_02086868 { int words[13]; };
 union CopyWords39_02086868 { int words[39]; };
@@ -34,9 +33,6 @@ struct CopyEntry02086868 {
     CopyHalfwords96_02086868 field17c;
 };
 
-// Copy the observed members in order and return destination; bytes 0x56..0x57
-// remain unchanged. The caller uses this to shift adjacent 0x23c-byte entries.
-// This order does not establish a general overlap-safe copying contract.
 // USA: func_02086868
 extern "C" ARM void* func_02086868(void* destination, void* source) {
     CopyEntry02086868* dst = (CopyEntry02086868*)destination;

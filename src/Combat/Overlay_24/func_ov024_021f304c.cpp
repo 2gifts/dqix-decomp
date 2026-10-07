@@ -8,8 +8,6 @@ extern "C" int func_ov000_0215e9fc(int battle, short* ids, int max, int flags);
 extern "C" void func_ov024_021ed8c0(void* context, int id, int record, int* count, short* ids);
 extern unsigned short data_ov024_021febf4[4];
 
-// Collect IDs whose signed three-bit stats field at bits18..20 exceeds -2.
-// The field's gameplay meaning is unknown; the callback forwards its record to dispatch.
 // USA: func_ov024_021f304c
 extern "C" ARM int func_ov024_021f304c(int* context, unsigned char id, void* record,
     int* outCount, short* outIDs) {
@@ -38,7 +36,6 @@ extern "C" ARM int func_ov024_021f304c(int* context, unsigned char id, void* rec
         }
     }
     if (*outCount <= 0) return 0;
-    // ARM ABI: the opaque record pointer occupies one 32-bit word; forward its bits.
     func_ov024_021ed8c0(context, id, (int)record, outCount, outIDs);
     return 1;
 }
