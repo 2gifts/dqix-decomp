@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-extern "C" void func_02086868(void*, void*);
+extern "C" void* func_02086868(void*, void*);
 
 struct FindEntry02086a04 {
     signed char id : 6;
