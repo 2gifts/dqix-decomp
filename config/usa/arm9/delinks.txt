@@ -17450,3 +17450,27 @@ src/Combat/Main/func_0201a600.cpp:
 src/Combat/Main/func_0204cd60.cpp:
     complete
     .text start:0x0204cd60 end:0x0204df9c
+
+src/Graphics/TriangleHeightScan.cpp:
+    complete
+    .text start:0x020312bc end:0x02031468
+
+src/Graphics/SegmentPointDistance.cpp:
+    complete
+    .text start:0x02031468 end:0x020315b8
+
+src/Graphics/TriangleCollisionAdjust.cpp:
+    complete
+    .text start:0x020315b8 end:0x020319d8
+
+src/Graphics/TriangleLowNormalScan.cpp:
+    complete
+    .text start:0x020319d8 end:0x02031b84
+
+src/Graphics/TriangleSegmentWeights.cpp:
+    complete
+    .text start:0x02031b84 end:0x02031d20
+
+src/Graphics/TriangleRegionClamp.cpp:
+    complete
+    .text start:0x02031d20 end:0x02032090
