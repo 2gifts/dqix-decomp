@@ -1,11 +1,11 @@
 #include <globaldefs.h>
+#include "Combat/Main/CopyRecord0200fbb4.h"
 #include "GameState/GameState.h"
 
 extern "C" void* _Z20GetField0x3f8AddressP9GameState(void* battle);
 extern "C" void* func_02012fe4(void);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 extern "C" void _Z18InitStruct02070378Pc(void* obj);
-extern "C" void _Z28CallFunc0200fbb4AtField0x3f8Pv(void* battle, void* obj);
 
 struct S02012fe4 {
     char pad[0x23bb];

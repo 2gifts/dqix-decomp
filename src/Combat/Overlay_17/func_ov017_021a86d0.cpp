@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Combat/Main/CopyRecord0200fbb4.h"
 
 struct Vec3_021a86d0 {
     int x;
@@ -101,7 +102,6 @@ extern "C" void VectorizedMemset(void* dst, int value, unsigned int size);
 extern "C" void _Z19InitContext020e1154Pv(void* p);
 extern "C" void _Z40SetHalfFieldsAndEnqueueIfActive_021d1c2ctt(unsigned char a, unsigned short b);
 extern "C" void _Z26EnqueueEventTagB5_021d1dc0ssPisi(unsigned short id, int a, int* buf, int b, int c);
-extern "C" void _Z28CallFunc0200fbb4AtField0x3f8Pv(void* gs, unsigned char* ctx);
 extern "C" void _Z27InitAndResetHeader_0219e310Phi(unsigned char* obj, int arg);
 extern "C" void _Z16AppendNodeToTailP16TailList020469b4P16TailNode020469b4(void* list, void* node);
 extern "C" void _Z29InitAndAppendState61_021a65c4Pvhi(void* obj, unsigned char mode, int arg);

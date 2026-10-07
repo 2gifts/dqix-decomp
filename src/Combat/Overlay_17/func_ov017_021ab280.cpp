@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Combat/Main/CopyRecord0200fbb4.h"
 #include "GameState/GameState.h"
 
 extern "C" void* func_0202ae18(void);
@@ -32,7 +33,6 @@ void* GetField0x3f8Address(GameState* battleStruct);
 int GetField0x3acValue(GameState* battleStruct);
 extern "C" void VectorizedMemset(void* dst, int val, int size);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
-extern "C" void _Z28CallFunc0200fbb4AtField0x3f8Pv(void* battle, void* obj);
 void InitAndResetHeader_0219e310(unsigned char* obj, int flag);
 struct TailList020469b4;
 struct TailNode020469b4;
