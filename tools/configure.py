@@ -238,7 +238,8 @@ def main():
 
         n.rule(
             name="delink",
-            command=f"{DSD} delink --config-path $config_path"
+            # dsd never writes delink.yaml; without this stamp every build re-delinks and relinks
+            command=f'"{PYTHON}" tools/stamp.py $out {DSD} delink --config-path $config_path'
         )
         n.newline()
 
