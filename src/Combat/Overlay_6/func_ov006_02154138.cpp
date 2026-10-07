@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 extern "C" void* __clear(void*, int);
-extern "C" int _Z23LoadBattleBlock020ac4c0Pv(void*);
+int LoadBattleBlock020ac4c0(void*);
 int CopyInBattleField0x7540(void*);
 
 // Partial local views: the item IDs and offsets are supported by this routine
@@ -58,7 +58,7 @@ extern "C" ARM int func_ov006_02154138(void* context) {
     for (unsigned short itemIndex = 1; itemIndex < 472; itemIndex++) {
         if (marks[itemIndex] == 3) count++;
     }
-    _Z23LoadBattleBlock020ac4c0Pv(&work);
+    LoadBattleBlock020ac4c0(&work);
     work.count = count;
     CopyInBattleField0x7540(&work);
     return (short)count;
