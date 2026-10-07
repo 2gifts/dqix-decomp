@@ -1,0 +1,11 @@
+func_ov030_021d8a40 kind:function(arm,size=0x810) addr:0x021d8a40
+_Z29ResetHeaderAndReturn_021d9250Pv kind:function(arm,size=0x14) addr:0x021d9250
+_Z29ResetHeaderAndReturn_021d9264Pv kind:function(arm,size=0x14) addr:0x021d9264
+_Z29ResetHeaderAndReturn_021d9278Pv kind:function(arm,size=0x14) addr:0x021d9278
+_Z29ResetHeaderAndReturn_021d928cPv kind:function(arm,size=0x14) addr:0x021d928c
+_Z29ResetHeaderAndReturn_021d92a0Pv kind:function(arm,size=0x14) addr:0x021d92a0
+_Z29ResetHeaderAndReturn_021d92b4Pv kind:function(arm,size=0x14) addr:0x021d92b4
+_Z29ResetHeaderAndReturn_021d92c8Pv kind:function(arm,size=0x14) addr:0x021d92c8
+_Z29ResetHeaderAndReturn_021d92dcPv kind:function(arm,size=0x14) addr:0x021d92dc
+func_ov030_021d92f0 kind:function(arm,size=0x50) addr:0x021d92f0
+func_ov030_021d9340 kind:function(arm,size=0x91c) addr:0x021d9340

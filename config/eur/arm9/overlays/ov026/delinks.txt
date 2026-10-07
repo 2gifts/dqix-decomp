@@ -1,0 +1,40 @@
+    .text       start:0x021d8a40 end:0x021de6a0 kind:code align:32
+    .rodata     start:0x021de6a0 end:0x021de834 kind:rodata align:4
+    .ctor       start:0x021de834 end:0x021de838 kind:rodata align:4
+    .data       start:0x021de840 end:0x021def00 kind:data align:32
+    .bss        start:0x021def00 end:0x021def20 kind:bss align:32
+
+src/Combat/Overlay_26/FindSlotById_021dae60.cpp:
+    complete
+    .text start:0x021dae60 end:0x021daec8
+
+src/Combat/Overlay_26/InitAndClearBuffer_021d8a78.cpp:
+    complete
+    .text start:0x021d8a78 end:0x021d8aac
+
+src/Combat/Overlay_26/IsFlagBit8192Set_021dd3c4.cpp:
+    complete
+    .text start:0x021dd3c4 end:0x021dd3dc
+
+src/Combat/Overlay_26/IsFlagBit8Set_021dce1c.cpp:
+    complete
+    .text start:0x021dce1c end:0x021dce34
+
+src/Combat/Overlay_26/StoreThreeWords_021d8b98.cpp:
+    complete
+    .text start:0x021d8b98 end:0x021d8ba0
+
+
+src/Combat/Overlay_26/func_ov023_021d8a40_021d8a40.cpp:
+    complete
+    .text start:0x021d8a40 end:0x021d8a78
+
+src/Combat/Overlay_26/func_ov026_021d8ba0.cpp:
+    complete
+    .text start:0x021d8ba0 end:0x021dae60
+    .data start:0x021de840 end:0x021de87c
+
+
+src/Combat/Overlay_26/func_ov026_021dddcc.cpp:
+    complete
+    .text start:0x021dddcc end:0x021de6a0

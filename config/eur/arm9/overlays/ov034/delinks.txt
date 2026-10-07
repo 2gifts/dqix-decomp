@@ -1,0 +1,25 @@
+    .text       start:0x022a2180 end:0x022a2a04 kind:code align:32
+    .init       start:0x022a2a04 end:0x022a2a30 kind:code align:4
+    .ctor       start:0x022a2a30 end:0x022a2a38 kind:rodata align:4
+    .data       start:0x022a2a40 end:0x022a2a60 kind:data align:32
+    .bss        start:0x022a2a60 end:0x022a3200 kind:bss align:32
+
+src/Combat/Overlay_34/InitField0202f808_022a29b8.cpp:
+    complete
+    .text start:0x022a29b8 end:0x022a29e4
+
+src/Combat/Overlay_34/InitField0202f808_022a29e4.cpp:
+    complete
+    .text start:0x022a29e4 end:0x022a2a04
+
+src/Combat/Overlay_34/PopulateOv34BackgroundLoader.cpp:
+    complete
+    .text start:0x022a2180 end:0x022a21a8
+
+src/Combat/Overlay_34/func_ov034_022a2a04.cpp:
+    complete
+    .init start:0x022a2a04 end:0x022a2a30
+
+src/Combat/Overlay_34/Ov34BackgroundLoader.cpp:
+    complete
+    .text start:0x022a21a8 end:0x022a29b8

@@ -1,0 +1,111 @@
+    .text       start:0x021842a0 end:0x0218a95c kind:code align:32
+    .rodata     start:0x0218a95c end:0x0218ac98 kind:rodata align:4
+    .ctor       start:0x0218ac98 end:0x0218ac9c kind:rodata align:4
+    .data       start:0x0218aca0 end:0x0218ad60 kind:data align:32
+    .bss        start:0x0218ad60 end:0x0218ad60 kind:bss align:32
+
+src/Combat/Overlay_9/GetEntryPair02188bf8.cpp:
+    complete
+    .text start:0x02188bf8 end:0x02188c2c
+
+src/Combat/Overlay_9/UpdateCombatantState_02184d70.cpp:
+    complete
+    .text start:0x02184d70 end:0x02184e58
+
+src/Combat/Overlay_9/UpdateFlag021885b8.cpp:
+    complete
+    .text start:0x021885b8 end:0x02188604
+
+src/Combat/Overlay_9/FindByteInBuffer0218a888.cpp:
+    complete
+    .text start:0x0218a888 end:0x0218a8b8
+
+src/Combat/Overlay_9/FindMatch0218a4c8.cpp:
+    complete
+    .text start:0x0218a4c8 end:0x0218a518
+
+src/Combat/Overlay_9/ResetEntrySkill0218a8b8.cpp:
+    complete
+    .text start:0x0218a8b8 end:0x0218a930
+
+src/Combat/Overlay_9/ToUpperCopy0218a484.cpp:
+    complete
+    .text start:0x0218a484 end:0x0218a4c8
+
+src/Combat/Overlay_9/ResetFields021847c4.cpp:
+    complete
+    .text start:0x021847c4 end:0x021847ec
+
+src/Combat/Overlay_9/SetStatValue021855dc.cpp:
+    complete
+    .text start:0x021855dc end:0x02185634
+
+src/Combat/Overlay_9/AdvanceStatStep_021865dc.cpp:
+    complete
+    .text start:0x021865dc end:0x021866f0
+
+src/Combat/Overlay_9/AdvanceStatStep_021868c4.cpp:
+    complete
+    .text start:0x021868c4 end:0x021869d8
+
+src/Combat/Overlay_9/SyncCombatantAndFlushMatrix_02184c30.cpp:
+    complete
+    .text start:0x02184c30 end:0x02184ca4
+
+src/Combat/Overlay_9/func_ov009_021847ec.cpp:
+    complete
+    .text start:0x021847ec end:0x02184848
+
+src/Combat/Overlay_9/AdvanceListStep_021883cc.cpp:
+    complete
+    .text start:0x021883cc end:0x02188454
+
+src/Combat/Overlay_9/func_ov009_02184ca4.cpp:
+    complete
+    .text start:0x02184ca4 end:0x02184d70
+
+src/Combat/Overlay_9/func_ov009_021869d8.cpp:
+    complete
+    .text start:0x021869d8 end:0x02186aec
+
+src/Combat/Overlay_9/func_ov009_02186aec.cpp:
+    complete
+    .text start:0x02186aec end:0x02186c00
+
+src/Combat/Overlay_9/DispatchTypeAndInitPair_02188c2c.cpp:
+    complete
+    .text start:0x02188c2c end:0x02188d9c
+
+src/Combat/Overlay_9/GetPriorityGroupIndex_02188b14.cpp:
+    complete
+    .text start:0x02188b14 end:0x02188bf8
+
+src/Combat/Overlay_9/SyncEntryPairAndRefreshFlags_02188454.cpp:
+    complete
+    .text start:0x02188454 end:0x021885b8
+
+src/Combat/Overlay_9/ResetAndReinitCombatState_02184848.cpp:
+    complete
+    .text start:0x02184848 end:0x02184a18
+
+src/Combat/Overlay_9/func_ov009_021866f0.cpp:
+    complete
+    .text start:0x021866f0 end:0x021868c4
+
+src/Combat/Overlay_9/DecrementCounterD96ClampZero_0218a930.cpp:
+    complete
+    .text start:0x0218a930 end:0x0218a95c
+
+
+src/Combat/Overlay_9/02188d9c.cpp:
+    complete
+    .text start:0x02188d9c end:0x02188e70
+
+
+src/Combat/Overlay_9/func_ov009_02184bbc.cpp:
+    complete
+    .text start:0x02184bbc end:0x02184c30
+
+src/Menu/Overlay_9/GridTouchSelection.cpp:
+    complete
+    .text start:0x02189854 end:0x02189a4c

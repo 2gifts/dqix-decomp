@@ -1,0 +1,113 @@
+    .text       start:0x021536e0 end:0x0215cbd4 kind:code align:32
+    .rodata     start:0x0215cbd4 end:0x0215cce4 kind:rodata align:4
+    .ctor       start:0x0215cce4 end:0x0215cce8 kind:rodata align:4
+    .data       start:0x0215cd00 end:0x0215ce20 kind:data align:32
+    .bss        start:0x0215ce20 end:0x0215ce20 kind:bss align:32
+
+src/Combat/Overlay_5/RunTurnStartHooks02155108.cpp:
+    complete
+    .text start:0x02155108 end:0x021551d4
+
+src/Combat/Overlay_5/CheckFlag30Or401_02157190.cpp:
+    complete
+    .text start:0x02157190 end:0x021571d0
+
+src/Combat/Overlay_5/CopyThreeFields02157174.cpp:
+    complete
+    .text start:0x02157174 end:0x02157190
+
+src/Combat/Overlay_5/DispatchByIdxAndCond021551fc.cpp:
+    complete
+    .text start:0x021551fc end:0x02155258
+
+src/Combat/Overlay_5/GetTableByte0215a918.cpp:
+    complete
+    .text start:0x0215a918 end:0x0215a930
+
+src/Combat/Overlay_5/GetTableByte0215a930.cpp:
+    complete
+    .text start:0x0215a930 end:0x0215a948
+
+src/Combat/Overlay_5/GetTableByte0215a948.cpp:
+    complete
+    .text start:0x0215a948 end:0x0215a960
+
+src/Combat/Overlay_5/InitEntryManagerAndAllocator02159c24.cpp:
+    complete
+    .text start:0x02159c24 end:0x02159c88
+
+src/Combat/Overlay_5/ResetAllocatorAndCallInner02154da8.cpp:
+    complete
+    .text start:0x02154da8 end:0x02154de8
+
+src/Combat/Overlay_5/RunBattleScaleStep0215c034.cpp:
+    complete
+    .text start:0x0215c034 end:0x0215c058
+
+src/Combat/Overlay_5/RunTwoCallbacksAndReset02155d38.cpp:
+    complete
+    .text start:0x02155d38 end:0x02155d6c
+
+src/Combat/Overlay_5/SetPtrFieldByte021583fc.cpp:
+    complete
+    .text start:0x021583fc end:0x0215840c
+
+src/Combat/Overlay_5/Trans_021536e0.cpp:
+    complete
+    .text start:0x021536e0 end:0x02153728
+
+src/Combat/Overlay_5/Trans_02153728.cpp:
+    complete
+    .text start:0x02153728 end:0x021537bc
+
+src/Combat/Overlay_5/Trans_021551d4.cpp:
+    complete
+    .text start:0x021551d4 end:0x021551fc
+
+src/Combat/Overlay_5/Trans_02159208.cpp:
+    complete
+    .text start:0x02159208 end:0x02159274
+
+src/Combat/Overlay_5/CheckStateAndDispatch0215a37c.cpp:
+    complete
+    .text start:0x0215a37c end:0x0215a3bc
+
+src/Combat/Overlay_5/ComputeAdjustedOffsets02154d7c.cpp:
+    complete
+    .text start:0x02154d7c end:0x02154da8
+
+src/Combat/Overlay_5/UpdateDeltaPosition_02154d18.cpp:
+    complete
+    .text start:0x02154d18 end:0x02154d34
+
+src/Combat/Overlay_5/UpdateDeltaPosition_02154d34.cpp:
+    complete
+    .text start:0x02154d34 end:0x02154d50
+
+src/Combat/Overlay_5/UpdateDeltaPosition_02154d50.cpp:
+    complete
+    .text start:0x02154d50 end:0x02154d7c
+
+
+src/Combat/Overlay_5/func_ov005_0215a620.cpp:
+    complete
+    .text start:0x0215a620 end:0x0215a720
+
+
+src/Combat/Overlay_5/func_ov005_0215436c.cpp:
+    complete
+    .text start:0x0215436c end:0x02154d18
+
+
+src/Combat/Overlay_5/func_ov005_0215b520.cpp:
+    complete
+    .text start:0x0215b520 end:0x0215be60
+
+
+src/Combat/Overlay_5/func_ov005_02157b74.cpp:
+    complete
+    .text start:0x02157b74 end:0x021583fc
+
+src/Menu/Overlay5EntryLayout.cpp:
+    complete
+    .text start:0x02155424 end:0x02155544

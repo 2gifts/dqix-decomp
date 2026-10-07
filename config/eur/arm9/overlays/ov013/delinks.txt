@@ -1,0 +1,154 @@
+    .text       start:0x021842a0 end:0x02187d88 kind:code align:32
+    .rodata     start:0x02187d88 end:0x02187dec kind:rodata align:4
+    .ctor       start:0x02187dec end:0x02187df0 kind:rodata align:4
+    .data       start:0x02187e00 end:0x02187ee0 kind:data align:32
+    .bss        start:0x02187ee0 end:0x02187ee0 kind:bss align:32
+
+src/Combat/Overlay_13/GetArrayElement02184338.cpp:
+    complete
+    .text start:0x02184338 end:0x02184360
+
+src/Combat/Overlay_13/InitAllocatorArray02186e74.cpp:
+    complete
+    .text start:0x02186e74 end:0x02186eec
+
+src/Combat/Overlay_13/InitTag02185310.cpp:
+    complete
+    .text start:0x02185310 end:0x02185424
+
+src/Combat/Overlay_13/InitTag02185828.cpp:
+    complete
+    .text start:0x02185828 end:0x02185900
+
+src/Combat/Overlay_13/InitTag02185aac.cpp:
+    complete
+    .text start:0x02185aac end:0x02185be0
+
+src/Combat/Overlay_13/ResetCombatEntry02184a58.cpp:
+    complete
+    .text start:0x02184a58 end:0x02184aec
+
+src/Combat/Overlay_13/SetupBattleMessage02185774.cpp:
+    complete
+    .text start:0x02185774 end:0x02185828
+
+src/Combat/Overlay_13/HandleFieldFlagsAndState021870c0.cpp:
+    complete
+    .text start:0x021870c0 end:0x021870f0
+
+src/Combat/Overlay_13/AdvanceOrResetTagState0218683c.cpp:
+    complete
+    .text start:0x0218683c end:0x02186bd4
+
+src/Combat/Overlay_13/AdvanceTagState02186590.cpp:
+    complete
+    .text start:0x02186590 end:0x0218678c
+
+src/Combat/Overlay_13/AppendCursorAndFieldNameTags02185be0.cpp:
+    complete
+    .text start:0x02185be0 end:0x02185cc0
+
+src/Combat/Overlay_13/AppendKeyedSizeTag02185900.cpp:
+    complete
+    .text start:0x02185900 end:0x02185990
+
+src/Combat/Overlay_13/AppendStatusMessageTag02185e40.cpp:
+    complete
+    .text start:0x02185e40 end:0x02186160
+
+src/Combat/Overlay_13/ApplyElemFieldsSlot0_02186bd4.cpp:
+    complete
+    .text start:0x02186bd4 end:0x02186c1c
+
+src/Combat/Overlay_13/ApplyElemFieldsSlot3_02186c1c.cpp:
+    complete
+    .text start:0x02186c1c end:0x02186c64
+
+src/Combat/Overlay_13/DispatchElementList02187784.cpp:
+    complete
+    .text start:0x02187784 end:0x0218782c
+
+src/Combat/Overlay_13/GetElemRectHit021842a0.cpp:
+    complete
+    .text start:0x021842a0 end:0x02184338
+
+src/Combat/Overlay_13/InitAllocators02184cf0.cpp:
+    complete
+    .text start:0x02184cf0 end:0x02184d80
+
+src/Combat/Overlay_13/InitCombatEntry02184360.cpp:
+    complete
+    .text start:0x02184360 end:0x021846a0
+
+src/Combat/Overlay_13/InitCombatEntry02185990.cpp:
+    complete
+    .text start:0x02185990 end:0x02185aac
+
+src/Combat/Overlay_13/InitDrawContext02186eec.cpp:
+    complete
+    .text start:0x02186eec end:0x02186fa0
+
+src/Combat/Overlay_13/ProcessBattleMessageState02186160.cpp:
+    complete
+    .text start:0x02186160 end:0x021864f0
+
+src/Combat/Overlay_13/RefreshTagAndReinit021864f0.cpp:
+    complete
+    .text start:0x021864f0 end:0x02186590
+
+src/Combat/Overlay_13/RefreshTagAndReinit0218678c.cpp:
+    complete
+    .text start:0x0218678c end:0x0218683c
+
+src/Combat/Overlay_13/ResetAndFlushDisplayState02186fa0.cpp:
+    complete
+    .text start:0x02186fa0 end:0x021870c0
+
+src/Combat/Overlay_13/ResetCombatOverlayState021846a0.cpp:
+    complete
+    .text start:0x021846a0 end:0x021847c4
+
+src/Combat/Overlay_13/SetABState0218782c.cpp:
+    complete
+    .text start:0x0218782c end:0x021878b0
+
+src/Combat/Overlay_13/SetElemFlagAndApply02186c64.cpp:
+    complete
+    .text start:0x02186c64 end:0x02186cac
+
+src/Combat/Overlay_13/SetupBattleMessageBody02185424.cpp:
+    complete
+    .text start:0x02185424 end:0x02185774
+
+src/Combat/Overlay_13/SetupBattleScaleData02184aec.cpp:
+    complete
+    .text start:0x02184aec end:0x02184b4c
+
+src/Combat/Overlay_13/UpdateFieldScaleAndSumArray02184c8c.cpp:
+    complete
+    .text start:0x02184c8c end:0x02184cf0
+
+src/Combat/Overlay_13/UpdateTagDispatch021847c4.cpp:
+    complete
+    .text start:0x021847c4 end:0x02184a58
+
+src/Combat/Overlay_13/func_ov013_021878b0.cpp:
+    complete
+    .text start:0x021878b0 end:0x02187a58
+
+src/Combat/Overlay_13/PositionElementCursor02186db4.cpp:
+    complete
+    .text start:0x02186db4 end:0x02186e74
+
+src/Combat/Overlay_13/func_ov013_02184b4c.cpp:
+    complete
+    .text start:0x02184b4c end:0x02184c8c
+
+src/Combat/Overlay_13/func_ov013_02186cac.cpp:
+    complete
+    .text start:0x02186cac end:0x02186db4
+
+
+src/Combat/Overlay_13/func_ov013_02187a58.cpp:
+    complete
+    .text start:0x02187a58 end:0x02187d88
