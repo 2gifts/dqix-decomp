@@ -17692,7 +17692,7 @@ src/World/MarkVisitedGrottoTile.cpp:
     complete
     .text start:0x02024d94 end:0x02024e78
 
-src/Combat/InitializeCombatPairLayout.cpp:
+src/Combat/Main/InitializeCombatPairLayout.cpp:
     complete
     .text start:0x0205cc50 end:0x0205cd28
 
