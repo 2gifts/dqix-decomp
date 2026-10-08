@@ -7,7 +7,7 @@ struct KeyedList0207c484 {
     short counts[8];
     unsigned char keys[8];
 };
-extern "C" int _Z33DecrementKeyedStackAmount0207c484P17KeyedList0207c484iii(KeyedList0207c484 *, int, int, int);
+int DecrementKeyedStackAmount0207c484(KeyedList0207c484 *, int, int, int);
 extern const short data_020e8a04[8];
 
 // USA: func_0207c894
@@ -41,7 +41,7 @@ extern "C" ARM int func_0207c894(void *map, int value, int key) {
             }
         }
     } else {
-        return _Z33DecrementKeyedStackAmount0207c484P17KeyedList0207c484iii(list, value, 1, keyIndex) != 0;
+        return DecrementKeyedStackAmount0207c484(list, value, 1, keyIndex) != 0;
     }
     return 0;
 }
