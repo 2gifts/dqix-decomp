@@ -1874,3 +1874,8 @@ src/Combat/Overlay_1/02163ccc.cpp:
 src/Combat/Overlay_1/func_ov001_02162338.cpp:
     complete
     .text start:0x02162338 end:0x02162468
+
+
+src/Combat/Overlay_1/CubicPathAdvancement.cpp:
+    complete
+    .text start:0x021570b4 end:0x02157570
