@@ -17967,3 +17967,13 @@ src/Combat/Main/func_02013158.cpp:
 src/Combat/Main/_Z16WaitForInterruptbj.cpp:
     complete
     .text start:0x020c6954 end:0x020c69c8
+
+
+src/Combat/Main/func_02011744.cpp:
+    complete
+    .text start:0x02011744 end:0x020117cc
+
+
+src/Combat/Main/func_0202eab8.cpp:
+    complete
+    .text start:0x0202eab8 end:0x0202ec5c
