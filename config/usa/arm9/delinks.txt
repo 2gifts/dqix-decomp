@@ -17704,3 +17704,12 @@ src/Combat/Main/CompletedResourceLoads.cpp:
 src/Combat/Main/CancelResourceTasks.cpp:
     complete
     .text start:0x02022bb0 end:0x02022d78
+
+src/Combat/Main/InitializeCombatReceiver.cpp:
+    complete
+    .text start:0x02020554 end:0x02020720
+
+
+src/Combat/Main/UpdateCombatReceiverResources.cpp:
+    complete
+    .text start:0x0202343c end:0x020235c8
