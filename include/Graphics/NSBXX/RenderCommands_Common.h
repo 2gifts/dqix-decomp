@@ -29,12 +29,6 @@
 #define data_0210a278 data_02109f30
 #define data_0210b078 data_0210ad30
 
-#define Mat4x3_ConvertTo4x4 func_020c3334
-#define Mat4x4_Multiply func_020c3d08
-#define fix32_GetDivisionResult func_020c4728
-#define fix32_QueueComputeQuotient func_020c47bc
-#define Vector3fix_Length func_020c4984
-#define Vector3fix_Normalize func_020c49e4
 #define _Z24SubmitBlock0x40IfNotBusyi func_020c6fc8
 #define func_020ca3ec func_020cbeb8
 #define func_020ca408 func_020cbed4

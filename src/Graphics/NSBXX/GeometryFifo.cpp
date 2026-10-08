@@ -8,13 +8,9 @@
 #pragma optimize_for_size off
 
 #if defined(jpn)
-#define Mat4x3_ApplyToVector func_020c3b00
-#define Mat4x4_ConvertTo4x3 func_020c3cd4
-#define GetHardwareDividerResult func_020c4704
-#define fix32_QueueComputeReciprocal func_020c4760
 #define func_020c51dc func_020c6ca8
 #define _Z24SubmitBlock0x40IfNotBusyi func_020c6fc8
-#define _Z24SubmitBlock0x80IfNotBusyi _Z18MarkGBABusReleasedv
+#define _Z24SubmitBlock0x80IfNotBusyi func_020c6ff8
 #define func_020ca0a8 func_020cbb74
 #define func_020ca2ac func_020cbd78
 #define func_020ca4b4 func_020cbf80
