@@ -17752,3 +17752,7 @@ src/Combat/Main/RemoveKeyedListValue.cpp:
 src/Combat/Main/RefreshCombatantResourceFlags.cpp:
     complete
     .text start:0x02026bdc end:0x02026ebc
+
+src/Combat/Main/AdvanceYawTowardTarget.cpp:
+    complete
+    .text start:0x02041378 end:0x02041470
