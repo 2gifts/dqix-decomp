@@ -17695,3 +17695,12 @@ src/World/MarkVisitedGrottoTile.cpp:
 src/Combat/InitializeCombatPairLayout.cpp:
     complete
     .text start:0x0205cc50 end:0x0205cd28
+
+src/Combat/Main/CompletedResourceLoads.cpp:
+    complete
+    .text start:0x020210f8 end:0x02021394
+
+
+src/Combat/Main/CancelResourceTasks.cpp:
+    complete
+    .text start:0x02022bb0 end:0x02022d78
