@@ -17659,6 +17659,6 @@ src/World/CreateOpcode6aEntry.cpp:
     .text start:0x0201e710 end:0x0201e80c
 
 
-src/Combat/Main/func_02041378.cpp:
+src/Combat/Main/AdvanceYawTowardTarget.cpp:
     complete
     .text start:0x02041378 end:0x02041470
