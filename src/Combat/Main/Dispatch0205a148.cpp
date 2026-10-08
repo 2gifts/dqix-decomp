@@ -1,7 +1,8 @@
 #include <globaldefs.h>
 
+#include "Combat/DistanceSort.h"
+
 extern "C" void _ZN8Object3D4DrawEb(void* obj, int flag);
-int ForwardField4To0205765c(int* obj);
 
 struct Obj0205a148 {
     unsigned char pad_ac[0xac];
