@@ -17673,3 +17673,17 @@ src/World/WarpScriptOpcode72.cpp:
 src/Graphics/NSBXX/BindPoseScaling.cpp:
     complete
     .text start:0x020b7990 end:0x020b7a20
+
+src/World/InitializeZoneResourceNode.cpp:
+    complete
+    .text start:0x02014a24 end:0x02014b04
+
+
+src/World/LoadZoneObjectResource.cpp:
+    complete
+    .text start:0x020151cc end:0x02015438
+
+
+src/World/InitializeZoneResourceTree.cpp:
+    complete
+    .text start:0x020177d4 end:0x02017a94

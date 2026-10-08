@@ -1,3 +1,4 @@
+#include "World/ZoneResourceInitialization.h"
 #include <globaldefs.h>
 
 extern "C" void _Z37FormatFilenameAndSetExtension02014d18iPcS_(int id, char* ext, char* outBuf);
@@ -9,9 +10,6 @@ extern "C" void _Z24InitRenderParams0204bf44P20RenderParams0204bf44iP20RenderSou
 
 extern char data_020ef1ee;
 
-struct Ctx02015134 { char pad[0x68]; void* allocator; };
-struct Out02015134 { unsigned short flag; void* field4; };
-struct Src02015134 { char pad[4]; int id; };
 
 // USA: func_02015134  (semantic: LoadAndDecompressResource_02015134)
 extern "C" ARM int func_02015134(Ctx02015134* ctx, Out02015134* out, Src02015134* src) {

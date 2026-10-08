@@ -1,3 +1,4 @@
+#include "World/ZoneResourceInitialization.h"
 #include "World/Zone3D.h"
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
@@ -46,7 +47,6 @@ extern "C"
     void _Z13Reset02013490Pc(void*);
     void _Z22ResetBigStruct02013750Pvi(Zone3D*, bool);
     void _ZN6Zone3D15ProcessBATSFileEPKvj(Zone3D*, const void*, unsigned);
-    void func_02014a24(Zone3D*, void*);
 
     // checks if zone id corresponds to a main floor of a grotto
     bool _Z17IsInRange0201b5b0i(int id);
