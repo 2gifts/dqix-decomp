@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 
-extern "C" int _Z26GetGlobalField0x1c020421a0v();
+int GetGlobalField0x1c020421a0();
 struct Struct_0205bd58;
-extern "C" void _Z17SetFields0205bd58P15Struct_0205bd58iiiii(Struct_0205bd58 *fields, int count, int a, int b, int c, int d);
+void SetFields0205bd58(Struct_0205bd58 *fields, int count, int a, int b, int c, int d);
 
 struct CombatPairPrefix {
     unsigned char unknown_0[0x58];
@@ -29,7 +29,7 @@ struct CombatPairPrefix {
 // USA: func_0205cc50
 extern "C" ARM void func_0205cc50(void *object, int alignWidth, int adjustment) {
     CombatPairPrefix *pair = static_cast<CombatPairPrefix *>(object);
-    _Z26GetGlobalField0x1c020421a0v();
+    GetGlobalField0x1c020421a0();
 
     int count       = pair->pairCount;
     int totalHeight = count * 12 + 16;
@@ -47,6 +47,6 @@ extern "C" ARM void func_0205cc50(void *object, int alignWidth, int adjustment) 
     short y      = pair->inputY;
     pair->stateX = x;
     pair->stateY = y;
-    _Z17SetFields0205bd58P15Struct_0205bd58iiiii(reinterpret_cast<Struct_0205bd58 *>(static_cast<unsigned char *>(object) + 0x20), pair->entryCount,
+    SetFields0205bd58(reinterpret_cast<Struct_0205bd58 *>(static_cast<unsigned char *>(object) + 0x20), pair->entryCount,
                       (int) pair->widths, (int) pair->offsets, (int) pair->payloadSizes, (int) pair->rowSizes);
 }
