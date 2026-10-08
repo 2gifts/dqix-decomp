@@ -17618,3 +17618,8 @@ src/Combat/Main/func_0207051c.cpp:
 src/Combat/Main/func_020776a0.cpp:
     complete
     .text start:0x020776a0 end:0x02077788
+
+
+src/System/InterruptRegistration.cpp:
+    complete
+    .text start:0x020c6aec end:0x020c6c90
