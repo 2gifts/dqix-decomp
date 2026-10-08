@@ -1,4 +1,6 @@
 #include <globaldefs.h>
+
+#include "Combat/DistanceSort.h"
 #include "GameState/GameState.h"
 
 
@@ -13,7 +15,6 @@ extern "C" void* _ZN12RenderConfig20GetInverseViewMatrixEv(void);
 
 extern "C" void _ZN8Object3D4DrawEb(void* obj, int flag);
 
-int ForwardField4To0205765c(int* obj);
 
 struct Vec3_02059f54 { int x; int y; int z; };
 

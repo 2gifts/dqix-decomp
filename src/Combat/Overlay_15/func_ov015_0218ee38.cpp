@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 
-int ForwardField4To0205765c(int* obj);
+#include "Combat/DistanceSort.h"
+
 struct Obj020577cc;
 ARM void SumNestedHalfwordPairs020577cc(struct Obj020577cc* obj, unsigned short* out1, unsigned short* out2);
 extern "C" void _ZN8Object3D4DrawEb(void* p);
