@@ -705,3 +705,39 @@ void SendStagedVRAMDataToVRAM(void* vramStagingManagerUserdata)
         return;
     ((VRAMStagingManager*)vramStagingManagerUserdata)->SendReadyDataToVRAM();
 }
+
+extern "C" VRAMStagingManager::Task* _ZN18VRAMStagingManager4TaskC1Ev(VRAMStagingManager::Task* self)
+{
+    self->Reset();
+    return self;
+}
+
+extern "C" VRAMStagingManager::StagingSpaceAllocation* _ZN18VRAMStagingManager22StagingSpaceAllocationC1Ev(
+    VRAMStagingManager::StagingSpaceAllocation* self)
+{
+    self->flags_ = 0;
+    self->start_ = 0;
+    self->size_ = 0;
+    return self;
+}
+
+extern "C" VRAMStagingManager::CommonVRAMRegionTaskSet* _ZN18VRAMStagingManager23CommonVRAMRegionTaskSetC1EPht(
+    VRAMStagingManager::CommonVRAMRegionTaskSet* self, unsigned char* pendingTaskIndices, unsigned short maxNumTasks)
+{
+    self->pendingTaskIndices_ = pendingTaskIndices;
+    self->maxNumTasks_ = maxNumTasks;
+    self->Reset();
+    return self;
+}
+
+extern "C" VRAMStagingManager* _ZN18VRAMStagingManagerC1Ev(VRAMStagingManager* self)
+{
+    self->ZeroInitialize();
+    return self;
+}
+
+extern "C" VRAMStagingManager* _ZN18VRAMStagingManagerD1Ev(VRAMStagingManager* self)
+{
+    self->CancelAllTasks();
+    return self;
+}

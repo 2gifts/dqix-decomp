@@ -35,11 +35,11 @@ _ZN18VRAMStagingManager11UpdateBanksEv kind:function(arm,size=0x114) addr:0x01ff
 _ZN18VRAMStagingManager19SendReadyDataToVRAMEv kind:function(arm,size=0x500) addr:0x01ff91b8
 _ZN18VRAMStagingManager23CommonVRAMRegionTaskSet5ResetEv kind:function(arm,size=0x14) addr:0x01ff96b8
 _Z24SendStagedVRAMDataToVRAMPv kind:function(arm,size=0x14) addr:0x01ff96cc
-func_01ff96e0 kind:function(arm,size=0x14) addr:0x01ff96e0
-func_01ff96f4 kind:function(arm,size=0x14) addr:0x01ff96f4
-func_01ff9708 kind:function(arm,size=0x1c) addr:0x01ff9708
-func_01ff9724 kind:function(arm,size=0x14) addr:0x01ff9724
-func_01ff9738 kind:function(arm,size=0x14) addr:0x01ff9738
+_ZN18VRAMStagingManager4TaskC1Ev kind:function(arm,size=0x14) addr:0x01ff96e0
+_ZN18VRAMStagingManager22StagingSpaceAllocationC1Ev kind:function(arm,size=0x14) addr:0x01ff96f4
+_ZN18VRAMStagingManager23CommonVRAMRegionTaskSetC1EPht kind:function(arm,size=0x1c) addr:0x01ff9708
+_ZN18VRAMStagingManagerC1Ev kind:function(arm,size=0x14) addr:0x01ff9724
+_ZN18VRAMStagingManagerD1Ev kind:function(arm,size=0x14) addr:0x01ff9738
 data_01ff9760 kind:bss addr:0x01ff9760
 data_01ffd360 kind:bss addr:0x01ffd360
 data_01ffd364 kind:bss addr:0x01ffd364
