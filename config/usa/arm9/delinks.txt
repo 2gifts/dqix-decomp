@@ -18144,6 +18144,6 @@ src/Combat/Main/func_0202eab8.cpp:
     .text start:0x0202eab8 end:0x0202ec5c
 
 
-src/Combat/Main/func_0205765c.cpp:
+src/Combat/Main/DispatchObjectsByDistance.cpp:
     complete
     .text start:0x0205765c end:0x020577cc
