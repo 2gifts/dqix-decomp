@@ -2,7 +2,6 @@ name: Match
 
 on:
   push:
-    branches: [main, decomp-matching]
   pull_request:
   merge_group:
   workflow_dispatch:
@@ -16,35 +15,35 @@ concurrency:
 
 jobs:
   usa:
-    if: github.event_name != 'pull_request'
+    if: github.event_name != 'pull_request' && (github.event_name != 'push' || github.ref == format('refs/heads/{0}', vars.BADGE_REF || github.event.repository.default_branch))
     uses: ./.github/workflows/build.yml
     with:
       version: usa
       label: USA
-      publish-badges: ${{ github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', vars.BADGE_REF || 'main') }}
+      publish-badges: ${{ github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', vars.BADGE_REF || github.event.repository.default_branch) }}
     secrets: inherit
 
   jpn:
-    if: github.event_name != 'pull_request'
+    if: github.event_name != 'pull_request' && (github.event_name != 'push' || github.ref == format('refs/heads/{0}', vars.BADGE_REF || github.event.repository.default_branch))
     uses: ./.github/workflows/build.yml
     with:
       version: jpn
       label: JPN
-      publish-badges: ${{ github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', vars.BADGE_REF || 'main') }}
+      publish-badges: ${{ github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', vars.BADGE_REF || github.event.repository.default_branch) }}
     secrets: inherit
 
   eur:
-    if: github.event_name != 'pull_request'
+    if: github.event_name != 'pull_request' && (github.event_name != 'push' || github.ref == format('refs/heads/{0}', vars.BADGE_REF || github.event.repository.default_branch))
     uses: ./.github/workflows/build.yml
     with:
       version: eur
       label: EUR
-      publish-badges: ${{ github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', vars.BADGE_REF || 'main') }}
+      publish-badges: ${{ github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', vars.BADGE_REF || github.event.repository.default_branch) }}
     secrets: inherit
 
   badges-usa:
     needs: usa
-    if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', vars.BADGE_REF || 'main')
+    if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', vars.BADGE_REF || github.event.repository.default_branch)
     uses: ./.github/workflows/publish-badges.yml
     with:
       version: usa
@@ -56,7 +55,7 @@ jobs:
 
   badges-jpn:
     needs: jpn
-    if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', vars.BADGE_REF || 'main')
+    if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', vars.BADGE_REF || github.event.repository.default_branch)
     uses: ./.github/workflows/publish-badges.yml
     with:
       version: jpn
@@ -68,7 +67,7 @@ jobs:
 
   badges-eur:
     needs: eur
-    if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', vars.BADGE_REF || 'main')
+    if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', vars.BADGE_REF || github.event.repository.default_branch)
     uses: ./.github/workflows/publish-badges.yml
     with:
       version: eur
