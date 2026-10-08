@@ -4,7 +4,7 @@
 #include "System/Graphics.h"
 #include "System/LoadToVRAM.h"
 
-extern "C" void _Z26SetIntArrayElement020b0334Piii(int *array, int index, int value);
+void SetIntArrayElement020b0334(int *array, int index, int value);
 
 struct CharacterResourceData020b0594 {
     unsigned short height;
@@ -83,5 +83,5 @@ extern "C" ARM void func_020b0594(int resource, int offset, int tier, void *obje
     state->unknown18   = 0;
     state->enabled     = 1;
     state->mappingMode = character->mappingMode;
-    _Z26SetIntArrayElement020b0334Piii(state->offsets, tier, offset);
+    SetIntArrayElement020b0334(state->offsets, tier, offset);
 }
