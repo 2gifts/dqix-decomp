@@ -134,6 +134,7 @@ if platform is None:
     exit(1)
 EXE = platform.exe
 WINE = args.wine if platform.system != "windows" else ""
+WINE_DEP = [WINE] if platform.system != "windows" and WINE == DEFAULT_WIBO_PATH else []
 DSD = str(args.dsd or os.path.join('.', str(root_path / f"dsd{EXE}")))
 OBJDIFF = os.path.join('.', str(root_path / f"objdiff-cli{EXE}"))
 CC = os.path.join('.', str(mwcc_path / "mwccarm.exe"))
@@ -248,7 +249,7 @@ def main():
         # $cc_flags, so a gate that substitutes $cc_flags does not drop them.
         region_defines = "-d usa -d eur" if args.version == "eur" else "-d $game_version"
         mwcc_cmd = f'{WINE} "$cc_exe" {CC_FLAGS} {CC_INCLUDES} $cc_flags {region_defines} -MD -c $in -o $basedir'
-        mwcc_implicit = [CC]
+        mwcc_implicit = [CC] + WINE_DEP
         if platform.system != "windows":
             transform_dep = "tools/transform_dep.py"
             mwcc_cmd += f" && $python {transform_dep} $basefile.d $basefile.d"
@@ -425,7 +426,7 @@ def add_mwld_and_rom_builds(n: ninja_syntax.Writer, project: Project):
     elf_file = str(project.arm9_o())
     n.build(
         inputs=project.source_object_files() + [lcf_file, objects_file, delink_file],
-        implicit=LD,
+        implicit=[LD] + WINE_DEP,
         rule="mwld",
         outputs=elf_file,
         variables={
@@ -486,7 +487,7 @@ def add_mwcc_builds(n: ninja_syntax.Writer, project: Project, mwcc_implicit: lis
     for source_file in get_asm_files([src_path, libs_path]):
         n.build(
             inputs=str(source_file),
-            implicit=[AS],
+            implicit=[AS] + WINE_DEP,
             rule="mwasm",
             outputs=str((project.game_build / source_file).with_suffix(".o")),
         )
