@@ -18207,3 +18207,18 @@ src/Combat/Main/func_020d3df8.cpp:
 src/Combat/Main/func_020d651c.cpp:
     complete
     .text start:0x020d651c end:0x020d6610
+
+
+src/Combat/Main/Mat4x4_WriteProjectionUnknown.cpp:
+    complete
+    .text start:0x020c29ec end:0x020c2bf4
+
+
+src/Combat/Main/OnDMAOrTimerCompletion.cpp:
+    complete
+    .text start:0x020c69cc end:0x020c6a54
+
+
+src/Combat/Main/Vector3fix_CrossProduct.cpp:
+    complete
+    .text start:0x020c2e34 end:0x020c2eb8
