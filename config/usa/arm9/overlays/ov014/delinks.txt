@@ -222,3 +222,78 @@ src/Menu/Overlay_14/BestiaryDraw.cpp:
 src/Menu/Overlay_14/BestiaryExtendedAllocation.cpp:
     complete
     .text start:0x021868b8 end:0x02186a70
+
+
+src/Combat/Overlay_14/func_ov014_02184dcc.cpp:
+    complete
+    .text start:0x02184dcc end:0x02184e3c
+
+
+src/Combat/Overlay_14/func_ov014_02184f78.cpp:
+    complete
+    .text start:0x02184f78 end:0x021850cc
+
+
+src/Combat/Overlay_14/func_ov014_021850cc.cpp:
+    complete
+    .text start:0x021850cc end:0x0218580c
+
+
+src/Combat/Overlay_14/func_ov014_0218580c.cpp:
+    complete
+    .text start:0x0218580c end:0x02185c3c
+
+
+src/Combat/Overlay_14/func_ov014_02186bc8.cpp:
+    complete
+    .text start:0x02186bc8 end:0x02186d64
+
+
+src/Combat/Overlay_14/func_ov014_02187074.cpp:
+    complete
+    .text start:0x02187074 end:0x02187228
+
+
+src/Combat/Overlay_14/func_ov014_02187340.cpp:
+    complete
+    .text start:0x02187340 end:0x021873a0
+
+
+src/Combat/Overlay_14/func_ov014_02187568.cpp:
+    complete
+    .text start:0x02187568 end:0x02187b38
+
+
+src/Combat/Overlay_14/func_ov014_02187c04.cpp:
+    complete
+    .text start:0x02187c04 end:0x02187db8
+
+
+src/Combat/Overlay_14/func_ov014_02187db8.cpp:
+    complete
+    .text start:0x02187db8 end:0x02188010
+
+
+src/Combat/Overlay_14/func_ov014_02188010.cpp:
+    complete
+    .text start:0x02188010 end:0x021882d4
+
+
+src/Combat/Overlay_14/func_ov014_02188330.cpp:
+    complete
+    .text start:0x02188330 end:0x021884cc
+
+
+src/Combat/Overlay_14/func_ov014_021886f8.cpp:
+    complete
+    .text start:0x021886f8 end:0x02188a8c
+
+
+src/Combat/Overlay_14/func_ov014_02188d48.cpp:
+    complete
+    .text start:0x02188d48 end:0x021891f0
+
+
+src/Combat/Overlay_14/func_ov014_0218934c.cpp:
+    complete
+    .text start:0x0218934c end:0x02189380
