@@ -17603,3 +17603,48 @@ src/Combat/Main/func_02075acc.cpp:
 src/Combat/Main/func_02078398.cpp:
     complete
     .text start:0x02078398 end:0x02078484
+
+
+src/Combat/Main/func_0206ac94.cpp:
+    complete
+    .text start:0x0206ac94 end:0x0206ad74
+
+
+src/Combat/Main/func_0206b528.cpp:
+    complete
+    .text start:0x0206b528 end:0x0206b61c
+
+
+src/Combat/Main/func_0206c010.cpp:
+    complete
+    .text start:0x0206c010 end:0x0206c0f8
+
+
+src/Combat/Main/func_0206c0f8.cpp:
+    complete
+    .text start:0x0206c0f8 end:0x0206c2c0
+
+
+src/Combat/Main/func_02077a34.cpp:
+    complete
+    .text start:0x02077a34 end:0x02077be0
+
+
+src/Combat/Main/func_02077e80.cpp:
+    complete
+    .text start:0x02077e80 end:0x02078050
+
+
+src/Combat/Main/func_02078050.cpp:
+    complete
+    .text start:0x02078050 end:0x020781e8
+
+
+src/Combat/Main/func_02078754.cpp:
+    complete
+    .text start:0x02078754 end:0x02078894
+
+
+src/Combat/Main/func_02078e60.cpp:
+    complete
+    .text start:0x02078e60 end:0x02079040
