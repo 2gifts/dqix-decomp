@@ -37,6 +37,9 @@ typedef struct Vector3i
     int32_t x;
     int32_t y;
     int32_t z;
+#ifdef __cplusplus
+    Vector3i& operator=(const Vector3i& other);
+#endif
 } Vector3i;
 
 typedef struct Vector3s

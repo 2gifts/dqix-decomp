@@ -17657,3 +17657,15 @@ src/Graphics/NSBXX/NameLookup.cpp:
 src/World/CreateOpcode6aEntry.cpp:
     complete
     .text start:0x0201e710 end:0x0201e80c
+
+src/World/WarpScriptOpcode67.cpp:
+    complete
+    .text start:0x0201c96c end:0x0201cb38
+
+src/World/WarpScriptOpcode69.cpp:
+    complete
+    .text start:0x0201cb60 end:0x0201ce10
+
+src/World/WarpScriptOpcode72.cpp:
+    complete
+    .text start:0x0201ce80 end:0x0201d01c
