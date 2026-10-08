@@ -34,14 +34,7 @@ extern "C" double func_02009598(double a, double b);
 extern "C" float func_0200c9b4(float value);
 extern "C" void func_0202e5d8(struct Obj0202eab8* obj, int angle, int radiusY, int heightZ);
 
-// UpdateSphericalFromOffset0202eab8
 // USA: func_0202eab8
-// Shape matters: the three component offsets must live in a stack aggregate (this frame is
-// 0xc, slots assigned in first-store order dx@0, dy@4, dz@8), and the z offset must also be
-// copied into a named float used ONLY as the atan2 argument. That copy is what makes
-// mwccarm emit `mov r6, r0 ; str r6, [sp,#8]` and then reuse r6 for the high word of the
-// first double. Named float locals alone (all in callee-saved regs) give 0x198; the plain
-// aggregate gives 0x1a0. Losing variants are kept beside this file.
 extern "C" ARM void func_0202eab8(struct Obj0202eab8* obj) {
     struct Vec3f0202eab8 delta;
     delta.x = _fsub(_fdiv(_fflt(obj->posA.x), 4096.0f), _fdiv(_fflt(obj->posB.x), 4096.0f));

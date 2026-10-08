@@ -6,8 +6,8 @@ extern "C" int func_020bd99c(void* obj);
 extern "C" int func_020bdc24(void* objPtr);
 
 struct Obj020bdb0c {
-    HMRFAllocator* allocator;   /* 0x00 */
-    SignedAllocatorList list;   /* 0x04 */
+    HMRFAllocator* allocator;
+    SignedAllocatorList list;
 };
 
 typedef void (*Callback020bdb0c)(void*, int, int, int);
