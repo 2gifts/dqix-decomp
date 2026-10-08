@@ -18142,3 +18142,13 @@ src/Combat/Main/func_02011744.cpp:
 src/Combat/Main/func_0202eab8.cpp:
     complete
     .text start:0x0202eab8 end:0x0202ec5c
+
+
+src/Combat/Main/func_0209e9f4.cpp:
+    complete
+    .text start:0x0209e9f4 end:0x0209eaec
+
+
+src/Combat/Main/func_0209eaec.cpp:
+    complete
+    .text start:0x0209eaec end:0x0209ebe4
