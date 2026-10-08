@@ -20,10 +20,10 @@ struct Arg1_021f8874 {
     unsigned int field10;
 };
 
-extern "C" int func_ov024_021f87dc(struct CombatantLike_021f8874* a0, struct Arg1_021f8874* a1, int a2);
+extern "C" int func_ov024_021f87dc(struct CombatantLike_021f8874* a0, struct Arg1_021f8874* a1, int* a2);
 
 // USA: func_ov024_021f8874  (semantic: CheckEligibilityAndFlags_021f8874)
-extern "C" ARM int func_ov024_021f8874(struct Obj_021f8874* obj, struct Arg1_021f8874* target, struct CombatantLike_021f8874* combatant, int extra) {
+extern "C" ARM int func_ov024_021f8874(struct Obj_021f8874* obj, struct Arg1_021f8874* target, struct CombatantLike_021f8874* combatant, int* extra) {
     if (!target) return 0;
     if (((target->field8 << 4) >> 31) == 0) return 0;
     int inRange = 0;
