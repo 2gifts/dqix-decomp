@@ -5,8 +5,6 @@
 extern "C" void *func_02012fe4();
 extern "C" void func_02027974(void *object, int adjacencyData, void *state);
 
-// Same two-stage grotto address used by func_02021f88. Together these offsets
-// reach the canonical Zone3D::grotto_ member at 0x23ec in the USA layout.
 static inline char *GrottoOffset3ec(Zone3D *zone) {
     return reinterpret_cast<char *>(zone) + 0x3ec;
 }

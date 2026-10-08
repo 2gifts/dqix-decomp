@@ -41,7 +41,6 @@ struct ZoneResourceRuntimeNode {
     char unknown58[0x18];
 };
 
-// Only the prefix accessed during resource-tree initialization is described.
 struct ZoneResourceTree {
     ZoneResourceNode resources;
     ZoneResourceRuntimeNode *nodes;

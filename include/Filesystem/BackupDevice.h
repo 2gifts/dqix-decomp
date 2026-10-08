@@ -19,7 +19,6 @@ struct BackupDeviceSpec {
     unsigned char initialStatus;
     unsigned char padding55[3];
     unsigned int capabilities;
-    // This final word is cleared with the specification; its purpose is unknown.
     unsigned int unknown5c;
 };
 

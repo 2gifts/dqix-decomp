@@ -21,7 +21,6 @@ extern "C" ARM void func_02041378(void *object) {
         return;
     }
 
-    // The equality return ensures that one of the signed-order arms assigns distance.
     fix32_t distance;
     if (current < target) {
         distance = target - current;
