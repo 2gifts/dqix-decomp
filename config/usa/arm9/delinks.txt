@@ -17748,3 +17748,7 @@ src/System/GetOBJAssignedVRAMSize.cpp:
 src/Combat/Main/RemoveKeyedListValue.cpp:
     complete
     .text start:0x0207c894 end:0x0207c984
+
+src/Combat/Main/RefreshCombatantResourceFlags.cpp:
+    complete
+    .text start:0x02026bdc end:0x02026ebc
