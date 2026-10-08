@@ -1,11 +1,12 @@
 #include <globaldefs.h>
+
+#include "Filesystem/BackupDevice.h"
 #include "Filesystem/FSInnerDefs.h"
 #include "System/Interrupts.h"
 #include "System/ProcessorContext.h"
 
 extern "C" void func_02000b9c(unsigned int);
 extern "C" void func_020c9be0(void);
-extern "C" void func_020d0078(void* handle);
 extern "C" void func_020d0fc4(CardReadManager* manager, int command, int arg);
 
 // USA: func_020d06fc
@@ -33,7 +34,7 @@ ARM int DispatchCartridgeReadToArm7(void* handle) {
     manager->handle = NULL;
     SetIRQInterruptState(oldState);
 
-    func_020d0078(handle);
+    func_020d0078((unsigned int) handle);
 
     data_021118e0.currentTaskExecutionContext = data_02111304.activeContext;
 

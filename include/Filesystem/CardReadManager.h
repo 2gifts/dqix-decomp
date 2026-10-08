@@ -1,5 +1,6 @@
 #pragma once
 
+#include "BackupDevice.h"
 #include "System/ProcessorContext.h"
 #include "LowNitroHandle.h"
 #include "NitroVM.h"
@@ -8,7 +9,17 @@
 struct Arm7CardReadData
 {
     int unknown_0;
-    int unknown_4[23];
+    union {
+        int unknown_4[23];
+        struct {
+            unsigned int type;
+            unsigned int id;
+            unsigned int source;
+            unsigned int destination;
+            unsigned int length;
+            BackupDeviceSpec spec;
+        } backup;
+    };
 };
 
 // sizeof <= 0x620

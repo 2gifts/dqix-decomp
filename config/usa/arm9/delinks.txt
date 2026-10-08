@@ -17783,3 +17783,7 @@ src/Combat/Main/UploadCharacterResource.cpp:
 src/Combat/Main/BuildScriptResourceEntry.cpp:
     complete
     .text start:0x02082490 end:0x0208274c
+
+src/Filesystem/IdentifyBackupDeviceCore.cpp:
+    complete
+    .text start:0x020d0078 end:0x020d03fc
