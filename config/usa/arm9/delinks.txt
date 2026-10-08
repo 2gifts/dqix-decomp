@@ -18224,6 +18224,6 @@ src/Combat/Main/Vector3fix_CrossProduct.cpp:
     .text start:0x020c2e34 end:0x020c2eb8
 
 
-src/Combat/Main/func_0205765c.cpp:
+src/Combat/Main/DispatchObjectsByDistance.cpp:
     complete
     .text start:0x0205765c end:0x020577cc
