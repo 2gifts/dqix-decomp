@@ -1,9 +1,6 @@
 #include <globaldefs.h>
 
-struct SortEntry_02056c3c {
-    void* node;
-    int key;
-};
+#include "Combat/DistanceSort.h"
 
 extern "C" int _fls(int a, int b);
 extern "C" int _fgr(int a, int b);
