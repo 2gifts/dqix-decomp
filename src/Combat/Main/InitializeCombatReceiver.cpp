@@ -22,10 +22,10 @@ struct Stopwatch0201f9e8 {
     unsigned char b3;
 };
 
-extern "C" void _Z19InitStruct_0201f9b8P11State_1f9b8(State_1f9b8 *state);
+void InitStruct_0201f9b8(State_1f9b8 *state);
 extern "C" void InitStopwatch0201f9e8(Stopwatch0201f9e8 *timer);
 extern "C" void func_02020720(char *receiver);
-extern "C" void _Z20ClearRecords02026644Pc(char *receiver);
+void ClearRecords02026644(char *receiver);
 
 extern State_1f9b8 data_020fdcb0[4];
 extern unsigned char data_020fdcce;
@@ -112,7 +112,7 @@ extern "C" ARM void func_02020554(void *receiver) {
     func_02020720((char *) obj);
 
     for (int i = 0; i < 4; i++) {
-        _Z19InitStruct_0201f9b8P11State_1f9b8(&data_020fdcb0[i]);
+        InitStruct_0201f9b8(&data_020fdcb0[i]);
         (&data_020fdcce)[i * 0x20] = 0;
         InitStopwatch0201f9e8((Stopwatch0201f9e8 *) &data_020fdc60[i]);
     }
@@ -131,7 +131,7 @@ extern "C" ARM void func_02020554(void *receiver) {
     obj->field9ba = 0;
     obj->field77c = 0;
     obj->field780 = 0;
-    _Z20ClearRecords02026644Pc((char *) obj);
+    ClearRecords02026644((char *) obj);
 
     obj->field9b8  = 0;
     obj->field9b9  = 0;
