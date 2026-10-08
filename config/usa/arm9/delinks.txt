@@ -17633,3 +17633,20 @@ src/Combat/Main/PruneFormationPath.cpp:
 src/Graphics/OBJImagePayloadSize.cpp:
     complete
     .text start:0x02076738 end:0x02076928
+
+
+src/System/ContextLifecycle.cpp:
+    complete
+    .text start:0x020c75b4 end:0x020c7884
+
+src/System/BlockCurrentContext.cpp:
+    complete
+    .text start:0x020c7898 end:0x020c78e8
+
+src/System/ReadyContexts.cpp:
+    complete
+    .text start:0x020c7950 end:0x020c79a0
+
+src/System/ContextScheduler.cpp:
+    complete
+    .text start:0x020c7be8 end:0x020c7ca8
