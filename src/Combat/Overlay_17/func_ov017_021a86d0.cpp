@@ -84,7 +84,7 @@ extern "C" void _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii(void* obj, in
 extern "C" void _Z29SetField0AndPropagate0205baccP12Node0205bacci(void* obj, int value);
 extern "C" void* _Z21GetFieldByKey020e0434P17Container020e0310i(void* cont, int key);
 extern "C" void _Z26ProcessCombatEntry0205cb74Pci(unsigned char* obj, void* entry);
-extern "C" void func_0205cc50(unsigned char* obj, int a, int b);
+extern "C" void func_0205cc50(void* obj, int a, int b);
 extern "C" void _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci(void* obj, int index);
 extern "C" void func_0205bb04(void* obj, int value);
 extern "C" void _Z24ResetBytesAndSetByte0x16P28ResetBytesAndSetByte0x16Datai(void* obj, int value);

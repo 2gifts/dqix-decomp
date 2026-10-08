@@ -104,7 +104,7 @@ extern "C" void func_0207de48(void* obj, int a, int b);
 extern "C" void func_02042c68(char* g);
 extern "C" void func_02043124(char* g);
 extern "C" void func_020432c4(char* g);
-extern "C" void func_0205cc50(char* obj, int a, int b);
+extern "C" void func_0205cc50(void* obj, int a, int b);
 extern "C" void func_0205bb04(void* obj, int a);
 extern "C" void func_02043368(char* g);
 extern "C" void func_020439b0(char* g, int a);
