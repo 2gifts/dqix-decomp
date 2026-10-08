@@ -17797,3 +17797,43 @@ src/Combat/Main/func_020e0b4c.cpp:
 src/Combat/Main/func_020e52a0.cpp:
     complete
     .text start:0x020e52a0 end:0x020e5334
+
+
+src/Combat/Main/_Z30FillEntryVariantFields0207f4a8P15Variant02030b0c.cpp:
+    complete
+    .text start:0x0207f4a8 end:0x0207f510
+
+
+src/Combat/Main/func_02033ce8.cpp:
+    complete
+    .text start:0x02033ce8 end:0x02033dd4
+
+
+src/Combat/Main/func_0205df38.cpp:
+    complete
+    .text start:0x0205df38 end:0x0205e00c
+
+
+src/Combat/Main/func_02089b90.cpp:
+    complete
+    .text start:0x02089b90 end:0x02089db4
+
+
+src/Combat/Main/func_020941f8.cpp:
+    complete
+    .text start:0x020941f8 end:0x020943dc
+
+
+src/Combat/Main/func_020a7d74.cpp:
+    complete
+    .text start:0x020a7d74 end:0x020a7eb8
+
+
+src/Combat/Main/func_020d9b34.cpp:
+    complete
+    .text start:0x020d9b34 end:0x020d9d60
+
+
+src/Combat/Main/func_020dfec0.cpp:
+    complete
+    .text start:0x020dfec0 end:0x020dffb8
