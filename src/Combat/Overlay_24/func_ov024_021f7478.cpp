@@ -1,4 +1,6 @@
 #include <globaldefs.h>
+
+#include "Combat/BattleSkillEligibility.h"
 #include "std_library_functions.h"
 #include "Combat/Main/BattleList.h"
 struct BattleStruct {
@@ -190,7 +192,6 @@ extern "C" int func_ov000_02171bc0(void* p);
 extern "C" struct LearnedMove_021f7478* _Z33GetPointerField_02171b9c_02171b9cPvi(void* p, int i);
 extern "C" struct MoveData_021f7478* _Z24SearchBothTables02079e2cPci(char* p, int key);
 int GetBits23To25At0x2f4(unsigned char* obj);
-extern "C" int _Z18IsGlobalU16InRangev(GameState* gs);
 extern "C" char* _ZN17ActiveGrottoClass15GetDetailedDataEv(void* grotto);
 extern "C" unsigned short _ZNK23DetailedTreasureMapData17LegacyBossMapData26MaybeGetCurrentAlternateIDEv(void* legacy);
 extern "C" int _ZN23DetailedTreasureMapData17LegacyBossMapData17CanUseLevelUpMoveEt(void* legacy, int moveId);
@@ -440,7 +441,7 @@ extern "C" ARM void func_ov024_021f7478(struct Obj_021f7478* obj) {
         struct MoveSet_021f7478* set = c->moveSet;
         for (int j = 0; j < 6; j++) {
             unsigned short moveId = set->moves[j];
-            if (_Z18IsGlobalU16InRangev(gs) && ((struct PartyWork_021f7478*)((struct Battle_021f7478*)obj->battle)->partyWork)->f25 != 0) {
+            if (IsGlobalU16InRange(gs) && ((struct PartyWork_021f7478*)((struct Battle_021f7478*)obj->battle)->partyWork)->f25 != 0) {
                 char* detail = _ZN17ActiveGrottoClass15GetDetailedDataEv((char*)func_02012fe4() + 0x23ec);
                 short kindId = c->kindId;
                 unsigned short alt = _ZNK23DetailedTreasureMapData17LegacyBossMapData26MaybeGetCurrentAlternateIDEv(detail + 0x4c);

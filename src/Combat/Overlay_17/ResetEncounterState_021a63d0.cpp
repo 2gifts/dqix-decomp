@@ -1,4 +1,6 @@
 #include <globaldefs.h>
+
+#include "Combat/BattleSkillEligibility.h"
 #include "GameState/GameState.h"
 #include "Grotto/Main/GrottoStruct.h"
 
@@ -11,7 +13,6 @@ int GetIntField0x260(void* obj);
 int GetGlobalField0x1c020421a0();
 void* GetGlobalContext020daf90(void);
 int IsField0Null(void** obj);
-int IsGlobalU16InRange(void);
 
 struct Something02015a2c;
 int CheckSlotsForFlagState02015a2c(struct Something02015a2c* obj);
@@ -60,8 +61,7 @@ extern "C" ARM void func_ov017_021a63d0(unsigned char* base) {
     if (!IsField0Null(*(void***)(base + 0x36fc))) return;
     if (func_0202c540(searchObj)) return;
 
-    GameState::GetInstance();
-    if (IsGlobalU16InRange() != 0) return;
+    if (IsGlobalU16InRange(GameState::GetInstance()) != 0) return;
     if (*(int*)((char*)glob1c + 0x998) != 0) return;
     if (CheckSlotsForFlagState02015a2c((struct Something02015a2c*)g)) return;
     if (GetField0x50(ctx)) return;
