@@ -26,7 +26,6 @@ inline int &CallbackUserdataByIndex(int n, int base = 0) {
     return *(int *) ((unsigned int) &data_0211127c[base].userdata + n * sizeof(DMAOrTimerResponse));
 }
 
-// KEEP-NAME: shared mask/opaque handler interface serves two callback signatures.
 // USA: func_020c6aec
 ARM void SetInterruptHandler(unsigned int mask, const void *proc) {
     int dmaTimerIndex;
@@ -58,7 +57,6 @@ ARM void SetInterruptHandler(unsigned int mask, const void *proc) {
 }
 
 // USA: func_020c6b74
-// KEEP-NAME: curated interrupt-handler lookup interface.
 ARM InterruptHandlerProc GetInterruptHandler(unsigned int mask) {
     int interruptId             = 0;
     InterruptHandlerProc *pProc = &data_027e0000.interruptProcTable[0];
@@ -77,7 +75,6 @@ ARM InterruptHandlerProc GetInterruptHandler(unsigned int mask) {
     return NULL;
 }
 
-// KEEP-NAME
 // USA: func_020c6c00
 ARM void SetDMACompletionCallback(int channel, DMACompletionCallback callback, int userdata) {
     CallbackByIndex(channel)          = callback;
@@ -86,7 +83,6 @@ ARM void SetDMACompletionCallback(int channel, DMACompletionCallback callback, i
     ShouldStayEnabledByIndex(channel) = prior & IRQ_MASK_DMA_N(channel);
 }
 
-// KEEP-NAME
 // USA: func_020c6c48
 ARM void SetTimerOverflowCallback(int timer, DMACompletionCallback callback, int userdata) {
     CallbackByIndex(timer, 4)         = callback;
