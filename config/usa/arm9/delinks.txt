@@ -17659,6 +17659,6 @@ src/World/CreateOpcode6aEntry.cpp:
     .text start:0x0201e710 end:0x0201e80c
 
 
-src/Combat/Main/GetDisplayModeCode0209378c.cpp:
+src/System/GetDisplayModeCode0209378c.cpp:
     complete
     .text start:0x0209378c end:0x020937f0

@@ -2,7 +2,6 @@
 
 #include "System/Graphics.h"
 
-// KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
 // USA: func_0209378c
 ARM int GetDisplayModeCode0209378c(int engine) {
     unsigned int mapping;
