@@ -18222,3 +18222,7 @@ src/Combat/Main/OnDMAOrTimerCompletion.cpp:
 src/Combat/Main/Vector3fix_CrossProduct.cpp:
     complete
     .text start:0x020c2e34 end:0x020c2eb8
+
+src/Combat/Main/ManagerSelectionWordFlags.cpp:
+    complete
+    .text start:0x0209e9f4 end:0x0209ebe4
