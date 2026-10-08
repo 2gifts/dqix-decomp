@@ -1,40 +1,21 @@
 #include <globaldefs.h>
-#include "std_library_functions.h"
 
-struct ResetStruct;
-extern "C" int _ZN6Script10InitializeEv(struct ResetStruct* s);
+#include "Combat/ResourceScriptEntry.h"
 
-struct StreamState;
 struct StreamHeader;
-extern "C" int _ZN6Script4LoadEPKvj(struct StreamState* s, struct StreamHeader* buffer, int length);
-
-struct Struct02030774;
-extern "C" int _ZN6Script7ExecuteEv(struct Struct02030774* p);
-
-extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(struct ResetStruct*, int*);
-
-struct Data02108ee8 {
-    int field0;
-    int field4;
-    int field8;
-    void* fieldC;
-    int field10;
-};
-extern struct Data02108ee8 data_02108ee8;
-extern int data_020f0ff8;
 
 // USA: func_0208274c
-ARM int InitAndRunScript0208274c(void* param0, struct StreamHeader* param1, int param2, int param3) {
-    char local[0x430];
-    memset(param0, 0, 0x54);
+ARM int InitAndRunScript0208274c(void *param0, StreamHeader *param1, int param2, int param3) {
+    Script script;
+    memset(param0, 0, sizeof(ResourceScriptEntry));
     data_02108ee8.field10 = 0;
-    data_02108ee8.field4 = 0;
-    data_02108ee8.field8 = param3;
-    data_02108ee8.fieldC = param0;
-    data_02108ee8.field0 = 0;
-    _ZN6Script10InitializeEv((struct ResetStruct*)local);
-    _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE((struct ResetStruct*)local, &data_020f0ff8);
-    _ZN6Script4LoadEPKvj((struct StreamState*)local, param1, param2);
-    _ZN6Script7ExecuteEv((struct Struct02030774*)local);
+    data_02108ee8.field4  = 0;
+    data_02108ee8.field8  = param3;
+    data_02108ee8.fieldC  = param0;
+    data_02108ee8.field0  = 0;
+    script.Initialize();
+    script.SetOpcodeLookup(data_020f0ff8);
+    script.Load(param1, (unsigned int) param2);
+    script.Execute();
     return 0;
 }

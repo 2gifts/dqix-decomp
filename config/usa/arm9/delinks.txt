@@ -17779,3 +17779,7 @@ src/Combat/Main/FilterManagerSelectionByState.cpp:
 src/Combat/Main/UploadCharacterResource.cpp:
     complete
     .text start:0x020b0594 end:0x020b07c0
+
+src/Combat/Main/BuildScriptResourceEntry.cpp:
+    complete
+    .text start:0x02082490 end:0x0208274c

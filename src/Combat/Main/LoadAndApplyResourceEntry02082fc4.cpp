@@ -1,10 +1,12 @@
 #include <globaldefs.h>
+
+#include "Combat/ResourceScriptEntry.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "std_library_functions.h"
 #include "Filesystem/FileIO.h"
 
 void* Clear0x54Bytes0208247c(void* obj);
-extern "C" void func_02082490(void* obj, void* addr, unsigned int size, unsigned short val, int extra);
+
 extern "C" void func_02083cbc(void* a, void* obj, void* tail);
 extern "C" void func_02083e28(void* a, int arg2);
 

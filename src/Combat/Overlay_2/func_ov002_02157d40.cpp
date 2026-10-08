@@ -1,4 +1,6 @@
 #include <globaldefs.h>
+
+#include "Combat/ResourceScriptEntry.h"
 #include "Combat/Main/BattleList.h"
 struct BattleStruct {
     int unk0;
@@ -105,7 +107,7 @@ extern "C" void func_02046380(void* obj);
 extern "C" void func_02046608(void* obj, int a, int b, char* buf, int c, int d, int e);
 extern "C" void func_02052d7c(void* obj, signed char idx, int flag);
 extern "C" void func_0207c378(void* p, short val, int flag, unsigned int nibble);
-extern "C" void func_02082490(void* obj, void* addr, unsigned int size, int val, int extra);
+
 extern "C" void func_020a818c(void* p, void* allocator);
 extern "C" void func_020a8304(void* p);
 extern "C" void func_ov002_021536e0(void* p);
