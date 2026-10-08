@@ -99,24 +99,7 @@ void ApplyBindPoseTranslation(BoneMatrixRenderData* bmrd)
     }
 }
 
-void ApplyBindPoseScaling(BoneMatrixRenderData* bmrd)
-{
-    RenderCommandHandler* handler = data_0210a274;
-    uint8_t* ip = handler->instructionPointer_;
-    NSBXXBoneMatrix* boneMatrix = handler->boneList_->GetEntryFromu32Offset_v2<NSBXXBoneMatrix>(ip[1]);
-    intptr_t addrScaling = (intptr_t)(boneMatrix + 1);
-    unsigned int flags = boneMatrix->flags_;
-    if (!(flags & 1)) // has translation data
-        addrScaling += sizeof(NSBXXBoneMatrix::Translation);
-    if (!(flags & 2))
-    {
-        if (flags & 8)
-            addrScaling += sizeof(NSBXXBoneMatrix::PivotMatrixData);
-        else
-            addrScaling += sizeof(NSBXXBoneMatrix::RotationMatrixData);
-    }
-    handler->boneMatrixRenderDataScalePopulateProc_(bmrd, (NSBXXBoneMatrix::Scaling*)addrScaling, ip, flags);
-}
+void ApplyBindPoseScaling(BoneMatrixRenderData* bmrd);
 
 // not quite a match, some register nonsense
 void ApplyBindPoseRotation(BoneMatrixRenderData* bmrd)
