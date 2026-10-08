@@ -2,7 +2,10 @@
 
 struct SelectionRecord {
     unsigned int flags;
-    unsigned char unknown4[0x10];
+    unsigned char unknown4[4];
+    unsigned int flags8;
+    unsigned int flagsC;
+    unsigned char unknown10[4];
     unsigned short value14;
     unsigned char unknown16[8];
     unsigned char flags1e;
