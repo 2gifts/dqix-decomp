@@ -1,7 +1,7 @@
 #include "Filesystem/BackgroundLoader.h"
 #include <globaldefs.h>
 
-extern "C" void _Z21ReleaseHandle02022b90PvPi(void *owner, int *handle);
+void ReleaseHandle02022b90(void *owner, int *handle);
 
 struct CleanupReceiver02022bb0 {
     char pad0[0x9b8];
@@ -55,7 +55,7 @@ extern "C" ARM void func_02022bb0(void *receiver) {
     object->task9d4 = -1;
 
     for (int i = 0; i < 8; i++) {
-        _Z21ReleaseHandle02022b90PvPi(receiver, &object->entryTasks[i]);
+        ReleaseHandle02022b90(receiver, &object->entryTasks[i]);
     }
 
     BackgroundLoader::GetInstance()->RemoveTask(object->task9fc);

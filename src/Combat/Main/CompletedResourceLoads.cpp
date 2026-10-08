@@ -1,11 +1,34 @@
 #include "Filesystem/BackgroundLoader.h"
+#include "Memory/SafeAllocator.h"
 #include "System/Memory.h"
 #include <globaldefs.h>
+
+struct State0xbb1c;
+struct Obj0203bb3c;
+
+void ClearFields0x8(State0xbb1c *state);
+void SetupAndDispatchCharTransfer0203bb3c(Obj0203bb3c *state, char *source, SafeAllocator *allocator, int category,
+                                          unsigned short flags);
+
+struct Entry02021578 {
+    int field0;
+    char *name;
+    char pad8[0x1c];
+};
+
+struct CharacterTransferReceiverPrefix {
+    char unknown0[0x20];
+    Entry02021578 *entries;
+    int entryCount;
+    char unknown28[0x48];
+    int unknown70;
+    int unknown74;
+};
 
 struct Stream0200fd14 {
     char *ptr;
 };
-extern "C" void _Z23ReadStreamBlock0200fd14P14Stream0200fd14Pvj(Stream0200fd14 *stream, void *dst, unsigned int length);
+void ReadStreamBlock0200fd14(Stream0200fd14 *stream, void *dst, unsigned int length);
 extern "C" void *__clear(void *dst, int count);
 
 struct Node020211b0 {
@@ -33,6 +56,26 @@ struct Table020211b0 {
     Entry020211b0 entries[32];
 };
 
+// USA: func_020210f8
+extern "C" ARM void func_020210f8(char *receiver, int *handles, SafeAllocator *allocator) {
+    if (handles == NULL) return;
+
+    CharacterTransferReceiverPrefix *state = reinterpret_cast<CharacterTransferReceiverPrefix *>(receiver);
+    BackgroundLoader *loader               = BackgroundLoader::GetInstance();
+    void *fileData                         = NULL;
+    unsigned int fileLength                = 0;
+    state->unknown70                       = state->unknown74 + 1;
+
+    for (int index = 0; index < state->entryCount; index++) {
+        loader->GetLoadedFileByID(handles[index], &fileData, &fileLength);
+        ClearFields0x8(reinterpret_cast<State0xbb1c *>(state->entries[index].pad8));
+        SetupAndDispatchCharTransfer0203bb3c(reinterpret_cast<Obj0203bb3c *>(state->entries[index].pad8),
+                                             static_cast<char *>(fileData), allocator, 1, 0);
+        BackgroundLoader::GetInstance()->RemoveTask(handles[index]);
+        handles[index] = -1;
+    }
+}
+
 // USA: func_020211b0
 extern "C" ARM void func_020211b0(char *receiver, int *taskID) {
     BackgroundLoader *loader = BackgroundLoader::GetInstance();
@@ -57,16 +100,16 @@ extern "C" ARM void func_020211b0(char *receiver, int *taskID) {
         ((Table020211b0 *) receiver)->count = 0;
         VectorizedMemset(((Table020211b0 *) receiver)->entries, 0, 0x100);
         unsigned short recordCount = 0;
-        _Z23ReadStreamBlock0200fd14P14Stream0200fd14Pvj(&stream, &recordCount, 2);
+        ReadStreamBlock0200fd14(&stream, &recordCount, 2);
         for (int i = 0; i < recordCount; i++) {
             unsigned short key1;
             unsigned char key2;
             short val1;
             short val2;
-            _Z23ReadStreamBlock0200fd14P14Stream0200fd14Pvj(&stream, &key1, 2);
-            _Z23ReadStreamBlock0200fd14P14Stream0200fd14Pvj(&stream, &key2, 1);
-            _Z23ReadStreamBlock0200fd14P14Stream0200fd14Pvj(&stream, &val1, 2);
-            _Z23ReadStreamBlock0200fd14P14Stream0200fd14Pvj(&stream, &val2, 2);
+            ReadStreamBlock0200fd14(&stream, &key1, 2);
+            ReadStreamBlock0200fd14(&stream, &key2, 1);
+            ReadStreamBlock0200fd14(&stream, &val1, 2);
+            ReadStreamBlock0200fd14(&stream, &val2, 2);
             int found = 0;
             for (int j = 0; j < keyCount && !found; j++) {
                 if (key1 == keys[j]) found = 1;
