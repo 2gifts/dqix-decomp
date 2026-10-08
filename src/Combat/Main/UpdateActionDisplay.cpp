@@ -1,8 +1,9 @@
+#include <globaldefs.h>
+
 #include "Combat/ActionDisplay.h"
 #include "GameState/GameState.h"
 #include "System/Memory.h"
 #include "std_library_functions.h"
-#include <globaldefs.h>
 
 struct ForwardingEntry {
     int unknown0;
