@@ -17662,3 +17662,13 @@ src/World/CreateOpcode6aEntry.cpp:
 src/Combat/Main/func_02014a24.cpp:
     complete
     .text start:0x02014a24 end:0x02014b04
+
+
+src/Combat/Main/func_020151cc.cpp:
+    complete
+    .text start:0x020151cc end:0x02015438
+
+
+src/Combat/Main/func_020177d4.cpp:
+    complete
+    .text start:0x020177d4 end:0x02017a94
