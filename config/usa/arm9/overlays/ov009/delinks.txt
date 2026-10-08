@@ -109,3 +109,63 @@ src/Combat/Overlay_9/func_ov009_02184bbc.cpp:
 src/Menu/Overlay_9/GridTouchSelection.cpp:
     complete
     .text start:0x02189854 end:0x02189a4c
+
+
+src/Combat/Overlay_9/func_ov009_021842a0.cpp:
+    complete
+    .text start:0x021842a0 end:0x0218454c
+
+
+src/Combat/Overlay_9/func_ov009_0218454c.cpp:
+    complete
+    .text start:0x0218454c end:0x021847c4
+
+
+src/Combat/Overlay_9/func_ov009_02184a18.cpp:
+    complete
+    .text start:0x02184a18 end:0x02184bbc
+
+
+src/Combat/Overlay_9/func_ov009_02184e58.cpp:
+    complete
+    .text start:0x02184e58 end:0x021855dc
+
+
+src/Combat/Overlay_9/func_ov009_021863d0.cpp:
+    complete
+    .text start:0x021863d0 end:0x021865dc
+
+
+src/Combat/Overlay_9/func_ov009_02186c00.cpp:
+    complete
+    .text start:0x02186c00 end:0x02186e00
+
+
+src/Combat/Overlay_9/func_ov009_02186e00.cpp:
+    complete
+    .text start:0x02186e00 end:0x0218742c
+
+
+src/Combat/Overlay_9/func_ov009_02187b34.cpp:
+    complete
+    .text start:0x02187b34 end:0x021883cc
+
+
+src/Combat/Overlay_9/func_ov009_02188604.cpp:
+    complete
+    .text start:0x02188604 end:0x02188944
+
+
+src/Combat/Overlay_9/func_ov009_02188944.cpp:
+    complete
+    .text start:0x02188944 end:0x02188b14
+
+
+src/Combat/Overlay_9/func_ov009_02188e70.cpp:
+    complete
+    .text start:0x02188e70 end:0x02188ee8
+
+
+src/Combat/Overlay_9/func_ov009_0218a420.cpp:
+    complete
+    .text start:0x0218a420 end:0x0218a484
