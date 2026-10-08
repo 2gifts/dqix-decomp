@@ -17558,3 +17558,28 @@ src/Combat/Main/func_020749ac.cpp:
 src/Combat/Main/func_02076994.cpp:
     complete
     .text start:0x02076994 end:0x02076a8c
+
+
+src/Combat/Main/InitBattleModeAndCommit020758a8.cpp:
+    complete
+    .text start:0x020758a8 end:0x02075910
+
+
+src/Combat/Main/func_0206f01c.cpp:
+    complete
+    .text start:0x0206f01c end:0x0206f0f8
+
+
+src/Combat/Main/func_0206f550.cpp:
+    complete
+    .text start:0x0206f550 end:0x0206f6cc
+
+
+src/Combat/Main/func_0207051c.cpp:
+    complete
+    .text start:0x0207051c end:0x0207076c
+
+
+src/Combat/Main/func_020776a0.cpp:
+    complete
+    .text start:0x020776a0 end:0x02077788
