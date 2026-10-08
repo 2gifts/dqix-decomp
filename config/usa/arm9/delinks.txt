@@ -17533,3 +17533,28 @@ src/Combat/Main/_Z29TryDecodeGlobalBitstreamEntryPvi.cpp:
 src/Combat/Main/func_02074060.cpp:
     complete
     .text start:0x02074060 end:0x02074114
+
+
+src/Combat/Main/_Z18TrySetMode02076cccPvi.cpp:
+    complete
+    .text start:0x02076ccc end:0x02076d34
+
+
+src/Combat/Main/func_020716a4.cpp:
+    complete
+    .text start:0x020716a4 end:0x02071810
+
+
+src/Combat/Main/func_02071da4.cpp:
+    complete
+    .text start:0x02071da4 end:0x02071ffc
+
+
+src/Combat/Main/func_020749ac.cpp:
+    complete
+    .text start:0x020749ac end:0x02074af4
+
+
+src/Combat/Main/func_02076994.cpp:
+    complete
+    .text start:0x02076994 end:0x02076a8c
