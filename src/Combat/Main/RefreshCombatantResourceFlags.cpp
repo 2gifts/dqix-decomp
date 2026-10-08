@@ -8,7 +8,7 @@ extern "C" void *func_02012fe4(void);
 struct S02053f4c;
 void SetFields1a8And1ac(S02053f4c *, int, int);
 void SetField0x1b0(void *, unsigned char);
-extern "C" int _Z22IsValueInRange0201b5d8i(int);
+int IsValueInRange0201b5d8(int);
 
 struct Node02021f88 {
     unsigned char type;
@@ -91,7 +91,7 @@ extern "C" ARM void func_02026bdc(void *object, int flag) {
                 }
                 node = node->next;
             }
-        } else if (_Z22IsValueInRange0201b5d8i(value) != 0) {
+        } else if (IsValueInRange0201b5d8(value) != 0) {
             GameObject *unknownObject = gameState->GetUnknownGameObject();
             if (unknownObject != 0) {
                 int unknownValue = unknownObject->obj3D_.GetField06();
