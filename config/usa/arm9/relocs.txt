@@ -22811,7 +22811,7 @@ from:0x020c6910 kind:load to:0x0211125c module:main
 from:0x020c6960 kind:arm_call to:0x020c96fc module:main
 from:0x020c6984 kind:arm_call to:0x020c9710 module:main
 from:0x020c69ac kind:arm_call to:0x020c7898 module:main
-from:0x020c69c0 kind:load to:0x027e0000 module:dtcm
+from:0x020c69c0 kind:load to:0x027e0000 module:none
 from:0x020c69c4 kind:load to:0x027e0060 module:dtcm
 from:0x020c6a38 kind:arm_call to:0x020c6cec module:main
 from:0x020c6a40 kind:load to:0x0211127c module:main
