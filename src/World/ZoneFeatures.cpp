@@ -98,38 +98,7 @@ int WarpScript_Opcode_66(Script::Parameter* params, int numParams)
     return 1;
 }
 
-int WarpScript_Opcode_67(Script::Parameter* params, int numParams)
-{
-    float arg0 = params[0].ToFloat();
-    float arg1 = params[1].ToFloat();
-    float arg2 = params[2].ToFloat();
-    float arg3 = params[3].ToFloat();
-    float arg4 = params[4].ToFloat();
-    float arg5 = params[5].ToFloat();
-    float arg8;
-    int arg6 = params[6].ToInt();
-    int arg7 = params[7].ToInt();
-    arg8 = 0;
-    if (numParams >= 9)
-        arg8 = params[8].ToFloat();
 
-    ZoneFeatures::Opcode66Entry entry;
-    entry.unk_0[0] = 4096.0f * (arg0 + (arg3 / 2.0f));
-    entry.unk_0[1] = 4096.0f * (arg1 + (arg4 / 2.0f));
-    entry.unk_0[2] = 4096.0f * (arg2 + (arg5 / 2.0f));
-
-    entry.unk_0[3] = 4096.0f * (arg0 - (arg3 / 2.0f));
-    entry.unk_0[4] = 4096.0f * (arg1 - (arg4 / 2.0f));
-    entry.unk_0[5] = 4096.0f * (arg2 - (arg5 / 2.0f));
-
-    entry.unk_18[0] = arg6;
-    entry.unk_18[1] = arg7;
-    entry.unk_20 = 4096.0f * arg8;
-    
-    data_020fdc20.warp->CreateOpcode66Entry(entry);
-
-    return 1;
-}
 
 int WarpScript_Opcode_68(Script::Parameter* params, int numParams)
 {
@@ -137,82 +106,9 @@ int WarpScript_Opcode_68(Script::Parameter* params, int numParams)
     return 1;
 }
 
-bool ProcessExtraOpcode69Params(Script::Parameter* param, int numParams, ZoneFeatures::Opcode68Entry& entry)
-{
-    Script::Parameter* paramStart = param;
-    void* worldData = _Z16GetPtrField0x468Pv(GameState::GetInstance());
-    
-    entry.unk_0 = (param++)->ToInt();
-    if (paramStart[1].type == 0)
-    {
-        unsigned short* probablyZone = _Z25FindElementByName0209998cP12List0209998cPKc(worldData, (param++)->ToString());
-        if (probablyZone == NULL)
-            return false;
-        entry.unk_1c = *probablyZone;
-    }
-    else
-    {
-        entry.unk_1c = (param++)->ToInt();
-    }
-    entry.unk_64[0] = (param++)->ToInt();
-    entry.unk_64[1] = (param++)->ToInt();
 
-    Vector3fix tempVector;
-    param = param->ToVec3fix(&tempVector);
-    entry.unk_20[0] = tempVector;
-    entry.unk_50 = 4096.0f * (param++)->ToFloat();
 
-    if (numParams - (param - paramStart) > 0)
-    {
-        entry.unk_6c = (param++)->ToInt();
-    }
-    if (numParams - (param - paramStart) > 0)
-    {
-        param = param->ToVec3fix(&tempVector);
-        entry.unk_20[1] = tempVector;
-        param = param->ToVec3fix(&tempVector);
-        entry.unk_20[2] = tempVector;
-        param = param->ToVec3fix(&tempVector);
-        entry.unk_20[3] = tempVector;
-    }
-    return true;
-}
 
-int WarpScript_Opcode_69(Script::Parameter* params, int numParams)
-{
-    ZoneFeatures::Opcode68Entry entry;
-    entry.Reset();
-    Script::Parameter* p = params;
-    fix32_t centreX = (int)(4096.0f * (p++)->ToFloat());
-    fix32_t centreY = (int)(4096.0f * (p++)->ToFloat());
-    fix32_t centreZ = (int)(4096.0f * (p++)->ToFloat());
-    fix32_t lengthX = (int)(4096.0f * (p++)->ToFloat()) / 2;
-    fix32_t lengthY = (int)(4096.0f * (p++)->ToFloat()) / 2;
-    fix32_t lengthZ = (int)(4096.0f * (p++)->ToFloat()) / 2;
-
-    fix32_t xMax = centreX + lengthX;
-    fix32_t xMin = centreX - lengthX;
-    fix32_t yMax = centreY + lengthY;
-    fix32_t yMin = centreY - lengthY;
-    fix32_t zMax = centreZ + lengthZ;
-    fix32_t zMin = centreZ - lengthZ;
-
-    entry.unk_58[1] = centreY;
-    entry.unk_4[0] = xMax;
-    entry.unk_58[0] = centreX;
-    entry.unk_58[2] = centreZ;   
-
-    entry.unk_4[1] = yMax;
-    entry.unk_4[2] = zMax;
-    entry.unk_4[3] = xMin;
-    entry.unk_4[4] = yMin;
-    entry.unk_4[5] = zMin;
-
-    if (!ProcessExtraOpcode69Params(p, numParams - (p - params), entry))
-        return 0;
-    data_020fdc20.warp->CreateOpcode68Entry(entry);
-    return 1;
-}
 
 void ZoneFeatures::Opcode68Entry::Reset()
 {
@@ -239,43 +135,6 @@ void ZoneFeatures::Opcode68Entry::Reset()
     unk_20[3].y = 0;
     unk_20[3].z = 0;
     unk_6c = -1;
-}
-
-// this creates a warp point
-int WarpScript_Opcode_72(Script::Parameter* params, int numParams)
-{
-    Script::Parameter* paramsStart = params;
-    ZoneFeatures::Opcode68Entry entry;
-    entry.Reset();
-    fix32_t centreX = (int)(4096.0f * (params++)->ToFloat());
-    fix32_t centreY = (int)(4096.0f * (params++)->ToFloat());
-    fix32_t centreZ = (int)(4096.0f * (params++)->ToFloat());
-    fix32_t lengthX = (int)(4096.0f * (params++)->ToFloat()) / 2;
-    fix32_t lengthY = (int)(4096.0f * (params++)->ToFloat()) / 2;
-    fix32_t lengthZ = (int)(4096.0f * (params++)->ToFloat()) / 2;
-
-    entry.unk_4[0] = centreX + lengthX;
-    entry.unk_4[1] = centreY + lengthY;
-    entry.unk_4[2] = centreZ + lengthZ;
-    entry.unk_4[3] = centreX - lengthX;
-    entry.unk_4[4] = centreY - lengthY;
-    entry.unk_4[5] = centreZ - lengthZ;
-
-    entry.unk_58[0] = centreX;
-    entry.unk_58[1] = centreY;
-    entry.unk_58[2] = centreZ;
-
-    entry.unk_52 = 4096.0f * (params++)->ToFloat();
-
-    fix32_t xsqu = FIX32_MULTIPLY(lengthX, lengthX);
-    fix32_t zsqu = FIX32_MULTIPLY(lengthZ, lengthZ);
-    entry.unk_54 = zsqu;
-    entry.unk_54 = xsqu + zsqu;
-
-    if (!ProcessExtraOpcode69Params(params, numParams - (params - paramsStart), entry))
-        return 0;
-    data_020fdc20.warp->CreateOpcode68Entry(entry);
-    return 1;
 }
 
 int WarpScript_Opcode_6a(Script::Parameter* params, int numParams)
