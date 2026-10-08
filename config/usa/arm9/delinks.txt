@@ -17837,3 +17837,18 @@ src/Combat/Main/func_020d9b34.cpp:
 src/Combat/Main/func_020dfec0.cpp:
     complete
     .text start:0x020dfec0 end:0x020dffb8
+
+
+src/Combat/Main/func_02031118.cpp:
+    complete
+    .text start:0x02031118 end:0x02031188
+
+
+src/Combat/Main/func_02056b48.cpp:
+    complete
+    .text start:0x02056b48 end:0x02056c3c
+
+
+src/Combat/Main/func_0209e4bc.cpp:
+    complete
+    .text start:0x0209e4bc end:0x0209e5b4
