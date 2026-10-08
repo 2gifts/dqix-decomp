@@ -17657,3 +17657,18 @@ src/Graphics/NSBXX/NameLookup.cpp:
 src/World/CreateOpcode6aEntry.cpp:
     complete
     .text start:0x0201e710 end:0x0201e80c
+
+
+src/Combat/Main/func_020210f8.cpp:
+    complete
+    .text start:0x020210f8 end:0x020211b0
+
+
+src/Combat/Main/func_020211b0.cpp:
+    complete
+    .text start:0x020211b0 end:0x02021394
+
+
+src/Combat/Main/func_02022bb0.cpp:
+    complete
+    .text start:0x02022bb0 end:0x02022d78
