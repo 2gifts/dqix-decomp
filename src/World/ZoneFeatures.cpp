@@ -1,3 +1,4 @@
+#include "World/ZoneWarpScript.h"
 #include "World/ZoneFeatures.h"
 #include "World/Zone3D.h"
 #include "Resource/Script.h"
@@ -5,13 +6,6 @@
 #include "System/Memory.h"
 
 extern Script::OpcodeLookupEntry data_020ef388[];
-
-struct Struct_020fdc20
-{
-    ZoneFeatures::Opcode6aEntry* currentEntry;
-    SafeAllocator* allocator;
-    ZoneFeatures* warp;
-} extern data_020fdc20;
 
 extern "C"
 {

@@ -201,3 +201,11 @@ void Zone3D::SwitchZone(unsigned short newID)
 
     mapListLoadHandle_ = loader->QueueLoadFile(data_020ef0f0, NULL);
 }
+
+// USA: func_02013b54
+Vector3i &Vector3i::operator=(const Vector3i &other) {
+    x = other.x;
+    y = other.y;
+    z = other.z;
+    return *this;
+}
