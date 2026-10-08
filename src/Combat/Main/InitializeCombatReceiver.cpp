@@ -1,6 +1,7 @@
+#include <globaldefs.h>
+
 #include "Combat/ActionState.h"
 #include "System/Memory.h"
-#include <globaldefs.h>
 
 struct State_1f9b8 {
     int field0;

@@ -1,5 +1,6 @@
-#include "Combat/ActionState.h"
 #include <globaldefs.h>
+
+#include "Combat/ActionState.h"
 
 // USA: func_02027304  (semantic: ClearActionStateForIdOrAll02027304)
 extern "C" ARM void func_02027304(unsigned char *obj, int id) {

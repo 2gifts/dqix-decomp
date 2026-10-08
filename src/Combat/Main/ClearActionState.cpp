@@ -1,5 +1,6 @@
-#include "Combat/ActionState.h"
 #include <globaldefs.h>
+
+#include "Combat/ActionState.h"
 
 // USA: func_0201fbe0
 ARM void ClearActionState(struct ActionState0201fbe0 *s, int force) {

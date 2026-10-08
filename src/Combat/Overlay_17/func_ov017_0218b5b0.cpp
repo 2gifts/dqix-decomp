@@ -1,5 +1,6 @@
-#include "Resource/GameResources.h"
 #include <globaldefs.h>
+
+#include "Resource/GameResources.h"
 
 struct FlagPair_0218b5b0 {
     int a;

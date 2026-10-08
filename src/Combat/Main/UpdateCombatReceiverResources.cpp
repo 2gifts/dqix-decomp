@@ -1,5 +1,6 @@
-#include "Resource/Brightness.h"
 #include <globaldefs.h>
+
+#include "Resource/Brightness.h"
 
 struct FlagWord02046708;
 struct List0209497c;
