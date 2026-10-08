@@ -17648,3 +17648,78 @@ src/Combat/Main/func_02078754.cpp:
 src/Combat/Main/func_02078e60.cpp:
     complete
     .text start:0x02078e60 end:0x02079040
+
+
+src/Combat/Main/Z31SetRandomizedShortPvP19FieldStruct02048934P6Random_02048934.cpp:
+    complete
+    .text start:0x02048934 end:0x02048994
+
+
+src/Combat/Main/func_020323c4.cpp:
+    complete
+    .text start:0x020323c4 end:0x02032424
+
+
+src/Combat/Main/func_0203ca24.cpp:
+    complete
+    .text start:0x0203ca24 end:0x0203cbd8
+
+
+src/Combat/Main/func_02044d0c.cpp:
+    complete
+    .text start:0x02044d0c end:0x02044f3c
+
+
+src/Combat/Main/func_0204b174.cpp:
+    complete
+    .text start:0x0204b174 end:0x0204b2e0
+
+
+src/Combat/Main/func_020657c8.cpp:
+    complete
+    .text start:0x020657c8 end:0x020658ac
+
+
+src/Combat/Main/func_0207dba8.cpp:
+    complete
+    .text start:0x0207dba8 end:0x0207dcf0
+
+
+src/Combat/Main/func_020938f0.cpp:
+    complete
+    .text start:0x020938f0 end:0x02093980
+
+
+src/Combat/Main/func_02095d30.cpp:
+    complete
+    .text start:0x02095d30 end:0x02095e90
+
+
+src/Combat/Main/func_020a0e4c.cpp:
+    complete
+    .text start:0x020a0e4c end:0x020a1034
+
+
+src/Combat/Main/func_020ab5d4.cpp:
+    complete
+    .text start:0x020ab5d4 end:0x020ab7a8
+
+
+src/Combat/Main/func_020b07c0.cpp:
+    complete
+    .text start:0x020b07c0 end:0x020b08b8
+
+
+src/Combat/Main/func_020cdae4.cpp:
+    complete
+    .text start:0x020cdae4 end:0x020cdbe4
+
+
+src/Combat/Main/func_020dd3cc.cpp:
+    complete
+    .text start:0x020dd3cc end:0x020dd4c4
+
+
+src/Combat/Main/func_020e52a0.cpp:
+    complete
+    .text start:0x020e52a0 end:0x020e5334
