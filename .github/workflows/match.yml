@@ -2,7 +2,7 @@ name: Match
 
 on:
   push:
-    branches: [main]
+    branches: [main, decomp-matching]
   pull_request:
   merge_group:
   workflow_dispatch:
@@ -21,7 +21,7 @@ jobs:
     with:
       version: usa
       label: USA
-      publish-badges: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+      publish-badges: ${{ github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', vars.BADGE_REF || 'main') }}
     secrets: inherit
 
   jpn:
@@ -30,12 +30,21 @@ jobs:
     with:
       version: jpn
       label: JPN
-      publish-badges: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+      publish-badges: ${{ github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', vars.BADGE_REF || 'main') }}
+    secrets: inherit
+
+  eur:
+    if: github.event_name != 'pull_request'
+    uses: ./.github/workflows/build.yml
+    with:
+      version: eur
+      label: EUR
+      publish-badges: ${{ github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', vars.BADGE_REF || 'main') }}
     secrets: inherit
 
   badges-usa:
     needs: usa
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', vars.BADGE_REF || 'main')
     uses: ./.github/workflows/publish-badges.yml
     with:
       version: usa
@@ -47,10 +56,22 @@ jobs:
 
   badges-jpn:
     needs: jpn
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', vars.BADGE_REF || 'main')
     uses: ./.github/workflows/publish-badges.yml
     with:
       version: jpn
+    permissions:
+      contents: write
+    concurrency:
+      group: publish-badges
+      cancel-in-progress: false
+
+  badges-eur:
+    needs: eur
+    if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', vars.BADGE_REF || 'main')
+    uses: ./.github/workflows/publish-badges.yml
+    with:
+      version: eur
     permissions:
       contents: write
     concurrency:
