@@ -17,7 +17,6 @@ struct Flag02108dfc {
 extern struct Flag02108dfc data_02108dfc;
 extern unsigned char data_020f0dc8;
 
-// ROM SYMBOL: _Z31InitBattleModeAndCommit020758a8v
 // KEEP-NAME
 // USA: func_020758a8
 ARM void InitBattleModeAndCommit020758a8(void) {
