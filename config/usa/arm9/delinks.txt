@@ -17659,21 +17659,21 @@ src/World/CreateOpcode6aEntry.cpp:
     .text start:0x0201e710 end:0x0201e80c
 
 
-src/Combat/Main/func_0209e5b4.cpp:
+src/Combat/Main/FilterManagerSelectionByFlags.cpp:
     complete
     .text start:0x0209e5b4 end:0x0209e6ac
 
 
-src/Combat/Main/func_0209ee34.cpp:
+src/Combat/Main/FilterManagerSelectionByByteFlags.cpp:
     complete
     .text start:0x0209ee34 end:0x0209ef2c
 
 
-src/Combat/Main/func_0209f154.cpp:
+src/Combat/Main/FilterManagerSelectionByValue.cpp:
     complete
     .text start:0x0209f154 end:0x0209f24c
 
 
-src/Combat/Main/func_0209f774.cpp:
+src/Combat/Main/FilterManagerSelectionByState.cpp:
     complete
     .text start:0x0209f774 end:0x0209f864
