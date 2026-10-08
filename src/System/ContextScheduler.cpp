@@ -31,7 +31,6 @@ ARM void InterruptWaitLoopFunction(void *) {
 
 // USA: func_020c7c40
 ARM unsigned int AddContextSwitchLock() {
-    // The original SDK leaves the return undefined when the count is UINT_MAX.
     unsigned int previousCount;
     int previousIRQState = DisableIRQInterrupts();
     if (data_021112e0.contextSwitchLock < ~0u) {

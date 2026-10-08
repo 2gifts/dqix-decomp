@@ -25,7 +25,6 @@ struct FormationPathActor {
 };
 
 static inline Vec2_0216f74c GetFormationPosition(const int &cell) {
-    // The coordinate lookup only reads its input.
     return func_ov000_0216f74c(const_cast<int *>(&cell));
 }
 

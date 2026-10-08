@@ -10,7 +10,7 @@ extern "C" ARM void *NSBXXNameList_Search(NSBXXNameList *nameList, const char *n
     if (name == NULL) return NULL;
 
     unsigned int numEntries = nameList->numEntries_;
-    if (numEntries < 16) // Small dictionaries use a linear name scan.
+    if (numEntries < 16)
     {
         unsigned int searchIndex = 0;
         uint32_t target0         = targetWords[0];
@@ -24,13 +24,11 @@ extern "C" ARM void *NSBXXNameList_Search(NSBXXNameList *nameList, const char *n
                 intptr_t nameAddress;
                 if (nameList != NULL && searchIndex < GetNameListEntryCount(nameList)) {
                     intptr_t dataStart = (intptr_t) nameList + nameList->offsetToDataStart_;
-                    // The data subheader stores the byte offset to the name table.
                     nameAddress = dataStart + *(uint16_t *) (dataStart + 2);
                     nameAddress += nameByteOffset;
                 } else
                     nameAddress = 0;
 
-                // Resource names are fixed 16-byte buffers, compared as four words.
                 const uint32_t *source = (const uint32_t *) nameAddress;
                 if (source[0] == target0 && source[1] == target1 && source[2] == target2 && source[3] == target3) {
                     if (nameList != NULL && searchIndex < nameList->numEntries_) {
@@ -45,7 +43,7 @@ extern "C" ARM void *NSBXXNameList_Search(NSBXXNameList *nameList, const char *n
                 nameByteOffset += 16;
             } while (searchIndex < GetNameListEntryCount(nameList));
         }
-    } else // Larger dictionaries use their Patricia search tree.
+    } else
     {
         NSBXXNameList::SearchTreeEntry *treeEntries = (NSBXXNameList::SearchTreeEntry *) &nameList->treeRoot_8_;
         int firstChild                              = treeEntries[0].children_[0];
@@ -72,7 +70,6 @@ extern "C" ARM void *NSBXXNameList_Search(NSBXXNameList *nameList, const char *n
             intptr_t nameAddress;
             if (nameList != NULL && candidateIndex < numEntries) {
                 intptr_t dataStart = (intptr_t) nameList + nameList->offsetToDataStart_;
-                // The data subheader stores the byte offset to the name table.
                 nameAddress = dataStart + *(uint16_t *) (dataStart + 2) + (candidateIndex * 16);
             } else
                 nameAddress = 0;
@@ -100,7 +97,7 @@ ARM int NSBXXNameList_SearchIndex(NSBXXNameList *nameList, const char *name) {
     if (name == NULL) return -1;
 
     unsigned int numEntries = nameList->numEntries_;
-    if (numEntries < 16) // Small dictionaries use a linear name scan.
+    if (numEntries < 16)
     {
         unsigned int searchIndex = 0;
         uint32_t target0         = targetIntArray[0];
@@ -113,13 +110,11 @@ ARM int NSBXXNameList_SearchIndex(NSBXXNameList *nameList, const char *name) {
                 intptr_t sourcePtr;
                 if (nameList != NULL && searchIndex < GetNameListEntryCount(nameList)) {
                     intptr_t dataStart = (intptr_t) nameList + nameList->offsetToDataStart_;
-                    // The data subheader stores the byte offset to the name table.
                     sourcePtr = dataStart + *(uint16_t *) (dataStart + 2);
                     sourcePtr += offsetWithinNameData;
                 } else
                     sourcePtr = 0;
 
-                // Resource names are fixed 16-byte buffers, compared as four words.
                 const uint32_t *source = (const uint32_t *) sourcePtr;
                 if (source[0] == target0 && source[1] == target1 && source[2] == target2 && source[3] == target3)
                     return searchIndex;
@@ -128,7 +123,7 @@ ARM int NSBXXNameList_SearchIndex(NSBXXNameList *nameList, const char *name) {
                 offsetWithinNameData += 16;
             } while (searchIndex < GetNameListEntryCount(nameList));
         }
-    } else // Larger dictionaries use their Patricia search tree.
+    } else
     {
         NSBXXNameList::SearchTreeEntry *entryArray = &nameList->treeRoot_8_;
         int firstChild                             = entryArray[0].children_[0];
@@ -153,7 +148,6 @@ ARM int NSBXXNameList_SearchIndex(NSBXXNameList *nameList, const char *name) {
             intptr_t sourcePtr;
             if (nameList != NULL && candidateIndex < nameList->numEntries_) {
                 intptr_t dataStart = (intptr_t) nameList + nameList->offsetToDataStart_;
-                // The data subheader stores the byte offset to the name table.
                 sourcePtr = dataStart + *(uint16_t *) (dataStart + 2) + (candidateIndex * 16);
             } else
                 sourcePtr = 0;
