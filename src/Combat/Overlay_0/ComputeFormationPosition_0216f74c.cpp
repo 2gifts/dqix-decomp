@@ -1,6 +1,5 @@
 #include <globaldefs.h>
-
-struct Vec2_0216f74c { int x; int y; };
+#include "Combat/FormationPosition.h"
 
 // USA: func_ov000_0216f74c  (semantic: ComputeFormationPosition_0216f74c)
 extern "C" ARM struct Vec2_0216f74c func_ov000_0216f74c(int* in) {

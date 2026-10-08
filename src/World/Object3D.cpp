@@ -15,8 +15,6 @@
 #define _Z18GetField0x3b0ValueP9GameState func_0200ff18
 #define _Z27ClearGlobalFlagBits02016d8cPv func_02016b2c
 #define _Z16GetPtrField0x144Pv func_0202e8e4
-#define _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_ func_02030964
-#define _Z18Vector3fixMultiplyPK8Vector3iS1_PS_ func_020309c0
 #define func_020311f0 func_02030d28
 #define func_02031234 func_02030d6c
 #define func_02031278 func_02030db0

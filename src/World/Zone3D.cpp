@@ -10,13 +10,10 @@
 
 #if defined(jpn)
 #define _Z16GetPtrField0x468Pv func_020112f4
-#define _ZN12ZoneFeatures5ResetEv func_0201dfd4
 #define _Z22ResetBigStruct02013750Pvi func_02013518
 #define _Z13Reset02013490Pc func_02013258
 #define _Z17IsInRange0201b5b0i func_0201b328
 #define _Z15GetFieldAt0x150Ph func_02054fe4
-#define _ZN20AtmosphericEffectSet5ResetEv func_0207b3f0
-#define _ZN12LightingInfo5ResetEv func_0207c804
 #define _Z26CopyInternalFields0207df50P11Foo0207df50 func_0207ecd0
 #define _Z15GetData02108f0cv func_0208b2a8
 #define _Z23ClearThreeWords02094d00P29ClearThreeWords02094d00Struct func_02096950

@@ -306,3 +306,8 @@ src/Menu/Overlay_6/AlchemyIngredientConsumption.cpp:
 src/Menu/Overlay_6/AlchemyMenuInitialization.cpp:
     complete
     .text start:0x021576a0 end:0x02157a60
+
+
+src/Combat/Overlay_6/func_ov006_02154138.cpp:
+    complete
+    .text start:0x02154138 end:0x0215426c

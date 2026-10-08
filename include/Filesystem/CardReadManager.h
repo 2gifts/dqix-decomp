@@ -80,7 +80,6 @@ void NitroVM_Command_AcquireCardReadResources(unsigned short ownerID);
 void NitroVM_Command_ReleaseCardReadResources(unsigned short ownerID);
 
 #if defined(jpn)
-#define _Z31WaitForReadManagerIdle_Internalv _Z18ReadUncachedField4v
 #endif
 
 void SendGamecardBusCommand(unsigned int firstWord, unsigned int secondWord);

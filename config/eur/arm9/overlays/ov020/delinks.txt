@@ -1,0 +1,80 @@
+    .text       start:0x0218b5a0 end:0x0218d944 kind:code align:32
+    .rodata     start:0x0218d944 end:0x0218db90 kind:rodata align:4
+    .init       start:0x0218db90 end:0x0218dba8 kind:code align:4
+    .ctor       start:0x0218dba8 end:0x0218dbb0 kind:rodata align:4
+    .data       start:0x0218dbc0 end:0x0218dd20 kind:data align:32
+    .bss        start:0x0218dd20 end:0x0218dd20 kind:bss align:32
+
+src/Combat/Overlay_20/ResetAllocatorAndDispatchState_0218d8d8.cpp:
+    complete
+    .text start:0x0218d8d8 end:0x0218d944
+
+src/Combat/Overlay_20/UpdateFieldGroup4e8_0218d7ac.cpp:
+    complete
+    .text start:0x0218d7ac end:0x0218d800
+
+src/Combat/Overlay_20/UpdateFieldGroup4f4_0218d800.cpp:
+    complete
+    .text start:0x0218d800 end:0x0218d854
+
+src/Combat/Overlay_20/Trans_0218b700.cpp:
+    complete
+    .text start:0x0218b700 end:0x0218b710
+
+src/Combat/Overlay_20/AdvanceFadeFieldGroups_0218d644.cpp:
+    complete
+    .text start:0x0218d644 end:0x0218d7ac
+
+src/Combat/Overlay_20/ConfigureBg1Control_0218c7bc.cpp:
+    complete
+    .text start:0x0218c7bc end:0x0218c7f0
+
+src/Combat/Overlay_20/ConfigureSubBg0Control_0218cd64.cpp:
+    complete
+    .text start:0x0218cd64 end:0x0218cd98
+
+src/Combat/Overlay_20/DecrementFieldGroup4e4_0218d854.cpp:
+    complete
+    .text start:0x0218d854 end:0x0218d898
+
+src/Combat/Overlay_20/DispatchCombatSequence_0218c840.cpp:
+    complete
+    .text start:0x0218c840 end:0x0218c98c
+
+src/Combat/Overlay_20/InitDisplayAndAllocators_0218b5a0.cpp:
+    complete
+    .text start:0x0218b5a0 end:0x0218b700
+
+src/Combat/Overlay_20/InitPointerPair_0218c7f0.cpp:
+    complete
+    .text start:0x0218c7f0 end:0x0218c840
+
+src/Combat/Overlay_20/ResetAndReloadContext_0218cd98.cpp:
+    complete
+    .text start:0x0218cd98 end:0x0218cf8c
+
+src/Combat/Overlay_20/CheckCountersActive_0218d898.cpp:
+    complete
+    .text start:0x0218d898 end:0x0218d8d8
+
+src/Combat/Overlay_20/SetFieldFromFieldPlus11_0218db90.cpp:
+    complete
+    .init start:0x0218db90 end:0x0218dba8
+
+src/Combat/Overlay_20/InitializeAndDispatchLists_0218cf8c.cpp:
+    complete
+    .text start:0x0218cf8c end:0x0218d32c
+
+src/Combat/Overlay_20/RunFieldGroupInitAndDispatch_0218c98c.cpp:
+    complete
+    .text start:0x0218c98c end:0x0218cd64
+
+
+src/Combat/Overlay_20/func_ov020_0218d32c.cpp:
+    complete
+    .text start:0x0218d32c end:0x0218d644
+
+
+src/Combat/Overlay_20/func_ov020_0218b710.cpp:
+    complete
+    .text start:0x0218b710 end:0x0218c7bc

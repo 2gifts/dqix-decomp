@@ -1,0 +1,174 @@
+    .text       start:0x021842a0 end:0x0218b300 kind:code align:32
+    .rodata     start:0x0218b300 end:0x0218b3c0 kind:rodata align:4
+    .ctor       start:0x0218b3c0 end:0x0218b3c4 kind:rodata align:4
+    .data       start:0x0218b3e0 end:0x0218b5a0 kind:data align:32
+    .bss        start:0x0218b5a0 end:0x0218b5a0 kind:bss align:32
+
+src/Combat/Overlay_8/ClearFlagIfDone_021870e4_021870e4.cpp:
+    complete
+    .text start:0x021870e4 end:0x0218712c
+
+src/Combat/Overlay_8/ClearShortByteByte_02184598.cpp:
+    complete
+    .text start:0x02184598 end:0x021845ac
+
+src/Combat/Overlay_8/InitConfig02187664.cpp:
+    complete
+    .text start:0x02187664 end:0x02187708
+
+src/Combat/Overlay_8/ResetCounterIfIdle_02186280.cpp:
+    complete
+    .text start:0x02186280 end:0x021862c4
+
+src/Combat/Overlay_8/ResetSubStruct02189228.cpp:
+    complete
+    .text start:0x02189228 end:0x02189284
+
+src/Combat/Overlay_8/SetByteB10AndClearB11_02184a3c.cpp:
+    complete
+    .text start:0x02184a3c end:0x02184a4c
+
+src/Combat/Overlay_8/SetFlagBit_02184a2c_02184a2c.cpp:
+    complete
+    .text start:0x02184a2c end:0x02184a3c
+
+src/Combat/Overlay_8/SetStateB13To1_021862c4.cpp:
+    complete
+    .text start:0x021862c4 end:0x021862e0
+
+src/Combat/Overlay_8/SetStateB13To2_021862e0.cpp:
+    complete
+    .text start:0x021862e0 end:0x021862fc
+
+src/Combat/Overlay_8/SetStateB13To4_02186334.cpp:
+    complete
+    .text start:0x02186334 end:0x02186350
+
+src/Combat/Overlay_8/SetStateB13To5_021862fc.cpp:
+    complete
+    .text start:0x021862fc end:0x02186318
+
+src/Combat/Overlay_8/SetStateB13To7_02186318.cpp:
+    complete
+    .text start:0x02186318 end:0x02186334
+
+src/Combat/Overlay_8/SetStateType3_02186350.cpp:
+    complete
+    .text start:0x02186350 end:0x0218636c
+
+src/Combat/Overlay_8/SetStateType6_0218636c.cpp:
+    complete
+    .text start:0x0218636c end:0x02186388
+
+src/Combat/Overlay_8/AllocateFreeSlot0218b1e0.cpp:
+    complete
+    .text start:0x0218b1e0 end:0x0218b240
+
+src/Combat/Overlay_8/Dispatch0218936c.cpp:
+    complete
+    .text start:0x0218936c end:0x02189404
+
+src/Combat/Overlay_8/SetupAllocators_02189284.cpp:
+    complete
+    .text start:0x02189284 end:0x0218936c
+
+src/Combat/Overlay_8/ConfigureSubsystem_021889f8.cpp:
+    complete
+    .text start:0x021889f8 end:0x02188a54
+
+src/Combat/Overlay_8/UpdateElementBuffer_021873ac.cpp:
+    complete
+    .text start:0x021873ac end:0x0218747c
+
+src/Combat/Overlay_8/Trans_02188ef0.cpp:
+    complete
+    .text start:0x02188ef0 end:0x02188f5c
+
+src/Combat/Overlay_8/AreIndexFieldsUnset_02185964.cpp:
+    complete
+    .text start:0x02185964 end:0x0218599c
+
+src/Combat/Overlay_8/InitAndUpdateIfFlagged_0218946c.cpp:
+    complete
+    .text start:0x0218946c end:0x021894b8
+
+src/Combat/Overlay_8/InitConfig02187a70.cpp:
+    complete
+    .text start:0x02187a70 end:0x02187b20
+
+src/Combat/Overlay_8/ResetLoaderState_0218b240.cpp:
+    complete
+    .text start:0x0218b240 end:0x0218b300
+
+src/Combat/Overlay_8/SyncIfStateAndNotBusy_02184918.cpp:
+    complete
+    .text start:0x02184918 end:0x02184968
+
+src/Combat/Overlay_8/func_ov008_02184878.cpp:
+    complete
+    .text start:0x02184878 end:0x02184918
+
+src/Combat/Overlay_8/func_ov008_02189404.cpp:
+    complete
+    .text start:0x02189404 end:0x0218946c
+
+src/Combat/Overlay_8/UpdateBattleScaleEntry_02188870.cpp:
+    complete
+    .text start:0x02188870 end:0x02188934
+
+src/Combat/Overlay_8/func_ov008_02184968.cpp:
+    complete
+    .text start:0x02184968 end:0x02184a2c
+
+src/Combat/Overlay_8/func_ov008_0218599c.cpp:
+    complete
+    .text start:0x0218599c end:0x02185a70
+
+src/Combat/Overlay_8/func_ov008_021868a8.cpp:
+    complete
+    .text start:0x021868a8 end:0x02186964
+
+src/Combat/Overlay_8/func_ov008_02186a30.cpp:
+    complete
+    .text start:0x02186a30 end:0x02186b18
+
+
+src/Combat/Overlay_8/func_ov008_021894b8.cpp:
+    complete
+    .text start:0x021894b8 end:0x021895a8
+
+
+src/Combat/Overlay_8/func_ov008_0218af80.cpp:
+    complete
+    .text start:0x0218af80 end:0x0218b084
+
+
+src/Combat/Overlay_8/func_ov008_0218b084.cpp:
+    complete
+    .text start:0x0218b084 end:0x0218b1e0
+
+
+src/Combat/Overlay_8/02189c70.cpp:
+    complete
+    .text start:0x02189c70 end:0x0218aa24
+
+
+src/Combat/Overlay_8/func_ov008_02184a4c.cpp:
+    complete
+    .text start:0x02184a4c end:0x02185964
+
+src/Menu/Overlay_8/ListTouchSelection.cpp:
+    complete
+    .text start:0x02186b18 end:0x02186cec
+
+src/Menu/Overlay_8/AvailableEntries.cpp:
+    complete
+    .text start:0x02186cec end:0x02186e4c
+
+src/Menu/Overlay_8/EntryInitialization.cpp:
+    complete
+    .text start:0x0218712c end:0x02187278
+
+src/Menu/Overlay_8/ListSpriteRefresh.cpp:
+    complete
+    .text start:0x02188730 end:0x02188870

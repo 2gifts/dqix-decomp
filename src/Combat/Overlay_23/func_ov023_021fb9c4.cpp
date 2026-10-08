@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Graphics/OBJImage.h"
 #include "Memory/SafeAllocator.h"
 
 extern "C" void* func_ov011_021845f8(void* ctx, int v);
@@ -10,7 +11,6 @@ struct Struct02076928;
 void UpdateSelectedCell02076928(struct Struct02076928* s, int val);
 
 extern "C" {
-    int func_02076738(void* a, int p2, int p3);
     void func_02076080(void* a, void* alloc, int p2, int p3);
 }
 
@@ -21,7 +21,7 @@ extern "C" ARM void func_ov023_021fb9c4(void* obj, void* ctx, int p2, int p3) {
     void* base = func_ov011_021845f8(ctx, *(unsigned short*)((char*)obj + 0x8));
     if (base == NULL) return;
 
-    int size = func_02076738((char*)obj + 0x20, p2, p3);
+    int size = func_02076738((InitStruct02075cdcStruct*)((char*)obj + 0x20), (const unsigned char*)p2, p3);
 
     void* node = func_ov011_021849c8(ctx);
     void* found = Find_021f6dd8(node, size);

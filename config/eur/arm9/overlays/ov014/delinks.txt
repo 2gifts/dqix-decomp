@@ -1,0 +1,224 @@
+    .text       start:0x021842a0 end:0x02189468 kind:code align:32
+    .rodata     start:0x02189468 end:0x02189510 kind:rodata align:4
+    .init       start:0x02189510 end:0x02189598 kind:code align:4
+    .ctor       start:0x02189598 end:0x021895a0 kind:rodata align:4
+    .data       start:0x021895a0 end:0x02189800 kind:data align:32
+    .bss        start:0x02189800 end:0x02189820 kind:bss align:32
+
+src/Combat/Overlay_14/ComputeAndStoreVecs02184c08.cpp:
+    complete
+    .text start:0x02184c08 end:0x02184d08
+
+src/Combat/Overlay_14/ProcessEntry02184e3c.cpp:
+    complete
+    .text start:0x02184e3c end:0x02184f10
+
+src/Combat/Overlay_14/ResetBattlerNav_02186df0.cpp:
+    complete
+    .text start:0x02186df0 end:0x02186e2c
+
+src/Combat/Overlay_14/ResetFields_021845d4.cpp:
+    complete
+    .text start:0x021845d4 end:0x021845ec
+
+src/Combat/Overlay_14/UpdateSoundStateA_02184f10.cpp:
+    complete
+    .text start:0x02184f10 end:0x02184f78
+
+src/Combat/Overlay_14/FindIndexDiv16_02187520.cpp:
+    complete
+    .text start:0x02187520 end:0x02187568
+
+src/Combat/Overlay_14/FindOrGetDefaultElement_021893c4.cpp:
+    complete
+    .text start:0x021893c4 end:0x021893e4
+
+src/Combat/Overlay_14/GetArrayEntryByField1a_02187450.cpp:
+    complete
+    .text start:0x02187450 end:0x02187488
+
+src/Combat/Overlay_14/GetIndexedSlotOrNull_021893e4.cpp:
+    complete
+    .text start:0x021893e4 end:0x0218940c
+
+src/Combat/Overlay_14/GetIndexedSlot_02189380.cpp:
+    complete
+    .text start:0x02189380 end:0x02189398
+
+src/Combat/Overlay_14/InitEntryFromSource_02189244.cpp:
+    complete
+    .text start:0x02189244 end:0x021892d4
+
+src/Combat/Overlay_14/UpdateCounterState_021882d4.cpp:
+    complete
+    .text start:0x021882d4 end:0x02188330
+
+src/Combat/Overlay_14/CountLinkedListNodes_021874f8.cpp:
+    complete
+    .text start:0x021874f8 end:0x02187520
+
+src/Combat/Overlay_14/AllocAlignedSlot_02189398.cpp:
+    complete
+    .text start:0x02189398 end:0x021893c4
+
+src/Combat/Overlay_14/ResetHandle_02188d10.cpp:
+    complete
+    .text start:0x02188d10 end:0x02188d48
+
+src/Combat/Overlay_14/InitHandleState_02188bd0.cpp:
+    complete
+    .text start:0x02188bd0 end:0x02188bfc
+
+src/Combat/Overlay_14/CheckFlagAndPointInElement_02186ff0.cpp:
+    complete
+    .text start:0x02186ff0 end:0x02187074
+
+src/Combat/Overlay_14/Synth_02188b18.cpp:
+    complete
+    .text start:0x02188b18 end:0x02188b20
+
+src/Combat/Overlay_14/Trans_02185c48.cpp:
+    complete
+    .text start:0x02185c48 end:0x02185c90
+
+src/Combat/Overlay_14/Trans_02186d7c.cpp:
+    complete
+    .text start:0x02186d7c end:0x02186dc8
+
+src/Combat/Overlay_14/Trans_02186dc8.cpp:
+    complete
+    .text start:0x02186dc8 end:0x02186df0
+
+src/Combat/Overlay_14/Trans_02188bfc.cpp:
+    complete
+    .text start:0x02188bfc end:0x02188c34
+
+src/Combat/Overlay_14/FindEntryById_021842a0.cpp:
+    complete
+    .text start:0x021842a0 end:0x02184300
+
+src/Combat/Overlay_14/InvokeCallbackForEachEntry_021891f0.cpp:
+    complete
+    .text start:0x021891f0 end:0x02189244
+
+src/Combat/Overlay_14/ResolveIndexedSlot_02189430.cpp:
+    complete
+    .text start:0x02189430 end:0x02189468
+
+src/Combat/Overlay_14/func_ov014_02185c3c.cpp:
+    complete
+    .text start:0x02185c3c end:0x02185c48
+
+src/Combat/Overlay_14/func_ov014_02186d64.cpp:
+    complete
+    .text start:0x02186d64 end:0x02186d7c
+
+src/Combat/Overlay_14/func_ov014_0218940c.cpp:
+    complete
+    .text start:0x0218940c end:0x02189430
+
+src/Combat/Overlay_14/BinarySearchByCallback_021892d4.cpp:
+    complete
+    .text start:0x021892d4 end:0x0218934c
+
+src/Combat/Overlay_14/ComputeGroupIndexAndFindHead_021872dc.cpp:
+    complete
+    .text start:0x021872dc end:0x02187340
+
+src/Combat/Overlay_14/SetSublistEntriesForId25_021884cc.cpp:
+    complete
+    .text start:0x021884cc end:0x0218854c
+
+src/Combat/Overlay_14/SetSublistEntriesForId26_0218854c.cpp:
+    complete
+    .text start:0x0218854c end:0x021885bc
+
+src/Combat/Overlay_14/FindAndSetByKey_02188a8c.cpp:
+    complete
+    .text start:0x02188a8c end:0x02188b18
+
+src/Combat/Overlay_14/InitArrayEntries_02188b20.cpp:
+    complete
+    .text start:0x02188b20 end:0x02188ba0
+
+src/Combat/Overlay_14/ResetLoaderAndAllocators_02186b30.cpp:
+    complete
+    .text start:0x02186b30 end:0x02186bc8
+
+src/Combat/Overlay_14/SetKeyFlagsForRange_02187488.cpp:
+    complete
+    .text start:0x02187488 end:0x021874f8
+
+src/Combat/Overlay_14/InitLargeStruct_02186a70.cpp:
+    complete
+    .text start:0x02186a70 end:0x02186b30
+
+src/Combat/Overlay_14/SearchAndAdvanceEntry_021873a0.cpp:
+    complete
+    .text start:0x021873a0 end:0x02187450
+
+src/Combat/Overlay_14/AdvanceMappedMemberIdState_02187b38.cpp:
+    complete
+    .text start:0x02187b38 end:0x02187c04
+
+src/Combat/Overlay_14/CancelPendingTasks_02184d08.cpp:
+    complete
+    .text start:0x02184d08 end:0x02184dcc
+
+src/Combat/Overlay_14/FindNodeIndexInList_02187228.cpp:
+    complete
+    .text start:0x02187228 end:0x021872dc
+
+src/Combat/Overlay_14/UpdateElementCoordFlagB_02186f10.cpp:
+    complete
+    .text start:0x02186f10 end:0x02186ff0
+
+src/Combat/Overlay_14/func_ov014_02186e2c.cpp:
+    complete
+    .text start:0x02186e2c end:0x02186f10
+
+src/Combat/Overlay_14/func_ov014_02188c34.cpp:
+    complete
+    .text start:0x02188c34 end:0x02188d10
+
+src/Combat/Overlay_14/InitState_021844c4.cpp:
+    complete
+    .text start:0x021844c4 end:0x021845d4
+
+src/Combat/Overlay_14/func_ov014_021845ec.cpp:
+    complete
+    .text start:0x021845ec end:0x02184700
+
+src/Combat/Overlay_14/AccumulateFloats_02189510_02189510.cpp:
+    complete
+    .init start:0x02189510 end:0x02189598
+
+src/Combat/Overlay_14/func_ov014_021885bc.cpp:
+    complete
+    .text start:0x021885bc end:0x021886f8
+
+
+src/Combat/Overlay_14/func_ov014_02188ba0.cpp:
+    complete
+    .text start:0x02188ba0 end:0x02188bd0
+
+
+src/Combat/Overlay_14/func_ov014_02185c90.cpp:
+    complete
+    .text start:0x02185c90 end:0x021868b8
+
+src/Menu/Overlay_14/BestiaryAllocation.cpp:
+    complete
+    .text start:0x02184300 end:0x021844c4
+
+src/Menu/Overlay_14/BestiaryUpdate.cpp:
+    complete
+    .text start:0x02184700 end:0x02184a64
+
+src/Menu/Overlay_14/BestiaryDraw.cpp:
+    complete
+    .text start:0x02184a64 end:0x02184c08
+
+src/Menu/Overlay_14/BestiaryExtendedAllocation.cpp:
+    complete
+    .text start:0x021868b8 end:0x02186a70
