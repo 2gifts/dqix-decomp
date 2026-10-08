@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+#include "Resource/TextQueue.h"
 
 void* GetGlobalField0x1c020421a0(void);
 void InitObjFromCombatantId020e4bf4(void* obj, int combatantId);
@@ -10,7 +11,6 @@ Obj0208b494* GetData02108f0c(void);
 void CaptureValueOnce0208b494(struct Obj0208b494* obj);
 
 extern "C" ARM void func_02046608(void* a, int b, int c, void* d, int e, int f, int g);
-extern "C" ARM void func_020d7e10(void* a, void* b, int c, int d, int e, int f);
 
 // USA: func_ov017_021c2ea4
 ARM void InitAndDispatchCombatant_021c2ea4(unsigned char* self) {
