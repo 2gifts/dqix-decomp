@@ -17775,3 +17775,7 @@ src/Combat/Main/FilterManagerSelectionByValue.cpp:
 src/Combat/Main/FilterManagerSelectionByState.cpp:
     complete
     .text start:0x0209f774 end:0x0209f864
+
+src/Combat/Main/UploadCharacterResource.cpp:
+    complete
+    .text start:0x020b0594 end:0x020b07c0
