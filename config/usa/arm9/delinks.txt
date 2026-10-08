@@ -17478,3 +17478,7 @@ src/Graphics/TriangleRegionClamp.cpp:
 src/Resource/ArchiveLoadPolling.cpp:
     complete
     .text start:0x020da8e0 end:0x020daa20
+
+src/Graphics/OBJImagePayloadSize.cpp:
+    complete
+    .text start:0x02076738 end:0x02076928
