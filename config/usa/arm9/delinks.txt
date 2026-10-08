@@ -17623,3 +17623,8 @@ src/Combat/Main/func_020776a0.cpp:
 src/System/InterruptRegistration.cpp:
     complete
     .text start:0x020c6aec end:0x020c6c90
+
+
+src/Combat/Main/PruneFormationPath.cpp:
+    complete
+    .text start:0x02048e2c end:0x02048f64
