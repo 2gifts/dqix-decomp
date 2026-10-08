@@ -17662,3 +17662,8 @@ src/World/CreateOpcode6aEntry.cpp:
 src/Combat/Main/UpdateActionDisplay.cpp:
     complete
     .text start:0x02024e78 end:0x0202555c
+
+
+src/Combat/Main/func_02023d84.cpp:
+    complete
+    .text start:0x02023d84 end:0x02024000
