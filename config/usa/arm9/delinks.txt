@@ -18442,10 +18442,6 @@ src/Combat/Main/__sinit_020e660c.cpp:
 
 
 
-src/Combat/Main/_Z26ResetSystemAndBoot020c98f0i.cpp:
-    complete
-    .text start:0x020c98f0 end:0x020c99ac
-
 
 src/Combat/Main/func_02028524.cpp:
     complete
