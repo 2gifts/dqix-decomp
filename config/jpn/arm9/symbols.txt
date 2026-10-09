@@ -7692,7 +7692,7 @@ data_02110f24 kind:bss addr:0x02110f24
 data_02110f4c kind:bss addr:0x02110f4c
 data_02110f50 kind:bss addr:0x02110f50
 data_02110f54 kind:bss addr:0x02110f54
-data_02110f7c kind:bss addr:0x02110f7c
+isInitialized$13 kind:bss addr:0x02110f7c local
 data_02110f80 kind:bss addr:0x02110f80
 data_02110f8c kind:bss addr:0x02110f8c
 data_02110fa4 kind:bss addr:0x02110fa4

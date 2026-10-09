@@ -18774,3 +18774,9 @@ src/Combat/Main/func_020ae074.cpp:
 src/Combat/Main/func_020dc548.cpp:
     complete
     .text start:0x020dc548 end:0x020dc70c
+
+
+src/Combat/Main/InitializeGamecardBusOwnership.cpp:
+    complete
+    .text start:0x020c6d7c end:0x020c6e48
+    .bss start:0x021112dc end:0x021112e0
