@@ -19,7 +19,7 @@ typedef void (Obj_021fd858::*Handler_021fd858)();
 struct InitGuard_021fd858 { char pad0[8]; unsigned int flags; };
 extern InitGuard_021fd858 data_ov024_02200150;
 extern Handler_021fd858 data_ov024_021ffcec[23];
-extern const Handler_021fd858 data_020e6d5c; // __ptmf_null
+extern const Handler_021fd858 data_020e6d5c;
 
 // USA: func_ov024_021fd858
 extern "C" ARM void func_ov024_021fd858(Obj_021fd858* obj) {
