@@ -18239,3 +18239,7 @@ src/Combat/Main/SetCombatAnimationState.cpp:
 src/Combat/Main/FilterManagerSelectionByRecordValues.cpp:
     complete
     .text start:0x0209f498 end:0x0209f634
+
+src/Combat/Main/020b8cf4.cpp:
+    complete
+    .text start:0x020b8cf4 end:0x020b8e60

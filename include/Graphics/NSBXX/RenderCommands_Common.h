@@ -5,6 +5,7 @@
 // this in instead
 
 #include "NSBXX.h"
+#include "PivotMatrixLookup.h"
 #include "../../System/Graphics.h"
 #include "GeometryFifo.h"
 #include "RenderCommands.h"
@@ -16,8 +17,6 @@
 
 #if defined(jpn)
 #define data_020e9240 data_020e934c
-#define data_020e9260 data_020e936c
-#define data_020e9284 data_020e9390
 #define data_020f1ce0 data_020f1e4c
 #define data_020f1cec data_020f1e58
 #define data_020f1cf8 data_020f1e64
@@ -49,12 +48,6 @@
 // For SPE_EMI these are masks corresponding to specular reflection color,
 // emission color and (enable specular reflection shininess table yes/no)
 extern unsigned int const data_020e9240[];
-
-// pivot matrix a/b/c/d position lookup
-// both arrays are identical
-extern struct {
-    uint8_t a, b, c, d;
-} const data_020e9260[], data_020e9284[];
 
 // Holds { _Z36BoneMatrixScaleCalculationProc_Type0P20BoneMatrixRenderDataPN15NSBXXBoneMatrix7ScalingEPhi, _Z36BoneMatrixScaleCalculationProc_Type1P20BoneMatrixRenderDataPN15NSBXXBoneMatrix7ScalingEPhi, _Z36BoneMatrixScaleCalculationProc_Type2P20BoneMatrixRenderDataPN15NSBXXBoneMatrix7ScalingEPhi }.
 // Called by command 6 to populate scaling data for the bone matrix
