@@ -18364,6 +18364,18 @@ src/Combat/Main/func_020e5604.cpp:
     complete
     .text start:0x020e5604 end:0x020e56fc
 
+src/Combat/Main/func_0203c4d0.cpp:
+    complete
+    .text start:0x0203c4d0 end:0x0203c54c
+
+src/Combat/Main/func_02042a50.cpp:
+    complete
+    .text start:0x02042a50 end:0x02042a90
+
+src/Combat/Main/func_02046e70.cpp:
+    complete
+    .text start:0x02046e70 end:0x02046f84
+
 src/Combat/Main/__sinit_020e5f0c.cpp:
     complete
     .init start:0x020e5f0c end:0x020e5f9c
