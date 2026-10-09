@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Combat/NameEntryQueue.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 
@@ -111,7 +112,6 @@ extern "C" void _Z26EnqueueEventTag44_021cc198hi(unsigned char a, int b);
 extern "C" void func_ov017_021d0b30(int a, int b, void* c);
 extern "C" void _Z26ClearSearchFlagBit0202c69cP12SearchStructi(struct SearchStruct* obj, int value);
 extern "C" void _Z26ClearSearchFlagBit0202c718P12SearchStructi(struct SearchStruct* obj, int value);
-extern "C" void func_ov017_02195214(void* dst, void* src);
 extern "C" void _Z24SetSearchFlagBit0202c660P12SearchStructi(struct SearchStruct* obj, int value);
 int GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
 GameObject* GetCombatantWithFlag0x200(GameState* battleStruct, int combatantId);
@@ -299,7 +299,8 @@ extern "C" ARM void func_ov017_021941fc(unsigned char* ov, unsigned char* mode, 
                 _Z26ClearSearchFlagBit0202c718P12SearchStructi(search, entry[0]);
                 (*(unsigned char**)(ov + 0x4000 + 0x41c))[0] = 1;
                 (*(unsigned char**)(ov + 0x4000 + 0x41c))[1] = 0;
-                func_ov017_02195214(*(unsigned char**)(ov + 0x4000 + 0x41c) + 2, entry);
+                func_ov017_02195214((Entry15_02195214 *) (*(unsigned char**)(ov + 0x4000 + 0x41c) + 2),
+                    (Entry15_02195214 *) entry);
                 *(unsigned char*)(ov + 0x4000 + 0x2e5) = 1;
             } else {
                 _Z26EnqueueEventTag44_021cc198hi(entry[0], 0);
@@ -362,8 +363,8 @@ extern "C" ARM void func_ov017_021941fc(unsigned char* ov, unsigned char* mode, 
                     unsigned char* node = *(unsigned char**)(ov + 0x3000 + 0xb30);
                     func_ov017_021af59c(node);
                     node[9] = (*(unsigned char**)(ov + 0x4000 + 0x41c))[1];
-                    func_ov017_02195214(node + 0xc,
-                        *(unsigned char**)(ov + 0x4000 + 0x41c) + 2);
+                    func_ov017_02195214((Entry15_02195214 *) (node + 0xc),
+                        (Entry15_02195214 *) (*(unsigned char**)(ov + 0x4000 + 0x41c) + 2));
                     PrependNodeToHead((struct HeadList020469f8*)list,
                         (struct HeadNode020469f8*)node);
                     (*(unsigned char**)(ov + 0x4000 + 0x41c))[0] = 2;
