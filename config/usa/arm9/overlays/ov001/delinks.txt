@@ -2019,3 +2019,38 @@ src/Combat/Overlay_1/func_ov001_021626e4.cpp:
 src/Combat/Overlay_1/func_ov001_02162db0.cpp:
     complete
     .text start:0x02162db0 end:0x02162f8c
+
+
+src/Combat/Overlay_1/func_ov001_021561e0.cpp:
+    complete
+    .text start:0x021561e0 end:0x0215647c
+
+
+src/Combat/Overlay_1/func_ov001_02156c14.cpp:
+    complete
+    .text start:0x02156c14 end:0x021570b4
+
+
+src/Combat/Overlay_1/func_ov001_02158080.cpp:
+    complete
+    .text start:0x02158080 end:0x02158324
+
+
+src/Combat/Overlay_1/func_ov001_02158ae4.cpp:
+    complete
+    .text start:0x02158ae4 end:0x02158d8c
+
+
+src/Combat/Overlay_1/func_ov001_021594cc.cpp:
+    complete
+    .text start:0x021594cc end:0x02159804
+
+
+src/Combat/Overlay_1/func_ov001_0215b72c.cpp:
+    complete
+    .text start:0x0215b72c end:0x0215b9c4
+
+
+src/Combat/Overlay_1/func_ov001_02160da8.cpp:
+    complete
+    .text start:0x02160da8 end:0x021612ac
