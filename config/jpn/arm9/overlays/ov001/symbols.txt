@@ -316,7 +316,7 @@ _Z34SetOrClearCombatantFlag6c_0215eeb0Pv kind:function(arm,size=0x70) addr:0x021
 func_ov001_02160534 kind:function(arm,size=0x24) addr:0x02160534
 _Z25CallAndReturnTrue0215ef44v kind:function(arm,size=0x10) addr:0x02160558
 func_ov001_02160568 kind:function(arm,size=0x10c) addr:0x02160568
-func_ov001_02160674 kind:function(arm,size=0x150) addr:0x02160674
+func_ov001_0215f060 kind:function(arm,size=0x150) addr:0x02160674
 func_ov001_021607c4 kind:function(arm,size=0x4c) addr:0x021607c4
 func_ov001_0215f1fc kind:function(arm,size=0xec) addr:0x02160810
 _Z22SetSomeField0_0215f2e8v kind:function(arm,size=0x1c) addr:0x021608fc
@@ -554,10 +554,10 @@ data_ov001_02166d26 kind:data(any) addr:0x02166d26
 data_ov001_02165769 kind:data(any) addr:0x02166d2d
 data_ov001_02166d33 kind:data(any) addr:0x02166d33
 data_ov001_02166d39 kind:data(any) addr:0x02166d39
-data_ov001_02166d55 kind:data(any) addr:0x02166d55
-data_ov001_02166d5c kind:data(any) addr:0x02166d5c
-data_ov001_02166d63 kind:data(any) addr:0x02166d63
-data_ov001_02166d6a kind:data(any) addr:0x02166d6a
+data_ov001_02165791 kind:data(any) addr:0x02166d55
+data_ov001_02165798 kind:data(any) addr:0x02166d5c
+data_ov001_0216579f kind:data(any) addr:0x02166d63
+data_ov001_021657a6 kind:data(any) addr:0x02166d6a
 data_ov001_02166d71 kind:data(any) addr:0x02166d71
 data_ov001_02166d76 kind:data(any) addr:0x02166d76
 data_ov001_02166d82 kind:data(any) addr:0x02166d82

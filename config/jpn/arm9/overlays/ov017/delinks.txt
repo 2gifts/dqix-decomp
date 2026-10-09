@@ -1212,3 +1212,7 @@ src/Combat/Overlay_17/func_ov017_021b9bcc.cpp:
 src/Combat/Overlay_17/ProcessEventQueue_021a3ef0.cpp:
     complete
     .text start:0x021a4964 end:0x021a4dcc
+
+src/Combat/Overlay_17/func_ov017_021d3950.cpp:
+    complete
+    .text start:0x021d3da0 end:0x021d3ef4

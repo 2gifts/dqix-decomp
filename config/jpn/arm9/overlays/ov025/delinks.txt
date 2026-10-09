@@ -400,3 +400,23 @@ src/Combat/Overlay_25/func_ov025_021ed564.cpp:
 src/Combat/Overlay_25/func_ov025_021eeca4.cpp:
     complete
     .text start:0x021eef90 end:0x021ef044
+
+src/Combat/Overlay_25/func_ov025_021e120c.cpp:
+    complete
+    .text start:0x021e1b1c end:0x021e1c08
+
+src/Combat/Overlay_25/func_ov025_021e12f8.cpp:
+    complete
+    .text start:0x021e1c08 end:0x021e1cf0
+
+src/Combat/Overlay_25/func_ov025_021e1ff4.cpp:
+    complete
+    .text start:0x021e2904 end:0x021e29e8
+
+src/Combat/Overlay_25/func_ov025_021e7ec0.cpp:
+    complete
+    .text start:0x021e8360 end:0x021e8454
+
+src/Combat/Overlay_25/func_ov025_021e9edc.cpp:
+    complete
+    .text start:0x021ea370 end:0x021ea458
