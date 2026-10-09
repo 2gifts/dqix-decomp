@@ -1,9 +1,10 @@
 #include <globaldefs.h>
+#include "World/ZoneLootableRecord.h"
 #include "Memory/SafeAllocator.h"
 #include "Memory/AllocatorUnion.h"
 
-struct Struct02047230;
-extern void MaybeInvoke0204719c(struct Struct02047230* obj);
+struct Foo02048004;
+extern void MaybeInvoke0204719c(struct Foo02048004* obj);
 extern void InitEightSubStructs(char* obj);
 extern void TailForward02012da4(AllocatorUnion* alloc, void* data);
 
@@ -15,7 +16,7 @@ ARM void ReinitEightSubStructsAndAllocator(char* obj) {
     int i;
     p = obj;
     for (i = 0; i < 8; i++) {
-        MaybeInvoke0204719c((struct Struct02047230*)p);
+        MaybeInvoke0204719c((struct Foo02048004*)p);
         p += 0x88;
     }
 

@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-extern "C" void func_ov015_0218bcb0(void* self);
+#include "Combat/Overlay15ViewerContext.h"
 
 struct Self0218f02c {
     int f0;

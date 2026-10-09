@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-extern "C" int func_ov015_0218bcb0(void* obj, int status, void* p);
+#include "Combat/Overlay15ViewerContext.h"
 
 struct SrcState0218ef7c { char pad[0x1a4]; int state; };
 struct P0218ef7c { char pad[8]; unsigned short flag; };
@@ -45,5 +45,5 @@ extern "C" ARM int func_ov015_0218ef7c(Obj0218ef7c* obj, SrcState0218ef7c* src, 
         obj->status = status;
         break;
     }
-    return func_ov015_0218bcb0(obj, status, p);
+    return func_ov015_0218bcb0(obj);
 }
