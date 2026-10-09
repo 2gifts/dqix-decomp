@@ -899,3 +899,103 @@ src/Combat/Overlay_25/func_ov025_021ed1f0.cpp:
 src/Combat/Overlay_25/func_ov025_021ed380.cpp:
     complete
     .text start:0x021ed380 end:0x021ed444
+
+
+src/Combat/Overlay_25/func_ov025_021dc168.cpp:
+    complete
+    .text start:0x021dc168 end:0x021dc220
+
+
+src/Combat/Overlay_25/func_ov025_021df794.cpp:
+    complete
+    .text start:0x021df794 end:0x021df864
+
+
+src/Combat/Overlay_25/func_ov025_021df9f4.cpp:
+    complete
+    .text start:0x021df9f4 end:0x021dfa9c
+
+
+src/Combat/Overlay_25/func_ov025_021e1048.cpp:
+    complete
+    .text start:0x021e1048 end:0x021e110c
+
+
+src/Combat/Overlay_25/func_ov025_021e13e0.cpp:
+    complete
+    .text start:0x021e13e0 end:0x021e1480
+
+
+src/Combat/Overlay_25/func_ov025_021e1480.cpp:
+    complete
+    .text start:0x021e1480 end:0x021e1540
+
+
+src/Combat/Overlay_25/func_ov025_021e1540.cpp:
+    complete
+    .text start:0x021e1540 end:0x021e161c
+
+
+src/Combat/Overlay_25/func_ov025_021e161c.cpp:
+    complete
+    .text start:0x021e161c end:0x021e169c
+
+
+src/Combat/Overlay_25/func_ov025_021e1f40.cpp:
+    complete
+    .text start:0x021e1f40 end:0x021e1ff4
+
+
+src/Combat/Overlay_25/func_ov025_021e44fc.cpp:
+    complete
+    .text start:0x021e44fc end:0x021e45c4
+
+
+src/Combat/Overlay_25/func_ov025_021e4f00.cpp:
+    complete
+    .text start:0x021e4f00 end:0x021e4fc8
+
+
+src/Combat/Overlay_25/func_ov025_021e509c.cpp:
+    complete
+    .text start:0x021e509c end:0x021e514c
+
+
+src/Combat/Overlay_25/func_ov025_021e58f0.cpp:
+    complete
+    .text start:0x021e58f0 end:0x021e59b4
+
+
+src/Combat/Overlay_25/func_ov025_021e5e84.cpp:
+    complete
+    .text start:0x021e5e84 end:0x021e5f40
+
+
+src/Combat/Overlay_25/func_ov025_021e5f54.cpp:
+    complete
+    .text start:0x021e5f54 end:0x021e5ff0
+
+
+src/Combat/Overlay_25/func_ov025_021e6f44.cpp:
+    complete
+    .text start:0x021e6f44 end:0x021e6ff8
+
+
+src/Combat/Overlay_25/func_ov025_021e8148.cpp:
+    complete
+    .text start:0x021e8148 end:0x021e821c
+
+
+src/Combat/Overlay_25/func_ov025_021eaf48.cpp:
+    complete
+    .text start:0x021eaf48 end:0x021eb00c
+
+
+src/Combat/Overlay_25/func_ov025_021ed564.cpp:
+    complete
+    .text start:0x021ed564 end:0x021ed5f0
+
+
+src/Combat/Overlay_25/func_ov025_021eeca4.cpp:
+    complete
+    .text start:0x021eeca4 end:0x021eed58
