@@ -8,8 +8,8 @@ import re
 import struct
 import sys
 
-from region_port import (DELINK_START, block_name, branch_target, delink_blocks, hex_address, is_live, live_ranges,
-                         read_raw, relocations, sync_delinks, thumb_branch_target)
+from region_port import (DELINK_START, block_name, branch_target, delink_blocks, hex_address, is_live, is_local,
+                         live_ranges, read_raw, relocations, sync_delinks, thumb_branch_target, with_local)
 
 
 parser = argparse.ArgumentParser(description="Ports matched files from config/usa to config/jpn")
@@ -182,6 +182,49 @@ class AnchorMap:
         return self.map(end - 1) + 1
 
 
+class DataMap:
+    def __init__(self, code: AnchorMap, usa: Module, pairs):
+        self.code = code
+        self.anchors = code.anchors
+        self.usa = usa
+        self.pairs = pairs
+
+    def map(self, address):
+        try:
+            return self.code.map(address)
+        except ValueError:
+            symbol = self.usa.symbol_containing(address)
+            if symbol is None or symbol.address not in self.pairs:
+                raise
+            return self.pairs[symbol.address] + (address - symbol.address)
+
+    def map_end(self, end):
+        return self.map(end - 1) + 1
+
+
+def data_pairs(usa: Module, jpn: Module, code: AnchorMap):
+    found = defaultdict(set)
+    for source, (kind, target, module) in usa.relocs.items():
+        if reloc_module(module) != usa.name:
+            continue
+        symbol = usa.symbol_containing(target)
+        if symbol is None or symbol.kind not in ("data", "bss"):
+            continue
+        try:
+            jpn_source = code.map(source)
+        except ValueError:
+            continue
+        if jpn_source not in jpn.relocs:
+            continue
+        jpn_kind, jpn_target, jpn_module = jpn.relocs[jpn_source]
+        jpn_symbol = jpn.symbol_containing(jpn_target)
+        if jpn_kind != kind or reloc_module(jpn_module) != jpn.name or jpn_symbol is None \
+                or jpn_symbol.kind != symbol.kind or target - symbol.address != jpn_target - jpn_symbol.address:
+            continue
+        found[symbol.address].add(jpn_symbol.address)
+    return {usa_address: jpn_addresses.pop() for usa_address, jpn_addresses in found.items() if len(jpn_addresses) == 1}
+
+
 def anchors_for(usa: Module, jpn: Module):
     def keys(module):
         out = defaultdict(list)
@@ -199,6 +242,8 @@ def anchors_for(usa: Module, jpn: Module):
 
 def reproducible(usa: Module, jpn: Module, usa_start, usa_end, jpn_start, jpn_end):
     size = usa_end - usa_start
+    if jpn_end - jpn_start == size and usa_start - usa.base >= len(usa.data) and jpn_start - jpn.base >= len(jpn.data):
+        return True
     if jpn_end - jpn_start != size or not usa.in_image(usa_start, size) or not jpn.in_image(jpn_start, size):
         return False
     thumb = usa.has_thumb(usa_start, usa_end)
@@ -222,9 +267,10 @@ def source_names(root: Path):
 
 
 class Plan:
-    def __init__(self, jpn_modules, defines, words, usa_names):
+    def __init__(self, jpn_modules, defines, words, usa_names, usa_local):
         self.modules = jpn_modules
         self.usa_names = usa_names
+        self.usa_local = usa_local
         self.defines = defines
         self.targets = set(defines.values())
         self.words = words
@@ -256,7 +302,7 @@ class Plan:
         if have == usa_name:
             return None
         if usa_name in self.defines:
-            return f"{usa_name} is defined to a JPN name"
+            return None if self.defines[usa_name] == have else f"{usa_name} is defined to a JPN name"
         if (module, symbol.index) in self.renames or (module, symbol.index) in changes:
             return "name already claimed"
         if not AUTO_NAME.match(have) and have in self.usa_names:
@@ -302,6 +348,7 @@ class ObjectFile:
         self.text = data[sections[texts[0]][4]:sections[texts[0]][4] + sections[texts[0]][5]] if len(texts) == 1 else None
         self.align = max(sections[texts[0]][8], 1) if len(texts) == 1 else 1
         self.other = [names[i] for i, s in enumerate(sections) if s[2] & 2 and names[i] != ".text" and s[5]]
+        self.sizes = {names[i]: s[5] for i, s in enumerate(sections) if s[2] & 2 and s[5]}
         self.relocations = []
         self.defined, self.undefined = set(), set()
         for i, section in enumerate(sections):
@@ -311,8 +358,13 @@ class ObjectFile:
                     offset, info = struct.unpack_from("<II", data, o)
                     addend = struct.unpack_from("<i", data, o + 8)[0] if step == 12 else None
                     entry = sections[section[6]][4] + (info >> 8) * 16
-                    name_offset, value, _, _, _, index = struct.unpack_from("<IIIBBH", data, entry)
-                    name = None if index in texts else string(sections[section[6]][6], name_offset)
+                    name_offset, value, _, symbol_info, _, index = struct.unpack_from("<IIIBBH", data, entry)
+                    if index in texts:
+                        name = None
+                    elif index < len(names) and names[index] == ".bss" and symbol_info & 0xf == 3:
+                        name = ".bss"
+                    else:
+                        name = string(sections[section[6]][6], name_offset)
                     self.relocations.append((offset, info & 0xff, name, value if index in texts else 0, addend))
             if section[1] != 2:
                 continue
@@ -396,15 +448,21 @@ def accept_for(plan: Plan, usa_modules, jpn_modules, usa: Module, jpn: Module, m
 
     def accept(block, ranges, linear=None):
         layout = linear or mapper
-        if any(not line.lstrip().startswith(("//", ".text")) and line.strip() and line.strip() != "complete"
+        if any(not line.lstrip().startswith(("//", ".text", ".bss")) and line.strip() and line.strip() != "complete"
                for line in block[1:]):
-            return "has sections other than .text"
+            return "has sections other than .text and .bss"
+        sections = [line.split()[0] for line in block[1:] if DELINK_START.search(line) and not line.lstrip().startswith("//")]
+        text = [r for section, r in zip(sections, ranges) if section == ".text"]
+        bss = [r for section, r in zip(sections, ranges) if section == ".bss"]
         built = jpn_object(block[0].strip().rstrip(":"))
         if built is None:
             return "has no fresh JPN object"
-        if built.other:
-            return f"compiles {built.other[0]} for JPN"
-        if len(ranges) != 1 or not built.reproduces(jpn, ranges[0][0], ranges[0][1]):
+        unplaced = [name for name in built.other if not (name == ".bss" and len(bss) == 1)]
+        if unplaced:
+            return f"compiles {unplaced[0]} for JPN"
+        if bss and (".bss" not in built.sizes or (built.sizes[".bss"] + 3) & ~3 != bss[0][1] - bss[0][0]):
+            return "has a .bss range its JPN object does not fill"
+        if len(text) != 1 or len(sections) != len(ranges) or not built.reproduces(jpn, text[0][0], text[0][1]):
             return "compiles to other bytes for JPN"
         changes = {}
         additions = []
@@ -455,9 +513,14 @@ def accept_for(plan: Plan, usa_modules, jpn_modules, usa: Module, jpn: Module, m
         missing = sorted(n for n in built.defined | built.undefined if not plan.located(n, changes, additions))
         if missing:
             return f"needs {missing[0]}, which JPN lacks"
-        start = ranges[0][0]
+        start = text[0][0]
         for offset, kind, name, value, addend in built.relocations:
-            places = {(start + value, False)} if name is None else plan.located(name, changes, additions)
+            if name is None:
+                places = {(start + value, False)}
+            elif name == ".bss":
+                places = {(bss[0][0], False)} if bss else set()
+            else:
+                places = plan.located(name, changes, additions)
             if addend is None or not places or not all(lands(jpn, kind, start + offset, address + addend, thumb)
                                                        for address, thumb in places):
                 return f"relocation at {hex_address(start + offset)} to {name or 'itself'} lands elsewhere in JPN"
@@ -490,7 +553,8 @@ def write_symbols(plan: Plan):
         for index, isa in labels.items():
             lines[index] = re.sub(r"kind:data(?:\([^)]*\))?", f"kind:label({isa})", lines[index], count=1)
         for index, new in renames.items():
-            lines[index] = new + lines[index][len(lines[index].split(" ", 1)[0]):]
+            lines[index] = with_local(new + lines[index][len(lines[index].split(" ", 1)[0]):],
+                                      (name, new) in plan.usa_local)
         newline = "\r\n" if lines and lines[-1].endswith("\r\n") else "\n"
         if lines and not lines[-1].endswith(("\n", "\r\n")):
             lines[-1] += newline
@@ -535,12 +599,14 @@ def sync():
             usa_modules[usa.name] = usa
             jpn_modules[usa.name] = Module(args.jpn, args.extract, rel)
     defines, words = source_names(args.usa.parent.parent)
-    plan = Plan(jpn_modules, defines, words, {s.name for m in usa_modules.values() for s in m.symbols})
+    plan = Plan(jpn_modules, defines, words, {s.name for m in usa_modules.values() for s in m.symbols},
+                {(m.name, s.name) for m in usa_modules.values() for s in m.symbols if is_local(s.line)})
     total = 0
     reasons = Counter()
     mappers, accepts = {}, {}
     for name, usa in usa_modules.items():
-        mappers[name] = AnchorMap(anchors_for(usa, jpn_modules[name]))
+        code = AnchorMap(anchors_for(usa, jpn_modules[name]))
+        mappers[name] = DataMap(code, usa, data_pairs(usa, jpn_modules[name], code))
         accepts[name] = accept_for(plan, usa_modules, jpn_modules, usa, jpn_modules[name], mappers[name])
         refresh(usa, jpn_modules[name], accepts[name])
     for name, usa in usa_modules.items():
