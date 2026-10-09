@@ -1,9 +1,6 @@
 #include <globaldefs.h>
 
-struct KeyValue02032e24 {
-    unsigned short value;
-    unsigned short key;
-};
+#include "Resource/TextEncoding.h"
 
 // USA: func_02032e24
 ARM unsigned short LookupKeyTable02032e24(unsigned short key, struct KeyValue02032e24* entries, int count) {
