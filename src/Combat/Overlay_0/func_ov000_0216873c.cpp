@@ -3,6 +3,7 @@
 #include "Memory/SafeAllocator.h"
 #include "Resource/Brightness.h"
 #include "System/Graphics.h"
+#include "World/ZoneLootableRecord.h"
 
 GameResources* GetWord0x0(int* gameState);
 void ClearCombatWorkFlags0x55f4(void* work, int mask);
@@ -12,10 +13,6 @@ void ResetBigStruct02013750(void* obj, int flag);
 extern "C" void func_ov000_02172720(void* obj);
 char* GetData02108e10(void);
 void ClearTwoRegions02079f9c(char* obj);
-struct Struct02047230 {
-    unsigned char pad[0x88];
-};
-void MaybeInvoke0204719c(struct Struct02047230* obj);
 struct Obj020d6f0c;
 struct Container020d6d18;
 void DestroyAllocatorAt0xa28(struct Obj020d6f0c* self);
@@ -47,8 +44,8 @@ struct BattleScene0216873c {
     char pad_eb0[0xec8 - 0xeb0];
     char bigStruct[0x3760 - 0xec8];
     char field_0x3760[0x5600 - 0x3760];
-    struct Struct02047230 model0;
-    struct Struct02047230 model1;
+    Foo02048004 model0;
+    Foo02048004 model1;
     char pad_5710[0x774c - 0x5710];
     SafeAllocator heap;
 };
