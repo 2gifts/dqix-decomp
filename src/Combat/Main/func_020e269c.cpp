@@ -35,7 +35,6 @@ extern "C" ARM void func_020e269c(struct Sel020e269c* self) {
         return;
     }
     if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x80)) {
-        // the ROM keeps the hardware divisor's REMAINDER (r1), not the quotient (r0)
         self->cur = (int)(_s32_div_f(self->cur + 1, step) >> 32);
         self->flag = 0;
         return;
