@@ -34,6 +34,9 @@ parser.add_argument("--usa", type=Path, default=Path("config/usa"), help="USA co
 parser.add_argument("--eur", type=Path, default=Path("config/eur"), help="EUR config directory to create")
 parser.add_argument("--extract", type=Path, default=Path("extract/eur"), help="Extracted EUR ROM directory")
 parser.add_argument("--force", action="store_true", help="Overwrite the EUR config directory if it exists")
+parser.add_argument("--sync", action="store_true",
+                    help="Bring the USA names and matched files config/eur lacks into it, keeping its own work")
+parser.add_argument("--dry-run", action="store_true", help="With --sync, report without writing")
 args = parser.parse_args()
 
 
@@ -150,6 +153,11 @@ def hex_address(address: int) -> str:
     return f"{address:#010x}"
 
 
+def read_raw(path: Path) -> str:
+    with path.open("r", encoding="utf-8", newline="") as file:
+        return file.read()
+
+
 def port_lines(path: Path, port_line):
     '''Rewrites a config file line by line, keeping its line endings'''
     with path.open("r", encoding="utf-8", newline="") as file:
@@ -259,7 +267,7 @@ def range_reproducible(usa_bin: bytes, eur_bin: bytes, usa_start: int, usa_end: 
 
 def port_main_delinks(path: Path, main: MainAddressMap, usa_bin: bytes, eur_bin: bytes,
                       reloc_froms: list[int]) -> int:
-    header, blocks = delink_blocks(path.read_text(encoding="utf-8", newline=""))
+    header, blocks = delink_blocks(read_raw(path))
     kept = []
     dropped = 0
     for block in blocks:
@@ -297,7 +305,7 @@ def port_same_address_delinks(path: Path, usa_bin: bytes, eur_bin: bytes, base: 
     A real immediate, such as a language-count compare, is not, and that
     block stays as bytes from the EUR ROM.
     '''
-    header, blocks = delink_blocks(path.read_text(encoding="utf-8", newline=""))
+    header, blocks = delink_blocks(read_raw(path))
     kept = []
     dropped = 0
     for block in blocks:
@@ -420,7 +428,7 @@ def clamp_secure_data(symbols: Path, delinks: Path) -> None:
                 return start_addr
         return SECURE_AREA_END
 
-    lines = symbols.read_text(encoding="utf-8", newline="").splitlines(keepends=True)
+    lines = read_raw(symbols).splitlines(keepends=True)
     parsed = []
     for index, line in enumerate(lines):
         match = SYMBOL_ADDR.search(line)
@@ -504,7 +512,163 @@ def verify_relocs(relocs: Path) -> tuple[int, list[str]]:
     return count, errors
 
 
+class SameAddress:
+    def map(self, address: int) -> int:
+        return address
+
+    def map_end(self, end: int) -> int:
+        return end
+
+
+def reloc_sources(relocs: Path) -> list[int]:
+    if not relocs.is_file():
+        return []
+    sources = []
+    for line in relocs.read_text(encoding="utf-8", errors="replace").splitlines():
+        match = RELOC.search(line)
+        if match:
+            sources.append(int(match[1], 16))
+    return sources
+
+
+def symbol_lines(path: Path):
+    lines = read_raw(path).splitlines(keepends=True)
+    by_address = {}
+    for index, line in enumerate(lines):
+        match = SYMBOL_ADDR.search(line)
+        if match:
+            by_address.setdefault(int(match[1], 16), []).append(index)
+    return lines, by_address
+
+
+def sync_symbols(usa_path: Path, eur_path: Path, mapper) -> tuple[int, list[str]]:
+    usa_lines, usa_at = symbol_lines(usa_path)
+    eur_lines, eur_at = symbol_lines(eur_path)
+    renamed = 0
+    unresolved = []
+    for address, usa_indices in usa_at.items():
+        try:
+            eur_address = mapper.map(address)
+        except ValueError:
+            continue
+        usa_names = [usa_lines[i].split(" ", 1)[0] for i in usa_indices]
+        eur_indices = eur_at.get(eur_address, [])
+        eur_names = [eur_lines[i].split(" ", 1)[0] for i in eur_indices]
+        if set(usa_names) <= set(eur_names):
+            continue
+        if eur_names and set(eur_names) < set(usa_names):
+            newline = "\r\n" if eur_lines[eur_indices[-1]].endswith("\r\n") else "\n"
+            extra = [port_symbol(usa_lines[i], mapper).rstrip("\r\n") + newline
+                     for i, name in zip(usa_indices, usa_names) if name not in eur_names]
+            eur_lines[eur_indices[-1]] += "".join(extra)
+            renamed += len(extra)
+        elif len(usa_names) == 1 and len(eur_names) == 1:
+            index = eur_indices[0]
+            eur_lines[index] = usa_names[0] + eur_lines[index][len(eur_names[0]):]
+            renamed += 1
+        else:
+            unresolved.append(f"{hex_address(eur_address)} USA {usa_names} EUR {eur_names}")
+    if renamed and not args.dry_run:
+        eur_path.write_text("".join(eur_lines), encoding="utf-8", newline="")
+    return renamed, unresolved
+
+
+def block_name(block: list[str]) -> str:
+    return block[0].strip()
+
+
+def is_live(block: list[str]) -> bool:
+    return not block[0].lstrip().startswith("//")
+
+
+def live_ranges(block: list[str]):
+    return block_ranges([line for line in block if not line.lstrip().startswith("//")])
+
+
+def sync_delinks(usa_path: Path, eur_path: Path, mapper, reproducible) -> tuple[int, list[str]]:
+    _, usa_blocks = delink_blocks(read_raw(usa_path))
+    usa_blocks = [b for b in usa_blocks if is_live(b)]
+    eur_text = read_raw(eur_path)
+    eur_header, eur_blocks = delink_blocks(eur_text)
+    usa_names = {block_name(b) for b in usa_blocks}
+    eur_names = {block_name(b) for b in eur_blocks if is_live(b)}
+    eur_only = eur_names - usa_names
+    eur_ranges = [(block_name(b), start, end) for b in eur_blocks if is_live(b) for start, end in live_ranges(b)]
+    added = []
+    left = []
+    replaced = set()
+    for block in usa_blocks:
+        name = block_name(block)
+        if name in eur_names:
+            continue
+        try:
+            ranges = [(mapper.map(start), mapper.map_end(end), start, end) for start, end in live_ranges(block)]
+        except ValueError:
+            left.append(f"{name} has no EUR address")
+            continue
+        if any(start & 3 or end & 3 for start, end, _, _ in ranges):
+            left.append(f"{name} is unaligned in EUR")
+            continue
+        if not all(reproducible(usa_start, usa_end, start, end) for start, end, usa_start, usa_end in ranges):
+            left.append(f"{name} differs in EUR")
+            continue
+        overlapping = {owner for owner, eur_start, eur_end in eur_ranges
+                       for start, end, _, _ in ranges if eur_start < end and start < eur_end}
+        if overlapping - eur_only:
+            left.append(f"{name} overlaps {sorted(overlapping - eur_only)}")
+            continue
+        replaced |= overlapping
+        added.append("".join(port_delink(line, mapper) for line in block))
+    if (added or replaced) and not args.dry_run:
+        newline = "\r\n" if "\r\n" in eur_text else "\n"
+        kept = "".join("".join(b) for b in eur_blocks if block_name(b) not in replaced)
+        body = ("".join(eur_header) + kept).rstrip("\r\n") + newline
+        for block in added:
+            body += newline + block.rstrip("\r\n").replace("\r\n", "\n").replace("\n", newline) + newline
+        eur_path.write_text(body, encoding="utf-8", newline="")
+    return len(added), [f"{name} replaced as a renamed file" for name in sorted(replaced)] + left
+
+
+def sync():
+    usa_arm9 = args.usa / "arm9"
+    eur_arm9 = args.eur / "arm9"
+    eur_arm9_bin = args.extract / "arm9" / "arm9.bin"
+    if not eur_arm9.is_dir() or not eur_arm9_bin.is_file():
+        sys.exit(f"--sync needs {eur_arm9} and an extracted EUR ROM at {args.extract}")
+    main_map = MainAddressMap(usa_arm9 / "symbols.txt", eur_arm9_bin)
+    usa_extract = args.extract.parent / "usa"
+    total_renamed = total_added = 0
+    for usa_delinks in sorted(usa_arm9.rglob("delinks.txt")):
+        usa_dir = usa_delinks.parent
+        eur_dir = args.eur / usa_dir.relative_to(args.usa)
+        if not (eur_dir / "delinks.txt").is_file():
+            print(f"{eur_dir}: missing")
+            continue
+        is_main = usa_dir == usa_arm9
+        mapper = main_map if is_main else SameAddress()
+        eur_bin = module_binary(eur_dir).read_bytes()
+        usa_bin = (usa_extract / module_binary(eur_dir).relative_to(args.extract)).read_bytes()
+        base = SECURE_AREA_START if is_main else module_base(eur_dir / "delinks.txt")
+        sources = reloc_sources(usa_dir / "relocs.txt")
+
+        def reproducible(usa_start, usa_end, eur_start, eur_end):
+            return range_reproducible(usa_bin, eur_bin, usa_start, usa_end, eur_start, eur_end,
+                                      sources, main_map, base)
+
+        renamed, unresolved = sync_symbols(usa_dir / "symbols.txt", eur_dir / "symbols.txt", mapper)
+        added, notes = sync_delinks(usa_delinks, eur_dir / "delinks.txt", mapper, reproducible)
+        total_renamed += renamed
+        total_added += added
+        if renamed or added or notes or unresolved:
+            print(f"{eur_dir}: {renamed} names, {added} files")
+        for line in unresolved + notes:
+            print(f"  {line}")
+    print(f"{'Would bring' if args.dry_run else 'Brought'} {total_renamed} names and {total_added} files into {args.eur}")
+
+
 def main():
+    if args.sync:
+        return sync()
     usa_arm9 = args.usa / "arm9"
     eur_arm9 = args.eur / "arm9"
     eur_arm9_bin = args.extract / "arm9" / "arm9.bin"
