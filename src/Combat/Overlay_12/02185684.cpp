@@ -2,7 +2,7 @@
 #include <std_library_functions.h>
 
 extern "C" void* __clear(void*, int);
-extern "C" int _Z25FindByteInString_021859f4PvPhii(void*, unsigned char*, int, int);
+int FindByteInString_021859f4(void*, unsigned char*, int, int);
 
 // USA: func_ov012_02185684
 extern "C" ARM int func_ov012_02185684(void* owner, unsigned char* pattern,
@@ -87,14 +87,14 @@ extern "C" ARM int func_ov012_02185684(void* owner, unsigned char* pattern,
                 negate += length;
                 length = strlen(reinterpret_cast<char*>(group));
                 if (negate == 0)
-                    matched = _Z25FindByteInString_021859f4PvPhii(owner, group, length, current);
+                    matched = FindByteInString_021859f4(owner, group, length, current);
                 else if (negate == 1) {
                     unsigned int low = group[0];
                     unsigned int high = group[length - 1];
                     matched = low <= current && current <= high;
                 }
                 else if (negate == 2)
-                    matched = !_Z25FindByteInString_021859f4PvPhii(owner, group + 1, length - 1, current);
+                    matched = !FindByteInString_021859f4(owner, group + 1, length - 1, current);
                 else if (negate == 3) {
                     unsigned char* ranged = group + 1;
                     unsigned int high = ranged[length - 2];
