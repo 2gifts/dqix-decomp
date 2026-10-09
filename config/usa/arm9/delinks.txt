@@ -18578,3 +18578,28 @@ src/Combat/Main/func_0204a170.cpp:
 src/Combat/Main/func_02057ab8.cpp:
     complete
     .text start:0x02057ab8 end:0x02057db8
+
+
+src/Combat/Main/_Z30MaybeNotifyGrottoState0208f820P14Struct0208f820.cpp:
+    complete
+    .text start:0x0208f820 end:0x0208f87c
+
+
+src/Combat/Main/func_0207f9f4.cpp:
+    complete
+    .text start:0x0207f9f4 end:0x0207fc6c
+
+
+src/Combat/Main/func_02085cd0.cpp:
+    complete
+    .text start:0x02085cd0 end:0x02085f1c
+
+
+src/Combat/Main/func_0208dc84.cpp:
+    complete
+    .text start:0x0208dc84 end:0x0208df10
+
+
+src/Combat/Main/func_02094d88.cpp:
+    complete
+    .text start:0x02094d88 end:0x02094fe4
