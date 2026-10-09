@@ -18340,10 +18340,6 @@ src/Combat/Main/020c79a0.cpp:
     complete
     .text start:0x020c79a0 end:0x020c79bc
 
-src/Combat/Main/_Z26ResetSystemAndBoot020c98f0i.cpp:
-    complete
-    .text start:0x020c98f0 end:0x020c99ac
-
 src/Combat/Main/func_020d7754.cpp:
     complete
     .text start:0x020d7754 end:0x020d784c

@@ -40,7 +40,6 @@ struct Group3x3 {
     void* c[3];
 };
 
-// every slot holds an offset relative to the block base; add the base in place
 #define RELOCATE(slot) (slot) = (char*)sl->fieldSub + (int)(slot)
 
 // USA: func_02055180

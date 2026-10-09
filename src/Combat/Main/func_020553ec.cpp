@@ -22,7 +22,6 @@ struct Obj020553ac {
 extern "C" void func_02054f80(void* obj);
 extern "C" ARM int func_02055180(void* obj, void* a1, void* a2, void* a3);
 
-// "ARC" and ".beff" live in the shared ARM9 string pool
 extern const char data_020f04b4[];
 extern const char data_020f04b8[];
 
