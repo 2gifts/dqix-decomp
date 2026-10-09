@@ -100,6 +100,18 @@ def reloc_sources(path: Path) -> list[int]:
     return [source for source, _, _, _ in relocations(path)]
 
 
+def is_local(line: str) -> bool:
+    return "local" in line.split()[1:]
+
+
+def with_local(line: str, local: bool) -> str:
+    if is_local(line) == local:
+        return line
+    body = line.rstrip("\r\n")
+    words = [word for word in body.split(" ") if word != "local"] + (["local"] if local else [])
+    return " ".join(words) + line[len(body):]
+
+
 def symbol_lines(path: Path):
     lines = read_raw(path).splitlines(keepends=True)
     by_address = {}

@@ -77,8 +77,8 @@ THUMB_BX_LR = 0x4770
 THUMB_MOV_R0_R1 = 0x1c08
 
 from region_port import (DELINK_END, DELINK_START, RELOC, SYMBOL_ADDR, SYMBOL_SIZE, SameAddress,
-                         block_ranges, branch_target, delink_blocks, hex_address, port_delink, read_raw,
-                         reloc_sources, symbol_lines, sync_delinks, thumb_branch_target)
+                         block_ranges, branch_target, delink_blocks, hex_address, is_local, port_delink,
+                         read_raw, reloc_sources, symbol_lines, sync_delinks, thumb_branch_target, with_local)
 
 
 class MainAddressMap:
@@ -455,6 +455,12 @@ def sync_symbols(usa_path: Path, eur_path: Path, mapper) -> tuple[int, list[str]
         eur_indices = eur_at.get(eur_address, [])
         eur_names = [eur_lines[i].split(" ", 1)[0] for i in eur_indices]
         if set(usa_names) <= set(eur_names):
+            for i, name in zip(usa_indices, usa_names):
+                index = eur_indices[eur_names.index(name)]
+                flagged = with_local(eur_lines[index], is_local(usa_lines[i]))
+                if flagged != eur_lines[index]:
+                    eur_lines[index] = flagged
+                    renamed += 1
             continue
         if eur_names and set(eur_names) < set(usa_names):
             newline = "\r\n" if eur_lines[eur_indices[-1]].endswith("\r\n") else "\n"
@@ -464,7 +470,8 @@ def sync_symbols(usa_path: Path, eur_path: Path, mapper) -> tuple[int, list[str]
             renamed += len(extra)
         elif len(usa_names) == 1 and len(eur_names) == 1:
             index = eur_indices[0]
-            eur_lines[index] = usa_names[0] + eur_lines[index][len(eur_names[0]):]
+            eur_lines[index] = with_local(usa_names[0] + eur_lines[index][len(eur_names[0]):],
+                                          is_local(usa_lines[usa_indices[0]]))
             renamed += 1
         else:
             unresolved.append(f"{hex_address(eur_address)} USA {usa_names} EUR {eur_names}")
