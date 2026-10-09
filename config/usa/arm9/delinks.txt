@@ -18255,3 +18255,7 @@ src/Combat/Main/ConfigureCombatSubDisplayElements.cpp:
 src/Combat/Main/020c79a0.cpp:
     complete
     .text start:0x020c79a0 end:0x020c79bc
+
+src/Combat/Main/EncodeUtf16Text.cpp:
+    complete
+    .text start:0x020328bc end:0x02032e24

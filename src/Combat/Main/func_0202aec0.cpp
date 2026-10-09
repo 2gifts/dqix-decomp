@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/TextEncoding.h"
 
 extern "C" void* memset(void* dst, int c, unsigned long n);
 extern "C" void func_020c99c8(void* out);
@@ -41,13 +42,10 @@ struct Obj_0202aec0 {
 
 struct Info_0202aec0 {
     int f0;
-    int f4;
-    unsigned char pad8[0x12];
+    unsigned short name[11];
     unsigned short f1a;
     unsigned char pad1c[0x38];
 };
-
-extern "C" void func_020328bc(unsigned char* dst, int* src, unsigned char count);
 
 extern int data_020fefcc;
 
@@ -71,7 +69,7 @@ extern "C" ARM void func_0202aec0(Obj_0202aec0* obj) {
 
     func_020c99c8(&info);
     obj->sub.f28 = info.f1a;
-    func_020328bc(obj->sub.f14, &info.f4, obj->sub.f28);
+    func_020328bc(obj->sub.f14, info.name, obj->sub.f28);
 
     obj->sub.f29 = obj->sub.f29 & ~8;
     obj->sub.f34 = 0;
