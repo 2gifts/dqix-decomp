@@ -411,7 +411,7 @@ func_ov003_021798e4 kind:function(arm,size=0x698) addr:0x021798e4
 _Z22GetInnerShort_0217b200PPv kind:function(arm,size=0x14) addr:0x02179f7c
 func_ov003_02179f90 kind:function(arm,size=0x1fc) addr:0x02179f90
 func_ov003_0217a18c kind:function(arm,size=0x6b8) addr:0x0217a18c
-func_ov003_0217a844 kind:function(arm,size=0x19c) addr:0x0217a844
+func_ov003_0217bb1c kind:function(arm,size=0x19c) addr:0x0217a844
 _Z15InitObj0217bcb8P11Obj0217bcb8 kind:function(arm,size=0x80) addr:0x0217a9e0
 func_ov003_0217bd38 kind:function(arm,size=0x7c) addr:0x0217aa60
 func_ov003_0217bdb4 kind:function(arm,size=0x4) addr:0x0217aadc
@@ -424,7 +424,7 @@ _Z23SetPendingFlags0217c74cP11Obj0217c74c kind:function(arm,size=0x54) addr:0x02
 func_ov003_0217b4c8 kind:function(arm,size=0x1d4) addr:0x0217b4c8
 func_ov003_0217b69c kind:function(arm,size=0x110) addr:0x0217b69c
 func_ov003_0217ca84 kind:function(arm,size=0xb8) addr:0x0217b7ac
-func_ov003_0217b864 kind:function(arm,size=0x1e8) addr:0x0217b864
+func_ov003_0217cb3c kind:function(arm,size=0x1e8) addr:0x0217b864
 func_ov003_0217ba4c kind:function(arm,size=0x118) addr:0x0217ba4c
 func_ov003_0217bb64 kind:function(arm,size=0xd4) addr:0x0217bb64
 func_ov003_0217bc38 kind:function(arm,size=0x5a4) addr:0x0217bc38
@@ -650,8 +650,8 @@ data_ov003_0217ef24 kind:bss addr:0x0217ef24
 data_ov003_0217ef38 kind:bss addr:0x0217ef38
 data_ov003_0217ef3c kind:bss addr:0x0217ef3c
 data_ov003_0217ef40 kind:bss addr:0x0217ef40
-data_ov003_0217ef48 kind:bss addr:0x0217ef48
+data_ov003_02180cd0 kind:bss addr:0x0217ef48
 data_ov003_0217ef58 kind:bss addr:0x0217ef58
 data_ov003_0217ef64 kind:bss addr:0x0217ef64
-data_ov003_0217ef70 kind:bss addr:0x0217ef70
-data_ov003_0217ef80 kind:bss addr:0x0217ef80
+data_ov003_02180cf8 kind:bss addr:0x0217ef70
+data_ov003_02180d08 kind:bss addr:0x0217ef80

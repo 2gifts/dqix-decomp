@@ -346,7 +346,7 @@ func_02011ddc kind:function(arm,size=0xc) addr:0x02011ddc
 func_02011de8 kind:function(arm,size=0xc) addr:0x02011de8
 func_02011df4 kind:function(arm,size=0xc) addr:0x02011df4
 func_02011e00 kind:function(arm,size=0x1c) addr:0x02011e00
-func_02011e1c kind:function(arm,size=0x18) addr:0x02011e1c
+_Z27GetField0x74deForValidIndexPcj kind:function(arm,size=0x18) addr:0x02011e1c
 _Z16GetNegativeEntryPci kind:function(arm,size=0x1c) addr:0x02011e34
 func_02011e50 kind:function(arm,size=0x1c) addr:0x02011e50
 func_02011e6c kind:function(arm,size=0x110) addr:0x02011e6c
@@ -832,7 +832,7 @@ _Z24AppendNodeToList0202a944P16ListHead0202a944P16ListNode0202a944 kind:function
 _Z14GetNodeAtIndexP18IndexList_0202a9aci kind:function(arm,size=0x48) addr:0x0202a564
 func_0202a9f4 kind:function(arm,size=0xa0) addr:0x0202a5ac
 func_0202aa94 kind:function(arm,size=0xa0) addr:0x0202a64c
-func_0202a6ec kind:function(arm,size=0x140) addr:0x0202a6ec
+func_0202ab34 kind:function(arm,size=0x140) addr:0x0202a6ec
 func_0202a82c kind:function(arm,size=0xbc) addr:0x0202a82c
 func_0202a8e8 kind:function(arm,size=0x1c) addr:0x0202a8e8
 func_0202ad4c kind:function(arm,size=0x4c) addr:0x0202a904
@@ -1143,7 +1143,7 @@ _Z18ClearFlag0x4At0xe0P13Flags02033fdc kind:function(arm,size=0x10) addr:0x02033
 _Z24SetBits0x40000AndFlag0x2Ph kind:function(arm,size=0x20) addr:0x02033b24
 _Z23ClearStateFlags0203400cPh kind:function(arm,size=0x20) addr:0x02033b44
 _Z30CheckField0xc4Low15BitsNonZeroP16BitField0203402c kind:function(arm,size=0x18) addr:0x02033b64
-func_02033b7c kind:function(arm,size=0x58) addr:0x02033b7c
+_Z21SetField0xc4Low15BitsPhi kind:function(arm,size=0x58) addr:0x02033b7c
 _Z27ClearField0xc4KeepBit0x8000Ph kind:function(arm,size=0x18) addr:0x02033bd4
 _Z17SetFlag0x80At0xc2P13Flags020340b4 kind:function(arm,size=0x10) addr:0x02033bec
 _Z19ClearFlag0x80At0xc2P13Flags020340c4 kind:function(arm,size=0x10) addr:0x02033bfc
@@ -1331,10 +1331,10 @@ _Z30ClearBytesAndZeroBlock02039d24Ph kind:function(arm,size=0x24) addr:0x0203977
 _Z18SetFlag0x1ceBit0x4Ph kind:function(arm,size=0x10) addr:0x020397a0
 func_020397b0 kind:function(arm,size=0x10) addr:0x020397b0
 func_020397c0 kind:function(arm,size=0x14) addr:0x020397c0
-func_020397d4 kind:function(arm,size=0x8) addr:0x020397d4
+_Z12GetByte0x26cPc kind:function(arm,size=0x8) addr:0x020397d4
 _Z24ResetObjectState02039d84P11Obj02039d84 kind:function(arm,size=0x38) addr:0x020397dc
 func_02039814 kind:function(arm,size=0x10) addr:0x02039814
-func_02039824 kind:function(arm,size=0xc) addr:0x02039824
+_Z20IsFlag0x1ceBit0x8SetPh kind:function(arm,size=0xc) addr:0x02039824
 func_02039830 kind:function(arm,size=0x10) addr:0x02039830
 func_02039840 kind:function(arm,size=0xc) addr:0x02039840
 func_0203984c kind:function(arm,size=0x7c) addr:0x0203984c
@@ -1626,7 +1626,7 @@ func_02042ea4 kind:function(arm,size=0xf8) addr:0x02042ea4
 func_02042f9c kind:function(arm,size=0x78) addr:0x02042f9c
 func_02043014 kind:function(arm,size=0x4c) addr:0x02043014
 func_02043060 kind:function(arm,size=0x70) addr:0x02043060
-func_020430d0 kind:function(arm,size=0x40) addr:0x020430d0
+func_02042a50 kind:function(arm,size=0x40) addr:0x020430d0
 func_02043110 kind:function(arm,size=0x5c) addr:0x02043110
 _Z22FindAndSetFirstFreeBitiPhj kind:function(arm,size=0x64) addr:0x0204316c
 _Z15ClearBitInArrayiPhi kind:function(arm,size=0x1c) addr:0x020431d0
@@ -1915,7 +1915,7 @@ func_0204b174 kind:function(arm,size=0x16c) addr:0x0204bf94
 _Z21DispatchByTag0204b2e0PvPc kind:function(arm,size=0xc0) addr:0x0204c100
 _Z27DispatchByTagLookup0204b3a0P15SelfTag0204b3a0Pc kind:function(arm,size=0x120) addr:0x0204c1c0
 func_0204c2e0 kind:function(arm,size=0xf4) addr:0x0204c2e0
-func_0204c3d4 kind:function(arm,size=0x34) addr:0x0204c3d4
+func_0204b5b4 kind:function(arm,size=0x34) addr:0x0204c3d4
 _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii kind:function(arm,size=0x38) addr:0x0204c408
 func_0204b620 kind:function(arm,size=0x258) addr:0x0204c440
 _Z36CallFunc0204b620IfField0x14_0204b878P11Obj0204b878iiisssst kind:function(arm,size=0x58) addr:0x0204c698
@@ -2126,7 +2126,7 @@ _Z19ForEachNode020579ecPP12Node020579ec kind:function(arm,size=0x24) addr:0x0205
 _Z36UpdateEntriesWhereFlag2Clear02057a10P17Container02057a10 kind:function(arm,size=0x5c) addr:0x02058d88
 _Z34UpdateEntriesWhereFlag2Set02057a6cP17Container02057a6c kind:function(arm,size=0x4c) addr:0x02058de4
 func_02057ab8 kind:function(arm,size=0x300) addr:0x02058e30
-func_02059130 kind:function(arm,size=0x28) addr:0x02059130
+_Z35ClearCombatantSlotIfValidId02057db8ii kind:function(arm,size=0x28) addr:0x02059130
 _Z29CreateAndRegisterNode02057de0P16NodeList02057de0iP13SafeAllocatorii kind:function(arm,size=0x8c) addr:0x02059158
 func_02057e6c kind:function(arm,size=0x94) addr:0x020591e4
 func_02057f00 kind:function(arm,size=0x8c) addr:0x02059278
@@ -2459,7 +2459,7 @@ _Z14GetEntry3BytesP9EntryDEE8iPhS1_S1_ kind:function(arm,size=0x2c) addr:0x0206f
 func_0206f068 kind:function(arm,size=0x58) addr:0x0206f068
 _Z20SetOrClearBitInArrayPvPhii kind:function(arm,size=0x44) addr:0x0206f0c0
 func_0206f104 kind:function(arm,size=0x38) addr:0x0206f104
-func_0206f13c kind:function(arm,size=0x98) addr:0x0206f13c
+func_0206dfe8 kind:function(arm,size=0x98) addr:0x0206f13c
 _Z20ClearRegions0206e080Pci kind:function(arm,size=0x50) addr:0x0206f1d4
 _Z31ClearIndexedEntryFields0206e0d0Pci kind:function(arm,size=0x30) addr:0x0206f224
 _Z32SetNibbleFieldTo3IfValid0206e100ii kind:function(arm,size=0x20) addr:0x0206f254
@@ -7465,7 +7465,7 @@ data_020fdd30 kind:bss addr:0x020fda98
 data_020fdaa0 kind:bss addr:0x020fdaa0
 data_020fdd44 kind:bss addr:0x020fdaac
 data_020fe6fc kind:bss addr:0x020fe6fc
-data_020fe704 kind:bss addr:0x020fe704
+data_020fe9ac kind:bss addr:0x020fe704
 data_020fe9cc kind:bss addr:0x020fe724
 data_020fefcc kind:bss addr:0x020fed24
 data_020fed2c kind:bss addr:0x020fed2c
