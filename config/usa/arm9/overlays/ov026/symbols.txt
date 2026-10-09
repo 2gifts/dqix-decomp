@@ -27,7 +27,7 @@ data_ov026_021de6a2 kind:data(any) addr:0x021de6a2
 data_ov026_021de6a6 kind:data(any) addr:0x021de6a6
 data_ov026_021de6a8 kind:data(any) addr:0x021de6a8
 data_ov026_021de6bc kind:data(any) addr:0x021de6bc
-data_ov026_021de6c4 kind:data(any) addr:0x021de6c4
+@947 kind:data(any) addr:0x021de6c4 local
 data_ov026_021de6cc kind:data(any) addr:0x021de6cc
 data_ov026_021de6d4 kind:data(any) addr:0x021de6d4
 data_ov026_021de6dc kind:data(any) addr:0x021de6dc
