@@ -18414,3 +18414,7 @@ src/Combat/Main/__sinit_020e59c8.cpp:
 src/Combat/Main/func_020d7b04.cpp:
     complete
     .text start:0x020d7b14 end:0x020d7e20
+
+src/Combat/Main/MarkContextStackTopUnknownSubspace.cpp:
+    complete
+    .text start:0x020c7a84 end:0x020c7aa0
