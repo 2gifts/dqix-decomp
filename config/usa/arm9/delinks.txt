@@ -18473,10 +18473,6 @@ src/Combat/Main/func_02048690.cpp:
     .text start:0x02048690 end:0x02048850
 
 
-src/Combat/Main/_Z26ResetSystemAndBoot020c98f0i.cpp:
-    complete
-    .text start:0x020c98f0 end:0x020c99ac
-
 
 src/Combat/Main/func_0204ac60.cpp:
     complete
