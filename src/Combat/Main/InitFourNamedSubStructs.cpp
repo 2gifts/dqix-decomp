@@ -1,9 +1,9 @@
 #include <globaldefs.h>
+#include "World/ZoneLootableRecord.h"
 #include "std_library_functions.h"
 
-struct Struct02047230;
-extern "C" void func_0204719c(struct Struct02047230* obj);
-extern "C" void func_02047a78(struct Struct02047230* obj, char* name, int flag);
+struct Foo02048004;
+extern "C" void func_02047a78(struct Foo02048004* obj, char* name, int flag);
 
 extern char data_020f14d0[];
 
@@ -13,8 +13,8 @@ ARM void InitFourNamedSubStructs(char* base, int flag) {
     char buf[0x40];
     for (i = 0; i < 4; i++) {
         sprintf(buf, data_020f14d0, i);
-        func_0204719c((struct Struct02047230*)(base + i * 0x88));
-        func_02047a78((struct Struct02047230*)(base + i * 0x88), buf, flag);
+        func_0204719c((struct Foo02048004*)(base + i * 0x88));
+        func_02047a78((struct Foo02048004*)(base + i * 0x88), buf, flag);
     }
     *(unsigned char*)(base + 0x220) = 0;
     *(unsigned char*)(base + 0x221) = 0;

@@ -79,7 +79,7 @@ struct ProfileEditor021843d4
     unsigned char day_;
     char accoladeText_[0x40];
     char titleText_[0x40];
-    char checker_[0x3c];
+    unsigned char checker_[0x3c];
     unsigned char finished_;
     unsigned char unk_14bd;
     char unk_14be[2];

@@ -153,7 +153,6 @@ extern "C" void func_ov023_021dc134(void* window, int a, int b);
 extern "C" void _Z17ClearObj_021e1318P11Obj021e1318(Obj021e1318* list);
 extern "C" void func_ov023_021dad78(void* table);
 extern "C" void func_ov005_021536e0(void* frame);
-extern "C" void func_0204719c(MenuModel* model);
 void* GetPtrField0x2a04(GameState* gameState);
 extern "C" unsigned char _Z20GetTableByte0215a948Pvi(void* unused, int index);
 extern "C" unsigned char _Z20GetTableByte0215a918Pvi(void* unused, int index);

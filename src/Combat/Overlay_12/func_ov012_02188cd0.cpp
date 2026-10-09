@@ -68,7 +68,7 @@ struct ProfileEditor02188cd0
     char unk_13b0[0x13d0 - 0x13b0];
     char* message_;
     char unk_13d4[0x1480 - 0x13d4];
-    char checker_[0x14bc - 0x1480];
+    unsigned char checker_[0x14bc - 0x1480];
 };
 
 extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(Entry_0205d6a0* window, int a);

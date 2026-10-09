@@ -1,8 +1,9 @@
 #include <globaldefs.h>
+#include "World/ZoneLootableRecord.h"
 #include <GameState/GameState.h>
 
 struct Obj0205eaa0;
-struct Struct02047230;
+struct Foo02048004;
 
 struct TouchState {
     char unk_0[0x24];
@@ -70,7 +71,7 @@ extern "C" void func_ov005_02156658(EquipmentMenu* self, int x, int y);
 extern "C" void func_ov005_021567ac(EquipmentMenu* self, int x, int y);
 extern "C" void func_ov005_0215690c(EquipmentMenu* self, int x, int y);
 extern "C" void func_ov005_021579ec(EquipmentMenu* self, unsigned int state, unsigned char slot);
-void MaybeInvoke0204719c(Struct02047230* model);
+void MaybeInvoke0204719c(Foo02048004* model);
 extern "C" void func_ov005_02156e1c(EquipmentMenu* self, int x, int y);
 extern "C" void func_ov005_02156ecc(EquipmentMenu* self, int x, int y);
 
@@ -116,7 +117,7 @@ extern "C" ARM void func_ov005_021562b8(EquipmentMenu* self) {
                     screen->flags_ &= ~1;
                     screen->flags_ &= ~0x80;
                 }
-                MaybeInvoke0204719c((Struct02047230*)self->dragModel_);
+                MaybeInvoke0204719c((Foo02048004*)self->dragModel_);
                 self->dragged_ = -1;
                 self->unk_3dc0 = -1;
                 self->touchTime_ = 0;
@@ -153,7 +154,7 @@ extern "C" ARM void func_ov005_021562b8(EquipmentMenu* self) {
             self->touchY_ = -1;
         }
         func_ov005_02156ecc(self, x, y);
-        MaybeInvoke0204719c((Struct02047230*)self->dragModel_);
+        MaybeInvoke0204719c((Foo02048004*)self->dragModel_);
         self->dragged_ = -1;
         self->unk_3dc0 = -1;
     }

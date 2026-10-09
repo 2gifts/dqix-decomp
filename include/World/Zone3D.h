@@ -7,6 +7,7 @@
 #include "Graphics/AtmosphericEffect.h"
 #include "Graphics/LightingInfo.h"
 #include "Grotto/Main/TileFeatures.h"
+#include "World/ZoneLootableRecord.h"
 
 struct Zone3D_StructPtr_8
 {
@@ -89,10 +90,10 @@ public:
     char unknown_476_;
     // this seems to include blue and red chests
     unsigned char numChests_;
-    int unknown_478_;
+    ZoneLootableRecord* unknown_478_;
     int unknown_47c_;
 
-    char unk_480[0x498 - 0x480];
+    Foo02048004* lootableTemplates_[6];
     Model3D models_498_[2];
     char unk_5f0[0x82c - 0x5f0];
 

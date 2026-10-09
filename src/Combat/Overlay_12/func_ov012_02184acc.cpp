@@ -45,7 +45,7 @@ struct ProfileEditor02184acc
     char unk_13d8[0x13f4 - 0x13d8];
     unsigned int design_;
     char unk_13f8[0x1480 - 0x13f8];
-    char checker_[0x3c];
+    unsigned char checker_[0x3c];
     unsigned char finished_;
     unsigned char unk_14bd;
     char unk_14be[2];

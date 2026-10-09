@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "World/ZoneLootableRecord.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
@@ -103,7 +104,6 @@ extern "C" void _Z21ResetWordList0209cbb8P16WordList0209cbb8(void* p);
 extern "C" void _Z28RunScriptIfAvailable0209cbccv(void* p);
 extern "C" void* _Z17GetGlobal02109a54v();
 extern "C" void _Z35PrepareAndRunBufferedScript02099f6cPc(void* p);
-extern "C" void func_0204719c(void* p);
 extern "C" void _Z27ResetAllocatorSlots020e5058v();
 extern "C" void* _Z16AllocateAligned4P14AllocatorUnionj(void* alloc, unsigned int size);
 extern "C" void _Z31CreateAndResetAllocator020e50ecPvj(void* buf, unsigned int size);
@@ -248,7 +248,6 @@ extern "C" void _Z27RefreshDisplayState0205e8ecP12Obj_0205e8ec(void* p);
 extern "C" void func_ov017_021a3ef0(void* p);
 extern "C" void _Z12Init0203cfb4P15Struct_0203cfb4(void* p);
 extern "C" void func_ov017_021a316c(void* self);
-extern "C" void _Z19MaybeInvoke0204719cP14Struct02047230(void* p);
 extern "C" void _Z20InitControllerObjectPc(void* c);
 extern "C" void _Z28CallHelperFourTimes_02190238Pv(void* self);
 extern "C" void _Z22ResetBigStruct02013750Pvi(void* p, int a);
@@ -326,9 +325,6 @@ struct Slot373c {
     char data[0x48];
 };
 
-struct Entry2b90 {
-    char data[0x88];
-};
 
 struct Battle0218b688 {
     char pad0[0x28];
@@ -344,7 +340,7 @@ struct Battle0218b688 {
     char dataF0c[0x2b08 - 0xf0c];
     int tableMode;
     char pad2b0c[0x2b90 - 0x2b0c];
-    Entry2b90 entries[0x12];
+    Foo02048004 entries[0x12];
     char pad3520[0x3634 - 0x3520];
     unsigned char colorA[0x12];
     unsigned char colorB[0x12];
@@ -906,7 +902,7 @@ extern "C" ARM void func_ov017_0218b688(Battle0218b688* self) {
     _Z12Init0203cfb4P15Struct_0203cfb4(extRegion);
     func_ov017_021a316c(self);
     for (int i = 0; i < 0x12; i++) {
-        _Z19MaybeInvoke0204719cP14Struct02047230(&self->entries[i]);
+        MaybeInvoke0204719c(&self->entries[i]);
     }
     _Z24ClearFourRegions020798b8Pc(regions4);
     _Z20InitControllerObjectPc(controller);

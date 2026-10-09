@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Memory/SafeAllocator.h"
+#include "World/ZoneLootableRecord.h"
 
 // sizeof == 0x44c8, or 0x4218 in JPN version.
 // Referenced in a huge number of places, seems to be responsible for all
@@ -63,10 +64,7 @@ struct GameResources
     SafeAllocator allocator_2b0c; // jpn: offset 28fc
 
     char unknown_2b20[0x70]; // jpn: offset 2910
-    struct Substruct_2b90 // jpn: offset 2980
-    {
-        char unknown[0x88];
-    } substruct_array_2b90[0x12];
+    Foo02048004 substruct_array_2b90[0x12]; // jpn: offset2980
     char unknown_3520[0x88]; // jpn: offset 3310
     char unknown_35a8[0x120]; // jpn: offset 3398
 
