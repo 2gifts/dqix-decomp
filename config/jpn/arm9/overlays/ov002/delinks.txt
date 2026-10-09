@@ -4,3 +4,62 @@
     .data       start:0x0216d2e0 end:0x0216db20 kind:data align:32
     .bss        start:0x0216db20 end:0x0216db40 kind:bss align:32
 
+src/Combat/Overlay_2/GetField110ArrayValue021574d4.cpp:
+    complete
+    .text start:0x02158b50 end:0x02158b7c
+
+src/Combat/Overlay_2/GetFieldC54ArrayValue021573f8.cpp:
+    complete
+    .text start:0x02158a74 end:0x02158aa0
+
+src/Combat/Overlay_2/InitStateArray02157ce0.cpp:
+    complete
+    .text start:0x02159354 end:0x021593b4
+
+src/Combat/Overlay_2/NextIndexOrZero_0215a9b4.cpp:
+    complete
+    .text start:0x0215bda4 end:0x0215bdbc
+
+src/Combat/Overlay_2/SetEntryFields02154bcc.cpp:
+    complete
+    .text start:0x0215634c end:0x021563b0
+
+src/Combat/Overlay_2/IsFlagAt130Bit0Set_0216364c.cpp:
+    complete
+    .text start:0x02164378 end:0x02164390
+
+src/Combat/Overlay_2/SetOrClearByteC5Bit8_0216574c.cpp:
+    complete
+    .text start:0x0216630c end:0x02166324
+
+src/Combat/Overlay_2/CheckAndClearEntryStatus_0215b7d0.cpp:
+    complete
+    .text start:0x0215ca24 end:0x0215ca68
+
+src/Combat/Overlay_2/AppendFormattedValue_02168d10.cpp:
+    complete
+    .text start:0x02169594 end:0x021695d8
+
+src/Combat/Overlay_2/AreFields60And64BothNegOne_02168c00.cpp:
+    complete
+    .text start:0x02169484 end:0x021694bc
+
+src/Combat/Overlay_2/AlwaysZero_021548b8.cpp:
+    complete
+    .text start:0x02156038 end:0x02156044
+
+src/Combat/Overlay_2/NoOp_02164744.cpp:
+    complete
+    .text start:0x0216538c end:0x02165390
+
+src/Combat/Overlay_2/Synth_021536e0.cpp:
+    complete
+    .text start:0x02154e60 end:0x02154e6c
+
+src/Combat/Overlay_2/Trans_02153e90.cpp:
+    complete
+    .text start:0x02155610 end:0x02155624
+
+src/Combat/Overlay_2/Trans_0215a920.cpp:
+    complete
+    .text start:0x0215bd10 end:0x0215bd28

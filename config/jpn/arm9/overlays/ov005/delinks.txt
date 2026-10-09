@@ -4,3 +4,46 @@
     .data       start:0x0215e0e0 end:0x0215e1e0 kind:data align:32
     .bss        start:0x0215e1e0 end:0x0215e1e0 kind:bss align:32
 
+src/Combat/Overlay_5/CheckFlag30Or401_02157190.cpp:
+    complete
+    .text start:0x02158788 end:0x021587c8
+
+src/Combat/Overlay_5/CopyThreeFields02157174.cpp:
+    complete
+    .text start:0x0215876c end:0x02158788
+
+src/Combat/Overlay_5/Trans_021536e0.cpp:
+    complete
+    .text start:0x02154e60 end:0x02154ea8
+
+src/Combat/Overlay_5/Trans_02153728.cpp:
+    complete
+    .text start:0x02154ea8 end:0x02154f3c
+
+src/Combat/Overlay_5/ComputeAdjustedOffsets02154d7c.cpp:
+    complete
+    .text start:0x021563dc end:0x02156408
+
+src/Combat/Overlay_5/UpdateDeltaPosition_02154d18.cpp:
+    complete
+    .text start:0x02156378 end:0x02156394
+
+src/Combat/Overlay_5/UpdateDeltaPosition_02154d34.cpp:
+    complete
+    .text start:0x02156394 end:0x021563b0
+
+src/Combat/Overlay_5/UpdateDeltaPosition_02154d50.cpp:
+    complete
+    .text start:0x021563b0 end:0x021563dc
+
+src/Combat/Overlay_5/func_ov005_02155670.cpp:
+    complete
+    .text start:0x02156c60 end:0x02156cd4
+
+src/Combat/Overlay_5/func_ov005_021538fc.cpp:
+    complete
+    .text start:0x0215507c end:0x021550d4
+
+src/Combat/Overlay_5/func_ov005_021553b4.cpp:
+    complete
+    .text start:0x021569a4 end:0x02156a14

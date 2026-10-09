@@ -3,3 +3,10 @@
     .ctor       start:0x0218c7e0 end:0x0218c7e4 kind:rodata align:4
     .bss        start:0x0218c800 end:0x0218c800 kind:bss align:32
 
+src/Combat/Overlay_21/ResetAllocatorAndClearField40_0218b5c4.cpp:
+    complete
+    .text start:0x0218c1e4 end:0x0218c21c
+
+src/Combat/Overlay_21/func_ov021_0218b5a0.cpp:
+    complete
+    .text start:0x0218c1c0 end:0x0218c1e4

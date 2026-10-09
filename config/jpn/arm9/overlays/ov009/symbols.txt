@@ -1,6 +1,6 @@
 func_ov009_021853a0 kind:function(arm,size=0x208) addr:0x021853a0
 func_ov009_021855a8 kind:function(arm,size=0x280) addr:0x021855a8
-func_ov009_02185828 kind:function(arm,size=0x28) addr:0x02185828
+_Z19ResetFields021847c4P14Struct021847c4 kind:function(arm,size=0x28) addr:0x02185828
 func_ov009_02185850 kind:function(arm,size=0x38) addr:0x02185850
 func_ov009_02185888 kind:function(arm,size=0x5c) addr:0x02185888
 func_ov009_021858e4 kind:function(arm,size=0x1c8) addr:0x021858e4

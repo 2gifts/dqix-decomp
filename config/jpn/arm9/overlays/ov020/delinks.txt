@@ -5,3 +5,18 @@
     .data       start:0x0218e400 end:0x0218e5c0 kind:data align:32
     .bss        start:0x0218e5c0 end:0x0218e5c0 kind:bss align:32
 
+src/Combat/Overlay_20/Trans_0218b700.cpp:
+    complete
+    .text start:0x0218c310 end:0x0218c320
+
+src/Combat/Overlay_20/ConfigureBg1Control_0218c7bc.cpp:
+    complete
+    .text start:0x0218d200 end:0x0218d234
+
+src/Combat/Overlay_20/ConfigureSubBg0Control_0218cd64.cpp:
+    complete
+    .text start:0x0218d7a8 end:0x0218d7dc
+
+src/Combat/Overlay_20/InitPointerPair_0218c7f0.cpp:
+    complete
+    .text start:0x0218d234 end:0x0218d284

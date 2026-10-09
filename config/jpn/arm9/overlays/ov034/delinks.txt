@@ -4,3 +4,14 @@
     .data       start:0x022a31c0 end:0x022a31e0 kind:data align:32
     .bss        start:0x022a31e0 end:0x022a3980 kind:bss align:32
 
+src/Combat/Overlay_34/InitField0202f808_022a29b8.cpp:
+    complete
+    .text start:0x022a3124 end:0x022a3150
+
+src/Combat/Overlay_34/InitField0202f808_022a29e4.cpp:
+    complete
+    .text start:0x022a3150 end:0x022a3170
+
+src/Combat/Overlay_34/PopulateOv34BackgroundLoader.cpp:
+    complete
+    .text start:0x022a2960 end:0x022a2988

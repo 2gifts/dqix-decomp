@@ -4,3 +4,138 @@
     .data       start:0x021613e0 end:0x021616a0 kind:data align:32
     .bss        start:0x021616a0 end:0x021616c0 kind:bss align:32
 
+src/Combat/Overlay_6/InitCombatEntry021542f4.cpp:
+    complete
+    .text start:0x02155a74 end:0x02155ac8
+
+src/Combat/Overlay_6/InitStruct_021536e0.cpp:
+    complete
+    .text start:0x02154e60 end:0x02154eb0
+
+src/Combat/Overlay_6/ProcessPendingCommands0215426c.cpp:
+    complete
+    .text start:0x021559ec end:0x02155a74
+
+src/Combat/Overlay_6/ResetFlags02153e54.cpp:
+    complete
+    .text start:0x021555d4 end:0x0215560c
+
+src/Combat/Overlay_6/CheckElementFlag_02158080_02158080.cpp:
+    complete
+    .text start:0x02159630 end:0x02159668
+
+src/Combat/Overlay_6/CheckFlagOrByte55_02158c70.cpp:
+    complete
+    .text start:0x0215a18c end:0x0215a1c8
+
+src/Combat/Overlay_6/ClearFlagsForIds_021573c8.cpp:
+    complete
+    .text start:0x021589d0 end:0x02158a64
+
+src/Combat/Overlay_6/ExpireStatusSlot02159094.cpp:
+    complete
+    .text start:0x0215a5b0 end:0x0215a624
+
+src/Combat/Overlay_6/InitObj_02157c78.cpp:
+    complete
+    .text start:0x02159228 end:0x02159270
+
+src/Combat/Overlay_6/SetFieldsAndCall02158054.cpp:
+    complete
+    .text start:0x02159604 end:0x02159630
+
+src/Combat/Overlay_6/SetFlags_021585ac_021585ac.cpp:
+    complete
+    .text start:0x02159ac8 end:0x02159ae0
+
+src/Combat/Overlay_6/GetDeref_021599ac_021599ac.cpp:
+    complete
+    .text start:0x0215aec8 end:0x0215aedc
+
+src/Combat/Overlay_6/SetFlagsSequence_0215729c.cpp:
+    complete
+    .text start:0x021588a4 end:0x02158970
+
+src/Combat/Overlay_6/ToggleElementFlagsAndByte_0215e5f8.cpp:
+    complete
+    .text start:0x0215fab8 end:0x0215fb5c
+
+src/Combat/Overlay_6/UpdateField3a8Timer_02159fb0.cpp:
+    complete
+    .text start:0x0215b4e4 end:0x0215b540
+
+src/Combat/Overlay_6/TailCallInitStruct_02153730.cpp:
+    complete
+    .text start:0x02154eb0 end:0x02154ebc
+
+src/Combat/Overlay_6/Synth_0215373c.cpp:
+    complete
+    .text start:0x02154ebc end:0x02154ec4
+
+src/Combat/Overlay_6/Synth_02153c60.cpp:
+    complete
+    .text start:0x021553e0 end:0x021553ec
+
+src/Combat/Overlay_6/Trans_021537c8.cpp:
+    complete
+    .text start:0x02154f48 end:0x02154f50
+
+src/Combat/Overlay_6/ClearField3acIfFlagSet_02159f94.cpp:
+    complete
+    .text start:0x0215b4c8 end:0x0215b4e4
+
+src/Combat/Overlay_6/FindEntryByIdStride24_02157368.cpp:
+    complete
+    .text start:0x02158970 end:0x021589d0
+
+src/Combat/Overlay_6/FindEntryById_02153c6c.cpp:
+    complete
+    .text start:0x021553ec end:0x0215543c
+
+src/Combat/Overlay_6/HasPositiveShortInRange_02159218.cpp:
+    complete
+    .text start:0x0215a734 end:0x0215a790
+
+src/Combat/Overlay_6/func_ov006_02153744.cpp:
+    complete
+    .text start:0x02154ec4 end:0x02154f48
+
+src/Combat/Overlay_6/FindOrInsertEntry_02153e8c.cpp:
+    complete
+    .text start:0x0215560c end:0x021556a4
+
+src/Combat/Overlay_6/func_ov006_0215fe34.cpp:
+    complete
+    .text start:0x02161198 end:0x02161230
+
+src/Combat/Overlay_6/func_ov006_0215479c.cpp:
+    complete
+    .text start:0x02155f04 end:0x02155f30
+
+src/Menu/Overlay_6/AlchemyIngredientQuantity.cpp:
+    complete
+    .text start:0x021551f8 end:0x0215531c
+
+src/Menu/Overlay_6/AlchemyItemClassification.cpp:
+    complete
+    .text start:0x02158a64 end:0x02158ba4
+
+src/Menu/Overlay_6/AlchemyIngredientConsumption.cpp:
+    complete
+    .text start:0x02158ba4 end:0x02158ca8
+
+src/Combat/Overlay_6/func_ov006_02154138.cpp:
+    complete
+    .text start:0x021558b8 end:0x021559ec
+
+src/Combat/Overlay_6/func_ov006_021537d0.cpp:
+    complete
+    .text start:0x02154f50 end:0x021551f8
+
+src/Combat/Overlay_6/func_ov006_02153b9c.cpp:
+    complete
+    .text start:0x0215531c end:0x021553e0
+
+src/Combat/Overlay_6/func_ov006_02159274.cpp:
+    complete
+    .text start:0x0215a790 end:0x0215a83c

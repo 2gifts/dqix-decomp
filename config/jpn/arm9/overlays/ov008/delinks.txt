@@ -4,3 +4,98 @@
     .data       start:0x0218c060 end:0x0218c1c0 kind:data align:32
     .bss        start:0x0218c1c0 end:0x0218c1c0 kind:bss align:32
 
+src/Combat/Overlay_8/ClearFlagIfDone_021870e4_021870e4.cpp:
+    complete
+    .text start:0x02187fc0 end:0x02188008
+
+src/Combat/Overlay_8/ClearShortByteByte_02184598.cpp:
+    complete
+    .text start:0x02185694 end:0x021856a8
+
+src/Combat/Overlay_8/ResetCounterIfIdle_02186280.cpp:
+    complete
+    .text start:0x021871f4 end:0x02187238
+
+src/Combat/Overlay_8/ResetSubStruct02189228.cpp:
+    complete
+    .text start:0x02189f30 end:0x02189f8c
+
+src/Combat/Overlay_8/SetByteB10AndClearB11_02184a3c.cpp:
+    complete
+    .text start:0x02185b28 end:0x02185b38
+
+src/Combat/Overlay_8/SetFlagBit_02184a2c_02184a2c.cpp:
+    complete
+    .text start:0x02185b18 end:0x02185b28
+
+src/Combat/Overlay_8/SetStateB13To1_021862c4.cpp:
+    complete
+    .text start:0x02187238 end:0x02187254
+
+src/Combat/Overlay_8/SetStateB13To2_021862e0.cpp:
+    complete
+    .text start:0x02187254 end:0x02187270
+
+src/Combat/Overlay_8/SetStateB13To4_02186334.cpp:
+    complete
+    .text start:0x021872a8 end:0x021872c4
+
+src/Combat/Overlay_8/SetStateB13To5_021862fc.cpp:
+    complete
+    .text start:0x02187270 end:0x0218728c
+
+src/Combat/Overlay_8/SetStateB13To7_02186318.cpp:
+    complete
+    .text start:0x0218728c end:0x021872a8
+
+src/Combat/Overlay_8/SetStateType3_02186350.cpp:
+    complete
+    .text start:0x021872c4 end:0x021872e0
+
+src/Combat/Overlay_8/SetStateType6_0218636c.cpp:
+    complete
+    .text start:0x021872e0 end:0x021872fc
+
+src/Combat/Overlay_8/Trans_02188ef0.cpp:
+    complete
+    .text start:0x02189c18 end:0x02189c84
+
+src/Combat/Overlay_8/AreIndexFieldsUnset_02185964.cpp:
+    complete
+    .text start:0x021869d0 end:0x02186a08
+
+src/Combat/Overlay_8/SyncIfStateAndNotBusy_02184918.cpp:
+    complete
+    .text start:0x02185a14 end:0x02185a64
+
+src/Combat/Overlay_8/UpdateBattleScaleEntry_02188870.cpp:
+    complete
+    .text start:0x021895b4 end:0x02189678
+
+src/Combat/Overlay_8/func_ov008_0218599c.cpp:
+    complete
+    .text start:0x02186a08 end:0x02186adc
+
+src/Combat/Overlay_8/func_ov008_02186a30.cpp:
+    complete
+    .text start:0x0218790c end:0x021879f4
+
+src/Combat/Overlay_8/func_ov008_021894b8.cpp:
+    complete
+    .text start:0x0218a1c0 end:0x0218a2b0
+
+src/Combat/Overlay_8/func_ov008_02184754.cpp:
+    complete
+    .text start:0x02185850 end:0x02185974
+
+src/Combat/Overlay_8/func_ov008_02186e4c.cpp:
+    complete
+    .text start:0x02187d28 end:0x02187fc0
+
+src/Combat/Overlay_8/func_ov008_02188934.cpp:
+    complete
+    .text start:0x02189678 end:0x0218973c
+
+src/Combat/Overlay_8/func_ov008_02186964.cpp:
+    complete
+    .text start:0x02187840 end:0x0218790c

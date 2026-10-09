@@ -6,3 +6,1027 @@
 
 src/Combat/Overlay_24/GetAttackBaseDamage.cpp:
 	.text start:0x021e8458 end:0x021e897c
+
+src/Combat/Overlay_24/Divide2Plus37_021d9d6c.cpp:
+    complete
+    .text start:0x021da62c end:0x021da640
+
+src/Combat/Overlay_24/DivideStackScaled_021d9224.cpp:
+    complete
+    .text start:0x021d9ae4 end:0x021d9afc
+
+src/Combat/Overlay_24/IsFlagBit19Set_021da9c8.cpp:
+    complete
+    .text start:0x021db288 end:0x021db2a0
+
+src/Combat/Overlay_24/IsFlagBit24Set_021dd260.cpp:
+    complete
+    .text start:0x021ddb0c end:0x021ddb24
+
+src/Combat/Overlay_24/IsFlagBit5Set_021de25c.cpp:
+    complete
+    .text start:0x021deb08 end:0x021deb20
+
+src/Combat/Overlay_24/IsFlagBit8388608Set_021da998.cpp:
+    complete
+    .text start:0x021db258 end:0x021db270
+
+src/Combat/Overlay_24/IsFlagBit8Set_021da9b0.cpp:
+    complete
+    .text start:0x021db270 end:0x021db288
+
+src/Combat/Overlay_24/IsFlagBit8Set_021dd010.cpp:
+    complete
+    .text start:0x021dd8bc end:0x021dd8d4
+
+src/Combat/Overlay_24/ScaleBy1Point3_021d8fd4.cpp:
+    complete
+    .text start:0x021d9894 end:0x021d98b8
+
+src/Combat/Overlay_24/ScaleBy75Percent_021d8c70.cpp:
+    complete
+    .text start:0x021d9530 end:0x021d9550
+
+src/Combat/Overlay_24/ScaleByPoint7_021d92f8.cpp:
+    complete
+    .text start:0x021d9bb8 end:0x021d9bdc
+
+src/Combat/Overlay_24/ScaleByPoint8_021d9060.cpp:
+    complete
+    .text start:0x021d9920 end:0x021d9944
+
+src/Combat/Overlay_24/IsCombatantFlag2Mask2048_021e7ba8.cpp:
+    complete
+    .text start:0x021e8440 end:0x021e8458
+
+src/Combat/Overlay_24/IsCombatantFlag2Mask32_021e67b0.cpp:
+    complete
+    .text start:0x021e7048 end:0x021e7060
+
+src/Combat/Overlay_24/IsCombatantFlag2Mask512_021eadfc.cpp:
+    complete
+    .text start:0x021eb5c8 end:0x021eb5e0
+
+src/Combat/Overlay_24/IsCombatantFlag2Mask8192_021e6798.cpp:
+    complete
+    .text start:0x021e7030 end:0x021e7048
+
+src/Combat/Overlay_24/IsCombatantFlagMask134217728_021edbc0.cpp:
+    complete
+    .text start:0x021ee38c end:0x021ee3a4
+
+src/Combat/Overlay_24/IsCombatantFlagMask268435456_021edbd8.cpp:
+    complete
+    .text start:0x021ee3a4 end:0x021ee3bc
+
+src/Combat/Overlay_24/IsCombatantFlagMask512_021eda60.cpp:
+    complete
+    .text start:0x021ee22c end:0x021ee244
+
+src/Combat/Overlay_24/IsCombatantFlagMask536870912_021edbf0.cpp:
+    complete
+    .text start:0x021ee3bc end:0x021ee3d4
+
+src/Combat/Overlay_24/IsFlagBit1048576Set_021edc20.cpp:
+    complete
+    .text start:0x021ee3ec end:0x021ee404
+
+src/Combat/Overlay_24/IsFlagBit1073741824Set_021edc50.cpp:
+    complete
+    .text start:0x021ee41c end:0x021ee434
+
+src/Combat/Overlay_24/IsFlagBit12Field18Set_021e05e4.cpp:
+    complete
+    .text start:0x021e0e7c end:0x021e0e94
+
+src/Combat/Overlay_24/IsFlagBit2097152Set_021edc38.cpp:
+    complete
+    .text start:0x021ee404 end:0x021ee41c
+
+src/Combat/Overlay_24/IsFlagBit2147483648Set_021edc68.cpp:
+    complete
+    .text start:0x021ee434 end:0x021ee44c
+
+src/Combat/Overlay_24/IsFlagBit22Set_021e47dc.cpp:
+    complete
+    .text start:0x021e5074 end:0x021e508c
+
+src/Combat/Overlay_24/IsFlagBit4Field18Set_021df704.cpp:
+    complete
+    .text start:0x021dff9c end:0x021dffb4
+
+src/Combat/Overlay_24/IsFlagBit67108864Set_021edc08.cpp:
+    complete
+    .text start:0x021ee3d4 end:0x021ee3ec
+
+src/Combat/Overlay_24/IsFlagBit6Set_021df6ec.cpp:
+    complete
+    .text start:0x021dff84 end:0x021dff9c
+
+src/Combat/Overlay_24/IsState4_021edc80.cpp:
+    complete
+    .text start:0x021ee44c end:0x021ee470
+
+src/Combat/Overlay_24/IsState5_021edca4.cpp:
+    complete
+    .text start:0x021ee470 end:0x021ee494
+
+src/Combat/Overlay_24/ClearData4Bytes_021f67f8.cpp:
+    complete
+    .text start:0x021f6fc4 end:0x021f6fec
+
+src/Combat/Overlay_24/Forward5Args_021f0720.cpp:
+    complete
+    .text start:0x021f0eec end:0x021f0f00
+
+src/Combat/Overlay_24/Forward5Args_021f0734.cpp:
+    complete
+    .text start:0x021f0f00 end:0x021f0f14
+
+src/Combat/Overlay_24/ForwardCall5_021f08f8.cpp:
+    complete
+    .text start:0x021f10c4 end:0x021f10d8
+
+src/Combat/Overlay_24/ForwardCall5_021f090c.cpp:
+    complete
+    .text start:0x021f10d8 end:0x021f10ec
+
+src/Combat/Overlay_24/ForwardCode3ToHandler954_021fc27c.cpp:
+    complete
+    .text start:0x021fca48 end:0x021fca58
+
+src/Combat/Overlay_24/ForwardCode3ToHandlerDf04_021fc368.cpp:
+    complete
+    .text start:0x021fcb34 end:0x021fcb44
+
+src/Combat/Overlay_24/GetFieldNibble_021fc498.cpp:
+    complete
+    .text start:0x021fcc64 end:0x021fcc78
+
+src/Combat/Overlay_24/IsBitfield1Set_021f0d0c.cpp:
+    complete
+    .text start:0x021f14d8 end:0x021f14f4
+
+src/Combat/Overlay_24/IsBitfield2Set_021f1440.cpp:
+    complete
+    .text start:0x021f1c0c end:0x021f1c28
+
+src/Combat/Overlay_24/IsFlagBit131072Set_021fb478.cpp:
+    complete
+    .text start:0x021fbc44 end:0x021fbc5c
+
+src/Combat/Overlay_24/IsFlagBit2Set_021fb430.cpp:
+    complete
+    .text start:0x021fbbfc end:0x021fbc14
+
+src/Combat/Overlay_24/IsFlagBit4Set_021fb448.cpp:
+    complete
+    .text start:0x021fbc14 end:0x021fbc2c
+
+src/Combat/Overlay_24/IsFlagBit65536Set_021fb460.cpp:
+    complete
+    .text start:0x021fbc2c end:0x021fbc44
+
+src/Combat/Overlay_24/IsFlagBit8Set_021f273c.cpp:
+    complete
+    .text start:0x021f2f08 end:0x021f2f20
+
+src/Combat/Overlay_24/MaybeUpdateState4_021fbefc.cpp:
+    complete
+    .text start:0x021fc6c8 end:0x021fc6e4
+
+src/Combat/Overlay_24/TrySetSlotFlagAndApply1_021fbed4.cpp:
+    complete
+    .text start:0x021fc6a0 end:0x021fc6c8
+
+src/Combat/Overlay_24/ForwardCode7ToHandler954_021fc4ac.cpp:
+    complete
+    .text start:0x021fcc78 end:0x021fcc88
+
+src/Combat/Overlay_24/IsFlagBit1024Set_021fcac0.cpp:
+    complete
+    .text start:0x021fd28c end:0x021fd2a4
+
+src/Combat/Overlay_24/SetFieldFromIndexed_021fe6b4.cpp:
+    complete
+    .text start:0x021fee80 end:0x021fee94
+
+src/Combat/Overlay_24/CountIfFlagSet_021d8a84.cpp:
+    complete
+    .text start:0x021d9344 end:0x021d9374
+
+src/Combat/Overlay_24/IsFlagAllowedMask_021eb4b0.cpp:
+    complete
+    .text start:0x021ebc7c end:0x021ebcb0
+
+src/Combat/Overlay_24/IsValueInShortList_021eb47c.cpp:
+    complete
+    .text start:0x021ebc48 end:0x021ebc7c
+
+src/Combat/Overlay_24/RandomScale0Point1To0Point5_021d8f18.cpp:
+    complete
+    .text start:0x021d97d8 end:0x021d980c
+
+src/Combat/Overlay_24/ScaleConditional1Point25_021d8e18.cpp:
+    complete
+    .text start:0x021d96d8 end:0x021d9720
+
+src/Combat/Overlay_24/ScaleConditional1Point5_021d91c0.cpp:
+    complete
+    .text start:0x021d9a80 end:0x021d9ac4
+
+src/Combat/Overlay_24/ScaleIfFlagCategory0_021d9084.cpp:
+    complete
+    .text start:0x021d9944 end:0x021d9988
+
+src/Combat/Overlay_24/ScaleIfFlagCategory12_021d8f4c.cpp:
+    complete
+    .text start:0x021d980c end:0x021d9850
+
+src/Combat/Overlay_24/ScaleIfFlagCategory3_021d8cf4.cpp:
+    complete
+    .text start:0x021d95b4 end:0x021d95f8
+
+src/Combat/Overlay_24/ScaleIfFlagCategory4_021d9174.cpp:
+    complete
+    .text start:0x021d9a34 end:0x021d9a78
+
+src/Combat/Overlay_24/ScaleIfFlagCategory5_021d8f90.cpp:
+    complete
+    .text start:0x021d9850 end:0x021d9894
+
+src/Combat/Overlay_24/ScaleIfFlagCategory6_021d901c.cpp:
+    complete
+    .text start:0x021d98dc end:0x021d9920
+
+src/Combat/Overlay_24/ScaleIfFlagCategory7_021d8ed4.cpp:
+    complete
+    .text start:0x021d9794 end:0x021d97d8
+
+src/Combat/Overlay_24/ScaleIfFlagCategory8_021d8e6c.cpp:
+    complete
+    .text start:0x021d972c end:0x021d9770
+
+src/Combat/Overlay_24/ScaleValueIfChecked_021d8a40.cpp:
+    complete
+    .text start:0x021d9300 end:0x021d9344
+
+src/Combat/Overlay_24/ScaleValueIfChecked_021d8c90.cpp:
+    complete
+    .text start:0x021d9550 end:0x021d9594
+
+src/Combat/Overlay_24/SelectByIndexRange0to3_021da644.cpp:
+    complete
+    .text start:0x021daf04 end:0x021daf30
+
+src/Combat/Overlay_24/SetFirstEmptySlot48_021eb4e4.cpp:
+    complete
+    .text start:0x021ebcb0 end:0x021ebcdc
+
+src/Combat/Overlay_24/AddEntryIfUnderLimit16_021f6a1c.cpp:
+    complete
+    .text start:0x021f71e8 end:0x021f7218
+
+src/Combat/Overlay_24/Forward4ArgsBitfield_021edf6c.cpp:
+    complete
+    .text start:0x021ee738 end:0x021ee76c
+
+src/Combat/Overlay_24/PickRandomTableEntryResetCounter_021ed890.cpp:
+    complete
+    .text start:0x021ee05c end:0x021ee08c
+
+src/Combat/Overlay_24/ScaleVectorBy0Point75_021f6b5c.cpp:
+    complete
+    .text start:0x021f7328 end:0x021f7358
+
+src/Combat/Overlay_24/ScaleXYBy1Point25_021f6b28.cpp:
+    complete
+    .text start:0x021f72f4 end:0x021f7328
+
+src/Combat/Overlay_24/SetFlagIfMask268435456Clear_021f5768.cpp:
+    complete
+    .text start:0x021f5f34 end:0x021f5f74
+
+src/Combat/Overlay_24/SetFlagIfStatByte57Zero_021f5558.cpp:
+    complete
+    .text start:0x021f5d24 end:0x021f5d68
+
+src/Combat/Overlay_24/SetFlagIfStatByteBelow3_021f5300.cpp:
+    complete
+    .text start:0x021f5acc end:0x021f5b10
+
+src/Combat/Overlay_24/SetFlagIfStatShort2Zero_021f59c4.cpp:
+    complete
+    .text start:0x021f6190 end:0x021f61d4
+
+src/Combat/Overlay_24/SetScaleFromBit12_021f6ae8.cpp:
+    complete
+    .text start:0x021f72b4 end:0x021f72f4
+
+src/Combat/Overlay_24/ComputeScaledTableValues_021f70bc.cpp:
+    complete
+    .text start:0x021f7888 end:0x021f78cc
+
+src/Combat/Overlay_24/ScaleStatsIfUnflagged_021f7070.cpp:
+    complete
+    .text start:0x021f783c end:0x021f7888
+
+src/Combat/Overlay_24/ScaleVectorBy0Point5_021f6c40.cpp:
+    complete
+    .text start:0x021f740c end:0x021f743c
+
+src/Combat/Overlay_24/ScaleVectorBy1Point5_021f71a8.cpp:
+    complete
+    .text start:0x021f7974 end:0x021f79a4
+
+src/Combat/Overlay_24/ScaleVectorBy2_021f6dd4.cpp:
+    complete
+    .text start:0x021f75a0 end:0x021f75d0
+
+src/Combat/Overlay_24/ScaleXYBy1Point25_021f6b8c.cpp:
+    complete
+    .text start:0x021f7358 end:0x021f738c
+
+src/Combat/Overlay_24/ScaleXYBy1Point3_021f6fb0.cpp:
+    complete
+    .text start:0x021f777c end:0x021f77b0
+
+src/Combat/Overlay_24/ScaleXYByPoint3_021f6e54.cpp:
+    complete
+    .text start:0x021f7620 end:0x021f7654
+
+src/Combat/Overlay_24/ScaleXYByPoint8_021f703c.cpp:
+    complete
+    .text start:0x021f7808 end:0x021f783c
+
+src/Combat/Overlay_24/TrySetSlotFlagAndApply11_021fc698.cpp:
+    complete
+    .text start:0x021fce64 end:0x021fce98
+
+src/Combat/Overlay_24/TrySetSlotFlagAndApply14_021fcaf0.cpp:
+    complete
+    .text start:0x021fd2bc end:0x021fd2f0
+
+src/Combat/Overlay_24/TrySetSlotFlagAndApply15_021fcb24.cpp:
+    complete
+    .text start:0x021fd2f0 end:0x021fd324
+
+src/Combat/Overlay_24/TrySetSlotFlagAndApply16_021fc4c0.cpp:
+    complete
+    .text start:0x021fcc8c end:0x021fccc0
+
+src/Combat/Overlay_24/TrySetSlotFlagAndApply2_021fd3f0.cpp:
+    complete
+    .text start:0x021fdbbc end:0x021fdbf4
+
+src/Combat/Overlay_24/TrySetSlotFlagAndApply3_021fd428.cpp:
+    complete
+    .text start:0x021fdbf4 end:0x021fdc28
+
+src/Combat/Overlay_24/TrySetSlotFlagAndApply5_021fc254.cpp:
+    complete
+    .text start:0x021fca20 end:0x021fca48
+
+src/Combat/Overlay_24/TrySetSlotFlagAndApply6_021fc018.cpp:
+    complete
+    .text start:0x021fc7e4 end:0x021fc80c
+
+src/Combat/Overlay_24/TrySetSlotFlagAndApply7_021fc28c.cpp:
+    complete
+    .text start:0x021fca58 end:0x021fca80
+
+src/Combat/Overlay_24/TrySetSlotFlagAndApply9_021fc040.cpp:
+    complete
+    .text start:0x021fc80c end:0x021fc834
+
+src/Combat/Overlay_24/TrySetSlotFlagAndApply7_021fd784.cpp:
+    complete
+    .text start:0x021fdf50 end:0x021fdf84
+
+src/Combat/Overlay_24/AddEntryToListAndIncCount_021e8ca0.cpp:
+    complete
+    .text start:0x021e9538 end:0x021e9594
+
+src/Combat/Overlay_24/CheckFieldMatch_021ea7fc.cpp:
+    complete
+    .text start:0x021eafc8 end:0x021eb028
+
+src/Combat/Overlay_24/CheckStateFlags3or4_021ea4d0.cpp:
+    complete
+    .text start:0x021eac9c end:0x021eaccc
+
+src/Combat/Overlay_24/GetCodeForCategory_021e8c48.cpp:
+    complete
+    .text start:0x021e94e0 end:0x021e9538
+
+src/Combat/Overlay_24/RandomScaleAttack85to95Percent_021d8b68.cpp:
+    complete
+    .text start:0x021d9428 end:0x021d9488
+
+src/Combat/Overlay_24/RandomScaleMaxHP20to30Percent_021d931c.cpp:
+    complete
+    .text start:0x021d9bdc end:0x021d9c3c
+
+src/Combat/Overlay_24/RandomScaleMaxHP40to60Percent_021d937c.cpp:
+    complete
+    .text start:0x021d9c3c end:0x021d9c9c
+
+src/Combat/Overlay_24/RawOrScaledShort150Percent_021d8c10.cpp:
+    complete
+    .text start:0x021d94d0 end:0x021d9530
+
+src/Combat/Overlay_24/SearchAndValidate_021ee378.cpp:
+    complete
+    .text start:0x021eeb44 end:0x021eebb4
+
+src/Combat/Overlay_24/SetFlagOrScale99Percent_021d95e0.cpp:
+    complete
+    .text start:0x021d9ea0 end:0x021d9f14
+
+src/Combat/Overlay_24/CheckAnyBuffBelow2_021f5c80.cpp:
+    complete
+    .text start:0x021f644c end:0x021f64b0
+
+src/Combat/Overlay_24/ScaleStatsIfType1_021f6bf0.cpp:
+    complete
+    .text start:0x021f73bc end:0x021f740c
+
+src/Combat/Overlay_24/ScaleStatsIfType3_021f6c70.cpp:
+    complete
+    .text start:0x021f743c end:0x021f748c
+
+src/Combat/Overlay_24/ScaleXYRoundIfField4Eq2_021f6a88.cpp:
+    complete
+    .text start:0x021f7254 end:0x021f72b4
+
+src/Combat/Overlay_24/TryConvertAndCopy_021f18a0.cpp:
+    complete
+    .text start:0x021f206c end:0x021f20c8
+
+src/Combat/Overlay_24/TryConvertAndForward_021f1844.cpp:
+    complete
+    .text start:0x021f2010 end:0x021f206c
+
+src/Combat/Overlay_24/AdjustFieldScale_021fcb60.cpp:
+    complete
+    .text start:0x021fd32c end:0x021fd394
+
+src/Combat/Overlay_24/CheckSlotRangeAndApply13_021fc6dc.cpp:
+    complete
+    .text start:0x021fcea8 end:0x021fcf18
+
+src/Combat/Overlay_24/ComputeOffsetFloats_021f7244.cpp:
+    complete
+    .text start:0x021f7a10 end:0x021f7a68
+
+src/Combat/Overlay_24/ComputeScaledRatios_021f71d8.cpp:
+    complete
+    .text start:0x021f79a4 end:0x021f7a10
+
+src/Combat/Overlay_24/ScaleStatsIfType10_021f7158.cpp:
+    complete
+    .text start:0x021f7924 end:0x021f7974
+
+src/Combat/Overlay_24/ScaleStatsIfType12_021f6f10.cpp:
+    complete
+    .text start:0x021f76dc end:0x021f772c
+
+src/Combat/Overlay_24/ScaleStatsIfType4_021f7100.cpp:
+    complete
+    .text start:0x021f78cc end:0x021f791c
+
+src/Combat/Overlay_24/ScaleStatsIfType5_021f6f60.cpp:
+    complete
+    .text start:0x021f772c end:0x021f777c
+
+src/Combat/Overlay_24/ScaleStatsIfType6_021f6fec.cpp:
+    complete
+    .text start:0x021f77b8 end:0x021f7808
+
+src/Combat/Overlay_24/ScaleStatsIfType7_021f6e88.cpp:
+    complete
+    .text start:0x021f7654 end:0x021f76a4
+
+src/Combat/Overlay_24/ScaleStatsIfType8_021f6e04.cpp:
+    complete
+    .text start:0x021f75d0 end:0x021f7620
+
+src/Combat/Overlay_24/ScaleVectorBy1_25IfField4Is11_021f6d80.cpp:
+    complete
+    .text start:0x021f754c end:0x021f75a0
+
+src/Combat/Overlay_24/UpdateStateIfFlagged_021fc2b4.cpp:
+    complete
+    .text start:0x021fca80 end:0x021fcaec
+
+src/Combat/Overlay_24/ClearFirstField_021da550.cpp:
+    complete
+    .text start:0x021dae10 end:0x021dae1c
+
+src/Combat/Overlay_24/ClearFirstField_021f66c0.cpp:
+    complete
+    .text start:0x021f6e8c end:0x021f6e98
+
+src/Combat/Overlay_24/ComputeCombatantScaledValue_021d8db4.cpp:
+    complete
+    .text start:0x021d9674 end:0x021d96d8
+
+src/Combat/Overlay_24/DispatchByCategory_021f736c.cpp:
+    complete
+    .text start:0x021f7b38 end:0x021f7b84
+
+src/Combat/Overlay_24/GetSixthArgDoubled_021d8e60.cpp:
+    complete
+    .text start:0x021d9720 end:0x021d972c
+
+src/Combat/Overlay_24/GetSixthArg_021d8dac.cpp:
+    complete
+    .text start:0x021d966c end:0x021d9674
+
+src/Combat/Overlay_24/GetSixthArg_021d91b8.cpp:
+    complete
+    .text start:0x021d9a78 end:0x021d9a80
+
+src/Combat/Overlay_24/LookupValueByKey_021e8fa4.cpp:
+    complete
+    .text start:0x021e983c end:0x021e98b0
+
+src/Combat/Overlay_24/ReturnOne_021f5420.cpp:
+    complete
+    .text start:0x021f5bec end:0x021f5bf4
+
+src/Combat/Overlay_24/ReturnTrue_021f6d24.cpp:
+    complete
+    .text start:0x021f74f0 end:0x021f74f8
+
+src/Combat/Overlay_24/ReturnTrue_021f6fe4.cpp:
+    complete
+    .text start:0x021f77b0 end:0x021f77b8
+
+src/Combat/Overlay_24/ReturnTrue_021f7150.cpp:
+    complete
+    .text start:0x021f791c end:0x021f7924
+
+src/Combat/Overlay_24/ReturnZero_021f4174.cpp:
+    complete
+    .text start:0x021f4940 end:0x021f4948
+
+src/Combat/Overlay_24/ReturnZero_021f417c.cpp:
+    complete
+    .text start:0x021f4948 end:0x021f4950
+
+src/Combat/Overlay_24/ReturnZero_021f4184.cpp:
+    complete
+    .text start:0x021f4950 end:0x021f4958
+
+src/Combat/Overlay_24/ReturnZero_021f4878.cpp:
+    complete
+    .text start:0x021f5044 end:0x021f504c
+
+src/Combat/Overlay_24/ReturnZero_021f59bc.cpp:
+    complete
+    .text start:0x021f6188 end:0x021f6190
+
+src/Combat/Overlay_24/CheckAllFlagsClear_021fa76c.cpp:
+    complete
+    .text start:0x021faf38 end:0x021fafb8
+
+src/Combat/Overlay_24/NoOp_021fbff4.cpp:
+    complete
+    .text start:0x021fc7c0 end:0x021fc7c4
+
+src/Combat/Overlay_24/NoOp_021fc378.cpp:
+    complete
+    .text start:0x021fcb44 end:0x021fcb48
+
+src/Combat/Overlay_24/NoOp_021fc4bc.cpp:
+    complete
+    .text start:0x021fcc88 end:0x021fcc8c
+
+src/Combat/Overlay_24/NoOp_021fc68c.cpp:
+    complete
+    .text start:0x021fce58 end:0x021fce5c
+
+src/Combat/Overlay_24/NoOp_021fc690.cpp:
+    complete
+    .text start:0x021fce5c end:0x021fce60
+
+src/Combat/Overlay_24/NoOp_021fc694.cpp:
+    complete
+    .text start:0x021fce60 end:0x021fce64
+
+src/Combat/Overlay_24/NoOp_021fc6d0.cpp:
+    complete
+    .text start:0x021fce9c end:0x021fcea0
+
+src/Combat/Overlay_24/NoOp_021fc6d4.cpp:
+    complete
+    .text start:0x021fcea0 end:0x021fcea4
+
+src/Combat/Overlay_24/NoOp_021fc6d8.cpp:
+    complete
+    .text start:0x021fcea4 end:0x021fcea8
+
+src/Combat/Overlay_24/TailCallHandler_021fbff8.cpp:
+    complete
+    .text start:0x021fc7c4 end:0x021fc7d0
+
+src/Combat/Overlay_24/ScaleAndStoreHP_021d923c.cpp:
+    complete
+    .text start:0x021d9afc end:0x021d9b90
+
+src/Combat/Overlay_24/AddBuffEntryToTable_021e1de8.cpp:
+    complete
+    .text start:0x021e2680 end:0x021e276c
+
+src/Combat/Overlay_24/InitStruct_021eb510.cpp:
+    complete
+    .text start:0x021ebcdc end:0x021ebd9c
+
+src/Combat/Overlay_24/AddBuffEntryToTable_021dfe9c.cpp:
+    complete
+    .text start:0x021e0734 end:0x021e07d4
+
+src/Combat/Overlay_24/AddScaledCostEntry_021fd7b8.cpp:
+    complete
+    .text start:0x021fdf84 end:0x021fe024
+
+src/Combat/Overlay_24/AddScaledEntryCode7_021fd104.cpp:
+    complete
+    .text start:0x021fd8d0 end:0x021fd92c
+
+src/Combat/Overlay_24/AddScaledEntryCode8_021fd160.cpp:
+    complete
+    .text start:0x021fd92c end:0x021fd988
+
+src/Combat/Overlay_24/AddScaledPercentEntry_021fd088.cpp:
+    complete
+    .text start:0x021fd854 end:0x021fd8d0
+
+src/Combat/Overlay_24/ApplyBuffScaledPercent18_021fd504.cpp:
+    complete
+    .text start:0x021fdcd0 end:0x021fdd8c
+
+src/Combat/Overlay_24/ApplyBuffScaledPercent4_021fd45c.cpp:
+    complete
+    .text start:0x021fdc28 end:0x021fdcd0
+
+src/Combat/Overlay_24/ApplyBuffScaledPercent7_021fd5c4.cpp:
+    complete
+    .text start:0x021fdd90 end:0x021fde38
+
+src/Combat/Overlay_24/CheckBuffAndFindTargetable_021f3168.cpp:
+    complete
+    .text start:0x021f3934 end:0x021f3a14
+
+src/Combat/Overlay_24/CheckBuffsAndDispatch_021fcfa0.cpp:
+    complete
+    .text start:0x021fd76c end:0x021fd844
+
+src/Combat/Overlay_24/CheckCharmBelow2_021f4120.cpp:
+    complete
+    .text start:0x021f48ec end:0x021f4940
+
+src/Combat/Overlay_24/CheckEligibilityAndFlags_021f8874.cpp:
+    complete
+    .text start:0x021f9040 end:0x021f9104
+
+src/Combat/Overlay_24/CheckFlagBit24AndOutput_021f3524.cpp:
+    complete
+    .text start:0x021f3cf0 end:0x021f3d30
+
+src/Combat/Overlay_24/CheckFlagBit8AndOutput_021f26fc.cpp:
+    complete
+    .text start:0x021f2ec8 end:0x021f2f08
+
+src/Combat/Overlay_24/CheckFlags2ThenSetOutput_021f2548.cpp:
+    complete
+    .text start:0x021f2d14 end:0x021f2d68
+
+src/Combat/Overlay_24/CheckFlagsThenSetOutput_021f2064.cpp:
+    complete
+    .text start:0x021f2830 end:0x021f2884
+
+src/Combat/Overlay_24/CheckHPRatioBelowHalfAndOutput_021f3688.cpp:
+    complete
+    .text start:0x021f3e54 end:0x021f3e98
+
+src/Combat/Overlay_24/CheckKindAndApplyStatus18_021fcbc8.cpp:
+    complete
+    .text start:0x021fd394 end:0x021fd438
+
+src/Combat/Overlay_24/CheckKindAndApplyStatus18_021fce14.cpp:
+    complete
+    .text start:0x021fd5e0 end:0x021fd67c
+
+src/Combat/Overlay_24/CheckMagicalMendingBuffBelow2_021f2d4c.cpp:
+    complete
+    .text start:0x021f3518 end:0x021f3564
+
+src/Combat/Overlay_24/CheckMagicalMightBuffBelow2_021f331c.cpp:
+    complete
+    .text start:0x021f3ae8 end:0x021f3b34
+
+src/Combat/Overlay_24/CheckStatCodeField48_021f5428.cpp:
+    complete
+    .text start:0x021f5bf4 end:0x021f5c44
+
+src/Combat/Overlay_24/CheckStatesThenSetOutput_021f26a8.cpp:
+    complete
+    .text start:0x021f2e74 end:0x021f2ec8
+
+src/Combat/Overlay_24/CheckWeaknessSlot0_021f6230.cpp:
+    complete
+    .text start:0x021f69fc end:0x021f6a64
+
+src/Combat/Overlay_24/CheckWeaknessSlot4And5_021f40c8.cpp:
+    complete
+    .text start:0x021f4894 end:0x021f48ec
+
+src/Combat/Overlay_24/ClearIfAnyFlagBitSet_021e8bf0.cpp:
+    complete
+    .text start:0x021e9488 end:0x021e94e0
+
+src/Combat/Overlay_24/ComputeCombatantScaledValue_021d8d38.cpp:
+    complete
+    .text start:0x021d95f8 end:0x021d966c
+
+src/Combat/Overlay_24/ComputeHPRatio_021db358.cpp:
+    complete
+    .text start:0x021dbc04 end:0x021dbc50
+
+src/Combat/Overlay_24/ComputeScaledSizeVec_021f729c.cpp:
+    complete
+    .text start:0x021f7a68 end:0x021f7ac4
+
+src/Combat/Overlay_24/CopyStruct10Bytes_021f6a4c.cpp:
+    complete
+    .text start:0x021f7218 end:0x021f7254
+
+src/Combat/Overlay_24/CountFlagged180OrSetDefault_021f65fc.cpp:
+    complete
+    .text start:0x021f6dc8 end:0x021f6e8c
+
+src/Combat/Overlay_24/DispatchByField18Shifted_021f875c.cpp:
+    complete
+    .text start:0x021f8f28 end:0x021f8fa8
+
+src/Combat/Overlay_24/DispatchByMaskOrFallback_021fbf18.cpp:
+    complete
+    .text start:0x021fc6e4 end:0x021fc7c0
+
+src/Combat/Overlay_24/DispatchByMid2BitfieldSetFlags_021fbd2c.cpp:
+    complete
+    .text start:0x021fc4f8 end:0x021fc580
+
+src/Combat/Overlay_24/DispatchByMid2BitfieldSetFlags_021fbdb4.cpp:
+    complete
+    .text start:0x021fc580 end:0x021fc608
+
+src/Combat/Overlay_24/DispatchByMid2BitfieldSetFlags_021fbe3c.cpp:
+    complete
+    .text start:0x021fc608 end:0x021fc68c
+
+src/Combat/Overlay_24/InsertSortedEntry_021f6830.cpp:
+    complete
+    .text start:0x021f6ffc end:0x021f7094
+
+src/Combat/Overlay_24/NoOp_021fc6cc.cpp:
+    complete
+    .text start:0x021fce98 end:0x021fce9c
+
+src/Combat/Overlay_24/NoOp_021fc74c.cpp:
+    complete
+    .text start:0x021fcf18 end:0x021fcf1c
+
+src/Combat/Overlay_24/NoOp_021fc750.cpp:
+    complete
+    .text start:0x021fcf1c end:0x021fcf20
+
+src/Combat/Overlay_24/NoOp_021fcad8.cpp:
+    complete
+    .text start:0x021fd2a4 end:0x021fd2a8
+
+src/Combat/Overlay_24/NoOp_021fcadc.cpp:
+    complete
+    .text start:0x021fd2a8 end:0x021fd2ac
+
+src/Combat/Overlay_24/NoOp_021fcae0.cpp:
+    complete
+    .text start:0x021fd2ac end:0x021fd2b0
+
+src/Combat/Overlay_24/NoOp_021fcae4.cpp:
+    complete
+    .text start:0x021fd2b0 end:0x021fd2b4
+
+src/Combat/Overlay_24/NoOp_021fcb58.cpp:
+    complete
+    .text start:0x021fd324 end:0x021fd328
+
+src/Combat/Overlay_24/NoOp_021fcb5c.cpp:
+    complete
+    .text start:0x021fd328 end:0x021fd32c
+
+src/Combat/Overlay_24/NoOp_021fcf9c.cpp:
+    complete
+    .text start:0x021fd768 end:0x021fd76c
+
+src/Combat/Overlay_24/PickRandomEligibleCombatant_021f2f78.cpp:
+    complete
+    .text start:0x021f3744 end:0x021f3818
+
+src/Combat/Overlay_24/RandomScaleAttackUnlessRandomMax2_021d9654.cpp:
+    complete
+    .text start:0x021d9f14 end:0x021d9f90
+
+src/Combat/Overlay_24/RatioBelow0Point125_021f32b4.cpp:
+    complete
+    .text start:0x021f3a80 end:0x021f3ae8
+
+src/Combat/Overlay_24/RatioBelow0Point1_021f3248.cpp:
+    complete
+    .text start:0x021f3a14 end:0x021f3a80
+
+src/Combat/Overlay_24/ResetCombatEntryState_021f73b8.cpp:
+    complete
+    .text start:0x021f7b84 end:0x021f7c44
+
+src/Combat/Overlay_24/ResetIfLowHPRatio_021f4e84.cpp:
+    complete
+    .text start:0x021f5650 end:0x021f56a0
+
+src/Combat/Overlay_24/ReturnSixthIntArg_021d92f0.cpp:
+    complete
+    .text start:0x021d9bb0 end:0x021d9bb8
+
+src/Combat/Overlay_24/ScaleBy1Point25_021d8bec.cpp:
+    complete
+    .text start:0x021d94ac end:0x021d94d0
+
+src/Combat/Overlay_24/ScaleBy2Point5_021d8bc8.cpp:
+    complete
+    .text start:0x021d9488 end:0x021d94ac
+
+src/Combat/Overlay_24/ScaleByPoint3_021d8eb0.cpp:
+    complete
+    .text start:0x021d9770 end:0x021d9794
+
+src/Combat/Overlay_24/ScaleSixthIntArgBy050_021d8cd4.cpp:
+    complete
+    .text start:0x021d9594 end:0x021d95b4
+
+src/Combat/Overlay_24/ScaleSixthIntArgBy125_021d8ab4.cpp:
+    complete
+    .text start:0x021d9374 end:0x021d9398
+
+src/Combat/Overlay_24/ScaleSixthIntArgBy150_021d9204.cpp:
+    complete
+    .text start:0x021d9ac4 end:0x021d9ae4
+
+src/Combat/Overlay_24/ScaleSixthIntArgBy150_021d92d0.cpp:
+    complete
+    .text start:0x021d9b90 end:0x021d9bb0
+
+src/Combat/Overlay_24/ScaleVectorBy1Point5IfFlagged_021f6cc0.cpp:
+    complete
+    .text start:0x021f748c end:0x021f74f0
+
+src/Combat/Overlay_24/ScaleVectorBy2IfFlagged_021f6d2c.cpp:
+    complete
+    .text start:0x021f74f8 end:0x021f754c
+
+src/Combat/Overlay_24/ScaleXYByPoint3AndPoint1_021f6ed8.cpp:
+    complete
+    .text start:0x021f76a4 end:0x021f76dc
+
+src/Combat/Overlay_24/SelectRangeByFlag_021e9b24.cpp:
+    complete
+    .text start:0x021ea2f0 end:0x021ea340
+
+src/Combat/Overlay_24/TryCollectEligibleAndCopyTable_021f639c.cpp:
+    complete
+    .text start:0x021f6b68 end:0x021f6bf0
+
+src/Combat/Overlay_24/TrySetFlagAtIndex2_021fc004.cpp:
+    complete
+    .text start:0x021fc7d0 end:0x021fc7e4
+
+src/Combat/Overlay_24/TrySetFlagAtIndex_021fe698.cpp:
+    complete
+    .text start:0x021fee64 end:0x021fee80
+
+src/Combat/Overlay_24/TrySetSlotFlagAndApplyStubA_021fd078.cpp:
+    complete
+    .text start:0x021fd844 end:0x021fd848
+
+src/Combat/Overlay_24/TrySetSlotFlagAndApplyStubB_021fd07c.cpp:
+    complete
+    .text start:0x021fd848 end:0x021fd84c
+
+src/Combat/Overlay_24/TrySetSlotFlagAndApplyStubC_021fd080.cpp:
+    complete
+    .text start:0x021fd84c end:0x021fd850
+
+src/Combat/Overlay_24/TrySetSlotFlagAndApplyStubD_021fd084.cpp:
+    complete
+    .text start:0x021fd850 end:0x021fd854
+
+src/Combat/Overlay_24/TrySetSlotFlagAndApplyStubE_021fd5c0.cpp:
+    complete
+    .text start:0x021fdd8c end:0x021fdd90
+
+src/Combat/Overlay_24/UpdateDamageCounter_021e5be4.cpp:
+    complete
+    .text start:0x021e647c end:0x021e6514
+
+src/Combat/Overlay_24/Trans_021f6bc0.cpp:
+    complete
+    .text start:0x021f738c end:0x021f73bc
+
+src/Combat/Overlay_24/AddBuffEntryToTable_021e04e0.cpp:
+    complete
+    .text start:0x021e0d78 end:0x021e0e7c
+
+src/Combat/Overlay_24/Dispatch021f10e0.cpp:
+    complete
+    .text start:0x021f18ac end:0x021f1964
+
+src/Combat/Overlay_24/func_ov024_021f24fc.cpp:
+    complete
+    .text start:0x021f2cc8 end:0x021f2d14
+
+src/Combat/Overlay_24/func_ov024_021f51d4.cpp:
+    complete
+    .text start:0x021f59a0 end:0x021f59ec
+
+src/Combat/Overlay_24/func_ov024_021fcd7c.cpp:
+    complete
+    .text start:0x021fd548 end:0x021fd5e0
+
+src/Combat/Overlay_24/func_ov024_021fd358.cpp:
+    complete
+    .text start:0x021fdb24 end:0x021fdbbc
+
+src/Combat/Overlay_24/func_ov024_021ee3e8.cpp:
+    complete
+    .text start:0x021eebb4 end:0x021eec20
+
+src/Combat/Overlay_24/func_ov024_021f22d8.cpp:
+    complete
+    .text start:0x021f2aa4 end:0x021f2bac
+
+src/Combat/Overlay_24/CheckAndDispatchEffect_021fceb0.cpp:
+    complete
+    .text start:0x021fd67c end:0x021fd768
+
+src/Combat/Overlay_24/func_ov024_021f2e88.cpp:
+    complete
+    .text start:0x021f3654 end:0x021f3744
+
+src/Combat/Overlay_24/func_ov024_021f1f64.cpp:
+    complete
+    .text start:0x021f2730 end:0x021f2830
+
+src/Combat/Overlay_24/func_ov024_021f6500.cpp:
+    complete
+    .text start:0x021f6ccc end:0x021f6dc8
+
+src/Combat/Overlay_24/func_ov024_021fd1bc.cpp:
+    complete
+    .text start:0x021fd988 end:0x021fda80
+
+src/Combat/Overlay_24/func_ov024_021e80e4.cpp:
+    complete
+    .text start:0x021e897c end:0x021e9488
+
+src/Combat/Overlay_24/func_ov024_021fcc6c.cpp:
+    complete
+    .text start:0x021fd438 end:0x021fd548
+
+src/Combat/Overlay_24/func_ov024_021e4b14.cpp:
+    complete
+    .text start:0x021e53ac end:0x021e549c
+
+src/Combat/Overlay_24/func_ov024_021f5888.cpp:
+    complete
+    .text start:0x021f6054 end:0x021f60a8
+
+src/Combat/Overlay_24/func_ov024_021f87dc.cpp:
+    complete
+    .text start:0x021f8fa8 end:0x021f9040
+
+src/Combat/Overlay_24/func_ov024_021fd858.cpp:
+    complete
+    .text start:0x021fe024 end:0x021fe120
+
+src/Combat/Overlay_24/func_ov024_021d8ad8.cpp:
+    complete
+    .text start:0x021d9398 end:0x021d9428
+
+src/Combat/Overlay_24/func_ov024_021da55c.cpp:
+    complete
+    .text start:0x021dae1c end:0x021daf04
+
+src/Combat/Overlay_24/func_ov024_021fd66c.cpp:
+    complete
+    .text start:0x021fde38 end:0x021fdf50

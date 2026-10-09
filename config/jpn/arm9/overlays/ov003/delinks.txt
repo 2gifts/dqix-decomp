@@ -5,3 +5,290 @@
     .data       start:0x0217e500 end:0x0217ef20 kind:data align:32
     .bss        start:0x0217ef20 end:0x0217efa0 kind:bss align:32
 
+src/Combat/Overlay_3/ClearFieldsIfZero_0215385c.cpp:
+    complete
+    .text start:0x02154fdc end:0x02154ff4
+
+src/Combat/Overlay_3/CountNonZeroEntries_0215570c.cpp:
+    complete
+    .text start:0x02156d90 end:0x02156dc4
+
+src/Combat/Overlay_3/IsFieldEq3At_021538e0.cpp:
+    complete
+    .text start:0x02155060 end:0x02155074
+
+src/Combat/Overlay_3/OffsetByIndexTimes16_02155e14.cpp:
+    complete
+    .text start:0x02157470 end:0x02157494
+
+src/Combat/Overlay_3/SetFlag8At_02159240.cpp:
+    complete
+    .text start:0x0215a72c end:0x0215a73c
+
+src/Combat/Overlay_3/AllBytesZero_02171df0.cpp:
+    complete
+    .text start:0x021710ac end:0x021710d8
+
+src/Combat/Overlay_3/ClearFields_0216a85c.cpp:
+    complete
+    .text start:0x0216a4e8 end:0x0216a50c
+
+src/Combat/Overlay_3/GetElementAtIndex_02160bd0_02160bd0.cpp:
+    complete
+    .text start:0x02160d2c end:0x02160d54
+
+src/Combat/Overlay_3/GetElementIfInRange_02173bb0.cpp:
+    complete
+    .text start:0x02172d24 end:0x02172d4c
+
+src/Combat/Overlay_3/ResetFieldsB68AndB74_0216fb6c.cpp:
+    complete
+    .text start:0x0216f460 end:0x0216f494
+
+src/Combat/Overlay_3/CallCallbackIfField20Set_0217e580.cpp:
+    complete
+    .text start:0x0217d288 end:0x0217d2a0
+
+src/Combat/Overlay_3/CallCallbackIfField20Set_0217e598.cpp:
+    complete
+    .text start:0x0217d2a0 end:0x0217d2b8
+
+src/Combat/Overlay_3/CallIfFieldCSet_0217f218.cpp:
+    complete
+    .text start:0x0217df1c end:0x0217df34
+
+src/Combat/Overlay_3/CallIfFieldCSet_0217f248.cpp:
+    complete
+    .text start:0x0217df4c end:0x0217df64
+
+src/Combat/Overlay_3/ComputeTimeRemaining_02179e18.cpp:
+    complete
+    .text start:0x02178c54 end:0x02178c80
+
+src/Combat/Overlay_3/GetInnerShort_0217b200.cpp:
+    complete
+    .text start:0x02179f7c end:0x02179f90
+
+src/Combat/Overlay_3/InitField1_0217f260.cpp:
+    complete
+    .text start:0x0217df64 end:0x0217df7c
+
+src/Combat/Overlay_3/InitObj_0217e5b0.cpp:
+    complete
+    .text start:0x0217d2b8 end:0x0217d2e4
+
+src/Combat/Overlay_3/SetPowCnt1Bit15_0217c2a0.cpp:
+    complete
+    .text start:0x0217afc8 end:0x0217afe4
+
+src/Combat/Overlay_3/AppendFieldTwice_02159290.cpp:
+    complete
+    .text start:0x0215a778 end:0x0215a7c0
+
+src/Combat/Overlay_3/AppendFormattedNumber_02158140.cpp:
+    complete
+    .text start:0x0215962c end:0x02159670
+
+src/Combat/Overlay_3/CheckStateFlag0215b370.cpp:
+    complete
+    .text start:0x0215c7b0 end:0x0215c7fc
+
+src/Combat/Overlay_3/DecrementFieldClampZero_0215c300.cpp:
+    complete
+    .text start:0x0215d614 end:0x0215d640
+
+src/Combat/Overlay_3/IsCombatantFlagit2Set_02155f88_02155f88.cpp:
+    complete
+    .text start:0x021575e4 end:0x0215761c
+
+src/Combat/Overlay_3/IsTableValueNot99_02155ffc.cpp:
+    complete
+    .text start:0x02157658 end:0x02157690
+
+src/Combat/Overlay_3/CountValidCombatantsMinusField_02160b84.cpp:
+    complete
+    .text start:0x02160ce0 end:0x02160d2c
+
+src/Combat/Overlay_3/SetEntryFieldsForRange_02168088.cpp:
+    complete
+    .text start:0x02167f0c end:0x02167f58
+
+src/Combat/Overlay_3/ComputeValues_0217063c.cpp:
+    complete
+    .text start:0x0216fec0 end:0x0216ff0c
+
+src/Combat/Overlay_3/InitObj02174408.cpp:
+    complete
+    .text start:0x02173550 end:0x0217359c
+
+src/Combat/Overlay_3/InitStruct0217e630.cpp:
+    complete
+    .text start:0x0217d338 end:0x0217d384
+
+src/Combat/Overlay_3/InitStruct_0217ef24.cpp:
+    complete
+    .text start:0x0217dc28 end:0x0217dc5c
+
+src/Combat/Overlay_3/ClassifyRatio_0215f56c.cpp:
+    complete
+    .text start:0x0215f770 end:0x0215f7ec
+
+src/Combat/Overlay_3/CompareThreshold_021614e8.cpp:
+    complete
+    .text start:0x021615d0 end:0x0216162c
+
+src/Combat/Overlay_3/FindEntryByShortId_0216f414.cpp:
+    complete
+    .text start:0x0216ecf8 end:0x0216ed58
+
+src/Combat/Overlay_3/SetPendingFlags0217c74c.cpp:
+    complete
+    .text start:0x0217b474 end:0x0217b4c8
+
+src/Combat/Overlay_3/InitObj0217e334.cpp:
+    complete
+    .text start:0x0217d03c end:0x0217d074
+
+src/Combat/Overlay_3/GetField94_0215916c.cpp:
+    complete
+    .text start:0x0215a658 end:0x0215a660
+
+src/Combat/Overlay_3/InitObj0217bcb8.cpp:
+    complete
+    .text start:0x0217a9e0 end:0x0217aa60
+
+src/Combat/Overlay_3/ResetHandlesAndFlags_02153874.cpp:
+    complete
+    .text start:0x02154ff4 end:0x02155060
+
+src/Combat/Overlay_3/SetField587_02159174.cpp:
+    complete
+    .text start:0x0215a660 end:0x0215a668
+
+src/Combat/Overlay_3/GetField12_0217f278.cpp:
+    complete
+    .text start:0x0217df7c end:0x0217df84
+
+src/Combat/Overlay_3/AppendFlagEvents_0215917c.cpp:
+    complete
+    .text start:0x0215a668 end:0x0215a72c
+
+src/Combat/Overlay_3/HandleStateTransition_0215445c.cpp:
+    complete
+    .text start:0x02155b44 end:0x02155bd4
+
+src/Combat/Overlay_3/ResetIfFlagAndCategory_021538f4.cpp:
+    complete
+    .text start:0x02155074 end:0x02155120
+
+src/Combat/Overlay_3/AllocateAndFillBuffer_0217ca84.cpp:
+    complete
+    .text start:0x0217b7ac end:0x0217b864
+
+src/Combat/Overlay_3/AppendCursorAndNameTags_0215be70.cpp:
+    complete
+    .text start:0x0215d188 end:0x0215d230
+
+src/Combat/Overlay_3/AppendEntryNamesWithSeparator_0215b6f0.cpp:
+    complete
+    .text start:0x0215caf0 end:0x0215cba4
+
+src/Combat/Overlay_3/CheckActiveOrFlags_0215b328.cpp:
+    complete
+    .text start:0x0215c768 end:0x0215c7b0
+
+src/Combat/Overlay_3/CheckCombatantField130Bit0_02155fc0.cpp:
+    complete
+    .text start:0x0215761c end:0x02157658
+
+src/Combat/Overlay_3/CheckCoordsInRange_02178218.cpp:
+    complete
+    .text start:0x0217716c end:0x021771f4
+
+src/Combat/Overlay_3/ComputeElementDisplayValues_021705d4.cpp:
+    complete
+    .text start:0x0216fe58 end:0x0216fec0
+
+src/Combat/Overlay_3/EmptyStub_0217bdb4.cpp:
+    complete
+    .text start:0x0217aadc end:0x0217aae0
+
+src/Combat/Overlay_3/FindEntryByKey_02160bf8.cpp:
+    complete
+    .text start:0x02160d54 end:0x02160db4
+
+src/Combat/Overlay_3/FindHitRectIndex_02169674.cpp:
+    complete
+    .text start:0x0216949c end:0x0216951c
+
+src/Combat/Overlay_3/FindMatchingEntry_02171d78.cpp:
+    complete
+    .text start:0x02171034 end:0x021710ac
+
+src/Combat/Overlay_3/InitAllocatorArray_0216724c.cpp:
+    complete
+    .text start:0x0216712c end:0x021671c4
+
+src/Combat/Overlay_3/InitAllocators_0217bd38.cpp:
+    complete
+    .text start:0x0217aa60 end:0x0217aadc
+
+src/Combat/Overlay_3/InitNodesFromState_0215b3bc.cpp:
+    complete
+    .text start:0x0215c7fc end:0x0215c8b8
+
+src/Combat/Overlay_3/ResetFieldAndEntryListIfSet_0216ff90.cpp:
+    complete
+    .text start:0x0216f8b0 end:0x0216f8dc
+
+src/Combat/Overlay_3/ResetGraphicsAndEntries_021700dc.cpp:
+    complete
+    .text start:0x0216f9ec end:0x0216faac
+
+src/Combat/Overlay_3/RunEntryStateHooks_02159078.cpp:
+    complete
+    .text start:0x0215a564 end:0x0215a5ec
+
+src/Combat/Overlay_3/UpdateEntryFlagAndMaybePosition_0215c464.cpp:
+    complete
+    .text start:0x0215d778 end:0x0215d824
+
+src/Combat/Overlay_3/CheckGoldCapTier_02179da8.cpp:
+    complete
+    .text start:0x02178be4 end:0x02178c54
+
+src/Combat/Overlay_3/func_ov003_021784bc.cpp:
+    complete
+    .text start:0x0217739c end:0x02177428
+
+src/Combat/Overlay_3/func_ov003_0217bdb8.cpp:
+    complete
+    .text start:0x0217aae0 end:0x0217ab68
+
+src/Combat/Overlay_3/DrawFullscreenColorQuad_0215c270.cpp:
+    complete
+    .text start:0x0215d584 end:0x0215d614
+
+src/Combat/Overlay_3/func_ov003_0216e124.cpp:
+    complete
+    .text start:0x0216d988 end:0x0216da64
+
+src/Combat/Overlay_3/InitAllocatorArray1_021536e0.cpp:
+    complete
+    .text start:0x02154e60 end:0x02154eec
+
+src/Combat/Overlay_3/SetEntriesAndAlign_0215f5e8.cpp:
+    complete
+    .text start:0x0215f7ec end:0x0215f854
+
+src/Menu/Overlay3EntryOrdering.cpp:
+    complete
+    .text start:0x0216ff0c end:0x0217011c
+
+src/Combat/Overlay_3/func_ov003_02160c58.cpp:
+    complete
+    .text start:0x02160db4 end:0x02160e1c
+
+src/Combat/Overlay_3/func_ov003_0215c32c.cpp:
+    complete
+    .text start:0x0215d640 end:0x0215d778
