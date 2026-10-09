@@ -306,3 +306,18 @@ src/Combat/Overlay_5/func_ov005_0215bf58.cpp:
 src/Combat/Overlay_5/func_ov005_0215cb4c.cpp:
     complete
     .text start:0x0215cb4c end:0x0215cbd4
+
+
+src/Combat/Overlay_5/func_ov005_021538fc.cpp:
+    complete
+    .text start:0x021538fc end:0x02153954
+
+
+src/Combat/Overlay_5/func_ov005_021553b4.cpp:
+    complete
+    .text start:0x021553b4 end:0x02155424
+
+
+src/Combat/Overlay_5/func_ov005_02155544.cpp:
+    complete
+    .text start:0x02155544 end:0x021555c0
