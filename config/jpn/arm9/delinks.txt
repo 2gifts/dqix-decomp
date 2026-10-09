@@ -12177,3 +12177,7 @@ src/Combat/Main/func_020d05ec.cpp:
 src/Combat/Main/020b8cf4.cpp:
     complete
     .text start:0x020ba7c0 end:0x020ba92c
+
+src/Combat/Main/_d2f.cpp:
+    complete
+    .text start:0x0200ad5c end:0x0200ae60
