@@ -2857,7 +2857,7 @@ src/Combat/Overlay_17/InitNodeRangeIfTagMatches_021d4c04.cpp:
     complete
     .text start:0x021d4c04 end:0x021d4cc0
 
-src/Combat/Overlay_17/func_ov017_021d46a4.cpp:
+src/Combat/Overlay_17/func_ov017_021d45e0.cpp:
     complete
     .text start:0x021d45e0 end:0x021d46a4
 
@@ -4377,6 +4377,6 @@ src/Combat/Overlay_17/func_ov017_021cf86c.cpp:
     complete
     .text start:0x021cf86c end:0x021cfabc
 
-src/Combat/Overlay_17/func_ov017_021d46a4_021d46a4.cpp:
+src/Combat/Overlay_17/func_ov017_021d46a4.cpp:
     complete
     .text start:0x021d46a4 end:0x021d48f0
