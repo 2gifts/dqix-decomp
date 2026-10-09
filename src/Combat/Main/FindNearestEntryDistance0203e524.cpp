@@ -1,8 +1,6 @@
 #include <globaldefs.h>
 
-struct Entry_203dce4 {
-    int flags;
-};
+#include "Combat/EntryGetterTypes.h"
 
 struct EntryList_203dce4 {
     char pad[0xc];
@@ -11,10 +9,6 @@ struct EntryList_203dce4 {
 
 extern struct Entry_203dce4* GetEntryUnlessFlag0x8000(struct EntryList_203dce4* list, int id);
 
-struct S02040538 {
-    char pad[0xc];
-    void* field0xc;
-};
 
 extern void* GetField0xc02040538(struct S02040538* p);
 

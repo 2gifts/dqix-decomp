@@ -1,10 +1,7 @@
 #include <globaldefs.h>
 
-struct NodeDB20 {
-    unsigned char id;
-    char unk[0x67];
-    struct NodeDB20* next;
-};
+#include "Combat/NodeLookup.h"
+
 
 // USA: func_0206db20
 ARM struct NodeDB20* FindNodeByByteId(void* base, int key) {

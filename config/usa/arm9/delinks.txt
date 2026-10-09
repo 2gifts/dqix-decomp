@@ -18267,3 +18267,11 @@ src/Combat/Main/UnblockContexts.cpp:
 src/Combat/Main/func_020c7884.cpp:
     complete
     .text start:0x020c7884 end:0x020c7898
+
+src/Combat/Main/func_0203e0a0.cpp:
+    complete
+    .text start:0x0203e0a0 end:0x0203e2c4
+
+src/Combat/Main/func_0206db48.cpp:
+    complete
+    .text start:0x0206db48 end:0x0206dd68

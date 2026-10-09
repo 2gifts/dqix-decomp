@@ -1,4 +1,6 @@
 #include <globaldefs.h>
+
+#include "Combat/NodeLookup.h"
 #include "Memory/SafeAllocator.h"
 #include "std_library_functions.h"
 
@@ -8,8 +10,6 @@ extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 int IsIdInRange020981e4(int a, int id);
 int IsInRange1To63(int a, int x);
 
-struct NodeDB20;
-NodeDB20* FindNodeByByteId(void* base, int key);
 
 struct Struct02030b7c { int field0; void* field4; };
 extern "C" void* _ZNK6Script9Parameter8ToStringEv(struct Struct02030b7c* s);
