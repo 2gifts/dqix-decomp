@@ -14,8 +14,6 @@ extern "C" ARM void func_02013d24(Zone3D* zone)
     LootableContainerManager* manager = LootableContainerManager::GetMainInstance();
     for (int i = 0; i < (unsigned char)zone->unknown_476_; ++i)
     {
-        // The allocator provides one byte extent; the initializer constructs
-        // individual records in it rather than a C++ array of records.
         unsigned char* storage = reinterpret_cast<unsigned char*>(zone->unknown_478_);
         ZoneLootableRecord* entry = static_cast<ZoneLootableRecord*>(
             static_cast<void*>(storage + i * sizeof(ZoneLootableRecord)));

@@ -13,8 +13,6 @@ int FindEntryIndexByKey020424e4(int key, int tableIdx);
 extern "C" ARM void func_ov012_021845f8(void* checker) {
     unsigned char* bytes = static_cast<unsigned char*>(checker);
     memset(bytes + 0x18, 0, 0xc);
-    // Begin the actual scalar object lifetimes in the aligned checker storage.
-    // The native owning structs place checker at aligned offset0x1480.
     int* word = new (bytes + 0x24) int;
     *word = 0;
     short* half = new (bytes + 0x28) short;
