@@ -1879,3 +1879,33 @@ src/Combat/Overlay_1/func_ov001_02162338.cpp:
 src/Combat/Overlay_1/CubicPathAdvancement.cpp:
     complete
     .text start:0x021570b4 end:0x02157570
+
+
+src/Combat/Overlay_1/PackValuesIntoBitfield_02161374.cpp:
+    complete
+    .text start:0x02161374 end:0x021613d0
+
+
+src/Combat/Overlay_1/func_ov001_021567c4.cpp:
+    complete
+    .text start:0x021567c4 end:0x02156858
+
+
+src/Combat/Overlay_1/func_ov001_0215c1d0.cpp:
+    complete
+    .text start:0x0215c1d0 end:0x0215c298
+
+
+src/Combat/Overlay_1/func_ov001_0215c468.cpp:
+    complete
+    .text start:0x0215c468 end:0x0215c4fc
+
+
+src/Combat/Overlay_1/func_ov001_0215e0dc.cpp:
+    complete
+    .text start:0x0215e0dc end:0x0215e14c
+
+
+src/Combat/Overlay_1/func_ov001_0215fe50.cpp:
+    complete
+    .text start:0x0215fe50 end:0x0215fef4
