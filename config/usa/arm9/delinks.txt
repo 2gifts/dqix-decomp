@@ -18641,3 +18641,8 @@ src/Combat/Main/__sinit_020e59c8.cpp:
 src/Combat/Main/func_020d7b04.cpp:
     complete
     .text start:0x020d7b04 end:0x020d7e10
+
+
+src/Combat/Main/func_0202ab34.cpp:
+    complete
+    .text start:0x0202ab34 end:0x0202ac74
