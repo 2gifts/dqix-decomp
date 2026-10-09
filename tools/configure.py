@@ -669,7 +669,7 @@ def add_objdiff_builds(n: ninja_syntax.Writer, project: Project):
 
     n.build(
         inputs=["objdiff.json"],
-        implicit=[OBJDIFF] + project.source_object_files(),
+        implicit=[OBJDIFF, str(project.arm9_delink_yaml())] + project.source_object_files(),
         rule="objdiff_report",
         outputs=str(project.objdiff_report()),
     )
