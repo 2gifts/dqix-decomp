@@ -1596,3 +1596,75 @@ src/Combat/Overlay_0/func_ov000_02176210.cpp:
 src/Combat/Overlay_0/func_ov000_02178f28.cpp:
     complete
     .text start:0x0217a384 end:0x0217a474
+
+src/Combat/Overlay_0/func_ov000_02153aa4.cpp:
+    complete
+    .text start:0x02155224 end:0x0215538c
+
+src/Combat/Overlay_0/func_ov000_02153e78.cpp:
+    complete
+    .text start:0x021555f8 end:0x02155718
+
+src/Combat/Overlay_0/func_ov000_02156b38.cpp:
+    complete
+    .text start:0x021582b8 end:0x02158414
+
+src/Combat/Overlay_0/func_ov000_02157288.cpp:
+    complete
+    .text start:0x02158a08 end:0x02158b28
+
+src/Combat/Overlay_0/func_ov000_0215ab88.cpp:
+    complete
+    .text start:0x0215c308 end:0x0215c438
+
+src/Combat/Overlay_0/func_ov000_0215acb8.cpp:
+    complete
+    .text start:0x0215c438 end:0x0215c600
+
+src/Combat/Overlay_0/func_ov000_0215d414.cpp:
+    complete
+    .text start:0x0215eb94 end:0x0215ed08
+
+src/Combat/Overlay_0/func_ov000_0215f67c.cpp:
+    complete
+    .text start:0x02160dfc end:0x02160f28
+
+src/Combat/Overlay_0/func_ov000_02169d08.cpp:
+    complete
+    .text start:0x0216b434 end:0x0216b580
+
+src/Combat/Overlay_0/func_ov000_02169e80.cpp:
+    complete
+    .text start:0x0216b5ac end:0x0216b6d0
+
+src/Combat/Overlay_0/func_ov000_0216a018.cpp:
+    complete
+    .text start:0x0216b744 end:0x0216b8d0
+
+src/Combat/Overlay_0/func_ov000_0216aed0.cpp:
+    complete
+    .text start:0x0216c5fc end:0x0216c7b4
+
+src/Combat/Overlay_0/func_ov000_0216cad0.cpp:
+    complete
+    .text start:0x0216e1fc end:0x0216e3b4
+
+src/Combat/Overlay_0/func_ov000_0216d90c.cpp:
+    complete
+    .text start:0x0216f038 end:0x0216f160
+
+src/Combat/Overlay_0/func_ov000_0216da34.cpp:
+    complete
+    .text start:0x0216f160 end:0x0216f31c
+
+src/Combat/Overlay_0/func_ov000_0216e250.cpp:
+    complete
+    .text start:0x0216f97c end:0x0216faf0
+
+src/Combat/Overlay_0/func_ov000_0218177c.cpp:
+    complete
+    .text start:0x021829c8 end:0x02182b2c
+
+src/Combat/Overlay_0/func_ov000_02181b4c.cpp:
+    complete
+    .text start:0x02182d98 end:0x02182eb8
