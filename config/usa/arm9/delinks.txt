@@ -18235,3 +18235,7 @@ src/Combat/Main/DispatchObjectsByDistance.cpp:
 src/Combat/Main/SetCombatAnimationState.cpp:
     complete
     .text start:0x02033ba0 end:0x02033ce8
+
+src/Combat/Main/FilterManagerSelectionByRecordValues.cpp:
+    complete
+    .text start:0x0209f498 end:0x0209f634
