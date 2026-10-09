@@ -1,12 +1,12 @@
 #include <globaldefs.h>
 
-extern "C" void func_02032e58();
+#include "Combat/ObjectStateInitialization.h"
 
 extern "C" void _ZN8Object3D11DisableFlagEi(unsigned char* obj, unsigned int mask);
 
 // USA: func_02076a8c  (semantic: InitObjectState_02076a8c)
 extern "C" ARM void func_02076a8c(unsigned char* p) {
-    func_02032e58();
+    func_02032e58(p);
 
     *(unsigned short*)(p + 0x0) |= 0x20;
     *(unsigned short*)(p + 0xb4) = 0x1c2;
