@@ -76,11 +76,9 @@ BIOS_STUBS = {
 THUMB_BX_LR = 0x4770
 THUMB_MOV_R0_R1 = 0x1c08
 
-SYMBOL_ADDR = re.compile(r"addr:(0x[0-9a-f]+)")
-SYMBOL_SIZE = re.compile(r"size=(0x[0-9a-f]+)")
-DELINK_START = re.compile(r"start:(0x[0-9a-f]+)")
-DELINK_END = re.compile(r"end:(0x[0-9a-f]+)")
-RELOC = re.compile(r"from:(0x[0-9a-f]+) kind:(\S+) to:(0x[0-9a-f]+)(?: add:(0x[0-9a-f]+))? module:(\S+)")
+from region_port import (DELINK_END, DELINK_START, RELOC, SYMBOL_ADDR, SYMBOL_SIZE, SameAddress,
+                         block_ranges, delink_blocks, hex_address, port_delink, read_raw, reloc_sources,
+                         symbol_lines, sync_delinks)
 
 
 class MainAddressMap:
@@ -149,15 +147,6 @@ def read_symbols(path: Path):
             yield line.split(" ", 1)[0], int(match[1], 16), int(size[1], 16) if size else None
 
 
-def hex_address(address: int) -> str:
-    return f"{address:#010x}"
-
-
-def read_raw(path: Path) -> str:
-    with path.open("r", encoding="utf-8", newline="") as file:
-        return file.read()
-
-
 def port_lines(path: Path, port_line):
     '''Rewrites a config file line by line, keeping its line endings'''
     with path.open("r", encoding="utf-8", newline="") as file:
@@ -177,36 +166,6 @@ def port_symbol(line: str, main: MainAddressMap) -> str:
         new_size = main.map_end(address + int(size[1], 16)) - new_address
         line = SYMBOL_SIZE.sub(f"size={new_size:#x}", line)
     return SYMBOL_ADDR.sub(f"addr:{hex_address(new_address)}", line)
-
-
-def delink_blocks(text: str):
-    '''Split a delinks file into the section header and one block per source file.'''
-    lines = text.splitlines(keepends=True)
-    header = []
-    blocks = []
-    current = None
-    for line in lines:
-        if line.endswith(":\n") or line.endswith(":\r\n"):
-            if current:
-                blocks.append(current)
-            current = [line]
-        elif current is None:
-            header.append(line)
-        else:
-            current.append(line)
-    if current:
-        blocks.append(current)
-    return header, blocks
-
-
-def block_ranges(block: list[str]):
-    ranges = []
-    for line in block:
-        start = DELINK_START.search(line)
-        end = DELINK_END.search(line)
-        if start and end:
-            ranges.append((int(start[1], 16), int(end[1], 16)))
-    return ranges
 
 
 def word_is_moved_pointer(main: MainAddressMap, usa_word: int, eur_word: int) -> bool:
@@ -324,11 +283,6 @@ def port_same_address_delinks(path: Path, usa_bin: bytes, eur_bin: bytes, base: 
             print(f"  ROM bytes: {block[0].strip()}")
     path.write_text("".join(header) + "".join(kept), encoding="utf-8", newline="")
     return dropped
-
-
-def port_delink(line: str, main: MainAddressMap) -> str:
-    line = DELINK_START.sub(lambda m: f"start:{hex_address(main.map(int(m[1], 16)))}", line)
-    return DELINK_END.sub(lambda m: f"end:{hex_address(main.map_end(int(m[1], 16)))}", line)
 
 
 def port_reloc(line: str, main: MainAddressMap, from_main: bool) -> str:
@@ -512,35 +466,6 @@ def verify_relocs(relocs: Path) -> tuple[int, list[str]]:
     return count, errors
 
 
-class SameAddress:
-    def map(self, address: int) -> int:
-        return address
-
-    def map_end(self, end: int) -> int:
-        return end
-
-
-def reloc_sources(relocs: Path) -> list[int]:
-    if not relocs.is_file():
-        return []
-    sources = []
-    for line in relocs.read_text(encoding="utf-8", errors="replace").splitlines():
-        match = RELOC.search(line)
-        if match:
-            sources.append(int(match[1], 16))
-    return sources
-
-
-def symbol_lines(path: Path):
-    lines = read_raw(path).splitlines(keepends=True)
-    by_address = {}
-    for index, line in enumerate(lines):
-        match = SYMBOL_ADDR.search(line)
-        if match:
-            by_address.setdefault(int(match[1], 16), []).append(index)
-    return lines, by_address
-
-
 def sync_symbols(usa_path: Path, eur_path: Path, mapper) -> tuple[int, list[str]]:
     usa_lines, usa_at = symbol_lines(usa_path)
     eur_lines, eur_at = symbol_lines(eur_path)
@@ -573,62 +498,6 @@ def sync_symbols(usa_path: Path, eur_path: Path, mapper) -> tuple[int, list[str]
     return renamed, unresolved
 
 
-def block_name(block: list[str]) -> str:
-    return block[0].strip()
-
-
-def is_live(block: list[str]) -> bool:
-    return not block[0].lstrip().startswith("//")
-
-
-def live_ranges(block: list[str]):
-    return block_ranges([line for line in block if not line.lstrip().startswith("//")])
-
-
-def sync_delinks(usa_path: Path, eur_path: Path, mapper, reproducible) -> tuple[int, list[str]]:
-    _, usa_blocks = delink_blocks(read_raw(usa_path))
-    usa_blocks = [b for b in usa_blocks if is_live(b)]
-    eur_text = read_raw(eur_path)
-    eur_header, eur_blocks = delink_blocks(eur_text)
-    usa_names = {block_name(b) for b in usa_blocks}
-    eur_names = {block_name(b) for b in eur_blocks if is_live(b)}
-    eur_only = eur_names - usa_names
-    eur_ranges = [(block_name(b), start, end) for b in eur_blocks if is_live(b) for start, end in live_ranges(b)]
-    added = []
-    left = []
-    replaced = set()
-    for block in usa_blocks:
-        name = block_name(block)
-        if name in eur_names:
-            continue
-        try:
-            ranges = [(mapper.map(start), mapper.map_end(end), start, end) for start, end in live_ranges(block)]
-        except ValueError:
-            left.append(f"{name} has no EUR address")
-            continue
-        if any(start & 3 or end & 3 for start, end, _, _ in ranges):
-            left.append(f"{name} is unaligned in EUR")
-            continue
-        if not all(reproducible(usa_start, usa_end, start, end) for start, end, usa_start, usa_end in ranges):
-            left.append(f"{name} differs in EUR")
-            continue
-        overlapping = {owner for owner, eur_start, eur_end in eur_ranges
-                       for start, end, _, _ in ranges if eur_start < end and start < eur_end}
-        if overlapping - eur_only:
-            left.append(f"{name} overlaps {sorted(overlapping - eur_only)}")
-            continue
-        replaced |= overlapping
-        added.append("".join(port_delink(line, mapper) for line in block))
-    if (added or replaced) and not args.dry_run:
-        newline = "\r\n" if "\r\n" in eur_text else "\n"
-        kept = "".join("".join(b) for b in eur_blocks if block_name(b) not in replaced)
-        body = ("".join(eur_header) + kept).rstrip("\r\n") + newline
-        for block in added:
-            body += newline + block.rstrip("\r\n").replace("\r\n", "\n").replace("\n", newline) + newline
-        eur_path.write_text(body, encoding="utf-8", newline="")
-    return len(added), [f"{name} replaced as a renamed file" for name in sorted(replaced)] + left
-
-
 def sync():
     usa_arm9 = args.usa / "arm9"
     eur_arm9 = args.eur / "arm9"
@@ -656,7 +525,7 @@ def sync():
                                       sources, main_map, base)
 
         renamed, unresolved = sync_symbols(usa_dir / "symbols.txt", eur_dir / "symbols.txt", mapper)
-        added, notes = sync_delinks(usa_delinks, eur_dir / "delinks.txt", mapper, reproducible)
+        added, notes = sync_delinks(usa_delinks, eur_dir / "delinks.txt", mapper, reproducible, "EUR", args.dry_run)
         total_renamed += renamed
         total_added += added
         if renamed or added or notes or unresolved:
