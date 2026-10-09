@@ -18376,6 +18376,26 @@ src/Combat/Main/func_02046e70.cpp:
     complete
     .text start:0x02046e70 end:0x02046f84
 
+src/Combat/Main/func_0204ade8.cpp:
+    complete
+    .text start:0x0204ade8 end:0x0204ae44
+
+src/Combat/Main/func_020553ec.cpp:
+    complete
+    .text start:0x020553ec end:0x02055558
+
+src/Combat/Main/func_020557a4.cpp:
+    complete
+    .text start:0x020557a4 end:0x020559cc
+
+src/Combat/Main/_Z32InitCommandStreamSession02064e2ciiiP12StreamHeaderi.cpp:
+    complete
+    .text start:0x02064e2c end:0x02064e88
+
+src/Combat/Main/func_0207c7a0.cpp:
+    complete
+    .text start:0x0207c7a0 end:0x0207c894
+
 src/Combat/Main/__sinit_020e5f0c.cpp:
     complete
     .init start:0x020e5f0c end:0x020e5f9c
