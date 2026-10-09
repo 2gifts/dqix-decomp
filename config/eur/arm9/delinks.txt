@@ -17422,3 +17422,671 @@ src/Graphics/TriangleRegionClamp.cpp:
 src/Resource/ArchiveLoadPolling.cpp:
     complete
     .text start:0x020da8f0 end:0x020daa30
+
+src/System/DMAInterruptHandlers.cpp:
+    complete
+    .text start:0x020c6a64 end:0x020c6aa4
+
+src/System/TimerOverflowInterruptHandlers.cpp:
+    complete
+    .text start:0x020c6aa4 end:0x020c6ae4
+
+src/Combat/Main/func_02072afc.cpp:
+    complete
+    .text start:0x02072b0c end:0x02072cac
+
+src/Combat/Main/func_0207267c.cpp:
+    complete
+    .text start:0x0207268c end:0x020727e8
+
+src/Combat/Main/func_02072e94.cpp:
+    complete
+    .text start:0x02072ea4 end:0x020730f0
+
+src/Combat/Main/Z35NotifyOverlayIfFieldSet02073240i_02073240.cpp:
+    complete
+    .text start:0x02073250 end:0x020732b8
+
+src/Combat/Main/_Z24InitCommandStreamSessioniiP12StreamHeaderi.cpp:
+    complete
+    .text start:0x020724ac end:0x02072504
+
+src/Combat/Main/func_020732cc.cpp:
+    complete
+    .text start:0x020732dc end:0x020733d8
+
+src/Combat/Main/func_02072398.cpp:
+    complete
+    .text start:0x020723a8 end:0x02072498
+
+src/Combat/Main/_Z25RunBufferedStream02071c00iiP12StreamHeaderi.cpp:
+    complete
+    .text start:0x02071c10 end:0x02071c74
+
+src/Combat/Main/_Z25RunBufferedStream0207416ciiP12StreamHeaderi.cpp:
+    complete
+    .text start:0x0207417c end:0x020741e0
+
+src/Combat/Main/_Z29TryDecodeGlobalBitstreamEntryPvi.cpp:
+    complete
+    .text start:0x02074124 end:0x0207417c
+
+src/Combat/Main/func_0200fbb4.cpp:
+    complete
+    .text start:0x0200fbc4 end:0x0200fd0c
+
+src/Combat/Main/func_02083cbc.cpp:
+    complete
+    .text start:0x02083ccc end:0x02083e38
+
+src/Combat/Main/func_0200d9e4.cpp:
+    complete
+    .text start:0x0200d9e4 end:0x0200da70
+
+src/Combat/Main/func_02086868.cpp:
+    complete
+    .text start:0x02086878 end:0x02086a14
+
+src/Combat/Main/func_020cdc7c.cpp:
+    complete
+    .text start:0x020cdc8c end:0x020cddd0
+
+src/Combat/Main/func_02074060.cpp:
+    complete
+    .text start:0x02074070 end:0x02074124
+
+src/Combat/Main/_Z18TrySetMode02076cccPvi.cpp:
+    complete
+    .text start:0x02076cdc end:0x02076d44
+
+src/Combat/Main/func_020716a4.cpp:
+    complete
+    .text start:0x020716b4 end:0x02071820
+
+src/Combat/Main/func_02071da4.cpp:
+    complete
+    .text start:0x02071db4 end:0x0207200c
+
+src/Combat/Main/func_020749ac.cpp:
+    complete
+    .text start:0x020749bc end:0x02074b04
+
+src/Combat/Main/func_02076994.cpp:
+    complete
+    .text start:0x020769a4 end:0x02076a9c
+
+src/Combat/Main/InitBattleModeAndCommit020758a8.cpp:
+    complete
+    .text start:0x020758b8 end:0x02075920
+
+src/Combat/Main/func_0206f01c.cpp:
+    complete
+    .text start:0x0206f02c end:0x0206f108
+
+src/Combat/Main/func_0206f550.cpp:
+    complete
+    .text start:0x0206f560 end:0x0206f6dc
+
+src/Combat/Main/func_0207051c.cpp:
+    complete
+    .text start:0x0207052c end:0x0207077c
+
+src/Combat/Main/func_020776a0.cpp:
+    complete
+    .text start:0x020776b0 end:0x02077798
+
+src/System/InterruptRegistration.cpp:
+    complete
+    .text start:0x020c6afc end:0x020c6ca0
+
+src/Combat/Main/PruneFormationPath.cpp:
+    complete
+    .text start:0x02048e3c end:0x02048f74
+
+src/Graphics/OBJImagePayloadSize.cpp:
+    complete
+    .text start:0x02076748 end:0x02076938
+
+src/System/ContextLifecycle.cpp:
+    complete
+    .text start:0x020c75c4 end:0x020c7894
+
+src/System/BlockCurrentContext.cpp:
+    complete
+    .text start:0x020c78a8 end:0x020c78f8
+
+src/System/ReadyContexts.cpp:
+    complete
+    .text start:0x020c7960 end:0x020c79b0
+
+src/System/ContextScheduler.cpp:
+    complete
+    .text start:0x020c7bf8 end:0x020c7cb8
+
+src/Graphics/NSBXX/NameLookup.cpp:
+    complete
+    .text start:0x020b737c end:0x020b76a4
+
+src/World/CreateOpcode6aEntry.cpp:
+    complete
+    .text start:0x0201e720 end:0x0201e81c
+
+src/World/WarpScriptOpcode67.cpp:
+    complete
+    .text start:0x0201c97c end:0x0201cb48
+
+src/World/WarpScriptOpcode69.cpp:
+    complete
+    .text start:0x0201cb70 end:0x0201ce20
+
+src/World/WarpScriptOpcode72.cpp:
+    complete
+    .text start:0x0201ce90 end:0x0201d02c
+
+src/Graphics/NSBXX/BindPoseScaling.cpp:
+    complete
+    .text start:0x020b79a0 end:0x020b7a30
+
+src/World/InitializeZoneResourceNode.cpp:
+    complete
+    .text start:0x02014a34 end:0x02014b14
+
+src/World/LoadZoneObjectResource.cpp:
+    complete
+    .text start:0x020151dc end:0x02015448
+
+src/World/InitializeZoneResourceTree.cpp:
+    complete
+    .text start:0x020177e4 end:0x02017aa4
+
+src/World/MarkVisitedGrottoTile.cpp:
+    complete
+    .text start:0x02024da4 end:0x02024e88
+
+src/Combat/Main/InitializeCombatPairLayout.cpp:
+    complete
+    .text start:0x0205cc60 end:0x0205cd38
+
+src/Combat/Main/CompletedResourceLoads.cpp:
+    complete
+    .text start:0x02021108 end:0x020213a4
+
+src/Combat/Main/CancelResourceTasks.cpp:
+    complete
+    .text start:0x02022bc0 end:0x02022d88
+
+src/Combat/Main/InitializeCombatReceiver.cpp:
+    complete
+    .text start:0x02020564 end:0x02020730
+
+src/Combat/Main/UpdateCombatReceiverResources.cpp:
+    complete
+    .text start:0x0202344c end:0x020235d8
+
+src/Combat/Main/UpdateActionDisplay.cpp:
+    complete
+    .text start:0x02024e88 end:0x0202556c
+
+src/Combat/Main/RenderPartyActionEntries.cpp:
+    complete
+    .text start:0x02023d94 end:0x02024010
+
+src/System/GetDisplayModeCode0209378c.cpp:
+    complete
+    .text start:0x0209379c end:0x02093800
+
+src/System/CopyTextAndUppercaseIfFlagged0206819c.cpp:
+    complete
+    .text start:0x020681ac end:0x02068210
+
+src/Combat/Main/UpdateCombatTextFrame.cpp:
+    complete
+    .text start:0x0202428c end:0x020243c8
+
+src/System/LoadFieldTableFiles.cpp:
+    complete
+    .text start:0x02042814 end:0x02042954
+
+src/System/GetOBJAssignedVRAMSize.cpp:
+    complete
+    .text start:0x02093800 end:0x020938dc
+
+src/Combat/Main/RemoveKeyedListValue.cpp:
+    complete
+    .text start:0x0207c8a4 end:0x0207c994
+
+src/Combat/Main/RefreshCombatantResourceFlags.cpp:
+    complete
+    .text start:0x02026bec end:0x02026ecc
+
+src/Combat/Main/AdvanceYawTowardTarget.cpp:
+    complete
+    .text start:0x02041388 end:0x02041480
+
+src/Combat/Main/FilterManagerSelectionByFlags.cpp:
+    complete
+    .text start:0x0209e5c4 end:0x0209e6bc
+
+src/Combat/Main/FilterManagerSelectionByByteFlags.cpp:
+    complete
+    .text start:0x0209ee44 end:0x0209ef3c
+
+src/Combat/Main/FilterManagerSelectionByValue.cpp:
+    complete
+    .text start:0x0209f164 end:0x0209f25c
+
+src/Combat/Main/FilterManagerSelectionByState.cpp:
+    complete
+    .text start:0x0209f784 end:0x0209f874
+
+src/Combat/Main/UploadCharacterResource.cpp:
+    complete
+    .text start:0x020b05a4 end:0x020b07d0
+
+src/Combat/Main/BuildScriptResourceEntry.cpp:
+    complete
+    .text start:0x020824a0 end:0x0208275c
+
+src/Filesystem/IdentifyBackupDeviceCore.cpp:
+    complete
+    .text start:0x020d0088 end:0x020d040c
+
+src/Combat/Main/func_0203109c.cpp:
+    complete
+    .text start:0x020310ac end:0x02031128
+
+src/Combat/Main/func_020323c4.cpp:
+    complete
+    .text start:0x020323d4 end:0x02032434
+
+src/Combat/Main/func_0203ca24.cpp:
+    complete
+    .text start:0x0203ca34 end:0x0203cbe8
+
+src/Combat/Main/func_02044d0c.cpp:
+    complete
+    .text start:0x02044d1c end:0x02044f4c
+
+src/Combat/Main/Z31SetRandomizedShortPvP19FieldStruct02048934P6Random_02048934.cpp:
+    complete
+    .text start:0x02048944 end:0x020489a4
+
+src/Combat/Main/func_0204b174.cpp:
+    complete
+    .text start:0x0204b184 end:0x0204b2f0
+
+src/Combat/Main/_Z36InvokeHandlerAfterCacheFlush0204fbf8P11Obj0204fbf8.cpp:
+    complete
+    .text start:0x0204fc08 end:0x0204fc50
+
+src/Combat/Main/func_02056c3c.cpp:
+    complete
+    .text start:0x02056c4c end:0x02056d20
+
+src/Combat/Main/func_020657c8.cpp:
+    complete
+    .text start:0x020657d8 end:0x020658bc
+
+src/Combat/Main/func_0206ac94.cpp:
+    complete
+    .text start:0x0206aca4 end:0x0206ad84
+
+src/Combat/Main/func_0206b528.cpp:
+    complete
+    .text start:0x0206b538 end:0x0206b62c
+
+src/Combat/Main/func_0206c010.cpp:
+    complete
+    .text start:0x0206c020 end:0x0206c108
+
+src/Combat/Main/func_0206c0f8.cpp:
+    complete
+    .text start:0x0206c108 end:0x0206c2d0
+
+src/Combat/Main/func_0206e558.cpp:
+    complete
+    .text start:0x0206e568 end:0x0206e71c
+
+src/Combat/Main/func_02075910.cpp:
+    complete
+    .text start:0x02075920 end:0x02075adc
+
+src/Combat/Main/func_02075acc.cpp:
+    complete
+    .text start:0x02075adc end:0x02075cb0
+
+src/Combat/Main/func_02077a34.cpp:
+    complete
+    .text start:0x02077a44 end:0x02077bf0
+
+src/Combat/Main/func_02077e80.cpp:
+    complete
+    .text start:0x02077e90 end:0x02078060
+
+src/Combat/Main/func_02078050.cpp:
+    complete
+    .text start:0x02078060 end:0x020781f8
+
+src/Combat/Main/func_02078398.cpp:
+    complete
+    .text start:0x020783a8 end:0x02078494
+
+src/Combat/Main/func_02078754.cpp:
+    complete
+    .text start:0x02078764 end:0x020788a4
+
+src/Combat/Main/func_02078e60.cpp:
+    complete
+    .text start:0x02078e70 end:0x02079050
+
+src/Combat/Main/func_0207dba8.cpp:
+    complete
+    .text start:0x0207dbb8 end:0x0207dd00
+
+src/Combat/Main/func_02083738.cpp:
+    complete
+    .text start:0x02083748 end:0x02083844
+
+src/Combat/Main/_Z26WriteTexImageParam0208b548iiiiiiij.cpp:
+    complete
+    .text start:0x0208b558 end:0x0208b598
+
+src/Combat/Main/func_020938f0.cpp:
+    complete
+    .text start:0x02093900 end:0x02093990
+
+src/Combat/Main/func_02095d30.cpp:
+    complete
+    .text start:0x02095d40 end:0x02095ea0
+
+src/Combat/Main/func_0209e6ac.cpp:
+    complete
+    .text start:0x0209e6bc end:0x0209e7b4
+
+src/Combat/Main/func_020a0e4c.cpp:
+    complete
+    .text start:0x020a0e5c end:0x020a1044
+
+src/Combat/Main/func_020ab5d4.cpp:
+    complete
+    .text start:0x020ab5e4 end:0x020ab7b8
+
+src/Combat/Main/func_020b07c0.cpp:
+    complete
+    .text start:0x020b07d0 end:0x020b08c8
+
+src/Combat/Main/func_020cdae4.cpp:
+    complete
+    .text start:0x020cdaf4 end:0x020cdbf4
+
+src/Combat/Main/func_020dd3cc.cpp:
+    complete
+    .text start:0x020dd3dc end:0x020dd4d4
+
+src/Combat/Main/func_020e0b4c.cpp:
+    complete
+    .text start:0x020e0b5c end:0x020e0d0c
+
+src/Combat/Main/func_020e52a0.cpp:
+    complete
+    .text start:0x020e52b0 end:0x020e5344
+
+src/Combat/Main/_Z30FillEntryVariantFields0207f4a8P15Variant02030b0c.cpp:
+    complete
+    .text start:0x0207f4b8 end:0x0207f520
+
+src/Combat/Main/func_02033ce8.cpp:
+    complete
+    .text start:0x02033cf8 end:0x02033de4
+
+src/Combat/Main/func_0205df38.cpp:
+    complete
+    .text start:0x0205df48 end:0x0205e01c
+
+src/Combat/Main/func_02089b90.cpp:
+    complete
+    .text start:0x02089ba0 end:0x02089dc4
+
+src/Combat/Main/func_020941f8.cpp:
+    complete
+    .text start:0x02094208 end:0x020943ec
+
+src/Combat/Main/func_020a7d74.cpp:
+    complete
+    .text start:0x020a7d84 end:0x020a7ec8
+
+src/Combat/Main/func_020d9b34.cpp:
+    complete
+    .text start:0x020d9b44 end:0x020d9d70
+
+src/Combat/Main/func_020dfec0.cpp:
+    complete
+    .text start:0x020dfed0 end:0x020dffc8
+
+src/Combat/Main/func_02031118.cpp:
+    complete
+    .text start:0x02031128 end:0x02031198
+
+src/Combat/Main/func_02056b48.cpp:
+    complete
+    .text start:0x02056b58 end:0x02056c4c
+
+src/Combat/Main/func_0209e4bc.cpp:
+    complete
+    .text start:0x0209e4cc end:0x0209e5c4
+
+src/Combat/Main/Z34SetFieldIfMatchOrFlag02053f7cP11Obj02053f7csi_02053f7c.cpp:
+    complete
+    .text start:0x02053f8c end:0x02053ff4
+
+src/Combat/Main/_Z25RunBufferedStream0205e104iiP12StreamHeaderi.cpp:
+    complete
+    .text start:0x0205e114 end:0x0205e17c
+
+src/Combat/Main/_Z28SetAngleAndTrigTable0202e9a4P17AngleTrig0202e9a4i.cpp:
+    complete
+    .text start:0x0202e9b4 end:0x0202e9fc
+
+src/Combat/Main/func_0202c9ac.cpp:
+    complete
+    .text start:0x0202c9bc end:0x0202cb60
+
+src/Combat/Main/func_0202ef14.cpp:
+    complete
+    .text start:0x0202ef24 end:0x0202f0d4
+
+src/Combat/Main/func_02034104.cpp:
+    complete
+    .text start:0x02034114 end:0x020341f0
+
+src/Combat/Main/func_02046b8c.cpp:
+    complete
+    .text start:0x02046b9c end:0x02046c88
+
+src/Combat/Main/func_02048cf0.cpp:
+    complete
+    .text start:0x02048d00 end:0x02048e3c
+
+src/Combat/Main/func_0204a9c4.cpp:
+    complete
+    .text start:0x0204a9d4 end:0x0204aa38
+
+src/Combat/Main/func_0204aa64.cpp:
+    complete
+    .text start:0x0204aa74 end:0x0204ab5c
+
+src/Combat/Main/func_02054028.cpp:
+    complete
+    .text start:0x02054038 end:0x0205417c
+
+src/Combat/Main/func_0205e22c.cpp:
+    complete
+    .text start:0x0205e23c end:0x0205e334
+
+src/Combat/Main/func_02068f40.cpp:
+    complete
+    .text start:0x02068f50 end:0x02069130
+
+src/Combat/Main/func_020891cc.cpp:
+    complete
+    .text start:0x020891dc end:0x0208937c
+
+src/Combat/Main/func_02094b9c.cpp:
+    complete
+    .text start:0x02094bac end:0x02094cec
+
+src/Combat/Main/func_020a0c0c.cpp:
+    complete
+    .text start:0x020a0c1c end:0x020a0cd4
+
+src/Combat/Main/func_020a299c.cpp:
+    complete
+    .text start:0x020a29ac end:0x020a2b48
+
+src/Combat/Main/func_020bdb0c.cpp:
+    complete
+    .text start:0x020bdb1c end:0x020bdbf0
+
+src/Combat/Main/func_020d2220.cpp:
+    complete
+    .text start:0x020d2230 end:0x020d2304
+
+src/Combat/Main/func_020dafd4.cpp:
+    complete
+    .text start:0x020dafe4 end:0x020db0d4
+
+src/Combat/Main/func_020e553c.cpp:
+    complete
+    .text start:0x020e554c end:0x020e55d0
+
+src/Combat/Main/func_02013158.cpp:
+    complete
+    .text start:0x02013168 end:0x02013390
+
+src/Combat/Main/_Z16WaitForInterruptbj.cpp:
+    complete
+    .text start:0x020c6964 end:0x020c69d8
+
+src/Combat/Main/func_02011744.cpp:
+    complete
+    .text start:0x02011754 end:0x020117dc
+
+src/Combat/Main/func_0202eab8.cpp:
+    complete
+    .text start:0x0202eac8 end:0x0202ec6c
+
+src/Combat/Main/func_020bcf3c.cpp:
+    complete
+    .text start:0x020bcf4c end:0x020bd03c
+
+src/Combat/Main/func_020c0430.cpp:
+    complete
+    .text start:0x020c0440 end:0x020c04f8
+
+src/Combat/Main/func_020c7f44.cpp:
+    complete
+    .text start:0x020c7f54 end:0x020c7ff0
+
+src/Combat/Main/func_020c94e4.cpp:
+    complete
+    .text start:0x020c94f4 end:0x020c966c
+
+src/Combat/Main/func_020c9b10.cpp:
+    complete
+    .text start:0x020c9b20 end:0x020c9bf0
+
+src/Combat/Main/func_020ca0a8.cpp:
+    complete
+    .text start:0x020ca0b8 end:0x020ca1b0
+
+src/Combat/Main/func_020ce308.cpp:
+    complete
+    .text start:0x020ce318 end:0x020ce3ac
+
+src/Combat/Main/func_020ceba8.cpp:
+    complete
+    .text start:0x020cebb8 end:0x020cedd0
+
+src/Combat/Main/func_020d05ec.cpp:
+    complete
+    .text start:0x020d05fc end:0x020d06e4
+
+src/Combat/Main/func_020d24c4.cpp:
+    complete
+    .text start:0x020d24d4 end:0x020d2690
+
+src/Combat/Main/func_020d2c00.cpp:
+    complete
+    .text start:0x020d2c10 end:0x020d2ca8
+
+src/Combat/Main/func_020d3df8.cpp:
+    complete
+    .text start:0x020d3e08 end:0x020d3fec
+
+src/Combat/Main/func_020d651c.cpp:
+    complete
+    .text start:0x020d652c end:0x020d6620
+
+src/Combat/Main/Mat4x4_WriteProjectionUnknown.cpp:
+    complete
+    .text start:0x020c29fc end:0x020c2c04
+
+src/Combat/Main/OnDMAOrTimerCompletion.cpp:
+    complete
+    .text start:0x020c69dc end:0x020c6a64
+
+src/Combat/Main/Vector3fix_CrossProduct.cpp:
+    complete
+    .text start:0x020c2e44 end:0x020c2ec8
+
+src/Combat/Main/ManagerSelectionWordFlags.cpp:
+    complete
+    .text start:0x0209ea04 end:0x0209ebf4
+
+src/Combat/Main/DispatchObjectsByDistance.cpp:
+    complete
+    .text start:0x0205766c end:0x020577dc
+
+src/Combat/Main/SetCombatAnimationState.cpp:
+    complete
+    .text start:0x02033bb0 end:0x02033cf8
+
+src/Combat/Main/FilterManagerSelectionByRecordValues.cpp:
+    complete
+    .text start:0x0209f4a8 end:0x0209f644
+
+src/Combat/Main/020b8cf4.cpp:
+    complete
+    .text start:0x020b8d04 end:0x020b8e70
+
+src/Combat/Main/QueueTextMessage.cpp:
+    complete
+    .text start:0x020d7e20 end:0x020d806c
+
+src/Combat/Main/ConfigureCombatSubDisplayElements.cpp:
+    complete
+    .text start:0x020e0f84 end:0x020e1124
+
+src/Combat/Main/020c79a0.cpp:
+    complete
+    .text start:0x020c79b0 end:0x020c79cc
+
+src/Combat/Main/EncodeUtf16Text.cpp:
+    complete
+    .text start:0x020328cc end:0x02032e34
+
+src/Combat/Main/UnblockContexts.cpp:
+    complete
+    .text start:0x020c78f8 end:0x020c7960
+
+src/Combat/Main/func_020c7884.cpp:
+    complete
+    .text start:0x020c7894 end:0x020c78a8
+
+src/Combat/Main/func_0203e0a0.cpp:
+    complete
+    .text start:0x0203e0b0 end:0x0203e2d4
+
+src/Combat/Main/func_0206db48.cpp:
+    complete
+    .text start:0x0206db58 end:0x0206dd78

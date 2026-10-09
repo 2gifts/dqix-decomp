@@ -172,3 +172,75 @@ src/Menu/Overlay_8/EntryInitialization.cpp:
 src/Menu/Overlay_8/ListSpriteRefresh.cpp:
     complete
     .text start:0x02188730 end:0x02188870
+
+src/Combat/Overlay_8/func_ov008_021842a0.cpp:
+    complete
+    .text start:0x021842a0 end:0x021843f8
+
+src/Combat/Overlay_8/func_ov008_021843f8.cpp:
+    complete
+    .text start:0x021843f8 end:0x02184598
+
+src/Combat/Overlay_8/func_ov008_021845ac.cpp:
+    complete
+    .text start:0x021845ac end:0x02184754
+
+src/Combat/Overlay_8/func_ov008_02184754.cpp:
+    complete
+    .text start:0x02184754 end:0x02184878
+
+src/Combat/Overlay_8/func_ov008_02185a70.cpp:
+    complete
+    .text start:0x02185a70 end:0x02185dc0
+
+src/Combat/Overlay_8/func_ov008_02185dc0.cpp:
+    complete
+    .text start:0x02185dc0 end:0x02186280
+
+src/Combat/Overlay_8/func_ov008_02186e4c.cpp:
+    complete
+    .text start:0x02186e4c end:0x021870e4
+
+src/Combat/Overlay_8/func_ov008_02187278.cpp:
+    complete
+    .text start:0x02187278 end:0x021873ac
+
+src/Combat/Overlay_8/func_ov008_02187708.cpp:
+    complete
+    .text start:0x02187708 end:0x02187a70
+
+src/Combat/Overlay_8/func_ov008_02187b20.cpp:
+    complete
+    .text start:0x02187b20 end:0x02187f6c
+
+src/Combat/Overlay_8/func_ov008_02187f6c.cpp:
+    complete
+    .text start:0x02187f6c end:0x02188408
+
+src/Combat/Overlay_8/func_ov008_02188408.cpp:
+    complete
+    .text start:0x02188408 end:0x02188730
+
+src/Combat/Overlay_8/func_ov008_02188934.cpp:
+    complete
+    .text start:0x02188934 end:0x021889f8
+
+src/Combat/Overlay_8/func_ov008_02188d74.cpp:
+    complete
+    .text start:0x02188d74 end:0x02188ef0
+
+src/Combat/Overlay_8/func_ov008_02188f5c.cpp:
+    complete
+    .text start:0x02188f5c end:0x02189228
+
+src/Combat/Overlay_8/func_ov008_021895a8.cpp:
+    complete
+    .text start:0x021895a8 end:0x02189c70
+
+src/Combat/Overlay_8/func_ov008_02186964.cpp:
+    complete
+    .text start:0x02186964 end:0x02186a30
+
+src/Combat/Overlay_8/func_ov008_0218aee4.cpp:
+    complete
+    .text start:0x0218aee4 end:0x0218af80

@@ -984,6 +984,7 @@ data_ov023_021fe708 kind:data(any) addr:0x021fe708 ambiguous
 data_ov023_021fe80c kind:data(any) addr:0x021fe80c ambiguous
 data_ov023_021fe910 kind:data(any) addr:0x021fe910 ambiguous
 data_ov023_021fea0c kind:data(any) addr:0x021fea0c
+data_ov023_021fea0c_dup kind:data(any) addr:0x021fea0c
 data_ov023_021fea34 kind:data(any) addr:0x021fea34 ambiguous
 data_ov023_021feb30 kind:data(any) addr:0x021feb30
 data_ov023_021feb40 kind:data(any) addr:0x021feb40 ambiguous
