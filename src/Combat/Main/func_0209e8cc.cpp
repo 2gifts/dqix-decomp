@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Combat/Main/CandidateFilter.h"
 #include "std_library_functions.h"
 
 struct Candidate0209e8cc {
@@ -17,8 +18,6 @@ struct CandidateCtx0209e8cc {
     CandidateList0209e8cc list;
     CandidateList0209e8cc scratch;
 };
-
-extern "C" int func_0209e1cc(CandidateCtx0209e8cc* ctx, Candidate0209e8cc* entry, int mode, int param);
 
 // USA: func_0209e8cc
 extern "C" ARM void func_0209e8cc(CandidateCtx0209e8cc* ctx, int refine, int param) {

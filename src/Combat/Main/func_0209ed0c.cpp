@@ -28,6 +28,7 @@
 // The remaining idea is to remove a survivor without changing code size -- the 0x40 memcpy
 // size pinned in fp is the best candidate and struct-copy was the wrong way to attack it.
 #include <globaldefs.h>
+#include "Combat/Main/CandidateFilter.h"
 #include "std_library_functions.h"
 
 struct Record_0209ed0c {
@@ -46,8 +47,6 @@ struct RecordOwner_0209ed0c {
     RecordList_0209ed0c active;
     RecordList_0209ed0c pending;
 };
-
-extern "C" int func_0209e1cc(RecordOwner_0209ed0c* owner, Record_0209ed0c* rec, int mode, int arg);
 
 // USA: func_0209ed0c
 extern "C" ARM void func_0209ed0c(RecordOwner_0209ed0c* owner, int rebuild, int arg)
