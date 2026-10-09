@@ -12121,3 +12121,39 @@ src/Combat/Main/func_0209f634.cpp:
 src/Combat/Main/func_020dc7e8.cpp:
     complete
     .text start:0x020de1f0 end:0x020de328
+
+src/Combat/Main/func_02009d1c.cpp:
+    complete
+    .text start:0x02009c38 end:0x02009d18
+
+src/Combat/Main/func_0201ecd4.cpp:
+    complete
+    .text start:0x0201ea60 end:0x0201eb4c
+
+src/Combat/Main/func_0202db64.cpp:
+    complete
+    .text start:0x0202d6d4 end:0x0202d7b0
+
+src/Combat/Main/func_02049c88.cpp:
+    complete
+    .text start:0x0204aaa8 end:0x0204ab8c
+
+src/Combat/Main/func_0204fa0c.cpp:
+    complete
+    .text start:0x02050ef8 end:0x02050fd4
+
+src/Combat/Main/func_02099e18.cpp:
+    complete
+    .text start:0x0209bb4c end:0x0209bc28
+
+src/Combat/Main/func_020b26e8.cpp:
+    complete
+    .text start:0x020b41b4 end:0x020b4294
+
+src/Combat/Main/func_020da074.cpp:
+    complete
+    .text start:0x020dba7c end:0x020dbb58
+
+src/Combat/Main/func_020e2018.cpp:
+    complete
+    .text start:0x020e3bb8 end:0x020e3cb0
