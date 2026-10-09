@@ -12028,3 +12028,36 @@ src/Combat/Main/func_0202ab34.cpp:
 src/Combat/Main/func_0206dfe8.cpp:
     complete
     .text start:0x0206f13c end:0x0206f1d4
+
+src/Combat/Main/func_0200eff0.cpp:
+    complete
+    .text start:0x0200eeb4 end:0x0200f064
+
+src/Combat/Main/func_020332ac.cpp:
+    complete
+    .text start:0x02032de4 end:0x02032fc4
+
+src/Combat/Main/func_0203db44.cpp:
+    complete
+    .text start:0x0203e040 end:0x0203e1e0
+
+src/Combat/Main/func_0205ac40.cpp:
+    complete
+    .text start:0x0205bfdc end:0x0205c178
+
+src/Combat/Main/func_02086404.cpp:
+    complete
+    .text start:0x02086d24 end:0x02086eb8
+
+src/Combat/Main/func_020ae074.cpp:
+    complete
+    .text start:0x020afb40 end:0x020afcd8
+
+src/Combat/Main/func_020dc548.cpp:
+    complete
+    .text start:0x020ddf50 end:0x020de114
+
+src/Combat/Main/InitializeGamecardBusOwnership.cpp:
+    complete
+    .text start:0x020c8848 end:0x020c8914
+    .bss start:0x02110f7c end:0x02110f80

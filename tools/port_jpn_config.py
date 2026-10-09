@@ -8,8 +8,8 @@ import re
 import struct
 import sys
 
-from region_port import (DELINK_START, block_name, delink_blocks, hex_address, is_live, live_ranges, read_raw,
-                         relocations, sync_delinks)
+from region_port import (DELINK_START, block_name, branch_target, delink_blocks, hex_address, is_live, live_ranges,
+                         read_raw, relocations, sync_delinks, thumb_branch_target)
 
 
 parser = argparse.ArgumentParser(description="Ports matched files from config/usa to config/jpn")
@@ -40,6 +40,12 @@ class Symbol:
         size = SIZE.search(attrs or "")
         self.size = int(size[1], 16) if size else 0
         self.thumb = (attrs or "").startswith("thumb")
+        self.place = (address, kind == "function" and self.thumb)
+
+
+def parse_symbol(line, index=-1):
+    match = SYMBOL.match(line)
+    return Symbol(match[1], match[2], match[3], int(match[4], 16), index, line) if match else None
 
 
 class Module:
@@ -58,10 +64,11 @@ class Module:
         self.lines = read_raw(self.dir / "symbols.txt").splitlines(keepends=True)
         self.symbols = []
         for index, line in enumerate(self.lines):
-            match = SYMBOL.match(line)
-            if match:
-                self.symbols.append(Symbol(match[1], match[2], match[3], int(match[4], 16), index, line))
+            symbol = parse_symbol(line, index)
+            if symbol:
+                self.symbols.append(symbol)
         self.symbols.sort(key=lambda s: s.address)
+        self.by_index = {s.index: s for s in self.symbols}
         self.addresses = [s.address for s in self.symbols]
         self.at = defaultdict(list)
         for symbol in self.symbols:
@@ -222,12 +229,27 @@ class Plan:
         self.targets = set(defines.values())
         self.words = words
         self.names = Counter(s.name for m in jpn_modules.values() for s in m.symbols)
+        self.places = defaultdict(set)
+        for module in jpn_modules.values():
+            for symbol in module.symbols:
+                self.places[symbol.name].add(symbol.place)
         self.renames = {}
         self.additions = defaultdict(list)
         self.labels = {}
 
     def current(self, module, symbol):
         return self.renames.get((module, symbol.index), symbol.name)
+
+    def located(self, name, changes, additions):
+        found = set(self.places.get(name, ()))
+        for (module, index), new in changes.items():
+            symbol = self.modules[module].by_index[index]
+            if self.current(module, symbol) == name:
+                found.discard(symbol.place)
+            if new == name:
+                found.add(symbol.place)
+        found.update(parse_symbol(line).place for _, line, added in additions if added == name)
+        return found
 
     def resolve(self, usa_name, module, symbol, changes):
         have = changes.get((module, symbol.index)) or self.current(module, symbol)
@@ -253,9 +275,13 @@ class Plan:
             self.names[old] -= 1
             self.names[name] += 1
             self.renames[key] = name
+            place = self.modules[module].by_index[index].place
+            self.places[old].discard(place)
+            self.places[name].add(place)
         for module, line, name in additions:
             self.additions[module].append(line)
             self.names[name] += 1
+            self.places[name].add(parse_symbol(line).place)
 
 
 class ObjectFile:
@@ -276,13 +302,18 @@ class ObjectFile:
         self.text = data[sections[texts[0]][4]:sections[texts[0]][4] + sections[texts[0]][5]] if len(texts) == 1 else None
         self.align = max(sections[texts[0]][8], 1) if len(texts) == 1 else 1
         self.other = [names[i] for i, s in enumerate(sections) if s[2] & 2 and names[i] != ".text" and s[5]]
-        self.relocated = set()
+        self.relocations = []
         self.defined, self.undefined = set(), set()
         for i, section in enumerate(sections):
             if section[1] in (4, 9) and section[7] in texts:
                 step = 12 if section[1] == 4 else 8
-                self.relocated.update(struct.unpack_from("<I", data, o)[0]
-                                      for o in range(section[4], section[4] + section[5], step))
+                for o in range(section[4], section[4] + section[5], step):
+                    offset, info = struct.unpack_from("<II", data, o)
+                    addend = struct.unpack_from("<i", data, o + 8)[0] if step == 12 else None
+                    entry = sections[section[6]][4] + (info >> 8) * 16
+                    name_offset, value, _, _, _, index = struct.unpack_from("<IIIBBH", data, entry)
+                    name = None if index in texts else string(sections[section[6]][6], name_offset)
+                    self.relocations.append((offset, info & 0xff, name, value if index in texts else 0, addend))
             if section[1] != 2:
                 continue
             for offset in range(section[4] + 16, section[4] + section[5], 16):
@@ -302,7 +333,7 @@ class ObjectFile:
             return False
         built = bytearray(self.text)
         rom = bytearray(module.data[start - module.base:end - module.base])
-        for offset in self.relocated:
+        for offset, *_ in self.relocations:
             built[offset:offset + 4] = rom[offset:offset + 4] = b"\0\0\0\0"
         return built == rom
 
@@ -319,6 +350,18 @@ def jpn_object(source: str):
 
 
 ADDRESS = re.compile(r"addr:0x[0-9a-f]+")
+R_ARM_PC24, R_ARM_ABS32, R_ARM_THM_CALL = 1, 2, 10
+
+
+def lands(module: Module, kind, source, target, thumb):
+    word = module.word(source)
+    if kind == R_ARM_ABS32:
+        return word == target | thumb
+    if kind == R_ARM_PC24:
+        return branch_target(word, source) == (target + 8) & ~1
+    if kind == R_ARM_THM_CALL:
+        return thumb_branch_target(word, source) == (target + 4) & ~1
+    return False
 
 
 def accept_for(plan: Plan, usa_modules, jpn_modules, usa: Module, jpn: Module, mapper: AnchorMap):
@@ -350,13 +393,6 @@ def accept_for(plan: Plan, usa_modules, jpn_modules, usa: Module, jpn: Module, m
                 return f"{symbol.name} is taken in JPN"
             additions.append((jpn_module.name, ADDRESS.sub(f"addr:{hex_address(jpn_address)}", symbol.line, 1), symbol.name))
         return None
-
-    def present(name, changes, additions):
-        count = plan.names[name] + sum(1 for _, _, n in additions if n == name)
-        for (module, index), new in changes.items():
-            old = plan.renames.get((module, index)) or plan.modules[module].lines[index].split(" ", 1)[0]
-            count += (new == name) - (old == name)
-        return count > 0
 
     def accept(block, ranges, linear=None):
         layout = linear or mapper
@@ -416,9 +452,15 @@ def accept_for(plan: Plan, usa_modules, jpn_modules, usa: Module, jpn: Module, m
                                changes, additions, False)
                 if refused:
                     return refused
-        missing = sorted(n for n in built.defined | built.undefined if not present(n, changes, additions))
+        missing = sorted(n for n in built.defined | built.undefined if not plan.located(n, changes, additions))
         if missing:
             return f"needs {missing[0]}, which JPN lacks"
+        start = ranges[0][0]
+        for offset, kind, name, value, addend in built.relocations:
+            places = {(start + value, False)} if name is None else plan.located(name, changes, additions)
+            if addend is None or not places or not all(lands(jpn, kind, start + offset, address + addend, thumb)
+                                                       for address, thumb in places):
+                return f"relocation at {hex_address(start + offset)} to {name or 'itself'} lands elsewhere in JPN"
         plan.commit(changes, additions)
         return None
     return accept

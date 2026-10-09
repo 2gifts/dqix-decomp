@@ -1111,14 +1111,14 @@ _Z18ClearFourHalfwordsP14Struct02032fb8 kind:function(arm,size=0x18) addr:0x0203
 _Z20SetFields0xbaAnd0xbcP17ShortPair0xba0xbcss kind:function(arm,size=0xc) addr:0x02032b08
 func_02032fdc kind:function(arm,size=0x2d0) addr:0x02032b14
 func_020332ac kind:function(arm,size=0x1e0) addr:0x02032de4
-func_02032fc4 kind:function(arm,size=0x284) addr:0x02032fc4
+func_0203348c kind:function(arm,size=0x284) addr:0x02032fc4
 _Z30AdvanceFacingAngleTowardTargetP11Obj02033710 kind:function(arm,size=0x124) addr:0x02033248
 _Z21SetVecYByMode02033834P11Obj02033834i kind:function(arm,size=0x40) addr:0x0203336c
 _Z24SetVecYFromValue02033874P11Obj02033874i kind:function(arm,size=0x3c) addr:0x020333ac
 _Z26ComputeAndDispatch020338b0Phi kind:function(arm,size=0x24) addr:0x020333e8
 _Z21AimAndSetVecY020338d4P14Struct020338d4P4Vec3 kind:function(arm,size=0x4c) addr:0x0203340c
 func_02033920 kind:function(arm,size=0xa8) addr:0x02033458
-func_02033500 kind:function(arm,size=0x190) addr:0x02033500
+func_020339c8 kind:function(arm,size=0x190) addr:0x02033500
 _Z21SetByteSavingPreviousP11Foo02033b58h kind:function(arm,size=0x10) addr:0x02033690
 _Z24SetByteIfChanged02033b68P11Obj02033b68i kind:function(arm,size=0x20) addr:0x020336a0
 _Z20SetByte0xbeShiftPrevP13Bytes02033b88i kind:function(arm,size=0x18) addr:0x020336c0
@@ -1482,7 +1482,7 @@ func_0203d560 kind:function(arm,size=0xa98) addr:0x0203d560
 _Z15ClearEightWordsP14Struct_203dafc kind:function(arm,size=0x28) addr:0x0203dff8
 _Z22StoreValueViaField0x14Phi kind:function(arm,size=0x10) addr:0x0203e020
 _Z20StoreVec3AtField0x50Phiii kind:function(arm,size=0x10) addr:0x0203e030
-func_0203e040 kind:function(arm,size=0x1a0) addr:0x0203e040
+func_0203db44 kind:function(arm,size=0x1a0) addr:0x0203e040
 _Z24GetEntryUnlessFlag0x8000P17EntryList_203dce4i kind:function(arm,size=0x2c) addr:0x0203e1e0
 _Z21SetSlotIfIndexBelow32P17SlotArray0203dd10ji kind:function(arm,size=0x10) addr:0x0203e20c
 func_0203e21c kind:function(arm,size=0x74) addr:0x0203e21c
@@ -2188,7 +2188,7 @@ _Z19SetBitfield0205af84iPvi kind:function(arm,size=0x2c) addr:0x0205c320
 _Z19SetBitfield0205afb0iPvi kind:function(arm,size=0x2c) addr:0x0205c34c
 _Z19SetBitfield0205afdciPvi kind:function(arm,size=0x2c) addr:0x0205c378
 func_0205c3a4 kind:function(arm,size=0xd0) addr:0x0205c3a4
-func_0205c474 kind:function(arm,size=0x9c) addr:0x0205c474
+func_0205b0d8 kind:function(arm,size=0x9c) addr:0x0205c474
 _Z14GetBits10And11iP9B174Outer kind:function(arm,size=0x1c) addr:0x0205c510
 _Z13GetBits12To15iP9B190Outer kind:function(arm,size=0x1c) addr:0x0205c52c
 _Z31FindRectContainingPoint0205b1acP12Rect0205b1acjii kind:function(arm,size=0x60) addr:0x0205c548
@@ -3000,7 +3000,7 @@ _Z28FillVariantByteTable02082410P15Variant02030b0c kind:function(arm,size=0x6c) 
 _Z22Clear0x54Bytes0208247cPv kind:function(arm,size=0x14) addr:0x02082db8
 func_02082dcc kind:function(arm,size=0x2bc) addr:0x02082dcc
 func_02083088 kind:function(arm,size=0x78) addr:0x02083088
-func_02083100 kind:function(arm,size=0x64) addr:0x02083100
+_Z26InitFlagsAndTimers020827c4P11Obj020827c4 kind:function(arm,size=0x64) addr:0x02083100
 func_02083164 kind:function(arm,size=0x500) addr:0x02083164
 _Z26ClearPackedTriples02082cdcP11Obj02082cdc kind:function(arm,size=0x5c) addr:0x02083664
 _Z18CopyStruct02082d38P14Struct02082d38S0_ kind:function(arm,size=0x34) addr:0x020836c0
@@ -4192,8 +4192,8 @@ func_020af0e8 kind:function(arm,size=0x490) addr:0x020af0e8
 func_020af578 kind:function(arm,size=0x2f8) addr:0x020af578
 func_020af870 kind:function(arm,size=0x204) addr:0x020af870
 func_020adfa8 kind:function(arm,size=0xcc) addr:0x020afa74
-func_020afb40 kind:function(arm,size=0x198) addr:0x020afb40
-func_020afcd8 kind:function(arm,size=0x174) addr:0x020afcd8
+func_020ae074 kind:function(arm,size=0x198) addr:0x020afb40
+_Z41SetupObjFieldsAndResetRenderFlags020ae20cPvP14Fields020407b4Pii kind:function(arm,size=0x174) addr:0x020afcd8
 _Z18SetByteFlagAt0x19cPh kind:function(arm,size=0xc) addr:0x020afe4c
 _Z20ClearByteFlagAt0x19cPh kind:function(arm,size=0xc) addr:0x020afe58
 _Z28SubtractHeightOffset020ae398P14Entity020AE398 kind:function(arm,size=0x5c) addr:0x020afe64
@@ -4296,7 +4296,7 @@ func_020b0368 kind:function(arm,size=0x22c) addr:0x020b1e34
 func_020b0594 kind:function(arm,size=0x22c) addr:0x020b2060
 func_020b07c0 kind:function(arm,size=0xf8) addr:0x020b228c
 func_020b08b8 kind:function(arm,size=0x164) addr:0x020b2384
-func_020b24e8 kind:function(arm,size=0x364) addr:0x020b24e8
+func_020b0a1c kind:function(arm,size=0x364) addr:0x020b24e8
 func_020b0d80 kind:function(arm,size=0xc8) addr:0x020b284c
 _Z18InitHalfwordReaderP22HalfwordReader020b0e48Pv kind:function(arm,size=0x24) addr:0x020b2914
 _Z20FindValueInRangeListP19RangeHolder020b0e6cj kind:function(arm,size=0x48) addr:0x020b2938
@@ -5723,7 +5723,7 @@ func_020dddc0 kind:function(arm,size=0x1c) addr:0x020dddc0
 func_020ddddc kind:function(arm,size=0x54) addr:0x020ddddc
 func_020dde30 kind:function(arm,size=0xa8) addr:0x020dde30
 _Z32FilterSlotsWithFlag0x800020dc4d0PaS_ kind:function(arm,size=0x78) addr:0x020dded8
-func_020ddf50 kind:function(arm,size=0x1c4) addr:0x020ddf50
+func_020dc548 kind:function(arm,size=0x1c4) addr:0x020ddf50
 func_020de114 kind:function(arm,size=0xdc) addr:0x020de114
 func_020de1f0 kind:function(arm,size=0x138) addr:0x020de1f0
 func_020dc920 kind:function(arm,size=0x29c) addr:0x020de328
@@ -6623,7 +6623,7 @@ data_020ef85f kind:data(any) addr:0x020ef85f
 data_020ef978 kind:data(any) addr:0x020ef868
 data_020ef994 kind:data(any) addr:0x020ef884
 data_020ef9c4 kind:data(any) addr:0x020ef8b4
-data_020ef8c0 kind:data(any) addr:0x020ef8c0
+data_020ef9d0 kind:data(any) addr:0x020ef8c0
 data_020efa3c kind:data(any) addr:0x020ef92c
 data_020efa40 kind:data(any) addr:0x020ef930
 bcfgScriptOpcodes kind:data(any) addr:0x020ef938
@@ -7692,7 +7692,7 @@ data_02110f24 kind:bss addr:0x02110f24
 data_02110f4c kind:bss addr:0x02110f4c
 data_02110f50 kind:bss addr:0x02110f50
 data_02110f54 kind:bss addr:0x02110f54
-data_02110f7c kind:bss addr:0x02110f7c
+isInitialized$13 kind:bss addr:0x02110f7c local
 data_02110f80 kind:bss addr:0x02110f80
 data_02110f8c kind:bss addr:0x02110f8c
 data_02110fa4 kind:bss addr:0x02110fa4

@@ -77,8 +77,8 @@ THUMB_BX_LR = 0x4770
 THUMB_MOV_R0_R1 = 0x1c08
 
 from region_port import (DELINK_END, DELINK_START, RELOC, SYMBOL_ADDR, SYMBOL_SIZE, SameAddress,
-                         block_ranges, delink_blocks, hex_address, port_delink, read_raw, reloc_sources,
-                         symbol_lines, sync_delinks)
+                         block_ranges, branch_target, delink_blocks, hex_address, port_delink, read_raw,
+                         reloc_sources, symbol_lines, sync_delinks, thumb_branch_target)
 
 
 class MainAddressMap:
@@ -413,31 +413,6 @@ def module_binary(module_dir: Path) -> Path:
     if module_dir.name in ["itcm", "dtcm"]:
         return args.extract / "arm9" / f"{module_dir.name}.bin"
     return args.extract / "arm9" / "arm9.bin"
-
-
-def branch_target(instruction: int, source: int) -> int | None:
-    offset = instruction & 0xffffff
-    if offset & 0x800000:
-        offset -= 1 << 24
-    if instruction >> 25 == 0x7d: # blx
-        return source + 8 + offset * 4 + ((instruction >> 24) & 1) * 2
-    if instruction & 0x0e000000 == 0x0a000000: # b, bl
-        return source + 8 + offset * 4
-    return None
-
-
-def thumb_branch_target(instructions: int, source: int) -> int | None:
-    high, low = instructions & 0xffff, instructions >> 16
-    if high & 0xf800 != 0xf000:
-        return None
-    offset = ((high & 0x7ff) << 12) | ((low & 0x7ff) << 1)
-    if offset & 0x400000:
-        offset -= 1 << 23
-    if low & 0xf800 == 0xf800: # bl
-        return source + 4 + offset
-    if low & 0xf800 == 0xe800: # blx
-        return (source + 4 + offset) & ~3
-    return None
 
 
 def verify_relocs(relocs: Path) -> tuple[int, list[str]]:
