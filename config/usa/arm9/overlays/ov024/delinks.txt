@@ -1657,3 +1657,48 @@ src/Combat/Overlay_24/func_ov024_021f21b4.cpp:
 src/Combat/Overlay_24/func_ov024_021f304c.cpp:
     complete
     .text start:0x021f304c end:0x021f3168
+
+
+src/Combat/Overlay_24/func_ov024_021e4b14.cpp:
+    complete
+    .text start:0x021e4b14 end:0x021e4c04
+
+
+src/Combat/Overlay_24/func_ov024_021e6060.cpp:
+    complete
+    .text start:0x021e6060 end:0x021e6104
+
+
+src/Combat/Overlay_24/func_ov024_021eb344.cpp:
+    complete
+    .text start:0x021eb344 end:0x021eb3e0
+
+
+src/Combat/Overlay_24/func_ov024_021ee2fc.cpp:
+    complete
+    .text start:0x021ee2fc end:0x021ee33c
+
+
+src/Combat/Overlay_24/func_ov024_021f5478.cpp:
+    complete
+    .text start:0x021f5478 end:0x021f5558
+
+
+src/Combat/Overlay_24/func_ov024_021f5888.cpp:
+    complete
+    .text start:0x021f5888 end:0x021f58dc
+
+
+src/Combat/Overlay_24/func_ov024_021f58dc.cpp:
+    complete
+    .text start:0x021f58dc end:0x021f59bc
+
+
+src/Combat/Overlay_24/func_ov024_021f87dc.cpp:
+    complete
+    .text start:0x021f87dc end:0x021f8874
+
+
+src/Combat/Overlay_24/func_ov024_021fd858.cpp:
+    complete
+    .text start:0x021fd858 end:0x021fd954
