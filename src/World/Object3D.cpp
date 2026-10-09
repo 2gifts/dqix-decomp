@@ -37,7 +37,7 @@ extern "C"
 {
     void* _Z18GetField0x3b0ValueP9GameState(GameState*);
     // update world matrix rotation
-    void _Z27ClearGlobalFlagBits02016d8cPv(const Matrix3x3* rotation);
+    void _Z27ClearGlobalFlagBits02016d8cPv(void* rotation);
 
     const Matrix3x3* _Z16GetPtrField0x144Pv(void*);
 
