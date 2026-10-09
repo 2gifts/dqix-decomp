@@ -18251,3 +18251,7 @@ src/Combat/Main/QueueTextMessage.cpp:
 src/Combat/Main/ConfigureCombatSubDisplayElements.cpp:
     complete
     .text start:0x020e0f74 end:0x020e1114
+
+src/Combat/Main/020c79a0.cpp:
+    complete
+    .text start:0x020c79a0 end:0x020c79bc
