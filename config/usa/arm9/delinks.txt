@@ -18344,13 +18344,25 @@ src/Combat/Main/_Z26ResetSystemAndBoot020c98f0i.cpp:
     complete
     .text start:0x020c98f0 end:0x020c99ac
 
+src/Combat/Main/func_020d7754.cpp:
+    complete
+    .text start:0x020d7754 end:0x020d784c
+
 src/Combat/Main/QueueTextMessage.cpp:
     complete
     .text start:0x020d7e10 end:0x020d805c
 
+src/Combat/Main/func_020deb58.cpp:
+    complete
+    .text start:0x020deb58 end:0x020dec30
+
 src/Combat/Main/ConfigureCombatSubDisplayElements.cpp:
     complete
     .text start:0x020e0f74 end:0x020e1114
+
+src/Combat/Main/func_020e5604.cpp:
+    complete
+    .text start:0x020e5604 end:0x020e56fc
 
 src/Combat/Main/__sinit_020e5f0c.cpp:
     complete
@@ -18359,4 +18371,8 @@ src/Combat/Main/__sinit_020e5f0c.cpp:
 src/Combat/Main/__sinit_020e6368.cpp:
     complete
     .init start:0x020e6368 end:0x020e6420
+
+src/Combat/Main/__sinit_020e6420.cpp:
+    complete
+    .init start:0x020e6420 end:0x020e64fc
 
