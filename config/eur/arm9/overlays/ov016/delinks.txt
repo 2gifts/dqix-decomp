@@ -289,3 +289,15 @@ src/Combat/Overlay_16/func_ov016_0218c04c.cpp:
 src/Combat/Overlay_16/func_ov016_0218e17c.cpp:
     complete
     .text start:0x0218e17c end:0x0218e240
+
+src/Combat/Overlay_16/func_ov016_0218de60.cpp:
+    complete
+    .text start:0x0218de60 end:0x0218e00c
+
+src/Combat/Overlay_16/func_ov016_0218edac.cpp:
+    complete
+    .text start:0x0218edac end:0x0218ef14
+
+src/Combat/Overlay_16/func_ov016_0218f340.cpp:
+    complete
+    .text start:0x0218f340 end:0x0218f4f0
