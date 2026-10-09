@@ -3988,3 +3988,67 @@ src/Combat/Overlay_17/func_ov017_021bd2f0.cpp:
 src/Combat/Overlay_17/UpdateNameEntryQueue.cpp:
     complete
     .text start:0x02195250 end:0x0219531c
+
+src/Combat/Overlay_17/func_ov017_0218db14.cpp:
+    complete
+    .text start:0x0218db14 end:0x0218dba0
+
+src/Combat/Overlay_17/func_ov017_02198e30.cpp:
+    complete
+    .text start:0x02198e30 end:0x02198f70
+
+src/Combat/Overlay_17/func_ov017_0219b938.cpp:
+    complete
+    .text start:0x0219b938 end:0x0219ba0c
+
+src/Combat/Overlay_17/func_ov017_0219e180.cpp:
+    complete
+    .text start:0x0219e180 end:0x0219e234
+
+src/Combat/Overlay_17/func_ov017_021bb1a4.cpp:
+    complete
+    .text start:0x021bb1a4 end:0x021bb27c
+
+src/Combat/Overlay_17/func_ov017_021c4664.cpp:
+    complete
+    .text start:0x021c4664 end:0x021c46ec
+
+src/Combat/Overlay_17/func_ov017_021c6254.cpp:
+    complete
+    .text start:0x021c6254 end:0x021c62e4
+
+src/Combat/Overlay_17/func_ov017_021c62e4.cpp:
+    complete
+    .text start:0x021c62e4 end:0x021c6378
+
+src/Combat/Overlay_17/func_ov017_021c8ab0.cpp:
+    complete
+    .text start:0x021c8ab0 end:0x021c8b78
+
+src/Combat/Overlay_17/func_ov017_021c927c.cpp:
+    complete
+    .text start:0x021c927c end:0x021c9334
+
+src/Combat/Overlay_17/func_ov017_021c9400.cpp:
+    complete
+    .text start:0x021c9400 end:0x021c949c
+
+src/Combat/Overlay_17/func_ov017_021c95ec.cpp:
+    complete
+    .text start:0x021c95ec end:0x021c96c0
+
+src/Combat/Overlay_17/func_ov017_021c9d2c.cpp:
+    complete
+    .text start:0x021c9d2c end:0x021c9e00
+
+src/Combat/Overlay_17/func_ov017_021cd218.cpp:
+    complete
+    .text start:0x021cd218 end:0x021cd2dc
+
+src/Combat/Overlay_17/func_ov017_021cd590.cpp:
+    complete
+    .text start:0x021cd590 end:0x021cd608
+
+src/Combat/Overlay_17/func_ov017_021cd608.cpp:
+    complete
+    .text start:0x021cd608 end:0x021cd6d8
