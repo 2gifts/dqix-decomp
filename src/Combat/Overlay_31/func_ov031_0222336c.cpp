@@ -1,9 +1,10 @@
 #include <globaldefs.h>
 
+#include "Resource/UiArrayEntry.h"
+
 extern "C" void func_ov031_022234d8(int a0, void* cb);
 extern "C" ARM int LoadToSubBG0ScreenData(int arg0, int arg1, unsigned int arg2);
 extern "C" int func_ov031_0223c560(int a, int b);
-extern "C" int func_ov031_022276cc(void* obj, int a0, int a1, int a2);
 ARM int GetTableEntryByField0_022236d0(void);
 extern "C" void func_ov031_0223c980(int a0, int a1, int a2, int a3, int s0, int s1, int s2, int s3);
 ARM void SetFlagIfMatchesElem0_0223caec(void* ptr);

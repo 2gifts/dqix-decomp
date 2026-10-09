@@ -18292,6 +18292,10 @@ src/Combat/Main/func_0206db48.cpp:
     complete
     .text start:0x0206db48 end:0x0206dd68
 
+src/Combat/Main/MarkContextStackTopUnknownSubspace.cpp:
+    complete
+    .text start:0x020c7a74 end:0x020c7a90
+
 src/Combat/Main/func_02032e58.cpp:
     complete
     .text start:0x02032e58 end:0x02032fb8
