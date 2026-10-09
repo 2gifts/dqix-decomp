@@ -12157,3 +12157,23 @@ src/Combat/Main/func_020da074.cpp:
 src/Combat/Main/func_020e2018.cpp:
     complete
     .text start:0x020e3bb8 end:0x020e3cb0
+
+src/Combat/Main/func_020b7ba0.cpp:
+    complete
+    .text start:0x020b966c end:0x020b9a20
+
+src/System/BlockCurrentContext.cpp:
+    complete
+    .text start:0x020c9364 end:0x020c93b4
+
+src/Filesystem/IdentifyBackupDeviceCore.cpp:
+    complete
+    .text start:0x020d1b44 end:0x020d1ec8
+
+src/Combat/Main/func_020d05ec.cpp:
+    complete
+    .text start:0x020d20b8 end:0x020d21a0
+
+src/Combat/Main/020b8cf4.cpp:
+    complete
+    .text start:0x020ba7c0 end:0x020ba92c

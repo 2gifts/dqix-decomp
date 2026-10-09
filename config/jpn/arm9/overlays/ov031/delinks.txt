@@ -4812,3 +4812,51 @@ src/Combat/Overlay_31/func_ov031_0220f104.cpp:
 src/Combat/Overlay_31/func_ov031_02216f54.cpp:
     complete
     .text start:0x02217734 end:0x0221790c
+
+src/Combat/Overlay_31/RegisterNamedEntry_02207d60.cpp:
+    complete
+    .text start:0x02208540 end:0x02208568
+
+src/Combat/Overlay_31/SetActiveContextPriorityIfValid_02207d3c.cpp:
+    complete
+    .text start:0x0220851c end:0x02208540
+
+src/Combat/Overlay_31/SetActiveContextByte9_0220aa68.cpp:
+    complete
+    .text start:0x0220b248 end:0x0220b278
+
+src/Combat/Overlay_31/UpdateAndWaitOnContext_02203424.cpp:
+    complete
+    .text start:0x02203c04 end:0x02203c8c
+
+src/Combat/Overlay_31/UpdateObjFromContext_022031bc.cpp:
+    complete
+    .text start:0x0220399c end:0x022039fc
+
+src/Combat/Overlay_31/ClearField60_02203b8c.cpp:
+    complete
+    .text start:0x0220436c end:0x022043ac
+
+src/Combat/Overlay_31/SwapActiveContextPriority_02207cf0.cpp:
+    complete
+    .text start:0x022084d0 end:0x0220851c
+
+src/Combat/Overlay_31/ReleaseOrEnqueueHandle_02203670.cpp:
+    complete
+    .text start:0x02203e50 end:0x02203e88
+
+src/Combat/Overlay_31/SetupContext_0220f400.cpp:
+    complete
+    .text start:0x0220fbe0 end:0x0220fc80
+
+src/Combat/Overlay_31/CycleAndAdvanceState_02203398_022033e8.cpp:
+    complete
+    .text start:0x02203bc8 end:0x02203c04
+
+src/Combat/Overlay_31/ExpireHandlesAndReadyPending_0220aa98.cpp:
+    complete
+    .text start:0x0220b278 end:0x0220b358
+
+src/Combat/Overlay_31/DequeueOrBlockUntilAvailable_02200af8.cpp:
+    complete
+    .text start:0x022012d8 end:0x02201398
