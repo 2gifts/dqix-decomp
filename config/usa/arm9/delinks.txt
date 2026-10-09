@@ -18259,3 +18259,11 @@ src/Combat/Main/020c79a0.cpp:
 src/Combat/Main/EncodeUtf16Text.cpp:
     complete
     .text start:0x020328bc end:0x02032e24
+
+src/Combat/Main/UnblockContexts.cpp:
+    complete
+    .text start:0x020c78e8 end:0x020c7950
+
+src/Combat/Main/func_020c7884.cpp:
+    complete
+    .text start:0x020c7884 end:0x020c7898
