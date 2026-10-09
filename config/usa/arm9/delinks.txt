@@ -18252,9 +18252,29 @@ src/Combat/Main/func_0204b04c.cpp:
     complete
     .text start:0x0204b04c end:0x0204b088
 
+src/Combat/Main/func_02012c34.cpp:
+    complete
+    .text start:0x02012c34 end:0x02012d18
+
+src/Combat/Main/func_02028214.cpp:
+    complete
+    .text start:0x02028214 end:0x0202834c
+
+src/Combat/Main/func_0203bebc.cpp:
+    complete
+    .text start:0x0203bebc end:0x0203c05c
+
+src/Combat/Main/func_02046cc8.cpp:
+    complete
+    .text start:0x02046cc8 end:0x02046e08
+
 src/Combat/Main/_Z17NotifySub020541a4P11Obj020541a4h.cpp:
     complete
     .text start:0x020541a4 end:0x0205420c
+
+src/Combat/Main/func_020542b4.cpp:
+    complete
+    .text start:0x020542b4 end:0x020543ec
 
 src/Combat/Main/_Z24SetupAndDispatch0205c904Phi.cpp:
     complete
