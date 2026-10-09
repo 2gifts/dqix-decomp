@@ -1,8 +1,6 @@
 #include <globaldefs.h>
 
-struct Entry_203dce4 {
-    int flags;
-};
+#include "Combat/EntryGetterTypes.h"
 
 struct EntryList_203dce4 {
     char pad[0xc];

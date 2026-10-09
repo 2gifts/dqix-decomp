@@ -1,4 +1,6 @@
 #include <globaldefs.h>
+
+#include "Combat/NodeLookup.h"
 #include "Memory/SafeAllocator.h"
 #include "std_library_functions.h"
 
@@ -9,7 +11,6 @@ struct Struct02030b7c;
 extern "C" extern void* _ZNK6Script9Parameter8ToStringEv(struct Struct02030b7c* s);
 
 struct Node0206d7e4;
-extern struct Node0206d7e4* FindNodeByByteId(void* base, int key);
 
 struct Data02108cec_d7e4 {
     unsigned char pad0[0xa];
@@ -34,7 +35,7 @@ struct Node0206d7e4 {
 ARM int SetNodeStringsFromVariants0206d7e4(void* param0) {
     struct Node0206d7e4* node;
     int key = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)param0);
-    node = FindNodeByByteId(data_02108cec.field0x10, key);
+    node = (Node0206d7e4*)FindNodeByByteId(data_02108cec.field0x10, key);
     if (node == 0) {
         return 0;
     }

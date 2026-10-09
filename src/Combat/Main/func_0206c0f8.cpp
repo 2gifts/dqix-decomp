@@ -1,4 +1,7 @@
 #include <globaldefs.h>
+
+#include "Combat/WorkRecord.h"
+#include "Combat/NodeLookup.h"
 #include "Memory/SafeAllocator.h"
 
 struct Variant02030b0c;
@@ -12,50 +15,7 @@ struct S_020103b4;
 extern "C" struct S_020103b4* _ZN9GameState11GetInstanceEv();
 extern "C" int _ZNK9GameState21IsMorningDayOrEveningEv(struct S_020103b4* obj);
 
-struct Rec0206bf2c {
-    unsigned char field0;
-    unsigned char pad1;
-    unsigned short field2;
-    unsigned char field4;
-    unsigned char field5;
-    unsigned char field6;
-    unsigned char field7;
-    unsigned char field8;
-    unsigned char pad9;
-    unsigned char flagsA_b0 : 2;
-    unsigned char flagsA_b1 : 1;
-    unsigned char flagsA_b2 : 3;
-    unsigned char flagsA_b3 : 1;
-    unsigned char flagsA_b4 : 1;
-    unsigned char fieldB;
-    unsigned int fieldC;
-    int vec[3];
-    unsigned short field1c;
-    unsigned char field1e;
-    unsigned char field1f;
-    unsigned short field20;
-    unsigned char pad22[2];
-    unsigned char pad24[0x10];
-    unsigned int field34;
-    unsigned int field38;
-    unsigned int field3c;
-    unsigned int field40;
-    unsigned short field44;
-    unsigned short field46;
-    unsigned char pad48[0xc];
-    unsigned int field54;
-    unsigned int field58;
-    unsigned int field5c;
-    unsigned int field60;
-    unsigned int field64;
-    unsigned int field68;
-    unsigned int field6c;
-    unsigned int field70;
-};
 
-extern "C" ARM void _Z23ClearWorkRecord0206bf2cP11Rec0206bf2c(struct Rec0206bf2c* obj);
-extern "C" ARM void _Z26UnlinkNodeByByteId0206dd68Pvi(void* base, int key);
-extern "C" void func_0206db48(void* base, struct Rec0206bf2c* rec);
 
 struct Data02108cec0206c0f8 {
     unsigned char byte0;
@@ -107,14 +67,14 @@ extern "C" ARM int func_0206c0f8(void* param0, int param1) {
     v5 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)((char*)param0 + 0x28));
 
     if (v4 != data_02108cec.halfc) {
-        _Z26UnlinkNodeByByteId0206dd68Pvi(data_02108cec.field10, v5);
+        UnlinkNodeByByteId0206dd68(data_02108cec.field10, v5);
         return 1;
     }
 
     rec = (struct Rec0206bf2c*)((SafeAllocator*)data_02108cec.field14)->Allocate(0x78);
     if (rec == 0) return 0;
 
-    _Z23ClearWorkRecord0206bf2cP11Rec0206bf2c(rec);
+    ClearWorkRecord0206bf2c(rec);
 
     rec->field4 = v0;
     rec->field5 = v1;
@@ -124,7 +84,7 @@ extern "C" ARM int func_0206c0f8(void* param0, int param1) {
     rec->field0 = v5;
 
     if (param1 < 7) {
-        _Z26UnlinkNodeByByteId0206dd68Pvi(data_02108cec.field10, v5);
+        UnlinkNodeByByteId0206dd68(data_02108cec.field10, v5);
         return 1;
     }
 

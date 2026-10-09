@@ -1,4 +1,6 @@
 #include <globaldefs.h>
+
+#include "Combat/NodeLookup.h"
 #include "Memory/SafeAllocator.h"
 
 struct Variant02030b0c;
@@ -7,7 +9,6 @@ struct TaggedValue02030b44;
 extern "C" float _ZNK6Script9Parameter7ToFloatEv(struct TaggedValue02030b44* v);
 
 struct Node0206c4e8;
-struct Node0206c4e8* FindNodeByByteId(void* base, int key);
 
 struct Data02108cec {
     unsigned char pad0[0xa];
@@ -40,7 +41,7 @@ ARM int AllocateAndAppendEffectNode0206c4e8(void* param0) {
     struct Node0206c4e8* node;
     struct Effect0206c4e8* eff;
     int key = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)param0);
-    node = FindNodeByByteId(data_02108cec.field0x10, key);
+    node = (Node0206c4e8*)FindNodeByByteId(data_02108cec.field0x10, key);
     if (node == 0) {
         return 0;
     }

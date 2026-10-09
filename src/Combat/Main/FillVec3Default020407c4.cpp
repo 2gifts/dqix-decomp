@@ -1,8 +1,8 @@
 #include <globaldefs.h>
+#include "Combat/EntryGetterTypes.h"
 
 extern "C" void __clear(void* out, int size);
 
-struct StructF0x60_0203cdd0 { char pad[0x60]; int field60; };
 int GetField0x60(struct StructF0x60_0203cdd0* obj);
 
 struct Vec3_020407c4 { unsigned int v[3]; };

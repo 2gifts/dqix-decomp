@@ -1,16 +1,17 @@
 #include <globaldefs.h>
 
+#include "Combat/NodeLookup.h"
+
 struct DLNode0206dd68 {
     char pad[0x64];
     struct DLNode0206dd68* prev;
     struct DLNode0206dd68* next;
 };
 
-struct DLNode0206dd68* FindNodeByByteId(void* base, int key);
 
 // USA: func_0206dd68
 ARM void UnlinkNodeByByteId0206dd68(void* base, int key) {
-    struct DLNode0206dd68* node = FindNodeByByteId(base, key);
+    struct DLNode0206dd68* node = (DLNode0206dd68*)FindNodeByByteId(base, key);
     if (node == NULL) {
         return;
     }

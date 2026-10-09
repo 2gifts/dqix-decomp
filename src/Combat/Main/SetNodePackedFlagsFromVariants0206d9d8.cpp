@@ -1,9 +1,10 @@
 #include <globaldefs.h>
 
+#include "Combat/NodeLookup.h"
+
 struct Variant02030b0c;
 extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 struct Node0206d9d8;
-struct Node0206d9d8* FindNodeByByteId(void* base, int key);
 
 struct Data02108cec {
     unsigned char pad0[0xa];
@@ -31,7 +32,7 @@ ARM int SetNodePackedFlagsFromVariants0206d9d8(void* param0) {
     int b;
     int c;
     int key = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)param0);
-    node = FindNodeByByteId(data_02108cec.field0x10, key);
+    node = (Node0206d9d8*)FindNodeByByteId(data_02108cec.field0x10, key);
     if (node == 0) {
         return 0;
     }
