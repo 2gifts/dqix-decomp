@@ -2,6 +2,7 @@
 #include <std_library_functions.h>
 #include "Memory/SafeAllocator.h"
 #include "World/Object3D.h"
+#include "Combat/Overlay15ViewerContext.h"
 
 struct ViewerSlot
 {
@@ -12,21 +13,6 @@ struct ViewerSlot
 
 struct Struct205563c;
 
-struct ViewObject
-{
-    char* viewer_;
-    ViewerSlot* slot_;
-    SafeAllocator* allocators_;
-    const char* name_;
-    void* monster_;
-    void* buffer_;
-    unsigned int bufferSize_;
-    unsigned char kind_;
-    char unk_1d[3];
-    int* parts_;
-    Object3D* objects_;
-    Struct205563c* effect_;
-};
 
 struct ObjectSizes
 {
@@ -43,15 +29,15 @@ extern "C" ViewerSlot* _Z20FindFreeSlot021931f8Pc(char* viewer);
 extern "C" ViewerSlot* _Z20FindFreeSlot0219322cPc(char* viewer);
 extern "C" ViewerSlot* _Z20FindFreeSlot02193260Pc(char* viewer);
 void ClearSevenWords(Struct205563c* obj);
-extern "C" void func_ov015_0218f0c4(ViewObject* self);
 
 extern AllocatorUnion data_02114e20;
 extern const ObjectSizes data_ov015_02193d80;
 extern const PartSizes data_ov015_02193df0;
 
 // USA: func_ov015_0218bcb0
-extern "C" ARM int func_ov015_0218bcb0(ViewObject* self)
+extern "C" ARM int func_ov015_0218bcb0(void* context)
 {
+    Obj0218c274* self = static_cast<Obj0218c274*>(context);
     if (self->kind_ == 0 || self->kind_ == 1)
     {
         PartSizes sizes = data_ov015_02193df0;
