@@ -18440,3 +18440,38 @@ src/Combat/Main/__sinit_020e660c.cpp:
     complete
     .init start:0x020e660c end:0x020e66a0
 
+
+
+src/Combat/Main/_Z26ResetSystemAndBoot020c98f0i.cpp:
+    complete
+    .text start:0x020c98f0 end:0x020c99ac
+
+
+src/Combat/Main/func_02028524.cpp:
+    complete
+    .text start:0x02028524 end:0x0202861c
+
+
+src/Combat/Main/func_0202c288.cpp:
+    complete
+    .text start:0x0202c288 end:0x0202c360
+
+
+src/Combat/Main/func_0202d8e8.cpp:
+    complete
+    .text start:0x0202d8e8 end:0x0202d9e0
+
+
+src/Combat/Main/func_0203c818.cpp:
+    complete
+    .text start:0x0203c818 end:0x0203c960
+
+
+src/Combat/Main/func_0203de84.cpp:
+    complete
+    .text start:0x0203de84 end:0x0203df78
+
+
+src/Combat/Main/func_02048690.cpp:
+    complete
+    .text start:0x02048690 end:0x02048850
