@@ -12016,3 +12016,7 @@ src/Combat/Main/func_0204a170.cpp:
 src/Combat/Main/func_02057ab8.cpp:
     complete
     .text start:0x02058e30 end:0x02059130
+
+src/Combat/Main/MarkContextStackTopUnknownSubspace.cpp:
+    complete
+    .text start:0x020c9540 end:0x020c955c
