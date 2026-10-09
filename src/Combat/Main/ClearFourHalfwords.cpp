@@ -1,11 +1,6 @@
 #include <globaldefs.h>
 
-struct Struct02032fb8 {
-    unsigned short x;
-    unsigned short y;
-    unsigned short z;
-    unsigned short w;
-};
+#include "Combat/ObjectStateInitialization.h"
 
 // USA: func_02032fb8
 ARM void ClearFourHalfwords(struct Struct02032fb8* s) {
