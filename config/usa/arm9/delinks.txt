@@ -18230,3 +18230,18 @@ src/Combat/Main/ManagerSelectionWordFlags.cpp:
 src/Combat/Main/DispatchObjectsByDistance.cpp:
     complete
     .text start:0x0205765c end:0x020577cc
+
+
+src/Combat/Main/UnblockContexts.cpp:
+    complete
+    .text start:0x020c78e8 end:0x020c7950
+
+
+src/Combat/Main/func_020c7884.cpp:
+    complete
+    .text start:0x020c7884 end:0x020c7898
+
+
+src/Combat/Main/func_020c79a0.cpp:
+    complete
+    .text start:0x020c79a0 end:0x020c79bc
