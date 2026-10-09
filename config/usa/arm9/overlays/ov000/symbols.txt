@@ -1053,4 +1053,5 @@ data_ov000_02184250 kind:bss addr:0x02184250
 data_ov000_02184264 kind:bss addr:0x02184264
 data_ov000_02184270 kind:bss addr:0x02184270
 data_ov000_02184288 kind:bss addr:0x02184288
+data_ov000_02184288_arg kind:bss addr:0x02184288
 data_ov000_02184294 kind:bss addr:0x02184294
