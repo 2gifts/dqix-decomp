@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Combat/Main/MessageSlotTable.h"
 
 extern "C" unsigned char func_ov004_02157128(void* obj);
 extern "C" void* func_ov004_02156fd4(void* obj, int key);
@@ -23,8 +24,6 @@ void SetFieldThenTailCallOffset20_021fbdf4(struct Obj021fbdf4* obj, unsigned cha
 struct Struct021707d8_02159ce0 { char pad[8]; unsigned char* ptr; };
 extern Struct021707d8_02159ce0 data_ov004_021707d8;
 
-struct RawModelData_02159ce0 { char pad[0x7c]; };
-
 typedef void (*FuncPtrE0_02159ce0)(void*, int);
 struct HandlerE0_02159ce0 { char pad[0xe0]; FuncPtrE0_02159ce0 func; };
 struct NodeE0_02159ce0 { HandlerE0_02159ce0* handler; };
@@ -48,7 +47,7 @@ extern "C" ARM int func_ov004_02159ce0(void* a) {
     Element020de650* elem = FindElementByKey020dedd0(node, key);
     if (!elem) return 0;
 
-    RawModelData_02159ce0 bufC;
+    MessageSlotTable_020dd7ac bufC;
     func_020dd7ac(&bufC);
     int typeCode = 1;
     unsigned int nibble = ((ElemNibble_02159ce0*)((char*)elem + 8))->nibble;

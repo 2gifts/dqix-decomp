@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Combat/Main/MessageSlotTable.h"
 #include "GameState/GameState.h"
 
 struct Container020dedd0;
@@ -10,7 +11,6 @@ GameObject* GetCombatantChecked(GameState* battleStruct, int combatantId);
 extern "C" int func_020dd4c4(void* id, void* node);
 extern "C" void func_020dd7ac(void* buf);
 extern "C" void func_020dd8b4(int buf, int id, int node, int flag);
-extern "C" void func_020dd9b4(int buf, int kind, int arg2, int arg3);
 
 extern unsigned char data_ov003_0217fac8[];
 
@@ -35,13 +35,13 @@ extern "C" ARM int func_ov003_021753a0(char* obj, int id, int arg2, int arg3) {
 
     func_020dd4c4((void*)id, node);
 
-    char buf[0x7c];
-    func_020dd7ac(buf);
-    func_020dd8b4((int)buf, id, (int)node, 0);
+    MessageSlotTable_020dd7ac buf;
+    func_020dd7ac(&buf);
+    func_020dd8b4((int)&buf, id, (int)node, 0);
 
     int kind = ((struct NodeBits020dedd0*)node)->kind;
     unsigned char kindByte = data_ov003_0217fac8[kind];
-    func_020dd9b4((int)buf, kindByte, arg2, arg3);
+    func_020dd9b4(&buf, kindByte, (void*)arg2, (void*)arg3);
 
     switch (kindByte) {
     case 3:
