@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-struct Vec3s32_020c3030 { int x; int y; int z; };
+#include "System/Matrix.h"
 
 #define REG_SQRTCNT_020c3030      (*(volatile unsigned short*)0x040002b0)
 #define REG_SQRT_RESULT_020c3030  (*(volatile unsigned int*)0x040002b4)
@@ -8,7 +8,7 @@ struct Vec3s32_020c3030 { int x; int y; int z; };
 #define REG_SQRTPARAM_HI_020c3030 (*(volatile unsigned int*)0x040002bc)
 
 // USA: func_020c3030
-extern "C" ARM int Vector3fix_Distance(Vec3s32_020c3030* a, Vec3s32_020c3030* b) {
+extern "C" ARM fix32_t Vector3fix_Distance(const Vector3fix* a, const Vector3fix* b) {
     int dx = a->x - b->x;
     long long sq = (long long)dx * dx;
     int dy = a->y - b->y;

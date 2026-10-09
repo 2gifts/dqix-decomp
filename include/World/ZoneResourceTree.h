@@ -28,15 +28,31 @@ struct ZoneResourceTreeRecord {
 struct ZoneResourceRuntimeNode {
     unsigned short key;
     unsigned short flags;
-    char unknown4[0x1c];
+    signed char remaining : 7;
+    unsigned char flag4 : 1;
+    unsigned char unknown5[3];
+    Vector3i position;
+    char unknown14[0xc];
     ZoneResourceTreeRecord *source;
     Struct02012ff0 *tracker;
     ZoneResourceRuntimeNode *parent;
     ZoneResourceRuntimeNode *firstChild;
     ZoneResourceRuntimeNode *next;
-    char unknown34[6];
-    unsigned short unknown3a;
-    char unknown3c[0x18];
+    union {
+        short targetAngle;
+        unsigned short animationState;
+    };
+    union {
+        short rotationSpeed;
+        unsigned short delay;
+    };
+    short angle;
+    union {
+        unsigned short unknown3a;
+        short movementSpeed;
+    };
+    Vector3i targetPosition;
+    Vector3i direction;
     Object3D *object;
     char unknown58[0x18];
 };
