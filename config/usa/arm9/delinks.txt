@@ -18471,3 +18471,33 @@ src/Combat/Main/func_0203de84.cpp:
 src/Combat/Main/func_02048690.cpp:
     complete
     .text start:0x02048690 end:0x02048850
+
+
+src/Combat/Main/_Z26ResetSystemAndBoot020c98f0i.cpp:
+    complete
+    .text start:0x020c98f0 end:0x020c99ac
+
+
+src/Combat/Main/func_0204ac60.cpp:
+    complete
+    .text start:0x0204ac60 end:0x0204acb0
+
+
+src/Combat/Main/func_0204ae7c.cpp:
+    complete
+    .text start:0x0204ae7c end:0x0204af14
+
+
+src/Combat/Main/func_02054464.cpp:
+    complete
+    .text start:0x02054464 end:0x020545ac
+
+
+src/Combat/Main/func_02086778.cpp:
+    complete
+    .text start:0x02086778 end:0x02086868
+
+
+src/Combat/Main/func_0208e0c4.cpp:
+    complete
+    .text start:0x0208e0c4 end:0x0208e2c0
