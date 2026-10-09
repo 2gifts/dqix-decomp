@@ -18232,9 +18232,49 @@ src/Combat/Main/DispatchObjectsByDistance.cpp:
     .text start:0x0205765c end:0x020577cc
 
 
+src/Combat/Main/EncodeUtf16Text.cpp:
+    complete
+    .text start:0x020328bc end:0x02032e24
+
 src/Combat/Main/SetCombatAnimationState.cpp:
     complete
     .text start:0x02033ba0 end:0x02033ce8
+
+src/Combat/Main/func_0203e0a0.cpp:
+    complete
+    .text start:0x0203e0a0 end:0x0203e2c4
+
+src/Combat/Main/func_02048b0c.cpp:
+    complete
+    .text start:0x02048b0c end:0x02048bb8
+
+src/Combat/Main/func_0204b04c.cpp:
+    complete
+    .text start:0x0204b04c end:0x0204b088
+
+src/Combat/Main/_Z17NotifySub020541a4P11Obj020541a4h.cpp:
+    complete
+    .text start:0x020541a4 end:0x0205420c
+
+src/Combat/Main/_Z24SetupAndDispatch0205c904Phi.cpp:
+    complete
+    .text start:0x0205c904 end:0x0205c96c
+
+src/Combat/Main/Z35AnyFlaggedCombatantHasZeroByteP9GameState_0206867c.cpp:
+    complete
+    .text start:0x0206867c end:0x020686e0
+
+src/Combat/Main/func_0206db48.cpp:
+    complete
+    .text start:0x0206db48 end:0x0206dd68
+
+src/Combat/Main/_Z18FlushNotifyEntriesP27NotifyEntriesStruct0207f8bc.cpp:
+    complete
+    .text start:0x0207f8bc end:0x0207f914
+
+src/Combat/Main/UpdateEntryFlagsNibble02080cec.cpp:
+    complete
+    .text start:0x02080cec end:0x02080d54
 
 src/Combat/Main/FilterManagerSelectionByRecordValues.cpp:
     complete
@@ -18244,6 +18284,22 @@ src/Combat/Main/020b8cf4.cpp:
     complete
     .text start:0x020b8cf4 end:0x020b8e60
 
+src/Combat/Main/func_020c7884.cpp:
+    complete
+    .text start:0x020c7884 end:0x020c7898
+
+src/Combat/Main/UnblockContexts.cpp:
+    complete
+    .text start:0x020c78e8 end:0x020c7950
+
+src/Combat/Main/020c79a0.cpp:
+    complete
+    .text start:0x020c79a0 end:0x020c79bc
+
+src/Combat/Main/_Z26ResetSystemAndBoot020c98f0i.cpp:
+    complete
+    .text start:0x020c98f0 end:0x020c99ac
+
 src/Combat/Main/QueueTextMessage.cpp:
     complete
     .text start:0x020d7e10 end:0x020d805c
@@ -18252,26 +18308,11 @@ src/Combat/Main/ConfigureCombatSubDisplayElements.cpp:
     complete
     .text start:0x020e0f74 end:0x020e1114
 
-src/Combat/Main/020c79a0.cpp:
+src/Combat/Main/__sinit_020e5f0c.cpp:
     complete
-    .text start:0x020c79a0 end:0x020c79bc
+    .init start:0x020e5f0c end:0x020e5f9c
 
-src/Combat/Main/EncodeUtf16Text.cpp:
+src/Combat/Main/__sinit_020e6368.cpp:
     complete
-    .text start:0x020328bc end:0x02032e24
+    .init start:0x020e6368 end:0x020e6420
 
-src/Combat/Main/UnblockContexts.cpp:
-    complete
-    .text start:0x020c78e8 end:0x020c7950
-
-src/Combat/Main/func_020c7884.cpp:
-    complete
-    .text start:0x020c7884 end:0x020c7898
-
-src/Combat/Main/func_0203e0a0.cpp:
-    complete
-    .text start:0x0203e0a0 end:0x0203e2c4
-
-src/Combat/Main/func_0206db48.cpp:
-    complete
-    .text start:0x0206db48 end:0x0206dd68
