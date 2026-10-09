@@ -18531,3 +18531,27 @@ src/Combat/Main/InitializeGamecardBusOwnership.cpp:
     complete
     .text start:0x020c6d8c end:0x020c6e58
     .bss start:0x021112dc end:0x021112e0
+
+src/Combat/Main/ResetSystemAndBoot020c98f0.cpp:
+    complete
+    .text start:0x020c9900 end:0x020c99bc
+
+src/Combat/Main/StoreSharedMemMagicWords.cpp:
+    complete
+    .text start:0x020c6d58 end:0x020c6d8c
+
+src/Combat/Main/func_020c04e8.cpp:
+    complete
+    .text start:0x020c04f8 end:0x020c08ac
+
+src/Combat/Main/func_020c8548.cpp:
+    complete
+    .text start:0x020c8558 end:0x020c863c
+
+src/Combat/Main/func_020c8bd4.cpp:
+    complete
+    .text start:0x020c8be4 end:0x020c8c60
+
+src/Combat/Main/func_020d22f4.cpp:
+    complete
+    .text start:0x020d2304 end:0x020d2414
