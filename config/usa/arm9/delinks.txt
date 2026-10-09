@@ -18243,3 +18243,7 @@ src/Combat/Main/FilterManagerSelectionByRecordValues.cpp:
 src/Combat/Main/020b8cf4.cpp:
     complete
     .text start:0x020b8cf4 end:0x020b8e60
+
+src/Combat/Main/QueueTextMessage.cpp:
+    complete
+    .text start:0x020d7e10 end:0x020d805c

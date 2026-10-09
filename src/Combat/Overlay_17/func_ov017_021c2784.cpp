@@ -1,13 +1,13 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Resource/GameResources.h"
+#include "Resource/TextQueue.h"
 
 struct SearchStruct;
 extern "C" struct SearchStruct* func_0202ae18(void);
 extern "C" int func_0202c508(struct SearchStruct* obj);
 extern "C" unsigned short* func_02012fe4(void);
 extern "C" void func_02046608(void* a, int b, int c, void* d, int e, int f, int g);
-extern "C" void func_020d7e10(void* a, void* b, int c, int d, int e, int f);
 extern "C" int func_ov017_021959b4(void);
 extern "C" int func_ov017_021a23e4(char* c, int a0, unsigned int f8, unsigned int fc);
 
