@@ -1970,3 +1970,28 @@ src/Combat/Overlay_4/func_ov004_0216a610.cpp:
 src/Combat/Overlay_4/func_ov004_0216aaec.cpp:
     complete
     .text start:0x0216aaec end:0x0216acd0
+
+
+src/Combat/Overlay_4/func_ov004_02156a00.cpp:
+    complete
+    .text start:0x02156a00 end:0x02156cb8
+
+
+src/Combat/Overlay_4/func_ov004_0215be9c.cpp:
+    complete
+    .text start:0x0215be9c end:0x0215bf94
+
+
+src/Combat/Overlay_4/func_ov004_021636b0.cpp:
+    complete
+    .text start:0x021636b0 end:0x02163944
+
+
+src/Combat/Overlay_4/func_ov004_02166844.cpp:
+    complete
+    .text start:0x02166844 end:0x02166ac4
+
+
+src/Combat/Overlay_4/func_ov004_0216ea74.cpp:
+    complete
+    .text start:0x0216ea74 end:0x0216ecd0
