@@ -108,7 +108,3 @@ extern "C" ARM void func_02070b6c(List02070b6c* self, SafeAllocator* allocator, 
         else break;
     } while (1);
 }
-
-
-
-

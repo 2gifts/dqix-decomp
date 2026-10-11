@@ -96,7 +96,6 @@ static inline unsigned int PatternOffset(unsigned int base, unsigned int count, 
     return base + amount;
 }
 
-
 // USA: func_ov009_02189a4c
 extern "C" ARM void func_ov009_02189a4c(CharacterCreation* self) {
     int i;
