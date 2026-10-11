@@ -2,12 +2,12 @@ func_ov002_021536e0 kind:function(arm,size=0xc) addr:0x02154e60
 func_ov002_02154e6c kind:function(arm,size=0x1f8) addr:0x02154e6c
 func_ov002_021538e4 kind:function(arm,size=0x2fc) addr:0x02155064
 func_ov002_02153be0 kind:function(arm,size=0xec) addr:0x02155360
-func_ov002_0215544c kind:function(arm,size=0x1c4) addr:0x0215544c
+func_ov002_02153ccc kind:function(arm,size=0x1c4) addr:0x0215544c
 func_ov002_02153e90 kind:function(arm,size=0x14) addr:0x02155610
-func_ov002_02155624 kind:function(arm,size=0x17c) addr:0x02155624
-func_ov002_021557a0 kind:function(arm,size=0x210) addr:0x021557a0
-func_ov002_021559b0 kind:function(arm,size=0x2c4) addr:0x021559b0
-func_ov002_02155c74 kind:function(arm,size=0x1d4) addr:0x02155c74
+func_ov002_02153ea4 kind:function(arm,size=0x17c) addr:0x02155624
+func_ov002_02154020 kind:function(arm,size=0x210) addr:0x021557a0
+func_ov002_02154230 kind:function(arm,size=0x2c4) addr:0x021559b0
+func_ov002_021544f4 kind:function(arm,size=0x1d4) addr:0x02155c74
 func_ov002_02155e48 kind:function(arm,size=0x15c) addr:0x02155e48
 _Z39NotifyFlaggedombatants02154824_02154824PvPhi kind:function(arm,size=0x94) addr:0x02155fa4
 _Z19AlwaysZero_021548b8ii kind:function(arm,size=0xc) addr:0x02156038
@@ -15,8 +15,8 @@ func_ov002_021548c4 kind:function(arm,size=0x80) addr:0x02156044
 func_ov002_02154944 kind:function(arm,size=0x84) addr:0x021560c4
 func_ov002_021549c8 kind:function(arm,size=0x6c) addr:0x02156148
 _Z34HasPositiveField304Short4_02154a34Pvi kind:function(arm,size=0x38) addr:0x021561b4
-func_ov002_021561ec kind:function(arm,size=0x128) addr:0x021561ec
-func_ov002_02156314 kind:function(arm,size=0x38) addr:0x02156314
+func_ov002_02154a6c kind:function(arm,size=0x128) addr:0x021561ec
+_Z36HasPositiveField256Short178_02154b94Pvi kind:function(arm,size=0x38) addr:0x02156314
 _Z22SetEntryFields02154bcciiPvihh kind:function(arm,size=0x64) addr:0x0215634c
 func_ov002_021563b0 kind:function(arm,size=0x110) addr:0x021563b0
 func_ov002_021564c0 kind:function(arm,size=0x20c) addr:0x021564c0
@@ -28,7 +28,7 @@ func_ov002_021556fc kind:function(arm,size=0x250) addr:0x02156e50
 func_ov002_021570a0 kind:function(arm,size=0x45c) addr:0x021570a0
 func_ov002_021574fc kind:function(arm,size=0x138) addr:0x021574fc
 func_ov002_02157634 kind:function(arm,size=0x130) addr:0x02157634
-func_ov002_02157764 kind:function(arm,size=0xf8) addr:0x02157764
+func_ov002_02156080 kind:function(arm,size=0xf8) addr:0x02157764
 func_ov002_0215785c kind:function(arm,size=0x38) addr:0x0215785c
 func_ov002_02157894 kind:function(arm,size=0x9c) addr:0x02157894
 func_ov002_02157930 kind:function(arm,size=0x93c) addr:0x02157930
@@ -155,7 +155,7 @@ func_ov002_02162114 kind:function(arm,size=0x598) addr:0x02162114
 func_ov002_021626ac kind:function(arm,size=0xcc) addr:0x021626ac
 func_ov002_02162778 kind:function(arm,size=0xa0) addr:0x02162778
 func_ov002_02161920 kind:function(arm,size=0x5c) addr:0x02162818
-func_ov002_02162874 kind:function(arm,size=0xbc) addr:0x02162874
+func_ov002_02161a8c kind:function(arm,size=0xbc) addr:0x02162874
 func_ov002_02162930 kind:function(arm,size=0x4c) addr:0x02162930
 func_ov002_0216297c kind:function(arm,size=0x150) addr:0x0216297c
 func_ov002_02162acc kind:function(arm,size=0x5fc) addr:0x02162acc
@@ -214,7 +214,7 @@ data_ov002_0216cfe6 kind:data(any) addr:0x0216cfe6
 data_ov002_0216cfee kind:data(any) addr:0x0216cfee
 data_ov002_0216cff9 kind:data(any) addr:0x0216cff9
 data_ov002_0216cffa kind:data(any) addr:0x0216cffa
-data_ov002_0216d00a kind:data(any) addr:0x0216d00a
+data_ov002_0216c9ae kind:data(any) addr:0x0216d00a
 data_ov002_0216d01c kind:data(any) addr:0x0216d01c
 data_ov002_0216d038 kind:data(any) addr:0x0216d038
 data_ov002_0216d054 kind:data(any) addr:0x0216d054

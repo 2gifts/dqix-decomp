@@ -16710,3 +16710,83 @@ src/Combat/Main/func_02032370.cpp:
 src/Combat/Main/func_020323c4.cpp:
     complete
     .text start:0x02031efc end:0x02031f5c
+
+src/Combat/Main/func_02059cfc.cpp:
+    complete
+    .text start:0x0205b074 end:0x0205b2b0
+
+src/Combat/Main/func_0206c2c0.cpp:
+    complete
+    .text start:0x0206d414 end:0x0206d63c
+
+src/Combat/Main/func_0206d4e0.cpp:
+    complete
+    .text start:0x0206e634 end:0x0206e888
+
+src/Combat/Main/func_020dc920.cpp:
+    complete
+    .text start:0x020de328 end:0x020de5c4
+
+src/Combat/Main/func_02017098.cpp:
+    complete
+    .text start:0x02016e38 end:0x02016fa8
+
+src/Combat/Main/func_020790ac.cpp:
+    complete
+    .text start:0x02079fa0 end:0x0207a12c
+
+src/Combat/Main/func_0207d7f4.cpp:
+    complete
+    .text start:0x0207e574 end:0x0207e6f8
+
+src/Combat/Main/func_02097cac.cpp:
+    complete
+    .text start:0x020998fc end:0x02099b18
+
+src/Combat/Main/func_02098080.cpp:
+    complete
+    .text start:0x02099cd0 end:0x02099e34
+
+src/Combat/Main/func_020ab7a8.cpp:
+    complete
+    .text start:0x020ad270 end:0x020ad488
+
+src/Combat/Main/func_020da77c.cpp:
+    complete
+    .text start:0x020dc184 end:0x020dc2e8
+
+src/Combat/Main/func_0205b008.cpp:
+    complete
+    .text start:0x0205c3a4 end:0x0205c474
+
+src/Combat/Main/ArchiveEntryToCombatantField_020875c4.cpp:
+    complete
+    .text start:0x02087ec0 end:0x02087f24
+
+src/Combat/Main/PopulateEntrySlotA0207ee90.cpp:
+    complete
+    .text start:0x0207fc10 end:0x0207fc78
+
+src/Combat/Main/PopulateEntrySlotB0207eef8.cpp:
+    complete
+    .text start:0x0207fc78 end:0x0207fce0
+
+src/Combat/Main/func_020a1a40.cpp:
+    complete
+    .text start:0x020a37b8 end:0x020a392c
+
+src/Combat/Main/func_0208b610.cpp:
+    complete
+    .text start:0x0208bf04 end:0x0208c07c
+
+src/Combat/Main/func_0204bc08.cpp:
+    complete
+    .text start:0x0204ca28 end:0x0204ca94
+
+src/Combat/Main/func_0204700c.cpp:
+    complete
+    .text start:0x02047e2c end:0x02047f7c
+
+src/Combat/Main/func_020b1938.cpp:
+    complete
+    .text start:0x020b3404 end:0x020b3484
