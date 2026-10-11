@@ -2001,10 +2001,6 @@ src/Combat/Overlay_23/func_ov023_021dfb4c.cpp:
     complete
     .text start:0x021e0160 end:0x021e029c
 
-src/Combat/Overlay_23/func_ov023_021e66ac.cpp:
-    complete
-    .text start:0x021e6c24 end:0x021e6d64
-
 src/Combat/Overlay_23/func_ov023_021e0328.cpp:
     complete
     .text start:0x021e08d0 end:0x021e09b4
