@@ -16742,3 +16742,15 @@ src/Combat/Main/func_0204700c.cpp:
 src/Combat/Main/func_020b1938.cpp:
     complete
     .text start:0x020b3404 end:0x020b3484
+
+src/Combat/Main/SomeHashWrapper_020c0c3c.cpp:
+    complete
+    .text start:0x020c2708 end:0x020c279c
+
+src/Combat/Main/func_0202738c.cpp:
+    complete
+    .text start:0x02026cf0 end:0x02026d9c
+
+src/Combat/Main/func_020288e0.cpp:
+    complete
+    .text start:0x02028138 end:0x0202821c

@@ -3796,3 +3796,91 @@ src/Combat/Overlay_17/InitAndAppendNode_021bac24.cpp:
 src/Combat/Overlay_17/CreateAndAppendNode_021c1a98.cpp:
     complete
     .text start:0x021c201c end:0x021c2050
+
+src/Combat/Overlay_17/func_ov017_0218b5c0.cpp:
+    complete
+    .text start:0x0218c1e0 end:0x0218c218
+
+src/Combat/Overlay_17/CreateAndAppendState57Node_021a93f0.cpp:
+    complete
+    .text start:0x021a9bd0 end:0x021a9c0c
+
+src/Combat/Overlay_17/InitAndAppendState25_021aa4cc.cpp:
+    complete
+    .text start:0x021aad34 end:0x021aad74
+
+src/Combat/Overlay_17/InitAndAppendNodeWithFields_021a8614.cpp:
+    complete
+    .text start:0x021a8e10 end:0x021a8e6c
+
+src/Combat/Overlay_17/ClearFieldAndDestroyAllocator_021c1a24.cpp:
+    complete
+    .text start:0x021c1fbc end:0x021c201c
+
+src/Combat/Overlay_17/func_ov017_021c26ac.cpp:
+    complete
+    .text start:0x021c2c18 end:0x021c2c7c
+
+src/Combat/Overlay_17/SetFieldFlag17188_0218d258.cpp:
+    complete
+    .text start:0x0218de38 end:0x0218de48
+
+src/Combat/Overlay_17/ResetField_021a9248_021a9248.cpp:
+    complete
+    .text start:0x021a9a2c end:0x021a9a40
+
+src/Combat/Overlay_17/SetFlagAndForward_021a99c8.cpp:
+    complete
+    .text start:0x021aa19c end:0x021aa1b0
+
+src/Combat/Overlay_17/SetFlagAndCleanupB_021aca00.cpp:
+    complete
+    .text start:0x021ad238 end:0x021ad24c
+
+src/Combat/Overlay_17/SetFlagAndCleanupC_021adb08.cpp:
+    complete
+    .text start:0x021ae338 end:0x021ae34c
+
+src/Combat/Overlay_17/SetFlag1ThenDestroy_021c1a10.cpp:
+    complete
+    .text start:0x021c1fa8 end:0x021c1fbc
+
+src/Combat/Overlay_17/func_ov017_021d6134.cpp:
+    complete
+    .text start:0x021d6584 end:0x021d6598
+
+src/Combat/Overlay_17/SetLinkIfType3_021d6148.cpp:
+    complete
+    .text start:0x021d6598 end:0x021d65ac
+
+src/Combat/Overlay_17/CallField20PtrA_021bae80.cpp:
+    complete
+    .text start:0x021bb478 end:0x021bb490
+
+src/Combat/Overlay_17/HasNonZeroByteAtOfField498_0218d75c_0218d75c.cpp:
+    complete
+    .text start:0x0218e33c end:0x0218e35c
+
+src/Combat/Overlay_17/CallListIfFlagsSet_02197528.cpp:
+    complete
+    .text start:0x021980d8 end:0x0219810c
+
+src/Combat/Overlay_17/CancelActionAndInsertNode_021a5530.cpp:
+    complete
+    .text start:0x021a5f68 end:0x021a5fa0
+
+src/Combat/Overlay_17/CheckStateAndDispatchGlobal_021b2698.cpp:
+    complete
+    .text start:0x021b2da8 end:0x021b2e68
+
+src/Combat/Overlay_17/InitObj_021a8670.cpp:
+    complete
+    .text start:0x021a8e6c end:0x021a8ecc
+
+src/Combat/Overlay_17/ForwardAndDestroyAllocatorAt48_021a7280.cpp:
+    complete
+    .text start:0x021a7c28 end:0x021a7c84
+
+src/Combat/Overlay_17/ResetOrDestroyObj_021a7dd8.cpp:
+    complete
+    .text start:0x021a8754 end:0x021a8790

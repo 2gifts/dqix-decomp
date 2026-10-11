@@ -2,6 +2,12 @@
 
 #include "Combat/ActionState.h"
 
+#if defined(jpn)
+enum { PartyIdOffset = 0x6ac };
+#else
+enum { PartyIdOffset = 0x758 };
+#endif
+
 // USA: func_0202738c
 extern "C" ARM void func_0202738c(unsigned char *obj, int add, int mask, int id) {
     if (id < 0) {
@@ -24,7 +30,7 @@ extern "C" ARM void func_0202738c(unsigned char *obj, int add, int mask, int id)
         for (i = 0; i < 4; i++) {
             p = obj + i;
             e = &data_020fdc60[i];
-            if (id == p[0x758]) {
+            if (id == p[PartyIdOffset]) {
                 if (add) {
                     e->b2 = e->b2 | mask;
                     return;

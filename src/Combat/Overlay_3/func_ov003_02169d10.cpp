@@ -1,12 +1,25 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
+#if defined(jpn)
+#define PANEL_SHIFT 4
+extern "C" void func_02042564(char*, int, int, int);
+extern "C" void func_020425b0(char*, int, int, int);
+extern "C" void func_02042428(char*, int);
+#define AppendUaTag func_02042564
+#define AppendDbTag func_020425b0
+#define AppendSizeTag func_02042428
+#define data_ov003_02180156 data_ov003_0217e8e5
+#define data_ov003_02180159 data_ov003_0217e8e8
+#else
+#define PANEL_SHIFT 0
+#endif
 struct Container020e0310;
 
 struct DigitPanel02169d10
 {
     char unk_0[0x64];
-    char texts_[0x4ee - 0x64];
+    char texts_[0x4ee - PANEL_SHIFT - 0x64];
     signed char cursor_;
     signed char digits_[7];
     char unk_4f6[0x5a6 - 0x4f6];
@@ -40,6 +53,7 @@ extern "C" ARM void func_ov003_02169d10(DigitPanel02169d10* self, char* text, in
     char buf[2];
     __clear(buf, 2);
     int cursor = self->cursor_;
+#if !defined(jpn)
     AppendXYTag(text, cursor * 8 + 0x23, 5);
     if (self->upActive_)
         AppendPaletteTag(text, 0xd);
@@ -53,6 +67,7 @@ extern "C" ARM void func_ov003_02169d10(DigitPanel02169d10* self, char* text, in
         AppendPaletteTag(text, 0xf);
     _Z20AppendString02042058PcPKc(text, data_ov003_02180145);
     AppendPaletteTag(text, 0xf);
+ #endif
     if (framed)
         _Z22AppendFrameTag02041c08Pciiiii(text, cursor, 3, 0xb, 3, 0xa);
     AppendUaTag(text, cursor, self->upActive_, 2);
@@ -62,12 +77,16 @@ extern "C" ARM void func_ov003_02169d10(DigitPanel02169d10* self, char* text, in
     {
         memset(buf, 0, 2);
         sprintf(buf, data_ov003_02180156, self->digits_[i]);
+#if !defined(jpn)
         AppendXYTag(text, i * 8 + 0x24, 0x10);
+#endif
         if (i < 4)
             AppendNameTag(text, i, buf);
         else
             _Z20AppendString02042058PcPKc(text, data_ov003_02180159);
     }
+#if !defined(jpn)
     AppendXTag(text, 0x5c);
+#endif
     _Z20AppendString02042058PcPKc(text, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)self->texts_, 0x66));
 }

@@ -8,8 +8,17 @@ extern "C" void func_0205d048(struct Obj0205d048* obj);
 extern "C" void _Z23ResetRecordList0204afb4P12List0204afb4(struct List0204afb4* obj);
 extern "C" void _Z17ResetSlot02170054Pv(void* obj);
 
+#if defined(jpn)
+#define SLOT_BYTES 0x488
+#define ALLOC_SHIFT 0x100
+#define FLAG_SHIFT 0x238
+#else
+#define SLOT_BYTES 0x448
+#define ALLOC_SHIFT 0
+#define FLAG_SHIFT 0
+#endif
 struct Slot_02172720 {
-    char pad0[0x448];
+    char pad0[SLOT_BYTES];
 };
 
 struct Owner_02172720 {
@@ -29,7 +38,7 @@ struct Owner_02172720 {
     SafeAllocator alloc1adc;
     char pad1af0[0x1af8 - 0x1af0];
     SafeAllocator alloc1af8;
-    char pad1b0c[0x1d72 - 0x1b0c];
+    char pad1b0c[0x1d72 + FLAG_SHIFT - (0x1b0c + ALLOC_SHIFT)];
     unsigned short flags;
 };
 
@@ -52,6 +61,29 @@ extern "C" ARM void func_ov000_02172720(Owner_02172720* self) {
     func_0205d048((struct Obj0205d048*)self->field_0x188);
     _Z23ResetRecordList0204afb4P12List0204afb4((struct List0204afb4*)self->list8c4);
     _Z23ResetRecordList0204afb4P12List0204afb4((struct List0204afb4*)self->list8a4);
+#if defined(jpn)
+    if (self->alloc1aa0.GetSignedAllocator() != 0) {
+        self->alloc1aa0.Destroy();
+    }
+    if (self->alloc1ab4.GetSignedAllocator() != 0) {
+        self->alloc1ab4.Destroy();
+    }
+    if (self->alloc1ac8.GetSignedAllocator() != 0) {
+        self->alloc1ac8.Destroy();
+    }
+    if (self->alloc1adc.GetSignedAllocator() != 0) {
+        self->alloc1adc.Destroy();
+    }
+    if (self->alloc1af8.GetSignedAllocator() != 0) {
+        self->alloc1af8.Destroy();
+    }
+    if (self->alloc1a78.GetSignedAllocator() != 0) {
+        self->alloc1a78.Destroy();
+    }
+    if (self->alloc1a8c.GetSignedAllocator() != 0) {
+        self->alloc1a8c.Destroy();
+    }
+#else
     SafeAllocator* allocs[7] = {
         &self->alloc1aa0,
         &self->alloc1ab4,
@@ -67,6 +99,7 @@ extern "C" ARM void func_ov000_02172720(Owner_02172720* self) {
             alloc->Destroy();
         }
     }
+#endif
     for (int i = 0; i < 4; i++) {
         _Z17ResetSlot02170054Pv(&self->slots[i]);
     }

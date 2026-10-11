@@ -1,4 +1,13 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define data_ov015_02194020 data_ov015_02194b60
+#define data_ov015_0219403b data_ov015_02194b7b
+#define data_ov015_02194042 data_ov015_02194b82
+#define data_ov015_0219404a data_ov015_02194b8a
+#define data_ov015_02194052 data_ov015_02194b92
+#define data_ov015_02194064 data_ov015_02194ba4
+#define data_ov015_02194078 data_ov015_02194bb8
+#endif
 #include "std_library_functions.h"
 #include "Filesystem/GPC.h"
 #include "Filesystem/FileIO.h"

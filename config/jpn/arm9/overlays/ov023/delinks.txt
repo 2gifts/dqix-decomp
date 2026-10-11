@@ -2408,3 +2408,19 @@ src/Combat/Overlay_23/GetTableEntry138_021eea98.cpp:
 src/Combat/Overlay_23/UpdateCaptureBit_021dfad8.cpp:
     complete
     .text start:0x021e00ec end:0x021e0160
+
+src/Combat/Overlay_23/ResetElemEntryAtField20_021f8120.cpp:
+    complete
+    .text start:0x021f7604 end:0x021f7614
+
+src/Combat/Overlay_23/SetFieldThenTailCallOffset20_021fbdf4.cpp:
+    complete
+    .text start:0x021fb170 end:0x021fb184
+
+src/Combat/Overlay_23/SetSubEngineModeFlag_021f1818.cpp:
+    complete
+    .text start:0x021f1394 end:0x021f13e4
+
+src/Combat/Overlay_23/SetCaptureRegField730_021dcd18.cpp:
+    complete
+    .text start:0x021dd620 end:0x021dd680

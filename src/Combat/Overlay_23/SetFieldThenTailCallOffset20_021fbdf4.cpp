@@ -1,9 +1,15 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define REGION_FIELD_0 0x716
+#else
+#define REGION_FIELD_0 0x79a
+#endif
+
 
 extern "C" void func_ov023_021ddf5c(void *obj, unsigned char v);
 
 struct Obj021fbdf4 {
-	char pad[0x79a];
+	char pad[REGION_FIELD_0];
 	unsigned char field;
 };
 

@@ -21,9 +21,11 @@ struct Obj021c1a24 {
 extern "C" ARM void func_ov017_021c1a24(struct Obj021c1a24* self) {
 	if (self->f20 != 0) {
 		self->f20 = 0;
+		#if !defined(jpn)
 		if (self->b1d != 0) {
 			PopStack0AndTrigger(1);
 		}
+		#endif
 		PopStack1AndTrigger(1);
 	}
 

@@ -1467,3 +1467,7 @@ src/Combat/Overlay_4/func_ov004_02163530.cpp:
 src/Combat/Overlay_4/func_ov004_0215be9c.cpp:
     complete
     .text start:0x0215cee4 end:0x0215cfdc
+
+src/Combat/Overlay_4/StoreEntryNameForKey_02157374.cpp:
+    complete
+    .text start:0x0215843c end:0x0215892c

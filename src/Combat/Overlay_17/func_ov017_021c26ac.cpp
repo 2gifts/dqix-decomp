@@ -3,6 +3,10 @@
 
 struct AllocatorUnion;
 
+#if defined(jpn)
+#define func_ov010_02184354 func_ov010_02185454
+#define func_ov008_021842a0 func_ov010_021842a0
+#endif
 extern "C" int func_ov010_02184354(void* obj);
 extern "C" void _Z30ForwardAndClearField8_021c2710Ph(unsigned char* self);
 extern "C" void func_020a1940(unsigned int id);
