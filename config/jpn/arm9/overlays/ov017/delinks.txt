@@ -3708,3 +3708,91 @@ src/Combat/Overlay_17/InitAndEnqueueTag33_021c12fc.cpp:
 src/Combat/Overlay_17/InitObj_021acd7c.cpp:
     complete
     .text start:0x021ad5b4 end:0x021ad62c
+
+src/Combat/Overlay_17/CallHelperAndSetFlag_021b83f0.cpp:
+    complete
+    .text start:0x021b8900 end:0x021b8918
+
+src/Combat/Overlay_17/CallIfField24_021b6b5c.cpp:
+    complete
+    .text start:0x021b710c end:0x021b7124
+
+src/Combat/Overlay_17/CallIfField6ac_021b8408.cpp:
+    complete
+    .text start:0x021b8918 end:0x021b8930
+
+src/Combat/Overlay_17/CallIfField20_021c19f8.cpp:
+    complete
+    .text start:0x021c1f90 end:0x021c1fa8
+
+src/Combat/Overlay_17/CallIfField498_0218d5ac.cpp:
+    complete
+    .text start:0x0218e18c end:0x0218e1a8
+
+src/Combat/Overlay_17/IsFieldByteZero_02195760.cpp:
+    complete
+    .text start:0x02196328 end:0x02196344
+
+src/Combat/Overlay_17/CallHelperIfFlag_021a5ab0.cpp:
+    complete
+    .text start:0x021a64e8 end:0x021a6508
+
+src/Combat/Overlay_17/CallIfGlobalPtrSet_021a5934.cpp:
+    complete
+    .text start:0x021a636c end:0x021a638c
+
+src/Combat/Overlay_17/CallHelperIfFlagB_021b2328.cpp:
+    complete
+    .text start:0x021b2a40 end:0x021b2a60
+
+src/Combat/Overlay_17/CallHelperIfFlagB_021b2348.cpp:
+    complete
+    .text start:0x021b2a60 end:0x021b2a80
+
+src/Combat/Overlay_17/CallHelperIfFlag_021b1cc4.cpp:
+    complete
+    .text start:0x021b234c end:0x021b236c
+
+src/Combat/Overlay_17/CallHelperIfFlag_021b1ce4.cpp:
+    complete
+    .text start:0x021b236c end:0x021b238c
+
+src/Combat/Overlay_17/CallHelperIfFlag_021b2f0c.cpp:
+    complete
+    .text start:0x021b361c end:0x021b363c
+
+src/Combat/Overlay_17/ForwardTeardownA_021b9904.cpp:
+    complete
+    .text start:0x021b9e00 end:0x021b9e24
+
+src/Combat/Overlay_17/InitAndAppendNode_021b2c24.cpp:
+    complete
+    .text start:0x021b3334 end:0x021b335c
+
+src/Combat/Overlay_17/InitAndAppendState16_021ba8e0.cpp:
+    complete
+    .text start:0x021baed4 end:0x021baf00
+
+src/Combat/Overlay_17/SetFlagBits55eIfActive_0218b5f8.cpp:
+    complete
+    .text start:0x0218c218 end:0x0218c248
+
+src/Combat/Overlay_17/SetNodeField8AndAppend_0218d77c.cpp:
+    complete
+    .text start:0x0218e35c end:0x0218e390
+
+src/Combat/Overlay_17/InitStructAndSetBattleField_021a9bc4.cpp:
+    complete
+    .text start:0x021aa408 end:0x021aa43c
+
+src/Combat/Overlay_17/SetByteAndAppendNode_021b146c.cpp:
+    complete
+    .text start:0x021b1af8 end:0x021b1b2c
+
+src/Combat/Overlay_17/InitAndAppendNode_021bac24.cpp:
+    complete
+    .text start:0x021bb218 end:0x021bb24c
+
+src/Combat/Overlay_17/CreateAndAppendNode_021c1a98.cpp:
+    complete
+    .text start:0x021c201c end:0x021c2050

@@ -39,13 +39,21 @@ struct EquipmentMenu {
     SafeAllocator unk_280;
     char unk_294[0xe10 - 0x294];
     unsigned short* text_;
+#if defined(jpn)
+    char unk_e14[0xe68 - 0xe14];
+#else
     char unk_e14[0xe6c - 0xe14];
+#endif
     char screenState_[0x10];
     char unk_e7c[4];
     int layers_;
     char backgrounds_[0xee4 - 0xe84];
     char window_[0x1244 - 0xee4];
+#if defined(jpn)
+    char infoWindow_[0x3d00 - 0x1240];
+#else
     char infoWindow_[0x3d88 - 0x1244];
+#endif
     char* pageFiles_;
     char* dragFile_;
     char* equippedFiles_;

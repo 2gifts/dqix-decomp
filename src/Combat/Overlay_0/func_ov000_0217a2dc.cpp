@@ -14,12 +14,24 @@ int AppendNameTag(char* dst, int n, const char* name);
 extern "C" int func_020420e8(const char* text, int large);
 int AppendXYTag(char* dst, int x, int y);
 extern "C" int _Z21AppendLineTag02041cc0Pci(char* dst, int a1);
+#if defined(jpn)
+extern "C" void* _Z26GetGlobalField0x1c020421a0v();
+extern "C" void func_02046380(void*);
+extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(void*, int, const char*);
+extern "C" void __clear(void*, int);
+extern "C" void func_02041f50(const char*, char*);
+extern char data_ov000_021851af[];
+#endif
 
 struct ItemMenu0217a2dc {
     char pad0[0x10];
     unsigned short itemIds[5];
     signed char itemCount;
+#if defined(jpn)
+    char pad1B[0x1fa5 - 0x1b];
+#else
     char pad1B[0x1d6d - 0x1b];
+#endif
     signed char cursor;
     char pad1D6E[0x1d81 - 0x1d6e];
     unsigned char field1D81;
@@ -42,11 +54,19 @@ extern "C" ARM void func_ov000_0217a2dc(struct ItemMenu0217a2dc* menu, int unuse
             return;
         }
         for (int i = 0; i < menu->itemCount; i++) {
+#if defined(jpn)
+            if (i == cursor) {
+                AppendPaletteTag(dst, 5);
+            } else {
+                AppendPaletteTag(dst, 3);
+            }
+#else
             int palette = 3;
             if (i == cursor) {
                 palette = 5;
             }
             AppendPaletteTag(dst, palette);
+#endif
             if (menu->itemIds[i] == 0) {
                 _Z20AppendString02042058PcPKc(dst, emptyName);
             } else {
@@ -54,7 +74,14 @@ extern "C" ARM void func_ov000_0217a2dc(struct ItemMenu0217a2dc* menu, int unuse
                 if (entry == NULL) {
                     continue;
                 }
+#if defined(jpn)
+                char name[0x40];
+                __clear(name, sizeof(name));
+                func_02041f50(*entry, name);
+                _Z20AppendString02042058PcPKc(dst, name);
+#else
                 _Z20AppendString02042058PcPKc(dst, *entry);
+#endif
             }
             if (i == menu->itemCount - 1) {
                 continue;
@@ -78,7 +105,14 @@ extern "C" ARM void func_ov000_0217a2dc(struct ItemMenu0217a2dc* menu, int unuse
                 if (entry == NULL) {
                     continue;
                 }
+#if defined(jpn)
+                char name[0x40];
+                __clear(name, sizeof(name));
+                func_02041f50(*entry, name);
+                AppendNameTag(dst, i, name);
+#else
                 AppendNameTag(dst, i, *entry);
+#endif
             }
             if (i == menu->itemCount - 1) {
                 continue;
@@ -88,8 +122,16 @@ extern "C" ARM void func_ov000_0217a2dc(struct ItemMenu0217a2dc* menu, int unuse
     }
 
     AppendPaletteTag(dst, 0xf);
+#if defined(jpn)
+    void* formatter = _Z26GetGlobalField0x1c020421a0v();
+    func_02046380(formatter);
+    _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 0,
+        (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i(strings, 0x21));
+    _Z20AppendString02042058PcPKc(dst, data_ov000_021851af);
+#else
     const char* title = (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i(strings, 0x21);
     AppendXYTag(dst, (0xb0 - func_020420e8(title, 0)) >> 1, 5);
     _Z20AppendString02042058PcPKc(dst, title);
     _Z21AppendLineTag02041cc0Pci(dst, 0x11);
+#endif
 }

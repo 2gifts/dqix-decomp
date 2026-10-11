@@ -1,6 +1,5 @@
 #include <globaldefs.h>
 #if defined(jpn)
-#define _Z25RunBufferedStream0207416ciiP12StreamHeaderi func_020752f8
 #define data_020f0d40 data_020f0e38
 #endif
 

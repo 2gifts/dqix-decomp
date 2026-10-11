@@ -16678,3 +16678,35 @@ src/Combat/Main/GetAlignedSizeByCode020b2a6c.cpp:
 src/Combat/Main/RegisterType0x11Handler.cpp:
     complete
     .text start:0x020d2be4 end:0x020d2c10
+
+src/Combat/Main/CheckBits5To9Equal2.cpp:
+    complete
+    .text start:0x0204cc40 end:0x0204cc5c
+
+src/Combat/Main/ReturnZero020c7dc4.cpp:
+    complete
+    .text start:0x020c9890 end:0x020c9898
+
+src/Combat/Main/_Z25RunBufferedStream0207416ciiP12StreamHeaderi.cpp:
+    complete
+    .text start:0x020752f8 end:0x0207535c
+
+src/Combat/Main/func_020311f0.cpp:
+    complete
+    .text start:0x02030d28 end:0x02030d6c
+
+src/Combat/Main/func_02031234.cpp:
+    complete
+    .text start:0x02030d6c end:0x02030db0
+
+src/Combat/Main/func_02031278.cpp:
+    complete
+    .text start:0x02030db0 end:0x02030df4
+
+src/Combat/Main/func_02032370.cpp:
+    complete
+    .text start:0x02031ea8 end:0x02031efc
+
+src/Combat/Main/func_020323c4.cpp:
+    complete
+    .text start:0x02031efc end:0x02031f5c

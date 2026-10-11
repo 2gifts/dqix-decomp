@@ -40,6 +40,9 @@ struct Panel0215c650 {
     SafeAllocator alloc3c;
     SafeAllocator alloc50;
     struct Struct020dfc40 sub64;
+#if defined(jpn)
+    struct Struct020dfc40 sub7c;
+#endif
     void* textBuf;
     struct MainBgControlBackup02074af4 bgBackup;
     int savedBgPlanes;
@@ -104,6 +107,9 @@ extern "C" ARM void func_ov003_0215c650(struct Panel0215c650* self) {
     self->alloc3c.ResetAllocatorPointer();
     self->alloc50.ResetAllocatorPointer();
     _Z19ResetStruct020dfc40P14Struct020dfc40(&self->sub64);
+#if defined(jpn)
+    _Z19ResetStruct020dfc40P14Struct020dfc40(&self->sub7c);
+#endif
     self->textBuf = 0;
     _Z18InitStruct0205cfd4P18InitTarget0205cfd4(&self->sub98);
 

@@ -24,3 +24,15 @@ src/Combat/Overlay_12/AdvanceTagState_02187158.cpp:
 
 src/Combat/Overlay_12/func_ov012_02185af0.cpp:
     .text start:0x02186148 end:0x02186248
+
+src/Combat/Overlay_12/func_ov012_021843d4.cpp:
+    complete
+    .text start:0x02185448 end:0x02185690
+
+src/Combat/Overlay_12/func_ov012_02184acc.cpp:
+    complete
+    .text start:0x02185b90 end:0x02185db4
+
+src/Combat/Overlay_12/InitBattleAllocatorsAndBuffers_02184884.cpp:
+    complete
+    .text start:0x021859c4 end:0x02185b90

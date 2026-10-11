@@ -5,7 +5,6 @@
 #include <globaldefs.h>
 
 #ifdef jpn
-    #define func_020323c4 func_02031efc
 
 
             #define _Z29ExportDetailedTreasureMapDataPK19TreasureMapMetadataP23DetailedTreasureMapDatabPKh func_020a5770
