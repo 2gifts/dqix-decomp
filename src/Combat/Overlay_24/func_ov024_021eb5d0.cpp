@@ -1,5 +1,4 @@
 #include <globaldefs.h>
-#include "ActionFallback_021eaa50.h"
 #include "Combat/Overlay_0/GetCombatantByID.h"
 struct CombatantStruct {
     unsigned short flags;
@@ -264,6 +263,7 @@ extern "C" void* _Z26LookupElementByKey02079ee0Pvi(void* table, int key);
 extern "C" void* memset(void* dst, int value, unsigned int length);
 extern "C" int _Z31DispatchWithFieldLookup021540c8PvS_i(void* world, void* src, void* out);
 extern "C" int func_ov000_0215440c(void* world, void* src, void* out);
+extern "C" short func_ov024_021eaa50(struct Act_021eb5d0* self, struct Src_021eb5d0* src, struct Rec_021eb5d0* rec, unsigned char noCost);
 extern "C" short func_ov000_0215cda0(void* world);
 extern "C" int func_ov024_021e8dc0(struct Act_021eb5d0* self, int id, struct Rec_021eb5d0* rec, short* list, int count);
 extern "C" int _Z13GetTableValuePv(void* p);
