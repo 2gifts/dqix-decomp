@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-// ---- data -----------------------------------------------------------------
 extern int data_02109bf4;
 extern char data_ov006_0216026c[];
 extern char data_ov006_02160286[];
@@ -17,7 +16,6 @@ extern char data_ov006_0216032e[];
 extern char data_ov006_02160340[];
 extern char data_ov006_02160359[];
 
-// ---- callees ---------------------------------------------------------------
 int GetWord0x0(int* obj);
 extern "C" void* _ZN16BackgroundLoader11GetInstanceEv();
 extern "C" int _Z27SetStateAndDispatch0209c3b4P13Actor0209c3b4i(void*, int);
@@ -80,7 +78,6 @@ extern "C" void* _Z21GetFieldByKey020e0434P17Container020e0310i(void*, int);
 extern "C" void func_02046608(void*, int, void*, void*, int, int, int);
 extern "C" void _Z26SetEntryFirstField02080f8cP17Container02080f8cii(void*, int, void*);
 
-// ---- sub-structures of the scene object -----------------------------------
 struct Node14 {
     unsigned char pad[0x2c];
     void* f2c;
@@ -104,72 +101,71 @@ struct Nib {
 struct Scene {
     unsigned char pad00[0x08];
     void* f08;
-    void* alloc;                          // 0x0c
+    void* alloc;
     unsigned char pad10[0x04];
-    void* f14;                            // 0x14
-    void* f18;                            // 0x18
-    void* f1c;                            // 0x1c
-    void* f20;                            // 0x20
-    void* f24;                            // 0x24
+    void* f14;
+    void* f18;
+    void* f1c;
+    void* f20;
+    void* f24;
     unsigned char pad28[0x04];
-    int f2c;                              // 0x2c
-    int f30;                              // 0x30
+    int f2c;
+    int f30;
     unsigned char pad34[0x04];
-    int f38;                              // 0x38
+    int f38;
     unsigned char pad3c[0x54 - 0x3c];
-    unsigned char f54[0x1c];              // 0x54
-    unsigned char f70;                    // 0x70
+    unsigned char f54[0x1c];
+    unsigned char f70;
     unsigned char pad71[0x74 - 0x71];
-    unsigned char f74[0xac - 0x74];       // 0x74
-    unsigned char fac[0xe8 - 0xac];       // 0xac
-    int fe8;                              // 0xe8
-    int fec;                              // 0xec
+    unsigned char f74[0xac - 0x74];
+    unsigned char fac[0xe8 - 0xac];
+    int fe8;
+    int fec;
     unsigned char padf0[0xf8 - 0xf0];
-    unsigned short ff8;                   // 0xf8
+    unsigned short ff8;
     unsigned char padfa[0xfc - 0xfa];
-    unsigned char ffc;                    // 0xfc
+    unsigned char ffc;
     unsigned char padfd[0x100 - 0xfd];
-    unsigned char f100[0x14c - 0x100];    // 0x100
-    int f14c;                             // 0x14c
+    unsigned char f100[0x14c - 0x100];
+    int f14c;
     unsigned char pad150[0x158 - 0x150];
-    unsigned char f158[0x170 - 0x158];    // 0x158
-    unsigned char f170[0x300 - 0x170];    // 0x170
-    unsigned char f300[0x54];             // 0x300
-    int f354;                             // 0x354
+    unsigned char f158[0x170 - 0x158];
+    unsigned char f170[0x300 - 0x170];
+    unsigned char f300[0x54];
+    int f354;
     unsigned char pad358[0x35c - 0x358];
-    short* f35c;                          // 0x35c
+    short* f35c;
     unsigned char pad360[0x384 - 0x360];
-    signed char f384;                     // 0x384
-    signed char f385;                     // 0x385
-    unsigned char f386;                   // 0x386
+    signed char f384;
+    signed char f385;
+    unsigned char f386;
     unsigned char pad387[0x38f - 0x387];
-    unsigned char f38f;                   // 0x38f
-    unsigned char f390;                   // 0x390
+    unsigned char f38f;
+    unsigned char f390;
     unsigned char pad391[0x394 - 0x391];
-    unsigned short f394;                  // 0x394
+    unsigned short f394;
 };
 
-// ---- the whole stack region as ONE struct, slots in ROM order -------------
 struct Frame {
-    short sel;                            // sp+0x0c
+    short sel;
     unsigned char pad0[2];
-    unsigned int cs;                      // sp+0x10
-    void* cd;                             // sp+0x14
-    int rbs;                             // sp+0x18
-    unsigned int cbs;                     // sp+0x1c
-    void* cbd;                            // sp+0x20
-    void* rbd;                            // sp+0x24
-    unsigned int c9s;                     // sp+0x28
-    void* c9d;                            // sp+0x2c
-    int r7s;                              // sp+0x30
-    unsigned int c7s;                     // sp+0x34
-    void* c7d;                            // sp+0x38
-    void* r7d;                            // sp+0x3c
-    unsigned int c5s;                     // sp+0x40
-    void* c5d;                            // sp+0x44
-    unsigned int c3s;                     // sp+0x48
-    void* c3d;                            // sp+0x4c
-    unsigned char buf[0x400];             // sp+0x50
+    unsigned int cs;
+    void* cd;
+    int rbs;
+    unsigned int cbs;
+    void* cbd;
+    void* rbd;
+    unsigned int c9s;
+    void* c9d;
+    int r7s;
+    unsigned int c7s;
+    void* c7d;
+    void* r7d;
+    unsigned int c5s;
+    void* c5d;
+    unsigned int c3s;
+    void* c3d;
+    unsigned char buf[0x400];
 };
 
 // USA: func_ov006_0215a5fc
