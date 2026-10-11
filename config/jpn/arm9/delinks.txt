@@ -16806,3 +16806,7 @@ src/Combat/Main/ClearMatchingBitsInMaskTable020c9a88.cpp:
 src/Combat/Main/func_020276dc.cpp:
     complete
     .text start:0x02026f48 end:0x02027030
+
+src/Combat/Main/02070b6c.cpp:
+    complete
+    .text start:0x02071bd8 end:0x02071ecc
