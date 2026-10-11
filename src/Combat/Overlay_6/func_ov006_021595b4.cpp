@@ -7,13 +7,15 @@
 #define data_ov006_0215ffe2 data_ov006_0216132e
 #define data_ov006_0215fff4 data_ov006_02161346
 #define func_ov006_021547c8 func_ov006_02155f30
-#define func_ov006_021570fc func_ov006_02158704
 #define func_ov006_0215f4dc func_ov006_021608fc
 #define func_ov006_0215f740 func_ov006_02160b08
 #else
 #define R(j,u) (u)
 #endif
 #include <globaldefs.h>
+#if defined(jpn)
+#define func_ov006_021570fc func_ov006_02158704
+#endif
 
 struct Obj2081;
 struct Obj0205eaa0;

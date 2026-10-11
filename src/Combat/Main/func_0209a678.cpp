@@ -5,8 +5,13 @@ int TestBitInArray0x8ec(unsigned char* arr, int bit);
 void SetBitInArray0x8ec(unsigned char* arr, int bit);
 
 struct SkillEntry {
+#if defined(jpn)
+    unsigned short id : 12;
+    unsigned short pad1 : 4;
+#else
     unsigned short id : 11;
     unsigned short pad1 : 5;
+#endif
     union {
         unsigned int slot : 5;
         unsigned int raw;
@@ -41,7 +46,18 @@ extern "C" ARM int func_0209a678(char* table, void* member, unsigned short* skil
         }
         int end = index + j;
         for (i = index; i < end; i++) {
+#if defined(jpn)
+            SkillEntry* entry = &(*(SkillEntry**)table)[i];
+            unsigned int raw = entry->u.raw;
+            unsigned int prerequisite = (raw << 15) >> 27;
+            if (prerequisite != 0 &&
+                ((Field150*)field)->key[prerequisite] < ((raw << 8) >> 25)) {
+                continue;
+            }
+            unsigned short id = entry->id;
+#else
             unsigned short id = (*(SkillEntry**)table)[i].id;
+#endif
             if (TestBitInArray0x8ec(field, id) == 0) {
                 SetBitInArray0x8ec(field, id);
                 skills[count] = id;

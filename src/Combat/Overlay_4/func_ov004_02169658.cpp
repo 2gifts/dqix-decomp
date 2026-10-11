@@ -2,11 +2,8 @@
 #include "GameState/GameState.h"
 #if defined(jpn)
 #define func_ov023_021f6524 func_ov004_02168f08
-#define _Z23GetNodeIfType8_02168a6cPvi func_ov004_02168f70
-#define _Z24GetNodeIfType15_02168a38Pvi func_ov004_02168f3c
 #define _Z26ClearNodeMaskById_021f6600Pvii func_ov004_02168ed8
 #define _Z29DispatchNodeIfState6_021f6680Pvi func_ov004_02168fa4
-#define _Z24GetNodeIfType11_02168ad4Pvi func_ov004_0216900c
 #define func_ov004_02169b4c func_ov004_0216a044
 #endif
 

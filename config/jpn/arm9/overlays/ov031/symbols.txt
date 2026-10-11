@@ -358,7 +358,7 @@ func_ov031_0220f084 kind:function(arm,size=0x60) addr:0x0220f864
 _Z33SetGlobal0224e540Field28_0220f0e4i kind:function(arm,size=0x20) addr:0x0220f8c4
 func_ov031_0220f104 kind:function(arm,size=0x188) addr:0x0220f8e4
 func_ov031_0220f28c kind:function(arm,size=0x40) addr:0x0220fa6c
-func_ov031_0220f2cc kind:function(arm,size=0x14) addr:0x0220faac
+_Z30TailCallReleaseGlobal_0220f2ccv kind:function(arm,size=0x14) addr:0x0220faac
 func_ov031_0220f2e0 kind:function(arm,size=0x50) addr:0x0220fac0
 func_ov031_0220f330 kind:function(arm,size=0x38) addr:0x0220fb10
 _Z22CompareBytes6_0220f368PhS_ kind:function(arm,size=0x2c) addr:0x0220fb48
@@ -2608,7 +2608,7 @@ data_ov031_0224c4fc kind:data(any) addr:0x0224d0fc
 data_ov031_0224c520 kind:data(any) addr:0x0224d120
 data_ov031_0224c544 kind:data(any) addr:0x0224d144
 data_ov031_0224c55c kind:data(any) addr:0x0224d15c
-data_ov031_0224d164 kind:data(any) addr:0x0224d164
+data_ov031_0224c564 kind:data(any) addr:0x0224d164
 data_ov031_0224c56c kind:data(any) addr:0x0224d16c
 data_ov031_0224c570 kind:data(any) addr:0x0224d170
 data_ov031_0224c578 kind:data(any) addr:0x0224d178

@@ -2424,3 +2424,11 @@ src/Combat/Overlay_23/SetSubEngineModeFlag_021f1818.cpp:
 src/Combat/Overlay_23/SetCaptureRegField730_021dcd18.cpp:
     complete
     .text start:0x021dd620 end:0x021dd680
+
+src/Combat/Overlay_23/GetFieldPtrAt_021f79e4_021f79e4.cpp:
+    complete
+    .text start:0x021f6edc end:0x021f6ee4
+
+src/Combat/Overlay_23/GetFieldPtr24_021fad18.cpp:
+    complete
+    .text start:0x021fa0fc end:0x021fa104

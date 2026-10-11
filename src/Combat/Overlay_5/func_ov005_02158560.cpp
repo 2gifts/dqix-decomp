@@ -2,12 +2,15 @@
 
 #if defined(jpn)
 #define func_ov005_02158560 func_ov005_02159b58
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
 #endif
 
 struct Obj0205eaa0;
 
 struct EquipmentMenu {
-    char unk_0[0x3daa];
+    char unk_0[LOW_REGION(0x3d22, 0x3daa)];
     unsigned char pageStep_;
     char unk_3dab[0x3dbc - 0x3dab];
     unsigned char kind_;

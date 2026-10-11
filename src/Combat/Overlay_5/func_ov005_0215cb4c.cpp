@@ -2,13 +2,16 @@
 
 #if defined(jpn)
 #define func_ov005_0215cb4c func_ov005_0215df2c
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
 #endif
 
 struct Struct0209c830;
 
 struct EquipmentMenu
 {
-    char unk_0[0x3dcc];
+    char unk_0[LOW_REGION(0x3d44, 0x3dcc)];
     unsigned int flags_;
     char unk_3dd0[0x3df3 - 0x3dd0];
     unsigned char fadeStep_;

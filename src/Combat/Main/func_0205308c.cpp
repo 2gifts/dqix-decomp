@@ -2,10 +2,19 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "std_library_functions.h"
 
+#if defined(jpn)
+#define data_020e7bf8 data_020e85d0
+extern char data_020f04d0;
+#endif
+
 struct Field150Holder02052e2c;
 
 struct Obj0205308c {
+#if defined(jpn)
+    char pad[0x174];
+#else
     char pad[0x180];
+#endif
     int f180;
     char pad184[0x194 - 0x184];
     int f194;
@@ -51,6 +60,14 @@ extern "C" ARM void func_0205308c(void* obj, int val) {
         }
     }
 
+#if defined(jpn)
+    if (val != 0xc && val != 0xd && val != 0xe &&
+        val != 0xf && val != 0x10 && val != 0x1e) {
+        return;
+    }
+    VectorizedMemset(buf, 0, 0x50);
+    sprintf(buf, &data_020f04d0, val);
+#else
     flag = 0;
     switch (val) {
         case 0xc:
@@ -72,9 +89,14 @@ extern "C" ARM void func_0205308c(void* obj, int val) {
     if (flag == 0) {
         return;
     }
+#endif
     if (self->f194 > -1) {
         loader->RemoveTask(self->f194);
         self->f194 = -1;
     }
+#if defined(jpn)
+    self->f194 = loader->QueueLoadFile(buf, 0);
+#else
     self->f194 = loader->QueueLoadFileInGP2(&data_020f0467, buf, 0);
+#endif
 }

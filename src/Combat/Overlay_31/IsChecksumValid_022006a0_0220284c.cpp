@@ -2,7 +2,8 @@
 
 ARM int IsChecksumValid_022006a0(void*, unsigned int, void*, unsigned int);
 ARM int FindAndRescheduleContext_02202810(int, int);
-extern "C" void func_ov031_0220225c(int, int, int);
+struct Header0220225c;
+extern "C" void func_ov031_0220225c(Header0220225c*, void*, int);
 extern "C" void func_ov031_02202334(int, int, int);
 extern "C" void func_ov031_0220242c(int, int, int);
 extern "C" void func_ov031_02202744(int, int, int);
@@ -35,7 +36,7 @@ extern "C" ARM void func_ov031_0220284c(void* c, Buf0220284c* buf, int len) {
 
 case2:
     if (buf->byte0xd & 0x28) return;
-    func_ov031_0220225c((int)c, (int)buf, len);
+    func_ov031_0220225c((Header0220225c*)c, buf, len);
     return;
 
 case0x12:

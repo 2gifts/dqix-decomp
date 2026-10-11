@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 ARM int IsNonzeroAndNotNeg1_02201b94(int a, int b);
-extern "C" int func_ov031_022021d4(void* a, void* b, void* c);
+extern "C" int func_ov031_022021d4(void* a, void* b, int length);
 extern "C" void* func_ov031_02201c84(void* a, void* b);
 extern "C" void func_ov031_022020e8(void* header, void* data, void* out);
 void CycleCurrentPriorityContexts(void);
@@ -9,7 +9,7 @@ void CycleCurrentPriorityContexts(void);
 struct Header0220225c { unsigned char pad0[0xc]; unsigned short fc; unsigned short fe; unsigned short f10; unsigned short f12; };
 
 // USA: func_ov031_0220225c
-extern "C" ARM void func_ov031_0220225c(Header0220225c* header, void* data, void* obj) {
+extern "C" ARM void func_ov031_0220225c(Header0220225c* header, void* data, int length) {
 	unsigned short v12 = header->f12;
 	unsigned short v10 = header->f10;
 	unsigned short ve = header->fe;
@@ -24,7 +24,7 @@ extern "C" ARM void func_ov031_0220225c(Header0220225c* header, void* data, void
 	if (!IsNonzeroAndNotNeg1_02201b94(a, b)) {
 		return;
 	}
-	if (func_ov031_022021d4(header, data, obj) != 0) {
+	if (func_ov031_022021d4(header, data, length) != 0) {
 		return;
 	}
 	void* field = func_ov031_02201c84(header, data);

@@ -35,7 +35,11 @@ extern "C" ARM int func_ov031_022439d8(Struct022439d8* ctx) {
 	if (obj != 0) {
 		SetByteField0x253(obj);
 	}
+#if defined(jpn)
+	*(int*)((char*)base + 0x41e4) = 0;
+#else
 	*(int*)((char*)base + 0x4494) = 0;
+#endif
 	if (ctx->f39c >= 0) {
 		loader->RemoveTask(ctx->f39c);
 		ctx->f39c = -1;

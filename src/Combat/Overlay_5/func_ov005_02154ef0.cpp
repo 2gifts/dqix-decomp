@@ -3,8 +3,6 @@
 #define func_ov005_02155d6c func_ov005_0215735c
 #define func_ov005_02159c88 func_ov005_0215b1d4
 #define func_ov005_0215a2c8 func_ov005_0215b81c
-#define func_ov005_0215a37c func_ov005_0215b8d0
-#define func_ov005_0215a3bc func_ov005_0215b910
 #define func_ov005_0215a418 func_ov005_0215b96c
 #define func_ov005_0215a620 func_ov005_0215bb74
 #define func_ov005_0215a720 func_ov005_0215bc6c
@@ -15,6 +13,10 @@
 #define R(j,u) (u)
 #endif
 #include <globaldefs.h>
+#if defined(jpn)
+#define func_ov005_0215a37c func_ov005_0215b8d0
+#define func_ov005_0215a3bc func_ov005_0215b910
+#endif
 #include <GameState/GameState.h>
 
 struct Cont0205d1e0;

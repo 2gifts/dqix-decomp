@@ -1,8 +1,6 @@
 #include <globaldefs.h>
 #if defined(jpn)
 #define func_ov023_021f6524 func_ov004_02168f08
-#define _Z23GetNodeIfType8_02168a6cPvi func_ov004_02168f70
-#define _Z24GetNodeIfType15_02168a38Pvi func_ov004_02168f3c
 extern "C" void* func_ov004_02168fa4(void*, int);
 extern "C" void func_ov023_021f809c(void*, void*);
 #endif

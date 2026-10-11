@@ -252,3 +252,19 @@ src/Combat/Overlay_6/func_ov006_02155e28.cpp:
 
 src/Combat/Overlay_6/func_ov006_02158478.cpp:
     .text start:0x02159994 end:0x02159ac8
+
+src/Combat/Overlay_6/func_ov006_02154fe4.cpp:
+    complete
+    .text start:0x02156730 end:0x021567b4
+
+src/Combat/Overlay_6/ResetDisplayState02155480.cpp:
+    complete
+    .text start:0x02156b68 end:0x02156bf0
+
+src/Combat/Overlay_6/ToggleFlagAndSync_021570fc.cpp:
+    complete
+    .text start:0x02158704 end:0x0215878c
+
+src/Combat/Overlay_6/func_ov006_0215f740.cpp:
+    complete
+    .text start:0x02160b08 end:0x02160bb0

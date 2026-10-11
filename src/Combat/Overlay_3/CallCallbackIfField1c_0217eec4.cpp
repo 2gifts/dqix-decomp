@@ -1,7 +1,9 @@
 #include <globaldefs.h>
-
 #if defined(jpn)
 #define func_ov009_02184bbc func_ov009_02185ee8
+#endif
+
+#if defined(jpn)
 #endif
 extern "C" void func_ov009_02184bbc(void* obj);
 

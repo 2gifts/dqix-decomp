@@ -15,6 +15,7 @@ src/Combat/Overlay_9/ResetAndReinitCombatState_02184848.cpp:
     .text start:0x021858e4 end:0x02185aac
 
 src/Combat/Overlay_9/func_ov009_02187b34.cpp:
+    complete
     .text start:0x021888f0 end:0x0218918c
 
 src/Combat/Overlay_9/02188d9c.cpp:
@@ -23,3 +24,11 @@ src/Combat/Overlay_9/02188d9c.cpp:
 src/Combat/Overlay_9/func_ov009_0218454c.cpp:
     complete
     .text start:0x021855a8 end:0x02185828
+
+src/Combat/Overlay_9/DecrementCounterD96ClampZero_0218a930.cpp:
+    complete
+    .text start:0x0218b908 end:0x0218b934
+
+src/Combat/Overlay_9/func_ov009_02184bbc.cpp:
+    complete
+    .text start:0x02185ee8 end:0x02185f5c

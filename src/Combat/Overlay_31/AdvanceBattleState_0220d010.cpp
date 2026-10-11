@@ -4,7 +4,7 @@
 
 int IssueBattleCommandSlot29(int arg, int a, int b, int c, unsigned short d);
 extern "C" void func_ov031_0220da1c(int);
-extern "C" void func_ov031_0220d570(int);
+extern "C" int func_ov031_0220d570(int);
 extern "C" void func_ov031_0220dc40(void);
 extern int data_ov031_0224e53c;
 

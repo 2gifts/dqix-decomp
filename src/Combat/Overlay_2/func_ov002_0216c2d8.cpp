@@ -1,7 +1,6 @@
 #include "std_library_functions.h"
 #include <globaldefs.h>
 #if defined(jpn)
-#define func_ov002_0216c28c func_ov002_0216c8dc
 #define ARRAY_A_OFFSET 0x1b94
 #define ARRAY_B_OFFSET 0x1bac
 #define COUNT_IN_HIGH 0xb8f

@@ -86,7 +86,11 @@ extern "C" ARM void func_0208f168(struct Self0208f168* self, void* alloc) {
         }
 
         GameState* bs = GameState::GetInstance();
+#if defined(jpn)
+        struct Entry0208f168* table = (struct Entry0208f168*)((char*)bs + 0x27c + 0x5800);
+#else
         struct Entry0208f168* table = (struct Entry0208f168*)((char*)bs + 0xdc + 0x5c00);
+#endif
         struct Node0208f168* node = h->head;
         func_02057924();
         bs->GetProtagonist();

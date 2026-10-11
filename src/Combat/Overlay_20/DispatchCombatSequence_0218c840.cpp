@@ -1,6 +1,5 @@
 #if defined(jpn)
 #define REGION(j,u) (j)
-#define _Z35CheckGlobalObjState2AndInit0205cde8Ph func_0205e118
 #define data_ov020_0218d974 data_ov020_0218e1c4
 #define data_ov020_0218d990 data_ov020_0218e1e0
 #define func_0205c96c func_0205dcd4

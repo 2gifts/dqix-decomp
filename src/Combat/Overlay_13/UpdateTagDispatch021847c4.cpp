@@ -3,8 +3,6 @@
 #define func_ov013_021846a0 func_ov013_021856dc
 #define func_ov013_02184d80 func_ov013_02185db4
 #define func_ov013_02186160 func_ov013_02187178
-#define func_ov013_021864f0 func_ov013_02187820
-#define func_ov013_02186590 func_ov013_021878c0
 #define func_ov013_0218678c func_ov013_02187ab8
 #define func_ov013_0218683c func_ov013_02187b68
 #define func_ov013_02186bd4 func_ov013_02187f00
@@ -12,6 +10,9 @@
 #define R(j,u) (u)
 #endif
 #include <globaldefs.h>
+#if defined(jpn)
+#define func_ov013_021864f0 func_ov013_02187820
+#endif
 #include "GameState/GameState.h"
 
 struct Struct0205d888;

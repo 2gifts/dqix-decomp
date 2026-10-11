@@ -1347,6 +1347,7 @@ src/Combat/Overlay_3/GetArrayEntryByIndex_02156034.cpp:
     .text start:0x02157690 end:0x021576b0
 
 src/Combat/Overlay_3/func_ov003_0217e3b8.cpp:
+    complete
     .text start:0x0217d0c0 end:0x0217d288
 
 src/Combat/Overlay_3/ResetFields_0215873c.cpp:
@@ -1496,3 +1497,15 @@ src/Combat/Overlay_3/func_ov003_0216aa28.cpp:
 src/Combat/Overlay_3/func_ov003_02160854.cpp:
     complete
     .text start:0x021609f0 end:0x02160bc4
+
+src/Combat/Overlay_3/GetField224_021685c4.cpp:
+    complete
+    .text start:0x0216844c end:0x02168454
+
+src/Combat/Overlay_3/SetFlag2At_021685cc.cpp:
+    complete
+    .text start:0x02168454 end:0x02168464
+
+src/Combat/Overlay_3/SetElementFlagIfValid_0217451c.cpp:
+    complete
+    .text start:0x0217365c end:0x02173690

@@ -1,15 +1,16 @@
 #if defined(jpn)
 #define R(j,u) (j)
 #define _Z23EmptyDestructor0205cb60Pv func_0205deb8
-#define _Z25ResetDisplayState02155480P11Obj02155480 func_ov006_02156b68
 #define data_ov011_021889a0 data_ov011_02189700
 #define data_ov013_02187dd8 data_ov013_02188cf0
-#define func_ov006_02154fe4 func_ov006_02156730
-#define func_ov006_021570fc func_ov006_02158704
 #else
 #define R(j,u) (u)
 #endif
 #include <globaldefs.h>
+#if defined(jpn)
+#define func_ov006_02154fe4 func_ov006_02156730
+#define func_ov006_021570fc func_ov006_02158704
+#endif
 
 struct Obj2081;
 struct List0204af64;
@@ -65,12 +66,7 @@ void ResetList0204af64(List0204af64*);
 int DispatchViaTable0204b5e8(Obj0204b5e8*, int, int);
 void CallFunc0204b620IfField0x14_0204b938(void*, void*, int, int, unsigned short);
 extern "C" void func_ov006_02154fe4(AlchemyPot*);
-#if defined(jpn)
-#define ResetDisplayState02155480 func_ov006_02156b68
-extern "C" void ResetDisplayState02155480(Obj02155480*);
-#else
 void ResetDisplayState02155480(Obj02155480*);
-#endif
 extern "C" int func_ov006_021570fc(AlchemyPot*, int);
 extern "C" void func_0204b088(void*, int);
 int GetInnerFlagBit0020e28dc(Outer020e28dc*);
