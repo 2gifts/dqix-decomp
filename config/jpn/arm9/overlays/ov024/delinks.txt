@@ -2074,3 +2074,67 @@ src/Combat/Overlay_24/func_ov024_021e13e0.cpp:
 src/Combat/Overlay_24/func_ov024_021e2784.cpp:
     complete
     .text start:0x021e301c end:0x021e31e8
+
+src/Combat/Overlay_24/AddBuffEntryToTable_021de678.cpp:
+    complete
+    .text start:0x021def10 end:0x021df008
+
+src/Combat/Overlay_24/AddBuffEntryToTable_021de770.cpp:
+    complete
+    .text start:0x021df008 end:0x021df100
+
+src/Combat/Overlay_24/AddBuffEntryToTable_021dec50.cpp:
+    complete
+    .text start:0x021df4e8 end:0x021df5e0
+
+src/Combat/Overlay_24/AddBuffEntryToTable_021deff8.cpp:
+    complete
+    .text start:0x021df890 end:0x021df988
+
+src/Combat/Overlay_24/AddBuffEntryToTable_021df0f0.cpp:
+    complete
+    .text start:0x021df988 end:0x021dfa80
+
+src/Combat/Overlay_24/AddBuffEntryToTable_021e00c0.cpp:
+    complete
+    .text start:0x021e0958 end:0x021e0a50
+
+src/Combat/Overlay_24/AddBuffEntryToTable_021e01b8.cpp:
+    complete
+    .text start:0x021e0a50 end:0x021e0b48
+
+src/Combat/Overlay_24/AddBuffEntryToTable_021e0a50.cpp:
+    complete
+    .text start:0x021e12e8 end:0x021e13e0
+
+src/Combat/Overlay_24/func_ov024_021db3a4.cpp:
+    complete
+    .text start:0x021dbc50 end:0x021dbe98
+
+src/Combat/Overlay_24/func_ov024_021dd028.cpp:
+    complete
+    .text start:0x021dd8d4 end:0x021ddb0c
+
+src/Combat/Overlay_24/func_ov024_021dc700.cpp:
+    complete
+    .text start:0x021dcfac end:0x021dd1e8
+
+src/Combat/Overlay_24/func_ov024_021de9dc.cpp:
+    complete
+    .text start:0x021df274 end:0x021df4e8
+
+src/Combat/Overlay_24/func_ov024_021e2298.cpp:
+    complete
+    .text start:0x021e2b30 end:0x021e2e18
+
+src/Combat/Overlay_24/func_ov024_021dc2a0.cpp:
+    complete
+    .text start:0x021dcb4c end:0x021dcdec
+
+src/Combat/Overlay_24/func_ov024_021da670.cpp:
+    complete
+    .text start:0x021daf30 end:0x021db258
+
+src/Combat/Overlay_24/func_ov024_021dd278.cpp:
+    complete
+    .text start:0x021ddb24 end:0x021ddde0

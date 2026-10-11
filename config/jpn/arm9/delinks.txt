@@ -15309,3 +15309,179 @@ src/Combat/Main/InitBigStruct0205c790.cpp:
 src/Combat/Main/SyncBattleState0208f87c.cpp:
     complete
     .text start:0x02090190 end:0x02090258
+
+src/Combat/Main/UpdateChannelStateIfEligible02093f68.cpp:
+    complete
+    .text start:0x02094888 end:0x02094950
+
+src/Combat/Main/ProcessCombatEntry0205cb74.cpp:
+    complete
+    .text start:0x0205decc end:0x0205dfa8
+
+src/Combat/Main/func_02043124.cpp:
+    complete
+    .text start:0x02043898 end:0x02043978
+
+src/Combat/Main/ResetBigStruct02013750.cpp:
+    complete
+    .text start:0x02013518 end:0x02013604
+
+src/Combat/Main/func_020ac2d4.cpp:
+    complete
+    .text start:0x020adda0 end:0x020ade94
+
+src/Combat/Main/InitFieldsIfInRange02052e44.cpp:
+    complete
+    .text start:0x02054214 end:0x02054314
+
+src/Combat/Main/StepValueTowardTarget02052ae8.cpp:
+    complete
+    .text start:0x02053ec4 end:0x02053fd8
+
+src/Combat/Main/InitCombatObject_02020720.cpp:
+    complete
+    .text start:0x02020344 end:0x0202045c
+
+src/Combat/Main/ProcessCombatState020534ac.cpp:
+    complete
+    .text start:0x02054824 end:0x02054940
+
+src/Combat/Main/func_020ac104.cpp:
+    complete
+    .text start:0x020adbd0 end:0x020add00
+
+src/Combat/Main/func_020abb64.cpp:
+    complete
+    .text start:0x020ad62c end:0x020ad770
+
+src/Combat/Main/FilterBytesAndInit02052f44.cpp:
+    complete
+    .text start:0x02054314 end:0x0205445c
+
+src/Combat/Main/HandleGrottoTurnTransition0208f944.cpp:
+    complete
+    .text start:0x02090258 end:0x020903a0
+
+src/Combat/Main/func_02083cbc.cpp:
+    complete
+    .text start:0x020845d4 end:0x02084740
+
+src/Combat/Main/UpdateCombatReceiverResources.cpp:
+    complete
+    .text start:0x02022e04 end:0x02022f90
+
+src/Combat/Main/ResetEightRegionsAndFlags.cpp:
+    complete
+    .text start:0x02094340 end:0x02094380
+
+src/Combat/Main/ResetAndClearFlags020d7a5c.cpp:
+    complete
+    .text start:0x020d9464 end:0x020d94a4
+
+src/Combat/Main/SetIndexedName02046574.cpp:
+    complete
+    .text start:0x02047418 end:0x02047460
+
+src/Combat/Main/RestartTaskHandle020e063c.cpp:
+    complete
+    .text start:0x020e2284 end:0x020e22cc
+
+src/Combat/Main/InitFields02042b3c.cpp:
+    complete
+    .text start:0x02043218 end:0x02043270
+
+src/Combat/Main/ResetOrConsumeCounter02065920.cpp:
+    complete
+    .text start:0x02066d50 end:0x02066dc4
+
+src/Combat/Main/CollectSetBitIndices020839dc.cpp:
+    complete
+    .text start:0x020842e4 end:0x0208435c
+
+src/Combat/Main/TryApplyElemFields0205d5d0.cpp:
+    complete
+    .text start:0x0205e8e8 end:0x0205e990
+
+src/Combat/Main/InitStateBlock_0204c684.cpp:
+    complete
+    .text start:0x0204d4a4 end:0x0204d570
+
+src/Combat/Main/UpdateAndEnqueueBitHistory0208f048.cpp:
+    complete
+    .text start:0x0208f958 end:0x0208fa7c
+
+src/Combat/Main/ResetBattleState0203c304.cpp:
+    complete
+    .text start:0x0203c464 end:0x0203c4b4
+
+src/Combat/Main/InitIndexedElements02083508.cpp:
+    complete
+    .text start:0x02083de8 end:0x02083e3c
+
+src/Combat/Main/func_020938f0.cpp:
+    complete
+    .text start:0x02094224 end:0x020942ac
+
+src/Combat/Main/ApplyGlobalTableAndFinalize02020aec.cpp:
+    complete
+    .text start:0x02020710 end:0x020207b4
+
+src/Combat/Main/func_020657c8.cpp:
+    complete
+    .text start:0x02066c00 end:0x02066cdc
+
+src/Combat/Main/func_02020fc4.cpp:
+    complete
+    .text start:0x02020bc8 end:0x02020cf4
+
+src/Combat/Main/func_02028a54.cpp:
+    complete
+    .text start:0x020282ac end:0x020283fc
+
+src/Combat/Main/func_020676e0.cpp:
+    complete
+    .text start:0x02068f98 end:0x0206917c
+
+src/Combat/Main/InitObject0207f84c.cpp:
+    complete
+    .text start:0x020805c4 end:0x02080628
+
+src/Combat/Main/ResetElem2081Entry.cpp:
+    complete
+    .text start:0x0204d620 end:0x0204d68c
+
+src/Combat/Main/func_02034104.cpp:
+    complete
+    .text start:0x02033c3c end:0x02033d08
+
+src/Combat/Main/func_02083738.cpp:
+    complete
+    .text start:0x02084030 end:0x0208413c
+
+src/Combat/Main/ReleaseGlobalEntry0203c198.cpp:
+    complete
+    .text start:0x0203bd00 end:0x0203bd44
+
+src/Combat/Main/SwapGlobalEntry0203c108.cpp:
+    complete
+    .text start:0x0203bc54 end:0x0203bd00
+
+src/Combat/Main/func_020a3720.cpp:
+    complete
+    .text start:0x020a5498 end:0x020a55a0
+
+src/Combat/Main/func_02092e0c.cpp:
+    complete
+    .text start:0x0209372c end:0x0209383c
+
+src/Combat/Main/FormatAndCollectCombatants0202c360.cpp:
+    complete
+    .text start:0x0202bf10 end:0x0202bf6c
+
+src/Combat/Main/InitAllocatorAndLoadGp2File0207d6dc.cpp:
+    complete
+    .text start:0x0207e484 end:0x0207e50c
+
+src/Combat/Main/InitializeCombatReceiver.cpp:
+    complete
+    .text start:0x020201a0 end:0x02020344

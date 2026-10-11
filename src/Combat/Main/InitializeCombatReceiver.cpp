@@ -29,7 +29,12 @@ extern "C" void func_02020720(char *receiver);
 void ClearRecords02026644(char *receiver);
 
 extern State_1f9b8 data_020fdcb0[4];
+#if defined(jpn)
+extern unsigned char data_020fda36;
+#define data_020fdcce data_020fda36
+#else
 extern unsigned char data_020fdcce;
+#endif
 struct CombatReceiverInitializationView {
     unsigned char unknown0[0x12];
     unsigned char field12;
@@ -39,7 +44,11 @@ struct CombatReceiverInitializationView {
     unsigned char unknown55f[0x45];
     int flags5a4;
     unsigned char field5a8;
+    #if defined(jpn)
+    unsigned char unknown5a9[0x110];
+#else
     unsigned char unknown5a9[0x1bc];
+#endif
     unsigned char field765;
     unsigned char unknown766[0x6];
     int field76c;
@@ -87,7 +96,9 @@ struct CombatReceiverInitializationView {
     unsigned char bytesa35[0x10];
     unsigned char bytesa45[0x10];
     unsigned char bytesa55[0x20];
+#if !defined(jpn)
     unsigned char unknowna75[0x20];
+#endif
     unsigned char fielda95;
     unsigned char fielda96;
     unsigned char fielda97;
@@ -103,7 +114,11 @@ struct CombatReceiverInitializationView {
 // USA: func_02020554
 extern "C" ARM void func_02020554(void *receiver) {
     CombatReceiverInitializationView *obj = (CombatReceiverInitializationView *) receiver;
+#if defined(jpn)
+    VectorizedMemset(obj, 0, 0xad8);
+#else
     VectorizedMemset(obj, 0, 0xc30);
+#endif
     obj->field9c1 = 0;
     obj->field9c2 = 0;
     obj->field9c3 = 0;
@@ -140,7 +155,9 @@ extern "C" ARM void func_02020554(void *receiver) {
     obj->mask55d   = 0xf;
     obj->field55e  = 0;
     obj->handle9cc = -1;
+#if !defined(jpn)
     obj->handle9f8 = -1;
+#endif
     obj->handle9d0 = -1;
     obj->handle9d4 = -1;
     obj->handle9fc = -1;
@@ -166,9 +183,11 @@ extern "C" ARM void func_02020554(void *receiver) {
     VectorizedMemset(obj->bytesa55, 0, 0x20);
     obj->fielda95 = 0;
     obj->fielda97 = 0;
+#if !defined(jpn)
     VectorizedMemset(obj->bytesba2, 0, 0x40);
     obj->fieldbe4 = 0;
     obj->fieldbe8 = 0;
     obj->fieldbec = 0;
     obj->fieldbee = 0;
+#endif
 }

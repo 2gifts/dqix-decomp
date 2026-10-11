@@ -1,10 +1,16 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define IS_JPN 1
+#else
+#define IS_JPN 0
+#endif
+
 #include "Filesystem/BackgroundLoader.h"
 
 void ReleaseHandle02022b90(void* owner, int* handle);
 
 struct Obj020e063c {
-    unsigned char pad0[0x9c5];
+    unsigned char pad0[IS_JPN ? 0x919 : 0x9c5];
     unsigned char flag_9c5;
     unsigned char pad1[0xa0c - 0x9c6];
     int handle_a0c;

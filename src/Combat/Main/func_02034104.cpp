@@ -39,7 +39,13 @@ extern "C" ARM void func_02034104(Vec3Int_02034104* dst, void* obj) {
                         field4 = *(short*)((char*)obj + 4);
                         void* entry = GetEntryBySignedByteIndex((struct SearchStruct*)thing, field4);
                         Vec3s02030fc8 tmp;
+#if defined(jpn)
+                        tmp.x = *(short*)((char*)entry + 8);
+                        tmp.y = *(short*)((char*)entry + 10);
+                        tmp.z = *(short*)((char*)entry + 12);
+#else
                         _Z16Vector3fix16CopyP8Vector3sPKS_(&tmp, (struct Vec3s02030fc8*)((char*)entry + 8));
+#endif
                         Vec3Int_02034104 scaled;
                         scaled.v[0] = tmp.x << 7;
                         scaled.v[1] = tmp.y << 7;

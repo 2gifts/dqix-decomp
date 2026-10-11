@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define IS_JPN 1
+#else
+#define IS_JPN 0
+#endif
+
 #include "std_library_functions.h"
 
 void ClearFourRegions0204f0ec(char* obj);
@@ -8,8 +14,12 @@ void ClearRecordFields(struct Record0204acb0* rec);
 struct BitsD8_0204c684 {
     unsigned char flagA : 1;
     unsigned char flagB : 1;
+#if defined(jpn)
+    unsigned char valD : 6;
+#else
     unsigned char flagC : 1;
-    unsigned char valD  : 5;
+    unsigned char valD : 5;
+#endif
 };
 
 // USA: func_0204c684  (semantic: InitStateBlock_0204c684)
@@ -50,7 +60,9 @@ extern "C" ARM void func_0204c684(char* obj) {
     *(unsigned char*)(obj + 0xda) = 0;
 
     bits->flagB = 1;
+#if !defined(jpn)
     bits->flagC = 0;
+#endif
 
     memset(obj + 0xdb, 0, 4);
 }

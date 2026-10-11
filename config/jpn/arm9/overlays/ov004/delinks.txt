@@ -1186,3 +1186,18 @@ src/Combat/Overlay_4/DispatchAdjustmentIfType16_021556dc.cpp:
 
 src/Combat/Overlay_4/DispatchEventValue150_0216848c.cpp:
     .text start:0x02168900 end:0x02168924
+
+src/Combat/Overlay_4/DispatchEventValue2_02167d70.cpp:
+    .text start:0x021681b8 end:0x021681d8
+
+src/Combat/Overlay_4/SetOv011FieldTo_0216acd0_0216acd0.cpp:
+    .text start:0x0216af2c end:0x0216af44
+
+src/Combat/Overlay_4/DispatchEventValue150_02168244.cpp:
+    .text start:0x021686b8 end:0x021686dc
+
+src/Combat/Overlay_4/SetFieldFlagValue151_02168268.cpp:
+    .text start:0x021686dc end:0x021686f0
+
+src/Combat/Overlay_4/SetFieldFlagValue21_0216827c.cpp:
+    .text start:0x021686f0 end:0x02168704

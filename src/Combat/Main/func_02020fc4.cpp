@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define IS_JPN 1
+#else
+#define IS_JPN 0
+#endif
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
 #include "std_library_functions.h"
@@ -24,8 +29,13 @@ struct CharTileTask_02020fc4 {
     unsigned short charBaseOffset;
 };
 
+#if defined(jpn)
+typedef int TaskHandle02020fc4;
+#else
+typedef int* TaskHandle02020fc4;
+#endif
 // USA: func_02020fc4
-extern "C" ARM void func_02020fc4(struct CharTileTask_02020fc4* task, int* taskID, SafeAllocator* allocator) {
+extern "C" ARM void func_02020fc4(struct CharTileTask_02020fc4* task, TaskHandle02020fc4 taskID, SafeAllocator* allocator) {
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     int* charTable = (int*)GetData02105254();
 
@@ -34,7 +44,7 @@ extern "C" ARM void func_02020fc4(struct CharTileTask_02020fc4* task, int* taskI
     } else {
         void* fileData = 0;
         unsigned int fileLength = 0;
-        loader->GetLoadedFileByID(*taskID, &fileData, &fileLength);
+        loader->GetLoadedFileByID((IS_JPN ? (int)taskID : *(int*)taskID), &fileData, &fileLength);
         ClearFields0x8((struct State0xbb1c*)((char*)task + 0x78));
         _Z36SetupAndDispatchCharTransfer0203bb3cP11Obj0203bb3cPcP13SafeAllocatorit((struct Obj0203bb3c*)((char*)task + 0x78), (char*)fileData, allocator, 1, 1);
 
@@ -53,6 +63,8 @@ extern "C" ARM void func_02020fc4(struct CharTileTask_02020fc4* task, int* taskI
         _Z28DispatchCharTransfer0203b784Piiiijj(charTable, 1, 0, (int)buffer, 0x20, 1);
     }
 
-    BackgroundLoader::GetInstance()->RemoveTask(*taskID);
+    BackgroundLoader::GetInstance()->RemoveTask(IS_JPN ? (int)taskID : *(int*)taskID);
+#if !defined(jpn)
     *taskID = -1;
+#endif
 }

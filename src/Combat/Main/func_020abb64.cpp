@@ -1,10 +1,19 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define IS_JPN 1
+#else
+#define IS_JPN 0
+#endif
+#if defined(jpn)
+#define _Z20GetSlotEntry020108d8Pci func_02010734
+#endif
+
 #include <GameState/GameState.h>
 #include <System/Memory.h>
 struct Flags020abb64 { unsigned int value:12, mode:4, index:5, field_0x0_21:4, bit25:1, bit26:1, bit27:1, bit28:1, bit29:1, bit30:1, bit31:1; };
 struct Fields020abb64 { unsigned int low:9, middle:10, high:11, bit30:1, bit31:1; };
 struct Config020abb64 { Flags020abb64 flags; Fields020abb64 fields; unsigned char statusByte; };
-struct State020abb64 { char pad[0x569c]; Config020abb64 config; char pad2[0xcd8]; char buffer[0x54]; };
+struct State020abb64 { char pad[IS_JPN ? 0x543c : 0x569c]; Config020abb64 config; char pad2[0xcd8]; char buffer[0x54]; };
 extern "C" char* _Z20GetSlotEntry020108d8Pci(char*, int);
 extern "C" void func_02082828(char*);
 extern "C" int _Z35SendShortBufferOrReturnZero020aba5ci(int);

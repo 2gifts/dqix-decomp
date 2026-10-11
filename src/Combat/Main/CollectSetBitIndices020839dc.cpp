@@ -1,5 +1,11 @@
 #include <globaldefs.h>
-struct BitArray020839dc { unsigned char pad[0x910]; unsigned char bytes[9]; };
+#if defined(jpn)
+#define IS_JPN 1
+#else
+#define IS_JPN 0
+#endif
+
+struct BitArray020839dc { unsigned char pad[IS_JPN ? 0x878 : 0x910]; unsigned char bytes[9]; };
 // USA: func_020839dc
 ARM int CollectSetBitIndices020839dc(struct BitArray020839dc* s, unsigned char* out, int max) {
     int byteIdx;

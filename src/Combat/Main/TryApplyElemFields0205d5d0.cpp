@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define IS_JPN 1
+#else
+#define IS_JPN 0
+#endif
+
 
 struct Elem0205d5d0 {
     char pad[0xc4];
@@ -15,7 +21,11 @@ struct StructA0205d5d0 {
 
 int CheckField0x9cSetWhenField0xd4Present(unsigned char* obj);
 void ApplyElemFields0205d904(unsigned char* obj);
+#if defined(jpn)
+extern "C" void func_0204d8f0(void* elem, int c, int d);
+#else
 extern "C" void func_0204cb20(void* elem, int c, int d, unsigned char e);
+#endif
 
 // USA: func_0205d5d0
 ARM int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d, unsigned char e) {
@@ -30,7 +40,11 @@ ARM int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int 
         elem = (Elem0205d5d0*)((char*)a->field9c + i * 0xe0);
         if (!CheckField0x9cSetWhenField0xd4Present((unsigned char*)elem)) continue;
         if (b != elem->fieldC4) continue;
+#if defined(jpn)
+        func_0204d8f0(elem, c, d);
+#else
         func_0204cb20(elem, c, d, e);
+#endif
         ApplyElemFields0205d904((unsigned char*)a);
         return 0;
     }

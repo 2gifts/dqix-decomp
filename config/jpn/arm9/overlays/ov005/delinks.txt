@@ -134,3 +134,6 @@ src/Combat/Overlay_5/Trans_021551d4.cpp:
 
 src/Combat/Overlay_5/func_ov005_021537bc.cpp:
     .text start:0x02154f3c end:0x0215507c
+
+src/Combat/Overlay_5/RunBattleScaleStep0215c034.cpp:
+    .text start:0x0215d414 end:0x0215d438

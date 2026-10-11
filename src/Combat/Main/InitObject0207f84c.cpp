@@ -12,9 +12,11 @@ struct Obj0207f84c {
     int field14;
     int field18;
     int field1c;
+#if !defined(jpn)
     int field20;
     int field24;
     int field28;
+#endif
     int field2c;
     int field30;
     short field34;
@@ -33,7 +35,11 @@ extern "C" ARM void func_0207f84c(Obj0207f84c* self) {
     InitArrayHeader((ArrayHeader0207ef60*)self->arrC);
     self->field14 = 0;
     self->field18 = 0;
+#if defined(jpn)
+    self->field1c = -1;
+#else
     self->field20 = self->field24 = self->field28 = self->field1c = -1;
+#endif
     self->field2c = 0;
     self->field30 = 0;
     self->field34 = 8;
