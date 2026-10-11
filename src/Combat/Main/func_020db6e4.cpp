@@ -5,7 +5,7 @@ struct TileObject {
  union { unsigned short value; struct { unsigned short tile:10; unsigned short mode:2; unsigned short palette:4; } fields; } attribute;
  unsigned short pad;
 };
-// USA: 020db6e4; JPN: 020dd0ec
+// USA: func_020db6e4
 extern "C" ARM void func_020db6e4(unsigned char* object, unsigned short value) {
  TileObject* entries=(TileObject*)GetObjectValue020db2dc((int)object,object[0x3c]);
  value|=0xf800;

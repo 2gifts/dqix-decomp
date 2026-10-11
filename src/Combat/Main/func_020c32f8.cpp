@@ -1,5 +1,6 @@
 extern "C" long long func_020c30ac(long long);
 extern "C" long long func_020c3194(long long);
+// USA: func_020c32f8
 extern "C" long long func_020c32f8(int angle) {
  if(angle<0) return func_020c32f8(-angle);
  long long scaled=angle; scaled*=0x145f306ddLL; scaled>>=12;

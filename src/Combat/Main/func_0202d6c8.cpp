@@ -3,8 +3,8 @@ void CopyFrom027ffcf4(void*);
 void SetField0x48UnlessState9Or10(int);
 extern "C" int func_0202d788(unsigned short);
 extern char data_021015a0[];
-// USA: 0202d6c8; JPN: 0202d238
 static inline unsigned clockValue() { unsigned value=*(unsigned*)0x027ffc3c; return value; }
+// USA: func_0202d6c8
 extern "C" ARM int func_0202d6c8() {
     unsigned short mac[3];
     CopyFrom027ffcf4(mac);

@@ -1,5 +1,6 @@
 struct Entry { unsigned char unused, id, level; unsigned char flags; };
 extern "C" void func_020ca408(const void*, void*, unsigned);
+// USA: func_ov031_02213a68
 void Configure_02213a68(int id, void* record, int flags, unsigned char* state) {
  Entry* e=(Entry*)(state+0x46c);
  e->id=id;

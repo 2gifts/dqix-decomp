@@ -1,5 +1,6 @@
 void Configure_02213a68(int, void*, int, unsigned char*);
 void Configure_02213ab4(int, void*, int, unsigned char*);
+// USA: func_ov031_022139a0
 extern "C" int func_ov031_022139a0(int id, void* record, int flags, unsigned char* state) {
  unsigned char* input=(unsigned char*)record;
  int i;

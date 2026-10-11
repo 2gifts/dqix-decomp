@@ -16,6 +16,8 @@ namespace DuplicatePool {
 }
 extern char data_ov031_0224c564[];
 extern "C" unsigned int func_ov031_0223cf70(void**);
+
+// USA: func_ov031_0223b4d4
 extern "C" ARM void func_ov031_0223b4d4(void) {
     SetROMFilesystemRoot(data_ov031_0224c564);
     NitroHandle_ReleaseFileTables(&data_ov031_02290d24->handle);

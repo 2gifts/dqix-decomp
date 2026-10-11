@@ -9,6 +9,7 @@ extern unsigned data_02104040;
 extern unsigned data_02104300;
 #define InterpolationCounter data_02104300
 #endif
+// USA: func_0202f0e0
 void func_0202f0e0(AngleTrig0202e9a4* self) {
  if(!self->remaining) return;
  unsigned elapsed=GameState::GetInstance()->GetEffectiveDeltaTime();

@@ -1,6 +1,8 @@
 #include <globaldefs.h>
 #include "System/Interrupts.h"
 extern char* data_ov031_0224e53c;
+
+// USA: func_ov031_0220d570
 extern "C" ARM int func_ov031_0220d570(int flags) {
     int irq = DisableIRQInterrupts();
     char* context = data_ov031_0224e53c;
