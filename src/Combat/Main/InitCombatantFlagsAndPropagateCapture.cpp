@@ -3,7 +3,7 @@
 struct Obj0208b4d4;
 int ValidateCapturedValue0208b4d4(struct Obj0208b4d4* obj);
 
-extern "C" int func_0208b0f8(void* obj);
+extern "C" void func_0208b0f8(void* obj);
 extern "C" int func_0208ab34(void* ptr, int val);
 
 struct Obj0208b088 {
