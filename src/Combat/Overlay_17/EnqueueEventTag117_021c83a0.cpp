@@ -28,10 +28,16 @@ struct LocalEvt021c83a0 {
     unsigned char pad2[8];
 };
 
+// JPN: func_ov017_021c8850
 // USA: func_ov017_021c83a0  (semantic: EnqueueEventTag117_021c83a0)
 extern "C" ARM void func_ov017_021c83a0(void) {
+#if defined(jpn)
+ enum {regionalOffset0=0x508};
+#else
+ enum {regionalOffset0=0x718};
+#endif
     GameResources* ov = func_ov017_0218b5b0();
-    void* h = *(void**)((char*)ov + 0x3000 + 0x718);
+    void* h = *(void**)((char*)ov + 0x3000 + regionalOffset0);
     Ret021c83a0* r = (Ret021c83a0*)func_ov017_021b8478(h);
     void* work = GetField6b0_021b8470(h);
     void* p = GetData02100044();

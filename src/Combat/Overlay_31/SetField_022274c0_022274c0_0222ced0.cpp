@@ -19,7 +19,8 @@ struct Struct0222ced0 {
 };
 extern Struct0222ced0* data_ov031_02290c94;
 
-// USA: func_ov031_0222ced0  (semantic: CheckFieldAndDispatch_0222ced0)
+// USA: func_ov031_0222ced0
+// JPN: func_ov031_0222d6b0
 extern "C" ARM void func_ov031_0222ced0(void) {
 	int v = _Z20GetField11c_02223fa0v();
 	switch (v) {

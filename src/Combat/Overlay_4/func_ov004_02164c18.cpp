@@ -3,9 +3,15 @@
 #include "Grotto/Main/TreasureMapMetadata.h"
 #include "System/Memory.h"
 
+#if defined(jpn)
+enum { countOffset = 0x19f4 };
+#else
+enum { countOffset = 0x18f4 };
+#endif
+
 struct MapList02164c18 {
     TreasureMapMetadata maps[99];
-    char padad4[0x18f4 - 99 * 0x1c];
+    char padad4[countOffset - 99 * 0x1c];
     unsigned char count;
     char pad18f5;
     short page;

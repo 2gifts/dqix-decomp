@@ -1,3 +1,10 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define _Z19SetFlag2At_021685ccPv func_ov003_02168454
+#define _Z20GetField224_021685c4Pv func_ov003_0216844c
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
@@ -55,17 +62,17 @@ extern "C" ARM void func_ov003_0217e3b8(Task0217e3b8* self)
 
     if (self->step == 0)
     {
-        func_020a0cc4(0x16e18);
-        void* buffer = AllocateAligned4(&data_02114e20, 0x16e18);
+        func_020a0cc4(R(0x16e14,0x16e18));
+        void* buffer = AllocateAligned4(&data_02114e20, R(0x16e14,0x16e18));
         if (buffer == 0)
         {
             func_020a0c0c();
             self->finished = 1;
             return;
         }
-        self->allocator.CreateTypeA(buffer, 0x16e18);
+        self->allocator.CreateTypeA(buffer, R(0x16e14,0x16e18));
         self->allocator.Reset();
-        self->menu = self->allocator.Allocate(0x5d8);
+        self->menu = self->allocator.Allocate(R(0x5d4,0x5d8));
         if (self->menu == 0)
         {
             func_020a0c0c();

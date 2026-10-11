@@ -1,9 +1,15 @@
 #include <globaldefs.h>
 
 struct Data0217c094 {
+#if defined(jpn)
+    void* field8;
+    int field0;
+    int field4;
+#else
     int field0;
     int field4;
     void* field8;
+#endif
 };
 extern Data0217c094 data_ov000_02184294;
 extern unsigned short data_02114e30;

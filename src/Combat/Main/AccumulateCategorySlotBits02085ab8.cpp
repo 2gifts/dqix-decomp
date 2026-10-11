@@ -23,12 +23,20 @@ struct SlotEntry020e8c00 {
 };
 extern struct SlotEntry020e8c00 data_020e8c00[];
 
+
+#if defined(jpn)
+enum { CategoryFlagOffset = 0x860 };
+#else
+enum { CategoryFlagOffset = 0x8f8 };
+#endif
+
+// JPN: func_020863d8
 // USA: func_02085ab8
 ARM int AccumulateCategorySlotBits02085ab8(unsigned char* actor, struct Param2085ab8* p2) {
     GameState* bs = GameState::GetInstance();
     unsigned int category = p2->category;
     if (category == 2) {
-        if ((actor[0x8f8] & 0x80) == 0) {
+        if ((actor[CategoryFlagOffset] & 0x80) == 0) {
             return 0;
         }
         return GetSlotBits0201137c((char*)bs, 0x67);

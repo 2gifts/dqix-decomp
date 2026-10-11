@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define data_020f1f14 data_020f2080
+#endif
+
 struct TableEntry020bb740 {
     int a;
     int b;

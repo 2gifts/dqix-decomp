@@ -1,3 +1,10 @@
+// JPN: func_ov017_021afcac
+#if defined(jpn)
+enum { RegionOffset280 = 0x210, RegionOffset284 = 0x214, RegionOffset288 = 0x218 };
+#else
+enum { RegionOffset280 = 0x280, RegionOffset284 = 0x284, RegionOffset288 = 0x288 };
+#endif
+
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
@@ -30,13 +37,13 @@ extern "C" ARM void func_ov017_021af59c(char* obj) {
     *(short*)(obj + 0x40) = 0;
     obj[0x42] = 0;
     InitBigStruct0205c790(obj + 0x48);
-    *(int*)(obj + 0x280) = (*(unsigned int*)0x4000000 & 0x1f00) >> 8;
+    *(int*)(obj + RegionOffset280) = (*(unsigned int*)0x4000000 & 0x1f00) >> 8;
     GameObject* combatant = GameState::GetInstance()->GetUnknownGameObject();
     if (combatant != 0) {
-        obj[0x284] = GetByteField0x252(combatant) != 0 ? 1 : 0;
+        obj[RegionOffset284] = GetByteField0x252(combatant) != 0 ? 1 : 0;
     } else {
-        obj[0x284] = 1;
+        obj[RegionOffset284] = 1;
     }
-    *(int*)(obj + 0x288) = 0;
+    *(int*)(obj + RegionOffset288) = 0;
     obj[0x8] = 0;
 }

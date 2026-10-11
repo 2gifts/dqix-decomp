@@ -8,6 +8,7 @@ extern int data_0211155c;
 extern "C" void SDK_SYS_STACKSIZE(void);
 extern "C" void SDK_IRQ_STACKSIZE(void);
 
+// JPN: func_020ca014
 // USA: func_020c8548
 extern "C" ARM unsigned int func_020c8548(unsigned int mode) {
     switch (mode) {

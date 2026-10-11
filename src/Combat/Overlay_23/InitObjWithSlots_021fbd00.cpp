@@ -13,12 +13,17 @@ struct Obj021fbd00 {
     char pad_a[0x16];
     char sub20[0x48];
     int f68;
+#if defined(jpn)
+    char pad6c[0x6a4];
+#else
     char pad6c[0x728];
+#endif
     unsigned short f794;
     char pad796[2];
     unsigned char f798;
 };
 
+// JPN: func_ov023_021fb07c
 // USA: func_ov023_021fbd00  (semantic: InitObjWithSlots_021fbd00)
 extern "C" ARM int func_ov023_021fbd00(Obj021fbd00* obj, void* ctx, unsigned short arg2, unsigned short arg3, int arg5, int arg6, unsigned char arg7) {
     func_ov023_021f6ed8(obj);

@@ -1,3 +1,10 @@
+// JPN: func_ov017_021c42e0
+#if defined(jpn)
+enum { RegionOffset7f60 = 0x7c8c };
+#else
+enum { RegionOffset7f60 = 0x7f60 };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -58,7 +65,7 @@ extern "C" ARM void func_ov017_021c3e18(unsigned char arg) {
         _Z26EnqueueEventTag35_021d2ad0hiiih(member->obj3D_.unknown_4_, pos.x, pos.y, pos.z, arg);
     }
     if (func_0202c508(search)) {
-        Vector3i pos = *(Vector3i*)((char*)gs + 0x7f60);
+        Vector3i pos = *(Vector3i*)((char*)gs + RegionOffset7f60);
         _Z26EnqueueEventTag35_021d2ad0hiiih(0xce, pos.x, pos.y, pos.z, arg);
     }
 }

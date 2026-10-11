@@ -1,7 +1,14 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define REGION_OFFSET_0 0x218
+#else
+#define REGION_OFFSET_0 0x29c
+#endif
+
+
 static inline void* GetElem021628c8(void* obj, int idx) {
-    void* base = *(void**)((char*)obj + 0x29c);
+    void* base = *(void**)((char*)obj + REGION_OFFSET_0);
     return (char*)base + 0x21c + 0x8000 + idx * 0x28;
 }
 

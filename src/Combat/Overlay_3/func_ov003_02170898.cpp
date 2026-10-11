@@ -1,5 +1,12 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kRegionValue840_860 = 0x860 };
+#else
+enum { kRegionValue840_860 = 0x840 };
+#endif
+
+
 extern "C" void* func_02012fe4(void);
 
 struct Elem020985ec {
@@ -9,8 +16,9 @@ struct Elem020985ec {
 };
 
 // USA: func_ov003_02170898
+// JPN: func_ov003_0217011c
 extern "C" ARM void func_ov003_02170898(unsigned char* self) {
-    struct Elem020985ec* arr = (struct Elem020985ec*)((char*)func_02012fe4() + 0x840);
+    struct Elem020985ec* arr = (struct Elem020985ec*)((char*)func_02012fe4() + kRegionValue840_860);
     int count = *(int*)(*(char**)(self + 0x170) + 0x1000 + 0xb38);
 
     int i;

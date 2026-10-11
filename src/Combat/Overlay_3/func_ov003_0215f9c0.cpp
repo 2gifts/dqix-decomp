@@ -3,6 +3,13 @@
 #include "Memory/SafeAllocator.h"
 #include "System/Graphics.h"
 
+#if defined(jpn)
+enum { kRegionValue226_10E = 0x10e };
+#else
+enum { kRegionValue226_10E = 0x226 };
+#endif
+
+
 struct Struct020dfc40 {
     char unk_0[0x18];
 };
@@ -29,7 +36,7 @@ extern "C" void _Z19ResetStruct020dfc40P14Struct020dfc40(struct Struct020dfc40* 
 extern "C" void _Z19ClearStruct020a9ea4P14Struct020a9ea4(struct Struct020a9ea4* p);
 
 struct BattleScreen_0215f9c0 {
-    char buffer[0x226];
+    char buffer[kRegionValue226_10E];
     unsigned short unk_226;
     SafeAllocator allocA;
     SafeAllocator allocB;
@@ -57,7 +64,9 @@ struct BattleScreen_0215f9c0 {
     int unk_390;
     int unk_394;
     int unk_398;
+#if !defined(jpn)
     char unk_39c[0x45c - 0x39c];
+#endif
     int unk_45c;
     int unk_460;
     int flags;
@@ -107,6 +116,7 @@ struct BattleScreen_0215f9c0 {
 };
 
 // USA: func_ov003_0215f9c0
+// JPN: func_ov003_0215fb74
 extern "C" ARM void func_ov003_0215f9c0(struct BattleScreen_0215f9c0* self, int setFlags) {
     memset(self->buffer, 0, sizeof(self->buffer));
     self->unk_226 = 0;

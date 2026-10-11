@@ -11,6 +11,7 @@ struct Stats_021f4294 { char unk[0x47]; unsigned char field_0x47; };
 
 extern unsigned short data_ov024_021fec44;
 
+// JPN: func_ov024_021f4a60
 // USA: func_ov024_021f4294
 extern "C" ARM int func_ov024_021f4294(int* a0, int a1, int a2, int* outCount, short* outArray) {
 	short buf[4];

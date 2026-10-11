@@ -1,7 +1,17 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 struct Obj_021588bc { int f0; int f4; };
+#if defined(jpn)
+#define InitObjFields_021588bc _Z22InitObjFields_021588bcP12Obj_021588bcii
+extern "C" int InitObjFields_021588bc(Obj_021588bc* obj, int a, int b);
+#else
 int InitObjFields_021588bc(Obj_021588bc* obj, int a, int b);
+#endif
 
 struct Data02165880_a954 { char pad0[8]; int field8; char pad1[0x18]; Obj_021588bc* field24; };
 extern Data02165880_a954 data_ov001_02165880;

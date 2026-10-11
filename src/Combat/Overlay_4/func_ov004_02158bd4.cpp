@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include "System/Memory.h"
 
+
 int DispatchNodeIfType7_02156e2c(void* a, int key);
 void* GetEntryFor_021570a4(void* obj, int index);
 extern "C" void* func_ov004_02156f6c(void*, int);
@@ -34,6 +35,7 @@ extern Struct021707d8_02158bd4 data_ov004_021707d8;
 struct NibbleView_02158bd4 { char pad[8]; unsigned int nibble : 4; };
 
 // USA: func_ov004_02158bd4
+// JPN: func_ov004_02159c98
 extern "C" ARM int func_ov004_02158bd4(void* obj) {
     int slotType = DispatchNodeIfType7_02156e2c(obj, 0x5b);
     if (slotType < 0) return 0;
@@ -47,9 +49,17 @@ extern "C" ARM int func_ov004_02158bd4(void* obj) {
 
     void* nodeX = func_ov004_02157054(obj, 7);
     if (nodeX) {
+#if defined(jpn)
+        if (data_ov004_021707d8.ptr[0xa8] == 0) {
+#else
         if (data_ov004_021707d8.ptr[0x9c] == 0) {
+#endif
             ((SetFieldFn_02158bd4)&SetFieldThenTailCallOffset20_021fbdf4)((Obj021fbdf4*)nodeX, -1);
+#if defined(jpn)
+            data_ov004_021707d8.ptr[0xa8] = 1;
+#else
             data_ov004_021707d8.ptr[0x9c] = 1;
+#endif
         }
         ((TailCallOffset20Fn_02158bd4)&TailCallOffset20_021fbdcc)(nodeX, *(short*)((char*)entry + 0));
     }

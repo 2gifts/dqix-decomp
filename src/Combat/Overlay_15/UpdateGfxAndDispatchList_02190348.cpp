@@ -1,3 +1,9 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define func_0208b610 func_0208bf04
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 

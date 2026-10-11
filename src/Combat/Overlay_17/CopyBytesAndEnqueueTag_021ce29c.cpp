@@ -11,11 +11,17 @@ struct LocalEvt021ce29c {
 	char pad2[12];
 };
 
+// JPN: func_ov017_021ce744
 // USA: func_ov017_021ce29c  (semantic: CopyBytesAndEnqueueTag_021ce29c)
 extern "C" ARM void func_ov017_021ce29c(void) {
+#if defined(jpn)
+ enum {regionalOffset0=0x910};
+#else
+ enum {regionalOffset0=0xb30};
+#endif
 	void* p = GetData02100044();
 	int raw = func_ov017_0218b5b0();
-	unsigned char* src = *(unsigned char**)((char*)raw + 0x3000 + 0xb30);
+	unsigned char* src = *(unsigned char**)((char*)raw + 0x3000 + regionalOffset0);
 
 	struct LocalEvt021ce29c buf;
 	buf.tag = 0x2e;

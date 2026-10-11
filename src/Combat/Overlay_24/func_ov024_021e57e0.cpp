@@ -44,6 +44,7 @@ static inline short GetCurrentMP(GameObject* c) {
     return mp;
 }
 
+// JPN: func_ov024_021e6078
 // USA: func_ov024_021e57e0
 extern "C" ARM void func_ov024_021e57e0(struct Act_021e57e0* self, int id, struct Rec_021e57e0* rec) {
     GameObject* c = GetCombatantByID((int)self->f10, id);

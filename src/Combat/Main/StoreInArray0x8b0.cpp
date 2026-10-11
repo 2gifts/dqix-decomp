@@ -1,7 +1,11 @@
 #include <globaldefs.h>
 
 struct StoreStruct {
+#if defined(jpn)
+    char pad[0x780];
+#else
     char pad[0x8b0];
+#endif
     int arr[0x10];
 };
 

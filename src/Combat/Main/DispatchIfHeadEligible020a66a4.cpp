@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { slotFieldOffset = 0x34ec, otherFieldOffset = 0x508 };
+#else
+enum { slotFieldOffset = 0x36fc, otherFieldOffset = 0x718 };
+#endif
 #include "GameState/GameState.h"
 
 struct PointerField32c_ffc0;
@@ -14,13 +20,13 @@ extern "C" void* func_02057924(void* obj);
 extern "C" void func_02057ab8(void* g, int arg);
 
 struct Struct020a66a4 {
-    char pad0[0x36fc];
-    void* field0x36fc;
+    char pad0[slotFieldOffset];
+    void* fieldslotFieldOffset;
 };
 
 struct Sub3000_020a66a4 {
-    char pad0[0x718];
-    void* field0x718;
+    char pad0[otherFieldOffset];
+    void* fieldotherFieldOffset;
 };
 
 // USA: func_020a66a4  (semantic: DispatchIfHeadEligible020a66a4)
@@ -31,12 +37,12 @@ extern "C" ARM void func_020a66a4(struct Struct020a66a4* a0) {
     void* g;
     void* other;
     GameState* battle = GameState::GetInstance();
-    field = a0->field0x36fc;
+    field = a0->fieldslotFieldOffset;
     p = GetPointerAt0x32c((struct PointerField32c_ffc0*)battle);
     headId = GetHeadNodeIdOrMinusOne((struct HeadNode02046b24**)field);
     GetField0x0List02046b1c((struct S02046b1c*)field);
     struct Sub3000_020a66a4* sub = (struct Sub3000_020a66a4*)((char*)a0 + 0x3000);
-    other = sub->field0x718;
+    other = sub->fieldotherFieldOffset;
     g = func_02057924(sub);
     if (p == NULL) return;
     if (headId == 0xa && *((unsigned char*)other + 3) != 0) {

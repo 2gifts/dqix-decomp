@@ -1,3 +1,10 @@
+// JPN: func_ov025_021df730
+#if defined(jpn)
+enum { RegionOffset770c = 0x78fc };
+#else
+enum { RegionOffset770c = 0x770c };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
@@ -90,5 +97,5 @@ extern "C" ARM void func_ov025_021dee20(void* obj) {
     rec->field0x18 = row.c;
     rec->flags0xb |= 4;
 
-    *(void**)((char*)obj + 0x770c) = rec;
+    *(void**)((char*)obj + RegionOffset770c) = rec;
 }

@@ -1,4 +1,15 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegion12c0 = 0x1150 };
+enum { kRegion12c4 = 0x1154 };
+enum { kRegion12d4 = 0x1164 };
+enum { kRegion13ea = 0x127a };
+#else
+enum { kRegion12c0 = 0x12c0 };
+enum { kRegion12c4 = 0x12c4 };
+enum { kRegion12d4 = 0x12d4 };
+enum { kRegion13ea = 0x13ea };
+#endif
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 #include "Memory/AllocatorUnion.h"
@@ -8,11 +19,11 @@ struct Scene_0216af14 {
     short state;
     unsigned char pad6[0x10 - 0x6];
     int field_0x10;
-    unsigned char field_0x14[0x12c0 - 0x14];
+    unsigned char field_0x14[kRegion12c0 - 0x14];
     void* field_0x12c0;
-    unsigned char pad12c4[0x12d4 - 0x12c4];
+    unsigned char pad12c4[kRegion12d4 - kRegion12c4];
     SafeAllocator allocator;
-    unsigned char pad12d4[0x13ea - 0x12d4 - sizeof(SafeAllocator)];
+    unsigned char pad12d4[kRegion13ea - kRegion12d4 - sizeof(SafeAllocator)];
     unsigned char field_0x13ea;
     unsigned char pad13eb;
     unsigned char flags;
@@ -34,6 +45,7 @@ extern "C" void _Z30ResetGlobalsAndReinit_0216d818Pc(char* obj);
 extern "C" void func_ov003_0216d84c(void* p);
 extern "C" int func_0205d0e0(void* p, unsigned int tick);
 
+// JPN: func_ov003_0216aab4
 // USA: func_ov003_0216af14
 extern "C" ARM int func_ov003_0216af14(Scene_0216af14* scene) {
     GameState* gs = GameState::GetInstance();

@@ -1,5 +1,15 @@
+// JPN: func_ov017_021a8ecc
 #include <globaldefs.h>
 #include "Combat/Main/CopyRecord0200fbb4.h"
+
+#if defined(jpn)
+extern "C" int _ZN16BackgroundLoader13QueueLoadFileEPKcP13SafeAllocator(void* loader, const char* file, void* alloc);
+extern "C" char data_ov017_021d7c0c[];
+extern "C" void func_0205dfa8(void* obj);
+enum { WorkBuffer = 0x1000, MessageContainer = 0x230, ResourceTail = 0x34ec, ResourceNode = 0x34fc, ResourceAux = 0x3524, SubEnd = 0x1f4, SubByte = 0x1ef, MessageState = 0x868, MessageResult = 0x870, MessageLeft = 0x7e4, MessageWidth = 0x7e8, MessageTop = 0x7e6, MessageDone = 0x17de, GrottoResult = 0x27f4, GrottoFlag = 0x285f };
+#else
+enum { WorkBuffer = 0x1400, MessageContainer = 0x2e0, ResourceTail = 0x36fc, ResourceNode = 0x370c, ResourceAux = 0x3734, SubEnd = 0x264, SubByte = 0x25f, MessageState = 0x998, MessageResult = 0x9a0, MessageLeft = 0x914, MessageWidth = 0x918, MessageTop = 0x916, MessageDone = 0x19ae, GrottoResult = 0x27b4, GrottoFlag = 0x281f };
+#endif
 
 struct Vec3_021a86d0 {
     int x;
@@ -19,7 +29,7 @@ struct Sub021a86d0 {
     short e2;
     short e4;
     short e6;
-    char pade8[0x25f - 0xe8];
+    char pade8[SubByte - 0xe8];
     unsigned char b25f;
     unsigned char b260;
     char pad261[3];
@@ -38,7 +48,7 @@ struct Self021a86d0 {
     int count;
     int planes;
     int task;
-    unsigned char sub[0x264 - 0x2c];
+    unsigned char sub[SubEnd - 0x2c];
     unsigned char allocator[0x14];
     unsigned char container[0x10];
 };
@@ -166,9 +176,14 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
         void* snd = _Z17GetGlobal02109400v();
         _Z21BlankFunction02094b30v(snd, 0x205, 0);
         if (_Z18AlwaysTrue02094b4cv(snd)) {
+#if defined(jpn)
+            self->task = _ZN16BackgroundLoader13QueueLoadFileEPKcP13SafeAllocator(
+                _ZN16BackgroundLoader11GetInstanceEv(), data_ov017_021d7c0c, NULL);
+#else
             self->task = _ZN16BackgroundLoader18QueueLoadFileInGP2EPKcS1_P13SafeAllocator(
                 _ZN16BackgroundLoader11GetInstanceEv(), data_ov017_021d77f0, data_ov017_021d780a, NULL);
-            _ZN13SafeAllocator11CreateTypeAEPvj(self->allocator, _Z16AllocateAligned4P14AllocatorUnionj(data_02114e20, 0x1400), 0x1400);
+#endif
+            _ZN13SafeAllocator11CreateTypeAEPvj(self->allocator, _Z16AllocateAligned4P14AllocatorUnionj(data_02114e20, WorkBuffer), WorkBuffer);
             self->state = 1;
         }
     } else if (self->state == 1) {
@@ -184,11 +199,11 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
             _Z22SetIndexedName02046574P11Obj02046574iPc(g, 0, *(char**)((char*)_ZN9GameState14GetProtagonistEv(gs) + 0x134));
             _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(data_02108760, 1, 0);
             func_ov017_021a933c(self, 0x64);
-            *(int*)(g + 0x998) = 1;
+            *(int*)(g + MessageState) = 1;
             self->state = 2;
         }
     } else if (self->state == 2) {
-        if (*(int*)(g + 0x9a0) == 3) {
+        if (*(int*)(g + MessageResult) == 3) {
             self->count = 0;
             for (int i = 0; i < 5; i++) {
                 if (self->members[i]) {
@@ -221,15 +236,23 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
             }
             sub->e0 = 0x9e - offset;
             sub->e2 = y;
+#if defined(jpn)
+            func_0205dfa8(self->sub);
+#else
             func_0205cc50(self->sub, 0, -4);
-            short left = *(short*)(g + 0x914);
-            short width = *(short*)(g + 0x918);
-            short top = *(short*)(g + 0x916);
+#endif
+            short left = *(short*)(g + MessageLeft);
+            short width = *(short*)(g + MessageWidth);
+            short top = *(short*)(g + MessageTop);
             short ox = sub->e4;
             short oy = sub->e6;
             sub->e0 = left + width - ox;
             sub->e2 = top - oy;
+#if defined(jpn)
+            func_0205dfa8(self->sub);
+#else
             func_0205cc50(self->sub, 0, -4);
+#endif
             _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci(sub->table4c, 0);
             func_0205bb04(sub->table9c, 0);
             sub->b260 = 1;
@@ -241,9 +264,9 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
             self->state = 3;
         }
     } else if (self->state == 3) {
-        void* cont = *(void**)(g + 0x2e0);
+        void* cont = *(void**)(g + MessageContainer);
         _Z22IterateEntries0205a330P17Container0205a330i(cont, _ZNK9GameState12GetTickCountEv(gs));
-        g[0x19ae] = 0;
+        g[MessageDone] = 0;
         int sel = _Z28GetScaledSumIfActive0205ceccPv(self->sub);
         if (_Z25TestFlag0SetAndFlag1ClearPti(&data_02114e30, 1)) {
             _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(data_02108760, 1, 0);
@@ -261,9 +284,9 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
         _Z24ReinitController02043204Pc(g);
         self->state = 100;
     } else if (self->state == 5) {
-        self->result = *(unsigned short*)(flags + 0x27b4);
+        self->result = *(unsigned short*)(flags + GrottoResult);
         if (self->choice == self->result) {
-            *(int*)(g + 0x998) = 1;
+            *(int*)(g + MessageState) = 1;
             func_ov017_021a933c(self, 0x65);
             _Z37SetupGlobalObjType3AndInitSelfPointerPh(self->sub);
             self->state = 6;
@@ -272,8 +295,8 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
             func_ov017_021a86d0(self, list);
         }
     } else if (self->state == 6) {
-        if (*(int*)(g + 0x9a0) == 0) {
-            *(int*)(g + 0x998) = 1;
+        if (*(int*)(g + MessageResult) == 0) {
+            *(int*)(g + MessageState) = 1;
             if (func_020457e0(g) == 0) {
                 func_ov017_021a933c(self, 0x66);
                 self->state = 7;
@@ -283,8 +306,8 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
             }
         }
     } else if (self->state == 7) {
-        g[0x19ae] = 0;
-        if (*(int*)(g + 0x9a0) == 0) {
+        g[MessageDone] = 0;
+        if (*(int*)(g + MessageResult) == 0) {
             self->state = 99;
             func_ov017_021a86d0(self, list);
         }
@@ -293,7 +316,7 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
         int part;
         unsigned char* bits = func_0205ec34();
         char* res = func_ov017_0218b5b0();
-        void* tail = *(void**)(res + 0x36fc);
+        void* tail = *(void**)(res + ResourceTail);
         unsigned char* ctx = _Z20GetField0x3f8AddressP9GameState(gs);
         VectorizedMemset(ctx, 0, 0x70);
         ctx[4] = 1;
@@ -357,14 +380,14 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
             _Z40SetHalfFieldsAndEnqueueIfActive_021d1c2ctt(self->choice, 0);
             _Z26EnqueueEventTagB5_021d1dc0ssPisi(self->choice, 0, buf, 0, 0);
             _Z28CallFunc0200fbb4AtField0x3f8Pv(gs, ctx);
-            unsigned char* header = *(unsigned char**)(res + 0x370c);
+            unsigned char* header = *(unsigned char**)(res + ResourceNode);
             _Z27InitAndResetHeader_0219e310Phi(header, 0);
             _Z16AppendNodeToTailP16TailList020469b4P16TailNode020469b4(tail, header);
             if (intro) {
                 _Z29InitAndAppendState61_021a65c4Pvhi(res, 1, 0);
             }
         } else {
-            unsigned char* node = *(unsigned char**)(res + 0x3734);
+            unsigned char* node = *(unsigned char**)(res + ResourceAux);
             func_ov017_021baedc(node, 1);
             int msgA = 0;
             int msgB = 0;
@@ -386,15 +409,15 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
                 }
                 break;
             case 1:
-                flags[0x281f] = 1;
+                flags[GrottoFlag] = 1;
                 msgA = 0x7342;
                 break;
             case 3:
-                flags[0x281f] = 1;
+                flags[GrottoFlag] = 1;
                 msgA = 0x7345;
                 break;
             case 5:
-                flags[0x281f] = 1;
+                flags[GrottoFlag] = 1;
                 msgA = 0x7348;
                 break;
             }
@@ -441,7 +464,7 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
                 msgB = 0;
             }
             if (_Z19ReturnZero_021a01b4v(res, msgA)) {
-                flags[0x281f] = 1;
+                flags[GrottoFlag] = 1;
             }
             *(unsigned short*)(node + 8) = msgA;
             _Z20SetField11c_021bbbf8Pvt(node, msgB);
@@ -452,7 +475,7 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
         }
         self->state = 100;
         _Z24ReinitController02043204Pc(g);
-    } else if (self->state == 100 && *(int*)(g + 0x9a0) == 0) {
+    } else if (self->state == 100 && *(int*)(g + MessageResult) == 0) {
         _Z24ReinitController02043204Pc(g);
         _Z37SetupGlobalObjType3AndInitSelfPointerPh(self->sub);
         _Z17SetByteField0x253Pv(_ZN9GameState14GetProtagonistEv(gs));

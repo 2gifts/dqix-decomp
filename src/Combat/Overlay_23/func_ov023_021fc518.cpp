@@ -125,6 +125,7 @@ int GetField0x58(void* camera);
 extern "C" void _Z28SetAngleAndTrigTable0202e9a4P17AngleTrig0202e9a4i(AngleTrig0202e9a4* camera, int angle);
 void SetField0x238False(void* camera);
 
+// JPN: func_ov023_021fb810
 // USA: func_ov023_021fc518
 extern "C" ARM int func_ov023_021fc518(MenuCharacter_021fc518* self, void* ctx, int id, int heap, int parentTag, int character) {
     func_ov023_021f6ed8((ObjBase021f6ed8*)self);
@@ -145,7 +146,11 @@ extern "C" ARM int func_ov023_021fc518(MenuCharacter_021fc518* self, void* ctx, 
     HeapNode_021fc518* heapNode = func_ov011_021845f8(ctx, heap);
     int perspective = parent->GetPerspective();
 
+#if defined(jpn)
+    char* pairTables = (char*)func_ov017_0218b5b0() + 0x27c;
+#else
     char* pairTables = func_ov017_0218b5b0()->unknown_2cc;
+#endif
     _Z26CopyInternalFields0207df50P11Foo0207df50((Foo0207df50*)pairTables);
     _Z25RestorePairTables0207df90Pc(pairTables);
     for (int i = 0; i < 2; i++) {

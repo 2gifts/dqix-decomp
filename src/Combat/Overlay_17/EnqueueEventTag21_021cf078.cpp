@@ -1,5 +1,12 @@
+// JPN: func_ov017_021cf520
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+
+#if defined(jpn)
+enum { Field850 = 0x7b8 };
+#else
+enum { Field850 = 0x850 };
+#endif
 
 GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
 int GetFieldAt0x150(unsigned char* obj);
@@ -43,7 +50,7 @@ extern "C" ARM void func_ov017_021cf078(int combatantId, unsigned short slot, un
     int val150 = GetFieldAt0x150((unsigned char*)combatant);
     if (!val150) return;
 
-    SrcSlot021cf078* arr = (SrcSlot021cf078*)((char*)val150 + 0x850);
+    SrcSlot021cf078* arr = (SrcSlot021cf078*)((char*)val150 + Field850);
     SrcSlot021cf078* src = &arr[slot];
 
     EventBuf021cf078 buf;

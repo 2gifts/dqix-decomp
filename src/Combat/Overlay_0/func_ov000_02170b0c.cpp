@@ -3,7 +3,11 @@
 struct PaletteAnimation {
     unsigned char pad_00[0x4c];
     int palette;
+#if defined(jpn)
+    unsigned char pad_50[0x428];
+#else
     unsigned char pad_50[0x3e8];
+#endif
     float phase;
     unsigned char flags;
 };

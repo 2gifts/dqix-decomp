@@ -1,5 +1,7 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#endif
 extern "C" void func_0203ac40(void*, int, int, int);
 
 // USA: func_0205eb24

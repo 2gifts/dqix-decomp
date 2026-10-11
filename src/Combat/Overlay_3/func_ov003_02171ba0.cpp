@@ -1,6 +1,17 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+enum { kRegionValue71C_618 = 0x618 };
+enum { kRegionValue72C_628 = 0x628 };
+enum { kRegionValue724_620 = 0x620 };
+#else
+enum { kRegionValue71C_618 = 0x71c };
+enum { kRegionValue72C_628 = 0x72c };
+enum { kRegionValue724_620 = 0x724 };
+#endif
+
+
 struct SearchStruct;
 extern "C" void* func_0202ae18(void);
 void* GetData02100044(void);
@@ -19,14 +30,15 @@ struct Obj02171ba0 {
     unsigned char field0;
     char pad1[0x199 - 1];
     unsigned char field199;
-    char pad2[0x71c - 0x19a];
+    char pad2[kRegionValue71C_618 - 0x19a];
     int field71c;
     int field720;
-    char pad3[0x72c - 0x724];
+    char pad3[kRegionValue72C_628 - kRegionValue724_620];
     unsigned int field72c;
 };
 
-// USA: func_ov003_02171ba0  (semantic: AdvanceSearchTimerAndDispatch_02171ba0)
+// USA: func_ov003_02171ba0
+// JPN: func_ov003_02170e5c
 extern "C" ARM void func_ov003_02171ba0(struct Obj02171ba0* obj) {
     GameState* battle = GameState::GetInstance();
     struct SearchStruct* searchPtr = (struct SearchStruct*)func_0202ae18();

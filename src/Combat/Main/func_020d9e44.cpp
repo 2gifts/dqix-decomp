@@ -2,6 +2,11 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+#define data_020f2838 data_020f2a30
+#define data_020ee678 data_020ee784
+#endif
+
 struct Struct020d9fc8;
 extern "C" void _Z35ClearHandleArrayAndFinalize020d9fc8P14Struct020d9fc8(struct Struct020d9fc8* p);
 

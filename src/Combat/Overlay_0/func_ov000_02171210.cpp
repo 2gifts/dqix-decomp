@@ -35,7 +35,11 @@ struct Target02171210 {
     signed char field2e;
     char pad2f[0x4c - 0x2f];
     int combatantId;
+#if defined(jpn)
+    char pad50[0x474 - 0x50];
+#else
     char pad50[0x434 - 0x50];
+#endif
     int field434;
 };
 
@@ -66,10 +70,18 @@ extern "C" ARM int func_ov000_02171210(struct Action02171210* action, struct Tar
         if (kind == 6) {
             GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), target->combatantId);
             if (combatant != NULL) {
+#if defined(jpn)
+                if (TestBitInArray0x8ec(*(unsigned char**)((char*)combatant + 0x144), 0xe6)) {
+                    kind = 3;
+                } else {
+                    kind = 2;
+                }
+#else
                 kind = 2;
                 if (TestBitInArray0x8ec(*(unsigned char**)((char*)combatant + 0x150), 0xe6)) {
                     kind = 3;
                 }
+#endif
             }
         }
         int countA = 1;

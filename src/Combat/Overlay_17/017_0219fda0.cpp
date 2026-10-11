@@ -1,3 +1,4 @@
+// JPN: func_ov017_021a0850
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
@@ -13,7 +14,11 @@ struct Element0x318_02028bac {
 	unsigned short flags;
 	unsigned char unk4[0xc];
 	SafeAllocator* allocator;
+#if defined(jpn)
+	unsigned char unk14[0x2f4];
+#else
 	unsigned char unk14[0x2f8];
+#endif
 	unsigned char buffers[0xc];
 };
 struct Element0x318_02028bac* GetElementStride0x318(struct Element0x318_02028bac* base, int index);

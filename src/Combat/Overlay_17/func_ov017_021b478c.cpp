@@ -50,8 +50,14 @@ struct Request021b478c {
     unsigned char state;
 };
 
+// JPN: func_ov017_021b4e7c
 // USA: func_ov017_021b478c
 extern "C" ARM void func_ov017_021b478c(Request021b478c* request) {
+#if defined(jpn)
+ enum {regionalOffset0=0x240c, regionalOffset1=0x40, regionalOffset2=0x5c, regionalOffset3=0x120, regionalOffset4=0x2f4, regionalOffset5=0x300, regionalOffset6=0x308, regionalOffset7=0x444};
+#else
+ enum {regionalOffset0=0x23ec, regionalOffset1=0x44, regionalOffset2=0x60, regionalOffset3=0x124, regionalOffset4=0x2f8, regionalOffset5=0x304, regionalOffset6=0x30c, regionalOffset7=0x424};
+#endif
     GameState* battle;
     BackgroundLoader* loader;
     struct SearchTable* table;
@@ -65,17 +71,17 @@ extern "C" ARM void func_ov017_021b478c(Request021b478c* request) {
     loader = BackgroundLoader::GetInstance();
     table = (struct SearchTable*)GetPtrField0x468(battle);
     zone = func_02012fe4();
-    grotto = (ActiveGrottoClass*)(zone + 0x23ec);
+    grotto = (ActiveGrottoClass*)(zone + regionalOffset0);
     id = request->monster->id;
     entry = FindEntryByHalfwordKey(table, id);
 
     monster = (char*)request->monster;
-    ClearHalfword0x18(monster + 0x44);
-    _Z19ClearBuffer0209bc84Pv(monster + 0x60);
-    _Z19ResetObject0209af34P25ResetObject0209af34Struct((struct ResetObject0209af34Struct*)(monster + 0x124));
-    _Z20Clear12Bytes0206efc4Pv(monster + 0x2f8);
-    _Z23ZeroWordAndByte0206ee60P29ZeroWordAndByte0206ee60Struct((struct ZeroWordAndByte0206ee60Struct*)(monster + 0x304));
-    _Z20Clear12Bytes020a8e88Pv(monster + 0x30c);
+    ClearHalfword0x18(monster + regionalOffset1);
+    _Z19ClearBuffer0209bc84Pv(monster + regionalOffset2);
+    _Z19ResetObject0209af34P25ResetObject0209af34Struct((struct ResetObject0209af34Struct*)(monster + regionalOffset3));
+    _Z20Clear12Bytes0206efc4Pv(monster + regionalOffset4);
+    _Z23ZeroWordAndByte0206ee60P29ZeroWordAndByte0206ee60Struct((struct ZeroWordAndByte0206ee60Struct*)(monster + regionalOffset5));
+    _Z20Clear12Bytes020a8e88Pv(monster + regionalOffset6);
 
     if (request->monster->id == 3 || request->monster->allocator->GetSignedAllocator() == NULL) {
         request->done = 1;
@@ -107,7 +113,7 @@ extern "C" ARM void func_ov017_021b478c(Request021b478c* request) {
 
     if (_Z17IsInRange0201b5b0i(id)) {
         int floor = id % 20;
-        if (grotto->floorMap_.pMapData == NULL || *(int*)(zone + 0x424) != 0) {
+        if (grotto->floorMap_.pMapData == NULL || *(int*)(zone + regionalOffset7) != 0) {
             return;
         }
         func_0201a300(zone, floor, request->monster, 0, 0);

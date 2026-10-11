@@ -10,6 +10,7 @@ extern Elem8_0224175c data_ov031_022919c8[];
 extern "C" int func_ov031_022413c8(int unused, void* id);
 extern "C" void func_ov031_02241720(void* obj);
 
+// JPN: func_ov031_02241f3c
 // USA: func_ov031_0224175c  (semantic: DispatchAndEnqueue_0224175c)
 extern "C" ARM void func_ov031_0224175c(void* target, void** ptr) {
 	int nextRead = (data_ov031_022919bc.writePos + 1) & 7;

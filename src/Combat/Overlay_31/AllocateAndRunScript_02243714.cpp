@@ -18,7 +18,8 @@ extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(struct Rese
 extern int data_ov031_02291e04;
 extern int data_ov031_0224c8dc;
 
-// USA: func_ov031_02243714  (semantic: AllocateAndRunScript_02243714)
+// USA: func_ov031_02243714
+// JPN: func_ov031_02243ef4
 extern "C" ARM int func_ov031_02243714(char* ctx) {
 	char local[0x430];
 	int out1, out2;
@@ -38,7 +39,11 @@ extern "C" ARM int func_ov031_02243714(char* ctx) {
 	*(int*)(ctx + 0x388) = out1;
 	*(int*)(ctx + 0x38c) = out2;
 	void* allocated = ((SafeAllocator*)ctx)->Allocate(0x38);
+#if defined(jpn)
+	*(void**)((char*)&data_ov031_02291e04 + 0x2c) = allocated;
+#else
 	*(void**)((char*)&data_ov031_02291e04 + 0x28) = allocated;
+#endif
 	if (allocated == 0) return 2;
 	memset(allocated, 0, 0x38);
 	((BackgroundLoader*)((struct List0202fec8*)list))->GetLoadedFileByID((int)(*(int*)(ctx + 0x3a0)), (void**)(&out1), (unsigned int*)(&out2));

@@ -14,8 +14,14 @@ void Foo0216377c(struct Struct0216377c* obj, unsigned char val);
 
 struct Arg021c9bc8 { char pad[4]; unsigned short f4; unsigned short f6; };
 
+// JPN: func_ov017_021ca078
 // USA: func_ov017_021c9bc8  (semantic: AssignEntryOrDispatchEvent_021c9bc8)
 extern "C" ARM void func_ov017_021c9bc8(char a0, struct Arg021c9bc8* a1, int a2, char* a3, void* a4) {
+#if defined(jpn)
+ enum {regionalOffset0=0x3508};
+#else
+ enum {regionalOffset0=0x3718};
+#endif
 	void* table = GetData02108ea8();
 	unsigned int f4 = a1->f4;
 	unsigned short f6 = a1->f6;
@@ -25,7 +31,7 @@ extern "C" ARM void func_ov017_021c9bc8(char a0, struct Arg021c9bc8* a1, int a2,
 		return;
 	}
 	if (a0 != 0) return;
-	struct Struct0216377c* obj = *(struct Struct0216377c**)(a3 + 0x3718);
+	struct Struct0216377c* obj = *(struct Struct0216377c**)(a3 + regionalOffset0);
 	void* p1 = func_ov017_021b8478(obj);
 	int p2 = func_ov017_021b8468(obj);
 	if (p1 == 0 || p2 == 0) return;

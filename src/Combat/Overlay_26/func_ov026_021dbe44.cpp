@@ -9,7 +9,11 @@ struct PartyState {
 };
 
 struct BattleWork {
+#if defined(jpn)
+    char pad0[0x218];
+#else
     char pad0[0x29c];
+#endif
     BattleState* battle;
     PartyState* party;
     char pad2a4[0x974];
@@ -18,8 +22,13 @@ struct BattleWork {
     char scriptA[0x8];
     char scriptB[0x8];
     char padea8[0x20];
+#if defined(jpn)
+    char ctxEc8[0x28d8];
+    char list[0x21fc];
+#else
     char ctxEc8[0x2898];
     char list[0x1fc8];
+#endif
     char ctx5728[0x1e8];
     char ctx5910[0x32c];
     char ctx5c3c[0x1200];

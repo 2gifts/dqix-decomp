@@ -2,3 +2,5 @@
     .ctor       start:0x021da518 end:0x021da51c kind:rodata align:4
     .bss        start:0x021da520 end:0x021da520 kind:bss align:32
 
+src/Combat/Overlay_30/func_ov030_021d9340.cpp:
+    .text start:0x021d9c04 end:0x021da518

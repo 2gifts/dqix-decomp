@@ -32,6 +32,7 @@ extern char data_ov031_0224b7d4[];
 extern char data_ov031_0224b7ec[];
 extern char data_ov031_0224b804[];
 extern char data_ov031_0224b818[];
+// JPN: func_ov031_02228574
 // USA: func_ov031_02227d94
 extern "C" ARM void func_ov031_02227d94() {
     func_ov031_02235c18();

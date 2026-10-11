@@ -1,3 +1,14 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define _Z23EmptyDestructor0205cb60Pv func_0205deb8
+#define _Z25ResetDisplayState02155480P11Obj02155480 func_ov006_02156b68
+#define data_ov011_021889a0 data_ov011_02189700
+#define data_ov013_02187dd8 data_ov013_02188cf0
+#define func_ov006_02154fe4 func_ov006_02156730
+#define func_ov006_021570fc func_ov006_02158704
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 struct Obj2081;
@@ -54,7 +65,12 @@ void ResetList0204af64(List0204af64*);
 int DispatchViaTable0204b5e8(Obj0204b5e8*, int, int);
 void CallFunc0204b620IfField0x14_0204b938(void*, void*, int, int, unsigned short);
 extern "C" void func_ov006_02154fe4(AlchemyPot*);
+#if defined(jpn)
+#define ResetDisplayState02155480 func_ov006_02156b68
+extern "C" void ResetDisplayState02155480(Obj02155480*);
+#else
 void ResetDisplayState02155480(Obj02155480*);
+#endif
 extern "C" int func_ov006_021570fc(AlchemyPot*, int);
 extern "C" void func_0204b088(void*, int);
 int GetInnerFlagBit0020e28dc(Outer020e28dc*);
@@ -159,9 +175,9 @@ extern "C" ARM void func_ov006_02158478(AlchemyMenu* self)
         return;
     unsigned short* screen = (unsigned short*)GetSubBG0ScreenBase();
     memset(screen, 0, 0x800);
-    if (CheckElementFlag_02158080_02158080((Obj2081*)self->menu_, 1))
+    if (CheckElementFlag_02158080_02158080((Obj2081*)R(*(void**)((char*)self+0xc),self->menu_), 1))
     {
-        Canvas* canvas = FindElementByByte0xc4((Obj2081*)self->menu_, 1);
+        Canvas* canvas = FindElementByByte0xc4((Obj2081*)R(*(void**)((char*)self+0xc),self->menu_), 1);
         if (canvas == 0)
             return;
         short x;
@@ -179,20 +195,20 @@ extern "C" ARM void func_ov006_02158478(AlchemyMenu* self)
         DispatchViaTable0204b5e8((Obj0204b5e8*)&background, 0, 0);
         CallFunc0204b620IfField0x14_0204b938(&background, layer, x, y, 0xffff);
     }
-    func_ov006_02154fe4(self->pot_);
+    func_ov006_02154fe4(R(*(AlchemyPot**)((char*)self+8),self->pot_));
     if (self->resetBlend_ != 0)
     {
-        ResetDisplayState02155480((Obj02155480*)self->pot_);
-        func_ov006_021570fc(self->pot_, 1);
+        ResetDisplayState02155480((Obj02155480*)R(*(AlchemyPot**)((char*)self+8),self->pot_));
+        func_ov006_021570fc(R(*(AlchemyPot**)((char*)self+8),self->pot_), 1);
         self->resetBlend_ = 0;
     }
-    func_0204b088(self->subBackground_, 0);
-    if (self->choice_ != 0)
+    func_0204b088(R((int*)((char*)self+0x4c),self->subBackground_), 0);
+    if (R(*(void**)((char*)self+0x10),self->choice_) != 0)
     {
-        void* window = *(void**)((char*)self->choice_ + 0x10);
-        SetEntryEnabled020e2cc4((Entry020e2cc4*)((char*)window + 0x28), GetInnerFlagBit0020e28dc((Outer020e28dc*)self->choice_));
-        SetYesNoButtonPalette020e2834((SelfState020e2834*)self->choice_);
+        void* window = *(void**)((char*)R(*(void**)((char*)self+0x10),self->choice_) + 0x10);
+        SetEntryEnabled020e2cc4((Entry020e2cc4*)((char*)window + 0x28), GetInnerFlagBit0020e28dc((Outer020e28dc*)R(*(void**)((char*)self+0x10),self->choice_)));
+        SetYesNoButtonPalette020e2834((SelfState020e2834*)R(*(void**)((char*)self+0x10),self->choice_));
     }
-    if (self->menu_ != 0)
-        CallFunc0204b088OverList0x2c((Cont0207fd88*)self->menu_);
+    if (R(*(void**)((char*)self+0xc),self->menu_) != 0)
+        CallFunc0204b088OverList0x2c((Cont0207fd88*)R(*(void**)((char*)self+0xc),self->menu_));
 }

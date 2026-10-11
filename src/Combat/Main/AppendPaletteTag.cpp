@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define data_020eff74 data_020eff73
+#endif
+
 extern char data_020eff74;
 int StringLength(const char* s);
 extern "C" int sprintf(char* dst, const char* fmt, ...);

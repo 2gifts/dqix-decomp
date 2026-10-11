@@ -8,8 +8,14 @@ extern "C" void* func_0202ae18(void);
 void* GetPtrField0x2a04(GameState* battleStruct);
 extern "C" int func_ov023_021f44d0(void* obj);
 
+// JPN: func_ov023_021f4728
 // USA: func_ov023_021f5150
 extern "C" ARM int func_ov023_021f5150(void* p0, unsigned char* p1, int* p2, int* p3) {
+#if defined(jpn)
+ enum {regionalOffset=0x8b8};
+#else
+ enum {regionalOffset=0x950};
+#endif
     GameState* bs = GameState::GetInstance();
     char* g = (char*)GetPtrField0x2a04(bs);
     func_0202ae18();
@@ -24,7 +30,7 @@ extern "C" ARM int func_ov023_021f5150(void* p0, unsigned char* p1, int* p2, int
         int fVal = GetFieldAt0x150((unsigned char*)c);
         if (fVal == 0) continue;
         int* f = (int*)fVal;
-        int idx = *(int*)((char*)f + 0x950);
+        int idx = *(int*)((char*)f + regionalOffset);
         int* arr = (int*)((char*)f + 0x138);
         arr[idx] += p2[i];
     }

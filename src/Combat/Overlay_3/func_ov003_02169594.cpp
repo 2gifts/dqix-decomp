@@ -1,5 +1,20 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kRegionValueE8_E4 = 0xe4 };
+enum { kRegionValue194_190 = 0x190 };
+enum { kRegionValue188_184 = 0x184 };
+enum { kRegionValue4ED_4E9 = 0x4e9 };
+enum { kRegionValue195_191 = 0x191 };
+#else
+enum { kRegionValueE8_E4 = 0xe8 };
+enum { kRegionValue194_190 = 0x194 };
+enum { kRegionValue188_184 = 0x188 };
+enum { kRegionValue4ED_4E9 = 0x4ed };
+enum { kRegionValue195_191 = 0x195 };
+#endif
+
+
 struct Struct_0205ba68;
 struct Node0205bacc;
 struct Struct_0205bcdc;
@@ -18,11 +33,11 @@ struct Grid02169594 {
 };
 
 struct Ctx02169594 {
-    char pad0[0xe8];
+    char pad0[kRegionValueE8_E4];
     struct Grid02169594 grids[2];
-    char pad188[0x194 - 0x188];
+    char pad188[kRegionValue194_190 - kRegionValue188_184];
     unsigned char layout;
-    char pad195[0x4ed - 0x195];
+    char pad195[kRegionValue4ED_4E9 - kRegionValue195_191];
     signed char indexA;
     signed char indexB;
 };
@@ -30,6 +45,7 @@ struct Ctx02169594 {
 static inline struct Grid02169594* GetGrid(struct Ctx02169594* ctx, int i) { return &ctx->grids[i]; }
 
 // USA: func_ov003_02169594
+// JPN: func_ov003_021693bc
 extern "C" ARM void func_ov003_02169594(struct Ctx02169594* self) {
     int cols;
     int rows;

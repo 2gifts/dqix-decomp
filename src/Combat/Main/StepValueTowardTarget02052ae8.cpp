@@ -1,7 +1,21 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define IS_JPN 1
+#else
+#define IS_JPN 0
+#endif
+#if defined(jpn)
+#define func_02052bfc func_02053fd8
+#endif
+
 
 extern "C" int _Z8fix32absi(int x);
+#if defined(jpn)
+extern "C" void func_020554e4(void* obj);
+#define ConsumeCountdown0205416c func_020554e4
+#else
 void ConsumeCountdown0205416c(void* obj);
+#endif
 
 extern "C" {
     void _ZN8Object3D14AdvanceEffectsEv(void* obj);
@@ -11,7 +25,7 @@ extern "C" {
 }
 
 struct Obj02052ae8 {
-    char pad0[0x17c];
+    char pad0[IS_JPN ? 0x170 : 0x17c];
     signed char field17c;
     char pad1[0x1b4 - 0x17d];
     int field1b4;

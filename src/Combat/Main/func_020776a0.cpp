@@ -4,6 +4,7 @@
 struct Vec3 { int x; int y; int z; };
 
 extern "C" struct Vec3 func_020341e0(void* obj);
+extern "C" struct Vec3 func_02034104(void* obj);
 
 struct Obj02033834;
 extern "C" void _Z21SetVecYByMode02033834P11Obj02033834i(struct Obj02033834* obj, int arg);
@@ -40,7 +41,11 @@ extern "C" ARM int func_020776a0(struct Entity020776a0* self) {
     }
 
     self->f17d |= 0x40;
+#if defined(jpn)
+    struct Vec3 posCopy = func_02034104(combatant);
+#else
     struct Vec3 posCopy = func_020341e0(combatant);
+#endif
     struct Vec3 delta;
     Vector3fix_Subtract((const Vector3fix*)&posCopy, (const Vector3fix*)&self->f44, (Vector3fix*)&delta);
     Vector3fix_Normalize((const Vector3fix*)&delta, (Vector3fix*)&delta);

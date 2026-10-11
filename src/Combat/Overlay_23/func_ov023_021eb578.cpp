@@ -59,6 +59,9 @@ extern "C" void _Z23ClearField0And40205a234P19ClearTarget0205a234(struct ClearTa
 extern "C" void func_0205a528(void* a, void* ptr, int val, void* d);
 
 extern char data_ov023_021fe108[];
+#if defined(jpn)
+extern char data_ov023_021fd39c[];
+#endif
 extern char data_ov023_021fe121[];
 extern char data_ov023_021fe131[];
 extern unsigned char data_ov023_021fd844[];
@@ -125,6 +128,7 @@ struct Scene021eb578 {
 
 #define SET_LAYER_PRIORITIES(m0, m1, m2, m3, mPlanes, s0, s1, s2, s3, sPlanes)     do {         REG16(0x4000008) = (REG16(0x4000008) & ~3) | (m0);         REG16(0x400000a) = (REG16(0x400000a) & ~3) | (m1);         REG16(0x400000c) = (REG16(0x400000c) & ~3) | (m2);         REG16(0x400000e) = (REG16(0x400000e) & ~3) | (m3);         REG32(0x4000000) = (REG32(0x4000000) & ~0x1f00) | ((mPlanes) << 8);         REG16(0x4001008) = (REG16(0x4001008) & ~3) | (s0);         REG16(0x400100a) = (REG16(0x400100a) & ~3) | (s1);         REG16(0x400100c) = (REG16(0x400100c) & ~3) | (s2);         REG16(0x400100e) = (REG16(0x400100e) & ~3) | (s3);         REG32(0x4001000) = (REG32(0x4001000) & ~0x1f00) | ((sPlanes) << 8);     } while (0)
 
+// JPN: func_ov023_021eb4dc
 // USA: func_ov023_021eb578
 extern "C" ARM void func_ov023_021eb578(Scene021eb578* self) {
     SafeAllocator* allocs;
@@ -159,7 +163,11 @@ extern "C" ARM void func_ov023_021eb578(Scene021eb578* self) {
             OrBitsIntoField0((unsigned int*)_Z27GetDataPtr02114e04_020d6c00v(), 1);
             OrGlobalFlag0x40();
         }
+#if defined(jpn)
+        self->taskId = loader->QueueLoadFile(data_ov023_021fd39c, NULL);
+#else
         self->taskId = loader->QueueLoadFileInGP2(data_ov023_021fe108, data_ov023_021fe121, NULL);
+#endif
         self->state++;
     }
 
@@ -177,7 +185,11 @@ extern "C" ARM void func_ov023_021eb578(Scene021eb578* self) {
         func_020dfec0(self->container, &allocs[2], data, length);
         loader->RemoveTask(self->taskId);
         self->taskId = -1;
+#if defined(jpn)
+        self->f1c = *(int*)(_Z26GetGlobalField0x1c020421a0v() + 0x28);
+#else
         self->f1c = *(int*)(_Z26GetGlobalField0x1c020421a0v() + 0x5c);
+#endif
         if (self->mode == 0 || self->mode == 1) {
             _Z31ConfigureSubBg1Control_021ec368iiiii(0, 0, 0x1a, 4, 0);
             func_ov023_021ec39c(0, 0, 0x1b, 4);

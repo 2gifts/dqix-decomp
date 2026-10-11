@@ -16,6 +16,48 @@ src/Combat/Overlay_26/StoreThreeWords_021d8b98.cpp:
     complete
     .text start:0x021d942c end:0x021d9434
 
+src/Combat/Overlay_26/func_ov023_021d8a40_021d8a40.cpp:
+    complete
+    .text start:0x021d9300 end:0x021d9338
+
+src/Combat/Overlay_26/func_ov026_021ddd84.cpp:
+    complete
+    .text start:0x021de3ac end:0x021de3f4
+
 src/Combat/Overlay_26/func_ov026_021daec8.cpp:
     complete
     .text start:0x021db5dc end:0x021db7a4
+
+src/Combat/Overlay_26/func_ov026_021d8aac.cpp:
+    .text start:0x021d9338 end:0x021d942c
+
+src/Combat/Overlay_26/func_ov026_021dddcc.cpp:
+    .text start:0x021de3f4 end:0x021deccc
+
+src/Combat/Overlay_26/func_ov026_021dc040.cpp:
+    complete
+    .text start:0x021dc710 end:0x021dcb10
+
+src/Combat/Overlay_26/func_ov026_021dbd1c.cpp:
+    complete
+    .text start:0x021dc3ec end:0x021dc514
+
+src/Combat/Overlay_26/func_ov026_021dbba8.cpp:
+    complete
+    .text start:0x021dc278 end:0x021dc3ec
+
+src/Combat/Overlay_26/func_ov026_021dbf04.cpp:
+    complete
+    .text start:0x021dc5d4 end:0x021dc710
+
+src/Combat/Overlay_26/func_ov026_021db3d8.cpp:
+    complete
+    .text start:0x021dbaa8 end:0x021dbc74
+
+src/Combat/Overlay_26/func_ov026_021dbe44.cpp:
+    complete
+    .text start:0x021dc514 end:0x021dc5d4
+
+src/Combat/Overlay_26/FindSlotById_021dae60.cpp:
+    complete
+    .text start:0x021db574 end:0x021db5dc

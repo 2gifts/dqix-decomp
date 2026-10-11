@@ -3,8 +3,17 @@
 
 struct Struct0205de24;
 extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(struct Struct0205de24* obj, unsigned char keyLow, unsigned char keyHigh);
-extern "C" void func_ov013_02185e40(void* self, char* text);
+#if defined(jpn)
+#define func_ov013_02185e40 func_ov013_02186f4c
+extern "C" void func_0205d304(void*, char*, int, int, int, int, void*);
+#define DRAW_TEXT(s,t) func_0205d304(s,t,0,0,0,1,NULL)
+enum { windowOffset=0x34, subScreenOffset=0x5cc, canvasOffset=0x5dc, textSize=0x800 };
+#else
 extern "C" void func_0205d304(void* window, char* text, int c, int d, int e, int f, void* g, int h);
+#define DRAW_TEXT(s,t) func_0205d304(s,t,0,0,0,1,NULL,0)
+enum { windowOffset=0x38, subScreenOffset=0x640, canvasOffset=0x654, textSize=0x960 };
+#endif
+extern "C" void func_ov013_02185e40(void* self, char* text);
 
 struct Sprite02185cc0 {
     char unk_0[8];
@@ -41,11 +50,11 @@ struct TextWindow02185cc0 {
 struct SkillPointMenu02185cc0 {
     char unk_0[0x18];
     void* spriteRenderer_;
-    char unk_1c[0x38 - 0x1c];
+    char unk_1c[windowOffset - 0x1c];
     TextWindow02185cc0 window_;
-    char unk_ee[0x640 - 0xee];
+    char unk_ee[subScreenOffset - windowOffset - sizeof(TextWindow02185cc0)];
     bool subScreen_;
-    char unk_641[0x654 - 0x641];
+    char unk_641[canvasOffset - subScreenOffset - 1];
     void* canvasPixels_;
     char* text_;
     char unk_65c[0x6a8 - 0x65c];
@@ -68,10 +77,19 @@ extern "C" ARM void func_ov013_02185cc0(SkillPointMenu02185cc0* self) {
     self->window_.unk_ac = 0xa;
     self->window_.unk_ae = 0xd;
     self->window_.unk_b1 = 4;
+#if defined(jpn)
+    if (self->subScreen_) {
+        self->window_.unk_b5 = 0;
+    } else {
+        self->window_.unk_b5 = 1;
+    }
+#else
     self->window_.unk_b5 = self->subScreen_ ? 0 : 1;
-    memset(self->text_, 0, 0x960);
+#endif
+    memset(self->text_, 0, textSize);
     func_ov013_02185e40(self, self->text_);
-    func_0205d304(&self->window_, self->text_, 0, 0, 0, 1, NULL, 0);
+    DRAW_TEXT(&self->window_, self->text_);
+#if !defined(jpn)
     renderer = self->spriteRenderer_;
     pixels = self->canvasPixels_;
     vocation = self->vocation_;
@@ -95,4 +113,5 @@ extern "C" ARM void func_ov013_02185cc0(SkillPointMenu02185cc0* self) {
             CleanCacheRange(pixels, 0x80);
         }
     }
+#endif
 }

@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+#if defined(jpn)
+extern "C" const char data_ov023_021fcdef[];
+extern "C" const char data_ov023_021fcdfe[];
+#endif
 
 class GameState
 {
@@ -54,6 +58,20 @@ struct Obj_0201bb78;
 struct StructAcAe021db45c;
 
 struct Statics_021db634 {
+#if defined(jpn)
+    struct Container020e0310* sTexts;
+    void* sDrops;
+    int sPalette3;
+    int regionalPalette;
+    int sPalette;
+    void* sBuffer;
+    int sStatesGuard;
+    void* sWindow;
+    ItemInfoTable_021db634* sPlaces;
+    struct Container020e0310* sFieldNames;
+    int sPalette2;
+
+#else
     void* sDrops;
     void* sBuffer;
     struct Container020e0310* sFieldNames;
@@ -64,6 +82,8 @@ struct Statics_021db634 {
     int sStatesGuard;
     void* sWindow;
     ItemInfoTable_021db634* sPlaces;
+
+#endif
 };
 extern "C" Statics_021db634 data_ov023_021ff9e0;
 extern "C" const short data_ov023_021fd5b8[3];
@@ -105,6 +125,7 @@ void CreateAndSetFields8A_021db544(void* layout, void* id, int x, int y);
             element->flags_ &= ~1;                                         \
     }
 
+// JPN: func_ov023_021dbf44
 // USA: func_ov023_021db634
 extern "C" ARM void func_ov023_021db634(Layout_021db634* layout, Canvas_021db634* canvas)
 {
@@ -125,8 +146,14 @@ extern "C" ARM void func_ov023_021db634(Layout_021db634* layout, Canvas_021db634
     int i;
     found = GetFieldByKey020e0434(data_ov023_021ff9e0.sTexts, 0x1f);
     none = GetFieldByKey020e0434(data_ov023_021ff9e0.sTexts, 0x1e);
+#if defined(jpn)
+    trade = data_ov023_021fcdef;
+    alchemy = data_ov023_021fcdfe;
+#else
     trade = GetFieldByKey020e0434(data_ov023_021ff9e0.sTexts, 0x2a);
     alchemy = CallFunc020e0434With02153694(0x56);
+#endif
+
     SHOW_ELEMENT(layout, 0xf);
     SHOW_ELEMENT(layout, 0xa);
     SetEntryFields_021e23d0(layout, 7, (int)found, 10, 15);

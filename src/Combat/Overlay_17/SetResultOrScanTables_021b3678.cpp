@@ -1,3 +1,10 @@
+// JPN: func_ov017_021b3d6c
+#if defined(jpn)
+enum { RegionOffset150 = 0x144 };
+#else
+enum { RegionOffset150 = 0x150 };
+#endif
+
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
@@ -30,7 +37,7 @@ extern "C" ARM int func_ov017_021b3678(struct Obj_021b3678* obj) {
     }
 
     if (GetSubByteField56e_021b354c((Obj150_021b354c*)combatant)) {
-        char* sub = *(char**)((char*)combatant + 0x150);
+        char* sub = *(char**)((char*)combatant + RegionOffset150);
         if (sub) {
             *(unsigned char*)(sub + 0x56e) = 0;
         }
@@ -38,7 +45,7 @@ extern "C" ARM int func_ov017_021b3678(struct Obj_021b3678* obj) {
         return 1;
     }
 
-    char* subBase = *(char**)((char*)combatant + 0x150);
+    char* subBase = *(char**)((char*)combatant + RegionOffset150);
     char* arrA = subBase + 0x194;
     char* arrB = subBase + 0x2f4;
     unsigned char i;

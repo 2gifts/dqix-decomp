@@ -1,3 +1,6 @@
+#if defined(jpn)
+#define data_ov026_021de87c data_ov026_021dee50
+#endif
 #include <globaldefs.h>
 #include "System/Matrix.h"
 
@@ -10,9 +13,17 @@ struct PresetEntry {
 };
 
 struct BattleWork {
+    #if defined(jpn)
+    char pad0[0x218];
+#else
     char pad0[0x29c];
+#endif
     BattleState* battle;
+    #if defined(jpn)
+    char pad2a0[0x77c4];
+#else
     char pad2a0[0x7550];
+#endif
     int presetId;
     int presetParams[3];
     Vector3i presetPos;

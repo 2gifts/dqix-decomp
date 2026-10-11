@@ -20,7 +20,12 @@ struct Obj021e0414 {
     char pad0[0x48];
     Container020dedd0* field48;
     Element020de650_021e0414* field4c;
+#if defined(jpn)
+    char pad50[0x6b8 - 0x50];
+#else
     char pad50[0x73c - 0x50];
+#endif
+
     int field73c;
     char pad740[0x770 - 0x740];
     short field770;
@@ -28,6 +33,7 @@ struct Obj021e0414 {
     signed char field79a;
 };
 
+// JPN: func_ov023_021e09b4
 // USA: func_ov023_021e0414  (semantic: RefreshEntryElementAndDispatch_021e0414)
 extern "C" ARM int func_ov023_021e0414(struct Obj021e0414* obj) {
     int a = (int)BackgroundLoader::GetInstance();

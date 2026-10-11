@@ -1,5 +1,12 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kRegionValue60_30 = 0x30 };
+#else
+enum { kRegionValue60_30 = 0x60 };
+#endif
+
+
 extern "C" unsigned short GetSubBGVRAMBanks(void);
 extern "C" unsigned short GetSubObjVRAMBanks(void);
 
@@ -14,7 +21,7 @@ struct Obj021672e4 {
     int f10;
     int f14;
     int f18;
-    char pad1c[0x60 - 0x1c];
+    char pad1c[kRegionValue60_30 - 0x1c];
     int f60;
     int f64;
     int f68;
@@ -26,6 +33,7 @@ struct Obj021672e4 {
 };
 
 // USA: func_ov003_021672e4
+// JPN: func_ov003_021671c4
 extern "C" ARM void func_ov003_021672e4(struct Obj021672e4* obj, int p1, int p2) {
     obj->f0 = 0;
     obj->f4 = 0;

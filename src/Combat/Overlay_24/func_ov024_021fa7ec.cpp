@@ -38,9 +38,16 @@ struct Cbt_021fa7ec {
     struct Info_021fa7ec* info;
     struct Stats_021fa7ec* stats;
     char pad13c[0x144 - 0x13c];
+#if defined(jpn)
+    union {
+        struct Entry_021fa7ec* entry;
+        unsigned char* field150;
+    };
+#else
     struct Entry_021fa7ec* entry;
     char pad148[0x150 - 0x148];
     unsigned char* field150;
+#endif
 };
 
 struct Action_021fa7ec {
@@ -146,6 +153,7 @@ extern "C" int _Z15TestBit4At0x2f4Ph(unsigned char* p);
 struct Scale4_021fa7ec { float v[4]; };
 extern struct Scale4_021fa7ec data_ov024_021fefa0;
 
+// JPN: func_ov024_021fafb8
 // USA: func_ov024_021fa7ec
 extern "C" ARM void func_ov024_021fa7ec(struct Ctx_021fa7ec* self, float* outHi, float* outLo, float* outAvg,
                                         int* outIndex, float baseHi, float baseLo, int useBase,

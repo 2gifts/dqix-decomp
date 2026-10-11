@@ -39,6 +39,7 @@ struct Obj_021e1cbc {
     unsigned char byte0x6e;
 };
 
+// JPN: func_ov024_021e2554
 // USA: func_ov024_021e1cbc
 extern "C" ARM void* func_ov024_021e1cbc(Obj_021e1cbc* obj, int unused, int id, Range_021e1cbc* range) {
 	GameObject* c = GetCombatantByID((int)obj->battle, id);

@@ -13,12 +13,18 @@ struct Word78Bits_021c8588 {
     unsigned int hi : 1;
 };
 
+// JPN: func_ov017_021c8a38
 // USA: func_ov017_021c8588  (semantic: ApplyEntriesAndSetWorkFlag_021c8588)
 extern "C" ARM void func_ov017_021c8588(int a, signed char* b, GameState* bs, char* d) {
+#if defined(jpn)
+ enum {regionalOffset0=0x3508, regionalOffset1=0x8b4};
+#else
+ enum {regionalOffset0=0x3718, regionalOffset1=0x94c};
+#endif
     void* handle;
     signed char* p0;
     int i;
-    void* inner = *(void**)(d + 0x3718);
+    void* inner = *(void**)(d + regionalOffset0);
     handle = func_ov017_021b8468(inner);
     if (handle == 0) return;
     if (GetField6b0_021b8470(inner) == 0) return;
@@ -31,7 +37,7 @@ extern "C" ARM void func_ov017_021c8588(int a, signed char* b, GameState* bs, ch
         if (field150 == 0) continue;
         signed char v0 = p0[i];
         signed char v1 = *(p0 + i + 4);
-        if (v0 >= 0) *(int*)((char*)field150 + 0x94c) = v0;
+        if (v0 >= 0) *(int*)((char*)field150 + regionalOffset1) = v0;
         if (v1 < 0) continue;
         ((Word78Bits_021c8588*)((char*)field150 + 0x78))->flag = (unsigned short)v1;
     }

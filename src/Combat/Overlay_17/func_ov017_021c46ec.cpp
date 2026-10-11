@@ -1,3 +1,10 @@
+// JPN: func_ov017_021c4bb8
+#if defined(jpn)
+enum { RegionOffset3734 = 0x3524, RegionOffset101 = 0xfd };
+#else
+enum { RegionOffset3734 = 0x3734, RegionOffset101 = 0x101 };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -13,12 +20,12 @@ struct Mode021c46ec {
     unsigned char active;
     unsigned char pad4[0x12 - 0x4];
     unsigned char field12;
-    unsigned char pad13[0x101 - 0x13];
+    unsigned char pad13[RegionOffset101 - 0x13];
     unsigned char field101;
 };
 
 struct Ov021c46ec {
-    unsigned char pad0[0x3734];
+    unsigned char pad0[RegionOffset3734];
     struct Mode021c46ec* mode;
 };
 

@@ -1,3 +1,12 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define data_ov006_0215fffe data_ov006_02161350
+#define func_ov006_0215f3d8 func_ov006_021607f8
+#define func_ov006_0215f4dc func_ov006_021608fc
+#define func_ov006_0215f740 func_ov006_02160b08
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 struct Outer020e28dc;
@@ -25,8 +34,10 @@ void SelectCoordsByFlag0x24(unsigned char*, int*, int*);
 extern "C" int _Z28IsPointInsideElement02080d54P7Obj2081iii(Obj2081*, int, int, int);
 
 struct AlchemyMenu {
+#if !defined(jpn)
     int textPosition_;
     char** texts_;
+#endif
     void* canvasBuffer_;
     void* allocators_;
     AlchemyPot* pot_;
@@ -45,6 +56,9 @@ struct AlchemyMenu {
     short** items_;
     unsigned char** counts_;
     unsigned short* sizes_;
+#if defined(jpn)
+    char regionalPad[8];
+#endif
     int subBackground_[0x20 / 4];
     int ingredients_[0x28 / 4];
     int repeat_[0xc / 4];

@@ -1,3 +1,10 @@
+// JPN: func_ov017_021b2aa0
+#if defined(jpn)
+enum { RegionOffset3700 = 0x34f0 };
+#else
+enum { RegionOffset3700 = 0x3700 };
+#endif
+
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
@@ -52,7 +59,7 @@ extern "C" ARM int func_ov017_021b2388(struct Obj021b2388* ctx) {
     GameObject* combatant = battle->GetUnknownGameObject();
     fieldPtr = (unsigned char*)GetFieldIfFlag4((char*)battle);
     int loadedList = (int)BackgroundLoader::GetInstance();
-    void** entry = *(void***)((char*)base + 0x3700);
+    void** entry = *(void***)((char*)base + RegionOffset3700);
     unsigned int val40 = GetField4((unsigned int*)base);
     ctx->field40 = val40;
 

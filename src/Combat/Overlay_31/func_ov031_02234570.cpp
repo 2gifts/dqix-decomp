@@ -11,6 +11,7 @@ extern "C" int LoadToMainBG2CharacterData(int arg0, int arg1, unsigned int arg2)
 extern "C" ARM void LoadToMainBGStandardPalette(int src, int dstOffset, unsigned int size);
 extern "C" ARM int LoadToMainBG2ScreenData(int arg0, int arg1, unsigned int arg2);
 
+// JPN: func_ov031_02234d50
 // USA: func_ov031_02234570
 extern "C" ARM void func_ov031_02234570(void) {
     func_ov031_022234d8((int)&data_ov031_0224bdc8, (Callback_022234d8)LoadToMainBG2CharacterData);

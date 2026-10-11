@@ -1,3 +1,10 @@
+// JPN: func_ov017_0218e780
+#if defined(jpn)
+enum { RegionOffset36fc = 0x34ec, RegionOffset38 = 0x58, RegionOffset3c = 0x5c };
+#else
+enum { RegionOffset36fc = 0x36fc, RegionOffset38 = 0x38, RegionOffset3c = 0x3c };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -44,10 +51,10 @@ extern "C" ARM void func_ov017_0218dba0(int combatantId) {
     void* headArr;
 
     void* ovBase = func_ov017_0218b5b0();
-    headArr = *(void**)((char*)ovBase + 0x36fc);
+    headArr = *(void**)((char*)ovBase + RegionOffset36fc);
     void* misc = func_02012fe4();
-    tag = *(unsigned short*)((char*)misc + 0x38);
-    f8c = *(int*)((char*)misc + 0x3c);
+    tag = *(unsigned short*)((char*)misc + RegionOffset38);
+    f8c = *(int*)((char*)misc + RegionOffset3c);
 
     struct Vec3Local_0218dba0 selfVec;
     struct Vec3Local_0218dba0 tmp;

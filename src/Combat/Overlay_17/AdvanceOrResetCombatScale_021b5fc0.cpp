@@ -9,8 +9,14 @@ int GetGlobalField0x1c020421a0(void);
 int HasNonZeroByteAtOfField498_0218d75c_0218d75c(void* obj);
 void SetByteField0x253(void* obj);
 
+// JPN: func_ov017_021b6574
 // USA: func_ov017_021b5fc0  (semantic: AdvanceOrResetCombatScale_021b5fc0)
 extern "C" ARM int func_ov017_021b5fc0(unsigned char* obj) {
+#if defined(jpn)
+ enum {regionalOffset0=0x228};
+#else
+ enum {regionalOffset0=0x2d8};
+#endif
     GameState* battleStruct = GameState::GetInstance();
     int scale = battleStruct->GetTickCount();
     func_ov017_0218b5b0();
@@ -25,7 +31,7 @@ extern "C" ARM int func_ov017_021b5fc0(unsigned char* obj) {
         func_ov017_021b5a30(obj);
         obj[0x1] = 1;
         char* g = (char*)GetGlobalField0x1c020421a0();
-        *(int*)(g + 0x2d8) = 0;
+        *(int*)(g + regionalOffset0) = 0;
         return 6;
     }
 
@@ -41,7 +47,7 @@ extern "C" ARM int func_ov017_021b5fc0(unsigned char* obj) {
     SetByteField0x253(*(void**)(obj + 0x1c));
     func_ov017_021b5a30(obj);
     obj[0x1] = 1;
-    *(int*)(g + 0x2d8) = 0;
+    *(int*)(g + regionalOffset0) = 0;
     return 6;
 returnFive021b5fc0:
     return 5;

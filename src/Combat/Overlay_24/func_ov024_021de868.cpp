@@ -22,6 +22,7 @@ struct StatsFlags_021de868 {
 	unsigned char rest : 7;
 };
 
+// JPN: func_ov024_021df100
 // USA: func_ov024_021de868
 extern "C" ARM void* func_ov024_021de868(struct Obj_021de868* obj, int unused, int id) {
 	GameObject* c = GetCombatantByID((int)obj->field0x10, id);

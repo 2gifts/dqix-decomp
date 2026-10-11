@@ -6,6 +6,7 @@ struct ByteHeader0204693c;
 void ResetByteHeader(struct ByteHeader0204693c* p);
 int GetGlobalField0x1c020421a0();
 
+// JPN: 021b5db0
 // USA: func_ov017_021b57fc  (semantic: InitStateAndConfigDisplay_021b57fc)
 extern "C" ARM void func_ov017_021b57fc(unsigned char* obj) {
     ResetByteHeader((struct ByteHeader0204693c*)obj);
@@ -30,8 +31,13 @@ extern "C" ARM void func_ov017_021b57fc(unsigned char* obj) {
     ((SafeAllocator*)(obj + 0x58))->ResetAllocatorPointer();
 
     int field = GetGlobalField0x1c020421a0();
+#if defined(jpn)
+    void* p = *(void**)((char*)field + 0x28);
+    memset(*(void**)(obj + 0x3c) = p, 0, 0x800);
+#else
     void* p = *(void**)((char*)field + 0x5c);
     memset(*(void**)(obj + 0x3c) = p, 0, 0x960);
+#endif
 
     unsigned int f = (*(volatile unsigned int*)0x4000000 & 0x1f00) >> 8;
     f |= 0x10;

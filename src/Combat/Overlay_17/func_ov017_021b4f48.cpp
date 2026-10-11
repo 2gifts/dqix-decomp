@@ -1,3 +1,10 @@
+// JPN: func_ov017_021b5638
+#if defined(jpn)
+enum { RegionOffset23ec = 0x240c, RegionOffset60 = 0x5c };
+#else
+enum { RegionOffset23ec = 0x23ec, RegionOffset60 = 0x60 };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
@@ -32,7 +39,7 @@ struct ScriptRequest_021b4f48 {
 extern "C" ARM void func_ov017_021b4f48(struct ScriptRequest_021b4f48* request) {
     GameState* battle = GameState::GetInstance();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
-    ActiveGrottoClass* grotto = (ActiveGrottoClass*)((char*)func_02012fe4() + 0x23ec);
+    ActiveGrottoClass* grotto = (ActiveGrottoClass*)((char*)func_02012fe4() + RegionOffset23ec);
 
     if (loader->GetTaskStatus(request->taskId) == 0) {
         return;
@@ -51,7 +58,7 @@ extern "C" ARM void func_ov017_021b4f48(struct ScriptRequest_021b4f48* request) 
                 monsterId = rank + (environ * 100 + 0x9c40);
             }
             _Z33SetupAndRunBufferedScript0209bc98PvP12StreamHeaderiiiii(
-                (char*)request->source + 0x60, (struct StreamHeader*)data, size,
+                (char*)request->source + RegionOffset60, (struct StreamHeader*)data, size,
                 request->source->param, monsterId, field5cb0, field5cb4);
         }
     }

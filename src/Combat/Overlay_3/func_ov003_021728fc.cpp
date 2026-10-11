@@ -1,5 +1,21 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kRegionValueEC_E8 = 0xe8 };
+enum { kRegionValue120_12C = 0x12c };
+enum { kRegionValueEF_EB = 0xeb };
+enum { kRegionValueFA_108 = 0x108 };
+enum { kRegionValue3C9_139 = 0x139 };
+#else
+enum { kRegionValueEC_E8 = 0xec };
+enum { kRegionValue120_12C = 0x120 };
+enum { kRegionValueEF_EB = 0xef };
+enum { kRegionValueFA_108 = 0xfa };
+enum { kRegionValue3C9_139 = 0x3c9 };
+#endif
+
+int GetGlobalField0x1c020421a0();
+
 extern "C" int func_ov017_0218b5b0(void);
 int UpdatePlayClocks020ac4f8(int commit);
 struct MainBgControlBackup02074af4;
@@ -14,21 +30,25 @@ void* GetDataPtr02114e04_020d6c00(void);
 void OrBitsIntoField0(unsigned int* p, unsigned int mask);
 
 struct S021728fc {
-    char pad_0[0xec];
+    char pad_0[kRegionValueEC_E8];
     unsigned char field_ec;
     unsigned char pad_ed;
     unsigned char field_ee;
-    char pad_ef[0x120 - 0xef];
+    char pad_ef[kRegionValue120_12C - kRegionValueEF_EB];
     int field_120;
 };
 
+// JPN: func_ov003_021717e8
 // USA: func_ov003_021728fc  (semantic: SetupMainBgAndReleaseHandle_021728fc)
 extern "C" ARM void func_ov003_021728fc(S021728fc* obj) {
     unsigned int* field4 = (unsigned int*)func_ov017_0218b5b0();
     if (obj->field_ee != 0) return;
 
     UpdatePlayClocks020ac4f8(0);
-    func_02074af4((struct MainBgControlBackup02074af4*)((char*)obj + 0xfa));
+#if defined(jpn)
+    *(int*)((char*)obj + 0xf0) = *(int*)(GetGlobalField0x1c020421a0() + 0x28);
+#endif
+    func_02074af4((struct MainBgControlBackup02074af4*)((char*)obj + kRegionValueFA_108));
 
     volatile unsigned int* dispcnt = (volatile unsigned int*)0x4000000;
     unsigned int v = (*dispcnt & 0x1f00) >> 8;
@@ -50,7 +70,7 @@ extern "C" ARM void func_ov003_021728fc(S021728fc* obj) {
 
     int* g = GetGlobal02109030();
     ReleaseHandleAndClearFlags((struct Obj020941b0*)g);
-    ((unsigned char*)g)[0x3c9] = (((unsigned char*)g)[0x3c9] & ~1) | 1;
+    ((unsigned char*)g)[kRegionValue3C9_139] = (((unsigned char*)g)[kRegionValue3C9_139] & ~1) | 1;
     ResetAndSetFlag0x3c9Bit0_020939dc(g);
 
     OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 0x1000);

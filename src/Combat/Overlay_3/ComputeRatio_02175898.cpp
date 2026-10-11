@@ -9,6 +9,11 @@ ARM unsigned int ComputeRatio_02175898(char* obj, void* s) {
         return 0;
     }
     int v = EvalOrDispatch020de194(s);
-    unsigned short field = *(unsigned short*)(obj + 0x800 + 0x6c);
+#if defined(jpn)
+    enum { fieldOffset = 0x7e8 };
+#else
+    enum { fieldOffset = 0x86c };
+#endif
+    unsigned short field = *(unsigned short*)(obj + fieldOffset);
     return _u32_div_f(field * v, 100);
 }

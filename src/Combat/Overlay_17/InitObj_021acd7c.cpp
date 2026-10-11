@@ -6,6 +6,13 @@ struct ByteHeader0204693c;
 void ResetByteHeader(struct ByteHeader0204693c* p);
 void InitBigStruct0205c790(char* obj);
 
+#if defined(jpn)
+#define TAIL_OFFSET 0x20c
+#else
+#define TAIL_OFFSET 0x27c
+#endif
+
+// JPN: func_ov017_021ad5b4
 // USA: func_ov017_021acd7c  (semantic: InitObj_021acd7c)
 extern "C" ARM void func_ov017_021acd7c(char* obj) {
     ResetByteHeader((struct ByteHeader0204693c*)obj);
@@ -13,16 +20,16 @@ extern "C" ARM void func_ov017_021acd7c(char* obj) {
     ((SafeAllocator*)(obj + 0x8))->ResetAllocatorPointer();
     obj[0x1c] = 0;
     obj[0x1d] = 0;
-    obj[0x27c] = 0;
-    obj[0x27d] = 0;
-    obj[0x27e] = 0;
+    obj[TAIL_OFFSET + 0] = 0;
+    obj[TAIL_OFFSET + 1] = 0;
+    obj[TAIL_OFFSET + 2] = 0;
     obj[0x1e] = 0;
     obj[0x1f] = 0;
-    obj[0x280] = 0;
-    obj[0x27f] = 0;
+    obj[TAIL_OFFSET + 4] = 0;
+    obj[TAIL_OFFSET + 3] = 0;
     *(short*)(obj + 0x40) = -1;
-    obj[0x281] = 0;
-    obj[0x282] = 0;
+    obj[TAIL_OFFSET + 5] = 0;
+    obj[TAIL_OFFSET + 6] = 0;
     *(int*)(obj + 0x20) = 0;
     *(int*)(obj + 0x24) = 0;
     *(int*)(obj + 0x28) = 0;

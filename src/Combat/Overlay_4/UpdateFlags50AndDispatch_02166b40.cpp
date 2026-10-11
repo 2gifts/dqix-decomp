@@ -15,12 +15,19 @@ struct BitField02166b40 {
     unsigned char bit6 : 1;
     unsigned char bit7 : 1;
 };
+#if defined(jpn)
+struct RegionalContextPointer { unsigned int reserved; struct BitField02166b40* value; };
+extern RegionalContextPointer data_ov004_0217101c;
+#define CONTEXT_VALUE data_ov004_0217101c.value
+#else
 extern struct BitField02166b40* data_ov004_0217101c;
+#define CONTEXT_VALUE data_ov004_0217101c
+#endif
 
 // USA: func_ov004_02166b40  (semantic: UpdateFlags50AndDispatch_02166b40)
 #pragma optimize_for_size off
 extern "C" ARM int func_ov004_02166b40(void* a1) {
-    struct BitField02166b40* obj = data_ov004_0217101c;
+    struct BitField02166b40* obj = CONTEXT_VALUE;
     int r = func_ov023_021f6558(a1, 0x5a);
     short val;
     if (r != 0xb4 && r == 0xb5) {

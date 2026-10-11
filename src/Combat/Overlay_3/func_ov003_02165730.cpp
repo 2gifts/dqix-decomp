@@ -1,4 +1,13 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegion3c9 = 0x139 };
+enum { kRegion390 = 0x278 };
+enum { kRegiond0 = 0x10 };
+#else
+enum { kRegion3c9 = 0x3c9 };
+enum { kRegion390 = 0x390 };
+enum { kRegiond0 = 0xd0 };
+#endif
 #include "GameState/GameState.h"
 #include "Resource/Brightness.h"
 
@@ -6,7 +15,7 @@ struct FlagWord02046708;
 struct Obj020e25e8;
 
 struct Global02109030 {
-    unsigned char pad_0x0[0x3c9];
+    unsigned char pad_0x0[kRegion3c9];
     unsigned char flag3c9 : 1;
 };
 
@@ -25,9 +34,9 @@ struct PartyList2a04 {
 };
 
 struct BattleView02165730 {
-    unsigned char pad_0x0[0x390];
+    unsigned char pad_0x0[kRegion390];
     struct Obj020e25e8* selection;
-    unsigned char pad_0x394[0xd0];
+    unsigned char pad_0x394[kRegiond0];
     unsigned int flags;
     unsigned char pad_0x468[0x1c];
     short field_0x484;
@@ -38,6 +47,7 @@ struct BattleView02165730 {
     unsigned char field_0x4a5;
 };
 
+// JPN: func_ov003_0216570c
 // USA: func_ov003_02165730
 extern "C" ARM void func_ov003_02165730(BattleView02165730* view) {
     GameResources* resources = func_ov017_0218b5b0();

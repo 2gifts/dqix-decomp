@@ -1,6 +1,13 @@
+// JPN: func_ov017_021b5bfc
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Grotto/Main/ActiveGrottoClass.h"
+
+#if defined(jpn)
+enum { Field18 = 0x14, Field23ec = 0x240c };
+#else
+enum { Field18 = 0x18, Field23ec = 0x23ec };
+#endif
 
 extern "C" void* func_0202ae18(void);
 GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
@@ -26,7 +33,7 @@ extern "C" ARM void func_ov017_021b5648(char* self) {
         void* p8 = *(void**)(self + 0x8);
         if (*(unsigned short*)p8 != _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)c)) continue;
 
-        unsigned short v = func_02028460((char*)p8 + 0x18, (char*)c + 0x44);
+        unsigned short v = func_02028460((char*)p8 + Field18, (char*)c + 0x44);
         *(unsigned short*)((char*)c + 0xb8) = v;
         ((unsigned char*)c)[0xc2] |= 0x40;
     }
@@ -35,7 +42,7 @@ extern "C" ARM void func_ov017_021b5648(char* self) {
         GameState* bs2 = GameState::GetInstance();
         void* obj5 = func_ov017_0218b5b0();
         bs2->GetGrottoStruct();
-        ActiveGrottoClass* grotto = (ActiveGrottoClass*)((char*)func_02012fe4() + 0x23ec);
+        ActiveGrottoClass* grotto = (ActiveGrottoClass*)((char*)func_02012fe4() + Field23ec);
         unsigned char env = grotto->GetActiveGrottoEnviron() & 0xff;
 
         struct Buf3_021b5648 local = data_ov017_021d6bcc;

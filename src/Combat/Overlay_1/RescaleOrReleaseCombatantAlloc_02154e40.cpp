@@ -19,7 +19,11 @@ struct Obj02154e40 {
     unsigned char field0x13;
     char pad2[0x50 - 0x14];
     unsigned short flags0x50;
+#if defined(jpn)
+    char pad3[0x11c - 0x52];
+#else
     char pad3[0x120 - 0x52];
+#endif
     void* field0x120;
     char pad4[0x138 - 0x124];
     SafeAllocator* field0x138;

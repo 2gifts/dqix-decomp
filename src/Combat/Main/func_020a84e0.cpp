@@ -1,6 +1,12 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+enum { EntryListOffset = 0x8c };
+#else
+enum { EntryListOffset = 0x6c };
+#endif
+
 struct FlagWord02046708 { unsigned int flags; };
 
 extern "C" void* _Z27GetDataPtr02114e04_020d6c00v(void);
@@ -30,6 +36,7 @@ extern "C" void func_020aeb34(void);
 int TestBitInByteArray(int unused, unsigned char* arr, int index);
 
 // USA: func_020a84e0
+// JPN: func_020a84e0
 extern "C" ARM void func_020a84e0() {
     GameState* gs = GameState::GetInstance();
     func_ov017_0218b5b0();
@@ -41,7 +48,7 @@ extern "C" ARM void func_020a84e0() {
     GameObject* po;
     int i = 0;
     for (;;) {
-        unsigned char* entry = (unsigned char*)GetElementStride0x74(obj + 0x6c, i);
+        unsigned char* entry = (unsigned char*)GetElementStride0x74(obj + EntryListOffset, i);
         i++;
         if (!entry) {
             break;

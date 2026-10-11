@@ -61,7 +61,11 @@ extern "C" ARM int func_ov001_0215b074(int mode, char* args, int count) {
     char* work = (char*)func_ov017_0218b5b0()->unknown_ptr_array_371c[6];
     if (setFlag) {
         if (*(unsigned short*)(work + 0xa) <= 3) {
+            #if defined(jpn)
+            work[0xfe] = 1;
+#else
             work[0x102] = 1;
+#endif
         }
     }
     return 1;

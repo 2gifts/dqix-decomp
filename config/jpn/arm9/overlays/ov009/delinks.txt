@@ -7,3 +7,19 @@
 src/Combat/Overlay_9/ResetFields021847c4.cpp:
     complete
     .text start:0x02185828 end:0x02185850
+
+src/Combat/Overlay_9/func_ov009_02184a18.cpp:
+    .text start:0x02185aac end:0x02185c58
+
+src/Combat/Overlay_9/ResetAndReinitCombatState_02184848.cpp:
+    .text start:0x021858e4 end:0x02185aac
+
+src/Combat/Overlay_9/func_ov009_02187b34.cpp:
+    .text start:0x021888f0 end:0x0218918c
+
+src/Combat/Overlay_9/02188d9c.cpp:
+    .text start:0x02189c60 end:0x02189d30
+
+src/Combat/Overlay_9/func_ov009_0218454c.cpp:
+    complete
+    .text start:0x021855a8 end:0x02185828

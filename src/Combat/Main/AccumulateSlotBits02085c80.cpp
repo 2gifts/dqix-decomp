@@ -1,10 +1,16 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kFlagsOffset = 0x85b };
+#else
+enum { kFlagsOffset = 0x8f3 };
+#endif
+
 #include "GameState/GameState.h"
 
 int GetSlotBits0201137c(char* base, int id);
 
 struct Actor02085c80 {
-    char pad0[0x8f3];
+    char pad0[kFlagsOffset];
     unsigned char field8f3;
 };
 

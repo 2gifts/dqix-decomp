@@ -1,4 +1,12 @@
+// JPN: func_ov017_021c0df8
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kSceneHeapSize = 0x1e384, kSceneObjectSize = 0xb44, kGlobalColorOffset = 0x8c, kGlobalWordOffset = 0x608, kGlobalStateOffset = 0x228, kGlobalFlagOffset = 0x236 };
+#else
+enum { kSceneHeapSize = 0x1e388, kSceneObjectSize = 0xb48, kGlobalColorOffset = 0x6c, kGlobalWordOffset = 0x508, kGlobalStateOffset = 0x2d8, kGlobalFlagOffset = 0x2e6 };
+#endif
+
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 #include "Resource/GameResources.h"
@@ -198,16 +206,16 @@ extern "C" ARM void func_ov017_021c0850(SceneSwap021c0850* self) {
     _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)leader, 1);
 
     if (self->state == 0) {
-        func_020a0cc4(0x1e388);
-        void* buffer = AllocateAligned4(&data_02114e20, 0x1e388);
+        func_020a0cc4(kSceneHeapSize);
+        void* buffer = AllocateAligned4(&data_02114e20, kSceneHeapSize);
         if (buffer == NULL) {
             func_020a0c0c();
             self->done = 1;
             return;
         }
-        self->allocator.CreateTypeA(buffer, 0x1e388);
+        self->allocator.CreateTypeA(buffer, kSceneHeapSize);
         self->allocator.Reset();
-        self->scene = (Scene021c0850*)self->allocator.Allocate(0xb48);
+        self->scene = (Scene021c0850*)self->allocator.Allocate(kSceneObjectSize);
         if (self->scene == NULL) {
             func_020a0c0c();
             self->done = 1;
@@ -266,7 +274,7 @@ extern "C" ARM void func_ov017_021c0850(SceneSwap021c0850* self) {
         self->bgScrBase = dispCnt.bgScrBase;
         self->bgCharBase = dispCnt.bgCharBase;
         self->dispCntFlags = DISPCNT & 0x300010;
-        self->clearColor = GetFieldAt0x7e((S_e830*)((char*)func_02012fe4() + 0x6c));
+        self->clearColor = GetFieldAt0x7e((S_e830*)((char*)func_02012fe4() + kGlobalColorOffset));
         self->word = GetWord((unsigned int*)res);
         self->field4 = GetField4((unsigned int*)res);
         self->field8 = GetField8((unsigned int*)res);
@@ -311,7 +319,7 @@ extern "C" ARM void func_ov017_021c0850(SceneSwap021c0850* self) {
         int* global = GetGlobalPtr02105244();
         *global = func_0203be4c(context) + 0x200;
         func_0203c35c(global);
-        global[0x508 / 4] = 0x7000;
+        global[kGlobalWordOffset / 4] = 0x7000;
         self->state++;
     } else if (self->state == 3) {
         if (func_ov017_021959b4()) {
@@ -415,8 +423,8 @@ extern "C" ARM void func_ov017_021c0850(SceneSwap021c0850* self) {
             SetMainBrightness(res, 0, 0xf);
             _Z27SetStateAndDispatch0209c3b4P13Actor0209c3b4i(&data_02109bf4, func_0209cd50(*(unsigned short*)func_02012fe4()));
             char* global = (char*)_Z26GetGlobalField0x1c020421a0v();
-            *(int*)(global + 0x2d8) = 0;
-            *(unsigned char*)(global + 0x2e6) = 1;
+            *(int*)(global + kGlobalStateOffset) = 0;
+            *(unsigned char*)(global + kGlobalFlagOffset) = 1;
             break;
         }
         }

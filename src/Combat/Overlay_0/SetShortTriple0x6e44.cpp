@@ -1,8 +1,15 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { tripleOffset = 0x7034 };
+#else
+enum { tripleOffset = 0x6e44 };
+#endif
+
 // USA: func_ov000_02163440
+// JPN: func_ov000_02164ba4
 ARM void SetShortTriple0x6e44(void* obj, unsigned short a, unsigned short b, unsigned short c) {
-    *(unsigned short*)((char*)obj + 0x6e44) = a;
-    *(unsigned short*)((char*)obj + 0x6e46) = b;
-    *(unsigned short*)((char*)obj + 0x6e48) = c;
+    *(unsigned short*)((char*)obj + tripleOffset) = a;
+    *(unsigned short*)((char*)obj + tripleOffset + 2) = b;
+    *(unsigned short*)((char*)obj + tripleOffset + 4) = c;
 }

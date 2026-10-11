@@ -22,6 +22,7 @@ struct Ctx020bf484 {
     int field0x130;
 };
 
+// JPN: func_020c0f50
 // USA: func_020bf484
 ARM void DetachAndReleaseRefs020bf484(int expected, void* unused1, struct Ctx020bf484* obj) {
     if (expected != obj->field0x12c) {

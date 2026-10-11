@@ -38,7 +38,11 @@ struct Cbt_021e6a90 {
     char pad0[0x134];
     struct Info_021e6a90* info;
     struct Stats_021e6a90* stats;
+#if defined(jpn)
+    char pad13c[0x144 - 0x13c];
+#else
     char pad13c[0x150 - 0x13c];
+#endif
     unsigned char* field150;
 };
 
@@ -107,7 +111,11 @@ struct Ctx_021e6a90 {
 struct Tension_021e6a90 {
     char pad0[0x16c];
     unsigned short values[1];
+#if defined(jpn)
+    char pad16e[0x8b8 - 0x16e];
+#else
     char pad16e[0x950 - 0x16e];
+#endif
     int index;
 };
 
@@ -165,6 +173,7 @@ static inline int IsPartyMember(int id) {
     return id >= 0 && id <= 3;
 }
 
+// JPN: func_ov024_021e7328
 // USA: func_ov024_021e6a90
 extern "C" ARM int func_ov024_021e6a90(struct Ctx_021e6a90* ctx, int attackerId, int targetId,
                                                           struct Action_021e6a90* action, unsigned int base) {

@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kStateOffset = 0x5a68 };
+#else
+enum { kStateOffset = 0x5cc8 };
+#endif
+
 #include "Memory/AllocatorUnion.h"
 #include "GameState/GameState.h"
 
@@ -13,7 +19,7 @@ extern "C" int func_02075acc(int a, void* p, unsigned int size, int c);
 ARM int AllocateAndProcessScratchBuffer020abca8() {
     GameState* bs = GameState::GetInstance();
     int zero = 0;
-    *(unsigned char*)((char*)bs + 0x5cc8) = zero;
+    *(unsigned char*)((char*)bs + kStateOffset) = zero;
 
     void* alloc = AllocateAligned4(&data_02114e20, 0x6fe4);
     if (alloc != NULL) {

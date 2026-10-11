@@ -9,6 +9,7 @@ extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, int e, int
 
 struct Obj_021e40d8 { char pad0[0x10]; void* field0x10; };
 
+// JPN: func_ov024_021e4970
 // USA: func_ov024_021e40d8
 ARM long long AddToTableAfterCheck_021e40d8(struct Obj_021e40d8* obj, int unused, int id) {
 	GameObject* combatant = GetCombatantByID((int)obj->field0x10, id);

@@ -1,3 +1,9 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define data_ov023_021ff7c4 data_ov023_021fea44
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
 #include "std_library_functions.h"

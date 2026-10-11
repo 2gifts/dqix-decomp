@@ -4,9 +4,16 @@ struct Obj0205d2bc;
 extern "C" void func_0204b088(void*, int);
 void InitEntries0205d2bc(struct Obj0205d2bc*);
 
+#if defined(jpn)
+enum { fieldFlagsOffset = 0x1faa };
+#else
+enum { fieldFlagsOffset = 0x1d72 };
+#endif
+
 // USA: func_ov000_021742c8
+// JPN: func_ov000_02175884
 ARM void ApplyFieldGroups021742c8(void* obj) {
-    unsigned short flags = *(unsigned short*)((char*)obj + 0x1d72);
+    unsigned short flags = *(unsigned short*)((char*)obj + fieldFlagsOffset);
     if (!(flags & 0x40)) return;
     if (flags & 0x80) {
         func_0204b088((char*)obj + 0x8c4, 0);

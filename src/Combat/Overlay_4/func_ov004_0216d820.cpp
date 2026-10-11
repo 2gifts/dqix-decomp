@@ -8,7 +8,11 @@ extern "C" int func_ov004_0216b2c8(void* obj, int id, int a, int b);
 extern "C" int func_ov004_0216b7bc(void* obj, int a, int b, int c);
 
 struct FieldGroup02171034_0216d820 {
+#if defined(jpn)
+    unsigned char pad0[0x10];
+#else
     unsigned char pad0[0xc];
+#endif
     int val0c;
 };
 extern struct FieldGroup02171034_0216d820 data_ov004_02171034;

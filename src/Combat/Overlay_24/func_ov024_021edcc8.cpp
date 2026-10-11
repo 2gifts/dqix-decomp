@@ -34,6 +34,7 @@ struct StatStages_021edcc8 {
 
 struct Ctx_021edcc8 { int battle; };
 
+// JPN: func_ov024_021ee494
 // USA: func_ov024_021edcc8
 extern "C" ARM int func_ov024_021edcc8(struct Ctx_021edcc8* ctx, int id) {
 	GameObject* c = GetCombatantByID(ctx->battle, id);

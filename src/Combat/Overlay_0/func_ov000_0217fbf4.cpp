@@ -10,7 +10,11 @@ struct Combatant0217fbf4 {
     unsigned char flags;
     char pad3[0x4c - 0x25];
     int id;
+#if defined(jpn)
+    char pad4[0x488 - 0x50];
+#else
     char pad4[0x448 - 0x50];
+#endif
 };
 
 struct Battle0217fbf4 {

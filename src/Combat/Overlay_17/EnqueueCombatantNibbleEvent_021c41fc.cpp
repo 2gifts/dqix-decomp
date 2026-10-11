@@ -1,4 +1,11 @@
+// JPN: func_ov017_021c46c4
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kRegionalFieldOffset = 0x150 };
+#else
+enum { kRegionalFieldOffset = 0x15c };
+#endif
 #include "GameState/GameState.h"
 
 void* GetData02100044(void);
@@ -43,7 +50,7 @@ extern "C" ARM void func_ov017_021c41fc(int combatantId, int mode) {
         p->highNibble = 0;
     }
 
-    int v = *(int*)((char*)combatant + 0x15c);
+    int v = *(int*)((char*)combatant + kRegionalFieldOffset);
     if (v < 0) {
         p->field8 = 0;
     } else {

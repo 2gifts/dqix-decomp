@@ -7,7 +7,12 @@ extern void* AllocateAndLinkEntry020bda58(struct Obj020bda58* obj, unsigned int 
 extern void* CreateAllocatorHolderInRegion(void* start, unsigned int size);
 
 struct Obj020bc820;
+#if defined(jpn)
+extern "C" void func_020be2ec(struct Obj020bc820* obj);
+#define ReleaseActorAndUnlink020bc820 func_020be2ec
+#else
 extern void ReleaseActorAndUnlink020bc820(struct Obj020bc820* obj);
+#endif
 
 struct Block020bbf84 {
     char pad0[8];
@@ -24,6 +29,7 @@ struct ListEntry020bbf84 {
 };
 extern struct ListEntry020bbf84 data_0210f824[];
 
+// JPN: func_020bda50
 // USA: func_020bbf84
 #pragma optimize_for_size off
 ARM int AllocateAndRegisterEntry020bbf84(int index, struct Obj020bda58* obj, unsigned int size) {

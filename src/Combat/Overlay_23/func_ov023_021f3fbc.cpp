@@ -1,3 +1,8 @@
+#if defined(jpn)
+enum {regionalOffset0=0xe28, regionalOffset1=0x5778};
+#else
+enum {regionalOffset0=0xeac, regionalOffset1=0x5588};
+#endif
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -20,15 +25,16 @@ void PopStack1AndTrigger(int);
 
 extern char data_02109bf4;
 
+// JPN: func_ov023_021f3648
 // USA: func_ov023_021f3fbc  (semantic: ResetAndDispatchIfIdle_021f3fbc)
 extern "C" ARM int func_ov023_021f3fbc(char* obj) {
     if (IsAnimationActive0209ca2c(&data_02109bf4)) {
-        return *(int*)(obj + 0xeac);
+        return *(int*)(obj + regionalOffset0);
     }
 
-    if (*(void**)(obj + 0x5588) != 0) {
-        func_ov023_021d8af8(*(void**)(obj + 0x5588));
-        *(void**)(obj + 0x5588) = 0;
+    if (*(void**)(obj + regionalOffset1) != 0) {
+        func_ov023_021d8af8(*(void**)(obj + regionalOffset1));
+        *(void**)(obj + regionalOffset1) = 0;
     }
 
     if (CheckField0NonZero((int*)func_0202ae18())) {
@@ -47,5 +53,5 @@ extern "C" ARM int func_ov023_021f3fbc(char* obj) {
     SetFieldsAndSignalData02184220(obj, 4);
     DispatchContextByState0209c678((struct Actor0209c678*)&data_02109bf4, 0);
     PopStack1AndTrigger(1);
-    return *(int*)(obj + 0xeac);
+    return *(int*)(obj + regionalOffset0);
 }

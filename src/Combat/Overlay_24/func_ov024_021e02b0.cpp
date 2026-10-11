@@ -21,6 +21,7 @@ struct Obj_021e02b0 {
     short field0x44;
 };
 
+// JPN: func_ov024_021e0b48
 // USA: func_ov024_021e02b0
 extern "C" ARM void* func_ov024_021e02b0(struct Obj_021e02b0* obj, int unused, int id, int unused3, int unused4, int unused5, unsigned char flagArg) {
     GameObject* c = GetCombatantByID((int)obj->field0x10, id);

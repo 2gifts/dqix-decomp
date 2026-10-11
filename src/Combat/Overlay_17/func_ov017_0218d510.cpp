@@ -14,8 +14,16 @@ extern "C" int _Z17BeginTask020dbf18P18BattleTask020dbf18iiii(struct BattleTask0
 extern const char data_ov017_021d7383[];
 
 struct BattleResources0218d510 {
+#if defined(jpn)
+    unsigned char pad0[0x27c];
+#else
     unsigned char pad0[0x2cc];
+#endif
+#if defined(jpn)
+    unsigned char pairTables[0x41e8 - 0x27c];
+#else
     unsigned char pairTables[0x4498 - 0x2cc];
+#endif
     struct BattleTask020dbf18* task;
 };
 
@@ -23,13 +31,19 @@ static inline struct Foo0207df50* SelectPairTable(unsigned char* pairTables, int
     return (struct Foo0207df50*)(inRange ? pairTables + 0x930 : pairTables + 0xc40);
 }
 
+// JPN: func_ov017_0218e0f0
 // USA: func_ov017_0218d510
 extern "C" ARM int func_ov017_0218d510(struct BattleResources0218d510* self, SafeAllocator* alloc) {
+#if defined(jpn)
+ enum {regionalOffset0=0x430};
+#else
+ enum {regionalOffset0=0x420};
+#endif
     if (alloc == NULL) {
         return -1;
     }
     unsigned short* run = func_02012fe4();
-    int inRange = _Z19IsIdInRange020981e4ii((int)(run + 0x420), *run);
+    int inRange = _Z19IsIdInRange020981e4ii((int)(run + regionalOffset0), *run);
     struct Foo0207df50* table = SelectPairTable(self->pairTables, inRange);
     _Z26CopyInternalFields0207df50P11Foo0207df50(table);
     if (self->task != NULL) {

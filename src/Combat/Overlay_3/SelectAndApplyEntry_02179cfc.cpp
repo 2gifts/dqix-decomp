@@ -1,4 +1,12 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegion874 = 0x7f0 };
+enum { kRegion1048 = 0xfc4 };
+#else
+enum { kRegion874 = 0x874 };
+enum { kRegion1048 = 0x1048 };
+#endif
+
 #include "GameState/GameState.h"
 
 struct Field150Holder02052df8;
@@ -18,6 +26,7 @@ struct Ctx02179cfc {
     unsigned int fieldRest : 28;
 };
 
+// JPN: func_ov003_02178b3c
 // USA: func_ov003_02179cfc  (semantic: SelectAndApplyEntry_02179cfc)
 extern "C" ARM void* func_ov003_02179cfc(char* base, int combatantId, struct Ctx02179cfc* fallback) {
     GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), combatantId);
@@ -28,9 +37,9 @@ extern "C" ARM void* func_ov003_02179cfc(char* base, int combatantId, struct Ctx
     int val = GetHalfwordEntryFromField150((struct Field150Holder02052df8*)combatant, table.v[fallback->idx4]);
     if (val == -1) return fallback;
 
-    struct Element020de650* elem = FindElementByKey020dedd0((struct Container020dedd0*)(base + 0x74 + 0x800), val);
+    struct Element020de650* elem = FindElementByKey020dedd0((struct Container020dedd0*)(base + kRegion874), val);
     if (elem == NULL) return fallback;
 
-    *(unsigned short*)(base + 0x1000 + 0x48) = val;
+    *(unsigned short*)(base + kRegion1048) = val;
     return elem;
 }

@@ -1,5 +1,12 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kRegionValue70_40 = 0x40 };
+#else
+enum { kRegionValue70_40 = 0x70 };
+#endif
+
+
 struct Cont0207fe44;
 void CallFunc0204c804OverAllElems(struct Cont0207fe44* obj);
 
@@ -14,7 +21,7 @@ extern struct Table02167a5c data_ov003_0217f4f0;
 struct Obj02167a5c {
     char pad0[0x10];
     struct Cont0207fe44* f10;
-    char pad14[0x70 - 0x14];
+    char pad14[kRegionValue70_40 - 0x14];
     int f70;
     unsigned char f74;
     char pad75;
@@ -22,6 +29,7 @@ struct Obj02167a5c {
 };
 
 // USA: func_ov003_02167a5c
+// JPN: func_ov003_02167934
 extern "C" ARM void func_ov003_02167a5c(struct Obj02167a5c* obj, int p1, int p2) {
     if (obj->f74 == 0 || obj->f10 == 0) return;
     if (obj->f70 == p1 && obj->f76 == p2) return;

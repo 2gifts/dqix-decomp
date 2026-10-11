@@ -2,7 +2,11 @@
 #include "Memory/SafeAllocator.h"
 
 struct Struct020263e4 {
+#if defined(jpn)
+    char pad[0x6c0];
+#else
     char pad[0x76c];
+#endif
     SafeAllocator* alloc;
     void* data;
     int unk774;

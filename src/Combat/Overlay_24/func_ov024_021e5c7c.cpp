@@ -37,6 +37,7 @@ extern "C" void func_ov000_0215cd44(void*, void*, GameObject*, int, int, int, in
 extern "C" void _Z32AppendToChainAndIncCount0215fe84PvS_i(void*, void*, int);
 static inline int IsPartyMember(int id) { return id >= 0 && id <= 3; }
 
+// JPN: func_ov024_021e6514
 // USA: func_ov024_021e5c7c
 extern "C" ARM void func_ov024_021e5c7c(GoldAction* action, int id, int unused, int damage) {
     if (damage <= 0) return;

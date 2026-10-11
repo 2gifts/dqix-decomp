@@ -41,6 +41,7 @@ extern int data_ov031_0224bcec;
 extern char data_ov031_02290cc4;
 
 // USA: func_ov031_02232b44
+// JPN: func_ov031_02233324
 extern "C" ARM void func_ov031_02232b44(void) {
 	if (func_ov031_0223c054(1) != 0) return;
 	if (func_ov031_0223c054(0) != 0) return;

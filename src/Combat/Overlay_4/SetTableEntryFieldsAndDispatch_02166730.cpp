@@ -1,6 +1,13 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+struct RegionalContextPointer { unsigned int reserved; char* value; };
+extern RegionalContextPointer data_ov004_0217101c;
+#define CONTEXT_VALUE data_ov004_0217101c.value
+#else
 extern char* data_ov004_0217101c;
+#define CONTEXT_VALUE data_ov004_0217101c
+#endif
 extern "C" void* func_ov023_021f6524(void* ctx, int value);
 
 struct Node02166730 { char pad[0x5c]; short field5c; short field5e; };
@@ -18,13 +25,17 @@ unsigned int GetTableEntry_021f9b6c(struct Obj9b6c* obj, unsigned int a, unsigne
 
 extern "C" void* func_ov011_021849c8(void* obj);
 extern "C" void* func_ov023_021f6880(void* obj, int key);
+#if defined(jpn)
+extern "C" unsigned int func_ov023_021f6f10(void* self);
+#else
 int ScaleStatsIfType12_021f6f10(void* self);
+#endif
 void* GetLinkedNodeIfKind6_021f9cb8(void* unused, void* other, void* node);
 extern "C" int func_ov023_021f88b8(void* obj, void* param1, int id);
 
 // USA: func_ov004_02166730  (semantic: SetTableEntryFieldsAndDispatch_02166730)
 extern "C" ARM int func_ov004_02166730(void* obj, short key) {
-    void* found = *(void**)(data_ov004_0217101c + 8);
+    void* found = *(void**)(CONTEXT_VALUE + 8);
     short index = 0;
     while (found != NULL) {
         if (*(short*)((char*)found + 0) == key) break;
@@ -51,7 +62,11 @@ extern "C" ARM int func_ov004_02166730(void* obj, short key) {
     void* n2 = func_ov023_021f6880(base, entry);
     if (!n2) return (int)n2;
 
+#if defined(jpn)
+    int type = func_ov023_021f6f10(n2);
+#else
     int type = ScaleStatsIfType12_021f6f10(n2);
+#endif
     if (type != 8) return type;
 
     void* result = GetLinkedNodeIfKind6_021f9cb8(node, obj, n2);

@@ -11,7 +11,12 @@ extern "C" void func_02083c48(void* p, int flag, int mode);
 ARM void ProcessFlagits021674f4_021674f4(unsigned char* obj, int skipArrayCheck) {
     GameState* battle = GameState::GetInstance();
     struct ArrayContainsByteStruct* base = (struct ArrayContainsByteStruct*)GetPtrField0x2a04(battle);
-    unsigned char* bits = *(unsigned char**)((char*)*(void**)(obj + 0x29c) + 0x8000 + 0xe18);
+#if defined(jpn)
+    enum { randomOffset = 0x218 };
+#else
+    enum { randomOffset = 0x29c };
+#endif
+    unsigned char* bits = *(unsigned char**)((char*)*(void**)(obj + randomOffset) + 0x8000 + 0xe18);
     for (int i = 0; i < 4; i++) {
         if (!TestBitAt0x34(bits, (unsigned char)i)) continue;
         if (skipArrayCheck == 0) {

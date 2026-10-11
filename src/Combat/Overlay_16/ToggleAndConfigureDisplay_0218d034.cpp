@@ -2,7 +2,13 @@
 
 extern "C" void _Z30SetDispcntModeAndFlags020c391ciii(int mode, int flagsA, int valB);
 
-struct S0218d034 { char pad0[0x4]; int field4; char pad1[0x30 - 0x8]; int field30; };
+struct S0218d034 { char pad0[0x4]; int field4; 
+#if defined(jpn)
+ char pad1[0xc - 0x8];
+#else
+ char pad1[0x30 - 0x8];
+#endif
+ int field30; };
 extern S0218d034 data_ov016_0219d144;
 extern char data_027e0000;
 

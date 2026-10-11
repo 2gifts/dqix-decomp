@@ -13,6 +13,11 @@ int CallFunc020e0434With02153694(int value);
 
 extern short data_ov000_021834c4[4];
 
+#if defined(jpn)
+struct MenuLabels0217737c { char names[4][9]; };
+extern const MenuLabels0217737c data_ov000_021845c6;
+#endif
+
 // USA: func_ov000_0217737c
 extern "C" ARM void func_ov000_0217737c(void* objRaw, char* dst) {
     char* obj = (char*)objRaw;
@@ -21,8 +26,16 @@ extern "C" ARM void func_ov000_0217737c(void* objRaw, char* dst) {
     }
     int localArr[4];
     CopyStaticData02174da4((int)obj, localArr);
-    signed char cursorId = *(signed char*)(obj + 0x1d69);
+#if defined(jpn)
     int nameIdx = 0;
+    MenuLabels0217737c labels(data_ov000_021845c6);
+    signed char cursorId = *(signed char*)(obj + 0x1fa1);
+#else
+    signed char cursorId = *(signed char*)(obj + 0x1d69);
+#endif
+#if !defined(jpn)
+    int nameIdx = 0;
+#endif
     if (IsField0x118Equal2(obj)) {
         AppendFrameTag02041c08(dst, cursorId, 8, 5, 5, 5);
     }
@@ -37,7 +50,11 @@ extern "C" ARM void func_ov000_0217737c(void* objRaw, char* dst) {
             int f = GetFieldByKey020e0434((struct Container020e0310*)(obj + 0xb8), keyArg);
             AppendString02042058(dst, (const char*)f);
         }
+#if defined(jpn)
+        char* r = labels.names[v];
+#else
         int r = CallFunc020e0434With02153694(data_ov000_021834c4[v]);
+#endif
         AppendNameTag(dst, nameIdx, (const char*)r);
         nameIdx++;
     }

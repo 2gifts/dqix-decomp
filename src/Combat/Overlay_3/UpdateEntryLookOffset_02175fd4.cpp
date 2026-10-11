@@ -1,5 +1,20 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kRegionValueFF8_F74 = 0xf74 };
+enum { kRegionValueFFE_F7A = 0xf7a };
+enum { kRegionValue89C_818 = 0x818 };
+enum { kRegionValueFE0_F5C = 0xf5c };
+enum { kRegionValue7D8_754 = 0x754 };
+#else
+enum { kRegionValueFF8_F74 = 0xff8 };
+enum { kRegionValueFFE_F7A = 0xffe };
+enum { kRegionValue89C_818 = 0x89c };
+enum { kRegionValueFE0_F5C = 0xfe0 };
+enum { kRegionValue7D8_754 = 0x7d8 };
+#endif
+
+
 struct Obj2081;
 struct Elem2081;
 Elem2081* FindElementByByte0xc4(Obj2081* obj, int key);
@@ -20,14 +35,15 @@ void SetEntryPositionFromObject(struct WinObj020e28f0* obj, short a, short b);
 extern "C" void func_0205ae8c(void* obj);
 
 // USA: func_ov003_02175fd4  (semantic: UpdateEntryLookOffset_02175fd4)
+// JPN: func_ov003_02174fec
 extern "C" ARM void func_ov003_02175fd4(unsigned char* self) {
-    if (*(void**)(self + 0xff8) == NULL) {
+    if (*(void**)(self + kRegionValueFF8_F74) == NULL) {
         return;
     }
-    if (*(short*)(self + 0xffe) < 0) {
+    if (*(short*)(self + kRegionValueFFE_F7A) < 0) {
         return;
     }
-    Elem2081* elem = FindElementByByte0xc4(*(Obj2081**)(self + 0x89c), *(short*)(self + 0xffe));
+    Elem2081* elem = FindElementByByte0xc4(*(Obj2081**)(self + kRegionValue89C_818), *(short*)(self + kRegionValueFFE_F7A));
     if (elem == NULL) {
         return;
     }
@@ -38,10 +54,10 @@ extern "C" ARM void func_ov003_02175fd4(unsigned char* self) {
         return;
     }
     short valA, valB;
-    GetLookAndTurnOffsets020809c4(*(Obj2081**)(self + 0x89c), *(short*)(self + 0xffe), *(short*)*(void**)(self + 0xff8), &valA, &valB);
-    UpdateEntryStateAndPosition(*(Ctx020e263c**)(self + 0x0), *(int*)(self + 0xfe0));
+    GetLookAndTurnOffsets020809c4(*(Obj2081**)(self + kRegionValue89C_818), *(short*)(self + kRegionValueFFE_F7A), *(short*)*(void**)(self + kRegionValueFF8_F74), &valA, &valB);
+    UpdateEntryStateAndPosition(*(Ctx020e263c**)(self + 0x0), *(int*)(self + kRegionValueFE0_F5C));
     valA = valA - 0x10;
     valB = valB - 3;
     SetEntryPositionFromObject(*(WinObj020e28f0**)(self + 0x0), valA, valB);
-    func_0205ae8c(self + 0x7d8);
+    func_0205ae8c(self + kRegionValue7D8_754);
 }

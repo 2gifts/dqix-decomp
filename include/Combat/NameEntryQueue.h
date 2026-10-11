@@ -21,10 +21,18 @@ struct ActiveEntry02195250 {
 };
 
 struct EntryQueueReceiver02195250 {
+#if defined(jpn)
+    unsigned char unknown0[0x40d0];
+#else
     unsigned char unknown0[0x42f0];
+#endif
     unsigned char count;
     Entry15_02195214 entries[3];
+#if defined(jpn)
+    unsigned char unknown431e[0x416c - 0x40fe];
+#else
     unsigned char unknown431e[0x441c - 0x431e];
+#endif
     ActiveEntry02195250 *active;
 };
 

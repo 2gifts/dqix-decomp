@@ -28,13 +28,25 @@ struct BackgroundGraphics_021ec480 {
 };
 
 struct MessageSystem_021ec480 {
+#if defined(jpn)
+    char unk_0[0x868];
+#else
     char unk_0[0x998];
+#endif
     int busy_;
+#if defined(jpn)
+    char unk_99c[0x17de - 0x86c];
+#else
     char unk_99c[0x19ae - 0x99c];
+#endif
     unsigned char unk_19ae;
     char unk_19af[0x19b2 - 0x19af];
     unsigned char unk_19b2;
+#if defined(jpn)
+    char unk_19b3[0x17f9 - 0x17e3];
+#else
     char unk_19b3[0x19c8 - 0x19b3];
+#endif
     unsigned char unk_19c8;
 };
 
@@ -99,7 +111,11 @@ void func_ov023_021ed354(GuideWindow_021ec480* self);
 void func_ov023_021ed4b8(GuideWindow_021ec480* self);
 void func_ov023_021ed600(GuideWindow_021ec480* self);
 void* func_0205ec34();
+#if defined(jpn)
+void func_02045d88(MessageSystem_021ec480* messages, const char* text, int a);
+#else
 void func_0204500c(MessageSystem_021ec480* messages, const char* text, int a, int b);
+#endif
 }
 
 static inline int WasButtonPressed(GuideWindow_021ec480* self)
@@ -107,9 +123,15 @@ static inline int WasButtonPressed(GuideWindow_021ec480* self)
     return ((int (*)(GuideWindow_021ec480*))_Z33DispatchIfFlagsOrByteSet_021ed014v)(self);
 }
 
+// JPN: func_ov023_021ec3dc
 // USA: func_ov023_021ec480
 extern "C" ARM void func_ov023_021ec480(GuideWindow_021ec480* self)
 {
+#if defined(jpn)
+ enum {regionalOffset0=0x800};
+#else
+ enum {regionalOffset0=0x960};
+#endif
     GameResources* resources = func_ov017_0218b5b0();
     MessageSystem_021ec480* messages = _Z26GetGlobalField0x1c020421a0v();
     if (self->step_ >= 1 && self->step_ <= 3 && func_ov023_021ed064(self))
@@ -225,11 +247,15 @@ extern "C" ARM void func_ov023_021ec480(GuideWindow_021ec480* self)
     {
         if (self->subBackgrounds_[1].unk_1c_0_ == 0)
         {
-            memset(self->text_, 0, 0x960);
+            memset(self->text_, 0, regionalOffset0);
             _Z20AppendString02042058PcPKc(self->text_, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)self->texts_, 1000));
             _Z20AppendString02042058PcPKc(self->text_, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)self->texts_, 1002));
             messages->busy_ = 1;
+#if defined(jpn)
+            func_02045d88(messages, self->text_, 0);
+#else
             func_0204500c(messages, self->text_, 0, 0xe3);
+#endif
             messages->unk_19b2 = 0;
             messages->unk_19c8 = 0;
             messages->unk_19ae = 0;
@@ -271,11 +297,15 @@ extern "C" ARM void func_ov023_021ec480(GuideWindow_021ec480* self)
     }
     if (step == 10)
     {
-        memset(self->text_, 0, 0x960);
+        memset(self->text_, 0, regionalOffset0);
         _Z20AppendString02042058PcPKc(self->text_, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)self->texts_, 1001));
         _Z20AppendString02042058PcPKc(self->text_, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)self->texts_, 1002));
         messages->busy_ = 1;
+#if defined(jpn)
+        func_02045d88(messages, self->text_, 0);
+#else
         func_0204500c(messages, self->text_, 0, 0xe3);
+#endif
         messages->unk_19b2 = 0;
         messages->unk_19c8 = 0;
         messages->unk_19ae = 0;

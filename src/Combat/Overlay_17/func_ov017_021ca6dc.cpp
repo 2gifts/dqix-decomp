@@ -1,4 +1,11 @@
+// JPN: func_ov017_021cab8c
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kRegionalFieldOffset = 0x3508 };
+#else
+enum { kRegionalFieldOffset = 0x3718 };
+#endif
 #include "GameState/GameState.h"
 
 extern "C" void* func_ov017_021b8478(void* obj);
@@ -43,7 +50,7 @@ struct EventSrc_021ca6dc {
 
 // USA: func_ov017_021ca6dc
 extern "C" ARM void func_ov017_021ca6dc(void* unused0, struct EventSrc_021ca6dc* src, GameState* battleStruct, char* data) {
-    void* p1c = func_ov017_021b8478(*(void**)(data + 0x3718));
+    void* p1c = func_ov017_021b8478(*(void**)(data + kRegionalFieldOffset));
     if (!p1c) {
         return;
     }

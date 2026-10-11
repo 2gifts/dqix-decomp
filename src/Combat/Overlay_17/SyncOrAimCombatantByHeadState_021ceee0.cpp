@@ -1,3 +1,10 @@
+// JPN: func_ov017_021cf388
+#if defined(jpn)
+enum { RegionOffset6fc = 0x4ec, RegionOffset160 = 0x154, RegionOffset16c = 0x160 };
+#else
+enum { RegionOffset6fc = 0x6fc, RegionOffset160 = 0x160, RegionOffset16c = 0x16c };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -29,7 +36,7 @@ struct Info021ceee0 {
 // USA: func_ov017_021ceee0  (semantic: SyncOrAimCombatantByHeadState_021ceee0)
 extern "C" ARM void func_ov017_021ceee0(void* unused0, struct Info021ceee0* info, GameState* battle, char* obj) {
     GameObject* held;
-    struct HeadNode02046b24** list = *(struct HeadNode02046b24***)(obj + 0x3000 + 0x6fc);
+    struct HeadNode02046b24** list = *(struct HeadNode02046b24***)(obj + 0x3000 + RegionOffset6fc);
     held = battle->GetMaybeWanderingMonsterByIndex(info->field12);
     if (ArrayContainsByte((struct ArrayContainsByteStruct*)GetPtrField0x2a04(battle), info->field12)) {
         return;
@@ -52,8 +59,8 @@ extern "C" ARM void func_ov017_021ceee0(void* unused0, struct Info021ceee0* info
         int buf[3];
         __clear(buf, 0xc);
         buf[1] = info->field10;
-        _ZN8Vector3iaSERKS_((int*)((char*)target + 0x160), info->vec);
-        _ZN8Vector3iaSERKS_((int*)((char*)target + 0x16c), buf);
+        _ZN8Vector3iaSERKS_((int*)((char*)target + RegionOffset160), info->vec);
+        _ZN8Vector3iaSERKS_((int*)((char*)target + RegionOffset16c), buf);
         return;
     }
     if (GetHeadNodeIdOrMinusOne(list) == 4) {

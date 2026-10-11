@@ -19,9 +19,14 @@ struct Obj_021f222c {
 	void *field4;
 	int field8;
 	char blockC[0x38];
+#if defined(jpn)
+	char field44[0x118];
+#else
 	char field44[0x200];
+#endif
 };
 
+// JPN: func_ov023_021f1afc
 // USA: func_ov023_021f222c
 ARM void InitObj_021f222c(struct Obj_021f222c *obj) {
 	obj->word0.bits.f0 = 0;

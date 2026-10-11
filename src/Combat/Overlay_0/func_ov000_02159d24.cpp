@@ -1,4 +1,13 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define REGION_OFFSET_0 0x144
+#define REGION_OFFSET_1 0x8b8
+#else
+#define REGION_OFFSET_0 0x150
+#define REGION_OFFSET_1 0x950
+#endif
+
 #include "GameState/GameState.h"
 
 struct TableEntry02182d88 { short key; short pad; };
@@ -17,8 +26,8 @@ extern "C" ARM int func_ov000_02159d24(int unused, int combatantId) {
     goto test;
     do {
         short key = data_ov000_02182d88[i].key;
-        int base = *(int*)((char*)combatant + 0x150);
-        int field950 = *(int*)((char*)base + 0x950);
+        int base = *(int*)((char*)combatant + REGION_OFFSET_0);
+        int field950 = *(int*)((char*)base + REGION_OFFSET_1);
         if (key == field950) {
             return data_ov000_02182d8a[i].value;
         }

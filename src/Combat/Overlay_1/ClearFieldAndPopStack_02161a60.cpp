@@ -6,10 +6,15 @@ void PopStack1AndTrigger(int flag);
 
 // USA: func_ov001_02161a60
 ARM int ClearFieldAndPopStack_02161a60(void) {
-    char* p = *(char**)(func_ov017_0218b5b0() + 0x3000 + 0x734);
-    int v = *(int*)(p + 0x160);
+#if defined(jpn)
+    enum { queueOffset = 0x524, fieldOffset = 0x15c };
+#else
+    enum { queueOffset = 0x734, fieldOffset = 0x160 };
+#endif
+    char* p = *(char**)(func_ov017_0218b5b0() + 0x3000 + queueOffset);
+    int v = *(int*)(p + fieldOffset);
     func_ov028_021d8c20(v);
-    *(int*)(p + 0x160) = 0;
+    *(int*)(p + fieldOffset) = 0;
     PopStack1AndTrigger(1);
     return 1;
 }

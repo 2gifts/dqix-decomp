@@ -7,6 +7,7 @@ extern "C" ARM void func_ov031_0223d8d8(void* list, void* node);
 
 extern char* data_ov031_02290d9c;
 
+// JPN: func_ov031_0223ea0c
 // USA: func_ov031_0223e22c
 extern "C" ARM void* func_ov031_0223e22c(int index, int arg1, int arg2, unsigned char arg3, unsigned char arg4) {
     Struct0223bfa0* p = *(Struct0223bfa0**)(data_ov031_02290d9c + (index << 6));

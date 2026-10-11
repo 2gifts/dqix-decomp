@@ -24,11 +24,19 @@ struct NodeB0c_021c5c5c {
 };
 
 struct Ctx_021c5c5c {
+#if defined(jpn)
+    char pad0[0x34ec];
+#else
     char pad0[0x36fc];
+#endif
     ListHead02046b60* list;
     char pad3700[0x3718 - 0x3700];
     Node718_021c5c5c* node718;
+#if defined(jpn)
+    char pad371c[0x38ec - 0x350c];
+#else
     char pad371c[0x3b0c - 0x371c];
+#endif
     NodeB0c_021c5c5c* nodeB0c;
     char pad3b10[0x42e7 - 0x3b10];
     unsigned char busy;
@@ -46,7 +54,11 @@ struct Combatant_021c5c5c {
     Status_021c5c5c* status;
     char pad134[0x17d - 0x134];
     unsigned char flags17d;
+#if defined(jpn)
+    char pad17e[0x180 - 0x17e];
+#else
     char pad17e[0x18c - 0x17e];
+#endif
     unsigned int flags18c;
 };
 
@@ -57,6 +69,7 @@ int ListContainsId(ListHead02046b60* list, int id);
 extern "C" void _Z30SetFlagAndMaybeNotify_021ab010Pvi(void* obj, int flag);
 int IsField0Null(void** list);
 
+// JPN: func_ov017_021c610c
 // USA: func_ov017_021c5c5c
 extern "C" ARM int func_ov017_021c5c5c(int unused, int id) {
     GameState* gs = GameState::GetInstance();

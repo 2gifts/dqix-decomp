@@ -26,6 +26,7 @@ struct GlobalCtx0224e5c4_02212d40 {
 extern GlobalCtx0224e5c4_02212d40 data_ov031_0224e5c4;
 
 // USA: func_ov031_02212d40
+// JPN: func_ov031_02213520
 extern "C" ARM int func_ov031_02212d40(Obj02212d40* obj) {
     GlobalCtx0224e5c4_02212d40* g = &data_ov031_0224e5c4;
     void* alloc = (void*)((int (*)(int, int))obj->field0)(1, 0x24);

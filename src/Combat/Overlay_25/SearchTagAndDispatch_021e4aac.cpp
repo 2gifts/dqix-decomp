@@ -1,3 +1,4 @@
+// JPN: func_ov025_021e4f9c
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 #include "std_library_functions.h"
@@ -23,11 +24,17 @@ struct Param021e4aac {
     char* field0xc;
 };
 
+#if defined(jpn)
+enum { RegionOffsetc = 0x4 };
+#else
+enum { RegionOffsetc = 0xc };
+#endif
+
 // USA: func_ov025_021e4aac  (semantic: SearchTagAndDispatch_021e4aac)
 extern "C" ARM int func_ov025_021e4aac(struct Param021e4aac* p, int unused, int unusedR2, void* dispatchObj) {
     GameState::GetInstance();
     int handle = (int)BackgroundLoader::GetInstance();
-    GetArrayEntry_021e8a54_021e8a54(*(char**)((char*)&data_ov025_021ef988 + 0xc));
+    GetArrayEntry_021e8a54_021e8a54(*(char**)((char*)&data_ov025_021ef988 + RegionOffsetc));
 
     char buf[0x50];
     int n = 0x50;
@@ -62,6 +69,6 @@ extern "C" ARM int func_ov025_021e4aac(struct Param021e4aac* p, int unused, int 
     }
 
     ((BackgroundLoader*)(handle))->RemoveTask((int)(id));
-    RemoveMatchingShort_021eb084((struct RemoveList021eb084*)(*(char**)((char*)&data_ov025_021ef988 + 0xc)), id);
+    RemoveMatchingShort_021eb084((struct RemoveList021eb084*)(*(char**)((char*)&data_ov025_021ef988 + RegionOffsetc)), id);
     return 1;
 }

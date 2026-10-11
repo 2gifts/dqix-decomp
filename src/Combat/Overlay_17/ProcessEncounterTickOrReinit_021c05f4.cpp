@@ -1,3 +1,10 @@
+// JPN: func_ov017_021c0b9c
+#if defined(jpn)
+enum { RegionOffset6fc = 0x4ec, RegionOffset18c = 0x180, RegionOffset998 = 0x868, RegionOffsetb3c = 0x91c };
+#else
+enum { RegionOffset6fc = 0x6fc, RegionOffset18c = 0x18c, RegionOffset998 = 0x998, RegionOffsetb3c = 0xb3c };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -37,13 +44,13 @@ extern "C" ARM void func_ov017_021c05f4(void* p9, unsigned char p8, unsigned cha
         void* d = GetDataPtr02114e04_020d6c00();
         void* f = func_0205ec34();
         if (TestBitInByteArray((int)f, (unsigned char*)f + 0x8c, 0x119a) == 0) return;
-        if (IsField0Null((void**)*(void**)((char*)p9 + 0x3000 + 0x6fc)) == 0) return;
+        if (IsField0Null((void**)*(void**)((char*)p9 + 0x3000 + RegionOffset6fc)) == 0) return;
         if (GetByteField0x252(combatant) == 0) return;
         if (CheckSubstructByte0x7cPositive((signed char*)combatant) != 0) return;
-        if (*(int*)((char*)combatant + 0x18c) & 1) return;
+        if (*(int*)((char*)combatant + RegionOffset18c) & 1) return;
         if (CheckField0xc4Low15BitsNonZero((BitField0203402c*)combatant) != 0 ||
             *(short*)((char*)combatant + 0xac) != 0 ||
-            *(int*)((char*)g + 0x998) != 0) return;
+            *(int*)((char*)g + RegionOffset998) != 0) return;
         if (TestFlags02046708((FlagWord02046708*)d, 0x800) != 0) return;
         if (GetByte0x26c((char*)combatant) != 0) return;
         if (GetSignedField020c39c8((volatile unsigned short*)0x400006c) != 0) return;
@@ -51,15 +58,15 @@ extern "C" ARM void func_ov017_021c05f4(void* p9, unsigned char p8, unsigned cha
         *(unsigned short*)((char*)combatant + 0xb2) = 0;
         DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
     } else {
-        if (*(int*)((char*)g + 0x998) != 0) ReinitController02043204((char*)g);
+        if (*(int*)((char*)g + RegionOffset998) != 0) ReinitController02043204((char*)g);
     }
 
     void* reset = GetGlobalResetObj020d7a50();
     TeardownAndResetState020d7aa0((Obj020d7aa0*)reset);
     func_02017c58(func_02012fe4());
 
-    InitObjWithFlag_021c0760((unsigned char*)*(void**)((char*)p9 + 0x3000 + 0xb3c), p8);
+    InitObjWithFlag_021c0760((unsigned char*)*(void**)((char*)p9 + 0x3000 + RegionOffsetb3c), p8);
     char* base = (char*)p9 + 0x3000;
-    *((unsigned char*)*(void**)(base + 0xb3c) + 0x24) = p7;
-    _Z19InsertNodeAfterHeadP12List02046a3cP12Node02046a3c(*(void**)(base + 0x6fc), *(void**)(base + 0xb3c));
+    *((unsigned char*)*(void**)(base + RegionOffsetb3c) + 0x24) = p7;
+    _Z19InsertNodeAfterHeadP12List02046a3cP12Node02046a3c(*(void**)(base + RegionOffset6fc), *(void**)(base + RegionOffsetb3c));
 }

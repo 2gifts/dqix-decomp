@@ -10,6 +10,7 @@ int IsFlagBit8Set_021da9b0(struct FlagObj_021da9b0* obj);
 
 extern unsigned short data_ov024_021febb4;
 
+// JPN: func_ov024_021f5458
 // USA: func_ov024_021f4c8c  (semantic: TryFindEligibleAndCopyTable2_021f4c8c)
 extern "C" ARM int func_ov024_021f4c8c(int* a0, int a1, int a2, int* outCount, void* outArray) {
 	unsigned short buf[4];

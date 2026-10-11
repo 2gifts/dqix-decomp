@@ -14,7 +14,11 @@ struct ElemB02083738 {
 struct Obj02083738 {
     char pad[0x194];
     struct Elem02083738 arrA[11];
+    #if defined(jpn)
+    char pad2[0x364];
+#else
     char pad2[0x3fc];
+#endif
     struct ElemB02083738 arrB[11];
 };
 
@@ -42,9 +46,17 @@ extern "C" ARM void func_02083738(struct Obj02083738* o, int a1) {
         void* pr = e->pResult;
         *(short*)((char*)o + j * 2 + 0x488) = -1;
         memset(pb, 0, 0x20);
+#if defined(jpn)
+        memset(pr, 0, 0x14);
+#else
         *(unsigned char*)pr = 0;
+#endif
         _Z18InitStruct020de1d4P11StructDE1D4((struct StructDE1D4*)e);
         e->pB = &o->arrB[i];
+#if defined(jpn)
+        e->pResult = (unsigned char*)o + 0x56f + i * 0x15;
+#else
         e->pResult = _Z30GetIndexedBlockPointer0208349cPhi((unsigned char*)o, i);
+#endif
     }
 }

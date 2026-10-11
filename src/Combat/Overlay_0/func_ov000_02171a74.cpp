@@ -18,10 +18,16 @@ struct Obj02171a74 {
 };
 
 // USA: func_ov000_02171a74
-extern "C" ARM int func_ov000_02171a74(struct Obj02171a74* obj, int param) {
+extern "C" ARM int func_ov000_02171a74(struct Obj02171a74* obj
+#if !defined(jpn)
+    , int param
+#endif
+) {
+#if !defined(jpn)
     if (obj->field4 == 0) {
         return -1;
     }
+#endif
     int flags = obj->field28;
     int key = -1;
     if (flags & 1) {
@@ -33,6 +39,7 @@ extern "C" ARM int func_ov000_02171a74(struct Obj02171a74* obj, int param) {
     } else if (flags & 0x80000) {
         key = 0x26;
     }
+#if !defined(jpn)
     if (key < 0) {
         goto end;
     }
@@ -50,5 +57,6 @@ extern "C" ARM int func_ov000_02171a74(struct Obj02171a74* obj, int param) {
         func_02046608(g, 0xa, val, (void*)param, 0x100, 0, 0);
     }
 end:
+#endif
     return key;
 }

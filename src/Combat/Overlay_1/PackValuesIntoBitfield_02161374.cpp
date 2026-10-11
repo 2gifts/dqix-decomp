@@ -4,7 +4,11 @@
 extern "C" int func_ov017_021d60f4(void* a);
 
 struct BitfieldHolder_02161374 {
+	#if defined(jpn)
+	char pad[0xf4];
+#else
 	char pad[0xf8];
+#endif
 	unsigned int flags : 27;
 	unsigned int field_0xf8_27 : 5;
 };

@@ -1,6 +1,12 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+enum { SelectedEntryOffset = 0x5a7a, PackedEntriesOffset = 0x5a7c };
+#else
+enum { SelectedEntryOffset = 0x5cda, PackedEntriesOffset = 0x5cdc };
+#endif
+
 extern "C" int _ZN9GameState11GetInstanceEv();
 
 struct Struct0208e9f4;
@@ -50,6 +56,7 @@ struct Entry0208ea10 {
 };
 
 // USA: func_0208ea10
+// JPN: func_0208ea10
 extern "C" ARM void func_0208ea10(void* p0, int a1) {
     char scriptFirst[0x430];
     char scriptLoop[0x430];
@@ -60,7 +67,7 @@ extern "C" ARM void func_0208ea10(void* p0, int a1) {
 
     unsigned char* gs = (unsigned char*)_ZN9GameState11GetInstanceEv();
 
-    if (gs[0x5cda] == 8) {
+    if (gs[SelectedEntryOffset] == 8) {
         _Z20InitDefaults0208e9f4P14Struct0208e9f4((struct Struct0208e9f4*)p0);
         _Z29SetByte0x5cdaAndClearField0xaPhh(gs, rand() % 8);
     } else {
@@ -95,7 +102,7 @@ extern "C" ARM void func_0208ea10(void* p0, int a1) {
 
         int j;
         for (j = 0; j < 2; j++) {
-            struct Entry0208ea10* e = &((struct Entry0208ea10*)(gs + 0x5cdc))[j + 0x62];
+            struct Entry0208ea10* e = &((struct Entry0208ea10*)(gs + PackedEntriesOffset))[j + 0x62];
             e->u.b.flag = 1;
             e->u.b.type4 = 2;
             e->u.b.nibA = 1;

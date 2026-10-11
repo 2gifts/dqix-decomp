@@ -15,13 +15,28 @@ struct GameState {
 };
 
 struct MessageSystem_021f1234 {
+#if defined(jpn)
+    char unk_0[0x868];
+#else
     char unk_0[0x998];
+#endif
+
     int busy_;
     char unk_99c[4];
     int unk_9a0;
+#if defined(jpn)
+    char unk_9a4[0x17df - 0x874];
+#else
     char unk_9a4[0x19af - 0x9a4];
+#endif
+
     unsigned char unk_19af;
+#if defined(jpn)
+    char unk_19b0[0x17e2 - 0x17e0];
+#else
     char unk_19b0[0x19b2 - 0x19b0];
+#endif
+
     unsigned char unk_19b2;
 };
 
@@ -29,12 +44,22 @@ struct SkillPointMenu_021f1234 {
     char unk_0[0x18];
     void* spriteRenderer_;
     short cursorAnimation_;
+#if defined(jpn)
+    char unk_1e[0x5e4 - 0x1e];
+#else
     char unk_1e[0x65c - 0x1e];
+#endif
+
     int selection_;
 };
 
 struct SkillAbilityList_021f1234 {
+#if defined(jpn)
+    char unk_0[0x53];
+#else
     char unk_0[0x67];
+#endif
+
     unsigned char member_;
 };
 
@@ -53,19 +78,49 @@ struct BattleEnd_021f1234 {
 struct BattleScene_021f1234 {
     char unk_0[0x30];
     SafeAllocator allocator_;
+#if defined(jpn)
+    char unk_44[0xe28 - 0x44];
+#else
     char unk_44[0xeac - 0x44];
+#endif
+
     int endState_;
+#if defined(jpn)
+    char unk_eb0[0x371c - 0xe2c];
+#else
     char unk_eb0[0x3760 - 0xeb0];
+#endif
+
+#if defined(jpn)
+    char menu_[0x52e4 - 0x371c];
+#else
     char menu_[0x5228 - 0x3760];
+#endif
+
     SafeAllocator menuAllocator_;
+#if defined(jpn)
+    char unk_523c[0x5768 - 0x52f8];
+#else
     char unk_523c[0x5574 - 0x523c];
+#endif
+
     SkillPointMenu_021f1234* skillMenu_;
     SkillAbilityList_021f1234* abilities_;
+#if defined(jpn)
+    char unk_557c[0x5774 - 0x5770];
+#else
     char unk_557c[0x5584 - 0x557c];
+#endif
+
     unsigned char unk_5584;
     char unk_5585[3];
     void* resultWindow_;
+#if defined(jpn)
+    char unk_558c[0x5af4 - 0x577c];
+#else
     char unk_558c[0x5904 - 0x558c];
+#endif
+
     char texts_[4];
 };
 
@@ -99,6 +154,10 @@ void func_ov023_021d8af8(void* window);
 void func_ov013_02184360(SkillPointMenu_021f1234* menu, void* parent);
 void func_ov013_02184cf0(SkillPointMenu_021f1234* menu, SafeAllocator* allocator);
 void func_0204500c(MessageSystem_021f1234* messages, const char* text, int a, int b);
+#if defined(jpn)
+void func_02045d88(MessageSystem_021f1234*,const char*,int);
+unsigned char func_ov013_021847c4(void*,int);
+#endif
 int func_ov023_021f4fc8();
 void func_ov013_02186eec(SkillAbilityList_021f1234* abilities, int a);
 void func_ov013_02184b4c(SkillPointMenu_021f1234* menu, void* member);
@@ -118,6 +177,7 @@ void _Z21BlankFunction02094b34v(void* music, int a, int b, int c, int d);
 int _Z18AlwaysTrue02094b4cv(void* music);
 }
 
+// JPN: func_ov023_021f0db4
 // USA: func_ov023_021f1234
 extern "C" ARM int func_ov023_021f1234(BattleScene_021f1234* self)
 {
@@ -140,7 +200,11 @@ extern "C" ARM int func_ov023_021f1234(BattleScene_021f1234* self)
         }
         _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((Entry_0205d6a0*)&self->menu_[0x188], 1);
         self->allocator_.Reset();
+#if defined(jpn)
+        self->skillMenu_ = (SkillPointMenu_021f1234*)self->allocator_.Allocate(0x654);
+#else
         self->skillMenu_ = (SkillPointMenu_021f1234*)self->allocator_.Allocate(0x6cc);
+#endif
         func_ov013_02184360(self->skillMenu_, self->menu_);
         func_ov013_02184cf0(self->skillMenu_, &self->allocator_);
         SkillPointMenu_021f1234* menu = self->skillMenu_;
@@ -157,7 +221,12 @@ extern "C" ARM int func_ov023_021f1234(BattleScene_021f1234* self)
                 SetOrClearBitInArray(unk, (unsigned char*)unk + 0x8c, 0x119c, 1);
                 if (inParty)
                 {
+#if defined(jpn)
+                    func_02045d88(messages, FindEntryByKey((TableA68*)self->texts_, 0x24), 1);
+#else
                     func_0204500c(messages, FindEntryByKey((TableA68*)self->texts_, 0x24), 1, 0xe3);
+#endif
+
                     messages->unk_19b2 = 0;
                     messages->busy_ = 1;
                 }
@@ -190,7 +259,12 @@ extern "C" ARM int func_ov023_021f1234(BattleScene_021f1234* self)
                 _Z16ZeroInit020de868Pv(&self->menu_[0xd0]);
                 SafeAllocator* allocator = &self->menuAllocator_;
                 allocator->Reset();
+#if defined(jpn)
+                self->abilities_ = (SkillAbilityList_021f1234*)allocator->Allocate(0x58);
+#else
                 self->abilities_ = (SkillAbilityList_021f1234*)allocator->Allocate(0x6c);
+#endif
+
                 func_ov013_02186eec(self->abilities_, 0);
                 _Z26InitAllocatorArray02186e74P17Container02186e74P13SafeAllocator((Container02186e74*)self->abilities_, allocator);
                 void* member = GetCombatantWithFlag0x100(gameState, id);
@@ -222,7 +296,12 @@ extern "C" ARM int func_ov023_021f1234(BattleScene_021f1234* self)
         else if (end->step_ == 5)
         {
             void* member = GetCombatantWithFlag0x100(gameState, id);
+#if defined(jpn)
+            if (func_ov013_021847c4(self->skillMenu_, gameState->GetTickCount()) == 6)
+#else
             if (_Z19ResetFields021847c4P14Struct021847c4(self->skillMenu_, gameState->GetTickCount()) == 6)
+#endif
+
             {
                 if (loader->GetNumQueuedTasks() > 0)
                     return self->endState_;

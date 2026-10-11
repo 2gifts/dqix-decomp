@@ -20,6 +20,7 @@ extern "C" int func_ov031_02236878(int index);
 void SetField_022274c0_022274c0(int v);
 extern "C" void func_ov031_02233bd4(void);
 
+// JPN: func_ov031_022341e0
 // USA: func_ov031_02233a00  (semantic: InitFieldsAndDispatch_02233a00)
 extern "C" ARM void func_ov031_02233a00(void) {
 	data_ov031_02290cd0.flag0 = 0;

@@ -70,11 +70,17 @@ struct LocalEvt021ca534 {
     Payload021ca534 payload;
 };
 
+// JPN: func_ov017_021ca9e4
 // USA: func_ov017_021ca534
 extern "C" ARM void func_ov017_021ca534(Header021ca534* obj) {
+#if defined(jpn)
+ enum { regionalOffset = 0x508 };
+#else
+ enum { regionalOffset = 0x718 };
+#endif
     GameState::GetInstance();
     unsigned char* ov = (unsigned char*)func_ov017_0218b5b0();
-    void* h = *(void**)(ov + 0x3000 + 0x718);
+    void* h = *(void**)(ov + 0x3000 + regionalOffset);
     Combatants021ca534* c = (Combatants021ca534*)func_ov017_021b8478(h);
     void* p = GetData02100044();
 

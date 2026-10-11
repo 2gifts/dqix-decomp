@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kOffset6fc = 0x4ec, kOffset744 = 0x784, kOffsetb68 = 0x948, kOffset745 = 0x785, kOffset746 = 0x786, kOffset48 = 0x88, kOffsetbb8 = 0x998 };
+#else
+enum { kOffset6fc = 0x6fc, kOffset744 = 0x744, kOffsetb68 = 0xb68, kOffset745 = 0x745, kOffset746 = 0x746, kOffset48 = 0x48, kOffsetbb8 = 0xbb8 };
+#endif
+
 #include "GameState/GameState.h"
 #include "Grotto/Main/GrottoStruct.h"
 
@@ -30,7 +37,7 @@ int AreListedCombatantsBit0Set(Obj02086b98* o);
 ARM void DispatchField0x744FlagsAndNotify(unsigned char* src) {
     GameState* bs = GameState::GetInstance();
     unsigned char* ov = (unsigned char*)func_ov017_0218b5b0();
-    TailList020469b4* list = *(TailList020469b4**)(ov + 0x3000 + 0x6fc);
+    TailList020469b4* list = *(TailList020469b4**)(ov + 0x3000 + kOffset6fc);
     void* table = func_0202ae18();
     void* ptr2a04 = GetPtrField0x2a04(bs);
 
@@ -38,38 +45,38 @@ ARM void DispatchField0x744FlagsAndNotify(unsigned char* src) {
     if (!IsAxisIntZero((AxisFloats0203b5f8*)ov, 0)) return;
     if (!IsAxisIntZero((AxisFloats0203b5f8*)ov, 1)) return;
 
-    unsigned char flags = *(src + 0x2000 + 0x744);
+    unsigned char flags = *(src + 0x2000 + kOffset744);
     if (flags & 1) {
         struct GrottoStruct* grotto = bs->GetGrottoStruct();
         grotto->unknown_9 = 2;
-        TailNode020469b4* node = *(TailNode020469b4**)(ov + 0x3000 + 0xb68);
+        TailNode020469b4* node = *(TailNode020469b4**)(ov + 0x3000 + kOffsetb68);
         func_ov017_021a9bc4(node, 0);
         int extra = 0;
-        int b1 = *(src + 0x2000 + 0x745);
-        int b2 = *(src + 0x2000 + 0x746);
-        int h3 = *(unsigned short*)(src + 0x2700 + 0x48);
+        int b1 = *(src + 0x2000 + kOffset745);
+        int b2 = *(src + 0x2000 + kOffset746);
+        int h3 = *(unsigned short*)(src + 0x2700 + kOffset48);
         func_ov017_021a9a9c(node, b1, b2, h3, extra);
         AppendNodeToTail(list, node);
-        *(src + 0x2000 + 0x744) &= ~1;
+        *(src + 0x2000 + kOffset744) &= ~1;
         return;
     }
     if (flags & 2) {
-        Struct020d9850* node = *(Struct020d9850**)(ov + 0x3000 + 0xbb8);
+        Struct020d9850* node = *(Struct020d9850**)(ov + 0x3000 + kOffsetbb8);
         Init020d9850(node);
         AppendNodeToTail(list, (TailNode020469b4*)node);
-        *(src + 0x2000 + 0x744) &= ~2;
+        *(src + 0x2000 + kOffset744) &= ~2;
         return;
     }
     if (flags & 4) {
         func_020ae53c(0);
-        *(src + 0x2000 + 0x744) &= ~4;
+        *(src + 0x2000 + kOffset744) &= ~4;
         return;
     }
 
     if (CheckField0NonZero((int*)table)) {
-        if (AreListedCombatantsBit0Set((Obj02086b98*)ptr2a04) != 0 || (*(src + 0x2000 + 0x744) & 8)) {
+        if (AreListedCombatantsBit0Set((Obj02086b98*)ptr2a04) != 0 || (*(src + 0x2000 + kOffset744) & 8)) {
             func_ov017_021aa4cc(ov, 1);
         }
     }
-    *(src + 0x2000 + 0x744) = 0;
+    *(src + 0x2000 + kOffset744) = 0;
 }

@@ -14,7 +14,11 @@ struct InlineEntry {
     int f8;
     unsigned char unkc;
     unsigned char fd;
+#if defined(jpn)
+    unsigned char unke[0x6];
+#else
     unsigned char unke[0xa];
+#endif
     int vec18[3];
     unsigned char unk24[0x10];
     int f34;
@@ -28,7 +32,11 @@ struct GrottoSlot {
     unsigned char unkc[5];
     unsigned char kind;
     unsigned short value;
+#if defined(jpn)
+
+#else
     unsigned char unk14[4];
+#endif
 };
 
 struct PendingGroup {
@@ -46,11 +54,19 @@ struct Combatant0219dc90 {
 };
 
 struct BattleOverlay0219dc90 {
+#if defined(jpn)
+    unsigned char unk0[0x34f4];
+#else
     unsigned char unk0[0x3704];
+#endif
     TailList020469b4* slotList;
     unsigned char unk3708[0x3a9c - 0x3708];
     GrottoSlot slots[4];
+#if defined(jpn)
+    unsigned char unk3afc[0x4204 - 0x38dc];
+#else
     unsigned char unk3afc[0x44b4 - 0x3afc];
+#endif
     PendingGroup pending;
 };
 
@@ -70,6 +86,7 @@ extern "C" void _Z16AppendNodeToTailP16TailList020469b4P16TailNode020469b4(TailL
 extern "C" void _Z25ClearFieldcIfSet_021b4760P11Obj021b4760(GrottoSlot* slot);
 extern "C" void func_02046a8c(TailList020469b4* list, GrottoSlot* node);
 
+// JPN: func_ov017_0219e780
 // USA: func_ov017_0219dc90
 extern "C" ARM void func_ov017_0219dc90(BattleOverlay0219dc90* self, int combatantIdx, int id, unsigned char kind, unsigned short value) {
     GameState* gs = GameState::GetInstance();

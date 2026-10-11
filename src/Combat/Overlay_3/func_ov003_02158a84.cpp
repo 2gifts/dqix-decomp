@@ -1,6 +1,8 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
 
+
+
 struct Struct0205a198 {
     char data[0x28];
 };
@@ -25,6 +27,7 @@ struct Obj02158a84 {
 };
 
 // USA: func_ov003_02158a84
+// JPN: func_ov003_02159f70
 extern "C" ARM void func_ov003_02158a84(Obj02158a84* self, SafeAllocator* alloc) {
     if (alloc == NULL) {
         return;
@@ -42,5 +45,9 @@ extern "C" ARM void func_ov003_02158a84(Obj02158a84* self, SafeAllocator* alloc)
     _Z23ClearField0And40205a234P19ClearTarget0205a234(self->clearTarget);
     self->alloc50.Reset();
     self->entryManager = (EntryManager020e2490*)self->alloc50.Allocate(0x24);
+#if defined(jpn)
+    _Z24InitEntryManager020e2490P20EntryManager020e2490iiPvP13SafeAllocatorih(self->entryManager, 0, 1, self->clearTarget, &self->alloc50, 3, 0x40);
+#else
     _Z24InitEntryManager020e2490P20EntryManager020e2490iiPvP13SafeAllocatorih(self->entryManager, 0, 1, self->clearTarget, &self->alloc50, 4, 0x40);
+#endif
 }

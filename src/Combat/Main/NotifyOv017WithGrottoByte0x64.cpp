@@ -1,5 +1,11 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { activeGrottoOffset = 0x240c };
+#else
+enum { activeGrottoOffset = 0x23EC };
+#endif
+
 extern "C" void* func_02012fe4(void);
 extern "C" int func_ov017_021d6134(void*, int);
 
@@ -9,7 +15,7 @@ struct ActiveGrottoClass {
 
 // USA: func_0209dbfc
 ARM int NotifyOv017WithGrottoByte0x64(void* arg) {
-    ActiveGrottoClass* g = (ActiveGrottoClass*)((char*)func_02012fe4() + 0x23EC);
+    ActiveGrottoClass* g = (ActiveGrottoClass*)((char*)func_02012fe4() + activeGrottoOffset);
     if (g == NULL) return 0;
     ActiveGrottoClass* r = g->GetDetailedData();
     if (r == NULL) return 0;

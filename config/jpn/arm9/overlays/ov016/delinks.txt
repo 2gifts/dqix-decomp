@@ -155,3 +155,107 @@ src/Combat/Overlay_16/SafeGetField_0218e750.cpp:
 src/Combat/Overlay_16/TailCallFree_0218e7b0.cpp:
     complete
     .text start:0x0218e9ec end:0x0218e9f8
+
+src/Combat/Overlay_16/SafeAllocatorAllocate_0218bc8c.cpp:
+    complete
+    .text start:0x0218c76c end:0x0218c788
+
+src/Combat/Overlay_16/SafeAllocatorFree_0218bca8.cpp:
+    complete
+    .text start:0x0218c788 end:0x0218c7a4
+
+src/Combat/Overlay_16/IncCounter_0218bcc4.cpp:
+    complete
+    .text start:0x0218c7a4 end:0x0218c7c8
+
+src/Combat/Overlay_16/GetSomeConstByFlag_0218be5c.cpp:
+    complete
+    .text start:0x0218c93c end:0x0218c95c
+
+src/Combat/Overlay_16/IncrementCounters_0218f2f0.cpp:
+    complete
+    .text start:0x0218f510 end:0x0218f550
+
+src/Combat/Overlay_16/CreateDiffNode_0218e558.cpp:
+    .text start:0x0218e794 end:0x0218e868
+
+src/Combat/Overlay_16/RegisterObjectAndRunScript0218e098.cpp:
+    .text start:0x0218e680 end:0x0218e70c
+
+src/Combat/Overlay_16/CheckStateEqualsOne_0218e768.cpp:
+    .text start:0x0218e9a4 end:0x0218e9c8
+
+src/Combat/Overlay_16/GetOrStreamPoolBlockA_0218fd50.cpp:
+    .text start:0x0218feb8 end:0x0218ff28
+
+src/Combat/Overlay_16/GetOrStreamPoolBlockB_0218fdc0.cpp:
+    .text start:0x0218ff28 end:0x0218ff98
+
+src/Combat/Overlay_16/GetOrStreamPoolBlockC_0218fe30.cpp:
+    .text start:0x0218ff98 end:0x02190008
+
+src/Combat/Overlay_16/GetOrStreamPoolBlockD_0218fcd4.cpp:
+    .text start:0x0218fe3c end:0x0218feb8
+
+src/Combat/Overlay_16/CallStubAndForward_0218e528.cpp:
+    .text start:0x0218e764 end:0x0218e794
+
+src/Combat/Overlay_16/CallIfNonNullBool_0218e6e4.cpp:
+    .text start:0x0218e920 end:0x0218e944
+
+src/Combat/Overlay_16/TailCallFree_0218f4fc.cpp:
+    .text start:0x0218f664 end:0x0218f670
+
+src/Combat/Overlay_16/Synth_0218b5c0.cpp:
+    .text start:0x0218c1e0 end:0x0218c1e4
+
+src/Combat/Overlay_16/Trans_0218e7ec.cpp:
+    .text start:0x0218ea28 end:0x0218ea3c
+
+src/Combat/Overlay_16/func_ov016_0218ef50.cpp:
+    .text start:0x0218f184 end:0x0218f2bc
+
+src/Combat/Overlay_16/TailCallAllocate_0218f4f0.cpp:
+    .text start:0x0218f658 end:0x0218f664
+
+src/Combat/Overlay_16/EnsureInitAndSetFlag_0218be1c.cpp:
+    .text start:0x0218c8fc end:0x0218c93c
+
+src/Combat/Overlay_16/EmitEvents_0218cf58.cpp:
+    .text start:0x0218d708 end:0x0218d7e4
+
+src/Combat/Overlay_16/SetDispcntModeByFlagAndToggle_0218be7c.cpp:
+    .text start:0x0218c95c end:0x0218c9a4
+
+src/Combat/Overlay_16/ToggleAndConfigureDisplay_0218d034.cpp:
+    .text start:0x0218d7e4 end:0x0218d884
+
+src/Combat/Overlay_16/func_ov016_0218bce8.cpp:
+    .text start:0x0218c7c8 end:0x0218c8fc
+
+src/Combat/Overlay_16/func_ov016_0218edac.cpp:
+    .text start:0x0218efe0 end:0x0218f148
+
+src/Combat/Overlay_16/SetFlagAndMaybeIncrement_0218c024.cpp:
+    .text start:0x0218ca70 end:0x0218ca98
+
+src/Combat/Overlay_16/SetFlagAndMaybeIncrement_0218d294.cpp:
+    .text start:0x0218d998 end:0x0218d9c0
+
+src/Combat/Overlay_16/IncCounter_0218cf34.cpp:
+    .text start:0x0218d6e4 end:0x0218d708
+
+src/Combat/Overlay_16/func_ov016_0218f088.cpp:
+    .text start:0x0218f2bc end:0x0218f38c
+
+src/Combat/Overlay_16/func_ov016_0218f340.cpp:
+    .text start:0x0218f560 end:0x0218f658
+
+src/Combat/Overlay_16/func_ov016_0218de60.cpp:
+    .text start:0x0218e4b4 end:0x0218e5f4
+
+src/Combat/Overlay_16/XorMaskKeyInput_0218ca70.cpp:
+    .text start:0x0218d3b4 end:0x0218d3ec
+
+src/Combat/Overlay_16/XorMaskKeyInput_0218d2bc.cpp:
+    .text start:0x0218d9c0 end:0x0218d9f8

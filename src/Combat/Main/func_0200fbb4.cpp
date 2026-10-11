@@ -21,6 +21,7 @@ struct CopyRecord0200fbb4 {
 };
 
 // USA: func_0200fbb4
+// JPN: func_0200fbb4
 extern "C" ARM CopyRecord0200fbb4* func_0200fbb4(CopyRecord0200fbb4* dst, const CopyRecord0200fbb4* src) {
     dst->field00 = src->field00;
     dst->field02 = src->field02;

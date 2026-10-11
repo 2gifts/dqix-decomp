@@ -5,7 +5,11 @@ struct Field150Table02052df8 {
     short entries[1];
 };
 struct Field150Holder02052df8 {
+#if defined(jpn)
+    char pad[0x144];
+#else
     char pad[0x150];
+#endif
     struct Field150Table02052df8* table;
 };
 

@@ -57,7 +57,13 @@ int DispatchNodeIfType7_02156e2c(void* a, int key);
 Entry02158dcc* GetEntryFor_021570a4(void* obj, int index);
 extern "C" struct Container020dedd0* func_ov004_02156fd4(void* obj, int key);
 Element02158dcc* FindElementByKey020dedd0(struct Container020dedd0* c, int key);
+#if defined(jpn)
+extern "C" void func_020e207c(void*, char*, int);
+struct Obj02046574;
+void SetIndexedName02046574(Obj02046574*, int, char*);
+#else
 int CallFunc020e52a0(void* p, int key);
+#endif
 Message02158dcc* GetGlobalField0x1c020421a0(void);
 extern "C" int func_ov004_0215799c(void* a, int e, unsigned int kind, int d);
 void SetFieldConditional_021849e0(struct Fields021849e0* obj, unsigned short val);
@@ -75,8 +81,14 @@ extern "C" ARM int func_ov004_02158dcc(void* obj) {
     if (!entry) return 0;
     Element02158dcc* elem = FindElementByKey020dedd0(func_ov004_02156fd4(obj, 5), entry->id);
     if (!elem) return 0;
+#if defined(jpn)
+    char name[80];
+    func_020e207c(data_ov004_021707d8.ptr->table, name, elem->nameId);
+    SetIndexedName02046574((Obj02046574*)GetGlobalField0x1c020421a0(), 1, name);
+#else
     int name = CallFunc020e52a0(data_ov004_021707d8.ptr->table, elem->nameId);
     GetGlobalField0x1c020421a0()->name = name;
+#endif
     if (entry->count == 0) return 0;
 
     Wallet02158dcc* wallet = (Wallet02158dcc*)GetPtrField0x2a04(GameState::GetInstance());

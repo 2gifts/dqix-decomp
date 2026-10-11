@@ -1,3 +1,10 @@
+// JPN: func_ov017_02198f90
+#if defined(jpn)
+enum { RegionOffset36fc = 0x34ec, RegionOffset6c = 0x8c };
+#else
+enum { RegionOffset36fc = 0x36fc, RegionOffset6c = 0x6c };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -39,14 +46,14 @@ struct EventBuf021983e0 {
 
 // USA: func_ov017_021983e0  (semantic: FindFirstTargetAndForward_021983e0)
 extern "C" ARM void func_ov017_021983e0(unsigned char* obj) {
-    if (IsField0Null(*(void***)(obj + 0x36fc))) {
+    if (IsField0Null(*(void***)(obj + RegionOffset36fc))) {
         GameState* bs = GameState::GetInstance();
         void* cache = func_02012fe4();
         GetField0x3b0Value(bs);
         GameObject* c = bs->GetUnknownGameObject();
         if (CheckSubstructByte0x7cPositive((signed char*)c) == 0) {
             struct FilterData021983e0 filter = *(struct FilterData021983e0*)((char*)c + 0x44);
-            struct TargetNode021983e0* node = (struct TargetNode021983e0*)GetPointerFromArray0x3c((unsigned char*)cache + 0x6c, 5);
+            struct TargetNode021983e0* node = (struct TargetNode021983e0*)GetPointerFromArray0x3c((unsigned char*)cache + RegionOffset6c, 5);
             while (node != NULL) {
                 if (func_02094b9c(node, &filter) != 0) {
                     int angle = (short)_Z22fix32ReduceAngle0To2Pii(node->angle + 0x3244);

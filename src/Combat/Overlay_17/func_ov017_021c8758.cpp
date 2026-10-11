@@ -21,12 +21,18 @@ struct PositionMsg {
     struct PositionMsgFields fields;
 };
 
+// JPN: func_ov017_021c8c08
 // USA: func_ov017_021c8758
 extern "C" ARM void func_ov017_021c8758(unsigned short id) {
+#if defined(jpn)
+ enum { regionalOffset=0x508 };
+#else
+ enum { regionalOffset=0x718 };
+#endif
     GameState* bs = GameState::GetInstance();
     unsigned char* base = (unsigned char*)func_ov017_0218b5b0();
     void* data = GetData02100044();
-    void* field = _Z20GetField6b0_021b8470Pv(*(void**)(base + 0x3000 + 0x718));
+    void* field = _Z20GetField6b0_021b8470Pv(*(void**)(base + 0x3000 + regionalOffset));
     if (field == NULL) {
         return;
     }

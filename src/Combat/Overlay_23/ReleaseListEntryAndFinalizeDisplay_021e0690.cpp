@@ -26,26 +26,51 @@ struct BitField021e0690 {
     unsigned int low4 : 4;
 };
 
+#if defined(jpn)
+extern char data_ov023_021fcf09[];
+#endif
+// JPN: func_ov023_021e0c20
 // USA: func_ov023_021e0690  (semantic: ReleaseListEntryAndFinalizeDisplay_021e0690)
 extern "C" ARM int func_ov023_021e0690(void* obj_) {
+#if defined(jpn)
+ enum {regionalOffset0=0x6f0, regionalOffset1=0x62c, regionalOffset2=0x80, regionalOffset3=0x6bc, regionalOffset4=0x6ec};
+#else
+ enum {regionalOffset0=0x774, regionalOffset1=0x630, regionalOffset2=0x100, regionalOffset3=0x740, regionalOffset4=0x770};
+#endif
+#if defined(jpn)
+    int listPtr = (int)BackgroundLoader::GetInstance();
+    char* obj = (char*)obj_;
+#else
     char* obj = (char*)obj_;
     int listPtr = (int)BackgroundLoader::GetInstance();
-    unsigned short flags = *(unsigned short*)(obj + 0x774);
-    if ((flags & 0x1000) || ((BackgroundLoader*)(listPtr))->GetTaskStatus((int)(*(int*)(obj + 0x740)))) {
-        memset(obj + 0x630, 0, 0x100);
-        flags = *(unsigned short*)(obj + 0x774);
+#endif
+
+    unsigned short flags = *(unsigned short*)(obj + regionalOffset0);
+    if ((flags & 0x1000) || ((BackgroundLoader*)(listPtr))->GetTaskStatus((int)(*(int*)(obj + regionalOffset3)))) {
+        memset(obj + regionalOffset1, 0, regionalOffset2);
+        flags = *(unsigned short*)(obj + regionalOffset0);
         if (flags & 0x1000) {
+#if defined(jpn)
+            strcpy(obj + regionalOffset1, data_ov023_021fcf09);
+#else
             char* s = (char*)GetFieldByKey020e0434(data_ov023_021ff9e0.field14, 0x29);
-            strcpy(obj + 0x630, s);
+            strcpy(obj + regionalOffset1, s);
+#endif
+
         } else {
             int out1, out2;
-            ((BackgroundLoader*)((struct List0202fec8*)listPtr))->GetLoadedFileByID((int)(*(int*)(obj + 0x740)), (void**)(&out1), (unsigned int*)(&out2));
+            ((BackgroundLoader*)((struct List0202fec8*)listPtr))->GetLoadedFileByID((int)(*(int*)(obj + regionalOffset3)), (void**)(&out1), (unsigned int*)(&out2));
+#if defined(jpn)
+            {
+#else
             if (out1 != 0 && out2 != 0) {
-                int v = *(short*)(obj + 0x770);
-                func_020e046c(obj + 0x630, (void*)out1, (void*)out2, v);
+#endif
+
+                int v = *(short*)(obj + regionalOffset4);
+                func_020e046c(obj + regionalOffset1, (void*)out1, (void*)out2, v);
             }
-            ((BackgroundLoader*)(listPtr))->RemoveTask((int)(*(int*)(obj + 0x740)));
-            *(int*)(obj + 0x740) = -1;
+            ((BackgroundLoader*)(listPtr))->RemoveTask((int)(*(int*)(obj + regionalOffset3)));
+            *(int*)(obj + regionalOffset3) = -1;
         }
 
         ClearStruct16(obj + 0x6c);
@@ -68,9 +93,9 @@ extern "C" ARM int func_ov023_021e0690(void* obj_) {
         }
 
         func_ov023_021df558(obj);
-        flags = *(unsigned short*)(obj + 0x774);
+        flags = *(unsigned short*)(obj + regionalOffset0);
         return (flags & 0x400) ? -1 : 9;
     }
 
-    return (*(int*)(obj + 0x740) != -1) ? 7 : -1;
+    return (*(int*)(obj + regionalOffset3) != -1) ? 7 : -1;
 }

@@ -19,9 +19,15 @@ void InitStruct0207cc0c(char* obj);
 extern "C" void func_0207d134(void* buf, int a, int b);
 extern "C" void func_0207cf30(void* buf, int a, int b, int c);
 
+#if defined(jpn)
+#define MESSAGE_FLAG_OFFSET 0xa9
+#else
+#define MESSAGE_FLAG_OFFSET 0x9d
+#endif
+
 // USA: func_ov004_0215e148  (semantic: SetupDamageMessageOrDefault_0215e148)
 extern "C" ARM int func_ov004_0215e148(void* obj) {
-    if (data_ov004_021707d8.ptr != NULL && *(unsigned char*)(data_ov004_021707d8.ptr + 0x9d) != 0) {
+    if (data_ov004_021707d8.ptr != NULL && *(unsigned char*)(data_ov004_021707d8.ptr + MESSAGE_FLAG_OFFSET) != 0) {
         GameState::GetInstance();
         int key = DispatchNodeIfType7_02156e2c(obj, 0x5b);
         if (key < 0) return 0;

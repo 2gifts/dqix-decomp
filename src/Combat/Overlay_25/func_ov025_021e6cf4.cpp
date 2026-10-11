@@ -34,6 +34,7 @@ extern "C" ListNode021600f8* _Z22GetNodeAtIndex021600f8P12List021600f8i(List0216
 extern "C" void _Z22SetThreeWords_021e4448Piiii(int* out, int x, int y, int z);
 extern "C" void _Z21AimAndSetVecY020338d4P14Struct020338d4P4Vec3(Struct020338d4* obj, Vec3* target);
 
+// JPN: func_ov025_021e71a4
 // USA: func_ov025_021e6cf4
 extern "C" ARM int func_ov025_021e6cf4(PairTask021e6cf4* task, void* list) {
     unsigned char* work = GetActiveCombatWork();

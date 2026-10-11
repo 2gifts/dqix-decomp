@@ -1,7 +1,14 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define REGION_OFFSET_0 0x21c
+#else
+#define REGION_OFFSET_0 0x2a0
+#endif
+
 #include "GameState/GameState.h"
 
-struct S02163b90 { char pad[0x2a0]; unsigned char* bitsPtr; };
+struct S02163b90 { char pad[REGION_OFFSET_0]; unsigned char* bitsPtr; };
 
 int TestBitAt0x34(unsigned char* obj, unsigned int index);
 extern "C" void _ZN8Object3D11MakeVisibleEv(unsigned char* obj);

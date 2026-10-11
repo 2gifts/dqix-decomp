@@ -2,6 +2,7 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 
+
 extern "C" int func_020ab7a8(void* obj, int flag);
 void SetByte0x4(char* obj, unsigned char value);
 void* GetDataPtr02114e04_020d6c00(void);
@@ -15,15 +16,27 @@ void* GetNodeIfType6_0216ae9c(void* a, int id);
 void SetOffset100Fields_021f8960(char* base, short a, short b);
 
 struct FieldGroup02171034 {
+#if defined(jpn)
+#else
     unsigned char pad0[2];
+#endif
     unsigned char flag2;
+#if defined(jpn)
+    unsigned char pad1[4];
+#else
+#endif
     unsigned char state3;
+#if defined(jpn)
+    unsigned char pad4[6];
+#else
     unsigned char pad4[0xc];
+#endif
     unsigned char* ptr10;
 };
 extern struct FieldGroup02171034 data_ov004_02171034;
 
-// USA: func_ov004_0216e258  (semantic: DispatchByBattleState_0216e258)
+// USA: func_ov004_0216e258
+// JPN: func_ov004_0216e8f8
 extern "C" ARM int func_ov004_0216e258(void* a) {
     GameState* battle = GameState::GetInstance();
     BackgroundLoader::AddLockGlobal();

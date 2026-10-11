@@ -13,6 +13,7 @@ extern "C" void _ZN8Object3D8SetScaleEiii(struct Shorts5c_374e0* obj, short a, s
 
 struct Obj021fd120 { char pad[8]; unsigned short half8; unsigned short halfA; };
 
+// JPN: func_ov023_021fc418
 // USA: func_ov023_021fd120
 extern "C" ARM void func_ov023_021fd120(struct Obj021fd120* obj, void* ctx, int p2, int p3) {
     if (p2 == 0 || p3 == 0) return;

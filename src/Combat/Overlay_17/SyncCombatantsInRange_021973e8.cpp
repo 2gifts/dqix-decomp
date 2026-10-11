@@ -1,3 +1,4 @@
+// JPN: func_ov017_02197f98
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -22,12 +23,18 @@ struct SyncLocal_021973e8 {
     struct Vec3_37774 vec;
 };
 
+#if defined(jpn)
+enum { RegionOffset38 = 0x58, RegionOffset3c = 0x5c };
+#else
+enum { RegionOffset38 = 0x38, RegionOffset3c = 0x3c };
+#endif
+
 // USA: func_ov017_021973e8  (semantic: SyncCombatantsInRange_021973e8)
 extern "C" ARM void func_ov017_021973e8(unsigned int* flagsObj) {
     GameState* bs = GameState::GetInstance();
     void* ctx = func_02012fe4();
-    unsigned short field38 = *(unsigned short*)((char*)ctx + 0x38);
-    unsigned int field3c = *(unsigned int*)((char*)ctx + 0x3c);
+    unsigned short field38 = *(unsigned short*)((char*)ctx + RegionOffset38);
+    unsigned int field3c = *(unsigned int*)((char*)ctx + RegionOffset3c);
 
     if (GetBitsInField4(flagsObj, 0x100) != 0) return;
 

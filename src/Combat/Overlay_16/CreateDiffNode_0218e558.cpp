@@ -40,7 +40,13 @@ extern "C" ARM int func_ov016_0218e558(void* obj, int param) {
         return 0;
     }
 
-    void* buf = _Z25TailCallAllocate_0218e7a4j(0xd8);
+    void* buf = _Z25TailCallAllocate_0218e7a4j(
+#if defined(jpn)
+        0xd4
+#else
+        0xd8
+#endif
+    );
     if (buf != 0) {
         buf = _Z19ZeroFields_0218e7bcPv(buf);
     }

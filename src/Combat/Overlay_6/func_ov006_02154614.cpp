@@ -1,3 +1,8 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include <std_library_functions.h>
 #include "Memory/SafeAllocator.h"
@@ -10,7 +15,7 @@ struct Struct020dbd9c {
 };
 
 struct ItemInfoWindow {
-    char unk_0[0x774];
+    char unk_0[R(0x6f0,0x774)];
     unsigned short flags_;
     char unk_776[0x7];
     signed char windowSprites_;
@@ -24,7 +29,9 @@ struct IngredientSprite {
 };
 
 struct AlchemyPot {
+#if !defined(jpn)
     char names_[3][0x80];
+#endif
     SafeAllocator* allocators_;
     SafeAllocator* itemAllocator_;
     SafeAllocator* nextItemAllocator_;
@@ -84,7 +91,9 @@ extern "C" void _Z18InitStruct020dbd9cP14Struct020dbd9c(Struct020dbd9c* effect);
 
 // USA: func_ov006_02154614
 extern "C" ARM void func_ov006_02154614(AlchemyPot* self) {
+#if !defined(jpn)
     memset(self->names_, 0, sizeof(self->names_));
+#endif
     self->allocators_ = 0;
     self->itemAllocator_ = 0;
     self->nextItemAllocator_ = 0;

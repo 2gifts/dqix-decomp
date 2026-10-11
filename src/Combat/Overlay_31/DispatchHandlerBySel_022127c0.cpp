@@ -1,3 +1,4 @@
+// JPN: func_ov031_02212fa0
 #include <globaldefs.h>
 
 typedef void (*Handler022127c0)(void*, int, int);

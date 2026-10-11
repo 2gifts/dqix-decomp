@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kValueOffset = 0x2c8 };
+#else
+enum { kValueOffset = 0x2d4 };
+#endif
+
 
 struct State0xcda8;
 void StoreAlignedValue0x60(struct State0xcda8* obj, int value);
@@ -36,5 +42,5 @@ ARM void HandleObjEvent0204085c(struct Obj0204085c* obj, int a, int b, int c) {
     }
     StoreVec3AtField0x50(q, a, b, c);
     q = obj->field1c;
-    *(int*)(q + 0x2d4) = b;
+    *(int*)(q + kValueOffset) = b;
 }

@@ -8,7 +8,11 @@ struct GameState {
 };
 
 struct GameResources_021f00fc {
+#if defined(jpn)
+    char unk_0[0x40c2];
+#else
     char unk_0[0x42e2];
+#endif
     unsigned char unknown_42e2;
 };
 
@@ -30,11 +34,19 @@ struct BattleEnd_021f00fc {
 };
 
 struct BattleScene_021f00fc {
+#if defined(jpn)
+    char unk_0[0x21c];
+#else
     char unk_0[0x2a0];
+#endif
     BattleInfo_021f00fc* info_;
     char unk_2a4[0xeac - 0x2a4];
     int endState_;
+#if defined(jpn)
+    char unk_eb0[0x5948 - 0xe2c];
+#else
     char unk_eb0[0x5758 - 0xeb0];
+#endif
     int experience_[4];
     int gold_;
     unsigned char legacyBossLevelUp_;
@@ -70,6 +82,7 @@ void func_ov017_021cd35c(unsigned short a, void* drops, unsigned char count, sig
 int func_ov023_021f5150(BattleScene_021f00fc* self, BattleInfo_021f00fc* info, int* experience, int* gold, int legacy);
 }
 
+// JPN: func_ov023_021efd08
 // USA: func_ov023_021f00fc
 extern "C" ARM int func_ov023_021f00fc(BattleScene_021f00fc* self)
 {

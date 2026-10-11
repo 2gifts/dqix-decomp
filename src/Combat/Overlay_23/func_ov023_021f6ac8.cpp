@@ -36,10 +36,15 @@ public:
     virtual void v48(); virtual void v49(); virtual void v50(); virtual void v51();
     virtual void v52(); virtual void v53(); virtual void v54(); virtual void v55();
     virtual void v56(); virtual void v57(); virtual void v58(); virtual void v59();
+#if defined(jpn)
+    virtual void v60();
+#else
     virtual void v60(); virtual void v61();
+#endif
     virtual int MethodF8();
 };
 
+// JPN: func_ov023_021f6004
 // USA: func_ov023_021f6ac8
 extern "C" ARM int func_ov023_021f6ac8(void* obj, void* arg1) {
     if (*(unsigned char*)(&data_02114e54 + 0x55) != 0) {

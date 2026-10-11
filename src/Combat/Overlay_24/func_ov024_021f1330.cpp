@@ -23,6 +23,7 @@ struct BuffWord_021f1330 {
 	signed int unkBuff21 : 3;
 };
 
+// JPN: func_ov024_021f1afc
 // USA: func_ov024_021f1330  (semantic: SelectLowUnkBuff21AndMaybePick_021f1330)
 extern "C" ARM int func_ov024_021f1330(int* a0, int a1, int a2, int* outCount, short* outArray) {
 	GameObject* gate = GetCombatantWithFlag0x400ByID(*a0, a1);

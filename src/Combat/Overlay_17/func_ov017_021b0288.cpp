@@ -35,6 +35,7 @@ extern "C" void func_ov017_021d0b30(int a, int b, int c);
 void* GetData02100044(void);
 void* FillBitArray0x1524WithFF(struct BitArrayObj0205e854* obj);
 
+// JPN: func_ov017_021b0920
 // USA: func_ov017_021b0288
 extern "C" ARM int func_ov017_021b0288(SlotState_021b0288* obj) {
     if (obj->slots[0] != 0) {

@@ -14,6 +14,7 @@ extern "C" void func_ov023_021ed4b8(void* obj);
 
 extern unsigned char data_ov023_021fd844[];
 
+// JPN: func_ov023_021ecfb8
 // USA: func_ov023_021ed064  (semantic: InitEntryStateAndDispatchHandlers_021ed064)
 extern "C" ARM int func_ov023_021ed064(void* obj) {
     if (DispatchIfFlagsOrByteSet_021ed014() == 0) {

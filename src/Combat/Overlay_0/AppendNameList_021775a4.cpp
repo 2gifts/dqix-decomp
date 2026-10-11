@@ -19,7 +19,11 @@ extern short data_ov000_021834bc[];
 extern "C" ARM void func_ov000_021775a4(void* base, char* dst) {
     if (dst == NULL) return;
 
+#if defined(jpn)
+    signed char cursor = *(signed char*)((char*)base + 0x1f00 + 0xa2);
+#else
     signed char cursor = *(signed char*)((char*)base + 0x1d00 + 0x6a);
+#endif
     int n = 0;
 
     if (IsField0x118Equal2(base)) {

@@ -26,7 +26,11 @@ struct Self02155bb8 {
     unsigned short field0xa;
     char pad1[0x4a - 0xc];
     unsigned short field0x4a;
+#if defined(jpn)
+    char pad2[0xcc - 0x4c];
+#else
     char pad2[0xd0 - 0x4c];
+#endif
     struct Node1_02155bb8* field0xd0;
     struct Node2_02155bb8* field0xd4;
     char pad3[0xf4 - 0xd8];

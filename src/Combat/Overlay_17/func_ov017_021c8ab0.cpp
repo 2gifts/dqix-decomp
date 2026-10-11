@@ -22,9 +22,15 @@ struct Evt021c8ab0 {
     struct Payload021c8ab0 payload;
 };
 
+// JPN: func_ov017_021c8f60
 // USA: func_ov017_021c8ab0
 extern "C" ARM void func_ov017_021c8ab0(int unused0, struct Evt021c8ab0* evt, GameState* bs, unsigned char* base) {
-    void* table = *(void**)(base + 0x3000 + 0x718);
+#if defined(jpn)
+ enum {regionalOffset0=0x508};
+#else
+ enum {regionalOffset0=0x718};
+#endif
+    void* table = *(void**)(base + 0x3000 + regionalOffset0);
     Ret021c8ab0* r = (Ret021c8ab0*)func_ov017_021b8478(table);
     if (r == NULL) return;
     if (!func_ov017_021b8468(table)) return;

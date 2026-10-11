@@ -22,6 +22,14 @@ struct Slot020732cc {
 extern signed short data_020e8854[];
 extern signed short data_020e8864[];
 
+
+#if defined(jpn)
+enum { CombatantSlotOffset = 0x144 };
+#else
+enum { CombatantSlotOffset = 0x150 };
+#endif
+
+// JPN: func_0207445c
 // USA: func_020732cc
 extern "C" ARM void func_020732cc(int arg0) {
     GameState* gs = GameState::GetInstance();
@@ -34,7 +42,7 @@ extern "C" ARM void func_020732cc(int arg0) {
         struct Slot020732cc* slot;
         for (i = 0; i < 8; i++) {
             signed short idx = data_020e8854[i];
-            char* base = *(char**)((char*)combatant + 0x150) + 0x194;
+            char* base = *(char**)((char*)combatant + CombatantSlotOffset) + 0x194;
             slot = (struct Slot020732cc*)(base + (unsigned char)data_020e8864[idx] * 0x20);
             list = _Z28GetField150Ptr0x488_02052e2cP22Field150Holder02052e2c(
                 (struct Field150Holder02052e2c*)combatant);

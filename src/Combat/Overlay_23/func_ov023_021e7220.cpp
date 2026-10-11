@@ -24,8 +24,14 @@ int GetField0x3acValue(GameState* battleStruct);
 struct ShortBytePair021e71a0;
 void ClearShortAndTwoBytes_021e71a0(struct ShortBytePair021e71a0* p);
 
+// JPN: func_ov023_021e747c
 // USA: func_ov023_021e7220  (semantic: InitBigCombatStruct_021e7220)
 extern "C" ARM void func_ov023_021e7220(void* obj, int val) {
+#if defined(jpn)
+ enum {regionalOffset0=0x604};
+#else
+ enum {regionalOffset0=0x60e};
+#endif
     ((SafeAllocator*)((char*)obj + 0x0))->ResetAllocatorPointer();
     ((SafeAllocator*)((char*)obj + 0x14))->ResetAllocatorPointer();
     ((SafeAllocator*)((char*)obj + 0x28))->ResetAllocatorPointer();
@@ -57,9 +63,11 @@ extern "C" ARM void func_ov023_021e7220(void* obj, int val) {
     *(int*)((char*)obj + 0x5f8) = 0;
     *(int*)((char*)obj + 0x5fc) = 0;
     *(int*)((char*)obj + 0x600) = 0;
+#if !defined(jpn)
     *(int*)((char*)obj + 0x604) = 0;
     *(int*)((char*)obj + 0x608) = 0;
     *(unsigned char*)((char*)obj + 0x60c) = 0;
     *(unsigned char*)((char*)obj + 0x60d) = 0;
-    ClearShortAndTwoBytes_021e71a0((struct ShortBytePair021e71a0*)((char*)obj + 0x60e));
+#endif
+    ClearShortAndTwoBytes_021e71a0((struct ShortBytePair021e71a0*)((char*)obj + regionalOffset0));
 }

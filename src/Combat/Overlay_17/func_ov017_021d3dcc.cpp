@@ -17,13 +17,19 @@ struct Evt021d3dcc {
     unsigned short field12;
 };
 
+// JPN: func_ov017_021d421c
 // USA: func_ov017_021d3dcc
 extern "C" ARM void func_ov017_021d3dcc(int p0, struct Evt021d3dcc* evt, GameState* battleStruct, int p3, struct SearchStruct0202c1a4* search) {
+#if defined(jpn)
+ enum {regionalOffset0=0x860};
+#else
+ enum {regionalOffset0=0x840};
+#endif
     if (GetSearchStructCurrentArrEntry(search) != evt->midTag) {
         return;
     }
     char* base = (char*)func_02012fe4();
-    char* p1 = base + 0x840;
+    char* p1 = base + regionalOffset0;
     CopyToOffsetIfSrc02098efc(p1, evt->field12, (const void*)((char*)evt + 4), evt->lowNibble);
     if (!evt->topFlag) {
         return;

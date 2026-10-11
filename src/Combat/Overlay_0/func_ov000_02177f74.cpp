@@ -1,5 +1,14 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define REGION_OFFSET_0 0x1f00
+#define REGION_OFFSET_1 0xa6
+#else
+#define REGION_OFFSET_0 0x1d00
+#define REGION_OFFSET_1 0x6e
+#endif
+
+
 struct UnkStruct0205c508;
 struct Container020e0310;
 
@@ -21,7 +30,7 @@ extern "C" ARM void func_ov000_02177f74(void* base, char* dst) {
     signed char end = last;
     struct Container020e0310* c = (struct Container020e0310*)((char*)base + 0xb8);
     int sep = _Z21GetFieldByKey020e0434P17Container020e0310i(c, 0);
-    signed char cursor = *(signed char*)((char*)base + 0x1d00 + 0x6e);
+    signed char cursor = *(signed char*)((char*)base + REGION_OFFSET_0 + REGION_OFFSET_1);
     int n = 0;
 
     if (IsField0x118Equal2(base)) {

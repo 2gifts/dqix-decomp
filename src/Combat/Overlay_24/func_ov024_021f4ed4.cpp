@@ -9,6 +9,7 @@ int IsFlagBit6Set_021df6ec(struct FlagObj_021df6ec* obj);
 
 extern unsigned short data_ov024_021fea5c;
 
+// JPN: func_ov024_021f56a0
 // USA: func_ov024_021f4ed4  (semantic: SelectEligibleByStatOrCopyTable_021f4ed4)
 #pragma opt_common_subs off
 extern "C" ARM int func_ov024_021f4ed4(int* a0, int a1, int a2, int* outCount, short* outArray) {

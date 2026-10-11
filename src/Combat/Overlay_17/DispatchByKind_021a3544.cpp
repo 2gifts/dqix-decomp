@@ -78,7 +78,8 @@ void DispatchStateAndMaybeInit_021aef0c(Obj021aef0c* self);
 struct Entry021b8c84;
 void ApplyOrAdvanceListEntry_021b8c84(Entry021b8c84* obj);
 
-// USA: func_ov017_021a3544  (semantic: DispatchByKind_021a3544)
+// USA: func_ov017_021a3544
+// JPN: func_ov017_021a3fb8
 extern "C" ARM void func_ov017_021a3544(void* obj, void* node) {
     if (!node) return;
 

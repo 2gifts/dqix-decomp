@@ -19,9 +19,17 @@ struct Node021e8bac {
 };
 
 struct BattleUi021e27c8 {
+#if defined(jpn)
+    char pad0[4];
+    char* ui;
+    char pad8[12];
+    int loadedCount;
+#else
     char pad0[8];
     int loadedCount;
     char* ui;
+#endif
+
 };
 
 SafeAllocator* GetArrayEntry_021e8a54_021e8a54(char* obj);
@@ -36,26 +44,47 @@ extern "C" void __clear(void* p, int n);
 
 extern BattleUi021e27c8 data_ov025_021ef988;
 
+// JPN: func_ov025_021e2ce0
 // USA: func_ov025_021e27c8
 extern "C" ARM void func_ov025_021e27c8(char* name, int id) {
     char archive[0x50];
     char inner[0x50];
+#if defined(jpn)
+
+#else
     char path[0x50];
+#endif
+
     void* data;
     unsigned int size;
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     GetArrayEntry_021e8a54_021e8a54(data_ov025_021ef988.ui);
     GetArrayEntry_021e8a64_021e8a64(data_ov025_021ef988.ui);
     func_02057924();
+#if defined(jpn)
+
+#else
     int language = NormalizeField5_0200fb08((Struct0200fb08*)GameState::GetInstance());
+#endif
+
     data = 0;
+#if defined(jpn)
+
+#else
     __clear(path, 0x50);
     StringReplaceLanguageTag(name, path, language);
+#endif
+
     int task;
     if (FindTagAndCopy_021e24d0(name, archive, inner)) {
         task = loader->GetLoadedFileInArchive(archive, inner, &data, &size);
     } else {
+#if defined(jpn)
+        task = loader->GetLoadedFileByName(name, &data, &size);
+#else
         task = loader->GetLoadedFileByName(path, &data, &size);
+#endif
+
     }
     void* src = data;
     if (src != 0) {

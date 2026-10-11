@@ -11,7 +11,10 @@ struct Global020fdc4c_f5a8 {
     int pad0;
     int pad4;
     void* field8;
+
+#if !defined(jpn)
     int padc;
+#endif
     void* field10;
 };
 extern struct Global020fdc4c_f5a8 data_020fdc4c;

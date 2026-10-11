@@ -23,8 +23,14 @@ struct ListHeader021e0c80 {
     struct ListEntry021e0c80* entries;
 };
 
+// JPN: func_ov023_021e11c4
 // USA: func_ov023_021e0c80  (semantic: ParseListValuesAndDispatch_021e0c80)
 extern "C" ARM int func_ov023_021e0c80(void* obj) {
+#if defined(jpn)
+ enum {regionalOffset0=0x6cc};
+#else
+ enum {regionalOffset0=0x750};
+#endif
     int idxData[24];
     short values[24];
     unsigned char flags[24];
@@ -88,23 +94,33 @@ extern "C" ARM int func_ov023_021e0c80(void* obj) {
         return -1;
     }
 
-    if (*(int*)((char*)obj + 0x750) == -1) {
+    if (*(int*)((char*)obj + regionalOffset0) == -1) {
         return -1;
     }
 
     int listPtr = (int)BackgroundLoader::GetInstance();
-    if (!((BackgroundLoader*)(listPtr))->GetTaskStatus((int)(*(int*)((char*)obj + 0x750)))) {
+    if (!((BackgroundLoader*)(listPtr))->GetTaskStatus((int)(*(int*)((char*)obj + regionalOffset0)))) {
+#if defined(jpn)
+        return 0xf;
+#else
         goto retf_021e0c80;
+#endif
+
     }
 
-    ((BackgroundLoader*)((struct List0202fec8*)listPtr))->GetLoadedFileByID((int)(*(int*)((char*)obj + 0x750)), (void**)(&out1), (unsigned int*)(&out2));
+    ((BackgroundLoader*)((struct List0202fec8*)listPtr))->GetLoadedFileByID((int)(*(int*)((char*)obj + regionalOffset0)), (void**)(&out1), (unsigned int*)(&out2));
+#if defined(jpn)
+    {
+#else
     if (out1 != 0 && out2 != 0) {
+#endif
+
         unsigned short cnt = *(unsigned short*)((char*)obj + 0xc2);
         func_020e0028((char*)obj + 0xa4, (char*)obj + 0x28, out1, out2, (char*)obj + 0xbc, cnt);
     }
 
-    ((BackgroundLoader*)(listPtr))->RemoveTask((int)(*(int*)((char*)obj + 0x750)));
-    *(int*)((char*)obj + 0x750) = -1;
+    ((BackgroundLoader*)(listPtr))->RemoveTask((int)(*(int*)((char*)obj + regionalOffset0)));
+    *(int*)((char*)obj + regionalOffset0) = -1;
     func_ov023_021e0f44(obj);
     return -1;
 

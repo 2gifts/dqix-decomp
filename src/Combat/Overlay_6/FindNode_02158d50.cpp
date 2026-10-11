@@ -1,3 +1,9 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define func_ov006_02154e58 func_ov006_021565b0
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 struct Node02158d50 {
@@ -6,7 +12,7 @@ struct Node02158d50 {
 };
 
 struct Obj02158d50 {
-    char pad[0x2c];
+    char pad[R(0x24, 0x2c)];
     struct Node02158d50* list;
 };
 

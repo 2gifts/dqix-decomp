@@ -16,6 +16,7 @@ struct Obj_021e3d88 { char pad0[0xc]; void* field0xc; struct Random* field0x10; 
 struct Move_021e3d88 { char pad[0x32]; short stageDelta; };
 struct Stats_021e3d88 { char pad[0x52]; unsigned char lowerChance; };
 
+// JPN: func_ov024_021e4620
 // USA: func_ov024_021e3d88
 extern "C" ARM unsigned long long func_ov024_021e3d88(struct Obj_021e3d88* obj, int unused, int id, struct Move_021e3d88* move, int count) {
 	if (count <= 0) return 0;

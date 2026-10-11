@@ -1,3 +1,12 @@
+#if defined(jpn)
+#define REGION(j,u) (j)
+#define _Z35CheckGlobalObjState2AndInit0205cde8Ph func_0205e118
+#define data_ov020_0218d974 data_ov020_0218e1c4
+#define data_ov020_0218d990 data_ov020_0218e1e0
+#define func_0205c96c func_0205dcd4
+#else
+#define REGION(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -8,7 +17,7 @@ void SetupGlobalObjType1AndInitSelfPointer(unsigned char* obj);
 void SetupAndDispatch0205c904(unsigned char* p, int a1);
 struct Container0205a330;
 void IterateEntries0205a330(struct Container0205a330* c, int arg);
-int CheckGlobalObjState2AndInit0205cde8(unsigned char* p);
+extern "C" int _Z35CheckGlobalObjState2AndInit0205cde8Ph(unsigned char* p);
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
 int GetScaledSumIfActive0205cecc(void* s);
 int CallFunc0205c570AtField0x1c(void* obj);
@@ -23,7 +32,7 @@ extern int data_ov020_0218d974[7];
 struct DispatchState_0218c840 {
     int f0;
     int f4;
-    char pad[0x23f - 0x8];
+    char pad[REGION(0x1cf, 0x23f) - 0x8];
     unsigned char byte23f;
     unsigned char byte240;
 };
@@ -42,12 +51,12 @@ extern "C" ARM void func_ov020_0218c840(struct DispatchState_0218c840* obj) {
 
     SetupAndDispatch0205c904((unsigned char*)obj + 0xc, 1);
 
-    struct Container0205a330* container = *(struct Container0205a330**)(g + 0x2e0);
+    struct Container0205a330* container = *(struct Container0205a330**)(g + REGION(0x230, 0x2e0));
     if (container != 0) {
         IterateEntries0205a330(container, 1);
     }
 
-    if (CheckGlobalObjState2AndInit0205cde8((unsigned char*)obj + 0xc) != 0) {
+    if (_Z35CheckGlobalObjState2AndInit0205cde8Ph((unsigned char*)obj + 0xc) != 0) {
         if (obj->f4 > 5) {
             volatile unsigned int* ime = (volatile unsigned int*)0x4000000;
             *ime = (*ime & ~0x1f00) | 0x1300;

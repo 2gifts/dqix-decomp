@@ -4,6 +4,23 @@
 #include "Memory/SafeAllocator.h"
 #include "System/Graphics.h"
 
+
+#if defined(jpn)
+enum { kEntryManagerMode = 3, kResourceByte = 0xc9 };
+enum { kScenePrefix = 0x110, kSceneExtraPadding = 8, kGlobalPrefix = 0x868, kManagerPrefix = 0x20, kFirstAllocation = 0x48, kManagerAllocation = 0x34, kResourceSlot = 0x524 };
+extern "C" void func_02080654(void*, void*, const char*);
+extern "C" int func_02081b80(void*, const char*);
+extern const char data_ov003_0217e7e0[];
+extern const char data_ov003_0217e7fa[];
+extern const char data_ov003_0217e814[];
+extern const char data_ov003_0217e82a[];
+extern const char data_ov003_0217e862[];
+extern const char data_ov003_0217e865[];
+#else
+enum { kEntryManagerMode = 4, kResourceByte = 0xcd };
+enum { kScenePrefix = 0x228, kSceneExtraPadding = 0x464 - 0x39c, kGlobalPrefix = 0x998, kManagerPrefix = 0x2c, kFirstAllocation = 0x78, kManagerAllocation = 0x40, kResourceSlot = 0x734 };
+#endif
+
 extern "C" void func_ov003_021602bc(void* self);
 extern "C" void func_ov003_021672e4(void* a, int b, int c);
 extern "C" void _Z15ClearSevenWordsP13Struct205563c(void* a);
@@ -69,7 +86,7 @@ struct ObjEnt {
 };
 
 struct Mgr {
-    char pad0[0x2c];
+    char pad0[kManagerPrefix];
     void* field2c;
     char pad1[0x38 - 0x30];
     unsigned char b38;
@@ -84,14 +101,14 @@ struct Entry28 {
 };
 
 struct Global998 {
-    char pad[0x998];
+    char pad[kGlobalPrefix];
     int f998;
     char pad2[4];
     int f9a0;
 };
 
 struct Scene021615bc {
-    char pad0[0x228];
+    char pad0[kScenePrefix];
     SafeAllocator a228;
     char pad1[0x264 - 0x228 - sizeof(SafeAllocator)];
     SafeAllocator a264;
@@ -121,11 +138,13 @@ struct Scene021615bc {
     void* p390;
     void** p394;
     void* p398;
-    char pad5[0x464 - 0x39c];
+    char pad5[kSceneExtraPadding];
     unsigned int flags464;
     char pad6[4];
     int taskId;
-    char pad7[0x480 - 0x470];
+    char pad7[0xc];
+    short jpHiraganaEntry;
+    short jpKatakanaEntry;
     short h480;
     short h482;
     short h484;
@@ -143,6 +162,7 @@ struct Scene021615bc {
 };
 
 // USA: func_ov003_021615bc
+// JPN: func_ov003_021616a4
 extern "C" ARM void func_ov003_021615bc(Scene021615bc* self) {
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     ListEnt* l;
@@ -151,10 +171,10 @@ extern "C" ARM void func_ov003_021615bc(Scene021615bc* self) {
     int k;
     if (self->step == 0) {
         self->a228.Reset();
-        self->p318 = self->a228.Allocate(0x78);
+        self->p318 = self->a228.Allocate(kFirstAllocation);
         self->p31c = self->a228.Allocate(0x1c);
         self->p320 = self->a228.Allocate(0x130);
-        self->p324 = (Mgr*)self->a228.Allocate(0x40);
+        self->p324 = (Mgr*)self->a228.Allocate(kManagerAllocation);
         self->p328 = (ListEnt*)self->a228.Allocate(0x60);
         self->p32c = (ObjEnt*)self->a228.Allocate(0x380);
         self->p394 = (void**)self->a228.Allocate(0x10);
@@ -170,9 +190,17 @@ extern "C" ARM void func_ov003_021615bc(Scene021615bc* self) {
             func_0204c684(self->p32c + i);
         }
         if (self->flags464 & 0x10000) {
+#if defined(jpn)
+            self->taskId = loader->QueueLoadFile(data_ov003_0217e7e0, NULL);
+#else
             self->taskId = loader->QueueLoadFileInGP2(data_ov003_0217fff0, data_ov003_0218000a, NULL);
+#endif
         } else {
+#if defined(jpn)
+            self->taskId = loader->QueueLoadFile(data_ov003_0217e7fa, NULL);
+#else
             self->taskId = loader->QueueLoadFileInGP2(data_ov003_0218001b, data_ov003_02180035, NULL);
+#endif
         }
         self->step = self->step + 1;
     }
@@ -207,7 +235,11 @@ extern "C" ARM void func_ov003_021615bc(Scene021615bc* self) {
         BG2CNT = (BG2CNT & 0x43) | 0x1f00;
         BG3CNT = (BG3CNT & 0x43) | 0x1d08;
         ColorEffect_ConfigureAlphaBlend((unsigned int*)0x4000050, 2, 9, 0xa, 6);
+#if defined(jpn)
+            self->taskId = loader->QueueLoadFile(data_ov003_0217e814, NULL);
+#else
         self->taskId = loader->QueueLoadFileInGP2(data_ov003_02180046, data_ov003_0218005a, NULL);
+#endif
         self->step = self->step + 1;
     }
     if (self->step == 3) {
@@ -252,7 +284,11 @@ extern "C" ARM void func_ov003_021615bc(Scene021615bc* self) {
     }
     if (self->step == 4) {
         self->a28c.Reset();
+#if defined(jpn)
+        func_02080654(self->p324, &self->a28c, data_ov003_0217e82a);
+#else
         _Z35SetFieldsFromFormattedValue0207f914P11Obj0207f914iii(self->p324, &self->a28c, data_ov003_0218006a, data_ov003_02180083);
+#endif
         self->step = self->step + 1;
     }
     if (self->step == 5) {
@@ -265,6 +301,11 @@ extern "C" ARM void func_ov003_021615bc(Scene021615bc* self) {
         }
     }
     if (self->step == 6) {
+#if defined(jpn)
+        Mgr* m = self->p324;
+        m->b3b = 0x12;
+        m->b3c = 0x10;
+#endif
         if (self->flags464 & 0x20000) {
             Global998* g = (Global998*)_Z26GetGlobalField0x1c020421a0v();
             if (g->f998 != 0 && g->f9a0 != 3) {
@@ -272,6 +313,7 @@ extern "C" ARM void func_ov003_021615bc(Scene021615bc* self) {
             }
             self->flags464 &= ~0x20000;
         }
+#if !defined(jpn)
         Mgr* m = self->p324;
         m->b3b = 0x12;
         m->b3c = 0x10;
@@ -293,6 +335,7 @@ extern "C" ARM void func_ov003_021615bc(Scene021615bc* self) {
             _Z38SetSublistEntryField14LowBits_02080798Pvii(m, id, 1);
             id++;
         }
+#endif
         self->a2a0.Reset();
         self->p388 = (Entry28*)self->a2a0.Allocate(0x3e8);
         self->p38c = self->a2a0.Allocate(8);
@@ -306,7 +349,7 @@ extern "C" ARM void func_ov003_021615bc(Scene021615bc* self) {
         self->p370 = self->p38c;
         self->a2c8.Reset();
         self->p390 = self->a2c8.Allocate(0x24);
-        _Z24InitEntryManager020e2490P20EntryManager020e2490iiPvP13SafeAllocatorih(self->p390, 0, 1, self->p38c, &self->a2c8, 4, 0x40);
+        _Z24InitEntryManager020e2490P20EntryManager020e2490iiPvP13SafeAllocatorih(self->p390, 0, 1, self->p38c, &self->a2c8, kEntryManagerMode, 0x40);
         self->taskId = loader->QueueLoadFile(data_ov003_0218008a, NULL);
         self->step = self->step + 1;
     }
@@ -330,6 +373,10 @@ extern "C" ARM void func_ov003_021615bc(Scene021615bc* self) {
     }
     if (self->step == 8) {
         Mgr* m = self->p324;
+#if defined(jpn)
+        self->jpHiraganaEntry = func_02081b80(m, data_ov003_0217e862);
+        self->jpKatakanaEntry = func_02081b80(m, data_ov003_0217e865);
+#endif
         BG0CNT = (BG0CNT & ~3) | 3;
         BG1CNT = (BG1CNT & ~3) | 1;
         BG2CNT = (BG2CNT & ~3);
@@ -340,10 +387,12 @@ extern "C" ARM void func_ov003_021615bc(Scene021615bc* self) {
         m->b38 = 2;
         _Z21InitNodeChain0207f7f0P15Manager0207f7f0P12Node0207f7f0i(m, self->p32c, 4);
         m->b3a = 2;
+#if !defined(jpn)
         func_02081224(m, 0x19);
         func_02081224(m, 0x1a);
         func_02081224(m, 0x1b);
         self->b49e = _Z34CheckField0AndBattleState_02160b50v(self);
+#endif
         char* save = (char*)func_0205ec34();
         if (self->flags464 & 0x10000) {
             self->b4a3 = 0xa;
@@ -362,7 +411,7 @@ extern "C" ARM void func_ov003_021615bc(Scene021615bc* self) {
             self->b4a3 = 1;
             self->flags464 |= 0x10;
             char* g = (char*)func_ov017_0218b5b0();
-            self->h482 = *(unsigned char*)(*(char**)(g + 0x3000 + 0x734) + 0xcd);
+            self->h482 = *(unsigned char*)(*(char**)(g + 0x3000 + kResourceSlot) + kResourceByte);
         } else if (self->b4a1 == 4) {
             self->h484 = 0xd;
             self->h486 = 2;
@@ -371,6 +420,9 @@ extern "C" ARM void func_ov003_021615bc(Scene021615bc* self) {
             self->b4a3 = 1;
             self->flags464 |= 8;
         } else {
+#if defined(jpn)
+            self->b49e = _Z34CheckField0AndBattleState_02160b50v(self);
+#endif
             if (self->b49e != 0 && self->b49e != 1) {
                 if (self->b49e == 2) {
                     x = 3;

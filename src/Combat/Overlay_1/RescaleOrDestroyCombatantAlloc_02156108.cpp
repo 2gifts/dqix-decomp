@@ -1,6 +1,12 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+enum { globalOffset = 0x4c };
+#else
+enum { globalOffset = 0x8c };
+#endif
+
 char* GetGlobalField0x1c020421a0(void);
 void SetFlag0x2IfByte0xd4Not3(unsigned char* obj);
 extern "C" void func_0208bb78(void* obj, int count);
@@ -19,7 +25,11 @@ struct Obj02156108 {
     char pad1[0x42];
     unsigned short field0x4e;
     unsigned short flags0x50;
+#if defined(jpn)
+    char pad2[0xa8];
+#else
     char pad2[0xac];
+#endif
     unsigned char field0xfe;
     char pad3[0x21];
     void* field0x120;
@@ -42,7 +52,7 @@ extern "C" ARM int func_ov001_02156108(struct Obj02156108* self) {
             }
             DestroyStructAllocGroup0208ba54((struct StructAllocGroup0208ba54*)ptr);
         }
-        *(int*)(g6 + 0x8c) = 0;
+        *(int*)(g6 + globalOffset) = 0;
         self->field0x120 = 0;
     }
 

@@ -1,3 +1,12 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define _Z27ScaleStatsIfType12_021f6f10Pv _Z27CheckAnyBuffBelow2_021f5c80P16Wrapper_021f5c80iiPiPs
+#define _Z40InitTenAllocatorsAndClearFields_021e4e8cPv func_ov023_021e5080
+#define data_ov023_021ff5b4 data_ov023_021fe83c
+#define func_ov023_021fc518 func_ov023_021fb810
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #include "Memory/SafeAllocator.h"
@@ -63,7 +72,7 @@ extern "C" ARM int func_ov011_02187720(struct TaggedNumber02184c30* params, int 
         return 0;
 
     heap->allocator.GetSizeWithLargestBlockRemoved();
-    unk = (*(int**)((char*)func_ov017_0218b5b0() + 0x3b4c))[0x13];
+    unk = (*(int**)((char*)func_ov017_0218b5b0() + R(0x392c, 0x3b4c)))[0x13];
     object = heap->allocator.Allocate(sizeof(MenuObject02187720));
     if (object == 0)
         return 0;

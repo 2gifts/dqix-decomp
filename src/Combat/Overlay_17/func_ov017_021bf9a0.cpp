@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/TextQueue.h"
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
@@ -17,7 +18,11 @@ struct LootEvent {
     char pad16[0x28 - 0x16]; Vector3fix position; SafeAllocator allocator;
     unsigned char special;
 };
+#if defined(jpn)
+struct PersistentLootState { char pad0[0x2794]; char containerData[4]; };
+#else
 struct PersistentLootState { char pad0[0x2754]; char containerData[4]; };
+#endif
 struct LootTextContext {
     SafeAllocator allocator; char list[0x18]; Container020dedd0* containerData;
     int field30; int field34;
@@ -40,7 +45,6 @@ void* ZeroInitReturn020de824(void*);
 void InitStruct0207cbe8(char*);
 extern "C" int func_0207d538(void*, int, int, char*, int);
 void* GetGlobalResetObj020d7a50();
-extern "C" void func_020d7e10(void*, char*, int, int, int, int);
 extern "C" void func_ov017_0218d644(GameResources*, Vector3fix*, int);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 extern AllocatorUnion data_02114e20;
@@ -50,6 +54,7 @@ static inline char& GetResourceStateBuffer(GameResources* resources, int offset)
     return resources->unknown_2cc[offset];
 }
 
+// JPN: func_ov017_021bff4c
 // USA: func_ov017_021bf9a0
 extern "C" ARM int func_ov017_021bf9a0(LootEvent* self) {
     unsigned int delta = GameState::GetInstance()->GetEffectiveDeltaTime();
@@ -102,7 +107,11 @@ extern "C" ARM int func_ov017_021bf9a0(LootEvent* self) {
             InitStruct0207cbe8((char*)&context);
             context.containerData = (Container020dedd0*)state->containerData;
             if (func_0207d538(&context, container->lootType, container->itemIDOrRank, text, 1)) {
+#if defined(jpn)
+                func_020d7e10(GetGlobalResetObj020d7a50(), text, 0, 0, 1);
+#else
                 func_020d7e10(GetGlobalResetObj020d7a50(), text, 0, 0, 1, 0);
+#endif
                 GameResources* resources = func_ov017_0218b5b0();
                 if (self->special) func_ov017_0218d644(resources, &self->position, 0);
                 else DispatchWithShortB4_0205eaa0(&data_02108760, 14, 0);

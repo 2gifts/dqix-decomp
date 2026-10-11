@@ -1,8 +1,15 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+enum { kRegionValueEC_E8 = 0xe8 };
+#else
+enum { kRegionValueEC_E8 = 0xec };
+#endif
+
+
 struct Obj021727c8 {
-    char unk_0[0xec];
+    char unk_0[kRegionValueEC_E8];
     unsigned char state_;
     unsigned char subState_;
 };
@@ -18,6 +25,7 @@ extern "C" const StateTable021727c8 data_ov003_0217fa58;
 extern "C" StateFn021727c8 data_020e6d5c;
 
 // USA: func_ov003_021727c8
+// JPN: func_ov003_021716b4
 extern "C" ARM bool func_ov003_021727c8(Obj021727c8* self) {
     GameState::GetInstance()->GetTickCount();
     bool done = false;

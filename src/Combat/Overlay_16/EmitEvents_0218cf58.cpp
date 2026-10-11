@@ -10,7 +10,11 @@ extern "C" void func_020d24c4(int);
 extern "C" void _Z19IncCounter_0218cf34v(void);
 
 struct StateBlock_0219d144 {
+    #if defined(jpn)
+    unsigned char pad[0x20];
+#else
     unsigned char pad[0x24];
+#endif
     int f24;
     unsigned char pad2[4];
     void* f2c;

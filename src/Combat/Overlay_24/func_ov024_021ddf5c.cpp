@@ -40,6 +40,7 @@ static inline int IsPartySlot(int id) {
     return id >= 0 && id <= 3;
 }
 
+// JPN: func_ov024_021de808
 // USA: func_ov024_021ddf5c
 extern "C" ARM struct OutStruct0215ccbc* func_ov024_021ddf5c(struct Obj_021ddf5c* obj, int unused, int id, struct Range_021ddf5c* range, int amount) {
     GameObject* c = GetCombatantByID((int)obj->ctx, id);

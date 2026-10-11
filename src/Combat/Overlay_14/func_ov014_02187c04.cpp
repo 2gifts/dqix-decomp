@@ -1,11 +1,19 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define REGION_MEMBER_SHORT_OFFSET 0x2a
+#define REGION_MENU_LEADING_SIZE 0x20
+#define func_ov014_02188330 func_ov014_02189234
+#else
+#define REGION_MEMBER_SHORT_OFFSET 0x36
+#define REGION_MENU_LEADING_SIZE 0x2c
+#endif
 
 struct MonsterListEntry {
     MonsterListEntry* next_;
 };
 
 struct Menu {
-    char unk_0[0x2c];
+    char unk_0[REGION_MENU_LEADING_SIZE];
     void* backgrounds_;
     char unk_30[6];
     short cursor_;

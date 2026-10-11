@@ -30,19 +30,36 @@ struct Obj021fad84 {
     unsigned short f36;
     char f38;
     char f39;
+#if defined(jpn)
+    unsigned short f3a;
+#else
     unsigned char f3a;
     char pad_3b[1];
+#endif
+
     unsigned short f3c;
     unsigned short f3e;
     unsigned short f40;
     unsigned short f42;
+#if defined(jpn)
+    int f44;
+    int f46;
+#else
     unsigned short f44;
     unsigned short f46;
+#endif
+
     unsigned short f48;
     unsigned char f4a;
+#if defined(jpn)
+
+#else
     unsigned char f4b;
+#endif
+
 };
 
+// JPN: func_ov023_021fa168
 // USA: func_ov023_021fad84  (semantic: InitObjAndRegisterListEntryB_021fad84)
 extern "C" ARM int func_ov023_021fad84(struct Obj021fad84* obj, void* ctx, int arg3, int arg4, int arg5, int arg6) {
     func_ov023_021f6ed8(obj);
@@ -53,9 +70,15 @@ extern "C" ARM int func_ov023_021fad84(struct Obj021fad84* obj, void* ctx, int a
     obj->f10 = 0;
     obj->f1c = 2;
     obj->f20 = arg5;
+#if defined(jpn)
+    obj->f44 = -1;
+    obj->f46 = -1;
+#else
     obj->f3a = 1;
     obj->f44 = 0;
     obj->f46 = 0;
+#endif
+
 
     void* list = func_ov011_021849c8(ctx);
     void* node = func_ov023_021f6880(list, obj->f20);
@@ -79,12 +102,28 @@ extern "C" ARM int func_ov023_021fad84(struct Obj021fad84* obj, void* ctx, int a
     obj->f30 = obj->f32 = obj->f34 = obj->f36 = 0;
     obj->f38 = -1;
     obj->f39 = -1;
+#if defined(jpn)
+    obj->f3a = 0;
     obj->f3c = 0;
+#else
+    obj->f3c = 0;
+#endif
+
     obj->f3e = 0;
     obj->f40 = 0;
+#if defined(jpn)
+
+#else
     obj->f42 = 0;
+#endif
+
     obj->f48 = 0;
     obj->f4a = 0;
+#if defined(jpn)
+
+#else
     obj->f4b = 0;
+#endif
+
     return 1;
 }

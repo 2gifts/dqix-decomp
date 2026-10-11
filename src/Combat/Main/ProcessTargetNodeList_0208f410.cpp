@@ -1,5 +1,12 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kListOffset = 0x4ec };
+#else
+enum { kListOffset = 0x6fc };
+#endif
+
+
 extern "C" int func_ov017_0218b5b0(void);
 extern "C" void* func_02012fe4(void);
 extern "C" void* func_0208e0a8(void);
@@ -31,7 +38,7 @@ extern "C" ARM void func_0208f410(Obj0208f410* obj) {
     if (obj->target == 0) return;
 
     int ov = func_ov017_0218b5b0();
-    HeadNode02046b24** headList = *(HeadNode02046b24***)(ov + 0x3000 + 0x6fc);
+    HeadNode02046b24** headList = *(HeadNode02046b24***)(ov + 0x3000 + kListOffset);
     if (GetHeadNodeIdOrMinusOne(headList) == 0xa) return;
     if (GetBitsInField4((unsigned int*)ov, 2) != 0) return;
 

@@ -1,9 +1,18 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kRegionValue36_2A = 0x2a };
+enum { kRegionValue1E6_1E2 = 0x1e2 };
+#else
+enum { kRegionValue36_2A = 0x36 };
+enum { kRegionValue1E6_1E2 = 0x1e6 };
+#endif
+
+
 struct Outer020e28dc;
 
 struct Menu {
-    char unk_0[0x36];
+    char unk_0[kRegionValue36_2A];
     short cursor_;
 };
 
@@ -23,12 +32,13 @@ struct Ctx021550dc {
     char unk_c[0x18 - 0xc];
     Menu* menu_;
     Outer020e28dc* choice_;
-    char unk_20[0x1e6 - 0x20];
+    char unk_20[kRegionValue1E6_1E2 - 0x20];
     short group_;
     short previousCursor_;
 };
 
 // USA: func_ov003_021550dc
+// JPN: func_ov003_021567c4
 extern "C" ARM unsigned char func_ov003_021550dc(Ctx021550dc* self) {
     unsigned char confirmed = 0;
     if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x401)) {

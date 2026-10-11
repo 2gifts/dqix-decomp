@@ -18,6 +18,7 @@ extern "C" void func_ov017_021c7484(void);
 extern "C" void func_ov017_021c7b8c(void);
 void EnqueueEventTag99_021cbbd0(unsigned char* obj);
 
+// JPN: func_ov017_021ce428
 // USA: func_ov017_021cdf80
 ARM void DispatchAllEventStages_021cdf80(char* self, unsigned char b) {
     func_ov017_021c83a0();

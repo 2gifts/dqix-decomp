@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kOffset150 = 0x144 };
+#else
+enum { kOffset150 = 0x150 };
+#endif
+
 #include "GameState/GameState.h"
 
 int TestBitInArray0x8ec(unsigned char* obj, int index);
@@ -19,7 +26,7 @@ ARM int TestCombatantCategoryBit020dd200(int combatantId, int category) {
     while (data_020ee710[idx].a != 0xffff) {
         unsigned int cat2 = data_020ee712[idx].a & 0xff;
         if (cat2 == category) {
-            if (TestBitInArray0x8ec(*(unsigned char**)((char*)combatant + 0x150), data_020ee710[idx].a) != 0) {
+            if (TestBitInArray0x8ec(*(unsigned char**)((char*)combatant + kOffset150), data_020ee710[idx].a) != 0) {
                 result = 1;
             }
             break;

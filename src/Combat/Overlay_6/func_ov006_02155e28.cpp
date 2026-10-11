@@ -1,3 +1,25 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define _Z35SetFieldsFromFormattedValue0207f914P11Obj0207f914iii func_02080654
+#define data_ov006_0215ff54 data_ov006_021612b8
+#define data_ov006_0215ff64 data_ov006_021612c8
+#define data_ov006_02160080 data_ov006_021613e0
+#define data_ov006_021600af data_ov006_0216140f
+#define data_ov006_021600c4 data_ov006_02161424
+#define data_ov006_021600d7 data_ov006_02161437
+#define data_ov006_021600f7 data_ov006_02161454
+#define data_ov006_0216010b data_ov006_02161468
+#define data_ov006_02160125 data_ov006_02161482
+#define data_ov006_0216013d data_ov006_0216149a
+#define data_ov006_02160156 data_ov006_021614b3
+#define data_ov006_02160172 data_ov006_021614cf
+#define data_ov006_0216018b data_ov006_021614e8
+#define data_ov006_02160190 data_ov006_021614ed
+#define data_ov006_02160195 data_ov006_021614f2
+#define data_ov006_0216019a data_ov006_021614f7
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
@@ -41,7 +63,7 @@ extern "C" void func_0204c684(void* node);
 extern "C" void _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij(struct Obj0204c7a8* node, SafeAllocator* alloc, int a, unsigned int size);
 
 struct Manager0207f7f0 {
-    unsigned char pad0[0x2c];
+    unsigned char pad0[R(0x20,0x2c)];
     struct List0204af64* lists;
     unsigned char pad30[8];
     unsigned char mode;
@@ -51,7 +73,11 @@ struct Manager0207f7f0 {
 struct Node0207f7f0;
 extern "C" void func_0207f84c(void* mgr);
 struct Obj0207f914;
+#if defined(jpn)
+extern "C" void _Z35SetFieldsFromFormattedValue0207f914P11Obj0207f914iii(struct Obj0207f914* mgr, int alloc, int nameA);
+#else
 extern "C" void _Z35SetFieldsFromFormattedValue0207f914P11Obj0207f914iii(struct Obj0207f914* mgr, int alloc, int nameA, int nameB);
+#endif
 extern "C" int func_0207f9f4(void* mgr);
 extern "C" void _Z21InitNodeChain0207f7f0P15Manager0207f7f0P12Node0207f7f0i(struct Manager0207f7f0* mgr, struct Node0207f7f0* nodes, int count);
 
@@ -76,7 +102,7 @@ struct Progress02012fe4 {
 };
 extern "C" void* func_02012fe4(void);
 static inline struct Progress02012fe4* GetProgress(void* run) {
-    return (struct Progress02012fe4*)((char*)run + 0x1840);
+    return (struct Progress02012fe4*)((char*)run + R(0x1860,0x1840));
 }
 
 char* GetWord0x0(int* gs);
@@ -136,7 +162,9 @@ struct Records0205a444 {
 };
 
 struct CombatLoader02155e28 {
+#if !defined(jpn)
     unsigned char pad0[0x180];
+#endif
     SafeAllocator* allocs;
     unsigned char pad184[8];
     SafeAllocator modelAlloc;
@@ -159,7 +187,7 @@ struct CombatLoader02155e28 {
     unsigned char state;
     unsigned char padade[4];
     unsigned short flags;
-    unsigned char padae4[0x12a0 - 0xae4];
+    unsigned char padae4[R(0x121c,0x12a0) - 0xae4];
     struct BattleTask020dbf18 task;
 };
 
@@ -257,7 +285,11 @@ extern "C" ARM void func_ov006_02155e28(struct CombatLoader02155e28* self) {
         alloc[4].Reset();
         func_0207f84c(self->mgr);
         _Z35SetFieldsFromFormattedValue0207f914P11Obj0207f914iii((struct Obj0207f914*)self->mgr, (int)&alloc[4],
+#if defined(jpn)
+                                            (int)data_ov006_021600d7);
+#else
                                             (int)data_ov006_021600d7, (int)data_ov006_021600f0);
+#endif
         self->state++;
     } else if (state == 5) {
         int r = func_0207f9f4(self->mgr);

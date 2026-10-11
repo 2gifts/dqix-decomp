@@ -1,4 +1,7 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define func_020200c0 func_0201fde4
+#endif
 
 extern "C" void func_020dc7e8(int a, int b);
 extern "C" void func_020200c0(int index, void* obj);

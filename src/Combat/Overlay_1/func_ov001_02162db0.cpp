@@ -12,12 +12,20 @@ struct CombatantRecord02162db0 {
 };
 
 struct Combatant02162db0 {
+    #if defined(jpn)
+    char unk_0[0x144];
+#else
     char unk_0[0x150];
+#endif
     CombatantRecord02162db0* record;
 };
 
 struct SavedSlot02162db0 {
+    #if defined(jpn)
+    char unk_0[0x17c];
+#else
     char unk_0[0x180];
+#endif
     signed char type;
     char unk_181;
     short value;

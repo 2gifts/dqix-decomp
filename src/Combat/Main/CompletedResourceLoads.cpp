@@ -51,7 +51,11 @@ struct Entry020211b0 {
 };
 
 struct Table020211b0 {
+#if defined(jpn)
+    char pad0[0x9d4];
+#else
     char pad0[0xaa0];
+#endif
     unsigned short count;
     Entry020211b0 entries[32];
 };
@@ -77,17 +81,31 @@ extern "C" ARM void func_020210f8(char *receiver, int *handles, SafeAllocator *a
 }
 
 // USA: func_020211b0
-extern "C" ARM void func_020211b0(char *receiver, int *taskID) {
+#if defined(jpn)
+typedef int CompletedLoadTask;
+#else
+typedef int *CompletedLoadTask;
+#endif
+extern "C" ARM void func_020211b0(char *receiver, CompletedLoadTask taskID) {
     BackgroundLoader *loader = BackgroundLoader::GetInstance();
     Stream0200fd14 stream;
     stream.ptr              = 0;
     unsigned int fileLength = 0;
+#if defined(jpn)
+    loader->GetLoadedFileByID(taskID, (void **) &stream.ptr, &fileLength);
+#else
     loader->GetLoadedFileByID(*taskID, (void **) &stream.ptr, &fileLength);
+#endif
 
     unsigned short keys[16];
     unsigned char keyCount = 0;
     __clear(keys, sizeof(keys));
-    for (Node020211b0 *node = *(Node020211b0 **) (receiver + 0x754); node; node = node->next) {
+#if defined(jpn)
+    enum { kNodeListOffset = 0x6a8 };
+#else
+    enum { kNodeListOffset = 0x754 };
+#endif
+    for (Node020211b0 *node = *(Node020211b0 **) (receiver + kNodeListOffset); node; node = node->next) {
         for (int i = 0; i < node->count; i++) {
             unsigned short key = node->data[i];
             if (key >= 20000 && key <= 29999) {
@@ -124,6 +142,10 @@ extern "C" ARM void func_020211b0(char *receiver, int *taskID) {
         }
     }
 
+#if defined(jpn)
+    BackgroundLoader::GetInstance()->RemoveTask(taskID);
+#else
     BackgroundLoader::GetInstance()->RemoveTask(*taskID);
     *taskID = -1;
+#endif
 }

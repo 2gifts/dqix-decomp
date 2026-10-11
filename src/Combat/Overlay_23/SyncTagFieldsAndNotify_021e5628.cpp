@@ -47,6 +47,7 @@ struct FlagObjA8_021e5628 {
     int flagA8 : 1;
 };
 
+// JPN: func_ov023_021e580c
 // USA: func_ov023_021e5628  (semantic: SyncTagFieldsAndNotify_021e5628)
 extern "C" ARM void func_ov023_021e5628(TagObj021e5628* obj, CtxObj021e5628* ctx) {
     if (obj->field_c12 != 0) return;

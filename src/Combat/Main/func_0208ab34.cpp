@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define _Z31InitFieldsIfHandleValid0208ad1cPv func_0208b610
+#define data_020e8cc6 data_020e8de2
+#define data_020e8cc5 data_020e8de1
+#endif
 #include "GameState/GameState.h"
 
 struct Container020e34bc;
@@ -28,6 +33,7 @@ extern "C" void _Z16Dispatch020e3428Pvi(void*, int);
 extern unsigned char data_020e8cc6[];
 extern unsigned char data_020e8cc5[];
 
+// JPN: func_0208b428
 // USA: func_0208ab34
 extern "C" ARM void func_0208ab34(TimedPartyEntries* entries, void* context) {
     PartyRoster* roster = (PartyRoster*)GetPtrField0x2a04(GameState::GetInstance());

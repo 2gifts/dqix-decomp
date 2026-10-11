@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { pointerArrayBaseOffset = 0x8c };
+#else
+enum { pointerArrayBaseOffset = 0x6c };
+#endif
 
 extern "C" int func_ov017_021d60f4(void*);
 extern "C" void* func_02012fe4(void);
@@ -36,7 +41,7 @@ extern "C" ARM int func_ov001_0215fc48(char* args, int count) {
     }
 
     void* base = func_02012fe4();
-    struct ListNode_0215fc48* node = (struct ListNode_0215fc48*)GetPointerFromArray0x3c((unsigned char*)base + 0x6c, 2);
+    struct ListNode_0215fc48* node = (struct ListNode_0215fc48*)GetPointerFromArray0x3c((unsigned char*)base + pointerArrayBaseOffset, 2);
     while (node != NULL) {
         if (!(node->flags2e & 1) && node->keyA == key0 && node->keyB == key1) {
             node->flags2e = node->flags2e | 0x300;

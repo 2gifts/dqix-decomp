@@ -22,16 +22,30 @@ struct TailNode020469b4;
 void AppendNodeToTail(TailList020469b4* list, TailNode020469b4* node);
 
 struct Ctx021bff8c {
+#if defined(jpn)
+    char pad[0x34ec];
+#else
     char pad[0x36fc];
+#endif
     TailList020469b4* list;
     char pad3700[0x3718 - 0x3700];
     void* table;
+#if defined(jpn)
+    char pad371c[0x38fc - 0x350c];
+#else
     char pad371c[0x3b1c - 0x371c];
+#endif
     Obj021c0124* state;
 };
 
+// JPN: func_ov017_021c0534
 // USA: func_ov017_021bff8c
 extern "C" ARM void func_ov017_021bff8c(Ctx021bff8c* ctx, unsigned char flag) {
+#if defined(jpn)
+ enum {regionalId=0x1a6,regionalBlock=0x868};
+#else
+ enum {regionalId=0x1b2,regionalBlock=0x998};
+#endif
     if (ArrayContainsByte((ArrayContainsByteStruct*)GetPtrField0x2a04(GameState::GetInstance()), 0) == 0) {
         int match = 0;
         int blocked = 0;
@@ -47,9 +61,9 @@ extern "C" ARM void func_ov017_021bff8c(Ctx021bff8c* ctx, unsigned char flag) {
         if (table != NULL) {
             func_ov017_021b8478(table);
         }
-        unsigned short heroId = *(unsigned short*)((char*)hero + 0x1b2);
+        unsigned short heroId = *(unsigned short*)((char*)hero + regionalId);
         if (heroId != 0) {
-            if (*(unsigned short*)((char*)leader + 0x1b2) == heroId) {
+            if (*(unsigned short*)((char*)leader + regionalId) == heroId) {
                 match = 1;
             } else {
                 blocked = 1;
@@ -63,7 +77,7 @@ extern "C" ARM void func_ov017_021bff8c(Ctx021bff8c* ctx, unsigned char flag) {
             blocked = 1;
         } else if (GetByteField0x252(hero) == 0) {
             blocked = 1;
-        } else if (*(int*)(g + 0x998) != 0) {
+        } else if (*(int*)(g + regionalBlock) != 0) {
             blocked = 1;
         } else if (GetByte0x26c((char*)hero) != 0) {
             blocked = 1;

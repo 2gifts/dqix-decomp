@@ -9,7 +9,11 @@ struct ThreeShorts021ded84 {
 void CopyThreeShorts021ded84(struct ThreeShorts021ded84* dst, struct ThreeShorts021ded84* src);
 
 struct Table_021deda0 {
+#if defined(jpn)
+    char pad[0x78dc];
+#else
     char pad[0x76ec];
+#endif
     struct ThreeShorts021ded84 rows[5];
     unsigned short count;
 };

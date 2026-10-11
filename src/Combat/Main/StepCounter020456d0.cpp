@@ -1,12 +1,24 @@
 #include <globaldefs.h>
 
 struct Battle020456d0 {
+    #if defined(jpn)
+    char pad0[0x870];
+#else
     char pad0[0x9a0];
+#endif
     int state;
+    #if defined(jpn)
+    char pad9a4[0x17de - 0x874];
+#else
     char pad9a4[0x19ae - 0x9a4];
+#endif
     signed char counter;
     unsigned char flag;
+    #if defined(jpn)
+    char pad19b0[0x17fb - 0x17e0];
+#else
     char pad19b0[0x19ca - 0x19b0];
+#endif
     unsigned char active;
 };
 
@@ -22,3 +34,5 @@ ARM void StepCounter020456d0(struct Battle020456d0* b) {
         b->flag = 0;
     }
 }
+
+// JPN: 0x02046340

@@ -45,6 +45,7 @@ public:
     virtual void SetVec(struct Vec3* v);
 };
 
+// JPN: func_ov023_021f8d6c
 // USA: func_ov023_021f98e0  (semantic: AccumulateNodeVecByMode_021f98e0)
 extern "C" ARM void func_ov023_021f98e0(void* a, void* b) {
     unsigned short call1 = GetShortField1b2_02184a18((struct Obj_02184a18*)b);

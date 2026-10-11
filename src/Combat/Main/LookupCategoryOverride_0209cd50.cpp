@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kFlagOffset = 0x27c8, kIdOffset = 0x27c6 };
+#else
+enum { kFlagOffset = 0x2788, kIdOffset = 0x2786 };
+#endif
+
 #include "GameState/GameState.h"
 
 extern "C" void* func_02012fe4(void);
@@ -25,8 +32,8 @@ extern "C" ARM int func_0209cd50(int value) {
     struct SearchTable* table = (struct SearchTable*)GetPtrField0x468(battle);
     void* base = func_02012fe4();
     if ((_s32_div_f(value, 100) * 100) == 0x170c) {
-        if (*(unsigned char*)((char*)base + 0x2788) == 0) {
-            if (*(unsigned short*)((char*)base + 0x2786) == 0x76c) {
+        if (*(unsigned char*)((char*)base + kFlagOffset) == 0) {
+            if (*(unsigned short*)((char*)base + kIdOffset) == 0x76c) {
                 value = 0x76c;
             }
         }

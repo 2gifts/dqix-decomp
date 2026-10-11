@@ -1,3 +1,10 @@
+// JPN: func_ov017_021b0c5c
+#if defined(jpn)
+enum { RegionOffset950 = 0x8b8 };
+#else
+enum { RegionOffset950 = 0x950 };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -47,7 +54,7 @@ extern "C" ARM unsigned char func_ov017_021b05c4(struct Ctx021b05c4* self) {
             return self->byteA;
         }
         int field150 = GetFieldAt0x150((unsigned char*)combatant);
-        int val = *(int*)((char*)field150 + 0x950) & 0xff;
+        int val = *(int*)((char*)field150 + RegionOffset950) & 0xff;
         func_ov017_021b0fe0(idx, val);
         self->byte23 = self->byte23 + 1;
     } else if (self->byte23 == 1) {

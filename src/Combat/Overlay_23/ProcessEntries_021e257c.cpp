@@ -39,7 +39,15 @@ extern "C" int func_020420e8(void* ptr, int flag);
 extern "C" void func_0204f41c(void* a, int y, int x, void* ptrC, int loNibble, int hiNibble, short* pField8, short* pFieldA, int zero);
 extern "C" void func_0204f7e8(void* a, int y, int x, void* ptrC, int loNibble, int hiNibble, short* pField8, short* pFieldA, int bit4, int lowNibble10, bool bool5, bool bool6);
 
-// USA: func_ov023_021e257c  (semantic: ProcessEntries_021e257c)
+#if defined(jpn)
+extern "C" void __clear(void*, int);
+extern "C" int sprintf(char*,const char*,...);
+extern char data_ov023_021fcf44[];
+extern "C" void func_02050678(void*,int,int,void*,int,int,short*,short*);
+extern "C" void func_02050cc0(void*,int,int,void*,int,int,short*,short*,int,int,bool,bool);
+#endif
+
+// USA / JPN: func_ov023_021e257c  (semantic: ProcessEntries_021e257c)
 extern "C" ARM void func_ov023_021e257c(struct MainObj_021e257c* obj) {
 	if (obj->state == 0) return;
 	unsigned short i;
@@ -51,6 +59,14 @@ extern "C" ARM void func_ov023_021e257c(struct MainObj_021e257c* obj) {
 		short y, x;
 		func_ov023_021e2b5c(obj, elem->key, &y, &x);
 
+#if defined(jpn)
+		unsigned nibble;
+		short computed;
+		nibble=elem->loNibble3;
+		computed=(short)(nibble+1);
+		if(nibble==0xc) computed=0x14;
+		void* state=obj->state;
+#else
 		short computed = obj->field48;
 		int nibble = elem->loNibble3;
 		void* state = obj->state;
@@ -59,6 +75,7 @@ extern "C" ARM void func_ov023_021e257c(struct MainObj_021e257c* obj) {
 			computed = obj->field4a;
 			if (computed == 0) computed = 0x14;
 		}
+#endif
 		*(short*)((char*)state + 0xb4) = (short)nibble;
 		*(short*)((char*)state + 0xb6) = computed;
 
@@ -70,19 +87,33 @@ extern "C" ARM void func_ov023_021e257c(struct MainObj_021e257c* obj) {
 			break;
 		}
 		case 1: {
+#if defined(jpn)
+			char buffer[0x400];
+			__clear(buffer,0x400);
+			sprintf(buffer,data_ov023_021fcf44,*(short*)((char*)found+0x14),elem->ptrC);
+			func_02050678(obj->state,y,x,buffer,elem->loNibble3,elem->hiNibble3,&elem->dx8,&elem->dyA);
+#else
 			if (*((unsigned char*)found + 0x16) & 0x8) y -= func_020420e8(elem->ptrC, 0) >> 1;
 			if (*((unsigned char*)found + 0x16) & 0x10) y -= func_020420e8(elem->ptrC, 0);
 			func_0204f41c(obj->state, y, x, elem->ptrC, elem->loNibble3, elem->hiNibble3, &elem->dx8, &elem->dyA, 0);
+#endif
 			break;
 		}
 		case 2: {
-			func_0204f7e8(obj->state, y, x, elem->ptrC, elem->loNibble3, elem->hiNibble3, &elem->dx8, &elem->dyA,
+#if defined(jpn)
+			func_02050cc0
+#else
+			func_0204f7e8
+#endif
+			(obj->state, y, x, elem->ptrC, elem->loNibble3, elem->hiNibble3, &elem->dx8, &elem->dyA,
 				elem->bit4_10, elem->lowNibble10, elem->bit5_10, elem->bit6_10);
 			break;
 		}
+#if !defined(jpn)
 		case 3:
 			DrawGrid2x2Cells_021e2030((int)obj->state, y, x, elem->ptrC);
 			break;
+#endif
 		}
 	}
 }

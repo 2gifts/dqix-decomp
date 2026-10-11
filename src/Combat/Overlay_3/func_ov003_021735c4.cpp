@@ -1,4 +1,13 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegionc6 = 0xc4 };
+enum { kRegionc8 = 0xc6 };
+enum { kRegiond8 = 0xd4 };
+#else
+enum { kRegionc6 = 0xc6 };
+enum { kRegionc8 = 0xc8 };
+enum { kRegiond8 = 0xd8 };
+#endif
 #include "Filesystem/BackgroundLoader.h"
 #include "Resource/GameResources.h"
 #include "Resource/Brightness.h"
@@ -18,17 +27,22 @@ void* FindRecordByIndex(struct Rec020467f0* rec, int index, void** out, int* out
 extern char data_ov003_02180a76[];
 
 struct Obj021735c4 {
-    char pad0[0xc6];
+    char pad0[kRegionc6];
     short scrollY;
-    char padc8[0xd8 - 0xc8];
+    char padc8[kRegiond8 - kRegionc8];
     unsigned char fade[0x15];
     unsigned char mode;
     char padee;
     unsigned char state;
+    #if defined(jpn)
+    char padf0[12];
+#else
     char padf0[4];
+#endif
     int handle;
 };
 
+// JPN: func_ov003_02172410
 // USA: func_ov003_021735c4
 extern "C" ARM void func_ov003_021735c4(struct Obj021735c4* self) {
     GameResources* res = func_ov017_0218b5b0();

@@ -32,10 +32,16 @@ struct Combatant_021de54c {
 	char* field0x130;
 	char* baseStats;
 	char* currentStats;
+#if defined(jpn)
+	char pad13c[8];
+#else
 	char pad13c[0x14];
+#endif
+
 	unsigned char* field0x150;
 };
 
+// JPN: func_ov024_021dede4
 // USA: func_ov024_021de54c
 extern "C" ARM void* func_ov024_021de54c(struct Obj_021de54c* obj, int unused, int id, struct Params_021de54c* params) {
 	struct Combatant_021de54c* c = (struct Combatant_021de54c*)GetCombatantWithFlag0x100(GameState::GetInstance(), id);

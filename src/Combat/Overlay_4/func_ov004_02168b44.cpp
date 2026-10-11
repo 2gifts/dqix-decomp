@@ -3,6 +3,12 @@
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+enum { extensionOffset = 0x144, slotsOffset = 0x7280, contextBytes = 0x24, tableOffset = 0x6fbc, fieldOffset = 0x543c, entryOffset = 0x8c, pointerOffset = 0x3964, flagOffset = 0x1790, firstOffset = 0x1794, secondOffset = 0x17b8 };
+#else
+enum { extensionOffset = 0x150, slotsOffset = 0x74c0, contextBytes = 0x1a4, tableOffset = 0x71fc, fieldOffset = 0x569c, entryOffset = 0x6c, pointerOffset = 0x3b84, flagOffset = 0x1962, firstOffset = 0x1964, secondOffset = 0x1988 };
+#endif
+
 struct S_a0870;
 struct S_a08a4;
 struct S_a08d8;
@@ -31,9 +37,15 @@ extern "C" void* func_02012fe4(void);
 extern "C" void* func_0202ae18(void);
 extern "C" void* func_ov011_021845f8(void* ctx, int v);
 extern "C" void func_ov011_021848a0(void* obj, int val);
+#if defined(jpn)
+extern "C" void* func_ov004_02168f08(void* ctx, int value);
+#define NODE_LOOKUP_CALL func_ov004_02168f08
+#else
 extern "C" void* func_ov023_021f6524(void* ctx, int value);
+#define NODE_LOOKUP_CALL func_ov023_021f6524
+#endif
 
-// entry of the 3-slot table at battleStruct+0x74c0
+// entry of the 3-slot table at battleStruct+slotsOffset
 struct Slot3_02168b44 {
     char pad[6];
     signed char state;
@@ -91,7 +103,9 @@ struct Packed02168b44 {
 };
 
 struct Ctx02168b44 {
+#if !defined(jpn)
     char pad[0x180];
+#endif
     unsigned int f180;
     unsigned int f184;
     unsigned int f188;
@@ -105,7 +119,7 @@ struct Ctx02168b44 {
     unsigned char f1a0;
 };
 
-struct Combatant02168b44 { char pad[0x150]; struct Flags02168b44* f150; };
+struct Combatant02168b44 { char pad[extensionOffset]; struct Flags02168b44* f150; };
 struct Flags02168b44 { char pad[0x49c]; unsigned char bit0 : 1; };
 struct Field02168b44 { unsigned int w0; unsigned int lo : 19; signed int val : 11; unsigned int hi : 2; };
 struct Triple02168b44 { int a, b, c; };
@@ -128,7 +142,7 @@ extern struct Triple02168b44 data_ov004_021700d4;
 extern "C" ARM int func_ov004_02168b44(void* a) {
     GameState* bs = GameState::GetInstance();
     void* obj = func_0202ae18();
-    struct Slot3_02168b44* slot = (struct Slot3_02168b44*)((char*)bs + 0x74c0);
+    struct Slot3_02168b44* slot = (struct Slot3_02168b44*)((char*)bs + slotsOffset);
     int i;
     for (i = 0; i < 3; i++, slot++) {
         if (slot->state >= 4) {
@@ -145,7 +159,7 @@ extern "C" ARM int func_ov004_02168b44(void* a) {
     void* holder = func_ov011_021845f8(a, 0);
     if (!holder) return 0;
     struct Ctx02168b44* ctx =
-        (struct Ctx02168b44*)((SafeAllocator*)((char*)holder + 4))->Allocate(0x1a4);
+        (struct Ctx02168b44*)((SafeAllocator*)((char*)holder + 4))->Allocate(contextBytes);
     data_ov004_02171030 = ctx;
     if (!ctx) return 0;
     ctx->f180 = 0;
@@ -157,7 +171,7 @@ extern "C" ARM int func_ov004_02168b44(void* a) {
     ctx->f194 = 0;
     ctx->f19c = 0;
     ctx->f1a0 = 1;
-    data_ov004_02171030->f190 = (unsigned char*)bs + 0x71fc;
+    data_ov004_02171030->f190 = (unsigned char*)bs + tableOffset;
 
     struct Blk02168b44 blk;
     int ok = _Z23LoadBattleBlock020ac4c0Pv(&blk);
@@ -168,7 +182,7 @@ extern "C" ARM int func_ov004_02168b44(void* a) {
     struct Combatant02168b44* c =
         (struct Combatant02168b44*)bs->GetProtagonist();
     if (c) bit = c->f150->bit0;
-    struct Field02168b44* fld = (struct Field02168b44*)((char*)bs + 0x569c);
+    struct Field02168b44* fld = (struct Field02168b44*)((char*)bs + fieldOffset);
     data_ov004_02171030->f194 =
         (struct Packed02168b44*)((SafeAllocator*)((char*)holder + 4))->Allocate(0x18);
     memset(data_ov004_02171030->f194, 0, 0x18);
@@ -201,7 +215,7 @@ extern "C" ARM int func_ov004_02168b44(void* a) {
 
     void* base = func_02012fe4();
     if (!base) return 0;
-    struct S_e830* rec = (struct S_e830*)((char*)base + 0x6c);
+    struct S_e830* rec = (struct S_e830*)((char*)base + entryOffset);
     if (!rec) return 0;
     data_ov004_02171030->f18c = GetFieldAt0x7e(rec);
 
@@ -213,7 +227,7 @@ extern "C" ARM int func_ov004_02168b44(void* a) {
     SetBitsInField4(w, 0x8de);
     Set3DClearColor(0, 0, 0x7fff, 0, 0);
 
-    struct Node02168b44* node = (struct Node02168b44*)func_ov023_021f6524(a, 0x64);
+    struct Node02168b44* node = (struct Node02168b44*)NODE_LOOKUP_CALL(a, 0x64);
     if (data_ov004_02171030->f190[0] <= 8) {
         *(short*)((char*)node + 0x5c) = 0;
         *(short*)((char*)node + 0x5e) = 1;
@@ -222,7 +236,7 @@ extern "C" ARM int func_ov004_02168b44(void* a) {
         *(short*)((char*)node + 0x5e) = 2;
     }
 
-    unsigned char* tbl = *(unsigned char**)((char*)w + 0x3b84);
+    unsigned char* tbl = *(unsigned char**)((char*)w + pointerOffset);
     if (data_ov004_02171030->f190[0] == 0) {
         func_ov011_021848a0(a, 0x65);
     } else if (tbl[9] != 0) {
@@ -236,8 +250,8 @@ extern "C" ARM int func_ov004_02168b44(void* a) {
 
     char* g = (char*)_Z26GetGlobalField0x1c020421a0v();
     _Z24ReinitController02043204Pc(g);
-    *(unsigned char*)(g + 0x1962) = 1;
-    SetFieldsAt0x4And0x8((int*)(g + 0x1964), 9, 1);
-    SetFieldsAt0x4And0x8((int*)(g + 0x1988), 0x19, 1);
+    *(unsigned char*)(g + flagOffset) = 1;
+    SetFieldsAt0x4And0x8((int*)(g + firstOffset), 9, 1);
+    SetFieldsAt0x4And0x8((int*)(g + secondOffset), 0x19, 1);
     return 0;
 }

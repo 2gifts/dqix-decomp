@@ -15,6 +15,7 @@ struct Obj021e73c8 {
     unsigned char field8;
 };
 
+// JPN: func_ov025_021e7878
 // USA: func_ov025_021e73c8
 ARM int DispatchAndForward_021e73c8(struct Obj021e73c8* obj, int v1, int unusedArg, void* a3) {
     int local[12];

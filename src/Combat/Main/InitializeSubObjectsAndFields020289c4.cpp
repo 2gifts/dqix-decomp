@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define SUBOBJECT_OFFSET(x) ((x) - 4)
+#else
+#define SUBOBJECT_OFFSET(x) (x)
+#endif
 
 struct InitStruct;
 struct ResetObject0209af34Struct;
@@ -36,11 +41,13 @@ ARM void InitializeSubObjectsAndFields020289c4(struct BigRecord020289c4* obj) {
     obj->flagD = 0;
     obj->field4 = 0;
     obj->fieldD = -1;
-    InitializeStruct((struct InitStruct*)((char*)obj + 0x18));
-    ClearHalfword0x18((char*)obj + 0x44);
-    ClearBuffer0209bc84((char*)obj + 0x60);
-    ResetObject0209af34((struct ResetObject0209af34Struct*)((char*)obj + 0x124));
-    Clear12Bytes0206efc4((char*)obj + 0x2f8);
-    ZeroWordAndByte0206ee60((struct ZeroWordAndByte0206ee60Struct*)((char*)obj + 0x304));
-    Clear12Bytes020a8e88((char*)obj + 0x30c);
+    InitializeStruct((struct InitStruct*)((char*)obj + SUBOBJECT_OFFSET(0x18)));
+    ClearHalfword0x18((char*)obj + SUBOBJECT_OFFSET(0x44));
+    ClearBuffer0209bc84((char*)obj + SUBOBJECT_OFFSET(0x60));
+    ResetObject0209af34((struct ResetObject0209af34Struct*)((char*)obj + SUBOBJECT_OFFSET(0x124)));
+    Clear12Bytes0206efc4((char*)obj + SUBOBJECT_OFFSET(0x2f8));
+    ZeroWordAndByte0206ee60((struct ZeroWordAndByte0206ee60Struct*)((char*)obj + SUBOBJECT_OFFSET(0x304)));
+    Clear12Bytes020a8e88((char*)obj + SUBOBJECT_OFFSET(0x30c));
 }
+
+// JPN: 0x0202821c

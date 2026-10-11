@@ -1,3 +1,10 @@
+// JPN: func_ov017_021c661c
+#if defined(jpn)
+enum { RegionOffset718 = 0x508 };
+#else
+enum { RegionOffset718 = 0x718 };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -27,7 +34,7 @@ struct Evt021c616c {
 
 // USA: func_ov017_021c616c  (semantic: DispatchEventOrFlagCombatants_021c616c)
 extern "C" ARM void func_ov017_021c616c(int unused0, unsigned char* evtRaw, GameState* battleStruct, unsigned char* base) {
-    void* table = *(void**)(base + 0x3000 + 0x718);
+    void* table = *(void**)(base + 0x3000 + RegionOffset718);
     EventHdr021c616c* hdr = (EventHdr021c616c*)func_ov017_021b8478(table);
     Evt021c616c* evt = (Evt021c616c*)(evtRaw + 4);
     if (hdr != NULL && hdr->field8 == evt->field4) {

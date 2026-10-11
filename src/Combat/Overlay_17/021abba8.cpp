@@ -1,4 +1,12 @@
+// JPN: func_ov017_021ac40c
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kContextPointerOffset = 0x148 };
+#else
+enum { kContextPointerOffset = 0x154 };
+#endif
+
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
@@ -139,7 +147,7 @@ extern "C" ARM void func_ov017_021abba8(Loader021abba8* self, ListHead02046b60* 
             loader->GetLoadedFileByID(self->task, &data, &length);
             self->allocator.CreateTypeA(AllocateAligned4(&data_02114e20, 0x2800), 0x2800);
             self->allocator.Reset();
-            Foo0207df50* fields = (Foo0207df50*)(*(char**)((char*)gs->GetUnknownGameObject() + 0x154) + 0x568);
+            Foo0207df50* fields = (Foo0207df50*)(*(char**)((char*)gs->GetUnknownGameObject() + kContextPointerOffset) + 0x568);
             _Z26CopyInternalFields0207df50P11Foo0207df50(fields);
             void* copy = self->allocator.Allocate(length);
             memcpy(copy, data, length);

@@ -41,6 +41,9 @@ extern Metrics0202a6c4 data_020ef74c;
 extern char data_020ef772[];
 extern char data_020ef775[];
 extern "C" int func_020420e8(const char*, int);
+#if defined(jpn)
+extern "C" void func_02028ce4(const char*, int*, int*);
+#endif
 
 static inline int VisibleSelectionRemainder(int last, int first, unsigned int count, unsigned int visible) {
     return visible - (count - (last - first));
@@ -52,8 +55,14 @@ extern "C" ARM void func_0202a6c4(Menu0202a6c4* menu) {
     int width = strlen(menu->text);
     if (data_020ef74c.font >= 3 && data_020ef74c.font <= 6) {
         int measured;
+        #if defined(jpn)
+        int height;
+        func_02028ce4(menu->text, &measured, &height);
+#else
         if (menu->text != NULL) measured = func_020420e8(menu->text, 1);
-        width = measured / data_020ef74c.columnWidth;
+#endif
+        measured /= data_020ef74c.columnWidth;
+        width = measured;
     }
     Entry0202a6c4* entry = menu->entries;
     int index = 0;
@@ -61,7 +70,12 @@ extern "C" ARM void func_0202a6c4(Menu0202a6c4* menu) {
         int length;
         if (data_020ef74c.font >= 3 && data_020ef74c.font <= 6) {
             int measured;
+            #if defined(jpn)
+            int height;
+            func_02028ce4(entry->text, &measured, &height);
+#else
             if (entry->text != NULL) measured = func_020420e8(entry->text, 1);
+#endif
             measured /= data_020ef74c.columnWidth;
             length = measured;
             if (menu->firstSelection >= 0 && menu->firstSelection <= menu->lastSelection &&

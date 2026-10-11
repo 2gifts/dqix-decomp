@@ -1,3 +1,10 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define _Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30 func_ov009_02185f5c
+#define func_ov009_02184bbc func_ov009_02185ee8
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 

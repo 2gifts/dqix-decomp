@@ -8,6 +8,9 @@ struct Node0208df94 {
     short field0;
     unsigned short field2;
     int field4;
+#if defined(jpn)
+    int regionalField8;
+#endif
     struct Node0208df94* next;
 };
 
@@ -18,7 +21,7 @@ struct List0208df94 {
 
 // USA: func_0208df94
 ARM void AppendNodeToCountedList0208df94(struct List0208df94* list, SafeAllocator* alloc, struct Copy0208e000* src) {
-    struct Node0208df94* node = (struct Node0208df94*)alloc->Allocate(0xc);
+    struct Node0208df94* node = (struct Node0208df94*)alloc->Allocate(sizeof(Node0208df94));
     struct Node0208df94* tail = list->head;
     if (tail != NULL) {
         while (tail->next != NULL) {

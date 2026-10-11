@@ -22,15 +22,25 @@ void SetFlag0x9c6(SetFlagStruct* obj, int value);
 extern "C" void _Z35CopyGlobalBlockAndDispatch_02165df4P13SafeAllocatorPv(SafeAllocator* allocator, void* arg);
 extern char data_ov017_021d7831;
 
+// JPN: func_ov017_021aa860
 // USA: func_ov017_021a9ff0
 extern "C" ARM void func_ov017_021a9ff0(int atFront) {
+#if defined(jpn)
+ enum {regionalOffset0=0x392c, regionalOffset1=0x34ec};
+#else
+ enum {regionalOffset0=0x3b4c, regionalOffset1=0x36fc};
+#endif
     GameResources* res = (GameResources*)GetWord0x0((int*)GameState::GetInstance());
     SetFlagStruct* flags;
     void* list;
     unsigned char* obj;
-    obj = *(unsigned char**)((char*)res + 0x3b4c);
+    obj = *(unsigned char**)((char*)res + regionalOffset0);
+#if defined(jpn)
+    flags = *(SetFlagStruct**)((char*)res + 0x34c0);
+#else
     flags = *(SetFlagStruct**)((char*)res + 0x36d0);
-    list = *(void**)((char*)res + 0x36fc);
+#endif
+    list = *(void**)((char*)res + regionalOffset1);
     _Z21InitObjState_021b2174Ph(obj);
     _Z23SetNameChecked_021b2ba0P9S021b2ba0Pc((S021b2ba0*)obj, &data_ov017_021d7831);
     _Z25SetFields30And34_021b2bd0Pvii(obj, (int)_Z35CopyGlobalBlockAndDispatch_02165df4P13SafeAllocatorPv, OVERLAY_ID(4));

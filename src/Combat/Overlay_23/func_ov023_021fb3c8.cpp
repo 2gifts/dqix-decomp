@@ -29,6 +29,7 @@ struct Obj021fb3c8 {
     short field2a;
 };
 
+// JPN: func_ov023_021fa770
 // USA: func_ov023_021fb3c8  (semantic: UpdateEntryFieldsFromObj_021fb3c8)
 extern "C" ARM void func_ov023_021fb3c8(struct Obj021fb3c8* obj, void* arg1) {
     if (obj->flags0xc & 8) {

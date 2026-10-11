@@ -47,9 +47,14 @@ struct Ret021cb2f4 {
     Entry021cb2f4 entries[8];
 };
 
-// USA: func_ov017_021cb2f4  (semantic: StorePackedTacticsInEntry_021cb2f4)
+// USA: func_ov017_021cb2f4
+// JPN: func_ov017_021cb7a4
 extern "C" ARM void func_ov017_021cb2f4(int unused0, Src021cb2f4* src, GameState* battleStruct, unsigned char* self) {
+#if defined(jpn)
+    void* h = *(void**)(self + 0x3000 + 0x508);
+#else
     void* h = *(void**)(self + 0x3000 + 0x718);
+#endif
     void* work = GetField6b0_021b8470(h);
     if (!work) return;
     Ret021cb2f4* r = *(Ret021cb2f4**)((unsigned char*)work + 0x8000 + 0xe18);

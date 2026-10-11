@@ -25,12 +25,20 @@ struct CombatantEventFields021ce5b4 {
 };
 
 struct CombatantEventRegion021ce5b4 {
+#if defined(jpn)
+    char padding[0x1c];
+#else
     char padding[0x34];
+#endif
     CombatantEventFields021ce5b4 fields;
 };
 
 struct CombatantData021ce5b4 {
+#if defined(jpn)
+    char padding[0x80];
+#else
     char padding[0x100];
+#endif
     CombatantEventRegion021ce5b4 eventRegion;
 };
 
@@ -44,6 +52,7 @@ static inline CombatantEventFields021ce5b4* GetEventFields(CombatantEventRegion0
     return &region->fields;
 }
 
+// JPN: func_ov017_021cea5c
 // USA: func_ov017_021ce5b4
 extern "C" ARM void* func_ov017_021ce5b4(int unused, CombatantEvent021ce5b4* event, GameState* gameState) {
     GameObject* combatant = GetCombatantWithFlag0x100(gameState, event->combatantId);

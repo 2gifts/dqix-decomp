@@ -27,10 +27,17 @@ struct PackedStatus {
 struct StatusEntry { char pad0[0x70]; unsigned char current[15]; char pad1[0x14]; unsigned char previous[15]; char pad2[2]; };
 struct StatusOwner { char pad0[8]; unsigned short battleId; char pad1[0x20]; signed char owner; char pad2[0x12d]; StatusEntry entries[8]; };
 struct BattleStatus { char pad[0x8e18]; StatusOwner* owner; };
-struct BattleContext { char pad[0x3718]; void* table; };
+struct BattleContext {
+#if defined(jpn)
+ char pad[0x3508];
+#else
+ char pad[0x3718];
+#endif
+ void* table; };
 extern "C" void* _Z20GetField6b0_021b8470Pv(void*);
 int GetField0x3acValue(GameState*);
 
+// JPN: func_ov017_021cbe24
 // USA: func_ov017_021cb974
 extern "C" ARM void func_ov017_021cb974(int, PackedStatus* packet, GameState* game, BattleContext* context) {
     BattleStatus* status = (BattleStatus*)_Z20GetField6b0_021b8470Pv(context->table);

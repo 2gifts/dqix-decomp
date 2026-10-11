@@ -17,7 +17,12 @@ static inline Vec2_0216f74c GetFormationPosition(const int& cell) {
 extern "C" ARM void func_ov000_02168144(unsigned char* obj) {
     GameState* battle = GameState::GetInstance();
     short ids[12];
-    int count = func_ov000_02153e40(*(void**)(obj + 0x29c), ids, 0xc, 0);
+#if defined(jpn)
+    enum { randomOffset = 0x218 };
+#else
+    enum { randomOffset = 0x29c };
+#endif
+    int count = func_ov000_02153e40(*(void**)(obj + randomOffset), ids, 0xc, 0);
     int i;
     for (i = 0; i < count; i++) {
         GameObject* c = battle->GetCombatantByIndex(ids[i]);

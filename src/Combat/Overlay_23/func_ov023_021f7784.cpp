@@ -29,7 +29,11 @@ public:
     unsigned char flags0xc;
     char pad0d[0x1c - 0xd];
     int field1c;
+#if defined(jpn)
+    char pad20[0x44 - 0x20];
+#else
     char pad20[0x48 - 0x20];
+#endif
     void* field48;
     unsigned char b4c;
     unsigned char b4d;
@@ -37,6 +41,7 @@ public:
 };
 
 
+// JPN: func_ov023_021f6c7c
 // USA: func_ov023_021f7784
 extern "C" ARM int func_ov023_021f7784(Obj021f7784* obj) {
     if (obj->flags0xc & 0x80) {

@@ -24,7 +24,12 @@ struct BattleResultStats_021d94e4
 
 struct PartyMemberData_021d94e4
 {
+#if defined(jpn)
+    char pad0[0x7b8];
+#else
     char pad0[0x850];
+#endif
+
     BattleResultStatWord_021d94e4 bonuses_[13][3];
 };
 
@@ -35,7 +40,12 @@ struct BattleResultMember_021d94e4
     unsigned char level_;
     unsigned char dead_;
     int experience_;
+#if defined(jpn)
+    char name_[0xc];
+#else
     char name_[0x30];
+#endif
+
     PartyMemberData_021d94e4 data_;
 };
 
@@ -86,6 +96,10 @@ extern "C" int sprintf(char* buffer, const char* format, ...);
 extern "C" void func_02046608(void* messages, int, const char* input, char* output, int, int, int);
 extern "C" void _Z20AppendString02042058PcPKc(char* text, const char* append);
 
+#if defined(jpn)
+extern "C" void func_020474a8(void*,int,const char*,char*);
+#endif
+// JPN: func_ov023_021d9d08
 // USA: func_ov023_021d94e4
 extern "C" ARM void func_ov023_021d94e4(BattleResultWindow_021d94e4* self, char* text, unsigned char lines)
 {
@@ -140,6 +154,36 @@ extern "C" ARM void func_ov023_021d94e4(BattleResultWindow_021d94e4* self, char*
         if (stats[i][1] > 999)
             stats[i][1] = 999;
     }
+#if defined(jpn)
+    const char* title = _Z21GetFieldByKey020e0434P17Container020e0310i(self->texts_, 0x7602);
+    _Z20AppendString02042058PcPKc(text, title);
+    for (int line = 0; line < 9; line++) {
+        if (lines != 0) {
+            AppendXYTag(text, 10, line * 15 + 0x15);
+            char input[0x100] = {0};
+    func_02046380(messages);
+    _Z22SetIndexedName02046574P11Obj02046574iPc((Obj02046574*)messages, 0, (char*)_Z21GetFieldByKey020e0434P17Container020e0310i(self->texts_, (short)(line + 0x760c)));
+    short before = stats[line][0];
+    StoreInArray0x8b0((StoreStruct*)messages, 0, before);
+    SetByteAtIndex((unsigned char*)messages, 0, 1);
+    SetByteInRange((unsigned char*)messages, 0, 3);
+    short after = stats[line][1];
+    StoreInArray0x8b0((StoreStruct*)messages, 1, after);
+    SetByteAtIndex((unsigned char*)messages, 1, 1);
+    SetByteInRange((unsigned char*)messages, 1, 3);
+    int color = 15;
+    if (after > before)
+        color = 5;
+            StoreInArray0x8b0((StoreStruct*)messages, 2, color);
+            SetByteAtIndex((unsigned char*)messages, 2, 1);
+            SetByteInRange((unsigned char*)messages, 2, 0);
+            func_020474a8(messages,12,_Z21GetFieldByKey020e0434P17Container020e0310i(self->texts_,0x7603),input);
+            _Z20AppendString02042058PcPKc(text, input);
+            lines--;
+        }
+    }
+
+#else
     const char* title = _Z21GetFieldByKey020e0434P17Container020e0310i(self->texts_, 0x7602);
     AppendXYTag(text, (0xd0 - func_020420e8(title, 0)) >> 1, 1);
     _Z23AppendFormatted02041facPcii(text, (int)title, 0x10);
@@ -167,4 +211,6 @@ extern "C" ARM void func_ov023_021d94e4(BattleResultWindow_021d94e4* self, char*
     sprintf(input, format, color);
     func_02046608(messages, 12, input, output, 0xe3, 0, 1);
     _Z20AppendString02042058PcPKc(text, output);
+
+#endif
 }

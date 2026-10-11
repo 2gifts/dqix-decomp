@@ -15,8 +15,14 @@ void SetSearchFlagBit0202c660(struct SearchStruct* obj, int value);
 struct S021b1454;
 void ClearBitAtIndex_021b1454(struct S021b1454* obj, int bit);
 
+// JPN: func_ov017_02196154
 // USA: func_ov017_0219558c  (semantic: HandleFlagOrClearSlot_0219558c)
 extern "C" ARM void func_ov017_0219558c(unsigned char* obj, int value) {
+#if defined(jpn)
+ enum {regionalOffset0=0x914};
+#else
+ enum {regionalOffset0=0xb34};
+#endif
 	GameState* battleStruct = GameState::GetInstance();
 	int x = ((int)func_ov017_0218b5b0());
 	struct SearchStruct* search = (struct SearchStruct*)func_0202ae18();
@@ -29,5 +35,5 @@ extern "C" ARM void func_ov017_0219558c(unsigned char* obj, int value) {
 	SetSearchFlagBit0202c660(search, value);
 	func_ov017_02191234(x);
 	func_ov017_021905b8(x, value, 1);
-	ClearBitAtIndex_021b1454(*(struct S021b1454**)((char*)obj + 0x3000 + 0xb34), value & 0xff);
+	ClearBitAtIndex_021b1454(*(struct S021b1454**)((char*)obj + 0x3000 + regionalOffset0), value & 0xff);
 }

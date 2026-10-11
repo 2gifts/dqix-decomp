@@ -31,12 +31,21 @@ struct MessageSystem_021eefd0 {
     MessageName_021eefd0* unk_10;
     char unk_14[0x20 - 0x14];
     MessageName_021eefd0* unk_20;
+#if defined(jpn)
+    char unk_24[0x868 - 0x24];
+    int busy_;
+    char unk_86c[0x17e2 - 0x86c];
+    unsigned char unk_19b2;
+
+#else
     char unk_24[0x998 - 0x24];
     int busy_;
     char unk_99c[0x19b2 - 0x99c];
     unsigned char unk_19b2;
     char unk_19b3[0x19d7 - 0x19b3];
     unsigned char unk_19d7;
+
+#endif
 };
 
 struct PlayRecords_021eefd0 {
@@ -67,7 +76,12 @@ public:
 
 struct ZoneData_021eefd0 {
     unsigned short id_;
+#if defined(jpn)
+    char unk_2[0x240c - 2];
+#else
     char unk_2[0x23ec - 2];
+#endif
+
     ActiveGrottoClass grotto_;
 };
 
@@ -87,7 +101,12 @@ struct GameState {
 };
 
 struct GameResources_021eefd0 {
+#if defined(jpn)
+    char unk_0[0x3508];
+#else
     char unk_0[0x3718];
+#endif
+
     void* unknown_ptr_3718;
 };
 
@@ -122,6 +141,22 @@ struct BattleEnd_021eefd0 {
 struct BattleScene_021eefd0 {
     char unk_0[0x30];
     SafeAllocator allocator_;
+#if defined(jpn)
+    char unk_44[0x218 - 0x44];
+    BattleData_021eefd0* data_;
+    BattleInfo_021eefd0* info_;
+    char unk_220[0xe28 - 0x220];
+    int endState_;
+    char unk_e2c[0x5ab9 - 0xe2c];
+    unsigned char victory_;
+    unsigned short victoryMonster_;
+    char unk_5abc[0x5af4 - 0x5abc];
+    char texts_[0x7028 - 0x5af4];
+    int unk_6e38;
+    char unk_702c[0x703a - 0x702c];
+    unsigned char timer_;
+
+#else
     char unk_44[0x29c - 0x44];
     BattleData_021eefd0* data_;
     BattleInfo_021eefd0* info_;
@@ -135,12 +170,19 @@ struct BattleScene_021eefd0 {
     int unk_6e38;
     char unk_6e3c[0x6e4a - 0x6e3c];
     unsigned char timer_;
+
+#endif
 };
 
 extern "C" BattleEnd_021eefd0* _ZZ17GetGlobal021ffefcvE1s;
 extern const char data_ov023_021fe230[];
 extern const char data_ov023_021fe246[];
 extern char data_02109bf4[];
+#if defined(jpn)
+extern const char data_ov023_021fd4ec[];
+extern const char data_ov023_021fd504[];
+extern "C" void func_02045d88(MessageSystem_021eefd0*, const char*, int);
+#endif
 
 MessageSystem_021eefd0* GetGlobalField0x1c020421a0();
 void Clear12Bytes0206efc4(void* monsters);
@@ -176,6 +218,7 @@ void VectorizedInvertedMemcpy(const void* src, void* dst, unsigned int size);
 void func_02011744(GameState* gameState);
 }
 
+// JPN: func_ov023_021eed20
 // USA: func_ov023_021eefd0
 extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
 {
@@ -214,7 +257,12 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
             monsters = _ZZ17GetGlobal021ffefcvE1s->monsters_;
             if (SearchWithComparator0206f4f0((BinarySearchByComparatorStruct*)monsters, (short)self->victoryMonster_) == NULL)
             {
+#if defined(jpn)
+                _ZZ17GetGlobal021ffefcvE1s->task3_ = loader->QueueLoadFile(data_ov023_021fd4ec, NULL);
+#else
                 _ZZ17GetGlobal021ffefcvE1s->task3_ = loader->QueueLoadFileInGP2(data_ov023_021fe230, data_ov023_021fe246, NULL);
+#endif
+
                 return self->endState_;
             }
         }
@@ -226,6 +274,86 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
             unk = resources->unknown_ptr_3718;
         if (unk != NULL)
             unk2 = func_ov017_021b8478(unk);
+#if defined(jpn)
+        char name[40];
+        if (unk2 != NULL)
+            kind = unk2->unk_c;
+        __clear(name, sizeof(name));
+        char text[80];
+        switch (self->victory_)
+        {
+        case 0:
+        {
+            void* monster = SearchWithComparator0206f4f0((BinarySearchByComparatorStruct*)monsters, (short)self->victoryMonster_);
+            if (monster != NULL)
+                strcpy(name, *(const char**)monster);
+            sprintf(text, FindEntryByKey((TableA68*)self->texts_, 1), name);
+            break;
+        }
+        case 1:
+        {
+            void* monster = SearchWithComparator0206f4f0((BinarySearchByComparatorStruct*)monsters, (short)self->victoryMonster_);
+            if (monster != NULL)
+                sprintf(name, FindEntryByKey((TableA68*)self->texts_, 5), *(const char**)monster);
+            sprintf(text, FindEntryByKey((TableA68*)self->texts_, 1), name);
+            break;
+        }
+        case 2:
+        {
+            if (kind == 0x36 || kind == 0x43 || kind == 0x50)
+                strcpy(name, data_ov023_021fd504);
+            else
+                strcpy(name, FindEntryByKey((TableA68*)self->texts_, 4));
+            sprintf(text, FindEntryByKey((TableA68*)self->texts_, 1), name);
+            break;
+        }
+        case 3:
+        {
+            void* monster = SearchWithComparator0206f4f0((BinarySearchByComparatorStruct*)monsters, (short)self->victoryMonster_);
+            if (monster != NULL)
+                strcpy(name, *(const char**)monster);
+            sprintf(text, FindEntryByKey((TableA68*)self->texts_, 3), name);
+            break;
+        }
+        case 4:
+        {
+            void* monster = SearchWithComparator0206f4f0((BinarySearchByComparatorStruct*)monsters, (short)self->victoryMonster_);
+            if (monster != NULL)
+                sprintf(name, FindEntryByKey((TableA68*)self->texts_, 5), *(const char**)monster);
+            sprintf(text, FindEntryByKey((TableA68*)self->texts_, 3), name);
+            break;
+        }
+        case 5:
+        {
+            strcpy(name, FindEntryByKey((TableA68*)self->texts_, 4));
+            sprintf(text, FindEntryByKey((TableA68*)self->texts_, 3), name);
+            break;
+        }
+        case 6:
+        {
+            void* monster = SearchWithComparator0206f4f0((BinarySearchByComparatorStruct*)monsters, (short)self->victoryMonster_);
+            if (monster != NULL)
+                strcpy(name, *(const char**)monster);
+            sprintf(text, FindEntryByKey((TableA68*)self->texts_, 2), name);
+            break;
+        }
+        case 7:
+        {
+            void* monster = SearchWithComparator0206f4f0((BinarySearchByComparatorStruct*)monsters, (short)self->victoryMonster_);
+            if (monster != NULL)
+                sprintf(name, FindEntryByKey((TableA68*)self->texts_, 5), *(const char**)monster);
+            sprintf(text, FindEntryByKey((TableA68*)self->texts_, 2), name);
+            break;
+        }
+        case 8:
+        {
+            strcpy(name, FindEntryByKey((TableA68*)self->texts_, 4));
+            sprintf(text, FindEntryByKey((TableA68*)self->texts_, 2), name);
+            break;
+        }
+        }
+
+#else
         MessageName_021eefd0 name;
         if (unk2 != NULL)
             kind = unk2->unk_c;
@@ -276,11 +404,18 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
             sprintf(text, FindEntryByKey((TableA68*)self->texts_, 0x33));
             break;
         }
+
+#endif
         if (self->info_->legacyBoss_ != 0)
             strcat(text, FindEntryByKey((TableA68*)self->texts_, 0x22));
         else if (end->nothing_ == 0)
             strcat(text, FindEntryByKey((TableA68*)self->texts_, 0x22));
+#if defined(jpn)
+        func_02045d88(messages, text, 1);
+#else
         func_0204500c(messages, text, 1, 0xe3);
+#endif
+
         messages->unk_19b2 = 0;
         messages->busy_ = 1;
         if (self->data_->monsterCount_ > 0)
@@ -343,12 +478,22 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
             if (func_0202c508(unk))
             {
                 void* name = gameState->GetProtagonist()->baseStats_;
+#if defined(jpn)
+
+#else
                 char buffer[0xa];
                 __clear(buffer, sizeof(buffer));
                 func_020426bc(name, buffer, 1);
+#endif
+
                 map2->discoveryState_ = 3;
                 VectorizedMemset(map2->clearedBy_, 0, sizeof(map2->clearedBy_));
+#if defined(jpn)
+                VectorizedInvertedMemcpy(name, map2->clearedBy_, 10);
+#else
                 VectorizedInvertedMemcpy(buffer, map2->clearedBy_, sizeof(buffer));
+#endif
+
                 DispatchAndSetTreasureMapUnknownBit((char*)gameState, (int)map2);
                 func_02011744(gameState);
             }

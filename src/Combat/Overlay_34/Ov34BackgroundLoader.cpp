@@ -291,6 +291,7 @@ int Ov34BackgroundLoader::Process()
         if (inFlightTask.pFileData != NULL)
         {
             inFlightTask.status_ = TaskStatus_Complete;
+#if !defined(jpn)
             unsigned int sig[8];
             func_020c9b10(sig);
             unsigned int x = sig[0] ^ sig[1] ^ sig[2] ^ sig[3] ^ sig[4] ^ sig[5] ^ sig[6] ^ sig[7];
@@ -298,6 +299,7 @@ int Ov34BackgroundLoader::Process()
             int b = (int)(y & 0xff);
             int z = b ^ ((b >> 6) ^ (b >> 4) ^ (b >> 2));
             if ((unsigned char)(z & 3) == 0)
+#endif
                 _Z16AllocateAligned4P14AllocatorUnionj(&data_02114e20, 8);
         }
         

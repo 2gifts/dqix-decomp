@@ -6,11 +6,23 @@ void* GetGlobalPtr021075f4(void);
 Entry_203dce4* GetEntryUnlessFlag0x8000(EntryList_203dce4* list, int id);
 
 struct Struct02065758 {
+    #if defined(jpn)
+    unsigned char pad0[0x1708];
+#else
     unsigned char pad0[0x1838];
+#endif
     int id;
+    #if defined(jpn)
+    unsigned char pad1[0x1787 - 0x1708 - 4];
+#else
     unsigned char pad1[0x1959 - 0x1838 - 4];
+#endif
     unsigned char counter;
+    #if defined(jpn)
+    unsigned char pad2[0x17e7 - 0x1787 - 1];
+#else
     unsigned char pad2[0x19b7 - 0x1959 - 1];
+#endif
     unsigned char flagByte;
 };
 
@@ -40,3 +52,5 @@ ARM int UpdateCounterAndFlag02065758(Struct02065758* a, int b) {
     }
     return result;
 }
+
+// JPN: 0x02066b90

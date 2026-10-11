@@ -1,3 +1,10 @@
+// JPN: func_ov025_021e8864
+#if defined(jpn)
+enum { RegionOffset150 = 0x144, TargetFieldOffset = 0x4 };
+#else
+enum { RegionOffset150 = 0x150, TargetFieldOffset = 0xc };
+#endif
+
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 #include "std_library_functions.h"
@@ -13,7 +20,7 @@ extern "C" void func_ov025_021e267c(int combatantId, int arg1, int arg2, int fla
 struct RemoveList021eb084;
 void RemoveMatchingShort_021eb084(struct RemoveList021eb084* obj, int val);
 
-struct Ctx021e83c4 { char pad[0xc]; void* target; };
+struct Ctx021e83c4 { char pad[TargetFieldOffset]; void* target; };
 extern struct Ctx021e83c4 data_ov025_021ef988;
 extern char data_ov025_021ef87f;
 
@@ -34,7 +41,7 @@ extern "C" ARM int func_ov025_021e83c4(struct Param021e83c4* p, struct Ctx1021e8
 
     int cid = *(unsigned short*)((char*)ctx->field0x10 + 0x20);
     GameObject* c = GetCombatantWithFlag0x100(bs, cid);
-    struct Inner021e83c4* c2 = *(struct Inner021e83c4**)((char*)c + 0x150);
+    struct Inner021e83c4* c2 = *(struct Inner021e83c4**)((char*)c + RegionOffset150);
     char ch = 'm';
     if (c2->flag == 1) {
         ch = 'w';

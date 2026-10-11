@@ -7,12 +7,10 @@
 #pragma dont_inline on
 
 #ifdef jpn
-#define func_020c9be0 func_020cb6ac
 
 #define _Z22ClampAndSubmit020d97a8iiiiii func_020db1b4
 #define _Z15Forward020d9828Pv func_020db234
 
-#define data_020ef8a4 data_020ef794
 #define data_020ef908 data_020ef7f8
 #define data_020ef90f data_020ef7ff
 #endif

@@ -1,3 +1,10 @@
+// JPN: func_ov017_021d2fa8
+#if defined(jpn)
+enum { RegionOffset7f60 = 0x7c8c, RegionOffset734 = 0x524, RegionOffset718 = 0x508, RegionOffsetff = 0xfb };
+#else
+enum { RegionOffset7f60 = 0x7f60, RegionOffset734 = 0x734, RegionOffset718 = 0x718, RegionOffsetff = 0xff };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -26,7 +33,7 @@ struct Evt021d2b24 {
 struct Entry021d2b24 {
     char pad0[3];
     unsigned char field3;
-    char pad4[0xff];
+    char pad4[RegionOffsetff];
     unsigned char field103;
 };
 
@@ -36,7 +43,7 @@ extern "C" ARM void func_ov017_021d2b24(void* unused0, struct Evt021d2b24* evt, 
     GameState* battle = GameState::GetInstance();
 
     if (evt->id == 0xce) {
-        SetVec3_021c3f68((struct Vec3_021c3f68*)((char*)battle + 0x7f60), evt->field8, evt->fieldc, evt->field10);
+        SetVec3_021c3f68((struct Vec3_021c3f68*)((char*)battle + RegionOffset7f60), evt->field8, evt->fieldc, evt->field10);
     }
 
     GameObject* combatant = battle->GetPartyMemberByIndex(evt->id);
@@ -44,12 +51,12 @@ extern "C" ARM void func_ov017_021d2b24(void* unused0, struct Evt021d2b24* evt, 
         return;
     }
 
-    struct Entry021d2b24* entryPtr = *(struct Entry021d2b24**)(ctx + 0x3000 + 0x734);
+    struct Entry021d2b24* entryPtr = *(struct Entry021d2b24**)(ctx + 0x3000 + RegionOffset734);
     if (entryPtr->field3 != 0 && entryPtr->field103 != 0) {
         return;
     }
 
-    void* ptr718 = *(void**)(ctx + 0x3000 + 0x718);
+    void* ptr718 = *(void**)(ctx + 0x3000 + RegionOffset718);
     if (*(unsigned char*)((char*)ptr718 + 0x2) != 0 && GetField6b4_021b8480(ptr718) == 0) {
         return;
     }

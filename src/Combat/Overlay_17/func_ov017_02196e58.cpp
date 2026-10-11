@@ -35,16 +35,25 @@ struct NodeMsg {
 };
 
 struct Work02196e58 {
+#if defined(jpn)
+    unsigned char pad0[0x34a6];
+#else
     unsigned char pad0[0x36b6];
+#endif
     unsigned short monsterIndex;
     unsigned char pad36b8[0x36fc - 0x36b8];
     struct TailList020469b4* list;
     unsigned char pad3700[0x3718 - 0x3700];
     struct TailNode020469b4* node;
+#if defined(jpn)
+    unsigned char pad371c[0x3954 - 0x350c];
+#else
     unsigned char pad371c[0x3b74 - 0x371c];
+#endif
     struct TailNode020469b4* inputNode;
 };
 
+// JPN: func_ov017_02197a08
 // USA: func_ov017_02196e58
 extern "C" ARM void func_ov017_02196e58(struct Work02196e58* work) {
     GameState* bs = GameState::GetInstance();
@@ -71,7 +80,11 @@ extern "C" ARM void func_ov017_02196e58(struct Work02196e58* work) {
     Zone3D* zone = func_02012fe4();
     ActiveGrottoClass* grotto = NULL;
     if (zone != NULL) {
+#if defined(jpn)
+        grotto = (ActiveGrottoClass*)((char*)zone + 0x240c);
+#else
         grotto = &zone->grotto_;
+#endif
     }
     DetailedTreasureMapData* detail = NULL;
     if (grotto != NULL) {

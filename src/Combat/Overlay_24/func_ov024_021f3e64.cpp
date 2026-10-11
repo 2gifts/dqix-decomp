@@ -40,6 +40,7 @@ extern "C" int _Z31IsFlagBit2147483648Set_021edc68P14S_flag80000000(S_flag800000
 int IsField0x18Flag0x80Set(Combatant_2088660*);
 extern "C" int _Z22IsFlagBit8Set_021f273cP8S_flag8b(S_flag8b*);
 
+// JPN: func_ov024_021f4630
 // USA: func_ov024_021f3e64
 extern "C" ARM int func_ov024_021f3e64(int* context, int unused, int unused2, int* outCount, short* outTargets) {
     unsigned short targets[4];

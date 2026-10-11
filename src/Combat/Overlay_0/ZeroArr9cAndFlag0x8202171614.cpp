@@ -1,9 +1,20 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define REGION_OFFSET_0 0xc2
+#define REGION_OFFSET_1 0xdc
+#define REGION_OFFSET_2 0xc4
+#else
+#define REGION_OFFSET_0 0x82
+#define REGION_OFFSET_1 0x9c
+#define REGION_OFFSET_2 0x84
+#endif
+
+
 struct Struct02171614 {
-	unsigned char pad0[0x82];
+	unsigned char pad0[REGION_OFFSET_0];
 	unsigned short f82;
-	unsigned char pad1[0x9c - 0x84];
+	unsigned char pad1[REGION_OFFSET_1 - REGION_OFFSET_2];
 	int arr9c[0x42];
 };
 

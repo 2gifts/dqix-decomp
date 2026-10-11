@@ -21,8 +21,14 @@ struct LocalEvt021ce32c {
 	unsigned char pad1[9];
 };
 
+// JPN: func_ov017_021ce7d4
 // USA: func_ov017_021ce32c
 ARM void EnqueueEventTag38_021ce32c(int id) {
+#if defined(jpn)
+ enum {regionalOffset0=0x2c6};
+#else
+ enum {regionalOffset0=0x2d2};
+#endif
 	void* p = GetData02100044();
 	GameObject* c = GetCombatantWithFlag0x1000(GameState::GetInstance(), id);
 	if (c == NULL) {
@@ -35,6 +41,6 @@ ARM void EnqueueEventTag38_021ce32c(int id) {
 	buf.field7 = GetSignedByte0x2d1(c);
 	buf.field8 = GetSignedByte0x1c8(c);
 	buf.field9 = GetSignedByte0x1c9(c);
-	buf.fielda = *(unsigned char*)((char*)c + 0x2d2);
+	buf.fielda = *(unsigned char*)((char*)c + regionalOffset0);
 	func_0205e330(p, &buf, 0);
 }

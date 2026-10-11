@@ -18,12 +18,20 @@ extern const PartyIdentifierList data_020e7064;
 struct PartyDisplayReceiverPrefix {
     unsigned char unknown0[0x38];
     fix32_t scale;
+#if defined(jpn)
+    unsigned char unknown3c[0x914 - 0x3c];
+#else
     unsigned char unknown3c[0x9c0 - 0x3c];
+#endif
     unsigned char actionState;
 };
 
 struct PartyMemberIdentifierPrefix {
+#if defined(jpn)
+    unsigned char unknown0[0x1a6];
+#else
     unsigned char unknown0[0x1b2];
+#endif
     unsigned short identifier;
 };
 

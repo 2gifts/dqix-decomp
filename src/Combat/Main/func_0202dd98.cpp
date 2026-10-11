@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define _Z29SetState3AndDispatch_0202cca4v func_0202c814
+#define data_021023c0 data_02102100
+#endif
 
 struct BattleDispatchState { char pad0[0x10]; int state_; char pad14[0x34 - 0x14]; int mode_; };
 struct BattleEffectContext { char data_[0x820]; };
@@ -14,6 +18,7 @@ extern "C" int _Z29SetState3AndDispatch_0202cca4v();
 
 static inline int CurrentState() { return data_021015a0.state_; }
 
+// JPN: func_0202d908
 // USA: func_0202dd98
 extern "C" ARM void func_0202dd98() {
     if (data_021015a0.state_ == 1) return;

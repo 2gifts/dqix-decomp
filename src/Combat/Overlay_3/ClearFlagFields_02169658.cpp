@@ -3,9 +3,14 @@
 // USA: func_ov003_02169658
 ARM void ClearFlagFields_02169658(void* obj) {
     unsigned char* p = (unsigned char*)obj;
-    p[0x59c] = 0;
-    p[0x59d] = 0;
-    p[0x59e] = 0;
-    p[0x5a6] = 0;
-    p[0x5a7] = 0;
+#if defined(jpn)
+    enum { fieldBase = 0x598 };
+#else
+    enum { fieldBase = 0x59c };
+#endif
+    p[fieldBase] = 0;
+    p[fieldBase + 1] = 0;
+    p[fieldBase + 2] = 0;
+    p[fieldBase + 10] = 0;
+    p[fieldBase + 11] = 0;
 }

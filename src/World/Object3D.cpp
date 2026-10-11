@@ -12,18 +12,9 @@
 #include "Graphics/VRAMStaging.h"
 
 #if defined(jpn)
-#define _Z18GetField0x3b0ValueP9GameState func_0200ff18
-#define _Z27ClearGlobalFlagBits02016d8cPv func_02016b2c
-#define _Z16GetPtrField0x144Pv func_0202e8e4
-#define func_020311f0 func_02030d28
-#define func_02031234 func_02030d6c
-#define func_02031278 func_02030db0
-#define func_0203ac40 func_0203a698
-#define func_020ca528 func_020cbff4
 #define _Z23CopyRegionAndFlushCachePvPKvj func_020d9e88
 #define func_020d1d1c func_020d37e8
 
-#define data_02108760 data_021086a4
 #endif
 
 ModelRenderContext* GetModel3DContext(Model3D* model);

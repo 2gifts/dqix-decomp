@@ -17,7 +17,11 @@ struct AreaEntry021a2128 {
     unsigned short flags : 14;
     short field_4;
     unsigned short instances;
+#if defined(jpn)
+    char field_8[0xc];
+#else
     char field_8[0x10];
+#endif
     char list[0x48];
     char subentries[0x298];
     char monsters[0xc];
@@ -38,7 +42,11 @@ struct FieldMonster021a2128 {
     MonsterInfo021a2128* info;
     void* node;
 };
+#if defined(jpn)
+struct FieldArena021a2128 { char field_0[0x2fe0]; int context; };
+#else
 struct FieldArena021a2128 { char field_0[0x31f0]; int context; };
+#endif
 Entry_02028bd0* GetEntryTableBase();
 AreaEntry021a2128* FindInlineEntryById(Entry_02028bd0*, int);
 extern "C" MonsterInfo021a2128* _Z28SearchWithComparator0206f4f0P30BinarySearchByComparatorStructi(BinarySearchByComparatorStruct*, int);
@@ -61,6 +69,7 @@ extern "C" int func_ov017_021a1944();
 int CheckField0NonZero(int*);
 extern "C" void func_ov017_021c8f3c(int, int);
 
+// JPN: func_ov017_021a2bb8
 // USA: func_ov017_021a2128
 extern "C" ARM int func_ov017_021a2128(FieldArena021a2128* arena, unsigned short areaId, int monsterId, int variant, const Vector3fix* position, int y, unsigned short entryId, unsigned char flags) {
     AreaEntry021a2128* area = FindInlineEntryById(GetEntryTableBase(), areaId);

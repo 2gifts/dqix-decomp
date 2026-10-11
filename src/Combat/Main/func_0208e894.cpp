@@ -1,5 +1,11 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { PackedEntriesLow = 0x27c, PackedEntriesHigh = 0x5800 };
+#else
+enum { PackedEntriesLow = 0xdc, PackedEntriesHigh = 0x5c00 };
+#endif
+
 struct Variant02030b0c;
 extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c*);
 extern "C" int _s32_div_f(int a, int b);
@@ -25,6 +31,7 @@ struct Bits0208e894 {
 };
 
 // USA: func_0208e894
+// JPN: func_0208e894
 extern "C" ARM int func_0208e894(char* v) {
     struct Bits0208e894* w;
     struct Entry02108ff4* tbl;
@@ -34,7 +41,7 @@ extern "C" ARM int func_0208e894(char* v) {
     int p28 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(v + 0x28));
     int p30 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(v + 0x30));
     int p38 = _ZNK6Script9Parameter5ToIntEv((struct Variant02030b0c*)(v + 0x38));
-    w = (struct Bits0208e894*)((char*)_ZN9GameState11GetInstanceEv() + 0xdc + 0x5c00);
+    w = (struct Bits0208e894*)((char*)_ZN9GameState11GetInstanceEv() + PackedEntriesLow + PackedEntriesHigh);
     if (k == 8) {
         w[idx].f0 = 0;
         w[idx].f1 = p38;

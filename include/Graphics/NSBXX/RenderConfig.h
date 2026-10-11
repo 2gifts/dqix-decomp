@@ -130,7 +130,6 @@ struct RenderConfig
 #define RENDER_CONFIG_FLAG_WORLDVIEW_CACHE_VALID 7
 
 #if defined(jpn)
-#define data_0210a010 data_02109cc8
 #endif
 
 extern RenderConfig data_0210a010;

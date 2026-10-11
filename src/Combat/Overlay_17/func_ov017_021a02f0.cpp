@@ -41,13 +41,22 @@ struct PairBackup021a02f0 {
 
 struct Battle021a02f0 {
     char pad0[0x38];
+#if defined(jpn)
+    SafeAllocator allocators[29];
+#else
     SafeAllocator allocators[33];
+#endif
+#if defined(jpn)
+    Slot021a02f0 slots[32];
+#else
     Slot021a02f0 slots[36];
+#endif
     char pad128c[0x12c8 - 0x128c];
     Group021a02f0 groups[4];
     PairBackup021a02f0 backups[3];
 };
 
+// JPN: func_ov017_021a0da0
 // USA: func_ov017_021a02f0
 extern "C" ARM void func_ov017_021a02f0(Battle021a02f0* self) {
     int i;

@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kWorkBytes = 0x8cc };
+#else
+enum { kWorkBytes = 0x964 };
+#endif
 #include "Resource/GameResources.h"
 
 struct T02054280;
@@ -55,7 +60,7 @@ extern "C" ARM void func_02097ec8(ZoneResourceState* state) {
         SafeAllocator* allocator = &GetResourceAllocator(func_ov017_0218b5b0(), 2);
         allocator->Reset();
         state->slots = (T02054280*)allocator->Allocate(0x5ec);
-        state->work = (ZoneWork*)allocator->Allocate(0x964);
+        state->work = (ZoneWork*)allocator->Allocate(kWorkBytes);
         _Z23ResetAllocators02054280P9T02054280(state->slots);
         func_02082828(state->work);
         func_020542b4(state->slots, &resources->allocator_array_1a0[3], &GetResourceBuffer(resources, 0x930));

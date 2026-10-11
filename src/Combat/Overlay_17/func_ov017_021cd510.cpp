@@ -12,9 +12,15 @@ typedef void (*SetFields0216341cFn)(void*, unsigned char, unsigned char, unsigne
 struct Ret021cd510 { unsigned char pad0[8]; unsigned short field8; };
 struct Src021cd510 { unsigned char pad0[4]; unsigned short field4; unsigned short field6; signed char field8; };
 
+// JPN: func_ov017_021cd9b8
 // USA: func_ov017_021cd510
 extern "C" ARM void func_ov017_021cd510(int unused0, Src021cd510* src, int unused2, unsigned char* obj) {
-    unsigned char* h = *(unsigned char**)(obj + 0x3000 + 0x718);
+#if defined(jpn)
+ enum {regionalOffset0=0x508};
+#else
+ enum {regionalOffset0=0x718};
+#endif
+    unsigned char* h = *(unsigned char**)(obj + 0x3000 + regionalOffset0);
     Ret021cd510* r = (Ret021cd510*)func_ov017_021b8478(h);
     if (r->field8 != src->field4) return;
 

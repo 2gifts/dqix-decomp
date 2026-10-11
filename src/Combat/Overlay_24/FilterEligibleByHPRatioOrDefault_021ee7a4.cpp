@@ -11,6 +11,7 @@ struct Obj_021ee7a4 { int field0; };
 struct Buf8_021ee7a4 { short v[8]; };
 extern struct Buf8_021ee7a4 data_ov024_021fecac;
 
+// JPN: func_ov024_021eef70
 // USA: func_ov024_021ee7a4  (semantic: FilterEligibleByHPRatioOrDefault_021ee7a4)  (semantic: FilterEligibleByHPRatioOrDefault_021ee7a4)
 extern "C" ARM int func_ov024_021ee7a4(struct Obj_021ee7a4* obj, int unused1, int unused2, int* outCount, short* outArray) {
 	struct Buf8_021ee7a4 buf = data_ov024_021fecac;

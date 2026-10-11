@@ -28,14 +28,22 @@ extern "C" ARM int func_ov017_021b5f00(SelfState_021b5f00* self) {
     if (self->field54 != 0) {
         func_ov017_0218d644(ov, (char*)self + 0x2c, 0);
         void* reset = GetGlobalResetObj020d7a50();
+#if defined(jpn)
+        func_020d7e10(reset, self->field3c, 0, 0, 1);
+#else
         func_020d7e10(reset, self->field3c, 0, 0, 1, 0);
+#endif
         return 5;
     }
     func_ov017_021b6090(self);
     SetByteField0x253(self->field1c);
     if (*self->field3c != 0) {
         void* reset = GetGlobalResetObj020d7a50();
+#if defined(jpn)
+        func_020d7e10(reset, self->field3c, 0, 0, 1);
+#else
         func_020d7e10(reset, self->field3c, 0, 0, 1, 0);
+#endif
         DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 0xe, 0);
         return 5;
     }

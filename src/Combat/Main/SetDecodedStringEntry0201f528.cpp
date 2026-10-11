@@ -12,7 +12,10 @@ extern "C" void func_020277f4(void* obj, int a, void* b, void* allocator);
 
 struct Global020fdc4c_f528 {
     int pad0;
+
+#if !defined(jpn)
     int pad4;
+#endif
     void* field8;
     int padc;
     void* field10;

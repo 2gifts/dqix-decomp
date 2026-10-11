@@ -3,7 +3,11 @@
 struct Slot_021dae60 {
     char unk[0x4c];
     int id;
+#if defined(jpn)
+    char rest[0x488 - 0x4c - 4];
+#else
     char rest[0x448 - 0x4c - 4];
+#endif
 };
 
 struct Container_021dae60 {

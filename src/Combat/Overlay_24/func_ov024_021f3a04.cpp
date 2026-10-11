@@ -8,6 +8,7 @@ extern "C" float func_ov024_021db358(GameObject*);
 extern "C" int func_ov000_0215eb1c(int, short*, int, int);
 extern const short data_ov024_021fee3c[8] __attribute__((aligned(4)));
 
+// JPN: func_ov024_021f41d0
 // USA: func_ov024_021f3a04
 extern "C" ARM int func_ov024_021f3a04(int* context, int id, void*, int* outCount, short* outTargets) {
     GameObject* incoming = GetCombatantWithFlag0x400ByID(*context, id);

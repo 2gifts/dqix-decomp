@@ -23,7 +23,11 @@ struct Combatant02162cbc {
 };
 
 struct Battle02162cbc {
+#if defined(jpn)
+    char pad0[0x218];
+#else
     char pad0[0x29c];
+#endif
     void* field29c;
 };
 

@@ -13,13 +13,23 @@ struct StatusCharacter {
     short values[0x198];
     unsigned char gender : 1;
     unsigned char flags : 7;
+#if defined(jpn)
+    unsigned char padding49d[0x8b8 - 0x49d];
+#else
     unsigned char padding49d[0x4b3];
+#endif
+
     int index;
 };
 struct StatusCombatant {
     unsigned char padding0[0x130];
     StatusHealth* health;
+#if defined(jpn)
+    unsigned char padding134[0x10];
+#else
     unsigned char padding134[0x1c];
+#endif
+
     StatusCharacter* character;
     int GetHP() const { return health->hp; }
     StatusCharacter* GetCharacter() const { return character; }
@@ -38,20 +48,45 @@ struct StatusSprites {
     unsigned char padding0[0x258];
     StatusSprite marker;
 };
+#if defined(jpn)
+struct NameText { char text[0xc]; };
+#else
 struct NameText { char text[0x20]; };
+#endif
+
+#if defined(jpn)
+struct ConditionText { char text[6]; };
+#else
 struct ConditionText { char text[0x14]; };
+#endif
+
+#if defined(jpn)
+struct ValueText { char text[4]; };
+#else
 struct ValueText { char text[0x10]; };
+#endif
+
 struct StatusPanel {
     void* context;
     unsigned char padding4[0xc4];
     void* renderer;
     StatusSprites* sprites;
+#if defined(jpn)
+    unsigned char paddingd0[0x428];
+#else
     unsigned char paddingd0[0x42c];
+#endif
+
     int selected;
     NameText names[4];
     int positions[4];
     ConditionText conditions[4];
+#if defined(jpn)
+    char label[4];
+#else
     char label[0x10];
+#endif
+
     ValueText values[4];
     unsigned char padding630[0x10];
     char* conditionNames[2];
@@ -59,6 +94,9 @@ struct StatusPanel {
 struct Struct0200fb08;
 void* GetGlobalField0x1c020421a0();
 extern "C" void func_02045f3c(void*, void*, int, int, int, int, int, int, int, int);
+#if defined(jpn)
+extern "C" void func_02046c78(void*, void*, int, int, int, int, int, int);
+#endif
 extern "C" int func_020420e8(const char*, int);
 extern "C" void func_0205ac40(void*, void*);
 unsigned char GetByteViaFieldIndirectOffset_021e4250_021e4250(char*);
@@ -66,6 +104,7 @@ char* CallFunc020e0434With02153694(int);
 unsigned char NormalizeField5_0200fb08(Struct0200fb08*);
 extern "C" void func_ov005_02155258(void*, int, int, int, int);
 
+// JPN: func_ov023_021e421c
 // USA: func_ov023_021e3fc0
 extern "C" ARM void func_ov023_021e3fc0(StatusPanel* panel) {
     int textColor;
@@ -79,6 +118,36 @@ extern "C" ARM void func_ov023_021e3fc0(StatusPanel* panel) {
     REG_MATRIX_SCALE = 0;
     REG_MATRIX_SCALE = 0;
     REG_MATRIX_SCALE = 0xffc01000;
+#if defined(jpn)
+    func_02046c78(renderer, &panel->names[panel->selected], panel->positions[panel->selected], 0xa3, drawValue, 10, 0, 0);
+    short x = 0x2f;
+    if (GetByteViaFieldIndirectOffset_021e4250_021e4250((char*)combatant)) x += 7;
+    if (combatant->GetHP() <= 0) x = 0x14;
+    x = ((0x3b - x) >> 1) + 0x40;
+    func_02046c78(renderer, &panel->conditions[panel->selected], x, 0xa3, drawValue, 10, 0, 0);
+    if (combatant->GetHP() > 0) {
+        x += 0x14;
+        if (GetByteViaFieldIndirectOffset_021e4250_021e4250((char*)combatant)) {
+            unsigned short valueColor = 0xf0a;
+            short y = 0xa4;
+            if (GetByteViaFieldIndirectOffset_021e4250_021e4250((char*)combatant) >= 10) {
+                y--;
+                valueColor = 0x31f;
+            }
+            func_02046c78(renderer, &panel->values[panel->selected], x, y, valueColor, 10, 0, 0);
+            x += 7;
+        }
+        x += 2;
+        func_02046c78(renderer, panel->label, x, 0xa3, drawValue, 10, 0, 0);
+        if (panel->context) {
+            StatusCharacter* character = combatant->GetCharacter();
+            textColor = drawValue;
+            drawValue = character->values[character->index];
+            func_ov005_02155258(panel->context, drawValue, (short)(x + 9), 0xa5, textColor);
+        }
+    }
+
+#else
     func_02045f3c(renderer, &panel->names[panel->selected], panel->positions[panel->selected], 0xa1, drawValue, 10, 0, 0, 0, 0x11);
     if (combatant->GetHP() <= 0) {
         short width = func_020420e8(panel->conditionNames[combatant->character->gender], 0);
@@ -105,6 +174,8 @@ extern "C" ARM void func_ov023_021e3fc0(StatusPanel* panel) {
         drawValue = character->values[character->index];
         func_ov005_02155258(panel->context, drawValue, x, 0xa1, textColor);
     }
+
+#endif
     REG_TEXTURE_PARAM = 0;
     REG_MATRIX_POP = 1;
 }

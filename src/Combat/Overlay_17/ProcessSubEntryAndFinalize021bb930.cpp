@@ -26,7 +26,11 @@ struct Sub021bb930 {
 };
 
 struct Obj021bb930 {
+#if defined(jpn)
+    char pad0[0xfa];
+#else
     char pad0[0xfe];
+#endif
     unsigned char flag0xfe;
     char pad1[0x120 - 0xff];
     void* field120;
@@ -34,6 +38,7 @@ struct Obj021bb930 {
     struct Sub021bb930* sub;
 };
 
+// JPN: func_ov017_021bbf28
 // USA: func_ov017_021bb930  (semantic: ProcessSubEntryAndFinalize021bb930)
 extern "C" ARM void func_ov017_021bb930(struct Obj021bb930* self) {
     if (self->flag0xfe != 0 && self->sub != NULL) {

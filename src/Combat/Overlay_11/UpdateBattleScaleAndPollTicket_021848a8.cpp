@@ -1,3 +1,12 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define _Z27ScaleStatsIfType12_021f6f10Pv _Z27CheckAnyBuffBelow2_021f5c80P16Wrapper_021f5c80iiPiPs
+#define _Z40InitTenAllocatorsAndClearFields_021e4e8cPv func_ov023_021e5080
+#define data_ov023_021ff5b4 data_ov023_021fe83c
+#define func_ov023_021fc518 func_ov023_021fb810
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -18,7 +27,7 @@ extern "C" ARM void func_ov011_021848a8(void* obj) {
             if (sum > 0xe10) {
                 *(unsigned int*)((char*)obj + 0x1d0) = 0;
                 *(int*)((char*)obj + 0x10c) = 999;
-                unsigned char* p = (unsigned char*)battle + 0x7f71;
+                unsigned char* p = (unsigned char*)battle + R(0x7c9d, 0x7f71);
                 unsigned char v = *p + 1;
                 *p = v % 3;
             }

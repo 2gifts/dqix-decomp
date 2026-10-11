@@ -18,6 +18,7 @@ struct SkillRecord_021f58dc {
 };
 extern Out0215fb54 data_ov024_021fea1c[];
 
+// JPN: func_ov024_021f60a8
 // USA: func_ov024_021f58dc
 extern "C" ARM int func_ov024_021f58dc(Obj_021f58dc* obj, int id, SkillRecord_021f58dc* skill, int* outCount, short* outArray) {
     void* work;

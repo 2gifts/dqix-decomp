@@ -29,7 +29,9 @@ struct Elem020287b4 {
     signed char b0d;
     unsigned short pad0e;
     int w10;
+#if !defined(jpn)
     int w14;
+#endif
     unsigned char sub18[0x2c];
     unsigned short w44;
     unsigned char pad46[0x1a];
@@ -43,6 +45,7 @@ struct Elem020287b4 {
 };
 
 // USA: func_020287b4
+// JPN: func_020287b4
 extern "C" ARM void func_020287b4(struct Elem020287b4* obj) {
     int i;
     struct Elem020287b4* e;
@@ -54,7 +57,9 @@ extern "C" ARM void func_020287b4(struct Elem020287b4* obj) {
         e->flags.f00 = 0;
         obj[i].w00 = 0;
         e->w10 = 0;
+#if !defined(jpn)
         e->w14 = 0;
+#endif
         e->w08 = 0;
         e->w06 = 0;
         e->b0c = 0;

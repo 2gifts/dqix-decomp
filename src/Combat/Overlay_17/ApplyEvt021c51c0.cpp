@@ -22,10 +22,16 @@ struct Evt021c51c0 {
 	unsigned short field12;
 };
 
+// JPN: func_ov017_021c568c
 // USA: func_ov017_021c51c0  (semantic: ApplyEvt021c51c0)
 extern "C" ARM void func_ov017_021c51c0(int flag, Evt021c51c0* evt, GameState* battleStruct, unsigned char* obj, struct SearchStruct0202c1a4* search) {
+#if defined(jpn)
+ enum {regionalOffset=0x4fc};
+#else
+ enum {regionalOffset=0x70c};
+#endif
 	unsigned char* base = obj + 0x3000;
-	void* h = *(void**)(base + 0x70c);
+	void* h = *(void**)(base + regionalOffset);
 	void* ctx = GetField0x3f8Address(battleStruct);
 	signed char cur = GetSearchStructCurrentArrEntry(search);
 	if (evt->field4 != cur) return;

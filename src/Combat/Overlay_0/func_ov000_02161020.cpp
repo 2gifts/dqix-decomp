@@ -4,12 +4,20 @@
 struct RemapFlagOwner;
 
 struct BattleWork02161020 {
+#if defined(jpn)
+    char pad0[0xe20];
+#else
     char pad0[0xea4];
+#endif
     RemapFlagOwner* remapOwner;
 };
 
 struct RenderCtx02161020 {
+#if defined(jpn)
+    char pad0[0x58];
+#else
     char pad0[0x38];
+#endif
     unsigned short color;
     char pad1[2];
     int alphaScale;

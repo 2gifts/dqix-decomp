@@ -20,6 +20,7 @@ struct BuffWord_021f1768 {
     signed int unkBuff18 : 3;
 };
 
+// JPN: func_ov024_021f1f34
 // USA: func_ov024_021f1768  (semantic: FindCombatantWithLowUnkBuff18_021f1768)
 extern "C" ARM int func_ov024_021f1768(struct Obj_021f1768* obj, int unused1, int unused2, int* outCount, void* outArr) {
     struct Buf4_021f1768 buf = data_ov024_021fec34;

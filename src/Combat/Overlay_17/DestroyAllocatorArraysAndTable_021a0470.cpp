@@ -9,9 +9,15 @@ int TailForward02012da4(AllocatorUnion*, void*);
 extern AllocatorUnion data_02114e20;
 extern int data_ov017_021d68cc[];
 
+// JPN: func_ov017_021a0f20
 // USA: func_ov017_021a0470  (semantic: DestroyAllocatorArraysAndTable_021a0470)
 extern "C" ARM void func_ov017_021a0470(char* self) {
-	char* group = self + 0x2c8;
+#if defined(jpn)
+ enum {regionalOffset0=0xb8};
+#else
+ enum {regionalOffset0=0x2c8};
+#endif
+	char* group = self + regionalOffset0;
 	int i = 0;
 	group = group + 0x1000;
 	for (; i < 4; i++) {

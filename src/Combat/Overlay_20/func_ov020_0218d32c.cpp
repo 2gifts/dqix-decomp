@@ -42,12 +42,23 @@ struct List0218d32c {
 };
 
 struct SetupContext0218d32c {
+#if defined(jpn)
+    char pad0[0x400];
+#else
     char pad0[0x470];
+#endif
+
     SafeAllocator allocator;
 };
 
+// JPN: func_ov020_0218db7c
 // USA: func_ov020_0218d32c  (semantic: InitializeAndDispatchSingleList_0218d32c)
 extern "C" ARM void func_ov020_0218d32c(struct SetupContext0218d32c* self, int mode) {
+#if defined(jpn)
+ enum {regionalOffset0=0x2c};
+#else
+ enum {regionalOffset0=0x9c};
+#endif
     unsigned char* base = (unsigned char*)self;
     unsigned int outLen;
     void* recFieldScratch;
@@ -61,15 +72,15 @@ extern "C" ARM void func_ov020_0218d32c(struct SetupContext0218d32c* self, int m
     MapVRAMBanksToMainBG(8);
     func_ov020_0218c7bc(0, 1, 1, 1, 0);
 
-    _Z17ResetList0204af64P12List0204af64(base + 0x9c + 0x400);
-    _Z24SetWord0x18ClearByte0x1fPhi(base + 0x9c + 0x400, 0);
-    struct List0218d32c* list = (struct List0218d32c*)(base + 0x9c + 0x400);
+    _Z17ResetList0204af64P12List0204af64(base + regionalOffset0 + 0x400);
+    _Z24SetWord0x18ClearByte0x1fPhi(base + regionalOffset0 + 0x400, 0);
+    struct List0218d32c* list = (struct List0218d32c*)(base + regionalOffset0 + 0x400);
     list->lowNibble = 0;
     list->highNibble = 1;
     func_0204b5b4(list, 1);
-    _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator(base + 0x9c + 0x400, &self->allocator);
-    _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator(base + 0x9c + 0x400, 1, &self->allocator);
-    _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(base + 0x9c + 0x400, 0, 0);
+    _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator(base + regionalOffset0 + 0x400, &self->allocator);
+    _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator(base + regionalOffset0 + 0x400, 1, &self->allocator);
+    _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(base + regionalOffset0 + 0x400, 0, 0);
 
     DisableSubObjVRAMBanks();
     DisableSubBGVRAMBanks();

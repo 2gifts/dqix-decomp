@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kFlagOffset = 0x1c2 };
+#else
+enum { kFlagOffset = 0x1ce };
+#endif
+
 #include "GameState/GameState.h"
 
 GameObject* GetCombatantWithFlag0x1000(GameState* battleStruct, int combatantId);
@@ -19,7 +25,7 @@ struct Obj02039df4 {
     unsigned char lo0xc2 : 5;
     unsigned char flagBit0xc2 : 1;
     unsigned char hi0xc2 : 2;
-    char padc3[0x1ce - 0xc3];
+    char padc3[kFlagOffset - 0xc3];
     unsigned char flags1ce;
 };
 

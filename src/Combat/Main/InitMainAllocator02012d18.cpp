@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kMinimumSize = 0x129e00 };
+#else
+enum { kMinimumSize = 0x12d0f4 };
+#endif
+
 #include "Memory/AllocatorUnion.h"
 #include "Memory/HPXEAllocator.h"
 
@@ -22,7 +28,7 @@ ARM void InitMainAllocator02012d18(AllocatorUnion* obj) {
     HPXEAllocator* alloc = HPXEAllocator::CreateAtLocation(where, size, 0);
     obj->InitializeTypeB(alloc, 4);
 
-    if (size < 0x12d0f4) {
+    if (size < kMinimumSize) {
         func_020c9be0();
     }
 }

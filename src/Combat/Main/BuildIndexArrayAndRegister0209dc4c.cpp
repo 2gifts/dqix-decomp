@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define data_02109cc4 data_0210997c
+#define data_020f1758 data_020f18c0
+#endif
 #include "std_library_functions.h"
 
 struct Entry0209dc4c {

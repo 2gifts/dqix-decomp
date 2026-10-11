@@ -1,6 +1,25 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+enum { kRegionValue3C2_3DA = 0x3da };
+enum { kRegionValue98_B0 = 0xb0 };
+enum { kRegionValue3F2_40A = 0x40a };
+enum { kRegionValue900_700 = 0x700 };
+enum { kRegionValue16_E6 = 0xe6 };
+enum { kRegionValue394_3AC = 0x3ac };
+enum { kRegionValue358_370 = 0x370 };
+#else
+enum { kRegionValue3C2_3DA = 0x3c2 };
+enum { kRegionValue98_B0 = 0x98 };
+enum { kRegionValue3F2_40A = 0x3f2 };
+enum { kRegionValue900_700 = 0x900 };
+enum { kRegionValue16_E6 = 0x16 };
+enum { kRegionValue394_3AC = 0x394 };
+enum { kRegionValue358_370 = 0x358 };
+#endif
+
+
 struct Struct_0205d81c;
 struct Elem_0205d81c;
 Elem_0205d81c* FindElementForFieldB0(Struct_0205d81c*);
@@ -19,10 +38,11 @@ void SetEntryByte14ByKey0205a42c(Container0205a3d0*, int, int);
 extern "C" void func_0205ae8c(void*);
 
 // USA: func_ov003_0215e2a8
+// JPN: func_ov003_0215f580
 ARM void UpdateEntryAndScale_0215e2a8(char* base) {
-    if (*(unsigned char*)(base + 0x3c2) == 0) return;
+    if (*(unsigned char*)(base + kRegionValue3C2_3DA) == 0) return;
 
-    Elem_0205d81c* elem = FindElementForFieldB0((Struct_0205d81c*)(base + 0x98));
+    Elem_0205d81c* elem = FindElementForFieldB0((Struct_0205d81c*)(base + kRegionValue98_B0));
     if (elem == NULL) return;
     if (*(unsigned char*)((char*)elem + 0xc4) != 1) return;
     if (!CheckField0x9cSetWhenField0xd4Present((unsigned char*)elem)) return;
@@ -38,15 +58,15 @@ ARM void UpdateEntryAndScale_0215e2a8(char* base) {
     x = (short)(x - 8);
     y = (short)(y - 2);
 
-    if (*(unsigned char*)(base + 0x3f2) != 0) {
+    if (*(unsigned char*)(base + kRegionValue3F2_40A) != 0) {
         int f = GetGlobalField0x1c020421a0();
-        int v = *(short*)((char*)f + 0x900 + 0x16);
+        int v = *(short*)((char*)f + kRegionValue900_700 + kRegionValue16_E6);
         x = (short)(x - 2);
         y = (short)(y + (short)(v % 8));
     }
 
     GameState* battleStruct = GameState::GetInstance();
-    Container0205a3d0* cont = *(Container0205a3d0**)(base + 0x394);
+    Container0205a3d0* cont = *(Container0205a3d0**)(base + kRegionValue394_3AC);
     if (cont == NULL) return;
 
     SetEntryFlag2ByKey0205a370(cont, 0);
@@ -65,5 +85,5 @@ ARM void UpdateEntryAndScale_0215e2a8(char* base) {
     }
 
     SetEntryByte14ByKey0205a42c(cont, 0, 0x3f);
-    func_0205ae8c(base + 0x358);
+    func_0205ae8c(base + kRegionValue358_370);
 }

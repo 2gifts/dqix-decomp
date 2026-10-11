@@ -1,7 +1,14 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kBitsOffset = 0x21c };
+#else
+enum { kBitsOffset = 0x2a0 };
+#endif
+
 #include "GameState/GameState.h"
 
-struct S02163c80 { char pad[0x2a0]; unsigned char* bitsPtr; };
+struct S02163c80 { char pad[kBitsOffset]; unsigned char* bitsPtr; };
 
 struct Obj02086b98;
 struct S_10088;
@@ -9,6 +16,7 @@ int TestBitAt0x34(unsigned char* obj, unsigned int index);
 int AreListedCombatantsBit0Set(struct Obj02086b98* o);
 int IsFlag10088Set(struct S_10088* obj);
 
+// JPN: func_ov000_021653e4
 // USA: func_ov000_02163c80
 extern "C" ARM int func_ov000_02163c80(struct S02163c80* self, int checkEnemies) {
     GameState* bs = GameState::GetInstance();

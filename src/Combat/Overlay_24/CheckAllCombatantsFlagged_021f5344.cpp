@@ -10,6 +10,7 @@ struct Obj_021f5344 { int field0; };
 struct Buf8_021f5344 { short v[8]; };
 extern struct Buf8_021f5344 data_ov024_021fee4c;
 
+// JPN: func_ov024_021f5b10
 // USA: func_ov024_021f5344  (semantic: CheckAllCombatantsFlagged_021f5344)
 extern "C" ARM int func_ov024_021f5344(struct Obj_021f5344* obj, short id, int unused2, int* outFlag, short* outId) {
     GameObject* c = GetCombatantWithFlag0x400ByID(obj->field0, id);

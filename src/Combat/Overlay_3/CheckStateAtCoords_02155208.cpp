@@ -1,5 +1,12 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kRegionValue1E6_1E2 = 0x1e2 };
+#else
+enum { kRegionValue1E6_1E2 = 0x1e6 };
+#endif
+
+
 struct Outer020e28dc;
 struct Obj2081;
 
@@ -16,11 +23,12 @@ struct Ctx02155208 {
     char pad0[0x18];
     struct Obj2081* field18;      // 0x18
     struct Outer020e28dc* ptr1c;  // 0x1c
-    char pad1[0x1e6 - 0x20];
-    short key1e6;                 // 0x1e6
+    char pad1[kRegionValue1E6_1E2 - 0x20];
+    short key1e6;                 // kRegionValue1E6_1E2
 };
 
 // USA: func_ov003_02155208  (semantic: CheckStateAtCoords_02155208)
+// JPN: func_ov003_021568f0
 extern "C" ARM int func_ov003_02155208(struct Ctx02155208* self) {
     int flag = 0;
     if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2)) flag = 1;

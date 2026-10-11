@@ -1,3 +1,10 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define func_ov005_02158560 func_ov005_02159b58
+#define func_ov005_021585fc func_ov005_02159bf4
+#else
+#define R(j,u) (u)
+#endif
 #include "globaldefs.h"
 
 struct Overlay5BackingEntry { unsigned char unknown[0x70]; };
@@ -16,7 +23,7 @@ struct Overlay5LayoutEntry {
 struct Overlay5Layout {
     unsigned char unknown00[0x304];
     Overlay5BackingEntry backingEntries[24];
-    unsigned char unknownD84[0x2d90 - 0x304 - 24 * 0x70];
+    unsigned char unknownD84[R(0x2d08, 0x2d90) - 0x304 - 24 * 0x70];
     Overlay5LayoutEntry entries[24];
     Overlay5VisualEntry visuals[24];
 };

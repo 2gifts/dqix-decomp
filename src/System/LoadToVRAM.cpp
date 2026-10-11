@@ -8,8 +8,6 @@
 #pragma optimize_for_size off
 
 #if defined(jpn)
-#define func_020ca3b8 func_020cbe84
-#define func_020ca408 func_020cbed4
 
 #define data_020ed658 data_020ed764
 #define data_020ed668 data_020ed774

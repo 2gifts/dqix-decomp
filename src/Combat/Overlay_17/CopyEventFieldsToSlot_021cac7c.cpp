@@ -36,9 +36,14 @@ struct SrcEntry_021cac7c {
     struct Bits13_021cac7c bits13;
 };
 
-// USA: func_ov017_021cac7c  (semantic: CopyEventFieldsToSlot_021cac7c)
+// USA: func_ov017_021cac7c
+// JPN: func_ov017_021cb12c
 extern "C" ARM void func_ov017_021cac7c(int unused0, struct SrcEntry_021cac7c* src, GameState* battleStruct, unsigned char* base) {
+#if defined(jpn)
+    void* table = *(void**)(base + 0x3000 + 0x508);
+#else
     void* table = *(void**)(base + 0x3000 + 0x718);
+#endif
     void* obj = GetField6b0_021b8470(table);
     if (obj == NULL) {
         return;

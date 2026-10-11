@@ -8,6 +8,7 @@ extern "C" void func_ov024_021ed8c0(void* context, int id, int recordAddress, in
 
 extern unsigned short data_ov024_021feac4;
 
+// JPN: func_ov024_021f04a4
 // USA: func_ov024_021efcd8
 extern "C" ARM int func_ov024_021efcd8(int* a0, int a1, int a2, int* a3, short* a4) {
 	short buf[4];

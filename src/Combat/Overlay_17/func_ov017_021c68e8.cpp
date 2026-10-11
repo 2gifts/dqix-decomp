@@ -47,9 +47,14 @@ struct Evt021c68e8 {
     signed char field12;
 };
 
+// JPN: func_ov017_021c6d98
 // USA: func_ov017_021c68e8
 extern "C" ARM void func_ov017_021c68e8(int unused0, Evt021c68e8* evt, GameState* battleStruct, unsigned char* base, struct SearchStruct0202c1a4* search) {
+#if defined(jpn)
+    void* table = *(void**)(base + 0x3000 + 0x508);
+#else
     void* table = *(void**)(base + 0x3000 + 0x718);
+#endif
     Hdr021c68e8* a = (Hdr021c68e8*)func_ov017_021b8478(table);
     if (!a) return;
     void* b = func_ov017_021b8468(table);
@@ -81,7 +86,11 @@ extern "C" ARM void func_ov017_021c68e8(int unused0, Evt021c68e8* evt, GameState
             if (c != NULL) {
                 int field = GetFieldAt0x150((unsigned char*)c);
                 if (field != 0) {
+#if defined(jpn)
+                    ok = (signed char)*(int*)(field + 0x8b4) == 5;
+#else
                     ok = (signed char)*(int*)(field + 0x94c) == 5;
+#endif
                 }
             }
         }

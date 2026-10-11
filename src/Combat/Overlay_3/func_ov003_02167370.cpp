@@ -2,6 +2,15 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
 
+#if defined(jpn)
+enum { kRegionValue64_34 = 0x34 };
+enum { kRegionValue60_30 = 0x30 };
+#else
+enum { kRegionValue64_34 = 0x64 };
+enum { kRegionValue60_30 = 0x60 };
+#endif
+
+
 struct NotifyEntriesStruct0207f8bc;
 void FlushNotifyEntries(struct NotifyEntriesStruct0207f8bc* p);
 struct Struct02074bf4;
@@ -14,12 +23,13 @@ void ResetRecordList0204afb4(struct List0204afb4* obj);
 struct Obj0204c754;
 void ResetObject0204c754(struct Obj0204c754* obj);
 
-// USA: func_ov003_02167370  (semantic: ResetListsAndDestroyAllocators_02167370)
+// USA: func_ov003_02167370
+// JPN: func_ov003_02167250
 extern "C" ARM void func_ov003_02167370(char* obj) {
     int data4 = (int)BackgroundLoader::GetInstance();
-    if (*(int*)(obj + 0x64) >= 0) {
-        ((BackgroundLoader*)(data4))->RemoveTask((int)(*(int*)(obj + 0x64)));
-        *(int*)(obj + 0x64) = -1;
+    if (*(int*)(obj + kRegionValue64_34) >= 0) {
+        ((BackgroundLoader*)(data4))->RemoveTask((int)(*(int*)(obj + kRegionValue64_34)));
+        *(int*)(obj + kRegionValue64_34) = -1;
     }
 
     volatile unsigned int* p1 = (volatile unsigned int*)0x4001010;
@@ -32,7 +42,7 @@ extern "C" ARM void func_ov003_02167370(char* obj) {
     ClearFlag0x11IfSet((struct Struct02074bf4*)(obj + 0x1c));
 
     volatile unsigned int* dispcnt = (volatile unsigned int*)0x4001000;
-    *dispcnt = (*dispcnt & ~0x1f00) | (*(int*)(obj + 0x60) << 8);
+    *dispcnt = (*dispcnt & ~0x1f00) | (*(int*)(obj + kRegionValue60_30) << 8);
 
     DisableSubBGVRAMBanks();
     MapVRAMBanksToSubBG(*(int*)(obj + 0x14));

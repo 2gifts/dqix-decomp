@@ -29,6 +29,7 @@ extern "C" void _Z39IncrementByteCounterCapped0x63_0215a8d4Phi(void* battle, int
 extern "C" int func_ov000_02156068(void* battle, int id, int kind, int mode);
 extern "C" int _Z23IsFlagBit24Set_021dd260P16FlagObj_021dd260(struct Cbt_021e67c8* c);
 
+// JPN: func_ov024_021e7060
 // USA: func_ov024_021e67c8
 extern "C" ARM int func_ov024_021e67c8(struct Ctx_021e67c8* ctx, int mode, int targetId) {
     void* battle = ctx->battle;

@@ -35,6 +35,7 @@ struct Struct020dae68;
 void ReleaseResource020dae68(Struct020dae68* obj);
 
 // USA: func_ov017_021a3b40
+// JPN: func_ov017_021a45b4
 extern "C" ARM void func_ov017_021a3b40(void* unused, void* obj) {
 	if (!obj) return;
 	if (*((unsigned char*)obj + 1) != 0) return;

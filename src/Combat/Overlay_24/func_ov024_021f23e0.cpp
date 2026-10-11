@@ -8,6 +8,7 @@ extern "C" int func_ov000_0215e9fc(int battle, short* ids, int max, int flags);
 extern "C" void func_ov024_021ed8c0(void* context, int id, int record, int* count, short* ids);
 extern unsigned short data_ov024_021fea9c[4];
 
+// JPN: func_ov024_021f2bac
 // USA: func_ov024_021f23e0
 extern "C" ARM int func_ov024_021f23e0(int* context, unsigned char id, void* record,
     int* outCount, short* outIDs) {

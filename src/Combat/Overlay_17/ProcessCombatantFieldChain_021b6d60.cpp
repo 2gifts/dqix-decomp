@@ -1,3 +1,10 @@
+// JPN: func_ov017_021b7310
+#if defined(jpn)
+enum { RegionOffset154 = 0x148, RegionOffset2f = 0xb, RegionOffset35c = 0x13c };
+#else
+enum { RegionOffset154 = 0x154, RegionOffset2f = 0x2f, RegionOffset35c = 0x35c };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -5,7 +12,7 @@ struct Field150Holder02052e2c;
 
 struct Entry021b6d60 {
     unsigned char b0;
-    unsigned char pad[0x2f];
+    unsigned char pad[RegionOffset2f];
 };
 
 extern "C" void func_02086404(void* p);
@@ -42,14 +49,14 @@ extern "C" ARM int func_ov017_021b6d60(int a, void* b) {
     func_020830cc(field150, b);
     int val = GetWord0x0((int*)bs);
     func_02082828(field150);
-    short* f154 = *(short**)((char*)c + 0x154);
+    short* f154 = *(short**)((char*)c + RegionOffset154);
     if (f154 != NULL) {
         InvalidateField0(f154);
     }
     func_ov017_02190264(val, a);
     func_ov017_02191108(val, 1, 1, 1, 1);
     func_ov017_02191234(val);
-    struct Entry021b6d60* arr = (struct Entry021b6d60*)(((char*)val + 0x35c) + 0x4000);
+    struct Entry021b6d60* arr = (struct Entry021b6d60*)(((char*)val + RegionOffset35c) + 0x4000);
     arr += a;
     arr->b0 = 0;
     void* search = func_0202ae18();

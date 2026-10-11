@@ -1,3 +1,10 @@
+// JPN: func_ov017_0218e224
+#if defined(jpn)
+enum { RegionOffset4498 = 0x41e8 };
+#else
+enum { RegionOffset4498 = 0x4498 };
+#endif
+
 #include <globaldefs.h>
 #include "Resource/GameResources.h"
 #include "std_library_functions.h"
@@ -26,7 +33,7 @@ struct LocalEvt0218d644 {
 
 // USA: func_ov017_0218d644  (semantic: PrepareAndDispatchEventRecord_0218d644)
 extern "C" ARM void func_ov017_0218d644(GameResources* ov, void* a, int b) {
-    struct Obj020dbfa4* p = *(struct Obj020dbfa4**)((char*)ov + 0x4498);
+    struct Obj020dbfa4* p = *(struct Obj020dbfa4**)((char*)ov + RegionOffset4498);
 
     struct LocalEvt0218d644 buf;
     buf.name[0] = 0;

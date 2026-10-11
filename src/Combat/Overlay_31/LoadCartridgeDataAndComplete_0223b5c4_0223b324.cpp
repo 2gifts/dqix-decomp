@@ -29,7 +29,8 @@ extern const char data_ov031_0224c55c[];
 
 struct FatFntPair_0223b324 { unsigned int offset; unsigned int size; };
 
-// USA: func_ov031_0223b324  (semantic: LoadDataArchiveHandle_0223b324)
+// USA: func_ov031_0223b324
+// JPN: func_ov031_0223bb04
 extern "C" ARM void func_ov031_0223b324(void) {
 	data_ov031_02290d24.p = (FileBlock_0223b324*)func_ov031_0223cf4c(0xe8, 4);
 

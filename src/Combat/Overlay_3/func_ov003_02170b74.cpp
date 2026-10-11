@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegion460 = 0x35c };
+#else
+enum { kRegion460 = 0x460 };
+#endif
 
 struct Obj020827c4;
 
@@ -50,7 +55,7 @@ struct Obj02170b74 {
     unsigned int timer;
     unsigned char field8[0x190];
     unsigned char field198;
-    char pad199[0x460 - 0x199];
+    char pad199[kRegion460 - 0x199];
     Entry02170b74 entries[3];
     unsigned char field718;
     char pad719[3];
@@ -68,6 +73,7 @@ struct Obj02170b74 {
     int field738;
 };
 
+// JPN: func_ov003_02170230
 // USA: func_ov003_02170b74
 extern "C" ARM void func_ov003_02170b74(struct Obj02170b74* self) {
     self->state = 0;

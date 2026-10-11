@@ -1,6 +1,11 @@
 #include <globaldefs.h>
 
-struct Obj0215e27c { char unk[0x3e8]; int counter; };
+#if defined(jpn)
+enum { counterOffset = 0x400 };
+#else
+enum { counterOffset = 0x3e8 };
+#endif
+struct Obj0215e27c { char unk[counterOffset]; int counter; };
 
 // USA: func_ov003_0215e27c
 #pragma optimize_for_size off

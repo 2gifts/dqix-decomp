@@ -8,6 +8,7 @@ int PickRandomTableEntryResetCounter_021ed890(struct Random** rngPtr, int* maxAn
 
 extern unsigned short data_ov024_021fea7c;
 
+// JPN: func_ov024_021f5d68
 // USA: func_ov024_021f559c  (semantic: SelectStatShort2AndMaybePick_021f559c)
 extern "C" ARM int func_ov024_021f559c(int* a0, int a1, int a2, int* outCount, short* outArray) {
 	unsigned short buf[4];

@@ -28,7 +28,11 @@ extern "C" ARM void func_ov025_021dc880(unsigned char* obj) {
     void* global = _Z26GetGlobalField0x1c020421a0v();
 
     if (_ZZ16GetTimer021ef974vE1s.state == 0) {
+#if defined(jpn)
+        func_ov000_0216dbf0(obj + 0xb94, 0, 0, 0);
+#else
         func_ov000_0216dbf0(obj + 0xc18, 0, 0, 0);
+#endif
         func_ov000_021626a0(obj, 4, 1);
         func_02043124(global);
         _ZZ16GetTimer021ef974vE1s.state = 1;

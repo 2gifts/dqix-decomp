@@ -23,6 +23,7 @@ struct BuffWord_021f1578 {
     signed int unkBuff21 : 3;
 };
 
+// JPN: func_ov024_021f1d44
 // USA: func_ov024_021f1578  (semantic: FindCombatantWithLowUnkBuff21_021f1578)
 extern "C" ARM int func_ov024_021f1578(struct Obj_021f1578* obj, short id, int unused2, int* outCount, void* outArr) {
 	GameObject* c0 = GetCombatantWithFlag0x400ByID(obj->field0, id);

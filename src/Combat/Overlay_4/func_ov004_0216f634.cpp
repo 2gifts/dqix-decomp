@@ -4,6 +4,7 @@
 #include "Memory/SafeAllocator.h"
 #include "System/OverlayId.h"
 
+
 struct Actor0209c174;
 struct Obj_0205e88c;
 
@@ -44,6 +45,7 @@ struct Buffer6380 {
 };
 
 // USA: func_ov004_0216f634
+// JPN: func_ov004_0216fcc8
 extern "C" ARM int func_ov004_0216f634(void* self) {
     if (data_ov004_02171048.flags->b30 == 0) {
         func_ov011_021848a0(self, 0xd3);
@@ -58,7 +60,11 @@ extern "C" ARM int func_ov004_0216f634(void* self) {
         }
         data_ov004_02171048.flags->b34 = ProcessAndClassify_02212cbc(((SafeAllocator*)((char*)allocator + 4))->Allocate(0x700));
         char buf[0x40];
+#if defined(jpn)
+        memcpy(buf, &((Buffer6380*)((char*)gs + 0x6120))->data, 0x40);
+#else
         memcpy(buf, &((Buffer6380*)((char*)gs + 0x6380))->data, 0x40);
+#endif
         data_ov004_02171048.flags->b32 = func_ov031_0221156c(buf) != 0;
         data_ov004_02171048.flags->b33 = CompareField10PairOrZero_02211608(buf) != 0;
         func_020a1940(OVERLAY_ID(32));

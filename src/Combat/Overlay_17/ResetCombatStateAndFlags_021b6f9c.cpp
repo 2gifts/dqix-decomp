@@ -1,3 +1,10 @@
+// JPN: func_ov017_021b754c
+#if defined(jpn)
+enum { RegionOffset4400 = 0x4100, RegionOffsetae = 0xfe, RegionOffset6fc = 0x4ec, RegionOffsetb5c = 0x93c };
+#else
+enum { RegionOffset4400 = 0x4400, RegionOffsetae = 0xae, RegionOffset6fc = 0x6fc, RegionOffsetb5c = 0xb5c };
+#endif
+
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
 #include "Memory/AllocatorUnion.h"
@@ -32,8 +39,8 @@ extern "C" ARM void func_ov017_021b6f9c(char* self) {
     int f28 = *(int*)(self + 0x28);
     unsigned int flag2000 = f6b6 & 0x2000;
 
-    unsigned short val44ae = *(unsigned short*)(ov + 0x4400 + 0xae);
-    unsigned short* addr44ae = (unsigned short*)(ov + 0xae + 0x4400);
+    unsigned short val44ae = *(unsigned short*)(ov + RegionOffset4400 + RegionOffsetae);
+    unsigned short* addr44ae = (unsigned short*)(ov + RegionOffsetae + RegionOffset4400);
     if (val44ae == *(unsigned short*)(self + 0x24)) {
         addr44ae[0] = 0;
         addr44ae[1] = 0;
@@ -72,8 +79,8 @@ extern "C" ARM void func_ov017_021b6f9c(char* self) {
     ClearBitsInWord((unsigned int*)ov, 0x800);
     func_020a0c0c();
 
-    int* p36fc = *(int**)(ov + 0x3000 + 0x6fc);
-    char* p3b5c = *(char**)(ov + 0x3000 + 0xb5c);
+    int* p36fc = *(int**)(ov + 0x3000 + RegionOffset6fc);
+    char* p3b5c = *(char**)(ov + 0x3000 + RegionOffsetb5c);
     int useDefault;
     if (f28 < 0 || ListContainsId((ListHead02046b60*)p36fc, 4) == 0) {
         useDefault = 1;

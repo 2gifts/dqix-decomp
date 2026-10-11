@@ -8,9 +8,15 @@ struct Src021cbe50 {
 	unsigned char bytes[8];
 };
 
+// JPN: func_ov017_021cc300
 // USA: func_ov017_021cbe50
 ARM void CopySrcBytesToWordArrayIfFieldMatch_021cbe50(int unused0, Src021cbe50* src, int unused2, unsigned char* obj) {
-	void* h = *(void**)(obj + 0x3000 + 0x718);
+#if defined(jpn)
+ enum {regionalOffset0=0x508};
+#else
+ enum {regionalOffset0=0x718};
+#endif
+	void* h = *(void**)(obj + 0x3000 + regionalOffset0);
 	void* r = GetField6b0_021b8470(h);
 	if (!r) return;
 

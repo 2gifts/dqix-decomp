@@ -1,5 +1,12 @@
+// JPN: func_ov025_021e5f5c
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+
+#if defined(jpn)
+enum { WorkFlag = 0x71c5 };
+#else
+enum { WorkFlag = 0x6fd5 };
+#endif
 
 struct Vec3 { int x; int y; int z; };
 
@@ -64,7 +71,7 @@ extern "C" ARM int func_ov025_021e5a6c(struct Obj021e5a6c* obj, struct List02160
     }
     void* work = GetActiveCombatWork();
     if (work != 0) {
-        *(unsigned char*)((char*)work + 0x6000 + 0xfd5) = 1;
+        *(unsigned char*)((char*)work + WorkFlag) = 1;
     }
     return 1;
 }

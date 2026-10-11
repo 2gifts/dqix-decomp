@@ -1,6 +1,18 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
 #include "Combat/Main/BattleList.h"
+#if defined(jpn)
+#define REGION_VALUE(jpnValue, usaValue) jpnValue
+extern "C" int func_020e0484(void* list, void* alloc, const char* path, void* entries, unsigned short count, bool lock);
+extern "C" int func_ov017_021b2718(void* obj);
+extern const char* data_020f2a38;
+static inline char* DateConditionBase(void* state) {
+    return (char*)state + 0x5c0c;
+}
+#else
+#define REGION_VALUE(jpnValue, usaValue) usaValue
+#endif
+
 struct BattleStruct {
     int unk0;
     int unk4;
@@ -114,7 +126,7 @@ struct DateSlot0205faf4 { int f0; int f4; int f8; int fc; };
 struct Word569c_0205faf4 { unsigned int _pad0:12, a:4, b:5; };
 struct Nibble56b_0205faf4 { char pad[0x56b]; unsigned char _lo:4, hi:4; };
 
-#define NIB56B(c) (*(struct Nibble56b_0205faf4**)((char*)(c) + 0x150))
+#define NIB56B(c) (*(struct Nibble56b_0205faf4**)((char*)(c) + REGION_VALUE(0x144, 0x150)))
 #define HasNibble56b(c) (NIB56B(c) != NULL ? (NIB56B(c)->hi != 0 ? 1 : 0) : 0)
 #define GetNibble56b(c) (NIB56B(c) != NULL ? NIB56B(c)->hi : 0)
 
@@ -122,16 +134,16 @@ static inline int GetHp0205faf4(void* stat) {
     return *(unsigned short*)((char*)stat + 4);
 }
 static inline char* Sub569c0205faf4(void* bs) {
-    return (char*)bs + 0x569c;
+    return (char*)bs + REGION_VALUE(0x543c, 0x569c);
 }
 struct Word56a0_0205faf4 { int _pad0:19, v:11; };
 static inline struct Entry0x194_0205faf4* Entry194_0205faf4(struct CombatantStruct* c, unsigned char i) {
-    return (struct Entry0x194_0205faf4*)(*(char**)((char*)c + 0x150) + 0x194 + i * 0x20);
+    return (struct Entry0x194_0205faf4*)(*(char**)((char*)c + REGION_VALUE(0x144, 0x150)) + 0x194 + i * 0x20);
 }
 
 struct Flags1840_0205faf4 { char pad0[0xb3c]; unsigned int fb3c; char pad1[0xb4c - 0xb40]; unsigned int fb4c; };
 static inline struct Flags1840_0205faf4* Flags1840_0205faf4(void* p) {
-    return (struct Flags1840_0205faf4*)((char*)p + 0x1840);
+    return (struct Flags1840_0205faf4*)((char*)p + REGION_VALUE(0x1860, 0x1840));
 }
 #define FLAGS1840(p) Flags1840_0205faf4(p)
 #define OBJB ((unsigned char*)obj)
@@ -139,10 +151,10 @@ static inline struct Flags1840_0205faf4* Flags1840_0205faf4(void* p) {
 #define CS16(o) (*(short*)((char*)cmd + (o)))
 #define EW(o) (*(int*)((char*)extra + (o)))
 #define STAT130(c) (*(void**)((char*)(c) + 0x130))
-#define SUB150(c) (*(char**)((char*)(c) + 0x150))
+#define SUB150(c) (*(char**)((char*)(c) + REGION_VALUE(0x144, 0x150)))
 
 static inline int Field950_0205faf4(struct CombatantStruct* c) {
-    int v = *(int*)(SUB150(c) + 0x950);
+    int v = *(int*)(SUB150(c) + REGION_VALUE(0x8b8, 0x950));
     return v;
 }
 static inline int Extra24_0205faf4(struct ExtraStruct0205faf4* extra) {
@@ -663,7 +675,7 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
         return r == 0;
     }
     case 74: {
-        unsigned short v = *(unsigned short*)((char*)_ZN9GameState11GetInstanceEv() + 0x71dc);
+        unsigned short v = *(unsigned short*)((char*)_ZN9GameState11GetInstanceEv() + REGION_VALUE(0x6f9c, 0x71dc));
         if (v == 0) return CU16(2) == 0;
         return v == CU16(2);
     }
@@ -696,7 +708,7 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
         return 0;
     }
     case 79: {
-        char* p = *(char**)((char*)func_ov017_0218b5b0() + 0x3710);
+        char* p = *(char**)((char*)func_ov017_0218b5b0() + REGION_VALUE(0x3500, 0x3710));
         return *((unsigned char*)cmd + 4) == *(unsigned char*)(p + 0x133) && CU16(2) == *(unsigned short*)(p + 0x134);
     }
     case 80: {
@@ -712,7 +724,7 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
             if (*(int*)sub & 1) continue;
             if (GetHp0205faf4(sub) <= 0) continue;
             char* p = SUB150(c);
-            if (*(unsigned short*)(p + *(int*)(p + 0x950) * 2 + 0x16c) >= CU16(2)) return 1;
+            if (*(unsigned short*)(p + *(int*)(p + REGION_VALUE(0x8b8, 0x950)) * 2 + 0x16c) >= CU16(2)) return 1;
         }
         return 0;
     }
@@ -735,6 +747,9 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
         short n = CountPositiveEntries0207c638(party + 0x1d4, CU16(2));
         ZeroInitReturn020de824(&list);
         ZeroInit020de848(&list);
+#if defined(jpn)
+        func_020e0484(&list, &alloc, data_020f2a38, entries, n, true);
+#else
         _ZN16BackgroundLoader13AddLockGlobalEv();
         size = 0;
         void* data = ExtractFileFromGP2(data_020f2a38, data_020f2a30, &size);
@@ -742,6 +757,7 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
             func_020de9a4(&list, &alloc, data, size, entries, n);
         }
         _ZN16BackgroundLoader16RemoveLockGlobalEv();
+#endif
         int found = 0;
         signed char i;
         for (i = 0; i < n; i++) {
@@ -761,7 +777,7 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
     }
     case 84: {
         func_ov017_0218b5b0();
-        unsigned char v = *((unsigned char*)_ZN9GameState11GetInstanceEv() + 0x64de);
+        unsigned char v = *((unsigned char*)_ZN9GameState11GetInstanceEv() + REGION_VALUE(0x629e, 0x64de));
         return v == CU16(2);
     }
     case 85: {
@@ -800,7 +816,7 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
     }
     case 91: {
         char* p = (char*)func_ov017_0218b5b0();
-        return *((unsigned char*)cmd + 4) == *(unsigned char*)(p + 0x4449) && CU16(2) == *(signed char*)(p + 0x4446);
+        return *((unsigned char*)cmd + 4) == *(unsigned char*)(p + REGION_VALUE(0x4199, 0x4449)) && CU16(2) == *(signed char*)(p + REGION_VALUE(0x4196, 0x4446));
     }
     case 92: {
         struct FindEntryById02096134Elem* e = FindEntryById02096134((struct FindEntryById02096134Table*)GetGlobal02109418(), CU16(2));
@@ -814,7 +830,7 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
     case 94:
         return CU16(2) == FLAGS1840(func_02012fe4())->fb3c;
     case 95: {
-        unsigned short v = *(unsigned short*)((char*)func_02012fe4() + 0x27b4);
+        unsigned short v = *(unsigned short*)((char*)func_02012fe4() + REGION_VALUE(0x27f4, 0x27b4));
         return CS16(2) == v;
     }
     case 96: {
@@ -828,11 +844,15 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
         return n >= CU16(2);
     }
     case 97:
+#if defined(jpn)
+        return func_ov017_021b2718(*(void**)(DateConditionBase(_ZN9GameState11GetInstanceEv()) + 0x104)) == 0;
+#else
         return 0;
+#endif
     case 98:
-        return *((unsigned char*)func_02012fe4() + 0x27d0) <= CU16(2);
+        return *((unsigned char*)func_02012fe4() + REGION_VALUE(0x2810, 0x27d0)) <= CU16(2);
     case 99:
-        return *((unsigned char*)func_02012fe4() + 0x27d0) >= CU16(2);
+        return *((unsigned char*)func_02012fe4() + REGION_VALUE(0x2810, 0x27d0)) >= CU16(2);
     case 500: {
         struct BattleStruct* bs = (struct BattleStruct*)_ZN9GameState11GetInstanceEv();
         int outList[4];
@@ -852,7 +872,7 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
     case 501:
         return CU16(2) == _ZNK9GameState12GetTimeOfDayEv((struct BattleStruct*)_ZN9GameState11GetInstanceEv());
     case 502:
-        return ReadAndClearByte0x1b61((struct ReadClearByte02098ee8*)((char*)func_02012fe4() + 0x840));
+        return ReadAndClearByte0x1b61((struct ReadClearByte02098ee8*)((char*)func_02012fe4() + REGION_VALUE(0x860, 0x840)));
     case 503:
         if (CU16(2) != 0) return TestBitInByteArray((int)obj, OBJB + 0x8c, 0x798);
         return !TestBitInByteArray((int)obj, OBJB + 0x8c, 0x798);
@@ -860,7 +880,7 @@ extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct Ext
         char* bs = (char*)_ZN9GameState11GetInstanceEv();
         struct DateSlot0205faf4 s;
         RegisterSlotA020cf0fc((int)&s);
-        struct Word569c_0205faf4* w = (struct Word569c_0205faf4*)(bs + 0x569c);
+        struct Word569c_0205faf4* w = (struct Word569c_0205faf4*)(bs + REGION_VALUE(0x543c, 0x569c));
         return s.f4 == w->a && s.f8 == w->b;
     }
     case 505:

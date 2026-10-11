@@ -14,10 +14,16 @@ extern "C" void _ZN8Object3D10MakeHiddenEv(unsigned char* obj);
 struct TagObj_021bd4d0 {
     unsigned char pad0[0x16];
     unsigned short field16;
+#if defined(jpn)
+    unsigned char pad1[0xfd - 0x18];
+#else
     unsigned char pad1[0x101 - 0x18];
+#endif
+
     unsigned char field101;
 };
 
+// JPN: func_ov017_021bdac8
 // USA: func_ov017_021bd4d0  (semantic: DispatchAndPropagateFlag_021bd4d0)
 extern "C" ARM void func_ov017_021bd4d0(struct TagObj_021bd4d0* obj, int id, int clearFlag, int checkFlag2) {
     GameState* battleStruct;

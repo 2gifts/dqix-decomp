@@ -2,8 +2,6 @@
 #include "Graphics/NSBXX/Animation.h"
 #include "Graphics/NSBXX/RenderCommands_Common.h"
 
-#pragma optimize_for_size off
-
 void ApplyBindPoseTranslation(BoneMatrixRenderData* bmrd);
 void ApplyBindPoseScaling(BoneMatrixRenderData* bmrd);
 void ApplyBindPoseRotation(BoneMatrixRenderData* bmrd);

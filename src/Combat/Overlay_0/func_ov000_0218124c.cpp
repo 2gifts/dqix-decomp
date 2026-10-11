@@ -10,6 +10,21 @@ void CallFunc0204b620IfField0x14_0204b938(void* a, void* b, int x, int y, unsign
 extern "C" void func_0205ac40(void* dst, void* src);
 
 // USA: func_ov000_0218124c
+#if defined(jpn)
+extern "C" int func_ov017_021bdbcc(void*);
+extern "C" ARM void func_ov000_0218124c(unsigned char* obj, int idx, void* target, int icon, short x, short y) {
+    GameObject* member = GameState::GetInstance()->GetPartyMemberByIndex(idx);
+    if (member != 0 && *(int*)((char*)member + 0x1b8) != 0) {
+        void* entry = GetEntryByIndexStride0x10((EntryList0204af14*)(obj + 0x8c4), 28);
+        CallFunc0204b620IfField0x14_0204b938(target, entry, x, y, (unsigned short)(idx + 2));
+        return;
+    }
+    unsigned char entryIdx = icon + 15;
+    if (func_ov017_021bdbcc(func_ov017_0218b5b0()) != 0) entryIdx = 15;
+    void* entry = GetEntryByIndexStride0x10((EntryList0204af14*)(obj + 0x8c4), entryIdx);
+    CallFunc0204b620IfField0x14_0204b938(target, entry, x, y, (unsigned short)(idx + 2));
+}
+#else
 extern "C" ARM void func_ov000_0218124c(unsigned char* obj, int idx, void* target, int unused, short x, short y, short posX, short posY) {
     GameState* gs = GameState::GetInstance();
     unsigned int entryIdx = 5;
@@ -39,3 +54,4 @@ extern "C" ARM void func_ov000_0218124c(unsigned char* obj, int idx, void* targe
         func_0205ac40(obj + 0x11c, p);
     }
 }
+#endif

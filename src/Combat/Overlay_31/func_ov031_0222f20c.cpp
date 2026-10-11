@@ -1,3 +1,4 @@
+// JPN: func_ov031_0222f9ec
 #include <globaldefs.h>
 
 extern "C" int func_ov031_0222fd9c(int idx);

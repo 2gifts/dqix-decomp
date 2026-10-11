@@ -1,3 +1,4 @@
+// JPN: func_ov017_021ad62c
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
@@ -19,6 +20,15 @@ struct TailNode020469b4;
 struct HeadList020469f8;
 struct HeadNode020469f8;
 struct Struct021b11b0;
+
+#if defined(jpn)
+extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(void* obj, int index, char* text);
+extern "C" void func_02045d88(void* obj, const char* text, int value);
+extern "C" char data_ov017_021d7f3b;
+enum { ResourceClearA = 0x41fe, ResourceClearB = 0x4200, MessageDone = 0x17e2, MessageActive = 0x868, GameEvent = 0x7cb4, GameEventData = 0x7ca8 };
+#else
+enum { ResourceClearA = 0x44ae, ResourceClearB = 0x44b0, MessageDone = 0x19b2, MessageActive = 0x998, GameEvent = 0x7f88, GameEventData = 0x7f7c };
+#endif
 
 struct ObjParams02078484 {
     unsigned char f00;
@@ -63,7 +73,11 @@ struct Battle021acdf4 {
     char pad2c[0x14];
     short task;
     char pad42[2];
+#if defined(jpn)
+    unsigned char sub44[0x20c - 0x44];
+#else
     unsigned char sub44[0x27c - 0x44];
+#endif
     unsigned char skipIntro;
     unsigned char mode;
     unsigned char shortPath;
@@ -360,12 +374,12 @@ extern "C" ARM void func_ov017_021acdf4(Battle021acdf4* self, HeadList020469f8* 
                 InitStruct02070378((char*)ctx);
                 ctx[4] = 0;
                 ctx[5] = 1;
-                *(unsigned short*)ctx = *(unsigned short*)((char*)gs2 + 0x7f88);
-                _ZN8Vector3iaSERKS_((Vector3i*)(ctx + 0x10), *(Vector3i*)((char*)gs2 + 0x7f7c));
+                *(unsigned short*)ctx = *(unsigned short*)((char*)gs2 + GameEvent);
+                _ZN8Vector3iaSERKS_((Vector3i*)(ctx + 0x10), *(Vector3i*)((char*)gs2 + GameEventData));
                 ctx[7] = 1;
                 ctx[0x62] = 1;
                 ctx[0x63] = other->mode;
-                if (*(unsigned short*)((char*)gs2 + 0x7f88) == 0x2710) {
+                if (*(unsigned short*)((char*)gs2 + GameEvent) == 0x2710) {
                     *(short*)ctx = 0x170c;
                     *(int*)(ctx + 0x10) = -0x7000;
                     *(int*)(ctx + 0x14) = 0x2e1;
@@ -416,8 +430,8 @@ extern "C" ARM void func_ov017_021acdf4(Battle021acdf4* self, HeadList020469f8* 
         if (self->special) {
             func_ov017_021c37a4();
         }
-        *(short*)((char*)res + 0x44ae) = 0;
-        *(short*)((char*)res + 0x44b0) = 0;
+        *(short*)((char*)res + ResourceClearA) = 0;
+        *(short*)((char*)res + ResourceClearB) = 0;
     } else if (self->state == 6) {
         if (IsBrightnessTransitionActive(res)) {
             return;
@@ -441,12 +455,17 @@ extern "C" ARM void func_ov017_021acdf4(Battle021acdf4* self, HeadList020469f8* 
                 }
             }
             char* g = (char*)GetGlobalField0x1c020421a0();
+#if defined(jpn)
+            _Z22SetIndexedName02046574P11Obj02046574iPc(g, 0, *(char**)((char*)gs->GetUnknownGameObject() + 0x134));
+            func_02045d88(g, &data_ov017_021d7f3b, 0);
+#else
             char combatant[0xc];
             InitObjFromCombatant020e4c74(combatant, gs->GetUnknownGameObject());
             *(char**)g = combatant;
             func_0204500c(g, CallFunc020e0434With02153694(0x39), 0, 0xe3);
-            g[0x19b2] = 0;
-            *(int*)(g + 0x998) = 1;
+#endif
+            g[MessageDone] = 0;
+            *(int*)(g + MessageActive) = 1;
             unsigned char* obj = (unsigned char*)GetFieldIfFlag4((char*)gs);
             StoreFields0x1e4And0x1e8IfNonZero(obj, 0xcc, 0x3e8);
             _ZN8Vector3iaSERKS_(&self->savedPos, *(Vector3i*)(obj + 0x10));

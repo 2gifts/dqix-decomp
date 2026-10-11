@@ -22,14 +22,26 @@ struct Node02021f88 {
 };
 
 struct CombatResourceStatePrefix {
+#if defined(jpn)
+    char pad0[0x6a8];
+#else
     char pad0[0x754];
+#endif
     Node02021f88 *first;
+#if defined(jpn)
+    char pad758[0x9ca - 0x6ac];
+#else
     char pad758[0xa96 - 0x758];
+#endif
     unsigned char activeCombatants;
 };
 
 struct CombatantFlagsPrefix {
+#if defined(jpn)
+    char pad0[0x180];
+#else
     char pad0[0x18c];
+#endif
     unsigned int flags;
 };
 

@@ -24,7 +24,11 @@ ARM void EnqueueNameTag3_021c45b4(int combatantId) {
     struct LocalEvt021c45b4 buf;
     buf.tag = 3;
     buf.field4 = (unsigned char)combatantId;
+#if defined(jpn)
+    char* rb = *(char**)((char*)c + 0x134);
+#else
     char* rb = (char*)ResetBuffer02052a10((char*)c);
+#endif
     strcpy(buf.name, rb);
     func_0205e330(p, &buf, 0);
 }

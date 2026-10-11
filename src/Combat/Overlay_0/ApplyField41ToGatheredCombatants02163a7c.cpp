@@ -7,7 +7,11 @@ struct Obj02049f50;
 void SetField41AndScaleSub02049f50(struct Obj02049f50* obj, int val, int count);
 
 struct GatherObj02163a7c {
+#if defined(jpn)
+    char pad[0x218];
+#else
     char pad[0x29c];
+#endif
     int field29c;
 };
 

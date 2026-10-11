@@ -1,3 +1,12 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define data_ov024_021fe80c data_ov023_021fdad4
+#define data_ov024_021fec60 data_ov023_021fdf18
+#define data_ov024_021fed64 data_ov023_021fe018
+#define func_ov023_021f8cf4 func_ov023_021f8180
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #include "Memory/SafeAllocator.h"
@@ -12,7 +21,7 @@ extern "C" int func_ov023_021fad84(void* obj, void* ctx, int arg3, int arg4, int
 
 struct EventNode02185d04 {
     void* vtable;
-    char pad[0x4c - 4];
+    char pad[R(0x50,0x4c) - 4];
 };
 extern char data_ov024_021fec60;
 
@@ -32,12 +41,12 @@ extern "C" ARM int func_ov011_02185d04(struct TaggedNumber02184c30* tagged) {
     if (!node) return 0;
 
     ((SafeAllocator*)((char*)node + 4))->GetSizeWithLargestBlockRemoved();
-    void* block = ((SafeAllocator*)((char*)node + 4))->Allocate(0x4c);
+    void* block = ((SafeAllocator*)((char*)node + 4))->Allocate(R(0x50,0x4c));
     if (!block) return 0;
 
     EventNode02185d04 tmp;
     tmp.vtable = &data_ov024_021fec60;
-    memcpy(block, &tmp, 0x4c);
+    memcpy(block, &tmp, R(0x50,0x4c));
 
     if (!func_ov023_021fad84(block, ctx, v0, v1, v2, v3)) return 0;
 

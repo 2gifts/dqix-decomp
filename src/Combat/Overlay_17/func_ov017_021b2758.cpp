@@ -1,7 +1,14 @@
+// JPN: func_ov017_021b2e68
 #include <globaldefs.h>
 #include "Graphics/LightingManager.h"
 #include "GameState/GameState.h"
 #include "Resource/GameResources.h"
+
+#if defined(jpn)
+enum { Field105 = 0x125, Field10c = 0x12c };
+#else
+enum { Field105 = 0x105, Field10c = 0x10c };
+#endif
 
 void SetField0x3b0Value(GameState* battleStruct, int value);
 void* GetField0x3f8Address(GameState* battleStruct);
@@ -91,7 +98,7 @@ extern "C" ARM int func_ov017_021b2758(SelfState_021b2758* self) {
         SetField0x23cTrue((void*)flagVal);
     }
     if (ctx != 0) {
-        ctx[0x105] &= ~1;
+        ctx[Field105] &= ~1;
     }
 
     if (!self->field0x38.b.bit5) {
@@ -102,7 +109,7 @@ extern "C" ARM int func_ov017_021b2758(SelfState_021b2758* self) {
     Data02107930_021b2758* d = (Data02107930_021b2758*)LightingManager::GetInstance();
     int f90 = d->f90;
     int idx = d->f98;
-    unsigned char* base = ctx + 0x10c;
+    unsigned char* base = ctx + Field10c;
     if (f90 != 0) idx = f90;
     unsigned short color;
     if (*(int*)(base + 0x304) == 1) {

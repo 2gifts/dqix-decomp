@@ -1,4 +1,14 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegion12c0 = 0x1150 };
+enum { kRegion410 = 0x428 };
+enum { kRegionf1c = 0xda0 };
+#else
+enum { kRegion12c0 = 0x12c0 };
+enum { kRegion410 = 0x410 };
+enum { kRegionf1c = 0xf1c };
+#endif
+
 
 int GetGlobalField0x1c020421a0();
 void Forward0204359c(void* obj, int count);
@@ -15,10 +25,11 @@ struct S0216d53c {
     char pad0[4];
     short field4;
     short field6;
-    char pad1[0x12c0 - 0x8];
+    char pad1[kRegion12c0 - 0x8];
     void* field12c0;
 };
 
+// JPN: func_ov003_0216d010
 // USA: func_ov003_0216d53c  (semantic: DispatchStateByField4And6_0216d53c)
 extern "C" ARM void func_ov003_0216d53c(S0216d53c* obj) {
     int g = GetGlobalField0x1c020421a0();
@@ -34,7 +45,7 @@ extern "C" ARM void func_ov003_0216d53c(S0216d53c* obj) {
 
     if (obj->field4 == 4) {
         if (obj->field6 > 0) {
-            func_ov003_02170280((char*)obj + 0x410);
+            func_ov003_02170280((char*)obj + kRegion410);
             return;
         }
     }
@@ -45,7 +56,7 @@ extern "C" ARM void func_ov003_0216d53c(S0216d53c* obj) {
         return;
     }
     if (obj->field4 == 5 && obj->field6 == 6) {
-        EmptyStub_02173f04((char*)obj + 0xf1c);
+        EmptyStub_02173f04((char*)obj + kRegionf1c);
     }
     return;
 }

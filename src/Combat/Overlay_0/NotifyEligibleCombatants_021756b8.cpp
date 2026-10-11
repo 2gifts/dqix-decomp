@@ -19,7 +19,12 @@ extern "C" ARM void func_ov000_021756b8(void* obj) {
             continue;
         }
         int ptrVal = GetFieldAt0x150((unsigned char*)c);
-        int val = *(int*)(ptrVal + 0x94c);
+#if defined(jpn)
+        enum { statusOffset = 0x8b4 };
+#else
+        enum { statusOffset = 0x94c };
+#endif
+        int val = *(int*)(ptrVal + statusOffset);
         signed char statusByte = (signed char)val;
         if (statusByte == 5) {
             continue;

@@ -1,5 +1,30 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kRegionValue324_20C = 0x20c };
+enum { kRegionValue334_21C = 0x21c };
+enum { kRegionValue328_210 = 0x210 };
+enum { kRegionValue38C_274 = 0x274 };
+enum { kRegionValue460_288 = 0x288 };
+enum { kRegionValue394_27C = 0x27c };
+enum { kRegionValue470_298 = 0x298 };
+enum { kRegionValue464_28C = 0x28c };
+enum { kRegionValue488_2B0 = 0x2b0 };
+enum { kRegionValue474_29C = 0x29c };
+#else
+enum { kRegionValue324_20C = 0x324 };
+enum { kRegionValue334_21C = 0x334 };
+enum { kRegionValue328_210 = 0x328 };
+enum { kRegionValue38C_274 = 0x38c };
+enum { kRegionValue460_288 = 0x460 };
+enum { kRegionValue394_27C = 0x394 };
+enum { kRegionValue470_298 = 0x470 };
+enum { kRegionValue464_28C = 0x464 };
+enum { kRegionValue488_2B0 = 0x488 };
+enum { kRegionValue474_29C = 0x474 };
+#endif
+
+
 struct Obj2081;
 struct Outer020e28dc;
 struct Container0205a3d0;
@@ -21,21 +46,22 @@ extern "C" void _Z22IterateEntries0205a330P17Container0205a330i(Container0205a33
 void SetEntryPosition(Container0205a3d0* c, int key, short a, short b);
 
 struct Scene0216039c {
-    char pad0[0x324];
+    char pad0[kRegionValue324_20C];
     Obj2081* p324;
-    char pad328[0x334 - 0x328];
-    char x334[0x38c - 0x334];
+    char pad328[kRegionValue334_21C - kRegionValue328_210];
+    char x334[kRegionValue38C_274 - kRegionValue334_21C];
     Container0205a3d0* p38c;
     Outer020e28dc* p390;
-    char pad394[0x460 - 0x394];
+    char pad394[kRegionValue460_288 - kRegionValue394_27C];
     int field_460;
-    char pad464[0x470 - 0x464];
+    char pad464[kRegionValue470_298 - kRegionValue464_28C];
     short* p470;
-    char pad474[0x488 - 0x474];
+    char pad474[kRegionValue488_2B0 - kRegionValue474_29C];
     short h488;
 };
 
 // USA: func_ov003_0216039c
+// JPN: func_ov003_02160554
 extern "C" ARM void func_ov003_0216039c(Scene0216039c* self) {
     if (self->p470 == NULL || self->h488 < 0 || self->p324 == NULL) {
         return;

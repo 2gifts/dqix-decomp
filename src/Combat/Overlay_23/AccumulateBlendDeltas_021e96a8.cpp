@@ -9,8 +9,14 @@ extern "C" void* __clear(void* dst, int count);
 struct Blend10_021e96a8 { int x : 10; int y : 10; int z : 10; };
 struct Node021e96a8 { char pad[0x18]; struct Blend10_021e96a8 posDelta; struct Blend10_021e96a8 rotDelta; };
 
+// JPN: func_ov023_021e960c
 // USA: func_ov023_021e96a8  (semantic: AccumulateBlendDeltas_021e96a8)
 extern "C" ARM int func_ov023_021e96a8(unsigned char* obj) {
+#if defined(jpn)
+ enum { regionalOffset=0x144 };
+#else
+ enum { regionalOffset=0x150 };
+#endif
     GameState::GetInstance();
     GameObject* entry = func_ov023_021e8f28(func_ov017_021d60f4(obj));
     if (entry == 0) {
@@ -21,7 +27,7 @@ extern "C" ARM int func_ov023_021e96a8(unsigned char* obj) {
     __clear(accum, 0x18);
 
     for (int j = 0; j < 0xb; j++) {
-        int tableAddr = *(int*)((char*)entry + 0x150) + 0x194;
+        int tableAddr = *(int*)((char*)entry + regionalOffset) + 0x194;
         int slotAddr = tableAddr + ((unsigned char)j << 5);
         struct Node021e96a8* node;
         if (slotAddr != 0 && (node = *(struct Node021e96a8**)slotAddr) != 0) {

@@ -33,11 +33,17 @@ struct Evt021c62e4 {
     Payload021c62e4 payload;
 };
 
+// JPN: func_ov017_021c6794
 // USA: func_ov017_021c62e4
 extern "C" ARM void func_ov017_021c62e4(int unused0, Evt021c62e4* src, void* unused2, char* base) {
+#if defined(jpn)
+ enum {regionalOffset0=0x508};
+#else
+ enum {regionalOffset0=0x718};
+#endif
     Slot021c62e4* slot;
     int i;
-    void* table = *(void**)(base + 0x3000 + 0x718);
+    void* table = *(void**)(base + 0x3000 + regionalOffset0);
 
     char* state = (char*)_Z20GetField6b0_021b8470Pv(table);
     if (!state) return;

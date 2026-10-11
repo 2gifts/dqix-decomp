@@ -18,8 +18,14 @@ struct LocalEvt021d0b30 {
     struct Sub021d0b30 sub;
 };
 
+// JPN: func_ov017_021d0fe0
 // USA: func_ov017_021d0b30  (semantic: EnqueueTag2aAndMaybeFormatName_021d0b30)
 extern "C" ARM void func_ov017_021d0b30(unsigned short a, unsigned short b, char* c) {
+#if defined(jpn)
+ enum {regionalOffset0=0x13c, regionalOffset1=0xc};
+#else
+ enum {regionalOffset0=0x35c, regionalOffset1=0x30};
+#endif
     void* data = GetData02100044();
     struct LocalEvt021d0b30 buf;
     struct Sub021d0b30* s = &buf.sub;
@@ -35,11 +41,17 @@ extern "C" ARM void func_ov017_021d0b30(unsigned short a, unsigned short b, char
     if (a != 0) return;
 
     unsigned char* base = (unsigned char*)func_ov017_0218b5b0();
-    unsigned char* entry = base + 0x35c + 0x4000 + b * 0x30;
+    unsigned char* entry = base + regionalOffset0 + 0x4000 + b * regionalOffset1;
     if (entry == 0) return;
 
-    char nameBuf[0x30];
-    __clear(nameBuf, 0x30);
+#if defined(jpn)
+    strcpy((char*)entry, c);
+
+#else
+    char nameBuf[regionalOffset1];
+    __clear(nameBuf, regionalOffset1);
     func_02042764(c, nameBuf, 1);
     strcpy((char*)entry, nameBuf);
+
+#endif
 }

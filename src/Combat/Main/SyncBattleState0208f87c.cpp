@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define IS_JPN 1
+#else
+#define IS_JPN 0
+#endif
 
 extern "C" void* func_ov017_0218b5b0(void* p);
 unsigned int GetBitsInField4(unsigned int* obj, unsigned int mask);
@@ -25,10 +30,11 @@ extern "C" void _ZN12RenderConfig12SubmitToFifoEv(void);
 struct Battler02035e1c;
 extern "C" int _ZN8Object3D26DrawMeshWithMaterialSimpleEbiii(struct Battler02035e1c* a, int b, int c, int d, int e);
 
+// JPN: 0x02090190
 // USA: func_0208f87c
 ARM void SyncBattleState0208f87c(void* self, int b, int c, int d) {
     void* ov = func_ov017_0218b5b0(self);
-    void* r4 = *(void**)((char*)ov + 0x36cc);
+    void* r4 = *(void**)((char*)ov + (IS_JPN ? 0x34bc : 0x36cc));
     if (GetBitsInField4((unsigned int*)ov, 0x200400) != 0) {
         return;
     }

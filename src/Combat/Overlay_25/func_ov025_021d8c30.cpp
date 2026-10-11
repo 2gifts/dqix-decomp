@@ -1,7 +1,14 @@
+// JPN: func_ov025_021d94f0
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Graphics/LightingManager.h"
 #include "System/Matrix.h"
+
+#if defined(jpn)
+enum { CombatantSubobject = 0x144, Field9ec = 0x968, Field9e0 = 0x95c, Field826 = 0x7a2, Field4c8 = 0x444, Field4c4 = 0x440, Fieldeb8 = 0xe34, Fieldea8 = 0xe24, Field4d0 = 0x44c, Field4ca = 0x446, Field2a0 = 0x21c, Field46c = 0x3e8, Field18c = 0x180, CameraPosition = 0xc04, EntryList = 0x371c, Field6e4e = 0x703e, Field6efe = 0x70ee, Field6fd8 = 0x71c8, Field6fe8 = 0x71d8, Field7744 = 0x7934, Field7745 = 0x7935, Field7746 = 0x7936, PendingShake = 0x71cc, PendingState = 0x71ec, Auxiliary = 0x224, MessageQueue = 0x80c, CameraBase = 0xb94, ModeByte = 0xdb4 };
+#else
+enum { CombatantSubobject = 0x150, Field9ec = 0x9ec, Field9e0 = 0x9e0, Field826 = 0x826, Field4c8 = 0x4c8, Field4c4 = 0x4c4, Fieldeb8 = 0xeb8, Fieldea8 = 0xea8, Field4d0 = 0x4d0, Field4ca = 0x4ca, Field2a0 = 0x2a0, Field46c = 0x46c, Field18c = 0x18c, CameraPosition = 0xc88, EntryList = 0x3760, Field6e4e = 0x6e4e, Field6efe = 0x6efe, Field6fd8 = 0x6fd8, Field6fe8 = 0x6fe8, Field7744 = 0x7744, Field7745 = 0x7745, Field7746 = 0x7746, PendingShake = 0x6fdc, PendingState = 0x6ffc, Auxiliary = 0x2a8, MessageQueue = 0x890, CameraBase = 0xc18, ModeByte = 0xe38 };
+#endif
 
 struct List02160094;
 struct ListNode02160094 {
@@ -264,7 +271,7 @@ static inline fix32_t MulFx(fix32_t a, fix32_t b) {
 }
 
 static inline Vector3fix GetPendingShake(void* work) {
-    return *(Vector3fix*)((unsigned char*)work + 0x3dc + 0x6c00);
+    return *(Vector3fix*)((unsigned char*)work + PendingShake);
 }
 
 // USA: func_ov025_021d8c30
@@ -331,10 +338,10 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
         entryIsKind2 = 1;
     }
 
-    if (kind == 0 && sl[0x6e4e] == 6) return 0;
-    if (kind == 1 && sl[0x6e4e] == 4) return 0;
+    if (kind == 0 && sl[Field6e4e] == 6) return 0;
+    if (kind == 1 && sl[Field6e4e] == 4) return 0;
 
-    *(unsigned short*)(sl + 0x9ec) = sl[0x9e0];
+    *(unsigned short*)(sl + Field9ec) = sl[Field9e0];
 
     int id = -1;
     result = 0;
@@ -360,7 +367,7 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
             _Z18AppendRow_021dcc70PcS_((char*)sl, (char*)&tmp);
             return 0;
         }
-        int queued = sl[0x6efe];
+        int queued = sl[Field6efe];
         if (queued > 0) {
             struct SlotEntry_021d8c30 tmp2;
             tmp2.w2 = category;
@@ -409,7 +416,7 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
         }
     }
     if (sb->needsInit) {
-        _Z23SetOrInitField_02182498Pvi(sl + 0x3fc + 0x6c00, 1);
+        _Z23SetOrInitField_02182498Pvi(sl + PendingState, 1);
     }
 
     GameObject* actor = battle->GetCombatantByIndex(id);
@@ -436,11 +443,11 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
         leadNode = first;
     }
 
-    msg = (struct MsgPair_021d8c30*)(sl + 0x826);
+    msg = (struct MsgPair_021d8c30*)(sl + Field826);
     didAnim = 0;
-    sfx = *(short*)(sl + 0x4c8);
+    sfx = *(short*)(sl + Field4c8);
     animObj = actor;
-    soundId = *(unsigned short*)(sl + 0x4c4);
+    soundId = *(unsigned short*)(sl + Field4c4);
     keepDefault = textKind = didAnim;
     if (row != 0 && (row->codes[1] == 8 || row->codes[1] == 7 || row->codes[1] == 6) && row->codes[2] == 3) {
         soundId = 1;
@@ -449,11 +456,11 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
     }
 
     if (kind == 0) {
-        func_ov025_021eaf48(sl + 0x2a8, idx, category, result);
+        func_ov025_021eaf48(sl + Auxiliary, idx, category, result);
     } else if (kind == 1) {
-        func_ov025_021ea604(sl + 0x2a8, idx, category, result);
+        func_ov025_021ea604(sl + Auxiliary, idx, category, result);
     } else if (kind == 3) {
-        func_ov025_021ea604(sl + 0x2a8, idx, category, result);
+        func_ov025_021ea604(sl + Auxiliary, idx, category, result);
     }
     if (kind != 2) {
         func_ov000_02162dc4(sl, leadObj, actor, target->flags18, target->b1d, target->b1e, target->mask, 0);
@@ -478,16 +485,16 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
             if (slotObj == 0) continue;
 
             if (row->codes[i] == 3 && kind == 2) {
-                Vector3fix pos = *(Vector3fix*)(sl + 0x88 + 0xc00);
+                Vector3fix pos = *(Vector3fix*)(sl + CameraPosition);
                 fix32_t q = fix32_Divide(0x6000, pos.z);
                 pos.y = FIX32_MULTIPLY(pos.y, q);
                 pos.z = 0x7000;
-                _Z23SetPosAndFields0216f1e4PvPiii(sl + 0x18 + 0xc00, &pos.x, 0xb33, 0);
-                StoreFields0x1e4And0x1e8IfNonZero(sl + 0x18 + 0xc00, 0xcc, 0x3e8);
+                _Z23SetPosAndFields0216f1e4PvPiii(sl + CameraBase, &pos.x, 0xb33, 0);
+                StoreFields0x1e4And0x1e8IfNonZero(sl + CameraBase, 0xcc, 0x3e8);
                 if (kind != 2) {
                     SetShortTriple0x6e44(sl, 0x199, 0x258, 0x32);
                 }
-                if (sl[0x6fd8]) {
+                if (sl[Field6fd8]) {
                     _Z15Forward0205ec20PvS_i(&data_02108760, 0, 0);
                 }
                 _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 0x44, 0);
@@ -511,9 +518,9 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
                     soundId = 0x22;
                 }
                 if ((row->codes[slot] == 8 || row->codes[slot] == 7 || row->codes[slot] == 6) && kind != 2) continue;
-                if (sl[0x7744] == slotId) continue;
-                func_ov025_021ed444((char*)(sl + 0x890), 0x1b8, slotId, 0, 0, -1, 0);
-                sl[0x7744] = slotId;
+                if (sl[Field7744] == slotId) continue;
+                func_ov025_021ed444((char*)(sl + MessageQueue), 0x1b8, slotId, 0, 0, -1, 0);
+                sl[Field7744] = slotId;
             } else if (row->codes[i] == 1 || row->codes[i] == 2) {
                 if (kind != 2) continue;
                 didAnim = 1;
@@ -539,15 +546,15 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
                 } else {
                     text = IsPartyMember(slotId) ? 0xa9 : 0xaa;
                 }
-                func_ov025_021ed444((char*)(sl + 0x890), text, slotId, 0, 0, -1, 0);
+                func_ov025_021ed444((char*)(sl + MessageQueue), text, slotId, 0, 0, -1, 0);
             } else if (row->codes[i] == 8 || row->codes[i] == 7 || row->codes[i] == 6) {
                 specialRow = 1;
                 if (row->codes[2] == 1 || row->codes[2] == 2) continue;
                 alt = 0;
                 if (leadNode && IsPartyIndex(leadNode->combatantId)) {
                     GameObject* lead = GetCombatantWithFlag0x100(battle, leadNode->combatantId);
-                    if (lead && (TestBit0At0x2f4(*(unsigned char**)((unsigned char*)lead + 0x150)) ||
-                                 TestBit1At0x2f4(*(unsigned char**)((unsigned char*)lead + 0x150)))) {
+                    if (lead && (TestBit0At0x2f4(*(unsigned char**)((unsigned char*)lead + CombatantSubobject)) ||
+                                 TestBit1At0x2f4(*(unsigned char**)((unsigned char*)lead + CombatantSubobject)))) {
                         if (entry && entry->kind14 != 2) alt = 1;
                     }
                 }
@@ -555,27 +562,27 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
                     if (entry == 0) continue;
                     if (entry->kind14 != 3 && entry->kind14 != 4) continue;
                 }
-                if (sl[0x7745] == row->ids[i] && sl[0x7746] == row->ids[slot]) continue;
+                if (sl[Field7745] == row->ids[i] && sl[Field7746] == row->ids[slot]) continue;
                 int msgId = 0x7f;
                 int slotParty = 0;
                 if (row->ids[slot] >= 0 && row->ids[slot] <= 3) slotParty = 1;
                 if (slotParty) msgId = 0x7e;
                 idx = i - 1;
-                func_ov025_021ed444((char*)(sl + 0x890), msgId, row->ids[slot], 0, 0, row->ids[i], 0);
-                sl[0x7745] = row->ids[i];
-                sl[0x7746] = row->ids[idx];
+                func_ov025_021ed444((char*)(sl + MessageQueue), msgId, row->ids[slot], 0, 0, row->ids[i], 0);
+                sl[Field7745] = row->ids[i];
+                sl[Field7746] = row->ids[idx];
             } else if (row->codes[i] == 0xa) {
-                if (sl[0x7744] == slotId) continue;
-                func_ov025_021ed444((char*)(sl + 0x890), 0x143, slotId, 0, 0, -1, 0);
-                sl[0x7744] = slotId;
+                if (sl[Field7744] == slotId) continue;
+                func_ov025_021ed444((char*)(sl + MessageQueue), 0x143, slotId, 0, 0, -1, 0);
+                sl[Field7744] = slotId;
             } else if (row->codes[i] == 4 || row->codes[i] == 5) {
-                if (sl[0x7744] == slotId) continue;
-                if (sl[0x6fd8]) {
+                if (sl[Field7744] == slotId) continue;
+                if (sl[Field6fd8]) {
                     _Z15Forward0205ec20PvS_i(&data_02108760, 0, 0);
                 }
                 _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 0x44, 0);
-                func_ov025_021ed444((char*)(sl + 0x890), 0x142, slotId, 0, 0, -1, 0);
-                sl[0x7744] = slotId;
+                func_ov025_021ed444((char*)(sl + MessageQueue), 0x142, slotId, 0, 0, -1, 0);
+                sl[Field7744] = slotId;
                 if (IsPartyMember(slotId)) {
                     animObj = slotObj;
                     didAnim = 1;
@@ -613,7 +620,7 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
             _Z26FindNodeAndProcess02057fb4Pvii(list, soundId, (int)&req);
         }
         if (sb->pendingA) {
-            func_ov025_021ed444((char*)(sl + 0x890), sb->pendingA, -1, 0, 0, -1, 0);
+            func_ov025_021ed444((char*)(sl + MessageQueue), sb->pendingA, -1, 0, 0, -1, 0);
             sb->pendingA = 0;
         }
         if (sb->pendingB) {
@@ -626,10 +633,10 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
                             break;
                         }
                     }
-                    func_ov025_021ed380((char*)(sl + 0x890), sb->pendingB, -1, 0, 0, who, 0);
+                    func_ov025_021ed380((char*)(sl + MessageQueue), sb->pendingB, -1, 0, 0, who, 0);
                 }
             } else {
-                func_ov025_021ed380((char*)(sl + 0x890), sb->pendingB, -1, 0, 0, -1, 0);
+                func_ov025_021ed380((char*)(sl + MessageQueue), sb->pendingB, -1, 0, 0, -1, 0);
                 sb->pendingB = 0;
             }
         }
@@ -766,11 +773,11 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
         actor->obj3D_.MakeVisible();
         actor->obj3D_.SetInheritedAlpha(0x1f);
         if (actor->obj3D_.unknown_0_ & 0x100) {
-            *(unsigned int*)((unsigned char*)actor + 0x18c) &= ~1;
+            *(unsigned int*)((unsigned char*)actor + Field18c) &= ~1;
         } else {
             unsigned char* found = 0;
             for (int j = 0; j < 4; j++) {
-                unsigned char* e = ((unsigned char**)(sl + 0xeb8))[j];
+                unsigned char* e = ((unsigned char**)(sl + Fieldeb8))[j];
                 if (e && *(short*)(e + 2) == actor->obj3D_.unknown_2_) {
                     found = e;
                     break;
@@ -812,22 +819,22 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
     }
 
     if (hadTarget) {
-        if (!specialRow && (*(int*)(sl + 0xea8) != 8 || *(int*)(sl + 0x4d0) == 0) &&
+        if (!specialRow && (*(int*)(sl + Fieldea8) != 8 || *(int*)(sl + Field4d0) == 0) &&
             (sb->type == 1 || sb->type == 2)) {
             LightingManager::GetInstance()->BeginFade(0x800, 0x12c);
-            Vector3fix pos = *(Vector3fix*)(sl + 0x88 + 0xc00);
+            Vector3fix pos = *(Vector3fix*)(sl + CameraPosition);
             pos.z = FIX32_MULTIPLY(pos.z, 0xe66);
-            _Z23SetPosAndFields0216f1e4PvPiii(sl + 0x18 + 0xc00, &pos.x, 0xccc, 0);
-            StoreFields0x1e4And0x1e8IfNonZero(sl + 0x18 + 0xc00, 0xcc, 0x3e8);
+            _Z23SetPosAndFields0216f1e4PvPiii(sl + CameraBase, &pos.x, 0xccc, 0);
+            StoreFields0x1e4And0x1e8IfNonZero(sl + CameraBase, 0xcc, 0x3e8);
         }
-        if (!((unsigned char*)GetField0x3b0Value(battle) == sl + 0x18 + 0xc00 && sl[0xe38] == 2) &&
-            *(int*)(sl + 0x4d0) == 0) {
+        if (!((unsigned char*)GetField0x3b0Value(battle) == sl + CameraBase && sl[ModeByte] == 2) &&
+            *(int*)(sl + Field4d0) == 0) {
             SetShortTriple0x6e44(sl, 0x199, 0x2bc, 0x96);
         }
     }
 
     if ((unsigned int)rowKind <= 2 && sb->pendingA) {
-        func_ov025_021ed444((char*)(sl + 0x890), sb->pendingA, -1, 0, 0, -1, 0);
+        func_ov025_021ed444((char*)(sl + MessageQueue), sb->pendingA, -1, 0, 0, -1, 0);
         sb->pendingA = 0;
     }
     if (func_ov000_0215fd90(target, 8)) {
@@ -940,8 +947,8 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
             int se = 0x26;
             if (textKind == 2) se = 0x27;
             _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, se, 0);
-        } else if (*(short*)(sl + 0x4ca) >= 0 && !keepDefault) {
-            _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(&data_02108760, *(short*)(sl + 0x4ca), 0);
+        } else if (*(short*)(sl + Field4ca) >= 0 && !keepDefault) {
+            _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(&data_02108760, *(short*)(sl + Field4ca), 0);
         }
         if (msg->duration) {
             if (!quiet) {
@@ -955,8 +962,8 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
         int big = 0;
         if (func_ov000_0215fd90(target, 0x2a)) big = 1;
         _Z23QueuePopupEntry0203a48cP11Obj0203a48ctP15Vec3Int0203a48chii(popups, amount, &pos, big, PopupDelay(inner), PopupColor(inner));
-        if (!sb->queued && sl[0x6e4e] != 4) {
-            func_ov000_021823dc(sl + 0x3fc + 0x6c00, sb->group);
+        if (!sb->queued && sl[Field6e4e] != 4) {
+            func_ov000_021823dc(sl + PendingState, sb->group);
             sb->queued = 1;
         }
         didAnim = 1;
@@ -990,7 +997,7 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
         Vector3fix animPos = animObj->obj3D_.position_;
         facing = animObj->obj3D_.rotation_.y;
         int cutscene;
-        if (sl[0xe38] == 1 || sl[0xe38] == 2) {
+        if (sl[ModeByte] == 1 || sl[ModeByte] == 2) {
             cutscene = 1;
         } else {
             cutscene = 0;
@@ -1039,7 +1046,7 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
         if (IsPartyMember(id)) {
             int h = MulFx(animHeight, 0x999);
             out.y += h;
-        } else if (*((unsigned char*)work + 0x6fe8) == 0) {
+        } else if (*((unsigned char*)work + Field6fe8) == 0) {
             if (soundId == 0x1c) {
                 int h = MulFx(animHeight, 0x999);
                 out.y += h;
@@ -1057,8 +1064,8 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
             out.z += shake.z;
             Vector3fix zero;
             __clear(&zero, sizeof(zero));
-            _ZN8Vector3iaSERKS_((Vector3fix*)(sl + 0x3dc + 0x6c00), zero);
-            sl[0x6fe8] = 0;
+            _ZN8Vector3iaSERKS_((Vector3fix*)(sl + PendingShake), zero);
+            sl[Field6fe8] = 0;
         }
         if (0.8f * leadHeight < out.y && !special) {
             out.y = 0.8f * leadHeight;
@@ -1081,7 +1088,7 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
     }
 
     if (IsPartyMember(id)) {
-        unsigned char* e = (unsigned char*)_Z22FindEntryById_021dafd0Pci((char*)(sl + 0x760 + 0x3000), id);
+        unsigned char* e = (unsigned char*)_Z22FindEntryById_021dafd0Pci((char*)(sl + EntryList), id);
         if (e) {
             if (category != 1 || kind == 0) {
                 if (sb->type != 0x3af && sb->type != 0x39a && sb->type != 0x3a0) {
@@ -1110,12 +1117,12 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
         }
     }
 
-    if ((*(signed char**)(sl + 0x2a0))[0x2a] == GetField0x3acValue(battle) && IsPartyMember(id) &&
+    if ((*(signed char**)(sl + Field2a0))[0x2a] == GetField0x3acValue(battle) && IsPartyMember(id) &&
         GetCombatantWithFlag0x100(battle, id)) {
         func_ov017_021c9d2c(id, target->s0e, target->s12, target->s10, target->s14, target->flags18, 0, 0, 0);
     }
 
-    *(unsigned int*)(sl + 0x46c) |= 0x10;
+    *(unsigned int*)(sl + Field46c) |= 0x10;
     if (animSaved && !cleared) {
         actor->obj3D_.MaybeSetRegularAnimation(data_ov025_021ef3d0, 1);
         actor->obj3D_.SetCurrentAnimationTime(savedAnimTime);

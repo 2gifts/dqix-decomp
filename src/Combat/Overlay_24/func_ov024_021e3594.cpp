@@ -26,6 +26,7 @@ struct Obj_021e8ca0;
 extern "C" void* _Z34AddEntryToListAndIncCount_021e8ca0P12Obj_021e8ca0i(struct Obj_021e8ca0* obj, int id);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, int e, int f, int g);
 
+// JPN: func_ov024_021e3e2c
 // USA: func_ov024_021e3594
 extern "C" ARM unsigned long long func_ov024_021e3594(struct Obj_021e3594* obj, int unused, int id, struct Action_021e3594* action, int count) {
 	if (count <= 0) return 0;

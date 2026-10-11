@@ -7,6 +7,12 @@
 #include "System/Memory.h"
 #include "std_library_functions.h"
 
+#if defined(jpn)
+enum { countOffset = 0x9f4, flagOffset = 0x9fb, valueOffset = 0xa10, nameOffset = 0x19ff, recordStride = 0x1e4, stateFlag = 0x29e, resetOffset = 0x790 };
+#else
+enum { countOffset = 0x8f4, flagOffset = 0x8fb, valueOffset = 0x910, nameOffset = 0x18ff, recordStride = 0x1c4, stateFlag = 0x4de, resetOffset = 0x962 };
+#endif
+
 struct Struct020263e4;
 struct Info02011930;
 
@@ -41,7 +47,7 @@ extern "C" ARM int func_ov004_02164738(void* a) {
     TreasureMapSave02164738 save;
     int i;
 
-    save.numMaps = *(unsigned char*)(data_ov004_02171010 + 0x1000 + 0x8f4);
+    save.numMaps = *(unsigned char*)(data_ov004_02171010 + 0x1000 + countOffset);
     for (i = 0; i < 99; i++) {
         VectorizedInvertedMemcpy(data_ov004_02171010 + i * sizeof(TreasureMapMetadata), &save.maps[i], sizeof(TreasureMapMetadata));
     }
@@ -51,16 +57,16 @@ extern "C" ARM int func_ov004_02164738(void* a) {
     char* zone = (char*)func_02012fe4();
     GameResources* res = func_ov017_0218b5b0();
     unsigned char* buf = (unsigned char*)res->unknown_ptr_36d0;
-    res->unknown_41c8[0x42e0 - 0x41c8] = *(unsigned char*)(data_ov004_02171010 + 0x1000 + 0x8fb);
+    res->unknown_41c8[0x42e0 - 0x41c8] = *(unsigned char*)(data_ov004_02171010 + 0x1000 + flagOffset);
     _Z18FreeBuffer020263e4P14Struct020263e4((Struct020263e4*)buf);
     SetByteFieldAt0x764(buf, 0);
-    *(int*)(buf + 0x14) = *(int*)(data_ov004_02171010 + 0x1000 + 0x910);
-    strcpy(zone + 0x26, data_ov004_02171010 + 0x18ff);
+    *(int*)(buf + 0x14) = *(int*)(data_ov004_02171010 + 0x1000 + valueOffset);
+    strcpy(zone + 0x26, data_ov004_02171010 + nameOffset);
     res->allocator_array_38[12].Reset();
     _Z29SetCombatModeFromCase020dc2d0i(0);
 
     for (i = 0; i < 8; i++) {
-        ((DetailedTreasureMapData*)(data_ov004_02171010 + 0xad4 + i * 0x1c4))->BlankFunction();
+        ((DetailedTreasureMapData*)(data_ov004_02171010 + 0xad4 + i * recordStride))->BlankFunction();
     }
 
     char* owner = (char*)func_ov011_021845f8(a, 0);
@@ -71,7 +77,7 @@ extern "C" ARM int func_ov004_02164738(void* a) {
     }
 
     if (_Z32GetAndConsumeNameEntries02011930PvP12Info02011930S_S_(state, NULL, NULL, NULL) != 0) {
-        if (*((unsigned char*)state + 0x6000 + 0x4de) != 0) {
+        if (*((unsigned char*)state + 0x6000 + stateFlag) != 0) {
             if (_Z28LookupAndForEachNode020649b0PviS_(func_0205ec34(), 0x1b, request)) {
                 func_0206f81c(request);
             }
@@ -84,6 +90,6 @@ extern "C" ARM int func_ov004_02164738(void* a) {
     ResetState(state);
     ClearByte0x6480(state);
     _Z25ClearRegion0x649e02011ad4Pc((char*)state);
-    *(unsigned char*)(_Z26GetGlobalField0x1c020421a0v() + 0x1000 + 0x962) = 0;
+    *(unsigned char*)(_Z26GetGlobalField0x1c020421a0v() + 0x1000 + resetOffset) = 0;
     return 0;
 }

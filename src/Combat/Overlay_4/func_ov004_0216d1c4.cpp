@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+
 void SetByte0x7f70(void* obj, unsigned char value);
 extern "C" void func_ov004_0216afb0(void* obj, int a, int b, int c, int d, int e, int f, int g, int h);
 extern "C" int func_ov004_0216b7bc(void* obj, int a, int b, int c);
@@ -15,9 +16,14 @@ extern struct Obj0205eaa0 data_02108760;
 extern unsigned char data_ov004_02171034[];
 
 // USA: func_ov004_0216d1c4
+// JPN: func_ov004_0216d77c
 extern "C" ARM int func_ov004_0216d1c4(void* a) {
     SetByte0x7f70(GameState::GetInstance(), 0);
+#if defined(jpn)
+    int v0c = *(int*)&data_ov004_02171034[0x10];
+#else
     int v0c = *(int*)&data_ov004_02171034[0xc];
+#endif
 
     func_ov004_0216afb0(a, 0x37, 2, 0xd4, 0x39, 0xa, 0xa, 0xc, 1);
     v0c = func_ov004_0216b7bc(a, 0xd4, v0c, 1);

@@ -2,6 +2,21 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 
+
+#if defined(jpn)
+enum { kTaskOffset = 0x1cc, kPartyResourceOffset = 0x50c, kGlobalFieldOffset = 0x868, kManagerListOffset = 0x20, kManagerStateOffset = 0x2c, kManagerFlagOffset = 0x2e };
+extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(void*, int, char*);
+extern "C" void func_02045d88(void*, void*, int);
+extern "C" void func_02080654(void*, void*, const char*);
+extern const char data_ov003_0217e554[];
+extern const char data_ov003_0217e56e[];
+extern const char data_ov003_0217e595[];
+extern const char data_ov003_0217e5b3[];
+extern const char data_ov003_0217e5c9[];
+#else
+enum { kTaskOffset = 0x1d0, kPartyResourceOffset = 0x71c, kGlobalFieldOffset = 0x998, kManagerListOffset = 0x2c, kManagerStateOffset = 0x38, kManagerFlagOffset = 0x3a };
+#endif
+
 extern "C" {
 void ColorEffect_ConfigureAlphaBlend(int, int, int, int, int);
 int _Z17FindRecordByIndexP11Rec020467f0iPPvPi(void*, int, void**, int*);
@@ -104,7 +119,7 @@ struct Ctrl {
     char pad7d[0xe4 - 0x7d];
     char sube4[0xfc - 0xe4];
     char subfc[0x114 - 0xfc];
-    char sub114[0x1d0 - 0x114];
+    char sub114[kTaskOffset - 0x114];
     int task;                  // 0x1d0
     char pad1d4[0x1ec - 0x1d4];
     short f1ec;
@@ -121,6 +136,7 @@ struct Ctrl {
 };
 
 // USA: func_ov003_021560e4
+// JPN: func_ov003_02157740
 extern "C" ARM void func_ov003_021560e4(Ctrl* self) {
     char* a;
     int state;
@@ -139,7 +155,11 @@ extern "C" ARM void func_ov003_021560e4(Ctrl* self) {
         self->state = self->state + 1;
     } else if (state == 1) {
         if (_Z18AlwaysTrue02094b4cv(_Z17GetGlobal02109400v())) {
+#if defined(jpn)
+            self->task = loader->QueueLoadFile(data_ov003_0217e554, 0);
+#else
             self->task = loader->QueueLoadFileInGP2(data_ov003_0217fce4, data_ov003_0217fcfe, 0);
+#endif
             self->state = self->state + 1;
         }
     } else if (state == 2) {
@@ -159,15 +179,21 @@ extern "C" ARM void func_ov003_021560e4(Ctrl* self) {
             if (self->flags & 1) {
                 key = 0x1a;
                 char* x = (char*)func_ov017_0218b5b0();
-                int id = *(short*)(*(char**)(x + 0x3000 + 0x71c) + 0x22);
+                int id = *(short*)(*(char**)(x + 0x3000 + kPartyResourceOffset) + 0x22);
                 GameState* gs = GameState::GetInstance();
                 GameObject* pm = gs->GetPartyMemberByIndex(id);
                 if (pm == 0) {
                     pm = gs->GetPartyMemberByIndex(_Z18GetField0x3acValueP9GameState(gs));
                 }
                 func_02046380(g);
+#if defined(jpn)
+                if (pm != 0) {
+                    _Z22SetIndexedName02046574P11Obj02046574iPc(g, 0, *(char**)((char*)pm + 0x134));
+                }
+#else
                 _Z30InitObjFromCombatantId020e4bf4Pvi(tmp, *(short*)((char*)pm + 4));
                 *(void**)g = tmp;
+#endif
             } else {
                 char* x = (char*)func_0205ec34();
                 if (_Z18TestBitInByteArrayiPhi(x, x + 0x8c, 0x799)) {
@@ -180,9 +206,13 @@ extern "C" ARM void func_ov003_021560e4(Ctrl* self) {
             }
             void* r = _Z21GetFieldByKey020e0434P17Container020e0310i(self->sube4, key);
             if (r) {
+#if defined(jpn)
+                func_02045d88(g, r, 0);
+#else
                 func_0204500c(g, r, 0, 0xe3);
-                *(int*)(g + 0x998) = 1;
-                *(int*)(g + 0x99c) = 1;
+#endif
+                *(int*)(g + kGlobalFieldOffset) = 1;
+                *(int*)(g + kGlobalFieldOffset + 4) = 1;
             }
             _Z18InitStruct0205a444Pc(self->sub2c);
             self->f7c = 0;
@@ -191,7 +221,11 @@ extern "C" ARM void func_ov003_021560e4(Ctrl* self) {
             if (self->f1c) {
                 self->f68 = *(int*)((char*)self->f1c + 0x20);
             }
+#if defined(jpn)
+            self->task = loader->QueueLoadFile(data_ov003_0217e56e, 0);
+#else
             self->task = loader->QueueLoadFileInGP2(data_ov003_0217fd0f, data_ov003_0217fd23, 0);
+#endif
             self->state = self->state + 1;
         }
     } else if (state == 3) {
@@ -252,7 +286,11 @@ extern "C" ARM void func_ov003_021560e4(Ctrl* self) {
             }
             a = (char*)self->alloc;
             _ZN13SafeAllocator5ResetEv(a + 0x28);
+#if defined(jpn)
+            func_02080654(self->f18, a + 0x28, data_ov003_0217e595);
+#else
             _Z35SetFieldsFromFormattedValue0207f914P11Obj0207f914iii(self->f18, a + 0x28, data_ov003_0217fd46, data_ov003_0217fd60);
+#endif
             self->state = self->state + 1;
         }
     } else if (state == 5) {
@@ -265,6 +303,7 @@ extern "C" ARM void func_ov003_021560e4(Ctrl* self) {
         }
     } else if (state == 6) {
         void* p = self->f18;
+#if !defined(jpn)
         short x, y, w, h;
         _Z32GetSublistEntryScaledXY_020807c4PviPsS0_(p, 2, &x, &y);
         _Z27GetEntryFieldsAt0xE02080878PviPsS0_(p, 2, &w, &h);
@@ -280,6 +319,7 @@ extern "C" ARM void func_ov003_021560e4(Ctrl* self) {
         x = x << 3;
         _Z24SetEntryScaledXY020807fcPviii(p, 2, x, y);
         _Z27SetEntryFieldsAt0xE020808a4Pviii(p, 2, w, h);
+#endif
         if (_Z28CountNonZeroEntries_0215570cP11Obj0215570c(self) >= 9) {
             for (unsigned char i = 0; i < 12; i++) {
                 for (int j = 0; j < 3; j++) {
@@ -290,7 +330,11 @@ extern "C" ARM void func_ov003_021560e4(Ctrl* self) {
                 }
             }
         }
+#if defined(jpn)
+            self->task = loader->QueueLoadFile(data_ov003_0217e5b3, 0);
+#else
         self->task = loader->QueueLoadFileInGP2(data_ov003_0217fd68, data_ov003_0217fd7e, 0);
+#endif
         self->state = self->state + 1;
     } else if (state == 7) {
         if (loader->GetTaskStatus(self->task)) {
@@ -305,7 +349,11 @@ extern "C" ARM void func_ov003_021560e4(Ctrl* self) {
             }
             loader->RemoveTask(self->task);
             self->task = -1;
+#if defined(jpn)
+            self->task = loader->QueueLoadFile(data_ov003_0217e5c9, 0);
+#else
             self->task = loader->QueueLoadFileInGP2(data_ov003_0217fd90, data_ov003_0217fdaa, 0);
+#endif
             self->state = self->state + 1;
         }
     } else if (state == 8) {
@@ -324,12 +372,12 @@ extern "C" ARM void func_ov003_021560e4(Ctrl* self) {
         }
     } else if (state == 9) {
         char* g = (char*)_Z26GetGlobalField0x1c020421a0v();
-        if (*(int*)(g + 0x9a0) == 3) {
+        if (*(int*)(g + kGlobalFieldOffset + 8) == 3) {
             char* p = self->f18;
-            *(void**)(p + 0x2c) = self->f10;
-            *(char*)(p + 0x38) = 2;
+            *(void**)(p + kManagerListOffset) = self->f10;
+            *(char*)(p + kManagerStateOffset) = 2;
             _Z21InitNodeChain0207f7f0P15Manager0207f7f0P12Node0207f7f0i(p, self->f14, 3);
-            *(char*)(p + 0x3a) = 1;
+            *(char*)(p + kManagerFlagOffset) = 1;
             _Z23ClearAllBuffers0207fcb8P11Obj0207fcb8(p);
             _Z28CallFunc0204b04cOverList0x2cP12Cont0207fd44(p);
             _Z28CallFunc0204b088OverList0x2cP12Cont0207fd88(p);

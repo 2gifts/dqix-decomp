@@ -1,3 +1,8 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 extern "C" void* func_ov004_02156f04(void* a, int key);

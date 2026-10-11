@@ -1,5 +1,11 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { stateLowOffset = 4, stateHighOffset = 0x1800 };
+#else
+enum { stateLowOffset = 0x9e0, stateHighOffset = 0x1000 };
+#endif
+
 extern "C" unsigned int _Z14SetField0x1e20PvS_(unsigned int, unsigned int);
 extern "C" unsigned int _Z15InitSelfPointerPh(unsigned int);
 extern "C" unsigned int _Z15IsField440EmptyP7CE28Obj(unsigned int);
@@ -17,13 +23,13 @@ extern "C" ARM unsigned int _Z37SetupGlobalObjType3AndInitSelfPointerPh(unsigned
     r4 = r0;
     r1 = r5 + 0xb4;
     r0 = (unsigned int)_Z14SetField0x1e20PvS_(r0, r1);
-    r0 = r4 + 0x9e0;
-    r0 = r0 + 0x1000;
+    r0 = r4 + stateLowOffset;
+    r0 = r0 + stateHighOffset;
     r0 = (unsigned int)_Z15IsField440EmptyP7CE28Obj(r0);
     cc = (int)(r0) - (int)(0x0);
     if (cc != 0) { goto L38; }
-    r0 = r4 + 0x9e0;
-    r0 = r0 + 0x1000;
+    r0 = r4 + stateLowOffset;
+    r0 = r0 + stateHighOffset;
     r0 = (unsigned int)_Z18SetupField440Type3P19Field440Obj0202f6d4(r0);
 L38:;
     r0 = r4;

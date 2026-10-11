@@ -46,20 +46,30 @@ struct Field3f8Struct0219577c {
 struct Node0219577c {
     unsigned char pad0[2];
     unsigned char busy;
+#if defined(jpn)
+    unsigned char pad3[0x20c];
+#else
     unsigned char pad3[0x27c];
+#endif
     unsigned char field_27f;
     unsigned char field_280;
     unsigned char field_281;
     unsigned char field_282;
 };
 
+// JPN: func_ov017_02196344
 // USA: func_ov017_0219577c
 extern "C" ARM void func_ov017_0219577c(unsigned char mode, int resetField, int append) {
+#if defined(jpn)
+ enum {regionalList=0x4ec,regionalNode=0x900,regionalPending=0xa84,regionalAlternate=0x4fc,regionalExtra=0x978};
+#else
+ enum {regionalList=0x6fc,regionalNode=0xb20,regionalPending=0xca4,regionalAlternate=0x70c,regionalExtra=0xb98};
+#endif
     GameState* gs = GameState::GetInstance();
     char* ctx = (char*)func_ov017_0218b5b0();
-    void* list = *(void**)(ctx + 0x3000 + 0x6fc);
+    void* list = *(void**)(ctx + 0x3000 + regionalList);
     func_02012fe4();
-    Node0219577c* node = *(Node0219577c**)(ctx + 0x3000 + 0xb20);
+    Node0219577c* node = *(Node0219577c**)(ctx + 0x3000 + regionalNode);
     if (node->busy) return;
 
     func_ov017_021acd7c(node);
@@ -97,14 +107,14 @@ extern "C" ARM void func_ov017_0219577c(unsigned char mode, int resetField, int 
         field->field_65 = 1;
 
         if (ListContainsId((struct ListHead02046b60*)list, 0x4e)) {
-            func_02046a8c(list, *(void**)(ctx + 0x3000 + 0xca4));
+            func_02046a8c(list, *(void**)(ctx + 0x3000 + regionalPending));
         }
         if (ListContainsId((struct ListHead02046b60*)list, 3)) {
-            func_02046a8c(list, *(void**)(ctx + 0x3000 + 0x70c));
+            func_02046a8c(list, *(void**)(ctx + 0x3000 + regionalAlternate));
         }
     }
     if (ListContainsId((struct ListHead02046b60*)list, 0x40)) {
-        func_02046a8c(list, *(void**)(ctx + 0x3000 + 0xb98));
+        func_02046a8c(list, *(void**)(ctx + 0x3000 + regionalExtra));
     }
     _Z24UpdatePlayClocks020ac4f8i(1);
     if (mode) {

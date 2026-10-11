@@ -12,6 +12,7 @@ struct Obj_021f0d28 { int battle; };
 struct Buf8_021f0d28 { short v[8]; };
 extern struct Buf8_021f0d28 data_ov024_021fee8c;
 
+// JPN: func_ov024_021f14f4
 // USA: func_ov024_021f0d28
 extern "C" ARM int func_ov024_021f0d28(struct Obj_021f0d28* obj, int unused1, int unused2, int* outCount, short* outArray) {
 	int found = 0;

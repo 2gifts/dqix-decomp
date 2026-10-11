@@ -1,3 +1,9 @@
+#if defined(jpn)
+enum { RegionalPad = 0x442 };
+#else
+enum { RegionalPad = 0x422 };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -36,7 +42,7 @@ extern "C" signed char _Z30GetSearchStructCurrentArrEntryP20SearchStruct0202c1a4
 
 struct Flags02078050 {
     unsigned short f00;
-    unsigned char pad02[0x422];
+    unsigned char pad02[RegionalPad];
     int f424;
 };
 
@@ -52,6 +58,7 @@ struct Entity02078050 {
 };
 
 // USA: func_02078050
+// JPN: func_02078050
 extern "C" ARM void func_02078050(struct Entity02078050* self) {
     void* mgr = func_0202ae18(self);
 

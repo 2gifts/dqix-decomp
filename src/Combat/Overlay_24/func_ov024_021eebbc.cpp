@@ -12,6 +12,7 @@ struct Obj_021eebbc { int field0; };
 struct Buf8_021eebbc { short v[8]; };
 extern struct Buf8_021eebbc data_ov024_021fecdc;
 
+// JPN: func_ov024_021ef388
 // USA: func_ov024_021eebbc  (semantic: SelectFlagged10088AndMaybePick_021eebbc)
 extern "C" ARM int func_ov024_021eebbc(struct Obj_021eebbc* obj, int unused1, int unused2, int* outCount, short* outArray) {
     struct Gate_021eebbc* gate = (struct Gate_021eebbc*)((char*)obj->field0 + 0x81b0);

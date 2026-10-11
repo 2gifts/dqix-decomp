@@ -1,6 +1,13 @@
 #include "World/ZoneResourceInitialization.h"
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kOffset68 = 0x88 };
+#else
+enum { kOffset68 = 0x68 };
+#endif
+
+
 extern "C" void _Z37FormatFilenameAndSetExtension02014d18iPcS_(int id, char* ext, char* outBuf);
 extern "C" void* _Z23GetFileFromNARCInMemoryPKc(const char* path);
 extern "C" void* _ZN13SafeAllocator8AllocateEj(void* self, unsigned int size);
@@ -13,7 +20,7 @@ extern char data_020ef1ee;
 
 // USA: func_02015134  (semantic: LoadAndDecompressResource_02015134)
 extern "C" ARM int func_02015134(Ctx02015134* ctx, Out02015134* out, Src02015134* src) {
-    void* allocator = ctx->allocator;
+    void* allocator = *(void**)((char*)ctx + kOffset68);
     char buf[0x50];
     unsigned int size;
     _Z37FormatFilenameAndSetExtension02014d18iPcS_(src->id, &data_020ef1ee, buf);

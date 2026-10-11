@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { expectedFieldOffset = 0xa7a };
+#else
+enum { expectedFieldOffset = 0xcda };
+#endif
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 
@@ -14,7 +20,7 @@ extern struct Globals0208e444 data_02108fe4;
 // USA: func_0208e444
 ARM int CheckAndFillShortBuffer(char* v) {
     unsigned char* p = (unsigned char*)GameState::GetInstance() + 0x5000;
-    unsigned char expected = p[0xcda];
+    unsigned char expected = p[expectedFieldOffset];
     unsigned char got = (unsigned char)_ZNK6Script9Parameter5ToIntEv((Variant02030b0c*)v);
     v += 8;
     if (expected == got) {

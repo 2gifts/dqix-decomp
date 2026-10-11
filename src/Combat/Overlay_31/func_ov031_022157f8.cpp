@@ -1,3 +1,4 @@
+// JPN: func_ov031_02215fd8
 #include <globaldefs.h>
 
 struct CipherKeys_022157f8 {

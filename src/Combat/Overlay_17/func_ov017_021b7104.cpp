@@ -1,3 +1,8 @@
+#if defined(jpn)
+enum {regionalOffset0=0xc8, regionalOffset1=0x4200, regionalOffset2=0x12};
+#else
+enum {regionalOffset0=0x2e8, regionalOffset1=0x4400, regionalOffset2=0xc2};
+#endif
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Resource/GameResources.h"
@@ -43,6 +48,7 @@ struct Dst_021b7104 {
     unsigned char f51;
 };
 
+// JPN: func_ov017_021b76b4
 // USA: func_ov017_021b7104
 extern "C" ARM void func_ov017_021b7104(Dst_021b7104* dst, Src_021b7104* src) {
     GameState* battle = GameState::GetInstance();
@@ -72,6 +78,6 @@ extern "C" ARM void func_ov017_021b7104(Dst_021b7104* dst, Src_021b7104* src) {
         SetBitsInWord((unsigned int*)ov, 0x800);
     }
 
-    *((unsigned char*)ov + 0x4000 + 0x2e8) = 0;
-    *(unsigned short*)((char*)ov + 0x4400 + 0xc2) = 0;
+    *((unsigned char*)ov + 0x4000 + regionalOffset0) = 0;
+    *(unsigned short*)((char*)ov + regionalOffset1 + regionalOffset2) = 0;
 }

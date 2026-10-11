@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include "Graphics/LightingManager.h"
 
+
 extern "C" void* func_02012fe4(void);
 extern "C" int func_ov017_021d60f4(void* a);
 extern "C" void func_ov001_021601f8(void* a, void* b);
@@ -9,11 +10,23 @@ extern "C" void func_02016874(void* big);
 
 struct Node_021603d8 { char pad0[0x44]; int field44; char pad1[0x54 - 0x48]; struct Node_021603d8* next; };
 struct Big_021603d8 {
+#if defined(jpn)
+    char pad0[0x430];
+#else
     char pad0[0x410];
+#endif
     int field410;
+#if defined(jpn)
+    char pad1[0x43c - 0x434];
+#else
     char pad1[0x41c - 0x414];
+#endif
     struct Node_021603d8* field41c;
+#if defined(jpn)
+    char pad2[0x852 - 0x440];
+#else
     char pad2[0x832 - 0x420];
+#endif
     unsigned char field832;
     unsigned char field833;
     unsigned char field834;
@@ -43,6 +56,7 @@ extern Cache_021603d8 data_ov001_02164d14;
 extern int data_ov001_02164d24[];
 
 // USA: func_ov001_021603d8
+// JPN: func_ov001_021619ec
 extern "C" ARM int func_ov001_021603d8(void* obj) {
     Big_021603d8* big = (Big_021603d8*)func_02012fe4();
     DataStruct_021603d8* d = (DataStruct_021603d8*)LightingManager::GetInstance();

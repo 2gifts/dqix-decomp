@@ -34,7 +34,12 @@ struct Node02165630 {
 
 // USA: func_ov004_02165630
 extern "C" ARM int func_ov004_02165630(void* a) {
-    if (*(unsigned char*)(data_ov004_02171010 + 0x1000 + 0x8f4) == 0) return 0;
+#if defined(jpn)
+ enum { countOffset = 0x9f4, recordStride = 0x1e4, flagOffset = 0x9fd };
+#else
+ enum { countOffset = 0x8f4, recordStride = 0x1c4, flagOffset = 0x8fd };
+#endif
+    if (*(unsigned char*)(data_ov004_02171010 + 0x1000 + countOffset) == 0) return 0;
 
     Node02165630* node = (Node02165630*)func_ov023_021f6880(func_ov011_021849c8(a), 0xa);
     if (!node || func_ov023_021f6f10(node) != 7) return 0;
@@ -59,7 +64,7 @@ extern "C" ARM int func_ov004_02165630(void* a) {
         func_ov011_021848a0(a, 0x68);
     } else if (CopyToRegion0x6482IfDst((char*)state, NULL) != 0) {
         unsigned int k = _Z19GetShort28_021f9bb0P11Obj021f9bb0((struct Obj021f9bb0*)node2);
-        if (*(unsigned char*)(data_ov004_02171010 + k * 0x1c4 + 0xad4) != 3) {
+        if (*(unsigned char*)(data_ov004_02171010 + k * recordStride + 0xad4) != 3) {
             node->active = 0;
         } else {
             func_ov004_02165a1c(a);
@@ -78,7 +83,7 @@ extern "C" ARM int func_ov004_02165630(void* a) {
             if (((TreasureMapMetadata*)(data_ov004_02171010 + idx * 0x1c))->GetInitialByteUnknownBit()) {
                 func_ov011_021848a0(a, 0x74);
             } else {
-                *(unsigned char*)(data_ov004_02171010 + 0x1000 + 0x8fd) = 1;
+                *(unsigned char*)(data_ov004_02171010 + 0x1000 + flagOffset) = 1;
                 func_ov011_021848a0(a, 0x66);
             }
         }

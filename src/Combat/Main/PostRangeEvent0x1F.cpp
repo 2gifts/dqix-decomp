@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+
 void ClearListEntryIfMatch020be3f4(int, void*, unsigned int);
 
 extern "C" void func_020d2c00(int);

@@ -52,6 +52,7 @@ void ClearFlags0x14And0x58(void*);
 void ClearBattleFlags0x18And0x58(void*);
 void ApplyCombatantBuffs(int, int);
 
+// JPN: func_ov024_021eb5e0
 // USA: func_ov024_021eae14
 extern "C" ARM int func_ov024_021eae14(BattleContext* context, int id) {
     GameObject* combatant = GetCombatantByID(context->battle, id);

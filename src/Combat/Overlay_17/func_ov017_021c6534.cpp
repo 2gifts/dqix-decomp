@@ -48,9 +48,15 @@ struct Party021c6534 {
     Slot021c6534 slots[3];
 };
 
+// JPN: func_ov017_021c69e4
 // USA: func_ov017_021c6534
 extern "C" ARM void func_ov017_021c6534(int unused0, Evt021c6534* evt, GameState* battleStruct, char* base) {
-    void* table = *(void**)(base + 0x3000 + 0x718);
+#if defined(jpn)
+ enum { regionalOffset = 0x508 };
+#else
+ enum { regionalOffset = 0x718 };
+#endif
+    void* table = *(void**)(base + 0x3000 + regionalOffset);
 
     Field021c6534* fieldObj = (Field021c6534*)func_ov017_021b8478(table);
     if (!fieldObj) return;

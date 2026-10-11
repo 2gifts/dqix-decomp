@@ -1,3 +1,4 @@
+// JPN: func_ov031_022222a8
 #include <globaldefs.h>
 
 extern "C" const unsigned int data_ov031_02248110[256];   // Td0

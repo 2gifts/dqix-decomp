@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kIdsOffset = 0x6ac, kCountOffset = 0x6b0, kMaskOffset = 0x6b1 };
+#else
+enum { kIdsOffset = 0x758, kCountOffset = 0x75c, kMaskOffset = 0x75d };
+#endif
 #include "GameState/GameState.h"
 
 extern "C" void func_0203bd08(void);
@@ -15,10 +20,10 @@ ARM void ProcessCombatantElements02027100(unsigned char* obj) {
     GameState* battle = GameState::GetInstance();
     func_0203bd08();
     ((int)func_ov017_0218b5b0());
-    for (int i = 0; i < obj[0x75c]; i++) {
+    for (int i = 0; i < obj[kCountOffset]; i++) {
         unsigned char* p = obj + i;
-        int id = p[0x758];
-        if (obj[0x75d] & (1 << id)) {
+        int id = p[kIdsOffset];
+        if (obj[kMaskOffset] & (1 << id)) {
             continue;
         }
         GameObject* combatant = GetCombatantWithFlag0x100(battle, id);

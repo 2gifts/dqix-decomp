@@ -1,5 +1,7 @@
 #include <globaldefs.h>
 
+
+
 struct Obj0205d2bc;
 void InitEntries0205d2bc(struct Obj0205d2bc* obj);
 void SetFieldsAt0x4And0x8(int* obj, int a, int b);
@@ -11,6 +13,7 @@ struct SelfState020e2834;
 void SetYesNoButtonPalette020e2834(struct SelfState020e2834* self);
 
 // USA: func_ov003_02159100  (semantic: RunEntryEnableHook_02159100)
+// JPN: func_ov003_0215a5ec
 extern "C" ARM void func_ov003_02159100(void* obj) {
     unsigned char* base = (unsigned char*)obj;
 

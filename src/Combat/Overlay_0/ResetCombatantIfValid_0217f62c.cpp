@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { flagsOffset = 0x1faa };
+#else
+enum { flagsOffset = 0x1d72 };
+#endif
 
 extern "C" int func_ov000_0217f6bc(void* obj);
 extern "C" void* func_ov000_02161318(void* obj, int id);
@@ -21,9 +26,9 @@ extern "C" ARM int func_ov000_0217f62c(void* objRaw) {
             *(int*)(obj + 0x914) = 0;
             *(int*)(obj + 0x918) = 0;
             *(int*)(obj + 0x91c) = 0;
-            unsigned short field72 = *(unsigned short*)(obj + 0x1d00 + 0x72);
+            unsigned short field72 = *(unsigned short*)(obj + flagsOffset);
             field72 = field72 & ~0x38;
-            *(unsigned short*)(obj + 0x1d00 + 0x72) = field72;
+            *(unsigned short*)(obj + flagsOffset) = field72;
             func_ov000_02175258(obj);
             func_ov000_0217a8f4(obj);
             return 0;

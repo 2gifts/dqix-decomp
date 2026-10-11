@@ -1,6 +1,9 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+#define data_ov000_02183658 data_ov000_02184714
+#endif
 struct Struct_0205c570;
 struct Struct_0205def8;
 struct Obj0205eaa0;
@@ -21,14 +24,24 @@ extern "C" void func_ov000_02176e3c(void* ctx, void* obj, int sel, int a, int b,
 
 struct MenuCtx_0217bdf4 {
     char pad0[0x188];
+#if defined(jpn)
+    char list[0x1faa - 0x188];
+#else
     char list[0x1d72 - 0x188];
+#endif
     unsigned short flags;
 };
 
 struct MenuGlobals_0217bdf4 {
+#if defined(jpn)
+    MenuCtx_0217bdf4* ctx;
+    int field0;
+    int field4;
+#else
     int field0;
     int field4;
     MenuCtx_0217bdf4* ctx;
+#endif
 };
 
 struct TableEntry_0217bdf4 {
@@ -37,7 +50,11 @@ struct TableEntry_0217bdf4 {
 };
 
 struct MemberInfo_0217bdf4 {
+#if defined(jpn)
+    char pad0[0x8b8];
+#else
     char pad0[0x950];
+#endif
     int spellKind;
 };
 
@@ -55,7 +72,11 @@ struct MenuObj_0217bdf4 {
     void* field38;
     char pad3c[0x4c - 0x3c];
     int memberIndex;
+#if defined(jpn)
+    char pad50[0x484 - 0x50];
+#else
     char pad50[0x444 - 0x50];
+#endif
     unsigned char field444;
 };
 

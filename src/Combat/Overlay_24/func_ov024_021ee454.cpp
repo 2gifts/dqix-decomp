@@ -11,6 +11,7 @@ extern "C" int _Z22IsFlagBit8Set_021da9b0P16FlagObj_021da9b0(struct FlagObj_021d
 
 extern unsigned short data_ov024_021febfc;
 
+// JPN: func_ov024_021eec20
 // USA: func_ov024_021ee454
 extern "C" ARM int func_ov024_021ee454(int* a0, int a1, int a2, int* a3, short* a4) {
 	short buf[4];

@@ -9,7 +9,11 @@ ARM void* Find_021d994c(void* obj, int key) {
             return entry;
         }
         i++;
+        #if defined(jpn)
+        entry += 0x8e0;
+#else
         entry += 0x99c;
+#endif
     }
     return NULL;
 }

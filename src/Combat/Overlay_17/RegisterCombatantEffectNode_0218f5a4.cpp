@@ -1,5 +1,12 @@
+// JPN: func_ov017_02190188
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+
+#if defined(jpn)
+enum { Field734 = 0x524, Field150 = 0x144, Field18c = 0x180, Field700 = 0x4f0 };
+#else
+enum { Field734 = 0x734, Field150 = 0x150, Field18c = 0x18c, Field700 = 0x700 };
+#endif
 
 extern "C" void func_0202ae18(void);
 extern "C" int func_ov017_021925e0(void* p);
@@ -18,7 +25,7 @@ void AppendNodeToTail(struct TailList020469b4* list, struct TailNode020469b4* no
 extern "C" ARM int func_ov017_0218f5a4(char* self, int combatantId, int flag2, int flag3, int flag4) {
     GameState* bs = GameState::GetInstance();
     func_0202ae18();
-    void* base = *(void**)(self + 0x3000 + 0x734);
+    void* base = *(void**)(self + 0x3000 + Field734);
 
     if (func_ov017_021925e0(self + 0x3000) != 0) {
         GameObject* c = bs->GetPartyMemberByIndex(combatantId);
@@ -36,7 +43,7 @@ extern "C" ARM int func_ov017_0218f5a4(char* self, int combatantId, int flag2, i
     if (GetFieldAt0x150((unsigned char*)c2) == 0) return 0;
 
     if (flag4 == 0) {
-        unsigned char* ptr = *(unsigned char**)((char*)c2 + 0x150);
+        unsigned char* ptr = *(unsigned char**)((char*)c2 + Field150);
         int byteVal = ptr ? ptr[0x56e] : 0;
         if (byteVal == 0 && flag2 == 0) {
             if (CheckField0x56bLowNibble((struct Obj02061bd8*)c2) == 0) {
@@ -65,14 +72,14 @@ extern "C" ARM int func_ov017_0218f5a4(char* self, int combatantId, int flag2, i
         if (flag2 != 0) {
             ((unsigned char*)node)[0xb] |= 0x2;
         }
-        if (flag3 != 0 || (*(int*)((char*)c2 + 0x18c) & 0x40)) {
+        if (flag3 != 0 || (*(int*)((char*)c2 + Field18c) & 0x40)) {
             ((unsigned char*)node)[0xb] |= 0x4;
         }
         if (flag4 != 0) {
             ((unsigned char*)node)[0xb] |= 0x1;
         }
         if (((unsigned char*)node)[2] == 0) {
-            AppendNodeToTail((struct TailList020469b4*)*(void**)(self + 0x3000 + 0x700), (struct TailNode020469b4*)node);
+            AppendNodeToTail((struct TailList020469b4*)*(void**)(self + 0x3000 + Field700), (struct TailNode020469b4*)node);
         }
     }
     return 1;

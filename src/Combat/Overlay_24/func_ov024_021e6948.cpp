@@ -28,6 +28,7 @@ extern "C" int func_ov000_02156068(struct Battle_021e6948* battle, int id, int k
 extern "C" int _Z13NextRandomMaxP6Randomi(struct Battle_021e6948* battle, int max);
 extern "C" int _Z23IsFlagBit24Set_021dd260P16FlagObj_021dd260(struct Cbt_021e6948* c);
 
+// JPN: func_ov024_021e71e0
 // USA: func_ov024_021e6948
 extern "C" ARM int func_ov024_021e6948(struct Ctx_021e6948* ctx, int targetId, int a, int b) {
     float dmg = (float)a * (float)b / 8.0f;

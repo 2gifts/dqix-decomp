@@ -1,7 +1,14 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define func_ov005_02158560 func_ov005_02159b58
+#define func_ov005_021585fc func_ov005_02159bf4
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 struct EquipmentMenu {
-    char unk_0[0x3db8];
+    char unk_0[R(0x3d30, 0x3db8)];
     unsigned char state_;
     unsigned char lastState_;
     unsigned char step_;

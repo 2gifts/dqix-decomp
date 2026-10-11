@@ -2,6 +2,12 @@
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+enum { serialBase = 0x120, serialPage = 0x6000 };
+#else
+enum { serialBase = 0x2380, serialPage = 0x4000 };
+#endif
+
 extern "C" void func_ov004_0216ea38(void* ctx, int mode);
 int GetGlobalField0x1c020421a0(void);
 extern "C" void* func_ov011_021849c8(void* ctx);
@@ -30,8 +36,8 @@ extern "C" ARM int func_ov004_0216f4fc(void* ctx) {
     code = func_ov023_021f6880(func_ov011_021849c8(ctx), 0x65);
     if (code == NULL || func_ov023_021f6f10(code) != 8) code = NULL;
     if (code != NULL) {
-        char* p = (char*)battle + 0x2380;
-        p += 0x4000;
+        char* p = (char*)battle + serialBase;
+        p += serialPage;
         VariadicForward020c7170((int)buf, 0xd, (int)&data_ov004_021707b0, *(long long*)(p + 0x48));
 
         // Rewrite the formatted digits as three dash-separated groups of four.

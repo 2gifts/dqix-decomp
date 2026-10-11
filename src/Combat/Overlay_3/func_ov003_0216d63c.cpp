@@ -4,6 +4,29 @@
 #include "System/Graphics.h"
 #include "World/Object3D.h"
 
+#if defined(jpn)
+enum { kRegionValue410_428 = 0x428 };
+enum { kRegionValue7E0_768 = 0x768 };
+enum { kRegionValueF08_D8C = 0xd8c };
+enum { kRegionValue1264_10F4 = 0x10f4 };
+enum { kRegionValueF0C_D90 = 0xd90 };
+enum { kRegionValue12C0_1150 = 0x1150 };
+enum { kRegionValue126C_10FC = 0x10fc };
+enum { kRegionValue1408_1298 = 0x1298 };
+enum { kRegionValue13FF_128F = 0x128f };
+#else
+enum { kRegionValue410_428 = 0x410 };
+enum { kRegionValue7E0_768 = 0x7e0 };
+enum { kRegionValueF08_D8C = 0xf08 };
+enum { kRegionValue1264_10F4 = 0x1264 };
+enum { kRegionValueF0C_D90 = 0xf0c };
+enum { kRegionValue12C0_1150 = 0x12c0 };
+enum { kRegionValue126C_10FC = 0x126c };
+enum { kRegionValue1408_1298 = 0x1408 };
+enum { kRegionValue13FF_128F = 0x13ff };
+#endif
+
+
 struct Struct020dfc40 {
 	char data[0x18];
 };
@@ -26,14 +49,14 @@ struct Scene0216d63c {
 	unsigned short fieldA;
 	int fieldC;
 	int field10;
-	char sub14[0x410 - 0x14];
-	char sub410[0x7e0 - 0x410];
-	char sub7e0[0xf08 - 0x7e0];
+	char sub14[kRegionValue410_428 - 0x14];
+	char sub410[kRegionValue7E0_768 - kRegionValue410_428];
+	char sub7e0[kRegionValueF08_D8C - kRegionValue7E0_768];
 	void* activeSub;
-	char padf0c[0x1264 - 0xf0c];
+	char padf0c[kRegionValue1264_10F4 - kRegionValueF0C_D90];
 	int field1264;
 	int field1268;
-	char sub126c[0x12c0 - 0x126c];
+	char sub126c[kRegionValue12C0_1150 - kRegionValue126C_10FC];
 	int field12c0;
 	int field12c4;
 	int field12c8;
@@ -54,12 +77,13 @@ struct Scene0216d63c {
 	int field13f4;
 	char pad13f8[4];
 	signed char field13fc[3];
-	char pad13ff[0x1408 - 0x13ff];
+	char pad13ff[kRegionValue1408_1298 - kRegionValue13FF_128F];
 	int field1408;
 	struct Struct020a9ea4 field140c;
 };
 
 // USA: func_ov003_0216d63c
+// JPN: func_ov003_0216d10c
 extern "C" ARM void func_ov003_0216d63c(struct Scene0216d63c* self) {
 	self->savedPlanes = (DISPCNT & 0x1f00) >> 8;
 	self->field4 = 0;

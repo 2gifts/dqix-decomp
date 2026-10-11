@@ -19,6 +19,7 @@ extern "C" int func_ov024_021e94c4(struct Obj_021e2ebc* ctx, int id,
     struct Params_021e2ebc* params, unsigned char mode, signed char value,
     unsigned char useValue, unsigned char forceDefault);
 
+// JPN: func_ov024_021e3754
 // USA: func_ov024_021e2ebc
 extern "C" ARM unsigned long long func_ov024_021e2ebc(struct Obj_021e2ebc* obj, int unused, int id, struct Params_021e2ebc* params, int enabled) {
     if (enabled <= 0) return 0;

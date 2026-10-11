@@ -15,13 +15,18 @@ struct Holder0209ab7c {
     struct Base0209ab7c* base;
 };
 struct Field150_0209ab7c {
+#if defined(jpn)
+    unsigned char pad[0x8b8];
+#else
     unsigned char pad[0x950];
+#endif
     int slot;
 };
 
 int GetFieldAt0x150(unsigned char* obj);
 
 // USA: func_0209ab7c
+// JPN: func_0209ab7c
 extern "C" ARM int func_0209ab7c(struct Holder0209ab7c* h, unsigned char* path, unsigned char* out,
                                  int threshold) {
     if (&h->base->slots[0].pairs[0] == NULL) return 0;

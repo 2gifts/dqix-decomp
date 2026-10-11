@@ -20,6 +20,7 @@ struct Obj_021e0bf4 {
     int drainCount;
 };
 
+// JPN: func_ov024_021e148c
 // USA: func_ov024_021e0bf4
 extern "C" ARM struct OutStruct0215ccbc* func_ov024_021e0bf4(struct Obj_021e0bf4* obj, int unused, int id, int unused2, int amount) {
     GameObject* c = GetCombatantByID((int)obj->ctx, id);

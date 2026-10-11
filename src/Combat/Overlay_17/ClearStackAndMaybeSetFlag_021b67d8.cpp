@@ -1,3 +1,8 @@
+#if defined(jpn)
+enum {regionalOffset0=0x4ec, regionalOffset1=0x524, regionalOffset2=0xc8};
+#else
+enum {regionalOffset0=0x6fc, regionalOffset1=0x734, regionalOffset2=0xcc};
+#endif
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
 #include "Memory/AllocatorUnion.h"
@@ -20,12 +25,13 @@ struct Obj021b67d8 {
 };
 
 struct Ctx021b67d8 {
-    unsigned char pad0[0x6fc];
+    unsigned char pad0[regionalOffset0];
     struct ListHead02046b60* list6fc;
-    unsigned char pad734[0x734 - 0x6fc - 4];
+    unsigned char pad734[regionalOffset1 - regionalOffset0 - 4];
     unsigned char* field734;
 };
 
+// JPN: func_ov017_021b6d8c
 // USA: func_ov017_021b67d8  (semantic: ClearStackAndMaybeSetFlag_021b67d8)
 extern "C" ARM void func_ov017_021b67d8(struct Obj021b67d8* self) {
     if (self->field24 != NULL) {
@@ -50,7 +56,7 @@ extern "C" ARM void func_ov017_021b67d8(struct Obj021b67d8* self) {
         flag = 0;
     }
     if (ListContainsId(list, 4) != 0) {
-        if (field[0xcc] == 1) {
+        if (field[regionalOffset2] == 1) {
             flag = 0;
         }
     }

@@ -24,7 +24,15 @@ typedef void (*ObjFn02079bac)(struct Header02079bac*);
 int GetLow12BitsTimes8(struct S02079ce8* p);
 
 // USA: func_02079bac
-extern "C" ARM int func_02079bac(struct Header02079bac* obj, SafeAllocator* alloc, void* src, ElemFn02079bac cb, ObjFn02079bac cb2, SafeAllocator* alloc2) {
+// JPN: func_02079bac
+extern "C" ARM int func_02079bac(struct Header02079bac* obj, SafeAllocator* alloc, void* src, ElemFn02079bac cb, ObjFn02079bac cb2
+#if !defined(jpn)
+    , SafeAllocator* alloc2
+#endif
+) {
+#if defined(jpn)
+    SafeAllocator* alloc2 = alloc;
+#endif
     int size1;
     unsigned int size2;
     int i;
@@ -34,9 +42,11 @@ extern "C" ARM int func_02079bac(struct Header02079bac* obj, SafeAllocator* allo
     if (alloc == 0 || src == 0) {
         return 0;
     }
+#if !defined(jpn)
     if (alloc2 == 0) {
         alloc2 = alloc;
     }
+#endif
     memcpy(obj, src, 4);
     size1 = GetLow12BitsTimes8((struct S02079ce8*)obj);
     size2 = obj->hi;

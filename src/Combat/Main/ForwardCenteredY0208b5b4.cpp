@@ -1,4 +1,7 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define func_0208b610 func_0208bf04
+#endif
 
 struct Vec4_0208b5b4 { int x, y, z, w; };
 struct Vec3_0208b5b4 { int x, y, z; };

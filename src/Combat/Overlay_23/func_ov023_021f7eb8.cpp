@@ -1,7 +1,15 @@
 #include <globaldefs.h>
 
 struct Canvas_021f7eb8 {
+#if defined(jpn)
+    char unk_0[0xb4];
+    short fontHeight;
+    short lineHeight;
+    char unk_b8[0xe0 - 0xb8];
+#else
     char unk_0[0xe0];
+#endif
+
 };
 
 class MenuObject_021f7eb8 {
@@ -55,7 +63,12 @@ extern "C" void func_ov023_021f8240(MenuCanvas_021f7eb8* self, void* script);
 extern "C" void _Z36InvokeHandlerAfterCacheFlush0204fbf8P11Obj0204fbf8(Canvas_021f7eb8* canvas);
 
 extern const char data_ov023_021fd91c[];
+#if defined(jpn)
+extern "C" void func_02050cc0(Canvas_021f7eb8*, short, short, int, unsigned char, unsigned char, unsigned short*, unsigned short*, int, int, int, int);
+extern "C" void func_02050678(Canvas_021f7eb8*, short, short, const char*, unsigned char, unsigned char, unsigned short*, unsigned short*);
+#endif
 
+// JPN: func_ov023_021f73b0
 // USA: func_ov023_021f7eb8
 extern "C" ARM void func_ov023_021f7eb8(MenuCanvas_021f7eb8* self, void* script, int value, short x, short y,
                                         short width, short height, unsigned char frame, unsigned char a,
@@ -65,6 +78,19 @@ extern "C" ARM void func_ov023_021f7eb8(MenuCanvas_021f7eb8* self, void* script,
     if (self->flags_ & 4) {
         if (self->pages_ > 1)
             func_0204fae8(&self->canvas_);
+#if defined(jpn)
+        unsigned char color = self->color_;
+        self->canvas_.fontHeight = 8;
+        self->canvas_.lineHeight = 9;
+        width = (short)(width * 4) - 4;
+        height = (short)(height * 8) - 12;
+        unsigned short textWidth;
+        unsigned short textHeight;
+        func_02050cc0(&self->canvas_, (short)(width - 24), height, self->page_ + 1, 8, color, &textWidth, &textHeight, 1, 3, 0, 0);
+        func_02050cc0(&self->canvas_, (short)(width + 8), height, self->pages_, 8, color, &textWidth, &textHeight, 0, 3, 0, 0);
+        func_02050678(&self->canvas_, width, height, data_ov023_021fd91c, 8, color, &textWidth, &textHeight);
+
+#else
         height = (short)(height * 8) - 13;
         unsigned char color;
         int separatorWidth = 0;
@@ -81,6 +107,8 @@ extern "C" ARM void func_ov023_021f7eb8(MenuCanvas_021f7eb8* self, void* script,
                       &textHeight, 0, 3, 0, 0);
         func_0204f41c(&self->canvas_, center - (separatorWidth >> 1), height, data_ov023_021fd91c, 8, color,
                       &textWidth, &textHeight, 0);
+
+#endif
     }
     func_ov023_021f8240(self, script);
     _Z36InvokeHandlerAfterCacheFlush0204fbf8P11Obj0204fbf8(&self->canvas_);

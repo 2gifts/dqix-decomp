@@ -14,6 +14,7 @@ extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, unsigned l
 
 struct Obj_021e373c { char pad0[0x10]; void* field0x10; };
 
+// JPN: func_ov024_021e3fd4
 // USA: func_ov024_021e373c
 extern "C" ARM unsigned long long func_ov024_021e373c(struct Obj_021e373c* obj, int unused, int id, int unused2, int turns) {
 	if (turns <= 0) return 0;

@@ -1,7 +1,11 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_0205c96c func_0205dcd4
+#endif
 extern "C" void func_0205c96c(void* obj, int flag);
 
+// JPN: func_ov017_021ae438
 // USA: func_ov017_021adc30
 ARM void ResetField_021adc30_021adc30(void* obj) {
     func_0205c96c((char*)obj + 0x44, 0);

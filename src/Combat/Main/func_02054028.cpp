@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kFieldOffset = 0x1b4 };
+#else
+enum { kFieldOffset = 0x1c0 };
+#endif
 #include "GameState/GameState.h"
 
 extern "C" void _ZN7Model3D14RemoveTexturesEv(void*);
@@ -7,7 +12,7 @@ extern "C" void _ZN7Model3D22ApplyTexturesFromModelEPS_(void*, void*);
 struct Obj02054028 {
     char pad0[4];
     short f4;
-    char pad6[0x1c0 - 6];
+    char pad6[kFieldOffset - 6];
     unsigned short f1c0;
 };
 

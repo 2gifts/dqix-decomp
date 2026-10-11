@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kVocationEnd = 0x8b8 };
+extern "C" void func_020474a8(void*, int, const char*, char*);
+#else
+enum { kVocationEnd = 0x950 };
+#endif
 #include "std_library_functions.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Filesystem/FileIO.h"
@@ -7,13 +13,17 @@ struct VocationData021592d8 {
     char pad0[0x138];
     int exp[0xd];
     unsigned short levels[0xd];
-    char pad186[0x950 - 0x186];
+    char pad186[kVocationEnd - 0x186];
     int vocation;
 };
 
 struct Combatant021592d8 {
     char pad0[4];
     short id;
+#if defined(jpn)
+    char pad6[0x134 - 6];
+    char* name;
+#endif
 };
 
 struct MessageWork021592d8 {
@@ -54,6 +64,7 @@ extern "C" void func_02046608(void* messages, int a, const char* input, char* ou
 extern char data_ov003_0217fe18[];
 extern unsigned char data_0211e33c[0x30000];
 
+// JPN: func_ov003_0215a7c0
 // USA: func_ov003_021592d8
 extern "C" ARM void func_ov003_021592d8(struct BattleMenu021592d8* self, struct Combatant021592d8* combatant,
                                         char* out) {
@@ -64,9 +75,13 @@ extern "C" ARM void func_ov003_021592d8(struct BattleMenu021592d8* self, struct 
     struct VocationData021592d8* data = GetFieldAt0x150((unsigned char*)combatant);
     int vocation = data->vocation;
     func_02046380(work);
+#if defined(jpn)
+    _Z22SetIndexedName02046574P11Obj02046574iPc((struct Obj02046574*)work, 0, combatant->name);
+#else
     struct UnitObj021592d8 unit;
     _Z30InitObjFromCombatantId020e4bf4Pvi(&unit, combatant->id);
     work->subject = &unit;
+#endif
     int key;
     if (data->levels[vocation] == 99) {
         _Z22SetIndexedName02046574P11Obj02046574iPc((struct Obj02046574*)work, 1,
@@ -98,6 +113,10 @@ extern "C" ARM void func_ov003_021592d8(struct BattleMenu021592d8* self, struct 
         }
         BackgroundLoader::RemoveLockGlobal();
     }
+#if defined(jpn)
+    func_020474a8(work, 0xc, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)self->messages, key), out);
+#else
     func_02046608(work, 0xc, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)self->messages, key), out,
                   0xe3, 0, 1);
+#endif
 }

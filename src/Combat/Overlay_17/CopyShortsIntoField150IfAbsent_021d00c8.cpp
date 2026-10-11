@@ -13,6 +13,7 @@ struct Obj_021d00c8 {
 };
 
 // USA: func_ov017_021d00c8
+// JPN: func_ov017_021d0578
 ARM void CopyShortsIntoField150IfAbsent_021d00c8(int unused0, char* p1raw, GameState* bs) {
     struct Obj_021d00c8* p1 = (struct Obj_021d00c8*)(p1raw + 4);
     int id = p1->id;

@@ -24,7 +24,11 @@ struct AudioResources {
     void* workBuffers[2];
     unsigned char pad_78[0x1c];
     void* scratch;
+    #if defined(jpn)
+    unsigned char pad_98[0xc];
+#else
     unsigned char pad_98[0x10];
+#endif
     unsigned int capacity;
 };
 extern "C" void _Z26SafeAllocatorFree_0218bca8Pv(void*);

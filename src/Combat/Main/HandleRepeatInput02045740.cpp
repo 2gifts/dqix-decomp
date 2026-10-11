@@ -1,10 +1,15 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define IS_JPN 1
+#else
+#define IS_JPN 0
+#endif
 
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
 extern unsigned short data_02114e30;
 
 struct Repeat02045740 {
-    char pad0[0x954];
+    char pad0[IS_JPN ? 0x824 : 0x954];
     int counter954;      // 0x954
     char pad1[0x958 - 0x954 - 4];
     int poll958;         // 0x958
@@ -14,6 +19,7 @@ struct Repeat02045740 {
     int threshold9a4;    // 0x9a4
 };
 
+// JPN: 0x020463b0
 // USA: func_02045740
 ARM void HandleRepeatInput02045740(struct Repeat02045740* self) {
     int poll = self->poll958;

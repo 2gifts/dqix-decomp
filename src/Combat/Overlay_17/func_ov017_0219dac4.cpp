@@ -9,7 +9,11 @@ struct Member_0219dac4 {
     Object3D obj3D;
     char padAc[0xc2 - 0xac];
     unsigned char flagsC2;
+#if defined(jpn)
+    char padC3[0x150 - 0xc3];
+#else
     char padC3[0x15c - 0xc3];
+#endif
     int field15c;
 };
 
@@ -30,6 +34,7 @@ extern "C" int func_0202c508(void* p);
 extern "C" void _Z35SetByteIfDataAndCheckClear_021a01bcPh(unsigned char* self);
 extern "C" void _Z27EnqueueEventTag147_021cdaa0v(void);
 
+// JPN: func_ov017_0219e5b4
 // USA: func_ov017_0219dac4
 extern "C" ARM void func_ov017_0219dac4(unsigned char* self, int id, int value) {
     GameState* gs = GameState::GetInstance();

@@ -10,6 +10,14 @@ int CheckLow5BitsEqual3(unsigned short* obj);
 int CheckLow5BitsEqual4(unsigned short* obj);
 unsigned char GetByte0x26c(char* obj);
 
+
+#if defined(jpn)
+enum { ReactionActorOffset = 0x144 };
+#else
+enum { ReactionActorOffset = 0x150 };
+#endif
+
+// JPN: func_0208b31c
 // USA: func_0208aa28
 ARM int CanCombatantReactToEffectCategory0208aa28(unsigned char* obj, int combatantId, int flag) {
     ((unsigned int*)func_ov017_0218b5b0());
@@ -19,7 +27,7 @@ ARM int CanCombatantReactToEffectCategory0208aa28(unsigned char* obj, int combat
     if (c1 == NULL || (**(int**)((char*)c1 + 0x130) & 1)) {
         return 0;
     }
-    if (HasFlaggedSlotBit22Set020855d0(*(unsigned char**)((char*)c2 + 0x150)) != 0 || flag != 0) {
+    if (HasFlaggedSlotBit22Set020855d0(*(unsigned char**)((char*)c2 + ReactionActorOffset)) != 0 || flag != 0) {
         return 0;
     }
     unsigned short* field = (unsigned short*)GetPtrField0x114(c1);

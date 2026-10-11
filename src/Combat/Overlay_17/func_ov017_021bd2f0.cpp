@@ -17,7 +17,11 @@ struct Params021bd2f0 {
 };
 
 struct Obj021bd2f0 {
+#if defined(jpn)
+    unsigned char pad0[0xf8];
+#else
     unsigned char pad0[0xfc];
+#endif
     unsigned char dirty;
     unsigned char padfd[0x13c - 0xfd];
     unsigned char kind;
@@ -31,6 +35,7 @@ struct Obj021bd2f0 {
     Values021bd2f0 values;
 };
 
+// JPN: func_ov017_021bd8e8
 // USA: func_ov017_021bd2f0
 extern "C" ARM void func_ov017_021bd2f0(Obj021bd2f0* obj, Params021bd2f0* params) {
     obj->kind = params->kind;

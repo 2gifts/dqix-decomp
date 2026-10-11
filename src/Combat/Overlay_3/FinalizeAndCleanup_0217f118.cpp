@@ -2,6 +2,8 @@
 #include "Memory/SafeAllocator.h"
 #include "Memory/AllocatorUnion.h"
 
+
+
 extern "C" void func_ov003_0216d77c(void* arg);
 void PopStack0AndTrigger(int flag);
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
@@ -13,6 +15,7 @@ extern "C" void func_020a0c0c(void);
 extern AllocatorUnion data_02114e20;
 
 // USA: func_ov003_0217f118  (semantic: FinalizeAndCleanup_0217f118)
+// JPN: func_ov003_0217de1c
 extern "C" ARM void func_ov003_0217f118(char* self) {
     if (*(void**)(self + 0xc) != 0) {
         func_ov003_0216d77c(*(void**)(self + 0xc));

@@ -1,5 +1,11 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { taskHandleOffset = 0x4c0 };
+#else
+enum { taskHandleOffset = 0x6d0 };
+#endif
+
 extern "C" int func_ov017_0218b5b0(void);
 extern "C" void func_02020720(int);
 extern "C" int func_02012fe4(void);
@@ -9,7 +15,7 @@ struct Obj020e063c;
 void RestartTaskHandle020e063c(Obj020e063c* self, int b, int c);
 
 struct Struct020dc3d4 {
-    char pad[0x6d0];
+    char pad[taskHandleOffset];
     int field6d0;
 };
 

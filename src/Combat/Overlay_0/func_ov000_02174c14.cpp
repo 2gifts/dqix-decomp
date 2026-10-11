@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { queueOffset = 0x1f98, countOffset = 0x1fa0, flagsOffset = 0x1faa };
+#else
+enum { queueOffset = 0x1d60, countOffset = 0x1d68, flagsOffset = 0x1d72 };
+#endif
 #include "std_library_functions.h"
 
 struct Entry_0205d6a0;
@@ -13,7 +18,11 @@ struct Combatant02174c14 {
     int posX;
     int posY;
     int field4c;
+#if defined(jpn)
+    char pad2[0xc7 - 0x50];
+#else
     char pad2[0x87 - 0x50];
+#endif
     unsigned char field87;
     char pad3[0x448 - 0x88];
 };
@@ -32,9 +41,9 @@ extern "C" ARM void func_ov000_02174c14(char* obj) {
     int i;
 
     _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((struct Entry_0205d6a0*)(obj + 0x188), 1);
-    memset(obj + 0x1d60, 0, 8);
-    *(signed char*)(obj + 0x1d68) = 0;
-    (obj + *(signed char*)(obj + 0x1d68))[0x1d60] = 1;
+    memset(obj + queueOffset, 0, 8);
+    *(signed char*)(obj + countOffset) = 0;
+    (obj + *(signed char*)(obj + countOffset))[queueOffset] = 1;
 
     for (i = 0; i < 4; i++) {
         c = (struct Combatant02174c14*)(obj + 0x958) + *(signed char*)(obj + 0x6c + i);
@@ -50,7 +59,7 @@ extern "C" ARM void func_ov000_02174c14(char* obj) {
         elem->x = (x >> 3) + 9;
         elem->y = y >> 3;
         elem->fieldC2 = 0;
-        *(unsigned short*)(obj + 0x1d72) |= 2;
+        *(unsigned short*)(obj + flagsOffset) |= 2;
         return;
     }
 }

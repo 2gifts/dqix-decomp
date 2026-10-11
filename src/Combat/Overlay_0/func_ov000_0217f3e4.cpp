@@ -1,5 +1,16 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define REGION_OFFSET_0 0x1f98
+#define REGION_OFFSET_1 0x1fa6
+#define REGION_OFFSET_2 0x1fa1
+#else
+#define REGION_OFFSET_0 0x1d60
+#define REGION_OFFSET_1 0x1d6e
+#define REGION_OFFSET_2 0x1d69
+#endif
+
+
 struct Obj_0205dd08;
 extern "C" int func_0205dd08(struct Obj_0205dd08* obj);
 struct Struct_0205c4a8;
@@ -22,10 +33,10 @@ struct ListWidget0217f3e4 {
 struct Menu0217f3e4 {
     char pad0[0x188];
     ListWidget0217f3e4 list;
-    char pad1[0x1d60 - 0x22c];
+    char pad1[REGION_OFFSET_0 - 0x22c];
     signed char kinds[8];
     signed char kindIndex;
-    char pad2[0x1d6e - 0x1d69];
+    char pad2[REGION_OFFSET_1 - REGION_OFFSET_2];
     unsigned char valueKind6;
     unsigned char valueKind7;
 };

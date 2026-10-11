@@ -38,6 +38,7 @@ extern "C" void func_ov017_021ba94c(DialogTask*);
 extern AllocatorUnion data_02114e20;
 #define REG_DISPCNT (*(volatile unsigned int*)0x04000000)
 
+// JPN: func_ov017_021baf8c
 // USA: func_ov017_021ba998
 extern "C" ARM void func_ov017_021ba998(DialogTask* self) {
     GameState* state = GameState::GetInstance();

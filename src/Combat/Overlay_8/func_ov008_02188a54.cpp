@@ -1,3 +1,8 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include <Filesystem/BackgroundLoader.h>
 #include <Memory/SafeAllocator.h>
@@ -74,6 +79,12 @@ extern "C" ARM int func_ov008_02188a54(BattleRecords* self, int lastClear) {
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     int step = self->loadStep;
     if (step == 0) {
+#if defined(jpn)
+        int fileKey = 1;
+        if (lastClear) fileKey = 2;
+        const char* file = _Z21GetFieldByKey020e0434P17Container020e0310i(&self->texts, fileKey);
+        self->task = loader->QueueLoadFile(file, 0);
+#else
         int archiveKey = 1;
         int fileKey = 2;
         if (lastClear) {
@@ -83,6 +94,7 @@ extern "C" ARM int func_ov008_02188a54(BattleRecords* self, int lastClear) {
         const char* file = _Z21GetFieldByKey020e0434P17Container020e0310i(&self->texts, fileKey);
         const char* archive = _Z21GetFieldByKey020e0434P17Container020e0310i(&self->texts, archiveKey);
         self->task = loader->QueueLoadFileInGP2(archive, file, 0);
+#endif
         ++self->loadStep;
     }
     if (step == 1) {

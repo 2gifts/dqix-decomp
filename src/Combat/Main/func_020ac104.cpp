@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define IS_JPN 1
+#else
+#define IS_JPN 0
+#endif
+
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
 struct Entry020ac104 {
@@ -11,7 +17,7 @@ struct Stored020ac104 {
     unsigned short packed;
 };
 struct State020ac104 {
-    unsigned char pad0[0x7ac4];
+    unsigned char pad0[IS_JPN ? 0x7884 : 0x7ac4];
     Stored020ac104 entries[0x1d7];
 };
 struct S_a0434 {

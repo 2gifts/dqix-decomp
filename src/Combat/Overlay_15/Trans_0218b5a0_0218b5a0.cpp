@@ -1,3 +1,8 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 extern int data_ov015_02194560;

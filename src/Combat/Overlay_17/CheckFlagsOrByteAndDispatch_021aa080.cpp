@@ -1,3 +1,10 @@
+// JPN: func_ov017_021aa8f0
+#if defined(jpn)
+enum { RegionOffset9a0 = 0x870 };
+#else
+enum { RegionOffset9a0 = 0x9a0 };
+#endif
+
 #include <globaldefs.h>
 
 extern int data_02107800;
@@ -13,7 +20,7 @@ void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 // USA: func_ov017_021aa080  (semantic: CheckFlagsOrByteAndDispatch_021aa080)
 extern "C" ARM int func_ov017_021aa080() {
     int base = GetGlobalField0x1c020421a0();
-    int field = *(int*)(base + 0x9a0);
+    int field = *(int*)(base + RegionOffset9a0);
     int flag = 0;
     if (field == 3 || field == 0) {
         if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x1) ||

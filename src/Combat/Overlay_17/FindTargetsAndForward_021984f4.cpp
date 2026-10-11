@@ -1,3 +1,10 @@
+// JPN: func_ov017_021990a4
+#if defined(jpn)
+enum { RegionOffset6c = 0x8c };
+#else
+enum { RegionOffset6c = 0x6c };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -49,7 +56,7 @@ extern "C" ARM void func_ov017_021984f4(void* obj) {
 
     void* cache = func_02012fe4();
     GetField0x3b0Value(bs);
-    struct TargetNode021984f4* node = (struct TargetNode021984f4*)GetPointerFromArray0x3c((unsigned char*)cache + 0x6c, 8);
+    struct TargetNode021984f4* node = (struct TargetNode021984f4*)GetPointerFromArray0x3c((unsigned char*)cache + RegionOffset6c, 8);
 
     struct FilterData021984f4 filter = *(struct FilterData021984f4*)((char*)c + 0x44);
     int best = 0x270f000;

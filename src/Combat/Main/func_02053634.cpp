@@ -8,7 +8,6 @@ unsigned char GetField0x397cValue(GameState* battleStruct);
 int GetSignedByte0x1c9(void* obj);
 int GetIndexedEntryField0x178(signed char* obj);
 
-// Object3D methods, declared by mangled name like the sibling files in this module.
 extern "C" void _ZN8Object3D26RemoveAnimationPackageByIDEi(void* obj, int packageId);
 extern "C" int _ZNK8Object3D19HasAnimationStoppedEv(void* obj);
 extern "C" unsigned short _ZNK8Object3D10GetField06Ev(void* obj);
@@ -53,24 +52,32 @@ extern char data_020f0481;
 extern unsigned short data_02114e30;
 extern char data_020f0486;
 
+#if defined(jpn)
+#define OBJECT_OFFSET(offset) ((offset) - 0xc)
+#define GLOBAL_ACTIVE_OFFSET 0x17e1
+#else
+#define OBJECT_OFFSET(offset) (offset)
+#define GLOBAL_ACTIVE_OFFSET 0x19b1
+#endif
+
 // USA: func_02053634
 extern "C" ARM void func_02053634(void* obj) {
     char* ctx = (char*)obj;
     GameState* bs = GameState::GetInstance();
 
-    int hasEntries0 = ctx[0x17c] > 0 ? 1 : 0;
+    int hasEntries0 = ctx[OBJECT_OFFSET(0x17c)] > 0 ? 1 : 0;
     if (hasEntries0 != 0) {
         short cid0 = *(short*)(ctx + 4);
         int activeCid0 = GetField0x397cValue(bs);
         if (activeCid0 == cid0
-            && ((unsigned char*)_Z26GetGlobalField0x1c020421a0v())[0x19b1] != 0) {
+            && ((unsigned char*)_Z26GetGlobalField0x1c020421a0v())[GLOBAL_ACTIVE_OFFSET] != 0) {
             func_020531f0(ctx);
             return;
         }
     }
 
     GameObject* combatant = bs->GetPartyMemberByIndex(*(short*)(ctx + 4));
-    int hasEntries = ctx[0x17c] > 0 ? 1 : 0;
+    int hasEntries = ctx[OBJECT_OFFSET(0x17c)] > 0 ? 1 : 0;
     if (hasEntries != 0) {
         if (GetSignedByte0x1c9(combatant) > 0) {
             func_020531f0(ctx);
@@ -78,29 +85,29 @@ extern "C" ARM void func_02053634(void* obj) {
         }
     }
 
-    signed char state = ctx[0x17e];
+    signed char state = ctx[OBJECT_OFFSET(0x17e)];
     if (state == 0) {
         BackgroundLoader* loader = BackgroundLoader::GetInstance();
-        if (loader->GetTaskStatus(*(int*)(ctx + 0x180)) == 0) {
+        if (loader->GetTaskStatus(*(int*)(ctx + OBJECT_OFFSET(0x180))) == 0) {
             return;
         }
-        if (*(int*)(ctx + 0x194) >= 0) {
-            if (loader->GetTaskStatus(*(int*)(ctx + 0x194)) == 0) {
+        if (*(int*)(ctx + OBJECT_OFFSET(0x194)) >= 0) {
+            if (loader->GetTaskStatus(*(int*)(ctx + OBJECT_OFFSET(0x194))) == 0) {
                 return;
             }
         }
 
         int moreAvailable = 0;
-        if (loader->GetDetailedTaskStatus(*(int*)(ctx + 0x180)) != 2) {
+        if (loader->GetDetailedTaskStatus(*(int*)(ctx + OBJECT_OFFSET(0x180))) != 2) {
             goto detailFail;
         }
         {
         _ZN8Object3D26RemoveAnimationPackageByIDEi(ctx, 2);
         void* filePtr;
         unsigned int fileLen;
-        loader->GetLoadedFileByID(*(int*)(ctx + 0x180), &filePtr, &fileLen);
+        loader->GetLoadedFileByID(*(int*)(ctx + OBJECT_OFFSET(0x180)), &filePtr, &fileLen);
         if (filePtr != 0) {
-            void* base = *(void**)(ctx + 0x154);
+            void* base = *(void**)(ctx + OBJECT_OFFSET(0x154));
             void* alloc = (char*)base + 0x554;
             ((SafeAllocator*)alloc)->Reset();
 
@@ -121,13 +128,13 @@ extern "C" ARM void func_02053634(void* obj) {
                     func_020531f0(ctx);
                     return;
                 }
-                ctx[0x17f] = 1;
+                ctx[OBJECT_OFFSET(0x17f)] = 1;
             } else {
-                ctx[0x17f] = 0;
+                ctx[OBJECT_OFFSET(0x17f)] = 0;
             }
 
-            if (ctx[0x17f] == 0) {
-                if (ctx[0x17d] + 1 < ctx[0x17c]) {
+            if (ctx[OBJECT_OFFSET(0x17f)] == 0) {
+                if (ctx[OBJECT_OFFSET(0x17d)] + 1 < ctx[OBJECT_OFFSET(0x17c)]) {
                     moreAvailable = 1;
                 }
             }
@@ -137,7 +144,7 @@ extern "C" ARM void func_02053634(void* obj) {
                 if (e->id != GetIndexedEntryField0x178((signed char*)ctx)) continue;
                 void* arg2 = 0;
                 if (e->kind == 0x4e) {
-                    arg2 = ctx + 0x198;
+                    arg2 = ctx + OBJECT_OFFSET(0x198);
                 }
                 unsigned short val = *(unsigned short*)func_02012fe4();
                 if (val == _ZNK8Object3D10GetField06Ev(ctx)) {
@@ -145,7 +152,7 @@ extern "C" ARM void func_02053634(void* obj) {
                 }
                 break;
             }
-            ctx[0x17e] = 1;
+            ctx[OBJECT_OFFSET(0x17e)] = 1;
             goto loadOK;
         loadFail:
             func_020531f0(ctx);
@@ -154,22 +161,22 @@ extern "C" ARM void func_02053634(void* obj) {
             goto loadOK;
         }
     loadOK:
-        ctx[0x185] = 1;
+        ctx[OBJECT_OFFSET(0x185)] = 1;
         goto detailOK;
     detailFail:
         func_020531f0(ctx);
         return;
         }
     detailOK:
-        loader->RemoveTask(*(int*)(ctx + 0x180));
-        *(int*)(ctx + 0x180) = -1;
+        loader->RemoveTask(*(int*)(ctx + OBJECT_OFFSET(0x180)));
+        *(int*)(ctx + OBJECT_OFFSET(0x180)) = -1;
         if (moreAvailable != 0) {
-            if (*(unsigned char*)(ctx + 0x185) != 0) {
-                ctx[0x186] = 1;
+            if (*(unsigned char*)(ctx + OBJECT_OFFSET(0x185)) != 0) {
+                ctx[OBJECT_OFFSET(0x186)] = 1;
             } else {
-                signed char idx = ctx[0x17d];
+                signed char idx = ctx[OBJECT_OFFSET(0x17d)];
                 char* p = ctx + (idx + 1) + 0x100;
-                func_0205308c(ctx, p[0x78]);
+                func_0205308c(ctx, p[OBJECT_OFFSET(0x78)]);
             }
         }
     } else {
@@ -177,11 +184,11 @@ extern "C" ARM void func_02053634(void* obj) {
             if (_ZNK8Object3D19HasAnimationStoppedEv(ctx) == 0) {
                 return;
             }
-            if (ctx[0x17f] == 0) {
-                ctx[0x17d] = ctx[0x17d] + 1;
-                if (ctx[0x17d] < ctx[0x17c]) {
-                    ctx[0x17e] = 0;
-                    *(int*)(ctx + 0x190) = 0;
+            if (ctx[OBJECT_OFFSET(0x17f)] == 0) {
+                ctx[OBJECT_OFFSET(0x17d)] = ctx[OBJECT_OFFSET(0x17d)] + 1;
+                if (ctx[OBJECT_OFFSET(0x17d)] < ctx[OBJECT_OFFSET(0x17c)]) {
+                    ctx[OBJECT_OFFSET(0x17e)] = 0;
+                    *(int*)(ctx + OBJECT_OFFSET(0x190)) = 0;
                     return;
                 }
                 short cid = *(short*)(ctx + 4);
@@ -191,7 +198,7 @@ extern "C" ARM void func_02053634(void* obj) {
                     for (int i = 0; i < 4; i++) {
                         char* q = ctx + i;
                         q = q + 0x100;
-                        ((signed char*)(req + 0x2a))[i] = q[0x78];
+                        ((signed char*)(req + 0x2a))[i] = q[OBJECT_OFFSET(0x78)];
                     }
                     if (_Z32SetTargetFieldAndForEach02064a9cPvS_(p, req) != 0) {
                         func_0206f81c(req);
@@ -199,16 +206,16 @@ extern "C" ARM void func_02053634(void* obj) {
                 }
                 func_020531f0(ctx);
                 return;
-            } else if (ctx[0x17f] == 1) {
+            } else if (ctx[OBJECT_OFFSET(0x17f)] == 1) {
                 int mode = 0;
-                if (ctx[0x17c] > 1) {
+                if (ctx[OBJECT_OFFSET(0x17c)] > 1) {
                     mode = 1;
                     if (GetIndexedEntryField0x178((signed char*)ctx) == 0x19) {
-                        _Z32ForwardToTargetOrDefault0205eabcPvS_i((void*)&data_02108760, ctx + 0x198, 0);
+                        _Z32ForwardToTargetOrDefault0205eabcPvS_i((void*)&data_02108760, ctx + OBJECT_OFFSET(0x198), 0);
                     }
                 }
                 if (_ZN8Object3D24MaybeSetRegularAnimationEPKci(ctx, &data_020f0481, mode) != 0) {
-                    ctx[0x17e] = 2;
+                    ctx[OBJECT_OFFSET(0x17e)] = 2;
                     return;
                 }
                 func_020531f0(ctx);
@@ -221,7 +228,7 @@ extern "C" ARM void func_02053634(void* obj) {
             bs = GameState::GetInstance();
             int target = GetFieldIfFlag4((char*)bs);
             int flag = 0;
-            if (ctx[0x17c] > 1) {
+            if (ctx[OBJECT_OFFSET(0x17c)] > 1) {
                 if (_ZNK8Object3D19HasAnimationStoppedEv(ctx) != 0) {
                     flag = 1;
                 }
@@ -232,8 +239,8 @@ extern "C" ARM void func_02053634(void* obj) {
                     flag = 1;
                     _Z25EnqueueEventTag6_021cc2f0h(*(short*)(ctx + 4));
                 } else {
-                    if (*(unsigned char*)(ctx + 0x184) != 0) {
-                        ctx[0x184] = *(unsigned char*)(ctx + 0x184) - 1;
+                    if (*(unsigned char*)(ctx + OBJECT_OFFSET(0x184)) != 0) {
+                        ctx[OBJECT_OFFSET(0x184)] = *(unsigned char*)(ctx + OBJECT_OFFSET(0x184)) - 1;
                         flag = 1;
                     } else if (target != 0) {
                         SetFlagsAt0x244((unsigned char*)target, 1);
@@ -251,28 +258,28 @@ extern "C" ARM void func_02053634(void* obj) {
                 return;
             }
             {
-                signed char cursor = ctx[0x17d];
-                signed char count = ctx[0x17c];
+                signed char cursor = ctx[OBJECT_OFFSET(0x17d)];
+                signed char count = ctx[OBJECT_OFFSET(0x17c)];
                 int next = cursor + 1;
                 if (next < count) {
                     char* q = ctx + next;
                     q = q + 0x100;
-                    func_0205308c(ctx, q[0x78]);
+                    func_0205308c(ctx, q[OBJECT_OFFSET(0x78)]);
                 }
             }
-            ctx[0x17e] = 3;
+            ctx[OBJECT_OFFSET(0x17e)] = 3;
             return;
         } else if (state == 3) {
             if (_ZNK8Object3D19HasAnimationStoppedEv(ctx) == 0) {
                 return;
             }
             if (GetIndexedEntryField0x178((signed char*)ctx) == 0x19) {
-                _Z32ForwardToTargetOrDefault0205eabcPvS_i((void*)&data_02108760, ctx + 0x198, 0);
+                _Z32ForwardToTargetOrDefault0205eabcPvS_i((void*)&data_02108760, ctx + OBJECT_OFFSET(0x198), 0);
             }
-            ctx[0x17d] = ctx[0x17d] + 1;
-            if (ctx[0x17d] < ctx[0x17c]) {
-                ctx[0x17e] = 0;
-                *(int*)(ctx + 0x190) = 0;
+            ctx[OBJECT_OFFSET(0x17d)] = ctx[OBJECT_OFFSET(0x17d)] + 1;
+            if (ctx[OBJECT_OFFSET(0x17d)] < ctx[OBJECT_OFFSET(0x17c)]) {
+                ctx[OBJECT_OFFSET(0x17e)] = 0;
+                *(int*)(ctx + OBJECT_OFFSET(0x190)) = 0;
                 return;
             }
             short cid = *(short*)(ctx + 4);
@@ -282,7 +289,7 @@ extern "C" ARM void func_02053634(void* obj) {
                 for (int i = 0; i < 4; i++) {
                     char* q = ctx + i;
                     q = q + 0x100;
-                    ((signed char*)(req + 0x2a))[i] = q[0x78];
+                    ((signed char*)(req + 0x2a))[i] = q[OBJECT_OFFSET(0x78)];
                 }
                 if (_Z32SetTargetFieldAndForEach02064a9cPvS_(p, req) != 0) {
                     func_0206f81c(req);

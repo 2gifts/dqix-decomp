@@ -1,3 +1,10 @@
+// JPN: func_ov017_021d0850
+#if defined(jpn)
+enum { RegionOffset4355 = 0x4135 };
+#else
+enum { RegionOffset4355 = 0x4355 };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -42,7 +49,7 @@ extern "C" ARM void func_ov017_021d03a0(int bit, struct TagObj_021d03a0* tag, Ga
             _ZN8Object3D11DisableFlagEi((unsigned char*)c2, 0x400);
             if (GetByteFieldMasked0x1ce((void*)c2, 0x20) != 0) {
                 ClearFlags0x1ce((unsigned char*)c2, 0x20);
-                *(base + 0x4355) |= 1 << (bit & 0xff);
+                *(base + RegionOffset4355) |= 1 << (bit & 0xff);
             }
         }
     }

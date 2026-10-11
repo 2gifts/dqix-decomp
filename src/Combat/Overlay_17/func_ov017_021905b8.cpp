@@ -60,10 +60,15 @@ struct ZoneSlot_021905b8 {
 };
 
 struct ZoneState_021905b8 {
+#if defined(jpn)
+    char pad0[0xe24];
+#else
     char pad0[0xea8];
+#endif
     int state;
 };
 
+// JPN: func_ov017_0219119c
 // USA: func_ov017_021905b8
 extern "C" ARM void func_ov017_021905b8(GameResources* self, int id, int remove) {
     GameState* gs = GameState::GetInstance();
@@ -89,7 +94,11 @@ extern "C" ARM void func_ov017_021905b8(GameResources* self, int id, int remove)
     func_ov017_02190264(self, id);
     _Z22ProcessEntries0207da94P13Entry0207da94i(entries, (unsigned char)id);
 
+#if defined(jpn)
+    Slot_021905b8* slot = (Slot_021905b8*)((char*)gs + 0x7280);
+#else
     Slot_021905b8* slot = (Slot_021905b8*)((char*)gs + 0x74c0);
+#endif
     for (int i = 0; i < 3; i++, slot++) {
         if (slot->owner == id) {
             VectorizedMemset(slot, 0, 6);

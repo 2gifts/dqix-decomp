@@ -1,4 +1,7 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define data_020e8af2 data_020e8c0c
+#endif
 #include "GameState/GameState.h"
 
 int TestBitInArray0x8ec(unsigned char* obj, int index);
@@ -21,3 +24,5 @@ ARM int AccumulateFlaggedSlotBits0208623c(unsigned char* actor) {
     }
     return total;
 }
+
+// JPN: 0x02086b5c

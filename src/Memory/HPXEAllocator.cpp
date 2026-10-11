@@ -9,9 +9,6 @@
 // Every other function in this file is unaffected by this.
 #pragma optimize_for_size off
 
-#ifdef jpn
-#define func_020ca3ec func_020cbeb8
-#endif
 
 extern "C"
 {

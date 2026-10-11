@@ -1,9 +1,21 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+enum { countOffset = 0x9f4, flagOffset = 0x9fd, pageBase = 0x1900 };
+#else
+enum { countOffset = 0x8f4, flagOffset = 0x8fd, pageBase = 0x1800 };
+#endif
+
 extern "C" void* func_ov011_021849c8(void);
 extern "C" void* func_ov023_021f6880(void*, int);
+#if defined(jpn)
+extern "C" unsigned int func_ov023_021f6f10(void* self);
+#define NODE_KIND_CALL func_ov023_021f6f10
+#else
 int ScaleStatsIfType12_021f6f10(void* self);
+#define NODE_KIND_CALL ScaleStatsIfType12_021f6f10
+#endif
 struct AxisFloats0203b5f8;
 int IsAxisIntZero(struct AxisFloats0203b5f8* s, int axis);
 extern char* data_ov004_02171010;
@@ -15,17 +27,17 @@ extern "C" void func_ov004_02164084(void* a1);
 ARM int SwapObjStatFieldWithData_02164670(void* a1) {
     void* obj = func_ov023_021f6880(func_ov011_021849c8(), 0xa);
     if (obj == NULL) return 0;
-    int t = ScaleStatsIfType12_021f6f10(obj);
+    int t = NODE_KIND_CALL(obj);
     if (t != 7) return 0;
 
     GameState::GetInstance();
     struct AxisFloats0203b5f8* axis = ((struct AxisFloats0203b5f8*)func_ov017_0218b5b0());
-    if (*(unsigned char*)(data_ov004_02171010 + 0x1000 + 0x8f4) == 0) goto fastpath;
+    if (*(unsigned char*)(data_ov004_02171010 + 0x1000 + countOffset) == 0) goto fastpath;
     if (IsAxisIntZero(axis, 0) == 0) goto fastpath;
-    if (*(unsigned char*)(data_ov004_02171010 + 0x1000 + 0x8fd) == 0) goto swappath;
+    if (*(unsigned char*)(data_ov004_02171010 + 0x1000 + flagOffset) == 0) goto swappath;
 
 fastpath: {
-    char* base = data_ov004_02171010 + 0x1800;
+    char* base = data_ov004_02171010 + pageBase;
     short f8 = *(short*)(base + 0xf8);
     short f6 = *(short*)(base + 0xf6);
     *(short*)((char*)obj + 0x5c) = f6;
@@ -34,8 +46,12 @@ fastpath: {
 }
 
 swappath: {
-    short* p1 = (short*)(data_ov004_02171010 + 0xf6 + 0x1800);
-    short* p2 = (short*)(data_ov004_02171010 + 0xf8 + 0x1800);
+    short* p1 = (short*)(data_ov004_02171010 + 0xf6 + pageBase);
+    #if defined(jpn)
+    short* p2 = (short*)(data_ov004_02171010 + 0x1f8 + 0x1800);
+#else
+    short* p2 = (short*)(data_ov004_02171010 + 0xf8 + pageBase);
+#endif
     CopyShortPair0216351c((struct ShortPairSrc0216351c*)obj, p1, p2);
     func_ov004_02164084(a1);
     return 0;

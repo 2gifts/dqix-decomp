@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kOffsetcda = 0xa7a };
+#else
+enum { kOffsetcda = 0xcda };
+#endif
+
 #include "GameState/GameState.h"
 
 struct Variant02030b0c;
@@ -25,7 +32,7 @@ extern "C" ARM int func_0208e2c0(char* v) {
         char* arg3 = v + 0x10;
         v += 0x18;
         unsigned char cVal = (unsigned char)_ZNK6Script9Parameter5ToIntEv((Variant02030b0c*)arg3);
-        if (i == battleField[0xcda]) {
+        if (i == battleField[kOffsetcda]) {
             table[id].a = aVal;
             table[id].b = bVal;
             table[id].c = cVal;

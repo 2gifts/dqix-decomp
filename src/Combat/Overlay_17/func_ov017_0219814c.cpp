@@ -1,3 +1,10 @@
+// JPN: func_ov017_02198cfc
+#if defined(jpn)
+enum { RegionOffset6c = 0x8c };
+#else
+enum { RegionOffset6c = 0x6c };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -39,7 +46,7 @@ extern "C" ARM void func_ov017_0219814c(void) {
     struct AreaNode_0219814c* node;
     struct AreaNode_0219814c* current;
 
-    node = (struct AreaNode_0219814c*)GetPointerFromArray0x3c((unsigned char*)ctx + 0x6c, 3);
+    node = (struct AreaNode_0219814c*)GetPointerFromArray0x3c((unsigned char*)ctx + RegionOffset6c, 3);
     while (node != 0) {
         if (func_02094b9c(node, &anchor)) {
             break;

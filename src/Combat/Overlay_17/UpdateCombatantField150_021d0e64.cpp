@@ -10,8 +10,14 @@ struct ArgA021d0e64 {
     unsigned char field5;
 };
 
+// JPN: func_ov017_021d12dc
 // USA: func_ov017_021d0e64
 ARM void UpdateCombatantField150_021d0e64(void* unused0, ArgA021d0e64* a1, GameState* bs, void* a3) {
+#if defined(jpn)
+ enum {regionalOffset0=0xa6c};
+#else
+ enum {regionalOffset0=0xccc};
+#endif
     GameObject* c = bs->GetPartyMemberByIndex(a1->field4);
     if (!c) return;
     int field150 = GetFieldAt0x150((unsigned char*)c);
@@ -26,5 +32,5 @@ ARM void UpdateCombatantField150_021d0e64(void* unused0, ArgA021d0e64* a1, GameS
         }
     }
     f[0x56a] = a1->field5;
-    *(int*)((char*)bs + 0x5000 + 0xccc) |= 2;
+    *(int*)((char*)bs + 0x5000 + regionalOffset0) |= 2;
 }

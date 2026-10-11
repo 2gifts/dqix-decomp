@@ -1,9 +1,18 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kRegionValue30_24 = 0x24 };
+enum { kRegionValue1E6_1E2 = 0x1e2 };
+#else
+enum { kRegionValue30_24 = 0x30 };
+enum { kRegionValue1E6_1E2 = 0x1e6 };
+#endif
+
+
 struct Elem2081;
 
 struct Obj2081 {
-    char pad0[0x30];
+    char pad0[kRegionValue30_24];
     struct Elem2081* elems;
     short field34;
     short selected;
@@ -30,13 +39,14 @@ struct Ctx02155580 {
     struct Obj2081* menu;
     void* cursor;
     char pad2[0x80 - 0x20];
-    char field80[0x1e6 - 0x80];
+    char field80[kRegionValue1E6_1E2 - 0x80];
     short key1e6;
     short field1e8;
     short field1ea;
 };
 
 // USA: func_ov003_02155580
+// JPN: func_ov003_02156c04
 extern "C" ARM void func_ov003_02155580(struct Ctx02155580* self, int arg) {
     self->key1e6 = 1;
     self->field1e8 = self->field1ea = 6;

@@ -64,8 +64,18 @@ extern "C" int _ZNK8Object3D7GetFlagEi(void* obj, int mask);
 
 extern unsigned short data_02114e30;
 
+#if defined(jpn)
+enum { ActorRegionOffset = 12, BattleRegionOffset = 0x2d4, StatusRegionOffset = 0x1d0,
+       ContextFlagOffset = 0x444, OverlayValueBase = 0x3000, OverlayValueOffset = 0xe60,
+       OverlayPointerOffset = 0x4ec };
+#else
+enum { ActorRegionOffset = 0, BattleRegionOffset = 0, StatusRegionOffset = 0,
+       ContextFlagOffset = 0x424, OverlayValueBase = 0x4000, OverlayValueOffset = 0x80,
+       OverlayPointerOffset = 0x6fc };
+#endif
+
 struct SubAt1000_020421a0 {
-    char pad[0x9b1];
+    char pad[0x9b1 - StatusRegionOffset];
     unsigned char flag;
 };
 struct GlobalOuter020421a0 {
@@ -89,7 +99,7 @@ struct Obj02037d88 {
     unsigned char hi0xc2 : 2;
     char padc3[0x130 - 0xc3];
     void* field130;
-    char pad134[0x1ce - 0x134];
+    char pad134[0x1ce - ActorRegionOffset - 0x134];
     unsigned char flags1ce;
     char pad1cf[0x260 - 0x1cf];
     int field260;
@@ -112,13 +122,13 @@ extern "C" ARM void func_02037d88(struct Obj02037d88* obj) {
     ApplyStatusTickEffect((struct Obj02039df4*)obj);
 
     if (obj->combatantId == 0xce) {
-        *(int*)((char*)bs + 0x7f5c) = obj->field54;
-        _ZN8Vector3iaSERKS_((int*)((char*)bs + 0x7f60), obj->vec);
+        *(int*)((char*)bs + 0x7f5c - BattleRegionOffset) = obj->field54;
+        _ZN8Vector3iaSERKS_((int*)((char*)bs + 0x7f60 - BattleRegionOffset), obj->vec);
     }
 
     {
         char* sub100 = (char*)obj + 0x100;
-        signed char byte1c9 = ((signed char*)sub100)[0xc9];
+        signed char byte1c9 = ((signed char*)sub100)[0xc9 - ActorRegionOffset];
         if (byte1c9 != 0) {
             _Z29StepValueTowardTarget02052ae8P11Obj02052ae8((struct Obj02052ae8*)obj);
             func_020391ac(obj);
@@ -134,7 +144,7 @@ extern "C" ARM void func_02037d88(struct Obj02037d88* obj) {
 
         if ((*ptr130 & 1) != 0
             || CheckSubstructByte0x7cPositive((signed char*)obj) != 0
-            || *(int*)((char*)ctx + 0x424) != 0
+            || *(int*)((char*)ctx + ContextFlagOffset) != 0
             || field3b0 == 0
             || obj->flagBit0xc2) {
             _Z29StepValueTowardTarget02052ae8P11Obj02052ae8((struct Obj02052ae8*)obj);
@@ -147,10 +157,10 @@ extern "C" ARM void func_02037d88(struct Obj02037d88* obj) {
             obj->field0xb4 = saved0xb4;
         }
 
-        unsigned int* p4000 = (unsigned int*)(r6 + 0x4000);
-        int val80 = *(int*)((char*)p4000 + 0x80);
+        unsigned int* p4000 = (unsigned int*)(r6 + OverlayValueBase);
+        int val80 = *(int*)((char*)p4000 + OverlayValueOffset);
         unsigned int* p3000 = (unsigned int*)(r6 + 0x3000);
-        void* val6fc = *(void**)((char*)p3000 + 0x6fc);
+        void* val6fc = *(void**)((char*)p3000 + OverlayPointerOffset);
 
         if (val80 != 0
             && _Z24IsCountAtLeast4_0219a370Ph(r6) != 0

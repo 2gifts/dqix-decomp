@@ -1,8 +1,13 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kPadding = 0x312 };
+#else
+enum { kPadding = 0x316 };
+#endif
 
 struct Entry_02028bd0 {
     unsigned short id;
-    char unk[0x316];
+    char unk[kPadding];
 };
 
 // USA: func_02028bd0

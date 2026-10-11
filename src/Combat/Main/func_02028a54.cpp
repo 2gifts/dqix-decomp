@@ -9,7 +9,9 @@ struct BigRecord020289c4 {
     unsigned short otherFlags : 13;
     char reserved4[0xc];
     SafeAllocator* allocator;
+#if !defined(jpn)
     SafeAllocator* secondAllocator;
+#endif
     char reserved18[0x300];
 };
 
@@ -49,7 +51,9 @@ extern "C" ARM int func_02028a54(BigRecord020289c4* records, int id)
     record->flagB = 1;
     record->id = id;
     record->allocator->Reset();
+#if !defined(jpn)
     record->secondAllocator->Reset();
+#endif
     Combatant02028a54* objects = (Combatant02028a54*)record->allocator->Allocate(0x1320);
     int i = 0;
     if (!objects) {

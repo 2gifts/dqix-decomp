@@ -21,7 +21,11 @@ extern struct Words3_02167cd4 data_ov000_021830cc;
 extern "C" ARM void func_ov000_02167cd4(unsigned char* obj) {
     GameState* battle = GameState::GetInstance();
     GetWord0x0((int*)battle);
+#if defined(jpn)
+    struct Random* rand = *(struct Random**)(obj + 0x218);
+#else
     struct Random* rand = *(struct Random**)(obj + 0x29c);
+#endif
     short ids[8];
     int count = func_ov000_0215eb1c(rand, ids, 8, 0);
     int i = 0;

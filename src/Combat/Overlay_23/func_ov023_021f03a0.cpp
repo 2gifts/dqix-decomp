@@ -13,7 +13,12 @@ struct TableA68 { char storage[4]; };
 struct Reset_021eefac {
     int state, task; char pad8[9]; signed char member;
     unsigned char loaded[4]; char pad16[2]; int actorId;
+#if defined(jpn)
+    char pad1c[0x118-0x1c]; char entries[0x2498-0x118]; unsigned char count;
+#else
     char pad1c[0x118-0x1c]; char entries[0x2788-0x118]; unsigned char count;
+#endif
+
     char copyData[4]; unsigned char copyLength;
 };
 struct BattleResultEntry { unsigned char id, fileId, type, flag; int experience; };
@@ -22,17 +27,62 @@ struct BattleEntry { char pad0[0x11b]; unsigned char state; char pad11c[2]; unsi
 struct LoadedEntry { char storage[0x54]; };
 struct BattleWork {
     char pad0[0x30]; SafeAllocator allocator;
+#if defined(jpn)
+    char pad44[0x218-0x30-sizeof(SafeAllocator)]; void* battle; BattleInfo* info;
+#else
     char pad44[0x29c-0x30-sizeof(SafeAllocator)]; void* battle; BattleInfo* info;
+#endif
+
+#if defined(jpn)
+    char pad2a4[0xb94-0x220]; char cameraTask[4]; char padc1c[0xe28-0xb98]; int state;
+#else
     char pad2a4[0xc18-0x2a4]; char cameraTask[4]; char padc1c[0xeac-0xc1c]; int state;
+#endif
+
+#if defined(jpn)
+    char padeb0[0x371c-0xe2c]; char entry[0x38a4-0x371c]; Entry_0205d6a0 entries;
+#else
     char padeb0[0x3760-0xeb0]; char entry[0x38e8-0x3760]; Entry_0205d6a0 entries;
+#endif
+
+#if defined(jpn)
+    char pad38ec[0x5778-0x38a8]; BattleEntry* result;
+#else
     char pad38ec[0x5588-0x38ec]; BattleEntry* result;
+#endif
+
+#if defined(jpn)
+    char pad558c[0x5948-0x577c]; int experience[4]; int gold; unsigned char levelUp;
+#else
     char pad558c[0x5758-0x558c]; int experience[4]; int gold; unsigned char levelUp;
+#endif
+
+#if defined(jpn)
+    char pad576d[3]; LoadedEntry loaded[4]; char pad58c0[0x5af4-0x5ab0]; TableA68 strings;
+#else
     char pad576d[3]; LoadedEntry loaded[4]; char pad58c0[0x5904-0x58c0]; TableA68 strings;
+#endif
+
 };
 struct MessageController {
+#if defined(jpn)
+    char pad0[0x10]; void* actor; char pad14[0x868-0x14]; int field998;
+#else
     char pad0[0x10]; void* actor; char pad14[0x998-0x14]; int field998;
+#endif
+
+#if defined(jpn)
+    char pad99c[0x17de - 0x86c]; unsigned char field19ae, field19af;
+#else
     char pad99c[0x19ae - 0x99c]; unsigned char field19ae, field19af;
+#endif
+
+#if defined(jpn)
+    char pad19b0[2]; unsigned char field19b2; char pad19b3[0x17fb-0x17e3]; unsigned char field19ca;
+#else
     char pad19b0[2]; unsigned char field19b2; char pad19b3[0x19ca-0x19b3]; unsigned char field19ca;
+#endif
+
 };
 struct ActorFlags { char pad0[0xc1]; unsigned char fieldc1; unsigned char low : 4; unsigned char visible : 1; unsigned char high : 3; };
 extern "C" Reset_021eefac* _ZZ17GetGlobal021ffefcvE1s;
@@ -75,11 +125,20 @@ extern "C" int func_ov023_021f4438(BattleWork*);
 extern "C" int func_ov023_021f4fc8();
 extern "C" void _Z20ResetFields_021eefacP14Reset_021eefac(Reset_021eefac*);
 
+#if defined(jpn)
+extern "C" void func_02045d88(MessageController*,char*,int);
+#endif
+// JPN: func_ov023_021effa4
 // USA: func_ov023_021f03a0
 extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
     int i;
     char text[256];
+#if defined(jpn)
+
+#else
     char actorName[12];
+#endif
+
     char filename[40];
     short ids[12];
     GameState* game = GameState::GetInstance();
@@ -140,7 +199,12 @@ extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
         state->state++;
     } else if (state->state == 1) {
         if (work->result->state != 0xff) goto done;
+#if defined(jpn)
+
+#else
         func_02046380(messages);
+#endif
+
         func_ov023_021d8ddc(work->result, work->experience);
         BaseCombatStats* stats = 0;
         if (work->info->legacyBoss) {
@@ -148,7 +212,17 @@ extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
                 int id = GetCheckedSignedByte(game, (unsigned char)i);
                 if (work->experience[id]) {
                     GameObject* actor = GetCombatantWithFlag0x100(game, id);
+#if defined(jpn)
+
+#else
+#if defined(jpn)
+
+#else
                     _Z30InitObjFromCombatantId020e4bf4Pvi(actorName, id);
+#endif
+
+#endif
+
                     stats = actor->baseStats_;
                 }
             }
@@ -157,7 +231,17 @@ extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
                 int id = GetCheckedSignedByte(game, (unsigned char)i);
                 GameObject* actor = GetCombatantWithFlag0x100(game, id);
                 if (actor && TestBitAt0x34((unsigned char*)work->info, (unsigned char)id) && !IsFlag10088Set((S_10088*)actor)) {
+#if defined(jpn)
+
+#else
+#if defined(jpn)
+
+#else
                     _Z30InitObjFromCombatantId020e4bf4Pvi(actorName, id);
+#endif
+
+#endif
+
                     stats = actor->baseStats_;
                     break;
                 }
@@ -167,16 +251,34 @@ extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
         for (int i = 0; i < 4; i++) if (work->experience[i]) count++;
         if (!stats) {
             for (int i = 0; i < 4; i++) {
+#if defined(jpn)
+                GameObject* actor = GetCombatantWithFlag0x100(game, i);
+                if (actor && TestBitAt0x34((unsigned char*)work->info, (unsigned char)i) && !GetCombatantWithFlag0x1000(game, i))
+                    stats = actor->baseStats_;
+#else
                 if (GetCombatantWithFlag0x100(game, i) && TestBitAt0x34((unsigned char*)work->info, (unsigned char)i) && !GetCombatantWithFlag0x1000(game, i))
                     _Z30InitObjFromCombatantId020e4bf4Pvi(actorName, i);
+#endif
+
             }
         }
+#if defined(jpn)
+        if (count > 1) sprintf(text, FindEntryByKey(&work->strings, 0x1a), stats);
+        else sprintf(text, FindEntryByKey(&work->strings, 0x19), stats);
+#else
         messages->actor = actorName;
         int messageId = 0x19;
         if (count > 1) messageId = 0x1a;
         sprintf(text, FindEntryByKey(&work->strings, messageId));
+#endif
+
         strcat(text, FindEntryByKey(&work->strings, 0x22));
+#if defined(jpn)
+        func_02045d88(messages, text, 1);
+#else
         func_0204500c(messages, text, 1, 0xe3);
+#endif
+
         messages->field19b2 = 0;
         messages->field998 = 1;
         state->state++;

@@ -1,6 +1,12 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kPointerOffset = 4 };
+#else
+enum { kPointerOffset = 0x38 };
+#endif
 
-struct Obj020444e0 { char pad[0x38]; void* field38; };
+
+struct Obj020444e0 { char pad[kPointerOffset]; void* field38; };
 
 extern "C" int func_020e1f1c(void* p);
 extern "C" void func_02066cf0(void* obj, int flag);

@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define IS_JPN 1
+#else
+#define IS_JPN 0
+#endif
+
 #include "GameState/GameState.h"
 
 void* GetDataPtr02114e04_020d6c00(void);
@@ -24,7 +30,7 @@ struct Obj02052f44 {
     short field4;
     char pad6[0xc1 - 0x6];
     struct BitsC102052f44 fc1;
-    char padc2[0x178 - 0xc2];
+    char padc2[(IS_JPN ? 0x16c : 0x178) - 0xc2];
     signed char f178[1];
     char pad179[0x17c - 0x179];
     signed char f17c;
@@ -57,7 +63,7 @@ ARM int FilterBytesAndInit02052f44(struct Obj02052f44* obj, signed char* src, in
     }
 
     {
-        int flag17c = (((signed char*)((char*)obj + 0x100))[0x7c] > 0);
+        int flag17c = (((signed char*)((char*)obj + 0x100))[(IS_JPN ? 0x70 : 0x7c)] > 0);
         if (flag17c) {
             return 0;
         }
@@ -86,11 +92,11 @@ ARM int FilterBytesAndInit02052f44(struct Obj02052f44* obj, signed char* src, in
     obj->f185 = 0;
     obj->f186 = 0;
 
-    idx = ((signed char*)((char*)obj + 0x100))[0x7d];
+    idx = ((signed char*)((char*)obj + 0x100))[(IS_JPN ? 0x71 : 0x7d)];
     {
         char* base = (char*)obj + idx;
         base = base + 0x100;
-        val = ((signed char*)base)[0x78];
+        val = ((signed char*)base)[(IS_JPN ? 0x6c : 0x78)];
     }
     func_0205308c(obj, val);
 

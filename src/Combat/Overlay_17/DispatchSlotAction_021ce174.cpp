@@ -1,3 +1,4 @@
+// JPN: func_ov017_021ce61c
 #include <globaldefs.h>
 
 struct SearchStruct0202c1a4;

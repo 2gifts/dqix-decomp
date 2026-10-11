@@ -1,6 +1,19 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+enum { kRegionValue72C_628 = 0x628 };
+enum { kRegionValue720_61C = 0x61c };
+enum { kRegionValue71C_618 = 0x618 };
+enum { kRegionValue2AE_28A = 0x28a };
+#else
+enum { kRegionValue72C_628 = 0x72c };
+enum { kRegionValue720_61C = 0x720 };
+enum { kRegionValue71C_618 = 0x71c };
+enum { kRegionValue2AE_28A = 0x2ae };
+#endif
+
+
 extern "C" void* func_0202ae18(void);
 void* GetData02100044(void);
 
@@ -20,6 +33,7 @@ extern "C" void func_ov003_02171e1c(void*, void*);
 extern int CheckSlotsAllFree0205e488(void* obj);
 
 // USA: func_ov003_02171764
+// JPN: func_ov003_02170ab0
 extern "C" ARM void func_ov003_02171764(char* self) {
     GameState* battle = GameState::GetInstance();
     struct SearchStruct* search = (struct SearchStruct*)func_0202ae18();
@@ -35,20 +49,20 @@ extern "C" ARM void func_ov003_02171764(char* self) {
     }
 
     int fieldVal = battle->GetEffectiveDeltaTime();
-    *(int*)(self + 0x72c) = fieldVal;
+    *(int*)(self + kRegionValue72C_628) = fieldVal;
     if ((unsigned int)fieldVal > 0xbb8) {
         func_0202b0f4(search);
         self[0] = 4;
         return;
     }
 
-    if (*(int*)(self + 0x720) != 0 && *(int*)(self + 0x71c) != 0) {
-        func_ov003_02171e1c(self, self + 0x2ae);
+    if (*(int*)(self + kRegionValue720_61C) != 0 && *(int*)(self + kRegionValue71C_618) != 0) {
+        func_ov003_02171e1c(self, self + kRegionValue2AE_28A);
         func_0202b0f4(search);
         self[0] = 4;
     }
 
     if (CheckSlotsAllFree0205e488(dataPtr) != 0) {
-        *(int*)(self + 0x720) = 1;
+        *(int*)(self + kRegionValue720_61C) = 1;
     }
 }

@@ -1,5 +1,12 @@
+// JPN: func_ov017_021a9c34
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+
+#if defined(jpn)
+enum { TextBufferPointer = 0x28, MessageStatus = 0x868, PendingMessage = 0x870, MessageFlag = 0x7e2 };
+#else
+enum { TextBufferPointer = 0x5c, MessageStatus = 0x998, PendingMessage = 0x9a0, MessageFlag = 0x9b2 };
+#endif
 
 struct PointerField32c_ffc0;
 struct ResetObj020d7a5c;
@@ -14,7 +21,13 @@ void* GetPointerAt0x32c(struct PointerField32c_ffc0* obj);
 void ClearByteFlagAt0x154(unsigned char* obj);
 int CallFunc020e0434With02153694(int value);
 extern "C" int sprintf(char* dst, const char* fmt, ...);
+#if defined(jpn)
+extern "C" void func_02045d88(void*, const char*, int);
+extern char data_ov017_021d7c28;
+extern char data_ov017_021d7c49;
+#else
 extern "C" void func_0204500c(void*, const char*, int, int);
+#endif
 void SetFlagsAt0x244(unsigned char* obj, unsigned char mask);
 void ClearFlagBits(unsigned char* obj, int mask);
 extern "C" int func_020457e0(void* obj);
@@ -38,22 +51,34 @@ extern "C" ARM void func_ov017_021a9454(char* obj) {
         ClearByteFlagAt0x154((unsigned char*)p);
 
         int flag10 = *(int*)(obj + 0x10);
-        char* buf = *(char**)(g + 0x5c);
+        char* buf = *(char**)(g + TextBufferPointer);
         if (flag10 == 0) {
+#if defined(jpn)
+            sprintf(buf, &data_ov017_021d7c28);
+#else
             sprintf(buf, (const char*)CallFunc020e0434With02153694(0x3a));
+#endif
         } else {
+#if defined(jpn)
+            sprintf(buf, &data_ov017_021d7c49);
+#else
             sprintf(buf, (const char*)CallFunc020e0434With02153694(0x3b));
+#endif
             *(int*)(obj + 0xc) = 0x170c;
         }
+#if defined(jpn)
+        func_02045d88(g, buf, 0);
+#else
         func_0204500c(g, buf, 0, 0xe3);
-        *(unsigned char*)(g + 0x1000 + 0x9b2) = 0;
-        *(int*)(g + 0x998) = 1;
+#endif
+        *(unsigned char*)(g + 0x1000 + MessageFlag) = 0;
+        *(int*)(g + MessageStatus) = 1;
         SetFlagsAt0x244((unsigned char*)field, 2);
         *(int*)(obj + 0x8) = 1;
         return;
     }
 
-    if (status != 1 || *(int*)(g + 0x9a0) != 0) return;
+    if (status != 1 || *(int*)(g + PendingMessage) != 0) return;
 
     ClearFlagBits((unsigned char*)field, 2);
     if (func_020457e0(g) == 0) {

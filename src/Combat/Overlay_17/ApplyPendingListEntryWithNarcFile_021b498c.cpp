@@ -1,3 +1,10 @@
+// JPN: func_ov017_021b507c
+#if defined(jpn)
+enum { RegionOffset18 = 0x14 };
+#else
+enum { RegionOffset18 = 0x18 };
+#endif
+
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
@@ -40,9 +47,9 @@ extern "C" ARM void func_ov017_021b498c(struct Obj021b498c* obj) {
             FindFilesInNarcBySubstring((const void*)out1, &data_ov017_021d7b4f, &filePtr, &fileSize, 1);
             if (filePtr != 0) {
                 char* sub = (char*)obj->sub;
-                InitializeStruct((struct InitStruct*)(sub + 0x18));
-                ProcessAndCheckPairs02028104((struct Struct0202811c*)(sub + 0x18), *(int*)((char*)obj->sub + 0x10), (int)filePtr, (int)fileSize);
-                func_02028214(sub + 0x18, *(int*)((char*)obj->sub + 0x10));
+                InitializeStruct((struct InitStruct*)(sub + RegionOffset18));
+                ProcessAndCheckPairs02028104((struct Struct0202811c*)(sub + RegionOffset18), *(int*)((char*)obj->sub + 0x10), (int)filePtr, (int)fileSize);
+                func_02028214(sub + RegionOffset18, *(int*)((char*)obj->sub + 0x10));
                 sub[0xc] = 1;
             }
         }

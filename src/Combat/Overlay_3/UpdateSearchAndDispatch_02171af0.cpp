@@ -1,4 +1,13 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegion72c = 0x628 };
+#else
+enum { kRegion72c = 0x72c };
+#endif
+
+#if defined(jpn)
+extern "C" void func_ov003_021714f0(void*);
+#endif
 #include "GameState/GameState.h"
 
 struct SearchStruct;
@@ -20,10 +29,11 @@ struct Obj02171af0 {
     unsigned char pad1b1lo : 6;
     unsigned char flag1b1 : 1;
     unsigned char pad1b1hi : 1;
-    char pad3[0x72c - 0x1b2];
+    char pad3[kRegion72c - 0x1b2];
     unsigned int field72c;
 };
 
+// JPN: func_ov003_02170dc0
 // USA: func_ov003_02171af0  (semantic: UpdateSearchAndDispatch_02171af0)
 extern "C" ARM void func_ov003_02171af0(struct Obj02171af0* obj) {
     GameState* battle = GameState::GetInstance();
@@ -45,7 +55,11 @@ extern "C" ARM void func_ov003_02171af0(struct Obj02171af0* obj) {
     SetSearchFlagBitAt0xc((struct SearchStruct*)ptr, obj->field199);
     func_0202c288(ptr);
 
+#if defined(jpn)
+    func_ov003_021714f0(obj);
+#else
     int flag = obj->flag1b1 ? 1 : 0;
     LoopCallOv017_02172518((struct Obj_02172518*)obj, flag);
+#endif
     obj->field0 = 7;
 }

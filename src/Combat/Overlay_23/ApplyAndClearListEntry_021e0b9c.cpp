@@ -15,10 +15,16 @@ struct Obj021e0b9c {
     void* field4c;
     char pad7c[0x7c - 0x50];
     int field7c;
+#if defined(jpn)
+    char pad74c[0x6c8 - 0x80];
+#else
     char pad74c[0x74c - 0x80];
+#endif
+
     int handle;
 };
 
+// JPN: func_ov023_021e10f0
 // USA: func_ov023_021e0b9c  (semantic: ApplyAndClearListEntry_021e0b9c)
 extern "C" ARM int func_ov023_021e0b9c(struct Obj021e0b9c* obj) {
     if (obj->handle == -1) {
@@ -29,7 +35,12 @@ extern "C" ARM int func_ov023_021e0b9c(struct Obj021e0b9c* obj) {
     if (((BackgroundLoader*)(listPtr))->GetTaskStatus((int)(obj->handle))) {
         int out1, out2;
         ((BackgroundLoader*)((struct List0202fec8*)listPtr))->GetLoadedFileByID((int)(obj->handle), (void**)(&out1), (unsigned int*)(&out2));
+#if defined(jpn)
+        {
+#else
         if (out1 != 0 && out2 != 0) {
+#endif
+
             int v = *(short*)((char*)obj->field4c + 0x18);
             func_020df850(&obj->field7c, &obj->field28, out1, out2, v);
         }

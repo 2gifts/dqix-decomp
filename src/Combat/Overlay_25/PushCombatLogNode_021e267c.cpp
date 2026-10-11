@@ -1,3 +1,10 @@
+// JPN: func_ov025_021e2b94
+#if defined(jpn)
+enum { RegionOffsetc = 0x4 };
+#else
+enum { RegionOffsetc = 0xc };
+#endif
+
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
@@ -40,7 +47,7 @@ extern int data_ov025_021ef988;
 // USA: func_ov025_021e267c  (semantic: PushCombatLogNode_021e267c)
 extern "C" ARM void func_ov025_021e267c(int combatantId, int arg1, int arg2, int flag) {
     GameState* battle = GameState::GetInstance();
-    void* entryObj = *(void**)((char*)&data_ov025_021ef988 + 0xc);
+    void* entryObj = *(void**)((char*)&data_ov025_021ef988 + RegionOffsetc);
     void* entry = GetArrayEntry_021e8a54_021e8a54((char*)entryObj);
     GameObject* combatant = battle->GetGameObjectByIndex(combatantId);
     if (!combatant) return;
@@ -54,7 +61,7 @@ extern "C" ARM void func_ov025_021e267c(int combatantId, int arg1, int arg2, int
     void* ptr = _ZNK8Object3D23GetCurrentAnimationTimeEv((struct PtrField0x1c_020371b0*)combatant);
     struct Struct_203dafc s;
     ClearEightWords(&s);
-    void* byteObj = *(void**)((char*)&data_ov025_021ef988 + 0xc);
+    void* byteObj = *(void**)((char*)&data_ov025_021ef988 + RegionOffsetc);
     s.fieldc = (int)entry;
     s.field4 = arg1;
     s.field8 = arg2;
@@ -69,6 +76,6 @@ extern "C" ARM void func_ov025_021e267c(int combatantId, int arg1, int arg2, int
     node->byte0 = 0;
     node->half2 = combatantId;
     node->half4 = s.field1c;
-    void* pushObj = *(void**)((char*)&data_ov025_021ef988 + 0xc);
+    void* pushObj = *(void**)((char*)&data_ov025_021ef988 + RegionOffsetc);
     PushLogNode021e8bac((struct Obj021e8bac*)pushObj, node);
 }

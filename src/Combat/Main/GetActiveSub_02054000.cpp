@@ -8,7 +8,11 @@ struct Inner_02054000 {
 };
 
 struct Outer_02054000 {
+#if defined(jpn)
+    char pad0[0x144];
+#else
     char pad0[0x150];
+#endif
     struct Inner_02054000* inner;
 };
 

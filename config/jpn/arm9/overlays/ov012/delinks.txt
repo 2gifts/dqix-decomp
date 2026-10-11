@@ -4,3 +4,35 @@
     .data       start:0x0218bf40 end:0x0218c000 kind:data align:32
     .bss        start:0x0218c000 end:0x0218c000 kind:bss align:32
 
+src/Combat/Overlay_12/AppendMessageNameTags_02189934.cpp:
+    .text start:0x0218a34c end:0x0218a494
+
+src/Combat/Overlay_12/func_ov012_0218a4b0.cpp:
+    .text start:0x0218af38 end:0x0218b000
+
+src/Combat/Overlay_12/AdvanceTagStateB_02188924.cpp:
+    .text start:0x02188f6c end:0x02189138
+
+src/Combat/Overlay_12/BuildAndEnqueueMessages_0218a054.cpp:
+    .text start:0x0218ab48 end:0x0218acd8
+
+src/Combat/Overlay_12/func_ov012_02187320.cpp:
+    .text start:0x02187a50 end:0x02187d2c
+
+src/Combat/Overlay_12/AdvanceTagState_02187158.cpp:
+    .text start:0x02187884 end:0x02187a50
+
+src/Combat/Overlay_12/func_ov012_02185af0.cpp:
+    .text start:0x02186148 end:0x02186248
+
+src/Combat/Overlay_12/func_ov012_021843d4.cpp:
+    complete
+    .text start:0x02185448 end:0x02185690
+
+src/Combat/Overlay_12/func_ov012_02184acc.cpp:
+    complete
+    .text start:0x02185b90 end:0x02185db4
+
+src/Combat/Overlay_12/InitBattleAllocatorsAndBuffers_02184884.cpp:
+    complete
+    .text start:0x021859c4 end:0x02185b90

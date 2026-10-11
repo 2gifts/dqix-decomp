@@ -14,7 +14,11 @@ extern "C" void func_0205bb04(void* cursor, int index);
 extern "C" void func_0205d7a0(unsigned char* obj, int val);
 extern "C" int _Z26GetGlobalField0x1c020421a0v(void);
 extern "C" void func_ov000_0217737c(void* obj, void* buf);
+#if defined(jpn)
+extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g);
+#else
 extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g, int h);
+#endif
 extern "C" void func_ov000_0217a8f4(void* obj);
 
 struct Window02177184 {
@@ -38,7 +42,11 @@ struct Window02177184 {
 struct Menu02177184 {
     char pad_0[0x188];
     struct Window02177184 window;
+#if defined(jpn)
+    char pad_23a[0x1fa1 - 0x188 - sizeof(struct Window02177184)];
+#else
     char pad_23a[0x1d69 - 0x188 - sizeof(struct Window02177184)];
+#endif
     signed char selection;
     char pad_1d6a[0x1d72 - 0x1d6a];
     unsigned short flags;
@@ -93,9 +101,18 @@ extern "C" ARM void func_ov000_02177184(struct Menu02177184* menu, int active) {
     window->field_0xae = 0xb;
     window->field_0xb1 = 1;
     func_0205d7a0((unsigned char*)window, menu->selection);
+#if defined(jpn)
+    void* buf = *(void**)(_Z26GetGlobalField0x1c020421a0v() + 0x28);
+    memset(buf, 0, 0x800);
+#else
     void* buf = *(void**)(_Z26GetGlobalField0x1c020421a0v() + 0x5c);
     memset(buf, 0, 0x960);
+#endif
     func_ov000_0217737c(menu, buf);
+#if defined(jpn)
+    func_0205d304(window, buf, 0, 1, 0, 1, 0);
+#else
     func_0205d304(window, buf, 0, 1, 0, 1, 0, 0);
+#endif
     func_ov000_0217a8f4(menu);
 }

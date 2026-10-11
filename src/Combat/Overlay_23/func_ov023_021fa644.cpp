@@ -32,12 +32,23 @@ struct Obj021fa644 {
     char pad0[8];
     unsigned short field8;
     unsigned short fieldA;
+#if defined(jpn)
+    char pad_c[0x28 - 0xc];
+#else
     char pad_c[0x2c - 0xc];
+#endif
+
     unsigned char field2c;
 };
 
+// JPN: func_ov023_021f9a6c
 // USA: func_ov023_021fa644  (semantic: ApplyEncodedSizeOrResetList_021fa644)
 extern "C" ARM void func_ov023_021fa644(Obj021fa644* obj, void* ctx, EncodedSize020e03b8* p2, int p3) {
+#if defined(jpn)
+ enum {regionalOffset0=0x144};
+#else
+ enum {regionalOffset0=0x150};
+#endif
     if (p2 == 0 || p3 == 0) {
         return;
     }
@@ -63,7 +74,7 @@ extern "C" ARM void func_ov023_021fa644(Obj021fa644* obj, void* ctx, EncodedSize
         int val = GetField0x3acValue(bs);
         GameObject* combatant = bs->GetPartyMemberByIndex(val);
         if (combatant != 0) {
-            Sub0x150_021fa644* sub = *(Sub0x150_021fa644**)((char*)combatant + 0x150);
+            Sub0x150_021fa644* sub = *(Sub0x150_021fa644**)((char*)combatant + regionalOffset0);
             flag5 = sub->bit0;
         }
     } else if (kind == 2) {

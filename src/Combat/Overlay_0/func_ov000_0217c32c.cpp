@@ -2,6 +2,9 @@
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
 
+#if defined(jpn)
+#define _Z33SetupAndRunBufferedScript0209a348P11Ctx0209a348Pv func_0209c09c
+#endif
 struct ItemData0217c32c {
     unsigned int pad0 : 7;
     unsigned int category : 4;
@@ -15,12 +18,20 @@ struct EquipSlot0217c32c {
 struct CombatData0217c32c {
     char pad0[0x2b4];
     struct EquipSlot0217c32c shield;
+#if defined(jpn)
+    char pad2b8[0x8b8 - 0x2b8];
+#else
     char pad2b8[0x950 - 0x2b8];
+#endif
     int field950;
 };
 
 struct Outer_02054000 {
+#if defined(jpn)
+    char pad0[0x144];
+#else
     char pad0[0x150];
+#endif
     struct CombatData0217c32c* data;
 };
 extern "C" struct EquipSlot0217c32c* _Z21GetActiveSub_02054000P14Outer_02054000(struct Outer_02054000* p);
@@ -35,8 +46,13 @@ struct Ctx0209a348;
 extern "C" void _Z33SetupAndRunBufferedScript0209a348P11Ctx0209a348Pv(struct Ctx0209a348* ctx, void* value);
 
 struct FindEntry0209a614 {
+#if defined(jpn)
+    unsigned short kind : 12;
+    unsigned short pad0 : 4;
+#else
     unsigned short kind : 11;
     unsigned short pad0 : 5;
+#endif
     unsigned short id;
     unsigned int category : 5;
     unsigned int pad4 : 27;
@@ -57,7 +73,11 @@ struct Entry0217c32c {
 struct Menu0217c32c {
     char pad0[0x4c];
     int combatantId;
+#if defined(jpn)
+    char pad50[0xc8 - 0x50];
+#else
     char pad50[0x88 - 0x50];
+#endif
     unsigned char usable[0x13];
     char pad9b[0x1a4 - 0x9b];
     struct Entry0217c32c* items[0x93];

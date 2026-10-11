@@ -7,13 +7,22 @@ extern "C" void func_ov023_021e613c(Words021e60c4* dst, char* src);
 extern "C" void func_ov023_021e6158(void* obj, int index);
 
 struct Obj021e447c {
+#if defined(jpn)
+    char pad0[0x124];
+#else
     char pad0[0x128];
+#endif
     void* f128;
     void* f12c;
+#if defined(jpn)
+    char pad1[0x56c - 0x12c];
+#else
     char pad1[0x634 - 0x130];
+#endif
     unsigned short f634;
 };
 
+// JPN: func_ov023_021e46a0
 // USA: func_ov023_021e447c
 extern "C" ARM void func_ov023_021e447c(Obj021e447c* obj) {
     if (!(obj->f634 & 0x8)) return;

@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegion950 = 0x8b8 };
+enum { kRegion76 = 0x46 };
+#else
+enum { kRegion950 = 0x950 };
+enum { kRegion76 = 0x76 };
+#endif
 #include "GameState/GameState.h"
 
 struct CombatantData_02167b34 {
@@ -18,7 +25,7 @@ struct CombatantData_02167b34 {
     unsigned char byteTable[0x464 - 0x186];
     unsigned char entryTable[0x49c - 0x464];
     unsigned char flag : 1;
-    unsigned char pad49d[0x950 - 0x49d];
+    unsigned char pad49d[kRegion950 - 0x49d];
     int index;
 };
 
@@ -26,7 +33,7 @@ struct Wrapper02168088;
 struct Menu_02167b34 {
     unsigned char pad0[0x10];
     void* list;
-    unsigned char pad14[0x76 - 0x14];
+    unsigned char pad14[kRegion76 - 0x14];
     signed char combatantId;
 };
 
@@ -42,6 +49,7 @@ static inline BaseCombatStats* GetBaseStats(GameObject* c) {
     return stats;
 }
 
+// JPN: func_ov003_02167a0c
 // USA: func_ov003_02167b34
 extern "C" ARM void func_ov003_02167b34(Menu_02167b34* menu) {
     GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), menu->combatantId);

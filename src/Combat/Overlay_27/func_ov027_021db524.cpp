@@ -1,3 +1,15 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define _Z24IssueBattleCommandSlot25ii func_020d84e0
+#define data_ov001_02164ca4 data_ov001_02166270
+#define data_ov028_021d9aa0 data_ov028_021da400
+#define func_ov014_02188330 func_ov014_02189234
+#define func_ov014_0218854c func_ov014_0218942c
+#define func_ov014_021885bc func_ov014_0218948c
+#define func_ov015_02191f04 func_ov015_02192a48
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 struct Holder021db524 {
@@ -41,7 +53,12 @@ extern "C" void func_020c9be0(void);
 
 extern "C" void _Z31IssueIdleBattleCommand_021db490v(void);
 int IssueBattleCommandSlot7(int a, Ctx020d507c* ctx);
+#if defined(jpn)
+#define IssueBattleCommandSlot25 func_020d84e0
+extern "C" int IssueBattleCommandSlot25(int a, int mode);
+#else
 int IssueBattleCommandSlot25(int a, int mode);
+#endif
 int IssueBattleCommandSlot8(int a, int b);
 int IssueBattleCommandSlot2(int a);
 int DispatchEvent1e03(int a, int b, int c, int d, unsigned short e, unsigned short f,

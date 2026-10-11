@@ -1,5 +1,16 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kRegionValue4EF_4EB = 0x4eb };
+enum { kRegionValue4FC_4F8 = 0x4f8 };
+enum { kRegionValue4F7_4F3 = 0x4f3 };
+#else
+enum { kRegionValue4EF_4EB = 0x4ef };
+enum { kRegionValue4FC_4F8 = 0x4fc };
+enum { kRegionValue4F7_4F3 = 0x4f7 };
+#endif
+
+
 struct Struct_0205bef8;
 extern "C" void _Z12Init0205bef8P15Struct_0205bef8(struct Struct_0205bef8* s);
 
@@ -17,14 +28,15 @@ struct PointerTable021696f4 {
 };
 
 struct Ctx021696f4 {
-    char pad0[0x4ef];
+    char pad0[kRegionValue4EF_4EB];
     signed char values[4];
     signed char limits[4];
-    char pad4f7[0x4fc - 0x4f7];
+    char pad4f7[kRegionValue4FC_4F8 - kRegionValue4F7_4F3];
     struct PointerTable021696f4 table;
 };
 
 // USA: func_ov003_021696f4
+// JPN: func_ov003_0216951c
 extern "C" ARM void func_ov003_021696f4(struct Ctx021696f4* self, int index) {
     int base = self->values[index];
     int isLast = 0;

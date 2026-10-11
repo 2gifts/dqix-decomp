@@ -1,8 +1,13 @@
 #include <globaldefs.h>
 
 struct Entry0209a594 {
+    #if defined(jpn)
+    unsigned short id : 12;
+    unsigned short otherFlags : 4;
+#else
     unsigned short id : 11;
     unsigned short otherFlags : 5;
+#endif
     char rest[10];
 };
 

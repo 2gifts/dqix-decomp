@@ -1,5 +1,12 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kFlagsOffset = 0x1faa, kSumOffset = 0x1fa3, kCountOffset = 0x1fa0, kArrayOffset = 0x1f98 };
+#else
+enum { kFlagsOffset = 0x1d72, kSumOffset = 0x1d6b, kCountOffset = 0x1d68, kArrayOffset = 0x1d60 };
+#endif
+
+
 struct Struct_0205c570;
 struct Obj0205eaa0;
 struct Entry_0205d6a0;
@@ -16,25 +23,26 @@ extern "C" void func_ov000_02176634(void* obj, struct TableEntry0217f8c0* entry,
 extern "C" void func_ov000_0217c638(void* obj, int arg1, int arg2);
 extern struct Obj0205eaa0 data_02108760;
 
+// JPN: func_ov000_0217e71c
 // USA: func_ov000_0217d324
 extern "C" ARM void func_ov000_0217d324(char* obj, int arg1, int arg2) {
-    *(unsigned short*)(obj + 0x1d72) |= 0x100;
+    *(unsigned short*)(obj + kFlagsOffset) |= 0x100;
     int sum = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((struct Struct_0205c570*)(obj + 0x188));
     if (sum < 0) {
         sum = 0;
     }
-    *(signed char*)(obj + 0x1d6b) = sum;
+    *(signed char*)(obj + kSumOffset) = sum;
     if (func_ov000_0217c594(obj, 0) != 0) {
         _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
-        *(signed char*)(obj + 0x1d68) = *(signed char*)(obj + 0x1d68) + 1;
-        *(unsigned char*)(obj + *(signed char*)(obj + 0x1d68) + 0x1d60) = 4;
+        *(signed char*)(obj + kCountOffset) = *(signed char*)(obj + kCountOffset) + 1;
+        *(unsigned char*)(obj + *(signed char*)(obj + kCountOffset) + kArrayOffset) = 4;
         struct TableEntry0217f8c0* e = _Z30FindMatchingTableEntry0217f8c0P14Struct0217f8c0((struct Struct0217f8c0*)obj);
         func_ov000_02176634(obj, e, 4, arg1, arg2);
     } else if (_Z35CheckFlagsOrField_0217c5f4_0217c5f4Pv(obj) != 0) {
         _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((struct Entry_0205d6a0*)(obj + 0x188), 0);
-        *(unsigned char*)(obj + *(signed char*)(obj + 0x1d68) + 0x1d60) = 0;
-        *(signed char*)(obj + 0x1d68) = *(signed char*)(obj + 0x1d68) - 1;
-        *(signed char*)(obj + 0x1d6b) = -1;
+        *(unsigned char*)(obj + *(signed char*)(obj + kCountOffset) + kArrayOffset) = 0;
+        *(signed char*)(obj + kCountOffset) = *(signed char*)(obj + kCountOffset) - 1;
+        *(signed char*)(obj + kSumOffset) = -1;
         func_ov000_0217c638(obj, arg1, arg2);
     }
 }

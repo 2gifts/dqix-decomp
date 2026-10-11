@@ -1,3 +1,9 @@
+#if defined(jpn)
+enum { RegionalOffset = 0x148 };
+#else
+enum { RegionalOffset = 0x154 };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -36,6 +42,7 @@ struct TableEntry020730e0 {
 };
 
 // USA: func_020730e0
+// JPN: func_020730e0
 ARM void ApplyCombatantEffectByIndex020730e0(int id, int index) {
     GameState* bs = GameState::GetInstance();
     GameObject* combatant;
@@ -52,7 +59,7 @@ ARM void ApplyCombatantEffectByIndex020730e0(int id, int index) {
     }
 
     combatant = GetCombatantWithFlag0x100(bs, id);
-    if (!combatant || *(int*)((char*)combatant + 0x154) == 0) {
+    if (!combatant || *(int*)((char*)combatant + RegionalOffset) == 0) {
         return;
     }
 

@@ -9,6 +9,7 @@ int IsFlagBit6Set_021df6ec(struct FlagObj_021df6ec* obj);
 struct Ctx_021e9198 { char pad[0x10]; void* field0x10; };
 struct Bits_021e9198 { unsigned short low6 : 6; unsigned short code : 3; unsigned short rest : 7; };
 
+// JPN: func_ov024_021e9a0c
 // USA: func_ov024_021e9198  (semantic: SelectMsgOrValue_021e9198)
 extern "C" ARM int func_ov024_021e9198(struct Ctx_021e9198* ctx, int id, int code, int mode) {
 	GameObject* c = GetCombatantByID((int)ctx->field0x10, id);

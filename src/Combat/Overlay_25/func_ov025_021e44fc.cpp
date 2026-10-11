@@ -18,7 +18,11 @@ struct PartySlot021e44fc {
     struct Obj02176150 gauge;
     char pad10[0x4c - 0x10];
     int combatantId;
+#if defined(jpn)
+    char pad50[0x488 - 0x50];
+#else
     char pad50[0x448 - 0x50];
+#endif
 };
 
 struct CombatWorkOffsets021e44fc {
@@ -45,6 +49,7 @@ static inline int IsPartyIndex(int id) {
     return id >= 0 && id <= 3;
 }
 
+// JPN: func_ov025_021e49ec
 // USA: func_ov025_021e44fc
 extern "C" ARM int func_ov025_021e44fc(void* unused, struct List02160094* list) {
     struct ListNode02160094* node = _Z22GetNodeAtIndex02160094P12List02160094i(list, 0);

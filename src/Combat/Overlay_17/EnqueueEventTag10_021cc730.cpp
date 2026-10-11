@@ -1,3 +1,10 @@
+// JPN: func_ov017_021ccbd8
+#if defined(jpn)
+enum { RegionOffset950 = 0x8b8 };
+#else
+enum { RegionOffset950 = 0x950 };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -30,12 +37,12 @@ extern "C" ARM void func_ov017_021cc730(int id, unsigned char arg1, unsigned cha
 
     void* p = GetData02100044();
     LocalEvt021cc730 buf;
-    int idx = *(int*)((char*)field150 + 0x950);
+    int idx = *(int*)((char*)field150 + RegionOffset950);
 
     buf.tag = 0xa;
     buf.idLow3 = (unsigned short)id;
     buf.byteVal = *(unsigned short*)((char*)field150 + idx * 2 + 0x16c);
-    buf.idxLow4 = (unsigned short)*(int*)((char*)field150 + 0x950);
+    buf.idxLow4 = (unsigned short)*(int*)((char*)field150 + RegionOffset950);
     buf.field8 = *(unsigned int*)((char*)field150 + idx * 4 + 0x138);
     buf.field6 = *(unsigned short*)((char*)field150 + 0x564);
     buf.fieldc = *(unsigned char*)((char*)field150 + idx + 0x186);

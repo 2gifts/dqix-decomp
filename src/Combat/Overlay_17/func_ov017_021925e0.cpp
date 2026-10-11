@@ -13,31 +13,37 @@ extern "C" struct SearchStruct* func_0202ae18(void);
 extern "C" int func_0202c540(struct SearchStruct* obj);
 int HasFlag3orFlag2And9a_021bd3a4(struct Obj_021bd3a4* obj);
 
+// JPN: func_ov017_021931a8
 // USA: func_ov017_021925e0
 extern "C" ARM int func_ov017_021925e0(void) {
+#if defined(jpn)
+ enum {regionalOffset0=0x524, regionalOffset1=0xfd, regionalOffset2=0xf4, regionalOffset3=0xfb, regionalOffset4=0xcb};
+#else
+ enum {regionalOffset0=0x734, regionalOffset1=0x101, regionalOffset2=0xf8, regionalOffset3=0xff, regionalOffset4=0xcf};
+#endif
     char* base = func_ov017_0218b5b0();
-    unsigned char* obj = *(unsigned char**)(base + 0x3000 + 0x734);
+    unsigned char* obj = *(unsigned char**)(base + 0x3000 + regionalOffset0);
     if (!func_0202c540(func_0202ae18())) {
         goto ret0;
     }
     if (HasFlag3orFlag2And9a_021bd3a4((struct Obj_021bd3a4*)obj)) {
-        if (*(unsigned char*)(obj + 0x101) == 0) {
+        if (*(unsigned char*)(obj + regionalOffset1) == 0) {
             goto ret0;
         }
     } else {
         goto ret0;
     }
-    if (*(unsigned char*)(obj + 0x101) == 0) {
+    if (*(unsigned char*)(obj + regionalOffset1) == 0) {
         goto skip;
     }
-    if (((struct F8Bits_021925e0*)(obj + 0xf8))->low27 & 4) {
+    if (((struct F8Bits_021925e0*)(obj + regionalOffset2))->low27 & 4) {
         goto ret0;
     }
 skip:
-    if (obj[0xff] != 0) {
+    if (obj[regionalOffset3] != 0) {
         goto ret0;
     }
-    if (obj[0xcf] != 2) {
+    if (obj[regionalOffset4] != 2) {
         return 1;
     }
 ret0:

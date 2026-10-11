@@ -27,6 +27,7 @@ struct IdTable_021ef074 { short v[8]; };
 extern struct GroupList_021ef074 data_ov024_021fea1c[];
 extern struct IdTable_021ef074 data_ov024_021fed1c;
 
+// JPN: func_ov024_021ef840
 // USA: func_ov024_021ef074
 extern "C" ARM int func_ov024_021ef074(struct Ctx_021ef074* ctx, int unused1, int unused2, int* out, short* outIds) {
     struct Groups_021ef074* groups = &ctx->battle->groups;

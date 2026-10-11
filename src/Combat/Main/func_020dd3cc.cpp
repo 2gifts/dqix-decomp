@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kIntrinsicOffset = 0x144, kTableIndexOffset = 0x8b8 };
+#else
+enum { kIntrinsicOffset = 0x150, kTableIndexOffset = 0x950 };
+#endif
 #include "GameState/GameState.h"
 
 int TestBitInArray0x8ec(unsigned char* obj, int index);
@@ -15,12 +20,12 @@ extern "C" ARM int func_020dd3cc(int combatantId) {
     }
     unsigned int result = 0;
     for (unsigned short i = 0; i <= 0xb; i++) {
-        if (TestBitInArray0x8ec(*(unsigned char**)((char*)combatant + 0x150), data_020f29f4[i])) {
+        if (TestBitInArray0x8ec(*(unsigned char**)((char*)combatant + kIntrinsicOffset), data_020f29f4[i])) {
             result |= 1u << i;
         }
     }
-    unsigned char* obj = *(unsigned char**)((char*)combatant + 0x150);
-    unsigned char a = (unsigned char)*(int*)(obj + 0x950);
+    unsigned char* obj = *(unsigned char**)((char*)combatant + kIntrinsicOffset);
+    unsigned char a = (unsigned char)*(int*)(obj + kTableIndexOffset);
     for (unsigned char j = 0; j < 4; j++) {
         unsigned int v = _Z20GetTableByte020dd11cjj(a, j);
         if (v == 0) {

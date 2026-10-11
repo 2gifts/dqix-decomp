@@ -18,6 +18,7 @@ extern "C" int _Z41PickRandomTableEntryResetCounter_021ed890PP6RandomPiPs(struct
 struct Buf8_021f36cc { short v[8]; };
 extern struct Buf8_021f36cc data_ov024_021fedec;
 
+// JPN: func_ov024_021f3e98
 // USA: func_ov024_021f36cc
 extern "C" ARM int func_ov024_021f36cc(int* a0, int selfId, int a2, int* outCount, short* outArray) {
 	struct Buf8_021f36cc buf = data_ov024_021fedec;

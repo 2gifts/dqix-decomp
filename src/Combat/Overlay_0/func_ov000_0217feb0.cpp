@@ -3,7 +3,11 @@
 struct Entry0217feb0 {
     char pad0[0x4c];
     int id;
+#if defined(jpn)
+    char pad1[0xc7 - 0x50];
+#else
     char pad1[0x87 - 0x50];
+#endif
     unsigned char field87;
     char pad2[0x448 - 0x88];
 };

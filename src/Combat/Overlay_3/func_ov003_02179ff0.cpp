@@ -1,4 +1,17 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegion89c = 0x818 };
+enum { kRegion8a0 = 0x81c };
+enum { kRegion100c = 0xf88 };
+enum { kRegion1016 = 0xf92 };
+enum { kRegion103a = 0xfb6 };
+#else
+enum { kRegion89c = 0x89c };
+enum { kRegion8a0 = 0x8a0 };
+enum { kRegion100c = 0x100c };
+enum { kRegion1016 = 0x1016 };
+enum { kRegion103a = 0x103a };
+#endif
 #include "GameState/GameState.h"
 
 void* GetPtrField0x2a04(GameState* battleStruct);
@@ -10,18 +23,19 @@ struct S_a0b8c;
 extern "C" int _Z26CountNonZeroValues020a0b8cP7S_a0b8c(struct S_a0b8c* p);
 
 struct ListMenu_02179ff0 {
-    unsigned char pad0[0x89c];
+    unsigned char pad0[kRegion89c];
     void* memberMap;
-    unsigned char pad8a0[0x100c - 0x8a0];
+    unsigned char pad8a0[kRegion100c - kRegion8a0];
     short mode;
     short cursor;
     short field_0x1010;
     short tableCursor;
     short page;
-    unsigned char pad1016[0x103a - 0x1016];
+    unsigned char pad1016[kRegion103a - kRegion1016];
     short selectedId;
 };
 
+// JPN: func_ov003_02178e20
 // USA: func_ov003_02179ff0
 extern "C" ARM void func_ov003_02179ff0(ListMenu_02179ff0* menu) {
     void* memberMap = menu->memberMap;

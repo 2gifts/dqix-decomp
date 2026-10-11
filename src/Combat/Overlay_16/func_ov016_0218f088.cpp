@@ -1,6 +1,10 @@
 #include <globaldefs.h>
 
-#define IDX_WORD (0xac / 4)		// o->idx[i] reached as ((int*)o + i)[IDX_WORD]
+#if defined(jpn)
+#define IDX_WORD (0xa8 / 4)
+#else
+#define IDX_WORD (0xac / 4)
+#endif		// o->idx[i] reached as ((int*)o + i)[IDX_WORD]
 
 struct Stream0218f088 {
 	char* cursor;			// 0x00
@@ -20,7 +24,9 @@ struct Obj0218f088 {
 	char pad_68[0x34];
 	unsigned int count;					// 0x9c
 	unsigned int limit;					// 0xa0
-	int wideFlag;						// 0xa4
+	#if !defined(jpn)
+	int wideFlag;
+#endif						// 0xa4
 	unsigned int wrap;					// 0xa8
 	int idx[6];							// 0xac
 	char pad_c4[8];
@@ -40,10 +46,14 @@ extern "C" ARM int func_ov016_0218f088(Obj0218f088* o) {
 	}
 
 	if ((*(unsigned short*)o->stream->cursor & 0x8000) != 0) {
+#if !defined(jpn)
 		o->wideFlag = 1;
+#endif
 		adj = 4;
 	} else {
+#if !defined(jpn)
 		o->wideFlag = 0;
+#endif
 		adj = 0;
 	}
 

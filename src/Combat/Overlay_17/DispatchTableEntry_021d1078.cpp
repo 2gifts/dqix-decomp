@@ -15,6 +15,7 @@ struct Node_021d1078 {
     unsigned char field5;
 };
 
+// JPN: func_ov017_021d14f4
 // USA: func_ov017_021d1078  (semantic: DispatchTableEntry_021d1078)
 extern "C" ARM void func_ov017_021d1078(int id, Node_021d1078* node, void* unused0, void* unused1, void* searchObj) {
     signed char cur = GetSearchStructCurrentArrEntry((SearchStruct0202c1a4*)searchObj);

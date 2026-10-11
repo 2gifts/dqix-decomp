@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kPaletteFlagOffset = 0xa6c };
+#else
+enum { kPaletteFlagOffset = 0xccc };
+#endif
 #include "GameState/GameState.h"
 #include "System/Cache.h"
 
@@ -39,5 +44,5 @@ ARM void UpdateObjPaletteEntry020dc70c(int id, int p1, int p2, int p3, unsigned 
         else
             LoadToSubBGStandardPalette(src, size, count);
     }
-    *(int*)((unsigned char*)GameState::GetInstance() + 0x5000 + 0xccc) &= ~2;
+    *(int*)((unsigned char*)GameState::GetInstance() + 0x5000 + kPaletteFlagOffset) &= ~2;
 }

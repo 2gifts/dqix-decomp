@@ -1,3 +1,19 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define data_ov005_0215cbd4 data_ov005_0215dfb4
+#define data_ov005_0215cd60 data_ov005_0215e140
+#define data_ov014_02189480 data_ov014_0218a2c0
+#define data_ov014_02189498 data_ov014_0218a2d8
+#define data_ov015_02193fe0 data_ov015_02194b20
+#define data_ov015_02194564 data_ov015_02195184
+#define data_ov015_02194570 data_ov015_02195190
+#define data_ov015_021945a0 data_ov015_021951c0
+#define data_ov015_021945d0 data_ov015_021951f0
+#define data_ov024_021ff17c data_ov023_021ff17c
+#define func_ov005_02158560 func_ov005_02159b58
+#else
+#define R(j,u) (u)
+#endif
 #include "globaldefs.h"
 #include "Memory/SafeAllocator.h"
 #include "World/Object3D.h"
@@ -49,10 +65,10 @@ extern "C" ARM void func_ov014_02184300(BestiaryAllocationState* state, SafeAllo
         }
         state->model = (Object3D*)allocator->Allocate(0xac);
         state->modelResource = allocator->Allocate(0x2c8);
-        state->labels = allocator->Allocate(0x4c);
-        state->name = allocator->Allocate(0x48);
-        state->description = allocator->Allocate(0x48);
-        state->extra = allocator->Allocate(0x200);
+        state->labels = allocator->Allocate(R(0x48, 0x4c));
+        state->name = allocator->Allocate(R(0x40, 0x48));
+        state->description = allocator->Allocate(R(0x40, 0x48));
+        state->extra = allocator->Allocate(R(0xc0, 0x200));
         state->list = (BestiaryList*)allocator->Allocate(0x54);
         state->items = (BestiaryListItem*)allocator->Allocate(0x78);
         for (unsigned char i = 0; i < 3; ++i) _Z12Init0205a198P14Struct0205a198(&state->items[i]);

@@ -31,6 +31,7 @@ struct Obj_021e1ed4 { char pad0[0xc]; void* field0xc; void* field0x10; };
 extern "C" int func_ov024_021e95d4(struct Obj_021e1ed4* ctx, int id, struct Params_021e1ed4* params, int mode, signed char adjustment, unsigned char changed, unsigned char flag);
 extern "C" int func_ov024_021e94c4(struct Obj_021e1ed4* ctx, int id, struct Params_021e1ed4* params, int mode, signed char value, unsigned char useValue, unsigned char forceDefault);
 
+// JPN: func_ov024_021e276c
 // USA: func_ov024_021e1ed4
 extern "C" ARM void* func_ov024_021e1ed4(struct Obj_021e1ed4* obj, int unused, int id, struct Params_021e1ed4* params) {
 	GameObject* c = GetCombatantByID((int)obj->field0x10, id);

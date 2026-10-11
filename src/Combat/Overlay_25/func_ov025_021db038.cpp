@@ -7,19 +7,59 @@
 struct BattleState { char pad0[0x8e14]; signed char outcome; char pad8e15[0xb]; int mode; int count; };
 struct Work {
     char pad0[0x30]; SafeAllocator allocator;
+#if defined(jpn)
+    char padAllocator[0x138-0x30-sizeof(SafeAllocator)]; char secondaryAllocator[0x218-0x138];
+#else
     char padAllocator[0x14c-0x30-sizeof(SafeAllocator)]; char secondaryAllocator[0x29c-0x14c];
+#endif
+
+#if defined(jpn)
+    BattleState* battle; char pad2a0[8]; char display[0x9bc-0x224];
+#else
     BattleState* battle; char pad2a0[8]; char display[0xa40-0x2a8];
+#endif
+
+#if defined(jpn)
+    char task[0xa0]; unsigned char taskReady; char padAe1[0xaac-0xa5d];
+#else
     char task[0xa0]; unsigned char taskReady; char padAe1[0xb30-0xae1];
+#endif
+
+#if defined(jpn)
+    char events[0xb94-0xaac]; char cameraTask[0xdf4-0xb94];
+#else
     char events[0xc18-0xb30]; char cameraTask[0xe78-0xc18];
+#endif
+
+#if defined(jpn)
+    unsigned char active; char padE79[0xe28-0xdf5]; int state;
+#else
     unsigned char active; char padE79[0xeac-0xe79]; int state;
+#endif
+
+#if defined(jpn)
+    char padEb0[0x57c8-0xe2c]; int slot;
+#else
     char padEb0[0x55d8-0xeb0]; int slot;
+#endif
+
+#if defined(jpn)
+    char pad55dc[0x5b41-0x57cc]; unsigned char mode : 2; unsigned char flags : 6;
+#else
     char pad55dc[0x5951-0x55dc]; unsigned char mode : 2; unsigned char flags : 6;
+#endif
+
 };
 struct List02160094;
 struct List021600f8;
 struct ListNode02160094 { char pad0[0x20]; unsigned short id; };
 struct ListNode021600f8 { int flags; char pad4[8]; int value; char pad10[8]; unsigned char flag18; char pad19[2]; unsigned char flag1b; };
+#if defined(jpn)
+struct MessageSystem { char pad0[0x868]; int active; };
+#else
 struct MessageSystem { char pad0[0x998]; int active; };
+#endif
+
 struct Obj0205eaa0;
 struct Struct0216fe48;
 struct ShortSetStruct0216fdf8;
@@ -69,8 +109,15 @@ void SetFieldsAndSignalData02184220(void*, int);
 void SetBitsInWord(unsigned int*, unsigned int);
 inline unsigned int AlignedSize(unsigned int length) { return (length + 3) & ~3; }
 
+#if defined(jpn)
+extern "C" void func_02045d88(MessageSystem*,char*,int);
+#endif
+// JPN: func_ov025_021db91c
 // USA: func_ov025_021db038
 extern "C" ARM void func_ov025_021db038(Work* work) {
+#if defined(jpn)
+    char* taskBase;
+#endif
     BattleState* battle = work->battle;
     void* list = GetSlotPtr02160f20(work);
     GameState* game = GameState::GetInstance();
@@ -78,6 +125,14 @@ extern "C" ARM void func_ov025_021db038(Work* work) {
     func_02057924();
     GetField02163524(work);
     _ZZ16GetTimer021ef974vE1s = 0;
+#if defined(jpn)
+    taskBase = (char*)work + 0x1bc;
+#define REGION_TASK (taskBase + 0x800)
+#define REGION_READY (*(unsigned char*)(taskBase + 0x8a0))
+#else
+#define REGION_TASK work->task
+#define REGION_READY work->taskReady
+#endif
     if (!work->active) _ZZ16GetTimer021ef974vE1s = 1;
     if (!work->state) func_ov025_021db6dc(work);
     if (work->state == 1) {
@@ -110,9 +165,9 @@ extern "C" ARM void func_ov025_021db038(Work* work) {
         }
         func_ov025_021dbe10(work);
         if (messageId > 0) {
-            ResetStruct0216fe48((Struct0216fe48*)work->task);
-            AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)work->task, (short)messageId);
-            SetField0FromCallFunc0202fa38((Struct0216fd0c*)work->task);
+            ResetStruct0216fe48((Struct0216fe48*)REGION_TASK);
+            AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)REGION_TASK, (short)messageId);
+            SetField0FromCallFunc0202fa38((Struct0216fd0c*)REGION_TASK);
         }
     }
     if (GetCombatWorkFlags0x55f4(work, 0x1000000)) {
@@ -122,14 +177,17 @@ extern "C" ARM void func_ov025_021db038(Work* work) {
         MessageSystem* messages;
         game = GameState::GetInstance();
         messages = GetGlobalField0x1c020421a0();
-        if (!work->taskReady) {
-            CheckOrSetFlagA0_0216fd38((Struct0216fd38*)work->task);
-            if (!work->taskReady) return;
-            BeginListEntryTask_0216fd80((EntryTask0216fd80*)work->task, GetArrayEntry_021e8a54_021e8a54(work->display));
+#if defined(jpn)
+        char* taskBase = (char*)work + 0x1bc;
+#endif
+        if (!REGION_READY) {
+            CheckOrSetFlagA0_0216fd38((Struct0216fd38*)REGION_TASK);
+            if (!REGION_READY) return;
+            BeginListEntryTask_0216fd80((EntryTask0216fd80*)REGION_TASK, GetArrayEntry_021e8a54_021e8a54(work->display));
             actor = GetCombatantWithFlag0x100(game, 0);
             format = 0;
-            if (ClassifyField0x81fe((char*)battle) == 1) format = GetFieldByKeyFromWork0x88(work->task, 0x1ee);
-            else if (ClassifyField0x81fe((char*)battle) == 2) format = GetFieldByKeyFromWork0x88(work->task, 0x211);
+            if (ClassifyField0x81fe((char*)battle) == 1) format = GetFieldByKeyFromWork0x88(REGION_TASK, 0x1ee);
+            else if (ClassifyField0x81fe((char*)battle) == 2) format = GetFieldByKeyFromWork0x88(REGION_TASK, 0x211);
             if (!actor || !format) return;
             char* name = (char*)actor->baseStats_;
             int length = strlen(format);
@@ -137,7 +195,12 @@ extern "C" ARM void func_ov025_021db038(Work* work) {
             char* text = (char*)work->allocator.Allocate(AlignedSize(length - 1));
             if (!text) return;
             sprintf(text, format, actor->baseStats_);
+#if defined(jpn)
+            func_02045d88(messages, text, 0);
+#else
             func_0204500c(messages, text, 0, 0xe3);
+#endif
+
             messages->active = 1;
             return;
         }
@@ -165,3 +228,6 @@ extern "C" ARM void func_ov025_021db038(Work* work) {
     }
     game->SetGameSpeed(0x1000);
 }
+
+#undef REGION_TASK
+#undef REGION_READY

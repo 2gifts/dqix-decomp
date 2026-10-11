@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kSelectionIndex = 0x753e - 0x6fc0 };
+#else
+enum { kSelectionIndex = 0x74fe - 0x6fc0 };
+#endif
 #include "GameState/GameState.h"
 #include "System/ProcessorContext.h"
 
@@ -42,7 +47,7 @@ extern "C" ARM unsigned char func_0202b000(BattleObject0202b000* obj) {
     }
     _Z28DispatchSizedRequest020d5974Pvii(0, 255, 235);
     GameState* state = GameState::GetInstance();
-    BattleSelection0202b000 selection = *(BattleSelection0202b000*)&state->unk_6fc0[0x74fe - 0x6fc0];
+    BattleSelection0202b000 selection = *(BattleSelection0202b000*)&state->unk_6fc0[kSelectionIndex];
     obj->selection = selection;
     func_020d8694();
     return result;

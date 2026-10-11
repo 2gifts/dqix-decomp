@@ -1,6 +1,12 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+enum { stateOffset = 0x8c, battleOffset = 0xc, pointerOffset = 0x3500 };
+#else
+enum { stateOffset = 0x6c, battleOffset = 0x26c, pointerOffset = 0x3710 };
+#endif
+
 void ClearBitsInWord(unsigned int* obj, unsigned int mask);
 void ClearBitsInField4(unsigned int* obj, unsigned int mask);
 void ClearBitsInField8(unsigned int* obj, unsigned int mask);
@@ -40,18 +46,18 @@ extern "C" ARM int func_ov004_02158298(void) {
 
     void* p = func_02012fe4();
     if (!p) return 0;
-    p = (char*)p + 0x6c;
+    p = (char*)p + stateOffset;
     if (!p) return 0;
     _Z14SetFieldAt0x7eP6S_e828s((struct S_e828*)p, data_ov004_021707d8.ptr->mc);
 
     SetByteField0x253(battle->GetUnknownGameObject());
 
-    struct Outer26c_02158298* outer = (struct Outer26c_02158298*)((char*)battle + 0x26c);
+    struct Outer26c_02158298* outer = (struct Outer26c_02158298*)((char*)battle + battleOffset);
     outer->area.lo13 &= ~0x20;
 
     ClearFlags020466f4((struct FlagWord020466f4*)GetDataPtr02114e04_020d6c00(), 0xf);
 
-    unsigned char* p2 = *(unsigned char**)((char*)word + 0x3710);
+    unsigned char* p2 = *(unsigned char**)((char*)word + pointerOffset);
     if (p2[2] != 0) {
         p2[0x139] = 1;
     }

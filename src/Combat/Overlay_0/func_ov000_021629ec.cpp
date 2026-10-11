@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define REGION_OFFSET_0 0x218
+#else
+#define REGION_OFFSET_0 0x29c
+#endif
+
 #include "GameState/GameState.h"
 
 struct Obj02048c90;
@@ -11,7 +18,7 @@ extern "C" int func_ov000_0215e9fc(int a, short* buf, int max, int start);
 extern "C" int func_ov000_0215ec1c(int a, short* buf, int max, int start);
 
 struct GatherObj021629ec {
-    char pad[0x29c];
+    char pad[REGION_OFFSET_0];
     int field29c;
 };
 

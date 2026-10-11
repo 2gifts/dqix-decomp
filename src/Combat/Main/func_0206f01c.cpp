@@ -16,10 +16,19 @@ struct EntryList0206f110 {
     struct Entry0206f110* entries;
 };
 
+#if defined(jpn)
+extern "C" int func_02070248(struct Header0206f0f8*);
+extern "C" int func_02070260(struct EntryList0206f110*, void (*)(struct EntryList0206f110*, struct Entry0206f110*));
+extern "C" int func_020700ac(void*, struct Fixup0206ef48*);
+#define GetEntryArrayByteSize func_02070248
+#define InvokeCallbackForEachEntry func_02070260
+#define RelocateThreeFields func_020700ac
+#else
 int GetEntryArrayByteSize(struct Header0206f0f8* obj);
 int InvokeCallbackForEachEntry(struct EntryList0206f110* self,
                                 void (*callback)(struct EntryList0206f110*, struct Entry0206f110*));
 int RelocateThreeFields(void* ctx, struct Fixup0206ef48* obj);
+#endif
 
 struct List0206f01c {
     unsigned int count : 12;
@@ -29,6 +38,7 @@ struct List0206f01c {
     void* extra;
 };
 
+// JPN: func_0207016c
 // USA: func_0206f01c
 extern "C" ARM void func_0206f01c(struct List0206f01c* self, SafeAllocator* alloc, unsigned char* src) {
     int size;

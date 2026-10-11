@@ -10,7 +10,11 @@ struct Obj021dcae0 {
     char pad0[0x48];
     Container020dedd0* field48;
     Element020de650* field4c;
+#if defined(jpn)
+    char pad50[0x680];
+#else
     char pad50[0x704];
+#endif
     int field754;
     char pad758[0x18];
     short field770;
@@ -19,6 +23,7 @@ struct Obj021dcae0 {
     unsigned char field776;
 };
 
+// JPN: 021dd3ec
 // USA: func_ov023_021dcae0  (semantic: UpdateFieldOrDispatch_021dcae0)
 extern "C" ARM void func_ov023_021dcae0(struct Obj021dcae0* obj, int val) {
     if (obj->field776 == 0 || (obj->field774 & 4) == 0) {

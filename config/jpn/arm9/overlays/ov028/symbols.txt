@@ -5,7 +5,7 @@ func_ov028_021d8b44 kind:function(arm,size=0x4c) addr:0x021d9404
 func_ov028_021d8b90 kind:function(arm,size=0x90) addr:0x021d9450
 func_ov028_021d8c20 kind:function(arm,size=0x120) addr:0x021d94e0
 _Z29DispatchHandlerTable_021d8d40P16PMFClass021d8d40t kind:function(arm,size=0x90) addr:0x021d9600
-func_ov028_021d9690 kind:function(arm,size=0x3b8) addr:0x021d9690
+func_ov028_021d8dd0 kind:function(arm,size=0x3b8) addr:0x021d9690
 func_ov028_021d9188 kind:function(arm,size=0x80) addr:0x021d9a48
 func_ov028_021d9ac8 kind:function(arm,size=0x2dc) addr:0x021d9ac8
 func_ov028_021d942c kind:function(arm,size=0x68) addr:0x021d9da4
@@ -32,12 +32,12 @@ _Z31AllocateAndInitEntries_021d9940P24AllocLoopStruct_021d9940P13SafeAllocatorj 
 _Z20AppendEntry_021d999cP24EntryListStruct_021d999cP14Entry_021d999c kind:function(arm,size=0x5c) addr:0x021da314
 _Z29GetElementIfInBounds_021d99f8P18ListHeader021d99f8j kind:function(arm,size=0x20) addr:0x021da370
 data_ov028_021d9a34 kind:data(any) addr:0x021da3ac
-__sinit_ov028_021da3cc kind:function(arm,size=0x2c) addr:0x021da3cc
+__sinit_ov028_021d9a54 kind:function(arm,size=0x2c) addr:0x021da3cc
 .p__sinit_ov028_021da3cc kind:data(word) addr:0x021da3f8
 data_ov028_021da400 kind:data(any) addr:0x021da400
 data_ov028_021da41d kind:data(any) addr:0x021da41d
 data_ov028_021d9ac0 kind:data(any) addr:0x021da424
-data_ov028_021da460 kind:bss addr:0x021da460
+data_ov028_021d9ae0 kind:bss addr:0x021da460
 data_ov028_021d9aec kind:bss addr:0x021da46c
 data_ov028_021d9b14 kind:bss addr:0x021da494
 data_ov028_021d9bc4 kind:bss addr:0x021da544

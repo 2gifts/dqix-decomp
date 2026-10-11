@@ -52,7 +52,11 @@ extern "C" ARM int func_ov001_02161754(void* self) {
         EmptyStubFn_02161754 stub = (EmptyStubFn_02161754)EmptyStub0203d004;
         struct Container02040404* c = (struct Container02040404*)stub(ctxRaw);
         char buf[0x10];
+#if defined(jpn)
+        sprintf(buf, data_ov001_021657d4, field + 16);
+#else
         sprintf(buf, data_ov001_021657d4, field + 4);
+#endif
         int idx = FindEntryIndexByName02040404(c, buf);
         ReleaseOrDecrementSlot0204039c((struct Container0204039c*)c, idx);
     } else {

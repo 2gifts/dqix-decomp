@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define REGION_OFFSET_0 0xbf0
+#else
+#define REGION_OFFSET_0 0xaf0
+#endif
+
 #include "Memory/SafeAllocator.h"
 
 extern "C" void MapVRAMBanksToSubBG(int);
@@ -18,7 +25,7 @@ struct BgField0217 {
 
 // USA: func_ov000_02172850  (semantic: ApplySubBgSettings_02172850)
 extern "C" ARM void func_ov000_02172850(char* obj) {
-    class SafeAllocator* alloc = *(class SafeAllocator**)(obj + 0x1000 + 0xaf0);
+    class SafeAllocator* alloc = *(class SafeAllocator**)(obj + 0x1000 + REGION_OFFSET_0);
     if (alloc) alloc->Reset();
 
     int f184 = *(int*)(obj + 0x184);

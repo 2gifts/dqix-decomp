@@ -13,10 +13,15 @@ extern AllocatorUnion data_02114e20;
 struct Obj021a79f0 {
     unsigned char pad0[0x1c];
     int field1c;
+#if defined(jpn)
+    unsigned char pad2[0x1ec - 0x20];
+#else
     unsigned char pad2[0x25c - 0x20];
+#endif
     SafeAllocator allocator;
 };
 
+// JPN: func_ov017_021a8380
 // USA: func_ov017_021a79f0  (semantic: ResetAllocatorAndApplyField1c_021a79f0)
 extern "C" ARM void func_ov017_021a79f0(struct Obj021a79f0* self) {
     void* g = (void*)GetGlobal02109400();

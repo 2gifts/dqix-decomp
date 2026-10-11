@@ -45,6 +45,13 @@ struct Obj021544ec {
     char field114[1];
 };
 
+#if defined(jpn)
+enum { kNotificationBufferSize = 0x68, kEntryCount = 3 };
+#else
+enum { kNotificationBufferSize = 0x80, kEntryCount = 4 };
+#endif
+
+// JPN: func_ov003_02155bd4
 // USA: func_ov003_021544ec
 extern "C" ARM void func_ov003_021544ec(struct Obj021544ec* obj, SafeAllocator* alloc) {
     if (alloc != 0) {
@@ -53,12 +60,12 @@ extern "C" ARM void func_ov003_021544ec(struct Obj021544ec* obj, SafeAllocator* 
         obj->bufC = alloc->Allocate(0x4c00);
         obj->lists = (struct List0204af64*)alloc->Allocate(0x40);
         obj->buf14 = (char*)alloc->Allocate(0x2a0);
-        obj->buf18 = alloc->Allocate(0x80);
+        obj->buf18 = alloc->Allocate(kNotificationBufferSize);
         obj->words = (int*)alloc->Allocate(0x30);
         obj->buf24 = (struct Struct0205a198*)alloc->Allocate(0x190);
         obj->buf28 = alloc->Allocate(8);
         obj->entryManager = (struct EntryManager020e2490*)alloc->Allocate(0x24);
-        _Z24InitEntryManager020e2490P20EntryManager020e2490iiPvP13SafeAllocatorih(obj->entryManager, 0, 1, obj->buf28, alloc, 4, 0x40);
+        _Z24InitEntryManager020e2490P20EntryManager020e2490iiPvP13SafeAllocatorih(obj->entryManager, 0, 1, obj->buf28, alloc, kEntryCount, 0x40);
 
         AllocatorSizes021544ec sizes = data_ov003_0217f320;
         for (unsigned char i = 0; i < 8; i++) {

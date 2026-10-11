@@ -1,5 +1,12 @@
+// JPN: func_ov025_021ec018
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+
+#if defined(jpn)
+enum { CombatantSubobject = 0x144, Field6efc = 0x70ec, Field6efe = 0x70ee, Field6f78 = 0x7168, Field6ff9 = 0x71e9, Field6ffc = 0x71ec };
+#else
+enum { CombatantSubobject = 0x150, Field6efc = 0x6efc, Field6efe = 0x6efe, Field6f78 = 0x6f78, Field6ff9 = 0x6ff9, Field6ffc = 0x6ffc };
+#endif
 
 struct Struct021ecb90 {
     int a;
@@ -104,7 +111,11 @@ struct Obj0203a588;
 
 void* GetActiveCombatWork(void);
 extern "C" unsigned char _Z25GetByte_021dcc64_021dcc64Pv(void* obj);
+#if defined(jpn)
+extern "C" void _Z16SetByte_021dcc58Pvh(void* obj, unsigned char v);
+#else
 extern "C" void _Z32ConfigureBgSub1AndClear_021dcc58Pv(void* obj, unsigned char v);
+#endif
 extern "C" int _Z36CheckCombatantStatusOrTable_02162954Pv(void* self);
 extern "C" int _Z13Check021ed2f4Pv(void* obj);
 extern "C" void func_ov025_021ebb24(struct Struct021ecb90* obj);
@@ -199,7 +210,7 @@ extern "C" ARM void func_ov025_021ebb90(struct Container021ebb90* obj) {
         if ((e->d & 0xf) == 0xf) {
             if (e->f <= e->e || obj->f300 == 1) {
                 if (e->d & 0x80) {
-                    if (cw[0x6efe] != 4) return;
+                    if (cw[Field6efe] != 4) return;
                     if (_Z13Check021ed2f4Pv(obj->f30c) == 0) return;
                 }
                 func_ov025_021ebb24(&obj->entries[i]);
@@ -245,10 +256,10 @@ extern "C" ARM void func_ov025_021ebb90(struct Container021ebb90* obj) {
                             }
                         } else if (codes[j] == 1 || codes[j] == 2) {
                             if (found == 0) {
-                                if (cw[0x6efe] == 0) cw[0x6efe] = 1;
+                                if (cw[Field6efe] == 0) cw[Field6efe] = 1;
                                 if (blocked != 0 && obj->entries[i].f != 0) obj->entries[i].d |= 0x80;
                                 _Z25AppendUniqueShort021634c8Pci((char*)cw, node->vals[j - 1]);
-                                *(short*)(cw + 0x6efc) = func_ov000_0215ffa0(node);
+                                *(short*)(cw + Field6efc) = func_ov000_0215ffa0(node);
                             }
                             obj->f306 = 1;
                         }
@@ -262,8 +273,8 @@ extern "C" ARM void func_ov025_021ebb90(struct Container021ebb90* obj) {
                 if (n0 != 0 && n0 != 0 && IsPartyId021ebb90(n0->id)) {
                     GameObject* member = GetCombatantWithFlag0x100(battle, n0->id);
                     if (member != 0 &&
-                        (TestBit0At0x2f4(*(unsigned char**)((char*)member + 0x150)) != 0 ||
-                         TestBit1At0x2f4(*(unsigned char**)((char*)member + 0x150)) != 0)) {
+                        (TestBit0At0x2f4(*(unsigned char**)((char*)member + CombatantSubobject)) != 0 ||
+                         TestBit1At0x2f4(*(unsigned char**)((char*)member + CombatantSubobject)) != 0)) {
                         if (row != 0 && row->flags >> 28 != 2) partyBlocked = 1;
                     }
                 }
@@ -271,9 +282,13 @@ extern "C" ARM void func_ov025_021ebb90(struct Container021ebb90* obj) {
                     for (int j = 1; j < node1->codeCount; j++) {
                         unsigned char* codes = node1->codes;
                         if ((codes[j] == 7 || codes[j] == 8 || codes[j] == 6) && _Z25GetByte_021dcc64_021dcc64Pv(cw) == 0) {
+#if defined(jpn)
+                            _Z16SetByte_021dcc58Pvh(cw, 1);
+#else
                             _Z32ConfigureBgSub1AndClear_021dcc58Pv(cw, 1);
+#endif
                             struct Struct021ecb90 copyA = obj->entries[i];
-                            _Z25CopyStructFields_021ecb90P14Struct021ecb90S0_((struct Struct021ecb90*)(cw + 0x6f78), &copyA);
+                            _Z25CopyStructFields_021ecb90P14Struct021ecb90S0_((struct Struct021ecb90*)(cw + Field6f78), &copyA);
                             obj->entries[i].ringBase = 0;
                             obj->entries[i].d |= 0x18;
                             if (obj->f306 != 0) obj->entries[i].d |= 6;
@@ -287,7 +302,7 @@ extern "C" ARM void func_ov025_021ebb90(struct Container021ebb90* obj) {
 
         if (obj->f306 != 0) {
             struct Struct021ecb90 copyB = obj->entries[i];
-            _Z25CopyStructFields_021ecb90P14Struct021ecb90S0_((struct Struct021ecb90*)(cw + 0x6f78), &copyB);
+            _Z25CopyStructFields_021ecb90P14Struct021ecb90S0_((struct Struct021ecb90*)(cw + Field6f78), &copyB);
             obj->entries[i].ringBase = 0;
             obj->entries[i].d |= 0x10;
             obj->entries[i].d |= 0x08;
@@ -321,7 +336,7 @@ extern "C" ARM void func_ov025_021ebb90(struct Container021ebb90* obj) {
                         }
                         func_02043124(_Z26GetGlobalField0x1c020421a0v());
                         _Z27ResetLowFlagEntries0203a588P11Obj0203a588(GetData02104b6c());
-                        ZeroFieldsAt0x6e8(cw + 0x6ffc);
+                        ZeroFieldsAt0x6e8(cw + Field6ffc);
                     }
                 }
                 obj->entries[i].d |= 8;
@@ -458,7 +473,7 @@ extern "C" ARM void func_ov025_021ebb90(struct Container021ebb90* obj) {
                     }
 
                     if (sp50 != 0) params.pos.z += 0x2000;
-                    if (cw[0x6ff9] != 0 && _Z31IsCombatantStateSpecial02163c0cPvi(cw, targetId3) != 0) {
+                    if (cw[Field6ff9] != 0 && _Z31IsCombatantStateSpecial02163c0cPvi(cw, targetId3) != 0) {
                         params.pos.y += 0xe66;
                     }
                     _Z26FindNodeAndProcess02057fb4Pvii(spawnObj, obj->entries[i].k, (int)&params);

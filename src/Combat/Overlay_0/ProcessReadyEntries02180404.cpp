@@ -5,7 +5,11 @@ extern "C" void func_ov000_0217f518(char* obj);
 struct TableEntry0217f8c0 {
     char pad0[0x4c];
     int field0x4c;
+#if defined(jpn)
+    char pad1[0x488 - 0x50];
+#else
     char pad1[0x448 - 0x50];
+#endif
 };
 struct Struct0217f8c0 {
     char pad[0x6c];
@@ -18,7 +22,11 @@ struct TableEntry0217f8c0* FindMatchingTableEntry0217f8c0(struct Struct0217f8c0*
 struct Entry02180404 {
     char pad0[0x4c];
     int field4c;
+#if defined(jpn)
+    char pad1[0xc7 - 0x50];
+#else
     char pad1[0x87 - 0x50];
+#endif
     unsigned char field87;
     char pad2[0x448 - 0x88];
 };

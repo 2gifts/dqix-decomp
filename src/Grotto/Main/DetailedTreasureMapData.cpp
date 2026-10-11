@@ -9,15 +9,12 @@
 #include <asmhacks.h>
 
 #ifdef jpn
-#define _Z13PushInputLogAi func_020a3b70
-#define _Z19PopStack0AndTriggeri func_020a3bcc
 
 #define _Z18LoadFileIntoMemoryPKcPvPj func_02076224
 #define _Z13GetFileInNarcPKvPKcPS0_Pjj func_02076378
 
 #define data_020f1ae4 data_020f1c5c
 #define data_020f1af8 data_020f1c70
-#define data_0211e33c data_0211fb64
 #endif
 
 extern "C"

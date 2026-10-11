@@ -49,8 +49,14 @@ struct Task_021b2ce8 {
 extern AllocatorUnion data_02114e20;
 extern Screen_021b2ce8* data_ov017_021d840c;
 
+// JPN: func_ov017_021b33f8
 // USA: func_ov017_021b2ce8
 extern "C" ARM void func_ov017_021b2ce8(Task_021b2ce8* self) {
+#if defined(jpn)
+ enum { regionalSize = 0xfcc };
+#else
+ enum { regionalSize = 0x1050 };
+#endif
     GameState* gs = GameState::GetInstance();
     GameResources* res = GetWord0x0((int*)gs);
     SetBitsInField4((unsigned int*)res, 0xc0);
@@ -73,7 +79,7 @@ extern "C" ARM void func_ov017_021b2ce8(Task_021b2ce8* self) {
         }
         self->allocator.CreateTypeA(buffer, 0x32000);
         self->allocator.Reset();
-        data_ov017_021d840c = (Screen_021b2ce8*)self->allocator.Allocate(0x1050);
+        data_ov017_021d840c = (Screen_021b2ce8*)self->allocator.Allocate(regionalSize);
         if (data_ov017_021d840c == NULL) {
             func_020a0c0c();
             self->done = 1;

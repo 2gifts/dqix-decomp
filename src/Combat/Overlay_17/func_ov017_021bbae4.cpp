@@ -1,3 +1,10 @@
+// JPN: func_ov017_021bc0dc
+#if defined(jpn)
+enum { RegionOffsetcc = 0xc8 };
+#else
+enum { RegionOffsetcc = 0xcc };
+#endif
+
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
@@ -37,7 +44,7 @@ struct Obj021bbae4 {
     char f0x54[0xc];
     short f0x60;
     char f0x62[7];
-    char pad7[0xcc - 0x69];
+    char pad7[RegionOffsetcc - 0x69];
     unsigned char f0xcc;
 };
 

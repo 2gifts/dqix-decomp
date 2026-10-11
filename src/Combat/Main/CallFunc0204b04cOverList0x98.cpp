@@ -11,6 +11,7 @@ struct Cont0205d274 {
     unsigned char countB2;
 };
 
+// JPN: func_0205e5a4
 // USA: func_0205d274
 ARM void CallFunc0204b04cOverList0x98(Cont0205d274* obj) {
     unsigned char i;

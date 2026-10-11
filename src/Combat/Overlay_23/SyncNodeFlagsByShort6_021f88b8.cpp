@@ -16,6 +16,7 @@ int GetField18_021f6f18(void* obj);
 
 extern "C" void func_ov023_021f809c(void* obj, void* param2);
 
+// JPN: func_ov023_021f7d50
 // USA: func_ov023_021f88b8  (semantic: SyncNodeFlagsByShort6_021f88b8)
 extern "C" ARM void func_ov023_021f88b8(void* obj, void* param1, int id) {
     void* sub = func_ov011_021849c8(param1);

@@ -4,10 +4,6 @@
 #include <globaldefs.h>
 
 #if defined(jpn)
-#define _Z25EncodeSignFlaggedHalfwordPsi func_020c546c
-#define _Z22GetSignedField020c39c8PVt func_020c5494
-#define _Z24GetGlobalContext020daf90v func_020dc998
-#define _Z35ProcessCombatantAnimRequest020db9ccPviii func_020dd3d4
 #endif
 
 // Temporary internal wrappers

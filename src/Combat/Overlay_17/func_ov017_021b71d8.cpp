@@ -1,3 +1,8 @@
+#if defined(jpn)
+enum {regionalOffset0=0x1f9cc};
+#else
+enum {regionalOffset0=0x1f7dc};
+#endif
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
@@ -35,13 +40,14 @@ extern AllocatorUnion data_02114e20;
 extern "C" void func_ov000_0215ce80(Context021b71d8* context);
 extern "C" void func_ov000_0215fab0(Context021b71d8* context, unsigned char value);
 
+// JPN: func_ov017_021b7788
 // USA: func_ov017_021b71d8
 extern "C" ARM void func_ov017_021b71d8(Self021b71d8* self) {
     GameState::GetInstance();
     Holder021b71d8* holder = func_02012fe4();
     _Z17EmptyStub02012de4v(&data_02114e20);
-    func_020a0cc4(0x1f7dc);
-    self->allocator.CreateTypeA(AllocateAligned4(&data_02114e20, 0x1f7dc), 0x1f7dc);
+    func_020a0cc4(regionalOffset0);
+    self->allocator.CreateTypeA(AllocateAligned4(&data_02114e20, regionalOffset0), regionalOffset0);
     self->id = holder->id;
     self->context = (Context021b71d8*)self->allocator.Allocate(sizeof(Context021b71d8));
     func_ov000_0215ce80(self->context);

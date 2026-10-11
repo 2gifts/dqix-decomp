@@ -1,3 +1,10 @@
+// JPN: func_ov017_021b9e68
+#if defined(jpn)
+enum { RegionOffset5724 = 0x54c4, RegionOffset6fc = 0x4ec, RegionOffset998 = 0x868 };
+#else
+enum { RegionOffset5724 = 0x5724, RegionOffset6fc = 0x6fc, RegionOffset998 = 0x998 };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -30,9 +37,9 @@ extern "C" ARM void func_ov017_021b996c(struct Obj021b996c* self, int combatantI
     }
 
     int field5724;
-    if (self->field12c != arg5 && (field5724 = *(int*)((char*)battle + 0x5724)) != arg5) {
+    if (self->field12c != arg5 && (field5724 = *(int*)((char*)battle + RegionOffset5724)) != arg5) {
         void* p = ((void* (*)(void*))func_ov017_0218b5b0)((void*)field5724);
-        struct ListHead02046b60* list = *(struct ListHead02046b60**)((char*)p + 0x3000 + 0x6fc);
+        struct ListHead02046b60* list = *(struct ListHead02046b60**)((char*)p + 0x3000 + RegionOffset6fc);
         if (ListContainsId(list, 4)) {
             EnqueueEventTag153_021d079c(tag, 1, 0);
         } else {
@@ -42,7 +49,7 @@ extern "C" ARM void func_ov017_021b996c(struct Obj021b996c* self, int combatantI
     }
 
     int g = GetGlobalField0x1c020421a0();
-    if (*(int*)(g + 0x998) != 0) {
+    if (*(int*)(g + RegionOffset998) != 0) {
         EnqueueEventTag153_021d079c(tag, 1, 0);
         return;
     }

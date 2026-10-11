@@ -1,4 +1,13 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define REGION_OFFSET_0 0x28
+#define REGION_OFFSET_1 0x800
+#else
+#define REGION_OFFSET_0 0x5c
+#define REGION_OFFSET_1 0x960
+#endif
+
 #include "std_library_functions.h"
 
 struct Struct_0205ba68;
@@ -12,7 +21,11 @@ extern "C" void _Z29SetField0AndPropagate0205baccP12Node0205bacci(struct Node020
 extern "C" void func_0205bb04(void* s, int n);
 extern "C" int _Z26GetGlobalField0x1c020421a0v();
 extern "C" void func_ov000_0217a688(void* obj, void* entry, int b, void* buf);
+#if defined(jpn)
+extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g);
+#else
 extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g, int h);
+#endif
 
 // USA: func_ov000_0217a514
 extern "C" ARM void func_ov000_0217a514(char* obj, char* entry, int a, int b) {
@@ -23,7 +36,11 @@ extern "C" ARM void func_ov000_0217a514(char* obj, char* entry, int a, int b) {
     func_ov000_0217c638(obj, a, b);
 
     char* base = obj + 0x188;
+#if defined(jpn)
+    *(short*)(base + 0xa0) = 1;
+#else
     *(short*)(base + 0xa0) = 0x10;
+#endif
     *(short*)(base + 0xa2) = 1;
     *(short*)(base + 0xa4) = 0xd;
     *(short*)(base + 0xa6) = 9;
@@ -39,8 +56,12 @@ extern "C" ARM void func_ov000_0217a514(char* obj, char* entry, int a, int b) {
     func_0205bb04(obj + 0x244, group);
 
     int g = _Z26GetGlobalField0x1c020421a0v();
-    void* buf = *(void**)((char*)g + 0x5c);
-    memset(buf, 0, 0x960);
+    void* buf = *(void**)((char*)g + REGION_OFFSET_0);
+    memset(buf, 0, REGION_OFFSET_1);
     func_ov000_0217a688(obj, entry, b, buf);
+#if defined(jpn)
+    func_0205d304(base, buf, 0, 1, 0, 1, 0);
+#else
     func_0205d304(base, buf, 0, 1, 0, 1, 0, 0);
+#endif
 }

@@ -1,6 +1,21 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
 
+#if defined(jpn)
+enum { kRegionValue1264_10F4 = 0x10f4 };
+enum { kRegionValue12C0_1150 = 0x1150 };
+enum { kRegionValue126C_10FC = 0x10fc };
+enum { kRegionValue12D0_1160 = 0x1160 };
+enum { kRegionValue12CC_115C = 0x115c };
+#else
+enum { kRegionValue1264_10F4 = 0x1264 };
+enum { kRegionValue12C0_1150 = 0x12c0 };
+enum { kRegionValue126C_10FC = 0x126c };
+enum { kRegionValue12D0_1160 = 0x12d0 };
+enum { kRegionValue12CC_115C = 0x12cc };
+#endif
+
+
 struct InitTarget0205cfd4;
 ARM void InitStruct0205cfd4(struct InitTarget0205cfd4* s);
 struct List0204af64;
@@ -12,18 +27,19 @@ struct ClearTarget0205a234;
 void ClearField0And40205a234(struct ClearTarget0205a234* target);
 
 struct Struct0216ae0c {
-    char pad0[0x1264];
+    char pad0[kRegionValue1264_10F4];
     void* p264;
     void* p268;
-    char pad1[0x12c0 - 0x126c];
+    char pad1[kRegionValue12C0_1150 - kRegionValue126C_10FC];
     void* p2c0;
     void* p2c4;
     void* p2c8;
-    char pad2[0x12d0 - 0x12cc];
+    char pad2[kRegionValue12D0_1160 - kRegionValue12CC_115C];
     SafeAllocator* alloc;
 };
 
 // USA: func_ov003_0216ae0c
+// JPN: func_ov003_0216a9ac
 extern "C" ARM void func_ov003_0216ae0c(void* objRaw, SafeAllocator* allocator) {
     if (allocator == 0) return;
     struct Struct0216ae0c* obj = (struct Struct0216ae0c*)objRaw;

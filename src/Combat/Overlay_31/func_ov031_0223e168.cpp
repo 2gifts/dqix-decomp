@@ -26,6 +26,7 @@ struct Struct0223bfa0;
 extern "C" int func_ov031_0223bfa0(Struct0223bfa0* p);
 extern "C" void func_ov031_0223e2ec(int index, void* obj);
 
+// JPN: func_ov031_0223e948
 // USA: func_ov031_0223e168
 extern "C" ARM void func_ov031_0223e168(int idx) {
 	Elem0223e168* base = data_ov031_02290d9c;

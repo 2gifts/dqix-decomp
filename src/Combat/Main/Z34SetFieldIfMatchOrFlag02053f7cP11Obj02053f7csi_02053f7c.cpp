@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kFieldOffset = 0xa6 };
+#else
+enum { kFieldOffset = 0xb2 };
+#endif
+
 #include "GameState/GameState.h"
 
 struct Obj02086aec {
@@ -8,7 +14,7 @@ struct Obj02086aec {
 };
 
 struct Sub02053f7c {
-    char pad[0xb2];
+    char pad[kFieldOffset];
     short fieldb2;
 };
 

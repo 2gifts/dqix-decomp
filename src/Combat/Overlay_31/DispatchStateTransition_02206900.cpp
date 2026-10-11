@@ -1,3 +1,4 @@
+// JPN: func_ov031_022070e0
 #include <globaldefs.h>
 
 int IsInList0224e230_022071b4(void* item);

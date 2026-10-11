@@ -30,7 +30,11 @@ extern "C" ARM int func_020a1ccc(unsigned int id) {
     if (data_01ffd344) {
         LockMutex(&data_01ffd34c);
     }
+#if defined(jpn)
+    volatile signed char* row = &data_01ffd364 + rowIdx * 6;
+#else
     signed char* row = ((__typeof__(&data_01ffd364))0x01FFD364) + rowIdx * 6;
+#endif
     int col1 = table[id].col;
     row[col1] = id | 0x40;
     if (data_01ffd344) {

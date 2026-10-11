@@ -44,6 +44,7 @@ static inline unsigned short GetMaxMP(GameObject* c) {
     return maxMP;
 }
 
+// JPN: func_ov024_021dcdec
 // USA: func_ov024_021dc540
 extern "C" ARM struct OutStruct0215ccbc* func_ov024_021dc540(struct Obj_021dc540* obj, int srcId, int id, struct Range_021dc540* range, int amount, int unused, unsigned char flagArg) {
     GameObject* src = GetCombatantByID((int)obj->f10, srcId);

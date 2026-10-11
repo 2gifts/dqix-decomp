@@ -1,3 +1,9 @@
+#if defined(jpn)
+enum { RegionalOffset = 0x4214 };
+#else
+enum { RegionalOffset = 0x44c4 };
+#endif
+
 #include <globaldefs.h>
 
 extern "C" void* func_0205ec34(void);
@@ -19,13 +25,14 @@ int CheckField0NonZero(int* obj);
 void ApplySlotBytesToBattleStruct(unsigned char* obj);
 
 // USA: func_020703c8
+// JPN: func_020703c8
 extern "C" ARM void func_020703c8(int index, int hour, int minute, int second) {
     unsigned char curHour;
     unsigned char curMinute;
     unsigned char curSecond;
     void* entry = func_0205ec34();
     int* state = func_0202ae18();
-    char* owner = *(char**)(func_ov017_0218b5b0() + 0x44c4);
+    char* owner = *(char**)(func_ov017_0218b5b0() + RegionalOffset);
 
     GetEntry3Bytes(entry, index, &curHour, &curMinute, &curSecond);
     if (curSecond + (curHour * 10000 + curMinute * 100) >= second + (hour * 10000 + minute * 100)) {

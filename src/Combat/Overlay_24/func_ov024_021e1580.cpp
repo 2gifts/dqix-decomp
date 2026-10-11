@@ -26,6 +26,7 @@ struct Range_021e1580 {
     struct PackedPair_021e1580 f24;
 };
 
+// JPN: func_ov024_021e1e18
 // USA: func_ov024_021e1580
 ARM void* func_ov024_021e1580(struct Obj_021e1580* obj, int unused, int id, struct Range_021e1580* range, int unused2, int unused3, unsigned char flagArg) {
 	GameObject* c = GetCombatantByID((int)obj->field0x10, id);

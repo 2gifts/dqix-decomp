@@ -1,3 +1,8 @@
+#if defined(jpn)
+enum {regionalOffset0=0x56c};
+#else
+enum {regionalOffset0=0x634};
+#endif
 #include <globaldefs.h>
 
 void ComputeShortPair_021e2bdc(void* a, int unused, short* out1, short* out2);
@@ -7,7 +12,7 @@ struct Obj021e4264 {
     char pad0[0xc8];
     void* fc8;
     void* fcc;
-    char pad1[0x634 - 0xd0];
+    char pad1[regionalOffset0 - 0xd0];
     unsigned short f634;
 };
 
@@ -21,6 +26,7 @@ struct Entry021e4264 {
     unsigned char f26;
 };
 
+// JPN: func_ov023_021e4488
 // USA: func_ov023_021e4264
 extern "C" ARM void func_ov023_021e4264(Obj021e4264* obj) {
     short lo, hi;

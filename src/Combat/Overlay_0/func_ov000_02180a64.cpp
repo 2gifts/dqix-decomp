@@ -10,7 +10,11 @@ struct Entry02180a64 {
     signed char state;
     char pad1d[0x4c - 0x1d];
     int field4c;
+#if defined(jpn)
+    char pad50[0x488 - 0x50];
+#else
     char pad50[0x448 - 0x50];
+#endif
 };
 
 struct Flags02180a64 {
@@ -36,7 +40,11 @@ struct Obj02180a64 {
     int field928;
     char pad92c[0x958 - 0x92c];
     Entry02180a64 entries[4];
+#if defined(jpn)
+    char pad1a78[0x1faa - 0x1b78];
+#else
     char pad1a78[0x1d72 - 0x1a78];
+#endif
     Flags02180a64 flags;
 };
 

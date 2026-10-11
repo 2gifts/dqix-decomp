@@ -1,4 +1,12 @@
+// JPN: func_ov017_021bcd74
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kGamePositionOffset = 0x6fa4, kGamePositionY = 0x6fb0, kGamePositionState = 0x6fb4, kResourceNodeOffset = 0x3508, kResourceHalfwordOffset = 0x41fc, kObject10c = 0x108, kObject114 = 0x110, kResourceFlagOffset = 0x40c2 };
+#else
+enum { kGamePositionOffset = 0x71e4, kGamePositionY = 0x71f0, kGamePositionState = 0x71f4, kResourceNodeOffset = 0x3718, kResourceHalfwordOffset = 0x44ac, kObject10c = 0x10c, kObject114 = 0x114, kResourceFlagOffset = 0x42e2 };
+#endif
+
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
@@ -64,7 +72,11 @@ extern "C" void _Z18InitStruct02070378Pc(unsigned char* p);
 extern "C" void _ZN8Vector3iaSERKS_(void* dst, const Vector3i& src);
 extern "C" void _Z20SetFlagBytes02017d68Pv(void* p);
 extern "C" int _Z13PeekInputLogAv();
+#if defined(jpn)
+extern "C" void _Z31ClearMultipleFieldBits_02156b20v(void);
+#else
 extern "C" void _Z20IsFlag0x14Bit0x40SetP10GameObject(void* p);
+#endif
 extern "C" void _Z35SetByteIfDataAndCheckClear_021a01bcPh(void* res);
 extern "C" void func_0209c2e0(void* p, int a, int b);
 extern "C" void _Z32InitFieldsFromCombatant_0219bcach(unsigned char v);
@@ -93,7 +105,11 @@ struct Self_021bc77c {
     unsigned short f8;
     unsigned short fa;
     Block_021bc77c blk;
+    #if defined(jpn)
+    unsigned char pad74[0x18];
+#else
     unsigned char pad74[0x1c];
+#endif
     int i90;
     unsigned char pad94[6];
     unsigned char b9a;
@@ -136,7 +152,11 @@ struct Self_021bc77c {
 };
 
 struct ResSub_021bc77c {
+    #if defined(jpn)
+    unsigned char pad0[0x420];
+#else
     unsigned char pad0[0x630];
+#endif
     int i630;
     unsigned char pad634[0xd8];
     unsigned char* p70c;
@@ -145,7 +165,11 @@ struct ResSub_021bc77c {
     unsigned char* p718;
     unsigned char pad71c[0x18];
     unsigned char* p734;
+    #if defined(jpn)
+    unsigned char pad738[0x410];
+#else
     unsigned char pad738[0x420];
+#endif
     unsigned char* pb58;
 };
 
@@ -170,7 +194,7 @@ static inline void InitAllocator_021bc77c(SafeAllocator* sa, unsigned int size) 
 }
 
 static inline Vector3i GetPos_021bc77c(GameState* gs) {
-    return *(Vector3i*)((unsigned char*)gs + 0x71e4);
+    return *(Vector3i*)((unsigned char*)gs + kGamePositionOffset);
 }
 
 // USA: func_ov017_021bc77c
@@ -266,7 +290,7 @@ extern "C" ARM int func_ov017_021bc77c(Self_021bc77c* self, void* arg) {
         _Z20ClearFields_021bb0c4Ph(self);
         return 0;
     }
-    if (*((unsigned char*)res + 0x42e2) == 0) {
+    if (*((unsigned char*)res + kResourceFlagOffset) == 0) {
         Node_021bc77c node;
         node.id = self->f8;
         if (_Z28LookupAndForEachNode020649b0PviS_(bits, 0xb, &node)) {
@@ -334,7 +358,7 @@ extern "C" ARM int func_ov017_021bc77c(Self_021bc77c* self, void* arg) {
         _Z13SetBrightnessP13GameResourcesii(res, -16, 0);
         *(unsigned short*)(r8 + 0x6c4) = self->u184;
         if (func_0202c540(x34)) {
-            self->u14e = *(int*)(func_ov017_021b8478(*(unsigned char**)((unsigned char*)res + 0x3718)) + 0xc);
+            self->u14e = *(int*)(func_ov017_021b8478(*(unsigned char**)((unsigned char*)res + kResourceNodeOffset)) + 0xc);
             _Z27EnqueueEventTag107_021cdd70tttttth(self->u14e, 0, 0, 0, 0, 0, 0);
             unsigned char* q = RES_PTR(res, 70c);
             if (q[2]) {
@@ -384,7 +408,7 @@ extern "C" ARM int func_ov017_021bc77c(Self_021bc77c* self, void* arg) {
             int r = func_ov017_0219bddc(&buf);
             if (r) {
                 func_ov017_0219bf04(0, 1);
-                o[0x10c] = 1;
+                o[kObject10c] = 1;
             }
             unsigned char* q = RES_PTR(res3, b58);
             if (q[2]) {
@@ -394,9 +418,9 @@ extern "C" ARM int func_ov017_021bc77c(Self_021bc77c* self, void* arg) {
                     goto checked;
                 }
                 if (self->u14c) {
-                    *(unsigned short*)(o + 0x114) = self->u14c;
+                    *(unsigned short*)(o + kObject114) = self->u14c;
                 } else {
-                    *(unsigned short*)(o + 0x114) = self->u146;
+                    *(unsigned short*)(o + kObject114) = self->u146;
                 }
                 ok = 0;
                 goto checked;
@@ -426,19 +450,23 @@ extern "C" ARM int func_ov017_021bc77c(Self_021bc77c* self, void* arg) {
         _ZN8Vector3iaSERKS_(f + 0x10, self->vbc);
         *(short*)(f + 0x1c) = self->sc8;
         _Z13SetBrightnessP13GameResourcesii(res, -16, 0);
-    } else if (*(int*)((unsigned char*)gs + 0x71f4) > 0) {
+    } else if (*(int*)((unsigned char*)gs + kGamePositionState) > 0) {
         _Z18InitStruct02070378Pc(f);
         f[2] = 1;
-        *(unsigned short*)f = *(int*)((unsigned char*)gs + 0x71f4);
+        *(unsigned short*)f = *(int*)((unsigned char*)gs + kGamePositionState);
         f[7] = 1;
         _ZN8Vector3iaSERKS_(f + 0x10, GetPos_021bc77c(gs));
-        *(short*)(f + 0x1c) = *(int*)((unsigned char*)gs + 0x71f0);
-        *(int*)((unsigned char*)gs + 0x71f4) = 0;
+        *(short*)(f + 0x1c) = *(int*)((unsigned char*)gs + kGamePositionY);
+        *(int*)((unsigned char*)gs + kGamePositionState) = 0;
         _Z13SetBrightnessP13GameResourcesii(res, -16, 0);
         _Z20SetFlagBytes02017d68Pv(func_02012fe4());
     } else {
         if (_Z13PeekInputLogAv() == 1) {
+#if defined(jpn)
+            ((void (*)(void*))_Z31ClearMultipleFieldBits_02156b20v)(self);
+#else
             _Z20IsFlag0x14Bit0x40SetP10GameObject(self);
+#endif
         }
         _Z27SetStateAndDispatch0209c3b4P13Actor0209c3b4i(data_02109bf4, func_0209cd50(*p));
         func_ov017_021bd704(&self->blk);
@@ -452,7 +480,7 @@ extern "C" ARM int func_ov017_021bc77c(Self_021bc77c* self, void* arg) {
         _Z25CopyByteField0x253To0x252Pv(unk);
         func_0209c2e0(data_02109bf4, 0x7f, 0);
         if (self->u114) {
-            *(unsigned short*)((unsigned char*)res + 0x44ac) = self->u114;
+            *(unsigned short*)((unsigned char*)res + kResourceHalfwordOffset) = self->u114;
             self->u114 = 0;
         }
         if (self->f8 == 0x6013) {
@@ -468,7 +496,7 @@ extern "C" ARM int func_ov017_021bc77c(Self_021bc77c* self, void* arg) {
         }
     }
     }
-    *(int*)((unsigned char*)gs + 0x71f4) = 0;
+    *(int*)((unsigned char*)gs + kGamePositionState) = 0;
     func_ov017_021bb27c(self);
     self->done = 1;
     return self->fa;

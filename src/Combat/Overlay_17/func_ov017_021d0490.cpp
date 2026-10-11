@@ -27,7 +27,12 @@ struct Actor021d0490 {
     unsigned short field_0x1c;
     unsigned char pad1e[0x52 - 0x1e];
     short field_0x52;
+#if defined(jpn)
+    unsigned char pad54[0x98 - 0x54];
+#else
     unsigned char pad54[0x9c - 0x54];
+#endif
+
     unsigned char busy;
 };
 
@@ -82,6 +87,7 @@ static inline Actor021d0490* GetActor(GameResources* r) { return (Actor021d0490*
 static inline Zone021d0490* GetZone(GameResources* r) { return (Zone021d0490*)r->unknown_ptr_3718; }
 static inline Zone021d0490* GetOther(GameResources* r) { return (Zone021d0490*)r->unknown_ptr_array_3afc[13]; }
 
+// JPN: func_ov017_021d0940
 // USA: func_ov017_021d0490
 extern "C" ARM void func_ov017_021d0490(int mode) {
     GameState* battle = GameState::GetInstance();

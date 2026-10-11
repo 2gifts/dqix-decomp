@@ -22,6 +22,7 @@ struct Obj_021e56c0 {
     void* ctx;
 };
 
+// JPN: func_ov024_021e5f58
 // USA: func_ov024_021e56c0
 extern "C" ARM void func_ov024_021e56c0(struct Obj_021e56c0* obj, int id, int unused, int value) {
     GameObject* c = GetCombatantByID((int)obj->ctx, id);

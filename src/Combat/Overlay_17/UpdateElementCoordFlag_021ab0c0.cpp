@@ -1,3 +1,10 @@
+// JPN: func_ov017_021ab920
+#if defined(jpn)
+enum { RegionOffset36 = 0x2a };
+#else
+enum { RegionOffset36 = 0x36 };
+#endif
+
 #include <globaldefs.h>
 
 struct Ctx021ab0c0 {
@@ -37,7 +44,7 @@ ARM int UpdateElementCoordFlag_021ab0c0(struct Ctx021ab0c0* ctx) {
         *ctx->p44 = (short)result;
         short cur = *ctx->p44;
         if (ctx->s4e != cur) {
-            *(short*)((char*)obj + 0x36) = cur;
+            *(short*)((char*)obj + RegionOffset36) = cur;
             func_020813ec(obj, ctx->s48);
         }
     }

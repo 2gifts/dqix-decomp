@@ -1,3 +1,10 @@
+// JPN: func_ov017_021bb79c
+#if defined(jpn)
+enum { RegionOffsetff = 0xfb, RegionOffset100 = 0xfc, RegionOffset120 = 0x11c };
+#else
+enum { RegionOffsetff = 0xff, RegionOffset100 = 0x100, RegionOffset120 = 0x120 };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Resource/GameResources.h"
@@ -6,9 +13,9 @@ class StateMachine021bb1a4 {
 public:
     char unk_0[0xa];
     unsigned short state_;
-    char unk_c[0xff - 0xc];
+    char unk_c[RegionOffsetff - 0xc];
     unsigned char checkExit_;
-    char unk_100[0x120 - 0x100];
+    char unk_100[RegionOffset120 - RegionOffset100];
     void* timer_;
 };
 

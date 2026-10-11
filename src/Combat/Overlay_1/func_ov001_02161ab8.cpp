@@ -20,7 +20,11 @@ struct Combatant02161ab8 {
     short level;
     char pad_6[0x130 - 0x6];
     CombatantStatus02161ab8* status;
+    #if defined(jpn)
+    char pad_134[0x144 - 0x134];
+#else
     char pad_134[0x150 - 0x134];
+#endif
     CombatantParty02161ab8* party;
 };
 
@@ -34,7 +38,11 @@ struct Entry02161ab8 {
 };
 
 struct Work02161ab8 {
+    #if defined(jpn)
+    char pad[0xcc];
+#else
     char pad[0xd0];
+#endif
     Entry02161ab8* head;
 };
 

@@ -1,3 +1,10 @@
+// JPN: func_ov017_02196220
+#if defined(jpn)
+enum { RegionOffset41c = 0x16c, RegionOffsetb30 = 0x910 };
+#else
+enum { RegionOffset41c = 0x41c, RegionOffsetb30 = 0xb30 };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -15,7 +22,7 @@ extern "C" ARM int func_ov017_02195658(unsigned char* self) {
         int flagA = 0;
         int flagB = 1;
         GameObject* c = GetCombatantWithFlag0x200(battle, i);
-        unsigned char* ptr = *(unsigned char**)(self + 0x4000 + 0x41c);
+        unsigned char* ptr = *(unsigned char**)(self + 0x4000 + RegionOffset41c);
         if (ptr[0] == 1 && ptr[2] == i) {
             if (c != NULL) {
                 flagA = flagB;
@@ -26,11 +33,11 @@ extern "C" ARM int func_ov017_02195658(unsigned char* self) {
         if (flagA != 0) {
             func_ov017_021905b8(self, i, flagB);
             if (flagB != 0) {
-                unsigned char* ptr2 = *(unsigned char**)(self + 0x4000 + 0x41c);
+                unsigned char* ptr2 = *(unsigned char**)(self + 0x4000 + RegionOffset41c);
                 if (ptr2[0] != 0 && ptr2[2] == i) {
                     ptr2[0] = 0;
                     ptr2[1] = 0;
-                    unsigned char* other = *(unsigned char**)(self + 0x3000 + 0xb30);
+                    unsigned char* other = *(unsigned char**)(self + 0x3000 + RegionOffsetb30);
                     if (other[3] != 0) other[8] = 1;
                 }
             }

@@ -1,3 +1,10 @@
+// JPN: func_ov017_021cffbc
+#if defined(jpn)
+enum { RegionOffset36fc = 0x34ec, RegionOffset3b0c = 0x3afc };
+#else
+enum { RegionOffset36fc = 0x36fc, RegionOffset3b0c = 0x3b0c };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "System/Matrix.h"
@@ -20,9 +27,9 @@ struct Counter021cfb0c {
 };
 
 struct Ov021cfb0c {
-    unsigned char pad0[0x36fc];
+    unsigned char pad0[RegionOffset36fc];
     HeadNode02046b24** list;
-    unsigned char pad3700[0x3b0c - 0x3700];
+    unsigned char pad3700[RegionOffset3b0c - 0x3700];
     struct Counter021cfb0c* counter;
     unsigned char pad3b10[0x3ca4 - 0x3b10];
     struct Obj021be40c* node;

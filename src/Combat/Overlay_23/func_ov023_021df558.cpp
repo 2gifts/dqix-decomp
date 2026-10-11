@@ -42,14 +42,29 @@ struct ItemInfoWindow_021df558 {
     PartEntry_021df558* item_;
     char pad50[0xcc - 0x50];
     Layout_021df558 layout_;
+#if defined(jpn)
+    char pad118[0x62c - 0x118];
+    char description_[0x6d8 - 0x62c];
+#else
     char pad118[0x630 - 0x118];
     char description_[0x75c - 0x630];
+#endif
+
     unsigned int vramOffset_;
 };
 
 struct StructAcAe021db45c;
 
 struct Statics_021df558 {
+#if defined(jpn)
+    void* sTexts;
+    int sPalette2;
+    int sPalette3;
+    int sPalette;
+    void* sFieldNames;
+    void* sBuffer;
+    void* sDrops;
+#else
     void* sDrops;
     void* sBuffer;
     void* sFieldNames;
@@ -57,6 +72,8 @@ struct Statics_021df558 {
     int sPalette2;
     void* sTexts;
     int sPalette3;
+#endif
+
 };
 extern "C" Statics_021df558 data_ov023_021ff9e0;
 
@@ -94,6 +111,7 @@ static inline int IsEquipment(const PartEntry_021df558* item)
     return item->category_ <= 7 ? 1 : 0;
 }
 
+// JPN: func_ov023_021dfbac
 // USA: func_ov023_021df558
 extern "C" ARM void func_ov023_021df558(ItemInfoWindow_021df558* self)
 {
@@ -111,9 +129,14 @@ extern "C" ARM void func_ov023_021df558(ItemInfoWindow_021df558* self)
                 group = 0x1c;
                 text = 7;
             }
+#if defined(jpn)
+            SetEntryFields_021e23d0(&self->layout_, text, (int)self->description_, 12, 15);
+#else
             char formatted[0x100] = {0};
             func_02046608(GetGlobalField0x1c020421a0(), 10, self->description_, formatted, 0x68, 0, 0);
             SetEntryFields_021e23d0(&self->layout_, text, (int)formatted, 10, 15);
+#endif
+
             SHOW_ELEMENT(&self->layout_, group);
             short y;
             short x;
@@ -122,7 +145,12 @@ extern "C" ARM void func_ov023_021df558(ItemInfoWindow_021df558* self)
             {
                 self->layout_.canvas_ = &canvas;
                 self->layout_.unk_12 = 1;
+#if defined(jpn)
+
+#else
                 self->layout_.textHeight_ = 0xe;
+#endif
+
                 func_ov023_021e257c(&self->layout_);
             }
             CreateAndSetFields8A_021db544(&self->layout_, (void*)group, x, y);

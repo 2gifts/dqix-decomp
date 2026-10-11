@@ -10,6 +10,7 @@ void Forward02047b30(void* a, int b, int c, int d);
 
 struct Obj021f7290 { char pad[8]; unsigned short half8; unsigned short halfA; };
 
+// JPN: func_ov023_021f67cc
 // USA: func_ov023_021f7290  (semantic: DispatchIfBothFound_021f7290)
 extern "C" ARM void func_ov023_021f7290(struct Obj021f7290* obj, void* ctx, int p2, int p3) {
     if (p2 == 0 || p3 == 0) return;

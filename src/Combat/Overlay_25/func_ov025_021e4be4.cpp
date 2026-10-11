@@ -31,7 +31,12 @@ struct Obj021e8bac;
 extern "C" void _Z19PushLogNode021e8bacP11Obj021e8bacP12Node021e8bac(struct Obj021e8bac* obj, struct Node021e8bac* node);
 
 struct Global021ef988 {
+#if defined(jpn)
+    char pad0[4];
+#else
     char pad0[0xc];
+#endif
+
     char* battle;
 };
 
@@ -45,6 +50,7 @@ extern char data_ov025_021eef78[];
 extern const char data_ov025_021ef7f7[];
 extern const char data_ov025_021ef7fb[];
 
+// JPN: func_ov025_021e50d4
 // USA: func_ov025_021e4be4
 extern "C" ARM int func_ov025_021e4be4(struct Param021e4be4* p) {
     GameState* gs = GameState::GetInstance();

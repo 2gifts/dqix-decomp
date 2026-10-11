@@ -18,7 +18,11 @@ struct Flags020d7aa0 {
 };
 
 struct Obj020d7aa0 {
+    #if defined(jpn)
+    unsigned char pad[0xf0];
+#else
     unsigned char pad[0x150];
+#endif
     struct Flags020d7aa0 flags;
 };
 
@@ -36,3 +40,5 @@ ARM void TeardownAndResetState020d7aa0(struct Obj020d7aa0* obj) {
     func_ov017_0218b5f8(-1);
     ResetAndClearFlags020d7a5c((struct ResetObj020d7a5c*)obj);
 }
+
+// JPN: 0x020d94a4

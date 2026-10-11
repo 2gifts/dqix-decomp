@@ -1,3 +1,4 @@
+// JPN: func_ov031_02225fb4
 #include <globaldefs.h>
 
 extern "C" void func_ov031_0223e2c0(int idx, void* obj);
@@ -48,5 +49,9 @@ extern "C" ARM void func_ov031_022257d4(void* obj) {
 		j4++;
 	} while (j4 < 0x2f);
 
+#if defined(jpn)
+	func_ov031_0223cf70((void**)((__typeof__(&data_ov031_02250bfc))0x022517FC));
+#else
 	func_ov031_0223cf70((void**)((__typeof__(&data_ov031_02250bfc))0x02250BFC));
+#endif
 }

@@ -19,6 +19,7 @@ struct Stats_021f2ab4 { char pad0[0x2e]; short targetId; };
 
 extern unsigned short data_ov024_021feb5c;
 
+// JPN: func_ov024_021f3280
 // USA: func_ov024_021f2ab4
 extern "C" ARM int func_ov024_021f2ab4(int* a0, int a1, int a2, int* a3, short* a4) {
 	GameObject* c = GetCombatantWithFlag0x400ByID(*a0, a1);

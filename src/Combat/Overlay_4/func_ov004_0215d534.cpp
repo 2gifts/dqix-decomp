@@ -22,6 +22,11 @@ extern "C" void func_ov011_02184a40(void* obj, int val);
 
 // USA: func_ov004_0215d534
 extern "C" ARM int func_ov004_0215d534(void* obj) {
+#if defined(jpn)
+ enum { stateOffset = 0xc };
+#else
+ enum { stateOffset = 0x26c };
+#endif
     int key = _Z28DispatchNodeIfType7_02156e2cPvi(obj, 0x5b);
     if (key < 0) return 0;
 
@@ -40,7 +45,7 @@ extern "C" ARM int func_ov004_0215d534(void* obj) {
                 func_ov011_021848a0(obj, 0x2367);
             }
         } else if (!TestFlagBitAt0xe(search, 0)) {
-            char* p = (char*)GameState::GetInstance() + 0x26c;
+            char* p = (char*)GameState::GetInstance() + stateOffset;
             *(unsigned short*)(p + 0x5d00 + 0xc) &= ~0xe000;
             _Z27EnqueueEventTag184_021d3bbciiii(slot, data_ov004_021707d8.battle->count, 3, 0);
             func_ov011_02184a40(obj, 0x5c);

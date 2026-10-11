@@ -1,6 +1,21 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+enum { kRegionValue324_20C = 0x20c };
+enum { kRegionValue390_278 = 0x278 };
+enum { kRegionValue328_210 = 0x210 };
+enum { kRegionValue488_2B0 = 0x2b0 };
+enum { kRegionValue394_27C = 0x27c };
+#else
+enum { kRegionValue324_20C = 0x324 };
+enum { kRegionValue390_278 = 0x390 };
+enum { kRegionValue328_210 = 0x328 };
+enum { kRegionValue488_2B0 = 0x488 };
+enum { kRegionValue394_27C = 0x394 };
+#endif
+
+
 int GetWord0x0(int* obj);
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
 int IsFieldNotPositive_021a4e70(unsigned char* base);
@@ -17,15 +32,16 @@ extern unsigned short data_02114e30;
 extern unsigned char data_02114e54;
 
 struct Ctx02160a68 {
-    char pad0[0x324];
-    struct Obj2081* field324;      // 0x324
-    char pad1[0x390 - 0x328];
-    struct Outer020e28dc* ptr390;  // 0x390
-    char pad2[0x488 - 0x394];
-    short key488;                  // 0x488
+    char pad0[kRegionValue324_20C];
+    struct Obj2081* field324;      // kRegionValue324_20C
+    char pad1[kRegionValue390_278 - kRegionValue328_210];
+    struct Outer020e28dc* ptr390;  // kRegionValue390_278
+    char pad2[kRegionValue488_2B0 - kRegionValue394_27C];
+    short key488;                  // kRegionValue488_2B0
 };
 
 // USA: func_ov003_02160a68  (semantic: CheckStateAtCoords_02160a68)
+// JPN: func_ov003_02160bc4
 extern "C" ARM int func_ov003_02160a68(struct Ctx02160a68* self) {
     int flag = 0;
     unsigned char* battleWord = (unsigned char*)GetWord0x0((int*)GameState::GetInstance());

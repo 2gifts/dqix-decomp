@@ -27,6 +27,7 @@ struct Ctx02226fe4 {
 };
 extern Ctx02226fe4 data_ov031_02250c0c;
 
+// JPN: func_ov031_022277c4
 // USA: func_ov031_02226fe4  (semantic: ConfigureAndRunUpdateLoop_02226fe4)
 extern "C" ARM int func_ov031_02226fe4(void* arg0, int type, unsigned int flags) {
 	data_ov031_02250c0c.field4 = arg0;

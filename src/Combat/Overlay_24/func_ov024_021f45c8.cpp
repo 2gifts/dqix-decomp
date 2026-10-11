@@ -33,6 +33,7 @@ struct Action_021f45c8 {
 };
 extern struct Out0215fb54 data_ov024_021fea1c[];
 
+// JPN: func_ov024_021f4d94
 // USA: func_ov024_021f45c8
 extern "C" ARM int func_ov024_021f45c8(struct Obj_021f45c8* obj, int id, struct Action_021f45c8* action, int* outCount, short* outId) {
 	GameObject* c;

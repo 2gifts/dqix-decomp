@@ -1,5 +1,11 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { stopwatchIdOffset = 0x6ac };
+#else
+enum { stopwatchIdOffset = 0x758 };
+#endif
+
 struct Stopwatch0201fbac;
 void UpdateStopwatchState0201fbac(struct Stopwatch0201fbac* t);
 
@@ -21,7 +27,7 @@ ARM void ResetOrFindStopwatch(unsigned char* obj, int id) {
         unsigned char* p;
         for (i = 0; i < 4; i++) {
             p = obj + i;
-            if (id == p[0x758]) {
+            if (id == p[stopwatchIdOffset]) {
                 UpdateStopwatchState0201fbac((struct Stopwatch0201fbac*)&data_020fdc60[i]);
                 return;
             }

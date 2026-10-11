@@ -24,7 +24,12 @@ extern "C" ARM void func_ov000_02174428(void* obj, int id, int val100, int param
             DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 0x19, 0);
         }
     }
-    if (*((unsigned char*)r4 + 0x43e)) return;
+#if defined(jpn)
+    enum { guardOffset = 0x47e };
+#else
+    enum { guardOffset = 0x43e };
+#endif
+    if (*((unsigned char*)r4 + guardOffset)) return;
     int valid = 0;
     int val4c = *(int*)((char*)r4 + 0x4c);
     if (val4c >= 0 && val4c <= 3) valid = 1;

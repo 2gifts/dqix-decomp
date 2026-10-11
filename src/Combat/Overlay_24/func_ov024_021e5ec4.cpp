@@ -15,6 +15,7 @@ struct Chain_021e5ec4 { char pad0[0x2d]; unsigned char byte0x2d; };
 struct Obj_021e5ec4 { char pad0[8]; struct Chain_021e5ec4* field0x8; char pad1[4]; unsigned char* field0x10; };
 struct Stats_021e5ec4 { char pad0[0x24]; unsigned char level; };
 
+// JPN: func_ov024_021e675c
 // USA: func_ov024_021e5ec4
 extern "C" ARM void func_ov024_021e5ec4(struct Obj_021e5ec4* obj, int id) {
     GameObject* c = GetCombatantByID((int)obj->field0x10, id);

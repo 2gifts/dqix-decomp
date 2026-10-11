@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegion998 = 0x868 };
+#else
+enum { kRegion998 = 0x998 };
+#endif
 #include "GameState/GameState.h"
 
 struct BattleMessageScene {
@@ -13,7 +18,7 @@ struct BattleMessageScene {
 };
 
 struct BattleGlobals {
-    char unk_0[0x998];
+    char unk_0[kRegion998];
     int messageActive;
 };
 
@@ -29,6 +34,7 @@ extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(BattleGlobals*, int,
 extern "C" void* _Z21GetFieldByKey020e0434P17Container020e0310i(void*, int);
 extern "C" void func_ov003_02159250(BattleMessageScene*, void*);
 
+// JPN: func_ov003_0215c3dc
 // USA: func_ov003_0215af9c
 extern "C" ARM void func_ov003_0215af9c(BattleMessageScene* self) {
     GameResources* res = func_ov017_0218b5b0();

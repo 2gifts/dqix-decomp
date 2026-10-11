@@ -47,6 +47,7 @@ extern "C" void func_ov024_021e8bf0(struct Obj_021dd534* obj, void* fieldC, unsi
 extern "C" void _Z33AddEntryAndIncrementCount0215a88cPvS_i(void* world, void* entry, int msg);
 extern "C" void func_ov000_0215cd44(void* world, void* entry, GameObject* c, int d, unsigned long long bits, int flag);
 
+// JPN: func_ov024_021ddde0
 // USA: func_ov024_021dd534
 extern "C" ARM void* func_ov024_021dd534(struct Obj_021dd534* obj, int unused, int id, struct Range_021dd534* range, int unused2, int unused3, unsigned char flagArg) {
     GameObject* c = GetCombatantByID((int)obj->f10, id);

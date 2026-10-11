@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegionalFieldOffset = 0x5a68 };
+#else
+enum { kRegionalFieldOffset = 0x5cc8 };
+#endif
+
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
 
@@ -16,7 +22,7 @@ ARM int CheckAndApplyDebugCode020ac910() {
     int result = func_02075910(0, buf, 0x10, 0);
     if (result == 0) {
         GameState* bs = GameState::GetInstance();
-        *(unsigned char*)((char*)bs + 0x5cc8) = 0;
+        *(unsigned char*)((char*)bs + kRegionalFieldOffset) = 0;
         SetFlag0x5cccBit0((StateBits5ccc_11544*)bs);
         return 0;
     }

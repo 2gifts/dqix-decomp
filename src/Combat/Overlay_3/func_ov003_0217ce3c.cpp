@@ -1,6 +1,17 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+enum { kRegionValue14_10 = 0x10 };
+enum { kRegionValue90_8C = 0x8c };
+enum { kRegionValue18_14 = 0x14 };
+#else
+enum { kRegionValue14_10 = 0x14 };
+enum { kRegionValue90_8C = 0x90 };
+enum { kRegionValue18_14 = 0x18 };
+#endif
+
+
 struct Struct6_0217dc94;
 extern "C" void func_ov003_0217dc94(Struct6_0217dc94* obj);
 extern "C" int func_0205d0e0(void* p, int val);
@@ -16,13 +27,14 @@ struct Obj0217ce3c {
     signed char field4;
     char pad1[8 - 5];
     unsigned short field8;
-    char pad2[0x14 - 0xa];
+    char pad2[kRegionValue14_10 - 0xa];
     int field14;
-    char pad3[0x90 - 0x18];
+    char pad3[kRegionValue90_8C - kRegionValue18_14];
     void* field90;
 };
 
 // USA: func_ov003_0217ce3c
+// JPN: func_ov003_0217bb64
 extern "C" ARM int func_ov003_0217ce3c(struct Obj0217ce3c* obj) {
     GameState* bs = GameState::GetInstance();
     func_ov003_0217dc94((struct Struct6_0217dc94*)obj);

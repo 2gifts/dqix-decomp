@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegionalFieldOffset = 0x34ec };
+#else
+enum { kRegionalFieldOffset = 0x36fc };
+#endif
+
 #include "GameState/GameState.h"
 #include "System/ColorEffects.h"
 #include "System/OverlayId.h"
@@ -22,7 +28,7 @@ extern "C" ARM void func_02065418(int keepPlanes) {
     if (!_Z27IsIndexMappedToSelf020a18f4j(OVERLAY_ID(17))) {
         return;
     }
-    HeadNode02046b24** head = *(HeadNode02046b24***)((char*)GetWord0x0((int*)GameState::GetInstance()) + 0x36fc);
+    HeadNode02046b24** head = *(HeadNode02046b24***)((char*)GetWord0x0((int*)GameState::GetInstance()) + kRegionalFieldOffset);
     if (head == NULL) {
         return;
     }

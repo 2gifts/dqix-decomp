@@ -1,10 +1,16 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define IS_JPN 1
+#else
+#define IS_JPN 0
+#endif
+
 #include "std_library_functions.h"
 
 struct NameBuf02046574 { char c[0x40]; };
 
 struct Obj02046574 {
-    char pad[0x4ac];
+    char pad[IS_JPN ? 0x37c : 0x4ac];
     struct NameBuf02046574 names[16];
 };
 

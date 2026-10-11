@@ -11,15 +11,31 @@ struct PartyAction {
     signed char target;
     char pad2f[0x1d];
     int owner;
+#if defined(jpn)
+    char pad50[0x438];
+#else
     char pad50[0x3f8];
+#endif
 };
 struct CombatActions {
+#if defined(jpn)
+    char pad0[0x21c];
+#else
     char pad0[0x2a0];
+#endif
     unsigned char* state;
+#if defined(jpn)
+    char pad2a4[0x34fc];
+#else
     char pad2a4[0x34bc];
+#endif
     char targeting[0x958];
     PartyAction actions[4];
+#if defined(jpn)
+    char pad51d8[0x8ac];
+#else
     char pad51d8[0x778];
+#endif
     unsigned char mode;
 };
 struct SelectedAction {

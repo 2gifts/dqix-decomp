@@ -9,6 +9,7 @@ extern struct DataOv02290d18_0223a2b0 data_ov031_02290d18;
 extern int data_ov031_0224c498;
 extern int data_ov031_0224c4c8;
 
+// JPN: func_ov031_0223aa90
 // USA: func_ov031_0223a2b0
 extern "C" ARM int func_ov031_0223a2b0(int arg) {
     unsigned char* inner = data_ov031_02290d18.inner;

@@ -1,5 +1,12 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define REGION_OFFSET_0 0x79c6
+#else
+#define REGION_OFFSET_0 0x77d6
+#endif
+
+
 struct TaskEntry0216867c {
     signed char id;
     unsigned char flags;
@@ -10,7 +17,7 @@ struct TaskEntry0216867c {
 };
 
 struct TaskEntryOwner0216867c {
-    char pad[0x77d6];
+    char pad[REGION_OFFSET_0];
     TaskEntry0216867c entries[4];
     unsigned char count;
 };

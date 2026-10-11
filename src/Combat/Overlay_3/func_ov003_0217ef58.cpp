@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegion1414 = 0x12a4 };
+#else
+enum { kRegion1414 = 0x1414 };
+#endif
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 #include "Memory/AllocatorUnion.h"
@@ -48,6 +53,7 @@ void ClearFlagBits(unsigned char* obj, int mask);
 extern "C" void _Z29InitObjAndClearFlags_0217f1b8Ph(unsigned char* obj);
 extern AllocatorUnion data_02114e20;
 
+// JPN: func_ov003_0217dc5c
 // USA: func_ov003_0217ef58
 extern "C" ARM void func_ov003_0217ef58(Obj0217ef58* self) {
     GameState* gs = GameState::GetInstance();
@@ -65,7 +71,7 @@ extern "C" ARM void func_ov003_0217ef58(Obj0217ef58* self) {
         VectorizedMemset(buffer, 0, 0xb000);
         self->allocator.CreateTypeA(buffer, 0xb000);
         self->allocator.Reset();
-        self->scene = (Scene0217ef58*)self->allocator.Allocate(0x1414);
+        self->scene = (Scene0217ef58*)self->allocator.Allocate(kRegion1414);
         if (self->scene == 0) {
             func_020a0c0c();
             self->done = 1;

@@ -19,7 +19,11 @@ int ProcessAndDispatchState_02154de4(struct Self02154de4* self);
 struct Self02155ca8 {
     char pad0[0xa];
     unsigned short field_a;
+    #if defined(jpn)
+    char pad1[0xf4 - 0xc];
+#else
     char pad1[0xf8 - 0xc];
+#endif
     unsigned int flag_f8 : 27;
     unsigned int rsv_f8 : 5;
 };

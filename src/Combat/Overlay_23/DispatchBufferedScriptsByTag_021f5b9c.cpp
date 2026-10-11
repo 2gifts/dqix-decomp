@@ -22,6 +22,7 @@ struct Entry021f5b9c {
 struct Data021fff08_021f5b9c { char pad[4]; int field4; };
 extern struct Data021fff08_021f5b9c data_ov023_021fff08;
 
+// JPN: func_ov023_021f5188
 // USA: func_ov023_021f5b9c  (semantic: DispatchBufferedScriptsByTag_021f5b9c)
 extern "C" ARM void func_ov023_021f5b9c(unsigned char* cursor, struct Entry021f5b9c* arr, int count, SafeAllocator* alloc) {
     struct Entry021f5b9c* e;

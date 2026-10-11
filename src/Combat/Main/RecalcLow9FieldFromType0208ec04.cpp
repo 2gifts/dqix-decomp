@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kEntryOffset = 0x5a7c };
+#else
+enum { kEntryOffset = 0x5cdc };
+#endif
+
 #include "GameState/GameState.h"
 
 struct BitEntry0208ec04 {
@@ -13,7 +19,7 @@ struct BitEntry0208ec04 {
 // USA: func_0208ec04  (semantic: RecalcLow9FieldFromType0208ec04)
 extern "C" ARM void func_0208ec04(void) {
     char* base = (char*)GameState::GetInstance();
-    struct BitEntry0208ec04* e = (struct BitEntry0208ec04*)(base + 0x5cdc);
+    struct BitEntry0208ec04* e = (struct BitEntry0208ec04*)(base + kEntryOffset);
     int i;
     for (i = 0; i < 0x64; i++, e++) {
         if (e->flag && e->id8 != 0) {

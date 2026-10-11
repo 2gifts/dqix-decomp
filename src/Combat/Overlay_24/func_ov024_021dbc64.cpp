@@ -33,6 +33,7 @@ struct Obj_021dbc64 {
 };
 struct Range_021dbc64 { char pad[0x24]; struct PackedPair_021dbc64 f24; };
 
+// JPN: func_ov024_021dc510
 // USA: func_ov024_021dbc64
 extern "C" ARM void* func_ov024_021dbc64(struct Obj_021dbc64* obj, int unused, int id, struct Range_021dbc64* range, int unused2, int unused3, unsigned char flagArg) {
 	GameObject* c = GetCombatantByID((int)obj->field0x10, id);

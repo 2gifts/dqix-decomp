@@ -24,14 +24,22 @@ struct MemberInfo02178648 {
 struct Entry02178648 {
     char pad0[0x4c];
     int field4c;
+#if defined(jpn)
+    char pad1[0x488 - 0x50];
+#else
     char pad1[0x448 - 0x50];
+#endif
 };
 
 // USA: func_ov000_02178648
 extern "C" ARM void func_ov000_02178648(char* obj, char* dst) {
     if (dst == NULL) return;
 
+#if defined(jpn)
+    signed char cursor = *(signed char*)(obj + 0x1fa3);
+#else
     signed char cursor = *(signed char*)(obj + 0x1d6b);
+#endif
     int n = 0;
     unsigned char count;
     GameState* gs = GameState::GetInstance();
@@ -59,5 +67,7 @@ extern "C" ARM void func_ov000_02178648(char* obj, char* dst) {
         }
         n++;
     }
+#if !defined(jpn)
     AppendXTag(dst, 0x7a);
+#endif
 }

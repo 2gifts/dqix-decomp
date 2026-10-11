@@ -1,6 +1,12 @@
 #include <globaldefs.h>
 #include "Combat/Main/BattleList.h"
 #include "Memory/SafeAllocator.h"
+#if defined(jpn)
+enum { kRegionSelfShift = 0x84, kRegionElementCursor = 0x2a };
+#else
+enum { kRegionSelfShift = 0, kRegionElementCursor = 0x36 };
+#endif
+
 struct BattleStruct {
     int unk0;
     int unk4;
@@ -85,83 +91,84 @@ extern unsigned short data_02114e30;
 extern struct Obj0205eaa0 data_02108760;
 
 static inline void SetSelection(unsigned char* self, signed char v) {
-    *(signed char*)(self + 0x7b6) = v;
+    *(signed char*)(self + (0x7b6 - kRegionSelfShift)) = v;
     func_ov023_021ddf5c(self + 0x3c, v);
 }
 
 static inline int IsLowKind(struct Element020de650* e) { return e->nibble <= 7; }
 
 // USA: func_ov003_02178910
+// JPN: func_ov003_021777d4
 extern "C" ARM void func_ov003_02178910(unsigned char* self) {
     struct BattleStruct* battle = _ZN9GameState11GetInstanceEv();
     void* battleSum = _Z17GetPtrField0x2a04P9GameState(battle);
-    struct Obj2081* elemObj = *(struct Obj2081**)(self + 0x89c);
-    int state = *(unsigned char*)(self + 0x1000 + 0x3f);
+    struct Obj2081* elemObj = *(struct Obj2081**)(self + (0x89c - kRegionSelfShift));
+    int state = *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift));
 
     if (state == 0) {
         CallFunc0204c804OnNonMatchingKey((struct Cont0207fdf0*)elemObj, 0);
-        (*(unsigned char*)(self + 0x1000 + 0x3f))++;
+        (*(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)))++;
         return;
     }
 
     if (state == 1) {
-        *(short*)(self + 0xf00 + 0xfe) = 3;
-        if (*(short*)(self + 0x1000 + 6) < 0) {
-            short id = FindMappedMemberId02080468(elemObj, *(short*)(self + 0xf00 + 0xfe));
-            *(short*)(self + 0x1000 + 6) = id;
+        *(short*)(self + (0xf00 + 0xfe - kRegionSelfShift)) = 3;
+        if (*(short*)(self + (0x1000 + 6 - kRegionSelfShift)) < 0) {
+            short id = FindMappedMemberId02080468(elemObj, *(short*)(self + (0xf00 + 0xfe - kRegionSelfShift)));
+            *(short*)(self + (0x1000 + 6 - kRegionSelfShift)) = id;
         }
-        *(short*)((char*)elemObj + 0x36) = *(short*)(self + 0x1000 + 6);
-        SetEntryLowNibbleAndElement02080c68(elemObj, *(short*)(self + 0xf00 + 0xfe), 0);
-        SetElementFlag0x40(elemObj, *(short*)(self + 0xf00 + 0xfe), 0);
+        *(short*)((char*)elemObj + kRegionElementCursor) = *(short*)(self + (0x1000 + 6 - kRegionSelfShift));
+        SetEntryLowNibbleAndElement02080c68(elemObj, *(short*)(self + (0xf00 + 0xfe - kRegionSelfShift)), 0);
+        SetElementFlag0x40(elemObj, *(short*)(self + (0xf00 + 0xfe - kRegionSelfShift)), 0);
         func_ov003_02178548(self);
         func_ov003_021767ec(self);
         func_ov003_021769ec(self);
         func_ov003_02176ed4(self);
         func_ov003_02176f94(self);
-        ResetWithSub0208203c((struct Obj0208203c*)(self + 0x88c));
-        *(void**)(self + 0xff8) = 0;
-        (*(unsigned char*)(self + 0x1000 + 0x3f))++;
+        ResetWithSub0208203c((struct Obj0208203c*)(self + (0x88c - kRegionSelfShift)));
+        *(void**)(self + (0xff8 - kRegionSelfShift)) = 0;
+        (*(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)))++;
         func_ov003_021748c4(self);
-        if (*(unsigned char*)(self + 0x1000 + 0x4d) != 0) {
+        if (*(unsigned char*)(self + (0x1000 + 0x4d - kRegionSelfShift)) != 0) {
             signed char negOne = -1;
             SetSelection(self, negOne);
-            *(unsigned char*)(self + 0x1000 + 0x4d) = 0;
+            *(unsigned char*)(self + (0x1000 + 0x4d - kRegionSelfShift)) = 0;
         }
         return;
     }
 
     if (state == 2) {
-        short key = *(short*)(self + 0x1000 + 0x3a);
-        *(void**)(self + 0xff8) = self + 0x1000 + 6;
+        short key = *(short*)(self + (0x1000 + 0x3a - kRegionSelfShift));
+        *(void**)(self + (0xff8 - kRegionSelfShift)) = self + (0x1000 + 6 - kRegionSelfShift);
         func_ov003_021785d4(self);
         signed char negOne = -1;
-        *(signed char*)(self + 0x7b6) = negOne;
-        func_ov023_021dcae0((struct Obj021dcae0*)(self + 0x3c), *(short*)(self + 0x1000 + 0x3a));
+        *(signed char*)(self + (0x7b6 - kRegionSelfShift)) = negOne;
+        func_ov023_021dcae0((struct Obj021dcae0*)(self + 0x3c), *(short*)(self + (0x1000 + 0x3a - kRegionSelfShift)));
         int r = func_ov003_021765b4(self);
-        if (r != 0 && key == *(short*)(self + 0x1000 + 0x3a)) {
-            *(unsigned char*)(self + 0x1000 + 0x3c) = 1;
+        if (r != 0 && key == *(short*)(self + (0x1000 + 0x3a - kRegionSelfShift))) {
+            *(unsigned char*)(self + (0x1000 + 0x3c - kRegionSelfShift)) = 1;
             DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
-            ResetWithSub0208203c((struct Obj0208203c*)(self + 0x88c));
-            *(void**)(self + 0xff8) = 0;
-            struct Element020de650* elem = FindElementByKey020dedd0((struct Container020dedd0*)(self + 0x874), *(short*)(self + 0x1000 + 0x3a));
+            ResetWithSub0208203c((struct Obj0208203c*)(self + (0x88c - kRegionSelfShift)));
+            *(void**)(self + (0xff8 - kRegionSelfShift)) = 0;
+            struct Element020de650* elem = FindElementByKey020dedd0((struct Container020dedd0*)(self + (0x874 - kRegionSelfShift)), *(short*)(self + (0x1000 + 0x3a - kRegionSelfShift)));
             *(void**)(self + 8) = elem;
             if (elem == 0) return;
             int kind = elem->nibble;
-            int ok = func_ov003_021784bc(battleSum, *(short*)(self + 0x1000 + 0x3a), kind, *(int*)(self + 0x1000 + 0x30));
+            int ok = func_ov003_021784bc(battleSum, *(short*)(self + (0x1000 + 0x3a - kRegionSelfShift)), kind, *(int*)(self + (0x1000 + 0x30 - kRegionSelfShift)));
             if (ok == 0) {
                 CallFunc0204c804OnNonMatchingKey((struct Cont0207fdf0*)elemObj, 0);
-                *(short*)(self + 0x1000 + 0x36) = 0x1b;
-                *(short*)(self + 0x1000 + 0x38) = 4;
-                *(unsigned char*)(self + 0x1000 + 0x3f) = 1;
-                *(short*)(self + 0x1000 + 0) = -1;
-                *(unsigned short*)(self + 0x1000 + 0x46) |= 0x20;
+                *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x1b;
+                *(short*)(self + (0x1000 + 0x38 - kRegionSelfShift)) = 4;
+                *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 1;
+                *(short*)(self + (0x1000 + 0 - kRegionSelfShift)) = -1;
+                *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) |= 0x20;
                 return;
             }
-            int capOk = CheckRatioWithinCap_021758cc((char*)self, *(unsigned char*)(self + 0x1000 + 0x3c));
+            int capOk = CheckRatioWithinCap_021758cc((char*)self, *(unsigned char*)(self + (0x1000 + 0x3c - kRegionSelfShift)));
             if (capOk != 0) {
                 struct Element020de650* elem2a = *(struct Element020de650**)(self + 8);
-                unsigned short mult = *(unsigned short*)(self + 0x800 + 0x6c);
-                int field30 = *(int*)(self + 0x1000 + 0x30);
+                unsigned short mult = *(unsigned short*)(self + (0x800 + 0x6c - kRegionSelfShift));
+                int field30 = *(int*)(self + (0x1000 + 0x30 - kRegionSelfShift));
                 int val = EvalOrDispatch020de194(elem2a);
                 int product = mult * val;
                 void* battleSum2 = _Z17GetPtrField0x2a04P9GameState(_ZN9GameState11GetInstanceEv());
@@ -177,8 +184,8 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
                 }
                 if (result != 0) {
                     CallFunc0204c804OnNonMatchingKey((struct Cont0207fdf0*)elemObj, 0);
-                    *(short*)(self + 0x1000 + 0x36) = 2;
-                    *(unsigned char*)(self + 0x1000 + 0x3f) = 5;
+                    *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 2;
+                    *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 5;
                     return;
                 }
                 SetEntryLowNibbleAndElement02080c68(elemObj, 3, 1);
@@ -191,8 +198,8 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
                 SetEntryLowNibbleAndElement02080c68(elemObj, 0x1a, 1);
                 SetEntryLowNibbleAndElement02080c68(elemObj, 0x1b, 1);
                 SetEntryLowNibbleAndElement02080c68(elemObj, 0x1c, 1);
-                *(short*)(self + 0xf00 + 0xfc) = *(short*)(self + 0xf00 + 0xfe);
-                (*(unsigned char*)(self + 0x1000 + 0x3f))++;
+                *(short*)(self + (0xf00 + 0xfc - kRegionSelfShift)) = *(short*)(self + (0xf00 + 0xfe - kRegionSelfShift));
+                (*(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)))++;
                 return;
             }
             CallFunc0204c804OnMatchingKey(elemObj, 3);
@@ -205,19 +212,19 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
             CallFunc0204c804OnMatchingKey(elemObj, 0x1a);
             CallFunc0204c804OnMatchingKey(elemObj, 0x1b);
             CallFunc0204c804OnMatchingKey(elemObj, 0x1c);
-            *(short*)(self + 0x1000 + 0x36) = 7;
-            *(unsigned char*)(self + 0x1000 + 0x3e) = 1;
-            *(unsigned char*)(self + 0x1000 + 0x3f) = 0;
-            *(unsigned short*)(self + 0x1000 + 0x46) |= 0x2000;
+            *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 7;
+            *(unsigned char*)(self + (0x1000 + 0x3e - kRegionSelfShift)) = 1;
+            *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 0;
+            *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) |= 0x2000;
             return;
         }
         int ok3 = func_ov003_021766e8(self);
         if (ok3 == 0) return;
-        ResetWithSub0208203c((struct Obj0208203c*)(self + 0x88c));
-        *(void**)(self + 0xff8) = 0;
-        *(short*)(self + 0x1000 + 0x36) = 0xa;
-        *(unsigned char*)(self + 0x1000 + 0x3e) = 1;
-        *(unsigned char*)(self + 0x1000 + 0x3f) = 0;
+        ResetWithSub0208203c((struct Obj0208203c*)(self + (0x88c - kRegionSelfShift)));
+        *(void**)(self + (0xff8 - kRegionSelfShift)) = 0;
+        *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0xa;
+        *(unsigned char*)(self + (0x1000 + 0x3e - kRegionSelfShift)) = 1;
+        *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 0;
         CallFunc0204c804OnMatchingKey(elemObj, 3);
         CallFunc0204c804OnMatchingKey(elemObj, 4);
         CallFunc0204c804OnMatchingKey(elemObj, 5);
@@ -228,36 +235,36 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
         CallFunc0204c804OnMatchingKey(elemObj, 0x1a);
         CallFunc0204c804OnMatchingKey(elemObj, 0x1b);
         CallFunc0204c804OnMatchingKey(elemObj, 0x1c);
-        *(unsigned short*)(self + 0x1000 + 0x46) |= 0x2000;
+        *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) |= 0x2000;
         return;
     }
 
     if (state == 3) {
         func_ov003_02177208((char*)self);
         func_ov003_0217726c((char*)self);
-        ResetWithSub0208203c((struct Obj0208203c*)(self + 0x88c));
-        (*(unsigned char*)(self + 0x1000 + 0x3f))++;
-        *(unsigned char*)(self + 0x1000 + 0x4a) = 0;
+        ResetWithSub0208203c((struct Obj0208203c*)(self + (0x88c - kRegionSelfShift)));
+        (*(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)))++;
+        *(unsigned char*)(self + (0x1000 + 0x4a - kRegionSelfShift)) = 0;
         return;
     }
 
     if (state == 4) {
-        unsigned char counter = *(unsigned char*)(self + 0x1000 + 0x4a);
+        unsigned char counter = *(unsigned char*)(self + (0x1000 + 0x4a - kRegionSelfShift));
         int delta = 0;
         if (counter < 5) {
-            *(unsigned char*)(self + 0x1000 + 0x4a) = counter + 1;
+            *(unsigned char*)(self + (0x1000 + 0x4a - kRegionSelfShift)) = counter + 1;
         } else {
             delta = func_ov003_02178218(self);
             if (delta != 0) {
-                *(unsigned char*)(self + 0x1000 + 0x4a) = 0;
+                *(unsigned char*)(self + (0x1000 + 0x4a - kRegionSelfShift)) = 0;
             }
         }
 
         struct BattleStruct* b2 = _ZN9GameState11GetInstanceEv();
         int scaleCount = _ZNK9GameState12GetTickCountEv(b2);
-        int ratio = func_02081f20(self + 0x8c + 0x800, scaleCount);
+        int ratio = func_02081f20(self + (0x8c + 0x800 - kRegionSelfShift), scaleCount);
         if ((unsigned short)(ratio + 0xffff) <= 1) {
-            void* p88c = *(void**)(self + 0x88c);
+            void* p88c = *(void**)(self + (0x88c - kRegionSelfShift));
             int v = (p88c != 0) ? *(unsigned short*)p88c : 0;
             if (v == 0x40) delta = 1;
             else if (v == 0x80) delta = -1;
@@ -266,20 +273,20 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
         }
 
         if (delta != 0) {
-            int newCap = *(unsigned char*)(self + 0x1000 + 0x3c) + delta;
+            int newCap = *(unsigned char*)(self + (0x1000 + 0x3c - kRegionSelfShift)) + delta;
             int ratioVal = ComputeRatio_02175898((char*)self, *(void**)(self + 8));
             unsigned int divIn = (ratioVal == 0) ? 1 : ratioVal;
             int q = _u32_div_f(*(unsigned int*)((char*)battleSum + 0xf6c), divIn);
             struct Element020de650* elem = *(struct Element020de650**)(self + 8);
             int kind = 0xa;
             if (elem != 0) kind = elem->nibble;
-            int capVal = func_ov003_021784bc(battleSum, *(short*)(self + 0x1000 + 0x3a), kind, *(int*)(self + 0x1000 + 0x30));
+            int capVal = func_ov003_021784bc(battleSum, *(short*)(self + (0x1000 + 0x3a - kRegionSelfShift)), kind, *(int*)(self + (0x1000 + 0x30 - kRegionSelfShift)));
             if (q < capVal) capVal = q;
             if (capVal < newCap) newCap = capVal;
             if (newCap <= 1) newCap = 1;
-            *(unsigned char*)(self + 0x1000 + 0x4b) = (*(unsigned char*)(self + 0x1000 + 0x3c) < newCap) ? 1 : 0;
-            *(unsigned char*)(self + 0x1000 + 0x4c) = (newCap < *(unsigned char*)(self + 0x1000 + 0x3c)) ? 1 : 0;
-            *(unsigned char*)(self + 0x1000 + 0x3c) = newCap;
+            *(unsigned char*)(self + (0x1000 + 0x4b - kRegionSelfShift)) = (*(unsigned char*)(self + (0x1000 + 0x3c - kRegionSelfShift)) < newCap) ? 1 : 0;
+            *(unsigned char*)(self + (0x1000 + 0x4c - kRegionSelfShift)) = (newCap < *(unsigned char*)(self + (0x1000 + 0x3c - kRegionSelfShift))) ? 1 : 0;
+            *(unsigned char*)(self + (0x1000 + 0x3c - kRegionSelfShift)) = newCap;
             func_ov003_02177208((char*)self);
             func_ov003_0217726c((char*)self);
         }
@@ -289,12 +296,12 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
         if (flagTest != 0 || hitZone == 1) {
             DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
             CallFunc0204c804OnNonMatchingKey((struct Cont0207fdf0*)elemObj, 0);
-            *(short*)(self + 0x1000 + 0x36) = 0x1f;
-            if (*(unsigned char*)(self + 0x1000 + 0x3c) == 1) {
-                *(short*)(self + 0x1000 + 0x36) = 2;
+            *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x1f;
+            if (*(unsigned char*)(self + (0x1000 + 0x3c - kRegionSelfShift)) == 1) {
+                *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 2;
             }
-            (*(unsigned char*)(self + 0x1000 + 0x3f))++;
-            ResetWithSub0208203c((struct Obj0208203c*)(self + 0x88c));
+            (*(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)))++;
+            ResetWithSub0208203c((struct Obj0208203c*)(self + (0x88c - kRegionSelfShift)));
             return;
         }
 
@@ -302,15 +309,15 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
         if (flagTest2 != 0 || hitZone == -1) {
             CallFunc0204c804OnMatchingKey(elemObj, 9);
             CallFunc0204c804OnMatchingKey(elemObj, 0xa);
-            ResetWithSub0208203c((struct Obj0208203c*)(self + 0x88c));
-            *(unsigned char*)(self + 0x1000 + 0x3f) = 1;
+            ResetWithSub0208203c((struct Obj0208203c*)(self + (0x88c - kRegionSelfShift)));
+            *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 1;
         }
         return;
     }
 
     if (state == 5) {
         func_ov003_02176468(self);
-        (*(unsigned char*)(self + 0x1000 + 0x3f))++;
+        (*(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)))++;
         return;
     }
 
@@ -319,31 +326,31 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
         if (res != -1) {
             if (res != 1) return;
 
-            *(unsigned short*)(self + 0x1000 + 0x46) &= ~0x1000;
+            *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) &= ~0x1000;
             TrySpendResource_02175924((char*)self);
             CallFunc0204c804OnNonMatchingKey((struct Cont0207fdf0*)elemObj, 0);
             struct Element020de650* elem = *(struct Element020de650**)(self + 8);
             if (IsLowKind(elem)) {
-                *(short*)(self + 0x1000 + 0x36) = 3;
-                (*(unsigned char*)(self + 0x1000 + 0x3f))++;
-                if (*(int*)(self + 0x1000 + 0x30) != 1) return;
+                *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 3;
+                (*(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)))++;
+                if (*(int*)(self + (0x1000 + 0x30 - kRegionSelfShift)) != 1) return;
 
                 int val = _Z18GetField0x3acValueP9GameState(battle);
-                *(unsigned char*)(self + 0x1000 + 0x43) = val;
-                int check = func_020dd4c4(*(signed char*)(self + 0x1000 + 0x43), *(void**)(self + 8));
+                *(unsigned char*)(self + (0x1000 + 0x43 - kRegionSelfShift)) = val;
+                int check = func_020dd4c4(*(signed char*)(self + (0x1000 + 0x43 - kRegionSelfShift)), *(void**)(self + 8));
                 if (check == 0) return;
 
                 func_ov003_02175cb0((char*)self, 0);
-                *(short*)(self + 0x1000 + 0x36) = 9;
-                *(unsigned char*)(self + 0x1000 + 0x3f) = 1;
-                *(unsigned short*)(self + 0x1000 + 0x46) |= 0x20;
+                *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 9;
+                *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 1;
+                *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) |= 0x20;
                 return;
             }
 
-            *(short*)(self + 0x1000 + 0x36) = 0x15;
-            *(unsigned char*)(self + 0x1000 + 0x3f) = 0xb;
-            short st34 = *(short*)(self + 0x1000 + 0x34);
-        short key = *(short*)(self + 0x1000 + 0x3a);
+            *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x15;
+            *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 0xb;
+            short st34 = *(short*)(self + (0x1000 + 0x34 - kRegionSelfShift));
+        short key = *(short*)(self + (0x1000 + 0x3a - kRegionSelfShift));
         if (st34 == 0x20 && key == 0x55f0) {
                 void* base = func_0205ec34();
                 SetOrClearBitInArray(base, (unsigned char*)base + 0x8c, 0x1139, 1);
@@ -354,15 +361,15 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
         CallFunc0204c804OnMatchingKey(elemObj, 9);
         CallFunc0204c804OnMatchingKey(elemObj, 0xa);
         CallFunc0204c804OnNonMatchingKey((struct Cont0207fdf0*)elemObj, 0);
-        *(short*)(self + 0x1000 + 0x36) = 0x2f;
-        *(unsigned char*)(self + 0x1000 + 0x3f) = 1;
-        *(unsigned short*)(self + 0x1000 + 0x46) |= 0x20;
+        *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x2f;
+        *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 1;
+        *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) |= 0x20;
         return;
     }
 
     if (state == 7) {
         func_ov003_02176468(self);
-        (*(unsigned char*)(self + 0x1000 + 0x3f))++;
+        (*(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)))++;
         return;
     }
 
@@ -371,199 +378,199 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
         if (res != -1) {
             if (res != 1) return;
 
-            if (*(int*)(self + 0x1000 + 0x30) == 1) {
+            if (*(int*)(self + (0x1000 + 0x30 - kRegionSelfShift)) == 1) {
                 int val = _Z18GetField0x3acValueP9GameState(battle);
-                *(unsigned char*)(self + 0x1000 + 0x43) = val;
-                void* elem2 = func_ov003_02179cfc((char*)self, *(signed char*)(self + 0x1000 + 0x43), *(void**)(self + 8));
+                *(unsigned char*)(self + (0x1000 + 0x43 - kRegionSelfShift)) = val;
+                void* elem2 = func_ov003_02179cfc((char*)self, *(signed char*)(self + (0x1000 + 0x43 - kRegionSelfShift)), *(void**)(self + 8));
                 int bit18 = (*(unsigned int*)((char*)elem2 + 8) << 0xd) >> 0x1f;
                 if (bit18 != 0) {
                     func_ov003_02175cb0((char*)self, 0);
-                    *(short*)(self + 0x1000 + 0x36) = 0x1e;
-                    *(short*)(self + 0x1000 + 0x38) = 9;
+                    *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x1e;
+                    *(short*)(self + (0x1000 + 0x38 - kRegionSelfShift)) = 9;
                 } else {
-                    int check2 = func_ov003_0217839c(*(signed char*)(self + 0x1000 + 0x43), *(void**)(self + 8));
+                    int check2 = func_ov003_0217839c(*(signed char*)(self + (0x1000 + 0x43 - kRegionSelfShift)), *(void**)(self + 8));
                     if (check2 != 0) {
-                        *(short*)(self + 0x1000 + 0x36) = 0x2e;
-                        *(unsigned char*)(self + 0x1000 + 0x3f) = 0x32;
+                        *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x2e;
+                        *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 0x32;
                         return;
                     }
                     func_ov003_0217599c(self);
                     func_ov003_02175cb0((char*)self, 0);
-                    *(short*)(self + 0x1000 + 0x36) = 8;
-                    *(short*)(self + 0x1000 + 0x38) = 4;
+                    *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 8;
+                    *(short*)(self + (0x1000 + 0x38 - kRegionSelfShift)) = 4;
                 }
-                *(unsigned char*)(self + 0x1000 + 0x3f) = 1;
-                *(unsigned short*)(self + 0x1000 + 0x46) |= 0x20;
+                *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 1;
+                *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) |= 0x20;
                 return;
             }
 
             ReinitController02043204((char*)GetGlobalField0x1c020421a0());
-            (*(unsigned char*)(self + 0x1000 + 0x3f))++;
+            (*(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)))++;
             return;
         }
 
         func_ov003_02175cb0((char*)self, 0);
         CallFunc0204c804OnNonMatchingKey((struct Cont0207fdf0*)elemObj, 0);
-        *(short*)(self + 0x1000 + 0x36) = 9;
-        *(unsigned char*)(self + 0x1000 + 0x3f) = 1;
-        *(unsigned short*)(self + 0x1000 + 0x46) |= 0x20;
-        if (*(unsigned short*)(self + 0x1000 + 0x46) & 0x1000) {
-            *(short*)(self + 0x1000 + 0x36) = 0x23;
+        *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 9;
+        *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 1;
+        *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) |= 0x20;
+        if (*(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) & 0x1000) {
+            *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x23;
         }
         return;
     }
 
     if (state == 9) {
-        int field = *(int*)(self + 0x1000 + 0x30);
+        int field = *(int*)(self + (0x1000 + 0x30 - kRegionSelfShift));
         switch (field) {
         case 2:
-            *(short*)(self + 0xf00 + 0xfe) = 0xb;
+            *(short*)(self + (0xf00 + 0xfe - kRegionSelfShift)) = 0xb;
             break;
         case 3:
-            *(short*)(self + 0xf00 + 0xfe) = 0xc;
+            *(short*)(self + (0xf00 + 0xfe - kRegionSelfShift)) = 0xc;
             break;
         case 4:
-            *(short*)(self + 0xf00 + 0xfe) = 0xd;
+            *(short*)(self + (0xf00 + 0xfe - kRegionSelfShift)) = 0xd;
             break;
         }
 
-        short id1 = FindMappedMemberId02080468(elemObj, *(short*)(self + 0xf00 + 0xfe));
-        *(short*)(self + 0x1000 + 8) = id1;
-        *(short*)((char*)elemObj + 0x36) = *(short*)(self + 0x1000 + 8);
-        short id2 = FindMappedMemberId02080468(elemObj, *(short*)(self + 0xf00 + 0xfe));
-        short diff = *(short*)(self + 0x1000 + 8) - id2;
-        int combatantId = ((int*)(self + 0x1000 + 0x1c))[diff];
-        *(unsigned char*)(self + 0x1000 + 0x43) = combatantId;
-        *(unsigned char*)(self + 0x1000 + 0x44) = *(signed char*)(self + 0x1000 + 0x43);
+        short id1 = FindMappedMemberId02080468(elemObj, *(short*)(self + (0xf00 + 0xfe - kRegionSelfShift)));
+        *(short*)(self + (0x1000 + 8 - kRegionSelfShift)) = id1;
+        *(short*)((char*)elemObj + kRegionElementCursor) = *(short*)(self + (0x1000 + 8 - kRegionSelfShift));
+        short id2 = FindMappedMemberId02080468(elemObj, *(short*)(self + (0xf00 + 0xfe - kRegionSelfShift)));
+        short diff = *(short*)(self + (0x1000 + 8 - kRegionSelfShift)) - id2;
+        int combatantId = ((int*)(self + (0x1000 + 0x1c - kRegionSelfShift)))[diff];
+        *(unsigned char*)(self + (0x1000 + 0x43 - kRegionSelfShift)) = combatantId;
+        *(unsigned char*)(self + (0x1000 + 0x44 - kRegionSelfShift)) = *(signed char*)(self + (0x1000 + 0x43 - kRegionSelfShift));
         func_ov003_02177300((char*)self);
         func_ov003_02177410(self);
         func_ov003_02177550(self);
-        ResetWithSub0208203c((struct Obj0208203c*)(self + 0x88c));
-        *(void**)(self + 0xff8) = 0;
-        (*(unsigned char*)(self + 0x1000 + 0x3f))++;
-        SetSelection(self, *(signed char*)(self + 0x1000 + 0x43));
-        *(unsigned char*)(self + 0x1000 + 0x4d) = 1;
+        ResetWithSub0208203c((struct Obj0208203c*)(self + (0x88c - kRegionSelfShift)));
+        *(void**)(self + (0xff8 - kRegionSelfShift)) = 0;
+        (*(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)))++;
+        SetSelection(self, *(signed char*)(self + (0x1000 + 0x43 - kRegionSelfShift)));
+        *(unsigned char*)(self + (0x1000 + 0x4d - kRegionSelfShift)) = 1;
         return;
     }
 
     if (state == 0xa) {
-        *(void**)(self + 0xff8) = self + 0x1000 + 8;
-        short id1 = FindMappedMemberId02080468(elemObj, *(short*)(self + 0xf00 + 0xfe));
-        short diff = *(short*)(self + 0x1000 + 8) - id1;
-        int combatantId = ((int*)(self + 0x1000 + 0x1c))[diff];
-        *(unsigned char*)(self + 0x1000 + 0x43) = combatantId;
+        *(void**)(self + (0xff8 - kRegionSelfShift)) = self + (0x1000 + 8 - kRegionSelfShift);
+        short id1 = FindMappedMemberId02080468(elemObj, *(short*)(self + (0xf00 + 0xfe - kRegionSelfShift)));
+        short diff = *(short*)(self + (0x1000 + 8 - kRegionSelfShift)) - id1;
+        int combatantId = ((int*)(self + (0x1000 + 0x1c - kRegionSelfShift)))[diff];
+        *(unsigned char*)(self + (0x1000 + 0x43 - kRegionSelfShift)) = combatantId;
 
-        if (*(short*)(self + 0x1000 + 0) == *(short*)(*(void**)(self + 0xff8)) &&
-            *(signed char*)(self + 0x1000 + 0x44) == *(signed char*)(self + 0x1000 + 0x43)) {
+        if (*(short*)(self + (0x1000 + 0 - kRegionSelfShift)) == *(short*)(*(void**)(self + (0xff8 - kRegionSelfShift))) &&
+            *(signed char*)(self + (0x1000 + 0x44 - kRegionSelfShift)) == *(signed char*)(self + (0x1000 + 0x43 - kRegionSelfShift))) {
             // matches, skip refresh
         } else {
-            *(unsigned char*)(self + 0x1000 + 0x44) = *(signed char*)(self + 0x1000 + 0x43);
+            *(unsigned char*)(self + (0x1000 + 0x44 - kRegionSelfShift)) = *(signed char*)(self + (0x1000 + 0x43 - kRegionSelfShift));
             func_ov003_02177410(self);
             func_ov003_02177550(self);
-            SetSelection(self, *(signed char*)(self + 0x1000 + 0x43));
+            SetSelection(self, *(signed char*)(self + (0x1000 + 0x43 - kRegionSelfShift)));
         }
 
         int ok = func_ov003_021765b4(self);
         if (ok != 0) {
             DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
-            ResetWithSub0208203c((struct Obj0208203c*)(self + 0x88c));
-            *(void**)(self + 0xff8) = 0;
+            ResetWithSub0208203c((struct Obj0208203c*)(self + (0x88c - kRegionSelfShift)));
+            *(void**)(self + (0xff8 - kRegionSelfShift)) = 0;
             CallFunc0204c804OnNonMatchingKey((struct Cont0207fdf0*)elemObj, 0);
-            int check = func_020dd4c4(*(signed char*)(self + 0x1000 + 0x43), *(void**)(self + 8));
+            int check = func_020dd4c4(*(signed char*)(self + (0x1000 + 0x43 - kRegionSelfShift)), *(void**)(self + 8));
             if (check != 0) {
-                *(short*)(self + 0x1000 + 0x36) = 0x19;
-                *(unsigned char*)(self + 0x1000 + 0x3f) = 9;
-                *(unsigned short*)(self + 0x1000 + 0x46) |= 0x20;
+                *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x19;
+                *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 9;
+                *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) |= 0x20;
                 return;
             }
-            void* elem2 = func_ov003_02179cfc((char*)self, *(signed char*)(self + 0x1000 + 0x43), *(void**)(self + 8));
+            void* elem2 = func_ov003_02179cfc((char*)self, *(signed char*)(self + (0x1000 + 0x43 - kRegionSelfShift)), *(void**)(self + 8));
             int bit18 = (*(unsigned int*)((char*)elem2 + 8) << 0xd) >> 0x1f;
             if (bit18 != 0) {
-                *(short*)(self + 0x1000 + 0x36) = 0x1e;
-                *(unsigned char*)(self + 0x1000 + 0x3f) = 9;
-                *(unsigned short*)(self + 0x1000 + 0x46) |= 0x20;
+                *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x1e;
+                *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 9;
+                *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) |= 0x20;
                 return;
             }
-            int check2 = func_ov003_0217839c(*(signed char*)(self + 0x1000 + 0x43), *(void**)(self + 8));
+            int check2 = func_ov003_0217839c(*(signed char*)(self + (0x1000 + 0x43 - kRegionSelfShift)), *(void**)(self + 8));
             if (check2 != 0) {
-                *(short*)(self + 0x1000 + 0x36) = 0x2e;
-                *(unsigned char*)(self + 0x1000 + 0x3f) = 0x32;
+                *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x2e;
+                *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 0x32;
                 return;
             }
             func_ov003_0217599c(self);
-            *(short*)(self + 0x1000 + 0x36) = 8;
-            *(short*)(self + 0x1000 + 0x38) = 0x1d;
+            *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 8;
+            *(short*)(self + (0x1000 + 0x38 - kRegionSelfShift)) = 0x1d;
             unsigned char st3f = 7;
-            *(unsigned char*)(self + 0x1000 + 0x3f) = st3f;
-            *(unsigned short*)(self + 0x1000 + 0x46) |= 0x1000;
-            *(signed char*)(self + 0x7b6) = st3f - 8;
+            *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = st3f;
+            *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) |= 0x1000;
+            *(signed char*)(self + (0x7b6 - kRegionSelfShift)) = st3f - 8;
             // the ROM leaves r1 unset here: this site calls with the object only
             ((void (*)(void*))func_ov023_021ddf5c)(self + 0x3c);
-            if (*(unsigned char*)(self + 0x1000 + 0x3c) != 0) return;
-            *(unsigned short*)(self + 0x1000 + 0x46) &= ~0x1000;
-            *(short*)(self + 0x1000 + 0x38) = 4;
-            *(unsigned char*)(self + 0x1000 + 0x3f) = 1;
-            *(unsigned short*)(self + 0x1000 + 0x46) |= 0x20;
+            if (*(unsigned char*)(self + (0x1000 + 0x3c - kRegionSelfShift)) != 0) return;
+            *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) &= ~0x1000;
+            *(short*)(self + (0x1000 + 0x38 - kRegionSelfShift)) = 4;
+            *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 1;
+            *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) |= 0x20;
             return;
         }
 
         int ok3 = func_ov003_021766e8(self);
         if (ok3 == 0) return;
-        ResetWithSub0208203c((struct Obj0208203c*)(self + 0x88c));
-        *(void**)(self + 0xff8) = 0;
+        ResetWithSub0208203c((struct Obj0208203c*)(self + (0x88c - kRegionSelfShift)));
+        *(void**)(self + (0xff8 - kRegionSelfShift)) = 0;
         CallFunc0204c804OnNonMatchingKey((struct Cont0207fdf0*)elemObj, 0);
         func_ov003_02175cb0((char*)self, 0);
-        *(short*)(self + 0x1000 + 0x36) = 9;
-        *(unsigned char*)(self + 0x1000 + 0x3f) = 1;
-        *(unsigned short*)(self + 0x1000 + 0x46) |= 0x20;
-        if (*(unsigned short*)(self + 0x1000 + 0x46) & 0x1000) {
-            *(short*)(self + 0x1000 + 0x36) = 0x23;
+        *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 9;
+        *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 1;
+        *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) |= 0x20;
+        if (*(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) & 0x1000) {
+            *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x23;
         }
         return;
     }
 
     if (state == 0xb) {
-        int field = *(int*)(self + 0x1000 + 0x30);
+        int field = *(int*)(self + (0x1000 + 0x30 - kRegionSelfShift));
         switch (field) {
-        case 1: *(short*)(self + 0xf00 + 0xfe) = 0x11; break;
-        case 2: *(short*)(self + 0xf00 + 0xfe) = 0x12; break;
-        case 3: *(short*)(self + 0xf00 + 0xfe) = 0x13; break;
-        case 4: *(short*)(self + 0xf00 + 0xfe) = 0x14; break;
+        case 1: *(short*)(self + (0xf00 + 0xfe - kRegionSelfShift)) = 0x11; break;
+        case 2: *(short*)(self + (0xf00 + 0xfe - kRegionSelfShift)) = 0x12; break;
+        case 3: *(short*)(self + (0xf00 + 0xfe - kRegionSelfShift)) = 0x13; break;
+        case 4: *(short*)(self + (0xf00 + 0xfe - kRegionSelfShift)) = 0x14; break;
         default: break;
         }
 
-        short id = FindMappedMemberId02080468(elemObj, *(short*)(self + 0xf00 + 0xfe));
-        *(short*)(self + 0x1000 + 0xa) = id;
-        *(short*)((char*)elemObj + 0x36) = *(short*)(self + 0x1000 + 0xa);
-        SetElementFlag0x40(elemObj, *(short*)(self + 0xf00 + 0xfe), 0);
-        SetEntryLowNibbleAndElement02080c68(elemObj, *(short*)(self + 0xf00 + 0xfe), 0);
+        short id = FindMappedMemberId02080468(elemObj, *(short*)(self + (0xf00 + 0xfe - kRegionSelfShift)));
+        *(short*)(self + (0x1000 + 0xa - kRegionSelfShift)) = id;
+        *(short*)((char*)elemObj + kRegionElementCursor) = *(short*)(self + (0x1000 + 0xa - kRegionSelfShift));
+        SetElementFlag0x40(elemObj, *(short*)(self + (0xf00 + 0xfe - kRegionSelfShift)), 0);
+        SetEntryLowNibbleAndElement02080c68(elemObj, *(short*)(self + (0xf00 + 0xfe - kRegionSelfShift)), 0);
         func_ov003_02177820((char*)self);
-        short id2 = FindMappedMemberId02080468(elemObj, *(short*)(self + 0xf00 + 0xfe));
-        short diff = *(short*)(self + 0x1000 + 0xa) - id2;
-        int combatantId = ((int*)(self + 0x1000 + 0x1c))[diff];
-        *(unsigned char*)(self + 0x1000 + 0x43) = combatantId;
-        *(unsigned char*)(self + 0x1000 + 0x44) = *(signed char*)(self + 0x1000 + 0x43);
-        ResetWithSub0208203c((struct Obj0208203c*)(self + 0x88c));
-        *(void**)(self + 0xff8) = 0;
-        (*(unsigned char*)(self + 0x1000 + 0x3f))++;
+        short id2 = FindMappedMemberId02080468(elemObj, *(short*)(self + (0xf00 + 0xfe - kRegionSelfShift)));
+        short diff = *(short*)(self + (0x1000 + 0xa - kRegionSelfShift)) - id2;
+        int combatantId = ((int*)(self + (0x1000 + 0x1c - kRegionSelfShift)))[diff];
+        *(unsigned char*)(self + (0x1000 + 0x43 - kRegionSelfShift)) = combatantId;
+        *(unsigned char*)(self + (0x1000 + 0x44 - kRegionSelfShift)) = *(signed char*)(self + (0x1000 + 0x43 - kRegionSelfShift));
+        ResetWithSub0208203c((struct Obj0208203c*)(self + (0x88c - kRegionSelfShift)));
+        *(void**)(self + (0xff8 - kRegionSelfShift)) = 0;
+        (*(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)))++;
         return;
     }
 
     if (state == 0xc) {
-        *(void**)(self + 0xff8) = self + 0x1000 + 0xa;
+        *(void**)(self + (0xff8 - kRegionSelfShift)) = self + (0x1000 + 0xa - kRegionSelfShift);
         int ok = func_ov003_021765b4(self);
         if (ok != 0) {
             DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
-            ResetWithSub0208203c((struct Obj0208203c*)(self + 0x88c));
-            *(void**)(self + 0xff8) = 0;
-            short id = FindMappedMemberId02080468(elemObj, *(short*)(self + 0xf00 + 0xfe));
-            short diff = *(short*)(self + 0x1000 + 0xa) - id;
-            int combatantId = ((int*)(self + 0x1000 + 0x1c))[diff];
-            *(unsigned char*)(self + 0x1000 + 0x43) = combatantId;
+            ResetWithSub0208203c((struct Obj0208203c*)(self + (0x88c - kRegionSelfShift)));
+            *(void**)(self + (0xff8 - kRegionSelfShift)) = 0;
+            short id = FindMappedMemberId02080468(elemObj, *(short*)(self + (0xf00 + 0xfe - kRegionSelfShift)));
+            short diff = *(short*)(self + (0x1000 + 0xa - kRegionSelfShift)) - id;
+            int combatantId = ((int*)(self + (0x1000 + 0x1c - kRegionSelfShift)))[diff];
+            *(unsigned char*)(self + (0x1000 + 0x43 - kRegionSelfShift)) = combatantId;
             CallFunc0204c804OnNonMatchingKey((struct Cont0207fdf0*)elemObj, 0);
 
             struct BattleStruct* battle2 = _ZN9GameState11GetInstanceEv();
-            struct CombatantStruct* combatant = _ZN9GameState21GetPartyMemberByIndexEi(battle2, *(signed char*)(self + 0x1000 + 0x43));
+            struct CombatantStruct* combatant = _ZN9GameState21GetPartyMemberByIndexEi(battle2, *(signed char*)(self + (0x1000 + 0x43 - kRegionSelfShift)));
             if (combatant != 0) {
                 unsigned char* field150 = GetFieldAt0x150((unsigned char*)combatant);
                 if (field150 == 0) return;
@@ -574,33 +581,33 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
                     count++;
                 }
 
-                if (*(unsigned char*)(self + 0x1000 + 0x3c) <= (8 - count)) {
-                    *(short*)(self + 0x1000 + 0x36) = 0x17;
-                    *(unsigned short*)(self + 0x1000 + 0x46) |= 0x20;
-                    *(unsigned char*)(self + 0x1000 + 0x3f) = 1;
+                if (*(unsigned char*)(self + (0x1000 + 0x3c - kRegionSelfShift)) <= (8 - count)) {
+                    *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x17;
+                    *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) |= 0x20;
+                    *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 1;
                     int* p130 = *(int**)((char*)combatant + 0x130);
                     if (*p130 & 1) {
-                        *(short*)(self + 0x1000 + 0x36) = 0x2d;
+                        *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x2d;
                     }
                 } else {
-                    *(short*)(self + 0x1000 + 0x36) = 0x21;
-                    *(unsigned char*)(self + 0x1000 + 0x3f) = 1;
-                    *(unsigned short*)(self + 0x1000 + 0x46) |= 0x20;
+                    *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x21;
+                    *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 1;
+                    *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) |= 0x20;
                     void* ptr2a04 = _Z17GetPtrField0x2a04P9GameState(battle2);
-                    int lookupVal = LookupValueByKey020a0b3c((struct KeyMap020a0b3c*)ptr2a04, *(short*)(self + 0x1000 + 0x3a));
+                    int lookupVal = LookupValueByKey020a0b3c((struct KeyMap020a0b3c*)ptr2a04, *(short*)(self + (0x1000 + 0x3a - kRegionSelfShift)));
                     if (lookupVal == 0x63) {
-                        *(short*)(self + 0x1000 + 0x36) = 0x22;
+                        *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x22;
                     } else {
                         int found = 0;
                         short k;
                         for (k = 0; k < 8; k++) {
-                            if (*(short*)(self + 0x1000 + 0x3a) == *(short*)(field150 + 0x400 + k * 2 + 0x54)) {
+                            if (*(short*)(self + (0x1000 + 0x3a - kRegionSelfShift)) == *(short*)(field150 + 0x400 + k * 2 + 0x54)) {
                                 found = 1;
                                 break;
                             }
                         }
                         if (found == 0) {
-                            *(short*)(self + 0x1000 + 0x36) = 0x16;
+                            *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x16;
                         }
                     }
                 }
@@ -610,21 +617,21 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
                 ZeroInitReturn020de824(localCtx + 0x14);
                 InitStruct0207cbe8((char*)localCtx);
                 InitStruct0207cbe8((char*)localCtx);
-                *(void**)(localCtx + 0x2c) = self + 0x874;
-                func_0207ccf0(localCtx, *(short*)(self + 0x1000 + 0x3a), *(unsigned char*)(self + 0x1000 + 0x3c),
-                    *(signed char*)(self + 0x1000 + 0x43), 1, 1, 0);
-                *(unsigned char*)(self + 0x1000 + 0x4f) = 0;
+                *(void**)(localCtx + 0x2c) = self + (0x874 - kRegionSelfShift);
+                func_0207ccf0(localCtx, *(short*)(self + (0x1000 + 0x3a - kRegionSelfShift)), *(unsigned char*)(self + (0x1000 + 0x3c - kRegionSelfShift)),
+                    *(signed char*)(self + (0x1000 + 0x43 - kRegionSelfShift)), 1, 1, 0);
+                *(unsigned char*)(self + (0x1000 + 0x4f - kRegionSelfShift)) = 0;
                 return;
             }
 
             CallFunc0204c804OnNonMatchingKey((struct Cont0207fdf0*)elemObj, 0);
-            *(short*)(self + 0x1000 + 0x36) = 0x18;
-            *(unsigned char*)(self + 0x1000 + 0x3f) = 1;
-            *(unsigned short*)(self + 0x1000 + 0x46) |= 0x20;
+            *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x18;
+            *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 1;
+            *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) |= 0x20;
             void* ptr2a04b = _Z17GetPtrField0x2a04P9GameState(battle2);
-            int lookupVal2 = LookupValueByKey020a0b3c((struct KeyMap020a0b3c*)ptr2a04b, *(short*)(self + 0x1000 + 0x3a));
-            if (*(unsigned char*)(self + 0x1000 + 0x3c) > (0x63 - lookupVal2)) {
-                *(short*)(self + 0x1000 + 0x36) = 0x37;
+            int lookupVal2 = LookupValueByKey020a0b3c((struct KeyMap020a0b3c*)ptr2a04b, *(short*)(self + (0x1000 + 0x3a - kRegionSelfShift)));
+            if (*(unsigned char*)(self + (0x1000 + 0x3c - kRegionSelfShift)) > (0x63 - lookupVal2)) {
+                *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x37;
             }
             func_ov003_02175cb0((char*)self, 1);
             return;
@@ -633,15 +640,15 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
         int ok3 = func_ov003_021766e8(self);
         if (ok3 == 0) return;
         CallFunc0204c804OnNonMatchingKey((struct Cont0207fdf0*)elemObj, 0);
-        ResetWithSub0208203c((struct Obj0208203c*)(self + 0x88c));
-        *(void**)(self + 0xff8) = 0;
-        *(short*)(self + 0x1000 + 0x36) = 0x18;
-        *(unsigned char*)(self + 0x1000 + 0x3f) = 1;
-        *(unsigned short*)(self + 0x1000 + 0x46) |= 0x20;
+        ResetWithSub0208203c((struct Obj0208203c*)(self + (0x88c - kRegionSelfShift)));
+        *(void**)(self + (0xff8 - kRegionSelfShift)) = 0;
+        *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x18;
+        *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 1;
+        *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) |= 0x20;
         void* ptr2a04c = _Z17GetPtrField0x2a04P9GameState(battle);
-        int lookupVal3 = LookupValueByKey020a0b3c((struct KeyMap020a0b3c*)ptr2a04c, *(short*)(self + 0x1000 + 0x3a));
-        if (*(unsigned char*)(self + 0x1000 + 0x3c) > (0x63 - lookupVal3)) {
-            *(short*)(self + 0x1000 + 0x36) = 0x37;
+        int lookupVal3 = LookupValueByKey020a0b3c((struct KeyMap020a0b3c*)ptr2a04c, *(short*)(self + (0x1000 + 0x3a - kRegionSelfShift)));
+        if (*(unsigned char*)(self + (0x1000 + 0x3c - kRegionSelfShift)) > (0x63 - lookupVal3)) {
+            *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x37;
         }
         func_ov003_02175cb0((char*)self, 1);
         return;
@@ -649,7 +656,7 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
 
     if (state == 0x32) {
         func_ov003_02176468(self);
-        (*(unsigned char*)(self + 0x1000 + 0x3f))++;
+        (*(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)))++;
         return;
     }
 
@@ -658,47 +665,47 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
         if (res != -1) {
             if (res != 1) return;
 
-            int field = *(int*)(self + 0x1000 + 0x30);
+            int field = *(int*)(self + (0x1000 + 0x30 - kRegionSelfShift));
             if (field == 1) {
                 func_ov003_0217599c(self);
                 func_ov003_02175cb0((char*)self, 0);
-                *(short*)(self + 0x1000 + 0x36) = 8;
-                *(short*)(self + 0x1000 + 0x38) = 4;
-                *(unsigned char*)(self + 0x1000 + 0x3f) = 1;
-                *(unsigned short*)(self + 0x1000 + 0x46) |= 0x20;
+                *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 8;
+                *(short*)(self + (0x1000 + 0x38 - kRegionSelfShift)) = 4;
+                *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 1;
+                *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) |= 0x20;
                 return;
             }
 
             func_ov003_0217599c(self);
-            *(short*)(self + 0x1000 + 0x36) = 8;
-            *(short*)(self + 0x1000 + 0x38) = 0x1d;
-            *(unsigned char*)(self + 0x1000 + 0x3f) = 7;
-            *(unsigned short*)(self + 0x1000 + 0x46) |= 0x1000;
-            if (*(unsigned char*)(self + 0x1000 + 0x3c) != 0) return;
+            *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 8;
+            *(short*)(self + (0x1000 + 0x38 - kRegionSelfShift)) = 0x1d;
+            *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 7;
+            *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) |= 0x1000;
+            if (*(unsigned char*)(self + (0x1000 + 0x3c - kRegionSelfShift)) != 0) return;
 
-            *(unsigned char*)(self + 0x1000 + 0x4f) = 0;
-            *(unsigned short*)(self + 0x1000 + 0x46) &= ~0x1000;
-            *(short*)(self + 0x1000 + 0x38) = 4;
-            *(unsigned char*)(self + 0x1000 + 0x3f) = 1;
-            *(unsigned short*)(self + 0x1000 + 0x46) |= 0x20;
+            *(unsigned char*)(self + (0x1000 + 0x4f - kRegionSelfShift)) = 0;
+            *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) &= ~0x1000;
+            *(short*)(self + (0x1000 + 0x38 - kRegionSelfShift)) = 4;
+            *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 1;
+            *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) |= 0x20;
             return;
         }
 
-        int field = *(int*)(self + 0x1000 + 0x30);
+        int field = *(int*)(self + (0x1000 + 0x30 - kRegionSelfShift));
         if (field == 1) {
             func_ov003_02175cb0((char*)self, 0);
-            *(short*)(self + 0x1000 + 0x36) = 9;
-            *(unsigned char*)(self + 0x1000 + 0x3f) = 1;
-            *(unsigned short*)(self + 0x1000 + 0x46) |= 0x20;
+            *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 9;
+            *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 1;
+            *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) |= 0x20;
             return;
         }
         CallFunc0204c804OnNonMatchingKey((struct Cont0207fdf0*)elemObj, 0);
         func_ov003_02175cb0((char*)self, 0);
-        *(short*)(self + 0x1000 + 0x36) = 9;
-        *(unsigned char*)(self + 0x1000 + 0x3f) = 1;
-        *(unsigned short*)(self + 0x1000 + 0x46) |= 0x20;
-        if (*(unsigned short*)(self + 0x1000 + 0x46) & 0x1000) {
-            *(short*)(self + 0x1000 + 0x36) = 0x23;
+        *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 9;
+        *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = 1;
+        *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) |= 0x20;
+        if (*(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) & 0x1000) {
+            *(short*)(self + (0x1000 + 0x36 - kRegionSelfShift)) = 0x23;
         }
         return;
     }

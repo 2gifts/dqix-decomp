@@ -67,6 +67,14 @@ extern "C" ARM void func_ov000_0217a8f4(Obj0217a8f4* obj) {
             }
         }
     }
+#if defined(jpn)
+    func_ov000_02176210(&obj->elems, 7, 33);
+    func_ov000_02176210(&obj->elems, 15, 34);
+    func_ov000_02176210(&obj->elems, 16, 35);
+    func_ov000_02176210(&obj->elems, 17, 36);
+    func_ov000_02176210(&obj->elems, 21, 22);
+
+#else
     SlotLink* link = data_ov000_021834d4;
     while (true) {
         if (link->a == 0xff) {
@@ -75,5 +83,7 @@ extern "C" ARM void func_ov000_0217a8f4(Obj0217a8f4* obj) {
         func_ov000_02176210(&obj->elems, link->a, link->b);
         link++;
     }
+
+#endif
     _Z23ApplyElemFields0205d904Ph((unsigned char*)&obj->elems);
 }

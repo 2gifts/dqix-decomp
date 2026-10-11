@@ -1,3 +1,10 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define func_0205c96c func_0205dcd4
+#define func_ov013_02186cac func_ov013_02187fc0
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include "Resource/Brightness.h"
 #include "System/OverlayId.h"
@@ -15,7 +22,7 @@ struct Manager0218af80 {
     char f288[0x2a8 - 0x288];
     char f2a8[0xdcc - 0x2a8];
     int dcc;
-    char pad1[0xdd8 - 0xdd0];
+    char pad1[R(0xdd4 - 0xdd0, 0xdd8 - 0xdd0)];
     char* dd8;
     char* ddc;
     char pad2[0xde4 - 0xde0];
@@ -25,7 +32,7 @@ struct Manager0218af80 {
     char e04[0xe9b - 0xe04];
     unsigned char e9b;
     signed char e9c;
-    char pad4[0xebc - 0xe9d];
+    char pad4[R(0xeb4 - 0xe99, 0xebc - 0xe9d)];
     char* ebc;
     unsigned char bit0 : 1;
     unsigned char bit1 : 1;

@@ -14,9 +14,15 @@ struct SrcEntry021ca4a8 {
 	int field10;
 };
 
+// JPN: func_ov017_021ca958
 // USA: func_ov017_021ca4a8
 ARM void CopySrcEntryIntoSlot_021ca4a8(int unused0, struct SrcEntry021ca4a8* src, GameState* battleStruct, unsigned char* base) {
-	void* table = *(void**)(base + 0x3000 + 0x718);
+#if defined(jpn)
+ enum {regionalOffset0=0x508};
+#else
+ enum {regionalOffset0=0x718};
+#endif
+	void* table = *(void**)(base + 0x3000 + regionalOffset0);
 	unsigned char* obj = (unsigned char*)func_ov017_021b8478(table);
 	if (obj == NULL) {
 		return;

@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kNodeOffset = 0x43c };
+#else
+enum { kNodeOffset = 0x41c };
+#endif
+
 
 struct Elem0201b600 { unsigned short key; unsigned char pad[0x6e]; };
 struct Node0201b600 {
@@ -11,8 +17,8 @@ struct Node0201b600 {
     struct Node0201b600* next;   // 0x54
 };
 struct Obj0201b600 {
-    unsigned char pad0[0x41c];
-    struct Node0201b600* head;   // 0x41c
+    unsigned char pad0[kNodeOffset];
+    struct Node0201b600* head;   // kNodeOffset
     unsigned char pad420[4];     // 0x420
     int f424;                    // 0x424
 };

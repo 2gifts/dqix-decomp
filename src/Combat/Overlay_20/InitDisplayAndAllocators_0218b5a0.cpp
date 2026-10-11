@@ -1,3 +1,6 @@
+#if defined(jpn)
+#define func_0200f3a4 func_0200f268
+#endif
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
@@ -14,7 +17,11 @@ void ComputeAndLoadMatrix020c5770(int a0, int a1, int a2, int a3, int b0, int b1
 struct Ov020DisplayState_0218b5a0 {
     char pad0[0x8];
     int f8;
+    #if defined(jpn)
+    char pad1[0x400 - 0xc];
+#else
     char pad1[0x470 - 0xc];
+#endif
     SafeAllocator allocator1;
     SafeAllocator allocator2;
     char pad2[0x4ec - 0x498];
@@ -59,8 +66,10 @@ extern "C" ARM void func_ov020_0218b5a0(struct Ov020DisplayState_0218b5a0* obj) 
 
     obj->f8 = 0;
     obj->f500 = 0;
+#if !defined(jpn)
     obj->f4f0 = 0;
     obj->f4ec = 0;
     obj->f4fc = 0;
     obj->f4f4 = 0;
+#endif
 }

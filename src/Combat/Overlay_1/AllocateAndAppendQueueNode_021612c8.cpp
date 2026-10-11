@@ -13,16 +13,27 @@ struct ListNode_021612c8 {
 	struct ListNode_021612c8* next;
 };
 struct Container_021612c8 {
-	char pad[0xd4];
+	
+#if defined(jpn)
+    char pad[0xd0];
+#else
+    char pad[0xd4];
+#endif
+
 	struct ListNode_021612c8* head;
 };
 
 // USA: func_ov001_021612c8  (semantic: AllocateAndAppendQueueNode_021612c8)
 extern "C" ARM int func_ov001_021612c8(void* self) {
+#if defined(jpn)
+    enum { queueOffset = 0x524 };
+#else
+    enum { queueOffset = 0x734 };
+#endif
 	struct ListNode_021612c8* newObj;
 	struct Container_021612c8* c;
 	char* base = func_ov017_0218b5b0();
-	c = *(struct Container_021612c8**)(base + 0x3000 + 0x734);
+	c = *(struct Container_021612c8**)(base + 0x3000 + queueOffset);
 	SafeAllocator* allocator = data_ov001_021658b8[0];
 	newObj = (struct ListNode_021612c8*)allocator->Allocate(0x30);
 	*(unsigned char*)newObj = 0;

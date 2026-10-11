@@ -16,9 +16,15 @@ struct Src021ca358 {
 	unsigned char field6;
 };
 
+// JPN: func_ov017_021ca808
 // USA: func_ov017_021ca358
 ARM void CallHandlerEightTimesIfFieldsMatch_021ca358(int unused0, Src021ca358* src, int unused2, unsigned char* obj) {
-	void* h = *(void**)(obj + 0x3000 + 0x718);
+#if defined(jpn)
+ enum {regionalOffset0=0x508};
+#else
+ enum {regionalOffset0=0x718};
+#endif
+	void* h = *(void**)(obj + 0x3000 + regionalOffset0);
 	Ret021ca358* r = (Ret021ca358*)func_ov017_021b8478(h);
 	if (!r) return;
 	if (r->field8 != src->field4) return;

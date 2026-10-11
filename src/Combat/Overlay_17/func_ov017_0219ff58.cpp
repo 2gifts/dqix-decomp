@@ -26,7 +26,11 @@ struct Status0219ff58 {
 struct Combatant0219ff58 {
     unsigned char pad0[0x130];
     Status0219ff58* status;
+#if defined(jpn)
+    unsigned char pad134[0x180 - 0x134];
+#else
     unsigned char pad134[0x18c - 0x134];
+#endif
     unsigned int flags18c;
 };
 
@@ -48,8 +52,14 @@ void InitStruct02070378(char* obj);
 void InitAndResetHeader_0219e310(unsigned char* obj, int flag);
 void AppendNodeToTail(struct TailList020469b4* list, struct TailNode020469b4* node);
 
+// JPN: func_ov017_021a0a08
 // USA: func_ov017_0219ff58
 extern "C" ARM int func_ov017_0219ff58(unsigned char* ov, int flagA, int flagB, int revive) {
+#if defined(jpn)
+ enum { regionalNode=0x4fc, regionalList=0x4ec };
+#else
+ enum { regionalNode=0x70c, regionalList=0x6fc };
+#endif
     GameState* battle = GameState::GetInstance();
     if (CheckBitsInField0x63dc(battle, 1) != 0) {
         if (revive != 0) {
@@ -100,9 +110,9 @@ extern "C" ARM int func_ov017_0219ff58(unsigned char* ov, int flagA, int flagB, 
         _Z37CallFunc0200fbb4AtField0x3f8_0200fba4Pv(battle, &warp);
 
         if (flagB != 0) {
-            InitAndResetHeader_0219e310(*(unsigned char**)(ov + 0x3000 + 0x70c), 0);
-            AppendNodeToTail(*(struct TailList020469b4**)(ov + 0x3000 + 0x6fc),
-                             *(struct TailNode020469b4**)(ov + 0x3000 + 0x70c));
+            InitAndResetHeader_0219e310(*(unsigned char**)(ov + 0x3000 + regionalNode), 0);
+            AppendNodeToTail(*(struct TailList020469b4**)(ov + 0x3000 + regionalList),
+                             *(struct TailNode020469b4**)(ov + 0x3000 + regionalNode));
         }
         return 1;
     }

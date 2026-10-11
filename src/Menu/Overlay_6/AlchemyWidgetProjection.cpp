@@ -1,3 +1,15 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define _Z25ForwardTableValue02075db0P14Struct02075db0ii func_02076ccc
+#define data_0210a00c data_02109cc4
+#define data_ov005_0215cd74 data_ov005_0215e154
+#define data_ov006_0215ff6c data_ov006_021612d0
+#define func_ov005_021556e4 func_ov005_02156cd4
+#define func_ov005_02158878 func_ov005_02159e70
+#define func_ov005_0215cb4c func_ov005_0215df2c
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include "World/Object3D.h"
 #include "Graphics/NSBXX/RenderConfig.h"
@@ -16,7 +28,7 @@ struct AlchemyProjectedWidgetView {
     char unknown7a[2];
 };
 struct AlchemyProjectionView {
-    char unknown00[0x1d4];
+    char unknown00[R(0x54, 0x1d4)];
     void* auxiliary;
     char unknown1d8[0x130];
     int phase;
@@ -28,7 +40,7 @@ struct AlchemyProjectionView {
     unsigned char active;
     char unknownadd[5];
     unsigned short flags;
-    char unknownae4[0x79b];
+    char unknownae4[R(0x717, 0x79b)];
     unsigned char unknownMode : 1;
     unsigned char hidden : 1;
     unsigned char otherModeFlags : 6;
@@ -66,7 +78,7 @@ extern "C" ARM void func_ov006_02154a60(AlchemyProjectionView* state)
     for (int index = 0; index < 3; index++) data_ov006_0216038c[index] = &matrices[index];
     func_020c5414();
     RenderConfig::SubmitToFifo();
-    ((Object3D*)((char*)state + 0x4e8))->MaybeUpdateBonePositions();
+    ((Object3D*)((char*)state + R(0x368, 0x4e8)))->MaybeUpdateBonePositions();
     for (int index = 0; index < 3; index++) data_ov006_0216038c[index] = NULL;
     Vector3fix positions[3] = {
         {matrices[0].translation.x, matrices[0].translation.y, matrices[0].translation.z},
@@ -85,9 +97,9 @@ extern "C" ARM void func_ov006_02154a60(AlchemyProjectionView* state)
         AlchemyProjectedWidgetView* widget = state->widgets;
         for (unsigned char index = 0; index < 4; index++, widget++) {
             Vector3fix position = positions[lookup.entries[layout][index]];
-            position.x = MultiplyProjected(position.x, ((Object3D*)((char*)state + 0x2e4))->GetScale().x);
-            position.y = MultiplyProjected(position.y, ((Object3D*)((char*)state + 0x2e4))->GetScale().y);
-            position.z = MultiplyProjected(position.z, ((Object3D*)((char*)state + 0x2e4))->GetScale().z);
+            position.x = MultiplyProjected(position.x, ((Object3D*)((char*)state + R(0x164, 0x2e4)))->GetScale().x);
+            position.y = MultiplyProjected(position.y, ((Object3D*)((char*)state + R(0x164, 0x2e4)))->GetScale().y);
+            position.z = MultiplyProjected(position.z, ((Object3D*)((char*)state + R(0x164, 0x2e4)))->GetScale().z);
             Vector3fix world;
             Vector3fix offset = state->position;
             Vector3fix_Add(&position, &offset, &world);
@@ -103,7 +115,7 @@ extern "C" ARM void func_ov006_02154a60(AlchemyProjectionView* state)
     unsigned char index;
     int phase = state->phase;
     if ((state->flags & 0x2000) || (state->flags & 0x80)) {
-        if (!((Object3D*)((char*)state + 0x4e8))->HasAnimationStopped()) {
+        if (!((Object3D*)((char*)state + R(0x368, 0x4e8)))->HasAnimationStopped()) {
             index = 1;
             widget = &state->widgets[1];
             for (; index < 4; index++) {

@@ -1,3 +1,13 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define _Z17SetField402028d58i func_020285a8
+#define _Z19ClearBuffer02029060v func_020288b0
+#define _Z19FlushBuffer02029088v func_020288d8
+#define func_0202920c func_02028dc4
+#define func_02029988 func_02029540
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 extern "C" int func_ov015_02190c98(void* obj);

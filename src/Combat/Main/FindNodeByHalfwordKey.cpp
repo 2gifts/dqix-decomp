@@ -2,7 +2,11 @@
 
 struct N528cNode {
     unsigned short id;
+#if defined(jpn)
+    char unk[0x1a];
+#else
     char unk[0xe];
+#endif
     struct N528cNode* next;
 };
 

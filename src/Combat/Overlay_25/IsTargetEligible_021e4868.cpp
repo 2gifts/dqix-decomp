@@ -1,3 +1,4 @@
+// JPN: func_ov025_021e4d58
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
@@ -25,13 +26,19 @@ struct Local021e4868 {
     char pad[0x1c];
 };
 
+#if defined(jpn)
+enum { StatusFlagsOffset = 0xc };
+#else
+enum { StatusFlagsOffset = 0x1c };
+#endif
+
 // USA: func_ov025_021e4868  (semantic: IsTargetEligible_021e4868)
 extern "C" ARM int func_ov025_021e4868(struct Param021e4868* p, int b, int unused2, int d) {
     struct Local021e4868 local;
     void* obj;
     unsigned int i;
 
-    if (*(int*)((char*)&data_ov025_021ef988 + 0x1c) & 4) {
+    if (*(int*)((char*)&data_ov025_021ef988 + StatusFlagsOffset) & 4) {
         return 0;
     }
     GameState* battle = GameState::GetInstance();

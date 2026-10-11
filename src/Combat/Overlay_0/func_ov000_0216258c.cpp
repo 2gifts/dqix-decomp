@@ -15,9 +15,17 @@ struct CombatantFlags0216258c {
 };
 
 struct BattleUi0216258c {
+#if defined(jpn)
+    char pad0[0x21c];
+#else
     char pad0[0x2a0];
+#endif
     unsigned char* activeBits;
+#if defined(jpn)
+    char pad2a4[0x371c - 0x220];
+#else
     char pad2a4[0x3760 - 0x2a4];
+#endif
     char gauges[1];
 };
 

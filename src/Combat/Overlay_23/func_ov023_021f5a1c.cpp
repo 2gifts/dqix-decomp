@@ -25,6 +25,7 @@ struct Data021fff08_021f5a1c {
 };
 extern struct Data021fff08_021f5a1c data_ov023_021fff08;
 
+// JPN: func_ov023_021f4fd4
 // USA: func_ov023_021f5a1c
 extern "C" ARM int func_ov023_021f5a1c(struct Variant02030b0c* list, int count) {
     void* obj = func_0205ec34();

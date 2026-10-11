@@ -27,6 +27,7 @@ extern char data_ov031_0224e274;
 extern "C" void* _Z31AllocateWithSizeHeader_022075f4j(unsigned int);
 extern "C" void _Z27FreeWithSizeHeader_02207620Pv(void*);
 extern "C" void func_ov031_02204dbc(void*);
+// JPN: func_ov031_02207e2c
 // USA: func_ov031_0220764c
 extern "C" ARM void func_ov031_0220764c(Input0220764c* input) {
     data_ov031_0224e234.enabled = input->enabled == 1;

@@ -29,9 +29,15 @@ struct Node021e8bac {
 };
 
 struct Global021ef988 {
+#if defined(jpn)
+    char pad0[4];
+    char* battle;
+    char pad10[0x18];
+#else
     char pad0[0xc];
     char* battle;
     char pad10[0x10];
+#endif
     int state;
     int objectId;
     int taskId;
@@ -57,6 +63,7 @@ extern char data_ov025_021ef7be[];
 extern char data_ov025_021ef811[];
 extern char data_ov025_021ef81e[];
 
+// JPN: func_ov025_021e6b7c
 // USA: func_ov025_021e66cc
 extern "C" ARM int func_ov025_021e66cc(void* unused, struct CombatSlot021e66cc* slot) {
     GameState* gs = GameState::GetInstance();

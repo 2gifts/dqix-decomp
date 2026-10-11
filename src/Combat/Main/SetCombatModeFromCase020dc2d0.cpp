@@ -25,6 +25,14 @@ void* GetDataPtr02114e04_020d6c00(void);
 void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int mask);
 int ListContainsId(struct ListHead02046b60* list, int id);
 
+
+#if defined(jpn)
+enum { CombatModeListOffset = 0x4ec };
+#else
+enum { CombatModeListOffset = 0x6fc };
+#endif
+
+// JPN: func_020ddcd8
 // USA: func_020dc2d0
 ARM void SetCombatModeFromCase020dc2d0(int mode) {
     GameState* battle = GameState::GetInstance();
@@ -37,7 +45,7 @@ ARM void SetCombatModeFromCase020dc2d0(int mode) {
 
     int base = ((int)func_ov017_0218b5b0());
     flag1 = 0;
-    void* list = *(void**)(base + 0x3000 + 0x6fc);
+    void* list = *(void**)(base + 0x3000 + CombatModeListOffset);
     flag2 = flag1;
 
     int listContains = ListContainsId((ListHead02046b60*)list, 0x43);

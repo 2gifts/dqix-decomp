@@ -34,6 +34,7 @@ struct Range_021dff3c {
     short state;
 };
 
+// JPN: func_ov024_021e07d4
 // USA: func_ov024_021dff3c
 extern "C" ARM void* func_ov024_021dff3c(struct Obj_021dff3c* obj, int unused, int id, struct Range_021dff3c* range, int unused2, int unused3, unsigned char flagArg) {
     GameObject* c = GetCombatantByID((int)obj->field0x10, id);

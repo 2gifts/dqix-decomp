@@ -14,7 +14,11 @@ struct MonsterDefinition {
     unsigned short id_;
     unsigned short category_ : 2;
     unsigned short unused_ : 14;
+#if defined(jpn)
+    char pad4[0x5c - 4];
+#else
     char pad4[0x60 - 4];
+#endif
     EntryTable0209bd94 entries_;
     char pad64[0x304 - 0x64];
     char nodes_[4];
@@ -37,7 +41,11 @@ struct MonsterFields {
 };
 struct WorldResources { char pad0[0x660]; char field660_[4]; };
 struct WorldState {
+#if defined(jpn)
+    char pad0[0x2980]; WorldResources resources_;
+#else
     char pad0[0x2b90]; WorldResources resources_;
+#endif
     char pad31F4[0x36fc - 0x31f4]; ListHead02046b38* list_;
     char pad3700[0x3718 - 0x3700]; ListNode02046b38* node_;
 };
@@ -59,6 +67,7 @@ extern "C" void func_0207964c(GameObject*);
 Src020795e8* FindNodeBySignedId(void*, int);
 extern "C" void _Z21CopyBitFields020795e8P11Dst020795e8P11Src020795e8(Dst020795e8*, Src020795e8*);
 
+// JPN: func_ov017_021d4af8
 // USA: func_ov017_021d46a4
 extern "C" ARM void func_ov017_021d46a4(void*, MonsterUpdate* update) {
     if (!(update->flags_ & 1)) return;

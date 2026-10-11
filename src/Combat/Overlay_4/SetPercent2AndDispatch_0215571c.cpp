@@ -1,3 +1,9 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define func_ov023_021f64a8 func_ov023_021f5a1c
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 extern "C" int _s32_div_f(int a, int b);

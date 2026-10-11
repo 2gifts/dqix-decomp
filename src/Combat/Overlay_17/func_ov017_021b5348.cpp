@@ -1,3 +1,10 @@
+// JPN: func_ov017_021b58fc
+#if defined(jpn)
+enum { RegionOffset44 = 0x40, RegionOffset304 = 0x300, RegionOffset308 = 0x304 };
+#else
+enum { RegionOffset44 = 0x44, RegionOffset304 = 0x304, RegionOffset308 = 0x308 };
+#endif
+
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
@@ -27,7 +34,7 @@ struct Obj021b5348 {
 };
 
 struct Sub021b5348 {
-    char pad0[0x308];
+    char pad0[RegionOffset308];
     unsigned char field308;
 };
 
@@ -49,10 +56,10 @@ extern "C" ARM void func_ov017_021b5348(struct Obj021b5348* obj) {
             char* sub = (char*)obj->sub;
             unsigned short buf[12];
             __clear(buf, 0x18);
-            short signedCount = (short)CopyHalfwordArrayByCount((struct HalfwordArray*)(sub + 0x44), (struct HalfwordArray*)buf);
-            ZeroWordAndByte0206ee60((struct ZeroWordAndByte0206ee60Struct*)((char*)subEarly + 0x304));
+            short signedCount = (short)CopyHalfwordArrayByCount((struct HalfwordArray*)(sub + RegionOffset44), (struct HalfwordArray*)buf);
+            ZeroWordAndByte0206ee60((struct ZeroWordAndByte0206ee60Struct*)((char*)subEarly + RegionOffset304));
             void* ptrB = *(void**)((char*)obj->sub + 0x10);
-            RegisterCallbackWithArgsAndRunScript((char*)subEarly + 0x304, ptrB, (struct StreamHeader*)out1, (short)out2, buf, signedCount);
+            RegisterCallbackWithArgsAndRunScript((char*)subEarly + RegionOffset304, ptrB, (struct StreamHeader*)out1, (short)out2, buf, signedCount);
         }
     }
 

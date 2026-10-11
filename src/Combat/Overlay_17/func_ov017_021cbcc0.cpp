@@ -1,3 +1,10 @@
+// JPN: func_ov017_021cc170
+#if defined(jpn)
+enum { RegionOffset718 = 0x508 };
+#else
+enum { RegionOffset718 = 0x718 };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -39,7 +46,7 @@ extern "C" ARM void func_ov017_021cbcc0(int unused0, Evt021cbcc0* evt, GameState
     EventHdr021cbcc0* a;
     void* field6b0;
     void* field6ac;
-    void* table = *(void**)(base + 0x3000 + 0x718);
+    void* table = *(void**)(base + 0x3000 + RegionOffset718);
     a = (EventHdr021cbcc0*)func_ov017_021b8478(table);
     if (!a) return;
     field6b0 = GetField6b0_021b8470(table);

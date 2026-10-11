@@ -9,6 +9,7 @@ extern "C" int func_ov024_021f691c(void* obj, unsigned short* outB, void* outA, 
 
 struct Ctx_021f83f8 { char pad[4]; short field4; };
 
+// JPN: func_ov024_021f8bc4
 // USA: func_ov024_021f83f8
 extern "C" ARM int func_ov024_021f83f8(struct Ctx_021f83f8* obj, void* p1, struct S02053dc0* p2, unsigned short* outB) {
 	void* result = GetField0x19cOrNull(p2);

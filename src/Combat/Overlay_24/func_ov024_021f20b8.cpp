@@ -9,6 +9,7 @@ extern "C" float func_ov024_021db358(GameObject* obj);
 extern unsigned short data_ov024_021fec6c;
 
 #pragma opt_common_subs off
+// JPN: func_ov024_021f2884
 // USA: func_ov024_021f20b8  (semantic: SelectLowHPQuorumAndCopyTable_021f20b8)
 extern "C" ARM int func_ov024_021f20b8(int* a0, int a1, int a2, int* outCount, short* outArray) {
     unsigned short buf[8];

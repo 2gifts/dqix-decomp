@@ -39,6 +39,14 @@ struct Entity02078898 {
     unsigned char field17c;             // 0x17c
 };
 
+
+#if defined(jpn)
+enum { PositionContextOffset = 0x524 };
+#else
+enum { PositionContextOffset = 0x734 };
+#endif
+
+// JPN: func_020797b4
 // USA: func_02078898
 ARM int SyncCombatantPosition02078898(struct Entity02078898* p) {
     GameState* bs = GameState::GetInstance();
@@ -48,7 +56,7 @@ ARM int SyncCombatantPosition02078898(struct Entity02078898* p) {
 
     void* ov = func_ov017_0218b5b0();
     char* g = (char*)ov + 0x3000;
-    void* g734 = *(void**)(g + 0x734);
+    void* g734 = *(void**)(g + PositionContextOffset);
 
     GameObject* other = bs->GetProtagonist();
     unsigned short a = _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)other);

@@ -1,3 +1,16 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define _Z20SetStatValue021855dcPhi func_ov009_021867bc
+#define data_ov009_0218aa28 data_ov009_0218ba04
+#define data_ov009_0218aa34 data_ov009_0218ba10
+#define data_ov009_0218aa98 data_ov009_0218ba4c
+#define data_ov009_0218acd9 data_ov009_0218bc3e
+#define data_ov009_0218ad41 data_ov009_0218bc71
+#define func_ov009_0218a930 func_ov009_0218b908
+#define func_ov023_021dac40 func_ov023_021db4b4
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include <std_library_functions.h>
 #include "Filesystem/BackgroundLoader.h"
@@ -57,7 +70,12 @@ void OrBitsIntoField0(unsigned int* field, unsigned int bits);
 void ClearFlags020466f4(FlagWord020466f4* field, unsigned int bits);
 void EncodeSignFlaggedHalfword(short* reg, int brightness);
 void ForwardField0xc0_0205ebec(void* sound);
+#if defined(jpn)
+#define SetStatValue021855dc func_ov009_021867bc
+extern "C" void SetStatValue021855dc(unsigned char* self, int state);
+#else
 void SetStatValue021855dc(unsigned char* self, int state);
+#endif
 
 struct Vec3 {
     int x;
@@ -74,12 +92,12 @@ extern char data_02109bf4[];
 extern char data_02108760[];
 
 struct CharacterCreation {
-    char unk_0[0xb4];
+    char unk_0[R(0xa0,0xb4)];
     SafeAllocator* modelAllocator_;
     SafeAllocator* previewAllocators_;
-    char unk_bc[0xe0 - 0xbc];
+    char unk_bc[R(0xc0-0xa8,0xe0-0xbc)];
     char texts_[0x18];
-    char unk_f8[0x7f8 - 0xf8];
+    char unk_f8[R(0x7bc-0xd8,0x7f8-0xf8)];
     void* character_;
     void* nextCharacter_;
     int unk_800;
@@ -255,6 +273,18 @@ extern "C" ARM void func_ov009_02187b34(CharacterCreation* self)
         scaleX = FX32_FROM_FLOAT(width / 4096.0f);
         scaleY = FX32_FROM_FLOAT(appearance->height_ / 4096.0f);
         int scaleZ = FX32_FROM_FLOAT(width / 4096.0f);
+#if defined(jpn)
+        self->object_.SetScale(scaleX, scaleY, scaleZ);
+        self->object_.rotation_ = rotation;
+        self->object_.StopCurrentAnimation();
+        self->object_.MaybeSetRegularAnimation(GetFieldByKey020e0434((Container020e0310*)self->texts_, 2500), 0);
+        Vector3fix position;
+        position = ((Object3D*)((char*)preview + 0x408))->position_;
+        self->object2_.rotation_ = rotation;
+        self->object2_.position_ = position;
+        self->object2_.StopCurrentAnimation();
+        self->object2_.MaybeSetRegularAnimation(data_ov009_0218ad41, 0);
+#else
         Object3D* object = &self->object_;
         object->SetScale(scaleX, scaleY, scaleZ);
         object->rotation_ = rotation;
@@ -267,6 +297,7 @@ extern "C" ARM void func_ov009_02187b34(CharacterCreation* self)
         object2->position_ = position;
         object2->StopCurrentAnimation();
         object2->MaybeSetRegularAnimation(data_ov009_0218ad41, 0);
+#endif
         self->flags_ |= 0x200;
         self->timer_ = 30;
         self->step_ = 6;

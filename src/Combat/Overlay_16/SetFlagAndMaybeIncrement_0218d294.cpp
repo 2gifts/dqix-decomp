@@ -2,7 +2,11 @@
 
 struct S0218d294 {
 	int flag0;      // 0x0
-	char pad0[0x14 - 0x4];
+	#if defined(jpn)
+ char pad0[0x10 - 0x4];
+#else
+ char pad0[0x14 - 0x4];
+#endif
 	int flag14;     // 0x14
 	int counter18;  // 0x18
 };

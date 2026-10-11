@@ -27,6 +27,7 @@ void BlankFunction02094b34(void);
 struct Obj02092aa4;
 void InitObj02092aa4(struct Obj02092aa4* obj, unsigned char param);
 
+// JPN: func_02093454
 // USA: func_02092b34  (semantic: ShutdownAndReinitObj02092b34)
 extern "C" ARM void func_02092b34(struct Obj02092b34* obj) {
     if (obj->field2c >= 0) {

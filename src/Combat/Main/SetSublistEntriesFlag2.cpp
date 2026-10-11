@@ -22,3 +22,5 @@ ARM void SetSublistEntriesFlag2(void* obj, int id) {
         SetEntryFlagBits0207f7ac((struct List0207f6ac*)((char*)obj + 4), sub->keys[i], 2);
     }
 }
+
+// JPN: 0x02081130

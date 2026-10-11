@@ -1,4 +1,7 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define data_020f1917 data_020f1a7f
+#endif
 #include "Filesystem/BackgroundLoader.h"
 
 struct ResetStruct {
@@ -27,7 +30,12 @@ extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(void* p, vo
 struct Struct02030774;
 extern "C" int _ZN6Script7ExecuteEv(struct Struct02030774* p);
 
+#if defined(jpn)
+void* LoadFileIntoMemory(const char*, void*, unsigned int*);
+extern char data_0211e33c[];
+#else
 extern "C" void* ExtractFileFromGP2(const char* gp2Path, const char* innerFilePath, unsigned int* outSize);
+#endif
 
 struct Global02109d94_020a13e4 {
     unsigned char field0;
@@ -43,6 +51,7 @@ extern int data_020f1917;
 extern int data_020f192c;
 extern int data_020f18ec;
 
+// JPN: func_020a315c
 // USA: func_020a13e4
 ARM void SetupGlobalAndRunScript020a13e4(void* param0, void* param1, int param2, unsigned short param3, unsigned char param4) {
     if (param1 != 0) {
@@ -55,7 +64,11 @@ ARM void SetupGlobalAndRunScript020a13e4(void* param0, void* param1, int param2,
         data_02109d94.field0 = param4;
         BackgroundLoader::AddLockGlobal();
         localVar = 0;
+        #if defined(jpn)
+        result = LoadFileIntoMemory((const char*)&data_020f1917, data_0211e33c, (unsigned int*)&localVar);
+#else
         result = ExtractFileFromGP2((const char*)&data_020f1917, (const char*)&data_020f192c, (unsigned int*)&localVar);
+#endif
         if (result != 0) {
             struct ResetStruct local;
             _ZN6Script10InitializeEv(&local);

@@ -1,7 +1,14 @@
+// JPN: func_ov017_021bb2cc
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 #include "Memory/AllocatorUnion.h"
+
+#if defined(jpn)
+enum { Fieldf43c = 0xf454, Field3fc = 0x414 };
+#else
+enum { Fieldf43c = 0xf43c, Field3fc = 0x3fc };
+#endif
 
 int GetFieldIfFlag4(char* obj);
 void SetBitsInField4(unsigned int* obj, unsigned int mask);
@@ -54,16 +61,16 @@ extern "C" ARM void func_ov017_021bacd8(Obj021bacd8* self) {
     }
     int state = self->state;
     if (state == 0) {
-        func_020a0cc4(0xf43c);
-        void* buf = AllocateAligned4(&data_02114e20, 0xf43c);
+        func_020a0cc4(Fieldf43c);
+        void* buf = AllocateAligned4(&data_02114e20, Fieldf43c);
         if (buf == NULL) {
             func_020a0c0c();
             self->flag1 = 1;
             return;
         }
-        self->alloc.CreateTypeA(buf, 0xf43c);
+        self->alloc.CreateTypeA(buf, Fieldf43c);
         self->alloc.Reset();
-        void* mem = self->alloc.Allocate(0x3fc);
+        void* mem = self->alloc.Allocate(Field3fc);
         self->field20 = mem;
         if (mem == NULL) {
             func_020a0c0c();

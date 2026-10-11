@@ -1,6 +1,15 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+enum { kRegionValue998_868 = 0x868 };
+enum { kRegionValue9A0_870 = 0x870 };
+#else
+enum { kRegionValue998_868 = 0x998 };
+enum { kRegionValue9A0_870 = 0x9a0 };
+#endif
+
+
 extern "C" void* _Z26GetGlobalField0x1c020421a0v(void);
 extern "C" int _ZNK9GameState21IsMorningDayOrEveningEv(void*);
 extern "C" void* _Z21GetFieldByKey020e0434P17Container020e0310i(void*, int);
@@ -12,6 +21,7 @@ extern "C" void func_ov003_0215b8a0(void*);
 extern "C" void func_ov003_0215b5c4(void*);
 
 // USA: func_ov003_02159b20
+// JPN: func_ov003_0215afa0
 ARM void UpdateHandshakeState_02159b20(void* self) {
     unsigned char* s = (unsigned char*)self;
     unsigned char* g = (unsigned char*)_Z26GetGlobalField0x1c020421a0v();
@@ -26,13 +36,13 @@ ARM void UpdateHandshakeState_02159b20(void* self) {
         void* val = _Z21GetFieldByKey020e0434P17Container020e0310i(s + 0x64, key);
         _Z20AppendString02042058PcPKc(*(char**)(s + 0x7c), (const char*)val);
 
-        *(int*)(g + 0x998) = 1;
+        *(int*)(g + kRegionValue998_868) = 1;
         func_ov003_02159250(self, *(void**)(s + 0x7c));
 
         *(unsigned char*)(s + 0x580) = *(unsigned char*)(s + 0x580) + 1;
     }
 
-    if (!(state == 1 && *(unsigned char*)(s + 0x59d) == 0 && *(int*)(g + 0x9a0) == 3)) return;
+    if (!(state == 1 && *(unsigned char*)(s + 0x59d) == 0 && *(int*)(g + kRegionValue9A0_870) == 3)) return;
 
     func_ov003_0215b478(self);
     func_ov003_0215b8a0(self);

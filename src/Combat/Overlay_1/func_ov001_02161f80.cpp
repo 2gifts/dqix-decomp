@@ -2,6 +2,7 @@
 #include "Combat/Main/CopyRecord0200fbb4.h"
 #include "GameState/GameState.h"
 
+
 extern "C" void* _Z20GetField0x3f8AddressP9GameState(void* battle);
 extern "C" void func_02012fe4(void);
 extern "C" int func_ov017_021d60f4(void* obj);
@@ -24,7 +25,8 @@ struct S3f8_02161f80 {
     char field69;
 };
 
-// USA: func_ov001_02161f80  (semantic: SetupField3f8FromTarget_02161f80)
+// USA: func_ov001_02161f80
+// JPN: func_ov001_02163594
 extern "C" ARM int func_ov001_02161f80(void* target, int count) {
     int tmpArr[3];
     void* battle = GameState::GetInstance();
@@ -49,7 +51,11 @@ extern "C" ARM int func_ov001_02161f80(void* target, int count) {
     obj->field1c = (short)fixedD;
     obj->field20 = flag2;
     void* p = ((char*)func_ov017_0218b5b0()) + 0x3000;
+#if defined(jpn)
+    void* q = *(void**)((char*)p + 0x524);
+#else
     void* q = *(void**)((char*)p + 0x734);
+#endif
     if (q != NULL && *((unsigned char*)q + 3) != 0) {
         unsigned short v = *(unsigned short*)((char*)q + 8);
         if (v == 0x733d || v == 0x7340) {

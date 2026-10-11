@@ -1,3 +1,4 @@
+// JPN: func_ov031_0222983c
 #include <globaldefs.h>
 
 struct SubObj0222905c { unsigned int field0; unsigned short field4; };

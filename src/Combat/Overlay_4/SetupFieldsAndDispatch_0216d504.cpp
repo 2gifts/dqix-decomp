@@ -1,6 +1,12 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+enum { flagOffset = 0xc9d };
+#else
+enum { flagOffset = 0xf71 };
+#endif
+
 extern "C" void func_020aaf84(void*, int, int, int);
 unsigned char GetField0xcc0209ca98(char* obj);
 unsigned char GetByteFieldAt0xcc(unsigned char* obj);
@@ -12,6 +18,9 @@ void SetByte0x4(char* obj, unsigned char value);
 void SetWord0x7f6c(void* obj, int value);
 extern "C" void func_ov011_021848a0(void* obj, int val);
 
+#if defined(jpn)
+struct FieldGroup02171034_0216d504 { unsigned char pad0[6]; unsigned char field1; unsigned char field4; unsigned char pad8[4]; unsigned char* ptr10; };
+#else
 struct FieldGroup02171034_0216d504 {
     unsigned char pad0[1];
     unsigned char field1;
@@ -20,6 +29,7 @@ struct FieldGroup02171034_0216d504 {
     unsigned char pad5[0xb];
     unsigned char* ptr10;
 };
+#endif
 extern FieldGroup02171034_0216d504 data_ov004_02171034;
 extern char data_02109bf4;
 extern unsigned char data_02108760;
@@ -34,7 +44,7 @@ extern "C" ARM int func_ov004_0216d504(void* self) {
 
     GameState* battle = GameState::GetInstance();
     SetByte0x7f70(battle, 0);
-    ((unsigned char*)battle + 0x7000)[0xf71] = 0;
+    ((unsigned char*)battle + 0x7000)[flagOffset] = 0;
     SetByte0x4((char*)battle, 0);
     SetWord0x7f6c(battle, 5);
 

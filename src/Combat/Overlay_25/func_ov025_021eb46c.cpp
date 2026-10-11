@@ -19,7 +19,11 @@ struct Appearance021eb46c {
 };
 
 struct Combatant021eb46c {
+#if defined(jpn)
+    char pad0[0x144];
+#else
     char pad0[0x150];
+#endif
     Appearance021eb46c* appearance;
 };
 
@@ -56,6 +60,7 @@ extern char data_ov025_021ef916[];
 extern char data_ov025_021ef91f[];
 extern Ctx021eb46c* data_ov025_021ef994;
 
+// JPN: func_ov025_021eb8f4
 // USA: func_ov025_021eb46c
 extern "C" ARM int func_ov025_021eb46c(Ctx021eb46c* ctx) {
     char stats[20];

@@ -1,3 +1,9 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define func_ov014_02188c34 func_ov014_02189a78
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 extern "C" unsigned int _Z20ResetHandle_02188d10P20HandleState_02188d10();

@@ -1,3 +1,10 @@
+// JPN: func_ov017_021a10e0
+#if defined(jpn)
+enum { RegionOffset278 = 0x68, RegionOffsetad0 = 0x8c0, RegionOffset2cc = 0x27c, RegionOffset2a8 = 0x98, RegionOffset29c = 0x24c, RegionOffset30c = 0x2bc };
+#else
+enum { RegionOffset278 = 0x278, RegionOffsetad0 = 0xad0, RegionOffset2cc = 0x2cc, RegionOffset2a8 = 0x2a8, RegionOffset29c = 0x29c, RegionOffset30c = 0x30c };
+#endif
+
 #include <globaldefs.h>
 #include "Memory/AllocatorUnion.h"
 #include "Memory/SafeAllocator.h"
@@ -33,24 +40,24 @@ extern "C" ARM void func_ov017_021a0630(char* self) {
         alloc->CreateTypeA(p, size);
     }
 
-    RestorePairTableFromBuffer((int*)(self + 0x278 + 0x2800));
-    _Z23WriteGlobalPair020bb92cPi((int*)(self + 0xad0 + 0x2000));
+    RestorePairTableFromBuffer((int*)(self + RegionOffset278 + 0x2800));
+    _Z23WriteGlobalPair020bb92cPi((int*)(self + RegionOffsetad0 + 0x2000));
 
     int cond;
     for (i = 0; (cond = data_ov017_021d681c[i].v) != 0; i++) {
         int a = data_ov017_021d6818[i].v;
         int b = data_ov017_021d6820[i].v;
-        func_0207de48((self + 0x2cc) + a * 0x70, cond, b);
+        func_0207de48((self + RegionOffset2cc) + a * 0x70, cond, b);
     }
 
-    RestorePairTableFromBuffer((int*)(self + 0x2a8 + 0x2800));
+    RestorePairTableFromBuffer((int*)(self + RegionOffset2a8 + 0x2800));
 
     for (i = 0; (cond = data_ov017_021d6804[i].v) != 0; i++) {
         int a = data_ov017_021d6800[i].v;
         int b = data_ov017_021d6808[i].v;
-        func_0207de48((self + 0x2cc) + a * 0x70, cond, b);
+        func_0207de48((self + RegionOffset2cc) + a * 0x70, cond, b);
     }
 
-    func_0207de48(self + 0x29c + 0xc00, 0x8000, 0x400);
-    func_0207de48(self + 0x30c + 0xc00, 0x4000, 0x400);
+    func_0207de48(self + RegionOffset29c + 0xc00, 0x8000, 0x400);
+    func_0207de48(self + RegionOffset30c + 0xc00, 0x4000, 0x400);
 }

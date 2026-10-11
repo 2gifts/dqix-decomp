@@ -15,3 +15,11 @@ src/Combat/Overlay_34/InitField0202f808_022a29e4.cpp:
 src/Combat/Overlay_34/PopulateOv34BackgroundLoader.cpp:
     complete
     .text start:0x022a2960 end:0x022a2988
+
+src/Combat/Overlay_34/Ov34BackgroundLoader.cpp:
+    complete
+    .text start:0x022a2988 end:0x022a3124
+
+src/Combat/Overlay_34/func_ov034_022a2a04.cpp:
+    complete
+    .init start:0x022a3170 end:0x022a319c

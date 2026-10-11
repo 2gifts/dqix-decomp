@@ -44,8 +44,14 @@ extern "C" void func_ov025_021eb7fc(Obj021e9b2c* self);
 extern "C" void func_ov025_021e9d14(Obj021e9b2c* self);
 extern "C" void func_ov025_021ea958(Obj021e9b2c* self, bool isParty, int a, int b);
 
+// JPN: func_ov025_021e9fc0
 // USA: func_ov025_021e9b2c
 extern "C" ARM void func_ov025_021e9b2c(Obj021e9b2c* self) {
+#if defined(jpn)
+ enum { regionalOffset = 0x5ca0 };
+#else
+ enum { regionalOffset = 0x5ab0 };
+#endif
     GameState::GetInstance();
     void* work = GetActiveCombatWork();
     List021600f8* slot = _Z18GetSlotPtr02160f20Pv(work);
@@ -53,7 +59,7 @@ extern "C" ARM void func_ov025_021e9b2c(Obj021e9b2c* self) {
         func_ov025_021eb6fc(self, 0);
         func_ov025_021ea474(self);
         func_ov025_021eb7fc(self);
-        _Z20ResetFields_021df9b0Pv((char*)work + 0x5ab0);
+        _Z20ResetFields_021df9b0Pv((char*)work + regionalOffset);
         _Z40ApplyField41ToGatheredCombatants02163a7cP17GatherObj02163a7c(work);
     }
     if (self->flags & 0x10) {

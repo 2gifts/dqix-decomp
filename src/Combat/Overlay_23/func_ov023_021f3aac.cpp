@@ -25,7 +25,12 @@ struct PartyData_021f3aac {
 };
 
 struct GameObject_021f3aac {
+#if defined(jpn)
+    char unk_0[0x144];
+#else
     char unk_0[0x150];
+#endif
+
     PartyData_021f3aac* partyData_;
 };
 
@@ -41,7 +46,12 @@ struct TitleScript_021f3aac {
 };
 
 struct GuidePage_021f3aac {
+#if defined(jpn)
+    char unk_0[0x15c];
+#else
     char unk_0[0x244];
+#endif
+
 };
 
 struct GuideWindow_021f3aac {
@@ -61,12 +71,32 @@ struct BattleEnd_021f3aac {
 struct BattleScene_021f3aac {
     char unk_0[0x30];
     SafeAllocator allocator_;
+#if defined(jpn)
+    char unk_44[0xe28 - 0x44];
+#else
     char unk_44[0xeac - 0x44];
+#endif
+
     int endState_;
+#if defined(jpn)
+    char unk_eb0[0x371c - 0xe2c];
+#else
     char unk_eb0[0x3760 - 0xeb0];
+#endif
+
+#if defined(jpn)
+    char menu_[0x1bf8];
+#else
     char menu_[0x1af8];
+#endif
+
     SafeAllocator menuAllocator_;
+#if defined(jpn)
+    char unk_526c[0x5778 - 0x5328];
+#else
     char unk_526c[0x5588 - 0x526c];
+#endif
+
     void* resultWindow_;
     char unk_558c[0x55c4 - 0x558c];
     TitleScript_021f3aac* titles_;
@@ -80,6 +110,10 @@ struct BattleScene_021f3aac {
 };
 
 extern "C" BattleEnd_021f3aac* _ZZ17GetGlobal021ffefcvE1s;
+#if defined(jpn)
+extern const char data_ov023_021fd533[];
+extern "C" void func_020e1fc4(TextTable_021f3aac*, SafeAllocator*, const char*, short*, unsigned short, int, int);
+#endif
 extern const char data_ov023_021fe316[];
 extern const char data_ov023_021fe2a0[];
 extern const char data_ov023_021fe2b7[];
@@ -116,6 +150,7 @@ void func_ov023_021eb564(GuideWindow_021f3aac* guide, GuidePage_021f3aac* pages,
 void func_ov023_021eb26c(GuideWindow_021f3aac* guide);
 }
 
+// JPN: func_ov023_021f312c
 // USA: func_ov023_021f3aac
 extern "C" ARM int func_ov023_021f3aac(BattleScene_021f3aac* self)
 {
@@ -166,6 +201,9 @@ extern "C" ARM int func_ov023_021f3aac(BattleScene_021f3aac* self)
     else if (step == 3)
     {
         short* ids;
+#if defined(jpn)
+        GuidePage_021f3aac* temporary;
+#endif
         int i;
         int count = self->titles_->count_;
         if (count > 0)
@@ -186,6 +224,32 @@ extern "C" ARM int func_ov023_021f3aac(BattleScene_021f3aac* self)
             TextTable_021f3aac names;
             _Z26ResetAndReturnSelf020dfc2cPv(&names);
             _Z19ResetStruct020dfc40P14Struct020dfc40((Struct020dfc40*)&names);
+#if defined(jpn)
+            func_020e1fc4(&names, &self->allocator_, data_ov023_021fd533, ids, (unsigned short)count, hero->partyData_->appearance_.female_, 1);
+            temporary = (GuidePage_021f3aac*)idAllocator->Allocate(count * sizeof(void*));
+            for (i = 0; i < count; i++)
+            {
+                void* entry = _Z26FindElementByField020a15bcP13Array020a15bci((Array020a15bc*)self->titleTable_, ids[i]);
+                if (entry == NULL)
+                    continue;
+                const char* title = _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&names, ids[i]);
+                if (title == NULL)
+                    continue;
+                _Z16InitObj_021f222cP12Obj_021f222c((Obj_021f222c*)&temporary[i]);
+                func_ov023_021f229c(&temporary[i], entry);
+                _Z28FormatLabelIntoBufC_021f2304PvPc(&temporary[i], (char*)title);
+            }
+            self->allocator_.Reset();
+            self->titleTable_ = NULL;
+            self->pages_ = (GuidePage_021f3aac*)self->allocator_.Allocate(count * sizeof(GuidePage_021f3aac));
+            for (i = 0; i < count; i++)
+            {
+                _Z16InitObj_021f222cP12Obj_021f222c((Obj_021f222c*)&self->pages_[i]);
+                func_ov023_021f229c(&self->pages_[i], &temporary[i]);
+                _Z28FormatLabelIntoBufC_021f2304PvPc(&self->pages_[i], (char*)&temporary[i] + 0xc);
+            }
+
+#else
             BackgroundLoader::AddLockGlobal();
             unsigned int size = 0;
             char gp2[0x40];
@@ -212,6 +276,8 @@ extern "C" ARM int func_ov023_021f3aac(BattleScene_021f3aac* self)
                 _Z28FormatLabelIntoBufC_021f2304PvPc(&self->pages_[i], (char*)title);
             }
             self->titleTable_ = NULL;
+
+#endif
             self->pageCount_ = count;
             idAllocator->Reset();
             end->step_++;

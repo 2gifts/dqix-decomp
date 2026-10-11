@@ -1,8 +1,14 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
+#if defined(jpn)
+extern "C" void func_0206ef94(unsigned char* arr);
+#define ResetElementArray0206de40 func_0206ef94
+#else
 void ResetElementArray0206de40(unsigned char* arr);
+#endif
 
+// JPN: func_0206ef0c
 // USA: func_0206ddb8  (semantic: ResetBigStruct0206ddb8)
 extern "C" ARM void func_0206ddb8(unsigned char* obj) {
     obj[0x332] = 0;

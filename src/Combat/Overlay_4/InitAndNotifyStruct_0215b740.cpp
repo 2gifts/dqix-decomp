@@ -11,7 +11,12 @@ extern "C" void func_ov011_021848a0(void* obj, int val);
 
 // USA: func_ov004_0215b740
 ARM int InitAndNotifyStruct_0215b740(void* obj) {
-    char* p = (char*)GameState::GetInstance() + 0x26c + 0x5c00;
+#if defined(jpn)
+    enum { memberOffset = 0xc };
+#else
+    enum { memberOffset = 0x26c };
+#endif
+    char* p = (char*)GameState::GetInstance() + memberOffset + 0x5c00;
     void* node = func_ov004_02156fd4(obj, 5);
     char buf[0x38];
     ((SafeAllocator*)buf)->ResetAllocatorPointer();

@@ -14,6 +14,7 @@ struct TableBuf_021f5db0 {
 	struct Table8_021f5db0 table;
 };
 
+// JPN: func_ov024_021f657c
 // USA: func_ov024_021f5db0  (semantic: CountEligibleAndSetIfExactly3_021f5db0)
 extern "C" ARM int func_ov024_021f5db0(int* a0, int id, int a2, int* outFlag, short* outId) {
 	GameObject* c = GetCombatantWithFlag0x400ByID(*a0, id);

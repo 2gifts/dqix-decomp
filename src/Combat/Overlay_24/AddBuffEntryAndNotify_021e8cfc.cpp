@@ -8,6 +8,7 @@ extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, unsigned l
 
 struct Obj_021e8cfc { char pad0c[0xc]; void* field0xc; void* field0x10; };
 
+// JPN: func_ov024_021e9594
 // USA: func_ov024_021e8cfc  (semantic: AddBuffEntryAndNotify_021e8cfc)
 extern "C" ARM void* func_ov024_021e8cfc(struct Obj_021e8cfc* obj, void* c, int kind, int notifyExtra) {
     void* entry = func_ov000_0215e958(obj->field0x10);

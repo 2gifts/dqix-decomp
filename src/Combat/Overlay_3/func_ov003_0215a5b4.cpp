@@ -1,4 +1,15 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegion150 = 0x144 };
+enum { kRegion9a0 = 0x870 };
+enum { kRegion960 = 0x800 };
+enum { kRegion860 = 0x700 };
+#else
+enum { kRegion150 = 0x150 };
+enum { kRegion9a0 = 0x9a0 };
+enum { kRegion960 = 0x960 };
+enum { kRegion860 = 0x860 };
+#endif
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
 
@@ -8,12 +19,12 @@ struct StatusData0215a5b4 {
 };
 
 struct Combatant0215a5b4 {
-    char pad0[0x150];
+    char pad0[kRegion150];
     struct StatusData0215a5b4* status;
 };
 
 struct MessageWork0215a5b4 {
-    char pad0[0x9a0];
+    char pad0[kRegion9a0];
     int state;
 };
 
@@ -41,6 +52,7 @@ extern "C" void func_ov003_021592d8(struct BattleMenu0215a5b4* self, struct Comb
 extern "C" void func_ov003_02159250(struct BattleMenu0215a5b4* self, char* text);
 extern "C" void func_ov003_0215c01c(struct BattleMenu0215a5b4* self, int mode, int flag);
 
+// JPN: func_ov003_0215ba34
 // USA: func_ov003_0215a5b4
 extern "C" ARM void func_ov003_0215a5b4(struct BattleMenu0215a5b4* self) {
     struct MessageWork0215a5b4* work = _Z26GetGlobalField0x1c020421a0v();
@@ -50,11 +62,11 @@ extern "C" ARM void func_ov003_0215a5b4(struct BattleMenu0215a5b4* self) {
         SetElementFieldC2((struct Struct_0205d81c*)self->menu, 0, 1);
         SetElementFieldC2((struct Struct_0205d81c*)self->menu, 1, 1);
         SetElementFieldC2((struct Struct_0205d81c*)self->menu, 2, 1);
-        memset(self->text, 0, 0x960);
+        memset(self->text, 0, kRegion960);
         _Z20AppendString02042058PcPKc(self->text,
                              (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)self->messages, 0x3fc));
         unsigned char ids[4];
-        char* line = self->text + 0x860;
+        char* line = self->text + kRegion860;
         __clear(ids, sizeof(ids));
         int count = CopyOutRegion0x571d((char*)game, ids);
         for (int i = 0; i < count; i++) {

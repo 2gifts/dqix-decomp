@@ -1,5 +1,12 @@
+// JPN: func_ov017_021b0f8c
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+
+#if defined(jpn)
+enum { Field718 = 0x508, Field700 = 0x4f0 };
+#else
+enum { Field718 = 0x718, Field700 = 0x700 };
+#endif
 
 extern "C" void* func_ov017_021b8468(void* obj);
 extern "C" void func_ov000_021682ec(void* p);
@@ -25,8 +32,8 @@ extern "C" ARM unsigned char func_ov017_021b08f4(Ctx021b08f4* obj) {
     GameState::GetInstance();
     int ctx = ((int)func_ov017_0218b5b0());
     char* base = (char*)ctx + 0x3000;
-    void* p718 = *(void**)(base + 0x718);
-    void* p700 = *(void**)(base + 0x700);
+    void* p718 = *(void**)(base + Field718);
+    void* p700 = *(void**)(base + Field700);
     if (*((unsigned char*)p718 + 0x2) != 0) {
         void* f6ac = func_ov017_021b8468(p718);
         if (f6ac != 0) {

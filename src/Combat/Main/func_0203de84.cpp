@@ -18,7 +18,11 @@ int ProcessPendingSubStates(struct StateWithFourPtrs02040910* obj, int arg1);
 extern "C" void _Z23SyncBattleState0208f87cPviii(void* self, int b, int c, int d, int e);
 
 struct Ctx02012fe4 {
+#if defined(jpn)
+    char pad[0x58];
+#else
     char pad[0x38];
+#endif
     unsigned short f38;
     char pad3a[2];
     int f3c;
@@ -39,6 +43,7 @@ struct Roster0203de84 {
 };
 
 // USA: func_0203de84
+// JPN: func_0203de84
 extern "C" ARM void func_0203de84(void* self) {
     struct Roster0203de84* roster = (struct Roster0203de84*)self;
     int v = GetField0x3b0Value(GameState::GetInstance());

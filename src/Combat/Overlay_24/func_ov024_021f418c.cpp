@@ -12,6 +12,7 @@ static inline int BaseDefense_021f418c(BaseCombatStats* stats) {
     return defense;
 }
 
+// JPN: func_ov024_021f4958
 // USA: func_ov024_021f418c
 extern "C" ARM int func_ov024_021f418c(Ctx_021f418c* ctx, unsigned char id,
     void* unused, int* outFlag, short* outID) {

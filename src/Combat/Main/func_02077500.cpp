@@ -1,3 +1,9 @@
+#if defined(jpn)
+enum { RegionalOffset = 0x14 };
+#else
+enum { RegionalOffset = 0x18 };
+#endif
+
 #include <globaldefs.h>
 
 struct Entry_02028bd0;
@@ -42,6 +48,7 @@ extern "C" int func_0202c508();
 extern "C" void func_ov017_021c927c(int a, int b, int c, Vec3_02077500 pos, int d, int e, int f);
 
 // USA: func_02077500
+// JPN: func_02077500
 extern "C" ARM int func_02077500(Actor_02077500* obj) {
     Entry_02028bd0* table = GetEntryTableBase();
     if (table == 0) {
@@ -51,7 +58,7 @@ extern "C" ARM int func_02077500(Actor_02077500* obj) {
     if (entry == 0) {
         return 0;
     }
-    List_020283c0* list = (List_020283c0*)((char*)entry + 0x18);
+    List_020283c0* list = (List_020283c0*)((char*)entry + RegionalOffset);
     if (list == 0) {
         return 0;
     }

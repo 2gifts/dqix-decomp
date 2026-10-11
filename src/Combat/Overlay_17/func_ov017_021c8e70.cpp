@@ -41,13 +41,19 @@ struct Owner021c8e70 {
     SlotTable021c8e70 table;
 };
 
+// JPN: func_ov017_021c9320
 // USA: func_ov017_021c8e70
 extern "C" ARM void func_ov017_021c8e70(int unused0, Src021c8e70* src, int unused2, unsigned char* obj) {
+#if defined(jpn)
+ enum {regionalOffset=0x508};
+#else
+ enum {regionalOffset=0x718};
+#endif
     SrcBody021c8e70* body;
     int total;
     int i;
     SlotTable021c8e70* table;
-    void* h = *(void**)(obj + 0x3000 + 0x718);
+    void* h = *(void**)(obj + 0x3000 + regionalOffset);
     Ret021c8e70* r = (Ret021c8e70*)func_ov017_021b8478(h);
     if (!r) return;
     if (!func_ov017_021b8468(h)) return;

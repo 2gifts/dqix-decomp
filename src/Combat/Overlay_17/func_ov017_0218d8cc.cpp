@@ -19,12 +19,21 @@ struct Input0218d8cc {
 };
 
 struct Battle0218d8cc {
+#if defined(jpn)
+    char pad0[0x4108];
+#else
     char pad0[0x4328];
+#endif
     Input0218d8cc* input;
+#if defined(jpn)
+    char pad432c[0x4188 - 0x410c];
+#else
     char pad432c[0x4438 - 0x432c];
+#endif
     Vector3fix moveDir;
 };
 
+// JPN: func_ov017_0218e4ac
 // USA: func_ov017_0218d8cc
 extern "C" ARM void func_ov017_0218d8cc(Battle0218d8cc* self) {
     GameState* gs = GameState::GetInstance();

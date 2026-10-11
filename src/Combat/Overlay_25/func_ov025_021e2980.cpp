@@ -20,11 +20,21 @@ struct AnimationCombatant {
     unsigned char state;
 };
 struct AnimationGlobals {
+#if defined(jpn)
+    unsigned char padding0[0xc];
+#else
     unsigned char padding0[0x1c];
+#endif
+
     unsigned int flags;
 };
 struct AnimationWork {
+#if defined(jpn)
+    unsigned char padding0[0x71c4];
+#else
     unsigned char padding0[0x6fd4];
+#endif
+
     unsigned char faded;
 };
 struct S0204a438;
@@ -49,6 +59,7 @@ void SetByte0xbeShiftPrev(Bytes02033b88*, int);
 AnimationWork* GetActiveCombatWork();
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 
+// JPN: func_ov025_021e2e70
 // USA: func_ov025_021e2980
 extern "C" ARM int func_ov025_021e2980(AnimationCommand* command, AnimationTargets* targets, int unused, void* context) {
     GameState* game = GameState::GetInstance();

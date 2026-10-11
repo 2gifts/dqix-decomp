@@ -1,4 +1,11 @@
+// JPN: func_ov017_021999e0
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kRegionalFieldOffset = 0x4196 };
+#else
+enum { kRegionalFieldOffset = 0x4446 };
+#endif
 #include "GameState/GameState.h"
 
 struct ZoneNode02198e30 {
@@ -68,7 +75,7 @@ extern "C" ARM void func_ov017_02198e30(unsigned char* self) {
         c2.field30 = 0;
     }
 
-    self[0x4446] = node->id;
+    self[kRegionalFieldOffset] = node->id;
     c2.id = node->id;
     if (_Z28LookupAndForEachNode020649b0PviS_(mgr, 2, &c2)) {
         func_0206f81c(&c2);

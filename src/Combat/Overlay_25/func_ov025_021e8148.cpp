@@ -7,7 +7,11 @@ extern "C" void* _Z28GetSlotPtr_021e8cf0_021e8cf0Pci(char* base, int idx);
 extern "C" short _Z24ClampScaledStat_0216352ciff(int id, float a, float b);
 
 struct Globals021ef988 {
+#if defined(jpn)
+    char pad0[4];
+#else
     char pad0[0xc];
+#endif
     char* slotTable;
 };
 extern Globals021ef988 data_ov025_021ef988;
@@ -19,6 +23,7 @@ struct Param021e8148 {
     unsigned char mode;
 };
 
+// JPN: func_ov025_021e85e8
 // USA: func_ov025_021e8148
 extern "C" ARM int func_ov025_021e8148(Param021e8148* p, int b, int unused, void* c) {
     GameState* gs = GameState::GetInstance();

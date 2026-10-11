@@ -1,3 +1,4 @@
+// JPN: func_ov031_02230dec
 #include <globaldefs.h>
 
 extern void SetField1e_0223521c(void);

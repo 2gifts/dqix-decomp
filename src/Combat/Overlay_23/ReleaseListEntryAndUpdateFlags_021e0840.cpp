@@ -37,27 +37,38 @@ struct List021e0840 {
     Entry021e0840* entries;
 };
 
+// JPN: func_ov023_021e0dc0
 // USA: func_ov023_021e0840  (semantic: ReleaseListEntryAndUpdateFlags_021e0840)
 extern "C" ARM int func_ov023_021e0840(void* obj_) {
+#if defined(jpn)
+ enum {regionalOffset0=0x6c0, regionalOffset1=0x6f0, regionalOffset2=0x6d8, regionalOffset3=0x6c4};
+#else
+ enum {regionalOffset0=0x744, regionalOffset1=0x774, regionalOffset2=0x75c, regionalOffset3=0x748};
+#endif
     char* obj = (char*)obj_;
     char buf[0xe0];
     short codes[12];
     int out1, out2;
     short count2;
 
-    if (*(int*)(obj + 0x744) == -1) {
+    if (*(int*)(obj + regionalOffset0) == -1) {
         return 0xd;
     }
 
     int listPtr = (int)BackgroundLoader::GetInstance();
-    if (!((BackgroundLoader*)(listPtr))->GetTaskStatus((int)(*(int*)(obj + 0x744)))) {
+    if (!((BackgroundLoader*)(listPtr))->GetTaskStatus((int)(*(int*)(obj + regionalOffset0)))) {
         goto ret9;
     }
 
-    ((BackgroundLoader*)((struct List0202fec8*)listPtr))->GetLoadedFileByID((int)(*(int*)(obj + 0x744)), (void**)(&out1), (unsigned int*)(&out2));
+    ((BackgroundLoader*)((struct List0202fec8*)listPtr))->GetLoadedFileByID((int)(*(int*)(obj + regionalOffset0)), (void**)(&out1), (unsigned int*)(&out2));
+#if defined(jpn)
+
+#else
     if (out1 == 0 || out2 == 0) {
         goto ret9;
     }
+#endif
+
 
     ResetAndDetach020dfc6c((struct Struct020dfc40*)(obj + 0x8c));
     ClearStruct16(obj + 0x7c);
@@ -88,8 +99,8 @@ extern "C" ARM int func_ov023_021e0840(void* obj_) {
         }
     }
 
-    ((BackgroundLoader*)(listPtr))->RemoveTask((int)(*(int*)(obj + 0x744)));
-    *(int*)(obj + 0x744) = -1;
+    ((BackgroundLoader*)(listPtr))->RemoveTask((int)(*(int*)(obj + regionalOffset0)));
+    *(int*)(obj + regionalOffset0) = -1;
 
     count2 = 0;
     if (*(void**)(obj + 0x74)) {
@@ -101,14 +112,14 @@ extern "C" ARM int func_ov023_021e0840(void* obj_) {
 
     func_0204c684(buf);
     if (InitBufferFromDataField4_021ddc34(buf, 0, 0, 0x1c, 6)) {
-        if (!(*(unsigned short*)(obj + 0x774) & 0x400)) {
+        if (!(*(unsigned short*)(obj + regionalOffset1) & 0x400)) {
             func_ov023_021db634(obj + 0xcc, buf);
         }
-        int result = func_ov023_021ddc98(buf, *(int*)(obj + 0x75c), (unsigned short)data_ov023_021ff9e0[3], 0);
-        *(int*)(obj + 0x75c) = *(int*)(obj + 0x75c) + result;
+        int result = func_ov023_021ddc98(buf, *(int*)(obj + regionalOffset2), (unsigned short)data_ov023_021ff9e0[3], 0);
+        *(int*)(obj + regionalOffset2) = *(int*)(obj + regionalOffset2) + result;
     }
 
-    ResetIfNonNeg_021db2e4((volatile int*)(obj + 0x748));
+    ResetIfNonNeg_021db2e4((volatile int*)(obj + regionalOffset3));
     return 0xd;
 
 retB:

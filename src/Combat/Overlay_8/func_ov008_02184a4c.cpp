@@ -1,4 +1,22 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define REGION_VALUE(j,u) j
+#define data_ov008_0218b3e4 data_ov008_0218c064
+#define data_ov008_0218b400 data_ov008_0218c080
+#define data_ov008_0218b41d data_ov008_0218c09d
+#define data_ov008_0218b328 data_ov008_0218bf60
+#define data_ov008_0218b334 data_ov008_0218bf6c
+#define data_ov008_0218b31c data_ov008_0218bf78
+#define data_ov008_0218b3e0 data_ov008_0218c060
+#define data_ov008_0218b48f data_ov008_0218c0f0
+#define func_ov008_02188d74 func_ov008_02189a9c
+#define func_ov008_0218712c func_ov008_02188008
+#define _Z18InitConfig02187664P15Manager02187664i func_ov008_02188578
+#define func_ov008_02187f6c func_ov008_02188ccc
+#else
+#define REGION_VALUE(j,u) u
+#endif
+
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
 #include "GameState/GameState.h"
@@ -34,8 +52,8 @@ struct List02184a4c {
 
 /* Result of func_ov017_0218b5b0. */
 struct Ov17Data02184a4c {
-    char pad0[0x2cc];
-    char stage[0x87c - 0x2cc];
+    char pad0[REGION_VALUE(0x27c, 0x2cc)];
+    char stage[0x87c - REGION_VALUE(0x27c, 0x2cc)];
 };
 
 /* The 0xb0-byte block LoadBattleBlock020ac4c0 copies out of the GameState. */
@@ -52,8 +70,8 @@ struct BattleBlock02184a4c {
     BattleTail02184a4c* GetTail() { return &tail; }
 };
 
-static inline char* GetSection104(GameState* gs) { return (char*)gs + 0x104; }
-static inline char* GetSection7400(char* section) { return section + 0x7400; }
+static inline char* GetSection104(GameState* gs) { return (char*)gs + REGION_VALUE(0x2c4, 0x104); }
+static inline char* GetSection7400(char* section) { return section + REGION_VALUE(0x7000, 0x7400); }
 static inline BattleBlock02184a4c* GetBattleBlock(GameState* gs) {
     return (BattleBlock02184a4c*)(GetSection7400(GetSection104(gs)) + 0x3c);
 }
@@ -80,7 +98,7 @@ struct Message02184a4c {
     char* text;
     int f8;
     char name[0x38];
-    char buf[0x200];
+    char buf[REGION_VALUE(0x118, 0x200)];
 
 };
 
@@ -111,7 +129,7 @@ struct Stat02184a4c {
     unsigned char hi : 7;
 };
 struct Member02184a4c {
-    char pad0[0x150];
+    char pad0[REGION_VALUE(0x144, 0x150)];
     Stat02184a4c* stat;
     int GetBit0() { return stat->bit0; }
 };
@@ -126,7 +144,11 @@ struct Model02184a4c {
 
 struct Obj02184a4c {
     SafeAllocator alloc00;
+#if defined(jpn)
+    SafeAllocator alloc14;
+#else
     char pad14[0x28 - 0x14];
+#endif
     SafeAllocator alloc28;
     SafeAllocator alloc3c;
     char pad50[0x64 - 0x50];
@@ -245,10 +267,22 @@ struct ArchiveInfo02184a4c {
     int packageID;
 };
 
+#if defined(jpn)
+extern const char data_ov008_0218c0bc[];
+extern const char data_ov008_0218c0d5[];
+extern "C" void func_020e2168(char*, const char*, int, int, int);
+#endif
+
 // USA: func_ov008_02184a4c
 extern "C" ARM void func_ov008_02184a4c(Obj02184a4c* obj) {
+#if defined(jpn)
+    Ov17Data02184a4c* ov17;
+    GameState* gs = GameState::GetInstance();
+    ov17 = (Ov17Data02184a4c*)func_ov017_0218b5b0();
+#else
     GameState* gs = GameState::GetInstance();
     Ov17Data02184a4c* ov17 = (Ov17Data02184a4c*)func_ov017_0218b5b0();
+#endif
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     void* scene = func_0202ae18();
 
@@ -290,7 +324,7 @@ extern "C" ARM void func_ov008_02184a4c(Obj02184a4c* obj) {
                 __clear(path, 0x80);
                 List02184a4c list;
                 _Z23ResetListHeader020727d8P12List020727d8(&list);
-                _Z28SubmitScriptFromFile020727f8PvPKciS_h(&list, data_ov008_0218b400, 1000, path, 2);
+                _Z28SubmitScriptFromFile020727f8PvPKciS_h(&list, data_ov008_0218b400, 1000, path, REGION_VALUE(1, 2));
                 obj->taskId = loader->QueueLoadFile(path, NULL);
                 obj->flags |= 0x400;
             }
@@ -337,6 +371,15 @@ extern "C" ARM void func_ov008_02184a4c(Obj02184a4c* obj) {
         obj->b11++;
     } else if (state == 3) {
         if (_Z18AlwaysTrue02094b4cv(_Z17GetGlobal02109400v()) != 0) {
+#if defined(jpn)
+            obj->alloc14.Reset();
+            void* data = obj->alloc14.Allocate(0x2000);
+            unsigned int size;
+            _Z18LoadFileIntoMemoryPKcPvPj(data_ov008_0218c0bc, data, &size);
+            obj->alloc28.Reset();
+            func_020dfec0(obj->container, &obj->alloc28, data, size);
+            obj->alloc14.Reset();
+#else
             BackgroundLoader::AddLockGlobal();
             BackgroundLoader::FreeAllocationsGlobal();
             unsigned int size;
@@ -344,6 +387,7 @@ extern "C" ARM void func_ov008_02184a4c(Obj02184a4c* obj) {
             obj->alloc28.Reset();
             func_020dfec0(obj->container, &obj->alloc28, data, size);
             BackgroundLoader::RemoveLockGlobal();
+#endif
             if (obj->b24 != 0) {
                 obj->b11 = 5;
             } else {
@@ -390,8 +434,12 @@ extern "C" ARM void func_ov008_02184a4c(Obj02184a4c* obj) {
                     _Z12Init0205a198P14Struct0205a198(&obj->entries[i]);
                 }
                 _Z23ClearField0And40205a234P19ClearTarget0205a234(obj->tail);
+#if defined(jpn)
+                obj->taskId = loader->QueueLoadFile(_Z21GetFieldByKey020e0434P17Container020e0310i(obj->container, 3), NULL);
+#else
                 const char* inner = _Z21GetFieldByKey020e0434P17Container020e0310i(obj->container, 6);
                 obj->taskId = loader->QueueLoadFileInGP2(_Z21GetFieldByKey020e0434P17Container020e0310i(obj->container, 5), inner, NULL);
+#endif
                 obj->b11++;
             } else {
                 obj->b11 = 0xff;
@@ -483,7 +531,7 @@ extern "C" ARM void func_ov008_02184a4c(Obj02184a4c* obj) {
                 obj->b14 = ids[0];
                 obj->alloc78.Reset();
                 obj->poller = NULL;
-                obj->message = (Message02184a4c*)obj->alloc78.Allocate(0x244);
+                obj->message = (Message02184a4c*)obj->alloc78.Allocate(REGION_VALUE(0x15c, 0x244));
                 Message02184a4c* msg = obj->message;
                 msg->a = 0;
                 msg->b = 0;
@@ -493,7 +541,7 @@ extern "C" ARM void func_ov008_02184a4c(Obj02184a4c* obj) {
                 msg->text = NULL;
                 msg->f8 = 0;
                 memset(msg->name, 0, 0x38);
-                memset(msg->buf, 0, 0x200);
+                memset(msg->buf, 0, REGION_VALUE(0x118, 0x200));
                 msg->text = msg->buf;
                 MessageSrc02184a4c* src = _Z26FindElementByField020a15bcP13Array020a15bci(obj->script, ids[0]);
                 msg = obj->message;
@@ -504,11 +552,15 @@ extern "C" ARM void func_ov008_02184a4c(Obj02184a4c* obj) {
                     msg->text = msg->buf;
                     const char* text = src->text;
                     if (text != NULL) {
-                        memset(msg->buf, 0, 0x200);
+                        memset(msg->buf, 0, REGION_VALUE(0x118, 0x200));
                         sprintf(msg->buf + _Z12StringLengthPKc(msg->buf), data_ov008_0218b3e0, text);
                     }
                 }
                 Member02184a4c* hero = (Member02184a4c*)GameState::GetInstance()->GetProtagonist();
+#if defined(jpn)
+                int female = hero->GetBit0();
+                func_020e2168(obj->message->name, data_ov008_0218c0d5, ids[0], female, 1);
+#else
                 BackgroundLoader::AddLockGlobal();
                 unsigned int size = 0;
                 char gp2[0x40];
@@ -523,6 +575,7 @@ extern "C" ARM void func_ov008_02184a4c(Obj02184a4c* obj) {
                     func_020e046c(obj->message->name, data, size, ids[0]);
                 }
                 BackgroundLoader::RemoveLockGlobal();
+#endif
             } else {
                 obj->alloc78.Reset();
                 obj->poller = NULL;
@@ -533,10 +586,10 @@ extern "C" ARM void func_ov008_02184a4c(Obj02184a4c* obj) {
                     obj->flags |= 0x100;
                     id = 0x3eb;
                 }
-                memset(obj->pathBuf, 0, 0x960);
+                memset(obj->pathBuf, 0, REGION_VALUE(0x800, 0x960));
                 List02184a4c list;
                 _Z23ResetListHeader020727d8P12List020727d8(&list);
-                _Z28SubmitScriptFromFile020727f8PvPKciS_h(&list, data_ov008_0218b400, (short)id, obj->pathBuf, 2);
+                _Z28SubmitScriptFromFile020727f8PvPKciS_h(&list, data_ov008_0218b400, (short)id, obj->pathBuf, REGION_VALUE(1, 2));
                 if (_Z14CompareStringsPKcS0_(obj->pathBuf, data_ov008_0218b48f) == 0) {
                     obj->b11 = 0xff;
                 } else {
@@ -589,10 +642,10 @@ extern "C" ARM void func_ov008_02184a4c(Obj02184a4c* obj) {
                     id++;
                 }
             }
-            memset(obj->pathBuf, 0, 0x960);
+            memset(obj->pathBuf, 0, REGION_VALUE(0x800, 0x960));
             List02184a4c list;
             _Z23ResetListHeader020727d8P12List020727d8(&list);
-            _Z28SubmitScriptFromFile020727f8PvPKciS_h(&list, data_ov008_0218b400, id, obj->pathBuf, 2);
+            _Z28SubmitScriptFromFile020727f8PvPKciS_h(&list, data_ov008_0218b400, id, obj->pathBuf, REGION_VALUE(1, 2));
             obj->taskId = loader->QueueLoadFile(obj->pathBuf, NULL);
             obj->b11 = 10;
             obj->flags |= 0x100;

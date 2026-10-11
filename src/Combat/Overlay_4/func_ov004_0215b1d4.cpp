@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+
 struct KeyedList0207c484;
 int DecrementKeyedStackAmount0207c484(struct KeyedList0207c484* obj, int value, int amount, int key);
 struct KeyMap020a0a08;
@@ -16,10 +17,21 @@ extern Struct021707d8_0215b1d4 data_ov004_021707d8;
 
 struct Bits0xc_0215b1d4 { unsigned short low13 : 13; unsigned short high3 : 3; };
 
-// USA: func_ov004_0215b1d4  (semantic: DecrementOrRemoveSlotAndNotify_0215b1d4)
+#if defined(jpn)
+extern "C" void* GetPtrField0x2a04(GameState*);
+extern "C" GameObject* GetCombatantWithFlag0x100(GameState*, int);
+
+#else
+#endif
+// USA: func_ov004_0215b1d4
+// JPN: func_ov004_0215c208
 extern "C" ARM int func_ov004_0215b1d4(void* obj) {
     GameState* bs = GameState::GetInstance();
+#if defined(jpn)
+    char* base = (char*)bs + 0xc + 0x5c00;
+#else
     char* base = (char*)bs + 0x26c + 0x5c00;
+#endif
 
     *(short*)(base + 0xf8) = *(short*)(data_ov004_021707d8.ptr + 0x6c);
     *(short*)(base + 0xfa) = *(unsigned char*)(data_ov004_021707d8.ptr + 0x6e);

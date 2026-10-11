@@ -2,7 +2,11 @@
 
 extern "C" void* func_ov011_021849c8(void*);
 extern "C" void* func_ov023_021f6880(void*, int);
+#if defined(jpn)
+extern "C" int func_ov023_021f6f10(void* self);
+#else
 int ScaleStatsIfType12_021f6f10(void* self);
+#endif
 extern "C" int func_ov004_02153978(void*, short*, short*, short*);
 extern "C" int func_ov023_021f9bc8(char* obj);
 
@@ -33,7 +37,11 @@ extern "C" ARM int func_ov004_02153c74(void* a) {
     void* battler = func_ov011_021849c8(a);
     void* n1 = func_ov023_021f6880(battler, 0x2c);
     if (!n1) return 0;
+#if defined(jpn)
+    if (func_ov023_021f6f10(n1) != 7) return 0;
+#else
     if (ScaleStatsIfType12_021f6f10(n1) != 7) return 0;
+#endif
 
     short base = *(short*)((char*)n1 + 0x5c);
     short b, c, d;
@@ -42,11 +50,19 @@ extern "C" ARM int func_ov004_02153c74(void* a) {
 
     void* n2 = func_ov023_021f6880(battler, 0x2d);
     if (!n2) return 0;
+#if defined(jpn)
+    if (func_ov023_021f6f10(n2) != 0x11) return 0;
+#else
     if (ScaleStatsIfType12_021f6f10(n2) != 0x11) return 0;
+#endif
 
     void* n3 = func_ov023_021f6880(battler, 0x39);
     if (!n3) return 0;
+#if defined(jpn)
+    if (func_ov023_021f6f10(n3) != 0x12) return 0;
+#else
     if (ScaleStatsIfType12_021f6f10(n3) != 0x12) return 0;
+#endif
 
     void* result = ((VObj02153c74*)n3)->Methodec();
     if (!result) return 0;

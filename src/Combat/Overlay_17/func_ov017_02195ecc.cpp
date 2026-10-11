@@ -18,10 +18,15 @@ extern const Vector3fix data_ov017_021d642c;
 
 struct Battle02195ecc {
     unsigned int flags[2];
+#if defined(jpn)
+    char pad8[0x34ec - 0x8];
+#else
     char pad8[0x36fc - 0x8];
+#endif
     int nodeList;
 };
 
+// JPN: func_ov017_02196a94
 // USA: func_ov017_02195ecc
 extern "C" ARM void func_ov017_02195ecc(Battle02195ecc* self, unsigned int mode) {
     if (mode == 0) {

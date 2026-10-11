@@ -1,3 +1,10 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define func_ov005_02158560 func_ov005_02159b58
+#define func_ov005_021585fc func_ov005_02159bf4
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include <GameState/GameState.h>
 
@@ -5,9 +12,9 @@ struct Obj0205eaa0;
 struct Struct_0205bb84;
 
 struct MemberScreen {
-    char unk_0[0x4fc];
+    char unk_0[R(0x4f8, 0x4fc)];
     int member_;
-    char unk_500[0x634 - 0x500];
+    char unk_500[R(0x56c - 0x4fc, 0x634 - 0x500)];
     unsigned short flags_;
 };
 
@@ -24,7 +31,7 @@ struct EquipmentSlot {
 };
 
 struct EquipmentMenu {
-    char unk_0[0x19f4];
+    char unk_0[R(0x196c, 0x19f4)];
     char cursor_[0x2d90 - 0x19f4];
     EquipmentSlot slots_[24];
     char unk_3030[0x3db8 - 0x3030];

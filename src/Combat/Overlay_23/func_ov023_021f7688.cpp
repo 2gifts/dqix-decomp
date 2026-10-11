@@ -27,6 +27,7 @@ struct Obj021f7688 {
     int field1c;
 };
 
+// JPN: func_ov023_021f6b80
 // USA: func_ov023_021f7688
 extern "C" ARM int func_ov023_021f7688(struct Obj021f7688* obj, void* keyObj) {
     if (obj->field10 == 0) {

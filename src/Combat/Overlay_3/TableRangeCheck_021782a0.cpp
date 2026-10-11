@@ -19,6 +19,13 @@ extern "C" ARM int func_ov003_021782a0(struct Obj2081* obj) {
     if (coordB < 0x5d || coordB > 0x6e)
         return 0;
 
+#if defined(jpn)
+    if (coordA >= 0x8c && coordA <= 0xb7)
+        return 1;
+    if (coordA >= 0xc8 && coordA <= 0xf0)
+        return -1;
+    return 0;
+#else
     struct Obj2081* target = *(struct Obj2081**)((char*)obj + 0x89c);
     struct Elem2081* elem = FindElementByByte0xc4(target, 10);
     if (!elem)
@@ -43,4 +50,5 @@ extern "C" ARM int func_ov003_021782a0(struct Obj2081* obj) {
     if (x1 <= point && point <= y2)
         return -1;
     return 0;
+#endif
 }

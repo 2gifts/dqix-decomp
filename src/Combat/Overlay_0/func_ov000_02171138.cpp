@@ -1,4 +1,25 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define REGION_OFFSET_0 0x88
+#define REGION_OFFSET_1 0x78
+#define REGION_OFFSET_2 0x8b8
+#define REGION_OFFSET_3 0x480
+#define REGION_OFFSET_4 0x47f
+#define REGION_OFFSET_5 0xc2
+#define REGION_OFFSET_6 0xc4
+#define REGION_OFFSET_7 0xc6
+#else
+#define REGION_OFFSET_0 0x68
+#define REGION_OFFSET_1 0x5c
+#define REGION_OFFSET_2 0x950
+#define REGION_OFFSET_3 0x440
+#define REGION_OFFSET_4 0x43f
+#define REGION_OFFSET_5 0x82
+#define REGION_OFFSET_6 0x84
+#define REGION_OFFSET_7 0x86
+#endif
+
 #include "GameState/GameState.h"
 
 int GetFieldAt0x150(unsigned char* obj);
@@ -28,14 +49,14 @@ extern "C" ARM void func_ov000_02171138(void* objRaw) {
         return;
     }
     int off134 = *(int*)((char*)c + 0x134);
-    SwapGlobalEntry0203c108((struct Obj0203c108*)(obj + 0x68), (char*)off134);
-    *(int*)(obj + 0x5c) = 2;
-    int idx950 = *(int*)(field150 + 0x950);
-    *(unsigned char*)(obj + 0x440) = (unsigned char)idx950;
-    idx950 = *(int*)(field150 + 0x950);
+    SwapGlobalEntry0203c108((struct Obj0203c108*)(obj + REGION_OFFSET_0), (char*)off134);
+    *(int*)(obj + REGION_OFFSET_1) = 2;
+    int idx950 = *(int*)(field150 + REGION_OFFSET_2);
+    *(unsigned char*)(obj + REGION_OFFSET_3) = (unsigned char)idx950;
+    idx950 = *(int*)(field150 + REGION_OFFSET_2);
     char* p = field150 + idx950 * 2 + 0x100;
     unsigned short val = *(unsigned short*)(p + 0x6c);
-    *(unsigned char*)(obj + 0x43f) = (unsigned char)val;
+    *(unsigned char*)(obj + REGION_OFFSET_4) = (unsigned char)val;
 
     short savedC = *(short*)(obj + 0xc);
     short saved8 = *(short*)(obj + 0x8);
@@ -49,9 +70,9 @@ extern "C" ARM void func_ov000_02171138(void* objRaw) {
 
     *(int*)(obj + 0x28) = *(int*)(field150 + 0xa8);
     *(unsigned char*)(obj + 0x1c) = 0;
-    *(unsigned short*)(obj + 0x82) = 0;
-    *(unsigned short*)(obj + 0x84) = 0;
-    *(unsigned char*)(obj + 0x86) = 0;
+    *(unsigned short*)(obj + REGION_OFFSET_5) = 0;
+    *(unsigned short*)(obj + REGION_OFFSET_6) = 0;
+    *(unsigned char*)(obj + REGION_OFFSET_7) = 0;
     int fieldVal = GetField0x3acValue(bs);
     if (*(int*)(obj + 0x4c) == fieldVal) {
         *(unsigned char*)(obj + 0x24) |= 2;

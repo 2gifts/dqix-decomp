@@ -1,3 +1,9 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define _Z27ScaleStatsIfType12_021f6f10Pv func_ov023_021f6f10
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 struct TaggedNumber02184c30;
@@ -6,7 +12,12 @@ extern "C" void* func_ov017_021b2164(void);
 extern "C" void* func_ov011_021849c8(void*);
 struct ObjE2_021f8944;
 extern "C" struct ObjE2_021f8944* func_ov023_021f6880(void*, int);
+#if defined(jpn)
+#define ScaleStatsIfType12_021f6f10 func_ov023_021f6f10
+extern "C" int ScaleStatsIfType12_021f6f10(void* self);
+#else
 int ScaleStatsIfType12_021f6f10(void* self);
+#endif
 void SetFieldE2AndMaybeCall_021f8944(struct ObjE2_021f8944* obj, int a1, int a2, int a3);
 
 // USA: func_ov011_0218735c  (semantic: AllocateNodeAndSetFieldE2_0218735c)

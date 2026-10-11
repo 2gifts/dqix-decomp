@@ -20,6 +20,11 @@ extern int data_ov004_021707e8;
 
 // USA: func_ov004_021630a4  (semantic: ClearFlagAndResetVec_021630a4)
 extern "C" ARM int func_ov004_021630a4(void* a) {
+#if defined(jpn)
+    enum { stateFieldOffset = 0x18 };
+#else
+    enum { stateFieldOffset = 0x10 };
+#endif
     Node021630a4* node = func_ov004_0215e47c(a, 9);
     node->field0xc &= ~0x80;
     Vec3_021630a4 v2;
@@ -29,6 +34,6 @@ extern "C" ARM int func_ov004_021630a4(void* a) {
     v2.v[1] = 0;
     v2.v[2] = 0;
     node->SetVal0x1c(v2);
-    SetField0x3b0Value(GameState::GetInstance(), *(int*)((char*)&data_ov004_021707e8 + 0x10));
+    SetField0x3b0Value(GameState::GetInstance(), *(int*)((char*)&data_ov004_021707e8 + stateFieldOffset));
     return 0;
 }

@@ -1,5 +1,12 @@
+// JPN: func_ov017_021b166c
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+
+#if defined(jpn)
+enum { Field6fc = 0x4ec, Field718 = 0x508, Field448 = 0x488 };
+#else
+enum { Field6fc = 0x6fc, Field718 = 0x718, Field448 = 0x448 };
+#endif
 
 void EnqueueNameTag3_021c45b4(int combatantId);
 void EnqueueEventTag11_021cc97c(int id);
@@ -67,12 +74,12 @@ extern "C" ARM void func_ov017_021b0fe0(int id) {
 	}
 
 	int base = ((int)func_ov017_0218b5b0());
-	struct ListHead02046b60* listA = *(struct ListHead02046b60**)((char*)base + 0x3000 + 0x6fc);
+	struct ListHead02046b60* listA = *(struct ListHead02046b60**)((char*)base + 0x3000 + Field6fc);
 	if (!ListContainsId(listA, 0xa)) {
 		return;
 	}
 
-	void* field718 = *(void**)((char*)base + 0x3000 + 0x718);
+	void* field718 = *(void**)((char*)base + 0x3000 + Field718);
 	void* p = func_ov017_021b8468(field718);
 	void* result = GetOffsetPtr02160f08(p);
 
@@ -80,7 +87,7 @@ extern "C" ARM void func_ov017_021b0fe0(int id) {
 
 	if (flag) {
 		for (int slot = 0; slot < 4; slot++) {
-			int off = slot * 0x448;
+			int off = slot * Field448;
 			int val = *(int*)((char*)result + off + 0x9a4);
 			if (id == val) {
 				result = (char*)result + 0x958 + off;

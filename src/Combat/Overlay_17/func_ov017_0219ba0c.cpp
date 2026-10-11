@@ -23,6 +23,7 @@ extern char data_ov017_021d7584[];
 extern char data_ov017_021d758d[];
 extern char data_ov017_021d75a2[];
 
+// JPN: func_ov017_0219c4fc
 // USA: func_ov017_0219ba0c
 extern "C" ARM void func_ov017_0219ba0c(GameResources* res, int skipModels) {
     const void* file;

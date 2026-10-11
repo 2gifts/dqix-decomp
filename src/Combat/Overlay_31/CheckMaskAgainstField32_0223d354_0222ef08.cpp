@@ -1,3 +1,4 @@
+// JPN: func_ov031_0222f6e8
 #include <globaldefs.h>
 
 struct QStruct0222ef08 {

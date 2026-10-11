@@ -1,8 +1,8 @@
-func_ov019_0218c1c0 kind:function(arm,size=0x4) addr:0x0218c1c0
-func_ov019_0218c1c4 kind:function(arm,size=0x4) addr:0x0218c1c4
-func_ov019_0218c1c8 kind:function(arm,size=0xb98) addr:0x0218c1c8
+func_ov019_0218b5a0 kind:function(arm,size=0x4) addr:0x0218c1c0
+func_ov019_0218b5a4 kind:function(arm,size=0x4) addr:0x0218c1c4
+func_ov019_0218b5a8 kind:function(arm,size=0xb98) addr:0x0218c1c8
 func_ov019_0218cd60 kind:function(arm,size=0xc8) addr:0x0218cd60
-func_ov019_0218ce28 kind:function(arm,size=0x50) addr:0x0218ce28
+_Z36TriggerDispatchIfFlagOrByte_0218c240v kind:function(arm,size=0x50) addr:0x0218ce28
 data_ov019_0218ce7c kind:data(any) addr:0x0218ce7c
 data_ov019_0218ce88 kind:data(any) addr:0x0218ce88
 data_ov019_0218cea0 kind:data(any) addr:0x0218cea0

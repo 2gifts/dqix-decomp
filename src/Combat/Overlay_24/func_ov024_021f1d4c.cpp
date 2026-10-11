@@ -12,6 +12,7 @@ int IsFlagBit5Set_021de25c(struct FlagObj_021de25c* obj);
 
 extern unsigned short data_ov024_021fec0c;
 
+// JPN: func_ov024_021f2518
 // USA: func_ov024_021f1d4c  (semantic: CollectEligibleIDs_021f1d4c)
 extern "C" ARM int func_ov024_021f1d4c(int* a0, int a1, int a2, int* a3, short* a4) {
 	short buf[4];

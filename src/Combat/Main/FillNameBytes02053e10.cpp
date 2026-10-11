@@ -1,5 +1,12 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kFlagsOffset = 0x194 };
+#else
+enum { kFlagsOffset = 0x1a0 };
+#endif
+
+
 struct Struct0207ea38;
 extern "C" int _ZN7Model3D12GetBoneIndexEPKc(struct Struct0207ea38* obj, char* str);
 
@@ -14,7 +21,7 @@ extern char data_020f04ad;
 struct Obj02053e10 {
     char pad0[0x8];
     struct Struct0207ea38* field8;   // 0x8
-    char pad1[0x1a0 - 0xc];
+    char pad1[kFlagsOffset - 0xc];
     unsigned char f1a0;
     unsigned char f1a1;
     unsigned char f1a2;

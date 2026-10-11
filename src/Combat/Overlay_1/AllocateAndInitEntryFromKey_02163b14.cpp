@@ -14,7 +14,11 @@ void InitStruct02013718(char* obj, int a, int b);
 extern "C" void _ZN6Zone3D10SwitchZoneEt(void* g, int val, int flag);
 
 struct GlobalBlock_02163b14 {
+#if defined(jpn)
+    char pad[0x6c];
+#else
     char pad[0x4c];
+#endif
     SafeAllocator* allocator;
     int field50;
 };
@@ -41,7 +45,11 @@ extern "C" ARM int func_ov001_02163b14(void* obj) {
     SafeAllocator* allocator = g->allocator;
     int extra = g->field50;
 
+#if defined(jpn)
+    void* p1 = allocator->Allocate(0x2864);
+#else
     void* p1 = allocator->Allocate(0x2824);
+#endif
     if (p1 == 0) return 0;
 
     SafeAllocator* p2 = (SafeAllocator*)allocator->Allocate(0x14);

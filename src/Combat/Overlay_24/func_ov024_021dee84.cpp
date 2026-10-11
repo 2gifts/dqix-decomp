@@ -25,6 +25,7 @@ struct Flag_021dee84 { unsigned char pad : 7; unsigned char flag : 1; };
 struct Obj_021dee84 { char pad0[0xc]; void* field0xc; void* field0x10; int field0x14; };
 struct Action_021dee84 { char pad0[0x24]; struct PackedPair_021dee84 f24; char pad1[0x8]; short field30; };
 
+// JPN: func_ov024_021df71c
 // USA: func_ov024_021dee84
 extern "C" ARM void* func_ov024_021dee84(struct Obj_021dee84* obj, int unused, int id, struct Action_021dee84* action, int unused2, int unused3, unsigned char flagArg) {
 	GameObject* c = GetCombatantByID((int)obj->field0x10, id);

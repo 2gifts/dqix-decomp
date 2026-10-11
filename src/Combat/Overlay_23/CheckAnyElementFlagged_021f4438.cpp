@@ -6,10 +6,18 @@ int CheckField0NonZero(int* obj);
 void* GetPtrField0x2a04(GameState*);
 
 struct Obj021f4438 {
+#if defined(jpn)
+    char pad0[0x5af0];
+#else
     char pad0[0x5900];
+#endif
     unsigned char byte5900;
     signed char byte5901;
+#if defined(jpn)
+    char pad1[0x7014 - 0x5af2];
+#else
     char pad1[0x6e24 - 0x5902];
+#endif
     int f6e24;
 };
 

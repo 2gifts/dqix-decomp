@@ -1,6 +1,13 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
+#if defined(jpn)
+enum { kRegionValue200_118 = 0x118 };
+#else
+enum { kRegionValue200_118 = 0x200 };
+#endif
+
+
 int StringLength(const char* s);
 extern char data_ov003_0217fce0;
 
@@ -19,6 +26,7 @@ struct Src021580d8 {
 };
 
 // USA: func_ov003_021580d8  (semantic: CopyAndFormatMessage_021580d8)
+// JPN: func_ov003_021595c4
 extern "C" ARM void func_ov003_021580d8(struct Obj021580d8* dst, struct Src021580d8* src) {
     char* text;
     if (src == 0) {
@@ -32,6 +40,6 @@ extern "C" ARM void func_ov003_021580d8(struct Obj021580d8* dst, struct Src02158
     if (text == 0) {
         return;
     }
-    memset(dst->blockB, 0, 0x200);
+    memset(dst->blockB, 0, kRegionValue200_118);
     sprintf(dst->blockB + StringLength(dst->blockB), &data_ov003_0217fce0, text);
 }

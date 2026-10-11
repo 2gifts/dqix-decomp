@@ -2,7 +2,11 @@
 #include "Graphics/Model3D.h"
 
 struct Holder021e509c {
+#if defined(jpn)
+    char pad0[4];
+#else
     char pad0[0xc];
+#endif
     char* slots;
 };
 
@@ -29,6 +33,7 @@ Record021e509c* GetInlineRecordByBattleId(void* obj, int id);
 extern "C" int* _Z28GetSlotPtr_021e8cf0_021e8cf0Pci(char* base, int idx);
 extern Holder021e509c data_ov025_021ef988;
 
+// JPN: func_ov025_021e558c
 // USA: func_ov025_021e509c
 extern "C" ARM int func_ov025_021e509c(Param021e509c* p) {
     void* obj = func_02057924();

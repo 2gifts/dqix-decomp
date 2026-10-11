@@ -28,6 +28,19 @@ extern "C" Animation_021e67f4* _Z27FindEntryByHalfword0205a3d0P17Container0205a3
 extern "C" void _Z22IterateEntries0205a330P17Container0205a330i(struct Container0205a330* c, int arg);
 extern "C" void func_0205ae8c(void* obj);
 
+#if defined(jpn)
+struct ProfileEditor_021e67f4 {
+    char pad0[0x90];
+    char window_[0x1334 - 0x90];
+    void* renderer_;
+    void* unk_1360;
+    char pad1364[0x1368 - 0x133c];
+    unsigned char unk_13a0;
+    char pad13a1[3];
+    int unk_13a4;
+};
+
+#else
 struct ProfileEditor_021e67f4 {
     char pad0[0xac];
     char window_[0x135c - 0xac];
@@ -39,6 +52,8 @@ struct ProfileEditor_021e67f4 {
     int unk_13a4;
 };
 
+#endif
+// JPN: func_ov023_021e6d64
 // USA: func_ov023_021e67f4
 extern "C" ARM void func_ov023_021e67f4(ProfileEditor_021e67f4* self)
 {

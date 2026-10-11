@@ -13,6 +13,7 @@ struct StateObj022111e0 {
 };
 extern StateObj022111e0* data_ov031_0224e590;
 
+// JPN: func_ov031_022119c0
 // USA: func_ov031_022111e0  (semantic: ActivateStateIfReady_022111e0)
 extern "C" ARM int func_ov031_022111e0(void) {
     if (data_ov031_0224e590 == NULL) {

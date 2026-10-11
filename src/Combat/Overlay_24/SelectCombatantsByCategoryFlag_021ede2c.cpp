@@ -12,6 +12,7 @@ struct Obj_021ede2c { int field0; };
 struct Buf4_021ede2c { short v[4]; };
 extern struct Buf4_021ede2c data_ov024_021fea44;
 
+// JPN: func_ov024_021ee5f8
 // USA: func_ov024_021ede2c  (semantic: SelectCombatantsByCategoryFlag_021ede2c)
 extern "C" ARM int func_ov024_021ede2c(struct Obj_021ede2c* obj) {
     struct Buf4_021ede2c buf = data_ov024_021fea44;

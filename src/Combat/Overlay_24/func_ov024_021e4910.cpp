@@ -30,6 +30,7 @@ extern "C" void func_ov000_02159eac(void*, void*, int);
 extern "C" void func_ov000_0215cd44(void*, void*, GameObject*, int, int, int, int);
 extern "C" void _Z32AppendToChainAndIncCount0215ffc4PvS_i(void*, void*, int);
 
+// JPN: func_ov024_021e51a8
 // USA: func_ov024_021e4910
 extern "C" ARM unsigned long long func_ov024_021e4910(StageAction* action, int unused, short id, StageParameters* parameters) {
     GameObject* combatant = GetCombatantByID((int)action->battle, id);

@@ -1,3 +1,9 @@
+#if defined(jpn)
+enum { RegionalSize = 0xe0 };
+#else
+enum { RegionalSize = 0xe4 };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Memory/AllocatorUnion.h"
@@ -39,6 +45,7 @@ struct EncounterState020dac94 {
 };
 
 // USA: func_020dac94
+// JPN: func_020dac94
 ARM void UpdateEncounterState020dac94(void* objIn) {
     struct EncounterState020dac94* obj = (struct EncounterState020dac94*)objIn;
     GameState* battle = GameState::GetInstance();
@@ -57,7 +64,7 @@ ARM void UpdateEncounterState020dac94(void* objIn) {
         }
         obj->allocator.CreateTypeA(buf, 0x6000);
         obj->allocator.Reset();
-        void* mem = obj->allocator.Allocate(0xe4);
+        void* mem = obj->allocator.Allocate(RegionalSize);
         obj->field0xc = mem;
         if (mem == NULL) {
             func_020a0c0c();

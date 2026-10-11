@@ -58,6 +58,7 @@ extern "C" ARM int func_ov004_0215d384(void* a) {
     void* nodeC = func_ov004_02156f6c(a, 0x1b);
     if (nodeC) func_ov023_021f809c(nodeC, a);
 
+#if !defined(jpn)
     VObjB0215d384* nodeB = (VObjB0215d384*)func_ov023_021f6880(func_ov011_021849c8(a), 0x1dd);
     if (!nodeB) return 0;
     if (ScaleStatsIfType12_021f6f10(nodeB) != 8) return 0;
@@ -74,5 +75,6 @@ extern "C" ARM int func_ov004_0215d384(void* a) {
     case 5: args.a = 0x9000; nodeB->Method1c(args); break;
     default: break;
     }
+#endif
     return 0;
 }

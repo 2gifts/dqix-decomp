@@ -37,7 +37,11 @@ struct Unit_021c4fa0 {
     char pad1e[0x32];
     unsigned short flags50;
     short field52;
+#if defined(jpn)
+    char pad54[0xae];
+#else
     char pad54[0xb2];
+#endif
     unsigned char field106;
 };
 
@@ -71,6 +75,7 @@ struct Evt_021c4fa0 {
     struct Payload_021c4fa0 payload;
 };
 
+// JPN: func_ov017_021c546c
 // USA: func_ov017_021c4fa0
 extern "C" ARM void func_ov017_021c4fa0(int unitIdx, int id) {
     GameState* gs;
@@ -136,7 +141,11 @@ extern "C" ARM void func_ov017_021c4fa0(int unitIdx, int id) {
             p->fieldC = entry->value;
             p->fieldE = entry->value2;
         } else {
+#if defined(jpn)
+            iv = (IdValue_021c4fa0*)((char*)res + 0x4204);
+#else
             iv = (IdValue_021c4fa0*)((char*)res + 0x44b4);
+#endif
             if (iv->id == id) {
                 p->fieldC = iv->value;
             } else {

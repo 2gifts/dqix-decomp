@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include "Combat/Main/MessageSlotTable.h"
 
+
 extern "C" unsigned char func_ov004_02157128(void* obj);
 extern "C" void* func_ov004_02156fd4(void* obj, int key);
 struct Container020dedd0;
@@ -37,7 +38,8 @@ struct NodeShort38_02159ce0 { char pad[0x38]; short field38; };
 
 struct ElemNibble_02159ce0 { unsigned int nibble : 4; unsigned int rest : 28; };
 
-// USA: func_ov004_02159ce0  (semantic: SetupTypeAndNotifyPair_02159ce0)
+// USA: func_ov004_02159ce0
+// JPN: func_ov004_0215acd8
 extern "C" ARM int func_ov004_02159ce0(void* a) {
     unsigned char idxVal = func_ov004_02157128(a);
     Container020dedd0* node = (Container020dedd0*)func_ov004_02156fd4(a, 5);
@@ -104,7 +106,11 @@ extern "C" ARM int func_ov004_02159ce0(void* a) {
     void* n7 = func_ov004_02157054(a, 7);
     if (n7) {
         SetFieldThenTailCallOffset20_021fbdf4((Obj021fbdf4*)n7, idxVal);
+#if defined(jpn)
+        data_ov004_021707d8.ptr[0xa8] = 0;
+#else
         data_ov004_021707d8.ptr[0x9c] = 0;
+#endif
     }
 
     return 0;

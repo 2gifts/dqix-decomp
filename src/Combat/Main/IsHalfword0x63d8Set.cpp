@@ -1,7 +1,11 @@
 #include <globaldefs.h>
 
 struct FieldBlock63d8_115d0 {
+#if defined(jpn)
+    char unk[0x6178];
+#else
     char unk[0x63D8];
+#endif
     unsigned short field;
 };
 

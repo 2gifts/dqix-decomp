@@ -41,10 +41,16 @@ struct LocalBuf021d069c {
     unsigned short f10;
 };
 
+// JPN: func_ov017_021d0b4c
 // USA: func_ov017_021d069c
 extern "C" ARM void func_ov017_021d069c(int a0, struct ArgB021d069c* a1, int unused2, unsigned char* a3, struct SearchStruct0202c1a4* a4) {
+#if defined(jpn)
+ enum {regionalOffset=0x524};
+#else
+ enum {regionalOffset=0x734};
+#endif
     func_02012fe4();
-    unsigned char* table = *(unsigned char**)((char*)a3 + 0x3000 + 0x734);
+    unsigned char* table = *(unsigned char**)((char*)a3 + 0x3000 + regionalOffset);
     if (func_0202c508(a4)) {
         func_ov017_021d0490(a0);
         func_ov017_021c3e18(1);

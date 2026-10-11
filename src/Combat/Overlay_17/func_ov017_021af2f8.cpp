@@ -47,6 +47,7 @@ struct Obj021af2f8 {
     signed char field10;
 };
 
+// JPN: func_ov017_021afa08
 // USA: func_ov017_021af2f8
 extern "C" ARM unsigned char func_ov017_021af2f8(Obj021af2f8* obj) {
     GameState::GetInstance();

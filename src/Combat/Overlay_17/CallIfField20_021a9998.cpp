@@ -4,6 +4,7 @@ struct S021a9998 { unsigned char pad[0x20]; void* f20; };
 
 extern "C" void func_ov008_02189404(void*);
 
+// JPN: func_ov017_021aa16c
 // USA: func_ov017_021a9998
 ARM void CallIfField20_021a9998(S021a9998* obj) {
 	void* p = obj->f20;

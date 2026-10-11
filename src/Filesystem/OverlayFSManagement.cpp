@@ -12,7 +12,6 @@
 #define data_020f2e44 data_020f2e58
 #define data_020f2290 data_020f23fc
 
-#define func_020c9be0 func_020cb6ac
 #define func_020c0c3c func_020c2708
 #endif
 

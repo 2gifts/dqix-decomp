@@ -53,6 +53,7 @@ struct Task021a9768 {
 extern "C" void func_ov017_021a9714(Task021a9768* task);
 
 // USA: func_ov017_021a9768
+// JPN: func_ov017_021a9f3c
 extern "C" ARM void func_ov017_021a9768(Task021a9768* task) {
     GameState* gs = GameState::GetInstance();
     GameResources* res = func_ov017_0218b5b0();
@@ -61,19 +62,32 @@ extern "C" ARM void func_ov017_021a9768(Task021a9768* task) {
     _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)unknown, 1);
     SetBitsInField4((unsigned int*)res, 0xc0);
     if (task->step == 0) {
+#if defined(jpn)
+        func_020a0cc4(0x1c704);
+        void* buffer = AllocateAligned4((AllocatorUnion*)&data_02114e20, 0x1c704);
+#else
         func_020a0cc4(0x1c70c);
         void* buffer = AllocateAligned4((AllocatorUnion*)&data_02114e20, 0x1c70c);
+#endif
         if (buffer == NULL) {
             func_020a0c0c();
             task->failed = 1;
             return;
         }
         _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0(_Z25GetGlobalResetObj020d7a50v());
+#if defined(jpn)
+        task->allocator.CreateTypeA(buffer, 0x1c704);
+#else
         task->allocator.CreateTypeA(buffer, 0x1c70c);
+#endif
         task->allocator.Reset();
         PushInputLogB(1);
         func_020a1940(OVERLAY_ID(8));
+#if defined(jpn)
+        task->scene = (Scene021a9768*)task->allocator.Allocate(0xec4);
+#else
         task->scene = (Scene021a9768*)task->allocator.Allocate(0xecc);
+#endif
         if (task->f54 == 0) {
             func_ov008_02188f5c(task->scene, task->index, 0);
         } else {

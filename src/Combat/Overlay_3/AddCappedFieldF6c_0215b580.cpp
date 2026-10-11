@@ -2,6 +2,7 @@
 #include "GameState/GameState.h"
 
 
+// JPN: func_ov003_0215c9e0
 // USA: func_ov003_0215b580
 ARM int AddCappedFieldF6c_0215b580(int unused, int amount) {
     GameState* bs = GameState::GetInstance();

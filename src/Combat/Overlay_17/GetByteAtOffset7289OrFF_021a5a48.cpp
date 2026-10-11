@@ -7,7 +7,13 @@ ARM int GetByteAtOffset7289OrFF_021a5a48(void) {
 	int v = data_ov017_021d83ac;
 	int result = 0xff;
 	if (v != 0) {
-		result = *(unsigned char*)(v + 0x1c79);
+		result = *(unsigned char*)(v +
+#if defined(jpn)
+            0x1b3d
+#else
+            0x1c79
+#endif
+);
 	}
 	return result;
 }

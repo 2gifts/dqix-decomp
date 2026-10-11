@@ -39,10 +39,16 @@ static inline unsigned char GetFieldB(GameObject* c) { unsigned char v = GetStat
 static inline unsigned char GetFieldC(GameObject* c) { unsigned char v = GetStatusBits(c)->fieldC; return v; }
 static inline unsigned char GetState(GameObject* c) { unsigned char v = GetStatusBits(c)->state; return v; }
 
+// JPN: func_ov017_021c7200
 // USA: func_ov017_021c6d50
 extern "C" ARM void func_ov017_021c6d50() {
+#if defined(jpn)
+ enum { regionalOffset=0x508 };
+#else
+ enum { regionalOffset=0x718 };
+#endif
     GameState* bs = GameState::GetInstance();
-    unsigned char* table = *(unsigned char**)((char*)func_ov017_0218b5b0() + 0x3000 + 0x718);
+    unsigned char* table = *(unsigned char**)((char*)func_ov017_0218b5b0() + 0x3000 + regionalOffset);
     unsigned char* search = (unsigned char*)func_ov017_021b8478(table);
     void* data = GetData02100044();
 

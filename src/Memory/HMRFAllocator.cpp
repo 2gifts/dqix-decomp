@@ -1,9 +1,6 @@
 #include "Memory/HMRFAllocator.h"
 #include "std_library_functions.h"
 
-#ifdef jpn
-#define func_020ca3ec func_020cbeb8
-#endif
 
 extern "C"
 {

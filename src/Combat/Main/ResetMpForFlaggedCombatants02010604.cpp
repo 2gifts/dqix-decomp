@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kOffset97c = 0x71c, kOffset18c = 0x180, kOffset980 = 0x720, kOffset970 = 0x710, kOffsetcb0 = 0xa50, kOffsetcb4 = 0xa54, kOffsetcb8 = 0xa58, kOffset729 = 0x4c9 };
+#else
+enum { kOffset97c = 0x97c, kOffset18c = 0x18c, kOffset980 = 0x980, kOffset970 = 0x970, kOffsetcb0 = 0xcb0, kOffsetcb4 = 0xcb4, kOffsetcb8 = 0xcb8, kOffset729 = 0x729 };
+#endif
+
 #include "GameState/GameState.h"
 
 extern "C" void* func_0202ae18(void);
@@ -24,7 +31,7 @@ extern int data_020f83d8;
 struct CombatantView02010604 {
     char pad0[0x130];
     unsigned int* current;
-    char pad130[0x18c - 0x134];
+    char pad130[kOffset18c - 0x134];
     unsigned int field18c;
 };
 
@@ -39,8 +46,8 @@ ARM void ResetMpForFlaggedCombatants02010604(GameState* obj, int arg1, int arg2,
         }
     }
 
-    for (i = 0; i < *((unsigned char*)((char*)obj + 0x3000) + 0x980); i++) {
-        int id = *((unsigned char*)((char*)obj + i + 0x3000) + 0x97c);
+    for (i = 0; i < *((unsigned char*)((char*)obj + 0x3000) + kOffset980); i++) {
+        int id = *((unsigned char*)((char*)obj + i + 0x3000) + kOffset97c);
         GameObject* combatant = obj->GetPartyMemberByIndex(id);
         struct CombatantView02010604* view;
         if (combatant == NULL) continue;
@@ -57,17 +64,17 @@ ARM void ResetMpForFlaggedCombatants02010604(GameState* obj, int arg1, int arg2,
     }
 
     if (arg2 != 0) {
-        unsigned int* p970 = (unsigned int*)((char*)obj + 0x3000 + 0x970);
+        unsigned int* p970 = (unsigned int*)((char*)obj + 0x3000 + kOffset970);
         *p970 = *p970 >> 1;
     }
 
     func_ov017_0219bfb4(2, arg3);
 
-    if (*(int*)((char*)obj + 0x5000 + 0xcb0) == 0x10 && *(int*)((char*)obj + 0x5000 + 0xcb4) == 2 &&
-        *(int*)((char*)obj + 0x5000 + 0xcb8) == 1) {
+    if (*(int*)((char*)obj + 0x5000 + kOffsetcb0) == 0x10 && *(int*)((char*)obj + 0x5000 + kOffsetcb4) == 2 &&
+        *(int*)((char*)obj + 0x5000 + kOffsetcb8) == 1) {
         void* g2 = func_0205ec34();
         SetOrClearBitInArray(g2, (unsigned char*)((char*)g2 + 0x8c), 0x113a, 0);
     }
 
-    *((unsigned char*)&data_020f83d8 + 0x729) = 0;
+    *((unsigned char*)&data_020f83d8 + kOffset729) = 0;
 }

@@ -1,3 +1,11 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define data_ov006_0215fffe data_ov006_02161350
+#define data_ov006_02160010 data_ov006_02161364
+#define func_ov006_0215f4dc func_ov006_021608fc
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include <std_library_functions.h>
 
@@ -12,7 +20,7 @@ struct PartyMemberData {
 };
 
 struct GameObject {
-    char unk_0[0x150];
+    char unk_0[R(0x144, 0x150)];
     PartyMemberData* partyData_;
 };
 
@@ -23,12 +31,12 @@ struct Party {
 };
 
 struct AlchemyMenu {
-    char unk_0[0x48];
+    char unk_0[R(0x40, 0x48)];
     short** items_;
     unsigned char** counts_;
     unsigned short* sizes_;
     char unk_54[0x20];
-    char ingredients_[0xd8];
+    char ingredients_[R(0xd4, 0xd8)];
     char table_[0xc];
 };
 

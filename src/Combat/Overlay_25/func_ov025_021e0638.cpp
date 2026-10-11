@@ -1,8 +1,15 @@
+// JPN: func_ov025_021e0f48
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 #include "Combat/Main/BattleList.h"
 #include "std_library_functions.h"
+#if defined(jpn)
+enum { Field29c = 0x218, Field55d8 = 0x57c8, Field18c = 0x180, Fielde78 = 0xdf4 };
+#else
+enum { Field29c = 0x29c, Field55d8 = 0x55d8, Field18c = 0x18c, Fielde78 = 0xe78 };
+#endif
+
 struct BattleStruct {
     int unk0;
     int unk4;
@@ -130,8 +137,8 @@ extern "C" ARM void func_ov025_021e0638(unsigned char* self) {
     int n;
     Node021e0638* tail;
     GameState* gs = GameState::GetInstance();
-    unsigned char* world = *(unsigned char**)(self + 0x29c);
-    ElemList021e0638* cur = (ElemList021e0638*)(world + 0x821c) + *(int*)(self + 0x55d8);
+    unsigned char* world = *(unsigned char**)(self + Field29c);
+    ElemList021e0638* cur = (ElemList021e0638*)(world + 0x821c) + *(int*)(self + Field55d8);
     Ent021e0638 ents[12];
     int ids[60];
     unsigned char seen[0x51];
@@ -175,14 +182,14 @@ extern "C" ARM void func_ov025_021e0638(unsigned char* self) {
     nids = 0;
     changed = 1;
     tail = &head;
-    for (i = *(int*)(self + 0x55d8); i < *(int*)(Off8000_021e0638(world) + 0xe24); i++) {
+    for (i = *(int*)(self + Field55d8); i < *(int*)(Off8000_021e0638(world) + 0xe24); i++) {
         unsigned char* o = ((ElemList021e0638*)Off8000_021e0638(Off21c_021e0638(world)))[i].p10;
         if (o != 0) {
             ids[nids++] = *(unsigned short*)(o + 0x20);
         }
     }
     unsigned char* lists = Off21c_021e0638(world);
-    for (int j = 0; j < *(int*)(self + 0x55d8); j++) {
+    for (int j = 0; j < *(int*)(self + Field55d8); j++) {
         ElemList021e0638* e = (ElemList021e0638*)(lists + 0x8000) + j;
         if (e->p10 != 0) {
             ids[nids++] = *(unsigned short*)(e->p10 + 0x20);
@@ -351,10 +358,10 @@ found:
     for (int i = 0; i < n; i++) {
         int flag = 0;
         unsigned char* c = (unsigned char*)_Z25GetCombatantWithFlag0x100P9GameStatei((BattleStruct*)gs, *(short*)(ents[i].obj + 4));
-        if (c != 0 && (*(unsigned int*)(c + 0x18c) & 1)) {
+        if (c != 0 && (*(unsigned int*)(c + Field18c) & 1)) {
             flag = 1;
         }
-        if (GetSubstructByte0x56(ents[i].obj) != 0 && flag == 0 && self[0xe78] != 0) {
+        if (GetSubstructByte0x56(ents[i].obj) != 0 && flag == 0 && self[Fielde78] != 0) {
             _Z30ApplyFlag0x4IfEligible02049a74P11Obj02049a74((Obj02049a74*)ents[i].obj);
         } else {
             ClearSubstructFlag0x4(ents[i].obj);
@@ -445,7 +452,7 @@ found:
     for (int i = 0; i < n; i++) {
         unsigned char* o = ents[i].obj;
         if (GetSubstructByte0x56(o) != 0 && GetSubstructByte0x34(o) == 0 && CheckHighNibble0xc1Not2To5(o) != 0
-            && (*(unsigned int*)(*(unsigned char**)(o + 0x138) + 0x14) & 1) == 0 && self[0xe78] != 0
+            && (*(unsigned int*)(*(unsigned char**)(o + 0x138) + 0x14) & 1) == 0 && self[Fielde78] != 0
             && CheckSubstructFlag0x200(o) == 0) {
             _Z26DispatchTargetByte020494c0P11Obj020494c0((Obj020494c0*)o);
         }

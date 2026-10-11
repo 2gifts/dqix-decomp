@@ -28,8 +28,14 @@ extern "C" void _Z19SetByteFieldAt0x1a7Phh(GameObject* obj, int value);
 void SetFields0x44(Fields020407b4* dst, int a, int b, int c);
 void StoreVec3AtField0x50(unsigned char* obj, int a, int b, int c);
 
+// JPN: func_ov017_021923b8
 // USA: func_ov017_021917f0
 extern "C" ARM void func_ov017_021917f0(int idx, int mode) {
+#if defined(jpn)
+ enum { regionalOffset = 0x180 };
+#else
+ enum { regionalOffset = 0x18c };
+#endif
     GameState* gs = GameState::GetInstance();
     CombatantInfo150* info;
     GameObject* combatant = GetCombatantWithFlag0x100(gs, idx);
@@ -63,7 +69,7 @@ extern "C" ARM void func_ov017_021917f0(int idx, int mode) {
             obj->obj3D_.ClearFlag16();
         }
     }
-    unsigned int* flags = (unsigned int*)((char*)combatant + 0x18c);
+    unsigned int* flags = (unsigned int*)((char*)combatant + regionalOffset);
     if (info->poseIndex == 6) {
         *flags |= 0x20;
     } else {

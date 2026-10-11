@@ -47,16 +47,16 @@ ARM int WarpScript_Opcode_69(Script::Parameter *params, int numParams) {
     fix32_t centreX      = (int) (4096.0f * (p++)->ToFloat());
     fix32_t centreY      = (int) (4096.0f * (p++)->ToFloat());
     fix32_t centreZ      = (int) (4096.0f * (p++)->ToFloat());
-    fix32_t lengthX      = (int) (4096.0f * (p++)->ToFloat()) / 2;
-    fix32_t lengthY      = (int) (4096.0f * (p++)->ToFloat()) / 2;
-    fix32_t lengthZ      = (int) (4096.0f * (p++)->ToFloat()) / 2;
+    fix32_t halfExtentX      = (int) (4096.0f * (p++)->ToFloat()) / 2;
+    fix32_t halfExtentY      = (int) (4096.0f * (p++)->ToFloat()) / 2;
+    fix32_t halfExtentZ      = (int) (4096.0f * (p++)->ToFloat()) / 2;
 
-    fix32_t xMax = centreX + lengthX;
-    fix32_t xMin = centreX - lengthX;
-    fix32_t yMax = centreY + lengthY;
-    fix32_t yMin = centreY - lengthY;
-    fix32_t zMax = centreZ + lengthZ;
-    fix32_t zMin = centreZ - lengthZ;
+    fix32_t xMax = centreX + halfExtentX;
+    fix32_t xMin = centreX - halfExtentX;
+    fix32_t yMax = centreY + halfExtentY;
+    fix32_t yMin = centreY - halfExtentY;
+    fix32_t zMax = centreZ + halfExtentZ;
+    fix32_t zMin = centreZ - halfExtentZ;
 
     entry.unk_58[1] = centreY;
     entry.unk_4[0]  = xMax;

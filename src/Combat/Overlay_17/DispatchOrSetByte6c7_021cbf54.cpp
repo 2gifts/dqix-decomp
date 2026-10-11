@@ -16,9 +16,15 @@ struct Src021cbf54 {
 	unsigned short field6;
 };
 
+// JPN: func_ov017_021cc404
 // USA: func_ov017_021cbf54
 ARM void DispatchOrSetByte6c7_021cbf54(int unused0, Src021cbf54* src, int unused2, unsigned char* obj) {
-	unsigned char* h = *(unsigned char**)(obj + 0x3000 + 0x718);
+#if defined(jpn)
+ enum {regionalOffset0=0x508};
+#else
+ enum {regionalOffset0=0x718};
+#endif
+	unsigned char* h = *(unsigned char**)(obj + 0x3000 + regionalOffset0);
 	Ret021cbf54* r = (Ret021cbf54*)func_ov017_021b8478(h);
 	if (r->field8 != src->field6) return;
 	if (src->field4 == 0) {

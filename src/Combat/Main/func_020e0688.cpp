@@ -4,7 +4,11 @@
 struct Obj020e0688 {
     unsigned char pad0[0x55c];
     unsigned char flag_55c;
+#if defined(jpn)
+    unsigned char pad1[0x6bc - 0x55d];
+#else
     unsigned char pad1[0x768 - 0x55d];
+#endif
     unsigned char flag_768;
     unsigned char pad2[0x9c5 - 0x769];
     unsigned char flag_9c5;
@@ -53,6 +57,7 @@ struct LocalList020e0688 {
 };
 
 // USA: func_020e0688
+// JPN: func_020e0688
 extern "C" ARM void func_020e0688(struct Obj020e0688* self) {
     if (self->flag_9c5 == 0) {
         return;

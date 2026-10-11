@@ -39,8 +39,16 @@ struct List02160094;
 struct EffectSource { unsigned char padding0[0x20]; unsigned short id; };
 struct EffectTarget { unsigned char padding0[0xe]; short id; };
 struct List021600f8 { unsigned char padding0[9]; unsigned char count; };
+#if defined(jpn)
+struct EffectWork { unsigned char padding0[0x70f2]; unsigned short id; };
+#else
 struct EffectWork { unsigned char padding0[0x6f02]; unsigned short id; };
+#endif
+#if defined(jpn)
+struct EffectGlobals { unsigned char padding0[4]; char* slots; };
+#else
 struct EffectGlobals { unsigned char padding0[0xc]; char* slots; };
+#endif
 extern EffectGlobals data_ov025_021ef988;
 extern "C" void* func_02057924();
 extern "C" EffectSource* _Z22GetNodeAtIndex02160094P12List02160094i(List02160094*, int);
@@ -55,6 +63,7 @@ static inline void ScaleHorizontal(Vector3i* offset, int factor) {
     offset->z *= factor;
 }
 
+// JPN: func_ov025_021e4690
 // USA: func_ov025_021e41a0
 extern "C" ARM int func_ov025_021e41a0(EffectCommand* command, List021600f8* list) {
     GameState* game = GameState::GetInstance();

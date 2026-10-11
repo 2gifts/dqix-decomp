@@ -1,4 +1,12 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kStatusOffset = 0x620 };
+enum { kStatusValue = 0 };
+#else
+enum { kStatusOffset = 0x520 };
+enum { kStatusValue = 4 };
+#endif
+
 #include "System/DMA.h"
 
 extern "C" int LoadToMainOAM(int arg0, int arg1, unsigned int arg2);
@@ -24,6 +32,6 @@ ARM void SyncMainSubOam0203bdb0(struct Obj0203bdb0* obj) {
         DMAMemsetSynchronous(3, (unsigned int)&data_021056b4, 0xc0, 0x400);
     }
     if (obj->flagA != 0 || obj->flagB != 0) {
-        *(short*)((char*)obj + 0x520) = 4;
+        *(short*)((char*)obj + kStatusOffset) = kStatusValue;
     }
 }

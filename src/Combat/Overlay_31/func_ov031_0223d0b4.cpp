@@ -1,3 +1,4 @@
+// JPN: func_ov031_0223d894
 #include <globaldefs.h>
 
 struct InputRepeatState0223d0b4 {

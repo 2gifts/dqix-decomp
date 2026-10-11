@@ -19,8 +19,10 @@ extern "C" ARM int func_ov004_0215da0c(void* obj) {
     void* p = GetPtrField0x2a04(GameState::GetInstance());
     int result4 = SumKeyedLookups02086bf4((char*)p, *(short*)(data_ov004_021707d8.ptr + 0xe));
 
+#if !defined(jpn)
     unsigned char flag = data_ov004_021707d8.ptr[0x9d];
     if (!flag) return 0;
+#endif
 
     int r6 = func_ov004_02156fd4(obj, 5);
     if (r6) {
@@ -34,7 +36,11 @@ extern "C" ARM int func_ov004_0215da0c(void* obj) {
         func_0207cf30(local, *(short*)(data_ov004_021707d8.ptr + 0xe), data_ov004_021707d8.ptr[0x11], 1);
 
         InitStruct0207cc0c((char*)local);
+#if defined(jpn)
+        data_ov004_021707d8.ptr[0xa9] = 0;
+#else
         data_ov004_021707d8.ptr[0x9d] = 0;
+#endif
     }
 
     int sum = result4 + data_ov004_021707d8.ptr[0x11];

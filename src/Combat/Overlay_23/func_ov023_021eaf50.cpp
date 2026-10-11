@@ -17,18 +17,24 @@ struct BlockWord021eaf50 {
     unsigned int fieldB : 7;
 };
 
+// JPN: func_ov023_021eaeb4
 // USA: func_ov023_021eaf50  (semantic: ApplyBattleBlockFieldBIfEligible_021eaf50)
 extern "C" ARM int func_ov023_021eaf50(void* obj) {
+#if defined(jpn)
+ enum {regionalOffset0=0x4ec, regionalOffset1=0x508, regionalOffset2=0x240c};
+#else
+ enum {regionalOffset0=0x6fc, regionalOffset1=0x718, regionalOffset2=0x23ec};
+#endif
     int result = 0;
 
     char* base = func_ov017_0218b5b0() + 0x3000;
-    struct ListHead02046b38* list = *(struct ListHead02046b38**)(base + 0x6fc);
-    struct ListNode02046b38* node = *(struct ListNode02046b38**)(base + 0x718);
+    struct ListHead02046b38* list = *(struct ListHead02046b38**)(base + regionalOffset0);
+    struct ListNode02046b38* node = *(struct ListNode02046b38**)(base + regionalOffset1);
     void* headerObj = func_ov017_021b8478(node);
 
     if (ListContainsNode(list, node) != 0) {
         void* zone = func_02012fe4();
-        ActiveGrottoClass* grotto = (ActiveGrottoClass*)((char*)zone + 0x23ec);
+        ActiveGrottoClass* grotto = (ActiveGrottoClass*)((char*)zone + regionalOffset2);
         DetailedTreasureMapData* detail = grotto->GetDetailedData();
 
         if (*((unsigned char*)headerObj + 0x25) != 0) {

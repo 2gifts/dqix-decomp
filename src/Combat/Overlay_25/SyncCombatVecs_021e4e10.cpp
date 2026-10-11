@@ -20,6 +20,7 @@ struct WorkStruct021e4e10 {
     struct Inner021e4e10 vecB;
 };
 
+// JPN: func_ov025_021e5300
 // USA: func_ov025_021e4e10
 ARM int SyncCombatVecs_021e4e10(void) {
     GameState* bs = GameState::GetInstance();

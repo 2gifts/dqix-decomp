@@ -1,3 +1,4 @@
+// JPN: func_ov031_0223589c
 #include <globaldefs.h>
 
 extern "C" void* func_ov031_0223cf4c(int size, int align);

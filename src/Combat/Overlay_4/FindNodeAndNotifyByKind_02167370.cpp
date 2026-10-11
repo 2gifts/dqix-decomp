@@ -1,7 +1,14 @@
 #include <globaldefs.h>
 
 extern "C" int func_ov004_021666bc(void* a1, int* out);
+#if defined(jpn)
+struct RegionalContextPointer { unsigned int reserved; char* value; };
+extern RegionalContextPointer data_ov004_0217101c;
+#define CONTEXT_VALUE data_ov004_0217101c.value
+#else
 extern char* data_ov004_0217101c;
+#define CONTEXT_VALUE data_ov004_0217101c
+#endif
 extern "C" void func_ov011_021848a0(void* obj, int val);
 
 struct ValField02167370 {
@@ -16,7 +23,7 @@ ARM int FindNodeAndNotifyByKind_02167370(void* a1) {
     int local;
     int key = func_ov004_021666bc(a1, &local);
 
-    void* node = *(void**)(data_ov004_0217101c + 8);
+    void* node = *(void**)(CONTEXT_VALUE + 8);
     while (node != NULL) {
         if (*(short*)((char*)node + 0) == key) break;
         node = *(void**)((char*)node + 8);

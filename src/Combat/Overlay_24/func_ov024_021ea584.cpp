@@ -37,13 +37,18 @@ struct ComboParameters {
     unsigned int field_2c_rest : 4;
 };
 struct ComboCombatant : GameObject {
+#if defined(jpn)
+    unsigned char pad_13c[8];
+#else
     unsigned char pad_13c[0x14];
+#endif
     unsigned char* traits;
 };
 int TestBit2At0x2f4(unsigned char*);
 void ZeroFieldsAt0xe58And0xe82And0x8e52(void*);
 static inline int IsPartyMember(int id) { return id >= 0 && id <= 3; }
 
+// JPN: func_ov024_021ead50
 // USA: func_ov024_021ea584
 extern "C" ARM void func_ov024_021ea584(ComboAction* action, int actor, int target, ComboParameters* parameters) {
     if (parameters->skill == 0x61 && action->state > 0) return;

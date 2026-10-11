@@ -30,7 +30,11 @@ struct Obj02180bac {
     char list8c4[0x930 - 0x8c4];
     int field930;
     int field934;
+#if defined(jpn)
+    char pad3[0x1faa - 0x938];
+#else
     char pad3[0x1d72 - 0x938];
+#endif
     unsigned short flags1d72;
 };
 
@@ -41,7 +45,11 @@ extern "C" ARM void func_ov000_02180bac(struct Obj02180bac* obj) {
         struct Entry02180bac* e = &obj->entries[19];
         e->field14 = obj->field930 << 12;
         e->field18 = 0x2000;
+#if defined(jpn)
+        e->field22 = 0x44;
+#else
         e->field22 = 0x48;
+#endif
         e->field26 = 1;
         func_0205ac40(obj->field11c, e);
     }
@@ -54,7 +62,11 @@ extern "C" ARM void func_ov000_02180bac(struct Obj02180bac* obj) {
         }
         e->field14 = 0xc8000;
         e->field18 = data_ov000_021836a0[idx] << 12;
+#if defined(jpn)
+        e->field22 = 0x78;
+#else
         e->field22 = 0;
+#endif
         e->field26 = 0;
         func_0205ac40(obj->field11c, e);
     }

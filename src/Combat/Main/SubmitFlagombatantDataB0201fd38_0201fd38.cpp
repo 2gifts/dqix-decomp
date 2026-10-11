@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kOffset1c = 0x1d, kOffset24 = 0x26 };
+#else
+enum { kOffset1c = 0x1c, kOffset24 = 0x24 };
+#endif
+
 #include "GameState/GameState.h"
 
 // KEEP-NAME: the ROM symbol is the mangled C++ name, not a func_ tag.
@@ -26,7 +33,7 @@ ARM void SubmitFlag0x800CombatantDataB0201fd38(void* a, void* b, int combatantId
         struct CombatantSubmitEntry* entry = &data_020fdcb0[combatantId];
         int state = entry->stateB;
         if (state >= 0) {
-            func_0201fdd0(a, b, combatantId, state, entry->valueB, 0x30, 0x1c, 7, 0x24, 0xb, 0xc, 1);
+            func_0201fdd0(a, b, combatantId, state, entry->valueB, 0x30, kOffset1c, 7, kOffset24, 0xb, 0xc, 1);
         }
     }
 }

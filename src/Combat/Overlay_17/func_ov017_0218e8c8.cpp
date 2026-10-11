@@ -8,9 +8,19 @@ struct Flags0218e8c8 {
 };
 
 struct OvCtx0218e8c8 {
+#if defined(jpn)
+    unsigned char pad0[0x3508];
+#else
     unsigned char pad0[0x3718];
+#endif
+
     Flags0218e8c8* table;
+#if defined(jpn)
+    unsigned char pad371c[0x3910 - 0x350c];
+#else
     unsigned char pad371c[0x3b30 - 0x371c];
+#endif
+
     Flags0218e8c8* state;
 };
 
@@ -26,12 +36,18 @@ int CheckFlag0x1ceBit2Set(unsigned char* obj);
 extern "C" int func_02032fdc(void* obj, int a, int b);
 extern "C" void func_ov017_0218dba0(int id);
 
+// JPN: func_ov017_0218f4a8
 // USA: func_ov017_0218e8c8
 extern "C" ARM void func_ov017_0218e8c8(OvCtx0218e8c8* ov, int id, int mode) {
+#if defined(jpn)
+ enum {regionalOffset0=0x860};
+#else
+ enum {regionalOffset0=0x840};
+#endif
     GameState* gs = GameState::GetInstance();
     char* base = func_02012fe4();
     int inRange = 0;
-    if (_Z19IsIdInRange020981e4ii(base + 0x840, id)) {
+    if (_Z19IsIdInRange020981e4ii(base + regionalOffset0, id)) {
         inRange = 1;
     }
 

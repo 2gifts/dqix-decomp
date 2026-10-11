@@ -15,12 +15,18 @@ extern "C" void _Z25SetFields30And34_021b2bd0Pvii(void* obj, int handler, int ov
 extern "C" void _Z16SetBit3_021b2bdcP9S021b2bdcj(S021b2bdc* obj, unsigned int value);
 void PrependNodeToHead(HeadList020469f8* list, HeadNode020469f8* node);
 
+// JPN: func_ov017_021c0b28
 // USA: func_ov017_021c0580
 extern "C" ARM void func_ov017_021c0580(Obj021c0820* self, int kind, char* name, int handler) {
+#if defined(jpn)
+ enum {regionalOffset0=0x392c, regionalOffset1=0x34ec};
+#else
+ enum {regionalOffset0=0x3b4c, regionalOffset1=0x36fc};
+#endif
     void* res = func_ov017_0218b5b0();
     HeadList020469f8* list;
-    unsigned char* obj = *(unsigned char**)((char*)res + 0x3b4c);
-    list = *(HeadList020469f8**)((char*)res + 0x36fc);
+    unsigned char* obj = *(unsigned char**)((char*)res + regionalOffset0);
+    list = *(HeadList020469f8**)((char*)res + regionalOffset1);
     _Z36InitAllocatorAndClearFields_021c0820P11Obj021c0820(self);
     *(unsigned char*)((char*)self + 0x24) = kind;
     _Z21InitObjState_021b2174Ph(obj);

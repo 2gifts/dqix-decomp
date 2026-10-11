@@ -14,6 +14,7 @@ struct In021e9a94 {
     int field1c0;
 };
 
+// JPN: func_ov025_021e9f28
 // USA: func_ov025_021e9a94
 ARM void UpdateCombatFlags_021e9a94(struct In021e9a94* obj) {
     GameState* bs = GameState::GetInstance();

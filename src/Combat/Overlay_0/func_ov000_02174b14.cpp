@@ -11,7 +11,11 @@ struct Entry02174b14 {
     int posX;
     int posY;
     int combatantId;
+#if defined(jpn)
+    char pad50[0x488 - 0x50];
+#else
     char pad50[0x448 - 0x50];
+#endif
 };
 
 struct Obj02174b14 {

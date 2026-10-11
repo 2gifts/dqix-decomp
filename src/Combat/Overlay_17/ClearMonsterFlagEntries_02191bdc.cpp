@@ -1,3 +1,10 @@
+// JPN: func_ov017_021927a4
+#if defined(jpn)
+enum { RegionOffset370c = 0x34fc, RegionOffset9c = 0x1ec, RegionOffset4400 = 0x4000 };
+#else
+enum { RegionOffset370c = 0x370c, RegionOffset9c = 0x9c, RegionOffset4400 = 0x4400 };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -17,11 +24,11 @@ ARM void ClearMonsterFlagEntries_02191bdc(unsigned char* a, int b) {
 	if (_ZNK8Object3D7GetFlagEi(combatant, 0x8000000) != 0) return;
 	if (b == 0) {
 		unsigned char* fieldAddr = (unsigned char*)GetField0x3f8Address(battleStruct);
-		unsigned char* q = *(unsigned char**)(a + 0x370c);
+		unsigned char* q = *(unsigned char**)(a + RegionOffset370c);
 		if (q[2] != 0) return;
 		if (fieldAddr[2] != 0) return;
 	}
-	unsigned char* entry = a + 0x9c + 0x4400;
+	unsigned char* entry = a + RegionOffset9c + RegionOffset4400;
 	for (int i = 0; i < 4; entry += 4, i++) {
 		if (entry[0] == 0) continue;
 		GameObject* c2 = GetCombatantWithFlag0x100(battleStruct, i);

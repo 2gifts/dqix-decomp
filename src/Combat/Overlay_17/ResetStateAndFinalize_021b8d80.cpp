@@ -1,3 +1,10 @@
+// JPN: func_ov017_021b9278
+#if defined(jpn)
+enum { RegionOffset8c = 0x4c };
+#else
+enum { RegionOffset8c = 0x8c };
+#endif
+
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
@@ -26,7 +33,7 @@ extern "C" ARM void func_ov017_021b8d80(unsigned char* self) {
     }
 
     if (self[0x137] == 0) {
-        *(int*)((char*)GetGlobalField0x1c020421a0() + 0x8c) = 0;
+        *(int*)((char*)GetGlobalField0x1c020421a0() + RegionOffset8c) = 0;
         DestroyStructAllocGroup0208ba54((struct StructAllocGroup0208ba54*)(self + 0x30));
         SafeAllocator* allocA = (SafeAllocator*)(self + 0x8);
         void* pA = allocA->GetSignedAllocator();

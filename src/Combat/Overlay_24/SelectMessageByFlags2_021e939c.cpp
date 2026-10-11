@@ -11,6 +11,7 @@ struct Ctx_021e939c {
     int field10;
 };
 
+// JPN: 021e9be8
 // USA: func_ov024_021e939c
 ARM int SelectMessageByFlags2_021e939c(struct Ctx_021e939c* ctx, int id, int flag1, int flag2) {
     GameObject* combatant = GetCombatantByID(ctx->field10, id);
@@ -26,7 +27,11 @@ ARM int SelectMessageByFlags2_021e939c(struct Ctx_021e939c* ctx, int id, int fla
         if (state2 != 0) {
             return 0x10b;
         }
+        #if defined(jpn)
+        return 0x1b;
+#else
         return SelectByIndexRange0to3_021da644(id, 0x26d, 0x1b);
+#endif
     }
     if (flag2 != 0) {
         return kind1 != 0 ? 0x53 : 0x3f;
@@ -37,5 +42,9 @@ ARM int SelectMessageByFlags2_021e939c(struct Ctx_021e939c* ctx, int id, int fla
     if (kind1 != 0) {
         return 0x52;
     }
-    return SelectByIndexRange0to3_021da644(id, 0x26d, 0x1b);
+    #if defined(jpn)
+        return 0x1b;
+#else
+        return SelectByIndexRange0to3_021da644(id, 0x26d, 0x1b);
+#endif
 }

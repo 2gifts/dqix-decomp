@@ -4,7 +4,12 @@
 void EncodeSignFlaggedHalfword(short* out, int value);
 
 struct FadeFieldGroups_0218d644 {
+#if defined(jpn)
+    char pad[0x478];
+#else
     char pad[0x4e8];
+#endif
+
     float f4e8;
     int f4ec;
     int f4f0;
@@ -13,6 +18,7 @@ struct FadeFieldGroups_0218d644 {
     int f4fc;
 };
 
+// JPN: func_ov020_0218de94
 // USA: func_ov020_0218d644  (semantic: AdvanceFadeFieldGroups_0218d644)
 extern "C" ARM void func_ov020_0218d644(struct FadeFieldGroups_0218d644* obj) {
     int step = GameState::GetInstance()->GetEffectiveDeltaTime();

@@ -1,5 +1,20 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kRegionValue9A0_870 = 0x870 };
+enum { kRegionValue9AE_7DE = 0x7de };
+enum { kRegionValue960_800 = 0x800 };
+enum { kRegionValue998_868 = 0x868 };
+enum { kRegionValue34C0_3280 = 0x3280 };
+#else
+enum { kRegionValue9A0_870 = 0x9a0 };
+enum { kRegionValue9AE_7DE = 0x9ae };
+enum { kRegionValue960_800 = 0x960 };
+enum { kRegionValue998_868 = 0x998 };
+enum { kRegionValue34C0_3280 = 0x34c0 };
+#endif
+
+
 extern "C" void* _Z26GetGlobalField0x1c020421a0v(void);
 extern "C" void* _Z27GetDataPtr02114e04_020d6c00v(void);
 extern "C" void* func_0202ae18(void);
@@ -40,6 +55,7 @@ extern int data_02109bf4;
 extern int data_0211e33c;
 
 // USA: func_ov003_02159d0c
+// JPN: func_ov003_0215b18c
 extern "C" ARM void func_ov003_02159d0c(void* self) {
     unsigned char* s = (unsigned char*)self;
     unsigned char* g = (unsigned char*)_Z26GetGlobalField0x1c020421a0v();
@@ -47,8 +63,8 @@ extern "C" ARM void func_ov003_02159d0c(void* self) {
     void* f = func_0202ae18();
     char buf[0x34];
 
-    if (*(int*)(g + 0x9a0) == 3) {
-        *(unsigned char*)(g + 0x1000 + 0x9ae) = 0;
+    if (*(int*)(g + kRegionValue9A0_870) == 3) {
+        *(unsigned char*)(g + 0x1000 + kRegionValue9AE_7DE) = 0;
     }
 
     unsigned char state = *(unsigned char*)(s + 0x580);
@@ -56,7 +72,7 @@ extern "C" ARM void func_ov003_02159d0c(void* self) {
     if (state == 0) {
         if (*(unsigned char*)(s + 0x5b4) != 0) {
             if (*(unsigned char*)(s + 0x59d) != 0) return;
-            memset(*(void**)(s + 0x7c), 0, 0x960);
+            memset(*(void**)(s + 0x7c), 0, kRegionValue960_800);
             _Z25AppendFieldTwice_02159290Pvii(self, 0x3e8, 0x64);
             func_ov003_02159250(self, *(void**)(s + 0x7c));
             *(unsigned char*)(s + 0x5b3) = 5;
@@ -75,11 +91,11 @@ extern "C" ARM void func_ov003_02159d0c(void* self) {
     }
 
     if (state == 1) {
-        if (*(int*)(g + 0x9a0) != 3) return;
+        if (*(int*)(g + kRegionValue9A0_870) != 3) return;
         int r = func_ov003_0215bf18(self, 0);
         if (r == -1) return;
         if (r == -2 || r == 1) {
-            memset(*(void**)(s + 0x7c), 0, 0x960);
+            memset(*(void**)(s + 0x7c), 0, kRegionValue960_800);
             _Z25AppendFieldTwice_02159290Pvii(self, 0x3f4, 0x3f5);
             func_ov003_02159250(self, *(void**)(s + 0x7c));
             *(unsigned char*)(s + 0x580) = 4;
@@ -93,19 +109,19 @@ extern "C" ARM void func_ov003_02159d0c(void* self) {
 
     if (state == 2) {
         if (*(unsigned char*)(s + 0x5b4) != 0) {
-            if (*(int*)(g + 0x998) == 0) {
+            if (*(int*)(g + kRegionValue998_868) == 0) {
                 *(unsigned char*)(s + 0x588) = 0xb;
                 *(unsigned char*)(s + 0x580) = 0;
                 return;
             }
             unsigned char prev = *(unsigned char*)(s + 0x5b3);
-            int cur = *(int*)(g + 0x9a0);
+            int cur = *(int*)(g + kRegionValue9A0_870);
             unsigned char low = cur;
             int ok = 1;
             if (prev == 6 && low == 5) {
                 if (func_020457e0(g) == 0) ok = 0;
             }
-            *(unsigned char*)(s + 0x5b3) = (unsigned char)*(int*)(g + 0x9a0);
+            *(unsigned char*)(s + 0x5b3) = (unsigned char)*(int*)(g + kRegionValue9A0_870);
             if (ok) return;
         }
         *(unsigned char*)(s + 0x59f) = *(unsigned char*)(s + 0x59f) | 0x10;
@@ -126,7 +142,7 @@ extern "C" ARM void func_ov003_02159d0c(void* self) {
 
     if (state == 0x64) {
         if (_Z18CheckField0NonZeroPi(f)) {
-            signed char* p = (signed char*)_ZN9GameState11GetInstanceEv() + 0x34c0;
+            signed char* p = (signed char*)_ZN9GameState11GetInstanceEv() + kRegionValue34C0_3280;
             p += 0x4000;
             for (int i = 0; i < 3; i++, p += 10) {
                 if (p[6] >= 4) {
@@ -141,10 +157,10 @@ extern "C" ARM void func_ov003_02159d0c(void* self) {
     }
 
     if (state == 0x65) {
-        if (*(int*)(g + 0x9a0) != 3) return;
+        if (*(int*)(g + kRegionValue9A0_870) != 3) return;
         if (_Z23CountEntriesType1WithIdi(0x3c) == 0) return;
-        if (*(int*)(g + 0x9a0) == 3) {
-            *(unsigned char*)(g + 0x1000 + 0x9ae) = 0;
+        if (*(int*)(g + kRegionValue9A0_870) == 3) {
+            *(unsigned char*)(g + 0x1000 + kRegionValue9AE_7DE) = 0;
         }
         if (*(unsigned char*)(s + 0x59c) == 0) {
             *(unsigned char*)(s + 0x59c) = 1;
@@ -165,14 +181,14 @@ extern "C" ARM void func_ov003_02159d0c(void* self) {
     }
 
     if (state == 3) {
-        if (*(int*)(g + 0x9a0) == 3) {
-            *(unsigned char*)(g + 0x1000 + 0x9ae) = 0;
+        if (*(int*)(g + kRegionValue9A0_870) == 3) {
+            *(unsigned char*)(g + 0x1000 + kRegionValue9AE_7DE) = 0;
         }
         _Z20StopAndReset0209c7fcPv(&data_02109bf4);
         _ZN16BackgroundLoader11GetInstanceEv();
         if (_ZN16BackgroundLoader17GetNumQueuedTasksEv() > 0) return;
         *(unsigned char*)(s + 0x59f) = *(unsigned char*)(s + 0x59f) & ~2;
-        memset(*(void**)(s + 0x7c), 0, 0x960);
+        memset(*(void**)(s + 0x7c), 0, kRegionValue960_800);
         if (*(unsigned char*)(s + 0x5b4) != 0) {
             _ZN9GameState11GetInstanceEv();
             unsigned char* obj = (unsigned char*)_ZN9GameState20GetUnknownGameObjectEv();
@@ -194,7 +210,7 @@ extern "C" ARM void func_ov003_02159d0c(void* self) {
     }
 
     if (state == 4) {
-        if (*(int*)(g + 0x9a0) != 3) return;
+        if (*(int*)(g + kRegionValue9A0_870) != 3) return;
         int r = func_ov003_0215bf18(self, 0);
         if (r == -1) return;
         if (r == -2 || r == 1) {
@@ -228,7 +244,7 @@ extern "C" ARM void func_ov003_02159d0c(void* self) {
     }
 
     if (state == 5) {
-        if (*(int*)(g + 0x9a0) != 3) return;
+        if (*(int*)(g + kRegionValue9A0_870) != 3) return;
         int r = func_ov003_0215bf18(self, 1);
         if (r == -1) return;
         if (r == -2 || r == 1) {
@@ -257,7 +273,7 @@ extern "C" ARM void func_ov003_02159d0c(void* self) {
     }
 
     if (state == 6) {
-        if (*(int*)(g + 0x9a0) != 3) return;
+        if (*(int*)(g + kRegionValue9A0_870) != 3) return;
         int r = func_ov003_0215bf18(self, 1);
         if (r == -1) return;
         if (r == -2 || r == 1) {
@@ -276,7 +292,7 @@ extern "C" ARM void func_ov003_02159d0c(void* self) {
     }
 
     if (state == 7) {
-        if (*(int*)(g + 0x998) == 0) {
+        if (*(int*)(g + kRegionValue998_868) == 0) {
             *(unsigned char*)(s + 0x588) = 0xb;
             *(unsigned char*)(s + 0x580) = 0;
         }

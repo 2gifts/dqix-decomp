@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kSlotsPointerOffset = 0x144 };
+#else
+enum { kSlotsPointerOffset = 0x150 };
+#endif
 #include "GameState/GameState.h"
 
 struct Element020de650 { unsigned int v[8]; };
@@ -34,7 +39,7 @@ extern "C" ARM int func_020ddcbc(int n, int idx, struct Container020dedd0* conta
     combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), n);
     if (combatant == 0) return 0;
 
-    slotsArr = (short*)((char*)(*(struct Slots0208386c**)((char*)combatant + 0x150)) + 0x454);
+    slotsArr = (short*)((char*)(*(struct Slots0208386c**)((char*)combatant + kSlotsPointerOffset)) + 0x454);
     if (slotsArr == 0) return 0;
 
     elem = FindElementByKey020dedd0(container, slotsArr[idx]);
@@ -45,7 +50,7 @@ extern "C" ARM int func_020ddcbc(int n, int idx, struct Container020dedd0* conta
         case 8:
         case 9:
         case 0xa:
-            RemoveSlotShiftDown0208386c(*(struct Slots0208386c**)((char*)combatant + 0x150), (signed char)idx);
+            RemoveSlotShiftDown0208386c(*(struct Slots0208386c**)((char*)combatant + kSlotsPointerOffset), (signed char)idx);
             break;
     }
 

@@ -5,6 +5,18 @@
 #include "System/Graphics.h"
 #include "std_library_functions.h"
 
+#if defined(jpn)
+enum { kSelfBodyEnd = 0x7ac, kSelfField874 = 0x7f0, kSelfField7D8 = 0x754, kGlobalPrefix = 0x228, kGlobalGap = 0x870 - 0x237 };
+extern const char* data_020f2a38;
+extern const char data_ov003_0217ed74[];
+extern const char data_ov003_0217eda8[];
+extern const char data_ov003_0217edc6[];
+extern "C" void func_02080654(void*, SafeAllocator*, const char*);
+extern "C" void func_020dfc84(void*, SafeAllocator*, const char*, int, int, int);
+#else
+enum { kSelfBodyEnd = 0x830, kSelfField874 = 0x874, kSelfField7D8 = 0x7d8, kGlobalPrefix = 0x2d8, kGlobalGap = 0x9a0 - 0x2e7 };
+#endif
+
 struct StreamHeader02072488 {
     int a;
     int b;
@@ -20,13 +32,13 @@ struct Src02174a80 {
 };
 
 struct Glob02174a80 {
-    char pad[0x2d8];
+    char pad[kGlobalPrefix];
     void* p2d8;
     int w2dc;
     int w2e0;
     unsigned short h2e4;
     unsigned char b2e6;
-    char pad2[0x9a0 - 0x2e7];
+    char pad2[kGlobalGap];
     int w9a0;
 };
 
@@ -57,7 +69,7 @@ struct Self02174a80 {
     Src02174a80* p0;
     Allocs02174a80* alloc;
     char pad8[4];
-    char body[0x830 - 0xc];
+    char body[kSelfBodyEnd - 0xc];
     int w830;
     unsigned char b834;
     unsigned char b835;
@@ -95,7 +107,9 @@ extern "C" void* _Z15GetData02108d18v(void);
 extern "C" short _Z18GetHalfwordCheckedP12List0206f7f4i(void*, int);
 extern "C" Rec02174a80* _Z21FindEntryById020725d8P12List020725d8i(StreamHeader02072488*, int);
 extern "C" void _Z15InitObj02174408P18InitStruct02174408(void*);
+#if !defined(jpn)
 extern "C" void func_020dfc84(void*, SafeAllocator*, char*, char*, int, int);
+#endif
 extern "C" int func_020dfd40(void*, int, int);
 extern "C" void _Z24SetWord0x18ClearByte0x1fPhi(void*, int);
 extern "C" void func_0204b5b4(void*, int);
@@ -131,6 +145,7 @@ extern char data_ov003_02180b77[];
 extern char data_ov003_02180b8d[];
 
 // USA: func_ov003_02174a80
+// JPN: func_ov003_02173b88
 extern "C" ARM void func_ov003_02174a80(Self02174a80* self) {
     Allocs02174a80* allocs;
     BackgroundLoader* loader;
@@ -140,7 +155,11 @@ extern "C" ARM void func_ov003_02174a80(Self02174a80* self) {
 
     if (self->state == 0) {
         loader->AddFence();
+#if defined(jpn)
+        self->taskId = loader->QueueLoadGP1(data_020f2a38, 0);
+#else
         self->taskId = loader->QueueLoadFileInGP2(data_020f2a38, data_020f2a30, 0);
+#endif
         self->state++;
     } else if (self->state == 1) {
         if (loader->GetTaskStatus(self->taskId)) {
@@ -149,8 +168,8 @@ extern "C" ARM void func_ov003_02174a80(Self02174a80* self) {
             loader->GetLoadedFileByID(self->taskId, &file, &size);
             SafeAllocator* alloc = &self->alloc->a[0];
             alloc->Reset();
-            _Z16ZeroInit020de848Pv((char*)self + 0x874);
-            func_020dea64((char*)self + 0x874, alloc, file, size, data_ov003_0217fab4, 9);
+            _Z16ZeroInit020de848Pv((char*)self + kSelfField874);
+            func_020dea64((char*)self + kSelfField874, alloc, file, size, data_ov003_0217fab4, 9);
             loader->RemoveTask(self->taskId);
             self->taskId = -1;
             self->state++;
@@ -206,9 +225,13 @@ extern "C" ARM void func_ov003_02174a80(Self02174a80* self) {
             self->state++;
             al = self->alloc;
             al->a[1].Reset();
+#if defined(jpn)
+            func_020dfc84((char*)self + 0xc, &al->a[1], data_ov003_0217ed74, 0, (short)(self->h86e - 1), -1);
+#else
             sprintf(buf1, data_ov003_02180b10, self->h86e - 1);
             sprintf(buf2, data_ov003_02180b2c, self->h86e - 1);
             func_020dfc84((char*)self + 0xc, &al->a[1], buf1, buf2, 0, -1);
+#endif
         }
     } else if (self->state == 4) {
         if (func_020dfd40((char*)self + 0xc, 0, 0)) {
@@ -275,7 +298,11 @@ extern "C" ARM void func_ov003_02174a80(Self02174a80* self) {
     if (self->state == 7) {
         Allocs02174a80* al = self->alloc;
         al->a[5].Reset();
+#if defined(jpn)
+        func_02080654(self->p89c, &al->a[5], data_ov003_0217eda8);
+#else
         _Z35SetFieldsFromFormattedValue0207f914P11Obj0207f914iii(self->p89c, &al->a[5], data_ov003_02180b55, data_ov003_02180b6f);
+#endif
         self->state++;
     } else if (self->state == 8) {
         int r = func_0207f9f4(self->p89c);
@@ -293,8 +320,10 @@ extern "C" ARM void func_ov003_02174a80(Self02174a80* self) {
         _Z18DispatchEntryOp0x8Pvi(p, 0x2c);
         _Z18DispatchEntryOp0x8Pvi(p, 0x3c);
         _Z18DispatchEntryOp0x8Pvi(p, 0x51);
+#if !defined(jpn)
         _Z18DispatchEntryOp0x8Pvi(p, 0x52);
         _Z18DispatchEntryOp0x8Pvi(p, 0x55);
+#endif
         _Z18DispatchEntryOp0x8Pvi(p, 0x5c);
         _Z18DispatchEntryOp0x8Pvi(p, 0x5f);
         _Z18DispatchEntryOp0x8Pvi(p, 0x63);
@@ -309,7 +338,11 @@ extern "C" ARM void func_ov003_02174a80(Self02174a80* self) {
         MapVRAMBanksToMainObj(0x20);
         DISPCNT = (DISPCNT & 0xffcfffef) | 0x10;
         DISPCNT = (DISPCNT & ~0x1f00) | 0x1700;
+#if defined(jpn)
+        self->taskId = loader->QueueLoadFile(data_ov003_0217edc6, 0);
+#else
         self->taskId = loader->QueueLoadFileInGP2(data_ov003_02180b77, data_ov003_02180b8d, 0);
+#endif
         self->state++;
     } else if (self->state == 10) {
         if (loader->GetTaskStatus(self->taskId)) {
@@ -323,12 +356,12 @@ extern "C" ARM void func_ov003_02174a80(Self02174a80* self) {
             allocs->a[3].Reset();
             for (i = 0; i < n; i++) {
                 void* rec = _Z17FindRecordByIndexP11Rec020467f0iPPvPi(file, i, &tmp, &out);
-                func_0205a528((char*)self + 0x3d8 + 0x400, rec, out, &allocs->a[3]);
+                func_0205a528((char*)self + kSelfField7D8, rec, out, &allocs->a[3]);
             }
             loader->RemoveTask(self->taskId);
             self->taskId = -1;
             Glob02174a80* g = _Z26GetGlobalField0x1c020421a0v();
-            g->p2d8 = (char*)self + 0x3d8 + 0x400;
+            g->p2d8 = (char*)self + kSelfField7D8;
             g->w2dc = self->w830;
             if (self->p0 != 0) {
                 g->w2e0 = self->p0->w20;

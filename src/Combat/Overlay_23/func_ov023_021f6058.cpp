@@ -26,8 +26,14 @@ struct Downloaded_021f6058 {
     unsigned short unk_10c_13 : 3;
 };
 
+// JPN: func_ov023_021f5694
 // USA: func_ov023_021f6058
 extern "C" ARM int func_ov023_021f6058(unsigned char* buf, int len, unsigned char* out) {
+#if defined(jpn)
+ enum {regionalOffset0=0x5c0c, regionalOffset1=0x6120};
+#else
+ enum {regionalOffset0=0x5e6c, regionalOffset1=0x6380};
+#endif
     char local[0x430];
     if (_Z23ComputeModHash_021f6324iPh(len, buf) != 0) {
         return 0;
@@ -38,8 +44,8 @@ extern "C" ARM int func_ov023_021f6058(unsigned char* buf, int len, unsigned cha
     func_ov031_022118a8(ctx, (unsigned char*)key, keylen);
     Rc4Crypt_02211938((unsigned char*)ctx, buf, len - 4, out);
     char* bs = (char*)GameState::GetInstance();
-    Downloaded_021f6058* d = (Downloaded_021f6058*)(bs + 0x5e6c);
-    buf = (unsigned char*)bs + 0x6380;
+    Downloaded_021f6058* d = (Downloaded_021f6058*)(bs + regionalOffset0);
+    buf = (unsigned char*)bs + regionalOffset1;
     data_ov023_021fff08.data = (char*)d;
     data_ov023_021fff08.quest = (char*)buf;
     d->flags &= ~0x240;

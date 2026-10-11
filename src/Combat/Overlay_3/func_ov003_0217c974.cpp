@@ -3,6 +3,13 @@
 #include "Filesystem/FileIO.h"
 #include "Memory/SafeAllocator.h"
 
+#if defined(jpn)
+enum { kRegionValue2CC_27C = 0x27c };
+#else
+enum { kRegionValue2CC_27C = 0x2cc };
+#endif
+
+
 struct List0202fec8;
 
 extern "C" void* func_ov017_0218b5b0(void);
@@ -33,15 +40,16 @@ struct Params02036804 {
     int pad20;
 };
 
-// USA: func_ov003_0217c974  (semantic: LoadAndApplyNarcResource_0217c974)
+// USA: func_ov003_0217c974
+// JPN: func_ov003_0217b69c
 extern "C" ARM void func_ov003_0217c974(char* self) {
     int list = (int)BackgroundLoader::GetInstance();
     int out1, out2;
     ((BackgroundLoader*)((struct List0202fec8*)list))->GetLoadedFileByID((int)(*(int*)(self + 0x130)), (void**)(&out1), (unsigned int*)(&out2));
 
     void* mgr = func_ov017_0218b5b0();
-    CopyInternalFields0207df50((struct Foo0207df50*)((char*)mgr + 0x2cc));
-    RestorePairTables0207df90((char*)mgr + 0x2cc);
+    CopyInternalFields0207df50((struct Foo0207df50*)((char*)mgr + kRegionValue2CC_27C));
+    RestorePairTables0207df90((char*)mgr + kRegionValue2CC_27C);
 
     unsigned int fileSize;
     const void* filePtr;
@@ -66,7 +74,7 @@ extern "C" ARM void func_ov003_0217c974(char* self) {
     params.one = 1;
     _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(self + 0x80, &params, 0);
 
-    BackupPairTables0207dfac((char*)mgr + 0x2cc);
+    BackupPairTables0207dfac((char*)mgr + kRegionValue2CC_27C);
 
     struct Vec3Words0217fb8c v = data_ov003_0217fb8c;
     *(int*)(self + 0xc4) = 0;

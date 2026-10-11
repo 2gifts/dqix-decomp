@@ -52,7 +52,11 @@ struct GameState {
 
 static inline SavedRecords* GetSavedRecords(GameState* gameState)
 {
+#if defined(jpn)
+    return (SavedRecords*)((char*)gameState + 0x2c4 + 0x7000);
+#else
     return (SavedRecords*)((char*)gameState + 0x104 + 0x7400);
+#endif
 }
 
 struct Struct020dfc40;
@@ -125,7 +129,9 @@ struct BattleRecords {
     const void* guest_;
     void* guestRecords_;
     void* guestTexts_;
+#if !defined(jpn)
     void* guestTitles_;
+#endif
     PlayTime times_[2];
 };
 
@@ -181,7 +187,9 @@ extern "C" ARM void func_ov008_021843f8(BattleRecords* self)
     self->guest_ = NULL;
     self->guestRecords_ = NULL;
     self->guestTexts_ = NULL;
+#if !defined(jpn)
     self->guestTitles_ = NULL;
+#endif
     _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598((struct _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598*)&self->times_[0]);
     _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598((struct _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598*)&self->times_[1]);
     SavedRecords* saved = GetSavedRecords(GameState::GetInstance());

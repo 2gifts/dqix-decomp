@@ -36,7 +36,12 @@ extern "C" void func_0205ae8c(void*);
 
 // USA: func_ov000_02175544
 extern "C" ARM void func_ov000_02175544(unsigned char* obj) {
-    if (!(*(unsigned short*)(obj + 0x1d72) & 0x100)) return;
+#if defined(jpn)
+    enum { flagOffset = 0x1faa, byte14 = 0x4c };
+#else
+    enum { flagOffset = 0x1d72, byte14 = 0x50 };
+#endif
+    if (!(*(unsigned short*)(obj + flagOffset) & 0x100)) return;
 
     Elem_0205d81c* elem = FindElementForFieldB0((Struct_0205d81c*)(obj + 0x188));
     if (elem == NULL) return;
@@ -61,6 +66,6 @@ extern "C" ARM void func_ov000_02175544(unsigned char* obj) {
         entry->y_ = y - 2;
     }
 
-    _Z27SetEntryByte14ByKey0205a42cP17Container0205a3d0ii(container, 0, 0x50);
+    _Z27SetEntryByte14ByKey0205a42cP17Container0205a3d0ii(container, 0, byte14);
     func_0205ae8c(obj + 0x11c);
 }

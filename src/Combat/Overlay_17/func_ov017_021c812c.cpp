@@ -24,8 +24,14 @@ struct Whole021c812c {
     FieldsMsg021c812c fields;
 };
 
+// JPN: func_ov017_021c85dc
 // USA: func_ov017_021c812c
 extern "C" ARM void func_ov017_021c812c(unsigned char mode, int flag) {
+#if defined(jpn)
+ enum { regionalOffset=0x508 };
+#else
+ enum { regionalOffset=0x718 };
+#endif
     GameState* bs = GameState::GetInstance();
     char* base = (char*)func_ov017_0218b5b0();
     void* data = GetData02100044();
@@ -44,7 +50,7 @@ extern "C" ARM void func_ov017_021c812c(unsigned char mode, int flag) {
         for (int i = 0; i < 8; i++) {
             fp->monsters[i] = 0xff;
         }
-        void* obj = _Z20GetField6b0_021b8470Pv(*(void**)(base + 0x3000 + 0x718));
+        void* obj = _Z20GetField6b0_021b8470Pv(*(void**)(base + 0x3000 + regionalOffset));
         if (obj != NULL) {
             short buf[8];
             int n = func_ov000_0215e9fc(obj, buf, 8, 0x10);

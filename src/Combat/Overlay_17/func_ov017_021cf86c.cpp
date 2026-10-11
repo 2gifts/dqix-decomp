@@ -22,10 +22,22 @@ struct PendingGrotto {
     short x_; short y_; short z_; unsigned char field48_; unsigned char ranks_;
 };
 struct GrottoOverlay {
+#if defined(jpn)
+    char pad0[0x34ec]; ListHead02046b60* list_;
+#else
     char pad0[0x36fc]; ListHead02046b60* list_;
+#endif
+#if defined(jpn)
+    char pad3700[0x3a84 - 0x34f0]; PendingGrotto* pending_;
+#else
     char pad3700[0x3ca4 - 0x3700]; PendingGrotto* pending_;
+#endif
 };
+#if defined(jpn)
+struct WorldSettings { char pad0[0x26a4]; char grottoState_[4]; };
+#else
 struct WorldSettings { char pad0[0x2664]; char grottoState_[4]; };
+#endif
 struct GrottoZoneStorage { char pad0[0xc]; int zone_; };
 int GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
 extern "C" WorldSettings* func_02012fe4();
@@ -36,6 +48,7 @@ extern "C" void func_0208f748(void*, int);
 void FillBits5cd0(S_020113e0*);
 extern "C" int _Z17IsInRange0201b588i(int);
 
+// JPN: func_ov017_021cfd1c
 // USA: func_ov017_021cf86c
 extern "C" ARM void func_ov017_021cf86c(void*, GrottoPacket* packet, GameState* state, GrottoOverlay* overlay, SearchStruct0202c1a4* search) {
     if (packet->control_.bits_.player_ >= 0 && GetSearchStructCurrentArrEntry(search) != packet->control_.bits_.player_) return;

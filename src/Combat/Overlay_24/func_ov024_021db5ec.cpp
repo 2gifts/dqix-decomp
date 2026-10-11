@@ -29,6 +29,7 @@ extern "C" void* func_ov000_0215e958(void* ctx);
 extern "C" void func_ov024_021e8bf0(struct Obj_021db5ec* obj, struct ActionFlags_021db5ec* action, unsigned short* sel);
 extern "C" void func_ov000_0215cd44(void* ctx, void* entry, GameObject* c, int valC, unsigned long long words, unsigned char flag);
 
+// JPN: func_ov024_021dbe98
 // USA: func_ov024_021db5ec
 extern "C" ARM void* func_ov024_021db5ec(struct Obj_021db5ec* obj, short arg, int id, struct Params_021db5ec* params, int unused, int unused2, unsigned char enabled) {
     GameObject* c = GetCombatantByID((int)obj->ctx, id);

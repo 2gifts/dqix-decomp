@@ -7,6 +7,7 @@ extern "C" int func_ov000_0215eb1c(int battle, unsigned short* table, int count,
 
 extern unsigned short data_ov024_021fedac;
 
+// JPN: func_ov024_021f6a64
 // USA: func_ov024_021f6298  (semantic: SelectEligibleByAttackStatOrCopyTable_021f6298)
 #pragma opt_common_subs off
 extern "C" ARM int func_ov024_021f6298(int* a0, int a1, int a2, int* outCount, short* outArray) {

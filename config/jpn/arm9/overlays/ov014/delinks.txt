@@ -168,3 +168,67 @@ src/Combat/Overlay_14/func_ov014_02184f78.cpp:
 src/Combat/Overlay_14/func_ov014_0218934c.cpp:
     complete
     .text start:0x0218a18c end:0x0218a1c0
+
+src/Combat/Overlay_14/Trans_02186d7c.cpp:
+    complete
+    .text start:0x02187d10 end:0x02187d5c
+
+src/Combat/Overlay_14/func_ov014_02188d48.cpp:
+    complete
+    .text start:0x02189b88 end:0x0218a030
+
+src/Combat/Overlay_14/AccumulateFloats_02189510_02189510.cpp:
+    complete
+    .init start:0x0218a350 end:0x0218a3d8
+
+src/Combat/Overlay_14/SetSublistEntriesForId25_021884cc.cpp:
+    complete
+    .text start:0x021893ac end:0x0218942c
+
+src/Combat/Overlay_14/UpdateElementCoordFlagB_02186f10.cpp:
+    .text start:0x02187ea4 end:0x02187f84
+
+src/Combat/Overlay_14/func_ov014_02186bc8.cpp:
+    .text start:0x02187b5c end:0x02187cf8
+
+src/Menu/Overlay_14/BestiaryAllocation.cpp:
+    .text start:0x02185400 end:0x021855c4
+
+src/Combat/Overlay_14/ResetLoaderAndAllocators_02186b30.cpp:
+    .text start:0x02187ac4 end:0x02187b5c
+
+src/Combat/Overlay_14/Trans_02186dc8.cpp:
+    .text start:0x02187d5c end:0x02187d84
+
+src/Menu/Overlay_14/BestiaryExtendedAllocation.cpp:
+    .text start:0x0218784c end:0x02187a04
+
+src/Combat/Overlay_14/func_ov014_0218580c.cpp:
+    .text start:0x0218687c end:0x02186cac
+
+src/Combat/Overlay_14/func_ov014_02188010.cpp:
+    .text start:0x02188f14 end:0x021891d8
+
+src/Combat/Overlay_14/func_ov014_02187db8.cpp:
+    .text start:0x02188cbc end:0x02188f14
+
+src/Combat/Overlay_14/func_ov014_02187074.cpp:
+    .text start:0x02188008 end:0x021881bc
+
+src/Combat/Overlay_14/ComputeGroupIndexAndFindHead_021872dc.cpp:
+    .text start:0x02188270 end:0x021882d4
+
+src/Combat/Overlay_14/func_ov014_02187340.cpp:
+    .text start:0x021882d4 end:0x02188334
+
+src/Combat/Overlay_14/Trans_02188bfc.cpp:
+    .text start:0x02189a40 end:0x02189a78
+
+src/Combat/Overlay_14/func_ov014_02185c3c.cpp:
+    .text start:0x02186cac end:0x02186cb8
+
+src/Combat/Overlay_14/AdvanceMappedMemberIdState_02187b38.cpp:
+    .text start:0x02188a3c end:0x02188b08
+
+src/Combat/Overlay_14/func_ov014_02187c04.cpp:
+    .text start:0x02188b08 end:0x02188cbc

@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kCountOffset = 0xc6, kAfterCountOffset = 0xc7, kEntriesOffset = 0x430, kStatsOffset = 0x144 };
+#else
+enum { kCountOffset = 0x86, kAfterCountOffset = 0x87, kEntriesOffset = 0x3f0, kStatsOffset = 0x150 };
+#endif
+
 #include <GameState/GameState.h>
 
 struct BattleEquipmentEntry {
@@ -16,9 +23,9 @@ struct BattleEquipmentView {
 struct BattleEquipmentList {
     unsigned char unknown00[0x4c];
     int partyIndex;
-    unsigned char unknown50[0x86 - 0x50];
+    unsigned char unknown50[kCountOffset - 0x50];
     signed char entryCount;
-    unsigned char unknown87[0x3f0 - 0x87];
+    unsigned char unknown87[kEntriesOffset - kAfterCountOffset];
     BattleEquipmentEntry* entries[16];
 };
 extern "C" {
@@ -28,6 +35,8 @@ extern "C" {
     void _Z28SetPointerField0x3f002171b68PviS_(BattleEquipmentList*, int, BattleEquipmentEntry*);
 }
 
+// USA: func_ov000_02171c04
+// JPN: func_ov000_021734b0
 extern "C" ARM void func_ov000_02171c04(BattleEquipmentList* list)
 {
     signed char partyIndex = list->partyIndex;
@@ -59,7 +68,7 @@ extern "C" ARM void func_ov000_02171c04(BattleEquipmentList* list)
                 ++output;
             } while (--bytes);
             for (unsigned char slot = 0; slot < 8; ++slot) {
-                BattleEquipmentView* equipment = *reinterpret_cast<BattleEquipmentView**>(actor + 0x150);
+                BattleEquipmentView* equipment = *reinterpret_cast<BattleEquipmentView**>(actor + kStatsOffset);
                 BattleEquipmentEntry* entry = &equipment->entries[equipmentOrder[slot]];
                 if (entry && entry->count > 0) {
                     int equipmentCategory = entry->category <= 7;

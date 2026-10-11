@@ -9,6 +9,7 @@ struct Bits021d22d4 {
     unsigned short hi14 : 14;
 };
 
+// JPN: func_ov017_021d2758
 // USA: func_ov017_021d22d4
 extern "C" ARM void func_ov017_021d22d4(unsigned short a0, unsigned short a1, void* a2) {
     void* p = GetData02100044();

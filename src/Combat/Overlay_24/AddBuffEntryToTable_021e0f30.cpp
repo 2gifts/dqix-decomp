@@ -20,6 +20,7 @@ struct Flag_021e0f30 { unsigned char pad : 7; unsigned char flag : 1; };
 struct Obj_021e0f30 { char pad0[0xc]; void* field0xc; void* field0x10; };
 struct Range_021e0f30 { char pad[0x20]; struct PackedPair_021e0f30 f20; struct PackedPair_021e0f30 f24; };
 
+// JPN: func_ov024_021e17c8
 // USA: func_ov024_021e0f30
 ARM void* AddBuffEntryToTable_021e0f30(struct Obj_021e0f30* obj, int unused, int id, struct Range_021e0f30* range, int unused2, int unused3, unsigned char flagArg) {
 	GameObject* c = GetCombatantByID((int)obj->field0x10, id);

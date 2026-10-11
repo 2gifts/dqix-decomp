@@ -18,6 +18,7 @@ struct Obj_021b3444 {
     int result;
 };
 
+// JPN: func_ov017_021b3b4c
 // USA: func_ov017_021b3444  (semantic: CallFunc0202fa38IfMismatch_021b3444)
 extern "C" ARM int func_ov017_021b3444(struct Obj_021b3444* obj) {
     GameState* bs = GameState::GetInstance();
@@ -25,7 +26,11 @@ extern "C" ARM int func_ov017_021b3444(struct Obj_021b3444* obj) {
     GameObject* combatant = GetCombatantWithFlag0x100(bs, obj->id);
     if (combatant != 0) {
         if (GetSubByteField56e_021b354c((Obj150_021b354c*)combatant) != 0) {
+#if defined(jpn)
+            obj->result = ((BackgroundLoader*)(field4))->QueueLoadGP1((const char*)(data_020f2a38), (SafeAllocator*)(0));
+#else
             obj->result = ((BackgroundLoader*)(field4))->QueueLoadFileInGP2((const char*)(data_020f2a38), (const char*)(data_020f2a30), (SafeAllocator*)(0));
+#endif
             return 1;
         }
     }
@@ -50,7 +55,11 @@ extern "C" ARM int func_ov017_021b3444(struct Obj_021b3444* obj) {
         if (bVal == aVal) {
             continue;
         }
+#if defined(jpn)
+        obj->result = ((BackgroundLoader*)(field4))->QueueLoadGP1((const char*)(data_020f2a38), (SafeAllocator*)(0));
+#else
         obj->result = ((BackgroundLoader*)(field4))->QueueLoadFileInGP2((const char*)(data_020f2a38), (const char*)(data_020f2a30), (SafeAllocator*)(0));
+#endif
         return 1;
     }
     return 0;

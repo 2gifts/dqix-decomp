@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kOwnerPad = 0x842 };
+#else
+enum { kOwnerPad = 0x822 };
+#endif
 #include <Graphics/Vector.h>
 
 struct Entry02018b34 {
@@ -26,7 +31,7 @@ struct LinkedEntry {
 };
 struct Owner02018b34 {
     unsigned short id;
-    char pad_2[0x822];
+    char pad_2[kOwnerPad];
     LinkedEntry** linkedEntries;
     int field_828;
     int linkedCount;

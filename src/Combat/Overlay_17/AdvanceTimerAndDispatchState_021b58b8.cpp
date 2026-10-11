@@ -1,4 +1,12 @@
+// JPN: func_ov017_021b5e6c
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kResourceNodeOffset = 0x4fc };
+#else
+enum { kResourceNodeOffset = 0x70c };
+#endif
+
 #include "Resource/GameResources.h"
 #include "GameState/GameState.h"
 
@@ -76,7 +84,7 @@ extern "C" ARM void func_ov017_021b58b8(SelfState_021b58b8* self, ListNode02046b
         self->field8 = fn(self);
     }
 
-    if (ListContainsNode((ListHead02046b38*)arg1, *(ListNode02046b38**)((char*)ov + 0x3000 + 0x70c)) != 0) {
+    if (ListContainsNode((ListHead02046b38*)arg1, *(ListNode02046b38**)((char*)ov + 0x3000 + kResourceNodeOffset)) != 0) {
         self->field1 = 1;
         func_ov017_021b5a30(self);
     }

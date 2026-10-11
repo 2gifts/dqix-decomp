@@ -93,7 +93,11 @@ struct VisitorTalk
     char titles_[0x18];
     char* text_;
     void* pixels_;
+#if defined(jpn)
+    char records_[0xb44];
+#else
     char records_[0xb48];
+#endif
     GuestEntry entry_;
     ProfileData profile_;
     unsigned char unk_e98;
@@ -101,12 +105,16 @@ struct VisitorTalk
     signed char step_;
     signed char recordsState_;
     signed char recordsStep_;
+#if defined(jpn)
+    int tasks_[5];
+#else
     int textTask_;
     int backgroundTask_;
     int spriteTask_;
     int profileTask_;
     int sentencesTask_;
     int titleTask_;
+#endif
     unsigned char done_;
     signed char member_;
     unsigned char saved_;
@@ -172,12 +180,20 @@ extern "C" ARM void func_ov008_02188f5c(VisitorTalk* self, signed char member, G
     self->step_ = 0;
     self->recordsState_ = 0;
     self->recordsStep_ = 0;
+#if defined(jpn)
+    self->tasks_[0] = -1;
+    self->tasks_[1] = -1;
+    self->tasks_[2] = -1;
+    self->tasks_[3] = -1;
+    self->tasks_[4] = -1;
+#else
     self->textTask_ = -1;
     self->backgroundTask_ = -1;
     self->spriteTask_ = -1;
     self->profileTask_ = -1;
     self->sentencesTask_ = -1;
     self->titleTask_ = -1;
+#endif
     self->sentences_ = NULL;
     self->sentencesSize_ = 0;
     self->done_ = 0;
@@ -198,10 +214,14 @@ extern "C" ARM void func_ov008_02188f5c(VisitorTalk* self, signed char member, G
             if (data != NULL)
             {
                 _Z22ResetSubStruct02189228Pv(&self->entry_);
+#if defined(jpn)
+                memcpy(self->entry_.name_, data->name_, sizeof(self->entry_.name_));
+#else
                 char name[0xc];
                 __clear(name, sizeof(name));
                 func_020426bc(data->name_, name, 1);
                 memcpy(self->entry_.name_, name, sizeof(self->entry_.name_));
+#endif
                 self->entry_.used_ = 1;
                 if (CheckField0NonZero((int*)func_0202ae18()))
                 {

@@ -1,3 +1,16 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define _Z18UpdateFlag021885b8P14Struct021885b8 func_ov009_02189378
+#define _Z29UpdateCombatantState_02184d70Pv func_ov009_02186098
+#define data_ov009_0218ab9c data_ov009_0218bb04
+#define func_ov009_02188454 func_ov009_02189214
+#define func_ov009_02188604 func_ov009_021893c4
+#else
+#define R(j,u) (u)
+#endif
+#if defined(jpn)
+extern "C" void func_ov009_02185c58(void*);
+#endif
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -33,7 +46,7 @@ extern "C" void _Z18UpdateFlag021885b8P14Struct021885b8(Struct021885b8* self);
 extern "C" void _Z29UpdateCombatantState_02184d70Pv(void* self);
 
 struct CharacterCreation {
-    char unk_0[0x1f8];
+    char unk_0[R(0x1bc, 0x1f8)];
     TextWindow windows_[2];
     char unk_370[0x7f8 - 0x370];
     void* character_;
@@ -98,5 +111,8 @@ extern "C" ARM int func_ov009_02184a18(CharacterCreation* self)
         return 0;
     (self->*table.states[self->state_])();
     _Z29UpdateCombatantState_02184d70Pv(self);
+#if defined(jpn)
+    func_ov009_02185c58((char*)self + 0xdc);
+#endif
     return self->state_ == 12;
 }

@@ -1,10 +1,10 @@
 func_ov034_022a2180 kind:function(arm,size=0x28) addr:0x022a2960
-func_ov034_022a2988 kind:function(arm,size=0x79c) addr:0x022a2988
+_ZN20Ov34BackgroundLoader7ProcessEv kind:function(arm,size=0x79c) addr:0x022a2988
 func_ov034_022a29b8 kind:function(arm,size=0x2c) addr:0x022a3124
 func_ov034_022a29e4 kind:function(arm,size=0x20) addr:0x022a3150
-__sinit_ov034_022a3170 kind:function(arm,size=0x2c) addr:0x022a3170
+__sinit_ov034_022a2a04 kind:function(arm,size=0x2c) addr:0x022a3170
 .p__sinit_ov034_022a3170 kind:data(word) addr:0x022a319c
 data_ov034_022a2a48 kind:data(any) addr:0x022a31c8
 data_ov034_022a2a54 kind:data(any) addr:0x022a31d4
-data_ov034_022a31e0 kind:bss addr:0x022a31e0
+data_ov034_022a2a60 kind:bss addr:0x022a31e0
 data_ov034_022a2a6c kind:bss addr:0x022a31ec

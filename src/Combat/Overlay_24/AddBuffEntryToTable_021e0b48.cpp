@@ -10,6 +10,7 @@ extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, int e, int
 struct Flag_021e0b48 { unsigned char pad : 7; unsigned char flag : 1; };
 struct Obj_021e0b48 { char pad0[0xc]; void* field0xc; void* field0x10; };
 
+// JPN: func_ov024_021e13e0
 // USA: func_ov024_021e0b48
 ARM void* AddBuffEntryToTable_021e0b48(struct Obj_021e0b48* obj, int mode, int id) {
 	GameObject* c = GetCombatantByID((int)obj->field0x10, id);

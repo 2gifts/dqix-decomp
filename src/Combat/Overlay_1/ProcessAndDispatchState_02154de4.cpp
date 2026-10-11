@@ -12,11 +12,16 @@ int StoreArgIfMatched_02153948(unsigned short a);
 struct Self02154de4 {
 	unsigned char pad0[0x4a];
 	unsigned short f4a;
+#if defined(jpn)
+	unsigned char pad1[0x104 - 0x4c];
+#else
 	unsigned char pad1[0x108 - 0x4c];
+#endif
 	unsigned char f108;
 };
 
 // USA: func_ov001_02154de4
+// JPN: func_ov001_02156564
 ARM int ProcessAndDispatchState_02154de4(struct Self02154de4* self) {
 	if (CheckField0NonZero((int*)func_0202ae18()) != 0) {
 		GameState* bs = GameState::GetInstance();

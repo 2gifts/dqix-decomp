@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kCodeOffset = 0x27c6, kXTarget = 0x27cc, kYTarget = 0x27d0, kXSource = 0x64, kYSource = 0x68 };
+#else
+enum { kCodeOffset = 0x2786, kXTarget = 0x278c, kYTarget = 0x2790, kXSource = 0x44, kYSource = 0x48 };
+#endif
 #include "GameState/GameState.h"
 
 extern "C" void* func_02012fe4(GameState* battleStruct);
@@ -17,7 +22,7 @@ ARM void ConfigureFieldVec3ForDateWindow(void* unused0, int value1, int value2) 
         if ((value1 >= 0x4e20 && value1 <= 0x752f) || value1 == 0x76c) {
             unsigned char* p = (unsigned char*)fieldPtr;
             if (p[0x5] == 0 && p[0x62] == 0) {
-                unsigned short u = *(unsigned short*)((char*)base + 0x2786);
+                unsigned short u = *(unsigned short*)((char*)base + kCodeOffset);
                 *(unsigned short*)fieldPtr = u;
                 switch (u) {
                 case 0:
@@ -45,7 +50,7 @@ ARM void ConfigureFieldVec3ForDateWindow(void* unused0, int value1, int value2) 
     }
 
     if (value1 == 0x2710 && value2 >= 0x4e20 && value2 <= 0x752f) {
-        *(int*)((char*)base + 0x278c) = *(int*)((char*)base + 0x44);
-        *(int*)((char*)base + 0x2790) = *(int*)((char*)base + 0x48);
+        *(int*)((char*)base + kXTarget) = *(int*)((char*)base + kXSource);
+        *(int*)((char*)base + kYTarget) = *(int*)((char*)base + kYSource);
     }
 }

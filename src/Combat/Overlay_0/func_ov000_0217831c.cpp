@@ -21,7 +21,11 @@ struct BattleItemMenu {
     signed char combatantIds[0x48];
     unsigned char textTable[0x48];
     unsigned char itemTable[0xdc];
+#if defined(jpn)
+    unsigned char range[0x1dc7];
+#else
     unsigned char range[0x1b8f];
+#endif
     signed char currentCombatant;
     unsigned char unk1d6c[3];
     signed char cursor;
@@ -36,7 +40,12 @@ int AppendCursorTag(char* dst, int cursor);
 extern "C" struct ItemNameEntry* _Z24FindElementByKey020dedd0P17Container020dedd0i(struct Container020dedd0* c, int key);
 extern "C" void _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(const char* src, char* dst, int flag);
 extern "C" int _Z20AppendString02042058PcPKc(char* dst, const char* src);
+#if defined(jpn)
+extern "C" int func_02042158(char* dst, int w);
+#define AppendWidthTag func_02042158
+#else
 int AppendWidthTag(char* dst, int w);
+#endif
 int AppendNameTag(char* dst, int n, const char* name);
 extern "C" void __clear(void* dst, unsigned int size);
 
@@ -68,18 +77,24 @@ extern "C" ARM void func_ov000_0217831c(BattleItemMenu* menu, char* dst)
     for (signed char i = start; i < end; i++) {
         char line[0x40];
         __clear(line, sizeof(line));
-        short key = menu->itemKeys[i];
+        int key = menu->itemKeys[i];
         struct ItemNameEntry* item = _Z24FindElementByKey020dedd0P17Container020dedd0i((struct Container020dedd0*)menu->itemTable, key);
         const char* name = unknownName;
         if (item != NULL) {
+#if defined(jpn)
+            name = item->name;
+#else
             char text[0x100];
             __clear(text, sizeof(text));
             _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(item->name, text, 0);
             name = text;
+#endif
         }
         if (selectedKey == key) {
             _Z20AppendString02042058PcPKc(line, _Z21GetFieldByKey020e0434P17Container020e0310i(texts, 0x13));
+#if !defined(jpn)
             AppendWidthTag(line, 3);
+#endif
         } else {
             AppendWidthTag(line, 8);
         }

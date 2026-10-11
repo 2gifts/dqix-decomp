@@ -14,6 +14,7 @@ extern "C" int _Z27CanTargetCombatant_021ed9dcP18RngHolder_021ed9dci(struct RngH
 struct Buf8_021f0e90 { short v[8]; };
 extern struct Buf8_021f0e90 data_ov024_021feebc;
 
+// JPN: func_ov024_021f165c
 // USA: func_ov024_021f0e90
 extern "C" ARM int func_ov024_021f0e90(struct RngHolder_021ed9dc* holder, int id, int unused, int* outCount, short* outArray) {
     GameObject* self = GetCombatantWithFlag0x400ByID(holder->field0, id);

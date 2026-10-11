@@ -1,8 +1,9 @@
 #include <globaldefs.h>
 
 extern int func_ov031_02205d10;
-extern "C" unsigned int _Z24SetLookupFields_02205134PvS_i(unsigned int, unsigned int, unsigned int);
-extern "C" unsigned int _Z32TailCall0220520cField64_0220527cP11Obj0220527c(unsigned int, unsigned int, unsigned int);
+void* SetLookupFields_02205134(void*, void*, int);
+struct Obj0220527c;
+int TailCall0220520cField64_0220527c(Obj0220527c*, void*);
 
 // USA: func_ov031_02205cc4  (semantic: Trans_02205cc4)
 extern "C" ARM unsigned int func_ov031_02205cc4(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3, unsigned int a10) {
@@ -17,7 +18,7 @@ extern "C" ARM unsigned int func_ov031_02205cc4(unsigned int r0, unsigned int r1
     r1 = r7;
     r2 = 0x1;
     r4 = r3;
-    r0 = (unsigned int)_Z24SetLookupFields_02205134PvS_i(r0, r1, r2);
+    r0 = (unsigned int)SetLookupFields_02205134((void*)r0, (void*)r1, (int)r2);
     r1 = r0;
     *(unsigned int*)((char*)r1 + 0x10) = (unsigned int)r6;
     *(unsigned int*)((char*)r1 + 0x14) = (unsigned int)r5;
@@ -25,6 +26,6 @@ extern "C" ARM unsigned int func_ov031_02205cc4(unsigned int r0, unsigned int r1
     *(unsigned int*)((char*)r1 + 0x18) = (unsigned int)r4;
     r0 = r7;
     *(unsigned int*)((char*)r1 + 0x1c) = (unsigned int)r2;
-    r0 = (unsigned int)_Z32TailCall0220520cField64_0220527cP11Obj0220527c(r0, r1, r2);
+    r0 = (unsigned int)TailCall0220520cField64_0220527c((Obj0220527c*)r0, (void*)r1);
     return r0;
 }

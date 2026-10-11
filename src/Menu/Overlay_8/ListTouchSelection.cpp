@@ -1,3 +1,23 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define data_ov008_0218b490 data_ov008_0218c0f1
+#define data_ov014_021896d4 data_ov014_0218a4e4
+#define data_ov014_0218981c data_ov014_0218a5fc
+#define data_ov015_02193d20 data_ov015_02194850
+#define data_ov015_02193fe0 data_ov015_02194b20
+#define data_ov015_02194052 data_ov015_02194b92
+#define data_ov015_02194078 data_ov015_02194bb8
+#define data_ov015_0219415c data_ov015_02194c9c
+#define data_ov015_02194160 data_ov015_02194ca0
+#define data_ov015_02194167 data_ov015_02194ca7
+#define func_ov008_02184968 func_ov008_02185a64
+#define func_ov008_021895a8 func_ov008_0218a2b0
+#define func_ov008_02189c70 func_ov008_0218a930
+#define func_ov008_0218aee4 func_ov008_0218bb50
+#define func_ov014_021886f8 func_ov014_021895c8
+#else
+#define R(j,u) (u)
+#endif
 #include "World/Object3D.h"
 
 struct Overlay8ListTouchView {
@@ -31,7 +51,7 @@ extern "C" {
         for (int i = 0; i < count; ++i) {
             int y = (i << 4) + 8;
             int maxY = y + 16;
-            if (touchY > y && touchY < maxY && touchX > 16 && touchX < 152)
+            if (touchY > y && touchY < maxY && touchX > 16 && touchX < R(136, 152))
                 return i + menu->page;
         }
 
@@ -54,7 +74,7 @@ extern "C" {
             }
         }
 
-        if (touchY > 96 && touchY < 106 && touchX > 199 && touchX < 242)
+        if (touchY > 96 && touchY < 106 && touchX > R(207, 199) && touchX < 242)
             return -2;
 
         if (!(menu->flags & 0x80) && touchY > 16 && touchY < 96 && touchX > 176 && touchX < 208 && !(menu->flags & 0x4000)) {

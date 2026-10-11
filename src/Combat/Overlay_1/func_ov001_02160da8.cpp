@@ -19,7 +19,11 @@ struct ObjectLoadCommand {
     ObjectLoadCommand* next;
 };
 struct ScriptState {
+    #if defined(jpn)
+    char pad0[0xcc]; ObjectLoadCommand* commands;
+#else
     char pad0[0xd0]; ObjectLoadCommand* commands;
+#endif
     char pad1[0xf8 - 0xd4]; unsigned int flags : 27; unsigned int nextObject : 5;
     char pad2[0x116 - 0xfc]; signed char selectedObject;
 };

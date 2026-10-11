@@ -9,7 +9,9 @@ extern "C" int func_0207f84c(void *self);
 struct NotifyEntriesStruct0207f8bc {
 	char pad[0x1c];
 	int field_1c;
+#if !defined(jpn)
 	int field_20[3];
+#endif
 };
 
 // KEEP-NAME
@@ -20,6 +22,7 @@ extern "C" ARM int _Z18FlushNotifyEntriesP27NotifyEntriesStruct0207f8bc(struct N
 		_ZN16BackgroundLoader10RemoveTaskEi(loader, self->field_1c);
 	}
 
+#if !defined(jpn)
 	for (int i = 0; i < 3; i++) {
 		BackgroundLoader *loader = _ZN16BackgroundLoader11GetInstanceEv();
 		int task = self->field_20[i];
@@ -27,6 +30,7 @@ extern "C" ARM int _Z18FlushNotifyEntriesP27NotifyEntriesStruct0207f8bc(struct N
 			_ZN16BackgroundLoader10RemoveTaskEi(loader, task);
 		}
 	}
+#endif
 
 	return func_0207f84c(self);
 }

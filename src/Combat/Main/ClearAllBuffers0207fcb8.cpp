@@ -1,11 +1,16 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kPrefix = 0x20 };
+#else
+enum { kPrefix = 0x2c };
+#endif
 
 struct Obj0204b010;
 
 extern void ClearBuffer0204b010(struct Obj0204b010* obj, void* p);
 
 struct Obj0207fcb8 {
-    char pad0[0x2c];
+    char pad0[kPrefix];
     char* entries;
     char pad30[8];
     unsigned char count;

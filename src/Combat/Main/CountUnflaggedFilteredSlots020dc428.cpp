@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kSubOffset = 0x144 };
+#else
+enum { kSubOffset = 0x150 };
+#endif
+
 #include "GameState/GameState.h"
 
 void FilterSlotsWithFlag0x800020dc4d0(signed char* out, signed char* outCount);
@@ -8,7 +15,7 @@ struct Sub020dc428 {
     unsigned char nibble : 4;
 };
 struct Combatant020dc428 {
-    unsigned char pad[0x150];
+    unsigned char pad[kSubOffset];
     struct Sub020dc428* sub;
 };
 

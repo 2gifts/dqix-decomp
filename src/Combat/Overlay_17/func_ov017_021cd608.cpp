@@ -1,3 +1,10 @@
+// JPN: func_ov017_021cdab0
+#if defined(jpn)
+enum { RegionOffset718 = 0x508 };
+#else
+enum { RegionOffset718 = 0x718 };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -51,7 +58,7 @@ struct Evt021cd608 {
 // USA: func_ov017_021cd608
 extern "C" ARM void func_ov017_021cd608(int unused0, struct Evt021cd608* evt, int unused2, unsigned char* base) {
     int i;
-    void* table = *(void**)(base + 0x3000 + 0x718);
+    void* table = *(void**)(base + 0x3000 + RegionOffset718);
     struct Payload021cd608* p = &evt->payload;
     int amounts[4];
     struct BattleBlock021cd608 block;

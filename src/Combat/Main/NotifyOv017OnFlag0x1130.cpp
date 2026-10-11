@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegionalFieldOffset = 0x8c };
+#else
+enum { kRegionalFieldOffset = 0x6c };
+#endif
+
 
 void* GetElementStride0x74(unsigned char* obj, int index);
 extern "C" void* func_02012fe4(void);
@@ -9,7 +15,7 @@ ARM void NotifyOv017OnFlag0x1130(void) {
     unsigned char* obj = (unsigned char*)func_02012fe4();
     int i = 0;
     for (;;) {
-        unsigned char* entry = (unsigned char*)GetElementStride0x74(obj + 0x6c, i);
+        unsigned char* entry = (unsigned char*)GetElementStride0x74(obj + kRegionalFieldOffset, i);
         i++;
         if (!entry) return;
         if (*(int*)(entry + 4) != 0xc) continue;

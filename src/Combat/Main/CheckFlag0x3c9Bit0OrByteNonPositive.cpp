@@ -1,7 +1,11 @@
 #include <globaldefs.h>
 
 struct StateFlags3c9 {
+#if defined(jpn)
+    char pad[0x139];
+#else
     char pad[0x3c9];
+#endif
     unsigned char bit0 : 1;
     unsigned char rest : 7;
     unsigned char unk3ca;

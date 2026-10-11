@@ -1,3 +1,19 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define data_ov005_0215cbd4 data_ov005_0215dfb4
+#define data_ov005_0215cd60 data_ov005_0215e140
+#define data_ov014_02189480 data_ov014_0218a2c0
+#define data_ov014_02189498 data_ov014_0218a2d8
+#define data_ov015_02193fe0 data_ov015_02194b20
+#define data_ov015_02194564 data_ov015_02195184
+#define data_ov015_02194570 data_ov015_02195190
+#define data_ov015_021945a0 data_ov015_021951c0
+#define data_ov015_021945d0 data_ov015_021951f0
+#define data_ov024_021ff17c data_ov023_021ff17c
+#define func_ov005_02158560 func_ov005_02159b58
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include <GameState/GameState.h>
 
@@ -20,7 +36,7 @@ struct EquipmentSlot {
 };
 
 struct EquipmentMenu {
-    char unk_0[0x2d90];
+    char unk_0[R(0x2d08, 0x2d90)];
     EquipmentSlot slots_[24];
     char unk_3030[0x3dbc - 0x3030];
     unsigned char kind_;

@@ -15,7 +15,11 @@ struct Holder0209aa54 {
     struct Base0209aa54* base;
 };
 struct Field150_0209aa54 {
+#if defined(jpn)
+    unsigned char pad[0x8b8];
+#else
     unsigned char pad[0x950];
+#endif
     int slot;
 };
 
@@ -23,6 +27,7 @@ int GetFieldAt0x150(unsigned char* obj);
 void SetBitInArray0x910(unsigned char* obj, int index);
 
 // USA: func_0209aa54
+// JPN: func_0209aa54
 extern "C" ARM int func_0209aa54(struct Holder0209aa54* h, unsigned char* path, unsigned char* out,
                                 int threshold) {
     if (&h->base->slots[0].pairs[0] == NULL) return 0;

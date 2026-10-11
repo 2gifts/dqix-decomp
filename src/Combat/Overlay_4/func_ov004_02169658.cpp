@@ -1,5 +1,15 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+#if defined(jpn)
+#define func_ov023_021f6524 func_ov004_02168f08
+#define _Z23GetNodeIfType8_02168a6cPvi func_ov004_02168f70
+#define _Z24GetNodeIfType15_02168a38Pvi func_ov004_02168f3c
+#define _Z26ClearNodeMaskById_021f6600Pvii func_ov004_02168ed8
+#define _Z29DispatchNodeIfState6_021f6680Pvi func_ov004_02168fa4
+#define _Z24GetNodeIfType11_02168ad4Pvi func_ov004_0216900c
+#define func_ov004_02169b4c func_ov004_0216a044
+#endif
+
 
 struct Grid021f9b30;
 struct Triple02169658 { int a, b, c; };
@@ -46,7 +56,11 @@ public:
 };
 
 struct Ctx02169658 {
-    char pad[0x198];
+    #if defined(jpn)
+ char pad[0x18];
+#else
+ char pad[0x198];
+#endif
     unsigned char f198;
 };
 
@@ -63,7 +77,12 @@ extern "C" Node02169658* _Z24GetNodeIfType11_02168ad4Pvi(void* a, int id);
 extern "C" int _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(struct Grid021f9b30* self, unsigned short val, unsigned int x, unsigned int y);
 extern "C" void _Z26ClearNodeMaskById_021f6600Pvii(void* obj, int id, int mask);
 extern "C" void func_ov023_021f9ba8(void* obj, int v);
+#if defined(jpn)
+extern "C" void* func_ov004_02168fa4(void*, int);
+extern "C" void func_ov023_021f809c(void*, void*);
+#else
 extern "C" int _Z29DispatchNodeIfState6_021f6680Pvi(void* obj, int id);
+#endif
 extern "C" void func_ov004_02169b4c(void* obj);
 
 extern struct Triple02169658 data_ov004_021700e0;
@@ -96,7 +115,12 @@ extern "C" ARM int func_ov004_02169658(struct Scene02169658* scene) {
     _Z26ClearNodeMaskById_021f6600Pvii(scene, 2, 8);
     func_ov023_021f9ba8(grid, 0);
     _Z26ClearNodeMaskById_021f6600Pvii(scene, 0x14, 4);
+#if defined(jpn)
+    void* selected = func_ov004_02168fa4(scene, 0x14);
+    if (selected) func_ov023_021f809c(selected, scene);
+#else
     _Z29DispatchNodeIfState6_021f6680Pvi(scene, 0x14);
+#endif
     grid->Refresh(0);
     Node02169658* first = _Z23GetNodeIfType8_02168a6cPvi(scene, 0xc8);
     first->v44(0);

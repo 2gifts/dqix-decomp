@@ -8,7 +8,11 @@ struct Action021dffac {
     unsigned short id; char field_2[0xe]; Source021dffac* source; Target021dffac* target; char field_18[0x10];
 };
 struct Battle021dffac { char field_0[0x821c]; Action021dffac actions[77]; int count; };
+#if defined(jpn)
+struct Context021dffac { char field_0[0x218]; Battle021dffac* battle; char field_2a0[0x57c8-0x21c]; int actionIndex; };
+#else
 struct Context021dffac { char field_0[0x29c]; Battle021dffac* battle; char field_2a0[0x5338]; int actionIndex; };
+#endif
 union Position021dffac { Vector3fix vector; int coordinates[3]; };
 struct Entry021dffac { unsigned char index; char field_1[3]; int flag; GameObject* actor; };
 struct Cell021dffac { int x, z; };
@@ -51,6 +55,7 @@ inline Action021dffac* SelectAction021dffac(Battle021dffac* battle, int index) {
     return action;
 }
 
+// JPN: func_ov025_021e08bc
 // USA: func_ov025_021dffac
 extern "C" ARM int func_ov025_021dffac(Context021dffac* context) {
     GameState* game = GameState::GetInstance();

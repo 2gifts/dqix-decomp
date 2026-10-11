@@ -3,7 +3,6 @@
 #include "Memory/SafeAllocator.h"
 
 #ifdef jpn
-#define data_0211e33c data_0211fb64
 #endif
 
 extern unsigned char data_0211e33c[0x30000];

@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kTargetOffset = 0x4c0 };
+#else
+enum { kTargetOffset = 0x6d0 };
+#endif
+
 #include "GameState/GameState.h"
 
 
@@ -29,7 +36,7 @@ extern "C" ARM void func_0208aebc(void* obj, int id) {
     int* target;
     unsigned short oldCount;
 
-    target = *(int**)(base + 0x6d0);
+    target = *(int**)(base + kTargetOffset);
     c = (struct Combatant020482e0*)bs->GetPartyMemberByIndex(id);
     p = func_0202ae18();
     oldCount = c->sub->count;

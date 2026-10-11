@@ -3,10 +3,15 @@
 #include "System/Matrix.h"
 
 struct Battle0218db14 {
+#if defined(jpn)
+    unsigned char pad0[0x4188];
+#else
     unsigned char pad0[0x4438];
+#endif
     Vector3fix refDir;
 };
 
+// JPN: func_ov017_0218e6f4
 // USA: func_ov017_0218db14
 extern "C" ARM int func_ov017_0218db14(struct Battle0218db14* battle, const Vector3fix* dir, int scale, int threshold, unsigned char force) {
     GameObject* obj = GameState::GetInstance()->GetUnknownGameObject();

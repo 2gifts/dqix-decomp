@@ -26,6 +26,7 @@ static inline unsigned short Swap16_02202e44(unsigned short value) { return (val
 #define SourceAddress02202e44(packet) (((unsigned short)((packet->sourceHigh >> 8) | (packet->sourceHigh << 8)) << 16) | (unsigned short)((packet->sourceLow >> 8) | (packet->sourceLow << 8)))
 #define DestinationAddress02202e44(packet) (((unsigned short)((packet->destinationHigh >> 8) | (packet->destinationHigh << 8)) << 16) | (unsigned short)((packet->destinationLow >> 8) | (packet->destinationLow << 8)))
 
+// JPN: func_ov031_02203624
 // USA: func_ov031_02202e44
 extern "C" ARM void func_ov031_02202e44(IPv4Packet02202e44* packet, unsigned int available) {
     unsigned short sourceLow = packet->sourceLow;

@@ -2,6 +2,7 @@
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
 
+
 struct Vec3 { int x; int y; int z; };
 
 struct Vec3_02030ef0;
@@ -16,7 +17,8 @@ extern "C" int func_02012fe4(void);
 extern "C" int func_02018fbc(int seed, void* v);
 extern void* data_ov001_02165884;
 
-// USA: func_ov001_021592bc  (semantic: AdvanceBattleScaleStep_021592bc)
+// USA: func_ov001_021592bc
+// JPN: func_ov001_0215a994
 extern "C" ARM int func_ov001_021592bc(char* req, char* state) {
     int flag = 0;
     GameState* battleStruct = GameState::GetInstance();

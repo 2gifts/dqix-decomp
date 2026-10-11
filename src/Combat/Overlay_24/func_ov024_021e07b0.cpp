@@ -28,6 +28,7 @@ int ArrayContainsByte(struct ArrayContainsByteStruct* s, int val);
 extern "C" void _Z39IncrementByteCounterCapped0x63_0215a8d4Phi(unsigned char* obj, int amount);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, unsigned long long ef, int g);
 
+// JPN: func_ov024_021e1048
 // USA: func_ov024_021e07b0
 extern "C" ARM void* func_ov024_021e07b0(struct Obj_021e07b0* obj, unsigned char slot, int id, struct Move_021e07b0* move) {
     GameObject* c = GetCombatantByID((int)obj->field0x10, id);

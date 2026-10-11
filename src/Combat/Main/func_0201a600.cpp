@@ -1,5 +1,11 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define REGION_VALUE(jpnValue, usaValue) jpnValue
+#else
+#define REGION_VALUE(jpnValue, usaValue) usaValue
+#endif
+
 struct GameState;
 struct SafeAllocator;
 
@@ -32,7 +38,7 @@ struct FloorMap0201a600 {
 };
 
 struct ActiveGrotto0201a600 {
-    char pad_0[0x1c8];
+    char pad_0[REGION_VALUE(0x1e8, 0x1c8)];
     FloorMap0201a600 floorMap;
 };
 
@@ -44,7 +50,7 @@ struct GrottoStruct0201a600 {
     char pad_9[3];
     int entranceZoneId;
     Vector3i entrance;
-    char pad_1c[0x50];
+    char pad_1c[REGION_VALUE(0x30, 0x50)];
     char activeMapData[1];
 };
 
@@ -71,7 +77,7 @@ struct Zone0201a600 {
     unsigned short previousZoneID;
     char pad_4[4];
     ZoneInfo0201a600* info;
-    char pad_c[0x5c];
+    char pad_c[REGION_VALUE(0x7c, 0x5c)];
     SafeAllocator* allocator;
     char features[0x88];
     char pad_f4[0x23e8 - 0xf4];
@@ -82,7 +88,7 @@ struct Zone0201a600 {
 };
 
 struct Resources0201a600 {
-    char pad_0[0x36d0];
+    char pad_0[REGION_VALUE(0x34c0, 0x36d0)];
     void* unknown_36d0;
 };
 

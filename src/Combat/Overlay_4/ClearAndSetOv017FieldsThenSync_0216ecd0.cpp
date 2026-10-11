@@ -1,6 +1,12 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+enum { stateOffset = 0x8c, firstFlag = 0xc9e, secondFlag = 0xc9f };
+#else
+enum { stateOffset = 0x6c, firstFlag = 0xf72, secondFlag = 0xf73 };
+#endif
+
 void ClearBitsInWord(unsigned int* obj, unsigned int mask);
 void ClearBitsInField4(unsigned int* obj, unsigned int mask);
 void ClearBitsInField8(unsigned int* obj, unsigned int mask);
@@ -28,12 +34,12 @@ extern "C" ARM int func_ov004_0216ecd0(void) {
     SetBitsInField8((unsigned int*)obj, *(unsigned int*)(data_ov004_02171048.ptr + 0x8));
     void* v = func_02012fe4();
     if (!v) return 0;
-    struct S_e828* p = (struct S_e828*)((char*)v + 0x6c);
+    struct S_e828* p = (struct S_e828*)((char*)v + stateOffset);
     if (!p) return 0;
     _Z14SetFieldAt0x7eP6S_e828s(p, *(unsigned short*)(data_ov004_02171048.ptr + 0xc));
     SetWord0x7f6c(bs, 5);
-    *(char*)((char*)bs + 0x7000 + 0xf72) = 1;
-    *(char*)((char*)bs + 0x7000 + 0xf73) = 1;
+    *(char*)((char*)bs + 0x7000 + firstFlag) = 1;
+    *(char*)((char*)bs + 0x7000 + secondFlag) = 1;
     SetFieldFlag17188_0218d258(obj);
     return 0;
 }

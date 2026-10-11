@@ -1,3 +1,10 @@
+// JPN: func_ov017_02192fc8
+#if defined(jpn)
+enum { RegionOffset445c = 0x41ac };
+#else
+enum { RegionOffset445c = 0x445c };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -33,7 +40,7 @@ extern "C" ARM void func_ov017_02192400(unsigned char* self, int idx) {
     objs.v[4] = idx * 0xc + 0x1b;
     objs.v[5] = idx * 0xc + 0x1c;
     objs.v[6] = idx * 0xc + 0x1d;
-    signed char* row = (signed char*)(self + 0x445c) + idx * 11;
+    signed char* row = (signed char*)(self + RegionOffset445c) + idx * 11;
 
     PolygonIdList ids = data_ov017_021d6186;
     ids.v[0] = row[0];

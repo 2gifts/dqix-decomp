@@ -5,7 +5,6 @@
 #ifdef jpn
 #define data_020e6f00 data_020e77a4
 #define data_020e6f04 data_020e77a8
-#define data_020ef292 data_020ef1ce
 #endif
 
 extern char const data_020e6f00[];

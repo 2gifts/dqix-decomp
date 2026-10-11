@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define data_020f057c data_020f05e4
+#define data_ov031_02257180 data_ov031_02257960
+#define data_020f0594 data_020f05fc
+#endif
 
 extern int data_020f057c;
 extern int data_020f0594;

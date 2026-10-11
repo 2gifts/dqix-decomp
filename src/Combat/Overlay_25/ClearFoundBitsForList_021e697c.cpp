@@ -12,6 +12,7 @@ struct Obj021e697c {
     unsigned char field8;
 };
 
+// JPN: func_ov025_021e6e2c
 // USA: func_ov025_021e697c
 ARM int ClearFoundBitsForList_021e697c(struct Obj021e697c* obj, int p1, int unusedArg, void* p3) {
     int local[8];

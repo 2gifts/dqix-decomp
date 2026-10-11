@@ -30,7 +30,11 @@ struct Menu0217c158 {
     short field_2c;
     char unk_2e[0x38 - 0x2e];
     Cursor0217c158* cursor;
+#if defined(jpn)
+    char unk_3c[0x430 - 0x3c];
+#else
     char unk_3c[0x3f0 - 0x3c];
+#endif
     Combatant0217c158* slots[0x10];
 };
 

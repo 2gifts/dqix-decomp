@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define IS_JPN 1
+#else
+#define IS_JPN 0
+#endif
 #include "GameState/GameState.h"
 
 struct IntField0x23c_020a27c4 {
@@ -8,23 +13,34 @@ struct IntField0x23c_020a27c4 {
     unsigned char flags;
 };
 struct ControlOwner { char pad0[0xda]; unsigned short flags; };
-struct GameModeView { char pad0[0x5cc8]; unsigned char mode; };
+struct GameModeView { char pad0[(IS_JPN ? 0x5a68 : 0x5cc8)]; unsigned char mode; };
 struct ControlState {
-    char pad0[0x8c];
+    char pad0[(IS_JPN ? 0x4c : 0x8c)];
     ControlOwner* owner;
-    unsigned char controls[0x954 - 0x90];
+    unsigned char controls[(IS_JPN ? 0x824 - 0x50 : 0x954 - 0x90)];
     int value;
-    char pad958[0x98c - 0x958];
+    char pad958[(IS_JPN ? 0x85c - 0x828 : 0x98c - 0x958)];
     int mode;
-    char pad990[0x9a0 - 0x990];
+    char pad990[(IS_JPN ? 0x870 - 0x860 : 0x9a0 - 0x990)];
     int state;
-    char pad9a4[0x19ba - 0x9a4];
+    char pad9a4[(IS_JPN ? 0x17ea - 0x874 : 0x19ba - 0x9a4)];
     unsigned char enabled;
-    char pad19bb[0x19d2 - 0x19bb];
+    char pad19bb[(IS_JPN ? 0x17ff - 0x17eb : 0x19d2 - 0x19bb)];
+    #if defined(jpn)
+    unsigned char alternatePad : 4;
+    unsigned char alternateInput : 1;
+    unsigned char alternateTail : 3;
+#else
     unsigned char alternateInput;
+#endif
 };
 typedef void (ControlState::*ControlHandler)(int);
+#if defined(jpn)
+extern ControlHandler data_020f079c[2];
+#define data_020f08b8 data_020f079c
+#else
 extern ControlHandler data_020f08b8[2];
+#endif
 extern unsigned short data_02114e30[];
 void SetupAndDispatch0205c904(unsigned char*, int);
 int CheckGlobalObjState2AndInit0205cde8(unsigned char*);

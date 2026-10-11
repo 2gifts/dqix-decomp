@@ -1,3 +1,4 @@
+// JPN: func_ov031_02204190
 #include <globaldefs.h>
 
 struct Node022039b0 { unsigned char pad0[0x8]; unsigned char type; unsigned char hasExtra; };

@@ -19,6 +19,10 @@ extern struct Obj0205eaa0 data_02108760;
 extern "C" void func_ov011_02184a40(void* a, int b);
 
 extern char data_02114e54;
+#if defined(jpn)
+extern "C" void* func_0203bd08(void);
+extern "C" void* func_0203be40(void);
+#endif
 
 struct Entry021faed0 {
     unsigned short us0;
@@ -48,6 +52,18 @@ struct Obj021faed0 {
     signed short f36;
     signed char f38;
     signed char f39;
+#if defined(jpn)
+    unsigned short f3c;
+    unsigned short f3e;
+    unsigned short f40;
+    unsigned short f42;
+    char regionalPad42[2];
+    int f44;
+    int f46;
+    signed short f48;
+    unsigned char f4a;
+
+#else
     unsigned char f3a;
     char pad3[0x3c - 0x3b];
     unsigned short f3c;
@@ -59,8 +75,11 @@ struct Obj021faed0 {
     signed short f48;
     unsigned char f4a;
     unsigned char f4b;
+
+#endif
 };
 
+// JPN: func_ov023_021fa2b0
 // USA: func_ov023_021faed0  (semantic: SyncEntryPositionAndDispatch_021faed0)
 extern "C" ARM void func_ov023_021faed0(struct Obj021faed0* obj, void* arg1) {
     if ((obj->flags0xc & 8) == 0) {
@@ -71,6 +90,39 @@ extern "C" ARM void func_ov023_021faed0(struct Obj021faed0* obj, void* arg1) {
         int* state = (int*)GetGlobalField0x1c020421a0();
 
         if (entryPtr != 0) {
+#if defined(jpn)
+            int delta = 0;
+            signed char saved25 = entryPtr->b25;
+            signed char saved26 = entryPtr->b26;
+            if (obj->f4a != 0) delta = 0x1000;
+            entryPtr->b22 = (unsigned char)obj->f24;
+            entryPtr->f14 = obj->f28 + delta;
+            entryPtr->f18 = obj->f2c + delta;
+            signed char v38 = obj->f38;
+            if (v38 >= 0) entryPtr->b25 = v38 & 0xf;
+            signed char v39 = obj->f39;
+            if (v39 >= 0) entryPtr->b26 = v39 & 3;
+            func_0205ac40(z, entryPtr);
+            entryPtr->f14 = obj->f28;
+            entryPtr->f18 = obj->f2c;
+            obj->f4a = 0;
+            entryPtr->b25 = saved25;
+            entryPtr->b26 = saved26;
+            int selected = obj->f44;
+            if (obj->f46 != -1) {
+                int cond = *(int*)((char*)state + 0x10c) >= 2;
+                if (cond) selected = obj->f46;
+            }
+            if (selected >= 0) {
+                func_0203bd08();
+                struct Slot { unsigned int word; unsigned int next; };
+                Slot* table = (Slot*)func_0203be40();
+                unsigned int word = table[obj->f24].word & 0x3fff3fff;
+                word |= selected;
+                table[obj->f24].word = word;
+            }
+
+#else
             int dx = 0, dy = 0;
             if (obj->f4a != 0) {
                 dx = 0x1000;
@@ -115,6 +167,8 @@ extern "C" ARM void func_ov023_021faed0(struct Obj021faed0* obj, void* arg1) {
             obj->f4b = 0;
             entryPtr->b25 = saved25;
             entryPtr->b26 = saved26;
+#endif
+
         }
     }
 

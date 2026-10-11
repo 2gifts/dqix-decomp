@@ -1,5 +1,7 @@
 #include <globaldefs.h>
 
+
+
 struct Vector3i {
     int x, y, z;
     Vector3i& operator=(const Vector3i& o);
@@ -27,7 +29,11 @@ struct Actor {
     char pad0[0x44 - 2];
     Vec3 pos;
     Vec3 rot;
+#if defined(jpn)
+    char pad1[0x150 - 0x5c];
+#else
     char pad1[0x15c - 0x5c];
+#endif
     int f15c;
     Vec3 savedPos;
     Vec3 savedRot;
@@ -40,7 +46,11 @@ struct SlotEnt {
 };
 
 struct SlotTable {
+#if defined(jpn)
+    SlotEnt e[4];
+#else
     SlotEnt e[5];
+#endif
 };
 
 struct EntryInfo {
@@ -91,7 +101,11 @@ struct Overlay {
 };
 
 struct GameStateBlk {
+#if defined(jpn)
+    char pad[0x5000 + 0x4c8];
+#else
     char pad[0x5000 + 0x728];
+#endif
     unsigned char b728;
 };
 
@@ -106,19 +120,40 @@ struct FieldData {
 struct CombatRoot {
     unsigned int savedPlanes;
     char pad0[4];
+#if defined(jpn)
+    char allocatorStorage[0x210];
+#else
     AllocSlot allocs[0x21];
+#endif
     int f29c;
     InfoBlock* info;
     int f2a4;
+#if defined(jpn)
+    char pad1[0xb94 - 0x224];
+    char sub_c18[0xd9c - 0xb94];
+#else
     char pad1[0xc18 - 0x2a8];
     char sub_c18[0xe20 - 0xc18];
+#endif
     int fe20;
     unsigned char fe24;
+#if defined(jpn)
+    char pad2[0x5918 - 0xda1];
+#else
     char pad2[0x5728 - 0xe25];
+#endif
     FieldData fd[4];
+#if defined(jpn)
+    char pad3[0x5b00 - 0x5918 - 0x30];
+#else
     char pad3[0x5910 - 0x5728 - 0x30];
+#endif
     PartyEntry party[4];
+#if defined(jpn)
+    char pad4[0x79e0 - 0x5b40];
+#else
     char pad4[0x77f0 - 0x5950];
+#endif
     int f77f0;
 };
 
@@ -210,7 +245,11 @@ extern "C" void func_ov017_021c847c();
 extern "C" void _Z25ClearGlobalBuffer02107850v();
 
 static inline char* Off264(int o) {
+#if defined(jpn)
+    return (char*)o + 0x2a4;
+#else
     return (char*)o + 0x264;
+#endif
 }
 
 static inline char* Off2400(char* p) {
@@ -222,6 +261,7 @@ extern float data_ov000_021838e8[5];
 extern float data_ov000_0218423c[5];
 
 // USA: func_ov000_021643d4
+// JPN: func_ov000_02165b38
 extern "C" ARM void func_ov000_021643d4(CombatRoot* c) {
     int gs = _ZN9GameState11GetInstanceEv();
     int search = func_0202ae18(_ZN16BackgroundLoader11GetInstanceEv());
@@ -311,7 +351,11 @@ extern "C" ARM void func_ov000_021643d4(CombatRoot* c) {
     int sel = _Z18GetField0x3acValueP9GameState(gs);
     *(Vec3*)(f3f8 + 0x10) = c->party[sel].pos;
     *(short*)(f3f8 + 0x1c) = c->party[sel].angle;
+#if defined(jpn)
+    unsigned int w = *(unsigned short*)(*(char**)((char*)ov + 0x3000 + 0x508) + 0x600 + 0xc4);
+#else
     unsigned int w = *(unsigned short*)(*(char**)((char*)ov + 0x3000 + 0x718) + 0x600 + 0xc4);
+#endif
     if (w) {
         char* p = (char*)_Z20GetField0x3f8AddressP9GameState(gs);
         *(unsigned short*)p = w;
@@ -350,7 +394,11 @@ extern "C" ARM void func_ov000_021643d4(CombatRoot* c) {
         _Z28SetAngleAndTrigTable0202e9a4P17AngleTrig0202e9a4i(c->f2a4, 0xf);
     }
     _Z18SetField0x3b0ValueP9GameStatei(gs, c->sub_c18);
+#if defined(jpn)
+    func_020134e0((char*)c + 0x244 + 0xc00);
+#else
     func_020134e0((char*)c + 0x2c8 + 0xc00);
+#endif
     _Z38ResetTaskAndDestroyAllocators_021a050cPc(ov);
     if (_Z20GetFieldB08_0219e008Pv(ov) == 4) {
         _Z35DestroyAllocatorsFromTable_021a1114Pc(ov);
@@ -364,9 +412,17 @@ extern "C" ARM void func_ov000_021643d4(CombatRoot* c) {
         int type = tbl.e[n].type;
         int buf = _ZN13SafeAllocator8AllocateEj((char*)ov + 0x38, size);
         if (type == 0) {
+#if defined(jpn)
+            _ZN13SafeAllocator11CreateTypeAEPvj((AllocSlot*)((char*)c + 8) + idx, buf, size);
+#else
             _ZN13SafeAllocator11CreateTypeAEPvj(&c->allocs[idx], buf, size);
+#endif
         } else if (type == 1) {
+#if defined(jpn)
+            _ZN13SafeAllocator11CreateTypeBEPvji((AllocSlot*)((char*)c + 8) + idx, buf, size, 4);
+#else
             _ZN13SafeAllocator11CreateTypeBEPvji(&c->allocs[idx], buf, size, 4);
+#endif
         }
     }
     for (int i = 0; i < 4; i++) {

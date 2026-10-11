@@ -7,6 +7,7 @@ struct Struct020dfc40;
 void ResetStruct020dfc40(Struct020dfc40* p);
 void InitBigStruct0205c790(char* obj);
 
+// JPN: func_ov003_0216f8dc
 // USA: func_ov003_0216ffbc  (semantic: InitBattleStateStruct_0216ffbc)
 extern "C" ARM void func_ov003_0216ffbc(char* obj) {
     obj[0] = 1;
@@ -58,5 +59,7 @@ extern "C" ARM void func_ov003_0216ffbc(char* obj) {
 
     InitBigStruct0205c790(obj + 0x178);
 
+#if !defined(jpn)
     memset(obj + 0x3b0, -1, 0x20);
+#endif
 }

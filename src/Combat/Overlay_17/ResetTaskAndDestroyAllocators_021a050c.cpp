@@ -11,9 +11,15 @@ void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
 extern AllocatorUnion data_02114e20;
 extern int data_ov017_021d669c[];
 
+// JPN: func_ov017_021a0fbc
 // USA: func_ov017_021a050c
 ARM void ResetTaskAndDestroyAllocators_021a050c(char* self) {
-    int handle = *(int*)(self + 0x3000 + 0x6d0);
+#if defined(jpn)
+ enum {regionalOffset0=0x4c0};
+#else
+ enum {regionalOffset0=0x6d0};
+#endif
+    int handle = *(int*)(self + 0x3000 + regionalOffset0);
     func_02020720(handle);
 
     for (int i = 0; data_ov017_021d669c[i] >= 0; i++) {

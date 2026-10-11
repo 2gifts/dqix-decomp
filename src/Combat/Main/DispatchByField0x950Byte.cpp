@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { dispatchFieldOffset = 0x8b8 };
+#else
+enum { dispatchFieldOffset = 0x950 };
+#endif
 int MatchesAnyTableEntry020dd19c(unsigned int, int);
 #include "GameState/GameState.h"
 
@@ -14,6 +20,6 @@ ARM int DispatchByField0x950Byte(int combatantId, int b) {
     if (p == NULL) {
         return 0;
     }
-    int val = *(int*)((char*)p + 0x950);
+    int val = *(int*)((char*)p + dispatchFieldOffset);
     return MatchesAnyTableEntry020dd19c((unsigned int)(val & 0xff), (int)(b));
 }

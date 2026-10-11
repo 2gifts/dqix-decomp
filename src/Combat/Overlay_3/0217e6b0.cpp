@@ -8,6 +8,27 @@
 #include "System/OverlayId.h"
 #include "System/VRAM.h"
 
+#if defined(jpn)
+enum { kRegionValue6C_8C = 0x8c };
+enum { kRegionValue3A39C_37EDC = 0x37edc };
+enum { kRegionValueDB8_D90 = 0xd90 };
+enum { kRegionValue964_8CC = 0x8cc };
+enum { kRegionValueD88_D4C = 0xd4c };
+enum { kRegionValue508_608 = 0x608 };
+enum { kRegionValueD9C_D60 = 0xd60 };
+enum { kRegionValue424_444 = 0x444 };
+#else
+enum { kRegionValue6C_8C = 0x6c };
+enum { kRegionValue3A39C_37EDC = 0x3a39c };
+enum { kRegionValueDB8_D90 = 0xdb8 };
+enum { kRegionValue964_8CC = 0x964 };
+enum { kRegionValueD88_D4C = 0xd88 };
+enum { kRegionValue508_608 = 0x508 };
+enum { kRegionValueD9C_D60 = 0xd9c };
+enum { kRegionValue424_444 = 0x424 };
+#endif
+
+
 struct Obj020397cc;
 struct ListHead02046b60;
 struct Foo0207df50;
@@ -143,6 +164,7 @@ static inline GXDispCnt GX_GetDispCnt(void) {
 }
 
 // USA: func_ov003_0217e6b0
+// JPN: func_ov003_0217d3b8
 extern "C" ARM void func_ov003_0217e6b0(SceneSwap0217e6b0* self) {
     GameState* gs = GameState::GetInstance();
     GameResources* res = func_ov017_0218b5b0();
@@ -182,7 +204,7 @@ extern "C" ARM void func_ov003_0217e6b0(SceneSwap0217e6b0* self) {
         self->bgCharBase = dispCnt.bgCharBase;
         self->dispCntFlags = DISPCNT & 0x300010;
         self->subDispCntFlags = DISPCNTSUB & 0x300010;
-        self->clearColor = GetFieldAt0x7e((S_e830*)((char*)func_02012fe4() + 0x6c));
+        self->clearColor = GetFieldAt0x7e((S_e830*)((char*)func_02012fe4() + kRegionValue6C_8C));
         self->word = GetWord((unsigned int*)res);
         self->field4 = GetField4((unsigned int*)res);
         self->field8 = GetField8((unsigned int*)res);
@@ -191,17 +213,17 @@ extern "C" ARM void func_ov003_0217e6b0(SceneSwap0217e6b0* self) {
         _Z33ResetOverlayAndAllocator_0219bf74v();
         res->allocator_array_38[0].Reset();
         _Z26CopyInternalFields0207df50P11Foo0207df50((Foo0207df50*)res->unknown_2cc);
-        self->allocator.CreateTypeA(res->allocator_array_38[0].Allocate(0x3a39c), 0x3a39c);
+        self->allocator.CreateTypeA(res->allocator_array_38[0].Allocate(kRegionValue3A39C_37EDC), kRegionValue3A39C_37EDC);
         self->allocator.Reset();
-        self->scene = self->allocator.Allocate(0xdb8);
+        self->scene = self->allocator.Allocate(kRegionValueDB8_D90);
         func_020a1940(OVERLAY_ID(9));
         PushInputLogB(1);
         func_ov009_0218454c(self->scene, self->sceneArg, 1);
         func_ov008_021842a0(self->scene, &self->allocator);
-        void* extra = self->allocator.Allocate(0x964);
+        void* extra = self->allocator.Allocate(kRegionValue964_8CC);
         if (extra) {
             func_02082828(extra);
-            *(void**)((char*)self->scene + 0xd88) = extra;
+            *(void**)((char*)self->scene + kRegionValueD88_D4C) = extra;
         }
         self->fieldB0 = GetField0x3b0Value(gs);
         _Z24SetPowCnt1Bit15_0217eea8i(1);
@@ -246,7 +268,7 @@ extern "C" ARM void func_ov003_0217e6b0(SceneSwap0217e6b0* self) {
         int* global = GetGlobalPtr02105244();
         *global = func_0203be4c(context) + 0x200;
         func_0203c35c(global);
-        global[0x508 / 4] = 0x7000;
+        global[kRegionValue508_608 / 4] = 0x7000;
         self->state++;
     } else if (self->state == 3) {
         if (func_ov009_02184a18(self->scene)) {
@@ -298,7 +320,7 @@ extern "C" ARM void func_ov003_0217e6b0(SceneSwap0217e6b0* self) {
         _Z24BackupPairTables0207dfacPc(fields + 0x5b0);
         self->state++;
     } else if (self->state == 5) {
-        if (*(int*)((char*)self->scene + 0xd9c) & 0x400) {
+        if (*(int*)((char*)self->scene + kRegionValueD9C_D60) & 0x400) {
             _Z19AppendNode_021b66b8Pc((char*)res);
         } else {
             _Z23SetNodeStatus2_021b66f0Ph((unsigned char*)res);
@@ -308,7 +330,7 @@ extern "C" ARM void func_ov003_0217e6b0(SceneSwap0217e6b0* self) {
         func_ov017_0219bd1c(1, 0, 0, 0);
         self->state++;
     } else if (self->state == 6) {
-        if (*(int*)((char*)func_02012fe4() + 0x424) != 0) {
+        if (*(int*)((char*)func_02012fe4() + kRegionValue424_444) != 0) {
             return;
         }
         ClearBitsInField4((unsigned int*)res, 2);

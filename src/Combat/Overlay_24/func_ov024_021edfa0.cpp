@@ -11,6 +11,7 @@ extern "C" int _Z22IsFlagBit6Set_021df6ecP16FlagObj_021df6ec(struct FlagObj_021d
 
 extern unsigned short data_ov024_021feb2c;
 
+// JPN: func_ov024_021ee76c
 // USA: func_ov024_021edfa0
 extern "C" ARM int func_ov024_021edfa0(int* a0, int a1, int a2, int* a3, short* a4) {
 	GameObject* self = GetCombatantByID(*a0, a1);

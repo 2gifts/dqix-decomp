@@ -13,6 +13,7 @@ extern struct Buf8_021f3c3c data_ov024_021feeac;
 
 static inline unsigned short GetMaxMP_021f3c3c(GameObject* c) { return c->currentStats_->primaryStats.maxMP; }
 
+// JPN: func_ov024_021f4408
 // USA: func_ov024_021f3c3c
 extern "C" ARM int func_ov024_021f3c3c(struct Obj_021f3c3c* obj, int id, int unused, int* outCount, short* outArr) {
 	GameObject* self = GetCombatantWithFlag0x400ByID(obj->field0, id);

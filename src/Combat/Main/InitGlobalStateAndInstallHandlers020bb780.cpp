@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define data_020f1ef0 data_020f205c
+#define data_020f1ef4 data_020f2060
+#endif
 
 extern char data_0210cf88;
 void ResetGlobalState020bb948(void);

@@ -2,9 +2,19 @@
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
 
+#if defined(jpn)
+#define func_ov012_02185cf8 func_ov012_0218634c
+#define func_ov012_02184d80 func_ov012_02185db4
+#define data_ov012_0218b188 data_ov012_0218bea8
+#endif
+
 struct Messages02184acc
 {
+#if defined(jpn)
+    char unk_0[0x868];
+#else
     char unk_0[0x998];
+#endif
     int busy_;
 };
 
@@ -25,6 +35,29 @@ struct Profile02184acc
 
 struct ProfileEditor02184acc
 {
+#if defined(jpn)
+    char unk_0[0x90];
+    char window_[0xd0c - 0x90];
+    char card_[0x608];
+    char unk_1314[0x1340 - 0x1314];
+    unsigned char step_;
+    unsigned char state_;
+    char unk_1342[0x1350 - 0x1342];
+    int tasks_[4];
+    int unk_1398;
+    int result_;
+    unsigned char unk_13a0;
+    char unk_1369[3];
+    int unk_13a4;
+    char unk_1370[0x1428 - 0x1370];
+    char* message_;
+    unsigned int selection_;
+    char unk_1430[0x144c - 0x1430];
+    unsigned int design_;
+    char unk_1450[0x14d8 - 0x1450];
+    unsigned char checker_[0x20];
+    unsigned char finished_;
+#else
     char unk_0[0xac];
     char window_[0xd28 - 0xac];
     char card_[0x60c];
@@ -49,6 +82,7 @@ struct ProfileEditor02184acc
     unsigned char finished_;
     unsigned char unk_14bd;
     char unk_14be[2];
+#endif
 };
 
 typedef void (ProfileEditor02184acc::*StateFn02184acc)();
@@ -70,6 +104,11 @@ extern "C" void func_ov012_0218adac(ProfileEditor02184acc* self, int animate, in
 extern "C" int func_ov017_021959b4();
 extern "C" void func_ov012_021845f8(void* checker);
 extern "C" int func_ov012_02184d80(void* checker, char* text);
+#if defined(jpn)
+struct SearchStruct;
+extern "C" SearchStruct* func_0202ae18();
+extern "C" int _Z16TestFlagBitAt0xeP12SearchStructi(SearchStruct*, int);
+#endif
 extern "C" void _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii(Struct_0205def8* window, int a, int b);
 extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(Entry_0205d6a0* window, int a);
 extern "C" void _Z24ReinitController02043204Pc(char* messages);
@@ -96,9 +135,12 @@ extern "C" ARM int func_ov012_02184acc(ProfileEditor02184acc* self, int input)
     func_ov012_02185cf8(self);
 
     Messages02184acc* messages = _Z26GetGlobalField0x1c020421a0v();
+#if !defined(jpn)
     GameState* gameState = GameState::GetInstance();
+#endif
     if ((self->state_ != 0 && self->state_ < 15) || (self->state_ == 0 && messages->busy_ != 0))
     {
+#if !defined(jpn)
         if (messages->busy_ == 0 && TestFlag0SetAndFlag1Clear(data_02114e30, 0x800))
         {
             self->unk_14bd = ++self->unk_14bd & 1;
@@ -109,16 +151,30 @@ extern "C" ARM int func_ov012_02184acc(ProfileEditor02184acc* self, int input)
                 func_ov012_0218adac(self, 0, -1, 1);
         }
 
+#endif
+#if defined(jpn)
+        if ((messages->busy_ == 0 && TestFlag0SetAndFlag1Clear(data_02114e30, 0x800)) ||
+            _Z16TestFlagBitAt0xeP12SearchStructi(func_0202ae18(), 0))
+#else
         if (func_ov017_021959b4())
+#endif
         {
+#if defined(jpn)
+            if (self->state_ == 14 && self->step_ == 4)
+#else
             if (self->state_ == 14 && self->step_ == 4 && *self->message_ != 0)
+#endif
             {
                 GameState::GetInstance();
+#if !defined(jpn)
                 BackgroundLoader::AddLockGlobal();
                 BackgroundLoader::FreeAllocationsGlobal();
                 func_ov012_021845f8(self->checker_);
+#endif
                 int forbidden = func_ov012_02184d80(self->checker_, self->message_);
+#if !defined(jpn)
                 BackgroundLoader::RemoveLockGlobal();
+#endif
                 if (forbidden)
                 {
                     _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii((Struct_0205def8*)self->window_, 0, 14);
@@ -137,7 +193,7 @@ extern "C" ARM int func_ov012_02184acc(ProfileEditor02184acc* self, int input)
                 _Z24ReinitController02043204Pc((char*)messages);
 
             BackgroundLoader* loader = BackgroundLoader::GetInstance();
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < (int)(sizeof(self->tasks_) / sizeof(self->tasks_[0])); i++)
             {
                 if (self->tasks_[i] > -1)
                 {

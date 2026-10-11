@@ -17,6 +17,9 @@ extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container02
 extern "C" void _Z23SetEntryFields_021e23d0Pviihh(void* obj, int val, int f0xc, unsigned char lowNib, unsigned char highNib);
 extern "C" void _Z25ComputeShortPair_021e2bdcPviPsS0_(void* a, int unused, short* out1, short* out2);
 extern "C" void func_0204f41c(void* buf, short x, short y, int text, int d, int e, short* f, short* g, int h);
+#if defined(jpn)
+extern "C" void func_02050678(void*,short,short,int,int,int,short*,short*);
+#endif
 extern "C" void _Z31FormatAndDispatchValue_021db3c0iisih(void* buf, int x, short y, float v, unsigned char color);
 extern "C" void _Z24SetPackedFields_021e24b0Pviihhhhhh(void* obj, int val, int f0xc, unsigned char nibbleD, unsigned char p5, unsigned char p6, unsigned char p7, unsigned char p8, unsigned char p9);
 extern "C" void func_ov023_021e257c(void* obj);
@@ -26,6 +29,16 @@ extern "C" int func_020dd4c4(int id, void* node);
 extern "C" int func_ov023_021ddc98(void* buf, int val, unsigned short len, int flag);
 extern "C" long labs(long);
 
+#if defined(jpn)
+struct Data021ff9e0 {
+    struct Container020e0310* field14;
+    int field0;
+    int field8;
+    int fieldc;
+    int field10;
+    int field4;
+};
+#else
 struct Data021ff9e0 {
     int field0;
     int field4;
@@ -34,6 +47,8 @@ struct Data021ff9e0 {
     int field10;
     struct Container020e0310* field14;
 };
+#endif
+
 extern struct Data021ff9e0 data_ov023_021ff9e0;
 
 extern const short data_ov023_021fd5be[];
@@ -88,7 +103,12 @@ struct Obj021ddf5c {
     void* buf;
     char padd4[0xde - 0xd4];
     short active;
+#if defined(jpn)
+    char pade0[0x6d8 - 0xe0];
+#else
     char pade0[0x75c - 0xe0];
+#endif
+
     int pos;
     char pad760[0x768 - 0x760];
     int lastPos;
@@ -103,6 +123,7 @@ struct Obj021ddf5c {
 
 #define FlushList(obj, buf) do {     if (data_ov023_021ff9e0.field4) {         (obj)->buf = (buf);         (obj)->active = 1;         func_ov023_021e257c((obj)->list);     } } while (0)
 
+// JPN: func_ov023_021de6e0
 // USA: func_ov023_021ddf5c
 extern "C" ARM void func_ov023_021ddf5c(struct Obj021ddf5c* obj) {
     char buf[0xe0];
@@ -167,8 +188,38 @@ extern "C" ARM void func_ov023_021ddf5c(struct Obj021ddf5c* obj) {
             case 16:
             case 17:
                 if (data_ov023_021ff9e0.field4) {
+#if defined(jpn)
+                    func_02050678(buf, p0 + 16, p1, _Z21GetFieldByKey020e0434P17Container020e0310i(data_ov023_021ff9e0.field14, 0x1a), 8, 0xf, &o0, &o1);
+#else
+#if defined(jpn)
+                    func_02050678(buf, p0 + 16, p1, _Z21GetFieldByKey020e0434P17Container020e0310i(data_ov023_021ff9e0.field14, 0x1a), 8, 0xf, &o0, &o1);
+#else
+#if defined(jpn)
+                    func_02050678(buf, p0 + 16, p1, _Z21GetFieldByKey020e0434P17Container020e0310i(data_ov023_021ff9e0.field14, 0x1a), 8, 0xf, &o0, &o1);
+#else
                     func_0204f41c(buf, p0 + 1, p1, _Z21GetFieldByKey020e0434P17Container020e0310i(data_ov023_021ff9e0.field14, 0x1a), 8, 0xf, &o0, &o1, 0);
+#endif
+
+#endif
+
+#endif
+
+#if defined(jpn)
+                    _Z31FormatAndDispatchValue_021db3c0iisih(buf, (short)(p0 + 8), p1, v, 0xf);
+#else
+#if defined(jpn)
+                    _Z31FormatAndDispatchValue_021db3c0iisih(buf, (short)(p0 + 8), p1, v, 0xf);
+#else
+#if defined(jpn)
+                    _Z31FormatAndDispatchValue_021db3c0iisih(buf, (short)(p0 + 8), p1, v, 0xf);
+#else
                     _Z31FormatAndDispatchValue_021db3c0iisih(buf, p0, p1, v, 0xf);
+#endif
+
+#endif
+
+#endif
+
                 }
                 SetEntryOff(obj, k);
                 break;
@@ -252,8 +303,38 @@ extern "C" ARM void func_ov023_021ddf5c(struct Obj021ddf5c* obj) {
             case 16:
             case 17:
                 if (data_ov023_021ff9e0.field4) {
+#if defined(jpn)
+                    func_02050678(buf, p0 + 16, p1, _Z21GetFieldByKey020e0434P17Container020e0310i(data_ov023_021ff9e0.field14, 0x1a), 8, 0xf, &o0, &o1);
+#else
+#if defined(jpn)
+                    func_02050678(buf, p0 + 16, p1, _Z21GetFieldByKey020e0434P17Container020e0310i(data_ov023_021ff9e0.field14, 0x1a), 8, 0xf, &o0, &o1);
+#else
+#if defined(jpn)
+                    func_02050678(buf, p0 + 16, p1, _Z21GetFieldByKey020e0434P17Container020e0310i(data_ov023_021ff9e0.field14, 0x1a), 8, 0xf, &o0, &o1);
+#else
                     func_0204f41c(buf, p0 + 1, p1, _Z21GetFieldByKey020e0434P17Container020e0310i(data_ov023_021ff9e0.field14, 0x1a), 8, 0xf, &o0, &o1, 0);
+#endif
+
+#endif
+
+#endif
+
+#if defined(jpn)
+                    _Z31FormatAndDispatchValue_021db3c0iisih(buf, (short)(p0 + 8), p1, v, 0xf);
+#else
+#if defined(jpn)
+                    _Z31FormatAndDispatchValue_021db3c0iisih(buf, (short)(p0 + 8), p1, v, 0xf);
+#else
+#if defined(jpn)
+                    _Z31FormatAndDispatchValue_021db3c0iisih(buf, (short)(p0 + 8), p1, v, 0xf);
+#else
                     _Z31FormatAndDispatchValue_021db3c0iisih(buf, p0, p1, v, 0xf);
+#endif
+
+#endif
+
+#endif
+
                 }
                 SetEntryOff(obj, k);
                 break;
@@ -350,8 +431,38 @@ extern "C" ARM void func_ov023_021ddf5c(struct Obj021ddf5c* obj) {
             case 16:
             case 17:
                 if (data_ov023_021ff9e0.field4) {
+#if defined(jpn)
+                    func_02050678(buf, p0 + 16, p1, _Z21GetFieldByKey020e0434P17Container020e0310i(data_ov023_021ff9e0.field14, 0x1a), 8, 0xf, &o0, &o1);
+#else
+#if defined(jpn)
+                    func_02050678(buf, p0 + 16, p1, _Z21GetFieldByKey020e0434P17Container020e0310i(data_ov023_021ff9e0.field14, 0x1a), 8, 0xf, &o0, &o1);
+#else
+#if defined(jpn)
+                    func_02050678(buf, p0 + 16, p1, _Z21GetFieldByKey020e0434P17Container020e0310i(data_ov023_021ff9e0.field14, 0x1a), 8, 0xf, &o0, &o1);
+#else
                     func_0204f41c(buf, p0 + 1, p1, _Z21GetFieldByKey020e0434P17Container020e0310i(data_ov023_021ff9e0.field14, 0x1a), 8, 0xf, &o0, &o1, 0);
+#endif
+
+#endif
+
+#endif
+
+#if defined(jpn)
+                    _Z31FormatAndDispatchValue_021db3c0iisih(buf, (short)(p0 + 8), p1, v, 0xf);
+#else
+#if defined(jpn)
+                    _Z31FormatAndDispatchValue_021db3c0iisih(buf, (short)(p0 + 8), p1, v, 0xf);
+#else
+#if defined(jpn)
+                    _Z31FormatAndDispatchValue_021db3c0iisih(buf, (short)(p0 + 8), p1, v, 0xf);
+#else
                     _Z31FormatAndDispatchValue_021db3c0iisih(buf, p0, p1, v, 0xf);
+#endif
+
+#endif
+
+#endif
+
                 }
                 SetEntryOff(obj, k);
                 break;
@@ -374,8 +485,18 @@ extern "C" ARM void func_ov023_021ddf5c(struct Obj021ddf5c* obj) {
             case 16:
             case 17:
                 if (data_ov023_021ff9e0.field4) {
+#if defined(jpn)
+                    func_02050678(buf, p0 + 16, p1, _Z21GetFieldByKey020e0434P17Container020e0310i(data_ov023_021ff9e0.field14, 0x1a), 8, color, &o0, &o1);
+#else
                     func_0204f41c(buf, p0 + 1, p1, _Z21GetFieldByKey020e0434P17Container020e0310i(data_ov023_021ff9e0.field14, 0x1a), 8, color, &o0, &o1, 0);
+#endif
+
+#if defined(jpn)
+                    _Z31FormatAndDispatchValue_021db3c0iisih(buf, (short)(p0 + 8), p1, w, color);
+#else
                     _Z31FormatAndDispatchValue_021db3c0iisih(buf, p0, p1, w, color);
+#endif
+
                 }
                 SetEntryOff(obj, k5);
                 break;
@@ -394,10 +515,15 @@ extern "C" ARM void func_ov023_021ddf5c(struct Obj021ddf5c* obj) {
         _Z28UpdateEntryAndReset_021db45cPvP18StructAcAe021db45ciPsS2_(obj->list, (struct StructAcAe021db45c*)buf, 0xb, &d0, &d1);
         SetEntryOn(obj, 0xb);
         SetEntryOn(obj, 0x2c);
+#if defined(jpn)
+
+#else
         {
             struct Entry021ddf5c* e = (struct Entry021ddf5c*)func_ov023_021db4e4(obj->list, 0x2c);
             if (e) e->flags |= 8;
         }
+
+#endif
         _Z23SetEntryFields_021e23d0Pviihh(obj->list, 0x2c, _Z21GetFieldByKey020e0434P17Container020e0310i(data_ov023_021ff9e0.field14, 0x21), 10, 0xf);
         SetEntryOff(obj, 0xa);
         SetEntryOff(obj, 0xc);

@@ -10,7 +10,12 @@ extern "C" void func_ov017_021d6134(TaggedPtr_021d6134* a, int val);
 
 // USA: func_ov001_0216089c  (semantic: SetLinkedFieldsIfValid_0216089c)
 extern "C" ARM int func_ov001_0216089c(void* self) {
-    char* node = (char*)GetFieldPtrA0_021bbbe4(*(void**)(func_ov017_0218b5b0() + 0x3000 + 0x734));
+#if defined(jpn)
+    enum { queueOffset = 0x524 };
+#else
+    enum { queueOffset = 0x734 };
+#endif
+    char* node = (char*)GetFieldPtrA0_021bbbe4(*(void**)(func_ov017_0218b5b0() + 0x3000 + queueOffset));
     if (*(signed char*)node < 0) {
         return 0;
     }

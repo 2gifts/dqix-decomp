@@ -1,3 +1,4 @@
+// JPN: func_ov017_021a16b0
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
 #include "Memory/AllocatorUnion.h"
@@ -23,6 +24,12 @@ extern struct TripleEntry021d6740 data_ov017_021d6740[];
 extern struct TripleEntry021d6740 data_ov017_021d6744[];
 extern struct TripleEntry021d6740 data_ov017_021d6748[];
 
+#if defined(jpn)
+enum { PairBufferOffset = 0x2868, GlobalPairOffset = 0x28c0, SecondPairBufferOffset = 0x2898, FirstArenaOffset = 0xe4c, SecondArenaOffset = 0xebc, EntryBaseOffset = 0x27c };
+#else
+enum { PairBufferOffset = 0x2a78, GlobalPairOffset = 0x2ad0, SecondPairBufferOffset = 0x2aa8, FirstArenaOffset = 0xe9c, SecondArenaOffset = 0xf0c, EntryBaseOffset = 0x2cc };
+#endif
+
 // USA: func_ov017_021a0c0c  (semantic: InitAllocatorsAndPairTables_021a0c0c)
 extern "C" ARM void func_ov017_021a0c0c(char* self) {
     int i;
@@ -34,19 +41,19 @@ extern "C" ARM void func_ov017_021a0c0c(char* self) {
         alloc->CreateTypeA(p, size);
     }
 
-    RestorePairTableFromBuffer((int*)(self + 0x2a78));
-    WriteGlobalPair020bb92c((int*)(self + 0x2ad0));
+    RestorePairTableFromBuffer((int*)(self + PairBufferOffset));
+    WriteGlobalPair020bb92c((int*)(self + GlobalPairOffset));
 
     for (i = 0; data_ov017_021d66fc[i].v != 0; i++) {
-        func_0207de48(self + 0x2cc + data_ov017_021d66f8[i].v * 0x70, data_ov017_021d66fc[i].v, data_ov017_021d6700[i].v);
+        func_0207de48(self + EntryBaseOffset + data_ov017_021d66f8[i].v * 0x70, data_ov017_021d66fc[i].v, data_ov017_021d6700[i].v);
     }
 
-    RestorePairTableFromBuffer((int*)(self + 0x2aa8));
+    RestorePairTableFromBuffer((int*)(self + SecondPairBufferOffset));
 
     for (i = 0; data_ov017_021d6744[i].v != 0; i++) {
-        func_0207de48(self + 0x2cc + data_ov017_021d6740[i].v * 0x70, data_ov017_021d6744[i].v, data_ov017_021d6748[i].v);
+        func_0207de48(self + EntryBaseOffset + data_ov017_021d6740[i].v * 0x70, data_ov017_021d6744[i].v, data_ov017_021d6748[i].v);
     }
 
-    func_0207de48(self + 0xe9c, 0x8000, 0x400);
-    func_0207de48(self + 0xf0c, 0x4000, 0x400);
+    func_0207de48(self + FirstArenaOffset, 0x8000, 0x400);
+    func_0207de48(self + SecondArenaOffset, 0x4000, 0x400);
 }

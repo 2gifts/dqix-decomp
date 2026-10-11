@@ -33,6 +33,7 @@ struct Obj021f8cf4 {
     unsigned char f62;
 };
 
+// JPN: func_ov023_021f8180
 // USA: func_ov023_021f8cf4  (semantic: InitEvent7WithBuffer_021f8cf4)
 extern "C" ARM int func_ov023_021f8cf4(struct Obj021f8cf4* obj, void* ctx, int arg2, int arg3, int arg5, int arg6) {
     func_ov023_021f6ed8(obj);

@@ -14,7 +14,11 @@ struct TailNode020469b4;
 void AppendNodeToTail(struct TailList020469b4* list, struct TailNode020469b4* node);
 
 struct Ctx021c5b44 {
+#if defined(jpn)
+    unsigned char pad0[0x4ec];
+#else
     unsigned char pad0[0x6fc];
+#endif
     void* list6fc;
     unsigned char pad2[0x718 - 0x6fc - 4];
     void* node718;
@@ -37,6 +41,7 @@ struct Buf021c5b44 {
     unsigned int field14;
 };
 
+// JPN: func_ov017_021c5ff4
 // USA: func_ov017_021c5b44  (semantic: RegisterCombatantNode_021c5b44)
 extern "C" ARM void func_ov017_021c5b44(unsigned char arg0, int combatantId, unsigned int arg2, unsigned char arg3, unsigned char arg4) {
     GameState::GetInstance();

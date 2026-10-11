@@ -25,7 +25,11 @@ struct CombatSlot021e9558 {
 };
 
 struct CombatWork021e9558 {
+#if defined(jpn)
+    char pad0[0x5b44];
+#else
     char pad0[0x5954];
+#endif
     Object3D actors[2];
 };
 
@@ -47,6 +51,7 @@ extern unsigned int data_ov025_021ef990;
 extern const char data_ov025_021ef8dc[];
 extern char data_02108760[];
 
+// JPN: func_ov025_021e99e8
 // USA: func_ov025_021e9558
 extern "C" ARM void func_ov025_021e9558(struct Obj021e9558* obj) {
     GameState* gs = GameState::GetInstance();
@@ -101,8 +106,16 @@ extern "C" ARM void func_ov025_021e9558(struct Obj021e9558* obj) {
         ClearCombatantSlot(gs, 200);
     }
 
+#if defined(jpn)
+    char* secondActorBase = (char*)work + 0xbf0;
+    secondActorBase++;
+#endif
     work->actors[0].MaybeSetRegularAnimation(data_ov025_021ef8dc, 1);
+#if defined(jpn)
+    ((Object3D*)(secondActorBase - 1 + 0x5000))->MaybeSetRegularAnimation(data_ov025_021ef8dc, 1);
+#else
     work->actors[1].MaybeSetRegularAnimation(data_ov025_021ef8dc, 1);
+#endif
     _Z25ForwardField0xc0_0205ebecPv(data_02108760);
     LightingManager::GetInstance()->BeginFade(0x1000, 1000);
     obj->field_0x1c4 = 0;

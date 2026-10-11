@@ -17,11 +17,17 @@ struct LocalEvt021cbdcc {
 	unsigned char pad1[6];
 };
 
+// JPN: func_ov017_021cc27c
 // USA: func_ov017_021cbdcc  (semantic: EnqueueEventFromWordArray_021cbdcc)
 extern "C" ARM void func_ov017_021cbdcc(void) {
+#if defined(jpn)
+ enum {regionalOffset0=0x508};
+#else
+ enum {regionalOffset0=0x718};
+#endif
 	void* evtBuf = GetData02100044();
 	unsigned char* base = (unsigned char*)func_ov017_0218b5b0() + 0x3000;
-	void* h = *(void**)(base + 0x718);
+	void* h = *(void**)(base + regionalOffset0);
 	void* r = GetField6b0_021b8470(h);
 	if (!r) return;
 

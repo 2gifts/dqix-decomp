@@ -9,6 +9,7 @@ int CheckFlag0x14Bit0x10Set(unsigned char* obj);
 
 extern unsigned short data_ov024_021feb04;
 
+// JPN: func_ov024_021f6bf0
 // USA: func_ov024_021f6424  (semantic: TryFindEligibleAndCopyTable_021f6424)
 extern "C" ARM int func_ov024_021f6424(int* a0, int a1, int a2, int* outCount, void* outArray) {
 	unsigned short buf[4];

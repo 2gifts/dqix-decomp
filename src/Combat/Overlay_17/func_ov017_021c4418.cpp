@@ -1,4 +1,12 @@
+// JPN: func_ov017_021cc9a0
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kSlotFieldOffset = 0x8b8 };
+#else
+enum { kSlotFieldOffset = 0x950 };
+#endif
+
 #include "GameState/GameState.h"
 
 struct SearchStruct0202c1a4;
@@ -52,7 +60,7 @@ extern "C" ARM void func_ov017_021cc4f8(signed char flag, struct DispatchArgs021
         GameObject* c = GetCombatantWithFlag0x100(bs, id);
         if (c) {
             int f150 = GetFieldAt0x150((unsigned char*)c);
-            unsigned char slot = *(int*)((char*)f150 + 0x950) & 0xff;
+            unsigned char slot = *(int*)((char*)f150 + kSlotFieldOffset) & 0xff;
             func_ov017_021cf078(id, slot, 1);
         }
         needsFinalize = 1;

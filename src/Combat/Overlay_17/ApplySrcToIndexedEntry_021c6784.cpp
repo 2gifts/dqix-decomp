@@ -27,9 +27,15 @@ struct Holder021c6784 {
 	Entry021c6784 items[1];
 };
 
+// JPN: func_ov017_021c6c34
 // USA: func_ov017_021c6784  (semantic: ApplySrcToIndexedEntry_021c6784)
 extern "C" ARM void func_ov017_021c6784(int unused0, Src021c6784* src, GameState* battleStruct, char* base) {
-	void* table = *(void**)(base + 0x3000 + 0x718);
+#if defined(jpn)
+ enum {regionalOffset0=0x508};
+#else
+ enum {regionalOffset0=0x718};
+#endif
+	void* table = *(void**)(base + 0x3000 + regionalOffset0);
 
 	void* fieldObj = func_ov017_021b8478(table);
 	if (!fieldObj) return;

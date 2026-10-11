@@ -9,6 +9,7 @@ struct Obj_021f3368 { int field0; };
 struct Buf4_021f3368 { short v[4]; };
 extern struct Buf4_021f3368 data_ov024_021feb7c;
 
+// JPN: func_ov024_021f3b34
 // USA: func_ov024_021f3368  (semantic: FindCombatantWithLowAttackBuff_021f3368)
 extern "C" ARM int func_ov024_021f3368(struct Obj_021f3368* obj, int unused1, int unused2, int* outCount, void* outArr) {
     struct Buf4_021f3368 buf = data_ov024_021feb7c;

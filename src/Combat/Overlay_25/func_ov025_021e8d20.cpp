@@ -1,3 +1,4 @@
+// JPN: func_ov025_021e91c0
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
@@ -29,7 +30,12 @@ extern "C" void _Z23SetIntField356_021ed314Pci(char* obj, void* val);
 extern "C" void _Z19ResetStruct0216fe48P14Struct0216fe48(char* obj);
 extern "C" void _Z29SetField0FromCallFunc0202fa38P14Struct0216fd0c(char* obj);
 extern "C" void* _ZN16BackgroundLoader11GetInstanceEv();
+#if defined(jpn)
+extern "C" int _ZN16BackgroundLoader13QueueLoadFileEPKcP13SafeAllocator(void* loader, const char* path, void* alloc);
+extern int data_ov025_021efb88;
+#else
 extern "C" int _ZN16BackgroundLoader18QueueLoadFileInGP2EPKcS1_P13SafeAllocator(void* loader, const char* a, const char* b, void* alloc);
+#endif
 extern "C" void* _Z20GetOffsetPtr02160f08Pv(void* work);
 extern "C" short* _Z22FindEntryById_021dafd0Pci(void* p, int id);
 extern "C" void _ZN8Object3D10EnableFlagEi(void* obj, int flag);
@@ -46,6 +52,12 @@ extern int data_ov025_021ef8ca;
 static inline int InRange(int v) {
     return v >= 0xc0 && v <= 0xc7;
 }
+
+#if defined(jpn)
+enum { CombatantTailPadding = 0x8 };
+#else
+enum { CombatantTailPadding = 0x14 };
+#endif
 
 struct Slot {
     unsigned short type;
@@ -93,7 +105,7 @@ struct Combatant {
     short id;
     char pad4[0x134];
     char* flagsObj;
-    char pad13c[0x14];
+    char pad13c[CombatantTailPadding];
     char* extra;
 };
 
@@ -287,11 +299,17 @@ extern "C" ARM void func_ov025_021e8d20(char* self, char* arg) {
     if (id > 0) {
         if (id == *(int*)(self + 0x884)) {
             _Z15SetName021ed324PvPKc(self + 0x5e8, self + 0x83c);
+#if !defined(jpn)
             *(short*)(self + 0x794) = id;
+#endif
             self[0x87c] = 1;
         } else {
             *(int*)(self + 0x884) = id;
+#if defined(jpn)
+            *(int*)(self + 0x880) = _ZN16BackgroundLoader13QueueLoadFileEPKcP13SafeAllocator(loader, (const char*)&data_ov025_021efb88, 0);
+#else
             *(int*)(self + 0x880) = _ZN16BackgroundLoader18QueueLoadFileInGP2EPKcS1_P13SafeAllocator(loader, (const char*)&data_ov025_021ef8b4, (const char*)&data_ov025_021ef8ca, 0);
+#endif
             if (*(int*)(self + 0x880) < 0) self[0x87c] = 1;
         }
     } else {

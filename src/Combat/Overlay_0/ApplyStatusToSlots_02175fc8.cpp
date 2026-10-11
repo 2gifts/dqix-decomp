@@ -1,4 +1,13 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define REGION_OFFSET_0 0x8b4
+#define REGION_OFFSET_1 0x483
+#else
+#define REGION_OFFSET_0 0x94c
+#define REGION_OFFSET_1 0x443
+#endif
+
 #include "GameState/GameState.h"
 
 extern "C" void* func_ov000_02161318(void* obj, int index);
@@ -21,7 +30,7 @@ extern "C" ARM void func_ov000_02175fc8(void* obj) {
         }
         int val150 = GetFieldAt0x150((unsigned char*)c);
         if (val150 != 0) {
-            *(unsigned char*)(e + 0x443) = (unsigned char)*(int*)(val150 + 0x94c);
+            *(unsigned char*)(e + REGION_OFFSET_1) = (unsigned char)*(int*)(val150 + REGION_OFFSET_0);
         }
     }
 }

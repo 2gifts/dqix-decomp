@@ -29,7 +29,11 @@ struct Element02193290 {
 };
 
 struct Owner02193290 {
+#if defined(jpn)
+    unsigned char pad[0x497];
+#else
     unsigned char pad[0x477];
+#endif
     unsigned char count;
 };
 
@@ -39,6 +43,7 @@ static inline fix32_t Square(fix32_t x) {
     return FIX32_MULTIPLY(x, x);
 }
 
+// JPN: func_ov017_02193e58
 // USA: func_ov017_02193290
 extern "C" ARM int func_ov017_02193290(int a, int b, int c, Vector3i* pos, int d, int e, int f) {
     Owner02193290* owner = (Owner02193290*)func_02012fe4(GameState::GetInstance());

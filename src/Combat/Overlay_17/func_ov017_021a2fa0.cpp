@@ -14,7 +14,11 @@ struct ZoneInfo_021a2fa0 {
     unsigned short zoneId;
     char pad2[6];
     int field8;
+#if defined(jpn)
+    char fieldC[0x26a4 - 0xc];
+#else
     char fieldC[0x2664 - 0xc];
+#endif
     Archive_021a2fa0 archive;
 };
 
@@ -35,8 +39,14 @@ extern "C" void func_ov017_021a28a8(unsigned char* obj);
 extern "C" void func_ov017_021913d0(unsigned char* obj, int count);
 extern "C" void _Z35EnqueueEventTag40IfNotBusy_021ce494v(void);
 
+// JPN: func_ov017_021a3a1c
 // USA: func_ov017_021a2fa0
 extern "C" ARM void func_ov017_021a2fa0(unsigned char* obj) {
+#if defined(jpn)
+ enum {regionalOffset0=0x1034, regionalOffset1=0x58c, regionalOffset2=0x1048, regionalOffset3=0xf2c, regionalOffset4=0xf40, regionalOffset5=0xfb0, regionalOffset6=0xfc4};
+#else
+ enum {regionalOffset0=0x1244, regionalOffset1=0x5dc, regionalOffset2=0x1258, regionalOffset3=0x113c, regionalOffset4=0x1150, regionalOffset5=0x11c0, regionalOffset6=0x11d4};
+#endif
     GameState* gs = GameState::GetInstance();
     ZoneInfo_021a2fa0* zone = func_02012fe4();
     func_ov017_021a316c(obj);
@@ -46,11 +56,11 @@ extern "C" ARM void func_ov017_021a2fa0(unsigned char* obj) {
 
     unsigned int size = ((SafeAllocator*)(obj + 0xc4))->GetMaxPossibleAllocation();
     void* buf = ((SafeAllocator*)(obj + 0xc4))->Allocate(size);
-    ((SafeAllocator*)(obj + 0x1244))->CreateTypeA(buf, size);
-    _Z17CopyState0207dfc8P13State0207dfc8S0_((struct State0207dfc8*)(obj + 0x5dc), (struct State0207dfc8*)(obj + 0x1258));
+    ((SafeAllocator*)(obj + regionalOffset0))->CreateTypeA(buf, size);
+    _Z17CopyState0207dfc8P13State0207dfc8S0_((struct State0207dfc8*)(obj + regionalOffset1), (struct State0207dfc8*)(obj + regionalOffset2));
 
     Archive_021a2fa0* archive = &zone->archive;
-    func_0208f588(archive, obj + 0x1244, (char*)(obj + 0x1258));
+    func_0208f588(archive, obj + regionalOffset0, (char*)(obj + regionalOffset2));
 
     GrottoStruct* grotto = gs->GetGrottoStruct();
     if (grotto->unknown_0[0] != 0
@@ -63,16 +73,16 @@ extern "C" ARM void func_ov017_021a2fa0(unsigned char* obj) {
         archive->inGrotto = 0;
     }
 
-    size = ((SafeAllocator*)(obj + 0x1244))->GetMaxPossibleAllocation();
-    buf = ((SafeAllocator*)(obj + 0x1244))->Allocate(size);
-    ((SafeAllocator*)(obj + 0x113c))->CreateTypeA(buf, size);
-    _Z17CopyState0207dfc8P13State0207dfc8S0_((struct State0207dfc8*)(obj + 0x1258), (struct State0207dfc8*)(obj + 0x1150));
+    size = ((SafeAllocator*)(obj + regionalOffset0))->GetMaxPossibleAllocation();
+    buf = ((SafeAllocator*)(obj + regionalOffset0))->Allocate(size);
+    ((SafeAllocator*)(obj + regionalOffset3))->CreateTypeA(buf, size);
+    _Z17CopyState0207dfc8P13State0207dfc8S0_((struct State0207dfc8*)(obj + regionalOffset2), (struct State0207dfc8*)(obj + regionalOffset4));
     func_ov017_021a28a8(obj);
 
-    size = ((SafeAllocator*)(obj + 0x113c))->GetMaxPossibleAllocation();
-    buf = ((SafeAllocator*)(obj + 0x113c))->Allocate(size);
-    ((SafeAllocator*)(obj + 0x11c0))->CreateTypeA(buf, size);
-    _Z17CopyState0207dfc8P13State0207dfc8S0_((struct State0207dfc8*)(obj + 0x1150), (struct State0207dfc8*)(obj + 0x11d4));
+    size = ((SafeAllocator*)(obj + regionalOffset3))->GetMaxPossibleAllocation();
+    buf = ((SafeAllocator*)(obj + regionalOffset3))->Allocate(size);
+    ((SafeAllocator*)(obj + regionalOffset5))->CreateTypeA(buf, size);
+    _Z17CopyState0207dfc8P13State0207dfc8S0_((struct State0207dfc8*)(obj + regionalOffset4), (struct State0207dfc8*)(obj + regionalOffset6));
 
     PartyInfo_021a2fa0* party = (PartyInfo_021a2fa0*)GetPtrField0x2a04(gs);
     if (party->pendingCount != 0) {

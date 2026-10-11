@@ -14,7 +14,9 @@ struct Stream_0218f340 {
     unsigned char field_0x38[0x20];
     FrameDecoder_0218f340* decoders;
     unsigned char field_0x5c[0x48];
+#if !defined(jpn)
     int reset;
+#endif
     unsigned char field_0xa8[0x20];
     int available;
     int consumed;
@@ -34,12 +36,18 @@ extern "C" ARM int func_ov016_0218f340(Stream_0218f340* stream, void* output) {
         stream->decoders[stream->frame].input = *stream->input;
         stream->decoders[stream->frame].output = output;
         *stream->input += func_ov016_0219000c(&stream->decoders[stream->frame]);
-    } else if (stream->format == 2) {
+    } else
+#if !defined(jpn)
+    if (stream->format == 2)
+#endif
+    {
         stream->decoders[stream->frame].input = *stream->input;
         stream->decoders[stream->frame].output = output;
         func_ov016_021909cc_unk(&stream->decoders[stream->frame]);
         *stream->input += 0x28;
-    } else if (stream->format == 3) {
+    }
+#if !defined(jpn)
+    else if (stream->format == 3) {
         if (stream->reset == 1) {
             func_ov016_0218fea0(&stream->decoders[stream->frame], *stream->input);
             *stream->input += 4;
@@ -50,9 +58,12 @@ extern "C" ARM int func_ov016_0218f340(Stream_0218f340* stream, void* output) {
         func_020ca3b8(*stream->input, output, 0x200);
         *stream->input += 0x200;
     }
+#endif
     if (++stream->frame == stream->frameCount) {
         stream->frame = 0;
+#if !defined(jpn)
         stream->reset = 0;
+#endif
     }
     ++stream->consumed;
     return 1;

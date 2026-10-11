@@ -19,6 +19,11 @@ void RestorePairTables0207df90(char* obj);
 
 // USA: func_ov001_0215eab0
 ARM int RestoreCombatantPairTables_0215eab0(void* self, int mode) {
+#if defined(jpn)
+ enum { tableOffset = 0x27c };
+#else
+ enum { tableOffset = 0x2cc };
+#endif
     GameState* bs = GameState::GetInstance();
     if (bs == NULL) {
         return 0;
@@ -30,10 +35,10 @@ ARM int RestoreCombatantPairTables_0215eab0(void* self, int mode) {
     int val = func_ov017_021d60f4(self);
     int addr;
     if (val < 0) {
-        addr = base + 0x2cc;
+        addr = base + tableOffset;
         addr = addr + 0xbd0;
     } else {
-        addr = base + 0x2cc + val * 0x70;
+        addr = base + tableOffset + val * 0x70;
     }
     if (addr == 0) {
         return 0;

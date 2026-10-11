@@ -1,3 +1,10 @@
+// JPN: func_ov017_021ca654
+#if defined(jpn)
+enum { RegionOffset3718 = 0x3508, RegionOffset54f4 = 0x56e8 };
+#else
+enum { RegionOffset3718 = 0x3718, RegionOffset54f4 = 0x54f4 };
+#endif
+
 #include <globaldefs.h>
 
 int PeekInputLogA(void);
@@ -32,7 +39,7 @@ struct AType_021ca1a4 { char pad[8]; unsigned short field8; };
 extern "C" ARM void func_ov017_021ca1a4(int argIdx, struct Arg1_021ca1a4* arg1, void* unused, char* arg3) {
     if (PeekInputLogA() != 0) return;
 
-    void* combatant = *(void**)(arg3 + 0x3718);
+    void* combatant = *(void**)(arg3 + RegionOffset3718);
     void* a = func_ov017_021b8478(combatant);
     void* b = func_ov017_021b8468(combatant);
     if (!a || !b) return;
@@ -45,7 +52,7 @@ extern "C" ARM void func_ov017_021ca1a4(int argIdx, struct Arg1_021ca1a4* arg1, 
         for (i = 0; i < 4; i++) {
             if (TestBitAt0x34((unsigned char*)a, i & 0xff) && argIdx != i) {
                 func_ov000_02162c14(b, i, &buf);
-                int val = *(int*)((char*)b + i * 4 + 0x54f4);
+                int val = *(int*)((char*)b + i * 4 + RegionOffset54f4);
                 func_ov017_021c6814(((struct AType_021ca1a4*)a)->field8, (unsigned short)i, &buf, (unsigned char)(val & 0xff), (signed char)argIdx, 0);
             }
         }

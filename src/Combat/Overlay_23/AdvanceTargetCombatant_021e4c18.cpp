@@ -23,7 +23,12 @@ struct Obj021e4c18 {
     void* fc8;
     char pad2[0xd4 - 0xcc];
     char fd4[1];
+#if defined(jpn)
+    char pad3[0x130 - 0xd5];
+#else
     char pad3[0x134 - 0xd5];
+#endif
+
     int f134;
     char pad4[0x4e5 - 0x138];
     signed char f4e5;
@@ -31,12 +36,23 @@ struct Obj021e4c18 {
     int f4e8;
     int arr4ec[4];
     int f4fc;
+#if defined(jpn)
+    char pad6[0x56c - 0x4fc];
+#else
     char pad6[0x634 - 0x500];
+#endif
+
     unsigned short f634;
 };
 
+// JPN: func_ov023_021e4e20
 // USA: func_ov023_021e4c18  (semantic: AdvanceTargetCombatant_021e4c18)  (semantic: AdvanceTargetCombatant_021e4c18)
 extern "C" ARM void func_ov023_021e4c18(struct Obj021e4c18* obj) {
+#if defined(jpn)
+ enum {regionalOffset0=0xe80, regionalOffset1=0x3d44};
+#else
+ enum {regionalOffset0=0xe84, regionalOffset1=0x3dcc};
+#endif
     unsigned short flags = obj->f634;
     if (flags & 0x40) return;
     if (!(flags & 0x80)) return;
@@ -77,7 +93,7 @@ extern "C" ARM void func_ov023_021e4c18(struct Obj021e4c18* obj) {
     if (obj->f0 != 0) {
         int rawId = obj->arr4ec[index];
         signed char sid = (signed char)rawId;
-        struct EntryList0204af14* list = (struct EntryList0204af14*)((char*)obj->f0 + 0xe84);
+        struct EntryList0204af14* list = (struct EntryList0204af14*)((char*)obj->f0 + regionalOffset0);
         if (list != 0) {
             if (GetEntryByIndexStride0x10(list, 1) != 0) {
                 func_020dc7e8(5, sid);
@@ -85,7 +101,12 @@ extern "C" ARM void func_ov023_021e4c18(struct Obj021e4c18* obj) {
         }
     }
 
+#if defined(jpn)
+
+#else
     func_ov023_021e2ce8(obj->arr4ec[index], obj->fc8);
+#endif
+
 
     combatant = battleStruct->GetGameObjectByIndex(obj->arr4ec[index]);
     unsigned short cflags = combatant->obj3D_.unknown_0_;
@@ -101,7 +122,7 @@ extern "C" ARM void func_ov023_021e4c18(struct Obj021e4c18* obj) {
         if (obj->f0 == 0) return;
 
         func_ov005_021551d4(obj->f0);
-        *(int*)((char*)obj->f0 + 0x3dcc) |= 0x200;
+        *(int*)((char*)obj->f0 + regionalOffset1) |= 0x200;
         ((DispatchFn021551fc)(void*)&DispatchByIdxAndCond021551fc)((char*)obj->f0, obj->f4fc, 1);
     }
 }

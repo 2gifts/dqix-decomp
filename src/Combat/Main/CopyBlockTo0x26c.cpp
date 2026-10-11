@@ -1,5 +1,12 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kOffset26c = 0x260 };
+#else
+enum { kOffset26c = 0x26c };
+#endif
+
+
 struct Vec3Block020398b4 { int v[3]; };
 
 struct SubBlock020398b4 {
@@ -23,7 +30,7 @@ struct SubBlock020398b4 {
 };
 
 struct Owner020398b4 {
-    unsigned char pad[0x26c];
+    unsigned char pad[kOffset26c];
     struct SubBlock020398b4 dst;
 };
 

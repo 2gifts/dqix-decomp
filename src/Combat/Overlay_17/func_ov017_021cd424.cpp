@@ -30,9 +30,15 @@ struct Src021cd424 {
     signed char fieldc;
 };
 
+// JPN: func_ov017_021cd8cc
 // USA: func_ov017_021cd424
 extern "C" ARM void func_ov017_021cd424(int unused0, Src021cd424* src, int unused2, unsigned char* obj) {
-    unsigned char* h = *(unsigned char**)(obj + 0x3000 + 0x718);
+#if defined(jpn)
+ enum {regionalOffset0=0x508};
+#else
+ enum {regionalOffset0=0x718};
+#endif
+    unsigned char* h = *(unsigned char**)(obj + 0x3000 + regionalOffset0);
     Ret021cd424* r = (Ret021cd424*)func_ov017_021b8478(h);
     if (r->field8 != src->field4) return;
     unsigned char* work = (unsigned char*)func_ov017_021b8468(h);

@@ -1,7 +1,11 @@
 #include <globaldefs.h>
 
 struct Res020a654c {
+#if defined(jpn)
+    char pad0[0x34ec];
+#else
     char pad0[0x36fc];
+#endif
     void* nodeList;
 };
 
@@ -32,6 +36,7 @@ extern "C" int _Z12IsField0NullPPv(void* p);
 extern "C" int func_ov017_021a93f0(void* res, int a, int b);
 
 // USA: func_020a654c
+// JPN: func_020a654c
 extern "C" ARM void func_020a654c(struct Res020a654c* self) {
     void* gs = _ZN9GameState11GetInstanceEv();
     unsigned short* p;

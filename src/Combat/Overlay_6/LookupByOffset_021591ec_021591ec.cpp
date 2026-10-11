@@ -1,9 +1,15 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define func_ov006_02154e58 func_ov006_021565b0
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 struct LookupByOffset0x362_021591ecStruct {
-    unsigned char pad0[0x50];
+    unsigned char pad0[R(0x48, 0x50)];
     unsigned short* arr;
-    unsigned char pad1[0x362 - 0x54];
+    unsigned char pad1[0x362 - R(0x4c, 0x54)];
     short f362;
 };
 

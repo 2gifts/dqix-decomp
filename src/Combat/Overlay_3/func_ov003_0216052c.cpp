@@ -1,4 +1,15 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegion28 = 0x20 };
+enum { kRegion324 = 0x20c };
+enum { kRegion328 = 0x210 };
+enum { kRegion464 = 0x28c };
+#else
+enum { kRegion28 = 0x28 };
+enum { kRegion324 = 0x324 };
+enum { kRegion328 = 0x328 };
+enum { kRegion464 = 0x464 };
+#endif
 
 struct Obj2081;
 
@@ -13,7 +24,7 @@ struct ElementIds {
 };
 
 struct ElementIdTable {
-    char pad0[0x28];
+    char pad0[kRegion28];
     struct ElementIds elements;
 };
 
@@ -21,12 +32,13 @@ extern struct ElementIdTable data_ov003_0217f3ec;
 extern short data_ov003_0217f448[3][2];
 
 struct Combatant0216052c {
-    char pad0[0x324];
+    char pad0[kRegion324];
     struct Obj2081* model;
-    char pad328[0x464 - 0x328];
+    char pad328[kRegion464 - kRegion328];
     unsigned int flags;
 };
 
+// JPN: func_ov003_021606e4
 // USA: func_ov003_0216052c
 extern "C" ARM void func_ov003_0216052c(struct Combatant0216052c* obj) {
     if (obj->model == NULL) {
@@ -49,9 +61,15 @@ extern "C" ARM void func_ov003_0216052c(struct Combatant0216052c* obj) {
                 if (part >= 0) {
                     short x, y, w, h;
                     _Z30UpdateOffsetsFromEntry02080a6cPvisPsS0_S0_S0_(model, id, part, &x, &y, &w, &h);
+#if !defined(jpn)
                     h = (16 - h) >> 1;
+#endif
                     short posX = x + w + 6;
+#if defined(jpn)
+                    short posY = y - 3;
+#else
                     short posY = y - h + 1;
+#endif
                     _Z23SetEntryFields_021604f4Pciish((char*)obj, posX, posY, 0, slot++);
                 }
             }

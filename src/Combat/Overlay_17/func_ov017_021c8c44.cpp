@@ -14,7 +14,11 @@ struct Evt021c8c44 {
 
 struct Combatant021c8c44 {
     Object3D obj3D;
+#if defined(jpn)
+    unsigned char padAc[0x150 - sizeof(Object3D)];
+#else
     unsigned char padAc[0x15c - sizeof(Object3D)];
+#endif
     int field_15c;
     unsigned char pad160[0x1b2 - 0x160];
     unsigned short field_1b2;
@@ -40,6 +44,7 @@ extern "C" void _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7csi(Obj02053f
 extern "C" void _Z26CallHelperWithBuf_021907dciiiii(int a, int b, int c, int d, int e);
 extern "C" void _Z30ClearMatchingHalfword_02197324Pht(unsigned char* obj, unsigned short key);
 
+// JPN: func_ov017_021c90f4
 // USA: func_ov017_021c8c44
 extern "C" ARM void func_ov017_021c8c44(int id, Evt021c8c44* evt, GameState* gs, unsigned char* ctx, void* search) {
     int match;
@@ -66,7 +71,11 @@ extern "C" ARM void func_ov017_021c8c44(int id, Evt021c8c44* evt, GameState* gs,
         }
     }
 
+#if defined(jpn)
+    func_ov017_021b86f8(*(void**)(ctx + 0x3508), key, 1, flag);
+#else
     func_ov017_021b86f8(*(void**)(ctx + 0x3718), key, 1, flag);
+#endif
 
     if (func_0202c508(search)) {
         _Z23ResetEntryByKey0207da7cP13Entry0207d9bct(GetData02108ea8(), key);

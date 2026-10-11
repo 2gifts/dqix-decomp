@@ -53,6 +53,7 @@ struct Obj_021fc4f4 {
     struct Action_021fc4f4* action;
 };
 
+// JPN: func_ov024_021fccc0
 // USA: func_ov024_021fc4f4
 extern "C" ARM void func_ov024_021fc4f4(struct Obj_021fc4f4* obj) {
     if (obj->field6 == 0) return;

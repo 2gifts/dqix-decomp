@@ -26,12 +26,18 @@ struct LocalEvt021b8bb0 {
     int f14;
 };
 
+// JPN: func_ov017_021b90a8
 // USA: func_ov017_021b8bb0  (semantic: ApplyOrEnqueueEvent_021b8bb0)
 extern "C" ARM void func_ov017_021b8bb0(int id) {
+#if defined(jpn)
+ enum {regionalOffset0=0x4ec, regionalOffset1=0x508};
+#else
+ enum {regionalOffset0=0x6fc, regionalOffset1=0x718};
+#endif
     GameState* bs = GameState::GetInstance();
     char* base = (char*)(long)((int)func_ov017_0218b5b0()) + 0x3000;
-    struct TailList020469b4* list = *(struct TailList020469b4**)(base + 0x6fc);
-    struct TailNode020469b4* node = *(struct TailNode020469b4**)(base + 0x718);
+    struct TailList020469b4* list = *(struct TailList020469b4**)(base + regionalOffset0);
+    struct TailNode020469b4* node = *(struct TailNode020469b4**)(base + regionalOffset1);
     func_ov017_021b6f18(node);
 
     struct LocalEvt021b8bb0 evt;

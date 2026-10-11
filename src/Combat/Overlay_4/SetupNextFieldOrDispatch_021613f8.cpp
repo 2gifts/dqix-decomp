@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum{regionCount=4,regionIndex=8,regionType=6,regionEntry=7};
+#else
+enum{regionCount=6,regionIndex=0xb,regionType=7,regionEntry=8};
+#endif
 
 int HasCombatantWithFlag_0215f74c_0215f74c(int unused, int combatantId);
 extern "C" void func_ov004_0215fdfc(void*);
@@ -19,7 +24,7 @@ extern unsigned char data_ov004_021707e8;
 
 // USA: func_ov004_021613f8  (semantic: SetupNextFieldOrDispatch_021613f8)
 extern "C" ARM int func_ov004_021613f8(void* a) {
-    if (*(signed char*)(D021707e8 + 6) <= 1) return 0;
+    if (*(signed char*)(D021707e8 + regionCount) <= 1) return 0;
 
     void* combatant = *(void**)(D021707e8 + 0x1c);
     if (!HasCombatantWithFlag_0215f74c_0215f74c((int)a, (int)combatant)) {
@@ -27,18 +32,18 @@ extern "C" ARM int func_ov004_021613f8(void* a) {
         return 0;
     }
 
-    *(signed char*)(D021707e8 + 0xb) = *(signed char*)(D021707e8 + 0xb) - 1;
-    if (*(signed char*)(D021707e8 + 0xb) < 0) {
-        *(signed char*)(D021707e8 + 0xb) = *(signed char*)(D021707e8 + 6) - 1;
+    *(signed char*)(D021707e8 + regionIndex) = *(signed char*)(D021707e8 + regionIndex) - 1;
+    if (*(signed char*)(D021707e8 + regionIndex) < 0) {
+        *(signed char*)(D021707e8 + regionIndex) = *(signed char*)(D021707e8 + regionCount) - 1;
     }
 
-    switch (*(unsigned char*)(D021707e8 + 7) - 0x64) {
+    switch (*(unsigned char*)(D021707e8 + regionType) - 0x64) {
     case 0:
-        *(unsigned char*)(D021707e8 + 8) = (unsigned char)func_ov004_0215e9dc(a, *(void**)(D021707e8 + 0x1c), *(unsigned char*)(D021707e8 + 8), 0);
+        *(unsigned char*)(D021707e8 + regionEntry) = (unsigned char)func_ov004_0215e9dc(a, *(void**)(D021707e8 + 0x1c), *(unsigned char*)(D021707e8 + regionEntry), 0);
         func_ov004_0216033c(a);
         break;
     case 1:
-        *(unsigned char*)(D021707e8 + 8) = (unsigned char)func_ov004_0215e9dc(a, *(void**)(D021707e8 + 0x1c), *(unsigned char*)(D021707e8 + 8), 0);
+        *(unsigned char*)(D021707e8 + regionEntry) = (unsigned char)func_ov004_0215e9dc(a, *(void**)(D021707e8 + 0x1c), *(unsigned char*)(D021707e8 + regionEntry), 0);
         func_ov004_02161514(a);
         break;
     case 2:

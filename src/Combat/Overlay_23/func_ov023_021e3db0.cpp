@@ -1,3 +1,8 @@
+#if defined(jpn)
+enum {regionalOffset0=0x124, regionalOffset1=0x12c, regionalOffset2=0x4e0};
+#else
+enum {regionalOffset0=0x128, regionalOffset1=0x130, regionalOffset2=0x4e4};
+#endif
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -15,13 +20,14 @@ extern "C" void func_ov005_02154de8(void* arg);
 
 struct Obj021e3db0 {
     void* field0;
-    char pad4[0x128 - 0x4];
+    char pad4[regionalOffset0 - 0x4];
     void* field128;
     void* field12c;
-    char pad130[0x4e4 - 0x130];
+    char pad130[regionalOffset2 - regionalOffset1];
     unsigned char field4e4;
 };
 
+// JPN: func_ov023_021e400c
 // USA: func_ov023_021e3db0
 extern "C" ARM void func_ov023_021e3db0(struct Obj021e3db0* obj) {
     int val = GetWord0x0((int*)GameState::GetInstance());

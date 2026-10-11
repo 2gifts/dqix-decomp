@@ -1,3 +1,10 @@
+// JPN: func_ov017_021c45b4
+#if defined(jpn)
+enum { RegionOffset3734 = 0x3524, RegionOffset180 = 0x17c };
+#else
+enum { RegionOffset3734 = 0x3734, RegionOffset180 = 0x180 };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -28,7 +35,7 @@ extern "C" ARM void func_ov017_021c40ec(void* unused, struct Info_021c40ec* info
     GameObject* combatant = GetCombatantWithFlag0x100(battleStruct, id);
     if (combatant == NULL) return;
 
-    char* s = *(char**)((char*)ov + 0x3734);
+    char* s = *(char**)((char*)ov + RegionOffset3734);
 
     int j;
     for (j = 0; j < 5; j++) {
@@ -39,9 +46,9 @@ extern "C" ARM void func_ov017_021c40ec(void* unused, struct Info_021c40ec* info
         }
         if (*(unsigned char*)(s + 3) != 0) {
             if (id == 0 && elemId == 6) {
-                signed char v = *(signed char*)(s + 0x180);
+                signed char v = *(signed char*)(s + RegionOffset180);
                 if (v < 0) {
-                    *(unsigned char*)(s + 0x180) = 6;
+                    *(unsigned char*)(s + RegionOffset180) = 6;
                 }
             }
         }

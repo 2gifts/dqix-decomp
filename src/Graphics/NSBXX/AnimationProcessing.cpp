@@ -3,8 +3,6 @@
 #pragma optimize_for_size off
 
 #if defined(jpn)
-#define func_020ca408 func_020cbed4
-#define func_020ca458 func_020cbf24
 #endif
 
 extern "C"

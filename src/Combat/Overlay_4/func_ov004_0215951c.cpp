@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { combatantArrayPointerOffset = 0x144 };
+#else
+enum { combatantArrayPointerOffset = 0x150 };
+#endif
 #include "GameState/GameState.h"
 
 extern "C" signed char func_ov004_02157128(void* obj);
@@ -68,7 +73,7 @@ extern "C" ARM int func_ov004_0215951c(void* obj) {
         void* ptr9 = 0;
         int idx = buf[i];
         if (idx != 0xff) {
-            Elem0215951c* arr = (Elem0215951c*)(*(char**)((char*)c + 0x150) + 0x194);
+            Elem0215951c* arr = (Elem0215951c*)(*(char**)((char*)c + combatantArrayPointerOffset) + 0x194);
             Elem0215951c* e = &arr[idx];
             if (e) {
                 if (e->f18 > 0) {

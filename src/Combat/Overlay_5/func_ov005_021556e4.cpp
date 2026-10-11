@@ -1,3 +1,10 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define func_ov005_02158560 func_ov005_02159b58
+#define func_ov005_021585fc func_ov005_02159bf4
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include <Filesystem/FileIO.h>
 #include <std_library_functions.h>
@@ -40,7 +47,7 @@ struct EquipmentSlot {
 struct EquipmentMenu {
     char unk_0[0xdf4];
     Container020dedd0* items_;
-    char texts_[0x2d90 - 0xdf8];
+    char texts_[R(0x2d08, 0x2d90) - 0xdf8];
     EquipmentSlot slots_[24];
     char slotModels_[0x3cf0 - 0x3030];
     char dragModel_[0x88];

@@ -7,11 +7,30 @@ struct Obj0203a588;
 struct Obj020444e0 {
     char pad0[0x38];
     void* field38;
+#if defined(jpn)
+    char pad3C[0x868 - 0x3c];
+#else
     char pad3C[0x998 - 0x3c];
+#endif
     void* field998;
 };
 
 struct CombatWork02160c84 {
+#if defined(jpn)
+    char pad0[0xe24];
+    int phase;
+    char padEAC[0x371c - 0xe28];
+    char battleField[0x5768 - 0x371c];
+    void* combatEntry;
+    void* field5578;
+    char pad557C[0x5778 - 0x5770];
+    struct Obj021d8c60* field5588;
+    char pad558C[0x57bc - 0x577c];
+    void* field55CC;
+    char pad55D0[0x57e4 - 0x57c0];
+    unsigned int flags;
+    char pad55F8[0x71ec - 0x57e8];
+#else
     char pad0[0xea8];
     int phase;
     char padEAC[0x3760 - 0xeac];
@@ -25,6 +44,7 @@ struct CombatWork02160c84 {
     char pad55D0[0x55f4 - 0x55d0];
     unsigned int flags;
     char pad55F8[0x6ffc - 0x55f8];
+#endif
     char field6FFC[1];
 };
 
@@ -51,9 +71,11 @@ extern "C" ARM void func_ov000_02160c84(struct CombatWork02160c84* work) {
         if (work->combatEntry) {
             _Z24DispatchAndFlush02175480Pv(work->battleField);
             _Z24ResetCombatEntry02184a58Pv(work->combatEntry);
+#if !defined(jpn)
             if (work->field5578) {
                 func_ov013_02187784(work->field5578);
             }
+#endif
         } else if (work->field5588) {
             _Z24DispatchAndFlush02175480Pv(work->battleField);
             _Z27CallIfFieldNot0Or3_021d8c60P11Obj021d8c60(work->field5588);

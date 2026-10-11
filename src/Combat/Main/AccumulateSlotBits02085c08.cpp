@@ -1,4 +1,12 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kFlagAOffset = 0x865 };
+enum { kFlagBOffset = 0x85d };
+#else
+enum { kFlagAOffset = 0x8fd };
+enum { kFlagBOffset = 0x8f5 };
+#endif
+
 #include "GameState/GameState.h"
 
 int GetSlotBits0201137c(char* base, int id);
@@ -17,12 +25,12 @@ ARM int AccumulateSlotBits02085c08(unsigned char* actor) {
     total = 0;
     if (sel != 5) {
         if (sel == 0x21) {
-            if (actor[0x8fd] & 1) {
+            if (actor[kFlagAOffset] & 1) {
                 total += GetSlotBits0201137c((char*)bs, 0x88);
             }
         }
     } else {
-        if (actor[0x8f5] & 1) {
+        if (actor[kFlagBOffset] & 1) {
             total += GetSlotBits0201137c((char*)bs, 0x48);
         }
     }

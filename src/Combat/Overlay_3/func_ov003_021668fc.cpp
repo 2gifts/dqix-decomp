@@ -2,6 +2,13 @@
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
 
+#if defined(jpn)
+enum { kRegionValue480_2A8 = 0x2a8 };
+#else
+enum { kRegionValue480_2A8 = 0x480 };
+#endif
+
+
 extern "C" void* func_ov003_02160bf8(void* obj, int key);
 
 struct KeyedList0207c378;
@@ -14,12 +21,13 @@ extern unsigned short data_ov003_0217f494[9];
 extern unsigned short data_ov003_0217f4a6[9];
 
 // USA: func_ov003_021668fc
+// JPN: func_ov003_021667f8
 extern "C" ARM void func_ov003_021668fc(char* self) {
-    if (*(short*)(self + 0x480) < 0) return;
+    if (*(short*)(self + kRegionValue480_2A8) < 0) return;
 
     GameState* bs = GameState::GetInstance();
     void* p2a04 = GetPtrField0x2a04(bs);
-    void* found = func_ov003_02160bf8(self, *(short*)(self + 0x480));
+    void* found = func_ov003_02160bf8(self, *(short*)(self + kRegionValue480_2A8));
     if (found == 0) return;
 
     char* base = (char*)found + 0x160;
@@ -55,5 +63,5 @@ extern "C" ARM void func_ov003_021668fc(char* self) {
         idx = (unsigned char)(idx + 1);
     }
 
-    RemoveOrShiftMarkedEntry02086a04((struct FindEntryContainer02086a04*)p2a04, (signed char)*(short*)(self + 0x480));
+    RemoveOrShiftMarkedEntry02086a04((struct FindEntryContainer02086a04*)p2a04, (signed char)*(short*)(self + kRegionValue480_2A8));
 }

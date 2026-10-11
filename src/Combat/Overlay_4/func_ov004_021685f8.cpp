@@ -1,3 +1,9 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define data_ov004_02170700 data_ov004_02170fa8
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 struct Obj020415b0 {

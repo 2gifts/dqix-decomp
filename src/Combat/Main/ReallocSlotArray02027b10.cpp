@@ -1,10 +1,16 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { slotArrayOffset = 0x9cc };
+#else
+enum { slotArrayOffset = 0xa98 };
+#endif
 #include "Memory/SafeAllocator.h"
 
 extern "C" int func_ov017_0218b5b0(void);
 
 struct S02027b10 {
-    char pad0[0xa98];
+    char pad0[slotArrayOffset];
     unsigned char f0xa98;
     unsigned char f0xa99;
     char pad1[2];

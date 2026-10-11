@@ -9,7 +9,11 @@ int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 
 int AppendString02042058(char* dst, const char* src);
 
+#if defined(jpn)
+extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g);
+#else
 extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g, int h);
+#endif
 
 // USA: func_ov023_021ed600  (semantic: InitAndDispatchEntry_021ed600)
 extern "C" ARM void func_ov023_021ed600(char* obj) {
@@ -31,10 +35,18 @@ extern "C" ARM void func_ov023_021ed600(char* obj) {
     *(unsigned char*)(obj + 0x179) = zero;
     *(unsigned char*)(obj + 0x17a) = zero;
 
+#if defined(jpn)
+    memset(*(void**)(obj + 0x1c), zero, 0x800);
+#else
     memset(*(void**)(obj + 0x1c), zero, 0x960);
+#endif
 
     int key = GetFieldByKey020e0434((struct Container020e0310*)(obj + 0x4), 0x3e8);
     AppendString02042058(*(char**)(obj + 0x1c), (const char*)(long)key);
 
+#if defined(jpn)
+    func_0205d304(obj + 0xc4, *(void**)(obj + 0x1c), 0, 0, 0, 1, 0);
+#else
     func_0205d304(obj + 0xc4, *(void**)(obj + 0x1c), 0, 0, 0, 0, 0, 1);
+#endif
 }

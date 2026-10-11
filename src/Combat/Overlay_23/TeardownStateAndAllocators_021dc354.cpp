@@ -13,7 +13,12 @@ void TailForward02012da4(AllocatorUnion* alloc, void* data);
 
 extern AllocatorUnion data_02114e20;
 
+#if defined(jpn)
+struct DataStruct_021dc354 { unsigned int pad0[5]; void* field4; };
+#else
 struct DataStruct_021dc354 { unsigned int pad0; void* field4; };
+#endif
+
 extern struct DataStruct_021dc354 data_ov023_021ff9e0;
 
 struct Obj021dc354 {
@@ -26,7 +31,12 @@ struct Obj021dc354 {
     unsigned char pad48[0xc4 - 0x48];
     struct InitStruct02075cdcStruct* ptrC4;    // 0xc4
     struct InitStruct02075cdcStruct* ptrC8;    // 0xc8
+#if defined(jpn)
+    unsigned char padCC[0x6b0 - 0xcc];
+#else
     unsigned char padCC[0x734 - 0xcc];
+#endif
+
     int field734;                              // 0x734
     int arr738[7];                             // 0x738
     unsigned char pad754[0x774 - 0x754];
@@ -41,6 +51,7 @@ struct Obj021dc354 {
     unsigned char flag79b : 1;                 // 0x79b
 };
 
+// JPN: func_ov023_021dcc54
 // USA: func_ov023_021dc354  (semantic: TeardownStateAndAllocators_021dc354)
 extern "C" ARM void func_ov023_021dc354(struct Obj021dc354* obj) {
     ResetIfNonNeg_021db2e4((volatile int*)&obj->field780);

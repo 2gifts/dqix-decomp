@@ -24,6 +24,7 @@ struct BuffWord_021f166c {
 
 extern unsigned short data_ov024_021fef6c;
 
+// JPN: func_ov024_021f1e38
 // USA: func_ov024_021f166c  (semantic: FindLowUnkBuff21Unflagged_021f166c)
 extern "C" ARM int func_ov024_021f166c(struct Obj_021f166c* obj, short id, int unused2, int* outCount, void* outArr) {
     GameObject* c0 = GetCombatantWithFlag0x400ByID(obj->field0, id);

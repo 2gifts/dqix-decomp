@@ -1,3 +1,8 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #include "Memory/SafeAllocator.h"
@@ -21,8 +26,18 @@ extern "C" ARM void* func_ov011_021849c8(void* ctx);
 extern "C" ARM void* func_ov011_021845f8(void* ctx, int v);
 
 struct Obj_02185110;
+#if defined(jpn)
+#define InitObj02185110 _Z15InitObj02185110P12Obj_02185110
+extern "C" ARM Obj_02185110* InitObj02185110(Obj_02185110* obj);
+#else
 ARM Obj_02185110* InitObj02185110(Obj_02185110* obj);
+#endif
+#if defined(jpn)
+#define InitField20And34_0218513c _Z25InitField20And34_0218513cPv
+extern "C" ARM void* InitField20And34_0218513c(void* obj);
+#else
 ARM void* InitField20And34_0218513c(void* obj);
+#endif
 ARM int InitObjWithMisc_021f6f20(void* obj, int p1, int p3, int p4, int arg5, unsigned int arg6);
 
 struct ListHead_021f67ac;

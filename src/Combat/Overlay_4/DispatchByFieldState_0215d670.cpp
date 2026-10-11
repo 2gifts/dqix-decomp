@@ -9,7 +9,12 @@ extern "C" void func_ov011_021848a0(void* obj, int val);
 
 // USA: func_ov004_0215d670
 ARM int DispatchByFieldState_0215d670(void* obj) {
-    char* p = (char*)GameState::GetInstance() + 0x26c;
+#if defined(jpn)
+ enum { stateOffset = 0xc };
+#else
+ enum { stateOffset = 0x26c };
+#endif
+    char* p = (char*)GameState::GetInstance() + stateOffset;
     void* s = func_0202ae18();
     unsigned short v = *(unsigned short*)(p + 0x5d00 + 0xc);
     int state = (unsigned int)(v << 16) >> 29;

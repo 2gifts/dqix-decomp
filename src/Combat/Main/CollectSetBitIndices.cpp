@@ -1,7 +1,13 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kPrefixSize = 0x854 };
+#else
+enum { kPrefixSize = 0x8ec };
+#endif
+
 
 struct BitScan02083a50 {
-    unsigned char pad[0x8ec];
+    unsigned char pad[kPrefixSize];
     unsigned char bytes[0x24];
 };
 

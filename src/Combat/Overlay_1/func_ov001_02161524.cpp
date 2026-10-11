@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 
+
 extern "C" int func_ov017_021d60f4(void* obj);
 extern "C" void _ZN8Object3D11DisableFlagEi(unsigned char* obj, unsigned int mask);
 extern "C" void _ZN8Object3D10EnableFlagEi(unsigned char* obj, unsigned int mask);
@@ -10,6 +11,7 @@ struct DataTable_02161524 { char pad[4]; struct Entry_02161524* table; };
 extern struct DataTable_02161524 data_ov001_02165880;
 
 // USA: func_ov001_02161524
+// JPN: func_ov001_02162b38
 extern "C" ARM int func_ov001_02161524(void* self) {
     int idx = func_ov017_021d60f4(self);
     int flag = func_ov017_021d60f4((char*)self + 0x8);

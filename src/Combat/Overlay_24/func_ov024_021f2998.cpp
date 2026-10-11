@@ -14,6 +14,7 @@ struct Stats_021f2998 { char unk[0x2e]; short field_0x2e; };
 
 extern unsigned short data_ov024_021fea4c;
 
+// JPN: func_ov024_021f3164
 // USA: func_ov024_021f2998
 extern "C" ARM int func_ov024_021f2998(int* a0, int a1, int a2, int* a3, short* a4) {
 	short buf[4];

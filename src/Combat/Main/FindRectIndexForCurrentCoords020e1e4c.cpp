@@ -2,7 +2,7 @@
 
 extern char data_02114e54;
 
-ARM void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
+void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
 struct RectList020e1eb0;
 ARM int FindRectContainingPoint020e1eb0(struct RectList020e1eb0* list, int x, int y);
 

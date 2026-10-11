@@ -2,6 +2,10 @@
 #include <System/DMA.h>
 #include <System/DTCM.h>
 
+#if defined(jpn)
+#define data_020f2274 data_020f23e0
+#endif
+
 struct DMAOrTimerResponse
 {
     DMACompletionCallback callback;

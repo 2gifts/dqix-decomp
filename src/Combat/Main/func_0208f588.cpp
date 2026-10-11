@@ -1,4 +1,7 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define data_020e8d54 data_020e8e70
+#endif
 
 struct Object3DState0208f588 {
     unsigned char storage[0xac];
@@ -50,6 +53,7 @@ extern "C" void _ZN8Object3D10MakeHiddenEv(struct Object3DState0208f588* obj);
 extern "C" void _Z25RestorePairTables0207df90Pc(char* obj);
 extern "C" void _Z24BackupPairTables0207dfacPc(char* obj);
 
+// JPN: func_0208fe9c
 // USA: func_0208f588
 extern "C" ARM int func_0208f588(struct ArchiveHolder0208f588* self, void* allocator, char* pairObj) {
     unsigned int size;

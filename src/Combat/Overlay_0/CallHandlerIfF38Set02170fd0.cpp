@@ -9,6 +9,7 @@ struct Struct02170fd0 {
 };
 
 // USA: func_ov000_02170fd0
+// JPN: func_ov000_02172a08
 ARM void CallHandlerIfF38Set02170fd0(struct Struct02170fd0* obj, int b) {
 	func_ov000_0217f518(obj);
 	if (obj->f38 != 0) {

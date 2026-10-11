@@ -2,6 +2,8 @@
 
 #include "GameState/GameState.h"
 
+
+
 extern int data_02108760;
 
 struct Outer020e28dc;
@@ -27,7 +29,8 @@ int IsFlag0x2Active020e2984(void);
 struct Obj020e25e8;
 void ResetSelectionState020e25e8(struct Obj020e25e8* obj);
 
-// USA: func_ov003_0215bf18  (semantic: UpdateStateAndMaybeReset_0215bf18)
+// USA: func_ov003_0215bf18
+// JPN: func_ov003_0215d230
 extern "C" ARM int func_ov003_0215bf18(void* p, int arg1) {
     char* obj = (char*)p;
     if (*(void**)(obj + 0x570) != 0 && GetInnerFlagBit0020e28dc((struct Outer020e28dc*)*(void**)(obj + 0x570)) != 0) {

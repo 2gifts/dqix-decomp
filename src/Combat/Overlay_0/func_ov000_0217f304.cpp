@@ -25,7 +25,11 @@ struct Menu_0217f304 {
     int dirty;
     char pad11c[0x188 - 0x11c];
     unsigned char cursor[0x244 - 0x188];
+#if defined(jpn)
+    unsigned char groupCursor[0x1f54 - 0x244];
+#else
     unsigned char groupCursor[0x1d1c - 0x244];
+#endif
     int groupIds[1];
 };
 

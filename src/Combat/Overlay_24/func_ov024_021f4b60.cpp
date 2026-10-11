@@ -15,6 +15,7 @@ extern struct Buf4_021f4b60 data_ov024_021feb4c;
 
 struct Stats_021f4b60 { char pad[0x4d]; unsigned char field0x4d; };
 
+// JPN: func_ov024_021f532c
 // USA: func_ov024_021f4b60
 extern "C" ARM int func_ov024_021f4b60(int* a0, int a1, int a2, int* outCount, short* outArray) {
 	struct Buf4_021f4b60 buf = data_ov024_021feb4c;

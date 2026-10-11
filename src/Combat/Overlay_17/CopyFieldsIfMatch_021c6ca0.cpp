@@ -23,9 +23,15 @@ struct Src021c6ca0 {
     int field10;
 };
 
+// JPN: func_ov017_021c7150
 // USA: func_ov017_021c6ca0  (semantic: CopyFieldsIfMatch_021c6ca0)
 extern "C" ARM void func_ov017_021c6ca0(int unused0, Src021c6ca0* src, GameState* battleStruct, unsigned char* obj) {
-    unsigned char* h = *(unsigned char**)(obj + 0x3000 + 0x718);
+#if defined(jpn)
+ enum {regionalOffset0=0x508};
+#else
+ enum {regionalOffset0=0x718};
+#endif
+    unsigned char* h = *(unsigned char**)(obj + 0x3000 + regionalOffset0);
     Ret021c6ca0* r = (Ret021c6ca0*)func_ov017_021b8478(h);
     if (!r) return;
     if (!func_ov017_021b8468(h)) return;

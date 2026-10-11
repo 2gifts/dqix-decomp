@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { flagsOffset = 0x1faa };
+#else
+enum { flagsOffset = 0x1d72 };
+#endif
 
 struct Cont0205d1e0;
 struct Cont0205d274;
@@ -16,7 +21,11 @@ struct Entry0218048c {
     unsigned char flags0x24;
     char pad1[0x4c - 0x25];
     int field0x4c;
+#if defined(jpn)
+    char pad2[0x488 - 0x50];
+#else
     char pad2[0x448 - 0x50];
+#endif
 };
 
 // USA: func_ov000_0218048c  (semantic: ResetCombatState_0218048c)
@@ -34,7 +43,7 @@ extern "C" ARM void func_ov000_0218048c(char* obj) {
             *(int*)(obj + 0x17c) = entry->field0x4c;
         }
     }
-    *(unsigned short*)(obj + 0x1d00 + 0x72) &= ~0x8;
+    *(unsigned short*)(obj + flagsOffset) &= ~0x8;
     *(int*)(obj + 0x914) = 0;
     *(int*)(obj + 0x910) = 0;
     func_ov000_02174b14(obj);

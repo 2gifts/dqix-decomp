@@ -1,4 +1,19 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define REGION_OFFSET_0 0x244
+#define REGION_OFFSET_1 0x2ac
+#define REGION_OFFSET_2 0x3400
+#define REGION_OFFSET_3 0x21c
+#define REGION_OFFSET_4 0x288
+#else
+#define REGION_OFFSET_0 0x2c8
+#define REGION_OFFSET_1 0x6f0
+#define REGION_OFFSET_2 0x3000
+#define REGION_OFFSET_3 0x2a0
+#define REGION_OFFSET_4 0x2ec
+#endif
+
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 #include "System/Timing.h"
@@ -25,28 +40,28 @@ ARM void InitAndProcessCombat02166880(unsigned char* obj) {
     struct Obj0202fa00* fieldObj = (struct Obj0202fa00*)(int)BackgroundLoader::GetInstance();
     battle->GetProtagonist();
     func_0202ae18();
-    InitStruct02013718((char*)(obj + 0x2c8 + 0xc00), (int)(obj + 8), (int)(obj + 0x6f0 + 0x3000));
+    InitStruct02013718((char*)(obj + REGION_OFFSET_0 + 0xc00), (int)(obj + 8), (int)(obj + REGION_OFFSET_1 + REGION_OFFSET_2));
     func_02012fe4();
 
-    if (IsField0xcNonNegative(*(int**)(obj + 0x2a0))) {
-        unsigned short v = *(unsigned short*)((char*)*(int**)(obj + 0x2a0) + 0x20);
-        if (v != 0) *(unsigned short*)((char*)*(int**)(obj + 0x2a0) + 2) = v;
+    if (IsField0xcNonNegative(*(int**)(obj + REGION_OFFSET_3))) {
+        unsigned short v = *(unsigned short*)((char*)*(int**)(obj + REGION_OFFSET_3) + 0x20);
+        if (v != 0) *(unsigned short*)((char*)*(int**)(obj + REGION_OFFSET_3) + 2) = v;
     }
 
     void* table = GetPtrField0x468(battle);
     struct SearchEntry* entry = FindEntryByHalfwordKey((struct SearchTable*)table,
-        *(unsigned short*)((char*)*(int**)(obj + 0x2a0) + 2));
-    if (entry == NULL || *(unsigned short*)((char*)*(int**)(obj + 0x2a0) + 2) == 30000) {
-        *(unsigned short*)((char*)*(int**)(obj + 0x2a0) + 2) = 0x75a4;
+        *(unsigned short*)((char*)*(int**)(obj + REGION_OFFSET_3) + 2));
+    if (entry == NULL || *(unsigned short*)((char*)*(int**)(obj + REGION_OFFSET_3) + 2) == 30000) {
+        *(unsigned short*)((char*)*(int**)(obj + REGION_OFFSET_3) + 2) = 0x75a4;
     }
-    _ZN6Zone3D10SwitchZoneEt(obj + 0x2c8 + 0xc00, *(unsigned short*)((char*)*(int**)(obj + 0x2a0) + 2), 0);
+    _ZN6Zone3D10SwitchZoneEt(obj + REGION_OFFSET_0 + 0xc00, *(unsigned short*)((char*)*(int**)(obj + REGION_OFFSET_3) + 2), 0);
 
     GetCurrentTimestamp();
     for (;;) {
         func_02012de8();
         ((BackgroundLoader*)(fieldObj))->RemoveAllLocks();
-        func_02015438(obj + 0x2c8 + 0xc00);
-        if (*(int*)(obj + 0x1000 + 0x2ec) == 0) break;
+        func_02015438(obj + REGION_OFFSET_0 + 0xc00);
+        if (*(int*)(obj + 0x1000 + REGION_OFFSET_4) == 0) break;
         BlankFunction020d84f4();
     }
     SetCombatWorkFlags0x55f4(obj, 0x10);

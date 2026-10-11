@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kOwnerPrefix = 0x43c };
+#else
+enum { kOwnerPrefix = 0x41c };
+#endif
+
 
 struct Entry02018b34 {
     unsigned short key;
@@ -24,7 +30,7 @@ struct Param02018b34 {
 };
 
 struct Owner02018b34 {
-    char pad0[0x41c];
+    char pad0[kOwnerPrefix];
     struct Node02018b34* head;
     char pad420[4];
     int f424;

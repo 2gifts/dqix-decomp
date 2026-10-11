@@ -5,7 +5,11 @@ struct S02170460 {
     unsigned char flags;
     char pad1[0x4c - 0x25];
     int field4c;
+#if defined(jpn)
+    char pad2[0x488 - 0x50];
+#else
     char pad2[0x448 - 0x50];
+#endif
 };
 
 struct Obj02175024 {

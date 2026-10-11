@@ -1,3 +1,4 @@
+// JPN: func_ov031_02235fc8
 #include <globaldefs.h>
 
 extern "C" void func_020ca390(int a, void* buf, unsigned int size);

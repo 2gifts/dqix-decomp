@@ -42,6 +42,13 @@ extern "C" void func_ov004_02166bd8(void* a1);
 extern "C" void func_ov011_021848a0(void* obj, int val);
 
 extern struct BattleList02167434* data_ov004_0217101c;
+static inline BattleList02167434* GetBattleList02167434() {
+#if defined(jpn)
+    return *(BattleList02167434**)((char*)&data_ov004_0217101c + 4);
+#else
+    return data_ov004_0217101c;
+#endif
+}
 
 static inline unsigned char* GetNibbles(struct Ctx0205ec34* c) { return c->nibbles; }
 
@@ -60,13 +67,13 @@ extern "C" ARM int func_ov004_02167434(void* a1) {
     unsigned char* src = GetNibbles(ctx);
     unsigned char mask = (unsigned char)(slot & 1) == 0 ? 0xf0 : 0xf;
     unsigned char saved = src[idx] & ~mask;
-    data_ov004_0217101c->nibbles[idx] &= mask;
-    data_ov004_0217101c->nibbles[idx] |= saved;
+    GetBattleList02167434()->nibbles[idx] &= mask;
+    GetBattleList02167434()->nibbles[idx] |= saved;
 
     func_ov004_02166198();
     func_ov004_02165f2c();
 
-    struct BattleList02167434* list = data_ov004_0217101c;
+    struct BattleList02167434* list = GetBattleList02167434();
     struct ListNode02167434* node = list->head;
     if (list->count != 0 && node != 0) {
         func_ov004_02165ef4(a1);

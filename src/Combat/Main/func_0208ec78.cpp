@@ -47,7 +47,11 @@ extern "C" ARM void func_0208ec78(struct Param0208ec78* p0) {
     func_0208e0a8();
     void* g;
     char* r;
+#if defined(jpn)
+    struct Entry0208ec78* arr = (struct Entry0208ec78*)((char*)bs + 0x5a7c);
+#else
     struct Entry0208ec78* arr = (struct Entry0208ec78*)((char*)bs + 0x5cdc);
+#endif
     g = func_0202ae18();
 
     if (p0->field8 != 0) {

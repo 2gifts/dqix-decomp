@@ -1,3 +1,9 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define func_ov004_0215a738 func_ov004_0215b740
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 struct Stat0215ce38 { char pad[0x5c]; short cur; short max; };

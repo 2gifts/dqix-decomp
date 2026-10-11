@@ -22,6 +22,7 @@ struct RectList020e1eb0 {
 };
 
 // USA: func_020e1eb0
+// JPN: func_020e3a50
 ARM int FindRectContainingPoint020e1eb0(struct RectList020e1eb0* list, int x, int y) {
     int i;
     for (i = 0; i < list->count; i++) {

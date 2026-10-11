@@ -1,3 +1,9 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define func_ov024_021f6bc0 func_ov023_021f6bc0
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 extern "C" unsigned int func_ov011_021849c8();

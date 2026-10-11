@@ -1,3 +1,10 @@
+// JPN: func_ov017_0219d088
+#if defined(jpn)
+enum { RegionOffset6c = 0x8c };
+#else
+enum { RegionOffset6c = 0x6c };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -43,8 +50,8 @@ extern "C" ARM void func_ov017_0219c598(int* srcVec3, short* srcAngle, int force
         _ZN8Vector3iaSERKS_(vec3, (int*)(field3f8 + 0x10));
         angle = *(short*)(field3f8 + 0x1c);
     } else {
-        _ZN8Vector3iaSERKS_(vec3, (int*)&GetThreeWordsAt0x70((Owner_1e80c*)((char*)dataBase + 0x6c)));
-        angle = GetSignedFieldAt0x7c((S_e820*)((char*)dataBase + 0x6c));
+        _ZN8Vector3iaSERKS_(vec3, (int*)&GetThreeWordsAt0x70((Owner_1e80c*)((char*)dataBase + RegionOffset6c)));
+        angle = GetSignedFieldAt0x7c((S_e820*)((char*)dataBase + RegionOffset6c));
     }
 
     int value = _Z22fix32ReduceAngle0To2Pii(angle);

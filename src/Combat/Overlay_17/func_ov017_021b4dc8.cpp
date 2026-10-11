@@ -21,7 +21,12 @@ extern const char data_ov017_021d7b5d;
 
 struct ScriptSource_021b4dc8 {
     unsigned short monsterId;
+#if defined(jpn)
+    char pad2[0x40 - 0x2];
+#else
     char pad2[0x44 - 0x2];
+#endif
+
     BoundedArray entries;
 };
 
@@ -34,12 +39,18 @@ struct ScriptRequest_021b4dc8 {
     unsigned short extraEntry;
 };
 
+// JPN: func_ov017_021b54b8
 // USA: func_ov017_021b4dc8
 extern "C" ARM void func_ov017_021b4dc8(struct ScriptRequest_021b4dc8* request) {
+#if defined(jpn)
+ enum {regionalOffset0=0x240c};
+#else
+ enum {regionalOffset0=0x23ec};
+#endif
     ScriptSource_021b4dc8* source;
     GameState* battle = GameState::GetInstance();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
-    ActiveGrottoClass* grotto = (ActiveGrottoClass*)((char*)func_02012fe4() + 0x23ec);
+    ActiveGrottoClass* grotto = (ActiveGrottoClass*)((char*)func_02012fe4() + regionalOffset0);
     int monsterId = request->source->monsterId;
 
     if (loader->GetTaskStatus(request->taskId) == 0) {

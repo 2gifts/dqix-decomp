@@ -9,7 +9,11 @@ struct Inner021e5f54 {
 };
 
 struct Holder021e5f54 {
+#if defined(jpn)
+    char pad0[4];
+#else
     char pad0[0xc];
+#endif
     Inner021e5f54* inner;
 };
 
@@ -25,6 +29,7 @@ struct Param021e5f54 {
     unsigned int limit : 15;
 };
 
+// JPN: func_ov025_021e6404
 // USA: func_ov025_021e5f54
 extern "C" ARM int func_ov025_021e5f54(Param021e5f54* p) {
     if (p->hasValue) {

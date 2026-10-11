@@ -1,9 +1,20 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define _Z32DispatchEventAndSetFlag_021589e8Pv func_ov004_02159a94
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 int GetGlobal02109400(void);
 int AlwaysTrue02094b4c(void);
 extern "C" void _Z21BlankFunction02094b34v(int, int, int, int, int);
+#if defined(jpn)
+#define DispatchEventAndSetFlag_021589e8 func_ov004_02159a94
+extern "C" int DispatchEventAndSetFlag_021589e8(void*);
+#else
 int DispatchEventAndSetFlag_021589e8(void*);
+#endif
 
 struct Struct021707d8_0215c268 { char pad[8]; char* p; };
 extern Struct021707d8_0215c268 data_ov004_021707d8;

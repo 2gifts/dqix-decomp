@@ -1,6 +1,13 @@
+// JPN: func_ov017_021a3be0
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
 #include "GameState/GameState.h"
+
+#if defined(jpn)
+enum { Field11c0 = 0xfb0, Field113c = 0xf2c, Field1244 = 0x1034, Field5dc = 0x58c, Field2664 = 0x26a4 };
+#else
+enum { Field11c0 = 0x11c0, Field113c = 0x113c, Field1244 = 0x1244, Field5dc = 0x5dc, Field2664 = 0x2664 };
+#endif
 
 extern "C" void func_020da244(void* p);
 extern "C" void* func_02012fe4(void);
@@ -34,24 +41,24 @@ extern "C" ARM void func_ov017_021a316c(unsigned char* obj) {
     int j;
     int k;
 
-    if (((SafeAllocator*)(obj + 0x11c0))->GetSignedAllocator()) {
-        ((SafeAllocator*)(obj + 0x11c0))->Destroy();
-        ((SafeAllocator*)(obj + 0x11c0))->ResetAllocatorPointer();
+    if (((SafeAllocator*)(obj + Field11c0))->GetSignedAllocator()) {
+        ((SafeAllocator*)(obj + Field11c0))->Destroy();
+        ((SafeAllocator*)(obj + Field11c0))->ResetAllocatorPointer();
     }
 
-    if (((SafeAllocator*)(obj + 0x113c))->GetSignedAllocator()) {
-        ((SafeAllocator*)(obj + 0x113c))->Destroy();
-        ((SafeAllocator*)(obj + 0x113c))->ResetAllocatorPointer();
+    if (((SafeAllocator*)(obj + Field113c))->GetSignedAllocator()) {
+        ((SafeAllocator*)(obj + Field113c))->Destroy();
+        ((SafeAllocator*)(obj + Field113c))->ResetAllocatorPointer();
     }
 
-    if (((SafeAllocator*)(obj + 0x113c))->GetSignedAllocator()) {
-        ((SafeAllocator*)(obj + 0x113c))->Destroy();
-        ((SafeAllocator*)(obj + 0x113c))->ResetAllocatorPointer();
+    if (((SafeAllocator*)(obj + Field113c))->GetSignedAllocator()) {
+        ((SafeAllocator*)(obj + Field113c))->Destroy();
+        ((SafeAllocator*)(obj + Field113c))->ResetAllocatorPointer();
     }
 
-    if (((SafeAllocator*)(obj + 0x1244))->GetSignedAllocator()) {
-        ((SafeAllocator*)(obj + 0x1244))->Destroy();
-        ((SafeAllocator*)(obj + 0x1244))->ResetAllocatorPointer();
+    if (((SafeAllocator*)(obj + Field1244))->GetSignedAllocator()) {
+        ((SafeAllocator*)(obj + Field1244))->Destroy();
+        ((SafeAllocator*)(obj + Field1244))->ResetAllocatorPointer();
     }
 
     func_020da244(&data_ov017_021d82fc);
@@ -65,7 +72,7 @@ extern "C" ARM void func_ov017_021a316c(unsigned char* obj) {
     }
 
     ((SafeAllocator*)(obj + 0xc4))->Reset();
-    CopyInternalFields0207df50((struct Foo0207df50*)(obj + 0x5dc));
+    CopyInternalFields0207df50((struct Foo0207df50*)(obj + Field5dc));
 
     for (j = 0; j < 0x30; j++) {
         GameObject* c = battleStruct->GetMaybeFieldMonsterByIndex(j + 0x70);
@@ -75,7 +82,7 @@ extern "C" ARM void func_ov017_021a316c(unsigned char* obj) {
     }
 
     Init0203cfb4((struct Struct_0203cfb4*)GetGlobalPtr021075f4());
-    InitState0208f7ec((struct InitState0208f7ecStruct*)(globalPtr + 0x2664));
+    InitState0208f7ec((struct InitState0208f7ecStruct*)(globalPtr + Field2664));
 
     if (GetPointerAt0x32c((struct PointerField32c_ffc0*)battleStruct)) {
         ClearCombatantSlot(battleStruct, 0xc9);

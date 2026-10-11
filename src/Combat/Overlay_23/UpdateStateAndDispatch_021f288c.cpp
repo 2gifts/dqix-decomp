@@ -34,27 +34,56 @@ extern "C" struct GlobalStateOv023_021ffefc* _ZZ17GetGlobal021ffefcvE1s;
 
 struct PctBits021f288c { unsigned short low : 7; unsigned short pct : 9; };
 
+#if defined(jpn)
+extern "C" void func_02045d88(void*,char*,int);
+#endif
+// JPN: func_ov023_021f20a0
 // USA: func_ov023_021f288c  (semantic: UpdateStateAndDispatch_021f288c)
 extern "C" ARM int func_ov023_021f288c(unsigned char* obj) {
+#if defined(jpn)
+ enum {regionalOffset0=0x5af4, regionalOffset1=0x17e2, regionalOffset2=0x868, regionalOffset3=0x17fb, regionalOffset4=0x17de, regionalOffset5=0x17df, regionalOffset6=0x5958, regionalOffset7=0xe28};
+#else
+ enum {regionalOffset0=0x5904, regionalOffset1=0x19b2, regionalOffset2=0x998, regionalOffset3=0x19ca, regionalOffset4=0x19ae, regionalOffset5=0x19af, regionalOffset6=0x5768, regionalOffset7=0xeac};
+#endif
     char msgBuf[0x100];
     GameState* battleStruct = GameState::GetInstance();
     struct GlobalStateOv023_021ffefc* g = _ZZ17GetGlobal021ffefcvE1s;
     int id = g->id;
     int state = GetGlobalField0x1c020421a0();
     unsigned char* stateObj = (unsigned char*)state;
+#if defined(jpn)
+
+#else
     func_02046380();
+#endif
+
     int flag8;
     if (g->counter == 0) {
-        char* e1 = (char*)FindEntryByKey((struct TableA68*)(obj + 0x5904), 0xd);
+        char* e1 = (char*)FindEntryByKey((struct TableA68*)(obj + regionalOffset0), 0xd);
+#if defined(jpn)
+        sprintf(msgBuf, e1, ((struct PctBits021f288c*)(obj + id * 0x54 + 0x5900 + 0x8c))->pct);
+#else
         sprintf(msgBuf, e1);
-        char* e2 = (char*)FindEntryByKey((struct TableA68*)(obj + 0x5904), 0x22);
+#endif
+
+        char* e2 = (char*)FindEntryByKey((struct TableA68*)(obj + regionalOffset0), 0x22);
         strcat(msgBuf, e2);
+#if defined(jpn)
+
+#else
         struct PctBits021f288c* pb = (struct PctBits021f288c*)(obj + id * 0x54 + 0x5700 + 0x9c);
         int percent = pb->pct;
         StoreInArray0x8b0((struct StoreStruct*)stateObj, 0, percent);
+#endif
+
+#if defined(jpn)
+        func_02045d88(stateObj, msgBuf, 1);
+#else
         func_0204500c(stateObj, msgBuf, 1, 0xe3);
-        stateObj[0x19b2] = 0;
-        *(int*)(stateObj + 0x998) = 1;
+#endif
+
+        stateObj[regionalOffset1] = 0;
+        *(int*)(stateObj + regionalOffset2) = 1;
         g->counter = g->counter + 1;
     } else if (g->counter == 1) {
         void* p2a04 = GetPtrField0x2a04(battleStruct);
@@ -64,7 +93,7 @@ extern "C" ARM int func_ov023_021f288c(unsigned char* obj) {
                 flag8 = 1;
                 void* base = func_0205ec34();
                 if (TestBitInByteArray((int)base, (unsigned char*)base + 0x8c, 0x119c)) {
-                    stateObj[0x19ca] = 0;
+                    stateObj[regionalOffset3] = 0;
                 }
             }
         }
@@ -77,15 +106,15 @@ extern "C" ARM int func_ov023_021f288c(unsigned char* obj) {
             }
         }
         int fieldCheck = func_ov023_021f4438(obj);
-        if (found == 0 && fieldCheck == 0 && *(int*)(obj + 0x5768) == 0) {
-            stateObj[0x19ae] = 0;
-            stateObj[0x19ca] = 0;
-            stateObj[0x19af] = 0;
+        if (found == 0 && fieldCheck == 0 && *(int*)(obj + regionalOffset6) == 0) {
+            stateObj[regionalOffset4] = 0;
+            stateObj[regionalOffset3] = 0;
+            stateObj[regionalOffset5] = 0;
         }
         if (func_ov023_021f4fc8()) {
             ResetFields_021eefac((struct Reset_021eefac*)g);
             return flag8 ? 8 : 7;
         }
     }
-    return *(int*)(obj + 0xeac);
+    return *(int*)(obj + regionalOffset7);
 }

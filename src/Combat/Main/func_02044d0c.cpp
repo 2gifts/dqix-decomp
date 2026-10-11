@@ -25,6 +25,14 @@ extern "C" int _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(int a, int b, int c, 
 extern "C" unsigned int GetMainBG1ScreenBase(void);
 extern "C" void ColorEffect_ConfigureAlphaBlend(void* reg, int a, int b, int c, int d);
 
+#if defined(jpn)
+#define BG_UPLOAD_SOURCE_OFFSET 0x3c0
+#define BG_UPLOAD_SIZE 0x280
+#else
+#define BG_UPLOAD_SOURCE_OFFSET 0x280
+#define BG_UPLOAD_SIZE 0x900
+#endif
+
 // USA: func_02044d0c
 extern "C" ARM void func_02044d0c(void) {
     volatile unsigned int* reg32 = (volatile unsigned int*)0x04000000;
@@ -37,7 +45,11 @@ extern "C" ARM void func_02044d0c(void) {
     reg16[6] = (reg16[6] & 0x43) | 0x1e00;
     reg16[7] = (reg16[7] & 0x43) | 0x308 | 0x1c00;
 
+#if defined(jpn)
+    char* base = *(char**)(&data_02107800 + 0x30);
+#else
     char* base = *(char**)&data_02107800;
+#endif
     char* rec = *(char**)((char*)func_ov017_0218b5b0(&data_02107800) + 0x2c);
 
     struct List0204af64 local;
@@ -53,8 +65,8 @@ extern "C" ARM void func_02044d0c(void) {
             _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(10, (int)base, i << 12, 0x1000, 1, 0);
         }
         char* p = *(char**)(&data_02107800 + 4);
-        if (p + 0x280 != 0) {
-            _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(8, (int)(p + 0x280), 0x20, 0x900, 1, 0);
+        if (p + BG_UPLOAD_SOURCE_OFFSET != 0) {
+            _Z17StageMemoryToVRAM13VRAMSubregionPKvjjbb(8, (int)(p + BG_UPLOAD_SOURCE_OFFSET), 0x20, BG_UPLOAD_SIZE, 1, 0);
         }
     }
 

@@ -1,3 +1,10 @@
+// JPN: func_ov017_0219b0e8
+#if defined(jpn)
+enum { RegionOffset4084 = 0x3e64, RegionLabelExtra = 10 };
+#else
+enum { RegionOffset4084 = 0x4084, RegionLabelExtra = 0 };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -32,10 +39,10 @@ ARM void AppendFieldTagWithLookup_0219a544(unsigned char* a, char* buf, int type
 		}
 	}
 	int key = (resultByte < 0) ? 0 : resultByte;
-	struct Container020e0310* container = *(struct Container020e0310**)(a + 0x4084);
+	struct Container020e0310* container = *(struct Container020e0310**)(a + RegionOffset4084);
 	int fieldResult = GetFieldByKey020e0434(container, key);
 	if (!fieldResult) return;
 	AppendXTag(buf, 0);
 	int width = data_ov017_021d6460[type];
-	AppendDotLeaderLabel02042084(buf, (char*)fieldResult, width, 0);
+	AppendDotLeaderLabel02042084(buf, (char*)fieldResult, width, RegionLabelExtra);
 }

@@ -20,8 +20,14 @@ struct Obj021f78a4 {
     void* field20;
 };
 
+// JPN: func_ov023_021f6d9c
 // USA: func_ov023_021f78a4
 extern "C" ARM void func_ov023_021f78a4(struct Obj021f78a4* obj) {
+#if defined(jpn)
+ enum {regionalOffset=0x24};
+#else
+ enum {regionalOffset=0x28};
+#endif
     if (obj->flags0xc & 0x2) {
         void* ctx = obj->field20;
         void* node = func_ov011_021849c8(ctx);
@@ -42,6 +48,6 @@ extern "C" ARM void func_ov023_021f78a4(struct Obj021f78a4* obj) {
     }
 
     if (!(obj->flags0xc & 0x1)) {
-        func_0204b088((char*)obj + 0x28, 0);
+        func_0204b088((char*)obj + regionalOffset, 0);
     }
 }

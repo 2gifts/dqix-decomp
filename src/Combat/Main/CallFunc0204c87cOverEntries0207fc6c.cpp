@@ -1,9 +1,14 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kPrefix = 0x20 };
+#else
+enum { kPrefix = 0x2c };
+#endif
 
 extern "C" void func_0204c87c(void* entry, int arg);
 
 struct Obj0207fc6c {
-    char pad0[0x2c];
+    char pad0[kPrefix];
     void* field_2c;
     char* entries;
     char pad34[5];

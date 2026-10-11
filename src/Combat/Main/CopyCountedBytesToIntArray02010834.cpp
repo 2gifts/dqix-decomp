@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegionOffset = 0x27a4 };
+#else
+enum { kRegionOffset = 0x2a04 };
+#endif
+
 
 struct Region02010834 {
     unsigned char pad[0xf78];
@@ -7,7 +13,7 @@ struct Region02010834 {
 };
 
 struct Base02010834 {
-    unsigned char pad[0x2a04];
+    unsigned char pad[kRegionOffset];
     struct Region02010834 region;
 };
 

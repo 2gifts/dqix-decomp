@@ -1,5 +1,12 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kFlagOffset = 0x285e };
+#else
+enum { kFlagOffset = 0x281e };
+#endif
+
+
 extern "C" void* func_0205ec34(void);
 void* FindNthType2Entry02018c20(unsigned char* obj, int n);
 extern "C" void func_02018300(void*, void*, int, int, int);
@@ -26,5 +33,5 @@ ARM void UpdateFlaggedType2Entries02018c74(unsigned char* obj, unsigned int flag
             }
         }
     }
-    obj[0x281e] = 0;
+    obj[kFlagOffset] = 0;
 }

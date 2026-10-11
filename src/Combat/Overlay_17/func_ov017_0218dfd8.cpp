@@ -5,7 +5,11 @@
 
 struct Actor0218dfd8 {
     Object3D obj3D;
+#if defined(jpn)
+    char pad[0x180 - sizeof(Object3D)];
+#else
     char pad[0x18c - sizeof(Object3D)];
+#endif
     unsigned int flags;
 };
 
@@ -18,7 +22,11 @@ struct ActorEntry {
 };
 
 struct ActorListManager {
+#if defined(jpn)
+    char pad0[0x496];
+#else
     char pad0[0x476];
+#endif
     unsigned char count;
     char pad477[0x1];
     ActorEntry* entries;
@@ -49,6 +57,7 @@ int CheckSubstructByte0x7cPositive(signed char* obj);
 extern "C" void _Z15InitObj0219a674Ph(unsigned char* self);
 extern "C" void func_ov017_0219b33c(GameResources* res, Event0218dfd8* event);
 
+// JPN: func_ov017_0218ebb8
 // USA: func_ov017_0218dfd8
 extern "C" ARM int func_ov017_0218dfd8(Actor0218dfd8* self) {
     GameResources* res = func_ov017_0218b5b0();

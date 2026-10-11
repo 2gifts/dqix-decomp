@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegionalFieldOffset = 0x5a68 };
+#else
+enum { kRegionalFieldOffset = 0x5cc8 };
+#endif
+
 #include "GameState/GameState.h"
 
 void* GetDataPtr02114e04_020d6c00(void);
@@ -26,7 +32,7 @@ extern "C" ARM int func_0202b1f4(int* outPtr) {
     OrBitsIntoField0((unsigned int*)flagWord, 0x1000000);
     func_ov017_021c37a4();
     _Z13SetBrightnessP13GameResourcesii((void*)ctx, -16, 10);
-    *(unsigned char*)((char*)battleStruct + 0x5cc8) = 4;
+    *(unsigned char*)((char*)battleStruct + kRegionalFieldOffset) = 4;
     SetFlag0x5cccBit0((struct StateBits5ccc_11544*)battleStruct);
     *outPtr = 3;
     return 3;

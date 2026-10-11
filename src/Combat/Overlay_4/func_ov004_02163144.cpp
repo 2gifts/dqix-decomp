@@ -2,6 +2,7 @@
 #include "Filesystem/BackgroundLoader.h"
 
 
+
 struct List0202fec8;
 
 struct ActiveEntry02046900;
@@ -26,11 +27,16 @@ struct LocalListStruct02163144 {
     unsigned char pad1d[3];
 };
 
+#if defined(jpn)
+struct Struct021707e8_02163144 { char pad0[0x10]; int handle; char pad14[0xc]; int state; };
+#else
 struct Struct021707e8_02163144 { char pad0[0x20]; int handle; int state; };
+#endif
 extern Struct021707e8_02163144 data_ov004_021707e8;
 extern char data_ov004_02170542;
 
 // USA: func_ov004_02163144
+// JPN: func_ov004_021637e0
 extern "C" ARM int func_ov004_02163144() {
     int ret = 1;
     int data4 = (int)BackgroundLoader::GetInstance();

@@ -9,6 +9,7 @@ struct Obj_021eff3c { int field0; };
 struct Buf4_021eff3c { short v[4]; };
 extern struct Buf4_021eff3c data_ov024_021feacc;
 
+// JPN: func_ov024_021f0708
 // USA: func_ov024_021eff3c  (semantic: FindCombatantWithLowAgilityBuff_021eff3c)
 extern "C" ARM int func_ov024_021eff3c(struct Obj_021eff3c* obj, int unused1, int unused2, int* outCount, void* outArr) {
     struct Buf4_021eff3c buf = data_ov024_021feacc;

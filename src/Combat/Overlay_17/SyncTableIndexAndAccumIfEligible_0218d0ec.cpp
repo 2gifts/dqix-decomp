@@ -1,3 +1,10 @@
+// JPN: func_ov017_0218dccc
+#if defined(jpn)
+enum { RegionOffset6fc = 0x4ec, RegionOffset718 = 0x508 };
+#else
+enum { RegionOffset6fc = 0x6fc, RegionOffset718 = 0x718 };
+#endif
+
 #include <globaldefs.h>
 #include "Graphics/LightingManager.h"
 #include "GameState/GameState.h"
@@ -30,7 +37,7 @@ extern "C" ARM void func_ov017_0218d0ec(unsigned char* ov) {
     Struct020fb3f0* p1 = (Struct020fb3f0*)func_02012fe4();
     void* p2 = func_0202ae18();
 
-    if (GetHeadNodeIdOrMinusOne(*(struct HeadNode02046b24***)(ov + 0x3000 + 0x6fc)) == 3) return;
+    if (GetHeadNodeIdOrMinusOne(*(struct HeadNode02046b24***)(ov + 0x3000 + RegionOffset6fc)) == 3) return;
     if (GetByte0x4((char*)bs) == 6) return;
     if (GetWord0x7f6c(bs) == 5) return;
 
@@ -49,11 +56,11 @@ extern "C" ARM void func_ov017_0218d0ec(unsigned char* ov) {
         EnqueueEventTag147_021cdaa0();
     }
 
-    if (GetHeadNodeIdOrMinusOne(*(struct HeadNode02046b24***)(ov + 0x3000 + 0x6fc)) == 0xa) {
-        if (IsField600B4Zero_021b8b54(*(void**)(ov + 0x3000 + 0x718)) != 0) return;
+    if (GetHeadNodeIdOrMinusOne(*(struct HeadNode02046b24***)(ov + 0x3000 + RegionOffset6fc)) == 0xa) {
+        if (IsField600B4Zero_021b8b54(*(void**)(ov + 0x3000 + RegionOffset718)) != 0) return;
     }
-    if (GetHeadNodeIdOrMinusOne(*(struct HeadNode02046b24***)(ov + 0x3000 + 0x6fc)) == 4) return;
-    if (GetHeadNodeIdOrMinusOne(*(struct HeadNode02046b24***)(ov + 0x3000 + 0x6fc)) == 0x16) return;
+    if (GetHeadNodeIdOrMinusOne(*(struct HeadNode02046b24***)(ov + 0x3000 + RegionOffset6fc)) == 4) return;
+    if (GetHeadNodeIdOrMinusOne(*(struct HeadNode02046b24***)(ov + 0x3000 + RegionOffset6fc)) == 0x16) return;
 
     Data02107930* d = (Data02107930*)LightingManager::GetInstance();
     int prevIdx = d->tableIndex;

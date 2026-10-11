@@ -1,3 +1,10 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define data_ov004_021702bc data_ov004_021709f0
+#define data_ov004_021702c0 data_ov004_021709f4
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 extern int data_ov004_021702bc;

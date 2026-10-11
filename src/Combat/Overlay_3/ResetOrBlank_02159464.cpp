@@ -1,10 +1,13 @@
 #include <globaldefs.h>
 
+
+
 int GetGlobal02109400(void);
 int AlwaysTrue02094b4c(void);
 extern "C" void _Z21BlankFunction02094b30v(int, int, int);
 
 // USA: func_ov003_02159464  (semantic: ResetOrBlank_02159464)
+// JPN: func_ov003_0215a930
 extern "C" ARM void func_ov003_02159464(void* obj) {
     unsigned char* o = (unsigned char*)obj;
     int g;

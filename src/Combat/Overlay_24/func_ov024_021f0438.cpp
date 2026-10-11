@@ -9,6 +9,7 @@ extern "C" int _Z31IsCombatantFlagMask512_021eda60P10GameObject(GameObject* comb
 
 extern unsigned short data_ov024_021fea6c[4];
 
+// JPN: func_ov024_021f0c04
 // USA: func_ov024_021f0438
 extern "C" ARM int func_ov024_021f0438(int* context, int id, int record, int* outCount, short* outIDs) {
     short buf[4];

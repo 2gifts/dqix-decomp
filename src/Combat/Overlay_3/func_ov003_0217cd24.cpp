@@ -1,6 +1,17 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
 
+#if defined(jpn)
+enum { kRegionValue34_30 = 0x30 };
+enum { kRegionValue90_8C = 0x8c };
+enum { kRegionValue3C_38 = 0x38 };
+#else
+enum { kRegionValue34_30 = 0x34 };
+enum { kRegionValue90_8C = 0x90 };
+enum { kRegionValue3C_38 = 0x3c };
+#endif
+
+
 struct InitTarget0205cfd4;
 ARM void InitStruct0205cfd4(struct InitTarget0205cfd4* s);
 struct List0204af64;
@@ -12,10 +23,10 @@ struct ClearTarget0205a234;
 void ClearField0And40205a234(struct ClearTarget0205a234* target);
 
 struct Obj0217cd24 {
-    char pad0[0x34];
+    char pad0[kRegionValue34_30];
     void* p34;
     void* p38;
-    char pad1[0x90 - 0x3c];
+    char pad1[kRegionValue90_8C - kRegionValue3C_38];
     void* p90;
     void* p94;
     void* p98;
@@ -26,6 +37,7 @@ struct Obj0217cd24 {
 };
 
 // USA: func_ov003_0217cd24
+// JPN: func_ov003_0217ba4c
 extern "C" ARM void func_ov003_0217cd24(void* objRaw, SafeAllocator* allocator) {
     if (allocator == 0) return;
     struct Obj0217cd24* obj = (struct Obj0217cd24*)objRaw;

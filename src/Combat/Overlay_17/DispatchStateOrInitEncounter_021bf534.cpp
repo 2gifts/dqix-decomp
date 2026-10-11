@@ -18,8 +18,14 @@ struct Obj_021bf534 {
     unsigned char state;
 };
 
+// JPN: func_ov017_021bfae0
 // USA: func_ov017_021bf534  (semantic: DispatchStateOrInitEncounter_021bf534)
 extern "C" ARM void func_ov017_021bf534(struct Obj_021bf534* obj) {
+#if defined(jpn)
+ enum {regionalOffset0=0x228};
+#else
+ enum {regionalOffset0=0x2d8};
+#endif
     GameState* battleStruct = GameState::GetInstance();
     GameObject* combatant = battleStruct->GetUnknownGameObject();
     GameResources* ov = func_ov017_0218b5b0();
@@ -37,6 +43,6 @@ extern "C" ARM void func_ov017_021bf534(struct Obj_021bf534* obj) {
         }
         func_ov017_021bf490(obj);
         obj->field1 = 1;
-        *(int*)((char*)GetGlobalField0x1c020421a0() + 0x2d8) = 0;
+        *(int*)((char*)GetGlobalField0x1c020421a0() + regionalOffset0) = 0;
     }
 }

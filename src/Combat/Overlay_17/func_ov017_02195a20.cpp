@@ -24,8 +24,14 @@ extern "C" int func_0202c540(void* obj);
 extern "C" void _Z22DispatchByFlag020d9834i(int flag);
 extern "C" void func_ov017_021960b8(unsigned char* obj);
 
+// JPN: func_ov017_021965e8
 // USA: func_ov017_02195a20
 extern "C" ARM void func_ov017_02195a20(unsigned char* obj) {
+#if defined(jpn)
+ enum {regionalFlag=0x41da,regionalList=0x34ec};
+#else
+ enum {regionalFlag=0x448a,regionalList=0x36fc};
+#endif
     GetCurrentTimestamp();
     FlagWord02046708* flags = _Z27GetDataPtr02114e04_020d6c00v();
     void* search = func_0202ae18();
@@ -39,7 +45,7 @@ extern "C" ARM void func_ov017_02195a20(unsigned char* obj) {
     } else {
         DISP3DCNT = (DISP3DCNT & ~0x3000) | 0x20;
     }
-    if (obj[0x448a] == 0) {
+    if (obj[regionalFlag] == 0) {
         func_ov017_02195ecc(obj, 1);
     }
     _Z35MaybeUpdateOrDispatchEntry_021959ecv(obj);
@@ -55,7 +61,7 @@ extern "C" ARM void func_ov017_02195a20(unsigned char* obj) {
     if (useDma) {
         _Z27SetActiveDmaChannel020c3a0ci(0);
     }
-    if (GetHeadNodeIdOrMinusOne(*(HeadNode02046b24***)(obj + 0x36fc)) == 0x16) {
+    if (GetHeadNodeIdOrMinusOne(*(HeadNode02046b24***)(obj + regionalList)) == 0x16) {
         func_ov017_02195ecc(obj, 2);
     }
     if (useDma) {
@@ -67,7 +73,7 @@ extern "C" ARM void func_ov017_02195a20(unsigned char* obj) {
         }
     }
     func_ov017_021960b8(obj);
-    if (obj[0x448a] != 0) {
+    if (obj[regionalFlag] != 0) {
         func_ov017_02195ecc(obj, 1);
     }
 }

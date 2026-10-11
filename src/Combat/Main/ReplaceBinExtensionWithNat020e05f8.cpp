@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define data_020f2b6c data_020f2cc4
+#define data_020f2b71 data_020f2cc9
+#endif
 #include "std_library_functions.h"
 
 extern const char data_020f2b6c[];

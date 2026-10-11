@@ -2,14 +2,24 @@
 #include "Util/Random.h"
 
 struct BattleMenu0217b380 {
+#if defined(jpn)
+    char pad0[0x1faa];
+#else
     char pad0[0x1d72];
+#endif
     unsigned short flags;
 };
 
 struct Data0217b380 {
+#if defined(jpn)
+    struct BattleMenu0217b380* menu;
+    int field0;
+    int field4;
+#else
     int field0;
     int field4;
     struct BattleMenu0217b380* menu;
+#endif
 };
 extern struct Data0217b380 data_ov000_02184294;
 

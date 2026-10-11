@@ -1,4 +1,15 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define REGION_OFFSET_0 0x800
+#define REGION_OFFSET_1 0xc8
+#define REGION_OFFSET_2 0xca
+#else
+#define REGION_OFFSET_0 0x900
+#define REGION_OFFSET_1 0x60
+#define REGION_OFFSET_2 0x62
+#endif
+
 #include "GameState/GameState.h"
 
 int GetFieldAt0x150(unsigned char* obj);
@@ -20,9 +31,9 @@ extern "C" ARM int func_ov000_0217aa78(void* obj, int limit, int flag) {
     if (field150 == 0) {
         return 0;
     }
-    unsigned short baseVal = *(unsigned short*)((char*)field150 + 0x900 + 0x60);
+    unsigned short baseVal = *(unsigned short*)((char*)field150 + REGION_OFFSET_0 + REGION_OFFSET_1);
     if (flag != 0) {
-        baseVal = *(unsigned short*)((char*)field150 + 0x900 + 0x62);
+        baseVal = *(unsigned short*)((char*)field150 + REGION_OFFSET_0 + REGION_OFFSET_2);
     }
     short idx;
     for (idx = 0; idx < limit; idx = (short)(idx + 1)) {
@@ -38,9 +49,9 @@ extern "C" ARM int func_ov000_0217aa78(void* obj, int limit, int flag) {
         }
     }
     if (flag != 0) {
-        *(unsigned short*)((char*)field150 + 0x900 + 0x62) = 0;
+        *(unsigned short*)((char*)field150 + REGION_OFFSET_0 + REGION_OFFSET_2) = 0;
     } else {
-        *(unsigned short*)((char*)field150 + 0x900 + 0x60) = 0;
+        *(unsigned short*)((char*)field150 + REGION_OFFSET_0 + REGION_OFFSET_1) = 0;
     }
     return 0;
 }

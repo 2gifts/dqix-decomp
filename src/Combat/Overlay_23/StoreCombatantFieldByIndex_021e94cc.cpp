@@ -24,8 +24,14 @@ struct Transform150_021e94cc {
     struct PackedTriple10_021e94cc word3; // offset 0xc
 };
 
+// JPN: func_ov023_021e9430
 // USA: func_ov023_021e94cc  (semantic: StoreCombatantFieldByIndex_021e94cc)
 extern "C" ARM int func_ov023_021e94cc(TaggedTriple_021e94cc* args) {
+#if defined(jpn)
+ enum { regionalExtensionOffset=0x144 };
+#else
+ enum { regionalExtensionOffset=0x150 };
+#endif
     GameState::GetInstance();
     int combatantIdx = func_ov017_021d60f4(&args->combatantIndexTag);
     GameObject* combatant = func_ov023_021e8f28(combatantIdx);
@@ -35,37 +41,37 @@ extern "C" ARM int func_ov023_021e94cc(TaggedTriple_021e94cc* args) {
     int fieldIdx = func_ov017_021d60f4(&args->fieldSelectorTag);
     switch (fieldIdx) {
     case 0: {
-        unsigned short v = (*(struct Transform150_021e94cc**)((char*)combatant + 0x150))->pos.f0;
+        unsigned short v = (*(struct Transform150_021e94cc**)((char*)combatant + regionalExtensionOffset))->pos.f0;
         func_ov017_021d6134(&args->destTag, v);
         break;
     }
     case 1: {
-        unsigned short v = (*(struct Transform150_021e94cc**)((char*)combatant + 0x150))->pos.f1;
+        unsigned short v = (*(struct Transform150_021e94cc**)((char*)combatant + regionalExtensionOffset))->pos.f1;
         func_ov017_021d6134(&args->destTag, v);
         break;
     }
     case 2: {
-        unsigned short v = (*(struct Transform150_021e94cc**)((char*)combatant + 0x150))->pos.f2;
+        unsigned short v = (*(struct Transform150_021e94cc**)((char*)combatant + regionalExtensionOffset))->pos.f2;
         func_ov017_021d6134(&args->destTag, v);
         break;
     }
     case 3: {
-        unsigned short v = (*(struct Transform150_021e94cc**)((char*)combatant + 0x150))->rot.f0;
+        unsigned short v = (*(struct Transform150_021e94cc**)((char*)combatant + regionalExtensionOffset))->rot.f0;
         func_ov017_021d6134(&args->destTag, v);
         break;
     }
     case 4: {
-        unsigned short v = (*(struct Transform150_021e94cc**)((char*)combatant + 0x150))->rot.f1;
+        unsigned short v = (*(struct Transform150_021e94cc**)((char*)combatant + regionalExtensionOffset))->rot.f1;
         func_ov017_021d6134(&args->destTag, v);
         break;
     }
     case 5: {
-        unsigned short v = (*(struct Transform150_021e94cc**)((char*)combatant + 0x150))->rot.f2;
+        unsigned short v = (*(struct Transform150_021e94cc**)((char*)combatant + regionalExtensionOffset))->rot.f2;
         func_ov017_021d6134(&args->destTag, v);
         break;
     }
     case 6: {
-        unsigned short v = (*(struct Transform150_021e94cc**)((char*)combatant + 0x150))->word2.f0;
+        unsigned short v = (*(struct Transform150_021e94cc**)((char*)combatant + regionalExtensionOffset))->word2.f0;
         func_ov017_021d6134(&args->destTag, v);
         break;
     }
@@ -90,7 +96,7 @@ extern "C" ARM int func_ov023_021e94cc(TaggedTriple_021e94cc* args) {
         break;
     }
     case 11: {
-        unsigned short v = (*(struct Transform150_021e94cc**)((char*)combatant + 0x150))->word3.f0;
+        unsigned short v = (*(struct Transform150_021e94cc**)((char*)combatant + regionalExtensionOffset))->word3.f0;
         func_ov017_021d6134(&args->destTag, v);
         break;
     }

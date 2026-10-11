@@ -1,3 +1,4 @@
+// JPN: func_ov031_0222d8c0
 #include <globaldefs.h>
 
 struct Data02248eb4 {

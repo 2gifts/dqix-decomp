@@ -1,4 +1,17 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegion998 = 0x868 };
+enum { kRegion99c = 0x86c };
+enum { kRegion9a0 = 0x870 };
+enum { kRegion9a4 = 0x874 };
+enum { kRegion19ae = 0x17de };
+#else
+enum { kRegion998 = 0x998 };
+enum { kRegion99c = 0x99c };
+enum { kRegion9a0 = 0x9a0 };
+enum { kRegion9a4 = 0x9a4 };
+enum { kRegion19ae = 0x19ae };
+#endif
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
 
@@ -9,11 +22,11 @@ struct BattleMessageScene {
 };
 
 struct BattleGlobals {
-    char unk_0[0x998];
+    char unk_0[kRegion998];
     int messageActive;
-    char unk_99c[0x9a0 - 0x99c];
+    char unk_99c[kRegion9a0 - kRegion99c];
     int linkState;
-    char unk_9a4[0x19ae - 0x9a4];
+    char unk_9a4[kRegion19ae - kRegion9a4];
     unsigned char linkPending;
 };
 
@@ -35,6 +48,7 @@ extern "C" void func_ov017_021c37a4(void);
 
 extern unsigned char data_02109bf4;
 
+// JPN: func_ov003_0215c61c
 // USA: func_ov003_0215b1dc
 extern "C" ARM void func_ov003_0215b1dc(BattleMessageScene* self) {
     BattleGlobals* g = _Z26GetGlobalField0x1c020421a0v();

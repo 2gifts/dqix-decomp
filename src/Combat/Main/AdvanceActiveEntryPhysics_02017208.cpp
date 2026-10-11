@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kManagerPad = 0x496 };
+#else
+enum { kManagerPad = 0x476 };
+#endif
 #include "GameState/GameState.h"
 
 struct Vec3 { int x; int y; int z; };
@@ -20,7 +25,7 @@ struct Entry0217208 {
 };
 
 struct EntryList0217208 {
-    char pad[0x476];
+    char pad[kManagerPad];
     unsigned char count;
     char pad2[1];
     struct Entry0217208* entries;

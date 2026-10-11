@@ -33,6 +33,7 @@ static inline unsigned short GetCurrentHP(GameObject* c) {
     return hp;
 }
 
+// JPN: func_ov024_021e4e9c
 // USA: func_ov024_021e4604
 extern "C" ARM unsigned long long func_ov024_021e4604(struct Obj_021e4604* obj, int srcId, int id, int extra) {
     GameObject* c = GetCombatantByID((int)obj->field0x10, id);

@@ -1,3 +1,9 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define _Z17SetXY1c0_02184be0Pvss func_ov011_02185ce0
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 struct TaggedNumber02184c30;

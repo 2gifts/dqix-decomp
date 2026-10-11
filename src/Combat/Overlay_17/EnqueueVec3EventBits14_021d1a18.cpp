@@ -1,3 +1,10 @@
+// JPN: func_ov017_021d1e9c
+#if defined(jpn)
+enum { RegionOffset2774 = 0x27b4, RegionOffset2780 = 0x27c0 };
+#else
+enum { RegionOffset2774 = 0x2774, RegionOffset2780 = 0x2780 };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -53,12 +60,12 @@ extern "C" ARM void func_ov017_021d1a18(int a, short b, short c, unsigned char d
     buf.sub.bits.low14 = b;
     buf.sub.bits.hi2 = c;
 
-    struct Vec3i021d1a18 vec = *(struct Vec3i021d1a18*)((char*)base + 0x2774);
+    struct Vec3i021d1a18 vec = *(struct Vec3i021d1a18*)((char*)base + RegionOffset2774);
     buf.sub.vx = (short)(vec.x >> 7);
     buf.sub.vy = (short)(vec.y >> 7);
     buf.sub.vz = (short)(vec.z >> 7);
 
-    buf.sub.w = *(int*)((char*)base + 0x2780);
+    buf.sub.w = *(int*)((char*)base + RegionOffset2780);
     buf.sub.d = d;
     func_0205e330(p, &buf, 0);
 }

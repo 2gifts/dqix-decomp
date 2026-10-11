@@ -1,8 +1,21 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define func_ov013_021846a0 func_ov013_021856dc
+#define func_ov013_02184d80 func_ov013_02185db4
+#define func_ov013_02186160 func_ov013_02187178
+#define func_ov013_021864f0 func_ov013_02187820
+#define func_ov013_02186590 func_ov013_021878c0
+#define func_ov013_0218678c func_ov013_02187ab8
+#define func_ov013_0218683c func_ov013_02187b68
+#define func_ov013_02186bd4 func_ov013_02187f00
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include <Memory/SafeAllocator.h>
 
 struct Unk020421a0 {
-    char pad_0[0x5c];
+    char pad_0[R(0x28,0x5c)];
     void* unk_5c;
 };
 
@@ -41,8 +54,8 @@ extern "C" ARM void func_ov008_021842a0(BattleRecords* self, SafeAllocator* allo
         self->spriteAllocator_.CreateTypeA(allocator->Allocate(0x200), 0x200);
         self->iconAllocator_.CreateTypeA(allocator->Allocate(0x400), 0x400);
         self->modelAllocator_.CreateTypeA(allocator->Allocate(0x8800), 0x8800);
-        self->titleAllocator_.CreateTypeA(allocator->Allocate(0x8000), 0x8000);
-        self->guideAllocator_.CreateTypeA(allocator->Allocate(0x8000), 0x8000);
+        self->titleAllocator_.CreateTypeA(allocator->Allocate(R(0xa000,0x8000)), R(0xa000,0x8000));
+        self->guideAllocator_.CreateTypeA(allocator->Allocate(R(0x6000,0x8000)), R(0x6000,0x8000));
         self->renderer_ = allocator->Allocate(0x54);
         self->sprites_ = allocator->Allocate(0x2d0);
         self->animations_ = allocator->Allocate(8);
@@ -50,7 +63,7 @@ extern "C" ARM void func_ov008_021842a0(BattleRecords* self, SafeAllocator* allo
     }
     else
     {
-        self->text_ = (char*)allocator->Allocate(0x960);
+        self->text_ = (char*)allocator->Allocate(R(0x800,0x960));
     }
     self->pixels_ = self->backgroundAllocator_.Allocate(0x1c00);
 }

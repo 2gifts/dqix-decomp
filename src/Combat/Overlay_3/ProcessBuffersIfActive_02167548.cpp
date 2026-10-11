@@ -11,7 +11,11 @@ void CallFunc0204b04cOverList0x2c(Cont0207fd44* obj);
 struct Obj02167548 {
     char pad0[0x10];
     void* field10;
+#if defined(jpn)
+    char pad14[0x44 - 0x14];
+#else
     char pad14[0x74 - 0x14];
+#endif
     unsigned char flag74;
 };
 

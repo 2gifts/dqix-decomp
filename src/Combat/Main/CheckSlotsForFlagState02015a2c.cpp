@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kCountOffset = 0x497 };
+#else
+enum { kCountOffset = 0x477 };
+#endif
+
 #include "World/LootableContainer.h"
 
 
@@ -11,7 +17,7 @@ struct ElementSlot02015a2c {
 struct Something02015a2c {
     char pad0[0x8];
     int field8;
-    char pad1[0x477 - 0xc];
+    char pad1[kCountOffset - 0xc];
     unsigned char count;
     char pad2[0x47c - 0x478];
     struct ElementSlot02015a2c* arr;

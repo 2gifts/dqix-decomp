@@ -1,7 +1,14 @@
+// JPN: func_ov017_021a5c18
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Resource/GameResources.h"
 #include "System/OverlayId.h"
+
+#if defined(jpn)
+enum { Field36d0 = 0x34c0, Field36d4 = 0x34c4, Field36fc = 0x34ec, Field3700 = 0x34f0, Field371c = 0x350c, Field3720 = 0x3510, Field3b4c = 0x392c, Field3b50 = 0x3930, Field3b70 = 0x3950, Field3b74 = 0x3954, Field41c0 = 0x3fa0, Field41c4 = 0x3fa4, Field42e4 = 0x40c4, CombatantFlagOffset = 0x180 };
+#else
+enum { Field36d0 = 0x36d0, Field36d4 = 0x36d4, Field36fc = 0x36fc, Field3700 = 0x3700, Field371c = 0x371c, Field3720 = 0x3720, Field3b4c = 0x3b4c, Field3b50 = 0x3b50, Field3b70 = 0x3b70, Field3b74 = 0x3b74, Field41c0 = 0x41c0, Field41c4 = 0x41c4, Field42e4 = 0x42e4, CombatantFlagOffset = 0x18c };
+#endif
 
 struct SearchStruct;
 struct FlagWord02046708;
@@ -72,7 +79,7 @@ struct Unknown021a51a4 {
     short fac;
     char pad1[0xb2 - 0xae];
     short fb2;
-    char pad2[0x18c - 0xb4];
+    char pad2[CombatantFlagOffset - 0xb4];
     int f18c;
 };
 
@@ -90,19 +97,19 @@ struct Grotto021a51a4 {
 };
 
 struct Res021a51a4 {
-    char pad0[0x36d0];
+    char pad0[Field36d0];
     SetFlagStruct* flags;
-    char pad1[0x36fc - 0x36d4];
+    char pad1[Field36fc - Field36d4];
     TailList020469b4* list;
-    char pad2[0x371c - 0x3700];
+    char pad2[Field371c - Field3700];
     Node021a51a4* node;
-    char pad3[0x3b4c - 0x3720];
+    char pad3[Field3b4c - Field3720];
     unsigned char* dialog;
-    char pad4[0x3b70 - 0x3b50];
+    char pad4[Field3b70 - Field3b50];
     Obj021befe4* state53;
-    char pad5[0x41c0 - 0x3b74];
+    char pad5[Field41c0 - Field3b74];
     int f41c0;
-    char pad6[0x42e4 - 0x41c4];
+    char pad6[Field42e4 - Field41c4];
     unsigned char pending;
 };
 
@@ -161,10 +168,18 @@ extern "C" ARM void func_ov017_021a51a4(Res021a51a4* res) {
         return;
     }
     grotto = (unsigned char*)gs->GetGrottoStruct();
+#if !defined(jpn)
     Thresholds021d6a80 thresholds = data_ov017_021d6a80;
     level = _Z24NormalizeField5_0200fb08P14Struct0200fb08((Struct0200fb08*)GameState::GetInstance());
+#endif
     int touched;
-    if (data_02114e54.enabled && data_02114e54.active && thresholds.values[level - 1] <= x && x <= 0xf8 && y >= 0xa2 && y <= 0xb2) {
+    if (data_02114e54.enabled && data_02114e54.active && 
+#if defined(jpn)
+        0xb0 <= x
+#else
+        thresholds.values[level - 1] <= x
+#endif
+         && x <= 0xf8 && y >= 0xa2 && y <= 0xb2) {
         touched = 1;
     } else {
         touched = 0;

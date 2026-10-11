@@ -26,6 +26,7 @@ extern "C" int func_ov024_021e96e4(struct Obj_021db994* ctx, int id,
     struct Params_021db994* params, int mode, signed char result,
     int resultFlag, unsigned char specialFlag);
 
+// JPN: func_ov024_021dc240
 // USA: func_ov024_021db994
 extern "C" ARM void* func_ov024_021db994(struct Obj_021db994* obj, int unused, int id, struct Params_021db994* params, int unused2, int unused3, unsigned char flagArg) {
     GameObject* c = GetCombatantByID((int)obj->field0x10, id);

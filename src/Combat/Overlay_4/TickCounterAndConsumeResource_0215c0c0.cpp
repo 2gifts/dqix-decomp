@@ -28,7 +28,11 @@ extern "C" ARM int func_ov004_0215c0c0(void* obj) {
     unsigned int restVal2 = c->rest;
     int product2 = rate2 * restVal2;
     fld->f0xf6c -= product2;
+#if defined(jpn)
+    data_ov004_021707d8.ptr[0xa9] = 1;
+#else
     data_ov004_021707d8.ptr[0x9d] = 1;
+#endif
     if (product1 >= 50000) {
         func_ov011_021848a0(obj, 0x2366);
     } else {

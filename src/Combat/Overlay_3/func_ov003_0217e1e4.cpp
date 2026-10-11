@@ -1,5 +1,12 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kRegionValue90_8C = 0x8c };
+#else
+enum { kRegionValue90_8C = 0x90 };
+#endif
+
+
 extern unsigned char data_02114e54[];
 
 void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
@@ -30,11 +37,12 @@ struct ScrollList {
 };
 
 struct Obj0217e1e4 {
-    char pad0[0x90];
+    char pad0[kRegionValue90_8C];
     struct ScrollList* list;
 };
 
 // USA: func_ov003_0217e1e4
+// JPN: func_ov003_0217ceec
 extern "C" ARM int func_ov003_0217e1e4(struct Obj0217e1e4* self) {
     int x;
     int y;

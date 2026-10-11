@@ -1,7 +1,11 @@
 #include <globaldefs.h>
 
 struct S02053dc0 {
+#if defined(jpn)
+    char pad[0x190];
+#else
     char pad[0x19c];
+#endif
     void* field19c;
 };
 

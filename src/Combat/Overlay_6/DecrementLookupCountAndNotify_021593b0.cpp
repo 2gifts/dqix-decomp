@@ -1,3 +1,12 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define data_ov006_0215fffe data_ov006_02161350
+#define func_ov006_0215f3d8 func_ov006_021607f8
+#define func_ov006_0215f4dc func_ov006_021608fc
+#define func_ov006_0215f740 func_ov006_02160b08
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 struct Container02080fa8;
@@ -7,9 +16,9 @@ void SetEntryFirstField02080fa8(struct Container02080fa8* obj, int id, int value
 extern "C" void func_020813ec(void* obj, int flag);
 
 struct Struct021593b0 {
-    unsigned char pad0[0x14];
+    unsigned char pad0[R(0xc, 0x14)];
     void* f14;
-    unsigned char pad1[0x38b - 0x18];
+    unsigned char pad1[0x38b - R(0x10, 0x18)];
     unsigned char f38b;
     unsigned char pad2[0x431 - 0x38c];
     unsigned char f431;

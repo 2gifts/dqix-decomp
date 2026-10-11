@@ -10,6 +10,7 @@ extern "C" int _Z41PickRandomTableEntryResetCounter_021ed890PP6RandomPiPs(struct
 
 extern unsigned short data_ov024_021fee6c;
 
+// JPN: func_ov024_021f42ec
 // USA: func_ov024_021f3b20
 extern "C" ARM int func_ov024_021f3b20(int* a0, int id, int a2, int* outCount, short* outArray) {
 	GameObject* self = GetCombatantWithFlag0x400ByID(*a0, id);

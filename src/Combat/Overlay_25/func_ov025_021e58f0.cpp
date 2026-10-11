@@ -4,7 +4,11 @@
 #include "World/Zone3D.h"
 
 struct CombatWork_021e58f0 {
+#if defined(jpn)
+    char pad0[0xe44];
+#else
     char pad0[0xec8];
+#endif
     Zone3D zone;
     short zoneAngle;
 };
@@ -35,6 +39,7 @@ void ResetStruct_021e3158(Reset021e3158* p);
 extern State_021ef988 data_ov025_021ef988;
 extern Reset021e3158 data_ov025_021ef9a8;
 
+// JPN: func_ov025_021e5de0
 // USA: func_ov025_021e58f0
 extern "C" ARM int func_ov025_021e58f0(Args_021e58f0* args) {
     CombatWork_021e58f0* work = GetActiveCombatWork();

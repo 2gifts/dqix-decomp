@@ -21,9 +21,17 @@ struct Party021aa1ac {
 };
 
 struct Controller021aa1ac {
+#if defined(jpn)
+    char pad0[0x868];
+#else
     char pad0[0x998];
+#endif
     int messageActive;
+#if defined(jpn)
+    char pad99c[0x17e2 - 0x86c];
+#else
     char pad99c[0x19b2 - 0x99c];
+#endif
     unsigned char messageFlag;
 };
 
@@ -43,12 +51,17 @@ extern "C" Controller021aa1ac* _Z26GetGlobalField0x1c020421a0v(void);
 Combatant021aa1ac* GetCombatantWithFlag0x100(GameState* gameState, int combatantId);
 extern "C" void func_ov017_021c9e00(int id, int a, int b, int c);
 extern "C" void __clear(void* dst, unsigned int size);
+#if defined(jpn)
+extern "C" void func_02045d88(Controller021aa1ac* controller, const char* text, int a);
+#else
 extern "C" void func_0204500c(Controller021aa1ac* controller, const char* text, int a, int b);
+#endif
 extern "C" int func_ov017_021aa080(void);
 
 extern char data_ov017_021d783c[];
 extern char data_ov017_021d7868[];
 
+// JPN: func_ov017_021aaa1c
 // USA: func_ov017_021aa1ac
 extern "C" ARM void func_ov017_021aa1ac(Self021aa1ac* self) {
     GameState* gs = _ZN9GameState11GetInstanceEv();
@@ -82,7 +95,11 @@ extern "C" ARM void func_ov017_021aa1ac(Self021aa1ac* self) {
             } else {
                 strcat(text, data_ov017_021d7868);
             }
+#if defined(jpn)
+            func_02045d88(controller, text, 0);
+#else
             func_0204500c(controller, text, 0, 0xe3);
+#endif
             controller->messageFlag = 0;
             controller->messageActive = 1;
         }
@@ -102,7 +119,11 @@ extern "C" ARM void func_ov017_021aa1ac(Self021aa1ac* self) {
         } else {
             strcat(text, data_ov017_021d7868);
         }
+#if defined(jpn)
+        func_02045d88(controller, text, 0);
+#else
         func_0204500c(controller, text, 0, 0xe3);
+#endif
         controller->messageFlag = 0;
         controller->messageActive = 1;
     } else if (self->step == 2) {

@@ -62,6 +62,7 @@ struct ExtendedStats021df454 {
     int field_27 : 3;
 };
 
+// JPN: func_ov024_021dfcec
 // USA: func_ov024_021df454
 extern "C" ARM void* func_ov024_021df454(BattleAction021df454* action, int unused, int id, ActionData021df454* data) {
     GameObject* target = GetCombatantByID((int)action->battle, id);

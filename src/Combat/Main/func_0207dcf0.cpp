@@ -20,6 +20,14 @@ extern "C" void func_ov017_021c60a4(struct Source021c60a4* obj);
 
 extern int data_02108ea8;
 
+
+#if defined(jpn)
+enum { ActionContextOffset = 0x3508 };
+#else
+enum { ActionContextOffset = 0x3718 };
+#endif
+
+// JPN: func_0207ea70
 // USA: func_0207dcf0
 extern "C" ARM void func_0207dcf0(unsigned short id) {
     struct Entry0207d9bc* table = (struct Entry0207d9bc*)&data_02108ea8;
@@ -28,7 +36,7 @@ extern "C" ARM void func_0207dcf0(unsigned short id) {
     struct Entry0207d9bc* entry = FindEntryByHalfword(table, id);
     if (!entry) return;
 
-    unsigned char* obj = *(unsigned char**)((char*)func_ov017_0218b5b0() + 0x3718);
+    unsigned char* obj = *(unsigned char**)((char*)func_ov017_0218b5b0() + ActionContextOffset);
     void* actionArr = func_ov017_021b8478(obj);
     _Z20GetField6b0_021b8470Pv(obj);
 

@@ -1,3 +1,8 @@
+#if defined(jpn)
+enum {regionalOffset0=0x568, regionalOffset1=0x120, regionalOffset2=0x11c, regionalOffset3=0x228, regionalOffset4=0x22c, regionalOffset5=0x230};
+#else
+enum {regionalOffset0=0x630, regionalOffset1=0x124, regionalOffset2=0x120, regionalOffset3=0x2d8, regionalOffset4=0x2dc, regionalOffset5=0x2e0};
+#endif
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
@@ -19,6 +24,7 @@ void InitCombatSlots02045cac(struct CombatSlots02045cac*);
 void ReinitController02043204(char*);
 extern "C" void func_02043124(int);
 
+// JPN: func_ov023_021e3290
 // USA: func_ov023_021e2f38
 ARM void CleanupAndReinitCombatState_021e2f38(void* obj) {
     char* o = (char*)obj;
@@ -26,9 +32,9 @@ ARM void CleanupAndReinitCombatState_021e2f38(void* obj) {
     ClearFlags020466f4((struct FlagWord020466f4*)GetDataPtr02114e04_020d6c00(), 0xf);
 
     int data4 = (int)BackgroundLoader::GetInstance();
-    if (*(int*)(o + 0x630) > 0) {
-        ((BackgroundLoader*)(data4))->RemoveTask((int)(*(int*)(o + 0x630)));
-        *(int*)(o + 0x630) = -1;
+    if (*(int*)(o + regionalOffset0) > 0) {
+        ((BackgroundLoader*)(data4))->RemoveTask((int)(*(int*)(o + regionalOffset0)));
+        *(int*)(o + regionalOffset0) = -1;
     }
 
     int g = GetGlobal02109400();
@@ -41,9 +47,9 @@ ARM void CleanupAndReinitCombatState_021e2f38(void* obj) {
         SetFlagBytes02017d68(func_02012fe4());
     }
 
-    DestroyTenAndOne_021e4f18(*(void**)(o + 0x124));
-    if (*(void**)(o + 0x120) != 0) {
-        DestroyTenAndOne_021e4f18(*(void**)(o + 0x120));
+    DestroyTenAndOne_021e4f18(*(void**)(o + regionalOffset1));
+    if (*(void**)(o + regionalOffset2) != 0) {
+        DestroyTenAndOne_021e4f18(*(void**)(o + regionalOffset2));
     }
     if (*(void**)(o + 0xc8) != 0) {
         EmptyDestructor0205a494(*(void**)(o + 0xc8));
@@ -64,7 +70,7 @@ ARM void CleanupAndReinitCombatState_021e2f38(void* obj) {
     ReinitController02043204((char*)gg);
     func_02043124(gg);
 
-    *(int*)((char*)gg + 0x2d8) = 0;
-    *(int*)((char*)gg + 0x2dc) = 0;
-    *(int*)((char*)gg + 0x2e0) = 0;
+    *(int*)((char*)gg + regionalOffset3) = 0;
+    *(int*)((char*)gg + regionalOffset4) = 0;
+    *(int*)((char*)gg + regionalOffset5) = 0;
 }

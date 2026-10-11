@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
+// JPN: func_0207a780
 // USA: func_020798b8
 ARM void ClearFourRegions020798b8(char* obj) {
     memset(obj, 0, 0xc);

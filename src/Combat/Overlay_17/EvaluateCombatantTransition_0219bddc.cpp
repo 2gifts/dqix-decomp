@@ -1,3 +1,10 @@
+// JPN: func_ov017_0219c8cc
+#if defined(jpn)
+enum { RegionOffset840 = 0x860 };
+#else
+enum { RegionOffset840 = 0x840 };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -38,7 +45,7 @@ extern "C" ARM int func_ov017_0219bddc(unsigned char* p0) {
         result = 1;
         goto end;
     }
-    if (func_02098080((char*)obj4 + 0x840) != 0) {
+    if (func_02098080((char*)obj4 + RegionOffset840) != 0) {
         result = 1;
         p0[0] = (unsigned char)result;
         goto end;

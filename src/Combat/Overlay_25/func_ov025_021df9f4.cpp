@@ -4,7 +4,11 @@
 struct Combatant021df9f4 {
     char pad0[0xc0];
     unsigned char state;
+#if defined(jpn)
+    char padc1[0x180 - 0xc1];
+#else
     char padc1[0x18c - 0xc1];
+#endif
     unsigned int flags;
 };
 
@@ -12,6 +16,7 @@ extern "C" int _Z26CheckHighNibble0xc1Not2To5Ph(GameObject* obj);
 extern "C" int _Z23CheckSubstructFlag0x200Ph(GameObject* obj);
 extern "C" int _Z23CheckSubstructFlag0x100Ph(GameObject* obj);
 
+// JPN: func_ov025_021e0304
 // USA: func_ov025_021df9f4
 extern "C" ARM int func_ov025_021df9f4(GameObject* obj) {
     if (obj == 0) {

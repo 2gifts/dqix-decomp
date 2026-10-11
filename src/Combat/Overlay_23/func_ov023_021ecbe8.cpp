@@ -2,15 +2,21 @@
 #include "GameState/GameState.h"
 
 
+// JPN: func_ov023_021ecb3c
 // USA: func_ov023_021ecbe8  (semantic: AdvanceFadeState_021ecbe8)
 extern "C" ARM void func_ov023_021ecbe8(char* obj) {
+#if defined(jpn)
+    enum { recordStride = 0x15c };
+#else
+    enum { recordStride = 0x244 };
+#endif
     if (!(*(unsigned short*)(obj + 0x438) & 0x40)) return;
 
     unsigned char state = *(unsigned char*)(obj + 0x433);
     if (state == 0) {
         unsigned char idx = *(unsigned char*)(obj + 0x28);
         char* arr = *(char**)(obj + 0x20);
-        unsigned int category = (*(unsigned int*)(arr + idx * 0x244)) >> 30;
+        unsigned int category = (*(unsigned int*)(arr + idx * recordStride)) >> 30;
 
         switch (category) {
         case 0:

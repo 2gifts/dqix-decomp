@@ -1,3 +1,4 @@
+// JPN: func_ov017_02195e18
 #include <globaldefs.h>
 
 #include "Combat/NameEntryQueue.h"

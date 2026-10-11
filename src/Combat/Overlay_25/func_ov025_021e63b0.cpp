@@ -5,10 +5,18 @@
 struct CloneSource { unsigned char padding0[0x20]; unsigned short id; };
 struct CloneTargets { unsigned char padding0[0x10]; CloneSource* head; };
 struct CloneGlobals {
+#if defined(jpn)
+    unsigned char padding0[4];
+    char* context;
+    unsigned char padding8[4];
+    unsigned int flags;
+    unsigned char padding10[0x10];
+#else
     unsigned char padding0[0xc];
     char* context;
     unsigned char padding10[0xc];
     unsigned int flags;
+#endif
     int state;
     int field24;
     int task;
@@ -23,7 +31,11 @@ struct Node021e8bac {
     unsigned int field4;
     Node021e8bac* next;
 };
+#if defined(jpn)
+struct CloneWork { unsigned char padding0[0x71c6]; unsigned short source; };
+#else
 struct CloneWork { unsigned char padding0[0x6fd6]; unsigned short source; };
+#endif
 struct CloneStats { unsigned char padding0[0x14]; unsigned int flags; };
 extern CloneGlobals data_ov025_021ef988;
 extern Reset021e3158 data_ov025_021ef9a8;
@@ -42,6 +54,7 @@ void RegisterCombatantSlot(GameState*, int, GameObject*);
 CloneWork* GetActiveCombatWork();
 extern "C" void func_ov017_02191aac(GameResources*, int, int, int);
 
+// JPN: func_ov025_021e6860
 // USA: func_ov025_021e63b0
 extern "C" ARM int func_ov025_021e63b0(void* unused, CloneTargets* targets) {
     GameState* game = GameState::GetInstance();

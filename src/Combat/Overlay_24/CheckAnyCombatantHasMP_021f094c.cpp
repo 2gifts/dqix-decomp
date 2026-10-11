@@ -12,6 +12,7 @@ struct Obj_021f094c { int field0; };
 struct Buf4_021f094c { short v[4]; };
 extern struct Buf4_021f094c data_ov024_021febdc;
 
+// JPN: func_ov024_021f1118
 // USA: func_ov024_021f094c  (semantic: CheckAnyCombatantHasMP_021f094c)
 extern "C" ARM int func_ov024_021f094c(struct Obj_021f094c* obj, int id) {
     GameObject* c = GetCombatantByID(obj->field0, id);

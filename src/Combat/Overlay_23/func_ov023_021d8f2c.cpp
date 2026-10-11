@@ -11,10 +11,21 @@ void InitBoxLayout_021d921c(void* obj, int unused, int w, int h);
 extern "C" void func_ov023_021d9290(void* obj, void* buf, unsigned char step);
 
 struct StructA0205d5d0;
+#if defined(jpn)
+extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(struct StructA0205d5d0* a, int b, int c, int d);
+#else
 int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d, unsigned char e);
+#endif
 
+
+// JPN: func_ov023_021d97ec
 // USA: func_ov023_021d8f2c  (semantic: AdvanceScaleBoxState_021d8f2c)
 extern "C" ARM int func_ov023_021d8f2c(char* obj) {
+#if defined(jpn)
+ enum {regionalOffset0=0x800};
+#else
+ enum {regionalOffset0=0x960};
+#endif
     int count = GameState::GetInstance()->GetTickCount();
     if (count == 0) count = 1;
     unsigned char step = *(unsigned char*)(obj + 0x11c);
@@ -55,7 +66,7 @@ extern "C" ARM int func_ov023_021d8f2c(char* obj) {
                 mode = 5;
                 break;
         }
-        memset(*(void**)(obj + 4), 0, 0x960);
+        memset(*(void**)(obj + 4), 0, regionalOffset0);
         func_ov023_021d9290(obj, *(void**)(obj + 4), *(unsigned char*)(obj + 0x118));
         InitBoxLayout_021d921c(obj, *(int*)(obj + 4), 0x18, mode);
         int next = *(unsigned char*)(obj + 0x11c) + 1;
@@ -73,9 +84,14 @@ extern "C" ARM int func_ov023_021d8f2c(char* obj) {
 
     *(unsigned char*)(obj + 0x11d) = 5;
     *(unsigned char*)(obj + 0x118) = *(unsigned char*)(obj + 0x118) + 1;
-    memset(*(void**)(obj + 4), 0, 0x960);
+    memset(*(void**)(obj + 4), 0, regionalOffset0);
     func_ov023_021d9290(obj, *(void**)(obj + 4), *(unsigned char*)(obj + 0x118));
+#if defined(jpn)
+    _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((struct StructA0205d5d0*)(obj + 0x20), 0, *(int*)(obj + 4), 1);
+#else
     TryApplyElemFields0205d5d0((struct StructA0205d5d0*)(obj + 0x20), 0, *(int*)(obj + 4), 1, 0);
+#endif
+
 
     if (*(unsigned char*)(obj + 0x118) == 4) {
         int next = *(unsigned char*)(obj + 0x11c) + 1;

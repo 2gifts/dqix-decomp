@@ -2,10 +2,6 @@
 #include "System/Interrupts.h"
 #include <globaldefs.h>
 
-#if defined(jpn)
-    #define data_0211127c data_02110f1c
-#endif
-
 struct DMAOrTimerResponse {
     DMACompletionCallback callback;
     unsigned int stayEnabledAfter;
@@ -82,8 +78,8 @@ ARM InterruptHandlerProc GetInterruptHandler(unsigned int mask) {
 ARM void SetDMACompletionCallback(int channel, DMACompletionCallback callback, int userdata) {
     CallbackByIndex(channel)          = callback;
     CallbackUserdataByIndex(channel)  = userdata;
-    unsigned int prior                = EnableSpecificInterrupts(IRQ_MASK_DMA_N(channel));
-    ShouldStayEnabledByIndex(channel) = prior & IRQ_MASK_DMA_N(channel);
+    unsigned int previousInterruptMask                = EnableSpecificInterrupts(IRQ_MASK_DMA_N(channel));
+    ShouldStayEnabledByIndex(channel) = previousInterruptMask & IRQ_MASK_DMA_N(channel);
 }
 
 // KEEP-NAME

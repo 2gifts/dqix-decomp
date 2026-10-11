@@ -1,6 +1,11 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
+#if defined(jpn)
+#include "System/Memory.h"
+#define data_020ef7a0 data_020ef690
+#endif
+
 extern "C" void __clear(void* buf, int n);
 struct Container0202baf4;
 struct Record0202baf4;
@@ -21,11 +26,18 @@ struct Item0202ae4c {
 };
 
 // USA: func_0202ae4c  (semantic: PrepareAndRegisterRecord0202ae4c)
+// JPN: func_0202aa04
 extern "C" ARM void func_0202ae4c(struct Item0202ae4c* item) {
     char buf[0x18];
+#if !defined(jpn)
     __clear(buf, 0x15);
+#endif
     if (item->h3c != 0 && item->b4a == 0x24) {
+#if defined(jpn)
+        VectorizedInvertedMemcpy(item->field50, buf, item->b64 << 1);
+#else
         memcpy(buf, item->field50, item->b64);
+#endif
     } else {
         CopyStringBounded020d2f28(buf, data_020ef7a0, 0x15);
     }

@@ -17,8 +17,14 @@ struct Evt021c82bc {
     unsigned char arr2[8];
 };
 
+// JPN: func_ov017_021c876c
 // USA: func_ov017_021c82bc  (semantic: ApplyEventTag_021c82bc)
 extern "C" ARM void func_ov017_021c82bc(int p0, struct Evt021c82bc* evt, int unused2, int table, struct SearchStruct0202c1a4* search) {
+#if defined(jpn)
+ enum {regionalOffset=0x508};
+#else
+ enum {regionalOffset=0x718};
+#endif
     signed char cur = GetSearchStructCurrentArrEntry(search);
     if (evt->lowNibble != cur) return;
     if (evt->flag4) {
@@ -42,7 +48,7 @@ extern "C" ARM void func_ov017_021c82bc(int p0, struct Evt021c82bc* evt, int unu
         }
     }
 
-    void* field6d0 = *(void**)((char*)table + 0x3000 + 0x718);
+    void* field6d0 = *(void**)((char*)table + 0x3000 + regionalOffset);
     void* work = func_ov017_021b8468(field6d0);
     if (!work) return;
     SetCombatWorkFlags0x55f4(work, 0x200000);

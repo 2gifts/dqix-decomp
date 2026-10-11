@@ -11,7 +11,12 @@ struct Obj02033874;
 struct Bytes02033b88;
 struct FieldBlock63d5_12050;
 struct BattleView;
+#if defined(jpn)
+struct BattleWork { char pad0[0x7902]; signed char animationState; };
+#else
 struct BattleWork { char pad0[0x7712]; signed char animationState; };
+#endif
+
 struct FormationStats {
     char pad0[0x3c];
     unsigned int low : 30;
@@ -41,6 +46,7 @@ struct BoneLabels { signed char letters[2]; };
 extern const BoneLabels data_ov026_021de6a0;
 extern const char data_ov026_021dee57[];
 
+// JPN: func_ov026_021dc710
 // USA: func_ov026_021dc040
 extern "C" ARM int func_ov026_021dc040(SafeAllocator* allocator, BattleWork* self, BattleState* battle, PartyState* party) {
     GameState* game = GameState::GetInstance();

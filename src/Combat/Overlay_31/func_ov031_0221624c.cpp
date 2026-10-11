@@ -4,6 +4,7 @@
 extern void* data_ov031_0224e5d8;
 extern "C" int func_ov031_022161b0(int index, void* out);
 
+// JPN: func_ov031_02216a2c
 // USA: func_ov031_0221624c
 extern "C" ARM int func_ov031_0221624c(char* entries) {
 	if (*(int*)((char*)data_ov031_0224e5d8 + 0x1000 + 0xa90) != 2) return -1;

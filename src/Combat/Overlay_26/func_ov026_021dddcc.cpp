@@ -1,3 +1,11 @@
+#if defined(jpn)
+#define data_ov026_021de7fa data_ov026_021ded16
+#define data_ov026_021de802 data_ov026_021ded1e
+#define data_ov026_021de812 data_ov026_021ded2e
+#define data_ov026_021de822 data_ov026_021ded3e
+#define data_ov026_021def00 data_ov026_021df660
+#define func_ov000_02171ffc func_ov000_02173834
+#endif
 #include <globaldefs.h>
 
 struct GameState;
@@ -42,15 +50,27 @@ struct IconSprite {
 };
 
 struct BattleWork {
+    #if defined(jpn)
+    char pad0[0x218];
+#else
     char pad0[0x29c];
+#endif
     BattleState* battle;
     char pad2a0[0xc08];
     int mode;
     int state;
+    #if defined(jpn)
+    char padeb0[0x28f0];
+#else
     char padeb0[0x28b0];
+#endif
     char list[0x17c];
     int activeSlot;
+    #if defined(jpn)
+    char pad38e0[0x1f54];
+#else
     char pad38e0[0x1d20];
+#endif
     IconSprite icons[2];
     char pad5710[0x2002];
     signed char phase;

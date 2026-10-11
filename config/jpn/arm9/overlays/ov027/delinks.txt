@@ -271,3 +271,64 @@ src/Combat/Overlay_27/RegisterCombatSlot_021da38c.cpp:
 src/Combat/Overlay_27/func_ov027_021d9134.cpp:
     complete
     .text start:0x021d99f4 end:0x021d9ed8
+
+src/Combat/Overlay_27/Trans_021dcd20.cpp:
+    complete
+    .text start:0x021dd5e0 end:0x021dd61c
+
+src/Combat/Overlay_27/InsertSlotEntry_021dd118.cpp:
+    complete
+    .text start:0x021dd9d8 end:0x021dda40
+
+src/Combat/Overlay_27/ValidateAndFillSourceDesc_021da690.cpp:
+    complete
+    .text start:0x021daf50 end:0x021db0c8
+
+src/Combat/Overlay_27/ClassifyAndSerializeEvent_021d9bdc.cpp:
+    complete
+    .text start:0x021da49c end:0x021da61c
+
+src/Combat/Overlay_27/InitCombatState_021dca40.cpp:
+    complete
+    .text start:0x021dd300 end:0x021dd4e4
+
+src/Combat/Overlay_27/DispatchCombatMessage_021d8c94.cpp:
+    complete
+    .text start:0x021d9554 end:0x021d99f4
+
+src/Combat/Overlay_27/SetupCombatFlags_021dad14.cpp:
+    complete
+    .text start:0x021db5d4 end:0x021db644
+
+src/Combat/Overlay_27/InitEntryFromDescriptor_021dab84.cpp:
+    complete
+    .text start:0x021db444 end:0x021db534
+
+src/Combat/Overlay_27/FinalizeDispatchRecordAndIssue_021dafc0.cpp:
+    complete
+    .text start:0x021db880 end:0x021db9e4
+
+src/Combat/Overlay_27/func_ov027_021db154.cpp:
+    complete
+    .text start:0x021dba14 end:0x021dbc80
+
+src/Combat/Overlay_27/func_ov027_021db524.cpp:
+    .text start:0x021dbde4 end:0x021dc63c
+
+src/Combat/Overlay_27/func_ov027_021d9940.cpp:
+    .text start:0x021da200 end:0x021da49c
+
+src/Combat/Overlay_27/PickAndRelayRandomSlot_021d9704.cpp:
+    .text start:0x021d9fc4 end:0x021da15c
+
+src/Combat/Overlay_27/UpdateEntryCounter_021d9d5c.cpp:
+    .text start:0x021da61c end:0x021da698
+
+src/Combat/Overlay_27/FindAvailablePosition_021db3c0.cpp:
+    .text start:0x021dbc80 end:0x021dbcf0
+
+src/Combat/Overlay_27/SerializeEventByte_021d96c4.cpp:
+    .text start:0x021d9f84 end:0x021d9fc4
+
+src/Combat/Overlay_27/Trans_021dab00.cpp:
+    .text start:0x021db3c0 end:0x021db3f8

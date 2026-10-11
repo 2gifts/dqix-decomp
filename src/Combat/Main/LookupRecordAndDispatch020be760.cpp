@@ -13,6 +13,7 @@ struct Rec020be760 {
 };
 
 // USA: func_020be760
+// JPN: func_020c022c
 ARM int LookupRecordAndDispatch020be760(void* a, void* key) {
     struct Rec020be760* rec = (struct Rec020be760*)GetOffsetEntry0x8((int)(key));
     if (rec == NULL) return 0;

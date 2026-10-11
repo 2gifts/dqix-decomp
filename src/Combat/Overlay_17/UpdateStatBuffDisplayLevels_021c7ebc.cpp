@@ -34,10 +34,15 @@ struct StatDisplay_021c7ebc {
 	unsigned char levels[15];
 };
 
-// USA: func_ov017_021c7ebc  (semantic: UpdateStatBuffDisplayLevels_021c7ebc)
+// USA: func_ov017_021c7ebc
+// JPN: func_ov017_021c836c
 extern "C" ARM void func_ov017_021c7ebc(int unused0, Src021c7ebc* src, GameState* battleStruct, unsigned char* globalObj) {
 	unsigned char* base = globalObj + 0x3000;
+#if defined(jpn)
+	void* h = *(void**)(base + 0x508);
+#else
 	void* h = *(void**)(base + 0x718);
+#endif
 	Ret021c7ebc* r = (Ret021c7ebc*)func_ov017_021b8478(h);
 	if (!r) return;
 	if (!func_ov017_021b8468(h)) return;
@@ -50,7 +55,11 @@ extern "C" ARM void func_ov017_021c7ebc(int unused0, Src021c7ebc* src, GameState
 	StatLevelsLow_021c7ebc* low = (StatLevelsLow_021c7ebc*)&src->v1;
 	StatLevelsHigh_021c7ebc* high = (StatLevelsHigh_021c7ebc*)&src->v2;
 	if (src->selector == 1) {
+#if defined(jpn)
+		StatDisplay_021c7ebc* out = (StatDisplay_021c7ebc*)((unsigned char*)(*(void**)((unsigned char*)c + 0x138)) + 0x70);
+#else
 		StatDisplay_021c7ebc* out = (StatDisplay_021c7ebc*)((unsigned char*)c->currentStats_ + 0x70);
+#endif
 		out->levels[0] = low->s0;
 		out->levels[1] = low->s1;
 		out->levels[2] = low->s2;
@@ -67,7 +76,11 @@ extern "C" ARM void func_ov017_021c7ebc(int unused0, Src021c7ebc* src, GameState
 		out->levels[13] = high->s3;
 		out->levels[14] = high->s4;
 	} else {
+#if defined(jpn)
+		StatDisplay_021c7ebc* out = (StatDisplay_021c7ebc*)((unsigned char*)(*(void**)((unsigned char*)c + 0x138)) + 0x93);
+#else
 		StatDisplay_021c7ebc* out = (StatDisplay_021c7ebc*)((unsigned char*)c->currentStats_ + 0x93);
+#endif
 		out->levels[0] = low->s0;
 		out->levels[1] = low->s1;
 		out->levels[2] = low->s2;

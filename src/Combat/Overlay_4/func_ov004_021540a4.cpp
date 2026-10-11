@@ -1,9 +1,14 @@
 #include <globaldefs.h>
 
+
 extern "C" void func_ov004_02153978(void* self, short* a, short* b, short* c);
 extern "C" void* func_ov011_021849c8(void*);
 extern "C" void* func_ov023_021f6880(void*, int);
+#if defined(jpn)
+extern "C" int func_ov023_021f6f10(void* self);
+#else
 int ScaleStatsIfType12_021f6f10(void* self);
+#endif
 extern "C" int func_ov023_021e1de8(void* obj, int value, int id, int idx);
 extern "C" void func_ov023_021f65d4(void* obj, int id, int mask);
 void ClearNodeMaskById_021f6600(void* obj, int id, int mask);
@@ -28,7 +33,8 @@ public:
     virtual void* Methodec();
 };
 
-// USA: func_ov004_021540a4  (semantic: RecalcNodeStatsAndFlags_021540a4)
+// USA: func_ov004_021540a4
+// JPN: func_ov004_0215575c
 extern "C" ARM int func_ov004_021540a4(void* a) {
     short e0, e1, e2;
     func_ov004_02153978(a, &e0, &e1, &e2);
@@ -36,7 +42,11 @@ extern "C" ARM int func_ov004_021540a4(void* a) {
     void* battler = func_ov011_021849c8(a);
     void* n = func_ov023_021f6880(battler, 0x39);
     if (!n) return 0;
+#if defined(jpn)
+    if (func_ov023_021f6f10(n) != 0x12) return 0;
+#else
     if (ScaleStatsIfType12_021f6f10(n) != 0x12) return 0;
+#endif
 
     void* result = ((VObj021540a4*)n)->Methodec();
     if (!n) return 0;
@@ -63,7 +73,11 @@ extern "C" ARM int func_ov004_021540a4(void* a) {
     void* b4 = func_ov011_021849c8(a);
     void* n2 = func_ov023_021f6880(b4, 0x2c);
     if (!n2) return 0;
+#if defined(jpn)
+    if (func_ov023_021f6f10(n2) != 7) return 0;
+#else
     if (ScaleStatsIfType12_021f6f10(n2) != 7) return 0;
+#endif
     *(short*)((char*)n2 + 0x5c) = 0;
     *(short*)((char*)n2 + 0x5e) = r4val;
     return 0;

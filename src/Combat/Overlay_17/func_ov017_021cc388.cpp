@@ -1,4 +1,11 @@
+// JPN: func_ov017_021cc830
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kRegionalFieldOffset = 0x4c0 };
+#else
+enum { kRegionalFieldOffset = 0x6d0 };
+#endif
 #include "GameState/GameState.h"
 
 struct SearchStruct;
@@ -31,7 +38,7 @@ extern "C" ARM void func_ov017_021cc388(int tag, Group021cc388* group, GameState
 		if (group->ownerId != GetField0x3acValue(battleStruct)) return;
 	}
 
-	unsigned char* bits = *(unsigned char**)(ov + 0x3000 + 0x6d0);
+	unsigned char* bits = *(unsigned char**)(ov + 0x3000 + kRegionalFieldOffset);
 	unsigned char count = group->count;
 	int lowValue = 0x3ff - 0x180;
 	int flag, value;

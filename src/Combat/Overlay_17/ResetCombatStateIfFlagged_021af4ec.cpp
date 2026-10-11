@@ -26,8 +26,14 @@ struct ObjResetCombatState_021af4ec {
 	unsigned char field15;
 };
 
+// JPN: func_ov017_021afbfc
 // USA: func_ov017_021af4ec  (semantic: ResetCombatStateIfFlagged_021af4ec)
 extern "C" ARM unsigned char func_ov017_021af4ec(ObjResetCombatState_021af4ec* obj) {
+#if defined(jpn)
+ enum {regionalOffset0=0x40c3, regionalOffset1=0x40c2};
+#else
+ enum {regionalOffset0=0x42e3, regionalOffset1=0x42e2};
+#endif
 	unsigned int* p = (unsigned int*)GetDataPtr02114e04_020d6c00();
 	struct StateFlags3c9* g = (struct StateFlags3c9*)GetGlobal02109030();
 	if (CheckFlag0x3c9Bit0OrByteNonPositive(g)) {
@@ -43,8 +49,8 @@ extern "C" ARM unsigned char func_ov017_021af4ec(ObjResetCombatState_021af4ec* o
 		ClearFlag0x3c9Bit0AndCleanup((unsigned char*)g);
 		FillBitArray0x1524WithFF(d);
 		ClearBitsInWord((unsigned int*)f, 0x40);
-		((unsigned char*)f)[0x42e3] = 0;
-		((unsigned char*)f)[0x42e2] = 0;
+		((unsigned char*)f)[regionalOffset0] = 0;
+		((unsigned char*)f)[regionalOffset1] = 0;
 		obj->field1 = 1;
 	}
 	return obj->field8;

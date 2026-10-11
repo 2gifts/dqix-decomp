@@ -1,4 +1,7 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define func_020be2ec func_020bfdb8
+#endif
 
 void* GetOffsetEntry0x14(int index);
 extern "C" int func_020be2ec(unsigned int index, int b, int flag);
@@ -10,6 +13,7 @@ struct Word020be010 {
     unsigned int typeByte : 8;
 };
 
+// JPN: func_020bfadc
 // USA: func_020be010
 ARM int DispatchEventEntryForIndex(int index, unsigned int flags, int b, int flag, int* out) {
     struct Word020be010* w = (struct Word020be010*)GetOffsetEntry0x14(index);

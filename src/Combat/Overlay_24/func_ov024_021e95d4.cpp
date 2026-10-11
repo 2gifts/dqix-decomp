@@ -22,6 +22,7 @@ struct Params_021e95d4 {
     unsigned int high24 : 2;
 };
 
+// JPN: func_ov024_021e9dd0
 // USA: func_ov024_021e95d4
 extern "C" ARM int func_ov024_021e95d4(Ctx_021e95d4* ctx, int id,
     Params_021e95d4* params, int mode, signed char adjustment,
@@ -46,7 +47,12 @@ extern "C" ARM int func_ov024_021e95d4(Ctx_021e95d4* ctx, int id,
         if (flag != 0) return 0x1f;
         if (ctx->battle->flag8e95 != 0 ||
             (int)((unsigned char*)combatant->currentStats_)[0x50] <= 0) {
+#if defined(jpn)
+            return 0x1b;
+#else
             return SelectByIndexRange0to3_021da644(id, 0x26d, 0x1b);
+#endif
+
         }
     }
     return SelectByIndexRange0to3_021da644(id,

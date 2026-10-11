@@ -1,5 +1,11 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { listOffset = 0x4ec, stateOffset = 0x928, countOffset = 0x1e4 };
+#else
+enum { listOffset = 0x6fc, stateOffset = 0xb48, countOffset = 0x494 };
+#endif
+
 extern "C" void* func_ov017_0218b5b0(void);
 extern "C" void* func_ov011_021845f8(void* ctx, int v);
 extern "C" void func_ov011_021848a0(void* obj, int val);
@@ -24,9 +30,9 @@ extern Struct021707d8_0215883c data_ov004_021707d8;
 #pragma optimize_for_size off
 extern "C" ARM int func_ov004_0215883c(void* a) {
     void* actorRaw = func_ov017_0218b5b0();
-    void* list = *(void**)((char*)actorRaw + 0x3000 + 0x6fc);
+    void* list = *(void**)((char*)actorRaw + 0x3000 + listOffset);
     unsigned char flag = data_ov004_021707d8.ptr[0x13];
-    void* five = *(void**)((char*)actorRaw + 0x3000 + 0xb48);
+    void* five = *(void**)((char*)actorRaw + 0x3000 + stateOffset);
 
     if (flag != 0) goto notZero;
     {
@@ -61,7 +67,7 @@ notZero:
         func_ov017_021b1e24(five, list);
         if (!GetSubByteField439_021b2060((Obj24_021b2060*)five)) goto retTrue;
         if (GetSubByteField438_021b204c((Obj24_021b204c*)five)) {
-            if (*(int*)((char*)actorRaw + 0x4000 + 0x494) == 0) {
+            if (*(int*)((char*)actorRaw + 0x4000 + countOffset) == 0) {
                 func_ov011_021848a0(a, 0x233d);
                 return 0;
             }

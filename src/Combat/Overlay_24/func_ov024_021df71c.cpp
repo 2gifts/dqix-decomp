@@ -29,6 +29,7 @@ int* GetGlobal02109418();
 extern "C" int _Z30SumCombatantKeyMatches02086aecP11Obj02086aeci(Obj02086aec*, int);
 int CheckFlag0x14Bit0x10Set(unsigned char*);
 
+// JPN: func_ov024_021dffb4
 // USA: func_ov024_021df71c
 extern "C" ARM int func_ov024_021df71c(Combatant* self, unsigned int actionID, int alternate, unsigned short* resultID, unsigned short* combatantKey, unsigned short* entryID) {
     GlobalEntries* global = (GlobalEntries*)GetGlobal02109418();

@@ -23,6 +23,7 @@ extern "C" void func_0202c360(void* obj, char* name);
 void ClearBufferAndFlag_021972cc(char* p);
 void ClearByteField17182_02195520(void* obj);
 
+// JPN: func_ov017_021c3b74
 // USA: func_ov017_021c36a0  (semantic: ProcessTurnStartOrRestart_021c36a0)
 extern "C" ARM void func_ov017_021c36a0(void) {
 	GameState* bs = GameState::GetInstance();
@@ -38,7 +39,9 @@ extern "C" ARM void func_ov017_021c36a0(void) {
 		return;
 	}
 
+#if !defined(jpn)
 	OrByte0x1029With0x30ClearField0x1034((unsigned char*)objB);
+#endif
 	SetStateToThreeAndDispatch0202b800((int*)objB);
 	func_0205e22c(d100044);
 	InitSlotTable020e3004((struct SlotTable020e3004*)d153637);

@@ -32,6 +32,7 @@ extern "C" void* _Z34AddEntryToListAndIncCount_021e8ca0P12Obj_021e8ca0i(Obj_021e
 extern "C" void func_ov000_0215cd44(void*, void*, GameObject*, int, int, int, int);
 extern "C" void func_ov024_021e8cfc(CombatAction*, GameObject*, int, int);
 
+// JPN: func_ov024_021e3c3c
 // USA: func_ov024_021e33a4
 extern "C" ARM unsigned long long func_ov024_021e33a4(CombatAction* self, int actorID, int targetID, ActionChance* chance, int amount) {
     if (amount <= 0) return 0;

@@ -1,3 +1,10 @@
+// JPN: func_ov017_0219bfcc
+#if defined(jpn)
+enum { RegionOffset630 = 0x420, SlotBaseOffset = 0x2980 };
+#else
+enum { RegionOffset630 = 0x630, SlotBaseOffset = 0x2b90 };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -41,15 +48,15 @@ extern "C" ARM void func_ov017_0219b43c(char* obj, int mode, struct Vec3copy0202
     int local1, local0;
     ComputeTwoFromVec3_0202ec84(fieldVal, vec3, &local1, &local0);
 
-    struct Slot0219b43c* slot = (struct Slot0219b43c*)(obj + 0xb90 + 0x2000) + mode;
-    *(struct Slot0219b43c**)(obj + 0x3000 + 0x630) = slot;
+    struct Slot0219b43c* slot = (struct Slot0219b43c*)(obj + SlotBaseOffset) + mode;
+    *(struct Slot0219b43c**)(obj + 0x3000 + RegionOffset630) = slot;
 
     switch (mode) {
     default: {
         int x = ((local1 - 0xc) + extra) << 0xc;
         int y = ((local0 - 0x4c) + arg5) << 0xc;
-        SetVec3At0x1c(*(struct Vec3Target0203a46c**)(obj + 0x3000 + 0x630), x, y, 0);
-        RecomputeField0x7c(*(struct Struct020478bc**)(obj + 0x3000 + 0x630), 1);
+        SetVec3At0x1c(*(struct Vec3Target0203a46c**)(obj + 0x3000 + RegionOffset630), x, y, 0);
+        RecomputeField0x7c(*(struct Struct020478bc**)(obj + 0x3000 + RegionOffset630), 1);
         break;
     }
     case 0xc:
@@ -57,7 +64,7 @@ extern "C" ARM void func_ov017_0219b43c(char* obj, int mode, struct Vec3copy0202
     case 0xe: {
         int x = ((local1 - 6) + extra) << 0xc;
         int y = ((local0 - 0x4c) + arg5) << 0xc;
-        SetVec3At0x1c(*(struct Vec3Target0203a46c**)(obj + 0x3000 + 0x630), x, y, 0);
+        SetVec3At0x1c(*(struct Vec3Target0203a46c**)(obj + 0x3000 + RegionOffset630), x, y, 0);
         break;
     }
     }

@@ -1,7 +1,14 @@
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 
-struct Ctx021e2628 { char pad[0x1c]; unsigned int flags; };
+struct Ctx021e2628 {
+#if defined(jpn)
+    char pad[0xc];
+#else
+    char pad[0x1c];
+#endif
+    unsigned int flags;
+};
 extern struct Ctx021e2628 data_ov025_021ef988;
 
 

@@ -22,8 +22,14 @@ void ApplyVec3Tail(void* obj, int* vec);
 extern "C" Node021e5c68* _Z22GetNodeAtIndex021600f8P12List021600f8i(void* list, int idx);
 extern "C" char* _Z19GetActiveCombatWorkv();
 
+// JPN: func_ov025_021e6158
 // USA: func_ov025_021e5c68
 extern "C" ARM int func_ov025_021e5c68(CameraStep021e5c68* step, void* list) {
+#if defined(jpn)
+ enum {regionalOffset0=0x71c5};
+#else
+ enum {regionalOffset0=0x6fd5};
+#endif
     GameState* gs = GameState::GetInstance();
     Camera021e5c68* cam = GetField0x3b0Value(gs);
     if (step->mode == 0) {
@@ -53,6 +59,6 @@ extern "C" ARM int func_ov025_021e5c68(CameraStep021e5c68* step, void* list) {
         }
     }
     char* work = _Z19GetActiveCombatWorkv();
-    if (work != 0) work[0x6fd5] = 1;
+    if (work != 0) work[regionalOffset0] = 1;
     return 1;
 }

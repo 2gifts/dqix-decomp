@@ -5,6 +5,7 @@ extern "C" void func_ov031_02215690(void* obj);
 unsigned long long GetCurrentTimestamp(void);
 extern "C" unsigned long long _ll_udiv(unsigned long long dividend, unsigned int divisor, unsigned int flag);
 
+// JPN: func_ov031_02215b9c
 // USA: func_ov031_022153bc  (semantic: CheckAndUpdateStatus_022153bc)
 #pragma optimize_for_size off
 extern "C" ARM int func_ov031_022153bc(char* obj) {

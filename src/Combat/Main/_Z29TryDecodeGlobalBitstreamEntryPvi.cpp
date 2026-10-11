@@ -1,4 +1,7 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define data_020f0d40 data_020f0e38
+#endif
 
 extern "C" void _ZN16BackgroundLoader13AddLockGlobalEv(void);
 extern "C" void _ZN16BackgroundLoader16RemoveLockGlobalEv(void);
@@ -23,3 +26,5 @@ extern "C" ARM int _Z29TryDecodeGlobalBitstreamEntryPvi(int param0, int param1) 
     _ZN16BackgroundLoader16RemoveLockGlobalEv();
     return 0;
 }
+
+// JPN: 0x020752a0

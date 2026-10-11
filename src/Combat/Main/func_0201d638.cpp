@@ -48,7 +48,6 @@ struct Bits2c { unsigned char low7 : 7; unsigned char flag : 1; };
 struct Bits2e { unsigned short low4 : 4; unsigned short high12 : 12; };
 #define BITS2E (*(struct Bits2e*)(REC + 0x2e))
 
-// KEEP-NAME
 // USA: func_0201d638
 extern "C" ARM int _Z20WarpScript_Opcode_74PN6Script9ParameterEi(unsigned char* src, int count) {
     if (data_020fdc20.lastEntry == 0) return 0;

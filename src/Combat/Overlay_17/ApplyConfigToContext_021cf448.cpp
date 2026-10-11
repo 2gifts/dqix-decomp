@@ -15,15 +15,21 @@ struct Src021cf448 {
     signed char f13;
 };
 
+// JPN: func_ov017_021cf8f8
 // USA: func_ov017_021cf448
 ARM void ApplyConfigToContext_021cf448(int unused, Src021cf448* src, unsigned char* base, int extra) {
-    *(int*)(base + 0x7f7c) = src->f4;
-    *(int*)(base + 0x7f80) = src->f8;
-    *(int*)(base + 0x7f84) = src->fc;
-    *(unsigned short*)(base + 0x7f88) = src->f10;
-    base[0x7f74] = src->bits.flagA;
-    base[0x7f75] = src->bits.flagB;
-    if (base[0x7f74] != 0) {
+#if defined(jpn)
+ enum {regionalOffset0=0x7ca8, regionalOffset1=0x7cac, regionalOffset2=0x7cb0, regionalOffset3=0x7cb4, regionalOffset4=0x7ca0, regionalOffset5=0x7ca1};
+#else
+ enum {regionalOffset0=0x7f7c, regionalOffset1=0x7f80, regionalOffset2=0x7f84, regionalOffset3=0x7f88, regionalOffset4=0x7f74, regionalOffset5=0x7f75};
+#endif
+    *(int*)(base + regionalOffset0) = src->f4;
+    *(int*)(base + regionalOffset1) = src->f8;
+    *(int*)(base + regionalOffset2) = src->fc;
+    *(unsigned short*)(base + regionalOffset3) = src->f10;
+    base[regionalOffset4] = src->bits.flagA;
+    base[regionalOffset5] = src->bits.flagB;
+    if (base[regionalOffset4] != 0) {
         func_ov017_021bff8c(extra, src->f13);
     }
 }

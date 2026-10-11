@@ -16,9 +16,19 @@ struct BattleCamera {
 };
 
 struct BattleWork {
+#if defined(jpn)
+    char pad0[0x21c];
+#else
     char pad0[0x2a0];
+#endif
+
     PartyState* party;
+#if defined(jpn)
+    char pad2a4[0x76e4];
+#else
     char pad2a4[0x7470];
+#endif
+
     short taskId7714;
     char pad7716[0x8];
     short taskId771e;
@@ -41,6 +51,7 @@ BattleCamera* func_ov000_02160f14(BattleWork*);
 void func_ov000_0216d370(BattleCamera*, int, int, int);
 }
 
+// JPN: func_ov026_021dc278
 // USA: func_ov026_021dbba8
 extern "C" ARM void func_ov026_021dbba8(BattleWork* self) {
     GameState* gs = GameState::GetInstance();

@@ -12,9 +12,15 @@ struct LocalEvt021cf694 {
 	unsigned short fieldc;
 };
 
+// JPN: func_ov017_021cfb44
 // USA: func_ov017_021cf694
 ARM void ApplyEventTag22Fields_021cf694(int unused0, LocalEvt021cf694* evt, int unused2, unsigned char* base) {
-	void* table = *(void**)(base + 0x3000 + 0x718);
+#if defined(jpn)
+ enum {regionalOffset0=0x508, regionalOffset1=0x7000, regionalOffset2=0x2c, regionalOffset3=0x30};
+#else
+ enum {regionalOffset0=0x718, regionalOffset1=0x6000, regionalOffset2=0xe3c, regionalOffset3=0xe40};
+#endif
+	void* table = *(void**)(base + 0x3000 + regionalOffset0);
 	void* a = func_ov017_021b8478(table);
 	if (a == NULL) {
 		return;
@@ -31,8 +37,8 @@ ARM void ApplyEventTag22Fields_021cf694(int unused0, LocalEvt021cf694* evt, int 
 	}
 	int v1 = evt->field4;
 	int v2 = evt->field8;
-	unsigned char* buf = (unsigned char*)b + 0x6000;
-	*(int*)(buf + 0xe3c) = v1;
-	*(int*)(buf + 0xe40) = v2;
+	unsigned char* buf = (unsigned char*)b + regionalOffset1;
+	*(int*)(buf + regionalOffset2) = v1;
+	*(int*)(buf + regionalOffset3) = v2;
 	SetCombatWorkFlags0x55f4((void*)b, 0x20000);
 }

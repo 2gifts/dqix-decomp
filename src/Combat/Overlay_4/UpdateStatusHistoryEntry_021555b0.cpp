@@ -3,7 +3,11 @@
 extern "C" int func_ov004_0215513c(void*, short*, short*, short*);
 extern "C" void* func_ov011_021849c8(void*);
 extern "C" void* func_ov023_021f6880(void*, int);
+#if defined(jpn)
+extern "C" int func_ov023_021f6f10(void* self);
+#else
 int ScaleStatsIfType12_021f6f10(void* self);
+#endif
 extern "C" int func_ov023_021e1f0c(int a, short b, short c, short d);
 extern "C" void func_ov023_021f65d4(void* obj, int id, int mask);
 void ClearNodeMaskById_021f6600(void* obj, int id, int mask);
@@ -37,7 +41,11 @@ extern "C" ARM int func_ov004_021555b0(void* a) {
     void* base = func_ov011_021849c8(a);
     void* node = func_ov023_021f6880(base, 0x39);
     if (!node) return 0;
+#if defined(jpn)
+    if (func_ov023_021f6f10(node) != 0x12) return 0;
+#else
     if (ScaleStatsIfType12_021f6f10(node) != 0x12) return 0;
+#endif
 
     int vresult = ((VObj021555b0*)node)->Methodec();
     if (!node) return 0;

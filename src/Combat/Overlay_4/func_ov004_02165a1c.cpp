@@ -15,6 +15,11 @@ extern char* data_ov004_02171010;
 
 // USA: func_ov004_02165a1c
 extern "C" ARM int func_ov004_02165a1c(void* self) {
+#if defined(jpn)
+    enum { entryStride = 0x1e4 };
+#else
+    enum { entryStride = 0x1c4 };
+#endif
     void* obj = func_ov023_021f6880(func_ov011_021849c8(self), 0xa);
     if (obj == NULL) return 0;
     if (func_ov023_021f6f10(obj) != 7) return 0;
@@ -23,7 +28,7 @@ extern "C" ARM int func_ov004_02165a1c(void* self) {
     int stat = _Z31GetScaledStat_021634dc_021634dcPv(self);
     GameState* state = GameState::GetInstance();
     char* base = data_ov004_02171010;
-    unsigned char kind = *(unsigned char*)((int)(base + 0xad5) + idx * 0x1c4);
+    unsigned char kind = *(unsigned char*)((int)(base + 0xad5) + idx * entryStride);
     if (kind == 1) {
         CopyInToRegion0x6482((char*)state, base + stat * 0x1c);
     } else if (kind == 2) {

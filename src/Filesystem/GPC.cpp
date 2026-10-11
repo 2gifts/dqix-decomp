@@ -8,7 +8,6 @@
 #define _Z20ClearAndInit020d84f8Pvj func_020d9e5c
 #define _Z23CopyRegionAndFlushCachePvPKvj func_020d9e88
 
-#define data_020f27c0 data_020f297c
 #define data_020f27e8 data_020f29a4
 #define data_020f27f0 data_020f29ac
 #define data_020f27f8 data_020f29b4

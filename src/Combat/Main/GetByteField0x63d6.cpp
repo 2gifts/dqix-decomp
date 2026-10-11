@@ -1,7 +1,11 @@
 #include <globaldefs.h>
 
 struct FieldBlock63d6_115a8 {
+#if defined(jpn)
+    char unk[0x6176];
+#else
     char unk[0x63D6];
+#endif
     unsigned char field;
 };
 

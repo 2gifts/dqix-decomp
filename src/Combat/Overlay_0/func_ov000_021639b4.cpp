@@ -6,7 +6,11 @@ extern "C" void _ZN8Object3D11MakeVisibleEv(unsigned char* obj);
 extern "C" void func_ov017_021917f0(int id, int flag);
 
 struct Obj021639b4 {
+#if defined(jpn)
+    char pad[0x218];
+#else
     char pad[0x29c];
+#endif
     int field29c;
 };
 

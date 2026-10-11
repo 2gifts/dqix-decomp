@@ -27,15 +27,35 @@ struct Container_021dae60 {
 };
 
 struct BattleWork {
+#if defined(jpn)
+    char pad0[0x21c];
+#else
     char pad0[0x2a0];
+#endif
+
     PartyState* party;
     char pad2a4[0xc08];
     int state;
+#if defined(jpn)
+    char padeb0[0x28f0];
+#else
     char padeb0[0x28b0];
+#endif
+
     Container_021dae60 list;
+#if defined(jpn)
+    char pad3818[0x1f14];
+#else
     char pad3818[0x1cdc];
+#endif
+
     int slotDone[4];
+#if defined(jpn)
+    char pad5504[0xec];
+#else
     char pad5504[0xf0];
+#endif
+
     int workFlags;
     char pad55f8[0x2137];
     unsigned char inputOn;
@@ -59,6 +79,7 @@ void func_ov000_02162c14(BattleWork*, int, Cmd*);
 void func_ov017_021c6814(unsigned short, unsigned short, Cmd*, unsigned char, int, int);
 }
 
+// JPN: func_ov026_021dc5d4
 // USA: func_ov026_021dbf04
 extern "C" ARM void func_ov026_021dbf04(BattleWork* self) {
     Cmd cmd;

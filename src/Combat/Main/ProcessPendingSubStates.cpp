@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegionalFieldOffset = 0x2e4 };
+#else
+enum { kRegionalFieldOffset = 0x2f0 };
+#endif
+
 
 struct StateWithFourPtrs02040910 {
     char pad[0x10];
@@ -35,7 +41,7 @@ ARM int ProcessPendingSubStates(struct StateWithFourPtrs02040910* obj, int arg1)
     }
     if (obj->field1c) {
         void* p = obj->field1c;
-        if (*(unsigned char*)((char*)p + 0x2f0) != 0) {
+        if (*(unsigned char*)((char*)p + kRegionalFieldOffset) != 0) {
             return 1;
         }
         signed short val = *(signed short*)((char*)p + 4);

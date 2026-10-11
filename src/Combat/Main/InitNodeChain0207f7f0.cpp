@@ -6,7 +6,11 @@ struct Node0207f7f0 {
 };
 
 struct Manager0207f7f0 {
+    #if defined(jpn)
+    char pad[0x24];
+#else
     char pad[0x30];
+#endif
     struct Node0207f7f0* nodes;
     char pad2[0x39 - 0x34];
     unsigned char count;
@@ -23,3 +27,5 @@ ARM void InitNodeChain0207f7f0(struct Manager0207f7f0* mgr, struct Node0207f7f0*
         }
     }
 }
+
+// JPN: 0x02080568

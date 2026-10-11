@@ -23,6 +23,7 @@ struct Bit3b_021dd6f0 { unsigned char bit0 : 1; unsigned char rest : 7; };
 struct Obj_021dd6f0 { char pad0[0xc]; void* field0xc; void* field0x10; int field0x14; };
 struct Range_021dd6f0 { char pad[0x20]; struct PackedPair_021dd6f0 f20; struct PackedPair_021dd6f0 f24; };
 
+// JPN: func_ov024_021ddf9c
 // USA: func_ov024_021dd6f0
 extern "C" ARM void* func_ov024_021dd6f0(struct Obj_021dd6f0* obj, int unused, int id, struct Range_021dd6f0* range, int unused2, int unused3, unsigned char flagArg) {
 	GameObject* c = GetCombatantByID((int)obj->field0x10, id);

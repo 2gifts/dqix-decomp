@@ -1,3 +1,10 @@
+// JPN: func_ov017_02197d74
+#if defined(jpn)
+enum { RegionOffset1b2 = 0x1a6, RegionOffset4400 = 0x4200, RegionOffsetc2 = 0x12 };
+#else
+enum { RegionOffset1b2 = 0x1b2, RegionOffset4400 = 0x4400, RegionOffsetc2 = 0xc2 };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -48,8 +55,8 @@ extern "C" ARM unsigned short func_ov017_021971c4(unsigned char* ov) {
             continue;
         }
         if (CheckProximity_02196fc8((unsigned char*)combatant, (unsigned char*)other, 0x1000)) {
-            unsigned short v = *(unsigned short*)((unsigned char*)other + 0x1b2);
-            if (*(unsigned short*)(ov + 0x4400 + 0xc2) != v) {
+            unsigned short v = *(unsigned short*)((unsigned char*)other + RegionOffset1b2);
+            if (*(unsigned short*)(ov + RegionOffset4400 + RegionOffsetc2) != v) {
                 result = v;
                 break;
             }

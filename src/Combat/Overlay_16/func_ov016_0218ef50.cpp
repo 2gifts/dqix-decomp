@@ -35,7 +35,11 @@ struct Obj0218ef50 {
     int bufIdx;                   // 0x90
     char pad_94[4];
     unsigned int writeIdx;         // 0x98
+    #if defined(jpn)
+    char pad_9c[0xc];
+#else
     char pad_9c[0x10];
+#endif
     int idx2tbl[6];               // 0xac
     char pad_c4[4];
     int result;                   // 0xc8

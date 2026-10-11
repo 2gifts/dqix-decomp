@@ -9,6 +9,7 @@ int IsCombatantFlagMask512_021eda60(GameObject* combatant);
 struct Obj_021f0014 { int field0; };
 extern unsigned short data_ov024_021fea64;
 
+// JPN: func_ov024_021f07e0
 // USA: func_ov024_021f0014  (semantic: CountEligibleAgilityBuffTargets_021f0014)
 extern "C" ARM int func_ov024_021f0014(struct Obj_021f0014* obj, int unused1, int unused2, int* outCount, void* outArray) {
 	short buf[4];

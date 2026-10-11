@@ -1,10 +1,11 @@
+// JPN: func_ov031_0222b520
 #include <globaldefs.h>
 
 extern "C" int func_ov031_0223c054(int);
 extern unsigned char data_ov031_02290c7c;
 extern int IsField19ZeroOrNull_02222e54(void);
 extern int IsPtr02290c44Null_02227840(void);
-extern "C" int func_ov031_02222bdc(void);
+extern "C" void func_ov031_02222bdc(void);
 extern void* TailCallElemAtIndex30_0223c7c4(int);
 extern "C" int func_ov031_02223440(void);
 extern "C" void func_ov031_0223cbbc(int, int);

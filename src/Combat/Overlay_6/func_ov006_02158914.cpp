@@ -1,3 +1,18 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define data_ov006_0215ffb4 data_ov006_02161318
+#define data_ov006_0215ffc0 data_ov006_0216131b
+#define data_ov006_0215ffc4 data_ov006_02161328
+#define data_ov006_0215ffca data_ov006_02161336
+#define data_ov006_0215ffe2 data_ov006_0216132e
+#define data_ov006_0215fff4 data_ov006_02161346
+#define func_ov006_021547c8 func_ov006_02155f30
+#define func_ov006_021570fc func_ov006_02158704
+#define func_ov006_0215f4dc func_ov006_021608fc
+#define func_ov006_0215f740 func_ov006_02160b08
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 struct Obj2081;
@@ -19,7 +34,7 @@ struct Unknown_02075cdc {
 };
 
 struct AlchemyPot {
-    char unk_0[0x1258];
+    char unk_0[R(0x1054, 0x1258)];
     unsigned short windowFlags_;
 };
 
@@ -37,8 +52,10 @@ Canvas* FindElementByByte0xc4(Obj2081*, int);
 extern "C" void _Z25ComputeShortPair_021e2bdcPviPsS0_(void*, int, short*, short*);
 
 struct AlchemyMenu {
+#if !defined(jpn)
     int textPosition_;
     char** texts_;
+#endif
     void* canvasBuffer_;
     void* allocators_;
     AlchemyPot* pot_;
@@ -68,6 +85,9 @@ struct AlchemyMenu {
     int menuTexts_[0x18 / 4];
     char itemNames_[0xc];
     int results_[4][0x74 / 4];
+#if defined(jpn)
+    char regionalPad[8];
+#endif
     int ticks_;
     int menuResult_;
     int task_;

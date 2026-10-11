@@ -32,8 +32,14 @@ struct Obj021f7aac {
     unsigned short field8;
 };
 
+// JPN: func_ov023_021f6fa4
 // USA: func_ov023_021f7aac
 extern "C" ARM void func_ov023_021f7aac(struct Obj021f7aac* obj, void* keyObj, struct Rec020467f0* entry, void* next) {
+#if defined(jpn)
+ enum {regionalOffset=0x24};
+#else
+ enum {regionalOffset=0x28};
+#endif
     if (entry == 0 || next == 0) return;
 
     void* base = func_ov011_021845f8(keyObj, obj->field8);
@@ -50,7 +56,7 @@ extern "C" ARM void func_ov023_021f7aac(struct Obj021f7aac* obj, void* keyObj, s
     }
 
     if (matchCount > 0) {
-        AllocateArray0204af38((struct Foo0204af38*)((char*)obj + 0x28), (unsigned char)matchCount, (SafeAllocator*)((char*)base + 4));
+        AllocateArray0204af38((struct Foo0204af38*)((char*)obj + regionalOffset), (unsigned char)matchCount, (SafeAllocator*)((char*)base + 4));
     }
 
     int j;
@@ -59,7 +65,7 @@ extern "C" ARM void func_ov023_021f7aac(struct Obj021f7aac* obj, void* keyObj, s
         void* rec;
         void* data = FindRecordByIndex(entry, j, &rec, &field44);
         if (data != 0) {
-            func_0204b174((struct Foo0204af38*)((char*)obj + 0x28), data, (SafeAllocator*)((char*)base + 4), field44);
+            func_0204b174((struct Foo0204af38*)((char*)obj + regionalOffset), data, (SafeAllocator*)((char*)base + 4), field44);
         }
     }
 }

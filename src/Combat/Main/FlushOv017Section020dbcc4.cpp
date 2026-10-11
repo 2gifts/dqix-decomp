@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kSectionOffset = 0x860 };
+#else
+enum { kSectionOffset = 0x840 };
+#endif
+
 #include "GameState/GameState.h"
 
 extern "C" void* func_02012fe4(void);
@@ -22,7 +29,7 @@ ARM void FlushOv017Section020dbcc4(struct Obj020dbcc4* obj) {
     int flag;
     int i;
     GameState::GetInstance();
-    char* base = (char*)func_02012fe4() + 0x840;
+    char* base = (char*)func_02012fe4() + kSectionOffset;
     if (obj->field10 != 0) return;
     if (GetSection0x1000Count0205e7d0((struct Struct0205e7d0*)GetData02100044()) < 0x76) return;
 

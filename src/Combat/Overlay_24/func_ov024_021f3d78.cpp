@@ -9,6 +9,7 @@ struct Obj_021f3d78 { int field0; };
 struct Buf8_021f3d78 { short v[8]; };
 extern struct Buf8_021f3d78 data_ov024_021feefc;
 
+// JPN: func_ov024_021f4544
 // USA: func_ov024_021f3d78
 extern "C" ARM int func_ov024_021f3d78(struct Obj_021f3d78* obj, int id, int unused2, int* outFlag, short* outArr) {
     struct Buf8_021f3d78 buf = data_ov024_021feefc;

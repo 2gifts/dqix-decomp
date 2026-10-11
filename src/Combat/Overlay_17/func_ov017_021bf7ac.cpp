@@ -59,8 +59,14 @@ struct Obj021bf7ac {
     SafeAllocator allocator;
 };
 
+// JPN: func_ov017_021bfd58
 // USA: func_ov017_021bf7ac
 extern "C" ARM int func_ov017_021bf7ac(struct Obj021bf7ac* obj) {
+#if defined(jpn)
+ enum {regionalOffset0=0x394, regionalOffset1=0x620};
+#else
+ enum {regionalOffset0=0x354, regionalOffset1=0x600};
+#endif
     GameState* gs = GameState::GetInstance();
     gs->GetUnknownGameObject();
     unsigned short* events = (unsigned short*)func_02012fe4();
@@ -81,8 +87,8 @@ extern "C" ARM int func_ov017_021bf7ac(struct Obj021bf7ac* obj) {
     LootableContainerManager::Container* container = mgr->GetContainerByID(info->containerId, &listPos);
     if (container != 0 && !TestBitInByteArray((int)flags, flags + 0x8c, container->uniqueID + 0x79e)) {
         char* base = (char*)func_02012fe4();
-        char* sub = base + 0x354;
-        obj->entry = (struct Foo02048004*)(base + 0x600 + GetField0x3acValue(gs) * 0x88);
+        char* sub = base + regionalOffset0;
+        obj->entry = (struct Foo02048004*)(base + regionalOffset1 + GetField0x3acValue(gs) * 0x88);
         MaybeInvoke0204719c(obj->entry);
         if (container->lootType == 1) {
             FileName_021bf7ac name = data_ov017_021d6ca4;

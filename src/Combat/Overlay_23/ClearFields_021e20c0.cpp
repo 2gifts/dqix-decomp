@@ -11,6 +11,8 @@ ARM void ClearFields_021e20c0(void* p) {
     *(unsigned short*)(b + 0x12) = 0;
     *(unsigned short*)(b + 0x14) = 0;
     *(unsigned short*)(b + 0x16) = 0;
+#if !defined(jpn)
     *(unsigned short*)(b + 0x48) = 0;
     *(unsigned short*)(b + 0x4a) = 0;
+#endif
 }

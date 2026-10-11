@@ -8,6 +8,7 @@ struct Node0x20_021a5ad0 {
 	unsigned char pad2[8];
 };
 
+// JPN: func_ov017_021a6540
 // USA: func_ov017_021a5b08
 ARM void ClearAndEncodeField14_021a5b08(Node0x20_021a5ad0* arr, int count) {
 	for (int i = 0; i < count; i++) {

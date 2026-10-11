@@ -16,11 +16,14 @@ struct Param021dbd10 {
 };
 
 struct DataStruct021dbd10 {
+#if !defined(jpn)
     unsigned char pad[0x14];
+#endif
     struct Container020e0310* field14;
 };
 extern struct DataStruct021dbd10 data_ov023_021ff9e0;
 
+// JPN: func_ov023_021dc608
 // USA: func_ov023_021dbd10  (semantic: ClearOrSetEntryFieldsBySlot_021dbd10)
 extern "C" ARM void func_ov023_021dbd10(void* obj, struct Param021dbd10* p) {
     struct Elem021dbd10* e;

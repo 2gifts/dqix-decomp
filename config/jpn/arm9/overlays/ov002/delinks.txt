@@ -63,3 +63,39 @@ src/Combat/Overlay_2/Trans_02153e90.cpp:
 src/Combat/Overlay_2/Trans_0215a920.cpp:
     complete
     .text start:0x0215bd10 end:0x0215bd28
+
+src/Combat/Overlay_2/GetCountByType02157108.cpp:
+    complete
+    .text start:0x02158784 end:0x021587f0
+
+src/Combat/Overlay_2/HasPositiveField304Short4_02154a34.cpp:
+    complete
+    .text start:0x021561b4 end:0x021561ec
+
+src/Combat/Overlay_2/NotifyFlaggedombatants02154824_02154824.cpp:
+    complete
+    .text start:0x02155fa4 end:0x02156038
+
+src/Combat/Overlay_2/AdjustHPGauge_021548c4.cpp:
+    complete
+    .text start:0x02156044 end:0x021560c4
+
+src/Combat/Overlay_2/CheckAllElementFlagsSet_02161920.cpp:
+    complete
+    .text start:0x02162818 end:0x02162874
+
+src/Combat/Overlay_2/TryClearCombatantFlagBits_021549c8.cpp:
+    complete
+    .text start:0x02156148 end:0x021561b4
+
+src/Combat/Overlay_2/func_ov002_02153be0.cpp:
+    complete
+    .text start:0x02155360 end:0x0215544c
+
+src/Combat/Overlay_2/func_ov002_02154944.cpp:
+    complete
+    .text start:0x021560c4 end:0x02156148
+
+src/Combat/Overlay_2/021538e4.cpp:
+    complete
+    .text start:0x02155064 end:0x02155360

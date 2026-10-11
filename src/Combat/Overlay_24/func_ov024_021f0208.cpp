@@ -10,6 +10,7 @@ int IsCombatantFlagMask512_021eda60(GameObject* combatant);
 struct Buf8_021f0208 { short v[8]; };
 extern struct Buf8_021f0208 data_ov024_021feddc;
 
+// JPN: func_ov024_021f09d4
 // USA: func_ov024_021f0208  (semantic: SelectLowAttackBuffAndMaybePick_021f0208)
 extern "C" ARM int func_ov024_021f0208(int* a0, int a1, int a2, int* outCount, short* outArray) {
 	struct Buf8_021f0208 buf = data_ov024_021feddc;

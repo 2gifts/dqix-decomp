@@ -6,10 +6,16 @@ struct TailList020469b4;
 struct TailNode020469b4;
 extern void AppendNodeToTail(TailList020469b4* list, TailNode020469b4* node);
 
+#if defined(jpn)
+static const int kListOffset=0x4ec, kNodeOffset=0x8e0;
+#else
+static const int kListOffset=0x6fc, kNodeOffset=0xb00;
+#endif
+
 struct Region021b66f0 {
-    unsigned char pad[0x6fc];
+    unsigned char pad[kListOffset];
     TailList020469b4* list;
-    unsigned char pad2[0xb00 - 0x6fc - 4];
+    unsigned char pad2[kNodeOffset - kListOffset - 4];
     TailNode020469b4* node;
 };
 

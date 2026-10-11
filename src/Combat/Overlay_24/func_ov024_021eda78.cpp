@@ -38,6 +38,7 @@ static inline int IsRank2(struct Cbt_021eda78* c) {
     return c->stats->rank21 == 2;
 }
 
+// JPN: func_ov024_021ee244
 // USA: func_ov024_021eda78
 extern "C" ARM int func_ov024_021eda78(struct Ctx_021eda78* ctx, int id) {
     struct Cbt_021eda78* c = _Z16GetCombatantByIDii(ctx->battle, id);

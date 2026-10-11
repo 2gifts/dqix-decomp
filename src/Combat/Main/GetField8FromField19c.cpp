@@ -6,7 +6,11 @@ struct Obj53dfcInner {
 };
 
 struct Obj53dfc {
+#if defined(jpn)
+    char unk[0x190];
+#else
     char unk[0x19c];
+#endif
     struct Obj53dfcInner* field19c;
 };
 

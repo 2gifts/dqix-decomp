@@ -1,6 +1,12 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+enum { kMenuPrefix = 0xe0, kCellWidth = 12, kRectXIndex = 1, kResetOffset = 0x134 };
+#else
+enum { kMenuPrefix = 0xe4, kCellWidth = 8, kRectXIndex = 0, kResetOffset = 0x138 };
+#endif
+
 struct Struct_0205bbcc;
 struct Struct_0205ba68;
 struct Node0205bacc;
@@ -85,7 +91,7 @@ struct Rects02169674 {
 };
 
 struct Menu02169eec {
-    char pad0[0xe4];
+    char pad0[kMenuPrefix];
     char chan[0x179 - 0xe4];
     unsigned char b179;
     char pad17a[0x4e9 - 0x17a];
@@ -137,6 +143,7 @@ static inline short ElemY(unsigned char* e) {
 }
 
 // USA: func_ov003_02169eec
+// JPN: func_ov003_02169c0c
 extern "C" ARM int func_ov003_02169eec(Menu02169eec* self, unsigned int sb) {
     int ax;
     int ay;
@@ -157,15 +164,15 @@ extern "C" ARM int func_ov003_02169eec(Menu02169eec* self, unsigned int sb) {
         self->h58c[1] = 0;
         self->h58c[2] = 0;
         self->h58c[3] = 0x10;
-        self->h58c[4] = 8;
-        self->h58c[5] = 8;
+        self->h58c[4] = kCellWidth;
+        self->h58c[5] = kCellWidth;
         self->h58c[6] = 0x10;
         self->h58c[7] = 0x10;
         _Z17SetFields0205bd58P15Struct_0205bd58iiiii((Struct_0205bd58*)self->node, 2, (int)&self->h58c[0], (int)&self->h58c[2],
                           (int)&self->h58c[4], (int)&self->h58c[6]);
         _Z20ClearFields_0216a85cP9S0216a85c((S0216a85c*)&self->rectA);
         self->rectA.count = 2;
-        self->rectA.xMinArr = &self->h58c[0];
+        self->rectA.xMinArr = &self->h58c[kRectXIndex];
         self->rectA.yMinArr = &self->h58c[2];
         self->rectA.xWidthArr = &self->h58c[4];
         self->rectA.yWidthArr = &self->h58c[6];
@@ -192,11 +199,20 @@ extern "C" ARM int func_ov003_02169eec(Menu02169eec* self, unsigned int sb) {
                 short bx = GetBX(self);
                 short by = GetBY(self);
                 int idx = self->cursor;
+#if defined(jpn)
+                short x = (short)(bx + self->rectB.xMinArr[idx]);
+                short y = (short)(by + self->rectB.yMinArr[idx]);
+                if (r8 == 0) {
+                    x = (short)(x - 1);
+                    y = (short)(y - 10);
+                }
+#else
                 short x = (short)(bx + (idx * 8 + 0x24));
                 short y = (short)(by + self->rectB.yMinArr[idx]);
                 if (r8 == 0) {
                     y = (short)(y - 10);
                 }
+#endif
                 self->h574 = x;
                 self->h576 = y;
                 self->rectA.originX = x;
@@ -284,7 +300,7 @@ extern "C" ARM int func_ov003_02169eec(Menu02169eec* self, unsigned int sb) {
                 TestFlagInSecondWord(&data_02114e30, 0x40) || TestFlagMask(&data_02114e30, 0x80) ||
                 TestFlag0SetAndFlag1Clear(&data_02114e30, 0x80) ||
                 TestFlagInSecondWord(&data_02114e30, 0x80)) {
-                _Z18ResetState0205bf3cP15Struct_0205bf3c((Struct_0205bf3c*)((char*)self + 0x138));
+                _Z18ResetState0205bf3cP15Struct_0205bf3c((Struct_0205bf3c*)((char*)self + kResetOffset));
                 int old = cells[cur];
                 int n = _Z18GetField0_0205bafcPv(self->list);
                 func_0205bb04(self->list, n - 1 - cells[cur]);
@@ -333,6 +349,12 @@ extern "C" ARM int func_ov003_02169eec(Menu02169eec* self, unsigned int sb) {
         if (data_02114e54.b55 != 0) {
             SelectCoordsByFlag0x24((unsigned char*)&data_02114e54, &px, &py);
             if (py >= 0x60 && py < 0x6b) {
+#if defined(jpn)
+                short lox = 0x8f;
+                short hix = 0xbb;
+                short loy = 0xc8;
+                short hiy = 0xec;
+#else
                 int key = _Z24NormalizeField5_0200fb08P14Struct0200fb08((Struct0200fb08*)GameState::GetInstance());
                 short lox = 0x8f;
                 short hix = 0xba;
@@ -347,6 +369,7 @@ extern "C" ARM int func_ov003_02169eec(Menu02169eec* self, unsigned int sb) {
                         break;
                     }
                 }
+#endif
                 if (px >= lox && px < hix) {
                     hit1 = 1;
                 } else if (px >= loy && px < hiy) {

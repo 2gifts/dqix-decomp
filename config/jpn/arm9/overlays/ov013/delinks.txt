@@ -4,3 +4,56 @@
     .data       start:0x02188d20 end:0x02188e80 kind:data align:32
     .bss        start:0x02188e80 end:0x02188e80 kind:bss align:32
 
+src/Combat/Overlay_13/InitCombatEntry02184360.cpp:
+    .text start:0x021853a0 end:0x021856dc
+
+src/Combat/Overlay_13/ResetCombatEntry02184a58.cpp:
+    .text start:0x02185a94 end:0x02185b20
+
+src/Combat/Overlay_13/InitTag02185aac.cpp:
+    .text start:0x02186c80 end:0x02186db0
+
+src/Combat/Overlay_13/InitTag02185310.cpp:
+    .text start:0x02186358 end:0x02186468
+
+src/Combat/Overlay_13/AdvanceTagState02186590.cpp:
+    .text start:0x021878c0 end:0x02187ab8
+
+src/Combat/Overlay_13/InitTag02185828.cpp:
+    .text start:0x02186a18 end:0x02186aec
+
+src/Combat/Overlay_13/InitAllocatorArray02186e74.cpp:
+    .text start:0x021880c8 end:0x02188140
+
+src/Combat/Overlay_13/InitAllocators02184cf0.cpp:
+    .text start:0x02185d24 end:0x02185db4
+
+src/Combat/Overlay_13/SetupBattleScaleData02184aec.cpp:
+    .text start:0x02185b20 end:0x02185b80
+
+src/Combat/Overlay_13/ResetAndFlushDisplayState02186fa0.cpp:
+    .text start:0x021881dc end:0x021882fc
+
+src/Combat/Overlay_13/UpdateFieldScaleAndSumArray02184c8c.cpp:
+    .text start:0x02185cc0 end:0x02185d24
+
+src/Combat/Overlay_13/SetABState0218782c.cpp:
+    .text start:0x0218883c end:0x021888c0
+
+src/Combat/Overlay_13/func_ov013_02184b4c.cpp:
+    .text start:0x02185b80 end:0x02185cc0
+
+src/Combat/Overlay_13/UpdateTagDispatch021847c4.cpp:
+    .text start:0x02185800 end:0x02185a94
+
+src/Combat/Overlay_13/HandleFieldFlagsAndState021870c0.cpp:
+    complete
+    .text start:0x021882fc end:0x02188314
+
+src/Combat/Overlay_13/InitDrawContext02186eec.cpp:
+    complete
+    .text start:0x02188140 end:0x021881dc
+
+src/Combat/Overlay_13/func_ov013_02185cc0.cpp:
+    complete
+    .text start:0x02186e94 end:0x02186f4c

@@ -20,12 +20,18 @@ void AppendNodeToTail(TailList020469b4* list, TailNode020469b4* node);
 extern "C" void _Z29AllocateAndCopyBuf20_021689d8P13SafeAllocatorPv(SafeAllocator* allocator, void* arg);
 extern char data_ov017_021d75d0;
 
+// JPN: func_ov017_0219d010
 // USA: func_ov017_0219c520
 extern "C" ARM void func_ov017_0219c520() {
+#if defined(jpn)
+ enum {regionalOffset0=0x392c, regionalOffset1=0x34ec};
+#else
+ enum {regionalOffset0=0x3b4c, regionalOffset1=0x36fc};
+#endif
     void* res = func_ov017_0218b5b0();
     TailList020469b4* list;
-    unsigned char* obj = *(unsigned char**)((char*)res + 0x3b4c);
-    list = *(TailList020469b4**)((char*)res + 0x36fc);
+    unsigned char* obj = *(unsigned char**)((char*)res + regionalOffset0);
+    list = *(TailList020469b4**)((char*)res + regionalOffset1);
     _Z21InitObjState_021b2174Ph(obj);
     _Z23SetNameChecked_021b2ba0P9S021b2ba0Pc((S021b2ba0*)obj, &data_ov017_021d75d0);
     _Z25SetFields30And34_021b2bd0Pvii(obj, (int)_Z29AllocateAndCopyBuf20_021689d8P13SafeAllocatorPv, OVERLAY_ID(4));

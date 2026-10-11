@@ -26,10 +26,15 @@ struct Obj_021703f0 {
     unsigned char* owner;
 };
 
+// JPN: func_ov003_0216fca8
 // USA: func_ov003_021703f0
 extern "C" ARM void func_ov003_021703f0(struct Obj_021703f0* obj, short* outX, short* outY) {
     if (obj->state == 5) {
         if (obj->owner != 0 && CheckField0x9cSetWhenField0xd4Present(obj->owner) != 0) {
+#if defined(jpn)
+            *outX = 0x2c;
+            *outY = obj->index * 17 + 0x3a;
+#else
             struct Elem_0205d81c* elem = _Z23FindElementByC40205d81cP15Struct_0205d81ci(obj->list, 0);
             if (elem == 0) return;
             short ex = elem->posX << 3;
@@ -42,6 +47,7 @@ extern "C" ARM void func_ov003_021703f0(struct Obj_021703f0* obj, short* outX, s
             y = (short)(y + ey);
             *outX = x - 0x10;
             *outY = y - 2;
+#endif
         } else {
             *outX = 0;
             *outY = 0;

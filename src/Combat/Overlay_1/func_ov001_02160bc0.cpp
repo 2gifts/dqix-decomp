@@ -18,13 +18,18 @@ struct Node02160bc0 {
 
 // USA: func_ov001_02160bc0
 extern "C" ARM int func_ov001_02160bc0(void* self, int mode) {
+#if defined(jpn)
+    enum { substructureOffset = 0x8c };
+#else
+    enum { substructureOffset = 0x6c };
+#endif
     int a = func_ov017_021d60f4(self);
     int b = func_ov017_021d60f4((char*)self + 0x8);
     if (mode > 2) {
         func_ov017_021d60f4((char*)self + 0x10);
     }
     void* list = func_02012fe4();
-    Node02160bc0* node = (Node02160bc0*)GetPointerFromArray0x3c((unsigned char*)list + 0x6c, 2);
+    Node02160bc0* node = (Node02160bc0*)GetPointerFromArray0x3c((unsigned char*)list + substructureOffset, 2);
     while (node != NULL) {
         if ((node->upper12 & 1) && node->idA == a && node->idB == b) {
             node->upper12 &= ~0x200;

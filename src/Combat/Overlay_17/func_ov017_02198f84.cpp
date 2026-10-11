@@ -44,12 +44,20 @@ struct Query02198f84 {
 };
 
 struct Self02198f84 {
+#if defined(jpn)
+    unsigned char pad0[0x34a8];
+#else
     unsigned char pad0[0x36b8];
+#endif
     unsigned char nodeCount;
     unsigned char pad36b9[3];
     Node02198f84* nodes[0x10];
     struct TailList020469b4* tailList;
+#if defined(jpn)
+    unsigned char pad3700[0x38f0 - 0x34f0];
+#else
     unsigned char pad3700[0x3b10 - 0x3700];
+#endif
     struct Struct021ab250* state6;
     unsigned char pad3b14[0x42ec - 0x3b14];
     unsigned short field_0x42ec;
@@ -66,6 +74,7 @@ extern "C" void _Z29SetIntField_021ab698_021ab698Pci(char* p, int v);
 struct TailNode020469b4;
 void AppendNodeToTail(struct TailList020469b4* list, struct TailNode020469b4* node);
 
+// JPN: func_ov017_02199b34
 // USA: func_ov017_02198f84
 extern "C" ARM void func_ov017_02198f84(Self02198f84* self) {
     void* ctx = func_02012fe4();

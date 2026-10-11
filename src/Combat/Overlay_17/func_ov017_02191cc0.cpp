@@ -12,8 +12,14 @@ extern "C" void func_ov017_0219230c(unsigned char* obj, int idx, int c);
 extern "C" void func_ov017_02192400(unsigned char* obj, int idx);
 extern "C" unsigned char* func_ov017_0219219c(unsigned char* obj, int idx);
 
+// JPN: func_ov017_02192888
 // USA: func_ov017_02191cc0
 extern "C" ARM void func_ov017_02191cc0(unsigned char* obj) {
+#if defined(jpn)
+ enum {regionalOffset0=0x3930};
+#else
+ enum {regionalOffset0=0x3b50};
+#endif
     if (_Z17TestFlags02046708P16FlagWord02046708j(_Z27GetDataPtr02114e04_020d6c00v(), 0x20000)) return;
     GameState* battle = GameState::GetInstance();
     GameObject* protagonist = battle->GetProtagonist();
@@ -35,7 +41,7 @@ extern "C" ARM void func_ov017_02191cc0(unsigned char* obj) {
             _Z34SetupAndDispatchCombatant_02191e5ciisht(obj, i, 0x1000, 0, 0x282f);
             func_ov017_02192400(obj, i);
         } else if (flag2) {
-            unsigned char* state = *(unsigned char**)(obj + 0x3b50);
+            unsigned char* state = *(unsigned char**)(obj + regionalOffset0);
             short c = 0x999;
             if (state[3] != 0 && state[1] == 0) c = 0x1000;
             _Z34SetupAndDispatchCombatant_02191e5ciisht(obj, i, c, 1, 0x79e8);

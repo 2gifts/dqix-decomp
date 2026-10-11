@@ -1,7 +1,18 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define _Z27ScaleStatsIfType12_021f6f10Pv func_ov023_021f6f10
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 extern "C" void* func_ov004_02156e68(void* a, int key);
+#if defined(jpn)
+#define ScaleStatsIfType12_021f6f10 func_ov023_021f6f10
+extern "C" int ScaleStatsIfType12_021f6f10(void* self);
+#else
 int ScaleStatsIfType12_021f6f10(void* self);
+#endif
 struct Obj021f6f08;
 unsigned int GetShort6_021f6f08(struct Obj021f6f08* obj);
 signed char GetFlagByte_021570f0(int idx);

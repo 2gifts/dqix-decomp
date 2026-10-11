@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kCountOffset = 0x496 };
+#else
+enum { kCountOffset = 0x476 };
+#endif
+
 
 struct Entry_02028bd0;
 struct Entry_02028bd0* GetEntryTableBase(void);
@@ -6,7 +12,7 @@ struct Entry_02028bd0* FindInlineEntryById(struct Entry_02028bd0* base, int key)
 
 struct S02013cb0 {
     unsigned short field0;
-    unsigned char pad2[0x476 - 2];
+    unsigned char pad2[kCountOffset - 2];
     unsigned char count;
     unsigned char pad3;
     unsigned char* arrayPtr;

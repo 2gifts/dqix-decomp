@@ -28,6 +28,10 @@ extern "C" void _Z30InitObjFromCombatantId020e4bf4Pvi(void*, int);
 extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310*, int);
 extern "C" void func_0204500c(Obj02046574*, int, int, int);
 extern "C" void func_02042b98(Obj02046574*, int, int, int, int);
+#if defined(jpn)
+extern "C" void func_02045d88(Obj02046574*, int, int);
+extern "C" void func_02043270(Obj02046574*, int, int, int, int);
+#endif
 // USA: func_02092e0c
 extern "C" ARM void func_02092e0c(Obj02092e0c* obj) {
     if (obj->key >= 0) {
@@ -36,6 +40,19 @@ extern "C" ARM void func_02092e0c(Obj02092e0c* obj) {
         GameState* state = GameState::GetInstance();
         GameObject* member = state->GetPartyMemberByIndex(GetField0x3acValue(state));
         if (member) _Z22SetIndexedName02046574P11Obj02046574iPc(display, 0, member->baseStats_->unk);
+#if defined(jpn)
+        member = state->GetPartyMemberByIndex(obj->combatantId);
+        if (member) _Z22SetIndexedName02046574P11Obj02046574iPc(display, 1, member->baseStats_->unk);
+        func_02045d88(display, _Z21GetFieldByKey020e0434P17Container020e0310i(&obj->container, obj->key), 0);
+        *(int*)((char*)display + 0x868) = 1;
+        if ((obj->flags & 1) && (obj->flags & 2)) {
+            *((unsigned char*)display + 0x17e1) = 0;
+            *(int*)((char*)display + 0x1730) = 12;
+            *(int*)((char*)display + 0x1734) = 16;
+            func_02043270(display, *(int*)((char*)display + 0x1730), 0x90, 0x100, 0x30);
+            *((unsigned char*)display + 0x1789) |= 2;
+        }
+#else
         CombatantInfo02092e0c info;
         _Z30InitObjFromCombatantId020e4bf4Pvi(&info, obj->combatantId);
         display->combatant = &info;
@@ -46,6 +63,7 @@ extern "C" ARM void func_02092e0c(Obj02092e0c* obj) {
             func_02042b98(display, 2, 0x92, 0xfc, 0x4a);
             display->flags |= 2;
         }
+#endif
         obj->key = -1;
         obj->timer = 0x78;
     }

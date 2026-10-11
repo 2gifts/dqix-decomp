@@ -22,6 +22,7 @@ extern "C" void func_ov024_021f7478(AiPlanner_021f8f20* obj);
 extern PlanTable_021f8f20 data_ov024_021ff054;
 extern PlanFn_021f8f20 data_020e6d5c;
 
+// JPN: func_ov024_021f96ec
 // USA: func_ov024_021f8f20
 extern "C" ARM void func_ov024_021f8f20(AiPlanner_021f8f20* obj, int owner, int id, unsigned short* state) {
     GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), id);
@@ -31,7 +32,11 @@ extern "C" ARM void func_ov024_021f8f20(AiPlanner_021f8f20* obj, int owner, int 
     }
     obj->owner = owner;
     obj->id = id;
+#if defined(jpn)
+    unsigned char mode = (signed char)*(int*)((char*)field + 0x8b4);
+#else
     unsigned char mode = (signed char)*(int*)((char*)field + 0x94c);
+#endif
     if (mode == 5) {
         return;
     }

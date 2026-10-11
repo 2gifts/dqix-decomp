@@ -12,8 +12,16 @@ struct StatBlock {
     PackedStats values[3];
     unsigned int finalValue : 10;
 };
+#if defined(jpn)
+struct PartyRegion { char pad0[4]; StatBlock stats; };
+#else
 struct PartyRegion { char pad0[0x1c]; StatBlock stats; };
+#endif
+#if defined(jpn)
+struct PartyStats { char pad0[0x80]; PartyRegion region; };
+#else
 struct PartyStats { char pad0[0x100]; PartyRegion region; };
+#endif
 static inline PartyRegion* GetStatRegion(PartyStats* stats) { return &stats->region; }
 static inline StatBlock* GetStatBlock(PartyRegion* region) { return &region->stats; }
 struct StatsPayload {
@@ -26,6 +34,7 @@ void* GetData02100044();
 PartyStats* GetFieldAt0x150(unsigned char*);
 extern "C" void func_0205e330(void*, void*, int);
 
+// JPN: func_ov017_021cebac
 // USA: func_ov017_021ce704
 extern "C" ARM void func_ov017_021ce704(int index) {
     void* context = GetData02100044();

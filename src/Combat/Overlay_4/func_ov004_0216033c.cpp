@@ -1,5 +1,11 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { field7=6,fieldB=8,field6=4,field8=7,extensionOffset=0x144,statsOffset=0x7b8 };
+#else
+enum { field7=7,fieldB=0xb,field6=6,field8=8,extensionOffset=0x150,statsOffset=0x850 };
+#endif
+
 // ---- externs resolved by the scaffold ----
 extern "C" extern void _Z36SetNodeFieldsAndMaybeNotify_0215f6f4Pvssi(void* a, short v1, short v2, int flag);
 extern "C" void* _ZN9GameState11GetInstanceEv(void);
@@ -141,13 +147,13 @@ extern "C" ARM int func_ov004_0216033c(void* a) {
     FNode0216033c* node;
     unsigned char* base150;
     unsigned char* combatant;
-    *(unsigned char*)((char*)D0 + 7) = 0x64;
-    short v1 = *(signed char*)((char*)D0 + 0xb);
-    short v2 = *(signed char*)((char*)D0 + 6);
+    *(unsigned char*)((char*)D0 + field7) = 0x64;
+    short v1 = *(signed char*)((char*)D0 + fieldB);
+    short v2 = *(signed char*)((char*)D0 + field6);
     _Z36SetNodeFieldsAndMaybeNotify_0215f6f4Pvssi(a, v1, v2, 0);
 
     int combatantId = *(int*)((char*)D0 + 0x1c);
-    unsigned char sb = *(unsigned char*)((char*)D0 + 8);
+    unsigned char sb = *(unsigned char*)((char*)D0 + field8);
     void* bs = _ZN9GameState11GetInstanceEv();
     combatant = (unsigned char*)_Z25GetCombatantWithFlag0x100P9GameStatei(bs, combatantId);
     if (!combatant) goto stats_done;
@@ -171,25 +177,25 @@ extern "C" ARM int func_ov004_0216033c(void* a) {
             Packed3x10* f150;
             unsigned short val16;
             switch (i) {
-            case 0: f150 = *(Packed3x10**)((char*)combatant + 0x150); val16 = f150[0].a; node->SetValue(val16); break;
-            case 1: f150 = *(Packed3x10**)((char*)combatant + 0x150); val16 = f150[0].b; node->SetValue(val16); break;
-            case 2: f150 = *(Packed3x10**)((char*)combatant + 0x150); val16 = f150[0].c; node->SetValue(val16); break;
-            case 3: f150 = *(Packed3x10**)((char*)combatant + 0x150); val16 = f150[1].a; node->SetValue(val16); break;
-            case 4: f150 = *(Packed3x10**)((char*)combatant + 0x150); val16 = f150[1].b; node->SetValue(val16); break;
-            case 5: f150 = *(Packed3x10**)((char*)combatant + 0x150); val16 = f150[1].c; node->SetValue(val16); break;
-            case 6: f150 = *(Packed3x10**)((char*)combatant + 0x150); val16 = f150[2].a; node->SetValue(val16); break;
+            case 0: f150 = *(Packed3x10**)((char*)combatant + extensionOffset); val16 = f150[0].a; node->SetValue(val16); break;
+            case 1: f150 = *(Packed3x10**)((char*)combatant + extensionOffset); val16 = f150[0].b; node->SetValue(val16); break;
+            case 2: f150 = *(Packed3x10**)((char*)combatant + extensionOffset); val16 = f150[0].c; node->SetValue(val16); break;
+            case 3: f150 = *(Packed3x10**)((char*)combatant + extensionOffset); val16 = f150[1].a; node->SetValue(val16); break;
+            case 4: f150 = *(Packed3x10**)((char*)combatant + extensionOffset); val16 = f150[1].b; node->SetValue(val16); break;
+            case 5: f150 = *(Packed3x10**)((char*)combatant + extensionOffset); val16 = f150[1].c; node->SetValue(val16); break;
+            case 6: f150 = *(Packed3x10**)((char*)combatant + extensionOffset); val16 = f150[2].a; node->SetValue(val16); break;
             case 7: val16 = *(unsigned short*)((char*)*(void**)((char*)combatant + 0x134) + 0x30); node->SetValue(val16); break;
             case 8: val16 = *(unsigned short*)((char*)*(void**)((char*)combatant + 0x134) + 0x32); node->SetValue(val16); break;
             case 9: val16 = *(unsigned short*)((char*)*(void**)((char*)combatant + 0x134) + 0x34); node->SetValue(val16); break;
             case 10: val16 = *(unsigned short*)((char*)*(void**)((char*)combatant + 0x134) + 0x36); node->SetValue(val16); break;
-            case 11: f150 = *(Packed3x10**)((char*)combatant + 0x150); val16 = f150[3].a; node->SetValue(val16); break;
+            case 11: f150 = *(Packed3x10**)((char*)combatant + extensionOffset); val16 = f150[3].a; node->SetValue(val16); break;
             case 12: val16 = *(unsigned short*)(base150 + 0x100 + t2 * 2 + 0x6c); node->SetValue(val16); break;
             case 13: { int val32 = *(int*)(base150 + t2 * 4 + 0x138); node->SetValue(val32); } break;
             default: break;
             }
             node->SetState(0xf);
         } else {
-            int actorBase = GetFieldAt0x150(combatant) + 0x850;
+            int actorBase = GetFieldAt0x150(combatant) + statsOffset;
             int t3 = D1[sb];
             int entryOff = (t3 & 0xff) * 0xc;
             Packed3x10* entryBase = (Packed3x10*)(actorBase + entryOff);
@@ -243,7 +249,7 @@ extern "C" ARM int func_ov004_0216033c(void* a) {
     }
 
     {
-        if (!(*(Flags49c**)(combatant + 0x150))->bit0) {
+        if (!(*(Flags49c**)(combatant + extensionOffset))->bit0) {
             _Z27SetField38IfState8_0215e49cPvis(a, 0xe, 2);
         } else {
             _Z27SetField38IfState8_0215e49cPvis(a, 0xe, 3);
@@ -314,7 +320,7 @@ extern "C" ARM int func_ov004_0216033c(void* a) {
 stats_done:
 
     int r4 = 0;
-    switch (D1[*(unsigned char*)((char*)D0 + 8)]) {
+    switch (D1[*(unsigned char*)((char*)D0 + field8)]) {
     case 0: r4 = 4; break;
     case 1: r4 = 5; break;
     case 2: r4 = 6; break;
@@ -342,6 +348,9 @@ stats_done:
         vnode->SetVal0x1c(v2);
         int r2v = v2.x + ((r5v + 2) << 12);
         v2.x = r2v;
+#if defined(jpn)
+        v2.y += 0x2000;
+#endif
         Node0215e47c* vnode2 = func_ov004_0215e47c(a, 0xc8);
         if (vnode2) {
             vnode2->SetVal0x1c(v2);
@@ -349,7 +358,7 @@ stats_done:
     }
 
     int combatantId2 = *(int*)((char*)D0 + 0x1c);
-    unsigned char sb2 = *(unsigned char*)((char*)D0 + 8);
+    unsigned char sb2 = *(unsigned char*)((char*)D0 + field8);
     void* bs2 = _ZN9GameState11GetInstanceEv();
     unsigned char* combatant2 = (unsigned char*)_Z25GetCombatantWithFlag0x100P9GameStatei(bs2, combatantId2);
     FNode0216033c* iconNode;
@@ -400,10 +409,10 @@ stats_done:
 
         kNode = func_ov023_021f6880(obj118b, k + 0x5f);
         if (kNode) {
-            kNode->SetValue(*(unsigned char*)(*(unsigned char**)(combatant2 + 0x150) + tv + 0x464));
+            kNode->SetValue(*(unsigned char*)(*(unsigned char**)(combatant2 + extensionOffset) + tv + 0x464));
             if (*(unsigned char*)((char*)D0 + 2) != D1[sb2]) {
                 kNode->SetState(3);
-            } else if (*(unsigned char*)(*(unsigned char**)(combatant2 + 0x150) + tv + 0x464) >= 100) {
+            } else if (*(unsigned char*)(*(unsigned char**)(combatant2 + extensionOffset) + tv + 0x464) >= 100) {
                 kNode->SetState(0xd);
             } else {
                 kNode->SetState(0xf);
@@ -430,7 +439,7 @@ stats_done:
         }
     }
 
-    unsigned char langByte = *(unsigned char*)((char*)D0 + 8);
+    unsigned char langByte = *(unsigned char*)((char*)D0 + field8);
     int kind;
     int r5final;
     void* obj118c = func_ov011_021849c8(a);

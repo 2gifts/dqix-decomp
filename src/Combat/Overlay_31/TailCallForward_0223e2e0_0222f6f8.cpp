@@ -1,3 +1,4 @@
+// JPN: func_ov031_0222fed8
 #include <globaldefs.h>
 
 struct MainCtxHolder0222f6f8 {

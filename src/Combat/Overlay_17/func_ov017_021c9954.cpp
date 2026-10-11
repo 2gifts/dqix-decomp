@@ -35,11 +35,23 @@ struct Target021c9954 {
 };
 
 struct Battle021c9954 {
+#if defined(jpn)
+    char pad0[0x3508];
+#else
     char pad0[0x3718];
+#endif
     Party021c9954* party;
+#if defined(jpn)
+    char pad371c[0x3978 - 0x350c];
+#else
     char pad371c[0x3b98 - 0x371c];
+#endif
     Cursor021c9954* cursor;
+#if defined(jpn)
+    char pad3b9c[0x41fe - 0x397c];
+#else
     char pad3b9c[0x44ae - 0x3b9c];
+#endif
     Target021c9954 target;
 };
 
@@ -56,6 +68,7 @@ extern "C" void _Z18TrySetMode02076cccPvi(void* obj, int mode);
 extern "C" Slot021c9954* _Z26GetPtrPlusOffsetC_021a7c8cPv(void* obj);
 extern "C" void _Z25SetByteAtOffset1_021a7c1cPh(unsigned char* obj);
 
+// JPN: func_ov017_021c9e04
 // USA: func_ov017_021c9954
 extern "C" ARM void func_ov017_021c9954(int id, int checkLeader, int keep, int group) {
     GameState::GetInstance();

@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegion1f2 = 0x1ee };
+#else
+enum { kRegion1f2 = 0x1f2 };
+#endif
 #include "GameState/GameState.h"
 
 struct CombatantStatus {
@@ -22,7 +27,7 @@ struct EntryList;
 struct PartyStatusPanel {
     char unk_0[0x18];
     EntryList* entries;
-    char unk_1c[0x1f2 - 0x1c];
+    char unk_1c[kRegion1f2 - 0x1c];
     unsigned char memberIds[4];
     unsigned char memberCount;
 };
@@ -32,6 +37,7 @@ extern "C" void _Z26SetEntryFirstField02080f8cP17Container02080f8cii(EntryList*,
 extern "C" void _Z22SetEntryHighNibble0x13P17Container02080cc0ii(EntryList*, int, int);
 extern "C" void func_020813ec(EntryList*, int);
 
+// JPN: func_ov003_02159820
 // USA: func_ov003_02158334
 extern "C" ARM void func_ov003_02158334(PartyStatusPanel* self) {
     GameState* gs = GameState::GetInstance();

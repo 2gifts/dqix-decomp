@@ -1,3 +1,10 @@
+// JPN: func_ov025_021dcb14
+#if defined(jpn)
+enum { RegionOffsete78 = 0xdf4 };
+#else
+enum { RegionOffsete78 = 0xe78 };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -14,7 +21,7 @@ extern char data_ov025_021ef404[];
 extern "C" unsigned char _ZZ16GetTimer021ef974vE1s;
 
 struct Obj021dc220 {
-    char pad0[0xe78];
+    char pad0[RegionOffsete78];
     unsigned char field_e78;
     char pad1[0x33];
     int field_eac;

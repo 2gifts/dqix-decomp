@@ -10,6 +10,7 @@ int IsCombatantFlagMask512_021eda60(GameObject* combatant);
 
 struct RngHolder_021ed9dc { void* field0; };
 
+// JPN: func_ov024_021ee1a8
 // USA: func_ov024_021ed9dc
 ARM int CanTargetCombatant_021ed9dc(struct RngHolder_021ed9dc* holder, int id) {
     void* p = func_ov000_02153710(holder->field0, id);

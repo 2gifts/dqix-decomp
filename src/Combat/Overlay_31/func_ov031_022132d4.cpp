@@ -6,6 +6,7 @@ extern int data_ov031_0224e5c4;
 typedef void (*Callback_022132d4)(int, void*, int);
 
 // USA: func_ov031_022132d4
+// JPN: func_ov031_02213ab4
 extern "C" ARM void* func_ov031_022132d4(void) {
 	char* obj = func_ov031_022133f8(1);
 	if (obj == 0) return obj;

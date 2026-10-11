@@ -1,6 +1,13 @@
 #include <globaldefs.h>
 
-struct Struct4ec_02168438 { char pad[0x4dc]; void* field4dc; char pad2[0xc]; unsigned char field4ec; char pad3[0xb2]; unsigned char field59f; };
+#if defined(jpn)
+enum { kRegionValue4DC_4D8 = 0x4d8 };
+#else
+enum { kRegionValue4DC_4D8 = 0x4dc };
+#endif
+
+
+struct Struct4ec_02168438 { char pad[kRegionValue4DC_4D8]; void* field4dc; char pad2[0xc]; unsigned char field4ec; char pad3[0xb2]; unsigned char field59f; };
 
 ARM void UpdateEntryAndField4ea_021694b8(void* obj, int id);
 extern "C" ARM void func_ov003_021685dc(void* obj);
@@ -13,6 +20,7 @@ extern "C" ARM void func_ov003_02169430(void* obj);
 extern "C" void func_ov003_0216aa28(void* obj);
 
 // USA: func_ov003_02168438  (semantic: UpdateStateAndDispatch_02168438)
+// JPN: func_ov003_021682c0
 extern "C" ARM int func_ov003_02168438(struct Struct4ec_02168438* obj, void* arg) {
     obj->field4dc = arg;
     unsigned char state = obj->field4ec;

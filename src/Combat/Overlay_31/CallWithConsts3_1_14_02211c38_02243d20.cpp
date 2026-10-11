@@ -1,3 +1,4 @@
+// JPN: func_ov031_02244500
 #include <globaldefs.h>
 #include "System/Timing.h"
 
@@ -30,7 +31,9 @@ extern "C" ARM void func_ov031_02243d20(S02243d20* obj) {
 	switch (obj->state35) {
 	case 0:
 		CallWithConsts3_1_14_02211c38((int)&obj->field310);
+#if !defined(jpn)
 		SetDataFromIndex_02211c50(2);
+#endif
 		func_ov031_02211ca0();
 		{
 			uint64_t t = GetCurrentTimestamp() + 0xefb5f7;

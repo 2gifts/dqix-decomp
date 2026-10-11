@@ -55,8 +55,14 @@ extern "C" unsigned int GetMainBG2ScreenBase(void);
 
 extern const char* data_ov023_021fda78[];
 
+// JPN: func_ov023_021e047c
 // USA: func_ov023_021dfecc  (semantic: ResetAndDispatchListEntries_021dfecc)
 extern "C" ARM int func_ov023_021dfecc(void* objRaw) {
+#if defined(jpn)
+ enum {regionalOffset0=0x6b0, regionalOffset1=0x600, regionalOffset2=0xf8, regionalOffset3=0x6f4, regionalOffset4=0x6d8, regionalOffset5=0xf7, regionalOffset6=0x6dc, regionalOffset7=0x6e4, regionalOffset8=0x6f5, regionalOffset9=0xf0, regionalOffset10=0x6b4};
+#else
+ enum {regionalOffset0=0x734, regionalOffset1=0x700, regionalOffset2=0x7c, regionalOffset3=0x778, regionalOffset4=0x75c, regionalOffset5=0x7b, regionalOffset6=0x760, regionalOffset7=0x768, regionalOffset8=0x779, regionalOffset9=0x74, regionalOffset10=0x738};
+#endif
     unsigned char* obj = (unsigned char*)objRaw;
     struct List0204af64 listObj;
     int listVal1;
@@ -67,15 +73,20 @@ extern "C" ARM int func_ov023_021dfecc(void* objRaw) {
     int result;
 
     int listPtr = (int)BackgroundLoader::GetInstance();
-    int handle = *(int*)(obj + 0x734);
+    int handle = *(int*)(obj + regionalOffset0);
     if (((BackgroundLoader*)(listPtr))->GetTaskStatus((int)(handle)) != 0) {
         unsigned char lookupResult = LookupByField8_021dcb70((struct Obj021dcb70*)*(void**)(obj + 0x50));
-        ((BackgroundLoader*)((struct List0202fec8*)listPtr))->GetLoadedFileByID((int)(*(int*)(obj + 0x734)), (void**)(&listVal1), (unsigned int*)(&listVal2));
+        ((BackgroundLoader*)((struct List0202fec8*)listPtr))->GetLoadedFileByID((int)(*(int*)(obj + regionalOffset0)), (void**)(&listVal1), (unsigned int*)(&listVal2));
 
+#if defined(jpn)
+        if (listVal1 != 0) {
+#else
         if (listVal1 != 0 && listVal2 != 0) {
+#endif
+
             ResetList0204af64(&listObj);
 
-            signed char f7c = *(signed char*)(obj + 0x700 + 0x7c);
+            signed char f7c = *(signed char*)(obj + regionalOffset1 + regionalOffset2);
             if (f7c == 1) {
                 listObj.b1c_lo = f7c;
                 listObj.b1c_hi = 1;
@@ -88,14 +99,14 @@ extern "C" ARM int func_ov023_021dfecc(void* objRaw) {
             SetWord0x18ClearByte0x1f((unsigned char*)&listObj, 0);
             DispatchViaTable0204b5e8((struct Obj0204b5e8*)&listObj, 0, 0);
 
-            if (*(signed char*)(obj + 0x700 + 0x7c) == 1) {
+            if (*(signed char*)(obj + regionalOffset1 + regionalOffset2) == 1) {
                 volatile unsigned int* reg = (volatile unsigned int*)0x4001000;
                 unsigned int bits = 0x12;
                 if (lookupResult != 0) bits |= 1;
                 *reg = (*reg & ~0x1f00) | (bits << 8);
             }
 
-            if (lookupResult == 0 && *(unsigned char*)(obj + 0x778) != 0) {
+            if (lookupResult == 0 && *(unsigned char*)(obj + regionalOffset3) != 0) {
                 int count = CountActiveEntries((struct ActiveEntry02046900*)listVal1);
                 for (unsigned char i = 0; i < count; i++) {
                     recPtr = FindRecordByIndex((struct Rec020467f0*)listVal1, i, &dummyOut, &sizeOut);
@@ -121,14 +132,14 @@ extern "C" ARM int func_ov023_021dfecc(void* objRaw) {
                 }
             }
 
-            *(int*)(obj + 0x75c) = 0x3800;
-            if (*(signed char*)(obj + 0x700 + 0x7b) == 1) {
-                *(int*)(obj + 0x75c) = 0x2800;
+            *(int*)(obj + regionalOffset4) = 0x3800;
+            if (*(signed char*)(obj + regionalOffset1 + regionalOffset5) == 1) {
+                *(int*)(obj + regionalOffset4) = 0x2800;
             }
-            *(int*)(obj + 0x760) = 0;
-            *(int*)(obj + 0x768) = 0;
+            *(int*)(obj + regionalOffset6) = 0;
+            *(int*)(obj + regionalOffset7) = 0;
 
-            if (*(signed char*)(obj + 0x700 + 0x7c) == 1) {
+            if (*(signed char*)(obj + regionalOffset1 + regionalOffset2) == 1) {
                 memset((void*)GetSubBG0ScreenBase(), 0, 0x800);
                 if (*(void**)(obj + 0x50) != 0) {
                     func_ov023_021dde00(obj);
@@ -144,28 +155,28 @@ extern "C" ARM int func_ov023_021dfecc(void* objRaw) {
             func_ov023_021dbd10(obj + 0xcc, *(void**)(obj + 0x50));
         }
 
-        *(unsigned char*)(obj + 0x779) = lookupResult;
-        ((BackgroundLoader*)(listPtr))->RemoveTask((int)(*(int*)(obj + 0x734)));
-        *(int*)(obj + 0x734) = -1;
+        *(unsigned char*)(obj + regionalOffset8) = lookupResult;
+        ((BackgroundLoader*)(listPtr))->RemoveTask((int)(*(int*)(obj + regionalOffset0)));
+        *(int*)(obj + regionalOffset0) = -1;
         *(void**)(obj + 0x4c) = *(void**)(obj + 0x50);
         *(void**)(obj + 0x50) = 0;
 
-        unsigned short flags74 = *(unsigned short*)(obj + 0x700 + 0x74);
+        unsigned short flags74 = *(unsigned short*)(obj + regionalOffset1 + regionalOffset9);
         if (flags74 & 0x40) {
             if (!(flags74 & 4)) {
                 flags74 |= 0x20;
-                *(unsigned short*)(obj + 0x700 + 0x74) = flags74;
+                *(unsigned short*)(obj + regionalOffset1 + regionalOffset9) = flags74;
             }
         }
 
         for (int i = 0; i < 7; i++) {
-            *(int*)(obj + 0x738 + i * 4) = -1;
+            *(int*)(obj + regionalOffset10 + i * 4) = -1;
         }
 
-        flags74 = *(unsigned short*)(obj + 0x700 + 0x74);
+        flags74 = *(unsigned short*)(obj + regionalOffset1 + regionalOffset9);
         flags74 |= 0x4;
         flags74 |= 0x2000;
-        *(unsigned short*)(obj + 0x700 + 0x74) = flags74;
+        *(unsigned short*)(obj + regionalOffset1 + regionalOffset9) = flags74;
 
         result = (*(void**)(obj + 0x4c) == 0) ? -1 : 2;
     } else {

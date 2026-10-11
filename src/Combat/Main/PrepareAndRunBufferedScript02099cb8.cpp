@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define data_020f15ac data_020f1714
+#define data_020f1574 data_020f16dc
+#endif
 #include "Filesystem/BackgroundLoader.h"
 #include "std_library_functions.h"
 

@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegion4c = 0x48 };
+#else
+enum { kRegion4c = 0x4c };
+#endif
 #include "Memory/SafeAllocator.h"
 
 struct InitTarget0205cfd4;
@@ -24,7 +29,7 @@ struct CanvasSlot021681c8 {
 struct BattleView021681c8 {
     SafeAllocator allocs[5];
     unsigned char field_0x64[0x1c];
-    unsigned char field_0x80[0x4c];
+    unsigned char field_0x80[kRegion4c];
     unsigned char field_0xcc[0x10];
     unsigned char field_0xdc;
     unsigned char field_0xdd;
@@ -56,6 +61,7 @@ struct BattleView021681c8 {
     unsigned char field_0x5a5;
 };
 
+// JPN: func_ov003_0216804c
 // USA: func_ov003_021681c8
 extern "C" ARM void func_ov003_021681c8(BattleView021681c8* view) {
     view->field_0xdc = 0;

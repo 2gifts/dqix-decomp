@@ -1,3 +1,10 @@
+// JPN: func_ov017_021b3e74
+#if defined(jpn)
+enum { RegionOffset150 = 0x144 };
+#else
+enum { RegionOffset150 = 0x150 };
+#endif
+
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
@@ -59,7 +66,7 @@ extern "C" ARM int func_ov017_021b3780(struct Ctx_021b3780* ctx) {
     int unused = val2;
     InitObjFromSource0209a088(&obj, (struct BitField0209a088*)val1);
 
-    struct Record_021b3780* rec = (struct Record_021b3780*)(*(char**)((char*)combatant + 0x150) + 0x2f4);
+    struct Record_021b3780* rec = (struct Record_021b3780*)(*(char**)((char*)combatant + RegionOffset150) + 0x2f4);
     unsigned char* table = &data_ov017_021d6b20;
     int i;
     for (i = 0; i < 8; i++, table++, rec++) {

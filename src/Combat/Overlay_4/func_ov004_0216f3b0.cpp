@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 
+
 extern "C" void* func_ov017_0218b5b0(void);
 extern "C" void* func_ov011_021845f8(void* ctx, int v);
 extern "C" void func_ov011_021848a0(void* obj, int val);
@@ -16,10 +17,16 @@ struct Struct02171048_0216f3b0 { char pad[4]; unsigned char* ptr; };
 extern Struct02171048_0216f3b0 data_ov004_02171048;
 
 // USA: func_ov004_0216f3b0
+// JPN: func_ov004_0216fa44
 extern "C" ARM int func_ov004_0216f3b0(void* a) {
     void* actorRaw = func_ov017_0218b5b0();
+#if defined(jpn)
+    void* list = *(void**)((char*)actorRaw + 0x3000 + 0x4ec);
+    void* five = *(void**)((char*)actorRaw + 0x3000 + 0x928);
+#else
     void* list = *(void**)((char*)actorRaw + 0x3000 + 0x6fc);
     void* five = *(void**)((char*)actorRaw + 0x3000 + 0xb48);
+#endif
     unsigned char flag = data_ov004_02171048.ptr[0x2e];
 
     if (flag == 0) {
@@ -39,7 +46,11 @@ extern "C" ARM int func_ov004_0216f3b0(void* a) {
         func_ov017_021b1e24(five, list);
         if (GetSubByteField439_021b2060((Obj24_021b2060*)five)) {
             if (GetSubByteField438_021b204c((Obj24_021b204c*)five)) {
+#if defined(jpn)
+                if (*(int*)((char*)actorRaw + 0x4000 + 0x1e4) == 0) {
+#else
                 if (*(int*)((char*)actorRaw + 0x4000 + 0x494) == 0) {
+#endif
                     func_ov011_021848a0(a, 0xcc);
                     return 0;
                 }

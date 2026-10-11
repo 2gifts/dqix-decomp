@@ -2,8 +2,14 @@
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+enum { textOffset=0x28, textSize=0x800, width=12, height=7, xOffset=0x17, lineHeight=8 };
+#define _Z35NotifyLocalizedResourceLoad020dcfc8iPc func_020de9cc
+#else
+enum { textOffset=0x5c, textSize=0x960, width=16, height=8, xOffset=0x10, lineHeight=5 };
+#endif
 struct GlobalText {
-    char pad0[0x5c];
+    char pad0[textOffset];
     char* textBuf;
 };
 
@@ -49,17 +55,30 @@ extern "C" ActionInfo* _Z33GetPointerField_02171b9c_02171b9cPvi(void* obj, int i
 extern "C" void _Z35NotifyLocalizedResourceLoad020dcfc8iPc(int id, char* buf);
 extern "C" void func_02046608(GlobalText* g, int a, char* src, char* dst, int b, int c, int d);
 extern "C" void* _Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_0205d81c* s, int key);
+#if defined(jpn)
+extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(struct StructA0205d5d0*, int, int, int);
+extern "C" void func_0205d304(void*, void*, int, int, int, int, int);
+#define APPLY_TEXT(s,k,t) _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(s,k,(int)t,1)
+#define DRAW_TEXT(s,t) func_0205d304(s,t,0,0,0,1,0)
+#else
 extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(struct StructA0205d5d0* s, int key, int buf, int a, unsigned char b);
 extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g, int h);
+#define APPLY_TEXT(s,k,t) _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(s,k,(int)t,1,0)
+#define DRAW_TEXT(s,t) func_0205d304(s,t,0,0,0,1,0,0)
+#endif
 
 // USA: func_ov000_0217964c
 extern "C" ARM void func_ov000_0217964c(BattleMenu* menu, BattleActor* actor) {
+    char* msg;
+    MessageWindow* window;
+#if !defined(jpn)
     char buf[0x800];
+#endif
     if (actor == NULL) {
         return;
     }
     char* text = _Z26GetGlobalField0x1c020421a0v()->textBuf;
-    memset(text, 0, 0x960);
+    memset(text, 0, textSize);
     GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), actor->combatantId);
     if (combatant == NULL) {
         return;
@@ -73,24 +92,29 @@ extern "C" ARM void func_ov000_0217964c(BattleMenu* menu, BattleActor* actor) {
         return;
     }
     _Z35NotifyLocalizedResourceLoad020dcfc8iPc(action->messageId, text);
+#if !defined(jpn)
     func_02046608(_Z26GetGlobalField0x1c020421a0v(), 0xa, text, buf, 0x72, 0, 0);
-    char* msg;
-    MessageWindow* window = &menu->window;
+#endif
+    window = &menu->window;
+#if defined(jpn)
+    msg = text;
+#else
     msg = buf;
+#endif
     if (_Z23FindElementByC40205d81cP15Struct_0205d81ci((struct Struct_0205d81c*)window, 0x24) != NULL) {
-        _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((struct StructA0205d5d0*)window, 0x24, (int)msg, 1, 0);
+        APPLY_TEXT((struct StructA0205d5d0*)window, 0x24, msg);
     } else {
         int x = actor->x;
         int y = actor->y;
-        window->width = 0x10;
-        window->height = 8;
-        window->posX = (x >> 3) + 0x10;
+        window->width = width;
+        window->height = height;
+        window->posX = (x >> 3) + xOffset;
         window->posY = y >> 3;
         window->field_0xa8 = 7;
-        window->field_0xaa = 5;
+        window->field_0xaa = lineHeight;
         window->field_0xac = 0xa;
         window->field_0xae = 0xe;
         window->kind = 0x24;
-        func_0205d304(window, msg, 0, 0, 0, 1, 0, 0);
+        DRAW_TEXT(window, msg);
     }
 }

@@ -6,8 +6,14 @@ extern "C" int func_ov000_02159dbc(void*, short);
 
 struct RngHolder_021da080 { struct Random* rng; };
 
+// JPN: func_ov024_021da940
 // USA: func_ov024_021da080
 ARM int RandomScaleField6cMaxOfTwo6x180_021da080(struct RngHolder_021da080* holder, unsigned short category, int unused1, int unused2, int unused3, int fallback) {
+#if defined(jpn)
+ enum {regionalOffset=0x8b8};
+#else
+ enum {regionalOffset=0x950};
+#endif
     int inRange = 0;
     if (category <= 3) {
         inRange = 1;
@@ -18,7 +24,7 @@ ARM int RandomScaleField6cMaxOfTwo6x180_021da080(struct RngHolder_021da080* hold
         if (base == NULL) {
             return fallback;
         }
-        int idx = *(int*)(base + 0x950);
+        int idx = *(int*)(base + regionalOffset);
         unsigned short v = *(unsigned short*)(base + idx * 2 + 0x16c);
         value = v;
     } else {

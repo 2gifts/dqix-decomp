@@ -1,7 +1,12 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kIntrinsicOffset = 0x144 };
+#else
+enum { kIntrinsicOffset = 0x150 };
+#endif
 #include "GameState/GameState.h"
 struct Intrinsic020dd8b4 { unsigned int field_0; unsigned int agility : 10; unsigned int field_4 : 22; };
-struct Combatant020dd8b4 { char pad[0x134]; BaseCombatStats* stats; char pad_0x138[0x150 - 0x138]; Intrinsic020dd8b4* intrinsic; };
+struct Combatant020dd8b4 { char pad[0x134]; BaseCombatStats* stats; char pad_0x138[kIntrinsicOffset - 0x138]; Intrinsic020dd8b4* intrinsic; };
 struct Details020dd8b4 { int arg; char fields[0x30]; };
 struct Summary020dd8b4 {
     int id;

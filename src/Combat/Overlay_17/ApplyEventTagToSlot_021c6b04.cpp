@@ -20,9 +20,15 @@ struct LocalEvt021c6b04 {
     signed char fieldB;
 };
 
+// JPN: func_ov017_021c6fb4
 // USA: func_ov017_021c6b04  (semantic: ApplyEventTagToSlot_021c6b04)
 extern "C" ARM void func_ov017_021c6b04(int unused0, LocalEvt021c6b04* evt, int unused2, unsigned char* base) {
-    void* table = *(void**)(base + 0x3000 + 0x718);
+#if defined(jpn)
+ enum {regionalOffset0=0x508};
+#else
+ enum {regionalOffset0=0x718};
+#endif
+    void* table = *(void**)(base + 0x3000 + regionalOffset0);
     EventHdr021c6b04* a = (EventHdr021c6b04*)func_ov017_021b8478(table);
     if (!a) return;
     void* b = func_ov017_021b8468(table);

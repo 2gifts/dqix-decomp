@@ -5,7 +5,11 @@
 int GetGlobalField0x1c020421a0();
 extern "C" void func_ov000_0217c638(void* obj, int a, int b);
 extern "C" void func_ov000_021775a4(void* obj, void* buf);
+#if defined(jpn)
+extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g);
+#else
 extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g, int h);
+#endif
 extern "C" void* func_0202ae18(void);
 int CheckField0NonZero(int* obj);
 int GetField0x3acValue(GameState* battleStruct);
@@ -43,8 +47,20 @@ extern "C" ARM void func_ov000_02177454(void* objRaw, struct InStruct_02177454* 
         }
     }
     *(unsigned char*)(s + 0xb1) = 2;
+#if defined(jpn)
+    void* buf = *(void**)((char*)GetGlobalField0x1c020421a0() + 0x28);
+#else
     void* buf = *(void**)((char*)GetGlobalField0x1c020421a0() + 0x5c);
+#endif
+#if defined(jpn)
+    memset(buf, 0, 0x800);
+#else
     memset(buf, 0, 0x960);
+#endif
     func_ov000_021775a4(obj, buf);
+#if defined(jpn)
+    func_0205d304(s, buf, 0, 1, 0, 1, 0);
+#else
     func_0205d304(s, buf, 0, 1, 0, 1, 0, 0);
+#endif
 }

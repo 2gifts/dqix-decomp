@@ -1,7 +1,14 @@
+// JPN: func_ov025_021e3668
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Graphics/Vector.h"
 #include "System/Matrix.h"
+
+#if defined(jpn)
+enum { NotificationField = 0x4, CombatantSubobject = 0x144, WorkFlag = 0x71c5 };
+#else
+enum { NotificationField = 0xc, CombatantSubobject = 0x150, WorkFlag = 0x6fd5 };
+#endif
 
 struct Pos021e3178 { int x, y, z; };
 
@@ -71,7 +78,7 @@ struct Buf021e3178 {
 };
 
 struct Combatant021e3178 {
-    char pad0[0x150];
+    char pad0[CombatantSubobject];
     unsigned char* flags;
 };
 
@@ -93,7 +100,7 @@ extern "C" int _Z15TestBit2At0x2f4Ph(unsigned char* flags);
 extern "C" int _ZNK8Object3D9GetRadiusEv(void* obj);
 extern "C" void __clear(void* p, int n);
 
-#define NOTIFY() func_ov025_021eb044(*(void**)((char*)&data_ov025_021ef988 + 0xc), a->slot)
+#define NOTIFY() func_ov025_021eb044(*(void**)((char*)&data_ov025_021ef988 + NotificationField), a->slot)
 
 // USA: func_ov025_021e3178
 extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178* b) {
@@ -312,7 +319,7 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
     }
     case 15: {
         void* w = _Z19GetActiveCombatWorkv();
-        if (w && *(unsigned char*)((char*)w + 0x6fd5)) NOTIFY();
+        if (w && *(unsigned char*)((char*)w + WorkFlag)) NOTIFY();
         break;
     }
     case 22:
@@ -410,7 +417,7 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
     }
     default:
     case 0:
-        func_ov025_021eb044(*(void**)((char*)&data_ov025_021ef988 + 0xc));
+        func_ov025_021eb044(*(void**)((char*)&data_ov025_021ef988 + NotificationField));
         break;
     }
     return 1;

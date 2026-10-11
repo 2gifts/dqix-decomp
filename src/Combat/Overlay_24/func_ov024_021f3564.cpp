@@ -26,6 +26,7 @@ struct BuffWord_021f3564 {
 
 struct Wrapper_021f3564 { int field0; };
 
+// JPN: func_ov024_021f3d30
 // USA: func_ov024_021f3564
 extern "C" ARM int func_ov024_021f3564(struct Wrapper_021f3564* a, int id, int unused2, int* outFlag, short* outId) {
 	GameObject* c = GetCombatantWithFlag0x400ByID(a->field0, id);

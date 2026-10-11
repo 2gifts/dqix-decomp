@@ -16,6 +16,7 @@ extern "C" void func_0204c684(void*);
 struct InitTarget0205cfd4;
 void InitStruct0205cfd4(struct InitTarget0205cfd4* s);
 
+// JPN: func_ov023_021eb09c
 // USA: func_ov023_021eb138  (semantic: ResetCombatOverlayState_021eb138)
 extern "C" ARM void func_ov023_021eb138(void* obj, unsigned char flag) {
     *(unsigned char*)((char*)obj + 0x430) = flag;

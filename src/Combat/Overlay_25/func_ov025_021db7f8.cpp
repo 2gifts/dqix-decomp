@@ -1,3 +1,8 @@
+#if defined(jpn)
+enum {regionalOffset0=0x218, regionalOffset1=0x21c, regionalOffset2=0xe0c, regionalOffset3=0xe14, regionalOffset4=0x71ec, regionalOffset5=0x17ee};
+#else
+enum {regionalOffset0=0x29c, regionalOffset1=0x2a0, regionalOffset2=0xe90, regionalOffset3=0xe98, regionalOffset4=0x6ffc, regionalOffset5=0x19be};
+#endif
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -14,16 +19,17 @@ struct StatusNibbles_021db7f8 {
 };
 
 struct BattleCtrl_021db7f8 {
-    char pad0[0x29c];
+    char pad0[regionalOffset0];
     void* party;
-    char pad2a0[0xe90 - 0x2a0];
+    char pad2a0[regionalOffset2 - regionalOffset1];
     unsigned char fieldE90;
     char padE91[3];
     int fieldE94;
-    char padE98[0x6ffc - 0xe98];
+    char padE98[regionalOffset4 - regionalOffset3];
     char field6ffc[4];
 };
 
+// JPN: func_ov025_021dc0f4
 // USA: func_ov025_021db7f8
 extern "C" ARM void func_ov025_021db7f8(BattleCtrl_021db7f8* obj) {
     GameState* bs = GameState::GetInstance();
@@ -44,7 +50,7 @@ extern "C" ARM void func_ov025_021db7f8(BattleCtrl_021db7f8* obj) {
     }
     _Z23SetOrInitField_02182498Pvi(obj->field6ffc, 1);
     _Z19SetFlag320_02195530Ph((unsigned char*)func_ov017_0218b5b0());
-    _Z26GetGlobalField0x1c020421a0v()[0x19be] = 0;
+    _Z26GetGlobalField0x1c020421a0v()[regionalOffset5] = 0;
     obj->fieldE90 = 0;
     obj->fieldE94 = 0;
 }

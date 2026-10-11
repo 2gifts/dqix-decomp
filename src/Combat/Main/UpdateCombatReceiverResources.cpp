@@ -1,4 +1,15 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define IS_JPN 1
+#else
+#define IS_JPN 0
+#endif
+#if defined(jpn)
+#define func_020e0a78 func_020e26ac
+#define func_020e0f74 func_020e2b6c
+#define func_02026f34 func_02026898
+#endif
+
 
 #include "Resource/Brightness.h"
 
@@ -13,21 +24,46 @@ struct ScrollState02027438;
 void *GetDataPtr02114e04_020d6c00();
 int TestFlags02046708(FlagWord02046708 *flags, unsigned int mask);
 int *GetGlobal02109030();
+#if defined(jpn)
+extern "C" int func_02095264(List0209497c *list, int key);
+#define ListContainsId0209497c func_02095264
+#else
 int ListContainsId0209497c(List0209497c *list, int key);
+#endif
+#if defined(jpn)
+extern "C" int func_0209529c(List020949bc *list, int key);
+#define ListContainsId020949bc func_0209529c
+#else
 int ListContainsId020949bc(List020949bc *list, int key);
+#endif
+#if defined(jpn)
+extern "C" void func_02094380(char *list);
+#define MoveValue3cbTo3cc func_02094380
+#else
 void MoveValue3cbTo3cc(char *list);
+#endif
+#if defined(jpn)
+extern "C" void func_020943c0(char *list);
+#define MoveValue3ccTo3cb func_020943c0
+#else
 void MoveValue3ccTo3cb(char *list);
+#endif
 extern "C" int func_020e0a78(void *receiver);
 extern "C" void func_020e0f74(void *receiver);
 extern "C" void func_02026f34(void *receiver);
+#if defined(jpn)
+extern "C" void func_02022f90(Obj020235c8 *receiver);
+#define ProcessCombatantState020235c8 func_02022f90
+#else
 void ProcessCombatantState020235c8(Obj020235c8 *receiver);
+#endif
 int IsAxisIntWithin16(AxisFloats0203b5a0 *resources, int axis);
 int IsChannelValueZero0203b5e0(void *resources, int axis);
 int IsAxisIntZero(AxisFloats0203b5f8 *resources, int axis);
 extern "C" void func_02027438(ScrollState02027438 *receiver);
 
 struct CombatUpdateReceiverView {
-    unsigned char unknown0[0x764];
+    unsigned char unknown0[IS_JPN ? 0x6b8 : 0x764];
     unsigned char field764;
     unsigned char unknown765[0x778 - 0x765];
     unsigned char field778;

@@ -1,4 +1,12 @@
+// JPN: func_ov017_0219caa4
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kStatusOffset = 0x240c, kStatusFlagOffset = 0x282, kFieldXOffset = 0x27c6, kFieldYOffset = 0x27c4, kFieldFlagOffset = 0x27c8, kFieldPositionOffset = 0x27b4, kFieldHalfwordAOffset = 0x27f4, kFieldHalfwordBOffset = 0x27f6, kControllerBufferOffset = 0x28, kControllerBufferSize = 0x800 };
+#else
+enum { kStatusOffset = 0x23ec, kStatusFlagOffset = 0x262, kFieldXOffset = 0x2786, kFieldYOffset = 0x2784, kFieldFlagOffset = 0x2788, kFieldPositionOffset = 0x2774, kFieldHalfwordAOffset = 0x27b4, kFieldHalfwordBOffset = 0x27b6, kControllerBufferOffset = 0x5c, kControllerBufferSize = 0x960 };
+#endif
+
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
@@ -86,7 +94,7 @@ extern "C" ARM void func_ov017_0219bfb4(int mode, unsigned short id) {
     void* search = func_0202ae18();
     char* field = (char*)func_02012fe4();
     unsigned char* flags = (unsigned char*)func_0205ec34();
-    char* status = field + 0x23ec;
+    char* status = field + kStatusOffset;
     TailList020469b4* list = (TailList020469b4*)res->unknown_ptr_array_36fc[0];
     unsigned char* node = (unsigned char*)res->unknown_ptr_array_36fc[4];
     unsigned char* marker = (unsigned char*)res->unknown_ptr_array_371c[4];
@@ -101,7 +109,7 @@ extern "C" ARM void func_ov017_0219bfb4(int mode, unsigned short id) {
         func_0206e558(flags);
     }
     if (mode == 2) {
-        status[0x262] = 0;
+        status[kStatusFlagOffset] = 0;
     }
     if (mode == 2 && func_0202c508(search)) {
         if (TestBitInByteArray((int)flags, flags + 0x8c, 0x2b)) {
@@ -117,20 +125,20 @@ extern "C" ARM void func_ov017_0219bfb4(int mode, unsigned short id) {
             func_020a8304(cont);
             Entry020a83fc* entry = _Z21FindEntryById020a83fcP17Container020a83fci((Container020a83fc*)cont, sceneId);
             if (entry) {
-                *(unsigned short*)(field + 0x2786) = entry->x;
-                *(unsigned short*)(field + 0x2784) = entry->y;
-                field[0x2788] = 0;
-                Vector3i pos = *(Vector3i*)(field + 0x2774);
+                *(unsigned short*)(field + kFieldXOffset) = entry->x;
+                *(unsigned short*)(field + kFieldYOffset) = entry->y;
+                field[kFieldFlagOffset] = 0;
+                Vector3i pos = *(Vector3i*)(field + kFieldPositionOffset);
                 pos.x = entry->posX;
                 pos.z = entry->posZ;
-                _ZN8Vector3iaSERKS_((int*)(field + 0x2774), (int*)&pos);
+                _ZN8Vector3iaSERKS_((int*)(field + kFieldPositionOffset), (int*)&pos);
                 func_ov017_021d1a18(entry->x, entry->y, 0, 1);
             }
             alloc.Destroy();
         }
         if (sceneId == 0x119a) {
-            *(unsigned short*)(field + 0x27b4) = 1;
-            *(unsigned short*)(field + 0x27b6) = 0;
+            *(unsigned short*)(field + kFieldHalfwordAOffset) = 1;
+            *(unsigned short*)(field + kFieldHalfwordBOffset) = 0;
             _Z40SetHalfFieldsAndEnqueueIfActive_021d1c2ctt(1, 0);
         }
     }
@@ -167,7 +175,7 @@ extern "C" ARM void func_ov017_0219bfb4(int mode, unsigned short id) {
     }
 
     char* controller = (char*)_Z26GetGlobalField0x1c020421a0v();
-    memset(*(void**)(controller + 0x5c), 0, 0x960);
+    memset(*(void**)(controller + kControllerBufferOffset), 0, kControllerBufferSize);
     _Z24ReinitController02043204Pc(controller);
     if (func_ov017_0219ff58(res, 0, 0, 1)) {
         unsigned char* obj = (unsigned char*)res->unknown_ptr_array_3afc[0x14];

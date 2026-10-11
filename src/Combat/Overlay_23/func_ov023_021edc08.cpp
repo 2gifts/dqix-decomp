@@ -17,9 +17,16 @@ struct BattleInfo {
     BinarySearchByComparatorStruct rewards_;
 };
 struct CombatScreen {
+#if defined(jpn)
+    char pad0[0x21c]; BattleInfo* battle_; char pad220[0xb94 - 0x220];
+    int camera_[1]; char padB98[0xe20 - 0xb98]; Obj020d6f0c* manager_;
+    char padE24[0x71ec - 0xe24]; char entries_[1];
+#else
     char pad0[0x2a0]; BattleInfo* battle_; char pad2A4[0xc18 - 0x2a4];
     int camera_[1]; char padC1C[0xea4 - 0xc1c]; Obj020d6f0c* manager_;
     char padEA8[0x6ffc - 0xea8]; char entries_[1];
+#endif
+
 };
 struct CombatWork {
     int state_; int tasks_[3]; unsigned char field10_; unsigned char field11_;
@@ -27,18 +34,37 @@ struct CombatWork {
     char pad3C[0x6c - 0x3c]; int field6C_; int field70_; char pad74[0xe2 - 0x74];
     unsigned char fieldE2_; char padE3; signed char rewardIndex_; signed char fieldE5_;
     char padE6[2]; Pair0209a338 pair_; int fieldF0_; int dispatch_[6];
+#if defined(jpn)
+    Words021edf38 words_; char data_[0x2380]; unsigned char field2788_; char pad2789[7];
+#else
     Words021edf38 words_; char data_[0x2670]; unsigned char field2788_; char pad2789[7];
+#endif
+
 };
 struct CombatGlobal { CombatWork* work_; int field4_; int flags_; };
 struct TextRenderer {
+#if defined(jpn)
+    char pad0[0x10]; void* argument_; char pad14[0x868 - 0x14]; int active_;
+#else
     char pad0[0x10]; void* argument_; char pad14[0x998 - 0x14]; int active_;
+#endif
+
 };
+#if defined(jpn)
+struct ZoneData { char pad0[0x240c]; ActiveGrottoClass grotto_; };
+#else
 struct ZoneData { char pad0[0x23ec]; ActiveGrottoClass grotto_; };
+#endif
+
 struct GrottoRewardView { short field0_, field2_; short ids_[3]; };
 struct SoundIds { int ids_[6]; };
 extern "C" CombatGlobal _ZZ17GetGlobal021ffefcvE1s;
 extern Actor0209c678 data_02109bf4;
 extern const SoundIds data_ov023_021fd870;
+#if defined(jpn)
+extern const char data_ov023_021fd45c[];
+extern "C" void func_02045d88(TextRenderer*, const char*, int);
+#endif
 extern "C" void* func_0202ae18();
 TextRenderer* GetGlobalField0x1c020421a0();
 unsigned int* GetDataPtr02114e04_020d6c00();
@@ -80,9 +106,15 @@ static inline SafeAllocator* GetAllocator(GameResources* resources, int index) {
     return &resources->allocator_array_38[index];
 }
 
+// JPN: func_ov023_021ed9ec
 // USA: func_ov023_021edc08
 extern "C" ARM int func_ov023_021edc08(CombatScreen* self) {
+#if defined(jpn)
+    GameState* game = GameState::GetInstance();
+#else
     GameState::GetInstance();
+#endif
+
     GameResources* resources = func_ov017_0218b5b0();
     void* mode = func_0202ae18();
     TextRenderer* renderer = GetGlobalField0x1c020421a0();
@@ -128,6 +160,13 @@ extern "C" ARM int func_ov023_021edc08(CombatScreen* self) {
     PushInputLogB(1);
     InitAndDispatch_021f52f8(_ZZ17GetGlobal021ffefcvE1s.work_->dispatch_, allocator);
     if (func_0202c540(mode) && self->battle_->special_) {
+#if defined(jpn)
+        GameObject* member = game->GetPartyMemberByIndex(0);
+        DetailedTreasureMapData* detail = func_02012fe4()->grotto_.GetDetailedData();
+        char message[128];
+        sprintf(message, data_ov023_021fd45c, *(const char**)((char*)member + 0x134), (char*)detail + 0x5a);
+        func_02045d88(renderer, message, 1);
+#else
         func_02046380(renderer);
         GrottoRewardView* rewards = (GrottoRewardView*)&func_02012fe4()->grotto_.GetDetailedData()->regular_;
         Words021edf38 words;
@@ -145,6 +184,8 @@ extern "C" ARM int func_ov023_021edc08(CombatScreen* self) {
         char message[256];
         sprintf(message, CallFunc020e0434With02153694(200));
         func_0204500c(renderer, message, 1, 0xe3);
+
+#endif
         renderer->active_ = 1;
         ResetAndDispatchActorContext0209c6d8(&data_02109bf4, 0x36);
     }

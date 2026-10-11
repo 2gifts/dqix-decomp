@@ -1,3 +1,8 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 struct List0204af64;
@@ -27,7 +32,7 @@ struct PartyMemberData {
 
 class GameObject {
 public:
-    char unk_0[0x150];
+    char unk_0[R(0x144, 0x150)];
     PartyMemberData* partyData_;
 };
 
@@ -46,8 +51,10 @@ struct PotIngredient {
 };
 
 struct AlchemyMenu {
+#if !defined(jpn)
     int textPosition_;
     char** texts_;
+#endif
     void* canvasBuffer_;
     void* allocators_;
     void* pot_;
@@ -72,10 +79,10 @@ struct AlchemyMenu {
     unsigned short buttons_;
     unsigned char unk_aa;
     int renderer_[0x54 / 4];
-    int layout_[0x4c / 4];
+    int layout_[R(0x48, 0x4c) / 4];
     int table_[0xc / 4];
     int menuTexts_[0x18 / 4];
-    char itemNames_[0xc];
+    char itemNames_[R(0x18, 0xc)];
     PotIngredient results_[4];
     int ticks_;
     int menuResult_;
@@ -141,7 +148,9 @@ extern "C" ARM void func_ov006_02157a60(AlchemyMenu* self)
     char* flags = (char*)func_0205ec34();
     if (!TestBitInByteArray((int)flags, (unsigned char*)(flags + 0x8c), 0x777))
         SetOrClearBitInArray(flags, (unsigned char*)(flags + 0x8c), 0x777, 1);
+#if !defined(jpn)
     self->textPosition_ = 0;
+#endif
     self->showResult_ = 0;
     self->resultTask_ = -1;
     self->fadeTimer_ = 0;

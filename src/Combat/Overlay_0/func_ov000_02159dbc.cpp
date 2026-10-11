@@ -31,7 +31,12 @@ extern "C" ARM int func_ov000_02159dbc(char* battle, int combatantId) {
     }
     char* zone = func_02012fe4();
     if (IsGlobalU16InRange(gs) && (*(struct PartyWork_02159dbc**)(battle + 0x8e18))->field_0x25 != 0) {
-        DetailedTreasureMapData* detail = ((ActiveGrottoClass*)(zone + 0x23ec))->GetDetailedData();
+#if defined(jpn)
+        enum { grottoOffset = 0x240c };
+#else
+        enum { grottoOffset = 0x23ec };
+#endif
+        DetailedTreasureMapData* detail = ((ActiveGrottoClass*)(zone + grottoOffset))->GetDetailedData();
         short monsterId = combatant->obj3D_.unknown_2_;
         unsigned short alt = detail->legacy_.MaybeGetCurrentAlternateID();
         if (alt == monsterId) {

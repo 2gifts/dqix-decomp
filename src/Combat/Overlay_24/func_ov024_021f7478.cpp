@@ -53,11 +53,18 @@ struct Combatant_021f7478 {
     char pad6[0x12e];
     struct BaseCombatStats* baseStats;
     struct ModifiableCombatStats* currentStats;
+#if defined(jpn)
+    char pad13c[8];
+    unsigned char* f150;
+    struct MoveSet_021f7478* moveSet;
+    char pad14c[0x30];
+#else
     char pad13c[0xc];
     struct MoveSet_021f7478* moveSet;
     char pad14c[4];
     unsigned char* f150;
     char pad154[0x28];
+#endif
     unsigned char side;
 };
 
@@ -224,8 +231,14 @@ static inline float HalfDiffInt(int attack, unsigned short defense) {
     return ((float)attack - (float)defense / 2.0f) / 2.0f;
 }
 
+// JPN: func_ov024_021f7c44
 // USA: func_ov024_021f7478
 extern "C" ARM void func_ov024_021f7478(struct Obj_021f7478* obj) {
+#if defined(jpn)
+ enum { regionalGrottoOffset=0x240c };
+#else
+ enum { regionalGrottoOffset=0x23ec };
+#endif
     int fromMax[8];
     int blended[8];
     short bufA[4];
@@ -442,7 +455,7 @@ extern "C" ARM void func_ov024_021f7478(struct Obj_021f7478* obj) {
         for (int j = 0; j < 6; j++) {
             unsigned short moveId = set->moves[j];
             if (IsGlobalU16InRange(gs) && ((struct PartyWork_021f7478*)((struct Battle_021f7478*)obj->battle)->partyWork)->f25 != 0) {
-                char* detail = _ZN17ActiveGrottoClass15GetDetailedDataEv((char*)func_02012fe4() + 0x23ec);
+                char* detail = _ZN17ActiveGrottoClass15GetDetailedDataEv((char*)func_02012fe4() + regionalGrottoOffset);
                 short kindId = c->kindId;
                 unsigned short alt = _ZNK23DetailedTreasureMapData17LegacyBossMapData26MaybeGetCurrentAlternateIDEv(detail + 0x4c);
                 if (alt == kindId) {

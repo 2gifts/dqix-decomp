@@ -1,7 +1,18 @@
+// JPN: func_ov017_021c2cf0
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Resource/GameResources.h"
 #include "Resource/TextQueue.h"
+
+#if defined(jpn)
+extern "C" int sprintf(char* out, const char* format, ...);
+extern "C" void func_020d7e10(void* receiver, void* input, int style, int flag, unsigned char option);
+extern "C" char data_ov017_021d70e0[];
+extern "C" char data_ov017_021d7108[];
+enum { ResourceFlag = 0x40c8, GrottoReset = 0x27d4 };
+#else
+enum { ResourceFlag = 0x42e8, GrottoReset = 0x2794 };
+#endif
 
 struct SearchStruct;
 extern "C" struct SearchStruct* func_0202ae18(void);
@@ -68,12 +79,17 @@ extern "C" ARM void func_ov017_021c2784(Obj_021c2784* obj) {
     }
 
     if (obj->state == 0) {
-        *(unsigned char*)((char*)ov + 0x42e8) = 1;
+        *(unsigned char*)((char*)ov + ResourceFlag) = 1;
         CancelPendingAction020397cc((struct Obj020397cc*)c, 1);
         *(unsigned short*)((char*)c + 0xb2) = 0;
         if (obj->field11 != 0) {
             obj->field8 = 0;
         } else {
+#if defined(jpn)
+            char buf2[0x50];
+            sprintf(buf2, data_ov017_021d70e0, *(char**)((char*)a + 0x134));
+            func_020d7e10(reset, buf2, 0, 0, 1);
+#else
             void* g = GetGlobalField0x1c020421a0();
             char buf1[0xc];
             char buf2[0x50];
@@ -82,6 +98,7 @@ extern "C" ARM void func_ov017_021c2784(Obj_021c2784* obj) {
             int ret = CallFunc020e0434With02153694(0x26);
             func_02046608(g, 0xc, ret, buf2, 0xe3, 0, 1);
             func_020d7e10(reset, buf2, 0, 0, 1, 1);
+#endif
             SetForwardAndStore0205ebc0(&data_02108760, 0x79, 0x79);
             DispatchIfField0xc4NonNeg_0205ebfc(&data_02108760, 0, 0);
             obj->field8 = 0x3e8;
@@ -98,7 +115,7 @@ extern "C" ARM void func_ov017_021c2784(Obj_021c2784* obj) {
 
         unsigned short* p = func_02012fe4();
         if (*p == 0x2710) {
-            *(int*)((char*)p + 0x2794) = 0;
+            *(int*)((char*)p + GrottoReset) = 0;
             InitContext020e1154((void*)0x7d0);
             obj->state = 5;
             return;
@@ -125,8 +142,12 @@ extern "C" ARM void func_ov017_021c2784(Obj_021c2784* obj) {
             val = 0;
         } else {
             TeardownAndResetState020d7aa0((struct Obj020d7aa0*)reset);
+#if defined(jpn)
+            func_020d7e10(reset, data_ov017_021d7108, 0, 0, 1);
+#else
             int cbv = CallFunc020e0434With02153694(0x27);
             func_020d7e10(reset, (void*)cbv, 0, 0, 1, 1);
+#endif
             val = 0xbb8;
         }
         obj->field8 = val;

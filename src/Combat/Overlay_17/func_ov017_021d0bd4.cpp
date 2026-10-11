@@ -31,9 +31,15 @@ struct NameSlot021d0bd4 {
     char name[14];
 };
 
+// JPN: func_ov017_021d1068
 // USA: func_ov017_021d0bd4
 extern "C" ARM void func_ov017_021d0bd4(int value, Evt021d0bd4* evt, int unused, unsigned char* obj, struct SearchStruct0202c1a4* search) {
-    unsigned char* status = *(unsigned char**)(obj + 0x3000 + 0xb30);
+#if defined(jpn)
+ enum {regionalOffset0=0x910, regionalOffset1=0x13c, regionalOffset2=0xc};
+#else
+ enum {regionalOffset0=0xb30, regionalOffset1=0x35c, regionalOffset2=0x30};
+#endif
+    unsigned char* status = *(unsigned char**)(obj + 0x3000 + regionalOffset0);
     switch (evt->mode) {
     case 0: {
         _Z33SetSearchBitAndClearFlag_021954c4Pvi(obj, evt->slot);
@@ -42,12 +48,17 @@ extern "C" ARM void func_ov017_021d0bd4(int value, Evt021d0bd4* evt, int unused,
         slotName.flag = 1;
         strcpy(slotName.name, evt->name);
         _Z28SetNameSlotAndClear_0219541cPviPc(obj, evt->slot, (char*)&slotName);
-        unsigned char* entry = obj + 0x35c + 0x4000 + evt->slot * 0x30;
+        unsigned char* entry = obj + regionalOffset1 + 0x4000 + evt->slot * regionalOffset2;
         if (entry == 0) break;
-        char nameBuf[0x30];
-        __clear(nameBuf, 0x30);
+#if defined(jpn)
+        strcpy((char*)entry, evt->name);
+#else
+        char nameBuf[regionalOffset2];
+        __clear(nameBuf, regionalOffset2);
         func_02042764(evt->name, nameBuf, 1);
         strcpy((char*)entry, nameBuf);
+#endif
+
         break;
     }
     case 1:

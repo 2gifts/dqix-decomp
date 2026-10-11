@@ -29,8 +29,14 @@ extern "C" Object3D* _Z21GetField4334_021bdbc0Ph(unsigned char* ov);
 
 extern unsigned short data_02114e30;
 
+// JPN: func_ov017_0218f254
 // USA: func_ov017_0218e674
 extern "C" ARM void func_ov017_0218e674(unsigned char* ov) {
+#if defined(jpn)
+ enum {regionalOffset0=0x524, regionalOffset1=0x180};
+#else
+ enum {regionalOffset0=0x734, regionalOffset1=0x18c};
+#endif
     GameState* battle = GameState::GetInstance();
     func_0202ae18();
     if (GetField0x3b0Value(battle) == 0) return;
@@ -45,7 +51,7 @@ extern "C" ARM void func_ov017_0218e674(unsigned char* ov) {
         GetBitsInField0((unsigned int*)ov, 0x2000) != 0) {
         flag = 0;
     }
-    if (_Z29HasFlag3orFlag2And9a_021bd3a4P12Obj_021bd3a4(*(struct Obj_021bd3a4**)(ov + 0x3000 + 0x734)) != 0) {
+    if (_Z29HasFlag3orFlag2And9a_021bd3a4P12Obj_021bd3a4(*(struct Obj_021bd3a4**)(ov + 0x3000 + regionalOffset0)) != 0) {
         flag = 0;
     }
     int dispatch = 0;
@@ -69,7 +75,7 @@ extern "C" ARM void func_ov017_0218e674(unsigned char* ov) {
         if (func_0202c540(func_0202ae18()) != 0 &&
             member->obj3D_.GetField06() == battle->GetUnknownGameObject()->obj3D_.GetField06() &&
             ((member->obj3D_.unknown_0_ & 0x1000) != 0 ||
-             (member->obj3D_.unknown_4_ == 0 && (*(unsigned int*)((char*)member + 0x18c) & 1) != 0)) &&
+             (member->obj3D_.unknown_4_ == 0 && (*(unsigned int*)((char*)member + regionalOffset1) & 1) != 0)) &&
             GetSignedByte0x1c8(member) >= 0) {
             handled[i] = 1;
             func_02037d88(member);

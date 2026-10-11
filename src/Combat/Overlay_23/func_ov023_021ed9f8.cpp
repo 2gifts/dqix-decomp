@@ -40,16 +40,22 @@ struct InnerReset021ed9f8 {
     int fc;
 };
 
+// JPN: func_ov023_021ed7dc
 // USA: func_ov023_021ed9f8  (semantic: ScaleOrResetCombatants_021ed9f8)
 extern "C" ARM void func_ov023_021ed9f8(char* obj) {
+#if defined(jpn)
+ enum {regionalOffset0=0x21c, regionalOffset1=0x371c, regionalOffset2=0xe28, regionalOffset3=0x79c1, regionalOffset4=0x5778};
+#else
+ enum {regionalOffset0=0x2a0, regionalOffset1=0x3760, regionalOffset2=0xeac, regionalOffset3=0x77d1, regionalOffset4=0x5588};
+#endif
     GameState::GetInstance();
     int dataX = (int)BackgroundLoader::GetInstance();
     ((int)func_ov017_0218b5b0());
-    unsigned char* p = *(unsigned char**)(obj + 0x2a0);
+    unsigned char* p = *(unsigned char**)(obj + regionalOffset0);
     int n = func_ov017_02195658();
     if (n > 0) {
         void* q = GetData02108ea8();
-        func_ov000_02174a50(obj + 0x3760, n);
+        func_ov000_02174a50(obj + regionalOffset1, n);
         ClearBitAt0x34(p, n & 0xff);
         ProcessEntries0207da94((struct Entry0207da94*)q, (int)(unsigned char)n);
         if (n == (signed char)p[0x2a]) {
@@ -71,7 +77,7 @@ extern "C" ARM void func_ov023_021ed9f8(char* obj) {
         _ZZ17GetGlobal021ffefcvE1s.flags = flags | 1;
     }
 
-    int idx = *(int*)(obj + 0xeac);
+    int idx = *(int*)(obj + regionalOffset2);
     struct DispatchEntry021ed9f8* d = &data_ov023_021fe148[idx];
     void* base = obj + ((int)d->locator >> 1);
     void* callback;
@@ -81,11 +87,11 @@ extern "C" ARM void func_ov023_021ed9f8(char* obj) {
         callback = (void*)d->fn;
     }
     int result = ((int(*)(void*))callback)(base);
-    *(int*)(obj + 0xeac) = result;
+    *(int*)(obj + regionalOffset2) = result;
 
     int reinit = 0;
     if (func_ov017_021959b4()) {
-        if (*(unsigned char*)(obj + 0x77d1) == 0) {
+        if (*(unsigned char*)(obj + regionalOffset3) == 0) {
             SetCombatWorkFlags0x55f4(obj, 0x2000000);
             reinit = 1;
         }
@@ -93,10 +99,10 @@ extern "C" ARM void func_ov023_021ed9f8(char* obj) {
 
     if (reinit) {
         ResetAndReinit_021f52c8((char*)_ZZ17GetGlobal021ffefcvE1s.inner + 0xf4);
-        if (*(void**)(obj + 0x5588) != NULL) {
-            InitCombatEntry_021d8b6c(*(void**)(obj + 0x5588));
-            func_ov023_021d8af8(*(void**)(obj + 0x5588));
-            *(void**)(obj + 0x5588) = NULL;
+        if (*(void**)(obj + regionalOffset4) != NULL) {
+            InitCombatEntry_021d8b6c(*(void**)(obj + regionalOffset4));
+            func_ov023_021d8af8(*(void**)(obj + regionalOffset4));
+            *(void**)(obj + regionalOffset4) = NULL;
         }
 
         if (((InnerReset021ed9f8*)_ZZ17GetGlobal021ffefcvE1s.inner)->f4 > -1) {
@@ -115,7 +121,7 @@ extern "C" ARM void func_ov023_021ed9f8(char* obj) {
         return;
     }
 
-    void* entry = *(void**)(obj + 0x5588);
+    void* entry = *(void**)(obj + regionalOffset4);
     if (entry == NULL) return;
     func_ov023_021d8bb4(entry);
 }

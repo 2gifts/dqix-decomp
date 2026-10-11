@@ -2,7 +2,11 @@
 
 extern "C" void* func_ov011_021849c8(void*);
 extern "C" void* func_ov023_021f6880(void*, int);
+#if defined(jpn)
+extern "C" int func_ov023_021f6f10(void* self);
+#else
 int ScaleStatsIfType12_021f6f10(void* self);
+#endif
 extern char* data_ov004_021707c0; // pointer to struct with fields at 0x78 (short), 0x7a (short)
 extern "C" short func_ov004_021537e0(void);
 extern "C" short func_ov004_02153860(void);
@@ -34,7 +38,11 @@ public:
 ARM int NotifyChainIfConditions_02154c78(void* self) {
 	VObj02154c78* node = (VObj02154c78*)func_ov023_021f6880(func_ov011_021849c8(self), 0x39);
 	if (!node) return 0;
+#if defined(jpn)
+	if (func_ov023_021f6f10(node) != 0x12) return 0;
+#else
 	if (ScaleStatsIfType12_021f6f10(node) != 0x12) return 0;
+#endif
 
 	node->CallEc();
 	if (!node) return 0;

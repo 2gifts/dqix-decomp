@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+
 extern "C" int func_ov004_02157128(void* a);
 extern "C" int func_ov004_02157a28(void* a, int flag);
 void* GetPtrField0x2a04(GameState* battleStruct);
@@ -13,8 +14,14 @@ struct Bits { unsigned int lo : 27; unsigned int b27 : 1; unsigned int b28 : 1;
               unsigned int b29 : 1;  unsigned int hi : 2; };
 struct Node { unsigned int w0; Bits f; };
 struct FlagByte { unsigned char bit0 : 1; unsigned char _rest : 7; };
+#if defined(jpn)
+
+extern "C" GameObject* GetCombatantWithFlag0x100(GameState*, int);
+#else
+#endif
 
 // USA: func_ov004_0215dd3c
+// JPN: func_ov004_0215ec6c
 extern "C" ARM int func_ov004_0215dd3c(void* a) {
     int prev = func_ov004_02157128(a);
     GameState* bs = GameState::GetInstance();
@@ -27,7 +34,11 @@ extern "C" ARM int func_ov004_0215dd3c(void* a) {
     for (unsigned char i = 0; i < 8; i++) {
         unsigned char byte = buf.b[i];
         if (byte == 0xff) break;
+#if defined(jpn)
+        char* entry = (char*)(*(unsigned char**)((char*)combatant + 0x144) + 0x194) + byte * 0x20;
+#else
         char* entry = (char*)(*(unsigned char**)((char*)combatant + 0x150) + 0x194) + byte * 0x20;
+#endif
         if (entry) {
             char* p2 = *(char**)entry;
             if (p2) {
@@ -35,7 +46,11 @@ extern "C" ARM int func_ov004_0215dd3c(void* a) {
                     int bit27 = ((Node*)p2)->f.b27 ? 1 : 0;
                     flags[1] = ((Node*)p2)->f.b28 ? 1 : 0;
                     flags[0] = bit27;
+#if defined(jpn)
+                    unsigned int idx = ((FlagByte*)(*(unsigned char**)((char*)combatant + 0x144) + 0x49c))->bit0;
+#else
                     unsigned int idx = ((FlagByte*)(*(unsigned char**)((char*)combatant + 0x150) + 0x49c))->bit0;
+#endif
                     if (!flags[idx]) {
                         func_02052d7c(combatant, data_ov004_0216fc1c[i], -1);
                         if (entry) {

@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { bitsOffset = 0x21c, modeOffset = 0x5b41 };
+#else
+enum { bitsOffset = 0x2a0, modeOffset = 0x5951 };
+#endif
 #include "GameState/GameState.h"
 
 struct Obj02049e88;
@@ -12,7 +17,7 @@ extern "C" ARM void func_ov000_02167f10(unsigned char* obj) {
     GameObject* c;
     int i;
     for (i = 0; i < 4; i++) {
-        if (TestBitAt0x34(*(unsigned char**)(obj + 0x2a0), i & 0xff)) {
+        if (TestBitAt0x34(*(unsigned char**)(obj + bitsOffset), i & 0xff)) {
             c = bs->GetCombatantByIndex(i);
             if (c) {
                 ResetSubFlags02049e88((struct Obj02049e88*)c);
@@ -27,5 +32,5 @@ extern "C" ARM void func_ov000_02167f10(unsigned char* obj) {
             ClearSubstructFlag0x4((unsigned char*)c);
         }
     }
-    obj[0x5951] &= ~0x3;
+    obj[modeOffset] &= ~0x3;
 }

@@ -19,6 +19,7 @@ struct Obj3_021ea78c {
 };
 
 // USA: func_ov024_021ea78c
+// JPN: func_ov024_021eaf58
 ARM int CheckCombatantInTable_021ea78c(struct Wrapper_021ea78c* a, int id, struct Obj3_021ea78c* c) {
     GameObject* combatant = GetCombatantByID(a->field0x10, id);
     if (!combatant) return 0;

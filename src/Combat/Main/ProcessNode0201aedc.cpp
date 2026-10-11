@@ -21,11 +21,19 @@ extern "C" void _ZN7Model3D4DrawEb(void* a, int b);
 
 struct Ctx0201aedc { unsigned short field0; };
 
+
+#if defined(jpn)
+enum { NodeBufferOffset = 0x25f4 };
+#else
+enum { NodeBufferOffset = 0x25b4 };
+#endif
+
+// JPN: func_0201ac7c
 // USA: func_0201aedc
 ARM void ProcessNode0201aedc(Ctx0201aedc* p) {
     if (IsValueInRange0201b5d8(p->field0)) return;
 
-    char* buf = (char*)p + 0x25b4;
+    char* buf = (char*)p + NodeBufferOffset;
 
     Node020196fc* node = GetNodeAtDepth020196fc((Obj020196fc*)p, 5);
     if (node != 0) {

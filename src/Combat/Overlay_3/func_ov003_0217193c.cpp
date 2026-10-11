@@ -1,4 +1,13 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegion731 = 0x62d };
+enum { kRegion733 = 0x62f };
+enum { kRegion738 = 0x634 };
+#else
+enum { kRegion731 = 0x731 };
+enum { kRegion733 = 0x733 };
+enum { kRegion738 = 0x738 };
+#endif
 #include "GameState/GameState.h"
 
 struct Element0202bad4;
@@ -48,13 +57,14 @@ struct Obj0217193c {
     Key0217193c key;
     char pad1ba[2];
     int field1bc;
-    char pad1c0[0x731 - 0x1c0];
+    char pad1c0[kRegion731 - 0x1c0];
     signed char retries;
     signed char attempts;
-    char pad733[0x738 - 0x733];
+    char pad733[kRegion738 - kRegion733];
     int field738;
 };
 
+// JPN: func_ov003_02170c88
 // USA: func_ov003_0217193c
 extern "C" ARM void func_ov003_0217193c(struct Obj0217193c* obj) {
     Entry0217193c* entry;
@@ -77,15 +87,19 @@ extern "C" ARM void func_ov003_0217193c(struct Obj0217193c* obj) {
         for (i = 0; i < count; i++) {
             entry = (Entry0217193c*)GetElementAt0x10Stride0xc0((struct ElementArray0202bad4*)search, i);
             if (func_ov003_02171d78(obj, entry->key.data) == 0 && entry->flags.available) {
+#if !defined(jpn)
                 if (found > 0 && obj->flags.team != entry->flags.team) break;
+#endif
                 _Z29StartBattleTransition0202b840Pii((int*)search, i);
                 obj->selected = 0;
+#if !defined(jpn)
                 obj->name = entry->name;
                 obj->field1b0 = entry->field64;
                 obj->flags = entry->flags;
                 obj->field1b2 = entry->field66;
                 obj->key = entry->key;
                 obj->field1bc = entry->field70;
+#endif
                 obj->state = 6;
                 found++;
             } else if (entry->flags.remember) {

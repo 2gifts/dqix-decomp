@@ -1,25 +1,50 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegion36 = 0x2a };
+enum { kRegion324 = 0x20c };
+enum { kRegion328 = 0x210 };
+enum { kRegion464 = 0x28c };
+enum { kRegion468 = 0x290 };
+enum { kRegion474 = 0x29c };
+enum { kRegion476 = 0x29e };
+enum { kRegion484 = 0x2ac };
+enum { kRegion48c = 0x2b4 };
+enum { kRegion4a3 = 0x2cb };
+enum { kRegion88 = 0x68 };
+#else
+enum { kRegion36 = 0x36 };
+enum { kRegion324 = 0x324 };
+enum { kRegion328 = 0x328 };
+enum { kRegion464 = 0x464 };
+enum { kRegion468 = 0x468 };
+enum { kRegion474 = 0x474 };
+enum { kRegion476 = 0x476 };
+enum { kRegion484 = 0x484 };
+enum { kRegion48c = 0x48c };
+enum { kRegion4a3 = 0x4a3 };
+enum { kRegion88 = 0x88 };
+#endif
 #include "GameState/GameState.h"
 #include "Grotto/Main/GrottoStruct.h"
 
 struct Cont0207fe44 {
-    char pad0[0x36];
+    char pad0[kRegion36];
     short field36;
 };
 
 struct Battle0216512c {
-    char pad0[0x324];
+    char pad0[kRegion324];
     struct Cont0207fe44* model;
-    char pad328[0x464 - 0x328];
+    char pad328[kRegion464 - kRegion328];
     unsigned int flags;
-    char pad468[0x474 - 0x468];
+    char pad468[kRegion474 - kRegion468];
     short field474;
-    char pad476[0x484 - 0x476];
+    char pad476[kRegion484 - kRegion476];
     short field484;
     short field486;
     short field488;
     short field48a;
-    char pad48c[0x4a3 - 0x48c];
+    char pad48c[kRegion4a3 - kRegion48c];
     unsigned char code;
     unsigned char step;
 };
@@ -33,6 +58,7 @@ extern "C" void VectorizedMemset(void* dst, int val, int size);
 void ClearFlag0x3c9Bit0AndCleanup(unsigned char* obj);
 void SetOrClearFlag40_02166f80(void* self, int key, int set);
 
+// JPN: func_ov003_02165114
 // USA: func_ov003_0216512c
 extern "C" ARM void func_ov003_0216512c(struct Battle0216512c* obj) {
     unsigned char* global = GetGlobal02109030();
@@ -60,7 +86,7 @@ extern "C" ARM void func_ov003_0216512c(struct Battle0216512c* obj) {
         obj->step = 3;
     } else if (obj->step == 2) {
         GrottoStruct* grotto = GameState::GetInstance()->GetGrottoStruct();
-        VectorizedMemset(grotto, 0, 0x88);
+        VectorizedMemset(grotto, 0, kRegion88);
         grotto->unknown_0[0] = 0;
         grotto->unknown_0[1] = 0;
         obj->flags |= 0x82;

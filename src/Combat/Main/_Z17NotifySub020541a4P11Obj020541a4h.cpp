@@ -1,5 +1,11 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { fieldPadding = 0x13e };
+#else
+enum { fieldPadding = 0x14a };
+#endif
+
 extern "C" void _ZN9GameState11GetInstanceEv(void);
 extern "C" void* func_ov017_0218b5b0(void);
 extern "C" void func_ov017_02191aac(char* obj, int mode, int idx, unsigned char mask);
@@ -9,7 +15,7 @@ extern "C" void _Z26EnqueueEventTag17_021ce014ittt(int a, unsigned short b, unsi
 struct Obj020541a4 {
     unsigned char pad0[4];
     short field4;
-    unsigned char pad6[0x14a];
+    unsigned char pad6[fieldPadding];
     unsigned char* field150;
 };
 

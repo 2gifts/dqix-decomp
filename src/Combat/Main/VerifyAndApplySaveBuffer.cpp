@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kFlagOffset = 0xa68, kBufferOffset = 0x6120 };
+#else
+enum { kFlagOffset = 0xcc8, kBufferOffset = 0x6380 };
+#endif
+
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
 
@@ -14,7 +21,7 @@ struct Buf020ac864 {
 ARM int VerifyAndApplySaveBuffer(int flag) {
     GameState* bs = GameState::GetInstance();
     unsigned char* flagAddr = (unsigned char*)bs + 0x5000;
-    flagAddr[0xcc8] = 0;
+    flagAddr[kFlagOffset] = 0;
     int ok = 1;
     int id = flag ? 0x8024 : 0x24;
     struct Buf020ac864 buf;
@@ -23,10 +30,10 @@ ARM int VerifyAndApplySaveBuffer(int flag) {
     }
     if (ok) {
         if (func_01ff85b8((char*)&buf + 4, 0x5c) != buf.hdr) {
-            ((unsigned char*)bs + 0x5000)[0xcc8] = flag ? 3 : 2;
+            ((unsigned char*)bs + 0x5000)[kFlagOffset] = flag ? 3 : 2;
             ok = 0;
         } else {
-            memcpy((char*)bs + 0x6380, &buf, 0x54);
+            memcpy((char*)bs + kBufferOffset, &buf, 0x54);
         }
     }
     return ok;

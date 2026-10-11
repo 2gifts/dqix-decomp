@@ -20,6 +20,7 @@ extern "C" void func_ov024_021f9660(void* obj);
 extern "C" int func_ov024_021f8628(void* obj, void* p1, void* p2, void* p3);
 extern "C" int func_ov024_021f691c(void* obj, unsigned short* outB, void* outA, int key);
 
+// JPN: func_ov024_021f89a8
 // USA: func_ov024_021f81dc
 extern "C" ARM int func_ov024_021f81dc(struct Ctx_021f81dc* obj, void* p1, struct S02053dc0* p2, unsigned short* outB) {
 	void* result = GetField0x19cOrNull(p2);

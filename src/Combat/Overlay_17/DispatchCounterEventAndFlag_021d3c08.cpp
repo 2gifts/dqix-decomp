@@ -1,4 +1,11 @@
+// JPN: func_ov017_021d4058
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kRegionalFieldOffset = 0xc };
+#else
+enum { kRegionalFieldOffset = 0x26c };
+#endif
 
 extern "C" int func_0202c508(void* obj);
 struct SearchStruct0202c1a4;
@@ -28,7 +35,7 @@ struct TableEntryAt8_021d3c08 {
 
 // USA: func_ov017_021d3c08  (semantic: DispatchCounterEventAndFlag_021d3c08)
 extern "C" ARM void func_ov017_021d3c08(int p0, struct EvtStruct021d3c08* evt, int table, int unused, struct SearchStruct0202c1a4* search) {
-    struct TableEntry021d3c08* arr = (struct TableEntry021d3c08*)((char*)table + 0x26c + 0x5c00);
+    struct TableEntry021d3c08* arr = (struct TableEntry021d3c08*)((char*)table + kRegionalFieldOffset + 0x5c00);
     if (evt->mode == 3 && func_0202c508(search)) {
         if (evt->field6 <= arr[evt->field7].counter) {
             EnqueueEventTag184_021d3bbc(evt->field7, evt->field6, 1, p0);

@@ -2,7 +2,12 @@
 
 extern "C" void* func_ov011_021849c8(void*);
 extern "C" void* func_ov023_021f6880(void*, int);
+#if defined(jpn)
+#define ScaleStatsIfType12_021f6f10 func_ov023_021f6f10
+extern "C" int func_ov023_021f6f10(void* self);
+#else
 int ScaleStatsIfType12_021f6f10(void* self);
+#endif
 extern "C" void* func_ov004_021551a8(void*);
 extern int TestBitInByteArray(int unused, unsigned char* arr, int index);
 extern "C" void* func_0205ec34(void);

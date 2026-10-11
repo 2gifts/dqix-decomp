@@ -24,15 +24,9 @@
 #define data_020f1d78 data_020f1ee4
 #define data_020f1dc0 data_020f1f2c
 #define data_020f1e08 data_020f1f74
-#define data_0210a274 data_02109f2c
 #define data_0210a278 data_02109f30
 #define data_0210b078 data_0210ad30
 
-#define _Z24SubmitBlock0x40IfNotBusyi func_020c6fc8
-#define func_020ca3ec func_020cbeb8
-#define func_020ca408 func_020cbed4
-#define func_020ca430 func_020cbefc
-#define func_020ca458 func_020cbf24
 #define func_020ca7d0 func_020cc29c
 #endif
 

@@ -1,4 +1,12 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kContextField = 0x524 };
+enum { kDistanceField = 0x7d4 };
+#else
+enum { kContextField = 0x734 };
+enum { kDistanceField = 0x794 };
+#endif
+
 
 extern "C" void* func_02012fe4(void);
 extern "C" void* func_ov017_0218b5b0(void);
@@ -24,7 +32,7 @@ extern "C" ARM void func_020a7ce0(struct Obj020a7ce0* p) {
     void* ctx = func_02012fe4();
     void* ov = func_ov017_0218b5b0();
     char* g = (char*)ov + 0x3000;
-    void* g734 = *(void**)(g + 0x734);
+    void* g734 = *(void**)(g + kContextField);
     if (((unsigned char*)g734)[3] != 0) return;
 
     struct Vec3 local = p->vec44;
@@ -33,7 +41,7 @@ extern "C" ARM void func_020a7ce0(struct Obj020a7ce0* p) {
     if (p->dist150 >= 0x3000) {
         int q = _s32_div_f(p->dist150, 0x3000);
         char* base = (char*)ctx + 0x2000;
-        *(int*)(base + 0x794) -= q;
+        *(int*)(base + kDistanceField) -= q;
         p->dist150 -= q << 12;
     }
     _ZN8Vector3iaSERKS_((int*)&p->vec144, (int*)&local);

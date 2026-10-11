@@ -9,6 +9,7 @@ struct Buf4_021eb2b4 { short v[4]; };
 extern struct Buf4_021eb2b4 data_ov024_021fe6d8;
 struct StatusByte0x3b { unsigned char lowBits:3; unsigned char flag:1; unsigned char highBits:4; };
 
+// JPN: func_ov024_021eba80
 // USA: func_ov024_021eb2b4
 extern "C" ARM int func_ov024_021eb2b4(struct Obj_021eb2b4* obj) {
     int result = 0;

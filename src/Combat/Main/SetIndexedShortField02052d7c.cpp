@@ -1,10 +1,16 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kPointerOffset = 0x144 };
+#else
+enum { kPointerOffset = 0x150 };
+#endif
+
 
 void SetOrClearBitInArray(void* unused, unsigned char* array, int bit, int value);
 extern "C" void* func_0205ec34(void);
 
 struct Obj02052d7c {
-    unsigned char pad[0x150];
+    unsigned char pad[kPointerOffset];
     char* f150;
 };
 

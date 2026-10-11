@@ -9,12 +9,16 @@ struct ThreeShorts021ded84 {
 void CopyThreeShorts021ded84(struct ThreeShorts021ded84* dst, struct ThreeShorts021ded84* src);
 
 struct Table_021deda0 {
+#if defined(jpn)
+	char pad[0x78dc];
+#else
 	char pad[0x76ec];
+#endif
 	struct ThreeShorts021ded84 rows[5];
 	unsigned short count;
 };
 
-#pragma optimize_for_size off
+// JPN: func_ov025_021df6b0
 // USA: func_ov025_021deda0
 ARM int ShiftRowsDown_021deda0(struct Table_021deda0* t, struct ThreeShorts021ded84* out) {
 	if (t->count != 0) {

@@ -1,4 +1,11 @@
+// JPN: func_ov017_02198e5c
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kRegionalFieldOffset = 0x8c };
+#else
+enum { kRegionalFieldOffset = 0x6c };
+#endif
 #include "GameState/GameState.h"
 
 struct Struct020a2928;
@@ -44,7 +51,7 @@ extern "C" ARM void func_ov017_021982ac(void) {
     unsigned char* state;
     int applied;
 
-    node = (struct PendingNode_021982ac*)GetPointerFromArray0x3c((unsigned char*)ctx + 0x6c, 4);
+    node = (struct PendingNode_021982ac*)GetPointerFromArray0x3c((unsigned char*)ctx + kRegionalFieldOffset, 4);
     state = (unsigned char*)GetFieldIfFlag4((char*)battle);
     if (state == 0) {
         return;

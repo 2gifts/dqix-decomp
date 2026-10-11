@@ -1,9 +1,15 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define func_ov006_02154e58 func_ov006_021565b0
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 struct Obj0215951c {
-    char pad0[0x50];
+    char pad0[R(0x48, 0x50)];
     unsigned short* table;
-    char pad54[0x362 - 0x54];
+    char pad54[0x362 - R(0x4c, 0x54)];
     short field362;
     char pad364[0x388 - 0x364];
     unsigned char field388;

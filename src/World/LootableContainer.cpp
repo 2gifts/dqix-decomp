@@ -5,10 +5,8 @@
 #include "Filesystem/FileIO.h"
 
 #ifdef jpn
-#define func_02032370 func_02031ea8
 
 #define data_02108e78 data_02108dbc
-#define data_02108e90 data_02108dd4
 #endif
 
 extern "C"

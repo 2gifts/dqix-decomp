@@ -1,3 +1,10 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define func_ov005_02158560 func_ov005_02159b58
+#define func_ov005_021585fc func_ov005_02159bf4
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 struct Struct_0205bef8;
@@ -13,7 +20,7 @@ struct MenuList {
 };
 
 struct EquipmentMenu {
-    char unk_0[0x19f4];
+    char unk_0[R(0x196c, 0x19f4)];
     MenuList cursor_;
     char unk_1a32[0x3db8 - 0x19f4 - sizeof(MenuList)];
     unsigned char state_;

@@ -10,6 +10,7 @@ extern "C" void func_ov031_02237b2c(int, int, int, int, int);
 extern void SetField18_02222e98(void);
 extern "C" void func_ov031_022314ec(void);
 
+// JPN: func_ov031_02231c48
 // USA: func_ov031_02231468  (semantic: DispatchStateThenSetHandler_02231468)
 extern "C" ARM void func_ov031_02231468(void) {
 	int state = func_ov031_02227bc8();

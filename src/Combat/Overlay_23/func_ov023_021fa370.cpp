@@ -26,7 +26,12 @@ struct Obj021fa370 {
     char pad0[0x10];
     char* fmt10;
     char pad1[0x28 - 0x14];
+#if defined(jpn)
+
+#else
     char* fmt28;
+#endif
+
     char pad2[0x2c - 0x2c];
     unsigned char kind;
 };
@@ -37,10 +42,16 @@ struct ObjTail021fa370 {
 };
 
 struct Combatant021fa370 {
+#if defined(jpn)
+    char pad[0x144];
+#else
     char pad[0x150];
+#endif
+
     struct Inner021fa370* inner;
 };
 
+// JPN: func_ov023_021f97f4
 // USA: func_ov023_021fa370
 extern "C" ARM int func_ov023_021fa370(struct Obj021fa370* obj, void* param1) {
     void* handleObj;
@@ -69,12 +80,18 @@ extern "C" ARM int func_ov023_021fa370(struct Obj021fa370* obj, void* param1) {
         zeroPad = 1;
     }
 
+#if defined(jpn)
+    sprintf(buf40, obj->fmt10, zeroPad);
+
+#else
     if (obj->fmt28 != 0) {
         sprintf(buf40, obj->fmt28, zeroPad);
     } else {
         sprintf(buf40, obj->fmt10, zeroPad);
     }
 
+
+#endif
     __clear(buf0, 0x40);
     if (strncmp(buf0, data_ov023_021feb30, 5) != 0) {
         strcpy(buf0, data_ov023_021feb30);
@@ -83,6 +100,10 @@ extern "C" ARM int func_ov023_021fa370(struct Obj021fa370* obj, void* param1) {
 
     {
         int result;
+#if defined(jpn)
+        result = ((BackgroundLoader*)(handle))->QueueLoadFile(buf0, (SafeAllocator*)0);
+
+#else
         if (obj->fmt28 != 0) {
             memset(buf40, 0, 0x20);
             sprintf(buf40, obj->fmt10, zeroPad);
@@ -90,6 +111,8 @@ extern "C" ARM int func_ov023_021fa370(struct Obj021fa370* obj, void* param1) {
         } else {
             result = ((BackgroundLoader*)(handle))->QueueLoadFile((const char*)((int)buf0), (SafeAllocator*)(0));
         }
+
+#endif
         func_ov023_021f6bb0(handleObj, result);
     }
     return 1;

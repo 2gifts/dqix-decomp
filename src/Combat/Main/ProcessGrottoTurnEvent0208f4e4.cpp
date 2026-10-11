@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kHeadOffset = 0x4ec, kMetadataOffset = 0x4c };
+#else
+enum { kHeadOffset = 0x6fc, kMetadataOffset = 0x6c };
+#endif
+
 #include "GameState/GameState.h"
 #include "Grotto/Main/GrottoStruct.h"
 
@@ -16,14 +23,14 @@ ARM void ProcessGrottoTurnEvent0208f4e4(unsigned char* obj) {
     void* miscPtr;
     void* headList;
     void* p = (char*)((void* (*)(GameState*))func_ov017_0218b5b0)(battle) + 0x3000;
-    headList = *(void**)((char*)p + 0x6fc);
+    headList = *(void**)((char*)p + kHeadOffset);
     miscPtr = func_02012fe4(p);
     if (obj[0xb5]) {
         func_0208f68c(obj);
     }
     if (GetHeadNodeIdOrMinusOne((struct HeadNode02046b24**)headList) == 10) return;
     GrottoStruct* grotto = battle->GetGrottoStruct();
-    TreasureMapMetadata* meta = (TreasureMapMetadata*)((char*)grotto + 0x6c);
+    TreasureMapMetadata* meta = (TreasureMapMetadata*)((char*)grotto + kMetadataOffset);
     unsigned short zoneId = *(unsigned short*)miscPtr;
     unsigned char state = meta->GetDiscoveryState();
     if (zoneId == *(int*)((char*)battle->GetGrottoStruct() + 0xc)) {

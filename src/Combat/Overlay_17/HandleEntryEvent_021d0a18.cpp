@@ -24,8 +24,14 @@ struct Target021d0a18 {
     unsigned short half12;
 };
 
+// JPN: func_ov017_021d0ec8
 // USA: func_ov017_021d0a18
 ARM void HandleEntryEvent_021d0a18(int a0, struct EntryStruct021d0a18* b, int unused, char* c, struct SearchStruct0202c1a4* list) {
+#if defined(jpn)
+ enum {regionalOffset0=0x98c};
+#else
+ enum {regionalOffset0=0xbac};
+#endif
     if (func_0202c508(list) != 0) {
         int ret = func_ov017_021a23e4(c, a0, b->field8, b->fieldc);
         EnqueueEventTag139_021d09cc(ret, a0, 0, b->fieldc);
@@ -34,7 +40,7 @@ ARM void HandleEntryEvent_021d0a18(int a0, struct EntryStruct021d0a18* b, int un
     if (a0 != 0) return;
     signed char cur = GetSearchStructCurrentArrEntry(list);
     if (b->field6 != cur) return;
-    struct Target021d0a18* t = *(struct Target021d0a18**)(c + 0x3000 + 0xbac);
+    struct Target021d0a18* t = *(struct Target021d0a18**)(c + 0x3000 + regionalOffset0);
     if (b->field4 != 0) {
         t->byte10 = 5;
         t->half12 = b->field4;

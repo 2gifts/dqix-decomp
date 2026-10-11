@@ -1,3 +1,8 @@
+#if defined(jpn)
+enum {regionalOffset0=0x860};
+#else
+enum {regionalOffset0=0x840};
+#endif
 #include <globaldefs.h>
 #include "Resource/Script.h"
 
@@ -50,7 +55,7 @@ struct DownloadState_021f5ad8
 
 struct ZoneData_021f5ad8
 {
-    char unk_0[0x840];
+    char unk_0[regionalOffset0];
     struct Unknown_840
     {
         char unk_0[0x1b48];
@@ -65,6 +70,7 @@ extern "C" ZoneData_021f5ad8* func_02012fe4();
 
 extern "C" DownloadState_021f5ad8 data_ov023_021fff08;
 
+// JPN: func_ov023_021f5090
 // USA: func_ov023_021f5ad8
 extern "C" ARM int func_ov023_021f5ad8(Script::Parameter* params, int count)
 {

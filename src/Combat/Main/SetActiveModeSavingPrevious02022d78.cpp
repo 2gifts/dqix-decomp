@@ -1,11 +1,19 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_02022bb0 func_02022644
+#endif
+
 extern "C" int func_ov017_0218b5b0(void);
 extern "C" void _Z16SetSubBrightnessP13GameResourcesii(int base, int a, int b);
 extern "C" void func_02022bb0(void* obj);
 
 struct Obj02022d78 {
+    #if defined(jpn)
+    char pad[0x915];
+#else
     char pad[0x9c1];
+#endif
     unsigned char curValue;   // 0x9c1
     unsigned char field9c2;   // 0x9c2
     unsigned char activeFlag; // 0x9c3
@@ -24,3 +32,5 @@ ARM void SetActiveModeSavingPrevious02022d78(struct Obj02022d78* obj, int newVal
     obj->activeFlag = 1;
     obj->field9c2 = 0;
 }
+
+// JPN: 0x020227f8

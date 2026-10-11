@@ -1,4 +1,7 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define func_02029140 func_02028a20
+#endif
 
 typedef char* va_list;
 

@@ -51,7 +51,12 @@ struct DownloadState_021f5e70
 
 struct GameStateDownload_021f5e70
 {
+#if defined(jpn)
+    char unk_0[0x5c0c];
+#else
     char unk_0[0x5e6c];
+#endif
+
     DownloadedData_021f5e70 downloadedData_;
 };
 
@@ -69,6 +74,7 @@ extern "C" unsigned char data_ov023_021fff1c[];
 extern "C" Script::OpcodeLookupEntry data_ov023_021fe34c[];
 extern "C" unsigned char data_ov023_021fe3c8[];
 
+// JPN: func_ov023_021f54ac
 // USA: func_ov023_021f5e70
 extern "C" ARM int func_ov023_021f5e70(unsigned char* data, int size, void* buffer)
 {

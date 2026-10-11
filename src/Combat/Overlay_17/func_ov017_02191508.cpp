@@ -10,7 +10,12 @@ struct PackedTriple02191508 {
 };
 
 struct Template02191508 {
+#if defined(jpn)
+    char name[0xd];
+#else
     char name[0x12];
+#endif
+
     unsigned char kind;
     unsigned char slot;
     PackedTriple02191508 triples[3];
@@ -52,6 +57,7 @@ void SetBitInArray0x910(unsigned char* obj, int index);
 
 extern char data_020ef078[];
 
+// JPN: func_ov017_021920ec
 // USA: func_ov017_02191508
 extern "C" ARM void func_ov017_02191508(int id, Template02191508* tmpl) {
     Combatant02191508* combatant =
@@ -64,12 +70,18 @@ extern "C" ARM void func_ov017_02191508(int id, Template02191508* tmpl) {
     if (strcmp(member->name, tmpl->name) == 0) {
         hp = combatant->status->hp;
     }
+#if defined(jpn)
+    sprintf(member->name, data_020ef078, tmpl->name);
+
+#else
     if (tmpl != NULL) {
         sprintf(member->name, data_020ef078, tmpl->name);
     } else {
         sprintf(member->name, data_020ef078, member->name);
     }
 
+
+#endif
     Packed02191508 packed;
     packed.header = 0;
     packed.extra = 0;

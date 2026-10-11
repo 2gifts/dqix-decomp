@@ -11,8 +11,14 @@ extern "C" int func_ov017_0218b5b0(void);
 extern "C" void* func_ov017_021b8478(void* obj);
 extern "C" void func_ov017_021b88d0(void* node, int a, unsigned short key);
 
+// JPN: func_ov017_021c5f3c
 // USA: func_ov017_021c5a8c  (semantic: NotifyEntryAndMaybeUpdateNode_021c5a8c)
 extern "C" ARM void func_ov017_021c5a8c(int a, int key) {
+#if defined(jpn)
+ enum {regionalOffset0=0x508};
+#else
+ enum {regionalOffset0=0x718};
+#endif
     func_0202ae18();
     if (func_0202c508()) {
         EnqueueEventTag90_021ca2a0(a, (unsigned short)key);
@@ -25,7 +31,7 @@ extern "C" ARM void func_ov017_021c5a8c(int a, int key) {
         }
 
         void* base = (char*)func_ov017_0218b5b0() + 0x3000;
-        void* node = *(void**)((char*)base + 0x718);
+        void* node = *(void**)((char*)base + regionalOffset0);
         void* ret = func_ov017_021b8478(node);
         unsigned short val = *(unsigned short*)((char*)ret + 8);
         if (val == key) {

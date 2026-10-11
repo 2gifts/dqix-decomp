@@ -5,6 +5,12 @@
 #include "System/Memory.h"
 #include "std_library_functions.h"
 
+#if defined(jpn)
+enum { kActionStateOffset = 0x914 };
+#else
+enum { kActionStateOffset = 0x9c0 };
+#endif
+
 struct ForwardingEntry {
     int unknown0;
     int index;
@@ -28,7 +34,7 @@ struct CombatActionReceiverView {
     unsigned char resetPending;
     unsigned char unknown55d[0x47];
     int flags;
-    unsigned char unknown5a8[0x418];
+    unsigned char unknown5a8[kActionStateOffset - 0x5a8];
     unsigned char actionState;
 };
 
@@ -126,7 +132,7 @@ struct CombatProjectionReceiverView {
     unsigned char forwardingPending;
     unsigned char unknown55d[0x5a4 - 0x55d];
     int flags5a4;
-    unsigned char unknown5a8[0x9c0 - 0x5a8];
+    unsigned char unknown5a8[kActionStateOffset - 0x5a8];
     unsigned char actionFlag;
 };
 

@@ -8,9 +8,16 @@ extern "C" void func_0205da88(void* obj, int a, int b, int c);
 struct Cont0205d274;
 void CallFunc0204b04cOverList0x98(struct Cont0205d274* obj);
 extern "C" void func_ov003_0217033c(char* base);
-extern "C" void func_ov003_021704e8(char* obj);
+#if defined(jpn)
+#define func_ov003_021704e8 func_ov003_0216fd3c
+extern "C" void func_ov003_0216fb7c(void* self);
+#define MaybeSetElem_021702e4 func_ov003_0216fb7c
+#else
 struct S021702e4;
 void MaybeSetElem_021702e4(struct S021702e4* self);
+#endif
+extern "C" void func_ov003_021704e8(char* obj);
+struct S021702e4;
 extern "C" void* func_02012fe4(void);
 struct Obj0216dee4;
 void SetElemFields0216dee4(struct Obj0216dee4* obj, int idx, int v14, int v18, int v22, int v25, int v26);
@@ -39,6 +46,7 @@ extern "C" ARM void func_ov003_0217019c(struct Ctx0217019c* self) {
     func_ov003_021704e8((char*)self);
     MaybeSetElem_021702e4((struct S021702e4*)self);
 
+#if !defined(jpn)
     signed char f1b = self->field1;
     switch (f1b) {
         case 0:
@@ -57,4 +65,5 @@ extern "C" ARM void func_ov003_0217019c(struct Ctx0217019c* self) {
         v22 += 1;
         v18 += 0x10;
     }
+#endif
 }

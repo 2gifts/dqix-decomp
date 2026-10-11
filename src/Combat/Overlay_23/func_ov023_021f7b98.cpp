@@ -33,10 +33,15 @@ struct SelfTag0204b3a0;
 extern "C" void _Z27DispatchByTagLookup0204b3a0P15SelfTag0204b3a0Pc(struct SelfTag0204b3a0* self, char* str);
 
 struct Obj021f7b98 {
+#if defined(jpn)
+    char pad0[0x24];
+#else
     char pad0[0x28];
+#endif
     struct List0204af64 list;
 };
 
+// JPN: func_ov023_021f7090
 // USA: func_ov023_021f7b98
 extern "C" ARM void func_ov023_021f7b98(struct Obj021f7b98* self, void* keyObj, int useTag, struct Rec020467f0* entry, void* next) {
     int size;

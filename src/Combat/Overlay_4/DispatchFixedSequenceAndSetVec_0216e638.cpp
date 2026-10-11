@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { stateByteOffset = 0x7fb, clearPointerOffset = 0xc, readyFlagIndex = 0 };
+#else
+enum { stateByteOffset = 0x9ca, clearPointerOffset = 0x10, readyFlagIndex = 2 };
+#endif
 #include "GameState/GameState.h"
 
 int GetGlobalField0x1c020421a0(void);
@@ -14,7 +19,11 @@ extern "C" void func_ov004_0216afb0(void* a1, int p2, int p3, int p4,
 extern "C" int func_ov004_0216b2c8(void* obj, int id, int a, int b);
 
 extern "C" void* func_ov023_021f6880(void*, int);
+#if defined(jpn)
+extern "C" int func_ov023_021f6f10(void* self);
+#else
 int ScaleStatsIfType12_021f6f10(void* self);
+#endif
 void* GetFieldPtrAt_021f79e4_021f79e4(void* obj);
 struct Obj0204b5e8;
 int DispatchViaTable0204b5e8(struct Obj0204b5e8* obj, int a, int b);
@@ -47,11 +56,11 @@ extern unsigned char data_02108760;
 // USA: func_ov004_0216e638  (semantic: DispatchFixedSequenceAndSetVec_0216e638)
 extern "C" ARM int func_ov004_0216e638(void* a) {
     void* self = a;
-    *(unsigned char*)((char*)GetGlobalField0x1c020421a0() + 0x1000 + 0x9ca) = 0;
+    *(unsigned char*)((char*)GetGlobalField0x1c020421a0() + 0x1000 + stateByteOffset) = 0;
     SetByte0x7f70(GameState::GetInstance(), 0);
 
-    ClearStruct020a9ea4(*(struct Struct020a9ea4**)((char*)&data_ov004_02171034 + 0x10));
-    (&data_ov004_02171034)[2] = 1;
+    ClearStruct020a9ea4(*(struct Struct020a9ea4**)((char*)&data_ov004_02171034 + clearPointerOffset));
+    (&data_ov004_02171034)[readyFlagIndex] = 1;
 
     func_ov004_0216afb0(self, 0x4b0, 2, 0x3e8, 0x23, 0xc, 5, 0xa, 1);
     func_ov004_0216afb0(self, 0x4b1, 2, 0x3e8, 0x35, 0xc, 0x11, 0xa, 1);
@@ -64,12 +73,20 @@ extern "C" ARM int func_ov004_0216e638(void* a) {
     for (int j = 0; j < 2; j = j + 1) {
         void* n1 = func_ov023_021f6880(node, j + 0x65);
         if (!n1) continue;
+#if defined(jpn)
+        if (func_ov023_021f6f10(n1) != 2) continue;
+#else
         if (ScaleStatsIfType12_021f6f10(n1) != 2) continue;
+#endif
         DispatchViaTable0204b5e8((struct Obj0204b5e8*)GetFieldPtrAt_021f79e4_021f79e4(n1), 2, 4);
 
         void* n2 = func_ov023_021f6880(node, j + 0x4b0);
         if (!n2) continue;
+#if defined(jpn)
+        if (func_ov023_021f6f10(n2) != 8) continue;
+#else
         if (ScaleStatsIfType12_021f6f10(n2) != 8) continue;
+#endif
 
         Vec3_0216e638 v = ((VObj0216e638*)n2)->GetVec();
         v.x = v.x - 0x2000;

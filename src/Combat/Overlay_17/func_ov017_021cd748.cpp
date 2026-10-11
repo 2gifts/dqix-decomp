@@ -27,7 +27,11 @@ struct TransitionState {
     unsigned short secondDestination;
     char pad_1a[0x36];
     unsigned short field_50;
+#if defined(jpn)
+    char pad_52[0xc0];
+#else
     char pad_52[0xc4];
+#endif
     signed char sender;
     char field_117;
     unsigned short currentDestination;
@@ -40,11 +44,23 @@ struct TransitionState {
     float parameter;
     char pad_180[0x48];
 };
+#if defined(jpn)
+struct AreaState { unsigned short area; char pad_2[0x2814]; unsigned short destination; };
+#else
 struct AreaState { unsigned short area; char pad_2[0x27d4]; unsigned short destination; };
+#endif
 struct AlternateArea { unsigned short area; };
 struct AlternateMode { char pad_0[3]; unsigned char enabled; };
+#if defined(jpn)
+struct GameStatus { char pad_0[0x5a4c]; unsigned char blocked; };
+#else
 struct GameStatus { char pad_0[0x5cac]; unsigned char blocked; };
+#endif
+#if defined(jpn)
+struct ResourceStatus { char pad_0[0x41fc]; unsigned short destination; };
+#else
 struct ResourceStatus { char pad_0[0x44ac]; unsigned short destination; };
+#endif
 struct Get28ByteElementAt0x334Elem { unsigned char field_0; unsigned char field_1; unsigned char field_2; char pad_3[25]; };
 struct Get28ByteElementAt0x334Struct { char pad_0[0x332]; unsigned char index; char field_333; };
 extern "C" Get28ByteElementAt0x334Struct* func_0205ec34();
@@ -60,6 +76,7 @@ extern "C" int _Z29HasFlag3orFlag2And9a_021bd3a4P12Obj_021bd3a4(Obj_021bd3a4*);
 extern "C" int func_0202c508(SearchStruct0202c1a4*);
 extern "C" void func_ov017_021bc6e0(TransitionState*, int, int);
 
+// JPN: func_ov017_021cdbf0
 // USA: func_ov017_021cd748
 extern "C" ARM void func_ov017_021cd748(int sender, TransitionEvent* event, GameState* game, GameResources* resources, SearchStruct0202c1a4* search) {
     int matches;

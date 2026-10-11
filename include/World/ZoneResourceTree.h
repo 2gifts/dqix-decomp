@@ -63,7 +63,4 @@ struct ZoneResourceTree {
     Vector3i position;
 };
 
-#if defined(jpn)
-    #define func_ov017_021b8478 func_ov017_021b8988
-#endif
 extern "C" void *func_ov017_021b8478(void *object);

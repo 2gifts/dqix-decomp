@@ -17,7 +17,9 @@ ARM void ResetElem2081Entry(void* obj) {
     base[0xc5] &= ~0x8;
     base[0xd8] &= ~0x1;
     base[0xd8] &= ~0x2;
+#if !defined(jpn)
     base[0xd8] &= ~0x4;
+#endif
     base[0xc4] = 0xff;
     base[0xc5] = 0;
     memset(base + 0xdb, 0, 4);

@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kManagerPrefix = 0x34ec };
+#else
+enum { kManagerPrefix = 0x36fc };
+#endif
 #include <GameState/GameState.h>
 #include <std_library_functions.h>
 struct Obj020a8b0c { char pad[4]; unsigned char mask; char pad2[3]; int progress, step, limit; signed char count; };
@@ -6,7 +11,7 @@ struct Actor020a8b0c { Object3D obj; short height, y; };
 struct Field020a8b0c { char pad[0xc]; unsigned char flag; };
 struct HeadNode02046b24;
 struct Party020874bc;
-struct Manager020a8b0c { char pad[0x36fc]; HeadNode02046b24** head; };
+struct Manager020a8b0c { char pad[kManagerPrefix]; HeadNode02046b24** head; };
 struct Obj020397cc;
 struct Obj02033874;
 Field020a8b0c* GetField0x3f8Address(GameState*);

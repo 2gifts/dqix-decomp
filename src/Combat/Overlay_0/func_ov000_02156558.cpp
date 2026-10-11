@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { extraOffset = 0x144, indexOffset = 0x8b8 };
+#else
+enum { extraOffset = 0x150, indexOffset = 0x950 };
+#endif
 #include "GameState/GameState.h"
 #include "Util/Random.h"
 
@@ -40,11 +45,11 @@ extern "C" ARM int func_ov000_02156558(struct Random* rand, int combatantId) {
         return 0;
     }
 
-    if (TestBitInArray0x8ec(*(unsigned char**)((char*)c + 0x150), 0x36) == 0) {
+    if (TestBitInArray0x8ec(*(unsigned char**)((char*)c + extraOffset), 0x36) == 0) {
         return 0;
     }
 
-    int idx = *(int*)((char*)(*(void**)((char*)c + 0x150)) + 0x950);
+    int idx = *(int*)((char*)(*(void**)((char*)c + extraOffset)) + indexOffset);
     int maxVal = data_ov000_02182ab8[idx];
     return NextRandomMax(rand, maxVal) == 1;
 }

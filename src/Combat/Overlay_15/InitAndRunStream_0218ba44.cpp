@@ -1,3 +1,10 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define data_ov015_02193fa0 data_ov015_02194ae0
+#define data_ov015_02193fc8 data_ov015_02194b08
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 

@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define IS_JPN 1
+#else
+#define IS_JPN 0
+#endif
+
 #include "GameState/GameState.h"
 #include "Grotto/Main/GrottoStruct.h"
 #include "Grotto/Main/DetailedTreasureMapData.h"
@@ -9,7 +15,7 @@ int IsInRange0201b588(int id);
 int IsValueInRange0201b5d8(int x);
 
 struct Obj0208f944 {
-    char _pad0[0x260];
+    char _pad0[IS_JPN ? 0x280 : 0x260];
     unsigned char f260;      // 0x260
     char _pad1;               // 0x261
     unsigned char f262;      // 0x262

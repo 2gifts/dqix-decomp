@@ -3,6 +3,12 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
 
+#if defined(jpn)
+#define REGION_LAYOUT(jpnValue, usaValue) jpnValue
+#else
+#define REGION_LAYOUT(jpnValue, usaValue) usaValue
+#endif
+
 struct BattleState;
 struct Actor0209c678;
 struct FlagWord020466f4;
@@ -28,7 +34,7 @@ struct MessageWork {
     char pad0[0x30];
     unsigned char numMembers;
     unsigned char numAlive;
-    char pad32[0x966];
+    char pad32[REGION_LAYOUT(0x836, 0x966)];
     int busy;
 };
 
@@ -43,8 +49,8 @@ struct Combatant021f4c04 {
 
 struct BattleWork {
     char pad0[0x30];
-    char alloc[0x11c];
-    char stateA[0x150];
+    char alloc[REGION_LAYOUT(0x108, 0x11c)];
+    char stateA[REGION_LAYOUT(0xe0, 0x150)];
     BattleState* battle;
     PartyState* party;
     char pad2a4[0x974];
@@ -60,16 +66,16 @@ struct BattleWork {
     unsigned char cursorLock;
     unsigned char revivePending;
     char padeb6[0x12];
-    char ctxEc8[0x2898];
+    char ctxEc8[REGION_LAYOUT(0x28d8, 0x2898)];
     char list[0xb8];
     char msgBox[0xc4];
     int activeSlot;
     char pad38e0[0x7d0];
     int turnCount;
     unsigned char battleKind;
-    char pad40b5[0x11b7];
-    char ownerNames[0x150];
-    char memberNames[0xc0];
+    char pad40b5[REGION_LAYOUT(0x124f, 0x11b7)];
+    char ownerNames[REGION_LAYOUT(0x1f0, 0x150)];
+    char memberNames[REGION_LAYOUT(0x1c0, 0xc0)];
     int memberRanks[8];
     int memberIds[8];
     unsigned char groupKind;
@@ -88,7 +94,7 @@ struct BattleWork {
     char pad54ee[0x2];
     int curSlot;
     int slotDone[4];
-    char pad5504[0xd4];
+    char pad5504[REGION_LAYOUT(0xd0, 0xd4)];
     int field55d8;
     char pad55dc[0x18];
     int workFlags;
@@ -144,6 +150,11 @@ inline Global021ffefc& GetGlobal021ffefc() {
 extern Actor0209c678 data_02109bf4;
 extern const char data_ov023_021fe1d8[];
 extern const char data_ov023_021fe1ee[];
+#if defined(jpn)
+extern const char data_ov023_021fd49e[];
+extern "C" void func_02073864(void*, void*, const char*, int, int, int);
+extern "C" void func_02045d88(void*, const char*, int);
+#endif
 
 extern "C" MessageWork* _Z26GetGlobalField0x1c020421a0v();
 int GetWord0x0(int* obj);
@@ -186,9 +197,11 @@ void SetFieldsAndSignalData02184220(void* p, int val);
 
 // USA: func_ov023_021f4c04
 extern "C" ARM void func_ov023_021f4c04(BattleWork* self) {
-    char text[0xb4];
+    char text[REGION_LAYOUT(0x50, 0xb4)];
+#if !defined(jpn)
     unsigned int len;
     unsigned char ids[4];
+#endif
 
     GameState* gs = GameState::GetInstance();
     MessageWork* ctrl = _Z26GetGlobalField0x1c020421a0v();
@@ -224,6 +237,9 @@ extern "C" ARM void func_ov023_021f4c04(BattleWork* self) {
         if (loader->GetNumQueuedTasks() > 0) return;
         ((SafeAllocator*)self->alloc)->Reset();
         _Z23ResetListHeader020727d8P12List020727d8((List020727d8*)self->rosterList);
+#if defined(jpn)
+        func_02073864(self->rosterList, self->alloc, data_ov023_021fd49e, 0, 0, 0);
+#else
         BackgroundLoader::AddLockGlobal();
         len = 0;
         void* file = ExtractFileFromGP2(data_ov023_021fe1d8, data_ov023_021fe1ee, &len);
@@ -231,6 +247,7 @@ extern "C" ARM void func_ov023_021f4c04(BattleWork* self) {
             func_020728ac(self->rosterList, self->alloc, file, len, 0, 0, 0);
         }
         BackgroundLoader::RemoveLockGlobal();
+#endif
         _Z35SetFieldForListedCombatants021f50fcv();
         int id = self->party->id;
         if (func_ov000_02163c80(self, 1)) {
@@ -244,6 +261,7 @@ extern "C" ARM void func_ov023_021f4c04(BattleWork* self) {
             _Z26EnqueueEventTag87_021c9b20ii((unsigned short)id, 0);
             func_ov017_021a23b0((void*)res, id);
         }
+#if !defined(jpn)
         unsigned char count = CopyOutRegion0x571d((char*)gs, ids);
         unsigned char numMembers = 0;
         unsigned char numAlive = 0;
@@ -256,21 +274,28 @@ extern "C" ARM void func_ov023_021f4c04(BattleWork* self) {
         }
         ctrl->numMembers = numMembers;
         ctrl->numAlive = numAlive;
+#endif
         func_ov000_0216d370(self->view, 0, 0, 1);
+#if defined(jpn)
+        int value = *(int*)((char*)gs->GetProtagonist() + 0x134);
+        sprintf(text, (const char*)FindEntryByKey((TableA68*)self->rosterList, 0x14), value);
+        func_02045d88(ctrl, text, 1);
+#else
         gs->GetProtagonist();
         sprintf(text, (const char*)FindEntryByKey((TableA68*)self->rosterList, 0x14));
         func_0204500c(ctrl, text, 1, 0xe3);
+#endif
         ctrl->busy = 1;
         _Z36ResetAndDispatchActorContext0209c6d8Pvs(&data_02109bf4, 0x3a);
         self->state = 2;
     } else if (state == 2) {
-        if (func_ov017_021959b4() == 0 && *(unsigned char*)((char*)gs + 0x5728) == 0) {
+        if (func_ov017_021959b4() == 0 && *(unsigned char*)((char*)gs + REGION_LAYOUT(0x54c8, 0x5728)) == 0) {
             if (ctrl->busy != 0) return;
         }
         if (ArrayContainsByte((ArrayContainsByteStruct*)battle, self->party->kind)) {
             _Z27EnqueueEventTag129_021cbfb8th(self->party->id, 1);
         }
-        *(unsigned char*)((char*)gs + 0x5728) = 0;
+        *(unsigned char*)((char*)gs + REGION_LAYOUT(0x54c8, 0x5728)) = 0;
         _Z20StopAndReset0209c7fcPv(&data_02109bf4);
         _Z24ReinitController02043204Pc((char*)ctrl);
         func_02043124(ctrl);

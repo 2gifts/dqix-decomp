@@ -1,3 +1,9 @@
+#if defined(jpn)
+enum { RegionalOffset = 0x72be };
+#else
+enum { RegionalOffset = 0x74fe };
+#endif
+
 #include <globaldefs.h>
 #include "Util/Random.h"
 
@@ -8,6 +14,7 @@ extern "C" unsigned long long _u32_div_f(unsigned int a, unsigned int b);
 extern char data_020ef0ca;
 
 // USA: func_020120f0  (semantic: GenerateDeviceRandomBytes_020120f0)
+// JPN: func_020120f0  (semantic: GenerateDeviceRandomBytes_020120f0)
 extern "C" ARM void func_020120f0(unsigned char* self) {
     struct Random rng;
     CreateRandom(&rng, &data_020ef0ca, 0);
@@ -32,6 +39,6 @@ extern "C" ARM void func_020120f0(unsigned char* self) {
     int i;
     for (i = 0; i < 6; i++) {
         SeedRandom(&rng, seeds[i]);
-        *(self + i + 0x74fe) = (unsigned char)NextRandom(&rng);
+        *(self + i + RegionalOffset) = (unsigned char)NextRandom(&rng);
     }
 }

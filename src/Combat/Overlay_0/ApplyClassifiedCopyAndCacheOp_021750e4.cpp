@@ -12,7 +12,12 @@ extern "C" ARM void func_ov000_021750e4(char* obj) {
     for (i = 0; i < 4; i++) {
         int kind;
         signed char idx = *(signed char*)(obj + i + 0x6c);
-        elem = obj + 0x958 + idx * 0x448;
+#if defined(jpn)
+        enum { entryStride = 0x488 };
+#else
+        enum { entryStride = 0x448 };
+#endif
+        elem = obj + 0x958 + idx * entryStride;
         int cid = *(int*)(elem + 0x4c);
         int valid = (cid >= 0 && cid <= 3) ? 1 : 0;
         if (!valid) continue;

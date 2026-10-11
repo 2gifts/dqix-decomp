@@ -11,7 +11,11 @@ struct Entry0217f6bc {
     unsigned char field24;
     char pad3[0x4c - 0x25];
     int field4c;
+#if defined(jpn)
+    char pad4[0xc7 - 0x50];
+#else
     char pad4[0x87 - 0x50];
+#endif
     unsigned char field87;
     char pad5[0x445 - 0x88];
     unsigned char field445;
@@ -34,7 +38,12 @@ extern "C" ARM int func_ov000_0217f6bc(char* obj) {
         if (HasAnyFlags_021719f8_021719f8((int*)entry)) continue;
         if (entry->field445 == 0) continue;
         GameObject* c = bs->GetPartyMemberByIndex(*(signed char*)(obj + 0x6c + i));
-        if (c == 0 || (signed char)(*(int*)((char*)GetFieldAt0x150((unsigned char*)c) + 0x94c)) == 5) {
+#if defined(jpn)
+        enum { statusOffset = 0x8b4 };
+#else
+        enum { statusOffset = 0x94c };
+#endif
+        if (c == 0 || (signed char)(*(int*)((char*)GetFieldAt0x150((unsigned char*)c) + statusOffset)) == 5) {
             return entry->field4c;
         }
     }

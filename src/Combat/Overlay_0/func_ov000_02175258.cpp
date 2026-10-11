@@ -9,7 +9,11 @@ struct Entry02175258 {
     unsigned char field24;
     char pad3[0x4c - 0x25];
     int field4c;
+#if defined(jpn)
+    char pad4[0x488 - 0x50];
+#else
     char pad4[0x448 - 0x50];
+#endif
 };
 
 // USA: func_ov000_02175258  (semantic: SyncCombatantReadyFlags_02175258)

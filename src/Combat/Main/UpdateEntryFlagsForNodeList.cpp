@@ -1,5 +1,11 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { nodeListOffset = 0x8c };
+#else
+enum { nodeListOffset = 0x6c };
+#endif
+
 struct Owner02018b34;
 struct Param02018b34;
 struct Entry02018b34;
@@ -22,7 +28,7 @@ ARM void UpdateEntryFlagsForNodeList(unsigned char* obj) {
     unsigned short* entryFlags;
     int hasFlag;
 
-    node = (struct ListNode02018ab8*)GetPointerFromArray0x3c(obj + 0x6c, 2);
+    node = (struct ListNode02018ab8*)GetPointerFromArray0x3c(obj + nodeListOffset, 2);
     while (node != NULL) {
         entry = FindEntryByNodeIdAndKey((struct Owner02018b34*)obj, (struct Param02018b34*)node);
         hasFlag = (node->flags2e & 0x80) != 0;

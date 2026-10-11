@@ -14,6 +14,7 @@ extern struct Buf8_021f286c data_ov024_021fecfc;
 struct Stats_021f286c { char pad[0x2c]; short field0x2c; };
 struct Obj_021f286c { int field0; };
 
+// JPN: func_ov024_021f3038
 // USA: func_ov024_021f286c
 extern "C" ARM int func_ov024_021f286c(Obj_021f286c* obj, int id, int unused, int* outCount, short* outArray) {
 	GameObject* self = GetCombatantWithFlag0x400ByID(obj->field0, id);

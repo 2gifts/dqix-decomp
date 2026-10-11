@@ -1,4 +1,7 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define func_02050100 func_020515ec
+#endif
 
 struct Canvas0204e998;
 void FillIndexBuffer0204e998(struct Canvas0204e998* s);

@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kEntryPrefix = 0x14 };
+#else
+enum { kEntryPrefix = 0x18 };
+#endif
 #include "World/Object3D.h"
 
 struct ListEntry_02028430 {
@@ -9,7 +14,7 @@ struct ListEntry_02028430 {
 struct List_02028430 { unsigned char header_[4]; ListEntry_02028430* entries_; };
 struct List_020283fc;
 struct Entry_02028bd0 {
-    unsigned short id_; char pad2[0x18 - 2];
+    unsigned short id_; char pad2[kEntryPrefix - 2];
     List_02028430 list_; char pad20[0x34 - 0x20];
     int active_; char pad38[0x318 - 0x38];
 };

@@ -1,3 +1,10 @@
+// JPN: func_ov017_021c892c
+#if defined(jpn)
+enum { RegionOffset94c = 0x8b4 };
+#else
+enum { RegionOffset94c = 0x94c };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -44,7 +51,7 @@ extern "C" ARM void func_ov017_021c847c(void) {
             if (c != NULL) {
                 int field = GetFieldAt0x150((unsigned char*)c);
                 if (field != 0) {
-                    base[j] = (unsigned char)*(int*)(field + 0x94c);
+                    base[j] = (unsigned char)*(int*)(field + RegionOffset94c);
                 }
             }
         }

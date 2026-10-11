@@ -1,9 +1,15 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { timerAccumulatorOffset = 0x910 };
+#else
+enum { timerAccumulatorOffset = 0x9bc };
+#endif
 #include "GameState/GameState.h"
 
 
 struct BattleTimer0202441c {
-    char pad[0x9bc];
+    char pad[timerAccumulatorOffset];
     unsigned int accum;
     unsigned char state;
 };

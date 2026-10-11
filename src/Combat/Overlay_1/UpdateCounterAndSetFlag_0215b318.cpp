@@ -7,6 +7,11 @@ extern "C" void _Z13SetBrightnessP13GameResourcesii(void* obj, int value, int fr
 
 // USA: func_ov001_0215b318  (semantic: UpdateCounterAndSetFlag_0215b318)
 extern "C" ARM int func_ov001_0215b318(void* self, int mode) {
+#if defined(jpn)
+    enum { queueOffset = 0x524, flagOffset = 0xfe };
+#else
+    enum { queueOffset = 0x734, flagOffset = 0x102 };
+#endif
     int value;
     int frames = func_ov017_021d60f4(self);
     value = -16;
@@ -17,9 +22,9 @@ extern "C" ARM int func_ov001_0215b318(void* self, int mode) {
     void* obj = _Z10GetWord0x0Pi((int*)battle);
     if (obj != NULL) {
         _Z13SetBrightnessP13GameResourcesii(obj, value, frames);
-        char* q = *(char**)(((char*)func_ov017_0218b5b0()) + 0x3000 + 0x734);
+        char* q = *(char**)(((char*)func_ov017_0218b5b0()) + 0x3000 + queueOffset);
         if (*(unsigned short*)(q + 0xa) <= 3) {
-            *(unsigned char*)(q + 0x102) = 1;
+            *(unsigned char*)(q + flagOffset) = 1;
         }
     }
     return 1;

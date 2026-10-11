@@ -10,6 +10,7 @@ extern char data_ov031_02249df8;
 extern int data_ov031_02249e00;
 extern int data_ov031_02249e04;
 
+// JPN: func_ov031_022184fc
 // USA: func_ov031_02217d1c
 #pragma optimize_for_size off
 extern "C" ARM int func_ov031_02217d1c(void* obj) {

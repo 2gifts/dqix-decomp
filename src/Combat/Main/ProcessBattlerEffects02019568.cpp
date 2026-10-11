@@ -1,3 +1,9 @@
+#if defined(jpn)
+enum { RegionalOffset = 0x43c };
+#else
+enum { RegionalOffset = 0x41c };
+#endif
+
 #include <globaldefs.h>
 #include "Graphics/LightingManager.h"
 #include "GameState/GameState.h"
@@ -16,12 +22,13 @@ struct Entry02019568 {
 };
 
 // USA: func_02019568
+// JPN: func_02019568
 ARM void ProcessBattlerEffects02019568(void* a, int b) {
     GameState::GetInstance();
     void* d = LightingManager::GetInstance();
     int shiftAmt = *(int*)((char*)d + 0x98);
 
-    void* node = *(void**)((char*)a + 0x41c);
+    void* node = *(void**)((char*)a + RegionalOffset);
     while (node != NULL) {
         int rawId = *(int*)node;
         int id = 0;

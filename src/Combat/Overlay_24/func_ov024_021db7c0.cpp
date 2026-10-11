@@ -41,6 +41,7 @@ static inline int IsPartyMember(int id) {
     return id >= 0 && id <= 3;
 }
 
+// JPN: func_ov024_021dc06c
 // USA: func_ov024_021db7c0
 extern "C" ARM void* func_ov024_021db7c0(struct Obj_021db7c0* obj, short a, int id, struct Info_021db7c0* info, int unused4, int unused5, unsigned char flagArg) {
     GameObject* c = GetCombatantByID((int)obj->field0x10, id);

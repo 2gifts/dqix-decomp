@@ -4,7 +4,11 @@
 int GetGlobalField0x1c020421a0();
 extern "C" void func_ov000_0217c638(void* obj, int a, int b);
 extern "C" void func_ov000_021777e4(void* obj, void* buf);
+#if defined(jpn)
+extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g);
+#else
 extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g, int h);
+#endif
 
 struct InStruct_0217768c {
     char pad[0x44];
@@ -43,8 +47,20 @@ extern "C" ARM void func_ov000_0217768c(void* objRaw, struct InStruct_0217768c* 
         *(short*)(s + 0xaa) = 4;
     }
     *(unsigned char*)(s + 0xb1) = 3;
+#if defined(jpn)
+    void* buf = *(void**)((char*)GetGlobalField0x1c020421a0() + 0x28);
+#else
     void* buf = *(void**)((char*)GetGlobalField0x1c020421a0() + 0x5c);
+#endif
+#if defined(jpn)
+    memset(buf, 0, 0x800);
+#else
     memset(buf, 0, 0x960);
+#endif
     func_ov000_021777e4(obj, buf);
+#if defined(jpn)
+    func_0205d304(s, buf, 0, 1, 0, 1, 0);
+#else
     func_0205d304(s, buf, 0, 1, 0, 1, 0, 0);
+#endif
 }

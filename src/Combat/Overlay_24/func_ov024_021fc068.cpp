@@ -69,6 +69,7 @@ struct WorkBuffer_021fc068 {
 	float threshold;
 };
 
+// JPN: func_ov024_021fc834
 // USA: func_ov024_021fc068
 extern "C" ARM void func_ov024_021fc068(struct Obj_021fc068* obj) {
 	struct Combatant_021fc068* self = obj->self;

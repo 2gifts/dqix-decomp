@@ -6,10 +6,8 @@
 #include "Resource/GameResources.h"
 
 #ifdef jpn
-#define _Z13PushInputLogAi func_020a3b70
 #define _ZN23DetailedTreasureMapData19LoadLegacyBossStatsEbPKh func_020a7588
 #define _ZN23DetailedTreasureMapData13LoadTreasuresEv func_020a78c0
-#define _Z19PopStack0AndTriggeri func_020a3bcc
 #endif
 
 extern "C"

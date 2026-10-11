@@ -1,3 +1,10 @@
+// JPN: func_ov025_021dce88
+#if defined(jpn)
+enum { RegionOffset2a8 = 0x224, RegionOffset4104 = 0x40c0, RegionOffset40b8 = 0x4074, RegionOffset448 = 0x488 };
+#else
+enum { RegionOffset2a8 = 0x2a8, RegionOffset4104 = 0x4104, RegionOffset40b8 = 0x40b8, RegionOffset448 = 0x448 };
+#endif
+
 #include <globaldefs.h>
 
 void* GetSlotPtr02160f20(void* obj);
@@ -33,14 +40,14 @@ struct Slot021dc590 {
 // USA: func_ov025_021dc590  (semantic: UpdateSlotEntryAndFlag_021dc590)
 extern "C" ARM void func_ov025_021dc590(void* obj) {
     struct Slot021dc590* slot = (struct Slot021dc590*)GetSlotPtr02160f20(obj);
-    func_ov025_021e9778((char*)obj + 0x2a8);
-    if (!CheckField4ThenCheck021ed2f4_021e9528((char*)obj + 0x2a8)) {
+    func_ov025_021e9778((char*)obj + RegionOffset2a8);
+    if (!CheckField4ThenCheck021ed2f4_021e9528((char*)obj + RegionOffset2a8)) {
         return;
     }
     if (!func_ov025_021dc940(obj)) {
         return;
     }
-    func_ov025_021e9558((char*)obj + 0x2a8);
+    func_ov025_021e9558((char*)obj + RegionOffset2a8);
 
     struct ListNode02160094_dc590* node = slot->node;
     if (node != NULL) {
@@ -51,9 +58,9 @@ extern "C" ARM void func_ov025_021dc590(void* obj) {
             int flag2 = (id >= 0 && id <= 3) ? 1 : 0;
             if (flag2) {
                 for (int i = 0; i < 4; i++) {
-                    int cur = *(int*)((char*)obj + i * 0x448 + 0x4104);
+                    int cur = *(int*)((char*)obj + i * RegionOffset448 + RegionOffset4104);
                     if (id == cur) {
-                        result = (char*)obj + 0x40b8 + i * 0x448;
+                        result = (char*)obj + RegionOffset40b8 + i * RegionOffset448;
                         goto found;
                     }
                 }

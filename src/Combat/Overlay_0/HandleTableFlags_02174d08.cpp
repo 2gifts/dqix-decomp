@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { flagsOffset = 0x1faa };
+#else
+enum { flagsOffset = 0x1d72 };
+#endif
 
 struct TableEntry0217f8c0 {
     char pad0[0x4c];
@@ -30,7 +35,7 @@ struct Obj02174d08 {
 
 // USA: func_ov000_02174d08  (semantic: HandleTableFlags_02174d08)
 extern "C" ARM void func_ov000_02174d08(void* obj) {
-    unsigned short flags = *(unsigned short*)((char*)obj + 0x1d00 + 0x72);
+    unsigned short flags = *(unsigned short*)((char*)obj + flagsOffset);
     if (flags & 2) {
         struct TableEntry0217f8c0* e = FindMatchingTableEntry0217f8c0((struct Struct0217f8c0*)obj);
         func_ov000_02177184(obj, e, data_ov000_02183ff0, data_ov000_02184288.field4);
@@ -48,7 +53,7 @@ extern "C" ARM void func_ov000_02174d08(void* obj) {
     if (*(int*)((char*)e + 0x38) != 0) {
         func_ov000_0217636c(e, mode);
     }
-    unsigned short newFlags = *(unsigned short*)((char*)obj + 0x1d00 + 0x72);
+    unsigned short newFlags = *(unsigned short*)((char*)obj + flagsOffset);
     newFlags &= ~4;
-    *(unsigned short*)((char*)obj + 0x1d00 + 0x72) = newFlags;
+    *(unsigned short*)((char*)obj + flagsOffset) = newFlags;
 }

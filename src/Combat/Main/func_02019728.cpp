@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kListOffset = 0x8c, kMapBase = 0x1f4, kNodeField = 0x440 };
+#else
+enum { kListOffset = 0x6c, kMapBase = 0x1b4, kNodeField = 0x420 };
+#endif
 
 struct Obj020196fc;
 struct List0201e434;
@@ -66,8 +71,8 @@ static inline AdjacencyBits02019728 GetAdjacency02019728(const FloorMap02019728*
 extern "C" ARM int func_02019728(void* obj, int unused, List0201e434* listArg, Tile02019728* grid, FloorMap02019728* mapArg)
 {
     char name[8];
-    List0201e434* list = listArg ? listArg : (List0201e434*)((char*)obj + 0x6c);
-    FloorMap02019728* map = mapArg ? mapArg : (FloorMap02019728*)((char*)obj + 0x1b4 + 0x2400);
+    List0201e434* list = listArg ? listArg : (List0201e434*)((char*)obj + kListOffset);
+    FloorMap02019728* map = mapArg ? mapArg : (FloorMap02019728*)((char*)obj + kMapBase + 0x2400);
     int n;
     int row;
 
@@ -85,7 +90,7 @@ extern "C" ARM int func_02019728(void* obj, int unused, List0201e434* listArg, T
             int mode;
 
             adj = GetAdjacency02019728(map, col, row);
-            cell = *(Cell02019728**)((char*)obj + 0x420) + row * 16 + col;
+            cell = *(Cell02019728**)((char*)obj + kNodeField) + row * 16 + col;
             Mat3x3_WriteIdentity(&matrix);
 
             switch (adj.bits) {

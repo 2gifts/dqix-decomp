@@ -1,4 +1,12 @@
+// JPN: func_ov017_021abae0
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kGlobalByteOffset = 0x850, kResourceHeaderOffset = 0x4fc, kResourceTailOffset = 0x4ec };
+#else
+enum { kGlobalByteOffset = 0x830, kResourceHeaderOffset = 0x70c, kResourceTailOffset = 0x6fc };
+#endif
+
 #include "Combat/Main/CopyRecord0200fbb4.h"
 #include "GameState/GameState.h"
 
@@ -93,7 +101,7 @@ extern "C" ARM int func_ov017_021ab280(struct Obj_021ab280* obj) {
         obj->state = obj->state + 1;
         obj->counter = 0;
     } else if (state == 1) {
-        int gVal = *((unsigned char*)g + 0x830);
+        int gVal = *((unsigned char*)g + kGlobalByteOffset);
         if (gVal <= 4) {
             obj->state = state + 1;
             obj->counter = 0;
@@ -174,9 +182,9 @@ extern "C" ARM int func_ov017_021ab280(struct Obj_021ab280* obj) {
         e[7] = 1;
         _Z28CallFunc0200fbb4AtField0x3f8Pv(battle, entryV);
 
-        InitAndResetHeader_0219e310(*(unsigned char**)(mgr + 0x3000 + 0x70c), 0);
-        AppendNodeToTail(*(struct TailList020469b4**)(mgr + 0x3000 + 0x6fc),
-                          *(struct TailNode020469b4**)(mgr + 0x3000 + 0x70c));
+        InitAndResetHeader_0219e310(*(unsigned char**)(mgr + 0x3000 + kResourceHeaderOffset), 0);
+        AppendNodeToTail(*(struct TailList020469b4**)(mgr + 0x3000 + kResourceTailOffset),
+                          *(struct TailNode020469b4**)(mgr + 0x3000 + kResourceHeaderOffset));
 
         obj->field1 = 1;
     }

@@ -26,7 +26,11 @@ struct Struct0205a198 { char pad[0x28]; };
 extern "C" void _Z12Init0205a198P14Struct0205a198(struct Struct0205a198* p);
 extern "C" void _Z18InitStruct0205a444Pc(char* obj);
 
+#if defined(jpn)
+extern "C" void func_02020aec(char* self, int handle, int arg2);
+#else
 extern "C" void func_02020aec(char* self, int* handle, int arg2);
+#endif
 extern "C" void _Z26InitFourEntrySlots02020aa0Pv(void* obj);
 
 struct State0xbb1c;
@@ -78,8 +82,14 @@ extern char data_020ef69f;
 extern int data_020ef498;
 extern char data_020ef6b5;
 
+#if defined(jpn)
+enum { ContextTailRegionOffset = 0xac, GlobalHeaderRegionOffset = 4 };
+#else
+enum { ContextTailRegionOffset = 0, GlobalHeaderRegionOffset = 0 };
+#endif
+
 struct Global020fdc4c_020227dc {
-    char pad[0x8];
+    char pad[0x8 - GlobalHeaderRegionOffset];
     void* allocatorPtr;   // 0x8
     char pad2[0x10 - 0xc];
     void* ctxPtr;          // 0x10
@@ -110,7 +120,7 @@ struct Obj020227dc {
     struct Struct0205a198 arr_e8[0x1c];  // 0xe8..0x548
     char pad9[0x55c - 0x548];
     unsigned char field0x55c;     // 0x55c
-    char pad10[0x779 - 0x55d];
+    char pad10[0x779 - ContextTailRegionOffset - 0x55d];
     unsigned char field0x779;     // 0x779
     char pad11[0x9ba - 0x77a];
     unsigned char field0x9ba;     // 0x9ba
@@ -141,7 +151,7 @@ extern "C" ARM void func_020227dc(struct Obj020227dc* ctx) {
         func_02021428(ctx, 0x19);
         loader->AddFence();
         ctx->taskA24 = loader->QueueLoadFile(&data_020ef67c, 0);
-        ctx->taskA20 = loader->QueueLoadFileInGP2((const char*)(*(int*)((char*)&data_020ef460 + 8)), &data_020ef692, 0);
+        ctx->taskA20 = loader->QueueLoadFileInGP2((const char*)(*(int*)((char*)&data_020ef460 + 8 - GlobalHeaderRegionOffset)), &data_020ef692, 0);
         ctx->taskA28 = loader->QueueLoadFile(&data_020ef69f, 0);
         ctx->initState = ctx->initState + 1;
         return;
@@ -179,7 +189,11 @@ extern "C" ARM void func_020227dc(struct Obj020227dc* ctx) {
     ctx->field0xd4 = ctx->arr_e8;
     ctx->field0xe0 = 0x1c;
     ctx->field0x14 = 1;
+#if defined(jpn)
+    func_02020aec((char*)ctx, ctx->taskA24, (int)sb);
+#else
     func_02020aec((char*)ctx, &ctx->taskA24, (int)sb);
+#endif
 
     _Z26InitFourEntrySlots02020aa0Pv(ctx);
     ctx->field0x24 = 1;

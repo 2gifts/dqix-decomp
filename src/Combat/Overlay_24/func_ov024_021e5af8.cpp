@@ -11,6 +11,7 @@ void AppendToChainAndIncCount0215fe84(void* obj, void* node, int idx);
 
 struct Obj_021e5af8 { char pad0[8]; void* field0x8; char pad1[4]; void* field0x10; };
 
+// JPN: func_ov024_021e6390
 // USA: func_ov024_021e5af8
 extern "C" ARM void func_ov024_021e5af8(struct Obj_021e5af8* obj, int id, int extra) {
     GameObject* c = GetCombatantByID((int)obj->field0x10, id);

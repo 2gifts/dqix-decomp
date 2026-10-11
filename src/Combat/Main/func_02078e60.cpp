@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define _Z29CheckAnySlotMatchesId02073d58iPvi func_02074ee4
+#endif
+
 struct Entry_02028bd0;
 struct Entry_02028bd0* GetEntryTableBase(void);
 struct Entry_02028bd0* FindInlineEntryById(struct Entry_02028bd0* base, int key);
@@ -74,7 +78,11 @@ extern "C" ARM unsigned short func_02078e60(void* obj, char* out) {
     if (entry == NULL) {
         return 0;
     }
+#if defined(jpn)
+    le = GetListEntryChecked((struct List_02028430*)((char*)entry + 0x14), o->field0xb8);
+#else
     le = GetListEntryChecked((struct List_02028430*)((char*)entry + 0x18), o->field0xb8);
+#endif
     if (le == NULL) {
         return 0;
     }
@@ -90,7 +98,11 @@ extern "C" ARM unsigned short func_02078e60(void* obj, char* out) {
         o->field17d |= 0x40;
         return le->id;
     }
+#if defined(jpn)
+    found = _Z27FindEntryByHalfword0209bd94P18EntryTable0209bd94i((struct EntryTable0209bd94*)((char*)entry + 0x5c), o->field168);
+#else
     found = _Z27FindEntryByHalfword0209bd94P18EntryTable0209bd94i((struct EntryTable0209bd94*)((char*)entry + 0x60), o->field168);
+#endif
     n = 0;
     any = 0;
     if (found != NULL) {
@@ -107,7 +119,11 @@ extern "C" ARM unsigned short func_02078e60(void* obj, char* out) {
         }
     }
     if (any == 1 && n == 0) {
+#if defined(jpn)
+        idx = FindListIndexById((struct List_020283fc*)((char*)entry + 0x14), le->id);
+#else
         idx = FindListIndexById((struct List_020283fc*)((char*)entry + 0x18), le->id);
+#endif
         if (idx != -1) {
             o->field0xb8 = idx;
         }
@@ -118,13 +134,21 @@ extern "C" ARM unsigned short func_02078e60(void* obj, char* out) {
         pick = picks[rand() % n];
     }
     if (pick == 0) {
+#if defined(jpn)
+        idx = FindListIndexById((struct List_020283fc*)((char*)entry + 0x14), le->id);
+#else
         idx = FindListIndexById((struct List_020283fc*)((char*)entry + 0x18), le->id);
+#endif
         if (idx != -1) {
             o->field0xb8 = idx;
         }
         return le->id;
     }
+#if defined(jpn)
+    idx = FindListIndexById((struct List_020283fc*)((char*)entry + 0x14), pick->id);
+#else
     idx = FindListIndexById((struct List_020283fc*)((char*)entry + 0x18), pick->id);
+#endif
     if (idx != -1) {
         o->field0xb8 = idx;
     }

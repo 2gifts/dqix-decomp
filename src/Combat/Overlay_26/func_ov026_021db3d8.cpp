@@ -18,7 +18,12 @@ struct BattleState {
 };
 
 struct MessageWork {
+#if defined(jpn)
+    char pad0[0x870];
+#else
     char pad0[0x9a0];
+#endif
+
     int phase;
 };
 
@@ -50,9 +55,19 @@ struct InitStruct02078484Struct {
 };
 
 struct BattleWork {
+#if defined(jpn)
+    char pad0[0x218];
+#else
     char pad0[0x29c];
+#endif
+
     BattleState* battle;
+#if defined(jpn)
+    char pad2a0[0x76fc];
+#else
     char pad2a0[0x7488];
+#endif
+
     signed char effectLoadState;
     char pad7729[0x1];
     short effectTaskId;
@@ -75,6 +90,7 @@ int func_02057e6c(void* list, int kind, SafeAllocator* alloc, void* data, unsign
 
 extern char data_ov026_021dedf0[];
 
+// JPN: func_ov026_021dbaa8
 // USA: func_ov026_021db3d8
 extern "C" ARM void func_ov026_021db3d8(BattleWork* self) {
     if (self->battle->kind == 2) {

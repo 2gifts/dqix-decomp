@@ -4,6 +4,17 @@
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
 
+#if defined(jpn)
+#define REGION_VALUE(jpnValue, usaValue) jpnValue
+extern const char data_020f2a18[];
+extern "C" void func_020728ac(int, int, void*, int, int, unsigned short, unsigned char);
+struct TableA68;
+void* FindEntryByKey(TableA68*, int);
+extern "C" void func_02045d88(void*, void*, int);
+#else
+#define REGION_VALUE(jpnValue, usaValue) usaValue
+#endif
+
 extern AllocatorUnion data_02114e20;
 extern const char data_020f2810[];
 extern const char data_020f2826[];
@@ -32,7 +43,7 @@ struct Container020e0310;
 extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* c, int key);
 
 struct Obj020d9d60 {
-    char pad[0x58];
+    char pad[REGION_VALUE(0x24, 0x58)];
     SafeAllocator allocator;
 };
 extern "C" void _Z22ShutdownObject020d9d60P11Obj020d9d60(struct Obj020d9d60* self);
@@ -45,8 +56,8 @@ struct Obj020d9b34 {
     unsigned char state;
     unsigned char pad2[0xc - 0xa];
     int taskId;
-    char name[0x40 - 0x10];
-    char container[0x58 - 0x40];
+    char name[REGION_VALUE(0x1c, 0x40) - 0x10];
+    char container[REGION_VALUE(0x24 - 0x1c, 0x58 - 0x40)];
     SafeAllocator allocator;
 };
 
@@ -62,7 +73,11 @@ extern "C" ARM void func_020d9b34(struct Obj020d9b34* self) {
         self->allocator.ResetAllocatorPointer();
         _ZN13SafeAllocator11CreateTypeAEPvj(&self->allocator, AllocateAligned4(&data_02114e20, 0x400), 0x400);
         self->allocator.Reset();
+#if defined(jpn)
+        self->taskId = BackgroundLoader::GetInstance()->QueueLoadFile(data_020f2a18, NULL);
+#else
         self->taskId = _ZN16BackgroundLoader18QueueLoadFileInGP2EPKcS1_P13SafeAllocator(BackgroundLoader::GetInstance(), data_020f2810, data_020f2826, NULL);
+#endif
         self->state++;
     } else if (self->state == 1) {
         BackgroundLoader* bl = BackgroundLoader::GetInstance();
@@ -76,7 +91,11 @@ extern "C" ARM void func_020d9b34(struct Obj020d9b34* self) {
             void* fileData;
             unsigned int size;
             bl->GetLoadedFileByID(self->taskId, &fileData, &size);
+#if defined(jpn)
+            func_020728ac((int)&self->container, (int)&self->allocator, fileData, size, 0, 0, 0);
+#else
             func_020dfec0(&self->container, &self->allocator, fileData, size);
+#endif
             bl->RemoveTask(self->taskId);
             self->taskId = -1;
             self->state++;
@@ -93,11 +112,15 @@ extern "C" ARM void func_020d9b34(struct Obj020d9b34* self) {
         void* g = (void*)_Z26GetGlobalField0x1c020421a0v();
         func_02046380(g);
         _Z22SetIndexedName02046574P11Obj02046574iPc((struct Obj02046574*)g, 0, self->name);
+#if defined(jpn)
+        func_02045d88(g, FindEntryByKey((TableA68*)&self->container, self->field8), 0);
+#else
         func_0204500c(g, (void*)_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)&self->container, self->field8), 0, 0xe3);
-        *(int*)((char*)g + 0x998) = 1;
+#endif
+        *(int*)((char*)g + REGION_VALUE(0x868, 0x998)) = 1;
         self->state++;
     } else if (self->state == 4) {
-        if (*(int*)((char*)_Z26GetGlobalField0x1c020421a0v() + 0x998) == 0) {
+        if (*(int*)((char*)_Z26GetGlobalField0x1c020421a0v() + REGION_VALUE(0x868, 0x998)) == 0) {
             _Z22ShutdownObject020d9d60P11Obj020d9d60((struct Obj020d9d60*)self);
             self->field1 = 1;
         }

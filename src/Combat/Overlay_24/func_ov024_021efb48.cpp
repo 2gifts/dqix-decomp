@@ -17,6 +17,7 @@ struct Buf8_021efb48 { short v[8]; };
 extern struct Ids3_021efb48 data_ov024_021fea1c[4];
 extern struct Buf8_021efb48 data_ov024_021fed7c;
 
+// JPN: func_ov024_021f0314
 // USA: func_ov024_021efb48
 extern "C" ARM int func_ov024_021efb48(struct Obj_021efb48* obj, int unused1, int unused2, int* outCount, short* outArray) {
     struct Group_021efb48* group = (struct Group_021efb48*)(obj->field0 + 0x81b0);

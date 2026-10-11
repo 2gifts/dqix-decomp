@@ -1,4 +1,13 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define REGION_OFFSET_0 0x1a8
+#define REGION_OFFSET_1 0xe34
+#else
+#define REGION_OFFSET_0 0x1bc
+#define REGION_OFFSET_1 0xeb8
+#endif
+
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 
@@ -10,9 +19,9 @@ extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(struct Foo0207df50*
 struct CombatScene02166804 {
     char unk_0[0x44 - sizeof(SafeAllocator)];
     SafeAllocator allocators[2];
-    char unk_after_allocators[0x1bc - sizeof(struct Foo0207df50) - 0x44 - sizeof(SafeAllocator)];
+    char unk_after_allocators[REGION_OFFSET_0 - sizeof(struct Foo0207df50) - 0x44 - sizeof(SafeAllocator)];
     struct Foo0207df50 pairTables[2];
-    char unk_224[0xeb8 - 0x1bc - sizeof(struct Foo0207df50)];
+    char unk_224[REGION_OFFSET_1 - REGION_OFFSET_0 - sizeof(struct Foo0207df50)];
     void* nodes[4];
 };
 

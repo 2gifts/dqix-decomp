@@ -1,3 +1,10 @@
+// JPN: func_ov017_021b23cc
+#if defined(jpn)
+enum { RegionOffset26c = 0xc };
+#else
+enum { RegionOffset26c = 0x26c };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
@@ -36,7 +43,7 @@ extern "C" ARM int func_ov017_021b1d44(unsigned char* self, int flags, int clear
         return 0;
     }
     struct Outer26c_021b1d44* outer =
-        (struct Outer26c_021b1d44*)((char*)GameState::GetInstance() + 0x26c);
+        (struct Outer26c_021b1d44*)((char*)GameState::GetInstance() + RegionOffset26c);
     if ((outer->area.lo13 & 8) == 0) {
         unsigned char f = self[0x21];
         if ((f & 4) == 0 && (f & 2) == 0 && (f & 0x20) == 0) {

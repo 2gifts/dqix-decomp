@@ -8,8 +8,10 @@ struct ListNode_0218de60 {
     char* name;
     char* resource;
     char* option;
+#if !defined(jpn)
     bool enabled;
     bool alternate;
+#endif
     short priority;
     int value;
     ListNode_0218de60* next;
@@ -47,6 +49,7 @@ extern "C" ARM int func_ov016_0218de60(Script::Parameter* params, int count) {
     node.priority = params[5].ToInt();
     params += 6;
     node.value = (params++)->ToInt();
+#if !defined(jpn)
     count -= 7;
     if (count > 0) {
         node.enabled = (params++)->ToInt() != 0;
@@ -56,6 +59,7 @@ extern "C" ARM int func_ov016_0218de60(Script::Parameter* params, int count) {
     }
     if (count > 0) node.alternate = params->ToInt() != 0;
     else node.alternate = false;
+#endif
     _Z23AppendListNode_0218e020P17ListHead_0218e020Pv(data_ov016_0219d1bc, &node);
     return 1;
 }

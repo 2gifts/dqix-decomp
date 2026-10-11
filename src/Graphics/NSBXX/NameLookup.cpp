@@ -4,10 +4,13 @@ static inline unsigned int GetNameListEntryCount(const NSBXXNameList *list) {
     return list->numEntries_;
 }
 
+// Keys occupy 16 bytes, including zero padding; callers must supply the full
+// buffer rather than only a terminated string. The tree path selects a candidate,
+// so its name still needs the same four-word comparison as the linear path.
 // USA: func_020b736c
-extern "C" ARM void *NSBXXNameList_Search(NSBXXNameList *nameList, const char *name) {
-    const uint32_t *targetWords = (const uint32_t *) name;
-    if (name == NULL) return NULL;
+extern "C" ARM void *NSBXXNameList_Search(NSBXXNameList *nameList, const char *paddedName) {
+    const uint32_t *targetWords = (const uint32_t *) paddedName;
+    if (paddedName == NULL) return NULL;
 
     unsigned int numEntries = nameList->numEntries_;
     if (numEntries < 16)
@@ -29,12 +32,12 @@ extern "C" ARM void *NSBXXNameList_Search(NSBXXNameList *nameList, const char *n
                 } else
                     nameAddress = 0;
 
-                const uint32_t *source = (const uint32_t *) nameAddress;
-                if (source[0] == target0 && source[1] == target1 && source[2] == target2 && source[3] == target3) {
+                const uint32_t *entryNameWords = (const uint32_t *) nameAddress;
+                if (entryNameWords[0] == target0 && entryNameWords[1] == target1 && entryNameWords[2] == target2 && entryNameWords[3] == target3) {
                     if (nameList != NULL && searchIndex < nameList->numEntries_) {
                         intptr_t dataStart = (intptr_t) nameList + nameList->offsetToDataStart_;
-                        int stride         = *(uint16_t *) dataStart;
-                        return (void *) (dataStart + 4 + stride * searchIndex);
+                        int entryStride         = *(uint16_t *) dataStart;
+                        return (void *) (dataStart + 4 + entryStride * searchIndex);
                     }
                     return NULL;
                 }
@@ -46,11 +49,11 @@ extern "C" ARM void *NSBXXNameList_Search(NSBXXNameList *nameList, const char *n
     } else
     {
         NSBXXNameList::SearchTreeEntry *treeEntries = (NSBXXNameList::SearchTreeEntry *) &nameList->treeRoot_8_;
-        int firstChild                              = treeEntries[0].children_[0];
+        int firstChildIndex                              = treeEntries[0].children_[0];
 
-        if (firstChild != 0) {
-            NSBXXNameList::SearchTreeEntry *node = &treeEntries[firstChild];
-            int bitIndex                         = treeEntries[firstChild].bitIndex_;
+        if (firstChildIndex != 0) {
+            NSBXXNameList::SearchTreeEntry *node = &treeEntries[firstChildIndex];
+            int bitIndex                         = treeEntries[firstChildIndex].bitIndex_;
             unsigned int prevBitIndex            = treeEntries[0].bitIndex_;
             if (prevBitIndex > bitIndex) {
                 do {
@@ -80,8 +83,8 @@ extern "C" ARM void *NSBXXNameList_Search(NSBXXNameList *nameList, const char *n
             {
                 if (nameList != NULL && candidateIndex < numEntries) {
                     intptr_t dataStart = (intptr_t) nameList + nameList->offsetToDataStart_;
-                    int stride         = *(uint16_t *) dataStart;
-                    return (void *) (dataStart + 4 + stride * candidateIndex);
+                    int entryStride         = *(uint16_t *) dataStart;
+                    return (void *) (dataStart + 4 + entryStride * candidateIndex);
                 }
                 return NULL;
             }
@@ -91,71 +94,74 @@ extern "C" ARM void *NSBXXNameList_Search(NSBXXNameList *nameList, const char *n
     return NULL;
 }
 
+// Uses the same 16-byte, zero-padded key representation as the pointer lookup.
+// Model3D::GetBoneIndex builds that buffer explicitly; material animation callers
+// use the returned index to associate dictionary entries with their tracks.
 // USA: func_020b752c
-ARM int NSBXXNameList_SearchIndex(NSBXXNameList *nameList, const char *name) {
-    const uint32_t *targetIntArray = (const uint32_t *) name;
-    if (name == NULL) return -1;
+ARM int NSBXXNameList_SearchIndex(NSBXXNameList *nameList, const char *paddedName) {
+    const uint32_t *targetWords = (const uint32_t *) paddedName;
+    if (paddedName == NULL) return -1;
 
     unsigned int numEntries = nameList->numEntries_;
     if (numEntries < 16)
     {
         unsigned int searchIndex = 0;
-        uint32_t target0         = targetIntArray[0];
-        uint32_t target1         = targetIntArray[1];
-        uint32_t target2         = targetIntArray[2];
-        uint32_t target3         = targetIntArray[3];
+        uint32_t target0         = targetWords[0];
+        uint32_t target1         = targetWords[1];
+        uint32_t target2         = targetWords[2];
+        uint32_t target3         = targetWords[3];
         if (numEntries > searchIndex) {
-            int offsetWithinNameData = 0;
+            int nameByteOffset = 0;
             do {
-                intptr_t sourcePtr;
+                intptr_t nameAddress;
                 if (nameList != NULL && searchIndex < GetNameListEntryCount(nameList)) {
                     intptr_t dataStart = (intptr_t) nameList + nameList->offsetToDataStart_;
-                    sourcePtr = dataStart + *(uint16_t *) (dataStart + 2);
-                    sourcePtr += offsetWithinNameData;
+                    nameAddress = dataStart + *(uint16_t *) (dataStart + 2);
+                    nameAddress += nameByteOffset;
                 } else
-                    sourcePtr = 0;
+                    nameAddress = 0;
 
-                const uint32_t *source = (const uint32_t *) sourcePtr;
-                if (source[0] == target0 && source[1] == target1 && source[2] == target2 && source[3] == target3)
+                const uint32_t *entryNameWords = (const uint32_t *) nameAddress;
+                if (entryNameWords[0] == target0 && entryNameWords[1] == target1 && entryNameWords[2] == target2 && entryNameWords[3] == target3)
                     return searchIndex;
 
                 searchIndex++;
-                offsetWithinNameData += 16;
+                nameByteOffset += 16;
             } while (searchIndex < GetNameListEntryCount(nameList));
         }
     } else
     {
-        NSBXXNameList::SearchTreeEntry *entryArray = &nameList->treeRoot_8_;
-        int firstChild                             = entryArray[0].children_[0];
-        if (firstChild != 0) {
-            NSBXXNameList::SearchTreeEntry *searchCursor = &entryArray[firstChild];
-            int bitIndex                                 = entryArray[firstChild].bitIndex_;
-            unsigned int prevBitIndex                    = entryArray[0].bitIndex_;
+        NSBXXNameList::SearchTreeEntry *treeEntries = &nameList->treeRoot_8_;
+        int firstChildIndex                             = treeEntries[0].children_[0];
+        if (firstChildIndex != 0) {
+            NSBXXNameList::SearchTreeEntry *node = &treeEntries[firstChildIndex];
+            int bitIndex                                 = treeEntries[firstChildIndex].bitIndex_;
+            unsigned int prevBitIndex                    = treeEntries[0].bitIndex_;
             if (prevBitIndex > bitIndex) {
                 do {
-                    int integerToQuery = bitIndex >> 5;
-                    int bitToQuery     = bitIndex & 0x1f;
-                    int bitValue       = (targetIntArray[integerToQuery] >> bitToQuery) & 1;
-                    int childID        = searchCursor->children_[bitValue];
-                    prevBitIndex       = searchCursor->bitIndex_;
-                    searchCursor       = &entryArray[childID];
-                    bitIndex           = entryArray[childID].bitIndex_;
+                    int wordIndex = bitIndex >> 5;
+                    int bitInWord     = bitIndex & 0x1f;
+                    int bitValue       = (targetWords[wordIndex] >> bitInWord) & 1;
+                    int childIndex        = node->children_[bitValue];
+                    prevBitIndex       = node->bitIndex_;
+                    node       = &treeEntries[childIndex];
+                    bitIndex           = treeEntries[childIndex].bitIndex_;
 
                 } while (prevBitIndex > bitIndex);
             }
 
-            unsigned int candidateIndex = searchCursor->resourceIndex_;
-            intptr_t sourcePtr;
+            unsigned int candidateIndex = node->resourceIndex_;
+            intptr_t nameAddress;
             if (nameList != NULL && candidateIndex < nameList->numEntries_) {
                 intptr_t dataStart = (intptr_t) nameList + nameList->offsetToDataStart_;
-                sourcePtr = dataStart + *(uint16_t *) (dataStart + 2) + (candidateIndex * 16);
+                nameAddress = dataStart + *(uint16_t *) (dataStart + 2) + (candidateIndex * 16);
             } else
-                sourcePtr = 0;
+                nameAddress = 0;
 
-            const uint32_t *sourceIntArray = (const uint32_t *) sourcePtr;
-            if (sourceIntArray[0] == targetIntArray[0] && sourceIntArray[1] == targetIntArray[1] &&
-                sourceIntArray[2] == targetIntArray[2] && sourceIntArray[3] == targetIntArray[3])
-                return searchCursor->resourceIndex_;
+            const uint32_t *candidateWords = (const uint32_t *) nameAddress;
+            if (candidateWords[0] == targetWords[0] && candidateWords[1] == targetWords[1] &&
+                candidateWords[2] == targetWords[2] && candidateWords[3] == targetWords[3])
+                return node->resourceIndex_;
         }
     }
 

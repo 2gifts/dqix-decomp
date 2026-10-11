@@ -1,3 +1,10 @@
+// JPN: func_ov017_021d1f94
+#if defined(jpn)
+enum { RegionOffset70c = 0x4fc, RegionOffset734 = 0x524, RegionOffset2774 = 0x27b4 };
+#else
+enum { RegionOffset70c = 0x70c, RegionOffset734 = 0x734, RegionOffset2774 = 0x2774 };
+#endif
+
 #include <globaldefs.h>
 
 struct SearchStruct0202c1a4;
@@ -38,7 +45,7 @@ struct PendingEvent021d1b10 {
 };
 
 struct LiveState_021d1b10 {
-    unsigned char pad0[0x2774];
+    unsigned char pad0[RegionOffset2774];
     int vec[3];
     int field2780;
     short field2784;
@@ -51,8 +58,8 @@ extern "C" ARM void func_ov017_021d1b10(int unused0, Src021d1b10* b, int unused2
     if (GetSearchStructCurrentArrEntry(search) == 0) return;
 
     LiveState_021d1b10* live = (LiveState_021d1b10*)func_02012fe4();
-    PendingEvent021d1b10* obj1 = *(PendingEvent021d1b10**)(ov + 0x3000 + 0x70c);
-    unsigned char* obj2 = *(unsigned char**)(ov + 0x3000 + 0x734);
+    PendingEvent021d1b10* obj1 = *(PendingEvent021d1b10**)(ov + 0x3000 + RegionOffset70c);
+    unsigned char* obj2 = *(unsigned char**)(ov + 0x3000 + RegionOffset734);
 
     if (obj1->field3 != 0 && obj1->field1 != 1) {
         obj1->field12 = b->field4;

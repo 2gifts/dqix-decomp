@@ -50,8 +50,14 @@ extern "C" void _Z27EnqueueEventTag165_021cfde0ttt(unsigned short a, unsigned sh
 extern "C" unsigned int* func_ov017_0218b5b0(void);
 void SetBitsInField4(unsigned int* obj, unsigned int mask);
 
+// JPN: func_ov017_021b60a0
 // USA: func_ov017_021b5aec
 extern "C" ARM int func_ov017_021b5aec(ContainerEvent_021b5aec* obj) {
+#if defined(jpn)
+ enum { regionalOffset = 0x2794 };
+#else
+ enum { regionalOffset = 0x2754 };
+#endif
     ActorListManager* actors = func_02012fe4();
     unsigned char* flags = func_0205ec34();
     LootableContainerManager* containers = LootableContainerManager::GetMainInstance();
@@ -83,7 +89,7 @@ extern "C" ARM int func_ov017_021b5aec(ContainerEvent_021b5aec* obj) {
                 _Z22ZeroInitReturn020de824Pv(bag.unk14);
                 _Z18InitStruct0207cbe8Pc((char*)&bag);
                 _Z18InitStruct0207cbe8Pc((char*)&bag);
-                bag.inventory = (char*)actors + 0x2754;
+                bag.inventory = (char*)actors + regionalOffset;
                 func_0207d538(&bag, container->lootType, container->itemIDOrRank, obj->unk3c, 1);
                 obj->itemID = container->itemIDOrRank;
             }

@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kElementStride = 52 };
+#else
+enum { kElementStride = 60 };
+#endif
+
 
 typedef int (*CmpFn02079e60)(void*);
 
@@ -23,9 +29,9 @@ ARM void* BinarySearchByComparator02079e60(struct Obj02079e60* obj, int key, Cmp
     hi = count - 1;
     while (lo <= hi) {
         mid = lo + ((hi - lo + 1) >> 1);
-        r = cmp(arr + mid * 60);
+        r = cmp(arr + mid * kElementStride);
         if (r == key) {
-            return arr + mid * 60;
+            return arr + mid * kElementStride;
         }
         if (r > key) {
             hi = mid - 1;

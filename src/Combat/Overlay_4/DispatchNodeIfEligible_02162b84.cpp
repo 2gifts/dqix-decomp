@@ -13,8 +13,13 @@ extern Struct021707e8_02162b84 data_ov004_021707e8;
 
 // USA: func_ov004_02162b84  (semantic: DispatchNodeIfEligible_02162b84)
 extern "C" ARM int func_ov004_02162b84(void* self) {
+#if defined(jpn)
+    func_ov004_0215e5fc(self, data_ov004_021707e8.combatant);
+    func_ov004_0215f0c0(self);
+#else
     func_ov004_0215f0c0(self);
     func_ov004_0215e5fc(self, data_ov004_021707e8.combatant);
+#endif
 
     GameState* battle = GameState::GetInstance();
     unsigned char buf[4];

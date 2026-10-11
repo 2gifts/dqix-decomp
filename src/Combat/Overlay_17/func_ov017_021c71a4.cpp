@@ -37,10 +37,15 @@ void* GetData02100044();
 int TestBitAt0x34(unsigned char*, unsigned int);
 extern "C" void func_0205e330(void*, void*, int);
 
+// JPN: func_ov017_021c7654
 // USA: func_ov017_021c71a4
 extern "C" ARM void func_ov017_021c71a4() {
     GameState* game = GameState::GetInstance();
+#if defined(jpn)
+    StatusSelection* selection = func_ov017_021b8478(*(void**)((char*)func_ov017_0218b5b0() + 0x3508));
+#else
     StatusSelection* selection = func_ov017_021b8478(func_ov017_0218b5b0()->unknown_ptr_3718);
+#endif
     void* context = GetData02100044();
     StatusMessage message;
     message.type = 0x71;

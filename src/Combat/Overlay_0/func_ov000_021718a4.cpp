@@ -26,6 +26,9 @@ extern "C" ARM void func_ov000_021718a4(void* self) {
     unsigned char* slot = base + counter2;
     slot[8] = (unsigned char)result;
 
+#if defined(jpn)
+    SwapGlobalEntry0203c108((struct Obj0203c108*)((char*)self + 0x50), *(char**)entry);
+#else
     char buf1[0x80];
     __clear(buf1, 0x80);
     char buf2[0x80];
@@ -35,4 +38,5 @@ extern "C" ARM void func_ov000_021718a4(void* self) {
 
     CopyTextAndUppercaseIfFlagged0206819c(buf1, buf2, 0);
     SwapGlobalEntry0203c108((struct Obj0203c108*)((char*)self + 0x50), buf2);
+#endif
 }

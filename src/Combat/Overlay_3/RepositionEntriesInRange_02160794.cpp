@@ -1,5 +1,14 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kRegionValue470_298 = 0x298 };
+enum { kRegionValue324_20C = 0x20c };
+#else
+enum { kRegionValue470_298 = 0x470 };
+enum { kRegionValue324_20C = 0x324 };
+#endif
+
+
 extern short data_ov003_0217f420[3];
 
 void GetEntryFieldsAt0x602080828(void* obj, int id, short* outX, short* outY);
@@ -9,14 +18,15 @@ struct Parent809a0;
 ARM void SetEntryPositionById(struct Parent809a0* obj, int id, short x, short y);
 
 // USA: func_ov003_02160794  (semantic: RepositionEntriesInRange_02160794)
+// JPN: func_ov003_02160930
 extern "C" ARM void func_ov003_02160794(void* self) {
-    short* base = *(short**)((char*)self + 0x470);
+    short* base = *(short**)((char*)self + kRegionValue470_298);
     if (base == 0) {
         return;
     }
-    void* list = *(void**)((char*)self + 0x324);
+    void* list = *(void**)((char*)self + kRegionValue324_20C);
     for (int i = 0; i < 3; i++) {
-        short* basePtr = *(short**)((char*)self + 0x470);
+        short* basePtr = *(short**)((char*)self + kRegionValue470_298);
         short id = data_ov003_0217f420[i];
         short baseVal = *basePtr;
         if (id > baseVal) {

@@ -1,3 +1,4 @@
+// JPN: func_ov025_021d9378
 #include <globaldefs.h>
 
 extern "C" ARM void* __clear(void* dst, int count);

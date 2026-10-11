@@ -1,4 +1,12 @@
+// JPN: func_ov017_021c19ac
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kSceneHeapSize = 0x22c00, kSceneObjectSize = 0x338, kSceneFieldOffset = 0x170 };
+#else
+enum { kSceneHeapSize = 0x24000, kSceneObjectSize = 0x33c, kSceneFieldOffset = 0x174 };
+#endif
+
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 #include "Memory/AllocatorUnion.h"
@@ -61,16 +69,16 @@ extern "C" ARM void func_ov017_021c1404(struct Obj021c1404* obj) {
 	unsigned char step = obj->step;
 
 	if (step == 0) {
-		func_020a0cc4(0x24000);
-		void* buf = AllocateAligned4(&data_02114e20, 0x24000);
+		func_020a0cc4(kSceneHeapSize);
+		void* buf = AllocateAligned4(&data_02114e20, kSceneHeapSize);
 		if (!buf) {
 			func_020a0c0c();
 			obj->flag1 = 1;
 			return;
 		}
-		obj->allocator.CreateTypeA(buf, 0x24000);
+		obj->allocator.CreateTypeA(buf, kSceneHeapSize);
 		obj->allocator.Reset();
-		void* mem = obj->allocator.Allocate(0x33c);
+		void* mem = obj->allocator.Allocate(kSceneObjectSize);
 		data_ov017_021d8478 = (int)mem;
 		if (!mem) {
 			func_020a0c0c();
@@ -105,7 +113,7 @@ extern "C" ARM void func_ov017_021c1404(struct Obj021c1404* obj) {
 	if (step != 3) return;
 
 	int* dispReg = (int*)0x4000000;
-	unsigned int memField = *(unsigned int*)((char*)data_ov017_021d8478 + 0x174);
+	unsigned int memField = *(unsigned int*)((char*)data_ov017_021d8478 + kSceneFieldOffset);
 	*dispReg = (memField << 8) | (*dispReg & ~0x1f00);
 	ClearBitsInField4((unsigned int*)word0, 0xc0);
 	SetByteField0x253(combatant);

@@ -11,6 +11,7 @@ struct Obj0205d2bc {
 
 extern "C" void func_0204b088(struct Entry0205d2bc*, int);
 
+// JPN: func_0205e5ec
 // USA: func_0205d2bc
 ARM void InitEntries0205d2bc(struct Obj0205d2bc* obj) {
     unsigned char i;

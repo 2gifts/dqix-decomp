@@ -39,6 +39,7 @@ struct Info_021ddaa0 {
     short stageDelta;
 };
 
+// JPN: func_ov024_021de34c
 // USA: func_ov024_021ddaa0
 extern "C" ARM void* func_ov024_021ddaa0(struct Obj_021ddaa0* obj, int unused, int id, struct Info_021ddaa0* info, int unused4, int unused5, unsigned char flagArg) {
     GameObject* c = GetCombatantByID((int)obj->field0x10, id);

@@ -4,6 +4,7 @@
 
 struct Ctx_021e9904 { char pad[0x10]; void* field0x10; };
 
+// JPN: func_ov024_021ea0d0
 // USA: func_ov024_021e9904
 extern "C" ARM int func_ov024_021e9904(struct Ctx_021e9904* ctx, int id, int a2, int flag, signed char v) {
     GameObject* c = GetCombatantByID((int)ctx->field0x10, id);

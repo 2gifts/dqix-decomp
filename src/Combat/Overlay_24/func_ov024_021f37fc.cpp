@@ -12,6 +12,7 @@ int PickRandomTableEntryResetCounter_021ed890(struct Random** rngPtr, int* maxAn
 struct Buf8_021f37fc { short v[8]; };
 extern struct Buf8_021f37fc data_ov024_021fee0c;
 
+// JPN: func_ov024_021f3fc8
 // USA: func_ov024_021f37fc  (semantic: SelectFlagOrState5AndMaybePick_021f37fc)
 extern "C" ARM int func_ov024_021f37fc(int* a0, int a1, int a2, int* outCount, short* outArray) {
 	struct Buf8_021f37fc buf = data_ov024_021fee0c;

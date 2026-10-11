@@ -105,30 +105,50 @@ extern char data_02108760[];
 extern char data_02114ec4[];
 extern char data_02114e54[];
 
+#if defined(jpn)
+#define TITLE_SCENE_SIZE 0x2d0
+#define WORLD_SCENE_SIZE 0x494
+#define STARTUP_ALLOCATOR_SIZE 0xb000
+#define SCENE_SKIP_MEMBER_INDEX (0x7c9e - 0x6d40)
+#define MOVIE_RETURN_FLAG_OFFSET 0x6174
+extern "C" int func_ov030_021d9b60(void* callback);
+extern "C" int data_ov029_021d9d20_fake(void* callback);
+extern "C" int data_ov029_021d9ee0_fake(void* callback);
+extern "C" void func_020d8614();
+extern "C" void func_020d863c();
+extern "C" void func_020d8670();
+#else
+#define TITLE_SCENE_SIZE 0x2e0
+#define WORLD_SCENE_SIZE 0x504
+#define STARTUP_ALLOCATOR_SIZE 0x9478
+#define SCENE_SKIP_MEMBER_INDEX (0x7f72 - 0x6fc0)
+#define MOVIE_RETURN_FLAG_OFFSET 0x63d4
+#endif
+
 #define REG_IME (*(volatile unsigned short*)0x04000208)
 #define REG_POWCNT1 (*(volatile unsigned short*)0x04000304)
 
 #define RUNTITLE() \
     do { \
         func_020a1940(&OVERLAY_19_ID); \
-        void* scene = AllocateFromAllocatorUnion(&data_02114e20, 0x2e0); \
+        void* scene = AllocateFromAllocatorUnion(&data_02114e20, TITLE_SCENE_SIZE); \
         func_ov019_0218b5a0(scene); \
         _Z17EmptyStub02012de4v(&data_02114e20); \
         func_ov019_0218b5a8(scene); \
         func_ov019_0218b5a4(scene); \
-        FreeIfFlag(&data_02114e20, scene, 0x2e0); \
+        FreeIfFlag(&data_02114e20, scene, TITLE_SCENE_SIZE); \
         func_020a1bb4(&OVERLAY_19_ID); \
     } while (0)
 
 #define RUNOV20() \
     do { \
         func_020a1940(&OVERLAY_20_ID); \
-        void* scene = AllocateFromAllocatorUnion(&data_02114e20, 0x504); \
+        void* scene = AllocateFromAllocatorUnion(&data_02114e20, WORLD_SCENE_SIZE); \
         func_ov020_0218b5a0(scene); \
         _Z17EmptyStub02012de4v(&data_02114e20); \
         func_ov020_0218b710(scene); \
         func_ov020_0218b700(scene); \
-        FreeIfFlag(&data_02114e20, scene, 0x504); \
+        FreeIfFlag(&data_02114e20, scene, WORLD_SCENE_SIZE); \
         func_020a1bb4(&OVERLAY_20_ID); \
     } while (0)
 
@@ -167,6 +187,7 @@ extern char data_02114e54[];
         func_020a1bb4(&OVERLAY_15_ID); \
     } while (0)
 
+#if !defined(jpn)
 inline bool IsIntact1() {
     return func_ov029_021d8e1c((void*)InvokeCallbackReturnStatus020d6bac, (void*)NotifyOverlay0211e33c, 0) == 0xffe41136;
 }
@@ -178,6 +199,7 @@ inline bool IsIntact2() {
 inline bool IsIntact3() {
     return func_ov029_021d8ffc((void*)InvokeCallbackReturnStatus020d6be4, (void*)GuardedNotifyOverlay0211e33c020d6c68, 0) == 0xffe41b51;
 }
+#endif
 
 inline void ResetWordUnlessTwo(GameState* gs) {
     SetByte0x4((char*)gs, 6);
@@ -193,7 +215,6 @@ inline void ResetWordUnlessTwo(GameState* gs) {
         func_020a1bb4(&OVERLAY_17_ID); \
     } while (0)
 
-// KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
 // USA: func_02000c9c
 extern "C" ARM void main() {
     GameState* gs = GameState::GetInstance();
@@ -204,7 +225,14 @@ extern "C" ARM void main() {
     func_020a0c0c();
     InitOverlaySystem();
     func_020a1940(&OVERLAY_29_ID);
+#if defined(jpn)
+    if (!func_ov030_021d9b60((void*)func_020d8614) &&
+        !data_ov029_021d9d20_fake((void*)func_020d863c) &&
+        !data_ov029_021d9ee0_fake((void*)func_020d8670) &&
+        BackgroundLoader::GetInstance() == 0) {
+#else
     if (!IsIntact1() && !IsIntact2() && !IsIntact3() && BackgroundLoader::GetInstance() == 0) {
+#endif
         func_020a1940(&OVERLAY_33_ID);
         PopulateOv33BackgroundLoader(data_0211e33c, 0x30000, 0x14);
     }
@@ -221,7 +249,7 @@ extern "C" ARM void main() {
     SetupContextForMode0205ea20(data_02108760, 100);
     SafeAllocator allocator;
     allocator.ResetAllocatorPointer();
-    allocator.CreateTypeA(data_02114ec4, 0x9478);
+    allocator.CreateTypeA(data_02114ec4, STARTUP_ALLOCATOR_SIZE);
     allocator.Reset();
     func_020421c4(&allocator);
     InitHalfwords02071688();
@@ -250,7 +278,7 @@ extern "C" ARM void main() {
                 RUNOV20();
             } else if (GetByte0x4((char*)gs) == 6) {
                 RUNOV20();
-                if (*(unsigned char*)&gs->unk_6fc0[0x7f72 - 0x6fc0] == 0) {
+                if (*(unsigned char*)&gs->unk_6fc0[SCENE_SKIP_MEMBER_INDEX] == 0) {
                     SetByteField0x63d6((FieldBlock63d6_115b4*)gs, 1);
                     func_020a1940(&OVERLAY_16_ID);
                     int again16 = 1;
@@ -260,7 +288,7 @@ extern "C" ARM void main() {
                     func_020a1bb4(&OVERLAY_16_ID);
                     ClearByte0x63d6((FieldBlock63d6_115c0*)gs);
                 } else {
-                    *(unsigned char*)&gs->unk_6fc0[0x7f72 - 0x6fc0] = 0;
+                    *(unsigned char*)&gs->unk_6fc0[SCENE_SKIP_MEMBER_INDEX] = 0;
                 }
             }
             resumed = true;
@@ -301,7 +329,7 @@ extern "C" ARM void main() {
                 break;
             case 2:
                 RUNOV21();
-                if (((unsigned char*)gs)[0x63d4] != 0) {
+                if (((unsigned char*)gs)[MOVIE_RETURN_FLAG_OFFSET] != 0) {
                     RUNOV17();
                     if (GetByteField0x63d6((FieldBlock63d6_115a8*)gs)) {
                         SetByte0x4((char*)gs, 3);
@@ -334,6 +362,9 @@ extern "C" ARM void main() {
                 REG_IME = 0;
                 InitializeActiveAlarmList();
                 SetDataFromIndex_02211c50(2);
+#if defined(jpn)
+                ForwardToDataHandler_0222708c(0, 0x10);
+#else
                 switch (NormalizeField5_0200fb08((Struct0200fb08*)gs)) {
                 case 1:
                     ForwardToDataHandler_0222708c(1, 0);
@@ -354,6 +385,7 @@ extern "C" ARM void main() {
                     ForwardToDataHandler_0222708c(1, 0);
                     break;
                 }
+#endif
                 EnableIMEReturnPrev();
                 func_020c983c();
                 ResetSystemAndBoot020c98f0(1);

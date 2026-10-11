@@ -17,6 +17,7 @@ struct Range_021dd968 { char pad[0x30]; short stageDelta; };
 extern "C" int func_ov024_021e97f4(struct Obj_021dd968* ctx, int id, struct Range_021dd968* parameters, unsigned char decrease, signed char value, unsigned char useValue, unsigned char special);
 extern "C" void func_ov024_021e8bf0(void* work, void* fieldC, unsigned short* sel);
 
+// JPN: func_ov024_021de214
 // USA: func_ov024_021dd968
 extern "C" ARM void* func_ov024_021dd968(struct Obj_021dd968* obj, int unused, int id, struct Range_021dd968* range, int unused2, int unused3, unsigned char flagArg) {
 	GameObject* c = GetCombatantByID((int)obj->field0x10, id);

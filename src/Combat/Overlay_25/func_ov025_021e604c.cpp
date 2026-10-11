@@ -30,6 +30,7 @@ struct Formation021e604c {
     struct Vec3 center;
 };
 
+// JPN: func_ov025_021e64fc
 // USA: func_ov025_021e604c
 extern "C" ARM int func_ov025_021e604c(void* unused0, int b, int unused2, void* c) {
     int ids[8];

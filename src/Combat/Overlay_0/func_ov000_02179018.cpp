@@ -1,4 +1,6 @@
 #include <globaldefs.h>
+
+
 #include "std_library_functions.h"
 
 struct Elem_0205d81c {
@@ -45,19 +47,32 @@ extern "C" struct Elem_0205d81c* _Z23FindElementByC40205d81cP15Struct_0205d81ci(
 extern "C" void func_ov000_02179194(struct Owner_02179018* obj, struct Entry_02179018* entry);
 extern "C" void func_ov000_0217ab8c(struct Entry_02179018* entry, int a, int b);
 extern "C" void func_ov000_0217936c(struct Owner_02179018* obj, struct Entry_02179018* entry, void* buf);
+#if defined(jpn)
+extern "C" void func_0205d304(struct Struct_0205d81c* s, void* buf, int a, int b, int c, int d, int e);
+#else
 extern "C" void func_0205d304(struct Struct_0205d81c* s, void* buf, int a, int b, int c, int d, int e, int f);
+#endif
 extern "C" void func_ov000_02176210(struct Struct_0205d81c* s, int a, int key);
 
 // USA: func_ov000_02179018
+// JPN: func_ov000_0217a474
 extern "C" ARM void func_ov000_02179018(struct Owner_02179018* obj, struct Entry_02179018* entry, int a, int b) {
     func_ov000_02179194(obj, entry);
     int x = entry->x;
     int y = entry->y;
     func_ov000_0217ab8c(entry, a, b);
     struct Struct_0205d81c* s = &obj->elems;
+#if defined(jpn)
+    s->fieldA0 = 0xe;
+#else
     s->fieldA0 = 0x10;
+#endif
     s->fieldA2 = 9;
+#if defined(jpn)
+    s->fieldA4 = (x >> 3) + 9;
+#else
     s->fieldA4 = (x >> 3) + 0x10;
+#endif
     s->fieldA6 = y >> 3;
     s->fieldA8 = 0xc;
     s->fieldAA = 8;
@@ -68,10 +83,19 @@ extern "C" ARM void func_ov000_02179018(struct Owner_02179018* obj, struct Entry
     if (_Z18GetField0_0205bafcPv(s->field54) > 4) {
         many = 1;
     }
+#if defined(jpn)
+    void* buf = *(void**)(_Z26GetGlobalField0x1c020421a0v() + 0x28);
+    memset(buf, 0, 0x800);
+#else
     void* buf = *(void**)(_Z26GetGlobalField0x1c020421a0v() + 0x5c);
     memset(buf, 0, 0x960);
+#endif
     func_ov000_0217936c(obj, entry, buf);
+#if defined(jpn)
+    func_0205d304(s, buf, 0, 0, many, 1, 0);
+#else
     func_0205d304(s, buf, 0, 0, many, 1, 0, 0);
+#endif
     struct Elem_0205d81c* e = _Z23FindElementByC40205d81cP15Struct_0205d81ci(s, 0x23);
     if (e != 0) {
         e->fieldC2 = 0;

@@ -8,6 +8,7 @@ extern "C" int func_ov000_0215e9fc(int a, short* buf, int max, int start);
 struct Obj_021f50cc { int field0; };
 extern unsigned short data_ov024_021feabc;
 
+// JPN: func_ov024_021f5898
 // USA: func_ov024_021f50cc  (semantic: CollectAgilityBuffTargetsOrDefault_021f50cc)
 extern "C" ARM int func_ov024_021f50cc(struct Obj_021f50cc* obj, int unused1, int unused2, int* outCount, void* outArray) {
 	short buf[4];

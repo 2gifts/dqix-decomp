@@ -1,4 +1,12 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define func_ov023_021f6524 func_ov004_02168f08
+#define _Z23GetNodeIfType8_02168a6cPvi func_ov004_02168f70
+#define _Z24GetNodeIfType15_02168a38Pvi func_ov004_02168f3c
+extern "C" void* func_ov004_02168fa4(void*, int);
+extern "C" void func_ov023_021f809c(void*, void*);
+#endif
+
 
 struct Grid021f9b30 {
     char pad[0x20];
@@ -51,7 +59,9 @@ struct SaveTable0216a610 {
 };
 
 struct Data0216a610 {
+#if !defined(jpn)
     char names[8][0x30];
+#endif
     char pad180[0x10];
     struct SaveTable0216a610* table;
 };
@@ -82,9 +92,13 @@ extern "C" ARM int func_ov004_0216a610(void* a) {
         Widget0216a610* num2 = _Z24GetNodeIfType15_02168a38Pvi(a, i + 0xe0);
         struct SaveEntry0216a610* e = &table->entries[i + page * 8];
         if (e->used) {
+#if defined(jpn)
+            label->text = e->name;
+#else
             char* name = data_ov004_02171030->names[i];
             func_02042764(e->name, name, 1);
             label->text = name;
+#endif
             num1->SetValue(e->id);
             num2->SetValue(e->level);
             label->flags &= ~8;
@@ -100,6 +114,15 @@ extern "C" ARM int func_ov004_0216a610(void* a) {
             _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(grid, 0, (unsigned short)i, 0);
         }
     }
+#if defined(jpn)
+    void* selected = func_ov004_02168fa4(a, 0x14);
+    if(selected) {
+        *(short*)((char*)selected+0x104)=page;
+        *(short*)((char*)selected+0x106)=field5e;
+        func_ov023_021f809c(selected,a);
+    }
+#else
     _Z21DispatchNode_021f6630iiss((int)a, 0x14, page, field5e);
+#endif
     return 0;
 }

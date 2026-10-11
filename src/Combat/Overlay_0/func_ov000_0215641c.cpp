@@ -10,7 +10,11 @@ struct Combatant0215641c {
     char unk_0[0x134];
     BaseCombatStats* baseStats;
     ModifiableCombatStats* currentStats;
+#if defined(jpn)
+    char unk_13c[0x144 - 0x13c];
+#else
     char unk_13c[0x150 - 0x13c];
+#endif
     CombatantExtra0215641c* extra;
 
     unsigned short GetCurrentCharm() {

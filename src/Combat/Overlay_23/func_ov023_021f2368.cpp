@@ -16,7 +16,12 @@ void* FindEntryByKey(struct TableA68* table, int key);
 void InitObjFromCombatantId020e4bf4(void* obj, int combatantId);
 struct Obj02046574;
 void SetIndexedName02046574(struct Obj02046574* obj, int index, char* str);
+#if defined(jpn)
+extern "C" void func_02045d88(void* obj, char* buffer, int a);
+#else
 extern "C" void func_0204500c(void* obj, char* buffer, int a, int b);
+#endif
+
 int GetFieldAt0x150(unsigned char* obj);
 int CheckThresholdOverAny_021f5228(int id);
 extern "C" void* func_0205ec34(void);
@@ -46,8 +51,14 @@ extern "C" struct GlobalState021f2368* _ZZ17GetGlobal021ffefcvE1s;
 
 struct PctBits021f2368 { unsigned short low : 7; unsigned short pct : 9; };
 
+// JPN: func_ov023_021f1c38
 // USA: func_ov023_021f2368  (semantic: ProcessEntryMatchAndDispatch_021f2368)
 extern "C" ARM int func_ov023_021f2368(unsigned char* obj) {
+#if defined(jpn)
+ enum {regionalOffset0=0x5af4, regionalOffset1=0x17e2, regionalOffset2=0x868, regionalOffset3=0x5900, regionalOffset4=0x8c, regionalOffset5=0x17fb, regionalOffset6=0x5958, regionalOffset7=0x17de, regionalOffset8=0x17df, regionalOffset9=0xe28};
+#else
+ enum {regionalOffset0=0x5904, regionalOffset1=0x19b2, regionalOffset2=0x998, regionalOffset3=0x5700, regionalOffset4=0x9c, regionalOffset5=0x19ca, regionalOffset6=0x5768, regionalOffset7=0x19ae, regionalOffset8=0x19af, regionalOffset9=0xeac};
+#endif
     GameState* battleStruct = GameState::GetInstance();
     struct GlobalState021f2368* g = _ZZ17GetGlobal021ffefcvE1s;
     int state = GetGlobalField0x1c020421a0();
@@ -64,20 +75,38 @@ extern "C" ARM int func_ov023_021f2368(unsigned char* obj) {
             void* tbl = GetData02108e10();
             void* found = SearchBothTables02079e2c((char*)tbl, val);
             if (found != NULL) {
+#if defined(jpn)
+                GameObject* textCombatant;
+                if ((textCombatant = GetCombatantWithFlag0x100(battleStruct, id)) != 0 && contains != 0) {
+#else
                 if (GetCombatantWithFlag0x100(battleStruct, id) != 0 && contains != 0) {
+#endif
+
+#if defined(jpn)
+                    char* combatantName = *(char**)((char*)textCombatant + 0x134);
+                    char msgBuf[0x100];
+                    char* e1 = (char*)FindEntryByKey((struct TableA68*)(obj + regionalOffset0), 0xc);
+                    sprintf(msgBuf, e1, combatantName, *(char**)found);
+                    char* e2 = (char*)FindEntryByKey((struct TableA68*)(obj + regionalOffset0), 0x22);
+                    strcat(msgBuf, e2);
+                    func_02045d88(stateObj, msgBuf, 1);
+
+#else
                     char buf1[0xc];
                     char msgBuf[0x80];
-                    char* e1 = (char*)FindEntryByKey((struct TableA68*)(obj + 0x5904), 0xc);
+                    char* e1 = (char*)FindEntryByKey((struct TableA68*)(obj + regionalOffset0), 0xc);
                     sprintf(msgBuf, e1);
-                    char* e2 = (char*)FindEntryByKey((struct TableA68*)(obj + 0x5904), 0x22);
+                    char* e2 = (char*)FindEntryByKey((struct TableA68*)(obj + regionalOffset0), 0x22);
                     strcat(msgBuf, e2);
                     InitObjFromCombatantId020e4bf4(buf1, id);
                     *(void**)(stateObj + 0x10) = buf1;
                     char* name = *(char**)found;
                     SetIndexedName02046574((struct Obj02046574*)stateObj, 1, name);
                     func_0204500c(stateObj, msgBuf, 1, 0xe3);
-                    stateObj[0x19b2] = 0;
-                    *(int*)(stateObj + 0x998) = 1;
+
+#endif
+                    stateObj[regionalOffset1] = 0;
+                    *(int*)(stateObj + regionalOffset2) = 1;
                 }
             }
         }
@@ -86,7 +115,7 @@ extern "C" ARM int func_ov023_021f2368(unsigned char* obj) {
             void* p2a04b = GetPtrField0x2a04(battleStruct);
             GameObject* combatant = GetCombatantWithFlag0x100(battleStruct, id);
             unsigned char* field150 = (unsigned char*)GetFieldAt0x150((unsigned char*)combatant);
-            struct PctBits021f2368* pb = (struct PctBits021f2368*)(obj + id * 0x54 + 0x5700 + 0x9c);
+            struct PctBits021f2368* pb = (struct PctBits021f2368*)(obj + id * 0x54 + regionalOffset3 + regionalOffset4);
             if (pb->pct != 0) {
                 g->e5 = 0xc;
             } else if (ArrayContainsByte((struct ArrayContainsByteStruct*)p2a04b, id) &&
@@ -95,7 +124,7 @@ extern "C" ARM int func_ov023_021f2368(unsigned char* obj) {
                 g->e5 = 8;
                 void* base = func_0205ec34();
                 if (TestBitInByteArray((int)base, (unsigned char*)base + 0x8c, 0x119c)) {
-                    stateObj[0x19ca] = 0;
+                    stateObj[regionalOffset5] = 0;
                 }
             } else {
                 g->e5 = 7;
@@ -108,10 +137,10 @@ extern "C" ARM int func_ov023_021f2368(unsigned char* obj) {
                     }
                 }
                 int fieldCheck = func_ov023_021f4438(obj);
-                if (found2 == 0 && fieldCheck == 0 && *(int*)(obj + 0x5768) == 0) {
-                    stateObj[0x19ae] = 0;
-                    stateObj[0x19ca] = 0;
-                    stateObj[0x19af] = 0;
+                if (found2 == 0 && fieldCheck == 0 && *(int*)(obj + regionalOffset6) == 0) {
+                    stateObj[regionalOffset7] = 0;
+                    stateObj[regionalOffset5] = 0;
+                    stateObj[regionalOffset8] = 0;
                 }
             }
         } else {
@@ -130,5 +159,5 @@ extern "C" ARM int func_ov023_021f2368(unsigned char* obj) {
             }
         }
     }
-    return *(int*)(obj + 0xeac);
+    return *(int*)(obj + regionalOffset9);
 }

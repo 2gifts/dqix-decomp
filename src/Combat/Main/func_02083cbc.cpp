@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define IS_JPN 1
+#else
+#define IS_JPN 0
+#endif
+
 #include "std_library_functions.h"
 
 struct PackedTriple02083cbc {
@@ -14,7 +20,7 @@ struct PackedSource02083cbc {
 };
 
 struct PackedDestination02083cbc {
-    unsigned char unknown[0x91c];
+    unsigned char unknown[IS_JPN ? 0x884 : 0x91c];
     PackedTriple02083cbc triples[3];
     unsigned char gap[0xc];
     unsigned char tail[0x16];

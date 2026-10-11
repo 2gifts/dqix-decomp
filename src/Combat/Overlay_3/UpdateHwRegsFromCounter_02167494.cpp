@@ -1,19 +1,31 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kRegionValue68_38 = 0x38 };
+enum { kRegionValue74_44 = 0x44 };
+enum { kRegionValue70_40 = 0x40 };
+#else
+enum { kRegionValue68_38 = 0x68 };
+enum { kRegionValue74_44 = 0x74 };
+enum { kRegionValue70_40 = 0x70 };
+#endif
+
+
 struct Obj0207fc6c;
 void CallFunc0204c87cOverEntries0207fc6c(struct Obj0207fc6c* obj, int arg);
 
 struct Obj02167494 {
     char pad0[0x10];
     void* field10;
-    char pad14[0x68 - 0x14];
+    char pad14[kRegionValue68_38 - 0x14];
     int field68;
     int field6c;
-    char pad70[0x74 - 0x70];
+    char pad70[kRegionValue74_44 - kRegionValue70_40];
     unsigned char field74;
 };
 
 // USA: func_ov003_02167494  (semantic: UpdateHwRegsFromCounter_02167494)
+// JPN: func_ov003_02167374
 extern "C" ARM void func_ov003_02167494(struct Obj02167494* obj, int arg) {
     if (obj->field74 == 0 || obj->field10 == 0) return;
 

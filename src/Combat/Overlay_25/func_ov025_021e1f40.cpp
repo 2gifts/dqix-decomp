@@ -6,8 +6,14 @@ extern "C" int _Z22CheckSubstructFlag0x80Ph(GameObject* obj);
 extern "C" int _Z20GetSubstructByte0x1cPh(GameObject* obj);
 extern "C" int _Z23CheckSubstructFlag0x100Ph(GameObject* obj);
 
+// JPN: func_ov025_021e2850
 // USA: func_ov025_021e1f40
 extern "C" ARM int func_ov025_021e1f40(GameObject* obj, int targetId) {
+#if defined(jpn)
+ enum {regionalOffset0=0x180};
+#else
+ enum {regionalOffset0=0x18c};
+#endif
     if (_Z20GetSubstructByte0x56Ph(obj) == 0) {
         return 0;
     }
@@ -30,7 +36,7 @@ extern "C" ARM int func_ov025_021e1f40(GameObject* obj, int targetId) {
     if (party) {
         GameState* gs = GameState::GetInstance();
         GameObject* c = GetCombatantWithFlag0x100(gs, obj->obj3D_.unknown_4_);
-        if (c != NULL && (*(unsigned int*)((char*)c + 0x18c) & 1)) {
+        if (c != NULL && (*(unsigned int*)((char*)c + regionalOffset0) & 1)) {
             return 0;
         }
     }

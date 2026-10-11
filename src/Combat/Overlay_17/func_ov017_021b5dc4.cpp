@@ -1,3 +1,10 @@
+// JPN: func_ov017_021b6378
+#if defined(jpn)
+enum { RegionOffset600 = 0x620, RegionOffset2cc = 0x27c };
+#else
+enum { RegionOffset600 = 0x600, RegionOffset2cc = 0x2cc };
+#endif
+
 #include <globaldefs.h>
 #include "World/ZoneLootableRecord.h"
 #include "GameState/GameState.h"
@@ -41,12 +48,12 @@ extern "C" ARM int func_ov017_021b5dc4(char* self) {
                     GameState* battle = GameState::GetInstance();
                     char* base = (char*)func_02012fe4();
                     int idx = GetField0x3acValue(battle);
-                    char* p = base + 0x600 + idx * 0x88;
+                    char* p = base + RegionOffset600 + idx * 0x88;
                     *(int*)(self + 0x20) = (int)p;
                     MaybeInvoke0204719c((struct Foo02048004*)*(int*)(self + 0x20));
                     func_0204719c((struct Foo02048004*)*(int*)(self + 0x20));
                     unsigned char local[0x70];
-                    short* mid = (short*)(((char*)func_ov017_0218b5b0()) + 0x2cc);
+                    short* mid = (short*)(((char*)func_ov017_0218b5b0()) + RegionOffset2cc);
                     CopyState0207dfc8((struct State0207dfc8*)((char*)mid + 0x230), (struct State0207dfc8*)local);
                     RestorePairTables0207df90((char*)local);
                     Forward02047b30((void*)*(int*)(self + 0x20), (int)outPtr, (int)outSize, (int)(self + 0x40));

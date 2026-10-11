@@ -15,6 +15,7 @@ extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, unsigned l
 struct Obj_021e42b8 { char pad0[0x10]; void* field0x10; };
 struct Params_021e42b8 { char pad0[0x32]; short stageDelta; };
 
+// JPN: func_ov024_021e4b50
 // USA: func_ov024_021e42b8
 extern "C" ARM unsigned long long func_ov024_021e42b8(struct Obj_021e42b8* obj, int unused, int id, struct Params_021e42b8* params) {
 	GameObject* c = GetCombatantByID((int)obj->field0x10, id);

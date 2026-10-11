@@ -3,6 +3,12 @@
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 
+#if defined(jpn)
+enum { PoolOffset = 0x27c };
+#else
+enum { PoolOffset = 0x2cc };
+#endif
+
 extern "C" void NSBXX_Model_SetPolygonID(void* obj, unsigned int value);
 
 struct Foo0207df50;
@@ -13,6 +19,7 @@ struct Fields020407b4;
 void SetFields0x44(struct Fields020407b4* obj, int a, int b, int c);
 
 // USA: func_02046cc8
+// JPN: func_02046cc8
 extern "C" ARM int func_02046cc8(void* self) {
     char* pool;
     void* base;
@@ -38,7 +45,7 @@ extern "C" ARM int func_02046cc8(void* self) {
     loader = BackgroundLoader::GetInstance();
 
     if (loader->GetTaskStatus(*(int*)((char*)self + 0xec)) != 0) {
-        pool = (char*)base + 0x2cc;
+        pool = (char*)base + PoolOffset;
         if (*(unsigned char*)((char*)self + 0x1d) != 0) {
             _Z26CopyInternalFields0207df50P11Foo0207df50((struct Foo0207df50*)(pool + 0xc40));
             _Z25RestorePairTables0207df90Pc(pool + 0xc40);

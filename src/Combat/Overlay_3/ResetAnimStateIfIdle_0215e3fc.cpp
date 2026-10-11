@@ -1,6 +1,13 @@
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 
+#if defined(jpn)
+enum { kRegionValue3B4_3CC = 0x3cc };
+#else
+enum { kRegionValue3B4_3CC = 0x3b4 };
+#endif
+
+
 int IsAnimationActive0209ca2c(void* obj);
 void* GetData02153637(void);
 
@@ -11,7 +18,7 @@ extern int data_02109bf4;
 extern int data_02108760;
 
 struct Self0215e3fc {
-    char pad0[0x3b4];
+    char pad0[kRegionValue3B4_3CC];
     int* f3b4;
     unsigned char f3b8;
     char pad1[0x3bc - 0x3b9];
@@ -21,6 +28,7 @@ struct Self0215e3fc {
 };
 
 // USA: func_ov003_0215e3fc
+// JPN: func_ov003_0215f6d4
 ARM void ResetAnimStateIfIdle_0215e3fc(struct Self0215e3fc* self) {
     if (IsAnimationActive0209ca2c(&data_02109bf4) != 0) {
         return;
@@ -36,7 +44,11 @@ ARM void ResetAnimStateIfIdle_0215e3fc(struct Self0215e3fc* self) {
         int x = (int)BackgroundLoader::GetInstance();
         ((BackgroundLoader*)(x))->MaybeFreeAllocations();
         int i;
+#if defined(jpn)
+        for (i = 0; i < 4; i++) {
+#else
         for (i = 0; i < 3; i++) {
+#endif
             ((BackgroundLoader*)(x))->RemoveTask((int)(self->f3b4[i]));
             self->f3b4[i] = -1;
         }

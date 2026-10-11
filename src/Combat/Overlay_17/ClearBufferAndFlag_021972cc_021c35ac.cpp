@@ -27,6 +27,7 @@ extern "C" void func_0202c288(void* obj);
 ARM void ClearBufferAndFlag_021972cc(char* p);
 void ClearByteField17182_02195520(void* obj);
 
+// JPN: func_ov017_021c3a88
 // USA: func_ov017_021c35ac  (semantic: ResetBattleStateAndQueues_021c35ac)
 extern "C" ARM void func_ov017_021c35ac(void) {
     GameState* battle = GameState::GetInstance();
@@ -41,7 +42,12 @@ extern "C" ARM void func_ov017_021c35ac(void) {
         return;
     }
 
+#if defined(jpn)
+
+#else
     OrByte0x1029With0x30ClearField0x1034((unsigned char*)search);
+#endif
+
     SetState2AndCall0202d6c8(search);
     func_0205e22c(d100044);
     InitSlotTable020e3004((struct SlotTable020e3004*)d153637);

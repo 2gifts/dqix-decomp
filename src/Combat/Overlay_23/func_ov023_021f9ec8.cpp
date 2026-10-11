@@ -21,6 +21,7 @@ struct Obj021f9ec8 {
     void* f24;
 };
 
+// JPN: func_ov023_021f9354
 // USA: func_ov023_021f9ec8  (semantic: InitObjAndAllocateEntries_021f9ec8)
 extern "C" ARM int func_ov023_021f9ec8(struct Obj021f9ec8* obj, void* ctx, int arg3, int arg4, int arg5) {
     func_ov023_021f6ed8(obj);

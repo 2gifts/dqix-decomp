@@ -3,7 +3,6 @@
 
 #ifdef jpn
 #define data_020e7010 data_020e78b4
-#define func_02012fe4 func_02012dac
 #define data_020e700c data_020e78b0
 #endif
 

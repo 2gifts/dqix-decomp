@@ -1,4 +1,13 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define REGION_OFFSET_0 0x28
+#define REGION_OFFSET_1 0x800
+#else
+#define REGION_OFFSET_0 0x5c
+#define REGION_OFFSET_1 0x960
+#endif
+
 #include "std_library_functions.h"
 
 struct Elem_0205d81c {
@@ -23,7 +32,7 @@ struct Struct_0205d81c {
 };
 
 struct GlobalField1c {
-    char pad0[0x5c];
+    char pad0[REGION_OFFSET_0];
     void* buffer;
 };
 
@@ -44,7 +53,11 @@ extern "C" Elem_0205d81c* _Z23FindElementByC40205d81cP15Struct_0205d81ci(Struct_
 extern "C" void func_ov000_02178d28(Obj02178ba8* obj, Entry02178ba8* entry);
 extern "C" void func_ov000_0217ab8c(Entry02178ba8* entry, int a, int b);
 extern "C" void func_ov000_02178f28(Obj02178ba8* obj, Entry02178ba8* entry, void* buf);
+#if defined(jpn)
+extern "C" void func_0205d304(Struct_0205d81c* s, void* buf, int a, int b, int c, int d, int e);
+#else
 extern "C" void func_0205d304(Struct_0205d81c* s, void* buf, int a, int b, int c, int d, int e, int f);
+#endif
 extern "C" void func_ov000_02176210(Struct_0205d81c* s, int a, int b);
 
 // USA: func_ov000_02178ba8
@@ -54,9 +67,17 @@ extern "C" ARM void func_ov000_02178ba8(Obj02178ba8* obj, Entry02178ba8* entry, 
     int y = entry->y;
     func_ov000_0217ab8c(entry, arg2, arg3);
     Struct_0205d81c* panel = &obj->panel;
+#if defined(jpn)
+    panel->fieldA0 = 0xd;
+#else
     panel->fieldA0 = 0x10;
+#endif
     panel->fieldA2 = 9;
+#if defined(jpn)
+    panel->x = (x >> 3) + 9;
+#else
     panel->x = (x >> 3) + 0x10;
+#endif
     panel->y = y >> 3;
     panel->fieldA8 = 0xc;
     panel->fieldAA = 8;
@@ -68,9 +89,13 @@ extern "C" ARM void func_ov000_02178ba8(Obj02178ba8* obj, Entry02178ba8* entry, 
         flag = 1;
     }
     void* buf = _Z26GetGlobalField0x1c020421a0v()->buffer;
-    memset(buf, 0, 0x960);
+    memset(buf, 0, REGION_OFFSET_1);
     func_ov000_02178f28(obj, entry, buf);
+#if defined(jpn)
+    func_0205d304(panel, buf, 0, 0, flag, 1, 0);
+#else
     func_0205d304(panel, buf, 0, 0, flag, 1, 0, 0);
+#endif
     Elem_0205d81c* elem = _Z23FindElementByC40205d81cP15Struct_0205d81ci(panel, 0x22);
     if (elem != NULL) {
         elem->fieldC2 = 0;

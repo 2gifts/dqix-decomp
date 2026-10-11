@@ -1,4 +1,14 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegion1030 = 0xfac };
+enum { kRegion101c = 0xf98 };
+enum { kRegion89c = 0x818 };
+#else
+enum { kRegion1030 = 0x1030 };
+enum { kRegion101c = 0x101c };
+enum { kRegion89c = 0x89c };
+#endif
+
 #include "GameState/GameState.h"
 
 struct Obj2081;
@@ -13,14 +23,15 @@ extern "C" int func_020dcc98(int combatantId);
 extern "C" void func_020813ec(void* obj, int key);
 void* GetPtrField0x2a04(GameState* battleStruct);
 
+// JPN: func_ov003_021767d0
 // USA: func_ov003_02177820  (semantic: RecomputeElementTierAndDispatchAll_02177820)
 #pragma opt_common_subs off
 extern "C" ARM void func_ov003_02177820(char* self) {
-    struct Obj2081* elemObj = *(struct Obj2081**)(self + 0x89c);
+    struct Obj2081* elemObj = *(struct Obj2081**)(self + kRegion89c);
     GameState* battle = GameState::GetInstance();
     GetPtrField0x2a04(battle);
 
-    int field = *(int*)(self + 0x1000 + 0x30);
+    int field = *(int*)(self + kRegion1030);
     int a = 0x11, b = 0x79;
     switch (field) {
     case 2: a = 0x12; b = 0x7c; break;
@@ -34,15 +45,15 @@ extern "C" ARM void func_ov003_02177820(char* self) {
 
     int hp;
     unsigned char i;
-    for (i = 0; i < *(int*)(self + 0x1000 + 0x30); i++) {
+    for (i = 0; i < *(int*)(self + kRegion1030); i++) {
         hp = 0;
-        GameObject* combatant = battle->GetPartyMemberByIndex(*(int*)(self + 0x1000 + 0x1c + i * 4));
+        GameObject* combatant = battle->GetPartyMemberByIndex(*(int*)(self + kRegion101c + i * 4));
         if (combatant != 0) {
             hp = *(int*)((char*)combatant + 0x134);
         }
         SetEntryFirstField02080f8c((struct Container02080f8c*)elemObj, b, hp);
 
-        int tier = func_020dcc98((signed char)*(int*)(self + 0x1000 + 0x1c + i * 4));
+        int tier = func_020dcc98((signed char)*(int*)(self + kRegion101c + i * 4));
         SetEntryHighNibble0x13((struct Container02080cc0*)elemObj, b, tier);
 
         b = (short)(b + 1);

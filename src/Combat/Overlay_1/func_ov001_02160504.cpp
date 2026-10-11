@@ -23,7 +23,13 @@ extern int data_ov001_02164d34[];
 
 struct Node02160504 { char pad0[0x44]; int field44; char pad1[0x54 - 0x48]; Node02160504* next; };
 struct Big02160504 {
+    
+#if defined(jpn)
+    char pad0[0x430];
+#else
     char pad0[0x410];
+#endif
+
     int field410;
     char pad1[0x41c - 0x414];
     Node02160504* field41c;

@@ -1,3 +1,10 @@
+// JPN: func_ov017_0219c80c
+#if defined(jpn)
+enum { RegionOffset70c = 0x4fc, RegionOffset6fc = 0x4ec };
+#else
+enum { RegionOffset70c = 0x70c, RegionOffset6fc = 0x6fc };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -36,8 +43,8 @@ extern "C" ARM void func_ov017_0219bd1c(int prepend, unsigned char sb, int inser
     void* ctxRaw = func_ov017_0218b5b0();
     char* ctx = (char*)ctxRaw + 0x3000;
     struct Field3f8Struct0219bd1c* field;
-    void* list = *(void**)(ctx + 0x6fc);
-    struct NodeHdr0219bd1c* node = *(struct NodeHdr0219bd1c**)(ctx + 0x70c);
+    void* list = *(void**)(ctx + RegionOffset6fc);
+    struct NodeHdr0219bd1c* node = *(struct NodeHdr0219bd1c**)(ctx + RegionOffset70c);
     field = (struct Field3f8Struct0219bd1c*)GetField0x3f8Address(bs);
     if (node->flag3) return;
     if (node->flag2) {

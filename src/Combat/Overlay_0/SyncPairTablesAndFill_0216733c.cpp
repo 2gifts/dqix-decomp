@@ -1,5 +1,20 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define REGION_OFFSET_0 0x1a8
+#define REGION_OFFSET_1 0x218
+#define REGION_OFFSET_2 0xff0
+#define REGION_OFFSET_3 0xff4
+#define REGION_OFFSET_4 0xff1
+#else
+#define REGION_OFFSET_0 0x1bc
+#define REGION_OFFSET_1 0x29c
+#define REGION_OFFSET_2 0xe00
+#define REGION_OFFSET_3 0xe04
+#define REGION_OFFSET_4 0xe01
+#endif
+
+
 extern "C" int func_ov017_0218b5b0(void);
 void RestorePairTables0207df90(char* obj);
 void BackupPairTables0207dfac(char* obj);
@@ -15,26 +30,26 @@ struct Foo0216733c {
 // USA: func_ov000_0216733c  (semantic: SyncPairTablesAndFill_0216733c)
 extern "C" ARM void func_ov000_0216733c(char* arg0) {
     func_ov017_0218b5b0();
-    struct Foo0216733c* foo = (struct Foo0216733c*)(arg0 + 0x1bc);
+    struct Foo0216733c* foo = (struct Foo0216733c*)(arg0 + REGION_OFFSET_0);
     foo->p2 = foo->p1;
-    RestorePairTables0207df90(arg0 + 0x1bc);
+    RestorePairTables0207df90(arg0 + REGION_OFFSET_0);
 
-    unsigned char byteVal = *(unsigned char*)(*(char**)(arg0 + 0x29c) + 0x8000 + 0x1b0);
+    unsigned char byteVal = *(unsigned char*)(*(char**)(arg0 + REGION_OFFSET_1) + 0x8000 + 0x1b0);
     int val = byteVal;
     int mult;
     if (val > 5) {
         mult = 0x100;
-        *(unsigned char*)(arg0 + 0x5000 + 0xe00) = 8;
+        *(unsigned char*)(arg0 + 0x5000 + REGION_OFFSET_2) = 8;
     } else {
-        *(unsigned char*)(arg0 + 0x5000 + 0xe00) = 5;
+        *(unsigned char*)(arg0 + 0x5000 + REGION_OFFSET_2) = 5;
         mult = 0x190;
     }
 
     int i;
-    for (i = 0; i < *(unsigned char*)(arg0 + 0x5000 + 0xe00); i++) {
-        *(int*)(arg0 + i * 4 + 0x5000 + 0xe04) = func_020bb7cc(mult, 0, 0);
+    for (i = 0; i < *(unsigned char*)(arg0 + 0x5000 + REGION_OFFSET_2); i++) {
+        *(int*)(arg0 + i * 4 + 0x5000 + REGION_OFFSET_3) = func_020bb7cc(mult, 0, 0);
     }
 
-    BackupPairTables0207dfac(arg0 + 0x1bc);
-    *(unsigned char*)(arg0 + 0x5000 + 0xe01) = 0;
+    BackupPairTables0207dfac(arg0 + REGION_OFFSET_0);
+    *(unsigned char*)(arg0 + 0x5000 + REGION_OFFSET_4) = 0;
 }

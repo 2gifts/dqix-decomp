@@ -1,3 +1,4 @@
+// JPN: func_ov017_021d5288
 #include <globaldefs.h>
 
 struct Pair021d4a64 {

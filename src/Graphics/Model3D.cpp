@@ -15,7 +15,6 @@
 #define data_020f1ef0 data_020f205c
 #define data_020f1ef4 data_020f2060
 
-#define _Z16GetBoxTestResultPi func_020c717c
 #endif
 
 extern "C"

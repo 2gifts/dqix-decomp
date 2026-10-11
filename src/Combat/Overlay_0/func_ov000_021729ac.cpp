@@ -149,12 +149,42 @@ struct Menu021729ac {
     int planes;                            // 0x0904
     int state;                             // 0x0908
     int handle;                            // 0x090c
+
+#if defined(jpn)
+    char pad8[0x1b78 - 0x910];
+#else
     char pad8[0x1a78 - 0x910];
+#endif
+
     SafeAllocator allocs[6];               // 0x1a78
+
+#if defined(jpn)
+    char pad9[0x1c0c - 0x1bf0];
+#else
     char pad9[0x1b54 - 0x1af0];
-    char entries[2][0x18];                 // 0x1b54
-    char labels[9][0x18];                  // 0x1b84
+#endif
+
+
+#if defined(jpn)
+    char entries[2][0x38];
+#else
+    char entries[2][0x18];
+#endif
+                 // 0x1b54
+
+#if defined(jpn)
+    char labels[5][0x38];
+#else
+    char labels[9][0x18];
+#endif
+                  // 0x1b84
+
+#if defined(jpn)
+    char pad10[0x1faa - 0x1d94];
+#else
     char pad10[0x1d72 - 0x1c5c];
+#endif
+
     unsigned short f1d72;                  // 0x1d72
 };
 
@@ -188,8 +218,20 @@ extern "C" ARM int func_ov000_021729ac(Menu021729ac* self) {
         self->banks = GetSubBGVRAMBanks();
         MapVRAMBanksToSubBG(0x180);
         *(int*)func_0203bd08() = 0;
+
+#if defined(jpn)
+        *(int*)(_Z20GetGlobalPtr02105244v() + 0x608) = 0x1d000;
+#else
         *(int*)(_Z20GetGlobalPtr02105244v() + 0x508) = 0x18000;
+#endif
+
+
+#if defined(jpn)
+        self->handle = loader->QueueLoadFile(data_ov000_02183ff5, 0);
+#else
         self->handle = loader->QueueLoadFileInGP2(data_ov000_02183ff5, data_ov000_0218400f, 0);
+#endif
+
         self->state++;
     } else if (self->state == 1) {
         if (loader->GetTaskStatus(self->handle) != 0) {
@@ -201,7 +243,13 @@ extern "C" ARM int func_ov000_021729ac(Menu021729ac* self) {
             }
             loader->RemoveTask(self->handle);
             self->handle = -1;
+
+#if defined(jpn)
+            self->handle = loader->QueueLoadGP1(data_020f2a38, 0);
+#else
             self->handle = loader->QueueLoadFileInGP2(data_020f2a38, data_020f2a30, 0);
+#endif
+
             self->state++;
         }
     } else if (self->state == 2) {
@@ -215,7 +263,13 @@ extern "C" ARM int func_ov000_021729ac(Menu021729ac* self) {
                 _Z16ZeroInit020de848Pv(self->desc[1]);
                 __clear(codes, sizeof(codes));
                 unsigned short n = 0;
+
+#if defined(jpn)
+                Source021729ac* src = (Source021729ac*)func_ov017_021b8478(*(void**)((char*)func_ov017_0218b5b0() + 0x3000 + 0x508));
+#else
                 Source021729ac* src = (Source021729ac*)func_ov017_021b8478(*(void**)((char*)func_ov017_0218b5b0() + 0x3000 + 0x718));
+#endif
+
                 if (src != 0) {
                     void* list = src->list;
                     for (int i = 0; i < _Z23GetElementCount02070fe4P14Struct02070fe4(list); i++) {
@@ -235,6 +289,12 @@ extern "C" ARM int func_ov000_021729ac(Menu021729ac* self) {
             self->handle = -1;
             _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(self->entries[0], _Z21GetFieldByKey020e0434P17Container020e0310i(self->container, 0x754e));
             _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(self->entries[1], _Z21GetFieldByKey020e0434P17Container020e0310i(self->container, 0x7550));
+
+#if defined(jpn)
+            for (int i = 0; i < 5; i++) {
+                _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(self->labels[i], _Z21GetFieldByKey020e0434P17Container020e0310i(self->container, data_ov000_02183418[i]));
+            }
+#else
             void* g = _Z26GetGlobalField0x1c020421a0v();
             for (int i = 0; i < 9; i++) {
                 __clear(text, sizeof(text));
@@ -248,17 +308,37 @@ extern "C" ARM int func_ov000_021729ac(Menu021729ac* self) {
                 func_02046608(g, 0xa, _Z21GetFieldByKey020e0434P17Container020e0310i(self->container, key), text, 0x100, 0, 0);
                 _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(self->labels[i], text);
             }
+
+#endif
             self->state++;
         }
     } else if (self->state == 3) {
         if (self->f174 == 0 || self->f170 == 0) {
             self->state = 3;
         }
+
+#if defined(jpn)
+
+#else
         self->f16c = 1;
+#endif
+
         self->f15c = self->f170;
+
+#if defined(jpn)
+        self->f168 = 0x20;
+#else
         self->f168 = 0x28;
+#endif
+
         self->f158 = self->f174;
+
+#if defined(jpn)
+        self->handle = loader->QueueLoadFile(data_ov000_02184020, 0);
+#else
         self->handle = loader->QueueLoadFileInGP2(data_ov000_02184020, data_ov000_02184035, 0);
+#endif
+
         self->state++;
     } else if (self->state == 4) {
         if (loader->GetTaskStatus(self->handle) != 0) {
@@ -271,7 +351,13 @@ extern "C" ARM int func_ov000_021729ac(Menu021729ac* self) {
                     func_0205a528(self->records, rec, recSize4, &self->allocs[0]);
                 }
             }
+
+#if defined(jpn)
+            _Z20WrapAddByteField0x22iPcji(self->records, self->f170, (unsigned short)count, 0x40);
+#else
             _Z20WrapAddByteField0x22iPcji(self->records, self->f170, (unsigned short)count, 0x44);
+#endif
+
             _Z29SetBitfieldStoreBytes0205af38iPcii(self->records, self->f170 + 0x2a8, 1, 1);
             _Z29SetBitfieldStoreBytes0205af38iPcii(self->records, self->f170 + 0x2d0, 1, 1);
             loader->RemoveTask(self->handle);
@@ -302,7 +388,13 @@ extern "C" ARM int func_ov000_021729ac(Menu021729ac* self) {
         list->hi = 1;
         func_0204b5b4(list, 3);
         _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator(list, &self->allocs[3]);
+
+#if defined(jpn)
+        _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator(list, 29, &self->allocs[3]);
+#else
         _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator(list, 10, &self->allocs[3]);
+#endif
+
 
         list = &self->lists[2];
         _Z24SetWord0x18ClearByte0x1fPhi(list, 0);
@@ -320,6 +412,7 @@ extern "C" ARM int func_ov000_021729ac(Menu021729ac* self) {
             for (int i = 0; i < count; i++) {
                 void* rec = _Z17FindRecordByIndexP11Rec020467f0iPPvPi(file6, i, &recData6, &recSize6);
                 if (rec != 0) {
+#if !defined(jpn)
                     if (i == 0) {
                         func_0204c684(&canvas);
                         canvas.width = 0x20;
@@ -343,6 +436,7 @@ extern "C" ARM int func_ov000_021729ac(Menu021729ac* self) {
                             func_0204f41c(&canvas, x, y1 - 2, label1, 8, 0xa, &outA, &outB, 0);
                         }
                     }
+#endif
                     List021729ac* target = &self->lists[1];
                     if (i == count - 1) {
                         target = &self->lists[2];

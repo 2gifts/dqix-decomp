@@ -1,3 +1,10 @@
+// JPN: func_ov017_0219a04c
+#if defined(jpn)
+enum { RegionOffset4447 = 0x4197 };
+#else
+enum { RegionOffset4447 = 0x4447 };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -28,7 +35,7 @@ extern "C" ARM void func_ov017_0219949c(void* ctx, int combatantId, int matchTyp
         return;
     }
 
-    if (threshold != *(signed char*)((char*)ctx + 0x4447)) {
+    if (threshold != *(signed char*)((char*)ctx + RegionOffset4447)) {
         func_ov017_0218b5b0();
         EnqueueEventTag154_021d0860(slotId, 1, 1);
         return;

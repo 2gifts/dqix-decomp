@@ -1,9 +1,26 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kRegionValue36_2A = 0x2a };
+enum { kRegionValue89C_818 = 0x818 };
+enum { kRegionValueFF8_F74 = 0xf74 };
+enum { kRegionValue8A0_81C = 0x81c };
+enum { kRegionValueFFE_F7A = 0xf7a };
+enum { kRegionValueFFC_F78 = 0xf78 };
+#else
+enum { kRegionValue36_2A = 0x36 };
+enum { kRegionValue89C_818 = 0x89c };
+enum { kRegionValueFF8_F74 = 0xff8 };
+enum { kRegionValue8A0_81C = 0x8a0 };
+enum { kRegionValueFFE_F7A = 0xffe };
+enum { kRegionValueFFC_F78 = 0xffc };
+#endif
+
+
 struct Outer020e28dc;
 
 struct Menu {
-    char unk_0[0x36];
+    char unk_0[kRegionValue36_2A];
     short cursor_;
 };
 
@@ -21,16 +38,17 @@ extern "C" int _Z26RunAndCheckFlagBit02080dd4PviiiPhh(void*, int, int, int, unsi
 
 struct Ctx021765b4 {
     Outer020e28dc* choice_;
-    char pad0[0x89c - 0x4];
+    char pad0[kRegionValue89C_818 - 0x4];
     Menu* menu_;
-    char pad1[0xff8 - 0x8a0];
+    char pad1[kRegionValueFF8_F74 - kRegionValue8A0_81C];
     short* cursor_;
-    char pad2[0xffe - 0xffc];
+    char pad2[kRegionValueFFE_F7A - kRegionValueFFC_F78];
     short group_;
     short previousCursor_;
 };
 
 // USA: func_ov003_021765b4
+// JPN: func_ov003_02175604
 extern "C" ARM unsigned char func_ov003_021765b4(Ctx021765b4* self)
 {
     unsigned char confirmed = 0;

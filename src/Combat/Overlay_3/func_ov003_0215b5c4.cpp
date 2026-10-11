@@ -1,4 +1,13 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegion960 = 0x800 };
+#else
+enum { kRegion960 = 0x960 };
+#endif
+
+#if defined(jpn)
+extern "C" void func_0205d304(void*, void*, int, int, int, int, int);
+#endif
 
 struct Container020e0310;
 struct Struct0205de24;
@@ -8,7 +17,9 @@ extern "C" const char* _Z21GetFieldByKey020e0434P17Container020e0310i(struct Con
 extern "C" int func_020420e8(const char* text, int large);
 extern "C" void* memset(void* dst, int value, unsigned int length);
 extern "C" void func_ov003_0215b6f0(char* base, char* dst, int flag);
+#if !defined(jpn)
 extern "C" void func_0205d304(void* a, void* b, int p2, int p3, int p4, int p5, int p6, int p7);
+#endif
 
 struct Ctx0215b5c4 {
     char unk_0[0x64];
@@ -35,10 +46,14 @@ struct Ctx0215b5c4 {
     signed char entries_[1];
 };
 
+// JPN: func_ov003_0215ca24
 // USA: func_ov003_0215b5c4
 extern "C" ARM void func_ov003_0215b5c4(Ctx0215b5c4* self) {
     _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh((struct Struct0205de24*)self->window_, 0, 2);
     short height = (self->count_ * 14 + 0x12) / 8;
+#if defined(jpn)
+    short width = 0xb;
+#else
     int maxWidth = 0;
     for (int i = 0; i < self->count_; i++) {
         short w = func_020420e8(_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)self->texts_, self->entries_[i]), 0);
@@ -47,6 +62,7 @@ extern "C" ARM void func_ov003_0215b5c4(Ctx0215b5c4* self) {
         }
     }
     short width = (maxWidth + 0x18) >> 3;
+#endif
     self->width_ = width;
     self->height_ = height;
     self->x_ = 0x1f - width;
@@ -58,7 +74,11 @@ extern "C" ARM void func_ov003_0215b5c4(Ctx0215b5c4* self) {
     self->field_0x1a5 = 1;
     self->field_0x1a9 = 1;
     self->cursor_ = 0;
-    memset(self->buffer_, 0, 0x960);
+    memset(self->buffer_, 0, kRegion960);
     func_ov003_0215b6f0((char*)self, self->buffer_, 0);
+#if defined(jpn)
+    func_0205d304(self->window_, self->buffer_, 0, 1, 0, 1, 0);
+#else
     func_0205d304(self->window_, self->buffer_, 0, 1, 0, 1, 0, 0);
+#endif
 }

@@ -5,7 +5,11 @@ struct Combatant0217f910 {
     short hp;
     char pad1[0x4c - 0xe];
     int combatantId;
+#if defined(jpn)
+    char pad2[0xc7 - 0x50];
+#else
     char pad2[0x87 - 0x50];
+#endif
     unsigned char active;
     char pad3[0x445 - 0x88];
     unsigned char field445;

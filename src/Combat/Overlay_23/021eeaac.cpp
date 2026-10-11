@@ -41,6 +41,9 @@ extern char data_ov023_021fe1d8;
 extern char data_ov023_021fe1ee;
 extern char data_ov023_021fe200;
 extern char data_ov023_021fe218;
+#if defined(jpn)
+extern char data_ov023_021fd49e[];
+#endif
 
 struct Entry021eeaac {
     short id;
@@ -53,27 +56,43 @@ static inline SafeAllocator* GetAllocator(GameResources* res, int index) {
     return &res->allocator_array_38[index];
 }
 
+// JPN: func_ov023_021ee810
 // USA: func_ov023_021eeaac
 extern "C" ARM int func_ov023_021eeaac(char* self) {
+#if defined(jpn)
+ enum {regionalOffset0=0xe28, regionalOffset1=0x5af4, regionalOffset2=0x5af0, regionalOffset3=0x5ac0, regionalOffset4=0x218, regionalOffset5=0x5afc, regionalOffset6=0x5af1};
+#else
+ enum {regionalOffset0=0xeac, regionalOffset1=0x5904, regionalOffset2=0x5900, regionalOffset3=0x58d0, regionalOffset4=0x29c, regionalOffset5=0x590c, regionalOffset6=0x5901};
+#endif
     GameResources* res = func_ov017_0218b5b0();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     int* g = _ZZ17GetGlobal021ffefcvE1s;
     SafeAllocator* alloc = GetAllocator(res, 5);
     if (g[0] == 0) {
         func_020a1940(OVERLAY_ID(13));
+#if defined(jpn)
+        g[1] = loader->QueueLoadFile(data_ov023_021fd49e, NULL);
+#else
         g[1] = loader->QueueLoadFileInGP2(&data_ov023_021fe1d8, &data_ov023_021fe1ee, NULL);
+#endif
+
         g[0]++;
     } else if (g[0] == 1) {
         if (loader->GetTaskStatus(g[1]) == 0) {
-            return *(int*)(self + 0xeac);
+            return *(int*)(self + regionalOffset0);
         }
         unsigned int length;
         void* data;
         loader->GetLoadedFileByID(g[1], &data, &length);
-        _Z23ResetListHeader020727d8P12List020727d8((List020727d8*)(self + 0x5904));
-        func_020728ac(self + 0x5904, alloc, (int)data, length, 0, 0, 0);
+        _Z23ResetListHeader020727d8P12List020727d8((List020727d8*)(self + regionalOffset1));
+        func_020728ac(self + regionalOffset1, alloc, (int)data, length, 0, 0, 0);
         loader->RemoveTask(g[1]);
+#if defined(jpn)
+        g[1] = loader->QueueLoadGP1(data_020f2a38, NULL);
+#else
         g[1] = loader->QueueLoadFileInGP2(data_020f2a38, data_020f2a30, NULL);
+#endif
+
         g[0]++;
     } else if (g[0] == 2) {
         int slot;
@@ -100,44 +119,44 @@ extern "C" ARM int func_ov023_021eeaac(char* self) {
         int j;
         int current;
         if (loader->GetTaskStatus(g[1]) == 0) {
-            return *(int*)(self + 0xeac);
+            return *(int*)(self + regionalOffset0);
         }
         loader->GetLoadedFileByID(g[1], &data, &length);
-        count = *(unsigned char*)(self + 0x5900);
+        count = *(unsigned char*)(self + regionalOffset2);
         if (count > 8) {
             count = 8;
         }
         dst = ids;
-        src = (unsigned short*)(self + 0x58d0);
+        src = (unsigned short*)(self + regionalOffset3);
         for (i = 0; i < count; i++) {
             *dst = *src;
             dst++;
             src += 3;
         }
-        if (*(short*)(*(char**)(self + 0x29c) + 0x8e4a) > 0) {
-            CopyShortTriple0x8e4a(*(void**)(self + 0x29c), &kind, &b, &c);
+        if (*(short*)(*(char**)(self + regionalOffset4) + 0x8e4a) > 0) {
+            CopyShortTriple0x8e4a(*(void**)(self + regionalOffset4), &kind, &b, &c);
             ids[count] = c;
             count++;
             if (kind == 0x18 && _Z38AreAllListedCombatantsFlagged_021ed92cv()) {
-                *(unsigned char*)(*(char**)(self + 0x29c) + 0x8e97) = 1;
+                *(unsigned char*)(*(char**)(self + regionalOffset4) + 0x8e97) = 1;
             }
         }
-        *(void**)(self + 0x590c) = alloc->Allocate(0x18);
-        _Z16ZeroInit020de848Pv(*(void**)(self + 0x590c));
-        func_020de9a4(*(void**)(self + 0x590c), alloc, data, length, ids, count);
+        *(void**)(self + regionalOffset5) = alloc->Allocate(0x18);
+        _Z16ZeroInit020de848Pv(*(void**)(self + regionalOffset5));
+        func_020de9a4(*(void**)(self + regionalOffset5), alloc, data, length, ids, count);
         loader->RemoveTask(g[1]);
-        if (*(short*)(*(char**)(self + 0x29c) + 0x8e4a) > 0) {
+        if (*(short*)(*(char**)(self + regionalOffset4) + 0x8e4a) > 0) {
             count--;
             ((SafeAllocator*)buf)->ResetAllocatorPointer();
             _Z22ZeroInitReturn020de824Pv(buf + 0x14);
             _Z18InitStruct0207cbe8Pc(buf);
             _Z18InitStruct0207cbe8Pc(buf);
-            *(void**)(buf + 0x2c) = *(void**)(self + 0x590c);
+            *(void**)(buf + 0x2c) = *(void**)(self + regionalOffset5);
             func_0207d300(buf, ids[count], 1, 0);
         }
-        list = *(void**)(self + 0x590c);
-        entry = (Entry021eeaac*)(self + 0x58d0);
-        present = *(signed char*)(self + 0x5901);
+        list = *(void**)(self + regionalOffset5);
+        entry = (Entry021eeaac*)(self + regionalOffset3);
+        present = *(signed char*)(self + regionalOffset6);
         gs = GameState::GetInstance();
         party = (char*)GetPtrField0x2a04(gs);
         found = 0;
@@ -176,7 +195,7 @@ extern "C" ARM int func_ov023_021eeaac(char* self) {
         g[0]++;
     } else if (g[0] == 3) {
         if (loader->GetTaskStatus(g[1]) == 0) {
-            return *(int*)(self + 0xeac);
+            return *(int*)(self + regionalOffset0);
         }
         unsigned int length;
         void* data;
@@ -188,7 +207,7 @@ extern "C" ARM int func_ov023_021eeaac(char* self) {
         g[0]++;
     } else if (g[0] == 4) {
         if (loader->GetTaskStatus(g[1]) == 0) {
-            return *(int*)(self + 0xeac);
+            return *(int*)(self + regionalOffset0);
         }
         unsigned int length;
         void* data;
@@ -199,5 +218,5 @@ extern "C" ARM int func_ov023_021eeaac(char* self) {
         _Z20ResetFields_021eefacP14Reset_021eefac((Reset_021eefac*)g);
         return 3;
     }
-    return *(int*)(self + 0xeac);
+    return *(int*)(self + regionalOffset0);
 }

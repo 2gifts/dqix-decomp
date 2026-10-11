@@ -14,6 +14,11 @@ extern "C" void func_ov017_0218d77c(int obj, int a);
 
 // USA: func_ov004_021650f8
 ARM int HandleAxisZeroNameEntry_021650f8(void* a1) {
+#if defined(jpn)
+ enum { fieldOffset = 0x868 };
+#else
+ enum { fieldOffset = 0x998 };
+#endif
     GameState* battle = GameState::GetInstance();
     struct AxisFloats0203b5f8* axis = ((struct AxisFloats0203b5f8*)func_ov017_0218b5b0());
     if (IsAxisIntZero(axis, 0) == 0) goto ret0;
@@ -22,7 +27,7 @@ ret0:
     return 0;
 
 mainlogic:
-    if (*(void**)((char*)GetGlobalField0x1c020421a0() + 0x998) != NULL) return 0;
+    if (*(void**)((char*)GetGlobalField0x1c020421a0() + fieldOffset) != NULL) return 0;
 
     if (GetAndConsumeNameEntries02011930(battle, NULL, NULL, NULL) != 0) {
         func_ov011_021848a0(a1, 0x6b);

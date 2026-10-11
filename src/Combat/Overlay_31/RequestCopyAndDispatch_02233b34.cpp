@@ -17,6 +17,7 @@ struct Struct02233d84 {
 };
 extern Struct02233d84 data_ov031_02290cd0;
 
+// JPN: func_ov031_02234314
 // USA: func_ov031_02233b34  (semantic: RequestCopyAndDispatch_02233b34)
 extern "C" ARM void func_ov031_02233b34(void) {
 	unsigned char* o = (unsigned char*)GetOffset400_02235c70();

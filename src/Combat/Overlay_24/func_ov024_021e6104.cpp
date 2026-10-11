@@ -21,7 +21,13 @@ extern "C" void _Z32AppendToChainAndIncCount0215fe84PvS_i(void* obj, void* node,
 struct List021600f8 { char pad0[9]; unsigned char count; };
 struct ListNode021600f8 { char pad0[0x18]; unsigned char depth; };
 struct Depth_021e6104 { char pad0[0xc]; short value; };
-struct Combatant_021e6104 { char pad0[0x150]; unsigned char* ext; };
+struct Combatant_021e6104 {
+#if defined(jpn)
+ char pad0[0x144];
+#else
+ char pad0[0x150];
+#endif
+ unsigned char* ext; };
 struct Skill_021e6104 { char pad0[0x10]; int flags; };
 struct Obj_021e6104 {
     char pad0[4];
@@ -50,6 +56,7 @@ static inline int IsPartySlot(int id) {
     return id >= 0 && id <= 3;
 }
 
+// JPN: func_ov024_021e699c
 // USA: func_ov024_021e6104
 extern "C" ARM int func_ov024_021e6104(struct Obj_021e6104* obj, int id, struct Skill_021e6104* skill) {
     GameObject* c = GetCombatantWithFlag0x100(GameState::GetInstance(), id);

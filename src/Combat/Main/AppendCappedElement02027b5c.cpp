@@ -1,5 +1,11 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { slotArrayOffset = 0x9cc };
+#else
+enum { slotArrayOffset = 0xa98 };
+#endif
+
 struct Elem02027b5c {
     unsigned short h0;
     unsigned char b2;
@@ -8,7 +14,7 @@ struct Elem02027b5c {
 };
 
 struct Container02027b5c {
-    char pad[0xa98];
+    char pad[slotArrayOffset];
     unsigned char capacity;
     unsigned char count;
     char pad2[2];

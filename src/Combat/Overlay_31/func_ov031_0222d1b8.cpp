@@ -1,3 +1,4 @@
+// JPN: func_ov031_0222d998
 #include <globaldefs.h>
 
 extern "C" void func_ov031_02223440(void);
@@ -53,5 +54,9 @@ extern "C" ARM void func_ov031_0222d1b8(void) {
             _Z26SetField_022274c0_022274c0i((int)_Z13Setup022340c0v);
         }
     }
+#if defined(jpn)
+    func_ov031_0223cf70((void**)0x02291894);
+#else
     func_ov031_0223cf70((void**)0x02290C94);
+#endif
 }

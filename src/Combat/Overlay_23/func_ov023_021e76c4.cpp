@@ -39,7 +39,11 @@ struct ScreenData_021e76c4 {
 };
 
 struct MessageSystem_021e76c4 {
+#if defined(jpn)
+    char unk_0[0x28];
+#else
     char unk_0[0x5c];
+#endif
     void* unk_5c;
 };
 
@@ -101,10 +105,14 @@ void LoadToSubBGStandardPalette(const void* data, int offset, unsigned int size)
 }
 
 extern const char data_ov023_021fdd6e[];
+#if defined(jpn)
+extern const char data_ov023_021fd018[];
+#endif
 extern const char data_ov023_021fdd88[];
 extern const char data_ov023_021fdd99[];
 extern const unsigned short data_ov023_021fd760;
 
+// JPN: func_ov023_021e78b4
 // USA: func_ov023_021e76c4
 extern "C" ARM int func_ov023_021e76c4(ProfileCard_021e76c4* self)
 {
@@ -124,7 +132,11 @@ extern "C" ARM int func_ov023_021e76c4(ProfileCard_021e76c4* self)
     {
         REG_BG0OFS_SUB = 0;
         REG_BG1OFS_SUB = 0;
+#if defined(jpn)
+        self->task_ = loader->QueueLoadFile(data_ov023_021fd018, NULL);
+#else
         self->task_ = loader->QueueLoadFileInGP2(data_ov023_021fdd6e, data_ov023_021fdd88, NULL);
+#endif
         result = 0;
         self->step_++;
     }

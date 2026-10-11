@@ -19,13 +19,6 @@
 #define ROMCTRL_FLAG_WORD_READY (1u << 23)
 #define ROMCTRL_FLAG_BUSY (1u << 31)
 
-#if defined(jpn)
-#define _Z20GetDataTcmRegionBasev func_020ca4b0
-#define _Z25StartDmaWithFlush020ca8e8jjjj func_020cc3b4
-#define _Z23RegisterType0x11Handlerv func_020d2be4
-#define _Z24SyncIfBufferValueChangedj func_020d2d00
-#endif
-
 void SendTaskToReadContext(CardReadManager::ReadProc);
 
 extern "C"

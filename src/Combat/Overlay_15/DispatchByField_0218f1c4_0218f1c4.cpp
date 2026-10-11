@@ -1,3 +1,9 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define func_ov015_0218e670 func_ov015_0218f290
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 struct Struct0218e498;

@@ -1,3 +1,16 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define func_ov013_021846a0 func_ov013_021856dc
+#define func_ov013_02184d80 func_ov013_02185db4
+#define func_ov013_02186160 func_ov013_02187178
+#define func_ov013_021864f0 func_ov013_02187820
+#define func_ov013_02186590 func_ov013_021878c0
+#define func_ov013_0218678c func_ov013_02187ab8
+#define func_ov013_0218683c func_ov013_02187b68
+#define func_ov013_02186bd4 func_ov013_02187f00
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
@@ -8,7 +21,7 @@ extern "C" void _Z18ClearFlags020466f4P16FlagWord020466f4j(void* p, unsigned int
 extern "C" void _Z15ClearBitsInWordPjj(unsigned int* p, unsigned int mask);
 
 struct Manager0218b240 {
-    char pad0[0xe99];
+    char pad0[R(0xe95,0xe99)];
     unsigned char e99;
     unsigned char e9a;
     unsigned char e9b;
@@ -17,7 +30,7 @@ struct Manager0218b240 {
     int ea0;
     int ea4;
     int ea8;
-    char pad2[0xeb4 - 0xeac];
+    char pad2[R(4,0xeb4 - 0xeac)];
     int eb4;
     char pad3[0xec0 - 0xeb8];
     unsigned char bit0 : 1;

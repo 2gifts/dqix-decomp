@@ -13,6 +13,7 @@ struct Stats_021f44ac { char pad[0x4d]; unsigned char field0x4d; };
 
 extern unsigned short data_ov024_021fea94;
 
+// JPN: func_ov024_021f4c78
 // USA: func_ov024_021f44ac
 extern "C" ARM int func_ov024_021f44ac(int* a0, int a1, int a2, int* a3, short* a4) {
 	short buf[4];

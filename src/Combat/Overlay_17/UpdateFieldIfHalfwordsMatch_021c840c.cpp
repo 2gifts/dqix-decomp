@@ -22,10 +22,16 @@ struct Ret021c840c {
 	signed char field2a;
 };
 
+// JPN: func_ov017_021c88bc
 // USA: func_ov017_021c840c
 ARM void UpdateFieldIfHalfwordsMatch_021c840c(int unused0, Src021c840c* src, GameState* battleStruct, unsigned char* obj) {
+#if defined(jpn)
+ enum {regionalOffset0=0x508};
+#else
+ enum {regionalOffset0=0x718};
+#endif
 	unsigned char* base = obj + 0x3000;
-	void* h = *(void**)(base + 0x718);
+	void* h = *(void**)(base + regionalOffset0);
 	Ret021c840c* r = (Ret021c840c*)func_ov017_021b8478(h);
 	if (!r) return;
 	void* work = GetField6b0_021b8470(h);

@@ -1,4 +1,12 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define REGION_VALUE(jpnValue, usaValue) jpnValue
+extern char* data_020f2a38;
+extern "C" int func_020e04f8(void*, void*, const char*, short, bool);
+#else
+#define REGION_VALUE(jpnValue, usaValue) usaValue
+#endif
 #include "Combat/Main/BattleList.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
@@ -165,7 +173,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
     struct BattleStruct* battle = _ZN9GameState11GetInstanceEv();
     void* g = func_ov017_0218b5b0();
     void* gBase = (char*)g + 0x3000;
-    tailList = *(struct TailList020469b4**)((char*)gBase + 0x6fc);
+    tailList = *(struct TailList020469b4**)((char*)gBase + REGION_VALUE(0x4ec, 0x6fc));
     searchPtr = func_0202ae18();
     miscCtx = func_0205ec34();
     unsigned char* node = *(unsigned char**)((char*)a0 + 0x30);
@@ -201,11 +209,11 @@ extern "C" ARM void func_0206f81c(void* a0) {
             }
 
             case 0x77: case 0x80: case 0x9b: {
-                struct TailNode020469b4* node7 = *(struct TailNode020469b4**)((char*)g + 0x3000 + 0x734);
+                struct TailNode020469b4* node7 = *(struct TailNode020469b4**)((char*)g + 0x3000 + REGION_VALUE(0x524, 0x734));
                 func_ov017_021baedc(node7, 1);
                 *(unsigned short*)((char*)node7 + 8) = *(unsigned short*)(node + 2);
                 AppendNodeToTail(tailList, node7);
-                SetFlag0x9c6(*(struct SetFlagStruct**)((char*)g + 0x3000 + 0x6d0), 1);
+                SetFlag0x9c6(*(struct SetFlagStruct**)((char*)g + 0x3000 + REGION_VALUE(0x4c0, 0x6d0)), 1);
                 _Z19InitContext020e1154Pv((void*)0x1f4);
                 break;
             }
@@ -218,9 +226,9 @@ extern "C" ARM void func_0206f81c(void* a0) {
                 *(unsigned int*)(f3f8 + 0x20) = *(unsigned short*)(node + 4);
                 if (*(unsigned short*)(node + 0) == 0x8a) f3f8[6] = 1;
                 if (*(unsigned short*)(node + 0) == 0xe2) f3f8[0xc] = 1;
-                if (*((unsigned char*)battle + 0x5000 + 0xcac) != 0) f3f8[0x60] = 1;
+                if (*((unsigned char*)battle + 0x5000 + REGION_VALUE(0xa4c, 0xcac)) != 0) f3f8[0x60] = 1;
                 slFlag = 1;
-                SetFlag0x9c6(*(struct SetFlagStruct**)((char*)g + 0x3000 + 0x6d0), slFlag);
+                SetFlag0x9c6(*(struct SetFlagStruct**)((char*)g + 0x3000 + REGION_VALUE(0x4c0, 0x6d0)), slFlag);
                 break;
             }
 
@@ -232,12 +240,12 @@ extern "C" ARM void func_0206f81c(void* a0) {
                 }
                 if (sb != 0) {
                     unsigned char r7flag;
-                    unsigned char* r8 = *(unsigned char**)((char*)g + 0x3000 + 0x710);
+                    unsigned char* r8 = *(unsigned char**)((char*)g + 0x3000 + REGION_VALUE(0x500, 0x710));
                     r7flag = *(unsigned char*)(r8 + 3);
                     if (r7flag != 0) {
                         func_ov017_021b8d80(r8);
                     }
-                    unsigned char* p71c = *(unsigned char**)((char*)g + 0x3000 + 0x71c);
+                    unsigned char* p71c = *(unsigned char**)((char*)g + 0x3000 + REGION_VALUE(0x50c, 0x71c));
                     r7flag |= (*(unsigned char*)(p71c + 3) != 0 && *(unsigned char*)(p71c + 0x20) != 0);
                     func_ov017_021b8d1c(r8);
                     *(int*)(r8 + 0x114) = sb;
@@ -278,8 +286,8 @@ extern "C" ARM void func_0206f81c(void* a0) {
 
             case 0x78: {
                 struct TailList020469b4* r7list;
-                unsigned char* r8 = *(unsigned char**)((char*)g + 0x3000 + 0x718);
-                r7list = *(struct TailList020469b4**)((char*)g + 0x3000 + 0x6fc);
+                unsigned char* r8 = *(unsigned char**)((char*)g + 0x3000 + REGION_VALUE(0x508, 0x718));
+                r7list = *(struct TailList020469b4**)((char*)g + 0x3000 + REGION_VALUE(0x4ec, 0x6fc));
                 void* sb = LightingManager::GetInstance();
                 func_ov017_021b6f18(r8);
 
@@ -325,9 +333,16 @@ extern "C" ARM void func_0206f81c(void* a0) {
             case 0x72: case 0x74: {
                 if (_Z17GetPtrField0x2a04P9GameState(battle) != NULL) {
                     unsigned char eventBuf[0x18];
+#if defined(jpn)
+                    volatile SafeAllocator* r7base = ((AllocHolder0206f81c*)g)->GetAllocator(1);
+#else
                     void* r7base = ((AllocHolder0206f81c*)g)->GetAllocator(1);
+#endif
                     _Z22ZeroInitReturn020de824Pv(eventBuf);
                     _Z16ZeroInit020de848Pv(eventBuf);
+#if defined(jpn)
+                    func_020e04f8(eventBuf, (void*)r7base, data_020f2a38, *(short*)(node + 2), true);
+#else
                     BackgroundLoader::AddLockGlobal();
                     unsigned int outSize = 0;
                     void* loaded = ExtractFileFromGP2(data_020f2a38, data_020f2a30, &outSize);
@@ -335,6 +350,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
                         _Z29BuildDescriptorFlag1_020de980PvS_S_ii(eventBuf, r7base, loaded, outSize, (int)(*(short*)(node + 2)));
                     }
                     BackgroundLoader::RemoveLockGlobal();
+#endif
                     SelfBuf0206f81c selfBuf;
                     selfBuf.alloc.ResetAllocatorPointer();
                     _Z22ZeroInitReturn020de824Pv(selfBuf.sub14);
@@ -383,8 +399,8 @@ extern "C" ARM void func_0206f81c(void* a0) {
                                 func_ov017_021c4418(cid, flag10);
                             }
                             void* g2 = func_ov017_0218b5b0();
-                            void* field700 = *(void**)((char*)g2 + 0x3000 + 0x700);
-                            void* field704 = *(void**)((char*)g2 + 0x3000 + 0x704);
+                            void* field700 = *(void**)((char*)g2 + 0x3000 + REGION_VALUE(0x4f0, 0x700));
+                            void* field704 = *(void**)((char*)g2 + 0x3000 + REGION_VALUE(0x4f4, 0x704));
                             inst = BackgroundLoader::GetInstance();
                             func_ov017_0218f5a4(g2, idArr[j], 1, 0, 0);
                             while (GetHeadNodeIdOrMinusOne((struct HeadNode02046b24**)field700) == 0x13) {
@@ -423,8 +439,8 @@ extern "C" ARM void func_0206f81c(void* a0) {
                                             func_ov017_021c4418(cid, -1);
                                         }
                                         void* g2 = func_ov017_0218b5b0();
-                                        void* field700 = *(void**)((char*)g2 + 0x3000 + 0x700);
-                                        void* field704 = *(void**)((char*)g2 + 0x3000 + 0x704);
+                                        void* field700 = *(void**)((char*)g2 + 0x3000 + REGION_VALUE(0x4f0, 0x700));
+                                        void* field704 = *(void**)((char*)g2 + 0x3000 + REGION_VALUE(0x4f4, 0x704));
                                         BackgroundLoader* inst = BackgroundLoader::GetInstance();
                                         func_ov017_0218f5a4(g2, cid, 1, 0, 0);
                                         while (GetHeadNodeIdOrMinusOne((struct HeadNode02046b24**)field700) == 0x13) {
@@ -443,9 +459,16 @@ extern "C" ARM void func_0206f81c(void* a0) {
                 }
                 if (_Z17GetPtrField0x2a04P9GameState(battle) != NULL) {
                     unsigned char eventBuf2[0x18];
+#if defined(jpn)
+                    volatile SafeAllocator* r7base2 = ((AllocHolder0206f81c*)g)->GetAllocator(1);
+#else
                     void* r7base2 = ((AllocHolder0206f81c*)g)->GetAllocator(1);
+#endif
                     _Z22ZeroInitReturn020de824Pv(eventBuf2);
                     _Z16ZeroInit020de848Pv(eventBuf2);
+#if defined(jpn)
+                    func_020e04f8(eventBuf2, (void*)r7base2, data_020f2a38, *(short*)(node + 6), true);
+#else
                     BackgroundLoader::AddLockGlobal();
                     unsigned int outSize2 = 0;
                     void* loaded2 = ExtractFileFromGP2(data_020f2a38, data_020f2a30, &outSize2);
@@ -453,6 +476,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
                         _Z29BuildDescriptorFlag1_020de980PvS_S_ii(eventBuf2, r7base2, loaded2, outSize2, (int)(*(short*)(node + 6)));
                     }
                     BackgroundLoader::RemoveLockGlobal();
+#endif
                     SelfBuf0206f81c selfBuf2;
                     selfBuf2.alloc.ResetAllocatorPointer();
                     _Z22ZeroInitReturn020de824Pv(selfBuf2.sub14);
@@ -472,15 +496,15 @@ extern "C" ARM void func_0206f81c(void* a0) {
             case 0x91: {
                 void* g2 = func_ov017_0218b5b0();
                 unsigned short sub = *(unsigned short*)(node + 2);
-                struct HeadList020469f8* subTail = *(struct HeadList020469f8**)((char*)g2 + 0x3000 + 0x6fc);
+                struct HeadList020469f8* subTail = *(struct HeadList020469f8**)((char*)g2 + 0x3000 + REGION_VALUE(0x4ec, 0x6fc));
                 switch (sub) {
                 case 2:
                     func_ov017_021b65e0(g2, 1);
                     break;
                 case 6:
-                    ((struct FlagsRoot0206f81c*)((char*)battle + 0x26c))->flags.low |= 0x20;
+                    ((struct FlagsRoot0206f81c*)((char*)battle + REGION_VALUE(0xc, 0x26c)))->flags.low |= 0x20;
                 case 5: {
-                    unsigned char* r8node = *(unsigned char**)((char*)g2 + 0x3000 + 0xb4c);
+                    unsigned char* r8node = *(unsigned char**)((char*)g2 + 0x3000 + REGION_VALUE(0x92c, 0xb4c));
                     _Z21InitObjState_021b2174Ph(r8node);
                     _Z23SetNameChecked_021b2ba0P9S021b2ba0Pc((S021b2ba0*)r8node, data_020f0b40);
                     _Z25SetFields30And34_021b2bd0Pvii(r8node, (int)_Z24InitAndRegister_0215e25cPvS_, OVERLAY_ID(4));
@@ -488,7 +512,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
                     break;
                 }
                 case 7: {
-                    unsigned char* r8node = *(unsigned char**)((char*)g2 + 0x3000 + 0xb4c);
+                    unsigned char* r8node = *(unsigned char**)((char*)g2 + 0x3000 + REGION_VALUE(0x92c, 0xb4c));
                     _Z21InitObjState_021b2174Ph(r8node);
                     _Z16SetBit4_021b2bf4P9S021b2bf4j((S021b2bf4*)r8node, 1);
                     _Z16SetBit5_021b2c0cP9S021b2c0cj((S021b2c0c*)r8node, 1);
@@ -498,7 +522,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
                     break;
                 }
                 case 8: {
-                    unsigned char* r8node = *(unsigned char**)((char*)g2 + 0x3000 + 0xb4c);
+                    unsigned char* r8node = *(unsigned char**)((char*)g2 + 0x3000 + REGION_VALUE(0x92c, 0xb4c));
                     _Z21InitObjState_021b2174Ph(r8node);
                     _Z16SetBit4_021b2bf4P9S021b2bf4j((S021b2bf4*)r8node, 1);
                     _Z16SetBit5_021b2c0cP9S021b2c0cj((S021b2c0c*)r8node, 1);
@@ -533,7 +557,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
             func_0206461c(r4b, *(int*)((char*)misc2 + 8));
         }
         if (val1c != 0) {
-            unsigned char* r4c = *(unsigned char**)((char*)g + 0x3000 + 0xb58);
+            unsigned char* r4c = *(unsigned char**)((char*)g + 0x3000 + REGION_VALUE(0x938, 0xb58));
             if (r4c[2] == 0) {
                 _Z23InitByteHeader_021c16a8Ph(r4c);
                 AppendNodeToTail(tailList, (struct TailNode020469b4*)r4c);

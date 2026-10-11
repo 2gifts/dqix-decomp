@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define IS_JPN 1
+#else
+#define IS_JPN 0
+#endif
+
 #include "GameState/GameState.h"
 
 extern "C" void* func_02012fe4(void);
@@ -26,7 +32,7 @@ extern "C" ARM void func_0208f048(unsigned char* p0) {
     }
 
     g = func_02012fe4();
-    mid = (char*)((int)g + 0x1840);
+    mid = (char*)((int)g + (IS_JPN ? 0x1860 : 0x1840));
     total = _s32_div_f(*(int*)(mid + 0xb34), 100) + 4;
     if (total > 14) {
         total = 14;
@@ -34,7 +40,7 @@ extern "C" ARM void func_0208f048(unsigned char* p0) {
     count1 = total - 7;
 
     bs = GameState::GetInstance();
-    base7 = (struct BitHistory0208f048*)((char*)bs + 0x5cdc);
+    base7 = (struct BitHistory0208f048*)((char*)bs + (IS_JPN ? 0x5a7c : 0x5cdc));
 
     i = 0;
     while (count1 > 0) {

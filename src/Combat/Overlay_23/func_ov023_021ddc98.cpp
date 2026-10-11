@@ -1,11 +1,23 @@
 #include <globaldefs.h>
 
 struct ItemInfoWindow_021ddc98 {
+#if defined(jpn)
+    char pad0[0x6f8];
+#else
     char pad0[0x77c];
+#endif
+
     signed char screen_;
 };
 
 struct Statics_021ddc98 {
+#if defined(jpn)
+    char pad0[0x14];
+    void* sBuffer;
+    int pad18;
+    ItemInfoWindow_021ddc98* sWindow;
+
+#else
     void* sDrops;
     void* sBuffer;
     void* sFieldNames;
@@ -15,6 +27,8 @@ struct Statics_021ddc98 {
     int sPalette3;
     int sStatesGuard;
     ItemInfoWindow_021ddc98* sWindow;
+
+#endif
 };
 extern "C" Statics_021ddc98 data_ov023_021ff9e0;
 
@@ -32,6 +46,12 @@ extern "C" void LoadToMainBG1CharacterData(const void* src, unsigned int offset,
 extern "C" void LoadToMainBG2CharacterData(const void* src, unsigned int offset, unsigned int size);
 extern "C" unsigned short* func_ov023_021db2b8(signed char screen, int bg1);
 
+#if defined(jpn)
+extern "C" unsigned short* GetSubBG0ScreenBase();
+extern "C" unsigned short* GetMainBG1ScreenBase();
+extern "C" unsigned short* GetMainBG2ScreenBase();
+#endif
+// JPN: func_ov023_021de438
 // USA: func_ov023_021ddc98
 extern "C" ARM unsigned int func_ov023_021ddc98(Canvas_021ddc98* canvas, unsigned int offset, unsigned short palette, int bg1)
 {
@@ -69,7 +89,14 @@ extern "C" ARM unsigned int func_ov023_021ddc98(Canvas_021ddc98* canvas, unsigne
                 LoadToMainBG2CharacterData(data_ov023_021ff9e0.sBuffer, offset, size);
         }
         tile = (offset << 11) >> 16;
+#if defined(jpn)
+        if (screen == 1) base = GetSubBG0ScreenBase();
+        else if (bg1) base = GetMainBG1ScreenBase();
+        else base = GetMainBG2ScreenBase();
+#else
         base = func_ov023_021db2b8(screen, bg1);
+#endif
+
         if (base != NULL)
         {
             for (i = 0; i < height; i++)

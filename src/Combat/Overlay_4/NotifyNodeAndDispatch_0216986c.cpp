@@ -10,7 +10,11 @@ extern "C" void func_ov011_021848a0(void* obj, int val);
 struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 
+#if defined(jpn)
+struct Data02171030 { char pad[0x20]; unsigned char field1a0; };
+#else
 struct Data02171030 { char pad[0x1a0]; unsigned char field1a0; };
+#endif
 extern Data02171030* data_ov004_02171030;
 extern struct Obj0205eaa0 data_02108760;
 

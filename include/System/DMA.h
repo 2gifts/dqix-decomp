@@ -16,7 +16,6 @@ struct DMARegisterSet
 };
 
 #if defined(jpn)
-#define data_020f2270 data_020f23dc
 #endif
 
 // DMA channel for general use

@@ -29,8 +29,14 @@ int AnySlotHasBit16At0x2f4(unsigned char* obj);
 struct DataOv023_021ffefc { void* field0; int field4; };
 extern "C" struct DataOv023_021ffefc _ZZ17GetGlobal021ffefcvE1s;
 
+// JPN: func_ov023_021f3724
 // USA: func_ov023_021f4098  (semantic: ComputeCombatantScaleFactor_021f4098)
 extern "C" ARM int func_ov023_021f4098(void* obj, int id, int flag) {
+#if defined(jpn)
+ enum {regionalOffset0=0xab0, regionalOffset1=0x5a00, regionalOffset2=0xbc, regionalOffset3=0x21c, regionalOffset4=0x144};
+#else
+ enum {regionalOffset0=0x8c0, regionalOffset1=0x5800, regionalOffset2=0xcc, regionalOffset3=0x2a0, regionalOffset4=0x150};
+#endif
     GameState* battleStruct = GameState::GetInstance();
     struct SearchStruct* p = (struct SearchStruct*)func_0202ae18();
     GameObject* c9 = GetCombatantWithFlag0x100(battleStruct, id);
@@ -41,8 +47,8 @@ extern "C" ARM int func_ov023_021f4098(void* obj, int id, int flag) {
         return 0;
     }
 
-    float flagF = (float)(unsigned int)*(unsigned int*)((char*)obj + 0x5000 + 0x8c0);
-    float unusedB = (float)(unsigned short)*(unsigned short*)((char*)obj + 0x5800 + 0xcc);
+    float flagF = (float)(unsigned int)*(unsigned int*)((char*)obj + 0x5000 + regionalOffset0);
+    float unusedB = (float)(unsigned short)*(unsigned short*)((char*)obj + regionalOffset1 + regionalOffset2);
     float arrB[4];
     float arrC[4];
     __clear(arrB, 0x10);
@@ -50,7 +56,7 @@ extern "C" ARM int func_ov023_021f4098(void* obj, int id, int flag) {
 
     int i;
     for (i = 0; i < 4; i++) {
-        if (TestBitAt0x34(*(unsigned char**)((char*)obj + 0x2a0), (unsigned char)i)) {
+        if (TestBitAt0x34(*(unsigned char**)((char*)obj + regionalOffset3), (unsigned char)i)) {
             GameObject* ci = GetCombatantWithFlag0x100(battleStruct, i);
             if (ci != 0 && CheckField0x56bLowNibble((struct Obj02061bd8*)ci) == 0) {
                 arrC[i] = (float)(unsigned int)GetField8FromField19c((struct Obj53dfc*)ci);
@@ -63,7 +69,7 @@ extern "C" ARM int func_ov023_021f4098(void* obj, int id, int flag) {
     if (CheckField0NonZero((int*)p)) {
         countF = 0.0f;
         for (i = 0; i < 4; i++) {
-            if (TestBitAt0x34(*(unsigned char**)((char*)obj + 0x2a0), (unsigned char)i) && TestBitBySignedByteIndex(p, i)) {
+            if (TestBitAt0x34(*(unsigned char**)((char*)obj + regionalOffset3), (unsigned char)i) && TestBitBySignedByteIndex(p, i)) {
                 countF += 1.0f;
             }
         }
@@ -91,7 +97,7 @@ extern "C" ARM int func_ov023_021f4098(void* obj, int id, int flag) {
     float normalized = ((float)shiftVal + arrB[id]) * arrC[id] / total;
     float result = scaledFlag2 * normalized;
 
-    if (AnySlotHasBit16At0x2f4(*(unsigned char**)((char*)c9 + 0x150))) {
+    if (AnySlotHasBit16At0x2f4(*(unsigned char**)((char*)c9 + regionalOffset4))) {
         result *= 1.05f;
     }
 
@@ -103,7 +109,7 @@ extern "C" ARM int func_ov023_021f4098(void* obj, int id, int flag) {
 
     if (flag == 0) {
         for (flag = 0; flag < 4; flag++) {
-            if (TestBitAt0x34(*(unsigned char**)((char*)obj + 0x2a0), (unsigned char)flag)) {
+            if (TestBitAt0x34(*(unsigned char**)((char*)obj + regionalOffset3), (unsigned char)flag)) {
                 GetCombatantWithFlag0x100(battleStruct, flag);
             }
         }

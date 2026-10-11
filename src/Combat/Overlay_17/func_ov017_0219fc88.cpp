@@ -1,3 +1,10 @@
+// JPN: func_ov017_021a0738
+#if defined(jpn)
+enum { RegionOffset6fc = 0x4ec, RegionOffset734 = 0x524, RegionOffset6d0 = 0x4c0, RegionOffset10a = 0x106 };
+#else
+enum { RegionOffset6fc = 0x6fc, RegionOffset734 = 0x734, RegionOffset6d0 = 0x6d0, RegionOffset10a = 0x10a };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -34,7 +41,7 @@ struct Entry021baedc {
     unsigned char f3;
     char pad4[8 - 4];
     unsigned short f8;
-    char pad10[0x10a - 0xa];
+    char pad10[RegionOffset10a - 0xa];
     unsigned char f10a;
 };
 
@@ -51,7 +58,7 @@ extern "C" ARM int func_ov017_0219fc88(void* unusedSelf, int scriptId) {
     void* ctx;
     int success;
     void* self = func_ov017_0218b5b0();
-    struct TailList020469b4* list = *(struct TailList020469b4**)((char*)self + 0x3000 + 0x6fc);
+    struct TailList020469b4* list = *(struct TailList020469b4**)((char*)self + 0x3000 + RegionOffset6fc);
     ctx = GetField0x3f8Address(battle);
 
     struct Obj02071488 objBuf;
@@ -60,14 +67,14 @@ extern "C" ARM int func_ov017_0219fc88(void* unusedSelf, int scriptId) {
     if (RunScriptByValueRange02071574((unsigned short)scriptId, &objBuf) != NULL) {
         void* work = func_0205ec34();
         if (TestBitInByteArray((int)work, (unsigned char*)work + 0x8c, objBuf.f46 + 0x38e) == 0) {
-            struct Entry021baedc* entry = *(struct Entry021baedc**)((char*)self + 0x3000 + 0x734);
+            struct Entry021baedc* entry = *(struct Entry021baedc**)((char*)self + 0x3000 + RegionOffset734);
 
             if (entry->f2 != 0) {
                 entry->f8 = scriptId;
             } else if (entry->f3 == 0) {
                 func_ov017_021baedc(entry, 1);
                 entry->f8 = scriptId;
-                SetFlag0x9c6(*(struct SetFlagStruct**)((char*)self + 0x3000 + 0x6d0), 1);
+                SetFlag0x9c6(*(struct SetFlagStruct**)((char*)self + 0x3000 + RegionOffset6d0), 1);
                 AppendNodeToTail(list, (struct TailNode020469b4*)entry);
             }
 

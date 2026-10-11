@@ -16,9 +16,15 @@ struct SrcEntry021ca918 {
     short field12;
 };
 
+// JPN: func_ov017_021cadc8
 // USA: func_ov017_021ca918
 extern "C" ARM void func_ov017_021ca918(int unused0, struct SrcEntry021ca918* src, GameState* battleStruct, unsigned char* base) {
-    void* table = *(void**)(base + 0x3000 + 0x718);
+#if defined(jpn)
+ enum {regionalOffset0=0x508};
+#else
+ enum {regionalOffset0=0x718};
+#endif
+    void* table = *(void**)(base + 0x3000 + regionalOffset0);
     void* state = GetField6b0_021b8470(table);
     if (state == NULL) return;
     unsigned char* obj = *(unsigned char**)((char*)state + 0x8000 + 0xe18);

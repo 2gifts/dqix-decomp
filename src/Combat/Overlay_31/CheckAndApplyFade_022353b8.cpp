@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 extern "C" int func_ov031_0223d414(void* data);
-extern "C" void func_ov031_0223d69c(void* out);
+extern "C" int func_ov031_0223d69c(void* out);
 extern "C" void func_ov031_022368e0(void);
 extern "C" void func_ov031_02235488(int level);
 void ForwardWithOffsetThenTag_02235744(int a);

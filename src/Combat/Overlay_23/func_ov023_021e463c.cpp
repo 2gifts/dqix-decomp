@@ -12,18 +12,24 @@ int TestFlagMask(unsigned short* obj, int mask);
 extern unsigned char data_02114e54;
 extern unsigned short data_02114e30;
 
+// JPN: func_ov023_021e4860
 // USA: func_ov023_021e463c  (semantic: UpdateOrientationOrCombatFlags_021e463c)
 extern "C" ARM void func_ov023_021e463c(void* objRaw, unsigned int count) {
+#if defined(jpn)
+ enum {regionalOffset0=0x124, regionalOffset1=0x56c};
+#else
+ enum {regionalOffset0=0x128, regionalOffset1=0x634};
+#endif
     char* obj = (char*)objRaw;
     Words021e60c4 s24;
     Words021e60c4 s18;
     Words021e60c4 s0c;
     Words021e60c4 s00;
-    func_ov023_021e6194(*(void**)(obj + 0x128));
-    unsigned short flags = *(unsigned short*)(obj + 0x634);
+    func_ov023_021e6194(*(void**)(obj + regionalOffset0));
+    unsigned short flags = *(unsigned short*)(obj + regionalOffset1);
     if (flags & 2) {
         int within = 0;
-        func_ov023_021e613c(&s0c, *(char**)(obj + 0x128));
+        func_ov023_021e613c(&s0c, *(char**)(obj + regionalOffset0));
         s24 = s0c;
         int origPos = s24.v[1];
         int base = 0x1eb;
@@ -47,7 +53,7 @@ extern "C" ARM void func_ov023_021e463c(void* objRaw, unsigned int count) {
             }
         }
         int normalized = _Z22fix32ReduceAngle0To2Pii(pos);
-        InitWordsQuad_021e60e0(*(void**)(obj + 0x128), normalized);
+        InitWordsQuad_021e60e0(*(void**)(obj + regionalOffset0), normalized);
         int diff = _Z22fix32ReduceAngle0To2Pii(0x1eb - pos);
         int absDiff = diff < 0 ? -diff : diff;
         if (absDiff < 0x28) {
@@ -59,8 +65,8 @@ extern "C" ARM void func_ov023_021e463c(void* objRaw, unsigned int count) {
         }
         if (within) {
             int n2 = _Z22fix32ReduceAngle0To2Pii(0x1eb);
-            InitWordsQuad_021e60e0(*(void**)(obj + 0x128), n2);
-            *(unsigned short*)(obj + 0x634) &= ~2;
+            InitWordsQuad_021e60e0(*(void**)(obj + regionalOffset0), n2);
+            *(unsigned short*)(obj + regionalOffset1) &= ~2;
         }
     } else if (flags & 1) {
         int flag5 = 0, flag6 = 0, got = 0;
@@ -81,9 +87,9 @@ extern "C" ARM void func_ov023_021e463c(void* objRaw, unsigned int count) {
             if (TestFlagMask(&data_02114e30, 0x100)) flag6 = 1;
         }
         if (flag5 && flag6) {
-            *(unsigned short*)(obj + 0x634) |= 2;
+            *(unsigned short*)(obj + regionalOffset1) |= 2;
         } else if (flag5 || flag6) {
-            func_ov023_021e613c(&s00, *(char**)(obj + 0x128));
+            func_ov023_021e613c(&s00, *(char**)(obj + regionalOffset0));
             s18 = s00;
             if (flag5) {
                 s18.v[1] += (int)((float)count * 0.08f * 4096.0f);
@@ -92,17 +98,17 @@ extern "C" ARM void func_ov023_021e463c(void* objRaw, unsigned int count) {
                 s18.v[1] -= (int)((float)count * 0.08f * 4096.0f);
             }
             s18.v[1] = _Z22fix32ReduceAngle0To2Pii(s18.v[1]);
-            SetFourWordBlocks_021e6088(*(void**)(obj + 0x128), &s18);
+            SetFourWordBlocks_021e6088(*(void**)(obj + regionalOffset0), &s18);
         }
         if (flag5) {
-            *(unsigned short*)(obj + 0x634) |= 0x100;
+            *(unsigned short*)(obj + regionalOffset1) |= 0x100;
         } else {
-            *(unsigned short*)(obj + 0x634) &= ~0x100;
+            *(unsigned short*)(obj + regionalOffset1) &= ~0x100;
         }
         if (flag6) {
-            *(unsigned short*)(obj + 0x634) |= 0x200;
+            *(unsigned short*)(obj + regionalOffset1) |= 0x200;
         } else {
-            *(unsigned short*)(obj + 0x634) &= ~0x200;
+            *(unsigned short*)(obj + regionalOffset1) &= ~0x200;
         }
     }
 }

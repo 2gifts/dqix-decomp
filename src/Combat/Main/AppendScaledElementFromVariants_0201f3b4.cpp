@@ -1,3 +1,9 @@
+#if defined(jpn)
+enum { RegionalPad = 0xc };
+#else
+enum { RegionalPad = 0x10 };
+#endif
+
 #include <globaldefs.h>
 
 struct Variant02030b0c {
@@ -18,7 +24,7 @@ void AppendCappedElement02027b5c(struct Container02027b5c* c, unsigned short h, 
 extern "C" void func_02012fe4(void);
 
 struct Global020fdc4c_f3b4 {
-    char pad[0x10];
+    char pad[RegionalPad];
     void* field10;
 };
 extern struct Global020fdc4c_f3b4 data_020fdc4c;
@@ -31,6 +37,7 @@ struct QuadArg0201f3b4 {
 };
 
 // USA: func_0201f3b4  (semantic: AppendScaledElementFromVariants_0201f3b4)
+// JPN: func_0201f3b4  (semantic: AppendScaledElementFromVariants_0201f3b4)
 extern "C" ARM int func_0201f3b4(struct QuadArg0201f3b4* arg0) {
     float c;
     int a = _ZNK6Script9Parameter5ToIntEv(&arg0->v0);

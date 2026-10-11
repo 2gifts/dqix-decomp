@@ -6,7 +6,11 @@ struct SubObj02061bd8 {
 };
 
 struct Obj02061bd8 {
+#if defined(jpn)
+    unsigned char pad[0x144];
+#else
     unsigned char pad[0x150];
+#endif
     struct SubObj02061bd8* sub;
 };
 

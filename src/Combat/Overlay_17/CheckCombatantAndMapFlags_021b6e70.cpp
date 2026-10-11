@@ -12,6 +12,7 @@ struct Obj_021b6e70 {
     unsigned char field0xd;
 };
 
+// JPN: 021b7420
 // USA: func_ov017_021b6e70  (semantic: CheckCombatantAndMapFlags_021b6e70)
 extern "C" ARM bool func_ov017_021b6e70(struct Obj_021b6e70* obj, int combatantId) {
     GameState* battleStruct = GameState::GetInstance();
@@ -27,7 +28,11 @@ extern "C" ARM bool func_ov017_021b6e70(struct Obj_021b6e70* obj, int combatantI
 
     void* misc = func_02012fe4();
     struct GrottoStruct* grotto = battleStruct->GetGrottoStruct();
+#if defined(jpn)
+    int mapType = ((TreasureMapMetadata*)((char*)grotto + 0x4c))->GetMapType();
+#else
     int mapType = grotto->activeMapData.GetMapType();
+#endif
     int val = *(unsigned short*)misc;
 
     if (IsValueInRange0201b5d8(val)) {

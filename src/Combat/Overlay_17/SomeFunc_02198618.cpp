@@ -1,3 +1,8 @@
+#if defined(jpn)
+enum {regionalOffset0=0x8c, regionalOffset1=0xc4, regionalOffset2=0xc6};
+#else
+enum {regionalOffset0=0x6c, regionalOffset1=0x84, regionalOffset2=0x86};
+#endif
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -30,6 +35,7 @@ struct LocalBuf021986 {
     unsigned char pad18[2];
 };
 
+// JPN: func_ov017_021991c8
 // USA: func_ov017_02198618  (semantic: SomeFunc_02198618)
 extern "C" ARM void func_ov017_02198618(void* p0) {
     GameState* battle = GameState::GetInstance();
@@ -40,16 +46,16 @@ extern "C" ARM void func_ov017_02198618(void* p0) {
 
     unsigned char* misc = (unsigned char*)func_02012fe4();
     GetField0x3b0Value(battle);
-    unsigned char* arr = (unsigned char*)GetPointerFromArray0x3c(misc + 0x6c, 10);
+    unsigned char* arr = (unsigned char*)GetPointerFromArray0x3c(misc + regionalOffset0, 10);
     struct Buf3021986 buf3 = *(struct Buf3021986*)((char*)c + 0x44);
 
     while (arr != NULL) {
         if (func_02094b9c(arr, &buf3) != 0) {
             unsigned short field2c = *(unsigned short*)(arr + 0x2c);
-            short field84 = *(short*)(misc + 0x2700 + 0x84);
+            short field84 = *(short*)(misc + 0x2700 + regionalOffset1);
             if (field2c == field84) {
                 unsigned short misc0 = *(unsigned short*)misc;
-                unsigned short field86 = *(unsigned short*)(misc + 0x2700 + 0x86);
+                unsigned short field86 = *(unsigned short*)(misc + 0x2700 + regionalOffset2);
                 if (misc0 == field86) {
                     struct LocalBuf021986 lb;
                     InitObj0219a674((unsigned char*)&lb);

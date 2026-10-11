@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kCountOffset = 0x497 };
+#else
+enum { kCountOffset = 0x477 };
+#endif
+
 
 struct Entry020159c0 {
     unsigned char pad0[0x14];
@@ -8,7 +14,7 @@ struct Entry020159c0 {
 };
 
 struct Holder020159c0 {
-    unsigned char pad0[0x477];
+    unsigned char pad0[kCountOffset];
     unsigned char count;
     unsigned char pad478[4];
     struct Entry020159c0* arr;

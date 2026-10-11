@@ -55,7 +55,11 @@ extern struct Table_02153884 data_ov001_021658d8;
 
 void SetField0xa0AndByte0xc4IfFlag0x1Clear(unsigned char* obj, int value, unsigned char b);
 
+#if defined(jpn)
+extern "C" void func_02050678(void* obj, short b, int c, void* field18, int nibble, int initial4, short* fieldAaddr, short* fieldCaddr);
+#else
 extern "C" void func_0204f41c(void* obj, short b, int c, void* field18, int nibble, int initial4, short* fieldAaddr, short* fieldCaddr, int zero);
+#endif
 
 
 // USA: func_ov001_0215e7c0  (semantic: RegisterTableEntryAndInvokeHandler_0215e7c0)
@@ -95,7 +99,11 @@ extern "C" ARM int func_ov001_0215e7c0(void* combatant) {
 
     short fieldA;
     short fieldC;
+#if defined(jpn)
+    func_02050678(&obj, 0, 0, (void*)entry->val, 0xc, 0xf, &fieldA, &fieldC);
+#else
     func_0204f41c(&obj, 0, 0, (void*)entry->val, 0xc, 0xf, &fieldA, &fieldC, 0);
+#endif
 
     InvokeHandlerAfterCacheFlush0204fbf8(&obj);
     BackgroundLoader::RemoveLockGlobal();

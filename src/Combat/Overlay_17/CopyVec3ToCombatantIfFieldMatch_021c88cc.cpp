@@ -18,10 +18,16 @@ struct Src021c88cc {
 	unsigned short field12;
 };
 
+// JPN: func_ov017_021c8d7c
 // USA: func_ov017_021c88cc
 ARM void CopyVec3ToCombatantIfFieldMatch_021c88cc(int unused0, Src021c88cc* src, GameState* battleStruct, unsigned char* obj) {
+#if defined(jpn)
+ enum {regionalOffset0=0x508};
+#else
+ enum {regionalOffset0=0x718};
+#endif
 	unsigned char* base = obj + 0x3000;
-	void* h = *(void**)(base + 0x718);
+	void* h = *(void**)(base + regionalOffset0);
 	Ret021c88cc* r = (Ret021c88cc*)func_ov017_021b8478(h);
 	if (!r) return;
 	if (!func_ov017_021b8468(h)) return;

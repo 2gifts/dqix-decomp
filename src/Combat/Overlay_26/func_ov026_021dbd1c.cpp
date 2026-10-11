@@ -19,14 +19,29 @@ struct Container_021dae60 {
 };
 
 struct BattleWork {
+#if defined(jpn)
+    char pad0[0x218];
+#else
     char pad0[0x29c];
+#endif
+
     BattleState* battle;
     PartyState* party;
     char pad2a4[0xc08];
     int state;
+#if defined(jpn)
+    char padeb0[0x28f0];
+#else
     char padeb0[0x28b0];
+#endif
+
     Container_021dae60 list;
+#if defined(jpn)
+    char pad3818[0x4164];
+#else
     char pad3818[0x3f30];
+#endif
+
     unsigned char turnFlag;
 };
 
@@ -50,6 +65,7 @@ void func_ov000_0215fb04(BattleState*, int);
 void func_ov026_021dbf04(BattleWork*);
 }
 
+// JPN: func_ov026_021dc3ec
 // USA: func_ov026_021dbd1c
 extern "C" ARM void func_ov026_021dbd1c(BattleWork* self, int member, int notify) {
     GameState* gs = GameState::GetInstance();

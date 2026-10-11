@@ -9,6 +9,7 @@ int IsCombatantFlagMask512_021eda60(GameObject* combatant);
 
 extern unsigned short data_ov024_021feb34;
 
+// JPN: func_ov024_021ee9d8
 // USA: func_ov024_021ee20c  (semantic: CollectFlaggedCombatantIDs_021ee20c)
 extern "C" ARM int func_ov024_021ee20c(int* a0, int a1, int a2, int* a3, short* a4) {
     short buf[4];

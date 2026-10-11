@@ -7,15 +7,20 @@ struct Entry_02028bd0* FindInlineEntryById(struct Entry_02028bd0* base, int key)
 
 struct Bits021cf4e8 { unsigned short low4:4; unsigned short high12:12; };
 
+// JPN: func_ov017_021cf998
 // USA: func_ov017_021cf4e8  (semantic: ProcessEntrySlotAndFlag_021cf4e8)
-#pragma optimize_for_size off
 extern "C" ARM void func_ov017_021cf4e8(void* unusedArg0, unsigned char* entry, unsigned char* table, unsigned char* ctx) {
+#if defined(jpn)
+ enum {regionalOffset0=0xca2, regionalOffset1=0xca6, regionalOffset2=0x204, regionalOffset3=0x4000};
+#else
+ enum {regionalOffset0=0xf76, regionalOffset1=0xf7a, regionalOffset2=0xb4, regionalOffset3=0x4400};
+#endif
     int inRange = entry[4] <= 3;
     if (inRange) {
         unsigned char* p = table + entry[4] + 0x7000;
-        p[0xf76] = entry[5];
+        p[regionalOffset0] = entry[5];
         if (entry[5] == 2) {
-            unsigned char* dst = ctx + 0xb4 + 0x4400;
+            unsigned char* dst = ctx + regionalOffset2 + regionalOffset3;
             unsigned short* zone = func_02012fe4();
             struct Entry_02028bd0* found = FindInlineEntryById(GetEntryTableBase(), *zone);
             if (found != 0) {
@@ -25,7 +30,7 @@ extern "C" ARM void func_ov017_021cf4e8(void* unusedArg0, unsigned char* entry, 
         }
     } else {
         unsigned char* p = table + entry[4] + 0x7000;
-        p[0xf76] = 5;
+        p[regionalOffset0] = 5;
     }
-    table[0x7000 + 0xf7a] = table[0x7000 + 0xf7a] | (1 << entry[4]);
+    table[0x7000 + regionalOffset1] = table[0x7000 + regionalOffset1] | (1 << entry[4]);
 }

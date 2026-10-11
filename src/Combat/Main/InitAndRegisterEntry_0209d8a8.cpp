@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kFieldOffset = 0x508 };
+#else
+enum { kFieldOffset = 0x718 };
+#endif
+
 #include "Memory/SafeAllocator.h"
 #include "GameState/GameState.h"
 
@@ -42,7 +49,7 @@ extern "C" ARM int func_0209d8a8(void* obj) {
     b0 = func_ov017_021d60f4(obj);
     b1 = func_ov017_021d60f4((char*)obj + 8);
     void* base = func_ov017_0218b5b0();
-    int field = *(int*)((char*)base + 0x3000 + 0x718);
+    int field = *(int*)((char*)base + 0x3000 + kFieldOffset);
     void* p = func_ov017_021b8468(field);
     if (p == NULL) {
         return 1;

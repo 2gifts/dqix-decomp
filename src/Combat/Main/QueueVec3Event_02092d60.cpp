@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define IS_JPN 1
+#else
+#define IS_JPN 0
+#endif
 #include "GameState/GameState.h"
 
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
@@ -29,6 +34,7 @@ struct Param1_02092d60 {
     signed char f38;
 };
 
+// JPN: 0x02093680
 // USA: func_02092d60  (semantic: QueueVec3Event_02092d60)
 extern "C" ARM void func_02092d60(struct Param1_02092d60* p1, int p2) {
     GameState* bs = GameState::GetInstance();
@@ -37,7 +43,7 @@ extern "C" ARM void func_02092d60(struct Param1_02092d60* p1, int p2) {
         struct Vec3_02092d60 vecBuf;
         _ZN8Vector3iaSERKS_(&vecBuf.x, (int*)((char*)c + 0x44));
         int word0 = GetWord0x0((int*)bs);
-        struct HeadNode02046b24** listHead = *(struct HeadNode02046b24***)((char*)(int)word0 + 0x36fc);
+        struct HeadNode02046b24** listHead = *(struct HeadNode02046b24***)((char*)(int)word0 + (IS_JPN ? 0x34ec : 0x36fc));
         int head = GetHeadNodeIdOrMinusOne(listHead);
         if (head == 0xa) {
             void* work = GetActiveCombatWork();

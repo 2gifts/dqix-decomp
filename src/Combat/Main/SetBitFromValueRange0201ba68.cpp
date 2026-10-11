@@ -9,10 +9,18 @@ int IsInRange0201b588(int id);
 int LookupKeyValue(int key);
 extern "C" int _s32_div_f(int a, int b);
 
+
+#if defined(jpn)
+enum { ValueRangeStateOffset = 0x2860 };
+#else
+enum { ValueRangeStateOffset = 0x2820 };
+#endif
+
+// JPN: func_0201b7e0
 // USA: func_0201ba68
 ARM void SetBitFromValueRange0201ba68(void* obj) {
     unsigned char* base = (unsigned char*)obj;
-    if (func_0202c540(func_0202ae18()) != 0 || base[0x2820] != 0) return;
+    if (func_0202c540(func_0202ae18()) != 0 || base[ValueRangeStateOffset] != 0) return;
 
     void* ctx = func_0205ec34();
     if (*(unsigned short*)base >= 20000 && *(unsigned short*)base <= 0x752f) {

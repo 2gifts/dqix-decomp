@@ -1,3 +1,50 @@
+#if defined(jpn)
+#define data_ov015_021942a2 data_ov015_02194f64
+#define data_ov015_021943a5 data_ov015_02194f37
+#define data_ov015_021943b0 data_ov015_02194f48
+#define data_ov015_021943b7 data_ov015_02194f57
+#define data_ov015_021943bd data_ov015_02194f71
+#define data_ov015_021943c6 data_ov015_02194f7e
+#define data_ov015_021943d0 data_ov015_02194f8b
+#define data_ov015_021943d9 data_ov015_02194f98
+#define data_ov015_021943df data_ov015_02194f9e
+#define data_ov015_021943ef data_ov015_02194fb1
+#define data_ov015_021943f8 data_ov015_02194fb8
+#define data_ov015_021943ff data_ov015_02194fbd
+#define data_ov015_0219440c data_ov015_02194fc4
+#define data_ov015_0219441a data_ov015_02194fcb
+#define data_ov015_02194426 data_ov015_02194fd0
+#define data_ov015_02194434 data_ov015_02194fd7
+#define data_ov015_0219443d data_ov015_02194fe0
+#define data_ov015_02194442 data_ov015_02194fe5
+#define data_ov015_0219444b data_ov015_02194fee
+#define data_ov015_02194452 data_ov015_02194ff5
+#define data_ov015_02194459 data_ov015_02194ffc
+#define data_ov015_0219445e data_ov015_02195001
+#define data_ov015_02194463 data_ov015_02195006
+#define data_ov015_02194470 data_ov015_02195017
+#define data_ov015_0219447f data_ov015_0219502e
+#define data_ov015_0219448e data_ov015_02195041
+#define data_ov015_02194496 data_ov015_02195048
+#define data_ov015_0219449e data_ov015_02195053
+#define data_ov015_021944a9 data_ov015_0219505a
+#define data_ov015_021944b6 data_ov015_0219506e
+#define data_ov015_021944c5 data_ov015_02195083
+#define data_ov015_021944d4 data_ov015_02195096
+#define data_ov015_021944e3 data_ov015_021950b6
+#define data_ov015_021944ec data_ov015_021950d0
+#define data_ov015_021944f3 data_ov015_021950d7
+#define data_ov015_021944fa data_ov015_021950de
+#define data_ov015_02194503 data_ov015_021950eb
+#define data_ov015_02194508 data_ov015_021950f5
+#define data_ov015_0219450f data_ov015_021950fc
+#define data_ov015_02194517 data_ov015_02195104
+#define data_ov015_0219451b data_ov015_02195109
+#define data_ov015_0219451f data_ov015_0219510e
+extern const char data_ov015_021950a5[];
+extern const char data_ov015_021950c3[];
+extern const char data_ov015_021950f0[];
+#endif
 #include <globaldefs.h>
 #include "Memory/AllocatorUnion.h"
 #include "std_library_functions.h"
@@ -261,13 +308,21 @@ extern "C" ARM void func_ov015_02192700(struct Obj02192700* obj, int a1) {
             func_020294cc(&obj->menu, data_ov015_021944d4);
             break;
         case 34:
+#if defined(jpn)
+            func_020294cc(&obj->menu, data_ov015_021950a5);
+#else
             func_020294cc(&obj->menu, data_ov015_021942a2);
+#endif
             break;
         case 35:
             func_020294cc(&obj->menu, data_ov015_021944e3);
             break;
         case 36:
+#if defined(jpn)
+            func_020294cc(&obj->menu, data_ov015_021950c3);
+#else
             func_020294cc(&obj->menu, data_ov015_021942a2);
+#endif
             break;
         case 38:
             func_020294cc(&obj->menu, data_ov015_021944ec);
@@ -299,7 +354,11 @@ extern "C" ARM void func_ov015_02192700(struct Obj02192700* obj, int a1) {
             }
             if (count == 0) {
                 _Z12Init0202949cPc(obj->items);
+#if defined(jpn)
+                func_020294cc(obj->items, data_ov015_021950f0);
+#else
                 func_020294cc(obj->items, _Z28CallFunc020e0434With02153694i(1000));
+#endif
                 _Z24AppendNodeToList0202a944P16ListHead0202a944P16ListNode0202a944(&obj->menu, obj->items);
                 count = 1;
             } else {

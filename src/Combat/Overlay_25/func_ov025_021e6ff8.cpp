@@ -27,13 +27,19 @@ unsigned char GetByte_021dcc64_021dcc64(void* obj);
 ListNode021600f8* GetNodeAtIndex021600f8(List021600f8* list, int index);
 void Call0202eab8AndApply020a0d6c(char* obj, int a, int b, int c, int d);
 
+// JPN: func_ov025_021e74a8
 // USA: func_ov025_021e6ff8
 extern "C" ARM int func_ov025_021e6ff8(CameraTask021e6ff8* task, List021600f8* list) {
+#if defined(jpn)
+ enum { regionalOffset=0x71c5 };
+#else
+ enum { regionalOffset=0x6fd5 };
+#endif
     GameState* gs = GameState::GetInstance();
     int camera = GetField0x3b0Value(gs);
     void* work = GetActiveCombatWork();
     if (work != NULL) {
-        *((unsigned char*)work + 0x6fd5) = 1;
+        *((unsigned char*)work + regionalOffset) = 1;
         if (GetByte_021dcc64_021dcc64(work)) {
             return 1;
         }

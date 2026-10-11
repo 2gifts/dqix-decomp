@@ -18,6 +18,7 @@ extern struct ValueEntry_021e9018 data_ov024_021fe842[];
 extern struct KeyEntry_021e9018 data_ov024_021fe7c4[];
 extern struct ValueEntry_021e9018 data_ov024_021fe7c6[];
 
+// JPN: func_ov024_021e98b0
 // USA: func_ov024_021e9018
 extern "C" ARM int func_ov024_021e9018(struct Ctx_021e9018* ctx, int id, short kind, int mode) {
     if (mode != 0) {
@@ -36,10 +37,20 @@ extern "C" ARM int func_ov024_021e9018(struct Ctx_021e9018* ctx, int id, short k
         if (!c) return 0;
         if (IsFlagBit8Set_021da9b0((struct FlagObj_021da9b0*)c) &&
             (kind == 3 || kind == 4 || kind == 5 || kind == 8)) {
+#if defined(jpn)
+            return 0x1b;
+#else
             return SelectByIndexRange0to3_021da644(id, 0x26d, 0x1b);
+#endif
+
         }
         if (CheckFlag0x14Bit0x10Set((unsigned char*)c->currentStats_) && (unsigned short)(short)(kind - 2) <= 6) {
+#if defined(jpn)
+            return 0x1b;
+#else
             return SelectByIndexRange0to3_021da644(id, 0x26d, 0x1b);
+#endif
+
         }
         struct Bits_021e9018* b = (struct Bits_021e9018*)((char*)c->currentStats_ + 0x22);
         int element = b->element;

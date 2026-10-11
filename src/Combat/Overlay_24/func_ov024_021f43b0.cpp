@@ -12,6 +12,7 @@ extern unsigned short data_ov024_021fec3c;
 
 struct Obj_43b0 { int field0; };
 
+// JPN: func_ov024_021f4b7c
 // USA: func_ov024_021f43b0  (semantic: TryFindNonKind1AndCopyTable_021f43b0)
 extern "C" ARM int func_ov024_021f43b0(struct Obj_43b0* obj, int a1, int a2, int* outCount, short* outArray) {
 	short buf[4];

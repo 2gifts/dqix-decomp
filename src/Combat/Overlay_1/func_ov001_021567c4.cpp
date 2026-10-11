@@ -18,7 +18,11 @@ struct State_021567c4 {
 	unsigned char done;
 	char pad2[8];
 	unsigned short nextState;
-	char padC[0x94 - 0xc];
+	#if defined(jpn)
+ char padC[0x90 - 0xc];
+#else
+ char padC[0x94 - 0xc];
+#endif
 	int field_0x94;
 };
 

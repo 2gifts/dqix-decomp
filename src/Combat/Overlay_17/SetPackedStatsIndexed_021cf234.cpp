@@ -1,3 +1,4 @@
+// JPN: func_ov017_021cf6e0
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -24,6 +25,12 @@ struct Src021cf234 {
     unsigned int field10;
 };
 
+#if defined(jpn)
+enum { PackedSlotOffset = 0x7b8 };
+#else
+enum { PackedSlotOffset = 0x850 };
+#endif
+
 // USA: func_ov017_021cf234  (semantic: SetPackedStatsIndexed_021cf234)
 extern "C" ARM void func_ov017_021cf234(int unused0, struct Src021cf234* src, GameState* battleStruct) {
     unsigned int id = (src->field10 << 21) >> 29;
@@ -34,7 +41,7 @@ extern "C" ARM void func_ov017_021cf234(int unused0, struct Src021cf234* src, Ga
 
     unsigned int idxWide = ((struct Idx8_cf234*)&src->field10)->idx;
     unsigned char idx = (unsigned char)idxWide;
-    unsigned char* base = p + 0x850 + idx * 0xc;
+    unsigned char* base = p + PackedSlotOffset + idx * 0xc;
     ((struct Packed3c_cf234*)(base + 0))->fieldA = src->field4.fieldA;
     ((struct Packed3c_cf234*)(base + 0))->fieldB = src->field4.fieldB;
     ((struct Packed3c_cf234*)(base + 0))->fieldC = src->field4.fieldC;

@@ -41,7 +41,11 @@ extern "C" ARM BattleEquipmentEntry* func_ov000_02171d90(BattleEquipmentList* li
             ++output;
         } while (--bytes);
         for (unsigned char slot = 0; slot < 8; ++slot) {
+#if defined(jpn)
+            BattleEquipmentView* equipment = *reinterpret_cast<BattleEquipmentView**>(actor + 0x144);
+#else
             BattleEquipmentView* equipment = *reinterpret_cast<BattleEquipmentView**>(actor + 0x150);
+#endif
             BattleEquipmentEntry* entry = &equipment->entries[equipmentOrder[slot]];
             if (entry && entry->itemId > 0) {
                 int equipmentCategory = entry->category <= 7;

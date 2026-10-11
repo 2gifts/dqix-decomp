@@ -1,3 +1,4 @@
+// JPN: func_ov017_021c8dfc
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Resource/GameResources.h"

@@ -1,3 +1,10 @@
+// JPN: func_ov017_021b8dc8
+#if defined(jpn)
+enum { RegionOffset15c = 0x150 };
+#else
+enum { RegionOffset15c = 0x15c };
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -5,7 +12,7 @@ struct RingBuf0215fab0;
 
 struct CombatantSnapshot_021b88d0 {
     GameObject base;
-    char pad13c[0x15c - 0x13c];
+    char pad13c[RegionOffset15c - 0x13c];
     int savedField06;
     Vector3i savedPosition;
     Vector3i savedRotation;

@@ -1,3 +1,9 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define data_ov008_0218b594 data_ov008_0218c1aa
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 #include "System/OverlayId.h"
@@ -23,16 +29,18 @@ struct Manager0218b084 {
     char pad0[0x2a8];
     char f2a8[0xdb8 - 0x2a8];
     unsigned char db8;
-    char pad1[0xe9c - 0xdb9];
+    char pad1[R(0xe98,0xe9c) - 0xdb9];
     signed char e9c;
-    char pad2[0xeac - 0xe9d];
+    char pad2[R(0xea8,0xeac) - R(0xe99,0xe9d)];
     int eac;
+#if !defined(jpn)
     int eb0;
-    char pad3[0xeb8 - 0xeb4];
+#endif
+    char pad3[R(0xeb0,0xeb8) - R(0xeac,0xeb4)];
     unsigned char eb8;
     char pad4;
     unsigned char eba;
-    char pad5[0xec0 - 0xebb];
+    char pad5[R(0xeb8,0xec0) - R(0xeb3,0xebb)];
     unsigned char bit0 : 1;
     unsigned char bit1 : 1;
     unsigned char rest : 6;
@@ -64,9 +72,11 @@ extern "C" ARM void func_ov008_0218b084(Manager0218b084* self) {
     void* res = func_ov017_0218b5b0();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     loader->RemoveTask(self->eac);
+#if !defined(jpn)
     loader->RemoveTask(self->eb0);
     self->eac = -1;
     self->eb0 = -1;
+#endif
     unsigned short* bgcnt = (unsigned short*)0x4001008;
     bgcnt[0] = (bgcnt[0] & ~3) | 1;
     bgcnt[1] = (bgcnt[1] & ~3) | 2;
@@ -74,8 +84,8 @@ extern "C" ARM void func_ov008_0218b084(Manager0218b084* self) {
     _Z29SetCombatModeFromCase020dc2d0i(0);
     if (self->eba != 0) {
         TailList020469b4* list;
-        unsigned char* obj = *(unsigned char**)((char*)res + 0x3b4c);
-        list = *(TailList020469b4**)((char*)res + 0x36fc);
+        unsigned char* obj = *(unsigned char**)((char*)res + R(0x392c,0x3b4c));
+        list = *(TailList020469b4**)((char*)res + R(0x34ec,0x36fc));
         _Z21InitObjState_021b2174Ph(obj);
         _Z23SetNameChecked_021b2ba0P9S021b2ba0Pc((S021b2ba0*)obj, &data_ov008_0218b594);
         _Z25SetFields30And34_021b2bd0Pvii(obj, (int)_Z29AllocateAndCopyBuf76_0216aa70P13SafeAllocatorPv, OVERLAY_ID(4));

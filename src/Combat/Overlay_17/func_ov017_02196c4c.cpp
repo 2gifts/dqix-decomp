@@ -32,7 +32,11 @@ struct TailNode020469b4;
 void AppendNodeToTail(struct TailList020469b4* list, struct TailNode020469b4* node);
 
 struct Ctx02196c4c {
+#if defined(jpn)
+    unsigned char pad0[0x34e8];
+#else
     unsigned char pad0[0x36f8];
+#endif
     unsigned short* entry;
     void* list;
     unsigned char pad3700[0x3718 - 0x3700];
@@ -61,8 +65,14 @@ struct Event02196c4c {
     int field_0x14;
 };
 
+// JPN: func_ov017_021977fc
 // USA: func_ov017_02196c4c
 extern "C" ARM int func_ov017_02196c4c(Ctx02196c4c* self) {
+#if defined(jpn)
+ enum {regionalFlags=0x180, regionalTimer=0x27d4};
+#else
+ enum {regionalFlags=0x18c, regionalTimer=0x2794};
+#endif
     GameState* battle = GameState::GetInstance();
     func_0202ae18();
     unsigned char* work = func_02012fe4();
@@ -83,7 +93,7 @@ extern "C" ARM int func_ov017_02196c4c(Ctx02196c4c* self) {
     if (IsField0x1b4Or0x1b8Positive((int*)combatant)) {
         return 2;
     }
-    if (*(unsigned int*)((unsigned char*)combatant + 0x18c) & 1) {
+    if (*(unsigned int*)((unsigned char*)combatant + regionalFlags) & 1) {
         return 2;
     }
     if (GetBitsInField4((unsigned int*)self, 0x10)) {
@@ -103,9 +113,9 @@ extern "C" ARM int func_ov017_02196c4c(Ctx02196c4c* self) {
     }
 
     int expired = 0;
-    if (*(int*)(work + 0x2794) <= 0) {
+    if (*(int*)(work + regionalTimer) <= 0) {
         expired = 1;
-        *(int*)(work + 0x2794) = NextRandomBetween(GetBTRandom(), 0x1e, 0x64);
+        *(int*)(work + regionalTimer) = NextRandomBetween(GetBTRandom(), 0x1e, 0x64);
     }
     if (expired == 0) {
         return 0;

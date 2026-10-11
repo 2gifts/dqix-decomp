@@ -24,7 +24,12 @@ struct ItemInfoWindow_021e0f44 {
     short numMonsters_;
     char padc4[0xcc - 0xc4];
     Layout_021e0f44 layout_;
+#if defined(jpn)
+    char pad118[0x6d8 - 0x118];
+#else
     char pad118[0x75c - 0x118];
+#endif
+
     unsigned int vramOffset_;
     char pad760[0x774 - 0x760];
     unsigned short flags_;
@@ -34,6 +39,18 @@ struct Container020e0310;
 struct StructAcAe021db45c;
 
 struct Statics_021e0f44 {
+#if defined(jpn)
+    struct Container020e0310* sTexts;
+    char pad4[8];
+    int sPalette;
+    int pad10;
+    void* sBuffer;
+    int pad18;
+    ItemInfoWindow_021e0f44* sWindow;
+    char pad20[8];
+    struct Container020e0310* sMonsterNames;
+
+#else
     void* sDrops;
     void* sBuffer;
     void* sFieldNames;
@@ -45,6 +62,8 @@ struct Statics_021e0f44 {
     ItemInfoWindow_021e0f44* sWindow;
     void* sPlaces;
     struct Container020e0310* sMonsterNames;
+
+#endif
 };
 extern "C" Statics_021e0f44 data_ov023_021ff9e0;
 extern "C" const short data_ov023_021fd5a8[2] __attribute__((aligned(4)));
@@ -75,6 +94,7 @@ extern "C" unsigned int func_ov023_021ddc98(Canvas_021e0f44* canvas, unsigned in
             element->flags_ &= ~1;                                       \
     }
 
+// JPN: func_ov023_021e1478
 // USA: func_ov023_021e0f44
 extern "C" ARM void func_ov023_021e0f44(ItemInfoWindow_021e0f44* self)
 {
@@ -84,7 +104,12 @@ extern "C" ARM void func_ov023_021e0f44(ItemInfoWindow_021e0f44* self)
         return;
     if (!(self->flags_ & 0x400))
     {
+#if defined(jpn)
+
+#else
         char names[2][0x80] = {0};
+#endif
+
         const char* found = _Z21GetFieldByKey020e0434P17Container020e0310i(data_ov023_021ff9e0.sTexts, 0x1f);
         const char* none = _Z21GetFieldByKey020e0434P17Container020e0310i(data_ov023_021ff9e0.sTexts, 0x1e);
         SHOW_ELEMENT(&self->layout_, 0xe);
@@ -101,8 +126,13 @@ extern "C" ARM void func_ov023_021e0f44(ItemInfoWindow_021e0f44* self)
             const char* name = _Z21GetFieldByKey020e0434P17Container020e0310i(data_ov023_021ff9e0.sMonsterNames, data_ov023_021ff9e0.sWindow->monsters_[i]);
             if (name != NULL)
             {
+#if defined(jpn)
+                _Z23SetEntryFields_021e23d0Pviihh(&self->layout_, data_ov023_021fd5a8[i], (int)name, 10, 15);
+#else
                 _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(name, names[i], 0);
                 _Z23SetEntryFields_021e23d0Pviihh(&self->layout_, data_ov023_021fd5a8[i], (int)names[i], 10, 15);
+#endif
+
             }
         }
         if (count != 3)

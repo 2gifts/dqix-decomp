@@ -18,7 +18,9 @@ ARM void InitAndResetHeader_0219e310(unsigned char* obj, int flag) {
     obj[0x20] = 0;
     *(short*)(obj + 0x22) = 0;
     *(short*)(obj + 0x24) = 0;
+#if !defined(jpn)
     *(int*)(obj + 0x28) = 0;
+#endif
     short v = *(short*)(obj + 0x12);
     if (v != 0) {
         if (flag == 0) return;

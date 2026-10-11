@@ -1,5 +1,14 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kRegionValue1E6_1E2 = 0x1e2 };
+enum { kRegionValue1DC_1D8 = 0x1d8 };
+#else
+enum { kRegionValue1E6_1E2 = 0x1e6 };
+enum { kRegionValue1DC_1D8 = 0x1dc };
+#endif
+
+
 struct Obj2081;
 struct Elem2081;
 Elem2081* FindElementByByte0xc4(Obj2081* obj, int key);
@@ -20,14 +29,15 @@ void SetEntryPositionFromObject(struct WinObj020e28f0* obj, short a, short b);
 extern "C" void func_0205ae8c(void* obj);
 
 // USA: func_ov003_0215501c
+// JPN: func_ov003_02156704
 extern "C" ARM void func_ov003_0215501c(unsigned char* self) {
     if (*(void**)(self + 8) == NULL) {
         return;
     }
-    if (*(short*)(self + 0x1e6) < 0) {
+    if (*(short*)(self + kRegionValue1E6_1E2) < 0) {
         return;
     }
-    Elem2081* elem = FindElementByByte0xc4(*(Obj2081**)(self + 0x18), *(short*)(self + 0x1e6));
+    Elem2081* elem = FindElementByByte0xc4(*(Obj2081**)(self + 0x18), *(short*)(self + kRegionValue1E6_1E2));
     if (elem == NULL) {
         return;
     }
@@ -38,8 +48,8 @@ extern "C" ARM void func_ov003_0215501c(unsigned char* self) {
         return;
     }
     short valA, valB;
-    GetLookAndTurnOffsets020809c4(*(Obj2081**)(self + 0x18), *(short*)(self + 0x1e6), *(short*)*(void**)(self + 8), &valA, &valB);
-    UpdateEntryStateAndPosition(*(Ctx020e263c**)(self + 0x1c), *(int*)(self + 0x1dc));
+    GetLookAndTurnOffsets020809c4(*(Obj2081**)(self + 0x18), *(short*)(self + kRegionValue1E6_1E2), *(short*)*(void**)(self + 8), &valA, &valB);
+    UpdateEntryStateAndPosition(*(Ctx020e263c**)(self + 0x1c), *(int*)(self + kRegionValue1DC_1D8));
     valA = valA - 0x10;
     valB = valB - 3;
     SetEntryPositionFromObject(*(WinObj020e28f0**)(self + 0x1c), valA, valB);

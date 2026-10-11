@@ -1,4 +1,7 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define data_020f14dc data_020f1628
+#endif
 
 struct ResetStruct;
 extern "C" int _ZN6Script10InitializeEv(struct ResetStruct* s);

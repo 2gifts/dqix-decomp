@@ -35,14 +35,26 @@ extern "C" ARM void func_ov000_0217228c(struct Party0217228c* self) {
             }
         }
     }
+#if defined(jpn)
+    signed char memberBuf[4];
+#else
     unsigned char memberBuf[4];
+#endif
     unsigned char active = 0;
     int numMembers = CopyOutRegion0x5718((char*)state, memberBuf);
     for (int k = 0; k < 4; k++) {
+#if defined(jpn)
+        if (k < numMembers) {
+            self->members[k] = memberBuf[k];
+        } else {
+            self->members[k] = -1;
+        }
+#else
         self->members[k] = -1;
         if (k < numMembers) {
             self->members[k] = memberBuf[k];
         }
+#endif
         void* entry = func_ov000_02161318(self, self->members[k]);
         if (entry != NULL && func_ov000_0217f5dc(entry) != 0) {
             active++;

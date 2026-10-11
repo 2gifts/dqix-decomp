@@ -8,9 +8,15 @@ struct CombatantEntry_021e1048 {
     GameObject* object;
 };
 struct CombatWork {
+#if defined(jpn)
+    char pad0[0x218];
+    void* battle;
+    char pad2a0[0x57c8-0x21c];
+#else
     char pad0[0x29c];
     void* battle;
     char pad2a0[0x55d8-0x2a0];
+#endif
     int firstSlot;
 };
 struct Obj02048c90;
@@ -27,6 +33,7 @@ extern "C" int func_ov025_021e1048(void*, CombatantEntry_021e1048*);
 inline int IsPartyActor(int id) { return id >= 0 && id <= 3; }
 inline int IsMonsterActor(int id) { return id >= 0xc0 && id <= 0xc7; }
 
+// JPN: func_ov025_021e05f0
 // USA: func_ov025_021dfce0
 extern "C" ARM void func_ov025_021dfce0(CombatWork* work) {
     GameState* state = GameState::GetInstance();

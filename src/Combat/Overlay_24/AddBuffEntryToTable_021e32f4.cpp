@@ -13,6 +13,7 @@ extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, int e, int
 struct Obj_021e32f4 { char pad0[0xc]; void* field0xc; void* field0x10; };
 struct Bit3b_021e32f4 { unsigned char bit0 : 1; unsigned char rest : 7; };
 
+// JPN: func_ov024_021e3b8c
 // USA: func_ov024_021e32f4
 ARM unsigned long long AddBuffEntryToTable_021e32f4(struct Obj_021e32f4* obj, int unused, int id) {
 	GameObject* c = GetCombatantByID((int)obj->field0x10, id);

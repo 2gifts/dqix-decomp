@@ -18,6 +18,7 @@ struct Action_021f5478 {
 };
 extern const Out0215fb54 data_ov024_021fea1c[];
 
+// JPN: func_ov024_021f5c44
 // USA: func_ov024_021f5478
 extern "C" ARM int func_ov024_021f5478(struct Obj_021f5478* obj, int id, struct Action_021f5478* action, int* outCount, short* outArray) {
     void* work;

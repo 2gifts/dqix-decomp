@@ -29,8 +29,13 @@ extern "C" ARM int func_ov001_02163ccc(char* self, int mode) {
 
     allocator = data_ov001_021658b8[0];
     base = func_ov017_0218b5b0();
+#if defined(jpn)
+    list = *(char**)(base + 0x3000 + 0x4ec);
+    node = *(char**)(base + 0x3000 + 0x93c);
+#else
     list = *(char**)(base + 0x3000 + 0x6fc);
     node = *(char**)(base + 0x3000 + 0xb5c);
+#endif
 
     if (mode < 1) {
         func_ov017_021b621c(node, allocator, 0);
@@ -55,6 +60,10 @@ extern "C" ARM int func_ov001_02163ccc(char* self, int mode) {
         PrependNodeToHead((struct HeadList020469f8*)list, (struct HeadNode020469f8*)node);
     }
     node[8] = 0;
+#if defined(jpn)
+    (*(char**)(base + 0x3000 + 0x524))[0x96] = 1;
+#else
     (*(char**)(base + 0x3000 + 0x734))[0x9a] = 1;
+#endif
     return 1;
 }

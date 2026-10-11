@@ -8,15 +8,25 @@ int AppendCursorTag(char* dst, int cursor);
 extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* c, int key);
 extern "C" int _Z20AppendString02042058PcPKc(char* dst, const char* src);
 extern "C" int _Z29FormatCombatLogSuffix02041dd0Pci(char* buf, int index);
+#if defined(jpn)
+extern "C" void func_0203bdf4(char* obj, int arg1);
+#define _Z25InvokeGlobalEntry0203c248Pci func_0203bdf4
+#else
 extern "C" void _Z25InvokeGlobalEntry0203c248Pci(char* obj, int arg1);
+#endif
 int AppendNameTag(char* dst, int n, const char* name);
 extern "C" void __clear(void* buf, int n);
 
 struct Member02179a70 {
     char pad[0x4c];
     int field_0x4c;
+#if defined(jpn)
+    char pad2[0x88 - 0x50];
+    char name[0x488 - 0x88];
+#else
     char pad2[0x68 - 0x50];
     char name[0x448 - 0x68];
+#endif
 };
 
 extern "C" int func_ov000_02170c7c(struct Member02179a70* obj);
@@ -55,8 +65,12 @@ extern "C" ARM void func_ov000_02179a70(struct Party02179a70* party, struct Curs
                 _Z20AppendString02042058PcPKc(dst, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)party->strings, 0));
             }
             _Z29FormatCombatLogSuffix02041dd0Pci(dst, func_ov000_02170c7c(m));
+#if defined(jpn)
+            char name[0x20];
+#else
             char name[0x80];
-            __clear(name, 0x80);
+#endif
+            __clear(name, sizeof(name));
             _Z25InvokeGlobalEntry0203c248Pci(m->name, (int)name);
             AppendNameTag(dst, n, name);
             n++;

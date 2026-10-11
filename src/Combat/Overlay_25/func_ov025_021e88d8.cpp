@@ -1,3 +1,4 @@
+// JPN: func_ov025_021e8d78
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
 

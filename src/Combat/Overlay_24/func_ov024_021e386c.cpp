@@ -43,6 +43,7 @@ static inline int IsPartySlot(int id) {
     return id >= 0 && id <= 3;
 }
 
+// JPN: func_ov024_021e4104
 // USA: func_ov024_021e386c
 extern "C" ARM unsigned long long func_ov024_021e386c(struct Obj_021e386c* obj, int actorId, int id, struct Skill_021e386c* skill, int amount) {
     if (amount <= 0) return 0;

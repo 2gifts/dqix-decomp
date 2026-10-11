@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kAllocatorOffset = 0x24 };
+#else
+enum { kAllocatorOffset = 0x58 };
+#endif
+
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 
@@ -11,8 +17,8 @@ void TailForward02012da4(AllocatorUnion* alloc, void* data);
 extern int data_02114e20;
 
 struct Obj020d9d60 {
-    char pad[0x58];
-    SafeAllocator allocator;   // 0x58
+    char pad[kAllocatorOffset];
+    SafeAllocator allocator;   // kAllocatorOffset
 };
 
 // USA: func_020d9d60

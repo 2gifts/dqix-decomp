@@ -1,3 +1,10 @@
+// JPN: func_ov017_021ca874
+#if defined(jpn)
+enum { RegionOffset718 = 0x508 };
+#else
+enum { RegionOffset718 = 0x718 };
+#endif
+
 #include <globaldefs.h>
 
 extern "C" void* func_ov017_0218b5b0(void);
@@ -56,7 +63,7 @@ struct LocalEvt021ca3c4 {
 // USA: func_ov017_021ca3c4  (semantic: EnqueueSlotEventsFromEntries_021ca3c4)
 extern "C" ARM void func_ov017_021ca3c4(Header021ca3c4* obj) {
     unsigned char* ov = (unsigned char*)func_ov017_0218b5b0();
-    void* h = *(void**)(ov + 0x3000 + 0x718);
+    void* h = *(void**)(ov + 0x3000 + RegionOffset718);
     Combatants021ca3c4* c = (Combatants021ca3c4*)func_ov017_021b8478(h);
     void* p = GetData02100044();
 

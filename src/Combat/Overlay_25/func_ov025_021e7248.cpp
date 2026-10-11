@@ -13,11 +13,17 @@ struct Param021e7248 {
     int f1c;
 };
 
+// JPN: func_ov025_021e76f8
 // USA: func_ov025_021e7248
 extern "C" ARM int func_ov025_021e7248(struct Param021e7248* p) {
+#if defined(jpn)
+ enum {regionalOffset0=0x7000, regionalOffset1=0x1c5};
+#else
+ enum {regionalOffset0=0x6000, regionalOffset1=0xfd5};
+#endif
     void* w = GetActiveCombatWork();
     if (w != 0) {
-        *(unsigned char*)((char*)w + 0x6000 + 0xfd5) = 1;
+        *(unsigned char*)((char*)w + regionalOffset0 + regionalOffset1) = 1;
         if (GetByte_021dcc64_021dcc64(w) != 0) {
             return 1;
         }

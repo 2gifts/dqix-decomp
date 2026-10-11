@@ -12,6 +12,7 @@ extern struct Buf4_021ef6c4 data_ov024_021feab4;
 
 struct Bits58_021ef6c4 { signed int lowBits : 3; signed int fieldZ : 3; signed int rest : 26; };
 
+// JPN: func_ov024_021efe90
 // USA: func_ov024_021ef6c4  (semantic: CountEligibleThenCopyOrFail_021ef6c4)
 extern "C" ARM int func_ov024_021ef6c4(struct Obj_021ef6c4* obj, int unused1, int unused2, int* outCount, short* outArray) {
     struct Buf4_021ef6c4 buf = data_ov024_021feab4;

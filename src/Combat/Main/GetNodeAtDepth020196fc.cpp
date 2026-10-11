@@ -6,7 +6,11 @@ struct Node020196fc {
 };
 
 struct Obj020196fc {
+#if defined(jpn)
+    char unk[0x43c];
+#else
     char unk[0x41c];
+#endif
     struct Node020196fc* head;
 };
 

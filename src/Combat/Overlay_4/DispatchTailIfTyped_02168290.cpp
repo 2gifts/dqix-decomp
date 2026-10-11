@@ -1,8 +1,20 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define _Z27ScaleStatsIfType12_021f6f10Pv func_ov023_021f6f10
+#define data_ov004_0216fffa data_ov004_02170752
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 extern "C" void* func_ov011_021849c8(void* a);
 extern "C" void* func_ov023_021f6880(void* obj, int key);
+#if defined(jpn)
+#define ScaleStatsIfType12_021f6f10 func_ov023_021f6f10
+extern "C" int ScaleStatsIfType12_021f6f10(void* self);
+#else
 int ScaleStatsIfType12_021f6f10(void* self);
+#endif
 extern "C" int func_ov023_021f9bc8(char* obj);
 int TailCallOffset20_021fbdcc(void*, int, int, int);
 extern "C" void func_ov011_021848a0(void* obj, int val);

@@ -41,6 +41,7 @@ struct Range_021dbd84 {
 };
 struct StatsFlags_021dbd84 { char pad[0x14]; int flags; };
 
+// JPN: func_ov024_021dc630
 // USA: func_ov024_021dbd84
 extern "C" ARM void* func_ov024_021dbd84(struct Obj_021dbd84* obj, int unused, int id, struct Range_021dbd84* range, int unused2, int unused3, unsigned char flagArg) {
     GameObject* c = GetCombatantByID((int)obj->field0x10, id);

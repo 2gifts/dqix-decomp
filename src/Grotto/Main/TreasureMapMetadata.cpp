@@ -5,9 +5,6 @@
 #include <globaldefs.h>
 
 #ifdef jpn
-#define _Z18GetField0x3acValueP9GameState func_0200ff04
-#define _Z25GetCombatantWithFlag0x100P9GameStatei func_0200fd78
-#define func_02012fe4 func_02012dac
 #endif
 
 extern "C"

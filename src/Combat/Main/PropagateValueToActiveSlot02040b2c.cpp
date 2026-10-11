@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+enum { kRegionalFieldOffset = 0x2c8 };
+#else
+enum { kRegionalFieldOffset = 0x2d4 };
+#endif
+
 
 struct State0xcda8;
 void StoreAlignedValue0x60(struct State0xcda8* obj, int value);
@@ -38,5 +44,5 @@ ARM void PropagateValueToActiveSlot02040b2c(struct Obj02040b2c* self, int value)
         StoreVec3AtField0x50(q, v.x, value, v.z);
     }
     q = self->field1c;
-    *(int*)(q + 0x2d4) = value;
+    *(int*)(q + kRegionalFieldOffset) = value;
 }

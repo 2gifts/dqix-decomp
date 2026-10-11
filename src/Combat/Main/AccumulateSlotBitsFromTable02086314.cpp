@@ -1,4 +1,7 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define data_020e8a9e data_020e8bc4
+#endif
 #include "GameState/GameState.h"
 
 extern short data_020e8a9e[];
@@ -19,3 +22,5 @@ ARM int AccumulateSlotBitsFromTable02086314(unsigned char* obj) {
     }
     return total;
 }
+
+// JPN: 0x02086c34

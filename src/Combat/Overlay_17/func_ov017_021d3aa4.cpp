@@ -1,3 +1,10 @@
+// JPN: func_ov017_021d3ef4
+#if defined(jpn)
+enum { RegionOffsetb28 = 0x908 };
+#else
+enum { RegionOffsetb28 = 0xb28 };
+#endif
+
 #include <globaldefs.h>
 
 struct SearchStruct0202c1a4;
@@ -20,7 +27,7 @@ struct Evt021d3aa4 {
 // USA: func_ov017_021d3aa4
 extern "C" ARM void func_ov017_021d3aa4(int p0, struct Evt021d3aa4* evt, char* buf, int table, struct SearchStruct0202c1a4* search) {
     func_0208e0a8();
-    unsigned char* entryObj = *(unsigned char**)((char*)table + 0x3000 + 0xb28);
+    unsigned char* entryObj = *(unsigned char**)((char*)table + 0x3000 + RegionOffsetb28);
 
     if (func_0202c508(search)) {
         if (evt->mode != 1) return;

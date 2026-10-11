@@ -47,3 +47,97 @@ src/Combat/Overlay_5/func_ov005_021538fc.cpp:
 src/Combat/Overlay_5/func_ov005_021553b4.cpp:
     complete
     .text start:0x021569a4 end:0x02156a14
+
+src/Combat/Overlay_5/RunTwoCallbacksAndReset02155d38.cpp:
+    complete
+    .text start:0x02157328 end:0x0215735c
+
+src/Combat/Overlay_5/func_ov005_02153b20.cpp:
+    complete
+    .text start:0x021552a0 end:0x02155324
+
+src/Combat/Overlay_5/func_ov005_02157ae8.cpp:
+    complete
+    .text start:0x021590e0 end:0x0215916c
+
+src/Combat/Overlay_5/func_ov005_021579ec.cpp:
+    .text start:0x02158fe4 end:0x021590e0
+
+src/Combat/Overlay_5/func_ov005_02155544.cpp:
+    .text start:0x02156b34 end:0x02156bb0
+
+src/Combat/Overlay_5/func_ov005_021555c0.cpp:
+    .text start:0x02156bb0 end:0x02156c60
+
+src/Combat/Overlay_5/func_ov005_0215742c.cpp:
+    .text start:0x02158a24 end:0x02158b14
+
+src/Combat/Overlay_5/func_ov005_0215730c.cpp:
+    .text start:0x02158904 end:0x02158a24
+
+src/Combat/Overlay_5/func_ov005_021571d0.cpp:
+    .text start:0x021587c8 end:0x02158904
+
+src/Menu/Overlay5EntryLayout.cpp:
+    .text start:0x02156a14 end:0x02156b34
+
+src/Combat/Overlay_5/func_ov005_02153954.cpp:
+    .text start:0x021550d4 end:0x021552a0
+
+src/Combat/Overlay_5/func_ov005_0215792c.cpp:
+    .text start:0x02158f24 end:0x02158fe4
+
+src/Combat/Overlay_5/func_ov005_0215751c.cpp:
+    .text start:0x02158b14 end:0x02158d14
+
+src/Combat/Overlay_5/func_ov005_0215771c.cpp:
+    .text start:0x02158d14 end:0x02158f24
+
+src/Combat/Overlay_5/func_ov005_021556e4.cpp:
+    .text start:0x02156cd4 end:0x02157328
+
+src/Combat/Overlay_5/func_ov005_02154de8.cpp:
+    .text start:0x02156448 end:0x0215654c
+
+src/Combat/Overlay_5/func_ov005_02159850.cpp:
+    .text start:0x0215ad30 end:0x0215ade0
+
+src/Combat/Overlay_5/func_ov005_02154ef0.cpp:
+    .text start:0x0215654c end:0x02156758
+
+src/Combat/Overlay_5/func_ov005_0215a7ec.cpp:
+    .text start:0x0215bd24 end:0x0215be48
+
+src/Combat/Overlay_5/Trans_02159208.cpp:
+    .text start:0x0215a724 end:0x0215a78c
+
+src/Combat/Overlay_5/RunTurnStartHooks02155108.cpp:
+    .text start:0x02156758 end:0x0215681c
+
+src/Combat/Overlay_5/func_ov005_0215be60.cpp:
+    .text start:0x0215d244 end:0x0215d2b4
+
+src/Combat/Overlay_5/func_ov005_02156ecc.cpp:
+    .text start:0x021584bc end:0x0215876c
+
+src/Combat/Overlay_5/func_ov005_0215acc0.cpp:
+    .text start:0x0215c198 end:0x0215c33c
+
+src/Combat/Overlay_5/DispatchByIdxAndCond021551fc.cpp:
+    .text start:0x02156844 end:0x02156898
+
+src/Combat/Overlay_5/GetTableByte0215a930.cpp:
+    .text start:0x0215be60 end:0x0215be78
+
+src/Combat/Overlay_5/Trans_021551d4.cpp:
+    .text start:0x0215681c end:0x02156844
+
+src/Combat/Overlay_5/func_ov005_021537bc.cpp:
+    .text start:0x02154f3c end:0x0215507c
+
+src/Combat/Overlay_5/RunBattleScaleStep0215c034.cpp:
+    .text start:0x0215d414 end:0x0215d438
+
+src/Combat/Overlay_5/func_ov005_02154198.cpp:
+    complete
+    .text start:0x021558ec end:0x02155aa4

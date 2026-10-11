@@ -24,8 +24,14 @@ struct Struct02075cdcFields_021dbfd0 {
     unsigned char f5e;
 };
 
+// JPN: func_ov023_021dc8c8
 // USA: func_ov023_021dbfd0  (semantic: InitSubAllocatorsAndBuffers_021dbfd0)
 extern "C" ARM void func_ov023_021dbfd0(Obj021dbfd0* obj, SafeAllocator* alloc) {
+#if defined(jpn)
+ enum {regionalOffset0=0x6f8};
+#else
+ enum {regionalOffset0=0x77c};
+#endif
     if (alloc == NULL) return;
 
     obj->allocator0.CreateTypeA(alloc->Allocate(0xd33), 0xd33);
@@ -42,9 +48,9 @@ extern "C" ARM void func_ov023_021dbfd0(Obj021dbfd0* obj, SafeAllocator* alloc) 
     InitStruct02075cdc(obj->ptrC4);
     InitStruct02075cdc(obj->ptrC8);
 
-    ((Struct02075cdcFields_021dbfd0*)obj->ptrC4)->f5e = *(signed char*)((char*)obj + 0x77c);
+    ((Struct02075cdcFields_021dbfd0*)obj->ptrC4)->f5e = *(signed char*)((char*)obj + regionalOffset0);
     ((Struct02075cdcFields_021dbfd0*)obj->ptrC4)->f3c = 0;
-    ((Struct02075cdcFields_021dbfd0*)obj->ptrC8)->f5e = *(signed char*)((char*)obj + 0x77c);
+    ((Struct02075cdcFields_021dbfd0*)obj->ptrC8)->f5e = *(signed char*)((char*)obj + regionalOffset0);
     ((Struct02075cdcFields_021dbfd0*)obj->ptrC8)->f38 = 0x120;
     ((Struct02075cdcFields_021dbfd0*)obj->ptrC8)->f3c = 1;
 

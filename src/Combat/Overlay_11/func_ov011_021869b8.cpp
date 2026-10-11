@@ -1,3 +1,20 @@
+#if defined(jpn)
+#define func_ov009_02184c30 _Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30
+#define R(j,u) (j)
+#define data_ov005_0215cbd4 data_ov005_0215dfb4
+#define data_ov005_0215cd60 data_ov005_0215e140
+#define data_ov014_02189480 data_ov014_0218a2c0
+#define data_ov014_02189498 data_ov014_0218a2d8
+#define data_ov015_02193fe0 data_ov015_02194b20
+#define data_ov015_02194564 data_ov015_02195184
+#define data_ov015_02194570 data_ov015_02195190
+#define data_ov015_021945a0 data_ov015_021951c0
+#define data_ov015_021945d0 data_ov015_021951f0
+#define data_ov024_021ff17c data_ov023_021ff17c
+#define func_ov005_02158560 func_ov005_02159b58
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include "std_library_functions.h"
 #include "Memory/SafeAllocator.h"
@@ -52,8 +69,8 @@ struct Sub021869b8 {
     char m6c[0x7c - 0x6c];
     char m7c[0x8c - 0x7c];
     char m8c[0xa4 - 0x8c];
-    char ma4[0x12c - 0xa4];
-    char m12c[0x79c - 0x12c];
+    char ma4[R(0x128 - 0xa4, 0x12c - 0xa4)];
+    char m12c[R(0x718 - 0x128, 0x79c - 0x12c)];
 };
 
 struct Buf021869b8 {
@@ -91,7 +108,7 @@ extern "C" ARM int func_ov011_021869b8(struct TaggedInput021869b8* obj, int argc
     if (node == 0) return 0;
 
     ((SafeAllocator*)((char*)node + 4))->GetSizeWithLargestBlockRemoved();
-    block = ((SafeAllocator*)((char*)node + 4))->Allocate(0x7bc);
+    block = ((SafeAllocator*)((char*)node + 4))->Allocate(R(0x738, 0x7bc));
     if (block == 0) return 0;
 
     extra = 0;

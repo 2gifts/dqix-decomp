@@ -1,3 +1,10 @@
+// JPN: func_ov017_021c97e4
+#if defined(jpn)
+enum { RegionOffset424 = 0x444 };
+#else
+enum { RegionOffset424 = 0x424 };
+#endif
+
 #include <globaldefs.h>
 #include "Combat/Overlay_1/EventArgs.h"
 
@@ -36,7 +43,7 @@ extern "C" ARM void func_ov017_021c9334(int unused0, LocalEvt021c9334* evt) {
     int mode = evt->field6;
 
     int g = func_02012fe4();
-    if (evt->field4 == *(unsigned short*)g && *(int*)((char*)g + 0x424) == 0) {
+    if (evt->field4 == *(unsigned short*)g && *(int*)((char*)g + RegionOffset424) == 0) {
         v.b = func_02018fbc(g, &v);
     }
 

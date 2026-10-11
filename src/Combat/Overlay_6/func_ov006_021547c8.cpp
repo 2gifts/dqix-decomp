@@ -1,3 +1,10 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define func_ov006_02154614 func_ov006_02155d94
+#define func_ov006_02156e54 func_ov006_0215845c
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include <std_library_functions.h>
 #include "Memory/SafeAllocator.h"
@@ -12,7 +19,7 @@ struct Struct020dbd9c {
 };
 
 struct ItemInfoWindow {
-    char unk_0[0x774];
+    char unk_0[R(0x6f0,0x774)];
     unsigned short flags_;
     char unk_776[0x7];
     signed char windowSprites_;
@@ -37,7 +44,9 @@ struct RecipeRecord {
 };
 
 struct AlchemyPot {
+#if !defined(jpn)
     char names_[3][0x80];
+#endif
     SafeAllocator* allocators_;
     SafeAllocator* itemAllocator_;
     SafeAllocator* nextItemAllocator_;

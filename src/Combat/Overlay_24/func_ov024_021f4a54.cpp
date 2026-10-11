@@ -13,6 +13,7 @@ int CheckFlag0x2AndState2(struct S88514* obj);
 
 extern unsigned short data_ov024_021fea8c;
 
+// JPN: func_ov024_021f5220
 // USA: func_ov024_021f4a54  (semantic: CollectEligibleAndCopyTable_021f4a54)
 extern "C" ARM int func_ov024_021f4a54(int* a0, int a1, int a2, int* a3, short* a4) {
 	short buf[4];

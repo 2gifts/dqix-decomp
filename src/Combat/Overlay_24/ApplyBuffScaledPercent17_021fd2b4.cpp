@@ -15,6 +15,7 @@ struct Obj_021fd2b4 {
 	GameObject* ptr668;
 };
 
+// JPN: func_ov024_021fda80
 // USA: func_ov024_021fd2b4  (semantic: ApplyBuffScaledPercent17_021fd2b4)
 extern "C" ARM void func_ov024_021fd2b4(struct Obj_021fd2b4* obj) {
 	struct ModifiableCombatStats* stats = obj->ptr668->currentStats_;

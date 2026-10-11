@@ -3,6 +3,11 @@
 
 // USA: func_ov001_0215b058
 ARM int ClearByteAt5cac_0215b058(void) {
-    ((char*)GameState::GetInstance() + 0x5000)[0xcac] = 0;
+#if defined(jpn)
+    enum { regionalFieldOffset = 0xa4c };
+#else
+    enum { regionalFieldOffset = 0xcac };
+#endif
+    ((char*)GameState::GetInstance() + 0x5000)[regionalFieldOffset] = 0;
     return 1;
 }

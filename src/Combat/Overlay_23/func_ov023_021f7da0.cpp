@@ -38,6 +38,7 @@ struct Obj021f7da0 {
     unsigned short f10e;
 };
 
+// JPN: func_ov023_021f7298
 // USA: func_ov023_021f7da0  (semantic: InitObjKind6AndLinkNodes_021f7da0)
 extern "C" ARM int func_ov023_021f7da0(struct Obj021f7da0* obj, void* ctx, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
     func_ov023_021f6ed8(obj);

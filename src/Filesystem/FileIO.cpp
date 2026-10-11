@@ -19,7 +19,6 @@
 
 #define data_020f0db8 data_020f0e84
 #define data_020f0dbc data_020f0e88
-#define data_0211e33c data_0211fb64
 #endif
 
 extern "C"

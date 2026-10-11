@@ -19,11 +19,19 @@ struct PacketRecord {
     unsigned char payload[24];
 };
 struct PacketStore {
+#if defined(jpn)
+    char pad_0[0x6fc0];
+#else
     char pad_0[0x7200];
+#endif
     PacketRecord records[16];
     PacketSlot slots[3];
 };
+#if defined(jpn)
+struct PacketContext { char pad_0[0x3964]; void* handler; };
+#else
 struct PacketContext { char pad_0[0x3b84]; void* handler; };
+#endif
 struct Packet {
     char pad_0[4];
     unsigned char payload[14];
@@ -38,6 +46,7 @@ struct Packet {
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
 extern "C" void func_ov017_021a99dc(void*, void*, int, int, int);
 
+// JPN: func_ov017_021d1a2c
 // USA: func_ov017_021d15b0
 extern "C" ARM void func_ov017_021d15b0(int sender, Packet* packet, PacketStore* store, PacketContext* context, SearchStruct0202c1a4* search) {
     void* handler = context->handler;

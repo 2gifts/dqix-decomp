@@ -2,6 +2,12 @@
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
 
+#if defined(jpn)
+enum { tableOffset = 0x27c };
+#else
+enum { tableOffset = 0x2cc };
+#endif
+
 extern "C" int func_ov017_021d60f4(void*);
 int GetWord0x0(int* obj);
 extern "C" void _Z24BackupPairTables0207dfacPc(char* tables);
@@ -36,17 +42,17 @@ extern "C" ARM int func_ov001_0215eb3c(void* self, int mode) {
     }
     index = func_ov017_021d60f4(self);
     if (index < 0) {
-        addr = base + 0x2cc;
+        addr = base + tableOffset;
         addr = addr + 0xbd0;
     } else {
-        addr = base + 0x2cc + index * 0x70;
+        addr = base + tableOffset + index * 0x70;
     }
     if (addr == 0) {
         return 0;
     }
     _Z24BackupPairTables0207dfacPc((char*)addr);
     if (mode >= 2 && func_ov017_021d60f4((char*)self + 0x8) != 0) {
-        addr = base + 0x2cc;
+        addr = base + tableOffset;
         tables = (PairTables_0215eb3c*)(addr + 0xbd0);
         diff = 0;
         for (i = 0; i < 10; i++) {
@@ -57,7 +63,7 @@ extern "C" ARM int func_ov001_0215eb3c(void* self, int mode) {
             diff += abs(tables->p1[i] - tables->p2[i]);
         }
         if (index >= 0) {
-            tables = (PairTables_0215eb3c*)(base + 0x2cc + index * 0x70);
+            tables = (PairTables_0215eb3c*)(base + tableOffset + index * 0x70);
             diff = 0;
             for (j = 0; j < 10; j++) {
                 diff += abs(tables->a[j] - tables->b[j]);

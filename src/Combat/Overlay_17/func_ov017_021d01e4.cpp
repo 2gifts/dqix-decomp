@@ -18,12 +18,21 @@ struct Evt021d01e4 {
 };
 
 struct Work021d01e4 {
+#if defined(jpn)
+    unsigned char pad0[0x350c];
+#else
     unsigned char pad0[0x371c];
+#endif
     void* field371c;
+#if defined(jpn)
+    unsigned char pad3720[0x397c - 0x3510];
+#else
     unsigned char pad3720[0x3b9c - 0x3720];
+#endif
     struct FieldStruct021a85d4* field3b9c;
 };
 
+// JPN: func_ov017_021d0694
 // USA: func_ov017_021d01e4
 extern "C" ARM void func_ov017_021d01e4(int unused0, struct Evt021d01e4* evt, GameState* bs, struct Work021d01e4* work) {
     GetField0x3acValue(bs);

@@ -1,5 +1,12 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kObjectOffset = 0x4c0 };
+#else
+enum { kObjectOffset = 0x6d0 };
+#endif
+
+
 extern "C" int func_ov017_0218b5b0(void);
 extern "C" void* func_02012fe4(void);
 struct Obj02022d78;
@@ -9,7 +16,7 @@ int IsInRange0201b588(int);
 // USA: func_020dc214
 ARM void SetModeBasedOnCombatState020dc214(int mode) {
     int base = func_ov017_0218b5b0();
-    void* raw = *(void**)(base + 0x3000 + 0x6d0);
+    void* raw = *(void**)(base + 0x3000 + kObjectOffset);
     unsigned short id = *(unsigned short*)func_02012fe4();
     struct Obj02022d78* obj = (struct Obj02022d78*)raw;
     if (mode == 1) {

@@ -1,4 +1,12 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define REGION_MEMBER_SHORT_OFFSET 0x2a
+#define REGION_MENU_LEADING_SIZE 0x20
+#define func_ov014_02188330 func_ov014_02189234
+#else
+#define REGION_MEMBER_SHORT_OFFSET 0x36
+#define REGION_MENU_LEADING_SIZE 0x2c
+#endif
 #include "GameState/GameState.h"
 
 int GetWord0x0(int* obj);
@@ -19,7 +27,7 @@ extern "C" ARM void func_ov014_02187b38(void* self) {
         if (*(short*)((char*)self + 0x172) < 0) {
             *(short*)((char*)self + 0x172) = FindMappedMemberId02080468(*(void**)((char*)self + 0xc0), *(short*)((char*)self + 0x170));
         }
-        *(short*)((char*)*(void**)((char*)self + 0xc0) + 0x36) = *(short*)((char*)self + 0x172);
+        *(short*)((char*)*(void**)((char*)self + 0xc0) + REGION_MEMBER_SHORT_OFFSET) = *(short*)((char*)self + 0x172);
         func_020813ec(*(void**)((char*)self + 0xc0), *(short*)((char*)self + 0x170));
         (*((unsigned char*)self + 0x17b))++;
         return;

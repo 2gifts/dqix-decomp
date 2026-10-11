@@ -45,10 +45,18 @@ extern "C" ARM int func_ov004_021688d4(void) {
         v2 = *(struct Vec3Local_021688d4*)((char*)combatant + 0x44);
 
         int idx = FindEntryByKey0203dfdc(ptr, 6);
+#if defined(jpn)
+        *(int*)(base17 + 0x1708) = idx;
+#else
         *(int*)(base17 + 0x1838) = idx;
+#endif
 
         int fieldVal = GetFieldFromActiveChild((struct Owner02040a90*)node);
+#if defined(jpn)
+        *(int*)(base17 + 0x170c) = fieldVal;
+#else
         *(int*)(base17 + 0x183c) = fieldVal;
+#endif
 
         int dx = (int)v1.v[0] - (int)v2.v[0];
         int dz = (int)v1.v[2] - (int)v2.v[2];

@@ -45,9 +45,15 @@ extern "C" void func_020de888(PartNameTable_021fbf4c* names, SafeAllocator* allo
 extern "C" void func_020dea64(PartNameTable_021fbf4c* names, SafeAllocator* allocator, void* file, unsigned int size,
                               unsigned char* categories, int count);
 
+// JPN: func_ov023_021fb2bc
 // USA: func_ov023_021fbf4c
 extern "C" ARM int func_ov023_021fbf4c(MenuPartNames_021fbf4c* self, void* script)
 {
+#if defined(jpn)
+ enum {regionalOffset0=0x19000};
+#else
+ enum {regionalOffset0=0x1a000};
+#endif
     MenuHeap_021fbf4c* heap;
     MenuObjectList_021fbf4c* objects = func_ov011_021849c8(script);
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
@@ -68,7 +74,7 @@ extern "C" ARM int func_ov023_021fbf4c(MenuPartNames_021fbf4c* self, void* scrip
             }
             if (self->categories_ == 0)
             {
-                self->allocator_.CreateTypeA(heap->allocator_.Allocate(0x1a000), 0x1a000);
+                self->allocator_.CreateTypeA(heap->allocator_.Allocate(regionalOffset0), regionalOffset0);
                 self->allocator_.Reset();
                 func_020de888(&self->names_, &self->allocator_, file, size);
             }
@@ -79,27 +85,47 @@ extern "C" ARM int func_ov023_021fbf4c(MenuPartNames_021fbf4c* self, void* scrip
                 unsigned char categories[12] = {0};
                 if (self->categories_ & 1)
                 {
+#if defined(jpn)
+                    bytes += 0x12c00;
+#else
                     bytes = func_0200af90(func_0200ab28(bytes, 79872.0));
+#endif
+
                     for (short i = 0; i <= 7; i++)
                         categories[count++] = i;
                 }
                 if (self->categories_ & 2)
                 {
+#if defined(jpn)
+                    bytes += 0x1c00;
+#else
                     bytes = func_0200af90(func_0200ab28(bytes, 7987.2));
+#endif
+
                     categories[count++] = 8;
                 }
                 if (self->categories_ & 4)
                 {
+#if defined(jpn)
+                    bytes += 0x1400;
+#else
                     bytes = func_0200af90(func_0200ab28(bytes, 4915.2));
+#endif
+
                     categories[count++] = 9;
                 }
                 if (self->categories_ & 8)
                 {
+#if defined(jpn)
+                    bytes += 0x4000;
+#else
                     bytes = func_0200af90(func_0200ab28(bytes, 15872.0));
+#endif
+
                     categories[count++] = 11;
                 }
-                if (bytes > 0x1a000)
-                    bytes = 0x1a000;
+                if (bytes > regionalOffset0)
+                    bytes = regionalOffset0;
                 self->allocator_.CreateTypeA(heap->allocator_.Allocate(bytes), bytes);
                 self->allocator_.Reset();
                 func_020dea64(&self->names_, &self->allocator_, file, size, categories, count);

@@ -1,3 +1,10 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define func_ov005_021562b8 func_ov005_021578a8
+extern const char data_ov012_0218bfd7[];
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 struct TouchState
@@ -13,7 +20,7 @@ struct TouchState
 
 struct EquipmentMenu
 {
-    char unk_0[0x1244];
+    char unk_0[R(0x1240, 0x1244)];
     char infoWindow_[4];
 };
 

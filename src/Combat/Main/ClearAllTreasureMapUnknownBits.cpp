@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { activeFlagOffset = 0x6184, secondFlagOffset = 0x6185 };
+#else
+enum { activeFlagOffset = 0x63e4, secondFlagOffset = 0x63e5 };
+#endif
 #include "Grotto/Main/TreasureMapMetadata.h"
 
 int CopyOutBattleRegion0x64f4(void* dst);
@@ -12,8 +18,8 @@ extern "C" {
 // USA: func_020116c8
 ARM void ClearAllTreasureMapUnknownBits(void* obj) {
     unsigned char* p = (unsigned char*)obj;
-    p[0x63e4] = 0;
-    p[0x63e5] = 0;
+    p[activeFlagOffset] = 0;
+    p[secondFlagOffset] = 0;
 
     unsigned char localBuf[0xad8];
     CopyOutBattleRegion0x64f4(localBuf);

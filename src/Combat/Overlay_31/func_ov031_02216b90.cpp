@@ -1,3 +1,4 @@
+// JPN: func_ov031_02217370
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
@@ -52,7 +53,11 @@ extern "C" ARM int func_ov031_02216b90(int mode) {
     }
     data_ov031_02249b54.f0c = data_ov031_0224e5e8.sys->f120c;
     data_ov031_02249b54.f10 = data_ov031_0224e5e8.sys->f1210;
+#if defined(jpn)
+    if (func_ov031_02217c00(data_ov031_0224e5e8.sys->ctx, ((__typeof__(&data_ov031_02249b54))0x0224A754)) != 0) {
+#else
     if (func_ov031_02217c00(data_ov031_0224e5e8.sys->ctx, ((__typeof__(&data_ov031_02249b54))0x02249B54)) != 0) {
+#endif
         return 4;
     }
     if (mode == 1) {

@@ -30,11 +30,26 @@ struct ScrollList_021e6448 {
 static inline ListState_021e6448* GetState(ScrollList_021e6448* list, int i) { return &list->states[i]; }
 
 struct ListMenu_021e6448 {
+#if defined(jpn)
+    char pad0[0x90];
+#else
     char pad0[0xac];
+#endif
+
     ScrollList_021e6448 list_;
+#if defined(jpn)
+    char pad[0x1341 - 0x90 - sizeof(ScrollList_021e6448)];
+#else
     char pad[0x1371 - 0xac - sizeof(ScrollList_021e6448)];
+#endif
+
     unsigned char selectedKey_;
+#if defined(jpn)
+    char pad1372[0x1360 - 0x1342];
+#else
     char pad1372[0x1398 - 0x1372];
+#endif
+
     int scrolled_;
 };
 
@@ -48,6 +63,7 @@ extern "C" void func_0205bb04(void* s, int index);
 
 extern "C" TouchState_021e6448 data_02114e54;
 
+// JPN: func_ov023_021e66bc
 // USA: func_ov023_021e6448
 extern "C" ARM int func_ov023_021e6448(ListMenu_021e6448* self) {
     if (SelectField0x8Or0x58ByFlags((unsigned char*)&self->list_) <= 1)

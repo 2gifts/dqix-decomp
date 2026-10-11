@@ -19,6 +19,7 @@ struct Obj021fc30c {
     int field1c;
 };
 
+// JPN: func_ov023_021fb604
 // USA: func_ov023_021fc30c
 extern "C" ARM int func_ov023_021fc30c(struct Obj021fc30c* obj, void* ctx) {
     void* node = func_ov011_021849c8(ctx);

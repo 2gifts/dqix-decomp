@@ -18,6 +18,9 @@ struct BattleScene021b86f8 {
 };
 
 extern char data_02109bf4[];
+#if defined(jpn)
+extern char data_ov017_021d83e7[];
+#endif
 
 void GetGlobalField0x1c020421a0(void);
 int GetField0x3acValue(GameState* gs);
@@ -45,6 +48,7 @@ void ClearBitsInWord(unsigned int* word, unsigned int bits);
 extern "C" void func_ov017_021c9c64(unsigned short a, int b);
 void SetFieldForMatchingCombatant_021c98f4(int target, int flag);
 
+// JPN: func_ov017_021b8c08
 // USA: func_ov017_021b86f8
 extern "C" ARM void func_ov017_021b86f8(BattleScene021b86f8* self, int combatantId, int showMessage, int arg3) {
     if (self->field_0x6ac == NULL) return;
@@ -58,7 +62,16 @@ extern "C" ARM void func_ov017_021b86f8(BattleScene021b86f8* self, int combatant
     func_02012fe4();
     if (combatant != NULL) {
         if (showMessage) {
-            func_020d7e10(GetGlobalResetObj020d7a50(), (void*)CallFunc020e0434With02153694(0x23), 0, 0, 1, 1);
+#if defined(jpn)
+            func_020d7e10(GetGlobalResetObj020d7a50(), data_ov017_021d83e7, 0, 0, 1);
+#else
+            func_020d7e10(GetGlobalResetObj020d7a50(), (void*)CallFunc020e0434With02153694(0x23), 0, 0, 1
+#if !defined(jpn)
+                , 1
+#endif
+            );
+#endif
+
         }
         func_ov000_02172850(GetOffsetPtr02160f08(self->field_0x6ac));
     }

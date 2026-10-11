@@ -1,13 +1,25 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define _Z22BuildMessageD_02189f38Pc func_ov012_0218aa30
+#define _Z35TestFlagsAndActiveElement2_021e6e20P11Obj021e6e20 func_ov023_021e7184
+#define func_0204500c func_02045d88
+#define func_ov012_02185bf0 func_ov012_02186248
+#define func_ov012_0218943c func_ov012_02189d18
+#define func_ov012_0218adac func_ov012_0218bba0
+#define func_ov023_021e6de4 func_ov023_021e7148
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
 struct Messages02187320
 {
-    char unk_0[0x998];
+    char unk_0[R(0x868,0x998)];
     int busy_;
     int unk_99c;
     int unk_9a0;
-    char unk_9a4[0x19ae - 0x9a4];
+    char unk_9a4[R(0x17de,0x19ae) - R(0x874,0x9a4)];
     unsigned char unk_19ae;
 };
 
@@ -28,17 +40,17 @@ struct Profile02187320
 
 struct ProfileEditor02187320
 {
-    char unk_0[0xac];
-    char window_[0x133c - 0xac];
-    char strings_[0x1370 - 0x133c];
+    char unk_0[R(0x90,0xac)];
+    char window_[R(0x1314,0x133c) - R(0x90,0xac)];
+    char strings_[R(0x1340,0x1370) - R(0x1314,0x133c)];
     unsigned char step_;
     unsigned char state_;
-    char unk_1372[0x13a0 - 0x1372];
+    char unk_1372[R(0x1368,0x13a0) - R(0x1342,0x1372)];
     unsigned char unk_13a0;
-    char unk_13a1[0x13a8 - 0x13a1];
+    char unk_13a1[R(0x1370,0x13a8) - R(0x1369,0x13a1)];
     signed char unk_13a8;
     signed char unk_13a9;
-    char unk_13aa[0x13f8 - 0x13aa];
+    char unk_13aa[R(0x1450,0x13f8) - R(0x1372,0x13aa)];
     unsigned int unk_13f8;
 };
 
@@ -51,7 +63,11 @@ struct Obj021e6e20;
 
 extern "C" Messages02187320* _Z26GetGlobalField0x1c020421a0v();
 const char* FindEntryByKey(TableA68* table, int key);
+#if defined(jpn)
+extern "C" void func_0204500c(Messages02187320* messages, const char* text, int a);
+#else
 extern "C" void func_0204500c(Messages02187320* messages, const char* text, int a, int b);
+#endif
 extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(Entry_0205d6a0* window, int a);
 extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(Struct0205de24* window, unsigned char a, unsigned char b);
 extern "C" void func_ov023_021e6e60(ProfileEditor02187320* self);
@@ -61,7 +77,11 @@ extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(Struct_0205c570*
 extern "C" int func_ov023_021e6de4(ProfileEditor02187320* self);
 extern "C" int _Z35TestFlagsAndActiveElement2_021e6e20P11Obj021e6e20(Obj021e6e20* self);
 extern "C" void func_ov012_02185bf0(ProfileEditor02187320* self, unsigned char item, int selected);
+#if defined(jpn)
+extern "C" void func_ov012_0218adac(ProfileEditor02187320* self, int animate, int design);
+#else
 extern "C" void func_ov012_0218adac(ProfileEditor02187320* self, int animate, int design, int keepPage);
+#endif
 extern "C" void _Z24ReinitController02043204Pc(char* messages);
 extern "C" void func_ov012_0218943c(ProfileEditor02187320* self);
 extern "C" int func_020457e0(Messages02187320* messages);
@@ -70,7 +90,7 @@ extern "C" char data_02108760[];
 
 static inline Profile02187320* GetProfile02187320(GameState* gameState)
 {
-    return (Profile02187320*)((char*)gameState + 0x569c);
+    return (Profile02187320*)((char*)gameState + R(0x543c,0x569c));
 }
 
 // USA: func_ov012_02187320
@@ -82,7 +102,11 @@ extern "C" ARM void func_ov012_02187320(ProfileEditor02187320* self)
         messages->unk_19ae = 0;
     if (self->step_ == 0)
     {
+#if defined(jpn)
+        func_0204500c(messages, FindEntryByKey((TableA68*)self->strings_, 0xf), 0);
+#else
         func_0204500c(messages, FindEntryByKey((TableA68*)self->strings_, 0xf), 0, 0xe3);
+#endif
         messages->busy_ = 1;
         _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((Entry_0205d6a0*)self->window_, 1);
         self->step_ = 10;
@@ -126,7 +150,15 @@ extern "C" ARM void func_ov012_02187320(ProfileEditor02187320* self)
             }
             if (_Z35TestFlagsAndActiveElement2_021e6e20P11Obj021e6e20((Obj021e6e20*)self))
                 profile->showBirthday_ = 1;
-            func_ov012_0218adac(self, 0, -1, 0);
+#if defined(jpn)
+            func_ov012_0218adac(self, 0, -1);
+#else
+    #if defined(jpn)
+        func_ov012_0218adac(self, 0, -1);
+#else
+        func_ov012_0218adac(self, 0, -1, 0);
+#endif
+#endif
             done = 1;
         }
         if (!done)
@@ -167,7 +199,11 @@ extern "C" ARM void func_ov012_02187320(ProfileEditor02187320* self)
             profile->showBirthday_ = 0;
         else
             profile->showBirthday_ = 1;
+#if defined(jpn)
+        func_ov012_0218adac(self, 0, -1);
+#else
         func_ov012_0218adac(self, 0, -1, 0);
+#endif
         _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((Entry_0205d6a0*)self->window_, 1);
         self->step_ = 5;
     }

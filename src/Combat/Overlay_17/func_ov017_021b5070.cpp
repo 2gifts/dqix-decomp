@@ -14,7 +14,12 @@ struct Scene021b5070 {
     char pad0[0x10];
     int scriptArg;
     SafeAllocator* allocator;
+#if defined(jpn)
+    char pad18[0x40 - 0x18];
+#else
     char pad18[0x44 - 0x18];
+#endif
+
     HalfwordArray ids;
     char pad5e[0x60 - 0x5e];
     char scriptContext[0x124 - 0x60];
@@ -41,7 +46,11 @@ extern unsigned char data_0211e33c[0x30000] __attribute__((aligned(4)));
 extern char data_ov017_021d7b85[];
 extern char data_ov017_021d7b9b[];
 extern char data_ov017_021d7bb1[];
+#if defined(jpn)
+extern char data_ov017_021d82c5[];
+#endif
 
+// JPN: func_ov017_021b5760
 // USA: func_ov017_021b5070
 extern "C" ARM void func_ov017_021b5070(Loader021b5070* self) {
     GameState::GetInstance();
@@ -53,11 +62,20 @@ extern "C" ARM void func_ov017_021b5070(Loader021b5070* self) {
         loader->GetLoadedFileByID(self->taskId, &file, &length);
         if (file != NULL) {
             Scene021b5070* scene = self->scene;
+#if defined(jpn)
+            _Z33SetupAndRunBufferedScript0209af58PvP12StreamHeaderiii(scene->scriptBuffer, (StreamHeader*)file, length, scene->scriptArg, (int)scene->scriptContext);
+#else
             _Z33SetupAndRunBufferedScript0209af58PvP12StreamHeaderiii(scene->scriptBuffer, (StreamHeader*)file, length, self->scene->scriptArg, (int)scene->scriptContext);
+#endif
+
         }
     }
     loader->RemoveTask(self->taskId);
     self->taskId = -1;
+#if defined(jpn)
+    self->taskId = loader->QueueLoadFile(data_ov017_021d82c5, NULL);
+
+#else
     Scene021b5070* scene = self->scene;
     unsigned short ids[12];
     __clear(ids, sizeof(ids));
@@ -101,5 +119,7 @@ extern "C" ARM void func_ov017_021b5070(Loader021b5070* self) {
     }
     self->idTable = table;
     self->taskId = loader->QueueLoadFileInGP2(data_ov017_021d7b9b, data_ov017_021d7bb1, NULL);
+
+#endif
     self->state = 6;
 }

@@ -30,7 +30,12 @@ struct GetRowByIndexRow* GetRowByIndex(struct GetRowByIndexRow* base, int i);
 struct Sub021b5458 {
     char pad0[0x10];
     void* field10;
+#if defined(jpn)
+    char pad14[0x120 - 0x14];
+#else
     char pad14[0x124 - 0x14];
+#endif
+
     struct GetRowByIndexRow rows[6];
     char pad2ec[0x30c - 0x2ec];
     unsigned char field30c[0xc];
@@ -42,6 +47,7 @@ struct Obj021b5458 {
     int key;
 };
 
+// JPN: func_ov017_021b5a0c
 // USA: func_ov017_021b5458
 extern "C" ARM void func_ov017_021b5458(struct Obj021b5458* obj) {
     struct Sub021b5458* sub;

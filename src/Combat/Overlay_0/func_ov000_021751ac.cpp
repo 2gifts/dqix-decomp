@@ -11,7 +11,11 @@ struct Entry021751ac {
     int field28;
     char pad3[0x4c - 0x2c];
     int field4c;
+#if defined(jpn)
+    char pad4[0x488 - 0x50];
+#else
     char pad4[0x448 - 0x50];
+#endif
 };
 
 // USA: func_ov000_021751ac

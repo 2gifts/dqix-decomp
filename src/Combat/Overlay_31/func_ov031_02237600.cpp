@@ -1,3 +1,4 @@
+// JPN: func_ov031_02237de0
 #include <globaldefs.h>
 
 ARM int CopyToBattleContextBuffer(void* src);
@@ -39,7 +40,11 @@ extern "C" ARM int func_ov031_02237600(void) {
 
 	{
 		extern char* data_ov031_02290d0c;
+#if defined(jpn)
+		func_ov031_0223cf70((void**)0x0229190C);
+#else
 		func_ov031_0223cf70((void**)0x02290D0C);
+#endif
 	}
 	return 1;
 }

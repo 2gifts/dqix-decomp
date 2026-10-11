@@ -25,13 +25,18 @@ struct Src021ce8ac {
     Last_ce8ac w3;
 };
 
+// JPN: func_ov017_021ced54
 // USA: func_ov017_021ce8ac
 extern "C" ARM void func_ov017_021ce8ac(int unused0, Src021ce8ac* src, GameState* battleStruct) {
     GameObject* c = GetCombatantWithFlag0x100(battleStruct, src->w3.id);
     if (!c) return;
     unsigned char* p = (unsigned char*)GetFieldAt0x150((unsigned char*)c);
     if (!p) return;
+#if defined(jpn)
+    BitTriple10* stats = (BitTriple10*)(p + 0x884);
+#else
     BitTriple10* stats = (BitTriple10*)(p + 0x91c);
+#endif
     stats[0].f0 = src->w0.f0;
     stats[0].f1 = src->w0.f1;
     stats[0].f2 = src->w0.f2;

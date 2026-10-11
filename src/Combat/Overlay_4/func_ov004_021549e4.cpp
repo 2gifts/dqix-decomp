@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 
+
 extern "C" int func_ov004_02153c74(void* a);
 extern "C" int func_ov004_02154984(void* a);
 extern "C" void* func_ov011_021849c8(void*);
@@ -51,7 +52,8 @@ struct Entry5c021549e4 {
     short field5e;
 };
 
-// USA: func_ov004_021549e4  (semantic: CheckAndDivideEntry6_021549e4)
+// USA: func_ov004_021549e4
+// JPN: func_ov004_0215606c
 extern "C" ARM int func_ov004_021549e4(void* a1) {
     void* r4 = (void*)func_ov004_02153c74(a1);
     if (!r4) return 0;

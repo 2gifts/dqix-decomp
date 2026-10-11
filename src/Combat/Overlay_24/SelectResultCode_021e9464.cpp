@@ -17,5 +17,9 @@ ARM int SelectResultCode_021e9464(struct Ctx_021e9464* ctx, int id, int mode) {
         return flagSet ? 0x6e : 0x1e;
     }
     if (flagSet) return 0x6f;
+#if defined(jpn)
+    return 0x1b;
+#else
     return SelectByIndexRange0to3_021da644(id, 0x26d, 0x1b);
+#endif
 }

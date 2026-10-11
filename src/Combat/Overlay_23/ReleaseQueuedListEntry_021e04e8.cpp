@@ -14,9 +14,15 @@ struct StructField8Nibble04e8 {
     unsigned int nibble : 4;
 };
 
+// JPN: func_ov023_021e0a88
 // USA: func_ov023_021e04e8  (semantic: ReleaseQueuedListEntry_021e04e8)
 extern "C" ARM int func_ov023_021e04e8(void* obj) {
-    if (*(int*)((char*)obj + 0x73c) == -1) {
+#if defined(jpn)
+ enum {regionalOffset0=0x6b8, regionalOffset1=0x716};
+#else
+ enum {regionalOffset0=0x73c, regionalOffset1=0x79a};
+#endif
+    if (*(int*)((char*)obj + regionalOffset0) == -1) {
         void* p4c = *(void**)((char*)obj + 0x4c);
         if (p4c != 0) {
             func_ov023_021dbd10((char*)obj + 0xcc, p4c);
@@ -25,23 +31,28 @@ extern "C" ARM int func_ov023_021e04e8(void* obj) {
     }
 
     int listPtr = (int)BackgroundLoader::GetInstance();
-    if (((BackgroundLoader*)(listPtr))->GetTaskStatus((int)(*(int*)((char*)obj + 0x73c)))) {
+    if (((BackgroundLoader*)(listPtr))->GetTaskStatus((int)(*(int*)((char*)obj + regionalOffset0)))) {
         int out1, out2;
-        ((BackgroundLoader*)((struct List0202fec8*)listPtr))->GetLoadedFileByID((int)(*(int*)((char*)obj + 0x73c)), (void**)(&out1), (unsigned int*)(&out2));
+        ((BackgroundLoader*)((struct List0202fec8*)listPtr))->GetLoadedFileByID((int)(*(int*)((char*)obj + regionalOffset0)), (void**)(&out1), (unsigned int*)(&out2));
 
+#if defined(jpn)
+        {
+#else
         if (out1 != 0 && out2 != 0) {
+#endif
+
             _ZN13SafeAllocator5ResetEv(obj);
             func_ov023_021e20f0((char*)obj + 0xcc, obj, out1, out2);
         }
 
-        ((BackgroundLoader*)(listPtr))->RemoveTask((int)(*(int*)((char*)obj + 0x73c)));
-        *(int*)((char*)obj + 0x73c) = -1;
+        ((BackgroundLoader*)(listPtr))->RemoveTask((int)(*(int*)((char*)obj + regionalOffset0)));
+        *(int*)((char*)obj + regionalOffset0) = -1;
 
         void* p4c2 = *(void**)((char*)obj + 0x4c);
         if (p4c2 != 0) {
             func_ov023_021dbd10((char*)obj + 0xcc, p4c2);
             int cond = ((struct StructField8Nibble04e8*)*(void**)((char*)obj + 0x4c))->nibble <= 7;
-            *(unsigned char*)((char*)obj + 0x79a) = cond != 0;
+            *(unsigned char*)((char*)obj + regionalOffset1) = cond != 0;
         }
 
         return 7;

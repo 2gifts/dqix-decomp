@@ -1,4 +1,7 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define func_ov003_0217dc40 func_ov003_0217c8e0
+#endif
 #include "GameState/GameState.h"
 
 void SetByteField0x253(void* obj);

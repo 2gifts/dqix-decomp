@@ -1,3 +1,11 @@
+#if defined(jpn)
+#define REGION(j,u) (j)
+#define data_ov020_0218d95c data_ov020_0218e1ac
+#define data_ov020_0218d968 data_ov020_0218e1b8
+#define data_ov020_0218dc9d data_ov020_0218e55b
+#else
+#define REGION(j,u) (u)
+#endif
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
 
@@ -52,7 +60,7 @@ extern "C" void _ZN16BackgroundLoader14RemoveAllLocksEv(struct Obj0202fa00* obj)
 
 extern "C" void ColorEffect_ConfigureAlphaBlend(unsigned int* out, unsigned char a, unsigned char b, unsigned char c, int d);
 
-void EncodeSignFlaggedHalfword(short* out, int value);
+extern "C" void _Z25EncodeSignFlaggedHalfwordPsi(short* out, int value);
 
 extern int data_ov020_0218d95c;
 extern int data_ov020_0218d968;
@@ -63,10 +71,10 @@ struct ThreeInts_0218c98c {
 };
 
 struct SelfLayout_0218c98c {
-    char pad0[0x4b8];
+    char pad0[REGION(0x448, 0x4b8)];
     unsigned char bits1_lo : 4;
     unsigned char bits1_hi : 4;
-    char pad1[0x4d8 - 0x4b9];
+    char pad1[REGION(0x468, 0x4d8) - REGION(0x449, 0x4b9)];
     unsigned char bits2_lo : 4;
     unsigned char bits2_hi : 4;
 };
@@ -75,30 +83,30 @@ struct SelfLayout_0218c98c {
 extern "C" ARM void func_ov020_0218c98c(void* self) {
     char* base = (char*)self;
 
-    ((SafeAllocator*)(base + 0x470))->Reset();
+    ((SafeAllocator*)(base + REGION(0x400, 0x470)))->Reset();
     MapVRAMBanksToMainBG(8);
     func_ov020_0218c7bc(0, 1, 1, 1, 0);
 
-    _Z17ResetList0204af64P12List0204af64((struct List0204af64*)(base + 0x49c));
-    SetWord0x18ClearByte0x1f((unsigned char*)(base + 0x49c), 0);
+    _Z17ResetList0204af64P12List0204af64((struct List0204af64*)(base + REGION(0x42c, 0x49c)));
+    SetWord0x18ClearByte0x1f((unsigned char*)(base + REGION(0x42c, 0x49c)), 0);
     ((struct SelfLayout_0218c98c*)self)->bits1_lo = 0;
     ((struct SelfLayout_0218c98c*)self)->bits1_hi = 1;
-    func_0204b5b4(base + 0x49c, 1);
-    _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator((struct AllocTarget0204b12c*)(base + 0x49c), (SafeAllocator*)(base + 0x470));
-    _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator((struct Foo0204af38*)(base + 0x49c), 1, (SafeAllocator*)(base + 0x470));
-    _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((struct Obj0204b5e8*)(base + 0x49c), 0, 0);
+    func_0204b5b4(base + REGION(0x42c, 0x49c), 1);
+    _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator((struct AllocTarget0204b12c*)(base + REGION(0x42c, 0x49c)), (SafeAllocator*)(base + REGION(0x400, 0x470)));
+    _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator((struct Foo0204af38*)(base + REGION(0x42c, 0x49c)), 1, (SafeAllocator*)(base + REGION(0x400, 0x470)));
+    _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((struct Obj0204b5e8*)(base + REGION(0x42c, 0x49c)), 0, 0);
 
     MapVRAMBanksToSubBG(4);
     func_ov020_0218cd64(0, 1, 1, 1, 0);
 
-    _Z17ResetList0204af64P12List0204af64((struct List0204af64*)(base + 0x4bc));
-    SetWord0x18ClearByte0x1f((unsigned char*)(base + 0x4bc), 0);
+    _Z17ResetList0204af64P12List0204af64((struct List0204af64*)(base + REGION(0x44c, 0x4bc)));
+    SetWord0x18ClearByte0x1f((unsigned char*)(base + REGION(0x44c, 0x4bc)), 0);
     ((struct SelfLayout_0218c98c*)self)->bits2_lo = 1;
     ((struct SelfLayout_0218c98c*)self)->bits2_hi = 0;
-    func_0204b5b4(base + 0x4bc, 0);
-    _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator((struct AllocTarget0204b12c*)(base + 0x4bc), (SafeAllocator*)(base + 0x470));
-    _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator((struct Foo0204af38*)(base + 0x4bc), 1, (SafeAllocator*)(base + 0x470));
-    _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((struct Obj0204b5e8*)(base + 0x4bc), 0, 0);
+    func_0204b5b4(base + REGION(0x44c, 0x4bc), 0);
+    _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator((struct AllocTarget0204b12c*)(base + REGION(0x44c, 0x4bc)), (SafeAllocator*)(base + REGION(0x400, 0x470)));
+    _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator((struct Foo0204af38*)(base + REGION(0x44c, 0x4bc)), 1, (SafeAllocator*)(base + REGION(0x400, 0x470)));
+    _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((struct Obj0204b5e8*)(base + REGION(0x44c, 0x4bc)), 0, 0);
 
     int handle;
     int data4 = _ZN16BackgroundLoader11GetInstanceEv();
@@ -123,21 +131,21 @@ extern "C" ARM void func_ov020_0218c98c(void* self) {
             int idxB = 0;
             for (int j = 0; j < count; j++) {
                 if (j == ((int*)&tbl_d95c)[idxA]) {
-                    func_0204b174((struct Foo0204af38*)(base + 0x9c + 0x400), arrayC[j], (SafeAllocator*)(base + 0x470), arrayB[j]);
+                    func_0204b174((struct Foo0204af38*)(base + REGION(0x2c, 0x9c) + 0x400), arrayC[j], (SafeAllocator*)(base + REGION(0x400, 0x470)), arrayB[j]);
                     idxA++;
                 }
                 if (j == ((int*)&tbl_d968)[idxB]) {
-                    func_0204b174((struct Foo0204af38*)(base + 0xbc + 0x400), arrayC[j], (SafeAllocator*)(base + 0x470), arrayB[j]);
+                    func_0204b174((struct Foo0204af38*)(base + REGION(0x4c, 0xbc) + 0x400), arrayC[j], (SafeAllocator*)(base + REGION(0x400, 0x470)), arrayB[j]);
                     idxB++;
                 }
             }
 
             _ZN16BackgroundLoader10RemoveTaskEi(data4, handle);
 
-            _Z21DispatchEntry0204b8d0P11Obj0204b8d0jiisssst((struct Obj0204b8d0*)(base + 0x49c), 0, 0, 0, 0, 0, 0x20, 0x19, 0);
-            _Z21DispatchEntry0204b8d0P11Obj0204b8d0jiisssst((struct Obj0204b8d0*)(base + 0x4bc), 0, 0, 0, 0, 0, 0x20, 0x19, 0);
-            _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv((struct List0204b0e8*)(base + 0x49c), 0);
-            _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv((struct List0204b0e8*)(base + 0x4bc), 0);
+            _Z21DispatchEntry0204b8d0P11Obj0204b8d0jiisssst((struct Obj0204b8d0*)(base + REGION(0x42c, 0x49c)), 0, 0, 0, 0, 0, 0x20, 0x19, 0);
+            _Z21DispatchEntry0204b8d0P11Obj0204b8d0jiisssst((struct Obj0204b8d0*)(base + REGION(0x44c, 0x4bc)), 0, 0, 0, 0, 0, 0x20, 0x19, 0);
+            _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv((struct List0204b0e8*)(base + REGION(0x42c, 0x49c)), 0);
+            _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv((struct List0204b0e8*)(base + REGION(0x44c, 0x4bc)), 0);
             break;
         }
         _ZN16BackgroundLoader14RemoveAllLocksEv((struct Obj0202fa00*)data4);
@@ -150,6 +158,6 @@ extern "C" ARM void func_ov020_0218c98c(void* self) {
 
     *(unsigned int*)0x4000000 = (*(unsigned int*)0x4000000 & ~0x1f00) | 0x300;
     *(unsigned int*)0x4001000 = (*(unsigned int*)0x4001000 & ~0x1f00) | 0x100;
-    EncodeSignFlaggedHalfword((short*)0x400006c, 0);
-    EncodeSignFlaggedHalfword((short*)0x400106c, 0);
+    _Z25EncodeSignFlaggedHalfwordPsi((short*)0x400006c, 0);
+    _Z25EncodeSignFlaggedHalfwordPsi((short*)0x400106c, 0);
 }

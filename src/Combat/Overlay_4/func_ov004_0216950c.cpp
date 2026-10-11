@@ -1,7 +1,11 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
+#if defined(jpn)
+extern "C" void* func_ov004_02168f08(void* ctx, int value);
+#else
 extern "C" void* func_ov023_021f6524(void* ctx, int value);
+#endif
 extern "C" int func_ov023_021f9bc8(char* obj);
 struct Fields021695fc;
 void ResetFieldBlocks_021695fc(struct Fields021695fc* obj);
@@ -15,10 +19,18 @@ struct Node0216950c { char pad[0x5c]; short f5c; short f5e; };
 
 // USA: func_ov004_0216950c
 extern "C" ARM int func_ov004_0216950c(void* obj) {
+#if defined(jpn)
+    unsigned char* table = *(unsigned char**)((char*)data_ov004_02171030 + 0x10);
+#else
     unsigned char* table = *(unsigned char**)((char*)data_ov004_02171030 + 0x190);
+#endif
     if (!table) return 0;
 
+#if defined(jpn)
+    struct Node0216950c* node = (struct Node0216950c*)func_ov004_02168f08(obj, 0x64);
+#else
     struct Node0216950c* node = (struct Node0216950c*)func_ov023_021f6524(obj, 0x64);
+#endif
     short f5c = node->f5c;
     unsigned char *cur, *next;
     int idx = func_ov023_021f9bc8((char*)node) + f5c * 8;

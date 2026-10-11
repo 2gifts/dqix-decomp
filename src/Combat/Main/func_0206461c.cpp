@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define func_02095578 func_020971c8
+#define data_020f05dc data_020f0644
+#endif
 #include <GameState/GameState.h>
 #include <Filesystem/BackgroundLoader.h>
 #include <Filesystem/FileIO.h>
@@ -29,6 +33,7 @@ static inline SafeAllocator* GetAllocator0206461c(GameResources* resources, int 
     return &resources->allocator_array_38[index];
 }
 
+// JPN: func_02065908
 // USA: func_0206461c
 extern "C" ARM int func_0206461c(LoaderOwner0206461c* owner, Request0206461c* request) {
     GameState* state = GameState::GetInstance();

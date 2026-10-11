@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define REGION_OFFSET_0 0x7c8
+#else
+#define REGION_OFFSET_0 0x5d8
+#endif
+
 #include "GameState/GameState.h"
 
 extern "C" void* func_02057924(void* p);
@@ -9,7 +16,7 @@ int CollectEntriesMatchingField0xd802058680(char* base, int value, void** out, i
 ARM int CheckCombatantStatusOrTable_02162954(void* self) {
     GameState* bs = GameState::GetInstance();
     void* base = func_02057924(bs);
-    int idx = *(int*)((char*)self + 0x5000 + 0x5d8);
+    int idx = *(int*)((char*)self + 0x5000 + REGION_OFFSET_0);
     int localArray[12];
     int count = CollectMappedValuesFromNodeList02162908(self, idx, localArray);
     int i = 0;

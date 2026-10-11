@@ -14,6 +14,7 @@ extern "C" {
     void func_02076080(void* a, void* alloc, int p2, int p3);
 }
 
+// JPN: func_ov023_021fad48
 // USA: func_ov023_021fb9c4  (semantic: BuildAndInsertRange_021fb9c4)
 extern "C" ARM void func_ov023_021fb9c4(void* obj, void* ctx, int p2, int p3) {
     if (p2 == 0 || p3 == 0) return;

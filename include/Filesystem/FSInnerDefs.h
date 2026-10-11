@@ -7,9 +7,7 @@
 #include "System/ProcessorContext.h"
 
 #if defined(jpn)
-#define _Z21GetGlobalWord02112140v func_020d2c64
 
-#define data_02111304 data_02110fa4
 
 #define data_02111728 data_021113c8
 #define data_0211172c data_021113cc
@@ -17,7 +15,6 @@
 #define data_0211173c data_021113dc
 #define data_02111754 data_021113f4
 #define data_02111880 data_02111520
-#define data_021118e0 data_02111580
 #define data_02111f00 data_02111ba0
 #endif
 

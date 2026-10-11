@@ -1,8 +1,14 @@
+#if defined(jpn)
+#define R(j,u) (j)
+#define func_ov023_021dd4cc func_ov023_021ddcbc
+#else
+#define R(j,u) (u)
+#endif
 #include <globaldefs.h>
 
 struct EquipmentMenu {
-    char unk_0[0xee4];
-    char window_[0x3dbb - 0xee4];
+    char unk_0[R(0xee0, 0xee4)];
+    char window_[R(0x3d33 - 0xee0, 0x3dbb - 0xee4)];
     signed char slot_;
     char unk_3dbc[0x3dcc - 0x3dbc];
     unsigned int flags_;
@@ -14,12 +20,12 @@ struct EquipmentMenu {
 };
 
 struct MemberScreen {
-    char unk_0[0x634];
+    char unk_0[R(0x56c, 0x634)];
     unsigned short flags_;
 };
 
 struct MenuContext {
-    char unk_0[0x3708];
+    char unk_0[R(0x34f8, 0x3708)];
     int* unknown_ptr_3708;
 };
 

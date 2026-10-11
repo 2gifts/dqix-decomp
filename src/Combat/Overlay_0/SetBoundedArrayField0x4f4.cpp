@@ -1,6 +1,13 @@
 #include <globaldefs.h>
 
-struct SubObj02162c90 { char pad[0x4f4]; int val; };
+#if defined(jpn)
+#define REGION_OFFSET_0 0x6e8
+#else
+#define REGION_OFFSET_0 0x4f4
+#endif
+
+
+struct SubObj02162c90 { char pad[REGION_OFFSET_0]; int val; };
 
 // USA: func_ov000_02162c90
 ARM void SetBoundedArrayField0x4f4(char* base, int index, int value) {
