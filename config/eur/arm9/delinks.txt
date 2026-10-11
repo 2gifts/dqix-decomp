@@ -19419,3 +19419,7 @@ src/Combat/Main/func_0204b9b8.cpp:
 src/Combat/Main/func_02045d14.cpp:
     complete
     .text start:0x02045d24 end:0x02045f4c
+
+src/Combat/Main/02070b6c.cpp:
+    complete
+    .text start:0x02070b7c end:0x02070e70
