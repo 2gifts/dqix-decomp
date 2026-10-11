@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov023_021ed44c func_ov023_021ed394
+#endif
 #include "std_library_functions.h"
 
 extern "C" void func_ov023_021ed254(void* obj, void* buf);

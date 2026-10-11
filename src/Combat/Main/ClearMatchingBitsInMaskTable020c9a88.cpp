@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_020c9a88 func_020cb554
+#endif
+
 #pragma optimize_for_size off
 unsigned int DisableIRQInterrupts(void);
 void SetIRQInterruptState(int state);

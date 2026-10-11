@@ -1,6 +1,10 @@
 #include "Filesystem/BackgroundLoader.h"
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_02022bb0 func_02022644
+#endif
+
 void ReleaseHandle02022b90(void *owner, int *handle);
 
 struct CleanupReceiver02022bb0 {

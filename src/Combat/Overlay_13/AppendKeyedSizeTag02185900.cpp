@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov013_02185900 func_ov013_02186aec
+#endif
+
 int AppendSizeTag(char* dst, int size);
 struct Container020e0310;
 int GetFieldByKey020e0434(struct Container020e0310* c, int key);

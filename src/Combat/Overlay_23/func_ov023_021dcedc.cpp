@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov023_021dcedc func_ov023_021dd7e0
+#endif
 #include "System/Cache.h"
 #include "System/LoadToVRAM.h"
 

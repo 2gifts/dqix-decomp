@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov023_021dca88 func_ov023_021dd398
+#endif
+
 void ResetIfNonNeg_021db2e4(volatile int* p);
 
 // USA: func_ov023_021dca88  (semantic: ResetPendingSlotsIfActive_021dca88)

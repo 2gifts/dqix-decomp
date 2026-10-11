@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov013_02186160 func_ov013_02187178
+#endif
+
 extern "C" void* __clear(void* dst, int count);
 struct Obj0205dee8;
 void SetFieldB0AndUpdate0205dee8(struct Obj0205dee8* obj, int val);

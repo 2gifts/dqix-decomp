@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov005_0215aa44 func_ov005_0215bf64
+#endif
+
 #define GXFIFO_MATRIX_PUSH (*(volatile unsigned int*)0x04000444)
 #define GXFIFO_MATRIX_POP (*(volatile unsigned int*)0x04000448)
 #define GXFIFO_MATRIX_TRANSLATE (*(volatile unsigned int*)0x04000470)

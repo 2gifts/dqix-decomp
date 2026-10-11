@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov023_021e3084 func_ov023_021e33dc
+#endif
 #include "GameState/GameState.h"
 
 int GetField4340_021bdbe4(unsigned char* base);

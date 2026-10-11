@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov005_021585fc func_ov005_02159bf4
+#endif
+
 struct EquipmentMenu {
     char unk_0[0x3daa];
     unsigned char pageStep_;

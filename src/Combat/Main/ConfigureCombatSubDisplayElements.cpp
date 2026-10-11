@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_020e0f74 func_020e2b6c
+#endif
+
 #include "GameState/GameState.h"
 #include "System/Graphics.h"
 

@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov014_02185c90 func_ov014_02186d00
+#endif
+
 struct Loader;
 struct Ent {
     char pad[0x16];

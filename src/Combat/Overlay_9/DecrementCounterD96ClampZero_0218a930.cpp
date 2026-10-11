@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov009_0218a930 func_ov009_0218b908
+#endif
+
 // USA: func_ov009_0218a930  (semantic: DecrementCounterD96ClampZero_0218a930)
 extern "C" ARM int func_ov009_0218a930(char* self, int amount) {
     short v = *(short*)(self + 0xd96);

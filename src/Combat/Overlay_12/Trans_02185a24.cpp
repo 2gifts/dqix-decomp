@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov012_02185a24 func_ov012_02186084
+#endif
+
 extern "C" unsigned int _Z28CallFunc0204b04cOverList0x98P12Cont0205d274(unsigned int);
 extern "C" unsigned int _Z28CallFunc0204c8f0OverList0x9cP12Cont0205d228(unsigned int);
 extern "C" unsigned int _Z32ClearBuffers0204b010OverList0x98P12Cont0205d1e0(unsigned int);

@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov013_021864f0 func_ov013_02187820
+#endif
+
 int GetGlobalField0x1c020421a0();
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
 int CheckByteSetAndByteClear(unsigned char* obj);

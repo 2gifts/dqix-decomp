@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_02045f3c func_02046c78
+#endif
+
 int GetGlobalField0x1c020421a0();
 extern "C" void func_02045f3c(void*, void*, int, int, int, int, int, int, int, int);
 

@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov003_0216da90 func_ov003_0216d478
+#endif
 #include "GameState/GameState.h"
 
 struct Struct0205de24;

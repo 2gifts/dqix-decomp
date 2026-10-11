@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov004_02159bcc func_ov004_0215ac28
+#endif
 #include "Memory/SafeAllocator.h"
 
 struct Struct021707d8_02159bcc { char pad[8]; char* ptr; };

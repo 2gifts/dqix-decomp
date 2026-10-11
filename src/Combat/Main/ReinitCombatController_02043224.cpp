@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_02043224 func_02043998
+#endif
+
 struct State0204166c;
 void Forward020416c0(struct State0204166c* s);
 

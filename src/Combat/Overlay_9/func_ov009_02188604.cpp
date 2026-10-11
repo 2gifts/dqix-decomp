@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov009_02188604 func_ov009_021893c4
+#endif
+
 struct Vector3fix {
     int x;
     int y;

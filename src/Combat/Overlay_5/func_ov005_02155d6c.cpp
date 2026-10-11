@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov005_02155d6c func_ov005_0215735c
+#endif
 #include "World/ZoneLootableRecord.h"
 #include <Memory/SafeAllocator.h>
 #include <std_library_functions.h>

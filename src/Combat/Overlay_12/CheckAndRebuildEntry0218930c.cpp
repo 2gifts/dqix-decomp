@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov012_0218930c func_ov012_02189be8
+#endif
+
 struct Struct0205d888;
 void* GetLastEntry0205d888(struct Struct0205d888* p);
 struct Entry_0205d6a0;

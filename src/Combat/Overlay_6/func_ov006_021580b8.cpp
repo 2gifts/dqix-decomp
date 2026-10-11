@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov006_021580b8 func_ov006_02159668
+#endif
+
 struct Obj2081;
 struct SetFieldsAndCall02158054Struct;
 struct Obj0204b010;

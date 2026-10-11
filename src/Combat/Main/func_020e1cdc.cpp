@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_020e1cdc func_020e38d4
+#endif
 struct Panel020e1cdc { char pad[0x38]; unsigned char x, y, width, height; };
 struct Object020e1cdc { const void* staging; Panel020e1cdc* panel; unsigned char count; };
 int CallFunc020e0434With02153694(int);

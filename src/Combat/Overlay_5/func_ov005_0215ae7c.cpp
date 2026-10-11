@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov005_0215ae7c func_ov005_0215c33c
+#endif
+
 struct MessageSystem;
 struct Field150Holder02052e14;
 struct Container020dedd0;

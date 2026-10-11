@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov013_02185990 func_ov013_02186b88
+#endif
+
 struct Struct_0205ba68;
 void SetupPointerTable0205ba68(struct Struct_0205ba68* s, int a, int b, int mode);
 

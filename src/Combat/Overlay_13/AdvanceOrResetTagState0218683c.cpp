@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov013_0218683c func_ov013_02187b68
+#endif
+
 void InitTag02185aac(unsigned char* obj);
 struct Obj0205dee8;
 void SetFieldB0AndUpdate0205dee8(struct Obj0205dee8* obj, int val);

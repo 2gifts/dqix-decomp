@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov005_0215a418 func_ov005_0215b96c
+#endif
+
 struct Mtx43_02030d84 { unsigned int v[12]; };
 extern "C" void _Z15RotationMatrixYi(Mtx43_02030d84* dst, int angle);
 extern "C" void _Z16IssueCommand0x19i(int cmd);

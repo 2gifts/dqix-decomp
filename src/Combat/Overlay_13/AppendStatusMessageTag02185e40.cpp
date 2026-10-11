@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov013_02185e40 func_ov013_02186f4c
+#endif
 #include "GameState/GameState.h"
 
 extern "C" void __clear(void* buf, int n);

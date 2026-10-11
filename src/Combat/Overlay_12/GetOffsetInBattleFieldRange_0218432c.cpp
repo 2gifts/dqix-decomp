@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov012_0218432c func_ov012_021853a0
+#endif
 #include "GameState/GameState.h"
 
 struct FieldValueB0218432c {

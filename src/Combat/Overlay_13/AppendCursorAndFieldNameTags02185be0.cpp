@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov013_02185be0 func_ov013_02186db0
+#endif
+
 struct Container020e0310;
 int AppendFrameTag02041c08(char* dst, int a1, int a2, int a3, int a4, int a5);
 int AppendCursorTag(char* dst, int cursor);

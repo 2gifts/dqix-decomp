@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_020c0c3c func_020c2708
+#endif
+
 struct HashDesc020c0c3c {
     unsigned int words[7];
 };

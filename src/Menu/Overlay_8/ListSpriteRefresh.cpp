@@ -1,3 +1,7 @@
+#if defined(jpn)
+#define func_ov008_02188730 func_ov008_02189444
+#endif
+
 struct Overlay8SpriteEntry {
     unsigned char unknown00[0x14];
     int x, y;

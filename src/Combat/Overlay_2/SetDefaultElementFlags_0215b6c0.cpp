@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov002_0215b6c0 func_ov002_0215c914
+#endif
+
 extern "C" void func_ov002_0215b9a4(unsigned char* obj, int key, int flag);
 
 // USA: func_ov002_0215b6c0  (semantic: SetDefaultElementFlags_0215b6c0)

@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov003_0217dc40 func_ov003_0217c8e0
+#endif
 #include "Filesystem/BackgroundLoader.h"
 
 int GetGlobalField0x1c020421a0(void);

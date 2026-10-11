@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov006_0215f3d8 func_ov006_021607f8
+#endif
+
 struct LookupByOffset0x362_021591ecStruct;
 extern "C" unsigned short _Z32LookupByOffset_021591ec_021591ecP34LookupByOffset0x362_021591ecStruct(LookupByOffset0x362_021591ecStruct* s);
 extern "C" short _Z26FindMappedMemberId02080468Pvi(void* obj, int id);

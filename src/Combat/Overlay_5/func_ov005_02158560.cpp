@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov005_02158560 func_ov005_02159b58
+#endif
+
 struct Obj0205eaa0;
 
 struct EquipmentMenu {

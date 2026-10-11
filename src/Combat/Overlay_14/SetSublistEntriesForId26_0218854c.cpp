@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov014_0218854c func_ov014_0218942c
+#endif
+
 struct StatusOwner02081164;
 
 void SetEntryHalfword0xe(void* obj, int id, int value);

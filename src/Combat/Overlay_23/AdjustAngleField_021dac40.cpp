@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov023_021dac40 func_ov023_021db4b4
+#endif
+
 extern "C" int _s32_div_f(int, int);
 extern "C" void ColorEffect_ConfigureBrightnessAdjust(unsigned short*, int, int);
 extern "C" void func_ov023_021dacd4(void*, int, int);

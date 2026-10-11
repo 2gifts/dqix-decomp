@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov006_02156e54 func_ov006_0215845c
+#endif
 #include "Filesystem/BackgroundLoader.h"
 
 extern "C" void* func_0203bd08();

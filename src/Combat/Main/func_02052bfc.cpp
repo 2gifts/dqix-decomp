@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_02052bfc func_02053fd8
+#endif
 #include "GameState/GameState.h"
 #include "System/Timing.h"
 #include "std_library_functions.h"

@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov012_0218a2b8 func_ov012_0218ad7c
+#endif
+
 struct EntryA68 {
     short key;
     void* value;

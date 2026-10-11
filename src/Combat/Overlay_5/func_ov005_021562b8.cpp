@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov005_021562b8 func_ov005_021578a8
+#endif
 #include "World/ZoneLootableRecord.h"
 #include <GameState/GameState.h>
 

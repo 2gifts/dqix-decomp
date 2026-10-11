@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov015_02191f04 func_ov015_02192a48
+#endif
+
 struct IndexList_0202a9ac;
 
 struct DebugMenu

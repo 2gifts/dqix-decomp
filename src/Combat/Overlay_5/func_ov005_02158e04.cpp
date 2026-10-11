@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov005_02158e04 func_ov005_0215a36c
+#endif
+
 struct MenuElement {
     char unk_0[0xc5];
     unsigned char flags_;

@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov006_02154fe4 func_ov006_02156730
+#endif
+
 extern "C" void func_ov023_021dfad8(char* obj);
 struct Cont0207fd88;
 void CallFunc0204b088OverList0x2c(Cont0207fd88* obj);

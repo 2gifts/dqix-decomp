@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov023_021fc408 func_ov023_021fb700
+#endif
+
 struct Obj021fc408 {
     char pad0[4];
     unsigned short kind;

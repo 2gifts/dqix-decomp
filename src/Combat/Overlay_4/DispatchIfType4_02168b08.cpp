@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov004_02168b08 func_ov004_02169040
+#endif
+
 extern "C" void* func_ov011_021849c8(void*);
 extern "C" void* func_ov023_021f6880(void*, int);
 int ScaleStatsIfType12_021f6f10(void* self);

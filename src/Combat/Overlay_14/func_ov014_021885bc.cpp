@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov014_021885bc func_ov014_0218948c
+#endif
+
 void ClearSublistEntriesFlag1(void* obj, int id);
 void ClearSublistEntriesFlag2(void* obj, int id);
 struct Container02080f8c;

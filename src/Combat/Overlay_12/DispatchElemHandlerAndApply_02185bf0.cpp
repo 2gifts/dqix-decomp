@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov012_02185bf0 func_ov012_02186248
+#endif
 #include "std_library_functions.h"
 
 struct Struct_0205d81c;

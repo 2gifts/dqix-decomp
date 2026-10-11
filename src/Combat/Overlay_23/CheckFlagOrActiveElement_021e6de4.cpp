@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov023_021e6de4 func_ov023_021e7148
+#endif
+
 struct Obj_0205da38;
 extern int IsActiveElementFlag2Set0205da38(struct Obj_0205da38*);
 typedef int (*Fn2_6de4)(void*, int);

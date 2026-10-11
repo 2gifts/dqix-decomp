@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov008_02188d74 func_ov008_02189a9c
+#endif
 #include "Memory/SafeAllocator.h"
 #include "Filesystem/BackgroundLoader.h"
 

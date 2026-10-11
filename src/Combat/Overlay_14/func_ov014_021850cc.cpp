@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov014_021850cc func_ov014_021861cc
+#endif
 #include <std_library_functions.h>
 #include "Filesystem/BackgroundLoader.h"
 #include "Filesystem/FileIO.h"

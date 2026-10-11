@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov009_02188454 func_ov009_02189214
+#endif
+
 struct Words021e60c4 { unsigned int a, b, c; };
 extern "C" void _Z22InitWordsQuad_021e60e0Pvj(void* obj, unsigned int val);
 extern "C" void func_ov023_021e613c(struct Words021e60c4* dst, char* src);

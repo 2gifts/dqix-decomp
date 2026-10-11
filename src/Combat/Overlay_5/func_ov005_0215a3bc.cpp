@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov005_0215a3bc func_ov005_0215b910
+#endif
+
 struct EquipmentMenu {
     char unknown_0[0x3dcc];
     unsigned int flags_;

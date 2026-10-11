@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov017_021a7dd8 func_ov017_021a8754
+#endif
 #include "Memory/SafeAllocator.h"
 #include "Memory/AllocatorUnion.h"
 

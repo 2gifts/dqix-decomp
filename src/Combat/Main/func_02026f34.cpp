@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_02026f34 func_02026898
+#endif
 #include "GameState/GameState.h"
 
 struct FlagWord02046708;

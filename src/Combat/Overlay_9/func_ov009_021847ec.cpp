@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov009_021847ec func_ov009_02185850
+#endif
 #include "std_library_functions.h"
 
 struct Entry0218aafc { char str[5]; };

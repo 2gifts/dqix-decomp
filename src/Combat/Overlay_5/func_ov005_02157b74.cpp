@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov005_02157b74 func_ov005_0215916c
+#endif
+
 struct GameState;
 
 struct ItemDef02157b74 {

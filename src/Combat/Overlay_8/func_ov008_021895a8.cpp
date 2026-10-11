@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov008_021895a8 func_ov008_0218a2b0
+#endif
 #include <std_library_functions.h>
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"

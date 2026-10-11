@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov005_0215a37c func_ov005_0215b8d0
+#endif
+
 extern "C" void* func_ov017_0218b5b0(void);
 int GetField1c_021a193c(int* obj);
 int SetShiftedFieldsAndCallTwice_021e3258(void* obj, int a, int b, int c, short d);

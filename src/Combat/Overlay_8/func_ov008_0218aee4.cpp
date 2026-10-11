@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov008_0218aee4 func_ov008_0218bb50
+#endif
+
 struct Elem_0205d81c {
     char pad0[0xa8];
     short width;

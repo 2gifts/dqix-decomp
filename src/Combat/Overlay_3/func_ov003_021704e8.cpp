@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov003_021704e8 func_ov003_0216fd3c
+#endif
+
 struct Container0205a3d0;
 struct Elem0205a3d0;
 struct Obj0216dee4;

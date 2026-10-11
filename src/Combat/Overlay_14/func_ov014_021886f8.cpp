@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov014_021886f8 func_ov014_021895c8
+#endif
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
 

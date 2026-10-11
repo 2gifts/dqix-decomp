@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov006_0215f740 func_ov006_02160b08
+#endif
+
 struct AlchemyPot;
 
 struct AlchemyMenu {

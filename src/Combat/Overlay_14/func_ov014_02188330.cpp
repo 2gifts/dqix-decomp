@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov014_02188330 func_ov014_02189234
+#endif
+
 struct MonsterListEntry {
     MonsterListEntry* next_;
     const char* modelName_;

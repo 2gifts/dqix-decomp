@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov015_0219050c func_ov015_021910b0
+#endif
 #include <std_library_functions.h>
 
 extern "C" void __clear(void* buffer, unsigned long size);

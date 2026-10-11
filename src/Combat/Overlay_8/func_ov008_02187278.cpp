@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov008_02187278 func_ov008_02188140
+#endif
 #include <Memory/SafeAllocator.h>
 
 struct PlayTime {

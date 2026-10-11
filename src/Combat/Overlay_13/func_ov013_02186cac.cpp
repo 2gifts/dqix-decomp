@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov013_02186cac func_ov013_02187fc0
+#endif
+
 #pragma opt_propagation off
 
 struct Struct_0205d81c;

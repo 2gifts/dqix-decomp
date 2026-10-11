@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov013_02186c64 func_ov013_02187f78
+#endif
+
 struct Struct_0205d81c;
 struct Elem_0205d81c;
 Elem_0205d81c* FindElementByC40205d81c(Struct_0205d81c*, int);

@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov012_021893b4 func_ov012_02189c90
+#endif
+
 struct Entry021893b4 {
     unsigned char key;
     unsigned char v1;

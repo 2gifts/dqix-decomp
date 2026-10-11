@@ -1,3 +1,7 @@
+#if defined(jpn)
+#define func_ov008_0218712c func_ov008_02188008
+#endif
+
 #include "std_library_functions.h"
 
 struct Overlay8Preparation {

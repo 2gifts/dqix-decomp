@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov005_0215a720 func_ov005_0215bc6c
+#endif
+
 struct EquipmentMenu {
     char unk_0[0xea4];
     char background1_[0x3dbc - 0xea4];

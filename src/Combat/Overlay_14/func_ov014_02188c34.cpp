@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov014_02188c34 func_ov014_02189a78
+#endif
 #include "Filesystem/BackgroundLoader.h"
 
 struct HandleState_02188d10;

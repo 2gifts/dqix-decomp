@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_020e0a78 func_020e26ac
+#endif
 #include "Memory/SafeAllocator.h"
 
 struct FlagWord02046708;

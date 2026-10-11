@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov006_021570fc func_ov006_02158704
+#endif
+
 extern "C" void func_ov023_021dd404(void* obj);
 extern "C" void func_ov023_021dd344(void* obj);
 extern "C" void _Z23ClearBg1Screen_021dcd78v(void* p);

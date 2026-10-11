@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov013_02185424 func_ov013_02186468
+#endif
+
 struct Container020e0310;
 int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 extern "C" void* __clear(void* dst, int count);

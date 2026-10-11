@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_020be2ec func_020bfdb8
+#endif
 #include "System/Memory.h"
 
 int GetListEntryWord8020bd8ac(unsigned int index);
