@@ -2,6 +2,10 @@
 #include <System/Matrix.h>
 #include <Graphics/NSBXX/RenderConfig.h>
 
+#if defined(jpn)
+#define func_0208b610 func_0208bf04
+#endif
+
 extern "C" void _Z27ClearGlobalFlagBits02016d8cPv(void* rotation);
 extern "C" fix32_t _Z8fix32cosi(int x);
 extern "C" fix32_t _Z8fix32sini(int x);
