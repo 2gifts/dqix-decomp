@@ -26,7 +26,6 @@ struct Ctx02179cfc {
     unsigned int fieldRest : 28;
 };
 
-// JPN: func_ov003_02178b3c
 // USA: func_ov003_02179cfc  (semantic: SelectAndApplyEntry_02179cfc)
 extern "C" ARM void* func_ov003_02179cfc(char* base, int combatantId, struct Ctx02179cfc* fallback) {
     GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), combatantId);

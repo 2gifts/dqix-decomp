@@ -5,7 +5,6 @@ void TailForward02012da4(AllocatorUnion* alloc, void* data);
 extern int data_02114e20;
 extern int data_ov017_021d67e8[];
 
-// JPN: 021a164c
 // USA: func_ov017_021a0ba8
 ARM void DestroyAllocatorsFromTable_021a0ba8(char* obj) {
 	for (int i = 0; data_ov017_021d67e8[i] > -1; i++) {

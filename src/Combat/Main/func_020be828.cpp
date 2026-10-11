@@ -1,4 +1,3 @@
-// JPN: main:020c02f4
 extern "C" {
 void* _Z33AcquireOrEvictSlotAndLink020bc454P15SlotObj020bc454ii(void*,int,int);
 void* _Z27PopSlotFirstAndLink020bc5bciP12Node020bc5bc(int,void*);

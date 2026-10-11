@@ -12,7 +12,6 @@ extern "C" void func_ov017_0219230c(unsigned char* obj, int idx, int c);
 extern "C" void func_ov017_02192400(unsigned char* obj, int idx);
 extern "C" unsigned char* func_ov017_0219219c(unsigned char* obj, int idx);
 
-// JPN: func_ov017_02192888
 // USA: func_ov017_02191cc0
 extern "C" ARM void func_ov017_02191cc0(unsigned char* obj) {
 #if defined(jpn)

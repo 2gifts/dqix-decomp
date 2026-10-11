@@ -32,4 +32,3 @@ ARM void UpdateStatusTimer(unsigned char* base, unsigned int amount) {
     }
 }
 
-// JPN: 0x02066cdc

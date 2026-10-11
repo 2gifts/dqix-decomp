@@ -50,4 +50,3 @@ ARM void InitializeSubObjectsAndFields020289c4(struct BigRecord020289c4* obj) {
     Clear12Bytes020a8e88((char*)obj + SUBOBJECT_OFFSET(0x30c));
 }
 
-// JPN: 0x0202821c

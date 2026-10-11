@@ -124,7 +124,6 @@ extern "C" void func_020de968(int,char*);
 extern "C" void func_02045d88(void*,char*,int);
 extern "C" int func_020e052c(void*,void*,const char*,void*,short,unsigned char);
 #endif
-// JPN: func_ov023_021f2590
 // USA: func_ov023_021f2e6c
 extern "C" ARM int func_ov023_021f2e6c(char* self) {
 #if defined(jpn)

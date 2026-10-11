@@ -26,7 +26,6 @@ struct NibbleFieldStruct0219de70 {
 };
 
 // USA: func_ov017_0219de70
-// JPN: func_ov017_0219e960
 extern "C" ARM void func_ov017_0219de70(char* obj, void* unused, NibbleFieldStruct0219de70* src) {
 	int val = src->val;
 	int newState;

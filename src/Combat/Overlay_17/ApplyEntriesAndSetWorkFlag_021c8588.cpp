@@ -13,7 +13,6 @@ struct Word78Bits_021c8588 {
     unsigned int hi : 1;
 };
 
-// JPN: func_ov017_021c8a38
 // USA: func_ov017_021c8588  (semantic: ApplyEntriesAndSetWorkFlag_021c8588)
 extern "C" ARM void func_ov017_021c8588(int a, signed char* b, GameState* bs, char* d) {
 #if defined(jpn)

@@ -48,7 +48,6 @@ void func_ov000_0217c638(void*,int,int);
 }
 
 // USA: func_ov000_0217ce24
-// JPN: func_ov000_0217ce24
 extern "C" ARM void func_ov000_0217ce24(Root* self,int a,int b)
 {
     func_02012fe4();

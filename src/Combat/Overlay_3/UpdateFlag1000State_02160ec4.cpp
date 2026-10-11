@@ -14,7 +14,6 @@ extern "C" void _Z21BlankFunction02094b34v(int, int, int, int, int);
 int AlwaysTrue02094b4c(void);
 
 // USA: func_ov003_02160ec4  (semantic: UpdateFlag1000State_02160ec4)
-// JPN: func_ov003_02161020
 extern "C" ARM void func_ov003_02160ec4(void* p) {
     char* obj = (char*)p;
     if (!(*(int*)(obj + kRegionValue464_28C) & 0x1000)) return;

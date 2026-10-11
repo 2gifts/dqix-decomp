@@ -20,7 +20,6 @@ extern "C" void func_ov003_0215b6f0(char* base, char* dst, int flag);
 extern "C" void func_ov003_0215b964(void* self, void* p, int flag);
 extern "C" void func_ov003_0215be70(char* base, char* dst, int flag);
 
-// JPN: func_ov003_0215d334
 // USA: func_ov003_0215c01c
 extern "C" ARM void func_ov003_0215c01c(unsigned char* obj, int mode, int flag) {
     unsigned char* elem = (unsigned char*)FindElementByC40205d81c((struct Struct_0205d81c*)(obj + 0xf4), mode);

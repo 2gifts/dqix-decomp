@@ -31,7 +31,6 @@ int GetFieldAt0x150(unsigned char* obj);
 int EvalOrDispatch020de194(void* s);
 
 // USA: func_ov004_0215aaf0
-// JPN: func_ov004_0215baf8
 extern "C" ARM int func_ov004_0215aaf0(void* obj) {
     GameState* bs = GameState::GetInstance();
     struct Container020dedd0* node = func_ov004_02156fd4(obj, 5);

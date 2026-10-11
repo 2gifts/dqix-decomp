@@ -18,7 +18,6 @@ extern "C" void func_ov025_021eb05c(void* ctx, int val);
 struct Param021e8344 { char pad[0x10]; void* field0x10; };
 struct Inner021e8344 { char pad[0x49c]; unsigned char flag : 1; };
 
-// JPN: func_ov025_021e87e4
 // USA: func_ov025_021e8344  (semantic: FormatGenderTagAndDispatch_021e8344)
 extern "C" ARM int func_ov025_021e8344(void* unused0, struct Param021e8344* ctx) {
 #if defined(jpn)

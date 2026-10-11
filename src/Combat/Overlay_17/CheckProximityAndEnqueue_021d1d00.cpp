@@ -9,7 +9,6 @@ extern "C" unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f
 struct Vec3s32_020c3030 { int x; int y; int z; };
 void Something_021a6b9c(int unused0, unsigned char byteVal);
 
-// JPN: func_ov017_021d2184
 // USA: func_ov017_021d1d00  (semantic: CheckProximityAndEnqueue_021d1d00)
 extern "C" ARM void func_ov017_021d1d00(int unused0, int unused1, GameState* battleStruct, unsigned char* ov, struct SearchStruct0202c1a4* search) {
 #if defined(jpn)

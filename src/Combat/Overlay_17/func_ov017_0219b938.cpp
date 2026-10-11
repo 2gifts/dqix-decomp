@@ -52,7 +52,6 @@ struct Battle0219b938 {
     struct Entry020966a0* callbacks;
 };
 
-// JPN: func_ov017_0219c42c
 // USA: func_ov017_0219b938
 extern "C" ARM void func_ov017_0219b938(struct Battle0219b938* self) {
     struct ZoneStruct0219b938* zone = func_02012fe4();

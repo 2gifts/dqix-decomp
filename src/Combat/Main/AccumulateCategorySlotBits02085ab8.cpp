@@ -30,7 +30,6 @@ enum { CategoryFlagOffset = 0x860 };
 enum { CategoryFlagOffset = 0x8f8 };
 #endif
 
-// JPN: func_020863d8
 // USA: func_02085ab8
 ARM int AccumulateCategorySlotBits02085ab8(unsigned char* actor, struct Param2085ab8* p2) {
     GameState* bs = GameState::GetInstance();

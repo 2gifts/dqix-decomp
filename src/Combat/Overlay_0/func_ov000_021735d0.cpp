@@ -42,7 +42,6 @@ void func_ov000_0218099c(void*,int);void func_ov000_02180a64(void*);
 extern int data_ov000_02183ff0;extern int data_ov000_02184288[];
 
 // USA: func_ov000_021735d0
-// JPN: func_ov000_021735d0
 extern "C" ARM void func_ov000_021735d0(Root* self,int delta)
 {
     self->delta=delta;

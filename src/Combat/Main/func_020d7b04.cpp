@@ -58,7 +58,6 @@ struct Obj020d7b04 {
 };
 
 // USA: func_020d7b04
-// JPN: func_020d7b04
 extern "C" ARM void func_020d7b04(struct Obj020d7b04* obj) {
     char buf[0xc8];
     void* gs = _ZN9GameState11GetInstanceEv();

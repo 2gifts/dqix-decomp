@@ -36,7 +36,6 @@ extern "C" {
 }
 
 // USA: func_ov000_02171c04
-// JPN: func_ov000_021734b0
 extern "C" ARM void func_ov000_02171c04(BattleEquipmentList* list)
 {
     signed char partyIndex = list->partyIndex;

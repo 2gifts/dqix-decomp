@@ -51,7 +51,6 @@ BattleCamera* func_ov000_02160f14(BattleWork*);
 void func_ov000_0216d370(BattleCamera*, int, int, int);
 }
 
-// JPN: func_ov026_021dc278
 // USA: func_ov026_021dbba8
 extern "C" ARM void func_ov026_021dbba8(BattleWork* self) {
     GameState* gs = GameState::GetInstance();

@@ -18,7 +18,7 @@ struct Node0201b600 {
 };
 struct Obj0201b600 {
     unsigned char pad0[kNodeOffset];
-    struct Node0201b600* head;   // kNodeOffset
+    struct Node0201b600* head;
     unsigned char pad420[4];     // 0x420
     int f424;                    // 0x424
 };

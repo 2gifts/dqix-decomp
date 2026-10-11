@@ -1,4 +1,3 @@
-// JPN: func_ov031_02239488
 #include <globaldefs.h>
 #include "System/Interrupts.h"
 

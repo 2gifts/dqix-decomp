@@ -86,7 +86,6 @@ extern "C" void _Z16AppendNodeToTailP16TailList020469b4P16TailNode020469b4(TailL
 extern "C" void _Z25ClearFieldcIfSet_021b4760P11Obj021b4760(GrottoSlot* slot);
 extern "C" void func_02046a8c(TailList020469b4* list, GrottoSlot* node);
 
-// JPN: func_ov017_0219e780
 // USA: func_ov017_0219dc90
 extern "C" ARM void func_ov017_0219dc90(BattleOverlay0219dc90* self, int combatantIdx, int id, unsigned char kind, unsigned short value) {
     GameState* gs = GameState::GetInstance();

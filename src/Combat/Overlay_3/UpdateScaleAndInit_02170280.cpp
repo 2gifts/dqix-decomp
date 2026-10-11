@@ -10,7 +10,6 @@ struct Obj0205d2bc;
 void InitEntries0205d2bc(struct Obj0205d2bc*);
 
 // USA: func_ov003_02170280  (semantic: UpdateScaleAndInit_02170280)
-// JPN: func_ov003_0216fb18
 extern "C" ARM void func_ov003_02170280(void* obj) {
     unsigned char* o = (unsigned char*)obj;
     GameState* battleStruct;

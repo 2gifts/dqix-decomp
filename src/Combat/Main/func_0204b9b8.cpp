@@ -1,4 +1,3 @@
-// JPN: main:0204c7d8
 struct PaletteWindow { char pad[0x14]; volatile unsigned short (*rows)[32]; };
 extern "C" void func_0204b9b8(PaletteWindow* obj,int x,int y,int width,int height,unsigned palette) {
  volatile unsigned short (*rows)[32]=obj->rows;

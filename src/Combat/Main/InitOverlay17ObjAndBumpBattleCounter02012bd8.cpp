@@ -20,4 +20,3 @@ ARM void InitOverlay17ObjAndBumpBattleCounter02012bd8() {
     *(unsigned int*)((char*)&data_027e0000 + 0x3ff8) |= 1;
 }
 
-// JPN: 0x020129a0

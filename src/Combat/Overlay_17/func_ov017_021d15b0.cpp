@@ -46,7 +46,6 @@ struct Packet {
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
 extern "C" void func_ov017_021a99dc(void*, void*, int, int, int);
 
-// JPN: func_ov017_021d1a2c
 // USA: func_ov017_021d15b0
 extern "C" ARM void func_ov017_021d15b0(int sender, Packet* packet, PacketStore* store, PacketContext* context, SearchStruct0202c1a4* search) {
     void* handler = context->handler;

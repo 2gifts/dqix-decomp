@@ -11,7 +11,6 @@ struct RegionalState02094b44 {
 #endif
 
 // USA: func_02094b44
-// JPN: func_02095b40
 extern "C" ARM void* _Z19AlwaysFalse02094b44v(
 #if defined(jpn)
     RegionalState02094b44* self, int event

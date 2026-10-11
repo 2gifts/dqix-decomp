@@ -12,7 +12,6 @@ void UpdateChannelStateIfEligible02093f68(char* obj);
 extern "C" void func_ov003_02173b4c(void* obj);
 extern "C" void func_ov003_02173bd8(void* obj);
 
-// JPN: func_ov003_02173080
 // USA: func_ov003_02173ea8
 ARM void ProcessCombatState_02173ea8(unsigned char* obj) {
 	unsigned char f;

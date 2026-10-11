@@ -27,7 +27,6 @@ struct Flags69c_021e66ac {
     unsigned int bit31 : 1;
 };
 
-// JPN: func_ov023_021e6c24
 // USA: func_ov023_021e66ac  (semantic: BuildOrCopyKeyStringField_021e66ac)
 #if defined(jpn)
 #pragma opt_common_subs off

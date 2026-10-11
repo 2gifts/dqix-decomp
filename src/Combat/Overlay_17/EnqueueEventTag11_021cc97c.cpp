@@ -18,7 +18,6 @@ struct LocalEvt021cc97c {
     unsigned char arr[12];
 };
 
-// JPN: func_ov017_021cce24
 // USA: func_ov017_021cc97c
 ARM void EnqueueEventTag11_021cc97c(int id) {
     GameState* bs = GameState::GetInstance();

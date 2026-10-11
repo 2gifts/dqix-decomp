@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 
 // USA: func_020115e8
-// JPN: func_02011358
 ARM unsigned short GetHalfword0x63d8(void* obj) {
     unsigned char* base = (unsigned char*)obj;
 #if defined(jpn)

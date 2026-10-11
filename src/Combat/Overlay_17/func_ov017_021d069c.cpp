@@ -41,7 +41,6 @@ struct LocalBuf021d069c {
     unsigned short f10;
 };
 
-// JPN: func_ov017_021d0b4c
 // USA: func_ov017_021d069c
 extern "C" ARM void func_ov017_021d069c(int a0, struct ArgB021d069c* a1, int unused2, unsigned char* a3, struct SearchStruct0202c1a4* a4) {
 #if defined(jpn)

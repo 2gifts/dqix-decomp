@@ -29,7 +29,6 @@ struct ListEntry020bbf84 {
 };
 extern struct ListEntry020bbf84 data_0210f824[];
 
-// JPN: func_020bda50
 // USA: func_020bbf84
 #pragma optimize_for_size off
 ARM int AllocateAndRegisterEntry020bbf84(int index, struct Obj020bda58* obj, unsigned int size) {

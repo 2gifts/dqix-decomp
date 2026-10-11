@@ -8,7 +8,6 @@ enum { kRegion464 = 0x464 };
 extern "C" int func_ov003_02160cf8(void* obj);
 extern "C" int func_ov003_02160e34(void* obj);
 
-// JPN: func_ov003_02160e1c
 // USA: func_ov003_02160cc0
 ARM int DispatchByFlags464_02160cc0(char* obj) {
     int flags = *(int*)(obj + kRegion464);

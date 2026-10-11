@@ -16,7 +16,6 @@ extern "C" void func_ov003_02177dd4(void* obj);
 extern "C" void func_ov003_021769ec(void* obj);
 
 // USA: func_ov003_0217a14c
-// JPN: func_ov003_02178f7c
 extern "C" ARM void func_ov003_0217a14c(void* p) {
     char* obj = (char*)p;
     int flags = *(int*)(obj + kRegionValueFE4_F60);

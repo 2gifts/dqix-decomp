@@ -8,7 +8,6 @@ extern "C" void* func_0202ae18(void);
 void* GetPtrField0x2a04(GameState* battleStruct);
 extern "C" int func_ov023_021f44d0(void* obj);
 
-// JPN: func_ov023_021f4728
 // USA: func_ov023_021f5150
 extern "C" ARM int func_ov023_021f5150(void* p0, unsigned char* p1, int* p2, int* p3) {
 #if defined(jpn)

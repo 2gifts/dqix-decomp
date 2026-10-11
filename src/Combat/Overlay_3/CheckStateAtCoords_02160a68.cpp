@@ -33,15 +33,14 @@ extern unsigned char data_02114e54;
 
 struct Ctx02160a68 {
     char pad0[kRegionValue324_20C];
-    struct Obj2081* field324;      // kRegionValue324_20C
+    struct Obj2081* field324;
     char pad1[kRegionValue390_278 - kRegionValue328_210];
-    struct Outer020e28dc* ptr390;  // kRegionValue390_278
+    struct Outer020e28dc* ptr390;
     char pad2[kRegionValue488_2B0 - kRegionValue394_27C];
-    short key488;                  // kRegionValue488_2B0
+    short key488;
 };
 
 // USA: func_ov003_02160a68  (semantic: CheckStateAtCoords_02160a68)
-// JPN: func_ov003_02160bc4
 extern "C" ARM int func_ov003_02160a68(struct Ctx02160a68* self) {
     int flag = 0;
     unsigned char* battleWord = (unsigned char*)GetWord0x0((int*)GameState::GetInstance());

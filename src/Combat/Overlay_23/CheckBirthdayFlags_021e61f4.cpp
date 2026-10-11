@@ -6,7 +6,6 @@ int CalculateAge(int birthYear, int birthMonth, int birthDay);
 struct DaysTable021e61f4 { int v[12]; };
 extern struct DaysTable021e61f4 data_ov023_021fd72c;
 
-// JPN: func_ov023_021e63d8
 // USA: func_ov023_021e61f4  (semantic: CheckBirthdayFlags_021e61f4)
 extern "C" ARM void func_ov023_021e61f4(void* obj) {
 #if defined(jpn)

@@ -164,7 +164,6 @@ static inline GXDispCnt GX_GetDispCnt(void) {
 }
 
 // USA: func_ov003_0217e6b0
-// JPN: func_ov003_0217d3b8
 extern "C" ARM void func_ov003_0217e6b0(SceneSwap0217e6b0* self) {
     GameState* gs = GameState::GetInstance();
     GameResources* res = func_ov017_0218b5b0();

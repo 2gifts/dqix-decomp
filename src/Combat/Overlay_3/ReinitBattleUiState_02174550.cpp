@@ -34,7 +34,6 @@ int GetInnerFlagBit0020e28dc(struct Outer020e28dc* o);
 void ResetSelectionState020e25e8(struct Obj020e25e8* obj);
 extern "C" void func_ov003_02175cb0(char* base, int flag);
 
-// JPN: func_ov003_02173690
 // USA: func_ov003_02174550  (semantic: ReinitBattleUiState_02174550)
 extern "C" ARM void func_ov003_02174550(char* base) {
     if (*(unsigned char*)(base + kRegion104e) != 0) return;

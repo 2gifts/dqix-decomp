@@ -16,7 +16,6 @@ extern struct Obj0205eaa0 data_02108760;
 extern unsigned char data_ov004_02171034[];
 
 // USA: func_ov004_0216d1c4
-// JPN: func_ov004_0216d77c
 extern "C" ARM int func_ov004_0216d1c4(void* a) {
     SetByte0x7f70(GameState::GetInstance(), 0);
 #if defined(jpn)

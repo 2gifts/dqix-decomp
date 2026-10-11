@@ -31,7 +31,6 @@ struct Bits0208e894 {
 };
 
 // USA: func_0208e894
-// JPN: func_0208e894
 extern "C" ARM int func_0208e894(char* v) {
     struct Bits0208e894* w;
     struct Entry02108ff4* tbl;

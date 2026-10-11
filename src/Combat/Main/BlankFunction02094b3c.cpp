@@ -11,7 +11,6 @@ extern "C" void _Z21BlankFunction02094b38v(RegionalState02094b3c*, int);
 #endif
 
 // USA: func_02094b3c
-// JPN: func_02095ac8
 extern "C" ARM void _Z21BlankFunction02094b3cv(
 #if defined(jpn)
     RegionalState02094b3c* self, int event

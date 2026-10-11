@@ -51,7 +51,6 @@ extern int data_020f1917;
 extern int data_020f192c;
 extern int data_020f18ec;
 
-// JPN: func_020a315c
 // USA: func_020a13e4
 ARM void SetupGlobalAndRunScript020a13e4(void* param0, void* param1, int param2, unsigned short param3, unsigned char param4) {
     if (param1 != 0) {

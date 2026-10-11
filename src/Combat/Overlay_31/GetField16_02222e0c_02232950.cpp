@@ -1,4 +1,3 @@
-// JPN: func_ov031_02233130
 #include <globaldefs.h>
 
 ARM int GetField16_02222e0c(void);

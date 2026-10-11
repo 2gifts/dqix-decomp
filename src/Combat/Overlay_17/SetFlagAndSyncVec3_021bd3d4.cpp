@@ -3,7 +3,6 @@
 
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 
-// JPN: func_ov017_021bd9cc
 // USA: func_ov017_021bd3d4
 ARM void SetFlagAndSyncVec3_021bd3d4(void* self, int index) {
 #if defined(jpn)

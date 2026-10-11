@@ -17,7 +17,6 @@ extern unsigned char data_ov004_02170b90;
 #define D02170b90 ((char*)&data_ov004_02170b90)
 
 // USA: func_ov004_02162c30
-// JPN: func_ov004_021632cc
 extern "C" ARM int func_ov004_02162c30(void* a) {
 #if defined(jpn)
     if (*(unsigned char*)(D021707e8 + 0xb) == 1) return 0;

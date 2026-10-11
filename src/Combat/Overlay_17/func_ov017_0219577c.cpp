@@ -57,7 +57,6 @@ struct Node0219577c {
     unsigned char field_282;
 };
 
-// JPN: func_ov017_02196344
 // USA: func_ov017_0219577c
 extern "C" ARM void func_ov017_0219577c(unsigned char mode, int resetField, int append) {
 #if defined(jpn)

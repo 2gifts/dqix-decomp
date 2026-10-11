@@ -29,7 +29,6 @@ void SetEntryPositionFromObject(struct WinObj020e28f0* obj, short a, short b);
 extern "C" void func_0205ae8c(void* obj);
 
 // USA: func_ov003_0215501c
-// JPN: func_ov003_02156704
 extern "C" ARM void func_ov003_0215501c(unsigned char* self) {
     if (*(void**)(self + 8) == NULL) {
         return;

@@ -29,7 +29,6 @@ struct Obj02167a5c {
 };
 
 // USA: func_ov003_02167a5c
-// JPN: func_ov003_02167934
 extern "C" ARM void func_ov003_02167a5c(struct Obj02167a5c* obj, int p1, int p2) {
     if (obj->f74 == 0 || obj->f10 == 0) return;
     if (obj->f70 == p1 && obj->f76 == p2) return;

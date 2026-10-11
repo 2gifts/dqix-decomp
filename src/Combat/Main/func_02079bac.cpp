@@ -24,7 +24,6 @@ typedef void (*ObjFn02079bac)(struct Header02079bac*);
 int GetLow12BitsTimes8(struct S02079ce8* p);
 
 // USA: func_02079bac
-// JPN: func_02079bac
 extern "C" ARM int func_02079bac(struct Header02079bac* obj, SafeAllocator* alloc, void* src, ElemFn02079bac cb, ObjFn02079bac cb2
 #if !defined(jpn)
     , SafeAllocator* alloc2

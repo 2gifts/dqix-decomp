@@ -25,7 +25,6 @@ struct List021600f8 { unsigned short kind; char p[7]; unsigned char count; };
 struct Entry { char p[0xe]; short id; char q[0xd]; unsigned char flag0:1, extra:1, rest:6; };
 Entry* GetNodeAtIndex021600f8(List021600f8*,int);
 // USA: func_ov000_0215b278
-// JPN: func_ov000_0215b278
 extern "C" ARM void func_ov000_0215b278(unsigned char* self,List021600f8* list) {
  if(list->kind!=0x20b) return;
  for(int i=0;i<list->count;i++) {

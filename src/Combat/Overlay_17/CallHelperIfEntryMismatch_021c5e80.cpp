@@ -14,7 +14,6 @@ struct Src021c5e80 {
 	unsigned short field6;
 };
 
-// JPN: func_ov017_021c6330
 // USA: func_ov017_021c5e80  (semantic: CallHelperIfEntryMismatch_021c5e80)
 extern "C" ARM void func_ov017_021c5e80(int unused0, Src021c5e80* src, int unused2, unsigned char* base, struct SearchStruct0202c1a4* search) {
 #if defined(jpn)

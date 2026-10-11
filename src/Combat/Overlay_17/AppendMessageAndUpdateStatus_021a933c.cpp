@@ -8,7 +8,6 @@ extern "C" void func_0204500c(void*, const char*, int, int);
 extern "C" void func_02045d88(void*, const char*, int);
 #endif
 
-// JPN: func_ov017_021a9b20
 // USA: func_ov017_021a933c  (semantic: AppendMessageAndUpdateStatus_021a933c)
 extern "C" ARM void func_ov017_021a933c(void* obj, int key) {
 #if defined(jpn)

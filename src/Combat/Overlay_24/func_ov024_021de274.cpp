@@ -45,7 +45,6 @@ static inline unsigned short GetMaxMP(GameObject* c) {
 extern "C" void _Z32AppendToChainAndIncCount0215fe84PvS_i(void*,void*,int);
 extern "C" void func_ov024_021e8bf0(Obj_021de274*,void*,unsigned short*);
 static inline int IsParty(int id){return id>=0 && id<=3;}
-// JPN: func_ov024_021deb20
 // USA: func_ov024_021de274
 extern "C" ARM OutStruct0215ccbc* func_ov024_021de274(Obj_021de274* obj,short sourceID,int id,Range_021de274* params,int amount,int unused,unsigned char enabled){
  GameObject* source;

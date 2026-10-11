@@ -1,4 +1,3 @@
-// JPN: func_ov031_02239340
 #include <globaldefs.h>
 
 extern unsigned short* data_ov031_02290d14;

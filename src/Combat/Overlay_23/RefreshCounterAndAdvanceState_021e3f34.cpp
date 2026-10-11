@@ -15,7 +15,6 @@ extern int data_02109bf4;
 
 struct Obj021e3f34 { char pad[regionalOffset0]; int field138; char pad2[regionalOffset1 - regionalOffset0 - 4]; unsigned char field4e4; };
 
-// JPN: func_ov023_021e4190
 // USA: func_ov023_021e3f34  (semantic: RefreshCounterAndAdvanceState_021e3f34)
 extern "C" ARM void func_ov023_021e3f34(struct Obj021e3f34* obj) {
     GameState* bs = GameState::GetInstance();

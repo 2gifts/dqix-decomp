@@ -21,7 +21,6 @@ extern unsigned short data_ov003_0217f494[9];
 extern unsigned short data_ov003_0217f4a6[9];
 
 // USA: func_ov003_021668fc
-// JPN: func_ov003_021667f8
 extern "C" ARM void func_ov003_021668fc(char* self) {
     if (*(short*)(self + kRegionValue480_2A8) < 0) return;
 

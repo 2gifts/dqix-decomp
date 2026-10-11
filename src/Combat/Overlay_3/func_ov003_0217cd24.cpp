@@ -37,7 +37,6 @@ struct Obj0217cd24 {
 };
 
 // USA: func_ov003_0217cd24
-// JPN: func_ov003_0217ba4c
 extern "C" ARM void func_ov003_0217cd24(void* objRaw, SafeAllocator* allocator) {
     if (allocator == 0) return;
     struct Obj0217cd24* obj = (struct Obj0217cd24*)objRaw;

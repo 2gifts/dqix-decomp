@@ -231,7 +231,6 @@ static inline float HalfDiffInt(int attack, unsigned short defense) {
     return ((float)attack - (float)defense / 2.0f) / 2.0f;
 }
 
-// JPN: func_ov024_021f7c44
 // USA: func_ov024_021f7478
 extern "C" ARM void func_ov024_021f7478(struct Obj_021f7478* obj) {
 #if defined(jpn)

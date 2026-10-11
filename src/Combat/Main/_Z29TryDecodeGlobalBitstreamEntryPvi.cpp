@@ -27,4 +27,3 @@ extern "C" ARM int _Z29TryDecodeGlobalBitstreamEntryPvi(int param0, int param1) 
     return 0;
 }
 
-// JPN: 0x020752a0

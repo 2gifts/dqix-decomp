@@ -39,7 +39,6 @@ extern "C" void func_ov017_021a28a8(unsigned char* obj);
 extern "C" void func_ov017_021913d0(unsigned char* obj, int count);
 extern "C" void _Z35EnqueueEventTag40IfNotBusy_021ce494v(void);
 
-// JPN: func_ov017_021a3a1c
 // USA: func_ov017_021a2fa0
 extern "C" ARM void func_ov017_021a2fa0(unsigned char* obj) {
 #if defined(jpn)

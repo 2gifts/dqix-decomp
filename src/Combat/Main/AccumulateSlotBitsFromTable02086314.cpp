@@ -23,4 +23,3 @@ ARM int AccumulateSlotBitsFromTable02086314(unsigned char* obj) {
     return total;
 }
 
-// JPN: 0x02086c34

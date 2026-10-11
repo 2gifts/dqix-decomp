@@ -18,7 +18,6 @@ struct Obj021eea98 {
     struct Table021eea98* table;
 };
 
-// JPN: func_ov023_021ee7fc
 // USA: func_ov023_021eea98
 ARM int GetTableEntry138_021eea98(struct Obj021eea98* o) {
     struct Table021eea98* t = o->table;

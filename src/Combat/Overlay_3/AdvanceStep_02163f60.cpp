@@ -15,7 +15,6 @@ extern "C" int func_ov003_02161344(void*);
 struct Struct4a3_02163f60 { char pad[kRegionValue4A3_2CB]; unsigned char code; unsigned char step; };
 
 // USA: func_ov003_02163f60  (semantic: AdvanceStep_02163f60)
-// JPN: func_ov003_02163f78
 #pragma optimize_for_size off
 extern "C" ARM void func_ov003_02163f60(Struct4a3_02163f60* obj) {
     if (obj->step == 0) {

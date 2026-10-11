@@ -10,7 +10,6 @@ float AccumulateSlotBits20To29AsTenths(char*);int AccumulateSlotBits02085c80(Act
 struct Random;int NextRandomMax(Random*,int);float NextRandomFloatBetween(Random*,float,float);
 #define IsParty(n) ((n)>=0&&(n)<=3?1:0)
 // USA: func_ov000_021573a8
-// JPN: func_ov000_021573a8
 extern "C" ARM int func_ov000_021573a8(Random* self,int id,int other,int amount){
  if(amount<=0)return 0;
  GameState* gs=GameState::GetInstance();

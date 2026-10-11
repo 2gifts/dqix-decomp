@@ -75,7 +75,6 @@ struct BattleScene_02173d40 {
     struct List020727d8 lists[3];
 };
 
-// JPN: func_ov003_02172f14
 // USA: func_ov003_02173d40
 extern "C" ARM void func_ov003_02173d40(BattleScene_02173d40* scene) {
     GameState* gs = GameState::GetInstance();

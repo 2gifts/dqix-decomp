@@ -10,7 +10,6 @@ extern "C" void func_ov017_021a55b0(void* self);
 
 extern int data_ov017_021d83ac;
 
-// JPN: func_ov017_021a63ac
 // USA: func_ov017_021a5974
 ARM void CheckStackAndFinalize_021a5974(char* self) {
 #if defined(jpn)

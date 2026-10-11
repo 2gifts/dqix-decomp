@@ -7,7 +7,6 @@ extern "C" void func_ov017_02190264(void* h, int i);
 void ClearCombatantSlot(GameState* battleStruct, int id);
 void* GetPtrField0x2a04(GameState* battleStruct);
 
-// JPN: func_ov017_02192068
 // USA: func_ov017_02191484  (semantic: ResetCombatantSlotsAndFlags_02191484)
 extern "C" ARM void func_ov017_02191484(unsigned char* obj) {
 #if defined(jpn)

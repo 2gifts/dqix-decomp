@@ -20,7 +20,6 @@ struct LocalEvt021c6b04 {
     signed char fieldB;
 };
 
-// JPN: func_ov017_021c6fb4
 // USA: func_ov017_021c6b04  (semantic: ApplyEventTagToSlot_021c6b04)
 extern "C" ARM void func_ov017_021c6b04(int unused0, LocalEvt021c6b04* evt, int unused2, unsigned char* base) {
 #if defined(jpn)

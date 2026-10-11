@@ -22,7 +22,6 @@ extern RegionalHandler02094b4c data_020f148c_dup[2];
 #endif
 
 // USA: func_02094b4c
-// JPN: func_02095b94
 extern "C" ARM int _Z18AlwaysTrue02094b4cv(
 #if defined(jpn)
     RegionalState02094b4c* self

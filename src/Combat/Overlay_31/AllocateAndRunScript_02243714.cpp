@@ -19,7 +19,6 @@ extern int data_ov031_02291e04;
 extern int data_ov031_0224c8dc;
 
 // USA: func_ov031_02243714
-// JPN: func_ov031_02243ef4
 extern "C" ARM int func_ov031_02243714(char* ctx) {
 	char local[0x430];
 	int out1, out2;

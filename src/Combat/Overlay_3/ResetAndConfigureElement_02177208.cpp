@@ -16,7 +16,6 @@ void SetEntryFirstField02080fa8(struct Container02080fa8* obj, int id, int value
 int SetEntryFlagById02080b2c(void* obj, int id);
 extern "C" void func_020813ec(void* obj, int key);
 
-// JPN: func_ov003_021761f0
 // USA: func_ov003_02177208  (semantic: ResetAndConfigureElement_02177208)
 extern "C" ARM void func_ov003_02177208(char* obj) {
     struct Obj2081* elemObj = *(struct Obj2081**)(obj + kRegion89c);

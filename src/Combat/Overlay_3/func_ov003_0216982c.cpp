@@ -55,7 +55,6 @@ void SetByteAtIndex(unsigned char* base, int index, unsigned char value);
 extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g, int h);
 #endif
 
-// JPN: func_ov003_02169654
 // USA: func_ov003_0216982c
 extern "C" ARM void func_ov003_0216982c(unsigned char* self) {
     GameState* battle = GameState::GetInstance();

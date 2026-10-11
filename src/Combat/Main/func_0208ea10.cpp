@@ -56,7 +56,6 @@ struct Entry0208ea10 {
 };
 
 // USA: func_0208ea10
-// JPN: func_0208ea10
 extern "C" ARM void func_0208ea10(void* p0, int a1) {
     char scriptFirst[0x430];
     char scriptLoop[0x430];

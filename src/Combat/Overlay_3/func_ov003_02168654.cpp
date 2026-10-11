@@ -51,7 +51,6 @@ extern char data_ov003_02180120[];
 extern char data_ov003_0217e8a0[];
 #endif
 
-// JPN: func_ov003_021684dc
 // USA: func_ov003_02168654
 extern "C" ARM void func_ov003_02168654(Scene68654* self) {
     if (self->stage==0) {

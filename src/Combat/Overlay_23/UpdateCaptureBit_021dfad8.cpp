@@ -10,7 +10,6 @@ extern "C" void func_ov023_021dfb4c(void*);
 #define FLAGS_OFFSET 0x774
 #endif
 
-// JPN: func_ov023_021e00ec
 // USA: func_ov023_021dfad8  (semantic: UpdateCaptureBit_021dfad8)
 extern "C" ARM void func_ov023_021dfad8(char* obj) {
     func_ov023_021dfb4c(obj);

@@ -14,7 +14,6 @@ enum { kRegion318 = 0x318 };
 void* GetElementAtIndex_02160bd0_02160bd0(void* unused, int index);
 extern "C" void func_ov003_02167a5c(void* p, int type, int val);
 
-// JPN: func_ov003_02161520
 // USA: func_ov003_02161438
 ARM void ApplyElementEffect02161438(void* obj) {
     char* p = (char*)obj + kRegion400;

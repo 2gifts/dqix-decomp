@@ -16,7 +16,6 @@ struct Src021ca358 {
 	unsigned char field6;
 };
 
-// JPN: func_ov017_021ca808
 // USA: func_ov017_021ca358
 ARM void CallHandlerEightTimesIfFieldsMatch_021ca358(int unused0, Src021ca358* src, int unused2, unsigned char* obj) {
 #if defined(jpn)

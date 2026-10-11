@@ -19,7 +19,6 @@ extern "C" unsigned int func_0207fe80(unsigned int, unsigned int, unsigned int, 
 extern "C" unsigned int func_ov003_0215501c(unsigned int);
 
 // USA: func_ov003_02154eec  (semantic: Trans_02154eec)
-// JPN: func_ov003_021565d4
 extern "C" ARM unsigned int func_ov003_02154eec(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
     int cc = 0;
     unsigned int r4 = 0;

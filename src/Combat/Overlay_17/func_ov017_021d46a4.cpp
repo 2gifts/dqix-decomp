@@ -67,7 +67,6 @@ extern "C" void func_0207964c(GameObject*);
 Src020795e8* FindNodeBySignedId(void*, int);
 extern "C" void _Z21CopyBitFields020795e8P11Dst020795e8P11Src020795e8(Dst020795e8*, Src020795e8*);
 
-// JPN: func_ov017_021d4af8
 // USA: func_ov017_021d46a4
 extern "C" ARM void func_ov017_021d46a4(void*, MonsterUpdate* update) {
     if (!(update->flags_ & 1)) return;

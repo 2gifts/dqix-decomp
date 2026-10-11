@@ -17,7 +17,6 @@ extern "C" void func_0204500c(void*, int, int, int);
 extern "C" void func_02045d88(void*, int, int);
 #endif
 
-// JPN: func_ov003_0217c994
 // USA: func_ov003_0217dd10
 ARM void SetupField0217dd10(char* obj, int key) {
     int g = GetGlobalField0x1c020421a0();

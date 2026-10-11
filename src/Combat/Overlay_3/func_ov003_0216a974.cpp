@@ -21,7 +21,6 @@ int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d, u
 extern "C" void func_ov003_02169a84(char* base, char* dst, int flag);
 extern "C" void func_ov003_02169d10(void* base, void* dst, int flag);
 
-// JPN: func_ov003_0216a588
 // USA: func_ov003_0216a974
 extern "C" ARM void func_ov003_0216a974(unsigned char* obj, int mode, int flag) {
     unsigned char* elem = (unsigned char*)FindElementByC40205d81c((struct Struct_0205d81c*)(obj + kRegione4), mode);

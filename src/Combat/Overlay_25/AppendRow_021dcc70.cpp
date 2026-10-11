@@ -15,7 +15,6 @@ extern void CopyFiveWordsAndByte_021dcd28(FiveWordsAndByte_021dcd28* dst, FiveWo
 #define ROW_FIELD(n) (n)
 #endif
 
-// JPN: 021dd564
 // USA: func_ov025_021dcc70
 ARM void AppendRow_021dcc70(char* obj, char* src) {
     unsigned char count = *(unsigned char*)(obj + ROW_COUNT);

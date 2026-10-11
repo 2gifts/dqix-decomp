@@ -59,7 +59,6 @@ struct Obj021fad84 {
 
 };
 
-// JPN: func_ov023_021fa168
 // USA: func_ov023_021fad84  (semantic: InitObjAndRegisterListEntryB_021fad84)
 extern "C" ARM int func_ov023_021fad84(struct Obj021fad84* obj, void* ctx, int arg3, int arg4, int arg5, int arg6) {
     func_ov023_021f6ed8(obj);

@@ -26,7 +26,6 @@ struct Entry021e4264 {
     unsigned char f26;
 };
 
-// JPN: func_ov023_021e4488
 // USA: func_ov023_021e4264
 extern "C" ARM void func_ov023_021e4264(Obj021e4264* obj) {
     short lo, hi;

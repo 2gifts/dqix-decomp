@@ -12,7 +12,6 @@ struct Obj021e4450 {
     unsigned char field9;
 };
 
-// JPN: func_ov025_021e4940
 // USA: func_ov025_021e4450  (semantic: AdvanceStateAndNotify_021e4450)
 extern "C" ARM int func_ov025_021e4450(struct Obj021e4450* self) {
 #if defined(jpn)

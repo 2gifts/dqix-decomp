@@ -12,7 +12,6 @@ int TestFlagMask(unsigned short* obj, int mask);
 extern unsigned char data_02114e54;
 extern unsigned short data_02114e30;
 
-// JPN: func_ov023_021e4860
 // USA: func_ov023_021e463c  (semantic: UpdateOrientationOrCombatFlags_021e463c)
 extern "C" ARM void func_ov023_021e463c(void* objRaw, unsigned int count) {
 #if defined(jpn)

@@ -45,7 +45,6 @@ extern "C" void _Z30ResetGlobalsAndReinit_0216d818Pc(char* obj);
 extern "C" void func_ov003_0216d84c(void* p);
 extern "C" int func_0205d0e0(void* p, unsigned int tick);
 
-// JPN: func_ov003_0216aab4
 // USA: func_ov003_0216af14
 extern "C" ARM int func_ov003_0216af14(Scene_0216af14* scene) {
     GameState* gs = GameState::GetInstance();

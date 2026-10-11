@@ -13,7 +13,6 @@ struct Param021e7248 {
     int f1c;
 };
 
-// JPN: func_ov025_021e76f8
 // USA: func_ov025_021e7248
 extern "C" ARM int func_ov025_021e7248(struct Param021e7248* p) {
 #if defined(jpn)

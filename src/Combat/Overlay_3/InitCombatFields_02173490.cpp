@@ -19,7 +19,6 @@ enum { kRegionef = 0xef };
 
 extern "C" int func_ov003_0217bdb8(void* p);
 
-// JPN: func_ov003_021722d8
 // USA: func_ov003_02173490
 ARM void InitCombatFields_02173490(unsigned char* obj) {
 	int ok = (func_ov003_0217bdb8(obj + kRegion1e0) != 0);

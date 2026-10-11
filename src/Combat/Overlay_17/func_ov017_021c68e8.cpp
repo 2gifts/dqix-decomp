@@ -47,7 +47,6 @@ struct Evt021c68e8 {
     signed char field12;
 };
 
-// JPN: func_ov017_021c6d98
 // USA: func_ov017_021c68e8
 extern "C" ARM void func_ov017_021c68e8(int unused0, Evt021c68e8* evt, GameState* battleStruct, unsigned char* base, struct SearchStruct0202c1a4* search) {
 #if defined(jpn)

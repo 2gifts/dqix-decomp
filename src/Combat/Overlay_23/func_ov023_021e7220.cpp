@@ -24,7 +24,6 @@ int GetField0x3acValue(GameState* battleStruct);
 struct ShortBytePair021e71a0;
 void ClearShortAndTwoBytes_021e71a0(struct ShortBytePair021e71a0* p);
 
-// JPN: func_ov023_021e747c
 // USA: func_ov023_021e7220  (semantic: InitBigCombatStruct_021e7220)
 extern "C" ARM void func_ov023_021e7220(void* obj, int val) {
 #if defined(jpn)

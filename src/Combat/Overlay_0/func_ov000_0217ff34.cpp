@@ -16,7 +16,6 @@ struct Details0217ff34 {
 };
 struct Unit0217ff34 { char p[0x138]; Details0217ff34* details; };
 // USA: func_ov000_0217ff34
-// JPN: func_ov000_0217ff34
 extern "C" ARM int func_ov000_0217ff34(void* self,int id,int* amount) {
     int result = -1;
     GameState* gs = GameState::GetInstance();

@@ -125,7 +125,6 @@ int GetField0x58(void* camera);
 extern "C" void _Z28SetAngleAndTrigTable0202e9a4P17AngleTrig0202e9a4i(AngleTrig0202e9a4* camera, int angle);
 void SetField0x238False(void* camera);
 
-// JPN: func_ov023_021fb810
 // USA: func_ov023_021fc518
 extern "C" ARM int func_ov023_021fc518(MenuCharacter_021fc518* self, void* ctx, int id, int heap, int parentTag, int character) {
     func_ov023_021f6ed8((ObjBase021f6ed8*)self);

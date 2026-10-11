@@ -1,4 +1,3 @@
-// JPN: main:020d14c0
 struct CalendarDate { int year, month, day, weekday; };
 #if defined(jpn)
 extern volatile int data_020f2408[];

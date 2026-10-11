@@ -18,7 +18,6 @@ void SetFieldB0AndUpdate0205dee8(struct Obj0205dee8* obj, int val);
 int StepStateMachine0215b7a4(void* p);
 
 // USA: func_ov003_02159c04
-// JPN: func_ov003_0215b084
 extern "C" ARM void func_ov003_02159c04(void* self) {
     unsigned char* s = (unsigned char*)self;
     unsigned char* g = (unsigned char*)_Z26GetGlobalField0x1c020421a0v();

@@ -21,7 +21,6 @@ extern void ResetList0204af64(struct List0204af64* obj);
 
 extern "C" void func_0204c684(void*);
 
-// JPN: func_ov017_0219a2ac
 // USA: func_ov017_021996fc
 ARM void InitFieldArenaListsAndCounters_021996fc(unsigned char* base) {
 #if defined(jpn)

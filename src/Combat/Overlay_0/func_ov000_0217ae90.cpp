@@ -50,7 +50,6 @@ void func_ov000_0217c32c(void*);void func_ov000_02171c04(void*);
 }
 
 // USA: func_ov000_0217ae90
-// JPN: func_ov000_0217ae90
 extern "C" ARM int func_ov000_0217ae90(Root* self)
 {
     Unit* unit=(Unit*)GetCombatantWithFlag0x100(GameState::GetInstance(),self->member);

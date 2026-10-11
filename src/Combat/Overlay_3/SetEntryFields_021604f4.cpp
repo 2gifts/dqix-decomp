@@ -17,7 +17,6 @@ struct Entry021604f4 {
 
 extern "C" void func_0205ac40(void* a, struct Entry021604f4* entry);
 
-// JPN: func_ov003_021606ac
 // USA: func_ov003_021604f4
 ARM void SetEntryFields_021604f4(char* obj, int valA, int valB, short index, unsigned char flag) {
     struct Entry021604f4* entry = (struct Entry021604f4*)(*(char**)(obj + kRegion388) + index * 0x28);

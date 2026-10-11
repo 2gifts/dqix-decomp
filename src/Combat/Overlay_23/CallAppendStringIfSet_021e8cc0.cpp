@@ -12,7 +12,6 @@ char* FindEntryByKey(TableA68*, int);
 int AppendXYTag(char*, int, int);
 #endif
 
-// JPN: func_ov023_021e8bc4
 // USA: func_ov023_021e8cc0
 ARM void CallAppendStringIfSet_021e8cc0(struct Container021e8cc0* obj) {
 #if defined(jpn)

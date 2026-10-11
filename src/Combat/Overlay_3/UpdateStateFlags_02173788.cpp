@@ -16,7 +16,6 @@ enum { kRegionca = 0xca };
 
 extern "C" void func_020a620c(void* obj);
 
-// JPN: func_ov003_021725d4
 // USA: func_ov003_02173788
 ARM void UpdateStateFlags_02173788(unsigned char* obj) {
     func_020a620c(obj + kRegiond8);

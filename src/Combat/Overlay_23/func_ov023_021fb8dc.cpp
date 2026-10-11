@@ -19,7 +19,6 @@ struct Obj021fb8dc {
     int field1c;
 };
 
-// JPN: func_ov023_021fac60
 // USA: func_ov023_021fb8dc
 extern "C" ARM void func_ov023_021fb8dc(struct Obj021fb8dc* obj, void* keyObj) {
     void* listPtr = (void*)(int)BackgroundLoader::GetInstance();

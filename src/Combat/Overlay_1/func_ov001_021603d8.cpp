@@ -56,7 +56,6 @@ extern Cache_021603d8 data_ov001_02164d14;
 extern int data_ov001_02164d24[];
 
 // USA: func_ov001_021603d8
-// JPN: func_ov001_021619ec
 extern "C" ARM int func_ov001_021603d8(void* obj) {
     Big_021603d8* big = (Big_021603d8*)func_02012fe4();
     DataStruct_021603d8* d = (DataStruct_021603d8*)LightingManager::GetInstance();

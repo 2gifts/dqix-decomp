@@ -25,7 +25,6 @@ extern const char data_ov023_021fec49[];
 extern const char data_ov023_021fec4e[];
 extern const char data_ov023_021fec53[];
 
-// JPN: func_ov023_021f9f2c
 // USA: func_ov023_021fab48  (semantic: LoadEntryFilesAndRegister_021fab48)
 extern "C" ARM void func_ov023_021fab48(void* obj, void* ctx, const void* narcBuffer, int flag4) {
 #if defined(jpn)

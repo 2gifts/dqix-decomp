@@ -46,7 +46,6 @@ enum { PositionContextOffset = 0x524 };
 enum { PositionContextOffset = 0x734 };
 #endif
 
-// JPN: func_020797b4
 // USA: func_02078898
 ARM int SyncCombatantPosition02078898(struct Entity02078898* p) {
     GameState* bs = GameState::GetInstance();

@@ -10,7 +10,6 @@ Slots02083960* GetFieldAt0x150(unsigned char*);
 int CountPositiveSlots02083960(Slots02083960*);
 
 // USA: func_02086d20
-// JPN: func_02087640
 ARM int SumSlotsWithFlag0x1000x150_02086d20(unsigned char* p) {
     short sum = 0;
     GameState* state = GameState::GetInstance();

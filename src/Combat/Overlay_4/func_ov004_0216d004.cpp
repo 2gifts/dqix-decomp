@@ -34,7 +34,6 @@ struct FieldGroup02171034 {
 extern struct FieldGroup02171034 data_ov004_02171034;
 
 // USA: func_ov004_0216d004
-// JPN: func_ov004_0216d5bc
 extern "C" ARM int func_ov004_0216d004(void* a) {
     char* g = (char*)GetGlobalField0x1c020421a0();
 #if defined(jpn)

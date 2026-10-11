@@ -12,7 +12,6 @@ enum { kRegionValue460_35C = 0x460 };
 extern "C" int func_02001aec(void* a, void* b, int n);
 
 // USA: func_ov003_021725a4  (semantic: CheckAllEntriesMatch_021725a4)
-// JPN: func_ov003_02171570
 extern "C" ARM int func_ov003_021725a4(void* obj, void* other) {
     int i;
     unsigned int field = *(unsigned int*)((char*)other + 0x6c);

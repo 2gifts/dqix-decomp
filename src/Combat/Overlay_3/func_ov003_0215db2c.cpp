@@ -50,7 +50,6 @@ static inline struct MenuCursor_0215db2c* GetCursor(struct MenuList_0215db2c* li
     return cursor;
 }
 
-// JPN: func_ov003_0215ee88
 // USA: func_ov003_0215db2c
 extern "C" ARM void func_ov003_0215db2c(char* self) {
     unsigned char mode = *(unsigned char*)(self + kRegion3ba);

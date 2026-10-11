@@ -19,7 +19,6 @@ struct LocalEvt021c949c {
     int field10;
 };
 
-// JPN: func_ov017_021c994c
 // USA: func_ov017_021c949c  (semantic: ApplyConditionalScaledVec3_021c949c)
 extern "C" ARM void func_ov017_021c949c(int unused0, LocalEvt021c949c* evt) {
 #if defined(jpn)

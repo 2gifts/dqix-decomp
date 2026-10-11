@@ -50,7 +50,6 @@ struct Flags79bByte_021dc134 {
     unsigned char rest : 6;
 };
 
-// JPN: func_ov023_021dca2c
 // USA: func_ov023_021dc134
 extern "C" ARM void func_ov023_021dc134(void* objRaw, short key, int flag) {
 #if defined(jpn)

@@ -26,7 +26,6 @@ struct Battle02195ecc {
     int nodeList;
 };
 
-// JPN: func_ov017_02196a94
 // USA: func_ov017_02195ecc
 extern "C" ARM void func_ov017_02195ecc(Battle02195ecc* self, unsigned int mode) {
     if (mode == 0) {

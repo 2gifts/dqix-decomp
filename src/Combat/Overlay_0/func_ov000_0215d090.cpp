@@ -5,7 +5,6 @@ void ResetEntry02157d14(Obj02157d14*);
 void ResetStruct02157cdc(void*);
 void InitStruct02160030(void*);
 // USA: func_ov000_0215d090
-// JPN: func_ov000_0215d090
 extern "C" ARM void func_ov000_0215d090(unsigned char* self) {
     self[0x8e00]=0; self[0x8e01]=0; self[0x8e02]=0; self[0x8e03]=0;
     self[0x8e82]=0;

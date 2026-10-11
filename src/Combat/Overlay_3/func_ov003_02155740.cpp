@@ -22,7 +22,6 @@ int CheckField0NonZero(int* obj);
 extern "C" void func_ov017_021c9e00(int id, int flagA, int flagB, int flagC);
 
 // USA: func_ov003_02155740  (semantic: RescaleCombatantSizeTarget_02155740)
-// JPN: func_ov003_02156dc4
 extern "C" ARM void func_ov003_02155740(char* obj) {
     GameState* battle = GameState::GetInstance();
     signed char idx = *(signed char*)(obj + kRegionValue1F7_1F3);

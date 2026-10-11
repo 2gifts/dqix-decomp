@@ -48,7 +48,6 @@ struct Dst_021b7104 {
     unsigned char f51;
 };
 
-// JPN: func_ov017_021b76b4
 // USA: func_ov017_021b7104
 extern "C" ARM void func_ov017_021b7104(Dst_021b7104* dst, Src_021b7104* src) {
     GameState* battle = GameState::GetInstance();

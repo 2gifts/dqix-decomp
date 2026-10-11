@@ -11,7 +11,6 @@ extern "C" int func_ov017_0218b5b0(void);
 extern "C" void* func_ov017_021b8478(void* obj);
 extern "C" void func_ov017_021b88d0(void* node, int a, unsigned short key);
 
-// JPN: func_ov017_021c5f3c
 // USA: func_ov017_021c5a8c  (semantic: NotifyEntryAndMaybeUpdateNode_021c5a8c)
 extern "C" ARM void func_ov017_021c5a8c(int a, int key) {
 #if defined(jpn)

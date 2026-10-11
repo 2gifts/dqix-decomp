@@ -29,7 +29,6 @@ char* FindEntryByKey(TableA68*, int);
 int AppendXYTag(char*, int, int);
 #endif
 
-// JPN: func_ov023_021e8c90
 // USA: func_ov023_021e8cdc
 extern "C" ARM void func_ov023_021e8cdc(char* obj) {
     int len;

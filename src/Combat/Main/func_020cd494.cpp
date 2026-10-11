@@ -1,4 +1,3 @@
-// JPN: main:020cef60
 struct DeferredNode { DeferredNode* next; void (*callback)(void*); void* argument; };
 struct AddressRange { unsigned unknown, base, length, extra; };
 extern DeferredNode* data_020f33b0;

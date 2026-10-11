@@ -75,7 +75,6 @@ struct Evt_021c4fa0 {
     struct Payload_021c4fa0 payload;
 };
 
-// JPN: func_ov017_021c546c
 // USA: func_ov017_021c4fa0
 extern "C" ARM void func_ov017_021c4fa0(int unitIdx, int id) {
     GameState* gs;

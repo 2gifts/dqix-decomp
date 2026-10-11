@@ -57,7 +57,6 @@ void SetBitInArray0x910(unsigned char* obj, int index);
 
 extern char data_020ef078[];
 
-// JPN: func_ov017_021920ec
 // USA: func_ov017_02191508
 extern "C" ARM void func_ov017_02191508(int id, Template02191508* tmpl) {
     Combatant02191508* combatant =

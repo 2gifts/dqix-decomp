@@ -69,7 +69,6 @@ int ListContainsId(ListHead02046b60* list, int id);
 extern "C" void _Z30SetFlagAndMaybeNotify_021ab010Pvi(void* obj, int flag);
 int IsField0Null(void** list);
 
-// JPN: func_ov017_021c610c
 // USA: func_ov017_021c5c5c
 extern "C" ARM int func_ov017_021c5c5c(int unused, int id) {
     GameState* gs = GameState::GetInstance();

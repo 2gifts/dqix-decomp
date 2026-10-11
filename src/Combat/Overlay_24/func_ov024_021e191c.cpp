@@ -16,7 +16,6 @@ struct Obj021e191c {char pad[0xc];Action021e191c* action;void* context;char pad1
 struct Code021e191c {unsigned int code:12;unsigned int rest:20;};
 struct Params021e191c {char pad[4];Code021e191c field4;};
 struct Stats021e191c {char pad[0x24];unsigned char stage;};
-// JPN: func_ov024_021e21b4
 // USA: func_ov024_021e191c
 extern "C" ARM void* func_ov024_021e191c(Obj021e191c* obj,int unused,int id,Params021e191c* params){
  GameObject* target=GetCombatantByID((int)obj->context,id);

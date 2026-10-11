@@ -18,7 +18,6 @@ extern struct ValueEntry_021e9018 data_ov024_021fe842[];
 extern struct KeyEntry_021e9018 data_ov024_021fe7c4[];
 extern struct ValueEntry_021e9018 data_ov024_021fe7c6[];
 
-// JPN: func_ov024_021e98b0
 // USA: func_ov024_021e9018
 extern "C" ARM int func_ov024_021e9018(struct Ctx_021e9018* ctx, int id, short kind, int mode) {
     if (mode != 0) {

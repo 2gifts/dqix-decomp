@@ -18,7 +18,6 @@ struct Obj_021bf534 {
     unsigned char state;
 };
 
-// JPN: func_ov017_021bfae0
 // USA: func_ov017_021bf534  (semantic: DispatchStateOrInitEncounter_021bf534)
 extern "C" ARM void func_ov017_021bf534(struct Obj_021bf534* obj) {
 #if defined(jpn)

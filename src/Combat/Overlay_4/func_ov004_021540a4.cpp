@@ -34,7 +34,6 @@ public:
 };
 
 // USA: func_ov004_021540a4
-// JPN: func_ov004_0215575c
 extern "C" ARM int func_ov004_021540a4(void* a) {
     short e0, e1, e2;
     func_ov004_02153978(a, &e0, &e1, &e2);

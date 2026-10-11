@@ -40,7 +40,6 @@ struct DispatchEntry_0217fe94 {
 extern struct DispatchEntry_0217fe94 data_ov003_0217fe94[];
 
 // USA: func_ov003_0215c924
-// JPN: func_ov003_0215dc40
 extern "C" ARM int func_ov003_0215c924(unsigned char* self, int amount) {
     if (self[kRegionValue3BC_3D4] == 5) {
         return 1;

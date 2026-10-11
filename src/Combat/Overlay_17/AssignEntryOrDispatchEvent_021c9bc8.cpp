@@ -14,7 +14,6 @@ void Foo0216377c(struct Struct0216377c* obj, unsigned char val);
 
 struct Arg021c9bc8 { char pad[4]; unsigned short f4; unsigned short f6; };
 
-// JPN: func_ov017_021ca078
 // USA: func_ov017_021c9bc8  (semantic: AssignEntryOrDispatchEvent_021c9bc8)
 extern "C" ARM void func_ov017_021c9bc8(char a0, struct Arg021c9bc8* a1, int a2, char* a3, void* a4) {
 #if defined(jpn)

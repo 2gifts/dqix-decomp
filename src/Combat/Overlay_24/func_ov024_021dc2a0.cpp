@@ -23,7 +23,6 @@ struct Params021dc2a0 {char pad[4];Code021dc2a0 code;char pad8[0x10];Field18_021
 struct Message021dc2a0 {unsigned short code;};
 struct Obj021dc2a0 {char pad[4];Message021dc2a0* message;char pad8[8];void* context;int count;};
 struct ActorStats021dc2a0 {char pad[0x188];unsigned short hp;unsigned short mp;};
-// JPN: func_ov024_021dcb4c
 // USA: func_ov024_021dc2a0
 extern "C" ARM void* func_ov024_021dc2a0(Obj021dc2a0* obj,short id,int unused,Params021dc2a0* params,int unused2,int unused3,unsigned char enabled){
     GameObject* c=GetCombatantWithFlag0x400ByID((int)obj->context,id);

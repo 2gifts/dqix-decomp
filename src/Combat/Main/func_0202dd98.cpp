@@ -18,7 +18,6 @@ extern "C" int _Z29SetState3AndDispatch_0202cca4v();
 
 static inline int CurrentState() { return data_021015a0.state_; }
 
-// JPN: func_0202d908
 // USA: func_0202dd98
 extern "C" ARM void func_0202dd98() {
     if (data_021015a0.state_ == 1) return;

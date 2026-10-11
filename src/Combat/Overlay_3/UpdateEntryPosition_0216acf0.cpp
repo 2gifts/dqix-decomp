@@ -32,7 +32,6 @@ void IterateEntries0205a330(Container0205a330*, int);
 extern "C" void func_0205ae8c(void*);
 
 // USA: func_ov003_0216acf0
-// JPN: func_ov003_0216a88c
 ARM void UpdateEntryPosition_0216acf0(char* base) {
     if (!(*(unsigned char*)(base + kRegionValue59F_59B) & 1)) return;
 

@@ -11,7 +11,6 @@
 #include <globaldefs.h>
 #include "System/Memory.h"
 
-// JPN: func_02026348
 // USA: func_020269e4
 ARM void AppendRecord020269e4(char* obj, const void* src) {
     unsigned char count = *(unsigned char*)(obj + RECORD_COUNT_OFFSET);

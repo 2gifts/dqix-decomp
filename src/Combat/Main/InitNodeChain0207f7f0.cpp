@@ -28,4 +28,3 @@ ARM void InitNodeChain0207f7f0(struct Manager0207f7f0* mgr, struct Node0207f7f0*
     }
 }
 
-// JPN: 0x02080568

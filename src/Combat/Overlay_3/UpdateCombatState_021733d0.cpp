@@ -28,7 +28,6 @@ extern "C" int _Z32IsMainBrightnessTransitionActiveP13GameResources(int* p);
 void ResetFieldsB68AndB74_0216fb6c(char* obj);
 
 // USA: func_ov003_021733d0  (semantic: UpdateCombatState_021733d0)
-// JPN: func_ov003_02172218
 extern "C" ARM void func_ov003_021733d0(unsigned char* self) {
     int* p = (int*)func_ov017_0218b5b0(self);
     if (self[kRegionValueEE_EA] == 0) {

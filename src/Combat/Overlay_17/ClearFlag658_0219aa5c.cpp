@@ -6,7 +6,6 @@
 #define FIELD_OFFSET 0x658
 #endif
 
-// JPN: func_ov017_0219b600
 // USA: func_ov017_0219aa5c
 ARM void ClearFlag658_0219aa5c(unsigned char* obj) {
 	obj += 0x3000;

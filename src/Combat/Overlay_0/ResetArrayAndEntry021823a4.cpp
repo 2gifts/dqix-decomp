@@ -7,7 +7,6 @@ struct Entry021820fc { unsigned char a; unsigned char b; short c; short d; };
 void ClearEntry021820fc(struct Entry021820fc* obj);
 
 // USA: func_ov000_021823a4
-// JPN: func_ov000_021834d0
 ARM void ResetArrayAndEntry021823a4(char* p) {
     int i;
     for (i = 0; i < 13; i++) {

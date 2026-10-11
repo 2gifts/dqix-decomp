@@ -45,7 +45,6 @@ struct Buffer6380 {
 };
 
 // USA: func_ov004_0216f634
-// JPN: func_ov004_0216fcc8
 extern "C" ARM int func_ov004_0216f634(void* self) {
     if (data_ov004_02171048.flags->b30 == 0) {
         func_ov011_021848a0(self, 0xd3);

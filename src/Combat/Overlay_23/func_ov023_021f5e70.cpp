@@ -74,7 +74,6 @@ extern "C" unsigned char data_ov023_021fff1c[];
 extern "C" Script::OpcodeLookupEntry data_ov023_021fe34c[];
 extern "C" unsigned char data_ov023_021fe3c8[];
 
-// JPN: func_ov023_021f54ac
 // USA: func_ov023_021f5e70
 extern "C" ARM int func_ov023_021f5e70(unsigned char* data, int size, void* buffer)
 {

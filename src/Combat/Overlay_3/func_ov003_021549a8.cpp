@@ -69,7 +69,6 @@ struct Ctrl021549a8 {
     int task2;
 };
 
-// JPN: func_ov003_02156090
 // USA: func_ov003_021549a8
 extern "C" ARM void func_ov003_021549a8(Ctrl021549a8* self) {
     BackgroundLoader* loader = BackgroundLoader::GetInstance();

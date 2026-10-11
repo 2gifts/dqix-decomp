@@ -1,4 +1,3 @@
-// JPN: func_ov017_021d2608
 #include <globaldefs.h>
 #include "std_library_functions.h"
 

@@ -13,7 +13,6 @@ struct Ctx02156054 {
 };
 
 // USA: func_ov003_02156054
-// JPN: func_ov003_021576b0
 extern "C" ARM void func_ov003_02156054(struct Ctx02156054* self) {
     unsigned char count = 0;
     for (unsigned char i = 1; i < 7; i++) {

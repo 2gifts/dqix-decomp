@@ -170,14 +170,12 @@ struct Menu021729ac {
 #else
     char entries[2][0x18];
 #endif
-                 // 0x1b54
 
 #if defined(jpn)
     char labels[5][0x38];
 #else
     char labels[9][0x18];
 #endif
-                  // 0x1b84
 
 #if defined(jpn)
     char pad10[0x1faa - 0x1d94];

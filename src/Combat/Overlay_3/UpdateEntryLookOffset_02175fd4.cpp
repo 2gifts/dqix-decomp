@@ -35,7 +35,6 @@ void SetEntryPositionFromObject(struct WinObj020e28f0* obj, short a, short b);
 extern "C" void func_0205ae8c(void* obj);
 
 // USA: func_ov003_02175fd4  (semantic: UpdateEntryLookOffset_02175fd4)
-// JPN: func_ov003_02174fec
 extern "C" ARM void func_ov003_02175fd4(unsigned char* self) {
     if (*(void**)(self + kRegionValueFF8_F74) == NULL) {
         return;

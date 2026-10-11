@@ -49,7 +49,6 @@ struct Self02160cf8 {
 };
 
 // USA: func_ov003_02160cf8
-// JPN: func_ov003_02160e54
 extern "C" ARM int func_ov003_02160cf8(struct Self02160cf8* self) {
 	GameResources* res = func_ov017_0218b5b0();
 	void* dataPtr = _Z27GetDataPtr02114e04_020d6c00v();

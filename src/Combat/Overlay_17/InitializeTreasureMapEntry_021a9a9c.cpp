@@ -14,7 +14,6 @@ extern const char data_ov017_021d7c8c[];
 extern const char data_ov017_021d7c8d[];
 #endif
 
-// JPN: func_ov017_021aa270
 // USA: func_ov017_021a9a9c  (semantic: InitializeTreasureMapEntry_021a9a9c)
 extern "C" ARM void func_ov017_021a9a9c(void* obj, unsigned char type, unsigned int quality, int seed, unsigned char locationOverride) {
 #if defined(jpn)

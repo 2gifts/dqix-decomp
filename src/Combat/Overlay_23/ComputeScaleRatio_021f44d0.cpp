@@ -11,7 +11,6 @@
 #define RATIO_C 0x58ce
 #endif
 
-// JPN: func_ov023_021f3b5c
 // USA: func_ov023_021f44d0  (semantic: ComputeScaleRatio_021f44d0)
 extern "C" ARM int func_ov023_021f44d0(void* obj) {
     GameState::GetInstance();

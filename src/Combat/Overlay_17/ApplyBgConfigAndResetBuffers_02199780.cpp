@@ -38,11 +38,7 @@ struct BackgroundControlFields {
 	unsigned short size : 2;
 };
 
-// CancelActionIfHeadIdMatches_02199e98 invokes this on its active state.
-// A nonnegative background task ID is removed before applying BG1/BG2
-// configuration and resetting buffers; the broader state owner remains unnamed.
 // USA: func_ov017_02199780
-// JPN: func_ov017_0219a330
 extern "C" ARM void func_ov017_02199780(unsigned char* self) {
 #if defined(jpn)
 	if (*(int*)(self + 0x3000 + 0xe60) == 0) {

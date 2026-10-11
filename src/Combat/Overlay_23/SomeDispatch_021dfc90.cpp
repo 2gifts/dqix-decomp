@@ -29,7 +29,6 @@ extern char data_ov023_021fdc12[];
 extern char data_ov023_021fce87[];
 extern char data_ov023_021fce9f[];
 #endif
-// JPN: func_ov023_021e029c
 // USA: func_ov023_021dfc90  (semantic: SomeDispatch_021dfc90)
 extern "C" ARM int func_ov023_021dfc90(void* obj) {
 #if defined(jpn)

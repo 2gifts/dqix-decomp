@@ -31,7 +31,6 @@ struct Root0216e678 {
 };
 
 // USA: func_ov000_0216e678
-// JPN: func_ov000_0216e678
 extern "C" ARM void func_ov000_0216e678(Root0216e678* obj, int first, int second, int suppress, int active) {
     GameState* gs = GameState::GetInstance();
     if (!obj->initialized) data_ov000_02183fc8 = 1;

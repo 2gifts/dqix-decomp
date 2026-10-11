@@ -18,7 +18,6 @@ struct Src021c435c {
     unsigned short field8;
 };
 
-// JPN: func_ov017_021c4824
 // USA: func_ov017_021c435c  (semantic: SetCombatantField348FromSearch_021c435c)
 extern "C" ARM void func_ov017_021c435c(int unused0, struct Src021c435c* src, GameState* battleStruct, unsigned char* obj, struct SearchStruct0202c1a4* search) {
 #if defined(jpn)

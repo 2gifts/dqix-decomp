@@ -128,7 +128,6 @@ extern "C" void _Z20ResetFields_021eefacP14Reset_021eefac(Reset_021eefac*);
 #if defined(jpn)
 extern "C" void func_02045d88(MessageController*,char*,int);
 #endif
-// JPN: func_ov023_021effa4
 // USA: func_ov023_021f03a0
 extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
     int i;

@@ -45,7 +45,6 @@ extern "C" void* func_ov023_021f6524(void* ctx, int value);
 #define NODE_LOOKUP_CALL func_ov023_021f6524
 #endif
 
-// entry of the 3-slot table at battleStruct+slotsOffset
 struct Slot3_02168b44 {
     char pad[6];
     signed char state;

@@ -29,7 +29,6 @@ struct Sub0x150_021e6594 {
     int f950;
 };
 
-// JPN: func_ov023_021e6b14
 // USA: func_ov023_021e6594  (semantic: BuildEntryBuffers_021e6594)
 extern "C" ARM void func_ov023_021e6594(char* obj) {
 #if defined(jpn)

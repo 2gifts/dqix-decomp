@@ -21,7 +21,6 @@ int HasAnyFlags_021719f8_021719f8(int*);int GetWord0x0(int*);void* GetOffsetPtr0
 struct Position {int x,y,z;};extern int data_ov000_02183ff0;extern Position data_ov000_02184288;
 extern "C" {void* func_ov017_021b8468(void*);int func_ov000_0217ae90(void*);int func_ov000_0217b380(void*,int,int);int func_ov000_0217b518(void*,int,int);int func_ov000_0217b6d0(void*,int,int);int func_ov000_0217b8a4(void*,int,int);int func_ov000_0217bb2c(void*,int,int);int func_ov000_0217bdf4(void*,int,int);int func_ov000_0217bfbc(void*,int,int);int func_ov000_0217c094(void*);}
 // USA: func_ov000_021700dc
-// JPN: func_ov000_021700dc
 extern "C" ARM int func_ov000_021700dc(Slot* self){
  if(self->id<0)return -1;if(!(self->flags&1))return -1;if(self->hp==0)return -1;
  if(HasAnyFlags_021719f8_021719f8((int*)self)){self->states[self->index]=100;return 100;}

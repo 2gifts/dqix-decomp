@@ -17,7 +17,6 @@ struct Evt021c82bc {
     unsigned char arr2[8];
 };
 
-// JPN: func_ov017_021c876c
 // USA: func_ov017_021c82bc  (semantic: ApplyEventTag_021c82bc)
 extern "C" ARM void func_ov017_021c82bc(int p0, struct Evt021c82bc* evt, int unused2, int table, struct SearchStruct0202c1a4* search) {
 #if defined(jpn)

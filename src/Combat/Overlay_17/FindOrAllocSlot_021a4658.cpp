@@ -2,11 +2,7 @@
 
 void Init021b2f64(unsigned char* self);
 
-// func_ov017_0218f5a4 passes a combatant ID and writes it to the returned slot.
-// The two scans prefer an existing active match before initializing a free slot.
-// Exhaustion deliberately retains the original non-returning loop.
 // USA: func_ov017_021a4658
-// JPN: func_ov017_021a50cc
 extern "C" ARM unsigned char* func_ov017_021a4658(unsigned char* base, int combatantId) {
     int matchingSlotIndex;
     for (matchingSlotIndex = 0; matchingSlotIndex < 0xc; matchingSlotIndex++) {

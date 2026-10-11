@@ -26,7 +26,6 @@ struct Item0202ae4c {
 };
 
 // USA: func_0202ae4c  (semantic: PrepareAndRegisterRecord0202ae4c)
-// JPN: func_0202aa04
 extern "C" ARM void func_0202ae4c(struct Item0202ae4c* item) {
     char buf[0x18];
 #if !defined(jpn)

@@ -45,7 +45,6 @@ extern "C" void func_020de888(PartNameTable_021fbf4c* names, SafeAllocator* allo
 extern "C" void func_020dea64(PartNameTable_021fbf4c* names, SafeAllocator* allocator, void* file, unsigned int size,
                               unsigned char* categories, int count);
 
-// JPN: func_ov023_021fb2bc
 // USA: func_ov023_021fbf4c
 extern "C" ARM int func_ov023_021fbf4c(MenuPartNames_021fbf4c* self, void* script)
 {

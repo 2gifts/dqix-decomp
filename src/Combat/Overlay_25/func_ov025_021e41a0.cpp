@@ -63,7 +63,6 @@ static inline void ScaleHorizontal(Vector3i* offset, int factor) {
     offset->z *= factor;
 }
 
-// JPN: func_ov025_021e4690
 // USA: func_ov025_021e41a0
 extern "C" ARM int func_ov025_021e41a0(EffectCommand* command, List021600f8* list) {
     GameState* game = GameState::GetInstance();

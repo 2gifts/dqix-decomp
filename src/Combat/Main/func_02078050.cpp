@@ -58,7 +58,6 @@ struct Entity02078050 {
 };
 
 // USA: func_02078050
-// JPN: func_02078050
 extern "C" ARM void func_02078050(struct Entity02078050* self) {
     void* mgr = func_0202ae18(self);
 

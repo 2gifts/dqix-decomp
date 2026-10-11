@@ -29,7 +29,6 @@ int NormalizeField5_0200fb08(struct Struct0200fb08*);
 
 extern "C" void func_0205ae8c(void* obj);
 
-// JPN: func_ov003_0216d794
 // USA: func_ov003_0216ddfc  (semantic: UpdateEntryOnFlag_0216ddfc)
 extern "C" ARM void func_ov003_0216ddfc(char* obj) {
     GameState* battle = GameState::GetInstance();

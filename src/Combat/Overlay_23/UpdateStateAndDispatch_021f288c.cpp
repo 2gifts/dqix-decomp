@@ -37,7 +37,6 @@ struct PctBits021f288c { unsigned short low : 7; unsigned short pct : 9; };
 #if defined(jpn)
 extern "C" void func_02045d88(void*,char*,int);
 #endif
-// JPN: func_ov023_021f20a0
 // USA: func_ov023_021f288c  (semantic: UpdateStateAndDispatch_021f288c)
 extern "C" ARM int func_ov023_021f288c(unsigned char* obj) {
 #if defined(jpn)

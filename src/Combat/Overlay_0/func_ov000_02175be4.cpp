@@ -27,7 +27,6 @@ extern const FourShort02175be4 data_ov000_021833a8;
 static inline short GetKey02175be4(Node02175be4* node) { return (short)node->key; }
 
 // USA: func_ov000_02175be4
-// JPN: func_ov000_02175be4
 extern "C" ARM void func_ov000_02175be4(Root02175be4* obj) {
     GameState* gs = GameState::GetInstance();
     for (signed char i=0;i<4;i++) {

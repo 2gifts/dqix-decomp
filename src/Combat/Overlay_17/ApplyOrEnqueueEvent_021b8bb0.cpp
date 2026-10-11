@@ -26,7 +26,6 @@ struct LocalEvt021b8bb0 {
     int f14;
 };
 
-// JPN: func_ov017_021b90a8
 // USA: func_ov017_021b8bb0  (semantic: ApplyOrEnqueueEvent_021b8bb0)
 extern "C" ARM void func_ov017_021b8bb0(int id) {
 #if defined(jpn)

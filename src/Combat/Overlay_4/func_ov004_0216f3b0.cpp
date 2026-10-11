@@ -17,7 +17,6 @@ struct Struct02171048_0216f3b0 { char pad[4]; unsigned char* ptr; };
 extern Struct02171048_0216f3b0 data_ov004_02171048;
 
 // USA: func_ov004_0216f3b0
-// JPN: func_ov004_0216fa44
 extern "C" ARM int func_ov004_0216f3b0(void* a) {
     void* actorRaw = func_ov017_0218b5b0();
 #if defined(jpn)

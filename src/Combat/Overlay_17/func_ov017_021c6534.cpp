@@ -48,7 +48,6 @@ struct Party021c6534 {
     Slot021c6534 slots[3];
 };
 
-// JPN: func_ov017_021c69e4
 // USA: func_ov017_021c6534
 extern "C" ARM void func_ov017_021c6534(int unused0, Evt021c6534* evt, GameState* battleStruct, char* base) {
 #if defined(jpn)

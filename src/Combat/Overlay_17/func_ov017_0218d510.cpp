@@ -31,7 +31,6 @@ static inline struct Foo0207df50* SelectPairTable(unsigned char* pairTables, int
     return (struct Foo0207df50*)(inRange ? pairTables + 0x930 : pairTables + 0xc40);
 }
 
-// JPN: func_ov017_0218e0f0
 // USA: func_ov017_0218d510
 extern "C" ARM int func_ov017_0218d510(struct BattleResources0218d510* self, SafeAllocator* alloc) {
 #if defined(jpn)

@@ -7,7 +7,6 @@ struct Entry_02028bd0* FindInlineEntryById(struct Entry_02028bd0* base, int key)
 
 struct Bits021cf4e8 { unsigned short low4:4; unsigned short high12:12; };
 
-// JPN: func_ov017_021cf998
 // USA: func_ov017_021cf4e8  (semantic: ProcessEntrySlotAndFlag_021cf4e8)
 extern "C" ARM void func_ov017_021cf4e8(void* unusedArg0, unsigned char* entry, unsigned char* table, unsigned char* ctx) {
 #if defined(jpn)

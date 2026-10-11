@@ -23,7 +23,6 @@ extern "C" int func_020dcc98(int combatantId);
 extern "C" void func_020813ec(void* obj, int key);
 void* GetPtrField0x2a04(GameState* battleStruct);
 
-// JPN: func_ov003_021767d0
 // USA: func_ov003_02177820  (semantic: RecomputeElementTierAndDispatchAll_02177820)
 #pragma opt_common_subs off
 extern "C" ARM void func_ov003_02177820(char* self) {

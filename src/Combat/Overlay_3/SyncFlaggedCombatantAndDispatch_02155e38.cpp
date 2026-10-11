@@ -24,7 +24,6 @@ extern "C" void func_ov017_021ccc34(int combatantId);
 extern "C" void func_ov017_021c9e00(int id, int flagA, int flagB, int flagC);
 
 // USA: func_ov003_02155e38
-// JPN: func_ov003_02157494
 extern "C" ARM void func_ov003_02155e38(void* p) {
     char* obj = (char*)p;
     GameState* bs = GameState::GetInstance();

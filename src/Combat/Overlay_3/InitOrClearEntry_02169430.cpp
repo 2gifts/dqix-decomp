@@ -23,7 +23,6 @@ extern "C" int func_0205d6e4(void* obj, int flag);
 extern "C" void func_ov003_0216abd8(void* obj, void* buf);
 extern "C" void func_0204500c(void* dst, void* src, int a, int b);
 
-// JPN: func_ov003_0216925c
 // USA: func_ov003_02169430  (semantic: InitOrClearEntry_02169430)
 extern "C" ARM void func_ov003_02169430(void* p) {
     char* obj = (char*)p;

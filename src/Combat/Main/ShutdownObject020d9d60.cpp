@@ -18,7 +18,7 @@ extern int data_02114e20;
 
 struct Obj020d9d60 {
     char pad[kAllocatorOffset];
-    SafeAllocator allocator;   // kAllocatorOffset
+    SafeAllocator allocator;
 };
 
 // USA: func_020d9d60

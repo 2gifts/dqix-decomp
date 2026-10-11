@@ -25,7 +25,6 @@ extern "C" const StateTable021727c8 data_ov003_0217fa58;
 extern "C" StateFn021727c8 data_020e6d5c;
 
 // USA: func_ov003_021727c8
-// JPN: func_ov003_021716b4
 extern "C" ARM bool func_ov003_021727c8(Obj021727c8* self) {
     GameState::GetInstance()->GetTickCount();
     bool done = false;

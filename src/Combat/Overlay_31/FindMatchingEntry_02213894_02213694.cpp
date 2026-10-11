@@ -10,7 +10,6 @@ extern "C" int func_ov031_022139a0(int a, void* obj, int b, void* c);
 extern "C" void func_ov031_02213b20(int a, void* b);
 
 // USA: func_ov031_02213694
-// JPN: func_ov031_02213e74
 extern "C" ARM void func_ov031_02213694(char* obj) {
     int result = -1;
     unsigned char extra = 0;

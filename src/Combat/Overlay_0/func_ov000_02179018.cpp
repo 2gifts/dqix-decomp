@@ -55,7 +55,6 @@ extern "C" void func_0205d304(struct Struct_0205d81c* s, void* buf, int a, int b
 extern "C" void func_ov000_02176210(struct Struct_0205d81c* s, int a, int key);
 
 // USA: func_ov000_02179018
-// JPN: func_ov000_0217a474
 extern "C" ARM void func_ov000_02179018(struct Owner_02179018* obj, struct Entry_02179018* entry, int a, int b) {
     func_ov000_02179194(obj, entry);
     int x = entry->x;

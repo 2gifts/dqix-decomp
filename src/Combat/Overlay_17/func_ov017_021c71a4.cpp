@@ -37,7 +37,6 @@ void* GetData02100044();
 int TestBitAt0x34(unsigned char*, unsigned int);
 extern "C" void func_0205e330(void*, void*, int);
 
-// JPN: func_ov017_021c7654
 // USA: func_ov017_021c71a4
 extern "C" ARM void func_ov017_021c71a4() {
     GameState* game = GameState::GetInstance();

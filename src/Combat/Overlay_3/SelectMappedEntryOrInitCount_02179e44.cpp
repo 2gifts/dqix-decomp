@@ -24,7 +24,6 @@ short FindMappedMemberId02080468(void* obj, int id);
 struct S_a0b8c;
 int CountNonZeroValues020a0b8c(struct S_a0b8c* p);
 
-// JPN: func_ov003_02178c80
 // USA: func_ov003_02179e44  (semantic: SelectMappedEntryOrInitCount_02179e44)
 extern "C" ARM int func_ov003_02179e44(char* obj) {
     GameState* battle = GameState::GetInstance();

@@ -1,4 +1,3 @@
-// JPN: func_ov017_021b5bfc
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Grotto/Main/ActiveGrottoClass.h"

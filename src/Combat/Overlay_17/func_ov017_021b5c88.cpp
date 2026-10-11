@@ -47,7 +47,6 @@ extern "C" Holder021b5c88* func_02012fe4(void);
 extern "C" StructDE234_020de234* _Z24FindElementByKey020dedd0P17Container020dedd0i(Container020dedd0* c, int key);
 extern "C" unsigned short _Z31GetPreferredPackedField020de234P20StructDE234_020de234i(StructDE234_020de234* p, int preferMid);
 
-// JPN: func_ov017_021b623c
 // USA: func_ov017_021b5c88
 extern "C" ARM int func_ov017_021b5c88(Self021b5c88* self) {
     Container020dedd0* entries = &func_02012fe4()->entries;

@@ -25,7 +25,6 @@ void PopStack1AndTrigger(int);
 
 extern char data_02109bf4;
 
-// JPN: func_ov023_021f3648
 // USA: func_ov023_021f3fbc  (semantic: ResetAndDispatchIfIdle_021f3fbc)
 extern "C" ARM int func_ov023_021f3fbc(char* obj) {
     if (IsAnimationActive0209ca2c(&data_02109bf4)) {

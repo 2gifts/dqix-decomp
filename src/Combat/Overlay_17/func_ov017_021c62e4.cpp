@@ -33,7 +33,6 @@ struct Evt021c62e4 {
     Payload021c62e4 payload;
 };
 
-// JPN: func_ov017_021c6794
 // USA: func_ov017_021c62e4
 extern "C" ARM void func_ov017_021c62e4(int unused0, Evt021c62e4* src, void* unused2, char* base) {
 #if defined(jpn)

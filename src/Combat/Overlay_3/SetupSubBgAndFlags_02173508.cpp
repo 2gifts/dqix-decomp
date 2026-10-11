@@ -32,7 +32,6 @@ struct S02173508 {
     int field_124;
 };
 
-// JPN: func_ov003_02172350
 // USA: func_ov003_02173508  (semantic: SetupSubBgAndFlags_02173508)
 extern "C" ARM void func_ov003_02173508(S02173508* obj) {
     func_ov017_0218b5b0();

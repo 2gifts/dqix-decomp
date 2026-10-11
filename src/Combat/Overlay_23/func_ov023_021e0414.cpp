@@ -33,7 +33,6 @@ struct Obj021e0414 {
     signed char field79a;
 };
 
-// JPN: func_ov023_021e09b4
 // USA: func_ov023_021e0414  (semantic: RefreshEntryElementAndDispatch_021e0414)
 extern "C" ARM int func_ov023_021e0414(struct Obj021e0414* obj) {
     int a = (int)BackgroundLoader::GetInstance();

@@ -32,7 +32,6 @@ struct Work021d01e4 {
     struct FieldStruct021a85d4* field3b9c;
 };
 
-// JPN: func_ov017_021d0694
 // USA: func_ov017_021d01e4
 extern "C" ARM void func_ov017_021d01e4(int unused0, struct Evt021d01e4* evt, GameState* bs, struct Work021d01e4* work) {
     GetField0x3acValue(bs);

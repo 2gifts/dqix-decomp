@@ -46,7 +46,6 @@ void SetupFieldAndFormat_0215de6c(char* base, void* buf);
 extern "C" void func_0205d304(void* a, void* b, int p2, int p3, int p4, int p5, int p6, int p7);
 #endif
 
-// JPN: func_ov003_0215f108
 // USA: func_ov003_0215ddc0  (semantic: SetupBattleEntry_0215ddc0)
 extern "C" ARM void func_ov003_0215ddc0(char* base) {
     FindAndLinkMatchingEntry0205de24((struct Struct0205de24*)(base + kRegion98), 0, 2);

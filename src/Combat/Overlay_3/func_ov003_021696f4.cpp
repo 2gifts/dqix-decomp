@@ -36,7 +36,6 @@ struct Ctx021696f4 {
 };
 
 // USA: func_ov003_021696f4
-// JPN: func_ov003_0216951c
 extern "C" ARM void func_ov003_021696f4(struct Ctx021696f4* self, int index) {
     int base = self->values[index];
     int isLast = 0;

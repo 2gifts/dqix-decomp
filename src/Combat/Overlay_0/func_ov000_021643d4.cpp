@@ -261,7 +261,6 @@ extern float data_ov000_021838e8[5];
 extern float data_ov000_0218423c[5];
 
 // USA: func_ov000_021643d4
-// JPN: func_ov000_02165b38
 extern "C" ARM void func_ov000_021643d4(CombatRoot* c) {
     int gs = _ZN9GameState11GetInstanceEv();
     int search = func_0202ae18(_ZN16BackgroundLoader11GetInstanceEv());

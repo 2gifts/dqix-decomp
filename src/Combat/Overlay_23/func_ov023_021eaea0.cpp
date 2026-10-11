@@ -17,7 +17,6 @@ struct BlockWord021eaea0 {
     unsigned int fieldB : 7;
 };
 
-// JPN: func_ov023_021eae04
 // USA: func_ov023_021eaea0  (semantic: ApplyBattleBlockFieldAIfEligible_021eaea0)
 extern "C" ARM int func_ov023_021eaea0(void* obj) {
 #if defined(jpn)

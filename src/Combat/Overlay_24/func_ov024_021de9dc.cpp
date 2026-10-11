@@ -18,7 +18,6 @@ struct Obj021de9dc {char pad[0xc];Flags021de9dc* action;void* context;};
 struct Triple021de9dc {unsigned int a:10;unsigned int b:10;unsigned int c:10;unsigned int rest:2;};
 struct Params021de9dc {char pad[0x20];Triple021de9dc field20;Triple021de9dc field24;Triple021de9dc field28;};
 static inline unsigned short GetHP(GameObject* c){unsigned short hp=c->currentStats_->primaryStats.currHP;return hp;}
-// JPN: func_ov024_021df274
 // USA: func_ov024_021de9dc
 extern "C" ARM void* func_ov024_021de9dc(Obj021de9dc* obj,int sourceID,int id,Params021de9dc* params,int amount,int unused,unsigned char enabled){
     GameObject* c=GetCombatantByID((int)obj->context,id);

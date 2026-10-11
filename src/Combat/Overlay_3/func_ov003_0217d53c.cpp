@@ -64,7 +64,6 @@ struct State_0217d53c {
     signed char busy;
 };
 
-// JPN: func_ov003_0217c1dc
 // USA: func_ov003_0217d53c
 extern "C" ARM void func_ov003_0217d53c(State_0217d53c* self) {
     GameState* gs = GameState::GetInstance();

@@ -33,7 +33,6 @@ extern "C" void func_ov003_02171e1c(void*, void*);
 extern int CheckSlotsAllFree0205e488(void* obj);
 
 // USA: func_ov003_02171764
-// JPN: func_ov003_02170ab0
 extern "C" ARM void func_ov003_02171764(char* self) {
     GameState* battle = GameState::GetInstance();
     struct SearchStruct* search = (struct SearchStruct*)func_0202ae18();

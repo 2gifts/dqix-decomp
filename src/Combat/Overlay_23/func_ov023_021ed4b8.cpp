@@ -27,7 +27,6 @@ extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int 
 
 struct Bits0205de24_021ed4b8 { unsigned char low4 : 4; unsigned char high4 : 4; };
 
-// JPN: func_ov023_021ed3f0
 // USA: func_ov023_021ed4b8  (semantic: InitAndDispatchElementEntry_021ed4b8)
 extern "C" ARM void func_ov023_021ed4b8(char* obj) {
 #if defined(jpn)

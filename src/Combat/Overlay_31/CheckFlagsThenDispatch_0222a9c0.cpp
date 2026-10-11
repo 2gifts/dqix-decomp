@@ -1,4 +1,3 @@
-// JPN: func_ov031_0222b1a0
 #include <globaldefs.h>
 
 extern int IsPtr02290c44Null_02227840(void);

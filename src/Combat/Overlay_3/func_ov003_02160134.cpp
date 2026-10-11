@@ -46,7 +46,6 @@ void SetEntryPosition(struct Container0205a3d0* c, int key, short a, short b);
 extern "C" void func_0205ae8c(void*);
 
 // USA: func_ov003_02160134  (semantic: RefreshCombatantState_02160134)
-// JPN: func_ov003_021602e0
 extern "C" ARM void func_ov003_02160134(char* obj) {
     if (*(unsigned char*)(obj + kRegionValue4A3_2CB) == 0) return;
 

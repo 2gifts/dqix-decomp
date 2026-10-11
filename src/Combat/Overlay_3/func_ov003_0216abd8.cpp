@@ -32,7 +32,6 @@ struct Obj0216abd8 {
     struct TextBuf0216abd8* buf;
 };
 
-// JPN: func_ov003_0216a7ac
 // USA: func_ov003_0216abd8
 extern "C" ARM void func_ov003_0216abd8(struct Obj0216abd8* self, char* out) {
 #if defined(jpn)

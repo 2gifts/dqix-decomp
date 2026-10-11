@@ -14,7 +14,6 @@ struct SrcEntry021ca4a8 {
 	int field10;
 };
 
-// JPN: func_ov017_021ca958
 // USA: func_ov017_021ca4a8
 ARM void CopySrcEntryIntoSlot_021ca4a8(int unused0, struct SrcEntry021ca4a8* src, GameState* battleStruct, unsigned char* base) {
 #if defined(jpn)

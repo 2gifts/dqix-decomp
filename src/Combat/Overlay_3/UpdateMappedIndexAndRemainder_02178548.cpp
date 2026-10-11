@@ -24,7 +24,6 @@ enum { kRegionValue3A_B6 = 0x3a };
 short FindMappedMemberId02080468(void* obj, int id);
 
 // USA: func_ov003_02178548  (semantic: UpdateMappedIndexAndRemainder_02178548)
-// JPN: func_ov003_02177428
 extern "C" ARM void func_ov003_02178548(unsigned char* self) {
 	void* obj89c = *(void**)(self + kRegionValue89C_818);
 	short id1 = FindMappedMemberId02080468(obj89c, 3);

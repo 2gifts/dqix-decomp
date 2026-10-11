@@ -29,7 +29,6 @@ struct Obj021dd344 {
 #define TEXT_LAST_LENGTH 0x764
 #endif
 
-// JPN: func_ov023_021ddb34
 // USA: func_ov023_021dd344
 extern "C" ARM void func_ov023_021dd344(struct Obj021dd344* obj) {
     if (!obj->flag1) return;

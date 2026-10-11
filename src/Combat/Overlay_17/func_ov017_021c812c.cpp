@@ -24,7 +24,6 @@ struct Whole021c812c {
     FieldsMsg021c812c fields;
 };
 
-// JPN: func_ov017_021c85dc
 // USA: func_ov017_021c812c
 extern "C" ARM void func_ov017_021c812c(unsigned char mode, int flag) {
 #if defined(jpn)

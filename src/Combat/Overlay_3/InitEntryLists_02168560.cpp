@@ -15,7 +15,6 @@ extern "C" void func_0205da88(void* p, int a, int b, int c);
 void UpdateEntryPosition_0216acf0(char* base);
 extern "C" void func_ov003_0216a880(char* obj);
 
-// JPN: func_ov003_021683e8
 // USA: func_ov003_02168560  (semantic: InitEntryLists_02168560)
 extern "C" ARM void func_ov003_02168560(char* obj) {
     ClearBuffers0204b010OverList0x98((struct Cont0205d1e0*)(obj + kRegione4));

@@ -128,7 +128,6 @@ struct Scene021eb578 {
 
 #define SET_LAYER_PRIORITIES(m0, m1, m2, m3, mPlanes, s0, s1, s2, s3, sPlanes)     do {         REG16(0x4000008) = (REG16(0x4000008) & ~3) | (m0);         REG16(0x400000a) = (REG16(0x400000a) & ~3) | (m1);         REG16(0x400000c) = (REG16(0x400000c) & ~3) | (m2);         REG16(0x400000e) = (REG16(0x400000e) & ~3) | (m3);         REG32(0x4000000) = (REG32(0x4000000) & ~0x1f00) | ((mPlanes) << 8);         REG16(0x4001008) = (REG16(0x4001008) & ~3) | (s0);         REG16(0x400100a) = (REG16(0x400100a) & ~3) | (s1);         REG16(0x400100c) = (REG16(0x400100c) & ~3) | (s2);         REG16(0x400100e) = (REG16(0x400100e) & ~3) | (s3);         REG32(0x4001000) = (REG32(0x4001000) & ~0x1f00) | ((sPlanes) << 8);     } while (0)
 
-// JPN: func_ov023_021eb4dc
 // USA: func_ov023_021eb578
 extern "C" ARM void func_ov023_021eb578(Scene021eb578* self) {
     SafeAllocator* allocs;

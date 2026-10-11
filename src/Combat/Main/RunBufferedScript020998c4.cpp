@@ -25,7 +25,6 @@ extern char data_020f155c[];
 extern char data_0211e33c[];
 extern char data_020f1524[];
 
-// JPN: func_0209b5f8
 // USA: func_020998c4
 ARM void RunBufferedScript020998c4(struct Obj020995c0* param0) {
     int count;

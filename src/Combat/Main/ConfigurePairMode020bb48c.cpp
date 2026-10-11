@@ -14,7 +14,6 @@ extern unsigned short data_0210cf84;
 extern void* data_020f1ee8;
 extern void* data_020f1eec;
 
-// JPN: func_020bcf58
 // USA: func_020bb48c
 ARM void ConfigurePairMode020bb48c(unsigned int mode, int installHandlers) {
     if (mode <= 2) {

@@ -47,4 +47,3 @@ ARM int CheckAndClearFlag020656e4(void* a) {
     return result;
 }
 
-// JPN: 0x02066b1c

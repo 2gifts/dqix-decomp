@@ -1,4 +1,3 @@
-// JPN: func_ov031_02237de0
 #include <globaldefs.h>
 
 ARM int CopyToBattleContextBuffer(void* src);

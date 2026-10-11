@@ -18,7 +18,6 @@ int GetFieldAt0x150(unsigned char* obj);
 short FindMappedMemberId02080468(void* obj, int id);
 
 // USA: func_ov003_0217a220
-// JPN: func_ov003_02179050
 ARM void ComputeMappedOffset_0217a220(unsigned char* obj) {
     short result = -1;
     GameState* bs = GameState::GetInstance();

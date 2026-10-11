@@ -51,7 +51,6 @@ struct Combatant021fa370 {
     struct Inner021fa370* inner;
 };
 
-// JPN: func_ov023_021f97f4
 // USA: func_ov023_021fa370
 extern "C" ARM int func_ov023_021fa370(struct Obj021fa370* obj, void* param1) {
     void* handleObj;

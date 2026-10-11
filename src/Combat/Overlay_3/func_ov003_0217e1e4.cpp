@@ -42,7 +42,6 @@ struct Obj0217e1e4 {
 };
 
 // USA: func_ov003_0217e1e4
-// JPN: func_ov003_0217ceec
 extern "C" ARM int func_ov003_0217e1e4(struct Obj0217e1e4* self) {
     int x;
     int y;

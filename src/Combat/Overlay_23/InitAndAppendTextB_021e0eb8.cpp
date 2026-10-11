@@ -14,7 +14,6 @@ extern int data_ov023_021ff9e0[];
 #define TEXT_POSITION 0x75c
 #endif
 
-// JPN: func_ov023_021e13ec
 // USA: func_ov023_021e0eb8
 ARM void InitAndAppendTextB_021e0eb8(void* obj) {
     char buf[0xe0];

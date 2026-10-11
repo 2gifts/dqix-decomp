@@ -26,4 +26,3 @@ ARM void StoreByteList02026348(char* obj, unsigned char* src, int count) {
     obj[LIST_COUNT] = count;
 }
 
-// JPN: 0x02025d1c

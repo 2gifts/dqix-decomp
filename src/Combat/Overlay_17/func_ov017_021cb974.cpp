@@ -37,7 +37,6 @@ struct BattleContext {
 extern "C" void* _Z20GetField6b0_021b8470Pv(void*);
 int GetField0x3acValue(GameState*);
 
-// JPN: func_ov017_021cbe24
 // USA: func_ov017_021cb974
 extern "C" ARM void func_ov017_021cb974(int, PackedStatus* packet, GameState* game, BattleContext* context) {
     BattleStatus* status = (BattleStatus*)_Z20GetField6b0_021b8470Pv(context->table);

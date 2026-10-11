@@ -58,7 +58,6 @@ extern "C" void VectorizedMemset(void* dst, int val, int size);
 void ClearFlag0x3c9Bit0AndCleanup(unsigned char* obj);
 void SetOrClearFlag40_02166f80(void* self, int key, int set);
 
-// JPN: func_ov003_02165114
 // USA: func_ov003_0216512c
 extern "C" ARM void func_ov003_0216512c(struct Battle0216512c* obj) {
     unsigned char* global = GetGlobal02109030();

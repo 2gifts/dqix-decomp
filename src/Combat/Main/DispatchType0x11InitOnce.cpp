@@ -10,7 +10,6 @@ struct InitGuard020d1144 {
 extern InitGuard020d1144 data_02112140;
 
 // USA: func_020d1144
-// Keep the established linker name while matching the three-argument IPC callback ABI.
 extern "C" ARM void _Z24DispatchType0x11InitOnceii(unsigned int context, unsigned int code, unsigned int error) {
     if ((code & 0x3f) == 0x11) {
         if (data_02112140.done != 0) return;

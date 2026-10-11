@@ -15,7 +15,6 @@ extern "C" void _Z19ClearBuffer0204b010P11Obj0204b010Pv(void*,void*);
 extern "C" void func_0204bc74(void*,int,int,int,int,int,int);
 extern "C" void _Z21DispatchEntry0204b8d0P11Obj0204b8d0jiisssst(void*,unsigned int,int,int,short,short,short,short,unsigned short);
 extern "C" void func_0204b04c(void*,int);
-// JPN: func_ov003_02166ea4
 // USA: func_ov003_02166fc4
 extern "C" ARM void func_ov003_02166fc4(Menu02166fc4* self) {
  MenuBackground02166fc4* bg=self->background;

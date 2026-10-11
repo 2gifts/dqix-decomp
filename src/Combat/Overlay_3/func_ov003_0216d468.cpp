@@ -28,7 +28,6 @@ extern "C" void func_ov003_0215ca1c(void* obj);
 void ProcessCombatState_02173ea8(unsigned char* obj);
 
 // USA: func_ov003_0216d468
-// JPN: func_ov003_0216cf3c
 extern "C" ARM void func_ov003_0216d468(void* p) {
     char* obj = (char*)p;
     if (*(void**)(obj + 0x1000 + kRegionValue2C0_150) != 0) {

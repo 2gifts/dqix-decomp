@@ -70,7 +70,6 @@ extern "C" ZoneData_021f5ad8* func_02012fe4();
 
 extern "C" DownloadState_021f5ad8 data_ov023_021fff08;
 
-// JPN: func_ov023_021f5090
 // USA: func_ov023_021f5ad8
 extern "C" ARM int func_ov023_021f5ad8(Script::Parameter* params, int count)
 {

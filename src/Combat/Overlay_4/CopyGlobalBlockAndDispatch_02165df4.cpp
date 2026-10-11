@@ -16,7 +16,6 @@ extern "C" void func_ov011_02184c28(void*, void*);
 extern "C" void func_ov004_02165be4(void);
 
 // USA: func_ov004_02165df4
-// JPN: func_ov004_02166494
 ARM void CopyGlobalBlockAndDispatch_02165df4(SafeAllocator* a, void* target) {
     struct Block0x98_02165df4 tmp = data_ov004_0216ff00;
     void* buf = a->Allocate(sizeof(Block0x98_02165df4));

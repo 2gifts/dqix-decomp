@@ -24,7 +24,6 @@ struct Struct02075cdcFields_021dbfd0 {
     unsigned char f5e;
 };
 
-// JPN: func_ov023_021dc8c8
 // USA: func_ov023_021dbfd0  (semantic: InitSubAllocatorsAndBuffers_021dbfd0)
 extern "C" ARM void func_ov023_021dbfd0(Obj021dbfd0* obj, SafeAllocator* alloc) {
 #if defined(jpn)

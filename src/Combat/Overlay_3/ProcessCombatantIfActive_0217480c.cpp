@@ -26,7 +26,6 @@ extern "C" void func_ov003_0217545c(void* obj);
 extern "C" void func_ov003_02175504(void* obj);
 extern "C" void func_ov003_0217577c(void* obj);
 
-// JPN: func_ov003_0217393c
 // USA: func_ov003_0217480c  (semantic: ProcessCombatantIfActive_0217480c)
 extern "C" ARM void func_ov003_0217480c(void* p) {
     char* obj = (char*)p;

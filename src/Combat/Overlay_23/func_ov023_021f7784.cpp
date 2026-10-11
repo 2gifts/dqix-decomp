@@ -41,7 +41,6 @@ public:
 };
 
 
-// JPN: func_ov023_021f6c7c
 // USA: func_ov023_021f7784
 extern "C" ARM int func_ov023_021f7784(Obj021f7784* obj) {
     if (obj->flags0xc & 0x80) {

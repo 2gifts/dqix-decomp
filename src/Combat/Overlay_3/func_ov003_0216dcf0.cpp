@@ -37,7 +37,6 @@ extern "C" void _Z22IterateEntries0205a330P17Container0205a330i(struct Container
 extern "C" void func_0205ae8c(void* obj);
 
 // USA: func_ov003_0216dcf0
-// JPN: func_ov003_0216d688
 extern "C" ARM void func_ov003_0216dcf0(char* obj) {
     GameState* battle = GameState::GetInstance();
     struct Elem_0205d81c* elem = FindElementForFieldB0(*(struct Struct_0205d81c**)(obj + 0x1000 + kRegionValue2C0_150));

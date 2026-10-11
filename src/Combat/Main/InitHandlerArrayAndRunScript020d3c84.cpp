@@ -39,4 +39,3 @@ ARM void InitHandlerArrayAndRunScript020d3c84(struct HandlerSlotArray020d3c84* a
     _ZN6Script7ExecuteEv((struct Struct02030774*)local);
 }
 
-// JPN: 0x020d56e8

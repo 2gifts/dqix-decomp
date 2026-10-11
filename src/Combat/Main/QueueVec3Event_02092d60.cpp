@@ -34,7 +34,6 @@ struct Param1_02092d60 {
     signed char f38;
 };
 
-// JPN: 0x02093680
 // USA: func_02092d60  (semantic: QueueVec3Event_02092d60)
 extern "C" ARM void func_02092d60(struct Param1_02092d60* p1, int p2) {
     GameState* bs = GameState::GetInstance();

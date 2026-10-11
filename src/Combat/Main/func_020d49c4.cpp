@@ -1,4 +1,3 @@
-// JPN: main:020d6420
 void* GetBattleContext();
 int GetBattleStateCode();
 void InvalidateDataCacheRange(const void*, unsigned);

@@ -173,7 +173,6 @@ static inline int IsPartyMember(int id) {
     return id >= 0 && id <= 3;
 }
 
-// JPN: func_ov024_021e7328
 // USA: func_ov024_021e6a90
 extern "C" ARM int func_ov024_021e6a90(struct Ctx_021e6a90* ctx, int attackerId, int targetId,
                                                           struct Action_021e6a90* action, unsigned int base) {

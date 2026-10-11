@@ -25,7 +25,6 @@ struct Obj_021c3194 {
     unsigned char field9;
 };
 
-// JPN: func_ov017_021c3690
 // USA: func_ov017_021c3194  (semantic: ProcessCombatantMessageState_021c3194)
 extern "C" ARM void func_ov017_021c3194(struct Obj_021c3194* obj) {
 #if defined(jpn)

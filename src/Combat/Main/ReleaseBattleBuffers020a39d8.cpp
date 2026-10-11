@@ -20,4 +20,3 @@ ARM void ReleaseBattleBuffers020a39d8(SafeAllocator* alloc) {
     *(void**)(base + 0x4000 + BATTLE_BUFFER_FIELD) = NULL;
 }
 
-// JPN: 0x020a5714

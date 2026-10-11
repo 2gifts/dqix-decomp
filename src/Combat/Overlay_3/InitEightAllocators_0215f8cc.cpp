@@ -23,7 +23,6 @@ enum { kRegionValue2C8_1B0 = 0x2c8 };
 
 
 // USA: func_ov003_0215f8cc
-// JPN: func_ov003_0215fa80
 extern "C" ARM void func_ov003_0215f8cc(void* self, SafeAllocator* other) {
     if (other == 0) return;
 

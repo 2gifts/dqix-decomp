@@ -18,7 +18,6 @@ int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d, u
 #endif
 
 
-// JPN: func_ov023_021d97ec
 // USA: func_ov023_021d8f2c  (semantic: AdvanceScaleBoxState_021d8f2c)
 extern "C" ARM int func_ov023_021d8f2c(char* obj) {
 #if defined(jpn)

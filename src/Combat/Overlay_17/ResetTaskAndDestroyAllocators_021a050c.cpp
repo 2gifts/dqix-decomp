@@ -11,7 +11,6 @@ void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
 extern AllocatorUnion data_02114e20;
 extern int data_ov017_021d669c[];
 
-// JPN: func_ov017_021a0fbc
 // USA: func_ov017_021a050c
 ARM void ResetTaskAndDestroyAllocators_021a050c(char* self) {
 #if defined(jpn)

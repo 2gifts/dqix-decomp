@@ -99,7 +99,6 @@ extern "C" void _Z20AppendString02042058PcPKc(char* text, const char* append);
 #if defined(jpn)
 extern "C" void func_020474a8(void*,int,const char*,char*);
 #endif
-// JPN: func_ov023_021d9d08
 // USA: func_ov023_021d94e4
 extern "C" ARM void func_ov023_021d94e4(BattleResultWindow_021d94e4* self, char* text, unsigned char lines)
 {

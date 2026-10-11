@@ -19,7 +19,6 @@ struct Repeat02045740 {
     int threshold9a4;    // 0x9a4
 };
 
-// JPN: 0x020463b0
 // USA: func_02045740
 ARM void HandleRepeatInput02045740(struct Repeat02045740* self) {
     int poll = self->poll958;

@@ -9,7 +9,6 @@ extern struct PairSlot020bb514 data_020f1f14[];
 extern unsigned short data_0210cf84;
 
 // USA: func_020bb514
-// JPN: func_020bcfe0
 ARM void InitPairSlotStates020bb514(void) {
     int i;
     struct PairSlot020bb514* slot = data_020f1f14;

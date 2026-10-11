@@ -11,7 +11,6 @@ extern "C" void* func_ov017_0218b5b0(void);
 void* ResetOverlayAndAllocator_0219bf74(void);
 extern "C" void func_ov017_021b1d44(void* p, int a, int b);
 
-// JPN: func_ov003_02170f68
 // USA: func_ov003_02171cac
 ARM void SetupFlag_02171cac_02171cac(unsigned char* obj) {
 	unsigned char result;

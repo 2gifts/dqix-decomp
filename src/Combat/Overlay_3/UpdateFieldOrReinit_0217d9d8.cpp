@@ -22,7 +22,6 @@ struct Obj0217d9d8 {
 };
 
 // USA: func_ov003_0217d9d8  (semantic: UpdateFieldOrReinit_0217d9d8)
-// JPN: func_ov003_0217c678
 extern "C" ARM void func_ov003_0217d9d8(struct Obj0217d9d8* obj) {
     char* g = (char*)GetGlobalField0x1c020421a0();
     signed char b1 = obj->field5;

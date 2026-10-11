@@ -1,6 +1,5 @@
 #include <globaldefs.h>
 
-// JPN: func_ov017_02192d64
 // USA: func_ov017_0219219c  (semantic: GetOffsetForIndex_0219219c)
 extern "C" ARM void* func_ov017_0219219c(char* base, int idx) {
 #if defined(jpn)

@@ -13,7 +13,6 @@ extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(StructA0205d
 extern int TryApplyElemFields0205d5d0(StructA0205d5d0* a, int b, int c, int d, unsigned char e);
 extern "C" void func_ov003_0215b964(void* obj, void* p, int flag);
 
-// JPN: func_ov003_0215d148
 // USA: func_ov003_0215be20
 ARM void ResetAndApply0215be20(void* obj) {
 	memset(*(void**)((char*)obj + 0x7c), 0, kRegion960);

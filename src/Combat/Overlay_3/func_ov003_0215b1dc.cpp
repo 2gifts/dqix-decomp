@@ -48,7 +48,6 @@ extern "C" void func_ov017_021c37a4(void);
 
 extern unsigned char data_02109bf4;
 
-// JPN: func_ov003_0215c61c
 // USA: func_ov003_0215b1dc
 extern "C" ARM void func_ov003_0215b1dc(BattleMessageScene* self) {
     BattleGlobals* g = _Z26GetGlobalField0x1c020421a0v();

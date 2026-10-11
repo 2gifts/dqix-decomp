@@ -14,7 +14,6 @@ extern "C" unsigned int _Z21CheckField0x440State2Ph(unsigned int);
 extern "C" unsigned int _Z26GetGlobalField0x1c020421a0v();
 
 // KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
-// JPN: func_0205e058
 // USA: func_0205cd28
 extern "C" ARM unsigned int _Z37SetupGlobalObjType1AndInitSelfPointerPh(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
     int cc = 0;

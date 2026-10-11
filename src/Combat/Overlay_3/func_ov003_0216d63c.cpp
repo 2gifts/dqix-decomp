@@ -83,7 +83,6 @@ struct Scene0216d63c {
 };
 
 // USA: func_ov003_0216d63c
-// JPN: func_ov003_0216d10c
 extern "C" ARM void func_ov003_0216d63c(struct Scene0216d63c* self) {
 	self->savedPlanes = (DISPCNT & 0x1f00) >> 8;
 	self->field4 = 0;

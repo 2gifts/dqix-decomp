@@ -21,7 +21,6 @@ extern "C" int _Z13GetWord0x7f6cPv(void* gs);
 extern "C" unsigned char _Z18GetByteField0x63d6P20FieldBlock63d6_115a8(void* gs);
 
 // USA: func_020134e0
-// JPN: func_020134e0
 extern "C" ARM void func_020134e0(char* obj) {
     void* gs = _ZN9GameState11GetInstanceEv();
 

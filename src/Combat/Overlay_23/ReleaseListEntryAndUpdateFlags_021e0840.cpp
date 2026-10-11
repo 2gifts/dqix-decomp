@@ -37,7 +37,6 @@ struct List021e0840 {
     Entry021e0840* entries;
 };
 
-// JPN: func_ov023_021e0dc0
 // USA: func_ov023_021e0840  (semantic: ReleaseListEntryAndUpdateFlags_021e0840)
 extern "C" ARM int func_ov023_021e0840(void* obj_) {
 #if defined(jpn)

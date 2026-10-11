@@ -42,7 +42,6 @@ struct Struct020dfc40;
 void ResetStruct020dfc40(struct Struct020dfc40* p);
 
 // USA: func_ov003_0217daf0  (semantic: InitObject_0217daf0)
-// JPN: func_ov003_0217c790
 extern "C" ARM void func_ov003_0217daf0(char* obj) {
 	*(int*)(obj + 0x0) = (*(volatile unsigned int*)0x4000000 & 0x1f00) >> 8;
 	*(unsigned char*)(obj + 0x4) = 0;

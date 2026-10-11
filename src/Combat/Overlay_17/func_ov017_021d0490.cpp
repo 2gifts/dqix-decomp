@@ -87,7 +87,6 @@ static inline Actor021d0490* GetActor(GameResources* r) { return (Actor021d0490*
 static inline Zone021d0490* GetZone(GameResources* r) { return (Zone021d0490*)r->unknown_ptr_3718; }
 static inline Zone021d0490* GetOther(GameResources* r) { return (Zone021d0490*)r->unknown_ptr_array_3afc[13]; }
 
-// JPN: func_ov017_021d0940
 // USA: func_ov017_021d0490
 extern "C" ARM void func_ov017_021d0490(int mode) {
     GameState* battle = GameState::GetInstance();

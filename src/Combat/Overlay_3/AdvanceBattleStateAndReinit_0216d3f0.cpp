@@ -17,7 +17,6 @@ extern "C" void func_ov003_0216d8d4(char* obj, int keyA, int p3, int p4, int p5)
 #endif
 void ReinitController02043204(char* obj);
 
-// JPN: func_ov003_0216ced0
 // USA: func_ov003_0216d3f0  (semantic: AdvanceBattleStateAndReinit_0216d3f0)
 extern "C" ARM void func_ov003_0216d3f0(char* obj) {
     char* g = (char*)GetGlobalField0x1c020421a0();

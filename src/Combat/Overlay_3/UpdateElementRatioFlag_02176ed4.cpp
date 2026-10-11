@@ -33,7 +33,6 @@ void SetEntryFirstField02080fa8(struct Container02080fa8* obj, int id, int value
 
 extern "C" void func_020813ec(void* obj, int key);
 
-// JPN: func_ov003_02175ed0
 // USA: func_ov003_02176ed4  (semantic: UpdateElementRatioFlag_02176ed4)
 extern "C" ARM void func_ov003_02176ed4(char* self) {
     struct Obj2081* elemObj = *(struct Obj2081**)(self + kRegion89c);

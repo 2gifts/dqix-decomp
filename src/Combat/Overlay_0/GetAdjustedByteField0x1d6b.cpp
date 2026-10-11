@@ -7,7 +7,6 @@ enum { adjustedByteOffset = 0x1d6b };
 #endif
 
 // USA: func_ov000_021815c8
-// JPN: func_ov000_0218283c
 ARM int GetAdjustedByteField0x1d6b(void* obj) {
     signed char val = *((signed char*)obj + adjustedByteOffset);
     if (val < 0) return -1;

@@ -49,7 +49,6 @@ static inline BaseCombatStats* GetBaseStats(GameObject* c) {
     return stats;
 }
 
-// JPN: func_ov003_02167a0c
 // USA: func_ov003_02167b34
 extern "C" ARM void func_ov003_02167b34(Menu_02167b34* menu) {
     GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), menu->combatantId);

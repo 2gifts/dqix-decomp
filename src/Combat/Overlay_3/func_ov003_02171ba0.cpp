@@ -38,7 +38,6 @@ struct Obj02171ba0 {
 };
 
 // USA: func_ov003_02171ba0
-// JPN: func_ov003_02170e5c
 extern "C" ARM void func_ov003_02171ba0(struct Obj02171ba0* obj) {
     GameState* battle = GameState::GetInstance();
     struct SearchStruct* searchPtr = (struct SearchStruct*)func_0202ae18();

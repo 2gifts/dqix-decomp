@@ -44,7 +44,6 @@ extern "C" void _Z34SetField0x1b2IfMatchOrFlag02053f7cP11Obj02053f7csi(Obj02053f
 extern "C" void _Z26CallHelperWithBuf_021907dciiiii(int a, int b, int c, int d, int e);
 extern "C" void _Z30ClearMatchingHalfword_02197324Pht(unsigned char* obj, unsigned short key);
 
-// JPN: func_ov017_021c90f4
 // USA: func_ov017_021c8c44
 extern "C" ARM void func_ov017_021c8c44(int id, Evt021c8c44* evt, GameState* gs, unsigned char* ctx, void* search) {
     int match;

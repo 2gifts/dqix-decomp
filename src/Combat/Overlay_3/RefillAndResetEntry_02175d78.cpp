@@ -17,7 +17,6 @@ struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0* c, in
 void* GetPtrField0x2a04(GameState* battleStruct);
 extern "C" void func_ov003_02176798(void* obj);
 
-// JPN: func_ov003_02174d9c
 // USA: func_ov003_02175d78
 ARM int RefillAndResetEntry_02175d78(char* obj) {
 	GameState* bs = GameState::GetInstance();

@@ -37,7 +37,6 @@ extern "C" void _Z26SetEntryFirstField02080f8cP17Container02080f8cii(EntryList*,
 extern "C" void _Z22SetEntryHighNibble0x13P17Container02080cc0ii(EntryList*, int, int);
 extern "C" void func_020813ec(EntryList*, int);
 
-// JPN: func_ov003_02159820
 // USA: func_ov003_02158334
 extern "C" ARM void func_ov003_02158334(PartyStatusPanel* self) {
     GameState* gs = GameState::GetInstance();

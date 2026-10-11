@@ -60,7 +60,6 @@ struct Ctx021612c0 {
 };
 
 // USA: func_ov003_021612c0  (semantic: ConfigureAndDispatchElement_021612c0)
-// JPN: func_ov003_021613ac
 extern "C" ARM void func_ov003_021612c0(struct Ctx021612c0* self) {
     self->field488 = 9;
     self->field474 = self->field49c = 0x2c;

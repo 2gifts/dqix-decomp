@@ -24,7 +24,6 @@ struct Obj0204c754;
 void ResetObject0204c754(struct Obj0204c754* obj);
 
 // USA: func_ov003_02167370
-// JPN: func_ov003_02167250
 extern "C" ARM void func_ov003_02167370(char* obj) {
     int data4 = (int)BackgroundLoader::GetInstance();
     if (*(int*)(obj + kRegionValue64_34) >= 0) {

@@ -41,7 +41,6 @@ struct Params02036804 {
 };
 
 // USA: func_ov003_0217c974
-// JPN: func_ov003_0217b69c
 extern "C" ARM void func_ov003_0217c974(char* self) {
     int list = (int)BackgroundLoader::GetInstance();
     int out1, out2;

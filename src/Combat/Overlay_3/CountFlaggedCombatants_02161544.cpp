@@ -13,7 +13,6 @@ enum { kRegionValue82_AA = 0x82 };
 void* GetPtrField0x2a04(GameState* battleStruct);
 
 // USA: func_ov003_02161544
-// JPN: func_ov003_0216162c
 ARM int CountFlaggedCombatants_02161544(void* self) {
     GameState* bs = GameState::GetInstance();
     unsigned char* arr = (unsigned char*)GetPtrField0x2a04(bs);

@@ -41,7 +41,6 @@ struct Owner021c8e70 {
     SlotTable021c8e70 table;
 };
 
-// JPN: func_ov017_021c9320
 // USA: func_ov017_021c8e70
 extern "C" ARM void func_ov017_021c8e70(int unused0, Src021c8e70* src, int unused2, unsigned char* obj) {
 #if defined(jpn)

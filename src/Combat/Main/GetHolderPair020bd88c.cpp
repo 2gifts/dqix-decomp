@@ -6,7 +6,6 @@ extern struct Holder020bd88c* data_02110370;
 struct OutPair020bd88c { int a; int b; };
 
 // USA: func_020bd88c
-// JPN: func_020bf358
 ARM void GetHolderPair020bd88c(struct OutPair020bd88c* out) {
     struct Holder020bd88c* h = data_02110370;
     int a = h->f7c;

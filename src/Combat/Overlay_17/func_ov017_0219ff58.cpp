@@ -52,7 +52,6 @@ void InitStruct02070378(char* obj);
 void InitAndResetHeader_0219e310(unsigned char* obj, int flag);
 void AppendNodeToTail(struct TailList020469b4* list, struct TailNode020469b4* node);
 
-// JPN: func_ov017_021a0a08
 // USA: func_ov017_0219ff58
 extern "C" ARM int func_ov017_0219ff58(unsigned char* ov, int flagA, int flagB, int revive) {
 #if defined(jpn)

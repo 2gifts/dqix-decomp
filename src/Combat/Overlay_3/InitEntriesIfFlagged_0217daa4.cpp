@@ -11,7 +11,6 @@ extern "C" void func_020439b0(void* obj, int flag);
 struct Obj0205d2bc;
 void InitEntries0205d2bc(struct Obj0205d2bc* obj);
 
-// JPN: func_ov003_0217c744
 // USA: func_ov003_0217daa4  (semantic: InitEntriesIfFlagged_0217daa4)
 extern "C" ARM void func_ov003_0217daa4(char* obj) {
     int g = GetGlobalField0x1c020421a0();

@@ -53,7 +53,6 @@ struct Task021a9768 {
 extern "C" void func_ov017_021a9714(Task021a9768* task);
 
 // USA: func_ov017_021a9768
-// JPN: func_ov017_021a9f3c
 extern "C" ARM void func_ov017_021a9768(Task021a9768* task) {
     GameState* gs = GameState::GetInstance();
     GameResources* res = func_ov017_0218b5b0();

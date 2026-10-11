@@ -51,7 +51,6 @@ extern int data_ov023_021fdb99;
 extern char data_ov023_021fce2d[];
 extern char data_ov023_021fce42[];
 #endif
-// JPN: func_ov023_021ddd7c
 // USA: func_ov023_021dd59c  (semantic: UpdateCombatOverlayState_021dd59c)
 extern "C" ARM void func_ov023_021dd59c(void* objRaw) {
 #if defined(jpn)

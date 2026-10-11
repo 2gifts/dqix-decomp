@@ -33,7 +33,6 @@ int func_ov000_0215833c(void*,int,ActionNode*);int func_ov000_0215f67c(void*,int
 }
 inline int IsParty(int id){return (id>=0&&id<=3)?1:0;}
 // USA: func_ov000_0215767c
-// JPN: func_ov000_0215767c
 extern "C" ARM void func_ov000_0215767c(Battle* self,ActionNode* src,ActionNode* dst){
  GameState* gs=GameState::GetInstance();char* data=GetData02108e10();int id=(short)src->entry->id;GameObject* unit=GameState::GetInstance()->GetCombatantByIndex(id);if(!unit)return;
  Ids ids(data_ov000_02182c54);signed char count=0;bool special=false;bool multiple=false;self->mode=0;

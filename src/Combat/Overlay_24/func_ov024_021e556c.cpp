@@ -46,7 +46,6 @@ struct Fighter_021e556c {
     unsigned char* f150;
 };
 
-// JPN: func_ov024_021e5e04
 // USA: func_ov024_021e556c
 extern "C" ARM void func_ov024_021e556c(struct Act_021e556c* obj, int sourceId, int targetId, struct Rec_021e556c* rec, int damage) {
     GameState* gs = GameState::GetInstance();

@@ -19,7 +19,6 @@ struct State020455f8 {
     unsigned char f19b3;
 };
 
-// JPN: 0x02046268
 // USA: func_020455f8
 ARM void HandleStateChange020455f8(struct State020455f8* obj) {
     if (obj->f19b3 == 1 || obj->f19b2 == 0) {

@@ -34,7 +34,6 @@ struct Obj0217ce3c {
 };
 
 // USA: func_ov003_0217ce3c
-// JPN: func_ov003_0217bb64
 extern "C" ARM int func_ov003_0217ce3c(struct Obj0217ce3c* obj) {
     GameState* bs = GameState::GetInstance();
     func_ov003_0217dc94((struct Struct6_0217dc94*)obj);

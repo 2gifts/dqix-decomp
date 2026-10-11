@@ -28,7 +28,6 @@ struct Self0215e3fc {
 };
 
 // USA: func_ov003_0215e3fc
-// JPN: func_ov003_0215f6d4
 ARM void ResetAnimStateIfIdle_0215e3fc(struct Self0215e3fc* self) {
     if (IsAnimationActive0209ca2c(&data_02109bf4) != 0) {
         return;

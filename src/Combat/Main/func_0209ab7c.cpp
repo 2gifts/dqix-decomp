@@ -26,7 +26,6 @@ struct Field150_0209ab7c {
 int GetFieldAt0x150(unsigned char* obj);
 
 // USA: func_0209ab7c
-// JPN: func_0209ab7c
 extern "C" ARM int func_0209ab7c(struct Holder0209ab7c* h, unsigned char* path, unsigned char* out,
                                  int threshold) {
     if (&h->base->slots[0].pairs[0] == NULL) return 0;

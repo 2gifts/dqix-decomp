@@ -7,7 +7,6 @@ struct FormatInfo020b2a6c {
 };
 
 // USA: func_020b2a6c
-// JPN: func_020b4538
 ARM int GetAlignedSizeByCode020b2a6c(unsigned char* code, struct FormatInfo020b2a6c* info) {
     unsigned char c;
     if (code == NULL || info == NULL) {

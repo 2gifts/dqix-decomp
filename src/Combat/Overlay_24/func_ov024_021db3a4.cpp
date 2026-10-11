@@ -18,7 +18,6 @@ struct Flags021db3a4 { char pad[0x1c]; unsigned char unused:7; unsigned char fla
 struct Obj021db3a4 { char pad[0xc]; Flags021db3a4* action; void* context; int count; };
 struct Code021db3a4 { unsigned int code:12; unsigned int rest:20; };
 struct Params021db3a4 { char pad[4]; Code021db3a4 field4; };
-// JPN: func_ov024_021dbc50
 // USA: func_ov024_021db3a4
 extern "C" ARM void* func_ov024_021db3a4(Obj021db3a4* obj, short arg, int id, Params021db3a4* params, int amount, int unused, unsigned char enabled) {
     GameObject* c = GetCombatantByID((int)obj->context, id);

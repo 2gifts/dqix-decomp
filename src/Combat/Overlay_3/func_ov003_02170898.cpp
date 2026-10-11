@@ -16,7 +16,6 @@ struct Elem020985ec {
 };
 
 // USA: func_ov003_02170898
-// JPN: func_ov003_0217011c
 extern "C" ARM void func_ov003_02170898(unsigned char* self) {
     struct Elem020985ec* arr = (struct Elem020985ec*)((char*)func_02012fe4() + kRegionValue840_860);
     int count = *(int*)(*(char**)(self + 0x170) + 0x1000 + 0xb38);

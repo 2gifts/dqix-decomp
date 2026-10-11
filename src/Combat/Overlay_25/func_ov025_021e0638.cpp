@@ -1,4 +1,3 @@
-// JPN: func_ov025_021e0f48
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"

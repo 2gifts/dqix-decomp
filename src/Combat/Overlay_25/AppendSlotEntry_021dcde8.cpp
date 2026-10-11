@@ -23,7 +23,6 @@ void CopyFiveWordsAndByte_021dcd28(struct FiveWordsAndByte_021dcd28* dst, struct
 #define SLOT_FIELD(n) (n)
 #endif
 
-// JPN: 021dd6dc
 // USA: func_ov025_021dcde8
 ARM void AppendSlotEntry_021dcde8(unsigned char* obj, struct FiveWordsAndByte_021dcd28* src) {
     if (*(unsigned char*)(obj + SLOT_COUNT) >= 5) {

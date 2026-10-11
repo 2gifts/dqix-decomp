@@ -1,6 +1,5 @@
 #include <globaldefs.h>
 
-// JPN: func_ov024_021f7180
 // USA: func_ov024_021f69b4
 ARM void* FindByKeyIndexed_021f69b4(char* base, int key) {
 #if defined(jpn)

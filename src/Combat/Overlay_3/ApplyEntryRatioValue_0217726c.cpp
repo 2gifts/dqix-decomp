@@ -26,7 +26,6 @@ struct Container02080fa8;
 void SetEntryFirstField02080fa8(struct Container02080fa8* obj, int id, int value);
 extern "C" void func_020813ec(void* obj, int key);
 
-// JPN: func_ov003_02176250
 // USA: func_ov003_0217726c  (semantic: ApplyEntryRatioValue_0217726c)
 extern "C" ARM void func_ov003_0217726c(char* obj) {
 	int key = *(short*)(obj + kRegion103a);

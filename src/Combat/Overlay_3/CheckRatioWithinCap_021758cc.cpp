@@ -15,7 +15,6 @@ struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0* c, in
 unsigned int ComputeRatio_02175898(char* obj, void* s);
 void* GetPtrField0x2a04(GameState* battleStruct);
 
-// JPN: func_ov003_02174914
 // USA: func_ov003_021758cc
 ARM int CheckRatioWithinCap_021758cc(char* self, int count) {
 	short key = *(short*)(self + kRegion103a);

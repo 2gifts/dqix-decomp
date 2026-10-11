@@ -22,7 +22,6 @@ struct Obj021e447c {
     unsigned short f634;
 };
 
-// JPN: func_ov023_021e46a0
 // USA: func_ov023_021e447c
 extern "C" ARM void func_ov023_021e447c(Obj021e447c* obj) {
     if (!(obj->f634 & 0x8)) return;

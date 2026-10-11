@@ -33,7 +33,6 @@ struct Obj021672e4 {
 };
 
 // USA: func_ov003_021672e4
-// JPN: func_ov003_021671c4
 extern "C" ARM void func_ov003_021672e4(struct Obj021672e4* obj, int p1, int p2) {
     obj->f0 = 0;
     obj->f4 = 0;

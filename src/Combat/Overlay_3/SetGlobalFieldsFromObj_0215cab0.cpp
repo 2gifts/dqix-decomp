@@ -17,7 +17,6 @@ extern "C" void func_0204500c(void*, int, int, int);
 extern "C" void func_02045d88(void*, int, int);
 #endif
 
-// JPN: func_ov003_0215ddcc
 // USA: func_ov003_0215cab0  (semantic: SetGlobalFieldsFromObj_0215cab0)
 extern "C" ARM void func_ov003_0215cab0(char* obj, int flag) {
     if (flag == 0) return;

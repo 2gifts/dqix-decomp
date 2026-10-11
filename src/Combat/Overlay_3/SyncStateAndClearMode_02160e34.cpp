@@ -34,7 +34,6 @@ struct Self02160e34 {
 };
 
 // USA: func_ov003_02160e34  (semantic: SyncStateAndClearMode_02160e34)
-// JPN: func_ov003_02160f90
 extern "C" ARM int func_ov003_02160e34(struct Self02160e34* self) {
 	int result = 0;
 	void* dataPtr = GetDataPtr02114e04_020d6c00();

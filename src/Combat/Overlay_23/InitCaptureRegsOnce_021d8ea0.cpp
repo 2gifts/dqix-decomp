@@ -2,7 +2,6 @@
 
 int GetGlobalField0x1c020421a0(void);
 
-// JPN: func_ov023_021d9760
 // USA: func_ov023_021d8ea0  (semantic: InitCaptureRegsOnce_021d8ea0)
 extern "C" ARM void func_ov023_021d8ea0(char* obj) {
 #if defined(jpn)

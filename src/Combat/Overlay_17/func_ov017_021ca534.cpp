@@ -70,7 +70,6 @@ struct LocalEvt021ca534 {
     Payload021ca534 payload;
 };
 
-// JPN: func_ov017_021ca9e4
 // USA: func_ov017_021ca534
 extern "C" ARM void func_ov017_021ca534(Header021ca534* obj) {
 #if defined(jpn)

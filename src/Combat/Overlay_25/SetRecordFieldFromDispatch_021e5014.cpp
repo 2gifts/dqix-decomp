@@ -8,7 +8,6 @@ extern int data_ov025_021ef988;
 
 struct Param021e5014 { char pad[8]; unsigned char field8; unsigned char field9; };
 
-// JPN: func_ov025_021e5504
 // USA: func_ov025_021e5014
 ARM int SetRecordFieldFromDispatch_021e5014(struct Param021e5014* p, int b, int unused2, int d) {
 #if defined(jpn)

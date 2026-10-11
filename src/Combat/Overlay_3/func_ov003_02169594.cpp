@@ -45,7 +45,6 @@ struct Ctx02169594 {
 static inline struct Grid02169594* GetGrid(struct Ctx02169594* ctx, int i) { return &ctx->grids[i]; }
 
 // USA: func_ov003_02169594
-// JPN: func_ov003_021693bc
 extern "C" ARM void func_ov003_02169594(struct Ctx02169594* self) {
     int cols;
     int rows;

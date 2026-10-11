@@ -1,4 +1,3 @@
-// JPN: func_ov025_021d94f0
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Graphics/LightingManager.h"

@@ -24,7 +24,6 @@ struct Obj021e0b9c {
     int handle;
 };
 
-// JPN: func_ov023_021e10f0
 // USA: func_ov023_021e0b9c  (semantic: ApplyAndClearListEntry_021e0b9c)
 extern "C" ARM int func_ov023_021e0b9c(struct Obj021e0b9c* obj) {
     if (obj->handle == -1) {

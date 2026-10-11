@@ -56,7 +56,6 @@ extern "C" void _Z29SetField0AndPropagate0205baccP12Node0205bacci(Node0205bacc*,
 extern "C" void _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci(Struct_0205bcdc*, int);
 extern "C" void func_0205bb04(Struct_0205bcdc*, int);
 
-// JPN: func_ov023_021e71c4
 // USA: func_ov023_021e6e60
 extern "C" ARM void func_ov023_021e6e60(SelectionScreen* self) {
     GameState::GetInstance();

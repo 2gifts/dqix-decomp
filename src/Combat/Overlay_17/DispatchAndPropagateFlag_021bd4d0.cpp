@@ -23,7 +23,6 @@ struct TagObj_021bd4d0 {
     unsigned char field101;
 };
 
-// JPN: func_ov017_021bdac8
 // USA: func_ov017_021bd4d0  (semantic: DispatchAndPropagateFlag_021bd4d0)
 extern "C" ARM void func_ov017_021bd4d0(struct TagObj_021bd4d0* obj, int id, int clearFlag, int checkFlag2) {
     GameState* battleStruct;

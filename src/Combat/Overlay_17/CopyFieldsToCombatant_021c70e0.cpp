@@ -7,7 +7,6 @@ extern "C" void* func_ov017_021b8468(void* obj);
 void* GetField6b0_021b8470(void* obj);
 int GetField0x3acValue(GameState* battleStruct);
 
-// JPN: func_ov017_021c7590
 // USA: func_ov017_021c70e0  (semantic: CopyFieldsToCombatant_021c70e0)
 extern "C" ARM void func_ov017_021c70e0(int unused0, unsigned char* src, GameState* battleStruct, unsigned char* ovBase) {
 #if defined(jpn)

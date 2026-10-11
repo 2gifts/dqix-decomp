@@ -17,7 +17,6 @@ extern "C" void* func_ov017_0218b5b0(struct Obj02173af4*);
 extern "C" void _Z16SetSubBrightnessP13GameResourcesii(void*, int, int);
 extern "C" int _Z31IsSubBrightnessTransitionActiveP13GameResources(int* obj);
 
-// JPN: func_ov003_02172c58
 // USA: func_ov003_02173af4
 ARM void UpdateFieldEdEf_02173af4(struct Obj02173af4* p) {
     void* x = func_ov017_0218b5b0(p);

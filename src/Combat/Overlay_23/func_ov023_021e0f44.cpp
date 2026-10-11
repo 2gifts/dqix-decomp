@@ -94,7 +94,6 @@ extern "C" unsigned int func_ov023_021ddc98(Canvas_021e0f44* canvas, unsigned in
             element->flags_ &= ~1;                                       \
     }
 
-// JPN: func_ov023_021e1478
 // USA: func_ov023_021e0f44
 extern "C" ARM void func_ov023_021e0f44(ItemInfoWindow_021e0f44* self)
 {

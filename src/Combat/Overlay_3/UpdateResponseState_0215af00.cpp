@@ -16,7 +16,6 @@ extern "C" int func_ov017_0218b5b0(void);
 extern "C" void func_ov017_02191108(int, int, int, int, int);
 
 // USA: func_ov003_0215af00
-// JPN: func_ov003_0215c340
 ARM void UpdateResponseState_0215af00(void* self) {
     unsigned char* s = (unsigned char*)self;
     unsigned char* g = (unsigned char*)_Z26GetGlobalField0x1c020421a0v();

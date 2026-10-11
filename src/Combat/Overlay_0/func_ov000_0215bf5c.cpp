@@ -39,7 +39,6 @@ static inline GameObject* ResolveUnit0215bf5c(int id) { return GameState::GetIns
 static inline int GetCount0215bf5c(Node0215bf5c* node) { int count=node->count28;return count; }
 
 // USA: func_ov000_0215bf5c
-// JPN: func_ov000_0215bf5c
 extern "C" ARM void func_ov000_0215bf5c(Root0215bf5c* self,List02160094* list) {
     for (int i=0;i<list->count;i++) {
         Node0215bf5c* node=GetNodeAtIndex02160094(list,i);

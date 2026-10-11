@@ -25,7 +25,6 @@ extern int data_ov023_021fe34c;
 struct Data021fff08_021f5d58 { char pad[0xc]; void* fieldC; void* field10; };
 extern struct Data021fff08_021f5d58 data_ov023_021fff08;
 
-// JPN: func_ov023_021f5344
 // USA: func_ov023_021f5d58  (semantic: DecryptAndRunBufferedScript_021f5d58)
 extern "C" ARM int func_ov023_021f5d58(unsigned char* buf, int len, unsigned char* out) {
     if (ComputeModHash_021f6324(len, buf) != 0) {

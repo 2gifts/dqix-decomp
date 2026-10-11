@@ -8,7 +8,6 @@ extern "C" int _Z26DispatchEventEntryForIndexijiiPi(int,unsigned,int,int,void**)
 extern "C" int _Z22ProcessEntries020be604PvS_iii(void*,void*,int,int,int);
 extern "C" void func_020d2b34(void*,int,void*);
 #pragma optimize_for_size off
-// JPN: main:020bf99c
 extern "C" int func_020bded0(int index,unsigned flags,int b,int c,void** out) {
  ResourceGroup* group=_Z18GetOffsetEntry0x10i(index);
  if(!group) return 4;

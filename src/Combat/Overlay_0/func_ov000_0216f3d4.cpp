@@ -13,7 +13,6 @@ struct Work { char p0[0x10]; Node* nodes; Group* groups; };
 struct Camera { char p0[4]; Vector3i position; char p1[0x21c-0x10]; void* list; unsigned char mode,instant; char p2[2]; int index; char p3[0x260-0x228]; unsigned char active,state,first,second; char p4[0x278-0x264]; unsigned char enabled; char p5[3]; Work* work; };
 inline int Square(int a) { return (int)(((long long)a*a+0x800)>>12); }
 // USA: func_ov000_0216f3d4
-// JPN: func_ov000_0216f3d4
 extern "C" ARM void func_ov000_0216f3d4(Camera* self) {
     if(!self->list || !self->enabled) return;
     short ids[12];

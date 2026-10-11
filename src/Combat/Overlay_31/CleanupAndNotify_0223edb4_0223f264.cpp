@@ -1,4 +1,3 @@
-// JPN: func_ov031_0223fa44
 #include <globaldefs.h>
 
 typedef void* (*AllocFn02290dac)(int, int);

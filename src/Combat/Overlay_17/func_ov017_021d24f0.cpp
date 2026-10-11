@@ -22,7 +22,6 @@ struct Node021d24f0 {
     int field8;
 };
 
-// JPN: func_ov017_021d2974
 // USA: func_ov017_021d24f0
 extern "C" ARM void func_ov017_021d24f0(void* unused0, Node021d24f0* node, GameState* battleStruct) {
 #if defined(jpn)

@@ -14,7 +14,6 @@ struct StructField8Nibble04e8 {
     unsigned int nibble : 4;
 };
 
-// JPN: func_ov023_021e0a88
 // USA: func_ov023_021e04e8  (semantic: ReleaseQueuedListEntry_021e04e8)
 extern "C" ARM int func_ov023_021e04e8(void* obj) {
 #if defined(jpn)

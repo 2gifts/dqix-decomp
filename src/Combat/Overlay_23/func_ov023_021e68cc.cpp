@@ -58,7 +58,6 @@ struct ProfileEditor_021e68cc {
 extern "C" Element_021e68cc* _Z23FindElementByC40205d81cP15Struct_0205d81ci(Struct_0205d81c* s, int key);
 extern "C" void func_0205ac40(void* renderer, void* sprite);
 
-// JPN: func_ov023_021e6e3c
 // USA: func_ov023_021e68cc
 extern "C" ARM void func_ov023_021e68cc(ProfileEditor_021e68cc* self) {
 #if defined(jpn)

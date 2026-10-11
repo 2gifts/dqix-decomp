@@ -54,7 +54,6 @@ static inline char& GetResourceStateBuffer(GameResources* resources, int offset)
     return resources->unknown_2cc[offset];
 }
 
-// JPN: func_ov017_021bff4c
 // USA: func_ov017_021bf9a0
 extern "C" ARM int func_ov017_021bf9a0(LootEvent* self) {
     unsigned int delta = GameState::GetInstance()->GetEffectiveDeltaTime();

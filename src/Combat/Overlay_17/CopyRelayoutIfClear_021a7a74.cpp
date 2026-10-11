@@ -9,7 +9,6 @@ void AppendNodeToTail(TailList020469b4* list, TailNode020469b4* node);
 void InitObj_021a7adc(char* obj);
 void CopyRelayoutFields_021a7c28(unsigned char* dst, unsigned char* src);
 
-// JPN: func_ov017_021a8404
 // USA: func_ov017_021a7a74  (semantic: CopyRelayoutIfClear_021a7a74)
 extern "C" ARM void func_ov017_021a7a74(void* unused0, unsigned char* src) {
 #if defined(jpn)

@@ -30,7 +30,6 @@ struct Src021cd424 {
     signed char fieldc;
 };
 
-// JPN: func_ov017_021cd8cc
 // USA: func_ov017_021cd424
 extern "C" ARM void func_ov017_021cd424(int unused0, Src021cd424* src, int unused2, unsigned char* obj) {
 #if defined(jpn)

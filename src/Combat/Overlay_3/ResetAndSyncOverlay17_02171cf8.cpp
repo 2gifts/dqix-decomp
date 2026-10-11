@@ -26,7 +26,6 @@ struct S02171cf8 {
 };
 
 // USA: func_ov003_02171cf8
-// JPN: func_ov003_02170fb4
 ARM void ResetAndSyncOverlay17_02171cf8(struct S02171cf8* obj) {
 	char* base = func_ov017_0218b5b0();
 	char* p = *(char**)(base + kRegionValue3B48_3928);

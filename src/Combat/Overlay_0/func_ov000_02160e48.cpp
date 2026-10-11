@@ -12,7 +12,6 @@ enum { stateOffset = 0xea8, loadTaskOffset = 0x7730 };
 #endif
 
 // USA: func_ov000_02160e48
-// JPN: func_ov000_021625b0
 extern "C" ARM void func_ov000_02160e48(void* obj) {
     *(int*)((char*)obj + stateOffset) = 0x13;
     *(int*)((char*)obj + stateOffset + 4) = 0;

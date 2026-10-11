@@ -23,7 +23,6 @@ struct Param021e8148 {
     unsigned char mode;
 };
 
-// JPN: func_ov025_021e85e8
 // USA: func_ov025_021e8148
 extern "C" ARM int func_ov025_021e8148(Param021e8148* p, int b, int unused, void* c) {
     GameState* gs = GameState::GetInstance();

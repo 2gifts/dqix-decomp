@@ -53,7 +53,6 @@ struct Ctx02175df4 {
 };
 
 // USA: func_ov003_02175df4
-// JPN: func_ov003_02174e10
 extern "C" ARM int func_ov003_02175df4(Ctx02175df4* self) {
     GameState* bs = GameState::GetInstance();
     char* bag = (char*)GetPtrField0x2a04(bs);

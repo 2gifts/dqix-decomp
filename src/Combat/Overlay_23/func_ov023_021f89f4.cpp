@@ -11,7 +11,6 @@ struct Flags45_021f89f4 { unsigned char bit0 : 1; unsigned char mid : 6; unsigne
 #endif
 
 
-// JPN: func_ov023_021f7e8c
 // USA: func_ov023_021f89f4
 extern "C" ARM int func_ov023_021f89f4(char* obj, int unused, int arg2, int arg3, int pA, int pB, int pC, int pD, int pE, int pF, int pG) {
     func_ov023_021f6ed8((struct ObjBase021f6ed8*)obj);

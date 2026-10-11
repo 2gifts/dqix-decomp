@@ -12,7 +12,6 @@ struct Obj_021b6e70 {
     unsigned char field0xd;
 };
 
-// JPN: 021b7420
 // USA: func_ov017_021b6e70  (semantic: CheckCombatantAndMapFlags_021b6e70)
 extern "C" ARM bool func_ov017_021b6e70(struct Obj_021b6e70* obj, int combatantId) {
     GameState* battleStruct = GameState::GetInstance();

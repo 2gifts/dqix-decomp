@@ -1,4 +1,3 @@
-// JPN: main:020cf468
 struct RatioConfig { short numeratorA, numeratorB, divisorA, divisorB; };
 struct RatioState { unsigned pad[7]; int numeratorA,divisorA,resultA,numeratorB,divisorB,resultB; unsigned short enabled; };
 extern RatioState data_021117b0;

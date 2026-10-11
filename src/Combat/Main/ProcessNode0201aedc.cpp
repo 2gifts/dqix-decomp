@@ -28,7 +28,6 @@ enum { NodeBufferOffset = 0x25f4 };
 enum { NodeBufferOffset = 0x25b4 };
 #endif
 
-// JPN: func_0201ac7c
 // USA: func_0201aedc
 ARM void ProcessNode0201aedc(Ctx0201aedc* p) {
     if (IsValueInRange0201b5d8(p->field0)) return;

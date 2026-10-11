@@ -26,7 +26,6 @@ void SetupGlobalObjType1AndInitSelfPointer(unsigned char* obj);
 void* GetDataPtr02114e04_020d6c00(void);
 void OrBitsIntoField0(unsigned int* p, unsigned int mask);
 
-// JPN: func_ov017_021b02a0
 // USA: func_ov017_021afb8c  (semantic: InitObjAndDispatchName_021afb8c)
 extern "C" ARM void func_ov017_021afb8c(char* self, char* name) {
 #if defined(jpn)

@@ -17,7 +17,6 @@ struct ElemFields_021e05e4 {
     unsigned int rest : 28;
 };
 
-// JPN: func_ov023_021e0b70
 // USA: func_ov023_021e05e4
 ARM int ClearBufferAndCheckField_021e05e4(void* obj) {
 #if defined(jpn)

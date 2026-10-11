@@ -1,4 +1,3 @@
-// JPN: func_ov017_0218c2a8
 #include <globaldefs.h>
 #include "World/ZoneLootableRecord.h"
 #include "Filesystem/BackgroundLoader.h"

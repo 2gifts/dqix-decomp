@@ -51,7 +51,6 @@ extern "C" unsigned short* GetSubBG0ScreenBase();
 extern "C" unsigned short* GetMainBG1ScreenBase();
 extern "C" unsigned short* GetMainBG2ScreenBase();
 #endif
-// JPN: func_ov023_021de438
 // USA: func_ov023_021ddc98
 extern "C" ARM unsigned int func_ov023_021ddc98(Canvas_021ddc98* canvas, unsigned int offset, unsigned short palette, int bg1)
 {

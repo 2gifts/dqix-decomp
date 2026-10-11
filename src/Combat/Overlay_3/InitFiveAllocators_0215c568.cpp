@@ -15,11 +15,7 @@ enum { kRegionValue5C_28 = 0x5c };
 extern "C" void func_020c9be0(void);
 int GetGlobalField0x1c020421a0(void);
 
-// func_ov017_021bacd8 supplies state storage allocated from the same backing
-// allocator. Each embedded allocator receives a separate arena buffer.
-// The purpose of the final copied global field is not established here.
 // USA: func_ov003_0215c568
-// JPN: func_ov003_0215d87c
 extern "C" ARM void func_ov003_0215c568(void* allocatorState, SafeAllocator* backingAllocator) {
     if (backingAllocator == 0) return;
 

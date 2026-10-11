@@ -54,7 +54,6 @@ static inline short GetAC(const struct Elem_0205d81c* p) { return p->fieldAC; }
 static inline short GetAE(const struct Elem_0205d81c* p) { return p->fieldAE; }
 
 // USA: func_ov000_02179f94
-// JPN: func_ov000_0217b308
 extern "C" ARM void func_ov000_02179f94(struct Owner_02179f94* obj, void* entry, int a, int b) {
     func_ov000_0217a19c(obj, entry);
     func_ov000_0217c638(obj, a, b);

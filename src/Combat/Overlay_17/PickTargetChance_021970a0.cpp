@@ -19,7 +19,6 @@ struct Field150LowBits021970a0 {
 };
 
 // USA: func_ov017_021970a0
-// JPN: func_ov017_02197c50
 extern "C" ARM int func_ov017_021970a0(int mode) {
     GameState* battleStruct = GameState::GetInstance();
     GetBTRandom();

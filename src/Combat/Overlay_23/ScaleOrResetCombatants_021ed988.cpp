@@ -15,7 +15,6 @@ GameObject* GetCombatantWithFlag0x400(GameState* battleStruct, int combatantId);
 #define ALPHA_IDS (0x6e00 + 0x30)
 #endif
 
-// JPN: func_ov023_021ed76c
 // USA: func_ov023_021ed988
 ARM void ScaleOrResetCombatants_021ed988(char *obj, int brightness) {
 	GameState *bs = GameState::GetInstance();

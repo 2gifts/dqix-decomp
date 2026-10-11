@@ -68,7 +68,6 @@ extern "C" void _Z18TrySetMode02076cccPvi(void* obj, int mode);
 extern "C" Slot021c9954* _Z26GetPtrPlusOffsetC_021a7c8cPv(void* obj);
 extern "C" void _Z25SetByteAtOffset1_021a7c1cPh(unsigned char* obj);
 
-// JPN: func_ov017_021c9e04
 // USA: func_ov017_021c9954
 extern "C" ARM void func_ov017_021c9954(int id, int checkLeader, int keep, int group) {
     GameState::GetInstance();

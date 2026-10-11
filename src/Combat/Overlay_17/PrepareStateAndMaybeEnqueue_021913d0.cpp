@@ -19,7 +19,6 @@ extern "C" void func_ov017_021ce400(int a, int b);
 
 struct Vec3_021913d0 { int x; int y; int z; };
 
-// JPN: func_ov017_02191fb4
 // USA: func_ov017_021913d0  (semantic: PrepareStateAndMaybeEnqueue_021913d0)
 extern "C" ARM void func_ov017_021913d0(unsigned char* obj, int count) {
     if (count > 0) {

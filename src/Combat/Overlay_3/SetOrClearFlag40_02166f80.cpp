@@ -15,7 +15,6 @@ struct Elem2081 {
 struct Elem2081* FindElementByByte0xc4(struct Obj2081* obj, int key);
 extern "C" void func_020813ec(void* obj, int key);
 
-// JPN: func_ov003_02166e60
 // USA: func_ov003_02166f80
 ARM void SetOrClearFlag40_02166f80(void* self, int key, int set) {
     struct Obj2081* obj = *(struct Obj2081**)((char*)self + kRegion324);

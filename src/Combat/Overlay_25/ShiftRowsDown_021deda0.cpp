@@ -18,7 +18,6 @@ struct Table_021deda0 {
 	unsigned short count;
 };
 
-// JPN: func_ov025_021df6b0
 // USA: func_ov025_021deda0
 ARM int ShiftRowsDown_021deda0(struct Table_021deda0* t, struct ThreeShorts021ded84* out) {
 	if (t->count != 0) {

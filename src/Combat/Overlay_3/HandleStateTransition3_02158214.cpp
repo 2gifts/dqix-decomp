@@ -38,7 +38,6 @@ extern "C" void func_ov023_021eb43c(void* obj);
 extern "C" void func_ov023_021eb26c(void* obj);
 
 // USA: func_ov003_02158214
-// JPN: func_ov003_02159700
 extern "C" ARM void func_ov003_02158214(void* p) {
     char* self = (char*)p;
     GameState* bs = GameState::GetInstance();

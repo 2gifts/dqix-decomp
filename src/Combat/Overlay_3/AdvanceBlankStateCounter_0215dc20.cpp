@@ -17,7 +17,6 @@ extern "C" void _Z21BlankFunction02094b3cv(int a, int b);
 extern "C" void _Z21BlankFunction02094b30v(int a, int b, int c);
 
 // USA: func_ov003_0215dc20  (semantic: AdvanceBlankStateCounter_0215dc20)
-// JPN: func_ov003_0215ef68
 extern "C" ARM void func_ov003_0215dc20(void* obj) {
 	unsigned char* o = (unsigned char*)obj;
 	unsigned char state;

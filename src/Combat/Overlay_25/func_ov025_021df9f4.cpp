@@ -16,7 +16,6 @@ extern "C" int _Z26CheckHighNibble0xc1Not2To5Ph(GameObject* obj);
 extern "C" int _Z23CheckSubstructFlag0x200Ph(GameObject* obj);
 extern "C" int _Z23CheckSubstructFlag0x100Ph(GameObject* obj);
 
-// JPN: func_ov025_021e0304
 // USA: func_ov025_021df9f4
 extern "C" ARM int func_ov025_021df9f4(GameObject* obj) {
     if (obj == 0) {

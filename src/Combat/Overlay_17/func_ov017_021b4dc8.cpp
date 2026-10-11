@@ -39,7 +39,6 @@ struct ScriptRequest_021b4dc8 {
     unsigned short extraEntry;
 };
 
-// JPN: func_ov017_021b54b8
 // USA: func_ov017_021b4dc8
 extern "C" ARM void func_ov017_021b4dc8(struct ScriptRequest_021b4dc8* request) {
 #if defined(jpn)

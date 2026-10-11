@@ -18,7 +18,6 @@ extern "C" void* _ZN13SafeAllocator8AllocateEj(void* thisPtr, unsigned int size)
 
 struct FmtTable021602bc { char rows[4][kRegion30]; };
 
-// JPN: func_ov003_02160468
 // USA: func_ov003_021602bc
 extern "C" ARM void func_ov003_021602bc(char* obj) {
     char* langData = (char*)func_ov017_0218b5b0();

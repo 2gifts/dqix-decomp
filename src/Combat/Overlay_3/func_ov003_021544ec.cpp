@@ -51,7 +51,6 @@ enum { kNotificationBufferSize = 0x68, kEntryCount = 3 };
 enum { kNotificationBufferSize = 0x80, kEntryCount = 4 };
 #endif
 
-// JPN: func_ov003_02155bd4
 // USA: func_ov003_021544ec
 extern "C" ARM void func_ov003_021544ec(struct Obj021544ec* obj, SafeAllocator* alloc) {
     if (alloc != 0) {

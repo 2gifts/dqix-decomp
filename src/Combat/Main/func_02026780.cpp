@@ -67,7 +67,6 @@ struct Mgr02026780 {
 };
 
 // USA: func_02026780
-// JPN: func_02026780
 extern "C" ARM int func_02026780(Obj02026780* self, void* fileBuf, unsigned int fileSize) {
     char buffer[0x800];
     SafeAllocator alloc;

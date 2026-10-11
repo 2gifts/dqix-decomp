@@ -24,12 +24,11 @@ void InitStruct0217e630(void* obj, signed char flag);
 
 struct Obj0217e5dc {
 	char pad1[kRegion36fc];
-	struct TailList020469b4* list; // kRegion36fc
+	struct TailList020469b4* list;
 	char pad2[kRegion3b04 - kRegion36fc - 4];
-	void* target; // kRegion3b04
+	void* target;
 };
 
-// JPN: func_ov003_0217d2e4
 // USA: func_ov003_0217e5dc
 ARM void InitObj_0217e5dc(struct Obj0217e5dc* self, signed char flag) {
 	GameState::GetInstance();

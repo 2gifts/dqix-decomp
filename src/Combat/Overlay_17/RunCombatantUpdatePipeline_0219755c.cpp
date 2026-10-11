@@ -21,7 +21,6 @@ struct S0219755c { unsigned char pad[0x444]; int field0x424; };
 struct S0219755c { unsigned char pad[0x424]; int field0x424; };
 #endif
 
-// JPN: func_ov017_0219810c
 // USA: func_ov017_0219755c
 ARM void RunCombatantUpdatePipeline_0219755c(unsigned char* obj) {
 #if defined(jpn)

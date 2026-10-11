@@ -10,7 +10,6 @@ extern "C" void func_0204b088(void*, int);
 #endif
 extern "C" void func_ov023_021ed44c(void*);
 
-// JPN: func_ov023_021eb458
 // USA: func_ov023_021eb4f4
 ARM void CallDispatchIfFlagSet_021eb4f4(char* obj) {
 	if (*(unsigned char*)(obj + 0x431) == 0) return;

@@ -17,7 +17,6 @@ struct Src021cc26c {
     unsigned char flag;
 };
 
-// JPN: func_ov017_021cc714
 // USA: func_ov017_021cc26c
 ARM void DispatchFlagOrFilterBytes_021cc26c(int unused0, Src021cc26c* src, GameState* battleStruct, unsigned char* base) {
 #if defined(jpn)

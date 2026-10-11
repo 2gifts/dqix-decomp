@@ -6,7 +6,6 @@ extern "C" int _Z22CheckSubstructFlag0x80Ph(GameObject* obj);
 extern "C" int _Z20GetSubstructByte0x1cPh(GameObject* obj);
 extern "C" int _Z23CheckSubstructFlag0x100Ph(GameObject* obj);
 
-// JPN: func_ov025_021e2850
 // USA: func_ov025_021e1f40
 extern "C" ARM int func_ov025_021e1f40(GameObject* obj, int targetId) {
 #if defined(jpn)

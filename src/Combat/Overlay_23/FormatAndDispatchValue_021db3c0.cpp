@@ -17,7 +17,6 @@ extern const char data_ov023_021fcdec[];
 extern "C" void func_02050678(int, int, short, void*, int, int, void*, void*);
 #endif
 
-// JPN: func_ov023_021dbc08
 // USA: func_ov023_021db3c0
 ARM void FormatAndDispatchValue_021db3c0(int param0, int param1, short param2, int param3, unsigned char param4) {
 #if defined(jpn)

@@ -11,7 +11,6 @@ struct LocalEvt021ce29c {
 	char pad2[12];
 };
 
-// JPN: func_ov017_021ce744
 // USA: func_ov017_021ce29c  (semantic: CopyBytesAndEnqueueTag_021ce29c)
 extern "C" ARM void func_ov017_021ce29c(void) {
 #if defined(jpn)

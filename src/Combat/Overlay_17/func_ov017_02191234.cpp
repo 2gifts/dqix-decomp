@@ -13,7 +13,6 @@ extern "C" void _Z21StoreByteList02026348PcPhi(char* obj, unsigned char* src, in
 void CopyInRegion0x571d(char* obj, int len, void* src);
 extern "C" void _Z26WriteBlockWithSize02011468PviS_(void* obj, int size, void* src);
 
-// JPN: func_ov017_02191e18
 // USA: func_ov017_02191234
 extern "C" ARM void func_ov017_02191234(unsigned char* obj) {
 #if defined(jpn)

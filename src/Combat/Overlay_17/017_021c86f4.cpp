@@ -3,7 +3,6 @@
 extern "C" int func_ov017_021b8468(void* obj);
 extern "C" void* _Z20GetField6b0_021b8470Pv(void* obj);
 
-// JPN: func_ov017_021c8ba4
 // USA: func_ov017_021c86f4
 extern "C" ARM void func_ov017_021c86f4(int unused0, int* param1, int unused2, unsigned char* base) {
 #if defined(jpn)

@@ -56,7 +56,6 @@ static inline int IsPartySlot(int id) {
     return id >= 0 && id <= 3;
 }
 
-// JPN: func_ov024_021e699c
 // USA: func_ov024_021e6104
 extern "C" ARM int func_ov024_021e6104(struct Obj_021e6104* obj, int id, struct Skill_021e6104* skill) {
     GameObject* c = GetCombatantWithFlag0x100(GameState::GetInstance(), id);

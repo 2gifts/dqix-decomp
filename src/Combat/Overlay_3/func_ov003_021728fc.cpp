@@ -38,7 +38,6 @@ struct S021728fc {
     int field_120;
 };
 
-// JPN: func_ov003_021717e8
 // USA: func_ov003_021728fc  (semantic: SetupMainBgAndReleaseHandle_021728fc)
 extern "C" ARM void func_ov003_021728fc(S021728fc* obj) {
     unsigned int* field4 = (unsigned int*)func_ov017_0218b5b0();

@@ -10,7 +10,6 @@ void ResetBlockFields_021dcd5c(void* obj);
 
 extern unsigned short* data_ov031_02290d14;
 
-// JPN: func_ov031_022390f0
 // USA: func_ov031_02238910  (semantic: MaskChannelBit_02238910)
 extern "C" ARM void func_ov031_02238910(int index) {
 	if (func_ov027_021d8b40(index, 1) != 0) return;

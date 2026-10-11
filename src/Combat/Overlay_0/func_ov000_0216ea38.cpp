@@ -33,7 +33,6 @@ struct Root0216ea38 {
 };
 
 // USA: func_ov000_0216ea38
-// JPN: func_ov000_0216ea38
 extern "C" ARM void func_ov000_0216ea38(Root0216ea38* obj) {
     if (!obj->initialized) return;
     GameState* gs = GameState::GetInstance();

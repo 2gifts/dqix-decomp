@@ -74,7 +74,6 @@ extern "C" void _Z29SetIntField_021ab698_021ab698Pci(char* p, int v);
 struct TailNode020469b4;
 void AppendNodeToTail(struct TailList020469b4* list, struct TailNode020469b4* node);
 
-// JPN: func_ov017_02199b34
 // USA: func_ov017_02198f84
 extern "C" ARM void func_ov017_02198f84(Self02198f84* self) {
     void* ctx = func_02012fe4();

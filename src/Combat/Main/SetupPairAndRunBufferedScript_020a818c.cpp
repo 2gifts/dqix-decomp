@@ -45,7 +45,6 @@ extern int data_020f1b97;
 extern int data_020f1baa;
 extern int data_020f1b6c;
 
-// JPN: func_020a9f10
 // USA: func_020a818c  (semantic: SetupPairAndRunBufferedScript_020a818c)
 extern "C" ARM void func_020a818c(void* param0, void* param1) {
     BackgroundLoader::AddLockGlobal();

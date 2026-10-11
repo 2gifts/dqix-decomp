@@ -26,7 +26,6 @@ extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(StructA0205d
 #endif
 int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d, unsigned char e);
 
-// JPN: func_ov003_0216d5f4
 // USA: func_ov003_0216dc58  (semantic: BuildAndApplyScaleMessage_0216dc58)
 extern "C" ARM void func_ov003_0216dc58(char* obj) {
 	char buf1[0x100];

@@ -1,4 +1,3 @@
-// JPN: main:020d70e0
 void* GetBattleContext();
 extern "C" int func_020d424c(int, ...);
 void InvalidateDataCacheRange(const void*,unsigned);

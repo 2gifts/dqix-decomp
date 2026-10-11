@@ -1,4 +1,3 @@
-// JPN: func_ov031_02244314
 #include <globaldefs.h>
 
 extern void* GetOrInitField_0221188c(void);

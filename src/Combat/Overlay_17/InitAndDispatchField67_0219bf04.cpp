@@ -8,7 +8,6 @@ void InitFieldsFromCombatant_0219bcac(unsigned char flag);
 int* GetGlobal02109030(void);
 extern "C" void func_02094030(int*, short, short, signed char);
 
-// JPN: func_ov017_0219c9f4
 // USA: func_ov017_0219bf04  (semantic: InitAndDispatchField67_0219bf04)
 extern "C" ARM void func_ov017_0219bf04(unsigned char flag, int mode) {
 #if defined(jpn)

@@ -116,7 +116,6 @@ struct BattleScreen_0215f9c0 {
 };
 
 // USA: func_ov003_0215f9c0
-// JPN: func_ov003_0215fb74
 extern "C" ARM void func_ov003_0215f9c0(struct BattleScreen_0215f9c0* self, int setFlags) {
     memset(self->buffer, 0, sizeof(self->buffer));
     self->unk_226 = 0;

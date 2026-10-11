@@ -20,7 +20,6 @@ struct TailNode_0219593c {
 struct S021b6b8c { unsigned char pad[0x24]; void* f24; };
 void CallIfField24ThenSetFlag_021b6b8c(S021b6b8c* obj);
 
-// JPN: func_ov017_02196504
 // USA: func_ov017_0219593c
 ARM void RegisterNodeAndNotify_0219593c(void) {
 #if defined(jpn)

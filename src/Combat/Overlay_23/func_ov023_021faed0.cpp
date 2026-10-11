@@ -79,7 +79,6 @@ struct Obj021faed0 {
 #endif
 };
 
-// JPN: func_ov023_021fa2b0
 // USA: func_ov023_021faed0  (semantic: SyncEntryPositionAndDispatch_021faed0)
 extern "C" ARM void func_ov023_021faed0(struct Obj021faed0* obj, void* arg1) {
     if ((obj->flags0xc & 8) == 0) {

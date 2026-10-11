@@ -21,7 +21,6 @@ struct PositionMsg {
     struct PositionMsgFields fields;
 };
 
-// JPN: func_ov017_021c8c08
 // USA: func_ov017_021c8758
 extern "C" ARM void func_ov017_021c8758(unsigned short id) {
 #if defined(jpn)

@@ -15,7 +15,6 @@ struct LocalEvt021cff0c {
 	unsigned char field5;
 };
 
-// JPN: func_ov017_021d03bc
 // USA: func_ov017_021cff0c
 ARM void ApplyEventTag24Fields_021cff0c(int unused0, LocalEvt021cff0c* evt, GameState* battleStruct, int table, struct SearchStruct0202c1a4* extra) {
 #if defined(jpn)

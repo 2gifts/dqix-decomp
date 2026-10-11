@@ -38,7 +38,6 @@ void SetEntryByte14ByKey0205a42c(Container0205a3d0*, int, int);
 extern "C" void func_0205ae8c(void*);
 
 // USA: func_ov003_0215e2a8
-// JPN: func_ov003_0215f580
 ARM void UpdateEntryAndScale_0215e2a8(char* base) {
     if (*(unsigned char*)(base + kRegionValue3C2_3DA) == 0) return;
 

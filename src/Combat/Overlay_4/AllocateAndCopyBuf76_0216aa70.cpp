@@ -18,7 +18,6 @@ extern "C" void func_ov011_02184a24(void*, void*, int);
 extern "C" void func_ov011_02184c28(void*, void*);
 
 // USA: func_ov004_0216aa70
-// JPN: func_ov004_0216ace4
 ARM void AllocateAndCopyBuf76_0216aa70(SafeAllocator* a, void* target) {
     struct Block0x4c_0216aa70 tmp = data_ov004_021700ec;
     void* buf = a->Allocate(sizeof(Block0x4c_0216aa70));

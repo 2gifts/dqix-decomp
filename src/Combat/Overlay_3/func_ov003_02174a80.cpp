@@ -145,7 +145,6 @@ extern char data_ov003_02180b77[];
 extern char data_ov003_02180b8d[];
 
 // USA: func_ov003_02174a80
-// JPN: func_ov003_02173b88
 extern "C" ARM void func_ov003_02174a80(Self02174a80* self) {
     Allocs02174a80* allocs;
     BackgroundLoader* loader;

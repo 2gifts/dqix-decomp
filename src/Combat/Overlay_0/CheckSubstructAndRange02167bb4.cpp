@@ -10,7 +10,6 @@ enum { nodeTableOffset = 0x29c };
 #endif
 
 // USA: func_ov000_02167bb4
-// JPN: func_ov000_021692f0
 ARM int CheckSubstructAndRange02167bb4(unsigned char* obj, int id) {
     GameState* battle = GameState::GetInstance();
     void* base = *(void**)(obj + nodeTableOffset);

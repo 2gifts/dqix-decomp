@@ -43,7 +43,6 @@ struct Roster0203de84 {
 };
 
 // USA: func_0203de84
-// JPN: func_0203de84
 extern "C" ARM void func_0203de84(void* self) {
     struct Roster0203de84* roster = (struct Roster0203de84*)self;
     int v = GetField0x3b0Value(GameState::GetInstance());

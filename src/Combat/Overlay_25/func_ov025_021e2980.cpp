@@ -59,7 +59,6 @@ void SetByte0xbeShiftPrev(Bytes02033b88*, int);
 AnimationWork* GetActiveCombatWork();
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 
-// JPN: func_ov025_021e2e70
 // USA: func_ov025_021e2980
 extern "C" ARM int func_ov025_021e2980(AnimationCommand* command, AnimationTargets* targets, int unused, void* context) {
     GameState* game = GameState::GetInstance();

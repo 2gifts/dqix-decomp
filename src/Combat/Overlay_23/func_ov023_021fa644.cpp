@@ -41,7 +41,6 @@ struct Obj021fa644 {
     unsigned char field2c;
 };
 
-// JPN: func_ov023_021f9a6c
 // USA: func_ov023_021fa644  (semantic: ApplyEncodedSizeOrResetList_021fa644)
 extern "C" ARM void func_ov023_021fa644(Obj021fa644* obj, void* ctx, EncodedSize020e03b8* p2, int p3) {
 #if defined(jpn)

@@ -177,7 +177,6 @@ void _Z21BlankFunction02094b34v(void* music, int a, int b, int c, int d);
 int _Z18AlwaysTrue02094b4cv(void* music);
 }
 
-// JPN: func_ov023_021f0db4
 // USA: func_ov023_021f1234
 extern "C" ARM int func_ov023_021f1234(BattleScene_021f1234* self)
 {

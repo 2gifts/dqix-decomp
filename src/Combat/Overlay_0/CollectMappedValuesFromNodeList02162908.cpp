@@ -14,7 +14,6 @@ static inline void* GetElem02162908(void* obj, int idx) {
 }
 
 // USA: func_ov000_02162908
-// JPN: func_ov000_02164074
 ARM int CollectMappedValuesFromNodeList02162908(void* obj, int idx, int* out) {
     void* entry = GetElem02162908(obj, idx);
     void* node = *(void**)((char*)entry + 0x14);

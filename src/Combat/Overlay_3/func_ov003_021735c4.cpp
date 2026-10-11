@@ -42,7 +42,6 @@ struct Obj021735c4 {
     int handle;
 };
 
-// JPN: func_ov003_02172410
 // USA: func_ov003_021735c4
 extern "C" ARM void func_ov003_021735c4(struct Obj021735c4* self) {
     GameResources* res = func_ov017_0218b5b0();

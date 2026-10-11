@@ -25,7 +25,6 @@ struct StateRow {short action,state,mode;};extern "C" const StateRow data_ov000_
 inline int IsParty(int id){return (id>=0&&id<=3)?1:0;}
 inline GameObject* GetUnit(int id){GameState* gs=GameState::GetInstance();return gs->GetCombatantByIndex(id);}
 // USA: func_ov000_021537b8
-// JPN: func_ov000_021537b8
 extern "C" ARM void func_ov000_021537b8(void* self,int id,Work* work){
  GameState* gs=GameState::GetInstance();GameObject* unit=GetUnit(id);if(!unit)return;if(ClassifyField0x81fe((char*)self))return;
  Skill* skill=SearchBothTables02079e2c(GetData02108e10(),(short)work->action);if(!skill)return;

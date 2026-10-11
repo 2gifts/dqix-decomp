@@ -18,7 +18,6 @@ extern "C" void func_ov003_0215b964(void* self, void* p, int flag);
 extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g, int h);
 #endif
 
-// JPN: func_ov003_0215cca0
 // USA: func_ov003_0215b8a0  (semantic: InitTagState_0215b8a0)
 extern "C" ARM void func_ov003_0215b8a0(unsigned char* self) {
     FindAndLinkMatchingEntry0205de24((struct Struct0205de24*)(self + 0xf4), 0, 2);

@@ -23,7 +23,6 @@ void ClearFlag0x10IfSet(struct Struct02074bd0* obj);
 void CleanInvalidateCacheRange(const void* addr, unsigned int size);
 extern "C" int LoadToMainBG1CharacterData(int arg0, int arg1, unsigned int arg2);
 
-// JPN: func_ov003_0217359c
 // USA: func_ov003_02174454
 extern "C" ARM void func_ov003_02174454(char* self) {
     unsigned char i;

@@ -45,7 +45,6 @@ struct Obj021e4c18 {
     unsigned short f634;
 };
 
-// JPN: func_ov023_021e4e20
 // USA: func_ov023_021e4c18  (semantic: AdvanceTargetCombatant_021e4c18)  (semantic: AdvanceTargetCombatant_021e4c18)
 extern "C" ARM void func_ov023_021e4c18(struct Obj021e4c18* obj) {
 #if defined(jpn)

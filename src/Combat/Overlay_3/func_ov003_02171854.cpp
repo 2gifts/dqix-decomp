@@ -31,7 +31,6 @@ extern "C" void func_0202c288(void* obj);
 extern "C" unsigned int _u32_div_f(unsigned int a, unsigned int b);
 
 // USA: func_ov003_02171854
-// JPN: func_ov003_02170ba0
 extern "C" ARM void func_ov003_02171854(char* self) {
     GameState* battle = GameState::GetInstance();
     void* search = func_0202ae18();

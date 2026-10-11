@@ -12,7 +12,6 @@ enum { activeObjectOffset = 8 };
 #endif
 
 // USA: func_ov000_0217c594  (semantic: CheckFlagOrActiveField0188_0217c594)
-// JPN: func_ov000_0217d8e8
 extern "C" ARM int func_ov000_0217c594(void* objRaw, int limit) {
     unsigned char* obj = (unsigned char*)objRaw;
     unsigned char v = obj[0x956];

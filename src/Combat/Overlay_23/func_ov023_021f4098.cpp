@@ -29,7 +29,6 @@ int AnySlotHasBit16At0x2f4(unsigned char* obj);
 struct DataOv023_021ffefc { void* field0; int field4; };
 extern "C" struct DataOv023_021ffefc _ZZ17GetGlobal021ffefcvE1s;
 
-// JPN: func_ov023_021f3724
 // USA: func_ov023_021f4098  (semantic: ComputeCombatantScaleFactor_021f4098)
 extern "C" ARM int func_ov023_021f4098(void* obj, int id, int flag) {
 #if defined(jpn)

@@ -40,7 +40,6 @@ extern AllocatorUnion data_02114e20;
 extern "C" void func_ov000_0215ce80(Context021b71d8* context);
 extern "C" void func_ov000_0215fab0(Context021b71d8* context, unsigned char value);
 
-// JPN: func_ov017_021b7788
 // USA: func_ov017_021b71d8
 extern "C" ARM void func_ov017_021b71d8(Self021b71d8* self) {
     GameState::GetInstance();

@@ -28,7 +28,6 @@ struct Menu0207f9f4 {
 };
 
 // USA: func_0207f9f4
-// JPN: 0x02080688
 extern "C" ARM int func_0207f9f4(Menu0207f9f4* self) {
     if (self->field1c < 0) {
 #ifdef jpn

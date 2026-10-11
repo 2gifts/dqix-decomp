@@ -25,7 +25,6 @@ struct Window02167e28 {
     void* layout;
 };
 
-// JPN: func_ov003_02167ce4
 // USA: func_ov003_02167e28
 extern "C" ARM void func_ov003_02167e28(struct Window02167e28* self, char* name, int flag, unsigned char index,
                                         unsigned char badge, int valueA, int valueB) {

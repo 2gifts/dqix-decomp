@@ -35,7 +35,6 @@ struct LocalBuf021986 {
     unsigned char pad18[2];
 };
 
-// JPN: func_ov017_021991c8
 // USA: func_ov017_02198618  (semantic: SomeFunc_02198618)
 extern "C" ARM void func_ov017_02198618(void* p0) {
     GameState* battle = GameState::GetInstance();

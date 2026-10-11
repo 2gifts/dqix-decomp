@@ -33,7 +33,6 @@ extern "C" int func_ov025_021e1048(void*, CombatantEntry_021e1048*);
 inline int IsPartyActor(int id) { return id >= 0 && id <= 3; }
 inline int IsMonsterActor(int id) { return id >= 0xc0 && id <= 0xc7; }
 
-// JPN: func_ov025_021e05f0
 // USA: func_ov025_021dfce0
 extern "C" ARM void func_ov025_021dfce0(CombatWork* work) {
     GameState* state = GameState::GetInstance();

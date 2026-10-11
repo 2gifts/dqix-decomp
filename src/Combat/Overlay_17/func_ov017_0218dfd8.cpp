@@ -57,7 +57,6 @@ int CheckSubstructByte0x7cPositive(signed char* obj);
 extern "C" void _Z15InitObj0219a674Ph(unsigned char* self);
 extern "C" void func_ov017_0219b33c(GameResources* res, Event0218dfd8* event);
 
-// JPN: func_ov017_0218ebb8
 // USA: func_ov017_0218dfd8
 extern "C" ARM int func_ov017_0218dfd8(Actor0218dfd8* self) {
     GameResources* res = func_ov017_0218b5b0();

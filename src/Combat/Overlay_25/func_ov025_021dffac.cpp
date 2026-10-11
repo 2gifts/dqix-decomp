@@ -55,7 +55,6 @@ inline Action021dffac* SelectAction021dffac(Battle021dffac* battle, int index) {
     return action;
 }
 
-// JPN: func_ov025_021e08bc
 // USA: func_ov025_021dffac
 extern "C" ARM int func_ov025_021dffac(Context021dffac* context) {
     GameState* game = GameState::GetInstance();

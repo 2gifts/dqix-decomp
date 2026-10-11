@@ -47,7 +47,6 @@ struct BattleView02165730 {
     unsigned char field_0x4a5;
 };
 
-// JPN: func_ov003_0216570c
 // USA: func_ov003_02165730
 extern "C" ARM void func_ov003_02165730(BattleView02165730* view) {
     GameResources* resources = func_ov017_0218b5b0();

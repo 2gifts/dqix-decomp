@@ -41,7 +41,6 @@ struct Buf021c5b44 {
     unsigned int field14;
 };
 
-// JPN: func_ov017_021c5ff4
 // USA: func_ov017_021c5b44  (semantic: RegisterCombatantNode_021c5b44)
 extern "C" ARM void func_ov017_021c5b44(unsigned char arg0, int combatantId, unsigned int arg2, unsigned char arg3, unsigned char arg4) {
     GameState::GetInstance();

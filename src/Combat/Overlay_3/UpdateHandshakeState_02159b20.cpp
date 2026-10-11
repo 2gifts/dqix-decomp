@@ -21,7 +21,6 @@ extern "C" void func_ov003_0215b8a0(void*);
 extern "C" void func_ov003_0215b5c4(void*);
 
 // USA: func_ov003_02159b20
-// JPN: func_ov003_0215afa0
 ARM void UpdateHandshakeState_02159b20(void* self) {
     unsigned char* s = (unsigned char*)self;
     unsigned char* g = (unsigned char*)_Z26GetGlobalField0x1c020421a0v();

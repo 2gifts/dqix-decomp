@@ -10,7 +10,6 @@ struct ArgA021d0e64 {
     unsigned char field5;
 };
 
-// JPN: func_ov017_021d12dc
 // USA: func_ov017_021d0e64
 ARM void UpdateCombatantField150_021d0e64(void* unused0, ArgA021d0e64* a1, GameState* bs, void* a3) {
 #if defined(jpn)

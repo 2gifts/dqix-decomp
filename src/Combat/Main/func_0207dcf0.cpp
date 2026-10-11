@@ -27,7 +27,6 @@ enum { ActionContextOffset = 0x3508 };
 enum { ActionContextOffset = 0x3718 };
 #endif
 
-// JPN: func_0207ea70
 // USA: func_0207dcf0
 extern "C" ARM void func_0207dcf0(unsigned short id) {
     struct Entry0207d9bc* table = (struct Entry0207d9bc*)&data_02108ea8;

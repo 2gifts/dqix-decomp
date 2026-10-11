@@ -28,4 +28,3 @@ extern "C" ARM void func_020a395c(void) {
     *(void**)(base + 0x4000 + BUFFER_OFFSET) = 0;
 }
 
-// JPN: 0x020a5698

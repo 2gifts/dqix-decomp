@@ -21,7 +21,6 @@ struct LocalEvt021ce32c {
 	unsigned char pad1[9];
 };
 
-// JPN: func_ov017_021ce7d4
 // USA: func_ov017_021ce32c
 ARM void EnqueueEventTag38_021ce32c(int id) {
 #if defined(jpn)

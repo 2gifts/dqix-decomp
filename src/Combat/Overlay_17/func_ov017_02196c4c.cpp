@@ -65,7 +65,6 @@ struct Event02196c4c {
     int field_0x14;
 };
 
-// JPN: func_ov017_021977fc
 // USA: func_ov017_02196c4c
 extern "C" ARM int func_ov017_02196c4c(Ctx02196c4c* self) {
 #if defined(jpn)

@@ -27,7 +27,6 @@ struct DataBlock02291e04 {
 
 extern DataBlock02291e04 data_ov031_02291e04;
 
-// JPN: func_ov031_02243b28
 // USA: func_ov031_02243348  (semantic: MatchAndStoreEntries_02243348)
 extern "C" ARM int func_ov031_02243348(struct Struct02030b7c* s) {
     void* target = _ZNK6Script9Parameter8ToStringEv(s);

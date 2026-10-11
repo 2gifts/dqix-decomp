@@ -73,7 +73,6 @@ struct Obj02170b74 {
     int field738;
 };
 
-// JPN: func_ov003_02170230
 // USA: func_ov003_02170b74
 extern "C" ARM void func_ov003_02170b74(struct Obj02170b74* self) {
     self->state = 0;

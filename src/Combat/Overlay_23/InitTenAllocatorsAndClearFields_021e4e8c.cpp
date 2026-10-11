@@ -4,7 +4,6 @@
 
 extern "C" void _ZN8Object3D10InitializeEv(void* p);
 
-// JPN: func_ov023_021e5080
 // USA: func_ov023_021e4e8c
 ARM void InitTenAllocatorsAndClearFields_021e4e8c(void* obj) {
 	char *base = (char*)obj;

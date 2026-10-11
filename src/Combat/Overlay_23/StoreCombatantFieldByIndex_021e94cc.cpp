@@ -24,7 +24,6 @@ struct Transform150_021e94cc {
     struct PackedTriple10_021e94cc word3; // offset 0xc
 };
 
-// JPN: func_ov023_021e9430
 // USA: func_ov023_021e94cc  (semantic: StoreCombatantFieldByIndex_021e94cc)
 extern "C" ARM int func_ov023_021e94cc(TaggedTriple_021e94cc* args) {
 #if defined(jpn)

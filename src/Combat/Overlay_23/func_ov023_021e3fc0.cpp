@@ -104,7 +104,6 @@ char* CallFunc020e0434With02153694(int);
 unsigned char NormalizeField5_0200fb08(Struct0200fb08*);
 extern "C" void func_ov005_02155258(void*, int, int, int, int);
 
-// JPN: func_ov023_021e421c
 // USA: func_ov023_021e3fc0
 extern "C" ARM void func_ov023_021e3fc0(StatusPanel* panel) {
     int textColor;

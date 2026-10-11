@@ -10,7 +10,6 @@ struct Container02080fa8;
 void SetEntryFirstField02080fa8(struct Container02080fa8* obj, int id, int value);
 ARM int GetTableByte020dd11c(unsigned int a, unsigned int b);
 
-// JPN: func_ov003_02167e38
 // USA: func_ov003_02167fa4  (semantic: SetEntryFieldsFromTable_02167fa4)
 extern "C" ARM void func_ov003_02167fa4(void* arg0, int flag, unsigned char* table) {
     void* obj = *(void**)((char*)arg0 + 0x10);

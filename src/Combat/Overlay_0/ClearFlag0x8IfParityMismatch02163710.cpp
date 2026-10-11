@@ -16,7 +16,6 @@ struct Flags0951_02163710 {
 };
 
 // USA: func_ov000_02163710
-// JPN: func_ov000_02164e74
 ARM void ClearFlagIfParityMismatch02163710_02163710(void* obj, int flag) {
     struct Flags0951_02163710* f = (struct Flags0951_02163710*)((char*)obj + flagsOffset);
     if (!f->bit3) {

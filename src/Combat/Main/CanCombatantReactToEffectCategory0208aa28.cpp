@@ -17,7 +17,6 @@ enum { ReactionActorOffset = 0x144 };
 enum { ReactionActorOffset = 0x150 };
 #endif
 
-// JPN: func_0208b31c
 // USA: func_0208aa28
 ARM int CanCombatantReactToEffectCategory0208aa28(unsigned char* obj, int combatantId, int flag) {
     ((unsigned int*)func_ov017_0218b5b0());

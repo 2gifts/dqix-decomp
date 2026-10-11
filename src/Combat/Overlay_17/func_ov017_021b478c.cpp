@@ -50,7 +50,6 @@ struct Request021b478c {
     unsigned char state;
 };
 
-// JPN: func_ov017_021b4e7c
 // USA: func_ov017_021b478c
 extern "C" ARM void func_ov017_021b478c(Request021b478c* request) {
 #if defined(jpn)

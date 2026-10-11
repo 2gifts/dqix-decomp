@@ -15,7 +15,6 @@ struct Cont0207fd88 {
     unsigned char count38;
 };
 
-// JPN: func_020808c4
 // USA: func_0207fd88
 ARM void CallFunc0204b088OverList0x2c(Cont0207fd88* obj) {
     unsigned char count;

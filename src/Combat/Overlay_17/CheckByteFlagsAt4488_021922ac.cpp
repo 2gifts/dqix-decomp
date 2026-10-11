@@ -3,7 +3,6 @@
 int GetByteAtPtrOrZero_02191b58(void);
 typedef int (*GetByteAtPtrOrZeroFn1)(void*);
 
-// JPN: func_ov017_02192e74
 // USA: func_ov017_021922ac
 ARM int CheckByteFlagsAt4488_021922ac(void* self, unsigned int idx) {
 #if defined(jpn)

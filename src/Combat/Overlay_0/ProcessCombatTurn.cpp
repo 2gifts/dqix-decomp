@@ -174,7 +174,6 @@ static inline Combatant* GetFlagged0x400(int id) {
     return _Z25GetCombatantWithFlag0x400P9GameStatei(bs, id);
 }
 
-// JPN: func_ov000_0215edbc
 // USA: func_ov000_0215d63c
 extern "C" ARM void ProcessCombatTurn(Battle* self, SafeAllocator* alloc) {
     long j;

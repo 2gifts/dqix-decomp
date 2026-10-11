@@ -16,7 +16,6 @@ int GetFieldAt0x150(unsigned char* obj);
 
 extern "C" int func_ov023_021e5974(int a, int b, int c, int d, int e);
 
-// JPN: func_ov023_021e4790
 // USA: func_ov023_021e456c  (semantic: DispatchCombatantEntry_021e456c)
 extern "C" ARM void func_ov023_021e456c(void* objRaw) {
     char* obj = (char*)objRaw;

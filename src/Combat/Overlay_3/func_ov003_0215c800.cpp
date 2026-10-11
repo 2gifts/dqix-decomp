@@ -41,7 +41,6 @@ void ReinitController02043204(char* obj);
 extern "C" void* __clear(void* dst, int count);
 
 // USA: func_ov003_0215c800  (semantic: ShutdownControllerAndDestroyAllocators_0215c800)
-// JPN: func_ov003_0215db1c
 extern "C" ARM void func_ov003_0215c800(char* obj) {
     GetGlobal02109400();
     func_02094ab0();

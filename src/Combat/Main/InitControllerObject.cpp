@@ -26,7 +26,6 @@ extern "C" void func_02043124(void* self);
 void ResetControllerState020430b0(char* self);
 #endif
 
-// JPN: func_02043774
 // USA: func_02043000
 ARM void InitControllerObject(char* self) {
     ReinitEightSubStructsAndAllocator((char*)(self + CONTROLLER_SUBOBJECT_OFFSET));

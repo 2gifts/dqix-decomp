@@ -25,7 +25,6 @@ int CheckField0NonZero(int* obj);
 void ApplySlotBytesToBattleStruct(unsigned char* obj);
 
 // USA: func_020703c8
-// JPN: func_020703c8
 extern "C" ARM void func_020703c8(int index, int hour, int minute, int second) {
     unsigned char curHour;
     unsigned char curMinute;

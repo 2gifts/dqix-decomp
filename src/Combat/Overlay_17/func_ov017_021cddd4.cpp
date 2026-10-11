@@ -50,7 +50,6 @@ struct Base021cddd4 {
     S021bd35c* obj;
 };
 
-// JPN: func_ov017_021ce27c
 // USA: func_ov017_021cddd4
 extern "C" ARM void func_ov017_021cddd4(int p0, Evt021cddd4* evt, int unused, Base021cddd4* base, SearchStruct0202c1a4* search) {
     Entry021cddd4* entry = (Entry021cddd4*)func_ov017_021b8478(base->table);

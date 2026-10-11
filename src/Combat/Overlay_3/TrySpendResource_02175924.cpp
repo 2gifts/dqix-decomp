@@ -20,7 +20,6 @@ struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0* c, in
 unsigned int ComputeRatio_02175898(char* obj, void* s);
 extern "C" void func_ov003_02176798(void* obj);
 
-// JPN: func_ov003_02174968
 // USA: func_ov003_02175924
 ARM int TrySpendResource_02175924(char* obj) {
     void* ptrField = GetPtrField0x2a04(GameState::GetInstance());

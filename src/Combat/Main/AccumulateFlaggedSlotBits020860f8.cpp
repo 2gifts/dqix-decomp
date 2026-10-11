@@ -25,4 +25,3 @@ ARM int AccumulateFlaggedSlotBits020860f8(unsigned char* actor) {
     return total;
 }
 
-// JPN: 0x02086a18

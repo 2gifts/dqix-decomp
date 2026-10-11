@@ -16,7 +16,6 @@ struct Flags5951_021636ac {
 };
 
 // USA: func_ov000_021636ac
-// JPN: func_ov000_02164e10
 ARM void UpdateFlag8AndBit4_021636ac(void* objRaw) {
     if (((struct Flags5951_021636ac*)((char*)objRaw + flagsOffset))->isActive) {
         return;

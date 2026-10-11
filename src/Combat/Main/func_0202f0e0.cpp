@@ -1,4 +1,3 @@
-// JPN: main:0202ec50
 #include "GameState/GameState.h"
 struct AngleTrig0202e9a4 { unsigned char pad0[0x58]; int angle; unsigned char pad5c[0x194]; int target; unsigned remaining; };
 void SetAngleAndTrigTable0202e9a4(AngleTrig0202e9a4*,int);

@@ -33,4 +33,3 @@ ARM void SetActiveModeSavingPrevious02022d78(struct Obj02022d78* obj, int newVal
     obj->field9c2 = 0;
 }
 
-// JPN: 0x020227f8

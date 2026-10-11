@@ -22,7 +22,6 @@ void AppendNode021600cc(Obj021600cc*,Node021600cc*);
 extern "C" { Out* func_ov000_0215e958(void*); void _Z22PopulateEntry_0215ccbciP17OutStruct0215ccbcP10GameObjectsssiih(void*,Out*,GameObject*,short,short,short,int,int,unsigned char); }
 inline int IsParty(unsigned short n) { int result=0; if(n<=3) result=1; return result; }
 // USA: func_ov000_0215bbbc
-// JPN: func_ov000_0215bbbc
 extern "C" ARM void func_ov000_0215bbbc(unsigned char* self,List02160094* list) {
     for(int i=0;i<list->count;i++) {
         Node* node=GetNodeAtIndex02160094(list,i);

@@ -60,7 +60,6 @@ struct Menu02177410 {
     signed char combatantId;
 };
 
-// JPN: func_ov003_021763e0
 // USA: func_ov003_02177410
 extern "C" ARM void func_ov003_02177410(Menu02177410* self) {
     GameState* battle = GameState::GetInstance();

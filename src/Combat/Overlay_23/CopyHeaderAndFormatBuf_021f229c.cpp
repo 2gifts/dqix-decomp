@@ -19,7 +19,6 @@ struct Obj021f229c {
 #endif
 };
 
-// JPN: func_ov023_021f1b6c
 // USA: func_ov023_021f229c  (semantic: CopyHeaderAndFormatBuf_021f229c)
 extern "C" ARM void func_ov023_021f229c(Obj021f229c* obj, Src021f229c* src) {
     if (src == 0) return;

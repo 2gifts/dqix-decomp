@@ -19,7 +19,6 @@ struct PacketOwnerStruct021a99dc {
     unsigned char recvCount;
 };
 
-// JPN: func_ov017_021aa1b0
 // USA: func_ov017_021a99dc  (semantic: AppendPacketAndSetFlag_021a99dc)
 extern "C" ARM void func_ov017_021a99dc(PacketOwnerStruct021a99dc* self, void* src, int mode, int amount, unsigned char flag) {
     PacketTargetStruct021a99dc* target = self->target;

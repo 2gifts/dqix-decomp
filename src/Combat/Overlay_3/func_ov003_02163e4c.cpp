@@ -28,7 +28,6 @@ extern "C" int func_ov017_021b6d60(int a, void* buf);
 extern "C" void func_02086778(void* map, void* buf, int c, int d);
 
 // USA: func_ov003_02163e4c  (semantic: AdvanceTargetSearchStep_02163e4c)
-// JPN: func_ov003_02163e64
 extern "C" ARM void func_ov003_02163e4c(char* obj) {
     unsigned char step = obj[kRegionValue4A4_2CC];
     if (step == 0) {

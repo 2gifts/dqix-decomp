@@ -4,9 +4,6 @@ static inline unsigned int GetNameListEntryCount(const NSBXXNameList *list) {
     return list->numEntries_;
 }
 
-// Keys occupy 16 bytes, including zero padding; callers must supply the full
-// buffer rather than only a terminated string. The tree path selects a candidate,
-// so its name still needs the same four-word comparison as the linear path.
 // USA: func_020b736c
 extern "C" ARM void *NSBXXNameList_Search(NSBXXNameList *nameList, const char *paddedName) {
     const uint32_t *targetWords = (const uint32_t *) paddedName;
@@ -94,9 +91,6 @@ extern "C" ARM void *NSBXXNameList_Search(NSBXXNameList *nameList, const char *p
     return NULL;
 }
 
-// Uses the same 16-byte, zero-padded key representation as the pointer lookup.
-// Model3D::GetBoneIndex builds that buffer explicitly; material animation callers
-// use the returned index to associate dictionary entries with their tracks.
 // USA: func_020b752c
 ARM int NSBXXNameList_SearchIndex(NSBXXNameList *nameList, const char *paddedName) {
     const uint32_t *targetWords = (const uint32_t *) paddedName;

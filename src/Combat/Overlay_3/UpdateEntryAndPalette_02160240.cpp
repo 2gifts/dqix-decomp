@@ -26,7 +26,6 @@ struct SelfState020e2834;
 void SetYesNoButtonPalette020e2834(struct SelfState020e2834* self);
 
 // USA: func_ov003_02160240  (semantic: UpdateEntryAndPalette_02160240)
-// JPN: func_ov003_021603ec
 extern "C" ARM void func_ov003_02160240(char* obj) {
     if (*(unsigned char*)(obj + kRegionValue4A3_2CB) == 0) return;
     if (*(struct Cont0207fd88**)(obj + kRegionValue324_20C) != 0) {

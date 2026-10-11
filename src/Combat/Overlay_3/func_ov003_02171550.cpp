@@ -35,7 +35,6 @@ void SetSearchFlagBitAt0xc(struct SearchStruct* obj, int value);
 extern "C" void func_0202c288(void* ptr);
 
 // USA: func_ov003_02171550  (semantic: StartSearchIfEligible_02171550)
-// JPN: func_ov003_021708b4
 extern "C" ARM void func_ov003_02171550(struct Obj02171550* obj) {
     if (!(obj->field730 & 1)) {
         obj->field0 = 8;

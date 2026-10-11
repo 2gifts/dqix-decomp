@@ -28,7 +28,6 @@ struct LocalEvt021c83a0 {
     unsigned char pad2[8];
 };
 
-// JPN: func_ov017_021c8850
 // USA: func_ov017_021c83a0  (semantic: EnqueueEventTag117_021c83a0)
 extern "C" ARM void func_ov017_021c83a0(void) {
 #if defined(jpn)

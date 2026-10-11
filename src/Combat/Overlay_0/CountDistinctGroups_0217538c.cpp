@@ -10,7 +10,6 @@ enum { groupArrayOffset = 0x1d1c };
 #endif
 
 // USA: func_ov000_0217538c  (semantic: CountDistinctGroups_0217538c)
-// JPN: func_ov000_02176754
 extern "C" ARM int func_ov000_0217538c(void* objRaw) {
     char* obj = (char*)objRaw;
     int tracked = -1;

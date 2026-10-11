@@ -69,7 +69,6 @@ extern "C" int func_ov017_021a1944();
 int CheckField0NonZero(int*);
 extern "C" void func_ov017_021c8f3c(int, int);
 
-// JPN: func_ov017_021a2bb8
 // USA: func_ov017_021a2128
 extern "C" ARM int func_ov017_021a2128(FieldArena021a2128* arena, unsigned short areaId, int monsterId, int variant, const Vector3fix* position, int y, unsigned short entryId, unsigned char flags) {
     AreaEntry021a2128* area = FindInlineEntryById(GetEntryTableBase(), areaId);

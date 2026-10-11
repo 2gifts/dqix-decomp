@@ -15,7 +15,6 @@ struct Container02080fa8;
 void SetEntryFirstField02080fa8(struct Container02080fa8* obj, int id, int value);
 extern "C" void func_020813ec(void* obj, int key);
 
-// JPN: func_ov003_021757e0
 // USA: func_ov003_02176798  (semantic: ResetElementEntryState_02176798)
 extern "C" ARM void func_ov003_02176798(char* obj) {
     void* f2a04 = GetPtrField0x2a04(GameState::GetInstance());

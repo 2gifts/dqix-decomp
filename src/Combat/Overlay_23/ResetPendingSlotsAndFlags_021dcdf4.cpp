@@ -3,7 +3,6 @@
 
 void ResetIfNonNeg_021db2e4(volatile int* p);
 
-// JPN: func_ov023_021dd6fc
 // USA: func_ov023_021dcdf4
 ARM void ResetPendingSlotsAndFlags_021dcdf4(void* obj) {
 #if defined(jpn)

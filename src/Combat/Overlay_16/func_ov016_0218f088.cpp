@@ -4,7 +4,7 @@
 #define IDX_WORD (0xa8 / 4)
 #else
 #define IDX_WORD (0xac / 4)
-#endif		// o->idx[i] reached as ((int*)o + i)[IDX_WORD]
+#endif
 
 struct Stream0218f088 {
 	char* cursor;			// 0x00
@@ -26,7 +26,7 @@ struct Obj0218f088 {
 	unsigned int limit;					// 0xa0
 	#if !defined(jpn)
 	int wideFlag;
-#endif						// 0xa4
+#endif
 	unsigned int wrap;					// 0xa8
 	int idx[6];							// 0xac
 	char pad_c4[8];

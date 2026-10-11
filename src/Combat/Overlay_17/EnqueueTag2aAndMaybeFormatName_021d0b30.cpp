@@ -18,7 +18,6 @@ struct LocalEvt021d0b30 {
     struct Sub021d0b30 sub;
 };
 
-// JPN: func_ov017_021d0fe0
 // USA: func_ov017_021d0b30  (semantic: EnqueueTag2aAndMaybeFormatName_021d0b30)
 extern "C" ARM void func_ov017_021d0b30(unsigned short a, unsigned short b, char* c) {
 #if defined(jpn)

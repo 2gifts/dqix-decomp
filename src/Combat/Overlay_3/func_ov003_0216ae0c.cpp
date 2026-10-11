@@ -39,7 +39,6 @@ struct Struct0216ae0c {
 };
 
 // USA: func_ov003_0216ae0c
-// JPN: func_ov003_0216a9ac
 extern "C" ARM void func_ov003_0216ae0c(void* objRaw, SafeAllocator* allocator) {
     if (allocator == 0) return;
     struct Struct0216ae0c* obj = (struct Struct0216ae0c*)objRaw;

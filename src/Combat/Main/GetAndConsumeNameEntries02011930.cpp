@@ -12,7 +12,6 @@ struct Info02011930 {
     unsigned short s0;
 };
 
-// JPN: 0x020116a0
 // USA: func_02011930
 ARM unsigned char GetAndConsumeNameEntries02011930(void* obj, struct Info02011930* info, void* name1, void* name2) {
     unsigned char* base = (unsigned char*)obj;

@@ -25,7 +25,6 @@ struct Obj02167494 {
 };
 
 // USA: func_ov003_02167494  (semantic: UpdateHwRegsFromCounter_02167494)
-// JPN: func_ov003_02167374
 extern "C" ARM void func_ov003_02167494(struct Obj02167494* obj, int arg) {
     if (obj->field74 == 0 || obj->field10 == 0) return;
 

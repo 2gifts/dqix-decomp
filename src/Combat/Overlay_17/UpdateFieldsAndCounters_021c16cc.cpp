@@ -14,7 +14,6 @@ struct Obj021c16cc {
     unsigned char field9;
 };
 
-// JPN: func_ov017_021c1c74
 // USA: func_ov017_021c16cc  (semantic: UpdateFieldsAndCounters_021c16cc)
 extern "C" ARM void func_ov017_021c16cc(Obj021c16cc* self) {
 #if defined(jpn)

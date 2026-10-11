@@ -22,7 +22,6 @@ struct Evt021c51c0 {
 	unsigned short field12;
 };
 
-// JPN: func_ov017_021c568c
 // USA: func_ov017_021c51c0  (semantic: ApplyEvt021c51c0)
 extern "C" ARM void func_ov017_021c51c0(int flag, Evt021c51c0* evt, GameState* battleStruct, unsigned char* obj, struct SearchStruct0202c1a4* search) {
 #if defined(jpn)

@@ -45,7 +45,6 @@ struct Elem020287b4 {
 };
 
 // USA: func_020287b4
-// JPN: func_020287b4
 extern "C" ARM void func_020287b4(struct Elem020287b4* obj) {
     int i;
     struct Elem020287b4* e;

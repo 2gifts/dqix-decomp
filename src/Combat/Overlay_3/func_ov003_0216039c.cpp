@@ -61,7 +61,6 @@ struct Scene0216039c {
 };
 
 // USA: func_ov003_0216039c
-// JPN: func_ov003_02160554
 extern "C" ARM void func_ov003_0216039c(Scene0216039c* self) {
     if (self->p470 == NULL || self->h488 < 0 || self->p324 == NULL) {
         return;

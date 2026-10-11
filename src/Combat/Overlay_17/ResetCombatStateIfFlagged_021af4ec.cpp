@@ -26,7 +26,6 @@ struct ObjResetCombatState_021af4ec {
 	unsigned char field15;
 };
 
-// JPN: func_ov017_021afbfc
 // USA: func_ov017_021af4ec  (semantic: ResetCombatStateIfFlagged_021af4ec)
 extern "C" ARM unsigned char func_ov017_021af4ec(ObjResetCombatState_021af4ec* obj) {
 #if defined(jpn)

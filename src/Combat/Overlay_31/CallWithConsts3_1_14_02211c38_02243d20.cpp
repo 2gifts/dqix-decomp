@@ -1,4 +1,3 @@
-// JPN: func_ov031_02244500
 #include <globaldefs.h>
 #include "System/Timing.h"
 

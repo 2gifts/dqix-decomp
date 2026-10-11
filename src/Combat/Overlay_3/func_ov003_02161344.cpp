@@ -43,7 +43,6 @@ extern unsigned short data_02114e30;
 extern struct Obj0205eaa0 data_02108760;
 
 // USA: func_ov003_02161344
-// JPN: func_ov003_02161430
 extern "C" ARM int func_ov003_02161344(char* obj) {
     *(void**)(obj + kRegionValue470_298) = obj + kRegionValue49C_2C4;
     int result = 0;

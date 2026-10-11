@@ -33,7 +33,6 @@ struct Bit3b_021e2784 { unsigned char bit0 : 1; unsigned char rest : 7; };
 
 static inline unsigned short GetMaxHP(GameObject* c) { return c->currentStats_->primaryStats.maxHP; }
 
-// JPN: func_ov024_021e301c
 // USA: func_ov024_021e2784
 extern "C" ARM struct OutStruct0215ccbc* func_ov024_021e2784(struct Obj_021e2784* obj, int unused, int id, int unused2, int amount) {
     GameObject* c = GetCombatantByID((int)obj->ctx, id);

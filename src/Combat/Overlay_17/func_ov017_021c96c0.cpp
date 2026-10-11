@@ -57,7 +57,6 @@ struct Obj02033834;
 extern "C" void _Z21SetVecYByMode02033834P11Obj02033834i(Obj02033834* obj, int arg);
 extern "C" void _Z18TrySetMode02076cccPvi(void*, int);
 
-// JPN: func_ov017_021c9b70
 // USA: func_ov017_021c96c0
 extern "C" ARM void func_ov017_021c96c0(int unused0, Evt021c96c0* evt, int unused2, int unused3, void* search) {
     Player021c96c0* player = func_02012fe4();

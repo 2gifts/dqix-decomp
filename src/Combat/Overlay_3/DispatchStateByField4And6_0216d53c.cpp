@@ -29,7 +29,6 @@ struct S0216d53c {
     void* field12c0;
 };
 
-// JPN: func_ov003_0216d010
 // USA: func_ov003_0216d53c  (semantic: DispatchStateByField4And6_0216d53c)
 extern "C" ARM void func_ov003_0216d53c(S0216d53c* obj) {
     int g = GetGlobalField0x1c020421a0();

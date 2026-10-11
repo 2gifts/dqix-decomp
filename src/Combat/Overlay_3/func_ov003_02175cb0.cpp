@@ -30,7 +30,6 @@ extern "C" void _Z18InitStruct0207cc0cPc(char* obj);
 extern "C" void func_0207d134(void* buf, int key, int amount);
 extern "C" void func_0207cf30(void* buf, int key, int amount, int arg);
 
-// JPN: func_ov003_02174cd8
 // USA: func_ov003_02175cb0
 extern "C" ARM int func_ov003_02175cb0(char* self, int arg) {
     *(unsigned char*)(self + kRegion104f) = 0;

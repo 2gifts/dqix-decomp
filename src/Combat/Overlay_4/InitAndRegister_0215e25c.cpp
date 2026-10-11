@@ -17,7 +17,6 @@ extern "C" void func_ov011_02184c28(void* obj, void* funcPtr);
 extern "C" void func_ov004_0215e148(void);
 
 // USA: func_ov004_0215e25c
-// JPN: func_ov004_0215eee0
 ARM void InitAndRegister_0215e25c(void* allocator, void* obj) {
     Template0215e25c local = data_ov004_0216fc40;
     void* block = _ZN13SafeAllocator8AllocateEj(allocator, sizeof(Template0215e25c));

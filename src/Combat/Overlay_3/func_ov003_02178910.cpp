@@ -98,7 +98,6 @@ static inline void SetSelection(unsigned char* self, signed char v) {
 static inline int IsLowKind(struct Element020de650* e) { return e->nibble <= 7; }
 
 // USA: func_ov003_02178910
-// JPN: func_ov003_021777d4
 extern "C" ARM void func_ov003_02178910(unsigned char* self) {
     struct BattleStruct* battle = _ZN9GameState11GetInstanceEv();
     void* battleSum = _Z17GetPtrField0x2a04P9GameState(battle);

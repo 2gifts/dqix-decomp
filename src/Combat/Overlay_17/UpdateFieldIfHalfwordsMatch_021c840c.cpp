@@ -22,7 +22,6 @@ struct Ret021c840c {
 	signed char field2a;
 };
 
-// JPN: func_ov017_021c88bc
 // USA: func_ov017_021c840c
 ARM void UpdateFieldIfHalfwordsMatch_021c840c(int unused0, Src021c840c* src, GameState* battleStruct, unsigned char* obj) {
 #if defined(jpn)

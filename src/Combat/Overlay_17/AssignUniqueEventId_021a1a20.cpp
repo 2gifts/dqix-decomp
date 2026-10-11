@@ -8,7 +8,6 @@ struct Entry0207d9bc* FindEntryByHalfword(struct Entry0207d9bc* arr, unsigned sh
 
 extern unsigned char data_ov017_021d7654[4];
 
-// JPN: func_ov017_021a24b0
 // USA: func_ov017_021a1a20  (semantic: AssignUniqueEventId_021a1a20)
 extern "C" ARM unsigned short func_ov017_021a1a20(void) {
 #if defined(jpn)

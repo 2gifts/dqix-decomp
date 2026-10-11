@@ -26,7 +26,6 @@ struct Obj_021703f0 {
     unsigned char* owner;
 };
 
-// JPN: func_ov003_0216fca8
 // USA: func_ov003_021703f0
 extern "C" ARM void func_ov003_021703f0(struct Obj_021703f0* obj, short* outX, short* outY) {
     if (obj->state == 5) {

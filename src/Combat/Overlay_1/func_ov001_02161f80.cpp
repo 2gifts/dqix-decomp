@@ -26,7 +26,6 @@ struct S3f8_02161f80 {
 };
 
 // USA: func_ov001_02161f80
-// JPN: func_ov001_02163594
 extern "C" ARM int func_ov001_02161f80(void* target, int count) {
     int tmpArr[3];
     void* battle = GameState::GetInstance();

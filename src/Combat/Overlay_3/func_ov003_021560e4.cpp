@@ -136,7 +136,6 @@ struct Ctrl {
 };
 
 // USA: func_ov003_021560e4
-// JPN: func_ov003_02157740
 extern "C" ARM void func_ov003_021560e4(Ctrl* self) {
     char* a;
     int state;

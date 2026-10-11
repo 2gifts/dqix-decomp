@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
-// JPN: func_ov025_021ed62c
 // USA: func_ov025_021ed124
 ARM void InitQueueStruct_021ed124(unsigned char* obj) {
     *(unsigned short*)(obj + 0x15e) = 0;

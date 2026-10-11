@@ -28,7 +28,6 @@ extern "C" void _Z19SetByteFieldAt0x1a7Phh(GameObject* obj, int value);
 void SetFields0x44(Fields020407b4* dst, int a, int b, int c);
 void StoreVec3AtField0x50(unsigned char* obj, int a, int b, int c);
 
-// JPN: func_ov017_021923b8
 // USA: func_ov017_021917f0
 extern "C" ARM void func_ov017_021917f0(int idx, int mode) {
 #if defined(jpn)

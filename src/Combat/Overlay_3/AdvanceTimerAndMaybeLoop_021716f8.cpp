@@ -28,7 +28,6 @@ struct Obj021716f8 {
     unsigned int field72c;
 };
 
-// JPN: func_ov003_02170a58
 // USA: func_ov003_021716f8  (semantic: AdvanceTimerAndMaybeLoop_021716f8)
 extern "C" ARM void func_ov003_021716f8(struct Obj021716f8* obj) {
     unsigned char* b = (unsigned char*)obj;

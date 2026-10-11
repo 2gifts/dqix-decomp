@@ -9,7 +9,6 @@ enum { kRegion7d8 = 0x7d8 };
 
 extern "C" void func_0205ac40(void*, void*, int);
 
-// JPN: func_ov003_021748a4
 // USA: func_ov003_0217585c
 ARM void InitEntryAtIndex_0217585c(void* obj, int a, int b, int idx, unsigned char c) {
     char* entry = *(char**)((char*)obj + kRegion830) + idx * 0x28;

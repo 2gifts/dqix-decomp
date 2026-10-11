@@ -36,7 +36,6 @@ extern "C" void func_020aeb34(void);
 int TestBitInByteArray(int unused, unsigned char* arr, int index);
 
 // USA: func_020a84e0
-// JPN: func_020a84e0
 extern "C" ARM void func_020a84e0() {
     GameState* gs = GameState::GetInstance();
     func_ov017_0218b5b0();

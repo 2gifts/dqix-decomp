@@ -34,7 +34,6 @@ struct Struct020dfc40;
 void ResetAndDetach020dfc6c(struct Struct020dfc40* p);
 
 // USA: func_ov003_0217db88  (semantic: ResetOverlayStateAndSetDispcnt_0217db88)
-// JPN: func_ov003_0217c828
 extern "C" ARM void func_ov003_0217db88(void* obj) {
     unsigned char* o = (unsigned char*)obj;
 

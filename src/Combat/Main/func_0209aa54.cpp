@@ -27,7 +27,6 @@ int GetFieldAt0x150(unsigned char* obj);
 void SetBitInArray0x910(unsigned char* obj, int index);
 
 // USA: func_0209aa54
-// JPN: func_0209aa54
 extern "C" ARM int func_0209aa54(struct Holder0209aa54* h, unsigned char* path, unsigned char* out,
                                 int threshold) {
     if (&h->base->slots[0].pairs[0] == NULL) return 0;

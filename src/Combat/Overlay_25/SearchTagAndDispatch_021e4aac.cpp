@@ -1,4 +1,3 @@
-// JPN: func_ov025_021e4f9c
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 #include "std_library_functions.h"

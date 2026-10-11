@@ -16,7 +16,6 @@ struct Src021cbf54 {
 	unsigned short field6;
 };
 
-// JPN: func_ov017_021cc404
 // USA: func_ov017_021cbf54
 ARM void DispatchOrSetByte6c7_021cbf54(int unused0, Src021cbf54* src, int unused2, unsigned char* obj) {
 #if defined(jpn)

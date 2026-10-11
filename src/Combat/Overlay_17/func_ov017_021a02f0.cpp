@@ -56,7 +56,6 @@ struct Battle021a02f0 {
     PairBackup021a02f0 backups[3];
 };
 
-// JPN: func_ov017_021a0da0
 // USA: func_ov017_021a02f0
 extern "C" ARM void func_ov017_021a02f0(Battle021a02f0* self) {
     int i;

@@ -18,7 +18,6 @@ struct RegionalState02094b34 {
 #endif
 
 // USA: func_02094b34
-// JPN: func_0209595c
 extern "C" ARM void _Z21BlankFunction02094b34v(
 #if defined(jpn)
     RegionalState02094b34* self, int first, int second,

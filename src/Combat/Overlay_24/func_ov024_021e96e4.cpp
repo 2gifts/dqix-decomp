@@ -17,7 +17,6 @@ struct Params_021e96e4 {
     unsigned int reserved2 : 2;
 };
 
-// JPN: func_ov024_021e9ed0
 // USA: func_ov024_021e96e4
 extern "C" ARM int func_ov024_021e96e4(Ctx_021e96e4* ctx, int id,
     Params_021e96e4* params, int mode, signed char result,

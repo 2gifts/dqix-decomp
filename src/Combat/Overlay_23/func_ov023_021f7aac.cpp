@@ -32,7 +32,6 @@ struct Obj021f7aac {
     unsigned short field8;
 };
 
-// JPN: func_ov023_021f6fa4
 // USA: func_ov023_021f7aac
 extern "C" ARM void func_ov023_021f7aac(struct Obj021f7aac* obj, void* keyObj, struct Rec020467f0* entry, void* next) {
 #if defined(jpn)

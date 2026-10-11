@@ -56,7 +56,6 @@ static inline SafeAllocator* GetAllocator(GameResources* res, int index) {
     return &res->allocator_array_38[index];
 }
 
-// JPN: func_ov023_021ee810
 // USA: func_ov023_021eeaac
 extern "C" ARM int func_ov023_021eeaac(char* self) {
 #if defined(jpn)

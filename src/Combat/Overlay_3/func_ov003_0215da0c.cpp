@@ -42,7 +42,6 @@ struct BattleMenu_0215da0c {
 };
 
 // USA: func_ov003_0215da0c
-// JPN: func_ov003_0215ed68
 extern "C" ARM void func_ov003_0215da0c(struct BattleMenu_0215da0c* self) {
     char* global;
     GameState* gs;

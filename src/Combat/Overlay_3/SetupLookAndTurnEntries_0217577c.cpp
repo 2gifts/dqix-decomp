@@ -23,7 +23,6 @@ struct Ctx0217577c {
     struct Obj2081* field89c;
 };
 
-// JPN: func_ov003_021747cc
 // USA: func_ov003_0217577c  (semantic: SetupLookAndTurnEntries_0217577c)
 extern "C" ARM void func_ov003_0217577c(void* objRaw) {
     Ctx0217577c* obj = (Ctx0217577c*)objRaw;

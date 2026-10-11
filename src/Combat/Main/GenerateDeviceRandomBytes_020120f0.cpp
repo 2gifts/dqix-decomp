@@ -14,7 +14,6 @@ extern "C" unsigned long long _u32_div_f(unsigned int a, unsigned int b);
 extern char data_020ef0ca;
 
 // USA: func_020120f0  (semantic: GenerateDeviceRandomBytes_020120f0)
-// JPN: func_020120f0  (semantic: GenerateDeviceRandomBytes_020120f0)
 extern "C" ARM void func_020120f0(unsigned char* self) {
     struct Random rng;
     CreateRandom(&rng, &data_020ef0ca, 0);

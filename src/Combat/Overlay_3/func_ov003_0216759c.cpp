@@ -63,7 +63,6 @@ extern unsigned short data_ov003_0217f4dc[];
 extern char data_ov003_0217e87f[];
 #endif
 
-// JPN: func_ov003_0216747c
 // USA: func_ov003_0216759c
 extern "C" ARM int func_ov003_0216759c(View6759c* self) {
     if (self->ready != 0) return 1;

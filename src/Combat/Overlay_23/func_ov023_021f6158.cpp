@@ -25,7 +25,6 @@ extern const struct Block48_021f6158 data_ov023_021fd8a8;
 extern struct Block48_021f6158 data_ov023_021fd8a8;
 #endif
 
-// JPN: func_ov023_021f5794
 // USA: func_ov023_021f6158
 extern "C" ARM void func_ov023_021f6158(struct Obj021f6158* obj) {
 #if defined(jpn)

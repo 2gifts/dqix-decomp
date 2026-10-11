@@ -34,7 +34,6 @@ void* GetData02100044();
 PartyStats* GetFieldAt0x150(unsigned char*);
 extern "C" void func_0205e330(void*, void*, int);
 
-// JPN: func_ov017_021cebac
 // USA: func_ov017_021ce704
 extern "C" ARM void func_ov017_021ce704(int index) {
     void* context = GetData02100044();

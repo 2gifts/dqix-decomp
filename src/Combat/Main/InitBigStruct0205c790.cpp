@@ -13,7 +13,6 @@ void InitChannelPair0205c53c(struct Struct_0205c53c* s);
 struct Foo02042fcc;
 void ResetFoo02042fcc(struct Foo02042fcc* p);
 
-// JPN: 0x0205daf0
 // USA: func_0205c790
 ARM void InitBigStruct0205c790(char* obj) {
     InitSubstruct0205c73c((struct InitSubstruct0205c73cData*)(obj + 0x4));

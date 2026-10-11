@@ -22,7 +22,6 @@ struct Params_021e95d4 {
     unsigned int high24 : 2;
 };
 
-// JPN: func_ov024_021e9dd0
 // USA: func_ov024_021e95d4
 extern "C" ARM int func_ov024_021e95d4(Ctx_021e95d4* ctx, int id,
     Params_021e95d4* params, int mode, signed char adjustment,

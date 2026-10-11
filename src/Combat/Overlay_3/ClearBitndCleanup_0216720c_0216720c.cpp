@@ -1,4 +1,3 @@
-// JPN: func_ov003_021670ec
 // USA: func_ov003_0216720c
 #include <globaldefs.h>
 #if defined(jpn)

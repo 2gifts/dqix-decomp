@@ -26,7 +26,6 @@ struct Src021580d8 {
 };
 
 // USA: func_ov003_021580d8  (semantic: CopyAndFormatMessage_021580d8)
-// JPN: func_ov003_021595c4
 extern "C" ARM void func_ov003_021580d8(struct Obj021580d8* dst, struct Src021580d8* src) {
     char* text;
     if (src == 0) {

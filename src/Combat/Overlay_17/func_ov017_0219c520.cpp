@@ -20,7 +20,6 @@ void AppendNodeToTail(TailList020469b4* list, TailNode020469b4* node);
 extern "C" void _Z29AllocateAndCopyBuf20_021689d8P13SafeAllocatorPv(SafeAllocator* allocator, void* arg);
 extern char data_ov017_021d75d0;
 
-// JPN: func_ov017_0219d010
 // USA: func_ov017_0219c520
 extern "C" ARM void func_ov017_0219c520() {
 #if defined(jpn)

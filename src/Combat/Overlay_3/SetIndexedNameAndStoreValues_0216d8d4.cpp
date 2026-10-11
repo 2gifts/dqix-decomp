@@ -23,7 +23,6 @@ struct StoreStruct;
 void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
 extern "C" void func_0204500c(void*, int, int, int);
 
-// JPN: func_ov003_0216d3b0
 // USA: func_ov003_0216d8d4  (semantic: SetIndexedNameAndStoreValues_0216d8d4)
 #if defined(jpn)
 extern "C" ARM void func_ov003_0216d8d4(char* obj, int keyA) {

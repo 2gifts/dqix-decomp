@@ -11,7 +11,6 @@ void ClearStructFields(struct InitStruct2075* p);
 extern char data_ov023_021fdc23[];
 extern char data_ov023_021fdc36[];
 
-// JPN: func_ov023_021e07ec
 // USA: func_ov023_021e0244
 ARM int FormatAndApplyPreferredField_021e0244(void* obj) {
 #if defined(jpn)

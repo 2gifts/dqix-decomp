@@ -21,7 +21,6 @@ extern "C" int _Z36DispatchMessageAndInvokeList02081498PvS_P14Params02081498(voi
 extern "C" int _Z24ProcessEntryList02081574PvS_S_(void *obj, void *a, void *b);
 extern "C" int _Z36InvokeHandlerAfterCacheFlush0204fbf8P11Obj0204fbf8(void *a);
 
-// JPN: 0x02081cf0
 // USA: func_020813ec  (semantic: ProcessSublistEntryAndDispatch_020813ec)
 extern "C" ARM int func_020813ec(void *obj, int id) {
     if (id < 0) {

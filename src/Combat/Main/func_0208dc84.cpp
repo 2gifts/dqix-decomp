@@ -41,7 +41,6 @@ struct Copy0208dc84 {
 };
 
 // USA: func_0208dc84
-// JPN: func_0208dc84
 extern "C" ARM int func_0208dc84(char* p
 #if defined(jpn)
     , int parameterCount

@@ -33,7 +33,6 @@ extern "C" void _Z16Dispatch020e3428Pvi(void*, int);
 extern unsigned char data_020e8cc6[];
 extern unsigned char data_020e8cc5[];
 
-// JPN: func_0208b428
 // USA: func_0208ab34
 extern "C" ARM void func_0208ab34(TimedPartyEntries* entries, void* context) {
     PartyRoster* roster = (PartyRoster*)GetPtrField0x2a04(GameState::GetInstance());

@@ -18,7 +18,6 @@ extern "C" {extern const Ids data_ov000_02182b94;extern const int data_ov000_021
 inline GameObject* GetUnit(int id){GameState* gs=GameState::GetInstance();return gs->GetCombatantByIndex(id);}
 inline int StatTotal(BaseStats* s){int second=s->Second();int first=s->First();return first+second;}
 // USA: func_ov000_0215f7a8
-// JPN: func_ov000_0215f7a8
 extern "C" ARM int func_ov000_0215f7a8(Battle* self,short* selected,int count){
  Random* random=GetBTRandom();if(self->info->state>=0)return 0;
  short states[3];int size=func_ov000_0215ed34(self,states,3);short* statePtr=states;for(int i=0;i<size;i++,statePtr++)if((unsigned int)(*statePtr-0x26)<=2)return 0;

@@ -64,7 +64,6 @@ struct Obj0217193c {
     int field738;
 };
 
-// JPN: func_ov003_02170c88
 // USA: func_ov003_0217193c
 extern "C" ARM void func_ov003_0217193c(struct Obj0217193c* obj) {
     Entry0217193c* entry;

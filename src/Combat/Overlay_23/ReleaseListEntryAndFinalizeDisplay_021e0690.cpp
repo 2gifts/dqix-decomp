@@ -29,7 +29,6 @@ struct BitField021e0690 {
 #if defined(jpn)
 extern char data_ov023_021fcf09[];
 #endif
-// JPN: func_ov023_021e0c20
 // USA: func_ov023_021e0690  (semantic: ReleaseListEntryAndFinalizeDisplay_021e0690)
 extern "C" ARM int func_ov023_021e0690(void* obj_) {
 #if defined(jpn)

@@ -47,7 +47,6 @@ struct Obj021b5458 {
     int key;
 };
 
-// JPN: func_ov017_021b5a0c
 // USA: func_ov017_021b5458
 extern "C" ARM void func_ov017_021b5458(struct Obj021b5458* obj) {
     struct Sub021b5458* sub;

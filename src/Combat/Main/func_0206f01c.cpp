@@ -38,7 +38,6 @@ struct List0206f01c {
     void* extra;
 };
 
-// JPN: func_0207016c
 // USA: func_0206f01c
 extern "C" ARM void func_0206f01c(struct List0206f01c* self, SafeAllocator* alloc, unsigned char* src) {
     int size;

@@ -6,7 +6,6 @@ extern "C" void* func_0202ae18(void);
 void ClearSearchFlagBit0202c600(struct SearchStruct* obj, int value);
 extern "C" void func_ov017_02195214(void* dst, void* src);
 
-// JPN: func_ov017_02195fe4
 // USA: func_ov017_0219541c
 ARM void SetNameSlotAndClear_0219541c(void* obj, int idx, char* namePtr) {
 #if defined(jpn)

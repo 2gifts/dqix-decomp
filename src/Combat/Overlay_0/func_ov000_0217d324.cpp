@@ -23,7 +23,6 @@ extern "C" void func_ov000_02176634(void* obj, struct TableEntry0217f8c0* entry,
 extern "C" void func_ov000_0217c638(void* obj, int arg1, int arg2);
 extern struct Obj0205eaa0 data_02108760;
 
-// JPN: func_ov000_0217e71c
 // USA: func_ov000_0217d324
 extern "C" ARM void func_ov000_0217d324(char* obj, int arg1, int arg2) {
     *(unsigned short*)(obj + kFlagsOffset) |= 0x100;

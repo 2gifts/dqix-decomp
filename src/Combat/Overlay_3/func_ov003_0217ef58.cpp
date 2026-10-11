@@ -53,7 +53,6 @@ void ClearFlagBits(unsigned char* obj, int mask);
 extern "C" void _Z29InitObjAndClearFlags_0217f1b8Ph(unsigned char* obj);
 extern AllocatorUnion data_02114e20;
 
-// JPN: func_ov003_0217dc5c
 // USA: func_ov003_0217ef58
 extern "C" ARM void func_ov003_0217ef58(Obj0217ef58* self) {
     GameState* gs = GameState::GetInstance();

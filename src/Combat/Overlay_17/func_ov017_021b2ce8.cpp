@@ -49,7 +49,6 @@ struct Task_021b2ce8 {
 extern AllocatorUnion data_02114e20;
 extern Screen_021b2ce8* data_ov017_021d840c;
 
-// JPN: func_ov017_021b33f8
 // USA: func_ov017_021b2ce8
 extern "C" ARM void func_ov017_021b2ce8(Task_021b2ce8* self) {
 #if defined(jpn)

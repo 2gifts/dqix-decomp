@@ -27,7 +27,6 @@ struct Obj02160678 {
 };
 
 // USA: func_ov003_02160678
-// JPN: func_ov003_02160818
 extern "C" ARM void func_ov003_02160678(struct Obj02160678* self) {
     struct Obj2081* list = self->list;
     if (list == NULL) {

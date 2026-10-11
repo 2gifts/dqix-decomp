@@ -15,7 +15,6 @@ void SetSearchFlagBit0202c660(struct SearchStruct* obj, int value);
 struct S021b1454;
 void ClearBitAtIndex_021b1454(struct S021b1454* obj, int bit);
 
-// JPN: func_ov017_02196154
 // USA: func_ov017_0219558c  (semantic: HandleFlagOrClearSlot_0219558c)
 extern "C" ARM void func_ov017_0219558c(unsigned char* obj, int value) {
 #if defined(jpn)

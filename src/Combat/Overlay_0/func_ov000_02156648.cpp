@@ -22,7 +22,6 @@ extern "C" {int func_ov000_02156068(void*,int,int,int);float func_ov000_02156b38
 struct Tail {char p[0xe95];unsigned char failure;};
 inline void SetFailure(Random* self,int value){((Tail*)((char*)self+0x8000))->failure=value;}
 // USA: func_ov000_02156648
-// JPN: func_ov000_02156648
 extern "C" ARM int func_ov000_02156648(Random* self,int attacker,int target,Output* out,Action* action,Work* work,unsigned char force){
  GameState* gs=GameState::GetInstance();GameObject* unit=GameState::GetInstance()->GetCombatantByIndex(target);
  self->failure=0;

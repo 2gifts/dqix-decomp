@@ -39,7 +39,6 @@ struct NodeShort38_02159ce0 { char pad[0x38]; short field38; };
 struct ElemNibble_02159ce0 { unsigned int nibble : 4; unsigned int rest : 28; };
 
 // USA: func_ov004_02159ce0
-// JPN: func_ov004_0215acd8
 extern "C" ARM int func_ov004_02159ce0(void* a) {
     unsigned char idxVal = func_ov004_02157128(a);
     Container020dedd0* node = (Container020dedd0*)func_ov004_02156fd4(a, 5);

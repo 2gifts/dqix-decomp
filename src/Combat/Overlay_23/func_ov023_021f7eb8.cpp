@@ -68,7 +68,6 @@ extern "C" void func_02050cc0(Canvas_021f7eb8*, short, short, int, unsigned char
 extern "C" void func_02050678(Canvas_021f7eb8*, short, short, const char*, unsigned char, unsigned char, unsigned short*, unsigned short*);
 #endif
 
-// JPN: func_ov023_021f73b0
 // USA: func_ov023_021f7eb8
 extern "C" ARM void func_ov023_021f7eb8(MenuCanvas_021f7eb8* self, void* script, int value, short x, short y,
                                         short width, short height, unsigned char frame, unsigned char a,

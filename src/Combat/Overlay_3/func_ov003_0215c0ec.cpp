@@ -61,7 +61,6 @@ void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
 void SetByteInRange(unsigned char* base, int index, unsigned char value);
 void SetByteAtIndex(unsigned char* base, int index, unsigned char value);
 
-// JPN: func_ov003_0215d3f4
 // USA: func_ov003_0215c0ec
 extern "C" ARM void func_ov003_0215c0ec(struct BattleMenu0215c0ec* self) {
     if (self->state != 0) {

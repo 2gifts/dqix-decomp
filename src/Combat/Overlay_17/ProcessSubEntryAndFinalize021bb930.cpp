@@ -38,7 +38,6 @@ struct Obj021bb930 {
     struct Sub021bb930* sub;
 };
 
-// JPN: func_ov017_021bbf28
 // USA: func_ov017_021bb930  (semantic: ProcessSubEntryAndFinalize021bb930)
 extern "C" ARM void func_ov017_021bb930(struct Obj021bb930* self) {
     if (self->flag0xfe != 0 && self->sub != NULL) {

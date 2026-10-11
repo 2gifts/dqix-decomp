@@ -7,7 +7,6 @@ extern "C" int func_ov017_0218b5b0(void);
 void ResetOrFindStopwatch(unsigned char* obj, int id);
 extern "C" void func_0202738c(void* a, int b, int c, int d);
 
-// JPN: func_ov017_021c64e4
 // USA: func_ov017_021c6034
 ARM void ResetStopwatchesUnlessCurrent_021c6034(signed char* arr) {
 #if defined(jpn)

@@ -23,7 +23,6 @@ int AppendString02042058(char* dst, const char* src);
 extern char data_ov003_0217ff3e;
 
 // USA: func_ov003_0215e13c
-// JPN: func_ov003_0215f414
 ARM void AppendEntryNames_0215e13c(char* base, char* dst, int flag) {
     if (dst == NULL) return;
 

@@ -1,4 +1,3 @@
-// JPN: func_ov017_021ac40c
 #include <globaldefs.h>
 
 #if defined(jpn)

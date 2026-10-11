@@ -54,7 +54,6 @@ void ClearSublistEntryFlag2_020806c4(void* obj, int id);
 extern "C" int func_020813ec(void* obj, int id);
 
 // USA: func_ov003_021767ec
-// JPN: func_ov003_02175834
 extern "C" ARM int func_ov003_021767ec(char* self) {
     struct Obj2081* o = *(struct Obj2081**)(self + kRegionValue89C_818);
     short id0 = 7;

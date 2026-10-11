@@ -37,7 +37,6 @@ struct QuadArg0201f3b4 {
 };
 
 // USA: func_0201f3b4  (semantic: AppendScaledElementFromVariants_0201f3b4)
-// JPN: func_0201f3b4  (semantic: AppendScaledElementFromVariants_0201f3b4)
 extern "C" ARM int func_0201f3b4(struct QuadArg0201f3b4* arg0) {
     float c;
     int a = _ZNK6Script9Parameter5ToIntEv(&arg0->v0);

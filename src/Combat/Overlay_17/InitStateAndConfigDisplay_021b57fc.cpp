@@ -6,7 +6,6 @@ struct ByteHeader0204693c;
 void ResetByteHeader(struct ByteHeader0204693c* p);
 int GetGlobalField0x1c020421a0();
 
-// JPN: 021b5db0
 // USA: func_ov017_021b57fc  (semantic: InitStateAndConfigDisplay_021b57fc)
 extern "C" ARM void func_ov017_021b57fc(unsigned char* obj) {
     ResetByteHeader((struct ByteHeader0204693c*)obj);

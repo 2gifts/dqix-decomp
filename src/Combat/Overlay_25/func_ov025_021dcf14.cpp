@@ -157,7 +157,6 @@ static inline struct Pending021dcf14 GetPending(unsigned char* work) {
     return *(struct Pending021dcf14*)(work + PendingRequest);
 }
 
-// JPN: func_ov025_021dd808
 // USA: func_ov025_021dcf14
 extern "C" ARM int func_ov025_021dcf14(unsigned char* sl) {
     GameState* battle = GameState::GetInstance();
@@ -642,7 +641,6 @@ extern "C" ARM int func_ov025_021dcf14(unsigned char* sl) {
     return 0;
 }
 
-// JPN: func_ov025_021dea10
 // USA: func_ov025_021de110
 ARM void ResetFields_021de110(void* obj) {
     *(int*)((char*)obj + 0x0) = 0;
@@ -721,7 +719,6 @@ static inline int IsInRange(int id) {
     return id >= 0xc0 && id <= 0xc7;
 }
 
-// JPN: func_ov025_021dea24
 // USA: func_ov025_021de124
 extern "C" ARM int func_ov025_021de124(unsigned char* sl) {
     GameState* battle = GameState::GetInstance();

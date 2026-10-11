@@ -31,7 +31,6 @@ extern struct Obj0205eaa0 data_02108760;
 extern unsigned char data_ov004_02171034[];
 
 // USA: func_ov004_0216d358
-// JPN: func_ov004_0216d910
 extern "C" ARM int func_ov004_0216d358(void* a) {
 #if defined(jpn)
     int v0c = *(int*)&data_ov004_02171034[0x10];

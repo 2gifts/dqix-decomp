@@ -48,7 +48,6 @@ struct Ret021cb2f4 {
 };
 
 // USA: func_ov017_021cb2f4
-// JPN: func_ov017_021cb7a4
 extern "C" ARM void func_ov017_021cb2f4(int unused0, Src021cb2f4* src, GameState* battleStruct, unsigned char* self) {
 #if defined(jpn)
     void* h = *(void**)(self + 0x3000 + 0x508);

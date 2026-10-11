@@ -16,7 +16,6 @@ enum { ValueRangeStateOffset = 0x2860 };
 enum { ValueRangeStateOffset = 0x2820 };
 #endif
 
-// JPN: func_0201b7e0
 // USA: func_0201ba68
 ARM void SetBitFromValueRange0201ba68(void* obj) {
     unsigned char* base = (unsigned char*)obj;

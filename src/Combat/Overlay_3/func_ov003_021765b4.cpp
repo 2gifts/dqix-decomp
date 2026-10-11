@@ -48,7 +48,6 @@ struct Ctx021765b4 {
 };
 
 // USA: func_ov003_021765b4
-// JPN: func_ov003_02175604
 extern "C" ARM unsigned char func_ov003_021765b4(Ctx021765b4* self)
 {
     unsigned char confirmed = 0;

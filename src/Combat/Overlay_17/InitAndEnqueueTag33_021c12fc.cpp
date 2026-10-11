@@ -17,7 +17,6 @@ void EnqueueTag33ForListedCombatant_021c12b0(unsigned char param);
 #define LIST_OFFSET 0x36fc
 #endif
 
-// JPN: func_ov017_021c18a4
 // USA: func_ov017_021c12fc  (semantic: InitAndEnqueueTag33_021c12fc)
 extern "C" ARM void func_ov017_021c12fc(char* self, unsigned char param2, unsigned char param3) {
     struct Obj021c1350* node = *(struct Obj021c1350**)(self + NODE_OFFSET);

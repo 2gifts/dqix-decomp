@@ -9,7 +9,6 @@ extern "C" void* __clear(void* dst, int count);
 struct Blend10_021e96a8 { int x : 10; int y : 10; int z : 10; };
 struct Node021e96a8 { char pad[0x18]; struct Blend10_021e96a8 posDelta; struct Blend10_021e96a8 rotDelta; };
 
-// JPN: func_ov023_021e960c
 // USA: func_ov023_021e96a8  (semantic: AccumulateBlendDeltas_021e96a8)
 extern "C" ARM int func_ov023_021e96a8(unsigned char* obj) {
 #if defined(jpn)

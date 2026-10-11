@@ -125,7 +125,6 @@ void CreateAndSetFields8A_021db544(void* layout, void* id, int x, int y);
             element->flags_ &= ~1;                                         \
     }
 
-// JPN: func_ov023_021dbf44
 // USA: func_ov023_021db634
 extern "C" ARM void func_ov023_021db634(Layout_021db634* layout, Canvas_021db634* canvas)
 {

@@ -41,4 +41,3 @@ ARM void TeardownAndResetState020d7aa0(struct Obj020d7aa0* obj) {
     ResetAndClearFlags020d7a5c((struct ResetObj020d7a5c*)obj);
 }
 
-// JPN: 0x020d94a4

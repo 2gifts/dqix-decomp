@@ -16,7 +16,6 @@ int TestBitAt0x34(unsigned char* obj, unsigned int index);
 int AreListedCombatantsBit0Set(struct Obj02086b98* o);
 int IsFlag10088Set(struct S_10088* obj);
 
-// JPN: func_ov000_021653e4
 // USA: func_ov000_02163c80
 extern "C" ARM int func_ov000_02163c80(struct S02163c80* self, int checkEnemies) {
     GameState* bs = GameState::GetInstance();

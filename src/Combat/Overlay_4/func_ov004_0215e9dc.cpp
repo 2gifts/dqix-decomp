@@ -14,7 +14,6 @@ extern "C" GameObject* GetCombatantWithFlag0x100(GameState*, int);
 #endif
 
 // USA: func_ov004_0215e9dc
-// JPN: func_ov004_0215f4e4
 extern "C" ARM int func_ov004_0215e9dc(void* unused, void* combatantIdPtr, int counter, int dir) {
     GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), (int)combatantIdPtr);
     int idx = counter;

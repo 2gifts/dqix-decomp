@@ -143,7 +143,6 @@ static inline short ElemY(unsigned char* e) {
 }
 
 // USA: func_ov003_02169eec
-// JPN: func_ov003_02169c0c
 extern "C" ARM int func_ov003_02169eec(Menu02169eec* self, unsigned int sb) {
     int ax;
     int ay;

@@ -11,7 +11,6 @@ struct Ids { short values[8]; };
 extern "C" { extern const Ids data_ov000_02182b34;int func_ov000_0215e9fc(Random*,short*,int,int);int func_ov000_02153e78(Random*,short*,int,int,int);int func_ov000_0215eb1c(Random*,short*,int,int); }
 #define IsParty(n) ((n)>=0 && (n)<=3 ? 1 : 0)
 // USA: func_ov000_02154c68
-// JPN: func_ov000_02154c68
 extern "C" ARM int func_ov000_02154c68(Random* self,int id,Action* action){
  if(!action)return -1;
  GameState* gs=GameState::GetInstance();GetData02108e10();

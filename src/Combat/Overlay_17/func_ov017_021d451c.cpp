@@ -1,4 +1,3 @@
-// JPN: func_ov017_021d4970
 #include <globaldefs.h>
 
 struct Struct021c90b4 {

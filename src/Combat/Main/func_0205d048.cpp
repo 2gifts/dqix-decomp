@@ -22,7 +22,6 @@ struct Obj0205d048 {
     unsigned char fieldb4;
 };
 
-// JPN: func_0205e378
 // USA: func_0205d048
 extern "C" ARM void func_0205d048(struct Obj0205d048* obj) {
     ForwardInitChannelPair0205c564((struct Struct_0205c53c*)obj);

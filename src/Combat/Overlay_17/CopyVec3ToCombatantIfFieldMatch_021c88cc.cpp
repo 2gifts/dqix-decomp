@@ -18,7 +18,6 @@ struct Src021c88cc {
 	unsigned short field12;
 };
 
-// JPN: func_ov017_021c8d7c
 // USA: func_ov017_021c88cc
 ARM void CopyVec3ToCombatantIfFieldMatch_021c88cc(int unused0, Src021c88cc* src, GameState* battleStruct, unsigned char* obj) {
 #if defined(jpn)

@@ -17,7 +17,6 @@ struct Triple021dc700 {unsigned int a:10;unsigned int b:10;unsigned int c:10;uns
 struct Code021dc700 {unsigned int value:12;unsigned int rest:20;};
 struct Params021dc700 {char pad[4];Code021dc700 code;char pad8[0x18];Triple021dc700 field20;Triple021dc700 field24;};
 static inline unsigned short GetMaxHP(GameObject* c){unsigned short hp=c->currentStats_->primaryStats.maxHP;return hp;}
-// JPN: func_ov024_021dcfac
 // USA: func_ov024_021dc700
 extern "C" ARM void* func_ov024_021dc700(Obj021dc700* obj,int sourceID,int id,Params021dc700* params,int amount,int unused,unsigned char enabled){
     GameObject* source=GetCombatantByID((int)obj->context,sourceID);

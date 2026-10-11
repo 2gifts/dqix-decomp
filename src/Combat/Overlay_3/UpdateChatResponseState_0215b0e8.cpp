@@ -23,7 +23,6 @@ extern "C" int _Z25IsAnimationActive0209ca2cPv(void*);
 extern unsigned char data_02109bf4;
 
 // USA: func_ov003_0215b0e8
-// JPN: func_ov003_0215c528
 ARM void UpdateChatResponseState_0215b0e8(void* self) {
     unsigned char* s = (unsigned char*)self;
     GameState::GetInstance();

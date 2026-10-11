@@ -50,7 +50,6 @@ extern char data_ov017_021d7bb1[];
 extern char data_ov017_021d82c5[];
 #endif
 
-// JPN: func_ov017_021b5760
 // USA: func_ov017_021b5070
 extern "C" ARM void func_ov017_021b5070(Loader021b5070* self) {
     GameState::GetInstance();

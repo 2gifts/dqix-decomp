@@ -36,7 +36,6 @@ extern Struct021707e8_02163144 data_ov004_021707e8;
 extern char data_ov004_02170542;
 
 // USA: func_ov004_02163144
-// JPN: func_ov004_021637e0
 extern "C" ARM int func_ov004_02163144() {
     int ret = 1;
     int data4 = (int)BackgroundLoader::GetInstance();

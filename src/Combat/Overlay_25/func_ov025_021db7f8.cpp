@@ -29,7 +29,6 @@ struct BattleCtrl_021db7f8 {
     char field6ffc[4];
 };
 
-// JPN: func_ov025_021dc0f4
 // USA: func_ov025_021db7f8
 extern "C" ARM void func_ov025_021db7f8(BattleCtrl_021db7f8* obj) {
     GameState* bs = GameState::GetInstance();

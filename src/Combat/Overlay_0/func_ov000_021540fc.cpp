@@ -16,7 +16,6 @@ struct Random;int PickTableValueWithRandomFill_0215fbe0(Random*,int);int NextRan
 struct Bits {unsigned int first:1,second:1,rest:30;};struct Ids {short v[8];};
 extern "C" {extern const Ids data_ov000_02182b74;int func_ov000_02153f98(void*,int,int,short*);void func_ov000_02153aa4(void*,int,int*);void func_ov000_02153c24(void*,int*);int func_ov000_02153e78(void*,short*,int,int,int);int func_ov000_0215eb1c(void*,short*,int,int);int func_ov000_0215e9fc(void*,short*,int,int);}
 // USA: func_ov000_021540fc
-// JPN: func_ov000_021540fc
 extern "C" ARM int func_ov000_021540fc(Random* self,int id,int action,short* output){
  GameState* gs=GameState::GetInstance();Skill* skill=SearchBothTables02079e2c(GetData02108e10(),(short)action);if(!skill)return 0;
  GameObject* unit=GetCombatantWithFlag0x100(gs,id);if(!unit)return 0;

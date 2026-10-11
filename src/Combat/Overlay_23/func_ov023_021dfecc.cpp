@@ -55,7 +55,6 @@ extern "C" unsigned int GetMainBG2ScreenBase(void);
 
 extern const char* data_ov023_021fda78[];
 
-// JPN: func_ov023_021e047c
 // USA: func_ov023_021dfecc  (semantic: ResetAndDispatchListEntries_021dfecc)
 extern "C" ARM int func_ov023_021dfecc(void* objRaw) {
 #if defined(jpn)

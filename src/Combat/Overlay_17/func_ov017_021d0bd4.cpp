@@ -31,7 +31,6 @@ struct NameSlot021d0bd4 {
     char name[14];
 };
 
-// JPN: func_ov017_021d1068
 // USA: func_ov017_021d0bd4
 extern "C" ARM void func_ov017_021d0bd4(int value, Evt021d0bd4* evt, int unused, unsigned char* obj, struct SearchStruct0202c1a4* search) {
 #if defined(jpn)

@@ -27,7 +27,6 @@ extern unsigned char data_ov023_021ffa0c;
 struct DispatchEntry021dc488 { unsigned int fn; unsigned int locator; };
 extern struct DispatchEntry021dc488 data_ov023_021fda88[];
 
-// JPN: func_ov023_021dcd88
 // USA: func_ov023_021dc488  (semantic: DispatchByField776_021dc488)
 extern "C" ARM int func_ov023_021dc488(void* obj) {
     func_ov023_021db110(&data_ov023_021ffa0c);

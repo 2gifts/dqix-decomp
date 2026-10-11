@@ -6,7 +6,6 @@ struct TailNode020469b4;
 extern "C" void func_ov017_021b6790(void* node);
 void AppendNodeToTail(struct TailList020469b4* list, struct TailNode020469b4* node);
 
-// JPN: func_ov017_021b6cdc
 // USA: func_ov017_021b6728  (semantic: AppendNodeAndSetByte_021b6728)
 extern "C" ARM void func_ov017_021b6728(char* obj, int mode, unsigned char val) {
 #if defined(jpn)

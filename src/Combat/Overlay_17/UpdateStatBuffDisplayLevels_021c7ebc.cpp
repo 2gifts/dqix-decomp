@@ -35,7 +35,6 @@ struct StatDisplay_021c7ebc {
 };
 
 // USA: func_ov017_021c7ebc
-// JPN: func_ov017_021c836c
 extern "C" ARM void func_ov017_021c7ebc(int unused0, Src021c7ebc* src, GameState* battleStruct, unsigned char* globalObj) {
 	unsigned char* base = globalObj + 0x3000;
 #if defined(jpn)

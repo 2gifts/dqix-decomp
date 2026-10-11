@@ -33,7 +33,6 @@ struct Obj02171af0 {
     unsigned int field72c;
 };
 
-// JPN: func_ov003_02170dc0
 // USA: func_ov003_02171af0  (semantic: UpdateSearchAndDispatch_02171af0)
 extern "C" ARM void func_ov003_02171af0(struct Obj02171af0* obj) {
     GameState* battle = GameState::GetInstance();

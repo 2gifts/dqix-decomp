@@ -25,7 +25,6 @@ extern "C" int func_02050678(void*, int, int, const char*, int, int, void*, void
 #define DATA_FLAG 1
 #endif
 
-// JPN: func_ov023_021de5c4
 // USA: func_ov023_021dde00  (semantic: AppendLogEntryAndCheckFlag_021dde00)
 extern "C" ARM void func_ov023_021dde00(void* objRaw) {
     char* obj = (char*)objRaw;

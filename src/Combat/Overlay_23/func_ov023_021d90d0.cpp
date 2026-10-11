@@ -22,7 +22,6 @@ int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d, u
 #endif
 
 
-// JPN: func_ov023_021d998c
 // USA: func_ov023_021d90d0  (semantic: AdvanceBoxLayoutState_021d90d0)
 extern "C" ARM int func_ov023_021d90d0(char* obj) {
 #if defined(jpn)

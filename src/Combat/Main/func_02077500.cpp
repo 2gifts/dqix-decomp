@@ -48,7 +48,6 @@ extern "C" int func_0202c508();
 extern "C" void func_ov017_021c927c(int a, int b, int c, Vec3_02077500 pos, int d, int e, int f);
 
 // USA: func_02077500
-// JPN: func_02077500
 extern "C" ARM int func_02077500(Actor_02077500* obj) {
     Entry_02028bd0* table = GetEntryTableBase();
     if (table == 0) {

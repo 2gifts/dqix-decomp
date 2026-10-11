@@ -21,7 +21,6 @@ struct FindEntryByKindContainer020d3d90 {
 };
 
 // USA: func_020d3d90
-// JPN: func_020d57ec
 ARM struct FindEntryByKindEntry020d3d90* FindEntryByKind(struct FindEntryByKindContainer020d3d90* c, int kind) {
     struct FindEntryByKindEntry020d3d90* e = c->entries;
     int i;

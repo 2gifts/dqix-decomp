@@ -31,7 +31,6 @@ struct ClearTarget0205a234;
 void ClearField0And40205a234(struct ClearTarget0205a234* target);
 
 // USA: func_ov003_021726f8
-// JPN: func_ov003_021715e4
 extern "C" ARM void func_ov003_021726f8(char* obj, SafeAllocator* allocator) {
     int i;
 

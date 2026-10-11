@@ -19,7 +19,6 @@ enum { globalPointerIndex = 0 };
 #endif
 
 // USA: func_ov004_021666bc  (semantic: FindNodeAndFlagBit2_021666bc)
-// JPN: func_ov004_02166ca8
 #pragma optimize_for_size off
 extern "C" ARM short func_ov004_021666bc(int a, char* outFlag) {
     short count = GetScaledFieldValue_02166684(a);

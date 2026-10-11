@@ -17,7 +17,6 @@ struct Src021cd2dc {
 };
 struct Ret021cd2dc { unsigned char pad[8]; unsigned short field8; };
 
-// JPN: func_ov017_021cd784
 // USA: func_ov017_021cd2dc  (semantic: CallSetCombatFieldsIfMatch_021cd2dc)
 extern "C" ARM void func_ov017_021cd2dc(int unused0, Src021cd2dc* src, int unused2, unsigned char* obj) {
 #if defined(jpn)

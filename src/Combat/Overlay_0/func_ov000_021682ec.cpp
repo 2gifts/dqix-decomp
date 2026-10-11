@@ -24,7 +24,6 @@ GameObject* GetCombatantWithFlag0x100(GameState*,int);int IsField0Null(void**);v
 struct Struct_203dafc;void ClearEightWords(Struct_203dafc*);struct StreamHeader;void RunOverlayScript0216d1c4(int,StreamHeader*,int,int*);struct Bytes02033b88;void SetByte0xbeShiftPrev(Bytes02033b88*,int);
 extern "C" {int sprintf(char*,const char*,...);GameResources* func_ov017_0218b5b0();void func_ov000_0216867c(Root*,int);extern const char data_ov000_02183ad8[],data_ov000_02183ae0[],data_ov000_02183afb[],data_ov000_02183b03[];}
 // USA: func_ov000_021682ec
-// JPN: func_ov000_021682ec
 extern "C" ARM void func_ov000_021682ec(Root* self){
  int count=self->count;BackgroundLoader* loader;GameState* gs;SafeAllocator* allocator;int i;Item* item;GameObject* unit; if(count==0)return;gs=GameState::GetInstance();loader=BackgroundLoader::GetInstance();void** resource=(void**)func_ov017_0218b5b0()->unknown_ptr_array_36fc[1];
  char filename[64];ObjectArchiveLoadInfo firstInfo,secondInfo;char code[8];void* file;unsigned int size;const void* script;unsigned int scriptSize;int scriptState;

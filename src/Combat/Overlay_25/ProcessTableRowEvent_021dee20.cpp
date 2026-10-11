@@ -1,4 +1,3 @@
-// JPN: func_ov025_021df730
 #if defined(jpn)
 enum { RegionOffset770c = 0x78fc };
 #else

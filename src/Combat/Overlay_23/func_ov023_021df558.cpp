@@ -111,7 +111,6 @@ static inline int IsEquipment(const PartEntry_021df558* item)
     return item->category_ <= 7 ? 1 : 0;
 }
 
-// JPN: func_ov023_021dfbac
 // USA: func_ov023_021df558
 extern "C" ARM void func_ov023_021df558(ItemInfoWindow_021df558* self)
 {

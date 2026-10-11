@@ -48,7 +48,6 @@ void ClearBitsInWord(unsigned int* word, unsigned int bits);
 extern "C" void func_ov017_021c9c64(unsigned short a, int b);
 void SetFieldForMatchingCombatant_021c98f4(int target, int flag);
 
-// JPN: func_ov017_021b8c08
 // USA: func_ov017_021b86f8
 extern "C" ARM void func_ov017_021b86f8(BattleScene021b86f8* self, int combatantId, int showMessage, int arg3) {
     if (self->field_0x6ac == NULL) return;

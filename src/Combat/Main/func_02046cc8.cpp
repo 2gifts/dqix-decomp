@@ -19,7 +19,6 @@ struct Fields020407b4;
 void SetFields0x44(struct Fields020407b4* obj, int a, int b, int c);
 
 // USA: func_02046cc8
-// JPN: func_02046cc8
 extern "C" ARM int func_02046cc8(void* self) {
     char* pool;
     void* base;

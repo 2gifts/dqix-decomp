@@ -39,7 +39,6 @@ struct Window0219a388 {
     unsigned char field_b5;
 };
 
-// JPN: func_ov017_0219af30
 // USA: func_ov017_0219a388
 extern "C" ARM void func_ov017_0219a388(unsigned char* base) {
 #if defined(jpn)

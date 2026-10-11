@@ -16,7 +16,6 @@ unsigned char GetTableByte0207ca94(int index);
 int FindNthPositiveShort0207c6b8(unsigned char* obj, unsigned int index, int target);
 
 // USA: func_ov003_02175f20  (semantic: FindTableEntry_02175f20)
-// JPN: func_ov003_02174f38
 extern "C" ARM int func_ov003_02175f20(void* obj) {
     GameState* bs = GameState::GetInstance();
     void* p = GetPtrField0x2a04(bs);

@@ -6,7 +6,6 @@ enum { kOwnerOffset = 0x218, kCachedOffset = 0x8fc, kIndexOffset = 0x7c8 };
 enum { kOwnerOffset = 0x29c, kCachedOffset = 0x70c, kIndexOffset = 0x5d8 };
 #endif
 
-// JPN: func_ov000_0216268c
 // USA: func_ov000_02160f20
 ARM void* GetSlotPtr02160f20(void* obj) {
     void* base = *(void**)((char*)obj + kOwnerOffset);

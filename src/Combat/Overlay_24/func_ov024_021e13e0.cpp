@@ -12,7 +12,6 @@ extern "C" void _Z22PopulateEntry_0215ccbciP17OutStruct0215ccbcP10GameObjectsssi
 struct Flags021e13e0 { char pad[0x1c]; unsigned char unused:7; unsigned char flag:1; };
 struct Obj021e13e0 { char pad[0xc]; Flags021e13e0* action; void* context; };
 
-// JPN: func_ov024_021e1c78
 // USA: func_ov024_021e13e0
 extern "C" ARM void* func_ov024_021e13e0(Obj021e13e0* obj, int unused, int id) {
     GameObject* c = GetCombatantByID((int)obj->context, id);

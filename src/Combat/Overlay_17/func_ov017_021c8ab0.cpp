@@ -22,7 +22,6 @@ struct Evt021c8ab0 {
     struct Payload021c8ab0 payload;
 };
 
-// JPN: func_ov017_021c8f60
 // USA: func_ov017_021c8ab0
 extern "C" ARM void func_ov017_021c8ab0(int unused0, struct Evt021c8ab0* evt, GameState* bs, unsigned char* base) {
 #if defined(jpn)

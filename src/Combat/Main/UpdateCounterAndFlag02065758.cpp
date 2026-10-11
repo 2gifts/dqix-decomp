@@ -53,4 +53,3 @@ ARM int UpdateCounterAndFlag02065758(Struct02065758* a, int b) {
     return result;
 }
 
-// JPN: 0x02066b90

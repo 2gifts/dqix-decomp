@@ -31,7 +31,6 @@ struct Ctx021b67d8 {
     unsigned char* field734;
 };
 
-// JPN: func_ov017_021b6d8c
 // USA: func_ov017_021b67d8  (semantic: ClearStackAndMaybeSetFlag_021b67d8)
 extern "C" ARM void func_ov017_021b67d8(struct Obj021b67d8* self) {
     if (self->field24 != NULL) {

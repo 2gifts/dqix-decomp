@@ -65,7 +65,6 @@ void func_ov000_0215fb04(BattleState*, int);
 void func_ov026_021dbf04(BattleWork*);
 }
 
-// JPN: func_ov026_021dc3ec
 // USA: func_ov026_021dbd1c
 extern "C" ARM void func_ov026_021dbd1c(BattleWork* self, int member, int notify) {
     GameState* gs = GameState::GetInstance();

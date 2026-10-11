@@ -112,7 +112,6 @@ inline unsigned int AlignedSize(unsigned int length) { return (length + 3) & ~3;
 #if defined(jpn)
 extern "C" void func_02045d88(MessageSystem*,char*,int);
 #endif
-// JPN: func_ov025_021db91c
 // USA: func_ov025_021db038
 extern "C" ARM void func_ov025_021db038(Work* work) {
 #if defined(jpn)

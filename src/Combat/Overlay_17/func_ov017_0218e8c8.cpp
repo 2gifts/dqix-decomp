@@ -36,7 +36,6 @@ int CheckFlag0x1ceBit2Set(unsigned char* obj);
 extern "C" int func_02032fdc(void* obj, int a, int b);
 extern "C" void func_ov017_0218dba0(int id);
 
-// JPN: func_ov017_0218f4a8
 // USA: func_ov017_0218e8c8
 extern "C" ARM void func_ov017_0218e8c8(OvCtx0218e8c8* ov, int id, int mode) {
 #if defined(jpn)

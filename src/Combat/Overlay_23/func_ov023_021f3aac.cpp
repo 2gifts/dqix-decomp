@@ -150,7 +150,6 @@ void func_ov023_021eb564(GuideWindow_021f3aac* guide, GuidePage_021f3aac* pages,
 void func_ov023_021eb26c(GuideWindow_021f3aac* guide);
 }
 
-// JPN: func_ov023_021f312c
 // USA: func_ov023_021f3aac
 extern "C" ARM int func_ov023_021f3aac(BattleScene_021f3aac* self)
 {

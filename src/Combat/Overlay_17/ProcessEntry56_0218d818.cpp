@@ -16,7 +16,6 @@ void SetName56AndFlag_0218d7b0(unsigned char* obj, char* name);
 
 extern "C" void func_ov017_0218d2f0(int a, int b, int c, int d);
 
-// JPN: func_ov017_0218e3f8
 // USA: func_ov017_0218d818
 ARM void ProcessEntry56_0218d818(unsigned char* obj) {
 	if (obj[0x4000 + regionalOffset0] != 1) return;

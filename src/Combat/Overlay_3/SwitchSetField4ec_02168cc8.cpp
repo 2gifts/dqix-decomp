@@ -15,7 +15,6 @@ int GetGlobalField0x1c020421a0();
 extern "C" int func_ov003_02169b30(void* obj);
 
 // USA: func_ov003_02168cc8
-// JPN: func_ov003_02168b48
 ARM void SwitchSetField4ec_02168cc8(void* obj) {
     int g = GetGlobalField0x1c020421a0();
     if (*(int*)(g + kRegionValue9A0_870) == 3) {

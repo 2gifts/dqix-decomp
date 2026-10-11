@@ -7,7 +7,6 @@ extern "C" void func_0205d304(void* a, int b, int c, int d, int e, int f, int g,
 #endif
 
 
-// JPN: func_ov023_021d9aa8
 // USA: func_ov023_021d921c
 ARM void InitBoxLayout_021d921c(void* obj, int unused, int w, int h) {
 	*(short*)((char*)obj + 0xc0) = (short)w;

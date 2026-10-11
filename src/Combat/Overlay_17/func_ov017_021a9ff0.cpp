@@ -22,7 +22,6 @@ void SetFlag0x9c6(SetFlagStruct* obj, int value);
 extern "C" void _Z35CopyGlobalBlockAndDispatch_02165df4P13SafeAllocatorPv(SafeAllocator* allocator, void* arg);
 extern char data_ov017_021d7831;
 
-// JPN: func_ov017_021aa860
 // USA: func_ov017_021a9ff0
 extern "C" ARM void func_ov017_021a9ff0(int atFront) {
 #if defined(jpn)

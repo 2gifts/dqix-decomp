@@ -8,7 +8,6 @@
 #define INDEX_OFFSET 0x950
 #endif
 
-// JPN: func_ov023_021e4474
 // USA: func_ov023_021e4250
 ARM unsigned char GetByteViaFieldIndirectOffset_021e4250_021e4250(char* p) {
 	char* q = *(char**)(p + SUB_POINTER_OFFSET);

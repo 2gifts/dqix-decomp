@@ -22,7 +22,6 @@ struct Sub700_021dd404 {
     signed char mode7d;
 };
 
-// JPN: func_ov023_021ddbf4
 // USA: func_ov023_021dd404  (semantic: ApplyModeSetupAndDispatch_021dd404)
 extern "C" ARM void func_ov023_021dd404(char* obj) {
     if (((Sub700_021dd404*)(obj + regionalOffset0))->mode7b == 1) {

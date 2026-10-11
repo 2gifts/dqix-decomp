@@ -47,7 +47,6 @@ extern char data_0211e33c[];
 extern char data_ov025_021ef857[];
 extern char data_ov025_021ef86d[];
 
-// JPN: func_ov025_021e7bcc
 // USA: func_ov025_021e771c
 extern "C" ARM int func_ov025_021e771c(short* ids, int count, int a, int b) {
     GameResources* resources = func_ov017_0218b5b0();

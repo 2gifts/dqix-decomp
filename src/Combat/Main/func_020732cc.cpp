@@ -29,7 +29,6 @@ enum { CombatantSlotOffset = 0x144 };
 enum { CombatantSlotOffset = 0x150 };
 #endif
 
-// JPN: func_0207445c
 // USA: func_020732cc
 extern "C" ARM void func_020732cc(int arg0) {
     GameState* gs = GameState::GetInstance();

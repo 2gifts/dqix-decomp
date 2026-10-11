@@ -10,7 +10,6 @@ struct FlagBlob02027bac {
 };
 
 // USA: func_02027bac
-// JPN: func_02027418
 ARM void SetFlagsAt0xa97(struct FlagBlob02027bac* p, unsigned char flags) {
     p->flags |= flags;
 }

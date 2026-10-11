@@ -25,7 +25,6 @@ struct Obj020e23f4 {
     struct StreamDims020e23f4* field4;
 };
 
-// JPN: func_020e3f94
 // USA: func_020e23f4  (semantic: EncodeIfValid020e23f4)
 extern "C" ARM void func_020e23f4(struct Obj020e23f4* obj) {
     struct StreamDims020e23f4* dims = obj->field4;

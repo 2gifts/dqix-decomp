@@ -21,7 +21,6 @@ struct S_a0b8c;
 int CountNonZeroValues020a0b8c(struct S_a0b8c* p);
 
 // USA: func_ov003_02179f34
-// JPN: func_ov003_02178d64
 extern "C" ARM int func_ov003_02179f34(char* obj) {
     int result = 0;
     GameState* battle = GameState::GetInstance();

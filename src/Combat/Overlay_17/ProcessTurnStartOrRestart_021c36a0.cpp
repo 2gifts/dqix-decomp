@@ -23,7 +23,6 @@ extern "C" void func_0202c360(void* obj, char* name);
 void ClearBufferAndFlag_021972cc(char* p);
 void ClearByteField17182_02195520(void* obj);
 
-// JPN: func_ov017_021c3b74
 // USA: func_ov017_021c36a0  (semantic: ProcessTurnStartOrRestart_021c36a0)
 extern "C" ARM void func_ov017_021c36a0(void) {
 	GameState* bs = GameState::GetInstance();

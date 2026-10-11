@@ -21,7 +21,6 @@ extern const unsigned char data_ov017_021d64a0[15];
 struct Pair0219b33c { unsigned int v[2]; };
 struct Buf15_0219b33c { unsigned char v[15]; };
 
-// JPN: func_ov017_0219bed0
 // USA: func_ov017_0219b33c
 extern "C" ARM void func_ov017_0219b33c(char* self, struct SrcFields_0219b33c* src) {
 #if defined(jpn)

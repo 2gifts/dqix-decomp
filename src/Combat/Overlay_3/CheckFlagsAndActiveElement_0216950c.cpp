@@ -9,7 +9,6 @@ extern "C" int _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(void* a, int b
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
 extern unsigned short data_02114e30;
 
-// JPN: func_ov003_02169334
 // USA: func_ov003_0216950c  (semantic: CheckFlagsAndActiveElement_0216950c)
 extern "C" ARM int func_ov003_0216950c(void* objRaw) {
     char* obj = (char*)objRaw;

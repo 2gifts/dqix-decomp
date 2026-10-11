@@ -23,7 +23,6 @@ struct Src021c6ca0 {
     int field10;
 };
 
-// JPN: func_ov017_021c7150
 // USA: func_ov017_021c6ca0  (semantic: CopyFieldsIfMatch_021c6ca0)
 extern "C" ARM void func_ov017_021c6ca0(int unused0, Src021c6ca0* src, GameState* battleStruct, unsigned char* obj) {
 #if defined(jpn)

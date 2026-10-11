@@ -32,7 +32,6 @@ enum { CombatModeListOffset = 0x4ec };
 enum { CombatModeListOffset = 0x6fc };
 #endif
 
-// JPN: func_020ddcd8
 // USA: func_020dc2d0
 ARM void SetCombatModeFromCase020dc2d0(int mode) {
     GameState* battle = GameState::GetInstance();

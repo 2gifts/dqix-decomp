@@ -27,7 +27,6 @@ struct Obj02158a84 {
 };
 
 // USA: func_ov003_02158a84
-// JPN: func_ov003_02159f70
 extern "C" ARM void func_ov003_02158a84(Obj02158a84* self, SafeAllocator* alloc) {
     if (alloc == NULL) {
         return;

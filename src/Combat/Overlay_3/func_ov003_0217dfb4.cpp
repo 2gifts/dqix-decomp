@@ -54,7 +54,6 @@ extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(struct Struc
 
 extern const char data_ov003_02180c7f[];
 
-// JPN: func_ov003_0217cc68
 // USA: func_ov003_0217dfb4
 extern "C" ARM void func_ov003_0217dfb4(struct ListMenu0217dfb4* menu) {
     char buf[0x400];

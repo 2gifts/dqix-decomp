@@ -18,7 +18,6 @@ struct Obj_021b3444 {
     int result;
 };
 
-// JPN: func_ov017_021b3b4c
 // USA: func_ov017_021b3444  (semantic: CallFunc0202fa38IfMismatch_021b3444)
 extern "C" ARM int func_ov017_021b3444(struct Obj_021b3444* obj) {
     GameState* bs = GameState::GetInstance();

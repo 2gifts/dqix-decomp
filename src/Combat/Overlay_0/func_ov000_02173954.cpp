@@ -84,7 +84,6 @@ struct Slot02173954 {
 static inline int InRange(int i) { return i >= 0 && i <= 3; }
 
 // USA: func_ov000_02173954
-// JPN: func_ov000_02174f18
 extern "C" ARM void func_ov000_02173954(char* obj) {
 #if defined(jpn)
     if (*(unsigned short*)(obj + 0x1faa) & 0x80) {

@@ -35,7 +35,6 @@ extern Struct021707d8_02158bd4 data_ov004_021707d8;
 struct NibbleView_02158bd4 { char pad[8]; unsigned int nibble : 4; };
 
 // USA: func_ov004_02158bd4
-// JPN: func_ov004_02159c98
 extern "C" ARM int func_ov004_02158bd4(void* obj) {
     int slotType = DispatchNodeIfType7_02156e2c(obj, 0x5b);
     if (slotType < 0) return 0;

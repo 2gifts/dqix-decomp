@@ -22,7 +22,6 @@ struct S3f8_cf5d4 {
     char pad[0x70 - 3];
 };
 
-// JPN: func_ov017_021cfa84
 // USA: func_ov017_021cf5d4
 extern "C" ARM void func_ov017_021cf5d4(void* unused0, struct Evt021cf5d4* evt, GameState* battle, unsigned char* table) {
 #if defined(jpn)

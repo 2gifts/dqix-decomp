@@ -14,7 +14,6 @@ extern "C" void func_020e5920_dup();
 struct Obj0200f29c { char pad[0xc]; void (*fnC)(void); unsigned int fn10; };
 
 // USA: func_0200f29c
-// JPN: func_0200f160
 extern "C" ARM int func_0200f29c(struct Obj0200f29c* obj) {
     obj->fnC = __sinit_020e5920;
     obj->fn10 = (unsigned int)func_020e5920_dup;

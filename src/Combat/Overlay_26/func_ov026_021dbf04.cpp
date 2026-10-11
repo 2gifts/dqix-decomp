@@ -79,7 +79,6 @@ void func_ov000_02162c14(BattleWork*, int, Cmd*);
 void func_ov017_021c6814(unsigned short, unsigned short, Cmd*, unsigned char, int, int);
 }
 
-// JPN: func_ov026_021dc5d4
 // USA: func_ov026_021dbf04
 extern "C" ARM void func_ov026_021dbf04(BattleWork* self) {
     Cmd cmd;

@@ -16,7 +16,6 @@ extern "C" char* func_02042a50(Table020429e4*, char*);
 extern "C" void func_0204e038(Window0204fae8*, char*, int, int, int, int, int, int);
 extern char data_020f0303[];
 extern char data_020f0306[];
-// JPN: func_02050fd4
 // USA: func_0204fae8
 extern "C" ARM void func_0204fae8(Window0204fae8* window) {
     short x = 0;

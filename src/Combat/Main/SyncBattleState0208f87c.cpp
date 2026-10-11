@@ -30,7 +30,6 @@ extern "C" void _ZN12RenderConfig12SubmitToFifoEv(void);
 struct Battler02035e1c;
 extern "C" int _ZN8Object3D26DrawMeshWithMaterialSimpleEbiii(struct Battler02035e1c* a, int b, int c, int d, int e);
 
-// JPN: 0x02090190
 // USA: func_0208f87c
 ARM void SyncBattleState0208f87c(void* self, int b, int c, int d) {
     void* ov = func_ov017_0218b5b0(self);

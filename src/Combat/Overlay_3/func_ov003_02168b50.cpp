@@ -74,7 +74,6 @@ extern "C" void func_ov003_0216982c(struct BattleMenu02168b50* self);
 extern "C" void func_ov003_0216997c(struct BattleMenu02168b50* self);
 void SetElementFieldC2(struct Struct_0205d81c* s, int key, int value);
 
-// JPN: func_ov003_021689d4
 // USA: func_ov003_02168b50
 extern "C" ARM void func_ov003_02168b50(struct BattleMenu02168b50* self) {
     struct MessageWork02168b50* work = _Z26GetGlobalField0x1c020421a0v();

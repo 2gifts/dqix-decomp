@@ -46,7 +46,6 @@ struct BoneLabels { signed char letters[2]; };
 extern const BoneLabels data_ov026_021de6a0;
 extern const char data_ov026_021dee57[];
 
-// JPN: func_ov026_021dc710
 // USA: func_ov026_021dc040
 extern "C" ARM int func_ov026_021dc040(SafeAllocator* allocator, BattleWork* self, BattleState* battle, PartyState* party) {
     GameState* game = GameState::GetInstance();

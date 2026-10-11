@@ -30,7 +30,6 @@ struct NodeBits020dedd0 {
     unsigned int hi : 21;
 };
 
-// JPN: func_ov003_02174410
 // USA: func_ov003_021753a0  (semantic: ApplyEntryAndCheckKind_021753a0)
 #pragma opt_common_subs off
 extern "C" ARM int func_ov003_021753a0(char* obj, int id, int arg2, int arg3) {

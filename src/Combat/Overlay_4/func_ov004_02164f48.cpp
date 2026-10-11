@@ -23,7 +23,6 @@ struct Elem020985ec {
 struct Elem020985ec* FindElementByShiftedField0x10(struct Elem020985ec* arr, int val);
 
 // USA: func_ov004_02164f48
-// JPN: func_ov004_021657d8
 extern "C" ARM int func_ov004_02164f48(void* a1) {
     char* battle = (char*)GameState::GetInstance();
     struct Info02011930 info;

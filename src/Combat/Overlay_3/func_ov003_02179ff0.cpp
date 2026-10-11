@@ -35,7 +35,6 @@ struct ListMenu_02179ff0 {
     short selectedId;
 };
 
-// JPN: func_ov003_02178e20
 // USA: func_ov003_02179ff0
 extern "C" ARM void func_ov003_02179ff0(ListMenu_02179ff0* menu) {
     void* memberMap = menu->memberMap;

@@ -42,7 +42,6 @@ struct SetupContext0218cf8c {
     SafeAllocator allocator;
 };
 
-// JPN: func_ov020_0218d7dc
 // USA: func_ov020_0218cf8c  (semantic: InitializeAndDispatchLists_0218cf8c)
 extern "C" ARM void func_ov020_0218cf8c(struct SetupContext0218cf8c* self) {
 #if defined(jpn)

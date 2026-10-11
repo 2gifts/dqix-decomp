@@ -52,7 +52,6 @@ extern "C" void func_020813ec(Model*,int);
 extern "C" void _Z27UpdateEntryStateAndPositionP11Ctx020e263ci(void*,unsigned int);
 extern "C" void* _ZN16BackgroundLoader11GetInstanceEv();
 extern "C" void _ZN16BackgroundLoader10RemoveTaskEi(void*,int);
-// JPN: func_ov003_021561dc
 // USA: func_ov003_02154af4
 extern "C" ARM int func_ov003_02154af4(Scene* self,unsigned int scale) {
  self->scale=scale;

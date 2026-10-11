@@ -32,7 +32,6 @@ void AllocateAndClearBuffer0204b12c(struct AllocTarget0204b12c* obj, SafeAllocat
 struct Obj021f7a08;
 extern "C" ARM void func_ov023_021f7a08(struct Obj021f7a08* obj, void* keyObj);
 
-// JPN: func_ov023_021f6998
 // USA: func_ov023_021f745c
 extern "C" ARM int func_ov023_021f745c(char* obj, void* arg1, int arg2, int arg3, REGIONAL_PARAMETER int p6, int p7, int p8, int p9) {
 #if defined(jpn)

@@ -88,7 +88,6 @@ struct Obj0217bcb8;
 void InitObj0217bcb8(Obj0217bcb8* self);
 
 // USA: func_ov003_02173c40  (semantic: InitBigStateStruct_02173c40)
-// JPN: func_ov003_02172e0c
 extern "C" ARM void func_ov003_02173c40(char* obj) {
     obj[0] = 0;
     obj[1] = 0;

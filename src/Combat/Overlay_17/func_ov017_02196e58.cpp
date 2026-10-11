@@ -53,7 +53,6 @@ struct Work02196e58 {
     struct TailNode020469b4* inputNode;
 };
 
-// JPN: func_ov017_02197a08
 // USA: func_ov017_02196e58
 extern "C" ARM void func_ov017_02196e58(struct Work02196e58* work) {
     GameState* bs = GameState::GetInstance();

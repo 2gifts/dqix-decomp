@@ -82,7 +82,6 @@ void func_ov017_021cd35c(unsigned short a, void* drops, unsigned char count, sig
 int func_ov023_021f5150(BattleScene_021f00fc* self, BattleInfo_021f00fc* info, int* experience, int* gold, int legacy);
 }
 
-// JPN: func_ov023_021efd08
 // USA: func_ov023_021f00fc
 extern "C" ARM int func_ov023_021f00fc(BattleScene_021f00fc* self)
 {

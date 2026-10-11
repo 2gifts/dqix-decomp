@@ -22,7 +22,6 @@ void SetEntryHighNibble0x13(struct Container02080cc0* obj, int id, int value);
 extern "C" int func_020dcc98(int combatantId);
 extern "C" void func_020813ec(void* obj, int key);
 
-// JPN: func_ov003_021762dc
 // USA: func_ov003_02177300  (semantic: RecomputeElementTierAndDispatch_02177300)
 #pragma opt_common_subs off
 extern "C" ARM void func_ov003_02177300(char* self) {

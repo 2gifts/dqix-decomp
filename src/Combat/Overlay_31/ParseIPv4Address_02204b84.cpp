@@ -2,7 +2,6 @@
 
 int ParseDigits_02204b50(char* str, char** endptr);
 
-// JPN: func_ov031_02205364
 // USA: func_ov031_02204b84  (semantic: ParseIPv4Address_02204b84)
 #pragma optimize_for_size off
 extern "C" ARM int func_ov031_02204b84(char* str, unsigned int* out) {

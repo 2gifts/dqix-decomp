@@ -38,7 +38,6 @@ struct Ctx021550dc {
 };
 
 // USA: func_ov003_021550dc
-// JPN: func_ov003_021567c4
 extern "C" ARM unsigned char func_ov003_021550dc(Ctx021550dc* self) {
     unsigned char confirmed = 0;
     if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x401)) {

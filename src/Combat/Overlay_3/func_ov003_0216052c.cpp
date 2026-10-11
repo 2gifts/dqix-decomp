@@ -38,7 +38,6 @@ struct Combatant0216052c {
     unsigned int flags;
 };
 
-// JPN: func_ov003_021606e4
 // USA: func_ov003_0216052c
 extern "C" ARM void func_ov003_0216052c(struct Combatant0216052c* obj) {
     if (obj->model == NULL) {

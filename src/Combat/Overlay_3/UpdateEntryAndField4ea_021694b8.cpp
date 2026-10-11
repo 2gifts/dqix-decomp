@@ -23,7 +23,6 @@ int IsField0x9cEqual3(unsigned char* obj);
 void SetFieldAt0x30(void* obj, int value);
 extern "C" int func_0205d0e0(void*, int);
 
-// JPN: func_ov003_021692e0
 // USA: func_ov003_021694b8
 ARM void UpdateEntryAndField4ea_021694b8(void* obj, int id) {
     struct Struct_0205d81c* entry = FindElementForFieldB0((struct Struct_0205d81c*)((char*)obj + kRegione4));

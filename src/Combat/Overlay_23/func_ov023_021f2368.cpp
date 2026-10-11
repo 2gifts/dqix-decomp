@@ -51,7 +51,6 @@ extern "C" struct GlobalState021f2368* _ZZ17GetGlobal021ffefcvE1s;
 
 struct PctBits021f2368 { unsigned short low : 7; unsigned short pct : 9; };
 
-// JPN: func_ov023_021f1c38
 // USA: func_ov023_021f2368  (semantic: ProcessEntryMatchAndDispatch_021f2368)
 extern "C" ARM int func_ov023_021f2368(unsigned char* obj) {
 #if defined(jpn)

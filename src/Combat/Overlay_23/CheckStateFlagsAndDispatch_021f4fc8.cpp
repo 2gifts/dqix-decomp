@@ -11,7 +11,6 @@ struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 extern struct Obj0205eaa0 data_02108760;
 
-// JPN: func_ov023_021f45a0
 // USA: func_ov023_021f4fc8  (semantic: CheckStateFlagsAndDispatch_021f4fc8)
 extern "C" ARM int func_ov023_021f4fc8(void) {
 #if defined(jpn)

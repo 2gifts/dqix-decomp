@@ -33,7 +33,6 @@ static inline SafeAllocator* GetAllocator0206461c(GameResources* resources, int 
     return &resources->allocator_array_38[index];
 }
 
-// JPN: func_02065908
 // USA: func_0206461c
 extern "C" ARM int func_0206461c(LoaderOwner0206461c* owner, Request0206461c* request) {
     GameState* state = GameState::GetInstance();

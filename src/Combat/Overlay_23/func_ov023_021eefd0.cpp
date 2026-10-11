@@ -218,7 +218,6 @@ void VectorizedInvertedMemcpy(const void* src, void* dst, unsigned int size);
 void func_02011744(GameState* gameState);
 }
 
-// JPN: func_ov023_021eed20
 // USA: func_ov023_021eefd0
 extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
 {

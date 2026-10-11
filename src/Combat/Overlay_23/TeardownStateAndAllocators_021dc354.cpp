@@ -51,7 +51,6 @@ struct Obj021dc354 {
     unsigned char flag79b : 1;                 // 0x79b
 };
 
-// JPN: func_ov023_021dcc54
 // USA: func_ov023_021dc354  (semantic: TeardownStateAndAllocators_021dc354)
 extern "C" ARM void func_ov023_021dc354(struct Obj021dc354* obj) {
     ResetIfNonNeg_021db2e4((volatile int*)&obj->field780);

@@ -14,7 +14,6 @@ struct Ctx021a3498 {
     void* field0;
 };
 
-// JPN: func_ov017_021a3f0c
 // USA: func_ov017_021a3498
 ARM void ClearIfMatchAndFinalize_021a3498(struct Ctx021a3498* self) {
 #if defined(jpn)

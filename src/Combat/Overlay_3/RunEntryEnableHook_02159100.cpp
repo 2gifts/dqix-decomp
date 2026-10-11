@@ -13,7 +13,6 @@ struct SelfState020e2834;
 void SetYesNoButtonPalette020e2834(struct SelfState020e2834* self);
 
 // USA: func_ov003_02159100  (semantic: RunEntryEnableHook_02159100)
-// JPN: func_ov003_0215a5ec
 extern "C" ARM void func_ov003_02159100(void* obj) {
     unsigned char* base = (unsigned char*)obj;
 

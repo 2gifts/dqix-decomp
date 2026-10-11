@@ -12,7 +12,6 @@ struct Container0205a330;
 void IterateEntries0205a330(Container0205a330*, int);
 extern "C" void func_0205ae8c(void*);
 
-// JPN: func_ov003_0216fc08
 // USA: func_ov003_0217033c  (semantic: UpdateEntryFlagsAndPosition_0217033c)
 extern "C" ARM void func_ov003_0217033c(char* base) {
     Container0205a3d0* cont = *(Container0205a3d0**)(base + 0xa4);

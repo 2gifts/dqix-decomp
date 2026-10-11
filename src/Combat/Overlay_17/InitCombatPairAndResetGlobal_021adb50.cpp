@@ -25,7 +25,6 @@ struct ResetBytesAndSetByte0x16Data;
 void ResetBytesAndSetByte0x16(struct ResetBytesAndSetByte0x16Data* p, int val);
 void SetupGlobalObjType1AndInitSelfPointer(unsigned char* obj);
 
-// JPN: func_ov017_021ae380
 // USA: func_ov017_021adb50
 ARM void InitCombatPairAndResetGlobal_021adb50(char* self) {
 #if defined(jpn)

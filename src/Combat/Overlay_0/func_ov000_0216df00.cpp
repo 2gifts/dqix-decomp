@@ -16,7 +16,6 @@ inline int IsEnemy(int n) { return n>=0xc0 && n<=0xc7; }
 inline int HeightOffset(int h,float f) { return h-(int)(4096.0f*f); }
 inline int Mul(int a,int b) { return (int)(((long long)a*b+0x800)>>12); }
 // USA: func_ov000_0216df00
-// JPN: func_ov000_0216df00
 extern "C" ARM void func_ov000_0216df00(Camera* self,int id,int force,float offset,float factor) {
     Object3D* unit=GameState::GetInstance()->GetCombatantByIndex(id);
     if(!unit) return;

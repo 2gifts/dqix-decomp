@@ -10,7 +10,6 @@ enum { groupArrayOffset = 0x1d1c };
 #endif
 
 // USA: func_ov000_021753d8  (semantic: GetGroupIndexForPosition_021753d8)
-// JPN: func_ov000_021767a0
 extern "C" ARM int func_ov000_021753d8(void* objRaw, int targetIndex) {
     char* obj = (char*)objRaw;
     int groupIndex = -1;

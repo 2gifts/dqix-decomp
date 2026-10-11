@@ -11,7 +11,6 @@ struct SubStruct_021f7984 {
     void* owner;
 };
 
-// JPN: func_ov023_021f6e7c
 // USA: func_ov023_021f7984  (semantic: ClearOwnerAndResetList_021f7984)
 extern "C" ARM void func_ov023_021f7984(void* obj, void** headHolder) {
 #if defined(jpn)

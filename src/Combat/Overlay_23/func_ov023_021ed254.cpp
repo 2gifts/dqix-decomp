@@ -11,7 +11,6 @@ extern "C" void func_02041f50(const char*, char*);
 int StringLength(const char*);
 #endif
 
-// JPN: func_ov023_021ed1a0
 // USA: func_ov023_021ed254
 extern "C" ARM void func_ov023_021ed254(char* obj, char* buf) {
     if (buf == 0) return;

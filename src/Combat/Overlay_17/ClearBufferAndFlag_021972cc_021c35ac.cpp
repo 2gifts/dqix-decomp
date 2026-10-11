@@ -27,7 +27,6 @@ extern "C" void func_0202c288(void* obj);
 ARM void ClearBufferAndFlag_021972cc(char* p);
 void ClearByteField17182_02195520(void* obj);
 
-// JPN: func_ov017_021c3a88
 // USA: func_ov017_021c35ac  (semantic: ResetBattleStateAndQueues_021c35ac)
 extern "C" ARM void func_ov017_021c35ac(void) {
     GameState* battle = GameState::GetInstance();

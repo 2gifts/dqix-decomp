@@ -10,7 +10,6 @@ struct Ctx_021e929c {
     int field10;
 };
 
-// JPN: 021e9b10
 // USA: func_ov024_021e929c
 ARM int SelectMessageByFlags_021e929c(struct Ctx_021e929c* ctx, int id, int flag) {
     GameObject* combatant = GetCombatantByID(ctx->field10, id);

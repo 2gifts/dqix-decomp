@@ -13,7 +13,6 @@ extern "C" struct SearchStruct* func_0202ae18(void);
 extern "C" int func_0202c540(struct SearchStruct* obj);
 int HasFlag3orFlag2And9a_021bd3a4(struct Obj_021bd3a4* obj);
 
-// JPN: func_ov017_021931a8
 // USA: func_ov017_021925e0
 extern "C" ARM int func_ov017_021925e0(void) {
 #if defined(jpn)

@@ -51,7 +51,6 @@ static inline int IsPartyMember(int id) {
 	return id >= 0 && id <= 3;
 }
 
-// JPN: func_ov024_021e9658
 // USA: func_ov024_021e8dc0
 extern "C" ARM int func_ov024_021e8dc0(struct Ctx_021e8dc0* ctx, int id, struct Params_021e8dc0* params, short* list, int num) {
 	struct Random* random = ctx->random;

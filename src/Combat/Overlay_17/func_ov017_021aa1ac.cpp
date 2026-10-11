@@ -61,7 +61,6 @@ extern "C" int func_ov017_021aa080(void);
 extern char data_ov017_021d783c[];
 extern char data_ov017_021d7868[];
 
-// JPN: func_ov017_021aaa1c
 // USA: func_ov017_021aa1ac
 extern "C" ARM void func_ov017_021aa1ac(Self021aa1ac* self) {
     GameState* gs = _ZN9GameState11GetInstanceEv();

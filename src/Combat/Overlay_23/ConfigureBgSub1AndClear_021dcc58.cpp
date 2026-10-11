@@ -4,7 +4,6 @@
 extern "C" unsigned int GetSubBG0ScreenBase(void);
 extern "C" unsigned int GetSubBG2ScreenBase(void);
 
-// JPN: 021dd560
 // USA: func_ov023_021dcc58
 ARM void ConfigureBgSub1AndClear_021dcc58(void* obj) {
 #if defined(jpn)

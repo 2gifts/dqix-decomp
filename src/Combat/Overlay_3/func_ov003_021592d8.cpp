@@ -64,7 +64,6 @@ extern "C" void func_02046608(void* messages, int a, const char* input, char* ou
 extern char data_ov003_0217fe18[];
 extern unsigned char data_0211e33c[0x30000];
 
-// JPN: func_ov003_0215a7c0
 // USA: func_ov003_021592d8
 extern "C" ARM void func_ov003_021592d8(struct BattleMenu021592d8* self, struct Combatant021592d8* combatant,
                                         char* out) {

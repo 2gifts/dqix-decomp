@@ -61,7 +61,6 @@ struct BattleView021681c8 {
     unsigned char field_0x5a5;
 };
 
-// JPN: func_ov003_0216804c
 // USA: func_ov003_021681c8
 extern "C" ARM void func_ov003_021681c8(BattleView021681c8* view) {
     view->field_0xdc = 0;

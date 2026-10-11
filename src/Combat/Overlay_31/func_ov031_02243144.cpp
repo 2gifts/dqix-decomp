@@ -20,7 +20,6 @@ struct PeerScriptState {
 extern PeerScriptState data_ov031_02291e04;
 extern "C" int func_02001aec(const void*,const void*,unsigned int);
 
-// JPN: func_ov031_02243924
 // USA: func_ov031_02243144
 extern "C" ARM int func_ov031_02243144(Script::Parameter* parameters) {
     if(!data_ov031_02291e04.active) return 1;

@@ -27,7 +27,6 @@ struct Obj021e3db0 {
     unsigned char field4e4;
 };
 
-// JPN: func_ov023_021e400c
 // USA: func_ov023_021e3db0
 extern "C" ARM void func_ov023_021e3db0(struct Obj021e3db0* obj) {
     int val = GetWord0x0((int*)GameState::GetInstance());

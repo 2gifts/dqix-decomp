@@ -13,7 +13,6 @@ int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 int AppendNameTag(char* dst, int n, const char* name);
 int AppendString02042058(char* dst, const char* src);
 
-// JPN: func_ov023_021da8cc
 // USA: func_ov023_021da100  (semantic: AppendCursorAndNameTags_021da100)
 extern "C" ARM void func_ov023_021da100(char* obj, char* dst, int flag) {
     if (dst == NULL) return;

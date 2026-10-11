@@ -6,7 +6,6 @@
 #define FIELD_OFFSET 0x320
 #endif
 
-// JPN: func_ov017_021960f8
 // USA: func_ov017_02195530
 ARM void SetFlag320_02195530(unsigned char* obj) {
 	obj += 0x4000;

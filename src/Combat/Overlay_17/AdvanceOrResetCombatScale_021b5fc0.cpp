@@ -9,7 +9,6 @@ int GetGlobalField0x1c020421a0(void);
 int HasNonZeroByteAtOfField498_0218d75c_0218d75c(void* obj);
 void SetByteField0x253(void* obj);
 
-// JPN: func_ov017_021b6574
 // USA: func_ov017_021b5fc0  (semantic: AdvanceOrResetCombatScale_021b5fc0)
 extern "C" ARM int func_ov017_021b5fc0(unsigned char* obj) {
 #if defined(jpn)

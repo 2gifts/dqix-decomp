@@ -17,7 +17,6 @@ void CopyVec3ToField0x44(struct Target02059f38* dst, struct Vec3_02059f38* src);
 extern "C" void _ZN8Object3D14AdvanceEffectsEv(void* obj);
 extern "C" void _ZN8Object3D4DrawEb(void* p, int flag);
 
-// JPN: func_ov003_02156668
 // USA: func_ov003_02154f80  (semantic: UpdateVecFromCombatant_02154f80)
 extern "C" ARM void func_ov003_02154f80(char* obj) {
     if (*(int*)(obj + kRegion32c) == 0) return;

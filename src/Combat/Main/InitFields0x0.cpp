@@ -28,7 +28,6 @@ struct State0xc0cc {
 };
 
 // USA: func_0203c0cc
-// JPN: func_0203bbe4
 ARM void InitFields0x0(struct State0xc0cc* obj) {
 #if defined(jpn)
     memset(obj->entries, -1, sizeof(obj->entries));

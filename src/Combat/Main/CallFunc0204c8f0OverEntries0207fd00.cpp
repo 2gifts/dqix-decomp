@@ -14,7 +14,6 @@ struct Obj0207fd00 {
     unsigned char count;
 };
 
-// JPN: func_0208083c
 // USA: func_0207fd00
 ARM void CallFunc0204c8f0OverEntries0207fd00(struct Obj0207fd00* obj) {
     unsigned char count;

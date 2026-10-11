@@ -47,7 +47,6 @@ extern "C" void func_02050678(void*,int,int,void*,int,int,short*,short*);
 extern "C" void func_02050cc0(void*,int,int,void*,int,int,short*,short*,int,int,bool,bool);
 #endif
 
-// USA / JPN: func_ov023_021e257c  (semantic: ProcessEntries_021e257c)
 extern "C" ARM void func_ov023_021e257c(struct MainObj_021e257c* obj) {
 	if (obj->state == 0) return;
 	unsigned short i;

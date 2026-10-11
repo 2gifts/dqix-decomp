@@ -15,7 +15,6 @@ int AppendNameTag(char* dst, int n, const char* name);
 int AppendString02042058(char* dst, const char* src);
 
 // USA: func_ov003_02169a84  (semantic: AppendEntryNamesWithSeparator_02169a84)
-// JPN: func_ov003_02169864
 extern "C" ARM void func_ov003_02169a84(char* base, char* dst, int flag) {
     if (dst == NULL) return;
 

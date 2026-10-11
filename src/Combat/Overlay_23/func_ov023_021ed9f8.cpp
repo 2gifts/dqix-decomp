@@ -40,7 +40,6 @@ struct InnerReset021ed9f8 {
     int fc;
 };
 
-// JPN: func_ov023_021ed7dc
 // USA: func_ov023_021ed9f8  (semantic: ScaleOrResetCombatants_021ed9f8)
 extern "C" ARM void func_ov023_021ed9f8(char* obj) {
 #if defined(jpn)

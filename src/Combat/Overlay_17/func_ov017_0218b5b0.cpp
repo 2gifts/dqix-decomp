@@ -8,7 +8,6 @@ struct FlagPair_0218b5b0 {
 };
 extern FlagPair_0218b5b0 data_ov017_021d82e0;
 
-// JPN: func_ov017_0218c1d0
 // USA: func_ov017_0218b5b0
 extern "C" ARM GameResources *func_ov017_0218b5b0(void) {
     return reinterpret_cast<GameResources *>(data_ov017_021d82e0.b);

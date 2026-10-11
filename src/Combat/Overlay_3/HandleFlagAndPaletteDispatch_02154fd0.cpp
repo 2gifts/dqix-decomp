@@ -15,7 +15,6 @@ void CallFunc0204b088OverList0x2c(struct Cont0207fd88* obj);
 struct SelfState020e2834;
 void SetYesNoButtonPalette020e2834(struct SelfState020e2834* self);
 
-// JPN: func_ov003_021566b8
 // USA: func_ov003_02154fd0  (semantic: HandleFlagAndPaletteDispatch_02154fd0)
 extern "C" ARM void func_ov003_02154fd0(char* obj) {
     if (*(unsigned char*)(obj + kRegion1f8) == 0) return;

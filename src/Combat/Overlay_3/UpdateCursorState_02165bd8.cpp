@@ -16,7 +16,6 @@ void* GetPtrField0x2a04(GameState*);
 extern "C" void func_ov003_02165c9c(unsigned char* self);
 
 // USA: func_ov003_02165bd8  (semantic: UpdateCursorState_02165bd8)
-// JPN: func_ov003_02165b84
 extern "C" ARM void func_ov003_02165bd8(unsigned char* self) {
     short outHigh, outLow;
     func_ov003_02160c58(self, &outHigh, &outLow);

@@ -12,7 +12,6 @@ void InitBigStruct0205c790(char* obj);
 #define TAIL_OFFSET 0x27c
 #endif
 
-// JPN: func_ov017_021ad5b4
 // USA: func_ov017_021acd7c  (semantic: InitObj_021acd7c)
 extern "C" ARM void func_ov017_021acd7c(char* obj) {
     ResetByteHeader((struct ByteHeader0204693c*)obj);

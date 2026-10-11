@@ -162,7 +162,6 @@ struct Scene021615bc {
 };
 
 // USA: func_ov003_021615bc
-// JPN: func_ov003_021616a4
 extern "C" ARM void func_ov003_021615bc(Scene021615bc* self) {
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     ListEnt* l;

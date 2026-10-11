@@ -123,7 +123,6 @@ static inline int WasButtonPressed(GuideWindow_021ec480* self)
     return ((int (*)(GuideWindow_021ec480*))_Z33DispatchIfFlagsOrByteSet_021ed014v)(self);
 }
 
-// JPN: func_ov023_021ec3dc
 // USA: func_ov023_021ec480
 extern "C" ARM void func_ov023_021ec480(GuideWindow_021ec480* self)
 {

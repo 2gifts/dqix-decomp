@@ -6,7 +6,6 @@ extern void* data_ov017_021d83ac;
 #endif
 extern "C" void func_ov002_0215b6c0(void*);
 
-// JPN: func_ov017_021a64e8
 // USA: func_ov017_021a5ab0
 ARM void CallHelperIfFlag_021a5ab0(void) {
 	if (data_ov017_021d83ac != 0) {

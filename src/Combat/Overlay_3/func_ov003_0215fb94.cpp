@@ -60,7 +60,6 @@ struct BattleView0215fb94 {
     int loadTaskId;
 };
 
-// JPN: func_ov003_0215fd40
 // USA: func_ov003_0215fb94
 extern "C" ARM void func_ov003_0215fb94(BattleView0215fb94* view) {
     ClearFlags020466f4((struct FlagWord020466f4*)GetDataPtr02114e04_020d6c00(), 0x80000);

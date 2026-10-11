@@ -10,7 +10,6 @@ enum { globalPointerIndex = 0 };
 #endif
 
 // USA: func_ov004_02165ef4  (semantic: SetFieldFromDividedStat_02165ef4)
-// JPN: func_ov004_0216653c
 extern "C" ARM void func_ov004_02165ef4(void* a) {
     short field = *(short*)((&data_ov004_0217101c)[globalPointerIndex] + 0x4c);
     short v = (field + 7) / 8;

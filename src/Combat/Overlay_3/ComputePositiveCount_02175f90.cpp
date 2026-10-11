@@ -9,7 +9,6 @@ enum { kRegion1012 = 0x1012 };
 unsigned char GetTableByte0207ca94(int index);
 short CountPositiveEntries0207c638(void* base, unsigned int index);
 
-// JPN: func_ov003_02174fa8
 // USA: func_ov003_02175f90
 ARM short ComputePositiveCount_02175f90(void* obj) {
     GameState* bs = GameState::GetInstance();

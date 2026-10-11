@@ -15,7 +15,6 @@ struct Buf021677b4 { unsigned int w[handlerCount]; };
 extern struct Buf021677b4 data_ov004_0216ffac;
 
 // USA: func_ov004_021677b4
-// JPN: func_ov004_02167cb0
 ARM void AllocateAndCopyHandlerTable_021677b4(SafeAllocator* self, void* target) {
 	struct Buf021677b4 buf = data_ov004_0216ffac;
 	void* allocated = self->Allocate(sizeof(Buf021677b4));

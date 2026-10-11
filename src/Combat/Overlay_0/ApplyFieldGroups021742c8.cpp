@@ -11,7 +11,6 @@ enum { fieldFlagsOffset = 0x1d72 };
 #endif
 
 // USA: func_ov000_021742c8
-// JPN: func_ov000_02175884
 ARM void ApplyFieldGroups021742c8(void* obj) {
     unsigned short flags = *(unsigned short*)((char*)obj + fieldFlagsOffset);
     if (!(flags & 0x40)) return;

@@ -15,7 +15,6 @@ void SetBit_021f6e10(void* obj, int idx, unsigned int bit);
 struct Obj021fb8dc;
 extern "C" void func_ov023_021fb8dc(struct Obj021fb8dc* obj, void* keyObj);
 
-// JPN: func_ov023_021fa8dc
 // USA: func_ov023_021fb534  (semantic: InitObjWithBitAllocation_021fb534)
 extern "C" ARM int func_ov023_021fb534(void* obj, void* ctx, unsigned short arg2, unsigned short arg3, unsigned int arg4, int arg5) {
     func_ov023_021f6ed8(obj);

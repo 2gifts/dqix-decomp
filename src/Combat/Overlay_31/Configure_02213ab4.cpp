@@ -1,4 +1,3 @@
-// USA / JPN
 struct Entry { unsigned char unused, id, level; unsigned char flags; };
 extern "C" void func_020ca408(const void*, void*, unsigned);
 void Configure_02213ab4(int index, void* record, int flags, unsigned char* state) {

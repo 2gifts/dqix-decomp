@@ -10,7 +10,6 @@ extern "C" int func_0205d97c(void* obj);
 
 extern unsigned short data_02114e30;
 
-// JPN: func_ov003_0215f048
 // USA: func_ov003_0215dd00
 ARM int IsFlagStateOrField98Eq2_0215dd00(char* self) {
     if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2)) {

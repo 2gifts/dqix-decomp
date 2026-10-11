@@ -4,7 +4,6 @@
 struct Obj4Bits_021ea500 { char pad[0x4]; unsigned int kind : 12; };
 struct Bits2f4_021ea500 { unsigned int bit0 : 1; unsigned int bit1 : 1; };
 
-// JPN: func_ov024_021eaccc
 // USA: func_ov024_021ea500  (semantic: CheckKind1AndFlagBitsAtField2f4_021ea500)
 extern "C" ARM int func_ov024_021ea500(void* unused, struct Obj4Bits_021ea500* obj, int id) {
 #if defined(jpn)

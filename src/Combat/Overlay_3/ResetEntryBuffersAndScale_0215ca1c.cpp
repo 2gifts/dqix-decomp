@@ -16,7 +16,6 @@ void CallFunc0204b04cOverList0x98(Cont0205d274*);
 extern "C" void func_0205da88(void*, int, int, int);
 void UpdateEntryAndScale_0215e2a8(char* base);
 
-// JPN: func_ov003_0215dd38
 // USA: func_ov003_0215ca1c  (semantic: ResetEntryBuffersAndScale_0215ca1c)
 extern "C" ARM void func_ov003_0215ca1c(char* obj) {
     if (*(unsigned char*)(obj + kRegion3bc) == 0) return;

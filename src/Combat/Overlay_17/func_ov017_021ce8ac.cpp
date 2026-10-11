@@ -25,7 +25,6 @@ struct Src021ce8ac {
     Last_ce8ac w3;
 };
 
-// JPN: func_ov017_021ced54
 // USA: func_ov017_021ce8ac
 extern "C" ARM void func_ov017_021ce8ac(int unused0, Src021ce8ac* src, GameState* battleStruct) {
     GameObject* c = GetCombatantWithFlag0x100(battleStruct, src->w3.id);

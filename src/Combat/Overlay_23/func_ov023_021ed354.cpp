@@ -13,7 +13,6 @@ extern "C" ARM void func_0205d304(void* a, void* b, int c, int d, int e, int f, 
 #endif
 
 
-// JPN: func_ov023_021ed2d0
 // USA: func_ov023_021ed354
 extern "C" ARM void func_ov023_021ed354(char* obj) {
     struct Bits0205de24 { unsigned char low4 : 4; unsigned char high4 : 4; };

@@ -54,7 +54,6 @@ void RegisterCombatantSlot(GameState*, int, GameObject*);
 CloneWork* GetActiveCombatWork();
 extern "C" void func_ov017_02191aac(GameResources*, int, int, int);
 
-// JPN: func_ov025_021e6860
 // USA: func_ov025_021e63b0
 extern "C" ARM int func_ov025_021e63b0(void* unused, CloneTargets* targets) {
     GameState* game = GameState::GetInstance();

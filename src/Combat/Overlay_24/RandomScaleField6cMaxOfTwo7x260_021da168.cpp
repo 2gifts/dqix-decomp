@@ -6,7 +6,6 @@ extern "C" int func_ov000_02159dbc(void*, short);
 
 struct RngHolder_021da168 { struct Random* rng; };
 
-// JPN: func_ov024_021daa28
 // USA: func_ov024_021da168
 ARM int RandomScaleField6cMaxOfTwo7x260_021da168(struct RngHolder_021da168* holder, unsigned short category, int unused1, int unused2, int unused3, int fallback) {
 #if defined(jpn)

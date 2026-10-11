@@ -10,7 +10,6 @@ enum { kRegion4a0 = 0x4a0 };
 
 extern "C" void func_ov003_021666c4(void* self);
 
-// JPN: func_ov003_02166534
 // USA: func_ov003_0216664c
 ARM void UpdateSignedField4a0_0216664c(void* self) {
     int flags = *(int*)((char*)self + kRegion45c);

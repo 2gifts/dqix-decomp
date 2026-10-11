@@ -20,7 +20,6 @@ struct Obj020941b0 {
     unsigned char nibbleHi : 4;
 };
 
-// JPN: func_02094ac4
 // USA: func_020941b0
 ARM void ReleaseHandleAndClearFlags(struct Obj020941b0* p) {
     int x = (int)BackgroundLoader::GetInstance();

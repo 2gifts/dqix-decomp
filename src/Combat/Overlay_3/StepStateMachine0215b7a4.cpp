@@ -24,7 +24,6 @@ int CheckStateFlag0215b370(void* obj, int flag);
 extern int data_02108760;
 
 // USA: func_ov003_0215b7a4
-// JPN: func_ov003_0215cba4
 ARM int StepStateMachine0215b7a4(void* p) {
     char* obj = (char*)p;
     unsigned char state = *(unsigned char*)(obj + 0x581);

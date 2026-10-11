@@ -51,7 +51,6 @@ extern unsigned int data_ov025_021ef990;
 extern const char data_ov025_021ef8dc[];
 extern char data_02108760[];
 
-// JPN: func_ov025_021e99e8
 // USA: func_ov025_021e9558
 extern "C" ARM void func_ov025_021e9558(struct Obj021e9558* obj) {
     GameState* gs = GameState::GetInstance();

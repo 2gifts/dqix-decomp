@@ -19,7 +19,6 @@ struct SubStruct700_021dcba4 {
     signed char f7c;
 };
 
-// JPN: func_ov023_021dd4b0
 // USA: func_ov023_021dcba4  (semantic: ApplyShortAndMaybeClearBg_021dcba4)
 extern "C" ARM void func_ov023_021dcba4(void* obj, short arg1) {
 #if defined(jpn)

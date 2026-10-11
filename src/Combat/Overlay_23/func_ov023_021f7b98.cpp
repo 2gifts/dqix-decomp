@@ -41,7 +41,6 @@ struct Obj021f7b98 {
     struct List0204af64 list;
 };
 
-// JPN: func_ov023_021f7090
 // USA: func_ov023_021f7b98
 extern "C" ARM void func_ov023_021f7b98(struct Obj021f7b98* self, void* keyObj, int useTag, struct Rec020467f0* entry, void* next) {
     int size;

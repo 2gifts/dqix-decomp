@@ -38,4 +38,3 @@ extern "C" ARM void _Z24SetupAndDispatch0205c904Phi(unsigned char* obj, int flag
 
     func_0205c5b0(obj + 0x1c, (void*)flag);
 }
-// JPN: 0x0205dc6c

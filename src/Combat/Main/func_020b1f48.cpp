@@ -1,4 +1,3 @@
-// JPN: main:020b3a14
 extern "C" {
 void func_020b1ff8(unsigned short*,int,int,int,unsigned,unsigned);
 #define FillRows func_020b1ff8

@@ -1,4 +1,3 @@
-// JPN: main:020d34c0
 union TaskRequest { struct { int (*work)(TaskRequest*); void (*done)(TaskRequest*); int result; unsigned fields[6]; } view; unsigned words[9]; };
 struct TaskOwner { unsigned char pad[0xc0]; TaskRequest* request; };
 struct BlockedContextList;

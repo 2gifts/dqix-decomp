@@ -17,7 +17,6 @@ void SetCombatModeFromCase020dc2d0(int);
 void ResetHandlesAndFlags_02153874(void* obj);
 
 // USA: func_ov003_02158184
-// JPN: func_ov003_02159670
 ARM void HandleStateTransition2_02158184(void* self) {
     unsigned char* s = (unsigned char*)self;
     unsigned char state = *(unsigned char*)(s + kRegionValue1F9_1F5);

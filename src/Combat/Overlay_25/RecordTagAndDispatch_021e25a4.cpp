@@ -10,7 +10,6 @@ struct Struct021ef988 { char pad[0x1c]; unsigned int flags; };
 #endif
 extern Struct021ef988 data_ov025_021ef988;
 
-// JPN: func_ov025_021e2abc
 // USA: func_ov025_021e25a4  (semantic: RecordTagAndDispatch_021e25a4)
 extern "C" ARM void func_ov025_021e25a4(char* s) {
     char buf2[0x50];

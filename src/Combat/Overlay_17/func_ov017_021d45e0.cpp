@@ -1,4 +1,3 @@
-// JPN: func_ov017_021d4a34
 #include <globaldefs.h>
 
 struct Rec_021c90f8 { unsigned short a; short b; unsigned short c; unsigned short d; unsigned short e; unsigned char f; };

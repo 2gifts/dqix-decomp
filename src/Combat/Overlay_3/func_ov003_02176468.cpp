@@ -32,7 +32,6 @@ extern struct Obj0205eaa0 data_02108760;
 struct Obj020e280c;
 void ResetAndReposition020e280c(struct Obj020e280c* self, void* b);
 
-// JPN: func_ov003_021754bc
 // USA: func_ov003_02176468  (semantic: ResetElementFieldsAndDispatch_02176468)
 extern "C" ARM void func_ov003_02176468(unsigned char* self) {
     *(short*)(self + kRegionffe) = 1;

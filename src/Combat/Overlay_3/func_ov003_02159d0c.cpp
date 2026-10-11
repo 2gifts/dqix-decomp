@@ -55,7 +55,6 @@ extern int data_02109bf4;
 extern int data_0211e33c;
 
 // USA: func_ov003_02159d0c
-// JPN: func_ov003_0215b18c
 extern "C" ARM void func_ov003_02159d0c(void* self) {
     unsigned char* s = (unsigned char*)self;
     unsigned char* g = (unsigned char*)_Z26GetGlobalField0x1c020421a0v();

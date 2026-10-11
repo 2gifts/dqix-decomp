@@ -24,7 +24,6 @@ struct Target021d0a18 {
     unsigned short half12;
 };
 
-// JPN: func_ov017_021d0ec8
 // USA: func_ov017_021d0a18
 ARM void HandleEntryEvent_021d0a18(int a0, struct EntryStruct021d0a18* b, int unused, char* c, struct SearchStruct0202c1a4* list) {
 #if defined(jpn)

@@ -16,7 +16,6 @@ struct Battle021e2298 {char pad[0x81b1];BattleFlags021e2298 flags;char pad2[2];P
 struct Message021e2298 {char pad[6];short value6;char pad8[0x12];unsigned short value1a;unsigned short value1c;};
 struct Action021e2298 {char pad[0x1c];unsigned char unused:7;unsigned char flag:1;};
 struct Obj021e2298 {char pad[4];Message021e2298* message;char pad8[4];Action021e2298* action;Battle021e2298* battle;int count;char pad18[0x6e - 0x18];unsigned char done;};
-// JPN: func_ov024_021e2b30
 // USA: func_ov024_021e2298
 extern "C" ARM void* func_ov024_021e2298(Obj021e2298* obj,int unused,int id){
     GameObject* c=GetCombatantByID((int)obj->battle,id);

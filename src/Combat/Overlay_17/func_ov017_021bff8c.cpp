@@ -38,7 +38,6 @@ struct Ctx021bff8c {
     Obj021c0124* state;
 };
 
-// JPN: func_ov017_021c0534
 // USA: func_ov017_021bff8c
 extern "C" ARM void func_ov017_021bff8c(Ctx021bff8c* ctx, unsigned char flag) {
 #if defined(jpn)

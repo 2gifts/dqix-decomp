@@ -63,7 +63,6 @@ extern "C" void func_0205bb04(void* s, int index);
 
 extern "C" TouchState_021e6448 data_02114e54;
 
-// JPN: func_ov023_021e66bc
 // USA: func_ov023_021e6448
 extern "C" ARM int func_ov023_021e6448(ListMenu_021e6448* self) {
     if (SelectField0x8Or0x58ByFlags((unsigned char*)&self->list_) <= 1)

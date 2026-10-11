@@ -28,7 +28,6 @@ void SetIndexIfValid0205bcdc(struct Struct_0205bcdc* s, int index);
 extern "C" void func_0205bb04(void* s, int n);
 
 // USA: func_ov003_0215dd3c  (semantic: InitDualNodes_0215dd3c)
-// JPN: func_ov003_0215f084
 extern "C" ARM void func_ov003_0215dd3c(char* obj) {
     int a, b, c;
     if (*(unsigned char*)(obj + kRegionValue148_160) == 1) {

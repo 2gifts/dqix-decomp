@@ -36,7 +36,6 @@ extern unsigned short data_02114e30;
 extern struct Obj0205eaa0 data_02108760;
 
 // USA: func_ov003_021764f4  (semantic: RunTurnCheck_021764f4)
-// JPN: func_ov003_02175544
 extern "C" ARM int func_ov003_021764f4(unsigned char* self) {
 #if defined(jpn)
     *(void**)(self + 0xf74) = self + 0xf7e;

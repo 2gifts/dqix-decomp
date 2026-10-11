@@ -16,7 +16,6 @@ struct SrcEntry021ca918 {
     short field12;
 };
 
-// JPN: func_ov017_021cadc8
 // USA: func_ov017_021ca918
 extern "C" ARM void func_ov017_021ca918(int unused0, struct SrcEntry021ca918* src, GameState* battleStruct, unsigned char* base) {
 #if defined(jpn)

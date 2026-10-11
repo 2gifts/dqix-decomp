@@ -46,7 +46,6 @@ struct Ctx0215b5c4 {
     signed char entries_[1];
 };
 
-// JPN: func_ov003_0215ca24
 // USA: func_ov003_0215b5c4
 extern "C" ARM void func_ov003_0215b5c4(Ctx0215b5c4* self) {
     _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh((struct Struct0205de24*)self->window_, 0, 2);

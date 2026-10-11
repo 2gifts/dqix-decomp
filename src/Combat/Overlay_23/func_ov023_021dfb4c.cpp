@@ -5,7 +5,6 @@ void ResetIfNonNeg_021db2e4(volatile int* p);
 struct DispatchEntry_021fdaa8 { int handler; int offsetFlag; };
 extern DispatchEntry_021fdaa8 data_ov023_021fdaa8[];
 
-// JPN: func_ov023_021e0160
 // USA: func_ov023_021dfb4c  (semantic: RunSubStateDispatch_021dfb4c)
 extern "C" ARM void func_ov023_021dfb4c(void* obj) {
 #if defined(jpn)

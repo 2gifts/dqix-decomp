@@ -23,7 +23,6 @@ struct Obj02245750 {
 
 extern "C" int func_ov017_0218b5b0(void);
 
-// JPN: func_ov031_02246318
 // USA: func_ov031_02245750  (semantic: CheckTagAndRegisterSlot_02245750)
 extern "C" ARM int func_ov031_02245750(void* unused, Obj02245750* obj) {
 #if defined(jpn)

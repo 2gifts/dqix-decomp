@@ -1,5 +1,3 @@
-// usa: 020c32f8
-// jpn: 020c4dc4
 extern "C" long long func_020c30ac(long long);
 extern "C" long long func_020c3194(long long);
 extern "C" long long func_020c32f8(int angle) {

@@ -22,7 +22,6 @@ struct Entry02019568 {
 };
 
 // USA: func_02019568
-// JPN: func_02019568
 ARM void ProcessBattlerEffects02019568(void* a, int b) {
     GameState::GetInstance();
     void* d = LightingManager::GetInstance();

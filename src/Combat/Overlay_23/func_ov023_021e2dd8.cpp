@@ -9,7 +9,6 @@ void ZeroInit020de848(void* obj);
 void ClearFields_021e20c0(void* p);
 void FilterSlotsWithFlag0x800020dc4d0(signed char* out, signed char* outCount);
 
-// JPN: func_ov023_021e3138
 // USA: func_ov023_021e2dd8
 extern "C" ARM void func_ov023_021e2dd8(unsigned char* obj) {
 #if defined(jpn)

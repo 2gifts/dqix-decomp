@@ -18,7 +18,6 @@ struct Struct0217f8c0 {
 };
 
 // USA: func_ov000_0217f8c0
-// JPN: func_ov000_02180bec
 ARM struct TableEntry0217f8c0* FindMatchingTableEntry0217f8c0(struct Struct0217f8c0* s) {
     int i;
     for (i = 0; i < 4; i++) {

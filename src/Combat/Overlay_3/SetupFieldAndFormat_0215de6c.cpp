@@ -23,7 +23,6 @@ extern "C" void func_02046380(void* global);
 int CallFunc020e0434With02153694(int value);
 extern "C" void func_02046608(int a, int b, void* fmt, void* dst, int p4, int p5, int p6);
 
-// JPN: func_ov003_0215f1b4
 // USA: func_ov003_0215de6c
 ARM void SetupFieldAndFormat_0215de6c(char* base, void* buf) {
     GameState* battleStruct = GameState::GetInstance();

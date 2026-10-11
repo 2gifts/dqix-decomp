@@ -11,7 +11,6 @@ extern struct Reset021e3158 data_ov025_021ef9a8;
 
 struct S021e30e8 { char pad[8]; unsigned int field8; unsigned char field0xc; };
 
-// JPN: func_ov025_021e35d8
 // USA: func_ov025_021e30e8  (semantic: CheckThresholdAndReset_021e30e8)
 extern "C" ARM int func_ov025_021e30e8(struct S021e30e8* obj) {
 #if defined(jpn)

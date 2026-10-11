@@ -23,7 +23,6 @@ struct Obj021e3e98 {
     unsigned short f634;
 };
 
-// JPN: func_ov023_021e40f4
 // USA: func_ov023_021e3e98  (semantic: UpdateFlagsAndByte4e6_021e3e98)
 extern "C" ARM void func_ov023_021e3e98(struct Obj021e3e98* obj) {
     int cond = (func_ov023_021e29d0(&obj->fd4) == 0x1f);

@@ -44,7 +44,6 @@ public:
     virtual int MethodF8();
 };
 
-// JPN: func_ov023_021f6004
 // USA: func_ov023_021f6ac8
 extern "C" ARM int func_ov023_021f6ac8(void* obj, void* arg1) {
     if (*(unsigned char*)(&data_02114e54 + 0x55) != 0) {

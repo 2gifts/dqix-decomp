@@ -8,7 +8,6 @@ extern "C" void func_ov023_021db314(void* obj, short* out, short* outCount);
 extern "C" int func_020e0028(void* p, void* b, int out1, int out2, void* p2, int field84);
 void InitAndAppendTextB_021e0eb8(void* obj);
 
-// JPN: func_ov023_021e0ffc
 // USA: func_ov023_021e0a90  (semantic: DispatchListEntryCodes_021e0a90)
 extern "C" ARM int func_ov023_021e0a90(void* obj) {
 #if defined(jpn)

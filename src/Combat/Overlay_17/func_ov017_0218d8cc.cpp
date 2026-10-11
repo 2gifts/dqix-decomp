@@ -33,7 +33,6 @@ struct Battle0218d8cc {
     Vector3fix moveDir;
 };
 
-// JPN: func_ov017_0218e4ac
 // USA: func_ov017_0218d8cc
 extern "C" ARM void func_ov017_0218d8cc(Battle0218d8cc* self) {
     GameState* gs = GameState::GetInstance();

@@ -36,4 +36,3 @@ extern "C" ARM void func_02037d10(void* obj) {
     _Z17InitBlock02038508P16SubBlock02038508(blk);
 }
 
-// JPN: 0x0203776c

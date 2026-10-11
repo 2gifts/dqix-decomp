@@ -23,7 +23,6 @@ struct BattleSide0215e1ec {
 };
 
 // USA: func_ov003_0215e1ec
-// JPN: func_ov003_0215f4c4
 extern "C" ARM void func_ov003_0215e1ec(struct BattleSide0215e1ec* side) {
     GameState* gs = GameState::GetInstance();
     unsigned char ids[4];

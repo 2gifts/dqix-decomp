@@ -3,7 +3,6 @@
 struct Vec3Target0203a46c;
 void SetVec3At0x1c(struct Vec3Target0203a46c* obj, int x, int y, int z);
 
-// JPN: 0219c104
 // USA: func_ov017_0219b578  (semantic: UpdateVec3XYFromFixed_0219b578)
 extern "C" ARM void func_ov017_0219b578(char* self, int argY, int argZ) {
 #if defined(jpn)

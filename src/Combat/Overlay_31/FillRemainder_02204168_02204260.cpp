@@ -1,4 +1,3 @@
-// JPN: func_ov031_02204a40
 #include <globaldefs.h>
 
 extern "C" unsigned char* func_ov031_02203fdc(void* buf, int n, int* out);

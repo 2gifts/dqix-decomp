@@ -28,7 +28,6 @@ extern "C" unsigned int _Z18GetField0x3acValueP9GameState(void*);
 extern "C" void* memset(void*,int,unsigned int);
 extern "C" unsigned int _Z19CopyOutRegion0x571dPcPv(void*,void*);
 extern "C" void _Z20ResetFields_0215873cPv(void*);
-// JPN: func_ov003_02155e08
 // USA: func_ov003_02154720
 extern "C" ARM void func_ov003_02154720(void* memory,unsigned char flagIn) {
  unsigned char flag=flagIn;

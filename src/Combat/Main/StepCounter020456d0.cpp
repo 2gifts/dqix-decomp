@@ -35,4 +35,3 @@ ARM void StepCounter020456d0(struct Battle020456d0* b) {
     }
 }
 
-// JPN: 0x02046340

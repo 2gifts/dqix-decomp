@@ -11,7 +11,6 @@ extern "C" ARM void func_0205d304(void* a, void* b, int c, int d, int e, int f, 
 #endif
 
 
-// JPN: func_ov023_021ed0e8
 // USA: func_ov023_021ed194
 extern "C" ARM void func_ov023_021ed194(char* obj) {
 #if defined(jpn)

@@ -7,7 +7,6 @@ enum { entrySize = 0x448 };
 #endif
 
 // USA: func_ov000_02161318  (semantic: FindElementByIdField_02161318)
-// JPN: func_ov000_02162a84
 extern "C" ARM void* func_ov000_02161318(void* obj, int id) {
     int valid = (id >= 0 && id <= 3) ? 1 : 0;
     if (valid) {

@@ -44,7 +44,6 @@ extern "C" void __clear(void* p, int n);
 
 extern BattleUi021e27c8 data_ov025_021ef988;
 
-// JPN: func_ov025_021e2ce0
 // USA: func_ov025_021e27c8
 extern "C" ARM void func_ov025_021e27c8(char* name, int id) {
     char archive[0x50];

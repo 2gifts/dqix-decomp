@@ -6,7 +6,6 @@ void DestroyActiveAllocators_0215aa5c(void);
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
 extern int data_02114e20;
 
-// JPN: func_ov017_021bb700
 // USA: func_ov017_021bb108
 extern "C" ARM void func_ov017_021bb108(char* self) {
 #if defined(jpn)

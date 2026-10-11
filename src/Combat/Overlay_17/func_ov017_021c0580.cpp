@@ -15,7 +15,6 @@ extern "C" void _Z25SetFields30And34_021b2bd0Pvii(void* obj, int handler, int ov
 extern "C" void _Z16SetBit3_021b2bdcP9S021b2bdcj(S021b2bdc* obj, unsigned int value);
 void PrependNodeToHead(HeadList020469f8* list, HeadNode020469f8* node);
 
-// JPN: func_ov017_021c0b28
 // USA: func_ov017_021c0580
 extern "C" ARM void func_ov017_021c0580(Obj021c0820* self, int kind, char* name, int handler) {
 #if defined(jpn)

@@ -6,7 +6,6 @@ void ResetState020a2cf0(struct Struct020A2CF0* obj);
 void InitCombatController020a2010(void* obj);
 
 // USA: func_ov004_021633e4
-// JPN: func_ov004_021639d8
 ARM void* DoResetInitOrder_021633e4(void* obj) {
 	func_0202df68(obj);
 	ResetState020a2cf0((struct Struct020A2CF0*)obj);

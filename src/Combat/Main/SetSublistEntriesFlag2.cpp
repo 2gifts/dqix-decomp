@@ -23,4 +23,3 @@ ARM void SetSublistEntriesFlag2(void* obj, int id) {
     }
 }
 
-// JPN: 0x02081130

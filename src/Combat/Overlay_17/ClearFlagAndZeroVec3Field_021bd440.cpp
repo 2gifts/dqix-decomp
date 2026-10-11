@@ -3,11 +3,7 @@
 
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 
-// If the selected bit was set, copies the stored position and Y rotation to
-// the party member, while setting rotation X and Z to zero. The writer of
-// the stored values has not been identified here.
 // USA: func_ov017_021bd440
-// JPN: func_ov017_021bda38
 ARM void ClearFlagAndZeroVec3Field_021bd440(void* self, int partyMemberIndex) {
 	unsigned char* base = (unsigned char*)self;
 	unsigned char partyMemberMask = 1 << partyMemberIndex;

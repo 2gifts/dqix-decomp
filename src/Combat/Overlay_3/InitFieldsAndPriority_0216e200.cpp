@@ -16,7 +16,6 @@ unsigned int GetField4(unsigned int* obj);
 void Set3DClearColor(int color, int alpha, int depth, int polygonId, int fogEnable);
 
 // USA: func_ov003_0216e200  (semantic: InitFieldsAndPriority_0216e200)
-// JPN: func_ov003_0216da64
 extern "C" ARM void func_ov003_0216e200(char* obj) {
 	if (*(signed char*)(obj + 0x2) != 0) return;
 

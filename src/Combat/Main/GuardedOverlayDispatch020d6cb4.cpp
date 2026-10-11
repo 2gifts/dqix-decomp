@@ -27,4 +27,3 @@ ARM void GuardedOverlayDispatch020d6cb4() {
     func_020a1bb4(id);
 }
 
-// JPN: 0x020d86bc

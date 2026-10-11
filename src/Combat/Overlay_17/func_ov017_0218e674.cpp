@@ -29,7 +29,6 @@ extern "C" Object3D* _Z21GetField4334_021bdbc0Ph(unsigned char* ov);
 
 extern unsigned short data_02114e30;
 
-// JPN: func_ov017_0218f254
 // USA: func_ov017_0218e674
 extern "C" ARM void func_ov017_0218e674(unsigned char* ov) {
 #if defined(jpn)

@@ -1,4 +1,3 @@
-// JPN: func_ov017_021a8ecc
 #include <globaldefs.h>
 #include "Combat/Main/CopyRecord0200fbb4.h"
 

@@ -34,7 +34,6 @@ extern "C" int func_0202c508(void* p);
 extern "C" void _Z35SetByteIfDataAndCheckClear_021a01bcPh(unsigned char* self);
 extern "C" void _Z27EnqueueEventTag147_021cdaa0v(void);
 
-// JPN: func_ov017_0219e5b4
 // USA: func_ov017_0219dac4
 extern "C" ARM void func_ov017_0219dac4(unsigned char* self, int id, int value) {
     GameState* gs = GameState::GetInstance();

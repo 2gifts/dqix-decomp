@@ -21,7 +21,6 @@ extern "C" void func_ov003_02176ed4(void* self);
 extern "C" void func_ov003_02176f94(void* self);
 
 // USA: func_ov003_021785d4  (semantic: AdjustMappedIndexAndRefresh_021785d4)
-// JPN: func_ov003_021774b4
 extern "C" ARM void func_ov003_021785d4(char* obj) {
     int flags = *(int*)(obj + kRegionValueFE4_F60);
     int delta = 0;

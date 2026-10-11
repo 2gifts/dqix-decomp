@@ -22,7 +22,6 @@ void ApplyVec3Tail(void* obj, int* vec);
 extern "C" Node021e5c68* _Z22GetNodeAtIndex021600f8P12List021600f8i(void* list, int idx);
 extern "C" char* _Z19GetActiveCombatWorkv();
 
-// JPN: func_ov025_021e6158
 // USA: func_ov025_021e5c68
 extern "C" ARM int func_ov025_021e5c68(CameraStep021e5c68* step, void* list) {
 #if defined(jpn)

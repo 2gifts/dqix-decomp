@@ -42,7 +42,6 @@ static inline int IsSpecial021e2f54(void* node) {
     return func_ov000_0215ffa0(node) >= 0xc0 && func_ov000_0215ffa0(node) <= 0xc7;
 }
 
-// JPN: func_ov025_021e3444
 // USA: func_ov025_021e2f54
 extern "C" ARM void func_ov025_021e2f54(struct Event021e2f54* ev, short* list, char* world) {
     struct Ctx021e2f54* ctx = data_ov025_021ef988.ctx;

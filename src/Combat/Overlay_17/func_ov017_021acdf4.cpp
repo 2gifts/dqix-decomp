@@ -1,4 +1,3 @@
-// JPN: func_ov017_021ad62c
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"

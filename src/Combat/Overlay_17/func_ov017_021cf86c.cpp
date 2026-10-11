@@ -48,7 +48,6 @@ extern "C" void func_0208f748(void*, int);
 void FillBits5cd0(S_020113e0*);
 extern "C" int _Z17IsInRange0201b588i(int);
 
-// JPN: func_ov017_021cfd1c
 // USA: func_ov017_021cf86c
 extern "C" ARM void func_ov017_021cf86c(void*, GrottoPacket* packet, GameState* state, GrottoOverlay* overlay, SearchStruct0202c1a4* search) {
     if (packet->control_.bits_.player_ >= 0 && GetSearchStructCurrentArrEntry(search) != packet->control_.bits_.player_) return;

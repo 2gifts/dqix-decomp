@@ -5,7 +5,6 @@ void* GetData02100044(void);
 extern "C" void* func_ov017_021b8478(void* obj);
 extern "C" void func_0205e330(void* data, void* buf, int flags);
 
-// JPN: func_ov017_021ca7a8
 // USA: func_ov017_021ca2f8
 extern "C" ARM void func_ov017_021ca2f8(unsigned char param0) {
 #if defined(jpn)

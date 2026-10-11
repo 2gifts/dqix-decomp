@@ -26,13 +26,12 @@ int IsPointInsideElement02080d54(struct Obj2081* obj, int key, int px, int py);
 struct Ctx021766e8 {
     struct Outer020e28dc* ptr0;   // 0x0
     char pad0[kRegionValue89C_818 - 0x4];
-    struct Obj2081* field89c;     // kRegionValue89C_818
+    struct Obj2081* field89c;
     char pad1[kRegionValueFFE_F7A - kRegionValue8A0_81C];
-    short keyffe;                 // kRegionValueFFE_F7A
+    short keyffe;
 };
 
 // USA: func_ov003_021766e8  (semantic: CheckStateAtCoords_021766e8)
-// JPN: func_ov003_02175730
 extern "C" ARM int func_ov003_021766e8(struct Ctx021766e8* self) {
     int flag = 0;
     if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2)) flag = 1;

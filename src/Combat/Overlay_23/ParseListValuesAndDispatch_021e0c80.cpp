@@ -23,7 +23,6 @@ struct ListHeader021e0c80 {
     struct ListEntry021e0c80* entries;
 };
 
-// JPN: func_ov023_021e11c4
 // USA: func_ov023_021e0c80  (semantic: ParseListValuesAndDispatch_021e0c80)
 extern "C" ARM int func_ov023_021e0c80(void* obj) {
 #if defined(jpn)

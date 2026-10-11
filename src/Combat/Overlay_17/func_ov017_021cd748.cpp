@@ -76,7 +76,6 @@ extern "C" int _Z29HasFlag3orFlag2And9a_021bd3a4P12Obj_021bd3a4(Obj_021bd3a4*);
 extern "C" int func_0202c508(SearchStruct0202c1a4*);
 extern "C" void func_ov017_021bc6e0(TransitionState*, int, int);
 
-// JPN: func_ov017_021cdbf0
 // USA: func_ov017_021cd748
 extern "C" ARM void func_ov017_021cd748(int sender, TransitionEvent* event, GameState* game, GameResources* resources, SearchStruct0202c1a4* search) {
     int matches;

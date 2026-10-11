@@ -16,7 +16,6 @@ extern "C" void func_02032fdc(void* a, int b, int c);
 struct Struct31c_021600b8 { char pad[kRegionValue31C_204]; int field31c; void* field320; };
 
 // USA: func_ov003_021600b8  (semantic: SyncPositionAndFlags_021600b8)
-// JPN: func_ov003_02160264
 extern "C" ARM void func_ov003_021600b8(Struct31c_021600b8* obj) {
     GameState* battleStruct = GameState::GetInstance();
     if (obj->field31c == 0 || obj->field320 == 0) return;

@@ -7,7 +7,6 @@ void SetupAndDispatchCombatant_02191e5c(int a, int b, short c, unsigned char d, 
 
 extern "C" void func_ov017_0218f80c(int a, int b);
 
-// JPN: func_ov017_02192b14
 // USA: func_ov017_02191f4c
 ARM void DispatchOrSetupCombatant_02191f4c(int a, int b) {
 #if defined(jpn)

@@ -18,7 +18,6 @@ extern Block80_0215502c data_ov004_0216fa8c;
 extern "C" int func_ov011_02184a24(int, void*, int);
 
 // USA: func_ov004_0215502c
-// JPN: func_ov004_021565a4
 ARM int AllocateAndDispatch20_0215502c(SafeAllocator* alloc, int arg) {
 	Block80_0215502c local = data_ov004_0216fa8c;
 	void* buf = alloc->Allocate(sizeof(Block80_0215502c));

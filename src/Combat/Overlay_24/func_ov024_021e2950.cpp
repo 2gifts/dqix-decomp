@@ -37,7 +37,6 @@ extern "C" int _Z23CheckFlag0x14Bit0x10SetPh(void*);
 extern "C" void _Z23ClearBattleFlag0x14Bit4Pv(void*);
 extern "C" int _Z22IsFlagBit5Set_021de25cP16FlagObj_021de25c(void*);
 extern "C" void _Z21ClearFlag0x20AndBytesPv(void*);
-// JPN: func_ov024_021e31e8
 // USA: func_ov024_021e2950
 extern "C" ARM struct OutStruct0215ccbc* func_ov024_021e2950(struct Obj_021e2950* obj, int unused, int id, int unused2, int amount) {
     GameObject* c = GetCombatantByID((int)obj->ctx, id);

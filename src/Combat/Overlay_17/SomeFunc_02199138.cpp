@@ -18,7 +18,6 @@ struct LocalC02199138 {
     char pad2[0x34 - 0x28];
 };
 
-// JPN: func_ov017_02199ce8
 // USA: func_ov017_02199138  (semantic: SomeFunc_02199138)
 extern "C" ARM void func_ov017_02199138(char* self) {
 #if defined(jpn)

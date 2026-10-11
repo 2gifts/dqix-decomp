@@ -19,7 +19,6 @@ enum { notificationFieldOffset = 0x190 };
 #endif
 
 // USA: func_ov004_02169adc
-// JPN: func_ov004_02169fd4
 ARM int ClearMasksAndNotify_02169adc(void* obj) {
     ClearNodeMaskById_021f6600(obj, 0x1e, 0x18);
     ClearNodeMaskById_021f6600(obj, 0x1f, 0x18);

@@ -53,7 +53,6 @@ struct Entry5c02155bbc {
 };
 
 // USA: func_ov004_02155bbc
-// JPN: func_ov004_0215713c
 extern "C" ARM int func_ov004_02155bbc(void* a1) {
     void* r4 = (void*)func_ov004_021551a8(a1);
     if (!r4) return 0;

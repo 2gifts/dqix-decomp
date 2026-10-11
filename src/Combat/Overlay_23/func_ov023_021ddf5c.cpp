@@ -123,7 +123,6 @@ struct Obj021ddf5c {
 
 #define FlushList(obj, buf) do {     if (data_ov023_021ff9e0.field4) {         (obj)->buf = (buf);         (obj)->active = 1;         func_ov023_021e257c((obj)->list);     } } while (0)
 
-// JPN: func_ov023_021de6e0
 // USA: func_ov023_021ddf5c
 extern "C" ARM void func_ov023_021ddf5c(struct Obj021ddf5c* obj) {
     char buf[0xe0];

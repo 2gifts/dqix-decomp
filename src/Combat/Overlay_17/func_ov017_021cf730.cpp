@@ -19,7 +19,6 @@ void* GetData02100044();
 extern "C" void func_0205e330(void*, void*, int);
 
 // USA: func_ov017_021cf730
-// JPN: func_ov017_021cfbe0
 extern "C" ARM void func_ov017_021cf730(signed char player, unsigned char refresh) {
     int* control = func_0202ae18();
     if (!CheckField0NonZero(control) || func_0202c540(control)) return;

@@ -7,7 +7,6 @@ extern char data_021112ec;
 #endif
 
 // USA: _Z21GetGlobalWord021112ecv
-// JPN: func_020c9070
 ARM int GetGlobalWord021112ec(void) {
 #if defined(jpn)
     return *(int*)(&data_02110f8c);

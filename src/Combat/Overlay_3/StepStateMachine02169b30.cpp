@@ -38,7 +38,6 @@ int CheckFlagOrThreshold_02169554(void* obj);
 extern int data_02108760;
 
 // USA: func_ov003_02169b30  (semantic: StepStateMachine02169b30)
-// JPN: func_ov003_02169910
 extern "C" ARM int func_ov003_02169b30(void* p) {
     char* obj = (char*)p;
     unsigned char state = *(unsigned char*)(obj + kRegionValue4E9_4E5);

@@ -5,7 +5,6 @@ extern "C" GameObject* func_ov023_021e8f28(int index);
 extern "C" int func_ov017_021d60f4(void* obj);
 extern "C" void func_ov017_021d6134(void* obj, int value);
 
-// JPN: func_ov023_021e9388
 // USA: func_ov023_021e9424  (semantic: CheckSequenceMatchAndFlag_021e9424)
 extern "C" ARM int func_ov023_021e9424(char* ptr, int n) {
 #if defined(jpn)

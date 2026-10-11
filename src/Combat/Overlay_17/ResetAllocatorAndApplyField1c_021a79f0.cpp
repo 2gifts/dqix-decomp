@@ -21,7 +21,6 @@ struct Obj021a79f0 {
     SafeAllocator allocator;
 };
 
-// JPN: func_ov017_021a8380
 // USA: func_ov017_021a79f0  (semantic: ResetAllocatorAndApplyField1c_021a79f0)
 extern "C" ARM void func_ov017_021a79f0(struct Obj021a79f0* self) {
     void* g = (void*)GetGlobal02109400();

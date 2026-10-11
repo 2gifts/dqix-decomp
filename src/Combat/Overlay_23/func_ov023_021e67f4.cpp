@@ -53,7 +53,6 @@ struct ProfileEditor_021e67f4 {
 };
 
 #endif
-// JPN: func_ov023_021e6d64
 // USA: func_ov023_021e67f4
 extern "C" ARM void func_ov023_021e67f4(ProfileEditor_021e67f4* self)
 {

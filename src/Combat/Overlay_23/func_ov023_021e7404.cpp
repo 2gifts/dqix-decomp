@@ -13,7 +13,6 @@ void ClearShortAndTwoBytes_021e71a0(struct ShortBytePair021e71a0* p);
 class PMFObj021e7c58;
 void DispatchEntryByIndex_021e7c58(PMFObj021e7c58* obj, unsigned int selector, int idx);
 
-// JPN: func_ov023_021e7650
 // USA: func_ov023_021e7404
 extern "C" ARM void func_ov023_021e7404(char* obj, int amount) {
 #if defined(jpn)

@@ -18,7 +18,6 @@ extern int data_020f2a20;
 #endif
 
 
-// JPN: func_ov023_021e117c
 // USA: func_ov023_021e0c38
 ARM int InitField750_021e0c38(void* obj) {
 #if defined(jpn)

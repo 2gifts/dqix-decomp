@@ -10,7 +10,6 @@ enum { kRegion950 = 0x950 };
 
 void* GetArrayEntryByIndex_02156034(void* obj);
 
-// JPN: func_ov003_0215759c
 // USA: func_ov003_02155f40
 ARM int MatchesArrayEntry_02155f40(void* obj, int combatantId) {
     GameState* bs = GameState::GetInstance();

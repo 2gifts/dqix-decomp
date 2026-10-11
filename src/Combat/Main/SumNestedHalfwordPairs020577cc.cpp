@@ -20,7 +20,6 @@ extern "C" void func_0205b008(struct Outer02059c90* obj, unsigned short* out0, u
 void GetNestedHalfwordPair(struct Outer02059c90* obj, unsigned short* out0, unsigned short* out1);
 #endif
 
-// JPN: func_02058b44
 // USA: func_020577cc
 ARM void SumNestedHalfwordPairs020577cc(struct Obj020577cc* obj, unsigned short* out1, unsigned short* out2) {
     unsigned short sum1 = 0, sum2 = 0;

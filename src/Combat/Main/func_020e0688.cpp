@@ -57,7 +57,6 @@ struct LocalList020e0688 {
 };
 
 // USA: func_020e0688
-// JPN: func_020e0688
 extern "C" ARM void func_020e0688(struct Obj020e0688* self) {
     if (self->flag_9c5 == 0) {
         return;

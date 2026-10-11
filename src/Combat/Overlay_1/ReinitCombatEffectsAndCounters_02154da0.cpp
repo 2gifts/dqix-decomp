@@ -17,7 +17,6 @@ enum { effectCounterOffset = 0x19be };
 #endif
 
 // USA: func_ov001_02154da0  (semantic: ReinitCombatEffectsAndCounters_02154da0)
-// JPN: func_ov001_02156520
 extern "C" ARM void func_ov001_02154da0() {
     char* obj = (char*)GetGlobalField0x1c020421a0();
     ReinitController02043204(obj);

@@ -17,7 +17,6 @@ struct Params021dd278 {char pad[4];Code021dd278 field4;char pad8[0x18];Triple021
 struct Value021dd278 {unsigned int low:20;unsigned int value:10;unsigned int high:2;};
 struct State021dd278 {char pad[0x10];Value021dd278 field10;char pad14[0x26];unsigned char field3a;unsigned char changed:1;unsigned char rest:7;};
 static inline int IsParty(int id){return id>=0 && id<=3;}
-// JPN: func_ov024_021ddb24
 // USA: func_ov024_021dd278
 extern "C" ARM void* func_ov024_021dd278(Obj021dd278* obj,int sourceID,int id,Params021dd278* params,int unused,int unused2,unsigned char enabled){
     GameObject* source=GetCombatantByID((int)obj->context,sourceID);

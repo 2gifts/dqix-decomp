@@ -15,7 +15,6 @@ enum { kRegion4e8 = 0x4e8 };
 
 extern "C" void func_ov003_02168324(void* obj);
 
-// JPN: func_ov003_0216a95c
 // USA: func_ov003_0216adbc
 ARM void MaybeReset0216adbc(void* obj) {
 	if (*(unsigned char*)((char*)obj + kRegion5a4) != 0) return;

@@ -34,7 +34,6 @@ struct Obj021680d4 {
 };
 
 // USA: func_ov003_021680d4
-// JPN: func_ov003_02167f58
 extern "C" ARM void func_ov003_021680d4(struct Obj021680d4* obj, SafeAllocator* alloc) {
     if (alloc == 0) return;
     void* p1 = alloc->Allocate(0x4000);

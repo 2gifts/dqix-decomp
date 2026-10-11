@@ -68,7 +68,6 @@ struct ZoneState_021905b8 {
     int state;
 };
 
-// JPN: func_ov017_0219119c
 // USA: func_ov017_021905b8
 extern "C" ARM void func_ov017_021905b8(GameResources* self, int id, int remove) {
     GameState* gs = GameState::GetInstance();

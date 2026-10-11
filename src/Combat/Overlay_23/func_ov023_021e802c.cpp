@@ -26,7 +26,6 @@ struct Obj021e802c {
     void* field5d8;
 };
 
-// JPN: func_ov023_021e81f4
 // USA: func_ov023_021e802c
 extern "C" ARM void func_ov023_021e802c(struct Obj021e802c* obj) {
 #if defined(jpn)

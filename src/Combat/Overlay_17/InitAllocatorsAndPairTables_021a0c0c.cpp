@@ -1,4 +1,3 @@
-// JPN: func_ov017_021a16b0
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
 #include "Memory/AllocatorUnion.h"

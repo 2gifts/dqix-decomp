@@ -35,7 +35,6 @@ static inline int GetAction02155184(Unit02155184* unit) { return unit->action; }
 static inline int IsPartySlot02155184(int id) { return id >= 0 && id <= 3; }
 
 // USA: func_ov000_02155184
-// JPN: func_ov000_02155184
 extern "C" ARM void func_ov000_02155184(Root02155184* obj, int id, int flags) {
     if (IsPartySlot02155184(id)) return;
     Unit02155184* unit = GetCombatantWithFlag0x400(GameState::GetInstance(), id);

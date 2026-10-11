@@ -25,7 +25,6 @@ extern int data_02109bf4;
 extern int data_02108760;
 
 // USA: func_ov004_0216e490
-// JPN: func_ov004_0216eb30
 extern "C" ARM int func_ov004_0216e490(void* obj) {
     GameState* bs = GameState::GetInstance();
 #if defined(jpn)

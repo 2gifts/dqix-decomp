@@ -17,7 +17,6 @@ struct Evt021d3dcc {
     unsigned short field12;
 };
 
-// JPN: func_ov017_021d421c
 // USA: func_ov017_021d3dcc
 extern "C" ARM void func_ov017_021d3dcc(int p0, struct Evt021d3dcc* evt, GameState* battleStruct, int p3, struct SearchStruct0202c1a4* search) {
 #if defined(jpn)

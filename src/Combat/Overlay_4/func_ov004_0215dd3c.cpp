@@ -21,7 +21,6 @@ extern "C" GameObject* GetCombatantWithFlag0x100(GameState*, int);
 #endif
 
 // USA: func_ov004_0215dd3c
-// JPN: func_ov004_0215ec6c
 extern "C" ARM int func_ov004_0215dd3c(void* a) {
     int prev = func_ov004_02157128(a);
     GameState* bs = GameState::GetInstance();

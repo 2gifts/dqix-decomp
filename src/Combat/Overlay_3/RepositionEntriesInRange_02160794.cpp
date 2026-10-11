@@ -18,7 +18,6 @@ struct Parent809a0;
 ARM void SetEntryPositionById(struct Parent809a0* obj, int id, short x, short y);
 
 // USA: func_ov003_02160794  (semantic: RepositionEntriesInRange_02160794)
-// JPN: func_ov003_02160930
 extern "C" ARM void func_ov003_02160794(void* self) {
     short* base = *(short**)((char*)self + kRegionValue470_298);
     if (base == 0) {

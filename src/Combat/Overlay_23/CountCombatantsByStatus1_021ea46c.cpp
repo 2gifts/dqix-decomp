@@ -11,7 +11,6 @@ struct Obj150_021ea46c { char pad[0x144]; char* ptr150; };
 struct Obj150_021ea46c { char pad[0x150]; char* ptr150; };
 #endif
 
-// JPN: func_ov023_021ea3d0
 // USA: func_ov023_021ea46c
 ARM int CountCombatantsByStatus1_021ea46c(void* obj) {
 #if defined(jpn)

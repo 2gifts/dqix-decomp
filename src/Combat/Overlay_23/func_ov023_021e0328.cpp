@@ -10,7 +10,6 @@ void ClearStructFields(struct InitStruct2075* p);
 extern "C" void _ZN13SafeAllocator5ResetEv(void* thisPtr);
 extern "C" void func_02076080(void* a, void* b, int c, int d);
 
-// JPN: func_ov023_021e08d0
 // USA: func_ov023_021e0328
 extern "C" ARM int func_ov023_021e0328(void* obj) {
 #if defined(jpn)

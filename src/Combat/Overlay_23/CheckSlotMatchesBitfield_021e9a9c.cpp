@@ -11,7 +11,6 @@ struct Flags69c_021e9a9c {
     unsigned int pad1 : 11;
 };
 
-// JPN: func_ov023_021e9a00
 // USA: func_ov023_021e9a9c
 ARM int CheckSlotMatchesBitfield_021e9a9c(void* obj) {
 #if defined(jpn)

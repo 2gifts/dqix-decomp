@@ -44,7 +44,6 @@ extern "C" void func_ov025_021eb7fc(Obj021e9b2c* self);
 extern "C" void func_ov025_021e9d14(Obj021e9b2c* self);
 extern "C" void func_ov025_021ea958(Obj021e9b2c* self, bool isParty, int a, int b);
 
-// JPN: func_ov025_021e9fc0
 // USA: func_ov025_021e9b2c
 extern "C" ARM void func_ov025_021e9b2c(Obj021e9b2c* self) {
 #if defined(jpn)

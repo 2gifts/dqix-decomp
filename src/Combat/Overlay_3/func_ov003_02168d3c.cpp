@@ -69,7 +69,6 @@ static inline void Format68d3c(Global68d3c* g,int fmt,char* out) {
 #endif
 }
 // USA: func_ov003_02168d3c
-// JPN: func_ov003_02168bbc
 extern "C" ARM void func_ov003_02168d3c(Obj68d3c* self, void* arg, int key) {
     GameState* gs=GameState::GetInstance();
     Global68d3c* global=(Global68d3c*)_Z26GetGlobalField0x1c020421a0v();

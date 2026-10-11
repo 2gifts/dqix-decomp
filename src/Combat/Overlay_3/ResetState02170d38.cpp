@@ -13,7 +13,6 @@ extern "C" void func_ov017_0219bd1c(int a, int b, int c, int d);
 void ClearBitsInField4(unsigned int* obj, unsigned int mask);
 void ClearBitsInWord(unsigned int* obj, unsigned int mask);
 
-// JPN: func_ov003_021703f4
 // USA: func_ov003_02170d38
 ARM void ResetState02170d38(void) {
 	func_0202ae18();

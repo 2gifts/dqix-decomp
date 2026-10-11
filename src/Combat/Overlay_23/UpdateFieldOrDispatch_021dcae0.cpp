@@ -23,7 +23,6 @@ struct Obj021dcae0 {
     unsigned char field776;
 };
 
-// JPN: 021dd3ec
 // USA: func_ov023_021dcae0  (semantic: UpdateFieldOrDispatch_021dcae0)
 extern "C" ARM void func_ov023_021dcae0(struct Obj021dcae0* obj, int val) {
     if (obj->field776 == 0 || (obj->field774 & 4) == 0) {

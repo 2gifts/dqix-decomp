@@ -1,4 +1,3 @@
-// JPN: func_ov017_021a6dc0
 #include <globaldefs.h>
 
 #include "Combat/BattleSkillEligibility.h"

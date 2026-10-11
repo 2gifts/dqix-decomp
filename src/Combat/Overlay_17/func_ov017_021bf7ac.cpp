@@ -59,7 +59,6 @@ struct Obj021bf7ac {
     SafeAllocator allocator;
 };
 
-// JPN: func_ov017_021bfd58
 // USA: func_ov017_021bf7ac
 extern "C" ARM int func_ov017_021bf7ac(struct Obj021bf7ac* obj) {
 #if defined(jpn)

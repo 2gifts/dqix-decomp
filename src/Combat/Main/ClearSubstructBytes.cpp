@@ -20,7 +20,6 @@
 #endif
 #include <globaldefs.h>
 
-// JPN: func_0200f99c
 // USA: func_0200fb40
 ARM void ClearSubstructBytes(void* obj) {
     char* base = (char*)obj;

@@ -50,7 +50,6 @@ extern "C" void _Z27EnqueueEventTag165_021cfde0ttt(unsigned short a, unsigned sh
 extern "C" unsigned int* func_ov017_0218b5b0(void);
 void SetBitsInField4(unsigned int* obj, unsigned int mask);
 
-// JPN: func_ov017_021b60a0
 // USA: func_ov017_021b5aec
 extern "C" ARM int func_ov017_021b5aec(ContainerEvent_021b5aec* obj) {
 #if defined(jpn)

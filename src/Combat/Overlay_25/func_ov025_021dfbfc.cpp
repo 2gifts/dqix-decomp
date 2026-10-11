@@ -51,7 +51,6 @@ static inline int IsInRange(int id) {
     return id >= 0xc0 && id <= 0xc7;
 }
 
-// JPN: func_ov025_021e050c
 // USA: func_ov025_021dfbfc
 extern "C" ARM void func_ov025_021dfbfc(BattleCtrl_021dfbfc* obj) {
     GameState* bs = GameState::GetInstance();

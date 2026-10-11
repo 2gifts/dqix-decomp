@@ -20,7 +20,6 @@ struct KeyArrayObj_02171f80 {
 };
 
 // USA: func_ov003_02171f80
-// JPN: func_ov003_0217123c
 ARM void ClearUnmatchedKeys_02171f80(struct KeyArrayObj_02171f80* obj) {
 	unsigned char* list = (unsigned char*)func_02012fe4(obj);
 	unsigned char* key = obj->keys[0];

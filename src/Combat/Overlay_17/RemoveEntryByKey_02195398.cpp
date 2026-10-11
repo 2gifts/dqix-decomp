@@ -2,7 +2,6 @@
 
 extern "C" void func_ov017_02195214(void* dst, void* src);
 
-// JPN: func_ov017_02195f60
 // USA: func_ov017_02195398  (semantic: RemoveEntryByKey_02195398)
 extern "C" ARM void func_ov017_02195398(void* obj, unsigned char key) {
 #if defined(jpn)

@@ -14,7 +14,6 @@ extern "C" void func_ov023_021dbfd0(void* a, void* b);
 #define FIELD_OFFSET(value) (value)
 #endif
 
-// JPN: 021dd2fc
 // USA: func_ov023_021dc9e8  (semantic: DispatchAndResetSlots_021dc9e8)
 extern "C" ARM void func_ov023_021dc9e8(void* obj, void* arg1, int arg2, int arg3, unsigned short arg5) {
     GetWord0x0((int*)GameState::GetInstance());

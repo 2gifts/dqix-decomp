@@ -15,7 +15,6 @@ enum { kRegion44000 = 0x44000 };
 extern "C" void* _Z28GetElementIfInRange_02173bb0P11Obj02173bb0j(void*, unsigned int);
 extern "C" void func_0205ac40(void*, void*);
 
-// JPN: func_ov003_02172cb0
 // USA: func_ov003_02173b4c  (semantic: SetElementFields_02173b4c)
 extern "C" ARM void func_ov003_02173b4c(void* obj) {
     unsigned char* o = (unsigned char*)obj;

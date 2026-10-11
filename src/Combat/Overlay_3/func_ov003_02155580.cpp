@@ -46,7 +46,6 @@ struct Ctx02155580 {
 };
 
 // USA: func_ov003_02155580
-// JPN: func_ov003_02156c04
 extern "C" ARM void func_ov003_02155580(struct Ctx02155580* self, int arg) {
     self->key1e6 = 1;
     self->field1e8 = self->field1ea = 6;

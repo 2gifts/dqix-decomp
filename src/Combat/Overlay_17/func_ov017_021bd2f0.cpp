@@ -35,7 +35,6 @@ struct Obj021bd2f0 {
     Values021bd2f0 values;
 };
 
-// JPN: func_ov017_021bd8e8
 // USA: func_ov017_021bd2f0
 extern "C" ARM void func_ov017_021bd2f0(Obj021bd2f0* obj, Params021bd2f0* params) {
     obj->kind = params->kind;

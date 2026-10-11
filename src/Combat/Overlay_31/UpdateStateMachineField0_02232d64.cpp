@@ -7,7 +7,6 @@ extern "C" void func_ov031_02236878(int a);
 extern "C" void func_ov031_02232ce8(void);
 
 // USA: func_ov031_02232d64
-// JPN: func_ov031_02233544
 extern "C" ARM void func_ov031_02232d64(int code) {
     int cont = 1;
 

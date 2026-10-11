@@ -20,7 +20,6 @@ struct ThreeByteStruct;
 void ClearThreeBytes(struct ThreeByteStruct* s);
 void OrBitsIntoField0(unsigned int* p, unsigned int mask);
 
-// JPN: func_ov017_021b03a0
 // USA: func_ov017_021afcec  (semantic: InitCombatEntryAndDispatch_021afcec)
 extern "C" ARM int func_ov017_021afcec(unsigned char* obj) {
 #if defined(jpn)

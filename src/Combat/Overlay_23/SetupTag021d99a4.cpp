@@ -15,7 +15,6 @@ extern "C" void func_0205d304(void* a, void* b, int p2, int p3, int p4, int p5, 
 #endif
 
 
-// JPN: func_ov023_021da1b4
 // USA: func_ov023_021d99a4  (semantic: SetupTag021d99a4)
 extern "C" ARM void func_ov023_021d99a4(void* objRaw) {
 #if defined(jpn)

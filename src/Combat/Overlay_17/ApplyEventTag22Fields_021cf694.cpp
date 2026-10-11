@@ -12,7 +12,6 @@ struct LocalEvt021cf694 {
 	unsigned short fieldc;
 };
 
-// JPN: func_ov017_021cfb44
 // USA: func_ov017_021cf694
 ARM void ApplyEventTag22Fields_021cf694(int unused0, LocalEvt021cf694* evt, int unused2, unsigned char* base) {
 #if defined(jpn)

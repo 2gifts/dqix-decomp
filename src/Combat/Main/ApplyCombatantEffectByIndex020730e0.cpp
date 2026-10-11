@@ -42,7 +42,6 @@ struct TableEntry020730e0 {
 };
 
 // USA: func_020730e0
-// JPN: func_020730e0
 ARM void ApplyCombatantEffectByIndex020730e0(int id, int index) {
     GameState* bs = GameState::GetInstance();
     GameObject* combatant;

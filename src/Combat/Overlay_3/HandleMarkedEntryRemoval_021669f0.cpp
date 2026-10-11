@@ -22,7 +22,6 @@ struct Obj020397cc;
 void CancelPendingAction020397cc(struct Obj020397cc* obj, int arg1);
 
 // USA: func_ov003_021669f0  (semantic: HandleMarkedEntryRemoval_021669f0)
-// JPN: func_ov003_021668ec
 extern "C" ARM int func_ov003_021669f0(char* self) {
 	GameState* bs;
 	void* p2a04;

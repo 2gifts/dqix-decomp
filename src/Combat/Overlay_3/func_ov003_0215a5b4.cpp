@@ -52,7 +52,6 @@ extern "C" void func_ov003_021592d8(struct BattleMenu0215a5b4* self, struct Comb
 extern "C" void func_ov003_02159250(struct BattleMenu0215a5b4* self, char* text);
 extern "C" void func_ov003_0215c01c(struct BattleMenu0215a5b4* self, int mode, int flag);
 
-// JPN: func_ov003_0215ba34
 // USA: func_ov003_0215a5b4
 extern "C" ARM void func_ov003_0215a5b4(struct BattleMenu0215a5b4* self) {
     struct MessageWork0215a5b4* work = _Z26GetGlobalField0x1c020421a0v();

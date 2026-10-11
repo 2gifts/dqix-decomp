@@ -112,7 +112,6 @@ extern const char data_ov023_021fdd88[];
 extern const char data_ov023_021fdd99[];
 extern const unsigned short data_ov023_021fd760;
 
-// JPN: func_ov023_021e78b4
 // USA: func_ov023_021e76c4
 extern "C" ARM int func_ov023_021e76c4(ProfileCard_021e76c4* self)
 {

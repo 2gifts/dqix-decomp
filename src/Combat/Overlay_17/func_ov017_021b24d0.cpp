@@ -1,4 +1,3 @@
-// JPN: func_ov017_021b2be8
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"

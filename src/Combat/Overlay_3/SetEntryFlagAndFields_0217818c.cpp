@@ -18,7 +18,6 @@ struct Arg1_0217818c {
 	unsigned int hi18 : 18;
 };
 
-// JPN: func_ov003_02177100
 // USA: func_ov003_0217818c  (semantic: SetEntryFlagAndFields_0217818c)
 extern "C" ARM void func_ov003_0217818c(char* self, struct Arg1_0217818c* arg1, int id, int value) {
 	void* obj89c = *(void**)(self + kRegion89c);

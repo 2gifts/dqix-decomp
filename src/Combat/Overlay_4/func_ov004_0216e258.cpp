@@ -36,7 +36,6 @@ struct FieldGroup02171034 {
 extern struct FieldGroup02171034 data_ov004_02171034;
 
 // USA: func_ov004_0216e258
-// JPN: func_ov004_0216e8f8
 extern "C" ARM int func_ov004_0216e258(void* a) {
     GameState* battle = GameState::GetInstance();
     BackgroundLoader::AddLockGlobal();

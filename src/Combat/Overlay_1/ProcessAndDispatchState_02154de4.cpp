@@ -21,7 +21,6 @@ struct Self02154de4 {
 };
 
 // USA: func_ov001_02154de4
-// JPN: func_ov001_02156564
 ARM int ProcessAndDispatchState_02154de4(struct Self02154de4* self) {
 	if (CheckField0NonZero((int*)func_0202ae18()) != 0) {
 		GameState* bs = GameState::GetInstance();

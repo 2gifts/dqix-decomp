@@ -15,7 +15,6 @@ struct Src021cf448 {
     signed char f13;
 };
 
-// JPN: func_ov017_021cf8f8
 // USA: func_ov017_021cf448
 ARM void ApplyConfigToContext_021cf448(int unused, Src021cf448* src, unsigned char* base, int extra) {
 #if defined(jpn)

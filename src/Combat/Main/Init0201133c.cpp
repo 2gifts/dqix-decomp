@@ -18,7 +18,6 @@ struct Pair0209a338;
 void ClearFirstTwoWords0209a338(Pair0209a338* p);
 extern "C" void func_0209a3dc(void* a, void* b);
 
-// JPN: func_020110b0
 // USA: func_0201133c
 ARM void Init0201133c(char* obj) {
     memset(obj + INIT_DATA_OFFSET, 0, 0x570);

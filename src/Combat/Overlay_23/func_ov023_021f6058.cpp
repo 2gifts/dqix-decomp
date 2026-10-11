@@ -26,7 +26,6 @@ struct Downloaded_021f6058 {
     unsigned short unk_10c_13 : 3;
 };
 
-// JPN: func_ov023_021f5694
 // USA: func_ov023_021f6058
 extern "C" ARM int func_ov023_021f6058(unsigned char* buf, int len, unsigned char* out) {
 #if defined(jpn)

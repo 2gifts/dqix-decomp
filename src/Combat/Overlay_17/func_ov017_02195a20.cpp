@@ -24,7 +24,6 @@ extern "C" int func_0202c540(void* obj);
 extern "C" void _Z22DispatchByFlag020d9834i(int flag);
 extern "C" void func_ov017_021960b8(unsigned char* obj);
 
-// JPN: func_ov017_021965e8
 // USA: func_ov017_02195a20
 extern "C" ARM void func_ov017_02195a20(unsigned char* obj) {
 #if defined(jpn)

@@ -36,7 +36,6 @@ Elem_0205d81c* FindElementByC40205d81c(Struct_0205d81c* s, int key);
 struct TileMap0204bc74;
 extern "C" void func_0204bc74(TileMap0204bc74* obj, unsigned short tile, int x, int y, int w, int h, unsigned short palette);
 
-// JPN: func_ov017_0219ad34
 // USA: func_ov017_0219a18c
 extern "C" ARM void func_ov017_0219a18c(unsigned char* self) {
 #if defined(jpn)

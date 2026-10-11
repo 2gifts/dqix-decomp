@@ -39,7 +39,6 @@ static inline unsigned char GetFieldB(GameObject* c) { unsigned char v = GetStat
 static inline unsigned char GetFieldC(GameObject* c) { unsigned char v = GetStatusBits(c)->fieldC; return v; }
 static inline unsigned char GetState(GameObject* c) { unsigned char v = GetStatusBits(c)->state; return v; }
 
-// JPN: func_ov017_021c7200
 // USA: func_ov017_021c6d50
 extern "C" ARM void func_ov017_021c6d50() {
 #if defined(jpn)

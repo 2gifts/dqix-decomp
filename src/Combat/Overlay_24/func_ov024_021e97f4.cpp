@@ -30,7 +30,6 @@ static inline int ReadStatsByte52_021e97f4(ModifiableCombatStats* stats) {
     return ((unsigned char*)stats)[0x52];
 }
 
-// JPN: func_ov024_021e9fd0
 // USA: func_ov024_021e97f4
 extern "C" ARM int func_ov024_021e97f4(Context_021e97f4* ctx, int id,
     Parameters_021e97f4* parameters, int flag, signed char value,

@@ -12,7 +12,6 @@ typedef void (*SetFields0216341cFn)(void*, unsigned char, unsigned char, unsigne
 struct Ret021cd510 { unsigned char pad0[8]; unsigned short field8; };
 struct Src021cd510 { unsigned char pad0[4]; unsigned short field4; unsigned short field6; signed char field8; };
 
-// JPN: func_ov017_021cd9b8
 // USA: func_ov017_021cd510
 extern "C" ARM void func_ov017_021cd510(int unused0, Src021cd510* src, int unused2, unsigned char* obj) {
 #if defined(jpn)

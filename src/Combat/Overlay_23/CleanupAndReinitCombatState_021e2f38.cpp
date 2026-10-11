@@ -24,7 +24,6 @@ void InitCombatSlots02045cac(struct CombatSlots02045cac*);
 void ReinitController02043204(char*);
 extern "C" void func_02043124(int);
 
-// JPN: func_ov023_021e3290
 // USA: func_ov023_021e2f38
 ARM void CleanupAndReinitCombatState_021e2f38(void* obj) {
     char* o = (char*)obj;

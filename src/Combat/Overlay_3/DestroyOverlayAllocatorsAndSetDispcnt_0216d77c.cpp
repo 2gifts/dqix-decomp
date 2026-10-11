@@ -15,7 +15,6 @@ enum { kRegionValue126C_10FC = 0x126c };
 void EmptyDestructor0205a494(void* obj);
 
 // USA: func_ov003_0216d77c  (semantic: DestroyOverlayAllocatorsAndSetDispcnt_0216d77c)
-// JPN: func_ov003_0216d258
 extern "C" ARM void func_ov003_0216d77c(void* obj) {
     unsigned char* o = (unsigned char*)obj;
 

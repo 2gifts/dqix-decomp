@@ -33,7 +33,6 @@ void IterateEntries0205a330(Container0205a330*, int);
 extern "C" void func_0205ae8c(void*);
 
 // USA: func_ov003_0217e100
-// JPN: func_ov003_0217ce08
 ARM void ProcessScaleEntry0217e100(void* obj) {
     GameState* battleStruct = GameState::GetInstance();
     void* sub = *(void**)((char*)obj + kRegionValue90_8C);
