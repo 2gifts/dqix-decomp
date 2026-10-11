@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define ALLOC_OFFSET 0x1f4
+#define RESET_OFFSET 0x208
+#else
+#define ALLOC_OFFSET 0x264
+#define RESET_OFFSET 0x278
+#endif
 #include "std_library_functions.h"
 #include "Memory/SafeAllocator.h"
 
@@ -20,6 +27,6 @@ ARM void InitObj_021a8670(char* obj) {
 	memset(obj + 0x18, 0, 5);
 	*(int*)(obj + 0x20) = 0;
 	InitBigStruct0205c790(obj + 0x2c);
-	((SafeAllocator*)(obj + 0x264))->ResetAllocatorPointer();
-	ResetStruct020dfc40((struct Struct020dfc40*)(obj + 0x278));
+	((SafeAllocator*)(obj + ALLOC_OFFSET))->ResetAllocatorPointer();
+	ResetStruct020dfc40((struct Struct020dfc40*)(obj + RESET_OFFSET));
 }

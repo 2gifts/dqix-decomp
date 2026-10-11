@@ -2,6 +2,10 @@
 
 #if defined(jpn)
 #define func_ov006_0215f740 func_ov006_02160b08
+#define data_ov006_02160030 data_ov006_02161384
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
 #endif
 
 struct AlchemyPot;
@@ -118,5 +122,5 @@ extern "C" ARM void func_ov006_0215f740(AlchemyMenu* self) {
         category = 0;
     if (category > 8)
         category = 8;
-    func_ov006_02155710(self->pot_, items[position], sprites.sprites_[category]);
+    func_ov006_02155710(*(AlchemyPot**)((char*)self + LOW_REGION(8, 0x10)), items[position], sprites.sprites_[category]);
 }

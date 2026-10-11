@@ -36,3 +36,15 @@ src/Combat/Overlay_12/func_ov012_02184acc.cpp:
 src/Combat/Overlay_12/InitBattleAllocatorsAndBuffers_02184884.cpp:
     complete
     .text start:0x021859c4 end:0x02185b90
+
+src/Combat/Overlay_12/FindIndexByBattleField_02184384.cpp:
+    complete
+    .text start:0x021853f8 end:0x02185448
+
+src/Combat/Overlay_12/GetOffsetInBattleFieldRange_0218432c.cpp:
+    complete
+    .text start:0x021853a0 end:0x021853f8
+
+src/Combat/Overlay_12/CheckAndRebuildEntry0218930c.cpp:
+    complete
+    .text start:0x02189be8 end:0x02189c90

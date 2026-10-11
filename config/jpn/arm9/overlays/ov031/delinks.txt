@@ -6112,3 +6112,36 @@ src/Combat/Overlay_31/func_ov031_0222fc48.cpp:
 src/Combat/Overlay_31/func_ov031_02245c68.cpp:
     complete
     .text start:0x0224685c end:0x02246a50
+
+src/Combat/Overlay_31/func_ov031_0223fae8.cpp:
+    complete
+    .text start:0x022402c8 end:0x02240328
+
+src/Combat/Overlay_31/func_ov031_022021d4.cpp:
+    complete
+    .text start:0x022029b4 end:0x02202a3c
+
+src/Combat/Overlay_31/func_ov031_0221038c.cpp:
+    complete
+    .text start:0x02210b6c end:0x02210bbc
+
+src/Combat/Overlay_31/func_ov031_0220d570.cpp:
+    complete
+    .text start:0x0220dd50 end:0x0220ddec
+
+src/Combat/Overlay_31/func_ov031_0223b4d4.cpp:
+    complete
+    .text start:0x0223bcb4 end:0x0223bd40
+
+src/Combat/Overlay_31/MaybeSubmitBattleContextEntry_0220efd0.cpp:
+    complete
+    .text start:0x0220f7b0 end:0x0220f820
+
+src/Combat/Overlay_31/TailCallReleaseGlobal_0220f2cc.cpp:
+    complete
+    .text start:0x0220faac end:0x0220fac0
+
+src/Combat/Overlay_31/func_ov031_022439d8.cpp:
+    complete
+    .text start:0x022441b8 end:0x02244314
+

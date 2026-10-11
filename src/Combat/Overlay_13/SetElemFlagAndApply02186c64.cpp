@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define LIST_OFFSET 0x34
+#define func_ov013_02186bd4 func_ov013_02187f00
+#else
+#define LIST_OFFSET 0x38
+#endif
 
 #if defined(jpn)
 #define func_ov013_02186c64 func_ov013_02187f78
@@ -11,7 +17,7 @@ extern "C" void func_ov013_02186bd4(void*);
 
 // USA: func_ov013_02186c64  (semantic: SetElemFlagAndApply02186c64)
 extern "C" ARM void func_ov013_02186c64(void* obj, int key, int flag) {
-    Elem_0205d81c* elem = FindElementByC40205d81c((Struct_0205d81c*)((char*)obj + 0x38), key);
+    Elem_0205d81c* elem = FindElementByC40205d81c((Struct_0205d81c*)((char*)obj + LIST_OFFSET), key);
     if (elem == 0) return;
 
     unsigned char* fieldC5 = (unsigned char*)elem + 0xc5;

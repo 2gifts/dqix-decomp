@@ -2,14 +2,16 @@
 #define R(j,u) (j)
 #define _Z22SetupBattleTag0218a7a0Pc func_ov012_0218b234
 #define _Z35TestFlagsAndActiveElement2_021e6e20P11Obj021e6e20 func_ov023_021e7184
-#define func_ov012_02184384 func_ov012_021853f8
-#define func_ov012_0218930c func_ov012_02189be8
 #define func_ov012_0218adac func_ov012_0218bba0
 #define func_ov023_021e6de4 func_ov023_021e7148
 #else
 #define R(j,u) (u)
 #endif
 #include <globaldefs.h>
+#if defined(jpn)
+#define func_ov012_02184384 func_ov012_021853f8
+#define func_ov012_0218930c func_ov012_02189be8
+#endif
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
 

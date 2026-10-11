@@ -17,6 +17,7 @@ src/Combat/Overlay_13/InitTag02185310.cpp:
     .text start:0x02186358 end:0x02186468
 
 src/Combat/Overlay_13/AdvanceTagState02186590.cpp:
+    complete
     .text start:0x021878c0 end:0x02187ab8
 
 src/Combat/Overlay_13/InitTag02185828.cpp:
@@ -57,3 +58,15 @@ src/Combat/Overlay_13/InitDrawContext02186eec.cpp:
 src/Combat/Overlay_13/func_ov013_02185cc0.cpp:
     complete
     .text start:0x02186e94 end:0x02186f4c
+
+src/Combat/Overlay_13/func_ov013_021870f0.cpp:
+    complete
+    .text start:0x02188314 end:0x0218883c
+
+src/Combat/Overlay_13/SetElemFlagAndApply02186c64.cpp:
+    complete
+    .text start:0x02187f78 end:0x02187fc0
+
+src/Combat/Overlay_13/RefreshTagAndReinit021864f0.cpp:
+    complete
+    .text start:0x02187820 end:0x021878c0

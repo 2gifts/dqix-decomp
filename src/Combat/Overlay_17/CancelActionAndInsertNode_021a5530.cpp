@@ -1,4 +1,12 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define REGION_FIELD_0 0x4ec
+#define REGION_FIELD_1 0x50c
+#else
+#define REGION_FIELD_0 0x6fc
+#define REGION_FIELD_1 0x71c
+#endif
+
 #include "GameState/GameState.h"
 
 
@@ -11,7 +19,7 @@ extern "C" void _Z19InsertNodeAfterHeadP12List02046a3cP12Node02046a3c(void* list
 // USA: func_ov017_021a5530
 ARM void CancelActionAndInsertNode_021a5530(char* self) {
 	CancelPendingAction020397cc((struct Obj020397cc*)GameState::GetInstance()->GetUnknownGameObject(), 1);
-	func_ov017_021a5568(*(void**)(self + 0x3000 + 0x71c));
-	void* list = *(void**)(self + 0x3000 + 0x6fc);
-	_Z19InsertNodeAfterHeadP12List02046a3cP12Node02046a3c(list, *(void**)(self + 0x3000 + 0x71c));
+	func_ov017_021a5568(*(void**)(self + 0x3000 + REGION_FIELD_1));
+	void* list = *(void**)(self + 0x3000 + REGION_FIELD_0);
+	_Z19InsertNodeAfterHeadP12List02046a3cP12Node02046a3c(list, *(void**)(self + 0x3000 + REGION_FIELD_1));
 }

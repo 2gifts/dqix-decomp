@@ -961,6 +961,7 @@ src/Combat/Overlay_4/NotifyByBitfield_021560e8.cpp:
     .text start:0x021574d4 end:0x02157594
 
 src/Combat/Overlay_4/func_ov004_02169658.cpp:
+    complete
     .text start:0x02169b80 end:0x02169da4
 
 src/Combat/Overlay_4/func_ov004_02158dcc.cpp:
@@ -979,6 +980,7 @@ src/Combat/Overlay_4/SetupNextFieldOrDispatch_021613f8.cpp:
     .text start:0x02161d88 end:0x02161ea4
 
 src/Combat/Overlay_4/func_ov004_0216a610.cpp:
+    complete
     .text start:0x0216aa8c end:0x0216ac54
 
 src/Combat/Overlay_4/func_ov004_021698f4.cpp:
@@ -1467,3 +1469,19 @@ src/Combat/Overlay_4/func_ov004_02163530.cpp:
 src/Combat/Overlay_4/func_ov004_0215be9c.cpp:
     complete
     .text start:0x0215cee4 end:0x0215cfdc
+
+src/Combat/Overlay_4/StoreEntryNameForKey_02157374.cpp:
+    complete
+    .text start:0x0215843c end:0x0215892c
+
+src/Combat/Overlay_4/GetNodeIfType8_02168a6c.cpp:
+    complete
+    .text start:0x02168f70 end:0x02168fa4
+
+src/Combat/Overlay_4/GetNodeIfType15_02168a38.cpp:
+    complete
+    .text start:0x02168f3c end:0x02168f70
+
+src/Combat/Overlay_4/DispatchEventAndSetFlag_021589e8.cpp:
+    complete
+    .text start:0x02159a94 end:0x02159b0c

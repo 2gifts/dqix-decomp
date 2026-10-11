@@ -1,5 +1,13 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov023_021dcd90 func_ov023_021dd698
+#define func_ov006_02155508 func_ov006_02156bf0
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
+
 extern "C" void func_ov023_021dcd90(void* p, int x);
 extern "C" void func_ov006_02155508(void* s);
 extern int data_0210a010[];
@@ -10,10 +18,10 @@ struct SubObj02155480 {
 };
 
 struct Obj02155480 {
-	char pad0[0xa00];
+	char pad0[LOW_REGION(0x880, 0xa00)];
 	SubObj02155480 sub;
-	char pad1000[0x1000 - (0xa00 + sizeof(SubObj02155480))];
-	char pad2bd[0x2bd];
+	char pad1000[0x1000 - (LOW_REGION(0x880, 0xa00) + sizeof(SubObj02155480))];
+	char pad2bd[LOW_REGION(0xb9, 0x2bd)];
 	unsigned char flag2bd;
 };
 
@@ -29,6 +37,6 @@ ARM void ResetDisplayState02155480(Obj02155480* o) {
 
 	o->sub.flagsE2 &= ~0x40;
 
-	func_ov023_021dcd90((char*)o + 0x2e4 + 0x800, 0);
+	func_ov023_021dcd90((char*)o + LOW_REGION(0x164, 0x2e4) + 0x800, 0);
 	func_ov006_02155508(o);
 }

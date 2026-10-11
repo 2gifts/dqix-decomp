@@ -1,19 +1,29 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+#define FIRST_SHIFT 0x118
+#define SECOND_SHIFT 0x1d8
+#define CURSOR_OFFSET 0x2a
+#define data_ov003_0217f484 data_ov003_0217e12c
+#else
+#define FIRST_SHIFT 0
+#define SECOND_SHIFT 0
+#define CURSOR_OFFSET 0x36
+#endif
 struct Outer020e28dc;
 
 struct Menu02160854 {
-    char unk_0[0x36];
+    char unk_0[CURSOR_OFFSET];
     short cursor_;
 };
 
 struct Ctx02160854 {
-    char pad0[0x324];
+    char pad0[0x324 - FIRST_SHIFT];
     Menu02160854* menu_;
     char pad1[0x390 - 0x328];
     Outer020e28dc* choice_;
-    char pad2[0x470 - 0x394];
+    char pad2[0x470 - SECOND_SHIFT - (0x394 - FIRST_SHIFT)];
     short* cursor_;
     short previousCursor_;
     char pad3[0x488 - 0x476];
@@ -64,19 +74,33 @@ extern "C" ARM unsigned char func_ov003_02160854(Ctx02160854* self) {
             return 0;
 
         int i = 0;
+#if defined(jpn)
+        while (data_ov003_0217f484[i] >= 0) {
+#else
         for (;;) {
+#endif
+#if defined(jpn)
+            short lo = data_ov003_0217f484[i++];
+#else
             short lo = data_ov003_0217f484[i];
+#endif
+#if !defined(jpn)
             if (lo < 0)
                 break;
+#endif
+#if !defined(jpn)
             i++;
+#endif
             if (lo > item || item > data_ov003_0217f484[i++])
                 continue;
             func_02080558(menu, self->group_, (short)(item + 4), 0, 0);
             func_02080558(menu, self->group_, (short)(item + 8), 0, 0);
+#if !defined(jpn)
             short base = data_ov003_0217f426[(i >> 1) - 1];
             if (base < 0)
                 continue;
             func_02080558(menu, self->group_, (short)(base + (item - lo)), 0, 0);
+#endif
         }
 
         *self->cursor_ = item;

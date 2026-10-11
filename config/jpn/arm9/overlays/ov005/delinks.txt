@@ -103,6 +103,7 @@ src/Combat/Overlay_5/func_ov005_02159850.cpp:
     .text start:0x0215ad30 end:0x0215ade0
 
 src/Combat/Overlay_5/func_ov005_02154ef0.cpp:
+    complete
     .text start:0x0215654c end:0x02156758
 
 src/Combat/Overlay_5/func_ov005_0215a7ec.cpp:
@@ -141,3 +142,23 @@ src/Combat/Overlay_5/RunBattleScaleStep0215c034.cpp:
 src/Combat/Overlay_5/func_ov005_02154198.cpp:
     complete
     .text start:0x021558ec end:0x02155aa4
+
+src/Combat/Overlay_5/func_ov005_02155258.cpp:
+    complete
+    .text start:0x02156898 end:0x021569a4
+
+src/Combat/Overlay_5/CheckStateAndDispatch0215a37c.cpp:
+    complete
+    .text start:0x0215b8d0 end:0x0215b910
+
+src/Combat/Overlay_5/func_ov005_0215a3bc.cpp:
+    complete
+    .text start:0x0215b910 end:0x0215b96c
+
+src/Combat/Overlay_5/func_ov005_0215cb4c.cpp:
+    complete
+    .text start:0x0215df2c end:0x0215dfb4
+
+src/Combat/Overlay_5/func_ov005_02158560.cpp:
+    complete
+    .text start:0x02159b58 end:0x02159bf4

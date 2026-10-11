@@ -1,6 +1,5 @@
 #if defined(jpn)
 #define R(j,u) (j)
-#define _Z27ConfigureSubsystem_021889f8P11Obj021889f8 func_ov008_0218973c
 #define data_ov005_0215cd20 data_ov005_0215e100
 #define data_ov014_021894b8 data_ov014_0218a2f8
 #define data_ov015_02193cfc data_ov015_0219482c
@@ -22,12 +21,7 @@ void CallFunc0204b04cOverList0x98(struct Cont0205d274*);
 extern "C" void func_ov008_02188730(void* obj);
 extern "C" void func_ov008_02188934(void* obj);
 struct Obj021889f8;
-#if defined(jpn)
-#define ConfigureSubsystem_021889f8 func_ov008_0218973c
-extern "C" void ConfigureSubsystem_021889f8(struct Obj021889f8* obj);
-#else
 void ConfigureSubsystem_021889f8(struct Obj021889f8* obj);
-#endif
 extern "C" void func_ov008_02188870(void* obj);
 void InitBuffersIfFlag431_021eb4b8(void* obj);
 

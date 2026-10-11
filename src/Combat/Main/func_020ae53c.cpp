@@ -1,5 +1,11 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { ResourceFlagOffset = 0x41a8 };
+#else
+enum { ResourceFlagOffset = 0x4458 };
+#endif
+
 extern "C" void* func_ov017_0218b5b0(void);
 extern "C" void* func_0205ec34(void);
 extern "C" unsigned short* func_02012fe4(void);
@@ -21,7 +27,7 @@ extern "C" ARM void func_020ae53c(int arg) {
     unsigned char* f = (unsigned char*)func_0205ec34();
     int key;
     func_02012fe4();
-    *(int*)((unsigned char*)res + 0x4458) = arg;
+    *(int*)((unsigned char*)res + ResourceFlagOffset) = arg;
 
     ToggleElemKey2FlagInMap2010(!TestBitInByteArray((int)f, f + 0x8c, 0x33e));
     _Z35SetElemFlag8IfOverlayActive020ae730i((unsigned char)TestBitInByteArray((int)f, f + 0x8c, 0x344));
@@ -38,5 +44,5 @@ extern "C" ARM void func_020ae53c(int arg) {
         SetFlagBitAndNotifyOverlay17(0x47, arg != 0);
     }
     func_020aee04(0, TestBitInByteArray((int)f, f + 0x8c, 0x386));
-    *(int*)(res + 0x4458) = 1;
+    *(int*)(res + ResourceFlagOffset) = 1;
 }

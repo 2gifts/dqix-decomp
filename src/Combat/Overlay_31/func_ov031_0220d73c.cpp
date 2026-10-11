@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-extern "C" void func_ov031_0220d570(int a);
+extern "C" int func_ov031_0220d570(int a);
 extern "C" int func_ov031_0220d8f4(int a);
 unsigned short GetOwnerDataFortuneValue020d4be8(void);
 extern "C" void* VectorizedInvertedMemcpy(void* p0, void* p1, int n);

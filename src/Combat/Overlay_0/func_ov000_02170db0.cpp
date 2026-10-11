@@ -1,8 +1,15 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+#if defined(jpn)
+#define data_ov000_02183ff4 data_ov000_02185118
+#endif
 
 struct CombatantExt02170db0 {
+    #if defined(jpn)
+    char pad0[0x8b4];
+#else
     char pad0[0x94c];
+#endif
     int field94c;
 };
 
@@ -11,7 +18,11 @@ extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container02
 struct CombatantExt02170db0* GetFieldAt0x150(unsigned char* obj);
 
 struct Obj0203c108 {
+    #if defined(jpn)
+    char pad0[0x2c];
+#else
     char pad0[0x10];
+#endif
     int dirty;
     short idx;
 };
@@ -47,7 +58,11 @@ struct Equipment02171d90 {
 extern "C" struct Entry02170cf8* func_ov000_02170cf8(struct Obj02170db0* obj, int val);
 extern "C" struct Equipment02171d90* func_ov000_02171d90(struct Obj02170db0* obj, int itemId);
 extern "C" int _Z29HasAnyFlags_021719f8_021719f8Pi(int* obj);
+#if defined(jpn)
+extern "C" int func_ov000_02171a74(struct Obj02170db0* obj);
+#else
 extern "C" int func_ov000_02171a74(struct Obj02170db0* obj, char* buf);
+#endif
 extern "C" void func_020e4864(void* src, char* dst, int a, int b, int c, int d);
 void CopyTextAndUppercaseIfFlagged0206819c(const char* src, char* dst, int flag);
 int GetGlobalField0x1c020421a0(void);
@@ -67,11 +82,18 @@ extern "C" ARM void func_ov000_02170db0(struct Obj02170db0* obj) {
     struct CombatantExt02170db0* ext = GetFieldAt0x150((unsigned char*)c);
     obj->label.dirty = 1;
     if (_Z29HasAnyFlags_021719f8_021719f8Pi((int*)obj)) {
+#if defined(jpn)
+        char* text = (char*)_Z21GetFieldByKey020e0434P17Container020e0310i(obj->container, func_ov000_02171a74(obj));
+        if (text != NULL) {
+            _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(&obj->label, text);
+        }
+#else
         char buf[0x80];
         __clear(buf, sizeof(buf));
         if (func_ov000_02171a74(obj, buf) >= 0) {
             _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(&obj->label, buf);
         }
+#endif
     } else if (ext != NULL && (signed char)ext->field94c != 5 && obj->kind != 6) {
         char* text = (char*)_Z21GetFieldByKey020e0434P17Container020e0310i(obj->container, (short)((signed char)ext->field94c + 0x753e));
         if (text != NULL) {
@@ -80,6 +102,9 @@ extern "C" ARM void func_ov000_02170db0(struct Obj02170db0* obj) {
             _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(&obj->label, data_ov000_02183ff4);
         }
     } else if (entry != NULL) {
+#if defined(jpn)
+        _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(&obj->label, (char*)entry->text);
+#else
         char raw[0x80];
         char name[0x80];
         __clear(raw, sizeof(raw));
@@ -87,8 +112,12 @@ extern "C" ARM void func_ov000_02170db0(struct Obj02170db0* obj) {
         func_020e4864(entry->text, raw, 1, 0, 0, 0);
         CopyTextAndUppercaseIfFlagged0206819c(raw, name, 0);
         _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(&obj->label, name);
+#endif
     } else if (equip != NULL) {
         if (equip->count > 0) {
+#if defined(jpn)
+            _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(&obj->label, (char*)equip->text);
+#else
             char raw[0x80];
             char name[0x80];
             __clear(raw, sizeof(raw));
@@ -97,6 +126,7 @@ extern "C" ARM void func_ov000_02170db0(struct Obj02170db0* obj) {
             CopyTextAndUppercaseIfFlagged0206819c(raw, name, 0);
             func_02046608(GetGlobalField0x1c020421a0(), 10, name, raw, 0x100, 0, 0);
             _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(&obj->label, raw);
+#endif
         }
     } else if (obj->kind == 6) {
         _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(&obj->label, (char*)_Z21GetFieldByKey020e0434P17Container020e0310i(obj->container, 0x7531));

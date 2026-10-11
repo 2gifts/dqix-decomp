@@ -45,7 +45,11 @@ extern "C" ARM void func_ov004_02157374(void* obj, int key, int cat, char* dst, 
                (key >= 0xc864 && key < 0xc8c8)) {
         name = (const char*)FindEntryByKey(table, 0x6a);
     } else if (key == 0xc79f) {
+#if defined(jpn)
+        name = (const char*)FindEntryByKey(table, 0x6b);
+#else
         name = (const char*)FindEntryByKey(table, 0x6a);
+#endif
     } else if ((key >= 0xcb20 && key <= 0xcb23) ||
                (key >= 0xcb2a && key <= 0xcb2c) ||
                (key >= 0xcb84 && key <= 0xcb87) ||
@@ -61,6 +65,11 @@ extern "C" ARM void func_ov004_02157374(void* obj, int key, int cat, char* dst, 
         name = (const char*)FindEntryByKey(table, 0x6c);
     } else {
         usedFallback = 1;
+#if defined(jpn)
+        if (cat == 1) {
+            name = (const char*)FindEntryByKey(table, 0x6d);
+        }
+#endif
         if (cat == 2) {
             name = (const char*)FindEntryByKey(table, 0x70);
         } else if (key >= 0x7918 && key < 0x7d00) {

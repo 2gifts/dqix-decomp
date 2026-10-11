@@ -31,7 +31,11 @@ extern "C" ARM int func_ov017_021b2698(SelfState_021b2698* self) {
         return self->field8;
     }
     GameResources* ov = func_ov017_0218b5b0();
+    #if defined(jpn)
+    void* p = *(void**)((char*)ov + 0x3000 + 0x91c);
+#else
     void* p = *(void**)((char*)ov + 0x3000 + 0xb3c);
+#endif
     if (((unsigned char*)p)[2] != 0) {
         goto fail;
     }

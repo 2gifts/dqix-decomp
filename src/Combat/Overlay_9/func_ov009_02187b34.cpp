@@ -6,12 +6,14 @@
 #define data_ov009_0218aa98 data_ov009_0218ba4c
 #define data_ov009_0218acd9 data_ov009_0218bc3e
 #define data_ov009_0218ad41 data_ov009_0218bc71
-#define func_ov009_0218a930 func_ov009_0218b908
 #define func_ov023_021dac40 func_ov023_021db4b4
 #else
 #define R(j,u) (u)
 #endif
 #include <globaldefs.h>
+#if defined(jpn)
+#define func_ov009_0218a930 func_ov009_0218b908
+#endif
 #include <std_library_functions.h>
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"

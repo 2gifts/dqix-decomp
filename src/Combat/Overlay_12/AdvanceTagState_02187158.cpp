@@ -6,8 +6,6 @@
 #define data_ov013_02187d94 data_ov013_02188cd0
 #define func_ov008_02187278 func_ov008_02188140
 #define func_ov008_02187b20 func_ov008_021888fc
-#define func_ov012_0218432c func_ov012_021853a0
-#define func_ov012_0218930c func_ov012_02189be8
 #define func_ov012_0218adac func_ov012_0218bba0
 #define func_ov013_02185900 func_ov013_02186aec
 #define func_ov023_021e6de4 func_ov023_021e7148
@@ -15,6 +13,10 @@
 #define R(j,u) (u)
 #endif
 #include <globaldefs.h>
+#if defined(jpn)
+#define func_ov012_0218432c func_ov012_021853a0
+#define func_ov012_0218930c func_ov012_02189be8
+#endif
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
 

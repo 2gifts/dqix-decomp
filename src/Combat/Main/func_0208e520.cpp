@@ -4,6 +4,15 @@
 #include "Filesystem/FileIO.h"
 #include "Resource/Script.h"
 
+#if defined(jpn)
+#define data_020f12bf data_020f138f
+#define data_020f12d3 data_020f13a3
+#define data_020f12e1 data_020f13b1
+#define data_020f12fb data_020f13cb
+#define data_020f1278 data_020f1348
+#define data_020f1290 data_020f1360
+#endif
+
 extern "C" void __clear(void* buf, int count);
 extern "C" int func_02001aec(const void* a, const void* b, unsigned int length);
 

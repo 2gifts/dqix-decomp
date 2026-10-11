@@ -1,11 +1,13 @@
 #if defined(jpn)
 #define R(j,u) (j)
-#define func_ov005_02158560 func_ov005_02159b58
 #define func_ov005_021585fc func_ov005_02159bf4
 #else
 #define R(j,u) (u)
 #endif
 #include <globaldefs.h>
+#if defined(jpn)
+#define func_ov005_02158560 func_ov005_02159b58
+#endif
 #include <GameState/GameState.h>
 
 struct Obj0205eaa0;

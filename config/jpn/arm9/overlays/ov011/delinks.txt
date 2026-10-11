@@ -640,6 +640,7 @@ src/Combat/Overlay_11/InitField20And34_0218513c.cpp:
     .text start:0x0218623c end:0x0218625c
 
 src/Combat/Overlay_11/SetXY1c0FromTagged_0218753c.cpp:
+    complete
     .text start:0x02188618 end:0x0218864c
 
 src/Combat/Overlay_11/Trans_021851ec.cpp:
@@ -650,3 +651,7 @@ src/Combat/Overlay_11/func_ov011_02186cb8.cpp:
 
 src/Combat/Overlay_11/func_ov011_02186d18.cpp:
     .text start:0x02187df0 end:0x02187e50
+
+src/Combat/Overlay_11/SetXY1c0_02184be0.cpp:
+    complete
+    .text start:0x02185ce0 end:0x02185cf0

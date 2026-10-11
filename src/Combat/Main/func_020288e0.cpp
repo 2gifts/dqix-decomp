@@ -10,11 +10,19 @@ struct BigRecord020289c4 {
     char reserved4[0xc];
     SafeAllocator* allocator;
     SafeAllocator* secondAllocator;
+#if defined(jpn)
+    char reserved18[0x2fc];
+#else
     char reserved18[0x300];
+#endif
 };
 
 struct CombatantId020288e0 {
+#if defined(jpn)
+    char reserved0[0x150];
+#else
     char reserved0[0x15c];
+#endif
     int field15c;
 };
 

@@ -1,6 +1,12 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+enum { NodeListOffset = 0x43c };
+#else
+enum { NodeListOffset = 0x41c };
+#endif
+
 extern "C" void* func_0205ec34(void);
 void* GetField0x3f8Address(GameState* battleStruct);
 extern "C" void _Z16CallLoop0206eb20PvS_ii(void* a, void* b, int c, int limit);
@@ -45,7 +51,7 @@ extern "C" ARM void func_02017c58(void* obj) {
 
     int count;
     int id;
-    ListNode_02017c58* node = *(ListNode_02017c58**)((char*)obj + 0x41c);
+    ListNode_02017c58* node = *(ListNode_02017c58**)((char*)obj + NodeListOffset);
     int j;
     while (node != NULL) {
         count = node->count;

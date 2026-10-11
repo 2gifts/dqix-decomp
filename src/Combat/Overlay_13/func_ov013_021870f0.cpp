@@ -1,4 +1,17 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define _Z17ClearList0208df10P12List0208df10 func_0208e818
+#define func_ov013_02187a58 func_ov013_02188a24
+#define _Z28DispatchIndexedEntry0204b988P11Obj0204b988jiit func_0204c7a8
+void* GetGlobal02109400();
+extern "C" void _Z21BlankFunction02094b3cv(void*, int);
+extern "C" void _Z21BlankFunction02094b30v(void*, int, int);
+extern "C" int _Z18AlwaysTrue02094b4cv(void*);
+extern char data_ov013_02188de0[];
+extern char data_ov013_02188dfa[];
+#define data_ov013_02187db8 data_ov013_02188ce0
+#define data_ov013_02187eaf data_ov013_02188e11
+#endif
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
 #include "System/Graphics.h"
@@ -94,7 +107,11 @@ struct Canvas021870f0 {
 };
 
 struct PartyMemberData021870f0 {
+#if defined(jpn)
+    char unk_0[0x8b8];
+#else
     char unk_0[0x950];
+#endif
     int vocation_;
 };
 
@@ -107,11 +124,13 @@ struct SkillAbilityList021870f0 {
     unsigned char unk_25;
     char unk_26[2];
     BackgroundGraphics021870f0 background_;
+#if !defined(jpn)
     SpriteRenderer021870f0* spriteRenderer_;
     Sprite021870f0* sprites_;
     short* markerX_;
     short* markerY_;
     unsigned char* markerPalettes_;
+#endif
     int task_;
     unsigned int planes_;
     unsigned char screen_;
@@ -129,6 +148,11 @@ extern "C" ARM bool func_ov013_021870f0(SkillAbilityList021870f0* self) {
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     if (self->step_ == 0)
     {
+#if defined(jpn)
+        void* manager = GetGlobal02109400();
+        _Z21BlankFunction02094b3cv(manager, 10);
+        _Z21BlankFunction02094b30v(manager, 0x68, 0);
+#else
         SafeAllocator* allocators = self->allocators_;
         allocators[4].Reset();
         self->spriteRenderer_ = (SpriteRenderer021870f0*)allocators[4].Allocate(sizeof(SpriteRenderer021870f0));
@@ -152,11 +176,17 @@ extern "C" ARM bool func_ov013_021870f0(SkillAbilityList021870f0* self) {
             self->markerPalettes_[i] = 2;
         }
         self->task_ = loader->QueueLoadFile(data_ov013_02187e48, NULL);
+#endif
         result = false;
         self->step_++;
     }
     else if (self->step_ == 1)
     {
+#if defined(jpn)
+        if (_Z18AlwaysTrue02094b4cv(GetGlobal02109400())) {
+            self->step_++;
+        }
+#else
         if (loader->GetTaskStatus(self->task_))
         {
             SafeAllocator* allocators = self->allocators_;
@@ -175,12 +205,17 @@ extern "C" ARM bool func_ov013_021870f0(SkillAbilityList021870f0* self) {
             self->task_ = -1;
             self->step_++;
         }
+#endif
         result = false;
     }
     else if (self->step_ == 2)
     {
         loader->MaybeFreeAllocations();
+#if defined(jpn)
+        self->task_ = loader->QueueLoadFile(data_ov013_02188de0, NULL);
+#else
         self->task_ = loader->QueueLoadFileInGP2(data_ov013_02187e61, data_ov013_02187e77, NULL);
+#endif
         result = false;
         self->step_++;
     }
@@ -204,7 +239,11 @@ extern "C" ARM bool func_ov013_021870f0(SkillAbilityList021870f0* self) {
     {
         _Z17ClearList0208df10P12List0208df10((List0208df10*)self->abilities_);
         loader->MaybeFreeAllocations();
+#if defined(jpn)
+        self->task_ = loader->QueueLoadFile(data_ov013_02188dfa, NULL);
+#else
         self->task_ = loader->QueueLoadFileInGP2(data_ov013_02187e89, data_ov013_02187e9e, NULL);
+#endif
         result = false;
         self->step_++;
     }

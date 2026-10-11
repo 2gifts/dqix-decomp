@@ -4,13 +4,14 @@
 #define data_0210a00c data_02109cc4
 #define data_ov005_0215cd74 data_ov005_0215e154
 #define data_ov006_0215ff6c data_ov006_021612d0
-#define func_ov005_021556e4 func_ov005_02156cd4
 #define func_ov005_02158878 func_ov005_02159e70
-#define func_ov005_0215cb4c func_ov005_0215df2c
 #else
 #define R(j,u) (u)
 #endif
 #include <globaldefs.h>
+#if defined(jpn)
+#define func_ov005_0215cb4c func_ov005_0215df2c
+#endif
 #include <GameState/GameState.h>
 
 struct EquipmentMenu {

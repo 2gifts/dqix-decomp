@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define R(j,u) (j)
+#define func_ov017_021b213c func_ov017_021b2854
+#else
+#define R(j,u) (u)
+#endif
+
 #include "GameState/GameState.h"
 
 struct Struct021707d8_021589e8 { char pad[8]; int* ptr; };
@@ -12,7 +19,7 @@ extern "C" void func_ov023_021f65d4(void* obj, int a, int b);
 
 // USA: func_ov004_021589e8
 ARM int DispatchEventAndSetFlag_021589e8(void* obj) {
-    char* battle = (char*)GameState::GetInstance() + 0x26c + 0x5c00;
+    char* battle = (char*)GameState::GetInstance() + R(0xc, 0x26c) + 0x5c00;
     int a = *(int*)(battle + 0xf4);
     int b = data_ov004_021707d8.ptr[0x18 / 4];
     if (func_ov017_021b213c(a, b) != 0) {

@@ -1,7 +1,5 @@
 #if defined(jpn)
 #define R(j,u) (j)
-#define _Z19SetFlag2At_021685ccPv func_ov003_02168454
-#define _Z20GetField224_021685c4Pv func_ov003_0216844c
 #else
 #define R(j,u) (u)
 #endif
