@@ -12381,3 +12381,15 @@ src/Combat/Main/func_0206ea8c.cpp:
 src/Combat/Main/func_020321e0.cpp:
     complete
     .text start:0x02031d18 end:0x02031df8
+
+src/Combat/Main/func_0202ad4c.cpp:
+    complete
+    .text start:0x0202a904 end:0x0202a950
+
+src/Combat/Main/func_0204455c.cpp:
+    complete
+    .text start:0x02044c88 end:0x02044cc8
+
+src/Combat/Main/func_02032424.cpp:
+    complete
+    .text start:0x02031f5c end:0x02031fa4
