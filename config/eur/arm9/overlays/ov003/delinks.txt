@@ -1377,46 +1377,37 @@ src/Combat/Overlay_3/AccumulateFloats_0217fbf0_0217fbf0.cpp:
     complete
     .init start:0x0217fbf0 end:0x0217fc78
 
-
 src/Combat/Overlay_3/021767ec.cpp:
     complete
     .text start:0x021767ec end:0x021769ec
-
 
 src/Combat/Overlay_3/func_ov003_02170a7c.cpp:
     complete
     .text start:0x02170a7c end:0x02170b74
 
-
 src/Combat/Overlay_3/0217e6b0.cpp:
     complete
     .text start:0x0217e6b0 end:0x0217eea8
-
 
 src/Combat/Overlay_3/func_ov003_02178910.cpp:
     complete
     .text start:0x02178910 end:0x02179cfc
 
-
 src/Combat/Overlay_3/func_ov003_02169eec.cpp:
     complete
     .text start:0x02169eec end:0x0216a85c
-
 
 src/Combat/Overlay_3/func_ov003_02159d0c.cpp:
     complete
     .text start:0x02159d0c end:0x0215a5b4
 
-
 src/Combat/Overlay_3/func_ov003_021615bc.cpp:
     complete
     .text start:0x021615bc end:0x0216201c
 
-
 src/Combat/Overlay_3/func_ov003_021560e4.cpp:
     complete
     .text start:0x021560e4 end:0x02156ad4
-
 
 src/Combat/Overlay_3/func_ov003_02174a80.cpp:
     complete
@@ -1817,3 +1808,11 @@ src/Combat/Overlay_3/func_ov003_02168654.cpp:
 src/Combat/Overlay_3/func_ov003_02168d3c.cpp:
     complete
     .text start:0x02168d3c end:0x02169430
+
+src/Combat/Overlay_3/func_ov003_0215fce8.cpp:
+    complete
+    .text start:0x0215fce8 end:0x021600b8
+
+src/Combat/Overlay_3/func_ov003_02162ba8.cpp:
+    complete
+    .text start:0x02162ba8 end:0x02162f40
