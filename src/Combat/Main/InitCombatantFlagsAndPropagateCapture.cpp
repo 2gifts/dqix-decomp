@@ -8,9 +8,9 @@ extern "C" int func_0208ab34(void* ptr, int val);
 
 struct Obj0208b088 {
     char pad0[0x20];
-    int flag20;             // 0x20
+    int flag20;
     char pad1[0x9c - 0x24];
-    unsigned char field9c;  // 0x9c
+    unsigned char field9c;
 };
 
 // USA: func_0208b088

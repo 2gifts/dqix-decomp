@@ -29,9 +29,6 @@ int RestoreMaxMpByAmount(Combatant02048284*, int);
 extern "C" void _Z16Dispatch020e3428Pvi(void*, int);
 extern "C" void _Z37ClearEntryIfCurrentArrMatches020e3468P13Entry020e3054i(Entry020e3054*, int);
 
-// Only the fields used here are modeled. In particular, the restoration
-// callees use the independent current-state pointer at 0x130, not the
-// canonical GameObject::currentStats_ member at 0x138.
 struct Actor0208b0f8 {
     char pad0[4];
     short slot;
