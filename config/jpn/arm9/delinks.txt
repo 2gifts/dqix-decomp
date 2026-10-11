@@ -16639,7 +16639,7 @@ src/Combat/Main/SetByte0x1880.cpp:
     complete
     .text start:0x02047394 end:0x020473a0
 
-src/Combat/Main/SumSlotsWithFlag0x1000x150_02086d20.cpp:
+src/Combat/Main/SumSlotsWithFlagx150_02086d20_02086d20.cpp:
     complete
     .text start:0x02087640 end:0x020876a8
 
