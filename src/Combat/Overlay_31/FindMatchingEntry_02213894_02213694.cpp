@@ -3,7 +3,7 @@
 struct Entry02213894;
 extern "C" void* func_ov031_022133f8(unsigned int flags);
 int GetField9OrZero_022134b0(void);
-extern "C" void func_ov031_02214ac8(unsigned short id);
+extern "C" void* func_ov031_02214ac8(unsigned short id);
 ARM int FindMatchingEntry_02213894(char* obj, int count, struct Entry02213894* arr);
 extern "C" ARM int func_ov031_02213910(char* obj, char* b);
 extern "C" int func_ov031_022139a0(int a, void* obj, int b, void* c);

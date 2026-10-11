@@ -14,7 +14,7 @@ extern Ctx_0223552c* data_ov031_02290cf4;
 extern unsigned char data_ov031_022491f4[];
 
 struct Pair_0223552c { unsigned short a; unsigned short b; };
-extern "C" void func_ov031_0223d69c(void*);
+extern "C" int func_ov031_0223d69c(void*);
 ARM void ForwardWithOffsetThenTag_02235744(int);
 
 // USA: func_ov031_0223552c  (semantic: ComputeAndForwardOffsetTag_0223552c)

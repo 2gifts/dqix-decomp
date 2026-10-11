@@ -16,6 +16,7 @@ struct Obj021f809c {
     unsigned char f_e5;
 };
 
+// JPN: func_ov023_021f7580
 // USA: func_ov023_021f809c  (semantic: DispatchIfFieldPresent_021f809c)
 extern "C" ARM void func_ov023_021f809c(struct Obj021f809c* obj, void* param2) {
     if (CheckField0x9cSetWhenField0xd4Present((unsigned char*)obj + 0x20)) {

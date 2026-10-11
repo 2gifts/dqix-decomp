@@ -6048,3 +6048,11 @@ src/Combat/Overlay_31/CallVTableField14_0223ca40.cpp:
 src/Combat/Overlay_31/func_ov031_0220ee50.cpp:
     complete
     .text start:0x0220f630 end:0x0220f680
+
+src/Combat/Overlay_31/func_ov031_02214ac8.cpp:
+    complete
+    .text start:0x022152a8 end:0x022152dc
+
+src/Combat/Overlay_31/func_ov031_0223d69c.cpp:
+    complete
+    .text start:0x0223de7c end:0x0223dee4

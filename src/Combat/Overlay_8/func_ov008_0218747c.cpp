@@ -3,14 +3,19 @@
 
 struct PlayClock020ac644 { unsigned short hours; unsigned char minutes; unsigned char seconds; };
 struct ClockTotals { char pad[0x3c]; PlayClock020ac644 clocks[2]; };
-struct GameClockTotals { char pad[0x7504]; ClockTotals totals; };
+#if defined(jpn)
+enum { totalsOffset = 0x72c4, displayPadding = 0x14 };
+#else
+enum { totalsOffset = 0x7504, displayPadding = 0x18 };
+#endif
+struct GameClockTotals { char pad[totalsOffset]; ClockTotals totals; };
 struct PlayTimeDisplay {
     char pad0[0xb10];
     signed char state;
     unsigned char phase;
     char pad1[6];
     unsigned int dirtyFlags;
-    char pad2[0x18];
+    char pad2[displayPadding];
     int disabled;
     char pad3[8];
     PlayClock020ac644 clocks[2];

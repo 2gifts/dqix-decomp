@@ -2348,3 +2348,51 @@ src/Combat/Overlay_23/ClearFields_021e20c0.cpp:
 src/Combat/Overlay_23/FindByByteAt118_021f0360.cpp:
     complete
     .text start:0x021eff68 end:0x021effa4
+
+src/Combat/Overlay_23/DispatchByMode77c_021ddbb8.cpp:
+    complete
+    .text start:0x021de358 end:0x021de398
+
+src/Combat/Overlay_23/Check_021ddbf8.cpp:
+    complete
+    .text start:0x021de398 end:0x021de3d4
+
+src/Combat/Overlay_23/AppendEntryByKey_021e8ef8_021e8ef8.cpp:
+    complete
+    .text start:0x021e8e4c end:0x021e8e8c
+
+src/Combat/Overlay_23/InitBufferFromDataField4_021ddc34.cpp:
+    complete
+    .text start:0x021de3d4 end:0x021de438
+
+src/Combat/Overlay_23/InitAndAppendTextB_021e0eb8.cpp:
+    complete
+    .text start:0x021e13ec end:0x021e1478
+
+src/Combat/Overlay_23/InitTenAllocatorsAndClearFields_021e4e8c.cpp:
+    complete
+    .text start:0x021e5080 end:0x021e50fc
+
+src/Combat/Overlay_23/CallDispatchIfFlagSet_021eb4f4.cpp:
+    complete
+    .text start:0x021eb458 end:0x021eb4c8
+
+src/Combat/Overlay_23/ScaleOrResetCombatants_021ed988.cpp:
+    complete
+    .text start:0x021ed76c end:0x021ed7dc
+
+src/Combat/Overlay_23/ComputeScaleRatio_021f44d0.cpp:
+    complete
+    .text start:0x021f3b5c end:0x021f3bd8
+
+src/Combat/Overlay_23/DispatchIfFieldPresent_021f809c.cpp:
+    complete
+    .text start:0x021f7580 end:0x021f7604
+
+src/Combat/Overlay_23/DispatchByField776_021dc488.cpp:
+    complete
+    .text start:0x021dcd88 end:0x021dce20
+
+src/Combat/Overlay_23/func_ov023_021dd344.cpp:
+    complete
+    .text start:0x021ddb34 end:0x021ddbf4

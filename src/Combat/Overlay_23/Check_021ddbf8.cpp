@@ -5,7 +5,13 @@ int GetWord0x0(int* obj);
 extern "C" int _Z31IsSubBrightnessTransitionActiveP13GameResources(int* obj);
 extern "C" int _Z32IsMainBrightnessTransitionActiveP13GameResources(int* obj);
 
-struct Obj021ddbf8 { char pad[0x77c]; signed char f77c; };
+struct Obj021ddbf8 { char pad[
+#if defined(jpn)
+0x6f8
+#else
+0x77c
+#endif
+]; signed char f77c; };
 
 // USA: func_ov023_021ddbf8
 ARM int Check_021ddbf8(Obj021ddbf8* arg) {

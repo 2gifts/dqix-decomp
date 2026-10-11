@@ -16618,3 +16618,27 @@ src/Combat/Main/SetHalfword0x63d8.cpp:
 src/Combat/Main/GetHalfword0x63da.cpp:
     complete
     .text start:0x02011398 end:0x020113a4
+
+src/Combat/Main/SetWord0x0.cpp:
+    complete
+    .text start:0x0200f9e0 end:0x0200f9e8
+
+src/Combat/Main/GetField0x5729Value.cpp:
+    complete
+    .text start:0x020105ac end:0x020105b8
+
+src/Combat/Main/SetWord0x71f8.cpp:
+    complete
+    .text start:0x02011de8 end:0x02011df4
+
+src/Combat/Main/SetField0x1e28.cpp:
+    complete
+    .text start:0x0204320c end:0x02043218
+
+src/Combat/Main/SetByte0x1880.cpp:
+    complete
+    .text start:0x02047394 end:0x020473a0
+
+src/Combat/Main/SumSlotsWithFlag0x1000x150_02086d20.cpp:
+    complete
+    .text start:0x02087640 end:0x020876a8

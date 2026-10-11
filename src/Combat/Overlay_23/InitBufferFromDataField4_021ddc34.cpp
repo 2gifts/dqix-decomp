@@ -2,12 +2,17 @@
 #include "std_library_functions.h"
 
 struct DataStruct_021ff9e0 {
+	#if defined(jpn)
+	unsigned int pad0[5];
+#else
 	unsigned int pad0;
+#endif
 	void* field4;
 };
 
 extern struct DataStruct_021ff9e0 data_ov023_021ff9e0;
 
+// JPN: func_ov023_021de3d4
 // USA: func_ov023_021ddc34
 ARM int InitBufferFromDataField4_021ddc34(void* obj, short a, short b, short c, short d) {
 	int result = 0;

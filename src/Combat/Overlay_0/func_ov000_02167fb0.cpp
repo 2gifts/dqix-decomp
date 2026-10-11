@@ -2,6 +2,11 @@
 #include "GameState/GameState.h"
 #include "Combat/FormationPosition.h"
 
+#if defined(jpn)
+#define data_ov000_02183198 data_ov000_02184244
+#define data_ov000_021831d8 data_ov000_02184284
+#define data_ov000_021830d8 data_ov000_02184184
+#endif
 extern "C" int func_ov000_02153e40(void* obj, short* buf, int max, int start);
 extern "C" void _Z24StoreThreeFields02167b54Piiii(int* obj, int a, int b, int c);
 int GetSubstructByte0x1c(unsigned char* obj);
@@ -15,7 +20,11 @@ extern int data_ov000_02183198[16];
 extern int data_ov000_021831d8[16];
 
 struct Battle02167fb0 {
+#if defined(jpn)
+    char pad0[0x218];
+#else
     char pad0[0x29c];
+#endif
     void* combatants;
 };
 
