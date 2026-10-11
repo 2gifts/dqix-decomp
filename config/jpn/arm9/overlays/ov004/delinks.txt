@@ -1423,3 +1423,43 @@ src/Combat/Overlay_4/ClearMasksAndNotify_02169adc.cpp:
 src/Combat/Overlay_4/FindNodeAndFlagBit2_021666bc.cpp:
     complete
     .text start:0x02166ca8 end:0x02166d1c
+
+src/Combat/Overlay_4/AllocateAndCopyBuf28_0216ae2c.cpp:
+    complete
+    .text start:0x0216af7c end:0x0216afdc
+
+src/Combat/Overlay_4/AllocateAndDispatch20_0215502c.cpp:
+    complete
+    .text start:0x021565a4 end:0x02156610
+
+src/Combat/Overlay_4/CopyGlobalBlockAndDispatch_02165df4.cpp:
+    complete
+    .text start:0x02166494 end:0x02166508
+
+src/Combat/Overlay_4/InitAndRegister_0215e25c.cpp:
+    complete
+    .text start:0x0215eee0 end:0x0215ef5c
+
+src/Combat/Overlay_4/DispatchStateTransitions_02166608.cpp:
+    complete
+    .text start:0x02166bf4 end:0x02166c70
+
+src/Combat/Overlay_4/AllocateAndCopyBuf76_0216aa70.cpp:
+    complete
+    .text start:0x0216ace4 end:0x0216ad60
+
+src/Combat/Overlay_4/TailCallFunc020e3f1c_0216fa3c.cpp:
+    complete
+    .text start:0x021701cc end:0x021701d8
+
+src/Combat/Overlay_4/SetOv011FieldTo_0216dcc8.cpp:
+    complete
+    .text start:0x0216e390 end:0x0216e3a4
+
+src/Combat/Overlay_4/GetStatDeltaAndNotify_0215e4e8.cpp:
+    complete
+    .text start:0x0215f178 end:0x0215f204
+
+src/Combat/Overlay_4/func_ov004_02163530.cpp:
+    complete
+    .text start:0x02163b00 end:0x02163ba0

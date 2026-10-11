@@ -1,10 +1,15 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define data_020f1c74 data_020f1de0
+#endif
+
 extern int data_020f1c74;
 
 extern "C" void func_020ca390(int val, void* dst, unsigned int nBytes);
 
 // USA: func_020b7840
+// JPN: func_020b930c
 extern "C" ARM void _Z31InitializeModelAnimationFromJACP13AnimationDataPvP18NSBXXInternalModel(void* p0, void* p1, unsigned char* p2) {
     unsigned char byteVal;
     unsigned int i;

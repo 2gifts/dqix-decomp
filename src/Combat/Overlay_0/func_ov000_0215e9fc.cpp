@@ -15,7 +15,11 @@ struct SubObj_0215e9fc {
 };
 
 struct Combatant_0215e9fc {
+#if defined(jpn)
+    unsigned char pad[0x144];
+#else
     unsigned char pad[0x150];
+#endif
     struct SubObj_0215e9fc* sub;
 };
 

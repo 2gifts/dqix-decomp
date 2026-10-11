@@ -1,6 +1,9 @@
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 
+#if defined(jpn)
+#define data_ov001_02164bd7 data_ov001_02166177
+#endif
 extern const char data_ov001_02164bd7[];
 
 struct ModelEntry_02154c64 {
@@ -23,7 +26,11 @@ struct FileEntry_02154c64 {
 };
 
 struct Self_02154c64 {
+#if defined(jpn)
+    char pad0[0xcc];
+#else
     char pad0[0xd0];
+#endif
     struct ModelEntry_02154c64* models;
     struct FileEntry_02154c64* files;
     char name[0xf4 - 0xd8];

@@ -1859,3 +1859,11 @@ src/Combat/Overlay_1/DisablePowcntDisplaySwap_0215b5c8.cpp:
 src/Combat/Overlay_1/ReinitCombatEffectsAndCounters_02154da0.cpp:
     complete
     .text start:0x02156520 end:0x02156564
+
+src/Combat/Overlay_1/ProcessAndDispatchState_02154de4.cpp:
+    complete
+    .text start:0x02156564 end:0x021565c0
+
+src/Combat/Overlay_1/func_ov001_02154c64.cpp:
+    complete
+    .text start:0x021563e4 end:0x02156520

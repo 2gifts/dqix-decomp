@@ -16,7 +16,12 @@ extern "C" ARM void func_ov003_0217545c(void* obj) {
 	char out1, out2, out3, out4;
 	short bVal;
 
-	o = *(struct Obj2081**)((char*)obj + 0x89c);
+#if defined(jpn)
+    enum { entriesOffset = 0x818 };
+#else
+    enum { entriesOffset = 0x89c };
+#endif
+	o = *(struct Obj2081**)((char*)obj + entriesOffset);
 	elem = FindElementByByte0xc4(o, 10);
 	if (elem == NULL) return;
 	if (!IsField0x9cEqual3((unsigned char*)elem)) return;
@@ -24,12 +29,17 @@ extern "C" ARM void func_ov003_0217545c(void* obj) {
 	elemAE = *(short*)((char*)elem + 0xae);
 	elemAC = *(short*)((char*)elem + 0xac);
 
+#if defined(jpn)
+    out1 = 8;
+    out2 = 0x41;
+#else
 	FindTableEntryPayload_02173f08(&out1, &out2, &out3, &out4);
+#endif
 
 	{
 		short aeShift = elemAE << 3;
-		short acShift = elemAC << 3;
 		bVal = (short)(aeShift + 0x22);
+		short acShift = elemAC << 3;
 		InitEntryAtIndex_0217585c(obj, out1 + acShift, bVal, 0x1a, 0x78);
 		InitEntryAtIndex_0217585c(obj, out2 + acShift, bVal, 0x1b, 0x7a);
 	}

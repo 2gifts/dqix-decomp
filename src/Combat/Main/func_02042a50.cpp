@@ -2,7 +2,6 @@
 #if defined(jpn)
 #define _Z18GetField0x10IfArg8i func_02042e30
 #define _Z26FindEntryByKeyPair020429e4P13Table020429e4Ph func_02043060
-#define _Z19AlwaysFalse02094b44v func_02095b40
 #endif
 
 struct Entry020429e4 {

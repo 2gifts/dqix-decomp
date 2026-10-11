@@ -2332,3 +2332,19 @@ src/Combat/Overlay_23/InitAndDispatchEntry_021ed600.cpp:
 src/Combat/Overlay_23/CheckAnyElementFlagged_021f4438.cpp:
     complete
     .text start:0x021f3ac4 end:0x021f3b5c
+
+src/Combat/Overlay_23/Find_021d994c.cpp:
+    complete
+    .text start:0x021da160 end:0x021da198
+
+src/Combat/Overlay_23/ClearField784Array3_021dce88.cpp:
+    complete
+    .text start:0x021dd78c end:0x021dd7b0
+
+src/Combat/Overlay_23/ClearFields_021e20c0.cpp:
+    complete
+    .text start:0x021e25e4 end:0x021e260c
+
+src/Combat/Overlay_23/FindByByteAt118_021f0360.cpp:
+    complete
+    .text start:0x021eff68 end:0x021effa4

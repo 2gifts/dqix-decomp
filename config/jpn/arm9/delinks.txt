@@ -5,6 +5,7 @@
     .data       start:0x020eeb40 end:0x020f2e60 kind:data align:32
     .bss        start:0x020f2e60 end:0x02154e60 kind:bss align:32
 
+
 //src/Graphics/NSBXX/JAC.cpp:
 //    complete
 //    .text start:0x020b930c end:0x020ba92c
@@ -16509,3 +16510,111 @@ src/Combat/Main/GetBoxTestResult.cpp:
 src/Combat/Main/BlankFunction02094b34.cpp:
     complete
     .text start:0x0209595c end:0x02095a38
+
+src/Combat/Main/func_0202ad4c.cpp:
+    complete
+    .text start:0x0202a904 end:0x0202a950
+
+src/Combat/Main/func_0204455c.cpp:
+    complete
+    .text start:0x02044c88 end:0x02044cc8
+
+src/Combat/Main/AlwaysTrue02094b4c.cpp:
+    complete
+    .text start:0x02095b94 end:0x02095c98
+
+src/Combat/Main/AlwaysFalse02094b44.cpp:
+    complete
+    .text start:0x02095b40 end:0x02095b94
+
+src/Combat/Main/FindEntryByKind.cpp:
+    complete
+    .text start:0x020d57ec end:0x020d5828
+
+src/Combat/Main/GetGlobalWord021112ec.cpp:
+    complete
+    .text start:0x020c9070 end:0x020c9080
+
+src/Combat/Main/ClearHalfword0x63d8.cpp:
+    complete
+    .text start:0x02011370 end:0x02011380
+
+src/Combat/Main/ClearHalfword0x63da.cpp:
+    complete
+    .text start:0x020113a4 end:0x020113b4
+
+src/Combat/Main/SetFlag0x1ceBit0x1.cpp:
+    complete
+    .text start:0x020392ec end:0x020392fc
+
+src/Combat/Main/SetFlagsAt0xa97.cpp:
+    complete
+    .text start:0x02027418 end:0x02027428
+
+src/Combat/Main/GetLow12BitsTimes8.cpp:
+    complete
+    .text start:0x0207ab58 end:0x0207ab68
+
+src/Combat/Main/InitSubObject0203bd78.cpp:
+    complete
+    .text start:0x0203b7d0 end:0x0203b7e0
+
+src/Combat/Main/ClearSublistEntryFlag2_020806c4.cpp:
+    complete
+    .text start:0x020811ec end:0x02081200
+
+src/Combat/Main/InitAndFillIndexBuffer0204c964.cpp:
+    complete
+    .text start:0x0204d774 end:0x0204d790
+
+src/Combat/Main/AppendFormatted02041fe8.cpp:
+    complete
+    .text start:0x02042674 end:0x020426a8
+
+src/Combat/Main/AppendFormatted02041f70.cpp:
+    complete
+    .text start:0x020425fc end:0x02042638
+
+src/Combat/Main/AppendXYTag.cpp:
+    complete
+    .text start:0x0204211c end:0x02042158
+
+src/Combat/Main/AppendSourceRectTag.cpp:
+    complete
+    .text start:0x02042238 end:0x02042294
+
+src/Combat/Main/InitListHeaderAndBuildFlagArray.cpp:
+    complete
+    .text start:0x020b930c end:0x020b9388
+
+src/Combat/Main/StoreInitFnPointers_0200f29c.cpp:
+    complete
+    .text start:0x0200f160 end:0x0200f180
+
+src/Combat/Main/SetStateToThreeAndDispatch0202b800.cpp:
+    complete
+    .text start:0x0202b3b0 end:0x0202b3d8
+
+src/Combat/Main/PrepareAndRegisterRecord0202ae4c.cpp:
+    complete
+    .text start:0x0202aa04 end:0x0202aa6c
+
+src/Combat/Main/InitFields0x0.cpp:
+    complete
+    .text start:0x0203bbe4 end:0x0203bc3c
+
+src/Combat/Main/ReinitFieldState0203c0f0.cpp:
+    complete
+    .text start:0x0203bc3c end:0x0203bc54
+
+src/Combat/Main/GetHalfword0x63d8.cpp:
+    complete
+    .text start:0x02011358 end:0x02011364
+
+src/Combat/Main/SetHalfword0x63d8.cpp:
+    complete
+    .text start:0x02011364 end:0x02011370
+
+src/Combat/Main/GetHalfword0x63da.cpp:
+    complete
+    .text start:0x02011398 end:0x020113a4

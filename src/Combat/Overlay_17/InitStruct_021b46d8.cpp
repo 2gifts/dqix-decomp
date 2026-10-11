@@ -22,6 +22,8 @@ ARM void InitStruct_021b46d8(struct Struct021b46d8* p) {
 	p->byte10 = 0;
 	p->word_c = -1;
 	p->half12 = 0;
+#if !defined(jpn)
 	p->word14 = 0;
+#endif
 	p->byte11 = 0;
 }

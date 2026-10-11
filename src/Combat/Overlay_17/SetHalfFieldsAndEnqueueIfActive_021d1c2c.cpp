@@ -11,7 +11,11 @@ ARM void SetHalfFieldsAndEnqueueIfActive_021d1c2c(unsigned short a0, unsigned sh
 	func_0202ae18();
 	if (!func_0202c508()) return;
 	unsigned char* base = (unsigned char*)func_02012fe4();
+	#if defined(jpn)
+	base += 0x2740;
+#else
 	base += 0x2700;
+#endif
 	*(unsigned short*)(base + 0xb4) = a0;
 	*(unsigned short*)(base + 0xb6) = a1;
 	void* d = GetData02100044();

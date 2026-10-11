@@ -28,12 +28,21 @@ extern "C" ARM void func_ov003_0216d990(char* obj) {
     if (CheckField0NonZero((int*)g) != 0) return;
 
     struct CursorTag_0216d990* tag = 0;
-    char* base = *(char**)(obj + 0x1000 + 0x2ac);
-    if (base != 0 && *(unsigned short*)(obj + 0x1200 + 0xba) > 6) {
+#if defined(jpn)
+    enum { baseOffset = 0x113c, countOffset = 0x114a, listOffset = 0x10fc };
+#else
+    enum { baseOffset = 0x12ac, countOffset = 0x12ba, listOffset = 0x126c };
+#endif
+    char* base = *(char**)(obj + baseOffset);
+    if (base != 0 && *(unsigned short*)(obj + countOffset) > 6) {
         tag = (struct CursorTag_0216d990*)(base + 0xf0);
     }
     if (tag == 0) return;
 
+#if defined(jpn)
+    tag->posX = 0xde000;
+    tag->posY = 0x14000;
+#else
     struct Elem_0205d81c* elem = _Z23FindElementByC40205d81cP15Struct_0205d81ci(*(struct Struct_0205d81c**)(obj + 0x1000 + 0x2c0), 0);
     if (elem == 0) return;
 
@@ -51,5 +60,6 @@ extern "C" ARM void func_ov003_0216d990(char* obj) {
     y = (short)y;
     tag->posX = (x + 2) << 12;
     tag->posY = (y - 2) << 12;
-    func_0205ac40(obj + 0x126c, tag);
+#endif
+    func_0205ac40(obj + listOffset, tag);
 }

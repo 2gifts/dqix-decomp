@@ -30,8 +30,10 @@ extern "C" int _Z20AppendString02042058PcPKc(char* dst, const char* src);
 
 // USA: func_ov000_0217936c
 extern "C" ARM void func_ov000_0217936c(struct ListWindow* window, struct ListMenu* menu, char* dst) {
+#if !defined(jpn)
     char name[0x80];
     char upper[0x80];
+#endif
     int first;
     int last;
     if (menu == NULL || dst == NULL) {
@@ -50,6 +52,14 @@ extern "C" ARM void func_ov000_0217936c(struct ListWindow* window, struct ListMe
         if (entry == NULL) {
             continue;
         }
+#if defined(jpn)
+        if (_Z20IsBitFlagSet0217c4e8Pvi(menu, i)) {
+            AppendPaletteTag(dst, 0xf);
+        } else {
+            AppendPaletteTag(dst, 3);
+        }
+        AppendNameTag(dst, i - top, (const char*)*entry);
+#else
         int palette = 3;
         if (_Z20IsBitFlagSet0217c4e8Pvi(menu, i)) {
             palette = 0xf;
@@ -60,6 +70,7 @@ extern "C" ARM void func_ov000_0217936c(struct ListWindow* window, struct ListMe
         func_020e4864(*entry, name, 1, 0, 0, 0);
         _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(name, upper, 0);
         AppendNameTag(dst, i - top, name);
+#endif
         if (i != end - 1) {
             _Z20AppendString02042058PcPKc(dst, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)window->texts, 0));
         }

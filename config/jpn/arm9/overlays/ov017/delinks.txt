@@ -3516,3 +3516,115 @@ src/Combat/Overlay_17/HasFlag3orFlag2And9a_021bd3a4.cpp:
 src/Combat/Overlay_17/GetByteAtOffset7289OrFF_021a5a48.cpp:
     complete
     .text start:0x021a6480 end:0x021a64a0
+
+src/Combat/Overlay_17/IsField10Eq2_0218d618.cpp:
+    complete
+    .text start:0x0218e1f8 end:0x0218e224
+
+src/Combat/Overlay_17/CallIndexedHandler_02195494.cpp:
+    complete
+    .text start:0x0219605c end:0x0219608c
+
+src/Combat/Overlay_17/AppendNode_021b66b8.cpp:
+    complete
+    .text start:0x021b6c6c end:0x021b6ca4
+
+src/Combat/Overlay_17/SetNodeStatus2_021b66f0.cpp:
+    complete
+    .text start:0x021b6ca4 end:0x021b6cdc
+
+src/Combat/Overlay_17/ResetOverlayState_0219bc50.cpp:
+    complete
+    .text start:0x0219c740 end:0x0219c778
+
+src/Combat/Overlay_17/SetByteIfDataAndCheckClear_021a01bc.cpp:
+    complete
+    .text start:0x021a0c6c end:0x021a0ca4
+
+src/Combat/Overlay_17/FillFieldWithEncoded_021a5ad0.cpp:
+    complete
+    .text start:0x021a6508 end:0x021a6540
+
+src/Combat/Overlay_17/InitStruct_021b46d8.cpp:
+    complete
+    .text start:0x021b4dcc end:0x021b4e00
+
+src/Combat/Overlay_17/ResetFieldWithLog_0218d5c8.cpp:
+    complete
+    .text start:0x0218e1a8 end:0x0218e1f8
+
+src/Combat/Overlay_17/SetName56AndFlag_0218d7b0.cpp:
+    complete
+    .text start:0x0218e390 end:0x0218e3dc
+
+src/Combat/Overlay_17/SetFlagAndCleanup_02195618.cpp:
+    complete
+    .text start:0x021961e0 end:0x02196220
+
+src/Combat/Overlay_17/ClearFields_021bb0c4.cpp:
+    complete
+    .text start:0x021bb6bc end:0x021bb700
+
+src/Combat/Overlay_17/InitAndAppendState61_021a65c4.cpp:
+    complete
+    .text start:0x021a6f68 end:0x021a6fac
+
+src/Combat/Overlay_17/Something_021a6b9c.cpp:
+    complete
+    .text start:0x021a7540 end:0x021a758c
+
+src/Combat/Overlay_17/InitObj_021a7d78.cpp:
+    complete
+    .text start:0x021a8708 end:0x021a8754
+
+src/Combat/Overlay_17/EnqueueTag33ForListedCombatant_021c12b0.cpp:
+    complete
+    .text start:0x021c1858 end:0x021c18a4
+
+src/Combat/Overlay_17/SetSearchBitAndClearFlag_021954c4.cpp:
+    complete
+    .text start:0x0219608c end:0x021960e8
+
+src/Combat/Overlay_17/CancelActionIfHeadIdMatches_02199e98.cpp:
+    complete
+    .text start:0x0219aa40 end:0x0219aab0
+
+src/Combat/Overlay_17/InitAndResetHeader_0219e310.cpp:
+    complete
+    .text start:0x0219ee00 end:0x0219ee70
+
+src/Combat/Overlay_17/InitFieldArenaLists_021a5b48.cpp:
+    complete
+    .text start:0x021a6580 end:0x021a65e4
+
+src/Combat/Overlay_17/EnqueueNameTag3_021c45b4.cpp:
+    complete
+    .text start:0x021c4a7c end:0x021c4adc
+
+src/Combat/Overlay_17/SetHalfFieldsAndEnqueueIfActive_021d1c2c.cpp:
+    complete
+    .text start:0x021d20b0 end:0x021d2108
+
+src/Combat/Overlay_17/CallInputLogHandlerIfFieldsMatch_021cc080.cpp:
+    complete
+    .text start:0x021cc530 end:0x021cc57c
+
+src/Combat/Overlay_17/PopFrontAndCompactEntries_0219531c.cpp:
+    complete
+    .text start:0x02195ee4 end:0x02195f60
+
+src/Combat/Overlay_17/CallHelperIfByteAboveOneAndPtrSet_021a185c.cpp:
+    complete
+    .text start:0x021a22ec end:0x021a2310
+
+src/Combat/Overlay_17/CallField1cIfFlagGt1_021a1880.cpp:
+    complete
+    .text start:0x021a2310 end:0x021a2334
+
+src/Combat/Overlay_17/CallField700ThenReset48_021afa70.cpp:
+    complete
+    .text start:0x021b0184 end:0x021b01b0
+
+src/Combat/Overlay_17/ForwardObjField4ToHandler_021afa9c.cpp:
+    complete
+    .text start:0x021b01b0 end:0x021b01d0

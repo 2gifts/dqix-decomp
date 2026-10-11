@@ -16,7 +16,11 @@ struct BattleCombatant {
 };
 
 struct BattleWork {
+#if defined(jpn)
+    char pad0[0x218];
+#else
     char pad0[0x29c];
+#endif
     char* field_0x29c;
     unsigned char* field_0x2a0;
     char pad2A4[0xea4 - 0x2a4];

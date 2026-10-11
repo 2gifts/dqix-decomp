@@ -12,7 +12,11 @@ struct Slot_0217fa60 {
     unsigned char field24;
     char pad25[0x4c - 0x25];
     int field4c;
+#if defined(jpn)
+    char pad50[0xc7 - 0x50];
+#else
     char pad50[0x87 - 0x50];
+#endif
     unsigned char active;
     char pad88[0x445 - 0x88];
     unsigned char field445;

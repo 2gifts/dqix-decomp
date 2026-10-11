@@ -9,6 +9,12 @@ ARM void SetByteIfDataAndCheckClear_021a01bc(unsigned char* self) {
 	int* ptr = func_0202ae18();
 	if (!CheckField0NonZero(ptr)) return;
 	if (func_0202c508(ptr) == 0) {
-		self[0x42e9] = 1;
+		self[
+#if defined(jpn)
+            0x40c9
+#else
+            0x42e9
+#endif
+        ] = 1;
 	}
 }

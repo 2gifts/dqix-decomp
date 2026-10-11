@@ -28,7 +28,11 @@ extern "C" ARM void func_ov000_02179ed8(char* obj, struct Entry02179ed8* entry, 
         int aShifted = a << 24;
         GameObject* combatant = GameState::GetInstance()->GetPartyMemberByIndex(entry->field4c);
         if (combatant != NULL) {
+#if defined(jpn)
+            int field950 = *(int*)((char*)GetFieldAt0x150((unsigned char*)combatant) + 0x8b8);
+#else
             int field950 = *(int*)((char*)GetFieldAt0x150((unsigned char*)combatant) + 0x950);
+#endif
             signed char byteVal = entry->field23;
             if (IsField0x118Equal2(obj)) {
                 AppendFrameTag02041c08(dst, byteVal - (aShifted >> 24), 8, 5, 5, 5);

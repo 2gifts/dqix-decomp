@@ -2,7 +2,6 @@
 
 #ifdef jpn
 #define func_020c745c func_020c8f28
-#define _Z21GetGlobalWord021112ecv func_020c9070
 #endif
 
 struct ResourceMutex

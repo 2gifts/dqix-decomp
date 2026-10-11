@@ -39,9 +39,11 @@ ARM void InitObj_021a7d78(Obj021a7d78* p) {
 	p->f34 = -1;
 	p->f38 = 0;
 	p->f3a = 0;
+#if !defined(jpn)
 	p->f3c = 0;
 	p->f40 = 0;
 	p->f44 = 0;
 	p->f48 = 0;
 	p->f4c = 0;
+#endif
 }

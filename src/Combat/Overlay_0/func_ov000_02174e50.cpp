@@ -12,7 +12,11 @@ struct Entry02174e50 {
     unsigned char flags;
     char pad25[0x40 - 0x25];
     float phase;
+#if defined(jpn)
+    char pad44[0xc0 - 0x44];
+#else
     char pad44[0x80 - 0x44];
+#endif
     unsigned short color;
 };
 

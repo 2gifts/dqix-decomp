@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define data_ov000_02183460 data_ov000_021844e8
+#define data_ov000_021833b0 data_ov000_0218445a
+#endif
 struct Combatant02174324 {
     char pad[0x25];
     unsigned char field_0x25;
@@ -33,6 +37,11 @@ extern unsigned int data_ov000_02183460[];
 extern unsigned char data_ov000_021833b0[];
 
 // USA: func_ov000_02174324
+#if defined(jpn)
+enum { paletteBase = 0x58 };
+#else
+enum { paletteBase = 0x5c };
+#endif
 extern "C" ARM int func_ov000_02174324(struct Battle02174324* battle, int id, int x, int y) {
     struct Combatant02174324* c = func_ov000_02161318(battle, id);
     if (c == NULL) return 0;
@@ -51,7 +60,7 @@ extern "C" ARM int func_ov000_02174324(struct Battle02174324* battle, int id, in
                 continue;
             }
             slotIdx = data_ov000_021833b0[i] + 0x15;
-            palette = id + 0x5c;
+            palette = id + paletteBase;
             found = 1;
             break;
         }
@@ -60,7 +69,7 @@ extern "C" ARM int func_ov000_02174324(struct Battle02174324* battle, int id, in
 
     if ((flags & 0x80000) && i >= 4) {
         if (c->field_0x25 != 9) {
-            palette = id + 0x5c;
+            palette = id + paletteBase;
             found = 1;
             slotIdx = 0x1f;
         }

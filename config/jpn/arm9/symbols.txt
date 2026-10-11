@@ -840,7 +840,7 @@ _Z27FlushAndClearBuffer0202adf0v kind:function(arm,size=0x28) addr:0x0202a9a8
 func_0202ae18 kind:function(arm,size=0xc) addr:0x0202a9d0
 _Z15GetData02100044v kind:function(arm,size=0xc) addr:0x0202a9dc
 _Z26SetGlobalStateIfField4Is16Pv kind:function(arm,size=0x1c) addr:0x0202a9e8
-func_0202aa04 kind:function(arm,size=0x68) addr:0x0202aa04
+func_0202ae4c kind:function(arm,size=0x68) addr:0x0202aa04
 _Z17EmptyStub0202aebcv kind:function(arm,size=0x4) addr:0x0202aa6c
 func_0202aec0 kind:function(arm,size=0x134) addr:0x0202aa70
 _Z15Forward0202aff4v kind:function(arm,size=0xc) addr:0x0202aba4
@@ -1434,7 +1434,7 @@ _Z18InitStruct0203be78Pc kind:function(arm,size=0x14) addr:0x0203b8d0
 func_0203b8e4 kind:function(arm,size=0x30) addr:0x0203b8e4
 func_0203b914 kind:function(arm,size=0x258) addr:0x0203b914
 func_0203bb6c kind:function(arm,size=0x78) addr:0x0203bb6c
-func_0203bbe4 kind:function(arm,size=0x58) addr:0x0203bbe4
+_Z13InitFields0x0P11State0xc0cc kind:function(arm,size=0x58) addr:0x0203bbe4
 _Z24ReinitFieldState0203c0f0P11State0xc0cc kind:function(arm,size=0x18) addr:0x0203bc3c
 _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc kind:function(arm,size=0xac) addr:0x0203bc54
 _Z26ReleaseGlobalEntry0203c198Pc kind:function(arm,size=0x44) addr:0x0203bd00
@@ -1664,7 +1664,7 @@ func_02044be8 kind:function(arm,size=0x18) addr:0x02044be8
 func_02044c00 kind:function(arm,size=0xc) addr:0x02044c00
 _Z31ReleaseField0x38IfValid020444e0P11Obj020444e0 kind:function(arm,size=0x50) addr:0x02044c0c
 func_02044c5c kind:function(arm,size=0x2c) addr:0x02044c5c
-func_02044c88 kind:function(arm,size=0x40) addr:0x02044c88
+func_0204455c kind:function(arm,size=0x40) addr:0x02044c88
 func_02044cc8 kind:function(arm,size=0x294) addr:0x02044cc8
 func_02044f5c kind:function(arm,size=0xc) addr:0x02044f5c
 func_02044f68 kind:function(arm,size=0x574) addr:0x02044f68
@@ -3512,7 +3512,7 @@ _Z21BlankFunction02094b34v kind:function(arm,size=0xdc) addr:0x0209595c
 _Z21BlankFunction02094b38v kind:function(arm,size=0x90) addr:0x02095a38
 _Z21BlankFunction02094b3cv kind:function(arm,size=0x44) addr:0x02095ac8
 _Z21BlankFunction02094b40v kind:function(arm,size=0x34) addr:0x02095b0c
-func_02095b40 kind:function(arm,size=0x54) addr:0x02095b40
+_Z19AlwaysFalse02094b44v kind:function(arm,size=0x54) addr:0x02095b40
 _Z18AlwaysTrue02094b4cv kind:function(arm,size=0x104) addr:0x02095b94
 func_02095c98 kind:function(arm,size=0x80) addr:0x02095c98
 func_02095d18 kind:function(arm,size=0x804) addr:0x02095d18
@@ -4975,7 +4975,7 @@ _Z27InsertContextIntoGlobalListP16ProcessorContext kind:function(arm,size=0x60) 
 _Z27RemoveContextFromGlobalListP16ProcessorContext kind:function(arm,size=0x48) addr:0x020c8e18
 _Z13SwitchContextv kind:function(arm,size=0xc8) addr:0x020c8e60
 func_020c8f28 kind:function(arm,size=0x148) addr:0x020c8f28
-func_020c9070 kind:function(arm,size=0x10) addr:0x020c9070
+_Z21GetGlobalWord021112ecv kind:function(arm,size=0x10) addr:0x020c9070
 _Z15PopulateContextP16ProcessorContextjjjjj kind:function(arm,size=0xfc) addr:0x020c9080
 _Z26ContextExecutionReturnProcv kind:function(arm,size=0x20) addr:0x020c917c
 _Z11ExitContextP16ProcessorContexti kind:function(arm,size=0x5c) addr:0x020c919c
@@ -5441,7 +5441,7 @@ _Z31InitAndMaybeStartStream020d3c28P11Obj020d3c28 kind:function(arm,size=0x5c) a
 _Z36InitHandlerArrayAndRunScript020d3c84P24HandlerSlotArray020d3c84P12StreamHeaderi kind:function(arm,size=0x6c) addr:0x020d56e8
 func_020d5754 kind:function(arm,size=0x84) addr:0x020d5754
 _Z29GetElementCount0xb4Stride0x24Phi kind:function(arm,size=0x14) addr:0x020d57d8
-func_020d57ec kind:function(arm,size=0x3c) addr:0x020d57ec
+_Z15FindEntryByKindP32FindEntryByKindContainer020d3d90i kind:function(arm,size=0x3c) addr:0x020d57ec
 _Z17InitBattleModeF00ii kind:function(arm,size=0x2c) addr:0x020d5828
 func_020d3df8 kind:function(arm,size=0x1e4) addr:0x020d5854
 _Z30ClearBattleSaveContext020d3fdcv kind:function(arm,size=0x70) addr:0x020d5a38
@@ -5990,6 +5990,7 @@ func_020e5abc kind:function(arm,size=0x638) addr:0x020e5abc
 _Z32StartBattleTimerSequence020e4524Pc kind:function(arm,size=0x38) addr:0x020e60f4
 _Z25ProcessBattleTick020e455cP18MainStruct020e455c kind:function(arm,size=0xd0) addr:0x020e612c
 __sinit_020e61fc kind:function(arm,size=0xac) addr:0x020e61fc
+func_020e61fc_dup kind:function(arm,size=0x0) addr:0x020e61fc
 __sinit_020e59c8 kind:function(arm,size=0xac) addr:0x020e62a8
 __sinit_020e5a74 kind:function(arm,size=0x88) addr:0x020e6354
 __sinit_020e5afc kind:function(arm,size=0x2c) addr:0x020e63dc
@@ -7151,6 +7152,7 @@ data_020f143c kind:data(any) addr:0x020f143c
 data_020f1458 kind:data(any) addr:0x020f1458
 data_020f146e kind:data(any) addr:0x020f146e
 data_020f148c kind:data(any) addr:0x020f148c
+data_020f148c_dup kind:data(any) addr:0x020f148c
 data_020f149c kind:data(any) addr:0x020f149c
 data_020f14af kind:data(any) addr:0x020f14af
 data_020f14ca kind:data(any) addr:0x020f14ca

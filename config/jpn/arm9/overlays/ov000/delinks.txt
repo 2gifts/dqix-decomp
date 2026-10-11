@@ -2796,3 +2796,75 @@ src/Combat/Overlay_0/ClearFlag0x8IfParityMismatch02163710.cpp:
 src/Combat/Overlay_0/CheckSubstructAndRange02167bb4.cpp:
     complete
     .text start:0x021692f0 end:0x02169364
+
+src/Combat/Overlay_0/GetByteField_0217f5dc.cpp:
+    complete
+    .text start:0x02180908 end:0x02180910
+
+src/Combat/Overlay_0/InitEntry_0217f518.cpp:
+    complete
+    .text start:0x02180848 end:0x021808fc
+
+src/Combat/Overlay_0/AppendCombatantNameTag_02179ed8.cpp:
+    complete
+    .text start:0x0217b24c end:0x0217b308
+
+src/Combat/Overlay_0/func_ov000_02179a70.cpp:
+    complete
+    .text start:0x0217adf8 end:0x0217aef8
+
+src/Combat/Overlay_0/func_ov000_02171a74.cpp:
+    complete
+    .text start:0x021733b0 end:0x021733e8
+
+src/Combat/Overlay_0/func_ov000_02177ac8.cpp:
+    complete
+    .text start:0x02179084 end:0x02179168
+
+src/Combat/Overlay_0/func_ov000_021781f8.cpp:
+    complete
+    .text start:0x02179730 end:0x0217981c
+
+src/Combat/Overlay_0/func_ov000_02174324.cpp:
+    complete
+    .text start:0x021758e0 end:0x021759e4
+
+src/Combat/Overlay_0/func_ov000_0217a19c.cpp:
+    complete
+    .text start:0x0217b500 end:0x0217b608
+
+src/Combat/Overlay_0/func_ov000_0217936c.cpp:
+    complete
+    .text start:0x0217a7c0 end:0x0217a8d8
+
+src/Combat/Overlay_0/func_ov000_0217964c.cpp:
+    complete
+    .text start:0x0217aa44 end:0x0217ab5c
+
+src/Combat/Overlay_0/func_ov000_0215e9fc.cpp:
+    complete
+    .text start:0x0216017c end:0x0216029c
+
+src/Combat/Overlay_0/func_ov000_0217fa60.cpp:
+    complete
+    .text start:0x02180d8c end:0x02180ec4
+
+src/Combat/Overlay_0/func_ov000_0217c158.cpp:
+    complete
+    .text start:0x0217d4ac end:0x0217d5f4
+
+src/Combat/Overlay_0/func_ov000_021626a0.cpp:
+    complete
+    .text start:0x02163e0c end:0x02163f68
+
+src/Combat/Overlay_0/func_ov000_02161020.cpp:
+    complete
+    .text start:0x0216278c end:0x021628f8
+
+src/Combat/Overlay_0/func_ov000_02174e50.cpp:
+    complete
+    .text start:0x02176218 end:0x02176388
+
+src/Combat/Overlay_0/func_ov000_02170b0c.cpp:
+    complete
+    .text start:0x02172604 end:0x02172774

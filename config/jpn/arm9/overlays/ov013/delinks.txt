@@ -45,3 +45,15 @@ src/Combat/Overlay_13/func_ov013_02184b4c.cpp:
 
 src/Combat/Overlay_13/UpdateTagDispatch021847c4.cpp:
     .text start:0x02185800 end:0x02185a94
+
+src/Combat/Overlay_13/HandleFieldFlagsAndState021870c0.cpp:
+    complete
+    .text start:0x021882fc end:0x02188314
+
+src/Combat/Overlay_13/InitDrawContext02186eec.cpp:
+    complete
+    .text start:0x02188140 end:0x021881dc
+
+src/Combat/Overlay_13/func_ov013_02185cc0.cpp:
+    complete
+    .text start:0x02186e94 end:0x02186f4c

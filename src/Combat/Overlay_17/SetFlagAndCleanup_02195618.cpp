@@ -7,7 +7,13 @@ void ClearSearchFlagBit0202c600(struct SearchStruct* obj, int value);
 void* GetData02100044(void);
 extern "C" void func_0205e22c(void);
 
-struct S02195618 { unsigned char pad[0x42e2]; unsigned char flag; };
+struct S02195618 { unsigned char pad[
+#if defined(jpn)
+0x40c2
+#else
+0x42e2
+#endif
+]; unsigned char flag; };
 
 // USA: func_ov017_02195618
 ARM void SetFlagAndCleanup_02195618(unsigned char* obj) {

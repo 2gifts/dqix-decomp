@@ -1,5 +1,8 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define data_ov000_021834e0 data_ov000_02184560
+#endif
 struct Container020e0310;
 
 extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* c, int key);
@@ -18,8 +21,15 @@ extern "C" ARM void func_ov000_02177ac8(char* obj, char* dst) {
     if (dst == NULL) {
         return;
     }
+#if defined(jpn)
+    enum { cursorOffset = 0x1fa4 };
+    int maxWidth = 0x4d;
+#else
+    enum { cursorOffset = 0x1d6c };
     int maxWidth = 0;
-    signed char cursor = *(signed char*)(obj + 0x1d6c);
+#endif
+    signed char cursor = *(signed char*)(obj + cursorOffset);
+#if !defined(jpn)
     for (int i = 0; i < 3; i++) {
         const char* name = (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)(obj + 0xb8), (short)(i + 30014));
         int width = func_020420e8(name, 0);
@@ -27,6 +37,7 @@ extern "C" ARM void func_ov000_02177ac8(char* obj, char* dst) {
             maxWidth = width;
         }
     }
+#endif
     if (IsField0x118Equal2(obj)) {
         _Z22AppendFrameTag02041c08Pciiiii(dst, cursor, 8, 5, 5, 5);
     }
