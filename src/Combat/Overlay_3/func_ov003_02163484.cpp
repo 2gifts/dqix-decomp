@@ -1,0 +1,181 @@
+#include "GameState/GameState.h"
+#include <globaldefs.h>
+
+struct Entries {
+    char pad0[0x36];
+    short sel;
+};
+
+struct Scene {
+    char pad0[0x308];
+    char sub308[0x324 - 0x308];
+    Entries *entries;
+    char pad328[0x464 - 0x328];
+    unsigned int flags;
+    char pad468[0x470 - 0x468];
+    short *p470;
+    short h474;
+    char pad476[0x480 - 0x476];
+    short h480;
+    char pad482[0x484 - 0x482];
+    short h484;
+    short h486;
+    short h488;
+    char pad48a[0x494 - 0x48a];
+    short h494;
+    char pad496[0x49f - 0x496];
+    signed char c49f;
+    char pad4a0[0x4a3 - 0x4a0];
+    unsigned char c4a3;
+    unsigned char state;
+};
+
+struct Elem {
+    signed char v : 6;
+    char pad1[0x13f - 1];
+    unsigned char m : 3;
+};
+
+extern int data_02108760;
+extern "C" void _Z23SetEntryNibbleByShortIdP19StatusOwner02081198ii(void *, int, int);
+extern "C" void _Z24SetEntryFlag0x2ByShortIdP19StatusOwner02081164ii(void *, int, int);
+extern "C" void func_020813ec(void *, int);
+extern "C" void _Z20ResetWithSub0208203cP11Obj0208203c(void *);
+extern "C" int _Z26FindMappedMemberId02080468Pvi(void *, int);
+struct Obj0205eaa0;
+extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0 *, int, int);
+extern "C" void _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(void *);
+extern "C" Elem *_Z35GetElementAtIndex_02160bd0_02160bd0Pvi(Scene *, int);
+extern "C" int func_ov003_02160a68(Scene *);
+extern "C" int func_ov003_02160854(Scene *);
+extern "C" void func_ov003_021612c0(Scene *);
+extern "C" int func_ov003_02161344(Scene *);
+extern "C" void _Z25SetOrClearFlag40_02166f80Pvii(Scene *, int, int);
+extern "C" void func_ov003_02166220(Scene *);
+extern "C" void func_ov003_02166184(Scene *);
+extern "C" void func_ov003_021668fc(Scene *);
+
+// USA: func_ov003_02163484
+extern "C" ARM void func_ov003_02163484(Scene *self) {
+    unsigned char state = self->state;
+    Entries *entries    = self->entries;
+
+    if (state == 0) {
+        self->h480 = -1;
+        self->h488 = 6;
+        self->h474 = -1;
+        if (self->h494 < 0) {
+            self->h494 = _Z26FindMappedMemberId02080468Pvi(entries, self->h488);
+        }
+        entries->sel = self->h494;
+        _Z23SetEntryNibbleByShortIdP19StatusOwner02081198ii(entries, 0x18, 1);
+        _Z24SetEntryFlag0x2ByShortIdP19StatusOwner02081164ii(entries, 0x18, 1);
+        func_020813ec(entries, 0x18);
+        _Z25SetOrClearFlag40_02166f80Pvii(self, self->h488, 0);
+        func_ov003_02166220(self);
+        _Z20ResetWithSub0208203cP11Obj0208203c(self->sub308);
+        self->p470 = 0;
+        self->flags |= 0x780000;
+        if (self->flags & 1) {
+            *(unsigned int *) ((int) self + 0x64 + 0x400) |= 0x800000;
+        }
+        self->state = self->state + 1;
+    } else if (state == 1) {
+        self->p470 = &self->h494;
+        self->flags |= 1;
+        func_ov003_02166184(self);
+        if (self->flags & 0x1000000) {
+            self->flags |= 0x780000;
+            if (self->flags & 1) {
+                *(unsigned int *) ((int) self + 0x64 + 0x400) |= 0x800000;
+            }
+        }
+        if (func_ov003_02160854(self) != 0) {
+            int idx = self->h494 - _Z26FindMappedMemberId02080468Pvi(entries, self->h488);
+            idx += self->c49f * 4;
+            Elem *elem = _Z35GetElementAtIndex_02160bd0_02160bd0Pvi(self, idx);
+            if (elem == 0) {
+                return;
+            }
+            if (elem->v < 0) {
+                return;
+            }
+            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0 *) &data_02108760, 1, 0);
+            _Z20ResetWithSub0208203cP11Obj0208203c(self->sub308);
+            self->p470 = 0;
+            int m      = elem->m;
+            if (m == 3) {
+                _Z25SetOrClearFlag40_02166f80Pvii(self, self->h488, 1);
+                self->h484  = 0x58;
+                self->state = 0;
+            } else if (m == 2 || m == 1 || m == 4) {
+                _Z25SetOrClearFlag40_02166f80Pvii(self, self->h488, 1);
+                self->h484  = 0x57;
+                self->state = 0;
+            } else {
+                self->h480 = elem->v;
+                _Z25SetOrClearFlag40_02166f80Pvii(self, self->h488, 1);
+                self->h484  = 0x19;
+                self->state = self->state + 1;
+                self->flags |= 0x20;
+            }
+        } else if (func_ov003_02160a68(self) != 0) {
+            _Z20ResetWithSub0208203cP11Obj0208203c(self->sub308);
+            self->p470 = 0;
+            _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(entries);
+            self->flags |= 0x80000;
+            self->h484  = 2;
+            self->c4a3  = 1;
+            self->state = 0;
+        }
+    } else if (state == 2) {
+        func_ov003_021612c0(self);
+        self->state = self->state + 1;
+    } else if (state == 3) {
+        int r = func_ov003_02161344(self);
+        if (r != -1) {
+            if (r == 1) {
+                self->h484  = 0x1a;
+                self->state = self->state + 1;
+                self->flags |= 0x20;
+            }
+        } else {
+            _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(entries);
+            self->h484  = 0x1c;
+            self->h486  = 2;
+            self->c4a3  = 1;
+            self->state = 0;
+            self->flags |= 0x80000;
+            self->state = 0;
+        }
+    } else if (state == 4) {
+        _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(entries);
+        self->flags |= 0x80000;
+        self->h484  = 2;
+        self->c4a3  = 1;
+        self->state = 0;
+        func_ov003_021668fc(self);
+    } else if (state == 5) {
+        _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(entries);
+        self->flags |= 0x80000;
+        self->h484  = 2;
+        self->c4a3  = 1;
+        self->state = 0;
+    } else if (state == 100) {
+        func_ov003_021612c0(self);
+        self->state = 0x65;
+    } else if (state == 101) {
+        int r = func_ov003_02161344(self);
+        if (r != -1) {
+            if (r == 1) {
+                self->h484  = 0x18;
+                self->state = 0;
+            }
+        } else {
+            self->h484  = 0x1c;
+            self->h486  = 2;
+            self->c4a3  = 1;
+            self->state = 0;
+        }
+    }
+}
