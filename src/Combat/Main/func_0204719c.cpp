@@ -1,32 +1,32 @@
-// usa: 0204719c
-// jpn: 02047fbc
-struct State4719c {
- int field0; short field4,field6; int field8,fieldc,field10,field14,field18;
- int position[3],rotation[3],scale[3]; unsigned char gap40[0x30];
- int field70,field74,field78,field7c; short field80,field82; unsigned char flags;
-};
-extern "C" void func_0204719c(State4719c* self) {
- self->field0=0;
- self->field6=0;
- self->field8=0;
- self->fieldc=0;
- self->field14=0;
- self->field4=3;
- self->field10=0;
- self->flags &= ~1;
- self->field78 = self->field7c = 0;
- self->field70 = self->field74 = 0;
- self->position[0]=0;
- self->position[1]=0;
- self->position[2]=0;
- self->rotation[0]=0;
- self->rotation[1]=0;
- self->rotation[2]=0;
- self->scale[0]=0x1000;
- self->scale[1]=0x1000;
- self->scale[2]=0x1000;
- self->field82=0x1f;
- self->field80=0x7fff;
- self->flags &= ~2;
- self->flags &= ~4;
+#include <globaldefs.h>
+#include "World/ZoneLootableRecord.h"
+
+// USA: func_0204719c
+extern "C" ARM void func_0204719c(void* obj)
+{
+    Foo02048004* f = (Foo02048004*)obj;
+
+    f->word0 = 0;
+    f->f6 = 0;
+    f->w8 = 0;
+    f->wc = 0;
+    f->nameTable.count = 0;
+    f->f4 = 3;
+    f->w10 = 0;
+    f->bit0 = 0;
+    f->words1c[23] = f->words1c[24] = 0;
+    f->words1c[21] = f->words1c[22] = 0;
+    f->words1c[0] = 0;
+    f->words1c[1] = 0;
+    f->words1c[2] = 0;
+    f->words1c[3] = 0;
+    f->words1c[4] = 0;
+    f->words1c[5] = 0;
+    f->words1c[6] = 0x1000;
+    f->words1c[7] = 0x1000;
+    f->words1c[8] = 0x1000;
+    f->field82 = 0x1f;
+    f->field80 = 0x7fff;
+    f->bit1 = 0;
+    f->bit2 = 0;
 }

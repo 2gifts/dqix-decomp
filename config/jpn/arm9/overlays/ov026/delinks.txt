@@ -53,3 +53,11 @@ src/Combat/Overlay_26/func_ov026_021dbf04.cpp:
 src/Combat/Overlay_26/func_ov026_021db3d8.cpp:
     complete
     .text start:0x021dbaa8 end:0x021dbc74
+
+src/Combat/Overlay_26/func_ov026_021dbe44.cpp:
+    complete
+    .text start:0x021dc514 end:0x021dc5d4
+
+src/Combat/Overlay_26/FindSlotById_021dae60.cpp:
+    complete
+    .text start:0x021db574 end:0x021db5dc

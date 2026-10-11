@@ -2210,8 +2210,7 @@ _Z12Init0205a198P14Struct0205a198 kind:function(arm,size=0x58) addr:0x0205a198
 _Z30ValidateResourceLookup0205a1f0PvS_i kind:function(arm,size=0x44) addr:0x0205a1f0
 _Z23ClearField0And40205a234P19ClearTarget0205a234 kind:function(arm,size=0x10) addr:0x0205a234
 _Z23ClearField0And40205a244P19ClearTarget0205a244 kind:function(arm,size=0x10) addr:0x0205a244
-func_0205a254 kind:function(arm,size=0x6c) addr:0x0205a254
-func_0205a2c0 kind:function(arm,size=0x70) addr:0x0205a2c0
+func_0205a254 kind:function(arm,size=0xdc) addr:0x0205a254
 _Z22IterateEntries0205a330P17Container0205a330i kind:function(arm,size=0x40) addr:0x0205a330
 _Z26SetEntryFlag2ByKey0205a370P17Container0205a3d0i kind:function(arm,size=0x3c) addr:0x0205a370
 _Z26SetEntryFlag1ByKey0205a3acP17Container0205a3d0i kind:function(arm,size=0x24) addr:0x0205a3ac
@@ -7641,6 +7640,7 @@ data_020fdc14 kind:bss addr:0x020fdc14
 data_020fdc20 kind:bss addr:0x020fdc20
 data_020fdc40 kind:bss addr:0x020fdc40
 data_020fdc4c kind:bss addr:0x020fdc4c
+data_020fdc4c_dup kind:bss addr:0x020fdc4c
 data_020fdc60 kind:bss addr:0x020fdc60
 data_020fdcb0 kind:bss addr:0x020fdcb0
 data_020fdcb8 kind:bss addr:0x020fdcb8

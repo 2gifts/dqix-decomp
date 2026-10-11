@@ -21,7 +21,11 @@ struct List021dc168 {
 };
 
 struct Obj021dc168 {
+#if defined(jpn)
+    char pad0[0x218];
+#else
     char pad0[0x29c];
+#endif
     int field29c;
     char pad2a0[0xeac - 0x2a0];
     int field_eac;

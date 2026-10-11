@@ -813,3 +813,67 @@ src/Combat/Overlay_25/InitQueueStruct_021ed124.cpp:
 src/Combat/Overlay_25/func_ov025_021db7f8.cpp:
     complete
     .text start:0x021dc0f4 end:0x021dc1d4
+
+src/Combat/Overlay_25/AppendRow_021dcc70.cpp:
+    complete
+    .text start:0x021dd564 end:0x021dd61c
+
+src/Combat/Overlay_25/AppendSlotEntry_021dcde8.cpp:
+    complete
+    .text start:0x021dd6dc end:0x021dd770
+
+src/Combat/Overlay_25/func_ov025_021dc168.cpp:
+    complete
+    .text start:0x021dca5c end:0x021dcb14
+
+src/Combat/Overlay_25/func_ov025_021dc880.cpp:
+    complete
+    .text start:0x021dd178 end:0x021dd238
+
+src/Combat/Overlay_25/ForwardPackedFields_021d8bfc.cpp:
+    complete
+    .text start:0x021d94bc end:0x021d94f0
+
+src/Combat/Overlay_25/AppendRow_021ded50.cpp:
+    complete
+    .text start:0x021df660 end:0x021df694
+
+src/Combat/Overlay_25/IncrementCounterAndReset_021def30.cpp:
+    complete
+    .text start:0x021df840 end:0x021df874
+
+src/Combat/Overlay_25/ResetBlockFields_021dcd5c.cpp:
+    complete
+    .text start:0x021dd650 end:0x021dd68c
+
+src/Combat/Overlay_25/ResetFields021dcd98.cpp:
+    complete
+    .text start:0x021dd68c end:0x021dd6dc
+
+src/Combat/Overlay_25/SetFlagField_021eb00c_021eb00c.cpp:
+    complete
+    .text start:0x021eb494 end:0x021eb4cc
+
+src/Combat/Overlay_25/SetFlagAndDispatch_021e2628.cpp:
+    complete
+    .text start:0x021e2b40 end:0x021e2b94
+
+src/Combat/Overlay_25/FindEntryById_021dafd0.cpp:
+    complete
+    .text start:0x021db8b4 end:0x021db91c
+
+src/Combat/Overlay_25/SetByte_021dcc58.cpp:
+    complete
+    .text start:0x021dd54c end:0x021dd558
+
+src/Combat/Overlay_25/GetByte_021dcc64_021dcc64.cpp:
+    complete
+    .text start:0x021dd558 end:0x021dd564
+
+src/Combat/Overlay_25/GetWord_021def24.cpp:
+    complete
+    .text start:0x021df834 end:0x021df840
+
+src/Combat/Overlay_25/SetTargetField_021e8724_021e8724.cpp:
+    complete
+    .text start:0x021e8bc4 end:0x021e8be0

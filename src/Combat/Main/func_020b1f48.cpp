@@ -1,12 +1,7 @@
 // JPN: main:020b3a14
 extern "C" {
-#if defined(jpn)
-void func_020b3ac4(unsigned short*,int,int,int,unsigned,unsigned);
-#define FillRows func_020b3ac4
-#else
 void func_020b1ff8(unsigned short*,int,int,int,unsigned,unsigned);
 #define FillRows func_020b1ff8
-#endif
 #pragma optimize_for_size off
 void func_020b1f48(unsigned short* output,int width,int height,int x,int y,int stride,unsigned tile,unsigned palette) {
  if(stride<=32) { FillRows(output+(stride*y+x),width,height,stride,tile,palette); return; }

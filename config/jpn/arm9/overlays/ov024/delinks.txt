@@ -2150,3 +2150,31 @@ src/Combat/Overlay_24/func_ov024_021e191c.cpp:
 src/Combat/Overlay_24/CheckCombatantInTable_021ea78c.cpp:
     complete
     .text start:0x021eaf58 end:0x021eafc8
+
+src/Combat/Overlay_24/SelectMessageByFlags_021e929c.cpp:
+    complete
+    .text start:0x021e9b10 end:0x021e9b80
+
+src/Combat/Overlay_24/SelectResultCode_021e9320.cpp:
+    complete
+    .text start:0x021e9b80 end:0x021e9be8
+
+src/Combat/Overlay_24/SelectMessageByFlags2_021e939c.cpp:
+    complete
+    .text start:0x021e9be8 end:0x021e9c88
+
+src/Combat/Overlay_24/SelectResultCode_021e9464.cpp:
+    complete
+    .text start:0x021e9c88 end:0x021e9cd0
+
+src/Combat/Overlay_24/CheckPersonalityCode_021e9990.cpp:
+    complete
+    .text start:0x021ea15c end:0x021ea1a4
+
+src/Combat/Overlay_24/InitElemArray4_021f68c8.cpp:
+    complete
+    .text start:0x021f7094 end:0x021f70e8
+
+src/Combat/Overlay_24/CheckTargetFlag10088Clear_021edf00.cpp:
+    complete
+    .text start:0x021ee6cc end:0x021ee738

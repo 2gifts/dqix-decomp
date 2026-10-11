@@ -1375,3 +1375,51 @@ src/Combat/Overlay_4/func_ov004_021680cc.cpp:
 
 src/Combat/Overlay_4/AllocateBuffersAndDispatch_02167d04.cpp:
     .text start:0x021681a4 end:0x021681b8
+
+src/Combat/Overlay_4/ReturnZero_0216d718.cpp:
+    complete
+    .text start:0x0216dcc8 end:0x0216dde8
+
+src/Combat/Overlay_4/GetNodeIfType1_02168aa0.cpp:
+    complete
+    .text start:0x02168fd8 end:0x0216900c
+
+src/Combat/Overlay_4/GetNodeIfType6_0216ae9c.cpp:
+    complete
+    .text start:0x0216afdc end:0x0216b010
+
+src/Combat/Overlay_4/SetFieldFromDividedStat_02165ef4.cpp:
+    complete
+    .text start:0x0216653c end:0x02166574
+
+src/Combat/Overlay_4/DoResetInitOrder_021633e4.cpp:
+    complete
+    .text start:0x021639d8 end:0x021639fc
+
+src/Combat/Overlay_4/DoInitResetOrder_02163408.cpp:
+    complete
+    .text start:0x021639fc end:0x02163a20
+
+src/Combat/Overlay_4/AllocateAndDispatch14_021560b0.cpp:
+    complete
+    .text start:0x0215749c end:0x021574d4
+
+src/Combat/Overlay_4/DispatchAdjustmentIfType4_0216ea38.cpp:
+    complete
+    .text start:0x0216f0d8 end:0x0216f114
+
+src/Combat/Overlay_4/AllocateAndDispatch8_02156dc8.cpp:
+    complete
+    .text start:0x02157e90 end:0x02157ef0
+
+src/Combat/Overlay_4/AllocateAndCopyHandlerTable_021677b4.cpp:
+    complete
+    .text start:0x02167cb0 end:0x02167d1c
+
+src/Combat/Overlay_4/ClearMasksAndNotify_02169adc.cpp:
+    complete
+    .text start:0x02169fd4 end:0x0216a044
+
+src/Combat/Overlay_4/FindNodeAndFlagBit2_021666bc.cpp:
+    complete
+    .text start:0x02166ca8 end:0x02166d1c

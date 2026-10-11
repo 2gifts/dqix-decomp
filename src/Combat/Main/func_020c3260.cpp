@@ -1,16 +1,28 @@
-// usa: 020c3260
-// jpn: 020c4d2c
-extern "C" long long func_020c30ac(long long);
-extern "C" long long func_020c3194(long long);
-extern "C" long long func_020c3260(int angle) {
- if(angle<0) return -func_020c3260(-angle);
- long long scaled=angle; scaled*=0x145f306ddLL; scaled>>=12;
- int quadrant=(int)(scaled>>32);
- long long fraction=scaled & 0xffffffffLL;
- if(quadrant&1) fraction=0x100000000LL-fraction;
- long long result;
- if((quadrant+1)&2) result=func_020c3194(fraction);
- else result=func_020c30ac(fraction);
- if((quadrant & 7)>3) return -result;
- return result;
+#include <globaldefs.h>
+
+extern "C" long long func_020c30ac(unsigned int, unsigned int);
+extern "C" long long func_020c3194(unsigned int, unsigned int);
+
+// USA: func_020c3260
+extern "C" ARM long long func_020c3260(int x) {
+    long long m;
+    if (x < 0) {
+        return -func_020c3260(-x);
+    }
+    m = (long long)x * 0x145F306DDLL;
+    int hi = (int)(m >> 44);
+    unsigned long long v = (unsigned long long)((m >> 12) & 0xFFFFFFFFULL);
+    if (hi & 1) {
+        v = 0x100000000ULL - v;
+    }
+    long long r;
+    if ((hi + 1) & 2) {
+        r = func_020c3194((unsigned int)v, (unsigned int)(v >> 32));
+    } else {
+        r = func_020c30ac((unsigned int)v, (unsigned int)(v >> 32));
+    }
+    if ((hi & 7) <= 3) {
+        return r;
+    }
+    return -r;
 }

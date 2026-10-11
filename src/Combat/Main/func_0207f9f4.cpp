@@ -12,9 +12,6 @@ extern "C" int _Z18CountActiveEntriesP19ActiveEntry02046900(void* entry);
 extern "C" void* _Z17FindRecordByIndexP11Rec020467f0iPPvPi(void* rec, int index, void** out, int* outSize);
 extern "C" char* _Z26GetGlobalField0x1c020421a0v();
 extern "C" void _Z24InitStreamAndRun0207f524PvS_P12StreamHeaderi(void* a, void* b, StreamHeader* c, int d);
-#if defined(jpn)
-#define _Z32LoadEntryArrayFromStream0207ef74P18EntryArray0207efdcP13SafeAllocatorP12StreamHeaderi func_0207fcf4
-#endif
 extern "C" void _Z32LoadEntryArrayFromStream0207ef74P18EntryArray0207efdcP13SafeAllocatorP12StreamHeaderi(
     void* a, void* b, StreamHeader* c, int d);
 

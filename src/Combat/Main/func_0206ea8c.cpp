@@ -1,10 +1,25 @@
-// usa: 0206ea8c
-// jpn: 0206fbe0
-struct BitSet {char pad[0x41b]; unsigned char bits[2][32];};
-extern "C" void func_0206ea8c(BitSet* object,int which,int index,int enabled){
-short slot=which&1;
-short byte=index>>3;
-unsigned short bit=index&7; bit ^= 7;
+#include <globaldefs.h>
 
-if(enabled) object->bits[slot][byte] |= 1<<bit; else object->bits[slot][byte] &= ~(1<<bit);
+// USA: func_0206ea8c
+extern "C" ARM int func_0206ea8c(unsigned char* base, unsigned char idx, int arg, int value) {
+    struct Obj { unsigned char pad[0x41b]; unsigned char rows[2][0x20]; };
+    short row;
+    short half;
+    unsigned short bit;
+    struct Obj* s;
+    int v;
+    half = idx & 1;
+    row = arg >> 3;
+    bit = (arg & 7) ^ 7;
+    s = (struct Obj*)base;
+    if (value != 0) {
+        v = 0;
+        v = s->rows[half][row] | (1 << bit) - v;
+        s->rows[half][row] = v;
+    } else {
+        v = s->rows[half][row];
+        v &= ~(1 << bit);
+        s->rows[half][row] = v;
+    }
+    return v;
 }

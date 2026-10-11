@@ -2696,3 +2696,103 @@ src/Combat/Overlay_0/func_ov000_0215704c.cpp:
 src/Combat/Overlay_0/func_ov000_0215e6e8.cpp:
     complete
     .text start:0x0215fe68 end:0x02160068
+
+src/Combat/Overlay_0/CallHandlerIfF38Set02170fd0.cpp:
+    complete
+    .text start:0x02172a08 end:0x02172a34
+
+src/Combat/Overlay_0/CollectMappedValuesFromNodeList02162908.cpp:
+    complete
+    .text start:0x02164074 end:0x021640c0
+
+src/Combat/Overlay_0/GetActiveCombatWork.cpp:
+    complete
+    .text start:0x021618b0 end:0x021618c0
+
+src/Combat/Overlay_0/GetAdjustedByteField0x1d6b.cpp:
+    complete
+    .text start:0x0218283c end:0x02182858
+
+src/Combat/Overlay_0/GetBoundedField156_02171674.cpp:
+    complete
+    .text start:0x0217305c end:0x02173080
+
+src/Combat/Overlay_0/GetBoundedField420_0217199c.cpp:
+    complete
+    .text start:0x021732ec end:0x02173310
+
+src/Combat/Overlay_0/GetClampedArrayField0xd1c.cpp:
+    complete
+    .text start:0x02177590 end:0x021775b4
+
+src/Combat/Overlay_0/GetClampedArrayField0xd3c.cpp:
+    complete
+    .text start:0x021775b4 end:0x021775d8
+
+src/Combat/Overlay_0/IsStateActive0216265c.cpp:
+    complete
+    .text start:0x02163dc8 end:0x02163e0c
+
+src/Combat/Overlay_0/ResetArrayAndEntry021823a4.cpp:
+    complete
+    .text start:0x021834d0 end:0x02183508
+
+src/Combat/Overlay_0/SetPointerField0x3f002171b68.cpp:
+    complete
+    .text start:0x02173414 end:0x02173448
+
+src/Combat/Overlay_0/SetShortTriple0x6e44.cpp:
+    complete
+    .text start:0x02164ba4 end:0x02164bb8
+
+src/Combat/Overlay_0/GetCombatantWithFlag0x400ByID.cpp:
+    complete
+    .text start:0x02154e78 end:0x02154e90
+
+src/Combat/Overlay_0/InvokeFieldHandler_02161300.cpp:
+    complete
+    .text start:0x02162a6c end:0x02162a84
+
+src/Combat/Overlay_0/func_ov000_02160e48.cpp:
+    complete
+    .text start:0x021625b0 end:0x021625fc
+
+src/Combat/Overlay_0/CountDistinctGroups_0217538c.cpp:
+    complete
+    .text start:0x02176754 end:0x021767a0
+
+src/Combat/Overlay_0/FindMatchingTableEntry0217f8c0.cpp:
+    complete
+    .text start:0x02180bec end:0x02180c3c
+
+src/Combat/Overlay_0/FindAndSetFreeSlot021673e0.cpp:
+    complete
+    .text start:0x02168b20 end:0x02168b74
+
+src/Combat/Overlay_0/ApplyFieldGroups021742c8.cpp:
+    complete
+    .text start:0x02175884 end:0x021758e0
+
+src/Combat/Overlay_0/GetGroupIndexForPosition_021753d8.cpp:
+    complete
+    .text start:0x021767a0 end:0x021767f4
+
+src/Combat/Overlay_0/CheckFlagOrActiveField0188_0217c594.cpp:
+    complete
+    .text start:0x0217d8e8 end:0x0217d948
+
+src/Combat/Overlay_0/UpdateFlag8AndBit4_021636ac.cpp:
+    complete
+    .text start:0x02164e10 end:0x02164e74
+
+src/Combat/Overlay_0/FindElementByIdField_02161318.cpp:
+    complete
+    .text start:0x02162a84 end:0x02162aec
+
+src/Combat/Overlay_0/ClearFlag0x8IfParityMismatch02163710.cpp:
+    complete
+    .text start:0x02164e74 end:0x02164edc
+
+src/Combat/Overlay_0/CheckSubstructAndRange02167bb4.cpp:
+    complete
+    .text start:0x021692f0 end:0x02169364

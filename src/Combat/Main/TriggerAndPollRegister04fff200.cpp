@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_020c7dc4 func_020c9890
+#endif
+
 extern "C" int func_020c7dc4(void);
 unsigned int DisableIRQInterrupts(void);
 unsigned int SetIRQInterruptState(int mask);

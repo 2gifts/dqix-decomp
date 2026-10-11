@@ -20,8 +20,6 @@
 #define ROMCTRL_FLAG_BUSY (1u << 31)
 
 #if defined(jpn)
-#define _Z20GetDataTcmRegionBasev func_020ca4b0
-#define _Z25StartDmaWithFlush020ca8e8jjjj func_020cc3b4
 #define _Z23RegisterType0x11Handlerv func_020d2be4
 #endif
 

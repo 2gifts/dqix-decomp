@@ -6,7 +6,11 @@ struct Entry020966a0;
 struct Foo0207df50;
 
 struct ZoneStruct0219b938 {
+#if defined(jpn)
+    char pad0[0x4b8];
+#else
     char pad0[0x498];
+#endif
     Model3D models[2];
 
     Model3D* GetModel(int i) { return &models[i]; }
@@ -32,13 +36,23 @@ struct Entry0219b938 {
 struct Battle0219b938 {
     char pad0[0x9c];
     SafeAllocator allocator;
+#if defined(jpn)
+    char padAllocatorEnd[0x4ac - 0x9c - sizeof(SafeAllocator)];
+    char fields4fc[0x2980 - 0x4ac];
+#else
     char padAllocatorEnd[0x4fc - 0x9c - sizeof(SafeAllocator)];
     char fields4fc[0x2b90 - 0x4fc];
+#endif
     struct Entry0219b938 entries[0x14];
+#if defined(jpn)
+    char pad35d0[0x4108 - 0x2980 - 0x14 * 0x88];
+#else
     char pad35d0[0x4328 - 0x2b90 - 0x14 * 0x88];
+#endif
     struct Entry020966a0* callbacks;
 };
 
+// JPN: func_ov017_0219c42c
 // USA: func_ov017_0219b938
 extern "C" ARM void func_ov017_0219b938(struct Battle0219b938* self) {
     struct ZoneStruct0219b938* zone = func_02012fe4();

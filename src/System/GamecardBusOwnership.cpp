@@ -18,9 +18,6 @@
 
 #pragma optimize_for_size off
 
-#if defined(jpn)
-#define _Z10AtomicSwapiPi func_020cc2ac
-#endif
 
 extern "C"
 {

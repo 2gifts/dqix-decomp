@@ -2288,3 +2288,47 @@ src/Combat/Overlay_23/DispatchByFlag2_021f7ca0.cpp:
 src/Combat/Overlay_23/CleanupAndReinitCombatState_021e2f38.cpp:
     complete
     .text start:0x021e3290 end:0x021e3388
+
+src/Combat/Overlay_23/ProcessEntries_021e257c.cpp:
+    complete
+    .text start:0x021e2a6c end:0x021e2ca0
+
+src/Combat/Overlay_23/func_ov023_021e447c.cpp:
+    complete
+    .text start:0x021e46a0 end:0x021e4790
+
+src/Combat/Overlay_23/func_ov023_021ed254.cpp:
+    complete
+    .text start:0x021ed1a0 end:0x021ed2d0
+
+src/Combat/Overlay_23/AppendLogEntryAndCheckFlag_021dde00.cpp:
+    complete
+    .text start:0x021de5c4 end:0x021de6e0
+
+src/Combat/Overlay_23/func_ov023_021e8cdc.cpp:
+    complete
+    .text start:0x021e8c90 end:0x021e8d88
+
+src/Combat/Overlay_23/CallAppendStringIfSet_021e8cc0.cpp:
+    complete
+    .text start:0x021e8bc4 end:0x021e8c90
+
+src/Combat/Overlay_23/DispatchAndResetSlots_021dc9e8.cpp:
+    complete
+    .text start:0x021dd2fc end:0x021dd398
+
+src/Combat/Overlay_23/UpdateFieldOrDispatch_021dcae0.cpp:
+    complete
+    .text start:0x021dd3ec end:0x021dd47c
+
+src/Combat/Overlay_23/ConfigureBgSub1AndClear_021dcc58.cpp:
+    complete
+    .text start:0x021dd560 end:0x021dd620
+
+src/Combat/Overlay_23/InitAndDispatchEntry_021ed600.cpp:
+    complete
+    .text start:0x021ed514 end:0x021ed5d8
+
+src/Combat/Overlay_23/CheckAnyElementFlagged_021f4438.cpp:
+    complete
+    .text start:0x021f3ac4 end:0x021f3b5c

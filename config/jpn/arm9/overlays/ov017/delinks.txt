@@ -3428,3 +3428,91 @@ src/Combat/Overlay_17/EnqueueEventTag99_021cbbd0.cpp:
 src/Combat/Overlay_17/func_ov017_021cf730.cpp:
     complete
     .text start:0x021cfbe0 end:0x021cfd1c
+
+src/Combat/Overlay_17/func_ov017_0219b938.cpp:
+    complete
+    .text start:0x0219c42c end:0x0219c4fc
+
+src/Combat/Overlay_17/DestroyAllocatorsFromTable_021a0790.cpp:
+    complete
+    .text start:0x021a123c end:0x021a12a0
+
+src/Combat/Overlay_17/DestroyAllocatorsFromTable_021a0964.cpp:
+    complete
+    .text start:0x021a140c end:0x021a1470
+
+src/Combat/Overlay_17/DestroyAllocatorsFromTable_021a0ba8.cpp:
+    complete
+    .text start:0x021a164c end:0x021a16b0
+
+src/Combat/Overlay_17/DestroyAllocatorsFromTable_021a0d6c.cpp:
+    complete
+    .text start:0x021a180c end:0x021a1870
+
+src/Combat/Overlay_17/DestroyAllocatorsFromTable_021a0f40.cpp:
+    complete
+    .text start:0x021a19dc end:0x021a1a40
+
+src/Combat/Overlay_17/DestroyAllocatorsFromTable_021a1114.cpp:
+    complete
+    .text start:0x021a1bac end:0x021a1c10
+
+src/Combat/Overlay_17/UpdateVec3XYFromFixed_0219b578.cpp:
+    complete
+    .text start:0x0219c104 end:0x0219c1b0
+
+src/Combat/Overlay_17/InitStateAndConfigDisplay_021b57fc.cpp:
+    complete
+    .text start:0x021b5db0 end:0x021b5e6c
+
+src/Combat/Overlay_17/CheckCombatantAndMapFlags_021b6e70.cpp:
+    complete
+    .text start:0x021b7420 end:0x021b74c8
+
+src/Combat/Overlay_17/SetFlagBit_0218d4b8.cpp:
+    complete
+    .text start:0x0218e098 end:0x0218e0b0
+
+src/Combat/Overlay_17/ClearTwoBytesAtField_02195748.cpp:
+    complete
+    .text start:0x02196310 end:0x02196328
+
+src/Combat/Overlay_17/IsCountAtLeast4_0219a370.cpp:
+    complete
+    .text start:0x0219af18 end:0x0219af30
+
+src/Combat/Overlay_17/IsFieldNotPositive_021a4e70.cpp:
+    complete
+    .text start:0x021a58e4 end:0x021a58fc
+
+src/Combat/Overlay_17/ResetFieldGroup4444_0218b664.cpp:
+    complete
+    .text start:0x0218c284 end:0x0218c2a8
+
+src/Combat/Overlay_17/ClearFlagBit_0218d4d0.cpp:
+    complete
+    .text start:0x0218e0b0 end:0x0218e0cc
+
+src/Combat/Overlay_17/ClearFourHalfwords_0219a644.cpp:
+    complete
+    .text start:0x0219b1e8 end:0x0219b218
+
+src/Combat/Overlay_17/CopyFiveHalfwords_021bd35c.cpp:
+    complete
+    .text start:0x021bd954 end:0x021bd984
+
+src/Combat/Overlay_17/ClearBufferAndFlag_021972cc.cpp:
+    complete
+    .text start:0x02197e7c end:0x02197ea8
+
+src/Combat/Overlay_17/ClearMatchingHalfword_02197324.cpp:
+    complete
+    .text start:0x02197ed4 end:0x02197f0c
+
+src/Combat/Overlay_17/HasFlag3orFlag2And9a_021bd3a4.cpp:
+    complete
+    .text start:0x021bd99c end:0x021bd9cc
+
+src/Combat/Overlay_17/GetByteAtOffset7289OrFF_021a5a48.cpp:
+    complete
+    .text start:0x021a6480 end:0x021a64a0

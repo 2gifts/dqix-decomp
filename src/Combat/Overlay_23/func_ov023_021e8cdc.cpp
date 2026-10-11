@@ -21,12 +21,41 @@ extern "C" int _Z10AppendXTagPci(char* dst, int x);
 extern "C" void _Z20AppendString02042058PcPKc(char* dst, const char* src);
 extern "C" int _Z10AppendYTagPci(char* dst, int y);
 
+#if defined(jpn)
+extern "C" void func_020420e8(char*, int);
+extern "C" void func_02042428(char*, int);
+struct TableA68;
+char* FindEntryByKey(TableA68*, int);
+int AppendXYTag(char*, int, int);
+#endif
+
+// JPN: func_ov023_021e8c90
 // USA: func_ov023_021e8cdc
 extern "C" ARM void func_ov023_021e8cdc(char* obj) {
     int len;
     if (*(int*)(obj + 0x5f4) == 0) return;
     char* dst = *(char**)(obj + 0x5d8);
 
+#if defined(jpn)
+    char* battle = (char*)GameState::GetInstance() + 0x3c + 0x5400;
+    func_020420e8(dst, 8);
+    func_02042428(dst, 12);
+    _Z20AppendString02042058PcPKc(dst, FindEntryByKey(*(TableA68**)(obj + 0x5f4), 0x73));
+    dst += strlen(dst);
+    char* src = battle + 8;
+    if (*(char**)(obj + 0x600)) src = *(char**)(obj + 0x600);
+    for (int row = 0; row < 3; ++row) {
+        memcpy(dst, src, 0x26);
+        src += 0x26;
+        dst += 0x26;
+        if (row != 2) {
+            AppendXYTag(dst, 1, row * 0x13 + 0x1b);
+            dst += strlen(dst);
+            memcpy(dst, FindEntryByKey(*(TableA68**)(obj + 0x5f4), 0x7b), 2);
+            dst += 2;
+        }
+    }
+#else
     char* battle = (char*)GameState::GetInstance() + 0x29c + 0x5400;
 
     char buf[0x43a];
@@ -70,4 +99,5 @@ extern "C" ARM void func_ov023_021e8cdc(char* obj) {
             _Z10AppendYTagPci(dst, y);
         }
     }
+#endif
 }

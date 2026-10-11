@@ -1,6 +1,13 @@
 #include <globaldefs.h>
 
-struct Ctx021ef988 { char pad[0xc]; void* target; };
+struct Ctx021ef988 {
+#if defined(jpn)
+    char pad[4];
+#else
+    char pad[0xc];
+#endif
+    void* target;
+};
 extern struct Ctx021ef988 data_ov025_021ef988;
 
 struct Param021e8724 { char pad[8]; unsigned char value; };

@@ -7,7 +7,6 @@
 
 #if defined(jpn)
 #define _Z14GetVec3ByIndexP8Vec3BA28iPiS1_S1_ func_0207c860
-#define _Z19CallWithAddr4000360i func_020c7040
 
 
 #endif

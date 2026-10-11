@@ -7,6 +7,7 @@ struct BattleWorkHolder02160130 {
 extern struct BattleWorkHolder02160130 data_ov000_02184220;
 
 // USA: func_ov000_02160130
+// JPN: func_ov000_021618b0
 ARM void* GetActiveCombatWork(void) {
     return data_ov000_02184220.work;
 }

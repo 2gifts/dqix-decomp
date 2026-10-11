@@ -1,15 +1,25 @@
 #include <globaldefs.h>
-#include <World/Object3D.h>
-typedef Vector3fix EventVector;
-extern "C" void func_ov017_021c95ec(int,int,int,int,int,EventVector,int,unsigned char,unsigned char);
-static inline short getKind(Object3D* o) { short value=o->unknown_4_; return value; }
-// USA: 020794f8; JPN: 0207a3ec
-extern "C" ARM void func_020794f8(Object3D* object, unsigned char flag6, unsigned char flag7) {
- int id=object->GetField06();
- int kind=getKind(object);
- int value=object->unknown_2_;
- EventVector position=object->position_;
- short field=*(short*)((char*)object+0xae);
- int index=(kind-0x70)%12;
- if(index>=0 && index<12) func_ov017_021c95ec(id,index,value,1,-1,position,field,flag6,flag7);
+#include "World/Object3D.h"
+
+struct Obj020794f8 {
+    Object3D obj3D_;
+    char pad_ac[0xae - 0xac];
+    short field_ae;
+};
+
+extern "C" void func_ov017_021c95ec(int id, int lowNibble, int unused, int kind, int highNibble,
+                                    Vector3fix v, int field8, int flag6, int flag7);
+
+// USA: func_020794f8
+extern "C" ARM void func_020794f8(struct Obj020794f8* self, int flag6, int flag7) {
+    int id = self->obj3D_.GetField06();
+    int v4 = *(volatile short *)&self->obj3D_.unknown_4_;
+    int v2 = self->obj3D_.unknown_2_;
+    Vector3fix v = self->obj3D_.position_;
+    short field8 = self->field_ae;
+    int rem = (v4 - 0x70) % 12;
+    if (rem < 0 || rem >= 12) {
+        return;
+    }
+    func_ov017_021c95ec(id, rem, v2, 1, -1, v, field8, flag6, flag7);
 }

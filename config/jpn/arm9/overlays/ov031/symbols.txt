@@ -636,7 +636,7 @@ _Z23ClearHighBit15_02218798i kind:function(arm,size=0xc) addr:0x02218f78
 _Z14Setup_022187a4PcPvi kind:function(arm,size=0x58) addr:0x02218f84
 _Z29ClearBufferAndNotify_022187fciPv kind:function(arm,size=0x40) addr:0x02218fdc
 func_ov031_0221883c kind:function(arm,size=0xa8) addr:0x0221901c
-func_ov031_022190c4 kind:function(arm,size=0x154) addr:0x022190c4
+func_ov031_022188e4 kind:function(arm,size=0x154) addr:0x022190c4
 func_ov031_02219218 kind:function(arm,size=0x154) addr:0x02219218
 func_ov031_02218b8c kind:function(arm,size=0x2a0) addr:0x0221936c
 func_ov031_02218e2c kind:function(arm,size=0x58) addr:0x0221960c
@@ -1054,7 +1054,7 @@ func_ov031_0222905c kind:function(arm,size=0xc8) addr:0x0222983c
 func_ov031_02229124 kind:function(arm,size=0x19c) addr:0x02229904
 func_ov031_022292c0 kind:function(arm,size=0x54) addr:0x02229aa0
 func_ov031_02229314 kind:function(arm,size=0x3c) addr:0x02229af4
-func_ov031_02229b30 kind:function(arm,size=0x28) addr:0x02229b30
+func_ov031_02229350 kind:function(arm,size=0x28) addr:0x02229b30
 _Z22RunThreeSteps_02229378v kind:function(arm,size=0x14) addr:0x02229b58
 func_ov031_0222938c kind:function(arm,size=0xf4) addr:0x02229b6c
 func_ov031_02229480 kind:function(arm,size=0x4) addr:0x02229c60
@@ -1081,7 +1081,7 @@ func_ov031_0222a288 kind:function(arm,size=0x2c) addr:0x0222a288
 func_ov031_02229ad4 kind:function(arm,size=0x28) addr:0x0222a2b4
 _Z22RunThreeSteps_02229afcv kind:function(arm,size=0x14) addr:0x0222a2dc
 func_ov031_02229b10 kind:function(arm,size=0x20) addr:0x0222a2f0
-func_ov031_0222a310 kind:function(arm,size=0x4) addr:0x0222a310
+func_ov031_02229b30 kind:function(arm,size=0x4) addr:0x0222a310
 func_ov031_02229b34 kind:function(arm,size=0x28) addr:0x0222a314
 _Z29SetField18AndAdvance_02229b5cv kind:function(arm,size=0x20) addr:0x0222a33c
 func_ov031_02229b7c kind:function(arm,size=0x4c) addr:0x0222a35c
@@ -1097,7 +1097,7 @@ func_ov031_02229d50 kind:function(arm,size=0x4) addr:0x0222a530
 func_ov031_02229d54 kind:function(arm,size=0x28) addr:0x0222a534
 _Z29SetField18AndAdvance_02229d7cv kind:function(arm,size=0x20) addr:0x0222a55c
 func_ov031_02229d9c kind:function(arm,size=0x3c) addr:0x0222a57c
-func_ov031_0222a5b8 kind:function(arm,size=0x50) addr:0x0222a5b8
+func_ov031_02229dd8 kind:function(arm,size=0x50) addr:0x0222a5b8
 func_ov031_02229e28 kind:function(arm,size=0x48) addr:0x0222a608
 func_ov031_02229e70 kind:function(arm,size=0x80) addr:0x0222a650
 func_ov031_02229ef0 kind:function(arm,size=0x54) addr:0x0222a6d0
@@ -1129,7 +1129,7 @@ func_ov031_0222a504 kind:function(arm,size=0x38) addr:0x0222ace4
 func_ov031_0222a53c kind:function(arm,size=0x4) addr:0x0222ad1c
 func_ov031_0222a540 kind:function(arm,size=0x58) addr:0x0222ad20
 func_ov031_0222a598 kind:function(arm,size=0x20) addr:0x0222ad78
-func_ov031_0222ad98 kind:function(arm,size=0x64) addr:0x0222ad98
+func_ov031_0222a5b8 kind:function(arm,size=0x64) addr:0x0222ad98
 _Z31RunChecksAndSetHandler_0222a61cv kind:function(arm,size=0xa8) addr:0x0222adfc
 func_ov031_0222a6c4 kind:function(arm,size=0xd0) addr:0x0222aea4
 func_ov031_0222a794 kind:function(arm,size=0x80) addr:0x0222af74
@@ -1409,7 +1409,7 @@ func_ov031_02233178 kind:function(arm,size=0xd0) addr:0x02233958
 func_ov031_02233248 kind:function(arm,size=0x124) addr:0x02233a28
 func_ov031_0223336c kind:function(arm,size=0xec) addr:0x02233b4c
 func_ov031_02233c38 kind:function(arm,size=0x54) addr:0x02233c38
-func_ov031_02233c8c kind:function(arm,size=0x3c) addr:0x02233c8c
+func_ov031_022334ac kind:function(arm,size=0x3c) addr:0x02233c8c
 func_ov031_022334e8 kind:function(arm,size=0x28) addr:0x02233cc8
 _Z22RunThreeSteps_02233510v kind:function(arm,size=0x14) addr:0x02233cf0
 func_ov031_02233524 kind:function(arm,size=0x184) addr:0x02233d04
@@ -1427,7 +1427,7 @@ func_ov031_02233bd4 kind:function(arm,size=0x6c) addr:0x022343b4
 func_ov031_02233c40 kind:function(arm,size=0x34) addr:0x02234420
 _Z22RunThreeSteps_02233c74v kind:function(arm,size=0x14) addr:0x02234454
 func_ov031_02233c88 kind:function(arm,size=0x4) addr:0x02234468
-func_ov031_0223446c kind:function(arm,size=0x4) addr:0x0223446c
+func_ov031_02233c8c kind:function(arm,size=0x4) addr:0x0223446c
 func_ov031_02233c90 kind:function(arm,size=0x4) addr:0x02234470
 _Z30ConfigureThenDispatch_02233c94v kind:function(arm,size=0x28) addr:0x02234474
 func_ov031_02233cbc kind:function(arm,size=0x24) addr:0x0223449c
@@ -1439,7 +1439,7 @@ _Z31ClearFlagAndSetupTag45_02233e4cv kind:function(arm,size=0x30) addr:0x0223462
 func_ov031_02233e7c kind:function(arm,size=0x6c) addr:0x0223465c
 func_ov031_02233ee8 kind:function(arm,size=0x34) addr:0x022346c8
 _Z23DispatchToStub_02233f1cv kind:function(arm,size=0x24) addr:0x022346fc
-func_ov031_02234720 kind:function(arm,size=0x10) addr:0x02234720
+_Z21CallStubPair_02233f40v kind:function(arm,size=0x10) addr:0x02234720
 func_ov031_02233f50 kind:function(arm,size=0x4) addr:0x02234730
 func_ov031_02233f54 kind:function(arm,size=0x58) addr:0x02234734
 func_ov031_02233fac kind:function(arm,size=0xa4) addr:0x0223478c
@@ -1470,7 +1470,7 @@ func_ov031_022346a8 kind:function(arm,size=0x28) addr:0x02234e88
 _Z22RunThreeSteps_022346d0v kind:function(arm,size=0x14) addr:0x02234eb0
 func_ov031_022346e4 kind:function(arm,size=0x38) addr:0x02234ec4
 func_ov031_0223471c kind:function(arm,size=0x4) addr:0x02234efc
-func_ov031_02234f00 kind:function(arm,size=0x50) addr:0x02234f00
+func_ov031_02234720 kind:function(arm,size=0x50) addr:0x02234f00
 _Z25RegisterCallback_02234770v kind:function(arm,size=0x20) addr:0x02234f50
 func_ov031_02234790 kind:function(arm,size=0x64) addr:0x02234f70
 func_ov031_022347f4 kind:function(arm,size=0xb8) addr:0x02234fd4
@@ -2286,9 +2286,9 @@ data_ov031_0224aaec kind:data(any) addr:0x0224aaec
 data_ov031_02249f00 kind:data(any) addr:0x0224ab00
 data_ov031_02249f14 kind:data(any) addr:0x0224ab14
 data_ov031_02249f24 kind:data(any) addr:0x0224ab24
-data_ov031_0224ab2c kind:data(any) addr:0x0224ab2c
-data_ov031_0224ab38 kind:data(any) addr:0x0224ab38
-data_ov031_0224ab3c kind:data(any) addr:0x0224ab3c
+data_ov031_02249f2c kind:data(any) addr:0x0224ab2c
+data_ov031_02249f38 kind:data(any) addr:0x0224ab38
+data_ov031_02249f3c kind:data(any) addr:0x0224ab3c
 data_ov031_0224ab40 kind:data(any) addr:0x0224ab40
 data_ov031_0224ab60 kind:data(any) addr:0x0224ab60
 data_ov031_0224ab80 kind:data(any) addr:0x0224ab80
@@ -2685,8 +2685,8 @@ data_ov031_0224d5e8 kind:bss addr:0x0224d5e8
 data_ov031_0224ca00 kind:bss addr:0x0224d600
 data_ov031_0224ca0a kind:bss addr:0x0224d60a
 data_ov031_0224d660 kind:bss addr:0x0224d660
-data_ov031_0224d680 kind:bss addr:0x0224d680
-data_ov031_0224d6c4 kind:bss addr:0x0224d6c4
+data_ov031_0224ca80 kind:bss addr:0x0224d680
+data_ov031_0224cac4 kind:bss addr:0x0224d6c4
 data_ov031_0224cb28 kind:bss addr:0x0224d728
 data_ov031_0224cbe8 kind:bss addr:0x0224d7e8
 data_ov031_0224d8a8 kind:bss addr:0x0224d8a8

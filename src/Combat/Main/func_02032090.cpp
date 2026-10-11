@@ -1,17 +1,19 @@
-// usa: 02032090
-// jpn: 02031bc8
+#include <globaldefs.h>
 #include "Graphics/Vector.h"
-struct Plane32090 { Vector3fix normal; fix32_t distance; };
-extern "C" int func_02032090(const Vector3fix* start, const Vector3fix* end, const Plane32090* plane, fix32_t* fraction, Vector3fix* hit) {
- Vector3fix delta;
- Vector3fix_Subtract(end,start,&delta);
- fix32_t startDot=Vector3fix_InnerProduct(&plane->normal,start);
- fix32_t deltaDot=Vector3fix_InnerProduct(&plane->normal,&delta);
- *fraction=fix32_Divide(plane->distance-startDot,deltaDot);
- if (*fraction>=0 && *fraction<=0x1000) {
-  Vector3fixMultiplyScalar(&delta,*fraction,hit);
-  Vector3fix_Add(start,hit,hit);
-  return 1;
- }
- return 0;
+
+// USA: func_02032090
+extern "C" ARM int func_02032090(const Vector3fix* start, const Vector3fix* end,
+                                 const Vector4fix* plane, fix32_t* parameter, Vector3fix* point)
+{
+    Vector3fix direction;
+
+    Vector3fix_Subtract(end, start, &direction);
+    *parameter = fix32_Divide(plane->w - Vector3fix_InnerProduct(&plane->xyz, start),
+                              Vector3fix_InnerProduct(&plane->xyz, &direction));
+    if (*parameter >= 0 && *parameter <= 0x1000) {
+        Vector3fixMultiplyScalar(&direction, *parameter, point);
+        Vector3fix_Add(start, point, point);
+        return 1;
+    }
+    return 0;
 }

@@ -1,20 +1,76 @@
-// usa: 02029568
-// jpn: 02029120
-void Init0202949c(char*);
-extern "C" unsigned short data_020ef74c;
-extern "C" void func_02029568(char* self) {
- Init0202949c(self);
- *(int*)(self+0)=1;
- *(short*)(self+0x50)=0; *(short*)(self+0x52)=0; *(short*)(self+0x54)=0;
- *(short*)(self+0x56)=0; *(short*)(self+0x58)=0; self[0x6c]=1;
- *(short*)(self+0x5a)=0;
- *(short*)(self+0x5c)=-1; *(short*)(self+0x5e)=-1; *(short*)(self+0x60)=-1;
- self[0x6d]=0; self[0x6e]=0; *(int*)(self+0x44)=0; *(int*)(self+0x48)=0;
- *(unsigned short*)(self+0x62)=10; *(unsigned short*)(self+0x64)=0;
- *(unsigned short*)(self+0x66)=*(unsigned short*)(self+0x62)+*(unsigned short*)(self+0x64);
- self[0x6f]=0; *(short*)(self+0x6a)=0; *(short*)(self+0x68)=0;
- data_020ef74c=0x7d40;
- self[0x71]=0; self[0x72]=0; self[0x73]=0; self[0x74]=0;
- *(int*)(self+0x40)=0; self[0x70]=0; *(int*)(self+0x4c)=8;
- for(int i=0;i<2;++i) *(int*)(self+0x78+i*4)=0;
+#include <globaldefs.h>
+
+struct Menu02029568 {
+    int type;
+    char pad04[0x3c];
+    int f40;
+    void* entries;
+    int f48;
+    int f4c;
+    short f50;
+    short f52;
+    short f54;
+    short f56;
+    short f58;
+    unsigned short count;
+    short f5c;
+    short f5e;
+    short f60;
+    unsigned short f62;
+    short f64;
+    short f66;
+    short f68;
+    short f6a;
+    unsigned char f6c;
+    unsigned char f6d;
+    unsigned char f6e;
+    unsigned char f6f;
+    unsigned char f70;
+    unsigned char f71;
+    unsigned char f72;
+    unsigned char f73;
+    unsigned char f74;
+    char pad75[3];
+    int arr[2];
+};
+
+extern unsigned short data_020ef74c;
+
+extern "C" void _Z12Init0202949cPc(char* obj);
+
+// USA: func_02029568
+extern "C" ARM void func_02029568(struct Menu02029568* m) {
+    _Z12Init0202949cPc((char*)m);
+    m->type = 1;
+    m->f50 = 0;
+    m->f52 = 0;
+    m->f54 = 0;
+    m->f56 = 0;
+    m->f58 = 0;
+    m->f6c = 1;
+    m->count = 0;
+    m->f5c = -1;
+    m->f5e = -1;
+    m->f60 = -1;
+    m->f6d = 0;
+    m->f6e = 0;
+    m->entries = 0;
+    m->f48 = 0;
+    m->f62 = 10;
+    m->f64 = 0;
+    m->f66 = (short)(m->f62 + m->f64);
+    m->f6f = 0;
+    m->f6a = 0;
+    m->f68 = 0;
+    data_020ef74c = 0x7d40;
+    m->f71 = 0;
+    m->f72 = 0;
+    m->f73 = 0;
+    m->f74 = 0;
+    m->f40 = 0;
+    m->f70 = 0;
+    m->f4c = 8;
+    for (int i = 0; i < 2; i++) {
+        m->arr[i] = 0;
+    }
 }

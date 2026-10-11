@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_020e1cdc func_020e38d4
+#endif
+
 void ResetBytes020e25cc(signed char* p);
 extern "C" void func_020e1cdc(void* a, void* b);
 struct AdjustedPosObj020e2604;

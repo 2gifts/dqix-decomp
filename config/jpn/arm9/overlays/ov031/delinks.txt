@@ -5912,3 +5912,55 @@ src/Combat/Overlay_31/Configure_02213a68.cpp:
 src/Combat/Overlay_31/Configure_02213ab4.cpp:
     complete
     .text start:0x02214294 end:0x02214300
+
+src/Combat/Overlay_31/func_ov031_02201a94.cpp:
+    complete
+    .text start:0x02202274 end:0x02202374
+
+src/Combat/Overlay_31/func_ov031_0220186c.cpp:
+    complete
+    .text start:0x0220204c end:0x02202190
+
+src/Combat/Overlay_31/func_ov031_02201fac.cpp:
+    complete
+    .text start:0x0220278c end:0x022028c8
+
+src/Combat/Overlay_31/func_ov031_022104e4.cpp:
+    complete
+    .text start:0x02210cc4 end:0x02210df8
+
+src/Combat/Overlay_31/func_ov031_022188e4.cpp:
+    complete
+    .text start:0x022190c4 end:0x02219218
+
+src/Combat/Overlay_31/RunThreeSteps_02229afc.cpp:
+    complete
+    .text start:0x0222a2dc end:0x0222a2f0
+
+src/Combat/Overlay_31/RunThreeSteps_02233c74.cpp:
+    complete
+    .text start:0x02234454 end:0x02234468
+
+src/Combat/Overlay_31/RunThreeSteps_022346d0.cpp:
+    complete
+    .text start:0x02234eb0 end:0x02234ec4
+
+src/Combat/Overlay_31/SetField18_02222e98_0222a598.cpp:
+    complete
+    .text start:0x0222ad78 end:0x0222ad98
+
+src/Combat/Overlay_31/EmptyFunc_02229b30.cpp:
+    complete
+    .text start:0x0222a310 end:0x0222a314
+
+src/Combat/Overlay_31/EmptyFunc_02233c8c.cpp:
+    complete
+    .text start:0x0223446c end:0x02234470
+
+src/Combat/Overlay_31/SetupHandlerFromField16_02234720.cpp:
+    complete
+    .text start:0x02234f00 end:0x02234f50
+
+src/Combat/Overlay_31/TailCall_02222ddc_0222a5b8.cpp:
+    complete
+    .text start:0x0222ad98 end:0x0222adfc

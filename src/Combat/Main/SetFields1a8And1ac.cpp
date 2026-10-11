@@ -1,7 +1,11 @@
 #include <globaldefs.h>
 
 struct S02053f4c {
+#if defined(jpn)
+    char unk[0x19c];
+#else
     char unk[0x1a8];
+#endif
     int field1a8;
     int field1ac;
 };

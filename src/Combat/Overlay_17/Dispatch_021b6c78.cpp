@@ -20,7 +20,7 @@ extern "C" signed char _Z27GetSignedField6Bit_021b6c2cii(int a, int b);
 #define GetSignedField6Bit_021b6c2c _Z27GetSignedField6Bit_021b6c2cii
 
 struct Base02087510;
-extern "C" void _Z28FindFreeSlotAndStore02087510P12Base02087510cPv(Base02087510* base, char id, void* data);
+extern "C" int _Z28FindFreeSlotAndStore02087510P12Base02087510cPv(Base02087510* base, char id, void* data);
 #define FindFreeSlotAndStore02087510 _Z28FindFreeSlotAndStore02087510P12Base02087510cPv
 
 #define GetCombatantAtField0x3ac _Z24GetCombatantAtField0x3acP9GameState

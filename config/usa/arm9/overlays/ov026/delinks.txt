@@ -89,3 +89,8 @@ src/Combat/Overlay_26/func_ov026_021dc8fc.cpp:
     complete
     .text start:0x021dc8fc end:0x021dce1c
     .rodata start:0x021de6c4 end:0x021de6cc
+
+
+src/Combat/Overlay_26/func_ov026_021db090.cpp:
+    complete
+    .text start:0x021db090 end:0x021db3d8
