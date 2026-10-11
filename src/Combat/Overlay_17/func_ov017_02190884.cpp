@@ -1,0 +1,351 @@
+#include <globaldefs.h>
+#include "GameState/GameState.h"
+
+struct FlagWord02046708;
+struct Obj020397cc;
+struct Obj02033874;
+struct SearchStruct0202c1a4;
+
+struct Status02190884 {
+    unsigned int flags;
+};
+
+struct Member02190884 {
+    Object3D obj3D_;
+    char padAC[4];
+    short fieldB0;
+    char padB2[2];
+    short fieldB4;
+    short fieldB6;
+    char padB8[0xc1 - 0xb8];
+    unsigned char modeC1 : 2;
+    char padC2[0x130 - 0xc2];
+    Status02190884* status;
+    char pad134[0x2d2 - 0x134];
+    unsigned char slot2d2;
+};
+
+struct Flags02190884 {
+    char pad0[3];
+    unsigned char active;
+};
+
+struct OvCtx02190884 {
+    char pad0[0x36d0];
+    unsigned char* flags6d0;
+    char pad36d4[0x3718 - 0x36d4];
+    Flags02190884* ptr718;
+    char pad371c[0x3734 - 0x371c];
+    Flags02190884* ptr734;
+    char pad3738[0x3b30 - 0x3738];
+    Flags02190884* ptrB30;
+};
+
+struct Init02190884 {
+    int v[8];
+};
+
+extern "C" FlagWord02046708* _Z27GetDataPtr02114e04_020d6c00v();
+extern "C" int _Z17TestFlags02046708P16FlagWord02046708j(FlagWord02046708* flags, unsigned int mask);
+extern "C" void func_020dc548(signed char id, signed char* list, signed char* count);
+int GetByte0x26c(char* obj);
+extern "C" SearchStruct0202c1a4* func_0202ae18();
+GameObject* GetCombatantWithFlag0x200(GameState* battleStruct, int id);
+extern "C" char* func_02012fe4();
+extern "C" int _Z19IsIdInRange020981e4ii(int obj, int id);
+GameObject* GetCombatantWithFlag0x1000(GameState* battleStruct, int id);
+int GetSignedByte0x2d0(void* obj);
+extern "C" int _Z40IsCombatantField2InMonsterRange_02190818i(int id);
+int GetSignedByte0x1ca(void* obj);
+int GetByteField0x252(void* obj);
+int GetByteField0x253(void* obj);
+int CollectCombatantsWithFlag0x1000(GameState* battleStruct, unsigned char* out);
+int CheckSubstructByte0x7cPositive(signed char* obj);
+extern "C" void func_020531f0(void* obj);
+int GetSignedByte0x1c9(void* obj);
+unsigned char GetField0x397cValue(GameState* battleStruct);
+void ClearByte0xc1Flag0x4(unsigned char* obj);
+extern "C" void _Z12SetByte0x1c8Phh(void* obj, int value);
+void SetByteField0x253(void* obj);
+extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc* obj, int flag);
+void ClearFlag0x1ceBit0x4(unsigned char* obj);
+int CheckField0NonZero(int* obj);
+int GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* search);
+void SetByte0xc1Flag0x4(unsigned char* obj);
+extern "C" void _Z30ClearBytesAndZeroBlock02039d24Ph(unsigned char* obj);
+extern "C" void _Z12SetByte0x1c9Phh(void* obj, int value);
+extern "C" void _Z12SetByte0x1caPhh(void* obj, int value);
+void ClearFlag0x1ceBit0x1(unsigned char* obj);
+extern "C" void _Z24SetVecYFromValue02033874P11Obj02033874i(Obj02033874* obj, int value);
+void SetFlagBits0x55e(unsigned char* obj, int value);
+
+extern Init02190884 data_ov017_021d61dc;
+
+// USA: func_ov017_02190884
+extern "C" ARM void func_ov017_02190884(int id, int* out, int* count, int clearBit1, int cancel, int reset) {
+    GameState* gs = GameState::GetInstance();
+
+    if (_Z17TestFlags02046708P16FlagWord02046708j(_Z27GetDataPtr02114e04_020d6c00v(), 0x2000) != 0) {
+        unsigned char* base = (unsigned char*)GetPtrField0x2a04(gs);
+        int i;
+        for (i = 0; i < base[0xf7c]; i++) {
+            out[i] = (base + i)[0xf78];
+        }
+        *count = base[0xf7c];
+        return;
+    }
+
+    signed char nearCount;
+    signed char nearList[6];
+    unsigned char party[5];
+    nearCount = 0;
+    func_020dc548((signed char)id, nearList, &nearCount);
+    for (int i = 0; i < nearCount; i++) {
+        GameObject* m = gs->GetPartyMemberByIndex(nearList[i]);
+        if (m != NULL && GetByte0x26c((char*)m) != 0) {
+            return;
+        }
+    }
+
+    SearchStruct0202c1a4* search = func_0202ae18();
+    OvCtx02190884* ctx = (OvCtx02190884*)func_ov017_0218b5b0();
+    if (ctx == NULL) {
+        return;
+    }
+    Member02190884* self = (Member02190884*)GetCombatantWithFlag0x200(gs, id);
+    if (self == NULL) {
+        return;
+    }
+
+    char* map = func_02012fe4();
+    int inRange = 0;
+    int restore;
+    GameObject* obj;
+    if (_Z19IsIdInRange020981e4ii((int)(map + 0x840), *(unsigned short*)map)) {
+        inRange = 1;
+    }
+
+    int listA[4];
+    int listB[4];
+    int nA = 0;
+    int nB = 0;
+    Flags02190884* f718 = ctx->ptr718;
+    Flags02190884* f734 = ctx->ptr734;
+    Flags02190884* fB30 = ctx->ptrB30;
+    if (!(self->status->flags & 1)) {
+        listA[nA++] = id;
+    } else {
+        listB[nB++] = id;
+    }
+
+    for (int i = 3; i >= 0; i--) {
+        Member02190884* m = (Member02190884*)GetCombatantWithFlag0x1000(gs, i);
+        if (m != NULL && id == GetSignedByte0x2d0(m)) {
+            if (!(m->status->flags & 1)) {
+                listA[nA++] = i;
+            } else {
+                listB[nB++] = i;
+            }
+        }
+    }
+
+    Init02190884 order = data_ov017_021d61dc;
+    int* p = listA;
+    for (int i = 0; i < nA; i++, p++) {
+        Member02190884* m = (Member02190884*)GetCombatantWithFlag0x1000(gs, *p);
+        if (m != NULL) {
+            order.v[m->slot2d2] = *p;
+        } else {
+            order.v[0] = *p;
+        }
+    }
+    p = listB;
+    for (int i = 0; i < nB; i++, p++) {
+        Member02190884* m = (Member02190884*)GetCombatantWithFlag0x1000(gs, *p);
+        if (m != NULL) {
+            order.v[m->slot2d2 + 4] = *p;
+        } else {
+            order.v[4] = *p;
+        }
+    }
+
+    *count = 0;
+    p = order.v;
+    for (int i = 0; i < 8; i++, p++) {
+        if (*p >= 0) {
+            out[(*count)++] = *p;
+        }
+    }
+
+    if (inRange != 0 && _Z40IsCombatantField2InMonsterRange_02190818i(out[0])) {
+        for (int i = 1; i < *count; i++) {
+            if (!_Z40IsCombatantField2InMonsterRange_02190818i(out[i])) {
+                int t = out[i];
+                out[i] = out[0];
+                out[0] = t;
+                break;
+            }
+        }
+    }
+
+    GetPtrField0x2a04(gs);
+    gs->GetProtagonist();
+    int keep = 1;
+    GameObject* leader = gs->GetPartyMemberByIndex(GetSignedByte0x1ca(self));
+    if (leader != NULL) {
+        if (GetByteField0x252(leader) == 0) {
+            keep = 0;
+        } else {
+            keep = 1;
+        }
+        if (GetByteField0x253(leader) != 0) {
+            keep = 1;
+        }
+    }
+
+    if (leader != NULL && out[0] != leader->obj3D_.unknown_4_) {
+        GameObject* own = GetCombatantWithFlag0x1000(gs, id);
+        int n;
+        if (id == 0 || own != NULL) {
+            n = CollectCombatantsWithFlag0x1000(gs, party);
+        } else {
+            party[0] = id;
+            n = 1;
+        }
+        for (int i = 0; i < n; i++) {
+            GameObject* m = gs->GetPartyMemberByIndex(party[i]);
+            if (m != NULL && CheckSubstructByte0x7cPositive((signed char*)m)) {
+                func_020531f0(m);
+            }
+        }
+    }
+
+    Vector3i pos[4];
+    int rotY[4];
+    for (int i = 0; i < *count; i++) {
+        GameObject* m = gs->GetPartyMemberByIndex(out[i]);
+        if (m != NULL) {
+            pos[GetSignedByte0x1c9(m)] = m->obj3D_.position_;
+            rotY[GetSignedByte0x1c9(m)] = m->obj3D_.rotation_.y;
+        }
+    }
+
+    restore = 0;
+    if (out[0] != GetField0x397cValue(gs)) {
+        restore = 1;
+    }
+
+    int bit;
+    if (self->modeC1 & 2) {
+        bit = 1;
+    } else {
+        bit = 0;
+    }
+    short shown = 0;
+    int i = 0;
+    for (; i < *count; i++) {
+        Member02190884* m = (Member02190884*)gs->GetPartyMemberByIndex(out[i]);
+        obj = gs->GetGameObjectByIndex(out[i] * 0xc + 0x14);
+        if (m == NULL) {
+            continue;
+        }
+        ClearByte0xc1Flag0x4((unsigned char*)m);
+        if (i == 0) {
+            _Z12SetByte0x1c8Phh(m, -1);
+            m->fieldB6 = 0x28;
+            m->fieldB0 = 0x324;
+            if (cancel != 0) {
+                if (keep != 0) {
+                    SetByteField0x253(m);
+                    m->obj3D_.DisableFlag(0x1000000);
+                } else {
+                    _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)m, 1);
+                }
+            }
+            ClearFlag0x1ceBit0x4((unsigned char*)m);
+            m->obj3D_.SetInheritedAlpha(0x1f);
+            if (CheckField0NonZero((int*)search) && id != GetSearchStructCurrentArrEntry(search)) {
+                SetByte0xc1Flag0x4((unsigned char*)m);
+            }
+        } else {
+            _Z12SetByte0x1c8Phh(m, out[shown - 1]);
+            m->fieldB6 = 0x66;
+            m->fieldB0 = 0x648;
+            if (reset != 0) {
+                _Z30ClearBytesAndZeroBlock02039d24Ph((unsigned char*)m);
+            }
+            if (cancel != 0) {
+                _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)m, 1);
+            }
+            m->obj3D_.EnableFlag(0x80);
+        }
+        _Z12SetByte0x1c9Phh(m, i);
+        m->fieldB4 = 0x189;
+        _Z12SetByte0x1caPhh(m, out[0]);
+        if (clearBit1 != 0) {
+            ClearFlag0x1ceBit0x1((unsigned char*)m);
+        }
+        if (f734->active != 0) {
+            if (bit != 0) {
+                m->modeC1 |= 2;
+            } else {
+                m->modeC1 &= ~2;
+            }
+        }
+        if (obj != NULL) {
+            short kind = obj->obj3D_.unknown_2_;
+            if (kind != 0x2347 && kind != 0x2348 && kind != 0x2349) {
+                shown++;
+            } else if (inRange != 0) {
+                m->obj3D_.SetInheritedAlpha(0);
+            } else {
+                if (m->obj3D_.GetInheritedAlpha() == 0) {
+                    ClearFlag0x1ceBit0x4((unsigned char*)m);
+                    m->obj3D_.SetInheritedAlpha(0x1f);
+                }
+                shown++;
+            }
+        } else {
+            shown++;
+        }
+    }
+
+    unsigned char total = *count;
+    unsigned char last = out[*count - 1];
+    if (id == 0 && gs->GetPartyMemberByIndex(0xce) != NULL) {
+        Member02190884* m = (Member02190884*)gs->GetPartyMemberByIndex(0xce);
+        if (m != NULL) {
+            _Z12SetByte0x1c8Phh(m, last);
+            m->fieldB6 = 0x66;
+            m->fieldB0 = 0x648;
+            _Z30ClearBytesAndZeroBlock02039d24Ph((unsigned char*)m);
+            if (cancel != 0) {
+                _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)m, 1);
+            }
+            _Z12SetByte0x1c9Phh(m, total);
+            m->fieldB4 = 0x189;
+            _Z12SetByte0x1caPhh(m, out[0]);
+            m->obj3D_.EnableFlag(0x80);
+            if (clearBit1 != 0) {
+                ClearFlag0x1ceBit0x1((unsigned char*)m);
+            }
+        }
+    }
+
+    if (f718->active != 0 || f734->active != 0 || fB30->active != 0) {
+        restore = 0;
+    }
+    if (restore != 0) {
+        for (int i = 0; i < *count; i++) {
+            GameObject* m = gs->GetPartyMemberByIndex(out[i]);
+            if (m != NULL) {
+                m->obj3D_.position_ = pos[i];
+                _Z24SetVecYFromValue02033874P11Obj02033874i((Obj02033874*)m, rotY[i]);
+            }
+        }
+    }
+
+    if (ctx->flags6d0 != NULL) {
+        SetFlagBits0x55e(ctx->flags6d0, 1);
+    }
+}
