@@ -1,5 +1,0 @@
-COMPILE-FAIL ### D:/Downloads/decomp/dqix-decomp/tools/mwccarm/2.0/sp1p5/mwccarm.exe Usage Error:
-#   Specified file 'src/Combat/Main/func_0203a0b4.cpp' not found
-
-Errors caused tool to abort.
-
