@@ -1,18 +1,34 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov003_021760cc func_ov003_021750e4
+#define data_ov003_02180cc8 data_ov003_0217ef40
+#define data_ov003_02180aa4 data_ov003_0217ed08
+extern "C" void func_ov003_0217365c(char* self);
+#define SetElementFlagIfValid_0217451c func_ov003_0217365c
+#endif
+
 struct Outer020e28dc;
 struct Ctx020e263c;
 struct Obj0207fc6c;
 
 struct Menu021745fc {
+#if defined(jpn)
+    char unk_0[0x2a];
+#else
     char unk_0[0x36];
+#endif
     short cursor_;
 };
 
 class BattleMenu021745fc {
 public:
     Outer020e28dc* ctrl_;
+#if defined(jpn)
+    char unk_4[0x808 - 0x4];
+#else
     char unk_4[0x88c - 0x4];
+#endif
     char repeat_[0xc];
     unsigned short repeatButtons_;
     unsigned char unk_89a;
@@ -73,7 +89,11 @@ extern "C" ARM bool func_ov003_021745fc(BattleMenu021745fc* self, int ticks) {
             func_ov003_021760cc(self);
             return false;
         }
+#if defined(jpn)
+        ((unsigned char*)GetGlobalField0x1c020421a0())[0x17de] = 0;
+#else
         ((unsigned char*)GetGlobalField0x1c020421a0())[0x19ae] = 0;
+#endif
         Menu021745fc* menu = self->menu_;
         if (menu != NULL)
             CallFunc0204c87cOverEntries0207fc6c((Obj0207fc6c*)menu, ticks);

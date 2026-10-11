@@ -1,13 +1,6 @@
 #include <globaldefs.h>
-#if defined(jpn)
-extern "C" void func_0206ebc8(int*);
-extern "C" void func_0206611c(int*);
-#define ClearFirstWord0206da74 func_0206ebc8
-#define ClearFirstWord02064e20 func_0206611c
-#else
 void ClearFirstWord0206da74(int*);
 void ClearFirstWord02064e20(int*);
-#endif
 #include "std_library_functions.h"
 
 struct Struct_020401e4;

@@ -30,7 +30,11 @@ extern "C" ARM void func_ov000_02177d04(char* base, char* dst) {
     GameState* gs = GameState::GetInstance();
     unsigned char count = *((unsigned char*)GetPtrField0x2a04(gs) + 0xf7c);
     const char* sep = (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)(base + 0xb8), 0);
+#if defined(jpn)
+    signed char cursor = *(signed char*)(base + 0x1f00 + 0xa3);
+#else
     signed char cursor = *(signed char*)(base + 0x1d00 + 0x6b);
+#endif
 
     if (IsField0x118Equal2(base)) {
         _Z22AppendFrameTag02041c08Pciiiii(dst, cursor, 8, 5, 5, 5);
@@ -53,10 +57,14 @@ extern "C" ARM void func_ov000_02177d04(char* base, char* dst) {
         _Z29FormatCombatLogSuffix02041dd0Pci(dst, 0);
         ActiveSub_02054000* sub = _Z21GetActiveSub_02054000P14Outer_02054000((struct Outer_02054000*)combatant);
         if (sub != 0) {
+#if defined(jpn)
+            _Z20AppendString02042058PcPKc(dst, sub->name);
+#else
             char text[0x100];
             __clear(text, 0x100);
             _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(sub->name, text, 0);
             _Z20AppendString02042058PcPKc(dst, text);
+#endif
         }
         if (i != count - 1) {
             _Z20AppendString02042058PcPKc(dst, sep);

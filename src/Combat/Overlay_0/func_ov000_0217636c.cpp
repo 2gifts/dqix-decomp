@@ -14,12 +14,20 @@ extern "C" void _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci(struct Struct_020
 extern "C" void func_0205bb04(void* obj, int v);
 
 struct GlobalField0x1c {
+#if defined(jpn)
+    char unk0[0x28];
+#else
     char unk0[0x5c];
+#endif
     void* tileBuffer;
 };
 extern "C" struct GlobalField0x1c* _Z26GetGlobalField0x1c020421a0v();
 
+#if defined(jpn)
+extern "C" void func_0205d304(void* window, void* buf, int a, int b, int c, int d, int e);
+#else
 extern "C" void func_0205d304(void* window, void* buf, int a, int b, int c, int d, int e, int f);
+#endif
 
 struct WindowNode {
     int unk0;
@@ -80,8 +88,16 @@ extern "C" ARM void func_ov000_0217636c(struct Combatant* obj, int arg) {
         window->unkAE = 0xe;
         window->unkB1 = 0xd;
         void* buf = _Z26GetGlobalField0x1c020421a0v()->tileBuffer;
+#if defined(jpn)
+        memset(buf, 0, 0x800);
+#else
         memset(buf, 0, 0x960);
+#endif
         func_ov000_02176500(obj, buf, arg);
+#if defined(jpn)
+        func_0205d304(obj->window, buf, 0, 1, 0, 1, 0);
+#else
         func_0205d304(obj->window, buf, 0, 1, 0, 1, 0, 0);
+#endif
     }
 }

@@ -2,6 +2,7 @@
 
 extern "C" void func_ov003_02159078(void*);
 
+// JPN: func_ov017_021bb1bc
 // USA: func_ov017_021babc8
 ARM void CallField1cPtrA_021babc8(void* obj) {
     void* p = *(void**)((char*)obj + 0x1c);

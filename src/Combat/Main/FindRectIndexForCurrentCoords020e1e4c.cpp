@@ -4,12 +4,7 @@ extern char data_02114e54;
 
 void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
 struct RectList020e1eb0;
-#if defined(jpn)
-extern "C" int func_020e3a50(struct RectList020e1eb0* list, int x, int y);
-#define FindRectContainingPoint020e1eb0 func_020e3a50
-#else
 ARM int FindRectContainingPoint020e1eb0(struct RectList020e1eb0* list, int x, int y);
-#endif
 
 // USA: func_020e1e4c
 ARM int FindRectIndexForCurrentCoords020e1e4c(struct RectList020e1eb0* list) {

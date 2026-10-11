@@ -42,6 +42,9 @@ extern "C" unsigned int* _Z27GetDataPtr02114e04_020d6c00v();
 void OrBitsIntoField0(unsigned int* field, unsigned int bits);
 extern "C" void _Z16ZeroInit020de848Pv(void* table);
 extern "C" void _Z19ResetStruct020dfc40P14Struct020dfc40(Struct020dfc40* table);
+#if defined(jpn)
+#define func_ov009_021847ec func_ov009_02185850
+#endif
 extern "C" void func_ov009_021847ec(void* checker);
 extern "C" void _Z17ResetList0204af64P12List0204af64(List0204af64* background);
 extern "C" void _Z18InitStruct0205cfd4P18InitTarget0205cfd4(InitTarget0205cfd4* window);
@@ -53,16 +56,26 @@ extern "C" int _Z27FindEntryIndexByKey020424e4ii(int text, int mode);
 extern char data_ov009_0218aca4[];
 
 struct CharacterCreation {
+#if defined(jpn)
+    SafeAllocator allocators_[8];
+#else
     SafeAllocator allocators_[9];
+#endif
     SafeAllocator* modelAllocator_;
     SafeAllocator* previewAllocators_;
+#if !defined(jpn)
     void* savedKey_;
     void* keyboard_;
     void* layout_;
+#endif
     char partNames_[0x18];
     Struct020dfc40 texts_;
     void* unk_f8;
+#if defined(jpn)
+    char checker_[0x20];
+#else
     char checker_[0x3c];
+#endif
     List0204af64 backgrounds_[6];
     InitTarget0205cfd4 windows_[2];
     Canvas canvases_[1];
@@ -118,11 +131,20 @@ struct CharacterCreation {
     unsigned char eyeColor_[2];
     unsigned char face_[2];
     unsigned char hairColor_[2];
+#if defined(jpn)
+    char names_[2][11];
+    unsigned char nameFlags_[2];
+    unsigned char unk_db4;
+    unsigned char keyboardResult_;
+    unsigned char unk_db6;
+    char unk_db7;
+#else
     char** names_;
     unsigned char unk_db4;
     unsigned char keyboardResult_;
     unsigned char unk_db6;
     char unk_db7;
+#endif
 };
 
 // USA: func_ov009_0218454c
@@ -139,11 +161,15 @@ extern "C" ARM void func_ov009_0218454c(CharacterCreation* self, int vocation, i
     self->allocators_[5].ResetAllocatorPointer();
     self->allocators_[6].ResetAllocatorPointer();
     self->allocators_[7].ResetAllocatorPointer();
+#if !defined(jpn)
     self->allocators_[8].ResetAllocatorPointer();
+#endif
     self->modelAllocator_ = NULL;
     self->previewAllocators_ = NULL;
+#if !defined(jpn)
     self->keyboard_ = NULL;
     self->layout_ = NULL;
+#endif
     _Z16ZeroInit020de848Pv(&self->partNames_);
     _Z19ResetStruct020dfc40P14Struct020dfc40(&self->texts_);
     self->unk_f8 = NULL;
@@ -207,8 +233,20 @@ extern "C" ARM void func_ov009_0218454c(CharacterCreation* self, int vocation, i
         self->eyeColor_[i] = 0;
         self->face_[i] = 0;
         self->hairColor_[i] = 0;
+#if defined(jpn)
+        memset(self->names_[i], 0, sizeof(self->names_[i]));
+        self->nameFlags_[i] = 0;
+#endif
     }
+#if defined(jpn)
+    self->unk_db4 = 0;
+    self->keyboardResult_ = 0;
+#else
     self->names_ = NULL;
     self->unk_db4 = _Z27FindEntryIndexByKey020424e4ii((int)data_ov009_0218aca4, 0);
+#endif
     self->unk_db6 = 0;
+#if defined(jpn)
+    self->unk_db7 = 0;
+#endif
 }

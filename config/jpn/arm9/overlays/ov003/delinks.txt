@@ -1476,3 +1476,7 @@ src/Combat/Overlay_3/InitEntriesFromTablePayload_0217545c.cpp:
 src/Combat/Overlay_3/SetElementFieldsFromTable_02173bd8.cpp:
     complete
     .text start:0x02172d4c end:0x02172e0c
+
+src/Combat/Overlay_3/func_ov003_021745fc.cpp:
+    complete
+    .text start:0x02173734 end:0x0217393c

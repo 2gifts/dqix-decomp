@@ -16642,3 +16642,39 @@ src/Combat/Main/SetByte0x1880.cpp:
 src/Combat/Main/SumSlotsWithFlag0x1000x150_02086d20.cpp:
     complete
     .text start:0x02087640 end:0x020876a8
+
+src/Combat/Main/ClearFirstWord02064e20.cpp:
+    complete
+    .text start:0x0206611c end:0x02066128
+
+src/Combat/Main/ClearFirstWord0206da74.cpp:
+    complete
+    .text start:0x0206ebc8 end:0x0206ebd4
+
+src/Combat/Main/GetHolderPair020bd88c.cpp:
+    complete
+    .text start:0x020bf358 end:0x020bf378
+
+src/Combat/Main/SetPairEntryPointers020bb444.cpp:
+    complete
+    .text start:0x020bcf10 end:0x020bcf58
+
+src/Combat/Main/InitPairSlotStates020bb514.cpp:
+    complete
+    .text start:0x020bcfe0 end:0x020bd054
+
+src/Combat/Main/LookupRecordAndDispatch020be760.cpp:
+    complete
+    .text start:0x020c022c end:0x020c0274
+
+src/Combat/Main/FindRectContainingPoint020e1eb0.cpp:
+    complete
+    .text start:0x020e3a50 end:0x020e3abc
+
+src/Combat/Main/GetAlignedSizeByCode020b2a6c.cpp:
+    complete
+    .text start:0x020b4538 end:0x020b4598
+
+src/Combat/Main/RegisterType0x11Handler.cpp:
+    complete
+    .text start:0x020d2be4 end:0x020d2c10

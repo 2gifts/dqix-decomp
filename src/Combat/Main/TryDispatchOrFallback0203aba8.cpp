@@ -1,12 +1,7 @@
 #include <globaldefs.h>
 
 void* SetGlobalContext02110370(void* value);
-#if defined(jpn)
-extern "C" int func_020c022c(void* a, void* key);
-#define LookupRecordAndDispatch020be760 func_020c022c
-#else
 int LookupRecordAndDispatch020be760(void* a, void* key);
-#endif
 
 struct Obj0203aba8 {
     void* field0;

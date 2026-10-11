@@ -1,10 +1,15 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define data_020f1f14 data_020f2080
+#define data_0210cf84 data_0210cc3c
+#endif
 
 struct PairSlot020bb514 { int a; int b; int active; int flag; char pad[8]; };
 extern struct PairSlot020bb514 data_020f1f14[];
 extern unsigned short data_0210cf84;
 
 // USA: func_020bb514
+// JPN: func_020bcfe0
 ARM void InitPairSlotStates020bb514(void) {
     int i;
     struct PairSlot020bb514* slot = data_020f1f14;

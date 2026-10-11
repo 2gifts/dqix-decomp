@@ -2396,3 +2396,19 @@ src/Combat/Overlay_23/DispatchByField776_021dc488.cpp:
 src/Combat/Overlay_23/func_ov023_021dd344.cpp:
     complete
     .text start:0x021ddb34 end:0x021ddbf4
+
+src/Combat/Overlay_23/ClearShortAndTwoBytes_021e71a0.cpp:
+    complete
+    .text start:0x021e7400 end:0x021e7414
+
+src/Combat/Overlay_23/GetByteViaFieldIndirectOffset_021e4250_021e4250.cpp:
+    complete
+    .text start:0x021e4474 end:0x021e4488
+
+src/Combat/Overlay_23/GetTableEntry138_021eea98.cpp:
+    complete
+    .text start:0x021ee7fc end:0x021ee810
+
+src/Combat/Overlay_23/UpdateCaptureBit_021dfad8.cpp:
+    complete
+    .text start:0x021e00ec end:0x021e0160

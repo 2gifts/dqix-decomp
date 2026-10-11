@@ -11,9 +11,17 @@ extern "C" void* _Z33GetPointerField_02171b9c_02171b9cPvi(void* obj, int idx);
 int AppendNameTag(char* dst, int n, const char* name);
 extern "C" void __clear(void* buf, int n);
 extern "C" int _Z20AppendString02042058PcPKc(char* dst, const char* src);
+#if defined(jpn)
+extern "C" int func_02042158(char* dst, int w);
+#define AppendWidthTag func_02042158
+#else
 int AppendWidthTag(char* dst, int w);
+#endif
 extern "C" void _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(const char* src, char* dst, int flag);
 
+#if defined(jpn)
+#define data_ov000_02184069 data_ov000_021851a9
+#endif
 extern char data_ov000_02184069[];
 
 struct ListItem0217979c {
@@ -38,8 +46,10 @@ extern "C" ARM void func_ov000_0217979c(char* obj, struct ItemList0217979c* list
     signed char start = first;
     signed char end = last;
     signed char cursor = list->cursor;
+#if !defined(jpn)
     char* prefix = _Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)(obj + 0xb8), 0x13);
     char* separator = _Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)(obj + 0xb8), 0);
+#endif
     if (IsField0x118Equal2(obj)) {
         _Z22AppendFrameTag02041c08Pciiiii(dst, cursor - start, 8, 5, 5, 5);
     }
@@ -54,18 +64,30 @@ extern "C" ARM void func_ov000_0217979c(char* obj, struct ItemList0217979c* list
         __clear(text, 0x80);
         int narrow = item->kind <= 7;
         if (narrow) {
+#if defined(jpn)
+            _Z20AppendString02042058PcPKc(text, _Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)(obj + 0xb8), 0x13));
+#else
             _Z20AppendString02042058PcPKc(text, prefix);
             AppendWidthTag(text, 3);
+#endif
         } else {
             AppendWidthTag(text, 8);
         }
+#if defined(jpn)
+        _Z20AppendString02042058PcPKc(text, item->name);
+#else
         char name[0x100];
         __clear(name, 0x100);
         _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(item->name, name, 0);
         _Z20AppendString02042058PcPKc(text, name);
+#endif
         AppendNameTag(dst, i - start, text);
         if (i != end - 1) {
+#if defined(jpn)
+            _Z20AppendString02042058PcPKc(dst, _Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)(obj + 0xb8), 0));
+#else
             _Z20AppendString02042058PcPKc(dst, separator);
+#endif
         }
     }
 }

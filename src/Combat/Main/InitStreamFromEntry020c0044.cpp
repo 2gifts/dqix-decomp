@@ -4,12 +4,7 @@
 extern "C" int func_020bd7c4(unsigned int index, void* buf, int size, int flag);
 
 struct OutPair020bd88c;
-#if defined(jpn)
-extern "C" void func_020bf358(struct OutPair020bd88c* out);
-#define GetHolderPair020bd88c func_020bf358
-#else
 void GetHolderPair020bd88c(struct OutPair020bd88c* out);
-#endif
 
 struct TwoWords020c0044 { int a; int b; };
 #include "Filesystem/NitroVM.h"

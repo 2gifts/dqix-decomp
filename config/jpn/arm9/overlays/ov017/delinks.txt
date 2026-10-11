@@ -3628,3 +3628,83 @@ src/Combat/Overlay_17/CallField700ThenReset48_021afa70.cpp:
 src/Combat/Overlay_17/ForwardObjField4ToHandler_021afa9c.cpp:
     complete
     .text start:0x021b01b0 end:0x021b01d0
+
+src/Combat/Overlay_17/func_ov017_0218b5b0.cpp:
+    complete
+    .text start:0x0218c1d0 end:0x0218c1e0
+
+src/Combat/Overlay_17/ClearByteField17182_02195520.cpp:
+    complete
+    .text start:0x021960e8 end:0x021960f8
+
+src/Combat/Overlay_17/ClearByteField17201_0218d500.cpp:
+    complete
+    .text start:0x0218e0e0 end:0x0218e0f0
+
+src/Combat/Overlay_17/ClearFlag320_02195540.cpp:
+    complete
+    .text start:0x02196108 end:0x02196118
+
+src/Combat/Overlay_17/ClearFlag658_0219aa5c.cpp:
+    complete
+    .text start:0x0219b600 end:0x0219b610
+
+src/Combat/Overlay_17/SetFlag320_02195530.cpp:
+    complete
+    .text start:0x021960f8 end:0x02196108
+
+src/Combat/Overlay_17/HasFlagBit_0218d4ec.cpp:
+    complete
+    .text start:0x0218e0cc end:0x0218e0e0
+
+src/Combat/Overlay_17/ResetField_021a7998_021a7998.cpp:
+    complete
+    .text start:0x021a8328 end:0x021a833c
+
+src/Combat/Overlay_17/ResetField_021adc30_021adc30.cpp:
+    complete
+    .text start:0x021ae438 end:0x021ae44c
+
+src/Combat/Overlay_17/GetSubByteField56e_021b354c.cpp:
+    complete
+    .text start:0x021b3c40 end:0x021b3c54
+
+src/Combat/Overlay_17/CallHelperAndSetFlag_021a6b84.cpp:
+    complete
+    .text start:0x021a7528 end:0x021a7540
+
+src/Combat/Overlay_17/CallHelperAndSetFlag_021a72dc.cpp:
+    complete
+    .text start:0x021a7c84 end:0x021a7c9c
+
+src/Combat/Overlay_17/CallHelperAndSetFlag_021a85bc.cpp:
+    complete
+    .text start:0x021a8db8 end:0x021a8dd0
+
+src/Combat/Overlay_17/CallIfField20_021a9998.cpp:
+    complete
+    .text start:0x021aa16c end:0x021aa184
+
+src/Combat/Overlay_17/CallIfField24_021b6b44.cpp:
+    complete
+    .text start:0x021b70f4 end:0x021b710c
+
+src/Combat/Overlay_17/CallField1cPtrA_021babc8.cpp:
+    complete
+    .text start:0x021bb1bc end:0x021bb1d4
+
+src/Combat/Overlay_17/CallField6acPtrA_021b8438.cpp:
+    complete
+    .text start:0x021b8948 end:0x021b8960
+
+src/Combat/Overlay_17/ClearAndEncodeField14_021a5b08.cpp:
+    complete
+    .text start:0x021a6540 end:0x021a6580
+
+src/Combat/Overlay_17/InitAndEnqueueTag33_021c12fc.cpp:
+    complete
+    .text start:0x021c18a4 end:0x021c18f8
+
+src/Combat/Overlay_17/InitObj_021acd7c.cpp:
+    complete
+    .text start:0x021ad5b4 end:0x021ad62c
