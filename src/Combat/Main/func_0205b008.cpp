@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_0205b008 func_0205c3a4
+#endif
+
 struct Elem0205b008 {
     unsigned short f0;
     unsigned short f1;
