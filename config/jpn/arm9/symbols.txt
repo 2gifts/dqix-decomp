@@ -2711,7 +2711,7 @@ _Z17EnsureByte0xbeIs2P11Obj02033b68 kind:function(arm,size=0x28) addr:0x02079648
 func_02078754 kind:function(arm,size=0x140) addr:0x02079670
 _Z23EmptyDestructor02078894Pv kind:function(arm,size=0x4) addr:0x020797b0
 _Z29SyncCombatantPosition02078898P14Entity02078898 kind:function(arm,size=0x100) addr:0x020797b4
-func_020798b4 kind:function(arm,size=0x328) addr:0x020798b4
+func_02078998 kind:function(arm,size=0x328) addr:0x020798b4
 func_02078cc0 kind:function(arm,size=0xc4) addr:0x02079bdc
 func_02079ca0 kind:function(arm,size=0xb4) addr:0x02079ca0
 func_02078e60 kind:function(arm,size=0x1e0) addr:0x02079d54
@@ -6316,8 +6316,8 @@ defaultCommands$319 kind:data(any) addr:0x020ed7d4 local
 data_020ed7f8 kind:data(any) addr:0x020ed7f8
 data_020ed82c kind:data(any) addr:0x020ed938
 data_020edf2c kind:data(any) addr:0x020ee038
-data_020ee30c kind:data(any) addr:0x020ee30c
-data_020ee318 kind:data(any) addr:0x020ee318
+data_020ee200 kind:data(any) addr:0x020ee30c
+data_020ee20c kind:data(any) addr:0x020ee318
 data_020ee218 kind:data(any) addr:0x020ee324
 data_020ee230 kind:data(any) addr:0x020ee33c
 data_020ee384 kind:data(any) addr:0x020ee384

@@ -16810,3 +16810,15 @@ src/Combat/Main/func_020276dc.cpp:
 src/Combat/Main/02070b6c.cpp:
     complete
     .text start:0x02071bd8 end:0x02071ecc
+
+src/Combat/Main/0203a5e8.cpp:
+    complete
+    .text start:0x0203a040 end:0x0203a2d0
+
+src/Combat/Main/02078998.cpp:
+    complete
+    .text start:0x020798b4 end:0x02079bdc
+
+src/Combat/Main/020d6f9c.cpp:
+    complete
+    .text start:0x020d89a4 end:0x020d8d3c
