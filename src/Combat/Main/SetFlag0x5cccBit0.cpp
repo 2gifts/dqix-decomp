@@ -1,7 +1,11 @@
 #include <globaldefs.h>
 
 struct StateBits5ccc_11544 {
+#if defined(jpn)
+    char unk[0x5A6C];
+#else
     char unk[0x5CCC];
+#endif
     signed int flag : 1;
 };
 

@@ -4,6 +4,10 @@
 
 // USA: func_020ac0b4
 ARM int CopyOutBattleField0x7ac0(void* dst) {
+#if defined(jpn)
+    memcpy(dst, (char*)GameState::GetInstance() + 0x7880, 4);
+#else
     memcpy(dst, (char*)GameState::GetInstance() + 0x7ac0, 4);
+#endif
     return 1;
 }

@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define func_ov008_02188d74 func_ov008_02189a9c
+#define func_ov008_0218712c func_ov008_02188008
+#define _Z18InitConfig02187664P15Manager02187664i func_ov008_02188578
+#define func_ov008_02187f6c func_ov008_02188ccc
+#endif
+
 #include <Memory/SafeAllocator.h>
 
 struct PlayTime {
@@ -95,9 +102,15 @@ struct BattleRecords {
 };
 
 struct MessageSystem {
+#if defined(jpn)
+    char pad_0[0x870];
+    int unk_9a0;
+    char pad_9a4[0x17de - 0x874];
+#else
     char pad_0[0x9a0];
     int unk_9a0;
     char pad_9a4[0x19ae - 0x9a4];
+#endif
     unsigned char unk_19ae;
 };
 

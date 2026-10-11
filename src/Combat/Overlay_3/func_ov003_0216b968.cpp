@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define REGION_LAYOUT(j,u) j
+#define func_ov003_0216da90 func_ov003_0216d478
+#else
+#define REGION_LAYOUT(j,u) u
+#endif
+
 #include "GameState/GameState.h"
 #include "System/ColorEffects.h"
 
@@ -9,11 +16,11 @@ struct Obj0205eaa0;
 struct Entry_0205d6a0;
 
 struct Global0216b968 {
-    char unk_0[0x2e0];
+    char unk_0[REGION_LAYOUT(0x230, 0x2e0)];
     struct Container0205a330* entries_;
-    char unk_2e4[0x6bc];
+    char unk_2e4[REGION_LAYOUT(0x63c, 0x6bc)];
     int mode_;
-    char unk_9a4[0x100a];
+    char unk_9a4[REGION_LAYOUT(0xf6a, 0x100a)];
     unsigned char field_0x19ae;
 };
 
@@ -23,7 +30,7 @@ struct Self0216b968 {
     short step_;
     char unk_8[0x8];
     int field_0x10;
-    char unk_14[0x12ac];
+    char unk_14[REGION_LAYOUT(0x113c, 0x12ac)];
     void* list_;
     char unk_12c4[0x126];
     unsigned char field_0x13ea;
@@ -85,6 +92,41 @@ extern "C" ARM void func_ov003_0216b968(Self0216b968* self) {
             selection = -2;
         }
 
+#if defined(jpn)
+        switch (selection) {
+        case 0:
+            self->result_ = 3;
+            self->step_ = 0;
+            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
+            _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((struct Entry_0205d6a0*)self->list_, 0);
+            break;
+        case 1:
+            self->result_ = 5;
+            self->step_ = 0;
+            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
+            _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((struct Entry_0205d6a0*)self->list_, 0);
+            break;
+        case 2:
+            self->result_ = 4;
+            self->step_ = 0;
+            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
+            _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((struct Entry_0205d6a0*)self->list_, 0);
+            break;
+        case 3:
+            self->result_ = 6;
+            self->step_ = 0;
+            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
+            _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((struct Entry_0205d6a0*)self->list_, 0);
+            break;
+        case -2:
+            self->result_ = 6;
+            self->step_ = 0;
+            _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((struct Entry_0205d6a0*)self->list_, 0);
+            break;
+        default:
+            break;
+        }
+#else
         int result;
         int dispatch = 1;
         switch (selection) {
@@ -114,5 +156,6 @@ extern "C" ARM void func_ov003_0216b968(Self0216b968* self) {
             _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
         }
         _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((struct Entry_0205d6a0*)self->list_, 0);
+#endif
     }
 }

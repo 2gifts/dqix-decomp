@@ -5,7 +5,11 @@ void ResetElem2081Entry(void*);
 struct Elem0207fe44 { char b[0xe0]; };
 
 struct Cont0207fe44 {
+#if defined(jpn)
+    char pad0[0x24];
+#else
     char pad0[0x30];
+#endif
     Elem0207fe44* elems;
     char pad34[0x39 - 0x34];
     unsigned char count39;

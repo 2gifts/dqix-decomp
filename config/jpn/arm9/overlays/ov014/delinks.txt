@@ -223,3 +223,12 @@ src/Combat/Overlay_14/func_ov014_02187340.cpp:
 
 src/Combat/Overlay_14/Trans_02188bfc.cpp:
     .text start:0x02189a40 end:0x02189a78
+
+src/Combat/Overlay_14/func_ov014_02185c3c.cpp:
+    .text start:0x02186cac end:0x02186cb8
+
+src/Combat/Overlay_14/AdvanceMappedMemberIdState_02187b38.cpp:
+    .text start:0x02188a3c end:0x02188b08
+
+src/Combat/Overlay_14/func_ov014_02187c04.cpp:
+    .text start:0x02188b08 end:0x02188cbc

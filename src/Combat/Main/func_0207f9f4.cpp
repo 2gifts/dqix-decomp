@@ -12,6 +12,9 @@ extern "C" int _Z18CountActiveEntriesP19ActiveEntry02046900(void* entry);
 extern "C" void* _Z17FindRecordByIndexP11Rec020467f0iPPvPi(void* rec, int index, void** out, int* outSize);
 extern "C" char* _Z26GetGlobalField0x1c020421a0v();
 extern "C" void _Z24InitStreamAndRun0207f524PvS_P12StreamHeaderi(void* a, void* b, StreamHeader* c, int d);
+#if defined(jpn)
+#define _Z32LoadEntryArrayFromStream0207ef74P18EntryArray0207efdcP13SafeAllocatorP12StreamHeaderi func_0207fcf4
+#endif
 extern "C" void _Z32LoadEntryArrayFromStream0207ef74P18EntryArray0207efdcP13SafeAllocatorP12StreamHeaderi(
     void* a, void* b, StreamHeader* c, int d);
 
@@ -22,12 +25,18 @@ struct Menu0207f9f4 {
     SafeAllocator* field14;
     int field18;
     int field1c;
+#ifndef jpn
     int field20[3];
+#endif
 };
 
 // USA: func_0207f9f4
+// JPN: 0x02080688
 extern "C" ARM int func_0207f9f4(Menu0207f9f4* self) {
     if (self->field1c < 0) {
+#ifdef jpn
+        return -1;
+#else
         int* ids = self->field20;
         if (ids[0] < 0) {
             if (ids[1] < 0) {
@@ -69,10 +78,15 @@ extern "C" ARM int func_0207f9f4(Menu0207f9f4* self) {
                 *ids = -1;
                 ids++;
             }
-            self->field18 = *(int*)(_Z26GetGlobalField0x1c020421a0v() + 0x5c);
+    #ifdef jpn
+        self->field18 = *(int*)(_Z26GetGlobalField0x1c020421a0v() + 0x28);
+#else
+        self->field18 = *(int*)(_Z26GetGlobalField0x1c020421a0v() + 0x5c);
+#endif
             return 0;
         }
         return 1;
+#endif
     }
 
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
@@ -95,7 +109,11 @@ extern "C" ARM int func_0207f9f4(Menu0207f9f4* self) {
             self->arrC, self->field14, (StreamHeader*)recs[2], outs[2]);
         loader->RemoveTask(self->field1c);
         self->field1c = -1;
+#ifdef jpn
+        self->field18 = *(int*)(_Z26GetGlobalField0x1c020421a0v() + 0x28);
+#else
         self->field18 = *(int*)(_Z26GetGlobalField0x1c020421a0v() + 0x5c);
+#endif
         return 0;
     }
     return 1;

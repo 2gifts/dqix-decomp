@@ -3,7 +3,11 @@
 extern "C" void func_02048150(void*);
 
 struct T02053fe4 {
+#if defined(jpn)
+    char pad[0x180];
+#else
     char pad[0x18c];
+#endif
     unsigned int field18c;
 };
 

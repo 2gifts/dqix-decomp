@@ -5,7 +5,11 @@ void ResetElem2081Entry(void*);
 struct Elem2081;
 
 struct Obj2081 {
+#if defined(jpn)
+    char pad0[0x24];
+#else
     char pad0[0x30];
+#endif
     struct Elem2081* elems;
 };
 

@@ -1,7 +1,11 @@
 #include <globaldefs.h>
 
 struct FieldFlagBlock {
+#if defined(jpn)
+    char unk[0x617C];
+#else
     char unk[0x63DC];
+#endif
     union {
         unsigned char raw;
         struct {

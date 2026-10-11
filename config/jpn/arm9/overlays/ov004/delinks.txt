@@ -1201,3 +1201,177 @@ src/Combat/Overlay_4/SetFieldFlagValue151_02168268.cpp:
 
 src/Combat/Overlay_4/SetFieldFlagValue21_0216827c.cpp:
     .text start:0x021686f0 end:0x02168704
+
+src/Combat/Overlay_4/EmptyFunc_0215e434.cpp:
+    .text start:0x0215f0ec end:0x0215f0f0
+
+src/Combat/Overlay_4/EmptyFunc_0215e430.cpp:
+    .text start:0x0215f0e8 end:0x0215f0ec
+
+src/Combat/Overlay_4/DoNothing_0215e42c.cpp:
+    .text start:0x0215f0e4 end:0x0215f0e8
+
+src/Combat/Overlay_4/DoNothing_0215e428.cpp:
+    .text start:0x0215f0e0 end:0x0215f0e4
+
+src/Combat/Overlay_4/DoNothing_0215e424.cpp:
+    .text start:0x0215f0dc end:0x0215f0e0
+
+src/Combat/Overlay_4/EmptyFunc_02153778.cpp:
+    .text start:0x0215f0d8 end:0x0215f0dc
+
+src/Combat/Overlay_4/InitVec3FromStack_0215377c.cpp:
+    .text start:0x0215f0ac end:0x0215f0d8
+
+src/Combat/Overlay_4/DoNothing_0215e420.cpp:
+    .text start:0x0215f0a8 end:0x0215f0ac
+
+src/Combat/Overlay_4/ReturnZero_0215e418.cpp:
+    .text start:0x0215f0a0 end:0x0215f0a8
+
+src/Combat/Overlay_4/DoNothing_0215e414.cpp:
+    .text start:0x0215f09c end:0x0215f0a0
+
+src/Combat/Overlay_4/ReturnZero_0215e40c.cpp:
+    .text start:0x0215f094 end:0x0215f09c
+
+src/Combat/Overlay_4/DoNothing_0215e408.cpp:
+    .text start:0x0215f090 end:0x0215f094
+
+src/Combat/Overlay_4/ReturnZero_0215e400.cpp:
+    .text start:0x0215f088 end:0x0215f090
+
+src/Combat/Overlay_4/ReturnZero_0215e3f8.cpp:
+    .text start:0x0215f080 end:0x0215f088
+
+src/Combat/Overlay_4/DoNothing_0215e3f4.cpp:
+    .text start:0x0215f07c end:0x0215f080
+
+src/Combat/Overlay_4/ReturnZero_0215e3ec.cpp:
+    .text start:0x0215f074 end:0x0215f07c
+
+src/Combat/Overlay_4/DoNothing_0215e3e8.cpp:
+    .text start:0x0215f070 end:0x0215f074
+
+src/Combat/Overlay_4/ReturnZero_0215e3e0.cpp:
+    .text start:0x0215f068 end:0x0215f070
+
+src/Combat/Overlay_4/DoNothing_0215e3dc.cpp:
+    .text start:0x0215f064 end:0x0215f068
+
+src/Combat/Overlay_4/ReturnZero_0215e3d4.cpp:
+    .text start:0x0215f05c end:0x0215f064
+
+src/Combat/Overlay_4/DoNothing_0215e3d0.cpp:
+    .text start:0x0215f058 end:0x0215f05c
+
+src/Combat/Overlay_4/ReturnZero_0215e3c8.cpp:
+    .text start:0x0215f050 end:0x0215f058
+
+src/Combat/Overlay_4/DoNothing_0215e3c4.cpp:
+    .text start:0x0215f04c end:0x0215f050
+
+src/Combat/Overlay_4/ReturnZero_0215e3bc.cpp:
+    .text start:0x0215f044 end:0x0215f04c
+
+src/Combat/Overlay_4/DoNothing_0215e3b8.cpp:
+    .text start:0x0215f040 end:0x0215f044
+
+src/Combat/Overlay_4/ReturnZero_0215e3b0.cpp:
+    .text start:0x0215f038 end:0x0215f040
+
+src/Combat/Overlay_4/DoNothing_0215e3ac.cpp:
+    .text start:0x0215f034 end:0x0215f038
+
+src/Combat/Overlay_4/ReturnZero_0215e3a4.cpp:
+    .text start:0x0215f02c end:0x0215f034
+
+src/Combat/Overlay_4/DoNothing_0215e3a0.cpp:
+    .text start:0x0215f028 end:0x0215f02c
+
+src/Combat/Overlay_4/ReturnZero_0215e398.cpp:
+    .text start:0x0215f020 end:0x0215f028
+
+src/Combat/Overlay_4/DoNothing_0215e394.cpp:
+    .text start:0x0215f01c end:0x0215f020
+
+src/Combat/Overlay_4/ReturnZero_0215e38c.cpp:
+    .text start:0x0215f014 end:0x0215f01c
+
+src/Combat/Overlay_4/DoNothing_0215e388.cpp:
+    .text start:0x0215f010 end:0x0215f014
+
+src/Combat/Overlay_4/ReturnZero_0215e380.cpp:
+    .text start:0x0215f008 end:0x0215f010
+
+src/Combat/Overlay_4/DoNothing_0215e37c.cpp:
+    .text start:0x0215f004 end:0x0215f008
+
+src/Combat/Overlay_4/ReturnZero_0215e374.cpp:
+    .text start:0x0215effc end:0x0215f004
+
+src/Combat/Overlay_4/DoNothing_0215e370.cpp:
+    .text start:0x0215eff8 end:0x0215effc
+
+src/Combat/Overlay_4/ReturnZero_0215e368.cpp:
+    .text start:0x0215eff0 end:0x0215eff8
+
+src/Combat/Overlay_4/DoNothing_0215e364.cpp:
+    .text start:0x0215efec end:0x0215eff0
+
+src/Combat/Overlay_4/ReturnZero_0215e35c.cpp:
+    .text start:0x0215efe4 end:0x0215efec
+
+src/Combat/Overlay_4/DoNothing_0215e358.cpp:
+    .text start:0x0215efe0 end:0x0215efe4
+
+src/Combat/Overlay_4/DoNothing_0215e354.cpp:
+    .text start:0x0215efdc end:0x0215efe0
+
+src/Combat/Overlay_4/ReturnZero_0215e34c.cpp:
+    .text start:0x0215efd4 end:0x0215efdc
+
+src/Combat/Overlay_4/ReturnZero_0215e344.cpp:
+    .text start:0x0215efcc end:0x0215efd4
+
+src/Combat/Overlay_4/ReturnZero_0215e33c.cpp:
+    .text start:0x0215efc4 end:0x0215efcc
+
+src/Combat/Overlay_4/ReturnZero_0215e334.cpp:
+    .text start:0x0215efbc end:0x0215efc4
+
+src/Combat/Overlay_4/DoNothing_0215e330.cpp:
+    .text start:0x0215efb8 end:0x0215efbc
+
+src/Combat/Overlay_4/DoNothing_0215e32c.cpp:
+    .text start:0x0215efb4 end:0x0215efb8
+
+src/Combat/Overlay_4/CopyThreeWords_0215e300.cpp:
+    .text start:0x0215ef88 end:0x0215efb4
+
+src/Combat/Overlay_4/DoNothing_0215e2fc.cpp:
+    .text start:0x0215ef84 end:0x0215ef88
+
+src/Combat/Overlay_4/DoNothing_0215e2f8.cpp:
+    .text start:0x0215ef80 end:0x0215ef84
+
+src/Combat/Overlay_4/EmptyStub_02156e28.cpp:
+    .text start:0x02157ef0 end:0x02157ef4
+
+src/Combat/Overlay_4/EmptyFunc_0215434c.cpp:
+    .text start:0x021559f4 end:0x021559f8
+
+src/Combat/Overlay_4/ReturnZero_0215e2e8.cpp:
+    .text start:0x0215ef70 end:0x0215ef78
+
+src/Combat/Overlay_4/ReturnZero_0215e2e0.cpp:
+    .text start:0x0215ef68 end:0x0215ef70
+
+src/Combat/Overlay_4/DoNothing_0215e2dc.cpp:
+    .text start:0x0215ef64 end:0x0215ef68
+
+src/Combat/Overlay_4/func_ov004_021680cc.cpp:
+    .text start:0x02168514 end:0x021686b8
+
+src/Combat/Overlay_4/AllocateBuffersAndDispatch_02167d04.cpp:
+    .text start:0x021681a4 end:0x021681b8

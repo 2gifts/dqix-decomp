@@ -5,7 +5,11 @@ struct ActorEntry {
 };
 
 struct ActorListManager {
+#if defined(jpn)
+    char unk[0x496];
+#else
     char unk[0x476];
+#endif
     unsigned char count;
     char unk477[0x1];
     struct ActorEntry* entries;

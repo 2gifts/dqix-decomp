@@ -5868,3 +5868,47 @@ src/Combat/Overlay_31/func_ov031_0223cff0.cpp:
 src/Combat/Overlay_31/ProcessRing_022417fc.cpp:
     complete
     .text start:0x02241fdc end:0x0224203c
+
+src/Combat/Overlay_31/CallStubPair_0222a274.cpp:
+    complete
+    .text start:0x0222aa54 end:0x0222aa64
+
+src/Combat/Overlay_31/MarkGlobal0224e580ContextReady_0220f4a0.cpp:
+    complete
+    .text start:0x0220fc80 end:0x0220fc9c
+
+src/Combat/Overlay_31/SetField_022274c0_022274c0_02231518.cpp:
+    complete
+    .text start:0x02231cf8 end:0x02231d18
+
+src/Combat/Overlay_31/GetField16_02222e0c_022312e0.cpp:
+    complete
+    .text start:0x02231ac0 end:0x02231aec
+
+src/Combat/Overlay_31/CallStubsThenSetHandler_02231ab0.cpp:
+    complete
+    .text start:0x02232290 end:0x022322cc
+
+src/Combat/Overlay_31/InitAndSetHandler_0222aabc.cpp:
+    complete
+    .text start:0x0222b29c end:0x0222b2e8
+
+src/Combat/Overlay_31/SetField18_02222e98_0223130c.cpp:
+    complete
+    .text start:0x02231aec end:0x02231b0c
+
+src/Combat/Overlay_31/TailCallElemAtIndex30_0223c7c4_02231aec.cpp:
+    complete
+    .text start:0x022322cc end:0x0223233c
+
+src/Combat/Overlay_31/func_ov031_022139a0.cpp:
+    complete
+    .text start:0x02214180 end:0x02214248
+
+src/Combat/Overlay_31/Configure_02213a68.cpp:
+    complete
+    .text start:0x02214248 end:0x02214294
+
+src/Combat/Overlay_31/Configure_02213ab4.cpp:
+    complete
+    .text start:0x02214294 end:0x02214300

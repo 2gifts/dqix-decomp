@@ -2138,3 +2138,15 @@ src/Combat/Overlay_24/func_ov024_021da670.cpp:
 src/Combat/Overlay_24/func_ov024_021dd278.cpp:
     complete
     .text start:0x021ddb24 end:0x021ddde0
+
+src/Combat/Overlay_24/func_ov024_021de274.cpp:
+    complete
+    .text start:0x021deb20 end:0x021dede4
+
+src/Combat/Overlay_24/func_ov024_021e191c.cpp:
+    complete
+    .text start:0x021e21b4 end:0x021e2554
+
+src/Combat/Overlay_24/CheckCombatantInTable_021ea78c.cpp:
+    complete
+    .text start:0x021eaf58 end:0x021eafc8

@@ -1,7 +1,11 @@
 #include <globaldefs.h>
 
 struct S_020113e0 {
+#if defined(jpn)
+    char unk[0x5a70];
+#else
     char unk[0x5cd0];
+#endif
     unsigned char bits[10];
 };
 

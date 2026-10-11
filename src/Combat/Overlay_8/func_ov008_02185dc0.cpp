@@ -1,4 +1,15 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define REGION_LAYOUT(j,u) j
+#define REGION_FLAG(obj,flag) ((obj)->flags_ & (flag))
+#define REGION_MESSAGE(obj,shown) (!((obj)->flags_ & 0x200))
+#define data_ov008_0218b400 data_ov008_0218c080
+#else
+#define REGION_LAYOUT(j,u) u
+#define REGION_FLAG(obj,flag) ((obj)->IsFlagSet(flag))
+#define REGION_MESSAGE(obj,shown) (!(shown))
+#endif
+
 #include <Memory/SafeAllocator.h>
 
 struct PlayTime {
@@ -90,22 +101,26 @@ struct BattleRecords {
 
     int IsFlagSet(int flag)
     {
+#if defined(jpn)
+        return flags_ & flag ? 1 : 0;
+#else
         return *(volatile int*)&flags_ & flag ? 1 : 0;
+#endif
     }
 };
 
 struct MessageSystem {
-    char pad_0[0x998];
+    char pad_0[REGION_LAYOUT(0x868, 0x998)];
     int busy_;
     int unk_99c;
     int unk_9a0;
-    char pad_9a4[0x19ae - 0x9a4];
+    char pad_9a4[REGION_LAYOUT(0x17de, 0x19ae) - REGION_LAYOUT(0x874, 0x9a4)];
     unsigned char unk_19ae;
-    char pad_19af[0x19b2 - 0x19af];
+    char pad_19af[REGION_LAYOUT(0x17e2, 0x19b2) - REGION_LAYOUT(0x17df, 0x19af)];
     unsigned char unk_19b2;
-    char pad_19b3[0x19c5 - 0x19b3];
+    char pad_19b3[REGION_LAYOUT(0x17f6, 0x19c5) - REGION_LAYOUT(0x17e3, 0x19b3)];
     unsigned char unk_19c5;
-    char pad_19c6[0x19c8 - 0x19c6];
+    char pad_19c6[REGION_LAYOUT(0x17f9, 0x19c8) - REGION_LAYOUT(0x17f7, 0x19c6)];
     unsigned char unk_19c8;
 };
 
@@ -115,7 +130,7 @@ struct CombatantData {
 };
 
 struct PartyMember {
-    char pad_0[0x150];
+    char pad_0[REGION_LAYOUT(0x144, 0x150)];
     CombatantData* data_;
 };
 
@@ -169,6 +184,11 @@ void* func_0202ae18();
 int func_0202c540(void* value);
 }
 
+#if defined(jpn)
+extern "C" void _Z28SubmitScriptFromFile020727f8PvPKciS_h(void*, const char*, int, void*, int);
+extern "C" void func_02045d88(MessageSystem*, const char*, int);
+#endif
+
 // USA: func_ov008_02185dc0
 extern "C" ARM void func_ov008_02185dc0(BattleRecords* self, unsigned int ticks)
 {
@@ -185,13 +205,13 @@ extern "C" ARM void func_ov008_02185dc0(BattleRecords* self, unsigned int ticks)
     }
     if (step == 1)
     {
-        if (self->IsFlagSet(0x20000) && self->IsFlagSet(0x200))
+        if (REGION_FLAG(self, 0x20000) && REGION_FLAG(self, 0x200))
         {
             if (messages->unk_9a0 != 3)
                 return;
             self->flags_ &= ~0x20000;
         }
-        if (self->IsFlagSet(0x20000))
+        if (REGION_FLAG(self, 0x20000))
             step++;
         else
             SetBrightness(resources, 0, 0xf);
@@ -201,24 +221,39 @@ extern "C" ARM void func_ov008_02185dc0(BattleRecords* self, unsigned int ticks)
     {
         if (IsBrightnessTransitionActive(resources))
             return;
-        if (!self->IsFlagSet(0x80))
+        if (!REGION_FLAG(self, 0x80))
         {
+#if !defined(jpn)
             int shown = 1;
+#endif
             messages->busy_ = 1;
             if (self->title_ > 0)
             {
+#if !defined(jpn)
                 if (!(self->flags_ & 0x200))
                     shown = 0;
-                if (!shown)
+#endif
+                if (REGION_MESSAGE(self, shown))
                 {
-                    if (self->IsFlagSet(1) && !self->IsFlagSet(0x8000))
+                    if (REGION_FLAG(self, 1) && !REGION_FLAG(self, 0x8000))
                     {
                         PlayRecords records;
                         _Z23LoadBattleBlock020ac4c0Pv(&records);
                         AddClamped16BitHighAt0x20((S_a05d8*)&records, 1);
                         CopyInBattleField0x7540(&records);
                     }
-                    memset(self->text_, 0, 0x960);
+                    memset(self->text_, 0, REGION_LAYOUT(0x800, 0x960));
+#if defined(jpn)
+                    char* path = self->text_;
+                    char* comment = path + 0x80;
+                    TextList list;
+                    _Z23ResetListHeader020727d8P12List020727d8((List020727d8*)&list);
+                    _Z28SubmitScriptFromFile020727f8PvPKciS_h(&list, data_ov008_0218b400, self->comment_, path, 0);
+                    PartyMember* member = GetCombatantWithFlag0x100(gameState, GetField0x3acValue(gameState));
+                    _Z23ResetListHeader020727d8P12List020727d8((List020727d8*)&list);
+                    int female = member->data_->female_;
+                    _Z28SubmitScriptFromFile020727f8PvPKciS_h(&list, path, self->title_, comment, female);
+#else
                     char* path = self->text_;
                     char* inner = path + 0x80;
                     char* comment = path + 0x100;
@@ -242,8 +277,13 @@ extern "C" ARM void func_ov008_02185dc0(BattleRecords* self, unsigned int ticks)
                         _Z26SubmitAndRunScript02072928PvP12StreamHeaderiiS_h(&list, (StreamHeader*)file, size, self->title_, comment, female);
                     }
                     BackgroundLoader::RemoveLockGlobal();
+#endif
                     _Z20AppendString02042058PcPKc(comment, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&self->texts_, 1000));
+#if defined(jpn)
+                    func_02045d88(messages, comment, 0);
+#else
                     func_0204500c(messages, comment, 0, 0xe3);
+#endif
                     messages->unk_19b2 = 1;
                     messages->unk_19c8 = 1;
                     messages->unk_99c = 2;
@@ -258,17 +298,23 @@ extern "C" ARM void func_ov008_02185dc0(BattleRecords* self, unsigned int ticks)
             }
             else
             {
+#if !defined(jpn)
                 if (!(self->flags_ & 0x200))
                     shown = 0;
-                if (!shown)
+#endif
+                if (REGION_MESSAGE(self, shown))
                 {
+#if defined(jpn)
+                    func_02045d88(messages, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&self->texts_, 10000), 0);
+#else
                     func_0204500c(messages, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&self->texts_, 10000), 0, 0xe3);
+#endif
                     messages->unk_19b2 = 1;
                     messages->unk_19c8 = 1;
                     messages->unk_99c = 2;
                 }
             }
-            if (self->IsFlagSet(0x20000))
+            if (REGION_FLAG(self, 0x20000))
             {
                 messages->unk_19c5 = 1;
                 messages->unk_19b2 = 0;
@@ -285,10 +331,20 @@ extern "C" ARM void func_ov008_02185dc0(BattleRecords* self, unsigned int ticks)
     {
         int result = func_ov008_02186a30(self, ticks);
         int selected = _Z24ComputeScaledSum0205bb84P15Struct_0205bb84((Struct_0205bb84*)&self->cursor_);
+#if defined(jpn)
+        int limit = 5;
+        int first = self->top_;
+        limit += first;
+        if (selected > limit)
+            self->top_ = selected - 5;
+        else if (selected < first)
+            self->top_ = selected;
+#else
         if (selected > self->top_ + 5)
             self->top_ = selected - 5;
         else if (selected < self->top_)
             self->top_ = selected;
+#endif
         unsigned char kind = self->items_[selected];
         if (TestFlag0SetAndFlag1Clear(data_02114e30, 0x401) || result == 1)
         {
