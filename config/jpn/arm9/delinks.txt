@@ -16799,3 +16799,10 @@ src/Combat/Main/AlwaysTrue0208e0bc.cpp:
     complete
     .text start:0x0208e9cc end:0x0208e9d4
 
+src/Combat/Main/ClearMatchingBitsInMaskTable020c9a88.cpp:
+    complete
+    .text start:0x020cb554 end:0x020cb5dc
+
+src/Combat/Main/func_020276dc.cpp:
+    complete
+    .text start:0x02026f48 end:0x02027030

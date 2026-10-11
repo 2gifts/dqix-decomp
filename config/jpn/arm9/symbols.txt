@@ -741,7 +741,7 @@ func_02027304 kind:function(arm,size=0x88) addr:0x02026c68
 func_0202738c kind:function(arm,size=0xac) addr:0x02026cf0
 func_02027438 kind:function(arm,size=0x134) addr:0x02026d9c
 _Z24SetElementFields0202756cPviiihhthii kind:function(arm,size=0x78) addr:0x02026ed0
-func_02026f48 kind:function(arm,size=0xe8) addr:0x02026f48
+func_020276dc kind:function(arm,size=0xe8) addr:0x02026f48
 _Z21InitEntryList020277c4P14Struct020277c4iP13SafeAllocator kind:function(arm,size=0x30) addr:0x02027030
 func_020277f4 kind:function(arm,size=0x84) addr:0x02027060
 _Z16GetEntryFromListP13List_02027878i kind:function(arm,size=0x2c) addr:0x020270e4
@@ -6077,8 +6077,8 @@ data_020e78b4 kind:data(any) addr:0x020e78b4
 data_020e78c0 kind:data(any) addr:0x020e78c0
 data_020e7039 kind:data(any) addr:0x020e78d0
 data_020e78d5 kind:data(any) addr:0x020e78d5
-data_020e78da kind:data(any) addr:0x020e78da
-data_020e78e0 kind:data(any) addr:0x020e78e0
+data_020e703e kind:data(any) addr:0x020e78da
+data_020e7044 kind:data(any) addr:0x020e78e0
 data_020e78e8 kind:data(any) addr:0x020e78e8
 data_020e78f2 kind:data(any) addr:0x020e78f2
 data_020e78fe kind:data(any) addr:0x020e78fe

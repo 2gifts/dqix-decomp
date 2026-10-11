@@ -2432,3 +2432,7 @@ src/Combat/Overlay_23/GetFieldPtrAt_021f79e4_021f79e4.cpp:
 src/Combat/Overlay_23/GetFieldPtr24_021fad18.cpp:
     complete
     .text start:0x021fa0fc end:0x021fa104
+
+src/Combat/Overlay_23/InitEvent13_021fc408.cpp:
+    complete
+    .text start:0x021fb700 end:0x021fb764
