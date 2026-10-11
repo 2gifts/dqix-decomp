@@ -301,3 +301,11 @@ src/Combat/Overlay_16/func_ov016_0218edac.cpp:
 src/Combat/Overlay_16/func_ov016_0218f340.cpp:
     complete
     .text start:0x0218f340 end:0x0218f4f0
+
+src/Combat/Overlay_16/0218bec4.cpp:
+    complete
+    .text start:0x0218bec4 end:0x0218c024
+
+src/Combat/Overlay_16/0218d0d4.cpp:
+    complete
+    .text start:0x0218d0d4 end:0x0218d294
