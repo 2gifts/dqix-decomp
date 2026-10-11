@@ -2013,3 +2013,11 @@ src/Combat/Overlay_1/func_ov001_0215b72c.cpp:
 src/Combat/Overlay_1/func_ov001_02160da8.cpp:
     complete
     .text start:0x02160da8 end:0x021612ac
+
+src/Combat/Overlay_1/func_ov001_021539d8.cpp:
+    complete
+    .text start:0x021539d8 end:0x02154974
+
+src/Combat/Overlay_1/func_ov001_021552a8.cpp:
+    complete
+    .text start:0x021552a8 end:0x021557e0
