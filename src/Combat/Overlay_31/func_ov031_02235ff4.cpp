@@ -1,0 +1,24 @@
+#include <globaldefs.h>
+
+struct SessionAddress {
+    unsigned char octets[4];
+};
+
+struct SessionLog {
+    unsigned char padding[0x4c8];
+    SessionAddress address;
+};
+
+extern SessionLog* data_ov031_02290cfc;
+extern const char data_ov031_0224be50[];
+extern "C" int _Z23VariadicForward020c7130iiz(int, int, ...);
+
+// USA: func_ov031_02235ff4
+extern "C" ARM void func_ov031_02235ff4(int category) {
+    SessionAddress* address = &data_ov031_02290cfc->address;
+    unsigned char first = address->octets[0];
+    unsigned char second = address->octets[1];
+    unsigned char third = address->octets[2];
+    unsigned char fourth = address->octets[3];
+    _Z23VariadicForward020c7130iiz(category, (int)data_ov031_0224be50, first, second, third, fourth);
+}
