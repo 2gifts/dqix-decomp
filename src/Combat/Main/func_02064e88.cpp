@@ -1,0 +1,140 @@
+#include <globaldefs.h>
+
+#include "Memory/SafeAllocator.h"
+
+struct Elem020984b0;
+
+struct Entry020984dc {
+    unsigned char pad0[0xc];
+    unsigned int kind : 4;
+    unsigned int unk4 : 20;
+    unsigned int slotId : 6;
+    unsigned int isRare : 1;
+    unsigned int unk31 : 1;
+    unsigned char pad10[0x2e - 0x10];
+    unsigned char isNamed : 1;
+    unsigned char pad2e : 7;
+    unsigned char pad2f[0xe8 - 0x2f];
+};
+
+struct LabelNode02064e88 {
+    unsigned short id;
+    unsigned char rareFlag;
+    unsigned char namedFlag;
+    char label[0xc];
+    struct LabelNode02064e88* next;
+};
+
+extern "C" unsigned short* func_02012fe4(void);
+int GetTableValueMod100(int, int);
+extern "C" int _Z19LookupTable020982a4ii(int, int);
+void ClearField0xcBits24To29(struct Elem020984b0*);
+extern "C" int _Z28CollectEntriesByType020984dcP13Entry020984dciPS0_(struct Entry020984dc*, int, struct Entry020984dc**);
+void* FindNodeByByteId(void*, int);
+extern "C" void __clear(void* buf, int size);
+extern "C" void func_02042764(struct Entry020984dc* entry, void* buf, int flag);
+extern "C" int sprintf(char* dst, const char* fmt, ...);
+
+extern char data_020f0618[];
+extern char data_020f061e[];
+extern char data_020f0624[];
+extern char data_020f062a[];
+extern char data_020f0630[];
+extern char data_020f0636[];
+extern char data_020f063c[];
+extern char data_020f0642[];
+extern char data_020f0648[];
+extern char data_020f064e[];
+extern char data_020f0654[];
+extern char data_020f065a[];
+extern char data_020f0660[];
+extern char data_020f0666[];
+extern char data_020f066c[];
+extern char data_020f0672[];
+extern char data_020f0678[];
+extern char data_020f067e[];
+extern char data_020f0684[];
+extern char data_020f068a[];
+extern char data_020f0690[];
+extern char data_020f0696[];
+extern char data_020f069c[];
+extern char data_020f06a2[];
+extern char data_020f06a8[];
+extern char data_020f06ae[];
+extern char data_020f06b4[];
+extern char data_020f06ba[];
+
+// USA: func_02064e88
+extern "C" ARM int func_02064e88(struct LabelNode02064e88** head, void* nodeDb, SafeAllocator* allocator) {
+    unsigned short* global;
+    int zone;
+    int base;
+    int count;
+    int i;
+    int id;
+    struct LabelNode02064e88* node;
+    struct Entry020984dc* entries[10];
+    char buf[0x30];
+
+    global = func_02012fe4();
+    zone = *global;
+    base = _Z19LookupTable020982a4ii((int)((char*)global + 0x840),
+                               GetTableValueMod100((int)((char*)global + 0x840), zone));
+    ClearField0xcBits24To29((struct Elem020984b0*)((char*)global + 0x840));
+    count = _Z28CollectEntriesByType020984dcP13Entry020984dciPS0_((struct Entry020984dc*)((char*)global + 0x840),
+                                         GetTableValueMod100((int)((char*)global + 0x840), zone), entries);
+    for (i = 0; i < count; i++) {
+        id = i + 1 + base;
+        if (FindNodeByByteId(nodeDb, id) == 0) {
+            continue;
+        }
+        node = (struct LabelNode02064e88*)allocator->Allocate(0x14);
+        if (node == 0) {
+            break;
+        }
+        node->id = id;
+        node->rareFlag = entries[i]->isRare ? 4 : 0;
+        __clear(buf, 0x30);
+        func_02042764(entries[i], buf, 1);
+        if (entries[i]->isNamed == 0) {
+            switch (entries[i]->kind) {
+            case 0: sprintf(node->label, data_020f0618); break;
+            case 1: sprintf(node->label, data_020f061e); break;
+            case 2: sprintf(node->label, data_020f0624); break;
+            case 3: sprintf(node->label, data_020f062a); break;
+            case 4: sprintf(node->label, data_020f0630); break;
+            case 5: sprintf(node->label, data_020f0636); break;
+            case 6: sprintf(node->label, data_020f063c); break;
+            case 7: sprintf(node->label, data_020f0642); break;
+            case 8: sprintf(node->label, data_020f0648); break;
+            case 9: sprintf(node->label, data_020f064e); break;
+            case 10: sprintf(node->label, data_020f0654); break;
+            case 11: sprintf(node->label, data_020f065a); break;
+            case 12: sprintf(node->label, data_020f0660); break;
+            default: sprintf(node->label, data_020f0666); break;
+            }
+        } else {
+            switch (entries[i]->kind) {
+            case 0: sprintf(node->label, data_020f066c); break;
+            case 1: sprintf(node->label, data_020f0672); break;
+            case 2: sprintf(node->label, data_020f0678); break;
+            case 3: sprintf(node->label, data_020f067e); break;
+            case 4: sprintf(node->label, data_020f0684); break;
+            case 5: sprintf(node->label, data_020f068a); break;
+            case 6: sprintf(node->label, data_020f0690); break;
+            case 7: sprintf(node->label, data_020f0696); break;
+            case 8: sprintf(node->label, data_020f069c); break;
+            case 9: sprintf(node->label, data_020f06a2); break;
+            case 10: sprintf(node->label, data_020f06a8); break;
+            case 11: sprintf(node->label, data_020f06ae); break;
+            case 12: sprintf(node->label, data_020f06b4); break;
+            default: sprintf(node->label, data_020f06ba); break;
+            }
+        }
+        node->namedFlag = entries[i]->isNamed == 0 ? 0 : 2;
+        entries[i]->slotId = id;
+        node->next = *head;
+        *head = node;
+    }
+    return count;
+}
