@@ -1976,3 +1976,8 @@ src/Combat/Overlay_3/func_ov003_0215582c.cpp:
 src/Combat/Overlay_3/func_ov003_0215f000.cpp:
     complete
     .text start:0x0215f000 end:0x0215f41c
+
+
+src/Combat/Overlay_3/func_ov003_021666c4.cpp:
+    complete
+    .text start:0x021666c4 end:0x021668fc
