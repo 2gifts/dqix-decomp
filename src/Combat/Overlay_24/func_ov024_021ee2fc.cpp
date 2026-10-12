@@ -4,8 +4,8 @@
 
 struct RngHolder_021ee2fc { void* field0; };
 
-static inline int GetMaxHP(GameObject* c) { int v = c->currentStats_->primaryStats.maxHP; return v; }
-static inline int GetCurrHP(GameObject* c) { int v = c->currentStats_->primaryStats.currHP; return v; }
+static inline int GetMaxHP(GameObject* c) { ModifiableCombatStats* stats = c->currentStats_; return stats->primaryStats.maxHP; }
+static inline int GetCurrHP(GameObject* c) { ModifiableCombatStats* stats = c->currentStats_; return stats->primaryStats.currHP; }
 
 // USA: func_ov024_021ee2fc
 extern "C" ARM int func_ov024_021ee2fc(struct RngHolder_021ee2fc* holder, int id, int unused, int* outPtr) {

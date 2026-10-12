@@ -14,13 +14,11 @@ struct Obj0218f3c4 {
 
 // USA: func_ov015_0218f3c4
 ARM float GetRatio0218f3c4(struct Obj0218f3c4* obj) {
-	unsigned char state = obj->state;
-	struct Sub0218f3c4* sub = obj->sub;
-	switch (state) {
+	switch (obj->state) {
 	case 0:
 	case 1:
-		return (float)(*(volatile int*)&sub->val) / 4096.0f;
+		return (float)obj->sub->val / 4096.0f;
 	default:
-		return (float)(*(volatile int*)&sub->val) / 4096.0f;
+		return (float)obj->sub->val / 4096.0f;
 	}
 }
