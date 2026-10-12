@@ -4,8 +4,8 @@
 
 GameObject* GetCombatantWithFlag0x400ByID(int unused, int id);
 
-static inline unsigned short GetMaxHP(GameObject* c) { unsigned short v = c->currentStats_->primaryStats.maxHP; return v; }
-static inline unsigned short GetCurrHP(GameObject* c) { unsigned short v = c->currentStats_->primaryStats.currHP; return v; }
+static inline unsigned short GetMaxHP(GameObject* c) { ModifiableCombatStats* stats = c->currentStats_; return stats->primaryStats.maxHP; }
+static inline unsigned short GetCurrHP(GameObject* c) { ModifiableCombatStats* stats = c->currentStats_; return stats->primaryStats.currHP; }
 
 // USA: func_ov024_021f5888
 extern "C" ARM int func_ov024_021f5888(int* p0, int id, int unused2, int* outFlag, void* out5) {

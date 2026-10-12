@@ -1,26 +1,24 @@
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 
-extern int data_ov014_021896bc;
+extern const char data_ov014_021896bc[];
+
+struct Trans_02185c48State {
+    char pad_00[0x70];
+    int loadId;
+    char pad_74[0x7e - 0x74];
+    unsigned char loadCount;
+    char pad_7f[0x81 - 0x7f];
+    unsigned char flags;
+};
 
 // USA: func_ov014_02185c48  (semantic: Trans_02185c48)
-extern "C" ARM unsigned int func_ov014_02185c48(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
-    int cc = 0;
-    unsigned int r4 = 0;
-    r4 = r0;
-    r0 = *(unsigned char*)((char*)r4 + 0x81);
-    cc = (int)(r0 & 0x10);
-    if (cc == 0) { return r0; }
-    r0 = (unsigned int)(int)BackgroundLoader::GetInstance();
-    r1 = *(unsigned char*)((char*)r4 + 0x7e);
-    cc = (int)(r1) - (int)(0x0);
-    if (cc != 0) { return r0; }
-    r1 = (unsigned int)&data_ov014_021896bc;
-    r2 = 0x0;
-    r0 = (unsigned int)((BackgroundLoader*)(r0))->QueueLoadFile((const char*)(r1), (SafeAllocator*)(r2));
-    *(unsigned int*)((char*)r4 + 0x70) = (unsigned int)r0;
-    r0 = *(unsigned char*)((char*)r4 + 0x7e);
-    r0 = r0 + 0x1;
-    *(unsigned char*)((char*)r4 + 0x7e) = (unsigned char)r0;
-    return r0;
+extern "C" ARM void func_ov014_02185c48(Trans_02185c48State* self) {
+    if (self->flags & 0x10) {
+        BackgroundLoader* loader = BackgroundLoader::GetInstance();
+        if (self->loadCount == 0) {
+            self->loadId = loader->QueueLoadFile(data_ov014_021896bc, NULL);
+            self->loadCount++;
+        }
+    }
 }
