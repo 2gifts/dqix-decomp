@@ -27,14 +27,18 @@ struct Obj_02186b30 {
     char pad1[0xb4 - 0xa8];
     SafeAllocator* allocators;
     char pad2[0x168 - 0xb8];
-    volatile int field168;
+    int field168;
 };
+
+static inline void RemoveLoaderTask(int& taskId) {
+    BackgroundLoader::GetInstance()->RemoveTask(taskId);
+    taskId = -1;
+}
 
 // USA: func_ov014_02186b30  (semantic: ResetLoaderAndAllocators_02186b30)
 extern "C" ARM void func_ov014_02186b30(struct Obj_02186b30* self) {
     if (self->field168 >= 0) {
-        BackgroundLoader::GetInstance()->RemoveTask(self->field168);
-        self->field168 = -1;
+        RemoveLoaderTask(self->field168);
     }
     int g = GetGlobal02109400();
     BlankFunction02094b40();

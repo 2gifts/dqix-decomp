@@ -24,10 +24,10 @@ struct Obj021e7cec {
 extern "C" ARM void func_ov023_021e7cec(struct Obj021e7cec* obj, unsigned char key, unsigned short p2, unsigned short p3) {
     int i = 0;
     struct Entry021e7cec* entry;
-    while ((entry = &data_ov023_021fd7fc[i])->id != 0xff) {
-        unsigned char idVal = *(unsigned char*)&entry->id;
-        if (idVal == key) {
-            obj->field129 = idVal;
+    while (data_ov023_021fd7fc[i].id != 0xff) {
+        entry = &data_ov023_021fd7fc[i];
+        if (entry->id == key) {
+            obj->field129 = entry->id;
             obj->field11c = p2;
             obj->field11e = p3;
             unsigned char t2 = entry->f2;

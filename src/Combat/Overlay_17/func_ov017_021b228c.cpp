@@ -4,11 +4,11 @@
 struct Obj020397cc;
 void CancelPendingAction020397cc(struct Obj020397cc* obj, int arg1);
 
-struct Pair021b228c { unsigned int a; unsigned int b; };
-extern struct Pair021b228c data_020e6d5c;
+struct Obj021b228c;
+typedef int (Obj021b228c::*Handler021b228c)();
 
-struct DispatchEntry021b228c { unsigned int fn; unsigned int locator; };
-extern struct DispatchEntry021b228c data_ov017_021d79e0[];
+extern const Handler021b228c data_020e6d5c;
+extern Handler021b228c data_ov017_021d79e0[];
 
 extern int data_ov017_021d83f0;
 
@@ -19,25 +19,10 @@ extern "C" ARM void func_ov017_021b228c(unsigned char* self) {
         CancelPendingAction020397cc((struct Obj020397cc*)combatant, 1);
     }
     if (!(data_ov017_021d83f0 & 1)) {
-        volatile struct Pair021b228c* src = &data_020e6d5c;
-        unsigned int a = src->a;
-        unsigned int b = src->b;
-        unsigned int newFlags = data_ov017_021d83f0 | 1;
-        data_ov017_021d79e0[8].fn = a;
-        data_ov017_021d79e0[8].locator = b;
-        data_ov017_021d83f0 = newFlags;
+        data_ov017_021d79e0[8] = data_020e6d5c;
+        data_ov017_021d83f0 |= 1;
     }
     int idx = *(int*)(self + 8);
-    if (data_ov017_021d79e0[idx].fn == 0) return;
-    struct DispatchEntry021b228c* d = &data_ov017_021d79e0[idx];
-    volatile unsigned int* fnPtr = &d->fn;
-    void* base = self + ((int)d->locator >> 1);
-    void* callback;
-    if (d->locator & 1) {
-        callback = *(void**)((char*)*(void**)base + *fnPtr);
-    } else {
-        callback = (void*)*fnPtr;
-    }
-    int result = ((int(*)(void*))callback)(base);
-    *(int*)(self + 8) = result;
+    if (data_ov017_021d79e0[idx] == 0) return;
+    *(int*)(self + 8) = (((Obj021b228c*)self)->*data_ov017_021d79e0[idx])();
 }

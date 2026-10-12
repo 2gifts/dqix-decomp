@@ -13,11 +13,11 @@ extern "C" void func_ov017_021c95ec(int id, int lowNibble, int unused, int kind,
 // USA: func_020794f8
 extern "C" ARM void func_020794f8(struct Obj020794f8* self, int flag6, int flag7) {
     int id = self->obj3D_.GetField06();
-    int v4 = *(volatile short *)&self->obj3D_.unknown_4_;
+    int rem = self->obj3D_.unknown_4_ - 0x70;
     int v2 = self->obj3D_.unknown_2_;
     Vector3fix v = self->obj3D_.position_;
     short field8 = self->field_ae;
-    int rem = (v4 - 0x70) % 12;
+    rem %= 12;
     if (rem < 0 || rem >= 12) {
         return;
     }
