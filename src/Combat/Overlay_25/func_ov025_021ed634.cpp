@@ -123,7 +123,9 @@ char* GetFieldByKeyFromWork0x88(void* work, int key);
 extern "C" unsigned int strlen(const char* s);
 extern "C" int sprintf(char* buf, const char* fmt, ...);
 extern "C" long long func_0200c578(int x);
+#if !defined(jpn)
 extern "C" void func_0204500c(void* g, char* s, int a, int b);
+#endif
 extern "C" void func_02042b98(void* self, int a, int b, int c, int d);
 
 #if defined(jpn)
@@ -134,7 +136,7 @@ extern "C" void* _Z27GetBoundedField156_02171674Pvi(void*, int);
 extern "C" void* _Z27GetBoundedField420_0217199cPvi(void*, int);
 extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(void*, int, char*);
 extern "C" void func_020474a8(void*, int, char*, char*);
-extern "C" void func_02045d88(void*, char*, int);
+extern "C" void func_0204500c(void*, char*, int);
 extern "C" void func_02043270(void*, int, int, int, int);
 extern "C" char* strcpy(char*, const char*);
 extern "C" char* strcat(char*, const char*);
@@ -579,7 +581,7 @@ found_entry:
 #endif
         }
 #if defined(jpn)
-        func_02045d88(g, output, 0);
+        func_0204500c(g, output, 0);
         *(g + 0x17e1) = 0;
         *(int*)(g + 0x1730) = 0xc;
         *(int*)(g + 0x1734) = 0x12;

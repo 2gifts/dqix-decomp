@@ -1,4 +1,16 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov004_0216aaec func_ov004_0216ad60
+enum { kTextBytes = 0x800, kPanelOffset = 9 };
+#define data_ov004_02170138 data_ov004_021708a4
+#define func_02046608 func_020474a8
+#define SetToggleState func_02021004
+#else
+enum { kTextBytes = 0x960, kPanelOffset = 4 };
+#endif
+
+
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
@@ -42,8 +54,15 @@ extern "C" int func_0202c540(void* obj);
 extern "C" void func_02046380(struct StoreStruct* g);
 void StoreInArray0x8b0(struct StoreStruct* s, int index, int value);
 void* FindEntryByKey(struct TableA68* table, int key);
+#if defined(jpn)
+extern "C" void func_02046608(struct StoreStruct* a, int b, void* c, void* d);
+#else
 extern "C" void func_02046608(struct StoreStruct* a, int b, void* c, void* d, int e, int f, int g);
+#endif
 extern "C" void _Z27SetOffset100Fields_021f8960Pcss(char* base, short a, short b);
+#if defined(jpn)
+extern "C"
+#endif
 void SetToggleState(struct ToggleState* s, int a, int b);
 void SetFlag0x9c6(struct SetFlagStruct* p, int value);
 
@@ -68,6 +87,9 @@ extern "C" ARM int func_ov004_0216aaec(void* a) {
         return 0;
     }
     alloc->allocator.GetSizeWithLargestBlockRemoved();
+#if defined(jpn)
+    void* buf = alloc->allocator.Allocate(4);
+#endif
 
     struct Node0216aaec* node = func_ov023_021f6880(func_ov011_021849c8(a), 0x192);
     if (node == 0) {
@@ -78,14 +100,20 @@ extern "C" ARM int func_ov004_0216aaec(void* a) {
     }
     struct TableA68* table = func_ov023_021fa598(node);
     struct StoreStruct* g = _Z26GetGlobalField0x1c020421a0v();
+#if !defined(jpn)
     void* buf = alloc->allocator.Allocate(4);
+#endif
     if (func_0202c540(func_0202ae18()) != 0) {
         key = 1000;
     }
-    memset(buf, 0, 0x960);
+    memset(buf, 0, kTextBytes);
     func_02046380(g);
     StoreInArray0x8b0(g, 0, count);
+#if defined(jpn)
+    func_02046608(g, 0xc, FindEntryByKey(table, (short)key), buf);
+#else
     func_02046608(g, 0xc, FindEntryByKey(table, (short)key), buf, 0xd7, 0, 1);
+#endif
 
     struct Node0216aaec* holder = func_ov023_021f6880(func_ov011_021849c8(a), 0x32);
     if (holder != 0) {
@@ -94,7 +122,7 @@ extern "C" ARM int func_ov004_0216aaec(void* a) {
 
     struct Node0216aaec* panel = func_ov023_021f6880(func_ov011_021849c8(a), 0xc8);
     if (panel != 0 && func_ov023_021f6f10(panel) == 6) {
-        _Z27SetOffset100Fields_021f8960Pcss((char*)panel, 0, 4);
+        _Z27SetOffset100Fields_021f8960Pcss((char*)panel, 0, kPanelOffset);
     }
 
     struct ToggleState* toggle = (struct ToggleState*)func_ov017_0218b5b0()->unknown_ptr_36d0;

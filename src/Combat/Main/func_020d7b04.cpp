@@ -6,7 +6,7 @@ struct Obj020d7b04;
 enum { QueueStride = 0x50, ListOffset = 0x34ec, ActiveOffset = 0x868, StateOffset = 0x17e2 };
 struct QueueBlockFlags { unsigned char low : 2; unsigned char blocked : 1; unsigned char high : 5; };
 #define QUEUE_BLOCKED(p) (((QueueBlockFlags*)((p) + 0x17ff))->blocked)
-extern "C" void func_02045d88(void*, void*, int);
+extern "C" void func_0204500c(void*, void*, int);
 #else
 enum { QueueStride = 0x70, ListOffset = 0x36fc, ActiveOffset = 0x998, StateOffset = 0x19b2 };
 #define QUEUE_BLOCKED(p) ((p)[0x19d0])
@@ -24,7 +24,9 @@ extern "C" void func_ov017_0218b5f8(int a);
 extern "C" void _Z21BlankFunction02094b3cv(int a, int b);
 extern "C" void _Z21BlankFunction02094b30v(int a, int b, int c);
 extern "C" void func_02046380(void* p);
+#if !defined(jpn)
 extern "C" void func_0204500c(void* p, void* a, int b, int c);
+#endif
 extern "C" void _Z18InitFields02042b3cPv(void* p);
 extern "C" void func_02094ab0(int a);
 extern "C" void _Z24ReinitController02043204Pc(char* p);
@@ -117,7 +119,7 @@ L4:
     }
     if (obj->f0 != 0) {
 #if defined(jpn)
-        func_02045d88(g1c, buf, 0);
+        func_0204500c(g1c, buf, 0);
 #else
         func_02046380(g1c);
         if (obj->b6f.bit6) {

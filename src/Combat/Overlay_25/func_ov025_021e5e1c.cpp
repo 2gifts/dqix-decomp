@@ -8,7 +8,6 @@ enum { kFirstFlagOffset = 0x9b1, kSecondFlagOffset = 0x9b2, kStateOffset = 0x998
 
 
 #if defined(jpn)
-#define func_0204500c func_02045d88
 #define func_02042b98 func_02043270
 #endif
 

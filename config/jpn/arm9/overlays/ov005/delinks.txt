@@ -262,3 +262,31 @@ src/Combat/Overlay_5/func_ov005_02156e1c.cpp:
 src/Combat/Overlay_5/func_ov005_0215bf58.cpp:
     complete
     .text start:0x0215d338 end:0x0215d414
+
+src/Combat/Overlay_5/func_ov005_021586c4.cpp:
+    complete
+    .text start:0x02159cbc end:0x02159e70
+
+src/Combat/Overlay_5/func_ov005_02156658.cpp:
+    complete
+    .text start:0x02157c48 end:0x02157d9c
+
+src/Combat/Overlay_5/func_ov005_021567ac.cpp:
+    complete
+    .text start:0x02157d9c end:0x02157efc
+
+src/Combat/Overlay_5/func_ov005_02159b74.cpp:
+    complete
+    .text start:0x0215b0b8 end:0x0215b170
+
+src/Combat/Overlay_5/GetTableByte0215a918.cpp:
+    complete
+    .text start:0x0215be48 end:0x0215be60
+
+src/Combat/Overlay_5/GetTableByte0215a948.cpp:
+    complete
+    .text start:0x0215be78 end:0x0215be90
+
+src/Combat/Overlay_5/02159274.cpp:
+    complete
+    .text start:0x0215a78c end:0x0215ad30

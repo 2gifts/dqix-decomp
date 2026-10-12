@@ -52,7 +52,7 @@ Combatant021aa1ac* GetCombatantWithFlag0x100(GameState* gameState, int combatant
 extern "C" void func_ov017_021c9e00(int id, int a, int b, int c);
 extern "C" void __clear(void* dst, unsigned int size);
 #if defined(jpn)
-extern "C" void func_02045d88(Controller021aa1ac* controller, const char* text, int a);
+extern "C" void func_0204500c(Controller021aa1ac* controller, const char* text, int a);
 #else
 extern "C" void func_0204500c(Controller021aa1ac* controller, const char* text, int a, int b);
 #endif
@@ -95,7 +95,7 @@ extern "C" ARM void func_ov017_021aa1ac(Self021aa1ac* self) {
                 strcat(text, data_ov017_021d7868);
             }
 #if defined(jpn)
-            func_02045d88(controller, text, 0);
+            func_0204500c(controller, text, 0);
 #else
             func_0204500c(controller, text, 0, 0xe3);
 #endif
@@ -119,7 +119,7 @@ extern "C" ARM void func_ov017_021aa1ac(Self021aa1ac* self) {
             strcat(text, data_ov017_021d7868);
         }
 #if defined(jpn)
-        func_02045d88(controller, text, 0);
+        func_0204500c(controller, text, 0);
 #else
         func_0204500c(controller, text, 0, 0xe3);
 #endif

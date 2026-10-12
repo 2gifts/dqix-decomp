@@ -8,9 +8,11 @@ enum { kRegion99c = 0x99c };
 #endif
 
 int GetGlobalField0x1c020421a0();
+#if !defined(jpn)
 extern "C" void func_0204500c(void*, int, int, int);
+#endif
 #if defined(jpn)
-extern "C" void func_02045d88(void*, int, int);
+extern "C" void func_0204500c(void*, int, int);
 #endif
 
 // USA: func_ov003_02159250  (semantic: SetGlobalFieldsFromObj_02159250)
@@ -18,7 +20,7 @@ extern "C" ARM void func_ov003_02159250(char* obj, int flag) {
     if (flag == 0) return;
     int g = GetGlobalField0x1c020421a0();
 #if defined(jpn)
-    func_02045d88((void*)g, flag, 0);
+    func_0204500c((void*)g, flag, 0);
 #else
     func_0204500c((void*)g, flag, 0, 0xe3);
 #endif

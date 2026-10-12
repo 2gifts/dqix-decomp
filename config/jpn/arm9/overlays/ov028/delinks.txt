@@ -134,3 +134,7 @@ src/Combat/Overlay_28/AdvanceStateMachine_021d8dd0.cpp:
 
 src/Combat/Overlay_28/Trans_021d8a40.cpp:
     .text start:0x021d9300 end:0x021d9334
+
+src/Combat/Overlay_28/ApplyElementListEffects_021d9208.cpp:
+    complete
+    .text start:0x021d9ac8 end:0x021d9da4

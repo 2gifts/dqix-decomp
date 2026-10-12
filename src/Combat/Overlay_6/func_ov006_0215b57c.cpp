@@ -1,5 +1,23 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov006_0215b57c func_ov006_0215caec
+enum { kWindowFlags = 0x1054, kMenuCursor = 0x2a };
+#define func_ov006_0215fa1c func_ov006_02160d90
+#define func_ov006_0215fb7c func_ov006_02160ef0
+#define func_ov006_0215fcf0 func_ov006_02161064
+#define func_ov006_0215f7e8 func_ov006_02160bb0
+#define ClearFlag40_02157184 func_ov006_0215878c
+#define func_ov006_021555b0 func_ov006_02156c98
+#define func_ov006_02159bb0 func_ov006_0215b0cc
+#define func_ov006_02159c64 func_ov006_0215b180
+#define func_ov006_021570fc func_ov006_02158704
+#else
+enum { kWindowFlags = 0x1258, kMenuCursor = 0x36 };
+#endif
+
+
+
 struct Obj0208203c;
 struct ClearFlag40_02157184Struct;
 struct Obj0205eaa0;
@@ -21,18 +39,20 @@ struct RecipeRecord {
 };
 
 struct AlchemyPot {
-    char unk_0[0x1258];
+    char unk_0[kWindowFlags];
     unsigned short windowFlags_;
 };
 
 struct Menu {
-    char unk_0[0x36];
+    char unk_0[kMenuCursor];
     short cursor_;
 };
 
 struct AlchemyMenu {
+#if !defined(jpn)
     int textPosition_;
     char** texts_;
+#endif
     void* canvasBuffer_;
     void* allocators_;
     AlchemyPot* pot_;
@@ -61,6 +81,9 @@ struct AlchemyMenu {
     int table_[0xc / 4];
     int menuTexts_[0x18 / 4];
     char itemNames_[0xc];
+#if defined(jpn)
+    char reservedBeforeResults_[8];
+#endif
     int results_[4][0x74 / 4];
     int ticks_;
     int menuResult_;
@@ -128,6 +151,9 @@ void ResetWithSub0208203c(Obj0208203c* repeat);
 Recipe* FindNodeOrMark_02158d8c(void* self, short index);
 extern "C" RecipeRecord* func_ov006_02153c6c(void* ingredients, short id);
 extern "C" void func_ov006_02153b9c(void* ingredients, short id, unsigned char* amounts);
+#if defined(jpn)
+extern "C"
+#endif
 void ClearFlag40_02157184(ClearFlag40_02157184Struct* pot);
 extern "C" void func_ov006_021555b0(AlchemyPot* pot, Recipe* recipe, RecipeRecord* record, unsigned char* amounts);
 extern "C" unsigned char func_ov006_02159bb0(AlchemyMenu* self);

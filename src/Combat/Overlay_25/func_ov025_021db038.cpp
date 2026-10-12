@@ -93,7 +93,9 @@ void CheckOrSetFlagA0_0216fd38(Struct0216fd38*);
 int GetArrayEntry_021e8a54_021e8a54(char*);
 void BeginListEntryTask_0216fd80(EntryTask0216fd80*, int);
 char* GetFieldByKeyFromWork0x88(void*, int);
+#if !defined(jpn)
 extern "C" void func_0204500c(MessageSystem*, char*, int, int);
+#endif
 extern "C" void func_ov025_021eedb0(char*);
 extern "C" void func_ov025_021dcf14(Work*);
 extern "C" void func_ov025_021de124(Work*);
@@ -110,7 +112,7 @@ void SetBitsInWord(unsigned int*, unsigned int);
 inline unsigned int AlignedSize(unsigned int length) { return (length + 3) & ~3; }
 
 #if defined(jpn)
-extern "C" void func_02045d88(MessageSystem*,char*,int);
+extern "C" void func_0204500c(MessageSystem*,char*,int);
 #endif
 // USA: func_ov025_021db038
 extern "C" ARM void func_ov025_021db038(Work* work) {
@@ -195,7 +197,7 @@ extern "C" ARM void func_ov025_021db038(Work* work) {
             if (!text) return;
             sprintf(text, format, actor->baseStats_);
 #if defined(jpn)
-            func_02045d88(messages, text, 0);
+            func_0204500c(messages, text, 0);
 #else
             func_0204500c(messages, text, 0, 0xe3);
 #endif

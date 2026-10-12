@@ -111,7 +111,7 @@ extern char data_02114e54[];
 #define STARTUP_ALLOCATOR_SIZE 0xb000
 #define SCENE_SKIP_MEMBER_INDEX (0x7c9e - 0x6d40)
 #define MOVIE_RETURN_FLAG_OFFSET 0x6174
-extern "C" int func_ov030_021d9b60(void* callback);
+extern "C" int data_ov029_021d9b60_fake(void* callback);
 extern "C" int data_ov029_021d9d20_fake(void* callback);
 extern "C" int data_ov029_021d9ee0_fake(void* callback);
 extern "C" void func_020d8614();
@@ -226,7 +226,7 @@ extern "C" ARM void main() {
     InitOverlaySystem();
     func_020a1940(&OVERLAY_29_ID);
 #if defined(jpn)
-    if (!func_ov030_021d9b60((void*)func_020d8614) &&
+    if (!data_ov029_021d9b60_fake((void*)func_020d8614) &&
         !data_ov029_021d9d20_fake((void*)func_020d863c) &&
         !data_ov029_021d9ee0_fake((void*)func_020d8670) &&
         BackgroundLoader::GetInstance() == 0) {

@@ -5,7 +5,6 @@
 #define func_ov000_02160620 func_ov000_02161d9c
 #define ApplyFlag0x80ToBit0x1ClearFlag0x100 func_020555c0
 #define SetIntField0x264 func_020391b0
-#define func_0204500c func_02045d88
 #define SCENE_NODES_021b790c 0x4ec
 #define SCENE_NODE_021b790c 0x93c
 #define SCENE_ID_BASE_021b790c 0x4200

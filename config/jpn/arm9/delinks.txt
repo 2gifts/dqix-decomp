@@ -17930,3 +17930,11 @@ src/Combat/Main/func_02046170.cpp:
 src/Combat/Main/ProcessStringAndAccumulate_020420e8.cpp:
     complete
     .text start:0x02028ce4 end:0x02028dc4
+
+src/Combat/Main/Forward020444d4.cpp:
+    complete
+    .text start:0x02044c00 end:0x02044c0c
+
+src/Combat/Main/func_0204500c.cpp:
+    complete
+    .text start:0x02045d88 end:0x02046268

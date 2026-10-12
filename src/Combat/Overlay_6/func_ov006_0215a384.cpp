@@ -1,4 +1,15 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov006_0215a384 func_ov006_0215b97c
+enum { kAllocatorPointer = 4, kTable = 0x140 };
+#define data_ov006_0215ffda data_ov006_0216133e
+#define func_ov006_02156f04 func_ov006_0215850c
+#else
+enum { kAllocatorPointer = 0xc, kTable = 0x14c };
+#endif
+
+
 #include <Memory/SafeAllocator.h>
 #include <Filesystem/BackgroundLoader.h>
 
@@ -31,13 +42,13 @@ struct ResultItems {
 struct AlchemyPot;
 
 struct AlchemyMenu {
-    char unk_0[0xc];
+    char unk_0[kAllocatorPointer];
     SafeAllocator* allocators_;
     AlchemyPot* pot_;
     char unk_14[0x20];
     Recipe* recipe_;
-    char unk_38[0x114];
-    char table_[0x30];
+    char unk_38[kTable-kAllocatorPointer-0x2c];
+    char table_[0x17c-kTable];
     PotIngredient results_[4];
     char unk_34c[0x8];
     int task_;

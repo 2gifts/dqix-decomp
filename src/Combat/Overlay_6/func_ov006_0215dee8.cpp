@@ -1,5 +1,31 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov006_0215dee8 func_ov006_0215f3a8
+enum { kMenuCursor = 0x2a, kLayoutToTable = 0x48, kWindowFlags = 0x1054 };
+#define func_ov006_0215fa1c func_ov006_02160d90
+#define func_ov006_0215fb7c func_ov006_02160ef0
+#define func_ov006_0215fcf0 func_ov006_02161064
+#define func_ov006_0215f7e8 func_ov006_02160bb0
+#define func_ov006_021555b0 func_ov006_02156c98
+#define func_ov006_02159bb0 func_ov006_0215b0cc
+#define func_ov006_02159c64 func_ov006_0215b180
+#define func_ov006_021570fc func_ov006_02158704
+#define ClearFlag40_02157184 func_ov006_0215878c
+#define func_ov006_02159db0 func_ov006_0215b2cc
+#define func_ov006_02159e50 func_ov006_0215b384
+#define _Z13Func_0215a33cP11Obj0215a33c func_ov006_0215b940
+#define func_ov006_0215a384 func_ov006_0215b97c
+#define func_ov006_0215fecc func_ov006_02161230
+#define func_ov006_0215f9e8 func_ov006_02160d5c
+#define func_ov006_021599c0 func_ov006_0215aedc
+#define func_ov006_0215a5dc func_ov006_0215bbd4
+#else
+enum { kMenuCursor = 0x36, kLayoutToTable = 0x4c, kWindowFlags = 0x1258 };
+#endif
+
+
+
 struct Obj0208203c;
 struct Obj0205eaa0;
 struct Obj2081;
@@ -21,12 +47,12 @@ struct RecipeRecord {
 };
 
 struct AlchemyPot {
-    char unk_0[0x1258];
+    char unk_0[kWindowFlags];
     unsigned short windowFlags_;
 };
 
 struct Menu {
-    char unk_0[0x36];
+    char unk_0[kMenuCursor];
     short cursor_;
 };
 
@@ -36,8 +62,10 @@ public:
 };
 
 struct AlchemyMenu {
+#if !defined(jpn)
     int textPosition_;
     char** texts_;
+#endif
     void* canvasBuffer_;
     void* allocators_;
     AlchemyPot* pot_;
@@ -62,10 +90,13 @@ struct AlchemyMenu {
     unsigned short buttons_;
     unsigned char unk_aa;
     int renderer_[0x54 / 4];
-    int layout_[0x4c / 4];
+    int layout_[kLayoutToTable / 4];
     int table_[0xc / 4];
     int menuTexts_[0x18 / 4];
     char itemNames_[0xc];
+#if defined(jpn)
+    char reservedBeforeResults_[0xc];
+#endif
     int results_[4][0x74 / 4];
     int ticks_;
     int menuResult_;
@@ -143,6 +174,9 @@ extern "C" unsigned char func_ov006_02158a28(AlchemyMenu* self);
 extern "C" unsigned char func_ov006_02158b78(AlchemyMenu* self);
 extern "C" int func_ov006_021537d0(void* ingredients, short id);
 void SetElementFlag0x40(Obj2081* menu, int group, int value);
+#if defined(jpn)
+extern "C"
+#endif
 void ClearFlag40_02157184(ClearFlag40_02157184Struct* pot);
 void ClearField44IfSet_02158c28(StructC28* self);
 extern "C" void func_ov006_02159db0(AlchemyMenu* self);

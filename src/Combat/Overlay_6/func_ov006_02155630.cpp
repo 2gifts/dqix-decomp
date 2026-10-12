@@ -1,4 +1,15 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov006_02155630 func_ov006_02156d18
+enum { kWindowFlags = 0x6f0 };
+#define func_ov006_02155508 func_ov006_02156bf0
+#define func_ov023_021dd4cc func_ov023_021ddcbc
+#else
+enum { kWindowFlags = 0x774 };
+#endif
+
+
 #include <std_library_functions.h>
 #include "Memory/SafeAllocator.h"
 #include "World/Object3D.h"
@@ -12,7 +23,7 @@ struct Struct020dbd9c {
 };
 
 struct ItemInfoWindow {
-    char unk_0[0x774];
+    char unk_0[kWindowFlags];
     unsigned short flags_;
     char unk_776[0x7];
     signed char windowSprites_;
@@ -37,7 +48,9 @@ struct RecipeRecord {
 };
 
 struct AlchemyPot {
+#if !defined(jpn)
     char names_[3][0x80];
+#endif
     SafeAllocator* allocators_;
     SafeAllocator* itemAllocator_;
     SafeAllocator* nextItemAllocator_;

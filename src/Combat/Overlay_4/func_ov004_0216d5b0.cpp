@@ -22,7 +22,7 @@ extern "C" int func_020abb64(void);
 struct TableA68;
 void* FindEntryByKey(struct TableA68* table, int key);
 #if defined(jpn)
-extern "C" void func_02045d88(void*, const char*, int);
+extern "C" void func_0204500c(void*, const char*, int);
 #else
 extern "C" void func_0204500c(void*, const char*, int, int);
 #endif
@@ -43,7 +43,7 @@ extern "C" ARM int func_ov004_0216d5b0(void* obj) {
     if (func_020abb64() == 0) {
         void* entry = FindEntryByKey(table, 0x5dd);
 #if defined(jpn)
-        func_02045d88((void*)g, (const char*)entry, 0);
+        func_0204500c((void*)g, (const char*)entry, 0);
 #else
         func_0204500c((void*)g, (const char*)entry, 0, 0xe3);
 #endif
@@ -55,7 +55,7 @@ extern "C" ARM int func_ov004_0216d5b0(void* obj) {
 
     void* entry = FindEntryByKey(table, 0x4b1);
 #if defined(jpn)
-    func_02045d88((void*)g, (const char*)entry, 0);
+    func_0204500c((void*)g, (const char*)entry, 0);
 #else
     func_0204500c((void*)g, (const char*)entry, 0, 0xe3);
 #endif

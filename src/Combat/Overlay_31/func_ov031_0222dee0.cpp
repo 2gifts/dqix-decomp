@@ -17,7 +17,14 @@ extern int data_ov031_0224badc;
 typedef void (*Callback_022234d8)(void*, int, int);
 extern "C" void func_ov031_022234d8(int a0, Callback_022234d8 cb);
 
+#if defined(jpn)
+extern "C" void* data_ov031_02290c98;
+namespace DuplicatePool {
+    extern "C" void* data_ov031_02290c98;
+}
+#else
 extern void* data_ov031_02290c98;
+#endif
 
 // USA: func_ov031_0222dee0
 extern "C" ARM void func_ov031_0222dee0(void) {
@@ -35,6 +42,10 @@ extern "C" ARM void func_ov031_0222dee0(void) {
 	_Z21SetField1014_022274d0ii(2, 1);
 	_Z21SetField181c_0222750cii(0, local + 3);
 	_Z26SetField_022274c0_022274c0i((int)func_ov031_0222ea24);
+#if defined(jpn)
+	void** slot = &DuplicatePool::data_ov031_02290c98;
+#else
 	void** slot = (void**)0x02290C98;
+#endif
 	func_ov031_0223cf70(slot);
 }

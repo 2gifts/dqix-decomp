@@ -181,7 +181,7 @@ extern char data_02109bf4[];
 #if defined(jpn)
 extern const char data_ov023_021fd4ec[];
 extern const char data_ov023_021fd504[];
-extern "C" void func_02045d88(MessageSystem_021eefd0*, const char*, int);
+extern "C" void func_0204500c(MessageSystem_021eefd0*, const char*, int);
 #endif
 
 MessageSystem_021eefd0* GetGlobalField0x1c020421a0();
@@ -206,7 +206,9 @@ void __clear(void* buffer, unsigned long size);
 GameResources_021eefd0* func_ov017_0218b5b0();
 Unknown_021b8478_021eefd0* func_ov017_021b8478(void* unk);
 MessageName_021eefd0 func_ov023_021ed804(MessageName_021eefd0 name, void* monster);
+#if !defined(jpn)
 void func_0204500c(MessageSystem_021eefd0* messages, const char* text, int a, int b);
+#endif
 void* func_0202ae18();
 int func_0202c508(void* unk);
 int func_0202c540(void* unk);
@@ -410,7 +412,7 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
         else if (end->nothing_ == 0)
             strcat(text, FindEntryByKey((TableA68*)self->texts_, 0x22));
 #if defined(jpn)
-        func_02045d88(messages, text, 1);
+        func_0204500c(messages, text, 1);
 #else
         func_0204500c(messages, text, 1, 0xe3);
 #endif

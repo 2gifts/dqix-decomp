@@ -4294,3 +4294,47 @@ src/Combat/Overlay_17/EmptyFunc_021b65d8.cpp:
 src/Combat/Overlay_17/CallIfField20_021c19e0.cpp:
     complete
     .text start:0x021c1f78 end:0x021c1f90
+
+src/Combat/Overlay_17/TestFlagBit55dIfActive_0218b628.cpp:
+    complete
+    .text start:0x0218c248 end:0x0218c284
+
+src/Combat/Overlay_17/SetIndexedFieldsIfValid_02191ba0.cpp:
+    complete
+    .text start:0x02192768 end:0x021927a4
+
+src/Combat/Overlay_17/CheckThreeFlags_02195550.cpp:
+    complete
+    .text start:0x02196118 end:0x02196154
+
+src/Combat/Overlay_17/EnqueueHalfword_021972f8.cpp:
+    complete
+    .text start:0x02197ea8 end:0x02197ed4
+
+src/Combat/Overlay_17/HasMatchingHalfword_0219735c.cpp:
+    complete
+    .text start:0x02197f0c end:0x02197f44
+
+src/Combat/Overlay_17/StoreValueAndMaybeAppend_021991e4.cpp:
+    complete
+    .text start:0x02199d94 end:0x02199ddc
+
+src/Combat/Overlay_17/InitAndAppendState30_0219931c.cpp:
+    complete
+    .text start:0x02199ecc end:0x02199f10
+
+src/Combat/Overlay_17/CallIfField36bc_02199480.cpp:
+    complete
+    .text start:0x0219a030 end:0x0219a04c
+
+src/Combat/Overlay_17/CallField36bcSetByte2_0219cd98.cpp:
+    complete
+    .text start:0x0219d88c end:0x0219d8b4
+
+src/Combat/Overlay_17/SetListField22FromCombatant_021a4e0c.cpp:
+    complete
+    .text start:0x021a5880 end:0x021a58bc
+
+src/Combat/Overlay_17/SetFlag2e6_0219aa6c.cpp:
+    complete
+    .text start:0x0219b610 end:0x0219b620

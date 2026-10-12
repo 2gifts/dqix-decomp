@@ -153,9 +153,11 @@ void func_ov023_021f1818(void* menu, int hidden);
 void func_ov023_021d8af8(void* window);
 void func_ov013_02184360(SkillPointMenu_021f1234* menu, void* parent);
 void func_ov013_02184cf0(SkillPointMenu_021f1234* menu, SafeAllocator* allocator);
+#if !defined(jpn)
 void func_0204500c(MessageSystem_021f1234* messages, const char* text, int a, int b);
+#endif
 #if defined(jpn)
-void func_02045d88(MessageSystem_021f1234*,const char*,int);
+void func_0204500c(MessageSystem_021f1234*,const char*,int);
 unsigned char func_ov013_021847c4(void*,int);
 #endif
 int func_ov023_021f4fc8();
@@ -221,7 +223,7 @@ extern "C" ARM int func_ov023_021f1234(BattleScene_021f1234* self)
                 if (inParty)
                 {
 #if defined(jpn)
-                    func_02045d88(messages, FindEntryByKey((TableA68*)self->texts_, 0x24), 1);
+                    func_0204500c(messages, FindEntryByKey((TableA68*)self->texts_, 0x24), 1);
 #else
                     func_0204500c(messages, FindEntryByKey((TableA68*)self->texts_, 0x24), 1, 0xe3);
 #endif

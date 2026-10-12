@@ -19,7 +19,7 @@ extern "C" void func_0205d6e4(Struct_0205d81c*, int);
 extern "C" void* _Z23FindElementByC40205d81cP15Struct_0205d81ci(Struct_0205d81c*, int);
 int AddCappedFieldF6c_02169938(int, int);
 #if defined(jpn)
-extern "C" void func_02045d88(void*, int, int);
+extern "C" void func_0204500c(void*, int, int);
 extern "C" void func_020474a8(void*, int, int, char*);
 enum { kMenu68d3c=0xe0, kStage68d3c=0x870, kFlag68d3c=0x17de, kTextSize68d3c=0x800 };
 #else
@@ -56,7 +56,7 @@ struct Global68d3c {
 struct Party68d3c { char pad0[0xf68]; unsigned int bank; unsigned int money; };
 static inline void Show68d3c(Global68d3c* g, int text) {
 #if defined(jpn)
-    func_02045d88(g,text,0);
+    func_0204500c(g,text,0);
 #else
     func_0204500c(g,text,0,0xe3);
 #endif

@@ -1,5 +1,16 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov006_021599c0 func_ov006_0215aedc
+enum { kIngredients = 0x6c, kLayoutToCount = 0x293 };
+#define func_ov006_0215f9e8 func_ov006_02160d5c
+#define func_ov006_0215a5dc func_ov006_0215bbd4
+#else
+enum { kIngredients = 0x74, kLayoutToCount = 0x28b };
+#endif
+
+
+
 class GameState {
 public:
     static GameState* GetInstance();
@@ -7,10 +18,10 @@ public:
 };
 
 struct AlchemyMenu {
-    char unk_0[0x74];
+    char unk_0[kIngredients];
     char ingredients_[0x28];
     char repeat_[0x64];
-    char layout_[0x28b];
+    char layout_[kLayoutToCount];
     unsigned char count_;
     char unk_38c[0x7];
     unsigned char repeatDelay_;

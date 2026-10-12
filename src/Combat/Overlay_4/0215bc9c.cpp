@@ -31,7 +31,7 @@ extern "C" unsigned char _Z27GetSubByteField398_021b2010P14Obj24_021b2010(Obj24_
 extern "C" void func_ov004_02157374(void* obj, int key, int cat, char* dst, unsigned char flag5);
 extern "C" void func_ov011_021848a0(void* obj, int val);
 #if defined(jpn)
-extern "C" void func_02045d88(void* field, void* buf, int p2);
+extern "C" void func_0204500c(void* field, void* buf, int p2);
 #else
 extern "C" void func_0204500c(void* field, void* buf, int p2, int p3);
 #endif
@@ -89,7 +89,7 @@ extern "C" ARM int func_ov004_0215bc9c(void* obj) {
         memset(ptr + 0x1c, 0, 0xc);
         *(int*)(ptr + 0x28) = 0;
 #if defined(jpn)
-        func_02045d88((void*)g, *(char**)((char*)g + bufferOffset), 0);
+        func_0204500c((void*)g, *(char**)((char*)g + bufferOffset), 0);
 #else
         func_0204500c((void*)g, *(char**)((char*)g + bufferOffset), 0, 0xe3);
 #endif

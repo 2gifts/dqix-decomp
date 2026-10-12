@@ -1,8 +1,23 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov005_021586c4 func_ov005_02159cbc
+enum { kMember = 0x4f8 };
+#define RESOURCE_SCREEN_POINTER() (*(int**)((char*)func_ov017_0218b5b0() + 0x34f8))
+#define _Z17RunIfPtr_021e4e20P11Obj021e4e20 func_ov023_021e5014
+#define data_ov005_0215cc24 data_ov005_0215e004
+#define data_ov005_0215cc2c data_ov005_0215e00c
+#define data_ov005_0215cbf4 data_ov005_0215dfd4
+#else
+enum { kMember = 0x4fc };
+#define RESOURCE_SCREEN_POINTER() ((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3])
+#endif
+
+
 #include <GameState/GameState.h>
 #include <Graphics/Vector.h>
 
-struct Obj021e4e20 { char pad[0x4fc]; int member; };
+struct Obj021e4e20 { char pad[kMember]; int member; };
 struct Body { char pad[0x50]; Vector3fix rotation; };
 struct Vec3copy0202ec84;
 struct SlotDepth { int depth; int padding[2]; };
@@ -20,7 +35,7 @@ extern "C" ARM int func_ov005_021586c4(void*, int x, int y) {
     GameState* game = GameState::GetInstance();
     void* camera;
     int i;
-    Obj021e4e20* screen = _Z19GetField1c_021a193cPi((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
+    Obj021e4e20* screen = _Z19GetField1c_021a193cPi(RESOURCE_SCREEN_POINTER());
     int member = screen->member;
     if (x > 0 && x < 128) {
         int screenX[8];

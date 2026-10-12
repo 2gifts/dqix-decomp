@@ -25,7 +25,7 @@ extern "C" void func_02046380(void* global);
 extern "C" void func_02042764(void* a, void* b, int flag);
 void SetIndexedName02046574(struct Obj02046574* obj, int index, char* str);
 #if defined(jpn)
-extern "C" void func_02045d88(void*, void*, int);
+extern "C" void func_0204500c(void*, void*, int);
 #else
 extern "C" void func_0204500c(void* field, void* buf, int p2, int p3);
 #endif
@@ -76,7 +76,7 @@ extern "C" ARM int func_ov004_0216a464(void* a) {
     func_02046380((void*)g);
 #if defined(jpn)
     SetIndexedName02046574((struct Obj02046574*)g, 0, (char*)node+0x2e);
-    func_02045d88((void*)g, entryD, 0);
+    func_0204500c((void*)g, entryD, 0);
 #else
     func_02042764((char*)node + 0x2e, buf, 1);
     SetIndexedName02046574((struct Obj02046574*)g, 0, buf);

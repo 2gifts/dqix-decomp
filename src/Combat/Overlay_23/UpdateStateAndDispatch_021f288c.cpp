@@ -5,7 +5,9 @@
 extern "C" void func_02046380(void);
 int GetGlobalField0x1c020421a0(void);
 extern "C" void* func_0205ec34(void);
+#if !defined(jpn)
 extern "C" void func_0204500c(void* obj, char* buffer, int a, int b);
+#endif
 extern "C" int func_ov023_021f4438(void* obj);
 extern "C" int func_ov023_021f4fc8(void);
 int CheckThresholdOverAny_021f5228(int id);
@@ -35,7 +37,7 @@ extern "C" struct GlobalStateOv023_021ffefc* _ZZ17GetGlobal021ffefcvE1s;
 struct PctBits021f288c { unsigned short low : 7; unsigned short pct : 9; };
 
 #if defined(jpn)
-extern "C" void func_02045d88(void*,char*,int);
+extern "C" void func_0204500c(void*,char*,int);
 #endif
 // USA: func_ov023_021f288c  (semantic: UpdateStateAndDispatch_021f288c)
 extern "C" ARM int func_ov023_021f288c(unsigned char* obj) {
@@ -76,7 +78,7 @@ extern "C" ARM int func_ov023_021f288c(unsigned char* obj) {
 #endif
 
 #if defined(jpn)
-        func_02045d88(stateObj, msgBuf, 1);
+        func_0204500c(stateObj, msgBuf, 1);
 #else
         func_0204500c(stateObj, msgBuf, 1, 0xe3);
 #endif

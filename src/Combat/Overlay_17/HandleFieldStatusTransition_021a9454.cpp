@@ -21,7 +21,7 @@ void ClearByteFlagAt0x154(unsigned char* obj);
 int CallFunc020e0434With02153694(int value);
 extern "C" int sprintf(char* dst, const char* fmt, ...);
 #if defined(jpn)
-extern "C" void func_02045d88(void*, const char*, int);
+extern "C" void func_0204500c(void*, const char*, int);
 extern char data_ov017_021d7c28;
 extern char data_ov017_021d7c49;
 #else
@@ -66,7 +66,7 @@ extern "C" ARM void func_ov017_021a9454(char* obj) {
             *(int*)(obj + 0xc) = 0x170c;
         }
 #if defined(jpn)
-        func_02045d88(g, buf, 0);
+        func_0204500c(g, buf, 0);
 #else
         func_0204500c(g, buf, 0, 0xe3);
 #endif

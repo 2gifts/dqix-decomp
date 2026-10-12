@@ -112,7 +112,7 @@ void func_ov023_021ed4b8(GuideWindow_021ec480* self);
 void func_ov023_021ed600(GuideWindow_021ec480* self);
 void* func_0205ec34();
 #if defined(jpn)
-void func_02045d88(MessageSystem_021ec480* messages, const char* text, int a);
+void func_0204500c(MessageSystem_021ec480* messages, const char* text, int a);
 #else
 void func_0204500c(MessageSystem_021ec480* messages, const char* text, int a, int b);
 #endif
@@ -251,7 +251,7 @@ extern "C" ARM void func_ov023_021ec480(GuideWindow_021ec480* self)
             _Z20AppendString02042058PcPKc(self->text_, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)self->texts_, 1002));
             messages->busy_ = 1;
 #if defined(jpn)
-            func_02045d88(messages, self->text_, 0);
+            func_0204500c(messages, self->text_, 0);
 #else
             func_0204500c(messages, self->text_, 0, 0xe3);
 #endif
@@ -301,7 +301,7 @@ extern "C" ARM void func_ov023_021ec480(GuideWindow_021ec480* self)
         _Z20AppendString02042058PcPKc(self->text_, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)self->texts_, 1002));
         messages->busy_ = 1;
 #if defined(jpn)
-        func_02045d88(messages, self->text_, 0);
+        func_0204500c(messages, self->text_, 0);
 #else
         func_0204500c(messages, self->text_, 0, 0xe3);
 #endif

@@ -8,7 +8,7 @@ enum{regionField=0x838,regionFlag=0x998};
 extern "C" int func_ov017_021d60f4(void*);
 extern "C" void* func_ov017_021d612c(void*);
 #if defined(jpn)
-extern "C" void func_02045d88(void*, int, int);
+extern "C" void func_0204500c(void*, int, int);
 #else
 extern "C" void func_0204500c(void*, int, int, int);
 #endif
@@ -37,7 +37,7 @@ extern "C" ARM int func_ov001_0215e2a4(Self0215e2a4* self, int mode) {
             if (r & 1) flag = 0;
         }
 #if defined(jpn)
-        func_02045d88(g, entry->val, flag);
+        func_0204500c(g, entry->val, flag);
 #else
         func_0204500c(g, entry->val, flag, 0xe3);
 #endif
@@ -48,7 +48,7 @@ extern "C" ARM int func_ov001_0215e2a4(Self0215e2a4* self, int mode) {
         void* extra = func_ov017_021d612c(self);
         *(int*)(g + 0x1000 + regionField) = -1;
 #if defined(jpn)
-        func_02045d88(g, (int)extra, 1);
+        func_0204500c(g, (int)extra, 1);
 #else
         func_0204500c(g, (int)extra, 1, 0xe3);
 #endif

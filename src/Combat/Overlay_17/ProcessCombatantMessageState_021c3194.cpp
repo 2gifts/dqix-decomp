@@ -10,9 +10,11 @@ extern "C" void func_02046380(void* obj);
 int CallFunc020e0434With02153694(int value);
 extern "C" int sprintf(char* dst, const char* fmt, ...);
 void InitObjFromCombatantId020e4bf4(void* obj, int combatantId);
+#if !defined(jpn)
 extern "C" void func_0204500c(void*, const char*, int, int);
+#endif
 #if defined(jpn)
-extern "C" void func_02045d88(void*, const char*, int);
+extern "C" void func_0204500c(void*, const char*, int);
 extern char data_ov017_021d882c[];
 #endif
 void SetByteField0x253(void* obj);
@@ -52,7 +54,7 @@ extern "C" ARM void func_ov017_021c3194(struct Obj_021c3194* obj) {
         char* buf = *(char**)(g + regionalOffset0);
 #if defined(jpn)
         sprintf(buf, data_ov017_021d882c, *(char**)((char*)c + 0x134));
-        func_02045d88(g, buf, 0);
+        func_0204500c(g, buf, 0);
 
 #else
         sprintf(buf, (const char*)CallFunc020e0434With02153694(0x25));

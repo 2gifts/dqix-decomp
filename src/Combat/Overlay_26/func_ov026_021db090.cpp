@@ -13,7 +13,6 @@ enum { kBattleOffset = 0x29c, kStateToListPadding = 0x28b0, kListToModePadding =
 
 
 #if defined(jpn)
-#define func_0204500c func_02045d88
 #define func_ov000_02160da0 func_ov000_02162508
 #endif
 

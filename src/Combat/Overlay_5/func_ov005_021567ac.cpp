@@ -1,12 +1,25 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov005_021567ac func_ov005_02157d9c
+enum { kMember = 0x4f8 };
+#define RESOURCE_SCREEN_POINTER() (*(int**)((char*)func_ov017_0218b5b0() + 0x34f8))
+enum { kScreenFlags = 0x56c, kCursor = 0x196c };
+#else
+enum { kMember = 0x4fc };
+#define RESOURCE_SCREEN_POINTER() ((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3])
+enum { kScreenFlags = 0x634, kCursor = 0x19f4 };
+#endif
+
+
 #include <GameState/GameState.h>
 
 struct Obj0205eaa0;
 
 struct MemberScreen {
-    char unk_0[0x4fc];
+    char unk_0[kMember];
     int member_;
-    char unk_500[0x634 - 0x500];
+    char unk_500[kScreenFlags - kMember - 4];
     unsigned short flags_;
 };
 
@@ -23,7 +36,7 @@ struct EquipmentSlot {
 };
 
 struct EquipmentMenu {
-    char unk_0[0x19f4];
+    char unk_0[kCursor];
     char cursor_[0x2d90 - 0x19f4];
     EquipmentSlot slots_[24];
     char slotModels_[0x3d78 - 0x3030];
@@ -57,7 +70,7 @@ extern "C" int func_ov005_02155670(EquipmentMenu* self, int x, int y);
 // USA: func_ov005_021567ac
 extern "C" ARM void func_ov005_021567ac(EquipmentMenu* self, int x, int y) {
     GameState::GetInstance();
-    MemberScreen* screen = _Z19GetField1c_021a193cPi((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
+    MemberScreen* screen = _Z19GetField1c_021a193cPi(RESOURCE_SCREEN_POINTER());
     if (!func_ov005_02157ae8(self, screen->member_))
         return;
     self->dragged_ = func_ov005_02155670(self, x, y);

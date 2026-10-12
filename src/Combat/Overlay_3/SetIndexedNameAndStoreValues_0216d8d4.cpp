@@ -10,7 +10,7 @@ enum { kRegion99c = 0x99c };
 #endif
 
 #if defined(jpn)
-extern "C" void func_02045d88(void*, int, int);
+extern "C" void func_0204500c(void*, int, int);
 #endif
 
 int GetGlobalField0x1c020421a0();
@@ -21,7 +21,9 @@ struct Obj02046574;
 void SetIndexedName02046574(struct Obj02046574* obj, int index, char* str);
 struct StoreStruct;
 void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
+#if !defined(jpn)
 extern "C" void func_0204500c(void*, int, int, int);
+#endif
 
 // USA: func_ov003_0216d8d4  (semantic: SetIndexedNameAndStoreValues_0216d8d4)
 #if defined(jpn)
@@ -49,7 +51,7 @@ extern "C" ARM void func_ov003_0216d8d4(char* obj, int keyA, int p3, int p4, int
     struct Container020e0310* c2 = (struct Container020e0310*)(obj + kRegion1324);
     int name2 = GetFieldByKey020e0434(c2, (short)keyA);
 #if defined(jpn)
-    func_02045d88((void*)g, name2, 0);
+    func_0204500c((void*)g, name2, 0);
 #else
     func_0204500c((void*)g, name2, 0, 0xe3);
 #endif

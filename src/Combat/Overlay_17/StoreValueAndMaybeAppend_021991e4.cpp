@@ -1,5 +1,16 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { VALUE_FIELD_OFFSET = 0x34ac };
+#else
+enum { VALUE_FIELD_OFFSET = 0x36bc };
+#endif
+
+
+#if defined(jpn)
+#define StoreValueAndMaybeAppend_021991e4 func_ov017_02199d94
+#endif
+
 extern "C" void func_ov017_021bf410(void* self);
 int HasFlagAt_021bf5f4_021bf5f4(void* self);
 
@@ -8,7 +19,7 @@ struct TailList020469b4;
 void AppendNodeToTail(struct TailList020469b4* list, struct TailNode020469b4* node);
 
 struct Obj021991e4 {
-    char pad0[0x36bc];
+    char pad0[VALUE_FIELD_OFFSET];
     int field36bc;
     char pad1[0x3c];
     struct TailList020469b4* field36fc;
@@ -17,6 +28,9 @@ struct Obj021991e4 {
 };
 
 // USA: func_ov017_021991e4
+#if defined(jpn)
+extern "C"
+#endif
 ARM void StoreValueAndMaybeAppend_021991e4(struct Obj021991e4* obj) {
     func_ov017_021bf410(obj->field3720);
 

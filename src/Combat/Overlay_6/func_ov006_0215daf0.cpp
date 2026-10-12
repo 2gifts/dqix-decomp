@@ -1,5 +1,16 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov006_0215daf0 func_ov006_0215efb0
+enum { kMenuCursor = 0x2a, kLayoutToTable = 0x48, kWindowFlags = 0x1054 };
+#define func_ov006_0215fa1c func_ov006_02160d90
+#define ClearFlag40_02157184 func_ov006_0215878c
+#else
+enum { kMenuCursor = 0x36, kLayoutToTable = 0x4c, kWindowFlags = 0x1258 };
+#endif
+
+
+
 struct Obj0208203c;
 struct Obj0205eaa0;
 struct Obj2081;
@@ -11,7 +22,7 @@ struct AlchemyPot;
 struct Recipe;
 
 struct Menu {
-    char unk_0[0x36];
+    char unk_0[kMenuCursor];
     short cursor_;
 };
 
@@ -21,8 +32,10 @@ struct RecipeTable {
 };
 
 struct AlchemyMenu {
+#if !defined(jpn)
     int textPosition_;
     char** texts_;
+#endif
     void* canvasBuffer_;
     void* allocators_;
     AlchemyPot* pot_;
@@ -47,10 +60,13 @@ struct AlchemyMenu {
     unsigned short buttons_;
     unsigned char unk_aa;
     int renderer_[0x54 / 4];
-    int layout_[0x4c / 4];
+    int layout_[kLayoutToTable / 4];
     RecipeTable table_;
     int menuTexts_[0x18 / 4];
     char itemNames_[0xc];
+#if defined(jpn)
+    char reservedBeforeResults_[0xc];
+#endif
     int results_[4][0x74 / 4];
     int ticks_;
     int menuResult_;
@@ -120,6 +136,9 @@ void FilterAndSortEntries02071ffc(Container02071ffc* table, int category, int ki
 void ComputeField_02158cac_02158cac(void* self);
 void CallFunc0204c804OnMatchingKey(Obj2081* menu, int group);
 void CallFunc0204c804OverAllElems(Cont0207fe44* menu);
+#if defined(jpn)
+extern "C"
+#endif
 void ClearFlag40_02157184(ClearFlag40_02157184Struct* pot);
 extern "C" void func_ov006_0215745c(short filter, signed char* category, signed char* kind);
 void ClearField44IfSet_02158c28(StructC28* self);

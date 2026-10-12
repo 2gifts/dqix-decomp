@@ -20,7 +20,7 @@ void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int mask);
 extern "C" void func_ov011_021848a0(void* obj, int val);
 void* FindEntryByKey(struct TableA68* table, int key);
 #if defined(jpn)
-extern "C" void func_02045d88(void*, const char*, int);
+extern "C" void func_0204500c(void*, const char*, int);
 #else
 extern "C" void func_0204500c(void*, const char*, int, int);
 #endif
@@ -70,7 +70,7 @@ extern "C" ARM int func_ov004_0216dd78(void* a) {
         data_ov004_02171034.ptr10[1] = 0;
         void* entry = FindEntryByKey((struct TableA68*)table, 0x5dc);
 #if defined(jpn)
-        func_02045d88(globalField, (const char*)entry, 0);
+        func_0204500c(globalField, (const char*)entry, 0);
 #else
         func_0204500c(globalField, (const char*)entry, 0, 0xe3);
 #endif
@@ -81,7 +81,7 @@ extern "C" ARM int func_ov004_0216dd78(void* a) {
         data_ov004_02171034.ptr10[1] = 0;
         void* entry = FindEntryByKey((struct TableA68*)table, 0x5dd);
 #if defined(jpn)
-        func_02045d88(globalField, (const char*)entry, 0);
+        func_0204500c(globalField, (const char*)entry, 0);
 #else
         func_0204500c(globalField, (const char*)entry, 0, 0xe3);
 #endif

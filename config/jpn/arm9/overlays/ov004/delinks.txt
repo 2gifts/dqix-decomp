@@ -1688,3 +1688,39 @@ src/Combat/Overlay_4/AllocateAndCopyStruct60_021633ac.cpp:
 src/Combat/Overlay_4/CycleFieldState_02163478.cpp:
     complete
     .text start:0x02163a6c end:0x02163aac
+
+src/Combat/Overlay_4/func_ov004_0216b06c.cpp:
+    complete
+    .text start:0x0216b0fc end:0x0216b1a8
+
+src/Combat/Overlay_4/func_ov004_0216dfd8.cpp:
+    complete
+    .text start:0x0216e698 end:0x0216e780
+
+src/Combat/Overlay_4/AllocateAndDispatchStatusMessage_0216e0c0.cpp:
+    complete
+    .text start:0x0216e780 end:0x0216e86c
+
+src/Combat/Overlay_4/NoOpEventHandler_02166f90.cpp:
+    complete
+    .text start:0x021675a4 end:0x021675ac
+
+src/Combat/Overlay_4/NoOpEventHandler_02166f98.cpp:
+    complete
+    .text start:0x021675ac end:0x021675b4
+
+src/Combat/Overlay_4/ReturnZero_0216ace8.cpp:
+    complete
+    .text start:0x0216af44 end:0x0216af4c
+
+src/Combat/Overlay_4/ReturnZero_0216acf0.cpp:
+    complete
+    .text start:0x0216af4c end:0x0216af54
+
+src/Combat/Overlay_4/SetOv009cbb830To61Again_0216dfbc.cpp:
+    complete
+    .text start:0x0216e67c end:0x0216e698
+
+src/Combat/Overlay_4/func_ov004_0216aaec.cpp:
+    complete
+    .text start:0x0216ad60 end:0x0216af2c

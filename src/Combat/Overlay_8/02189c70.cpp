@@ -243,7 +243,7 @@ struct Self02189c70 {
 extern char data_ov008_0218c184[];
 extern char data_ov008_0218c196[];
 extern "C" void func_020474a8(Window02189c70*, int, char*, char*);
-extern "C" void func_02045d88(Window02189c70*, char*, int);
+extern "C" void func_0204500c(Window02189c70*, char*, int);
 #endif
 extern "C" void* _Z26GetGlobalField0x1c020421a0v();
 extern "C" int func_0202ae18();
@@ -264,7 +264,9 @@ extern "C" int _Z18TestBitInByteArrayiPhi(void* obj, void* arr, int bit);
 extern "C" void _Z20SetOrClearBitInArrayPvPhii(void* obj, void* arr, int bit, int set);
 extern "C" void _Z30InitObjFromCombatantId020e4bf4Pvi(void* obj, int id);
 extern "C" void func_02046608(Window02189c70* w, int a, char* str, char* buf, int b, int c, int d);
+#if !defined(jpn)
 extern "C" void func_0204500c(Window02189c70* w, char* str, int a, int b);
+#endif
 extern "C" int func_0202c508(int v);
 extern "C" int func_020457e0(Window02189c70* w);
 extern "C" void _Z24AllocateFreeSlot0218b1e0Pv(void* obj);
@@ -490,7 +492,7 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
         if (!self->e1c_b25) win->f99c = 0; else win->f99c = 2;
         win->f19b2 = 1;
 #if defined(jpn)
-        func_02045d88(win, buf400, 0);
+        func_0204500c(win, buf400, 0);
 #else
         func_0204500c(win, buf400, 0, 0xe3);
 #endif
@@ -538,7 +540,7 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
             if (!self->e1c_b25) win->f99c = 0; else win->f99c = 2;
             win->f19b2 = 1;
 #if defined(jpn)
-            func_02045d88(win, buf80, 0);
+            func_0204500c(win, buf80, 0);
 #else
             func_0204500c(win, buf80, 0, 0xe3);
 #endif
@@ -603,13 +605,13 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
 #endif
         if (_Z25ReadBattleField0x64f4Bytev(gs) >= 0x63) {
 #if defined(jpn)
-            func_02045d88(win, _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0xc9), 0);
+            func_0204500c(win, _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0xc9), 0);
 #else
             func_0204500c(win, _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0xc9), 0, 0xe3);
 #endif
         } else {
 #if defined(jpn)
-            func_02045d88(win, _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0xca), 0);
+            func_0204500c(win, _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0xca), 0);
 #else
             func_0204500c(win, _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0xca), 0, 0xe3);
 #endif
@@ -625,13 +627,13 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
             char* name = *(char**)((char*)gs->GetUnknownGameObject() + 0x134);
             sprintf(text, _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0xcb), name);
             win->f2c8 = 1;
-            func_02045d88(win, text, 0);
+            func_0204500c(win, text, 0);
 #else
             _Z30InitObjFromCombatantId020e4bf4Pvi(obj150, _Z19GetField0x397cValueP9GameState(gs));
             win->f0 = obj150;
             win->f2c8 = 1;
 #if defined(jpn)
-            func_02045d88(win, _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0xcb), 0);
+            func_0204500c(win, _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0xcb), 0);
 #else
             func_0204500c(win, _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0xcb), 0, 0xe3);
 #endif
@@ -756,7 +758,7 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
 #endif
             _Z22SetIndexedName02046574P11Obj02046574iPc(win, 1, *(char**)((char*)gs->GetUnknownGameObject() + 0x134));
 #if defined(jpn)
-            func_02045d88(win, _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0xca), 0);
+            func_0204500c(win, _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0xca), 0);
 #else
             func_0204500c(win, _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0xca), 0, 0xe3);
 #endif

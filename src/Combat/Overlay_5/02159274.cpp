@@ -1,4 +1,17 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov005_02159274 func_ov005_0215a78c
+enum { kEntryPad = 8, kYesNo = 0xe60, kTextBytes = 0x800, kPanel = 0xee0 };
+#define func_ov005_021589f4 func_ov005_02159fd0
+#define func_ov005_02159b74 func_ov005_0215b0b8
+#define func_ov005_02158b3c func_ov005_0215a110
+#define func_ov005_02157b74 func_ov005_0215916c
+#else
+enum { kEntryPad = 0x90, kYesNo = 0xe64, kTextBytes = 0x960, kPanel = 0xee4 };
+#endif
+
+
 #include <std_library_functions.h>
 #include <GameState/GameState.h>
 
@@ -28,7 +41,7 @@ struct Entry02159274 {
 };
 
 struct EntryBlock02159274 {
-    char unk_0[0x90];
+    char unk_0[kEntryPad];
     Entry02159274 entries_[22];
     char unk_2ff8[0x3000 - 0x2ff8];
 };
@@ -65,9 +78,9 @@ struct Menu02159274 {
     Container020dedd0* items_;
     char unk_df8[0xe10 - 0xdf8];
     char* text_;
-    char unk_e14[0xe64 - 0xe14];
+    char unk_e14[kYesNo - 0xe14];
     void* yesNo_;
-    char unk_e68[0x2d00 - 0xe68];
+    char unk_e68[0x2d00 - kYesNo - 4];
     EntryBlock02159274 eblk_;
     MenuViews02159274 views_;
 };
@@ -85,7 +98,11 @@ extern "C" void _Z27ResetSelectionState020e25e8P11Obj020e25e8(void* w);
 extern "C" int _Z23IsFlag0x2Active020e2984v(void* w);
 extern "C" void* _Z24FindElementByKey020dedd0P17Container020dedd0i(Container020dedd0* c, int key);
 extern "C" int _Z23GetFlagFromField0x8BitsP14Struct020dd768(Struct020dd768* s);
+#if defined(jpn)
+extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(StructA0205d5d0* a, int b, int c, int d);
+#else
 extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(StructA0205d5d0* a, int b, int c, int d, unsigned char e);
+#endif
 extern "C" void func_ov005_02157b74(void* self, int key, int keep);
 extern "C" char* _Z17GetPtrField0x2a04P9GameState(GameState* gs);
 extern "C" void _Z33DecrementKeyedStackAmount0207c484P17KeyedList0207c484iii(char* list, int key, int a, int b);
@@ -126,15 +143,19 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
             flag = _Z23GetFlagFromField0x8BitsP14Struct020dd768((Struct020dd768*)item);
             if (flag == 1) {
                 self->views_.tail_.message_ = 0xa;
-                memset(self->text_, 0, 0x960);
+                memset(self->text_, 0, kTextBytes);
                 func_ov005_02158b3c(self, self->text_);
                 if (self->views_.slotview_.slotblk_.slot_ >= 0 && self->views_.slotview_.slotblk_.slot_ < 8) {
                     if (((ItemBits02159274*)((char*)item + 8))->flag18) {
                         self->views_.tail_.message_ = 0xc;
-                        memset(self->text_, 0, 0x960);
+                        memset(self->text_, 0, kTextBytes);
                         func_ov005_02158b3c(self, self->text_);
                         _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(
-                            (StructA0205d5d0*)((char*)self + 0x2e4 + 0xc00), 0, (int)self->text_, 1, 0);
+                            (StructA0205d5d0*)((char*)self + kPanel), 0, (int)self->text_, 1
+#if !defined(jpn)
+                            , 0
+#endif
+                        );
                         self->views_.tail_.menuState_ = 4;
                         self->views_.tail_.step_ = 0;
                         return;
@@ -161,21 +182,33 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
                     }
                 }
                 _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(
-                    (StructA0205d5d0*)((char*)self + 0x2e4 + 0xc00), 0, (int)self->text_, 1, 0);
+                    (StructA0205d5d0*)((char*)self + kPanel), 0, (int)self->text_, 1
+#if !defined(jpn)
+                            , 0
+#endif
+                        );
             } else if (flag == 2) {
                 self->views_.tail_.message_ = 9;
-                memset(self->text_, 0, 0x960);
+                memset(self->text_, 0, kTextBytes);
                 func_ov005_02158b3c(self, self->text_);
                 _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(
-                    (StructA0205d5d0*)((char*)self + 0x2e4 + 0xc00), 0, (int)self->text_, 1, 0);
+                    (StructA0205d5d0*)((char*)self + kPanel), 0, (int)self->text_, 1
+#if !defined(jpn)
+                            , 0
+#endif
+                        );
                 self->views_.tail_.step_++;
                 return;
             } else if (flag == 4) {
                 self->views_.tail_.message_ = 0xb;
-                memset(self->text_, 0, 0x960);
+                memset(self->text_, 0, kTextBytes);
                 func_ov005_02158b3c(self, self->text_);
                 _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(
-                    (StructA0205d5d0*)((char*)self + 0x2e4 + 0xc00), 0, (int)self->text_, 1, 0);
+                    (StructA0205d5d0*)((char*)self + kPanel), 0, (int)self->text_, 1
+#if !defined(jpn)
+                            , 0
+#endif
+                        );
             }
             self->views_.tail_.menuState_ = 4;
             self->views_.tail_.step_ = 0;
@@ -206,7 +239,7 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
             void* item;
             int notfound;
             self->views_.tail_.message_ = 0xa;
-            memset(self->text_, 0, 0x960);
+            memset(self->text_, 0, kTextBytes);
             func_ov005_02158b3c(self, self->text_);
             if (self->views_.slotview_.slotblk_.slot_ >= 0 && self->views_.slotview_.slotblk_.slot_ < 8) {
                 item = _Z24FindElementByKey020dedd0P17Container020dedd0i(
@@ -214,10 +247,14 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
                     self->eblk_.entries_[self->views_.slotview_.slotblk_.slot_].id);
                 if (((ItemBits02159274*)((char*)item + 8))->flag18) {
                     self->views_.tail_.message_ = 0xc;
-                    memset(self->text_, 0, 0x960);
+                    memset(self->text_, 0, kTextBytes);
                     func_ov005_02158b3c(self, self->text_);
                     _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(
-                        (StructA0205d5d0*)((char*)self + 0x2e4 + 0xc00), 0, (int)self->text_, 1, 0);
+                        (StructA0205d5d0*)((char*)self + kPanel), 0, (int)self->text_, 1
+#if !defined(jpn)
+                            , 0
+#endif
+                        );
                     self->views_.tail_.menuState_ = 4;
                     self->views_.tail_.step_ = 0;
                     return;
@@ -248,7 +285,11 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
                 }
             }
             _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(
-                (StructA0205d5d0*)((char*)self + 0x2e4 + 0xc00), 0, (int)self->text_, 1, 0);
+                (StructA0205d5d0*)((char*)self + kPanel), 0, (int)self->text_, 1
+#if !defined(jpn)
+                            , 0
+#endif
+                        );
             self->views_.tail_.menuState_ = 4;
             self->views_.tail_.step_ = 0;
             return;

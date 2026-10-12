@@ -153,7 +153,7 @@ extern const char data_ov023_021fe1ee[];
 #if defined(jpn)
 extern const char data_ov023_021fd49e[];
 extern "C" void func_02073864(void*, void*, const char*, int, int, int);
-extern "C" void func_02045d88(void*, const char*, int);
+extern "C" void func_0204500c(void*, const char*, int);
 #endif
 
 extern "C" MessageWork* _Z26GetGlobalField0x1c020421a0v();
@@ -185,7 +185,9 @@ unsigned char CopyOutRegion0x571d(char* obj, void* dst);
 extern "C" void func_ov000_0216d370(void* obj, int flagA, int flagB, int flagC);
 void* FindEntryByKey(TableA68* table, int key);
 extern "C" int sprintf(char* buffer, const char* format, ...);
+#if !defined(jpn)
 extern "C" void func_0204500c(void* obj, const char* text, int mode, int tag);
+#endif
 extern "C" void _Z36ResetAndDispatchActorContext0209c6d8Pvs(void* actor, short arg);
 extern "C" int func_ov017_021959b4(void);
 int ArrayContainsByte(ArrayContainsByteStruct* s, int val);
@@ -279,7 +281,7 @@ extern "C" ARM void func_ov023_021f4c04(BattleWork* self) {
 #if defined(jpn)
         int value = *(int*)((char*)gs->GetProtagonist() + 0x134);
         sprintf(text, (const char*)FindEntryByKey((TableA68*)self->rosterList, 0x14), value);
-        func_02045d88(ctrl, text, 1);
+        func_0204500c(ctrl, text, 1);
 #else
         gs->GetProtagonist();
         sprintf(text, (const char*)FindEntryByKey((TableA68*)self->rosterList, 0x14));

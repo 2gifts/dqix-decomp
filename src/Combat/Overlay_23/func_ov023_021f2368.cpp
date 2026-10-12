@@ -17,7 +17,7 @@ void InitObjFromCombatantId020e4bf4(void* obj, int combatantId);
 struct Obj02046574;
 void SetIndexedName02046574(struct Obj02046574* obj, int index, char* str);
 #if defined(jpn)
-extern "C" void func_02045d88(void* obj, char* buffer, int a);
+extern "C" void func_0204500c(void* obj, char* buffer, int a);
 #else
 extern "C" void func_0204500c(void* obj, char* buffer, int a, int b);
 #endif
@@ -88,7 +88,7 @@ extern "C" ARM int func_ov023_021f2368(unsigned char* obj) {
                     sprintf(msgBuf, e1, combatantName, *(char**)found);
                     char* e2 = (char*)FindEntryByKey((struct TableA68*)(obj + regionalOffset0), 0x22);
                     strcat(msgBuf, e2);
-                    func_02045d88(stateObj, msgBuf, 1);
+                    func_0204500c(stateObj, msgBuf, 1);
 
 #else
                     char buf1[0xc];

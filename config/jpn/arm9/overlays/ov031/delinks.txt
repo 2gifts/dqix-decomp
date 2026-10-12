@@ -6388,3 +6388,23 @@ src/Combat/Overlay_31/SetGlobalField10AndPairFlag_0224342c.cpp:
 src/Combat/Overlay_31/CheckStatusAndFlag_0221e4d8.cpp:
     complete
     .text start:0x0221ecb8 end:0x0221ecdc
+
+src/Combat/Overlay_31/SetActiveField4_0221d384.cpp:
+    complete
+    .text start:0x0221db64 end:0x0221db90
+
+src/Combat/Overlay_31/SetupAndVectorCopy_0221e774.cpp:
+    complete
+    .text start:0x0221ef54 end:0x0221ef78
+
+src/Combat/Overlay_31/ForwardPairAndNotify_0223e120.cpp:
+    complete
+    .text start:0x0223e900 end:0x0223e948
+
+src/Combat/Overlay_31/func_ov031_0222dee0.cpp:
+    complete
+    .text start:0x0222e6c0 end:0x0222e764
+
+src/Combat/Overlay_31/SetField12_0224586c.cpp:
+    complete
+    .text start:0x02246434 end:0x02246444

@@ -4,7 +4,7 @@
 #if defined(jpn)
 #define _Z25InitBattleIfListHasId0x1cPv func_020db45c
 #define func_ov017_021ab860 func_ov017_021ac0c0
-extern "C" void func_02045d88(void*, const char*, int);
+extern "C" void func_0204500c(void*, const char*, int);
 extern char data_020f29cc;
 #endif
 
@@ -26,7 +26,9 @@ extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(void* obj, int ar
 extern "C" void _Z25ResetElapsedState020e11a4v(void);
 extern "C" void func_02046380(void* global);
 extern "C" int _Z28CallFunc020e0434With02153694i(int value);
+#if !defined(jpn)
 extern "C" void func_0204500c(void* global, void* entry, int a, int b);
+#endif
 extern "C" int func_020457e0(void* global);
 extern "C" void func_ov017_021ab860(short value, int flag);
 extern "C" void _Z19InitContext020e1154Pv(void* obj);
@@ -84,7 +86,7 @@ extern "C" ARM void func_020d9870(struct Obj020d9870* self) {
         _Z25ResetElapsedState020e11a4v();
         func_02046380(g1c);
 #if defined(jpn)
-        func_02045d88(g1c, &data_020f29cc, 0);
+        func_0204500c(g1c, &data_020f29cc, 0);
 #else
         func_0204500c(g1c, (void*)_Z28CallFunc020e0434With02153694i(0x3e), 0, 0xe3);
 #endif

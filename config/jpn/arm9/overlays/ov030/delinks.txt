@@ -16,3 +16,27 @@ src/Combat/Overlay_30/ResetHeaderAndReturn_021d9250.cpp:
 src/Combat/Overlay_30/ResetHeaderAndReturn_021d9264.cpp:
     complete
     .text start:0x021d9b24 end:0x021d9b38
+
+src/Combat/Overlay_30/ResetHeaderAndReturn_021d9278.cpp:
+    complete
+    .text start:0x021d9b38 end:0x021d9b4c
+
+src/Combat/Overlay_30/ResetHeaderAndReturn_021d928c.cpp:
+    complete
+    .text start:0x021d9b4c end:0x021d9b60
+
+src/Combat/Overlay_30/ResetHeaderAndReturn_021d92a0.cpp:
+    complete
+    .text start:0x021d9b60 end:0x021d9b74
+
+src/Combat/Overlay_30/ResetHeaderAndReturn_021d92b4.cpp:
+    complete
+    .text start:0x021d9b74 end:0x021d9b88
+
+src/Combat/Overlay_30/ResetHeaderAndReturn_021d92c8.cpp:
+    complete
+    .text start:0x021d9b88 end:0x021d9b9c
+
+src/Combat/Overlay_30/ResetHeaderAndReturn_021d92dc.cpp:
+    complete
+    .text start:0x021d9b9c end:0x021d9bb0

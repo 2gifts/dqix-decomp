@@ -63,7 +63,7 @@ extern Actor0209c678 data_02109bf4;
 extern const SoundIds data_ov023_021fd870;
 #if defined(jpn)
 extern const char data_ov023_021fd45c[];
-extern "C" void func_02045d88(TextRenderer*, const char*, int);
+extern "C" void func_0204500c(TextRenderer*, const char*, int);
 #endif
 extern "C" void* func_0202ae18();
 TextRenderer* GetGlobalField0x1c020421a0();
@@ -94,7 +94,9 @@ void* SearchWithComparator0206f4f0(BinarySearchByComparatorStruct*, int);
 extern "C" Words021edf38 func_ov023_021ed804(Words021edf38, void*);
 void SetWords_021edf38_021edf38(void*, Words021edf38*);
 const char* CallFunc020e0434With02153694(int);
+#if !defined(jpn)
 extern "C" void func_0204500c(TextRenderer*, const char*, int, int);
+#endif
 void ResetAndDispatchActorContext0209c6d8(void*, short);
 extern "C" int func_0202c508(void*);
 TagValueEntry020e385c* GetData02153660();
@@ -164,7 +166,7 @@ extern "C" ARM int func_ov023_021edc08(CombatScreen* self) {
         DetailedTreasureMapData* detail = func_02012fe4()->grotto_.GetDetailedData();
         char message[128];
         sprintf(message, data_ov023_021fd45c, *(const char**)((char*)member + 0x134), (char*)detail + 0x5a);
-        func_02045d88(renderer, message, 1);
+        func_0204500c(renderer, message, 1);
 #else
         func_02046380(renderer);
         GrottoRewardView* rewards = (GrottoRewardView*)&func_02012fe4()->grotto_.GetDetailedData()->regular_;

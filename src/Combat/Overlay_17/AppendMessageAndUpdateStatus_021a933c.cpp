@@ -3,9 +3,11 @@
 struct Container020e0310;
 int GetGlobalField0x1c020421a0(void);
 int GetFieldByKey020e0434(struct Container020e0310*, int);
+#if !defined(jpn)
 extern "C" void func_0204500c(void*, const char*, int, int);
+#endif
 #if defined(jpn)
-extern "C" void func_02045d88(void*, const char*, int);
+extern "C" void func_0204500c(void*, const char*, int);
 #endif
 
 // USA: func_ov017_021a933c  (semantic: AppendMessageAndUpdateStatus_021a933c)
@@ -21,7 +23,7 @@ extern "C" ARM void func_ov017_021a933c(void* obj, int key) {
         if (*(int*)(o + 0x14) == 1) key += 0x64;
     }
 #if defined(jpn)
-    func_02045d88((void*)g, (const char*)GetFieldByKey020e0434((struct Container020e0310*)(o + regionalOffset0), (short)key), 0);
+    func_0204500c((void*)g, (const char*)GetFieldByKey020e0434((struct Container020e0310*)(o + regionalOffset0), (short)key), 0);
 #else
     func_0204500c((void*)g, (const char*)GetFieldByKey020e0434((struct Container020e0310*)(o + regionalOffset0), (short)key), 0, 0xe3);
 #endif
