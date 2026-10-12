@@ -1,6 +1,11 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+#define func_02077788 func_020786a4
+#define func_020341e0 func_02034104
+#endif
+
 struct Entity02077788 {
     char pad0[0x44];
     Vector3fix f44;

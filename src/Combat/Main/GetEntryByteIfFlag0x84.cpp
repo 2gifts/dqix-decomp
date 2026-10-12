@@ -13,6 +13,11 @@ struct Owner02047a5c {
     unsigned char rest : 7;
 };
 
+#if defined(jpn)
+#define GetEntryByteIfFlag0x84 func_0204887c
+extern "C" ARM unsigned char func_0204887c(struct Owner02047a5c* owner, int index);
+#endif
+
 // USA: func_02047a5c
 ARM unsigned char GetEntryByteIfFlag0x84(struct Owner02047a5c* owner, int index) {
     if (owner->flag) {

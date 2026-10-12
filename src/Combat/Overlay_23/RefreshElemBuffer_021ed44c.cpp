@@ -7,7 +7,11 @@
 
 extern "C" void func_ov023_021ed254(void* obj, void* buf);
 struct StructA0205d5d0;
+#if defined(jpn)
+extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(struct StructA0205d5d0* a, int b, int c, int d);
+#else
 int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d, unsigned char e);
+#endif
 
 struct Obj021ed44c {
     char pad0[0x1c];
@@ -19,8 +23,17 @@ struct Obj021ed44c {
 // USA: func_ov023_021ed44c  (semantic: RefreshElemBuffer_021ed44c)
 extern "C" ARM void func_ov023_021ed44c(Obj021ed44c* obj) {
     if ((obj->flags438 & 1) == 0) return;
-    memset(obj->buf1c, 0, 0x960);
+    memset(obj->buf1c, 0,
+#if defined(jpn)
+        0x800);
+#else
+        0x960);
+#endif
     func_ov023_021ed254(obj, obj->buf1c);
+#if defined(jpn)
+    _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((struct StructA0205d5d0*)((char*)obj + 0xc4), 0, (int)obj->buf1c, 0);
+#else
     TryApplyElemFields0205d5d0((struct StructA0205d5d0*)((char*)obj + 0xc4), 0, (int)obj->buf1c, 0, 1);
+#endif
     obj->flags438 &= ~1;
 }

@@ -12,6 +12,11 @@ struct Pool020401fc {
     void* elements;
 };
 
+#if defined(jpn)
+#define InitPool020401fc func_020406f8
+extern "C" ARM void InitPool020401fc(struct Pool020401fc* pool, unsigned int count, SafeAllocator* alloc);
+#endif
+
 // USA: func_020401fc
 ARM void InitPool020401fc(struct Pool020401fc* pool, unsigned int count, SafeAllocator* alloc) {
     unsigned int i;

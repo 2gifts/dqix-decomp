@@ -20,6 +20,11 @@ struct Global020fdd30_800c {
 };
 extern struct Global020fdd30_800c data_020fdd30;
 
+#if defined(jpn)
+#define AppendVariantHalfwordPair func_02027878
+extern "C" ARM int AppendVariantHalfwordPair(struct Variant02030b0c* v);
+#endif
+
 // USA: func_0202800c
 ARM int AppendVariantHalfwordPair(struct Variant02030b0c* v) {
     struct HalfwordPair pair;

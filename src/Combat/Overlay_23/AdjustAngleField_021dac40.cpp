@@ -10,7 +10,11 @@ extern "C" void func_ov023_021dacd4(void*, int, int);
 
 struct Obj021dac40 {
     char pad0[0xd00];
+#if defined(jpn)
+    char padd00[0x5c];
+#else
     char padd00[0x98];
+#endif
     short fd98;
     char padd9a[0xd9c - 0xd9a];
     int fd9c;

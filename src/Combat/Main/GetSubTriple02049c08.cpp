@@ -14,6 +14,11 @@ struct Obj02049c08 {
     struct Sub02049c08* sub;
 };
 
+#if defined(jpn)
+#define GetSubTriple02049c08 func_0204aa28
+extern "C" ARM struct Triple02049c08 GetSubTriple02049c08(struct Obj02049c08* obj);
+#endif
+
 // USA: func_02049c08
 ARM struct Triple02049c08 GetSubTriple02049c08(struct Obj02049c08* obj) {
     struct Triple02049c08 local;

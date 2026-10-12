@@ -2,6 +2,11 @@
 
 extern "C" int func_02001aec(void* a, void* b, int n);
 
+#if defined(jpn)
+#define CheckNoConflictInArray0209890c func_0209a55c
+extern "C" ARM int CheckNoConflictInArray0209890c(void* arr, void* obj);
+#endif
+
 // USA: func_0209890c
 ARM int CheckNoConflictInArray0209890c(void* arr, void* obj) {
     int i;

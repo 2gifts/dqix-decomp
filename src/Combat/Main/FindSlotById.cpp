@@ -9,6 +9,11 @@ struct SlotEntry0209b944 {
     struct Elem8_0209b944 arr[9];
 };
 
+#if defined(jpn)
+#define FindSlotById0209b944 func_0209d6bc
+extern "C" ARM struct Elem8_0209b944* FindSlotById0209b944(struct SlotEntry0209b944* entries, int index, int key, int* outIdx);
+#endif
+
 // USA: func_0209b944
 ARM struct Elem8_0209b944* FindSlotById0209b944(struct SlotEntry0209b944* entries, int index, int key, int* outIdx) {
     int i;

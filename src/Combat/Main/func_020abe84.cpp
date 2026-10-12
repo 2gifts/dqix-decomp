@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_020abe84 func_020ad950
+enum { BattleTableOffset = 0x73b0 };
+#else
+enum { BattleTableOffset = 0x75f0 };
+#endif
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
 
@@ -23,7 +30,7 @@ int CopyInBattleField0x7540(void*);
 // USA: func_020abe84
 extern "C" ARM int func_020abe84(void* unused, short* indices, Entry020abe84* values, int count) {
     S_a0460 block;
-    Entry020abe84* table = (Entry020abe84*)((char*)GameState::GetInstance() + 0x75f0);
+    Entry020abe84* table = (Entry020abe84*)((char*)GameState::GetInstance() + BattleTableOffset);
     int added = 0;
     int i;
     for (i = 0; i < count; i++) {

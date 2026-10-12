@@ -6288,3 +6288,19 @@ src/Combat/Overlay_31/022135f4.cpp:
 src/Combat/Overlay_31/022364c0.cpp:
     complete
     .text start:0x02236ca0 end:0x02236d50
+
+src/Combat/Overlay_31/0221b8e4.cpp:
+    complete
+    .text start:0x0221c0c4 end:0x0221c184
+
+src/Combat/Overlay_31/0221ae00.cpp:
+    complete
+    .text start:0x0221b5e0 end:0x0221b6b8
+
+src/Combat/Overlay_31/02226910.cpp:
+    complete
+    .text start:0x022270f0 end:0x022271b8
+
+src/Combat/Overlay_31/02224fa4.cpp:
+    complete
+    .text start:0x02225784 end:0x0222584c

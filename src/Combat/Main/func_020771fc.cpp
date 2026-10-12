@@ -1,5 +1,12 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_020771fc func_02078118
+enum { EntryListOffset = 0x14 };
+#else
+enum { EntryListOffset = 0x18 };
+#endif
+
 struct Vec3_020771fc {
     int x;
     int y;
@@ -44,7 +51,11 @@ struct Obj02033834;
 struct SearchStruct0202c1a4;
 struct Probe_02012fe4 {
     unsigned short key;
+#if defined(jpn)
+    char pad2[0x442];
+#else
     char pad2[0x422];
+#endif
     int f424;
 };
 
@@ -134,7 +145,7 @@ extern "C" ARM void func_020771fc(Actor_020771fc* obj) {
             int id = _ZNK8Object3D10GetField06Ev((U16Field0x6_020375f8*)obj);
             Entry_02028bd0* entry = FindInlineEntryById(table, id);
             if (entry != 0) {
-                List_020283c0* list = (List_020283c0*)((char*)entry + 0x18);
+                List_020283c0* list = (List_020283c0*)((char*)entry + EntryListOffset);
                 if (list != 0) {
                     TableEntry_020771fc* row = FindListEntryById(list, obj->f164);
                     if (row != 0) {

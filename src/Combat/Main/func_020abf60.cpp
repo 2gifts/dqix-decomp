@@ -1,4 +1,12 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_020abf60 func_020ada2c
+#define data_020e90d4 data_020e91e0
+enum { BattleTableOffset = 0x73b0 };
+#else
+enum { BattleTableOffset = 0x75f0 };
+#endif
 #include "GameState/GameState.h"
 
 extern "C" void* func_0205ec34(void);
@@ -19,7 +27,7 @@ extern "C" ARM int func_020abf60(void* param) {
         return 0;
     }
     SetOrClearBitInArray(ctx, (unsigned char*)ctx + 0x8c, 0x1143, 1);
-    int* table = (int*)((char*)GameState::GetInstance() + 0x75f0);
+    int* table = (int*)((char*)GameState::GetInstance() + BattleTableOffset);
     short* keys = data_020e90d4;
     int i;
     for (i = 0; i < 0x15; i++) {

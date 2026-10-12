@@ -1,5 +1,12 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_0203e2c4 func_0203e7c0
+enum { PendingPositionOffset = 0x7c38 };
+#else
+enum { PendingPositionOffset = 0x7e78 };
+#endif
+
 #include "Combat/EntryGetterTypes.h"
 #include "GameState/GameState.h"
 #include "System/Matrix.h"
@@ -132,7 +139,7 @@ extern "C" ARM void func_0203e2c4(void *receiver, unsigned short id) {
     self->id = 0;
     self->selectedMask = 0;
     GameState *gameState = GameState::GetInstance();
-    PendingPosition *pending = (PendingPosition *) ((char *) gameState + 0x7e78);
+    PendingPosition *pending = (PendingPosition *) ((char *) gameState + PendingPositionOffset);
     if (pending->key != 0xff) {
         struct Node02040774 *node = (struct Node02040774 *) FindEntryPointerByKey0203df78(self, pending->key);
         if (node != NULL) {

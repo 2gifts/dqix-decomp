@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_020ad1f8 func_020aecc4
+
+#endif
 #include "GameState/GameState.h"
 
 extern "C" void func_0202ae18();
@@ -15,7 +20,11 @@ struct Vec3I020ad1f8 {
 };
 
 struct Sub020ad1f8 {
+#if defined(jpn)
+    char pad[0xf4];
+#else
     char pad[0xb4];
+#endif
     unsigned short state;
 };
 

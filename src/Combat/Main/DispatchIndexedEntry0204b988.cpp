@@ -9,6 +9,11 @@ struct Obj0204b988 {
     unsigned char field1d;  // 0x1d (entry count)
 };
 
+#if defined(jpn)
+#define DispatchIndexedEntry0204b988 func_0204c7a8
+extern "C" ARM void DispatchIndexedEntry0204b988(struct Obj0204b988* obj, unsigned int index, int a3, int a4, unsigned short a5);
+#endif
+
 // USA: func_0204b988
 ARM void DispatchIndexedEntry0204b988(struct Obj0204b988* obj, unsigned int index, int a3, int a4, unsigned short a5) {
     char* base;

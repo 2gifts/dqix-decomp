@@ -2464,3 +2464,27 @@ src/Combat/Overlay_23/func_ov023_021f8240.cpp:
 src/Combat/Overlay_23/CallIfFlagValidAndFieldSet_021e3184.cpp:
     complete
     .text start:0x021e34dc end:0x021e3508
+
+src/Combat/Overlay_23/CheckFlagOrActiveElement_021e6de4.cpp:
+    complete
+    .text start:0x021e7148 end:0x021e7184
+
+src/Combat/Overlay_23/AdjustAngleField_021dac40.cpp:
+    complete
+    .text start:0x021db4b4 end:0x021db548
+
+src/Combat/Overlay_23/func_ov023_021e3084.cpp:
+    complete
+    .text start:0x021e33dc end:0x021e348c
+
+src/Combat/Overlay_23/ResetPendingSlotsIfActive_021dca88.cpp:
+    complete
+    .text start:0x021dd398 end:0x021dd3ec
+
+src/Combat/Overlay_23/SetCombatMode_021dd4cc.cpp:
+    complete
+    .text start:0x021ddcbc end:0x021ddd7c
+
+src/Combat/Overlay_23/RefreshElemBuffer_021ed44c.cpp:
+    complete
+    .text start:0x021ed394 end:0x021ed3f0

@@ -10,6 +10,13 @@
 #include "Filesystem/LowNitroHandle.h"
 #include "Filesystem/FileAccessor.h"
 
+#if defined(jpn)
+#define data_ov015_0219413f data_ov015_02194c7f
+#define data_ov015_02194152 data_ov015_02194c92
+#define data_ov015_02194156 data_ov015_02194c96
+#define data_ov015_02193d08 data_ov015_02194838
+#endif
+
 extern "C" void* __clear(void* dst, int count);
 
 struct Foo0207df50;

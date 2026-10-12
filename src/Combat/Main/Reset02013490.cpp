@@ -3,6 +3,11 @@
 
 extern "C" void Mat3x3_WriteIdentity(void*);
 
+#if defined(jpn)
+#define Reset02013490 func_02013258
+extern "C" ARM void Reset02013490(char* obj);
+#endif
+
 // USA: func_02013490
 ARM void Reset02013490(char* obj) {
     *(int*)(obj + 0) = 0;
