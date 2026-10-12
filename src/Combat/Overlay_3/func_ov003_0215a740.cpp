@@ -179,7 +179,7 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
                 memset(*(void**)(s + 0x7c), 0, kRegion960);
                 _Z25AppendFieldTwice_02159290Pvii(self, 0x427, 0x42e);
                 func_ov003_02159250(self, *(void**)(s + 0x7c));
-                *(volatile unsigned char*)(s + 0x580) = 6;
+                *(unsigned char*)(s + 0x580) = 6;
             } else {
                 *(unsigned char*)(s + 0x59f) = *(unsigned char*)(s + 0x59f) | 0x10;
                 NameBuf0215a740 nb;
