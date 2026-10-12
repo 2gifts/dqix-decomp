@@ -99,7 +99,9 @@ struct GameResources
         char unknown[0x28];
     } substruct_array_3c04[4];
     void* unknown_ptr_array_3ca4[4]; // jpn: offset 3a84
-    char unknown_3cb4[0x3d4];
+    char unknown_3cb4[0x4080 - 0x3cb4];
+    int unknown_4080;
+    char unknown_4084[0x4088 - 0x4084];
     void* unknown_ptr_array_4088[3]; // jpn: offset 3e68
     char unknown_4094[0x130];
     void* unknown_ptr_41c4; // jpn: offset 3fa4
