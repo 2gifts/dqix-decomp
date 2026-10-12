@@ -10,6 +10,9 @@ extern "C" {
     void func_020dfec0(void* dest, void* allocator, void* fileData, unsigned int size);
 }
 
+#if defined(jpn)
+extern int data_020f143c;
+#endif
 extern int data_020f1368;
 extern int data_020f1382;
 
@@ -23,13 +26,22 @@ struct Obj02092f80 {
     unsigned char field_37;
 };
 
+#if defined(jpn)
+#define UpdateAllocatorState02092f80 func_020938bc
+extern "C" ARM void func_020938bc(Obj02092f80* obj);
+#endif
+
 // USA: func_02092f80
 ARM void UpdateAllocatorState02092f80(Obj02092f80* obj) {
     int ctx = (int)BackgroundLoader::GetInstance();
     unsigned char state = obj->field_35;
 
     if (state == 0) {
+#if defined(jpn)
+        obj->field_2c = ((BackgroundLoader*)(ctx))->QueueLoadFile((const char*)((int)&data_020f143c), (SafeAllocator*)(0));
+#else
         obj->field_2c = ((BackgroundLoader*)(ctx))->QueueLoadFileInGP2((const char*)((int)&data_020f1368), (const char*)((int)&data_020f1382), (SafeAllocator*)(0));
+#endif
         obj->field_35++;
     } else if (state == 1) {
         if (((BackgroundLoader*)(ctx))->GetTaskStatus((int)(obj->field_2c))) {

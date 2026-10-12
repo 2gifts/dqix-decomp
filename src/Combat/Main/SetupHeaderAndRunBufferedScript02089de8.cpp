@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define data_020f1088 data_020f11ac
+#define data_020f1048 data_020f116c
+#endif
+
 #include "Filesystem/BackgroundLoader.h"
 
 
@@ -29,6 +35,11 @@ struct Container02108efc {
 };
 extern struct Container02108efc data_02108efc;
 
+#if defined(jpn)
+#define SetupHeaderAndRunBufferedScript02089de8 func_0208a6e4
+extern "C" ARM void func_0208a6e4(void* param0, void* param1, const char* param2);
+#endif
+
 // USA: func_02089de8
 ARM void SetupHeaderAndRunBufferedScript02089de8(void* param0, void* param1, const char* param2) {
     BackgroundLoader::AddLockGlobal();
@@ -40,7 +51,11 @@ ARM void SetupHeaderAndRunBufferedScript02089de8(void* param0, void* param1, con
     if (param2 != 0) {
         header = (struct StreamHeader*)LoadFileIntoMemory(param2, srcBuf, pCount);
     } else {
+        #if defined(jpn)
+        header = (struct StreamHeader*)LoadFileIntoMemory(&data_020f1088, srcBuf, pCount);
+#else
         header = (struct StreamHeader*)ExtractFileFromGP2(&data_020f1088, &data_020f109e, pCount);
+#endif
     }
     if (header != 0) {
         data_02108efc.field0 = param0;

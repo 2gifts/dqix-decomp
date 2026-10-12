@@ -1,4 +1,7 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define func_ov003_02156ad4 func_ov003_02158034
+#endif
 
 extern "C" {
 void* _ZN9GameState11GetInstanceEv(void);
@@ -30,7 +33,11 @@ struct Ctrl02156ad4 {
     void* f18;
     char pad1c[0x80 - 0x1c];
     char sub80[0x80];
+#if defined(jpn)
+    char pad100[0x1dc - 0x100];
+#else
     char pad100[0x1e0 - 0x100];
+#endif
     short f1e0;
     char pad1e2[4];
     short f1e6;
@@ -48,7 +55,11 @@ struct Ctrl02156ad4 {
 };
 
 struct Obj02156ad4 {
+#if defined(jpn)
+    char pad0[0x2a];
+#else
     char pad0[0x36];
+#endif
     short f36;
 };
 

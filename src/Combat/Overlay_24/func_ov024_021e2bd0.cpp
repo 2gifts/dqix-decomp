@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov024_021e2bd0 func_ov024_021e3468
+#endif
 #include <GameState/GameState.h>
 #include <Combat/Overlay_0/GetCombatantByID.h>
 #include <Util/Random.h>

@@ -2,13 +2,24 @@
 #include "GameState/GameState.h"
 #include "Combat/FormationPosition.h"
 
+#if defined(jpn)
+#define func_ov000_021676a8 func_ov000_02168de8
+#define data_ov000_02183108 data_ov000_021841b4
+#define data_ov000_021830fc data_ov000_021841a8
+#define data_ov000_021830c0 data_ov000_0218416c
+#endif
+
 struct BattleCore_021676a8 {
     char pad0[0x8e20];
     int field_0x8e20;
 };
 
 struct Owner_021676a8 {
+#if defined(jpn)
+    char pad0[0x218];
+#else
     char pad0[0x29c];
+#endif
     BattleCore_021676a8* core;
 };
 

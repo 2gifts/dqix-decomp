@@ -1,4 +1,19 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define data_ov023_021fd922 data_ov023_021fcbd2
+#endif
+
+
+#if defined(jpn)
+#define func_ov023_021f9da8 func_ov023_021f9234
+#define GetEntryByteIfFlag0x84 func_0204887c
+#endif
+
+
+#if defined(jpn)
+#define func_ov023_021f8e1c func_ov023_021f82a8
+#endif
 #include "GameState/GameState.h"
 
 struct Vec3_021f8e1c {
@@ -31,7 +46,10 @@ public:
     virtual void v49(); virtual void v50(); virtual void v51(); virtual void v52();
     virtual void v53(); virtual void v54(); virtual void v55(); virtual void v56();
     virtual void v57(); virtual void v58(); virtual void v59(); virtual void v60();
+
+#if !defined(jpn)
     virtual void v61();
+#endif
     virtual int IsDisabled();
 
     char pad4[0x2c];
@@ -89,6 +107,9 @@ int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
 int TestFlagMask(unsigned short* obj, int mask);
 void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
 extern "C" void* _Z20AddOffset20_021f7318Pv(void* p);
+#if defined(jpn)
+extern "C"
+#endif
 unsigned char GetEntryByteIfFlag0x84(struct Owner02047a5c* owner, int index);
 int GetElementByte1IfEnabled(struct Owner02047a3c* obj, int index);
 extern "C" unsigned short _Z28GetShortAt_021f8c50_021f8c50Ph(unsigned char* obj);

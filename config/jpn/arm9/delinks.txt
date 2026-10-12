@@ -17610,3 +17610,247 @@ src/Combat/Main/ReturnFalse02075090.cpp:
 src/Combat/Main/GetFieldAt0x1b8.cpp:
     complete
     .text start:0x0205504c end:0x02055054
+
+src/Combat/Main/func_0202920c.cpp:
+    complete
+    .text start:0x02028dc4 end:0x02028ea4
+
+src/Combat/Main/SetField402028d58.cpp:
+    complete
+    .text start:0x020285a8 end:0x020285b8
+
+src/Combat/Main/ClearBuffer02029060.cpp:
+    complete
+    .text start:0x020288b0 end:0x020288d8
+
+src/Combat/Main/FindElementWithByte0xc4Is0xff.cpp:
+    complete
+    .text start:0x0208271c end:0x02082754
+
+src/Combat/Main/GetSlotEntry020108d8.cpp:
+    complete
+    .text start:0x02010734 end:0x0201074c
+
+src/Combat/Main/ProcessCombatantState020235c8.cpp:
+    complete
+    .text start:0x02022f90 end:0x020230a4
+
+src/Combat/Main/FindEntryByKeyPair02021394.cpp:
+    complete
+    .text start:0x02020f88 end:0x02020ff0
+
+src/Combat/Main/MoveValue3cbTo3cc.cpp:
+    complete
+    .text start:0x02094380 end:0x020943c0
+
+src/Combat/Main/MoveValue3ccTo3cb.cpp:
+    complete
+    .text start:0x020943c0 end:0x02094400
+
+src/Combat/Main/AlwaysTrue0201c1c0.cpp:
+    complete
+    .text start:0x0201bf38 end:0x0201bf40
+
+src/Combat/Main/ReturnTrue0207235c.cpp:
+    complete
+    .text start:0x020733c8 end:0x020733d0
+
+src/Combat/Main/AlwaysTrue0208dc74.cpp:
+    complete
+    .text start:0x0208e530 end:0x0208e538
+
+src/Combat/Main/AlwaysTrue0208dc7c.cpp:
+    complete
+    .text start:0x0208e538 end:0x0208e540
+
+src/Combat/Main/AlwaysTrue02064d38.cpp:
+    complete
+    .text start:0x02066024 end:0x0206602c
+
+src/Combat/Main/AlwaysTrue02064d40.cpp:
+    complete
+    .text start:0x0206602c end:0x02066034
+
+src/Combat/Main/AlwaysTrue0201c5f4.cpp:
+    complete
+    .text start:0x0201c36c end:0x0201c374
+
+src/Combat/Main/AlwaysTrue0201c71c.cpp:
+    complete
+    .text start:0x0201c4a8 end:0x0201c4b0
+
+src/Combat/Main/AlwaysTrue0201c714.cpp:
+    complete
+    .text start:0x0201c4a0 end:0x0201c4a8
+
+src/Combat/Main/AlwaysTrue0209a76c.cpp:
+    complete
+    .text start:0x0209c4e4 end:0x0209c4ec
+
+src/Combat/Main/AlwaysTrue0209a774.cpp:
+    complete
+    .text start:0x0209c4ec end:0x0209c4f4
+
+src/Combat/Main/AlwaysTrue0209a0f4.cpp:
+    complete
+    .text start:0x0209be28 end:0x0209be30
+
+src/Combat/Main/AlwaysTrue0209a0fc.cpp:
+    complete
+    .text start:0x0209be30 end:0x0209be38
+
+src/Combat/Main/ReturnTrue0205e034.cpp:
+    complete
+    .text start:0x0205f320 end:0x0205f328
+
+src/Combat/Main/ReturnTrue0205e07c.cpp:
+    complete
+    .text start:0x0205f368 end:0x0205f370
+
+src/Combat/Main/TransferBg2CharDataThunk020bba50.cpp:
+    complete
+    .text start:0x020bd51c end:0x020bd528
+
+src/Combat/Main/SetField0x2d1.cpp:
+    complete
+    .text start:0x02055a2c end:0x02055a34
+
+src/Combat/Main/SubmitVariantU16.cpp:
+    complete
+    .text start:0x020733d8 end:0x02073404
+
+src/Combat/Main/AllocateEntryArrayFromVariant0207f12c.cpp:
+    complete
+    .text start:0x0207feac end:0x0207fed8
+
+src/Combat/Main/TryProcessObjectPair0209e8cc.cpp:
+    complete
+    .text start:0x0209ecbc end:0x0209ed00
+
+src/Combat/Main/TryProcessObjectPair0209ebe4.cpp:
+    complete
+    .text start:0x0209ed88 end:0x0209edcc
+
+src/Combat/Main/StoreDecodedIntViaHandler0201f390.cpp:
+    complete
+    .text start:0x0201f11c end:0x0201f140
+
+src/Combat/Main/SetBuffer02028ddc.cpp:
+    complete
+    .text start:0x0202862c end:0x0202863c
+
+src/Combat/Main/UpdateActorMode02078d84.cpp:
+    complete
+    .text start:0x02079ca0 end:0x02079d54
+
+src/Combat/Main/RegisterNode02064d48.cpp:
+    complete
+    .text start:0x02066034 end:0x0206611c
+
+src/Combat/Main/UpdateAllocatorState02092f80.cpp:
+    complete
+    .text start:0x020938bc end:0x020939b4
+
+src/Combat/Main/InitFromVariantBlock0201c5fc.cpp:
+    complete
+    .text start:0x0201c374 end:0x0201c4a0
+
+src/Combat/Main/WriteReg04000488020653e4.cpp:
+    complete
+    .text start:0x020666c0 end:0x020666f4
+
+src/Combat/Main/ForwardResetStructFields02089ddc.cpp:
+    complete
+    .text start:0x0208a6d8 end:0x0208a6e4
+
+src/Combat/Main/ResetBattleObject0203c4c4.cpp:
+    complete
+    .text start:0x0203c628 end:0x0203c634
+
+src/Combat/Main/AddSublistEntryFlag2_020806b0.cpp:
+    complete
+    .text start:0x020811d8 end:0x020811ec
+
+src/Combat/Main/ClearSublistEntriesFlag2.cpp:
+    complete
+    .text start:0x02081184 end:0x020811d8
+
+src/Combat/Main/SetField0x38.cpp:
+    complete
+    .text start:0x020474e8 end:0x020474f0
+
+src/Combat/Main/GetByte0x150Bit6.cpp:
+    complete
+    .text start:0x020d99d0 end:0x020d99e0
+
+src/Combat/Main/GetIndexedHalfword020656d0.cpp:
+    complete
+    .text start:0x02066b08 end:0x02066b1c
+
+src/Combat/Main/SetByte0x63d5.cpp:
+    complete
+    .text start:0x02011dbc end:0x02011dcc
+
+src/Combat/Main/Clear0x20BytesAt0x74de.cpp:
+    complete
+    .text start:0x02011e00 end:0x02011e1c
+
+src/Combat/Main/TailForward020440a4.cpp:
+    complete
+    .text start:0x0204486c end:0x02044880
+
+src/Combat/Main/CallFunc0205c96cIfMode6AndFlag.cpp:
+    complete
+    .text start:0x02044c5c end:0x02044c88
+
+src/Combat/Main/ClearRegion02093980.cpp:
+    complete
+    .text start:0x020942ac end:0x020942d8
+
+src/Combat/Main/_Z28LockedLookupDispatch020709ecPvS_.cpp:
+    complete
+    .text start:0x02071a58 end:0x02071a9c
+
+src/Combat/Main/ResetControllerState020430b0.cpp:
+    complete
+    .text start:0x02043824 end:0x02043884
+
+src/Combat/Main/ReinitCombatController_02043224.cpp:
+    complete
+    .text start:0x02043998 end:0x02043a3c
+
+src/Combat/Main/func_020675fc.cpp:
+    complete
+    .text start:0x02068eb8 end:0x02068f98
+
+src/Combat/Main/SetupHeaderAndRunBufferedScript02089de8.cpp:
+    complete
+    .text start:0x0208a6e4 end:0x0208a794
+
+src/Combat/Main/SetFieldsFromFormattedValue0207f914.cpp:
+    complete
+    .text start:0x02080654 end:0x02080688
+
+src/Combat/Main/InitContextAndAdvanceMarker0206b224.cpp:
+    complete
+    .text start:0x0206cba0 end:0x0206cbe8
+
+src/Combat/Main/func_02013e18.cpp:
+    complete
+    .text start:0x02013be4 end:0x02013d80
+
+src/Combat/Main/func_020e1cdc.cpp:
+    complete
+    .text start:0x020e38d4 end:0x020e39c4
+
+src/Combat/Main/ResetState0204166c.cpp:
+    complete
+    .text start:0x02041b68 end:0x02041bbc
+
+src/Combat/Main/LoadStateBytePair0206b804.cpp:
+    complete
+    .text start:0x0206d028 end:0x0206d080
+
+src/Combat/Main/func_02052bfc.cpp:
+    complete
+    .text start:0x02053fd8 end:0x0205414c

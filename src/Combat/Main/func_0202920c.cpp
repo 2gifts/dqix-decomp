@@ -4,7 +4,16 @@
 #define func_0202920c func_02028dc4
 #endif
 
+#if defined(jpn)
+struct GfxBufferHolder {
+    char pad[4];
+    void* buffer;
+};
+extern GfxBufferHolder data_020fe6fc;
+#define data_020fe9a4 data_020fe6fc.buffer
+#else
 extern void* data_020fe9a4;
+#endif
 
 // USA: func_0202920c
 extern "C" ARM void func_0202920c(int color, int x, int y, int w, int h) {

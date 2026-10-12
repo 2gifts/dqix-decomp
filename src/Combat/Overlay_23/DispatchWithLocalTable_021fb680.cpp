@@ -1,5 +1,14 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define data_ov023_021fd964 data_ov023_021fcc14
+#endif
+
+
+#if defined(jpn)
+#define func_ov023_021fb680 func_ov023_021faa24
+#endif
+
 struct Pair021fb680 { unsigned int a; unsigned int b; };
 extern struct Pair021fb680 data_020e6d5c;
 

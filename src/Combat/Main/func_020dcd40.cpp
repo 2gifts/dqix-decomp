@@ -4,7 +4,6 @@
 #if defined(jpn)
 #define _Z24ResetShortFields02086380Ph func_02086ca0
 #define func_02082d6c func_020836f4
-extern "C" void func_02055a2c(void*, int);
 #endif
 
 struct FlaggedEntryContainer02086e9c;
@@ -87,11 +86,7 @@ extern "C" ARM int func_020dcd40() {
                 n++;
             }
         }
-#if defined(jpn)
-        func_02055a2c(c, n);
-#else
         ((void (*)(void*, int))SetField0x2d1)(c, n);
-#endif
         GetPtrField0x2a04(battle);
         unsigned char* v7 = GetFieldAt0x150((unsigned char*)c);
 #if defined(jpn)

@@ -1,4 +1,15 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kObjectEventFlagOffset = 0x2c6 };
+#else
+enum { kObjectEventFlagOffset = 0x2d2 };
+#endif
+
+
+#if defined(jpn)
+#define ApplyEventTag38Fields_021ce3ac func_ov017_021ce854
+#endif
 #include "GameState/GameState.h"
 
 GameObject* GetCombatantWithFlag0x1000(GameState* battleStruct, int combatantId);
@@ -18,6 +29,9 @@ struct LocalEvt021ce3ac {
 };
 
 // USA: func_ov017_021ce3ac
+#if defined(jpn)
+extern "C"
+#endif
 ARM void ApplyEventTag38Fields_021ce3ac(int unused0, LocalEvt021ce3ac* evt, GameState* battleStruct) {
     GameObject* c = GetCombatantWithFlag0x1000(battleStruct, evt->field4);
     if (c == NULL) {
@@ -27,5 +41,5 @@ ARM void ApplyEventTag38Fields_021ce3ac(int unused0, LocalEvt021ce3ac* evt, Game
     ((void (*)(void*, int))SetField0x2d1)(c, evt->field7);
     ((void (*)(void*, int))SetByte0x1c8)(c, evt->field8);
     ((void (*)(void*, int))SetByte0x1c9)(c, evt->field9);
-    *((unsigned char*)c + 0x2d2) = evt->fielda;
+    *((unsigned char*)c + kObjectEventFlagOffset) = evt->fielda;
 }

@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov000_0217d674 func_ov000_0217ea6c
+#endif
+
 struct ElemNode {
     char pad0[0x10];
     unsigned char marks[8];
@@ -13,7 +17,11 @@ struct MenuState {
     signed char slotIds[0x17c - 0x70];
     int currentId;
     char pad180[0x188 - 0x180];
+#if defined(jpn)
+    char elements[0x1f98 - 0x188];
+#else
     char elements[0x1d60 - 0x188];
+#endif
     unsigned char modeStack[8];
     signed char depth;
     char pad1d69[2];

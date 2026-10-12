@@ -1,5 +1,12 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kCountOffset = 0x9d4 };
+#else
+enum { kCountOffset = 0xaa0 };
+#endif
+
+
 struct Entry02021394 {
     unsigned short key1;
     unsigned char key2;
@@ -9,10 +16,15 @@ struct Entry02021394 {
 };
 
 struct Container02021394 {
-    unsigned char pad[0xaa0];
+    unsigned char pad[kCountOffset];
     unsigned short count;
     struct Entry02021394 entries[1];
 };
+
+#if defined(jpn)
+#define FindEntryByKeyPair02021394 func_02020f88
+extern "C" ARM int func_02020f88(struct Container02021394* c, int key1, int key2, short* out1, short* out2);
+#endif
 
 // USA: func_02021394
 ARM int FindEntryByKeyPair02021394(struct Container02021394* c, int key1, int key2, short* out1, short* out2) {

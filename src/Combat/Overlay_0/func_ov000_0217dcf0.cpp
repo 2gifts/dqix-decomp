@@ -1,6 +1,15 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+#define func_ov000_0217dcf0 func_ov000_0217f158
+enum { CommandStackOffset0217dcf0 = 0x1f98, CommandDepthOffset0217dcf0 = 0x1fa0,
+       ActiveSelectionOffset0217dcf0 = 0x1fa3, MenuFlagsOffset0217dcf0 = 0x1faa };
+#else
+enum { CommandStackOffset0217dcf0 = 0x1d60, CommandDepthOffset0217dcf0 = 0x1d68,
+       ActiveSelectionOffset0217dcf0 = 0x1d6b, MenuFlagsOffset0217dcf0 = 0x1d72 };
+#endif
+
 struct Struct_0205c570;
 struct Entry_0205d6a0;
 struct Obj0205eaa0;
@@ -26,18 +35,22 @@ struct MemberInfo0217dcf0 {
 struct Entry0217dcf0 {
     char pad0[0x4c];
     int field4c;
+#if defined(jpn)
+    char pad1[0x488 - 0x50];
+#else
     char pad1[0x448 - 0x50];
+#endif
 };
 
 // USA: func_ov000_0217dcf0
 extern "C" ARM void func_ov000_0217dcf0(char* obj, int arg1, int arg2) {
-    *(unsigned short*)(obj + 0x1d72) |= 0x100;
-    *(unsigned char*)(obj + 0x1d6b) = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((struct Struct_0205c570*)(obj + 0x188));
+    *(unsigned short*)(obj + MenuFlagsOffset0217dcf0) |= 0x100;
+    *(unsigned char*)(obj + ActiveSelectionOffset0217dcf0) = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((struct Struct_0205c570*)(obj + 0x188));
     if (func_ov000_0217c594(obj, 0)) {
         _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0*)data_02108760, 1, 0);
         GameState* gs = GameState::GetInstance();
         unsigned char* field2a04 = (unsigned char*)GetPtrField0x2a04(gs);
-        signed char cursor = *(signed char*)(obj + 0x1d6b);
+        signed char cursor = *(signed char*)(obj + ActiveSelectionOffset0217dcf0);
         if (cursor < field2a04[0xf7c]) {
             struct Entry0217dcf0* entry = &((struct Entry0217dcf0*)(obj + 0x958))[*(signed char*)(obj + cursor + 0x70)];
             GameObject* member = gs->GetPartyMemberByIndex((signed char)entry->field4c);
@@ -47,14 +60,14 @@ extern "C" ARM void func_ov000_0217dcf0(char* obj, int arg1, int arg2) {
                 v++;
                 v %= 2;
                 info->flag30 = v;
-                func_ov000_02176e3c(obj, 0, *(signed char*)(obj + *(signed char*)(obj + 0x1d68) + 0x1d60), arg1, arg2, 0);
+                func_ov000_02176e3c(obj, 0, *(signed char*)(obj + *(signed char*)(obj + CommandDepthOffset0217dcf0) + CommandStackOffset0217dcf0), arg1, arg2, 0);
                 func_ov017_021c847c();
             }
         }
     } else if (_Z35CheckFlagsOrField_0217c5f4_0217c5f4Pv(obj)) {
         _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((struct Entry_0205d6a0*)(obj + 0x188), 0);
-        *(unsigned char*)(obj + *(signed char*)(obj + 0x1d68) + 0x1d60) = 0;
-        *(signed char*)(obj + 0x1d68) = *(signed char*)(obj + 0x1d68) - 1;
+        *(unsigned char*)(obj + *(signed char*)(obj + CommandDepthOffset0217dcf0) + CommandStackOffset0217dcf0) = 0;
+        *(signed char*)(obj + CommandDepthOffset0217dcf0) = *(signed char*)(obj + CommandDepthOffset0217dcf0) - 1;
         func_ov000_0217c638(obj, arg1, arg2);
     }
 }

@@ -3,6 +3,12 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "System/Graphics.h"
 
+#if defined(jpn)
+#define func_ov003_021541b0 func_ov003_021558a0
+#define data_ov003_0217fcb5 data_ov003_0217e535
+#define _Z28DispatchIndexedEntry0204b988P11Obj0204b988jiit func_0204c7a8
+#endif
+
 int GetWord0x0(int* obj);
 extern "C" void _Z16SetSubBrightnessP13GameResourcesii(int, int, int);
 extern "C" int _Z31IsSubBrightnessTransitionActiveP13GameResources(int* obj);
@@ -88,7 +94,11 @@ check:
         _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((struct Obj0204b5e8*)self->subObject, 0, 0);
         _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator((struct Foo0204af38*)self->subObject, 14, alloc);
         _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator((struct AllocTarget0204b12c*)self->subObject, alloc);
+#if defined(jpn)
+        self->taskId = loader->QueueLoadFile(data_ov003_0217fcb5, 0);
+#else
         self->taskId = loader->QueueLoadFileInGP2(data_ov003_0217fcb5, data_ov003_0217fcc7, 0);
+#endif
         self->f5b++;
     } else if (self->f5b == 3) {
         if (loader->GetTaskStatus(self->taskId) != 0) {

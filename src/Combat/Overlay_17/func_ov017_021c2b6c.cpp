@@ -1,4 +1,16 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kCombatantHalfOffset = 0x1a6 };
+#else
+enum { kCombatantHalfOffset = 0x1b2 };
+#endif
+
+
+#if defined(jpn)
+#define data_ov017_021d7f6c data_ov017_021d8814
+#endif
+
 #include "Memory/SafeAllocator.h"
 #include "Filesystem/FileIO.h"
 #include "GameState/GameState.h"
@@ -88,7 +100,7 @@ extern "C" ARM void func_ov017_021c2b6c(Obj021c2b6c* self) {
             if (m == 0) continue;
             if (m->obj3D_.GetInheritedAlpha() == 0) continue;
             if (leader->obj3D_.GetField06() != m->obj3D_.GetField06()) continue;
-            if (*(unsigned short*)((char*)m + 0x1b2) != 0) continue;
+            if (*(unsigned short*)((char*)m + kCombatantHalfOffset) != 0) continue;
             if (**(unsigned int**)((char*)m + 0x130) & 1) continue;
             entries[i].kind = 0;
             entries[i].enabled = 1;

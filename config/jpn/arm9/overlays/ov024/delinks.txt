@@ -2226,3 +2226,15 @@ src/Combat/Overlay_24/NoOp_021fbec0.cpp:
 src/Combat/Overlay_24/NoOp_021fcaec.cpp:
     complete
     .text start:0x021fd2b8 end:0x021fd2bc
+
+src/Combat/Overlay_24/func_ov024_021e2bd0.cpp:
+    complete
+    .text start:0x021e3468 end:0x021e3754
+
+src/Combat/Overlay_24/func_ov024_021e4c04.cpp:
+    complete
+    .text start:0x021e549c end:0x021e5e04
+
+src/Combat/Overlay_24/func_ov024_021f9874.cpp:
+    complete
+    .text start:0x021fa040 end:0x021faf38

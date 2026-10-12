@@ -2,6 +2,10 @@
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
 
+#if defined(jpn)
+#define func_ov000_0217eb28 func_ov000_0217fe58
+#endif
+
 struct Actor0209c73c;
 struct Struct0205d888;
 struct Entry_0205d6a0;
@@ -16,7 +20,11 @@ struct BattleCommand {
     signed char selected;
     unsigned char padding19[0xb];
     unsigned char flags;
+#if defined(jpn)
+    unsigned char padding25[0xa2];
+#else
     unsigned char padding25[0x62];
+#endif
     unsigned char active;
 };
 struct BattleMenuState {
@@ -25,7 +33,11 @@ struct BattleMenuState {
     unsigned char padding74[0x108];
     int current;
     unsigned char padding180[8];
+#if defined(jpn)
+    unsigned char entries[0x1f98 - 0x188];
+#else
     unsigned char entries[0x1bd8];
+#endif
     signed char commands[8];
     signed char selected;
     unsigned char padding1d69[2];

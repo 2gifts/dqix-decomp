@@ -4230,3 +4230,51 @@ src/Combat/Overlay_17/SetField11a_021bbbec.cpp:
 src/Combat/Overlay_17/GetHalfwordAtField284_021bbc04.cpp:
     complete
     .text start:0x021bc1fc end:0x021bc208
+
+src/Combat/Overlay_17/func_ov017_021c2b6c.cpp:
+    complete
+    .text start:0x021c3090 end:0x021c3374
+
+src/Combat/Overlay_17/func_ov017_021ca9bc.cpp:
+    complete
+    .text start:0x021cae6c end:0x021cb12c
+
+src/Combat/Overlay_17/CallField6acPtrCIfFieldMatch_021cbc0c.cpp:
+    complete
+    .text start:0x021cc0bc end:0x021cc0f8
+
+src/Combat/Overlay_17/CallField6acPtrC_021b86e0.cpp:
+    complete
+    .text start:0x021b8bf0 end:0x021b8c08
+
+src/Combat/Overlay_17/ApplyEventTag38Fields_021ce3ac.cpp:
+    complete
+    .text start:0x021ce854 end:0x021ce8a8
+
+src/Combat/Overlay_17/ClearFourEntries_02191b70.cpp:
+    complete
+    .text start:0x02192738 end:0x02192768
+
+src/Combat/Overlay_17/SetFieldB08_0219dffc.cpp:
+    complete
+    .text start:0x0219eaec end:0x0219eaf8
+
+src/Combat/Overlay_17/GetFieldB08_0219e008.cpp:
+    complete
+    .text start:0x0219eaf8 end:0x0219eb04
+
+src/Combat/Overlay_17/func_ov017_021960b8.cpp:
+    complete
+    .text start:0x02196c80 end:0x02196f60
+
+src/Combat/Overlay_17/SetFields120_138_021bd38c.cpp:
+    complete
+    .text start:0x021bd984 end:0x021bd990
+
+src/Combat/Overlay_17/CopyNameToSlot_021c4618.cpp:
+    complete
+    .text start:0x021c4adc end:0x021c4b30
+
+src/Combat/Overlay_17/StoreByteAndFinalize_021d3e7c.cpp:
+    complete
+    .text start:0x021d42cc end:0x021d4308

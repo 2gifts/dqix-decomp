@@ -3,6 +3,11 @@
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 
+#if defined(jpn)
+#define func_ov004_0216ea74 func_ov004_0216f114
+#define func_ov017_021b2090 func_ov017_021b27b0
+#endif
+
 struct S_e830;
 
 struct Ov004Config_0216ea74 {
@@ -71,7 +76,11 @@ extern "C" ARM int func_ov004_0216ea74(SafeAllocator* a) {
 
     void* v = func_02012fe4();
     if (!v) return 0;
+#if defined(jpn)
+    void* p = (char*)v + 0x8c;
+#else
     void* p = (char*)v + 0x6c;
+#endif
     if (!p) return 0;
     data_ov004_02171048.ptr->half0c = GetFieldAt0x7e((struct S_e830*)p);
 
@@ -96,7 +105,11 @@ extern "C" ARM int func_ov004_0216ea74(SafeAllocator* a) {
     data_ov004_02171048.ptr->cfg.k5 = slotB[0];
     data_ov004_02171048.ptr->cfg.j6 = slotB[1];
 
+#if defined(jpn)
+    unsigned int* sub = (unsigned int*)((char*)bs + 0x120 + 0x6000);
+#else
     unsigned int* sub = (unsigned int*)((char*)bs + 0x2380 + 0x4000);
+#endif
     if (sub[0x50 / 4] & 1) {
         if (func_ov017_021b2090(sub[0x44 / 4], *(unsigned int*)&data_ov004_02171048.ptr->cfg) != 0) {
             data_ov004_02171048.ptr->flags2e[2] = 1;

@@ -1,6 +1,13 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+#define func_ov000_02164d74 func_ov000_021664c8
+#define func_ov000_02174738 func_ov000_02175cf4
+#define func_ov000_021675a0 func_ov000_02168ce0
+#define func_ov000_021676a8 func_ov000_02168de8
+#endif
+
 struct PtrBlock02164d74 {
     char pad0[0xf78];
     unsigned char ids[4];
@@ -27,18 +34,31 @@ struct Combatant02164d74 {
     char* field130;
     char* field134;
     struct Stats02164d74* stats;
+#if defined(jpn)
+    char pad13c[0x180 - 0x13c];
+#else
     char pad13c[0x18c - 0x13c];
+#endif
     unsigned int flags18c;
 };
 
 struct Battle02164d74 {
+#if defined(jpn)
+    char pad0[0x218];
+#else
     char pad0[0x29c];
+#endif
     int field29c;
     struct Info02164d74* info;
     char pad2a4[0xec8 - 0x2a4];
     unsigned short fieldEc8;
+#if defined(jpn)
+    char padEca[0x371c - 0xe46];
+    char sub3760[0x79c2 - 0x371c];
+#else
     char padEca[0x3760 - 0xeca];
     char sub3760[0x77d2 - 0x3760];
+#endif
     unsigned char field77d2;
     char pad77d3;
     unsigned char field77d4;

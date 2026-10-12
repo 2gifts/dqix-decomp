@@ -1,4 +1,15 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kAttackerTraitsOffset = 0x144 };
+#else
+enum { kAttackerTraitsOffset = 0x150 };
+#endif
+
+
+#if defined(jpn)
+#define func_ov024_021e4c04 func_ov024_021e549c
+#endif
 #include "Combat/Overlay_0/GetCombatantByID.h"
 #include "GameState/GameState.h"
 #include "Util/Random.h"
@@ -48,7 +59,7 @@ struct Stats_021e4c04 {
     unsigned char rate50;
 };
 struct Attacker_021e4c04 {
-    char pad0[0x150];
+    char pad0[kAttackerTraitsOffset];
     unsigned char* traits;
 };
 union Effects_021e4c04 { struct { int low; int high; }; unsigned long long value; };

@@ -1,4 +1,19 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kModeOffset = 0x915, kFlagsOffset = 0x9cb, kBattleFlagsOffset = 0xa6c };
+#else
+enum { kModeOffset = 0x9c1, kFlagsOffset = 0xa97, kBattleFlagsOffset = 0xccc };
+#endif
+#if defined(jpn)
+#define func_02025f28 func_020258fc
+#define func_02024000 func_020239c8
+#define func_0202427c func_02023c44
+#define func_02024518 func_02023eec
+#define func_0202555c func_02024f30
+#define func_02025b0c func_020254e0
+#endif
+
 #include "GameState/GameState.h"
 
 void* GetDataPtr02114e04_020d6c00(void);
@@ -24,7 +39,7 @@ extern "C" {
 }
 
 struct BattleFlags5ccc020235c8 {
-    char pad[0xccc];
+    char pad[kBattleFlagsOffset];
     unsigned int flagsBit0 : 1;
     signed int flagsBit1 : 1;
     unsigned int flagsRest : 30;
@@ -33,11 +48,16 @@ struct BattleFlags5ccc020235c8 {
 struct Obj020235c8 {
     char pad0[0x14];
     int field0x14;
-    char pad1[0x9c1 - 0x18];
+    char pad1[kModeOffset - 0x18];
     unsigned char field0x9c1;
-    char pad2[0xa97 - 0x9c2];
+    char pad2[kFlagsOffset - (kModeOffset + 1)];
     unsigned char field0xa97;
 };
+
+#if defined(jpn)
+#define ProcessCombatantState020235c8 func_02022f90
+extern "C" ARM void func_02022f90(struct Obj020235c8* obj);
+#endif
 
 // USA: func_020235c8
 ARM void ProcessCombatantState020235c8(struct Obj020235c8* obj) {

@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define data_ov024_021ffc98 data_ov024_02200478
+#define data_ov024_021ffca4 data_ov024_02200484
+#define data_ov024_021ffcc5 data_ov024_022004a5
+#endif
+
 #include "std_library_functions.h"
 #include "Combat/Main/BattleList.h"
 #include "Combat/Overlay_0/GetCombatantByID.h"

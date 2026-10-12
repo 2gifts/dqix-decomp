@@ -1,6 +1,11 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+#define func_ov000_021663a0 func_ov000_02167adc
+#define func_ov000_02166540 func_ov000_02167c7c
+#endif
+
 extern "C" void func_ov000_0216733c(struct BattleScene021663a0* scene);
 extern "C" void func_ov000_02166540(struct BattleScene021663a0* scene, int id, int kind, int group);
 extern "C" void func_0203232c(int* ids, int count);
@@ -37,7 +42,11 @@ struct BattleConfig021663a0 {
 };
 
 struct BattleScene021663a0 {
+#if defined(jpn)
+    char pad_0[0x218];
+#else
     char pad_0[0x29c];
+#endif
     struct BattleData021663a0* data;
     struct BattleConfig021663a0* config;
 };

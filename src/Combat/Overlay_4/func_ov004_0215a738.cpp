@@ -1,6 +1,10 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+#define func_ov004_0215a738 func_ov004_0215b740
+#endif
+
 void* GetPtrField0x2a04(GameState* battleStruct);
 extern "C" int _Z19HasFlag101_021571d8i(int a);
 extern "C" int _Z28DispatchNodeIfType7_02156e2cPvi(void* a, int key);

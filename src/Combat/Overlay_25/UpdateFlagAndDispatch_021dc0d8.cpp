@@ -1,5 +1,16 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kBasePointerOffset = 0x218, kStatusFlagsOffset = 0x5b41 };
+#else
+enum { kBasePointerOffset = 0x29c, kStatusFlagsOffset = 0x5951 };
+#endif
+
+
+#if defined(jpn)
+#define UpdateFlagAndDispatch_021dc0d8 func_ov025_021dc9cc
+#endif
+
 struct List02160094;
 struct ListNode02160094;
 
@@ -22,8 +33,11 @@ struct FlagsByte0x951 {
 };
 
 // USA: func_ov025_021dc0d8
+#if defined(jpn)
+extern "C"
+#endif
 ARM void UpdateFlagAndDispatch_021dc0d8(void* obj) {
-    void* base = *(void**)((char*)obj + 0x29c);
+    void* base = *(void**)((char*)obj + kBasePointerOffset);
     void* slot = GetSlotPtr02160f20(obj);
     func_ov025_021dfce0(obj);
     if (ClassifyField0x81fe((char*)base) != 0) {
@@ -37,7 +51,7 @@ ARM void UpdateFlagAndDispatch_021dc0d8(void* obj) {
     {
         int result = func_ov025_021dffac(obj);
         unsigned char temp = (unsigned char)result;
-        struct FlagsByte0x951* flags = (struct FlagsByte0x951*)((char*)obj + 0x5951);
+        struct FlagsByte0x951* flags = (struct FlagsByte0x951*)((char*)obj + kStatusFlagsOffset);
         flags->bit2 = temp;
         if (flags->bit2 != 1) {
             return;

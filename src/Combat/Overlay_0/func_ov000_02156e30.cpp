@@ -2,8 +2,16 @@
 #include "GameState/GameState.h"
 #include "Util/Random.h"
 
+#if defined(jpn)
+#define func_ov000_02156e30 func_ov000_021585b0
+#endif
+
 struct Combatant02156e30 {
+#if defined(jpn)
+    char pad0[0x144];
+#else
     char pad0[0x150];
+#endif
     unsigned char* status;
 };
 

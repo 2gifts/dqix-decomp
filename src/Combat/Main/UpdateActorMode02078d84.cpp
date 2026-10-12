@@ -19,6 +19,11 @@ struct Obj02078d84 {
     unsigned short field164;
 };
 
+#if defined(jpn)
+#define UpdateActorMode02078d84 func_02079ca0
+extern "C" ARM void func_02079ca0(struct Obj02078d84* obj);
+#endif
+
 // USA: func_02078d84
 ARM void UpdateActorMode02078d84(struct Obj02078d84* obj) {
     void* s = func_0202ae18(obj);
@@ -39,10 +44,12 @@ ARM void UpdateActorMode02078d84(struct Obj02078d84* obj) {
     case 3:
     case 4:
     case 5:
+#if !defined(jpn)
         if (TrySetMode02076ccc(obj, 2) != 0) {
             return;
         }
         obj->field164 = func_02078e60(obj, &localFlag);
+#endif
         TrySetMode02076ccc(obj, 2);
         return;
     case 2:
