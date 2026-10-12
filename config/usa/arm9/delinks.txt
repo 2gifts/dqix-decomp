@@ -20086,3 +20086,8 @@ src/Combat/Main/func_02024518.cpp:
 src/Combat/Main/func_020a2d14.cpp:
     complete
     .text start:0x020a2d14 end:0x020a3568
+
+
+src/Combat/Main/PickHitElement02080e40.cpp:
+    complete
+    .text start:0x02080e40 end:0x02080f8c
