@@ -20,32 +20,32 @@ enum { kSceneDataSize = 0x36c0 };
 
 struct SceneAllocGroup {
     int unk0;
-    SafeAllocator rows[10];       // 0x004
+    SafeAllocator rows[10];
     unsigned char unkcc[0x52c - 0xcc];
-    SafeAllocator a52c;           // 0x52c
-    SafeAllocator a540;           // 0x540
-    SafeAllocator a554;           // 0x554
+    SafeAllocator a52c;
+    SafeAllocator a540;
+    SafeAllocator a554;
     unsigned char unk568[0x5d8 - 0x568];
-    SafeAllocator a5d8;           // 0x5d8
+    SafeAllocator a5d8;
 };
 
 struct BattleScene {
     unsigned char unk0[0x38];
-    SafeAllocator allocs[33];     // 0x0038
+    SafeAllocator allocs[33];
     unsigned char unk2cc[0x113c - 0x2cc];
-    SafeAllocator a113c;          // 0x113c
+    SafeAllocator a113c;
     unsigned char unk1150[0x11c0 - 0x1150];
-    SafeAllocator a11c0;          // 0x11c0
+    SafeAllocator a11c0;
     unsigned char unk11d4[0x1244 - 0x11d4];
-    SafeAllocator a1244;          // 0x1244
+    SafeAllocator a1244;
     unsigned char unk1258[0x12c8 - 0x1258];
-    SceneAllocGroup groups[4];    // 0x12c8
+    SceneAllocGroup groups[4];
     unsigned char unk2a78[0x2b0c - 0x2a78];
-    SafeAllocator a2b0c;          // 0x2b0c
+    SafeAllocator a2b0c;
     unsigned char unk2b20[0x2b90 - 0x2b20];
-    unsigned char nameTables[0x12][0x88]; // 0x2b90
-    unsigned char nameTable3520[0x88];    // 0x3520
-    unsigned char nameTable35a8[0x88];    // 0x35a8
+    unsigned char nameTables[0x12][0x88];
+    unsigned char nameTable3520[0x88];
+    unsigned char nameTable35a8[0x88];
     unsigned char unk3630[0x36c8 - 0x3630];
     void* p36c8;
     void* p36cc;
@@ -53,12 +53,12 @@ struct BattleScene {
     void* unk36d4;
     void* p36d8;
     void* unk36dc[8];
-    void* p36fc[16];              // 0x36fc
-    unsigned char entries373c[0xc][0x48]; // 0x373c
-    unsigned char entries3a9c[4][0x18];   // 0x3a9c
-    void* p3afc[51];              // 0x3afc
-    unsigned char entries3bc8[3][0x14];   // 0x3bc8
-    unsigned char entries3c04[4][0x28];   // 0x3c04
+    void* p36fc[16];
+    unsigned char entries373c[0xc][0x48];
+    unsigned char entries3a9c[4][0x18];
+    void* p3afc[51];
+    unsigned char entries3bc8[3][0x14];
+    unsigned char entries3c04[4][0x28];
     void* p3ca4;
     void* p3ca8;
     void* p3cac;
