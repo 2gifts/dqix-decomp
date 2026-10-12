@@ -8,7 +8,6 @@ enum { RegionOffset718 = 0x508 };
 enum { RegionOffset718 = 0x718 };
 #endif
 
-
 extern "C" void* func_ov017_021b8478(void* obj);
 void* GetData02100044(void);
 extern "C" void func_0205e330(void* a, void* b, int c);

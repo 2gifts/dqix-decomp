@@ -119,7 +119,6 @@ extern AllocatorUnion data_02114e20;
 extern const char data_ov017_021d7798[];
 extern const char data_ov017_021d77b2[];
 
-
 // USA: func_ov017_021a7378
 extern "C" ARM void func_ov017_021a7378(BattleIntro* self, int arg) {
     GameState* gs = GameState::GetInstance();
