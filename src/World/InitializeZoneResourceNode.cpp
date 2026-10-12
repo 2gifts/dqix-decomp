@@ -1,3 +1,10 @@
+#include <globaldefs.h>
+
+#if defined(jpn)
+#define func_02014a24 func_020147f0
+#define func_02014d80 func_02014b4c
+#endif
+
 #include "World/ZoneResourceInitialization.h"
 #include <globaldefs.h>
 

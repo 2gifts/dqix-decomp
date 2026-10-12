@@ -881,3 +881,7 @@ src/Combat/Overlay_25/SetTargetField_021e8724_021e8724.cpp:
 src/Combat/Overlay_25/Func_021e45c4.cpp:
     complete
     .text start:0x021e4ab4 end:0x021e4b14
+
+src/Combat/Overlay_25/FormatAndDispatchMessage_021e4a58.cpp:
+    complete
+    .text start:0x021e4f48 end:0x021e4f78

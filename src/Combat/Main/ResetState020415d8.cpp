@@ -4,7 +4,11 @@ extern "C" void func_02037d10(void*);
 
 struct State020415d8 {
     unsigned short flags_00;
+#if defined(jpn)
+    char pad_02[0x2c2];
+#else
     char pad_02[0x2ce];
+#endif
     unsigned short field_2d0;
     char pad_2d2[2];
     int field_2d4;
@@ -17,6 +21,11 @@ struct State020415d8 {
     char pad_2f1[3];
     int field_2f4;
 };
+
+#if defined(jpn)
+#define ResetState020415d8 func_02041ad4
+extern "C" ARM void func_02041ad4(struct State020415d8* obj);
+#endif
 
 // USA: func_020415d8
 ARM void ResetState020415d8(struct State020415d8* obj) {

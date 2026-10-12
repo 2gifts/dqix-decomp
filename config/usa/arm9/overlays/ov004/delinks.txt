@@ -2016,3 +2016,7 @@ src/Combat/Overlay_4/func_ov004_021557ac.cpp:
 src/Combat/Overlay_4/func_ov004_0215b360.cpp:
     complete
     .text start:0x0215b360 end:0x0215b694
+
+src/Combat/Overlay_4/func_ov004_02158fec.cpp:
+    complete
+    .text start:0x02158fec end:0x02159384

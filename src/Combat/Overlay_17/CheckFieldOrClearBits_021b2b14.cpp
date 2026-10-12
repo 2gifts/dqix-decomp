@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define CheckFieldOrClearBits_021b2b14 func_ov017_021b3224
+#endif
 #include "Filesystem/BackgroundLoader.h"
 
 extern "C" int func_ov017_0218b5b0(void);
@@ -13,6 +17,9 @@ struct Obj021b2b14 {
 };
 
 // USA: func_ov017_021b2b14
+#if defined(jpn)
+extern "C"
+#endif
 ARM int CheckFieldOrClearBits_021b2b14(Obj021b2b14* p) {
     if (((BackgroundLoader*)((void*)(int)BackgroundLoader::GetInstance()))->GetNumQueuedTasks() > 0) {
         return p->f8;

@@ -4,6 +4,13 @@
 extern "C" void func_0204c684(void* obj);
 extern "C" int _Z25AllocateVRAMStagingMemoryj(int value);
 
+#if defined(jpn)
+#define func_02044c74 func_020459dc
+enum { kFlagOffset = 0x7fe, kOutputValue = 12 };
+#else
+enum { kFlagOffset = 0x9cd, kOutputValue = 8 };
+#endif
+
 // USA: func_02044c74  (semantic: SetupStreamAndOutput_02044c74)
 extern "C" ARM void func_02044c74(void* obj, void* out) {
     char* o = (char*)obj;
@@ -12,8 +19,8 @@ extern "C" ARM void func_02044c74(void* obj, void* out) {
     void* buf = (void*)_Z25AllocateVRAMStagingMemoryj(0x4800);
     if (buf) {
         unsigned char* p = (unsigned char*)(o + 0x1000);
-        if (p[0x9cd]) {
-            p[0x9cd] = 0;
+        if (p[kFlagOffset]) {
+            p[kFlagOffset] = 0;
             memset(buf, 0, 0x4800);
         }
         *(short*)(dst + 0xac) = 0;
@@ -26,9 +33,9 @@ extern "C" ARM void func_02044c74(void* obj, void* out) {
         *(short*)(dst + 0xc2) = 0;
         *(short*)(dst + 0xb0) = 0;
         *(short*)(dst + 0xb2) = 0;
-        *(short*)(dst + 0xb4) = 8;
-        *(short*)(dst + 0xb6) = 8;
-        *(short*)(dst + 0xb8) = 8;
-        *(short*)(dst + 0xba) = 8;
+        *(short*)(dst + 0xb4) = kOutputValue;
+        *(short*)(dst + 0xb6) = kOutputValue;
+        *(short*)(dst + 0xb8) = kOutputValue;
+        *(short*)(dst + 0xba) = kOutputValue;
     }
 }

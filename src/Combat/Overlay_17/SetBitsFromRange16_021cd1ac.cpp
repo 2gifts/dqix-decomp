@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define SetBitsFromRange16_021cd1ac func_ov017_021cd654
+#endif
 #include "GameState/GameState.h"
 
 int GetFieldAt0x150(unsigned char* obj);
@@ -12,6 +16,9 @@ struct Hdr021cd1ac {
 };
 
 // USA: func_ov017_021cd1ac
+#if defined(jpn)
+extern "C"
+#endif
 ARM void SetBitsFromRange16_021cd1ac(int unused0, unsigned char* obj, GameState* battleStruct) {
 	unsigned char* p = obj + 4;
 	Hdr021cd1ac* hdr = (Hdr021cd1ac*)p;

@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define InitAndDispatch_021fd2b8 func_ov023_021fc5b0
+#endif
+
 int GetGlobal02109400(void);
 
 extern "C" void func_02094ab0(int val);
@@ -15,6 +19,9 @@ struct S_021fd2b8 {
 };
 
 // USA: func_ov023_021fd2b8
+#if defined(jpn)
+extern "C"
+#endif
 ARM int InitAndDispatch_021fd2b8(struct S_021fd2b8* s) {
     int val = GetGlobal02109400();
     func_02094ab0(val);

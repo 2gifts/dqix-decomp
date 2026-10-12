@@ -1,8 +1,15 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define CheckFlagArrayAndMaybeDispatch_021b042c func_ov017_021b0ac4
+#endif
+
 extern "C" void func_ov017_021d0b30(int a, int b, int c);
 
 // USA: func_ov017_021b042c
+#if defined(jpn)
+extern "C"
+#endif
 ARM int CheckFlagArrayAndMaybeDispatch_021b042c(unsigned char* obj) {
 	int ok = 1;
 	int i;

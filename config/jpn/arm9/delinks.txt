@@ -17214,3 +17214,83 @@ src/Combat/Main/func_02013b70.cpp:
 src/Combat/Main/02013d24.cpp:
     complete
     .text start:0x02013af0 end:0x02013be4
+
+src/World/InitializeZoneResourceNode.cpp:
+    complete
+    .text start:0x020147f0 end:0x020148d0
+
+src/Combat/Main/_ZN6Zone3D16ProcessNSBTXFileEPKvjPKc.cpp:
+    complete
+    .text start:0x02014228 end:0x02014374
+
+src/Combat/Main/func_0208fa8c.cpp:
+    complete
+    .text start:0x020903a0 end:0x02090544
+
+src/Combat/Main/PopulateEntriesFromVariantPairs0201f8d0.cpp:
+    complete
+    .text start:0x0201f65c end:0x0201f6dc
+
+src/Combat/Main/AllocateNameBuffer02026b0c.cpp:
+    complete
+    .text start:0x02026470 end:0x020264a0
+
+src/Combat/Main/SetEntry02026b3c.cpp:
+    complete
+    .text start:0x020264a0 end:0x020264e0
+
+src/Combat/Main/AllocateAndRunScript02014900.cpp:
+    complete
+    .text start:0x020146cc end:0x02014758
+
+src/Combat/Main/NotifyActiveSlots02018f30.cpp:
+    complete
+    .text start:0x02018cd0 end:0x02018d0c
+
+src/Combat/Main/DisableField16Bit002041754.cpp:
+    complete
+    .text start:0x02041c7c end:0x02041cd8
+
+src/Combat/Main/LoadBattleRegion0x5cdc.cpp:
+    complete
+    .text start:0x020ab74c end:0x020ab780
+
+src/Combat/Main/SetupStreamAndOutput_02044c74.cpp:
+    complete
+    .text start:0x020459dc end:0x02045a74
+
+src/Combat/Main/SetSubstructsAndRect02042b98.cpp:
+    complete
+    .text start:0x02043270 end:0x020432fc
+
+src/Combat/Main/AccumulateHandleStats0201498c.cpp:
+    complete
+    .text start:0x02014758 end:0x020147f0
+
+src/Combat/Main/InitBattleIfListHasId0x1c.cpp:
+    complete
+    .text start:0x020db45c end:0x020db4b4
+
+src/Combat/Main/SyncBattleAndGrottoBuffers020a9e30.cpp:
+    complete
+    .text start:0x020aba80 end:0x020abaf4
+
+src/Combat/Main/CopyBlobIntoBattleStruct020a9ba4.cpp:
+    complete
+    .text start:0x020ab7f4 end:0x020ab864
+
+src/Combat/Main/FindMatchingElemSumOrScaledPtr02081e18.cpp:
+    complete
+    .text start:0x02082754 end:0x020827e0
+
+src/Combat/Main/AssignUniqueByteId_02090294.cpp:
+    complete
+    .text start:0x02090bb4 end:0x02090c5c
+
+src/Combat/Main/ResetState020415d8.cpp:
+    complete
+    .text start:0x02041ad4 end:0x02041b24
+
+src/Combat/Main/SetFlag0x8eIfBitTestFails.cpp:
+    complete
+    .text start:0x02023464 end:0x020234d4

@@ -4078,3 +4078,31 @@ src/Combat/Overlay_17/ForwardTeardown_021bb8f0.cpp:
 src/Combat/Overlay_17/CheckField124AndMaybeReturnField8_021b2b68.cpp:
     complete
     .text start:0x021b3278 end:0x021b32b0
+
+src/Combat/Overlay_17/SetBitsFromRange16_021cd1ac.cpp:
+    complete
+    .text start:0x021cd654 end:0x021cd6c0
+
+src/Combat/Overlay_17/CheckFlagArrayAndMaybeDispatch_021b042c.cpp:
+    complete
+    .text start:0x021b0ac4 end:0x021b0b28
+
+src/Combat/Overlay_17/SetBitsFromByteList_021ccf70.cpp:
+    complete
+    .text start:0x021cd418 end:0x021cd478
+
+src/Combat/Overlay_17/CheckFieldOrClearBits_021b2b14.cpp:
+    complete
+    .text start:0x021b3224 end:0x021b3278
+
+src/Combat/Overlay_17/DispatchByCondition_021d0ae4.cpp:
+    complete
+    .text start:0x021d0f94 end:0x021d0fe0
+
+src/Combat/Overlay_17/SetGrottoUnknown3And4_021cfcb4.cpp:
+    complete
+    .text start:0x021d0164 end:0x021d019c
+
+src/Combat/Overlay_17/DispatchGlobalWithFields_021d1854.cpp:
+    complete
+    .text start:0x021d1cd8 end:0x021d1cf8

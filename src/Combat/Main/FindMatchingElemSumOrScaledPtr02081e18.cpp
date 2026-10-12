@@ -20,12 +20,21 @@ struct Elem02081e18 {
 };
 
 struct Obj02081e18 {
+#if defined(jpn)
+    char pad0[0x20];
+#else
     char pad0[0x2c];
+#endif
     int f2c;
     Elem02081e18* f30;
     char pad1[0x39 - 0x34];
     unsigned char f39;
 };
+
+#if defined(jpn)
+#define FindMatchingElemSumOrScaledPtr02081e18 func_02082754
+extern "C" ARM void* func_02082754(Obj02081e18* obj, int type);
+#endif
 
 // USA: func_02081e18
 ARM void* FindMatchingElemSumOrScaledPtr02081e18(Obj02081e18* obj, int type) {

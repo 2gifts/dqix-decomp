@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define _ZN6Zone3D16ProcessNSBTXFileEPKvjPKc func_02014228
+#endif
 #include "World/Zone3D.h"
 #include "Filesystem/FileIO.h"
 #include "std_library_functions.h"

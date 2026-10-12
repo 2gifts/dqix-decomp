@@ -2198,3 +2198,19 @@ src/Combat/Overlay_24/CheckHPBelowHalfAndClear_021ee33c.cpp:
 src/Combat/Overlay_24/CannotTargetFlagMask512_021f0920.cpp:
     complete
     .text start:0x021f10ec end:0x021f1118
+
+src/Combat/Overlay_24/RandomScaleMaxMP20to50Percent_021d974c.cpp:
+    complete
+    .text start:0x021da00c end:0x021da068
+
+src/Combat/Overlay_24/UpdateStateIfFlagged_021fc320.cpp:
+    complete
+    .text start:0x021fcaec end:0x021fcb34
+
+src/Combat/Overlay_24/ApplyBuffIfEligible_021e5e80.cpp:
+    complete
+    .text start:0x021e6718 end:0x021e675c
+
+src/Combat/Overlay_24/SetBytelag_021e57c0_021e57c0.cpp:
+    complete
+    .text start:0x021e6058 end:0x021e6078
