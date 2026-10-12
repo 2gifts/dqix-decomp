@@ -417,9 +417,9 @@ func_ov003_0217bd38 kind:function(arm,size=0x7c) addr:0x0217aa60
 func_ov003_0217bdb4 kind:function(arm,size=0x4) addr:0x0217aadc
 func_ov003_0217bdb8 kind:function(arm,size=0x88) addr:0x0217aae0
 func_ov003_0217be40 kind:function(arm,size=0x138) addr:0x0217ab68
-func_ov003_0217aca0 kind:function(arm,size=0x328) addr:0x0217aca0
+func_ov003_0217bf78 kind:function(arm,size=0x328) addr:0x0217aca0
 _Z24SetPowCnt1Bit15_0217c2a0i kind:function(arm,size=0x1c) addr:0x0217afc8
-func_ov003_0217afe4 kind:function(arm,size=0x490) addr:0x0217afe4
+func_ov003_0217c2bc kind:function(arm,size=0x490) addr:0x0217afe4
 _Z23SetPendingFlags0217c74cP11Obj0217c74c kind:function(arm,size=0x54) addr:0x0217b474
 func_ov003_0217c7a0 kind:function(arm,size=0x1d4) addr:0x0217b4c8
 func_ov003_0217c974 kind:function(arm,size=0x110) addr:0x0217b69c
@@ -636,8 +636,8 @@ data_ov003_0217edc6 kind:data(any) addr:0x0217edc6
 data_ov003_0217eddd kind:data(any) addr:0x0217eddd
 data_ov003_02180bc8 kind:data(any) addr:0x0217edf4
 data_ov003_02180bd8 kind:data(any) addr:0x0217ee04
-data_ov003_0217ee1b kind:data(any) addr:0x0217ee1b
-data_ov003_0217ee33 kind:data(any) addr:0x0217ee33
+data_ov003_02180bef kind:data(any) addr:0x0217ee1b
+data_ov003_02180c07 kind:data(any) addr:0x0217ee33
 data_ov003_02180c1d kind:data(any) addr:0x0217ee49
 data_ov003_02180c23 kind:data(any) addr:0x0217ee4f
 data_ov003_0217ee58 kind:data(any) addr:0x0217ee58
@@ -652,7 +652,7 @@ data_ov003_0217ef38 kind:bss addr:0x0217ef38
 data_ov003_02180cc4 kind:bss addr:0x0217ef3c
 data_ov003_0217ef40 kind:bss addr:0x0217ef40
 data_ov003_02180cd0 kind:bss addr:0x0217ef48
-data_ov003_0217ef58 kind:bss addr:0x0217ef58
-data_ov003_0217ef64 kind:bss addr:0x0217ef64
+data_ov003_02180ce0 kind:bss addr:0x0217ef58
+data_ov003_02180cec kind:bss addr:0x0217ef64
 data_ov003_02180cf8 kind:bss addr:0x0217ef70
 data_ov003_02180d08 kind:bss addr:0x0217ef80
