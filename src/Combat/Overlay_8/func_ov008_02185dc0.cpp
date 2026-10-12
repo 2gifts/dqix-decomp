@@ -104,7 +104,7 @@ struct BattleRecords {
 #if defined(jpn)
         return flags_ & flag ? 1 : 0;
 #else
-        return *(volatile int*)&flags_ & flag ? 1 : 0;
+        return *(int*)&flags_ & flag ? 1 : 0;
 #endif
     }
 };

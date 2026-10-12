@@ -28,14 +28,14 @@ extern "C" ARM void func_0202c9ac(unsigned short* p) {
             *(int*)(&data_021015a0 + 0x10) = 9;
             return;
         }
-        *(volatile unsigned short*)((char*)&data_021015a0 + 0xa) = *(unsigned short*)((char*)&data_021015a0 + 0xa) | mask;
+        *(unsigned short*)((char*)&data_021015a0 + 0xa) = *(unsigned short*)((char*)&data_021015a0 + 0xa) | mask;
         void (*cb2)(unsigned short*) =
             *(void (**)(unsigned short*))((char*)&data_021015a0 + 0x18);
         if (cb2 != 0) cb2(p);
         return;
         }
     case 9: {
-        *(volatile unsigned short*)((char*)&data_021015a0 + 0xa) = *(unsigned short*)((char*)&data_021015a0 + 0xa) & ~mask;
+        *(unsigned short*)((char*)&data_021015a0 + 0xa) = *(unsigned short*)((char*)&data_021015a0 + 0xa) & ~mask;
         void (*cb2)(unsigned short*) =
             *(void (**)(unsigned short*))((char*)&data_021015a0 + 0x18);
         if (cb2 != 0) cb2(p);

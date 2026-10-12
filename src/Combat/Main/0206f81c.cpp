@@ -334,7 +334,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
                 if (_Z17GetPtrField0x2a04P9GameState(battle) != NULL) {
                     unsigned char eventBuf[0x18];
 #if defined(jpn)
-                    volatile SafeAllocator* r7base = ((AllocHolder0206f81c*)g)->GetAllocator(1);
+                    SafeAllocator* r7base = ((AllocHolder0206f81c*)g)->GetAllocator(1);
 #else
                     void* r7base = ((AllocHolder0206f81c*)g)->GetAllocator(1);
 #endif
@@ -460,7 +460,7 @@ extern "C" ARM void func_0206f81c(void* a0) {
                 if (_Z17GetPtrField0x2a04P9GameState(battle) != NULL) {
                     unsigned char eventBuf2[0x18];
 #if defined(jpn)
-                    volatile SafeAllocator* r7base2 = ((AllocHolder0206f81c*)g)->GetAllocator(1);
+                    SafeAllocator* r7base2 = ((AllocHolder0206f81c*)g)->GetAllocator(1);
 #else
                     void* r7base2 = ((AllocHolder0206f81c*)g)->GetAllocator(1);
 #endif

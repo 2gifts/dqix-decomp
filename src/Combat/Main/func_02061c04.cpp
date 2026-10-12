@@ -180,7 +180,7 @@ struct NSBXXNameList
         uint8_t resourceIndex_;
     } treeRoot_8_;
     template<class T>
-    inline T* GetEntryByIndex(unsigned int n) const volatile
+    inline T* GetEntryByIndex(unsigned int n) const 
     {
         if (this != 0 && n < numEntries_)
         {

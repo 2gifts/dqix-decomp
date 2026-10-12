@@ -36,7 +36,7 @@ extern "C" ARM int func_ov027_021daecc(void) {
     }
     ListNode021daecc* cur = data_ov027_021dd940.cur;
     if (cur == 0 || cur->next == 0) {
-        cur = *(ListNode021daecc* volatile*)&data_ov027_021dd940.head;
+        cur = *(ListNode021daecc* *)&data_ov027_021dd940.head;
     } else {
         cur = cur->next;
     }

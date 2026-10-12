@@ -41,11 +41,11 @@ struct EnqueuedNode_0205e330 {
 
 struct SpinBlock_0205e330 {
     char pad0[0x508];
-    volatile int c508;
+    int c508;
     char pad1[0x514 - 0x508 - 4];
-    volatile int c514;
+    int c514;
     char pad2[0x520 - 0x514 - 4];
-    volatile int c520;
+    int c520;
 };
 
 // USA: func_0205e330  (semantic: DequeueCopyOrSpinWait_0205e330)

@@ -58,9 +58,9 @@ extern "C" ARM int func_02098a84(struct S02098834* arr) {
             if (freeIdx < 6) {
                 return freeIdx;
             }
-            _Z18CopyStruct02098834P9S02098834S0_(&arr[freeIdx], &arr[((volatile struct Ctx02098a84*)((unsigned char*)arr + 0x1000))->b74]);
-            func_02098364(&arr[((volatile struct Ctx02098a84*)((unsigned char*)arr + 0x1000))->b74]);
-            return ((volatile struct Ctx02098a84*)((unsigned char*)arr + 0x1000))->b74;
+            _Z18CopyStruct02098834P9S02098834S0_(&arr[freeIdx], &arr[((struct Ctx02098a84*)((unsigned char*)arr + 0x1000))->b74]);
+            func_02098364(&arr[((struct Ctx02098a84*)((unsigned char*)arr + 0x1000))->b74]);
+            return ((struct Ctx02098a84*)((unsigned char*)arr + 0x1000))->b74;
         }
         recycle = freeIdx;
     } else {
@@ -140,9 +140,9 @@ extern "C" ARM int func_02098a84(struct S02098834* arr) {
     if (last < 6) {
         return last;
     }
-    _Z18CopyStruct02098834P9S02098834S0_(resetSlot, &arr[((volatile struct Ctx02098a84*)((unsigned char*)arr + 0x1000))->b74]);
-    func_02098364(&arr[((volatile struct Ctx02098a84*)((unsigned char*)arr + 0x1000))->b74]);
-    return ((volatile struct Ctx02098a84*)((unsigned char*)arr + 0x1000))->b74;
+    _Z18CopyStruct02098834P9S02098834S0_(resetSlot, &arr[((struct Ctx02098a84*)((unsigned char*)arr + 0x1000))->b74]);
+    func_02098364(&arr[((struct Ctx02098a84*)((unsigned char*)arr + 0x1000))->b74]);
+    return ((struct Ctx02098a84*)((unsigned char*)arr + 0x1000))->b74;
 }
 #pragma opt_propagation reset
 #pragma opt_common_subs reset

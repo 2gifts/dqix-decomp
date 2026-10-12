@@ -37,13 +37,13 @@ extern "C" ARM void func_ov000_02175258(char* obj) {
         signed char v = *(signed char*)((char*)entry + off + 0x10);
         if (v >= 0x64) {
             if (hasBit4 == 0) return;
-            unsigned char flags = *(volatile unsigned char*)&entry->field24;
+            unsigned char flags = *(unsigned char*)&entry->field24;
             entry->field24 = flags & ~4;
             func_ov000_02174b14(obj);
             return;
         } else {
             if (hasBit4 != 0) return;
-            unsigned char flags = *(volatile unsigned char*)&entry->field24;
+            unsigned char flags = *(unsigned char*)&entry->field24;
             entry->field24 = flags | 4;
             func_ov000_02174b14(obj);
             return;

@@ -25,7 +25,7 @@ extern "C" ARM void func_ov023_021e7cec(struct Obj021e7cec* obj, unsigned char k
     int i = 0;
     struct Entry021e7cec* entry;
     while ((entry = &data_ov023_021fd7fc[i])->id != 0xff) {
-        unsigned char idVal = *(volatile unsigned char*)&entry->id;
+        unsigned char idVal = *(unsigned char*)&entry->id;
         if (idVal == key) {
             obj->field129 = idVal;
             obj->field11c = p2;

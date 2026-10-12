@@ -40,7 +40,7 @@ extern "C" ARM void func_02071b38(Struct02071b38* s) {
     s->f4 = -1;
     s->f6 = -1;
     s->f8 = -1;
-    volatile unsigned short* pa = &s->fa;
+    unsigned short* pa = &s->fa;
     *pa &= ~0xf;
     *pa &= ~0xf0;
     *pa &= ~0xf00;

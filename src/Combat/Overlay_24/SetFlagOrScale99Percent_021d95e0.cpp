@@ -3,7 +3,7 @@
 #include "Util/Random.h"
 
 // USA: func_ov024_021d95e0
-ARM int SetFlagOrScale99Percent_021d95e0(struct Random** rngPtr, int unused1, int combatantId, int unused3, int unused4, volatile int value) {
+ARM int SetFlagOrScale99Percent_021d95e0(struct Random** rngPtr, int unused1, int combatantId, int unused3, int unused4, int value) {
     GameState* bs = GameState::GetInstance();
     GameObject* c = bs->GetCombatantByIndex(combatantId);
     if (!c) return value;

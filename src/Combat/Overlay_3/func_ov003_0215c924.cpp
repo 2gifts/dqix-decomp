@@ -70,9 +70,9 @@ extern "C" ARM int func_ov003_0215c924(unsigned char* self, int amount) {
         void* obj = self + (entry->flags >> 1);
         DispatchFn_0217fe94 fn;
         if (entry->flags & 1) {
-            fn = *(DispatchFn_0217fe94*)(*(int*)obj + (int)*(DispatchFn_0217fe94 volatile*)&entry->fn);
+            fn = *(DispatchFn_0217fe94*)(*(int*)obj + (int)*(DispatchFn_0217fe94 *)&entry->fn);
         } else {
-            fn = *(DispatchFn_0217fe94 volatile*)&entry->fn;
+            fn = *(DispatchFn_0217fe94 *)&entry->fn;
         }
         fn(obj, amount);
     }
