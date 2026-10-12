@@ -9,8 +9,8 @@ struct PhaseState_0223a374 {
 typedef void (*ReportFn_0223a374)(int, const char*, ...);
 
 struct PhaseContext_0223a374 {
-    ReportFn_0223a374 volatile Report;
-    PhaseState_0223a374* volatile state;
+    ReportFn_0223a374 Report;
+    PhaseState_0223a374* state;
 };
 
 extern PhaseContext_0223a374 data_ov031_02290d18;

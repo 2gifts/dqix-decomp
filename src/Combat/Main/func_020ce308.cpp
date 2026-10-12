@@ -14,7 +14,7 @@ typedef void (*PMCallback)(unsigned long result, void* arg);
 
 struct PMiWork
 {
-    volatile int lock;
+    int lock;
     PMCallback callback;
     void* callbackArg;
     void* work;

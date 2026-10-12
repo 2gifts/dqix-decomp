@@ -10,7 +10,7 @@ struct W12 {
     unsigned int d : 5;
     unsigned int e : 7;
 };
-union U12 { struct W12 b; unsigned int raw; volatile unsigned int vraw; };
+union U12 { struct W12 b; unsigned int raw; unsigned int vraw; };
 struct Record12 {
     unsigned short id : 11;
     unsigned short slot : 5;

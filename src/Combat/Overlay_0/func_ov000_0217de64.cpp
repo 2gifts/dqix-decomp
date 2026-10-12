@@ -25,9 +25,9 @@ extern "C" ARM void func_ov000_0217de64(char* obj, int arg1, int arg2) {
         return;
     }
     func_02092b34(obj + 0x7c);
-    signed char idx1 = *(volatile signed char*)(obj + REGION_OFFSET_1);
+    signed char idx1 = *(signed char*)(obj + REGION_OFFSET_1);
     *(unsigned char*)(obj + idx1 + REGION_OFFSET_2) = 0;
-    *(signed char*)(obj + REGION_OFFSET_1) = *(volatile signed char*)(obj + REGION_OFFSET_1) - 1;
-    func_ov000_02176e3c(obj, 0, *(signed char*)(obj + *(volatile signed char*)(obj + REGION_OFFSET_1) + REGION_OFFSET_2), arg1, arg2, 0);
+    *(signed char*)(obj + REGION_OFFSET_1) = *(signed char*)(obj + REGION_OFFSET_1) - 1;
+    func_ov000_02176e3c(obj, 0, *(signed char*)(obj + *(signed char*)(obj + REGION_OFFSET_1) + REGION_OFFSET_2), arg1, arg2, 0);
     func_ov000_0217c638(obj, arg1, arg2);
 }

@@ -15,11 +15,11 @@ struct DataStruct02109404_956b8 {
     unsigned char padA[2];
     unsigned int fc;
 };
-extern volatile struct DataStruct02109404_956b8 data_02109404;
+extern struct DataStruct02109404_956b8 data_02109404;
 
-extern volatile short data_020f13d8;
+extern short data_020f13d8;
 extern const char data_020f1474[] __attribute__((aligned(4)));
-extern volatile const char data_020f141c[];
+extern const char data_020f141c[];
 
 struct Header020956b8 {
     char pad[0xa0];
@@ -42,7 +42,7 @@ extern "C" ARM void func_020956b8(struct Header020956b8* header, int param1) {
         data_02109404.f4 = 0;
         data_02109404.fc = param1;
         data_02109404.f2 = 0;
-        *(volatile short*)0x020f13d8 = -1;
+        *(short*)0x020f13d8 = -1;
         header->f0a0 = 0;
         data_02109404.f0 = 0;
         Script runner;

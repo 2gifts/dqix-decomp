@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 struct Inner020bc1cc { char pad[0x3c]; unsigned char f3c; };
-struct Outer020bc1cc { struct Inner020bc1cc* volatile f0; };
+struct Outer020bc1cc { struct Inner020bc1cc* f0; };
 
 void NotifyInnerByte0x3c(struct Outer020bc1cc*, int, int);
 extern void* data_ov031_02290d00;

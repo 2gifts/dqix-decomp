@@ -20,7 +20,7 @@ extern "C" ARM void func_020ca1a0(void) {
     chunk = data_02111684.remaining;
     if (chunk >= 0x1d8) chunk = 0x1d8;
     src = data_02111684.srcAddr;
-    unsigned int newRemaining = *(volatile unsigned int*)&data_02111684.remaining - chunk;
+    unsigned int newRemaining = *(unsigned int*)&data_02111684.remaining - chunk;
     data_02111684.remaining = newRemaining;
     data_02111684.srcAddr = src + chunk;
     if (newRemaining == 0) {

@@ -25,7 +25,7 @@ extern "C" ARM void func_020ca2ac(int channel, unsigned int src, unsigned int le
     while (*(volatile int*)&data_02111684.flag != 0) ;
 
     *(volatile int*)&data_02111684.flag = 1;
-    *(volatile int*)&data_02111684.channel = channel;
+    *(int*)&data_02111684.channel = channel;
     data_02111684.callback = callback;
     data_02111684.userdata = userdata;
 
