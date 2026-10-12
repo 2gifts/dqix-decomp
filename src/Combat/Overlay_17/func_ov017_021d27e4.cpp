@@ -60,6 +60,12 @@ struct Entry021d27e4 {
     unsigned int low : 8;
 };
 
+struct SlotMap021d27e4 {
+    signed char slots[11];
+};
+
+extern SlotMap021d27e4 data_ov017_021d6d0c;
+
 // USA: func_ov017_021d27e4
 extern "C" ARM void func_ov017_021d27e4(void* unused0, Evt021d27e4* evt, GameState* gs, unsigned char* ctx) {
     GetField0x3acValue(gs);
@@ -93,14 +99,14 @@ extern "C" ARM void func_ov017_021d27e4(void* unused0, Evt021d27e4* evt, GameSta
             }
             if (flagged) {
                 party = (Party02a04*)GetPtrField0x2a04(gs);
-                signed char tbl[11] = {0, 1, -1, -1, -1, 4, 5, 6, 7, 8, 9};
+                SlotMap021d27e4 map = data_ov017_021d6d0c;
                 int done = 0;
                 for (int j = 0; j < 11; j++) {
                     if (j == 2 || j == 3 || j == 4) continue;
                     Slot021d27e4* slot = (Slot021d27e4*)(*(char**)((char*)c + 0x150) + 0x194 + (unsigned char)j * 0x20);
                     if (slot != NULL && slot->active) {
                         func_0207c378((char*)party + 0x1d4, slot->value, 1, slot->keyBits);
-                        func_02052d7c(c, tbl[j], -1);
+                        func_02052d7c(c, map.slots[j], -1);
                         done = 1;
                     }
                 }

@@ -1312,7 +1312,7 @@ data_ov017_021d6cc4 kind:data(any) addr:0x021d6cc4
 data_ov017_021d6ce8 kind:data(any) addr:0x021d6ce8
 data_ov017_021d6cfc kind:data(any) addr:0x021d6cfc
 data_ov017_021d6d08 kind:data(any) addr:0x021d6d08
-@969 kind:data(any) addr:0x021d6d0c local
+data_ov017_021d6d0c kind:data(any) addr:0x021d6d0c
 data_ov017_021d6d18 kind:data(any) addr:0x021d6d18
 __sinit_ov017_021d6d28 kind:function(arm,size=0x98) addr:0x021d6d28
 __sinit_ov017_021d6dc0 kind:function(arm,size=0x88) addr:0x021d6dc0

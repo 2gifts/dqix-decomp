@@ -4510,4 +4510,3 @@ src/Combat/Overlay_17/func_ov017_021ca9bc.cpp:
 src/Combat/Overlay_17/func_ov017_021d27e4.cpp:
     complete
     .text start:0x021d27e4 end:0x021d2ad0
-    .rodata start:0x021d6d0c end:0x021d6d18
