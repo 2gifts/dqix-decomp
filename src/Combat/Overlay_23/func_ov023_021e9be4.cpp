@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov023_021e9be4 func_ov023_021e9b48
+#endif
+
 int LoadBattleBlock020ac4c0(void* dst);
 
 struct ShortPair021e9be4 { unsigned short lo, hi; };

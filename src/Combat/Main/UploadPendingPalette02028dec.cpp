@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define UploadPendingPalette02028dec func_0202863c
+#define func_02028e90 func_020286e0
+#define func_02028f54 func_020287a4
+#endif
 #include "std_library_functions.h"
 #include "System/Cache.h"
 
@@ -7,8 +13,21 @@ extern "C" void LoadToSubBGStandardPalette(int src, int dstOffset, unsigned int 
 extern "C" void func_02028e90();
 extern "C" void func_02028f54();
 
+#if defined(jpn)
+struct GfxBufferHolder {
+    char pad[4];
+    void* buffer;
+};
+extern GfxBufferHolder data_020fe6fc;
+#define data_020fe9a4 data_020fe6fc.buffer
+#else
 extern void* data_020fe9a4;
+#endif
 extern unsigned char data_020e7390[0x20];
+
+#if defined(jpn)
+extern "C" ARM void func_0202863c(int isSub);
+#endif
 
 // USA: func_02028dec
 ARM void UploadPendingPalette02028dec(int isSub) {

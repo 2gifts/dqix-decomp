@@ -1,11 +1,24 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_02028e90 func_020286e0
+#endif
 #include "std_library_functions.h"
 #include "System/Cache.h"
 
 extern "C" void LoadToMainBG1CharacterData(int arg0, int arg1, unsigned int arg2);
 extern "C" void LoadToSubBG0CharacterData(int arg0, int arg1, unsigned int arg2);
 
+#if defined(jpn)
+struct GfxBufferHolder {
+    char pad[4];
+    void* buffer;
+};
+extern GfxBufferHolder data_020fe6fc;
+#define data_020fe9a4 data_020fe6fc.buffer
+#else
 extern void* data_020fe9a4;
+#endif
 
 struct GfxModeState02028e90 {
     char pad[0xc];

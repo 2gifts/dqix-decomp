@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_02013b70 func_0201393c
+#define func_02013d24 func_02013af0
+#endif
 #include "World/Zone3D.h"
 #include "World/LootableContainer.h"
 #include "Graphics/LightingManager.h"

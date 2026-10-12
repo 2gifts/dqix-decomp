@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov023_021eac70 func_ov023_021eabd4
+#endif
+
 struct S_eac70 {
     char pad[0x9c];
     unsigned int lo : 17;

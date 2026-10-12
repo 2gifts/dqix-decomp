@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define FindNodeByField0x2c0201b754 func_0201b4cc
+enum { ContainerOffset = 0x8c };
+#else
+enum { ContainerOffset = 0x6c };
+#endif
 void* GetPointerFromArray0x3c(unsigned char*, unsigned int);
 
 
@@ -9,9 +16,13 @@ struct Node0201b754 {
     struct Node0201b754* f70;
 };
 
+#if defined(jpn)
+extern "C" ARM struct Node0201b754* func_0201b4cc(void* obj, int key);
+#endif
+
 // USA: func_0201b754
 ARM struct Node0201b754* FindNodeByField0x2c0201b754(void* obj, int key) {
-    struct Node0201b754* node = (struct Node0201b754*)GetPointerFromArray0x3c((unsigned char*)((char*)obj + 0x6c), (unsigned int)(0xa));
+    struct Node0201b754* node = (struct Node0201b754*)GetPointerFromArray0x3c((unsigned char*)((char*)obj + ContainerOffset), (unsigned int)(0xa));
     while (node != 0) {
         if (node->f2c == key) return node;
         node = node->f70;

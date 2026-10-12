@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov023_021ea884 func_ov023_021ea7e8
+#endif
+
 int LoadBattleBlock020ac4c0(void* dst);
 extern "C" void func_ov017_021d6134(void*, unsigned int);
 

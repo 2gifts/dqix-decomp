@@ -2,6 +2,19 @@
 
 #if defined(jpn)
 #define func_ov015_0219050c func_ov015_021910b0
+#define func_02069fec func_02069ecc
+#define func_02045d14 func_020469b0
+#define func_ov015_0218f794 func_ov015_021903b0
+#define data_ov015_02194256 data_ov015_02194d96
+#define data_ov015_02194261 data_ov015_02194da3
+#define data_ov015_0219426a data_ov015_02194db0
+#define data_ov015_02194273 data_ov015_02194dbd
+#define data_ov015_0219427b data_ov015_02194dc5
+#define data_ov015_02194288 data_ov015_02194dd4
+#define data_ov015_02194295 data_ov015_02194de2
+#define PrepareLineMode 8
+#else
+#define PrepareLineMode 0
 #endif
 #include <std_library_functions.h>
 
@@ -9,7 +22,11 @@ extern "C" void __clear(void* buffer, unsigned long size);
 
 struct MessageSystem0219050c
 {
+#if defined(jpn)
+    char unk_0[0x17e0];
+#else
     char unk_0[0x19b0];
+#endif
     unsigned char unk_19b0;
 };
 
@@ -48,8 +65,16 @@ struct CharacterViewer
 extern "C" MessageSystem0219050c* _Z26GetGlobalField0x1c020421a0v();
 extern "C" double func_0200c578(float v);
 extern "C" void func_02069fec(MessageSystem0219050c* system, const char* text, char* converted);
+#if defined(jpn)
+extern "C" int func_02045d14(MessageSystem0219050c* system, const char* converted, unsigned short* line, int unk);
+#else
 extern "C" void func_02045d14(MessageSystem0219050c* system, const char* converted, unsigned short* line, int unk);
+#endif
+#if defined(jpn)
+extern "C" void func_02046c78(MessageSystem0219050c* system, unsigned short* line, int x, int y, int color, int a, int b, int c);
+#else
 extern "C" void func_02045f3c(MessageSystem0219050c* system, unsigned short* line, int x, int y, int color, int a, int b, int c, int d, int e);
+#endif
 void* GetNodeAtIndex(IndexList_0202a9ac* list, int index);
 void* GetSubstructAt0x4(void* item);
 extern "C" AnimationRecord0219050c* func_ov015_0218f39c(ViewObject* self, void* name);
@@ -69,17 +94,24 @@ extern const char data_ov015_02194295[];
     {                                                                     \
         memset(line, 0, sizeof(line));                                    \
         MessageSystem0219050c* system = _Z26GetGlobalField0x1c020421a0v();     \
-        char converted[0x40];                                             \
-        __clear(converted, sizeof(converted));                            \
+        char converted[0x40] = {};                                        \
         func_02069fec(system, text, converted);                           \
-        func_02045d14(system, converted, line, 0);                        \
+        func_02045d14(system, converted, line, PrepareLineMode);          \
     }
 
+#if defined(jpn)
+#define DRAW_LINE(x, y, color)                                                     \
+    {                                                                              \
+        messages->unk_19b0 = 1;                                                    \
+        func_02046c78(messages, &line[1], x, y, color, 8, 0x14, 0);                  \
+    }
+#else
 #define DRAW_LINE(x, y, color)                                                     \
     {                                                                              \
         messages->unk_19b0 = 1;                                                    \
         func_02045f3c(messages, &line[1], x, y, color, 8, 0x14, 0, 1, 0x11);       \
     }
+#endif
 
 // USA: func_ov015_0219050c
 extern "C" ARM void func_ov015_0219050c(CharacterViewer* self)
@@ -103,10 +135,17 @@ extern "C" ARM void func_ov015_0219050c(CharacterViewer* self)
     sprintf(text, data_ov015_0219426a, quads);
     PREPARE_TEXT();
     messages->unk_19b0 = 1;
+#if defined(jpn)
+    if (quads != 0)
+        func_02046c78(messages, &line[1], 0, 0xb4, 0x1f, 8, 0x14, 0);
+    else
+        func_02046c78(messages, &line[1], 0, 0xb4, 0x7fff, 8, 0x14, 0);
+#else
     if (quads != 0)
         func_02045f3c(messages, &line[1], 0, 0xb4, 0x1f, 8, 0x14, 0, 1, 0x11);
     else
         func_02045f3c(messages, &line[1], 0, 0xb4, 0x7fff, 8, 0x14, 0, 1, 0x11);
+#endif
     if (self->menu_ == 1)
     {
         void* item = GetNodeAtIndex((IndexList_0202a9ac*)&self->menuList_, self->current_->motion_);

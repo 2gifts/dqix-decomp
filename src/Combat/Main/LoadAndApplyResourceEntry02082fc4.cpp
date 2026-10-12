@@ -1,5 +1,13 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define LoadAndApplyResourceEntry02082fc4 func_02083930
+#define data_020f1019 data_020f113b
+enum { LevelOffset = 0x8b8 };
+#else
+enum { LevelOffset = 0x950 };
+#endif
+
 #include "Combat/ResourceScriptEntry.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "std_library_functions.h"
@@ -21,17 +29,21 @@ struct Combined0208 {
     TailBytes0208 tail;
 };
 
+#if defined(jpn)
+extern "C" ARM void func_02083930(void* a, void* b);
+#endif
+
 // USA: func_02082fc4
 ARM void LoadAndApplyResourceEntry02082fc4(void* a, void* b) {
     char path[0x18];
-    sprintf(path, data_020f1019, *(int*)((char*)a + 0x950));
+    sprintf(path, data_020f1019, *(int*)((char*)a + LevelOffset));
     BackgroundLoader::AddLockGlobal();
     unsigned int size;
     void* addr = LoadFileIntoMemory(path, &data_0211e33c, &size);
     if (addr != NULL) {
         Combined0208 local;
         Clear0x54Bytes0208247c(&local);
-        unsigned short val = *(unsigned short*)((char*)a + *(int*)((char*)a + 0x950) * 2 + 0x16c);
+        unsigned short val = *(unsigned short*)((char*)a + *(int*)((char*)a + LevelOffset) * 2 + 0x16c);
         func_02082490(&local, addr, size, val, 0);
         func_02083cbc(a, &local, &local.tail);
         func_02083e28(a, 0);

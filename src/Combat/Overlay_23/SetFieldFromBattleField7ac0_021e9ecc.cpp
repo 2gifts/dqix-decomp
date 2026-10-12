@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov023_021e9ecc func_ov023_021e9e30
+#endif
+
 int CopyOutBattleField0x7ac0(void* dst);
 extern "C" void func_ov017_021d6134(void*, int);
 

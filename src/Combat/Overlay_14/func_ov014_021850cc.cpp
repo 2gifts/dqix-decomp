@@ -2,6 +2,17 @@
 
 #if defined(jpn)
 #define func_ov014_021850cc func_ov014_021861cc
+#define func_02097054 func_02098ca4
+#define func_ov014_02188c34 func_ov014_02189a78
+#define data_ov014_021895d5 data_ov014_0218a415
+#define data_ov014_021895ed data_ov014_0218a42d
+#define data_ov014_02189615 data_ov014_0218a443
+#define data_ov014_0218963f data_ov014_0218a45b
+#define data_ov014_02189661 data_ov014_0218a472
+#define data_ov014_02189668 data_ov014_0218a479
+#define data_ov014_02189680 data_ov014_0218a491
+#define data_ov014_02189686 data_ov014_0218a497
+#define data_ov014_0218968c data_ov014_0218a49d
 #endif
 #include <std_library_functions.h>
 #include "Filesystem/BackgroundLoader.h"
@@ -63,7 +74,11 @@ struct HabitatTable {
 };
 
 struct GameResources {
+#if defined(jpn)
+    char unk_0[0x27c];
+#else
     char unk_0[0x2cc];
+#endif
     char unknown_2cc[0xe70];
 };
 
@@ -149,6 +164,11 @@ void BackupPairTables0207dfac(char* p);
 void ClearEightWords(Struct_203dafc* info);
 void ComputeAndStoreVecs02184c08(unsigned char* screen);
 
+#if defined(jpn)
+int ApplyNodeUpdater020e038c(void* reader, void* file, int size);
+extern "C" char* func_020e207c(void* reader, char* output, int itemID);
+#endif
+
 // USA: func_ov014_021850cc
 extern "C" ARM void func_ov014_021850cc(MonsterInfoScreen* self) {
     if (!(self->flags_ & 1))
@@ -156,17 +176,26 @@ extern "C" ARM void func_ov014_021850cc(MonsterInfoScreen* self) {
 
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     if (self->loadStep_ == 0) {
+#if !defined(jpn)
         char archive[0x40] = {};
+#endif
         char file[0x40] = {};
         if (self->loadModel_)
             self->taskIDs_[0] = loader->QueueLoadFile(data_ov014_021895d5, NULL);
         self->allocators_[1].Reset();
         func_ov014_02188bfc(&self->habitats_, &self->allocators_[1], self->monster_->number_);
+#if defined(jpn)
+        self->taskIDs_[1] = loader->QueueLoadFile(data_ov014_021895ed, NULL);
+        sprintf(file, data_ov014_02189615, self->page_ + 1);
+        self->taskIDs_[2] = loader->QueueLoadFile(file, NULL);
+        self->taskIDs_[3] = loader->QueueLoadFile(data_ov014_0218963f, NULL);
+#else
         self->taskIDs_[1] = loader->QueueLoadFileInGP2(data_ov014_021895ed, data_ov014_02189603, NULL);
         sprintf(archive, data_ov014_02189615, self->page_ + 1);
         sprintf(file, data_ov014_0218962c, self->page_ + 1);
         self->taskIDs_[2] = loader->QueueLoadFileInGP2(archive, file, NULL);
         self->taskIDs_[3] = loader->QueueLoadFileInGP2(data_ov014_0218963f, data_ov014_02189652, NULL);
+#endif
         if (self->loadModel_ && self->monster_ != NULL && self->record_ != NULL && self->monster_->known_ && self->monster_->modelName_ != NULL) {
             sprintf(file, data_ov014_02189661, self->monster_->modelName_);
             self->taskIDs_[4] = loader->QueueLoadFileInGP2(data_ov014_02189668, file, NULL);
@@ -222,6 +251,14 @@ extern "C" ARM void func_ov014_021850cc(MonsterInfoScreen* self) {
         if (file != NULL) {
             MonsterInfo* info = BinarySearchByField4_02097224((BinarySearch020971a8Container*)&self->infos_, self->monster_->monsterID_);
             if (info != NULL) {
+#if defined(jpn)
+                char reader[0x18];
+                ResetAndReturnSelf020dfc2c(reader);
+                ResetStruct020dfc40((Struct020dfc40*)reader);
+                ApplyNodeUpdater020e038c(reader, file, size);
+                func_020e207c(reader, self->dropNames_[0], info->dropItemIDs_[0]);
+                func_020e207c(reader, self->dropNames_[1], info->dropItemIDs_[1]);
+#else
                 char reader[0xc];
                 Zero4Bytes(reader);
                 TryInvoke020e53bc(reader, (int)file, size);
@@ -235,6 +272,7 @@ extern "C" ARM void func_ov014_021850cc(MonsterInfoScreen* self) {
                     memset(self->dropNames_[1], 0, 0x48);
                     func_020e4864(*name, self->dropNames_[1], 1, 0, 0, 0);
                 }
+#endif
             }
         }
         loader->RemoveTask(self->taskIDs_[1]);

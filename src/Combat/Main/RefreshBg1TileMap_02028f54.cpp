@@ -1,7 +1,20 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_02028f54 func_020287a4
+#endif
 #include "std_library_functions.h"
 
+#if defined(jpn)
+struct GfxBufferHolder {
+    char pad[4];
+    void* buffer;
+};
+extern GfxBufferHolder data_020fe6fc;
+#define data_020fe9a4 data_020fe6fc.buffer
+#else
 extern void* data_020fe9a4;
+#endif
 void CleanInvalidateCacheRange(const void* addr, unsigned int size);
 extern "C" void LoadToMainBG1ScreenData(int src, int offset, unsigned int size);
 extern "C" int LoadToSubBG0ScreenData(int arg0, int arg1, unsigned int arg2);

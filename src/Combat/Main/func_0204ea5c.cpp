@@ -1,5 +1,12 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_0204ea5c func_0204fcb8
+enum { TopLeftId = 31, TopRightId = 32, BottomLeftId = 34, BottomRightId = 33 };
+#else
+enum { TopLeftId = 21, TopRightId = 22, BottomLeftId = 24, BottomRightId = 23 };
+#endif
+
 struct Wnd0204cd60 {
     char pad0[8];
     unsigned char* buf;
@@ -45,28 +52,28 @@ extern "C" ARM void func_0204ea5c(Wnd0204cd60* wnd) {
     }
     if (!func_0204fd00(wnd, 1)) {
         func_0204f914(wnd, 0, 0, 0, 8, 8);
-        char* entry = (char*)_Z21GetTableEntry020421b0i(21);
+        char* entry = (char*)_Z21GetTableEntry020421b0i(TopLeftId);
         if (entry) {
             func_0204e1c8(wnd, entry, 0, 0, 8, 8, 0xf0, 0xf);
         }
     }
     if (!func_0204fd00(wnd, 2)) {
         func_0204f914(wnd, 0, (short)((wnd->fA8 - 1) << 3), 0, (short)(wnd->fA8 << 3), 8);
-        char* entry = (char*)_Z21GetTableEntry020421b0i(22);
+        char* entry = (char*)_Z21GetTableEntry020421b0i(TopRightId);
         if (entry) {
             func_0204e1c8(wnd, entry, (short)((wnd->fA8 - 1) << 3), 0, 8, 8, 0xf0, 0xf);
         }
     }
     if (!func_0204fd00(wnd, 4)) {
         func_0204f914(wnd, 0, 0, (short)((wnd->fAA - 1) << 3), 8, (short)(wnd->fAA << 3));
-        char* entry = (char*)_Z21GetTableEntry020421b0i(24);
+        char* entry = (char*)_Z21GetTableEntry020421b0i(BottomLeftId);
         if (entry) {
             func_0204e1c8(wnd, entry, 0, (short)((wnd->fAA - 1) << 3), 8, 8, 0xf0, 0xf);
         }
     }
     if (!func_0204fd00(wnd, 8)) {
         func_0204f914(wnd, 0, (short)((wnd->fA8 - 1) << 3), (short)((wnd->fAA - 1) << 3), (short)(wnd->fA8 << 3), (short)(wnd->fAA << 3));
-        char* entry = (char*)_Z21GetTableEntry020421b0i(23);
+        char* entry = (char*)_Z21GetTableEntry020421b0i(BottomRightId);
         if (entry) {
             func_0204e1c8(wnd, entry, (short)((wnd->fA8 - 1) << 3), (short)((wnd->fAA - 1) << 3), 8, 8, 0xf0, 0xf);
         }

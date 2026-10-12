@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov023_021ea2dc func_ov023_021ea240
+#endif
+
 struct S_ea2dc {
     char pad[0x84];
     unsigned int val : 10;
