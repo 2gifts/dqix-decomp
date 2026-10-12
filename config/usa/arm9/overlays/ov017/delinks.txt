@@ -4730,3 +4730,43 @@ src/Combat/Overlay_17/func_ov017_02192b48.cpp:
 src/Combat/Overlay_17/func_ov017_021af098.cpp:
     complete
     .text start:0x021af098 end:0x021af2f8
+
+
+src/Combat/Overlay_17/func_ov017_0218fd34.cpp:
+    complete
+    .text start:0x0218fd34 end:0x021901ac
+
+
+src/Combat/Overlay_17/func_ov017_02192700.cpp:
+    complete
+    .text start:0x02192700 end:0x02192b48
+
+
+src/Combat/Overlay_17/func_ov017_021975e4.cpp:
+    complete
+    .text start:0x021975e4 end:0x02197a64
+
+
+src/Combat/Overlay_17/func_ov017_021986fc.cpp:
+    complete
+    .text start:0x021986fc end:0x02198aa0
+
+
+src/Combat/Overlay_17/func_ov017_021999fc.cpp:
+    complete
+    .text start:0x021999fc end:0x02199e98
+
+
+src/Combat/Overlay_17/func_ov017_021b4a88.cpp:
+    complete
+    .text start:0x021b4a88 end:0x021b4dc8
+
+
+src/Combat/Overlay_17/func_ov017_021cb5f8.cpp:
+    complete
+    .text start:0x021cb5f8 end:0x021cb974
+
+
+src/Combat/Overlay_17/func_ov017_021d1118.cpp:
+    complete
+    .text start:0x021d1118 end:0x021d15b0
