@@ -5,7 +5,12 @@ struct Sub021e6374 {
     unsigned short f1c;
 };
 
-struct Base021e6374;
+struct Base021e6374 {
+    char pad[0x540];
+    struct Sub021e6374 sub;
+
+    struct Sub021e6374* GetSub() { return &sub; }
+};
 
 struct Holder021e6374 {
     char pad[0xc];
@@ -13,12 +18,8 @@ struct Holder021e6374 {
 };
 extern struct Holder021e6374 data_ov025_021ef988;
 
-inline struct Sub021e6374* GetSub021e6374(struct Base021e6374* b) {
-    return (struct Sub021e6374*)((char*)b + 0x540);
-}
-
 // USA: func_ov025_021e6374  (semantic: StoreHalfAt1c_021e6374)
 extern "C" ARM int func_ov025_021e6374(void* obj) {
-    GetSub021e6374(data_ov025_021ef988.base)->f1c = *(unsigned short*)((char*)obj + 8);
+    data_ov025_021ef988.base->GetSub()->f1c =*(unsigned short*)((char*)obj + 8);
     return 1;
 }
