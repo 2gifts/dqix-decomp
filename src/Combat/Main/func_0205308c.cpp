@@ -47,7 +47,7 @@ extern "C" ARM void func_0205308c(void* obj, int val) {
     sprintf(buf, &data_020f0434, val, data_020e7bf8[((struct EntryBits0205308c*)((char*)entries + 0x14))->maleBit]);
 
     loader = BackgroundLoader::GetInstance();
-    if (self->f180 > -1) {
+    if (self->f180 > BackgroundLoader::TaskStatus_Invalid) {
         loader->RemoveTask(self->f180);
         self->f180 = -1;
     }
@@ -90,7 +90,7 @@ extern "C" ARM void func_0205308c(void* obj, int val) {
         return;
     }
 #endif
-    if (self->f194 > -1) {
+    if (self->f194 > BackgroundLoader::TaskStatus_Invalid) {
         loader->RemoveTask(self->f194);
         self->f194 = -1;
     }

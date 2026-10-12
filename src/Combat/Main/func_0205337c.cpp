@@ -14,23 +14,27 @@ ARM void RenderFlaggedIndexedEntry(struct StructAt020473c8* obj, int param1);
 
 struct Node0205337c {
     unsigned char pad0[0x1c];
-    int screenX; // 0x1c
-    int screenY; // 0x20
-    int depth;   // 0x24
+    int screenX;
+    int screenY;
+    int depth;
+};
+
+struct Anim0205337c {
+    signed char anim[5];
+    signed char animIdx;
 };
 
 struct Obj0205337c {
     unsigned char pad0[0x44];
-    struct Vec3copy0202ec84 pose; // 0x44
+    struct Vec3copy0202ec84 pose;
     unsigned char pad1[0x178 - 0x50];
-    signed char anim[5];          // 0x178
-    signed char animIdx;          // 0x17d
+    struct Anim0205337c anim;
     unsigned char pad2[0x190 - 0x17e];
-    struct Node0205337c* node;    // 0x190
+    struct Node0205337c* node;
 };
 
 inline signed char* GetAnimTable_0205337c(struct Obj0205337c* obj) {
-    return (signed char*)((char*)obj + 0x178);
+    return obj->anim.anim;
 }
 
 // USA: func_0205337c
@@ -49,7 +53,7 @@ extern "C" ARM void func_0205337c(struct Obj0205337c* obj) {
     outB -= 0xc;
     outA -= 0xc;
 
-    int idx = obj->animIdx;
+    int idx = obj->anim.animIdx;
     int kind = GetAnimTable_0205337c(obj)[idx];
     if (!(kind != 0xc && kind != 0xd && kind != 0xe)) {
         outB -= 0xc;

@@ -10,14 +10,25 @@ struct Cursor02189af4
     int words_[6];
 };
 
+struct Window02189af4
+{
+    char unk_0[0x54];
+    Cursor02189af4 cursor_;
+    char unk_74[0x1290 - 0x74];
+
+    Cursor02189af4* GetCursor() { return &cursor_; }
+};
+
 struct ProfileEditor02189af4
 {
     char unk_0[0xac];
-    char window_[0x133c - 0xac];
+    Window02189af4 window_;
     char strings_[0x1378 - 0x133c];
     const char* unk_1378;
     char unk_137c[0x13d8 - 0x137c];
     int selections_[6];
+
+    Window02189af4* GetWindow() { return &window_; }
 };
 
 extern "C" void _Z22AppendFrameTag02041c08Pciiiii(char* text, int a, int b, int c, int d, int e);
@@ -30,11 +41,6 @@ void AppendNameTag(char* text, int item, const char* itemText);
 void AppendXTag(char* text, int x);
 extern "C" void func_ov012_021842a0(ProfileEditor02189af4* self, int canvas, int color, int shadow);
 
-static inline Cursor02189af4* GetCursor02189af4(char* window)
-{
-    return (Cursor02189af4*)(window + 0x54);
-}
-
 // USA: func_ov012_02189af4
 extern "C" ARM void func_ov012_02189af4(ProfileEditor02189af4* self, char* text, int hidden)
 {
@@ -46,7 +52,7 @@ extern "C" ARM void func_ov012_02189af4(ProfileEditor02189af4* self, char* text,
         _Z22AppendFrameTag02041c08Pciiiii(text, selection, 8, 5, 5, 5);
     AppendCursorTag(text, selection);
     _Z26GetGlobalField0x1c020421a0v();
-    Cursor02189af4* cursor = GetCursor02189af4(self->window_);
+    Cursor02189af4* cursor = self->GetWindow()->GetCursor();
     int shadow = cursor->words_[3];
     int color = cursor->unk_4;
     int first;
