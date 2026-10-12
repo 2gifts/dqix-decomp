@@ -288,3 +288,75 @@ src/Combat/Overlay_6/func_ov006_02154e58.cpp:
 src/Combat/Overlay_6/func_ov006_021580b8.cpp:
     complete
     .text start:0x02159668 end:0x02159994
+
+src/Combat/Overlay_6/RefreshListEntryDisplay_0215fecc.cpp:
+    complete
+    .text start:0x02161230 end:0x021612b8
+
+src/Combat/Overlay_6/UpdateSelectionAndDispatchState_0215f2b4.cpp:
+    complete
+    .text start:0x021606d4 end:0x02160768
+
+src/Combat/Overlay_6/func_ov006_0215fb7c.cpp:
+    complete
+    .text start:0x02160ef0 end:0x02161064
+
+src/Combat/Overlay_6/Trans_0215a5dc.cpp:
+    complete
+    .text start:0x0215bbd4 end:0x0215bbf4
+
+src/Combat/Overlay_6/Trans_0215f9e8.cpp:
+    complete
+    .text start:0x02160d5c end:0x02160d90
+
+src/Combat/Overlay_6/SyncEntries0215f348.cpp:
+    complete
+    .text start:0x02160768 end:0x021607f8
+
+src/Combat/Overlay_6/func_ov006_02159bb0.cpp:
+    complete
+    .text start:0x0215b0cc end:0x0215b180
+
+src/Combat/Overlay_6/MergeIntoBuffers_0215fd60.cpp:
+    complete
+    .text start:0x021610c4 end:0x02161198
+
+src/Combat/Overlay_6/CheckAnyFlag_021570b4.cpp:
+    complete
+    .text start:0x021586bc end:0x02158704
+
+src/Combat/Overlay_6/CallIfFlag_021571cc_021571cc.cpp:
+    complete
+    .text start:0x021587d4 end:0x02158804
+
+src/Combat/Overlay_6/ClearFlag40_02157184.cpp:
+    complete
+    .text start:0x0215878c end:0x021587c0
+
+src/Combat/Overlay_6/func_ov006_0215b0fc.cpp:
+    complete
+    .text start:0x0215c66c end:0x0215c710
+
+src/Combat/Overlay_6/InitHandleAndDispatch_021571fc.cpp:
+    complete
+    .text start:0x02158804 end:0x02158894
+
+src/Combat/Overlay_6/func_ov006_021555b0.cpp:
+    complete
+    .text start:0x02156c98 end:0x02156d18
+
+src/Combat/Overlay_6/func_ov006_021549ac.cpp:
+    complete
+    .text start:0x0215610c end:0x021561c0
+
+src/Combat/Overlay_6/func_ov006_02156fdc.cpp:
+    complete
+    .text start:0x021585e4 end:0x021586bc
+
+src/Combat/Overlay_6/func_ov006_02159e50.cpp:
+    complete
+    .text start:0x0215b384 end:0x0215b440
+
+src/Combat/Overlay_6/func_ov006_02156f04.cpp:
+    complete
+    .text start:0x0215850c end:0x021585e4

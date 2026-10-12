@@ -242,3 +242,23 @@ src/Combat/Overlay_5/func_ov005_0215aa44.cpp:
 src/Combat/Overlay_5/func_ov005_0215b0a0.cpp:
     complete
     .text start:0x0215c4b4 end:0x0215c68c
+
+src/Combat/Overlay_5/ResetAllocatorAndCallInner02154da8.cpp:
+    complete
+    .text start:0x02156408 end:0x02156448
+
+src/Combat/Overlay_5/InitEntryManagerAndAllocator02159c24.cpp:
+    complete
+    .text start:0x0215b170 end:0x0215b1d4
+
+src/Combat/Overlay_5/func_ov005_0215bed4.cpp:
+    complete
+    .text start:0x0215d2b4 end:0x0215d338
+
+src/Combat/Overlay_5/func_ov005_02156e1c.cpp:
+    complete
+    .text start:0x0215840c end:0x021584bc
+
+src/Combat/Overlay_5/func_ov005_0215bf58.cpp:
+    complete
+    .text start:0x0215d338 end:0x0215d414

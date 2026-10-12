@@ -1,4 +1,14 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define InitHandleAndDispatch_021571fc func_ov006_02158804
+#define data_ov006_02160087 data_ov006_021613e7
+enum { kPendingNode = 0x109c, kEffectFlag = 0x10b8 };
+#else
+enum { kPendingNode = 0x12a0, kEffectFlag = 0x12bc };
+#endif
+
+
 #include "std_library_functions.h"
 
 struct InitStruct02078484Struct;
@@ -33,6 +43,9 @@ struct InitStruct02078484Struct_021571fc {
 };
 
 // USA: func_ov006_021571fc
+#if defined(jpn)
+extern "C"
+#endif
 ARM void InitHandleAndDispatch_021571fc(char* obj) {
     struct InitStruct02078484Struct_021571fc buf;
     InitStruct02078484((struct InitStruct02078484Struct*)&buf);
@@ -45,6 +58,6 @@ ARM void InitHandleAndDispatch_021571fc(char* obj) {
     buf.f2c = 0xc9 - 0x10a;
     buf.f30 = (int)0xfffff554;
     buf.f34 = 0x4526;
-    ProcessPendingNode020dbfa4((struct Obj020dbfa4*)(obj + 0x12a0), (int)&buf);
-    *(unsigned char*)(obj + 0x12bc) = 1;
+    ProcessPendingNode020dbfa4((struct Obj020dbfa4*)(obj + kPendingNode), (int)&buf);
+    *(unsigned char*)(obj + kEffectFlag) = 1;
 }

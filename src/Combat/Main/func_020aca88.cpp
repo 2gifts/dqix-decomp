@@ -6,6 +6,15 @@
 #include "Resource/GameResources.h"
 #include "World/Object3D.h"
 
+#if defined(jpn)
+#define data_020f1c08 data_020f1d74
+#define data_020f1c20 data_020f1d8c
+#define data_020f1c38 data_020f1da4
+#define data_020f1c51 data_020f1dbd
+#define data_020e910c data_020e9218
+#define data_020e9100 data_020e920c
+#endif
+
 typedef char PairTable020aca88[0x70];
 
 struct Prop020aca88 {

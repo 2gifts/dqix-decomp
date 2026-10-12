@@ -1,4 +1,14 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov006_021555b0 func_ov006_02156c98
+#define func_ov006_02155508 func_ov006_02156bf0
+#define func_ov006_02155630 func_ov006_02156d18
+#else
+
+#endif
+
+
 #include <std_library_functions.h>
 #include "Memory/SafeAllocator.h"
 #include "World/Object3D.h"
@@ -36,6 +46,15 @@ struct RecipeRecord {
     unsigned short unk_2_2 : 14;
 };
 
+#if defined(jpn)
+struct AlchemyPot {
+    char unknown00[0x34];
+    Recipe* recipe_;
+    Recipe* nextRecipe_;
+    int unknown3c;
+    RecipeRecord* record_;
+};
+#else
 struct AlchemyPot {
     char names_[3][0x80];
     SafeAllocator* allocators_;
@@ -89,6 +108,7 @@ struct AlchemyPot {
     unsigned char effectMode_;
     unsigned char resetBlend_;
 };
+#endif
 
 extern "C" void func_ov006_02155508(AlchemyPot* self);
 extern "C" void func_ov006_02155630(AlchemyPot* self, Recipe* recipe, RecipeRecord* record, unsigned char* amounts);

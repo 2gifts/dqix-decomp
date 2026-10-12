@@ -3,7 +3,7 @@
 
 #if defined(jpn)
 #define func_ov023_021d8a40 func_ov030_021d9300
-#define func_ov024_021d92f0 func_ov030_021d9bb0
+#define func_ov024_021d92f0 func_ov030_021d92f0
 #endif
 
 extern "C" void func_020a1940(unsigned int id);

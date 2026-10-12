@@ -4,3 +4,15 @@
 
 src/Combat/Overlay_30/func_ov030_021d9340.cpp:
     .text start:0x021d9c04 end:0x021da518
+
+src/Combat/Overlay_30/ReleaseBuffers_021d92f0.cpp:
+    complete
+    .text start:0x021d9bb0 end:0x021d9c04
+
+src/Combat/Overlay_30/ResetHeaderAndReturn_021d9250.cpp:
+    complete
+    .text start:0x021d9b10 end:0x021d9b24
+
+src/Combat/Overlay_30/ResetHeaderAndReturn_021d9264.cpp:
+    complete
+    .text start:0x021d9b24 end:0x021d9b38

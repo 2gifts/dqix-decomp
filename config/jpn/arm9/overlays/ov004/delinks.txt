@@ -1672,3 +1672,19 @@ src/Combat/Overlay_4/func_ov004_0216ea74.cpp:
 src/Combat/Overlay_4/func_ov004_0215a738.cpp:
     complete
     .text start:0x0215b740 end:0x0215ba18
+
+src/Combat/Overlay_4/SetDataByteAndFlag_0216df7c.cpp:
+    complete
+    .text start:0x0216e63c end:0x0216e660
+
+src/Combat/Overlay_4/Reset3FieldsAndDispatch_0216aa10.cpp:
+    complete
+    .text start:0x0216ac84 end:0x0216ace4
+
+src/Combat/Overlay_4/AllocateAndCopyStruct60_021633ac.cpp:
+    complete
+    .text start:0x021639a0 end:0x021639d8
+
+src/Combat/Overlay_4/CycleFieldState_02163478.cpp:
+    complete
+    .text start:0x02163a6c end:0x02163aac

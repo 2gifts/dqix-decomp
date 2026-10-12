@@ -1,5 +1,15 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov005_0215bed4 func_ov005_0215d2b4
+enum { kMember = 0x4f8, kResourcePointer = 0x34f8 };
+#define func_ov005_021562b8 func_ov005_021578a8
+#else
+enum { kMember = 0x4fc, kResourcePointer = 0x3708 };
+#endif
+
+
+
 struct TouchState
 {
     char unk_0[0x24];
@@ -13,13 +23,13 @@ struct TouchState
 
 struct MemberScreen
 {
-    char unk_0[0x4fc];
+    char unk_0[kMember];
     int member_;
 };
 
 struct GameResources
 {
-    char unk_0[0x3708];
+    char unk_0[kResourcePointer];
     int* unknown_ptr_3708;
 };
 

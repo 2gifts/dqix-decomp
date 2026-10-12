@@ -1,4 +1,15 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov006_02156f04 func_ov006_0215850c
+enum { kIngredients = 0x714, kCount = 0x10b7 };
+#define func_ov006_02156e54 func_ov006_0215845c
+#define data_ov006_021601e5 data_ov006_02161542
+#else
+enum { kIngredients = 0x894, kCount = 0x12bb };
+#endif
+
+
 #include <std_library_functions.h>
 #include "Filesystem/BackgroundLoader.h"
 
@@ -36,9 +47,9 @@ struct IngredientSprite {
 };
 
 struct AlchemyPot {
-    char unk_0[0x894];
+    char unk_0[kIngredients];
     IngredientSprite ingredients_[4];
-    char unk_a84[0x12bb - 0xa84];
+    char unk_a84[kCount - kIngredients - 4 * sizeof(IngredientSprite)];
     unsigned char numIngredients_;
 };
 

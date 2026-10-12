@@ -1,4 +1,17 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov006_021549ac func_ov006_0215610c
+#define func_ov006_02156bd8 func_ov006_021581e0
+#define func_ov006_02156fdc func_ov006_021585e4
+#define func_ov006_02156d70 func_ov006_02158378
+#define func_ov006_02155068 func_ov006_021567b4
+#define data_ov006_0215ff94 data_ov006_021612f8
+#else
+
+#endif
+
+
 #include <std_library_functions.h>
 #include "Memory/SafeAllocator.h"
 #include "World/Object3D.h"
@@ -37,7 +50,9 @@ struct RecipeRecord {
 };
 
 struct AlchemyPot {
+#if !defined(jpn)
     char names_[3][0x80];
+#endif
     SafeAllocator* allocators_;
     SafeAllocator* itemAllocator_;
     SafeAllocator* nextItemAllocator_;

@@ -1,5 +1,14 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov006_0215fb7c func_ov006_02160ef0
+
+#else
+
+#endif
+
+
+
 struct AlchemyPot;
 struct StatusOwner02081164;
 struct Obj2081;
@@ -103,7 +112,11 @@ void ClearElementFlag0x20(Obj2081* menu, int id);
 
 // USA: func_ov006_0215fb7c
 extern "C" ARM void func_ov006_0215fb7c(AlchemyMenu* self) {
+#if defined(jpn)
+    void* menu = *(void**)((char*)self + 0xc);
+#else
     void* menu = self->menu_;
+#endif
     short text = 0x2f;
     switch (self->bookCursor_)
     {

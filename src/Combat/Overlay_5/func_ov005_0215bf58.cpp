@@ -1,5 +1,17 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov005_0215bf58 func_ov005_0215d338
+enum { kMember = 0x4f8, kResourcePointer = 0x34f8 };
+#define func_ov005_021562b8 func_ov005_021578a8
+enum { kInfoFlags = 0x1930, kSlots = 0x2d08, kSelectedSlot = 0x3d33 };
+#else
+enum { kMember = 0x4fc, kResourcePointer = 0x3708 };
+enum { kInfoFlags = 0x19b8, kSlots = 0x2d90, kSelectedSlot = 0x3dbb };
+#endif
+
+
+
 struct TouchState
 {
     char unk_0[0x24];
@@ -13,13 +25,13 @@ struct TouchState
 
 struct MemberScreen
 {
-    char unk_0[0x4fc];
+    char unk_0[kMember];
     int member_;
 };
 
 struct GameResources
 {
-    char unk_0[0x3708];
+    char unk_0[kResourcePointer];
     int* unknown_ptr_3708;
 };
 
@@ -36,11 +48,11 @@ struct EquipmentMenu
 {
     char unk_0[0xdf4];
     Container020dedd0* items_;
-    char unk_df8[0x19b8 - 0xdf8];
+    char unk_df8[kInfoFlags - 0xdf8];
     unsigned short infoFlags_;
-    char unk_19ba[0x2d90 - 0x19ba];
+    char unk_19ba[kSlots - kInfoFlags - 2];
     EquipmentSlot slots_[24];
-    char unk_3030[0x3dbb - 0x3030];
+    char unk_3030[kSelectedSlot - kSlots - 24 * sizeof(EquipmentSlot)];
     signed char slot_;
 };
 

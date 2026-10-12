@@ -744,7 +744,7 @@ func_ov031_0221ec08 kind:function(thumb,size=0x30) addr:0x0221ec08
 func_ov031_0221e458 kind:function(thumb,size=0x18) addr:0x0221ec38
 func_ov031_0221e470 kind:function(thumb,size=0x10) addr:0x0221ec50
 func_ov031_0221ec60 kind:function(thumb,size=0x58) addr:0x0221ec60
-func_ov031_0221ecb8 kind:function(thumb,size=0x24) addr:0x0221ecb8
+func_ov031_0221e4d8 kind:function(thumb,size=0x22) addr:0x0221ecb8
 func_ov031_0221e4fc kind:function(thumb,size=0x20) addr:0x0221ecdc
 func_ov031_0221e51c kind:function(thumb,size=0x10) addr:0x0221ecfc
 func_ov031_0221e52c kind:function(thumb,size=0xc) addr:0x0221ed0c
@@ -770,7 +770,7 @@ func_ov031_0221e7a8 kind:function(thumb,size=0x14) addr:0x0221ef88
 func_ov031_0221e7bc kind:function(thumb,size=0x14) addr:0x0221ef9c
 func_ov031_0221efb0 kind:function(thumb,size=0xc4) addr:0x0221efb0
 func_ov031_0221e894 kind:function(thumb,size=0x98) addr:0x0221f074
-func_ov031_0221f10c kind:function(thumb,size=0x38) addr:0x0221f10c
+func_ov031_0221e92c kind:function(thumb,size=0x38) addr:0x0221f10c
 func_ov031_0221f144 kind:function(thumb,size=0x178) addr:0x0221f144
 func_ov031_0221f2bc kind:function(thumb,size=0x1d0) addr:0x0221f2bc
 func_ov031_0221ecac kind:function(thumb,size=0x8) addr:0x0221f48c
@@ -1920,10 +1920,10 @@ func_ov031_022437f8 kind:function(arm,size=0x12c) addr:0x022437f8
 func_ov031_02243144 kind:function(arm,size=0x1bc) addr:0x02243924
 func_ov031_02243ae0 kind:function(arm,size=0x48) addr:0x02243ae0
 func_ov031_02243348 kind:function(arm,size=0x88) addr:0x02243b28
-func_ov031_02243bb0 kind:function(arm,size=0x34) addr:0x02243bb0
-func_ov031_02243be4 kind:function(arm,size=0x14) addr:0x02243be4
-func_ov031_02243bf8 kind:function(arm,size=0x14) addr:0x02243bf8
-func_ov031_02243c0c kind:function(arm,size=0x24) addr:0x02243c0c
+func_ov031_022433d0 kind:function(arm,size=0x34) addr:0x02243bb0
+_Z19SetField28_02243404v kind:function(arm,size=0x14) addr:0x02243be4
+_Z19SetField48_02243418v kind:function(arm,size=0x14) addr:0x02243bf8
+func_ov031_0224342c kind:function(arm,size=0x24) addr:0x02243c0c
 _Z31AllocFromAllocator1e3c_02243450ij kind:function(arm,size=0x34) addr:0x02243c30
 _Z30FreeFromAllocator1e3c_02243484iPv kind:function(arm,size=0x30) addr:0x02243c64
 func_ov031_022434b4 kind:function(arm,size=0x34) addr:0x02243c94
@@ -2926,7 +2926,7 @@ data_ov031_0229260d kind:bss addr:0x0229260d
 data_ov031_02291e04 kind:bss addr:0x02292a04
 data_ov031_02291e3c kind:bss addr:0x02292a3c
 data_ov031_02292a50 kind:bss addr:0x02292a50
-data_ov031_02292a68 kind:bss addr:0x02292a68
+data_ov031_02291e68 kind:bss addr:0x02292a68
 data_ov031_02292aa8 kind:bss addr:0x02292aa8
 data_ov031_02292aae kind:bss addr:0x02292aae
 data_ov031_02291f24 kind:bss addr:0x02292b24

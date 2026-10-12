@@ -2936,3 +2936,11 @@ src/Combat/Overlay_23/SnapToTableAndClearFlags_021fb818.cpp:
 src/Combat/Overlay_23/TestFlagsAndActiveElement2_021e6e20.cpp:
     complete
     .text start:0x021e7184 end:0x021e71c4
+
+src/Combat/Overlay_23/DispatchByStateField_021e3030.cpp:
+    complete
+    .text start:0x021e3388 end:0x021e33dc
+
+src/Combat/Overlay_23/Trans_021e4e3c.cpp:
+    complete
+    .text start:0x021e5030 end:0x021e5080

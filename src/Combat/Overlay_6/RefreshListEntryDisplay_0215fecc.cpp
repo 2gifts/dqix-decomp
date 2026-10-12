@@ -1,4 +1,13 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov006_0215fecc func_ov006_02161230
+enum { kAllocatorOwner = 4 };
+#else
+enum { kAllocatorOwner = 0xc };
+#endif
+
+
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
 
@@ -11,7 +20,7 @@ extern "C" ARM int func_ov006_0215fecc(char* self) {
     if (!((BackgroundLoader*)(list))->GetTaskStatus((int)(*(int*)(self + 0x428)))) {
         return 0;
     }
-    char* base = *(char**)(self + 0xc);
+    char* base = *(char**)(self + kAllocatorOwner);
     SafeAllocator* alloc = (SafeAllocator*)(base + 0xb4);
     alloc->Reset();
     int out1 = 0;
