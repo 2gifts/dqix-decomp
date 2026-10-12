@@ -1,3 +1,9 @@
+#if defined(jpn)
+
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
 #include <globaldefs.h>
 
 #if defined(jpn)
@@ -17,12 +23,15 @@ extern "C" ARM void func_ov003_0217dc40(char* obj) {
     int g = GetGlobalField0x1c020421a0();
     BackgroundLoader::AddLockGlobal();
     BackgroundLoader::FreeAllocationsGlobal();
+#if !defined(jpn)
     int v = *(int*)(obj + 0xc);
     if (v != -1) {
         int gd = (int)BackgroundLoader::GetInstance();
         ((BackgroundLoader*)(gd))->RemoveTask((int)(v));
     }
-    ResetEntryList0205d6a0(*(struct Entry_0205d6a0**)(obj + 0x90), 0);
+
+#endif
+    ResetEntryList0205d6a0(*(struct Entry_0205d6a0**)(obj + LOW_REGION(0x8c, 0x90)), 0);
     ReinitController02043204((char*)g);
     func_ov003_0217db88(obj);
 }

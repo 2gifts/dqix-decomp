@@ -1,6 +1,10 @@
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 
+#if defined(jpn)
+#define data_020f14b0 data_020f15fc
+#endif
+
 struct ResetStruct;
 extern "C" int _ZN6Script10InitializeEv(struct ResetStruct* s);
 

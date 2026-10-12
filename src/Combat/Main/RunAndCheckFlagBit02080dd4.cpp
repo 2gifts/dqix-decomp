@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-extern "C" int func_02080e40(void* obj, int p1);
+extern "C" int func_02080e40(void* obj, int p1, int x, int y);
 
 struct Entry0207f6ac;
 struct List0207f6ac;
@@ -12,7 +12,7 @@ extern "C" void func_02080558(void* obj, int p1, int result, int flag, unsigned 
 ARM int RunAndCheckFlagBit02080dd4(void* obj, int p1, int unused2, int unused3, unsigned char* outFlag, unsigned char extra) {
     int result;
     struct Entry0207f6ac* entry;
-    result = func_02080e40(obj, p1);
+    result = func_02080e40(obj, p1, unused2, unused3);
     if (result == -1) {
         return -1;
     }

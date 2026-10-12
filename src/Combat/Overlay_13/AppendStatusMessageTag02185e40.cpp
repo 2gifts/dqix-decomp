@@ -2,13 +2,26 @@
 
 #if defined(jpn)
 #define func_ov013_02185e40 func_ov013_02186f4c
+#define data_ov013_02187e44 data_ov013_02188ddc
+#define data_ov013_02187e45 data_ov013_02188ddd
+#define data_ov013_02187dac data_ov013_02188cd4
+#define LOW_REGION(j,u) (j)
+#else
+#define LOW_REGION(j,u) (u)
 #endif
 #include "GameState/GameState.h"
 
 extern "C" void __clear(void* buf, int n);
 extern "C" int func_020420e8(void* p, int flag);
 extern "C" int sprintf(char* dst, const char* fmt, ...);
+#if defined(jpn)
+extern "C" void func_02046380(void*);
+extern "C" unsigned int strlen(const char*);
+extern "C" int func_02042638(char*, const char*, int);
+extern char data_ov013_02188d4c[];
+#else
 extern "C" void func_02046380(void);
+#endif
 
 struct Container020e0310;
 ARM int GetFieldByKey020e0434(struct Container020e0310* c, int key);
@@ -39,15 +52,35 @@ extern "C" ARM void func_ov013_02185e40(void* self, char* dst) {
 
     GameState::GetInstance();
 
-    char buf13c[0x200];
     short keyA = 0x190;
     short keyB = 0x1f4;
+#if defined(jpn)
+    int length = strlen(*(const char**)(obj + 0x62c)) + 6;
+    int marker;
+    int spacing;
+    int palette;
+    int state = *(int*)(obj + 0x640);
+    marker = 0;
+    spacing = 2;
+    if (obj[0x63c] != 0) {
+        spacing = 0;
+        length++;
+        marker = 1;
+    }
+    palette = 5;
+    if (state == 0xa) palette = 0xd;
+    int x = 0x31 - (int)(((float)length / 4.0f) * 10.0f);
+    int stateText = GetFieldByKey020e0434((Container020e0310*)(obj + 0x5ac), (short)(state + 0x12c));
+    int kindText = GetFieldByKey020e0434((Container020e0310*)(obj + 0x5ac), (short)(obj[0x630] + 0xc8));
+    sprintf(dst, data_ov013_02188d4c, x, *(const char**)(obj + 0x62c), kindText, marker, palette, stateText, spacing, *(int*)(obj + 0x638));
+#else
+    char buf13c[0x200];
     __clear(buf13c, 0x200);
 
     int nameWidth = func_020420e8(*(void**)(obj + 0x6a4), 0);
     if (*(int*)(obj + 0x6b8) != 0) {
         int key = (short)(*(int*)(obj + 0x6b8) + 0x12c);
-        int r7 = GetFieldByKey020e0434((struct Container020e0310*)(obj + 0x620), key);
+        int r7 = GetFieldByKey020e0434((struct Container020e0310*)(obj + LOW_REGION(0x5ac,0x620)), key);
         int paletteId = 5;
         if (*(int*)(obj + 0x6b8) == 0xa) paletteId = 0xd;
 
@@ -92,13 +125,22 @@ extern "C" ARM void func_ov013_02185e40(void* self, char* dst) {
     AppendXTag(dst, r1 >> 1);
 
     AppendString02042058(dst, buf13c);
+#endif
+#if defined(jpn)
+    func_02042638(dst, &data_ov013_02187e44, 0x10);
+#else
     AppendFormatted02041fac(dst, (int)&data_ov013_02187e44, 0x10);
+#endif
 
     void* g = GetGlobalField0x1c020421a0();
+#if defined(jpn)
+    func_02046380(g);
+#else
     func_02046380();
+#endif
 
     struct StatusCounters02185e40 {
-        char pad[0xbe];
+        char pad[LOW_REGION(0x46,0xbe)];
         unsigned short c0, c1, c2, c3, c4, c5, c6;
     };
     int vals[7];
@@ -117,13 +159,13 @@ extern "C" ARM void func_ov013_02185e40(void* self, char* dst) {
     }
 
     for (int i = 0; i < 5; i++) {
-        int fieldA = GetFieldByKey020e0434((struct Container020e0310*)(obj + 0x620), keyA++);
+        int fieldA = GetFieldByKey020e0434((struct Container020e0310*)(obj + LOW_REGION(0x5ac,0x620)), keyA++);
         AppendString02042058(dst, (const char*)fieldA);
 
         short xtag = data_ov013_02187dac[i];
         AppendXTag(dst, xtag);
 
-        int fieldB = GetFieldByKey020e0434((struct Container020e0310*)(obj + 0x620), keyB++);
+        int fieldB = GetFieldByKey020e0434((struct Container020e0310*)(obj + LOW_REGION(0x5ac,0x620)), keyB++);
         AppendString02042058(dst, (const char*)fieldB);
 
         if (i != 4) {

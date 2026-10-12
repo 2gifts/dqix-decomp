@@ -1,5 +1,10 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define data_020e91e0 data_020e92ec
+#define data_020e91d4 data_020e92e0
+#endif
+
 static inline int Clz(int x) {
     int r = x;
     __asm("clz %0, %0" : "+r"(r));

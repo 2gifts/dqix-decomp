@@ -207,3 +207,11 @@ src/Menu/Overlay_8/ListSpriteRefresh.cpp:
 src/Combat/Overlay_8/func_ov008_02187278.cpp:
     complete
     .text start:0x02188140 end:0x021882d0
+
+src/Combat/Overlay_8/func_ov008_02187b20.cpp:
+    complete
+    .text start:0x021888fc end:0x02188ccc
+
+src/Combat/Overlay_8/func_ov008_02187f6c.cpp:
+    complete
+    .text start:0x02188ccc end:0x021890ec

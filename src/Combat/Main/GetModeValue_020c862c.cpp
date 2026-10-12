@@ -8,7 +8,11 @@ extern int data_0211155c;
 extern "C" ARM unsigned int func_020c862c(unsigned int mode) {
     switch (mode) {
     case 0:
+#if defined(jpn)
+        return 0x022a39a0;
+#else
         return 0x022a3200;
+#endif
     case 2: {
         int v = *(int*)((char*)&data_0211155c + 4);
         if (v == 0) goto ret0;
@@ -20,7 +24,11 @@ extern "C" ARM unsigned int func_020c862c(unsigned int mode) {
         return 0x023e0000;
     }
     case 3:
+#if defined(jpn)
+        return 0x01fff2c0;
+#else
         return 0x01fff280;
+#endif
     case 4:
         return 0x027e0080;
     case 5:

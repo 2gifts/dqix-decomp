@@ -2,6 +2,7 @@
 
 #if defined(jpn)
 #define func_ov011_02184740 func_ov011_02185840
+#define func_ov023_021f698c func_ov023_021f5ec8
 #endif
 
 struct ListHead021f698c;

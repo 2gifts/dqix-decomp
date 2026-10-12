@@ -1,3 +1,6 @@
+#if defined(jpn)
+#define func_0204f7e8 func_02050cc0
+#endif
 #include <globaldefs.h>
 
 struct Vec3_021f8240
@@ -99,8 +102,12 @@ public:
     unsigned char font_ : 4;
     unsigned char color_ : 4;
     unsigned char selected_ : 1;
+#if defined(jpn)
+    unsigned char alignment_ : 7;
+#else
     unsigned char alignment_ : 6;
     unsigned char formatted_ : 1;
+#endif
 };
 
 class MenuNumber_021f8240 : public MenuObject_021f8240
@@ -186,9 +193,17 @@ extern "C" void func_0204f914(Canvas_021f8240* canvas, unsigned char color, shor
                               short bottom);
 extern "C" MenuObject_021f8240* _Z19GetField18_021f6f18Pv(void* object);
 
+#if defined(jpn)
+int StringLength(const char*);
+extern "C" void func_02050678(Canvas_021f8240*, short, short, const char*, int, unsigned char, unsigned short*, unsigned short*);
+#endif
+
 // USA: func_ov023_021f8240
 extern "C" ARM void func_ov023_021f8240(MenuCanvas_021f8240* self, void* script)
 {
+#if defined(jpn)
+    short canvasWidth = *(short*)((char*)self + 0xc8) * 8;
+#endif
     Node021f68b8* objects = func_ov011_021849c8(script);
     for (MenuObject_021f8240* object = _Z19GetNthNode_021f68b8P12Node021f68b8i(objects, 0); object != NULL;
          object = _Z19GetField18_021f6f18Pv(object))
@@ -213,12 +228,22 @@ extern "C" ARM void func_ov023_021f8240(MenuCanvas_021f8240* self, void* script)
         {
             MenuText_021f8240* text = (MenuText_021f8240*)object;
             int size;
+#if !defined(jpn)
             const char* string;
+#endif
             int formatted;
+#if defined(jpn)
             unsigned char font;
+#else
+            unsigned char font;
+#endif
             if (text->canvas_ != self->id_)
                 continue;
+#if defined(jpn)
+            const char* string = text->text_;
+#else
             string = text->text_;
+#endif
             if (string == NULL)
             {
                 MenuObject_021f8240* texts = func_ov023_021f6880(objects, text->texts_);
@@ -234,6 +259,19 @@ extern "C" ARM void func_ov023_021f8240(MenuCanvas_021f8240* self, void* script)
             short right = self->unk_10e + font;
             self->canvas_.unk_b4 = left;
             self->canvas_.unk_b6 = right;
+#if defined(jpn)
+            short leftOffset = text->unk_42;
+            int length = StringLength(string);
+            int width = (length * font) >> 1;
+            switch (text->alignment_)
+            {
+            case 1: position.x = leftOffset * 4096; break;
+            case 3: position.x = ((canvasWidth - width) >> 1) * 4096; break;
+            case 2: position.x = (leftOffset + (canvasWidth - width)) * 4096; break;
+            }
+            int x = position.x / 4096.0f;
+            int y = position.y / 4096.0f;
+#else
             formatted = text->formatted_;
             size = IsValueEqual12(text->font_);
             char codes[0x100] = {0};
@@ -258,9 +296,14 @@ extern "C" ARM void func_ov023_021f8240(MenuCanvas_021f8240* self, void* script)
                 x -= width;
                 break;
             }
+#endif
             unsigned short textWidth;
             unsigned short textHeight;
+#if defined(jpn)
+            func_02050678(&self->canvas_, x, y, string, font, color, &textWidth, &textHeight);
+#else
             func_0204f41c(&self->canvas_, x, y, string, font, color, &textWidth, &textHeight, 0);
+#endif
             _Z28SetShortAt_021f8c48_021f8c48Phs(text, textWidth);
             _Z28SetShortAt_021f8c58_021f8c58Phs(text, textHeight);
         }

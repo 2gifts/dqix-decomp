@@ -2,6 +2,10 @@
 
 #if defined(jpn)
 #define func_ov009_02188454 func_ov009_02189214
+#define _Z20GetEntryPair02188bf8PhiPsS0_ func_ov009_021899b0
+#define LOW_REGION(j,u) (j)
+#else
+#define LOW_REGION(j,u) (u)
 #endif
 
 struct Words021e60c4 { unsigned int a, b, c; };
@@ -21,22 +25,22 @@ extern "C" ARM void func_ov009_02188454(void* objRaw) {
     char* obj = (char*)objRaw;
     struct Words021e60c4 tmp;
 
-    if (*(unsigned int*)(obj + 0xd9c) & 4) {
-        void* p = *(void**)(obj + 0x7fc);
+    if (*(unsigned int*)(obj + LOW_REGION(0xd60,0xd9c)) & 4) {
+        void* p = *(void**)(obj + LOW_REGION(0x7c0,0x7fc));
         if (p != 0 && *(unsigned char*)((char*)p + 0xc12) != 0) {
             return;
         }
 
-        if (*(unsigned int*)(obj + 0xd9c) & 0x40000) {
-            _Z22InitWordsQuad_021e60e0Pvj(*(void**)(obj + 0x7f8), 0x1eb);
-            *(unsigned int*)(obj + 0xd9c) &= ~0x40000;
+        if (*(unsigned int*)(obj + LOW_REGION(0xd60,0xd9c)) & 0x40000) {
+            _Z22InitWordsQuad_021e60e0Pvj(*(void**)(obj + LOW_REGION(0x7bc,0x7f8)), 0x1eb);
+            *(unsigned int*)(obj + LOW_REGION(0xd60,0xd9c)) &= ~0x40000;
         }
-        func_ov023_021e613c(&tmp, *(char**)(obj + 0x7f8));
-        _Z26SetFourWordBlocks_021e6088PvP13Words021e60c4(*(void**)(obj + 0x7fc), &tmp);
+        func_ov023_021e613c(&tmp, *(char**)(obj + LOW_REGION(0x7bc,0x7f8)));
+        _Z26SetFourWordBlocks_021e6088PvP13Words021e60c4(*(void**)(obj + LOW_REGION(0x7c0,0x7fc)), &tmp);
 
         {
-            void* ef8 = func_ov023_021e6194(*(void**)(obj + 0x7f8));
-            void* efc = func_ov023_021e6194(*(void**)(obj + 0x7fc));
+            void* ef8 = func_ov023_021e6194(*(void**)(obj + LOW_REGION(0x7bc,0x7f8)));
+            void* efc = func_ov023_021e6194(*(void**)(obj + LOW_REGION(0x7c0,0x7fc)));
             const char* sMain = *(const char**)((char*)efc + 0x14);
             int lenMain = 0;
             int lenAlt = 0;
@@ -54,21 +58,21 @@ extern "C" ARM void func_ov009_02188454(void* objRaw) {
         }
 
         {
-            void* t = *(void**)(obj + 0x7f8);
-            *(void**)(obj + 0x7f8) = *(void**)(obj + 0x7fc);
-            *(void**)(obj + 0x7fc) = t;
+            void* t = *(void**)(obj + LOW_REGION(0x7bc,0x7f8));
+            *(void**)(obj + LOW_REGION(0x7bc,0x7f8)) = *(void**)(obj + LOW_REGION(0x7c0,0x7fc));
+            *(void**)(obj + LOW_REGION(0x7c0,0x7fc)) = t;
         }
 
-        if (*(unsigned int*)(obj + 0xd9c) & 0x20000) {
-            unsigned char sel = *(unsigned char*)(obj + 0xda3);
-            char* base = (char*)*(int*)(obj + 0xd88) + 0x488;
-            unsigned char idx = *(unsigned char*)(obj + sel + 0xda4);
+        if (*(unsigned int*)(obj + LOW_REGION(0xd60,0xd9c)) & 0x20000) {
+            unsigned char sel = *(unsigned char*)(obj + LOW_REGION(0xd67,0xda3));
+            char* base = (char*)*(int*)(obj + LOW_REGION(0xd4c,0xd88)) + 0x488;
+            unsigned char idx = *(unsigned char*)(obj + sel + LOW_REGION(0xd68,0xda4));
             _Z20GetEntryPair02188bf8PhiPsS0_((unsigned char*)obj, idx, (short*)(base + 0x18), (short*)(base + 0x1a));
-            func_ov023_021e5e68(*(void**)(obj + 0x7f8), *(short*)(base + 0x18), *(short*)(base + 0x1a));
-            func_ov023_021e5e68(*(void**)(obj + 0x7fc), *(short*)(base + 0x18), *(short*)(base + 0x1a));
-            *(unsigned int*)(obj + 0xd9c) &= ~0x20000;
+            func_ov023_021e5e68(*(void**)(obj + LOW_REGION(0x7bc,0x7f8)), *(short*)(base + 0x18), *(short*)(base + 0x1a));
+            func_ov023_021e5e68(*(void**)(obj + LOW_REGION(0x7c0,0x7fc)), *(short*)(base + 0x18), *(short*)(base + 0x1a));
+            *(unsigned int*)(obj + LOW_REGION(0xd60,0xd9c)) &= ~0x20000;
         }
 
-        *(unsigned int*)(obj + 0xd9c) &= ~4;
+        *(unsigned int*)(obj + LOW_REGION(0xd60,0xd9c)) &= ~4;
     }
 }

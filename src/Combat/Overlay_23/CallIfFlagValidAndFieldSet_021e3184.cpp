@@ -1,10 +1,17 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define func_ov023_021e3184 func_ov023_021e34dc
+#endif
 
 void RunTurnStartHooks02155108(void* obj);
 
 struct Obj021e3184 {
     void* field0;
+#if defined(jpn)
+    char pad[0x4de];
+#else
     char pad[0x4e2];
+#endif
     signed char field4e6;
 };
 

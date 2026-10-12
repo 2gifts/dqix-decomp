@@ -33,7 +33,11 @@ extern TouchState data_02114e54;
 extern char data_02114e30[];
 
 struct CharacterCreation {
+#if defined(jpn)
+    char unk_0[0x7bc];
+#else
     char unk_0[0x7f8];
+#endif
     void* character_;
     void* nextCharacter_;
     int unk_800;

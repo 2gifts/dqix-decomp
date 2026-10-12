@@ -2456,3 +2456,11 @@ src/Combat/Overlay_23/ApplyShortPairToEntry_021e4358.cpp:
 src/Combat/Overlay_23/SetEntryFieldsFromShortPair_021e43f0.cpp:
     complete
     .text start:0x021e4614 end:0x021e46a0
+
+src/Combat/Overlay_23/func_ov023_021f8240.cpp:
+    complete
+    .text start:0x021f7724 end:0x021f7b50
+
+src/Combat/Overlay_23/CallIfFlagValidAndFieldSet_021e3184.cpp:
+    complete
+    .text start:0x021e34dc end:0x021e3508

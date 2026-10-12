@@ -16890,3 +16890,39 @@ src/Combat/Main/EmptyDestructor0205cb60.cpp:
 src/Combat/Main/BlankFunction0208be90.cpp:
     complete
     .text start:0x0208c768 end:0x0208c76c
+
+src/Combat/Main/PickHitElement02080e40.cpp:
+    complete
+    .text start:0x02081940 end:0x02081a8c
+
+src/Combat/Main/func_020793c0.cpp:
+    complete
+    .text start:0x0207a2b4 end:0x0207a3ec
+
+src/Combat/Main/GetModeValue_020c862c.cpp:
+    complete
+    .text start:0x020ca0f8 end:0x020ca1a0
+
+src/Combat/Main/VerifyBuffer020a94f8.cpp:
+    complete
+    .text start:0x020ab164 end:0x020ab210
+
+src/Combat/Main/func_02096524.cpp:
+    complete
+    .text start:0x02098174 end:0x020981fc
+
+src/Combat/Main/func_0205b0d8.cpp:
+    complete
+    .text start:0x0205c474 end:0x0205c510
+
+src/Combat/Main/AppendDotLeaderLabel02042084.cpp:
+    complete
+    .text start:0x020426d4 end:0x02042738
+
+src/Combat/Main/func_020b1ec0.cpp:
+    complete
+    .text start:0x020b398c end:0x020b3a14
+
+src/Combat/Main/func_02079238.cpp:
+    complete
+    .text start:0x0207a12c end:0x0207a2b4

@@ -2,6 +2,13 @@
 
 #if defined(jpn)
 #define func_ov012_02185a24 func_ov012_02186084
+#define _Z37InitBuffersAndConfigureEntry_021e761cPv func_ov023_021e7868
+#define func_ov023_021e6a14 func_ov023_021e6f84
+#define func_ov024_021e6a90 func_ov023_021e7000
+#define _Z33UpdateEntryFromDoublePtr_021e6b04Pc func_ov023_021e7074
+#define LOW_NEXT_REGION(j,u) (j)
+#else
+#define LOW_NEXT_REGION(j,u) (u)
 #endif
 
 extern "C" unsigned int _Z28CallFunc0204b04cOverList0x98P12Cont0205d274(unsigned int);
@@ -19,29 +26,29 @@ extern "C" unsigned int func_ov024_021e6a90(unsigned int);
 extern "C" ARM unsigned int func_ov012_02185a24(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
     unsigned int r4 = 0;
     r4 = r0;
-    r0 = r4 + 0x128;
+    r0 = r4 + LOW_NEXT_REGION(0x10c,0x128);
     r0 = r0 + 0xc00;
     r0 = (unsigned int)_Z37InitBuffersAndConfigureEntry_021e761cPv(r0);
-    r0 = r4 + 0xac;
+    r0 = r4 + LOW_NEXT_REGION(0x90,0xac);
     r0 = (unsigned int)_Z32ClearBuffers0204b010OverList0x98P12Cont0205d1e0(r0);
-    r0 = r4 + 0xac;
+    r0 = r4 + LOW_NEXT_REGION(0x90,0xac);
     r0 = (unsigned int)_Z28CallFunc0204c8f0OverList0x9cP12Cont0205d228(r0);
-    r0 = r4 + 0xac;
+    r0 = r4 + LOW_NEXT_REGION(0x90,0xac);
     r1 = 0x1;
     r2 = 0x2;
     r3 = r1;
     r0 = (unsigned int)func_0205da88(r0, r1, r2, r3);
-    r0 = r4 + 0xac;
+    r0 = r4 + LOW_NEXT_REGION(0x90,0xac);
     r1 = 0x1;
     r2 = 0x3;
     r3 = r1;
     r0 = (unsigned int)func_0205da88(r0, r1, r2, r3);
-    r0 = r4 + 0xac;
+    r0 = r4 + LOW_NEXT_REGION(0x90,0xac);
     r1 = 0x2;
     r2 = 0x3;
     r3 = 0x0;
     r0 = (unsigned int)func_0205da88(r0, r1, r2, r3);
-    r0 = r4 + 0xac;
+    r0 = r4 + LOW_NEXT_REGION(0x90,0xac);
     r0 = (unsigned int)_Z28CallFunc0204b04cOverList0x98P12Cont0205d274(r0);
     r0 = r4;
     r0 = (unsigned int)func_ov023_021e67f4(r0);

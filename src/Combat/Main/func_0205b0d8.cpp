@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define data_020e9450 data_020e955c
+#endif
+
 struct Pair0205b0d8 {
     int field0;
     int field4;

@@ -6244,3 +6244,27 @@ src/Combat/Overlay_31/SetField_022274c0_022274c0_0222a848.cpp:
 src/Combat/Overlay_31/func_ov031_022368bc.cpp:
     complete
     .text start:0x0223709c end:0x022370c0
+
+src/Combat/Overlay_31/func_ov031_0220f814.cpp:
+    complete
+    .text start:0x0220fff4 end:0x02210088
+
+src/Combat/Overlay_31/CheckStateThenProcess_02227ba4.cpp:
+    complete
+    .text start:0x02228384 end:0x022283a8
+
+src/Combat/Overlay_31/CallWithZeroExtra_0223e218_02235060.cpp:
+    complete
+    .text start:0x02235840 end:0x0223586c
+
+src/Combat/Overlay_31/02205814.cpp:
+    complete
+    .text start:0x02205ff4 end:0x0220604c
+
+src/Combat/Overlay_31/0223fc7c.cpp:
+    complete
+    .text start:0x0224045c end:0x022404b4
+
+src/Combat/Overlay_31/022339a8.cpp:
+    complete
+    .text start:0x02234188 end:0x022341e0

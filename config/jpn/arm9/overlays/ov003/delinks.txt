@@ -1517,3 +1517,15 @@ src/Combat/Overlay_3/RefreshPaletteIfFlagSet_02174890.cpp:
 src/Combat/Overlay_3/LoopCallOv017_02172518.cpp:
     complete
     .text start:0x021714f0 end:0x0217153c
+
+src/Combat/Overlay_3/ReinitEntryListAndController_0217dc40.cpp:
+    complete
+    .text start:0x0217c8e0 end:0x0217c918
+
+src/Combat/Overlay_3/func_ov003_021704e8.cpp:
+    complete
+    .text start:0x0216fd3c end:0x0216fe58
+
+src/Combat/Overlay_3/func_ov003_0216da90.cpp:
+    complete
+    .text start:0x0216d478 end:0x0216d5f4

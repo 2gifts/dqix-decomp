@@ -98,3 +98,11 @@ src/Combat/Overlay_13/AppendCursorAndFieldNameTags02185be0.cpp:
 src/Combat/Overlay_13/InitCombatEntry02185990.cpp:
     complete
     .text start:0x02186b88 end:0x02186c80
+
+src/Combat/Overlay_13/func_ov013_021878b0.cpp:
+    complete
+    .text start:0x021888c0 end:0x02188a24
+
+src/Combat/Overlay_13/AppendStatusMessageTag02185e40.cpp:
+    complete
+    .text start:0x02186f4c end:0x02187178

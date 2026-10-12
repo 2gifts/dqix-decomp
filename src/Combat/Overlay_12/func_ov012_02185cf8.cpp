@@ -1,3 +1,9 @@
+#if defined(jpn)
+#define data_ov012_0218b108 data_ov012_0218be28
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
 #include <globaldefs.h>
 
 #if defined(jpn)
@@ -6,17 +12,21 @@
 #include "std_library_functions.h"
 
 struct StructA0205d5d0;
+#if defined(jpn)
+extern "C" void _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(StructA0205d5d0* window, int state, int text, int a);
+#else
 extern "C" void _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(StructA0205d5d0* window, int state, int text, int a, unsigned char b);
+#endif
 
 struct ProfileEditor02185cf8
 {
-    char unk_0[0xac];
-    char window_[0x1370 - 0xac];
+    char unk_0[LOW_REGION(0x90, 0xac)];
+    char window_[LOW_REGION(0x1340, 0x1370) - LOW_REGION(0x90, 0xac)];
     unsigned char step_;
     unsigned char state_;
     char unk_1372[2];
     char* text_;
-    char unk_1378[0x1398 - 0x1378];
+    char unk_1378[LOW_REGION(0x1360, 0x1398) - LOW_REGION(0x1348, 0x1378)];
     int unk_1398;
 };
 
@@ -52,7 +62,7 @@ static inline Frame02185cf8* GetFrame02185cf8(char* window)
 
 static inline char* GetWindow02185cf8(ProfileEditor02185cf8* editor)
 {
-    return (char*)editor + 0xac;
+    return (char*)editor + LOW_REGION(0x90, 0xac);
 }
 
 // USA: func_ov012_02185cf8
@@ -69,12 +79,16 @@ extern "C" ARM void func_ov012_02185cf8(ProfileEditor02185cf8* self)
             return;
         hidden = 1;
     }
-    memset(self->text_, 0, 0x960);
+    memset(self->text_, 0, LOW_REGION(0x800, 0x960));
     TextTable02185cf8 functions = data_ov012_0218b108;
     TextFn02185cf8 none = data_020e6d5c;
     functions.functions[0] = none;
     functions.functions[15] = none;
     if (functions.functions[self->state_] != 0)
         (self->*functions.functions[self->state_])(self->text_, hidden);
+#if defined(jpn)
+    _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((StructA0205d5d0*)self->window_, self->state_, (int)self->text_, 0);
+#else
     _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((StructA0205d5d0*)self->window_, self->state_, (int)self->text_, 0, 0);
+#endif
 }
