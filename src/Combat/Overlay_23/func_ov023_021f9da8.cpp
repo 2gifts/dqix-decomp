@@ -15,13 +15,15 @@ struct Sub_021f9da8 {
     short f_ae;
 };
 
-static inline Sub_021f9da8* GetSub_021f9da8(void* n) {
-    return (Sub_021f9da8*)((char*)n + 0x20);
-}
+struct Node021f9da8 {
+    char pad[0x20];
+    Sub_021f9da8 sub;
+    Sub_021f9da8* GetSub() { return &sub; }
+};
 
 extern "C" void* func_ov011_021849c8(void* obj);
 extern "C" void* func_ov023_021f6880(void* base, int key);
-extern "C" void* _Z29GetLinkedNodeIfKind6_021f9cb8PvS_S_(void* unused, void* other, void* node);
+extern "C" Node021f9da8* _Z29GetLinkedNodeIfKind6_021f9cb8PvS_S_(void* unused, void* other, void* node);
 
 // USA: func_ov023_021f9da8
 extern "C" ARM int func_ov023_021f9da8(Cursor021f9da8* self, void* other, int x, int y) {
@@ -30,11 +32,11 @@ extern "C" ARM int func_ov023_021f9da8(Cursor021f9da8* self, void* other, int x,
     unsigned short i;
     for (i = 0; i < total; i++) {
         void* node = func_ov023_021f6880(nodes, self->table[i]);
-        void* linked = _Z29GetLinkedNodeIfKind6_021f9cb8PvS_S_(self, other, node);
+        Node021f9da8* linked = _Z29GetLinkedNodeIfKind6_021f9cb8PvS_S_(self, other, node);
         if (linked == 0) {
             continue;
         }
-        Sub_021f9da8* sub = GetSub_021f9da8(linked);
+        Sub_021f9da8* sub = linked->GetSub();
         if (sub == 0) {
             continue;
         }

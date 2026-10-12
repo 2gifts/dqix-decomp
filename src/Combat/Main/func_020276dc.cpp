@@ -36,9 +36,8 @@ extern "C" ARM void func_020276dc(unsigned char* self) {
         have = (cur >> sh) & 3;
         if (have == want) continue;
 
-        cur &= ~(3 << sh);
-        self[0] = (unsigned char)cur;
-        *(volatile unsigned char*)self = (unsigned char)((cur & 0xff) | (want << sh));
+        self[0] &= ~(3 << sh);
+        self[0] |= want << sh;
         {
             const unsigned short* s = data_020e7044;
             unsigned short* d = buf;

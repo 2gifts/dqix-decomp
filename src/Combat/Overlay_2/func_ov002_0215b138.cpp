@@ -28,10 +28,11 @@ extern "C" ARM void func_ov002_0215b138(unsigned char* obj) {
         return;
     }
 
-    short fieldAC = *(volatile short*)((char*)elem + 0xac);
-    short fieldAE = *(volatile short*)((char*)elem + 0xae);
-    int b = (short)(fieldAE * 8);
-    int a = (short)(fieldAC * 8);
+    int b;
+    int a = *(short*)((char*)elem + 0xac);
+    b = *(short*)((char*)elem + 0xae);
+    b = (short)(b * 8);
+    a = (short)(a * 8);
 
     _Z22SetEntryFields02154bcciiPvihh(a, b, *(void**)(obj + 0x1000 + 0xa68), 0x26, 0x55, 0xff);
 

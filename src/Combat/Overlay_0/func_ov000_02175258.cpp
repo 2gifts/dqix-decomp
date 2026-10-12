@@ -16,6 +16,8 @@ struct Entry02175258 {
 #endif
 };
 
+static inline int HasBit4(Entry02175258* e) { return (e->field24 & 4) != 0; }
+
 // USA: func_ov000_02175258  (semantic: SyncCombatantReadyFlags_02175258)
 extern "C" ARM void func_ov000_02175258(char* obj) {
     for (int i = 0; i < 4; i++) {
@@ -32,19 +34,17 @@ extern "C" ARM void func_ov000_02175258(char* obj) {
         struct Entry02175258* entry = table2 + idx;
         if (*(int*)(obj + 0x17c) != entry->field4c) continue;
 
-        int hasBit4 = (entry->field24 & 4) != 0;
+        int hasBit4 = HasBit4(entry);
         signed char off = entry->field18;
         signed char v = *(signed char*)((char*)entry + off + 0x10);
         if (v >= 0x64) {
             if (hasBit4 == 0) return;
-            unsigned char flags = *(unsigned char*)&entry->field24;
-            entry->field24 = flags & ~4;
+            entry->field24 &= ~4;
             func_ov000_02174b14(obj);
             return;
         } else {
             if (hasBit4 != 0) return;
-            unsigned char flags = *(unsigned char*)&entry->field24;
-            entry->field24 = flags | 4;
+            entry->field24 |= 4;
             func_ov000_02174b14(obj);
             return;
         }

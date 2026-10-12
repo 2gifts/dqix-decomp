@@ -70,8 +70,7 @@ ARM void ProcessCombatState020534ac(char* ctx) {
     if (*(unsigned char*)(ctx + (IS_JPN ? 0x17a : 0x186)) != 0) {
         signed char idx = *(signed char*)(ctx + (IS_JPN ? 0x171 : 0x17d));
         char* p = ctx + (idx + 1);
-        p = p + 0x100;
-        func_0205308c(ctx, *(signed char*)(p + (IS_JPN ? 0x6c : 0x78)));
+        func_0205308c(ctx, *(signed char*)(p + 0x100 + (IS_JPN ? 0x6c : 0x78)));
         *(unsigned char*)(ctx + (IS_JPN ? 0x17a : 0x186)) = 0;
     }
 }
