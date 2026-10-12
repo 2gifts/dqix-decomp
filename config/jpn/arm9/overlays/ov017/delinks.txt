@@ -3976,3 +3976,7 @@ src/Combat/Overlay_17/ResetBattleScaleField_021bf360.cpp:
 src/Combat/Overlay_17/ResetBattleScaleField_021c1dfc.cpp:
     complete
     .text start:0x021c2370 end:0x021c23a8
+
+src/Combat/Overlay_17/func_ov017_021ba524.cpp:
+    complete
+    .text start:0x021baa20 end:0x021bad0c
