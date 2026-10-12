@@ -2822,3 +2822,7 @@ src/Combat/Overlay_24/func_ov024_021f9030.cpp:
 src/Combat/Overlay_24/func_ov024_021eaa50.cpp:
     complete
     .text start:0x021eaa50 end:0x021eadfc
+
+src/Combat/Overlay_24/func_ov024_021fc754.cpp:
+    complete
+    .text start:0x021fc754 end:0x021fcac0
