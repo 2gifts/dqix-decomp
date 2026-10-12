@@ -16926,3 +16926,51 @@ src/Combat/Main/func_020b1ec0.cpp:
 src/Combat/Main/func_02079238.cpp:
     complete
     .text start:0x0207a12c end:0x0207a2b4
+
+src/Combat/Main/func_020531f0.cpp:
+    complete
+    .text start:0x02054568 end:0x020546f4
+
+src/Combat/Main/func_02015438.cpp:
+    complete
+    .text start:0x02015204 end:0x020152e4
+
+src/Combat/Main/func_0207d538.cpp:
+    complete
+    .text start:0x0207e370 end:0x0207e484
+
+src/Combat/Main/func_020d9870.cpp:
+    complete
+    .text start:0x020db27c end:0x020db45c
+
+src/Combat/Main/func_020dcd40.cpp:
+    complete
+    .text start:0x020de748 end:0x020de968
+
+src/Combat/Main/func_0205d304.cpp:
+    complete
+    .text start:0x0205e634 end:0x0205e8ac
+
+src/Combat/Main/func_0206f230.cpp:
+    complete
+    .text start:0x02070374 end:0x02070530
+
+src/Combat/Main/func_020aad1c.cpp:
+    complete
+    .text start:0x020ac914 end:0x020acaec
+
+src/Combat/Main/BlankFunction02094b30.cpp:
+    complete
+    .text start:0x0209588c end:0x0209595c
+
+src/Combat/Main/0208b0f8.cpp:
+    complete
+    .text start:0x0208b9ec end:0x0208bd88
+
+src/Combat/Main/func_02077be0.cpp:
+    complete
+    .text start:0x02078afc end:0x02078d9c
+
+src/Combat/Main/TickCastCounter0208767c.cpp:
+    complete
+    .text start:0x02087f78 end:0x02088000

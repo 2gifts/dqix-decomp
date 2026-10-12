@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define _Z33SetupAndRunBufferedScript0209a348P11Ctx0209a348Pv func_0209c09c
+#define _Z20ClearBitInArray0x8ecPhi func_02084434
+#define _Z11GetIntAt0x4P20IntField0x4_0209a670 func_0209c3c4
+#define data_0212633c data_02127b64
+#define data_ov004_0216fdd0 data_ov004_02170554
+#endif
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
@@ -21,8 +28,13 @@ struct Pair0209a338 { int a; int b; };
 struct IntField0x4_0209a670 { char pad[4]; int field; };
 
 struct ListEntry {
+#if defined(jpn)
+    unsigned short key : 12;
+    unsigned short pad0 : 4;
+#else
     unsigned short key : 11;
     unsigned short pad0 : 5;
+#endif
     unsigned short mode;
     unsigned int flags;
     unsigned int pad;
@@ -104,7 +116,12 @@ extern "C" ARM void func_ov004_0215eb40(void* self) {
 
     for (k = 0x56f9; k <= 0x5712; k++) {
         found = 0;
-        slots = ((struct Slots020d*)*(void**)((char*)combatant + 0x150))->slots;
+        slots = ((struct Slots020d*)*(void**)((char*)combatant
+#if defined(jpn)
+            + 0x144))->slots;
+#else
+            + 0x150))->slots;
+#endif
         for (j = 0; j < 8; j++) {
             if (slots[j] == k) {
                 found = 1;

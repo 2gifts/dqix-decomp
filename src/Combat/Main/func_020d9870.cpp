@@ -1,6 +1,13 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+#define _Z25InitBattleIfListHasId0x1cPv func_020db45c
+#define func_ov017_021ab860 func_ov017_021ac0c0
+extern "C" void func_02045d88(void*, const char*, int);
+extern char data_020f29cc;
+#endif
+
 extern "C" int func_ov017_021959b4(void);
 extern "C" void* _Z26GetGlobalField0x1c020421a0v(void);
 extern "C" int _Z17GetGlobal02109400v(void);
@@ -37,6 +44,11 @@ struct Obj020d9870 {
 
 // USA: func_020d9870
 extern "C" ARM void func_020d9870(struct Obj020d9870* self) {
+#if defined(jpn)
+    enum { choiceOffset = 0x17e2, pendingOffset = 0x868 };
+#else
+    enum { choiceOffset = 0x19b2, pendingOffset = 0x998 };
+#endif
     GameState* gs = GameState::GetInstance();
     func_ov017_0218b5b0();
     void* unkObj = gs->GetUnknownGameObject();
@@ -71,12 +83,16 @@ extern "C" ARM void func_020d9870(struct Obj020d9870* self) {
         }
         _Z25ResetElapsedState020e11a4v();
         func_02046380(g1c);
+#if defined(jpn)
+        func_02045d88(g1c, &data_020f29cc, 0);
+#else
         func_0204500c(g1c, (void*)_Z28CallFunc020e0434With02153694i(0x3e), 0, 0xe3);
-        *(unsigned char*)((char*)g1c + 0x19b2) = 0;
-        *(int*)((char*)g1c + 0x998) = 1;
+#endif
+        *(unsigned char*)((char*)g1c + choiceOffset) = 0;
+        *(int*)((char*)g1c + pendingOffset) = 1;
         self->state = 4;
     } else if (self->state == 4) {
-        if (*(int*)((char*)g1c + 0x998) == 0) {
+        if (*(int*)((char*)g1c + pendingOffset) == 0) {
             if (func_020457e0(g1c) == 0) {
                 func_ov017_021ab860(*(short*)((char*)unkObj + 4), 1);
                 _Z19InitContext020e1154Pv((void*)0xbb8);

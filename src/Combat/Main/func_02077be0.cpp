@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_02077be0 func_02078afc
+#endif
 #include "GameState/GameState.h"
 
 struct Vec3 {

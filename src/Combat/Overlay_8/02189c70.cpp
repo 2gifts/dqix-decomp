@@ -2,9 +2,16 @@
 
 #if defined(jpn)
 #define func_ov008_02189c70 func_ov008_0218a930
+#define LOW_REGION(j,u) (j)
+#define func_02099304 func_0209b000
+#define _Z22SetNameEntries02011818PvP11Src02011818 func_02011588
+#define _Z23CopyStringToField0x649ePcjPKc func_020117e4
+#else
+#define LOW_REGION(j,u) (u)
 #endif
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
+#include "Filesystem/FileIO.h"
 #include "Memory/SafeAllocator.h"
 #include "Grotto/Main/TreasureMapMetadata.h"
 #include "std_library_functions.h"
@@ -24,13 +31,39 @@ struct MapMeta02189c70 {
     unsigned short seed;
 };
 
+#if defined(jpn)
+struct RegularMapNames02189c70 {
+    char pad[0x3b];
+    char prefix[0x20];
+    char suffix[0x20];
+    char locale[0x20];
+    char level[8];
+};
+struct LegacyMapNames02189c70 {
+    char pad[0x90];
+    char name[0x20];
+    char suffix[0x20];
+    char level[8];
+};
 struct Detail02189c70 {
     unsigned char f0;
     unsigned char type;
-    char pad2[0xaf - 2];
-    char nameA[0x144 - 0xaf];
-    char nameB[0x1c4 - 0x144];
+    char pad2[0x4c - 2];
+    union {
+        RegularMapNames02189c70 regular;
+        LegacyMapNames02189c70 legacy;
+        char all[0x1e4 - 0x4c];
+    } names;
 };
+#else
+struct Detail02189c70 {
+    unsigned char f0;
+    unsigned char type;
+    char pad2[LOW_REGION(0x87 - 2,0xaf - 2)];
+    char nameA[LOW_REGION(0xdc - 0x87,0x144 - 0xaf)];
+    char nameB[LOW_REGION(0x1e4 - 0xdc,0x1c4 - 0x144)];
+};
+#endif
 
 struct Region02189c70 {
     unsigned char count;
@@ -106,12 +139,15 @@ struct Ent02189c70 {
 };
 
 struct Stat02189c70 {
-    char pad0[0x950];
+    char pad0[LOW_REGION(0x8b8,0x950)];
     int f950;
+#if defined(jpn)
+    int GetKind() const { return f950; }
+#endif
 };
 
 struct Member02189c70 {
-    char pad0[0x150];
+    char pad0[LOW_REGION(0x144,0x150)];
     Stat02189c70* f150;
 };
 
@@ -119,12 +155,18 @@ struct Window02189c70 {
     void* f0;
     char pad4[0x10 - 4];
     void* f10;
+#if defined(jpn)
+    char pad14[0x2c - 0x14];
+    char* text;
+    char pad30[0x218 - 0x30];
+#else
     char pad14[0x2c8 - 0x14];
+#endif
     int f2c8;
-    char pad2cc[0x998 - 0x2cc];
+    char pad2cc[LOW_REGION(0x868 - 0x21c,0x998 - 0x2cc)];
     int busy;
     int f99c;
-    char pad9a0[0x19b2 - 0x9a0];
+    char pad9a0[LOW_REGION(0x17e2 - 0x870,0x19b2 - 0x9a0)];
     unsigned char f19b2;
 };
 
@@ -141,7 +183,7 @@ struct Sub3b4c {
 };
 
 struct Res02189c70 {
-    char pad0[0x3b4c];
+    char pad0[LOW_REGION(0x392c,0x3b4c)];
     Sub3b4c* f3b4c;
     char pad3b50[0x3b84 - 0x3b50];
     Sub3b84* f3b84;
@@ -150,7 +192,7 @@ struct Res02189c70 {
 struct Self02189c70 {
     char pad0[0x250];
     SafeAllocator alloc;
-    char pad_after_alloc[0xde0 - 0x250 - sizeof(SafeAllocator)];
+    char pad_after_alloc[LOW_REGION(0xddc,0xde0) - 0x250 - sizeof(SafeAllocator)];
     void* de0;
     char pad_de4[0xdf0 - 0xde4];
     Id02189c70 id;
@@ -181,7 +223,9 @@ struct Self02189c70 {
     unsigned char e9c;
     char pad_e9d[0xeac - 0xe9d];
     int eac;
+#if !defined(jpn)
     int eb0;
+#endif
     char pad_eb4[0xeb9 - 0xeb4];
     signed char member;
     unsigned char eba;
@@ -195,6 +239,12 @@ struct Self02189c70 {
     unsigned int ec8;
 };
 
+#if defined(jpn)
+extern char data_ov008_0218c184[];
+extern char data_ov008_0218c196[];
+extern "C" void func_020474a8(Window02189c70*, int, char*, char*);
+extern "C" void func_02045d88(Window02189c70*, char*, int);
+#endif
 extern "C" void* _Z26GetGlobalField0x1c020421a0v();
 extern "C" int func_0202ae18();
 extern "C" void func_020728ac(void* table, SafeAllocator* alloc, void* data, unsigned int size, int a, int b, int c);
@@ -249,8 +299,10 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
     Region02189c70 region;
     Detail02189c70 detail5;
     Detail02189c70 detail7;
+#if !defined(jpn)
     char obj150[0xc];
     char obj144[0xc];
+#endif
 
     GameState* gs = GameState::GetInstance();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
@@ -260,6 +312,38 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
     int token = func_0202ae18();
 
     if (self->state == 0) {
+#if defined(jpn)
+        if ((self->e98 & 2) && loader->GetTaskStatus(self->eac)) {
+            void* archive;
+            void* data;
+            unsigned int archiveSize;
+            unsigned int size;
+            int failed = 0;
+            loader->GetLoadedFileByID(self->eac, &archive, &archiveSize);
+            if (!GetFileInNarc(archive, data_ov008_0218c184, (const void**)&data, &size, 0))
+                failed = 1;
+            self->alloc.Reset();
+            func_020728ac((char*)self + 0x280, &self->alloc, data, size, 0, 0, 0);
+            self->de0 = (char*)self + 0x280;
+            self->ec0_b1 = 1;
+            if (!GetFileInNarc(archive, data_ov008_0218c196, (const void**)&data, &size, 0))
+                failed = 1;
+            if (failed) {
+                loader->RemoveTask(self->eac);
+                _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((char*)self + 0x18, 1);
+                self->e99 = 2;
+                self->state = 0;
+                self->e9b = 2;
+                self->e9c = 0;
+                return;
+            }
+            self->ec4 = data;
+            self->ec8 = size;
+            _Z18ClearFlags020466f4P16FlagWord020466f4j(_Z27GetDataPtr02114e04_020d6c00v(), 0x2f);
+            _Z15ClearBitsInWordPjj(func_ov017_0218b5b0(), 0x10);
+            self->state = self->state + 1;
+        }
+#else
         if ((self->e98 & 2) && loader->GetTaskStatus(self->eac) && loader->GetTaskStatus(self->eb0)) {
             void* data;
             unsigned int size;
@@ -275,13 +359,16 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
             _Z15ClearBitsInWordPjj(func_ov017_0218b5b0(), 0x10);
             self->state = self->state + 1;
         }
+#endif
     } else if (self->state == 1) {
         Member02189c70* m = (Member02189c70*)gs->GetPartyMemberByIndex(self->member);
         Ent02189c70* ent = 0;
         int base;
         char* name;
+#if !defined(jpn)
         char clr1[0x30];
         __clear(clr1, 0x30);
+#endif
         if (self->ebc == 0) {
             if (m == 0) {
                 func_ov008_0218b240(self);
@@ -289,11 +376,19 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
             }
             ent = _Z15GetFieldAt0x150Ph(m);
             base = (signed char)m->f150->f950;
+#if defined(jpn)
+            name = (char*)self + 0xdf2;
+#else
             func_02042764((char*)self + 0xdf6, clr1, 1);
             name = clr1;
+#endif
         } else {
+#if defined(jpn)
+            name = (char*)self->ebc;
+#else
             func_02042764(self->ebc, clr1, 1);
             name = clr1;
+#endif
             base = (signed char)self->ebc->kind;
         }
         if (ent != 0 && !self->e1c_b26) {
@@ -302,8 +397,14 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
             self->e1c_f21 = fl->bit0;
             self->e20_f9 = 300;
             int key = 20700;
+#if !defined(jpn)
             if (fl->bit0 == 1) key += 50;
+#endif
+#if defined(jpn)
+            self->e20_f19 = m->f150->GetKind() + 700;
+#else
             self->e20_f19 = key - 20000 + m->f150->f950;
+#endif
             self->e24 = 0;
         }
         int mode = self->ebc != 0 ? 3 : 1;
@@ -314,12 +415,14 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
             body = _Z21GetFieldByKey020e0434P17Container020e0310i((char*)self + 0x288, (short)v);
         } else if (v < 800) {
             int key = 20700;
+#if !defined(jpn)
             if (self->e1c_b25 == 1) key += 50;
+#endif
             body = _Z14FindEntryByKeyP8TableA68i((char*)self + 0x280, (short)(base + key));
         } else {
             body = _Z14FindEntryByKeyP8TableA68i((char*)self + 0x280, (short)(v + 20000));
         }
-        func_02099304((char*)self + 0xe1c, name, self->ec4, self->ec8, buf400, 0x400, mode, title, body);
+        func_02099304((char*)self + LOW_REGION(0xe18,0xe1c), name, self->ec4, self->ec8, buf400, 0x400, mode, title, body);
         func_02046380(win);
         int found = 0;
         char* p = buf400;
@@ -333,9 +436,16 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
                 p += len;
                 _Z20SetOrClearBitInArrayPvPhii(flags, (char*)flags + 0x8c, 0x119b, 1);
             }
+#if defined(jpn)
+            unsigned char* countp;
+            Slot02189c70* slot;
+            int i;
+            countp = (unsigned char*)gs + 0x3bc + 0x6c00;
+#else
             Slot02189c70* slot;
             int i;
             unsigned char* countp = (unsigned char*)gs + 0x1fc + 0x7000;
+#endif
             slot = (Slot02189c70*)(countp + 4);
             Id02189c70 id = self->id;
             for (i = 0; i < *countp; i++, slot++) {
@@ -366,20 +476,33 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
             memset(buf100, 0, 0x100);
             if (!found) {
                 char* str = _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0x64);
+#if defined(jpn)
+                _Z22SetIndexedName02046574P11Obj02046574iPc(win, 0, name);
+                func_020474a8(win, 0xc, str, buf100);
+#else
                 _Z30InitObjFromCombatantId020e4bf4Pvi(obj144, self->member);
                 win->f10 = obj144;
                 func_02046608(win, 0xc, str, buf100, 0xe3, 0, 1);
+#endif
                 memcpy(p, buf100, strlen(buf100));
             }
         }
         if (!self->e1c_b25) win->f99c = 0; else win->f99c = 2;
         win->f19b2 = 1;
+#if defined(jpn)
+        func_02045d88(win, buf400, 0);
+#else
         func_0204500c(win, buf400, 0, 0xe3);
+#endif
         win->busy = 1;
         loader->RemoveTask(self->eac);
+#if !defined(jpn)
         loader->RemoveTask(self->eb0);
+#endif
         self->eac = -1;
+#if !defined(jpn)
         self->eb0 = -1;
+#endif
         if (self->ebc != 0) {
             if (self->ebc->active && func_0202c508(token)) {
                 self->state = 3;
@@ -395,20 +518,30 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
         if (win->busy != 0) return;
         if (func_020457e0(win) == 0) {
             memset(buf80, 0, 0x80);
-            if (*((unsigned char*)gs + 0x7000 + 0x1fc) >= 0x10) {
+            if (*((unsigned char*)gs + LOW_REGION(0x6000 + 0xfbc,0x7000 + 0x1fc)) >= 0x10) {
                 char* str = _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0x69);
                 memcpy(buf80, str, strlen(str));
                 self->ebb = 1;
             } else {
+#if defined(jpn)
+                _Z22SetIndexedName02046574P11Obj02046574iPc(win, 0, (char*)self + 0xdf2);
+                char* str = _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0x68);
+                func_020474a8(win, 0xc, str, buf80);
+#else
                 char* str = _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0x68);
                 _Z30InitObjFromCombatantId020e4bf4Pvi(obj144, self->member);
                 win->f10 = obj144;
                 func_02046608(win, 0xc, str, buf80, 0xe3, 0, 1);
+#endif
                 _Z24AllocateFreeSlot0218b1e0Pv(self);
             }
             if (!self->e1c_b25) win->f99c = 0; else win->f99c = 2;
             win->f19b2 = 1;
+#if defined(jpn)
+            func_02045d88(win, buf80, 0);
+#else
             func_0204500c(win, buf80, 0, 0xe3);
+#endif
             win->busy = 1;
         }
         self->state = 2;
@@ -430,6 +563,23 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
         func_020a3720();
         _Z29ExportDetailedTreasureMapDataPK19TreasureMapMetadataP23DetailedTreasureMapDatabPKh(&meta3, &detail3, 0, 0);
         func_020a395c();
+#if defined(jpn)
+        if (detail3.type == 1) {
+            RegularMapNames02189c70* names = &detail3.names.regular;
+            _Z22SetIndexedName02046574P11Obj02046574iPc(win, 2, names->prefix);
+            _Z22SetIndexedName02046574P11Obj02046574iPc(win, 3, names->suffix);
+            _Z22SetIndexedName02046574P11Obj02046574iPc(win, 4, _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0xc8));
+            _Z22SetIndexedName02046574P11Obj02046574iPc(win, 5, names->level);
+        } else if (detail3.type == 2) {
+            LegacyMapNames02189c70* names = &detail3.names.legacy;
+            _Z22SetIndexedName02046574P11Obj02046574iPc(win, 2, names->name);
+            _Z22SetIndexedName02046574P11Obj02046574iPc(win, 3, names->suffix);
+            _Z22SetIndexedName02046574P11Obj02046574iPc(win, 5, names->level);
+        } else {
+            self->state = 2;
+            return;
+        }
+#else
         if (detail3.type == 1) {
             _Z29CopyStringToIndexedField0x2ecPciS_(win, 2, detail3.nameA);
         } else if (detail3.type == 2) {
@@ -438,6 +588,11 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
             self->state = 2;
             return;
         }
+#endif
+#if defined(jpn)
+        _Z22SetIndexedName02046574P11Obj02046574iPc(win, 0, (char*)self->ebc);
+        _Z22SetIndexedName02046574P11Obj02046574iPc(win, 1, *(char**)((char*)gs->GetUnknownGameObject() + 0x134));
+#else
         char clr3[0x30];
         __clear(clr3, 0x30);
         func_02042764(self->ebc, clr3, 1);
@@ -445,10 +600,19 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
         _Z30InitObjFromCombatantId020e4bf4Pvi(obj150, _Z19GetField0x397cValueP9GameState(gs));
         win->f10 = obj144;
         win->f0 = obj150;
+#endif
         if (_Z25ReadBattleField0x64f4Bytev(gs) >= 0x63) {
+#if defined(jpn)
+            func_02045d88(win, _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0xc9), 0);
+#else
             func_0204500c(win, _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0xc9), 0, 0xe3);
+#endif
         } else {
+#if defined(jpn)
+            func_02045d88(win, _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0xca), 0);
+#else
             func_0204500c(win, _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0xca), 0, 0xe3);
+#endif
         }
         win->busy = 1;
         win->f19b2 = 0;
@@ -456,10 +620,22 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
     } else if (self->state == 4) {
         if (win->busy != 0) return;
         if (_Z25ReadBattleField0x64f4Bytev(gs) >= 0x63) {
+#if defined(jpn)
+            char* text = win->text;
+            char* name = *(char**)((char*)gs->GetUnknownGameObject() + 0x134);
+            sprintf(text, _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0xcb), name);
+            win->f2c8 = 1;
+            func_02045d88(win, text, 0);
+#else
             _Z30InitObjFromCombatantId020e4bf4Pvi(obj150, _Z19GetField0x397cValueP9GameState(gs));
             win->f0 = obj150;
             win->f2c8 = 1;
+#if defined(jpn)
+            func_02045d88(win, _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0xcb), 0);
+#else
             func_0204500c(win, _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0xcb), 0, 0xe3);
+#endif
+#endif
             win->busy = 1;
             win->f19b2 = 1;
             self->state = 5;
@@ -510,13 +686,30 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
         if (names.f0 == 2) names.f26 = meta5.seed;
         names.f20 = meta5.location;
         _Z22SetNameEntries02011818PvP11Src02011818(gs, &names);
+#if defined(jpn)
+        if (((TreasureMapMetadata*)&meta5)->GetMapType() == 1) {
+            RegularMapNames02189c70* names = &detail5.names.regular;
+            _Z17ClearRegion0x649ePc(gs);
+            _Z23CopyStringToField0x649ePcjPKc(gs, 0, names->prefix);
+            _Z23CopyStringToField0x649ePcjPKc(gs, 1, names->suffix);
+            _Z23CopyStringToField0x649ePcjPKc(gs, 2, _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0xc8));
+            _Z23CopyStringToField0x649ePcjPKc(gs, 3, names->level);
+        } else if (((TreasureMapMetadata*)&meta5)->GetMapType() == 2) {
+            LegacyMapNames02189c70* names = &detail5.names.legacy;
+            _Z17ClearRegion0x649ePc(gs);
+            _Z23CopyStringToField0x649ePcjPKc(gs, 0, names->name);
+            _Z23CopyStringToField0x649ePcjPKc(gs, 1, names->suffix);
+            _Z23CopyStringToField0x649ePcjPKc(gs, 3, names->level);
+        }
+#else
         if (((TreasureMapMetadata*)&meta5)->GetMapType() == 1) {
             _Z17ClearRegion0x649ePc(gs);
             _Z23CopyStringToField0x649ePcjPKc(gs, 0, detail5.nameA);
         } else if (((TreasureMapMetadata*)&meta5)->GetMapType() == 2) {
             _Z23CopyStringToField0x649ePcjPKc(gs, 0, detail5.nameB);
         }
-        *(unsigned int*)((char*)gs + 0x6474) = self->ebc->f10 >> 2;
+#endif
+        *(unsigned int*)((char*)gs + LOW_REGION(0x61f4,0x6474)) = self->ebc->f10 >> 2;
         func_ov017_021a9ff0(0);
         _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((char*)self + 0x18, 1);
         self->state = 2;
@@ -528,22 +721,45 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
     } else if (self->state == 7) {
         void* obj = gs->GetUnknownGameObject();
         if (obj != 0) _Z27CancelPendingAction020397ccP11Obj020397cci(obj, 1);
-        if (*((unsigned char*)gs + 0x6000 + 0x46e) != 0) {
+        if (*((unsigned char*)gs + LOW_REGION(0x6000 + 0x1ee,0x6000 + 0x46e)) != 0) {
             MapMeta02189c70 meta7 = self->ebc->meta;
             func_020a3720();
             _Z29ExportDetailedTreasureMapDataPK19TreasureMapMetadataP23DetailedTreasureMapDatabPKh(&meta7, &detail7, 0, 0);
             func_020a395c();
+    #if defined(jpn)
             if (detail7.type == 1) {
+            RegularMapNames02189c70* names = &detail7.names.regular;
+                _Z22SetIndexedName02046574P11Obj02046574iPc(win, 2, names->prefix);
+                _Z22SetIndexedName02046574P11Obj02046574iPc(win, 3, names->suffix);
+                _Z22SetIndexedName02046574P11Obj02046574iPc(win, 4, _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0xc8));
+                _Z22SetIndexedName02046574P11Obj02046574iPc(win, 5, names->level);
+            } else if (detail7.type == 2) {
+            LegacyMapNames02189c70* names = &detail7.names.legacy;
+                _Z22SetIndexedName02046574P11Obj02046574iPc(win, 2, names->name);
+                _Z22SetIndexedName02046574P11Obj02046574iPc(win, 3, names->suffix);
+                _Z22SetIndexedName02046574P11Obj02046574iPc(win, 5, names->level);
+            }
+#else
+        if (detail7.type == 1) {
                 _Z29CopyStringToIndexedField0x2ecPciS_(win, 2, detail7.nameA);
             } else if (detail7.type == 2) {
                 _Z29CopyStringToIndexedField0x2ecPciS_(win, 2, detail7.nameB);
             }
+#endif
+#if defined(jpn)
+            _Z22SetIndexedName02046574P11Obj02046574iPc(win, 0, (char*)self->ebc);
+#else
             char clr7[0x30];
             __clear(clr7, 0x30);
             func_02042764(self->ebc, clr7, 1);
             _Z22SetIndexedName02046574P11Obj02046574iPc(win, 0, clr7);
+#endif
             _Z22SetIndexedName02046574P11Obj02046574iPc(win, 1, *(char**)((char*)gs->GetUnknownGameObject() + 0x134));
+#if defined(jpn)
+            func_02045d88(win, _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0xca), 0);
+#else
             func_0204500c(win, _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0xca), 0, 0xe3);
+#endif
             win->busy = 1;
             win->f19b2 = 0;
             self->ebc->active = 0;

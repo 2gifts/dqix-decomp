@@ -21,10 +21,25 @@ void DispatchIfCountPositive020dcf7c(int, void*);
 char* CallFunc020e0434With02153694(int);
 void StoreInArray0x8b0(StoreStruct*, int, int);
 
+#if defined(jpn)
+extern "C" void func_020de968(int, char*);
+extern char data_020f1050;
+extern char data_020f106e;
+extern char data_020f1094;
+#endif
+
 // USA: func_0207d538
+#if defined(jpn)
+extern "C" ARM int func_0207d538(void* owner, int type, int value, char* output, unsigned char formatAmount) {
+#else
 extern "C" ARM int func_0207d538(void* owner, int type, int value, char* output) {
+#endif
     if (type == 2) {
+#if defined(jpn)
+        int amount = (short)value;
+#else
         short amount = value;
+#endif
         int result = func_0207d300(owner, amount, 1, 0);
         switch (result) {
         case -1:
@@ -35,6 +50,15 @@ extern "C" ARM int func_0207d538(void* owner, int type, int value, char* output)
         case 3:
         case 5:
         {
+#if defined(jpn)
+            if (formatAmount) {
+                char amountText[0x30] = {};
+                func_020de968(amount, amountText);
+                sprintf(output, &data_020f1050, amountText);
+            } else {
+                sprintf(output, &data_020f1050, *(char**)((char*)owner + 0x30));
+            }
+#else
             StoreStruct* formatter = GetGlobalField0x1c020421a0();
             func_02046380(formatter);
             CombatantText combatant;
@@ -50,6 +74,7 @@ extern "C" ARM int func_0207d538(void* owner, int type, int value, char* output)
             formatter->number = &number;
             char* message = CallFunc020e0434With02153694(0x54);
             func_02046608(formatter, 12, message, output, 0xe3, 0, 1);
+#endif
             break;
         }
         }
@@ -57,14 +82,22 @@ extern "C" ARM int func_0207d538(void* owner, int type, int value, char* output)
         return 1;
     } else if (type == 1) {
         func_0207d2c4(owner, value);
+#if defined(jpn)
+        sprintf(output, &data_020f106e, value);
+#else
         StoreStruct* formatter = GetGlobalField0x1c020421a0();
         func_02046380(formatter);
         StoreInArray0x8b0(formatter, 0, value);
         char* message = CallFunc020e0434With02153694(0x3f4);
         func_02046608(formatter, 12, message, output, 0xe3, 0, 1);
+#endif
         return 1;
     } else {
+#if defined(jpn)
+        sprintf(output, &data_020f1094);
+#else
         sprintf(output, CallFunc020e0434With02153694(0x2d));
+#endif
         return 0;
     }
 }

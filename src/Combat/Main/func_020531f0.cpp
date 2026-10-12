@@ -34,7 +34,11 @@ struct Obj020531f0 {
     unsigned short fieldB2;
     char padB4[0xc1 - 0xb4];
     struct EntryFlags020531f0 entryFlags;
+#if defined(jpn)
+    char padC2[0x16c - 0xc2];
+#else
     char padC2[0x178 - 0xc2];
+#endif
     signed char animEntries[4];
     signed char count;
     signed char cursor;
@@ -51,6 +55,11 @@ struct Obj020531f0 {
 
 // USA: func_020531f0
 extern "C" ARM void func_020531f0(struct Obj020531f0* obj) {
+#if defined(jpn)
+    enum { targetOffset = 0x18c, globalByteOffset = 0x17e1 };
+#else
+    enum { targetOffset = 0x198, globalByteOffset = 0x19b1 };
+#endif
     BackgroundLoader* loader;
     GameState* battleStruct;
     signed char eventBuf[4];
@@ -64,7 +73,7 @@ extern "C" ARM void func_020531f0(struct Obj020531f0* obj) {
     }
 
     if (GetIndexedEntryField0x178((signed char*)obj) == 0x19) {
-        _Z32ForwardToTargetOrDefault0205eabcPvS_i((void*)&data_02108760, (char*)obj + 0x198, 0);
+        _Z32ForwardToTargetOrDefault0205eabcPvS_i((void*)&data_02108760, (char*)obj + targetOffset, 0);
     }
 
     memset(obj->animEntries, 0, 4);
@@ -103,7 +112,7 @@ extern "C" ARM void func_020531f0(struct Obj020531f0* obj) {
         target = GetFieldIfFlag4((char*)battleStruct);
         if (target != 0) {
             if (TestFlagMask(&data_02114e30, 2) == 0
-                || ((unsigned char*)_Z26GetGlobalField0x1c020421a0v())[0x19b1] != 0) {
+                || ((unsigned char*)_Z26GetGlobalField0x1c020421a0v())[globalByteOffset] != 0) {
                 SetByte0x2c4To2IfByte0x2c5Set((unsigned char*)target);
             }
         }

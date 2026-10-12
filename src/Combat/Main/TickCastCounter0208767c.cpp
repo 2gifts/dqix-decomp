@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_0208767c func_02087f78
+#endif
 #include "Util/Random.h"
 
 int CheckField0x14FiveFlagsClear0208810c(unsigned char* obj);

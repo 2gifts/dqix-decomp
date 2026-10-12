@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define LOW_REGION(j,u) (j)
+#define func_ov000_02161bb8 func_ov000_02163324
+#else
+#define LOW_REGION(j,u) (u)
+#endif
 #include "GameState/GameState.h"
 
 struct Container02070e60;
@@ -114,13 +120,13 @@ struct Source02161380 {
 };
 
 struct Scene02161380 {
-    unsigned char pad_0[0x29c];
+    unsigned char pad_0[LOW_REGION(0x218,0x29c)];
     BattleData02161380* data;
     Roster02161380* roster;
     unsigned char pad_2a4[0xc14];
     Source02161380* sources[4];
     unsigned short field_ec8;
-    unsigned char pad_eca[0x4f5a];
+    unsigned char pad_eca[LOW_REGION(0x51ce,0x4f5a)];
     Combatant02161380 combatants[8];
     Model02161380 models[8];
 };

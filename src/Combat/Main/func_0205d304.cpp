@@ -10,7 +10,11 @@ struct ScaledElementList0204aa28;
 extern "C" void* _Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_0205d81c*, int);
 extern "C" void _Z24CopyOrClearField0204c770PcPv(char*, void*);
 void GetNibbles(struct Obj5d594*, unsigned char*, unsigned char*);
+#if defined(jpn)
+extern "C" void func_0204d790(void* self, int flag, int value, int r8, int r7, unsigned char a6);
+#else
 extern "C" void func_0204c980(void* self, int flag, int value, int r8, int r7, unsigned char a6, unsigned char a8);
+#endif
 int GetScaledElementPtr(struct ScaledElementList0204aa28*);
 extern "C" void _Z18ResetState0205bf3cP15Struct_0205bf3c(struct Struct_0205bf3c*);
 extern "C" void _Z23ApplyElemFields0205d904Ph(unsigned char*);
@@ -49,7 +53,11 @@ struct Ctx0205d304 {
 
 // USA: func_0205d304
 extern "C" ARM void func_0205d304(struct Ctx0205d304* obj, int flag, int r8arg, int r7arg,
+#if defined(jpn)
+                                       unsigned char a5, unsigned char a6, void* a7) {
+#else
                                        unsigned char a5, unsigned char a6, void* a7, unsigned char a8) {
+#endif
     struct Elem0205d304* elem;
     struct Elem0205d304* e;
     unsigned char lowA, highA, lowB, highB;
@@ -111,14 +119,22 @@ extern "C" ARM void func_0205d304(struct Ctx0205d304* obj, int flag, int r8arg, 
             if (lowA == lowB && highA == highB) {
                 e = (struct Elem0205d304*)((char*)obj->list9c + off);
                 value = e->a0 + e->a4;
+#if defined(jpn)
+                func_0204d790(elem, flag, value, r8arg, r7arg, a6);
+#else
                 func_0204c980(elem, flag, value, r8arg, r7arg, a6, a8);
+#endif
                 matched = 1;
                 break;
             }
         }
         if (!matched) {
             value = GetScaledElementPtr((struct ScaledElementList0204aa28*)elem->p4);
+#if defined(jpn)
+            func_0204d790(elem, flag, value, r8arg, r7arg, a6);
+#else
             func_0204c980(elem, flag, value, r8arg, r7arg, a6, a8);
+#endif
         }
         elem->flags &= ~0x20;
         for (i = 0; i < obj->b4; i++) {
@@ -127,7 +143,11 @@ extern "C" ARM void func_0205d304(struct Ctx0205d304* obj, int flag, int r8arg, 
         }
     } else {
         value = GetScaledElementPtr((struct ScaledElementList0204aa28*)elem->p4);
+#if defined(jpn)
+        func_0204d790(elem, flag, value, r8arg, r7arg, a6);
+#else
         func_0204c980(elem, flag, value, r8arg, r7arg, a6, a8);
+#endif
         elem->flags &= ~0x20;
     }
 

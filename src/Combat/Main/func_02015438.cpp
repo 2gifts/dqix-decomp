@@ -4,6 +4,10 @@
 #include "Resource/GameResources.h"
 #include "World/Zone3D.h"
 
+#if defined(jpn)
+#define func_02013e18 func_02013be4
+#endif
+
 struct HeadNode02046b24;
 struct EntryList0217208;
 int GetHeadNodeIdOrMinusOne(struct HeadNode02046b24** obj);
@@ -19,6 +23,11 @@ extern "C" void _Z29MaybeClearGrottoState0201bfd4v(Zone3D* self);
 
 // USA: func_02015438
 extern "C" ARM void func_02015438(Zone3D* self) {
+#if defined(jpn)
+    enum { headOffset = 0x4ec };
+#else
+    enum { headOffset = 0x6fc };
+#endif
     GameState* battle = GameState::GetInstance();
     if (*(int*)&self->unk_428[0] == 0)
         return;
@@ -42,7 +51,7 @@ extern "C" ARM void func_02015438(Zone3D* self) {
             void* actor = battle->GetProtagonist();
             if (actor != 0) {
                 if (GetHeadNodeIdOrMinusOne(
-                        *(struct HeadNode02046b24***)((char*)func_ov017_0218b5b0() + 0x3000 + 0x6fc)) != 4) {
+                        *(struct HeadNode02046b24***)((char*)func_ov017_0218b5b0() + 0x3000 + headOffset)) != 4) {
                     SetByteField0x253(actor);
                 }
             }
