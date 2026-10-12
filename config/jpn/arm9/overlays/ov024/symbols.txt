@@ -527,7 +527,7 @@ _Z13NoOp_021fc6d8v kind:function(arm,size=0x4) addr:0x021fcea4
 _Z33CheckSlotRangeAndApply13_021fc6dcPv kind:function(arm,size=0x70) addr:0x021fcea8
 func_ov024_021fc74c kind:function(arm,size=0x4) addr:0x021fcf18
 func_ov024_021fc750 kind:function(arm,size=0x4) addr:0x021fcf1c
-func_ov024_021fcf20 kind:function(arm,size=0x36c) addr:0x021fcf20
+func_ov024_021fc754 kind:function(arm,size=0x36c) addr:0x021fcf20
 _Z25IsFlagBit1024Set_021fcac0P10S_flag1024 kind:function(arm,size=0x18) addr:0x021fd28c
 func_ov024_021fcad8 kind:function(arm,size=0x4) addr:0x021fd2a4
 func_ov024_021fcadc kind:function(arm,size=0x4) addr:0x021fd2a8
@@ -725,13 +725,13 @@ data_ov024_021fef8c kind:data(any) addr:0x021ff758
 data_ov024_021fefa0 kind:data(any) addr:0x021ff76c
 data_ov024_021fefb0 kind:data(any) addr:0x021ff77c
 data_ov024_021ff78e kind:data(any) addr:0x021ff78e
-data_ov024_021ff7a2 kind:data(any) addr:0x021ff7a2
+data_ov024_021fefd6 kind:data(any) addr:0x021ff7a2
 data_ov024_021ff7b6 kind:data(any) addr:0x021ff7b6
 data_ov024_021ff7b7 kind:data(any) addr:0x021ff7b7
 data_ov024_021ff7ce kind:data(any) addr:0x021ff7ce
 data_ov024_021ff7cf kind:data(any) addr:0x021ff7cf
 data_ov024_021ff7d0 kind:data(any) addr:0x021ff7d0
-data_ov024_021ff7f2 kind:data(any) addr:0x021ff7f2
+data_ov024_021ff026 kind:data(any) addr:0x021ff7f2
 data_ov024_021ff054 kind:data(any) addr:0x021ff820
 data_ov024_021ff084 kind:data(any) addr:0x021ff850
 data_ov024_021ff0d8 kind:data(any) addr:0x021ff8a4
