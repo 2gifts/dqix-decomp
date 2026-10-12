@@ -4770,3 +4770,8 @@ src/Combat/Overlay_17/func_ov017_021cb5f8.cpp:
 src/Combat/Overlay_17/func_ov017_021d1118.cpp:
     complete
     .text start:0x021d1118 end:0x021d15b0
+
+
+src/Combat/Overlay_17/func_ov017_02193dc4.cpp:
+    complete
+    .text start:0x02193dc4 end:0x02194140
