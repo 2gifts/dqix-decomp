@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+#if defined(jpn)
+extern "C" int func_0202c814(void);
+#define SetState3AndDispatch_0202cca4 func_0202c814
+#endif
 int TrySetBattleContextField020d5aec(int);
 
 extern char data_021015a0;

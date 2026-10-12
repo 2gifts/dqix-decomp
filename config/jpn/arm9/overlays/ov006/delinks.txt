@@ -268,3 +268,19 @@ src/Combat/Overlay_6/ToggleFlagAndSync_021570fc.cpp:
 src/Combat/Overlay_6/func_ov006_0215f740.cpp:
     complete
     .text start:0x02160b08 end:0x02160bb0
+
+src/Combat/Overlay_6/func_ov006_02156e54.cpp:
+    complete
+    .text start:0x0215845c end:0x0215850c
+
+src/Combat/Overlay_6/func_ov006_0215f3d8.cpp:
+    complete
+    .text start:0x021607f8 end:0x021608fc
+
+src/Combat/Overlay_6/func_ov006_02155508.cpp:
+    complete
+    .text start:0x02156bf0 end:0x02156c98
+
+src/Combat/Overlay_6/func_ov006_02154e58.cpp:
+    complete
+    .text start:0x021565b0 end:0x02156730

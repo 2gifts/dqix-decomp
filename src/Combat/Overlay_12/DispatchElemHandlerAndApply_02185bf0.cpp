@@ -1,3 +1,10 @@
+#if defined(jpn)
+#define data_ov012_0218b088 data_ov012_0218bda8
+#define TryApplyElemFields0205d5d0 _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
 #include <globaldefs.h>
 
 #if defined(jpn)
@@ -10,7 +17,11 @@ struct Elem_0205d81c;
 extern struct Elem_0205d81c* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
 
 struct StructA0205d5d0;
+#if defined(jpn)
+extern "C" int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d);
+#else
 extern int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d, unsigned char e);
+#endif
 
 struct Entry02185bf0 { unsigned int fn; unsigned int locator; };
 extern struct Entry02185bf0 data_020e6d5c;
@@ -26,7 +37,7 @@ struct Local02185bf0 {
 
 // USA: func_ov012_02185bf0  (semantic: DispatchElemHandlerAndApply_02185bf0)
 extern "C" ARM void func_ov012_02185bf0(char* obj, int id, int flag) {
-    struct Elem_0205d81c* e = FindElementByC40205d81c((struct Struct_0205d81c*)(obj + 0xac), id);
+    struct Elem_0205d81c* e = FindElementByC40205d81c((struct Struct_0205d81c*)(obj + LOW_REGION(0x90, 0xac)), id);
     if (e == 0) return;
 
     unsigned char* c5p = (unsigned char*)e + 0xc5;
@@ -35,8 +46,8 @@ extern "C" ARM void func_ov012_02185bf0(char* obj, int id, int flag) {
 
     int useAlt = 0;
     if (c5b & 2) useAlt = 1;
-    void* dest = *(void**)(obj + 0x1000 + 0x374);
-    memset(dest, 0, 0x960);
+    void* dest = *(void**)(obj + 0x1000 + LOW_REGION(0x344, 0x374));
+    memset(dest, 0, LOW_REGION(0x800, 0x960));
 
     struct Local02185bf0 L;
     L.table = data_ov012_0218b088;
@@ -62,8 +73,12 @@ extern "C" ARM void func_ov012_02185bf0(char* obj, int id, int flag) {
         } else {
             callback = (void*)entry->fn;
         }
-        ((void(*)(void*, void*, int))callback)(base, *(void**)(obj + 0x1000 + 0x374), useAlt);
+        ((void(*)(void*, void*, int))callback)(base, *(void**)(obj + 0x1000 + LOW_REGION(0x344, 0x374)), useAlt);
     }
 
-    TryApplyElemFields0205d5d0((struct StructA0205d5d0*)(obj + 0xac), id, *(int*)(obj + 0x1000 + 0x374), 0, 0);
+#if defined(jpn)
+    TryApplyElemFields0205d5d0((struct StructA0205d5d0*)(obj + LOW_REGION(0x90, 0xac)), id, *(int*)(obj + 0x1000 + LOW_REGION(0x344, 0x374)), 0);
+#else
+    TryApplyElemFields0205d5d0((struct StructA0205d5d0*)(obj + LOW_REGION(0x90, 0xac)), id, *(int*)(obj + 0x1000 + LOW_REGION(0x344, 0x374)), 0, 0);
+#endif
 }

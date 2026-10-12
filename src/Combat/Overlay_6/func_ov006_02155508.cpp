@@ -1,8 +1,18 @@
+#if defined(jpn)
+#define func_ov006_02155508 func_ov006_02156bf0
+#endif
+
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
 #include "Filesystem/BackgroundLoader.h"
 
 struct ClearTasksAndResetFlags02155508Struct {
-    unsigned char pad0[0x1b4];
+    unsigned char pad0[LOW_REGION(0x34, 0x1b4)];
     unsigned int field1b4;
     unsigned int field1b8;
     unsigned char pad1[0x1c0 - 0x1bc];

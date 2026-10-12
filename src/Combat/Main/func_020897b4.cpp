@@ -7,6 +7,15 @@
 #include "Memory/SafeAllocator.h"
 #include "std_library_functions.h"
 
+#if defined(jpn)
+#define data_020f1019 data_020f113b
+#define data_020f102e data_020f1153
+#define _Z28SetBitsFromIndexList02083b8cPhS_j func_020844a0
+enum { LevelMaskOffset = 0x8bc, SelectedLevelOffset = 0x8b8 };
+#else
+enum { LevelMaskOffset = 0x954, SelectedLevelOffset = 0x950 };
+#endif
+
 struct StreamHeader;
 struct Ctx0209a8b4 { void* field0; };
 
@@ -66,8 +75,8 @@ extern "C" ARM void func_020897b4(unsigned char a, unsigned char b, int c, unsig
     Entry0208* ep = &entry;
     ep++;
     unsigned char* field = (unsigned char*)(int)GetFieldAt0x150((unsigned char*)combatant);
-    *(unsigned short*)(field + 0x954) |= 1 << c;
-    *(int*)(field + 0x950) = c;
+    *(unsigned short*)(field + LevelMaskOffset) |= 1 << c;
+    *(int*)(field + SelectedLevelOffset) = c;
     *(unsigned short*)(field + c * 2 + 0x16c) = b;
     *(int*)(field + c * 4 + 0x138) = (ep - 1)->dword0;
     *(unsigned short*)(field + 0x564) = (ep - 1)->high;

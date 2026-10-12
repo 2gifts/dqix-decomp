@@ -1,5 +1,10 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define CallHelperIfFlagB_021b2368 func_ov017_021b2a80
+extern "C" void CallHelperIfFlagB_021b2368(void);
+#endif
+
 struct FlagPair_021b2368 { int a; int b; };
 extern FlagPair_021b2368 data_ov017_021d83f0;
 extern "C" void func_ov011_02184760(void);

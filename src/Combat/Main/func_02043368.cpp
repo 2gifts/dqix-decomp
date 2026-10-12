@@ -7,6 +7,9 @@ struct SafeAllocator {
 
 struct BackgroundLoader {
     static BackgroundLoader* GetInstance();
+#if defined(jpn)
+    int QueueLoadFile(const char* path, SafeAllocator* alloc);
+#endif
     int QueueLoadFileInGP2(const char* gp2, const char* innerFile, SafeAllocator* alloc);
     int GetTaskStatus(int taskID);
     void GetLoadedFileByID(int taskID, void** outPtr, unsigned int* outLength);
@@ -48,7 +51,11 @@ struct LoadTable {
 };
 
 struct LoadController {
+#if defined(jpn)
+    char pad0[0x220];
+#else
     char pad0[0x2d0];
+#endif
     int taskId;
     SafeAllocator* allocator;
     struct LoadTable* table;
@@ -74,7 +81,11 @@ extern "C" ARM void func_02043368(struct LoadController* self) {
         if (grotto != 0 && grotto->unknown_0[0] != 0 && grotto->unknown_0[2] == 0) {
             return;
         }
+#if defined(jpn)
+        self->taskId = loader->QueueLoadFile(&data_020f0093, 0);
+#else
         self->taskId = loader->QueueLoadFileInGP2(&data_020f007f, &data_020f0093, 0);
+#endif
         self->state++;
         return;
     }

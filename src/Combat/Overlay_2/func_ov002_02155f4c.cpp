@@ -25,24 +25,31 @@ struct State02155f4c {
     Button02155f4c *buttons[2];
 };
 
+#if defined(jpn)
+#define func_ov002_02155f4c func_ov002_02157634
+#define REGIONAL_OFFSET(jp, us) (jp)
+#else
+#define REGIONAL_OFFSET(jp, us) (us)
+#endif
+
 // USA: func_ov002_02155f4c
 extern "C" ARM void func_ov002_02155f4c(State02155f4c *self) {
     char *base = (char *) self;
-    if (*(unsigned char *) (base + 0x1cc3) != 0) {
-        _Z29CallInitEntriesIfSet_021e76a8P17Container021e76a8((Container021e76a8 *) (base + 0x8b4));
+    if (*(unsigned char *) (base + REGIONAL_OFFSET(0x1b87, 0x1cc3)) != 0) {
+        _Z29CallInitEntriesIfSet_021e76a8P17Container021e76a8((Container021e76a8 *) (base + REGIONAL_OFFSET(0x818, 0x8b4)));
     }
-    if (*(char **) (base + 0x2468) != 0) {
-        _Z30CallDispatchIfFlagSet_021eb4f4Pc(*(char **) (base + 0x2468));
+    if (*(char **) (base + REGIONAL_OFFSET(0x2298, 0x2468)) != 0) {
+        _Z30CallDispatchIfFlagSet_021eb4f4Pc(*(char **) (base + REGIONAL_OFFSET(0x2298, 0x2468)));
     }
-    int mode = *(int *) (base + 0x1bb8);
-    if (mode != 0 && mode == 0x1e && *(int *) (base + 0x1bc0) > 4) {
-        func_ov013_02184aec(base + 0x1d70);
+    int mode = *(int *) (base + REGIONAL_OFFSET(0x1a80, 0x1bb8));
+    if (mode != 0 && mode == REGIONAL_OFFSET(0x1f, 0x1e) && *(int *) (base + REGIONAL_OFFSET(0x1a88, 0x1bc0)) > 4) {
+        func_ov013_02184aec(base + REGIONAL_OFFSET(0x1c20, 0x1d70));
     }
-    if (*(int *) (base + 0x1bb8) != 0x1e) {
-        _Z19InitEntries0205d2bcP11Obj0205d2bc((Obj0205d2bc *) (base + 0xec8));
+    if (*(int *) (base + REGIONAL_OFFSET(0x1a80, 0x1bb8)) != REGIONAL_OFFSET(0x1f, 0x1e)) {
+        _Z19InitEntries0205d2bcP11Obj0205d2bc((Obj0205d2bc *) (base + REGIONAL_OFFSET(0xe20, 0xec8)));
     }
     if (self->buttons[0] != 0) {
-        if (*(char **) (base + 0x2468) == 0) {
+        if (*(char **) (base + REGIONAL_OFFSET(0x2298, 0x2468)) == 0) {
             ColorEffect_ConfigureAlphaBlend(0x4000050, 2, 1, 10, 6);
         }
         int *panel = (int *) (self->buttons[0]->panel + 0x28);

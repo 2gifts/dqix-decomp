@@ -70,3 +70,31 @@ src/Combat/Overlay_13/SetElemFlagAndApply02186c64.cpp:
 src/Combat/Overlay_13/RefreshTagAndReinit021864f0.cpp:
     complete
     .text start:0x02187820 end:0x021878c0
+
+src/Combat/Overlay_13/RefreshTagAndReinit0218678c.cpp:
+    complete
+    .text start:0x02187ab8 end:0x02187b68
+
+src/Combat/Overlay_13/ResetCombatOverlayState021846a0.cpp:
+    complete
+    .text start:0x021856dc end:0x02185800
+
+src/Combat/Overlay_13/AdvanceOrResetTagState0218683c.cpp:
+    complete
+    .text start:0x02187b68 end:0x02187f00
+
+src/Combat/Overlay_13/ApplyElemFieldsSlot0_02186bd4.cpp:
+    complete
+    .text start:0x02187f00 end:0x02187f3c
+
+src/Combat/Overlay_13/AppendKeyedSizeTag02185900.cpp:
+    complete
+    .text start:0x02186aec end:0x02186b88
+
+src/Combat/Overlay_13/AppendCursorAndFieldNameTags02185be0.cpp:
+    complete
+    .text start:0x02186db0 end:0x02186e94
+
+src/Combat/Overlay_13/InitCombatEntry02185990.cpp:
+    complete
+    .text start:0x02186b88 end:0x02186c80

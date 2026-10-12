@@ -1,6 +1,12 @@
 #include <globaldefs.h>
 
 #if defined(jpn)
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
+
+#if defined(jpn)
 #define func_ov008_0218aee4 func_ov008_0218bb50
 #endif
 
@@ -31,7 +37,7 @@ struct Manager0218aee4 {
     char elements[0x1f4 - 0x18];
     void* renderer;
     Cursor0218aee4* cursor;
-    char pad1[0xe99 - 0x1fc];
+    char pad1[LOW_REGION(0xe95, 0xe99) - 0x1fc];
     signed char state;
 };
 
@@ -56,7 +62,7 @@ extern "C" ARM void func_ov008_0218aee4(Manager0218aee4* self) {
     cursor->cells[0].y = (y - 1) << 12;
     func_0205ac40(self->renderer, &cursor->cells[0]);
     cursor = self->cursor;
-    cursor->cells[1].x = (x + (short)(width * 8) - 8) << 12;
+    cursor->cells[1].x = LOW_REGION((x + 0x50), (x + (short)(width * 8) - 8)) << 12;
     cursor->cells[1].y = (y - 1) << 12;
     func_0205ac40(self->renderer, &cursor->cells[1]);
 }

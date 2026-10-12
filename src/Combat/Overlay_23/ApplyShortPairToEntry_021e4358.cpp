@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov023_021e4358 func_ov023_021e457c
+#endif
+
 void ComputeShortPair_021e2bdc(void* a, int unused, short* out1, short* out2);
 extern "C" void func_0205ac40(void* obj, void* entry);
 
@@ -7,9 +11,17 @@ struct Obj021e4358 {
     char pad0[0xc8];
     void* fc8;
     void* fcc;
+    #if defined(jpn)
+    char pad1[0x4e4 - 0xd0];
+#else
     char pad1[0x4e8 - 0xd0];
+#endif
     int f4e8;
+    #if defined(jpn)
+    char pad2[0x56c - 0x4e8];
+#else
     char pad2[0x634 - 0x4ec];
+#endif
     unsigned short f634;
 };
 

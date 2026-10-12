@@ -1,3 +1,9 @@
+#if defined(jpn)
+
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
 #include <globaldefs.h>
 
 #if defined(jpn)
@@ -11,7 +17,14 @@ int GetGlobalField0x1c020421a0(void);
 extern "C" void func_02046380(void* g);
 struct Obj02046574;
 void SetIndexedName02046574(struct Obj02046574* obj, int index, char* str);
+#if defined(jpn)
+struct Container020dedd0;
+struct Element020de650;
+Element020de650* FindElementByKey020dedd0(Container020dedd0*, int);
+extern "C" Container020dedd0* func_ov004_02167908(void* a1, int b);
+#else
 extern "C" int func_ov004_02167908(void* a1, int b);
+#endif
 struct StoreStruct;
 void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
 void* Clear12Bytes020e46c4(void* p);
@@ -58,7 +71,11 @@ extern "C" ARM int func_ov004_02167b78(void* a1, struct A2Struct02167b78* a2) {
         SetIndexedName02046574((struct Obj02046574*)g, 0, *(char**)((char*)c + 0x134));
     }
 
+#if defined(jpn)
+    Container020dedd0* haveX = func_ov004_02167908(a1, 5);
+#else
     int haveX = func_ov004_02167908(a1, 5);
+#endif
 
     StoreInArray0x8b0((struct StoreStruct*)g, 0, local.shortA);
     StoreInArray0x8b0((struct StoreStruct*)g, 1, local.shortB);
@@ -73,6 +90,12 @@ extern "C" ARM int func_ov004_02167b78(void* a1, struct A2Struct02167b78* a2) {
             }
         }
         if (a2 != 0) {
+#if defined(jpn)
+            Element020de650* entry = FindElementByKey020dedd0(haveX, a2->f2);
+            if (entry != 0) {
+                SetIndexedName02046574((struct Obj02046574*)g, 1, *(char**)((char*)entry + 4));
+            }
+#else
             if (data_ov004_02171024.sub != 0 && data_ov004_02171024.bufA != 0 && data_ov004_02171024.bufB != 0) {
                 Clear12Bytes020e46c4(data_ov004_02171024.sub);
                 data_ov004_02171024.sub->a = data_ov004_02171024.bufA;
@@ -82,6 +105,7 @@ extern "C" ARM int func_ov004_02167b78(void* a1, struct A2Struct02167b78* a2) {
             }
             DispatchIfCountPositive020dcf7c(a2->f2, data_ov004_02171024.sub);
             *(void**)((char*)g + 0x18) = data_ov004_02171024.sub;
+#endif
             StoreInArray0x8b0((struct StoreStruct*)g, 2, a2->f0);
         }
     }

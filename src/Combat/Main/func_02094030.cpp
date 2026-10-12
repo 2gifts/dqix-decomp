@@ -2,8 +2,16 @@
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
 
+#if defined(jpn)
+#define _Z19ClearRegion02093980Pc func_020942ac
+#endif
+
 struct CopyPayload {
+#if defined(jpn)
+    char data[0xc];
+#else
     char data[0x30];
+#endif
 };
 
 struct CopyableRecord {
@@ -15,14 +23,23 @@ struct CopyableRecord {
 
 struct Ctx02094030 {
     struct CopyableRecord records[8];
+#if defined(jpn)
+    char pad0[0x13b - 0x80];
+#else
     char pad0[0x3cb - 0x1a0];
+#endif
     signed char count;
     char pad1[0x3cd - 0x3cc];
     unsigned char flags;
 };
 
 extern "C" void _Z19ClearRegion02093980Pc(char* obj);
+#if defined(jpn)
+extern "C" void func_0209446c(struct CopyableRecord* dst, struct CopyableRecord* src);
+#define CopyRecord func_0209446c
+#else
 void CopyRecord(struct CopyableRecord* dst, struct CopyableRecord* src);
+#endif
 int ClassifyByTenThousands(int x);
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c540(void* obj);
@@ -42,7 +59,11 @@ extern "C" ARM int func_02094030(struct Ctx02094030* obj, int value, int unused2
     _Z19ClearRegion02093980Pc((char*)rec);
 
     if (combatant == 0 || value == 3) {
+#if defined(jpn)
+        char* src = base + 0x413c + slot * 0xc;
+#else
         char* src = base + 0x435c + slot * 0x30;
+#endif
         if (src[0] == 0) return 1;
         sprintf((char*)rec, src);
     } else if (combatant != 0) {

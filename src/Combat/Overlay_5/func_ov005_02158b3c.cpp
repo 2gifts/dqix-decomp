@@ -1,3 +1,9 @@
+#if defined(jpn)
+#define func_ov005_02158b3c func_ov005_0215a110
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
 #include <globaldefs.h>
 #include <std_library_functions.h>
 #include <GameState/GameState.h>
@@ -20,17 +26,17 @@ extern "C" char* _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e031
 extern "C" void func_02046608(void* a, unsigned char b, const char* c, char* d, int e, int f, unsigned char g);
 
 struct Res3000 {
-    char pad[0x708];
+    char pad[LOW_REGION(0x4f8, 0x708)];
     int* ptr708;
 };
 
 struct CombatantTail {
-    char pad[0x4fc];
+    char pad[LOW_REGION(0x4f8, 0x4fc)];
     int index;
 };
 
 struct Combatant_02158b3c {
-    char pad000_[0x150];
+    char pad000_[LOW_REGION(0x144, 0x150)];
     void* field150_;
 };
 
@@ -61,15 +67,20 @@ struct Buffers_02158b3c {
 struct Menu_02158b3c {
     char pad00_[0xdf8];
     Container020e0310* container_;
-    char pad0dfc_[0x2d90 - 0xdfc];
-    char grid_[0x3dbb - 0x2d90];
+    char pad0dfc_[LOW_REGION(0x2d08, 0x2d90) - 0xdfc];
+    char grid_[LOW_REGION(0x3d33, 0x3dbb) - LOW_REGION(0x2d08, 0x2d90)];
     signed char page_;
     unsigned char kind_;
-    char pad0dbd_[0x3dcc - 0x3dbd];
+    char pad0dbd_[LOW_REGION(0x3d44, 0x3dcc) - LOW_REGION(0x3d35, 0x3dbd)];
     unsigned int flags_;
-    char pad3dd0_[0x3dd1 - 0x3dd0];
+    char pad3dd0_[LOW_REGION(0x3d49, 0x3dd1) - LOW_REGION(0x3d48, 0x3dd0)];
     unsigned char sel_;
 };
+
+#if defined(jpn)
+extern "C" void func_020de968(int value, char* text);
+extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(void*, int, char*);
+#endif
 
 // USA: func_ov005_02158b3c
 extern "C" ARM int func_ov005_02158b3c(void* object, void* buffer) {
@@ -77,11 +88,18 @@ extern "C" ARM int func_ov005_02158b3c(void* object, void* buffer) {
     Global_02158b3c* g = (Global_02158b3c*)_Z26GetGlobalField0x1c020421a0v();
     func_02046380(g);
     GameState* game = GameState::GetInstance();
+#if defined(jpn)
+    int id = ((CombatantTail*)_Z19GetField1c_021a193cPi(((Res3000*)((char*)func_ov017_0218b5b0() + 0x3000))->ptr708))->index;
+#else
     CombatantTail* tail = (CombatantTail*)_Z19GetField1c_021a193cPi(((Res3000*)((char*)func_ov017_0218b5b0() + 0x3000))->ptr708);
     int id = tail->index;
+#endif
     Combatant_02158b3c* combatant = (Combatant_02158b3c*)GetCombatantWithFlag0x100(game, id);
     if (combatant == 0) return 0;
 
+#if defined(jpn)
+    _Z22SetIndexedName02046574P11Obj02046574iPc(g, 1, *(char**)((char*)combatant + 0x134));
+#else
     Local12_02158b3c obj;
     _Z30InitObjFromCombatantId020e4bf4Pvi(&obj, id);
     g->field10_ = &obj;
@@ -93,21 +111,36 @@ extern "C" ARM int func_ov005_02158b3c(void* object, void* buffer) {
     s.a_ = bufs.bufB_;
     s.b_ = bufs.bufA_;
 
+#endif
     Menu_02158b3c* menu = (Menu_02158b3c*)object;
     if (menu->flags_ & 0x8000) {
         unsigned char pick = _Z20GetTableByte0215a930Pvi(object, menu->kind_);
         Entry_02158b3c* e = (Entry_02158b3c*)((char*)combatant->field150_ + 0x194) + pick;
         if (e) {
             func_02046380(g);
+#if defined(jpn)
+            char name[0x40];
+            __clear(name, 0x40);
+            func_020de968(e->count_, name);
+            _Z22SetIndexedName02046574P11Obj02046574iPc(g, 0, name);
+#else
             _Z31DispatchIfCountPositive020dcf7ciPv(e->count_, &s);
             g->field18_ = &s;
+#endif
         }
         menu->flags_ &= ~0x8000;
     } else {
         signed char page = menu->page_;
-        short value = *(short*)((char*)object + 0x2d90 + page * 0x1c);
+        short value = *(short*)((char*)object + LOW_REGION(0x2d08, 0x2d90) + page * 0x1c);
+#if defined(jpn)
+        char name[0x40];
+        __clear(name, 0x40);
+        func_020de968(value, name);
+        _Z22SetIndexedName02046574P11Obj02046574iPc(g, 0, name);
+#else
         _Z31DispatchIfCountPositive020dcf7ciPv(value, &s);
         g->field18_ = &s;
+#endif
     }
 
     int w = 0xe3;
@@ -135,11 +168,13 @@ extern "C" ARM int func_ov005_02158b3c(void* object, void* buffer) {
     if (v >= 0) {
         sprintf((char*)buffer, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&menu->container_, v));
     }
+#if !defined(jpn)
     char text[0x800];
     __clear(text, 0x800);
     func_02046608(g, 10, (const char*)buffer, text, w, 0, 0);
     sprintf((char*)buffer, text);
 
+#endif
     if (v >= 0x2af8) {
         if (v <= 0x2afe) return 1;
     }

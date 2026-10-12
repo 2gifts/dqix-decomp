@@ -1,4 +1,18 @@
 #if defined(jpn)
+
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
+#if defined(jpn)
+struct GameState { static GameState* GetInstance(); };
+struct GameObject { char unknown0[0x134]; const char* name; };
+int GetField0x3acValue(GameState*);
+GameObject* GetCombatantWithFlag0x100(GameState*, int);
+int StringLength(const char*);
+#endif
+
+#if defined(jpn)
 #define func_ov008_02188730 func_ov008_02189444
 #endif
 
@@ -67,8 +81,15 @@ extern "C" {
         }
         if (menu->flags & 0x10000) {
             Overlay8SpriteEntry* entry = menu->extraEntry;
+#if defined(jpn)
+            GameState* game = GameState::GetInstance();
+            GameObject* hero = GetCombatantWithFlag0x100(game, GetField0x3acValue(game));
+            entry->x = ((StringLength(hero->name) >> 1) * 10 + 0x74) << 12;
+            entry->y = 0;
+#else
             entry->x = menu->extraX;
             entry->y = 0x4000;
+#endif
             entry->priority = 1;
             entry->palette = 0;
             entry->alpha = 0x7f;

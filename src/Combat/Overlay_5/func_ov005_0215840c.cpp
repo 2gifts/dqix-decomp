@@ -1,5 +1,17 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_0208358c func_02083e74
+#define data_ov005_0215cc0c data_ov005_0215dfec
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
+
+#if defined(jpn)
+#define func_ov005_0215840c func_ov005_02159a04
+#endif
+
 struct PartModelInfo {
     unsigned int unk_0;
     unsigned int unk_4_0 : 27;
@@ -22,7 +34,7 @@ struct PartyMemberData {
 };
 
 struct Field150Holder02052df8 {
-    char unk_0[0x150];
+    char unk_0[LOW_REGION(0x144, 0x150)];
     PartyMemberData* data_;
 };
 

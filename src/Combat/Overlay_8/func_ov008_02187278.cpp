@@ -1,3 +1,9 @@
+#if defined(jpn)
+
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
 #include <globaldefs.h>
 
 #if defined(jpn)
@@ -95,7 +101,9 @@ struct BattleRecords {
     unsigned char kind_;
     unsigned char top_;
     unsigned char closed_;
+#if !defined(jpn)
     int titleX_;
+#endif
     const void* guest_;
     GuestRecords* guestRecords_;
     void* guestTexts_;
@@ -121,6 +129,15 @@ extern "C" {
 void __clear(void* buffer, unsigned long size);
 int sprintf(char* buffer, const char* format, ...);
 }
+
+#if defined(jpn)
+struct StoreStruct;
+extern "C" void func_02046380(void*);
+extern "C" void _Z17StoreInArray0x8b0P11StoreStructii(StoreStruct*, int, int);
+extern "C" void _Z14SetByteInRangePhih(unsigned char*, int, unsigned char);
+extern "C" void _Z14SetByteAtIndexPhih(unsigned char*, int, unsigned char);
+extern "C" void func_020474a8(void*, int, const char*, char*);
+#endif
 
 // USA: func_ov008_02187278
 extern "C" ARM void func_ov008_02187278(BattleRecords* self, char* text, int index, ClearRecords* records)
@@ -163,6 +180,21 @@ extern "C" ARM void func_ov008_02187278(BattleRecords* self, char* text, int ind
     if (time == NULL)
         return;
     GameState::GetInstance();
+#if defined(jpn)
+    void* messages = _Z26GetGlobalField0x1c020421a0v();
+    char buffer[0x40];
+    __clear(buffer, sizeof(buffer));
+    func_02046380(messages);
+    _Z17StoreInArray0x8b0P11StoreStructii((StoreStruct*)messages, 0, time->hours_);
+    _Z14SetByteInRangePhih((unsigned char*)messages, 0, 4);
+    _Z14SetByteAtIndexPhih((unsigned char*)messages, 0, 1);
+    _Z17StoreInArray0x8b0P11StoreStructii((StoreStruct*)messages, 1, time->minutes_);
+    _Z14SetByteInRangePhih((unsigned char*)messages, 1, 2);
+    _Z14SetByteAtIndexPhih((unsigned char*)messages, 1, 1);
+    func_020474a8(messages, 10, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&self->texts_, 0x6e), buffer);
+    AppendPaletteTag(text, 0xe);
+    _Z20AppendString02042058PcPKc(text, buffer);
+#else
     _Z26GetGlobalField0x1c020421a0v();
     AppendPaletteTag(text, 0xe);
     AppendYTag(text, 2);
@@ -172,4 +204,5 @@ extern "C" ARM void func_ov008_02187278(BattleRecords* self, char* text, int ind
     if (format != NULL)
         sprintf(buffer, format, time->hours_, time->minutes_);
     _Z20AppendString02042058PcPKc(text, buffer);
+#endif
 }

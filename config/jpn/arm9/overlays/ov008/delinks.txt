@@ -115,6 +115,7 @@ src/Menu/Overlay_8/ListTouchSelection.cpp:
     .text start:0x021879f4 end:0x02187bc8
 
 src/Combat/Overlay_8/InitAndUpdateIfFlagged_0218946c.cpp:
+    complete
     .text start:0x0218a174 end:0x0218a1c0
 
 src/Combat/Overlay_8/func_ov008_021845ac.cpp:
@@ -178,3 +179,31 @@ src/Combat/Overlay_8/func_ov008_02188f5c.cpp:
 src/Combat/Overlay_8/ConfigureSubsystem_021889f8.cpp:
     complete
     .text start:0x0218973c end:0x02189798
+
+src/Combat/Overlay_8/func_ov008_02188d74.cpp:
+    complete
+    .text start:0x02189a9c end:0x02189c18
+
+src/Combat/Overlay_8/func_ov008_0218aee4.cpp:
+    complete
+    .text start:0x0218bb50 end:0x0218bbe0
+
+src/Combat/Overlay_8/InitConfig02187664.cpp:
+    complete
+    .text start:0x02188578 end:0x02188618
+
+src/Combat/Overlay_8/func_ov008_02184968.cpp:
+    complete
+    .text start:0x02185a64 end:0x02185b18
+
+src/Menu/Overlay_8/EntryInitialization.cpp:
+    complete
+    .text start:0x02188008 end:0x02188140
+
+src/Menu/Overlay_8/ListSpriteRefresh.cpp:
+    complete
+    .text start:0x02189444 end:0x021895b4
+
+src/Combat/Overlay_8/func_ov008_02187278.cpp:
+    complete
+    .text start:0x02188140 end:0x021882d0

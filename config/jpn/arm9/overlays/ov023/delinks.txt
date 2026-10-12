@@ -2436,3 +2436,23 @@ src/Combat/Overlay_23/GetFieldPtr24_021fad18.cpp:
 src/Combat/Overlay_23/InitEvent13_021fc408.cpp:
     complete
     .text start:0x021fb700 end:0x021fb764
+
+src/Combat/Overlay_23/CopyBytesToInts_021e31b0.cpp:
+    complete
+    .text start:0x021e3508 end:0x021e353c
+
+src/Combat/Overlay_23/SetFlagt_021e338c_021e338c.cpp:
+    complete
+    .text start:0x021e36e4 end:0x021e36f8
+
+src/Combat/Overlay_23/RunChainIfFlagSet_021e3134.cpp:
+    complete
+    .text start:0x021e348c end:0x021e34dc
+
+src/Combat/Overlay_23/ApplyShortPairToEntry_021e4358.cpp:
+    complete
+    .text start:0x021e457c end:0x021e4614
+
+src/Combat/Overlay_23/SetEntryFieldsFromShortPair_021e43f0.cpp:
+    complete
+    .text start:0x021e4614 end:0x021e46a0

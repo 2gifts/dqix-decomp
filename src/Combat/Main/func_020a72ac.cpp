@@ -3,6 +3,10 @@
 #include "Graphics/LightingManager.h"
 #include "World/Object3D.h"
 
+#if defined(jpn)
+#define _Z27FindNodeByField0x2c0201b754Pvi func_0201b4cc
+#endif
+
 struct Vec3Target020a6aa4 { int x; int y; int z; };
 struct Obj0201b600;
 struct Struct02013380;
@@ -11,7 +15,11 @@ struct PointerField32c_ffc0;
 
 struct Ctx020a72ac {
     unsigned short key;
+#if defined(jpn)
+    char pad0[0x27c4 - 2];
+#else
     char pad0[0x2784 - 2];
+#endif
     short field2784;
     unsigned short field2786;
     unsigned char flag2788;

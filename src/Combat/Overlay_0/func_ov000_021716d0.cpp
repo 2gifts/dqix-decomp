@@ -1,3 +1,9 @@
+#if defined(jpn)
+#define func_ov000_021716d0 func_ov000_021730b8
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -41,7 +47,7 @@ struct MenuEntry_021716d0 {
     MenuState_021716d0 state;
     char pad28[0x4c - 0x28];
     int memberIndex;
-    char message[0x1a4 - 0x50];
+    char message[LOW_REGION(0x1e4, 0x1a4) - 0x50];
     SpellData_021716d0* spells[1];
 };
 
@@ -52,7 +58,9 @@ int AdjustValueByFieldFlag(void* obj, unsigned int value);
 extern "C" int func_ov000_02171210(void* a, void* b);
 extern "C" int* func_ov000_02170cf8(void* obj, int id);
 extern "C" void __clear(void* dst, int size);
+#if !defined(jpn)
 extern "C" void func_020e4864(int a, char* b, int c, int d, int e, int f);
+#endif
 extern "C" void _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(const char* src, char* dst, int flag);
 
 // USA: func_ov000_021716d0
@@ -95,6 +103,9 @@ extern "C" ARM void func_ov000_021716d0(MenuEntry_021716d0* self) {
     int* entry = func_ov000_02170cf8(self, state->actionId);
     if (entry == NULL) return;
 
+#if defined(jpn)
+    _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc((struct Obj0203c108*)self->message, (char*)*entry);
+#else
     char text[0x80];
     __clear(text, 0x80);
     char upper[0x80];
@@ -102,4 +113,5 @@ extern "C" ARM void func_ov000_021716d0(MenuEntry_021716d0* self) {
     func_020e4864(*entry, text, 1, 0, 0, 0);
     _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(text, upper, 0);
     _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc((struct Obj0203c108*)self->message, upper);
+#endif
 }

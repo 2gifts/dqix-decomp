@@ -1,7 +1,11 @@
 #include <globaldefs.h>
 
 struct Obj021e31b0 {
+    #if defined(jpn)
+    char pad[0x4e4];
+#else
     char pad[0x4e8];
+#endif
     int field4e8;
     int arr4ec[4];
 };

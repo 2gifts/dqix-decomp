@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define ResetBattleScaleFieldAndDtor_021a79ac func_ov017_021a833c
+extern "C" void ResetBattleScaleFieldAndDtor_021a79ac(char* self);
+#define EmptyDestructor0205cb60 func_0205deb8
+extern "C" void EmptyDestructor0205cb60(void* obj);
+#endif
 #include "GameState/GameState.h"
 
 extern int GetGlobalField0x1c020421a0();

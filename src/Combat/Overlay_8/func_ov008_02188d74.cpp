@@ -1,7 +1,13 @@
+#if defined(jpn)
+#define func_ov008_02188d74 func_ov008_02189a9c
+#endif
+
 #include <globaldefs.h>
 
 #if defined(jpn)
-#define func_ov008_02188d74 func_ov008_02189a9c
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
 #endif
 #include "Memory/SafeAllocator.h"
 #include "Filesystem/BackgroundLoader.h"
@@ -75,7 +81,7 @@ extern "C" ARM int func_ov008_02188d74(BattleRecords* self)
         renderer->SetSprites(self->iconSprite_, 1);
         for (int i = 0; i < 1; i++)
             _Z12Init0205a198P14Struct0205a198((Struct0205a198*)&self->iconSprite_[i]);
-        self->task_ = loader->QueueLoadFile(_Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&self->texts_, 7), NULL);
+        self->task_ = loader->QueueLoadFile(_Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&self->texts_, LOW_REGION(4, 7)), NULL);
         self->loadStep_++;
     }
     if (step == 1 && loader->GetTaskStatus(self->task_))

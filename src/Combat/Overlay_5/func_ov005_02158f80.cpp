@@ -1,10 +1,17 @@
+#if defined(jpn)
+#define func_ov005_02158f80 func_ov005_0215a4c4
+#define func_ov005_02159904 func_ov005_0215ade0
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
 #include <globaldefs.h>
 
 struct EquipmentMenu {
-    char unk_0[0xee4];
-    char window_[0x3dbb - 0xee4];
+    char unk_0[LOW_REGION(0xee0, 0xee4)];
+    char window_[LOW_REGION(0x3d33, 0x3dbb) - LOW_REGION(0xee0, 0xee4)];
     signed char slot_;
-    char unk_3dbc[0x3ddc - 0x3dbc];
+    char unk_3dbc[LOW_REGION(0x3d54, 0x3ddc) - LOW_REGION(0x3d34, 0x3dbc)];
     unsigned char menuStep_;
     unsigned char menuResult_;
     signed char menuChoice_;

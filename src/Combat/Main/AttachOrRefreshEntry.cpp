@@ -1,5 +1,10 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+extern "C" void* func_020c08ec(void**, int, int);
+#define AttachOrRefreshEntry func_020c08ec
+#endif
+
 struct Outer020bec80;
 void ClearInnerField14c020bec80(struct Outer020bec80* p);
 extern "C" void func_020bf1a0(void* entry);

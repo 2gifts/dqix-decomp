@@ -232,3 +232,19 @@ src/Combat/Overlay_14/AdvanceMappedMemberIdState_02187b38.cpp:
 
 src/Combat/Overlay_14/func_ov014_02187c04.cpp:
     .text start:0x02188b08 end:0x02188cbc
+
+src/Combat/Overlay_14/func_ov014_021885bc.cpp:
+    complete
+    .text start:0x0218948c end:0x021895c8
+
+src/Combat/Overlay_14/SetSublistEntriesForId26_0218854c.cpp:
+    complete
+    .text start:0x0218942c end:0x0218948c
+
+src/Combat/Overlay_14/func_ov014_02188c34.cpp:
+    complete
+    .text start:0x02189a78 end:0x02189b50
+
+src/Combat/Overlay_14/func_ov014_02188330.cpp:
+    complete
+    .text start:0x02189234 end:0x021893ac

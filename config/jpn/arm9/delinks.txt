@@ -16822,3 +16822,71 @@ src/Combat/Main/02078998.cpp:
 src/Combat/Main/020d6f9c.cpp:
     complete
     .text start:0x020d89a4 end:0x020d8d3c
+
+src/Combat/Main/func_020a72ac.cpp:
+    complete
+    .text start:0x020a9050 end:0x020a9344
+
+src/Combat/Main/func_020897b4.cpp:
+    complete
+    .text start:0x0208a0b0 end:0x0208a2b8
+
+src/Combat/Main/func_02094030.cpp:
+    complete
+    .text start:0x02094950 end:0x02094ac4
+
+src/Combat/Main/func_02016e14.cpp:
+    complete
+    .text start:0x02016bb4 end:0x02016e38
+
+src/Combat/Main/func_02018fbc.cpp:
+    complete
+    .text start:0x02018d5c end:0x02018fb0
+
+src/Combat/Main/func_02043368.cpp:
+    complete
+    .text start:0x02043b50 end:0x02043d7c
+
+src/Combat/Main/ResetElementArray0206de40.cpp:
+    complete
+    .text start:0x0206ef94 end:0x0206f01c
+
+src/Combat/Main/InitFieldsIfHandleValid0208ad1c.cpp:
+    complete
+    .text start:0x0208b610 end:0x0208b65c
+
+src/Combat/Main/AttachOrRefreshEntry.cpp:
+    complete
+    .text start:0x020c08ec end:0x020c0978
+
+src/Combat/Main/SetState3AndDispatch_0202cca4.cpp:
+    complete
+    .text start:0x0202c814 end:0x0202c84c
+
+src/Combat/Main/ForwardInitChannelPair0205c564.cpp:
+    complete
+    .text start:0x0205d8c4 end:0x0205d8d0
+
+src/Combat/Main/func_0208358c.cpp:
+    complete
+    .text start:0x02083e74 end:0x02083fdc
+
+src/Combat/Main/func_02095578.cpp:
+    complete
+    .text start:0x020971c8 end:0x0209727c
+
+src/Combat/Main/InitializeCombatPairLayout.cpp:
+    complete
+    .text start:0x0205dfa8 end:0x0205e058
+
+src/Combat/Main/AppendSizeTag.cpp:
+    complete
+    .text start:0x02042428 end:0x0204245c
+
+src/Combat/Main/EmptyDestructor0205cb60.cpp:
+    complete
+    .text start:0x0205deb8 end:0x0205debc
+
+src/Combat/Main/BlankFunction0208be90.cpp:
+    complete
+    .text start:0x0208c768 end:0x0208c76c

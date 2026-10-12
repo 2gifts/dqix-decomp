@@ -18,10 +18,18 @@ struct State02016e14 { short unk0; short val2; short unk4; unsigned short flags6
 struct Context02016e14 {
     char pad0[0x8];
     struct Bits02016e14* info8;
+#if defined(jpn)
+    char pad1[0x852 - 0xc];
+#else
     char pad1[0x832 - 0xc];
+#endif
     unsigned char visible832;
     unsigned char visible833;
+#if defined(jpn)
+    char pad2[0x281c - 0x854];
+#else
     char pad2[0x27dc - 0x834];
+#endif
     struct Pair02016e14 pairs[0x20];
     unsigned char count;
 };

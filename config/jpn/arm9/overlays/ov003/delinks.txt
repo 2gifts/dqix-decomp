@@ -1509,3 +1509,11 @@ src/Combat/Overlay_3/SetFlag2At_021685cc.cpp:
 src/Combat/Overlay_3/SetElementFlagIfValid_0217451c.cpp:
     complete
     .text start:0x0217365c end:0x02173690
+
+src/Combat/Overlay_3/RefreshPaletteIfFlagSet_02174890.cpp:
+    complete
+    .text start:0x021739b8 end:0x021739e8
+
+src/Combat/Overlay_3/LoopCallOv017_02172518.cpp:
+    complete
+    .text start:0x021714f0 end:0x0217153c

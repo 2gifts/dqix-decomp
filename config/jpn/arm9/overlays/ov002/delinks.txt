@@ -155,3 +155,7 @@ src/Combat/Overlay_2/GetInventoryItemByID.cpp:
 src/Combat/Overlay_2/SetFieldC7bAndSyncFlags_0216c28c.cpp:
     complete
     .text start:0x0216c8dc end:0x0216c928
+
+src/Combat/Overlay_2/func_ov002_02155f4c.cpp:
+    complete
+    .text start:0x02157634 end:0x02157764

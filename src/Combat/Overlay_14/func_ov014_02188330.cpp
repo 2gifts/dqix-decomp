@@ -1,3 +1,9 @@
+#if defined(jpn)
+#define data_ov014_021894cc data_ov014_0218a30c
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
 #include <globaldefs.h>
 
 #if defined(jpn)
@@ -84,7 +90,9 @@ extern "C" int _Z24SetEntryFlagById02080b2cPvi(void* obj, int id);
 void SetEntryFlag0x2ByShortId(StatusOwner02081164* owner, int id, int enable);
 
 extern "C" {
+#if !defined(jpn)
 void func_020806d8(Menu* menu, int, int, int, int);
+#endif
 void func_020813ec(Menu* menu, short group);
 }
 
@@ -98,7 +106,9 @@ extern "C" ARM void func_ov014_02188330(MonsterListScreen* self)
         hidden = 1;
     if (self->listState_ == 3)
         hidden = 2;
+#if !defined(jpn)
     func_020806d8(self->menu_, 0, 2, 1, 4);
+#endif
     ClearSublistEntriesFlag1(self->menu_, 0);
     if (self->family_ >= 0)
         SetEntryHalfword0xe(self->menu_, 0x2f, (short)(self->family_ + 0x1e));

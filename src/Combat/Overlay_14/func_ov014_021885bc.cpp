@@ -1,11 +1,23 @@
-#include <globaldefs.h>
-
 #if defined(jpn)
 #define func_ov014_021885bc func_ov014_0218948c
 #endif
 
+#include <globaldefs.h>
+
+#if defined(jpn)
+#define ClearSublistEntriesFlag2 func_02081184
+#define _Z29AddSublistEntryFlag2_020806b0Pvi func_020811d8
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
+
 void ClearSublistEntriesFlag1(void* obj, int id);
+#if defined(jpn)
+extern "C" void ClearSublistEntriesFlag2(void* obj, int id);
+#else
 void ClearSublistEntriesFlag2(void* obj, int id);
+#endif
 struct Container02080f8c;
 extern "C" void _Z26SetEntryFirstField02080f8cP17Container02080f8cii(struct Container02080f8c* obj, int id, int value);
 struct Container02080fa8;
@@ -34,7 +46,7 @@ struct SubEntry021885bc {
 extern "C" ARM void func_ov014_021885bc(void* self) {
     void* list = *(void**)((char*)self + 0xc0);
     short val = *(short*)((char*)self + 0x176);
-    *(short*)((char*)list + 0x36) = val;
+    *(short*)((char*)list + LOW_REGION(0x2a, 0x36)) = val;
     ClearSublistEntriesFlag1(list, 5);
     ClearSublistEntriesFlag2(list, 5);
 

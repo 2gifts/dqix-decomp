@@ -1,7 +1,13 @@
+#if defined(jpn)
+#define func_ov013_021846a0 func_ov013_021856dc
+#endif
+
 #include <globaldefs.h>
 
 #if defined(jpn)
-#define func_ov013_021846a0 func_ov013_021856dc
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
 #endif
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
@@ -32,42 +38,42 @@ extern "C" ARM void func_ov013_021846a0(void* obj) {
     unsigned char* o = (unsigned char*)obj;
 
     int data4 = (int)BackgroundLoader::GetInstance();
-    if (*(int*)(o + 0x650) >= 0) {
-        ((BackgroundLoader*)(data4))->RemoveTask((int)(*(int*)(o + 0x650)));
-        *(int*)(o + 0x650) = -1;
+    if (*(int*)(o + LOW_REGION(0x5d8, 0x650)) >= 0) {
+        ((BackgroundLoader*)(data4))->RemoveTask((int)(*(int*)(o + LOW_REGION(0x5d8, 0x650))));
+        *(int*)(o + LOW_REGION(0x5d8, 0x650)) = -1;
     }
 
-    ((unsigned char*)GetGlobalField0x1c020421a0())[0x1000 + 0x9be] = 0;
+    ((unsigned char*)GetGlobalField0x1c020421a0())[0x1000 + LOW_REGION(0x7ee, 0x9be)] = 0;
 
-    if (o[0x640]) {
-        ClearFlag0x11IfSet((struct Struct02074bf4*)(o + 0x20));
-        ResetEntryList0205d6a0((struct Entry_0205d6a0*)(o + 0x38), 1);
-        ClearBuffers0204b010OverList0x98((struct Cont0205d1e0*)(o + 0x38));
-        CallFunc0204b04cOverList0x98((struct Cont0205d274*)(o + 0x38));
-        InitEntries0205d2bc((struct Obj0205d2bc*)(o + 0x38));
+    if (o[LOW_REGION(0x5cc, 0x640)]) {
+        ClearFlag0x11IfSet((struct Struct02074bf4*)(o + LOW_REGION(0x1e, 0x20)));
+        ResetEntryList0205d6a0((struct Entry_0205d6a0*)(o + LOW_REGION(0x34, 0x38)), 1);
+        ClearBuffers0204b010OverList0x98((struct Cont0205d1e0*)(o + LOW_REGION(0x34, 0x38)));
+        CallFunc0204b04cOverList0x98((struct Cont0205d274*)(o + LOW_REGION(0x34, 0x38)));
+        InitEntries0205d2bc((struct Obj0205d2bc*)(o + LOW_REGION(0x34, 0x38)));
     } else {
-        ClearFlag0x10IfSet((struct Struct02074bd0*)(o + 0x20));
-        ClearBuffers0204b010OverList0x98((struct Cont0205d1e0*)(o + 0x38));
-        CallFunc0204b04cOverList0x98((struct Cont0205d274*)(o + 0x38));
-        InitEntries0205d2bc((struct Obj0205d2bc*)(o + 0x38));
-        func_0205d048((void*)(o + 0x38));
+        ClearFlag0x10IfSet((struct Struct02074bd0*)(o + LOW_REGION(0x1e, 0x20)));
+        ClearBuffers0204b010OverList0x98((struct Cont0205d1e0*)(o + LOW_REGION(0x34, 0x38)));
+        CallFunc0204b04cOverList0x98((struct Cont0205d274*)(o + LOW_REGION(0x34, 0x38)));
+        InitEntries0205d2bc((struct Obj0205d2bc*)(o + LOW_REGION(0x34, 0x38)));
+        func_0205d048((void*)(o + LOW_REGION(0x34, 0x38)));
 
-        if (*(void**)(o + 0x654)) {
-            memset(*(void**)(o + 0x654), 0, 0x20);
-            CleanInvalidateCacheRange(*(void**)(o + 0x654), 0x20);
-            LoadToMainBG1CharacterData((int)*(void**)(o + 0x654), 0, 0x20);
+        if (*(void**)(o + LOW_REGION(0x5dc, 0x654))) {
+            memset(*(void**)(o + LOW_REGION(0x5dc, 0x654)), 0, 0x20);
+            CleanInvalidateCacheRange(*(void**)(o + LOW_REGION(0x5dc, 0x654)), 0x20);
+            LoadToMainBG1CharacterData((int)*(void**)(o + LOW_REGION(0x5dc, 0x654)), 0, 0x20);
         }
 
         volatile unsigned int* reg = (volatile unsigned int*)0x4000000;
-        *reg = (*reg & ~0x1f00) | (*(int*)(o + 0x34) << 8);
+        *reg = (*reg & ~0x1f00) | (*(int*)(o + LOW_REGION(0x30, 0x34)) << 8);
     }
 
-    if (((SafeAllocator*)(o + 0x60c))->GetSignedAllocator()) {
-        ((SafeAllocator*)(o + 0x60c))->Destroy();
+    if (((SafeAllocator*)(o + LOW_REGION(0x598, 0x60c)))->GetSignedAllocator()) {
+        ((SafeAllocator*)(o + LOW_REGION(0x598, 0x60c)))->Destroy();
     }
     if (((SafeAllocator*)o)->GetSignedAllocator()) {
         ((SafeAllocator*)o)->Destroy();
     }
 
-    o[0x63c] = 6;
+    o[LOW_REGION(0x5c8, 0x63c)] = 6;
 }

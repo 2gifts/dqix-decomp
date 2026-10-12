@@ -6152,3 +6152,95 @@ src/Combat/Overlay_31/02211678.cpp:
 src/Combat/Overlay_31/0222a6c4.cpp:
     complete
     .text start:0x0222aea4 end:0x0222af74
+
+src/Combat/Overlay_31/CallStubsThenSetHandler_02234a08.cpp:
+    complete
+    .text start:0x022351e8 end:0x0223521c
+
+src/Combat/Overlay_31/SetField_022274c0_022274c0_02234a3c.cpp:
+    complete
+    .text start:0x0223521c end:0x02235248
+
+src/Combat/Overlay_31/SetupStubPairThenDispatch_02231cb4.cpp:
+    complete
+    .text start:0x02232494 end:0x022324e8
+
+src/Combat/Overlay_31/func_ov031_02231d08.cpp:
+    complete
+    .text start:0x022324e8 end:0x02232528
+
+src/Combat/Overlay_31/CallStubsThenSetHandler_02229a74.cpp:
+    complete
+    .text start:0x0222a254 end:0x0222a288
+
+src/Combat/Overlay_31/SetField_022274c0_022274c0_02229aa8.cpp:
+    complete
+    .text start:0x0222a288 end:0x0222a2b4
+
+src/Combat/Overlay_31/RunSetupAndSetHandler_0222a288.cpp:
+    complete
+    .text start:0x0222aa68 end:0x0222aaa4
+
+src/Combat/Overlay_31/GetTotalPoolSize_02211410.cpp:
+    complete
+    .text start:0x02211bf0 end:0x02211c20
+
+src/Combat/Overlay_31/WaitForBattleDefaultThenFree_022357b4.cpp:
+    complete
+    .text start:0x02235f94 end:0x02235fc8
+
+src/Combat/Overlay_31/func_ov031_02223b1c.cpp:
+    complete
+    .text start:0x022242fc end:0x02224340
+
+src/Combat/Overlay_31/RunChecksAndSetHandler_0222b010.cpp:
+    complete
+    .text start:0x0222b7f0 end:0x0222b82c
+
+src/Combat/Overlay_31/CheckField16AndArm_0222b04c.cpp:
+    complete
+    .text start:0x0222b82c end:0x0222b874
+
+src/Combat/Overlay_31/SetField_022274c0_022274c0_0222a328.cpp:
+    complete
+    .text start:0x0222ab08 end:0x0222ab3c
+
+src/Combat/Overlay_31/func_ov031_022231f0.cpp:
+    complete
+    .text start:0x022239d0 end:0x02223a48
+
+src/Combat/Overlay_31/func_ov031_02234aa4.cpp:
+    complete
+    .text start:0x02235284 end:0x022352bc
+
+src/Combat/Overlay_31/IsKeyInputBit15Set_022348ac.cpp:
+    complete
+    .text start:0x0223508c end:0x022350ac
+
+src/Combat/Overlay_31/CopyPaletteBufferAndNotify_0223508c.cpp:
+    complete
+    .text start:0x0223586c end:0x0223589c
+
+src/Combat/Overlay_31/func_ov031_02234de4.cpp:
+    complete
+    .text start:0x022355c4 end:0x02235620
+
+src/Combat/Overlay_31/SetField_022274c0_022274c0_02234e40.cpp:
+    complete
+    .text start:0x02235620 end:0x02235688
+
+src/Combat/Overlay_31/func_ov031_0222855c.cpp:
+    complete
+    .text start:0x02228d3c end:0x02228d7c
+
+src/Combat/Overlay_31/func_ov031_02239130.cpp:
+    complete
+    .text start:0x02239910 end:0x02239968
+
+src/Combat/Overlay_31/SetField_022274c0_022274c0_0222a848.cpp:
+    complete
+    .text start:0x0222b028 end:0x0222b04c
+
+src/Combat/Overlay_31/func_ov031_022368bc.cpp:
+    complete
+    .text start:0x0223709c end:0x022370c0

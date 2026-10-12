@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+#if defined(jpn)
+extern "C" void func_0208b610(void* obj);
+#define InitFieldsIfHandleValid0208ad1c func_0208b610
+#endif
 void SetColoredEffectParam02070950(struct EffectParam02070950*, struct Rgb02070950*, int, int, int);
 
 extern "C" void* func_020704fc(void*);

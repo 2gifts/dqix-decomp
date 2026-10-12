@@ -1,3 +1,17 @@
+#if defined(jpn)
+#define data_ov015_0219432e data_ov015_02194eb1
+#define data_ov015_02194338 data_ov015_02194eba
+#define data_ov015_02194342 data_ov015_02194eca
+#define data_ov015_0219434b data_ov015_02194ed1
+#define data_ov015_0219435a data_ov015_02194ee2
+#define data_ov015_02194369 data_ov015_02194ef3
+#define data_ov015_02194378 data_ov015_02194f06
+#define data_ov015_02194387 data_ov015_02194f19
+#define data_ov015_02194396 data_ov015_02194f28
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
 #include <globaldefs.h>
 
 #if defined(jpn)
@@ -43,6 +57,10 @@ extern char data_ov015_02194378[];
 extern char data_ov015_02194387[];
 extern char data_ov015_02194396[];
 
+#if defined(jpn)
+extern char data_ov015_02194ec3[];
+#endif
+
 // USA: func_ov015_02191f04
 extern "C" ARM void func_ov015_02191f04(S02190c2c* self)
 {
@@ -61,6 +79,11 @@ extern "C" ARM void func_ov015_02191f04(S02190c2c* self)
     }
     case 1:
         self->floor_ = self->floor_ == 0;
+#if defined(jpn)
+        if (self->floor_)
+            func_020294cc(item, data_ov015_02194ec3);
+        else
+#endif
         func_020294cc(item, data_ov015_02194342);
         break;
     case 2:

@@ -3,6 +3,16 @@
 #if defined(jpn)
 #define func_ov005_021562b8 func_ov005_021578a8
 #endif
+
+#if defined(jpn)
+#define func_ov005_02156658 func_ov005_02157c48
+#define func_ov005_021567ac func_ov005_02157d9c
+#define func_ov005_0215690c func_ov005_02157efc
+#define func_ov005_02156e1c func_ov005_0215840c
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
 #include "World/ZoneLootableRecord.h"
 #include <GameState/GameState.h>
 
@@ -20,9 +30,9 @@ struct TouchState {
 };
 
 struct MemberScreen {
-    char unk_0[0x4fc];
+    char unk_0[LOW_REGION(0x4f8, 0x4fc)];
     int member_;
-    char unk_500[0x634 - 0x500];
+    char unk_500[LOW_REGION(0x56c - 0x4fc, 0x634 - 0x500)];
     unsigned short flags_;
 };
 
@@ -39,7 +49,7 @@ struct EquipmentSlot {
 };
 
 struct EquipmentMenu {
-    char unk_0[0x2d90];
+    char unk_0[LOW_REGION(0x2d08, 0x2d90)];
     EquipmentSlot slots_[24];
     char slotModels_[0x3cf0 - 0x3030];
     char dragModel_[0x88];

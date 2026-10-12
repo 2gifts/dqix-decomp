@@ -3976,3 +3976,93 @@ src/Combat/Overlay_17/ResetBattleScaleField_021bf360.cpp:
 src/Combat/Overlay_17/ResetBattleScaleField_021c1dfc.cpp:
     complete
     .text start:0x021c2370 end:0x021c23a8
+
+
+src/Combat/Overlay_17/FindNegativeEntry_021a11b4.cpp:
+    complete
+    .text start:0x021a1c4c end:0x021a1c8c
+
+src/Combat/Overlay_17/CallField6acPtrProcessSlot_021b8420.cpp:
+    complete
+    .text start:0x021b8930 end:0x021b8948
+
+src/Combat/Overlay_17/CallField6acPtrB_021b8450.cpp:
+    complete
+    .text start:0x021b8960 end:0x021b8978
+
+src/Combat/Overlay_17/CallField20PtrB_021bae98.cpp:
+    complete
+    .text start:0x021bb490 end:0x021bb4a8
+
+src/Combat/Overlay_17/CallIfField24_021b6b74.cpp:
+    complete
+    .text start:0x021b7124 end:0x021b713c
+
+src/Combat/Overlay_17/ClearGlobalField_021adc44_021adc44.cpp:
+    complete
+    .text start:0x021ae44c end:0x021ae460
+
+src/Combat/Overlay_17/ResetAndForwardCount2_021acd00.cpp:
+    complete
+    .text start:0x021ad538 end:0x021ad55c
+
+src/Combat/Overlay_17/CallField700ThenNotify_021afabc.cpp:
+    complete
+    .text start:0x021b01d0 end:0x021b01fc
+
+
+src/Combat/Overlay_17/DecrementClampCounter354_021a4e48.cpp:
+    complete
+    .text start:0x021a58bc end:0x021a58e4
+
+src/Combat/Overlay_17/GetMaxFieldPlus1_02192548_02192548.cpp:
+    complete
+    .text start:0x02193110 end:0x0219315c
+
+src/Combat/Overlay_17/RunBattleScaleStepAndFinalize_021a9638.cpp:
+    complete
+    .text start:0x021a9e0c end:0x021a9e44
+
+src/Combat/Overlay_17/ComputeAndCall_021a1178.cpp:
+    complete
+    .text start:0x021a1c10 end:0x021a1c4c
+
+src/Combat/Overlay_17/ResetBattleScaleFieldAndDtor_021a925c.cpp:
+    complete
+    .text start:0x021a9a40 end:0x021a9a84
+
+src/Combat/Overlay_17/ResetBattleScaleFieldAndDtor_021a79ac.cpp:
+    complete
+    .text start:0x021a833c end:0x021a8380
+
+src/Combat/Overlay_17/CallHelperIfFlagB_021b2368.cpp:
+    complete
+    .text start:0x021b2a80 end:0x021b2aa0
+
+src/Combat/Overlay_17/ResetAndForward_021aaec8.cpp:
+    complete
+    .text start:0x021ab728 end:0x021ab768
+
+src/Combat/Overlay_17/CallHelperIfFlag_021b2f2c.cpp:
+    complete
+    .text start:0x021b363c end:0x021b365c
+
+src/Combat/Overlay_17/CallIfGlobalPtrSet_021a5954.cpp:
+    complete
+    .text start:0x021a638c end:0x021a63ac
+
+src/Combat/Overlay_17/CallIfField1c_021c1220.cpp:
+    complete
+    .text start:0x021c17c8 end:0x021c17e0
+
+src/Combat/Overlay_17/CallIfField20_021a99b0.cpp:
+    complete
+    .text start:0x021aa184 end:0x021aa19c
+
+src/Combat/Overlay_17/ForwardTeardownB_021b9928.cpp:
+    complete
+    .text start:0x021b9e24 end:0x021b9e48
+
+src/Combat/Overlay_17/func_ov017_0218d06c.cpp:
+    complete
+    .text start:0x0218dc4c end:0x0218dccc

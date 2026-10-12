@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+#if defined(jpn)
+
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
+
 
 #if defined(jpn)
 #define func_ov004_02159bcc func_ov004_0215ac28
@@ -22,6 +29,7 @@ extern "C" void func_ov011_021848a0(void* obj, int val);
 
 // USA: func_ov004_02159bcc  (semantic: SetupCombatMessageAndDispatch_02159bcc)
 extern "C" ARM int func_ov004_02159bcc(void* obj) {
+#if !defined(jpn)
     struct Container020dedd0* node = func_ov004_02156fd4(obj, 5);
     if (node == NULL) return 0;
     struct Element020de650* elem = FindElementByKey020dedd0(node, *(short*)(data_ov004_021707d8.ptr + 0xe));
@@ -29,6 +37,7 @@ extern "C" ARM int func_ov004_02159bcc(void* obj) {
     int val = CallFunc020e52a0(data_ov004_021707d8.ptr + 0x8c, *(short*)((char*)elem + 0x18));
     *(int*)((char*)(int)GetGlobalField0x1c020421a0() + 0x18) = val;
     data_ov004_021707d8.ptr[0x12] = (char)0xff;
+#endif
     if (*(unsigned char*)(data_ov004_021707d8.ptr + 0x47) == 0) {
         void* node2 = func_ov004_02156fd4(obj, 5);
         if (node2 != NULL) {
@@ -42,7 +51,7 @@ extern "C" ARM int func_ov004_02159bcc(void* obj) {
             InitStruct0207cc0c(buf);
         }
         func_ov011_021848a0(obj, 0x38c);
-        data_ov004_021707d8.ptr[0x9d] = 0;
+        data_ov004_021707d8.ptr[LOW_REGION(0xa9, 0x9d)] = 0;
         return 0;
     }
     func_ov011_021848a0(obj, 0x2379);

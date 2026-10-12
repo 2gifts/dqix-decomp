@@ -1,5 +1,10 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define ResetAndForward_021aaec8 func_ov017_021ab728
+extern "C" void ResetAndForward_021aaec8(char* p);
+#endif
+
 struct Cont0207fd88;
 void CallFunc0204b088OverList0x2c(struct Cont0207fd88* obj);
 int GetGlobalField0x1c020421a0(void);

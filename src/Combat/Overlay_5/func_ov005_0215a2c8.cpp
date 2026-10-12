@@ -1,11 +1,17 @@
-#include <globaldefs.h>
-
 #if defined(jpn)
 #define func_ov005_0215a2c8 func_ov005_0215b81c
 #endif
 
+#include <globaldefs.h>
+
+#if defined(jpn)
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
+
 struct EquipmentMenu {
-    char unk_0[0x3dbc];
+    char unk_0[LOW_REGION(0x3d34, 0x3dbc)];
     unsigned char kind_;
     char unk_3dbd[0x3dcc - 0x3dbd];
     unsigned int flags_;
@@ -14,7 +20,7 @@ struct EquipmentMenu {
 };
 
 struct MenuContext {
-    char unk_0[0x3708];
+    char unk_0[LOW_REGION(0x34f8, 0x3708)];
     int* unknown_ptr_3708;
 };
 
