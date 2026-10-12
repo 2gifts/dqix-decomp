@@ -1940,3 +1940,15 @@ src/Combat/Overlay_3/func_ov003_0216f474.cpp:
 src/Combat/Overlay_3/func_ov003_02171fe8.cpp:
     complete
     .text start:0x02171fe8 end:0x02172518
+
+src/Combat/Overlay_3/func_ov003_02172a14.cpp:
+    complete
+    .text start:0x02172a14 end:0x02172e84
+
+src/Combat/Overlay_3/func_ov003_02174114.cpp:
+    complete
+    .text start:0x02174114 end:0x02174408
+
+src/Combat/Overlay_3/func_ov003_02175504.cpp:
+    complete
+    .text start:0x02175504 end:0x0217577c
