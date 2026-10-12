@@ -26,7 +26,6 @@ struct Header020956b8 {
     int f0a0;
 };
 
-// SCRATCH-USA: func_020956b8
 // USA: func_020956b8
 extern "C" ARM void func_020956b8(struct Header020956b8* header, int param1) {
     unsigned int fileSize;
