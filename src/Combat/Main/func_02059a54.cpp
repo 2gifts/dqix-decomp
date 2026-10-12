@@ -32,10 +32,7 @@ extern "C" void func_020ca528(void*, const void*);
 extern "C" void NSBXX_Model_SetPolygonID(void*, int);
 extern int data_0210a0cc;
 extern Vector3fix data_020e7da4;
-static inline NSBXXInternalModel* GetEffectModel(Effect02059a54* effect) {
-    NSBXXInternalModel* model = effect->object.pModel_->rawInternalModel_;
-    return model;
-}
+static inline NSBXXInternalModel* GetEffectModel(Effect02059a54* effect) { return effect->object.pModel_->rawInternalModel_; }
 
 // USA: func_02059a54
 extern "C" ARM void func_02059a54(Effect02059a54* self) {

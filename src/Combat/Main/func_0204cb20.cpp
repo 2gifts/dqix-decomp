@@ -5,7 +5,7 @@ struct WindowReference0204cb20 {
     char pad0[0x1c];
     unsigned char low : 4;
     unsigned char high : 4;
-    inline int GetHigh() { int value = high; return value; }
+    inline int GetHigh() { return high; }
 };
 struct Window0204cb20 {
     int field0;

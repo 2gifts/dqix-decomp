@@ -26,10 +26,7 @@ struct CombatantCondition021e49a4 {
     unsigned int field_0;
     unsigned short value;
 };
-static inline int ConditionValue021e49a4(CombatantCondition021e49a4* condition) {
-    int value = condition->value;
-    return value;
-}
+static inline int ConditionValue021e49a4(CombatantCondition021e49a4* condition) { return condition->value; }
 struct CombatantData021e49a4 {
     unsigned char padding_0[0x49c];
     unsigned char selector : 1;

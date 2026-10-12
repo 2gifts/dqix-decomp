@@ -32,7 +32,7 @@ void SetFieldThenTailCallOffset20_021fbdf4(Obj021fbdf4*, unsigned char);
 typedef void (*ActionSetter)(Obj021fbdf4*, int);
 extern "C" int func_ov004_02157a28(void*, int);
 
-static inline ActionExtension* GetActions(CombatantActions* combatant) { ActionExtension* extension = combatant->extension; return extension; }
+static inline ActionExtension* GetActions(CombatantActions* combatant) { return combatant->extension; }
 
 // USA: func_ov004_02159fcc
 extern "C" ARM int func_ov004_02159fcc(void* obj) {

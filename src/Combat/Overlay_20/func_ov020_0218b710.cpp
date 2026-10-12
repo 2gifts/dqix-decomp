@@ -191,15 +191,9 @@ struct Sequence0218b710 {
     int fadeTimer;
 };
 
-static inline int IsTimerActive(Sequence0218b710* self) {
-    int active = self->timer > 0;
-    return active;
-}
+static inline int IsTimerActive(Sequence0218b710* self) { return self->timer > 0; }
 
-static inline int IsFadeActive(Sequence0218b710* self) {
-    int active = self->fadeTimer > 0;
-    return active;
-}
+static inline int IsFadeActive(Sequence0218b710* self) { return self->fadeTimer > 0; }
 
 #define START_FADE(self, target, frames)                                               \
     UpdateFieldGroup4e8_0218d7ac((FieldGroup4e8_0218d7ac*)(self), (target), (frames)); \

@@ -23,7 +23,7 @@ struct Code021da670 {unsigned int value:12;unsigned int rest:20;};
 struct Params021da670 {char pad[4];Code021da670 code;};
 struct Bits021da670 {unsigned short low:2;unsigned short kind:4;unsigned short middle:6;unsigned short state:2;unsigned short upper:2;};
 struct Stats021da670 {char pad[0x22];Bits021da670 flags;};
-static inline unsigned char GetState(Stats021da670* stats){unsigned char value=stats->flags.state;return value;}
+static inline unsigned char GetState(Stats021da670* stats){ return stats->flags.state; }
 // USA: func_ov024_021da670
 extern "C" ARM void* func_ov024_021da670(Obj021da670* obj,int sourceID,int id,Params021da670* params){
     GameObject* c=GetCombatantByID((int)obj->context,id);

@@ -7,10 +7,7 @@ extern unsigned short data_ov024_021fec54[4];
 
 struct Ctx_021f418c { int battle; };
 
-static inline int BaseDefense_021f418c(BaseCombatStats* stats) {
-    int defense = stats->primaryStats.defense;
-    return defense;
-}
+static inline int BaseDefense_021f418c(BaseCombatStats* stats) { return stats->primaryStats.defense; }
 
 // USA: func_ov024_021f418c
 extern "C" ARM int func_ov024_021f418c(Ctx_021f418c* ctx, unsigned char id,

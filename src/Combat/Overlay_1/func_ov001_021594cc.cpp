@@ -12,10 +12,7 @@ struct RotationState021594cc {
     Vector3fix velocity;
 };
 
-inline int MultiplyRotation(int velocity, int tick) {
-    int result = (int)(((long long)velocity * tick + 0x800) >> 12);
-    return result;
-}
+inline int MultiplyRotation(int velocity, int tick) { return (int)(((long long)velocity * tick + 0x800) >> 12); }
 
 // USA: func_ov001_021594cc
 extern "C" ARM int func_ov001_021594cc(RotationRequest021594cc* request, RotationState021594cc* state) {
@@ -77,4 +74,3 @@ extern "C" ARM int func_ov001_021594cc(RotationRequest021594cc* request, Rotatio
     }
     return 1;
 }
-

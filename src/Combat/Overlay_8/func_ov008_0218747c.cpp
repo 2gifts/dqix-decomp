@@ -32,7 +32,7 @@ extern "C" void _Z33ComputeElapsedPlayTimeHMS020104ccP17TimeStamp020104ccPtPhS2_
 extern "C" void _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598(struct _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598*);
 extern "C" void _Z25AddPlayClockHours020ac614P17PlayClock020ac614i(PlayClock020ac614*, int);
 extern "C" void _Z27AddPlayClockMinutes020ac644P17PlayClock020ac644i(PlayClock020ac644*, int);
-static inline ClockTotals* GetTotals(GameState* game) { ClockTotals* value = &((GameClockTotals*)game)->totals; return value; }
+static inline ClockTotals* GetTotals(GameState* game) { return &((GameClockTotals*)game)->totals; }
 
 // USA: func_ov008_0218747c
 extern "C" ARM void func_ov008_0218747c(PlayTimeDisplay* display, int mode) {

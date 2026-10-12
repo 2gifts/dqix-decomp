@@ -43,15 +43,9 @@ extern "C" short func_0204e3e0(Window0204c980*, char*, int, unsigned char, unsig
 extern "C" void func_0204cd60(Window0204c980*, char*, short, short);
 typedef void (*Upload0204c980)(const void*, unsigned int, unsigned int);
 
-inline int GetUpload0204c980(int bank, int index) {
-    int handler = _Z21GetTableEntry0204a5e4ii(index, bank);
-    return handler;
-}
+inline int GetUpload0204c980(int bank, int index) { return _Z21GetTableEntry0204a5e4ii(index, bank); }
 
-inline int ReaduploadBank0204c980(WindowStyle0204c980* style) {
-    int value = style->uploadBank;
-    return value;
-}
+inline int ReaduploadBank0204c980(WindowStyle0204c980* style) { return style->uploadBank; }
 
 // USA: func_0204c980
 extern "C" ARM void func_0204c980(Window0204c980* window, const char* text, unsigned int destination, int mode, unsigned char border, unsigned char fullWidth, unsigned char font) {

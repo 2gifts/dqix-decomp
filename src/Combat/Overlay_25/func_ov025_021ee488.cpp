@@ -16,10 +16,7 @@ extern const Matrix4x4 data_ov025_021ef1c0;
 
 union Point021ee488 { struct { int x, y, z; }; int entries[3]; };
 
-inline int Multiply021ee488(int a, int b) {
-    int result = FIX32_MULTIPLY(a, b);
-    return result;
-}
+inline int Multiply021ee488(int a, int b) { return FIX32_MULTIPLY(a, b); }
 
 // USA: func_ov025_021ee488
 extern "C" ARM void func_ov025_021ee488(Point021ee488* result, const Point021ee488* points, int count, int time) {

@@ -84,10 +84,7 @@ void AdjustAndDispatchEntry0203c1c8(Struct0203c1c8*);
 void* GetEntryByIndexStride0x10(EntryList0204af14*, unsigned int);
 void CallFunc0204b620IfField0x14_0204b878(Obj0204b878*, int, int, int, short, short, short, short, unsigned short);
 extern const int data_ov000_02183674[11];
-static inline int ValidSlot(int slot)  {
-    int result = slot >= 0 && slot <= 3;
-    return result;
-}
+static inline int ValidSlot(int slot)  { return slot >= 0 && slot <= 3; }
 // USA: func_ov000_02180ca8
 extern "C" ARM void func_ov000_02180ca8(State02180ca8* self, Action02180ca8* action, Obj0204b878* list)  {
     if (!action)  {

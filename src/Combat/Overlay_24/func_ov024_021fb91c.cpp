@@ -79,10 +79,7 @@ extern "C" void func_ov024_021f6a4c(void*, void*);
 extern "C" void func_ov024_021fd858(void*);
 extern "C" void func_ov024_021f9874(void*, void*, int, int);
 
-static inline unsigned int GetMaximumHP_021fb91c(GameObject* actor) {
-    unsigned int maximum = actor->currentStats_->primaryStats.maxHP;
-    return maximum;
-}
+static inline unsigned int GetMaximumHP_021fb91c(GameObject* actor) { return actor->currentStats_->primaryStats.maxHP; }
 
 // USA: func_ov024_021fb91c
 extern "C" ARM void func_ov024_021fb91c(Context_021fb91c* context) {

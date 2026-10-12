@@ -36,18 +36,9 @@ extern "C" void *_ZN9GameState11GetInstanceEv();
 extern "C" Member02154c30 *_ZN9GameState21GetPartyMemberByIndexEi(void *gs, int idx);
 int GetTableValue(void *p);
 
-static inline int G16(unsigned short *p) {
-    int v = *p;
-    return v;
-}
-static inline int G32(unsigned int *p) {
-    unsigned int v = *p;
-    return v;
-}
-static inline int G8(int *p) {
-    int v = *p;
-    return v;
-}
+static inline int G16(unsigned short *p) { return *p; }
+static inline int G32(unsigned int *p) { return *p; }
+static inline int G8(int *p) { return *p; }
 
 // USA: func_ov002_02154c30
 extern "C" ARM int func_ov002_02154c30(Cache02154c30 *cache) {

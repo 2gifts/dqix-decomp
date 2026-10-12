@@ -63,10 +63,7 @@ extern Matrix3x3 data_020e79e8, data_0210a0cc;
 extern Vector3i data_020e79c0;
 extern Box_0203f53c data_020e79cc;
 
-static inline int MultiplyFix32_0203f53c(int a, int b) {
-    int result = FIX32_MULTIPLY(a, b);
-    return result;
-}
+static inline int MultiplyFix32_0203f53c(int a, int b) { return FIX32_MULTIPLY(a, b); }
 
 // USA: func_0203f53c
 extern "C" ARM int func_0203f53c(Object_0203f53c* object, void* camera, int scale) {

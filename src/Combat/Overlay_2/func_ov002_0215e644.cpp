@@ -22,10 +22,7 @@ extern "C" int func_ov017_021bdbcc(GameResources *r);
 extern "C" void func_02046608(void *messages, int a, const char *format, char *output, int size, int b, int c);
 extern "C" char data_ov002_0216d2a1[];
 
-static inline unsigned short LdH(char *p, int off) {
-    unsigned short v = *(unsigned short *) (p + off);
-    return v;
-}
+static inline unsigned short LdH(char *p, int off) { return *(unsigned short *) (p + off); }
 
 // USA: func_ov002_0215e644
 extern "C" ARM void func_ov002_0215e644(char *base, char *dst) {

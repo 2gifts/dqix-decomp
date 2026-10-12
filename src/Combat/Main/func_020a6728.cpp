@@ -27,10 +27,7 @@ struct ActorOwner020a6728 {
     SafeAllocator allocator;
     char pad_d8[0x2cc - 0xd8];
     ActorResources020a6728 resources;
-    ActorResources020a6728* GetResources() {
-        ActorResources020a6728* base = &resources;
-        return base;
-    }
+    ActorResources020a6728* GetResources() { return &resources; }
     char* GetTables() {
         ActorResources020a6728* base = GetResources();
         return base->tables;
