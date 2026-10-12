@@ -1,0 +1,138 @@
+#include <globaldefs.h>
+#include "GameState/GameState.h"
+#define REG_DISPCNT (*(volatile unsigned int*)0x04000000)
+struct Obj020397cc { char padding[0xb2]; short field_b2; };
+struct FlagWord02046708;
+struct ListHead02046b60;
+struct SceneOptions021a5600 {
+    unsigned char flag;
+    char padding[3];
+    int field4, field8;
+};
+struct Scene021a5600 {
+    char padding0[0x4c];
+    unsigned int layer;
+    char padding50[0x253c - 0x50];
+    unsigned char flag253c;
+    char padding253d[3];
+    int field2540, field2544;
+};
+struct BattleState021a5600 {
+    unsigned char type, complete;
+    char padding2[6];
+    int state;
+    SafeAllocator allocator;
+    unsigned char option20, option21;
+    char padding22[2];
+    SceneOptions021a5600 options;
+};
+extern "C" void func_0202738c(unsigned char*, int, int, int);
+extern "C" void func_02027304(unsigned char*, int);
+extern "C" void func_020a0cc4(int);
+extern "C" void func_020a0c0c();
+extern "C" void func_ov002_0215505c();
+extern "C" void func_ov002_02154d40(Scene021a5600*, SafeAllocator*);
+extern "C" int func_ov002_02155960(Scene021a5600*, int);
+extern "C" void func_ov002_021556fc(Scene021a5600*);
+extern "C" void func_02094ab0(void*);
+extern "C" void func_ov017_021a55b0(BattleState021a5600*);
+extern "C" void func_ov017_02191108(GameResources*, int, int, int, int);
+extern "C" FlagWord02046708* _Z27GetDataPtr02114e04_020d6c00v();
+extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc*, int);
+void SetBitsInField4(unsigned int*, unsigned int);
+void ClearBitsInField4(unsigned int*, unsigned int);
+unsigned char* GetFieldIfFlag4(char*);
+void SetFlagsAt0x244(unsigned char*, unsigned char);
+void ClearFlagBits(unsigned char*, int);
+void ResetOrFindStopwatch(unsigned char*, int);
+void* AllocateAligned4(AllocatorUnion*, unsigned int);
+void PushInputLogA(int);
+void PushInputLogB(int);
+extern "C" void _Z26SetBytes485And486_021556ecPvii(void*, int, int);
+void* GetGlobal02109400();
+extern "C" void _Z21BlankFunction02094b40v();
+extern "C" void _Z21BlankFunction02094b34v();
+int ListContainsId(ListHead02046b60*, int);
+void SetByteField0x253(void*);
+extern "C" void _Z25InitPaletteTables0202ac74v();
+extern "C" int _Z17TestFlags02046708P16FlagWord02046708j(FlagWord02046708*, unsigned int);
+extern "C" void _Z35SetByteIfDataAndCheckClear_021a01bcPh(unsigned char*);
+void CopyByteField0x253To0x252(void*);
+extern "C" void _Z30CheckStackAndFinalize_021a5974Pc(char*);
+extern AllocatorUnion data_02114e20;
+extern Scene021a5600* data_ov017_021d83ac;
+// USA: func_ov017_021a5600
+extern "C" ARM void func_ov017_021a5600(BattleState021a5600* self) {
+    GameState* game = GameState::GetInstance();
+    GameResources* resources = func_ov017_0218b5b0();
+    Obj020397cc* actor = (Obj020397cc*)game->GetUnknownGameObject();
+    FlagWord02046708* flags = _Z27GetDataPtr02114e04_020d6c00v();
+    _Z27CancelPendingAction020397ccP11Obj020397cci(actor, 1);
+    actor->field_b2 = 0;
+    SetBitsInField4(&resources->brightnessFlags_0, 0xc0);
+    unsigned char* action = GetFieldIfFlag4((char*)game);
+    SetFlagsAt0x244(action, 3);
+    int ticks = game->GetTickCount();
+    if (ticks < 0) ticks = 1;
+    if (self->state == 0) {
+        unsigned char* stopwatch = (unsigned char*)resources->unknown_ptr_36d0;
+        ResetOrFindStopwatch(stopwatch, -1);
+        func_0202738c(stopwatch, 1, 2, -1);
+        func_020a0cc4(0x2bdb0);
+        void* memory = AllocateAligned4(&data_02114e20, 0x2a590);
+        if (!memory) {
+            func_020a0c0c();
+            self->complete = 1;
+        } else {
+            self->allocator.CreateTypeA(memory, 0x2a590);
+            self->allocator.Reset();
+            PushInputLogA(2);
+            PushInputLogB(1);
+            data_ov017_021d83ac = (Scene021a5600*)self->allocator.Allocate(0x2550);
+            func_ov002_0215505c();
+            _Z26SetBytes485And486_021556ecPvii(data_ov017_021d83ac, self->option20, self->option21);
+            func_ov002_02154d40(data_ov017_021d83ac, &self->allocator);
+            SceneOptions021a5600 options = self->options;
+            Scene021a5600* scene = data_ov017_021d83ac;
+            scene->flag253c = options.flag;
+            scene->field2540 = options.field4;
+            scene->field2544 = options.field8;
+            ++self->state;
+        }
+    } else if (self->state == 1) {
+        if (func_ov002_02155960(data_ov017_021d83ac, ticks)) ++self->state;
+    } else if (self->state == 2) {
+        func_ov002_021556fc(data_ov017_021d83ac);
+        void* music = GetGlobal02109400();
+        _Z21BlankFunction02094b40v();
+        func_02094ab0(music);
+        ((void (*)(void*, int, int, int, int))_Z21BlankFunction02094b34v)(music, 5000, 0x6f, 1, 1);
+        ++self->state;
+    } else if (self->state == 3) {
+        unsigned int layer = data_ov017_021d83ac->layer;
+        REG_DISPCNT = (layer << 8) | (REG_DISPCNT & ~0x1f00);
+        data_ov017_021d83ac = 0;
+        func_ov017_021a55b0(self);
+        int clear = 1;
+        ListHead02046b60* list = (ListHead02046b60*)resources->unknown_ptr_array_36fc[0];
+        if (list && (ListContainsId(list, 2) || ListContainsId(list, 47))) clear = 0;
+        if (clear) {
+            ClearFlagBits(action, 3);
+            ClearBitsInField4(&resources->brightnessFlags_0, 0xc0);
+            SetByteField0x253(actor);
+        }
+        func_ov017_02191108(resources, 1, 1, 0, 1);
+        _Z25InitPaletteTables0202ac74v();
+        func_020a0c0c();
+        if (!_Z17TestFlags02046708P16FlagWord02046708j(flags, 0x100000)) {
+            unsigned char* stopwatch = (unsigned char*)resources->unknown_ptr_36d0;
+            func_0202738c(stopwatch, 0, 2, -1);
+            func_02027304(stopwatch, -1);
+        }
+        _Z35SetByteIfDataAndCheckClear_021a01bcPh((unsigned char*)resources);
+        SetByteField0x253(actor);
+        CopyByteField0x253To0x252(actor);
+        self->complete = 1;
+        _Z30CheckStackAndFinalize_021a5974Pc((char*)self);
+    }
+}
