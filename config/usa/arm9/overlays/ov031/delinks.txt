@@ -6621,3 +6621,151 @@ src/Combat/Overlay_31/func_ov031_02241060.cpp:
 src/Combat/Overlay_31/func_ov031_02242f84.cpp:
     complete
     .text start:0x02242f84 end:0x02243008
+
+src/Combat/Overlay_31/func_ov031_02200bfc.cpp:
+    complete
+    .text start:0x02200bfc end:0x02200ccc
+
+src/Combat/Overlay_31/func_ov031_02200ccc.cpp:
+    complete
+    .text start:0x02200ccc end:0x02200dc8
+
+src/Combat/Overlay_31/func_ov031_02202334.cpp:
+    complete
+    .text start:0x02202334 end:0x0220242c
+
+src/Combat/Overlay_31/func_ov031_022066b4.cpp:
+    complete
+    .text start:0x022066b4 end:0x02206758
+
+src/Combat/Overlay_31/func_ov031_0220c59c.cpp:
+    complete
+    .text start:0x0220c59c end:0x0220c6c4
+
+src/Combat/Overlay_31/func_ov031_02211020.cpp:
+    complete
+    .text start:0x02211020 end:0x022110f0
+
+src/Combat/Overlay_31/func_ov031_02214660.cpp:
+    complete
+    .text start:0x02214660 end:0x0221474c
+
+src/Combat/Overlay_31/func_ov031_02217fb0.cpp:
+    complete
+    .text start:0x02217fb0 end:0x02218098
+
+src/Combat/Overlay_31/func_ov031_0221ae00.cpp:
+    complete
+    .text start:0x0221ae00 end:0x0221aed8
+
+src/Combat/Overlay_31/func_ov031_0221c4bc.cpp:
+    complete
+    .text start:0x0221c4bc end:0x0221c5ac
+
+src/Combat/Overlay_31/func_ov031_0221cfdc.cpp:
+    complete
+    .text start:0x0221cfdc end:0x0221d008
+
+src/Combat/Overlay_31/func_ov031_0221d52c.cpp:
+    complete
+    .text start:0x0221d52c end:0x0221d604
+
+src/Combat/Overlay_31/func_ov031_0221d604.cpp:
+    complete
+    .text start:0x0221d604 end:0x0221d6a8
+
+src/Combat/Overlay_31/func_ov031_0221d79c.cpp:
+    complete
+    .text start:0x0221d79c end:0x0221d7e0
+
+src/Combat/Overlay_31/func_ov031_0221d7e0.cpp:
+    complete
+    .text start:0x0221d7e0 end:0x0221d82c
+
+src/Combat/Overlay_31/func_ov031_0221db18.cpp:
+    complete
+    .text start:0x0221db18 end:0x0221db48
+
+src/Combat/Overlay_31/func_ov031_0221dedc.cpp:
+    complete
+    .text start:0x0221dedc end:0x0221df48
+
+src/Combat/Overlay_31/func_ov031_0221df48.cpp:
+    complete
+    .text start:0x0221df48 end:0x0221dfd4
+
+src/Combat/Overlay_31/func_ov031_0221e028.cpp:
+    complete
+    .text start:0x0221e028 end:0x0221e080
+
+src/Combat/Overlay_31/func_ov031_0221e080.cpp:
+    complete
+    .text start:0x0221e080 end:0x0221e0e8
+
+src/Combat/Overlay_31/func_ov031_0221f1e8.cpp:
+    complete
+    .text start:0x0221f1e8 end:0x0221f26c
+
+src/Combat/Overlay_31/func_ov031_0221f26c.cpp:
+    complete
+    .text start:0x0221f26c end:0x0221f324
+
+src/Combat/Overlay_31/func_ov031_0221f630.cpp:
+    complete
+    .text start:0x0221f630 end:0x0221f698
+
+src/Combat/Overlay_31/func_ov031_0221f854.cpp:
+    complete
+    .text start:0x0221f854 end:0x0221f8d8
+
+src/Combat/Overlay_31/func_ov031_0221f8d8.cpp:
+    complete
+    .text start:0x0221f8d8 end:0x0221f994
+
+src/Combat/Overlay_31/func_ov031_022205e4.cpp:
+    complete
+    .text start:0x022205e4 end:0x022206e0
+
+src/Combat/Overlay_31/func_ov031_0222938c.cpp:
+    complete
+    .text start:0x0222938c end:0x02229480
+
+src/Combat/Overlay_31/func_ov031_022339a8.cpp:
+    complete
+    .text start:0x022339a8 end:0x02233a00
+
+src/Combat/Overlay_31/func_ov031_022397bc.cpp:
+    complete
+    .text start:0x022397bc end:0x022398e8
+
+src/Combat/Overlay_31/func_ov031_0223b79c.cpp:
+    complete
+    .text start:0x0223b79c end:0x0223b870
+
+src/Combat/Overlay_31/func_ov031_0223b870.cpp:
+    complete
+    .text start:0x0223b870 end:0x0223b8c4
+
+src/Combat/Overlay_31/func_ov031_0223b8c4.cpp:
+    complete
+    .text start:0x0223b8c4 end:0x0223ba20
+
+src/Combat/Overlay_31/func_ov031_0223e00c.cpp:
+    complete
+    .text start:0x0223e00c end:0x0223e120
+
+src/Combat/Overlay_31/func_ov031_0223e54c.cpp:
+    complete
+    .text start:0x0223e54c end:0x0223e674
+
+src/Combat/Overlay_31/func_ov031_0223fba4.cpp:
+    complete
+    .text start:0x0223fba4 end:0x0223fc7c
+
+src/Combat/Overlay_31/func_ov031_022406f8.cpp:
+    complete
+    .text start:0x022406f8 end:0x022407e4
+
+src/Combat/Overlay_31/func_ov031_02243018.cpp:
+    complete
+    .text start:0x02243018 end:0x02243144
