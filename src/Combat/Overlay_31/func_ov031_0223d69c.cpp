@@ -25,21 +25,23 @@ extern InputState_0223d69c data_ov031_02290d40;
 
 // USA: func_ov031_0223d69c
 extern "C" ARM int func_ov031_0223d69c(void* output) {
+    unsigned short x;
+    unsigned short y;
     int disabled = *(unsigned short*)0x027fffa8 & 0x8000;
     if (disabled >> 15) return 0;
-    volatile InputCoordinates_0223d69c* input = data_ov031_02290d40.inner;
+    InputCoordinates_0223d69c* input = data_ov031_02290d40.inner;
     CoordinatePair_0223d69c* pair = (CoordinatePair_0223d69c*)output;
     switch (input->selected) {
     case 0: {
-        unsigned short x = input->secondaryX;
-        unsigned short y = input->secondaryY;
+        x = input->secondaryX;
+        y = input->secondaryY;
         pair->x = x;
         pair->y = y;
         return 0;
     }
     default: {
-    unsigned short x = input->primaryX;
-    unsigned short y = input->primaryY;
+    x = input->primaryX;
+    y = input->primaryY;
     pair->x = x;
     pair->y = y;
     return 1;

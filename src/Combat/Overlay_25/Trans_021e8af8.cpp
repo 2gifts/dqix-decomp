@@ -8,13 +8,11 @@ extern "C" unsigned int func_ov025_021e8bc4(unsigned int, unsigned int);
 
 // USA: func_ov025_021e8af8  (semantic: Trans_021e8af8)
 extern "C" ARM unsigned int func_ov025_021e8af8(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
-    int cc = 0;
     unsigned int r4 = 0;
     unsigned int r5 = 0;
     r4 = r0;
     r1 = *(unsigned char*)((char*)r4 + 0x30);
-    cc = (int)(r1) - (int)(0x0);
-    if (cc == 0) { return r0; }
+    if (r1 == 0) { return r0; }
     r0 = (unsigned int)func_ov025_021e8bc4(r0, r1);
     r0 = *(unsigned char*)((char*)r4 + 0x30);
     r0 = r4 + (r0 << 2);
