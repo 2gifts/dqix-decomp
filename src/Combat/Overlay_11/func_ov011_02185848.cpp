@@ -17,7 +17,7 @@ extern "C" ARM void* func_ov023_021f6880(void* list, int id);
 extern "C" ARM int func_ov023_021f6f10(void* obj);
 
 struct Grid021f9b30;
-extern "C" int _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(struct Grid021f9b30* self, short val, unsigned int x, unsigned int y);
+extern "C" int _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(struct Grid021f9b30* self, unsigned short val, unsigned int x, unsigned int y);
 
 // USA: func_ov011_02185848
 extern "C" ARM int func_ov011_02185848(struct TaggedNumber02184c30* params, int count) {
@@ -33,5 +33,5 @@ extern "C" ARM int func_ov011_02185848(struct TaggedNumber02184c30* params, int 
     if (func_ov023_021f6f10(object) != 7)
         return 0;
 
-    return ((int (*)(void*, unsigned short, unsigned short, unsigned short))_Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj)(object, id2, unk3, unk2) ? 1 : 0;
+    return _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj((struct Grid021f9b30*)object, id2,(unsigned short)unk3, (unsigned short)unk2) ? 1 : 0;
 }

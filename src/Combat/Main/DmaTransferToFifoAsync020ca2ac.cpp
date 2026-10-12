@@ -5,11 +5,11 @@
 void RunAndClearCallback(void);
 
 struct DmaAsyncState020ca2ac {
-    int flag;                       // 0x0
-    int channel;                    // 0x4
-    char pad8[8];                   // 0x8..0xf
-    DMACompletionCallback callback; // 0x10
-    int userdata;                   // 0x14
+    int flag;
+    int channel;
+    char pad8[8];
+    DMACompletionCallback callback;
+    int userdata;
 };
 extern struct DmaAsyncState020ca2ac data_02111684;
 
@@ -25,7 +25,7 @@ extern "C" ARM void func_020ca2ac(int channel, unsigned int src, unsigned int le
     while (*(volatile int*)&data_02111684.flag != 0) ;
 
     *(volatile int*)&data_02111684.flag = 1;
-    *(int*)&data_02111684.channel = channel;
+    data_02111684.channel = channel;
     data_02111684.callback = callback;
     data_02111684.userdata = userdata;
 

@@ -17,14 +17,8 @@ struct Combatant0215641c {
 #endif
     CombatantExtra0215641c* extra;
 
-    unsigned short GetCurrentCharm() {
-        unsigned short charm = currentStats->primaryStats.charm;
-        return charm;
-    }
-    unsigned short GetBaseCharm() {
-        unsigned short charm = baseStats->primaryStats.charm;
-        return charm;
-    }
+    unsigned short GetCurrentCharm() { return currentStats->primaryStats.charm; }
+    unsigned short GetBaseCharm() { return baseStats->primaryStats.charm; }
 };
 
 // USA: func_ov000_0215641c
@@ -37,8 +31,9 @@ extern "C" ARM float func_ov000_0215641c(int unused, int id) {
         if (c == NULL) {
             return 0.0f;
         }
-        int charm = c->GetCurrentCharm() - c->GetBaseCharm();
-        charm += (unsigned short)c->extra->charmBonus;
+        int charm = c->GetBaseCharm();
+        charm = c->GetCurrentCharm() - charm;
+        charm +=(unsigned short)c->extra->charmBonus;
         result = (charm - 100) * 0.02f;
     }
     return result;

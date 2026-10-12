@@ -15,7 +15,10 @@ struct CombatantLike_021f8874 {
 struct Obj_021f8874 { char pad0[0x8]; struct CombatantLike_021f8874* field8; };
 struct Arg1_021f8874 {
     char pad0[0x8];
-    volatile unsigned int field8;
+    unsigned int field8 : 8;
+    unsigned int field8_8 : 19;
+    unsigned int field8_27 : 1;
+    unsigned int field8_28 : 4;
     char pad1[0x10 - 0xc];
     unsigned int field10;
 };
@@ -25,7 +28,7 @@ extern "C" int func_ov024_021f87dc(struct CombatantLike_021f8874* a0, struct Arg
 // USA: func_ov024_021f8874  (semantic: CheckEligibilityAndFlags_021f8874)
 extern "C" ARM int func_ov024_021f8874(struct Obj_021f8874* obj, struct Arg1_021f8874* target, struct CombatantLike_021f8874* combatant, int* extra) {
     if (!target) return 0;
-    if (((target->field8 << 4) >> 31) == 0) return 0;
+    if (target->field8_27 == 0) return 0;
     int inRange = 0;
     short category = combatant->field4;
     if (category >= 0 && category <= 3) {
@@ -35,7 +38,7 @@ extern "C" ARM int func_ov024_021f8874(struct Obj_021f8874* obj, struct Arg1_021
     if (inRange) {
         value = func_ov024_021f87dc(combatant, target, extra);
     } else {
-        value = (target->field8 << 24) >> 24;
+        value = target->field8;
     }
     unsigned short threshold = obj->field8->inner->field2;
     if (value > threshold) return 0;

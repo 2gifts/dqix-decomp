@@ -23,7 +23,6 @@ enum { kRegionValue4A3_2CB = 0x4a3 };
 enum { kRegionValue464_28C = 0x464 };
 #endif
 
-
 extern "C" unsigned int _Z16AppendNodeToTailP16TailList020469b4P16TailNode020469b4(unsigned int, unsigned int, unsigned int, unsigned int);
 extern "C" unsigned int _Z18CheckField0NonZeroPi(unsigned int, unsigned int);
 extern "C" unsigned int _Z19SetFlag320_02195530Ph(unsigned int);
@@ -36,7 +35,6 @@ extern "C" unsigned int func_ov017_021bbae4(unsigned int, unsigned int, unsigned
 
 // USA: func_ov003_02163d7c  (semantic: Trans_02163d7c)
 extern "C" ARM unsigned int func_ov003_02163d7c(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
-    int cc = 0;
     unsigned int r4 = 0;
     unsigned int r5 = 0;
     unsigned int r6 = 0;
@@ -85,12 +83,10 @@ extern "C" ARM unsigned int func_ov003_02163d7c(unsigned int r0, unsigned int r1
     r1 = r1 & ~0x8000;
     *(unsigned int*)((char*)r9 + kRegionValue464_28C) = (unsigned int)r1;
     r0 = (unsigned int)_Z18CheckField0NonZeroPi(r0, r1);
-    cc = (int)(r0) - (int)(0x0);
-    if (cc == 0) { return r0; }
+    if (r0 == 0) { return r0; }
     r0 = r4;
     r0 = (unsigned int)func_0202c508(r0);
-    cc = (int)(r0) - (int)(0x0);
-    if (cc == 0) { return r0; }
+    if (r0 == 0) { return r0; }
     r0 = r6;
     r0 = (unsigned int)_Z19SetFlag320_02195530Ph(r0);
     return r0;

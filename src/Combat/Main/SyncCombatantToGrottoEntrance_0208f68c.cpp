@@ -22,7 +22,7 @@ extern "C" ARM void func_0208f68c(unsigned char* obj) {
         Vec3Local_0208f68c constVec = *(Vec3Local_0208f68c*)&data_020e8d3c;
         Vec3Local_0208f68c grottoVec = *(Vec3Local_0208f68c*)((char*)grotto + 0x10);
         int zoneId = *(int*)((char*)grotto + 0xc);
-        if (zoneId != 0 && *(unsigned char*)grotto != 0) {
+        if (zoneId != 0 && grotto->unknown_0[0] != 0) {
             if (zoneId == val) {
                 _ZN8Vector3iaSERKS_((int*)(obj + 0x4c), (int*)&grottoVec);
                 _ZN8Object3D8SetScaleEPK8Vector3i(obj + 8, (int*)&constVec);
