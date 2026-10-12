@@ -10,7 +10,6 @@ struct Obj_021d1c84 { unsigned char pad[4]; unsigned char field4; unsigned char 
 ARM void SetHalfFields__021d1c84_021d1c84(int unused0, Obj_021d1c84* obj, int unused1, int unused2, struct SearchStruct0202c1a4* search) {
 	if (GetSearchStructCurrentArrEntry(search) == 0) return;
 	unsigned char* base = (unsigned char*)func_02012fe4();
-	base += 0x2700;
-	*(unsigned short*)(base + 0xb4) = obj->field4;
-	*(unsigned short*)(base + 0xb6) = obj->field5;
+	*(unsigned short*)(base + 0x27b4) = obj->field4;
+	*(unsigned short*)(base + 0x27b6) = obj->field5;
 }
