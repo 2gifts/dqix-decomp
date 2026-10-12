@@ -1,5 +1,21 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kHeadListOffset = 0x4ec, kOwnerFieldOffset = 0x920, kMessageObjectOffset = 0x768 };
+#else
+enum { kHeadListOffset = 0x6fc, kOwnerFieldOffset = 0xb40, kMessageObjectOffset = 0x7e0 };
+#endif
+
+
+#if defined(jpn)
+#define func_ov003_02171fe8 func_ov003_021712a4
+#endif
+
+
+#if defined(jpn)
+#define AppendTagIfHeadMatch_021d0f94 func_ov017_021d140c
+#endif
+
 struct SearchStruct0202c1a4;
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
 struct HeadNode02046b24;
@@ -17,16 +33,19 @@ struct ArgB021d0f94 {
 };
 
 // USA: func_ov017_021d0f94
+#if defined(jpn)
+extern "C"
+#endif
 ARM void AppendTagIfHeadMatch_021d0f94(void* a, struct ArgB021d0f94* b, int unused, char* c, struct SearchStruct0202c1a4* d) {
     signed char cur = GetSearchStructCurrentArrEntry(d);
     if (b->byte4 != cur) return;
 
-    struct HeadNode02046b24** list = *(struct HeadNode02046b24***)(c + 0x3000 + 0x6fc);
+    struct HeadNode02046b24** list = *(struct HeadNode02046b24***)(c + 0x3000 + kHeadListOffset);
     if (GetHeadNodeIdOrMinusOne(list) != 0x2a) return;
 
-    int* field = *(int**)(c + 0x3000 + 0xb40);
+    int* field = *(int**)(c + 0x3000 + kOwnerFieldOffset);
     int val = GetField12_0217f278(field);
     if (val == 0) return;
 
-    func_ov003_02171fe8((char*)val + 0x7e0, a, &b->byte7, b->byte6, b->byte5);
+    func_ov003_02171fe8((char*)val + kMessageObjectOffset, a, &b->byte7, b->byte6, b->byte5);
 }

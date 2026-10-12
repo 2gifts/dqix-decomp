@@ -1,4 +1,20 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kHalfwordArrayOffset = 0x40, kPendingEntryOffset = 0x2f4 };
+#else
+enum { kHalfwordArrayOffset = 0x44, kPendingEntryOffset = 0x2f8 };
+#endif
+
+
+#if defined(jpn)
+#define data_ov017_021d7bc3 data_ov017_021d82dd
+#endif
+
+
+#if defined(jpn)
+#define func_ov017_021b5250 func_ov017_021b5814
+#endif
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 
@@ -11,7 +27,11 @@ struct HalfwordArray {
 };
 ARM unsigned short CopyHalfwordArrayByCount(struct HalfwordArray* src, struct HalfwordArray* dst);
 void* Clear12Bytes0206efc4(void* obj);
+#if defined(jpn)
+extern "C" void func_0206f230(void* a, int b, int c, int d, void* e, int f);
+#else
 extern "C" void func_0206f230(void* a, int b, int c, int d, void* e, int f, int g, int h);
+#endif
 
 extern char data_ov017_021d7bc3;
 
@@ -39,11 +59,15 @@ extern "C" ARM void func_ov017_021b5250(struct Obj021b5250* obj) {
             char* sub = (char*)obj->sub;
             unsigned short buf[12];
             __clear(buf, 0x18);
-            short signedCount = (short)CopyHalfwordArrayByCount((struct HalfwordArray*)(sub + 0x44), (struct HalfwordArray*)buf);
-            sub = (char*)obj->sub;
-            Clear12Bytes0206efc4(sub + 0x2f8);
+            short signedCount = (short)CopyHalfwordArrayByCount((struct HalfwordArray*)(sub + kHalfwordArrayOffset), (struct HalfwordArray*)buf);
+            char* pending = (char*)obj->sub + kPendingEntryOffset;
+            Clear12Bytes0206efc4(pending);
             char* sub2 = (char*)obj->sub;
-            func_0206f230(sub + 0x2f8, *(int*)(sub2 + 0x10), out1, out2, buf, signedCount, *(int*)(sub2 + 0x14), obj->field14);
+            func_0206f230(pending, *(int*)(sub2 + 0x10), out1, out2, buf, signedCount
+#if !defined(jpn)
+                , *(int*)(sub2 + 0x14), obj->field14
+#endif
+            );
         }
     }
 

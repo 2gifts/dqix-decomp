@@ -2,6 +2,7 @@
 #include "Memory/SafeAllocator.h"
 
 #if defined(jpn)
+#define data_ov000_021836b0 data_ov000_0218476c
 #define REGION_BASE 0x1f38
 #else
 #define REGION_BASE 0x1d00

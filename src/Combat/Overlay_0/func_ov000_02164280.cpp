@@ -1,6 +1,10 @@
 #include <globaldefs.h>
 #include "Graphics/VRAMStaging.h"
 
+#if defined(jpn)
+#define func_ov000_02164280 func_ov000_021659e4
+#endif
+
 struct Block0207df50 {
     unsigned int v[10];
 };
@@ -21,14 +25,26 @@ struct Foo0207df50 {
 };
 
 struct BattleResources {
+#if defined(jpn)
+    char pad0[0x27c];
+#else
     char pad0[0x2cc];
+#endif
     struct Foo0207df50 pairTables[28];
 };
 
 struct BattleScreen {
+#if defined(jpn)
+    char pad0[0x138];
+#else
     char pad0[0x14c];
+#endif
     struct Foo0207df50 pairTables;
+#if defined(jpn)
+    char pad1BC[0x36ac - 0x1a8];
+#else
     char pad1BC[0x36f0 - 0x1bc];
+#endif
     char workBuf[0x800];
 };
 

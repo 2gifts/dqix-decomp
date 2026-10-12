@@ -43,8 +43,43 @@ struct ComboSlot0218214c {
     Foo02048004* obj;
 };
 
+#if defined(jpn)
+struct ComboTable0218214c { ComboSlot0218214c slots[13]; };
+extern const ComboTable0218214c data_ov000_021847e0;
+extern const char data_ov000_021852fc[];
+#define func_ov000_0218214c func_ov000_02183398
+#endif
+
 // USA: func_ov000_0218214c
+
 extern "C" ARM void func_ov000_0218214c(Foo02048004* base, void* extra, const void* narc) {
+#if defined(jpn)
+    char buf[0x28];
+    ComboTable0218214c table = data_ov000_021847e0;
+    table.slots[0].obj = (Foo02048004*)((char*)base + 0 * 0x88);
+    table.slots[1].obj = (Foo02048004*)((char*)base + 1 * 0x88);
+    table.slots[2].obj = (Foo02048004*)((char*)base + 2 * 0x88);
+    table.slots[3].obj = (Foo02048004*)((char*)base + 3 * 0x88);
+    table.slots[4].obj = (Foo02048004*)((char*)base + 4 * 0x88);
+    table.slots[5].obj = (Foo02048004*)((char*)base + 5 * 0x88);
+    table.slots[6].obj = (Foo02048004*)((char*)base + 6 * 0x88);
+    table.slots[7].obj = (Foo02048004*)((char*)base + 7 * 0x88);
+    table.slots[8].obj = (Foo02048004*)((char*)base + 8 * 0x88);
+    table.slots[9].obj = (Foo02048004*)((char*)base + 9 * 0x88);
+    table.slots[10].obj = (Foo02048004*)((char*)base + 10 * 0x88);
+    table.slots[11].obj = (Foo02048004*)((char*)base + 11 * 0x88);
+    table.slots[12].obj = (Foo02048004*)((char*)base + 12 * 0x88);
+    for (int j = 0; j < 13; ++j) {
+        sprintf(buf, data_ov000_021852fc, table.slots[j].name);
+        const void* fileSize = 0;
+        const void* fileData = 0;
+        _Z13GetFileInNarcPKvPKcPS0_Pjj(narc, buf, &fileData, &fileSize, 0);
+        func_02047b40(table.slots[j].obj, fileData, extra);
+    }
+    table.slots[0].obj->word0 = 0x3e;
+    table.slots[1].obj->word0 = 0x3e;
+    table.slots[2].obj->word0 = 0x3e;
+#else
     char buf[0x28];
     struct ComboSlot0218214c tab[13];
     int i;
@@ -109,4 +144,5 @@ extern "C" ARM void func_ov000_0218214c(Foo02048004* base, void* extra, const vo
     tab[0].obj->word0 = 0x3e;
     tab[1].obj->word0 = 0x3e;
     tab[2].obj->word0 = 0x3e;
+#endif
 }

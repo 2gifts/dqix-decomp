@@ -1117,3 +1117,7 @@ src/Combat/Overlay_25/func_ov025_021e5e84.cpp:
 src/Combat/Overlay_25/UpdateFlagAndDispatch_021dc0d8.cpp:
     complete
     .text start:0x021dc9cc end:0x021dca5c
+
+src/Combat/Overlay_25/func_ov025_021e5e1c.cpp:
+    complete
+    .text start:0x021e630c end:0x021e6380

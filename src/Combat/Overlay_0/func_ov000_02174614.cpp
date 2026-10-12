@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov000_02174614 func_ov000_02175bd0
+#endif
+
 extern "C" void* memset(void* dst, int value, unsigned int size);
 
 struct CombatantEntry {
@@ -7,9 +11,17 @@ struct CombatantEntry {
     int field_0x38;
     char pad3c[0x4c - 0x3c];
     int id;
+#if defined(jpn)
+    char pad50[0xc7 - 0x50];
+#else
     char pad50[0x87 - 0x50];
+#endif
     unsigned char active;
+#if defined(jpn)
+    char pad88[0x488 - 0xc8];
+#else
     char pad88[0x448 - 0x88];
+#endif
 };
 
 struct CombatantTable {
@@ -17,7 +29,11 @@ struct CombatantTable {
     signed char order[4];
     char pad70[0x958 - 0x70];
     CombatantEntry entries[4];
+#if defined(jpn)
+    char pad1a78[0x1f98 - 0x1b78];
+#else
     char pad1a78[0x1d60 - 0x1a78];
+#endif
     unsigned char selected[8];
     signed char cursor;
 };

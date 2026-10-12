@@ -1,5 +1,8 @@
 #include <globaldefs.h>
 
+int StringLength(const char*);
+
+
 struct List0207f6ac;
 struct TableA68;
 
@@ -20,6 +23,11 @@ struct Entry020808c8 {
     unsigned char field13rest : 4;
 };
 
+#if defined(jpn)
+#define GetEntryOutputs020808c8 func_020813bc
+extern "C" ARM void func_020813bc(void* obj, int id, short* out1, short* out2);
+#endif
+
 // USA: func_020808c8
 ARM void GetEntryOutputs020808c8(void* obj, int id, short* out1, short* out2) {
     struct Entry020808c8* e = (struct Entry020808c8*)FindEntryByShortId0207f6ac((struct List0207f6ac*)((char*)obj + 0x4), id);
@@ -27,7 +35,9 @@ ARM void GetEntryOutputs020808c8(void* obj, int id, short* out1, short* out2) {
         return;
     }
 
+#if !defined(jpn)
     int isTwelve = IsValueEqual12(e->field13nibble);
+#endif
     int kind = e->field12;
 
     switch (kind) {
@@ -36,7 +46,14 @@ ARM void GetEntryOutputs020808c8(void* obj, int id, short* out1, short* out2) {
         if (found == NULL) {
             return;
         }
+        #if defined(jpn)
+        int length = StringLength((const char*)found);
+        int characters = length >> 1;
+        int fontSize = e->field13nibble;
+        *out1 = (short)(characters * fontSize);
+#else
         *out1 = (short)func_020420e8(found, isTwelve);
+#endif
         *out2 = e->field13nibble;
         break;
     }
@@ -48,7 +65,14 @@ ARM void GetEntryOutputs020808c8(void* obj, int id, short* out1, short* out2) {
         if (e->field0 == NULL) {
             return;
         }
+        #if defined(jpn)
+        int length = StringLength((const char*)e->field0);
+        int characters = length >> 1;
+        int fontSize = e->field13nibble;
+        *out1 = (short)(characters * fontSize);
+#else
         *out1 = (short)func_020420e8(e->field0, isTwelve);
+#endif
         *out2 = e->field13nibble;
         break;
     }

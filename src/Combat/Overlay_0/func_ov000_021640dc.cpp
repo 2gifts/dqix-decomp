@@ -1,6 +1,12 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+#define func_ov000_021640dc func_ov000_02165840
+#define func_ov000_021663a0 func_ov000_02167adc
+#define func_ov000_02164d74 func_ov000_021664c8
+#endif
+
 void SetCombatWorkFlags0x55f4(void* work, int mask);
 int GetCombatWorkFlags0x55f4(void* work, int mask);
 extern "C" int func_ov017_02195658(GameResources* res);
@@ -52,12 +58,24 @@ struct TurnState021640dc {
 };
 
 struct BattleScene021640dc {
+#if defined(jpn)
+    char pad_0[0x218];
+#else
     char pad_0[0x29c];
+#endif
     struct BattleData021640dc* data;
     struct BattleConfig021640dc* config;
+#if defined(jpn)
+    char pad_2a4[0x371c - 0x220];
+#else
     char pad_2a4[0x3760 - 0x2a4];
+#endif
     struct TurnState021640dc turn;
+#if defined(jpn)
+    char pad_3788[0x56b0 - 0x3744];
+#else
     char pad_3788[0x54bc - 0x3788];
+#endif
     unsigned char field_0x54bc;
 };
 

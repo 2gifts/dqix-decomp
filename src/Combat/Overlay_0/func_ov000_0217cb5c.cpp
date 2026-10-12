@@ -2,6 +2,11 @@
 #include "GameState/GameState.h"
 
 #if defined(jpn)
+#define func_ov000_0217cb5c func_ov000_0217df54
+#define func_ov000_02180394 func_ov000_021816c0
+#endif
+
+#if defined(jpn)
 enum { kindsOffset = 0x1f98 };
 #else
 enum { kindsOffset = 0x1d60 };

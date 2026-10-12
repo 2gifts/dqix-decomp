@@ -6364,3 +6364,7 @@ src/Combat/Overlay_31/0222da60.cpp:
 src/Combat/Overlay_31/02203fdc.cpp:
     complete
     .text start:0x022047bc end:0x02204948
+
+src/Combat/Overlay_31/0221f7c4.cpp:
+    complete
+    .text start:0x0221ffa4 end:0x0221ffdc

@@ -17854,3 +17854,67 @@ src/Combat/Main/LoadStateBytePair0206b804.cpp:
 src/Combat/Main/func_02052bfc.cpp:
     complete
     .text start:0x02053fd8 end:0x0205414c
+
+src/Combat/Main/func_0204c980.cpp:
+    complete
+    .text start:0x0204d790 end:0x0204d8f0
+
+src/Combat/Main/IsHighByteFF02044494.cpp:
+    complete
+    .text start:0x02069430 end:0x02069444
+
+src/Combat/Main/Dispatch02044420.cpp:
+    complete
+    .text start:0x02069444 end:0x020694a0
+
+src/Combat/Main/GetEntryOutputs020808c8.cpp:
+    complete
+    .text start:0x020813bc end:0x020814a0
+
+src/Combat/Main/ResetShortFields02086380.cpp:
+    complete
+    .text start:0x02086ca0 end:0x02086cc0
+
+src/Combat/Main/ResetShortFields0x956.cpp:
+    complete
+    .text start:0x02086cc0 end:0x02086ce4
+
+src/Combat/Main/func_02064e88.cpp:
+    complete
+    .text start:0x02066184 end:0x02066578
+
+src/Combat/Main/func_02082d6c.cpp:
+    complete
+    .text start:0x020836f4 end:0x02083914
+
+src/Combat/Main/CopyRecord.cpp:
+    complete
+    .text start:0x0209446c end:0x020944b0
+
+src/Combat/Main/CancelResourceTasks.cpp:
+    complete
+    .text start:0x02022644 end:0x020227f8
+
+src/Combat/Main/FlushBuffer02029088.cpp:
+    complete
+    .text start:0x020288d8 end:0x0202898c
+
+src/Combat/Main/GetField0x10IfArg8.cpp:
+    complete
+    .text start:0x02042e30 end:0x02042e94
+
+src/Combat/Main/FindEntryByKeyPair020429e4.cpp:
+    complete
+    .text start:0x02043060 end:0x020430d0
+
+src/Combat/Main/Forward020416c0.cpp:
+    complete
+    .text start:0x02041bbc end:0x02041c10
+
+src/Combat/Main/InvokeGlobalEntry0203c248.cpp:
+    complete
+    .text start:0x0203bdf4 end:0x0203be6c
+
+src/Combat/Main/CallFunc020e52a0.cpp:
+    complete
+    .text start:0x020e207c end:0x020e20b4

@@ -1,7 +1,18 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kCounterOffset = 0x480 };
+#else
+enum { kCounterOffset = 0x4f0 };
+#endif
+
+
+#if defined(jpn)
+#define func_ov020_0218d898 func_ov020_0218e0e8
+#endif
+
 struct CounterState_0218d898 {
-    char pad0[0x4f0];
+    char pad0[kCounterOffset];
     int f4f0;
     int f4f4;
     int f4f8;

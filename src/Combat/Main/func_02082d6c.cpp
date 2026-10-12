@@ -2,6 +2,15 @@
 
 #include "std_library_functions.h"
 
+#if defined(jpn)
+#define func_02082d6c func_020836f4
+#define _Z33LoadAndApplyResourceEntry02082fc4PvS_ func_02083930
+#define _Z18Copy3Words02082fa8P13Words02082fa8S0_ func_02083914
+enum { kTripleOffset = 0x7b8 };
+#else
+enum { kTripleOffset = 0x850 };
+#endif
+
 struct Words02082fa8 { unsigned int a, b, c; };
 
 struct PackedTriple02082cdc {
@@ -62,7 +71,7 @@ struct SlotState02082d6c {
     unsigned char b56a;
     unsigned char b56b_lo : 4;
     unsigned char b56b_hi : 4;
-    unsigned char pad56c[0x850 - 0x56c];
+    unsigned char pad56c[kTripleOffset - 0x56c];
     struct Words02082fa8 tr850[13];
     unsigned char b8ec[0x24];
     unsigned char b910[9];
@@ -72,7 +81,7 @@ struct SlotState02082d6c {
     unsigned short h954;
 };
 
-extern "C" void func_02082828();
+extern "C" void func_02082828(struct SlotState02082d6c*);
 extern "C" void _Z33LoadAndApplyResourceEntry02082fc4PvS_(void*, void*);
 extern "C" void _Z18Copy3Words02082fa8P13Words02082fa8S0_(struct Words02082fa8*, struct Words02082fa8*);
 extern "C" void __clear(void*, unsigned int);
@@ -84,7 +93,7 @@ extern "C" ARM void func_02082d6c(struct SlotState02082d6c* dst, struct SlotReco
     if (src == NULL) {
         return;
     }
-    func_02082828();
+    func_02082828(dst);
     dst->b56a = src->lo01;
     dst->w950 = src->w50;
     dst->h954 = src->h54;
@@ -113,10 +122,14 @@ extern "C" ARM void func_02082d6c(struct SlotState02082d6c* dst, struct SlotReco
     if (flags & 4) {
         dst->w18 |= 4;
     }
+#if defined(jpn)
+    sprintf(dst->name3c, data_020ef078, src->b140);
+#else
     char local[0x30];
     __clear(local, 0x30);
     func_02042764(src->b140, local, 1);
     sprintf(dst->name3c, data_020ef078, local);
+#endif
     dst->bit30 = src->bit01_4;
     dst->h1c = src->w154.b;
     dst->h1e = src->w154.c;

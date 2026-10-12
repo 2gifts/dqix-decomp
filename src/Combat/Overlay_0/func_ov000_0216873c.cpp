@@ -5,6 +5,14 @@
 #include "System/Graphics.h"
 #include "World/ZoneLootableRecord.h"
 
+#if defined(jpn)
+#define func_ov000_0216873c func_ov000_02169e78
+#define data_ov000_0218321c data_ov000_021842c8
+enum { kSceneHeapCount = 4 };
+#else
+enum { kSceneHeapCount = 5 };
+#endif
+
 GameResources* GetWord0x0(int* gameState);
 void ClearCombatWorkFlags0x55f4(void* work, int mask);
 void SetCombatWorkFlags0x55f4(void* work, int mask);
@@ -36,17 +44,37 @@ extern int data_ov000_0218321c[];
 struct BattleScene0216873c {
     int bgLayers;
     char pad_4[4];
-    SafeAllocator heaps[5];
+    SafeAllocator heaps[kSceneHeapCount];
+#if defined(jpn)
+    char pad_6c[0xe20 - 0x58];
+#else
     char pad_6c[0xea4 - 0x6c];
+#endif
     struct Container020d6d18* entryManager;
     int state;
     int step;
+#if defined(jpn)
+    char pad_eb0[0xe44 - 0xe2c];
+#else
     char pad_eb0[0xec8 - 0xeb0];
+#endif
+#if defined(jpn)
+    char bigStruct[0x371c - 0xe44];
+#else
     char bigStruct[0x3760 - 0xec8];
+#endif
+#if defined(jpn)
+    char field_0x3760[0x57f0 - 0x371c];
+#else
     char field_0x3760[0x5600 - 0x3760];
+#endif
     Foo02048004 model0;
     Foo02048004 model1;
+#if defined(jpn)
+    char pad_5710[0x793c - 0x5900];
+#else
     char pad_5710[0x774c - 0x5710];
+#endif
     SafeAllocator heap;
 };
 
@@ -79,14 +107,16 @@ extern "C" ARM void func_ov000_0216873c(struct BattleScene0216873c* scene) {
         func_02057f00(combat, *code);
     }
     scene->heap.Destroy();
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < kSceneHeapCount; i++) {
         scene->heaps[i].Destroy();
     }
     if (GetCombatWorkFlags0x55f4(scene, 1)) {
         func_ov017_021a05a8(res);
     }
     func_ov017_0219b624(res);
+#if !defined(jpn)
     func_ov017_0219ba0c(res, 0);
+#endif
     void* target = func_0205ec34();
     unsigned short* key = func_02012fe4();
     func_0206461c(target, FindEntryByHalfwordKey(GetPtrField0x468(gs), *key));

@@ -1,4 +1,26 @@
 #include <globaldefs.h>
+static inline unsigned long ReadDisplay(volatile unsigned int* p) { unsigned long value = *p; return value; }
+static inline void WriteDisplay(volatile unsigned int* p, unsigned int value) { *p = value; }
+
+
+#if defined(jpn)
+enum { kGlobalDisplayOffset = 0x608, kControllerBackupOffset = 0x1c4c, kSceneAllocatorSize = 0x48e10, kSceneSize = 0xd90, kSceneSlotOffset = 0xd4c };
+#else
+enum { kGlobalDisplayOffset = 0x508, kControllerBackupOffset = 0x1e28, kSceneAllocatorSize = 0x4b238, kSceneSize = 0xdb8, kSceneSlotOffset = 0xd88 };
+#endif
+
+
+#if defined(jpn)
+#define data_ov021_0218bbc4 data_ov021_0218c7d0
+#endif
+
+
+#if defined(jpn)
+#define _Z19TailForward020440a4Pv func_0204486c
+#define func_ov009_021842a0 func_ov009_021853a0
+#define func_ov009_02184ca4 func_ov009_02185fd0
+#endif
+
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
@@ -58,7 +80,7 @@ int GetField0x3acValue(GameState* gs);
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
 extern "C" void func_ov009_0218454c(void* scene, int a, int b);
 extern "C" void* _Z28FindSlotWithNegShort02010954Pc(char* gs);
-extern "C" void func_ov008_021842a0(void* scene, SafeAllocator* allocator);
+extern "C" void func_ov009_021842a0(void* scene, SafeAllocator* allocator);
 extern "C" void _Z27SetStateAndDispatch0209c3b4P13Actor0209c3b4i(Actor0209c3b4* actor, int state);
 void DelayThenSyncBit0();
 void RestoreDisplayMode();
@@ -102,7 +124,9 @@ extern "C" void _Z29ReleaseLocksAndReset_0218baf8P11Obj0218baf8(Obj0218baf8* obj
 
 // USA: func_ov021_0218b5fc
 extern "C" ARM void func_ov021_0218b5fc(Battle0218b5fc* self) {
+#if !defined(jpn)
     PushInputLogA(3);
+#endif
     func_020a1940(OVERLAY_ID(9));
     func_020a1940(OVERLAY_ID(23));
     GameState* gs = GameState::GetInstance();
@@ -116,7 +140,7 @@ extern "C" ARM void func_ov021_0218b5fc(Battle0218b5fc* self) {
     int* global = GetGlobalPtr02105244();
     *global = func_0203be4c(context) + 0x200;
     func_0203c35c(global);
-    global[0x508 / 4] = 0x7000;
+    global[kGlobalDisplayOffset / 4] = 0x7000;
     MapVRAMBanksToLCDC(0x1ff);
     func_020ca458(0, (void*)0x6800000, 0xa4000);
     DisableLCDCMappedVRAMBanks();
@@ -131,12 +155,21 @@ extern "C" ARM void func_ov021_0218b5fc(Battle0218b5fc* self) {
     MapVRAMBanksToMainBG(0x10);
     MapVRAMBanksToSubBG(4);
     MapVRAMBanksToMainObj(0x20);
-    *(volatile unsigned int*)0x4000000 = (*(volatile unsigned int*)0x4000000 & 0xffcfffef) | 0x10;
+    unsigned int display = ReadDisplay((volatile unsigned int*)0x4000000);
+#if defined(jpn)
+    display = (display & 0xffcfffef) | 0x10;
+#else
+    display &= 0xffcfffef;
+    display |= 0x10;
+#endif
+    WriteDisplay((volatile unsigned int*)0x4000000, display);
     MapVRAMBanksToSubObj(8);
     *(volatile unsigned int*)0x4001000 = (*(volatile unsigned int*)0x4001000 & 0xffcfffef) | 0x10;
     UpdateVRAMStagingVRAMBanks();
     UnlockStagedTextureVRAMCopying();
-    *(volatile unsigned int*)0x4000000 = (*(volatile unsigned int*)0x4000000 & ~0x1f00) | 0x1f00;
+    display = ReadDisplay((volatile unsigned int*)0x4000000);
+    display = (display & ~0x1f00) | 0x1f00;
+    WriteDisplay((volatile unsigned int*)0x4000000, display);
     _Z30SetDispcntModeAndFlags020c391ciii(1, 0, 1);
 
     *(unsigned short*)0x400000a = (*(unsigned short*)0x400000a & 0x43) | 0x1d00;
@@ -167,20 +200,20 @@ extern "C" ARM void func_ov021_0218b5fc(Battle0218b5fc* self) {
     func_02042c68(controller);
     func_02043124(controller);
     _Z19TailForward020440a4Pv(controller);
-    *(char**)((char*)controller + 0x1e28) = self->state44;
+    *(char**)((char*)controller + kControllerBackupOffset) = self->state44;
     _Z26CopyInternalFields0207df50P11Foo0207df50((Foo0207df50*)self->state44);
     _Z25RestorePairTables0207df90Pc(self->state44);
     func_020432c4(controller);
     _Z24BackupPairTables0207dfacPc(self->state44);
     SetField0x3acValue(gs, 0);
-    self->allocator.CreateTypeA(AllocateAligned4((AllocatorUnion*)&data_02114e20, 0x4b238), 0x4b238);
+    self->allocator.CreateTypeA(AllocateAligned4((AllocatorUnion*)&data_02114e20, kSceneAllocatorSize), kSceneAllocatorSize);
     self->allocator.Reset();
-    self->scene = self->allocator.Allocate(0xdb8);
+    self->scene = self->allocator.Allocate(kSceneSize);
     func_ov009_0218454c(self->scene, 0, 0);
     self->slot = (char*)_Z28FindSlotWithNegShort02010954Pc((char*)gs);
     *(short*)(self->slot + 0x568) = GetField0x3acValue(gs);
-    *(char**)((char*)self->scene + 0xd88) = self->slot;
-    func_ov008_021842a0(self->scene, &self->allocator);
+    *(char**)((char*)self->scene + kSceneSlotOffset) = self->slot;
+    func_ov009_021842a0(self->scene, &self->allocator);
     _Z27SetStateAndDispatch0209c3b4P13Actor0209c3b4i((Actor0209c3b4*)&data_02109bf4, 2);
     DelayThenSyncBit0();
     RestoreDisplayMode();
@@ -212,5 +245,7 @@ extern "C" ARM void func_ov021_0218b5fc(Battle0218b5fc* self) {
     InitControllerObject((char*)controller);
     _Z26CopyInternalFields0207df50P11Foo0207df50((Foo0207df50*)self->state44);
     SetWord0x0((int*)gs, 0);
+#if !defined(jpn)
     PopStack0AndTrigger(1);
+#endif
 }

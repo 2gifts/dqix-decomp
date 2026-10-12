@@ -8,7 +8,7 @@
 
 struct CopyPayload {
 #if defined(jpn)
-    char data[0xc];
+    char data[0xb];
 #else
     char data[0x30];
 #endif
@@ -16,6 +16,9 @@ struct CopyPayload {
 
 struct CopyableRecord {
     struct CopyPayload payload;
+#if defined(jpn)
+    unsigned char byte11;
+#endif
     short f30;
     signed char f32;
     unsigned char f33;

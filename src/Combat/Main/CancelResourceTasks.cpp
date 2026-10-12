@@ -8,7 +8,11 @@
 void ReleaseHandle02022b90(void *owner, int *handle);
 
 struct CleanupReceiver02022bb0 {
+#if defined(jpn)
+    char pad0[0x90c];
+#else
     char pad0[0x9b8];
+#endif
     unsigned char flag9b8;
     char pad9b9[8];
     unsigned char currentMode;
@@ -21,7 +25,11 @@ struct CleanupReceiver02022bb0 {
     int task9d0;
     int task9d4;
     int entryTasks[8];
+#if defined(jpn)
+    char unused94c[4];
+#else
     int task9f8;
+#endif
     int task9fc;
     int taska00;
     int taska04;
@@ -51,8 +59,10 @@ extern "C" ARM void func_02022bb0(void *receiver) {
 
     BackgroundLoader::GetInstance()->RemoveTask(object->task9cc);
     object->task9cc = -1;
+#if !defined(jpn)
     BackgroundLoader::GetInstance()->RemoveTask(object->task9f8);
     object->task9f8 = -1;
+#endif
     BackgroundLoader::GetInstance()->RemoveTask(object->task9d0);
     object->task9d0 = -1;
     BackgroundLoader::GetInstance()->RemoveTask(object->task9d4);

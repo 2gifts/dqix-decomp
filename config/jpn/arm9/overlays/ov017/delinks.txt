@@ -4278,3 +4278,15 @@ src/Combat/Overlay_17/CopyNameToSlot_021c4618.cpp:
 src/Combat/Overlay_17/StoreByteAndFinalize_021d3e7c.cpp:
     complete
     .text start:0x021d42cc end:0x021d4308
+
+src/Combat/Overlay_17/ApplyPendingListEntry_021b5250.cpp:
+    complete
+    .text start:0x021b5814 end:0x021b58fc
+
+src/Combat/Overlay_17/AppendTagIfHeadMatch_021d0f94.cpp:
+    complete
+    .text start:0x021d140c end:0x021d148c
+
+src/Combat/Overlay_17/EmptyFunc_021b65d8.cpp:
+    complete
+    .text start:0x021b6b8c end:0x021b6b90

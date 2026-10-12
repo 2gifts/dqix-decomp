@@ -1,6 +1,10 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
+#if defined(jpn)
+#define func_ov000_021787b8 func_ov000_02179c68
+#endif
+
 struct Struct_0205ba68;
 struct Node0205bacc;
 
@@ -12,7 +16,11 @@ extern "C" int func_ov000_0217538c(void* objRaw);
 extern "C" int func_ov000_021753d8(void* objRaw, int targetIndex);
 extern "C" void func_ov000_0217ab8c(void* obj, int a, int b);
 extern "C" void func_ov000_02178938(void* obj, void* in, int b, void* buf);
+#if defined(jpn)
+extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g);
+#else
 extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g, int h);
+#endif
 
 struct InStruct_021787b8 {
     char pad0[0x1d];
@@ -34,10 +42,18 @@ extern "C" ARM void func_ov000_021787b8(void* objRaw, struct InStruct_021787b8* 
     int group = func_ov000_021753d8(obj, in->position);
     func_ov000_0217ab8c(in, mode, arg3);
     char* s = obj + 0x188;
+#if defined(jpn)
+    *(short*)(s + 0xa0) = 1;
+#else
     *(short*)(s + 0xa0) = 0x10;
+#endif
     *(short*)(s + 0xa2) = 1;
     *(short*)(s + 0xa4) = (x >> 3) + 0xe;
+#if defined(jpn)
+    *(short*)(s + 0xa6) = (y >> 3) + 1;
+#else
     *(short*)(s + 0xa6) = y >> 3;
+#endif
     *(short*)(s + 0xa8) = 0xc;
     *(short*)(s + 0xaa) = 6;
     *(short*)(s + 0xac) = 0xa;
@@ -47,8 +63,20 @@ extern "C" ARM void func_ov000_021787b8(void* objRaw, struct InStruct_021787b8* 
     *(int*)(obj + 0x248) = 1;
     _Z29SetField0AndPropagate0205baccP12Node0205bacci((struct Node0205bacc*)(obj + 0x244), groupCount);
     func_0205bb04(obj + 0x244, group);
+#if defined(jpn)
+    void* buf = *(void**)((char*)_Z26GetGlobalField0x1c020421a0v() + 0x28);
+#else
     void* buf = *(void**)((char*)_Z26GetGlobalField0x1c020421a0v() + 0x5c);
+#endif
+#if defined(jpn)
+    memset(buf, 0, 0x800);
+#else
     memset(buf, 0, 0x960);
+#endif
     func_ov000_02178938(obj, in, arg3, buf);
+#if defined(jpn)
+    func_0205d304(s, buf, 0, 1, 0, 1, 0);
+#else
     func_0205d304(s, buf, 0, 1, 0, 1, 0, 0);
+#endif
 }

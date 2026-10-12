@@ -1,4 +1,20 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum CommandLayoutOffsets { kCombatantCommandsOffset = 0x144, kSpecialListOffset = 0x8b8, kEligibilityOffset = 0xc7 };
+#else
+enum CommandLayoutOffsets { kCombatantCommandsOffset = 0x150, kSpecialListOffset = 0x950, kEligibilityOffset = 0x87 };
+#endif
+
+
+#if defined(jpn)
+#define ClearBitInArray0x8ec func_02084434
+#endif
+
+
+#if defined(jpn)
+#define func_ov026_021dc8fc func_ov026_021dcfcc
+#endif
 #include "GameState/GameState.h"
 
 struct Struct0217193c;
@@ -48,7 +64,7 @@ struct CommandSlot {
     char pad0[0x10];
     unsigned char selections[8];
     signed char selection;
-    char pad19[0x87 - 0x19];
+    char pad19[kEligibilityOffset - 0x19];
     unsigned char eligible;
 };
 struct LearnedCommands {
@@ -56,10 +72,10 @@ struct LearnedCommands {
     short equipped[8];
     char pad464[0x488 - 0x464];
     short equipment[9];
-    char pad49a[0x950 - 0x49a];
+    char pad49a[kSpecialListOffset - 0x49a];
     int useSpecialList;
 };
-struct CombatantView { char pad0[0x150]; LearnedCommands* commands; };
+struct CombatantView { char pad0[kCombatantCommandsOffset]; LearnedCommands* commands; };
 struct AbilityEntry { unsigned short id, command; char pad4[6]; unsigned short order; };
 struct Entry0209a9dc { unsigned short id, command; };
 struct PartyRoster { char pad0[0xf78]; unsigned char ids[4]; unsigned char count; };
@@ -76,6 +92,9 @@ extern "C" void _Z29ZeroArr1a4AndFlag0x840217193cP14Struct0217193c(Struct0217193
 extern "C" void _Z28ZeroArr9cAndFlag0x8202171614P14Struct02171614(Struct02171614*);
 extern "C" Element020de650* _Z24FindElementByKey020dedd0P17Container020dedd0i(Container020dedd0*, int);
 void SetBitInArray0x8ec(unsigned char*, int);
+#if defined(jpn)
+extern "C"
+#endif
 void ClearBitInArray0x8ec(unsigned char*, int);
 int TestBitInArray0x8ec(unsigned char*, int);
 extern "C" int _Z28CollectSetBitIndices020839dcP16BitArray020839dcPhi(BitArray020839dc*, unsigned char*, int);

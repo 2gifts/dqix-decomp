@@ -47,3 +47,23 @@ src/Combat/Overlay_20/InitializeAndDispatchLists_0218cf8c.cpp:
 src/Combat/Overlay_20/AdvanceFadeFieldGroups_0218d644.cpp:
     complete
     .text start:0x0218de94 end:0x0218dffc
+
+src/Combat/Overlay_20/UpdateFieldGroup4e8_0218d7ac.cpp:
+    complete
+    .text start:0x0218dffc end:0x0218e050
+
+src/Combat/Overlay_20/UpdateFieldGroup4f4_0218d800.cpp:
+    complete
+    .text start:0x0218e050 end:0x0218e0a4
+
+src/Combat/Overlay_20/DecrementFieldGroup4e4_0218d854.cpp:
+    complete
+    .text start:0x0218e0a4 end:0x0218e0e8
+
+src/Combat/Overlay_20/CheckCountersActive_0218d898.cpp:
+    complete
+    .text start:0x0218e0e8 end:0x0218e128
+
+src/Combat/Overlay_20/ResetAllocatorAndDispatchState_0218d8d8.cpp:
+    complete
+    .text start:0x0218e128 end:0x0218e194

@@ -1,8 +1,19 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
+#if defined(jpn)
+extern "C" int func_02069430(void* obj, unsigned short token);
+enum { kTokenBase = 0xff22 };
+#else
 bool IsHighByteFF02044494(void* obj, void* src);
+enum { kTokenBase = 0xff20 };
+#endif
 
+#if defined(jpn)
+extern "C" ARM int func_02069444(void* obj, unsigned short buf) {
+    int result = 0;
+    if (!func_02069430(obj, buf)) return 0;
+#else
 // USA: func_02044420
 ARM int Dispatch02044420(void* obj, void* src) {
     unsigned short buf;
@@ -11,15 +22,16 @@ ARM int Dispatch02044420(void* obj, void* src) {
     if (!IsHighByteFF02044494(obj, &buf)) {
         return 0;
     }
+#endif
     switch (buf) {
-    case 0xff20:
-    case 0xff21:
-    case 0xff23:
-    case 0xff24:
+    case kTokenBase + 0:
+    case kTokenBase + 1:
+    case kTokenBase + 3:
+    case kTokenBase + 4:
         result = 1;
         break;
-    case 0xff22:
-    case 0xff25:
+    case kTokenBase + 2:
+    case kTokenBase + 5:
         result = 2;
         break;
     }

@@ -1,4 +1,15 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kAllocatorOffset = 0x400 };
+#else
+enum { kAllocatorOffset = 0x470 };
+#endif
+
+
+#if defined(jpn)
+#define ResetAllocatorAndDispatchState_0218d8d8 func_ov020_0218e128
+#endif
 #include "Memory/SafeAllocator.h"
 #include "GameState/GameState.h"
 
@@ -19,11 +30,14 @@ extern char data_02109bf4;
 extern char data_02108760;
 
 struct AllocGroup0218d8d8 {
-    char pad[0x470];
+    char pad[kAllocatorOffset];
     SafeAllocator allocator;
 };
 
 // USA: func_ov020_0218d8d8
+#if defined(jpn)
+extern "C"
+#endif
 ARM void ResetAllocatorAndDispatchState_0218d8d8(struct AllocGroup0218d8d8* obj) {
     GameState* battleStruct = GameState::GetInstance();
     SignedAllocatorHeader* header = obj->allocator.GetSignedAllocator();

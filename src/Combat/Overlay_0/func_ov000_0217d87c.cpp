@@ -1,6 +1,11 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+#define func_ov000_0217d87c func_ov000_0217ec74
+extern "C" void* func_020e08f0(int index, unsigned int* size);
+#endif
+
 struct Struct_0205c570;
 struct Obj0205eaa0;
 struct Entry_0205d6a0;
@@ -15,7 +20,11 @@ struct ElemNode {
     signed char markIndex;
     char pad19[0x24 - 0x19];
     unsigned char flags;
+#if defined(jpn)
+    char pad25[0xc7 - 0x25];
+#else
     char pad25[0x87 - 0x25];
+#endif
     unsigned char field87;
 };
 
@@ -31,7 +40,11 @@ struct MenuState {
     unsigned char mode;
     char pad241[0x956 - 0x241];
     unsigned char field956;
+#if defined(jpn)
+    char pad957[0x1f98 - 0x957];
+#else
     char pad957[0x1d60 - 0x957];
+#endif
     unsigned char modeStack[8];
     signed char depth;
     char pad1d69[2];
@@ -90,12 +103,24 @@ extern "C" ARM void func_ov000_0217d87c(MenuState* menu, int arg1, int arg2) {
         menu->mode = 6;
         _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
         _ZN16BackgroundLoader13AddLockGlobalEv();
+#if defined(jpn)
+        _ZN13SafeAllocator5ResetEv((char*)menu + 0x1bf8);
+#else
         _ZN13SafeAllocator5ResetEv((char*)menu + 0x1af8);
+#endif
         _Z16ZeroInit020de848Pv((char*)menu + 0x100);
         unsigned int size;
+#if defined(jpn)
+        void* data = func_020e08f0(0, &size);
+#else
         void* data = ExtractFileFromGP2(data_020f2a34, data_020f2a2c, &size);
+#endif
         if (data != NULL) {
+#if defined(jpn)
+            func_020de9a4((char*)menu + 0x100, menu->field26 + 0x1bd2, data, size, menu->field26, menu->field66);
+#else
             func_020de9a4((char*)menu + 0x100, menu->field26 + 0x1ad2, data, size, menu->field26, menu->field66);
+#endif
         }
         _ZN16BackgroundLoader16RemoveLockGlobalEv();
         menu->field1d6f = 0;

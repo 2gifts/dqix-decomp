@@ -65,3 +65,8 @@ src/Combat/Overlay_26/FindSlotById_021dae60.cpp:
 src/Combat/Overlay_26/func_ov026_021dd3dc.cpp:
     complete
     .text start:0x021ddaac end:0x021ddf78
+
+src/Combat/Overlay_26/func_ov026_021dc8fc.cpp:
+    complete
+    .text start:0x021dcfcc end:0x021dd4ec
+    .rodata start:0x021dece0 end:0x021dece8
