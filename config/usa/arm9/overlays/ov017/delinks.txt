@@ -4515,3 +4515,118 @@ src/Combat/Overlay_17/func_ov017_021d27e4.cpp:
 src/Combat/Overlay_17/func_ov017_021d2d64.cpp:
     complete
     .text start:0x021d2d64 end:0x021d35f8
+
+
+src/Combat/Overlay_17/func_ov017_0218e210.cpp:
+    complete
+    .text start:0x0218e210 end:0x0218e674
+
+
+src/Combat/Overlay_17/func_ov017_02198aa0.cpp:
+    complete
+    .text start:0x02198aa0 end:0x02198e30
+
+
+src/Combat/Overlay_17/func_ov017_0219a6b8.cpp:
+    complete
+    .text start:0x0219a6b8 end:0x0219aa5c
+
+
+src/Combat/Overlay_17/func_ov017_0219aa7c.cpp:
+    complete
+    .text start:0x0219aa7c end:0x0219ad84
+
+
+src/Combat/Overlay_17/func_ov017_0219b624.cpp:
+    complete
+    .text start:0x0219b624 end:0x0219b938
+
+
+src/Combat/Overlay_17/func_ov017_0219c774.cpp:
+    complete
+    .text start:0x0219c774 end:0x0219ca88
+
+
+src/Combat/Overlay_17/func_ov017_0219ca88.cpp:
+    complete
+    .text start:0x0219ca88 end:0x0219cd98
+
+
+src/Combat/Overlay_17/func_ov017_021a2c14.cpp:
+    complete
+    .text start:0x021a2c14 end:0x021a2fa0
+
+
+src/Combat/Overlay_17/func_ov017_021a4368.cpp:
+    complete
+    .text start:0x021a4368 end:0x021a4658
+
+
+src/Combat/Overlay_17/func_ov017_021a6648.cpp:
+    complete
+    .text start:0x021a6648 end:0x021a6b30
+
+
+src/Combat/Overlay_17/func_ov017_021a6c2c.cpp:
+    complete
+    .text start:0x021a6c2c end:0x021a7280
+
+
+src/Combat/Overlay_17/func_ov017_021ac3b0.cpp:
+    complete
+    .text start:0x021ac3b0 end:0x021aca00
+
+
+src/Combat/Overlay_17/func_ov017_021ae85c.cpp:
+    complete
+    .text start:0x021ae85c end:0x021aee9c
+
+
+src/Combat/Overlay_17/func_ov017_021b9e30.cpp:
+    complete
+    .text start:0x021b9e30 end:0x021ba124
+
+
+src/Combat/Overlay_17/func_ov017_021bd704.cpp:
+    complete
+    .text start:0x021bd704 end:0x021bdb78
+
+
+src/Combat/Overlay_17/func_ov017_021bdc34.cpp:
+    complete
+    .text start:0x021bdc34 end:0x021be09c
+
+
+src/Combat/Overlay_17/func_ov017_021be0c4.cpp:
+    complete
+    .text start:0x021be0c4 end:0x021be3b4
+
+
+src/Combat/Overlay_17/func_ov017_021c1af0.cpp:
+    complete
+    .text start:0x021c1af0 end:0x021c1dfc
+
+
+src/Combat/Overlay_17/func_ov017_021c32b0.cpp:
+    complete
+    .text start:0x021c32b0 end:0x021c35ac
+
+
+src/Combat/Overlay_17/func_ov017_021c787c.cpp:
+    complete
+    .text start:0x021c787c end:0x021c7b8c
+
+
+src/Combat/Overlay_17/func_ov017_021c7b8c.cpp:
+    complete
+    .text start:0x021c7b8c end:0x021c7ebc
+
+
+src/Combat/Overlay_17/func_ov017_021caea8.cpp:
+    complete
+    .text start:0x021caea8 end:0x021cb2f4
+
+
+src/Combat/Overlay_17/func_ov017_021d3fa8.cpp:
+    complete
+    .text start:0x021d3fa8 end:0x021d440c
