@@ -3,7 +3,15 @@
 struct Entry0209ebe4 { char data[0x40]; };
 struct Source0209ebe4 { char pad0[0x5c60]; Entry0209ebe4 entries[16]; char pad6060[0x8e07-0x6060]; unsigned char count; };
 struct Manager0209ebe4 { int field_0x0; Source0209ebe4* source; char pad8[0x90]; int count; Entry0209ebe4 entries[16]; int temporaryCount; Entry0209ebe4 temporary[16]; };
+#if defined(jpn)
+#include "Combat/Main/CandidateFilter.h"
+#define func_0209dcdc func_0209e1cc
+#define func_0209ebe4 func_020a0644
+enum { kFilterMode = 0 };
+#else
 extern "C" int func_0209dcdc(Manager0209ebe4*, Entry0209ebe4*, int, int);
+enum { kFilterMode = 1 };
+#endif
 // USA: func_0209ebe4
 extern "C" ARM void func_0209ebe4(Manager0209ebe4* mgr, int filterExisting, int arg) {
     int limit;
@@ -16,7 +24,7 @@ extern "C" ARM void func_0209ebe4(Manager0209ebe4* mgr, int filterExisting, int 
         limit = mgr->source->count;
         for (i = 0; i < limit; i++) {
             entry = &mgr->source->entries[i];
-            if (entry && func_0209dcdc(mgr, entry, 1, arg)) {
+            if (entry && func_0209dcdc(mgr, entry, kFilterMode, arg)) {
                 memcpy(&mgr->entries[mgr->count++], entry, 0x40);
             }
         }
@@ -26,7 +34,7 @@ extern "C" ARM void func_0209ebe4(Manager0209ebe4* mgr, int filterExisting, int 
         source = mgr->entries;
         for (i = 0; i < mgr->count; i++) {
             entry = &source[i];
-            if (func_0209dcdc(mgr, entry, 1, arg)) {
+            if (func_0209dcdc(mgr, entry, kFilterMode, arg)) {
                 int count = mgr->temporaryCount;
                 mgr->temporaryCount = mgr->temporaryCount + 1;
                 memcpy(&mgr->temporary[count], entry, 0x40);

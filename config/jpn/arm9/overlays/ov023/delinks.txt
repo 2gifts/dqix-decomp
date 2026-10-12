@@ -2636,3 +2636,47 @@ src/Combat/Overlay_23/InitAndDispatch_021fd2b8.cpp:
 src/Combat/Overlay_23/GetValOrTwo_021fd2f8.cpp:
     complete
     .text start:0x021fc5f0 end:0x021fc610
+
+src/Combat/Overlay_23/func_ov023_021fa2f4.cpp:
+    complete
+    .text start:0x021f9778 end:0x021f97f4
+
+src/Combat/Overlay_23/CallVTableFnAt4Loop_021f698c.cpp:
+    complete
+    .text start:0x021f5ec8 end:0x021f5ef4
+
+src/Combat/Overlay_23/DestroySafeAllocator_021fbe4c.cpp:
+    complete
+    .text start:0x021fb1c8 end:0x021fb1ec
+
+src/Combat/Overlay_23/func_ov023_021faa60.cpp:
+    complete
+    .text start:0x021f9e44 end:0x021f9f2c
+
+src/Combat/Overlay_23/func_ov023_021fa9a4.cpp:
+    complete
+    .text start:0x021f9d88 end:0x021f9e34
+
+src/Combat/Overlay_23/DispatchIfEntryFound_021fa5a0.cpp:
+    complete
+    .text start:0x021f99c8 end:0x021f9a6c
+
+src/Combat/Overlay_23/BuildChain_021e1b0c.cpp:
+    complete
+    .text start:0x021e20c0 end:0x021e2110
+
+src/Combat/Overlay_23/SetFlagFromField0NonZero_021ea920.cpp:
+    complete
+    .text start:0x021ea884 end:0x021ea8bc
+
+src/Combat/Overlay_23/SetFieldFromBlockPercent_021e99a8.cpp:
+    complete
+    .text start:0x021e990c end:0x021e9940
+
+src/Combat/Overlay_23/SetFieldFromPercentOver232_021e9a10.cpp:
+    complete
+    .text start:0x021e9974 end:0x021e99a8
+
+src/Combat/Overlay_23/SetFieldFromPercentOver944_021e9a44.cpp:
+    complete
+    .text start:0x021e99a8 end:0x021e99dc

@@ -21,6 +21,15 @@ struct DispatchEntry02081574 {
     int locator;
 };
 
+#if defined(jpn)
+#define data_020e8a54 data_020e8b68
+#define ProcessEntryList02081574 func_02081e78
+extern "C" ARM void func_02081e78(void* obj, void* ctx, void* list);
+enum { kSelectedIdOffset = 0x2a, kOriginOffset = 0x28 };
+#else
+enum { kSelectedIdOffset = 0x36, kOriginOffset = 0x34 };
+#endif
+
 extern struct DispatchEntry02081574 data_020e8a54[];
 
 // USA: func_02081574
@@ -35,9 +44,9 @@ ARM void ProcessEntryList02081574(void* obj, void* ctx, void* list) {
         id = (*(short**)list)[i];
         e = (struct Entry02081574*)FindEntryByShortId0207f6ac((struct List0207f6ac*)((char*)obj + 0x4), id);
         if (e != NULL) {
-            if (*(short*)((char*)obj + 0x36) == id) {
+            if (*(short*)((char*)obj + kSelectedIdOffset) == id) {
                 short val = e->field8;
-                short diff = (short)(e->field6 - *(short*)((char*)obj + 0x34));
+                short diff = (short)(e->field6 - *(short*)((char*)obj + kOriginOffset));
                 switch (e->field13nibble) {
                 case 8:
                     val = (short)(val - 1);

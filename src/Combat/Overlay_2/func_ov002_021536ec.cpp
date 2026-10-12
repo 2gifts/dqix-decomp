@@ -1,5 +1,14 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov002_021536ec func_ov002_02154e6c
+#define data_ov002_0216d3a0 data_ov002_0216db20
+#define data_ov002_0216cce4 data_ov002_0216d304
+#define data_ov002_0216cce8 data_ov002_0216d308
+#define data_ov002_0216ccc0 data_ov002_0216d2e0
+#define data_ov002_0216ccc4 data_ov002_0216d2e4
+#endif
+
 class PMFObj021536ec {
 public:
     char *f0;

@@ -1,4 +1,34 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov017_021b7284 func_ov017_021b7834
+#define func_ov000_02160620 func_ov000_02161d9c
+#define ApplyFlag0x80ToBit0x1ClearFlag0x100 func_020555c0
+#define SetIntField0x264 func_020391b0
+#define func_0204500c func_02045d88
+#define SCENE_NODES_021b790c 0x4ec
+#define SCENE_NODE_021b790c 0x93c
+#define SCENE_ID_BASE_021b790c 0x4200
+#define SCENE_ID_OFFSET_021b790c 0x12
+#define SCENE_EVENT_FLAG_021b790c 0xc2
+#define SCENE_COMBATANT_FLAGS_021b790c 0x180
+#define SCENE_ZONE_LOCKS_021b790c 0x444
+#define SCENE_ZONE_FLAG_021b790c 0x125
+#define SCENE_COMBATANT_ID_021b790c 0x1a6
+extern "C" char data_ov017_021d8358[];
+extern "C" char data_ov017_021d8395[];
+extern "C" char data_ov017_021d83c0[];
+#else
+#define SCENE_NODES_021b790c 0x6fc
+#define SCENE_NODE_021b790c 0xb5c
+#define SCENE_ID_BASE_021b790c 0x4400
+#define SCENE_ID_OFFSET_021b790c 0xc2
+#define SCENE_EVENT_FLAG_021b790c 0x2e2
+#define SCENE_COMBATANT_FLAGS_021b790c 0x18c
+#define SCENE_ZONE_LOCKS_021b790c 0x424
+#define SCENE_ZONE_FLAG_021b790c 0x105
+#define SCENE_COMBATANT_ID_021b790c 0x1b2
+#endif
 #include "GameState/GameState.h"
 #include "Resource/GameResources.h"
 #include "Filesystem/BackgroundLoader.h"
@@ -28,11 +58,19 @@ struct Context021b790c {
 
 struct Controller021b790c {
     void* obj;
+#if defined(jpn)
+    char pad4[0x868 - 0x4];
+    int ready;
+    char pad86c[0x1789 - 0x86c];
+    unsigned char flags195b;
+    char pad178a[0x17e1 - 0x178a];
+#else
     char pad4[0x998 - 0x4];
     int ready;
     char pad99c[0x195b - 0x99c];
     unsigned char flags195b;
     char pad195c[0x19b1 - 0x195c];
+#endif
     unsigned char field_19b1;
     unsigned char field_19b2;
 };
@@ -97,7 +135,11 @@ struct Obj021b790c {
 };
 
 struct Hud021b790c {
+#if defined(jpn)
+    char pad[0x97];
+#else
     char pad[0x9b];
+#endif
     unsigned char active;
     void SetActive(unsigned char v) { active = v; }
 };
@@ -121,6 +163,9 @@ void PrependNodeToHead(HeadList020469f8* list, HeadNode020469f8* node);
 extern "C" void func_ov000_02160620(void* p);
 int IsCombatWorkFlag0x400Set(void* p);
 GameObject* GetCombatantWithFlag0x100(GameState* gs, int id);
+#if defined(jpn)
+extern "C"
+#endif
 void ApplyFlag0x80ToBit0x1ClearFlag0x100(void* obj);
 unsigned char GetField0x5729Value(char* gs);
 void SetField0x5729Value(char* gs, unsigned char value);
@@ -175,14 +220,25 @@ extern "C" int abs(int x);
 extern "C" void* func_020704fc(void);
 void SetColoredEffectParam02070900(EffectParam02070900* p, Rgb02070900* rgb, unsigned int v);
 void UpdateInterpTimer020707c8(Timer020707c8* t);
+#if defined(jpn)
+extern "C" void func_0204500c(void* obj, char* buffer, int a);
+#else
 extern "C" void func_0204500c(void* obj, char* buffer, int a, int b);
+#endif
 void InitFields02042b3c(void* obj);
+#if defined(jpn)
+extern "C" void func_020d7e10(void* receiver, char* input, int style, int flag, int a);
+#else
 extern "C" void func_020d7e10(void* receiver, char* input, int style, int flag, int a, int b);
+#endif
 void OrBitsIntoField0(unsigned int* obj, unsigned int mask);
 void EnqueueEventTag128_021cbf18(unsigned char a, unsigned short b);
 extern "C" void func_ov017_021b86f8(BattleScene021b790c* self, int id, int showMessage, int arg3);
 extern "C" int func_ov017_02195658(void* res);
 void ClearBitAt0x34(unsigned char* obj, int index);
+#if defined(jpn)
+extern "C"
+#endif
 void SetIntField0x264(void* obj, int v);
 void ReinitController02043204(char* obj);
 extern "C" void func_02043124(void* obj);
@@ -210,8 +266,8 @@ extern "C" ARM void func_ov017_021b790c(BattleScene021b790c* self, ListHead02046
     unsigned short state = self->state;
     if (state == 6) {
         if (GetState0209ca68(data_02109bf4) != 2) {
-            HeadList020469f8* nodes = *(HeadList020469f8**)(res + 0x3000 + 0x6fc);
-            HeadNode020469f8* node = *(HeadNode020469f8**)(res + 0x3000 + 0xb5c);
+            HeadList020469f8* nodes = *(HeadList020469f8**)(res + 0x3000 + SCENE_NODES_021b790c);
+            HeadNode020469f8* node = *(HeadNode020469f8**)(res + 0x3000 + SCENE_NODE_021b790c);
             func_ov017_021b621c(node, 0, 0);
             *(unsigned short*)((char*)node + 0xfe) = self->field_28;
             PrependNodeToHead(nodes, node);
@@ -222,7 +278,7 @@ extern "C" ARM void func_ov017_021b790c(BattleScene021b790c* self, ListHead02046
         if (IsCombatWorkFlag0x400Set(self->field_6ac) == 0) return;
         void* search2 = func_0202ae18();
         self->flags |= 0x1000;
-        *(unsigned short*)(res + 0x4400 + 0xc2) = self->id;
+        *(unsigned short*)(res + SCENE_ID_BASE_021b790c + SCENE_ID_OFFSET_021b790c) = self->id;
         Party021b790c* party = (Party021b790c*)GetPtrField0x2a04(gs);
         GameState* gs2 = GameState::GetInstance();
         int i;
@@ -307,7 +363,7 @@ extern "C" ARM void func_ov017_021b790c(BattleScene021b790c* self, ListHead02046
                 if (hero != NULL && (**(int**)((char*)hero + 0x130) & 1)) {
                     func_02048150(hero, 0, 1);
                     *(unsigned short*)(*(char**)((char*)hero + 0x130) + 4) = 1;
-                    *(unsigned int*)((char*)hero + 0x18c) &= ~1;
+                    *(unsigned int*)((char*)hero + SCENE_COMBATANT_FLAGS_021b790c) &= ~1;
                     SetByte0xbeShiftPrev((Bytes02033b88*)hero, 0);
                 }
                 unsigned char id = GetField0x3acValue(gs);
@@ -323,13 +379,13 @@ extern "C" ARM void func_ov017_021b790c(BattleScene021b790c* self, ListHead02046
         if (self->flags & 0x400) {
             BackgroundLoader* loader = BackgroundLoader::GetInstance();
             _ZN6Zone3D10SwitchZoneEt((Zone3D*)zone, *(unsigned short*)zone, 0);
-            while (*(int*)(zone + 0x424) != 0) {
+            while (*(int*)(zone + SCENE_ZONE_LOCKS_021b790c) != 0) {
                 loader->RemoveAllLocks();
                 func_02015438(zone);
             }
         }
         ResetBattleEncounterState0205859c(func_02057924());
-        zone[0x105] &= ~1;
+        zone[SCENE_ZONE_FLAG_021b790c] &= ~1;
         int flagObj = GetFieldIfFlag4((char*)gs);
         switch ((*(ZoneInfo021b790c**)(zone + 8))->mode) {
         case 0:
@@ -353,11 +409,11 @@ extern "C" ARM void func_ov017_021b790c(BattleScene021b790c* self, ListHead02046
         self->state = 5;
     } else if (state == 5) {
         if (self->flags & 0x1000) {
-            if (ListContainsId(*(ListHead02046b60**)(res + 0x3000 + 0x6fc), 3) == 0) {
+            if (ListContainsId(*(ListHead02046b60**)(res + 0x3000 + SCENE_NODES_021b790c), 3) == 0) {
                 SetMainBrightness((GameResources*)res, 0, 0x1e);
             }
         }
-        SetFieldForMatchingCombatant_021c98f4(*(unsigned short*)((char*)gs->GetUnknownGameObject() + 0x1b2), 0);
+        SetFieldForMatchingCombatant_021c98f4(*(unsigned short*)((char*)gs->GetUnknownGameObject() + SCENE_COMBATANT_ID_021b790c), 0);
         func_ov017_021b6f9c(self);
         self->done = 1;
     } else if (state == 2) {
@@ -368,6 +424,13 @@ extern "C" ARM void func_ov017_021b790c(BattleScene021b790c* self, ListHead02046
         if (prev < 500 && self->timer >= 500) {
             GameObject* unk = gs->GetUnknownGameObject();
             void* reset = GetGlobalResetObj020d7a50();
+#if defined(jpn)
+            char text[0x64];
+            __clear(text, sizeof(text));
+            if (unk != NULL) {
+                sprintf(text, data_ov017_021d8358, *(char**)((char*)unk + 0x134));
+            }
+#else
             func_02046380(ctrl);
             char text[0x64];
             char name[0x64];
@@ -380,6 +443,7 @@ extern "C" ARM void func_ov017_021b790c(BattleScene021b790c* self, ListHead02046
                 sprintf(name, (const char*)CallFunc020e0434With02153694(0x20));
                 func_02046608(ctrl, 0xc, name, text, 0xe3, 0, 1);
             }
+#endif
             if (abs(GetAxisIntValue((AxisFloats0203b57c*)res, 0)) == 0x10) {
                 void* effect = func_020704fc();
                 Obj021b790c rgb;
@@ -387,11 +451,19 @@ extern "C" ARM void func_ov017_021b790c(BattleScene021b790c* self, ListHead02046
                 SetMainBrightness((GameResources*)res, 0, 1);
                 SetColoredEffectParam02070900((EffectParam02070900*)effect, (Rgb02070900*)&rgb, 0);
                 UpdateInterpTimer020707c8((Timer020707c8*)effect);
+#if defined(jpn)
+                func_0204500c(ctrl, text, 0);
+#else
                 func_0204500c(ctrl, text, 0, 0xe3);
+#endif
                 ctrl->ready = 1;
                 InitFields02042b3c(ctrl);
             } else {
+#if defined(jpn)
+                func_020d7e10(reset, text, 0, 0, 1);
+#else
                 func_020d7e10(reset, text, 0, 0, 1, 1);
+#endif
             }
             if (IsField0xcNonNegative((int*)self->info)) {
                 OrBitsIntoField0(flagWord, 0x200);
@@ -416,7 +488,7 @@ extern "C" ARM void func_ov017_021b790c(BattleScene021b790c* self, ListHead02046
         if (idx >= 0) {
             ClearBitAt0x34(self->info, (unsigned char)idx);
         }
-        if (*(unsigned char*)(res + 0x4000 + 0x2e2) != 0) {
+        if (*(unsigned char*)(res + 0x4000 + SCENE_EVENT_FLAG_021b790c) != 0) {
             func_ov017_021b86f8(self, self->id, 0, 0);
             SetIntField0x264(obj, 0);
             func_ov017_021b6f9c(self);
@@ -429,7 +501,7 @@ extern "C" ARM void func_ov017_021b790c(BattleScene021b790c* self, ListHead02046
         func_ov017_021b6f9c(self);
         self->done = 1;
     } else if (state == 1) {
-        if (*(unsigned char*)(res + 0x4000 + 0x2e2) != 0) {
+        if (*(unsigned char*)(res + 0x4000 + SCENE_EVENT_FLAG_021b790c) != 0) {
             func_ov017_021b6f9c(self);
             self->done = 1;
         }
@@ -446,6 +518,25 @@ extern "C" ARM void func_ov017_021b790c(BattleScene021b790c* self, ListHead02046
             unsigned char useLeader;
             useLeader = self->field_48;
             member = self->member;
+#if defined(jpn)
+            char text[0x64];
+            __clear(text, sizeof(text));
+            if (useLeader != 0) {
+                GameObject* m = GetCombatantWithFlag0x100(gs, GetField0x397cValue(gs));
+                if (m != NULL) {
+                    sprintf(text, data_ov017_021d8395, *(char**)((char*)m + 0x134));
+                }
+            } else {
+                GameObject* m = gs->GetPartyMemberByIndex(member);
+                if (m != NULL) {
+                    GameObject* m2 = gs->GetPartyMemberByIndex(GetSignedByte0x1ca(m));
+                    if (m2 != NULL) {
+                        sprintf(text, data_ov017_021d83c0, *(char**)((char*)m2 + 0x134));
+                    }
+                }
+            }
+            func_0204500c(c, text, 0);
+#else
             char text[0x100];
             Obj021b790c who;
             __clear(text, sizeof(text));
@@ -468,6 +559,7 @@ extern "C" ARM void func_ov017_021b790c(BattleScene021b790c* self, ListHead02046
             }
             func_0204500c(c, text, 0, 0xe3);
             InitFields02042b3c(c);
+#endif
             c->ready = 1;
             c->field_19b2 = 1;
             c->field_19b1 = 0;

@@ -171,3 +171,7 @@ src/Combat/Overlay_2/func_ov002_02155dbc.cpp:
 src/Combat/Overlay_2/HasPositiveField256Short178_02154b94.cpp:
     complete
     .text start:0x02156314 end:0x0215634c
+
+src/Combat/Overlay_2/func_ov002_021536ec.cpp:
+    complete
+    .text start:0x02154e6c end:0x02155064

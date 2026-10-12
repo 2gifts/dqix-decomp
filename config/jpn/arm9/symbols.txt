@@ -1965,7 +1965,7 @@ func_0204f6a0 kind:function(arm,size=0x554) addr:0x0204f6a0
 _Z23FillIndexBuffer0204e998P14Canvas0204e998 kind:function(arm,size=0x90) addr:0x0204fbf4
 _Z20IsWithinRect0204ea28iiiiss kind:function(arm,size=0x34) addr:0x0204fc84
 func_0204fcb8 kind:function(arm,size=0x258) addr:0x0204fcb8
-func_0204ff10 kind:function(arm,size=0x438) addr:0x0204ff10
+func_0204ecb4 kind:function(arm,size=0x438) addr:0x0204ff10
 _Z24ClearFourRegions0204f0ecPc kind:function(arm,size=0x4c) addr:0x02050348
 _Z24GetFourSubstructPointersPhPS_S0_S0_S0_ kind:function(arm,size=0x28) addr:0x02050394
 _Z37SetField0xa0AndByte0xc4IfFlag0x1ClearPhih kind:function(arm,size=0x14) addr:0x020503bc
@@ -6130,7 +6130,7 @@ data_020e831c kind:data(any) addr:0x020e831c
 data_020e8328 kind:data(any) addr:0x020e8328
 data_020e8334 kind:data(any) addr:0x020e8334
 data_020e8344 kind:data(any) addr:0x020e8344
-data_020e8368 kind:data(any) addr:0x020e8368
+data_020e7a0c kind:data(any) addr:0x020e8368
 data_020e7a20 kind:data(any) addr:0x020e837c
 data_020e83e4 kind:data(any) addr:0x020e83e4
 data_020e83e9 kind:data(any) addr:0x020e83e9

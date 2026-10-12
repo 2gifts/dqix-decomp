@@ -4106,3 +4106,27 @@ src/Combat/Overlay_17/SetGrottoUnknown3And4_021cfcb4.cpp:
 src/Combat/Overlay_17/DispatchGlobalWithFields_021d1854.cpp:
     complete
     .text start:0x021d1cd8 end:0x021d1cf8
+
+src/Combat/Overlay_17/ProcessFlaggedCombatants800_021a205c.cpp:
+    complete
+    .text start:0x021a2aec end:0x021a2b50
+
+src/Combat/Overlay_17/SetCombatantFlagAndSearchBit_021ceab4.cpp:
+    complete
+    .text start:0x021cef5c end:0x021cef8c
+
+src/Combat/Overlay_17/SwapArgsAndForward_021b213c.cpp:
+    complete
+    .text start:0x021b2854 end:0x021b287c
+
+src/Combat/Overlay_17/EnqueueEventTag83_021c8c04.cpp:
+    complete
+    .text start:0x021c90b4 end:0x021c90f4
+
+src/Combat/Overlay_17/func_ov017_021b790c.cpp:
+    complete
+    .text start:0x021b7ebc end:0x021b8900
+
+src/Combat/Overlay_17/func_ov017_021ba524.cpp:
+    complete
+    .text start:0x021baa20 end:0x021bad0c

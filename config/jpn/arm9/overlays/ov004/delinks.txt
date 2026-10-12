@@ -1525,3 +1525,43 @@ src/Combat/Overlay_4/func_ov004_0215b360.cpp:
 src/Combat/Overlay_4/func_ov004_02158fec.cpp:
     complete
     .text start:0x0215a0b8 end:0x0215a450
+
+src/Combat/Overlay_4/DispatchAdjustmentIfType16_02154210.cpp:
+    complete
+    .text start:0x021558c8 end:0x02155908
+
+src/Combat/Overlay_4/SetMessageFlag021650e4.cpp:
+    complete
+    .text start:0x02165974 end:0x02165988
+
+src/Combat/Overlay_4/ClearSomeState02167424.cpp:
+    complete
+    .text start:0x02167a30 end:0x02167a40
+
+src/Combat/Overlay_4/SetFlag108_02167678.cpp:
+    complete
+    .text start:0x02167c84 end:0x02167c98
+
+src/Combat/Overlay_4/SetFieldByteAndFlag101_0216583c.cpp:
+    complete
+    .text start:0x021660cc end:0x021660f8
+
+src/Combat/Overlay_4/SetOv011FieldAndClearBattleFlag_02165868.cpp:
+    complete
+    .text start:0x021660f8 end:0x02166118
+
+src/Combat/Overlay_4/ResetAllocatorsAndSyncGlobals_02166ac4.cpp:
+    complete
+    .text start:0x021670b0 end:0x0216712c
+
+src/Combat/Overlay_4/NotifyIndexedName_02167310.cpp:
+    complete
+    .text start:0x0216791c end:0x0216797c
+
+src/Combat/Overlay_4/SetGlobalFieldTo1_0216768c_0216768c.cpp:
+    complete
+    .text start:0x02167c98 end:0x02167cb0
+
+src/Combat/Overlay_4/func_ov004_0215a31c.cpp:
+    complete
+    .text start:0x0215b324 end:0x0215b740

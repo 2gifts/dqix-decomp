@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov025_021e4168 func_ov025_021e4658
+#define data_ov025_021ef7ef data_ov025_021efacf
+#endif
 #include "std_library_functions.h"
 
 extern char data_ov025_021ef7ef;

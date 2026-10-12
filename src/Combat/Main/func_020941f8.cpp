@@ -2,9 +2,17 @@
 #include "Filesystem/BackgroundLoader.h"
 
 struct Obj020941f8 {
+#if defined(jpn)
+    char pad0[0x100];
+#else
     char pad0[0x340];
+#endif
     int handle340;
+#if defined(jpn)
+    char pad1[0x138 - 0x104];
+#else
     char pad1[0x3c8 - 0x344];
+#endif
     unsigned char rest3c8 : 7;
     unsigned char flag3c8 : 1;
     char pad2[0x3cb - 0x3c9];
@@ -30,6 +38,10 @@ extern "C" ARM void _Z18InitStruct0205a444Pc(char* obj);
 extern "C" ARM void _Z23EmptyDestructor0205a494Pv(void* obj);
 extern "C" ARM int func_0205a528(void* obj, void* data, int arg2, int arg3);
 extern "C" int func_020937f0(int a);
+#if defined(jpn)
+#define data_020f1394 data_020f1458
+#define func_020941f8 func_02094b0c
+#endif
 extern const char data_020f1394[];
 
 // USA: func_020941f8

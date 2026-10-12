@@ -1,5 +1,12 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov023_021fa2f4 func_ov023_021f9778
+#define data_ov023_021fff28 data_ov023_021ff180
+#define data_ov023_021fea0c data_ov023_021fdccc
+#define data_ov023_021fea0c_dup data_ov023_021fdccc_dup
+#endif
+
 class MenuTexts_021fa2f4
 {
 public:

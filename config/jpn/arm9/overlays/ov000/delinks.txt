@@ -3000,3 +3000,7 @@ src/Combat/Overlay_0/func_ov000_0217b518.cpp:
 src/Combat/Overlay_0/func_ov000_0217b6d0.cpp:
     complete
     .text start:0x0217ca24 end:0x0217cbf8
+
+src/Combat/Overlay_0/ResetArrayAndEntry02182114.cpp:
+    complete
+    .text start:0x02183360 end:0x02183398

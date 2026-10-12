@@ -1968,3 +1968,19 @@ src/Combat/Overlay_4/func_ov004_0216ea74.cpp:
 src/Combat/Overlay_4/0215eb40.cpp:
     complete
     .text start:0x0215eb40 end:0x0215ee90
+
+src/Combat/Overlay_4/func_ov004_0215a31c.cpp:
+    complete
+    .text start:0x0215a31c end:0x0215a738
+
+src/Combat/Overlay_4/func_ov004_0215a738.cpp:
+    complete
+    .text start:0x0215a738 end:0x0215aa10
+
+src/Combat/Overlay_4/func_ov004_0215f0c0.cpp:
+    complete
+    .text start:0x0215f0c0 end:0x0215f6f4
+
+src/Combat/Overlay_4/func_ov004_0216920c.cpp:
+    complete
+    .text start:0x0216920c end:0x021694e8

@@ -17294,3 +17294,95 @@ src/Combat/Main/ResetState020415d8.cpp:
 src/Combat/Main/SetFlag0x8eIfBitTestFails.cpp:
     complete
     .text start:0x02023464 end:0x020234d4
+
+src/Combat/Main/ApplyAndClearPendingEntry02013fb4.cpp:
+    complete
+    .text start:0x02013d80 end:0x02013e08
+
+src/Combat/Main/Format0201403c.cpp:
+    complete
+    .text start:0x02013e08 end:0x02013ed4
+
+src/Combat/Main/func_020d7978.cpp:
+    complete
+    .text start:0x020d9380 end:0x020d93e8
+
+src/Combat/Main/func_020d79e0.cpp:
+    complete
+    .text start:0x020d93e8 end:0x020d9458
+
+src/Combat/Main/func_0204459c.cpp:
+    complete
+    .text start:0x02044cc8 end:0x02044f5c
+
+src/Combat/Main/PrepareEncodeStreamBuffer0204394c.cpp:
+    complete
+    .text start:0x02044104 end:0x02044168
+
+src/Combat/Main/HandleQueuedEntry02026694.cpp:
+    complete
+    .text start:0x02025ff8 end:0x020260e4
+
+src/Combat/Main/func_02026f34.cpp:
+    complete
+    .text start:0x02026898 end:0x02026a64
+
+src/Combat/Main/ConfigureCombatSubDisplayElements.cpp:
+    complete
+    .text start:0x020e2b6c end:0x020e2d0c
+
+src/Combat/Main/func_0209ebe4.cpp:
+    complete
+    .text start:0x020a0644 end:0x020a076c
+
+src/Combat/Main/HandleStateDispatch020214f0.cpp:
+    complete
+    .text start:0x020210e4 end:0x0202116c
+
+src/Combat/Main/ProcessEntryList02081574.cpp:
+    complete
+    .text start:0x02081e78 end:0x02081f70
+
+src/Combat/Main/_Z28LockedLookupDispatch0206efd8PvS_.cpp:
+    complete
+    .text start:0x02070128 end:0x0207016c
+
+src/Combat/Main/InitCombatantExtendedFields02052a4c.cpp:
+    complete
+    .text start:0x02053e28 end:0x02053ec4
+
+src/Combat/Main/InitCombatSlots02043040.cpp:
+    complete
+    .text start:0x020437b4 end:0x02043824
+
+src/Combat/Main/InitEntryListFromSource0206f170.cpp:
+    complete
+    .text start:0x020702c0 end:0x02070350
+
+src/Combat/Main/SetNameEntries02011818.cpp:
+    complete
+    .text start:0x02011588 end:0x0201166c
+
+src/Combat/Main/func_02093428.cpp:
+    complete
+    .text start:0x02093d5c end:0x02093fe4
+
+src/Combat/Main/func_020941f8.cpp:
+    complete
+    .text start:0x02094b0c end:0x02094cf0
+
+src/Combat/Main/func_0203fd5c.cpp:
+    complete
+    .text start:0x02040258 end:0x02040680
+
+src/Combat/Main/func_02048f64.cpp:
+    complete
+    .text start:0x02049d84 end:0x0204a18c
+
+src/Combat/Main/func_0204ecb4.cpp:
+    complete
+    .text start:0x0204ff10 end:0x02050348
+
+src/Combat/Main/func_020a212c.cpp:
+    complete
+    .text start:0x020a3ea4 end:0x020a4490

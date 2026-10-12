@@ -1,4 +1,23 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov024_021eaa50 func_ov024_021eb21c
+#define func_ov000_0215440c func_ov000_02155b8c
+#define func_ov000_02156cc4 func_ov000_02158444
+#define func_ov024_021e9b74 func_ov024_021ea340
+#define func_ov024_021e9f68 func_ov024_021ea734
+#define data_ov024_021fe8f0 data_ov024_021ff0bc
+#define func_ov000_02156e30 func_ov000_021585b0
+#define func_ov024_021e4c04 func_ov024_021e549c
+#define func_ov024_021e62cc func_ov024_021e6b64
+#define data_ov024_021fe738 data_ov024_021fef04
+#define data_ov024_021fe788 data_ov024_021fef54
+#define data_ov024_021fe718 data_ov024_021feee4
+#define func_020ddb38 func_020df4b4
+#define WORK_STRIDE_021eb5d0 0x488
+#else
+#define WORK_STRIDE_021eb5d0 0x448
+#endif
 #include "Combat/Overlay_0/GetCombatantByID.h"
 struct CombatantStruct {
     unsigned short flags;
@@ -193,7 +212,12 @@ struct Stats_021eb5d0 {
 struct Fighter_021eb5d0 {
     char pad0[0x138];
     struct Stats_021eb5d0* f138;
+    // The player-data pointer is at 0x144 in JPN and 0x150 in USA.
+#if defined(jpn)
+    char pad1[8];
+#else
     char pad1[0x14];
+#endif
     unsigned char* f150;
 };
 
@@ -311,7 +335,7 @@ extern "C" unsigned char* _Z15GetFieldAt0x150Ph(void* c);
 extern "C" int _Z20LookupTableD0Clampedi(int v);
 extern "C" int func_ov024_021e67c8(struct Act_021eb5d0* self, int a, int b);
 extern "C" int func_ov024_021e6948(struct Act_021eb5d0* self, int a, int b, int c);
-extern "C" int _Z31HandleElementSpecial17_021e6a90Pv(struct Act_021eb5d0* self, int a, int b, struct Rec_021eb5d0* rec, unsigned short dmg);
+extern "C" int func_ov024_021e6a90(struct Act_021eb5d0* self, int a, int b, struct Rec_021eb5d0* rec, unsigned short dmg);
 extern "C" int _Z17ArrayContainsByteP23ArrayContainsByteStructi(void* arr, int v);
 extern "C" void _Z39IncrementByteCounterCapped0x63_0215a8d4Phi(void* world, int idx);
 extern "C" int _Z28IsFlagBit8388608Set_021da998P16FlagObj_021da998(void* c);
@@ -733,7 +757,7 @@ extern "C" ARM void func_ov024_021eb5d0(struct Act_021eb5d0* self, struct World_
             } else if (flagG != 0) {
                 dmg = func_ov024_021e6948(self, s4, totB, (count - 1));
             } else {
-                dmg = _Z31HandleElementSpecial17_021e6a90Pv(self, s6, s4, rec2, (unsigned short)dmg);
+                dmg = func_ov024_021e6a90(self, s6, s4, rec2, (unsigned short)dmg);
             }
             if (rec2->f4.id == 0x79 && self->f18 != (count - 1) && dmg > 0) {
                 if (totB <= 0) totB = dmg;
@@ -1015,8 +1039,8 @@ extern "C" ARM void func_ov024_021eb5d0(struct Act_021eb5d0* self, struct World_
     struct Slot_021eb5d0* slot;
     if (IN_RANGE_021eb5d0(who)) {
         for (int k = 0; k < 4; k++) {
-            if (who == *(int*)(wk + k * 0x448 + 0x9a4)) {
-                slot = (struct Slot_021eb5d0*)(wk + 0x158 + 0x800 + k * 0x448);
+            if (who == *(int*)(wk + k * WORK_STRIDE_021eb5d0 + 0x9a4)) {
+                slot = (struct Slot_021eb5d0*)(wk + 0x158 + 0x800 + k * WORK_STRIDE_021eb5d0);
                 goto found;
             }
         }

@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov023_021f698c func_ov023_021f5ec8
+#endif
+
 class Node021f698c {
 public:
     virtual void Dummy0();

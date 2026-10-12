@@ -5,6 +5,11 @@ void* GetDataPtr02114e04_020d6c00(void);
 struct FlagWord02046708;
 int TestFlags02046708(struct FlagWord02046708* word, unsigned int mask);
 
+#if defined(jpn)
+#define func_02021b84 func_0202162c
+#define func_020e081c func_020e245c
+#endif
+
 extern "C" {
     void func_02021578(void* obj);
     void func_02021b84(void* obj);
@@ -14,11 +19,20 @@ extern "C" {
 }
 
 struct Obj020214f0 {
+#if defined(jpn)
+    char pad[0x915];
+#else
     char pad[0x9c1];
+#endif
     unsigned char field0x9c1;
     unsigned char pad2;
     unsigned char field0x9c3;
 };
+
+#if defined(jpn)
+#define HandleStateDispatch020214f0 func_020210e4
+extern "C" ARM void func_020210e4(struct Obj020214f0* obj);
+#endif
 
 // USA: func_020214f0
 ARM void HandleStateDispatch020214f0(struct Obj020214f0* obj) {

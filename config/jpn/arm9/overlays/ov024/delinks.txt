@@ -2214,3 +2214,7 @@ src/Combat/Overlay_24/ApplyBuffIfEligible_021e5e80.cpp:
 src/Combat/Overlay_24/SetBytelag_021e57c0_021e57c0.cpp:
     complete
     .text start:0x021e6058 end:0x021e6078
+
+src/Combat/Overlay_24/func_ov024_021eb5d0.cpp:
+    complete
+    .text start:0x021ebd9c end:0x021ee05c

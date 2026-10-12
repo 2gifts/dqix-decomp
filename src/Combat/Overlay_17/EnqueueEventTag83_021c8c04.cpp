@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define EnqueueEventTag83_021c8c04 func_ov017_021c90b4
+#endif
+
 void* GetData02100044(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
@@ -13,6 +17,9 @@ struct LocalEvt021c8c04 {
 };
 
 // USA: func_ov017_021c8c04
+#if defined(jpn)
+extern "C"
+#endif
 ARM void EnqueueEventTag83_021c8c04(unsigned short a, unsigned char b, int c) {
 	LocalEvt021c8c04 buf;
 	void* p = GetData02100044();
