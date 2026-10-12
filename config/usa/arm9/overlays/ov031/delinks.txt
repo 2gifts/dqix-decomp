@@ -6404,3 +6404,13 @@ src/Combat/Overlay_31/0222a6c4.cpp:
 src/Combat/Overlay_31/02235234.cpp:
     complete
     .text start:0x02235234 end:0x022353b8
+
+
+src/Combat/Overlay_31/func_ov031_02221e84.cpp:
+    complete
+    .text start:0x02221e84 end:0x02221eac
+
+
+src/Combat/Overlay_31/func_ov031_02222848.cpp:
+    complete
+    .text start:0x02222848 end:0x02222870
