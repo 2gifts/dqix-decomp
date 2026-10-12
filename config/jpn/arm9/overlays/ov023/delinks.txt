@@ -2440,3 +2440,7 @@ src/Combat/Overlay_23/InitEvent13_021fc408.cpp:
 src/Combat/Overlay_23/func_ov023_021f9da8.cpp:
     complete
     .text start:0x021f9234 end:0x021f9340
+
+src/Combat/Overlay_23/func_ov023_021e540c.cpp:
+    complete
+    .text start:0x021e55f0 end:0x021e580c

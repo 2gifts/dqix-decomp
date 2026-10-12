@@ -1245,11 +1245,11 @@ func_ov031_0222de24 kind:function(arm,size=0x30) addr:0x0222e604
 _Z38CheckField15DispatchThenSetup_0222de54v kind:function(arm,size=0x8c) addr:0x0222e634
 func_ov031_0222dee0 kind:function(arm,size=0xa4) addr:0x0222e6c0
 func_ov031_0222df84 kind:function(arm,size=0xc4) addr:0x0222e764
-func_ov031_0222e828 kind:function(arm,size=0x54) addr:0x0222e828
+func_ov031_0222e048 kind:function(arm,size=0x54) addr:0x0222e828
 func_ov031_0222e09c kind:function(arm,size=0x5c) addr:0x0222e87c
 func_ov031_0222e0f8 kind:function(arm,size=0xb4) addr:0x0222e8d8
 func_ov031_0222e1ac kind:function(arm,size=0x78) addr:0x0222e98c
-func_ov031_0222ea04 kind:function(arm,size=0x154) addr:0x0222ea04
+func_ov031_0222e224 kind:function(arm,size=0x154) addr:0x0222ea04
 _Z35AdvanceUnlessField1bActive_0222e378v kind:function(arm,size=0x2c) addr:0x0222eb58
 func_ov031_0222e3a4 kind:function(arm,size=0x44) addr:0x0222eb84
 _Z27InitAndSetHandlerC_0222e3e8v kind:function(arm,size=0x1c) addr:0x0222ebc8
@@ -2017,7 +2017,7 @@ data_ov031_022495e8 kind:data(any) addr:0x022495e8
 data_ov031_022495ec kind:data(any) addr:0x022495ec
 data_ov031_022495f0 kind:data(any) addr:0x022495f0
 data_ov031_02248a04 kind:data(any) addr:0x022495f8
-data_ov031_02249600 kind:data(any) addr:0x02249600
+data_ov031_02248a0c kind:data(any) addr:0x02249600
 data_ov031_02248ac8 kind:data(any) addr:0x022496bc
 data_ov031_02248aca kind:data(any) addr:0x022496be
 data_ov031_02249790 kind:data(any) addr:0x02249790
@@ -2089,7 +2089,7 @@ data_ov031_02249c28 kind:data(any) addr:0x02249c28
 data_ov031_0224903c kind:data(any) addr:0x02249c30
 data_ov031_02249048 kind:data(any) addr:0x02249c3c
 data_ov031_02249054 kind:data(any) addr:0x02249c48
-data_ov031_02249c54 kind:data(any) addr:0x02249c54
+data_ov031_02249060 kind:data(any) addr:0x02249c54
 data_ov031_02249c58 kind:data(any) addr:0x02249c58
 data_ov031_0224906c kind:data(any) addr:0x02249c60
 data_ov031_02249082 kind:data(any) addr:0x02249c76
@@ -2748,7 +2748,7 @@ data_ov031_0224e69c kind:bss addr:0x0224f29c
 data_ov031_0224e6a0 kind:bss addr:0x0224f2a0
 data_ov031_0224e6ac kind:bss addr:0x0224f2ac
 data_ov031_0224e6b1 kind:bss addr:0x0224f2b1
-data_ov031_0224f2b2 kind:bss addr:0x0224f2b2
+data_ov031_0224e6b2 kind:bss addr:0x0224f2b2
 data_ov031_0224e6b6 kind:bss addr:0x0224f2b6
 data_ov031_0224e6b8 kind:bss addr:0x0224f2b8
 data_ov031_0224f2c0 kind:bss addr:0x0224f2c0
