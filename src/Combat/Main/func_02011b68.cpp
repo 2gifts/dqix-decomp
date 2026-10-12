@@ -46,7 +46,7 @@ struct KeyManager {
     State0200fad4 cache[3];
 };
 int CompareSixBytes(unsigned char*, SixBytes);
-extern "C" void _Z26ClearFlagsAndValue0200fad4P13State0200fad4(State0200fad4*);
+void ClearFlagsAndValue0200fad4(State0200fad4*);
 
 // USA: func_02011b68
 extern "C" ARM void func_02011b68(KeyManager* self) {
@@ -96,7 +96,7 @@ checkedKey:
             for (int j = 0; j < 3; j++) {
                 if (!self->cache[j].state.active) {
                     State0200fad4* slot = &self->cache[j];
-                    _Z26ClearFlagsAndValue0200fad4P13State0200fad4(slot);
+                    ClearFlagsAndValue0200fad4(slot);
                     self->cache[j].state.active = 1;
                     slot->key = pending[i];
                     break;
@@ -127,6 +127,6 @@ checkedKey:
         }
     }
     for (int i = 0; i < 3; i++) {
-        if (!self->cache[i].state.active) _Z26ClearFlagsAndValue0200fad4P13State0200fad4(&self->cache[i]);
+        if (!self->cache[i].state.active) ClearFlagsAndValue0200fad4(&self->cache[i]);
     }
 }

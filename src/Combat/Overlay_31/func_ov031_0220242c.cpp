@@ -33,8 +33,8 @@ struct TcpPacket {
 
 extern "C" TcpConnection* func_ov031_02201e0c(void*, TcpPacket*, unsigned int);
 extern "C" int func_ov031_02201fac(void*, TcpPacket*, unsigned int, int);
-extern "C" int _Z23TailCallType16_02201f84ii(int, int);
-extern "C" int _Z23TailCallType17_02201f98ii(int, int);
+int TailCallType16_02201f84(int, int);
+int TailCallType17_02201f98(int, int);
 
 #define Swap16_0220242c(value) (unsigned short)(((value) >> 8) | ((value) << 8))
 
@@ -51,7 +51,7 @@ extern "C" ARM void func_ov031_0220242c(void* object, TcpPacket* packet, unsigne
         connection->acknowledgement = acknowledgement;
     unsigned int sequence = ((unsigned int)Swap16_0220242c(packet->sequenceHigh) << 16) | Swap16_0220242c(packet->sequenceLow);
     if (connection->state == 4 && connection->sequence != sequence) {
-        _Z23TailCallType16_02201f84ii((int)connection, 0);
+        TailCallType16_02201f84((int)connection, 0);
         return;
     }
     connection->window = Swap16_0220242c(packet->window);
@@ -94,20 +94,20 @@ extern "C" ARM void func_ov031_0220242c(void* object, TcpPacket* packet, unsigne
         if (complete && (flags & 1)) {
             connection->state = 6;
             ++connection->sequence;
-            _Z23TailCallType17_02201f98ii((int)connection, 0);
+            TailCallType17_02201f98((int)connection, 0);
             if (!length && connection->pending == 2) {
                 connection->pending = 0;
                 MarkContextReadyAndSwitch(connection->context);
             }
         } else if (length) {
-            _Z23TailCallType16_02201f84ii((int)connection, 0);
+            TailCallType16_02201f84((int)connection, 0);
         }
         break;
     case 7:
     case 8:
         if (flags & 1) {
             connection->sequence += length + 1;
-            _Z23TailCallType16_02201f84ii((int)connection, 0);
+            TailCallType16_02201f84((int)connection, 0);
             connection->state = 0;
             if (connection->pending == 2) {
                 connection->pending = 0;
@@ -116,7 +116,7 @@ extern "C" ARM void func_ov031_0220242c(void* object, TcpPacket* packet, unsigne
         } else {
             if (length) {
                 connection->sequence += length;
-                _Z23TailCallType16_02201f84ii((int)connection, 0);
+                TailCallType16_02201f84((int)connection, 0);
             }
             connection->state = 8;
         }
@@ -132,7 +132,7 @@ extern "C" ARM void func_ov031_0220242c(void* object, TcpPacket* packet, unsigne
     default:
         if (flags & 1)
             ++connection->sequence;
-        _Z23TailCallType16_02201f84ii((int)connection, 0);
+        TailCallType16_02201f84((int)connection, 0);
         break;
     }
     CycleCurrentPriorityContexts();

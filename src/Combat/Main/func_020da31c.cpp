@@ -29,11 +29,11 @@ struct State0205a180 {
     MatrixTarget_020da31c* output;
 };
 extern "C" void* func_02057924();
-extern "C" void _Z18InitStruct02078484P24InitStruct02078484Struct(InitStruct02078484Struct*);
-extern "C" void _Z26FindNodeAndProcess02057fb4Pvii(void*, int, int);
+void InitStruct02078484(InitStruct02078484Struct*);
+void FindNodeAndProcess02057fb4(void*, int, int);
 void* GetInlineRecordByBattleId(void*, int);
 void StoreZeroAndField0xb6ToOut(State0205a180*);
-extern "C" void _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(void*, int, int);
+void DispatchIfField0xc4NonNeg_0205ebfc(void*, int, int);
 extern char data_020f2884[], data_020f2887[], data_02108760[];
 
 // USA: func_020da31c
@@ -48,7 +48,7 @@ extern "C" ARM void func_020da31c(Event_020da31c* event) {
         if (!(event->flags & 8)) {
             InitStruct02078484Struct effect;
             event->flags |= 8;
-            _Z18InitStruct02078484P24InitStruct02078484Struct(&effect);
+            InitStruct02078484(&effect);
             int index = event->objectIndex;
             effect.objectIndex = index;
             effect.enabled = 0;
@@ -59,7 +59,7 @@ extern "C" ARM void func_020da31c(Event_020da31c* event) {
             effect.scale.x = 0x1000;
             effect.scale.y = 0x1000;
             effect.scale.z = 0x1000;
-            _Z26FindNodeAndProcess02057fb4Pvii(manager, 0x14, (int)&effect);
+            FindNodeAndProcess02057fb4(manager, 0x14, (int)&effect);
         }
         int timer = ((ActorView_020da31c*)actor)->timer;
         int distance = fix32SignedAngleDistance(actor->obj3D_.rotation_.y, ((ActorView_020da31c*)actor)->direction);
@@ -67,7 +67,7 @@ extern "C" ARM void func_020da31c(Event_020da31c* event) {
         if (event->ticks < 3) return;
         event->ticks = 0;
         InitStruct02078484Struct effect;
-        _Z18InitStruct02078484P24InitStruct02078484Struct(&effect);
+        InitStruct02078484(&effect);
         effect.position = actor->obj3D_.position_;
         effect.rotation = actor->obj3D_.rotation_;
         effect.scale.x = 200;
@@ -75,7 +75,7 @@ extern "C" ARM void func_020da31c(Event_020da31c* event) {
         effect.scale.z = 200;
         sprintf(effect.filename, data_020f2884, data_020f2887);
         effect.flags |= 0x40;
-        _Z26FindNodeAndProcess02057fb4Pvii(manager, 0x15, (int)&effect);
+        FindNodeAndProcess02057fb4(manager, 0x15, (int)&effect);
         break;
     }
     case 2: {
@@ -84,7 +84,7 @@ extern "C" ARM void func_020da31c(Event_020da31c* event) {
         if (!(event->flags & 8)) {
             InitStruct02078484Struct effect;
             event->flags |= 8;
-            _Z18InitStruct02078484P24InitStruct02078484Struct(&effect);
+            InitStruct02078484(&effect);
             int index = event->objectIndex;
             effect.objectIndex = index;
             effect.enabled = 0;
@@ -95,19 +95,19 @@ extern "C" ARM void func_020da31c(Event_020da31c* event) {
             effect.scale.x = 0x3000;
             effect.scale.y = 0x1000;
             effect.scale.z = 0x3000;
-            _Z26FindNodeAndProcess02057fb4Pvii(manager, 0x14, (int)&effect);
+            FindNodeAndProcess02057fb4(manager, 0x14, (int)&effect);
         }
         if (++event->ticks < 7) return;
         event->ticks = 0;
         InitStruct02078484Struct effect;
-        _Z18InitStruct02078484P24InitStruct02078484Struct(&effect);
+        InitStruct02078484(&effect);
         effect.position = actor->obj3D_.position_;
         effect.rotation = actor->obj3D_.rotation_;
         effect.scale.x = 225;
         effect.scale.y = 225;
         effect.scale.z = 225;
         sprintf(effect.filename, data_020f2884, data_020f2887);
-        _Z26FindNodeAndProcess02057fb4Pvii(manager, 0x15, (int)&effect);
+        FindNodeAndProcess02057fb4(manager, 0x15, (int)&effect);
         break;
     }
     case 3: {
@@ -137,7 +137,7 @@ extern "C" ARM void func_020da31c(Event_020da31c* event) {
         ++event->ticks;
         if (event->activations < 1 && (event->flags & 0x10)) {
             if (!event->started) {
-                _Z18InitStruct02078484P24InitStruct02078484Struct(&effect);
+                InitStruct02078484(&effect);
                 effect.position = actor->obj3D_.position_;
                 effect.rotation = actor->obj3D_.rotation_;
                 effect.lifetime = 90;
@@ -146,14 +146,14 @@ extern "C" ARM void func_020da31c(Event_020da31c* event) {
                 effect.scale.z = 0x199;
                 sprintf(effect.filename, data_020f2884, data_020f2887);
                 effect.flags |= 0xb8;
-                _Z26FindNodeAndProcess02057fb4Pvii(manager, 0x16, (int)&effect);
+                FindNodeAndProcess02057fb4(manager, 0x16, (int)&effect);
                 event->started = 1;
-                _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(data_02108760, 1, 0);
+                DispatchIfField0xc4NonNeg_0205ebfc(data_02108760, 1, 0);
             } else {
                 State0205a180* active = (State0205a180*)GetInlineRecordByBattleId(manager, 0xd0);
                 if (active) {
                     StoreZeroAndField0xb6ToOut(active);
-                    _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(data_02108760, 1, 0);
+                    DispatchIfField0xc4NonNeg_0205ebfc(data_02108760, 1, 0);
                 }
             }
             ++event->activations;

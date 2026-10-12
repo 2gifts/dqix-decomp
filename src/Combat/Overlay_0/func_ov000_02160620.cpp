@@ -40,41 +40,41 @@ struct BattleManager {
 extern "C" SearchStruct* func_0202ae18();
 extern "C" void func_02015438(void*);
 extern "C" void func_ov023_021eb43c(void*);
-extern "C" int _Z26GetGlobalField0x1c020421a0v();
+int GetGlobalField0x1c020421a0();
 extern "C" void func_ov000_021735d0(void*, unsigned int);
 Obj02039fec* GetData02104b6c();
-extern "C" void _Z26ProcessSlotDamping02039fecP11Obj02039fec(Obj02039fec*);
-extern "C" void _Z36DecrementFieldsAndMaybeReset021824d8Pv(void*);
+void ProcessSlotDamping02039fec(Obj02039fec*);
+void DecrementFieldsAndMaybeReset021824d8(void*);
 int PeekInputLogB();
 extern "C" void func_ov025_021df794(void*);
 extern "C" int func_0202c540(SearchStruct*);
 int TestFlagBitAt0xe(SearchStruct*, int);
-extern "C" FlagWord020466f4* _Z27GetDataPtr02114e04_020d6c00v();
-extern "C" void _Z18ClearFlags020466f4P16FlagWord020466f4j(FlagWord020466f4*, unsigned int);
+FlagWord020466f4* GetDataPtr02114e04_020d6c00();
+void ClearFlags020466f4(FlagWord020466f4*, unsigned int);
 void* GetGlobal02109030();
-extern "C" void _Z33ResetAndSetFlag0x3c9Bit0_020939dcPv(void*);
+void ResetAndSetFlag0x3c9Bit0_020939dc(void*);
 void ResetEightRegionsAndFlags(char*);
 extern "C" void func_02094030(void*, int, int, int);
 extern "C" void func_ov000_0215fb04(void*, int);
-extern "C" int _Z24CheckThreeFlags_02195550Ph(unsigned char*);
+int CheckThreeFlags_02195550(unsigned char*);
 extern "C" void func_ov000_021682ec(BattleFrame*);
 extern "C" void func_ov000_02163db4(BattleFrame*);
 extern "C" void func_ov000_021640dc(BattleFrame*);
 extern "C" void func_ov000_0216873c(BattleFrame*);
 extern "C" void func_ov000_021688dc(BattleFrame*);
 extern "C" void func_ov026_021d8ba0(BattleFrame*);
-extern "C" void _Z26RunCombatTurnCycle02169770Ph(unsigned char*);
+void RunCombatTurnCycle02169770(unsigned char*);
 extern "C" void func_ov025_021db038(BattleFrame*);
 extern "C" void func_ov023_021ed9f8(BattleFrame*);
 extern "C" void func_ov023_021f4c04(BattleFrame*);
 extern "C" void func_ov026_021db090(BattleFrame*);
-extern "C" void _Z20HandleField_02160de4Pv(void*);
-extern "C" void _Z20HandleField_02160e94Pv(void*);
-extern "C" void _Z40ProcessFlaggedombatants02160fe4_02160fe4v();
+void HandleField_02160de4(void*);
+void HandleField_02160e94(void*);
+void ProcessFlaggedombatants02160fe4_02160fe4();
 extern "C" void func_ov025_021e9558(void*);
 void ResetInputLogB();
 void PushInputLogB(int);
-extern "C" void _Z25ForwardField0xc0_0205eb80Pv(void*);
+void ForwardField0xc0_0205eb80(void*);
 extern int data_ov000_02184220;
 extern unsigned char data_02108760[0xd0];
 
@@ -88,19 +88,19 @@ extern "C" ARM void func_ov000_02160620(BattleFrame* frame) {
         if (frame->optional)
             func_ov023_021eb43c(frame->optional);
         if (frame->mode == 0 && (frame->flags & 0x40000) == 0 && (frame->flags & 0x80000) != 0 &&
-                ((BattleManager*)_Z26GetGlobalField0x1c020421a0v())->blocked == 0)
+                ((BattleManager*)GetGlobalField0x1c020421a0())->blocked == 0)
             func_ov000_021735d0(frame->turnTimer, game->GetTickCount());
-        _Z26ProcessSlotDamping02039fecP11Obj02039fec(GetData02104b6c());
-        _Z36DecrementFieldsAndMaybeReset021824d8Pv(frame->damping);
+        ProcessSlotDamping02039fec(GetData02104b6c());
+        DecrementFieldsAndMaybeReset021824d8(frame->damping);
         if (frame->state == 8 && PeekInputLogB() == 4)
             func_ov025_021df794(frame->effect);
         GameObject* object = game->GetGameObjectByIndex(0xc8);
         if (object)
             object->obj3D_.AdvanceEffects();
         if (func_0202c540(search) && TestFlagBitAt0xe(search, 0) && frame->resetDone == 0) {
-            _Z18ClearFlags020466f4P16FlagWord020466f4j(_Z27GetDataPtr02114e04_020d6c00v(), 0x8020);
+            ClearFlags020466f4(GetDataPtr02114e04_020d6c00(), 0x8020);
             void* state = GetGlobal02109030();
-            _Z33ResetAndSetFlag0x3c9Bit0_020939dcPv(state);
+            ResetAndSetFlag0x3c9Bit0_020939dc(state);
             ResetEightRegionsAndFlags((char*)state);
             func_02094030(state, 4, -1, 0);
             frame->resetDone = 1;
@@ -110,7 +110,7 @@ extern "C" ARM void func_ov000_02160620(BattleFrame* frame) {
         if (TestFlagBitAt0xe(search, i))
             func_ov000_0215fb04(frame->random, i);
     }
-    if (_Z24CheckThreeFlags_02195550Ph(context) == 0)
+    if (CheckThreeFlags_02195550(context) == 0)
         func_ov000_021682ec(frame);
     switch (frame->state) {
     case 0: func_ov000_02163db4(frame); break;
@@ -121,7 +121,7 @@ extern "C" ARM void func_ov000_02160620(BattleFrame* frame) {
         if (PeekInputLogB() == 3)
             func_ov026_021d8ba0(frame);
         break;
-    case 17: _Z26RunCombatTurnCycle02169770Ph((unsigned char*)frame); break;
+    case 17: RunCombatTurnCycle02169770((unsigned char*)frame); break;
     case 8: func_ov025_021db038(frame); break;
     case 9:
         if (PeekInputLogB() == 1) {
@@ -137,11 +137,11 @@ extern "C" ARM void func_ov000_02160620(BattleFrame* frame) {
         if (PeekInputLogB() == 3)
             func_ov026_021db090(frame);
         break;
-    case 18: _Z20HandleField_02160de4Pv(frame); break;
-    case 19: _Z20HandleField_02160e94Pv(frame); break;
+    case 18: HandleField_02160de4(frame); break;
+    case 19: HandleField_02160e94(frame); break;
     }
     if (frame->flags & 0x200)
-        ((void (*)(BattleFrame*))_Z40ProcessFlaggedombatants02160fe4_02160fe4v)(frame);
+        ((void (*)(BattleFrame*))ProcessFlaggedombatants02160fe4_02160fe4)(frame);
     if ((frame->flags & 0x2000000) &&
             (frame->state == 8 || frame->state == 7 || frame->state == 1 || frame->state == 0 || frame->state == 9)) {
         if (frame->state == 8)
@@ -181,7 +181,7 @@ extern "C" ARM void func_ov000_02160620(BattleFrame* frame) {
     frame->countdown -= (signed char)game->GetTickCount();
     if (frame->countdown < 0) {
         frame->countdown = 0;
-        _Z25ForwardField0xc0_0205eb80Pv(data_02108760);
+        ForwardField0xc0_0205eb80(data_02108760);
         frame->countdownFlag = 0;
     }
 }

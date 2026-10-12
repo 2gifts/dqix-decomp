@@ -54,16 +54,16 @@ struct CombatTaskReceiver021e9fc4 {
     int loadTask, loadNameId;
 };
 void* GetActiveCombatWork();
-extern "C" CombatSlot021e9fc4* _Z18GetSlotPtr02160f20Pv(void*);
-extern "C" int _Z25CheckOrSetFlagA0_0216fd38P14Struct0216fd38(Struct0216fd38*);
-extern "C" void _Z25AppendUniqueShort0216fdf8P22ShortSetStruct0216fdf8i(ShortSetStruct0216fdf8*, int);
-extern "C" void _Z27BeginListEntryTask_0216fd80P17EntryTask0216fd80i(EntryTask0216fd80*, int);
-extern "C" ListNode02160094* _Z22GetNodeAtIndex02160094P12List02160094i(List02160094*, int);
-extern "C" ListNode021600f8* _Z22GetNodeAtIndex021600f8P12List021600f8i(List021600f8*, int);
-extern "C" ListNode0215feb4* _Z22GetNodeAtIndex0215feb4Pcii(char*, int, int);
-extern "C" void* _Z22GetNodeAtIndex0215fe2cPvi(void*, int);
-extern "C" void* _Z23FindNodeAtDepth0215fff4Pvii(void*, int, int);
-extern "C" void _Z15SetName021ed324PvPKc(void*, const char*);
+CombatSlot021e9fc4* GetSlotPtr02160f20(void*);
+int CheckOrSetFlagA0_0216fd38(Struct0216fd38*);
+void AppendUniqueShort0216fdf8(ShortSetStruct0216fdf8*, int);
+void BeginListEntryTask_0216fd80(EntryTask0216fd80*, int);
+ListNode02160094* GetNodeAtIndex02160094(List02160094*, int);
+ListNode021600f8* GetNodeAtIndex021600f8(List021600f8*, int);
+ListNode0215feb4* GetNodeAtIndex0215feb4(char*, int, int);
+void* GetNodeAtIndex0215fe2c(void*, int);
+void* FindNodeAtDepth0215fff4(void*, int, int);
+void SetName021ed324(void*, const char*);
 extern "C" const char* func_020e046c(char*, void*, unsigned int, short);
 extern "C" void func_ov025_021ed634(void*);
 
@@ -83,7 +83,7 @@ extern "C" ARM void func_ov025_021e9fc4(CombatTaskReceiver021e9fc4* self) {
                 if (file != 0) {
                     func_020e046c(self->name, file, size, (short)self->loadNameId);
                 }
-                _Z15SetName021ed324PvPKc(self->nameState, self->name);
+                SetName021ed324(self->nameState, self->name);
                 self->nameId = self->loadNameId;
                 loader->RemoveTask(self->loadTask);
                 self->loadTask = -1;
@@ -94,70 +94,70 @@ extern "C" ARM void func_ov025_021e9fc4(CombatTaskReceiver021e9fc4* self) {
     if (self->task.active != 0) {
         if (self->loaded != 0) func_ov025_021ed634(self->nameState);
     } else if (self->tasks[self->selected] != 0 &&
-               _Z25CheckOrSetFlagA0_0216fd38P14Struct0216fd38((Struct0216fd38*)&self->task) != 0) {
-        CombatSlot021e9fc4* slot = _Z18GetSlotPtr02160f20Pv(GetActiveCombatWork());
-        _Z25AppendUniqueShort0216fdf8P22ShortSetStruct0216fdf8i((ShortSetStruct0216fdf8*)&self->task, slot->ids[0]);
-        _Z25AppendUniqueShort0216fdf8P22ShortSetStruct0216fdf8i((ShortSetStruct0216fdf8*)&self->task, slot->ids[1]);
-        _Z25AppendUniqueShort0216fdf8P22ShortSetStruct0216fdf8i((ShortSetStruct0216fdf8*)&self->task, slot->ids[2]);
-        _Z25AppendUniqueShort0216fdf8P22ShortSetStruct0216fdf8i((ShortSetStruct0216fdf8*)&self->task, slot->ids[3]);
-        _Z25AppendUniqueShort0216fdf8P22ShortSetStruct0216fdf8i((ShortSetStruct0216fdf8*)&self->task, slot->ids[4]);
-        _Z25AppendUniqueShort0216fdf8P22ShortSetStruct0216fdf8i((ShortSetStruct0216fdf8*)&self->task, slot->ids[5]);
-        _Z25AppendUniqueShort0216fdf8P22ShortSetStruct0216fdf8i((ShortSetStruct0216fdf8*)&self->task, slot->ids[6]);
-        _Z25AppendUniqueShort0216fdf8P22ShortSetStruct0216fdf8i((ShortSetStruct0216fdf8*)&self->task, 0x7e);
-        _Z25AppendUniqueShort0216fdf8P22ShortSetStruct0216fdf8i((ShortSetStruct0216fdf8*)&self->task, 0x7f);
-        if ((unsigned short)slot->ids[0] == 0xfa) _Z25AppendUniqueShort0216fdf8P22ShortSetStruct0216fdf8i((ShortSetStruct0216fdf8*)&self->task, 0x1e0);
+               CheckOrSetFlagA0_0216fd38((Struct0216fd38*)&self->task) != 0) {
+        CombatSlot021e9fc4* slot = GetSlotPtr02160f20(GetActiveCombatWork());
+        AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)&self->task, slot->ids[0]);
+        AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)&self->task, slot->ids[1]);
+        AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)&self->task, slot->ids[2]);
+        AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)&self->task, slot->ids[3]);
+        AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)&self->task, slot->ids[4]);
+        AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)&self->task, slot->ids[5]);
+        AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)&self->task, slot->ids[6]);
+        AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)&self->task, 0x7e);
+        AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)&self->task, 0x7f);
+        if ((unsigned short)slot->ids[0] == 0xfa) AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)&self->task, 0x1e0);
         for (int index = 0; index < slot->count0; index++) {
-            ListNode02160094* node = _Z22GetNodeAtIndex02160094P12List02160094i((List02160094*)slot, index);
+            ListNode02160094* node = GetNodeAtIndex02160094((List02160094*)slot, index);
             if (node == 0) continue;
             for (int group = 0; group < 6; group++) {
                 for (int item = 0; item < node->counts[group]; item++) {
-                    ListNode0215feb4* link = _Z22GetNodeAtIndex0215feb4Pcii((char*)node, item, (unsigned char)group);
+                    ListNode0215feb4* link = GetNodeAtIndex0215feb4((char*)node, item, (unsigned char)group);
                     if (link == 0) continue;
                     for (int child = 0; child < link->count; child++) {
-                        short* value = (short*)_Z22GetNodeAtIndex0215fe2cPvi(link, child);
-                        if (value != 0) _Z25AppendUniqueShort0216fdf8P22ShortSetStruct0216fdf8i((ShortSetStruct0216fdf8*)&self->task, *value);
+                        short* value = (short*)GetNodeAtIndex0215fe2c(link, child);
+                        if (value != 0) AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)&self->task, *value);
                     }
                 }
             }
         }
         for (int index = 0; index < slot->count1; index++) {
-            ListNode021600f8* node = _Z22GetNodeAtIndex021600f8P12List021600f8i((List021600f8*)slot, index);
+            ListNode021600f8* node = GetNodeAtIndex021600f8((List021600f8*)slot, index);
             if (node == 0) continue;
             unsigned char* codes;
             for (int code = 1; code < node->codeCount; code++) {
                 codes = Codes021e9fc4(node);
                 int type = codes[code];
-                if (type == 3) _Z25AppendUniqueShort0216fdf8P22ShortSetStruct0216fdf8i((ShortSetStruct0216fdf8*)&self->task, 0x1b8);
+                if (type == 3) AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)&self->task, 0x1b8);
                 else if (type == 1) {
                     short value = 0xaa;
                     int id = node->ids[code - 1];
                     int valid = 0;
                     if (id >= 0) valid = AtMostThree021e9fc4(id);
                     if (valid) value = 0xa9;
-                    _Z25AppendUniqueShort0216fdf8P22ShortSetStruct0216fdf8i((ShortSetStruct0216fdf8*)&self->task, NarrowCode021e9fc4(value));
-                } else if (!(type != 8 && type != 7 && type != 6)) _Z25AppendUniqueShort0216fdf8P22ShortSetStruct0216fdf8i((ShortSetStruct0216fdf8*)&self->task, 0x7e);
-                else if (!(type != 4 && type != 5)) _Z25AppendUniqueShort0216fdf8P22ShortSetStruct0216fdf8i((ShortSetStruct0216fdf8*)&self->task, 0x142);
-                else if (type == 10) _Z25AppendUniqueShort0216fdf8P22ShortSetStruct0216fdf8i((ShortSetStruct0216fdf8*)&self->task, 0x143);
+                    AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)&self->task, NarrowCode021e9fc4(value));
+                } else if (!(type != 8 && type != 7 && type != 6)) AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)&self->task, 0x7e);
+                else if (!(type != 4 && type != 5)) AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)&self->task, 0x142);
+                else if (type == 10) AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)&self->task, 0x143);
                 else if (type == 2) {
                     short value = 0x29;
                     int id = node->ids[code - 1];
                     int valid = 0;
                     if (id >= 0) valid = AtMostThree021e9fc4(id);
                     if (valid) value = 0x28;
-                    _Z25AppendUniqueShort0216fdf8P22ShortSetStruct0216fdf8i((ShortSetStruct0216fdf8*)&self->task, NarrowCode021e9fc4(value));
+                    AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)&self->task, NarrowCode021e9fc4(value));
                 }
             }
             for (int group = 0; group < 3; group++) {
                 for (int item = 0; item < node->counts[group]; item++) {
-                    ListNode0215feb4* link = (ListNode0215feb4*)_Z23FindNodeAtDepth0215fff4Pvii(node, item, (unsigned char)group);
+                    ListNode0215feb4* link = (ListNode0215feb4*)FindNodeAtDepth0215fff4(node, item, (unsigned char)group);
                     if (link == 0) continue;
                     for (int child = 0; child < link->count; child++) {
-                        short* value = (short*)_Z22GetNodeAtIndex0215fe2cPvi(link, child);
-                        if (value != 0) _Z25AppendUniqueShort0216fdf8P22ShortSetStruct0216fdf8i((ShortSetStruct0216fdf8*)&self->task, *value);
+                        short* value = (short*)GetNodeAtIndex0215fe2c(link, child);
+                        if (value != 0) AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)&self->task, *value);
                     }
                 }
             }
         }
-        _Z27BeginListEntryTask_0216fd80P17EntryTask0216fd80i((EntryTask0216fd80*)&self->task, self->tasks[self->selected]);
+        BeginListEntryTask_0216fd80((EntryTask0216fd80*)&self->task, self->tasks[self->selected]);
     }
 }

@@ -47,7 +47,7 @@ union Box_0203f53c {
     struct { short x, y, z, width, height, depth; } bounds;
     unsigned int words[3];
 };
-extern "C" Element_0203f53c* _Z23GetValidElement02040468P12List02040468i(List02040468*, int);
+Element_0203f53c* GetValidElement02040468(List02040468*, int);
 void* GetElementStride0x14(unsigned char*, unsigned int);
 Entry_0203f53c* GetListElementByIndex(List_0203f354*, unsigned int);
 void* GetPtrField0x144(void*);
@@ -72,7 +72,7 @@ static inline int MultiplyFix32_0203f53c(int a, int b) {
 extern "C" ARM int func_0203f53c(Object_0203f53c* object, void* camera, int scale) {
     if (object->flags & 1) return 0;
     if (object->elementIndex < 0) return 0;
-    Element_0203f53c* element = _Z23GetValidElement02040468P12List02040468i(object->list, object->elementIndex);
+    Element_0203f53c* element = GetValidElement02040468(object->list, object->elementIndex);
     if (!element) return 0;
     Stride_0203f53c* stride = (Stride_0203f53c*)GetElementStride0x14((unsigned char*)&element->list, object->row);
     if (!stride) return 0;

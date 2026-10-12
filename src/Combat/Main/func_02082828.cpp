@@ -80,10 +80,10 @@ struct Combatant02082828 {
     unsigned short field962;
 };
 extern "C" void func_020891cc(void*);
-extern "C" void _Z26ClearPackedTriples02082cdcP11Obj02082cdc(Obj02082cdc*);
-extern "C" void _Z26InitFlagsAndTimers020827c4P11Obj020827c4(Obj020827c4*);
-extern "C" void _Z18CopyStruct02082d38P14Struct02082d38S0_(Struct02082d38*, Struct02082d38*);
-extern "C" void _Z27InitIndexedElements02083508P11Obj02083508(Obj02083508*);
+void ClearPackedTriples02082cdc(Obj02082cdc*);
+void InitFlagsAndTimers020827c4(Obj020827c4*);
+void CopyStruct02082d38(Struct02082d38*, Struct02082d38*);
+void InitIndexedElements02083508(Obj02083508*);
 void CopyFrom027ffcf4(void*);
 extern char data_020f1010[];
 extern char data_020ef078[];
@@ -115,8 +115,8 @@ extern "C" ARM void func_02082828(Combatant02082828* object) {
     object->saved[2].field10 = 1;
     memset(object->field934, 100, 22);
     func_020891cc(object->stats);
-    for (int i = 0; i < 13; i++) _Z26ClearPackedTriples02082cdcP11Obj02082cdc(&object->triples[i]);
-    _Z26InitFlagsAndTimers020827c4P11Obj020827c4(&object->timers488);
+    for (int i = 0; i < 13; i++) ClearPackedTriples02082cdc(&object->triples[i]);
+    InitFlagsAndTimers020827c4(&object->timers488);
     memset(object->field4a4, -1, 192);
     object->saved[0].field0 = 0;
     object->packed[0].field0 = object->saved[0].field0;
@@ -144,12 +144,12 @@ extern "C" ARM void func_02082828(Combatant02082828* object) {
     object->field56e = 0;
     object->field1c = object->field6c;
     object->field1e = object->field6e;
-    _Z18CopyStruct02082d38P14Struct02082d38S0_(&object->copied, &object->details);
+    CopyStruct02082d38(&object->copied, &object->details);
     object->field18 = 0;
     object->field20 = 0;
     memset(object->field454, -1, 16);
     memset(object->field464, 0, 27);
-    _Z27InitIndexedElements02083508P11Obj02083508((Obj02083508*)object);
+    InitIndexedElements02083508((Obj02083508*)object);
     memset(object->field8ec, 0, 36);
     memset(object->field910, 0, 9);
     for (unsigned char slotIndex = 0; slotIndex < 8; slotIndex++) {

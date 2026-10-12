@@ -18,13 +18,13 @@ struct EventState0221f324 {
 };
 extern EventState0221f324 data_ov031_0224f670;
 extern void (*data_ov031_0224f6f0)(int, int);
-extern "C" int _Z27DispatchOnZeroPair_0220cdd4ii(int, int);
+int DispatchOnZeroPair_0220cdd4(int, int);
 extern "C" int func_ov031_0220d010(void *, unsigned char *, int);
 extern "C" int func_ov031_0220cce4();
-extern "C" void _Z33ClearHandleIfStatusReady_0220ca88v();
+void ClearHandleIfStatusReady_0220ca88();
 static inline int DispatchBattlePair(int a, int b, int flags) {
     typedef int (*PairDispatchWithFlags)(int, int, int);
-    return reinterpret_cast<PairDispatchWithFlags>(_Z27DispatchOnZeroPair_0220cdd4ii)(a, b, flags);
+    return reinterpret_cast<PairDispatchWithFlags>(DispatchOnZeroPair_0220cdd4)(a, b, flags);
 }
 
 // USA: func_ov031_0221f324
@@ -131,7 +131,7 @@ extern "C" THUMB void func_ov031_0221f324(BattleEvent0221f324 *event) {
     case 2:
         if (event->result == 0) {
             if (data_ov031_0224f670.state == 2) {
-                _Z33ClearHandleIfStatusReady_0220ca88v();
+                ClearHandleIfStatusReady_0220ca88();
                 data_ov031_0224f670.state = 0;
                 if (data_ov031_0224f6f0) data_ov031_0224f6f0(20, 0);
             }

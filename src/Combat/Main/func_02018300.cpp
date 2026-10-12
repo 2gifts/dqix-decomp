@@ -60,19 +60,19 @@ struct EventParameter {
 };
 Entry02018b34* FindEntryByNodeIdAndKey(Owner02018b34*, Param02018b34*);
 extern "C" void* func_0205ec34();
-extern "C" void _Z35LookupAndForEachNodeIfMatch02064b24PvitS_(void*, int, unsigned short, void*);
+void LookupAndForEachNodeIfMatch02064b24(void*, int, unsigned short, void*);
 int fix32ReduceAngle0To2Pi(int);
 int fix32cos(int);
 int fix32sin(int);
 void Vector3fixMultiplyScalar(const Vector3i*, int, Vector3i*);
 void* GetPointerFromArray0x3c(unsigned char*, unsigned int);
-extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0*, int, int);
-extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc*, int);
-extern "C" int _Z32FindMatchingElementIndex02018bc4PhPv(unsigned char*, void*);
-extern "C" void _Z27EnqueueEventTag175_021d196ctti(unsigned short, unsigned short, int);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
+void CancelPendingAction020397cc(Obj020397cc*, int);
+int FindMatchingElementIndex02018bc4(unsigned char*, void*);
+void EnqueueEventTag175_021d196c(unsigned short, unsigned short, int);
 Entry_02028bd0* GetEntryTableBase();
 Obj02028c64* FindInlineEntryById(Entry_02028bd0*, int);
-extern "C" void _Z18SetFlagBit02028c64P11Obj02028c64i(Obj02028c64*, int);
+void SetFlagBit02028c64(Obj02028c64*, int);
 extern const SoundTable data_020e6e74;
 extern Obj0205eaa0 data_02108760;
 
@@ -89,8 +89,8 @@ extern "C" ARM void func_02018300(Owner02018b34* self, Param02018b34* param, int
         event.entryKey = param->entryKey;
         event.nodeId = param->nodeId;
         event.ownerId = self->id;
-        _Z35LookupAndForEachNodeIfMatch02064b24PvitS_(manager, 17, 108, &event);
-        _Z35LookupAndForEachNodeIfMatch02064b24PvitS_(manager, 3, 108, &event);
+        LookupAndForEachNodeIfMatch02064b24(manager, 17, 108, &event);
+        LookupAndForEachNodeIfMatch02064b24(manager, 3, 108, &event);
         if (param->flags & 4) {
             param->flags = (unsigned short)(param->flags & ~4);
             param->flags = (unsigned short)(param->flags & ~1);
@@ -153,17 +153,17 @@ extern "C" ARM void func_02018300(Owner02018b34* self, Param02018b34* param, int
     }
     if (sound) {
         SoundTable sounds = data_020e6e74;
-        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, sounds.values[param->kind], 0);
+        DispatchWithShortB4_0205eaa0(&data_02108760, sounds.values[param->kind], 0);
     }
     if (forced && (param->flags & 8)) {
         GameObject* protagonist = GameState::GetInstance()->GetProtagonist();
         ((ProtagonistSpeed*)protagonist)->speed = 0;
-        _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)protagonist, 1);
+        CancelPendingAction020397cc((Obj020397cc*)protagonist, 1);
         self->state = 8;
         return;
     }
-    int index = _Z32FindMatchingElementIndex02018bc4PhPv((unsigned char*)self, param);
-    if (forced && notify) _Z27EnqueueEventTag175_021d196ctti(self->id, (unsigned short)index, sound);
+    int index = FindMatchingElementIndex02018bc4((unsigned char*)self, param);
+    if (forced && notify) EnqueueEventTag175_021d196c(self->id, (unsigned short)index, sound);
     Obj02028c64* flags = FindInlineEntryById(GetEntryTableBase(), self->id);
-    if (flags && !(param->flags & 512)) _Z18SetFlagBit02028c64P11Obj02028c64i(flags, index);
+    if (flags && !(param->flags & 512)) SetFlagBit02028c64(flags, index);
 }

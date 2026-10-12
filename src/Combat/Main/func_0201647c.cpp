@@ -60,16 +60,16 @@ struct WorldNode {
 extern "C" SaveState* func_0205ec34();
 extern "C" int* func_0202ae18();
 extern "C" ZoneManager* func_0208e0a8();
-extern "C" int _Z22IsMatchingName0208e824PvPc(void*, char*);
-extern "C" void _Z18InitStruct020133fcPc(char*);
+int IsMatchingName0208e824(void*, char*);
+void InitStruct020133fc(char*);
 int TestBitInByteArray(int, unsigned char*, int);
 int CheckField0NonZero(int*);
 WorldNode* FindNodeById(void*, int, int);
-extern "C" void _Z16ZeroInit020de848Pv(void*);
+void ZeroInit020de848(void*);
 extern "C" void func_020de9a4(void*, SafeAllocator*, void*, unsigned int, short*, unsigned short);
 extern "C" void func_02013b70(S02013cb0*, SafeAllocator*);
-extern "C" void _Z31SetElementFlagsFromMask02013cb0P9S02013cb0j(S02013cb0*, unsigned int);
-extern "C" void _Z33UpdateFlaggedType2Entries02018c74Phj(unsigned char*, unsigned int);
+void SetElementFlagsFromMask02013cb0(S02013cb0*, unsigned int);
+void UpdateFlaggedType2Entries02018c74(unsigned char*, unsigned int);
 extern const char* data_020f2a38;
 extern const char* data_020f2a30;
 
@@ -87,7 +87,7 @@ extern "C" ARM void func_0201647c(S02013cb0* self) {
     ZoneManager* zone = func_0208e0a8();
     LootableContainerManager::Container* container = containers->pContainerList_;
     bool includeZone = false;
-    if (_Z22IsMatchingName0208e824PvPc(zone, self->name + 5)) includeZone = true;
+    if (IsMatchingName0208e824(zone, self->name + 5)) includeZone = true;
     int containerCount = 0;
     for (; container; container = container->pNext) {
         if (container->containerType == 0 || container->containerType == 4) containerCount++;
@@ -99,7 +99,7 @@ extern "C" ARM void func_0201647c(S02013cb0* self) {
     for (; container; container = container->pNext) {
         if (container->containerType == 0 || container->containerType == 4) {
             LootEntry* entry = &self->entries[self->count];
-            _Z18InitStruct020133fcPc(reinterpret_cast<char*>(entry));
+            InitStruct020133fc(reinterpret_cast<char*>(entry));
             entry->position = container->position;
             entry->objectID = container->unk_6;
             entry->counter = 0;
@@ -155,7 +155,7 @@ extern "C" ARM void func_0201647c(S02013cb0* self) {
             }
         }
     }
-    _Z16ZeroInit020de848Pv(self->loader);
+    ZeroInit020de848(self->loader);
     if (count > 0) {
         BackgroundLoader::AddLockGlobal();
         unsigned int size = 0;
@@ -165,11 +165,11 @@ extern "C" ARM void func_0201647c(S02013cb0* self) {
     }
     func_02013b70(self, self->allocator);
     if (self->pendingElements) {
-        _Z31SetElementFlagsFromMask02013cb0P9S02013cb0j(self, self->pendingElements);
+        SetElementFlagsFromMask02013cb0(self, self->pendingElements);
         self->pendingElements = 0;
     }
     if (self->pendingType2) {
-        _Z33UpdateFlaggedType2Entries02018c74Phj(reinterpret_cast<unsigned char*>(self), self->pendingType2);
+        UpdateFlaggedType2Entries02018c74(reinterpret_cast<unsigned char*>(self), self->pendingType2);
         self->pendingType2 = 0;
     }
 }

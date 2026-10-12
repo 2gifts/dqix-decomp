@@ -5,35 +5,35 @@
 #define REG_BG_SCROLL_020439b0 (*(volatile unsigned int*)0x04000018)
 #define REG_DISPLAY_020439b0 (*(volatile unsigned int*)0x04000000)
 
-extern "C" void _Z25LoadStateBytePair0206b804PcPiS0_(char* obj, int* out1, int* out2);
+void LoadStateBytePair0206b804(char* obj, int* out1, int* out2);
 extern "C" void func_02044c74(void* obj, void* out);
 extern "C" void func_02066cf0(void* self, int flag);
-extern "C" void _Z25ZeroFourHalfwords02044074P14Struct02044074(struct Struct02044074* s);
+void ZeroFourHalfwords02044074(struct Struct02044074* s);
 extern "C" void func_02042b98(void* self, int arg1, int arg2, int arg3, int arg4);
 void SetFourHalfwords(struct Struct0204408c* s, short x, short y, short z, short w);
 extern "C" void func_02043600(void* a, void* box);
-extern "C" void _Z23InitCombatSlots02043040Pc(char* obj);
+void InitCombatSlots02043040(char* obj);
 extern "C" void func_02043124(void* self);
-extern "C" ARM void _Z28ResetControllerState020430b0Pc(char* self);
+ARM void ResetControllerState020430b0(char* self);
 extern "C" void func_020437bc(void* buf, void* box, int index);
 
 struct Struct0204394c;
-extern "C" int _Z33PrepareEncodeStreamBuffer0204394cP14Struct0204394c(struct Struct0204394c* obj);
+int PrepareEncodeStreamBuffer0204394c(struct Struct0204394c* obj);
 
 struct Entry020e2cc4;
-extern "C" void _Z23SetEntryEnabled020e2cc4P13Entry020e2cc4i(struct Entry020e2cc4* obj, int enabled);
+void SetEntryEnabled020e2cc4(struct Entry020e2cc4* obj, int enabled);
 
-extern "C" void _Z25RestorePairTables0207df90Pc(char* obj);
+void RestorePairTables0207df90(char* obj);
 struct Obj02041754;
-extern "C" void _Z26DisableField16Bit002041754P11Obj02041754(struct Obj02041754* obj);
-extern "C" void _Z24BackupPairTables0207dfacPc(char* obj);
+void DisableField16Bit002041754(struct Obj02041754* obj);
+void BackupPairTables0207dfac(char* obj);
 void ClearBitInArray(int unused, unsigned char* arr, int index);
 
 struct Rect020e2d2c;
 void SetRectFromPosAndSize(struct Rect020e2d2c* s, int a, int b, int c, int d);
 
 struct Entry020e2c34;
-extern "C" void _Z26UpdateAndDrawEntry020e2c34P13Entry020e2c34(struct Entry020e2c34* obj);
+void UpdateAndDrawEntry020e2c34(struct Entry020e2c34* obj);
 
 struct Foo02042fcc {
     short x;
@@ -122,7 +122,7 @@ extern "C" ARM void func_020439b0(char* self, int flag) {
     Rect020439b0 mainBounds, targetBounds, otherBounds;
 
     if (controller->flag19cc != 0) {
-        _Z25LoadStateBytePair0206b804PcPiS0_(self, &dx, &dy);
+        LoadStateBytePair0206b804(self, &dx, &dy);
         func_02044c74(self, controller->stream);
 
         Stream020439b0* stream = controller->stream;
@@ -137,9 +137,9 @@ extern "C" ARM void func_020439b0(char* self, int flag) {
                 controller->field40 = 0;
             }
 
-            _Z25ZeroFourHalfwords02044074P14Struct02044074(&mainBounds.zero);
-            _Z25ZeroFourHalfwords02044074P14Struct02044074(&targetBounds.zero);
-            _Z25ZeroFourHalfwords02044074P14Struct02044074(&otherBounds.zero);
+            ZeroFourHalfwords02044074(&mainBounds.zero);
+            ZeroFourHalfwords02044074(&targetBounds.zero);
+            ZeroFourHalfwords02044074(&otherBounds.zero);
 
             if (controller->field998 != 0 && controller->flag19b1 != 0) {
                 goto prepareBounds;
@@ -255,19 +255,19 @@ extern "C" ARM void func_020439b0(char* self, int flag) {
         FreeVRAMStagingMemory((const void*)controller->stream->value);
 
         if (controller->field998 == 0) {
-            _Z23InitCombatSlots02043040Pc(self);
+            InitCombatSlots02043040(self);
             func_02043124(self);
-            _Z28ResetControllerState020430b0Pc(self);
+            ResetControllerState020430b0(self);
         }
     }
 
     if (controller->flag19ce != 0 && controller->field44 == 0) {
-        _Z33PrepareEncodeStreamBuffer0204394cP14Struct0204394c((struct Struct0204394c*)(controller->encoder));
+        PrepareEncodeStreamBuffer0204394c((struct Struct0204394c*)(controller->encoder));
     }
     {
         int i;
         for (i = 0; i < 2; i++) {
-            _Z23SetEntryEnabled020e2cc4P13Entry020e2cc4i((Entry020e2cc4*)&controller->displayEntries[i], 0);
+            SetEntryEnabled020e2cc4((Entry020e2cc4*)&controller->displayEntries[i], 0);
         }
     }
 
@@ -284,9 +284,9 @@ extern "C" ARM void func_020439b0(char* self, int flag) {
                         if (controller->flag19cc != 0 || controller->flag19ce != 0) {
                             entry->flag0 = 0;
                         } else {
-                            _Z25RestorePairTables0207df90Pc((char*)controller->encoder);
-                            _Z26DisableField16Bit002041754P11Obj02041754(entry);
-                            _Z24BackupPairTables0207dfacPc((char*)controller->encoder);
+                            RestorePairTables0207df90((char*)controller->encoder);
+                            DisableField16Bit002041754(entry);
+                            BackupPairTables0207dfac((char*)controller->encoder);
                         }
                         ClearBitInArray((int)self, controller->bits2cc, entry->field08);
                     }
@@ -298,7 +298,7 @@ extern "C" ARM void func_020439b0(char* self, int flag) {
     if (controller->target914.state >= 2) {
         SetRectFromPosAndSize((Rect020e2d2c*)&controller->displayEntries[0], 4, 0x76, 0xf8, 0x46);
         if (controller->flag1962 != 0) {
-            _Z23SetEntryEnabled020e2cc4P13Entry020e2cc4i((Entry020e2cc4*)&controller->displayEntries[0], 1);
+            SetEntryEnabled020e2cc4((Entry020e2cc4*)&controller->displayEntries[0], 1);
         }
     }
 
@@ -309,12 +309,12 @@ extern "C" ARM void func_020439b0(char* self, int flag) {
         int bottom = controller->bounds144.w;
         SetRectFromPosAndSize((Rect020e2d2c*)&controller->displayEntries[1], left + 2, top + 2, right - 4, bottom - 4);
         if (controller->flag1962 != 0) {
-            _Z23SetEntryEnabled020e2cc4P13Entry020e2cc4i((Entry020e2cc4*)&controller->displayEntries[1], 1);
+            SetEntryEnabled020e2cc4((Entry020e2cc4*)&controller->displayEntries[1], 1);
         }
     }
 
     int k;
     for (k = 0; k < 2; k++) {
-        _Z26UpdateAndDrawEntry020e2c34P13Entry020e2c34((Entry020e2c34*)&controller->displayEntries[k]);
+        UpdateAndDrawEntry020e2c34((Entry020e2c34*)&controller->displayEntries[k]);
     }
 }

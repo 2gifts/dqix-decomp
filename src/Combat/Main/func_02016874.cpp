@@ -31,11 +31,11 @@ extern RenderFlags02016874 data_020ef0dc;
 extern Matrix3x3 data_0210a0cc;
 extern "C" void func_0201730c(CombatEntryList*);
 extern "C" void func_02017540(Zone3D*);
-extern "C" int _Z17IsInRange0201b5b0i(int);
-extern "C" void _Z19ProcessNode0201aedcP11Ctx0201aedc(Ctx0201aedc*);
-extern "C" Node020196fc* _Z22GetNodeAtDepth020196fcP11Obj020196fci(Obj020196fc*, int);
-extern "C" void _Z27ClearGlobalFlagBits02016d8cPv(void*);
-extern "C" void _Z27PushMatrixAndRender02016db4PvS_(void*, void*);
+int IsInRange0201b5b0(int);
+void ProcessNode0201aedc(Ctx0201aedc*);
+Node020196fc* GetNodeAtDepth020196fc(Obj020196fc*, int);
+void ClearGlobalFlagBits02016d8c(void*);
+void PushMatrixAndRender02016db4(void*, void*);
 extern "C" void func_020ca528(const void*, void*);
 
 // USA: func_02016874
@@ -45,9 +45,9 @@ extern "C" ARM void func_02016874(Zone3D* self) {
     func_02017540(self);
     self->unk_276c[0xb0] = 0;
     data_020ef0dc.enabled = 1;
-    if (_Z17IsInRange0201b5b0i(self->currentZoneID_)) {
+    if (IsInRange0201b5b0(self->currentZoneID_)) {
         if (((unsigned char*)self->unk_23bc)[0] == 0) return;
-        _Z19ProcessNode0201aedcP11Ctx0201aedc((Ctx0201aedc*)self);
+        ProcessNode0201aedc((Ctx0201aedc*)self);
         int environment;
         int minX;
         int z;
@@ -95,12 +95,12 @@ extern "C" ARM void func_02016874(Zone3D* self) {
                 RenderConfig::SubmitToFifo();
                 model->Draw(true);
                 if (environment == 4) {
-                    model = _Z22GetNodeAtDepth020196fcP11Obj020196fci((Obj020196fc*)self, 11)->render->slot->model;
+                    model = GetNodeAtDepth020196fc((Obj020196fc*)self, 11)->render->slot->model;
                     NSBXXInternalModel* internal = model->rawInternalModel_;
                     if (model != 0 && internal != 0) {
                         Matrix3x3 identity;
                         Mat3x3_WriteIdentity(&identity);
-                        _Z27ClearGlobalFlagBits02016d8cPv(&identity);
+                        ClearGlobalFlagBits02016d8c(&identity);
                         RenderConfig::SubmitToFifo();
                         model->Draw(true);
                     }
@@ -108,7 +108,7 @@ extern "C" ARM void func_02016874(Zone3D* self) {
             }
         }
         if (environment != 5) return;
-        Model3D* model = _Z22GetNodeAtDepth020196fcP11Obj020196fci((Obj020196fc*)self, 12)->render->slot->model;
+        Model3D* model = GetNodeAtDepth020196fc((Obj020196fc*)self, 12)->render->slot->model;
         LightingManager* manager = LightingManager::GetInstance();
         manager->ApplyAmbientColorToModel(model->rawInternalModel_);
         if (playerZ < 4) {
@@ -164,7 +164,7 @@ extern "C" ARM void func_02016874(Zone3D* self) {
         self->unk_830[1] = time;
         Node020196fc* node = (Node020196fc*)self->firstBMDJStruct_41c_;
         while (node != 0) {
-            _Z27PushMatrixAndRender02016db4PvS_(self, node);
+            PushMatrixAndRender02016db4(self, node);
             node = node->next;
         }
         self->unk_830[3] = 0;

@@ -45,8 +45,8 @@ struct TerrainGrid {
     int angle;
 };
 struct TerrainProbe { Vector3i upper; Vector3i lower; };
-extern "C" Node020196fc* _Z22GetNodeAtDepth020196fcP11Obj020196fci(Obj020196fc*, int);
-extern "C" void _Z28StoreThreeWordsAt0x0020130a8Piiii(int*, int, int, int);
+Node020196fc* GetNodeAtDepth020196fc(Obj020196fc*, int);
+void StoreThreeWordsAt0x0020130a8(int*, int, int, int);
 extern "C" long long func_020c32f8(int);
 extern "C" long long func_020c3260(int);
 extern "C" float func_0200c700(long long);
@@ -67,8 +67,8 @@ extern "C" ARM int func_02017d90(Obj020196fc* self, int index, TerrainGrid* grid
             z = entry->z;
             angle = entry->angle;
         } else {
-            if (_Z22GetNodeAtDepth020196fcP11Obj020196fci(self, 4))
-                node = _Z22GetNodeAtDepth020196fcP11Obj020196fci(self, 4)->scene->terrain;
+            if (GetNodeAtDepth020196fc(self, 4))
+                node = GetNodeAtDepth020196fc(self, 4)->scene->terrain;
             else return 0;
             x = entry->angle;
             z = entry->specialZ;
@@ -88,7 +88,7 @@ extern "C" ARM int func_02017d90(Obj020196fc* self, int index, TerrainGrid* grid
         Vector3i origin;
         Matrix3x3 rotation;
         local.upper = object->position_;
-        _Z28StoreThreeWordsAt0x0020130a8Piiii(&origin.x, x, 0, z);
+        StoreThreeWordsAt0x0020130a8(&origin.x, x, 0, z);
         Vector3fix_Subtract(&local.upper, &origin, &local.upper);
         int rotationAngle = -(angle - 25735);
         int cosine = (int)(4096.0f * (func_0200c700(func_020c32f8(rotationAngle)) / 4294967296.0f));

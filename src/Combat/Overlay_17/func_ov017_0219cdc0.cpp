@@ -23,7 +23,7 @@ extern "C" void func_ov017_021c9e00(int, int, int, int);
 extern "C" void func_ov017_02191108(void*, int, int, int, int);
 GameObject* GetCombatantWithFlag0x1000(GameState*, int);
 int GetSignedByte0x2d0(void*);
-extern "C" void _Z26CallHelperWithBuf_021907dciiiii(int, int, int, int, int);
+void CallHelperWithBuf_021907dc(int, int, int, int, int);
 void ClearFlag0x1ceBit0x4(unsigned char*);
 extern "C" int func_0202c508(void*);
 void* GetPtrField0x2a04(GameState*);
@@ -65,7 +65,7 @@ extern "C" ARM void func_ov017_0219cdc0(unsigned short value, int wholeParty, si
                 if (state->GetPartyMemberByIndex(id)) {
                     GameObject* combatant = GetCombatantWithFlag0x1000(state, memberId);
                     if (combatant) id = GetSignedByte0x2d0(combatant);
-                    _Z26CallHelperWithBuf_021907dciiiii((int)resources, id, 1, 1, 1);
+                    CallHelperWithBuf_021907dc((int)resources, id, 1, 1, 1);
                     PartyView0219cdc0* linked = (PartyView0219cdc0*)state->GetPartyMemberByIndex(id);
                     if (linked) {
                         linked->object.SetInheritedAlpha(31);

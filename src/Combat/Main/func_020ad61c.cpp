@@ -53,12 +53,12 @@ extern "C" World020ad61c* func_02012fe4(void);
 extern "C" void func_020332ac(Trajectory020ad61c*);
 extern "C" void func_020adda4(Trajectory020ad61c*);
 extern "C" void func_020adaac(Trajectory020ad61c*);
-extern "C" void _Z28SubtractHeightOffset020ae398P14Entity020AE398(Entity020AE398*);
-extern "C" void _Z24UpdateFallMotion020ae3f4P11Obj020ae3f4(Obj020ae3f4*);
+void SubtractHeightOffset020ae398(Entity020AE398*);
+void UpdateFallMotion020ae3f4(Obj020ae3f4*);
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
 void SetByteField0x253(void*);
 int GetField0x3b0Value(GameState*);
-extern "C" int _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(void*, Vec3copy0202ec84*, int*, int*);
+int ComputeTwoFromVec3_0202ec84(void*, Vec3copy0202ec84*, int*, int*);
 extern "C" int func_02018fbc(World020ad61c*, Vec3copy0202ec84*);
 int IsField0Null(void**);
 int TestFlag0SetAndFlag1Clear(unsigned short*, int);
@@ -87,10 +87,10 @@ extern "C" ARM void func_020ad61c(Trajectory020ad61c* object) {
         object->field140 = 0;
         break;
     case 1:
-        _Z28SubtractHeightOffset020ae398P14Entity020AE398((Entity020AE398*)object);
+        SubtractHeightOffset020ae398((Entity020AE398*)object);
         break;
     case 2:
-        _Z24UpdateFallMotion020ae3f4P11Obj020ae3f4((Obj020ae3f4*)object);
+        UpdateFallMotion020ae3f4((Obj020ae3f4*)object);
         break;
     }
     object->saved144 = saved144;
@@ -142,7 +142,7 @@ extern "C" ARM void func_020ad61c(Trajectory020ad61c* object) {
     points[0] = *(Vec3copy0202ec84*)&object->position;
     points[1] = *(Vec3copy0202ec84*)&object->firstPosition;
     points[2] = *(Vec3copy0202ec84*)&object->secondPosition;
-    for (int i = 0; i < 3; i++) _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(camera, &points[i], &screenX[i], &screenY[i]);
+    for (int i = 0; i < 3; i++) ComputeTwoFromVec3_0202ec84(camera, &points[i], &screenX[i], &screenY[i]);
     if (data_02114e54.active && data_02114e54.count < 10) {
         touchX = data_02114e54.x;
         touchY = data_02114e54.y;
@@ -157,7 +157,7 @@ extern "C" ARM void func_020ad61c(Trajectory020ad61c* object) {
     if (!directHit) {
         for (int i = 0; i < 3; i++) {
             points[i].v[1] = func_02018fbc(world, &points[i]);
-            _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(camera, &points[i], &screenX[i], &screenY[i]);
+            ComputeTwoFromVec3_0202ec84(camera, &points[i], &screenX[i], &screenY[i]);
             if (screenX[i] - 16 < touchX && touchX < screenX[i] + 16 &&
                 screenY[i] - 24 < touchY && touchY < screenY[i] + 8) {
                 groundedHit = 1;

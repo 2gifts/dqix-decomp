@@ -36,13 +36,13 @@ struct FollowingActor {
 };
 
 extern "C" void func_ov017_021917f0(int, int);
-extern "C" void _Z24SetByteIfChanged02033b68P11Obj02033b68i(Obj02033b68*, int);
+void SetByteIfChanged02033b68(Obj02033b68*, int);
 int fix32ReduceAngle0To2Pi(int);
-extern "C" void _Z21SetVecYByMode02033834P11Obj02033834i(Obj02033834*, int);
-extern "C" void _Z30ClearBytesAndZeroBlock02039d24Ph(unsigned char*);
+void SetVecYByMode02033834(Obj02033834*, int);
+void ClearBytesAndZeroBlock02039d24(unsigned char*);
 void SetByteSavingPrevious(Foo02033b58*, unsigned char);
 int IsField0Null(void**);
-extern "C" void _Z24SetVecYFromValue02033874P11Obj02033874i(Obj02033874*, int);
+void SetVecYFromValue02033874(Obj02033874*, int);
 
 // USA: func_020391ac
 extern "C" ARM void func_020391ac(FollowingActor* actor) {
@@ -71,12 +71,12 @@ extern "C" ARM void func_020391ac(FollowingActor* actor) {
         if (actor->state != 2) {
             func_ov017_021917f0(actor->object.unknown_4_, 1);
         }
-        _Z24SetByteIfChanged02033b68P11Obj02033b68i((Obj02033b68*)actor, 2);
+        SetByteIfChanged02033b68((Obj02033b68*)actor, 2);
         return;
     }
     if (actor->state == 2) {
         func_ov017_021917f0(actor->object.unknown_4_, 0);
-        _Z24SetByteIfChanged02033b68P11Obj02033b68i((Obj02033b68*)actor, 0);
+        SetByteIfChanged02033b68((Obj02033b68*)actor, 0);
     }
     if (target->followerEnabled) {
         if (target->targetMode == 0 || target->targetMode == 1 || target->targetMode == 2) {
@@ -88,12 +88,12 @@ extern "C" ARM void func_020391ac(FollowingActor* actor) {
             Vector3fix_Subtract(&destination, &origin, &direction);
             int distance = Vector3fix_Length(&direction);
             Vector3fix_Normalize(&direction, &direction);
-            _Z21SetVecYByMode02033834P11Obj02033834i((Obj02033834*)actor, fix32ReduceAngle0To2Pi(fix32_Atan2(direction.x, direction.z)));
+            SetVecYByMode02033834((Obj02033834*)actor, fix32ReduceAngle0To2Pi(fix32_Atan2(direction.x, direction.z)));
             if (distance < 0x1000)
-                _Z24SetByteIfChanged02033b68P11Obj02033b68i((Obj02033b68*)actor, 0);
+                SetByteIfChanged02033b68((Obj02033b68*)actor, 0);
             else {
                 actor->animation = 0x189;
-                _Z24SetByteIfChanged02033b68P11Obj02033b68i((Obj02033b68*)actor, 1);
+                SetByteIfChanged02033b68((Obj02033b68*)actor, 1);
             }
             actor->object.SetInheritedAlpha(31 - actor->fade);
             actor->followFlags &= ~4;
@@ -104,8 +104,8 @@ extern "C" ARM void func_020391ac(FollowingActor* actor) {
             actor->fade = 0;
             actor->object.position_ = target->object.position_;
             actor->object.SetInheritedAlpha(31);
-            _Z30ClearBytesAndZeroBlock02039d24Ph((unsigned char*)actor);
-            _Z24SetByteIfChanged02033b68P11Obj02033b68i((Obj02033b68*)actor, 0);
+            ClearBytesAndZeroBlock02039d24((unsigned char*)actor);
+            SetByteIfChanged02033b68((Obj02033b68*)actor, 0);
             actor->followFlags |= 4;
         }
         return;
@@ -180,17 +180,17 @@ extern "C" ARM void func_020391ac(FollowingActor* actor) {
         Vector3fix_Normalize(&direction, &direction);
         angle = fix32ReduceAngle0To2Pi(fix32_Atan2(direction.x, direction.z));
         if (moving)
-            _Z24SetVecYFromValue02033874P11Obj02033874i((Obj02033874*)actor, leader->object.rotation_.y);
+            SetVecYFromValue02033874((Obj02033874*)actor, leader->object.rotation_.y);
         else
-            _Z21SetVecYByMode02033834P11Obj02033834i((Obj02033834*)actor, angle);
+            SetVecYByMode02033834((Obj02033834*)actor, angle);
         if (distance <= 0x800 && actor->readIndex != actor->writeIndex) {
             ++actor->readIndex;
             actor->readIndex %= 16;
         }
         if (moving)
-            _Z24SetByteIfChanged02033b68P11Obj02033b68i((Obj02033b68*)actor, 0);
+            SetByteIfChanged02033b68((Obj02033b68*)actor, 0);
         else if (actor->state != 1)
-            _Z24SetByteIfChanged02033b68P11Obj02033b68i((Obj02033b68*)actor, 1);
+            SetByteIfChanged02033b68((Obj02033b68*)actor, 1);
     } else if (actor->state != 0)
-        _Z24SetByteIfChanged02033b68P11Obj02033b68i((Obj02033b68*)actor, 0);
+        SetByteIfChanged02033b68((Obj02033b68*)actor, 0);
 }
