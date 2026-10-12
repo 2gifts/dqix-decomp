@@ -6,15 +6,29 @@ struct Src021e6ef8 {
     short ha;
 };
 
-extern int data_ov025_021ef988;
+struct Sub021e6ef8 {
+    char pad[0x3e];
+    unsigned short f3e;
+    short f40;
+};
+
+struct Base021e6ef8 {
+    char pad[0x540];
+    struct Sub021e6ef8 sub;
+};
+
+struct Holder021e6ef8 {
+    char pad[0xc];
+    struct Base021e6ef8* base;
+};
+extern struct Holder021e6ef8 data_ov025_021ef988;
 
 // USA: func_ov025_021e6ef8
 ARM int CopyFields_021e6ef8_021e6ef8(struct Src021e6ef8* src) {
     short va = src->ha;
     unsigned short v8 = src->h8;
-    char* p = *(char**)((char*)&data_ov025_021ef988 + 0xc);
-    p += 0x500;
-    *(unsigned short*)(p + 0x7e) = v8;
-    *(short*)(p + 0x80) = va;
+    struct Base021e6ef8* base = data_ov025_021ef988.base;
+    base->sub.f3e = v8;
+    base->sub.f40 = va;
     return 1;
 }
