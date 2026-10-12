@@ -850,6 +850,7 @@ src/Combat/Overlay_4/SyncFieldPtrsAndResetByte_0216e828.cpp:
     .text start:0x0216eec8 end:0x0216ef34
 
 src/Combat/Overlay_4/AppendAndSetArrayBit_02167fd4.cpp:
+    complete
     .text start:0x0216841c end:0x0216846c
 
 src/Combat/Overlay_4/GetFlagBitFromField150_0215eb20.cpp:
@@ -1017,6 +1018,7 @@ src/Combat/Overlay_4/InitCombatObjAllocators_02167820.cpp:
     .text start:0x02167d1c end:0x02167db8
 
 src/Combat/Overlay_4/RefreshStateAndNotify_02167f1c.cpp:
+    complete
     .text start:0x02168364 end:0x021683f8
 
 src/Combat/Overlay_4/SetPercent2AndDispatch_0215571c.cpp:
@@ -1050,6 +1052,7 @@ src/Combat/Overlay_4/func_ov004_0216b2c8.cpp:
     .text start:0x0216b350 end:0x0216b3c0
 
 src/Combat/Overlay_4/DispatchOutcomeState_02167eb0.cpp:
+    complete
     .text start:0x021682f8 end:0x02168364
 
 src/Combat/Overlay_4/SendOrReinitAndNotify_0216e414.cpp:
@@ -1131,9 +1134,11 @@ src/Combat/Overlay_4/func_ov004_021685f8.cpp:
     .text start:0x02168a6c end:0x02168ab0
 
 src/Combat/Overlay_4/DispatchEventValue141_021684b0.cpp:
+    complete
     .text start:0x02168924 end:0x02168948
 
 src/Combat/Overlay_4/DispatchEventValue51_02167fb0.cpp:
+    complete
     .text start:0x021683f8 end:0x0216841c
 
 src/Combat/Overlay_4/SetOv011FieldTo_0216dc8c.cpp:
@@ -1187,21 +1192,26 @@ src/Combat/Overlay_4/DispatchAdjustmentIfType16_021556dc.cpp:
     .text start:0x02156c5c end:0x02156c9c
 
 src/Combat/Overlay_4/DispatchEventValue150_0216848c.cpp:
+    complete
     .text start:0x02168900 end:0x02168924
 
 src/Combat/Overlay_4/DispatchEventValue2_02167d70.cpp:
+    complete
     .text start:0x021681b8 end:0x021681d8
 
 src/Combat/Overlay_4/SetOv011FieldTo_0216acd0_0216acd0.cpp:
     .text start:0x0216af2c end:0x0216af44
 
 src/Combat/Overlay_4/DispatchEventValue150_02168244.cpp:
+    complete
     .text start:0x021686b8 end:0x021686dc
 
 src/Combat/Overlay_4/SetFieldFlagValue151_02168268.cpp:
+    complete
     .text start:0x021686dc end:0x021686f0
 
 src/Combat/Overlay_4/SetFieldFlagValue21_0216827c.cpp:
+    complete
     .text start:0x021686f0 end:0x02168704
 
 src/Combat/Overlay_4/EmptyFunc_0215e434.cpp:
@@ -1376,6 +1386,7 @@ src/Combat/Overlay_4/func_ov004_021680cc.cpp:
     .text start:0x02168514 end:0x021686b8
 
 src/Combat/Overlay_4/AllocateBuffersAndDispatch_02167d04.cpp:
+    complete
     .text start:0x021681a4 end:0x021681b8
 
 src/Combat/Overlay_4/ReturnZero_0216d718.cpp:
@@ -1565,3 +1576,63 @@ src/Combat/Overlay_4/SetGlobalFieldTo1_0216768c_0216768c.cpp:
 src/Combat/Overlay_4/func_ov004_0215a31c.cpp:
     complete
     .text start:0x0215b324 end:0x0215b740
+
+src/Combat/Overlay_4/SetupOrRejectAction_02158a60.cpp:
+    complete
+    .text start:0x02159b0c end:0x02159c3c
+
+src/Combat/Overlay_4/DispatchIfKind6_02154718.cpp:
+    complete
+    .text start:0x02155db0 end:0x02155de0
+
+src/Combat/Overlay_4/DispatchIfKind6_021547fc.cpp:
+    complete
+    .text start:0x02155e84 end:0x02155eb4
+
+src/Combat/Overlay_4/SetOv009cbb830To61_0215de80.cpp:
+    complete
+    .text start:0x0215edb0 end:0x0215edcc
+
+src/Combat/Overlay_4/SyncEntryFields27And28_02154618.cpp:
+    complete
+    .text start:0x02155cc0 end:0x02155d58
+
+src/Combat/Overlay_4/SyncEntryFields27And28Alt_02154748.cpp:
+    complete
+    .text start:0x02155de0 end:0x02155e84
+
+src/Combat/Overlay_4/CheckFieldAndEnqueue_021652bc_021652bc.cpp:
+    complete
+    .text start:0x02165b4c end:0x02165b78
+
+src/Combat/Overlay_4/func_ov004_02166844.cpp:
+    complete
+    .text start:0x02166e30 end:0x021670b0
+
+src/Combat/Overlay_4/PopulateCombatantContextFields_02159650.cpp:
+    complete
+    .text start:0x0215a71c end:0x0215a8e4
+
+src/Combat/Overlay_4/StoreCallResultAndDispatch_0215b120.cpp:
+    complete
+    .text start:0x0215c128 end:0x0215c208
+
+src/Combat/Overlay_4/UpdateAxisFlagAndDispatch_021652e8.cpp:
+    complete
+    .text start:0x02165b78 end:0x02165c74
+
+src/Combat/Overlay_4/LoadGP2FileAndDispatch_0215bf94.cpp:
+    complete
+    .text start:0x0215cfdc end:0x0215d088
+
+src/Combat/Overlay_4/BuildTableNameForNode_02164e40.cpp:
+    complete
+    .text start:0x02165570 end:0x021657d8
+
+src/Combat/Overlay_4/InitBufferAndCopyByte_0216342c.cpp:
+    complete
+    .text start:0x02163a20 end:0x02163a6c
+
+src/Combat/Overlay_4/ResetCombatModeAndClearFlag_0216acf8.cpp:
+    complete
+    .text start:0x0216af54 end:0x0216af7c

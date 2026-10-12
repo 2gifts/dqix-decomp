@@ -1,4 +1,18 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov004_02158a60 func_ov004_02159b0c
+#endif
+
+#if defined(jpn)
+enum { StatePrefix02158a60 = 0xc };
+extern "C" void func_020e207c(void*, char*, int);
+struct Obj02046574;
+void SetIndexedName02046574(Obj02046574*, int, char*);
+#else
+enum { StatePrefix02158a60 = 0x26c };
+#endif
+
 #include "GameState/GameState.h"
 
 struct Struct021707d8_02158a60 { char pad[8]; char* ptr; };
@@ -22,15 +36,21 @@ struct FieldAt10c_02158a60 { unsigned short low13 : 13; unsigned short high3 : 3
 
 // USA: func_ov004_02158a60  (semantic: SetupOrRejectAction_02158a60)
 extern "C" ARM int func_ov004_02158a60(void* obj) {
-    char* p = (char*)GameState::GetInstance() + 0x26c + 0x5c00;
+    char* p = (char*)GameState::GetInstance() + StatePrefix02158a60 + 0x5c00;
     short a = *(short*)(p + 0xf8);
     if (a > 0 || *(unsigned short*)(p + 0xfa) != 0) {
         void* g = (void*)GetGlobalField0x1c020421a0();
         func_02046380(g);
         struct Container020dedd0* node = func_ov004_02156fd4(obj, 5);
         struct Element020de650* elem = FindElementByKey020dedd0(node, *(short*)(p + 0xf8));
+#if defined(jpn)
+        char name[80];
+        func_020e207c(data_ov004_021707d8.ptr + 0x8c, name, *(short*)((char*)elem + 0x18));
+        SetIndexedName02046574((Obj02046574*)g, 1, name);
+#else
         int val = CallFunc020e52a0(data_ov004_021707d8.ptr + 0x8c, *(short*)((char*)elem + 0x18));
         *(int*)((char*)g + 0x18) = val;
+#endif
         func_ov011_021848a0(obj, 0x3a3);
         return 0;
     }

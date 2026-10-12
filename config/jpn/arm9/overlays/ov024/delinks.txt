@@ -2218,3 +2218,11 @@ src/Combat/Overlay_24/SetBytelag_021e57c0_021e57c0.cpp:
 src/Combat/Overlay_24/func_ov024_021eb5d0.cpp:
     complete
     .text start:0x021ebd9c end:0x021ee05c
+
+src/Combat/Overlay_24/NoOp_021fbec0.cpp:
+    complete
+    .text start:0x021fc68c end:0x021fc690
+
+src/Combat/Overlay_24/NoOp_021fcaec.cpp:
+    complete
+    .text start:0x021fd2b8 end:0x021fd2bc

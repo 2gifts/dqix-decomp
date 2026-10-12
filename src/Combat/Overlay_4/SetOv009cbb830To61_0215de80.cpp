@@ -1,5 +1,10 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov004_0215de80 func_ov004_0215edb0
+#endif
+
+
 struct Struct0209c830;
 extern "C" void _Z27SetValueAndActivate0209c830P14Struct0209c830t(struct Struct0209c830*, unsigned short);
 

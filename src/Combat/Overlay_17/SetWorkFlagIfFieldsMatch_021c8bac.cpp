@@ -1,5 +1,16 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kResourceWorkOffset = 0x3508 };
+#else
+enum { kResourceWorkOffset = 0x3718 };
+#endif
+
+
+#if defined(jpn)
+#define SetWorkFlagIfFieldsMatch_021c8bac func_ov017_021c905c
+#endif
+
 extern "C" void* func_ov017_021b8478(void* obj);
 extern "C" void* func_ov017_021b8468(void* obj);
 void SetCombatWorkFlags0x55f4(void* work, int mask);
@@ -15,8 +26,11 @@ struct Src021c8bac {
 };
 
 // USA: func_ov017_021c8bac
+#if defined(jpn)
+extern "C"
+#endif
 ARM void SetWorkFlagIfFieldsMatch_021c8bac(int unused0, Src021c8bac* src, int unused2, unsigned char* obj) {
-	unsigned char* h = *(unsigned char**)(obj + 0x3000 + 0x718);
+	unsigned char* h = *(unsigned char**)(obj + kResourceWorkOffset);
 	if (h[2] == 0) return;
 	Ret021c8bac* r = (Ret021c8bac*)func_ov017_021b8478(h);
 	if (!r) return;

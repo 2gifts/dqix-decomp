@@ -6,9 +6,13 @@
 struct Header0206f0f8;
 struct Fixup0206ef48;
 
+#if defined(jpn)
+struct Entry0206f110;
+#else
 struct Entry0206f110 {
     char pad[0x1c];
 };
+#endif
 
 struct EntryList0206f110 {
     unsigned int count : 12;
@@ -18,12 +22,14 @@ struct EntryList0206f110 {
 
 #if defined(jpn)
 extern "C" int func_02070248(struct Header0206f0f8*);
-extern "C" int func_02070260(struct EntryList0206f110*, void (*)(struct EntryList0206f110*, struct Entry0206f110*));
+typedef int (*EntryCallback0206f01c)(void*, struct Fixup0206ef48*);
+extern "C" int func_02070260(struct EntryList0206f110*, EntryCallback0206f01c);
 extern "C" int func_020700ac(void*, struct Fixup0206ef48*);
 #define GetEntryArrayByteSize func_02070248
 #define InvokeCallbackForEachEntry func_02070260
 #define RelocateThreeFields func_020700ac
 #else
+typedef void (*EntryCallback0206f01c)(struct EntryList0206f110*, struct Entry0206f110*);
 int GetEntryArrayByteSize(struct Header0206f0f8* obj);
 int InvokeCallbackForEachEntry(struct EntryList0206f110* self,
                                 void (*callback)(struct EntryList0206f110*, struct Entry0206f110*));
@@ -62,7 +68,7 @@ extern "C" ARM void func_0206f01c(struct List0206f01c* self, SafeAllocator* allo
     }
     if ((void*)RelocateThreeFields != NULL) {
         InvokeCallbackForEachEntry((struct EntryList0206f110*)self,
-                                   (void (*)(struct EntryList0206f110*, struct Entry0206f110*))RelocateThreeFields);
+                                   (EntryCallback0206f01c)RelocateThreeFields);
     }
     self->flag = 1;
 }

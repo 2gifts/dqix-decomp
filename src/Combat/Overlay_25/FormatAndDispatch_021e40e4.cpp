@@ -1,8 +1,24 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kGlobalHolderInnerOffset = 0x4 };
+#else
+enum { kGlobalHolderInnerOffset = 0xc };
+#endif
+
+
+#if defined(jpn)
+#define data_ov025_021ef7ef data_ov025_021efacf
+#endif
+
+
+#if defined(jpn)
+#define FormatAndDispatch_021e40e4 func_ov025_021e45d4
+#endif
 #include "Filesystem/BackgroundLoader.h"
 #include "std_library_functions.h"
 
-struct Ctx021e40e4 { char pad[0xc]; void* target; };
+struct Ctx021e40e4 { char pad[kGlobalHolderInnerOffset]; void* target; };
 extern struct Ctx021e40e4 data_ov025_021ef988;
 extern char data_ov025_021ef7ef;
 
@@ -11,6 +27,9 @@ extern "C" int func_ov025_021e25a4(char* buf);
 extern "C" void func_ov025_021eb05c(void* ctx, int val);
 
 // USA: func_ov025_021e40e4
+#if defined(jpn)
+extern "C"
+#endif
 ARM int FormatAndDispatch_021e40e4(unsigned char* obj) {
     char buf[0x50];
     (int)BackgroundLoader::GetInstance();

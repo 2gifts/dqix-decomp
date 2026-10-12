@@ -3004,3 +3004,43 @@ src/Combat/Overlay_0/func_ov000_0217b6d0.cpp:
 src/Combat/Overlay_0/ResetArrayAndEntry02182114.cpp:
     complete
     .text start:0x02183360 end:0x02183398
+
+src/Combat/Overlay_0/func_ov000_0215440c.cpp:
+    complete
+    .text start:0x02155b8c end:0x02156184
+
+src/Combat/Overlay_25/ResetFields_021e20d8.cpp:
+    complete
+    .text start:0x02171428 end:0x0217143c
+
+src/Combat/Overlay_25/InitArray_021e20ec.cpp:
+    complete
+    .text start:0x0217143c end:0x02171464
+
+src/Combat/Overlay_25/CopyBytesAndSetLen_021e2114.cpp:
+    complete
+    .text start:0x02171464 end:0x02171498
+
+src/Combat/Overlay_25/func_ov025_021e2148.cpp:
+    complete
+    .text start:0x02171498 end:0x02171720
+
+src/Combat/Overlay_25/PushFrontNode021e23d0.cpp:
+    complete
+    .text start:0x02171720 end:0x02171738
+
+src/Combat/Overlay_25/FindAndRemoveMin_021e23e8.cpp:
+    complete
+    .text start:0x02171738 end:0x0217179c
+
+src/Combat/Overlay_25/RemoveNode021e244c.cpp:
+    complete
+    .text start:0x0217179c end:0x021717e4
+
+src/Combat/Overlay_25/IsFieldZero_021e2494.cpp:
+    complete
+    .text start:0x021717e4 end:0x021717f8
+
+src/Combat/Overlay_25/Func_021e24a8.cpp:
+    complete
+    .text start:0x021717f8 end:0x02171820

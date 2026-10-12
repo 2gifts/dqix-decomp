@@ -4,6 +4,11 @@ extern "C" int func_020d40bc(int, int, int);
 int GetBattleReadyCode(void);
 void SetBattleContextArrayEntry(int index, int value);
 
+#if defined(jpn)
+#define IssueBattleCommandSlot25 func_020d84e0
+extern "C" ARM int func_020d84e0(int arg, int mode);
+#endif
+
 // USA: func_020d6a84
 ARM int IssueBattleCommandSlot25(int arg, int mode) {
     int r = GetBattleReadyCode();

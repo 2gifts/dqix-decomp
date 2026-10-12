@@ -16,7 +16,7 @@ func_ov000_02153f98 kind:function(arm,size=0x130) addr:0x02155718
 _Z31DispatchWithFieldLookup021540c8PvS_i kind:function(arm,size=0x34) addr:0x02155848
 func_ov000_021540fc kind:function(arm,size=0x2f8) addr:0x0215587c
 _Z20IsFlag0x14Bit0x20SetP10GameObject kind:function(arm,size=0x18) addr:0x02155b74
-func_ov000_02155b8c kind:function(arm,size=0x5f8) addr:0x02155b8c
+func_ov000_0215440c kind:function(arm,size=0x5f8) addr:0x02155b8c
 func_ov000_02154a04 kind:function(arm,size=0x264) addr:0x02156184
 func_ov000_02154c68 kind:function(arm,size=0x2c8) addr:0x021563e8
 func_ov000_02154f30 kind:function(arm,size=0x224) addr:0x021566b0
@@ -841,7 +841,7 @@ data_ov000_02183b64 kind:data(any) addr:0x02183b64
 data_ov000_02182ab8 kind:data(any) addr:0x02183b70
 data_ov000_02182ac5 kind:data(any) addr:0x02183b7d
 data_ov000_02182ad4 kind:data(any) addr:0x02183b8c
-data_ov000_02183b9c kind:data(any) addr:0x02183b9c
+data_ov000_02182ae4 kind:data(any) addr:0x02183b9c
 data_ov000_02182af4 kind:data(any) addr:0x02183bac
 data_ov000_02182b04 kind:data(any) addr:0x02183bbc
 data_ov000_02182b14 kind:data(any) addr:0x02183bcc
@@ -849,7 +849,7 @@ data_ov000_02182b24 kind:data(any) addr:0x02183bdc
 data_ov000_02182b34 kind:data(any) addr:0x02183bec
 data_ov000_02183bfc kind:data(any) addr:0x02183bfc
 data_ov000_02183c0c kind:data(any) addr:0x02183c0c
-data_ov000_02183c1c kind:data(any) addr:0x02183c1c
+data_ov000_02182b64 kind:data(any) addr:0x02183c1c
 data_ov000_02182b74 kind:data(any) addr:0x02183c2c
 data_ov000_02182b84 kind:data(any) addr:0x02183c3c
 data_ov000_02182b94 kind:data(any) addr:0x02183c4c
@@ -867,7 +867,7 @@ data_ov000_02182c44 kind:data(any) addr:0x02183cfc
 data_ov000_02182c54 kind:data(any) addr:0x02183d0c
 data_ov000_02182c64 kind:data(any) addr:0x02183d1c
 data_ov000_02182c74 kind:data(any) addr:0x02183d2c
-data_ov000_02183d3c kind:data(any) addr:0x02183d3c
+data_ov000_02182c84 kind:data(any) addr:0x02183d3c
 data_ov000_02182c94 kind:data(any) addr:0x02183d4c
 data_ov000_02182ca4 kind:data(any) addr:0x02183d5c
 data_ov000_02183d6c kind:data(any) addr:0x02183d6c

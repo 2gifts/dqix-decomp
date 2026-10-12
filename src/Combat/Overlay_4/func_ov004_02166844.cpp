@@ -1,4 +1,17 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov004_02166844 func_ov004_02166e30
+#define func_020956b8 func_02097308
+#define data_ov004_0217059c data_ov004_02170e50
+#endif
+
+#if defined(jpn)
+enum { MainIndex = 1, ListIndex = 0, FlagOffset = 0x790, WindowPrefix = 0x1400, FirstWindow = 0x394, SecondWindow = 0x3b8 };
+#else
+enum { MainIndex = 0, ListIndex = 1, FlagOffset = 0x962, WindowPrefix = 0x1800, FirstWindow = 0x164, SecondWindow = 0x188 };
+#endif
+
 #include "Memory/SafeAllocator.h"
 #include "System/Cache.h"
 #include "System/LoadToVRAM.h"
@@ -28,7 +41,7 @@ struct Flags02166844 {
 // USA: func_ov004_02166844
 extern "C" ARM int func_ov004_02166844(void* a1) {
     char* node;
-    data_ov004_0217101c[0] = 0;
+    data_ov004_0217101c[MainIndex] = 0;
     int* g = GetGlobal02109418();
     char* c = (char*)func_0205ec34();
     node = (char*)func_ov011_021845f8(a1, 0);
@@ -36,7 +49,7 @@ extern "C" ARM int func_ov004_02166844(void* a1) {
         return 0;
     }
 
-    data_ov004_0217101c[0] = ((SafeAllocator*)(node + 4))->Allocate(0xbc);
+    data_ov004_0217101c[MainIndex] = ((SafeAllocator*)(node + 4))->Allocate(0xbc);
     void* p = ((SafeAllocator*)(node + 4))->Allocate(2);
     if (p != 0) {
         *(short*)p = 0x7de0;
@@ -45,7 +58,7 @@ extern "C" ARM int func_ov004_02166844(void* a1) {
         CleanCacheRange(p, 2);
     }
 
-    char* b = (char*)data_ov004_0217101c[0];
+    char* b = (char*)data_ov004_0217101c[MainIndex];
     if (b == 0) {
         return 0;
     }
@@ -68,10 +81,10 @@ extern "C" ARM int func_ov004_02166844(void* a1) {
 
     int n = data_ov004_0217059c;
     void* q = ((SafeAllocator*)(node + 4))->Allocate(n);
-    ((SafeAllocator*)((char*)data_ov004_0217101c[0] + 0x1c))->CreateTypeA(q, n);
+    ((SafeAllocator*)((char*)data_ov004_0217101c[MainIndex] + 0x1c))->CreateTypeA(q, n);
     n = data_ov004_0217059c;
     q = ((SafeAllocator*)(node + 4))->Allocate(n);
-    ((SafeAllocator*)((char*)data_ov004_0217101c[0] + 0x30))->CreateTypeA(q, n);
+    ((SafeAllocator*)((char*)data_ov004_0217101c[MainIndex] + 0x30))->CreateTypeA(q, n);
 
     char* n2 = (char*)_Z40CheckTypeAndReturnNode_02165e70_02165e70Pvi(a1, 7);
     if (n2 != 0) {
@@ -80,21 +93,21 @@ extern "C" ARM int func_ov004_02166844(void* a1) {
     }
     n2[0x110] = 0;
 
-    memcpy((char*)data_ov004_0217101c[0] + 0x51, c + 0x2cc, 0x66);
-    *(int*)((char*)data_ov004_0217101c[0] + 0xb8) = *(int*)((char*)g + 0xa0);
+    memcpy((char*)data_ov004_0217101c[MainIndex] + 0x51, c + 0x2cc, 0x66);
+    *(int*)((char*)data_ov004_0217101c[MainIndex] + 0xb8) = *(int*)((char*)g + 0xa0);
     func_020956b8(g, node + 4);
     func_02095b30(g, 1);
 
-    data_ov004_0217101c[1] = 0;
-    data_ov004_0217101c[1] = ((SafeAllocator*)(node + 4))->Allocate(0x20);
+    data_ov004_0217101c[ListIndex] = 0;
+    data_ov004_0217101c[ListIndex] = ((SafeAllocator*)(node + 4))->Allocate(0x20);
     for (unsigned char i = 0; i < 8; i++) {
-        ((void**)data_ov004_0217101c[1])[i] = 0;
-        ((void**)data_ov004_0217101c[1])[i] = ((SafeAllocator*)(node + 4))->Allocate(0x80);
+        ((void**)data_ov004_0217101c[ListIndex])[i] = 0;
+        ((void**)data_ov004_0217101c[ListIndex])[i] = ((SafeAllocator*)(node + 4))->Allocate(0x80);
     }
 
     char* f = (char*)_Z26GetGlobalField0x1c020421a0v();
-    *(unsigned char*)(f + 0x1000 + 0x962) = 1;
-    SetFieldsAt0x4And0x8((int*)(f + 0x164 + 0x1800), 9, 1);
-    SetFieldsAt0x4And0x8((int*)(f + 0x188 + 0x1800), 0x19, 1);
+    *(unsigned char*)(f + 0x1000 + FlagOffset) = 1;
+    SetFieldsAt0x4And0x8((int*)(f + FirstWindow + WindowPrefix), 9, 1);
+    SetFieldsAt0x4And0x8((int*)(f + SecondWindow + WindowPrefix), 0x19, 1);
     return 0;
 }

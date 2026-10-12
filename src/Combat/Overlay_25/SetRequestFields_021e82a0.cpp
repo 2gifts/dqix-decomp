@@ -1,7 +1,18 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kGlobalHolderInnerOffset = 0x4 };
+#else
+enum { kGlobalHolderInnerOffset = 0xc };
+#endif
+
+
+#if defined(jpn)
+#define SetRequestFields_021e82a0 func_ov025_021e8740
+#endif
+
 struct DataOv025021ef988_021e82a0 {
-    char pad[0xc];
+    char pad[kGlobalHolderInnerOffset];
     void* ptr;
 };
 
@@ -16,6 +27,9 @@ struct Obj021e82a0 {
 };
 
 // USA: func_ov025_021e82a0
+#if defined(jpn)
+extern "C"
+#endif
 ARM int SetRequestFields_021e82a0(struct Obj021e82a0* obj) {
     char* p = (char*)data_ov025_021ef988.ptr + 0x540;
     *(unsigned short*)(p + 0x28) |= 2;

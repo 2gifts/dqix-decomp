@@ -1,9 +1,23 @@
 #include <globaldefs.h>
 
-struct Ctx021e8248 { char pad[0xc]; char* target; };
+#if defined(jpn)
+enum { kGlobalHolderInnerOffset = 0x4 };
+#else
+enum { kGlobalHolderInnerOffset = 0xc };
+#endif
+
+
+#if defined(jpn)
+#define SetField_021e8248 func_ov025_021e86e8
+#endif
+
+struct Ctx021e8248 { char pad[kGlobalHolderInnerOffset]; char* target; };
 extern struct Ctx021e8248 data_ov025_021ef988;
 
 // USA: func_ov025_021e8248
+#if defined(jpn)
+extern "C"
+#endif
 ARM int SetField_021e8248(unsigned char* obj) {
     char* base = data_ov025_021ef988.target + 0x540;
     unsigned short f = *(unsigned short*)(base + 0x28);

@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define func_ov004_0215b120 func_ov004_0215c128
+extern "C" void func_020e207c(void*, char*, int);
+struct Obj02046574;
+void SetIndexedName02046574(Obj02046574*, int, char*);
+#endif
+
 
 int GetGlobalField0x1c020421a0(void);
 extern "C" void func_02046380(void* global);
@@ -26,12 +33,24 @@ extern "C" ARM int func_ov004_0215b120(void* self) {
     void* obj8c = ptr2 + 0x8c;
 
     if (flag == 1) {
+#if defined(jpn)
+        char name[80];
+        func_020e207c(obj8c, name, *(short*)((char*)elem + 0x18));
+        SetIndexedName02046574((Obj02046574*)g, 1, name);
+#else
         void* r = CallFunc020e52a0(obj8c, *(short*)((char*)elem + 0x18));
         *(void**)((char*)g + 0x18) = r;
+#endif
         StoreInArray0x8b0((struct StoreStruct*)g, 0, *(int*)(data_ov004_021707d8.ptr + 0x78));
     } else {
+#if defined(jpn)
+        char name[80];
+        func_020e207c(obj8c, name, *(short*)((char*)elem + 0x18));
+        SetIndexedName02046574((Obj02046574*)g, 1, name);
+#else
         void* r = CallFunc020e52a0(obj8c, *(short*)((char*)elem + 0x18));
         *(void**)((char*)g + 0x18) = r;
+#endif
         StoreInArray0x8b0((struct StoreStruct*)g, 0, *(int*)(data_ov004_021707d8.ptr + 0x78));
         StoreInArray0x8b0((struct StoreStruct*)g, 1, *(unsigned char*)(data_ov004_021707d8.ptr + 0x6e));
     }

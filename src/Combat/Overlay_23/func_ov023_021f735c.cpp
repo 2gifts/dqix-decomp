@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov023_021f735c func_ov023_021f6898
+#endif
+
 extern "C" void __clear(void*, int);
 
 struct Vec3_021f735c { int x; int y; int z; };

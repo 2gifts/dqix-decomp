@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#include "Filesystem/FileIO.h"
+extern char data_ov004_02170cbc;
+int ApplyNodeUpdater020e038c(void*, void*, int);
+#endif
 #include "Filesystem/BackgroundLoader.h"
 #include "std_library_functions.h"
 
@@ -19,8 +24,13 @@ void OrGlobalFlag0x40(void);
 extern "C" void* ExtractFileFromGP2(const char* gp2Path, const char* innerFilePath, unsigned int* outSize);
 int TryInvoke020e53bc(void* a0, int a1, int a2);
 
+#if defined(jpn)
+// USA: func_ov004_0215bf94
+extern "C" ARM int func_ov004_0215cfdc() {
+#else
 // USA: func_ov004_0215bf94
 ARM int LoadGP2FileAndDispatch_0215bf94() {
+#endif
     unsigned short* bg0 = (unsigned short*)GetSubBG0ScreenBase();
     int i;
     for (i = 0; i < 0x800; i++) {
@@ -34,6 +44,11 @@ ARM int LoadGP2FileAndDispatch_0215bf94() {
     SetStateAndDispatch0209c3b4((struct Actor0209c3b4*)&data_02109bf4, v);
     SetModeClamped0209ca70(&data_02109bf4, data_ov004_021707d8.ptr[0x2d]);
     OrGlobalFlag0x40();
+#if defined(jpn)
+    unsigned int size;
+    LoadFileIntoMemory(&data_ov004_02170cbc, *(void**)(data_ov004_021707d8.ptr + 0xa4), &size);
+    ApplyNodeUpdater020e038c(data_ov004_021707d8.ptr + 0x8c, *(void**)(data_ov004_021707d8.ptr + 0xa4), (int)size);
+#else
     BackgroundLoader::AddLockGlobal();
     unsigned int size;
     void* buf = ExtractFileFromGP2(&data_ov004_021703d7, &data_ov004_021703ed, &size);
@@ -42,5 +57,6 @@ ARM int LoadGP2FileAndDispatch_0215bf94() {
         TryInvoke020e53bc(data_ov004_021707d8.ptr + 0x8c, (int)*(void**)(data_ov004_021707d8.ptr + 0x98), (int)size);
     }
     BackgroundLoader::RemoveLockGlobal();
+#endif
     return 0;
 }

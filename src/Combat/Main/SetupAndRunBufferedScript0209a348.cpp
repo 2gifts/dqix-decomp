@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define data_020f1628 data_020f1790
+#endif
 #include "Filesystem/BackgroundLoader.h"
 
 
@@ -21,6 +25,11 @@ extern char data_020f15e8[];
 
 struct Ctx0209a348 { void* field0; };
 extern struct Ctx0209a348* data_02109ba4;
+
+#if defined(jpn)
+#define SetupAndRunBufferedScript0209a348 func_0209c09c
+extern "C" ARM void func_0209c09c(struct Ctx0209a348* ctx, void* value);
+#endif
 
 // USA: func_0209a348
 ARM void SetupAndRunBufferedScript0209a348(struct Ctx0209a348* ctx, void* value) {

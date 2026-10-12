@@ -1,5 +1,10 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov004_02154618 func_ov004_02155cc0
+#endif
+
+
 extern "C" void func_ov004_02153978(void* self, short* a, short* b, short* c);
 extern "C" void func_ov023_021f645c(void* a, int b, unsigned short c, int d);
 extern "C" void func_ov023_021f64a8(void* a, int b, int c, int d);
@@ -20,6 +25,8 @@ extern "C" ARM int func_ov004_02154618(void* a) {
     unsigned char out1, out2;
     FindAndCopyFields_021546c0(data_ov004_021707c0, f8, f6, &out1, &out2);
     func_ov023_021f64a8(a, 0x38, out2, 0xf);
+#if !defined(jpn)
     func_ov004_021536e0(a, 0x38, 0x19);
+#endif
     return 0;
 }

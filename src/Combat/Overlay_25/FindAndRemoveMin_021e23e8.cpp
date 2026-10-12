@@ -11,7 +11,12 @@ struct List021e23e8 {
 };
 
 // USA: func_ov025_021e23e8
-ARM struct Node021e23e8* FindAndRemoveMin_021e23e8(struct List021e23e8* list) {
+#if defined(jpn)
+extern "C" ARM struct Node021e23e8* func_ov000_02171738(struct List021e23e8* list)
+#else
+ARM struct Node021e23e8* FindAndRemoveMin_021e23e8(struct List021e23e8* list)
+#endif
+{
     struct Node021e23e8* cur = list->head;
     struct Node021e23e8* prev = NULL;
     unsigned int bestVal = 0xff;

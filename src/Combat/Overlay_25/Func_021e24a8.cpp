@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_ov025_021e24a8 func_ov000_021717f8
+#endif
+
 struct Node021e24a8 { int unk0; int unk1; struct Node021e24a8* next; };
 struct Head021e24a8 { struct Node021e24a8* head; };
 

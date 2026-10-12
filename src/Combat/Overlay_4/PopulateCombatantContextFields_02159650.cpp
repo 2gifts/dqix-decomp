@@ -1,4 +1,12 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define func_ov004_02159650 func_ov004_0215a71c
+#define data_ov004_0216fbb0 data_ov004_02170338
+extern "C" void func_020e207c(void*, char*, int);
+struct Obj02046574;
+void SetIndexedName02046574(Obj02046574*, int, char*);
+#endif
+
 #include "GameState/GameState.h"
 
 struct Struct021707d8_02159650 { char pad[8]; unsigned char* ptr; };
@@ -55,10 +63,18 @@ extern "C" ARM int func_ov004_02159650(void* obj) {
         }
     }
 
+#if defined(jpn)
+    enum CombatantId02159650 { InvalidCombatant02159650 = -1, CombatantSlotCount02159650 = 0xe9 };
+    CombatantId02159650 combatantId = (CombatantId02159650)*(signed char*)(data_ov004_021707d8.ptr + 0x12);
+#else
     int combatantId = *(signed char*)(data_ov004_021707d8.ptr + 0x12);
+#endif
     GameObject* combatant = GameState::GetInstance()->GetPartyMemberByIndex(combatantId);
 
     if (combatant != 0) {
+#if defined(jpn)
+        SetIndexedName02046574((Obj02046574*)g, 0, *(char**)((char*)combatant + 0x134));
+#else
         InitObjFromCombatantId020e4bf4(data_ov004_021707d8.ptr + 0xa0, combatantId);
         *(void**)((char*)g + 0x10) = data_ov004_021707d8.ptr + 0xa0;
 
@@ -67,11 +83,18 @@ extern "C" ARM int func_ov004_02159650(void* obj) {
         int fmt = CallFunc020e0434With02153694(statVal);
         func_020e4b34(data_ov004_021707d8.ptr + 0xac, fmt, fmt, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         *(void**)((char*)g + 0x28) = data_ov004_021707d8.ptr + 0xac;
+#endif
     }
 
     if (elem != 0) {
+#if defined(jpn)
+        char name[80];
+        func_020e207c(data_ov004_021707d8.ptr + 0x8c, name, elem->field18);
+        SetIndexedName02046574((Obj02046574*)g, 1, name);
+#else
         int val = CallFunc020e52a0(data_ov004_021707d8.ptr + 0x8c, elem->field18);
         *(int*)((char*)g + 0x18) = val;
+#endif
     }
 
     if (combatant != 0 && elem != 0 && elem->field0 != 0) {
@@ -84,8 +107,12 @@ extern "C" ARM int func_ov004_02159650(void* obj) {
             if (half > 0) {
                 struct Element020de650* elem2 = FindElementByKey020dedd0(node, half);
                 if (elem2 != 0 && ((struct Field8Bits_02159650*)&elem2->field8)->bit18 != 0) {
+#if defined(jpn)
+                    SetIndexedName02046574((Obj02046574*)g, 2, *(char**)((char*)elem2 + 4));
+#else
                     int val2 = CallFunc020e52a0(data_ov004_021707d8.ptr + 0x8c, half);
                     *(int*)((char*)g + 0x18) = val2;
+#endif
                 }
             }
         }

@@ -23,6 +23,11 @@ struct Obj020bc820 {
     int index;                    /* 0x10 */
 };
 
+#if defined(jpn)
+#define ReleaseActorAndUnlink020bc820 func_020be2ec
+extern "C" ARM void func_020be2ec(struct Obj020bc820* obj);
+#endif
+
 // USA: func_020bc820
 ARM void ReleaseActorAndUnlink020bc820(struct Obj020bc820* obj) {
     struct Obj020bd984* a = obj->alloc;

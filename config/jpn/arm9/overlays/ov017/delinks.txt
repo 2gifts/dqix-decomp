@@ -4130,3 +4130,103 @@ src/Combat/Overlay_17/func_ov017_021b790c.cpp:
 src/Combat/Overlay_17/func_ov017_021ba524.cpp:
     complete
     .text start:0x021baa20 end:0x021bad0c
+
+src/Combat/Overlay_17/NoOp_0219fc84.cpp:
+    complete
+    .text start:0x021a0734 end:0x021a0738
+
+src/Combat/Overlay_17/BlankFunction_021aa3f0.cpp:
+    complete
+    .text start:0x021aac58 end:0x021aac5c
+
+src/Combat/Overlay_17/BlankFunction_021bef48.cpp:
+    complete
+    .text start:0x021bf504 end:0x021bf508
+
+src/Combat/Overlay_17/EmptyStub_021d0358.cpp:
+    complete
+    .text start:0x021d0808 end:0x021d080c
+
+src/Combat/Overlay_17/BlankFunction_021d1010.cpp:
+    complete
+    .text start:0x021d148c end:0x021d1490
+
+src/Combat/Overlay_17/SetWorkFlagIfFieldsMatch_021c8bac.cpp:
+    complete
+    .text start:0x021c905c end:0x021c90b4
+
+src/Combat/Overlay_17/CopyByte4ToOffsetEb4_021c9d08.cpp:
+    complete
+    .text start:0x021ca1b8 end:0x021ca1dc
+
+src/Combat/Overlay_17/DispatchWithHalfwords_021ca2d8.cpp:
+    complete
+    .text start:0x021ca788 end:0x021ca7a8
+
+src/Combat/Overlay_17/SetBattleFlag728FromField6_021cbff4.cpp:
+    complete
+    .text start:0x021cc4a4 end:0x021cc500
+
+src/Combat/Overlay_17/CopyByteIfFlagMatches_021cc1d8.cpp:
+    complete
+    .text start:0x021cc680 end:0x021cc6a0
+
+src/Combat/Overlay_17/CopyBytesAndSetHalfword_021cca00.cpp:
+    complete
+    .text start:0x021ccea8 end:0x021ccf04
+
+src/Combat/Overlay_17/CopyFourSignedBytesToOffset27_021ce2fc.cpp:
+    complete
+    .text start:0x021ce7a4 end:0x021ce7d4
+
+src/Combat/Overlay_17/HandleSetFlagAt_021cee34_021cee34.cpp:
+    complete
+    .text start:0x021cf2dc end:0x021cf320
+
+src/Combat/Overlay_17/ApplyEventTag_021cf024.cpp:
+    complete
+    .text start:0x021cf4cc end:0x021cf520
+
+src/Combat/Overlay_17/ClearAndFlagEntryIfMatch_021cfe84.cpp:
+    complete
+    .text start:0x021d0334 end:0x021d0380
+
+src/Combat/Overlay_17/DispatchModeHelper_021d0808.cpp:
+    complete
+    .text start:0x021d0cb8 end:0x021d0d10
+
+src/Combat/Overlay_17/SetHalfFields__021d1c84_021d1c84.cpp:
+    complete
+    .text start:0x021d2108 end:0x021d213c
+
+src/Combat/Overlay_17/CopyIntoSizedBuffer_021d2368.cpp:
+    complete
+    .text start:0x021d27ec end:0x021d2840
+
+src/Combat/Overlay_17/CopyHalfword4To24_021d23ec.cpp:
+    complete
+    .text start:0x021d2870 end:0x021d2884
+
+src/Combat/Overlay_17/SetInnerField60IfBitAndPtr_021d246c.cpp:
+    complete
+    .text start:0x021d28f0 end:0x021d2928
+
+src/Combat/Overlay_17/SetCombatantFlag8IfField8_021d25b8.cpp:
+    complete
+    .text start:0x021d2a3c end:0x021d2a78
+
+src/Combat/Overlay_17/CheckField424OrClearBits_021b2ad8.cpp:
+    complete
+    .text start:0x021b31e8 end:0x021b3224
+
+src/Combat/Overlay_17/GetFieldPtrA0_021bbbe4.cpp:
+    complete
+    .text start:0x021bc1dc end:0x021bc1e4
+
+src/Combat/Overlay_17/SetField11a_021bbbec.cpp:
+    complete
+    .text start:0x021bc1e4 end:0x021bc1f0
+
+src/Combat/Overlay_17/GetHalfwordAtField284_021bbc04.cpp:
+    complete
+    .text start:0x021bc1fc end:0x021bc208

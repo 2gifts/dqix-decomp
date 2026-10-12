@@ -1,6 +1,14 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
+#if defined(jpn)
+#define _Z21PushFrontNode021e23d0P12List021e23d0P12Node021e23d0 func_ov000_02171720
+#define _Z25FindAndRemoveMin_021e23e8P12List021e23e8 func_ov000_02171738
+#define _Z18RemoveNode021e244cP12List021e244cP12Node021e244c func_ov000_0217179c
+#define _Z20IsFieldZero_021e2494Pv func_ov000_021717e4
+#define func_ov025_021e24a8 func_ov000_021717f8
+#endif
+
 struct PathNode021e2148 {
     unsigned char id;
     unsigned char cost;

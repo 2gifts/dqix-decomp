@@ -9,7 +9,12 @@ struct List021e244c {
 };
 
 // USA: func_ov025_021e244c
-ARM void RemoveNode021e244c(struct List021e244c* list, struct Node021e244c* target) {
+#if defined(jpn)
+extern "C" ARM void func_ov000_0217179c(struct List021e244c* list, struct Node021e244c* target)
+#else
+ARM void RemoveNode021e244c(struct List021e244c* list, struct Node021e244c* target)
+#endif
+{
     struct Node021e244c* node = list->head;
     struct Node021e244c* prev = NULL;
     while (node != NULL) {

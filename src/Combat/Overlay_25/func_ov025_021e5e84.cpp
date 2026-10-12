@@ -1,4 +1,8 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+#define func_ov025_021e5e84 func_ov025_021e6380
+#endif
 #include "GameState/GameState.h"
 
 extern "C" int _Z23DispatchByIndex021820bcPviii(void* obj, int unused, int index, int arg);
@@ -26,6 +30,12 @@ extern "C" ARM int func_ov025_021e5e84(struct Param021e5e84* p, int b, int unuse
     struct Obj02046574* names = _Z26GetGlobalField0x1c020421a0v();
     int id = ids[0];
     GetActiveCombatWork();
+#if defined(jpn)
+    GameObject* c = bs->GetCombatantByIndex(id);
+    if (c != NULL) {
+        _Z22SetIndexedName02046574P11Obj02046574iPc(names, p->nameIndex, (char*)c->baseStats_);
+    }
+#else
     bs->GetCombatantByIndex(id);
 
     int isPartyMember = (id >= 0 && id <= 3) ? 1 : 0;
@@ -40,5 +50,6 @@ extern "C" ARM int func_ov025_021e5e84(struct Param021e5e84* p, int b, int unuse
             _Z22SetIndexedName02046574P11Obj02046574iPc(names, p->nameIndex, (char*)c + 0x14c);
         }
     }
+#endif
     return 1;
 }

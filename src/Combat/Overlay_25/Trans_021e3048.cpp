@@ -1,5 +1,16 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kGlobalHolderInnerOffset = 0x4 };
+#else
+enum { kGlobalHolderInnerOffset = 0xc };
+#endif
+
+
+#if defined(jpn)
+#define func_ov025_021e3048 func_ov025_021e3538
+#endif
+
 extern int data_ov025_021ef988;
 extern "C" unsigned int func_ov025_021e2f54(unsigned int, unsigned int, unsigned int);
 extern "C" unsigned int func_ov025_021e3084(unsigned int);
@@ -11,7 +22,7 @@ extern "C" ARM unsigned int func_ov025_021e3048(unsigned int r0, unsigned int r1
     unsigned int r6 = 0;
     r0 = (unsigned int)&data_ov025_021ef988;
     r6 = r1;
-    r4 = *(unsigned int*)((char*)r0 + 0xc);
+    r4 = *(unsigned int*)((char*)r0 + kGlobalHolderInnerOffset);
     r5 = r3;
     r0 = r4 + 0x540;
     r0 = (unsigned int)func_ov025_021e3084(r0);

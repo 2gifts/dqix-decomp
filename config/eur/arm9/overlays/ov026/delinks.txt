@@ -83,3 +83,15 @@ src/Combat/Overlay_26/func_ov026_021dc8fc.cpp:
 src/Combat/Overlay_26/func_ov026_021db090.cpp:
     complete
     .text start:0x021db090 end:0x021db3d8
+
+src/Combat/Overlay_26/func_ov026_021dce34.cpp:
+    complete
+    .text start:0x021dce34 end:0x021dd3c4
+
+src/Combat/Overlay_26/func_ov026_021dd8a8.cpp:
+    complete
+    .text start:0x021dd8a8 end:0x021ddd84
+
+src/Combat/Overlay_26/func_ov026_021dd3dc.cpp:
+    complete
+    .text start:0x021dd3dc end:0x021dd8a8
