@@ -10,8 +10,7 @@ struct EventEntry021dd638 {
 // USA: func_ov027_021dd638  (semantic: SerializeEventEntry_021dd638)
 extern "C" ARM int func_ov027_021dd638(EventEntry021dd638* obj, unsigned char* dst) {
     unsigned char* p = dst;
-    p = p + 1;
-    dst[0] = obj->type;
+    *p++ = obj->type;
     switch (obj->type) {
     case 1:
     case 2:

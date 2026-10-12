@@ -11,7 +11,6 @@ extern "C" unsigned int func_ov027_021dd3b0(unsigned int, unsigned int);
 
 // USA: func_ov027_021dcc8c  (semantic: Trans_021dcc8c)
 extern "C" ARM unsigned int func_ov027_021dcc8c(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
-    int cc = 0;
     unsigned int r4 = 0;
     unsigned int r5 = 0;
     r5 = 0x1;
@@ -19,34 +18,29 @@ extern "C" ARM unsigned int func_ov027_021dcc8c(unsigned int r0, unsigned int r1
     r1 = (unsigned int)&data_ov027_021e33e0;
     r4 = r0;
     r2 = *(unsigned int*)((char*)r1 + 0x8);
-    r0 = *(unsigned char*)((char*)r2 + 0x50d);
-    cc = (int)(r0) - (int)(0x0);
-    if (cc != 0) { goto L30; }
-    r0 = 0x0;
-    r0 = (unsigned int)func_ov027_021db4e0(r0, r1, r2);
-    goto L7c;
-L30:;
-    r0 = r2 + 0x500;
-    r0 = *(unsigned short*)((char*)r0 + 0x26);
-    cc = (int)(r0) - (int)(0x0);
-    if (cc != 0) { goto L7c; }
-    r0 = 0x0;
-    *(unsigned int*)((char*)r2 + 0x5e4) = (unsigned int)r0;
-    r0 = *(unsigned int*)((char*)r1 + 0x8);
-    r1 = r5;
-    r0 = r0 + 0x500;
-    *(unsigned short*)((char*)r0 + 0x26) = (unsigned short)r1;
-    r0 = (unsigned int)func_ov027_021dd3b0(r0, r1);
-    cc = (int)(r0) - (int)(0x0);
-    if (cc == 0) { goto L74; }
-    r0 = (unsigned int)&_Z25TailCallDispatch_021dcc80v;
-    r0 = (unsigned int)_Z24UpdateEntryFlag_021dd55ci(r0);
-    r5 = 0x0;
-    goto L7c;
-L74:;
-    r0 = (unsigned int)func_ov027_021dcc48();
-    r5 = r0;
-L7c:;
+    if (*(unsigned char*)((char*)r2 + 0x50d) == 0) {
+        r0 = 0x0;
+        r0 = (unsigned int)func_ov027_021db4e0(r0, r1, r2);
+    } else {
+        r0 = r2 + 0x500;
+        if (*(unsigned short*)((char*)r0 + 0x26) == 0) {
+            r0 = 0x0;
+            *(unsigned int*)((char*)r2 + 0x5e4) = (unsigned int)r0;
+            r0 = *(unsigned int*)((char*)r1 + 0x8);
+            r1 = r5;
+            r0 = r0 + 0x500;
+            *(unsigned short*)((char*)r0 + 0x26) = (unsigned short)r1;
+            r0 = (unsigned int)func_ov027_021dd3b0(r0, r1);
+            if (r0 != 0) {
+                r0 = (unsigned int)&_Z25TailCallDispatch_021dcc80v;
+                r0 = (unsigned int)_Z24UpdateEntryFlag_021dd55ci(r0);
+                r5 = 0x0;
+            } else {
+                r0 = (unsigned int)func_ov027_021dcc48();
+                r5 = r0;
+            }
+        }
+    }
     r0 = r4;
     r0 = (unsigned int)_Z20SetIRQInterruptStatei(r0);
     r0 = r5;

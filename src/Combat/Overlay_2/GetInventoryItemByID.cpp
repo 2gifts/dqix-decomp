@@ -9,8 +9,22 @@
 void* GetPtrField0x2a04(GameState* battleStruct);
 int GetFieldAt0x150(unsigned char* obj);
 
-inline char* AddOffset204(char* p) { return p + 0x204; }
-inline char* AddOffsetC00(char* p) { return p + 0xc00; }
+struct ItemTable {
+    char unk0[0xc];
+    short items[1];
+};
+
+struct Storage {
+    char unk0[0xc00];
+    ItemTable table;
+    ItemTable* GetTable() { return &table; }
+};
+
+struct Inventory {
+    char unk0[0x204];
+    Storage storage;
+    Storage* GetStorage() { return &storage; }
+};
 
 // USA: func_ov002_0215707c
 // KEEP-NAME
@@ -23,9 +37,8 @@ extern "C" ARM int GetInventoryItemByID(void* self, int idx, int kind) {
     }
     GameState* battle = GameState::GetInstance();
     if (kind == 5) {
-        char* p = (char*)GetPtrField0x2a04(battle);
-        char* table = AddOffsetC00(AddOffset204(p));
-        return *(short*)(table + 0xc + idx * 2);
+        Inventory* p = (Inventory*)GetPtrField0x2a04(battle);
+        return p->GetStorage()->GetTable()->items[idx];
     }
     if (kind == 4) {
         char* p = (char*)GetPtrField0x2a04(battle);
