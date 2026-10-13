@@ -9,14 +9,17 @@ struct SceneOptions021a5600 {
     char padding[3];
     int field4, field8;
 };
-struct Scene021a5600 {
-    char padding0[0x4c];
-    unsigned int layer;
-    char padding50[0x253c - 0x50];
-    unsigned char flag253c;
-    char padding253d[3];
-    int field2540, field2544;
-};
+#if defined(jpn)
+enum { SceneDisplayOffset = 0x34, SceneOptionsOffset = 0x2364,
+       SceneSize = 0x2378, SceneHeapSize = 0x293b8, SceneReservationSize = 0x2abd8 };
+#define func_ov002_0215505c func_ov002_021567dc
+#define func_ov002_02154d40 func_ov002_021564c0
+#define func_ov002_02155960 func_ov002_021570a0
+#define _Z26SetBytes485And486_021556ecPvii func_ov002_02156e40
+#else
+enum { SceneDisplayOffset = 0x4c, SceneOptionsOffset = 0x253c,
+       SceneSize = 0x2550, SceneHeapSize = 0x2a590, SceneReservationSize = 0x2bdb0 };
+#endif
 struct BattleState021a5600 {
     unsigned char type, complete;
     char padding2[6];
@@ -30,10 +33,10 @@ extern "C" void func_0202738c(unsigned char*, int, int, int);
 extern "C" void func_02027304(unsigned char*, int);
 extern "C" void func_020a0cc4(int);
 extern "C" void func_020a0c0c();
-extern "C" void func_ov002_0215505c();
-extern "C" void func_ov002_02154d40(Scene021a5600*, SafeAllocator*);
-extern "C" int func_ov002_02155960(Scene021a5600*, int);
-extern "C" void func_ov002_021556fc(Scene021a5600*);
+extern "C" void func_ov002_0215505c(char*);
+extern "C" void func_ov002_02154d40(char*, SafeAllocator*);
+extern "C" int func_ov002_02155960(char*, int);
+extern "C" void func_ov002_021556fc(char*);
 extern "C" void func_02094ab0(void*);
 extern "C" void func_ov017_021a55b0(BattleState021a5600*);
 extern "C" void func_ov017_02191108(GameResources*, int, int, int, int);
@@ -60,7 +63,8 @@ extern "C" void _Z35SetByteIfDataAndCheckClear_021a01bcPh(unsigned char*);
 void CopyByteField0x253To0x252(void*);
 extern "C" void _Z30CheckStackAndFinalize_021a5974Pc(char*);
 extern AllocatorUnion data_02114e20;
-extern Scene021a5600* data_ov017_021d83ac;
+extern char* data_ov017_021d83ac;
+// JPN: func_ov017_021a6038
 // USA: func_ov017_021a5600
 extern "C" ARM void func_ov017_021a5600(BattleState021a5600* self) {
     GameState* game = GameState::GetInstance();
@@ -78,25 +82,25 @@ extern "C" ARM void func_ov017_021a5600(BattleState021a5600* self) {
         unsigned char* stopwatch = (unsigned char*)resources->unknown_ptr_36d0;
         ResetOrFindStopwatch(stopwatch, -1);
         func_0202738c(stopwatch, 1, 2, -1);
-        func_020a0cc4(0x2bdb0);
-        void* memory = AllocateAligned4(&data_02114e20, 0x2a590);
+        func_020a0cc4(SceneReservationSize);
+        void* memory = AllocateAligned4(&data_02114e20, SceneHeapSize);
         if (!memory) {
             func_020a0c0c();
             self->complete = 1;
         } else {
-            self->allocator.CreateTypeA(memory, 0x2a590);
+            self->allocator.CreateTypeA(memory, SceneHeapSize);
             self->allocator.Reset();
             PushInputLogA(2);
             PushInputLogB(1);
-            data_ov017_021d83ac = (Scene021a5600*)self->allocator.Allocate(0x2550);
-            func_ov002_0215505c();
+            data_ov017_021d83ac = (char*)self->allocator.Allocate(SceneSize);
+            func_ov002_0215505c(data_ov017_021d83ac);
             _Z26SetBytes485And486_021556ecPvii(data_ov017_021d83ac, self->option20, self->option21);
             func_ov002_02154d40(data_ov017_021d83ac, &self->allocator);
             SceneOptions021a5600 options = self->options;
-            Scene021a5600* scene = data_ov017_021d83ac;
-            scene->flag253c = options.flag;
-            scene->field2540 = options.field4;
-            scene->field2544 = options.field8;
+            char* scene = data_ov017_021d83ac;
+            *reinterpret_cast<unsigned char*>(scene + SceneOptionsOffset) = options.flag;
+            *reinterpret_cast<int*>(scene + SceneOptionsOffset + 4) = options.field4;
+            *reinterpret_cast<int*>(scene + SceneOptionsOffset + 8) = options.field8;
             ++self->state;
         }
     } else if (self->state == 1) {
@@ -109,7 +113,7 @@ extern "C" ARM void func_ov017_021a5600(BattleState021a5600* self) {
         ((void (*)(void*, int, int, int, int))_Z21BlankFunction02094b34v)(music, 5000, 0x6f, 1, 1);
         ++self->state;
     } else if (self->state == 3) {
-        unsigned int layer = data_ov017_021d83ac->layer;
+        unsigned int layer = *reinterpret_cast<unsigned int*>(data_ov017_021d83ac + SceneDisplayOffset);
         REG_DISPCNT = (layer << 8) | (REG_DISPCNT & ~0x1f00);
         data_ov017_021d83ac = 0;
         func_ov017_021a55b0(self);

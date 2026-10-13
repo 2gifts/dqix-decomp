@@ -1,5 +1,6 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
+#include "GameState/Field3b0.h"
 #include "Memory/SafeAllocator.h"
 #include "Resource/Brightness.h"
 #include "System/BGBases.h"
@@ -34,7 +35,6 @@ struct Scene0217bf78 {
 };
 
 extern "C" GameResources *func_ov017_0218b5b0(void);
-Camera0217bf78 *GetField0x3b0Value(GameState *gs);
 void SetField0x238False(void *obj);
 void SetField0x23cTrue(void *obj);
 int GetField0x70(void *obj);
@@ -69,7 +69,7 @@ extern "C" ARM void func_ov003_0217bf78(Scene0217bf78 *self) {
         self->taskA            = loader->QueueLoadFileInGP2(data_ov003_02180bef, data_ov003_02180cf8, 0);
         self->taskC            = loader->QueueLoadFile(data_ov003_02180d08, 0);
         self->taskB            = loader->QueueLoadFile(data_ov003_02180c07, 0);
-        Camera0217bf78 *camera = GetField0x3b0Value(gs);
+        Camera0217bf78 *camera = (Camera0217bf78*)GetField0x3b0Value(gs);
         SetField0x238False(camera);
         SetField0x23cTrue(camera);
         camera->field_21e = GetField0x70(camera);
@@ -87,7 +87,7 @@ extern "C" ARM void func_ov003_0217bf78(Scene0217bf78 *self) {
         GameState *gs = GameState::GetInstance();
         _Z24ReinitController02043204Pc((char *) _Z26GetGlobalField0x1c020421a0v());
         func_ov003_0217c974(self);
-        Camera0217bf78 *camera = GetField0x3b0Value(gs);
+        Camera0217bf78 *camera = (Camera0217bf78*)GetField0x3b0Value(gs);
         self->cameraPosition   = camera->position;
         self->cameraTail       = camera->tail;
         camera->position       = data_ov003_02180ce0;

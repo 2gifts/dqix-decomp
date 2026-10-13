@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 #include "Graphics/LightingManager.h"
 #include "System/Matrix.h"
@@ -168,7 +169,6 @@ struct Obj02176134;
 struct Obj02176150;
 
 extern "C" void* func_0202ae18(void);
-int GetField0x3b0Value(GameState* battleStruct);
 struct Obj0203a588* GetData02104b6c(void);
 extern "C" int _Z16GetField02163524Pv(void* obj);
 void* GetData02108e10(void);

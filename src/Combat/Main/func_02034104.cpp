@@ -1,11 +1,11 @@
 #include <globaldefs.h>
+#include "Combat/SearchEntry.h"
 
 extern "C" void* func_0202ae18(void);
 extern "C" int func_ov017_0218b5b0(void);
 int CheckField0NonZero(int* obj);
 extern "C" int func_0202c508(void* obj);
 struct SearchStruct;
-void* GetEntryBySignedByteIndex(struct SearchStruct* obj, int value);
 struct SearchStruct0202c1a4;
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
 struct Vec3s02030fc8 {

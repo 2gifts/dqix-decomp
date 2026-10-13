@@ -50,7 +50,7 @@ struct AllocatorContext0216ea74 {
 };
 
 static inline S_e830* GetZonePlacementData(Zone3D* zone) {
-    return (S_e830*)zone->substruct_6c_;
+    return (S_e830*)&zone->substruct_6c_;
 }
 
 struct DownloadedQuestState {

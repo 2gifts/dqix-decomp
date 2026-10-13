@@ -3,12 +3,24 @@
 #include <Memory/SafeAllocator.h>
 #include <System/Graphics.h>
 
+#if defined(jpn)
+#define func_ov003_0215fce8 func_ov003_0215fe94
+#endif
+
 struct Obj020397cc;
 struct ListHead02046b60;
 struct MenuData {
+#if defined(jpn)
+    char pad_0[0x218];
+#else
     char pad_0[0x330];
+#endif
     unsigned int displayMode;
+#if defined(jpn)
+    char pad_334[0x2a8 - 0x21c];
+#else
     char pad_334[0x480 - 0x334];
+#endif
     short selection;
     char pad_482[0x4a1 - 0x482];
     unsigned char flags;
@@ -59,6 +71,7 @@ extern "C" void* func_0205ec34();
 void* GetPtrField0x2a04(GameState*);
 extern "C" void func_0206e424(void*, int);
 
+// JPN: func_ov017_021b6e40
 // USA: func_ov017_021b688c
 extern "C" ARM void func_ov017_021b688c(MenuWork* work) {
     GameState* game = GameState::GetInstance();
@@ -77,7 +90,7 @@ extern "C" ARM void func_ov017_021b688c(MenuWork* work) {
         }
         work->allocator.CreateTypeA(memory, 0x1b800);
         work->allocator.Reset();
-        work->data = (MenuData*)work->allocator.Allocate(0x4c4);
+        work->data = (MenuData*)work->allocator.Allocate(sizeof(MenuData));
         if (!work->data) {
             func_020a0c0c();
             work->complete = 1;

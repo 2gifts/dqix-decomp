@@ -2,6 +2,11 @@
 #include "GameState/GameState.h"
 #include "Resource/Brightness.h"
 #include "System/Graphics.h"
+#include "Resource/MessageSystem.h"
+
+#if defined(jpn)
+#define data_ov017_021d6aec data_ov017_021d6ee4
+#endif
 
 struct CombatStepObj;
 typedef unsigned char (*CombatStepFn)(CombatStepObj* obj);
@@ -27,7 +32,11 @@ struct CombatStepObj {
     unsigned short clearColor;
     unsigned char restoreDisplay;
     unsigned char unk43[5];
+#if defined(jpn)
+    unsigned char dispatcher[0x210 - 0x48];
+#else
     unsigned char dispatcher[0x280 - 0x48];
+#endif
     int bgMode;
     int unk284;
     void* allocation;
@@ -36,7 +45,11 @@ struct CombatStepObj {
 struct CombatMenuNode {
     unsigned char unk0[2];
     unsigned char active;
+#if defined(jpn)
+    unsigned char unk3[0xc8 - 3];
+#else
     unsigned char unk3[0xcc - 3];
+#endif
     unsigned char kind;
     unsigned char value397c;
     unsigned char flagBit;
@@ -54,10 +67,7 @@ struct GrottoInfo02012fe4 {
     int param;
 };
 
-struct SearchStruct {
-    char unk0[0xfc0];
-    int busy;
-};
+struct SearchStruct;
 struct Obj020397cc;
 struct TailList020469b4;
 struct TailNode020469b4;
@@ -103,32 +113,27 @@ char* GetGlobalField0x1c020421a0();
 extern CombatStepTable data_ov017_021d6aec;
 extern AllocatorUnion data_02114e20;
 
-struct CombatResView {
-    char unk0[0x3718];
-    CombatMenuNode* menu;
-    char unk371c[0x3734 - 0x371c];
-    CombatMenuNode* actionNode;
-    char unk3738[0x42e2 - 0x3738];
-    unsigned char grottoBattle;
-    unsigned char grottoBattleStarted;
-};
-
 struct CombatantView {
     char unk0[0xb2];
     unsigned short pendingAction;
+#if defined(jpn)
+    char unkB4[0x144 - 0xb4];
+#else
     char unkB4[0x150 - 0xb4];
+#endif
     CombatantFlags* flags;
 };
 
+// JPN: func_ov017_021afd7c
 // USA: func_ov017_021af66c
 extern "C" ARM void func_ov017_021af66c(CombatStepObj* obj, void* list) {
     GameState* gs = GameState::GetInstance();
-    CombatResView* res = (CombatResView*)func_ov017_0218b5b0();
+    GameResources* res = func_ov017_0218b5b0();
     SearchStruct* search = (SearchStruct*)func_0202ae18();
     CombatantView* combatant = (CombatantView*)gs->GetUnknownGameObject();
     FlagWord020466f4* flags = (FlagWord020466f4*)GetDataPtr02114e04_020d6c00();
     char* global = (char*)GetGlobal02109030();
-    CombatMenuNode* menu = res->menu;
+    CombatMenuNode* menu = static_cast<CombatMenuNode*>(res->unknown_ptr_3718);
     CancelPendingAction020397cc((Obj020397cc*)combatant, 0);
     combatant->pendingAction = 0;
     CombatStepTable table = data_ov017_021d6aec;
@@ -143,21 +148,21 @@ extern "C" ARM void func_ov017_021af66c(CombatStepObj* obj, void* list) {
     if (obj->requestFinish != 0) {
         obj->finished = 1;
     }
-    if (obj->mode != 2 && search->busy == 0) {
+    if (obj->mode != 2 && *reinterpret_cast<int*>(reinterpret_cast<char*>(search) + 0xfc0) == 0) {
         if (TestMaskBitBySignedByteIndex(search, obj->searchIndex) == 0) {
             obj->finished = 1;
         }
     }
-    if (res->grottoBattle != 0) {
+    if (res->unknown_flag_42e2 != 0) {
         if (obj->mode == 2) {
             func_ov017_021c37a4();
-            res->grottoBattleStarted = 1;
+            res->unknown_42e3[0] = 1;
             GrottoInfo02012fe4* info = func_02012fe4();
             if (info->type == 1) {
                 SetBrightness((GameResources*)res, 0, 30);
                 UnlockAndSetBrightness((GameResources*)res, 0, 30);
             }
-            CombatMenuNode* node = res->actionNode;
+            CombatMenuNode* node = static_cast<CombatMenuNode*>(res->unknown_ptr_array_371c[6]);
             if (node->active == 0) {
                 func_ov017_021baedc(node, 1);
                 func_ov017_021bbae4(node, info->param, 2);
@@ -170,7 +175,7 @@ extern "C" ARM void func_ov017_021af66c(CombatStepObj* obj, void* list) {
             ClearBitsInWord((unsigned int*)res, 0x40);
         } else {
             func_ov017_0219577c(0, 0, 0);
-            CombatMenuNode* node = res->actionNode;
+            CombatMenuNode* node = static_cast<CombatMenuNode*>(res->unknown_ptr_array_371c[6]);
             if (node->active != 0 && node->phase == 2) {
                 ResetEightRegionsAndFlags(global);
                 SetCombatModeFromCase020dc2d0(0);
@@ -206,7 +211,7 @@ extern "C" ARM void func_ov017_021af66c(CombatStepObj* obj, void* list) {
     }
     obj->unkB = 0;
     ClearListUntilFlagZero((ClearList02046968*)list);
-    CombatMenuNode* node = res->actionNode;
+    CombatMenuNode* node = static_cast<CombatMenuNode*>(res->unknown_ptr_array_371c[6]);
     int restore = 1;
     if (node->active != 0 && node->phase == 2) {
         restore = 0;
@@ -228,8 +233,13 @@ extern "C" ARM void func_ov017_021af66c(CombatStepObj* obj, void* list) {
         TailForward02012da4(&data_02114e20, obj->allocation);
         obj->allocation = 0;
     }
-    GetGlobalField0x1c020421a0()[0x19d0] = 0;
-    if (res->menu->active == 0) {
+    MessageSystem* messages = reinterpret_cast<MessageSystem*>(GetGlobalField0x1c020421a0());
+#if defined(jpn)
+    messages->flags17ff.flag2 = 0;
+#else
+    messages->b19d0 = 0;
+#endif
+    if (static_cast<CombatMenuNode*>(res->unknown_ptr_3718)->active == 0) {
         ClearFlags020466f4(flags, 0x40000);
     }
 }

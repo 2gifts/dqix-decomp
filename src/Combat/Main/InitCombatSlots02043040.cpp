@@ -1,38 +1,26 @@
 #include <globaldefs.h>
-#include "std_library_functions.h"
+#include "Resource/MessageSystem.h"
+#include "Resource/MessageUpdate.h"
 
-struct State0204166c;
 #if defined(jpn)
-extern "C" void func_02041bbc(struct State0204166c* s);
+extern "C" void func_02041bbc(MessageGlyphSlot* slot);
 #define Forward020416c0 func_02041bbc
-enum {
-    kClearOffset = 0x21c, kCountOffset = 0x884, kSlotBase = 0x888,
-    kSlotFlags = 0x1688, kTailWord = 0x1738, kStateWord = 0x870,
-    kFlagA = 0x17e2, kFlagB = 0x17e4, kFirstSlot = 14
-};
+enum { FirstGlyphSlot = 14 };
 #else
-extern void Forward020416c0(struct State0204166c* s);
-enum {
-    kClearOffset = 0x2cc, kCountOffset = 0x9b4, kSlotBase = 0x9b8,
-    kSlotFlags = 0x17b8, kTailWord = 0x1868, kStateWord = 0x9a0,
-    kFlagA = 0x19b2, kFlagB = 0x19b4, kFirstSlot = 0
-};
+void Forward020416c0(MessageGlyphSlot* slot);
+enum { FirstGlyphSlot = 0 };
 #endif
 
 // USA: func_02043040
-ARM void InitCombatSlots02043040(char* obj) {
-    int i;
-
-    memset(obj + kClearOffset, 0, 4);
-    *(int*)(obj + kCountOffset) = kFirstSlot;
-
-    for (i = kFirstSlot; i < 0x80; i++) {
-        Forward020416c0((struct State0204166c*)(obj + kSlotBase + i * 0x1c));
-        *(unsigned char*)(obj + i + kSlotFlags) = 0;
+ARM void InitCombatSlots02043040(MessageSystem* window) {
+    memset(window->bitmapAllocationBits, 0, sizeof(window->bitmapAllocationBits));
+    window->allocatedGlyphCount = FirstGlyphSlot;
+    for (int index = FirstGlyphSlot; index < 0x80; ++index) {
+        Forward020416c0(&window->glyphs[index]);
+        window->glyphReferences[index] = 0;
     }
-
-    *(int*)(obj + kTailWord) = 0;
-    *(int*)(obj + kStateWord) = 0;
-    *(unsigned char*)(obj + kFlagA) = 0;
-    *(unsigned char*)(obj + kFlagB) = 0;
+    window->w1868 = 0;
+    window->mode = 0;
+    window->b19b2 = 0;
+    window->b19b4 = 0;
 }

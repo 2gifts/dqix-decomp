@@ -4,9 +4,19 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "std_library_functions.h"
 
-struct TableA68 { void* data; int count; };
+struct EntryA68 { short key; void* value; };
+struct TableA68 { EntryA68* entries; short count; };
 struct GrottoDialogState { char pad[8]; int state; TableA68 text; SafeAllocator allocator; int task; };
-struct Obj02046574 { char pad[0x5c]; char* text; char pad60[0x268]; int field2c8; char pad2cc[0x6cc]; int dialog; char pad99c[4]; int pending; char pad9a4[0x100e]; unsigned char active; };
+struct Obj02046574;
+#if defined(jpn)
+enum { TextOffset = 0x28, ChoiceOffset = 0x218, DialogOffset = 0x868,
+       PendingOffset = 0x870, ChoiceFlagOffset = 0x17e2, TextHeapSize = 0x1f4 };
+extern const char data_ov017_021d86d4[];
+#else
+enum { TextOffset = 0x5c, ChoiceOffset = 0x2c8, DialogOffset = 0x998,
+       PendingOffset = 0x9a0, ChoiceFlagOffset = 0x19b2, TextHeapSize = 0x320 };
+#endif
+
 struct Obj020d7aa0;
 struct Obj020397cc;
 extern AllocatorUnion data_02114e20;
@@ -30,7 +40,11 @@ extern "C" bool _Z18AlwaysTrue02094b4cv();
 typedef void (*BeginDialog)(void*, int, int);
 typedef bool (*DialogReady)(void*);
 char* FindEntryByKey(TableA68*, int);
-extern "C" void func_0204500c(Obj02046574*, char*, int, int);
+extern "C" void func_0204500c(Obj02046574*, char*, int
+#if !defined(jpn)
+    , int
+#endif
+);
 extern "C" int func_020457e0(Obj02046574*);
 void ClearAllTreasureMapUnknownBits(void*);
 extern "C" void _Z29SetCombatModeFromCase020dc2d0i(int);
@@ -41,6 +55,7 @@ typedef void (*EndDialog)(void*, int);
 extern "C" void func_02094ab0(void*);
 extern "C" void _Z37ClearFieldsAndResetAllocator_021bf398Pc(char*);
 
+// JPN: func_ov017_021bf5d0
 // USA: func_ov017_021bf014
 extern "C" ARM void func_ov017_021bf014(GrottoDialogState* self) {
     GameState* game = GameState::GetInstance();
@@ -55,9 +70,13 @@ extern "C" ARM void func_ov017_021bf014(GrottoDialogState* self) {
         _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0(_Z25GetGlobalResetObj020d7a50v());
         _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)combatant, 1);
         ClearIntAt0x23c(field);
-        void* buffer = AllocateAligned4(&data_02114e20, 0x320);
-        self->allocator.CreateTypeA(buffer, 0x320);
+        void* buffer = AllocateAligned4(&data_02114e20, TextHeapSize);
+        self->allocator.CreateTypeA(buffer, TextHeapSize);
+#if defined(jpn)
+        self->task = BackgroundLoader::GetInstance()->QueueLoadFile(data_ov017_021d86d4, 0);
+#else
         self->task = BackgroundLoader::GetInstance()->QueueLoadFileInGP2(data_ov017_021d7ec0, data_ov017_021d7ed5, 0);
+#endif
         self->state = 1;
     } else if (self->state == 1) {
         if (!BackgroundLoader::GetInstance()->GetTaskStatus(self->task)) return;
@@ -69,7 +88,7 @@ extern "C" ARM void func_ov017_021bf014(GrottoDialogState* self) {
         BackgroundLoader::GetInstance()->RemoveTask(self->task);
         self->task = -1;
         func_02046380(controller);
-        _Z22SetIndexedName02046574P11Obj02046574iPc(controller, 0, (char*)game->GetUnknownGameObject()->baseStats_);
+        _Z22SetIndexedName02046574P11Obj02046574iPc(controller, 0, game->GetUnknownGameObject()->baseStats_->unk);
         BeginDialog begin = (BeginDialog)_Z21BlankFunction02094b30v;
         begin(GetGlobal02109400(), 0x203, 0);
         self->state = 2;
@@ -80,24 +99,32 @@ extern "C" ARM void func_ov017_021bf014(GrottoDialogState* self) {
         if (grotto->activeMapData.GetDiscoveryState() == DiscoveryState_Undiscovered) self->state = 3;
         else self->state = 4;
     } else if (self->state == 3) {
-        char* text = controller->text;
+        char* text = (*reinterpret_cast<char**>(reinterpret_cast<char*>(controller) + TextOffset));
         strcpy(text, FindEntryByKey(&self->text, 1));
-        func_0204500c(controller, text, 0, 0xe3);
-        controller->active = 0;
-        controller->field2c8 = 0;
-        controller->dialog = 1;
+        func_0204500c(controller, text, 0
+#if !defined(jpn)
+            , 0xe3
+#endif
+        );
+        (*reinterpret_cast<unsigned char*>(reinterpret_cast<char*>(controller) + ChoiceFlagOffset)) = 0;
+        (*reinterpret_cast<int*>(reinterpret_cast<char*>(controller) + ChoiceOffset)) = 0;
+        (*reinterpret_cast<int*>(reinterpret_cast<char*>(controller) + DialogOffset)) = 1;
         self->state = 5;
     } else if (self->state == 4) {
-        char* text = controller->text;
+        char* text = (*reinterpret_cast<char**>(reinterpret_cast<char*>(controller) + TextOffset));
         strcpy(text, FindEntryByKey(&self->text, 2));
-        func_0204500c(controller, text, 0, 0xe3);
-        controller->active = 0;
-        controller->dialog = 1;
-        controller->field2c8 = 0;
+        func_0204500c(controller, text, 0
+#if !defined(jpn)
+            , 0xe3
+#endif
+        );
+        (*reinterpret_cast<unsigned char*>(reinterpret_cast<char*>(controller) + ChoiceFlagOffset)) = 0;
+        (*reinterpret_cast<int*>(reinterpret_cast<char*>(controller) + DialogOffset)) = 1;
+        (*reinterpret_cast<int*>(reinterpret_cast<char*>(controller) + ChoiceOffset)) = 0;
         self->state = 5;
     } else if (self->state == 5) {
         _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)combatant, 1);
-        if (controller->dialog) return;
+        if ((*reinterpret_cast<int*>(reinterpret_cast<char*>(controller) + DialogOffset))) return;
         grotto->unknown_0[2] = 1;
         int result = func_020457e0(controller);
         if (result == 0) self->state = 6;
@@ -110,7 +137,7 @@ extern "C" ARM void func_ov017_021bf014(GrottoDialogState* self) {
         self->state = 8;
     } else if (self->state == 8) {
         _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)combatant, 1);
-        if (!controller->pending) self->state = 9;
+        if (!(*reinterpret_cast<int*>(reinterpret_cast<char*>(controller) + PendingOffset))) self->state = 9;
     } else if (self->state == 9) {
         _Z24ReinitController02043204Pc((char*)controller);
         SetByteField0x253(combatant);

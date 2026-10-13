@@ -1,10 +1,10 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
 
 struct S0204a438;
 void* GetField0x21c(struct S0204a438* p);
-int GetField0x3b0Value(GameState* battleStruct);
 int GetFlags(int obj);
 int DispatchByIndex021820bc(void* obj, int unused, int index, int arg);
 struct BitFlags02037170;
@@ -42,8 +42,8 @@ extern "C" ARM int func_ov025_021e4868(struct Param021e4868* p, int b, int unuse
     }
     GameState* battle = GameState::GetInstance();
     if (p->field8 == 0x19) {
-        int val = GetField0x3b0Value(battle);
-        if (GetFlags(val) & 0x10) {
+        void* val = GetField0x3b0Value(battle);
+        if (GetFlags((int)val) & 0x10) {
             obj = GetField0x21c((struct S0204a438*)val);
         } else {
             return 1;

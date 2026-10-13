@@ -23,12 +23,10 @@ struct PlayTimeDisplay {
 struct SearchClock { char pad[0x100d]; unsigned char count; };
 struct TimeStamp020103f0;
 struct TimeStamp020104cc;
-struct _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598;
 extern "C" void _Z33ComputeElapsedPlayTimeHMS020103f0P17TimeStamp020103f0PtPhS2_(TimeStamp020103f0*, unsigned short*, unsigned char*, unsigned char*);
 extern "C" SearchClock* func_0202ae18();
 int GetFieldAt0x0(int*);
 extern "C" void _Z33ComputeElapsedPlayTimeHMS020104ccP17TimeStamp020104ccPtPhS2_(TimeStamp020104cc*, unsigned short*, unsigned char*, unsigned char*);
-extern "C" void _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598(struct _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598*);
 void AddPlayClockHours020ac614(BattleRecordPlayClock*, int);
 void AddPlayClockMinutes020ac644(BattleRecordPlayClock*, int);
 static inline ClockTotals* GetTotals(GameState* game) { return &((GameClockTotals*)game)->totals; }
@@ -66,7 +64,7 @@ extern "C" ARM void func_ov008_0218747c(PlayTimeDisplay* display, int mode) {
     }
     if (!output || !saved) return;
     unsigned char previousMinutes = output->minutes;
-    _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598((struct _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598*)output);
+    ClearShortByteByte_02184598(output);
     AddPlayClockHours020ac614(output, (unsigned short)(saved->hours + hours));
     AddPlayClockMinutes020ac644(output, (unsigned char)(saved->minutes + minutes));
     output->seconds += (unsigned char)(saved->seconds + seconds);

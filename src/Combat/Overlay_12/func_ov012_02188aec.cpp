@@ -1,3 +1,26 @@
+#if defined(jpn)
+#define func_ov023_021e6de4 func_ov023_021e7148
+#define func_ov012_0218adac func_ov012_0218bba0
+#define func_ov012_0218930c func_ov012_02189be8
+enum {
+    kProfileOffset = 0x543c,
+    kStepOffset = 0x1340,
+    kStateOffset = 0x1341,
+    kActiveOffset = 0x1368,
+    kDesignOffset = 0x144c,
+    kWindowOffset = 0x90
+};
+#else
+enum {
+    kProfileOffset = 0x569c,
+    kStepOffset = 0x1370,
+    kStateOffset = 0x1371,
+    kActiveOffset = 0x13a0,
+    kDesignOffset = 0x13f4,
+    kWindowOffset = 0xac
+};
+#endif
+
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -11,78 +34,83 @@ struct Profile02188aec {
     unsigned int designChosen : 1;
     unsigned int remaining : 4;
 };
-struct Save02188aec { char field_0[0x569c]; Profile02188aec profile; };
-struct Struct0205de24 { char data[0x133c - 0xac]; };
+struct Struct0205de24;
 struct Struct_0205c570;
 struct Obj021e6e20;
 struct Obj0205eaa0;
-struct Editor02188aec {
-    char field_0[0xac];
-    Struct0205de24 window;
-    char field_133c[0x34];
-    unsigned char step;
-    unsigned char state;
-    char field_1372[0x2e];
-    unsigned char active;
-    char field_13a1[0x53];
-    unsigned int design;
-};
 extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(Struct0205de24*, unsigned char, unsigned char);
 extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(Struct_0205c570*);
 extern "C" int _Z35TestFlagsAndActiveElement2_021e6e20P11Obj021e6e20(Obj021e6e20*);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0*, int, int);
 extern "C" void _Z22BuildMessageF_0218a974Pc(char*);
-extern "C" void func_ov023_021e6e60(Editor02188aec*);
-extern "C" int func_ov023_021e6de4(Editor02188aec*);
-extern "C" void func_ov012_0218adac(Editor02188aec*, int, int, int);
-extern "C" void func_ov012_0218930c(Editor02188aec*, int);
+extern "C" void func_ov023_021e6e60(char*);
+extern "C" int func_ov023_021e6de4(char*);
+#if defined(jpn)
+extern "C" void func_ov012_0218adac(char*, int, int);
+#else
+extern "C" void func_ov012_0218adac(char*, int, int, int);
+#endif
+extern "C" void func_ov012_0218930c(char*, int);
 extern Obj0205eaa0 data_02108760;
 
+static inline Profile02188aec* GetProfileDesign(GameState* state) {
+    return (Profile02188aec*)((char*)state + kProfileOffset);
+}
+
 // USA: func_ov012_02188aec
-extern "C" ARM void func_ov012_02188aec(Editor02188aec* self) {
-    Profile02188aec* profile = &((Save02188aec*)GameState::GetInstance())->profile;
-    if (self->step == 0) {
-        self->step++;
-        self->step++;
+// JPN: func_ov012_02189138
+extern "C" ARM void func_ov012_02188aec(char* self) {
+    Profile02188aec* profile = GetProfileDesign(GameState::GetInstance());
+    if ((*(unsigned char*)(self + kStepOffset)) == 0) {
+        (*(unsigned char*)(self + kStepOffset))++;
+        (*(unsigned char*)(self + kStepOffset))++;
         return;
-    } else if (self->step == 1) {
-        self->step++;
+    } else if ((*(unsigned char*)(self + kStepOffset)) == 1) {
+        (*(unsigned char*)(self + kStepOffset))++;
         return;
-    } else if (self->step == 2) {
-        self->active = 0;
-        self->design = (profile->design - profile->female) / 2;
-        _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(&self->window, 0, 3);
+    } else if ((*(unsigned char*)(self + kStepOffset)) == 2) {
+        (*(unsigned char*)(self + kActiveOffset)) = 0;
+        (*(unsigned int*)(self + kDesignOffset)) = (profile->design - profile->female) / 2;
+        _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh((Struct0205de24*)(self + kWindowOffset), 0, 3);
         func_ov023_021e6e60(self);
         _Z22BuildMessageF_0218a974Pc((char*)self);
-        self->step++;
+        (*(unsigned char*)(self + kStepOffset))++;
         return;
-    } else if (self->step == 3) {
-        self->active = 1;
-        int selection = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((Struct_0205c570*)&self->window);
-        if (self->design != selection) {
-            self->design = selection;
-            func_ov012_0218adac(self, 0, (self->design << 1) + profile->female, 0);
+    } else if ((*(unsigned char*)(self + kStepOffset)) == 3) {
+        (*(unsigned char*)(self + kActiveOffset)) = 1;
+        int selection = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((Struct_0205c570*)(Struct0205de24*)(self + kWindowOffset));
+        if ((*(unsigned int*)(self + kDesignOffset)) != selection) {
+            (*(unsigned int*)(self + kDesignOffset)) = selection;
+#if defined(jpn)
+            func_ov012_0218adac(self, 0, ((*(unsigned int*)(self + kDesignOffset)) << 1) + profile->female);
+#else
+            func_ov012_0218adac(self, 0, ((*(unsigned int*)(self + kDesignOffset)) << 1) + profile->female, 0);
+#endif
         }
         int finished = 0;
         if (func_ov023_021e6de4(self)) {
             _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
-            Profile02188aec* current = &((Save02188aec*)GameState::GetInstance())->profile;
-            current->design = (self->design << 1) + current->female;
+            Profile02188aec* current = GetProfileDesign(GameState::GetInstance());
+            current->design = ((*(unsigned int*)(self + kDesignOffset)) << 1) + current->female;
             current->designChosen = 1;
             finished = 1;
         } else if (_Z35TestFlagsAndActiveElement2_021e6e20P11Obj021e6e20((Obj021e6e20*)self)) {
-            self->design = (profile->design - profile->female) / 2;
+            (*(unsigned int*)(self + kDesignOffset)) = (profile->design - profile->female) / 2;
             finished = 1;
+#if defined(jpn)
+            func_ov012_0218adac(self, 0, -1);
+#else
             func_ov012_0218adac(self, 0, -1, 0);
+#endif
         }
-        if (finished) self->step++;
+        if (finished) (*(unsigned char*)(self + kStepOffset))++;
         return;
-    } else if (self->step == 4) {
-        self->step++;
+    } else if ((*(unsigned char*)(self + kStepOffset)) == 4) {
+        (*(unsigned char*)(self + kStepOffset))++;
         return;
-    } else if (self->step == 5) {
-        self->state = 1;
-        self->step = 1;
+    } else if ((*(unsigned char*)(self + kStepOffset)) == 5) {
+        (*(unsigned char*)(self + kStateOffset)) = 1;
+        (*(unsigned char*)(self + kStepOffset)) = 1;
         func_ov012_0218930c(self, 1);
     }
 }

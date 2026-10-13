@@ -1,33 +1,21 @@
 #include <globaldefs.h>
 
-struct ResetStruct;
-extern "C" int _ZN6Script10InitializeEv(struct ResetStruct* s);
+#include "World/ZoneWarpScript.h"
 
-struct StreamState;
-struct StreamHeader;
-extern "C" int _ZN6Script4LoadEPKvj(struct StreamState* s, struct StreamHeader* buffer, int length);
-
-struct Struct02030774;
-extern "C" int _ZN6Script7ExecuteEv(struct Struct02030774* p);
-
-extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(struct ResetStruct*, int*);
-
-struct Ctx020fdc20 { int field0; int field4; int field8; };
-extern struct Ctx020fdc20 data_020fdc20;
-extern int data_020ef388;
+extern Script::OpcodeLookupEntry data_020ef388[];
 
 // USA: func_0201e1d0
-extern "C" ARM void _Z21ExecuteZoneWarpScriptPKvjP12ZoneFeaturesP13SafeAllocator(struct StreamHeader* buffer, int length, int c, int d) {
-    char local[0x430];
+ARM void ExecuteZoneWarpScript(const void* data, unsigned int length, ZoneFeatures* features, SafeAllocator* allocator) {
     if (length == 0) return;
-    data_020fdc20.field8 = c;
-    data_020fdc20.field4 = d;
-    data_020fdc20.field0 = 0;
-    _ZN6Script10InitializeEv((struct ResetStruct*)local);
-    _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE((struct ResetStruct*)local, &data_020ef388);
-    _ZN6Script4LoadEPKvj((struct StreamState*)local, buffer, length);
-    _ZN6Script7ExecuteEv((struct Struct02030774*)local);
-    data_020fdc20.field8 = 0;
-    data_020fdc20.field4 = 0;
-    data_020fdc20.field0 = 0;
+    data_020fdc20.warp = features;
+    data_020fdc20.allocator = allocator;
+    data_020fdc20.currentEntry = 0;
+    Script script;
+    script.Initialize();
+    script.SetOpcodeLookup(data_020ef388);
+    script.Load(data, length);
+    script.Execute();
+    data_020fdc20.warp = 0;
+    data_020fdc20.allocator = 0;
+    data_020fdc20.currentEntry = 0;
 }

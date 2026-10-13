@@ -19,7 +19,11 @@ struct FollowingActor {
     unsigned char behavior;
     unsigned char field_0xc1[0x6f];
     ActorFlags* flags;
+#if defined(jpn)
+    unsigned char field_0x134[0x88];
+#else
     unsigned char field_0x134[0x94];
+#endif
     signed char partyIndex;
     unsigned char field_0x1c9;
     signed char targetIndex;
@@ -45,6 +49,7 @@ int IsField0Null(void**);
 void SetVecYFromValue02033874(Obj02033874*, int);
 
 // USA: func_020391ac
+// JPN: func_02038c04
 extern "C" ARM void func_020391ac(FollowingActor* actor) {
     GameState* game;
     FollowingActor* leader;

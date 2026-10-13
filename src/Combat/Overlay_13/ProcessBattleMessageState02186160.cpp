@@ -18,7 +18,6 @@ struct TouchInput {
 extern TouchInput data_02114e54;
 extern "C" int func_020124b0(void*, int, int, int, int);
 int IsWithinRect(unsigned char*, int, int, int, int);
-extern "C" void func_ov013_02186964(void*);
 #endif
 
 struct SkillPointMenu {
@@ -146,7 +145,7 @@ extern "C" ARM void func_ov013_02186160(SkillPointMenu* menu) {
                     transitioned = true;
                     redraw = true;
                     if (menu->subScreen) InitTag02185828((unsigned char*)menu);
-                    else func_ov013_02186964(menu);
+                    else SetupBattleMessage02185774(menu);
                     if (!menu->subScreen) {
                         menu->ResetPromptWindow();
                     }
@@ -170,7 +169,7 @@ extern "C" ARM void func_ov013_02186160(SkillPointMenu* menu) {
                         transitioned = true;
                         redraw = true;
                         if (menu->subScreen) InitTag02185828((unsigned char*)menu);
-                        else func_ov013_02186964(menu);
+                        else SetupBattleMessage02185774(menu);
                         if (!menu->subScreen) {
                             menu->ResetPromptWindow();
                         }
@@ -223,7 +222,7 @@ extern "C" ARM void func_ov013_02186160(SkillPointMenu* menu) {
             DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 5, 0);
         }
         if (menu->subScreen) InitTag02185828((unsigned char*)menu);
-                        else func_ov013_02186964(menu);
+                        else SetupBattleMessage02185774(menu);
     } else {
         if (menu->selectedSkill == 5 && data_02114e54.released && confirmationHit)
             menu->confirmationPressed = 1;

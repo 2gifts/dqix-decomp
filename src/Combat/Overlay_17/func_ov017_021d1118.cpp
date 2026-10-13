@@ -69,9 +69,15 @@ struct LinkBlock {
 };
 
 struct LinkState {
+#if defined(jpn)
+    char pad_0[0x543c];
+    LinkBlock block;
+    char pad_54b8[0x72be - 0x54b8];
+#else
     char pad_0[0x569c];
     LinkBlock block;
     char pad_5718[0x74fe - 0x5718];
+#endif
     PacketIdentifier identifier;
     PacketIdentifier GetIdentifier() { return identifier; }
 };
@@ -80,12 +86,20 @@ struct ProtagonistData {
     char pad_0[0x186];
     unsigned char values[0x49c - 0x186];
     unsigned char flag : 1;
+#if defined(jpn)
+    char pad_49d[0x8b8 - 0x49d];
+#else
     char pad_49d[0x950 - 0x49d];
+#endif
     int index;
 };
 
 struct ProtagonistObject {
+#if defined(jpn)
+    char pad_0[0x144];
+#else
     char pad_0[0x150];
+#endif
     ProtagonistData* data;
 };
 
@@ -94,6 +108,7 @@ struct Session {
     unsigned char depth;
 };
 
+// JPN: func_ov017_021d1594
 // USA: func_ov017_021d1118
 extern "C" ARM void func_ov017_021d1118(int recipient, int flags, bool segmented, unsigned char mode) {
     GameState* gs;

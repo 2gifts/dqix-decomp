@@ -1,9 +1,9 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 
 struct Node021d6148;
 void SetLinkIfType3_021d6148(Node021d6148* o, unsigned int v);
-int GetField0x3b0Value(GameState* battleStruct);
 extern "C" unsigned int _fflt(int);
 extern "C" unsigned int _fdiv(unsigned int, unsigned int);
 

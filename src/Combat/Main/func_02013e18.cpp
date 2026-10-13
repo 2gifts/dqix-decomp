@@ -7,17 +7,15 @@ enum { kFinalSubflag = 0x3bc };
 #endif
 
 #include "World/Zone3D.h"
+#include "World/ZoneChest.h"
 #include "Graphics/LightingManager.h"
 #include "Resource/GameResources.h"
 #include "GameState/GameState.h"
 
 extern "C" {
     int _Z33ApplyAndClearPendingEntry02013fb4P11Obj02013fb4(void*);
-    int _ZN6Zone3D13UnpackMapAMBLEv(void*);
-    int _ZN6Zone3D14UnpackATS_AMBLEv(void*);
     int _ZN6Zone3D13UnpackMapAMDJEv(void*);
     int _Z29AccumulateHandleStats0201498cPv(void*);
-    int func_02019728(void*, int, void*, void*, void*);
     int func_0201a600(void*);
     void func_02017a94(Zone3D*);
     int _Z17IsInRange0201b5b0i(int);
@@ -27,7 +25,6 @@ extern "C" {
     void _Z17ClearBitsInField4Pjj(unsigned int*, unsigned int);
     void _Z25NotifyActiveSlots02018f30Ph(unsigned char*);
     void _Z28CollectMatchingElems020181fcPv(void*);
-    void _Z27UpdateEntryFlagsForNodeListPh(unsigned char*, unsigned char*, int);
     int _Z15GetFieldIfFlag4Pc(char const*);
 }
 
@@ -40,10 +37,10 @@ extern "C" ARM int func_02013e18(Zone3D* zone)
     if (!_Z33ApplyAndClearPendingEntry02013fb4P11Obj02013fb4(zone))
         return 0;
 
-    if (!_ZN6Zone3D13UnpackMapAMBLEv(zone))
+    if (!zone->UnpackMapAMBL())
         return 0;
 
-    if (!_ZN6Zone3D14UnpackATS_AMBLEv(zone))
+    if (!zone->UnpackATS_AMBL())
         return 0;
 
     if (!_ZN6Zone3D13UnpackMapAMDJEv(zone))
@@ -97,7 +94,7 @@ extern "C" ARM int func_02013e18(Zone3D* zone)
 
     unsigned char* sub = (unsigned char*)zone + 0x2000;
     sub[kFinalSubflag] = 1;
-    _Z27UpdateEntryFlagsForNodeListPh((unsigned char*)zone, sub, 1);
+    UpdateEntryFlagsForNodeList(zone);
     func_02017a94(zone);
     return 1;
 }

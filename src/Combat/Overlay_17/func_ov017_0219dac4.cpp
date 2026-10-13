@@ -1,9 +1,9 @@
 #include <globaldefs.h>
+#include "Combat/ActorAction.h"
 #include "GameState/GameState.h"
 #include "World/Object3D.h"
 
 struct Entry_02028bd0;
-struct SubBlock02038508;
 
 struct Member_0219dac4 {
     Object3D obj3D;
@@ -27,8 +27,6 @@ GameObject* GetCombatantWithFlag0x1000(GameState* battleStruct, int combatantId)
 int GetSignedByte0x2d0(void* obj);
 extern "C" void func_ov017_0219cdc0(unsigned short value, int a1, signed char id);
 void ClearField0xc4KeepBit0x8000(unsigned char* obj);
-void* GetFieldPtrAt0x26c(void* obj);
-extern "C" void _Z17InitBlock02038508P16SubBlock02038508(struct SubBlock02038508* p);
 extern "C" int func_0202c540(void* p);
 extern "C" int func_0202c508(void* p);
 extern "C" void _Z35SetByteIfDataAndCheckClear_021a01bcPh(unsigned char* self);
@@ -68,7 +66,7 @@ extern "C" ARM void func_ov017_0219dac4(unsigned char* self, int id, int value) 
     member->obj3D.SetInheritedAlpha(31);
     member->flagsC2 &= ~0x40;
     ClearField0xc4KeepBit0x8000((unsigned char*)member);
-    _Z17InitBlock02038508P16SubBlock02038508((struct SubBlock02038508*)GetFieldPtrAt0x26c(member));
+    InitBlock02038508(GetFieldPtrAt0x26c(member));
 
     for (int i = 0; i < 4; i++) {
         Member_0219dac4* other = (Member_0219dac4*)GetCombatantWithFlag0x1000(gs, i);

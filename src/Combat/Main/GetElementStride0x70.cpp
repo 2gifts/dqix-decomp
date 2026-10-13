@@ -1,9 +1,10 @@
 #include <globaldefs.h>
+#include "World/ZoneFeatures.h"
 
 // USA: func_0201e548
-ARM void* GetElementStride0x70(unsigned char* obj, int index) {
-    if (index < 0 || *(int*)(obj + 0x1c) <= index) {
+ARM void* GetElementStride0x70(ZoneFeatures* features, int index) {
+    if (index < 0 || features->arraySize68_ <= index) {
         return NULL;
     }
-    return *(unsigned char**)(obj + 0x18) + index * 0x70;
+    return &features->entries68_[index];
 }

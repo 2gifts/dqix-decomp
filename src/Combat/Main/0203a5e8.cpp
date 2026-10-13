@@ -1,9 +1,9 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
 
 extern "C" void* __clear(void*, int);
-int GetField0x3b0Value(GameState*);
 struct Vec3copy0202ec84 { unsigned int v[3]; };
 extern "C" int _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(void*, Vec3copy0202ec84*, int*, int*);
 
@@ -45,7 +45,7 @@ extern "C" ARM void func_0203a5e8(Obj02039fec* obj, int index) {
     ObjProjection0203a5e8* projection = (ObjProjection0203a5e8*)obj;
     signed char horizontal = 0;
     int vertical = 0;
-    void* camera = (void*)GetField0x3b0Value(GameState::GetInstance());
+    void* camera = GetField0x3b0Value(GameState::GetInstance());
     if (camera != NULL) {
         bool alternate = false;
         int step = alternate;

@@ -1,1010 +1,7 @@
+#include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/BattleRecordSnapshot.h"
-#define __STDC_UTF_16__ 1
-#define __STDC_UTF_32__ 1
-#define _GNU_SOURCE 1
-
-extern "C" {
-int rand();
-void srand(int seed);
-int abs(int);
-long labs(long);
-void* memcpy(void* dst, const void* src, unsigned int length);
-void* memmove(void* dst, const void* src, unsigned int length);
-void* memset(void* dst, int value, unsigned int length);
-unsigned int strlen(const char* str);
-char* strcpy(char* dst, const char* src);
-char* strncpy(char* dst, const char* src, unsigned int count);
-char* strcat(char* dst, const char* src);
-int strcmp(const char* lhs, const char* rhs);
-int strncmp(const char* lhs, const char* rhs, unsigned int count);
-char* strchr(const char* str, int ch);
-char* strrchr(const char* str, int ch);
-char* strstr(const char* str, const char* substr);
-int sprintf(char* buffer, const char* format, ...);
-}
-#define offsetof(type,member) ((unsigned int)(&((type*)0)->member))
-typedef unsigned long long uint64_t;
-typedef signed long long int64_t;
-typedef unsigned int uint32_t;
-typedef signed int int32_t;
-typedef unsigned short uint16_t;
-typedef signed short int16_t;
-typedef unsigned char uint8_t;
-typedef char int8_t;
-typedef unsigned int uintptr_t;
-typedef signed int intptr_t;
-typedef unsigned int size_t;
-#define INLINE_MEMCPY(to,from,size) { int i; unsigned char* dst; const unsigned char* src; i = (size); src = (const unsigned char*)(from); dst = (unsigned char*)(to); do { i--; *dst = *src; dst++; src++; } while (i != 0); }
-#define INLINE_MEMCPY_4(to,from,size) { int i; unsigned int* dst; const unsigned int* src; i = (size); src = (const unsigned int*)(from); dst = (unsigned int*)(to); do { i -= 4; *dst = *src; dst++; src++; } while (i != 0); }
-#define COPY_ARRAY(dst,src) INLINE_MEMCPY(dst, src, sizeof(dst))
-typedef int32_t fix32_t;
-typedef int16_t fix16_t;
-#define FIX32_MULTIPLY(a,b) (fix32_t)((((int64_t)(a) * (int64_t)(b)) + (int64_t)0x800) >> (int64_t)12)
-#define FIX32_MULTIPLY_SIMPLE(a,b) (fix32_t)(((int64_t)(a) * (int64_t)(b)) >> 12)
-#define FIX32_MULTIPLY_v2(a,b) ((((int64_t)(unsigned int)(b) * (int64_t)(a))) >> (int64_t)12)
-#define FIX32_MULTIPLY_v3(a,b) ((((int64_t)(b) * (int64_t)(a))) >> (int64_t)12)
-#define FIX32_MULTIPLY_v4(a,b) ((((int64_t)(unsigned)(b) * (int64_t)(signed)(a))) >> (int64_t)12)
-typedef struct Vector3i
-{
-    int32_t x;
-    int32_t y;
-    int32_t z;
-} Vector3i;
-typedef struct Vector3s
-{
-    int16_t x;
-    int16_t y;
-    int16_t z;
-} Vector3s;
-typedef Vector3i Vector3fix;
-typedef Vector3s Vector3fix16;
-#define FIX_2PI 0x6488
-typedef union Matrix3x3
-{
-    Vector3fix rows[3];
-    fix32_t entries[9];
-} Matrix3x3;
-typedef union Matrix4x3
-{
-    Vector3fix rows[4];
-    fix32_t entries[12];
-    struct {
-        Matrix3x3 rotation;
-        Vector3fix translation;
-    };
-} Matrix4x3;
-typedef union Vector4fix
-{
-    fix32_t entries[4];
-    Vector3fix xyz;
-    struct {
-        fix32_t x;
-        fix32_t y;
-        fix32_t z;
-        fix32_t w;
-    };
-};
-typedef union Matrix4x4
-{
-    fix32_t entries[16];
-    Vector4fix rows[4];
-} Matrix4x4;
-extern "C"
-{
-    void Mat3x3_WriteIdentity(Matrix3x3* out);
-    void Mat3x3_ApplyScale(const Matrix3x3* in, Matrix3x3* out, fix32_t x, fix32_t y, fix32_t z);
-    void Mat3x3_WriteRotationX(Matrix3x3* out, fix32_t sine, fix32_t cosine);
-    void Mat3x3_WriteRotationY(Matrix3x3* out, fix32_t sine, fix32_t cosine);
-    void Mat3x3_WriteRotationZ(Matrix3x3* out, fix32_t sine, fix32_t cosine);
-    int Mat3x3_Invert(const Matrix3x3* in, Matrix3x3* out);
-    void Mat3x3_Multiply(const Matrix3x3* inA, const Matrix3x3* inB, Matrix3x3* out);
-    void Mat3x3_ApplyToVector(const Vector3fix* inVec, const Matrix3x3* inMat, Vector3fix* out);
-    void Mat4x3_WriteIdentity(Matrix4x3* out);
-    void Mat4x3_ConvertTo4x4(const Matrix4x3* in, Matrix4x4* out);
-    void Mat4x3_ApplyTranslation(const Matrix4x3* in, Matrix4x3* out, fix32_t x, fix32_t y, fix32_t z);
-    void Mat4x3_ApplyScale(const Matrix4x3* in, Matrix4x3* out, fix32_t x, fix32_t y, fix32_t z);
-    void Mat4x3_WriteRotationX(Matrix4x3* out, fix32_t sine, fix32_t cosine);
-    void Mat4x3_WriteRotationY(Matrix4x3* out, fix32_t sine, fix32_t cosine);
-    void Mat4x3_WriteRotationZ(Matrix4x3* out, fix32_t sine, fix32_t cosine);
-    int Mat4x3_Invert(const Matrix4x3* in, Matrix4x3* out);
-    void Mat4x3_Multiply(const Matrix4x3* inA, const Matrix4x3* inB, Matrix4x3* out);
-    void Mat4x3_ApplyToVector(const Vector3fix* inVec, const Matrix4x3* inMat, Vector3fix* out);
-    void Mat4x3_WriteViewMatrix(const Vector3fix* eye, const Vector3fix* up, const Vector3fix* target, Matrix4x3* out);
-    void Mat4x4_WriteIdentity(Matrix4x4* out);
-    void Mat4x4_ConvertTo4x3(const Matrix4x4* in, Matrix4x3* out);
-    void Mat4x4_Multiply(const Matrix4x4* inA, const Matrix4x4* inB, Matrix4x4* out);
-    void Mat4x4_MaybeWriteFrustum(fix32_t a, fix32_t b, fix32_t c, fix32_t d, fix32_t e, fix32_t f, Matrix4x4* out);
-    void Mat4x4_WriteProjectionUnknown(fix32_t a, fix32_t b, fix32_t c, fix32_t d, fix32_t e, fix32_t f, fix32_t g, Matrix4x4* out);
-    fix32_t fix32_Divide(fix32_t num, fix32_t denom);
-    fix32_t fix32_Sqrt(fix32_t x);
-    int64_t GetHardwareDividerResult();
-    fix32_t fix32_GetDivisionResult();
-    void fix32_QueueComputeReciprocal(fix32_t x);
-    fix32_t fix32_GetSqrtResult();
-    void fix32_QueueComputeQuotient(fix32_t num, fix32_t denom);
-    int32_t FastIntDivide(int32_t a, int32_t b);
-    int32_t FastIntModulus(int32_t a, int32_t b);
-    void Vector3fix_Add(const Vector3fix* a, const Vector3fix* b, Vector3fix* out);
-    void Vector3fix_Subtract(const Vector3fix* a, const Vector3fix* b, Vector3fix* out);
-    fix32_t Vector3fix_InnerProduct(const Vector3fix* a, const Vector3fix* b);
-    void Vector3fix_CrossProduct(const Vector3fix* a, const Vector3fix* b, Vector3fix* out);
-    fix32_t Vector3fix_Length(const Vector3fix* vec);
-    void Vector3fix_Normalize(const Vector3fix* in, Vector3fix* out);
-    fix32_t Vector3fix_Distance(const Vector3fix* a, const Vector3fix* b);
-    fix32_t fix32_Atan2(fix32_t y, fix32_t x);
-    fix32_t fix32_Atan2_Rescaled(fix32_t y, fix32_t x);
-}
-fix32_t fix32sin(fix32_t x);
-fix32_t fix32cos(fix32_t x);
-fix32_t fix32SignedAngleDistance(fix32_t a, fix32_t b);
-fix32_t fix32abs(fix32_t x);
-Matrix4x3 RotationMatrixX(fix32_t angle);
-Matrix4x3 RotationMatrixY(fix32_t angle);
-Matrix4x3 RotationMatrixZ(fix32_t angle);
-void Vector3fixMultiplyScalar(const Vector3fix* in, fix32_t scalar, Vector3fix* out);
-void Vector3fixMultiply(const Vector3fix* a, const Vector3fix* b, Vector3fix* out);
-void Vector3fixDivideScalar(const Vector3fix* in, fix32_t scalar, Vector3fix* out);
-fix32_t fix32ReduceAngle0To2Pi(fix32_t angle);
-fix32_t Vector3fixSquaredDistance(const Vector3fix* a, const Vector3fix* b);
-fix32_t Vector3fixAngleToPoint(const Vector3fix* source, const Vector3fix* target);
-
-#define ARM _Pragma("thumb off")
-#define THUMB _Pragma("thumb on")
-#define NULL 0
-#define SIGNATURE_NSBMD 0x30444d42
-#define SIGNATURE_NSBTX 0x30585442
-#define SIGNATURE_NSBCA 0x30414342
-#define SIGNATURE_NSBTP 0x30505442
-#define SIGNATURE_NSBTA 0x30415442
-#define SIGNATURE_NSBMA 0x30414d42
-#define SIGNATURE_NSBVA 0x30415642
-struct NSBXXContainer
-{
-    uint32_t signature_;
-    uint16_t byteOrderMark_;
-    uint16_t version_;
-    uint32_t fileSize_;
-    uint16_t headerSize_;
-    uint16_t numSubfiles_;
-};
-struct NSBXXNameList
-{
-    uint8_t unknown_0_;
-    uint8_t numEntries_;
-    uint16_t totalSize_;
-    uint16_t subheaderSize_;
-    uint16_t offsetToDataStart_;
-    struct SearchTreeEntry
-    {
-        uint8_t bitIndex_;
-        uint8_t children_[2];
-        uint8_t resourceIndex_;
-    } treeRoot_8_;
-    template<class T>
-    inline T* GetEntryByIndex(unsigned int n) const
-    {
-        if (this != 0 && n < numEntries_)
-        {
-            intptr_t dataStart = (intptr_t)this + offsetToDataStart_;
-            uint16_t stride = *(uint16_t*)dataStart;
-            return (T*)(dataStart + 4 + stride * n);
-        }
-        return 0;
-    }
-    template<class T>
-    inline T* GetEntryByIndex_notVolatile(unsigned int n) const
-    {
-        if (this != 0 && n < numEntries_)
-        {
-            intptr_t dataStart = (intptr_t)this + offsetToDataStart_;
-            uint16_t stride = *(uint16_t*)dataStart;
-            return (T*)(dataStart + 4 + stride * n);
-        }
-        return 0;
-    }
-    template<class T>
-    inline T* GetEntryFromu32Offset(unsigned int n) const
-    {
-        uint32_t* pOffset = GetEntryByIndex_notVolatile<uint32_t>(n);
-        if (pOffset != 0)
-            return (T*)((intptr_t)this + *pOffset);
-        return 0;
-    }
-    template<class T>
-    inline T* GetEntryFromu32Offset_v2(unsigned int n) const
-    {
-        if (this != 0)
-        {
-            uint32_t* pOffset = GetEntryByIndex_notVolatile<uint32_t>(n);
-            if (pOffset != 0)
-                return (T*)((intptr_t)this + *pOffset);
-        }
-        return 0;
-    }
-    inline const char* GetNameByIndexAndOffset(unsigned int n, unsigned int offsetInBuffer) const
-    {
-        if (this != 0 && n < numEntries_)
-        {
-            intptr_t dataStart = (intptr_t)this + offsetToDataStart_;
-            intptr_t nameStart = dataStart + *(uint16_t*)(dataStart + 2);
-            return (const char*)(nameStart + offsetInBuffer);
-        }
-        return 0;
-    }
-};
-struct NSBXXInnerFileCommon {
-    uint32_t signature;
-    uint32_t fileSize;
-    NSBXXNameList nameList;
-};
-struct NSBXXBoneMatrix
-{
-    uint16_t flags_;
-    fix16_t m_11;
-    struct Translation
-    {
-        fix32_t x;
-        fix32_t y;
-        fix32_t z;
-    };
-    struct PivotMatrixData
-    {
-        fix16_t a;
-        fix16_t b;
-    };
-    struct RotationMatrixData
-    {
-        fix16_t entries[8];
-    };
-    struct Scaling
-    {
-        fix32_t x;
-        fix32_t y;
-        fix32_t z;
-        fix32_t x_v2;
-        fix32_t y_v2;
-        fix32_t z_v2;
-    };
-};
-struct NSBXXAnimationSignature
-{
-    uint8_t signatureInitial_;
-    uint8_t signatureNull_;
-    uint16_t signatureEnd_;
-};
-struct NSBXXAnimationJAC
-{
-    NSBXXAnimationSignature signature_;
-    uint16_t numFrames_;
-    uint16_t numTracks_;
-    uint32_t unk_8;
-    uint32_t pivotDataOffset_;
-    uint32_t basisMatricesOffset_;
-    uint16_t trackOffsets_[1];
-    struct Track
-    {
-        uint32_t flagsAndTargetBoneMatrix_;
-        struct ChannelNonConst
-        {
-            uint32_t metadata_;
-            uint32_t samplesOffset_;
-        };
-    };
-    struct ScaleSample16
-    {
-        fix16_t primary_;
-        fix16_t secondary_;
-    };
-    struct ScaleSample32
-    {
-        fix32_t primary_;
-        fix32_t secondary_;
-    };
-    struct PivotMatrix
-    {
-        int16_t flags;
-        fix16_t a;
-        fix16_t b;
-    };
-    struct BasisMatrix
-    {
-        int16_t data[5];
-    };
-    inline PivotMatrix* GetPivotMatrices() const
-    {
-        return (PivotMatrix*)((intptr_t)this + this->pivotDataOffset_);
-    }
-    inline BasisMatrix* GetBasisMatrices() const
-    {
-        return (BasisMatrix*)((intptr_t)this + this->basisMatricesOffset_);
-    }
-};
-struct NSBXXAnimationMAM
-{
-    NSBXXAnimationSignature signature_;
-    uint16_t unk_4;
-    uint16_t unk_6;
-    NSBXXNameList tracks_;
-    struct Track
-    {
-        uint32_t diffuse_;
-        uint32_t ambient_;
-        uint32_t reflection_;
-        uint32_t emission_;
-        uint32_t alpha_;
-    };
-};
-struct NSBXXAnimationMAT
-{
-    NSBXXAnimationSignature signature_;
-    uint16_t unk_4;
-    uint16_t unk_6;
-    NSBXXNameList tracks_;
-    struct Track
-    {
-        uint32_t unk_0;
-        uint32_t unk_4;
-        uint32_t unk_8;
-        uint32_t unk_c;
-        uint32_t unk_10;
-        uint32_t unk_14;
-        uint32_t unk_18;
-        uint32_t unk_1c;
-        uint32_t unk_20;
-        uint32_t unk_24;
-    };
-};
-struct NSBXXAnimationMPT
-{
-    NSBXXAnimationSignature signature_;
-    uint16_t numFrames_;
-    uint8_t numTextureNames_;
-    uint8_t numPaletteNames_;
-    uint16_t textureNamesOffset_;
-    uint16_t paletteNamesOffset_;
-    NSBXXNameList tracks_;
-    struct Track
-    {
-        uint16_t numKeyframes_;
-        uint16_t unk_2;
-        int16_t maybeSpeed_4_;
-        uint16_t keyframeArrayOffset_;
-        struct Keyframe
-        {
-            uint16_t frameTime_;
-            uint8_t textureIdx_;
-            uint8_t paletteIdx_;
-        };
-    };
-};
-struct NSBXXAnimationVAV
-{
-    char unk_0[6];
-    unsigned short numConditions_;
-    char unk_8[4];
-    uint32_t bitfield_[1];
-};
-struct ModelBoundingBox
-{
-    int16_t xMin_;
-    int16_t yMin_;
-    int16_t zMin_;
-    int16_t xSize_;
-    int16_t ySize_;
-    int16_t zSize_;
-};
-struct NSBXXMaterial
-{
-    uint16_t unk_0;
-    uint16_t size_;
-    uint32_t paramDIF_AMB_;
-    uint32_t paramSPE_EMI_;
-    uint32_t paramPOLYGON_ATTR_;
-    uint32_t maskPOLYGON_ATTR_;
-    uint32_t paramTEXIMAGE_PARAMS_;
-    uint32_t unk_18;
-    uint16_t texturePaletteVRAMOffset_;
-    uint16_t flags_;
-    uint16_t width_;
-    uint16_t height_;
-    fix32_t xScale_;
-    fix32_t yScale_;
-    struct ExtensionData_Bit1
-    {
-        fix32_t scaleX_;
-        fix32_t scaleY_;
-    };
-    struct ExtensionData_Bit2
-    {
-        fix16_t sine_;
-        fix16_t cosine_;
-    };
-    struct ExtensionData_Bit3
-    {
-        uint32_t translateX_;
-        uint32_t translateY_;
-    };
-    struct ExtensionData_Bit13
-    {
-        Matrix4x4 matrix_;
-    };
-};
-struct NSBXXModelMaterialData
-{
-    uint16_t texturePairingsOffset_;
-    uint16_t palettePairingsOffset_;
-    NSBXXNameList materialOffsetList_;
-    inline struct NSBXXMaterial* GetMaterialByIndex(unsigned int n) const
-    {
-        if (this != 0)
-        {
-            uint32_t* materialOffset = materialOffsetList_.GetEntryByIndex<uint32_t>(n);
-            if (materialOffset != 0)
-            {
-                return (NSBXXMaterial*)((intptr_t)this + *materialOffset);
-            }
-        }
-        return 0;
-    }
-};
-struct NSBXXMaterialPairing
-{
-    uint16_t offsetToIndexArray_;
-    uint8_t arraySize_;
-    uint8_t flags_;
-};
-struct NSBXXMesh
-{
-    uint16_t unk_0;
-    uint16_t size_;
-    uint32_t unk_4;
-    uint32_t gpuCommandsOffset_;
-    uint32_t gpuCommandsLength_;
-    inline const uint32_t* GetGPUCommands() const
-    {
-        return (uint32_t*)((intptr_t)this + gpuCommandsOffset_);
-    }
-};
-struct NSBXXInvBindMatrix
-{
-    Matrix4x3 mat4x3;
-    Matrix3x3 mat3x3;
-};
-struct NSBXXInternalModel
-{
-    uint32_t filesize_;
-    uint32_t renderCommandsOffset_;
-    uint32_t materialsOffset_;
-    uint32_t meshesOffset_;
-    uint32_t inverseBindsOffset_;
-    uint8_t unk_14;
-    uint8_t boneScalingMode_;
-    uint8_t materialCallbackType_;
-    uint8_t numBoneMatrices_;
-    uint8_t numMaterials_;
-    uint8_t numMeshes_;
-    uint8_t unk_1a[2];
-    fix32_t upScale_;
-    fix32_t downScale_;
-    uint16_t numVertices_;
-    uint16_t numPolygons_;
-    uint16_t numTriangles_;
-    uint16_t numQuads_;
-    ModelBoundingBox bounds_;
-    int32_t maybeScale_;
-    char unk_3c[4];
-    NSBXXNameList boneList_;
-    inline NSBXXModelMaterialData* GetMaterialData() const
-    {
-        if (this != 0 && materialsOffset_ != 0)
-            return (NSBXXModelMaterialData*)((intptr_t)this + materialsOffset_);
-        else
-            return 0;
-    }
-    inline NSBXXNameList* GetMeshList() const
-    {
-        if (this != 0 && meshesOffset_ != 0)
-            return (NSBXXNameList*)((intptr_t)this + meshesOffset_);
-        return 0;
-    }
-    inline NSBXXMesh* GetMesh(unsigned int n) const
-    {
-        NSBXXNameList* meshList;
-        if (this != 0 && meshesOffset_ != 0)
-            meshList = (NSBXXNameList*)((intptr_t)this + meshesOffset_);
-        else
-            meshList = 0;
-        if (meshList != 0)
-        {
-            return meshList->GetEntryFromu32Offset<NSBXXMesh>(n);
-        }
-        return 0;
-    }
-};
-struct NSBXXMdl
-{
-    uint32_t signature_;
-    uint32_t unknown_4;
-    NSBXXNameList nameList_;
-    NSBXXInternalModel* GetInternalModelByIndex(unsigned int n) const
-    {
-        NSBXXInternalModel* internalModel;
-        if (this != 0)
-        {
-            uint32_t* pModelOffset = nameList_.GetEntryByIndex<uint32_t>(n);
-            if (pModelOffset != 0)
-            {
-                internalModel = (NSBXXInternalModel*)((intptr_t)this + *pModelOffset);
-                return internalModel;
-            }
-        }
-        return 0;
-    }
-};
-struct NSBXXTex
-{
-    uint32_t signature;
-    uint32_t maybeTotalSize_4_;
-    uint32_t block1VRAMLoadOffset_;
-    uint16_t block1NumEightBytes_;
-    uint16_t textureListOffset_;
-    uint16_t maybeBlock1Flags_10_;
-    char padding_12[2];
-    uint32_t block1Offset_;
-    uint32_t block2Or3VRAMLoadOffset_;
-    uint16_t block2NumEightBytes_;
-    uint16_t unk_1e;
-    uint16_t maybeBlock23Flags_20_;
-    char padding_22[2];
-    uint32_t block2Offset_;
-    uint32_t block3Offset_;
-    uint32_t block4VRAMLoadOffset_;
-    uint16_t block4NumEightBytes_;
-    uint16_t maybeBlock4Flags_32_;
-    uint16_t paletteListOffset_;
-    uint16_t unk_36;
-    uint32_t block4Offset_;
-    NSBXXNameList textureList_;
-    inline NSBXXNameList* GetPaletteList() const
-    {
-        if (this != 0 && paletteListOffset_ != 0)
-            return (NSBXXNameList*)((intptr_t)this + paletteListOffset_);
-        else
-            return 0;
-    }
-};
-struct NSBXXTexTexture
-{
-    uint32_t paramTEXIMAGE_PARAMS_;
-    uint32_t unk_4;
-};
-struct NSBXXTexPalette
-{
-    uint16_t offsetWithinBlock4_;
-    uint16_t unk_2;
-};
-extern "C"
-{
-int NSBXX_Tex_GetBlock1Length(NSBXXTex* tex);
-int NSBXX_Tex_GetBlock2Length(NSBXXTex* tex);
-void NSBXX_Tex_WriteImageVRAMOffsets(NSBXXTex* tex, int block1, int block2_3);
-void NSBXX_Tex_LoadImageToVRAM(NSBXXTex* tex, bool needsMapping);
-int NSBXX_Tex_GetBlock4Length(NSBXXTex* tex);
-void NSBXX_Tex_WritePaletteVRAMOffset(NSBXXTex* tex, int offset);
-void NSBXX_Tex_LoadPaletteToVRAM(NSBXXTex* tex, bool needsMapping);
-bool NSBXX_AttachTextureImageToModel(NSBXXInternalModel* model, NSBXXTex* tex0);
-void NSBXX_DetachTextureImageFromModel(NSBXXInternalModel* model);
-bool NSBXX_AttachTexturePaletteToModel(NSBXXInternalModel* model, NSBXXTex* tex0);
-void NSBXX_DetachTexturePaletteFromModel(NSBXXInternalModel* model);
-int NSBXX_LinkTEX0ToMDL0(NSBXXMdl* mdl0, NSBXXTex* tex0);
-void NSBXX_UnlinkTEX0FromMDL0(NSBXXMdl* mdl0);
-void NSBXX_Model_DrawShadow(NSBXXInternalModel* model, unsigned int arg_2, unsigned int arg_3, unsigned int arg_4);
-struct AnimationData* NSBXX_Model_AllocateAnimationData(class AllocatorUnion* alloc, const void* rawAnim, NSBXXInternalModel* model);
-void NSBXX_Model_SetAllMaterialFlags(NSBXXInternalModel* model, int value, unsigned int mask);
-void NSBXX_Model_SetMaterialAlpha(NSBXXInternalModel* model, unsigned int materialIndex, int alpha);
-int NSBXX_Model_GetMaterialPolygonID(NSBXXInternalModel* model, unsigned int materialIndex);
-void NSBXX_Model_SetDiffuseReflectionColor(NSBXXInternalModel* model, int rgb);
-void NSBXX_Model_SetAlpha(NSBXXInternalModel* model, int alpha);
-void* NSBXXNameList_Search(NSBXXNameList* nameList, const char* name);
-int NSBXXNameList_SearchIndex(NSBXXNameList* nameList, const char* name);
-void* NSBXX_GetFirstSubfile(NSBXXContainer* nsbxx);
-NSBXXTex* NSBXX_GetTEXFile(NSBXXContainer* nsbxx);
-void* NSBXX_GetObjectFromFirstSubfile(NSBXXContainer* nsbxx, unsigned int idx);
-const char* NSBXX_PatternAnimation_GetTextureName(NSBXXAnimationMPT* anim, unsigned int idx);
-const char* NSBXX_PatternAnimation_GetPaletteName(NSBXXAnimationMPT* anim, unsigned int idx);
-NSBXXAnimationMPT::Track::Keyframe* NSBXX_PatternAnimation_GetKeyframe(NSBXXAnimationMPT*, uint16_t track, uint16_t frameTime);
-NSBXXAnimationMPT::Track* NSBXX_PatternAnimation_GetTrack(NSBXXAnimationMPT*, unsigned int track);
-}
-struct RenderCommandHandler;
-typedef void (*RenderCommandHook)(RenderCommandHandler*);
-struct BoneMatrixRenderData
-{
-    union Scale
-    {
-        struct {
-            fix32_t x; fix32_t y; fix32_t z;
-        };
-        fix32_t array[3];
-    };
-    unsigned int flags_;
-    Scale scale_v0_;
-    Scale scale_v1_;
-    Scale scale_v2_;
-    Matrix3x3 rotationMatrix_;
-    Vector3fix translate_;
-};
-struct MaterialRenderData
-{
-    unsigned int flags_;
-    unsigned int paramDIF_AMB_;
-    unsigned int paramSPE_EMI_;
-    unsigned int paramPOLYGON_ATTR_;
-    unsigned int paramTEXIMAGE_PARAMS_;
-    unsigned int texturePaletteBase_;
-    fix32_t extensionScaleX_;
-    fix32_t extensionScaleY_;
-    fix16_t rotationSine_;
-    fix16_t rotationCosine_;
-    fix32_t translateX_;
-    fix32_t translateY_;
-    unsigned short materialWidth_;
-    unsigned short materialHeight_;
-    fix32_t materialxScale_;
-    fix32_t materialyScale_;
-};
-struct AnimationData;
-struct ModelRenderContext
-{
-    unsigned int flags_;
-    NSBXXInternalModel* internalModel_;
-    AnimationData* materialAnimations_;
-    bool (*pfnProcessMaterialAnimations_)(MaterialRenderData*, AnimationData*, unsigned int);
-    AnimationData* jointAnimations_;
-    bool (*pfnProcessJointAnimations_)(BoneMatrixRenderData*, AnimationData*, unsigned int);
-    AnimationData* visibilityAnimations_;
-    bool (*pfnProcessVisibilityAnimations_)(int*, AnimationData*, unsigned int);
-    void (*renderCommandHook_)(RenderCommandHandler*);
-    unsigned char renderCommandHookCommandID_;
-    unsigned char renderCommandHookStage_;
-    char padding_26[2];
-    void (*preRenderCallback_)(RenderCommandHandler*);
-    char unk_2c[4];
-    uint8_t* renderCommandList_;
-    BoneMatrixRenderData* boneMatrixRenderDataArray_;
-    MaterialRenderData* materialRenderDataArray_;
-    unsigned int animatedMaterials_[2];
-    unsigned int animatedBoneMatrices_[2];
-    unsigned int animatedVisibilityConditions_[2];
-};
-struct RenderCommandHandler
-{
-    uint8_t* instructionPointer_;
-    ModelRenderContext* modelContext_;
-    unsigned int flags_;
-    RenderCommandHook hooks_[32];
-    unsigned char hookStages_[32];
-    unsigned char command2Arg1_;
-    unsigned char boundMaterial_;
-    unsigned char currentBoneMatrix_;
-    char padding_af;
-    MaterialRenderData* pMaterialRenderData_;
-    BoneMatrixRenderData* pBoneMatrixRenderData_;
-    int* pCommand2Word_;
-    unsigned int materialBitfield_[2];
-    unsigned int boneMatrixBitfield_[2];
-    unsigned int invBindBitfield_[2];
-    NSBXXNameList* boneList_;
-    NSBXXModelMaterialData* modelMaterials_;
-    NSBXXNameList* meshList_;
-    fix32_t upScale_;
-    fix32_t downScale_;
-    void (*boneMatrixRenderDataScalePopulateProc_)(BoneMatrixRenderData*, NSBXXBoneMatrix::Scaling* boneMatrixScaleData, uint8_t* ip, int boneMatrixFlags);
-    void (*boneMatrixRenderDataSubmitProc_)(BoneMatrixRenderData*);
-    void (*textureMatrixCreateProc_)(MaterialRenderData*);
-    MaterialRenderData scratchMaterialRenderData_;
-    BoneMatrixRenderData scratchBoneMatrixRenderData_;
-    int scratchCommand2Word_;
-};
-#define RCH_FLAG_0 0
-#define RCH_FLAG_1 1
-#define RCH_FLAG_2 2
-#define RCH_FLAG_3 3
-#define RCH_FLAG_4 4
-#define RCH_FLAG_5 5
-#define RCH_FLAG_6 6
-#define RCH_FLAG_7 7
-#define RCH_FLAG_8 8
-#define RCH_FLAG_9 9
-#define RCH_FLAG_10 10
-void RenderModelFromRenderData(ModelRenderContext* renderData);
-void RenderMeshWithMaterial(NSBXXInternalModel* model, unsigned int materialIdx, unsigned int meshIdx, int bindMaterial);
-struct AnimationData
-{
-    typedef void (*Callback)(void*, AnimationData*, int);
-    fix32_t time_;
-    fix32_t weight_;
-    void* pRawData_;
-    void (*callback_)(void* renderData, AnimationData* animData, int arg);
-    AnimationData* pNext_;
-    NSBXXTex* pTex0_;
-    unsigned char unk_18;
-    unsigned char numEntries_;
-    unsigned short entries_[64];
-};
-void InitializeModelAnimation(AnimationData* anim, void* pRawData, NSBXXInternalModel* model, NSBXXTex* tex);
-void PopulateModelRenderContext(ModelRenderContext* context, NSBXXInternalModel* model);
-void AddAnimationsToModelRenderContext(ModelRenderContext* context, AnimationData* anim);
-void RemoveAnimationFromModelRenderContext(ModelRenderContext* context, AnimationData* anim);
-void SetModelRenderContextRenderCommandHook(ModelRenderContext* context, RenderCommandHook hook, int unknown, int commandID, int stage);
-bool ProcessMaterialAnimationsOnBoundMaterial(MaterialRenderData* material, AnimationData* anim, unsigned int matIdx);
-bool ProcessJointAnimationsOnBoneMatrix(BoneMatrixRenderData* bone, AnimationData* anim, unsigned int boneIdx);
-bool ProcessVisibilityAnimations(int* output, AnimationData* anim, unsigned int boneIdx);
-#define ALLOCATOR_SIGNATURE_HPXE 0x45585048
-#define ALLOCATOR_SIGNATURE_HMRF 0x46524d48
-#define ALLOCATOR_SIGNATURE_HTNU 0x554e5448
-
-struct SignedAllocatorHeader;
-
-class SignedAllocatorList
-{
-public:
-    SignedAllocatorHeader* pFirst;
-    SignedAllocatorHeader* pLast;
-    unsigned short numElements;
-    unsigned short signatureLength;
-
-    void Initialize(unsigned short signatureLength);
-    void DoInitialInsertion(SignedAllocatorHeader* what);
-
-    void InsertAtEnd(SignedAllocatorHeader* what);
-    void InsertAtStart(SignedAllocatorHeader* what);
-    void InsertBefore(SignedAllocatorHeader* where, SignedAllocatorHeader* what);
-    void Remove(SignedAllocatorHeader* what);
-
-    SignedAllocatorHeader* ElementAfter(SignedAllocatorHeader* what);
-    SignedAllocatorHeader* ElementBefore(SignedAllocatorHeader* what);
-
-    SignedAllocatorHeader* GetNthElement(unsigned int n);
-};
-
-struct SignedAllocatorHeader
-{
-    unsigned int signature;
-    SignedAllocatorHeader* pPrevAllocator;
-    SignedAllocatorHeader* pNextAllocator;
-    SignedAllocatorList children;
-    void* allocBegin;
-    void* allocEnd;
-    int clearFlags;
-};
-
-class HMRFAllocator
-{
-public:
-    struct SavedState
-    {
-        int id;
-        unsigned int startAddress;
-        unsigned int endAddress;
-        SavedState* pPrev;
-    };
-
-    struct Block
-    {
-        unsigned int startAddress;
-        unsigned int endAddress;
-
-        void* AllocateForward(unsigned int len, unsigned int alignment);
-        void* AllocateBackward(unsigned int len, unsigned int alignment);
-    };
-public:
-    SignedAllocatorHeader header;
-    Block block;
-    SavedState* newestState;
-
-    static HMRFAllocator* CreateInRegion(void* start, void* end, unsigned short clearFlags);
-
-    void FreeFront();
-    void FreeBack();
-
-    static HMRFAllocator* CreateAtLocation(void* where, unsigned int size, unsigned short clearFlags);
-    void RemoveFromTree();
-
-    void* Allocate(unsigned int len, int alignAndDirection);
-    void Free(int flags);
-
-    unsigned int GetMaxPossibleAllocation(int alignAndDir);
-
-    bool SaveCurrentState(int id);
-    bool RestoreState(int id);
-};
-
-class HPXEAllocator
-{
-public:
-    struct Block
-    {
-        unsigned short signature;
-        unsigned short coalescenceData;
-        unsigned int size;
-        Block* pPrev;
-        Block* pNext;
-    };
-
-    struct BlockList
-    {
-        Block* pFirst;
-        Block* pLast;
-
-        Block* RemoveAndGetPrevious(Block* block);
-        Block* InsertAfter(Block* newBlock, Block* previous);
-    };
-
-    struct MemoryRangeDescription
-    {
-        unsigned int beginAddr;
-        unsigned int endAddr;
-
-        void PopulateFromBlock(Block* block);
-        Block* CreateBlock(unsigned short signature);
-    };
-
-    struct BlockManager
-    {
-        BlockList freeBlocks;
-        BlockList usedBlocks;
-        unsigned short unknown_34;
-        unsigned short blockSelectFlags;
-
-        void* AllocateFromFreeBlock(Block* freeNode, unsigned int effStart, unsigned int length, unsigned short reversed);
-        bool FreeMemoryRange(const MemoryRangeDescription& range);
-    };
-
-public:
-    SignedAllocatorHeader header;
-    BlockManager blocks;
-
-private:
-    static HPXEAllocator* CreateInRegion(void* start, void* end, unsigned short clearFlags);
-
-    void* AllocateFromFront(unsigned int len, unsigned int align);
-    void* AllocateFromEnd(unsigned int len, unsigned int align);
-
-public:
-    static HPXEAllocator* CreateAtLocation(void* where, unsigned int size, unsigned short clearFlags);
-    void RemoveFromTree();
-
-    void* Allocate(unsigned int len, int alignAndDir);
-    void Free(void* data);
-
-    unsigned int GetMaxPossibleAllocation(int alignAndDir);
-};
-
-namespace AllocatorTree
-{
-    SignedAllocatorHeader* GetParent(SignedAllocatorList* searchTree, SignedAllocatorHeader* alloc);
-
-    SignedAllocatorList* GetListContainingAllocator(SignedAllocatorHeader* allocator);
-
-    void InsertNewAndPopulateHeader(SignedAllocatorHeader* allocator, unsigned int sig,
-        void* allocBegin, void* allocEnd, unsigned short clearFlags);
-    void Remove(SignedAllocatorHeader* alloc);
-
-}
-class UnusedSignedAllocator
-{
-public:
-    struct Block
-    {
-        Block* pNext;
-    };
-
-    SignedAllocatorHeader header;
-    Block* pFirstAvailableBlock;
-    unsigned int blockSize;
-
-private:
-    static Block* PopFrontAndUpdate(Block** ppBlock);
-
-public:
-    void* Allocate();
-    void Free(void* data);
-};
-struct AllocatorBase
-{
-    struct VTable
-    {
-        typedef void* (*PFNAllocate)(AllocatorBase*, unsigned int);
-        typedef void (*PFNFree)(AllocatorBase*, void*);
-
-        PFNAllocate allocate;
-        PFNFree free;
-    };
-
-    const VTable* pVTable;
-};
-
-struct AllocatorTypeUnused : public AllocatorBase
-{
-    UnusedSignedAllocator* pSignedAllocator;
-
-    static void* Allocate(AllocatorBase* base, unsigned int len);
-    static void Free(AllocatorBase* base, void* data);
-
-    static const VTable s_vtable;
-};
-
-struct AllocatorTypeA : public AllocatorBase
-{
-    HMRFAllocator* pHMRFAllocator;
-    int alignmentAndDir;
-    int unknown;
-
-    static void* Allocate(AllocatorBase* base, unsigned int len);
-    static void Free(AllocatorBase* base, void* data);
-
-    static const VTable s_vtable;
-};
-
-struct AllocatorTypeB : public AllocatorBase
-{
-    HPXEAllocator* pHPXEAllocator;
-    int alignmentAndDir;
-    int unknown;
-
-    static void* Allocate(AllocatorBase* base, unsigned int len);
-    static void Free(AllocatorBase* base, void* data);
-
-    static const VTable s_vtable;
-};
-
-class AllocatorUnion
-{
-public:
-    union
-    {
-        AllocatorBase base;
-        AllocatorTypeA typeA;
-        AllocatorTypeB typeB;
-    } versions;
-
-    void* Allocate(unsigned int len);
-    void Free(void* data);
-
-    void InitializeTypeB(HPXEAllocator* pAlloc, int alignAndDir);
-    void InitializeTypeA(HMRFAllocator* pAlloc, int alignAndDir);
-};
-
-class SafeAllocator
-{
-public:
-    SignedAllocatorHeader* pSignedAlloc;
-    AllocatorUnion allocUnion;
-
-    static unsigned int GetLiveCount();
-
-    void ResetAllocatorPointer();
-
-    void CreateTypeB(void* bufferStart, unsigned int bufferSize, int alignAndDir);
-    void CreateTypeA(void* bufferStart, unsigned int bufferSize);
-
-    void* Allocate(unsigned int len);
-    void* AllocateReversed(unsigned int len);
-
-    void Free(void* data);
-
-    void Reset();
-
-    void Destroy();
-
-    unsigned int GetSize() const;
-
-    unsigned int GetMaxPossibleAllocation() const;
-
-    unsigned int GetSizeWithLargestBlockRemoved() const;
-
-    SignedAllocatorHeader* GetSignedAllocator() const;
-};
+#include "World/ZoneChest.h"
 void SetOrClearBitInArray(void *obj, unsigned char *arr, int idx, int flag);
 extern "C" void *func_0202ae18(void);
 int CheckField0NonZero(int *ctx);
@@ -1019,10 +16,7 @@ void *GetPointerFromArray0x3c(unsigned char *arr, unsigned idx);
 struct AppendNode;
 struct AppendList;
 void AppendNodeToListField30(int a, AppendNode *msg, AppendList *list);
-extern "C" void *_ZN9GameState11GetInstanceEv();
-struct LightingManager {
-    static LightingManager *GetInstance();
-};
+extern "C" GameState *_ZN9GameState11GetInstanceEv();
 struct BattleStruct;
 extern "C" int _ZNK9GameState11GetDayTimerEv(BattleStruct *battle);
 extern "C" int _ZNK9GameState12GetTimeOfDayEv(BattleStruct *battle);
@@ -1040,7 +34,6 @@ extern "C" void func_0206e164(void *obj, int p1, int mode);
 struct FindEntryById02096134Table;
 extern "C" void *_Z21FindEntryById02096134P26FindEntryById02096134Tablei(FindEntryById02096134Table *table, int p1);
 extern "C" void _Z24SetBitWithOffset0206eb64Phii(unsigned char *obj, int p2, int flag);
-extern "C" void func_02018300(void *p0, void *node, int a, int b, int c);
 extern "C" void func_ov017_021c1a98(void *ctx, int flag);
 extern "C" void *_ZN9GameState20GetGameObjectByIndexEi(void *battle, int idx);
 extern "C" void _Z18SetBitInArray0x8ecPhi(void *arr, int idx);
@@ -1073,7 +66,6 @@ struct Src021cd6d8 {
     signed char f6;
     int f7;
 };
-extern "C" void *_Z18GetField0x3b0ValueP9GameState(void *battle);
 extern "C" void _Z33StoreFields0x1e4And0x1e8IfNonZeroPhii(void *rec, int a, int b);
 extern "C" void _Z17SetFlag0x4At0x168Ph(void *rec);
 extern "C" void _Z23ClearTwoWordsAndFlag0x4P21FlagsAndWords0202ea20(void *rec);
@@ -1331,38 +323,36 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     }
     case 0x6d: {
-        void *p0 = func_02012fe4();
-        void *node = GetPointerFromArray0x3c((unsigned char *)((char *)p0 + REGION_VALUE(0x8c, 0x6c)), 2);
+        Zone3D* p0 = (Zone3D*)func_02012fe4();
+        ZoneFeatures::Opcode6aEntry* node = (ZoneFeatures::Opcode6aEntry*)GetPointerFromArray0x3c((unsigned char*)&p0->substruct_6c_, 2);
         while (node) {
-            FlagsField0x2e *f = (FlagsField0x2e *)((char *)node + 0x2e);
-            if (!(f->flagsHi & 1) &&
-                *((unsigned char *)node + 0x2c) == msg->p2 &&
-                *((unsigned char *)node + 0x2d) == msg->p3 &&
-                *(short *)((char *)node + 0x20) == (short)msg->p1) {
+            if (!(node->unk_2c.type2.unk_2_high & 1) &&
+                node->unk_2c.type2.unk_0 == msg->p2 &&
+                node->unk_2c.type2.unk_1 == msg->p3 &&
+                node->unk_20 == (short)msg->p1) {
                 func_02018300(p0, node, 1, 1, 1);
             }
-            node = *(void **)((char *)node + 0x70);
+            node = node->pNext;
         }
         return 1;
     }
     case 0x99: {
-        void *p0 = func_02012fe4();
-        void *node = GetPointerFromArray0x3c((unsigned char *)((char *)p0 + REGION_VALUE(0x8c, 0x6c)), 2);
+        Zone3D* p0 = (Zone3D*)func_02012fe4();
+        ZoneFeatures::Opcode6aEntry* node = (ZoneFeatures::Opcode6aEntry*)GetPointerFromArray0x3c((unsigned char*)&p0->substruct_6c_, 2);
         while (node) {
-            FlagsField0x2e *f = (FlagsField0x2e *)((char *)node + 0x2e);
-            if (!(f->flagsHi & 1) &&
-                *((unsigned char *)node + 0x2c) == msg->p2 &&
-                *((unsigned char *)node + 0x2d) == msg->p3 &&
-                *(short *)((char *)node + 0x20) == (short)msg->p1) {
-                f->flagsHi |= 0x100;
+            if (!(node->unk_2c.type2.unk_2_high & 1) &&
+                node->unk_2c.type2.unk_0 == msg->p2 &&
+                node->unk_2c.type2.unk_1 == msg->p3 &&
+                node->unk_20 == (short)msg->p1) {
+                node->unk_2c.type2.unk_2_high |= 0x100;
                 func_02018300(p0, node, 0, 1, 1);
             }
-            node = *(void **)((char *)node + 0x70);
+            node = node->pNext;
         }
         return 1;
     }
     case 0x6e: {
-        void *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = _ZN9GameState11GetInstanceEv();
         _ZN9GameState12SetTimeOfDayE9TimeOfDay((char *)battle, msg->p1);
         void *d = LightingManager::GetInstance();
         *(int *)((char *)d + 0x94) = _ZNK9GameState11GetDayTimerEv((BattleStruct *)battle);
@@ -1488,7 +478,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     }
     case 0x84: {
-        void *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = _ZN9GameState11GetInstanceEv();
         lr.fb.ha = _Z17GetField5cb0ValuePc(battle);
         lr.fb.hc = _Z17GetField5cb4ValuePc(battle);
         lr.fb.he = _Z17GetField5cb8ValuePc(battle);
@@ -1585,7 +575,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     }
     case 0x8b: {
-        void *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = _ZN9GameState11GetInstanceEv();
         void *p = _Z17GetPtrField0x2a04P9GameState(battle);
         unsigned int v = *(unsigned int *)((char *)p + 0xf6c) + *(unsigned int *)((char *)msg + 4);
         *(unsigned int *)((char *)p + 0xf6c) = v;
@@ -1594,7 +584,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     }
     case 0x8c: {
-        void *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = _ZN9GameState11GetInstanceEv();
         void *p = _Z17GetPtrField0x2a04P9GameState(battle);
         unsigned int v = *(unsigned int *)((char *)p + 0xf6c);
         unsigned int d = *(unsigned int *)((char *)msg + 4);
@@ -1684,7 +674,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         SetOrClearBitInArray(obj, (unsigned char *)obj + 0x8c, msg->p1 + 0x776, 0);
         return 1;
     case 0x94: {
-        void *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = _ZN9GameState11GetInstanceEv();
         lr.fb.h4 = _Z17GetField5cb0ValuePc(battle);
         lr.fb.h6 = _Z17GetField5cb4ValuePc(battle);
         lr.fb.h8 = _Z17GetField5cb8ValuePc(battle);
@@ -1787,7 +777,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
             SetOrClearBitInArray(obj, (unsigned char *)obj + 0x8c, 0x113b, 1);
         return 1;
     case 0xc0: {
-        void *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = _ZN9GameState11GetInstanceEv();
         void *p0 = func_02012fe4();
         func_0202ae18();
         c0Local.f0 = 0;
@@ -1813,13 +803,13 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     }
     case 0xa5: {
-        void *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = _ZN9GameState11GetInstanceEv();
         void *combatant = _ZN9GameState20GetGameObjectByIndexEi(battle, 0);
         _Z18SetBitInArray0x8ecPhi(*(void **)((char *)combatant + REGION_VALUE(0x144, 0x150)), msg->p1);
         return 1;
     }
     case 0xa6: {
-        void *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = _ZN9GameState11GetInstanceEv();
         void *combatant = _ZN9GameState20GetGameObjectByIndexEi(battle, 0);
         _Z18SetBitInArray0x910Phi(*(void **)((char *)combatant + REGION_VALUE(0x144, 0x150)), msg->p1);
         return 1;
@@ -1860,7 +850,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     }
     case 0xb1: {
-        void *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = _ZN9GameState11GetInstanceEv();
         _ZN9GameState12SetTimeOfDayE9TimeOfDay((char *)battle, msg->p2);
         void *d = LightingManager::GetInstance();
         *(int *)((char *)d + 0x94) = _ZNK9GameState11GetDayTimerEv((BattleStruct *)battle);
@@ -1880,7 +870,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     }
     case 0xb3: {
-        void *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = _ZN9GameState11GetInstanceEv();
         void *p = _Z17GetPtrField0x2a04P9GameState(battle);
         if (msg->p1 != 0) {
             SetOrClearBitInArray(obj, (unsigned char *)obj + 0x8c, 0x113c, 1);
@@ -2005,8 +995,8 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     }
     case 0xc1: {
-        void *battle = _ZN9GameState11GetInstanceEv();
-        void *rec = _Z18GetField0x3b0ValueP9GameState(battle);
+        GameState *battle = _ZN9GameState11GetInstanceEv();
+        void *rec = GetField0x3b0Value(battle);
         if (msg->p1 != 0) {
             _Z33StoreFields0x1e4And0x1e8IfNonZeroPhii(rec, 0x333, 1);
             _Z17SetFlag0x4At0x168Ph(rec);
@@ -2026,7 +1016,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
     case 0xc4:
         return 1;
     case 0xc5: {
-        void *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = _ZN9GameState11GetInstanceEv();
         void *ctx = func_0202ae18();
         int v = _Z13GetFieldAt0x0Pi((int *)ctx);
         int byte = *((unsigned char *)ctx + 0x1000 + 0xd);
@@ -2094,7 +1084,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         void *rec = *(void **)((char *)base + 0x3000 + REGION_VALUE(0x500, 0x710));
         _Z29ResetFieldsToDefault_021b994cP12Obj_021b994c(rec);
         *((unsigned char *)rec + 0x130) = 1;
-        void *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = _ZN9GameState11GetInstanceEv();
         int v = *(int *)((char *)battle + 0x5000 + REGION_VALUE(0x4c4, 0x724));
         _Z27EnqueueEventTag153_021d079chht(4, 0, (unsigned short)v);
         *(int *)((char *)rec + 0x12c) = v;
@@ -2115,7 +1105,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         SetOrClearBitInArray(obj, (unsigned char *)obj + 0x8c, msg->p1 + 0x1198, 1);
         return 1;
     case 0xcb: {
-        void *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = _ZN9GameState11GetInstanceEv();
         void *base = func_ov017_0218b5b0();
         for (int i = 0; i < 4; i++) {
             void *combatant = _Z25GetCombatantWithFlag0x100P9GameStatei(battle, i);
@@ -2161,7 +1151,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         void *ctx = func_0202ae18();
         if (func_0202c508(ctx)) {
             int rowBase;
-            void *battle = _ZN9GameState11GetInstanceEv();
+            GameState *battle = _ZN9GameState11GetInstanceEv();
             void *base = func_ov017_0218b5b0();
             void *table = _Z17GetEntryTableBasev();
             for (int a = 0; a < 4; a++) {
@@ -2199,7 +1189,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
     case 0xd0: {
         void *ctx = func_0202ae18();
         if (func_0202c508(ctx)) {
-            void *battle = _ZN9GameState11GetInstanceEv();
+            GameState *battle = _ZN9GameState11GetInstanceEv();
             void *p = _Z17GetPtrField0x2a04P9GameState(battle);
             *(unsigned int *)((char *)p + 0x2c94) = msg->p1;
             *(unsigned int *)((char *)battle + REGION_VALUE(0x7c34, 0x7e74)) = msg->p1;
@@ -2265,7 +1255,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     }
     case 0xd6: {
-        void *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = _ZN9GameState11GetInstanceEv();
         lr.fh4 = _Z17GetField5cb0ValuePc(battle);
         lr.fh6 = _Z17GetField5cb4ValuePc(battle);
         lr.fh8 = _Z17GetField5cb8ValuePc(battle);
@@ -2307,7 +1297,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         void *mem = AllocateAligned4(&data_02114e20, 0x1000);
         dbAlloc.CreateTypeA(mem, 0x1000);
         dbAlloc.Reset();
-        void *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = _ZN9GameState11GetInstanceEv();
         void *p = _Z17GetPtrField0x2a04P9GameState(battle);
         void *r = func_02086f24(p, (unsigned char)msg->p1, &dbAlloc);
         void *signedAlloc = dbAlloc.GetSignedAllocator();
@@ -2352,7 +1342,7 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
         return 1;
     }
     case 0xe5: {
-        void *battle = _ZN9GameState11GetInstanceEv();
+        GameState *battle = _ZN9GameState11GetInstanceEv();
         unsigned short s5 = *(unsigned short *)((char *)battle + REGION_VALUE(0x6f00, 0x7100) + REGION_VALUE(0x9c, 0xdc));
         short s6 = *(short *)((char *)battle + REGION_VALUE(0x6f00, 0x7100) + REGION_VALUE(0x9e, 0xde));
         short s7 = *(short *)((char *)battle + REGION_VALUE(0x6f00, 0x7100) + REGION_VALUE(0xa0, 0xe0));

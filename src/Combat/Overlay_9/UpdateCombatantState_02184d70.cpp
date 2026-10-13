@@ -1,45 +1,39 @@
+// KEEP-NAME
+// USA: func_ov009_02184d70
+// JPN: func_ov009_02186098
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
+#include "Resource/CharacterCreationUI.h"
 
-struct Container020e0310;
-extern int GetFieldByKey020e0434(struct Container020e0310* c, int key);
+int GetFieldByKey020e0434(Container020e0310*, int);
 
-// USA: func_ov009_02184d70
-ARM void UpdateCombatantState_02184d70(void* objRaw) {
-    char* obj = (char*)objRaw;
-    if (!(*(int*)(obj + 0xd9c) & 0x80)) {
+ARM void UpdateCombatantState_02184d70(void* storage) {
+    CharacterCreationUI* editor = (CharacterCreationUI*)storage;
+    if (!(editor->flags & 0x80) || editor->resourceStep == 2)
         return;
-    }
-    if (*(unsigned char*)(obj + 0xd94) == 2) {
-        return;
-    }
-
-    int r = (int)BackgroundLoader::GetInstance();
-    unsigned char state = *(unsigned char*)(obj + 0xd94);
-    char* p = obj + 0xc00;
-    int id = *(signed char*)(p + 0x58);
-
-    if (state == 0) {
-        short val = (short)id;
-        int c2 = (id == 2);
-        int c3 = (id == 5);
-        int c1 = (id == 3);
-        if ((c2 | c3) | c1) {
-            unsigned char b = *(unsigned char*)(obj + 0xda3);
-            val = (short)(b * 100 + val);
-        }
-        short a = (short)(val + 0x32);
-        int h1 = GetFieldByKey020e0434((struct Container020e0310*)(obj + 0xe0), a);
-        int h2 = GetFieldByKey020e0434((struct Container020e0310*)(obj + 0xe0), val);
-        *(int*)(obj + 0xd90) = ((BackgroundLoader*)(r))->QueueLoadFileInGP2((const char*)(h2), (const char*)(h1), (SafeAllocator*)(0));
-        *(unsigned char*)(obj + 0xd94) = 1;
-    } else {
-        if (state != 1) {
-            return;
-        }
-        int x = ((BackgroundLoader*)(r))->GetTaskStatus((int)(*(int*)(obj + 0xd90)));
-        if (x != 0) {
-            *(unsigned char*)(obj + 0xd94) = 2;
-        }
+    BackgroundLoader* loader = BackgroundLoader::GetInstance();
+    unsigned char step = editor->resourceStep;
+#if !defined(jpn)
+    int state = editor->state;
+#endif
+    if (step == 0) {
+#if defined(jpn)
+        int state = editor->state;
+#endif
+        short key = state;
+        if ((state == 3) | ((state == 2) | (state == 5)))
+            key = editor->sex * 100 + key;
+#if defined(jpn)
+        const char* filename = (const char*)GetFieldByKey020e0434(&editor->texts, key);
+        editor->resourceTask = loader->QueueLoadFile(filename, 0);
+#else
+        const char* filename = (const char*)GetFieldByKey020e0434(&editor->texts, (short)(key + 50));
+        const char* archive = (const char*)GetFieldByKey020e0434(&editor->texts, key);
+        editor->resourceTask = loader->QueueLoadFileInGP2(archive, filename, 0);
+#endif
+        editor->resourceStep = 1;
+    } else if (step == 1) {
+        if (loader->GetTaskStatus(editor->resourceTask) != 0)
+            editor->resourceStep = 2;
     }
 }

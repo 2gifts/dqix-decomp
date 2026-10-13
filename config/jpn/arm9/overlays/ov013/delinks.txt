@@ -118,3 +118,18 @@ src/Combat/Overlay_13/SetupBattleMessageBody02185424.cpp:
 src/Combat/Overlay_13/ProcessBattleMessageState02186160.cpp:
     complete
     .text start:0x02187178 end:0x02187820
+
+
+src/Combat/Overlay_13/ApplyElemFieldsSlot3_02186c1c.cpp:
+    complete
+    .text start:0x02187f3c end:0x02187f78
+
+
+src/Combat/Overlay_13/SetupBattleMessage02185774.cpp:
+    complete
+    .text start:0x02186964 end:0x02186a18
+
+
+src/Combat/Overlay_13/func_ov013_02187a58.cpp:
+    complete
+    .text start:0x02188a24 end:0x02188ccc

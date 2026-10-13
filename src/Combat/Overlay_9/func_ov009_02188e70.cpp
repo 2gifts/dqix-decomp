@@ -1,44 +1,42 @@
-#include <globaldefs.h>
-
-struct ChoiceGrid {
-    int x_;
-    int y_;
-    int width_;
-    int height_;
-    int stepX_;
-    int stepY_;
-    int columns_;
-    int rows_;
-};
-
-struct CharacterCreation {
-    char unk_0[0xc2c];
-    ChoiceGrid grid_;
-    short cursorX_;
-    short cursorY_;
-    short cursorWidth_;
-    short cursorHeight_;
-    short lastX_;
-    short lastY_;
-};
-
 // USA: func_ov009_02188e70
-extern "C" ARM void func_ov009_02188e70(CharacterCreation* self, int choice)
-{
-    ChoiceGrid* grid = &self->grid_;
+// JPN: func_ov009_02189d30
+#include <globaldefs.h>
+#include "Resource/CharacterCreationUI.h"
+
+extern "C" ARM void func_ov009_02188e70(CharacterCreationUI* editor, int choice) {
+    CreationChoiceGrid* grid = &editor->grid;
     int y;
     int width;
     int height;
     int stepY;
-    int columns = grid->columns_;
-    y = grid->y_;
-    width = grid->width_;
-    height = grid->height_;
-    stepY = grid->stepY_;
-    self->cursorX_ = grid->stepX_ * (choice % columns) + grid->x_;
-    self->cursorY_ = stepY * (choice / columns) + y;
-    self->cursorWidth_ = width;
-    self->cursorHeight_ = height;
-    self->lastX_ = self->cursorX_;
-    self->lastY_ = self->cursorY_;
+    int columns = grid->columns;
+    y = grid->y;
+    width = grid->width;
+    height = grid->height;
+    stepY = grid->stepY;
+#if defined(jpn)
+    int column = choice % columns;
+    int row = choice / columns;
+    editor->cursorX = grid->stepX * column + grid->x;
+    editor->cursorY = stepY * row + y;
+#else
+    editor->cursorX = grid->stepX * (choice % columns) + grid->x;
+    editor->cursorY = stepY * (choice / columns) + y;
+#endif
+    editor->cursorWidth = width;
+    editor->cursorHeight = height;
+#if defined(jpn)
+    if (editor->state == 8) {
+        if (column >= 5)
+            editor->cursorX += 8;
+        if (column == columns - 1) {
+            editor->cursorX += 16;
+            editor->cursorWidth += 8;
+            if (row == 5)
+                editor->cursorWidth += 8;
+        }
+    }
+#endif
+    editor->lastCursorX = editor->cursorX;
+    editor->lastCursorY = editor->cursorY;
 }

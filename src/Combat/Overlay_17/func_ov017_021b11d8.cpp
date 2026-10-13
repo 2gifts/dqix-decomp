@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Combat/SearchEntry.h"
 #include "GameState/GameState.h"
 
 struct SearchStruct;
@@ -15,12 +16,6 @@ struct Slot_021b11d8 {
     unsigned char f7;
     unsigned char f8;
     signed char f9;
-};
-
-struct Entry021b11d8 {
-    char pad0[2];
-    unsigned short bit0 : 1;
-    unsigned short mask : 4;
 };
 
 struct Node021b11d8 {
@@ -43,7 +38,6 @@ extern "C" void _Z27EnqueueEventTag173_021d1810tth(int a, int b, signed char c);
 extern "C" int _Z24SetSearchFlagBit0202c660P12SearchStructi(SearchStruct* obj, int value);
 extern "C" int _Z24TestBitBySignedByteIndexP12SearchStructi(SearchStruct* obj, int index);
 extern "C" int _Z28TestMaskBitBySignedByteIndexP12SearchStructi(SearchStruct* obj, int index);
-extern "C" Entry021b11d8* _Z25GetEntryBySignedByteIndexP12SearchStructi(SearchStruct* obj, int index);
 int IsFieldMinusOne(int* obj);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* obj);
 extern "C" int _Z18GetField0x3acValueP9GameState(GameState* battleStruct);
@@ -117,12 +111,12 @@ extern "C" ARM void func_ov017_021b11d8(void* obj, void* node) {
     }
     for (int i = 0; i < 4; i++) {
         if ((self->flags & (1 << i)) != 0) {
-            Entry021b11d8* e = _Z25GetEntryBySignedByteIndexP12SearchStructi(search, i);
+            SearchEntry0202c178* e = GetEntryBySignedByteIndex(search, i);
             if (e == 0) {
                 continue;
             }
             int bit = 1 << self->count;
-            unsigned short m = e->mask;
+            unsigned short m = e->members;
             if ((m & bit) != 0) {
                 return;
             }

@@ -1,15 +1,17 @@
 #include <globaldefs.h>
+#include "Grotto/Main/ActiveGrottoClass.h"
 
 extern "C" void* func_02012fe4(void);
 
-struct Zone02161f64 {
-    unsigned char unk0[0x2261];
-    unsigned char flag;
-};
-
+// KEEP-NAME
 // USA: func_ov001_02161f64
+// JPN: func_ov001_02163578
 ARM int SetFlagAtOffset_02161f64_02161f64(void) {
-    Zone02161f64* zone = (Zone02161f64*)((unsigned char*)func_02012fe4() + 0x3ec);
-    zone->flag = 1;
+#if defined(jpn)
+    ActiveGrottoClass* grotto = (ActiveGrottoClass*)((char*)func_02012fe4() + 0x240c);
+#else
+    ActiveGrottoClass* grotto = (ActiveGrottoClass*)((char*)func_02012fe4() + 0x23ec);
+#endif
+    grotto->unknown_260_[1] = 1;
     return 1;
 }

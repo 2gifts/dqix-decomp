@@ -1,3 +1,95 @@
+#if defined(jpn)
+#include <globaldefs.h>
+#include "GameState/GameState.h"
+#include "std_library_functions.h"
+
+struct SkillEntry02187a58 {
+    short id;
+    unsigned short low : 2;
+    unsigned short points : 7;
+    unsigned short kind : 7;
+    const char* name;
+    const char* prefix;
+    SkillEntry02187a58* next;
+};
+struct SkillSortEntry02187a58 {
+    int id;
+    float points;
+};
+extern "C" SkillEntry02187a58* func_0208e934(void* list, int kind, int index);
+extern "C" SkillEntry02187a58* func_0208e97c(void* list, int id);
+extern "C" int _Z20GetTableByte020dd11cjj(unsigned int, unsigned int);
+int GetFieldAt0x150(unsigned char*);
+struct TableA68;
+void* FindEntryByKey(TableA68*, int);
+int StringLength(const char*);
+extern "C" void __clear(void*, int);
+extern "C" void func_02050678(void*, short, short, const char*, int, unsigned char, short*, short*);
+extern "C" void func_020749ac(void*, int, int, int);
+extern char data_ov013_02188e2b[];
+extern char data_ov013_02188e56[];
+extern char data_ov013_02188e61[];
+extern char data_ov013_02188e64[];
+
+// USA: func_ov013_02187a58
+// JPN: func_ov013_02188a24
+extern "C" ARM void func_ov013_02187a58(void* self, void* canvas) {
+    unsigned char* menu = (unsigned char*)self;
+    if (!canvas) return;
+    GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), *(signed char*)(menu + 0x53));
+    if (!combatant) return;
+    int palette;
+    unsigned char* stats = (unsigned char*)GetFieldAt0x150((unsigned char*)combatant);
+    if (!stats) return;
+    int kind = _Z20GetTableByte020dd11cjj(*(unsigned int*)(stats + 0x8b8) & 0xff, menu[0x54]);
+    int availablePoints = (stats + kind)[0x464];
+    int y = 30;
+    const char* title = (const char*)FindEntryByKey((TableA68*)(menu + 4), kind);
+    short width, height;
+    SkillSortEntry02187a58 entries[10];
+    char nameText[256];
+    char pointsText[32];
+    char suffix[16];
+
+    func_02050678(canvas, (short)(128 - (StringLength(title) >> 2) * 10), 12, title, 10, 15, &width, &height);
+    memset(entries, 0, sizeof(entries));
+    for (unsigned char i = 0; i < 10; i++) {
+        SkillSortEntry02187a58* sorted = &entries[i];
+        SkillEntry02187a58* skill = func_0208e934(menu + 0xc, kind, i);
+        if (skill) {
+            sorted->id = skill->id;
+            sorted->points = skill->points;
+        }
+    }
+    func_020749ac(entries, 0, 9, 0);
+    for (unsigned char i = 0; i < 10; i++) {
+        palette = 3;
+        SkillEntry02187a58* skill = func_0208e97c(menu + 0xc, (short)entries[i].id);
+        if (skill) {
+            int points = skill->points;
+            if (availablePoints >= points) palette = 15;
+            __clear(pointsText, sizeof(pointsText));
+            sprintf(pointsText, data_ov013_02188e2b, points);
+            int pointsX = 33;
+            if ((unsigned int)points < 100) pointsX += 10;
+            if ((unsigned int)points < 10) pointsX += 10;
+            func_02050678(canvas, (short)pointsX, (short)y, pointsText, 10, (unsigned char)palette, &width, &height);
+            __clear(nameText, sizeof(nameText));
+            sprintf(nameText, data_ov013_02188e56, skill->prefix, skill->name);
+            char* plus = strstr(nameText, data_ov013_02188e61);
+            if (plus) {
+                int length = strlen(plus);
+                __clear(suffix, sizeof(suffix));
+                memcpy(suffix, plus, length + 1);
+                memcpy(plus, data_ov013_02188e64, 18);
+                memcpy(plus + 18, suffix, length + 1);
+            }
+            func_02050678(canvas, 84, (short)y, nameText, 10, (unsigned char)palette, &width, &height);
+            y += 15;
+        }
+    }
+}
+#else
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -128,3 +220,4 @@ extern "C" ARM void func_ov013_02187a58(void* self, void* ctx) {
         }
     }
 }
+#endif

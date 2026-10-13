@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/MessageUpdate.h"
 #include "std_library_functions.h"
 
 #if defined(jpn)

@@ -73,7 +73,6 @@ int RelocateThreeFields(List0206f170*, MonsterDefinition*);
 
 
 
-struct Struct0206ef94;
-extern "C" int func_0206ef94(Struct0206ef94*, char*, int);
+extern "C" char* func_0206ef94(List0206f170*, char*, char*);
 extern "C" void func_0206f01c(List0206f170*, SafeAllocator*, Src0206f170*, unsigned int);
 int GetShortAt0x8(void*);

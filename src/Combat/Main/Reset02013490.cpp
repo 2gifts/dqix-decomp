@@ -1,29 +1,16 @@
 #include <globaldefs.h>
+#include "World/BmdjScriptNode.h"
 #include "std_library_functions.h"
-#include "System/Matrix.h"
-
-struct GrottoTileMapRecord {
-    int unknown0;
-    short unknown4;
-    unsigned char unknown6[9];
-    unsigned char unknownF[5];
-    Matrix3x3 transform;
-    int unknown38;
-    int unknown3c;
-    int unknown40;
-    int unknown44;
-};
 
 // USA: func_02013490
-ARM void Reset02013490(char* storage) {
-    GrottoTileMapRecord* record = reinterpret_cast<GrottoTileMapRecord*>(storage);
-    record->unknown0 = 0;
-    record->unknown38 = 0;
-    record->unknown4 = 0;
-    memset(record->unknown6, 0, sizeof(record->unknown6));
-    memset(record->unknownF, 0, sizeof(record->unknownF));
-    Mat3x3_WriteIdentity(&record->transform);
-    record->unknown3c = 0;
-    record->unknown40 = 0;
-    record->unknown44 = 0;
+ARM void Reset02013490(GrottoTileMapRecord* record) {
+    record->node = NULL;
+    record->angle = 0;
+    record->info.tileID = 0;
+    memset(record->info.directionBitmasks, 0, sizeof(record->info.directionBitmasks));
+    memset(record->info.tilename, 0, sizeof(record->info.tilename));
+    Mat3x3_WriteIdentity(&record->rotation);
+    record->position.x = 0;
+    record->position.y = 0;
+    record->position.z = 0;
 }

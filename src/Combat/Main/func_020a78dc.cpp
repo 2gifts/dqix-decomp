@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 
 struct Vec3 { int x; int y; int z; };
@@ -48,7 +49,6 @@ struct Actor020a78dc {
 
 struct AngleTable { int v[8]; };
 
-int GetField0x3b0Value(GameState*);
 extern "C" char* func_02012fe4();
 extern "C" struct Field4328* _Z21GetField4328_0218d268Pv(void*);
 int IsFlag0x40Set(unsigned short*);
@@ -79,7 +79,7 @@ extern "C" ARM void func_020a78dc(struct Actor020a78dc* self) {
     struct Field4328* f;
     void** list;
 
-    camera = (void*)GetField0x3b0Value(GameState::GetInstance());
+    camera = GetField0x3b0Value(GameState::GetInstance());
     ov = (char*)func_ov017_0218b5b0();
     list = *(void***)(ov + 0x36fc);
     world = func_02012fe4();

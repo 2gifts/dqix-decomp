@@ -1,9 +1,9 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+#include "GameState/Field3b0.h"
 
 extern "C" int _ZNK8Object3D9IsVisibleEv(unsigned char* obj);
 extern "C" int func_02032fdc(void* obj, void* param1, int flag);
-int GetField0x3b0Value(GameState* battleStruct);
 void* GetPtrField0x144(void* obj);
 extern "C" void func_020ca528(void* ptr, void* addr);
 
@@ -34,14 +34,14 @@ ARM int TickActorFlagStateAndDispatch02076bec(unsigned char* obj, void* param1) 
     }
 
     GameState* battleStruct = GameState::GetInstance();
-    int f3b0 = GetField0x3b0Value(battleStruct);
+    void* f3b0 = GetField0x3b0Value(battleStruct);
 
     struct Vec3Block020b3850 localBuf = *(struct Vec3Block020b3850*)(obj + 0x44);
     localBuf.v[1] = *(unsigned int*)(obj + 0x170);
     _ZN12RenderConfig17SetObjectPositionEP8Vector3i(&localBuf);
 
     if (f3b0 != 0) {
-        void* ptr = GetPtrField0x144((void*)f3b0);
+        void* ptr = GetPtrField0x144(f3b0);
         func_020ca528(ptr, &data_0210a0cc);
         data_0210a010.flags &= ~0xa4;
     }

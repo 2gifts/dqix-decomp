@@ -2980,3 +2980,8 @@ src/Combat/Overlay_23/StoreField4IfMatch_021f5788.cpp:
 src/Combat/Overlay_23/NoOpReturnTrue_021f5b94.cpp:
     complete
     .text start:0x021f514c end:0x021f5188
+
+
+src/Combat/Overlay_23/func_ov023_021e66ac.cpp:
+    complete
+    .text start:0x021e6c24 end:0x021e6d64

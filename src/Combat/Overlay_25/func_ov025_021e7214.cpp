@@ -7,9 +7,9 @@ enum { kWorkFlagBase = 0x6000, kWorkFlagOffset = 0xfd5 };
 #endif
 
 #include "GameState/GameState.h"
+#include "GameState/Field3b0.h"
 
 void* GetActiveCombatWork(void);
-int GetField0x3b0Value(GameState* battleStruct);
 extern "C" void _Z33SetField0x7cClearFields0x1ec0x1eePht(unsigned char* obj, short val);
 
 struct Param021e7214 { char pad[8]; short field8; };
@@ -21,7 +21,7 @@ extern "C" ARM int func_ov025_021e7214(struct Param021e7214* p) {
         *(unsigned char*)((char*)w + kWorkFlagBase + kWorkFlagOffset) = 1;
     }
     GameState* bs = GameState::GetInstance();
-    int f = GetField0x3b0Value(bs);
-    _Z33SetField0x7cClearFields0x1ec0x1eePht((unsigned char*)f, p->field8);
+    unsigned char* f = (unsigned char*)GetField0x3b0Value(bs);
+    _Z33SetField0x7cClearFields0x1ec0x1eePht(f, p->field8);
     return 1;
 }

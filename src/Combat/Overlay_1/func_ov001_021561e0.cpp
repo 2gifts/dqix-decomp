@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "World/ZoneChest.h"
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 
@@ -26,14 +27,6 @@ struct CleanupState021561e0 {
     void* allocation;
 };
 struct GameFlag021561e0 { char field_0[0x5cac]; unsigned char active; };
-struct MapNode021561e0 {
-    char field_0[0x2e];
-    unsigned short category : 4;
-    unsigned short flags : 12;
-    char field_30[0x40];
-    MapNode021561e0* next;
-};
-struct AreaState021561e0 { unsigned short id; char field_2[0x6a]; unsigned char entries[0x50]; };
 struct CombatantFlags021561e0 { Object3D object; char field_ac[0xe0]; unsigned int flags; };
 struct EventFlags021561e0 { char field_0[0x8c]; unsigned char flags[1]; };
 struct Entry_02028bd0;
@@ -49,9 +42,8 @@ extern "C" void func_ov001_02154974(void*);
 extern "C" void _Z19TailForward02012da4P14AllocatorUnionPv(AllocatorUnion*, void*);
 unsigned int GetBitsInField0(unsigned int*, unsigned int);
 extern "C" void _Z32DestroyActiveAllocators_0215aa5cv();
-extern "C" AreaState021561e0* func_02012fe4();
+extern "C" void* func_02012fe4();
 void* GetPointerFromArray0x3c(unsigned char*, unsigned int);
-extern "C" int _Z32FindMatchingElementIndex02018bc4PhPv(unsigned char*, void*);
 Entry_02028bd0* GetEntryTableBase();
 Obj02028c64* FindInlineEntryById(Entry_02028bd0*, int);
 extern "C" void _Z18SetFlagBit02028c64P11Obj02028c64i(Obj02028c64*, int);
@@ -102,16 +94,16 @@ extern "C" ARM int func_ov001_021561e0(CleanupState021561e0* state) {
         }
         _Z32DestroyActiveAllocators_0215aa5cv();
     }
-    AreaState021561e0* area = func_02012fe4();
-    MapNode021561e0* node = (MapNode021561e0*)GetPointerFromArray0x3c(area->entries, 2);
+    Zone3D* area = (Zone3D*)func_02012fe4();
+    ZoneFeatures::Opcode6aEntry* node = (ZoneFeatures::Opcode6aEntry*)GetPointerFromArray0x3c((unsigned char*)&area->substruct_6c_, 2);
     while (node) {
-        if (node->flags & 0x200) {
-            int index = _Z32FindMatchingElementIndex02018bc4PhPv((unsigned char*)area, node);
-            Obj02028c64* entry = FindInlineEntryById(GetEntryTableBase(), area->id);
+        if (node->unk_2c.type2.unk_2_high & 0x200) {
+            int index = FindMatchingElementIndex02018bc4(area, node);
+            Obj02028c64* entry = FindInlineEntryById(GetEntryTableBase(), area->currentZoneID_);
             if (entry) _Z18SetFlagBit02028c64P11Obj02028c64i(entry, index);
-            node->flags &= ~0x200;
+            node->unk_2c.type2.unk_2_high &= ~0x200;
         }
-        node = node->next;
+        node = node->pNext;
     }
     if (state->id == 0x730a) {
         EventFlags021561e0* events = func_0205ec34();

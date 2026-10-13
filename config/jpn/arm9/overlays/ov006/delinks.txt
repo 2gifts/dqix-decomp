@@ -420,3 +420,43 @@ src/Combat/Overlay_6/func_ov006_0215dee8.cpp:
 src/Combat/Overlay_6/func_ov006_02155068.cpp:
     complete
     .text start:0x021567b4 end:0x02156abc
+
+
+src/Combat/Overlay_6/ApplyStatusEffectSet_0215fcf0.cpp:
+    complete
+    .text start:0x02161064 end:0x021610c4
+
+
+src/Combat/Overlay_6/Func_0215a33c.cpp:
+    complete
+    .text start:0x0215b940 end:0x0215b97c
+
+
+src/Combat/Overlay_6/SetByte_021571b8_021571b8.cpp:
+    complete
+    .text start:0x021587c0 end:0x021587d4
+
+
+src/Combat/Overlay_6/SetByte_0215728c_0215728c.cpp:
+    complete
+    .text start:0x02158894 end:0x021588a4
+
+
+src/Combat/Overlay_6/SetFlag8_021553a8.cpp:
+    complete
+    .text start:0x02156abc end:0x02156ad0
+
+
+src/Combat/Overlay_6/Something02156b80.cpp:
+    complete
+    .text start:0x0215818c end:0x021581e0
+
+
+src/Combat/Overlay_6/func_ov006_02159db0.cpp:
+    complete
+    .text start:0x0215b2cc end:0x0215b384
+
+
+src/Combat/Overlay_6/func_ov006_021553bc.cpp:
+    complete
+    .text start:0x02156ad0 end:0x02156b68

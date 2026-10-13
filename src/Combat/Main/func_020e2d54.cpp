@@ -1,11 +1,9 @@
 #include <globaldefs.h>
 #include "Graphics/Vector.h"
-#include "Graphics/NSBXX/NSBXX.h"
+#include "Graphics/NSBXX/RenderCommandCallbacks.h"
 #include "Graphics/NSBXX/GeometryFifo.h"
 
 #define REG_GXFIFO (*(volatile unsigned int*)0x04000400)
-struct ModelRef020e2d54 { int field_0; void* model; };
-struct Entry020e2d54 { int field_0; ModelRef020e2d54* resource; unsigned int flags; };
 struct Bone020e2d54 { unsigned short flags; char pad_2[0xa]; int scaleZ; };
 struct Output020e2d54 {
     union {
@@ -26,11 +24,11 @@ static inline int GetVectorZ020e2d54(Vector3fix* vector) { int value = vector->z
 static inline int Divide020e2d54(int a, int b) { int value = fix32_Divide(a, b); return value; }
 
 // USA: func_020e2d54
-extern "C" ARM void func_020e2d54(int mode, Entry020e2d54* entry, Output020e2d54* output) {
+extern "C" ARM void func_020e2d54(int mode, RenderCommandHandler* entry, Output020e2d54* output) {
     Matrix4x4 matrix;
     Vector3fix scale;
     Vector3fix offset;
-    if (!(entry->flags & 0x100)) {
+    if (!(entry->flags_ & 0x100)) {
         SendQueuedDataToGeometryFifo();
         REG_GXFIFO = 0x151110;
         REG_GXFIFO = 0;
@@ -44,7 +42,7 @@ extern "C" ARM void func_020e2d54(int mode, Entry020e2d54* entry, Output020e2d54
         }
         if (mode == 1) {
             SetFields0x0_0x4_0x8(&offset.x, 0, 0, 0);
-            void* model = entry->resource->model;
+            NSBXXInternalModel* model = entry->modelContext_->internalModel_;
             NSBXXNameList* list = (NSBXXNameList*)_Z32GetSubstructAt0x40OrNull020e2fb0Pv(model);
             int index = list ? NSBXXNameList_SearchIndex(list, data_020ee9b8) : -1;
             if (index >= 0) {
@@ -90,5 +88,5 @@ extern "C" ARM void func_020e2d54(int mode, Entry020e2d54* entry, Output020e2d54
         }
         func_020ca430(output, (void*)0x04000400, 0x48);
     }
-    entry->flags |= 0x40;
+    entry->flags_ |= 0x40;
 }

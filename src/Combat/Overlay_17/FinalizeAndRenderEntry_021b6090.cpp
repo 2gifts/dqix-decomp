@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 
 struct Vec3copy0202ec84 { unsigned int v[3]; };
@@ -7,7 +8,6 @@ int ComputeTwoFromVec3_0202ec84(void* obj, struct Vec3copy0202ec84* src, int* ou
 struct StructAt020473c8;
 void RenderFlaggedIndexedEntry(struct StructAt020473c8* obj, int param1);
 
-int GetField0x3b0Value(GameState* battleStruct);
 extern "C" short _Z8fix32sini(int x);
 
 struct Obj021b6090 {
@@ -23,7 +23,7 @@ struct Obj021b6090 {
 // USA: func_ov017_021b6090  (semantic: FinalizeAndRenderEntry_021b6090)
 extern "C" ARM void func_ov017_021b6090(struct Obj021b6090* self) {
     GameState* battle = GameState::GetInstance();
-    void* ptr3b0 = (void*)GetField0x3b0Value(battle);
+    void* ptr3b0 = GetField0x3b0Value(battle);
     struct Vec3copy0202ec84 vecBuf = self->field2c;
 
     if (self->field38 < 0x191e) {

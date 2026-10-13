@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+#include "GameState/Field3b0.h"
 
 struct Camera021e5c68 {
     char pad0[0x70];
@@ -17,7 +18,6 @@ struct Node021e5c68 {
     short combatant;
 };
 
-Camera021e5c68* GetField0x3b0Value(GameState* gs);
 void ApplyVec3Tail(void* obj, int* vec);
 extern "C" Node021e5c68* _Z22GetNodeAtIndex021600f8P12List021600f8i(void* list, int idx);
 extern "C" char* _Z19GetActiveCombatWorkv();
@@ -30,7 +30,7 @@ extern "C" ARM int func_ov025_021e5c68(CameraStep021e5c68* step, void* list) {
  enum {regionalOffset0=0x6fd5};
 #endif
     GameState* gs = GameState::GetInstance();
-    Camera021e5c68* cam = GetField0x3b0Value(gs);
+    Camera021e5c68* cam = (Camera021e5c68*)GetField0x3b0Value(gs);
     if (step->mode == 0) {
         if (cam != 0) ApplyVec3Tail(cam, (int*)&step->offset);
     } else if (step->mode == 2) {

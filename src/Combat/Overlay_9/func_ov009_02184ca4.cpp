@@ -1,36 +1,63 @@
-#include <globaldefs.h>
-
-extern "C" void func_ov009_02184e58(unsigned char *self);
-struct Obj0205d2bc;
-extern "C" void _Z19InitEntries0205d2bcP11Obj0205d2bc(struct Obj0205d2bc*);
-extern "C" void func_0204b088(void* p, int flag);
-extern "C" void func_ov023_021d9a6c(char* obj);
-extern "C" void _Z31RefreshFieldIfFlag4000_021d9d34Pc(char* obj);
-extern "C" void _Z22BuildFieldTag_021d9e60Pc(char* obj);
-extern "C" void func_ov023_021da1dc(unsigned char *self);
-
 // USA: func_ov009_02184ca4
-extern "C" ARM void func_ov009_02184ca4(unsigned char *self) {
-    func_ov009_02184e58(self);
-    signed char step = *(signed char*)(self + 0xc58);
-    if (step == 0 || step == 0xc) return;
-    if (*(int*)(self + 0xd9c) & 0x80) return;
-    _Z19InitEntries0205d2bcP11Obj0205d2bc((struct Obj0205d2bc*)(self + 0x1f8));
-    _Z19InitEntries0205d2bcP11Obj0205d2bc((struct Obj0205d2bc*)(self + 0x2b4));
-    if (*(int*)(self + 0xd9c) & 0x1000) {
-        func_0204b088(self + 0x158, 0);
-        *(int*)(self + 0xd9c) &= ~0x1000;
+// JPN: func_ov009_02185fd0
+#include <globaldefs.h>
+#include "Resource/CharacterCreationUI.h"
+
+struct Obj0205d2bc;
+void InitEntries0205d2bc(Obj0205d2bc*);
+extern "C" void func_0204b088(CreationTileMap*, void*);
+#if defined(jpn)
+extern "C" void func_ov009_02186158(unsigned char*);
+extern "C" void func_ov023_021da264(char*);
+extern "C" void func_ov023_021da5d8(char*);
+extern "C" void func_ov023_021da6f0(char*);
+extern "C" void func_ov023_021da9a8(unsigned char*);
+#else
+extern "C" void func_ov009_02184e58(unsigned char*);
+extern "C" void func_ov023_021d9a6c(char*);
+void RefreshFieldIfFlag4000_021d9d34(char*);
+void BuildFieldTag_021d9e60(char*);
+extern "C" void func_ov023_021da1dc(unsigned char*);
+#endif
+
+extern "C" ARM void func_ov009_02184ca4(unsigned char* storage) {
+    CharacterCreationUI* editor = (CharacterCreationUI*)storage;
+#if defined(jpn)
+    func_ov009_02186158(storage);
+#else
+    func_ov009_02184e58(storage);
+#endif
+    signed char state = editor->state;
+    if (state == 0 || state == 12)
+        return;
+    if (editor->flags & 0x80)
+        return;
+    InitEntries0205d2bc((Obj0205d2bc*)&editor->windows[0]);
+    InitEntries0205d2bc((Obj0205d2bc*)&editor->windows[1]);
+    if (editor->flags & 0x1000) {
+        func_0204b088(&editor->tileMaps[0], 0);
+        editor->flags &= ~0x1000;
     }
-    if (*(int*)(self + 0xd9c) & 0x2000) {
-        func_0204b088(self + 0x1b8, 0);
-        signed char delta = step - 8;
-        if ((unsigned char)delta <= 1) {
-            func_0204b088(self + 0x198, 0);
-        }
-        *(int*)(self + 0xd9c) &= ~0x2000;
+    if (editor->flags & 0x2000) {
+        func_0204b088(&editor->tileMaps[3], 0);
+#if defined(jpn)
+        if (editor->state == 8 || editor->state == 9)
+#else
+        signed char range = state - 8;
+        if ((unsigned char)range <= 1)
+#endif
+            func_0204b088(&editor->tileMaps[2], 0);
+        editor->flags &= ~0x2000;
     }
-    func_ov023_021d9a6c((char*)self);
-    _Z31RefreshFieldIfFlag4000_021d9d34Pc((char*)self);
-    _Z22BuildFieldTag_021d9e60Pc((char*)self);
-    func_ov023_021da1dc(self);
+#if defined(jpn)
+    func_ov023_021da264((char*)storage);
+    func_ov023_021da5d8((char*)storage);
+    func_ov023_021da6f0((char*)storage);
+    func_ov023_021da9a8(storage);
+#else
+    func_ov023_021d9a6c((char*)storage);
+    RefreshFieldIfFlag4000_021d9d34((char*)storage);
+    BuildFieldTag_021d9e60((char*)storage);
+    func_ov023_021da1dc(storage);
+#endif
 }

@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 #include "Graphics/Vector.h"
 
@@ -21,7 +22,6 @@ struct CameraTask021e6ff8 {
     unsigned char mode;
 };
 
-int GetField0x3b0Value(GameState* battleStruct);
 void* GetActiveCombatWork(void);
 unsigned char GetByte_021dcc64_021dcc64(void* obj);
 ListNode021600f8* GetNodeAtIndex021600f8(List021600f8* list, int index);
@@ -35,7 +35,7 @@ extern "C" ARM int func_ov025_021e6ff8(CameraTask021e6ff8* task, List021600f8* l
  enum { regionalOffset=0x6fd5 };
 #endif
     GameState* gs = GameState::GetInstance();
-    int camera = GetField0x3b0Value(gs);
+    void* camera = GetField0x3b0Value(gs);
     void* work = GetActiveCombatWork();
     if (work != NULL) {
         *((unsigned char*)work + regionalOffset) = 1;
@@ -43,7 +43,7 @@ extern "C" ARM int func_ov025_021e6ff8(CameraTask021e6ff8* task, List021600f8* l
             return 1;
         }
     }
-    Vector3fix v = *(Vector3fix*)(camera + 0x70);
+    Vector3fix v = *(Vector3fix*)((char*)camera + 0x70);
     if (task->flags & 1) {
         if (fix32SignedAngleDistance(v.x, task->angle) > 0) {
             fix32_t a = task->angle;

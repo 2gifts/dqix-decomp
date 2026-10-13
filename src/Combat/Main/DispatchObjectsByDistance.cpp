@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 
 #include "Combat/DistanceSort.h"
 #include "GameState/GameState.h"
@@ -7,7 +8,6 @@ struct ListNode02057854;
 int CheckListStableAndField8LtField402057854(ListNode02057854 *node);
 struct S02055080;
 void *GetSubField0x14(S02055080 *source);
-int GetField0x3b0Value(GameState *state);
 
 extern "C" void func_02059a54(void *node);
 

@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 
 extern "C" void func_0202ae18(void);
@@ -21,7 +22,6 @@ void ApplyStatusTickEffect(struct Obj02039df4* obj);
 struct Obj02052ae8;
 extern "C" void _Z29StepValueTowardTarget02052ae8P11Obj02052ae8(struct Obj02052ae8* obj);
 
-int GetField0x3b0Value(GameState* battleStruct);
 int CheckSubstructByte0x7cPositive(signed char* obj);
 extern "C" int _Z24IsCountAtLeast4_0219a370Ph(unsigned char* base);
 int IsField0Null(void** obj);
@@ -138,7 +138,7 @@ extern "C" ARM void func_02037d88(struct Obj02037d88* obj) {
 
     {
         void* bsOrig = GameState::GetInstance();
-        int field3b0 = GetField0x3b0Value((GameState*)bsOrig);
+        void* field3b0 = GetField0x3b0Value((GameState*)bsOrig);
         void* ctx = func_02012fe4();
         int* ptr130 = (int*)obj->field130;
 

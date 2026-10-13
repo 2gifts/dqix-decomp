@@ -17,7 +17,6 @@
 extern "C"
 {
     void* _Z16GetPtrField0x468Pv(GameState*);
-    void _Z18InitStruct02013454Pc(void*);
 
     void* _Z15GetFieldAt0x150Ph(void*);
     void _Z25RunBufferedStream0205e104iiP12StreamHeaderi(const char*, SafeAllocator*, const void*, unsigned int);
@@ -33,14 +32,11 @@ extern "C"
     void func_020c9be0();
     void _Z16ZeroInit020de848Pv(void*);
 
-    void _Z13Reset02013490Pc(void*);
     void _Z22ResetBigStruct02013750Pvi(Zone3D*, bool);
-    void _ZN6Zone3D15ProcessBATSFileEPKvj(Zone3D*, const void*, unsigned);
 
     bool _Z17IsInRange0201b5b0i(int id);
     bool _Z22IsValueInRange0201b5d8i(int id);
 
-    void _ZN12ZoneFeatures5ResetEv(void*);
 }
 
 extern char data_020ef0f0[];
@@ -118,7 +114,7 @@ void Zone3D::SwitchZone(unsigned short newID)
     unknown_834_ = 0;
     unknown_2820_ = 0;
 
-    _ZN12ZoneFeatures5ResetEv(substruct_6c_);
+    substruct_6c_.Reset();
 
     substruct_c_.buffer1[0] = 0;
     substruct_c_.buffer2[0] = 0;
@@ -165,10 +161,10 @@ void Zone3D::SwitchZone(unsigned short newID)
         int width = grotto_.CalculateAndStoreFloorWidth(currentGrottoFloor_23ba_);
         int height = grotto_.CalculateAndStoreFloorHeight(currentGrottoFloor_23ba_);
 
-        grottoTileMapData_420_ = pAllocator_68_->Allocate(0x48 * 256);
+        grottoTileMapData_420_ = (GrottoTileMapRecord*)pAllocator_68_->Allocate(sizeof(GrottoTileMapRecord) * 256);
         for (int i = 0; i < 256; i++)
         {
-            _Z13Reset02013490Pc((char*)grottoTileMapData_420_ + i * 0x48);
+            Reset02013490(&grottoTileMapData_420_[i]);
         }
         grotto_.ClearGenerator(false);
         grotto_.AllocateGenerator(pAllocator_68_, false);

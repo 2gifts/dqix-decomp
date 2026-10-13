@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 
 
 
@@ -127,7 +128,7 @@ struct CombatRoot {
 #endif
     int f29c;
     InfoBlock* info;
-    int f2a4;
+    void* f2a4;
 #if defined(jpn)
     char pad1[0xb94 - 0x224];
     char sub_c18[0xd9c - 0xb94];
@@ -213,7 +214,6 @@ extern "C" void _Z15ClearBitsInWordPjj(int ov, unsigned int bits);
 extern "C" void _Z16GetField02163524Pv(CombatRoot* c);
 extern "C" void func_ov000_0216d2d0(void* p);
 extern "C" void _Z23SetIntField540_0216f700Pvi(void* p, int v);
-extern "C" int _Z18GetField0x3b0ValueP9GameState(int gs);
 extern "C" void _Z28SetAngleAndTrigTable0202e9a4P17AngleTrig0202e9a4i(int p, int v);
 extern "C" void _Z18SetField0x3b0ValueP9GameStatei(int gs, void* p);
 extern "C" void func_020134e0(void* p);
@@ -388,9 +388,9 @@ extern "C" ARM void func_ov000_021643d4(CombatRoot* c) {
     _Z23SetIntField540_0216f700Pvi(c->sub_c18, c->f29c);
     c->fe20 = 0x800;
     c->fe24 = 1;
-    c->f2a4 = _Z18GetField0x3b0ValueP9GameState(gs);
+    c->f2a4 = GetField0x3b0Value((GameState*)gs);
     if (c->f2a4) {
-        _Z28SetAngleAndTrigTable0202e9a4P17AngleTrig0202e9a4i(c->f2a4, 0xf);
+        _Z28SetAngleAndTrigTable0202e9a4P17AngleTrig0202e9a4i((int)c->f2a4, 0xf);
     }
     _Z18SetField0x3b0ValueP9GameStatei(gs, c->sub_c18);
 #if defined(jpn)

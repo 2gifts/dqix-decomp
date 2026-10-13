@@ -1,26 +1,35 @@
+// KEEP-NAME
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
-extern "C" void func_ov012_021893b4(void* obj, int a1, int a2, int a3);
-extern "C" void func_ov012_02189dfc(void* obj, void* buf, int a2);
-extern "C" void func_0205d304(void* a, void* b, int p2, int p3, int p4, int p5, int p6, int p7);
+#if defined(jpn)
+enum { kSelectionOffset = 0x1341, kTextOffset = 0x1344, kTextCapacity = 0x800, kWindowOffset = 0x90, kListCountsOffset = 0x141c };
+extern "C" void func_0205d304(void*, void*, int, int, int, int, int);
+#else
+enum { kSelectionOffset = 0x1371, kTextOffset = 0x1374, kTextCapacity = 0x960, kWindowOffset = 0xac, kListCountsOffset = 0x13c4 };
+extern "C" void func_0205d304(void*, void*, int, int, int, int, int, int);
+#endif
 
-struct BufStruct02189d68 { char pad[0x374]; void* buf; };
+extern "C" void func_ov012_021893b4(void*, int, int, int);
+extern "C" void func_ov012_02189dfc(void*, void*, int);
+
+struct ProfileListCounts {
+    unsigned short available : 5;
+    unsigned short other : 11;
+};
 
 // USA: func_ov012_02189d68
-ARM void SetupBattleTag02189d68(char* base) {
-	unsigned char flag = *(unsigned char*)(base + 0x1000 + 0x371);
-	func_ov012_021893b4(base, flag, 0x10, 1);
-
-	memset(((struct BufStruct02189d68*)(base + 0x1000))->buf, 0, 0x960);
-
-	func_ov012_02189dfc(base, ((struct BufStruct02189d68*)(base + 0x1000))->buf, 0);
-
-	unsigned short raw = *(unsigned short*)(base + 0x1300 + 0xc4);
-	unsigned int t = (unsigned int)raw << 27;
-	t = t >> 27;
-	int flag2 = 0;
-	if (t > 9) flag2 = 1;
-
-	func_0205d304(base + 0xac, ((struct BufStruct02189d68*)(base + 0x1000))->buf, 0, 0, flag2, 1, 0, 0);
+// JPN: func_ov012_0218a804
+ARM void SetupBattleTag02189d68(char* editor) {
+    func_ov012_021893b4(editor, *(unsigned char*)(editor + kSelectionOffset), 16, 1);
+    memset(*(void**)(editor + kTextOffset), 0, kTextCapacity);
+    func_ov012_02189dfc(editor, *(void**)(editor + kTextOffset), 0);
+    int displayMode = 0;
+    if (((ProfileListCounts*)(editor + kListCountsOffset))->available > 9)
+        displayMode = 1;
+#if defined(jpn)
+    func_0205d304(editor + kWindowOffset, *(void**)(editor + kTextOffset), 0, 0, displayMode, 1, 0);
+#else
+    func_0205d304(editor + kWindowOffset, *(void**)(editor + kTextOffset), 0, 0, displayMode, 1, 0, 0);
+#endif
 }

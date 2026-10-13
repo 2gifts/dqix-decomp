@@ -1,6 +1,5 @@
 #if defined(jpn)
 #define R(j,u) (j)
-#define _Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30 func_ov009_02185f5c
 #else
 #define R(j,u) (u)
 #endif
@@ -9,6 +8,7 @@
 #define func_ov009_02184bbc func_ov009_02185ee8
 #endif
 #include "GameState/GameState.h"
+#include "GameState/Field3b0.h"
 #include "Graphics/NSBXX/GeometryFifo.h"
 #include "Graphics/NSBXX/RenderConfig.h"
 #include "System/Graphics.h"
@@ -21,9 +21,8 @@ struct Trans0218bb30
 
 void ResetGxEngineState020c52e8();
 extern "C" void func_020c5414();
-void* GetField0x3b0Value(GameState* state);
 extern "C" void func_0202e0a4(void* camera);
-extern "C" int _Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30(void* obj);
+extern "C" void func_ov009_02184c30(void* obj);
 extern "C" void func_ov009_02184bbc(void* obj);
 extern "C" void func_0203bd08();
 void CleanInvalidateOamBuffers0203bd88();
@@ -43,7 +42,7 @@ extern "C" ARM void func_ov021_0218bb30(Trans0218bb30* self)
         func_0202e0a4(camera);
     RenderConfig::SubmitToFifo();
     SendQueuedDataToGeometryFifo();
-    _Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30(self->f40);
+    func_ov009_02184c30(self->f40);
     func_ov009_02184bbc(self->f40);
     func_0203bd08();
     CleanInvalidateOamBuffers0203bd88();

@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 #include "Resource/GameResources.h"
 
@@ -16,7 +17,6 @@ extern "C" int _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(void* o
 struct StructAt020473c8;
 void RenderFlaggedIndexedEntry(struct StructAt020473c8* obj, int param1);
 
-int GetField0x3b0Value(GameState* battleStruct);
 extern "C" short _Z8fix32sini(int x);
 
 struct Obj021bfc40 {
@@ -61,7 +61,7 @@ extern "C" ARM int func_ov017_021bfc40(struct Obj021bfc40* self) {
     }
 
     GameState* state = GameState::GetInstance();
-    void* ptr3b0 = (void*)GetField0x3b0Value(state);
+    void* ptr3b0 = GetField0x3b0Value(state);
     struct Vec3copy0202ec84 vecBuf = self->pos;
 
     if (self->angle < 0x191e) {

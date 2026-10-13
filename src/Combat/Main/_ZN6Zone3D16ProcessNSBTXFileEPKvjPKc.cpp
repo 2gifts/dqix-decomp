@@ -7,13 +7,11 @@
 extern "C" void _Z25RestorePairTables0207df90Pc(char*);
 extern "C" void _Z24BackupPairTables0207dfacPc(char*);
 
-// KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
 // USA: func_0201445c
-extern "C" ARM bool _ZN6Zone3D16ProcessNSBTXFileEPKvjPKc(
-    Zone3D* zone, const void* pFile, unsigned int fileSize, const char* pName)
+ARM bool Zone3D::ProcessNSBTXFile(const void* pFile, unsigned int fileSize, const char* pName)
 {
-    SafeAllocator* pAlloc = zone->pAllocator_68_;
-    char* pGraph = (char*)zone->unknown_ptr_50_;
+    SafeAllocator* pAlloc = pAllocator_68_;
+    char* pGraph = (char*)unknown_ptr_50_;
     unsigned int nSize;
     void* pRaw;
     Zone3D::Model3DListNode* pNode =
@@ -28,8 +26,8 @@ extern "C" ARM bool _ZN6Zone3D16ProcessNSBTXFileEPKvjPKc(
         pNode->filename_ = (char*)pAlloc->Allocate(strlen(pName) + 1);
         if (pNode->filename_) {
             strcpy((char*)pNode->filename_, pName);
-            pNode->pNext_ = zone->firstModel_418_;
-            zone->firstModel_418_ = pNode;
+            pNode->pNext_ = firstModel_418_;
+            firstModel_418_ = pNode;
             pRaw = DecompressLZ77FileIntoScratchSpace(*pAlloc, pFile, nSize);
             if (pRaw) {
                 _Z25RestorePairTables0207df90Pc(pGraph);
@@ -40,8 +38,8 @@ extern "C" ARM bool _ZN6Zone3D16ProcessNSBTXFileEPKvjPKc(
 
                 NSBXXTex* pTex = pModel->GetTEX0();
                 if (pTex) {
-                    zone->textureImageMemory_ += NSBXX_Tex_GetBlock1Length(pTex);
-                    zone->texturePaletteMemory_ += NSBXX_Tex_GetBlock4Length(pTex);
+                    textureImageMemory_ += NSBXX_Tex_GetBlock1Length(pTex);
+                    texturePaletteMemory_ += NSBXX_Tex_GetBlock4Length(pTex);
                 }
                 bool bCopied = false;
                 if (pTex) {

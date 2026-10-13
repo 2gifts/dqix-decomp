@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
 
@@ -6,7 +7,6 @@ extern "C" void* func_02057924(void);
 extern "C" void func_02057f00(void* obj, int value);
 void* GetActiveCombatWork(void);
 extern "C" void* func_ov000_02160f14(void* obj);
-int GetField0x3b0Value(GameState* battleStruct);
 void SetField0x3b0Value(GameState* battleStruct, int value);
 void ClearCombatantSlot(GameState* battleStruct, int id);
 extern "C" void _ZN8Object3D7DestroyEv(unsigned char* obj);

@@ -5,8 +5,8 @@
 #endif
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+#include "GameState/Field3b0.h"
 
-int GetField0x3b0Value(GameState* battleStruct);
 extern "C" void _Z20AdvanceActor020a20d8Pv(void* actor);
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
 extern unsigned short data_02114e30;
@@ -42,9 +42,9 @@ extern "C" ARM void func_ov015_02190d7c(struct S02190d7c* obj) {
     if (bs == 0) {
         return;
     }
-    int f3b0 = GetField0x3b0Value(bs);
+    void* f3b0 = GetField0x3b0Value(bs);
     if (f3b0 != 0) {
-        _Z20AdvanceActor020a20d8Pv((void*)f3b0);
+        _Z20AdvanceActor020a20d8Pv(f3b0);
     }
 
     struct ListNode02190d7c* node = obj->list;

@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "World/Zone3D.h"
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Resource/Brightness.h"
@@ -6,7 +7,6 @@
 #include "World/Object3D.h"
 #include "std_library_functions.h"
 
-struct Obj020196fc;
 struct Struct02033b88;
 struct EntryList_203dce4;
 struct Container0204039c;
@@ -17,27 +17,12 @@ struct Scene02155dd0 {
     unsigned short fieldA;
 };
 
-struct Area020196fc {
-    unsigned short field0;
-};
 
-struct Elem02155dd0 {
-    char pad0[2];
-    unsigned short flags;
-    char pad4[0x6c];
-};
-
-struct Node02155dd0 {
-    char pad0[0x14];
-    int count;
-    char pad18[0x2c];
-    Elem02155dd0* elems;
-};
 
 extern "C" GameResources* func_ov017_0218b5b0();
 char* GetFieldIfFlag4(char* obj);
 void* GetFieldPtrAt0x5ca4(void* obj);
-extern "C" Obj020196fc* func_02012fe4();
+extern "C" void* func_02012fe4();
 extern "C" char* _Z26GetGlobalField0x1c020421a0v();
 void* GetGlobalPtr021075f4(void);
 extern "C" void* _Z17EmptyStub0203d004v(void* p);
@@ -64,7 +49,6 @@ extern "C" void _Z15ClearBitsInWordPjj(int p, unsigned int bits);
 extern "C" void func_ov028_021d9714();
 extern "C" void _Z19PopStack1AndTriggeri(int v);
 extern "C" void* func_0205ec34();
-extern "C" Obj020196fc* _Z22GetNodeAtDepth020196fcP11Obj020196fci(Obj020196fc* obj, int depth);
 extern "C" int _Z18TestBitInByteArrayiPhi(int p, unsigned char* arr, int bit);
 extern "C" void _Z20SetByte0xbeShiftPrevP13Bytes02033b88i(Struct02033b88* obj, int val);
 extern "C" void _Z18ClearCombatantSlotP9GameStatei(GameState* gs, int id);
@@ -89,7 +73,7 @@ extern "C" ARM unsigned short func_ov001_02155dd0(Scene02155dd0* self) {
         int i;
         int* ptr6;
         GameResources* res2;
-        Obj020196fc* area;
+        Zone3D* area;
         int k;
         int j;
         char* hud;
@@ -98,7 +82,7 @@ extern "C" ARM unsigned short func_ov001_02155dd0(Scene02155dd0* self) {
     gs = GameState::GetInstance();
     hud = GetFieldIfFlag4((char*)gs);
     res2 = func_ov017_0218b5b0();
-    area = func_02012fe4();
+    area = (Zone3D*)func_02012fe4();
     globalA = _Z26GetGlobalField0x1c020421a0v();
     loader = BackgroundLoader::GetInstance();
     ptr6 = (int*)GetFieldPtrAt0x5ca4(gs);
@@ -107,7 +91,7 @@ extern "C" ARM unsigned short func_ov001_02155dd0(Scene02155dd0* self) {
         obj = gs->GetMaybeWanderingMonsterByIndex(i);
         if (obj != 0) {
             obj->obj3D_.RemoveAnimationPackageByID(3);
-            unsigned short af = ((Area020196fc*)area)->field0;
+            unsigned short af = area->currentZoneID_;
             if (af == obj->obj3D_.GetField06()) {
                 obj->obj3D_.MakeVisible();
             }
@@ -178,12 +162,12 @@ extern "C" ARM unsigned short func_ov001_02155dd0(Scene02155dd0* self) {
     DISPCNT = (DISPCNT & ~0x1f00) | 0x100;
 
     void* events = func_0205ec34();
-    Node02155dd0* node = (Node02155dd0*)_Z22GetNodeAtDepth020196fcP11Obj020196fci(func_02012fe4(), 0);
-    Elem02155dd0* e;
-    int count = node->count;
+    BmdjScriptNode* node = GetNodeAtDepth020196fc((Zone3D*)func_02012fe4(), 0);
+    BmdjSceneElement* e;
+    int count = node->scriptState.elementCount;
     if (node != 0) {
         for (int n = 0; n < count; n++) {
-            e = &node->elems[n];
+            e = &node->elements[n];
             if (_Z18TestBitInByteArrayiPhi((int)events, (unsigned char*)((char*)events + 0x45b), n & 0xff) != 0) {
                 if (e != 0) {
                     e->flags &= ~4;

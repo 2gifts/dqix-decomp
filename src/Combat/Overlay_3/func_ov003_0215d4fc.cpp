@@ -1,6 +1,7 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 #include <globaldefs.h>
+#include "Combat/EntryGetterTypes.h"
 
 struct Scene {
     char pad0[0x64];
@@ -57,7 +58,6 @@ extern "C" unsigned char *_Z17GetPtrField0x2a04P9GameState(GameState *);
 extern "C" void *_Z21GetFieldByKey020e0434P17Container020e0310i(void *, int);
 extern "C" void func_ov003_0215cab0(Scene *, void *);
 extern "C" void *_Z29FindEntryPointerByKey0203df78Pvi(void *, int);
-extern "C" int _Z30GetOffset0x54FromFallbackChainP14Struct02040a20(void *);
 extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(void *, int);
 extern "C" void _Z30DispatchContextByState0209c678P13Actor0209c678i(void *, int);
 extern "C" void _Z13SetBrightnessP13GameResourcesii(void *, int, int);
@@ -128,7 +128,7 @@ extern "C" ARM void func_ov003_0215d4fc(Scene *self) {
         self->b3bb = 2;
         void *e = _Z29FindEntryPointerByKey0203df78Pvi(b, (*(Ent **) ((char *) func_ov017_0218b5b0() + 0x3000 + 0x710))->key);
         if (e != 0) {
-            self->w3f8 = _Z30GetOffset0x54FromFallbackChainP14Struct02040a20(e);
+            self->w3f8 = GetOffset0x54FromFallbackChain((Entry_203dce4*)e);
         }
         self->state = self->state + 1;
     }

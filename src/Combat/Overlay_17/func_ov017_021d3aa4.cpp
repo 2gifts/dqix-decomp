@@ -5,13 +5,13 @@ enum { RegionOffsetb28 = 0xb28 };
 #endif
 
 #include <globaldefs.h>
+#include "Combat/LootPointEvent.h"
 
 struct SearchStruct0202c1a4;
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
 extern "C" void func_0208e0a8(void);
 extern "C" int func_0202c508(void* obj);
 ARM int* GetNegativeEntry(char* obj, int index);
-extern "C" void _Z27EnqueueEventTag183_021d38f8hhhhPi(unsigned char a0, signed char a1, unsigned char a2, unsigned char a3, int* p);
 extern "C" int func_ov017_021d3950(void* p);
 
 struct Evt021d3aa4 {
@@ -20,7 +20,7 @@ struct Evt021d3aa4 {
     signed char idx;
     unsigned char field6;
     unsigned char field7;
-    int field8;
+    LootPointState state;
 };
 
 // USA: func_ov017_021d3aa4
@@ -32,9 +32,9 @@ extern "C" ARM void func_ov017_021d3aa4(int p0, struct Evt021d3aa4* evt, char* b
         if (evt->mode != 1) return;
 
         if (func_ov017_021d3950(&evt->mode) != 0) {
-            _Z27EnqueueEventTag183_021d38f8hhhhPi(1, p0, evt->field6, evt->field7, &evt->field8);
+            EnqueueEventTag183_021d38f8(1, p0, evt->field6, evt->field7, &evt->state);
         } else {
-            _Z27EnqueueEventTag183_021d38f8hhhhPi(2, p0, evt->field6, evt->field7, &evt->field8);
+            EnqueueEventTag183_021d38f8(2, p0, evt->field6, evt->field7, &evt->state);
         }
         return;
     }
@@ -43,7 +43,7 @@ extern "C" ARM void func_ov017_021d3aa4(int p0, struct Evt021d3aa4* evt, char* b
 
     if (evt->mode == 0) {
         int* e = GetNegativeEntry(buf, evt->field7);
-        if (e) *e = evt->field8;
+        if (e) *e = evt->state.word;
     } else if (evt->mode == 1) {
         signed char cur = GetSearchStructCurrentArrEntry(search);
         if (evt->idx == cur) {

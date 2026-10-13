@@ -1,10 +1,10 @@
 #include <globaldefs.h>
+#include "Combat/SearchEntry.h"
 
 extern "C" void* func_0202ae18(void* obj);
 extern "C" void* func_ov017_0218b5b0(void);
 int CheckField0NonZero(int* obj);
 struct SearchStruct;
-void* GetEntryBySignedByteIndex(struct SearchStruct* obj, int value);
 
 // USA: func_02034340
 ARM int HasHighBit14SetForField4Entry02034340(void* obj) {

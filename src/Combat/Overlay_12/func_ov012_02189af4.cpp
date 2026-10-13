@@ -1,3 +1,79 @@
+#if defined(jpn)
+#include <globaldefs.h>
+#include "GameState/GameState.h"
+
+struct TableA68;
+struct UnkStruct0205c508;
+struct StoreStruct;
+struct ProfileNavigation {
+    int count;
+    int pages;
+    int columns;
+    int rows;
+    int mode;
+    int page;
+};
+
+struct ProfileWindowNavigation {
+    unsigned char unknown[0x54];
+    ProfileNavigation navigation;
+    ProfileNavigation* GetNavigation() { return &navigation; }
+};
+
+extern "C" void _Z22AppendFrameTag02041c08Pciiiii(char*, int, int, int, int, int);
+int AppendCursorTag(char*, int);
+extern "C" void* _Z26GetGlobalField0x1c020421a0v();
+extern "C" void _Z26ComputeProductSums0205c508P17UnkStruct0205c508PiS1_(UnkStruct0205c508*, int*, int*);
+int AppendString02042058(char*, const char*);
+const char* FindEntryByKey(TableA68*, int);
+int AppendNameTag(char*, int, const char*);
+int AppendXTag(char*, int);
+extern "C" void func_02046380(void*);
+void StoreInArray0x8b0(StoreStruct*, int, int);
+void SetByteInRange(unsigned char*, int, unsigned char);
+void SetByteAtIndex(unsigned char*, int, unsigned char);
+extern "C" void func_02042428(char*, int);
+extern "C" void func_0202ae18();
+
+// JPN: func_ov012_0218a50c
+extern "C" ARM void func_ov012_02189af4(char* editor, char* text, int hidden) {
+    if (!text) return;
+    int selection = *(int*)(editor + 0x1434) & 15;
+    if (hidden)
+        _Z22AppendFrameTag02041c08Pciiiii(text, selection, 8, 5, 5, 5);
+    AppendCursorTag(text, selection);
+    void* messages = _Z26GetGlobalField0x1c020421a0v();
+    int i;
+    int end;
+    int right;
+    ProfileNavigation* navigation = ((ProfileWindowNavigation*)(editor + 0x90))->GetNavigation();
+    int page = navigation->page;
+    int pages = navigation->pages;
+    int first, last;
+    _Z26ComputeProductSums0205c508P17UnkStruct0205c508PiS1_((UnkStruct0205c508*)navigation, &first, &last);
+    end = first + (last + 1 - first) / 2;
+    for (i = first; i < end; ++i) {
+        if (i != first)
+            AppendString02042058(text, *(const char**)(editor + 0x1348));
+        AppendNameTag(text, i & 15, FindEntryByKey((TableA68*)(editor + 0x1314), (short)(i + 0x2774)));
+        right = i + (last + 1 - first) / 2;
+        if (right < 47) {
+            AppendXTag(text, 0x56);
+            AppendNameTag(text, right & 15, FindEntryByKey((TableA68*)(editor + 0x1314), (short)(right + 0x2774)));
+        }
+    }
+    func_02046380(messages);
+    StoreInArray0x8b0((StoreStruct*)messages, 0, page + 1);
+    StoreInArray0x8b0((StoreStruct*)messages, 1, pages);
+    SetByteInRange((unsigned char*)messages, 0, 2);
+    SetByteInRange((unsigned char*)messages, 1, 2);
+    SetByteAtIndex((unsigned char*)messages, 0, 1);
+    SetByteAtIndex((unsigned char*)messages, 1, 0);
+    func_02042428(text, 8);
+    AppendString02042058(text, FindEntryByKey((TableA68*)(editor + 0x1314), 0x6a));
+}
+
+#else
 #include <globaldefs.h>
 
 struct UnkStruct0205c508;
@@ -73,3 +149,5 @@ extern "C" ARM void func_ov012_02189af4(ProfileEditor02189af4* self, char* text,
     }
     func_ov012_021842a0(self, 3, shadow, color);
 }
+
+#endif

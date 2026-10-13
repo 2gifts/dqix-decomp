@@ -32,16 +32,6 @@ struct Ctx02094030 {
     unsigned char flags;
 };
 
-struct PartyNameCache {
-#if defined(jpn)
-    unsigned char unknown0[0x413c];
-    char names[4][12];
-#else
-    unsigned char unknown0[0x435c];
-    char names[4][48];
-#endif
-};
-
 extern "C" void _Z19ClearRegion02093980Pc(char* obj);
 void CopyRecord(struct CopyableRecord* dst, struct CopyableRecord* src);
 int ClassifyByTenThousands(int x);
@@ -53,7 +43,7 @@ extern "C" int func_0202c540(void* obj);
 extern "C" ARM int func_02094030(struct Ctx02094030* queue, int requestId, int unused2, int slot) {
     GameObject* combatant = GameState::GetInstance()->GetPartyMemberByIndex(slot);
     void* ctx = func_0202ae18();
-    PartyNameCache* cachedNames = reinterpret_cast<PartyNameCache*>(func_ov017_0218b5b0());
+    GameResources* cachedNames = func_ov017_0218b5b0();
 
     if (func_0202c540(ctx) != 0) {
         if (requestId == 10000) return 1;
@@ -64,7 +54,7 @@ extern "C" ARM int func_02094030(struct Ctx02094030* queue, int requestId, int u
     _Z19ClearRegion02093980Pc((char*)request);
 
     if (combatant == 0 || requestId == 3) {
-        char* name = cachedNames->names[slot];
+        char* name = cachedNames->partyNames[slot];
         if (name[0] == 0) return 1;
         sprintf(request->payload.data, name);
     } else if (combatant != 0) {

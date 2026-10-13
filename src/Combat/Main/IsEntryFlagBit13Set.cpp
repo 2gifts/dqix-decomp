@@ -1,9 +1,9 @@
 #include <globaldefs.h>
+#include "Combat/SearchEntry.h"
 
 struct SearchStruct;
 int TestBitBySignedByteIndex(struct SearchStruct* obj, int value);
 unsigned short GetGlobalHalf0x0(void);
-void* GetEntryBySignedByteIndex(struct SearchStruct* obj, int value);
 
 // USA: func_0202be70
 ARM int IsEntryFlagBit13Set(struct SearchStruct* obj, int value) {

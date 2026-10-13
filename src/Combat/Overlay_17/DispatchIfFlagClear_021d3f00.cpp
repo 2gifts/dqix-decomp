@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Combat/ActorAction.h"
 #include "GameState/GameState.h"
 
 extern "C" void* func_0202ae18(void);
@@ -7,13 +8,6 @@ int TestFlagBitAt0xe(struct SearchStruct* s, int idx);
 void* GetData02100044(void);
 unsigned char GetField0x397cValue(GameState* bs);
 extern "C" void func_0205e330(void* a, void* b, int c);
-
-struct Obj021d3f00 {
-    char pad0;
-    unsigned char b1;
-    char pad2;
-    unsigned char b3;
-};
 
 struct Sub021d3f00 {
     unsigned char fA;
@@ -32,7 +26,7 @@ struct Msg021d3f00 {
 };
 
 // USA: func_ov017_021d3f00  (semantic: DispatchIfFlagClear_021d3f00)
-extern "C" ARM void func_ov017_021d3f00(struct Obj021d3f00* obj, unsigned char b, unsigned char c) {
+extern "C" ARM void func_ov017_021d3f00(SubBlock02038508* obj, unsigned char b, unsigned char c) {
     if (!obj) return;
     GameState* bs = GameState::GetInstance();
     void* search = func_0202ae18();
@@ -42,11 +36,11 @@ extern "C" ARM void func_ov017_021d3f00(struct Obj021d3f00* obj, unsigned char b
     struct Msg021d3f00 msg;
     struct Sub021d3f00* sub = &msg.sub;
     msg.tag = 0x3b;
-    sub->fA = obj->b1;
-    sub->fB = obj->b3;
+    sub->fA = obj->command;
+    sub->fB = obj->reversed;
     sub->nibLo = b;
     sub->nibHi = c;
-    sub->fWord = *(int*)((char*)obj + 0x48);
+    sub->fWord = obj->unknown48;
     sub->fResult = GetField0x397cValue(bs);
     func_0205e330(p, &msg, 0);
 }

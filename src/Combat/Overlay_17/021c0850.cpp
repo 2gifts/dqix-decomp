@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 
 #if defined(jpn)
 enum { kSceneHeapSize = 0x1e384, kSceneObjectSize = 0xb44, kGlobalColorOffset = 0x8c, kGlobalWordOffset = 0x608, kGlobalStateOffset = 0x228, kGlobalFlagOffset = 0x236 };
@@ -90,7 +91,7 @@ struct SceneSwap021c0850 {
     int word;
     int field4;
     int field8;
-    int fieldB8;
+    void* fieldB8;
     unsigned char bbc;
 };
 
@@ -120,7 +121,6 @@ unsigned short GetFieldAt0x7e(S_e830* obj);
 int GetWord(unsigned int* obj);
 int GetField4(unsigned int* obj);
 int GetField8(unsigned int* obj);
-int GetField0x3b0Value(GameState* gs);
 void SetField0x3b0Value(GameState* gs, int v);
 void LockStagedTextureVRAMCopying(void);
 void UnlockStagedTextureVRAMCopying(void);
@@ -354,7 +354,7 @@ extern "C" ARM void func_ov017_021c0850(SceneSwap021c0850* self) {
         SetBitsInField4((unsigned int*)res, self->field4);
         SetBitsInField8((unsigned int*)res, self->field8);
         _Z35ProcessCombatantsIfFlagged_0218f79cPv(res);
-        SetField0x3b0Value(gs, self->fieldB8);
+        SetField0x3b0Value(gs, (int)self->fieldB8);
         GameState* state = GameState::GetInstance();
         int index = 0x70;
         for (int i = 0; i < 0x30; i++) {

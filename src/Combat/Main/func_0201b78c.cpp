@@ -16,7 +16,7 @@ int Vector3fix_Distance(const Vector3fix*, const Vector3fix*);
 // USA: func_0201b78c
 extern "C" ARM ProximityNode0201b78c* func_0201b78c(Zone3D* zone, const Vector3fix* input) {
     ProximityNode0201b78c* preferred = 0;
-    ProximityNode0201b78c* node = (ProximityNode0201b78c*)GetPointerFromArray0x3c((unsigned char*)zone->substruct_6c_, 11);
+    ProximityNode0201b78c* node = (ProximityNode0201b78c*)GetPointerFromArray0x3c((unsigned char*)&zone->substruct_6c_, 11);
     Vector3fix position;
     position.x = input->x * 6;
     position.y = input->y * 6;

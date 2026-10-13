@@ -1,4 +1,7 @@
 #include <globaldefs.h>
+#include "World/ZoneChest.h"
+#include "Combat/ActorAction.h"
+#include "GameState/Overlay17DayCycle.h"
 
 #if defined(jpn)
 enum { Field23ec = 0x240c, Field840 = 0x860, Field44ae = 0x41fe, Field44ac = 0x41fc, Field42e9 = 0x40c9, Field3700 = 0x34f0, Field3704 = 0x34f4, Field36f8 = 0x34e8, Field3a9c = 0x388c, Field281f = 0x285f, Field3734 = 0x3524, Field23b8 = 0x23d8, Field1840 = 0x1860, Field36fc = 0x34ec, Field5cac = 0x5a4c, Field3718 = 0x3508, Field36d0 = 0x34c0, Field7f60 = 0x7c8c, Field2786 = 0x27c6, Field2784 = 0x27c4, Field2788 = 0x27c8, Field2774 = 0x27b4, Field2780 = 0x27c0, Field44b2 = 0x4202, WarpLow = 0xfe, WarpHigh = 0x4100 };
@@ -123,20 +126,6 @@ struct HdrFlags4 {
 	unsigned char rest : 7;
 };
 
-struct GrottoRun {
-	unsigned short mapId;
-	unsigned short subId;
-	unsigned char unk4[4];
-	unsigned char* header;
-#if defined(jpn)
-	unsigned char unkc[0x48];
-#else
-	unsigned char unkc[0x28];
-#endif
-	short f34;
-	unsigned char unk36[0x3ee];
-	int f424;
-};
 
 struct GrottoSlot {
 	unsigned char unk0[2];
@@ -206,20 +195,20 @@ struct WorkLo {
 	void* buf;
 	struct Msg021b6e70 msgF63;
 	struct Msg021b6e70 msgF64;
-	struct Vec3 warpVec;
-	struct Vec3 memberVec;
-	struct Vec3 fieldVec;
-	struct Vec3 deltaVec;
+	WrappedVector3fix warpVec;
+	WrappedVector3fix memberVec;
+	WrappedVector3fix fieldVec;
+	WrappedVector3fix deltaVec;
 };
 
 struct WorkHi {
-	struct Vec3 actorVec;
+	WrappedVector3fix actorVec;
 	signed char slot;
 	unsigned char unk79[0x2b];
 	struct NodeScratch node;
 	struct Msg021b6e70 msg;
-	struct Vec3 entryVec;
-	struct Vec3 baseVec;
+	WrappedVector3fix entryVec;
+	WrappedVector3fix baseVec;
 	char name[0x10];
 	struct NodeScratch turnNode;
 };
@@ -250,7 +239,7 @@ extern "C" void* _ZN9GameState14GetProtagonistEv(struct BattleStruct* battle);
 extern "C" struct Combatant0219e384* _ZN9GameState20GetUnknownGameObjectEv(struct BattleStruct* battle);
 extern "C" struct Field3f8* _Z20GetField0x3f8AddressP9GameState(struct BattleStruct* battle);
 extern "C" struct BackgroundLoader* _ZN16BackgroundLoader11GetInstanceEv(void);
-extern "C" struct GrottoRun* func_02012fe4(void);
+extern "C" void* func_02012fe4(void);
 void* GetPtrField0x468(void* battle);
 struct InlineEntry* GetEntryTableBase(void);
 extern "C" void* func_0205ec34(void);
@@ -259,7 +248,6 @@ extern "C" struct SearchStruct* func_0202ae18(void);
 extern "C" char* _ZN24LootableContainerManager15GetMainInstanceEv(void);
 void* GetDataPtr02114e04_020d6c00(void);
 extern "C" int* _ZN15LightingManager11GetInstanceEv(void);
-unsigned char* GetFieldPtrAt0x26c(void* obj);
 int GetByte0x26c(char* obj);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 extern "C" void func_02097cac(void* obj);
@@ -315,7 +303,7 @@ extern "C" unsigned char* _ZN17ActiveGrottoClass15GetDetailedDataEv(void* self);
 extern "C" unsigned short _ZNK23DetailedTreasureMapData17LegacyBossMapData26MaybeGetCurrentAlternateIDEv(void* self);
 extern "C" void _Z16AppendNodeToTailP16TailList020469b4P16TailNode020469b4(void* list, void* node);
 extern "C" int func_0202c508(void* search);
-extern "C" void func_ov017_021c4854(struct GrottoRun* run, int a, int b, int* vec, int c, int d);
+extern "C" void func_ov017_021c4854(Zone3D* run, int a, int b, int* vec, int c, int d);
 extern "C" void* _ZN9GameState21GetPartyMemberByIndexEi(struct BattleStruct* battle, int index);
 extern "C" int _Z23GetByteFieldMasked0x1cePvi(void* obj, int mask);
 extern "C" void func_ov017_021bd4d0(void* obj, unsigned char index, int a, int b);
@@ -328,11 +316,9 @@ extern "C" int _ZN16BackgroundLoader13QueueLoadFileEPKcP13SafeAllocator(struct B
 extern "C" int _ZN16BackgroundLoader13GetTaskStatusEi(struct BackgroundLoader* self, int id);
 extern "C" int _ZN16BackgroundLoader21GetDetailedTaskStatusEi(struct BackgroundLoader* self, int id);
 extern "C" void _ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(struct BackgroundLoader* self, int id, void** buf, unsigned int* size);
-extern "C" void func_0201afd0(struct GrottoRun* run, void* buf, unsigned int size, int a);
 extern "C" int sprintf(char* dst, const char* fmt, ...);
 extern "C" char* strcpy(char* dst, const char* src);
 extern "C" void _ZN24LootableContainerManager18LoadZoneContainersEPKvjPKcP13SafeAllocator(char* region, void* buf, unsigned int size, char* name, int a);
-extern "C" void func_0201647c(struct GrottoRun* run);
 extern "C" void _ZN16BackgroundLoader10RemoveTaskEi(struct BackgroundLoader* self, int id);
 extern "C" int _Z19IsIdInRange020981e4ii(void* obj, int id);
 extern "C" int _Z17IsIdInSet02098210ii(void* obj, int id);
@@ -347,8 +333,6 @@ extern "C" void _Z23ClearFieldAt0xc0208f3a8P11Obj0208f3a8(void* obj);
 extern "C" void func_0206461c(void* a, void* b);
 void* GetGlobal02109418(void);
 extern "C" void func_02095b30(void* obj, int v);
-extern "C" void _Z31SetElementFlagsFromMask02013cb0P9S02013cb0j(struct GrottoRun* run, unsigned int mask);
-extern "C" void _Z33UpdateFlaggedType2Entries02018c74Phj(struct GrottoRun* run, unsigned int mask);
 extern "C" void func_02097ec8(void* obj);
 extern "C" void func_ov017_021a2fa0(void* ov);
 extern "C" void func_ov017_0219e180(void* ov, int mapId);
@@ -385,8 +369,6 @@ extern "C" void _Z29ConfigureVec3AndApply020a2800P14Struct020A2800(void* obj);
 extern "C" void _Z25InitVec3ParamsVariant8b33Pv(void* obj);
 extern "C" void _Z33SetVec3ComponentsAndApply020a2868P14Struct020a2868(void* obj);
 extern "C" int _Z13GetField0x218P9S020a3570(void* obj);
-extern "C" void Vector3fix_Subtract(struct Vec3* a, struct Vec3* b, struct Vec3* c);
-extern "C" void Vector3fix_Add(struct Vec3* a, struct Vec3* b, struct Vec3* c);
 extern "C" void _Z34CopyVec3ToField0x10AndCall0202e5d8PcPi(void* obj, int* vec);
 extern "C" void func_ov017_021982ac(void* ov);
 extern "C" void _Z22ApplyVecFromField0x246Pc(void* obj);
@@ -413,14 +395,12 @@ extern "C" int _ZNK8Object3D9IsVisibleEv(void* obj);
 extern "C" int _ZNK8Object3D10GetField06Ev(void* obj);
 int TrySetMode02076ccc(void* obj, int mode);
 extern "C" void func_020a72ac(void* obj, unsigned char v);
-extern "C" void VectorizedMemset(void* dst, int v, int size);
 void* GetGlobal02109030(void);
 extern "C" void func_02094030(void* obj, int a, int b, int c);
 
 extern int data_02109bf4;
 extern int data_02108760;
 extern const char data_ov017_021d75fc[];
-extern int data_ov017_021d75b8;
 extern const char data_ov017_021d7619[];
 extern const char data_ov017_021d761e[];
 extern char data_0211e33c[];
@@ -433,7 +413,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 	struct Combatant0219e384* actor = _ZN9GameState20GetUnknownGameObjectEv(battle);
 	struct Field3f8* fld = _Z20GetField0x3f8AddressP9GameState(battle);
 	struct BackgroundLoader* loader = _ZN16BackgroundLoader11GetInstanceEv();
-	struct GrottoRun* run = func_02012fe4();
+	Zone3D* run = (Zone3D*)func_02012fe4();
 	char* runSub = (char*)run + Field23ec;
 	int runContext = (int)run + Field840;
 	void* table468 = GetPtrField0x468(battle);
@@ -448,8 +428,8 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 	struct WorkLo workLo;
 
 	if (self->state == 0) {
-		unsigned char* byte26c = GetFieldPtrAt0x26c(actor);
-		if (GetByte0x26c((char*)actor) != 0 && byte26c[1] != 2 && fld->f6c != 9999) {
+		SubBlock02038508* byte26c = GetFieldPtrAt0x26c(actor);
+		if (GetByte0x26c((char*)actor) != 0 && byte26c->command != 2 && fld->f6c != 9999) {
 			if (fld->f67 != 0) {
 				_ZN8Vector3iaSERKS_(fld->vec10, actor->vec44);
 			}
@@ -468,10 +448,10 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 
 			func_02097cac((void*)runContext);
 			_Z34HandleGrottoTurnTransition0208f944P11Obj0208f944(runSub);
-			runMapId = run->mapId;
+			runMapId = run->currentZoneID_;
 			ConfigureFieldVec3ForDateWindow(ov, fld->mapId, runMapId);
 			found = _Z22FindEntryByHalfwordKeyP11SearchTablei(table468, fld->mapId);
-			hdr = run->header;
+			hdr = (unsigned char*)run->pUnknownStruct_8_;
 			self->active = 1;
 			if (found != 0 && hdr != 0) {
 				if (func_0209cd50(fld->mapId) == _Z14GetShortAt0xb8P23ShortField0xb8_0209cae8(&data_02109bf4)) {
@@ -527,7 +507,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 			if (fld->flagE != 0) {
 				_Z27EnqueueEventTag150_021d035chhh(0, _Z19GetField0x397cValueP9GameState(battle), 1);
 			}
-			runMapId = run->mapId;
+			runMapId = run->currentZoneID_;
 			if (fld->mapId != runMapId) {
 				struct GrottoIds* list2a04 = _Z17GetPtrField0x2a04P9GameState(battle);
 				int i;
@@ -539,7 +519,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 				fld->active = 0;
 			}
 			obj = func_0205ec34();
-			workHi.turnNode.mapId = run->mapId;
+			workHi.turnNode.mapId = run->currentZoneID_;
 			if (fld->active == 0 && _Z28LookupAndForEachNode020649b0PviS_(obj, 0x1e, &workHi.turnNode) != 0) {
 				func_0206f81c(&workHi.turnNode);
 			}
@@ -622,7 +602,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 		if (CountEntriesType2WithIds(0x64, 15) > 0) {
 			return;
 		}
-		if (run->f424 != 0) {
+		if (run->unknown_424_ != 0) {
 			return;
 		}
 		if (_ZN16BackgroundLoader17GetNumQueuedTasksEv(loader) > 0) {
@@ -630,11 +610,11 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 		}
 		func_ov017_0219c598(0, 0, 0);
 		table = GetEntryTableBase();
-		found = func_02028a54(table, run->mapId);
-		entry = _Z19FindInlineEntryByIdP14Entry_02028bd0i(table, run->mapId);
+		found = func_02028a54(table, run->currentZoneID_);
+		entry = _Z19FindInlineEntryByIdP14Entry_02028bd0i(table, run->currentZoneID_);
 		*(struct InlineEntry**)(ov + Field36f8) = entry;
 		grotto = _ZN9GameState15GetGrottoStructEv(battle);
-		if (IsInRange0201b588(run->mapId) != 0) {
+		if (IsInRange0201b588(run->currentZoneID_) != 0) {
 			entry->fd = grotto[8];
 		}
 		kind = 0;
@@ -648,7 +628,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 			if (slot->used == 0) {
 				_Z19InitStruct_021b46d8P14Struct021b46d8(slot);
 				slot->entry = entry;
-				if (_Z22IsValueInRange0201b5d8i(run->mapId) != 0 && ((unsigned char*)grotto)[3] == 0) {
+				if (_Z22IsValueInRange0201b5d8i(run->currentZoneID_) != 0 && ((unsigned char*)grotto)[3] == 0) {
 					unsigned char* detail = _ZN17ActiveGrottoClass15GetDetailedDataEv(runSub2);
 					if (detail != 0) {
 						unsigned char tag = detail[1];
@@ -667,7 +647,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 			}
 			self->state = 4;
 		} else {
-			if (_Z22IsValueInRange0201b5d8i(run->mapId) != 0 && ((unsigned char*)grotto)[3] == 0) {
+			if (_Z22IsValueInRange0201b5d8i(run->currentZoneID_) != 0 && ((unsigned char*)grotto)[3] == 0) {
 				unsigned char* detail = _ZN17ActiveGrottoClass15GetDetailedDataEv(runSub2);
 				if (detail != 0) {
 					unsigned char tag = detail[1];
@@ -704,7 +684,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 			}
 		}
 		if (func_0202c508(search) != 0 && ids->flagF7d != 0) {
-			func_ov017_021ce400(ids->flagF7d, run->mapId);
+			func_ov017_021ce400(ids->flagF7d, run->currentZoneID_);
 		}
 		return;
 	}
@@ -715,21 +695,21 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 		return;
 	}
 	if (self->state == 5) {
-		func_0208e520(func_0208e0a8(), run->header + 5);
+		func_0208e520(func_0208e0a8(), run->pUnknownStruct_8_->mapShortName_);
 		_ZN13SafeAllocator5ResetEv(ov + 0x18c);
 		_ZN24LootableContainerManager5ResetEv(region);
-		*(&data_ov017_021d75b8 + 1) = _ZN16BackgroundLoader13QueueLoadFileEPKcP13SafeAllocator(loader, data_ov017_021d75fc, 0);
+		data_ov017_021d75b8.lootableLoadTask = _ZN16BackgroundLoader13QueueLoadFileEPKcP13SafeAllocator(loader, data_ov017_021d75fc, 0);
 		self->state = 6;
 		return;
 	}
 	if (self->state == 6) {
-		if (_ZN16BackgroundLoader13GetTaskStatusEi(loader, *(&data_ov017_021d75b8 + 1)) == 0) {
+		if (_ZN16BackgroundLoader13GetTaskStatusEi(loader, data_ov017_021d75b8.lootableLoadTask) == 0) {
 			return;
 		}
-		if (_ZN16BackgroundLoader21GetDetailedTaskStatusEi(loader, *(&data_ov017_021d75b8 + 1)) == 2) {
-			_ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(loader, *(&data_ov017_021d75b8 + 1), &workLo.buf, &workLo.fileSize);
+		if (_ZN16BackgroundLoader21GetDetailedTaskStatusEi(loader, data_ov017_021d75b8.lootableLoadTask) == 2) {
+			_ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(loader, data_ov017_021d75b8.lootableLoadTask, &workLo.buf, &workLo.fileSize);
 			if (workLo.buf != 0) {
-				unsigned char* header = run->header;
+				unsigned char* header = (unsigned char*)run->pUnknownStruct_8_;
 				if (*(unsigned char*)((char*)run + Field23b8) != 0) {
 					func_0201afd0(run, workLo.buf, workLo.fileSize, 0);
 				} else {
@@ -744,10 +724,10 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 				}
 			}
 		}
-		_ZN16BackgroundLoader10RemoveTaskEi(loader, *(&data_ov017_021d75b8 + 1));
+		_ZN16BackgroundLoader10RemoveTaskEi(loader, data_ov017_021d75b8.lootableLoadTask);
 		{
-			unsigned short id = run->mapId;
-			*(&data_ov017_021d75b8 + 1) = -1;
+			unsigned short id = run->currentZoneID_;
+			data_ov017_021d75b8.lootableLoadTask = -1;
 			if (_Z19IsIdInRange020981e4ii((void*)runContext, id) != 0 &&
 			    _Z17IsIdInSet02098210ii((void*)runContext, id) == 0 &&
 			    func_0202c540(search) != 0) {
@@ -803,13 +783,13 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 		}
 		tailList = *(void**)(ov + Field36fc);
 		obj09020 = GetData02109020();
-		mapId = run->mapId;
-		subId = run->subId;
-		header = run->header;
+		mapId = run->currentZoneID_;
+		subId = run->previousZoneID_;
+		header = (unsigned char*)run->pUnknownStruct_8_;
 		runVars = (char*)run + 0xc;
 		entry = _Z19FindInlineEntryByIdP14Entry_02028bd0i(entryTable, mapId);
 		flag4 = _Z15GetFieldIfFlag4Pc(battle);
-		workHi.baseVec = *(struct Vec3*)actor->vec44;
+		workHi.baseVec = *(WrappedVector3fix*)actor->vec44;
 		moving = (fld->f20 > 0) ? 1 : 0;
 		if (moving != 0) {
 			self->active = 0;
@@ -837,18 +817,18 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 		_Z18ClearFlags020466f4P16FlagWord020466f4j(flags14e04, 0x200000);
 		if (fld->active == 0) {
 			_Z23ClearFieldAt0xc0208f3a8P11Obj0208f3a8(obj09020);
-			func_0206461c(obj5ec34, run->header);
+			func_0206461c(obj5ec34, (unsigned char*)run->pUnknownStruct_8_);
 			func_02095b30(GetGlobal02109418(), 0);
 		}
 		if (func_0202c508(search) != 0) {
-			struct InlineEntry* e2 = _Z19FindInlineEntryByIdP14Entry_02028bd0i(entryTable, run->mapId);
+			struct InlineEntry* e2 = _Z19FindInlineEntryByIdP14Entry_02028bd0i(entryTable, run->currentZoneID_);
 			if (e2 != 0) {
-				_Z31SetElementFlagsFromMask02013cb0P9S02013cb0j(run, e2->group);
-				_Z33UpdateFlaggedType2Entries02018c74Phj(run, e2->f4);
+				SetElementFlagsFromMask02013cb0(run, e2->group);
+				UpdateFlaggedType2Entries02018c74(run, e2->f4);
 			}
 		} else if (moving == 0 && *(unsigned char*)((char*)battle + Field5cac) == 0) {
-			_Z31SetElementFlagsFromMask02013cb0P9S02013cb0j(run, self->flagsE);
-			_Z33UpdateFlaggedType2Entries02018c74Phj(run, self->flags10);
+			SetElementFlagsFromMask02013cb0(run, self->flagsE);
+			UpdateFlaggedType2Entries02018c74(run, self->flags10);
 		}
 		func_02097ec8((char*)run + Field840);
 		if ((fld->flags6e & 2) == 0) {
@@ -881,8 +861,8 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 		}
 		if (moving != 0) {
 			func_ov017_0219fc88(self, fld->f20);
-		} else if (fld->f28 >= 0 && fld->f2c == run->mapId && fld->s1e != fld->f28) {
-			if (_Z22IsValueInRange0201b5d8i(run->mapId) == 0) {
+		} else if (fld->f28 >= 0 && fld->f2c == run->currentZoneID_ && fld->s1e != fld->f28) {
+			if (_Z22IsValueInRange0201b5d8i(run->currentZoneID_) == 0) {
 			void* n = *(void**)(ov + Field3718);
 			func_ov017_021b6f18(n);
 			_Z19InitStruct_02196c08Ph(&workHi.msg);
@@ -916,7 +896,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 				    _Z18TestBitInByteArrayiPhi((int)obj2, (unsigned char*)obj2 + 0x8c, workHi.slot + 0xea + 0xb00) == 0) {
 					if (listed == 0) {
 						struct ListNode021bba08* n2 = *(struct ListNode021bba08**)(ov + Field3734);
-						func_ov017_021bba08(n2, run->header);
+						func_ov017_021bba08(n2, (unsigned char*)run->pUnknownStruct_8_);
 						n2->f8 = fld->f20;
 						_Z16AppendNodeToTailP16TailList020469b4P16TailNode020469b4(tailList, n2);
 						fld->f20 = -1;
@@ -954,10 +934,10 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 				break;
 			}
 			if (_Z13GetField0x218P9S020a3570(flag4) != 0) {
-				workHi.actorVec = *(struct Vec3*)actor->vec44;
-				workLo.fieldVec = *(struct Vec3*)(flag4 + 0x10);
-				Vector3fix_Subtract(&workHi.actorVec, &workHi.baseVec, &workLo.deltaVec);
-				Vector3fix_Add(&workLo.fieldVec, &workLo.deltaVec, &workLo.fieldVec);
+				workHi.actorVec = *(WrappedVector3fix*)actor->vec44;
+				workLo.fieldVec = *(WrappedVector3fix*)(flag4 + 0x10);
+				Vector3fix_Subtract(&workHi.actorVec.vec, &workHi.baseVec.vec, &workLo.deltaVec.vec);
+				Vector3fix_Add(&workLo.fieldVec.vec, &workLo.deltaVec.vec, &workLo.fieldVec.vec);
 				_Z34CopyVec3ToField0x10AndCall0202e5d8PcPi(flag4, (int*)&workLo.fieldVec);
 			}
 			func_ov017_021982ac(ov);
@@ -1035,14 +1015,14 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 				_ZN8Object3D10EnableFlagEi(c, 0x4000000);
 			}
 			if (i > 0 && fld != 0 && fld->active == 0) {
-				workLo.memberVec = *(struct Vec3*)actor->vec44;
+				workLo.memberVec = *(WrappedVector3fix*)actor->vec44;
 				_ZN8Vector3iaSERKS_(c->vec44, (int*)&workLo.memberVec);
 				if (fld->mapId == 10000) {
-					workLo.memberVec.v[0] = 0xff000;
-					workLo.memberVec.v[1] = 0;
-					workLo.memberVec.v[2] = 0xff000;
+					workLo.memberVec.entries[0] = 0xff000;
+					workLo.memberVec.entries[1] = 0;
+					workLo.memberVec.entries[2] = 0xff000;
 				}
-				_Z26EnqueueEventTag35_021d2ad0hiiih(c->GetId(), workLo.memberVec.v[0], workLo.memberVec.v[1], workLo.memberVec.v[2], 0);
+				_Z26EnqueueEventTag35_021d2ad0hiiih(c->GetId(), workLo.memberVec.entries[0], workLo.memberVec.entries[1], workLo.memberVec.entries[2], 0);
 			}
 		}
 		if (func_0202c508(search) != 0 && fld != 0 && fld->active == 0) {
@@ -1149,15 +1129,15 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 			}
 		}
 		if (self->v12 != 0) {
-			struct GrottoRun* run2 = func_02012fe4();
+			Zone3D* run2 = (Zone3D*)func_02012fe4();
 			*(unsigned short*)((char*)run2 + Field2786) = self->v12;
 			if (((self->v14 << 18) >> 18) != -1) {
 				*(unsigned short*)((char*)run2 + Field2784) = (self->v14 << 18) >> 18;
 			}
 			*(unsigned char*)((char*)run2 + Field2788) = (self->v14 << 16) >> 30;
-			workLo.warpVec.v[0] = self->v16 << 7;
-			workLo.warpVec.v[1] = self->v18 << 7;
-			workLo.warpVec.v[2] = self->v1a << 7;
+			workLo.warpVec.entries[0] = self->v16 << 7;
+			workLo.warpVec.entries[1] = self->v18 << 7;
+			workLo.warpVec.entries[2] = self->v1a << 7;
 			_ZN8Vector3iaSERKS_((int*)((char*)run2 + Field2774), (int*)&workLo.warpVec);
 			*(int*)((char*)run2 + Field2780) = self->v1c;
 			func_020a72ac(run2, self->v1e);

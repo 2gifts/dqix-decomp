@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 
 #if defined(jpn)
 enum { kMember = 0x4f8 };
@@ -15,7 +16,6 @@ struct Vec3copy0202ec84;
 struct SlotDepth { int depth; int padding[2]; };
 extern "C" Obj021e4e20* _Z19GetField1c_021a193cPi(int*);
 extern "C" Body* _Z17RunIfPtr_021e4e20P11Obj021e4e20(Obj021e4e20*);
-int GetField0x3b0Value(GameState*);
 extern "C" int _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(void*, Vec3copy0202ec84*, int*, int*);
 extern "C" double func_0200b454(double);
 extern const Vector3fix data_ov005_0215cc24[8];
@@ -32,7 +32,7 @@ extern "C" ARM int func_ov005_021586c4(void*, int x, int y) {
     if (x > 0 && x < 128) {
         int screenX[8];
         int screenY[8];
-        camera = (void*)GetField0x3b0Value(game);
+        camera = GetField0x3b0Value(game);
         Matrix4x3 matrix;
         Vector3fix positions[8];
         matrix = RotationMatrixY(_Z17RunIfPtr_021e4e20P11Obj021e4e20(screen)->rotation.y);

@@ -1,29 +1,26 @@
 #include <globaldefs.h>
+#include "Combat/BufferedScriptResult.h"
+#include "Filesystem/BackgroundLoader.h"
+#include "Filesystem/FileIO.h"
+
 #if defined(jpn)
 #define data_020f0d40 data_020f0e38
 #endif
 
-extern "C" void _ZN16BackgroundLoader13AddLockGlobalEv(void);
-extern "C" void _ZN16BackgroundLoader16RemoveLockGlobalEv(void);
-extern "C" void* _Z18LoadFileIntoMemoryPKcPvPj(const char* path, void* dst, unsigned int* outSize);
-extern "C" void _Z25RunBufferedStream0207416ciiP12StreamHeaderi(int a0, int a1, int a2, int a3);
+extern char data_020f0d40[];
+extern unsigned char data_0211e33c[];
 
-extern int data_020f0d40;
-extern int data_0211e33c;
-
-// KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
+// KEEP-NAME
 // USA: func_02074114
-extern "C" ARM int _Z29TryDecodeGlobalBitstreamEntryPvi(int param0, int param1) {
-    unsigned int size;
-
-    _ZN16BackgroundLoader13AddLockGlobalEv();
-    void* handle = (void*)_Z18LoadFileIntoMemoryPKcPvPj((const char*)&data_020f0d40, (void*)&data_0211e33c, &size);
-    if (handle != 0) {
-        _Z25RunBufferedStream0207416ciiP12StreamHeaderi(param0, param1, (int)handle, (int)size);
-        _ZN16BackgroundLoader16RemoveLockGlobalEv();
+ARM int TryDecodeGlobalBitstreamEntry(BufferedScriptResult* result, int key) {
+    unsigned int length;
+    BackgroundLoader::AddLockGlobal();
+    void* bytecode = LoadFileIntoMemory(data_020f0d40, data_0211e33c, &length);
+    if (bytecode != 0) {
+        RunBufferedStream0207416c(result, key, bytecode, length);
+        BackgroundLoader::RemoveLockGlobal();
         return 1;
     }
-    _ZN16BackgroundLoader16RemoveLockGlobalEv();
+    BackgroundLoader::RemoveLockGlobal();
     return 0;
 }
-

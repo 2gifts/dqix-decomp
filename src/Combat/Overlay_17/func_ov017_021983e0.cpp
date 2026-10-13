@@ -5,11 +5,11 @@ enum { RegionOffset36fc = 0x36fc, RegionOffset6c = 0x6c };
 #endif
 
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 
 int IsField0Null(void** obj);
 extern "C" void* func_02012fe4(void);
-int GetField0x3b0Value(GameState* battleStruct);
 int CheckSubstructByte0x7cPositive(signed char* obj);
 void* GetPointerFromArray0x3c(unsigned char* obj, unsigned int index);
 extern "C" int func_02094b9c(void* a, void* b);

@@ -6,19 +6,12 @@ enum { kElementFlagOffset = 0x341, kElementListOffset = 0x90, kElementSpriteOffs
 enum { kElementFlagOffset = 0x371, kElementListOffset = 0xac, kElementSpriteOffset = 0x364, kElementObjectOffset = 0x35c };
 #endif
 
-#if defined(jpn)
-#define HandleElementSpecial17_021e6a90 func_ov023_021e7000
-#endif
-
 struct Struct_0205d81c;
 
 extern void* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
 extern "C" void func_0205ac40(void* a, void* b);
 
 // USA: func_ov023_021e6a90
-#if defined(jpn)
-extern "C"
-#endif
 ARM void HandleElementSpecial17_021e6a90(void* a) {
 	if (((unsigned char*)a)[0x1000 + kElementFlagOffset] == 6) return;
 	void* e = FindElementByC40205d81c((struct Struct_0205d81c*)((char*)a + kElementListOffset), 0x11);

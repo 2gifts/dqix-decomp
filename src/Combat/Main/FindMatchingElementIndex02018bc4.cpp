@@ -1,27 +1,18 @@
 #include <globaldefs.h>
-
-#if defined(jpn)
-enum { elementArrayOffset = 0x8c, elementCountOffset = 0xb4 };
-#else
-enum { elementArrayOffset = 0x6c, elementCountOffset = 0x94 };
-#endif
-
-void* GetElementStride0x74(unsigned char* obj, int index);
+#include "World/ZoneChest.h"
 
 // USA: func_02018bc4
-ARM int FindMatchingElementIndex02018bc4(unsigned char* obj, void* target) {
-    char* node = (char*)GetElementStride0x74(obj + elementArrayOffset, 0);
-    int count = *(int*)(obj + elementCountOffset);
+ARM int FindMatchingElementIndex02018bc4(Zone3D* zone, ZoneFeatures::Opcode6aEntry* target) {
+    ZoneFeatures::Opcode6aEntry* entry = GetElementStride0x74(&zone->substruct_6c_, 0);
+    int count = zone->substruct_6c_.arraySize6a_;
     int matches = 0;
     int i;
     for (i = 0; i < count; i++) {
-        if (*(int*)(node + 0x4) == 2) {
-            if ((void*)node == target) {
-                return matches;
-            }
+        if (entry->maybeType == 2) {
+            if (entry == target) return matches;
             matches++;
         }
-        node += 0x74;
+        entry++;
     }
     return -1;
 }

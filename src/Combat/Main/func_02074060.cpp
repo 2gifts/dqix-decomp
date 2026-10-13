@@ -1,27 +1,23 @@
 #include <globaldefs.h>
-
-struct Variant02030b0c { int tag; union { int i; float f; } u; };
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
+#include "Resource/Script.h"
+#include "Combat/BufferedScriptResult.h"
 
 extern int data_020f0d2c;
-extern short* data_02108dd8;
+extern BufferedScriptResult* data_02108dd8;
 
 // USA: func_02074060
-extern "C" ARM int func_02074060(struct Variant02030b0c* p) {
-    int i;
-    int slot = _ZNK6Script9Parameter5ToIntEv(p++);
-    if (slot != data_020f0d2c) {
-        return 1;
+extern "C" ARM int func_02074060(Script::Parameter* parameters, int) {
+    int key = (parameters++)->ToInt();
+    if (key != data_020f0d2c) return 1;
+    data_02108dd8->key = (short)key;
+    for (int i = 0; i < 3; i++) {
+        data_02108dd8->values[i] = (short)parameters->ToInt();
+        Script::Parameter* attribute = parameters + 1;
+        parameters += 2;
+        data_02108dd8->attributes[i] = (short)attribute->ToInt();
     }
-    data_02108dd8[0] = (short)slot;
-    for (i = 0; i < 3; i++) {
-        *((short*)((char*)data_02108dd8 + 2 * i + 2)) = (short)_ZNK6Script9Parameter5ToIntEv(p);
-        struct Variant02030b0c* q = p + 1;
-        p += 2;
-        *((short*)((char*)data_02108dd8 + 2 * i + 8)) = (short)_ZNK6Script9Parameter5ToIntEv(q);
-    }
-    data_02108dd8[7] = (short)_ZNK6Script9Parameter5ToIntEv(p);
-    data_02108dd8[8] = (short)_ZNK6Script9Parameter5ToIntEv(p + 1);
-    data_02108dd8[9] = 0;
+    data_02108dd8->resultId = (short)parameters->ToInt();
+    data_02108dd8->unknown10 = (short)(parameters + 1)->ToInt();
+    data_02108dd8->unknown12 = 0;
     return 1;
 }

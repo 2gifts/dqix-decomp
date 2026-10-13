@@ -5,17 +5,13 @@
 #define LOW_REGION(j, u) (u)
 #endif
 #include <globaldefs.h>
+#include "GameState/BattleRecordSnapshot.h"
 
 #include <Memory/SafeAllocator.h>
 
-struct PlayTime {
-    unsigned short hours_;
-    unsigned char minutes_;
-    unsigned char seconds_;
-};
 
 struct ClearRecords {
-    PlayTime times_[2];
+    BattleRecordPlayClock times_[2];
 };
 
 struct GuestRecords {
@@ -105,17 +101,15 @@ struct BattleRecords {
     GuestRecords* guestRecords_;
     void* guestTexts_;
     void* guestTitles_;
-    PlayTime times_[2];
+    BattleRecordPlayClock times_[2];
 };
 
 struct GameState {
     static GameState* GetInstance();
 };
 
-struct _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598;
 struct Container020e0310;
 
-extern "C" void _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598(struct _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598* time);
 extern "C" void* _Z26GetGlobalField0x1c020421a0v();
 void AppendPaletteTag(char* text, int color);
 void AppendYTag(char* text, int y);
@@ -141,9 +135,9 @@ extern "C" ARM void func_ov008_02187278(BattleRecords* self, char* text, int ind
 {
     if (text == NULL)
         return;
-    PlayTime* time = NULL;
-    PlayTime guestTime;
-    _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598((struct _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598*)&guestTime);
+    BattleRecordPlayClock* time = NULL;
+    BattleRecordPlayClock guestTime;
+    ClearShortByteByte_02184598(&guestTime);
     if (index == 0)
     {
         GuestRecords* guest = self->guestRecords_;
@@ -151,8 +145,8 @@ extern "C" ARM void func_ov008_02187278(BattleRecords* self, char* text, int ind
         if (guest != NULL)
         {
             time = &guestTime;
-            guestTime.hours_ = guest->hours1_;
-            guestTime.minutes_ = self->guestRecords_->minutes1_;
+            guestTime.hours = guest->hours1_;
+            guestTime.minutes = self->guestRecords_->minutes1_;
         }
         else if (records != NULL)
         {
@@ -166,8 +160,8 @@ extern "C" ARM void func_ov008_02187278(BattleRecords* self, char* text, int ind
         if (guest != NULL)
         {
             time = &guestTime;
-            guestTime.hours_ = guest->hours2_;
-            guestTime.minutes_ = self->guestRecords_->minutes2_;
+            guestTime.hours = guest->hours2_;
+            guestTime.minutes = self->guestRecords_->minutes2_;
         }
         else if (records != NULL)
         {
@@ -182,10 +176,10 @@ extern "C" ARM void func_ov008_02187278(BattleRecords* self, char* text, int ind
     char buffer[0x40];
     __clear(buffer, sizeof(buffer));
     func_02046380(messages);
-    _Z17StoreInArray0x8b0P11StoreStructii((StoreStruct*)messages, 0, time->hours_);
+    _Z17StoreInArray0x8b0P11StoreStructii((StoreStruct*)messages, 0, time->hours);
     _Z14SetByteInRangePhih((unsigned char*)messages, 0, 4);
     _Z14SetByteAtIndexPhih((unsigned char*)messages, 0, 1);
-    _Z17StoreInArray0x8b0P11StoreStructii((StoreStruct*)messages, 1, time->minutes_);
+    _Z17StoreInArray0x8b0P11StoreStructii((StoreStruct*)messages, 1, time->minutes);
     _Z14SetByteInRangePhih((unsigned char*)messages, 1, 2);
     _Z14SetByteAtIndexPhih((unsigned char*)messages, 1, 1);
     func_020474a8(messages, 10, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&self->texts_, 0x6e), buffer);
@@ -199,7 +193,7 @@ extern "C" ARM void func_ov008_02187278(BattleRecords* self, char* text, int ind
     __clear(buffer, sizeof(buffer));
     const char* format = _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&self->texts_, 0x6e);
     if (format != NULL)
-        sprintf(buffer, format, time->hours_, time->minutes_);
+        sprintf(buffer, format, time->hours, time->minutes);
     _Z20AppendString02042058PcPKc(text, buffer);
 #endif
 }

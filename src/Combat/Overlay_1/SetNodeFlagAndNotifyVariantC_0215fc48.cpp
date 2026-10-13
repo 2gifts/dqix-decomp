@@ -1,28 +1,10 @@
 #include <globaldefs.h>
-#if defined(jpn)
-enum { pointerArrayBaseOffset = 0x8c };
-#else
-enum { pointerArrayBaseOffset = 0x6c };
-#endif
+#include "World/ZoneChest.h"
 
 extern "C" int func_ov017_021d60f4(void*);
 extern "C" void* func_02012fe4(void);
 void* GetPointerFromArray0x3c(unsigned char* obj, unsigned int index);
-extern "C" void func_02018300(void* a, void* b, int c, int d, int e);
-struct Owner02018b34;
-struct Param02018b34;
-struct Entry02018b34;
-struct Entry02018b34* FindEntryByNodeIdAndKey(struct Owner02018b34* owner, struct Param02018b34* p);
 
-struct ListNode_0215fc48 {
-    char pad0[0x2c];
-    unsigned char keyA;
-    unsigned char keyB;
-    unsigned short lowNibble2e : 4;
-    unsigned short flags2e : 12;
-    char pad30[0x40];
-    struct ListNode_0215fc48* next;
-};
 
 // USA: func_ov001_0215fc48  (semantic: SetNodeFlagAndNotifyVariantC_0215fc48)
 extern "C" ARM int func_ov001_0215fc48(char* args, int count) {
@@ -40,16 +22,16 @@ extern "C" ARM int func_ov001_0215fc48(char* args, int count) {
         key3 = func_ov017_021d60f4(args);
     }
 
-    void* base = func_02012fe4();
-    struct ListNode_0215fc48* node = (struct ListNode_0215fc48*)GetPointerFromArray0x3c((unsigned char*)base + pointerArrayBaseOffset, 2);
+    Zone3D* base = (Zone3D*)func_02012fe4();
+    ZoneFeatures::Opcode6aEntry* node = (ZoneFeatures::Opcode6aEntry*)GetPointerFromArray0x3c((unsigned char*)&base->substruct_6c_, 2);
     while (node != NULL) {
-        if (!(node->flags2e & 1) && node->keyA == key0 && node->keyB == key1) {
-            node->flags2e = node->flags2e | 0x300;
+        if (!(node->unk_2c.type2.unk_2_high & 1) && node->unk_2c.type2.unk_0 == key0 && node->unk_2c.type2.unk_1 == key1) {
+            node->unk_2c.type2.unk_2_high = node->unk_2c.type2.unk_2_high | 0x300;
             func_02018300(base, node, key2, key3, 0);
-            struct Entry02018b34* entry = FindEntryByNodeIdAndKey((struct Owner02018b34*)base, (struct Param02018b34*)node);
-            *(unsigned short*)((char*)entry + 2) |= 0x40;
+            BmdjSceneElement* entry = FindEntryByNodeIdAndKey(base, node);
+            entry->flags |= 0x40;
         }
-        node = node->next;
+        node = node->pNext;
     }
     return 1;
 }

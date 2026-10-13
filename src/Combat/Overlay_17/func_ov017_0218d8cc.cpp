@@ -1,8 +1,8 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 #include "System/Matrix.h"
 
-int GetField0x3b0Value(GameState* gs);
 int TestFlagMask(unsigned short* obj, int mask);
 void GetVec3FromShorts(unsigned char* src, int* out);
 
