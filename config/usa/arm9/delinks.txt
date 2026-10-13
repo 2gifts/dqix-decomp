@@ -19906,3 +19906,19 @@ src/Combat/Main/func_020a9c14.cpp:
 src/Combat/Main/func_020236dc.cpp:
     complete
     .text start:0x020236dc end:0x02023a9c
+
+src/Combat/Main/func_0205ec70.cpp:
+    complete
+    .text start:0x0205ec70 end:0x0205f9bc
+
+src/Combat/Main/func_02083e28.cpp:
+    complete
+    .text start:0x02083e28 end:0x02084a64
+
+src/Combat/Main/func_0208bf78.cpp:
+    complete
+    .text start:0x0208bf78 end:0x0208c9cc
+
+src/Combat/Main/func_020a9eb8.cpp:
+    complete
+    .text start:0x020a9eb8 end:0x020aad1c
