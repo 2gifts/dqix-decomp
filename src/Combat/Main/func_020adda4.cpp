@@ -4,14 +4,14 @@
 
 struct Combatant020adda4 {
     unsigned char pad_0x00[0x44];
-    Vector3fix origin;         // 0x44
+    Vector3fix origin;
     unsigned char pad_0x50[0x5e];
-    short tilt;                // 0xae
+    short tilt;
     unsigned char pad_0xb0[0xb4];
-    Vector3fix pivot;          // 0x164
-    fix32_t bearing;           // 0x170
-    Vector3fix pivot2;         // 0x174
-    fix32_t bearing2;          // 0x180
+    Vector3fix pivot;
+    fix32_t bearing;
+    Vector3fix pivot2;
+    fix32_t bearing2;
 };
 
 extern "C" ARM short _Z8fix32sini(int x);
