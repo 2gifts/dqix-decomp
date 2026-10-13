@@ -16942,3 +16942,7 @@ src/Combat/Main/PickHitElement02080e40.cpp:
 src/Combat/Main/func_02047b40.cpp:
     complete
     .text start:0x02048960 end:0x02048cf4
+
+src/Combat/Main/CalculateScalingAmountSmooth.cpp:
+    complete
+    .text start:0x020b9ed0 end:0x020ba064
