@@ -2,7 +2,6 @@
 
 #if defined(jpn)
 #define _Z37InitBuffersAndConfigureEntry_021e761cPv func_ov023_021e7868
-#define func_ov024_021e6a90 func_ov023_021e7000
 const int kProfileWindowOffset = 0x90;
 const int kProfileCardOffset = 0xd0c;
 #else
@@ -19,7 +18,7 @@ extern "C" void func_0205da88(void*, int, int, int);
 extern "C" void func_ov023_021e67f4(char*);
 extern "C" void func_ov023_021e68cc(char*);
 extern "C" void func_ov023_021e6a14(char*);
-extern "C" void func_ov024_021e6a90(char*);
+void HandleElementSpecial17_021e6a90(void*);
 
 // USA: func_ov012_02185a24  (semantic: Trans_02185a24)
 extern "C" ARM void func_ov012_02185a24(char* obj) {
@@ -33,6 +32,6 @@ extern "C" ARM void func_ov012_02185a24(char* obj) {
     func_ov023_021e67f4(obj);
     func_ov023_021e68cc(obj);
     func_ov023_021e6a14(obj);
-    func_ov024_021e6a90(obj);
+    HandleElementSpecial17_021e6a90(obj);
     _Z33UpdateEntryFromDoublePtr_021e6b04Pc(obj);
 }

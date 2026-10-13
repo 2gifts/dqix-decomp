@@ -12,7 +12,15 @@ struct S02040538 {
 
 struct Entry_203dce4 {
     int flags;
+    unsigned char unknown4[0x10];
+    void* child14;
+    void* child18;
+    void* child1c;
 };
+
+void SetValueOnActiveChild02040af0(Entry_203dce4* entry, int value);
+int GetDisplayValue020409e0(Entry_203dce4* entry);
+int GetOffset0x54FromFallbackChain(Entry_203dce4* entry);
 
 int GetField0x60(StructF0x60_0203cdd0 *obj);
 int GetField0x8(int *obj);

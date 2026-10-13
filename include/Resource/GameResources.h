@@ -110,10 +110,11 @@ struct GameResources
     char unknown_42e3[0x45];
     void* unknown_ptr_4328; // jpn: offset 4108
 
+    char unknown_432c[0x30];
 #if defined(usa)
-    char unknown_432c[0xf0];
+    char partyNames[4][48];
 #elif defined(jpn)
-    char unknown_432c[0x60]; // offset 410c
+    char partyNames[4][12];
 #endif
     void* unknown_ptr_441c; // jpn: offset 416c
     char unknown_4420[0x2a];

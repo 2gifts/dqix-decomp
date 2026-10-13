@@ -1,23 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
-
-union SearchFlags0202b2f0 {
-    unsigned short raw;
-    struct {
-        unsigned short selected:3;
-        unsigned short padding:13;
-    };
-};
-struct SearchEntry0202b2f0 {
-    SearchFlags0202b2f0 flags;
-    unsigned short padding:5;
-    unsigned short selector1:2;
-    unsigned short selector2:2;
-    unsigned short selector3:2;
-    unsigned short padding2:5;
-    unsigned short mask;
-};
+#include "Combat/SearchEntry.h"
 struct SearchStruct {
     int state;
     unsigned short counter;
@@ -43,22 +27,16 @@ struct SearchStruct {
     }
 };
 struct FlagWord02046708;
-struct Container0202c478;
 #if defined(jpn)
-enum { kPartyNameOffset = 0x413c, kPartyNameCapacity = 12 };
 #define func_0202c04c func_0202bbfc
-#else
-enum { kPartyNameOffset = 0x435c, kPartyNameCapacity = 48 };
 #endif
 unsigned short GetGlobalHalf0x0();
-void* GetEntryBySignedByteIndex(SearchStruct*, int);
 void* GetDataPtr02114e04_020d6c00();
 int TestFlags02046708(FlagWord02046708*, unsigned int);
 int GetGlobalField0x10();
 extern "C" int func_0202d8e8();
 extern "C" void func_0202db64(int, int, int);
 extern "C" void func_0202bc00(SearchStruct*, int);
-void ShiftRecords0202c478(Container0202c478*);
 extern "C" void func_0202bf40(SearchStruct*);
 extern "C" void func_0202c04c(SearchStruct*);
 extern "C" int func_0202c508(SearchStruct*);
@@ -82,7 +60,7 @@ extern "C" ARM void func_0202b2f0(SearchStruct* object) {
         if (i == object->selectors[GetGlobalHalf0x0()]) {
             continue;
         }
-        SearchEntry0202b2f0* entry = static_cast<SearchEntry0202b2f0*>(GetEntryBySignedByteIndex(object, i));
+        SearchEntry0202c178* entry = GetEntryBySignedByteIndex(object, i);
         if (!entry) {
             continue;
         }
@@ -94,7 +72,7 @@ extern "C" ARM void func_0202b2f0(SearchStruct* object) {
         entry->mask = mask & ~0xffff;
     }
     GameState::GetInstance();
-    if (TestFlags02046708(static_cast<FlagWord02046708*>(GetDataPtr02114e04_020d6c00()), 0x1000000)) {
+    if (TestFlags02046708((FlagWord02046708*)GetDataPtr02114e04_020d6c00(), 0x1000000)) {
         object->state = -1;
         return;
     }
@@ -114,7 +92,7 @@ extern "C" ARM void func_0202b2f0(SearchStruct* object) {
         func_0202bc00(object, 1);
         break;
     case 3:
-        ShiftRecords0202c478(reinterpret_cast<Container0202c478*>(object));
+        ShiftRecords0202c478(object);
         break;
     case 5:
         func_0202bc00(object, 1);
@@ -131,7 +109,7 @@ extern "C" ARM void func_0202b2f0(SearchStruct* object) {
             if (i == object->selectors[GetGlobalHalf0x0()]) {
                 continue;
             }
-            SearchEntry0202b2f0* entry = static_cast<SearchEntry0202b2f0*>(GetEntryBySignedByteIndex(object, i));
+            SearchEntry0202c178* entry = GetEntryBySignedByteIndex(object, i);
             if (!entry) {
                 continue;
             }
@@ -186,8 +164,7 @@ selectorFound:
                     SetSearchFlagBit0202c660(object, i);
                     if (object->IsActive()) {
                         GameResources* resources = func_ov017_0218b5b0();
-                        char* name = reinterpret_cast<char*>(resources) + kPartyNameOffset + i * kPartyNameCapacity;
-                        memset(name, 0, kPartyNameCapacity);
+                        memset(resources->partyNames[i], 0, sizeof(resources->partyNames[i]));
                     }
                 }
             }
@@ -199,7 +176,7 @@ selectorFound:
             }
         }
     } else {
-        SearchEntry0202b2f0* entry = static_cast<SearchEntry0202b2f0*>(GetEntryBySignedByteIndex(object, 0));
+        SearchEntry0202c178* entry = GetEntryBySignedByteIndex(object, 0);
         object->selectors[1] = entry->selector1;
         object->selectors[2] = entry->selector2;
         object->selectors[3] = entry->selector3;

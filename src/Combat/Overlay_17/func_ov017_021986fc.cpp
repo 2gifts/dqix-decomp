@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "Combat/LootPointEvent.h"
+#include "Combat/LootPickupEvent.h"
 #include "GameState/GameState.h"
 #include "World/Zone3D.h"
 
@@ -37,14 +38,6 @@ struct Event021986fc {
     unsigned char padding1[19];
 };
 
-struct Obj021ae800 {
-    unsigned char pad0[0xc];
-    unsigned short id;
-    unsigned char pad0e[6];
-    Vector3fix position;
-    int field20;
-    int field24;
-};
 
 struct TailList020469b4;
 struct TailNode020469b4;
@@ -69,7 +62,6 @@ extern "C" void* func_0205ec34(void);
 void SetOrClearBitInArray(void*, unsigned char*, int, int);
 extern "C" void _Z23RemoveNodeByKey0208f3b4P12Cont0208f3b4i(Cont0208f3b4*, int);
 extern "C" int _Z27GetRandomTableEntry0208e7d0P11Obj0208e7d0(Obj0208e7d0*);
-extern "C" void _Z32ResetHeaderAndAllocator_021ae800P11Obj021ae800(Obj021ae800*);
 void AppendNodeToTail(TailList020469b4*, TailNode020469b4*);
 
 extern unsigned short data_02114e30[];
@@ -135,10 +127,10 @@ extern "C" ARM void func_ov017_021986fc(GameResources* self) {
     SetOrClearBitInArray(base, (unsigned char*)base + 0x8c, node->id + 0xc12, 1);
     _Z23RemoveNodeByKey0208f3b4P12Cont0208f3b4i(GetData02109020(), key);
     if (node->id >= 0x62) node->unk0 = _Z27GetRandomTableEntry0208e7d0P11Obj0208e7d0(list);
-    _Z32ResetHeaderAndAllocator_021ae800P11Obj021ae800(static_cast<Obj021ae800*>(self->unknown_ptr_array_3afc[11]));
-    static_cast<Obj021ae800*>(self->unknown_ptr_array_3afc[11])->id = node->unk0;
-    static_cast<Obj021ae800*>(self->unknown_ptr_array_3afc[11])->position = actor->obj3D_.position_;
-    static_cast<Obj021ae800*>(self->unknown_ptr_array_3afc[11])->field20 = 0;
-    static_cast<Obj021ae800*>(self->unknown_ptr_array_3afc[11])->field24 = 0x1f;
-    AppendNodeToTail(static_cast<TailList020469b4*>(self->unknown_ptr_array_36fc[0]), (TailNode020469b4*)static_cast<Obj021ae800*>(self->unknown_ptr_array_3afc[11]));
+    ResetHeaderAndAllocator_021ae800(((Obj021ae800*)self->unknown_ptr_array_3afc[11]));
+    ((Obj021ae800*)self->unknown_ptr_array_3afc[11])->itemId = node->unk0;
+    ((Obj021ae800*)self->unknown_ptr_array_3afc[11])->position = actor->obj3D_.position_;
+    ((Obj021ae800*)self->unknown_ptr_array_3afc[11])->angle = 0;
+    ((Obj021ae800*)self->unknown_ptr_array_3afc[11])->fade = 0x1f;
+    AppendNodeToTail((TailList020469b4*)self->unknown_ptr_array_36fc[0], (TailNode020469b4*)((Obj021ae800*)self->unknown_ptr_array_3afc[11]));
 }

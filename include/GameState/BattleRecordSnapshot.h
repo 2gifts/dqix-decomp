@@ -9,6 +9,8 @@ struct BattleRecordPlayClock {
     unsigned char seconds;
 };
 
+void ClearShortByteByte_02184598(BattleRecordPlayClock*);
+
 struct BattleRecordClockPair {
     BattleRecordPlayClock elapsed;
     BattleRecordPlayClock committed;

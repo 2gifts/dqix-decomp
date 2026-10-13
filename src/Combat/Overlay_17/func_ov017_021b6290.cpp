@@ -2,6 +2,7 @@
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Resource/Brightness.h"
+#include "Combat/BufferedScriptResult.h"
 
 #if defined(jpn)
 #define data_ov017_021d7c10 data_ov017_021d832c
@@ -17,8 +18,6 @@ struct BattleLoad021b6290 {
     unsigned char state, delay;
     short streamID, task;
 };
-struct StreamHeader { char padding[0xe]; unsigned short id; char tail[4]; };
-struct StreamOwner021b6290 { char padding[0x10]; StreamHeader header; };
 struct Actor0209c678;
 struct RootEntries;
 struct ListHead02046b60;
@@ -37,7 +36,6 @@ extern "C" int abs(int);
 extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc*, int);
 extern "C" void _Z30DispatchContextByState0209c678P13Actor0209c678i(Actor0209c678*, int);
 int ListContainsId(ListHead02046b60*, int);
-extern "C" int _Z25RunBufferedStream0207416ciiP12StreamHeaderi(int, int, StreamHeader*, int);
 void SetBitsInField4(unsigned int*, unsigned int);
 void SetBitsInWord(unsigned int*, unsigned int);
 extern "C" void* _Z26GetGlobalField0x1c020421a0v();
@@ -82,20 +80,20 @@ extern "C" ARM void func_ov017_021b6290(BattleLoad021b6290* self) {
     } else if (self->state == 2) {
         if (self->delay == 0) {
             int id = 23;
-            if (self->task > -1) {
+            if (self->task > BackgroundLoader::TaskStatus_Invalid) {
                 if (!loader->GetTaskStatus(self->task)) return;
                 void* data;
                 unsigned int length;
                 loader->GetLoadedFileByID(self->task, &data, &length);
-                StreamHeader temporary;
-                StreamHeader* header = &temporary;
+                BufferedScriptResult temporary;
+                BufferedScriptResult* result = &temporary;
                 if (ListContainsId((ListHead02046b60*)resources->unknown_ptr_array_36fc[0], 10)) {
-                    StreamOwner021b6290* owner = static_cast<StreamOwner021b6290*>(func_ov017_021b8478(streamOwner));
-                    if (owner) header = &owner->header;
+                    void* overrideState = func_ov017_021b8478(streamOwner);
+                    if (overrideState) result = (BufferedScriptResult*)((char*)overrideState + 0x10);
                 }
-                if (_Z25RunBufferedStream0207416ciiP12StreamHeaderi((int)header, self->streamID, (StreamHeader*)data, length)) id = header->id;
+                if (RunBufferedStream0207416c(result, self->streamID, data, length)) id = result->resultId;
                 loader->RemoveTask(self->task);
-                self->task = -1;
+                self->task = BackgroundLoader::TaskStatus_Invalid;
             }
             func_0209c480(&data_02109bf4, id);
             func_0209c2e0(&data_02109bf4, 127, 0);

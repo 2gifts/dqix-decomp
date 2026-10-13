@@ -15,15 +15,6 @@ struct PartyObject {
     unsigned char order;
 };
 struct PartySlot { char pad[2]; unsigned char active; };
-struct PartyNameStorage {
-#if defined(jpn)
-    char unknown0[0x413c];
-    char names[4][12];
-#else
-    char unknown0[0x435c];
-    char names[4][48];
-#endif
-};
 struct PartyIndices { int slots[13]; };
 struct PartyOutput { int fields[4]; };
 struct FieldBlock63d6_115a8;
@@ -61,7 +52,6 @@ extern "C" ARM void func_ov017_02190264(GameResources* resources, int index) {
     if (!valid) return;
     GameState* game = GameState::GetInstance();
     int* search = func_0202ae18();
-    PartyNameStorage* names = (PartyNameStorage*)resources;
     void* node = resources->unknown_ptr_array_371c[6];
     if (func_ov017_021925e0()) {
         GameObject* member = game->GetPartyMemberByIndex(index);
@@ -88,7 +78,7 @@ extern "C" ARM void func_ov017_02190264(GameResources* resources, int index) {
             if (field) *field = 0;
         }
         if (CheckSubstructByte0x7cPositive((signed char*)combatant)) func_020531f0(combatant);
-        strcpy(names->names[index], (char*)combatant->baseStats_);
+        strcpy(resources->partyNames[index], (char*)combatant->baseStats_);
         short* reset = ((PartyObject*)combatant)->modelOwner;
         if (reset) InvalidateField0(reset);
         if (!GetByteField0x63d6((FieldBlock63d6_115a8*)game)) {

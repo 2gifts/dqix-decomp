@@ -107,7 +107,7 @@ struct MessageSystem {
     unsigned char b19b0;
     unsigned char b19b1;
     unsigned char b19b2;
-    unsigned char pad17e3[1];
+    unsigned char b19b3;
     unsigned char b19b4;
     unsigned char b19b5;
     unsigned char pendingValueActive;
@@ -257,7 +257,7 @@ struct MessageSystem {
     unsigned char b19b0;
     unsigned char b19b1;
     unsigned char b19b2;
-    unsigned char pad19b3[0x1];
+    unsigned char b19b3;
     unsigned char b19b4;
     unsigned char b19b5;
     unsigned char pendingValueActive;
@@ -285,7 +285,7 @@ struct MessageSystem {
     unsigned char b19cd;
     unsigned char b19ce;
     unsigned char b19cf;
-    unsigned char pad19d0[0x1];
+    unsigned char b19d0;
     unsigned char b19d1;
     unsigned char b19d2;
     unsigned char b19d3;

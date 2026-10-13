@@ -8,7 +8,7 @@ int GetField0x3acValue(GameState* gs);
 int SetQueueEntryChecked_02164214(void* arr, int idx, int type, int val, int flag);
 int SetQueueEntryChecked_02164248(void* arr, int idx, int type, int val, int flag);
 
-struct Entry_203dce4 { int flags; };
+#include "Combat/EntryGetterTypes.h"
 struct EntryList_203dce4;
 extern void* GetGlobalPtr021075f4(void);
 extern struct Entry_203dce4* GetEntryUnlessFlag0x8000(struct EntryList_203dce4* list, int id);

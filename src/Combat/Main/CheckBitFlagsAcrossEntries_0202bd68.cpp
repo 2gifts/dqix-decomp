@@ -1,8 +1,8 @@
 #include <globaldefs.h>
+#include "Combat/SearchEntry.h"
 
 struct SearchStruct;
 int TestBitBySignedByteIndex(struct SearchStruct* obj, int value);
-void* GetEntryBySignedByteIndex(struct SearchStruct* obj, int value);
 unsigned short GetGlobalHalf0x0(void);
 
 // USA: func_0202bd68  (semantic: CheckBitFlagsAcrossEntries_0202bd68)

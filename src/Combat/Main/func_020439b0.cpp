@@ -12,9 +12,8 @@ void ZeroFourHalfwords02044074(struct Struct02044074* s);
 extern "C" void func_02042b98(void* self, int arg1, int arg2, int arg3, int arg4);
 void SetFourHalfwords(struct Struct0204408c* s, short x, short y, short z, short w);
 extern "C" void func_02043600(void* a, void* box);
-void InitCombatSlots02043040(char* obj);
+#include "Resource/MessageUpdate.h"
 extern "C" void func_02043124(void* self);
-ARM void ResetControllerState020430b0(char* self);
 extern "C" void func_020437bc(void* buf, void* box, int index);
 
 struct Struct0204394c;
@@ -252,9 +251,9 @@ extern "C" ARM void func_020439b0(char* self, int flag) {
         FreeVRAMStagingMemory((const void*)controller->stream->value);
 
         if (controller->field998 == 0) {
-            InitCombatSlots02043040(self);
+            InitCombatSlots02043040((MessageSystem*)self);
             func_02043124(self);
-            ResetControllerState020430b0(self);
+            ResetControllerState020430b0((MessageSystem*)self);
         }
     }
 

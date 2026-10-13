@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Combat/SearchEntry.h"
 #include "GameState/GameState.h"
 
 
@@ -12,7 +13,6 @@ struct BitArrayObj0205e870;
 extern "C" SearchStruct* func_0202ae18(void);
 void* GetData02100044(void);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* obj);
-SearchStruct* GetEntryBySignedByteIndex(SearchStruct* obj, int value);
 int TestFlag0SetAndFlag1Clear(unsigned short* flags, int mask);
 void SetBitsInWord(unsigned int* obj, unsigned int mask);
 extern "C" void func_0202b0f4(void* obj);

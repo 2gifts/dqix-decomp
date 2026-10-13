@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Resource/MessageUpdate.h"
+#include "Resource/MessageSystem.h"
 #include "World/Zone3D.h"
 
 #if defined(jpn)
@@ -25,33 +26,6 @@ struct Obj0203dd20;
 struct Foo020579b4;
 struct ResetObj020d7a5c;
 struct Event020da2fc { char pad_00[0xe]; unsigned char active; };
-struct Global0218cbd4 {
-#if defined(jpn)
-    char unknown0[0x868];
-#else
-    char unknown0[0x998];
-#endif
-    int pending;
-};
-struct Flags0218cbd4 { char pad_00[2]; unsigned char active; };
-struct Resources0218cbd4 {
-#if defined(jpn)
-    char unknown0[0x3448];
-#else
-    char unknown0[0x3658];
-#endif
-    unsigned char blocked;
-    char unknown1[0x5b];
-    unsigned char initData[0x14];
-#if defined(jpn)
-    char unknown2[0xc10];
-#else
-    char unknown2[0xc20];
-#endif
-    unsigned char reset;
-    char unknown3[0x5f];
-    Vector3i position;
-};
 extern "C" void* func_0202ae18();
 extern "C" Zone3D* func_02012fe4();
 extern "C" Foo020579b4* func_02057924();
@@ -132,7 +106,7 @@ extern "C" ARM void func_ov017_0218cbd4(GameResources* self) {
     unsigned int ticks = state->GetTickCount();
     Obj0203dd20* scales = (Obj0203dd20*)GetGlobalPtr021075f4();
     void** field = (void**)GetFieldPtrAt0x5ca4(state);
-    Global0218cbd4* global = (Global0218cbd4*)GetGlobalField0x1c020421a0();
+    MessageSystem* message = (MessageSystem*)GetGlobalField0x1c020421a0();
     ResetObj020d7a5c* reset = GetGlobalResetObj020d7a50();
     void* entries = GetData02153637();
     func_ov017_0218d8cc(self);
@@ -142,12 +116,11 @@ extern "C" ARM void func_ov017_0218cbd4(GameResources* self) {
     if (GetBitsInField0(&self->brightnessFlags_0, 0x4000)) dispatch = 1;
     Stub(self);
     func_ov017_021941fc(self);
-    Resources0218cbd4* fields = (Resources0218cbd4*)self;
     if (!paused) {
         CopyByteField0x253To0x252(actor);
-        fields->position = actor->obj3D_.position_;
+        (*(Vector3i*)(self->unknown_432c + 0x1c)) = actor->obj3D_.position_;
     }
-    InitObj0219a674(fields->initData);
+    InitObj0219a674((unsigned char*)(self->unknown_35a8 + 0x10c));
     if (!GetBitsInField0(&self->brightnessFlags_0, 4)) {
         func_02015438(world);
         if (dispatch) DispatchByFlag020d9834(1);
@@ -157,8 +130,8 @@ extern "C" ARM void func_ov017_0218cbd4(GameResources* self) {
     func_ov017_021a624c(self);
     if (GetHeadNodeIdOrMinusOne((HeadNode02046b24**)self->unknown_ptr_array_36fc[0]) != 3)
         func_ov017_0219a6b8(self);
-    if (global->pending && !static_cast<Flags0218cbd4*>(self->unknown_ptr_array_3afc[13])->active) {
-        Forward020444d4(reinterpret_cast<MessageSystem*>(global), ticks);
+    if (message->active && !((unsigned char*)self->unknown_ptr_array_3afc[13])[2]) {
+        Forward020444d4(message, ticks);
     }
     func_020966e0(self->unknown_ptr_4328);
     ClearIfMatchAndFinalize_021a3498((Ctx021a3498*)self->unknown_ptr_array_36fc[0]);
@@ -178,11 +151,11 @@ extern "C" ARM void func_ov017_0218cbd4(GameResources* self) {
     }
     int stateA = func_ov017_02196430(self);
     int stateB = func_ov017_02196c4c(self);
-    if (stateA == 2 || stateB == 2) fields->reset = 0;
+    if (stateA == 2 || stateB == 2) self->unknown_42e3[5] = 0;
     if (!paused) {
         func_ov017_021c25ac(self);
         if (GetHeadNodeIdOrMinusOne((HeadNode02046b24**)self->unknown_ptr_array_36fc[0]) != 3 &&
-            GetHeadNodeIdOrMinusOne((HeadNode02046b24**)self->unknown_ptr_array_36fc[0]) != 2 && !fields->blocked) {
+            GetHeadNodeIdOrMinusOne((HeadNode02046b24**)self->unknown_ptr_array_36fc[0]) != 2 && !((unsigned char*)self->unknown_35a8)[0xb0]) {
             func_ov017_021a476c(self);
             RunCombatantUpdatePipeline_0219755c((unsigned char*)self);
             func_ov017_021a51a4(self);
@@ -190,9 +163,9 @@ extern "C" ARM void func_ov017_0218cbd4(GameResources* self) {
         }
         if (GetHeadNodeIdOrMinusOne((HeadNode02046b24**)self->unknown_ptr_array_36fc[0]) != 3) {
             func_0208ec78(GetData02109020());
-            ProcessGrottoTurnEvent0208f4e4(reinterpret_cast<unsigned char*>(world->unk_2664));
+            ProcessGrottoTurnEvent0208f4e4((unsigned char*)world->unk_2664);
         }
-        if (!static_cast<Flags0218cbd4*>(self->unknown_ptr_array_3afc[13])->active) InitCombatantFlagsAndPropagateCapture((Obj0208b088*)GetData02108f0c());
+        if (!((unsigned char*)self->unknown_ptr_array_3afc[13])[2]) InitCombatantFlagsAndPropagateCapture((Obj0208b088*)GetData02108f0c());
         ApplyScaleToCombatants0203dd20(scales);
         if (dispatch) DispatchByFlag020d9834(0);
         func_ov017_0218d06c(self);

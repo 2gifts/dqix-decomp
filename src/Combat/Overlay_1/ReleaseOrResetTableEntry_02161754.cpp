@@ -3,7 +3,7 @@
 
 extern "C" int func_ov017_021d60f4(void*);
 
-struct Entry_203dce4 { int flags; };
+#include "Combat/EntryGetterTypes.h"
 struct EntryList_203dce4 { char pad[0xc]; struct Entry_203dce4* entries[0x20]; };
 extern void* GetGlobalPtr021075f4(void);
 extern struct Entry_203dce4* GetEntryUnlessFlag0x8000(struct EntryList_203dce4* list, int id);

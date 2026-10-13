@@ -1,11 +1,10 @@
 #include <globaldefs.h>
+#include "Resource/MessageUpdate.h"
 #include "std_library_functions.h"
 
 #if defined(jpn)
-extern "C" int func_02069430(void* obj, unsigned short token);
 enum { kTokenBase = 0xff22 };
 #else
-bool IsHighByteFF02044494(void* obj, void* src);
 enum { kTokenBase = 0xff20 };
 #endif
 
