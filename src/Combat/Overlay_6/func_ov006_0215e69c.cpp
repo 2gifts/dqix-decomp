@@ -17,6 +17,8 @@ struct Ctx0215e69c {
     unsigned short flags;
     char padae4[0x12a0 - 0xae4];
     Task0215e69c task;
+
+    Task0215e69c* GetTask() { return &task; }
 };
 
 struct Obj0215e69c {
@@ -98,9 +100,6 @@ extern "C" void _Z25SetByte_0215728c_0215728cPv(Ctx0215e69c* ctx);
 extern "C" void _Z35SetEntryLowNibbleAndElement02080c68Pvii(void* elements, int key, int value);
 extern "C" void _Z34ToggleElementFlagsAndByte_0215e5f8P20Flags394Obj_0215e5f8P7Obj2081iPh(Obj0215e69c* self, void* elements, int flag, unsigned char* out);
 
-// The ROM re-reads these fields after each conditional region instead of reusing the
-// earlier load, so the later reads go through accessors that reach the field by
-// different arithmetic than the plain member access.
 static inline short* ChancePtr(Obj0215e69c* self) { return (short*)((char*)self + 0x382); }
 static inline short* ChanceWords(Obj0215e69c* self) { return (short*)self; }
 
@@ -380,7 +379,7 @@ extern "C" ARM void func_ov006_0215e69c(Obj0215e69c* self) {
         if (self->field42f != 0) {
             self->field42c = 0;
         } else {
-            Task0215e69c* task = &ctx->task;
+            Task0215e69c* task = ctx->GetTask();
             if (!(task != 0 && task->active != 0) && _Z26CheckFlagOrByte55_02158c70v(self)) {
                 _Z29CallFunc0204c804OnMatchingKeyP7Obj2081i(self->elements, 0x12);
                 self->busy = 0;

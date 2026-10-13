@@ -7,28 +7,21 @@
 #endif
 #include <globaldefs.h>
 
-extern "C" unsigned int _Z14SetField0x1e20PvS_(unsigned int, unsigned int);
-extern "C" unsigned int _Z15InitSelfPointerPh(unsigned int);
-extern "C" unsigned int _Z18SetupField440Type1P19Field440Obj0202f6a4(unsigned int);
-extern "C" unsigned int _Z21CheckField0x440State2Ph(unsigned int);
-extern "C" unsigned int _Z26GetGlobalField0x1c020421a0v();
+struct Field440Obj0202f6a4;
+
+extern "C" void _Z14SetField0x1e20PvS_(void*, void*);
+extern "C" void _Z15InitSelfPointerPh(unsigned char*);
+extern "C" void _Z18SetupField440Type1P19Field440Obj0202f6a4(Field440Obj0202f6a4*);
+extern "C" int _Z21CheckField0x440State2Ph(unsigned char*);
+extern "C" unsigned char* _Z26GetGlobalField0x1c020421a0v();
 
 // KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
 // USA: func_0205cd28
-extern "C" ARM unsigned int _Z37SetupGlobalObjType1AndInitSelfPointerPh(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
-    unsigned int r4 = 0;
-    unsigned int r5 = 0;
-    r5 = r0;
-    r0 = (unsigned int)_Z26GetGlobalField0x1c020421a0v();
-    r4 = r0;
-    r1 = r5 + 0xb4;
-    r0 = (unsigned int)_Z14SetField0x1e20PvS_(r0, r1);
-    r0 = r4 + CONTROLLER_OFFSET_LO;
-    r0 = r0 + CONTROLLER_OFFSET_HI;
-    if (_Z21CheckField0x440State2Ph(r0) == 0) {
-        r0 = r4 + CONTROLLER_OFFSET_LO;
-        r0 = r0 + CONTROLLER_OFFSET_HI;
-        _Z18SetupField440Type1P19Field440Obj0202f6a4(r0);
+extern "C" ARM void _Z37SetupGlobalObjType1AndInitSelfPointerPh(unsigned char* self) {
+    unsigned char* global = _Z26GetGlobalField0x1c020421a0v();
+    _Z14SetField0x1e20PvS_(global, self + 0xb4);
+    if (_Z21CheckField0x440State2Ph(global + CONTROLLER_OFFSET_LO + CONTROLLER_OFFSET_HI) == 0) {
+        _Z18SetupField440Type1P19Field440Obj0202f6a4((Field440Obj0202f6a4*)(global + CONTROLLER_OFFSET_LO + CONTROLLER_OFFSET_HI));
     }
-    return _Z15InitSelfPointerPh(r4);
+    _Z15InitSelfPointerPh(global);
 }

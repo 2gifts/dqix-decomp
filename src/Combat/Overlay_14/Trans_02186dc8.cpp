@@ -14,12 +14,12 @@
 #include <globaldefs.h>
 
 extern "C" unsigned int _Z28CallFunc0204b088OverList0x2cP12Cont0207fd88(unsigned int);
-extern "C" unsigned int func_ov014_02185c90(unsigned int);
+extern "C" void func_ov014_02185c90(char*);
 
 // USA: func_ov014_02186dc8  (semantic: Trans_02186dc8)
-extern "C" ARM unsigned int func_ov014_02186dc8(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
-    if (*(unsigned char*)((char*)r0 + 0x17a) != 0) {
-        _Z28CallFunc0204b088OverList0x2cP12Cont0207fd88(*(unsigned int*)((char*)r0 + 0xc0));
+extern "C" ARM void func_ov014_02186dc8(char* self) {
+    if (*(unsigned char*)(self + 0x17a) != 0) {
+        _Z28CallFunc0204b088OverList0x2cP12Cont0207fd88(*(unsigned int*)(self + 0xc0));
     }
-    return func_ov014_02185c90(r0);
+    func_ov014_02185c90(self);
 }

@@ -1,40 +1,30 @@
 #include <globaldefs.h>
 
-extern "C" unsigned int _Z26CopyInternalFields0207df50P11Foo0207df50(unsigned int);
-extern "C" unsigned int _ZN13SafeAllocator4FreeEPv(unsigned int, unsigned int);
-extern "C" unsigned int _ZN13SafeAllocator7DestroyEv(unsigned int, unsigned int);
-extern "C" unsigned int _ZNK13SafeAllocator18GetSignedAllocatorEv(unsigned int);
-extern "C" unsigned int func_ov025_021e8bc4(unsigned int, unsigned int);
+struct SafeAllocator;
+struct Foo0207df50;
+
+struct Trans_021e8af8_Obj {
+    char pad[0x10];
+    SafeAllocator* allocators[4];
+    Foo0207df50* fields[4];
+    unsigned char index;
+};
+
+extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(Foo0207df50*);
+extern "C" void _ZN13SafeAllocator4FreeEPv(SafeAllocator*, void*);
+extern "C" void _ZN13SafeAllocator7DestroyEv(SafeAllocator*, unsigned int);
+extern "C" void* _ZNK13SafeAllocator18GetSignedAllocatorEv(SafeAllocator*);
+extern "C" void func_ov025_021e8bc4(Trans_021e8af8_Obj*, unsigned int);
 
 // USA: func_ov025_021e8af8  (semantic: Trans_021e8af8)
-extern "C" ARM unsigned int func_ov025_021e8af8(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
-    unsigned int r4 = 0;
-    unsigned int r5 = 0;
-    r4 = r0;
-    r1 = *(unsigned char*)((char*)r4 + 0x30);
-    if (r1 == 0) { return r0; }
-    r0 = (unsigned int)func_ov025_021e8bc4(r0, r1);
-    r0 = *(unsigned char*)((char*)r4 + 0x30);
-    r0 = r4 + (r0 << 2);
-    r0 = *(unsigned int*)((char*)r0 + 0x10);
-    r0 = (unsigned int)_ZNK13SafeAllocator18GetSignedAllocatorEv(r0);
-    r1 = *(unsigned char*)((char*)r4 + 0x30);
-    r5 = r0;
-    r0 = r4 + (r1 << 2);
-    r0 = *(unsigned int*)((char*)r0 + 0x10);
-    r0 = (unsigned int)_ZN13SafeAllocator7DestroyEv(r0, r1);
-    r0 = *(unsigned char*)((char*)r4 + 0x30);
-    r1 = r5;
-    r0 = r0 - 0x1;
-    r0 = r4 + (r0 << 2);
-    r0 = *(unsigned int*)((char*)r0 + 0x10);
-    r0 = (unsigned int)_ZN13SafeAllocator4FreeEPv(r0, r1);
-    r0 = *(unsigned char*)((char*)r4 + 0x30);
-    r0 = r4 + (r0 << 2);
-    r0 = *(unsigned int*)((char*)r0 + 0x20);
-    r0 = (unsigned int)_Z26CopyInternalFields0207df50P11Foo0207df50(r0);
-    r0 = *(unsigned char*)((char*)r4 + 0x30);
-    r0 = r0 - 0x1;
-    *(unsigned char*)((char*)r4 + 0x30) = (unsigned char)r0;
-    return r0;
+extern "C" ARM void func_ov025_021e8af8(Trans_021e8af8_Obj* self) {
+    if (self->index == 0) {
+        return;
+    }
+    func_ov025_021e8bc4(self, self->index);
+    void* signedAllocator = _ZNK13SafeAllocator18GetSignedAllocatorEv(self->allocators[self->index]);
+    _ZN13SafeAllocator7DestroyEv(self->allocators[self->index], self->index);
+    _ZN13SafeAllocator4FreeEPv(self->allocators[self->index - 1], signedAllocator);
+    _Z26CopyInternalFields0207df50P11Foo0207df50(self->fields[self->index]);
+    self->index--;
 }
