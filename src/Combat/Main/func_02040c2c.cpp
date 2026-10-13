@@ -43,7 +43,7 @@ struct Object3D {
     char pad_ae[0xc0 - 0xae];
     unsigned int limit_c0;
 
-    unsigned int GetLimit() { unsigned int v = limit_c0; return v; }
+    unsigned int GetLimit() { return limit_c0; }
 
     void SetDiffuseColor(unsigned int value);
     void AdvanceEffects();
@@ -66,7 +66,7 @@ struct TargetA02040c2c {
     char pad_60[0x88 - 0x60];
     unsigned int f88;
 
-    unsigned int GetLimit() { unsigned int v = f88; return v; }
+    unsigned int GetLimit() { return f88; }
 };
 
 struct Obj02040c2c {
@@ -124,7 +124,7 @@ extern "C" ARM void func_02040c2c(struct Obj02040c2c* self, int p1, int p2, unsi
             if (!(self->flags & 1) && !(self->flags & 0x20000)) {
                 if (self->cont != 0 && self->cont->mode != 0) {
                     struct TargetA02040c2c* a = self->a;
-                    if (!(a->flags5c & 1) && self->timer < a->GetLimit()) {
+                    if (!(a->flags5c & 1) && self->timer < self->a->GetLimit()) {
                         v30 = a->v4;
                         switch (self->cont->mode) {
                         case 7:
@@ -157,7 +157,7 @@ extern "C" ARM void func_02040c2c(struct Obj02040c2c* self, int p1, int p2, unsi
                 if (self->cont != 0 && self->cont->mode != 0) {
                     struct Object3D* b = self->b;
                     if (!(b->flags_ac & 1)) {
-                        if (self->timer < b->GetLimit()) {
+                        if (self->timer < self->b->GetLimit()) {
                             switch (self->cont->mode) {
                             case 7:
                             case 8:
