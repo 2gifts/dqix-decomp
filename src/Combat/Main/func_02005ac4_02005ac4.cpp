@@ -1,9 +1,10 @@
 #include <globaldefs.h>
 
-extern "C" ARM double func_0200ab28(double a, double b); // dadd
-extern "C" ARM double _ddiv(double a, double b);          // ddiv
-extern "C" ARM double func_02008f3c(double x);             // fabs
-extern "C" ARM double func_02008848(double x);              // atan
+extern "C" ARM double func_0200ab28(double a, double b);
+extern "C" ARM double func_0200b608(double a, double b);
+extern "C" ARM double _ddiv(double a, double b);
+extern "C" ARM double func_02008f3c(double x);
+extern "C" ARM double func_02008848(double x);
 
 // USA: func_02005ac4
 #pragma optimize_for_size off
@@ -13,20 +14,20 @@ extern "C" ARM double func_02005ac4(double y, double x) {
     int iy = hy & 0x7fffffff;
     unsigned lx = ((unsigned*)&x)[0];
     int ix = hx & 0x7fffffff;
-    unsigned ly = ((unsigned*)&y)[0];
+    unsigned ly = ((int*)&y)[0];
 
     if (((ix | ((lx | -lx) >> 31)) > 0x7ff00000) ||
         ((iy | ((ly | -ly) >> 31)) > 0x7ff00000)) {
         return func_0200ab28(x, y);
     }
-    if (((hx - 0x3ff00000) | (int)lx) == 0) return func_02008848(*(volatile double*)&y);
+    if (((hx - 0x3ff00000) | (int)lx) == 0) return func_02008848(y);
 
     int m = ((hy >> 31) & 1) | ((hx >> 30) & 2);
 
     if ((iy | ly) == 0) {
         switch (m) {
             case 0:
-            case 1: return *(volatile double*)&y;
+            case 1: return y;
             case 2: return 3.1415926535897931160e+00 + 1.0e-300;
             case 3: return -3.1415926535897931160e+00 - 1.0e-300;
         }
@@ -75,8 +76,8 @@ extern "C" ARM double func_02005ac4(double y, double x) {
             *hzp = *hzp ^ 0x80000000;
             return z;
         }
-        case 2: return ((3.1415926535897931160e+00) - (((z) - (1.2246467991473531772e-16))));
-        default: return ((((z) - (1.2246467991473531772e-16))) - (3.1415926535897931160e+00));
+        case 2: return 3.1415926535897931160e+00 - (z - 1.2246467991473531772e-16);
+        default: return (z - 1.2246467991473531772e-16) - 3.1415926535897931160e+00;
     }
 }
 #pragma optimize_for_size reset
