@@ -46,7 +46,6 @@ void SetObjFieldIfFound_0219bed0(void*);
 unsigned char GetByte0x4(char*);
 int GetWord0x7f6c(void*);
 int GetField0x3acValue(GameState*);
-void* GetElementStride0x70(unsigned char*, int);
 extern "C" int func_020321e0(const Vector3fix*, Bounds*, int, const Vector3fix*, int);
 extern "C" void* func_ov017_0219c6f4(void*);
 unsigned char GetByteField0x252(void*);
@@ -90,9 +89,9 @@ extern "C" ARM void func_ov017_0219ca88(GameResources* resources) {
         if (eligible) {
             actorPosition = (Vector3fix*)&actor->obj3D_.position_;
             Vector3fix position = *actorPosition;
-            for (int entryIndex = 0; entryIndex < *reinterpret_cast<int*>(container->substruct_6c_ + 0x1c); ++entryIndex) {
+            for (int entryIndex = 0; entryIndex < container->substruct_6c_.arraySize68_; ++entryIndex) {
                 GetField0x3acValue(game);
-                Entry0219ca88* entry = (Entry0219ca88*)GetElementStride0x70(reinterpret_cast<unsigned char*>(container->substruct_6c_), entryIndex);
+                Entry0219ca88* entry = (Entry0219ca88*)GetElementStride0x70(&container->substruct_6c_, entryIndex);
                 if (func_020321e0(&position, &entry->bounds, entry->boundsAngle, &entry->pivot, entry->radiusSquared)) {
                     func_ov017_0219c6f4(entry);
                     handled = 1;

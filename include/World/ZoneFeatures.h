@@ -248,3 +248,4 @@ public:
 
 ZoneFeatures::Opcode6aEntry* FindNodeKind9ById(ZoneFeatures* features, int id);
 ZoneFeatures::Opcode6aEntry* GetElementStride0x74(ZoneFeatures* features, int index);
+void* GetElementStride0x70(ZoneFeatures* features, int index);
