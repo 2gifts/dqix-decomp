@@ -1,17 +1,7 @@
 #include <globaldefs.h>
-
+#include "System/Graphics.h"
 
 // USA: func_ov023_021ec3f4  (semantic: Trans_021ec3f4)
-extern "C" ARM unsigned int func_ov023_021ec3f4(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
-    unsigned int r12 = 0;
-    unsigned int r14 = 0;
-    r14 = 0x400000e;
-    r12 = *(unsigned short*)((char*)r14 + 0x0);
-    r12 = r12 & 0x43;
-    r0 = r12 | (r0 << 14);
-    r0 = r0 | (r1 << 7);
-    r0 = r0 | (r2 << 8);
-    r0 = r0 | (r3 << 2);
-    *(unsigned short*)((char*)r14 + 0x0) = (unsigned short)r0;
-    return r0;
+extern "C" ARM void func_ov023_021ec3f4(int screenSize, int colorMode, int screenBase, int charBase) {
+    BG3CNT = (unsigned short)((BG3CNT & 0x43) | (screenSize << 14) | (colorMode << 7) | (screenBase << 8) | (charBase << 2));
 }

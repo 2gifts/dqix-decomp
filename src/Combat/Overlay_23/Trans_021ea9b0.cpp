@@ -1,19 +1,21 @@
 #include <globaldefs.h>
 
-extern "C" unsigned int func_02012fe4();
-extern "C" unsigned int func_ov017_021d6134(unsigned int, unsigned int);
+struct Flags021ea9b0 {
+    char pad[0xc];
+    unsigned char low : 4;
+    unsigned char flag : 1;
+};
+
+struct Owner021ea9b0 {
+    char pad[0x8];
+    Flags021ea9b0* flags;
+};
+
+extern "C" Owner021ea9b0* func_02012fe4(void);
+extern "C" void func_ov017_021d6134(void* obj, int enable);
 
 // USA: func_ov023_021ea9b0  (semantic: Trans_021ea9b0)
-extern "C" ARM unsigned int func_ov023_021ea9b0(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
-    unsigned int r4 = 0;
-    r4 = r0;
-    r0 = (unsigned int)func_02012fe4();
-    r1 = *(unsigned int*)((char*)r0 + 0x8);
-    r0 = r4;
-    r1 = *(unsigned char*)((char*)r1 + 0xc);
-    r1 = r1 << 0x1b;
-    r1 = r1 >> 0x1f;
-    r0 = (unsigned int)func_ov017_021d6134(r0, r1);
-    r0 = 0x1;
-    return r0;
+extern "C" ARM int func_ov023_021ea9b0(void* obj) {
+    func_ov017_021d6134(obj, func_02012fe4()->flags->flag);
+    return 1;
 }
