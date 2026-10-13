@@ -112,7 +112,8 @@ extern "C" short func_ov002_021538e4(char** obj, Elem_021665b0* elem, void* sub,
 extern "C" void func_ov002_021594e8(Menu_021665b0* self, int key, int target, int actor);
 extern "C" char* _Z26GetGlobalField0x1c020421a0v(void);
 extern "C" int _Z25TestFlag0SetAndFlag1ClearPti(unsigned short* flags, int mask);
-extern "C" int _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(char* obj, int key);
+struct Obj_0205da38;
+int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 extern "C" int func_0205d97c(char* obj);
 extern "C" int _Z29CheckFlagOrThreshold_02161b48Pci(Menu_021665b0* self, int flag);
 extern "C" void _Z24ReinitController02043204Pc(char* ctl);
@@ -669,7 +670,7 @@ extern "C" ARM void func_ov002_021665b0(Menu_021665b0* self) {
         if (!(result != 0 && result != 1)) {
             ctl[0x19ca] = 0;
             int pressed = _Z25TestFlag0SetAndFlag1ClearPti(&data_02114e30, 0x601);
-            int cancel = (pressed | _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38((char*)self + 0xec8, 0x14)) ? 1 : 0;
+            int cancel = (pressed | IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)((char*)self + 0xec8), 0x14)) ? 1 : 0;
             int single = func_0205d97c((char*)self + 0xec8) == 1 ? 1 : 0;
             int flagged = _Z29CheckFlagOrThreshold_02161b48Pci(self, 1);
             int left = _Z25TestFlag0SetAndFlag1ClearPti(&data_02114e30, 0xf0);

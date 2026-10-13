@@ -67,7 +67,8 @@ extern Obj0205eaa0 data_02108760;
 extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(struct Struct_0205c570* s);
 extern "C" void _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii(struct Struct_0205def8* s, int set, int key);
 int TestFlag0SetAndFlag1Clear(unsigned short* flags, int mask);
-extern "C" int _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(void* obj, int flag);
+struct Obj_0205da38;
+int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0* obj, int a, int b);
 unsigned char* GetFieldAt0x150(unsigned char* member);
 extern "C" int _Z35CheckFlagsOrField_0217ab48_0217ab48Pv(void* menu);
@@ -94,7 +95,7 @@ extern "C" ARM int func_ov000_0217b518(BattleSubMenu* menu, int arg1, int arg2)
         return -1;
     }
     int pressed = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
-    bool cancel = (pressed | _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(menu->list, 0x14)) ? 1 : 0;
+    bool cancel = (pressed | IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)menu->list, 0x14)) ? 1 : 0;
     if (cancel || menu->forceClose) {
         _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii((struct Struct_0205def8*)window->elements, 0, 0x22);
         _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
@@ -141,7 +142,7 @@ extern "C" ARM int func_ov000_0217b518(BattleSubMenu* menu, int arg1, int arg2)
         return -1;
     }
     int pressed = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
-    int cancel = (pressed | _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(menu->list, 0x14)) ? 1 : 0;
+    int cancel = (pressed | IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)menu->list, 0x14)) ? 1 : 0;
     if (cancel || menu->forceClose) {
         _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii((struct Struct_0205def8*)window->elements, 0, 0x22);
         _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);

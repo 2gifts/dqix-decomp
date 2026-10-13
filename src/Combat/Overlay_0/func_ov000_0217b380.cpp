@@ -26,7 +26,8 @@ extern struct Data0217b380 data_ov000_02184294;
 struct Struct_0205c570;
 extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(struct Struct_0205c570* s);
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
-extern "C" int _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(struct Struct_0205c570* window, int element);
+struct Obj_0205da38;
+int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 int GetClampedArrayField0xd1c(char* base, int index);
 extern "C" int _Z27CountMatchingValues02175348Pvi(void* obj, int value);
 struct Obj0205eaa0;
@@ -56,9 +57,9 @@ extern "C" ARM int func_ov000_0217b380(struct MenuState0217b380* self, int arg1,
     int base = _Z26GetActiveScaledSum0205d794P15Struct_0205c570(self->window);
     self->selection = base;
     int pressed = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
-    int confirm = (pressed | _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(self->window, 0x14)) != 0;
+    int confirm = (pressed | IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)self->window, 0x14)) != 0;
     if (confirm) {
-        if (_Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(self->window, 0x14)) {
+        if (IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)self->window, 0x14)) {
             int value = GetClampedArrayField0xd1c((char*)data_ov000_02184294.menu, base);
             int matches = _Z27CountMatchingValues02175348Pvi(data_ov000_02184294.menu, value);
             self->selection = NextRandomMax(GetBTRandom(), matches * 100) / 100 + (signed char)base;

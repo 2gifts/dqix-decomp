@@ -24,7 +24,7 @@ struct TailNode020469b4;
 void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char keyLow, unsigned char keyHigh);
 int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
 int TestFlag0SetAndFlag1Clear(unsigned short *p, int n);
-int IsActiveElementFlag2Set0205da38(struct Obj_0205da38 *o);
+int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0 *o, int a, int b);
 int CheckFlagOrThreshold_02161b48(char *base, int a);
 void SetElementFieldC2(struct Struct_0205d81c *s, int a, int b);
@@ -73,7 +73,7 @@ extern "C" ARM void func_ov002_02165b44(char *base) {
         func_ov002_02161b98(base);
         *(short *) (base + 0x1b00 + 0xfc) = GetActiveScaledSum0205d794((struct Struct_0205c570 *) (base + 0x2c8 + 0xc00));
         int ta                            = TestFlag0SetAndFlag1Clear(data_02114e30, 0x601);
-        int tb = ((int (*)(void *, int)) IsActiveElementFlag2Set0205da38)(base + 0x2c8 + 0xc00, 0x14);
+        int tb = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(base + 0x2c8 + 0xc00), 0x14);
         if ((ta | tb) ? 1 : 0) {
             GameState *gs = GameState::GetInstance();
             int id        = *(signed char *) (base + 0x1c00 + 0x20);

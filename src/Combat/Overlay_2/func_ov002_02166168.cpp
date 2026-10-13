@@ -21,7 +21,8 @@ extern "C" char *_Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_02
 extern "C" int _Z30IsElementFlagBit40Set_0216197ciP15Struct_0205d81c(int key, struct Struct_0205d81c *s);
 extern "C" void func_ov002_0215b9a4(void *self, int mode, int flag);
 int TestFlag0SetAndFlag1Clear(unsigned short *pad, int buttons);
-extern "C" int _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(void *obj, int flag);
+struct Obj_0205da38;
+int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 extern "C" Obj020d7aa0 *_Z25GetGlobalResetObj020d7a50v();
 extern "C" void _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0(Obj020d7aa0 *obj);
 extern "C" void func_ov002_02156080(void *self, short *out, short *outCount);
@@ -71,7 +72,7 @@ extern "C" ARM void func_ov002_02166168(char *self) {
             func_ov002_0215b9a4(self, 0x16, 0);
         }
         int t  = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
-        int u  = _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(OBJ, 0x14);
+        int u  = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)OBJ, 0x14);
         int ok = (t | u) ? 1 : 0;
         if (ok) {
             unsigned int f = *(unsigned int *) (self + 0x247c);

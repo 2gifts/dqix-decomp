@@ -22,7 +22,8 @@ int TestFlagMask(unsigned short *pad, int mask);
 int TestFlag0SetAndFlag1Clear(unsigned short *pad, int buttons);
 extern "C" int func_0205df38(void *obj, int key);
 extern "C" void func_ov002_0215b458(char *self, int v);
-extern "C" int _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(void *obj, int flag);
+struct Obj_0205da38;
+int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 int GetField0x3acValue(GameState *gs);
 extern "C" Obj020d7aa0 *_Z25GetGlobalResetObj020d7a50v();
 extern "C" void _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0(Obj020d7aa0 *obj);
@@ -100,7 +101,7 @@ extern "C" ARM void func_ov002_02162964(char *self) {
             return;
         }
         int t  = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
-        int u  = _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(OBJ, 0x14);
+        int u  = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)OBJ, 0x14);
         int ok = (t | u) ? 1 : 0;
         if (ok || pick) {
             *(unsigned char *) (self + 0x1c21) = GetField0x3acValue(GameState::GetInstance());

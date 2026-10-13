@@ -12,7 +12,7 @@ extern "C" void _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci(Struct_0205bcdc*,
 extern "C" void func_0205bb04(void*, int);
 extern "C" void _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii(Struct_0205def8*, int, int);
 int TestFlag0SetAndFlag1Clear(unsigned short*, int);
-extern "C" int _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(Obj_0205da38*);
+int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0*, int, int);
 #if defined(jpn)
 extern "C" void func_ov000_02171e60(void*);
@@ -103,7 +103,7 @@ extern "C" ARM int func_ov000_0217b8a4(Menu0217b8a4* obj, int arg1, int arg2) {
     _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii((Struct_0205def8*)context->list, 1, 0x24);
     if (previous != cursor) return -1;
     int flag = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
-    int active = (flag | ((int (*)(Obj_0205da38*, int))_Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38)((Obj_0205da38*)obj->window, 0x14)) != 0;
+    int active = (flag | IsActiveElementFlag2Set0205da38((Obj_0205da38*)obj->window, 0x14)) != 0;
     if (active || obj->field_444) {
         MenuItem0217b8a4* item = obj->items[cursor];
         if (!item) return -1;

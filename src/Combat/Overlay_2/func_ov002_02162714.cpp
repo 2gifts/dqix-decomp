@@ -11,7 +11,8 @@ extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(struct S
 extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(struct Struct_0205c570 *s);
 extern "C" int _Z29CheckFlagOrThreshold_02161b48Pci(char *self, int flag);
 int TestFlag0SetAndFlag1Clear(unsigned short *obj, int mask);
-extern "C" int _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(void *obj, int key);
+struct Obj_0205da38;
+int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 int GetWord0x0(int *p);
 void *GetFieldAt0x150(unsigned char *p);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0 *obj, int a, int b);
@@ -44,7 +45,7 @@ extern "C" ARM void func_ov002_02162714(char *self) {
             return;
         }
         int a  = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
-        int b  = _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(self + 0xec8, 0x14);
+        int b  = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(self + 0xec8), 0x14);
         int ok = (a | b) ? 1 : 0;
         if (ok) {
             int flags = *(int *) (self + 0x247c);

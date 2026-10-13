@@ -9,7 +9,8 @@ struct Obj0205eaa0;
 extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(struct Struct0205de24 *obj, unsigned char keyLow,
                                                                         unsigned char keyHigh);
 extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(struct Struct_0205c570 *s);
-extern "C" int _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(void *o, int key);
+struct Obj_0205da38;
+int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0 *o, int a, int b);
 int TestFlag0SetAndFlag1Clear(unsigned short *flags, int mask);
 extern "C" int _Z29CheckFlagOrThreshold_02161b48Pci(char *self, int flag);
@@ -41,7 +42,7 @@ extern "C" ARM void func_ov002_02167eb0(char *base) {
     *(short *) (base + 0x1c04) = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((struct Struct_0205c570 *) (base + 0xec8));
     if (old != *(short *) (base + 0x1c04)) return;
     int pressed = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
-    int confirm = (pressed | _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(base + 0xec8, 0x14)) ? 1 : 0;
+    int confirm = (pressed | IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(base + 0xec8), 0x14)) ? 1 : 0;
     if (confirm) {
         func_ov002_0215b9a4(base, *(int *) (base + 0x1bb8) & 0xff, 1);
         _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0 *) data_02108760, 1, 0);

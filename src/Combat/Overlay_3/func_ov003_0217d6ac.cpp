@@ -10,7 +10,8 @@ struct Container0205a330;
 extern "C" void _Z22IterateEntries0205a330P17Container0205a330i(struct Container0205a330 *c, int arg);
 struct Struct_0205c570;
 extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(struct Struct_0205c570 *s);
-extern "C" int _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(void *a, int b);
+struct Obj_0205da38;
+int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 extern unsigned short data_02114e30;
 int TestFlag0SetAndFlag1Clear(unsigned short *obj, int mask);
 extern "C" int func_0205d97c(void *p);
@@ -108,7 +109,7 @@ extern "C" ARM void func_ov003_0217d6ac(State_0217d6ac *self) {
         extra = func_ov003_0217e1e4(self);
     }
     sel = -1;
-    if (_Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(self->list, 0x14) == 1) {
+    if (IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)self->list, 0x14) == 1) {
         sel = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((struct Struct_0205c570 *) self->list);
     } else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601) != 0) {
         sel = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((struct Struct_0205c570 *) self->list);

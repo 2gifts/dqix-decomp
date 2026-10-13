@@ -8,7 +8,8 @@ struct Obj0205eaa0;
 extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(struct Struct_0205c570* s);
 extern "C" void _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii(struct Struct_0205def8* s, int clear, int key);
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
-extern "C" int _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(void* obj, int key);
+struct Obj_0205da38;
+int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 extern "C" int _Z20IsBitFlagSet0217c4e8Pvi(void* obj, int bit);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0* obj, int a, int b);
 extern "C" void func_ov000_021716d0(void* obj);
@@ -104,7 +105,7 @@ extern "C" ARM int func_ov000_0217b6d0(MenuObj_0217b6d0* obj, int arg1, int arg2
         return -1;
     }
     int t = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
-    bool active = (t | _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(obj->window, 0x14)) != 0;
+    bool active = (t | IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)obj->window, 0x14)) != 0;
     if (active || obj->field444 != 0) {
         if (!_Z20IsBitFlagSet0217c4e8Pvi(obj, cur)) {
             return obj->selections[obj->depth];
@@ -151,7 +152,7 @@ extern "C" ARM int func_ov000_0217b6d0(MenuObj_0217b6d0* obj, int arg1, int arg2
         return -1;
     }
     int t = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
-    int active = (t | _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(obj->window, 0x14)) != 0;
+    int active = (t | IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)obj->window, 0x14)) != 0;
     if (active || obj->field444 != 0) {
         if (!_Z20IsBitFlagSet0217c4e8Pvi(obj, cur)) {
             return obj->selections[obj->depth];

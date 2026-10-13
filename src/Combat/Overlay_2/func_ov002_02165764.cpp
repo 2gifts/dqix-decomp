@@ -25,7 +25,8 @@ extern "C" void func_ov002_02161b98(char *self);
 extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(struct Struct_0205c570 *s);
 extern "C" int _Z30IsElementFlagBit40Set_0216197ciP15Struct_0205d81c(int key, struct Struct_0205d81c *s);
 int TestFlag0SetAndFlag1Clear(unsigned short *pad, int buttons);
-extern "C" int _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(void *obj, int flag);
+struct Obj_0205da38;
+int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 char *GetCombatantChecked(GameState *gs, int id);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0 *obj, int a, int b);
 extern "C" int func_ov002_0215b720(char *self, int id);
@@ -70,7 +71,7 @@ extern "C" ARM void func_ov002_02165764(char *self) {
             func_ov002_0215b9a4(self, *(int *) (self + 0x1bb8) & 0xff, 0);
         }
         int t  = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
-        int u  = _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(OBJ, 0x14);
+        int u  = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)OBJ, 0x14);
         int ok = (t | u) ? 1 : 0;
         if (ok) {
             *(unsigned char *) (self + 0x1c84) = 3;

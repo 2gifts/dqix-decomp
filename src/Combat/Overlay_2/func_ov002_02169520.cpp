@@ -8,7 +8,7 @@ struct Obj0205eaa0;
 extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(struct Struct0205de24 *obj, unsigned char keyLow,
                                                                         unsigned char keyHigh);
 extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(struct Struct_0205c570 *s);
-extern "C" int _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(void *o, int key);
+int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0 *o, int a, int b);
 int TestFlag0SetAndFlag1Clear(unsigned short *flags, int mask);
 extern "C" int _Z29GetField110ArrayValue021574d4Pvi(void *self, int idx);
@@ -37,7 +37,7 @@ extern "C" ARM void func_ov002_02169520(char *base) {
     if (old != *(short *) (base + 0x1c08)) *(int *) (base + 0x1bcc) = 1;
     *(signed char *) (base + 0x1c20) = _Z29GetField110ArrayValue021574d4Pvi(base, *(short *) (base + 0x1c08));
     int pressed                      = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
-    int cancel = (pressed | _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(base + 0xec8, 0x14)) ? 1 : 0;
+    int cancel = (pressed | IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(base + 0xec8), 0x14)) ? 1 : 0;
     if (cancel) {
         *(unsigned char *) (base + 0xf80) = *(int *) (base + 0x1bb8);
         *(int *) (base + 0x247c) &= ~4;

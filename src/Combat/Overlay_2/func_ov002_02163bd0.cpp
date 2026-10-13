@@ -27,7 +27,7 @@ extern "C" int func_0205df38(void *list, int key);
 extern "C" int _Z27CheckAnyByteMatches020dcbbcPhiiii(unsigned char *arr, int count, int b, int c, int d);
 void SetElementFieldC2(struct Struct_0205d81c *s, int a, int b);
 int TestFlag0SetAndFlag1Clear(unsigned short *p, int n);
-extern "C" int _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(struct Obj_0205da38 *o);
+int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0 *o, int a, int b);
 extern "C" int _Z24LookupValueByKey020a0b3cP14KeyMap020a0b3ci(struct KeyMap020a0b3c *map, int key);
 extern "C" int _Z25DecrementKeyValue020a0a08P14KeyMap020a0a08ii(struct KeyMap020a0a08 *map, int key, signed char amount);
@@ -128,7 +128,7 @@ extern "C" ARM void func_ov002_02163bd0(char *base) {
         SetElementFieldC2((struct Struct_0205d81c *) L(base), 0xd, 1);
         if (old != *(short *) (base + 0x1b00 + 0xee)) return;
         int ta = TestFlag0SetAndFlag1Clear(data_02114e30, 0x601);
-        int tb = ((int (*)(void *, int)) _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38)(L(base), 0x14);
+        int tb = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(L(base)), 0x14);
         if (((ta | tb) ? 1 : 0) || flag) {
             GameObject *pr = gs->GetProtagonist();
             if (pr != NULL) {

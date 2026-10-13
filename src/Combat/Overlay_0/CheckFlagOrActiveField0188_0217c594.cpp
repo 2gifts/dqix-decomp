@@ -1,7 +1,8 @@
 #include <globaldefs.h>
 
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
-extern "C" int _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(void* a, int b);
+struct Obj_0205da38;
+int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 extern unsigned short data_02114e30;
 extern int data_ov000_02184294;
 
@@ -22,6 +23,6 @@ extern "C" ARM int func_ov000_0217c594(void* objRaw, int limit) {
     }
     *(void**)((char*)&data_ov000_02184294 + activeObjectOffset) = objRaw;
     int a = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
-    int b = _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(obj + 0x188, 0x14);
+    int b = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(obj + 0x188), 0x14);
     return (a | b) != 0;
 }

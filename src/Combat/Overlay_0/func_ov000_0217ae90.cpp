@@ -41,9 +41,9 @@ int GetFieldByKey020e0434(Container020e0310*,int);
 void SwapGlobalEntry0203c108(Obj0203c108*,char*);
 int CheckFlagsOrField_0217ab48_0217ab48(void*);
 void ResetEntryList0205d6a0(Entry_0205d6a0*,int);
+int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 extern "C" {
 void func_02012fe4();
-bool _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(Obj_0205da38*,int);
 void* _Z16GetStoredWorkPtrv(GlobalRoot*);
 int func_ov000_0217c2a0(void*);int func_ov000_0217aa78(void*,int,int);
 void func_ov000_0217c32c(void*);void func_ov000_02171c04(void*);
@@ -61,7 +61,7 @@ extern "C" ARM int func_ov000_0217ae90(Root* self)
     command->kind=0;
     data_ov000_02184294.root->flags|=0x100;
     bool flag=TestFlag0SetAndFlag1Clear(data_02114e30,0x601);
-    bool active=flag | _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38((Obj_0205da38*)self->active,20);
+    bool active=flag | IsActiveElementFlag2Set0205da38((Obj_0205da38*)self->active,20);
     if(active){
         self->flag=0;
         data_ov000_02184294.work=_Z16GetStoredWorkPtrv(data_ov000_02184294.root);

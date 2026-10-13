@@ -11,7 +11,7 @@ extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(struct S
                                                                         unsigned char keyHigh);
 extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(struct Struct_0205c570 *s);
 int TestFlag0SetAndFlag1Clear(unsigned short *p, int n);
-extern "C" int _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(struct Obj_0205da38 *o);
+int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0 *o, int a, int b);
 extern "C" int _Z29CheckFlagOrThreshold_02161b48Pci(char *base, int a);
 void SelectCoordsByFlag0x24(unsigned char *p, int *x, int *y);
@@ -94,7 +94,7 @@ extern "C" ARM void func_ov002_02169bb0(char *base) {
             }
         }
         int a = TestFlag0SetAndFlag1Clear(data_02114e30, 0x601);
-        int b = ((int (*)(void *, int)) _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38)(base + 0x2c8 + 0xc00, 0x14);
+        int b = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(base + 0x2c8 + 0xc00), 0x14);
         if (((a | b) ? 1 : 0) && *(short *) (base + 0x1c00 + 0xe) == 2) {
             _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0 *) data_02108760, 1, 0);
             *(unsigned int *) (base + 0x2000 + 0x47c) &= ~4;

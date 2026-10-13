@@ -17,7 +17,8 @@ extern "C" void func_ov002_02161b98(char *self);
 extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(struct Struct_0205c570 *s);
 extern "C" void func_ov002_0215bba8(char *self);
 int TestFlag0SetAndFlag1Clear(unsigned short *pad, int buttons);
-extern "C" int _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(void *obj, int flag);
+struct Obj_0205da38;
+int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 extern "C" int _Z24NextIndexOrZero_0215a9b4Pvs(void *self, short idx);
 extern "C" int _Z25GetShortFromTable0206e3d4ii(int a, int b);
 extern "C" char *_Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_0205d81c *s, int key);
@@ -68,7 +69,7 @@ extern "C" ARM void func_ov002_0216994c(char *self) {
         func_ov002_0215bba8(self);
     }
     int a  = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
-    int b  = _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(self + 0x2c8 + 0xc00, 0x14);
+    int b  = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(self + 0x2c8 + 0xc00), 0x14);
     int ok = (a | b) ? 1 : 0;
     if (ok) {
         int next = _Z24NextIndexOrZero_0215a9b4Pvs(self, *(short *) (self + 0x1c0c));

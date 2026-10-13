@@ -26,7 +26,8 @@ extern "C" void func_ov002_0216bfd4(char* self, int v);
 extern "C" int _Z29CheckFlagOrThreshold_02161b48Pci(char* self, int v);
 extern "C" void _Z27EnqueueEventTag170_021d0198iiii(int a, int b, int c, int d);
 extern "C" int _Z25TestFlag0SetAndFlag1ClearPti(unsigned short* obj, int mask);
-extern "C" int _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(char* obj, int v);
+struct Obj_0205da38;
+int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 extern "C" void func_ov002_0216c28c(char* self, int v);
 extern "C" void _Z30SetField9a0AndIncrementField78P14Struct020444bc(char* g);
 extern "C" void func_ov016_0218b5c0(int a, int b);
@@ -260,7 +261,7 @@ extern "C" ARM void func_ov002_0216acf0(char* self) {
             if (ticks == 0) ticks = 1;
             int ok = 0;
             int flag = _Z25TestFlag0SetAndFlag1ClearPti(&data_02114e30, 0x601);
-            if (AnySet(flag, _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(self + 0x2c8 + 0xc00, 0x14)) ||
+            if (AnySet(flag, IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(self + 0x2c8 + 0xc00), 0x14)) ||
                 _Z29CheckFlagOrThreshold_02161b48Pci(self, 1) != 0 ||
                 _Z25TestFlag0SetAndFlag1ClearPti(&data_02114e30, 0xf0) != 0 || data_02114e54[0x55] != 0) {
                 ok = 1;

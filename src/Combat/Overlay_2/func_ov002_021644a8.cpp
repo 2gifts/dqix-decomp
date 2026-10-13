@@ -10,7 +10,8 @@ extern "C" void func_ov002_0215b9a4(char *self, unsigned char key, int flag);
 extern "C" void _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii(void *s, int clear, int key);
 extern "C" void *_Z23FindElementByC40205d81cP15Struct_0205d81ci(void *s, int key);
 extern "C" int _Z25TestFlag0SetAndFlag1ClearPti(void *p, int mask);
-extern "C" int _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(void *obj, int key);
+struct Obj_0205da38;
+int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(void *obj, int a, int b);
 extern "C" int _Z29CheckFlagOrThreshold_02161b48Pci(char *self, int flag);
 extern "C" void func_ov002_02156e90(char *base);
@@ -54,7 +55,7 @@ extern "C" ARM void func_ov002_021644a8(char *self) {
             return;
         }
         int t = _Z25TestFlag0SetAndFlag1ClearPti(&data_02114e30, 0x601);
-        int u = _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(self + 0xec8, 0x14);
+        int u = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(self + 0xec8), 0x14);
         int hit = (t | u) != 0;
         if (hit != 0) {
             *(char *) (self + 0x1c32) = 0;

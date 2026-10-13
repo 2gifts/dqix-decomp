@@ -46,7 +46,7 @@ extern "C" void func_ov003_0216da90(Self0216b968* self);
 extern "C" void _Z22IterateEntries0205a330P17Container0205a330i(struct Container0205a330* c, int arg);
 extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(struct Struct_0205c570* list);
 extern "C" void func_ov003_0216dc58(Self0216b968* self);
-extern "C" int _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(struct Obj_0205da38* list, int key);
+int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
 extern "C" int func_0205d97c(void* list);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0* obj, int a, int b);
@@ -84,7 +84,7 @@ extern "C" ARM void func_ov003_0216b968(Self0216b968* self) {
         }
 
         int selection = -1;
-        if (_Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38((struct Obj_0205da38*)self->list_, 0x14) != 0) {
+        if (IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)self->list_, 0x14) != 0) {
             selection = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((struct Struct_0205c570*)self->list_);
         } else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x401) != 0) {
             selection = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((struct Struct_0205c570*)self->list_);

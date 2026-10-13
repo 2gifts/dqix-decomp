@@ -25,7 +25,8 @@ void ResetEntryList0205d6a0(struct Entry_0205d6a0* a, int flag);
 void InvalidateBattlerField0x18(unsigned char* obj);
 extern "C" void func_ov013_02186c64(void* obj, int a, int b);
 extern "C" void func_ov013_02185cc0(void* obj);
-extern "C" int _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(void* a, int b);
+struct Obj_0205da38;
+int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 extern "C" void func_ov013_02186c1c(void* obj);
 
 // USA: func_ov013_0218683c  (semantic: AdvanceOrResetTagState0218683c)
@@ -101,7 +102,7 @@ extern "C" ARM void func_ov013_0218683c(void* obj) {
             o[LOW_REGION(0x5ca, 0x63e)] = 0;
         } else {
             if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2) != 0 ||
-                (*(int*)(o + LOW_REGION(0x5e8, 0x660)) == 1 && _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38((void*)(o + LOW_REGION(0x34, 0x38)), 0x14) != 0)) {
+                (*(int*)(o + LOW_REGION(0x5e8, 0x660)) == 1 && IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(o + LOW_REGION(0x34, 0x38)), 0x14) != 0)) {
                 if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2) == 0) {
                     DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
                 }
@@ -118,7 +119,7 @@ extern "C" ARM void func_ov013_0218683c(void* obj) {
                 func_ov013_02185cc0(o);
             } else {
                 if (*(int*)(o + LOW_REGION(0x5e8, 0x660)) == 0 &&
-                    _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38((void*)(o + LOW_REGION(0x34, 0x38)), 0x14) != 0) {
+                    IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(o + LOW_REGION(0x34, 0x38)), 0x14) != 0) {
                     DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
                     int one = 1;
                     if (o[LOW_REGION(0x5c8, 0x63c)] == 4) {

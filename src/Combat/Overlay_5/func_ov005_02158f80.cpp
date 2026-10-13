@@ -29,7 +29,8 @@ extern "C" void _Z23SetChannelAFlag0205cef8Pv(void* window);
 extern "C" void _Z23SetChannelBFlag0205cf04Pv(void* window);
 extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(Struct_0205c570* window);
 int CheckFlag30Or401_02157190(void* self);
-extern "C" int _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(void* window, int unk);
+struct Obj_0205da38;
+int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0* sound, int effect, int unk);
 extern "C" void _Z25ClearChannelAFlag0205cf10Pv(void* window);
 extern "C" void _Z21ClearFlagByte0205cf1cP14Struct0205cf1c(Struct0205cf1c* window);
@@ -45,7 +46,7 @@ extern "C" ARM void func_ov005_02158f80(EquipmentMenu* self) {
         self->menuStep_++;
     } else if (self->menuStep_ == 1) {
         self->menuChoice_ = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((Struct_0205c570*)self->window_);
-        if (CheckFlag30Or401_02157190(self) | _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(self->window_, 0x14)) {
+        if (CheckFlag30Or401_02157190(self) | IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)self->window_, 0x14)) {
             _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)data_02108760, 1, 0);
             _Z25ClearChannelAFlag0205cf10Pv(self->window_);
             _Z21ClearFlagByte0205cf1cP14Struct0205cf1c((Struct0205cf1c*)self->window_);
