@@ -69,7 +69,7 @@ int TestBitAt0x34(unsigned char* info, unsigned int member);
 extern "C" BattleResultMember_021f00fc* _Z24FindByByteAt118_021f0360Pvi(void* end, int member);
 void* GetCombatantWithFlag0x100(GameState* gameState, int member);
 extern "C" unsigned int _Z25GetTableEntry138_021eea98P11Obj021eea98(Obj021eea98* member);
-extern "C" void _Z27EnqueueEventTag105_021cd4c8tth(unsigned short a, unsigned short item, unsigned char mask);
+extern "C" void _Z27EnqueueEventTag105_021cd4c8tth(unsigned short a, unsigned short item, signed char mask);
 void SetCombatWorkFlags0x55f4(void* scene, int flag);
 int GetCombatWorkFlags0x55f4(void* scene, int flag);
 
@@ -114,7 +114,7 @@ extern "C" ARM int func_ov023_021f00fc(BattleScene_021f00fc* self)
         func_ov017_021cd590(self->info_->unk_8, self->experience_, self->legacyBossLevelUp_, 0);
         func_ov017_021cd35c(self->info_->unk_8, self->drops_, self->dropCount_, self->memberMask_);
         if (self->map_ != 0)
-            ((void (*)(unsigned short, unsigned short, signed char))_Z27EnqueueEventTag105_021cd4c8tth)(self->info_->unk_8, self->mapItem_, self->memberMask_);
+            _Z27EnqueueEventTag105_021cd4c8tth(self->info_->unk_8, self->mapItem_, self->memberMask_);
     }
     else
     {

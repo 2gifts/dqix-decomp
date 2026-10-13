@@ -21,6 +21,18 @@ struct Profile02187fe4
     unsigned int unk_4_31 : 1;
 };
 
+struct Save02187fe4
+{
+    char unk_0[0x5400];
+    Profile02187fe4 profile_;
+};
+
+struct GameStateSave02187fe4
+{
+    char unk_0[0x29c];
+    Save02187fe4 save_;
+};
+
 struct ProfileEditor02187fe4
 {
     char unk_0[0xac];
@@ -68,7 +80,7 @@ extern "C" char data_02108760[];
 
 static inline Profile02187fe4* GetProfile02187fe4(GameState* gameState)
 {
-    return (Profile02187fe4*)((char*)gameState + 0x569c);
+    return &((GameStateSave02187fe4*)gameState)->save_.profile_;
 }
 
 // USA: func_ov012_02187fe4

@@ -155,21 +155,18 @@ extern "C" ARM void func_020439b0(char* self, int flag) {
                 }
 
                 if (controller->flag19c4 != 0 && controller->flag19c3 != 0) {
-                    struct Foo02042fcc* target = &controller->target930;
                     struct Holder02042c24* holder = &controller->holder;
-                    holder->currentBounds = target;
-                    int cond = (target != 0) ? (target->state == 2) : 0;
+                    holder->currentBounds = &controller->target930;
+                    int cond = (holder->currentBounds != 0) ? (holder->currentBounds->state == 2) : 0;
                     if (cond) {
                         short sx, sy, sz, sw;
-                        if (target != 0) {
-                            Foo02042fcc* cur1 = holder->currentBounds;
-                            sx = cur1->x;
-                            sy = cur1->y;
+                        if (holder->currentBounds != 0) {
+                            sx = holder->currentBounds->x;
+                            sy = holder->currentBounds->y;
                         }
-                        if (target != 0) {
-                            Foo02042fcc* cur2 = holder->currentBounds;
-                            sz = cur2->width;
-                            sw = cur2->height;
+                        if (holder->currentBounds != 0) {
+                            sz = holder->currentBounds->width;
+                            sw = holder->currentBounds->height;
                         }
                         SetFourHalfwords(&targetBounds.bounds, sx + dx, sy + dy, sz, sw);
                         func_02043600(controller->stream, &targetBounds);

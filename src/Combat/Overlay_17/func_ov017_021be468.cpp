@@ -79,7 +79,7 @@ extern "C" ARM void func_ov017_021be468(StateE468* self,ListHead02046b60* list) 
                 params[i].scale.x=0x1000; params[i].scale.y=0x1000; params[i].scale.z=0x1000;
                 ParamsE468* p=&params[i]; p->flags.bit0=0; p->flags.bit1=0; p->flags.bit2=1; p->flags.bit3=0; p->flags.bit4=0; p->flags.bit5=0; p->flags.bit6=0; p->flags.bit7=0;
                 p->position=member->obj3D_.position_; p->scale=member->obj3D_.GetScale();
-                ((void (*)(void*,int,ParamsE468*))FindNodeAndProcess02057fb4)(battle,5,p);
+                FindNodeAndProcess02057fb4(battle,5,(int)p);
             }
             self->state++;
         }

@@ -1,7 +1,9 @@
 #include "GameState/GameState.h"
 #include <globaldefs.h>
 
-struct Container020e0310;
+struct Container020e0310 {
+    char pad0[0x34];
+};
 struct Struct_0205c570;
 struct Struct0205cf1c;
 struct Obj0205eaa0;
@@ -17,8 +19,7 @@ struct Ctl {
 
 struct Scene {
     char pad0[0x64];
-    Container020e0310 *cont64;
-    char pad68[0x98 - 0x68];
+    Container020e0310 cont64;
     char list98[0x3b8 - 0x98];
     unsigned char state;
     char pad3b9[2];
@@ -40,9 +41,22 @@ struct Scene {
     unsigned char b3f2;
 };
 
+struct Sub1840 {
+    char pad0[0xb3c];
+    int wb3c;
+};
+
+struct Zone {
+    char pad0[0x1840];
+    Sub1840 sub;
+};
+
+static inline Sub1840 *GetSub(Zone *z) { return &z->sub; }
+static inline int GetB3c(Sub1840 *s) { return s->wb3c; }
+
 extern "C" Ctl *_Z26GetGlobalField0x1c020421a0v();
 extern "C" int *func_0202ae18();
-extern "C" void *func_02012fe4();
+extern "C" Zone *func_02012fe4();
 extern "C" void func_02046380(void *obj);
 extern "C" void _Z17StoreInArray0x8b0P11StoreStructii(void *g, int index, int value);
 extern "C" void _Z14SetByteInRangePhih(unsigned char *, int, unsigned char);
@@ -69,19 +83,12 @@ ARM int IsFlagStateOrField98Eq2_0215dd00(char *self);
 
 extern int data_02108760;
 
-static inline Container020e0310 *Cont64(Scene *s) {
-    return (Container020e0310 *) ((char *) s + 0x64);
-}
-
-static inline char *Off1840(void *p) { return (char *) p + 0x1840; }
-static inline int *OffB3c(void *p) { return (int *) ((char *) p + 0xb3c); }
-
 // USA: func_ov003_0215d150
 extern "C" ARM void func_ov003_0215d150(Scene *self) {
     GameState *gs = GameState::GetInstance();
     Ctl *g       = _Z26GetGlobalField0x1c020421a0v();
     int *a       = func_0202ae18();
-    void *b      = func_02012fe4();
+    Zone *b      = func_02012fe4();
 
     if (g->w9a0 == 3) {
         *(unsigned char *) ((char *) g + 0x1000 + 0x9ae) = 0;
@@ -116,28 +123,28 @@ extern "C" ARM void func_ov003_0215d150(Scene *self) {
             }
 
             if (flag != 0) {
-                _Z20AppendString02042058PcPKc(buf, _Z21GetFieldByKey020e0434P17Container020e0310i(Cont64(self), 0x64));
+                _Z20AppendString02042058PcPKc(buf, _Z21GetFieldByKey020e0434P17Container020e0310i(&self->cont64, 0x64));
             }
 
-            if (*OffB3c(Off1840(b)) == 6) {
+            if (GetB3c(GetSub(b)) == 6) {
                 k1 = 0x67;
             } else if (self->w3d0 != 0) {
                 k1 = 0x65;
             } else {
                 k1 = 0x68;
             }
-            _Z20AppendString02042058PcPKc(buf, _Z21GetFieldByKey020e0434P17Container020e0310i(Cont64(self), k1));
+            _Z20AppendString02042058PcPKc(buf, _Z21GetFieldByKey020e0434P17Container020e0310i(&self->cont64, k1));
 
             if (flag == 0) {
-                _Z20AppendString02042058PcPKc(buf, _Z21GetFieldByKey020e0434P17Container020e0310i(Cont64(self), 0x6f));
+                _Z20AppendString02042058PcPKc(buf, _Z21GetFieldByKey020e0434P17Container020e0310i(&self->cont64, 0x6f));
             } else {
                 int k2;
                 k2 = (self->w3d0 != 0) ? 0x66 : 0x69;
-                _Z20AppendString02042058PcPKc(buf, _Z21GetFieldByKey020e0434P17Container020e0310i(Cont64(self), k2));
+                _Z20AppendString02042058PcPKc(buf, _Z21GetFieldByKey020e0434P17Container020e0310i(&self->cont64, k2));
             }
         } else {
             int k0 = sb + 0x3e8;
-            _Z20AppendString02042058PcPKc(buf, _Z21GetFieldByKey020e0434P17Container020e0310i(Cont64(self), k0));
+            _Z20AppendString02042058PcPKc(buf, _Z21GetFieldByKey020e0434P17Container020e0310i(&self->cont64, k0));
         }
 
         func_ov003_0215cab0((char *) self, buf);

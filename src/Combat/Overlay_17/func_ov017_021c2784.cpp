@@ -124,10 +124,10 @@ extern "C" ARM void func_ov017_021c2784(Obj_021c2784* obj) {
             int ret = func_ov017_021a23e4((char*)ov, fv2, 0, obj->field18);
             obj->field12 = (unsigned short)ret;
             if (obj->field12 != 0) {
-                *(volatile unsigned char*)&obj->state = 5;
-            } else {
-                *(volatile unsigned char*)&obj->state = 2;
+                obj->state = 5;
+                return;
             }
+            obj->state = 2;
             return;
         }
         int fv3 = GetField0x397cValue(battleStruct);
@@ -172,12 +172,11 @@ extern "C" ARM void func_ov017_021c2784(Obj_021c2784* obj) {
         return;
     } else if (obj->state == 4) {
         unsigned int v = (unsigned int)battleStruct->GetEffectiveDeltaTime();
-        unsigned short f8 = obj->field8;
-        if (v < f8) {
-            *(volatile unsigned short*)&obj->field8 = f8 - v;
-        } else {
-            *(volatile unsigned short*)&obj->field8 = 0;
+        if (v < obj->field8) {
+            obj->field8 -= v;
+            return;
         }
+        obj->field8 = 0;
         return;
     } else if (obj->state == 5) {
         GameObject* found = FindCombatantByField0x16a(battleStruct, obj->field12);

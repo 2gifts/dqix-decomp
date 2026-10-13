@@ -38,13 +38,20 @@ struct ProfileCard_021e868c {
     TableA68* strings_;
 };
 
+struct SaveData_021e868c {
+    char unk_0[0x5400];
+    ProfileData_021e868c profile_;
+};
+
 struct GameState {
     static GameState* GetInstance();
+    char unk_0[0x29c];
+    SaveData_021e868c save_;
 };
 
 static inline ProfileData_021e868c* GetProfile(GameState* gameState)
 {
-    return (ProfileData_021e868c*)((char*)gameState + 0x569c);
+    return &gameState->save_.profile_;
 }
 
 extern "C" MessageSystem* _Z26GetGlobalField0x1c020421a0v();

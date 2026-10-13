@@ -33,6 +33,18 @@ struct Profile02184acc
     unsigned int showBirthday_ : 1;
 };
 
+struct Save02184acc
+{
+    char unk_0[0x5400];
+    Profile02184acc profile_;
+};
+
+struct GameStateSave02184acc
+{
+    char unk_0[0x29c];
+    Save02184acc save_;
+};
+
 struct ProfileEditor02184acc
 {
 #if defined(jpn)
@@ -119,7 +131,7 @@ extern "C" unsigned short data_02114e30[];
 
 static inline Profile02184acc* GetProfile02184acc(GameState* gameState)
 {
-    return (Profile02184acc*)((char*)gameState + 0x569c);
+    return &((GameStateSave02184acc*)gameState)->save_.profile_;
 }
 
 // USA: func_ov012_02184acc
@@ -195,7 +207,7 @@ extern "C" ARM int func_ov012_02184acc(ProfileEditor02184acc* self, int input)
             BackgroundLoader* loader = BackgroundLoader::GetInstance();
             for (int i = 0; i < (int)(sizeof(self->tasks_) / sizeof(self->tasks_[0])); i++)
             {
-                if (self->tasks_[i] > -1)
+                if (self->tasks_[i] > BackgroundLoader::TaskStatus_Invalid)
                 {
                     loader->RemoveTask(self->tasks_[i]);
                     self->tasks_[i] = -1;

@@ -43,7 +43,7 @@ int CheckField0NonZero(int*);
 extern "C" int func_0202c508(int*);
 extern "C" void func_ov017_021cf730(int, int);
 int GetField0x3acValue(GameState*);
-void EnqueueEventTag173_021d1810(unsigned short, unsigned short, unsigned char);
+extern "C" void _Z27EnqueueEventTag173_021d1810tth(unsigned short a, short b, signed char c);
 void ClearBitArray(void*);
 void EnqueueEventTag167_021d3ec8();
 void ReinitController02043204(char*);
@@ -97,7 +97,7 @@ extern "C" ARM void func_ov017_021be0c4(State021be0c4* state) {
             int* field = func_0202ae18();
             if (CheckField0NonZero(field) && func_0202c508(field)) {
                 func_ov017_021cf730(-1, 0);
-                ((void (*)(int, int, signed char))EnqueueEventTag173_021d1810)(0x2713, -1, (signed char)GetField0x3acValue(game));
+                _Z27EnqueueEventTag173_021d1810tth(0x2713, -1, GetField0x3acValue(game));
             }
             ClearBitArray(game);
             EnqueueEventTag167_021d3ec8();

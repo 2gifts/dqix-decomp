@@ -10,7 +10,7 @@ struct ActionLists { short id_; char pad2[0xe]; SourceNode* source_; };
 struct ActionRecord { char pad0[0x18]; unsigned int flags_; };
 struct SixCells { unsigned char cells_[6]; };
 struct TimerState { int fields_[3]; int adjacent_; };
-extern TimerState _ZZ16GetTimer021ef974vE1s __attribute__((aligned(4)));
+inline int* GetTimer021ef974() { static TimerState s __attribute__((aligned(4))); return &s.adjacent_; }
 extern "C" void _Z27ClearMatchingBytes_021e169cPhi(unsigned char*, int);
 unsigned char GetSubstructByte0x1c(unsigned char*);
 unsigned int GetSubstructByte0x1d(unsigned char*);
@@ -30,11 +30,10 @@ extern "C" unsigned char func_ov025_021e1480(int, unsigned char*, int);
 char* GetData02108e10();
 extern "C" ActionRecord* _Z24SearchBothTables02079e2cPci(char*, int);
 
+static inline int ActorID(FormationEntry* entry) { return entry->actor_->obj3D_.unknown_4_; }
 static inline void SetCell(unsigned char* cells, unsigned int index, unsigned char value) {
     if (index < 81) cells[index] = value;
 }
-static inline int ActorID(FormationEntry* entry) { int id = entry->actor_->obj3D_.unknown_4_; return id; }
-static inline int* FlagAddress(int* flag) { int* result = flag; return result; }
 
 // USA: func_ov025_021e16c8
 extern "C" ARM void func_ov025_021e16c8(FormationEntry* self, FormationEntry* target, unsigned char* cells,
@@ -96,7 +95,7 @@ extern "C" ARM void func_ov025_021e16c8(FormationEntry* self, FormationEntry* ta
             reachable = 1;
             if (distance - 1 == distances[GetSubstructByte0x1c((unsigned char*)self->actor_)]) {
                 int value = 1;
-                int* adjacent = FlagAddress(&_ZZ16GetTimer021ef974vE1s.adjacent_);
+                int* adjacent = GetTimer021ef974();
                 *adjacent = value;
             }
         }

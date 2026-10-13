@@ -22,6 +22,18 @@ struct Profile02184654
     unsigned int unk_4_31 : 1;
 };
 
+struct Save02184654
+{
+    char unk_0[0x5400];
+    Profile02184654 profile_;
+};
+
+struct GameStateSave02184654
+{
+    char unk_0[0x29c];
+    Save02184654 save_;
+};
+
 struct FieldFlags02184654
 {
     char pad0[0x14];
@@ -64,7 +76,7 @@ struct ProfileEditor02184654
     char accoladeText_[0x40];
 };
 
-extern "C" void* func_0202ae18(void* ctx);
+extern "C" void* func_0202ae18();
 extern "C" unsigned char* _Z15GetFieldAt0x150Ph(unsigned char* obj);
 int CalculateAge(int year, int month, int day);
 void* FindEntryByKey(struct TableA68* table, int key);
@@ -73,7 +85,7 @@ extern "C" void func_ov023_021e66ac(ProfileEditor02184654* self);
 
 static inline Profile02184654* GetProfile02184654(GameState* gameState)
 {
-    return (Profile02184654*)((char*)gameState + 0x569c);
+    return &((GameStateSave02184654*)gameState)->save_.profile_;
 }
 
 static inline FieldFlags02184654* GetFieldFlags02184654(Field02184654* field, int i)
@@ -86,7 +98,7 @@ extern "C" ARM void func_ov012_02184654(ProfileEditor02184654* self)
 {
     GameState* gameState = GameState::GetInstance();
     Profile02184654* profile = GetProfile02184654(gameState);
-    func_0202ae18((char*)gameState + 0x29c);
+    func_0202ae18();
     Field02184654* field = 0;
     Member02184654* protagonist = (Member02184654*)gameState->GetProtagonist();
     if (protagonist != 0)

@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-
 extern "C" void* func_0202ae18(void);
 int CheckField0NonZero(int* obj);
 
@@ -73,7 +72,7 @@ ARM int RepelFromFlag0x800Target020781e8(struct Entity020781e8* e) {
         delta.x = -delta.x;
         delta.y = -delta.y;
         delta.z = -delta.z;
-        scale = ((int (*)(int))fix32_Atan2)(delta.x);
+        scale = fix32_Atan2(delta.x, delta.z);
         SetVecYByMode02033834((struct Obj02033834*)e, scale);
         delta.y = 0;
         _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_((struct Vec3Fixed02030e2c*)&delta, 0x5000, (struct Vec3Fixed02030e2c*)&delta);

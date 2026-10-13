@@ -49,7 +49,12 @@ extern "C" void _Z33InitEntryManagerAllocator020d6ec8P17Container020d6f44P13Safe
 void SetCombatWorkFlags0x55f4(void*, int);
 extern const char data_ov000_02183a5a[], data_ov000_02183a6f[], data_ov000_02183a7a[], data_ov000_02183a85[], data_ov000_02183a93[];
 extern const char data_ov000_02183910[][16];
-extern int data_ov000_021838fc[], data_ov000_02183028[];
+struct BattleModelIDList02166a94 {
+    int entries[3];
+    int Get(int i) const { return entries[i]; }
+};
+extern int data_ov000_021838fc[];
+extern BattleModelIDList02166a94 data_ov000_02183028;
 
 // USA: func_ov000_02166a94
 extern "C" ARM void func_ov000_02166a94(BattleWork02166a94* self) {
@@ -97,12 +102,12 @@ extern "C" ARM void func_ov000_02166a94(BattleWork02166a94* self) {
     char path[80];
     BattleModelLoadInfo02166a94 loadInfo;
     Object3D* const* modelSlots;
-    int* modelIDs;
+    BattleModelIDList02166a94* modelIDs;
     long modelIndex;
     Object3D* model;
-    for (modelIndex = 0; data_ov000_02183028[modelIndex] > 0; ++modelIndex) {
-        modelIDs = data_ov000_02183028;
-        sprintf(path, data_ov000_02183a7a, modelIDs[(unsigned int)modelIndex]);
+    for (modelIndex = 0; data_ov000_02183028.entries[modelIndex] > 0; ++modelIndex) {
+        modelIDs = &data_ov000_02183028;
+        sprintf(path, data_ov000_02183a7a, modelIDs->Get(modelIndex));
         GetFileInNarc(data_0211e33c, path, &data, &size, 0);
         if (data) {
             modelSlots = models;

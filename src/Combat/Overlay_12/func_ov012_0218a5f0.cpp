@@ -11,6 +11,15 @@ struct Cursor0218a5f0
     int words_[6];
 };
 
+struct Window0218a5f0
+{
+    char unk_0[0x54];
+    Cursor0218a5f0 cursor_;
+    char unk_74[0x1290 - 0x74];
+
+    Cursor0218a5f0* GetCursor() { return &cursor_; }
+};
+
 struct Party0218a5f0
 {
     char unk_0[0x49c];
@@ -26,11 +35,13 @@ struct Protagonist0218a5f0
 struct ProfileEditor0218a5f0
 {
     char unk_0[0xac];
-    char window_[0x133c - 0xac];
+    Window0218a5f0 window_;
     char strings_[0x1378 - 0x133c];
     const char* unk_1378;
     char unk_137c[0x13d8 - 0x137c];
     int selections_[6];
+
+    Window0218a5f0* GetWindow() { return &window_; }
 };
 
 extern "C" void _Z22AppendFrameTag02041c08Pciiiii(char* text, int a, int b, int c, int d, int e);
@@ -45,11 +56,6 @@ extern "C" void __clear(void* buffer, unsigned long size);
 extern "C" void _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(const char* text, char* output, int a);
 extern "C" void func_ov012_021842a0(ProfileEditor0218a5f0* self, int canvas, int color, int shadow);
 
-static inline Cursor0218a5f0* GetCursor0218a5f0(char* window)
-{
-    return (Cursor0218a5f0*)(window + 0x54);
-}
-
 // USA: func_ov012_0218a5f0
 extern "C" ARM void func_ov012_0218a5f0(ProfileEditor0218a5f0* self, char* text, int hidden)
 {
@@ -63,7 +69,7 @@ extern "C" ARM void func_ov012_0218a5f0(ProfileEditor0218a5f0* self, char* text,
     _Z26GetGlobalField0x1c020421a0v();
     Protagonist0218a5f0* protagonist;
     int i;
-    Cursor0218a5f0* cursor = GetCursor0218a5f0(self->window_);
+    Cursor0218a5f0* cursor = self->GetWindow()->GetCursor();
     int shadow = cursor->words_[3];
     int color = cursor->unk_4;
     int first;

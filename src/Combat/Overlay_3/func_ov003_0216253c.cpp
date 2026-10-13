@@ -6,11 +6,6 @@ struct Entries {
     short sel;
 };
 
-struct Flagged {
-    char pad0[0x400];
-    unsigned int flags;
-};
-
 struct Scene {
     char pad0[0x308];
     char sub308[0x324 - 0x308];
@@ -40,10 +35,6 @@ struct Elem {
     char pad1[0x13f - 1];
     unsigned char m : 3;
 };
-
-static inline Flagged *Off64(Scene *s) {
-    return (Flagged *) ((char *) s + 0x64);
-}
 
 extern int data_02108760;
 extern "C" unsigned int *_Z27GetDataPtr02114e04_020d6c00v();
@@ -95,7 +86,7 @@ extern "C" ARM void func_ov003_0216253c(Scene *self) {
         self->p470 = 0;
         self->flags |= 0x780000;
         if (self->flags & 1) {
-            *(unsigned int *) ((int) self + 0x64 + 0x400) |= 0x800000;
+            self->flags |= 0x800000;
         }
         self->state = self->state + 1;
     } else if (state == 1) {
@@ -115,7 +106,7 @@ extern "C" ARM void func_ov003_0216253c(Scene *self) {
         func_ov003_02165c9c(self);
         self->flags |= 0x780000;
         if (self->flags & 1) {
-            *(unsigned int *) ((int) self + 0x64 + 0x400) |= 0x800000;
+            self->flags |= 0x800000;
         }
         _Z20ResetWithSub0208203cP11Obj0208203c(self->sub308);
         self->p470  = 0;
@@ -129,7 +120,7 @@ extern "C" ARM void func_ov003_0216253c(Scene *self) {
         if (self->flags & 0x1000000) {
             self->flags |= 0x780000;
             if (self->flags & 1) {
-                *(unsigned int *) ((int) self + 0x64 + 0x400) |= 0x800000;
+                self->flags |= 0x800000;
             }
         }
         int idx = self->h48c - 0x15 + self->c49f * 4;

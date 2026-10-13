@@ -14,7 +14,6 @@ enum { kRegionValue998_868 = 0x998 };
 enum { kRegionValue34C0_3280 = 0x34c0 };
 #endif
 
-
 extern "C" void* _Z26GetGlobalField0x1c020421a0v(void);
 extern "C" void* _Z27GetDataPtr02114e04_020d6c00v(void);
 extern "C" void* func_0202ae18(void);
@@ -141,8 +140,7 @@ extern "C" ARM void func_ov003_02159d0c(void* self) {
 
     if (state == 0x64) {
         if (_Z18CheckField0NonZeroPi(f)) {
-            signed char* p = (signed char*)_ZN9GameState11GetInstanceEv() + kRegionValue34C0_3280;
-            p += 0x4000;
+            signed char* p = (signed char*)_ZN9GameState11GetInstanceEv() + 0x4000 + kRegionValue34C0_3280;
             for (int i = 0; i < 3; i++, p += 10) {
                 if (p[6] >= 4) {
                     if (((unsigned char*)p)[7] != 0 || ((unsigned char*)p)[8] != 0) return;

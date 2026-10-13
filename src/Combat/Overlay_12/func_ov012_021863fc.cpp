@@ -55,6 +55,18 @@ struct Profile021863fc
     unsigned int unk_4_31 : 1;
 };
 
+struct Save021863fc
+{
+    char unk_0[0x5400];
+    Profile021863fc profile_;
+};
+
+struct GameStateSave021863fc
+{
+    char unk_0[0x29c];
+    Save021863fc save_;
+};
+
 struct Card021863fc
 {
     char unk_0[0x5f4];
@@ -143,7 +155,7 @@ extern "C" const char data_ov012_0218b2d3[];
 
 static inline Profile021863fc* GetProfile021863fc(GameState* gameState)
 {
-    return (Profile021863fc*)((char*)gameState + 0x569c);
+    return &((GameStateSave021863fc*)gameState)->save_.profile_;
 }
 
 // USA: func_ov012_021863fc
@@ -313,7 +325,8 @@ extern "C" ARM void func_ov012_021863fc(ProfileEditor021863fc* self)
     {
         if (_Z26GetGlobalField0x1c020421a0v()->busy_ == 0)
         {
-            GetProfile021863fc(gameState)->edited_ = 1;
+            Profile021863fc* profile = GetProfile021863fc(gameState);
+            profile->edited_ = 1;
             self->state_ = 1;
             self->step_ = 0;
         }

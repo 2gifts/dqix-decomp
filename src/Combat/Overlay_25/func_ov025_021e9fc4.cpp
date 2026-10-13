@@ -68,7 +68,6 @@ extern "C" const char* func_020e046c(char*, void*, unsigned int, short);
 extern "C" void func_ov025_021ed634(void*);
 
 static inline int AtMostThree021e9fc4(int id) { return id <= 3; }
-static inline short NarrowCode021e9fc4(int value) { return value; }
 static inline unsigned char* Codes021e9fc4(ListNode021600f8* node) { return node->codes; }
 
 // USA: func_ov025_021e9fc4
@@ -129,22 +128,22 @@ extern "C" ARM void func_ov025_021e9fc4(CombatTaskReceiver021e9fc4* self) {
                 int type = codes[code];
                 if (type == 3) AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)&self->task, 0x1b8);
                 else if (type == 1) {
-                    short value = 0xaa;
+                    int value = 0xaa;
                     int id = node->ids[code - 1];
                     int valid = 0;
                     if (id >= 0) valid = AtMostThree021e9fc4(id);
                     if (valid) value = 0xa9;
-                    AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)&self->task, NarrowCode021e9fc4(value));
+                    AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)&self->task, (short)value);
                 } else if (!(type != 8 && type != 7 && type != 6)) AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)&self->task, 0x7e);
                 else if (!(type != 4 && type != 5)) AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)&self->task, 0x142);
                 else if (type == 10) AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)&self->task, 0x143);
                 else if (type == 2) {
-                    short value = 0x29;
+                    int value = 0x29;
                     int id = node->ids[code - 1];
                     int valid = 0;
                     if (id >= 0) valid = AtMostThree021e9fc4(id);
                     if (valid) value = 0x28;
-                    AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)&self->task, NarrowCode021e9fc4(value));
+                    AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)&self->task, (short)value);
                 }
             }
             for (int group = 0; group < 3; group++) {

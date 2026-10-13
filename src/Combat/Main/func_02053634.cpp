@@ -196,8 +196,7 @@ extern "C" ARM void func_02053634(void* obj) {
                     void* p = func_0205ec34();
                     unsigned char req[0x34];
                     for (int i = 0; i < 4; i++) {
-                        char* q = ctx + i;
-                        q = q + 0x100;
+                        char* q = ctx + i + 0x100;
                         ((signed char*)(req + 0x2a))[i] = q[OBJECT_OFFSET(0x78)];
                     }
                     if (_Z32SetTargetFieldAndForEach02064a9cPvS_(p, req) != 0) {
@@ -262,8 +261,7 @@ extern "C" ARM void func_02053634(void* obj) {
                 signed char count = ctx[OBJECT_OFFSET(0x17c)];
                 int next = cursor + 1;
                 if (next < count) {
-                    char* q = ctx + next;
-                    q = q + 0x100;
+                    char* q = ctx + next + 0x100;
                     func_0205308c(ctx, q[OBJECT_OFFSET(0x78)]);
                 }
             }
@@ -287,8 +285,7 @@ extern "C" ARM void func_02053634(void* obj) {
                 void* p = func_0205ec34();
                 unsigned char req[0x34];
                 for (int i = 0; i < 4; i++) {
-                    char* q = ctx + i;
-                    q = q + 0x100;
+                    char* q = ctx + i + 0x100;
                     ((signed char*)(req + 0x2a))[i] = q[OBJECT_OFFSET(0x78)];
                 }
                 if (_Z32SetTargetFieldAndForEach02064a9cPvS_(p, req) != 0) {

@@ -121,8 +121,6 @@ extern short data_ov003_0217f288[];
 
 #define CAP999(x) ((x) > 999 ? 999 : (x))
 
-static inline unsigned char* GetRecordData_021539a0(unsigned char* rec) { return rec + 0x10; }
-
 // USA: func_ov003_021539a0
 extern "C" ARM void func_ov003_021539a0(struct Self_021539a0* self) {
     if (self->member < 0) return;

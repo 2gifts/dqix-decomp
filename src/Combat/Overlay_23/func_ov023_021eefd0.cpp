@@ -228,7 +228,7 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
         MessageSystem_021eefd0* messages = GetGlobalField0x1c020421a0();
         BackgroundLoader* loader = BackgroundLoader::GetInstance();
         int load = 1;
-        if (_ZZ17GetGlobal021ffefcvE1s->task3_ > -1)
+        if (_ZZ17GetGlobal021ffefcvE1s->task3_ > BackgroundLoader::TaskStatus_Invalid)
         {
             if (loader->GetTaskStatus(_ZZ17GetGlobal021ffefcvE1s->task3_))
             {

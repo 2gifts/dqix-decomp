@@ -21,7 +21,7 @@ void ArchiveEntryToCombatantField0x150(EntryTable02087574* p, int idx, int slot)
 unsigned char GetField0x3acValue(GameState* state);
 void SetField0x2d0(void* obj, unsigned char value);
 int GetSignedByte0x2d0(void* obj);
-void SetField0x2d1(void* obj, unsigned char value);
+extern "C" void _Z13SetField0x2d1Pvh(void* obj, int value);
 unsigned char* GetFieldAt0x150(unsigned char* obj);
 extern "C" void __clear(void* p, int size);
 extern "C" void func_02042764(void* dst, void* src, int n);
@@ -81,7 +81,7 @@ extern "C" ARM int func_020dcd40() {
                 n++;
             }
         }
-        ((void (*)(void*, int))SetField0x2d1)(c, n);
+        _Z13SetField0x2d1Pvh(c, n);
         GetPtrField0x2a04(battle);
         unsigned char* v7 = GetFieldAt0x150((unsigned char*)c);
         LocalBuf020dcd40 local;

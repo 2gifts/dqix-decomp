@@ -49,8 +49,9 @@ extern "C" ARM void func_ov002_0215ad70(unsigned char *obj) {
     if (elem == 0) {
         return;
     }
-    short x2 = *(volatile short *) ((char *) elem + 0xac);
-    short y2 = *(volatile short *) ((char *) elem + 0xae);
-    _Z22SetEntryFields02154bcciiPvihh((short) (x2 * 8) + 0x10, (short) (y2 * 8) + 0x18, *(void **) (obj + 0x1000 + 0xa68),
-                                      0x14, 0x54, 8);
+    int x2 = *(short *) ((char *) elem + 0xac);
+    int y2 = *(short *) ((char *) elem + 0xae);
+    x2     = (short) (x2 * 8) + 0x10;
+    y2     = (short) (y2 * 8) + 0x18;
+    _Z22SetEntryFields02154bcciiPvihh(x2, y2, *(void **) (obj + 0x1000 + 0xa68), 0x14, 0x54, 8);
 }

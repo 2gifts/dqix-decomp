@@ -52,9 +52,8 @@ extern "C" void _Z22PopulateEntry_0215ccbciP17OutStruct0215ccbcP10GameObjectsssi
                             short valC, short valA, short valB, unsigned long long words, unsigned char byteE);
 extern "C" void _Z32AppendToChainAndIncCount0215fe84PvS_i(void* chain, void* node, int idx);
 
-static inline short GetCurrentMP(GameObject* c) {
-    short mp = c->currentStats_->primaryStats.currMP;
-    return mp;
+static inline short GetCurrentMP(ModifiableCombatStats* s) {
+    return s->primaryStats.currMP;
 }
 
 // USA: func_ov024_021e62cc
@@ -135,14 +134,14 @@ extern "C" ARM void func_ov024_021e62cc(struct Obj_021e62cc* self, int id, struc
         struct OutStruct0215ccbc* entry = func_ov000_0215e958(self->ctx);
         if (!entry) return;
         _Z33AddEntryAndIncrementCount0215a88cPvS_i(self->ctx, entry, _Z31SelectByIndexRange0to3_021da644iii(id, 0x1b4, 0x22b));
-        _Z22PopulateEntry_0215ccbciP17OutStruct0215ccbcP10GameObjectsssiih((int)self->ctx, entry, attacker, dmg, result, GetCurrentMP(attacker), bits, 0);
+        _Z22PopulateEntry_0215ccbciP17OutStruct0215ccbcP10GameObjectsssiih((int)self->ctx, entry, attacker, dmg, result, GetCurrentMP(attacker->currentStats_), bits, 0);
         _Z32AppendToChainAndIncCount0215fe84PvS_i(self->chain, entry, 4);
         ((unsigned char*)self->ctx)[0x8e02]++;
         if (func_ov000_02159f18(self->ctx, bits, 2)) {
             entry = func_ov000_0215e958(self->ctx);
             if (!entry) return;
             _Z33AddEntryAndIncrementCount0215a88cPvS_i(self->ctx, entry, _Z31SelectByIndexRange0to3_021da644iii(id, 0x1b3, 0x22a));
-            _Z22PopulateEntry_0215ccbciP17OutStruct0215ccbcP10GameObjectsssiih((int)self->ctx, entry, attacker, 0, result, GetCurrentMP(attacker), 0, 0);
+            _Z22PopulateEntry_0215ccbciP17OutStruct0215ccbcP10GameObjectsssiih((int)self->ctx, entry, attacker, 0, result, GetCurrentMP(attacker->currentStats_), 0, 0);
             _Z32AppendToChainAndIncCount0215fe84PvS_i(self->chain, entry, 4);
             ((unsigned char*)self->ctx)[0x8e02]++;
         }

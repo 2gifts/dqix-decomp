@@ -15,7 +15,7 @@ extern "C" int _Z29CheckFlagOrThreshold_02161b48Pci(char *base, int a);
 extern "C" void _Z21InitBattleTag0215bf34Pc(char *base);
 int GetWord0x0(int *p);
 int GetField0x3acValue(GameState *gs);
-extern "C" void _Z31SetNodeFieldsAndInsert_021a120cPhhh(unsigned char *p, unsigned char a, unsigned char b);
+extern "C" void _Z31SetNodeFieldsAndInsert_021a120cPhhh(unsigned char *p, int a, int b);
 int TestBitInByteArray(int unused, unsigned char *arr, int index);
 extern "C" char *func_0205ec34(void);
 extern "C" void func_ov002_02161cf0(void *base);
@@ -65,8 +65,7 @@ extern "C" ARM void func_ov002_021622ec(char *base) {
                         *(int *) (base + 0x1000 + 0xbb8) = 2;
                         *(int *) (base + 0x1000 + 0xbc0) = 0;
                     } else {
-                        ((void (*)(unsigned char *, int, int)) _Z31SetNodeFieldsAndInsert_021a120cPhhh)(
-                            (unsigned char *) w, 3, GetField0x3acValue(gs));
+                        _Z31SetNodeFieldsAndInsert_021a120cPhhh((unsigned char *) w, 3, GetField0x3acValue(gs));
                         *(int *) (base + 0x1000 + 0xbb8) = 0x2b;
                         *(int *) (base + 0x1000 + 0xbc0) = 0;
                         func_02012fe4();

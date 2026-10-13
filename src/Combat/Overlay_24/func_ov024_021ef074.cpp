@@ -21,6 +21,10 @@ struct Ctx_021ef074 {
     struct Battle_021ef074* battle;
 };
 
+static inline struct Groups_021ef074* GetGroups_021ef074(struct Battle_021ef074* battle) {
+    return &battle->groups;
+}
+
 struct GroupList_021ef074 { short v[3]; };
 struct IdTable_021ef074 { short v[8]; };
 
@@ -29,7 +33,7 @@ extern struct IdTable_021ef074 data_ov024_021fed1c;
 
 // USA: func_ov024_021ef074
 extern "C" ARM int func_ov024_021ef074(struct Ctx_021ef074* ctx, int unused1, int unused2, int* out, short* outIds) {
-    struct Groups_021ef074* groups = &ctx->battle->groups;
+    struct Groups_021ef074* groups = GetGroups_021ef074(ctx->battle);
     if (groups == 0) return 0;
     struct GroupList_021ef074 picks = data_ov024_021fea1c[1];
     short numPicks = 0;

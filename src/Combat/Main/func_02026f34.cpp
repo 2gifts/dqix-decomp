@@ -61,13 +61,10 @@ typedef void (*UpdateStateTimer0201fa2cFn)(StateObj0201fa2c* obj, unsigned int a
 // USA: func_02026f34
 extern "C" ARM void func_02026f34(void* objv) {
     unsigned char* obj = (unsigned char*)objv;
-    char* base;
     if (_Z17TestFlags02046708P16FlagWord02046708j((FlagWord02046708*)_Z27GetDataPtr02114e04_020d6c00v(), 0x41)) return;
 
     GameState* gs = GameState::GetInstance();
     unsigned int dt = gs->GetEffectiveDeltaTime();
-    base = (char*)obj;
-    base += 0xe8;
 
     for (int i = 0; i < obj[0x75c]; i++) {
         unsigned char* p = obj + i;
@@ -87,7 +84,7 @@ extern "C" ARM void func_02026f34(void* objv) {
         if (ent->flag1c) timer = 0x7d0;
 
         if (ent->flag1d || (obj[0x55e] & mask)) {
-            func_020200c0((signed char)id, base + id * 0x28);
+            func_020200c0((signed char)id, (char*)obj + 0xe8 + id * 0x28);
             obj[0x55e] &= ~mask;
         }
 

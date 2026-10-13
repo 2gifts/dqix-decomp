@@ -38,7 +38,7 @@ int ClassifyField0x81fe(char*);
 extern "C" void func_ov025_021df5e4(void*, int, int);
 extern "C" int func_ov025_021df9f4(GameObject*);
 int CheckSubstructFlag0x10(unsigned char*);
-void SetSubstructByte0x6c(unsigned char*, unsigned char);
+extern "C" void _Z20SetSubstructByte0x6cPhh(unsigned char*, int);
 extern "C" void func_02033920(GameObject*, int, int);
 extern "C" void func_ov025_021ea474(void*);
 extern "C" void func_ov025_021eb6fc(void*, int);
@@ -79,7 +79,7 @@ extern "C" ARM void func_ov025_021dc324(BattleEffectWork021dc324* self) {
             GameObject* combatant = game->GetCombatantByIndex(target);
             if (func_ov025_021df9f4(combatant)) {
                 if (skill->id == 0xae && CheckSubstructFlag0x10((unsigned char*)combatant)) return;
-                if (_ZZ16GetTimer021ef974vE1s.flag) ((void (*)(unsigned char*, int))SetSubstructByte0x6c)((unsigned char*)combatant, actor);
+                if (_ZZ16GetTimer021ef974vE1s.flag) _Z20SetSubstructByte0x6cPhh((unsigned char*)combatant, actor);
                 else func_02033920(combatant, actor, 1);
             }
         }

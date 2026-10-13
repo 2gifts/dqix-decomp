@@ -37,11 +37,6 @@ static inline int GetCurrentHP(GameObject* c) {
     return hp;
 }
 
-static inline unsigned short GetMaxMP(GameObject* c) {
-    unsigned short maxMP = c->currentStats_->primaryStats.maxMP;
-    return maxMP;
-}
-
 extern "C" void _Z32AppendToChainAndIncCount0215fe84PvS_i(void*,void*,int);
 extern "C" void func_ov024_021e8bf0(Obj_021de274*,void*,unsigned short*);
 static inline int IsParty(int id){return id>=0 && id<=3;}

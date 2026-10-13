@@ -20,6 +20,8 @@ extern void SetCombatFlags0x5c(struct Struct0203cedc* obj, int b, int c);
 struct Obj0203f1e4;
 extern "C" extern void _Z24SelectNamedEntry0203f1e4P11Obj0203f1e4PKc(struct Obj0203f1e4* obj, const char* name);
 
+enum { STATE_NONE = -1 };
+
 struct Obj0203ca24 {
     char pad0[0x4];
     int field4;
@@ -44,7 +46,7 @@ extern "C" ARM void func_0203ca24(struct Obj0203ca24* obj, void* p23c) {
     memset(buf, 0, 19);
 
     v = data_020efc18;
-    if (v > -1) {
+    if (v > STATE_NONE) {
         if (v == 0) {
             goto pathB;
         }
@@ -65,7 +67,7 @@ pathB:
     goto tail;
 
 pathC:
-    if (v > -1) {
+    if (v > STATE_NONE) {
         if (v == 1) {
             goto path1;
         }

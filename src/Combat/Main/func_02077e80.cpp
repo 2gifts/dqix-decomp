@@ -74,7 +74,7 @@ extern "C" ARM int func_02077e80(struct Entity02077e80* self) {
         delta.x = -delta.x;
         delta.y = -delta.y;
         delta.z = -delta.z;
-        angle = ((int (*)(int))fix32_Atan2)(delta.x);
+        angle = fix32_Atan2(delta.x, delta.z);
         _Z21SetVecYByMode02033834P11Obj02033834i((struct Obj02033834*)self, angle);
         delta.y = 0;
         _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_((struct Vec3Fixed02030e2c*)&delta, 0xa000, (struct Vec3Fixed02030e2c*)&delta);

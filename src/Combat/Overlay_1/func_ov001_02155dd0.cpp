@@ -182,11 +182,9 @@ extern "C" ARM unsigned short func_ov001_02155dd0(Scene02155dd0* self) {
     Elem02155dd0* e;
     int count = node->count;
     if (node != 0) {
-        char* bits = (char*)events;
-        bits += 0x5b;
         for (int n = 0; n < count; n++) {
             e = &node->elems[n];
-            if (_Z18TestBitInByteArrayiPhi((int)events, (unsigned char*)(bits + 0x400), n & 0xff) != 0) {
+            if (_Z18TestBitInByteArrayiPhi((int)events, (unsigned char*)((char*)events + 0x45b), n & 0xff) != 0) {
                 if (e != 0) {
                     e->flags &= ~4;
                 }
