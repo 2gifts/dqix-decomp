@@ -53,7 +53,6 @@ extern "C" void* func_ov017_021b8478(void*);
 void* GetData02100044();
 extern "C" void func_0205e330(void*, void*, int);
 
-// JPN: func_ov017_021cb358
 // USA: func_ov017_021caea8
 extern "C" ARM void func_ov017_021caea8(StatContainer021caea8* self) {
     GameState::GetInstance();

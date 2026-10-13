@@ -96,7 +96,6 @@ extern const char data_ov017_021d7719[];
 #define REG_BACKGROUND_0 (*(volatile unsigned short*)0x04000008)
 #define REG_BACKGROUND_3 (*(volatile unsigned short*)0x0400000e)
 
-// JPN: func_ov017_021a66f4
 // USA: func_ov017_021a5cbc
 extern "C" ARM void func_ov017_021a5cbc(GameResources* self) {
     if ((*reinterpret_cast<void**>(self->unknown_4094 + 0x120)) || !(*reinterpret_cast<int*>(self->unknown_4094 + 0x12c))) return;

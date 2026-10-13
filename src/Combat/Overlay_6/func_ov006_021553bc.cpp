@@ -18,7 +18,6 @@ extern "C" void func_ov023_021dced4(AlchemyItemInfoWindow*, unsigned char);
 void CallIfFlag_021571cc_021571cc(CallIfFlag0x800_021571ccStruct*);
 
 // USA: func_ov006_021553bc
-// JPN: func_ov006_02156ad0
 extern "C" ARM void func_ov006_021553bc(AlchemyPot* self, short* items, unsigned char* amounts) {
     const char* names[3] = {0};
     for (unsigned char i = 0; i < 3; i++) {

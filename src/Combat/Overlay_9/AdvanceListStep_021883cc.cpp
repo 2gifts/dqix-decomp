@@ -1,5 +1,4 @@
 // USA: func_ov009_021883cc
-// JPN: func_ov009_0218918c
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Resource/Brightness.h"

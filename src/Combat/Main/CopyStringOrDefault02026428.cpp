@@ -12,7 +12,6 @@ extern "C" {
 
 // KEEP-NAME
 // USA: func_02026428
-// JPN: func_02025dfc
 ARM void CopyStringOrDefault02026428(void* obj, const char* name) {
     if (name == NULL)
         strcpy((char*)obj + 0x5b4, &data_020ef6bc);

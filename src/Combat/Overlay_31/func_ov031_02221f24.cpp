@@ -3,7 +3,6 @@
 extern const unsigned char data_ov031_0224b194[64];
 
 // USA: func_ov031_02221f24
-// JPN: func_ov031_02222704
 extern "C" THUMB void func_ov031_02221f24(unsigned char* digest, OverlayMD5Context* context) {
     unsigned char encodedBitCount[8];
     func_ov031_022227c0(encodedBitCount, context->bitCount, 8);

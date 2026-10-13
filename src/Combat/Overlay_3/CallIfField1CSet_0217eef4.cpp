@@ -1,6 +1,5 @@
 // KEEP-NAME
 // USA: func_ov003_0217eef4
-// JPN: func_ov003_0217dbf8
 #include <globaldefs.h>
 
 struct Obj0217eef4 {

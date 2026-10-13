@@ -1,6 +1,5 @@
 // KEEP-NAME
 // USA: func_ov009_02188bf8
-// JPN: func_ov009_021899b0
 #include <globaldefs.h>
 #include "Resource/CharacterCreationUI.h"
 

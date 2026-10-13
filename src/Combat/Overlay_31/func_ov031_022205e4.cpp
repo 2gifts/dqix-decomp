@@ -42,7 +42,6 @@ extern "C" void func_ov031_022228f4(char* destination, const HardwareAddress* ad
 
 // USA: func_ov031_022205e4
 // KEEP-NAME: func_ov031_022205e4
-// JPN: func_ov031_02220dc4
 extern "C" THUMB int func_ov031_022205e4(AddressPair* output) {
     char firstText[32];
     char secondText[32];

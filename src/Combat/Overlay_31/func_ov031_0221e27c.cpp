@@ -8,7 +8,6 @@ struct StreamCipherState {
 };
 
 // USA: func_ov031_0221e27c
-// JPN: func_ov031_0221ea5c
 extern "C" THUMB unsigned char func_ov031_0221e27c(StreamCipherState* state) {
     unsigned int length = state->length;
     unsigned char* permutation = state->permutation;

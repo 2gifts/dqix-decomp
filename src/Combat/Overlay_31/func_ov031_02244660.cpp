@@ -60,7 +60,6 @@ extern "C" void _Z19SetField48_02243418v();
 
 // USA: func_ov031_02244660
 // KEEP-NAME: func_ov031_02244660
-// JPN: func_ov031_02244e8c
 extern "C" ARM void func_ov031_02244660(Struct_02245528* session) {
     GameState* game = GameState::GetInstance();
     unsigned char* state = (unsigned char*)session;

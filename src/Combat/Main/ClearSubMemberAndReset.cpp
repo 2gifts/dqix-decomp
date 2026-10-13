@@ -8,7 +8,6 @@ extern "C" void func_0200f3a4(void*);
 
 // KEEP-NAME
 // USA: func_02012200
-// JPN: func_02011f7c
 ARM char* ClearSubMemberAndReset(char* obj) {
     ClearFirstThreeWords((unsigned int*)(obj + 0x468));
     func_0200f3a4(obj);

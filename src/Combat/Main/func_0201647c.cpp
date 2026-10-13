@@ -37,7 +37,6 @@ extern "C" int func_020e0484(void*, SafeAllocator*, const char*, short*, unsigne
 #endif
 
 // USA: func_0201647c
-// JPN: func_02016248
 extern "C" ARM void func_0201647c(Zone3D* zone) {
     SafeAllocator* allocator = zone->pAllocator_68_;
     LootableContainerManager* containers = LootableContainerManager::GetMainInstance();

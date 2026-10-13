@@ -48,7 +48,6 @@ signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
 extern "C" void _Z26CallHelperWithBuf_021907dciiiii(int, int, int, int, int);
 extern "C" void func_ov017_02191108(void*, int, int, int, int);
 
-// JPN: func_ov017_021ca3c8
 // USA: func_ov017_021c9f18
 extern "C" ARM void func_ov017_021c9f18(void* unused, const PartyStatsEvent* event, GameState* game, GameResources* controller, SearchStruct0202c1a4* search) {
     int memberIndex;

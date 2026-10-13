@@ -29,4 +29,3 @@ ARM int CheckAndClearFlag020656e4(MessageSystem* message, int unusedDelta) {
     }
     return result;
 }
-

@@ -20,7 +20,6 @@ struct TableA68;
 void* FindEntryByKey(TableA68* table, int key);
 
 // USA: func_ov011_021873c4
-// JPN: func_ov011_0218849c
 extern "C" ARM int func_ov011_021873c4(TaggedNumber02184c30* arguments) {
     int nodeKey = GetTaggedValueAsInt_02184c30(&arguments[0]);
     int textKey = GetTaggedValueAsInt_02184c30(&arguments[1]);

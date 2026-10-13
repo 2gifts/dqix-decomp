@@ -9,7 +9,6 @@
 
 #include <Memory/SafeAllocator.h>
 
-
 struct ClearRecords {
     BattleRecordPlayClock times_[2];
 };

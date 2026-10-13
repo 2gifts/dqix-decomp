@@ -53,7 +53,6 @@ extern "C" void _Z27ProcessSlotField58_021a2840v();
 extern char data_ov017_021d7c10[];
 extern Actor0209c678 data_02109bf4;
 extern char data_02108760[];
-// JPN: func_ov017_021b6844
 // USA: func_ov017_021b6290
 extern "C" ARM void func_ov017_021b6290(BattleLoad021b6290* self) {
     GameState* game = GameState::GetInstance();

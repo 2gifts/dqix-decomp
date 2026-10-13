@@ -1,5 +1,4 @@
 // USA: func_ov006_02159db0
-// JPN: func_ov006_0215b2cc
 #include <globaldefs.h>
 
 struct Obj2081 {

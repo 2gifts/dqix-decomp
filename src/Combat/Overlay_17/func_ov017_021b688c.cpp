@@ -71,7 +71,6 @@ extern "C" void* func_0205ec34();
 void* GetPtrField0x2a04(GameState*);
 extern "C" void func_0206e424(void*, int);
 
-// JPN: func_ov017_021b6e40
 // USA: func_ov017_021b688c
 extern "C" ARM void func_ov017_021b688c(MenuWork* work) {
     GameState* game = GameState::GetInstance();

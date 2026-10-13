@@ -6,7 +6,6 @@ extern char data_020ef6ca;
 
 // KEEP-NAME
 // USA: func_02026528
-// JPN: func_02025e9c
 ARM void SetString02026528(char* obj, char* name) {
 #if defined(jpn)
     if (name != NULL && *name != 0) {

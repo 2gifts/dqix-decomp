@@ -23,7 +23,6 @@ extern char data_020ef18e[];
 
 // KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
 // USA: func_020145a8
-// JPN: func_02014374
 void Zone3D::LoadMapAMDJ() {
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     char buf[0x14];

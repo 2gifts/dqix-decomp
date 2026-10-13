@@ -63,7 +63,6 @@ extern unsigned char data_ov031_0224a1b4[];
 #endif
 
 // USA: func_ov031_02243e34
-// JPN: func_ov031_0224460c
 extern "C" ARM void func_ov031_02243e34(void* object) {
     unsigned char* state = (unsigned char*)object;
     switch (state[0x35]) {

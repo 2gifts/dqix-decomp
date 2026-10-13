@@ -14,7 +14,6 @@ extern "C" int func_ov009_02188ee8(CharacterCreationUI* self);
 extern "C" ARM void _Z20SetStatValue021855dcPhi(unsigned char *self, int val);
 
 // USA: func_ov009_02186aec  (semantic: AdvanceStatStep_02186aec)
-// JPN: func_ov009_02187c18
 extern "C" ARM void func_ov009_02186aec(CharacterCreationUI* self) {
 	unsigned char step = self->step;
 	if (step == 0) {

@@ -6,7 +6,6 @@ extern "C" int func_ov031_0220eb88(int);
 extern "C" int func_ov031_0220eb30(void);
 
 // USA: func_ov031_0221f698
-// JPN: func_ov031_0221fe78
 extern "C" THUMB int func_ov031_0221f698(WirelessScanDescriptor* destination, int capacity) {
     func_ov031_0220eb88(1);
     int count = func_ov031_0220eb30();

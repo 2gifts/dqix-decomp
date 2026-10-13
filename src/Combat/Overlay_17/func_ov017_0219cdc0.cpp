@@ -24,7 +24,6 @@ void* GetPtrField0x2a04(GameState*);
 static inline int Equal(unsigned short value, unsigned short key) { return value == key; }
 static inline int NotEqual(unsigned short value, unsigned short key) { return !Equal(value, key); }
 
-// JPN: func_ov017_0219d8b4
 // USA: func_ov017_0219cdc0
 extern "C" ARM void func_ov017_0219cdc0(unsigned short destinationZone, int wholeParty, signed char memberId) {
     GameState* state = GameState::GetInstance();

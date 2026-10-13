@@ -5,7 +5,6 @@ extern "C" void* func_02012fe4(void);
 
 // KEEP-NAME
 // USA: func_ov001_02161f64
-// JPN: func_ov001_02163578
 ARM int SetFlagAtOffset_02161f64_02161f64(void) {
 #if defined(jpn)
     ActiveGrottoClass* grotto = (ActiveGrottoClass*)((char*)func_02012fe4() + 0x240c);

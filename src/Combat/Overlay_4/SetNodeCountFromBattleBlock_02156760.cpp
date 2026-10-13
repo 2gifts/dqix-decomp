@@ -8,7 +8,6 @@ extern "C" void func_ov011_021848a0(void* obj, int val);
 
 // USA: func_ov004_02156760  (semantic: SetNodeCountFromBattleBlock_02156760)
 // KEEP-NAME
-// JPN: func_ov004_021579ec
 extern "C" ARM int func_ov004_02156760(void* context) {
     BattleRecordSnapshot snapshot;
     char* node = (char*)func_ov023_021f6880((void**)func_ov011_021849c8(context), 3);

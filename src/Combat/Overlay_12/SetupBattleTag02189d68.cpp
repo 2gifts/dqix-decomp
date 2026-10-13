@@ -19,7 +19,6 @@ struct ProfileListCounts {
 };
 
 // USA: func_ov012_02189d68
-// JPN: func_ov012_0218a804
 ARM void SetupBattleTag02189d68(char* editor) {
     func_ov012_021893b4(editor, *(unsigned char*)(editor + kSelectionOffset), 16, 1);
     memset(*(void**)(editor + kTextOffset), 0, kTextCapacity);

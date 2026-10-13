@@ -6,7 +6,6 @@ extern "C" void* func_02012fe4(void);
 
 void* GetPointerFromArray0x3c(unsigned char* obj, unsigned int index);
 
-
 // USA: func_ov001_02160b08
 extern "C" ARM int func_ov001_02160b08(void* self, int mode) {
     int a = func_ov017_021d60f4(self);

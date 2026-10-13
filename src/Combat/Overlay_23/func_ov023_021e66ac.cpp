@@ -61,7 +61,6 @@ struct ProfileProtagonist {
     ProfilePartyMember* partyData;
 };
 
-// JPN: func_ov023_021e6c24
 // USA: func_ov023_021e66ac  (semantic: BuildOrCopyKeyStringField_021e66ac)
 extern "C" ARM void func_ov023_021e66ac(void* editor) {
     ProfileTextEditor* self = (ProfileTextEditor*)editor;

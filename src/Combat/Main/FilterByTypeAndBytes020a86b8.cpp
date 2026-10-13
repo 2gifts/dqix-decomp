@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 #include "World/Zone3D.h"
 
-
 extern "C" void* func_02012fe4(void);
 extern "C" void* func_020a8a34(void*, int, int, int);
 

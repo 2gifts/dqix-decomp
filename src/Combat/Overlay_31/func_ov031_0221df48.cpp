@@ -13,7 +13,6 @@ extern "C" unsigned short func_ov031_0221e5f8(unsigned short);
 extern "C" unsigned int func_ov031_0221e5d0(unsigned int);
 
 // USA: func_ov031_0221df48
-// JPN: func_ov031_0221e728
 extern "C" THUMB short func_ov031_0221df48(PacketHeader0221df48* packet) {
     short total = 0;
     packet->id = *(signed char*)(data_ov031_0224e700 + 0x1d);

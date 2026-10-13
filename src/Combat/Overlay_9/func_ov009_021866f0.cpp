@@ -34,7 +34,6 @@ extern Vector3fix data_ov009_0218a9e0;
 extern Vector3fix data_ov009_0218a9ec;
 
 // USA: func_ov009_021866f0  (semantic: AdvanceStatStep_021866f0)
-// JPN: func_ov009_0218781c
 extern "C" ARM void func_ov009_021866f0(CharacterCreationUI* self) {
     unsigned char step = self->step;
     if (step == 0) {

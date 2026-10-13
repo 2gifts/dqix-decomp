@@ -13,7 +13,6 @@ extern char data_ov012_0218bf52[];
 #endif
 
 // USA: func_ov012_02185e18
-// JPN: func_ov012_02186468
 extern "C" ARM void func_ov012_02185e18(char* editor) {
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
 #if defined(jpn)

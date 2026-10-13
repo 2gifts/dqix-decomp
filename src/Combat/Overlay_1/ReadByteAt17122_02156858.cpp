@@ -4,7 +4,6 @@ extern "C" void* func_ov017_0218b5b0(void);
 
 // KEEP-NAME
 // USA: func_ov001_02156858
-// JPN: func_ov001_02157f30
 ARM int ReadByteAt17122_02156858(void) {
 	char* p = (char*)func_ov017_0218b5b0();
 #if defined(jpn)

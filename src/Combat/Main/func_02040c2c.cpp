@@ -72,7 +72,6 @@ void SelectVec3FromSources020406f8(struct Vec3_020406f8* out, struct Node020406f
 void FillVec3Default020407c4(struct Vec3_020407c4* out, struct Self020407c4* self);
 
 // USA: func_02040c2c
-// JPN: func_02041128
 extern "C" ARM void func_02040c2c(struct Obj02040c2c* self, void* context, int elapsedTicks, int movementTicks) {
     struct Vec3_020406f8 motionPosition;
     struct Vec3_020406f8 attachmentPosition;

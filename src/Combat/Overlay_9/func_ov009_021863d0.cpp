@@ -1,4 +1,3 @@
-// JPN: func_ov009_02187500
 #include <globaldefs.h>
 #include "Resource/CharacterCreationUI.h"
 
@@ -25,7 +24,6 @@ extern "C" void func_ov009_02188944(CharacterCreationUI* self, int choice);
 extern "C" int func_ov009_02188ee8(CharacterCreationUI* self);
 extern "C" void func_ov023_021e6158(CharacterModel* character, int part);
 extern "C" void _Z20SetStatValue021855dcPhi(unsigned char* self, int state);
-
 
 // USA: func_ov009_021863d0
 extern "C" ARM void func_ov009_021863d0(CharacterCreationUI* self)

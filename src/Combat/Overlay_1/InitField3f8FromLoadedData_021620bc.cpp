@@ -26,7 +26,6 @@ struct S3f8 {
 };
 
 // USA: func_ov001_021620bc  (semantic: InitField3f8FromLoadedData_021620bc)
-// JPN: func_ov001_021636d0
 extern "C" ARM int func_ov001_021620bc(void) {
     int tmpVec[3];
     void* battle = GameState::GetInstance();

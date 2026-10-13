@@ -15,8 +15,6 @@ extern "C" void _ZN12RenderConfig12SubmitToFifoEv(void);
 
 extern "C" void _ZN7Model3D4DrawEb(void* a, int b);
 
-
-
 #if defined(jpn)
 enum { NodeBufferOffset = 0x25f4 };
 #else

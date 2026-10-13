@@ -3,7 +3,6 @@
 
 // KEEP-NAME
 // USA: func_02011a74
-// JPN: func_020117e4
 ARM void CopyStringToField0x649e(char* obj, unsigned int index, const char* source) {
     if (source == NULL) return;
 #if defined(jpn)

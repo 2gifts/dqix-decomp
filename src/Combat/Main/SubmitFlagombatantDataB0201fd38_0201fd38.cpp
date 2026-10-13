@@ -11,7 +11,6 @@ enum { kOffset1c = 0x1c, kOffset24 = 0x24 };
 
 // USA: func_0201fd38
 
-
 struct CombatantSubmitEntry {
     int stateA;
     int stateB;

@@ -27,7 +27,6 @@ void ClearCombatantSlot(GameState*, int);
 void RegisterCombatantSlot(GameState*, int, GameObject*);
 Data021c32b0* GetFieldAt0x150(unsigned char*);
 
-// JPN: func_ov017_021c378c
 // USA: func_ov017_021c32b0
 extern "C" ARM void func_ov017_021c32b0(Mapping021c32b0* mapping, int count) {
     Saved021c32b0 saved[4];

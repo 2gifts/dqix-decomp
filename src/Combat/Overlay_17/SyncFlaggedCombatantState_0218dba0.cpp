@@ -10,7 +10,6 @@ enum { RegionOffset36fc = 0x36fc, RegionOffset38 = 0x38, RegionOffset3c = 0x3c }
 
 extern "C" void* func_02012fe4(void);
 
-
 struct BitField0203402c;
 int CheckField0xc4Low15BitsNonZero(struct BitField0203402c* p);
 

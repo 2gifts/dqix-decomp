@@ -11,7 +11,6 @@ extern "C" int func_ov031_0221de00(int, const void*, int);
 extern "C" int func_ov031_0221dedc(int, const void*, int);
 
 // USA: func_ov031_0221dc68
-// JPN: func_ov031_0221e448
 extern "C" THUMB int func_ov031_0221dc68(int type, int first, const void* packet, int channel) {
     switch (type) {
     case 0:

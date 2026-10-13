@@ -71,7 +71,6 @@ extern SlotMap021d27e4 data_ov017_021d7154;
 extern SlotMap021d27e4 data_ov017_021d6d0c;
 #endif
 
-// JPN: func_ov017_021d2c68
 // USA: func_ov017_021d27e4
 extern "C" ARM void func_ov017_021d27e4(void* unused0, Evt021d27e4* evt, GameState* gs, GameResources* ctx) {
     GetField0x3acValue(gs);

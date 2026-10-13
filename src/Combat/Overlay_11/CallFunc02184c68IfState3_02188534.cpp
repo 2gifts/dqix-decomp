@@ -5,7 +5,6 @@ void* GetGlobalField0x1c020421a0();
 extern "C" unsigned int func_ov011_02184c68(unsigned int, unsigned int);
 
 // USA: func_ov011_02188534
-// JPN: func_ov011_0218960c
 extern "C" ARM int func_ov011_02188534(unsigned int obj) {
     MessageSystem* messages = (MessageSystem*)GetGlobalField0x1c020421a0();
     int enabled = 0;

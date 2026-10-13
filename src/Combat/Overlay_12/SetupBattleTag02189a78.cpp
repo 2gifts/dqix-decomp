@@ -14,7 +14,6 @@ extern "C" void func_ov012_021893b4(void*, int, int, int);
 extern "C" void func_ov012_02189af4(void*, void*, int);
 
 // USA: func_ov012_02189a78
-// JPN: func_ov012_0218a494
 ARM void SetupBattleTag02189a78(char* editor) {
     func_ov012_021893b4(editor, *(unsigned char*)(editor + kSelectionOffset), 14, 1);
     memset(*(void**)(editor + kTextOffset), 0, kTextCapacity);

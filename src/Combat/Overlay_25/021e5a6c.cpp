@@ -12,8 +12,8 @@ struct Vec3 { int x; int y; int z; };
 
 struct Obj021e5a6c {
     char pad0[8];
-    Vec3 pos;            // 0x8
-    unsigned char mode;  // 0x14
+    Vec3 pos;
+    unsigned char mode;
 };
 
 struct List021600f8;

@@ -63,7 +63,6 @@ struct Obj021e6e20;
 int TestFlagsAndActiveElement2_021e6e20(struct Obj021e6e20* obj);
 extern int data_02108760;
 
-// JPN: func_ov012_02187700
 // USA: func_ov012_02186fd8  (semantic: AdvanceTagStateWithMessage_02186fd8)
 extern "C" ARM void func_ov012_02186fd8(char* base) {
     unsigned char state = *(unsigned char*)(base + kStepOffset);

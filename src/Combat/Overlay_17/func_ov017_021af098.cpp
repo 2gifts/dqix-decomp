@@ -2,7 +2,6 @@
 #include "Combat/SearchEntry.h"
 #include "GameState/GameState.h"
 
-
 struct SearchStruct;
 
 struct SearchStruct0202c1a4;
@@ -46,7 +45,6 @@ struct Obj021af098 {
     unsigned short elapsedMilliseconds;
 };
 
-// JPN: func_ov017_021af7a8
 // USA: func_ov017_021af098
 extern "C" ARM unsigned char func_ov017_021af098(Obj021af098* obj) {
     GameState* gs = GameState::GetInstance();

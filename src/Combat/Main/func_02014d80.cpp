@@ -33,7 +33,6 @@ const char* GetPointerFromArray0x18(Container_1f368*, int);
 void CallHandlerFlag0_020e2fc0(RenderCommandHandler*);
 
 // USA: func_02014d80
-// JPN: func_02014b4c
 extern "C" ARM int func_02014d80(Zone3D* zone, void* nodeData, Struct02012ff0* trackerData, Src02015134* recordData) {
     ResourceNode14D* node = (ResourceNode14D*)nodeData;
     ModelTracker14D* tracker = (ModelTracker14D*)trackerData;

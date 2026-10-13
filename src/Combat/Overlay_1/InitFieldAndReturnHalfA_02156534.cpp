@@ -12,7 +12,6 @@ extern "C" void func_ov017_021bb27c(struct Struct02156534* p);
 
 // KEEP-NAME
 // USA: func_ov001_02156534
-// JPN: func_ov001_02157c40
 ARM unsigned short InitFieldAndReturnHalfA_02156534(struct Struct02156534* p) {
 	func_ov001_02154da0(p);
 	func_ov017_021bb27c(p);

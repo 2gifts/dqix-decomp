@@ -45,7 +45,6 @@ static inline ProfileAccolade* GetProfileAccolade(GameState* state) {
     return (ProfileAccolade*)((char*)state + 0x543c);
 }
 
-// JPN: func_ov012_02188cfc
 extern "C" ARM void func_ov012_02188640(char* editor) {
     if (*(unsigned char*)(editor + 0x1340) == 0) {
         *(unsigned char*)(editor + 0x1368) = 0;

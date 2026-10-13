@@ -58,7 +58,6 @@ extern "C" struct Node0208036c* _Z22WalkListByMode0208036cPvP12Node0208036ciP13F
 
 extern unsigned char data_02114e54[];
 
-// JPN: func_02080c38
 // USA: func_020800fc
 extern "C" ARM int func_020800fc(struct Ctx0208010c* self, short* outId, short id, int mode, unsigned char sel, unsigned char setFlag) {
     struct Flags0208036c flags;

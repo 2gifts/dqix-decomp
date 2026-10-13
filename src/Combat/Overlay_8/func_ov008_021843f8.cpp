@@ -2,7 +2,6 @@
 #include "GameState/BattleRecordSnapshot.h"
 #include <Memory/SafeAllocator.h>
 
-
 struct ClearRecords {
     BattleRecordPlayClock times_[2];
     unsigned int unk_8_0 : 17;

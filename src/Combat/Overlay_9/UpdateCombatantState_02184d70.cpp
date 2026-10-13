@@ -1,6 +1,5 @@
 // KEEP-NAME
 // USA: func_ov009_02184d70
-// JPN: func_ov009_02186098
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 #include "Resource/CharacterCreationUI.h"

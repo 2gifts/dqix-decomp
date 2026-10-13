@@ -12,7 +12,6 @@ static inline int PixelsToFixed(int pixels) {
 }
 
 // USA: func_0202427c
-// JPN: func_02023c44
 extern "C" ARM void func_0202427c(void *receiver) {
     unsigned char *frame = static_cast<unsigned char *>(receiver);
     Zone3D *zone = static_cast<Zone3D *>(func_02012fe4());

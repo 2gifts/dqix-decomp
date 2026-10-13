@@ -17,8 +17,6 @@ struct Scene02155dd0 {
     unsigned short fieldA;
 };
 
-
-
 extern "C" GameResources* func_ov017_0218b5b0();
 char* GetFieldIfFlag4(char* obj);
 void* GetFieldPtrAt0x5ca4(void* obj);

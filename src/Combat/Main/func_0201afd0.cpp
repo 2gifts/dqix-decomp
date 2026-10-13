@@ -20,7 +20,6 @@ struct ChestLoot0201afd0 {
 
 struct ChestLootList0201afd0;
 
-
 struct AdjacencyBits0201afd0 {
     unsigned char bits;
 };
@@ -80,7 +79,6 @@ static inline int GetFloorSeed0201afd0(const ActiveGrottoClass* grotto, int floo
 }
 
 // USA: func_0201afd0
-// JPN: func_0201ad70
 extern "C" ARM int func_0201afd0(Zone3D* zone, const void* treasureArchive, unsigned int sourceSize, int unused) {
     ZoneFeatures* features = &zone->substruct_6c_;
     GameState* gs = GameState::GetInstance();

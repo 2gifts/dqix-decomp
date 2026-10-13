@@ -1,7 +1,6 @@
 #include "System/OverlayMD5.h"
 
 // USA: func_ov031_02221e84
-// JPN: func_ov031_02222664
 extern "C" THUMB void func_ov031_02221e84(OverlayMD5Context* context) {
     context->bitCount[1] = 0;
     context->bitCount[0] = 0;

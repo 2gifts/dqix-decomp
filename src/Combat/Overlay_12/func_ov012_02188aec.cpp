@@ -58,7 +58,6 @@ static inline Profile02188aec* GetProfileDesign(GameState* state) {
 }
 
 // USA: func_ov012_02188aec
-// JPN: func_ov012_02189138
 extern "C" ARM void func_ov012_02188aec(char* self) {
     Profile02188aec* profile = GetProfileDesign(GameState::GetInstance());
     if ((*(unsigned char*)(self + kStepOffset)) == 0) {

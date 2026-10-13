@@ -64,7 +64,6 @@ void CopyByteField0x253To0x252(void*);
 extern "C" void _Z30CheckStackAndFinalize_021a5974Pc(char*);
 extern AllocatorUnion data_02114e20;
 extern char* data_ov017_021d83ac;
-// JPN: func_ov017_021a6038
 // USA: func_ov017_021a5600
 extern "C" ARM void func_ov017_021a5600(BattleState021a5600* self) {
     GameState* game = GameState::GetInstance();

@@ -10,7 +10,6 @@ struct ResponsePayloadRecord { unsigned char prefix[6]; ResponsePayloadHeader he
 extern "C" void func_ov031_0221e51c(void*, const void*, unsigned int);
 
 // USA: func_ov031_0221db18
-// JPN: func_ov031_0221e2f8
 extern "C" THUMB int func_ov031_0221db18(ResponsePayloadRecord* packet, void* destination) {
     ResponsePayloadHeader* header = &packet->header;
     int length = func_ov031_0221e638(header->length);

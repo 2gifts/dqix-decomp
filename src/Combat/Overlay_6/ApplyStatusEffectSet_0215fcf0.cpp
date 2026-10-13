@@ -1,5 +1,4 @@
 // USA: func_ov006_0215fcf0
-// JPN: func_ov006_02161064
 #include <globaldefs.h>
 
 struct StatusOwner02081164;

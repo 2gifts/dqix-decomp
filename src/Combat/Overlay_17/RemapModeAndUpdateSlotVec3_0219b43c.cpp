@@ -8,7 +8,6 @@ enum { RegionOffset630 = 0x630, SlotBaseOffset = 0x2b90 };
 #include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 
-
 struct Vec3copy0202ec84 { unsigned int v[3]; };
 int ComputeTwoFromVec3_0202ec84(void* obj, struct Vec3copy0202ec84* src, int* out1, int* out2);
 

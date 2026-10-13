@@ -32,7 +32,6 @@ extern char data_ov013_02188e61[];
 extern char data_ov013_02188e64[];
 
 // USA: func_ov013_02187a58
-// JPN: func_ov013_02188a24
 extern "C" ARM void func_ov013_02187a58(void* self, void* canvas) {
     unsigned char* menu = (unsigned char*)self;
     if (!canvas) return;

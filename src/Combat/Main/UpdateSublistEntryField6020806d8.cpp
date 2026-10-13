@@ -40,7 +40,6 @@ int IsValueEqual12(int);
 extern "C" int func_020420e8(char* text, int fontIndex);
 #endif
 
-// JPN: func_02081200
 // USA: func_020806d8  (semantic: UpdateSublistEntryField6020806d8)
 extern "C" ARM void func_020806d8(ObjSublist020806d8* menu, int groupId, int itemId, int alignRight, short marginPixels) {
     TextItem020806d8* item = (TextItem020806d8*)FindEntryByShortId0207f6ac(&menu->items, itemId);

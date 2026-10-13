@@ -21,7 +21,6 @@ void PushMatrixAndRender02016db4(void*, void*);
 extern "C" void func_020ca528(const void*, void*);
 
 // USA: func_02016874
-// JPN: func_02016614
 extern "C" ARM void func_02016874(Zone3D* self) {
     if (self->unknown_424_ != 0) return;
     func_0201730c((CombatEntryList*)self);

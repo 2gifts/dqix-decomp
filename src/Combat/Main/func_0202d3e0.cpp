@@ -23,7 +23,6 @@ void SetField0x48UnlessState9Or10(int);
 extern "C" void func_0202dd98();
 
 // USA: func_0202d3e0
-// JPN: func_0202cf50
 extern "C" ARM void func_0202d3e0(Input0202d3e0* input) {
     if (input->status != 0) {
         if (input->status != 15 && input->status != 9 && input->status != 13) {

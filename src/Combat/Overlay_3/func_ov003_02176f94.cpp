@@ -1,5 +1,4 @@
 // USA: func_ov003_02176f94
-// JPN: func_ov003_02175f8c
 #include <globaldefs.h>
 #if defined(jpn)
 enum {

@@ -28,7 +28,6 @@ struct Ctx0209459c {
     unsigned char flags;
 };
 
-// JPN: func_02094ea0
 // USA: func_020945ac  (semantic: SlideAndClearEntries_020945ac)
 extern "C" ARM void func_020945ac(Ctx0209459c* queue) {
     if (queue->count <= 0) {

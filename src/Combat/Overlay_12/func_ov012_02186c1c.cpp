@@ -35,7 +35,6 @@ static inline ProfileTitle02186c1c* GetTitleProfile02186c1c(GameState* game) {
 }
 
 // USA: func_ov012_02186c1c
-// JPN: func_ov012_02187350
 extern "C" ARM void func_ov012_02186c1c(char* editor) {
     if (*(unsigned char*)(editor + 0x1340) == 0) {
         *(unsigned char*)(editor + 0x1368) = 0;

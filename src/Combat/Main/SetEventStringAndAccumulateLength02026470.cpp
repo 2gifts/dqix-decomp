@@ -12,7 +12,6 @@ extern char data_020ef6c5;
 
 // KEEP-NAME
 // USA: func_02026470
-// JPN: func_02025e2c
 ARM void SetEventStringAndAccumulateLength02026470(void* obj, int number) {
     if (number == 0) {
         strcpy((char*)obj + 0x5f4, &data_020ef6b5);

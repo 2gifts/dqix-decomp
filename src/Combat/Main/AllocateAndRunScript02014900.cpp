@@ -6,7 +6,6 @@
 struct StreamHeader;
 void RegisterAndRunBufferedScript0201f040(void*, void*, StreamHeader*, unsigned int);
 
-
 // USA: func_02014900
 // KEEP-NAME: exported Zone3D member ABI, with an explicit receiver here.
 extern "C" ARM int _ZN6Zone3D15ProcessBMDJFileEPKvjPN12ZoneFeatures13Opcode64EntryE(

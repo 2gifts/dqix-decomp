@@ -69,7 +69,6 @@ extern Touch020ad61c data_02114e54;
 extern unsigned short data_02114e30;
 extern Flag020ad61c data_ov017_021d82fc;
 
-// JPN: func_020af0e8
 // USA: func_020ad61c
 extern "C" ARM void func_020ad61c(Trajectory020ad61c* object) {
     Zone3D* world;

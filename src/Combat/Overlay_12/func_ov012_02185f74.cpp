@@ -116,7 +116,6 @@ extern "C" const unsigned char data_ov012_0218af75[3];
 extern "C" const unsigned char data_ov012_0218af78[3];
 
 // USA: func_ov012_02185f74
-// JPN: func_ov012_02186614
 extern "C" ARM void func_ov012_02185f74(ProfileEditor02185f74* self)
 {
     Background02185f74* background;

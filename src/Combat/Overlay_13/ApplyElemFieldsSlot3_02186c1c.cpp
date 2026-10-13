@@ -11,7 +11,6 @@ int TryApplyElemFields0205d5d0(StructA0205d5d0*, int, int, int, unsigned char);
 extern "C" void func_ov013_02185be0(void*, void*);
 
 // USA: func_ov013_02186c1c
-// JPN: func_ov013_02187f3c
 extern "C" ARM void func_ov013_02186c1c(void* obj) {
 #if defined(jpn)
     memset(*(void**)((char*)obj + 0x5e0), 0, 0x800);

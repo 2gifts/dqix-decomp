@@ -52,7 +52,6 @@ struct Self021a86d0 {
     unsigned char container[0x10];
 };
 
-
 extern "C" void* _ZN9GameState11GetInstanceEv(void);
 extern "C" char* _Z26GetGlobalField0x1c020421a0v(void);
 extern "C" char* func_02012fe4(void);

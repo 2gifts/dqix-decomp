@@ -58,7 +58,6 @@ extern "C" void func_ov017_0219c520();
 void ReinitController02043204(char*);
 void SetByteField0x253(void*);
 
-// JPN: func_ov017_021c2074
 // USA: func_ov017_021c1af0
 extern "C" ARM void func_ov017_021c1af0(State021c1af0* state) {
     GameState* game = GameState::GetInstance();

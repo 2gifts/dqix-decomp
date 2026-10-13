@@ -1,4 +1,3 @@
-// JPN: func_ov009_02189704
 #include <globaldefs.h>
 #include "Resource/CharacterCreationUI.h"
 
@@ -24,7 +23,6 @@ extern "C" void _Z20GetEntryPair02188bf8PhiPsS0_(unsigned char* self, int bodyTy
 extern "C" void func_ov023_021e5e68(void* character, int width, int height);
 extern "C" int func_ov009_02188b14(void* self, int state, int choice);
 extern "C" void func_ov023_021e540c(void* character);
-
 
 // USA: func_ov009_02188944
 #if defined(jpn)

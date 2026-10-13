@@ -7,7 +7,6 @@ struct Queue0221e6d4 {
 };
 
 // USA: func_ov031_0221e6d4  (semantic: ClearQueue_0221e6d4)
-// JPN: func_ov031_0221eeb4
 extern "C" THUMB void func_ov031_0221e6d4(Queue0221e6d4* q) {
     q->head = 0;
     q->count = 0;

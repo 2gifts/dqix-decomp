@@ -14,7 +14,6 @@ extern "C" unsigned int func_ov031_0221e5d0(unsigned int);
 extern "C" int func_ov031_0221e5a0(int, const void*, int, int, void*, int);
 
 // USA: func_ov031_0221e080
-// JPN: func_ov031_0221e860
 extern "C" THUMB int func_ov031_0221e080(const void* buffer, int size, int recipient, int channel) {
     SendHeader0221e080 header;
     func_ov031_0221e52c(&header, 0, 8);

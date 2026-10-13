@@ -37,7 +37,6 @@ unsigned char GetLinkedFlagByte(LookupBase*);
 int TestFlag0SetAndFlag1Clear(unsigned short*, int);
 extern "C" void __clear(void*, unsigned int);
 
-// JPN: func_ov017_0219b620
 // USA: func_ov017_0219aa7c
 extern "C" ARM void func_ov017_0219aa7c(GameResources* self) {
     GameState* game = GameState::GetInstance();

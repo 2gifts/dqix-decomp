@@ -8,7 +8,6 @@ inline int CompareFinalIdentifier(ResponseIdentifier* identifier, ResponseHeader
 }
 
 // USA: func_ov031_0221d604
-// JPN: func_ov031_0221dde4
 extern "C" THUMB int func_ov031_0221d604(int state, ResponsePacket* packet, int* counter, ResponseIdentifiers* identifiers) {
     if (state != 2) { ++*counter; return state; }
     ResponseBody* record = &packet->body;

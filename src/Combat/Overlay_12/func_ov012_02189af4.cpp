@@ -35,7 +35,6 @@ void SetByteAtIndex(unsigned char*, int, unsigned char);
 extern "C" void func_02042428(char*, int);
 extern "C" void func_0202ae18();
 
-// JPN: func_ov012_0218a50c
 extern "C" ARM void func_ov012_02189af4(char* editor, char* text, int hidden) {
     if (!text) return;
     int selection = *(int*)(editor + 0x1434) & 15;

@@ -53,7 +53,6 @@ enum { kSavedPosition = 0x27b4, kSavedAngle = 0x27c0 };
 enum { kSavedPosition = 0x2774, kSavedAngle = 0x2780 };
 #endif
 
-// JPN: func_020a9390
 // USA: func_020a75ec
 extern "C" ARM void func_020a75ec(WrappedActor020a75ec* actor) {
     GameState* state = GameState::GetInstance();

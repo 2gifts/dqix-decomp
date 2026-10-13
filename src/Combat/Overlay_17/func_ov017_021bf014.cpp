@@ -55,7 +55,6 @@ typedef void (*EndDialog)(void*, int);
 extern "C" void func_02094ab0(void*);
 extern "C" void _Z37ClearFieldsAndResetAllocator_021bf398Pc(char*);
 
-// JPN: func_ov017_021bf5d0
 // USA: func_ov017_021bf014
 extern "C" ARM void func_ov017_021bf014(GrottoDialogState* self) {
     GameState* game = GameState::GetInstance();

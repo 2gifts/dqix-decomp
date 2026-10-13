@@ -13,7 +13,6 @@ extern KeyPacket02243018 data_ov031_02291eae;
 extern unsigned char data_ov031_02291e04[];
 
 // USA: func_ov031_02243018
-// JPN: func_ov031_022437f8
 extern "C" ARM int func_ov031_02243018(Script::Parameter* parameters) {
     parameters[0].ToString();
     KeyPacket02243018 packet;

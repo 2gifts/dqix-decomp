@@ -14,7 +14,6 @@ extern "C" int func_020dfec0(Container020dffc8*, SafeAllocator*, void*, unsigned
 
 // KEEP-NAME
 // USA: func_ov012_02185f04
-// JPN: func_ov012_021865a4
 ARM void ResetAndRebuildEntry_02185f04(char* editor) {
     GameState::GetInstance();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();

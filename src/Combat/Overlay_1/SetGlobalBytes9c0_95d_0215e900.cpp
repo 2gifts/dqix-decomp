@@ -4,7 +4,6 @@
 int GetGlobalField0x1c020421a0();
 
 // USA: func_ov001_0215e900  (semantic: SetGlobalBytes9c0_95d_0215e900)
-// JPN: func_ov001_0215ff78
 extern "C" ARM int func_ov001_0215e900(void) {
     MessageSystem* messages = (MessageSystem*)GetGlobalField0x1c020421a0();
     messages->b19c0 = 1;

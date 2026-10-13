@@ -56,7 +56,6 @@ static inline Combatant020dd4c4* GetCombatant020dd4c4(int id) {
 }
 
 // USA: func_020dd4c4
-// JPN: func_020dee40
 extern "C" ARM int func_020dd4c4(int id, Entry020dd4c4* entry) {
     if (!entry) return 0x200;
     if (entry->count <= 0) return 0x200;

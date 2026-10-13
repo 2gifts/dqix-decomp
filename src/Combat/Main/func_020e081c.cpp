@@ -63,7 +63,6 @@ static inline SafeAllocator* GetResourceAllocator(GameResources* resources, int 
 }
 
 // KEEP-NAME: func_020e081c is the shared regional export.
-// JPN: func_020e245c
 // USA: func_020e081c
 extern "C" ARM void func_020e081c(char* self) {
     GameState::GetInstance();

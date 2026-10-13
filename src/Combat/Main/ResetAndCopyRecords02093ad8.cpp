@@ -21,7 +21,6 @@ struct CopyableRecord {
 void ClearRegion02093980(char* storage);
 void CopyRecord(CopyableRecord* destination, CopyableRecord* source);
 
-// JPN: func_02094400
 // USA: func_02093ad8  (semantic: ResetAndCopyRecords02093ad8)
 extern "C" ARM void func_02093ad8(void* unused, CopyableRecord* source, CopyableRecord* destination, int count) {
     int i;

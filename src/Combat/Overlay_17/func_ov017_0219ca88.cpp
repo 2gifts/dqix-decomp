@@ -57,7 +57,6 @@ void AppendNodeToTail(TailList020469b4*, TailNode020469b4*);
 int LookupAndForEachNode020649b0(void*, int, void*);
 extern "C" void func_0206f81c(void*);
 
-// JPN: func_ov017_0219d57c
 // USA: func_ov017_0219ca88
 extern "C" ARM void func_ov017_0219ca88(GameResources* resources) {
     GameState* game = GameState::GetInstance();

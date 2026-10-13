@@ -21,7 +21,6 @@ extern void* data_ov004_02171030;
 
 // USA: func_ov004_02169a28  (semantic: SetIndexedNameFromElem_02169a28)
 // KEEP-NAME
-// JPN: func_ov004_02169f44
 extern "C" ARM int func_ov004_02169a28(void* self) {
 #if defined(jpn)
     char* records = *(char**)((char*)data_ov004_02171030 + 0x10);

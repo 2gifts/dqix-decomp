@@ -38,7 +38,6 @@ extern "C" void func_ov011_021848a0(void* obj, int val);
 
 // KEEP-NAME
 // USA: func_ov004_0215c900
-// JPN: func_ov004_0215d900
 ARM int CheckBitAndNotify_0215c900(void* obj) {
 #if defined(jpn)
     const DownloadedData* data = (const DownloadedData*)((const char*)GameState::GetInstance() + 0x5c0c);

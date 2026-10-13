@@ -1,4 +1,3 @@
-// JPN: func_ov009_02189af0
 #include <globaldefs.h>
 #include "Resource/CharacterCreationUI.h"
 

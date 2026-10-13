@@ -20,7 +20,6 @@ void* FindRecordByIndex(Rec020467f0*, int, void**, int*);
 extern "C" void func_0205a528(void*, void*, int, void*);
 
 // USA: func_ov012_021861e0
-// JPN: func_ov012_02186880
 extern "C" ARM void func_ov012_021861e0(char* editor) {
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     for (unsigned char i = 0; i < kWidgetCount; ++i)

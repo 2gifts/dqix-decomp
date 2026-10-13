@@ -10,7 +10,6 @@ struct TimeEntry0219c774 {
 };
 float GetActiveBitIndex(GameState*);
 extern "C" void func_020103c8(GameState*, float);
-// JPN: func_ov017_0219d264
 // USA: func_ov017_0219c774
 extern "C" ARM int func_ov017_0219c774(TimeEntry0219c774* entry, int apply) {
     GameState* game = GameState::GetInstance();

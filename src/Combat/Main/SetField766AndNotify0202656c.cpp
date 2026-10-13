@@ -10,7 +10,6 @@ struct Obj0202656c;
 
 // KEEP-NAME
 // USA: func_0202656c
-// JPN: func_02025ed4
 ARM void SetField766AndNotify0202656c(struct Obj0202656c* p, int val) {
 #if defined(jpn)
     enum { ValueOffset = 0x6ba, TextOffset = 0x680 };

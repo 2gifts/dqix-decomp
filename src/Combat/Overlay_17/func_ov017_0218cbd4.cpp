@@ -91,7 +91,6 @@ extern "C" void func_020e30f0(void*);
 void ProcessEntry56_0218d818(unsigned char*);
 extern Event020da2fc data_ov017_021d82fc;
 
-// JPN: func_ov017_0218d7b4
 // USA: func_ov017_0218cbd4
 extern "C" ARM void func_ov017_0218cbd4(GameResources* self) {
     GameState* state = GameState::GetInstance();

@@ -49,7 +49,6 @@ int IsField0Null(void**);
 void SetVecYFromValue02033874(Obj02033874*, int);
 
 // USA: func_020391ac
-// JPN: func_02038c04
 extern "C" ARM void func_020391ac(FollowingActor* actor) {
     GameState* game;
     FollowingActor* leader;

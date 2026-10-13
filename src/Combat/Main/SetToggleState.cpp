@@ -4,7 +4,6 @@ struct ToggleState;
 
 // KEEP-NAME
 // USA: func_02021410
-// JPN: func_02021004
 ARM void SetToggleState(ToggleState* state, int active, int mode) {
     unsigned char* storage = (unsigned char*)state;
 #if defined(jpn)

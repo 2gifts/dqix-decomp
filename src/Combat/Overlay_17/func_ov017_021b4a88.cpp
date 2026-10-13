@@ -40,7 +40,6 @@ struct Request021b4a88 {
     unsigned char state;
 };
 
-// JPN: func_ov017_021b5178
 // USA: func_ov017_021b4a88
 extern "C" ARM void func_ov017_021b4a88(Request021b4a88* request) {
     GameState::GetInstance();

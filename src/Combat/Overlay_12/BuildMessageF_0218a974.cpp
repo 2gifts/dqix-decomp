@@ -14,7 +14,6 @@ extern "C" void func_ov012_021893b4(void*, int, int, int);
 extern "C" void func_ov012_0218a9ec(void*, void*, int);
 
 // USA: func_ov012_0218a974
-// JPN: func_ov012_0218b47c
 ARM void BuildMessageF_0218a974(char* editor) {
     func_ov012_021893b4(editor, *(unsigned char*)(editor + kSelectionOffset), 16, 1);
     void* text = *(void**)(editor + kTextOffset);

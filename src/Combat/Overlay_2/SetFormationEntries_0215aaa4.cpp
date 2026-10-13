@@ -13,7 +13,6 @@ void SetEntryFields02154bcc(int a, int b, void* obj, int idx, unsigned char arg5
 
 // USA: func_ov002_0215aaa4  (semantic: SetFormationEntries_0215aaa4)
 // KEEP-NAME
-// JPN: func_ov002_0215be94
 extern "C" ARM void func_ov002_0215aaa4(char* obj) {
     struct Elem_0205d81c* e = FindElementByC40205d81c((struct Struct_0205d81c*)(obj + REGION_VALUE(0xe20, 0xec8)), REGION_VALUE(0x24, 0x21));
     if (e) {

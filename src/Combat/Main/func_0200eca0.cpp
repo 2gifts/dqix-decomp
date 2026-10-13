@@ -44,7 +44,6 @@ extern "C" void func_0200ec44(ExceptionContext*, int, int);
 extern "C" void func_0200f2ec(ExceptionContext*, ExceptionTableCursor*, unsigned int);
 
 // USA: func_0200eca0
-// JPN: func_0200eb64
 // KEEP-NAME
 extern "C" ARM void func_0200eca0(ExceptionContext* context) {
     ExceptionTableCursor table;

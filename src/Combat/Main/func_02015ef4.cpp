@@ -82,7 +82,6 @@ extern NameBuf data_020e6e88;
 extern char data_020ef20b[];
 
 // USA: func_02015ef4
-// JPN: func_02015cc0
 extern "C" ARM int func_02015ef4(Zone3D* self, int index) {
     GameState* gs = GameState::GetInstance();
     ChestDisplayState* entry = &reinterpret_cast<ChestDisplayState*>(self->unknown_47c_)[index];

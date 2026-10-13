@@ -124,7 +124,6 @@ struct CombatantView {
     CombatantFlags* flags;
 };
 
-// JPN: func_ov017_021afd7c
 // USA: func_ov017_021af66c
 extern "C" ARM void func_ov017_021af66c(CombatStepObj* obj, void* list) {
     GameState* gs = GameState::GetInstance();

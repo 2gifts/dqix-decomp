@@ -30,7 +30,6 @@ extern char data_020ef150;
 
 // KEEP-NAME
 // USA: func_02014108
-// JPN: func_02013ed4
 ARM int Zone3D::UnpackMapAMBL() {
     if (mapAMBLLoadHandle_ < 0) {
         return 1;

@@ -59,7 +59,6 @@ static inline int IsPartyMember(int id) {
 
 // USA: func_ov024_021eaa50
 // KEEP-NAME
-// JPN: func_ov024_021eb21c
 extern "C" ARM int func_ov024_021eaa50(Act_021eb5d0* act, Src_021eb5d0* src,
                                       Rec_021eb5d0* record, int flag4) {
     char* a0 = (char*)act;

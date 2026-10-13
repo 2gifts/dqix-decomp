@@ -14,7 +14,6 @@ enum {
 
 // USA: func_020946f8
 // KEEP-NAME
-// JPN: func_02094fe0
 ARM void PackFields020946f8(PackFields020946f8Struct* sprite, int x, int y, int priority,
                             int mode, int mosaic, int effect, int shape, int colorMode,
                             int characterIndex, int paletteOrAlpha, int affineIndex) {

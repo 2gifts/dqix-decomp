@@ -4,7 +4,6 @@
 
 extern "C" void* func_02012fe4(void);
 
-
 struct Vec3_020406f8 {
     unsigned int v[3];
 };

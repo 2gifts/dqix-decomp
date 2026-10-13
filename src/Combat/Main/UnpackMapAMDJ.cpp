@@ -23,7 +23,6 @@ extern char data_020ef199[];
 // KEEP-NAME
 // USA: func_020146fc
 // USA: _ZN6Zone3D13UnpackMapAMDJEv
-// JPN: func_020144c8
 ARM int Zone3D::UnpackMapAMDJ()
 {
     if (mapAMDJLoadHandle_ < 0)

@@ -1,4 +1,3 @@
-// JPN: func_ov009_02187d2c
 #include <globaldefs.h>
 #include "Resource/CharacterCreationUI.h"
 
@@ -37,7 +36,6 @@ extern const Vector3fix data_ov009_0218aa10;
 #define data_ov009_0218aa1c data_ov009_0218b9f8
 #endif
 extern const Vector3fix data_ov009_0218aa1c;
-
 
 // USA: func_ov009_02186c00
 extern "C" ARM void func_ov009_02186c00(CharacterCreationUI* self)

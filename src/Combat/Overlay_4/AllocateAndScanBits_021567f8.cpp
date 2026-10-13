@@ -25,7 +25,6 @@ extern char data_ov004_021703af[];
 
 // USA: func_ov004_021567f8
 // KEEP-NAME
-// JPN: func_ov004_02157a6c
 extern "C" ARM int func_ov004_021567f8(void* context) {
     char* base = (char*)func_ov011_021845f8((unsigned char*)context, 4);
     BackgroundLoader* loader = BackgroundLoader::GetInstance();

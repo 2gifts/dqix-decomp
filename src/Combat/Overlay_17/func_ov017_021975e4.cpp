@@ -6,8 +6,6 @@
 
 typedef ZoneFeatures::Opcode6aEntry PathNode_021975e4;
 
-
-
 struct BitField0203402c;
 struct ListHead02046b60;
 
@@ -22,7 +20,6 @@ void* GetPointerFromArray0x3c(unsigned char* obj, unsigned int index);
 extern "C" int func_02094b9c(PathNode_021975e4* node, Vector3i* point);
 void OrBitsIntoField0(unsigned int* field, unsigned int bits);
 
-// JPN: func_ov017_02198194
 // USA: func_ov017_021975e4
 extern "C" ARM void func_ov017_021975e4(GameResources* state) {
     GameState* game = GameState::GetInstance();

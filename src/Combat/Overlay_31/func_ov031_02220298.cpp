@@ -11,7 +11,6 @@ struct FramedPayloadHeader {
 extern "C" int func_ov031_02220248(unsigned char**, unsigned char*, void*, int);
 
 // USA: func_ov031_02220298
-// JPN: func_ov031_02220a78
 extern "C" THUMB int func_ov031_02220298(FramedPayloadHeader* packet, void* output, int count) {
     unsigned char* cursor = (unsigned char*)(packet + 1);
     unsigned short length = packet->length;

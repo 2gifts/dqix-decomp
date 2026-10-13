@@ -21,7 +21,6 @@ extern "C" float func_0200c700(long long);
 extern "C" int func_0204c030(void*, TerrainGrid*, TerrainProbe);
 
 // USA: func_02017d90
-// JPN: func_02017b30
 extern "C" ARM int func_02017d90(Zone3D* self, int index, TerrainGrid* grid, TerrainProbe probe, Object3D* object) {
     if (self->isInMainGrottoFloor_23b8_) {
         if (!object) return 0;

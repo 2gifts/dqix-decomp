@@ -43,7 +43,6 @@ void func_02013d24(Zone3D*);
 int sprintf(char*, const char*, ...);
 }
 
-// JPN: func_ov017_0219c1b0
 // USA: func_ov017_0219b624
 extern "C" ARM void func_ov017_0219b624(GameResources* self) {
     Foo02048004* sprites;

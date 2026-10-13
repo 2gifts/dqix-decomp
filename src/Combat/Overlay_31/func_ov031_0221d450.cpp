@@ -9,7 +9,6 @@ extern "C" int func_ov031_0221d82c(unsigned int*, ResponseValidation*);
 extern "C" bool func_ov031_0221dc58(int);
 
 // USA: func_ov031_0221d450
-// JPN: func_ov031_0221dc30
 extern "C" THUMB int func_ov031_0221d450(int error, ResponsePacket* packet, int* attempts, ResponseIdentifiers* identifiers) {
     if (error) {
         ++*attempts;

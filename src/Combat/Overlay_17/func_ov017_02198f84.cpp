@@ -17,7 +17,6 @@ struct Pending02198f84 {
     Vector3i vecC;
 };
 
-
 struct Query02198f84 {
     unsigned char pad0[0x1c];
     unsigned short field_0x1c;

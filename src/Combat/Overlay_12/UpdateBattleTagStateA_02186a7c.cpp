@@ -49,7 +49,6 @@ extern "C" void func_ov023_021e6e60(void* self);
 extern "C" int func_ov023_021e6de4(char* obj);
 extern "C" void func_ov012_0218943c(void* self);
 
-// JPN: func_ov012_021871b0
 // USA: func_ov012_02186a7c  (semantic: UpdateBattleTagStateA_02186a7c)
 extern "C" ARM void func_ov012_02186a7c(char* self) {
 	_Z10GetWord0x0Pi(GameState::GetInstance());
@@ -76,7 +75,6 @@ extern "C" ARM void func_ov012_02186a7c(char* self) {
 		*(unsigned char*)(self + kPreviousStateOffset) = *(unsigned char*)(self + kStateOffset);
 		*(unsigned char*)(self + kActiveOffset) = 0;
 		_Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
-
 
 		int v = *(int*)(self + kMainChoiceOffset);
 		switch (v) {

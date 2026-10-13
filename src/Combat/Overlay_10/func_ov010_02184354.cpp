@@ -91,7 +91,6 @@ extern "C" int func_0202c508(void* obj);
 struct Vec3s02184354 { short x; short y; short z; };
 extern "C" void func_ov017_021d360c(int a, unsigned char b, int c, struct Vec3s02184354 d);
 
-/* Result of func_02012fe4 -- the "current move" record. */
 struct MoveRecord02184354 {
     unsigned short id;
     unsigned char pad2[6];
@@ -107,14 +106,12 @@ struct MoveInfo02184354 {
     unsigned char flagHi : 1;
 };
 
-/* Result of func_ov017_0218b5b0. */
 struct Actor02184354 {
     unsigned char pad0[0xc];
     unsigned char combatantId;
 };
 extern "C" MessageSystem* _Z26GetGlobalField0x1c020421a0v(void);
 
-/* Result of _Z24SearchBothTables02079e2cPci. */
 struct TableEntry02184354 {
     unsigned char pad0[8];
     unsigned int amount : 8;
@@ -159,7 +156,6 @@ struct Ctx02184354 {
 };
 
 // USA: func_ov010_02184354
-// JPN: func_ov010_02185454
 extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     MessageSystem* presenter = _Z26GetGlobalField0x1c020421a0v();

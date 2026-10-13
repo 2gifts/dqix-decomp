@@ -9,7 +9,6 @@ struct List_020347b4;
 struct Entry_020347b4;
 extern "C" Entry_020347b4* _ZN4BCFG18GetAnimationRecordEi(List_020347b4* list, int index);
 
-
 extern "C" void func_0208e0a8(void);
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c540(void* obj);
@@ -20,17 +19,16 @@ int TestBitInByteArray(int unused, unsigned char* arr, int index);
 
 struct Node0208ec78 {
     char pad[0x10];
-    int val;                     // +0x10
-    struct Node0208ec78* next;   // +0x14
+    int val;
+    struct Node0208ec78* next;
 };
 
 struct Param0208ec78 {
-    unsigned char id;            // +0x0
-    float accum;                 // +0x4
-    struct Obj374b0* field8;     // +0x8
-    struct Node0208ec78* fieldC; // +0xc
+    unsigned char id;
+    float accum;
+    struct Obj374b0* field8;
+    struct Node0208ec78* fieldC;
 };
-
 
 // USA: func_0208ec78
 extern "C" ARM void func_0208ec78(struct Param0208ec78* p0) {

@@ -2,7 +2,6 @@
 
 // KEEP-NAME
 // USA: func_020263c8
-// JPN: func_02025d9c
 ARM void SetBoolFlag020263c8(unsigned char* obj, int value) {
 #if defined(jpn)
     obj[0x6cc] = value != 0;

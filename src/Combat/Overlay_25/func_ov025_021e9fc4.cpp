@@ -34,12 +34,10 @@ void SetName021ed324(void*, const char*);
 extern "C" char* func_020e046c(char*, void*, void*, int);
 extern "C" void func_ov025_021ed634(Self021ed634*);
 
-
 static inline unsigned char* Codes021e9fc4(ListNode021600f8* node) { return node->codes; }
 
 // USA: func_ov025_021e9fc4
 // KEEP-NAME: func_ov025_021e9fc4
-// JPN: func_ov025_021ea458
 extern "C" ARM void func_ov025_021e9fc4(char* self) {
     if ((*(unsigned char*)(self + 0x87c)) == 0) {
         BackgroundLoader* loader = BackgroundLoader::GetInstance();

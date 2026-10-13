@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 #include "Combat/EntryGetterTypes.h"
 
-
 struct ThreeWords0x50_02040a20 { unsigned int v[3]; };
 
 // USA: func_02040a20

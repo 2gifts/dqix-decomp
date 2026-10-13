@@ -56,7 +56,6 @@ extern char data_ov017_021d76c9[];
 extern char data_ov017_021d76d1[];
 extern char data_ov017_021d76d4[];
 
-// JPN: func_ov017_021a3690
 // USA: func_ov017_021a2c14
 extern "C" ARM int func_ov017_021a2c14(GameResources* object, Zone3D_StructPtr_8* request) {
     GameState* game = GameState::GetInstance();

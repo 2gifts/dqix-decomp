@@ -38,7 +38,6 @@ int AppendNameTag(char* dst, int n, const char* name);
 extern "C" int _Z20AppendString02042058PcPKc(char* dst, const char* src);
 
 // USA: func_ov012_0218a9ec
-// JPN: func_ov012_0218b4f0
 extern "C" ARM void func_ov012_0218a9ec(unsigned char* self, char* dst, int c) {
     if (dst == 0) return;
 

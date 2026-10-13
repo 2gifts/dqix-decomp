@@ -90,7 +90,6 @@ extern void* data_02107800;
 static inline short GetStreamWidth020439b0(Stream020439b0* stream) { return stream->sw; }
 
 // USA: func_020439b0
-// JPN: func_02044168
 extern "C" ARM void func_020439b0(char* self, int flag) {
     MessageSystem* controller = (MessageSystem*)self;
     int dx, dy;

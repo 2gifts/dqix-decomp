@@ -9,7 +9,6 @@ int GetRemainingOrStatus_0220a800(char* self);
 #endif
 
 // USA: func_ov031_02203b1c  (semantic: GetActiveContextRemainingOrStatus_02203b1c)
-// JPN: func_ov031_022042fc
 extern "C" ARM int func_ov031_02203b1c(void) {
 	char* mgr = (char*)data_02111304.activeContext->unknown_A4;
 	if (mgr == NULL) {

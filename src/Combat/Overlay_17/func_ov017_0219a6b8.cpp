@@ -27,7 +27,6 @@ void SetByteField0x253(void*);
 extern unsigned short data_02114e30[];
 extern unsigned char data_02114e54[];
 
-// JPN: func_ov017_0219b25c
 // USA: func_ov017_0219a6b8
 extern "C" ARM void func_ov017_0219a6b8(GameResources* self) {
     GameState* game = GameState::GetInstance();

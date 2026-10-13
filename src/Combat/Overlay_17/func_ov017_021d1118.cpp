@@ -108,7 +108,6 @@ struct Session {
     unsigned char depth;
 };
 
-// JPN: func_ov017_021d1594
 // USA: func_ov017_021d1118
 extern "C" ARM void func_ov017_021d1118(int recipient, int flags, bool segmented, unsigned char mode) {
     GameState* gs;

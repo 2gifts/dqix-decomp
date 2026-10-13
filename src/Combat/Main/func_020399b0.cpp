@@ -45,7 +45,6 @@ enum { kActorTailDelta = 0 };
     if (block.startHeading < 0) block.startHeading += 0x6487
 
 // USA: func_020399b0
-// JPN: func_02039408
 extern "C" ARM void func_020399b0(GameObject* self, unsigned short field, const Vector3i* position, int heading) {
     self->obj3D_.SetField06(field);
     self->obj3D_.position_ = *position;

@@ -45,7 +45,6 @@ extern "C" void func_ov017_02191234(GameResources*);
 extern PartyIndices data_ov017_021d622c;
 static inline int ValidPartyIndex(int index) { return index >= 0 && index <= 3; }
 
-// JPN: func_ov017_02190e48
 // USA: func_ov017_02190264
 extern "C" ARM void func_ov017_02190264(GameResources* resources, int index) {
     int valid = ValidPartyIndex(index);

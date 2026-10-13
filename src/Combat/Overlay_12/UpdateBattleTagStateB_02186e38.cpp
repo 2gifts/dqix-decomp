@@ -45,7 +45,6 @@ static inline ProfileNameSelection* GetProfileNameSelection(GameState* state) {
     return (ProfileNameSelection*)((char*)state + kProfileOffset);
 }
 
-
 struct Struct0205de24;
 void FindAndLinkMatchingEntry0205de24(struct Struct0205de24* obj, unsigned char keyLow, unsigned char keyHigh);
 
@@ -75,7 +74,6 @@ extern "C" void func_ov012_0218adac(void* self, int a, int b, int c);
 #endif
 extern "C" void func_ov012_0218930c(void* self, int flag);
 
-// JPN: func_ov012_02187560
 // USA: func_ov012_02186e38  (semantic: UpdateBattleTagStateB_02186e38)
 extern "C" ARM void func_ov012_02186e38(char* self) {
 	unsigned char state = *(unsigned char*)(self + kStepOffset);

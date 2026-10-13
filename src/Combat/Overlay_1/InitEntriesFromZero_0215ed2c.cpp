@@ -16,7 +16,6 @@ struct PathParameter0215ed2c {
 
 // KEEP-NAME
 // USA: func_ov001_0215ed2c
-// JPN: func_ov001_0216030c
 ARM int InitEntriesFromZero_0215ed2c(void* entries, int count) {
 #if defined(jpn)
     BackgroundLoader* loader = BackgroundLoader::GetInstance();

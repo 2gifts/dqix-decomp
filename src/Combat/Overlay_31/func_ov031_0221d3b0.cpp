@@ -3,7 +3,6 @@
 extern "C" int func_ov031_0221d6a8(ResponseHeader*);
 
 // USA: func_ov031_0221d3b0
-// JPN: func_ov031_0221db90
 extern "C" THUMB int func_ov031_0221d3b0(int state, ResponsePacket* packet, int* rejected, ResponseIdentifiers* identifiers) {
     ResponseHeader* header = &packet->header;
     if (func_ov031_0221e638(header->version) < 1) {

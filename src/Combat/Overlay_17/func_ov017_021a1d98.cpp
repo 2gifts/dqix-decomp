@@ -42,7 +42,6 @@ struct BitField0203402c;
 int CheckField0xc4Low15BitsNonZero(BitField0203402c*);
 extern "C" void _Z23SyncBattleState0208f87cPviii(const Vector3fix*, int, int, int, int);
 
-// JPN: func_ov017_021a2828
 // USA: func_ov017_021a1d98
 extern "C" ARM void func_ov017_021a1d98(unsigned int* flags, int id) {
     GameState* state = GameState::GetInstance();

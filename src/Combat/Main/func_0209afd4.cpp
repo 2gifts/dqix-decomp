@@ -72,7 +72,6 @@ extern "C" struct Entry0209bd94* _Z27FindEntryByHalfword0209bd94P18EntryTable020
 extern struct Shuffle0209afd4 data_020e8e2c;
 
 // USA: func_0209afd4
-// JPN: func_0209cd4c
 extern "C" ARM void func_0209afd4(struct FindRowByIdRow* rows, int leaderId, int rowId, int leaderRowId, struct EncounterGroup0209afd4* out, struct EncounterState0209afd4* state) {
     struct Random* rnd;
     struct LeaderSub0209afd4* sub;

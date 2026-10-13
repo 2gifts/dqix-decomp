@@ -20,7 +20,6 @@ extern "C" void func_0205ae8c(void* obj);
 
 // USA: func_ov002_0215b0a8
 // KEEP-NAME
-// JPN: func_ov002_0215c404
 extern "C" ARM void func_ov002_0215b0a8(char* obj) {
     if ((*(int*)(obj + REGION_VALUE(0x22ac, 0x247c)) & 8) == 0) {
         return;

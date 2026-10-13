@@ -17,7 +17,6 @@ void SetEntryFields02154bcc(int a, int b, void* obj, int idx, unsigned char arg5
 
 // USA: func_ov002_0215b138
 // KEEP-NAME
-// JPN: func_ov002_0215c494
 extern "C" ARM void func_ov002_0215b138(unsigned char* obj) {
     SetElementFlag0x20ByKey0205def8((struct Struct_0205def8*)(obj + REGION_VALUE(0xe20, 0xec8)), 0, REGION_VALUE(0x2b, 0x28));
 

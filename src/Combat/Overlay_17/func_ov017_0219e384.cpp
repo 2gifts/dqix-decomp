@@ -126,7 +126,6 @@ struct HdrFlags4 {
 	unsigned char rest : 7;
 };
 
-
 struct GrottoSlot {
 	unsigned char unk0[2];
 	unsigned char used;

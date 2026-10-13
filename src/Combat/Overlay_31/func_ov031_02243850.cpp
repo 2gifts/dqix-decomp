@@ -31,7 +31,6 @@ enum AllocationLength02243850 {
 };
 
 // USA: func_ov031_02243850
-// JPN: func_ov031_02244030
 extern "C" ARM int func_ov031_02243850(void* state) {
     GameState* game = GameState::GetInstance();
     int* field = (int*)func_0202ae18();

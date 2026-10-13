@@ -4,7 +4,6 @@
 struct ByteHeader0204693c;
 extern void ResetByteHeader(ByteHeader0204693c* p);
 
-
 // USA: func_ov017_021ae800
 ARM void ResetHeaderAndAllocator_021ae800(Obj021ae800* self) {
     ResetByteHeader((ByteHeader0204693c*)self);

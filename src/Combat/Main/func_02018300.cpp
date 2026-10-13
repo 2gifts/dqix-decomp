@@ -42,7 +42,6 @@ extern const SoundTable data_020e6e74;
 extern Obj0205eaa0 data_02108760;
 
 // USA: func_02018300
-// JPN: func_020180a0
 extern "C" ARM void func_02018300(Zone3D* self, ZoneFeatures::Opcode6aEntry* param, int sound, int forced, int notify) {
     BmdjSceneElement* entry = FindEntryByNodeIdAndKey(self, param);
     if (!entry) return;

@@ -17,7 +17,6 @@ extern char data_ov031_02249f80[];
 extern char data_ov031_02249f9c[];
 
 // USA: func_ov031_02218a38
-// JPN: func_ov031_02219218
 extern "C" ARM int func_ov031_02218a38(void* allocator, PairList18a38* list, const char* name, const char* value) {
     Allocate18a38 allocate = *(Allocate18a38*)((char*)allocator + 0x1010);
     Release18a38 release = *(Release18a38*)((char*)allocator + 0x1014);

@@ -45,7 +45,6 @@ static inline ProfileHeader02184654* GetProfile02184654(GameState* state) {
 }
 
 // USA: func_ov012_02184654
-// JPN: func_ov012_02185724
 extern "C" ARM void func_ov012_02184654(char* editor) {
     GameState* gameState = GameState::GetInstance();
     ProfileHeader02184654* profile = GetProfile02184654(gameState);

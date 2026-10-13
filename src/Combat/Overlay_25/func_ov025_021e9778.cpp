@@ -82,7 +82,6 @@ extern unsigned int data_ov025_021ef9a4;
 extern char data_ov025_021ef8de[];
 
 // USA: func_ov025_021e9778
-// JPN: func_ov025_021e9c0c
 extern "C" ARM void func_ov025_021e9778(void* self) {
     unsigned char* object = (unsigned char*)self;
     GameState* gs = GameState::GetInstance();

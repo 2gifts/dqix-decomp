@@ -1,8 +1,6 @@
 #include <globaldefs.h>
 #include "GameState/Field3b0.h"
 
-
-
 struct Vector3i {
     int x, y, z;
     Vector3i& operator=(const Vector3i& o);

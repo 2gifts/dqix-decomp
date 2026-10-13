@@ -29,7 +29,6 @@ extern "C" Script::OpcodeLookupEntry data_ov017_021d8434[];
 extern "C" Script::OpcodeLookupEntry data_ov017_021d7c58[];
 #endif
 
-// JPN: func_ov017_021bad0c
 // USA: func_ov017_021ba810
 extern "C" ARM int func_ov017_021ba810(const void* code, unsigned int length, int id, int a3, int a4, int a5, int a6) {
 #if defined(jpn)

@@ -43,7 +43,6 @@ extern "C" void func_0206ad74(void*);
 #endif
 
 // USA: func_0206aa28
-// JPN: func_0206c5d8
 extern "C" ARM void func_0206aa28(char* context) {
 #if !defined(jpn)
     *(int*)(context + 0x7c) = 0;

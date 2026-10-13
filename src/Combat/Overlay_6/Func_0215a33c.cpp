@@ -1,6 +1,5 @@
 // KEEP-NAME
 // USA: func_ov006_0215a33c
-// JPN: func_ov006_0215b940
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 

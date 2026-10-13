@@ -5,7 +5,6 @@ extern "C" int func_ov017_021d60f4(void*);
 
 // KEEP-NAME
 // USA: func_ov001_02161f3c
-// JPN: func_ov001_02163550
 ARM int SetGlobalOffset2750FromArg_02161f3c(void* obj) {
     void* g = func_02012fe4();
     int v = func_ov017_021d60f4(obj);

@@ -11,7 +11,6 @@ void SetElementFields0202756c(void*, int, int, int, unsigned char, unsigned char
 extern unsigned char data_020e7034[];
 
 // USA: func_0201fdd0
-// JPN: func_0201faf4
 extern "C" ARM void func_0201fdd0(Display0201fdd0* self, int row, int combatant, int amount, int maximum, int digitX, int digitY, int barX, int barY, int fillCode, int frameCode, unsigned int bank) {
     int number;
     int digit;

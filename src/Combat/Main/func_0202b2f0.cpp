@@ -51,7 +51,6 @@ void SetSearchFlagBit0202c660(SearchStruct*, int);
 int GetGlobalField0x48();
 
 // USA: func_0202b2f0
-// JPN: func_0202aea0
 extern "C" ARM void func_0202b2f0(SearchStruct* object) {
     SearchStruct::Selection* selection;
     unsigned short savedFlags[4];

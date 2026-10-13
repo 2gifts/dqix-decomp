@@ -16,7 +16,6 @@ struct FlagWord020466f4;
 void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int mask);
 void ClearBitsInWord(unsigned int* obj, unsigned int mask);
 
-// JPN: func_ov012_02189b40
 // USA: func_ov012_02189264  (semantic: ProcessBattleTag02189264)
 extern "C" ARM void func_ov012_02189264(char* self) {
     void* handle = func_ov017_0218b5b0(self);

@@ -4,7 +4,6 @@
 #include "GameState/GameState.h"
 #include "World/Zone3D.h"
 
-
 struct Node021986fc {
     unsigned int unk0 : 16;
     unsigned int id : 7;
@@ -23,8 +22,6 @@ struct Obj0208e7d0 {
     struct Node021986fc* head;
 };
 
-
-
 struct Cursor021986fc {
     unsigned char padding0[0x38];
     int x, y;
@@ -38,13 +35,11 @@ struct Event021986fc {
     unsigned char padding1[19];
 };
 
-
 struct TailList020469b4;
 struct TailNode020469b4;
 struct Vec3copy0202ec84;
 struct Cont0208f3b4;
 struct SearchStruct0202c1a4;
-
 
 extern "C" Zone3D* func_02012fe4(void);
 extern "C" Obj0208e7d0* func_0208e0a8(void);
@@ -67,7 +62,6 @@ void AppendNodeToTail(TailList020469b4*, TailNode020469b4*);
 extern unsigned short data_02114e30[];
 extern Cursor021986fc data_02114e54;
 
-// JPN: func_ov017_021992ac
 // USA: func_ov017_021986fc
 extern "C" ARM void func_ov017_021986fc(GameResources* self) {
     Zone3D* zone = func_02012fe4();

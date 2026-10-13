@@ -39,7 +39,6 @@ void SetOrClearFlag0x8(struct Struct_203cec4*, int);
 void SetField40IfPositive(struct Struct_0203fc5c*, float);
 extern "C" void _Z29DispatchOnActiveChild020409b0P12Node020409b0i(struct Node020409b0*, int);
 
-// JPN: func_020b0600
 // USA: func_020aeb34
 extern "C" ARM void func_020aeb34(void) {
     struct EntryList_203dce4* list;

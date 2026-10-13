@@ -15,7 +15,6 @@ struct TableA68;
 void* FindEntryByKey(struct TableA68* table, int key);
 
 // USA: func_ov012_02189cbc  (semantic: BuildBattleTag02189cbc)
-// JPN: func_ov012_0218a758
 extern "C" ARM void func_ov012_02189cbc(char* self, char* dst, int flag) {
     if (dst == 0) return;
 

@@ -1,6 +1,5 @@
 // KEEP-NAME
 // USA: func_ov006_0215728c
-// JPN: func_ov006_02158894
 #include <globaldefs.h>
 #include "Resource/AlchemyPot.h"
 

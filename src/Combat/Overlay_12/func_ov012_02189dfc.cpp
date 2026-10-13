@@ -40,7 +40,6 @@ struct ProfileListCounts {
     unsigned short other : 11;
 };
 
-// JPN: func_ov012_0218a894
 extern "C" ARM void func_ov012_02189dfc(char* editor, char* text, int hidden) {
     if (!text) return;
     int selection = *(int*)(editor + 0x143c) % 9;

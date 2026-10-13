@@ -16,8 +16,8 @@ struct Struct02046f84 {
     int field0;
     int field4;
     char pad[0x24 - 8];
-    SafeAllocator allocator; // 0x24
-    int field38;             // 0x38
+    SafeAllocator allocator;
+    int field38;
 };
 
 // USA: func_02046f84

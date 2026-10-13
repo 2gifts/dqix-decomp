@@ -29,7 +29,6 @@ enum { kRegionValueD9C_D60 = 0xd9c };
 enum { kRegionValue424_444 = 0x424 };
 #endif
 
-
 struct Obj020397cc;
 struct ListHead02046b60;
 struct Foo0207df50;

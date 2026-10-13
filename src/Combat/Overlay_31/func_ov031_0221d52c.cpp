@@ -11,7 +11,6 @@ extern "C" int func_ov031_0221db48(int index, ResponseBody* body, int protocol, 
 
 // USA: func_ov031_0221d52c
 // KEEP-NAME
-// JPN: func_ov031_0221dd0c
 extern "C" THUMB int func_ov031_0221d52c(int state, ResponsePacket* message, int* retries, ResponseIdentifiers* identifiers) {
     if (state != 1) {
         ++*retries;

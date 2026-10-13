@@ -5,7 +5,6 @@ extern "C" int func_ov017_021d60f4(void*);
 extern "C" void* func_02012fe4(void);
 void* GetPointerFromArray0x3c(unsigned char* obj, unsigned int index);
 
-
 // USA: func_ov001_0215fb44  (semantic: SetNodeFlagAndNotifyVariantB_0215fb44)
 extern "C" ARM int func_ov001_0215fb44(char* args, int count) {
     int key0 = func_ov017_021d60f4(args);

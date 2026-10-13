@@ -78,7 +78,6 @@ extern "C" int func_02017d90(Zone02193dc4* zone, int index, TerrainGrid02193dc4*
 void ClearFlags0x40And0x80At0xe0(struct ByteFlags02033f2c* p);
 void CopyFourHalfwordsToField0x114(void* obj, FourHalfwords02033f7c* src);
 
-// JPN: func_ov017_0219498c
 // USA: func_ov017_02193dc4
 extern "C" ARM int func_ov017_02193dc4(Actor02193dc4* self) {
     TerrainGrid02193dc4 grid;

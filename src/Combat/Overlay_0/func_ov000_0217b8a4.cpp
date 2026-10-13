@@ -1,5 +1,4 @@
 // USA: func_ov000_0217b8a4
-// JPN: func_ov000_0217cbf8
 #include <globaldefs.h>
 
 struct Struct_0205c570;

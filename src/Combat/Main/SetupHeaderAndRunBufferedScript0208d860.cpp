@@ -11,7 +11,6 @@
 extern Script::OpcodeLookupEntry data_020f121c[];
 
 // USA: func_0208d860
-// JPN: func_0208e11c
 ARM void SetupHeaderAndRunBufferedScript0208d860(StreamHeader0208d860* header, SafeAllocator* allocator,
                                                 const void* bytecode, unsigned int length,
                                                 const short* selectedIds, short selectedCount,

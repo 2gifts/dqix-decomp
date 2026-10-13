@@ -6,10 +6,8 @@ int GetField1c_022115d0(void* obj);
 void GenerateCrc8Table(unsigned char* table, unsigned int poly);
 unsigned char Crc8Compute(const unsigned char* table, const unsigned char* data, unsigned int len);
 
-
 // USA: func_ov031_022457e0  (semantic: ComputeChecksumPair_022457e0)
 // KEEP-NAME: func_ov031_022457e0
-// JPN: func_ov031_022463a8
 extern "C" ARM unsigned long long func_ov031_022457e0(int unused, NetworkIdentity s) {
 	if (!func_ov031_0221156c(&s)) return 0;
 	int val = GetField1c_022115d0(&s);

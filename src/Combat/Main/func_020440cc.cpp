@@ -30,7 +30,6 @@ extern "C" void func_0206b224(MessageSystem*);
 #endif
 
 // USA: func_020440cc
-// JPN: func_02044894
 extern "C" ARM int func_020440cc(MessageSystem* self) {
     if (!self->active) return 1;
     if (!self->b19c1) {

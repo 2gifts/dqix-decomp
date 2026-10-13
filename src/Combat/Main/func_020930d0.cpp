@@ -57,7 +57,6 @@ struct GlobalBlock020930d0 {
 };
 
 // USA: func_020930d0
-// JPN: func_02093a04
 extern "C" ARM void func_020930d0(struct BattlePhaseState020930d0* s) {
     GameResources* res;
     GameState* gs;

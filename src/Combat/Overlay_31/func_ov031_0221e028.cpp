@@ -4,7 +4,6 @@ extern "C" unsigned short func_ov031_0221e5f8(unsigned short);
 extern "C" void func_ov031_0221e51c(void*, const void*, unsigned int);
 
 // USA: func_ov031_0221e028
-// JPN: func_ov031_0221e808
 extern "C" THUMB void func_ov031_0221e028(void* buffer, int type, int protocol, int flags, signed char unknown0e, signed char transport, const void* identifier) {
     ResponseHeader* packet = (ResponseHeader*)buffer;
     packet->version = func_ov031_0221e5f8(1);

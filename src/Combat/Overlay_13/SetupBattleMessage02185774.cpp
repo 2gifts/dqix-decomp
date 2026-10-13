@@ -7,7 +7,6 @@ int GetFieldByKey020e0434(Container020e0310* container, int key);
 
 // KEEP-NAME
 // USA: func_ov013_02185774
-// JPN: func_ov013_02186964
 ARM void SetupBattleMessage02185774(void* obj) {
     unsigned char* menu = (unsigned char*)obj;
     MessageSystem* messages = (MessageSystem*)GetGlobalField0x1c020421a0();

@@ -89,7 +89,6 @@ extern "C" void func_ov017_021a9fa0(MapTask021a9bf8*);
 extern const char data_ov017_021d781f[];
 extern const char data_ov017_021d782b[];
 
-// JPN: func_ov017_021aa43c
 // USA: func_ov017_021a9bf8
 extern "C" ARM void func_ov017_021a9bf8(MapTask021a9bf8* self) {
     GameState* state = GameState::GetInstance();

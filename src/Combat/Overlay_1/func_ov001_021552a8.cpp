@@ -64,7 +64,6 @@ struct Self021552a8 {
     Struct0205a198* entries;
 };
 
-
 struct Events021552a8 {
     char pad0[0x45b];
     unsigned char bits[0x20];

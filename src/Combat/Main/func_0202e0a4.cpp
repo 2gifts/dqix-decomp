@@ -49,7 +49,6 @@ static inline void RotateCameraTarget0202e0a4(Vector3i& position, Vector3i& targ
 }
 
 // USA: func_0202e0a4
-// JPN: func_0202dc14
 extern "C" ARM void func_0202e0a4(Camera0202e0a4* camera) {
     func_0202ef14(camera);
     func_0202f0e0(camera);

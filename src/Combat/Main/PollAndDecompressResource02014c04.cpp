@@ -10,7 +10,6 @@
 extern char data_020ef1d6[];
 
 // KEEP-NAME
-// JPN: func_020149d0
 // USA: func_02014c04
 ARM int Zone3D::UnpackATS_AMBL() {
     if (atsAMBLLoadHandle_ < 0) return 1;

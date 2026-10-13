@@ -47,7 +47,6 @@ enum { actionStateOffset = 0x9c0 };
 #endif
 
 // USA: func_02025b0c
-// JPN: func_020254e0
 extern "C" ARM void func_02025b0c(Receiver02025b0c* self) {
     unsigned char* receiver = reinterpret_cast<unsigned char*>(self);
     GameObject* object = GameState::GetInstance()->GetUnknownGameObject();
