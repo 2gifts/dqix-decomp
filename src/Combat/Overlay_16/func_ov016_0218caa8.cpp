@@ -211,4 +211,3 @@ extern "C" ARM void func_ov016_0218caa8(char* name, void* owner, ScriptNode0218c
     func_ov016_0218c04c(name, script);
     SetInterruptHandler(1, (const void*)InitOverlay17ObjAndBumpBattleCounter02012bd8);
 }
-
