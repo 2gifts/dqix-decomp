@@ -87,7 +87,6 @@ extern "C" ARM void func_ov000_0215a23c(void* self) {
     short* ids = idBuf.v;
     int count = func_ov000_0215e9fc(self, ids, 8, 1);
 
-
     for (int i = 0; i < count; i++) {
         Unit_0215a23c* c = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, ids[i]);
         if (c != 0) {

@@ -49,7 +49,6 @@ extern "C" ARM void func_ov025_021def64(struct Obj021def64* self, int slot, int 
     }
     count = n;
 
-    // Spread the combatants along x so their radii do not overlap.
     {
         int k;
         int gapSum;
@@ -125,7 +124,6 @@ extern "C" ARM void func_ov025_021def64(struct Obj021def64* self, int slot, int 
         }
     }
 
-    // Same again along z.
     {
         int k;
         int gapSum;

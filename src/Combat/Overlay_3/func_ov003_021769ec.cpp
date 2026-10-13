@@ -12,8 +12,6 @@ enum { kRegion1000 = 0x1000 };
 
 void* GetPtrField0x2a04(GameState* gameState);
 struct Obj2081;
-// These take the element group as a 16-bit value; declared under their mangled names so the
-// narrow parameter applies without changing the curated symbols.
 extern "C" void _Z20ClearElementFlag0x20P7Obj2081i(struct Obj2081* obj, short key);
 extern "C" void _Z18SetElementFlag0x20P7Obj2081i(struct Obj2081* obj, short key);
 extern "C" void _Z35SetEntryLowNibbleAndElement02080c68Pvii(void* obj, short id, int value);

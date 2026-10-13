@@ -31,21 +31,21 @@ struct TailNode020469b4;
 void AppendNodeToTail(struct TailList020469b4* list, struct TailNode020469b4* node);
 
 struct Active021ab860 {
-    unsigned short zoneId;      // 0x0
+    unsigned short zoneId;
     unsigned short pad2;
-    unsigned short group;       // 0x4
+    unsigned short group;
     char pad6[2];
-    int header;                 // 0x8
+    int header;
 };
 
 struct State021ab860 {
-    int header;                 // 0x0
-    unsigned short key;         // 0x4
-    unsigned short group;       // 0x6
-    unsigned short entryId;     // 0x8
+    int header;
+    unsigned short key;
+    unsigned short group;
+    unsigned short entryId;
     char pada[2];
-    Vector3i vec;               // 0xc
-    short field_0x18;           // 0x18
+    Vector3i vec;
+    short field_0x18;
 };
 extern State021ab860 data_ov017_021d83b0;
 extern Vector3i data_ov017_021d83bc;
@@ -54,28 +54,28 @@ extern Script::OpcodeLookupEntry data_ov017_021d78a4[];
 
 struct Grotto021ab860 {
     char pad0[0xc];
-    int zoneId;                 // 0xc
-    Vector3i entrance;          // 0x10
+    int zoneId;
+    Vector3i entrance;
 };
 
 struct Entry3f8_021ab860 {
-    unsigned short entryId;     // 0x0
+    unsigned short entryId;
     char pad2[2];
-    unsigned char b4;           // 0x4
+    unsigned char b4;
     char pad5[2];
-    unsigned char b7;           // 0x7
-    unsigned char b8;           // 0x8
-    unsigned char b9;           // 0x9
+    unsigned char b7;
+    unsigned char b8;
+    unsigned char b9;
     char pada;
-    signed char bb;             // 0xb
-    unsigned char bc;           // 0xc
+    signed char bb;
+    unsigned char bc;
     char padd[3];
-    Vector3i vec;               // 0x10
-    short h1c;                  // 0x1c
-    short h1e;                  // 0x1e
-    int w20, w24, w28, w2c;     // 0x20
+    Vector3i vec;
+    short h1c;
+    short h1e;
+    int w20, w24, w28, w2c;
     char pad30[0x6c - 0x30];
-    short h6c;                  // 0x6c
+    short h6c;
     char pad6e[2];
 };
 
