@@ -1,20 +1,26 @@
 #include <globaldefs.h>
 
-extern "C" unsigned int _ZN15LightingManager11GetInstanceEv();
-extern "C" unsigned int _Z19GetActiveCombatWorkv();
-extern "C" unsigned int _ZN15LightingManager9BeginFadeEst(unsigned int, unsigned int, unsigned int);
+struct LightingManager {
+    static LightingManager* GetInstance();
+    void BeginFade(short a, unsigned short b);
+};
+
+struct CombatWork021e74f4 {
+    char pad[0x6fd4];
+    unsigned char fadeStarted;
+};
+
+struct Obj021e74f4 {
+    char pad[0x8];
+    short a;
+    unsigned short b;
+};
+
+CombatWork021e74f4* GetActiveCombatWork(void);
 
 // USA: func_ov025_021e74f4  (semantic: Trans_021e74f4)
-extern "C" ARM unsigned int func_ov025_021e74f4(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
-    unsigned int r4 = 0;
-    r4 = r0;
-    r0 = (unsigned int)_ZN15LightingManager11GetInstanceEv();
-    r1 = *(short*)((char*)r4 + 0x8);
-    r2 = *(unsigned short*)((char*)r4 + 0xa);
-    r0 = (unsigned int)_ZN15LightingManager9BeginFadeEst(r0, r1, r2);
-    r0 = (unsigned int)_Z19GetActiveCombatWorkv();
-    r1 = r0 + 0x6000;
-    r0 = 0x1;
-    *(unsigned char*)((char*)r1 + 0xfd4) = (unsigned char)r0;
-    return r0;
+extern "C" ARM int func_ov025_021e74f4(struct Obj021e74f4* obj) {
+    LightingManager::GetInstance()->BeginFade(obj->a, obj->b);
+    GetActiveCombatWork()->fadeStarted = 1;
+    return 1;
 }

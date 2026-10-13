@@ -1,19 +1,16 @@
 #include <globaldefs.h>
 
-extern "C" unsigned int _fmul(unsigned int, unsigned int);
+struct Trans_021f6bc0_Obj {
+    char pad[0x14];
+    float f14;
+    float f18;
+    float f1c;
+    float f20;
+};
 
 // USA: func_ov024_021f6bc0  (semantic: Trans_021f6bc0)
-extern "C" ARM unsigned int func_ov024_021f6bc0(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
-    unsigned int r4 = 0;
-    r4 = r0;
-    r1 = *(unsigned int*)((char*)r4 + 0x14);
-    r0 = 0x3f400000;
-    r0 = (unsigned int)_fmul(r0, r1);
-    *(unsigned int*)((char*)r4 + 0x1c) = (unsigned int)r0;
-    r1 = *(unsigned int*)((char*)r4 + 0x18);
-    r0 = 0x3f400000;
-    r0 = (unsigned int)_fmul(r0, r1);
-    *(unsigned int*)((char*)r4 + 0x20) = (unsigned int)r0;
-    r0 = 0x1;
-    return r0;
+extern "C" ARM int func_ov024_021f6bc0(Trans_021f6bc0_Obj* obj) {
+    obj->f1c = 0.75f * obj->f14;
+    obj->f20 = 0.75f * obj->f18;
+    return 1;
 }

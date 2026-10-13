@@ -5,27 +5,26 @@
 #define R(j,u) (u)
 #endif
 #include <globaldefs.h>
+#include "Filesystem/BackgroundLoader.h"
 
-extern "C" unsigned int _Z20ResetHandle_02188d10P20HandleState_02188d10();
-extern "C" unsigned int _Z24InitHandleState_02188bd0P20HandleState_02188bd0(unsigned int);
-extern "C" unsigned int func_ov014_02188c34(unsigned int, unsigned int);
+struct HabitatTable {
+    char unk_0[0x14];
+    short monsterID_;
+    short state_;
+    int taskID_;
+    SafeAllocator* allocator_;
+};
+
+extern "C" bool _Z20ResetHandle_02188d10P20HandleState_02188d10(HabitatTable* s);
+extern "C" bool _Z24InitHandleState_02188bd0P20HandleState_02188bd0(HabitatTable* s);
+extern "C" bool func_ov014_02188c34(HabitatTable* habitats);
 
 // USA: func_ov014_02188bfc  (semantic: Trans_02188bfc)
-extern "C" ARM unsigned int func_ov014_02188bfc(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
-    unsigned int r4 = 0;
-    unsigned int r5 = 0;
-    unsigned int r6 = 0;
-    r6 = r0;
-    r5 = r1;
-    r4 = r2;
-    r0 = (unsigned int)_Z20ResetHandle_02188d10P20HandleState_02188d10();
-    r0 = r6;
-    r0 = (unsigned int)_Z24InitHandleState_02188bd0P20HandleState_02188bd0(r0);
-    *(unsigned short*)((char*)r6 + 0x14) = (unsigned short)r4;
-    r0 = r6;
-    *(unsigned int*)((char*)r6 + 0x1c) = (unsigned int)r5;
-    r1 = 0x1;
-    *(unsigned short*)((char*)r6 + 0x16) = (unsigned short)r1;
-    r0 = (unsigned int)func_ov014_02188c34(r0, r1);
-    return r0;
+extern "C" ARM bool func_ov014_02188bfc(HabitatTable* habitats, SafeAllocator* allocator, short monsterID) {
+    _Z20ResetHandle_02188d10P20HandleState_02188d10(habitats);
+    _Z24InitHandleState_02188bd0P20HandleState_02188bd0(habitats);
+    habitats->monsterID_ = monsterID;
+    habitats->allocator_ = allocator;
+    habitats->state_ = 1;
+    return func_ov014_02188c34(habitats);
 }

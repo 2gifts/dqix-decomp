@@ -1,21 +1,22 @@
 #include <globaldefs.h>
 
+struct CombatWork021e6340 {
+    char pad[0x6f04];
+    unsigned short id;
+};
+
+struct Obj021e6340 {
+    char pad[0x8];
+    unsigned short id;
+};
+
 extern int data_02108760;
-extern "C" unsigned int _Z19GetActiveCombatWorkv();
-extern "C" unsigned int _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(unsigned int, unsigned int, unsigned int, unsigned int);
+CombatWork021e6340* GetActiveCombatWork(void);
+void DispatchIfField0xc4NonNeg_0205ebfc(void* obj, int a, int b);
 
 // USA: func_ov025_021e6340  (semantic: Trans_021e6340)
-extern "C" ARM unsigned int func_ov025_021e6340(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
-    unsigned int r4 = 0;
-    r4 = r0;
-    r0 = (unsigned int)_Z19GetActiveCombatWorkv();
-    r1 = r0 + 0x6f00;
-    r3 = *(unsigned short*)((char*)r4 + 0x8);
-    r0 = (unsigned int)&data_02108760;
-    r2 = 0x0;
-    *(unsigned short*)((char*)r1 + 0x4) = (unsigned short)r3;
-    r1 = *(unsigned short*)((char*)r4 + 0x8);
-    r0 = (unsigned int)_Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(r0, r1, r2, r3);
-    r0 = 0x1;
-    return r0;
+extern "C" ARM int func_ov025_021e6340(struct Obj021e6340* obj) {
+    GetActiveCombatWork()->id = obj->id;
+    DispatchIfField0xc4NonNeg_0205ebfc(&data_02108760, obj->id, 0);
+    return 1;
 }
