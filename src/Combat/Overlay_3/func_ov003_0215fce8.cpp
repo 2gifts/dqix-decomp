@@ -29,7 +29,7 @@ void *GetData02100044(void);
 void SetBitsInWord(unsigned int *word, unsigned int bits);
 extern "C" void func_0202b0f4(void *obj);
 void ClearTwoBytesAtField_02195748(unsigned char *base);
-void SetFlag1ForFlagombatants_02192594_02192594(void);
+void SetFlag1ForFlagombatants_02192594_02192594(unsigned char* base);
 void ClearFlag0x3c9Bit0AndCleanup(unsigned char *obj);
 struct BitArrayObj0205e854;
 void *FillBitArray0x1524WithFF(BitArrayObj0205e854 *obj);
@@ -73,7 +73,7 @@ extern "C" ARM int func_ov003_0215fce8(unsigned char *self, int arg) {
             SetBitsInWord((unsigned int *) r8, 2);
             func_0202b0f4(r7);
             ClearTwoBytesAtField_02195748(r8);
-            ((void (*)(unsigned char *)) SetFlag1ForFlagombatants_02192594_02192594)(r8);
+            SetFlag1ForFlagombatants_02192594_02192594(r8);
             ClearFlag0x3c9Bit0AndCleanup((unsigned char *) g);
             FillBitArray0x1524WithFF((BitArrayObj0205e854 *) d);
             ClearBitsInWord((unsigned int *) r8, 0x40);

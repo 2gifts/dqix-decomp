@@ -21,7 +21,7 @@ struct FnTable021aef0c {
 extern FnTable021aef0c data_ov017_021d6ad8;
 
 // USA: func_ov017_021aef0c
-ARM void DispatchStateAndMaybeInit_021aef0c(Obj021aef0c* self) {
+ARM void DispatchStateAndMaybeInit_021aef0c(Obj021aef0c* self, void* context) {
 	FnTable021aef0c table = data_ov017_021d6ad8;
 	self->field8 = table.fns[self->field8](self);
 

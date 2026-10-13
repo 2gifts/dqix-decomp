@@ -32,7 +32,7 @@ struct Ctx021a7b38 {
 };
 
 // USA: func_ov017_021a7b38
-ARM void RegisterEntryInList_021a7b38(struct Ctx021a7b38* self) {
+ARM void RegisterEntryInList_021a7b38(struct Ctx021a7b38* self, void* context) {
     GameState::GetInstance();
     char* base = (char*)(long)((int)func_ov017_0218b5b0()) + 0x3000;
     struct ListHead02046b60* list = *(struct ListHead02046b60**)(base + RegionOffset6fc);

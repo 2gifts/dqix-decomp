@@ -66,17 +66,17 @@ extern "C" {
 }
 
 struct Obj021b4710;
-void CallIndexedFunc_021b4710(Obj021b4710* p);
+void CallIndexedFunc_021b4710(Obj021b4710* p, void* context);
 void RunBattleTeardownSequence_021acce4(void*, void*);
 struct Obj020dbcc4;
-void FlushOv017Section020dbcc4(struct Obj020dbcc4* obj);
+void FlushOv017Section020dbcc4(struct Obj020dbcc4* obj, void* context);
 void UpdateEncounterState020dac94(void* objIn, void*);
 struct Ctx021a7b38;
-void RegisterEntryInList_021a7b38(Ctx021a7b38* self);
+void RegisterEntryInList_021a7b38(Ctx021a7b38* self, void* context);
 struct Obj021aef0c;
-void DispatchStateAndMaybeInit_021aef0c(Obj021aef0c* self);
+void DispatchStateAndMaybeInit_021aef0c(Obj021aef0c* self, void* context);
 struct Entry021b8c84;
-void ApplyOrAdvanceListEntry_021b8c84(Entry021b8c84* obj);
+void ApplyOrAdvanceListEntry_021b8c84(Entry021b8c84* obj, void* context);
 
 // USA: func_ov017_021a3544
 extern "C" ARM void func_ov017_021a3544(void* obj, void* node) {
@@ -105,7 +105,7 @@ extern "C" ARM void func_ov017_021a3544(void* obj, void* node) {
         func_ov017_021bf534(node, obj);
         break;
     case 14:
-        ((void (*)(void*, void*))ApplyOrAdvanceListEntry_021b8c84)(node, obj);
+        ApplyOrAdvanceListEntry_021b8c84((Entry021b8c84*)node, obj);
         break;
     case 15:
         func_ov017_021bacd8(node, obj);
@@ -126,7 +126,7 @@ extern "C" ARM void func_ov017_021a3544(void* obj, void* node) {
         func_ov017_021b2fac(node, obj);
         break;
     case 20:
-        ((void (*)(void*, void*))CallIndexedFunc_021b4710)(node, obj);
+        CallIndexedFunc_021b4710((Obj021b4710*)node, obj);
         break;
     case 21:
         func_ov017_021b58b8(node, obj);
@@ -168,7 +168,7 @@ extern "C" ARM void func_ov017_021a3544(void* obj, void* node) {
         func_ov017_021ae85c(node, obj);
         break;
     case 37:
-        ((void (*)(void*, void*))DispatchStateAndMaybeInit_021aef0c)(node, obj);
+        DispatchStateAndMaybeInit_021aef0c((Obj021aef0c*)node, obj);
         break;
     case 38:
         func_ov017_021af66c(node, obj);
@@ -246,7 +246,7 @@ extern "C" ARM void func_ov017_021a3544(void* obj, void* node) {
         func_ov017_021a7378(node, obj);
         break;
     case 64:
-        ((void (*)(void*, void*))RegisterEntryInList_021a7b38)(node, obj);
+        RegisterEntryInList_021a7b38((Ctx021a7b38*)node, obj);
         break;
     case 65:
         func_ov017_021a7e14(node, obj);
@@ -282,7 +282,7 @@ extern "C" ARM void func_ov017_021a3544(void* obj, void* node) {
         UpdateEncounterState020dac94(node, obj);
         break;
     case 76:
-        ((void (*)(void*, void*))FlushOv017Section020dbcc4)(node, obj);
+        FlushOv017Section020dbcc4((Obj020dbcc4*)node, obj);
         break;
     case 77:
         func_020e3c94(node, obj);

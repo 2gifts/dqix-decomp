@@ -19,7 +19,7 @@ struct Entry021b8c84 {
 };
 
 // USA: func_ov017_021b8c84
-ARM void ApplyOrAdvanceListEntry_021b8c84(struct Entry021b8c84* obj) {
+ARM void ApplyOrAdvanceListEntry_021b8c84(struct Entry021b8c84* obj, void* context) {
     GameState::GetInstance();
     int listPtr = (int)BackgroundLoader::GetInstance();
     if (obj->key == -1) {

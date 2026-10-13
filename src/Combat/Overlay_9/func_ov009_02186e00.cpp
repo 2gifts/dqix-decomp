@@ -80,7 +80,7 @@ extern "C" void _Z12Init0205bef8P15Struct_0205bef8(Struct_0205bef8* cursor);
 extern "C" void _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii(Struct_0205ba68* cursor, int columns, int rows, int a);
 extern "C" void _Z29SetField0AndPropagate0205baccP12Node0205bacci(Node0205bacc* cursor, int count);
 extern "C" void func_0205bb04(WindowCursor* cursor, int a);
-extern "C" void _Z29StoreResultIfNonZero_0215f4e4Pi(int* keyboard);
+void StoreResultIfNonZero_0215f4e4(Keyboard* keyboard, int id);
 extern "C" void func_ov003_0215ec68(int size, short* width, short* height);
 
 extern char data_ov009_0218ad26[];
@@ -272,7 +272,7 @@ extern "C" ARM void func_ov009_02186e00(CharacterCreation* self)
             _Z29SetField0AndPropagate0205baccP12Node0205bacci((Node0205bacc*)cursor, 0x42);
             cursor->unk_4 = 1;
             func_0205bb04(cursor, 0);
-            ((void (*)(Keyboard*, int))_Z29StoreResultIfNonZero_0215f4e4Pi)(self->keyboard_, 6);
+            StoreResultIfNonZero_0215f4e4(self->keyboard_, 6);
             self->flags_ |= 0x1000000;
             sprintf(self->member_->name_, data_020ef078, self->names_[self->sex_]);
             _Z20SetStatValue021855dcPhi((unsigned char*)self, 9);

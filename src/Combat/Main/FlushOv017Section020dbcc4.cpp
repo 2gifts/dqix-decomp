@@ -25,7 +25,7 @@ struct Obj020dbcc4 {
 };
 
 // USA: func_020dbcc4
-ARM void FlushOv017Section020dbcc4(struct Obj020dbcc4* obj) {
+ARM void FlushOv017Section020dbcc4(struct Obj020dbcc4* obj, void* context) {
     int flag;
     int i;
     GameState::GetInstance();

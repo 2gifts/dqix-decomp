@@ -99,7 +99,7 @@ struct GameState {
 struct Obj021870e4;
 struct TaskState0209ff6c;
 
-extern "C" void _Z33ClearFlagIfDone_021870e4_021870e4P11Obj021870e4(Obj021870e4* self);
+void ClearFlagIfDone_021870e4_021870e4(Obj021870e4* obj, unsigned int ticks);
 extern "C" void _Z21PollOv017Task0209ff6cP17TaskState0209ff6c(TaskState0209ff6c* titles);
 
 extern "C" {
@@ -120,7 +120,7 @@ extern "C" ARM int func_ov008_02184754(BattleRecords* self)
     func_0205d0e0(&self->window_, ticks);
     func_ov008_02186e4c(self, ticks);
     self->model_.AdvanceEffects();
-    ((void (*)(BattleRecords*, unsigned int))_Z33ClearFlagIfDone_021870e4_021870e4P11Obj021870e4)(self, ticks);
+    ClearFlagIfDone_021870e4_021870e4((Obj021870e4*)self, ticks);
     func_ov008_0218747c(self, 0);
     func_ov008_0218747c(self, 1);
     StateTable table = data_ov008_0218b340;

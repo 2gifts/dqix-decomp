@@ -13,7 +13,7 @@ extern int data_ov008_0218b495;
 struct Obj021870e4 { char pad[0xb18]; unsigned int flags_b18; };
 
 // USA: func_ov008_021870e4
-ARM void ClearFlagIfDone_021870e4_021870e4(struct Obj021870e4* obj) {
+ARM void ClearFlagIfDone_021870e4_021870e4(struct Obj021870e4* obj, unsigned int ticks) {
     if (!(obj->flags_b18 & 0x4000)) return;
     if (!_ZNK8Object3D22HasAnimationReachedEndEv((struct BitFlags02037180*)((char*)obj + 0x790))) return;
     _ZN8Object3D24MaybeSetRegularAnimationEPKci((char*)obj + 0x790, &data_ov008_0218b495, 0);

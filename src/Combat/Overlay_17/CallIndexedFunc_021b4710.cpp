@@ -13,7 +13,7 @@ struct Obj021b4710 {
 };
 
 // USA: func_ov017_021b4710
-ARM void CallIndexedFunc_021b4710(Obj021b4710* p) {
+ARM void CallIndexedFunc_021b4710(Obj021b4710* p, void* context) {
     VTable021b4710 local = data_ov017_021d6bd8;
     local.funcs[p->index](p);
 }

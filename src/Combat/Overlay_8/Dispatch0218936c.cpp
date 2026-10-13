@@ -36,7 +36,7 @@ struct Manager0218936c {
 };
 
 // USA: func_ov008_0218936c
-ARM unsigned char Dispatch0218936c(Manager0218936c* obj) {
+ARM unsigned char Dispatch0218936c(Manager0218936c* obj, unsigned int ticks) {
     func_0205d0e0((char*)obj + 0x18);
     switch (obj->sub99) {
     case 0:

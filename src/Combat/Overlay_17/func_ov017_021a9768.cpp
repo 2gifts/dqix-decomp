@@ -25,7 +25,7 @@ void PopStack1AndTrigger(int value);
 extern "C" void func_020a1940(unsigned int id);
 extern "C" void func_ov008_02188f5c(void* scene, int index, int arg);
 extern "C" void _Z24SetupAllocators_02189284P14Layout02189284P13SafeAllocator(Layout02189284* layout, SafeAllocator* allocator);
-extern "C" unsigned char _Z16Dispatch0218936cP15Manager0218936c(Manager0218936c* manager);
+unsigned char Dispatch0218936c(Manager0218936c* manager, unsigned int ticks);
 int TestFlagBitAt0xe(SearchStruct* search, int index);
 extern "C" void func_ov008_0218b240(void* scene);
 extern "C" void func_ov008_021894b8(void* scene);
@@ -97,7 +97,7 @@ extern "C" ARM void func_ov017_021a9768(Task021a9768* task) {
         return;
     }
     if (task->step == 1) {
-        if (((unsigned char (*)(Scene021a9768*, unsigned int))_Z16Dispatch0218936cP15Manager0218936c)(task->scene, gs->GetTickCount())) {
+        if (Dispatch0218936c((Manager0218936c*)task->scene, gs->GetTickCount())) {
             task->step++;
         }
         if (TestFlagBitAt0xe(search, 0)) {

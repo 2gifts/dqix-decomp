@@ -16,7 +16,7 @@ int TestFlag0SetAndFlag1Clear(unsigned short* flags, int mask);
 void SetBitsInWord(unsigned int* obj, unsigned int mask);
 extern "C" void func_0202b0f4(void* obj);
 extern "C" void _Z29ClearTwoBytesAtField_02195748Ph(unsigned char* base);
-extern "C" void _Z42SetFlag1ForFlagombatants_02192594_02192594v(void);
+void SetFlag1ForFlagombatants_02192594_02192594(unsigned char* base);
 void* FillBitArray0x1524WithFF(BitArrayObj0205e854* obj);
 void ClearBitsInWord(unsigned int* obj, unsigned int mask);
 int TestFlagBitAt0xe(SearchStruct* obj, int value);
@@ -59,7 +59,7 @@ extern "C" ARM unsigned char func_ov017_021af098(Obj021af098* obj) {
             SetBitsInWord(flags, 2);
             func_0202b0f4(search);
             _Z29ClearTwoBytesAtField_02195748Ph((unsigned char*)flags);
-            ((void (*)(unsigned int*))_Z42SetFlag1ForFlagombatants_02192594_02192594v)(flags);
+            SetFlag1ForFlagombatants_02192594_02192594((unsigned char*)flags);
             FillBitArray0x1524WithFF(bits);
             ClearBitsInWord(flags, 0x40);
             obj->complete = 1;
@@ -76,7 +76,7 @@ extern "C" ARM unsigned char func_ov017_021af098(Obj021af098* obj) {
                 SetBitsInWord(flags, 2);
                 func_0202b0f4(search);
                 _Z29ClearTwoBytesAtField_02195748Ph((unsigned char*)flags);
-                ((void (*)(unsigned int*))_Z42SetFlag1ForFlagombatants_02192594_02192594v)(flags);
+                SetFlag1ForFlagombatants_02192594_02192594((unsigned char*)flags);
                 FillBitArray0x1524WithFF(bits);
                 ClearBitsInWord(flags, 0x40);
                 obj->complete = 1;
@@ -91,7 +91,7 @@ extern "C" ARM unsigned char func_ov017_021af098(Obj021af098* obj) {
         SetBitsInWord(flags, 2);
         func_0202b0f4(search);
         _Z29ClearTwoBytesAtField_02195748Ph((unsigned char*)flags);
-        ((void (*)(unsigned int*))_Z42SetFlag1ForFlagombatants_02192594_02192594v)(flags);
+        SetFlag1ForFlagombatants_02192594_02192594((unsigned char*)flags);
         FillBitArray0x1524WithFF(bits);
         ClearBitsInWord(flags, 0x40);
         obj->complete = 1;
