@@ -1521,6 +1521,22 @@ src/Combat/Overlay_4/DispatchEventAndSetFlag_021589e8.cpp:
     complete
     .text start:0x02159a94 end:0x02159b0c
 
+src/Combat/Overlay_4/func_ov004_0215a31c.cpp:
+    complete
+    .text start:0x0215b324 end:0x0215b740
+
+src/Combat/Overlay_4/02168760.cpp:
+    complete
+    .text start:0x02168bd4 end:0x02168cf8
+
+src/Combat/Overlay_4/func_ov004_0215b360.cpp:
+    complete
+    .text start:0x0215c394 end:0x0215c6c8
+
+src/Combat/Overlay_4/func_ov004_0215cec4.cpp:
+    complete
+    .text start:0x0215df34 end:0x0215e3f4
+
 src/Combat/Overlay_4/SetupCombatMessageAndDispatch_02159bcc.cpp:
     complete
     .text start:0x0215ac28 end:0x0215acd8
@@ -1540,26 +1556,6 @@ src/Combat/Overlay_4/0215eb40.cpp:
 src/Combat/Overlay_4/func_ov004_021636b0.cpp:
     complete
     .text start:0x02163c80 end:0x02163efc
-
-src/Combat/Overlay_4/func_ov004_02154b7c.cpp:
-    complete
-    .text start:0x02156204 end:0x02156300
-
-src/Combat/Overlay_4/func_ov004_02154350.cpp:
-    complete
-    .text start:0x021559f8 end:0x02155c98
-
-src/Combat/Overlay_4/func_ov004_021557ac.cpp:
-    complete
-    .text start:0x02156d2c end:0x02156fbc
-
-src/Combat/Overlay_4/func_ov004_0215b360.cpp:
-    complete
-    .text start:0x0215c394 end:0x0215c6c8
-
-src/Combat/Overlay_4/func_ov004_02158fec.cpp:
-    complete
-    .text start:0x0215a0b8 end:0x0215a450
 
 src/Combat/Overlay_4/DispatchAdjustmentIfType16_02154210.cpp:
     complete
@@ -1596,10 +1592,6 @@ src/Combat/Overlay_4/NotifyIndexedName_02167310.cpp:
 src/Combat/Overlay_4/SetGlobalFieldTo1_0216768c_0216768c.cpp:
     complete
     .text start:0x02167c98 end:0x02167cb0
-
-src/Combat/Overlay_4/func_ov004_0215a31c.cpp:
-    complete
-    .text start:0x0215b324 end:0x0215b740
 
 src/Combat/Overlay_4/SetupOrRejectAction_02158a60.cpp:
     complete

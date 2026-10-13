@@ -2,6 +2,11 @@
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
 
+struct Sub {
+    unsigned char pad[0xc68];
+    unsigned char slots[5];
+};
+
 unsigned char CopyOutRegion0x571d(char* obj, void* dst);
 extern "C" void func_ov002_02154c30(void* p);
 
@@ -16,17 +21,11 @@ ARM int BuildFlaggedCombatantSlotList_02154f4c(unsigned char* obj) {
     buf[n] = 4;
     for (i = 0; i < n; i++) {
         if (battle->GetPartyMemberByIndex(buf[i]) != NULL) {
-            unsigned char* q = obj + count;
-            q += 0x1000;
-            q[0xc68] = buf[i];
+            ((Sub*)(obj + count + 0x1000))->slots[0] = buf[i];
             count = count + 1;
         }
     }
-    {
-        unsigned char* q = obj + count;
-        q += 0x1000;
-        q[0xc68] = 4;
-    }
+    ((Sub*)(obj + count + 0x1000))->slots[0] = 4;
     obj[0x1000 + 0xc6d] = count;
 
     int j;

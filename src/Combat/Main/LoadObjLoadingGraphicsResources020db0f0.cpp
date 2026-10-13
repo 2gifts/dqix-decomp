@@ -6,7 +6,7 @@
 #include "System/Memory.h"
 
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
-char* FindEntryAndGetNext(void* a, char* b, void** outField44);
+char* FindEntryAndGetNext(void* a, char* b, unsigned int* outSize);
 int GetCharBlock(void* file, void** out);
 struct Hdr02b0288;
 int FindPlttChunkAndRelocate(struct Hdr02b0288* h, void** out);
@@ -41,8 +41,8 @@ struct Manager020db0f0 {
 // USA: func_020db0f0
 ARM void LoadObjLoadingGraphicsResources(Manager020db0f0* mgr) {
     unsigned int fileLength;
-    void* junkOut1;
-    void* junkOut2;
+    unsigned int characterFileLength;
+    unsigned int paletteFileLength;
     char* ncgrEntry;
     Hdr02b0288* nclrEntry;
     CharBlockData020db0f0* charBlock;
@@ -58,10 +58,10 @@ ARM void LoadObjLoadingGraphicsResources(Manager020db0f0* mgr) {
     fileLength = 0;
     LoadFileIntoMemory(&data_020f290c, buf, &fileLength);
 
-    junkOut1 = NULL;
-    junkOut2 = NULL;
-    ncgrEntry = FindEntryAndGetNext(buf, (char*)&data_020f2925, &junkOut1);
-    nclrEntry = (Hdr02b0288*)FindEntryAndGetNext(buf, (char*)&data_020f2936, &junkOut2);
+    characterFileLength = 0;
+    paletteFileLength = 0;
+    ncgrEntry = FindEntryAndGetNext(buf, (char*)&data_020f2925, &characterFileLength);
+    nclrEntry = (Hdr02b0288*)FindEntryAndGetNext(buf, (char*)&data_020f2936, &paletteFileLength);
 
     charBlock = NULL;
     if (!GetCharBlock(ncgrEntry, (void**)&charBlock)) {

@@ -1,16 +1,9 @@
 #include <globaldefs.h>
 
 #if defined(jpn)
-#define func_ov004_02158a60 func_ov004_02159b0c
-#endif
-
-#if defined(jpn)
-enum { StatePrefix02158a60 = 0xc };
 extern "C" void func_020e207c(void*, char*, int);
 struct Obj02046574;
 void SetIndexedName02046574(Obj02046574*, int, char*);
-#else
-enum { StatePrefix02158a60 = 0x26c };
 #endif
 
 #include "GameState/GameState.h"
@@ -32,17 +25,34 @@ extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c540(void* p);
 int CheckField0NonZero(int* obj);
 
-struct FieldAt10c_02158a60 { unsigned short low13 : 13; unsigned short high3 : 3; };
+struct DownloadedRecord02158a60 {
+    unsigned char unknown00[0xf8];
+    short itemId;
+    unsigned short unknownFA;
+    unsigned char unknownFC[0x10];
+    unsigned short flags : 13;
+    unsigned short unknownFlags : 3;
+    unsigned char unknown10E[2];
+};
+
+struct GameStateDownloadView02158a60 {
+#if defined(jpn)
+    unsigned char unknown00[0x5c0c];
+#else
+    unsigned char unknown00[0x5e6c];
+#endif
+    DownloadedRecord02158a60 downloaded;
+};
 
 // USA: func_ov004_02158a60  (semantic: SetupOrRejectAction_02158a60)
 extern "C" ARM int func_ov004_02158a60(void* obj) {
-    char* p = (char*)GameState::GetInstance() + StatePrefix02158a60 + 0x5c00;
-    short a = *(short*)(p + 0xf8);
-    if (a > 0 || *(unsigned short*)(p + 0xfa) != 0) {
+    DownloadedRecord02158a60* downloaded = &((GameStateDownloadView02158a60*)GameState::GetInstance())->downloaded;
+    short a = downloaded->itemId;
+    if (a > 0 || downloaded->unknownFA != 0) {
         void* g = (void*)GetGlobalField0x1c020421a0();
         func_02046380(g);
         struct Container020dedd0* node = func_ov004_02156fd4(obj, 5);
-        struct Element020de650* elem = FindElementByKey020dedd0(node, *(short*)(p + 0xf8));
+        struct Element020de650* elem = FindElementByKey020dedd0(node, downloaded->itemId);
 #if defined(jpn)
         char name[80];
         func_020e207c(data_ov004_021707d8.ptr + 0x8c, name, *(short*)((char*)elem + 0x18));
@@ -64,7 +74,7 @@ extern "C" ARM int func_ov004_02158a60(void* obj) {
         func_ov011_021848a0(obj, 0x24cd);
         return 0;
     }
-    if (((struct FieldAt10c_02158a60*)(p + 0x10c))->low13 & 0x10) {
+    if (downloaded->flags & 0x10) {
         func_ov011_021848a0(obj, 0x3a6);
         return 0;
     }

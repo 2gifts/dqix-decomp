@@ -3,82 +3,87 @@
 int StringLength(const char*);
 
 
-struct List0207f6ac;
 struct TableA68;
+struct List0207f6ac {
+    void* entries;
+    short count;
+    short capacity;
+};
 
-extern void* FindEntryByShortId0207f6ac(struct List0207f6ac* list, int id);
+struct MenuEntryContainer {
+    TableA68* textTable;
+    List0207f6ac entries;
+};
+
+extern void* FindEntryByShortId0207f6ac(struct List0207f6ac* list, int entryId);
 extern void* FindEntryByKey(struct TableA68* table, int key);
 extern int IsValueEqual12(int x);
 extern "C" int func_020420e8(void* value, int flag);
 
 struct Entry020808c8 {
-    void* field0;
+    const char* literalText;
     char pad1[0xa - 4];
-    short fieldA;
-    short fieldC;
-    short fieldE;
+    short width;
+    short height;
+    short textId;
     char pad2[0x12 - 0x10];
-    unsigned char field12;
-    unsigned char field13nibble : 4;
-    unsigned char field13rest : 4;
+    unsigned char kind;
+    unsigned char fontSize : 4;
+    unsigned char unknown13 : 4;
 };
 
-#if defined(jpn)
-#define GetEntryOutputs020808c8 func_020813bc
-extern "C" ARM void func_020813bc(void* obj, int id, short* out1, short* out2);
-#endif
-
 // USA: func_020808c8
-ARM void GetEntryOutputs020808c8(void* obj, int id, short* out1, short* out2) {
-    struct Entry020808c8* e = (struct Entry020808c8*)FindEntryByShortId0207f6ac((struct List0207f6ac*)((char*)obj + 0x4), id);
-    if (e == NULL) {
+
+
+ARM void GetEntryOutputs020808c8(void* container, int entryId, short* width, short* height) {
+    MenuEntryContainer* menu = static_cast<MenuEntryContainer*>(container);
+    struct Entry020808c8* entry = (struct Entry020808c8*)FindEntryByShortId0207f6ac(&menu->entries, entryId);
+    if (entry == NULL) {
         return;
     }
 
 #if !defined(jpn)
-    int isTwelve = IsValueEqual12(e->field13nibble);
+    int isTwelve = IsValueEqual12(entry->fontSize);
 #endif
-    int kind = e->field12;
+    int kind = entry->kind;
 
     switch (kind) {
     case 0: {
-        void* found = FindEntryByKey(*(struct TableA68**)obj, e->fieldE);
+        void* found = FindEntryByKey(menu->textTable, entry->textId);
         if (found == NULL) {
             return;
         }
-        #if defined(jpn)
-        int length = StringLength((const char*)found);
-        int characters = length >> 1;
-        int fontSize = e->field13nibble;
-        *out1 = (short)(characters * fontSize);
+#if defined(jpn)
+        int glyphUnits = StringLength((const char*)found) >> 1;
+        int glyphPixels = entry->fontSize;
+        *width = (short)(glyphUnits * glyphPixels);
 #else
-        *out1 = (short)func_020420e8(found, isTwelve);
+        *width = (short)func_020420e8(found, isTwelve);
 #endif
-        *out2 = e->field13nibble;
+        *height = entry->fontSize;
         break;
     }
     case 1:
-        *out1 = e->fieldA;
-        *out2 = e->fieldC;
+        *width = entry->width;
+        *height = entry->height;
         break;
     case 4: {
-        if (e->field0 == NULL) {
+        if (entry->literalText == NULL) {
             return;
         }
-        #if defined(jpn)
-        int length = StringLength((const char*)e->field0);
-        int characters = length >> 1;
-        int fontSize = e->field13nibble;
-        *out1 = (short)(characters * fontSize);
+#if defined(jpn)
+        int glyphUnits = StringLength(entry->literalText) >> 1;
+        int glyphPixels = entry->fontSize;
+        *width = (short)(glyphUnits * glyphPixels);
 #else
-        *out1 = (short)func_020420e8(e->field0, isTwelve);
+        *width = (short)func_020420e8(const_cast<char*>(entry->literalText), isTwelve);
 #endif
-        *out2 = e->field13nibble;
+        *height = entry->fontSize;
         break;
     }
     default:
-        *out2 = 0;
-        *out1 = 0;
+        *height = 0;
+        *width = 0;
         break;
     }
 }

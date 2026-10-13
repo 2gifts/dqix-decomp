@@ -36,7 +36,7 @@ extern "C" ARM unsigned char func_ov017_021b05c4(struct Ctx021b05c4* self) {
             return 0xa;
         }
         int idx = -1;
-        volatile unsigned char* p24 = &self->byte24;
+        unsigned char* p24 = &self->byte24;
         while (self->byte24 < 4) {
             if (self->byteC != self->byte24 && self->arr1b[self->byte24] != 3 && self->arr1b[self->byte24] != 0) {
                 idx = self->byte24;

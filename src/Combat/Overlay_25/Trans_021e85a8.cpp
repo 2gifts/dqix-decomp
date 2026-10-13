@@ -1,25 +1,28 @@
 #include <globaldefs.h>
 
+struct CombatCommand {
+    char unknown0[8];
+    unsigned short argument;
+};
+struct CombatContext {
+    char unknown0[0x74a];
+    unsigned short unknown74a;
+};
+struct CombatGlobals {
 #if defined(jpn)
-enum { kGlobalHolderInnerOffset = 0x4 };
+    char unknown0[4];
 #else
-enum { kGlobalHolderInnerOffset = 0xc };
+    char unknown0[0xc];
 #endif
-
-
+    CombatContext* context;
+};
 #if defined(jpn)
 #define func_ov025_021e85a8 func_ov025_021e8a48
 #endif
+extern CombatGlobals data_ov025_021ef988;
 
-extern int data_ov025_021ef988;
-
-// USA: func_ov025_021e85a8  (semantic: Trans_021e85a8)
-extern "C" ARM unsigned int func_ov025_021e85a8(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
-    r1 = (unsigned int)&data_ov025_021ef988;
-    r2 = *(unsigned short*)((char*)r0 + 0x8);
-    r1 = *(unsigned int*)((char*)r1 + kGlobalHolderInnerOffset);
-    r0 = 0x1;
-    r1 = r1 + 0x700;
-    *(unsigned short*)((char*)r1 + 0x4a) = (unsigned short)r2;
-    return r0;
+// USA: func_ov025_021e85a8
+extern "C" ARM int func_ov025_021e85a8(CombatCommand* command) {
+    data_ov025_021ef988.context->unknown74a = command->argument;
+    return 1;
 }

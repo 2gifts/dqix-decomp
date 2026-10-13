@@ -11,7 +11,7 @@ extern "C" ARM void func_ov031_0223bab4(void* obj, int idx, int value, int flag)
     Entry0223bab4* arr = *(Entry0223bab4**)((char*)obj + 0x8);
     unsigned int mask = 0xc1fffcff;
     if (idx >= 0) {
-        volatile unsigned int* p = &arr[idx].w0;
+        unsigned int* p = &arr[idx].w0;
         if (value != 0x100 && value != 0x300) {
             unsigned int v = *p & mask;
             *p = v | value;

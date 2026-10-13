@@ -76,8 +76,13 @@ extern "C" ARM void func_ov000_0217a688(TargetMenu* self, void* unused, int coun
     const char* format = (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i(&self->strings_, 0x754f);
 #endif
     previous = -1;
+#if defined(jpn)
     int showCursor = IsField0x118Equal2(self);
-    if (showCursor) _Z22AppendFrameTag02041c08Pciiiii(output, cursor, 8, 5, 5, 5);
+    if (showCursor)
+#else
+    if (IsField0x118Equal2(self))
+#endif
+        _Z22AppendFrameTag02041c08Pciiiii(output, cursor, 8, 5, 5, 5);
     AppendCursorTag(output, cursor);
     for (int i = 0; i < count; ++i) {
         int group = self->groupIDs_[i];

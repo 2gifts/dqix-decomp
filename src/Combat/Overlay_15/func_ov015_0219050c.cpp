@@ -63,7 +63,6 @@ struct CharacterViewer
 };
 
 extern "C" MessageSystem0219050c* _Z26GetGlobalField0x1c020421a0v();
-extern "C" double func_0200c578(float v);
 extern "C" void func_02069fec(MessageSystem0219050c* system, const char* text, char* converted);
 #if defined(jpn)
 extern "C" int func_02045d14(MessageSystem0219050c* system, const char* converted, unsigned short* line, int unk);
@@ -120,7 +119,7 @@ extern "C" ARM void func_ov015_0219050c(CharacterViewer* self)
     unsigned short line[0x20];
 
     MessageSystem0219050c* messages = _Z26GetGlobalField0x1c020421a0v();
-    sprintf(text, data_ov015_02194256, func_0200c578(self->fps_));
+    sprintf(text, data_ov015_02194256, (double)(self->fps_));
     PREPARE_TEXT();
     DRAW_LINE(0, 0xa0, 0x7fff);
     unsigned short triangles = 0;
@@ -157,13 +156,13 @@ extern "C" ARM void func_ov015_0219050c(CharacterViewer* self)
         sprintf(text, data_ov015_02194273, record->name);
         PREPARE_TEXT();
         DRAW_LINE(0x96, 0x96, 0x7fff);
-        sprintf(text, data_ov015_0219427b, func_0200c578(record->frameRate / 4096.0f));
+        sprintf(text, data_ov015_0219427b, (double)(record->frameRate / 4096.0f));
         PREPARE_TEXT();
         DRAW_LINE(0xa0, 0xa0, 0x7fff);
-        sprintf(text, data_ov015_02194288, func_0200c578(_Z16GetRatio0218f3c4P11Obj0218f3c4((Obj0218f3c4*)self->current_)));
+        sprintf(text, data_ov015_02194288, (double)(_Z16GetRatio0218f3c4P11Obj0218f3c4((Obj0218f3c4*)self->current_)));
         PREPARE_TEXT();
         DRAW_LINE(0xa0, 0xaa, 0x7fff);
-        sprintf(text, data_ov015_02194295, func_0200c578(_Z16GetRatio0218f408P11Obj0218f408((Obj0218f408*)self->current_)));
+        sprintf(text, data_ov015_02194295, (double)(_Z16GetRatio0218f408P11Obj0218f408((Obj0218f408*)self->current_)));
         PREPARE_TEXT();
         DRAW_LINE(0xa0, 0xb4, 0x7fff);
     }

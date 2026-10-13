@@ -13,7 +13,7 @@
 
 extern "C" int _Z21FindElementByByte0xc4P7Obj2081i(void *obj, int id);
 extern "C" int _Z26FindEntryByShortId0207f0acP12List0207f0aci(void *list, int id);
-extern "C" int _Z38FindMatchingElemSumOrScaledPtr02081e18P11Obj02081e18i(void *obj, int x);
+extern "C" unsigned int _Z38FindMatchingElemSumOrScaledPtr02081e18P11Obj02081e18i(void *obj, int x);
 extern "C" int _Z29FindElementWithByte0xc4Is0xffP11Obj02081de0(void *obj);
 extern "C" int _Z24ClearSublistEntriesFlag4Pvi(void *obj, int id);
 extern "C" int _Z37SetField0xa0AndByte0xc4IfFlag0x1ClearPhih(void *a, int c, int id);
@@ -34,7 +34,7 @@ extern "C" ARM int func_020813ec(void *obj, int id) {
     }
 
     unsigned char byteVal = *((unsigned char *)obj + (IS_JPN ? 0x2e : 0x3a));
-    int c = _Z38FindMatchingElemSumOrScaledPtr02081e18P11Obj02081e18i(obj, byteVal);
+    unsigned int c = _Z38FindMatchingElemSumOrScaledPtr02081e18P11Obj02081e18i(obj, byteVal);
 
     if (a == 0) {
         a = _Z29FindElementWithByte0xc4Is0xffP11Obj02081de0(obj);

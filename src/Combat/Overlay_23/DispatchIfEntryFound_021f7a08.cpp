@@ -7,8 +7,8 @@ struct List0202fe68;
 
 struct List0202fec8;
 
-char* FindEntryAndGetNext(void* a, char* b, void** outField44);
-extern "C" void func_ov023_021f7aac(void* obj, void* arg1, char* entry, void* next);
+char* FindEntryAndGetNext(void* a, char* b, unsigned int* outSize);
+extern "C" void func_ov023_021f7aac(void* obj, void* arg1, char* entry, unsigned int entryLength);
 
 struct Obj021f7a08 {
     char pad0[0x10];
@@ -35,11 +35,11 @@ extern "C" ARM void func_ov023_021f7a08(struct Obj021f7a08* obj, void* keyObj) {
         return;
     }
 
-    void* next;
-    char* entry = FindEntryAndGetNext((void*)out1, obj->f10, &next);
+    unsigned int entryLength;
+    char* entry = FindEntryAndGetNext((void*)out1, obj->f10, &entryLength);
     if (entry == NULL) {
         return;
     }
 
-    func_ov023_021f7aac(obj, keyObj, entry, next);
+    func_ov023_021f7aac(obj, keyObj, entry, entryLength);
 }

@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 struct Obj02081ce8 {
-    int field0;           // 0x0
+    float field0;           // 0x0
     char pad1[0x6 - 0x4];
     short short6;          // 0x6
     short short8;           // 0x8
@@ -17,8 +17,7 @@ struct Obj02081ce8 {
 };
 
 extern "C" void __clear(void* buf, int n);
-extern "C" long long func_0200c578(int x);
-extern "C" int sprintf(void* dst, void* fmt, int a, int b);
+extern "C" int sprintf(char* dst, const char* fmt, ...);
 extern "C" int func_020420e8(void* builder, void* obj);
 extern "C" void func_0204f41c(int a, short b, short c, void* buf, int d, int e, void* f, void* g, int h);
 extern char data_020f0ff2;
@@ -31,8 +30,7 @@ ARM void FormatValueAndDispatch02081ce8(void* unused0, int param1, struct Obj020
     }
     char buf[0x40];
     __clear(buf, 0x40);
-    long long val = func_0200c578(obj->field0);
-    sprintf(buf, &data_020f0ff2, (int)val, (int)(val >> 32));
+    sprintf(buf, &data_020f0ff2, (double)obj->field0);
     int r1val = func_020420e8(buf, 0);
     int nibble = obj->lowNibble;
     short sum = (short)((obj->short6 + obj->short28) - r1val);

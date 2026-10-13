@@ -1,23 +1,47 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
-struct Container020e0310 { char data[0x1c]; };
-struct Obj02092e0c {
-    char pad[0x14];
-    Container020e0310 container;
-    short key;
-    short timer;
-    char pad34[3];
+#include "Memory/SafeAllocator.h"
+struct Container020e0310 {
+    unsigned int count : 12;
+    unsigned int stringBytes : 19;
+    unsigned int ownsStorage : 1;
+    void* entries;
+    char* strings;
+};
+struct MessageController {
+    SafeAllocator allocator;
+    Container020e0310 messages;
+    char unknown20[0xc];
+    int loadTask;
+    short messageKey;
+    short messageDelay;
+    char unknown34[3];
     unsigned char flags;
-    signed char combatantId;
+    signed char namedPartySlot;
 };
 struct Obj02046574 {
     void* combatant;
+#if defined(jpn)
+    char unknown4[0x868 - 4];
+#else
     char pad4[0x998-4];
-    int field_0x998;
-    char pad99c[0x195b-0x99c];
+#endif
+    int active;
+#if defined(jpn)
+    char unknownAfterActive[0x1730 - 0x86c];
+    int unknown1730;
+    int unknown1734;
+    char unknown1738[0x1789 - 0x1738];
+#else
+    char unknownAfterActive[0x195b - 0x99c];
+#endif
     unsigned char flags;
+#if defined(jpn)
+    char unknownAfterFlags[0x17e1 - 0x178a];
+#else
     char pad195c[0x19b1-0x195c];
-    unsigned char field_0x19b1;
+#endif
+    unsigned char state;
 };
 struct CombatantInfo02092e0c { int fields[3]; };
 extern "C" Obj02046574* _Z26GetGlobalField0x1c020421a0v();
@@ -35,38 +59,38 @@ extern "C" void func_0204500c(Obj02046574*, int, int);
 extern "C" void func_02043270(Obj02046574*, int, int, int, int);
 #endif
 // USA: func_02092e0c
-extern "C" ARM void func_02092e0c(Obj02092e0c* obj) {
-    if (obj->key >= 0) {
+extern "C" ARM void func_02092e0c(MessageController* messages) {
+    if (messages->messageKey >= 0) {
         Obj02046574* display = _Z26GetGlobalField0x1c020421a0v();
         func_02046380(display);
         GameState* state = GameState::GetInstance();
         GameObject* member = state->GetPartyMemberByIndex(GetField0x3acValue(state));
         if (member) _Z22SetIndexedName02046574P11Obj02046574iPc(display, 0, member->baseStats_->unk);
 #if defined(jpn)
-        member = state->GetPartyMemberByIndex(obj->combatantId);
+        member = state->GetPartyMemberByIndex(messages->namedPartySlot);
         if (member) _Z22SetIndexedName02046574P11Obj02046574iPc(display, 1, member->baseStats_->unk);
-        func_0204500c(display, _Z21GetFieldByKey020e0434P17Container020e0310i(&obj->container, obj->key), 0);
-        *(int*)((char*)display + 0x868) = 1;
-        if ((obj->flags & 1) && (obj->flags & 2)) {
-            *((unsigned char*)display + 0x17e1) = 0;
-            *(int*)((char*)display + 0x1730) = 12;
-            *(int*)((char*)display + 0x1734) = 16;
-            func_02043270(display, *(int*)((char*)display + 0x1730), 0x90, 0x100, 0x30);
-            *((unsigned char*)display + 0x1789) |= 2;
+        func_0204500c(display, _Z21GetFieldByKey020e0434P17Container020e0310i(&messages->messages, messages->messageKey), 0);
+        display->active = 1;
+        if ((messages->flags & 1) && (messages->flags & 2)) {
+            display->state = 0;
+            display->unknown1730 = 12;
+            display->unknown1734 = 16;
+            func_02043270(display, display->unknown1730, 0x90, 0x100, 0x30);
+            display->flags |= 2;
         }
 #else
         CombatantInfo02092e0c info;
-        _Z30InitObjFromCombatantId020e4bf4Pvi(&info, obj->combatantId);
+        _Z30InitObjFromCombatantId020e4bf4Pvi(&info, messages->namedPartySlot);
         display->combatant = &info;
-        func_0204500c(display, _Z21GetFieldByKey020e0434P17Container020e0310i(&obj->container, obj->key), 0, 0xe3);
-        display->field_0x998 = 1;
-        if ((obj->flags & 1) && (obj->flags & 2)) {
-            display->field_0x19b1 = 0;
+        func_0204500c(display, _Z21GetFieldByKey020e0434P17Container020e0310i(&messages->messages, messages->messageKey), 0, 0xe3);
+        display->active = 1;
+        if ((messages->flags & 1) && (messages->flags & 2)) {
+            display->state = 0;
             func_02042b98(display, 2, 0x92, 0xfc, 0x4a);
             display->flags |= 2;
         }
 #endif
-        obj->key = -1;
-        obj->timer = 0x78;
+        messages->messageKey = -1;
+        messages->messageDelay = 0x78;
     }
 }

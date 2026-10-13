@@ -948,6 +948,7 @@ data_ov003_02180a4c kind:data(any) addr:0x02180a4c
 data_ov003_02180a63 kind:data(any) addr:0x02180a63
 data_ov003_02180a76 kind:data(any) addr:0x02180a76
 data_ov003_02180a8c kind:data(any) addr:0x02180a8c
+data_ov003_02180a8c_dup kind:data(any) addr:0x02180a8c
 data_ov003_02180aa4 kind:data(any) addr:0x02180aa4
 data_ov003_02180af4 kind:data(any) addr:0x02180af4
 data_ov003_02180b10 kind:data(any) addr:0x02180b10

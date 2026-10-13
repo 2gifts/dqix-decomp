@@ -50,10 +50,7 @@ inline int IsOccupied021dffac(unsigned char cell) {
     return cell >= 0xf2;
 }
 
-inline Action021dffac* SelectAction021dffac(Battle021dffac* battle, int index) {
-    Action021dffac* action = &battle->actions[index];
-    return action;
-}
+inline Action021dffac* SelectAction021dffac(Battle021dffac* battle, int index) { return &battle->actions[index]; }
 
 // USA: func_ov025_021dffac
 extern "C" ARM int func_ov025_021dffac(Context021dffac* context) {

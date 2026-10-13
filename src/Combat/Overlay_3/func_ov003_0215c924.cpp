@@ -16,7 +16,6 @@ enum { kRegionValue9C_B4 = 0x9c };
 enum { kRegionValue3BA_3D2 = 0x3ba };
 #endif
 
-
 extern "C" void func_ov003_0215dc20(void* obj);
 
 struct Obj0215e27c;
@@ -70,9 +69,9 @@ extern "C" ARM int func_ov003_0215c924(unsigned char* self, int amount) {
         void* obj = self + (entry->flags >> 1);
         DispatchFn_0217fe94 fn;
         if (entry->flags & 1) {
-            fn = *(DispatchFn_0217fe94*)(*(int*)obj + (int)*(DispatchFn_0217fe94 volatile*)&entry->fn);
+            fn = *(DispatchFn_0217fe94*)(*(int*)obj + (int)entry->fn);
         } else {
-            fn = *(DispatchFn_0217fe94 volatile*)&entry->fn;
+            fn = entry->fn;
         }
         fn(obj, amount);
     }

@@ -28,10 +28,11 @@ struct EntryQueueReceiver02195250 {
 #endif
     unsigned char count;
     Entry15_02195214 entries[3];
+    unsigned char changedEntryMask;
 #if defined(jpn)
-    unsigned char unknown431e[0x416c - 0x40fe];
+    unsigned char unknown431f[0x416c - 0x40ff];
 #else
-    unsigned char unknown431e[0x441c - 0x431e];
+    unsigned char unknown431f[0x441c - 0x431f];
 #endif
     ActiveEntry02195250 *active;
 };

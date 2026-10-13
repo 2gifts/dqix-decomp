@@ -7,7 +7,12 @@
 extern "C" void func_0204c684(void*);
 extern "C" int func_0204f41c(void* target, int a, int b, void* c, int d, int e, void* f, void* g, int h);
 
+#if defined(jpn)
+
 extern void* data_020fe9a4;
+#else
+#include "Graphics/GlyphBitmapContext.h"
+#endif
 extern unsigned char data_020e7380;
 
 struct LocalCtx02029140 {
@@ -23,7 +28,11 @@ struct LocalCtx02029140 {
 
 // USA: func_02029140  (semantic: DispatchBufferedGlyph02029140)
 extern "C" ARM void func_02029140(int x, int y, void* ptr) {
+#if defined(jpn)
     if (data_020fe9a4 == 0) return;
+#else
+    if (glyphBitmapContext.buffer == NULL) return;
+#endif
     if (x >= 0x100 || y >= 0xc0) return;
     if (ptr == 0) return;
 
@@ -34,10 +43,18 @@ extern "C" ARM void func_02029140(int x, int y, void* ptr) {
     local.halfA8 = 0x20;
     local.halfAA = 0x18;
     unsigned char t = raw & ~4;
+#if defined(jpn)
     local.field8 = data_020fe9a4;
+#else
+    local.field8 = glyphBitmapContext.buffer;
+#endif
     local.flagsC5 = t & ~0x10;
 
+#if defined(jpn)
     int mode = *(((int*)&data_020fe9a4) + 1);
+#else
+    int mode = glyphBitmapContext.colorSchemeIndex;
+#endif
     unsigned char lookup = (&data_020e7380)[mode];
 
     short paramF;

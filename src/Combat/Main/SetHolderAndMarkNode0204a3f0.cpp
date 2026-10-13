@@ -26,7 +26,7 @@ ARM void SetHolderAndMarkNode0204a3f0(struct Owner0204a3f0* owner, struct Holder
     _ZN8Object3D18EnableBoneTrackingEv((struct Obj02037bbc*)h);
     s = owner->holder->node;
     if (s == NULL) return;
-    s = s->bit0 ? s : NULL;
+    if (!s->bit0) s = NULL;
     if (s != NULL) {
         s->flags0 |= 4;
     }

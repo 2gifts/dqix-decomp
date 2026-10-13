@@ -30,7 +30,7 @@ extern "C" ARM void Vector3fix_Normalize(struct Vec3s32_020c2f18* v, struct Vec3
     hw->denomLo = (unsigned int)sq;
     hw->denomHi = (unsigned int)(sq >> 32);
     hw->sqrtCnt = 1;
-    hw->sqrtParamLo = (unsigned int)((unsigned long long)sq << 2);
+    hw->sqrtParamLo = (unsigned int)sq << 2;
     hw->sqrtParamHi = (unsigned int)(((unsigned long long)sq << 2) >> 32);
 
     while (hw->sqrtCnt & 0x8000) {}

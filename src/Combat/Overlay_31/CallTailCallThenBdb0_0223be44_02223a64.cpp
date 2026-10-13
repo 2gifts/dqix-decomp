@@ -25,7 +25,7 @@ extern "C" ARM void func_ov031_02223a64(int index) {
 		return;
 	}
 	Handle02223a64* h = (Handle02223a64*)func_ov031_0223cf4c(0xc, 4);
-	unsigned char v = *(volatile unsigned char*)&data_ov031_022489a4[index * 4];
+	unsigned char v = *(unsigned char*)&data_ov031_022489a4[index * 4];
 	data_ov031_02250bf8 = h;
 	h->field8 = (signed char)index;
 	int r = CallTailCallThenBdb0_0223be44(0, v);

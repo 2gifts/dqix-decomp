@@ -1,8 +1,6 @@
 #include <globaldefs.h>
 
 #if defined(jpn)
-#define CallHelperIfFlag_021b2f2c func_ov017_021b363c
-extern "C" void CallHelperIfFlag_021b2f2c(void);
 #define func_ov003_02174890 func_ov003_021739b8
 #endif
 

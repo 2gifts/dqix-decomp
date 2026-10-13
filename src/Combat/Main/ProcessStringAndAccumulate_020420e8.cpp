@@ -1,87 +1,87 @@
 #include <globaldefs.h>
+#include "Resource/MessageGlyphSlot.h"
 
 extern int data_020e7a94[];
-int FindEntryIndexByKey020424e4(int key, int tableIdx);
-void* GetBoundedEntry020425b4(int idx, int tableIdx);
-int LookupKeyValue020425e4(int a, int b, int tableIdx);
-
-struct Entry020420e8 {
-    int val;
-    char pad4;
-    signed char field5 : 6;
-    signed char unused2 : 2;
-    char pad6[2];
-};
+extern "C" int _Z27FindEntryIndexByKey020424e4ii(const char* text, int fontIndex);
+extern "C" FontCharacter* _Z23GetBoundedEntry020425b4ii(int index, int fontIndex);
+int LookupKeyValue020425e4(int previousCharacter, int characterIndex, int fontIndex);
 
 #if defined(jpn)
-struct Metrics0202a6c4 { int field_0; int rowHeight; int columnWidth; int font; };
+struct Metrics0202a6c4 { int field_0; int rowHeight; int columnWidth; int displayMode; };
 extern Metrics0202a6c4 data_020ef74c;
+
+
 // USA: func_020420e8
 extern "C" ARM void func_02028ce4(const char* text, int* widthOut, int* heightOut) {
     if (text == 0) return;
-    int advance = 10;
+    int glyphAdvance = 10;
     int lineHeight = 11;
-    int font = data_020ef74c.font;
-    if ((unsigned int)(font - 3) <= 1) {
-    } else if ((unsigned int)(font - 5) <= 1) {
-        advance = 12;
+    int displayMode = data_020ef74c.displayMode;
+
+
+    if ((unsigned int)(displayMode - 3) <= 1) {
+    } else if ((unsigned int)(displayMode - 5) <= 1) {
+        glyphAdvance = 12;
         lineHeight = 13;
     }
-    int width;
-    int maxWidth = 0;
-    width = 0;
+    int lineWidth;
+    int widestLine = 0;
+    lineWidth = 0;
     int height = lineHeight;
-    unsigned char count = 0;
+    unsigned char glyphCount = 0;
     const unsigned char* cursor = (const unsigned char*)text;
-    while (*cursor != 0 && count < 25) {
-        unsigned int ch = *cursor;
-        if (ch == 10) {
-            if (maxWidth < width) {
-                maxWidth = width;
-                width = 0;
+    while (*cursor != 0 && glyphCount < 25) {
+        unsigned int leadByte = *cursor;
+        if (leadByte == 10) {
+
+            if (widestLine < lineWidth) {
+                widestLine = lineWidth;
+                lineWidth = 0;
             }
             height += lineHeight;
             cursor++;
-        } else if ((ch >= 0x81 && ch <= 0x9f) || (ch >= 0xe0 && ch <= 0xea)) {
-            width += advance;
+        } else if ((leadByte >= 0x81 && leadByte <= 0x9f) || (leadByte >= 0xe0 && leadByte <= 0xea)) {
+            lineWidth += glyphAdvance;
             cursor += 2;
-            count++;
+            glyphCount++;
         } else {
-            width += advance;
+            lineWidth += glyphAdvance;
             cursor++;
-            count++;
+            glyphCount++;
         }
     }
-    if (maxWidth < width) maxWidth = width;
-    *widthOut = maxWidth;
+    if (widestLine < lineWidth) widestLine = lineWidth;
+    *widthOut = widestLine;
     *heightOut = height;
 }
 #else
-// USA: func_020420e8  (semantic: ProcessStringAndAccumulate_020420e8)
-extern "C" ARM int func_020420e8(char* str, int id) {
-    if (str == 0) return 0;
-    int mask = data_020e7a94[id] & 0xff;
-    int resetState = 0xff;
-    int state = resetState;
-    int masked;
-    int total = 0;
+
+
+// USA: func_020420e8
+extern "C" ARM int func_020420e8(char* text, int fontIndex) {
+    if (text == 0) return 0;
+    int fallbackGlyphWidth = data_020e7a94[fontIndex] & 0xff;
+    int noPreviousCharacter = 0xff;
+    int previousCharacter = noPreviousCharacter;
+    int characterIndex;
+    int pixelWidth = 0;
     for (;;) {
-        if (*str == 0) break;
-        int delta = mask + 1;
-        int idx = FindEntryIndexByKey020424e4((int)str, id);
-        if (idx < 0) {
-            state = resetState;
-            str++;
+        if (*text == 0) break;
+        int advance = fallbackGlyphWidth + 1;
+        int index = _Z27FindEntryIndexByKey020424e4ii(text, fontIndex);
+        if (index < 0) {
+            previousCharacter = noPreviousCharacter;
+            text++;
         } else {
-            masked = idx & 0xff;
-            struct Entry020420e8* entry = (struct Entry020420e8*)GetBoundedEntry020425b4(idx, id);
-            int val = LookupKeyValue020425e4(state, masked, id);
-            state = masked;
-            delta = (entry->pad4 + 1) + val;
-            str = str + entry->field5;
+            characterIndex = index & 0xff;
+            FontCharacter* entry = _Z23GetBoundedEntry020425b4ii(index, fontIndex);
+            int kerning = LookupKeyValue020425e4(previousCharacter, characterIndex, fontIndex);
+            previousCharacter = characterIndex;
+            advance = (entry->width + 1) + kerning;
+            text = text + entry->byteLength;
         }
-        total += delta;
+        pixelWidth += advance;
     }
-    return total - 1;
+    return pixelWidth - 1;
 }
 #endif

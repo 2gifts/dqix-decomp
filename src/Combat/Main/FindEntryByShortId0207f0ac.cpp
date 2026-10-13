@@ -11,6 +11,10 @@ struct List0207f0ac {
     short count;
 };
 
+static inline struct Entry0207f0ac* GetEntry0207f0ac(struct List0207f0ac* list, unsigned int index) {
+    return &list->entries[index];
+}
+
 // USA: func_0207f0ac
 ARM struct Entry0207f0ac* FindEntryByShortId0207f0ac(struct List0207f0ac* list, int id) {
     short i;
@@ -19,7 +23,7 @@ ARM struct Entry0207f0ac* FindEntryByShortId0207f0ac(struct List0207f0ac* list, 
         return NULL;
     }
     for (i = 0; i < list->count; i++) {
-        e = &list->entries[(unsigned int)i];
+        e = GetEntry0207f0ac(list, i);
         if (id == e->id) {
             return e;
         }

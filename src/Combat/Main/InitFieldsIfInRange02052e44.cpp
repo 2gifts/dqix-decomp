@@ -24,8 +24,7 @@ struct Obj02052e44 {
     char pad0[0x4];
     short field4;
     char pad6[(IS_JPN ? 0x16c : 0x178) - 0x6];
-    signed char f178;
-    char pad179[0x17c - 0x179];
+    signed char f178[4];
     signed char f17c;
     signed char f17d;
     signed char f17e;
@@ -60,7 +59,7 @@ ARM int InitFieldsIfInRange02052e44(struct Obj02052e44* obj, signed char arg1, i
         return 0;
     }
 
-    obj->f178 = arg1;
+    obj->f178[0] = arg1;
     obj->f17c = 1;
     obj->f17d = 0;
     obj->f180 = -1;
@@ -72,11 +71,7 @@ ARM int InitFieldsIfInRange02052e44(struct Obj02052e44* obj, signed char arg1, i
     obj->f186 = 0;
 
     idx = ((signed char*)((char*)obj + 0x100))[(IS_JPN ? 0x71 : 0x7d)];
-    {
-        char* base = (char*)obj + idx;
-        base = base + 0x100;
-        val = ((signed char*)base)[(IS_JPN ? 0x6c : 0x78)];
-    }
+    val = obj->f178[idx];
     func_0205308c(obj, val);
 
     func_ov017_021cc1f8(obj->field4, &arg1, 1, 0);

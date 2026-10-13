@@ -3977,6 +3977,29 @@ src/Combat/Overlay_17/ResetBattleScaleField_021c1dfc.cpp:
     complete
     .text start:0x021c2370 end:0x021c23a8
 
+src/Combat/Overlay_17/func_ov017_021ba524.cpp:
+    complete
+    .text start:0x021baa20 end:0x021bad0c
+
+src/Combat/Overlay_17/func_ov017_021a4368.cpp:
+    complete
+    .text start:0x021a4ddc end:0x021a50cc
+
+src/Combat/Overlay_17/func_ov017_021b9e30.cpp:
+    complete
+    .text start:0x021ba32c end:0x021ba620
+
+src/Combat/Overlay_17/func_ov017_021bd704.cpp:
+    complete
+    .text start:0x021bdcfc end:0x021be170
+
+src/Combat/Overlay_17/func_ov017_021d3fa8.cpp:
+    complete
+    .text start:0x021d43fc end:0x021d4860
+
+src/Combat/Overlay_17/func_ov017_0218fd34.cpp:
+    complete
+    .text start:0x02190918 end:0x02190d90
 
 src/Combat/Overlay_17/FindNegativeEntry_021a11b4.cpp:
     complete
@@ -4009,7 +4032,6 @@ src/Combat/Overlay_17/ResetAndForwardCount2_021acd00.cpp:
 src/Combat/Overlay_17/CallField700ThenNotify_021afabc.cpp:
     complete
     .text start:0x021b01d0 end:0x021b01fc
-
 
 src/Combat/Overlay_17/DecrementClampCounter354_021a4e48.cpp:
     complete
@@ -4126,10 +4148,6 @@ src/Combat/Overlay_17/EnqueueEventTag83_021c8c04.cpp:
 src/Combat/Overlay_17/func_ov017_021b790c.cpp:
     complete
     .text start:0x021b7ebc end:0x021b8900
-
-src/Combat/Overlay_17/func_ov017_021ba524.cpp:
-    complete
-    .text start:0x021baa20 end:0x021bad0c
 
 src/Combat/Overlay_17/NoOp_0219fc84.cpp:
     complete

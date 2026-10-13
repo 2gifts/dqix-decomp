@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "System/Graphics.h"
 
 #if defined(jpn)
 #define Reset3FieldsAndDispatch_0216aa10 func_ov004_0216ac84
@@ -20,10 +21,9 @@ extern "C"
 #endif
 ARM int Reset3FieldsAndDispatch_0216aa10(void) {
     func_ov004_02169144();
-    unsigned short* p = (unsigned short*)0x4001008;
-    p[0] = (p[0] & ~3) | 1;
-    p[1] = (p[1] & ~3) | 2;
-    p[2] = (p[2] & ~3);
+    BG0CNTSUB = (BG0CNTSUB & ~3) | 1;
+    BG1CNTSUB = (BG1CNTSUB & ~3) | 2;
+    BG2CNTSUB = (BG2CNTSUB & ~3);
     SetCombatModeFromCase020dc2d0(0);
     int g = GetGlobalField0x1c020421a0();
     if (*(int*)((char*)g + kControllerField) != 0) {

@@ -32,7 +32,8 @@ struct ZoneLootableRecord
     short field2;
     short field4;
     unsigned char reserved6[2];
-    Foo02048004 blocks[6];
+    Foo02048004 primary[2];
+    Foo02048004 fragments[4];
     unsigned char tail338[0x30];
 };
 

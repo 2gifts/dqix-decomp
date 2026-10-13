@@ -15,7 +15,6 @@ extern "C" ARM unsigned int func_ov001_02163c60(unsigned int r0, unsigned int r1
 #else
     enum { allocatorOffset = 0x4c, copyFieldsOffset = 0x50 };
 #endif
-    int cc = 0;
     unsigned int r4 = 0;
     unsigned int r5 = 0;
     unsigned int r6 = 0;
@@ -27,16 +26,15 @@ extern "C" ARM unsigned int func_ov001_02163c60(unsigned int r0, unsigned int r1
     r0 = (unsigned int)_Z19GetFieldPtrAt0x5ca4Pv(r0);
     r4 = r0;
     r6 = *(unsigned int*)((char*)r4 + 0x0);
-    cc = (int)(r6) - (int)(0x0);
-    if (cc == 0) { goto L48; }
-    r0 = r6;
-    r1 = 0x1;
-    r0 = (unsigned int)_Z22ResetBigStruct02013750Pvi(r0, r1);
-    r0 = *(unsigned int*)((char*)r6 + allocatorOffset);
-    cc = (int)(r0) - (int)(0x0);
-    if (cc == 0) { goto L48; }
-    r0 = (unsigned int)_ZN13SafeAllocator7DestroyEv(r0);
-L48:;
+    if (r6 != 0) {
+        r0 = r6;
+        r1 = 0x1;
+        r0 = (unsigned int)_Z22ResetBigStruct02013750Pvi(r0, r1);
+        r0 = *(unsigned int*)((char*)r6 + allocatorOffset);
+        if (r0 != 0) {
+            r0 = (unsigned int)_ZN13SafeAllocator7DestroyEv(r0);
+        }
+    }
     r0 = 0x0;
     *(unsigned int*)((char*)r4 + 0x0) = (unsigned int)r0;
     r0 = *(unsigned int*)((char*)r5 + allocatorOffset);

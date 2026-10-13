@@ -1,0 +1,184 @@
+#include <globaldefs.h>
+#include <std_library_functions.h>
+
+struct PackedTriple02082828 {
+    unsigned int field0 : 10;
+    unsigned int field10 : 10;
+    unsigned int field20 : 10;
+    unsigned int reserved : 2;
+};
+struct Obj02082cdc {
+    PackedTriple02082828 w[3];
+};
+struct Struct02082d38 {
+    unsigned char bytes[0x16];
+    unsigned char field16;
+    unsigned char field17;
+};
+struct Obj020827c4 {
+    unsigned char bytes[0x1c];
+};
+struct Obj02083508;
+struct CombatSlot02082828 {
+    unsigned int words[10];
+    short index;
+    unsigned short field2a;
+};
+struct Combatant02082828 {
+    PackedTriple02082828 packed[6];
+    unsigned int field18;
+    unsigned short field1c;
+    unsigned short field1e;
+    unsigned char field20;
+    Struct02082d38 copied;
+    unsigned char field39[3];
+    char name[48];
+    unsigned short field6c;
+    unsigned short field6e;
+    unsigned short field70;
+    unsigned short field72;
+    unsigned short field74;
+    unsigned short field76;
+    unsigned int flags78;
+    Struct02082d38 details;
+    unsigned char stats[0xa4];
+    unsigned int counters[13];
+    unsigned short timers[13];
+    unsigned char flags[13];
+    unsigned char field193[0x161];
+    CombatSlot02082828 slots[8];
+    unsigned char field454[16];
+    unsigned char field464[27];
+    unsigned char field47f[9];
+    Obj020827c4 timers488;
+    unsigned char field4a4[0xc0];
+    unsigned short field564;
+    unsigned short field566;
+    short selectedIndex;
+    unsigned char field56a;
+    unsigned char nibbles;
+    unsigned char field56c;
+    unsigned char field56d;
+    unsigned char field56e;
+    unsigned char field56f[0x2e1];
+    Obj02082cdc triples[13];
+    unsigned char field8ec[36];
+    unsigned char field910[9];
+    unsigned char field919[3];
+    PackedTriple02082828 saved[6];
+    unsigned char field934[22];
+    unsigned short field94a;
+    unsigned int state;
+    unsigned int field950;
+    unsigned short field954;
+    unsigned short field956;
+    short field958;
+    unsigned short field95a;
+    unsigned short field95c;
+    short field95e;
+    unsigned short field960;
+    unsigned short field962;
+};
+extern "C" void func_020891cc(void*);
+void ClearPackedTriples02082cdc(Obj02082cdc*);
+void InitFlagsAndTimers020827c4(Obj020827c4*);
+void CopyStruct02082d38(Struct02082d38*, Struct02082d38*);
+void InitIndexedElements02083508(Obj02083508*);
+void CopyFrom027ffcf4(void*);
+extern char data_020f1010[];
+extern char data_020ef078[];
+
+// USA: func_02082828
+extern "C" ARM void func_02082828(Combatant02082828* object) {
+    unsigned char index = 0;
+    object->selectedIndex = -1;
+    for (index = 0; index < 13; index++) {
+        object->timers[index] = 1;
+        object->flags[index] = 0;
+        object->counters[index] = 0;
+    }
+    object->state = 5;
+    object->field950 = 0;
+    object->field954 = 0;
+    memset(object->name, 0, 48);
+    object->field6c = 1;
+    object->field6e = 0;
+    object->field70 = 0;
+    object->field72 = 0;
+    object->field74 = 0;
+    object->flags78 &= ~0x3ff;
+    object->flags78 &= ~0x40000000;
+    memset(object->details.bytes, 100, 22);
+    memset(object->packed, 0, 24);
+    object->packed[2].field10 = 1;
+    memset(object->saved, 0, 24);
+    object->saved[2].field10 = 1;
+    memset(object->field934, 100, 22);
+    func_020891cc(object->stats);
+    for (int i = 0; i < 13; i++) ClearPackedTriples02082cdc(&object->triples[i]);
+    InitFlagsAndTimers020827c4(&object->timers488);
+    memset(object->field4a4, -1, 192);
+    object->saved[0].field0 = 0;
+    object->packed[0].field0 = object->saved[0].field0;
+    object->saved[0].field20 = 0;
+    object->packed[0].field20 = object->saved[0].field20;
+    object->saved[0].field10 = 0;
+    object->packed[0].field10 = object->saved[0].field10;
+    object->saved[1].field0 = 0;
+    object->packed[1].field0 = object->saved[1].field0;
+    object->saved[1].field10 = 0;
+    object->packed[1].field10 = object->saved[1].field10;
+    object->saved[1].field20 = 0;
+    object->packed[1].field20 = object->saved[1].field20;
+    object->saved[2].field0 = 0;
+    object->packed[2].field0 = object->saved[2].field0;
+    object->saved[2].field10 = 1;
+    object->packed[2].field10 = object->saved[2].field10;
+    object->saved[2].field20 = 0;
+    object->packed[2].field20 = object->saved[2].field20;
+    object->field6c = object->packed[2].field10;
+    object->field6e = object->packed[2].field20;
+    object->field564 = 0;
+    object->field56c = 0;
+    object->field56d = 0;
+    object->field56e = 0;
+    object->field1c = object->field6c;
+    object->field1e = object->field6e;
+    CopyStruct02082d38(&object->copied, &object->details);
+    object->field18 = 0;
+    object->field20 = 0;
+    memset(object->field454, -1, 16);
+    memset(object->field464, 0, 27);
+    InitIndexedElements02083508((Obj02083508*)object);
+    memset(object->field8ec, 0, 36);
+    memset(object->field910, 0, 9);
+    for (unsigned char slotIndex = 0; slotIndex < 8; slotIndex++) {
+        object->slots[slotIndex].words[0] = 0;
+        object->slots[slotIndex].words[1] = 0;
+        object->slots[slotIndex].words[2] = 0;
+        object->slots[slotIndex].words[3] = 0;
+        object->slots[slotIndex].words[4] = 0;
+        object->slots[slotIndex].words[5] = 0;
+        object->slots[slotIndex].words[6] = 0;
+        object->slots[slotIndex].words[7] = 0;
+        object->slots[slotIndex].words[8] = 0;
+        object->slots[slotIndex].words[9] = 0;
+        object->slots[slotIndex].index = -1;
+    }
+    unsigned char hardwareAddress[6];
+    char suffix[18];
+    CopyFrom027ffcf4(hardwareAddress);
+    int first = (hardwareAddress[0] + hardwareAddress[2] + hardwareAddress[4]) % 26;
+    int second = (hardwareAddress[1] + hardwareAddress[3] + hardwareAddress[5]) % 26;
+    sprintf(suffix, data_020f1010, (signed char)(first + 65), (signed char)(second + 65));
+    sprintf(object->name, data_020ef078, suffix);
+    object->field956 = 0;
+    object->field958 = -1;
+    object->field95a = 0;
+    object->field95c = 0;
+    object->field95e = -1;
+    object->field960 = 0;
+    object->field962 = 0;
+    object->nibbles &= ~15;
+    object->nibbles &= ~240;
+}

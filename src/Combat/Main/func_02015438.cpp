@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "World/ZoneLifecycle.h"
 #include "GameState/GameState.h"
 #include "Graphics/LightingManager.h"
 #include "Resource/GameResources.h"
@@ -19,7 +20,6 @@ extern "C" void func_020158cc(Zone3D* self);
 extern "C" void func_020a84e0();
 extern "C" void _Z28SetBitFromValueRange0201ba68Pv(void*);
 void DispatchField0x744FlagsAndNotify(unsigned char*);
-extern "C" void _Z29MaybeClearGrottoState0201bfd4v(Zone3D* self);
 
 // USA: func_02015438
 extern "C" ARM void func_02015438(Zone3D* self) {
@@ -65,5 +65,5 @@ extern "C" ARM void func_02015438(Zone3D* self) {
     func_020a84e0();
     _Z28SetBitFromValueRange0201ba68Pv(self);
     DispatchField0x744FlagsAndNotify((unsigned char*)self);
-    _Z29MaybeClearGrottoState0201bfd4v(self);
+    MaybeClearGrottoState0201bfd4(self);
 }

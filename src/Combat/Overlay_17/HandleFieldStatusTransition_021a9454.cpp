@@ -11,7 +11,53 @@ struct PointerField32c_ffc0;
 struct ResetObj020d7a5c;
 struct Obj020d7aa0;
 
-int GetGlobalField0x1c020421a0(void);
+struct ZoneTransitionMessageController {
+    char unknown0[TextBufferPointer];
+    char* textBuffer;
+    char unknownAfterBuffer[MessageStatus - TextBufferPointer - sizeof(char*)];
+    int status;
+    int mode;
+    int pendingMessage;
+    char unknownAfterPending[0x1000 + MessageFlag - PendingMessage - sizeof(int)];
+    unsigned char messageFlag;
+};
+
+struct ZoneTransitionRequest {
+    unsigned char unknown0;
+    unsigned char done;
+    char unknown2[6];
+    int state;
+    int zoneId;
+    int alternateDestination;
+};
+
+struct ZoneTransitionSettings {
+    short zoneId;
+    unsigned char unknown2;
+    unsigned char unknown3;
+    unsigned char unknown4;
+    unsigned char unknown5;
+    unsigned char unknown6;
+    unsigned char applyPosition;
+    unsigned char unknown8;
+    unsigned char unknown9;
+    unsigned char unknownA;
+    signed char unknownB;
+    unsigned char unknownC;
+    char unknownD[3];
+    Vector3i position;
+    short heading;
+    short unknown1E;
+    int unknown20;
+    int unknown24;
+    int unknown28;
+    int unknown2C;
+    char unknown30[0x6c - 0x30];
+    short nodeId;
+    char unknown6E[2];
+};
+
+ZoneTransitionMessageController* GetGlobalField0x1c020421a0(void);
 extern "C" void* func_02012fe4(void);
 int GetFieldIfFlag4(char* obj);
 struct ResetObj020d7a5c* GetGlobalResetObj020d7a50(void);
@@ -36,12 +82,12 @@ void ReinitController02043204(char* obj);
 void SetByteFlagAt0x154(unsigned char* obj);
 
 // USA: func_ov017_021a9454  (semantic: HandleFieldStatusTransition_021a9454)
-extern "C" ARM void func_ov017_021a9454(char* obj) {
+extern "C" ARM void func_ov017_021a9454(ZoneTransitionRequest* request) {
     GameState* battleStruct = GameState::GetInstance();
-    char* g = (char*)GetGlobalField0x1c020421a0();
+    ZoneTransitionMessageController* controller = GetGlobalField0x1c020421a0();
     func_02012fe4();
     int field = GetFieldIfFlag4((char*)battleStruct);
-    int status = *(int*)(obj + 0x8);
+    int status = request->state;
 
     if (status == 0) {
         struct ResetObj020d7a5c* reset = GetGlobalResetObj020d7a50();
@@ -49,8 +95,8 @@ extern "C" ARM void func_ov017_021a9454(char* obj) {
         void* p = GetPointerAt0x32c((struct PointerField32c_ffc0*)battleStruct);
         ClearByteFlagAt0x154((unsigned char*)p);
 
-        int flag10 = *(int*)(obj + 0x10);
-        char* buf = *(char**)(g + TextBufferPointer);
+        int flag10 = request->alternateDestination;
+        char* buf = controller->textBuffer;
         if (flag10 == 0) {
 #if defined(jpn)
             sprintf(buf, &data_ov017_021d7c28);
@@ -63,60 +109,60 @@ extern "C" ARM void func_ov017_021a9454(char* obj) {
 #else
             sprintf(buf, (const char*)CallFunc020e0434With02153694(0x3b));
 #endif
-            *(int*)(obj + 0xc) = 0x170c;
+            request->zoneId = 0x170c;
         }
 #if defined(jpn)
-        func_0204500c(g, buf, 0);
+        func_0204500c(controller, buf, 0);
 #else
-        func_0204500c(g, buf, 0, 0xe3);
+        func_0204500c(controller, buf, 0, 0xe3);
 #endif
-        *(unsigned char*)(g + 0x1000 + MessageFlag) = 0;
-        *(int*)(g + MessageStatus) = 1;
+        controller->messageFlag = 0;
+        controller->status = 1;
         SetFlagsAt0x244((unsigned char*)field, 2);
-        *(int*)(obj + 0x8) = 1;
+        request->state = 1;
         return;
     }
 
-    if (status != 1 || *(int*)(g + PendingMessage) != 0) return;
+    if (status != 1 || controller->pendingMessage != 0) return;
 
     ClearFlagBits((unsigned char*)field, 2);
-    if (func_020457e0(g) == 0) {
+    if (func_020457e0(controller) == 0) {
         GetPointerAt0x32c((struct PointerField32c_ffc0*)battleStruct);
-        char* p3 = (char*)GetField0x3f8Address(battleStruct);
-        VectorizedMemset(p3, 0, 0x70);
-        p3[4] = 1;
-        p3[8] = 1;
-        p3[9] = 1;
-        p3[0xb] = -1;
-        *(int*)(p3 + 0x20) = -1;
-        *(int*)(p3 + 0x24) = -1;
-        *(int*)(p3 + 0x28) = -1;
-        *(int*)(p3 + 0x2c) = -1;
-        *(short*)(p3 + 0x1e) = -1;
-        p3[0xc] = 0;
-        *(short*)(p3 + 0x6c) = -1;
-        *(short*)(p3 + 0x0) = (short)(*(int*)(obj + 0xc));
-        p3[2] = 1;
-        p3[7] = 1;
+        ZoneTransitionSettings* settings = (ZoneTransitionSettings*)GetField0x3f8Address(battleStruct);
+        VectorizedMemset(settings, 0, sizeof(*settings));
+        settings->unknown4 = 1;
+        settings->unknown8 = 1;
+        settings->unknown9 = 1;
+        settings->unknownB = -1;
+        settings->unknown20 = -1;
+        settings->unknown24 = -1;
+        settings->unknown28 = -1;
+        settings->unknown2C = -1;
+        settings->unknown1E = -1;
+        settings->unknownC = 0;
+        settings->nodeId = -1;
+        settings->zoneId = (short)request->zoneId;
+        settings->unknown2 = 1;
+        settings->applyPosition = 1;
 
-        if (*(int*)(obj + 0x10) == 0) {
-            *(int*)(p3 + 0x10) = 0x100000;
-            *(int*)(p3 + 0x14) = 0;
-            *(int*)(p3 + 0x18) = 0x100000;
-            *(short*)(p3 + 0x1c) = 0;
+        if (request->alternateDestination == 0) {
+            settings->position.x = 0x100000;
+            settings->position.y = 0;
+            settings->position.z = 0x100000;
+            settings->heading = 0;
         } else {
-            *(int*)(p3 + 0x10) = 0x5f0a;
-            *(int*)(p3 + 0x14) = 0x3614;
-            *(int*)(p3 + 0x18) = 0x570;
-            *(short*)(p3 + 0x1c) = 0x4b66;
+            settings->position.x = 0x5f0a;
+            settings->position.y = 0x3614;
+            settings->position.z = 0x570;
+            settings->heading = 0x4b66;
         }
-        ReinitController02043204(g);
-        obj[1] = 1;
+        ReinitController02043204((char*)controller);
+        request->done = 1;
         return;
     }
 
-    ReinitController02043204(g);
+    ReinitController02043204((char*)controller);
     void* p = GetPointerAt0x32c((struct PointerField32c_ffc0*)battleStruct);
     SetByteFlagAt0x154((unsigned char*)p);
-    obj[1] = 1;
+    request->done = 1;
 }

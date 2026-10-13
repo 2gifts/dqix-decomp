@@ -10,8 +10,8 @@ extern "C" void _Z22PopulateEntry_0215ccbciP17OutStruct0215ccbcP10GameObjectsssi
     void* world, struct OutStruct0215ccbc* out, GameObject* combatant, short valC, short valA, short valB,
     unsigned long long words, unsigned char byteE);
 
-static inline short CurrHP(GameObject* c) { short v = c->currentStats_->primaryStats.currHP; return v; }
-static inline short CurrMP(GameObject* c) { short v = c->currentStats_->primaryStats.currMP; return v; }
+static inline short CurrHP(ModifiableCombatStats* s) { return s->primaryStats.currHP; }
+static inline short CurrMP(ModifiableCombatStats* s) { return s->primaryStats.currMP; }
 
 // USA: func_ov000_021584e8
 extern "C" ARM void func_ov000_021584e8(void* world, struct OutStruct0215ccbc* entry, GameObject* combatant,
@@ -22,5 +22,5 @@ extern "C" ARM void func_ov000_021584e8(void* world, struct OutStruct0215ccbc* e
     unsigned long long words = 0;
     func_ov000_02159eac(world, &words, kind);
     _Z22PopulateEntry_0215ccbciP17OutStruct0215ccbcP10GameObjectsssiih(
-        world, entry, combatant, 0, CurrHP(combatant), CurrMP(combatant), words, 0);
+        world, entry, combatant, 0, CurrHP(combatant->currentStats_), CurrMP(combatant->currentStats_), words, 0);
 }

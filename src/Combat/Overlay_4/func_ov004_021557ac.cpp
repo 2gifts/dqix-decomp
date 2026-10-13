@@ -1,37 +1,24 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
 
-#if defined(jpn)
-#define func_ov004_021557ac func_ov004_02156d2c
-#endif
-
-struct Entry021557ac {
-    short kind;
-    short subkind;
-    unsigned char total;
-    unsigned char matched;
-};
-struct Selection021557ac {
-    Entry021557ac entries[2];
-    unsigned short total;
-    unsigned short matched;
-    unsigned char state;
-};
-extern Selection021557ac* data_ov004_021707c4;
-extern "C" void* func_ov011_021845f8(void*, int);
+struct AllocationNode021557ac { unsigned int field_0; SafeAllocator allocator; };
+struct Entry021557ac { short category; short index; unsigned char total; unsigned char matched; };
+struct Table021557ac { Entry021557ac entries[2]; unsigned short total; unsigned short matched; unsigned char side; };
+struct Container020dedd0;
+struct ObjStruct_021e1474;
+struct Save021557ac { unsigned char field_0[0x8c]; unsigned char bits[1]; };
+struct Item021557ac { unsigned int field_0; unsigned int field_4; unsigned int field_8; unsigned int flags; };
+extern "C" AllocationNode021557ac* func_ov011_021845f8(void*, int);
 extern "C" void* func_ov011_021849c8(void*);
 extern "C" void* func_ov023_021f6880(void*, int);
 extern "C" int func_ov023_021f6f10(void*);
-extern "C" void* func_0205ec34();
-extern "C" int func_020deb58(void*, int, int, int, int);
-extern "C" void* func_020dec30(void*, int, int, int, int, int);
+extern "C" Save021557ac* func_0205ec34();
+extern "C" int func_020deb58(Container020dedd0*, int, int, int, int);
+extern "C" Item021557ac* func_020dec30(Container020dedd0*, int, int, int, int, int);
 int TestBitInByteArray(int, unsigned char*, int);
-struct Record021557ac { unsigned int a, b, c, fieldC; };
-extern "C" void func_ov004_021545f0(Entry021557ac*, int, short, short, unsigned char, unsigned char);
-void ClearElements_021e1518(void*);
-struct ObjStruct_021e1474;
-struct Container020dedd0;
-void RefreshEntryStatusFlags_021e1474(ObjStruct_021e1474*, Container020dedd0*);
+extern "C" void _Z22ClearElements_021e1518Pv(void*);
+extern "C" void _Z32RefreshEntryStatusFlags_021e1474P18ObjStruct_021e1474P17Container020dedd0(ObjStruct_021e1474*, Container020dedd0*);
+extern Table021557ac* data_ov004_021707c4;
 
 class Node021557ac {
 public:
@@ -50,68 +37,65 @@ public:
     virtual void v48(); virtual void v49(); virtual void v50(); virtual void v51();
     virtual void v52(); virtual void v53(); virtual void v54(); virtual void v55();
     virtual void v56(); virtual void v57();
-    virtual Container020dedd0* Container();
-    virtual ObjStruct_021e1474* Entries();
+    virtual Container020dedd0* GetContainer();
+    virtual ObjStruct_021e1474* GetEntries();
 };
 
 // USA: func_ov004_021557ac
 extern "C" ARM int func_ov004_021557ac(void* self) {
-    void* allocator = func_ov011_021845f8(self, 0);
-    if (!allocator) return 0;
-    Selection021557ac* selection = (Selection021557ac*)((SafeAllocator*)((char*)allocator + 4))->Allocate(0x12);
-    data_ov004_021707c4 = selection;
-    if (!selection) return 0;
-    for (unsigned char i = 0; i < 2; ++i) {
-        selection->entries[i].kind = -1;
-        selection->entries[i].subkind = -1;
-        selection->entries[i].total = 0;
-        selection->entries[i].matched = 0;
+    AllocationNode021557ac* node = func_ov011_021845f8(self, 0);
+    if (!node) return 0;
+    Table021557ac* table = (Table021557ac*)node->allocator.Allocate(0x12);
+    data_ov004_021707c4 = table;
+    if (!table) return 0;
+    for (unsigned char index = 0; index < 2; index++) {
+        table->entries[index].category = -1;
+        table->entries[index].index = -1;
+        table->entries[index].total = 0;
+        table->entries[index].matched = 0;
     }
-    selection->total = 0;
-    selection->matched = 0;
-    selection->state = 0;
+    table->total = 0;
+    table->matched = 0;
+    table->side = 0;
     unsigned char index = 0;
-    short category;
-    Node021557ac* categoryNode;
-    long j;
+    short category = 8;
+    short i;
     short matched = 0;
     long total = 0;
-    for (category = 8; category <= 9; ++category, ++index) {
-        categoryNode = (Node021557ac*)func_ov023_021f6880(func_ov011_021849c8(self), 0x2d);
-        if (categoryNode && func_ov023_021f6f10(categoryNode) == 0x11) {
-            Container020dedd0* container = categoryNode->Container();
-            void* flags = func_0205ec34();
-            signed char kind = (signed char)category;
-            total = func_020deb58(container, 0, -1, kind, -1);
+    for (; category <= 9; category++, index++) {
+        Node021557ac* source = (Node021557ac*)func_ov023_021f6880(func_ov011_021849c8(self), 0x2d);
+        if (source && func_ov023_021f6f10(source) == 0x11) {
+            Container020dedd0* container = source->GetContainer();
+            Save021557ac* save = func_0205ec34();
+            total = func_020deb58(container, 0, -1, (signed char)category, -1);
             matched = 0;
-            for (j = 0; j < total; j = (short)(j + 1)) {
-                Record021557ac* record = (Record021557ac*)func_020dec30(container, j, 0, -1, kind, -1);
-                if (record) {
-                    int value = (record->fieldC << 9) >> 21;
-                    value = (unsigned short)value;
-                    if (value > 0 && TestBitInByteArray((int)flags, (unsigned char*)flags + 0x8c, value + 0xc76)) ++matched;
+            for (i = 0; i < total; i++) {
+                Item021557ac* item = func_020dec30(container, i, 0, -1, (signed char)category, -1);
+                if (item) {
+                    int id = (unsigned short)((item->flags << 9) >> 21);
+                    if (id > 0 && TestBitInByteArray((int)save, save->bits, id + 0x76 + 0xc00)) matched++;
                 }
             }
         }
-        Selection021557ac* data = data_ov004_021707c4;
-        data->entries[index].kind = category;
-        data->entries[index].subkind = -1;
-        data->entries[index].total = (unsigned char)total;
-        data->entries[index].matched = (unsigned char)matched;
+        table = data_ov004_021707c4;
+        table->entries[index].category = category;
+        table->entries[index].index = -1;
+        table->entries[index].total = total;
+        table->entries[index].matched = matched;
     }
-    Selection021557ac* totals = data_ov004_021707c4;
-    for (unsigned char i = 0; i < 2; ++i) {
-        Entry021557ac& entry = totals->entries[i];
-        totals->total += entry.total;
-        totals->matched += entry.matched;
+    Table021557ac* sumTable = data_ov004_021707c4;
+    for (unsigned char j = 0; j < 2; j++) {
+        Entry021557ac* entry = &sumTable->entries[j];
+        sumTable->total += entry->total;
+        sumTable->matched += entry->matched;
     }
-    Node021557ac* node = (Node021557ac*)func_ov023_021f6880(func_ov011_021849c8(self), 0x2d);
-    Node021557ac* list = (Node021557ac*)func_ov023_021f6880(func_ov011_021849c8(self), 0x39);
-    if (node && list) {
-        ObjStruct_021e1474* entries = list->Entries();
+    Node021557ac* source = (Node021557ac*)func_ov023_021f6880(func_ov011_021849c8(self), 0x2d);
+    Node021557ac* destination = (Node021557ac*)func_ov023_021f6880(func_ov011_021849c8(self), 0x39);
+    if (source && destination) {
+        ObjStruct_021e1474* entries = destination->GetEntries();
         if (entries) {
-            ClearElements_021e1518(entries);
-            RefreshEntryStatusFlags_021e1474(entries, node->Container());
+            _Z22ClearElements_021e1518Pv(entries);
+            _Z32RefreshEntryStatusFlags_021e1474P18ObjStruct_021e1474P17Container020dedd0(entries, source->GetContainer());
         }
     }
     return 0;

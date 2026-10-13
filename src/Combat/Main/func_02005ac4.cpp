@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 
 extern "C" ARM double func_0200ab28(double a, double b); // dadd
-extern "C" ARM double func_0200b608(double a, double b); // dsub
 extern "C" ARM double _ddiv(double a, double b);          // ddiv
 extern "C" ARM double func_02008f3c(double x);             // fabs
 extern "C" ARM double func_02008848(double x);              // atan
@@ -75,10 +74,8 @@ extern "C" ARM double func_02005ac4(double y, double x) {
             ((int*)&z)[1] = ((int*)&z)[1] ^ 0x80000000;
             return z;
         }
-        case 2: return func_0200b608(3.1415926535897931160e+00,
-                                      func_0200b608(z, 1.2246467991473531772e-16));
-        default: return func_0200b608(func_0200b608(z, 1.2246467991473531772e-16),
-                                       3.1415926535897931160e+00);
+        case 2: return ((3.1415926535897931160e+00) - (((z) - (1.2246467991473531772e-16))));
+        default: return ((((z) - (1.2246467991473531772e-16))) - (3.1415926535897931160e+00));
     }
 }
 #pragma optimize_for_size reset

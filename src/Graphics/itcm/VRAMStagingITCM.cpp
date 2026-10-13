@@ -2,6 +2,7 @@
 #include "System/VRAM.h"
 #include "System/LoadToVRAM.h"
 #include "System/Cache.h"
+#include "System/Memory.h"
 #include "System/Graphics.h"
 #include "Resource/ResourceMutex.h"
 #include "std_library_functions.h"
@@ -15,7 +16,6 @@
 #define data_020ee6e8 data_020ee7f4
 
 #define func_0205e57c func_0205f868
-#define _Z20ClearAndInit020d84f8Pvj func_020d9e5c
 #define _Z15GetByte0214e4a0v func_020da068
 
 #endif
@@ -29,8 +29,6 @@ extern "C"
     void func_0202b2f0(void*);
     void func_0205e57c(void*);
 
-    // zero memory and flush cache
-    void _Z20ClearAndInit020d84f8Pvj(void*, unsigned int);
 
     // gets a byte at 0x0214e4a0
     int _Z15GetByte0214e4a0v();
@@ -108,7 +106,7 @@ void VRAMStagingManager::ZeroInitialize()
     maybeMaxHistorialNumSize6_ = 0;
     maybeMaxHistoricalSize6MemoryUse_ = 0;
     stagedTaskCounter_ = 0;
-    _Z20ClearAndInit020d84f8Pvj(banksInUse_, 0x30);
+    ClearAndInit020d84f8(banksInUse_, 0x30);
     textureLockMask_ = 0;
     frameBufferIndex_ = 0;
 }

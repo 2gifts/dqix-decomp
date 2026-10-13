@@ -1,12 +1,11 @@
 #include "Filesystem/GPC.h"
+#include "System/Memory.h"
 #include <globaldefs.h>
 
 #pragma dont_inline on
 
 #if defined(jpn)
 #define _Z19ReturnFalse02075090PKc func_0207621c
-#define _Z20ClearAndInit020d84f8Pvj func_020d9e5c
-#define _Z23CopyRegionAndFlushCachePvPKvj func_020d9e88
 
 #define data_020f27e8 data_020f29a4
 #define data_020f27f0 data_020f29ac
@@ -23,10 +22,6 @@ extern "C"
     // memory? But now it just says no
     extern "C" int _Z19ReturnFalse02075090PKc(const char*);
 
-    // zero memory and flush
-    extern "C" void _Z20ClearAndInit020d84f8Pvj(void*, unsigned int);
-    // memcpy and flush
-    extern "C" void _Z23CopyRegionAndFlushCachePvPKvj(void*, const void*, unsigned int);
 }
 
 struct GPCImplementationData
@@ -164,7 +159,7 @@ bool LoadAndDecompressGPCHeaderAndInnerFileInfo(GPCFile **ppGPC, ExtendedNitroVM
         *pOutReadSuccessful = true;
 
     GPCFile::Header header;
-    _Z20ClearAndInit020d84f8Pvj(&header, sizeof(GPCFile::Header));
+    ClearAndInit020d84f8(&header, sizeof(GPCFile::Header));
     unsigned int desiredSignature = data_020f27c0.gpc2Signature;
     header.signature = desiredSignature;
     if (!machine.Read(&header, sizeof(GPCFile::Header)))
@@ -180,7 +175,7 @@ bool LoadAndDecompressGPCHeaderAndInnerFileInfo(GPCFile **ppGPC, ExtendedNitroVM
 
     if (rightAlignOutput)
         outputBuffer = (void*)((((int)outputBuffer + outputCapacity) & ~3) - longerLength);
-    _Z23CopyRegionAndFlushCachePvPKvj(outputBuffer, &header, sizeof(GPCFile::Header));
+    CopyRegionAndFlushCache(outputBuffer, &header, sizeof(GPCFile::Header));
     ((GPCFile::Header*)outputBuffer)->headerLength = 0;
     ((GPCFile::Header*)outputBuffer)->fileInfoLength = 0;
     unsigned int decompressProcOutputLength = 0;

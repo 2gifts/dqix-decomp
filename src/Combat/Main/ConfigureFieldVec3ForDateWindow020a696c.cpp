@@ -8,9 +8,7 @@ enum { kCodeOffset = 0x2786, kXTarget = 0x278c, kYTarget = 0x2790, kXSource = 0x
 
 extern "C" void* func_02012fe4(GameState* battleStruct);
 void* GetField0x3f8Address(GameState* battleStruct);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
-struct Vec3Target020a6aa4 { int x; int y; int z; };
-void SetVec3At0x0020a6aa4(struct Vec3Target020a6aa4* obj, int x, int y, int z);
+void SetVec3At0x0020a6aa4(Vector3i* obj, int x, int y, int z);
 
 // USA: func_020a696c
 ARM void ConfigureFieldVec3ForDateWindow(void* unused0, int value1, int value2) {
@@ -28,11 +26,11 @@ ARM void ConfigureFieldVec3ForDateWindow(void* unused0, int value1, int value2) 
                 case 0:
                 case 1:
                 {
-                    int localBuf[3];
+                    Vector3i localBuf;
                     int code = 0x170c;
                     *(unsigned short*)fieldPtr = code;
-                    SetVec3At0x0020a6aa4((struct Vec3Target020a6aa4*)localBuf, -0x7000, code >> 3, 0x5e66);
-                    _ZN8Vector3iaSERKS_((int*)((char*)fieldPtr + 0x10), localBuf);
+                    SetVec3At0x0020a6aa4(&localBuf, -0x7000, code >> 3, 0x5e66);
+                    *reinterpret_cast<Vector3i*>((char*)fieldPtr + 0x10) = localBuf;
                     p[0x7] = 1;
                     break;
                 }

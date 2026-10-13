@@ -10,9 +10,9 @@ struct CombatantStatus02162cbc {
     unsigned short b1e : 2;
     unsigned short b1d : 4;
 
-    unsigned int GetFlags() { unsigned int f = flags; return f; }
-    unsigned char GetB1d() { unsigned char v = b1d; return v; }
-    unsigned char GetB1e() { unsigned char v = b1e; return v; }
+    unsigned int GetFlags() { return flags; }
+    unsigned char GetB1d() { return b1d; }
+    unsigned char GetB1e() { return b1e; }
 };
 
 struct Combatant02162cbc {
@@ -47,7 +47,6 @@ extern "C" ARM void func_ov000_02162cbc(Battle02162cbc* self) {
         _Z30ClearSubFlag56IfActive02049efcP11Obj02049efc((struct Obj02049efc*)c);
         if (c->status->flags & 1) continue;
         c->fieldC1 &= ~0xf0;
-        CombatantStatus02162cbc* st = c->status;
-        func_ov000_02162dc4(self, NULL, c, st->GetFlags(), st->GetB1d(), st->GetB1e(), 0, 0);
+        func_ov000_02162dc4(self, NULL, c, c->status->GetFlags(), c->status->GetB1d(), c->status->GetB1e(), 0, 0);
     }
 }

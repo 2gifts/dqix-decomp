@@ -36,7 +36,7 @@ void _Z22PopulateEntry_0215ccbciP17OutStruct0215ccbcP10GameObjectsssiih(void*,Ou
 struct Root0215bf5c { char p[0x8e00]; unsigned char count0,count1,count2; char q[0x21]; int workCount; };
 
 static inline GameObject* ResolveUnit0215bf5c(int id) { return GameState::GetInstance()->GetCombatantByIndex(id); }
-static inline int GetCount0215bf5c(Node0215bf5c* node) { int count=node->count28;return count; }
+static inline int GetCount0215bf5c(Node0215bf5c* node) { return node->count28; }
 
 // USA: func_ov000_0215bf5c
 extern "C" ARM void func_ov000_0215bf5c(Root0215bf5c* self,List02160094* list) {

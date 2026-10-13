@@ -3,9 +3,13 @@
 #if defined(jpn)
 #define AllocateNameBuffer02026b0c func_02026470
 #endif
-#include "Memory/SafeAllocator.h"
+#include "Resource/GameResources.h"
 
-extern "C" int func_ov017_0218b5b0(void);
+
+struct NameEntry02026b0c {
+    short id;
+    char name[24];
+};
 
 struct Obj02026b0c {
     #if defined(jpn)
@@ -15,7 +19,7 @@ struct Obj02026b0c {
 #endif
     unsigned char count;
     unsigned char pad2;
-    void* buffer;
+    NameEntry02026b0c* entries;
 };
 
 #if defined(jpn)
@@ -24,8 +28,8 @@ extern "C" ARM void func_02026470(struct Obj02026b0c* p, int n);
 
 // USA: func_02026b0c
 ARM void AllocateNameBuffer02026b0c(struct Obj02026b0c* p, int n) {
-    int base = func_ov017_0218b5b0();
-    SafeAllocator* alloc = (SafeAllocator*)(base + 0x128);
+    GameResources* resources = func_ov017_0218b5b0();
+    SafeAllocator* alloc = &resources->allocator_array_38[12];
     p->count = n;
-    p->buffer = alloc->Allocate((n & 0xff) * 0x1a);
+    p->entries = static_cast<NameEntry02026b0c*>(alloc->Allocate((n & 0xff) * sizeof(NameEntry02026b0c)));
 }

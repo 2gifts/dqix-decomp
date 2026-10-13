@@ -1,5 +1,5 @@
 #include <globaldefs.h>
-struct BaseStats {char p[0x34];unsigned short first,second;int First(){int v=first;return v;}int Second(){int v=second;return v;}};
+struct BaseStats {char p[0x34];unsigned short first,second;int First(){ return first; }int Second(){ return second; }};
 struct Actor {unsigned int zero;unsigned int value:10,rest:22;};
 struct GameObject {char p[0x134];BaseStats* base;void* stats;
 #if defined(jpn)

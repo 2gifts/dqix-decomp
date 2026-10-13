@@ -58,7 +58,7 @@ extern "C" int _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(Grid021f9b30* se
 extern "C" void func_ov023_021f9ba8(Grid021f9b30* grid, int v);
 extern "C" void* func_ov004_02156f6c(void* obj, int kind);
 extern "C" void func_ov023_021f809c(void* node, void* obj);
-extern "C" void* _Z24CheckThenNotify_02157088v(void* obj, int key);
+extern "C" void* _Z24CheckThenNotify_02157088Pvi(void* object, int key);
 extern "C" void func_ov023_021dcae0(void* obj, int v);
 
 // USA: func_ov004_0215a31c
@@ -144,7 +144,7 @@ extern "C" ARM int func_ov004_0215a31c(void* obj) {
     func_ov023_021f9ba8(grid, 0);
     void* list = func_ov004_02156f6c(obj, 0x17);
     if (list) func_ov023_021f809c(list, obj);
-    void* notified = _Z24CheckThenNotify_02157088v(obj, 7);
+    void* notified = _Z24CheckThenNotify_02157088Pvi(obj, 7);
     if (notified) func_ov023_021dcae0(notified, -1);
     return 0;
 }

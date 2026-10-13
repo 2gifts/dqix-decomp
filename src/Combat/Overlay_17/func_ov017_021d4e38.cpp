@@ -61,7 +61,6 @@ extern "C" void func_0200159c(int code) __attribute__((noreturn));
 extern "C" void func_02001878(void* text);
 // Spelled as an explicit call because mwcc's implicit float->double conversion binds `_f2d`,
 // which this ROM does not export under that name.
-extern "C" double func_0200c578(float v);
 extern "C" float _d2f(double v);
 extern "C" double func_02009424(double v);
 extern "C" double func_02008dcc(double v);
@@ -361,9 +360,9 @@ extern "C" ARM void func_ov017_021d4e38(Interp021d4e38* self, Instr021d4e38* sta
 		case 29:
 			rhs = Pop(self);
 			if (rhs.type == 0) {
-				PushFloat(self, _d2f(func_02009424(func_0200c578((float)rhs.i))));
+				PushFloat(self, _d2f(func_02009424((double)((float)rhs.i))));
 			} else if (rhs.type == 1) {
-				PushFloat(self, _d2f(func_02009424(func_0200c578(rhs.f))));
+				PushFloat(self, _d2f(func_02009424((double)(rhs.f))));
 			} else {
 				func_0200159c(-1);
 			}
@@ -372,9 +371,9 @@ extern "C" ARM void func_ov017_021d4e38(Interp021d4e38* self, Instr021d4e38* sta
 		case 30:
 			rhs = Pop(self);
 			if (rhs.type == 0) {
-				PushFloat(self, _d2f(func_02008dcc(func_0200c578((float)rhs.i))));
+				PushFloat(self, _d2f(func_02008dcc((double)((float)rhs.i))));
 			} else if (rhs.type == 1) {
-				PushFloat(self, _d2f(func_02008dcc(func_0200c578(rhs.f))));
+				PushFloat(self, _d2f(func_02008dcc((double)(rhs.f))));
 			} else {
 				func_0200159c(-1);
 			}

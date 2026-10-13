@@ -5,13 +5,13 @@
 #include "System/Graphics.h"
 
 struct MainBgControlBackup02074af4 {
-    volatile unsigned short savedBg0Cnt;
+    unsigned short savedBg0Cnt;
     char pad2[2];
-    volatile unsigned short savedBg1Cnt;
+    unsigned short savedBg1Cnt;
     char pad6[2];
-    volatile unsigned short savedBg2Cnt;
+    unsigned short savedBg2Cnt;
     char padA[2];
-    volatile unsigned short savedBg3Cnt;
+    unsigned short savedBg3Cnt;
     char padE[2];
     unsigned char initialized;
     unsigned char field11;

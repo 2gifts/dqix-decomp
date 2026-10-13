@@ -1,32 +1,41 @@
 #include <globaldefs.h>
-#include "Memory/SafeAllocator.h"
+#include "World/Zone3D.h"
+#include "World/ZoneFeatures.h"
+#include "Filesystem/FileIO.h"
 
-void InitStruct02013454(char* obj);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
-void* DecompressLZ77FileIntoScratchSpace(SafeAllocator& alloc, const void* src, unsigned int& outSize);
+void InitStruct02013454(char*);
 struct StreamHeader;
-void RegisterAndRunBufferedScript0201f040(void* p0, void* p1, struct StreamHeader* headerIn, unsigned int countIn);
+void RegisterAndRunBufferedScript0201f040(void*, void*, StreamHeader*, unsigned int);
+
+struct BmdjScriptNode {
+    int unknown0;
+    unsigned char scriptState[0x3c];
+    int unknown40;
+    int unknown44;
+    Vector3i position;
+    BmdjScriptNode* next;
+};
 
 #if defined(jpn)
 #define _ZN6Zone3D15ProcessBMDJFileEPKvjPN12ZoneFeatures13Opcode64EntryE func_020146cc
-enum { kAllocatorOffset = 0x88, kListOffset = 0x43c };
-#else
-enum { kAllocatorOffset = 0x68, kListOffset = 0x41c };
 #endif
 
-// USA: func_02014900  (semantic: AllocateAndRunScript02014900)
-extern "C" ARM int _ZN6Zone3D15ProcessBMDJFileEPKvjPN12ZoneFeatures13Opcode64EntryE(char* obj, const void* src, void* unused, int* pack) {
-    SafeAllocator* alloc = *(SafeAllocator**)(obj + kAllocatorOffset);
-    char* newObj = (char*)alloc->Allocate(0x58);
-    if (!newObj) return 0;
-    InitStruct02013454(newObj);
-    *(int*)(newObj + 0x0) = pack[0];
-    _ZN8Vector3iaSERKS_((int*)(newObj + 0x48), pack + 1);
-    unsigned int count;
-    void* data = DecompressLZ77FileIntoScratchSpace(*alloc, src, count);
-    if (!data) return 0;
-    RegisterAndRunBufferedScript0201f040(newObj + 4, alloc, (struct StreamHeader*)data, count);
-    *(int*)(newObj + 0x54) = *(int*)(obj + kListOffset);
-    *(int*)(obj + kListOffset) = (int)newObj;
+// USA: func_02014900
+// KEEP-NAME: exported Zone3D member ABI, with an explicit receiver here.
+extern "C" ARM int _ZN6Zone3D15ProcessBMDJFileEPKvjPN12ZoneFeatures13Opcode64EntryE(
+    Zone3D* zone, const void* source, unsigned int sourceLength, ZoneFeatures::Opcode64Entry* entry) {
+    SafeAllocator* allocator = zone->pAllocator_68_;
+    BmdjScriptNode* node = static_cast<BmdjScriptNode*>(allocator->Allocate(sizeof(BmdjScriptNode)));
+    if (node == NULL) return 0;
+    InitStruct02013454(reinterpret_cast<char*>(node));
+    node->unknown0 = entry->unk_0;
+    node->position = entry->vector_4.vec;
+    unsigned int scriptLength;
+    void* script = DecompressLZ77FileIntoScratchSpace(*allocator, source, scriptLength);
+    if (script == NULL) return 0;
+    RegisterAndRunBufferedScript0201f040(node->scriptState, allocator,
+                                        static_cast<StreamHeader*>(script), scriptLength);
+    node->next = static_cast<BmdjScriptNode*>(zone->firstBMDJStruct_41c_);
+    zone->firstBMDJStruct_41c_ = node;
     return 1;
 }

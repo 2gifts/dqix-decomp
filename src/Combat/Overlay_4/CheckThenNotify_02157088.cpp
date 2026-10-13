@@ -1,10 +1,11 @@
 #include <globaldefs.h>
 
-extern "C" int func_ov004_02157054(void);
-extern "C" int func_ov023_021fbdec(void);
+extern "C" void* func_ov004_02157054(void* object, int key);
+extern "C" void* func_ov023_021fbdec(void* node);
 
 // USA: func_ov004_02157088
-ARM int CheckThenNotify_02157088(void) {
-    if (func_ov004_02157054() == 0) return 0;
-    return func_ov023_021fbdec();
+ARM void* CheckThenNotify_02157088(void* object, int key) {
+    void* node = func_ov004_02157054(object, key);
+    if (!node) return NULL;
+    return func_ov023_021fbdec(node);
 }

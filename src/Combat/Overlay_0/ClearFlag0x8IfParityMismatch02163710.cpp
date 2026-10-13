@@ -28,6 +28,5 @@ ARM void ClearFlagIfParityMismatch02163710_02163710(void* obj, int flag) {
         }
     }
     func_02019678((char*)obj + effectsOffset, 1);
-    volatile unsigned char* p = (unsigned char*)obj + flagsOffset;
-    *p = *p & ~8;
+    ((struct Flags0951_02163710*)((unsigned int)obj + flagsOffset))->bit3 = 0;
 }

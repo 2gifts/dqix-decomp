@@ -2,9 +2,8 @@
 #include <std_library_functions.h>
 #include <System/Cache.h>
 #include <System/LoadToVRAM.h>
+#include "Resource/FontGlyphTable.h"
 
-struct Table020429e4;
-extern "C" char* func_02042a50(Table020429e4* table, char* key);
 extern unsigned char data_020fe9ac[32];
 
 // USA: func_0202ab34
@@ -12,7 +11,7 @@ extern "C" ARM void func_0202ab34(void* data, int count, int tileIndex) {
     char key[3] = {};
     memcpy(key, data, 2);
     for (int i = 0; i < count; i++) {
-        unsigned char* glyph = (unsigned char*)func_02042a50((Table020429e4*)8, key);
+        unsigned char* glyph = (unsigned char*)func_02042a50(8, key);
         if (glyph != NULL) {
             unsigned char* destination = data_020fe9ac;
             memset(destination, 0, 32);

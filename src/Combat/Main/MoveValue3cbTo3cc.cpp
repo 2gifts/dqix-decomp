@@ -1,26 +1,47 @@
 #include <globaldefs.h>
 
+struct CopyPayload {
 #if defined(jpn)
-enum { kSecondBank = 0x80, kByteA = 0x13b, kByteB = 0x13c, kFlags = 0x13d };
+    char data[11];
 #else
-enum { kSecondBank = 0x1a0, kByteA = 0x3cb, kByteB = 0x3cc, kFlags = 0x3cd };
+    char data[48];
 #endif
+};
+struct CopyableRecord {
+    CopyPayload payload;
+#if defined(jpn)
+    unsigned char byte11;
+#endif
+    short f30;
+    signed char f32;
+    unsigned char f33;
+};
+
+struct NamedRequestQueue {
+    CopyableRecord active[8];
+    CopyableRecord saved[8];
+#if defined(jpn)
+    char unknown100[0x13b - 0x100];
+#else
+    char unknown340[0x3cb - 0x340];
+#endif
+    signed char activeCount;
+    signed char savedCount;
+    unsigned char flags;
+};
+
 #if defined(jpn)
 #define func_02093ad8 func_02094400
-#endif
-
-
-extern "C" void func_02093ad8(char* a, char* b, char* c, int d);
-
-#if defined(jpn)
 #define MoveValue3cbTo3cc func_02094380
-extern "C" ARM void func_02094380(char* obj);
+extern "C" ARM void func_02094380(char*);
 #endif
+extern "C" void func_02093ad8(void*, CopyableRecord* source, CopyableRecord* destination, int count);
 
-// USA: func_02093a58
-ARM void MoveValue3cbTo3cc(char* obj) {
-    func_02093ad8(obj, obj, obj + kSecondBank, obj[kByteA]);
-    obj[kByteB] = obj[kByteA];
-    obj[kByteA] = 0;
-    ((unsigned char*)obj)[kFlags] &= ~4;
+
+ARM void MoveValue3cbTo3cc(char* storage) {
+    NamedRequestQueue* queue = reinterpret_cast<NamedRequestQueue*>(storage);
+    func_02093ad8(queue, queue->active, queue->saved, queue->activeCount);
+    queue->savedCount = queue->activeCount;
+    queue->activeCount = 0;
+    queue->flags &= ~4;
 }

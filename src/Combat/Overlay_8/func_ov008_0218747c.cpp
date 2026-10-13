@@ -1,8 +1,8 @@
+#include "GameState/BattleRecordSnapshot.h"
 #include <globaldefs.h>
 #include <GameState/GameState.h>
 
-struct PlayClock020ac644 { unsigned short hours; unsigned char minutes; unsigned char seconds; };
-struct ClockTotals { char pad[0x3c]; PlayClock020ac644 clocks[2]; };
+struct ClockTotals { char pad[0x3c]; BattleRecordPlayClock clocks[2]; };
 #if defined(jpn)
 enum { totalsOffset = 0x72c4, displayPadding = 0x14 };
 #else
@@ -18,35 +18,34 @@ struct PlayTimeDisplay {
     char pad2[displayPadding];
     int disabled;
     char pad3[8];
-    PlayClock020ac644 clocks[2];
+    BattleRecordPlayClock clocks[2];
 };
 struct SearchClock { char pad[0x100d]; unsigned char count; };
 struct TimeStamp020103f0;
 struct TimeStamp020104cc;
 struct _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598;
-struct PlayClock020ac614;
 extern "C" void _Z33ComputeElapsedPlayTimeHMS020103f0P17TimeStamp020103f0PtPhS2_(TimeStamp020103f0*, unsigned short*, unsigned char*, unsigned char*);
 extern "C" SearchClock* func_0202ae18();
 int GetFieldAt0x0(int*);
 extern "C" void _Z33ComputeElapsedPlayTimeHMS020104ccP17TimeStamp020104ccPtPhS2_(TimeStamp020104cc*, unsigned short*, unsigned char*, unsigned char*);
 extern "C" void _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598(struct _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598*);
-extern "C" void _Z25AddPlayClockHours020ac614P17PlayClock020ac614i(PlayClock020ac614*, int);
-extern "C" void _Z27AddPlayClockMinutes020ac644P17PlayClock020ac644i(PlayClock020ac644*, int);
-static inline ClockTotals* GetTotals(GameState* game) { ClockTotals* value = &((GameClockTotals*)game)->totals; return value; }
+void AddPlayClockHours020ac614(BattleRecordPlayClock*, int);
+void AddPlayClockMinutes020ac644(BattleRecordPlayClock*, int);
+static inline ClockTotals* GetTotals(GameState* game) { return &((GameClockTotals*)game)->totals; }
 
 // USA: func_ov008_0218747c
 extern "C" ARM void func_ov008_0218747c(PlayTimeDisplay* display, int mode) {
     if (display->disabled) return;
     if (display->state == 12 && display->phase < 6) return;
     GameState* game = GameState::GetInstance();
-    PlayClock020ac644* output = 0;
+    BattleRecordPlayClock* output = 0;
     ClockTotals* totals = GetTotals(game);
-    PlayClock020ac644* saved = 0;
+    BattleRecordPlayClock* saved = 0;
     unsigned short hours = 0;
     unsigned char minutes = 0;
     unsigned char seconds = 0;
-    PlayClock020ac644* singlePlayerSaved = &totals->clocks[0];
-    PlayClock020ac644* multiplayerSaved = singlePlayerSaved + 1;
+    BattleRecordPlayClock* singlePlayerSaved = &totals->clocks[0];
+    BattleRecordPlayClock* multiplayerSaved = singlePlayerSaved + 1;
     if (mode == 0) {
         output = &display->clocks[0];
         saved = singlePlayerSaved;
@@ -68,8 +67,8 @@ extern "C" ARM void func_ov008_0218747c(PlayTimeDisplay* display, int mode) {
     if (!output || !saved) return;
     unsigned char previousMinutes = output->minutes;
     _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598((struct _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598*)output);
-    _Z25AddPlayClockHours020ac614P17PlayClock020ac614i((PlayClock020ac614*)output, (unsigned short)(saved->hours + hours));
-    _Z27AddPlayClockMinutes020ac644P17PlayClock020ac644i(output, (unsigned char)(saved->minutes + minutes));
+    AddPlayClockHours020ac614(output, (unsigned short)(saved->hours + hours));
+    AddPlayClockMinutes020ac644(output, (unsigned char)(saved->minutes + minutes));
     output->seconds += (unsigned char)(saved->seconds + seconds);
     unsigned char total = output->seconds;
     if (total > 59) {
@@ -79,7 +78,7 @@ extern "C" ARM void func_ov008_0218747c(PlayTimeDisplay* display, int mode) {
             output->minutes = 59;
             output->seconds = 59;
         } else {
-            _Z27AddPlayClockMinutes020ac644P17PlayClock020ac644i(output, carryMinutes);
+            AddPlayClockMinutes020ac644(output, carryMinutes);
             output->seconds %= 60;
         }
     }

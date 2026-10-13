@@ -10,8 +10,11 @@
 #include <Combat/Main/BattleList.h>
 #include <Resource/GameResources.h>
 
+struct Element020e0310;
 struct Container020e0310 {
-    char pad[0x40];
+    unsigned int count : 12;
+    unsigned int flags : 20;
+    Element020e0310* entries;
 };
 
 extern "C" void* _Z26GetGlobalField0x1c020421a0v();
@@ -24,11 +27,6 @@ extern "C" short _Z20GetTableByte0215a930Pvi(void* obj, int index);
 extern "C" void _Z31DispatchIfCountPositive020dcf7ciPv(int count, void* buf);
 extern "C" char* _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310* c, int key);
 extern "C" void func_02046608(void* a, unsigned char b, const char* c, char* d, int e, int f, unsigned char g);
-
-struct Res3000 {
-    char pad[LOW_REGION(0x4f8, 0x708)];
-    int* ptr708;
-};
 
 struct CombatantTail {
     char pad[LOW_REGION(0x4f8, 0x4fc)];
@@ -64,12 +62,25 @@ struct Buffers_02158b3c {
     char bufB_[0x80];
 };
 
+struct EquipmentSlot {
+    short item;
+    signed char count;
+    unsigned char equipped;
+    void* vramState;
+    void* model;
+    int x;
+    int y;
+    int offset;
+    short loadedItem;
+};
+
 struct Menu_02158b3c {
     char pad00_[0xdf8];
-    Container020e0310* container_;
-    char pad0dfc_[LOW_REGION(0x2d08, 0x2d90) - 0xdfc];
-    char grid_[LOW_REGION(0x3d33, 0x3dbb) - LOW_REGION(0x2d08, 0x2d90)];
-    signed char page_;
+    Container020e0310 messages;
+    char padAfterMessages[LOW_REGION(0x2d08, 0x2d90) - 0xdf8 - sizeof(Container020e0310)];
+    EquipmentSlot slots[24];
+    char unknownAfterSlots[0x3dbb - 0x3030];
+    signed char selectedSlot;
     unsigned char kind_;
     char pad0dbd_[LOW_REGION(0x3d44, 0x3dcc) - LOW_REGION(0x3d35, 0x3dbd)];
     unsigned int flags_;
@@ -89,9 +100,9 @@ extern "C" ARM int func_ov005_02158b3c(void* object, void* buffer) {
     func_02046380(g);
     GameState* game = GameState::GetInstance();
 #if defined(jpn)
-    int id = ((CombatantTail*)_Z19GetField1c_021a193cPi(((Res3000*)((char*)func_ov017_0218b5b0() + 0x3000))->ptr708))->index;
+    int id = ((CombatantTail*)_Z19GetField1c_021a193cPi((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]))->index;
 #else
-    CombatantTail* tail = (CombatantTail*)_Z19GetField1c_021a193cPi(((Res3000*)((char*)func_ov017_0218b5b0() + 0x3000))->ptr708);
+    CombatantTail* tail = (CombatantTail*)_Z19GetField1c_021a193cPi((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
     int id = tail->index;
 #endif
     Combatant_02158b3c* combatant = (Combatant_02158b3c*)GetCombatantWithFlag0x100(game, id);
@@ -130,8 +141,8 @@ extern "C" ARM int func_ov005_02158b3c(void* object, void* buffer) {
         }
         menu->flags_ &= ~0x8000;
     } else {
-        signed char page = menu->page_;
-        short value = *(short*)((char*)object + LOW_REGION(0x2d08, 0x2d90) + page * 0x1c);
+        signed char slot = menu->selectedSlot;
+        short value = menu->slots[slot].item;
 #if defined(jpn)
         char name[0x40];
         __clear(name, 0x40);
@@ -145,7 +156,7 @@ extern "C" ARM int func_ov005_02158b3c(void* object, void* buffer) {
 
     int w = 0xe3;
     unsigned char sel = menu->sel_;
-    int v = w - 0xe4;
+    int v = -1;
     if (sel <= 7) w = 0xb4;
     switch (sel) {
     case 0: break;
@@ -166,7 +177,7 @@ extern "C" ARM int func_ov005_02158b3c(void* object, void* buffer) {
     }
 
     if (v >= 0) {
-        sprintf((char*)buffer, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&menu->container_, v));
+        sprintf((char*)buffer, _Z21GetFieldByKey020e0434P17Container020e0310i(&menu->messages, v));
     }
 #if !defined(jpn)
     char text[0x800];

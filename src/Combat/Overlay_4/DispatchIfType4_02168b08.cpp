@@ -11,10 +11,11 @@ extern "C" int func_ov023_021f6f10(void* self);
 #else
 int ScaleStatsIfType12_021f6f10(void* self);
 #endif
-extern "C" int func_ov023_021fa598(void*);
+struct TableA68;
+extern "C" void* func_ov023_021fa598(void*);
 
 // USA: func_ov004_02168b08  (semantic: DispatchIfType4_02168b08)
-extern "C" ARM int func_ov004_02168b08(void* a, int key) {
+extern "C" ARM TableA68* func_ov004_02168b08(void* a, int key) {
     void* node = func_ov023_021f6880(func_ov011_021849c8(a), key);
     if (!node) goto ret0;
 #if defined(jpn)
@@ -22,7 +23,7 @@ extern "C" ARM int func_ov004_02168b08(void* a, int key) {
 #else
     if (ScaleStatsIfType12_021f6f10(node) != 0x4) goto ret0;
 #endif
-    return func_ov023_021fa598(node);
+    return (TableA68*)func_ov023_021fa598(node);
 ret0:
     return 0;
 }

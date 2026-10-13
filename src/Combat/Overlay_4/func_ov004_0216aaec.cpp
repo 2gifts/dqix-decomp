@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 
 #if defined(jpn)
-#define func_ov004_0216aaec func_ov004_0216ad60
 enum { kTextBytes = 0x800, kPanelOffset = 9 };
 #define data_ov004_02170138 data_ov004_021708a4
 #define func_02046608 func_020474a8
@@ -22,7 +21,7 @@ struct IdList0216aaec {
 
 struct Ctx0216aaec {
     char pad[0x8c];
-    unsigned char bits[1];
+    unsigned char bits[0x234];
 };
 
 struct Allocated0216aaec {
@@ -40,7 +39,7 @@ struct StoreStruct;
 struct ToggleState;
 struct SetFlagStruct;
 
-extern "C" struct Ctx0216aaec* func_0205ec34(void);
+extern "C" void* func_0205ec34(void);
 int TestBitInByteArray(int unused, unsigned char* arr, int index);
 int GetField5cbcValue(char* state);
 extern "C" struct Allocated0216aaec* func_ov011_021845f8(void* ctx, int v);
@@ -71,7 +70,7 @@ extern struct IdList0216aaec data_ov004_02170138;
 // USA: func_ov004_0216aaec
 extern "C" ARM int func_ov004_0216aaec(void* a) {
     GameState* state = GameState::GetInstance();
-    struct Ctx0216aaec* ctx = func_0205ec34();
+    struct Ctx0216aaec* ctx = (struct Ctx0216aaec*)func_0205ec34();
     struct IdList0216aaec list = data_ov004_02170138;
     unsigned char count = 0;
     int i;

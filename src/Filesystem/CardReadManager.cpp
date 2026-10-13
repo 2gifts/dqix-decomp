@@ -262,7 +262,7 @@ extern "C" void ReadBlocksFromCartridge(Struct_02111f20* handler)
         if (practicalWriteLoc == (unsigned int*)readManager->writeDst)
         {
             unsigned int remainingLength;
-            volatile CardReadManager* manager = &data_021118e0;
+            CardReadManager* manager = &data_021118e0;
             manager->cartridgeReadOffset += 0x200;
             manager->writeDst += 0x200;
             remainingLength = manager->writeLength - 0x200;

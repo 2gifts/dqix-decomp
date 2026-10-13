@@ -1,29 +1,8 @@
 #include <globaldefs.h>
 
-struct SafeAllocator {
-    void* Allocate(unsigned int len);
-    void Reset();
-};
-
-struct BackgroundLoader {
-    static BackgroundLoader* GetInstance();
-#if defined(jpn)
-    int QueueLoadFile(const char* path, SafeAllocator* alloc);
-#endif
-    int QueueLoadFileInGP2(const char* gp2, const char* innerFile, SafeAllocator* alloc);
-    int GetTaskStatus(int taskID);
-    void GetLoadedFileByID(int taskID, void** outPtr, unsigned int* outLength);
-    void RemoveTask(int taskID);
-};
-
-struct GrottoStruct {
-    unsigned char unknown_0[5];
-};
-
-struct GameState {
-    static GameState* GetInstance();
-    GrottoStruct* GetGrottoStruct();
-};
+#include "Memory/SafeAllocator.h"
+#include "Filesystem/BackgroundLoader.h"
+#include "GameState/GameState.h"
 
 struct Struct0205a198;
 struct ClearTarget0205a234;

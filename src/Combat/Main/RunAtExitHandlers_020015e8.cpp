@@ -21,6 +21,8 @@ struct HandlerList020015e8 {
     void (*finalizer)();
     int unk4;
     int count;
+    int unkc;
+    void (*funcs[64])();
 };
 
 extern int data_020f2fb8;
@@ -28,7 +30,6 @@ extern ThreadTable020015e8 data_02111304;
 extern int data_020f2f70;
 extern int data_020f2f94;
 extern HandlerList020015e8 data_020f2e60;
-extern void (* volatile data_020f2e70[])();
 
 // USA: func_020015e8  (semantic: RunAtExitHandlers_020015e8)
 extern "C" ARM void func_020015e8() {
@@ -50,7 +51,7 @@ extern "C" ARM void func_020015e8() {
     if (data_020f2e60.count > 0) {
         do {
             int next = *(volatile int*)&data_020f2e60.count - 1;
-            void (*handler)() = data_020f2e70[next];
+            void (*handler)() = data_020f2e60.funcs[next];
             data_020f2e60.count = next;
             handler();
         } while (data_020f2e60.count > 0);

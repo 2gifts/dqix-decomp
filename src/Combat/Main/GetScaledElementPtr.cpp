@@ -1,17 +1,17 @@
 #include <globaldefs.h>
 
 struct ScaledElementList0204aa28 {
-    char* base;         // 0x0
-    short index;        // 0x4
-    char pad[4];        // 0x6..0x9
-    unsigned char flag; // 0xa
+    unsigned int baseOffset;
+    short firstTile;
+    char unknown6[4];
+    unsigned char uses64ByteTiles;
 };
 
 // USA: func_0204aa28
-ARM void* GetScaledElementPtr(struct ScaledElementList0204aa28* list) {
-    int shift = 5;
-    if (list->flag) {
-        shift = 6;
+ARM unsigned int GetScaledElementPtr(struct ScaledElementList0204aa28* layout) {
+    int tileShift = 5;
+    if (layout->uses64ByteTiles) {
+        tileShift = 6;
     }
-    return list->base + (list->index << shift);
+    return layout->baseOffset + (layout->firstTile << tileShift);
 }

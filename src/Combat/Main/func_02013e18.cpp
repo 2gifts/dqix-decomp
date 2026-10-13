@@ -25,7 +25,6 @@ extern "C" {
     int _ZN6Zone3D14UnpackATS_AMBLEv(void*);
     int _ZN6Zone3D13UnpackMapAMDJEv(void*);
     int _Z29AccumulateHandleStats0201498cPv(void*);
-    long long _s32_div_f(int, int);
     int func_02019728(void*, int, void*, void*, void*);
     int func_0201a600(void*);
     void func_02017a94(Zone3D*);
@@ -61,11 +60,11 @@ extern "C" ARM int func_02013e18(Zone3D* zone)
     if (!_Z29AccumulateHandleStats0201498cPv(zone))
         return 0;
 
-    int v = *(unsigned short*)zone->pUnknownStruct_8_;
+    int v = zone->pUnknownStruct_8_->unknown_0_;
 
     if (_Z17IsInRange0201b5b0i(v))
     {
-        func_02019728(zone, (int)(_s32_div_f(v, 0x14) >> 32), 0, 0, 0);
+        func_02019728(zone, v % 20, 0, 0, 0);
         func_0201a600(zone);
     }
     else if (_Z22IsValueInRange0201b5d8i(v))

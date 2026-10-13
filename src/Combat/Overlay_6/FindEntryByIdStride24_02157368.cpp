@@ -22,9 +22,8 @@ extern "C" ARM struct Entry02157368* func_ov006_02157368(struct List02157368* li
     if (count == 0) {
         return 0;
     }
-    struct Entry02157368* e;
     for (unsigned short i = 0; i < count; i++) {
-        e = &arr[(unsigned int)i];
+        struct Entry02157368* e = &arr[i];
         if (e->id == id) {
             return e;
         }

@@ -29,7 +29,6 @@ extern "C" ARM void func_0204ae7c(struct Tilemap0204ae44* obj, short palette, sh
             p++;
             x = x + 1;
         }
-        y = y;
         y += 1;
     }
 }

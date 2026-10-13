@@ -1,5 +1,7 @@
 #include <globaldefs.h>
-static inline unsigned long ReadDisplay(volatile unsigned int* p) { unsigned long value = *p; return value; }
+#include "System/Graphics.h"
+
+static inline unsigned long ReadDisplay(volatile unsigned int* p) { return *p; }
 static inline void WriteDisplay(volatile unsigned int* p, unsigned int value) { *p = value; }
 
 
@@ -155,41 +157,40 @@ extern "C" ARM void func_ov021_0218b5fc(Battle0218b5fc* self) {
     MapVRAMBanksToMainBG(0x10);
     MapVRAMBanksToSubBG(4);
     MapVRAMBanksToMainObj(0x20);
-    unsigned int display = ReadDisplay((volatile unsigned int*)0x4000000);
+    unsigned int display = ReadDisplay(&DISPCNT);
 #if defined(jpn)
     display = (display & 0xffcfffef) | 0x10;
 #else
     display &= 0xffcfffef;
     display |= 0x10;
 #endif
-    WriteDisplay((volatile unsigned int*)0x4000000, display);
+    WriteDisplay(&DISPCNT, display);
     MapVRAMBanksToSubObj(8);
-    *(volatile unsigned int*)0x4001000 = (*(volatile unsigned int*)0x4001000 & 0xffcfffef) | 0x10;
+    DISPCNTSUB = (DISPCNTSUB & 0xffcfffef) | 0x10;
     UpdateVRAMStagingVRAMBanks();
     UnlockStagedTextureVRAMCopying();
-    display = ReadDisplay((volatile unsigned int*)0x4000000);
+    display = ReadDisplay(&DISPCNT);
     display = (display & ~0x1f00) | 0x1f00;
-    WriteDisplay((volatile unsigned int*)0x4000000, display);
+    WriteDisplay(&DISPCNT, display);
     _Z30SetDispcntModeAndFlags020c391ciii(1, 0, 1);
 
-    *(unsigned short*)0x400000a = (*(unsigned short*)0x400000a & 0x43) | 0x1d00;
-    *(unsigned short*)0x400000c = (*(unsigned short*)0x400000c & 0x43) | 0x1e08;
-    *(unsigned short*)0x400000e = (*(unsigned short*)0x400000e & 0x43) | 0x1f0c;
-    *(unsigned short*)0x4000008 = (*(unsigned short*)0x4000008 & ~3) | 2;
-    *(unsigned short*)0x400000a = (*(unsigned short*)0x400000a & ~3) | 3;
-    *(unsigned short*)0x400000c = (*(unsigned short*)0x400000c & ~3) | 1;
-    *(unsigned short*)0x400000e = (*(unsigned short*)0x400000e & ~3);
-    *(volatile unsigned int*)0x4001000 = (*(volatile unsigned int*)0x4001000 & ~0x1f00) | 0x1700;
+    BG1CNT = (BG1CNT & 0x43) | 0x1d00;
+    BG2CNT = (BG2CNT & 0x43) | 0x1e08;
+    BG3CNT = (BG3CNT & 0x43) | 0x1f0c;
+    BG0CNT = (BG0CNT & ~3) | 2;
+    BG1CNT = (BG1CNT & ~3) | 3;
+    BG2CNT = (BG2CNT & ~3) | 1;
+    BG3CNT = BG3CNT & ~3;
+    DISPCNTSUB = (DISPCNTSUB & ~0x1f00) | 0x1700;
     SetSubBgMode(0);
 
-    unsigned short* subBgcnt = (unsigned short*)0x4001008;
-    subBgcnt[0] = (subBgcnt[0] & 0x43) | 0x1d00;
-    subBgcnt[1] = (subBgcnt[1] & 0x43) | 0x1e10;
-    subBgcnt[2] = (subBgcnt[2] & 0x43) | 0x1f18;
-    subBgcnt[0] = (subBgcnt[0] & ~3) | 2;
-    subBgcnt[1] = (subBgcnt[1] & ~3) | 1;
-    subBgcnt[2] = (subBgcnt[2] & ~3);
-    subBgcnt[3] = (subBgcnt[3] & ~3) | 3;
+    BG0CNTSUB = (BG0CNTSUB & 0x43) | 0x1d00;
+    BG1CNTSUB = (BG1CNTSUB & 0x43) | 0x1e10;
+    BG2CNTSUB = (BG2CNTSUB & 0x43) | 0x1f18;
+    BG0CNTSUB = (BG0CNTSUB & ~3) | 2;
+    BG1CNTSUB = (BG1CNTSUB & ~3) | 1;
+    BG2CNTSUB = BG2CNTSUB & ~3;
+    BG3CNTSUB = (BG3CNTSUB & ~3) | 3;
     *(unsigned short*)0x4000304 |= 0x8000;
     Set3DClearColor(0, 0, 0x7fff, 0, 0);
 
@@ -217,7 +218,7 @@ extern "C" ARM void func_ov021_0218b5fc(Battle0218b5fc* self) {
     _Z27SetStateAndDispatch0209c3b4P13Actor0209c3b4i((Actor0209c3b4*)&data_02109bf4, 2);
     DelayThenSyncBit0();
     RestoreDisplayMode();
-    *(volatile unsigned int*)0x4001000 |= 0x10000;
+    DISPCNTSUB |= 0x10000;
     _Z18InitFields02010124P10S_02010124((S_02010124*)gs);
 
     for (;;) {

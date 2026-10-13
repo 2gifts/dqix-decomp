@@ -33,13 +33,13 @@ struct Obj021f7aac {
 };
 
 // USA: func_ov023_021f7aac
-extern "C" ARM void func_ov023_021f7aac(struct Obj021f7aac* obj, void* keyObj, struct Rec020467f0* entry, void* next) {
+extern "C" ARM void func_ov023_021f7aac(struct Obj021f7aac* obj, void* keyObj, struct Rec020467f0* entry, unsigned int entryLength) {
 #if defined(jpn)
  enum {regionalOffset=0x24};
 #else
  enum {regionalOffset=0x28};
 #endif
-    if (entry == 0 || next == 0) return;
+    if (entry == 0 || entryLength == 0) return;
 
     void* base = func_ov011_021845f8(keyObj, obj->field8);
     if (base == 0) return;

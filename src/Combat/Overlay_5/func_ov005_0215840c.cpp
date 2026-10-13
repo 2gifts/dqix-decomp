@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
 #if defined(jpn)
 #define func_0208358c func_02083e74
@@ -15,8 +16,8 @@
 struct PartModelInfo {
     unsigned int unk_0;
     unsigned int unk_4_0 : 27;
-    unsigned int unk_4_27 : 1;
-    unsigned int unk_4_28 : 1;
+    unsigned int maleCompatible : 1;
+    unsigned int femaleCompatible : 1;
     unsigned int unk_4_29 : 3;
 };
 
@@ -45,40 +46,33 @@ struct EquipmentMenu {
     Container020dedd0* items_;
 };
 
-class GameState {
-public:
-    static GameState* GetInstance();
-};
-
 extern "C" const unsigned char data_ov005_0215cc0c[];
 
-Field150Holder02052df8* GetCombatantWithFlag0x100(GameState* gs, int idx);
-short GetHalfwordEntryFromField150(Field150Holder02052df8* member, int part);
+int GetHalfwordEntryFromField150(Field150Holder02052df8* member, int part);
 extern "C" PartEntry* _Z24FindElementByKey020dedd0P17Container020dedd0i(Container020dedd0* items, int id);
 PartyMemberData* GetFieldAt0x150(unsigned char* member);
-char* GetPtrField0x2a04(GameState* gs);
 extern "C" void func_02052d7c(Field150Holder02052df8* member, int part, short item);
 extern "C" void func_0208358c(PartyMemberData* data, PartEntry* item, int unk);
 extern "C" void func_02083738(PartyMemberData* data, int category);
-extern "C" void func_0207c378(void* lists, short item, int count, int list);
+extern "C" int func_0207c378(void* lists, int item, int count, int list);
 
 // USA: func_ov005_0215840c
 extern "C" ARM int func_ov005_0215840c(EquipmentMenu* self, int member) {
     GameState* gameState = GameState::GetInstance();
-    Field150Holder02052df8* partyMember = GetCombatantWithFlag0x100(gameState, member);
+    Field150Holder02052df8* partyMember = (Field150Holder02052df8*)GetCombatantWithFlag0x100(gameState, member);
     if (partyMember == NULL)
         return 0;
     int removed = 0;
     unsigned int female = partyMember->data_->female_;
     for (int i = 0; i < 7; i++) {
         unsigned char part = data_ov005_0215cc0c[i];
-        short current = GetHalfwordEntryFromField150(partyMember, part);
+        int current = GetHalfwordEntryFromField150(partyMember, part);
         PartEntry* entry = _Z24FindElementByKey020dedd0P17Container020dedd0i(self->items_, current);
         if (entry == NULL)
             continue;
         unsigned int wearable[2];
-        wearable[0] = entry->model_->unk_4_27;
-        wearable[1] = entry->model_->unk_4_28;
+        wearable[0] = entry->model_->maleCompatible;
+        wearable[1] = entry->model_->femaleCompatible;
         if (wearable[female] != 0)
             continue;
         short replacement = -1;
@@ -94,7 +88,7 @@ extern "C" ARM int func_ov005_0215840c(EquipmentMenu* self, int member) {
             func_0208358c(data, replacementEntry, unk);
         else
             func_02083738(data, entry->category_);
-        func_0207c378(GetPtrField0x2a04(gameState) + 0x1d4, current, 1, entry->category_);
+        func_0207c378((char*)GetPtrField0x2a04(gameState) + 0x1d4, current, 1, entry->category_);
         removed = 1;
     }
     return removed;

@@ -15,7 +15,7 @@ extern "C" int func_ov023_021f6f10(void* self);
 #else
 extern int ScaleStatsIfType12_021f6f10(void* self);
 #endif
-extern "C" void _Z24SetShortField44_021f9c58P6S_9c58s(void* obj, short v);
+extern "C" void _Z24SetShortField44_021f9c58P6S_9c58s(void* obj, unsigned short v);
 
 // USA: func_ov011_02186cb8
 extern "C" ARM int func_ov011_02186cb8(struct TaggedNumber02184c30* a) {
@@ -24,6 +24,6 @@ extern "C" ARM int func_ov011_02186cb8(struct TaggedNumber02184c30* a) {
     void* node = func_ov023_021f6880(func_ov011_021849c8(func_ov017_021b2164()), val);
     if (!node) return 0;
     if (ScaleStatsIfType12_021f6f10(node) != 7) return 0;
-    ((void (*)(void*, unsigned short))_Z24SetShortField44_021f9c58P6S_9c58s)(node, (unsigned short)val2);
+    _Z24SetShortField44_021f9c58P6S_9c58s(node, val2);
     return 1;
 }

@@ -18,7 +18,6 @@ enum { kBattleOffset = 0x29c, kStateToListPadding = 0x28b0, kListToModePadding =
 
 
 #if defined(jpn)
-#define func_ov026_021db090 func_ov026_021db7a4
 #endif
 #include "GameState/GameState.h"
 #include "Combat/Main/BattleList.h"
@@ -138,7 +137,6 @@ extern char data_ov026_021df3fa[];
 extern char data_ov026_021df3ff[];
 extern char data_ov026_021df423[];
 extern char data_ov026_021df465[];
-struct CombatantName { char pad[0x134]; char* name; };
 #endif
 
 extern char data_ov026_021dedee[];
@@ -209,7 +207,7 @@ extern "C" ARM void func_ov026_021db090(BattleWork* self) {
 #if defined(jpn)
         GameObject* first = gs->GetCombatantByIndex(picked.ids[0]);
         if (first != NULL) {
-            strcpy(name, ((CombatantName*)first)->name);
+            strcpy(name, (char*)first->baseStats_);
         }
         if (pluralCount > 1) {
             strcat(name, data_ov026_021df3fa);

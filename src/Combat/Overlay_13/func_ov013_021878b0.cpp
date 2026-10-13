@@ -4,9 +4,6 @@
 #define func_ov013_021878b0 func_ov013_021888c0
 #define func_ov013_02187a58 func_ov013_02188a24
 #define data_ov013_02187eaf data_ov013_02188e11
-#define LOW_REGION(j,u) (j)
-#else
-#define LOW_REGION(j,u) (u)
 #endif
 #include "Filesystem/BackgroundLoader.h"
 
@@ -36,7 +33,28 @@ void DispatchIndexedEntry0204b988(struct Obj0204b988* obj, unsigned int index, i
 struct List0204b0e8;
 void FlushAndDispatchList0204b0e8(struct List0204b0e8* obj, void* buf);
 
-extern int data_ov013_02187eaf;
+extern const char data_ov013_02187eaf[];
+
+struct SkillDetailWindow {
+    char unknown0[0x28];
+#if defined(jpn)
+    char entryList[0x20];
+#else
+    char entryList[0x28];
+    short* iconX;
+    short* iconY;
+    unsigned char* iconPalettes;
+#endif
+    int loadTask;
+    char unknownAfterTask[6];
+    unsigned char loadState;
+    signed char partyIndex;
+    unsigned char skillIndex;
+    unsigned char flags;
+#if !defined(jpn)
+    signed char iconType;
+#endif
+};
 
 struct LocalBuf021878b0 {
     char pad0[0x8];
@@ -51,31 +69,31 @@ struct LocalBuf021878b0 {
 };
 
 // USA: func_ov013_021878b0  (semantic: HandleQueuedListEntry021878b0)
-extern "C" ARM void func_ov013_021878b0(void* obj) {
-    unsigned char* o = (unsigned char*)obj;
-    int g = (int)BackgroundLoader::GetInstance();
-    unsigned char flag = o[LOW_REGION(0x52,0x66)];
+extern "C" ARM void func_ov013_021878b0(SkillDetailWindow* window) {
+    BackgroundLoader* loader = BackgroundLoader::GetInstance();
+    unsigned char loadState = window->loadState;
 
-    if (flag == 0) {
+    if (loadState == 0) {
 #if !defined(jpn)
         for (int i = 0; i < 10; i++) {
-            (*(short**)(o + 0x50))[i] = -1;
-            (*(short**)(o + 0x54))[i] = -1;
-            (*(unsigned char**)(o + 0x58))[i] = 2;
+            window->iconX[i] = -1;
+            window->iconY[i] = -1;
+            window->iconPalettes[i] = 2;
         }
-        *(signed char*)(o + 0x6a) = -1;
+        window->iconType = -1;
 #endif
-        ((BackgroundLoader*)((void*)g))->MaybeFreeAllocations();
-        *(int*)(o + LOW_REGION(0x48,0x5c)) = ((BackgroundLoader*)(g))->QueueLoadFile((const char*)((int)&data_ov013_02187eaf), (SafeAllocator*)(0));
-        o[LOW_REGION(0x52,0x66)]++;
-    } else if (flag == 1) {
-        if (((BackgroundLoader*)((void*)g))->GetTaskStatus((int)(*(int*)(o + LOW_REGION(0x48,0x5c)))) != 0) {
+        loader->MaybeFreeAllocations();
+        window->loadTask = loader->QueueLoadFile(data_ov013_02187eaf, NULL);
+        window->loadState++;
+    } else if (loadState == 1) {
+        if (loader->GetTaskStatus(window->loadTask) != 0) {
             void* recOut;
-            int out1, out2;
+            void* file;
+            unsigned int fileSize;
             int field44;
-            ((BackgroundLoader*)((struct List0202fec8*)g))->GetLoadedFileByID((int)(*(int*)(o + LOW_REGION(0x48,0x5c))), (void**)(&out1), (unsigned int*)(&out2));
-            CountActiveEntries((struct ActiveEntry02046900*)out1);
-            void* end = FindRecordByIndex((struct Rec020467f0*)out1, 0, &recOut, &field44);
+            loader->GetLoadedFileByID(window->loadTask, &file, &fileSize);
+            CountActiveEntries((struct ActiveEntry02046900*)file);
+            void* end = FindRecordByIndex((struct Rec020467f0*)file, 0, &recOut, &field44);
             if (end != 0) {
                 LocalBuf021878b0 buf;
                 func_0204c684(&buf);
@@ -84,19 +102,19 @@ extern "C" ARM void func_ov013_021878b0(void* obj) {
                 buf.halfB6 = 0xb;
                 buf.halfA8 = 0x20;
                 buf.halfAA = 0x18;
-                func_ov013_02187a58(obj, &buf);
-                func_0204b174(o + 0x28, end, 0, field44);
+                func_ov013_02187a58(window, &buf);
+                func_0204b174(window->entryList, end, 0, field44);
             }
-            ((BackgroundLoader*)(g))->RemoveTask((int)(*(int*)(o + LOW_REGION(0x48,0x5c))));
-            *(int*)(o + LOW_REGION(0x48,0x5c)) = -1;
-            void* e = GetEntryByIndexStride0x10((struct EntryList0204af14*)(o + 0x28), 0);
+            loader->RemoveTask(window->loadTask);
+            window->loadTask = -1;
+            void* e = GetEntryByIndexStride0x10((struct EntryList0204af14*)window->entryList, 0);
             if (e != 0) {
-                FillTilemapPalette0204ae44((struct Tilemap0204ae44*)e, *(signed char*)(o + LOW_REGION(0x53,0x67)));
+                FillTilemapPalette0204ae44((struct Tilemap0204ae44*)e, window->partyIndex);
             }
-            DispatchIndexedEntry0204b988((struct Obj0204b988*)(o + 0x28), 0, 0, 0, 0xffff);
-            FlushAndDispatchList0204b0e8((struct List0204b0e8*)(o + 0x28), 0);
-            o[LOW_REGION(0x52,0x66)] = 0;
-            o[LOW_REGION(0x55,0x69)] &= ~1;
+            DispatchIndexedEntry0204b988((struct Obj0204b988*)window->entryList, 0, 0, 0, 0xffff);
+            FlushAndDispatchList0204b0e8((struct List0204b0e8*)window->entryList, 0);
+            window->loadState = 0;
+            window->flags &= ~1;
         }
     }
 }

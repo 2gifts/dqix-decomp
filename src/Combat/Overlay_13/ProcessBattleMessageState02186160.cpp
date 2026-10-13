@@ -4,11 +4,70 @@
 #define func_ov013_02186160 func_ov013_02187178
 #define func_ov013_02186c64 func_ov013_02187f78
 #define func_ov013_02186bd4 func_ov013_02187f00
-extern unsigned char data_02114e54[];
+struct TouchInput {
+    char unknown0[0x20];
+    unsigned short x;
+    unsigned short y;
+    unsigned short touching;
+    char unknown26[0x44 - 0x26];
+    unsigned int holdTicks;
+    char unknown48[0x54 - 0x48];
+    unsigned char released;
+    unsigned char pressed;
+    char unknown56[0x5c - 0x56];
+    unsigned char repeat;
+};
+extern TouchInput data_02114e54;
 extern "C" int func_020124b0(void*, int, int, int, int);
 int IsWithinRect(unsigned char*, int, int, int, int);
 extern "C" void func_ov013_02186964(void*);
 #endif
+
+struct SkillPointMenu {
+#if defined(jpn)
+    char unknown0[0x34];
+    unsigned char window[0xbc];
+    char unknownAfterWindow[0x5ac - 0xf0];
+#else
+    char unknown0[0x38];
+    unsigned char window[0xbc];
+    char unknownAfterWindow[0x620 - 0xf4];
+#endif
+    char texts[0x18];
+    unsigned char unknownStateBytes[4];
+    unsigned char state;
+    unsigned char previousState;
+    unsigned char step;
+    bool stateChanged;
+    bool subScreen;
+    unsigned int ticks;
+    int windowInput;
+#if !defined(jpn)
+    int previousWindowInput;
+#endif
+    int task;
+    void* canvasPixels;
+    char* text;
+    int selectedSkill;
+    int confirmationChoice;
+    unsigned char unknownAfterChoice;
+    unsigned char confirmationPressed;
+    char unknownAfterPressed[2];
+    int availablePoints;
+    int remainingPoints;
+    int pointCap;
+    int skillPoints[5];
+    int allocatedPoints[5];
+    unsigned char lockedSkills[5];
+    char unknownAfterLocks[8];
+    unsigned char skillIds[5];
+    char unknownAfterSkillIds[0xe];
+    unsigned char flags;
+#if defined(jpn)
+    enum Prompt { NoPrompt = -1, PointLimit = 2, ConfirmAllocation = 3, DiscardAllocation = 4 };
+    void ResetPromptWindow();
+#endif
+};
 
 extern "C" void* __clear(void* dst, int count);
 struct Obj0205dee8;
@@ -18,11 +77,8 @@ int GetActiveScaledSum0205d794(struct Struct_0205c570* s);
 extern unsigned short data_02114e30;
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
 extern "C" void func_0205d7a0(unsigned char* obj, int val);
-#if defined(jpn)
-extern "C" int func_0205d97c(void*);
-#else
-extern "C" int func_0205d97c(int);
-#endif
+struct Struct_0205d81c;
+extern "C" int func_0205d97c(Struct_0205d81c* window);
 struct Obj0201248c;
 extern "C" int func_0201248c(struct Obj0201248c* obj, int mask);
 extern "C" int func_ov013_021842a0(void* obj, int index);
@@ -36,228 +92,230 @@ void ResetEntryList0205d6a0(struct Entry_0205d6a0* a, int flag);
 extern "C" void func_ov013_02186c64(void* obj, int a, int b);
 extern "C" void func_ov013_02186bd4(void* obj);
 
-// USA: func_ov013_02186160  (semantic: ProcessBattleMessageState02186160)
-extern "C" ARM void func_ov013_02186160(void* obj) {
 #if defined(jpn)
-    unsigned char* o = (unsigned char*)obj;
-    o[0x644] |= 1;
-    o[0x5c4] = 0;
-    o[0x5c5] = 0;
-    SetFieldB0AndUpdate0205dee8((Obj0205dee8*)(o + 0x34), 0);
+inline void SkillPointMenu::ResetPromptWindow() {
+    SetFieldB0AndUpdate0205dee8((Obj0205dee8*)window, 4);
+    ResetEntryList0205d6a0((Entry_0205d6a0*)window, 0);
+}
+#endif
 
-    int arr[5];
+// USA: func_ov013_02186160  (semantic: ProcessBattleMessageState02186160)
+extern "C" ARM void func_ov013_02186160(SkillPointMenu* menu) {
+#if defined(jpn)
+    menu->flags |= 1;
+    menu->unknownStateBytes[0] = 0;
+    menu->unknownStateBytes[1] = 0;
+    SetFieldB0AndUpdate0205dee8((Obj0205dee8*)menu->window, 0);
+
+
+
+    int previousAllocatedPoints[5];
     for (int j = 0; j < 5; j++)
-        arr[j] = ((int*)(o + 0x610))[j];
-    int dirty = 0;
-    int success = dirty;
+        previousAllocatedPoints[j] = menu->allocatedPoints[j];
+    bool redraw = false;
+    bool transitioned = false;
     if (func_0201248c((Obj0201248c*)&data_02114e30, 0x80)) {
-        ++*(int*)(o + 0x5e4);
-        dirty = 1;
+        ++menu->selectedSkill;
+        redraw = true;
     }
     if (func_0201248c((Obj0201248c*)&data_02114e30, 0x40)) {
-        --*(int*)(o + 0x5e4);
-        dirty = 1;
+        --menu->selectedSkill;
+        redraw = true;
     }
-    if (*(int*)(o + 0x5e4) < 0) *(int*)(o + 0x5e4) = 5;
-    if (*(int*)(o + 0x5e4) >= 6) *(int*)(o + 0x5e4) = 0;
-    int hit = func_020124b0(data_02114e54, 0x1e, 0x5a, 0x2a, 0xa);
-    if (*(int*)(o + 0x5d4) == 2) {
-        *(int*)(o + 0x5e4) = (signed char)GetActiveScaledSum0205d794((Struct_0205c570*)(o + 0x34));
-        dirty = 1;
+    if (menu->selectedSkill < 0) menu->selectedSkill = 5;
+    if (menu->selectedSkill >= 6) menu->selectedSkill = 0;
+    int confirmationHit = func_020124b0(&data_02114e54, 0x1e, 0x5a, 0x2a, 0xa);
+    if (menu->windowInput == 2) {
+        menu->selectedSkill = (signed char)GetActiveScaledSum0205d794((Struct_0205c570*)menu->window);
+        redraw = true;
     }
-    if (*(int*)(o + 0x5f4) >= 0 && *(int*)(o + 0x5e4) < 5) {
+    if (menu->remainingPoints >= 0 && menu->selectedSkill < 5) {
         if (func_0201248c((Obj0201248c*)&data_02114e30, 0x20) ||
             func_0201248c((Obj0201248c*)&data_02114e30, 2) ||
-            (data_02114e54[0x5c] && IsWithinRect(data_02114e54, 0x52, *(int*)(o + 0x5e4) * 0xd + 0x12, 0xe, 0xb))) {
-            if ((o + *(int*)(o + 0x5e4))[0x624] == 0) {
-                ((int*)(o + 0x610))[*(int*)(o + 0x5e4)]--;
-                dirty = 1;
-                if (((int*)(o + 0x610))[*(int*)(o + 0x5e4)] < 0)
-                    ((int*)(o + 0x610))[*(int*)(o + 0x5e4)] = 0;
+            (data_02114e54.repeat && IsWithinRect((unsigned char*)&data_02114e54, 0x52, menu->selectedSkill * 0xd + 0x12, 0xe, 0xb))) {
+            if (menu->lockedSkills[menu->selectedSkill] == 0) {
+                menu->allocatedPoints[menu->selectedSkill]--;
+                redraw = true;
+                if (menu->allocatedPoints[menu->selectedSkill] < 0)
+                    menu->allocatedPoints[menu->selectedSkill] = 0;
                 else
                     DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 0x5d, 0);
             }
-        } else if (*(int*)(o + 0x5f4) > 0) {
-            if (((int*)(o + 0x5fc))[*(int*)(o + 0x5e4)] != 0x64) {
-                if (((int*)(o + 0x5fc))[*(int*)(o + 0x5e4)] > *(int*)(o + 0x5f8)) {
-                    if (func_0201248c((Obj0201248c*)&data_02114e30, 0x611) ||
-                        (data_02114e54[0x5c] && IsWithinRect(data_02114e54, 0x8c, *(int*)(o + 0x5e4) * 0xd + 0x14, 0xe, 0xb))) {
-                        o[0x644] &= ~1;
-                        o[0x5c8] = 2;
-                        success = 1;
-                        dirty = success;
-                        if (o[0x5cc]) InitTag02185828(o);
-                        else func_ov013_02186964(o);
-                        if (!o[0x5cc]) {
-                            SetFieldB0AndUpdate0205dee8((Obj0205dee8*)(o + 0x34), 4);
-                            ResetEntryList0205d6a0((Entry_0205d6a0*)(o + 0x34), 0);
-                        }
+        } else if (menu->remainingPoints > 0 && menu->skillPoints[menu->selectedSkill] != 0x64) {
+            if (menu->skillPoints[menu->selectedSkill] > menu->pointCap) {
+                if (func_0201248c((Obj0201248c*)&data_02114e30, 0x611) ||
+                    (data_02114e54.repeat && IsWithinRect((unsigned char*)&data_02114e54, 0x8c, menu->selectedSkill * 0xd + 0x14, 0xe, 0xb))) {
+                    menu->flags &= ~1;
+                    menu->state = SkillPointMenu::PointLimit;
+                    transitioned = true;
+                    redraw = true;
+                    if (menu->subScreen) InitTag02185828((unsigned char*)menu);
+                    else func_ov013_02186964(menu);
+                    if (!menu->subScreen) {
+                        menu->ResetPromptWindow();
                     }
-                } else {
-                    int changed = 0;
-                    if (func_0201248c((Obj0201248c*)&data_02114e30, 0x611) ||
-                        (data_02114e54[0x5c] && IsWithinRect(data_02114e54, 0x84, *(int*)(o + 0x5e4) * 0xd + 0x14, 0xe, 0xb))) {
-                        if ((o + *(int*)(o + 0x5e4))[0x624] == 0) {
-                            ((int*)(o + 0x610))[*(int*)(o + 0x5e4)]++;
-                            changed = 1;
-                            dirty = changed;
-                        }
-                    }
-                    if (((int*)(o + 0x610))[*(int*)(o + 0x5e4)] + ((int*)(o + 0x5fc))[*(int*)(o + 0x5e4)] > *(int*)(o + 0x5f8)) {
-                        ((int*)(o + 0x610))[*(int*)(o + 0x5e4)]--;
-                        changed = 0;
-                        if (*(int*)(o + 0x5f8) != 0x64) {
-                        o[0x644] &= ~1;
-                        o[0x5c8] = 2;
-                        success = 1;
-                        dirty = success;
-                        if (o[0x5cc]) InitTag02185828(o);
-                        else func_ov013_02186964(o);
-                        if (!o[0x5cc]) {
-                            SetFieldB0AndUpdate0205dee8((Obj0205dee8*)(o + 0x34), 4);
-                            ResetEntryList0205d6a0((Entry_0205d6a0*)(o + 0x34), 0);
-                        }
-                        }
-                    }
-                    if (changed)
-                        DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 0x5d, 0);
                 }
+            } else {
+                bool pointsAdded = false;
+                if (func_0201248c((Obj0201248c*)&data_02114e30, 0x611) ||
+                    (data_02114e54.repeat && IsWithinRect((unsigned char*)&data_02114e54, 0x84, menu->selectedSkill * 0xd + 0x14, 0xe, 0xb))) {
+                    if (menu->lockedSkills[menu->selectedSkill] == 0) {
+                        menu->allocatedPoints[menu->selectedSkill]++;
+                        pointsAdded = true;
+                        redraw = true;
+                    }
+                }
+                if (menu->allocatedPoints[menu->selectedSkill] + menu->skillPoints[menu->selectedSkill] > menu->pointCap) {
+                    menu->allocatedPoints[menu->selectedSkill]--;
+                    pointsAdded = false;
+                    if (menu->pointCap != 0x64) {
+                        menu->flags &= ~1;
+                        menu->state = SkillPointMenu::PointLimit;
+                        transitioned = true;
+                        redraw = true;
+                        if (menu->subScreen) InitTag02185828((unsigned char*)menu);
+                        else func_ov013_02186964(menu);
+                        if (!menu->subScreen) {
+                            menu->ResetPromptWindow();
+                        }
+                    }
+                }
+                if (pointsAdded)
+                    DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 0x5d, 0);
             }
         }
     }
-    int mode = -1;
-    if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601) && o[0x5c8] != 2) {
-        if (*(int*)(o + 0x5e4) != 5 && *(int*)(o + 0x5f4) == 0) {
-            *(int*)(o + 0x5e4) = 5;
-            dirty = 1;
-        } else if (*(int*)(o + 0x5e4) == 5) {
-            mode = 3;
-        } else if (func_0205d97c(o + 0x34) == 2) {
-            mode = 4;
+    SkillPointMenu::Prompt nextPrompt = SkillPointMenu::NoPrompt;
+    if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601) && menu->state != SkillPointMenu::PointLimit) {
+        if (menu->selectedSkill != 5 && menu->remainingPoints == 0) {
+            menu->selectedSkill = 5;
+            redraw = true;
+        } else if (menu->selectedSkill == 5) {
+            nextPrompt = SkillPointMenu::ConfirmAllocation;
+        } else if (func_0205d97c((Struct_0205d81c*)menu->window) == 2) {
+            nextPrompt = SkillPointMenu::DiscardAllocation;
         }
     } else {
         if ((func_0201248c((Obj0201248c*)&data_02114e30, 0x611) ||
-             (data_02114e54[0x5c] && IsWithinRect(data_02114e54, 0x84, *(int*)(o + 0x5e4) * 0xd + 0x14, 0xe, 0xb))) &&
-            *(int*)(o + 0x5e4) != 5 && *(int*)(o + 0x5f4) == 0) {
-            *(int*)(o + 0x5e4) = 5;
-            dirty = 1;
-        } else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2) && o[0x5c8] != 2) {
-            if (arr[*(int*)(o + 0x5e4)] == 0 || *(int*)(o + 0x5e4) == 5 || *(int*)(o + 0x5e4) == 6)
-                mode = 4;
-        } else if (*(int*)(o + 0x5e4) == 5 && o[0x5c8] != 2 && data_02114e54[0x54] &&
-                   *(unsigned int*)(data_02114e54 + 0x44) < 0x14 && o[0x5ed] == 1) {
-            if (hit) {
-                o[0x5ed] = 0;
-                mode = 3;
+             (data_02114e54.repeat && IsWithinRect((unsigned char*)&data_02114e54, 0x84, menu->selectedSkill * 0xd + 0x14, 0xe, 0xb))) &&
+            menu->selectedSkill != 5 && menu->remainingPoints == 0) {
+            menu->selectedSkill = 5;
+            redraw = true;
+        } else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2) && menu->state != SkillPointMenu::PointLimit) {
+            if (previousAllocatedPoints[menu->selectedSkill] == 0 || menu->selectedSkill == 5 || menu->selectedSkill == 6)
+                nextPrompt = SkillPointMenu::DiscardAllocation;
+        } else if (menu->selectedSkill == 5 && menu->state != SkillPointMenu::PointLimit && data_02114e54.released &&
+                   data_02114e54.holdTicks < 0x14 && menu->confirmationPressed == 1) {
+            if (confirmationHit) {
+                menu->confirmationPressed = 0;
+                nextPrompt = SkillPointMenu::ConfirmAllocation;
             }
-        } else if (func_0205d97c(o + 0x34) == 2 && o[0x5c8] != 2) {
-            mode = 4;
+        } else if (func_0205d97c((Struct_0205d81c*)menu->window) == 2 && menu->state != SkillPointMenu::PointLimit) {
+            nextPrompt = SkillPointMenu::DiscardAllocation;
         }
     }
-    if (mode == 3 || mode == 4) {
-        if (mode == 3) o[0x5c8] = 3;
-        else o[0x5c8] = 4;
-        o[0x644] &= ~1;
-        success = 1;
-        dirty = success;
-        if (o[0x5cc] == 0) {
-            DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, success, 0);
-            SetFieldB0AndUpdate0205dee8((Obj0205dee8*)(o + 0x34), 4);
-            ResetEntryList0205d6a0((Entry_0205d6a0*)(o + 0x34), 0);
+    if (nextPrompt == SkillPointMenu::ConfirmAllocation || nextPrompt == SkillPointMenu::DiscardAllocation) {
+        if (nextPrompt == SkillPointMenu::ConfirmAllocation) menu->state = SkillPointMenu::ConfirmAllocation;
+        else menu->state = SkillPointMenu::DiscardAllocation;
+        menu->flags &= ~1;
+        transitioned = true;
+        redraw = true;
+        if (menu->subScreen == 0) {
+            DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, transitioned, 0);
+            menu->ResetPromptWindow();
         } else {
             DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 5, 0);
         }
-        if (o[0x5cc]) InitTag02185828(o);
-        else func_ov013_02186964(o);
+        if (menu->subScreen) InitTag02185828((unsigned char*)menu);
+                        else func_ov013_02186964(menu);
     } else {
-        if (*(int*)(o + 0x5e4) == 5 && data_02114e54[0x54] && hit)
-            o[0x5ed] = 1;
-        else if (data_02114e54[0x55] && !hit)
-            o[0x5ed] = 0;
+        if (menu->selectedSkill == 5 && data_02114e54.released && confirmationHit)
+            menu->confirmationPressed = 1;
+        else if (data_02114e54.pressed && !confirmationHit)
+            menu->confirmationPressed = 0;
     }
     int sum = 0;
     for (int k = 0; k < 5; k++)
-        sum += ((int*)(o + 0x610))[k];
-    *(int*)(o + 0x5f4) = *(int*)(o + 0x5f0) - sum;
-    if (success)
-        func_ov013_02186c64(o, 0, 1);
-    else if (dirty)
-        func_ov013_02186bd4(o);
+        sum += menu->allocatedPoints[k];
+    menu->remainingPoints = menu->availablePoints - sum;
+    if (transitioned)
+        func_ov013_02186c64(menu, 0, 1);
+    else if (redraw)
+        func_ov013_02186bd4(menu);
 #else
-    unsigned char* o = (unsigned char*)obj;
 
-    o[0x6bc] |= 1;
-    o[0x638] = 0;
-    o[0x639] = 0;
-    SetFieldB0AndUpdate0205dee8((struct Obj0205dee8*)(o + 0x38), 0);
+    menu->flags |= 1;
+    menu->unknownStateBytes[0] = 0;
+    menu->unknownStateBytes[1] = 0;
+    SetFieldB0AndUpdate0205dee8((struct Obj0205dee8*)menu->window, 0);
 
-    int arr[6];
-    __clear(arr, 0x18);
+    int previousAllocatedPoints[6];
+    __clear(previousAllocatedPoints, 0x18);
     for (int j = 0; j < 5; j++) {
-        arr[j] = ((int*)(o + 0x688))[j];
+        previousAllocatedPoints[j] = menu->allocatedPoints[j];
     }
 
-    int dirty, success, mode, oldF65c;
-    oldF65c = *(int*)(o + 0x65c);
-    dirty = 0;
-    success = dirty;
-    mode = dirty - 1;
-    *(int*)(o + 0x65c) = GetActiveScaledSum0205d794((struct Struct_0205c570*)(o + 0x38));
+    int redraw, transitioned, nextState, previousSelection;
+    previousSelection = menu->selectedSkill;
+    redraw = 0;
+    transitioned = redraw;
+    nextState = redraw - 1;
+    menu->selectedSkill = GetActiveScaledSum0205d794((struct Struct_0205c570*)menu->window);
 
     if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601) != 0) {
-        if (*(int*)(o + 0x65c) != 5) {
-            if (*(int*)(o + 0x66c) == 0) {
-                *(int*)(o + 0x65c) = 5;
-                func_0205d7a0(o + 0x38, 5);
-                *(int*)(o + 0x64c) = dirty;
-                dirty = 1;
+        if (menu->selectedSkill != 5) {
+            if (menu->remainingPoints == 0) {
+                menu->selectedSkill = 5;
+                func_0205d7a0(menu->window, 5);
+                menu->previousWindowInput = redraw;
+                redraw = 1;
             }
         } else {
-            mode = 3;
+            nextState = 3;
         }
     } else {
-        int b = func_0205d97c((int)(o + 0x38));
+        int b = func_0205d97c((Struct_0205d81c*)menu->window);
         if (b == 2) {
-            mode = 4;
+            nextState = 4;
         } else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2) != 0) {
-            if (arr[*(int*)(o + 0x65c)] == 0) {
-                mode = 4;
+            if (previousAllocatedPoints[menu->selectedSkill] == 0) {
+                nextState = 4;
             }
         }
     }
 
-    int f648 = *(int*)(o + 0x648);
-    if (f648 == 0) {
-        if (*(int*)(o + 0x66c) >= 0 && *(int*)(o + 0x65c) < 5) {
+    int windowInput = menu->windowInput;
+    if (windowInput == 0) {
+        if (menu->remainingPoints >= 0 && menu->selectedSkill < 5) {
             if (func_0201248c((struct Obj0201248c*)&data_02114e30, 0x20) != 0 ||
                 func_0201248c((struct Obj0201248c*)&data_02114e30, 2) != 0 ||
-                func_ov013_021842a0((void*)(o + 0x38), 0xa) != 0) {
-                *(int*)(o + 0x64c) = 0;
-                if ((o + *(int*)(o + 0x65c))[0x69c] == 0) {
-                    ((int*)(o + 0x688))[*(int*)(o + 0x65c)]--;
-                    dirty = 1;
-                    if (((int*)(o + 0x688))[*(int*)(o + 0x65c)] >= 0) {
+                func_ov013_021842a0((void*)menu->window, 0xa) != 0) {
+                menu->previousWindowInput = 0;
+                if (menu->lockedSkills[menu->selectedSkill] == 0) {
+                    menu->allocatedPoints[menu->selectedSkill]--;
+                    redraw = 1;
+                    if (menu->allocatedPoints[menu->selectedSkill] >= 0) {
                         DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 0x5d, 0);
                     } else {
-                        ((int*)(o + 0x688))[*(int*)(o + 0x65c)] = 0;
+                        menu->allocatedPoints[menu->selectedSkill] = 0;
                     }
                 }
-            } else if (*(int*)(o + 0x66c) > 0) {
-                int r7flag = 0;
-                *(int*)(o + 0x64c) = 0;
-                int v674b = ((int*)(o + 0x674))[*(int*)(o + 0x65c)];
-                if (v674b != 0x64) {
-                    int v688b = ((int*)(o + 0x688))[*(int*)(o + 0x65c)];
-                    if (v674b + v688b < 0x64) {
+            } else if (menu->remainingPoints > 0) {
+                int pointsAdded = 0;
+                menu->previousWindowInput = 0;
+                int skillPoints = menu->skillPoints[menu->selectedSkill];
+                if (skillPoints != 0x64) {
+                    int allocatedPoints = menu->allocatedPoints[menu->selectedSkill];
+                    if (skillPoints + allocatedPoints < 0x64) {
                         if (func_0201248c((struct Obj0201248c*)&data_02114e30, 0x611) != 0 ||
-                            func_ov013_021842a0((void*)(o + 0x38), 0xb) != 0) {
-                            if ((o + *(int*)(o + 0x65c))[0x69c] == 0) {
-                                ((int*)(o + 0x688))[*(int*)(o + 0x65c)]++;
-                                r7flag = 1;
-                                dirty = r7flag;
+                            func_ov013_021842a0((void*)menu->window, 0xb) != 0) {
+                            if (menu->lockedSkills[menu->selectedSkill] == 0) {
+                                menu->allocatedPoints[menu->selectedSkill]++;
+                                pointsAdded = 1;
+                                redraw = pointsAdded;
                             }
                         }
-                        if (r7flag != 0) {
+                        if (pointsAdded != 0) {
                             DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 0x5d, 0);
                         }
                     }
@@ -265,44 +323,44 @@ extern "C" ARM void func_ov013_02186160(void* obj) {
             }
         }
     } else {
-        dirty = 1;
-        if (f648 == 2 && *(int*)(o + 0x64c) == f648 && oldF65c == 5 && *(int*)(o + 0x65c) == 5) {
-            mode = 3;
+        redraw = 1;
+        if (windowInput == 2 && menu->previousWindowInput == windowInput && previousSelection == 5 && menu->selectedSkill == 5) {
+            nextState = 3;
         }
-        *(int*)(o + 0x64c) = f648;
+        menu->previousWindowInput = windowInput;
     }
 
-    if (mode >= 0) {
-        *(int*)(o + 0x64c) = 0;
-        o[0x63c] = (unsigned char)mode;
-        o[0x665] = 0;
-        o[0x6bc] &= ~1;
-        success = 1;
-        dirty = 1;
-        if (o[0x640] == 0) {
-            DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, success, 0);
-            SetFieldB0AndUpdate0205dee8((struct Obj0205dee8*)(o + 0x38), 4);
-            ResetEntryList0205d6a0((struct Entry_0205d6a0*)(o + 0x38), 0);
+    if (nextState >= 0) {
+        menu->previousWindowInput = 0;
+        menu->state = (unsigned char)nextState;
+        menu->confirmationPressed = 0;
+        menu->flags &= ~1;
+        transitioned = 1;
+        redraw = 1;
+        if (menu->subScreen == 0) {
+            DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, transitioned, 0);
+            SetFieldB0AndUpdate0205dee8((struct Obj0205dee8*)menu->window, 4);
+            ResetEntryList0205d6a0((struct Entry_0205d6a0*)menu->window, 0);
         } else {
             DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 5, 0);
         }
-        if (o[0x640] != 0) {
-            InitTag02185828(o);
+        if (menu->subScreen != 0) {
+            InitTag02185828((unsigned char*)menu);
         } else {
-            SetupBattleMessage02185774(o);
+            SetupBattleMessage02185774(menu);
         }
     }
 
     int sum = 0;
     for (int k = 0; k < 5; k++) {
-        sum += ((int*)(o + 0x688))[k];
+        sum += menu->allocatedPoints[k];
     }
-    *(int*)(o + 0x66c) = *(int*)(o + 0x668) - sum;
+    menu->remainingPoints = menu->availablePoints - sum;
 
-    if (success != 0) {
-        func_ov013_02186c64(o, 0, 1);
-    } else if (dirty != 0) {
-        func_ov013_02186bd4(o);
+    if (transitioned != 0) {
+        func_ov013_02186c64(menu, 0, 1);
+    } else if (redraw != 0) {
+        func_ov013_02186bd4(menu);
     }
 #endif
 }

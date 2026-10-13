@@ -7,11 +7,16 @@ struct FlagPage_02214ac8 {
     unsigned short flags;
 };
 
+struct Handler_02214ac8 {
+    char padding[0xd00];
+    FlagPage_02214ac8 page;
+};
+
 // USA: func_ov031_02214ac8
 extern "C" ARM void* func_ov031_02214ac8(unsigned short id) {
     unsigned int value = id;
-    FlagPage_02214ac8* page = (FlagPage_02214ac8*)func_ov031_022133f8(0x10);
-    page = (FlagPage_02214ac8*)((char*)page + 0xd00);
+    Handler_02214ac8* handler = (Handler_02214ac8*)func_ov031_022133f8(0x10);
+    FlagPage_02214ac8* page = &handler->page;
     if (value > 13) value = 13;
     page->flags |= 1U << (value - 1);
     return page;

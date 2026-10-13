@@ -1,6 +1,10 @@
 #include <globaldefs.h>
 
-struct Vec2 { short x; short y; };
+struct Vec2 {
+    short x;
+    short y;
+    inline void Set(short newX, short newY) { x = newX; y = newY; }
+};
 
 struct Struct_0205d81c;
 struct Struct_0205bf3c;
@@ -11,52 +15,52 @@ extern "C" void* _Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_02
 extern "C" void _Z24CopyOrClearField0204c770PcPv(char*, void*);
 void GetNibbles(struct Obj5d594*, unsigned char*, unsigned char*);
 #if defined(jpn)
-extern "C" void func_0204d790(void* self, int flag, int value, int r8, int r7, unsigned char a6);
+extern "C" void func_0204d790(void* self, const char* text, unsigned int destination, int mode, unsigned char border, unsigned char fullWidth);
 #else
-extern "C" void func_0204c980(void* self, int flag, int value, int r8, int r7, unsigned char a6, unsigned char a8);
+extern "C" void func_0204c980(void* self, const char* text, unsigned int destination, int mode, unsigned char border, unsigned char fullWidth, unsigned char font);
 #endif
-int GetScaledElementPtr(struct ScaledElementList0204aa28*);
+unsigned int GetScaledElementPtr(struct ScaledElementList0204aa28*);
 extern "C" void _Z18ResetState0205bf3cP15Struct_0205bf3c(struct Struct_0205bf3c*);
 extern "C" void _Z23ApplyElemFields0205d904Ph(unsigned char*);
 
 struct Elem0205d304 {
     char pad0[0x4];
-    void* p4;
+    void* style;
     char pad8[0x98];
-    int a0;
-    int a4;
-    struct Vec2 s8[4];
+    unsigned int destination;
+    int pixelBytes;
+    struct Vec2 layout[4];
     char padb8[0xa];
     short c2;
-    unsigned char c4;
+    unsigned char id;
     unsigned char flags;
     char padc6;
-    unsigned char c7;
+    unsigned char fontHeight;
     char padc8[0x18];
 };
 
 struct Ctx0205d304 {
     char pad0[0x54];
     char resetState[0x44];
-    void* list98;
-    struct Elem0205d304* list9c;
-    struct Vec2 a0[4];
-    unsigned char b0;
-    unsigned char b1;
+    void* styles;
+    struct Elem0205d304* windows;
+    struct Vec2 layout[4];
+    unsigned char activeWindowId;
+    unsigned char nextWindowId;
     char padb2;
-    unsigned char b3;
-    unsigned char b4;
-    unsigned char b5;
-    unsigned char b6;
-    unsigned char b7;
+    unsigned char windowCapacity;
+    unsigned char windowCount;
+    unsigned char flagBit2;
+    unsigned char noHorizontalInset;
+    unsigned char fontHeight;
 };
 
 // USA: func_0205d304
-extern "C" ARM void func_0205d304(struct Ctx0205d304* obj, int flag, int r8arg, int r7arg,
+extern "C" ARM void func_0205d304(struct Ctx0205d304* renderer, const char* text, int mode, unsigned char border,
 #if defined(jpn)
-                                       unsigned char a5, unsigned char a6, void* a7) {
+                                       unsigned char flagBit3, unsigned char fullWidth, void* extraStyle) {
 #else
-                                       unsigned char a5, unsigned char a6, void* a7, unsigned char a8) {
+                                       unsigned char flagBit3, unsigned char fullWidth, void* extraStyle, unsigned char font) {
 #endif
     struct Elem0205d304* elem;
     struct Elem0205d304* e;
@@ -64,95 +68,79 @@ extern "C" ARM void func_0205d304(struct Ctx0205d304* obj, int flag, int r8arg, 
     int matched;
     int j;
     unsigned char i;
-    int value;
-    int off;
-    short tx;
-    short ty;
+    unsigned int value;
 
-    if (flag == 0 || obj->list98 == NULL || obj->list9c == NULL) return;
-    if (obj->b3 <= obj->b4) return;
-    if (_Z23FindElementByC40205d81cP15Struct_0205d81ci((struct Struct_0205d81c*)obj, obj->b1) != 0) return;
+    if (text == 0 || renderer->styles == NULL || renderer->windows == NULL) return;
+    if (renderer->windowCapacity <= renderer->windowCount) return;
+    if (_Z23FindElementByC40205d81cP15Struct_0205d81ci((struct Struct_0205d81c*)renderer, renderer->nextWindowId) != 0) return;
 
-    elem = &obj->list9c[obj->b4];
-    ty = obj->a0[0].y;
-    tx = obj->a0[0].x;
-    elem->s8[0].x = tx;
-    elem->s8[0].y = ty;
-    ty = obj->a0[1].y;
-    tx = obj->a0[1].x;
-    elem->s8[1].x = tx;
-    elem->s8[1].y = ty;
-    ty = obj->a0[2].y;
-    tx = obj->a0[2].x;
-    elem->s8[2].x = tx;
-    elem->s8[2].y = ty;
-    ty = obj->a0[3].y;
-    tx = obj->a0[3].x;
-    elem->s8[3].x = tx;
-    elem->s8[3].y = ty;
-    if (a5) {
+    elem = &renderer->windows[renderer->windowCount];
+    elem->layout[0].Set(renderer->layout[0].x, renderer->layout[0].y);
+    elem->layout[1].Set(renderer->layout[1].x, renderer->layout[1].y);
+    elem->layout[2].Set(renderer->layout[2].x, renderer->layout[2].y);
+    elem->layout[3].Set(renderer->layout[3].x, renderer->layout[3].y);
+    if (flagBit3) {
         elem->flags |= 8;
     } else {
         elem->flags &= ~8;
     }
-    elem->c4 = obj->b1;
-    if (obj->b5) {
+    elem->id = renderer->nextWindowId;
+    if (renderer->flagBit2) {
         elem->flags |= 4;
     } else {
         elem->flags &= ~4;
     }
-    if (obj->b6) {
+    if (renderer->noHorizontalInset) {
         elem->flags |= 0x10;
     } else {
         elem->flags &= ~0x10;
     }
-    elem->c7 = obj->b7;
-    _Z24CopyOrClearField0204c770PcPv((char*)elem, a7);
+    elem->fontHeight = renderer->fontHeight;
+    _Z24CopyOrClearField0204c770PcPv((char*)elem, extraStyle);
 
-    if (obj->b4 != 0) {
+    if (renderer->windowCount != 0) {
         matched = 0;
-        GetNibbles((struct Obj5d594*)elem->p4, &lowA, &highA);
-        for (j = obj->b4 - 1; j >= 0; j--) {
-            off = j * 0xe0;
-            e = (struct Elem0205d304*)((char*)obj->list9c + off);
-            GetNibbles((struct Obj5d594*)e->p4, &lowB, &highB);
+        GetNibbles((struct Obj5d594*)elem->style, &lowA, &highA);
+        for (j = renderer->windowCount - 1; j >= 0; j--) {
+            e = &renderer->windows[j];
+            GetNibbles((struct Obj5d594*)e->style, &lowB, &highB);
             if (lowA == lowB && highA == highB) {
-                e = (struct Elem0205d304*)((char*)obj->list9c + off);
-                value = e->a0 + e->a4;
+                e = &renderer->windows[j];
+                value = e->destination + e->pixelBytes;
 #if defined(jpn)
-                func_0204d790(elem, flag, value, r8arg, r7arg, a6);
+                func_0204d790(elem, text, value, mode, border, fullWidth);
 #else
-                func_0204c980(elem, flag, value, r8arg, r7arg, a6, a8);
+                func_0204c980(elem, text, value, mode, border, fullWidth, font);
 #endif
                 matched = 1;
                 break;
             }
         }
         if (!matched) {
-            value = GetScaledElementPtr((struct ScaledElementList0204aa28*)elem->p4);
+            value = GetScaledElementPtr((struct ScaledElementList0204aa28*)elem->style);
 #if defined(jpn)
-            func_0204d790(elem, flag, value, r8arg, r7arg, a6);
+            func_0204d790(elem, text, value, mode, border, fullWidth);
 #else
-            func_0204c980(elem, flag, value, r8arg, r7arg, a6, a8);
+            func_0204c980(elem, text, value, mode, border, fullWidth, font);
 #endif
         }
         elem->flags &= ~0x20;
-        for (i = 0; i < obj->b4; i++) {
-            e = &obj->list9c[i];
+        for (i = 0; i < renderer->windowCount; i++) {
+            e = &renderer->windows[i];
             e->c2 = 1;
         }
     } else {
-        value = GetScaledElementPtr((struct ScaledElementList0204aa28*)elem->p4);
+        value = GetScaledElementPtr((struct ScaledElementList0204aa28*)elem->style);
 #if defined(jpn)
-        func_0204d790(elem, flag, value, r8arg, r7arg, a6);
+        func_0204d790(elem, text, value, mode, border, fullWidth);
 #else
-        func_0204c980(elem, flag, value, r8arg, r7arg, a6, a8);
+        func_0204c980(elem, text, value, mode, border, fullWidth, font);
 #endif
         elem->flags &= ~0x20;
     }
 
-    obj->b4++;
-    _Z18ResetState0205bf3cP15Struct_0205bf3c((struct Struct_0205bf3c*)obj->resetState);
-    obj->b0 = obj->b1;
-    _Z23ApplyElemFields0205d904Ph((unsigned char*)obj);
+    renderer->windowCount++;
+    _Z18ResetState0205bf3cP15Struct_0205bf3c((struct Struct_0205bf3c*)renderer->resetState);
+    renderer->activeWindowId = renderer->nextWindowId;
+    _Z23ApplyElemFields0205d904Ph((unsigned char*)renderer);
 }

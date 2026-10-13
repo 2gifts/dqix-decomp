@@ -2,19 +2,28 @@
 
 #if defined(jpn)
 #include "Resource/Script.h"
-struct OpcodeState021fff08 { char pad[8]; char* object; };
-extern struct OpcodeState021fff08 data_ov023_021fff08;
+
+struct DownloadedQuestView {
+    char unknown00[0x50];
+    unsigned int flags;
+};
+
+struct DownloadScriptState {
+    unsigned char count;
+    unsigned char checked;
+    unsigned char choosing;
+    unsigned char index;
+    void* items;
+    DownloadedQuestView* quest;
+};
+
+extern DownloadScriptState data_ov023_021fff08;
 #endif
 
-#if defined(jpn)
-#define NoOpReturnTrue_021f5b94 func_ov023_021f514c
-#endif
-
-// USA: func_ov023_021f5b94
 #if defined(jpn)
 extern "C"
 #endif
-ARM int NoOpReturnTrue_021f5b94(
+ARM int HandleDownloadedQuestFlagsOpcode(
 #if defined(jpn)
     Script::Parameter* params, int numParams
 #else
@@ -23,10 +32,10 @@ ARM int NoOpReturnTrue_021f5b94(
 ) {
 #if defined(jpn)
     if (params->ToInt() != 0) {
-        *(int*)(data_ov023_021fff08.object + 0x50) |= 1;
+        data_ov023_021fff08.quest->flags |= 1;
     } else {
-        *(int*)(data_ov023_021fff08.object + 0x50) &= 1;
+        data_ov023_021fff08.quest->flags &= 1;
     }
 #endif
-	return 1;
+    return 1;
 }

@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 
 #include "Combat/Main/BattleList.h"
+#include "Combat/ResourceScriptEntry.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Filesystem/FileIO.h"
 #include "GameState/GameState.h"
@@ -11,9 +12,9 @@
 #define data_020f1019 data_020f113b
 #define data_020f102e data_020f1153
 #define _Z28SetBitsFromIndexList02083b8cPhS_j func_020844a0
-enum { LevelMaskOffset = 0x8bc, SelectedLevelOffset = 0x8b8 };
+enum { SelectedVocationOffset = 0x8b8 };
 #else
-enum { LevelMaskOffset = 0x954, SelectedLevelOffset = 0x950 };
+enum { SelectedVocationOffset = 0x950 };
 #endif
 
 struct StreamHeader;
@@ -25,88 +26,104 @@ extern unsigned char data_0211e33c[0x30000];
 
 int GetFieldAt0x150(unsigned char* obj);
 extern "C" void* _Z22Clear0x54Bytes0208247cPv(void* obj);
-extern "C" int _Z24InitAndRunScript0208274cPvP12StreamHeaderii(void* ctx, StreamHeader* script, int size, int arg3);
+extern "C" int _Z24InitAndRunScript0208274cPvP12StreamHeaderii(void* spellTable, StreamHeader* script, int size, int arg3);
 extern "C" void func_02083cbc(void* dst, void* src, void* tail);
 extern "C" void func_02083e28(void* model, int arg);
-extern "C" void _Z28SetBitsFromIndexList02083b8cPhS_j(unsigned char* obj, unsigned char* list, unsigned int count);
+extern "C" void _Z28SetBitsFromIndexList02083b8cPhS_j(unsigned char* obj, unsigned char* learnedSpells, unsigned int count);
 extern "C" void _Z19ClearField00209a804Pi(int* field);
-extern "C" void _Z33SetupAndRunBufferedScript0209a8b4P11Ctx0209a8b4P13SafeAllocatorP12StreamHeaderi(Ctx0209a8b4* ctx, SafeAllocator* alloc, StreamHeader* buffer, int length);
+extern "C" void _Z33SetupAndRunBufferedScript0209a8b4P11Ctx0209a8b4P13SafeAllocatorP12StreamHeaderi(Ctx0209a8b4* spellTable, SafeAllocator* spellAllocator, StreamHeader* buffer, int length);
 extern "C" int func_0209aa54(void* holder, unsigned char* path, unsigned char* out, int threshold);
-extern "C" void _Z27EnqueueEventTag176_021ce614hhh(unsigned char a, unsigned char b, unsigned char c);
+extern "C" void _Z27EnqueueEventTag176_021ce614hhh(unsigned char combatantId, unsigned char level, unsigned char vocation);
 
-struct Entry0208 {
-    unsigned int dword0;
-    unsigned short low : 7;
-    unsigned short high : 9;
-    unsigned char pad[0x3c - 6];
-    unsigned char tail[0x18];
+struct VocationRecord {
+    unsigned char unknown0[0x138];
+    unsigned int experience[13];
+    unsigned short levels[13];
+    unsigned char unknown186[0x564 - 0x186];
+    unsigned short unknown564;
+    unsigned char unknown566[SelectedVocationOffset - 0x566];
+    int currentVocation;
+    unsigned short unlockedVocations;
 };
 
-// USA: func_020897b4
-extern "C" ARM void func_020897b4(unsigned char a, unsigned char b, int c, unsigned char d,
-                                 unsigned char e, void* f, unsigned int g, void* h, unsigned int i) {
-    char path[0x50];
-    Entry0208 entry;
-    char heap[0x600];
-    SafeAllocator alloc;
-    unsigned char list[0x14];
-    unsigned int size;
-    Ctx0209a8b4 ctx;
+struct RestorationState {
+    unsigned int flags;
+    unsigned short hp;
+    unsigned short mp;
+};
 
-    GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), a);
+struct CombatantRestorationView {
+    unsigned char unknown0[0x130];
+    RestorationState* restoration;
+};
+
+
+
+// USA: func_020897b4
+extern "C" ARM void func_020897b4(unsigned char combatantId, unsigned char level, int vocation, unsigned char notifyLevelChange,
+                                 unsigned char restoreHpMp, void* levelScript, unsigned int levelScriptSize, void* spellScript, unsigned int spellScriptSize) {
+    char path[0x50];
+    ResourceScriptEntry entry;
+    char heap[0x600];
+    SafeAllocator spellAllocator;
+    unsigned char learnedSpells[0x14];
+    unsigned int size;
+    Ctx0209a8b4 spellTable;
+
+    GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), combatantId);
     if (combatant == 0) {
         return;
     }
     BackgroundLoader::AddLockGlobal();
 
-    if (f == 0) {
-        sprintf(path, data_020f1019, c);
+    if (levelScript == 0) {
+        sprintf(path, data_020f1019, vocation);
         if (LoadFileIntoMemory(path, &data_0211e33c, &size) == 0) {
             BackgroundLoader::RemoveLockGlobal();
             return;
         }
-        f = &data_0211e33c;
-        g = size;
+        levelScript = &data_0211e33c;
+        levelScriptSize = size;
     }
 
     _Z22Clear0x54Bytes0208247cPv(&entry);
-    _Z24InitAndRunScript0208274cPvP12StreamHeaderii(&entry, (StreamHeader*)f, g, b);
+    _Z24InitAndRunScript0208274cPvP12StreamHeaderii(&entry, (StreamHeader*)levelScript, levelScriptSize, level);
 
-    Entry0208* ep = &entry;
-    ep++;
-    unsigned char* field = (unsigned char*)(int)GetFieldAt0x150((unsigned char*)combatant);
-    *(unsigned short*)(field + LevelMaskOffset) |= 1 << c;
-    *(int*)(field + SelectedLevelOffset) = c;
-    *(unsigned short*)(field + c * 2 + 0x16c) = b;
-    *(int*)(field + c * 4 + 0x138) = (ep - 1)->dword0;
-    *(unsigned short*)(field + 0x564) = (ep - 1)->high;
-    func_02083cbc(field, ep - 1, &entry.tail);
+    ResourceScriptEntry* const levelData = &entry;
+    VocationRecord* record = reinterpret_cast<VocationRecord*>(GetFieldAt0x150((unsigned char*)combatant));
+    record->unlockedVocations |= 1 << vocation;
+    record->currentVocation = vocation;
+    record->levels[vocation] = level;
+    record->experience[vocation] = levelData->initial.value0;
+    record->unknown564 = levelData->initial.value4High;
+    func_02083cbc(record, levelData, entry.variants);
 
-    if (e != 0) {
-        func_02083e28(field, 0);
-        *(unsigned short*)(*(char**)((char*)combatant + 0x130) + 4) = *(unsigned short*)(*(char**)((char*)combatant + 0x134) + 0x30);
-        *(unsigned short*)(*(char**)((char*)combatant + 0x130) + 6) = *(unsigned short*)(*(char**)((char*)combatant + 0x134) + 0x32);
+    if (restoreHpMp != 0) {
+        func_02083e28(record, 0);
+        CombatantRestorationView* actor = reinterpret_cast<CombatantRestorationView*>(combatant);
+        actor->restoration->hp = combatant->baseStats_->primaryStats.maxHP;
+        actor->restoration->mp = combatant->baseStats_->primaryStats.maxMP;
     }
 
-    if (h == 0) {
+    if (spellScript == 0) {
         if (LoadFileIntoMemory(data_020f102e, &data_0211e33c, &size) != 0) {
-            h = &data_0211e33c;
-            i = size;
+            spellScript = &data_0211e33c;
+            spellScriptSize = size;
         }
     }
 
-    if (h != 0) {
-        alloc.ResetAllocatorPointer();
-        alloc.CreateTypeA(heap, 0x600);
-        _Z19ClearField00209a804Pi((int*)&ctx);
-        _Z33SetupAndRunBufferedScript0209a8b4P11Ctx0209a8b4P13SafeAllocatorP12StreamHeaderi(&ctx, &alloc, (StreamHeader*)h, i);
-        unsigned int count = func_0209aa54(&ctx, (unsigned char*)(int)combatant, list, 0);
-        _Z28SetBitsFromIndexList02083b8cPhS_j(field, list, count);
-        alloc.Destroy();
+    if (spellScript != 0) {
+        spellAllocator.ResetAllocatorPointer();
+        spellAllocator.CreateTypeA(heap, 0x600);
+        _Z19ClearField00209a804Pi((int*)&spellTable);
+        _Z33SetupAndRunBufferedScript0209a8b4P11Ctx0209a8b4P13SafeAllocatorP12StreamHeaderi(&spellTable, &spellAllocator, (StreamHeader*)spellScript, spellScriptSize);
+        unsigned int count = func_0209aa54(&spellTable, (unsigned char*)combatant, learnedSpells, 0);
+        _Z28SetBitsFromIndexList02083b8cPhS_j(reinterpret_cast<unsigned char*>(record), learnedSpells, count);
+        spellAllocator.Destroy();
     }
 
-    if (d != 0) {
-        _Z27EnqueueEventTag176_021ce614hhh(a, b, e);
+    if (notifyLevelChange != 0) {
+        _Z27EnqueueEventTag176_021ce614hhh(combatantId, level, restoreHpMp);
     }
 
     BackgroundLoader::RemoveLockGlobal();

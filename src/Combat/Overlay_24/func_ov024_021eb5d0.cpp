@@ -121,7 +121,7 @@ struct Entry_021eb5d0 {
 
 struct Chain_021eb5d0 {
     char pad0[0x18];
-    int f18;
+    float f18;
     short f1c;
     short f1e;
     short f20;
@@ -167,7 +167,7 @@ struct Act_021eb5d0 {
     struct World_021eb5d0* f10;
     int f14;
     int f18;
-    int f1c;
+    float f1c;
     unsigned char f20[8];
     unsigned char f28[0x10];
     unsigned char f38[4];
@@ -211,7 +211,7 @@ struct Stats_021eb5d0 {
 struct Fighter_021eb5d0 {
     char pad0[0x138];
     struct Stats_021eb5d0* f138;
-    // The player-data pointer is at 0x144 in JPN and 0x150 in USA.
+
 #if defined(jpn)
     char pad1[8];
 #else
@@ -229,8 +229,8 @@ struct World_021eb5d0 {
     signed char fe06;
     char pad2[0x31];
     int fe38;
-    int fe3c;
-    int fe40;
+    float fe3c;
+    float fe40;
     char pad3[0x10];
     short fe54;
     char pad4[0x18];
@@ -272,7 +272,7 @@ struct Ids8_021eb5d0 {
     short v[8];
 };
 extern "C" struct Ids8_021eb5d0 data_ov024_021fe718;
-extern "C" int data_ov024_021fe738[4];
+extern "C" float data_ov024_021fe738[4];
 extern "C" struct Ids8_021eb5d0 data_ov024_021fe788;
 struct Targets_021eb5d0 {
     short v[32];
@@ -290,13 +290,7 @@ extern "C" short func_ov024_021eaa50(struct Act_021eb5d0* self, struct Src_021eb
 extern "C" short func_ov000_0215cda0(void* world);
 extern "C" int func_ov024_021e8dc0(struct Act_021eb5d0* self, int id, struct Rec_021eb5d0* rec, short* list, int count);
 extern "C" int _Z13GetTableValuePv(void* p);
-extern "C" int _ffltu(unsigned int v);
-extern "C" int _fflt(int v);
-extern "C" int _ffix(int v);
-extern "C" int _fadd(int a, int b);
-extern "C" int _fmul(int a, int b);
-extern "C" int _fgr(int a, int b);
-extern "C" int _Z21NextRandomFloatScaledP6Randomffi(void* rng, int lo, int hi, int mode);
+extern "C" float _Z21NextRandomFloatScaledP6Randomffi(void* rng, float lo, float hi, int mode);
 extern "C" int _Z13NextRandomMaxP6Randomi(void* rng, int max);
 extern "C" int _Z32IsCombatantFlag2Mask512_021eadfcP10GameObject(void* c);
 extern "C" int _Z17ConsumeMP0215a124Pvii(void* world, int id, int amount);
@@ -331,7 +325,7 @@ extern "C" int _Z19GetAttackBaseDamagePiiiS_S_(struct Act_021eb5d0* self, int a,
 extern "C" void _Z24ClearFirstField_021da550Pi(int* p);
 extern "C" int func_ov024_021da55c(int* p, void* world, unsigned short a, unsigned short b, int n, struct Rec_021eb5d0* rec, int dmg);
 extern "C" unsigned char* _Z15GetFieldAt0x150Ph(void* c);
-extern "C" int _Z20LookupTableD0Clampedi(int v);
+extern "C" float _Z20LookupTableD0Clampedi(int v);
 extern "C" int func_ov024_021e67c8(struct Act_021eb5d0* self, int a, int b);
 extern "C" int func_ov024_021e6948(struct Act_021eb5d0* self, int a, int b, int c);
 extern "C" int func_ov024_021e6a90(struct Act_021eb5d0* self, int a, int b, struct Rec_021eb5d0* rec, unsigned short dmg);
@@ -417,7 +411,7 @@ extern "C" ARM void func_ov024_021eb5d0(struct Act_021eb5d0* self, struct World_
     if (rec == 0) return;
     self->f6d = 1;
     self->f6e = 0;
-    self->f1c = 0x3f800000;
+    self->f1c = 1.0f;
     self->f47 = 0;
     memset(self->f20, -1, 8);
     memset(self->f28, -1, 0x10);
@@ -492,14 +486,14 @@ extern "C" ARM void func_ov024_021eb5d0(struct Act_021eb5d0* self, struct World_
         case 0x200:
             if (pc != 0) {
                 int lvl = _Z13GetTableValuePv(pc);
-                int scale = _fadd(0x3f800000, _fmul(0x3c23d70a, _fadd(0x41300000, _ffltu(lvl))));
-                if (_fgr(scale, 0x40000000)) scale = 0x40000000;
-                self->f10->fe3c = _Z21NextRandomFloatScaledP6Randomffi(w, 0x3f8ccccd, scale, 1);
+                float scale = 1.0f + 0.01f * (11.0f + (float)(unsigned int)lvl);
+                if (scale > 2.0f) scale = 2.0f;
+                self->f10->fe3c = _Z21NextRandomFloatScaledP6Randomffi(w, 1.1f, scale, 1);
                 self->f4->f10->f18 = self->f10->fe3c;
             }
             break;
         case 0x20c:
-            self->f10->fe3c = _Z21NextRandomFloatScaledP6Randomffi(w, 0x3fc00000, 0x40400000, 1);
+            self->f10->fe3c = _Z21NextRandomFloatScaledP6Randomffi(w, 1.5f, 3.0f, 1);
             self->f10->fe40 = self->f10->fe3c;
             break;
         }
@@ -746,10 +740,10 @@ extern "C" ARM void func_ov024_021eb5d0(struct Act_021eb5d0* self, struct World_
                     }
                 }
                 if (scaled != 0) {
-                    int mul = _Z20LookupTableD0Clampedi((signed char)i);
-                    dmg = _ffix(_fmul(_fflt(dmg), mul));
+                    float mul = _Z20LookupTableD0Clampedi((signed char)i);
+                    dmg = (int)((float)dmg * mul);
                 }
-                if (rec2->f4.id == 0x79) dmg = _ffix(_fmul(0x3f4ccccd, _fflt(dmg)));
+                if (rec2->f4.id == 0x79) dmg = (int)(0.8f * (float)dmg);
             }
             if (flagF != 0) {
                 dmg = func_ov024_021e67c8(self, s6, s4);
@@ -902,8 +896,8 @@ extern "C" ARM void func_ov024_021eb5d0(struct Act_021eb5d0* self, struct World_
                 int roll = _Z13NextRandomMaxP6Randomi(self->f10, 0x64);
                 unsigned int idx = func_ov024_021eb2b4(self) & 0xff;
                 if (idx >= 4) idx = 3;
-                int mult = data_ov024_021fe738[idx];
-                int thr = _ffix(_fmul(mult, _ffltu(func_ov024_021eb344(self, s4, val) + rec->f2c.c)));
+                float mult = data_ov024_021fe738[idx];
+                int thr = (int)(mult * (float)(unsigned int)(func_ov024_021eb344(self, s4, val) + rec->f2c.c));
                 if (_Z19ClassifyField0x81fePc(self->f10) != 0) thr = 0;
                 if (roll < thr) {
                     pc->f138->f3b.b3 = 1;
@@ -951,10 +945,10 @@ extern "C" ARM void func_ov024_021eb5d0(struct Act_021eb5d0* self, struct World_
             int roll = _Z13NextRandomMaxP6Randomi(self->f10, 0x64);
             unsigned int idx = func_ov024_021eb2b4(self) & 0xff;
             if (idx >= 4) idx = 3;
-            int mult = data_ov024_021fe738[idx];
+            float mult = data_ov024_021fe738[idx];
             int bonus = _Z19SumField4Bits20To26Pc(pc->f150);
             int sum = func_ov000_02159d24(self->f10, id) + rec->f2c.c;
-            int thr = _ffix(_fmul(mult, _ffltu(sum + bonus)));
+            int thr = (int)(mult * (float)(unsigned int)(sum + bonus));
             if (_Z19ClassifyField0x81fePc(self->f10) != 0) thr = 0;
             if (roll < thr) {
                 pc->f138->f3b.b3 = 1;

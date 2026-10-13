@@ -1,20 +1,20 @@
 #include <globaldefs.h>
 
+struct MenuSelection {
 #if defined(jpn)
-#define func_ov004_02163478 func_ov004_02163a6c
-enum { kCurrentState = 0x9fa, kPreviousState = 0x9fb };
+    char unknown0[0x19fa];
 #else
-enum { kCurrentState = 0x8fa, kPreviousState = 0x8fb };
+    char unknown0[0x18fa];
 #endif
+    unsigned char current;
+    unsigned char previous;
+};
 
-
-
-// USA: func_ov004_02163478  (semantic: CycleFieldState_02163478)
-extern "C" ARM void func_ov004_02163478(unsigned char* obj) {
-    obj += 0x1000;
-    obj[kPreviousState] = obj[kCurrentState];
-    unsigned char v = obj[kCurrentState];
-    if (v == 0) { obj[kCurrentState] = 1; return; }
-    if (v == 1) { obj[kCurrentState] = 2; return; }
-    if (v == 2) { obj[kCurrentState] = 0; return; }
+// USA: func_ov004_02163478
+extern "C" ARM void func_ov004_02163478(MenuSelection* selection) {
+    selection->previous = selection->current;
+    unsigned char current = selection->current;
+    if (current == 0) { selection->current = 1; return; }
+    if (current == 1) { selection->current = 2; return; }
+    if (current == 2) { selection->current = 0; return; }
 }

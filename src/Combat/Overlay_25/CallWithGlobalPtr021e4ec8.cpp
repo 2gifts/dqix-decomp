@@ -11,7 +11,12 @@ enum { kGlobalHolderInnerOffset = 0xc };
 #define CallWithGlobalPtr021e4ec8 func_ov025_021e53b8
 #endif
 
-extern void* data_ov025_021ef988;
+struct CombatContext;
+struct CombatGlobals {
+    char unknown0[kGlobalHolderInnerOffset];
+    CombatContext* context;
+};
+extern CombatGlobals data_ov025_021ef988;
 
 extern "C" void func_ov025_021e8af8(void* param);
 
@@ -20,6 +25,6 @@ extern "C" void func_ov025_021e8af8(void* param);
 extern "C"
 #endif
 ARM int CallWithGlobalPtr021e4ec8(void) {
-    func_ov025_021e8af8(*(void**)((char*)&data_ov025_021ef988 + kGlobalHolderInnerOffset));
+    func_ov025_021e8af8(data_ov025_021ef988.context);
     return 1;
 }

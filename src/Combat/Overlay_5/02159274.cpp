@@ -2,13 +2,13 @@
 
 #if defined(jpn)
 #define func_ov005_02159274 func_ov005_0215a78c
-enum { kEntryPad = 8, kYesNo = 0xe60, kTextBytes = 0x800, kPanel = 0xee0 };
+enum { kYesNo = 0xe60, kTextBytes = 0x800, kPanel = 0xee0 };
 #define func_ov005_021589f4 func_ov005_02159fd0
 #define func_ov005_02159b74 func_ov005_0215b0b8
 #define func_ov005_02158b3c func_ov005_0215a110
 #define func_ov005_02157b74 func_ov005_0215916c
 #else
-enum { kEntryPad = 0x90, kYesNo = 0xe64, kTextBytes = 0x960, kPanel = 0xee4 };
+enum { kYesNo = 0xe64, kTextBytes = 0x960, kPanel = 0xee4 };
 #endif
 
 
@@ -29,60 +29,44 @@ struct ItemBits02159274 {
     unsigned int pad1 : 13;
 };
 
-struct SlotBlock02159274 {
-    char unk_0[0xbb];
-    signed char slot_;
-};
-
-struct Entry02159274 {
+struct EquipmentSlot02159274 {
     short id;
-    signed char state_;
-    char pad[0x1c - 3];
-};
-
-struct EntryBlock02159274 {
-    char unk_0[kEntryPad];
-    Entry02159274 entries_[22];
-    char unk_2ff8[0x3000 - 0x2ff8];
-};
-
-struct MenuTail02159274 {
-    char unk_0[0xdaa];
-    unsigned char f3daa_;
-    char unk_dab[0xdcc - 0xdab];
-    unsigned int dirty_;
-    unsigned char unk_dd0;
-    unsigned char message_;
-    char unk_dd2[0xddc - 0xdd2];
-    unsigned char step_;
-    unsigned char unk_ddd;
-    unsigned char unk_dde;
-    unsigned char menuState_;
-};
-
-struct MenuSlotView02159274 {
-    char unk_0[0x3d00 - 0x3000];
-    SlotBlock02159274 slotblk_;
-    char unk_1[0x3de0 - 0x3dbc];
-};
-
-struct MenuViews02159274 {
-    union {
-        MenuTail02159274 tail_;
-        MenuSlotView02159274 slotview_;
-    };
+    signed char count;
+    unsigned char equipped;
+    void* vramState;
+    void* model;
+    int x;
+    int y;
+    int offset;
+    short loadedItem;
 };
 
 struct Menu02159274 {
-    char unk_0[0xdf4];
+    char unknown0[0xdf4];
     Container020dedd0* items_;
-    char unk_df8[0xe10 - 0xdf8];
+    char unknownDf8[0xe10 - 0xdf8];
     char* text_;
-    char unk_e14[kYesNo - 0xe14];
+    char unknownE14[kYesNo - 0xe14];
     void* yesNo_;
-    char unk_e68[0x2d00 - kYesNo - 4];
-    EntryBlock02159274 eblk_;
-    MenuViews02159274 views_;
+#if defined(jpn)
+    char unknownAfterYesNo[0x2d08 - kYesNo - 4];
+#else
+    char unknownAfterYesNo[0x2d90 - kYesNo - 4];
+#endif
+    EquipmentSlot02159274 slots[24];
+    char unknownAfterSlots[0x3daa - 0x3030];
+    unsigned char f3daa_;
+    char unknownDab[0x3dbb - 0x3dab];
+    signed char selectedSlot;
+    char unknownDbc[0x3dcc - 0x3dbc];
+    unsigned int dirty_;
+    unsigned char unknownDd0;
+    unsigned char message_;
+    char unknownDd2[0x3ddc - 0x3dd2];
+    unsigned char step_;
+    unsigned char unknownDdd;
+    unsigned char unknownDde;
+    unsigned char menuState_;
 };
 
 extern "C" char data_02108760[];
@@ -117,14 +101,14 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
     if (self->yesNo_ != 0 && _Z24GetInnerFlagBit0020e28dcP13Outer020e28dc((Outer020e28dc*)self->yesNo_))
         _Z27UpdateEntryStateAndPositionP11Ctx020e263ci((Ctx020e263c*)self->yesNo_, sel);
 
-    if (self->views_.tail_.step_ == 0) {
-        self->views_.tail_.message_ = 8;
+    if (self->step_ == 0) {
+        self->message_ = 8;
         func_ov005_021589f4(self);
         func_ov005_02159b74(self);
-        self->views_.tail_.step_++;
+        self->step_++;
         return;
     }
-    if (self->views_.tail_.step_ == 1) {
+    if (self->step_ == 1) {
         sel = _Z26GetField0x15UnlessInactivePa(self->yesNo_);
         if (sel >= 0) {
             _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)data_02108760, 1, 0);
@@ -139,15 +123,15 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
             int flag;
             item = _Z24FindElementByKey020dedd0P17Container020dedd0i(
                 self->items_,
-                self->eblk_.entries_[self->views_.slotview_.slotblk_.slot_].id);
+                self->slots[self->selectedSlot].id);
             flag = _Z23GetFlagFromField0x8BitsP14Struct020dd768((Struct020dd768*)item);
             if (flag == 1) {
-                self->views_.tail_.message_ = 0xa;
+                self->message_ = 0xa;
                 memset(self->text_, 0, kTextBytes);
                 func_ov005_02158b3c(self, self->text_);
-                if (self->views_.slotview_.slotblk_.slot_ >= 0 && self->views_.slotview_.slotblk_.slot_ < 8) {
+                if (self->selectedSlot >= 0 && self->selectedSlot < 8) {
                     if (((ItemBits02159274*)((char*)item + 8))->flag18) {
-                        self->views_.tail_.message_ = 0xc;
+                        self->message_ = 0xc;
                         memset(self->text_, 0, kTextBytes);
                         func_ov005_02158b3c(self, self->text_);
                         _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(
@@ -156,13 +140,13 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
                             , 0
 #endif
                         );
-                        self->views_.tail_.menuState_ = 4;
-                        self->views_.tail_.step_ = 0;
+                        self->menuState_ = 4;
+                        self->step_ = 0;
                         return;
                     }
                     func_ov005_02157b74(self, 0xffff, 1);
-                } else if (self->views_.slotview_.slotblk_.slot_ >= 8 &&
-                       self->views_.slotview_.slotblk_.slot_ < 0x18) {
+                } else if (self->selectedSlot >= 8 &&
+                       self->selectedSlot < 0x18) {
                     char* list = _Z17GetPtrField0x2a04P9GameState(GameState::GetInstance());
                     int amount = ((ItemBits02159274*)((char*)item + 8))->amount;
                     sel = *(short*)((char*)item + 0x18);
@@ -171,14 +155,14 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
                     notfound = 1;
                     func_ov005_021555c0(self);
                     for (int i = 8; i < 0x18; i++) {
-                        if (self->eblk_.entries_[i].id == sel) {
+                        if (self->slots[i].id == sel) {
                             notfound = 0;
                             break;
                         }
                     }
                     if (notfound) {
-                        self->views_.tail_.dirty_ |= 0x40;
-                        self->views_.tail_.f3daa_ = 0;
+                        self->dirty_ |= 0x40;
+                        self->f3daa_ = 0;
                     }
                 }
                 _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(
@@ -188,7 +172,7 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
 #endif
                         );
             } else if (flag == 2) {
-                self->views_.tail_.message_ = 9;
+                self->message_ = 9;
                 memset(self->text_, 0, kTextBytes);
                 func_ov005_02158b3c(self, self->text_);
                 _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(
@@ -197,10 +181,10 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
                             , 0
 #endif
                         );
-                self->views_.tail_.step_++;
+                self->step_++;
                 return;
             } else if (flag == 4) {
-                self->views_.tail_.message_ = 0xb;
+                self->message_ = 0xb;
                 memset(self->text_, 0, kTextBytes);
                 func_ov005_02158b3c(self, self->text_);
                 _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(
@@ -210,23 +194,23 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
 #endif
                         );
             }
-            self->views_.tail_.menuState_ = 4;
-            self->views_.tail_.step_ = 0;
+            self->menuState_ = 4;
+            self->step_ = 0;
             return;
         }
         if (sel == -2 || sel == 1) {
-            self->views_.tail_.menuState_ = 4;
-            self->views_.tail_.step_ = 0;
+            self->menuState_ = 4;
+            self->step_ = 0;
             return;
         }
         return;
     }
-    if (self->views_.tail_.step_ == 2) {
+    if (self->step_ == 2) {
         func_ov005_02159b74(self);
-        self->views_.tail_.step_++;
+        self->step_++;
         return;
     }
-    if (self->views_.tail_.step_ == 3) {
+    if (self->step_ == 3) {
         sel = _Z26GetField0x15UnlessInactivePa(self->yesNo_);
         if (sel >= 0) {
             _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)data_02108760, 1, 0);
@@ -238,15 +222,15 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
         if (sel == 0) {
             void* item;
             int notfound;
-            self->views_.tail_.message_ = 0xa;
+            self->message_ = 0xa;
             memset(self->text_, 0, kTextBytes);
             func_ov005_02158b3c(self, self->text_);
-            if (self->views_.slotview_.slotblk_.slot_ >= 0 && self->views_.slotview_.slotblk_.slot_ < 8) {
+            if (self->selectedSlot >= 0 && self->selectedSlot < 8) {
                 item = _Z24FindElementByKey020dedd0P17Container020dedd0i(
                     self->items_,
-                    self->eblk_.entries_[self->views_.slotview_.slotblk_.slot_].id);
+                    self->slots[self->selectedSlot].id);
                 if (((ItemBits02159274*)((char*)item + 8))->flag18) {
-                    self->views_.tail_.message_ = 0xc;
+                    self->message_ = 0xc;
                     memset(self->text_, 0, kTextBytes);
                     func_ov005_02158b3c(self, self->text_);
                     _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(
@@ -255,16 +239,16 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
                             , 0
 #endif
                         );
-                    self->views_.tail_.menuState_ = 4;
-                    self->views_.tail_.step_ = 0;
+                    self->menuState_ = 4;
+                    self->step_ = 0;
                     return;
                 }
                 func_ov005_02157b74(self, 0xffff, 1);
-            } else if (self->views_.slotview_.slotblk_.slot_ >= 8 && self->views_.slotview_.slotblk_.slot_ < 0x18) {
+            } else if (self->selectedSlot >= 8 && self->selectedSlot < 0x18) {
                 char* list = _Z17GetPtrField0x2a04P9GameState(GameState::GetInstance());
                 item = _Z24FindElementByKey020dedd0P17Container020dedd0i(
                     self->items_,
-                    self->eblk_.entries_[self->views_.slotview_.slotblk_.slot_].id);
+                    self->slots[self->selectedSlot].id);
                 sel = *(short*)((char*)item + 0x18);
                 _Z33DecrementKeyedStackAmount0207c484P17KeyedList0207c484iii(
                     list + 0x1d4,
@@ -274,14 +258,14 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
                 notfound = 1;
                 func_ov005_021555c0(self);
                 for (int i = 8; i < 0x18; i++) {
-                    if (self->eblk_.entries_[i].id == sel) {
+                    if (self->slots[i].id == sel) {
                         notfound = 0;
                         break;
                     }
                 }
                 if (notfound) {
-                    self->views_.tail_.dirty_ |= 0x40;
-                    self->views_.tail_.f3daa_ = 0;
+                    self->dirty_ |= 0x40;
+                    self->f3daa_ = 0;
                 }
             }
             _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(
@@ -290,13 +274,13 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
                             , 0
 #endif
                         );
-            self->views_.tail_.menuState_ = 4;
-            self->views_.tail_.step_ = 0;
+            self->menuState_ = 4;
+            self->step_ = 0;
             return;
         }
         if (sel == -2 || sel == 1) {
-            self->views_.tail_.menuState_ = 4;
-            self->views_.tail_.step_ = 0;
+            self->menuState_ = 4;
+            self->step_ = 0;
             return;
         }
         return;

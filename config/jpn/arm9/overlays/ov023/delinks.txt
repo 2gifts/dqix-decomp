@@ -2437,6 +2437,14 @@ src/Combat/Overlay_23/InitEvent13_021fc408.cpp:
     complete
     .text start:0x021fb700 end:0x021fb764
 
+src/Combat/Overlay_23/func_ov023_021f9da8.cpp:
+    complete
+    .text start:0x021f9234 end:0x021f9340
+
+src/Combat/Overlay_23/func_ov023_021e540c.cpp:
+    complete
+    .text start:0x021e55f0 end:0x021e580c
+
 src/Combat/Overlay_23/CopyBytesToInts_021e31b0.cpp:
     complete
     .text start:0x021e3508 end:0x021e353c
@@ -2624,10 +2632,6 @@ src/Combat/Overlay_23/SetFieldFromBlocka4_021eaddc.cpp:
 src/Combat/Overlay_23/SetFieldFromPtr2a04Offf68_021e9a78.cpp:
     complete
     .text start:0x021e99dc end:0x021e9a00
-
-src/Combat/Overlay_23/func_ov023_021e540c.cpp:
-    complete
-    .text start:0x021e55f0 end:0x021e580c
 
 src/Combat/Overlay_23/InitAndDispatch_021fd2b8.cpp:
     complete

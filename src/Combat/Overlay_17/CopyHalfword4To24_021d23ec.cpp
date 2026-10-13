@@ -1,10 +1,5 @@
 #include <globaldefs.h>
-
-#if defined(jpn)
-enum { kResourceTargetOffset = 0x34fc };
-#else
-enum { kResourceTargetOffset = 0x370c };
-#endif
+#include "Resource/GameResources.h"
 
 
 #if defined(jpn)
@@ -19,6 +14,6 @@ struct DstObj_021d23ec { unsigned char pad[0x24]; unsigned short h24; };
 extern "C"
 #endif
 ARM void CopyHalfword4To24_021d23ec(int unused0, SrcObj_021d23ec* src, int unused2, unsigned char* ov) {
-	DstObj_021d23ec* dst = *(DstObj_021d23ec**)(ov + kResourceTargetOffset);
+	DstObj_021d23ec* dst = (DstObj_021d23ec*)((GameResources*)ov)->unknown_ptr_array_36fc[4];
 	dst->h24 = src->h4;
 }

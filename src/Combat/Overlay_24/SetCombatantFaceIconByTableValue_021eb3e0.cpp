@@ -5,7 +5,8 @@ unsigned short GetTableValue(void* obj);
 
 struct StatsByte0x3b_021eb3e0 {
 	char unk[0x3b];
-	unsigned char byte0x3b;
+	unsigned char byte0x3b_lo : 4;
+	unsigned char byte0x3b : 4;
 };
 
 // USA: func_ov024_021eb3e0  (semantic: SetCombatantFaceIconByTableValue_021eb3e0)
@@ -19,22 +20,21 @@ extern "C" ARM void func_ov024_021eb3e0(void* unused, int combatantId) {
 	unsigned short value = GetTableValue(combatant);
 	if (value >= 0x4b) {
 		stats = (struct StatsByte0x3b_021eb3e0*)combatant->currentStats_;
-		stats->byte0x3b = (stats->byte0x3b & ~0xf0) | 0xa0;
+		stats->byte0x3b = 0xa;
 		return;
 	}
 	value = GetTableValue(combatant);
 	if (value >= 0x32) {
 		stats = (struct StatsByte0x3b_021eb3e0*)combatant->currentStats_;
-		stats->byte0x3b = (stats->byte0x3b & ~0xf0) | 0x90;
+		stats->byte0x3b = 0x9;
 		return;
 	}
 	value = GetTableValue(combatant);
-	stats = (struct StatsByte0x3b_021eb3e0*)combatant->currentStats_;
 	if (value >= 0x19) {
-		unsigned char b = *(volatile unsigned char*)&stats->byte0x3b;
-		stats->byte0x3b = (b & ~0xf0) | 0x80;
+		stats = (struct StatsByte0x3b_021eb3e0*)combatant->currentStats_;
+		stats->byte0x3b = 0x8;
 	} else {
-		unsigned char b = *(volatile unsigned char*)&stats->byte0x3b;
-		stats->byte0x3b = (b & ~0xf0) | 0x70;
+		stats = (struct StatsByte0x3b_021eb3e0*)combatant->currentStats_;
+		stats->byte0x3b = 0x7;
 	}
 }

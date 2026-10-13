@@ -1,53 +1,27 @@
 #include <globaldefs.h>
-
-struct State0204166c {
-    int f0;
-    int f4;
-    int f8;
-    int fc;
-    int f10;
-#if defined(jpn)
-    int f14;
-    unsigned char f18;
-    unsigned char f19;
-    unsigned char f1a;
-    unsigned char flag0 : 1;
-    unsigned char flag1 : 1;
-    unsigned char flag2 : 1;
-    unsigned char upperFlags : 5;
-#else
-    unsigned short f14;
-    unsigned char flag0 : 1;
-    unsigned char flag1 : 1;
-    unsigned char flag2 : 1;
-    unsigned char flag3 : 1;
-    unsigned char pad16 : 4;
-    unsigned char f17;
-    int f18;
-#endif
-};
+#include "Resource/MessageGlyphSlot.h"
 
 // USA: func_0204166c
-ARM void ResetState0204166c(struct State0204166c* s) {
-    s->f0 = 0;
-    s->f4 = 0;
-    s->f8 = -1;
-    s->fc = 0;
-    s->f10 = 0;
-    s->f14 = 0;
+ARM void ResetState0204166c(MessageGlyphSlot* slot) {
+    slot->pixels = NULL;
+    slot->textureOffset = 0;
+    slot->bitmapIndex = -1;
+    slot->x = 0;
+    slot->y = 0;
+    slot->depth = 0;
 #if defined(jpn)
-    s->f19 = 0;
-    s->f18 = 0;
-    s->f1a = 12;
-    s->flag0 = 0;
-    s->flag1 = 0;
-    s->flag2 = 0;
+    slot->encodedCharacter[1] = 0;
+    slot->encodedCharacter[0] = 0;
+    slot->fontPixelSize = 12;
+    slot->pendingUpload = 0;
+    slot->renderFlag1 = 0;
+    slot->renderFlag2 = 0;
 #else
-    s->f18 = 0;
-    s->flag0 = 0;
-    s->flag1 = 0;
-    s->flag2 = 0;
-    s->flag3 = 0;
-    s->f17 = 0;
+    slot->character = NULL;
+    slot->pendingUpload = 0;
+    slot->renderFlag1 = 0;
+    slot->renderFlag2 = 0;
+    slot->fontIndex = 0;
+    slot->characterIndex = 0;
 #endif
 }

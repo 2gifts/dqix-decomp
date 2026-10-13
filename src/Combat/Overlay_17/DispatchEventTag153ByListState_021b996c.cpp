@@ -37,7 +37,7 @@ extern "C" ARM void func_ov017_021b996c(struct Obj021b996c* self, int combatantI
 
     int field5724;
     if (self->field12c != arg5 && (field5724 = *(int*)((char*)battle + RegionOffset5724)) != arg5) {
-        void* p = ((void* (*)(void*))func_ov017_0218b5b0)((void*)field5724);
+        void* p = func_ov017_0218b5b0();
         struct ListHead02046b60* list = *(struct ListHead02046b60**)((char*)p + 0x3000 + RegionOffset6fc);
         if (ListContainsId(list, 4)) {
             EnqueueEventTag153_021d079c(tag, 1, 0);

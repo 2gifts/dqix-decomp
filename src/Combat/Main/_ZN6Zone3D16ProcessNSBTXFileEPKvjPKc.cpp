@@ -1,13 +1,10 @@
 #include <globaldefs.h>
 
 #if defined(jpn)
-#define _ZN6Zone3D16ProcessNSBTXFileEPKvjPKc func_02014228
 #endif
 #include "World/Zone3D.h"
 #include "Filesystem/FileIO.h"
 #include "std_library_functions.h"
-
-struct SBTXFile;
 
 extern "C" void _Z25RestorePairTables0207df90Pc(char*);
 extern "C" void _Z24BackupPairTables0207dfacPc(char*);
@@ -15,9 +12,8 @@ extern "C" void _Z24BackupPairTables0207dfacPc(char*);
 // KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
 // USA: func_0201445c
 extern "C" ARM bool _ZN6Zone3D16ProcessNSBTXFileEPKvjPKc(
-    Zone3D* zone, SBTXFile* pFile, const void* pData, unsigned int pNameAddr, const char* pUnused)
+    Zone3D* zone, const void* pFile, unsigned int fileSize, const char* pName)
 {
-    const char* pName = (const char*)pNameAddr;
     SafeAllocator* pAlloc = zone->pAllocator_68_;
     char* pGraph = (char*)zone->unknown_ptr_50_;
     unsigned int nSize;

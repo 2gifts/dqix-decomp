@@ -8,24 +8,34 @@ enum { kWorkFlagBase = 0x6000, kWorkFlagOffset = 0xfd5 };
 
 
 #if defined(jpn)
-#define func_ov025_021e5a2c func_ov025_021e5f1c
 #endif
 #include "GameState/GameState.h"
 
-void* GetActiveCombatWork(void);
-int GetField0x3b0Value(GameState* battleStruct);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
+struct CombatCameraWork {
+    char unknown0[kWorkFlagBase + kWorkFlagOffset];
+    unsigned char cameraUpdated;
+};
+struct CameraState {
+    int unknown0;
+    Vector3i vector;
+};
+struct VectorCommand {
+    char unknown0[8];
+    Vector3i vector;
+};
+CombatCameraWork* GetActiveCombatWork(void);
+CameraState* GetField0x3b0Value(GameState* battleStruct);
 
 // USA: func_ov025_021e5a2c
-extern "C" ARM int func_ov025_021e5a2c(void* obj) {
+extern "C" ARM int func_ov025_021e5a2c(VectorCommand* command) {
     GameState* bs = GameState::GetInstance();
-    int f = GetField0x3b0Value(bs);
+    CameraState* f = GetField0x3b0Value(bs);
     if (f != 0) {
-        _ZN8Vector3iaSERKS_((int*)(f + 4), (int*)((char*)obj + 8));
+        f->vector = command->vector;
     }
-    void* w = GetActiveCombatWork();
+    CombatCameraWork* w = GetActiveCombatWork();
     if (w) {
-        *(unsigned char*)((char*)w + kWorkFlagBase + kWorkFlagOffset) = 1;
+        w->cameraUpdated = 1;
     }
     return 1;
 }

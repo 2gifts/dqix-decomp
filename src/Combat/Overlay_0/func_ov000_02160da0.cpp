@@ -8,19 +8,26 @@
 
 extern int data_ov000_02184220;
 
+struct BattleWork {
+#if defined(jpn)
+    char unknown0[0xe24];
+#else
+    char unknown0[0xea8];
+#endif
+    int state;
+    int substate;
+#if defined(jpn)
+    char unknownE2c[0x7920 - 0xe2c];
+#else
+    char unknownEb0[0x7730 - 0xeb0];
+#endif
+    short overlayLoadTask;
+};
+
 // USA: func_ov000_02160da0
-extern "C" ARM void func_ov000_02160da0(void* obj) {
-#if defined(jpn)
-    *(int*)((char*)obj + 0xe24) = 0x12;
-    *(int*)((char*)obj + 0xe28) = 0;
-#else
-    *(int*)((char*)obj + 0xea8) = 0x12;
-    *(int*)((char*)obj + 0xeac) = 0;
-#endif
+extern "C" ARM void func_ov000_02160da0(BattleWork* battle) {
+    battle->state = 0x12;
+    battle->substate = 0;
     data_ov000_02184220 = 1;
-#if defined(jpn)
-    *(short*)((char*)obj + 0x7900 + 0x20) = BackgroundLoader::GetInstance()->QueueLoadOverlay(OVERLAY_ID(24));
-#else
-    *(short*)((char*)obj + 0x7700 + 0x30) = BackgroundLoader::GetInstance()->QueueLoadOverlay(OVERLAY_ID(24));
-#endif
+    battle->overlayLoadTask = BackgroundLoader::GetInstance()->QueueLoadOverlay(OVERLAY_ID(24));
 }

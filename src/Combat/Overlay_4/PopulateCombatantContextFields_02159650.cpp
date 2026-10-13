@@ -1,6 +1,5 @@
 #include <globaldefs.h>
 #if defined(jpn)
-#define func_ov004_02159650 func_ov004_0215a71c
 #define data_ov004_0216fbb0 data_ov004_02170338
 extern "C" void func_020e207c(void*, char*, int);
 struct Obj02046574;
@@ -11,6 +10,12 @@ void SetIndexedName02046574(Obj02046574*, int, char*);
 
 struct Struct021707d8_02159650 { char pad[8]; unsigned char* ptr; };
 extern Struct021707d8_02159650 data_ov004_021707d8;
+struct CombatantSelection {
+    unsigned char unknown00[0x12];
+    signed char partyIndex;
+
+    signed char GetPartyIndex() const { return partyIndex; }
+};
 
 int GetGlobalField0x1c020421a0(void);
 extern "C" void func_02046380(void* g);
@@ -63,17 +68,12 @@ extern "C" ARM int func_ov004_02159650(void* obj) {
         }
     }
 
-#if defined(jpn)
-    enum CombatantId02159650 { InvalidCombatant02159650 = -1, CombatantSlotCount02159650 = 0xe9 };
-    CombatantId02159650 combatantId = (CombatantId02159650)*(signed char*)(data_ov004_021707d8.ptr + 0x12);
-#else
-    int combatantId = *(signed char*)(data_ov004_021707d8.ptr + 0x12);
-#endif
+    signed char combatantId = ((CombatantSelection*)data_ov004_021707d8.ptr)->GetPartyIndex();
     GameObject* combatant = GameState::GetInstance()->GetPartyMemberByIndex(combatantId);
 
     if (combatant != 0) {
 #if defined(jpn)
-        SetIndexedName02046574((Obj02046574*)g, 0, *(char**)((char*)combatant + 0x134));
+        SetIndexedName02046574((Obj02046574*)g, 0, (char*)combatant->baseStats_);
 #else
         InitObjFromCombatantId020e4bf4(data_ov004_021707d8.ptr + 0xa0, combatantId);
         *(void**)((char*)g + 0x10) = data_ov004_021707d8.ptr + 0xa0;

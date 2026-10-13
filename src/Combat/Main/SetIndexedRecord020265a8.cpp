@@ -6,24 +6,31 @@
 #define data_020ef6ca data_020ef5b5
 #define data_020ef6d3 data_020ef5c3
 #define SetIndexedRecord020265a8 func_02025f0c
-extern "C" ARM void func_02025f0c(char* obj, int index, const char* name, int extra);
-enum { kNameStride = 0x24, kExtraBase = 0x668 };
-#else
-enum { kNameStride = 0x48, kExtraBase = 0x6d4 };
+extern "C" ARM void func_02025f0c(char* owner, int index, const char* name, int dropRate);
 #endif
 
 extern char data_020ef6d0;
 extern char data_020ef6ca;
 extern char data_020ef6d3;
 
-// USA: func_020265a8
-ARM void SetIndexedRecord020265a8(char* obj, int index, const char* name, int extra) {
-    if ((unsigned int)index >= 3) return;
+struct TreasureDropDisplay {
+    char unknown0[0x5fc];
+#if defined(jpn)
+    char names[3][0x24];
+#else
+    char names[3][0x48];
+#endif
+    char rates[3][8];
+};
+
+ARM void SetIndexedRecord020265a8(char* owner, int index, const char* name, int dropRate) {
+    TreasureDropDisplay* display = reinterpret_cast<TreasureDropDisplay*>(owner);
+    if (static_cast<unsigned int>(index) >= 3) return;
     if (name != NULL && *name != 0) {
-        strcpy(obj + 0x5fc + index * kNameStride, name);
-        sprintf(obj + kExtraBase + index * 8, &data_020ef6d0, extra);
+        strcpy(display->names[index], name);
+        sprintf(display->rates[index], &data_020ef6d0, dropRate);
     } else {
-        strcpy(obj + 0x5fc + index * kNameStride, &data_020ef6ca);
-        strcpy(obj + kExtraBase + index * 8, &data_020ef6d3);
+        strcpy(display->names[index], &data_020ef6ca);
+        strcpy(display->rates[index], &data_020ef6d3);
     }
 }

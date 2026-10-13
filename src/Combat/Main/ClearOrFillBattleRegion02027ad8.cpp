@@ -1,30 +1,23 @@
 #include <globaldefs.h>
-
-#if defined(jpn)
-#define ClearOrFillBattleRegion02027ad8 func_02027344
-#endif
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
 
-struct Region02027ad8 {
-    #if defined(jpn)
-    char pad[0x18c];
-#else
-    char pad[0x3cc];
-#endif
-    unsigned char slots[0x40][0x200];
-};
-
 #if defined(jpn)
+#define ClearOrFillBattleRegion02027ad8 func_02027344
 extern "C" ARM void func_02027344(int unused, int flag);
+enum { RangeOffset = 0x4c };
+#else
+enum { RangeOffset = 0xc };
 #endif
 
 // USA: func_02027ad8
 ARM void ClearOrFillBattleRegion02027ad8(int unused, int flag) {
-    struct Region02027ad8* r = (struct Region02027ad8*)GameState::GetInstance();
+    GameState* state = GameState::GetInstance();
+
+
     if (flag != 0) {
-        memset(r->slots[54], 0xff, sizeof(r->slots[54]));
+        memset(state->unk_6fc0 + RangeOffset, 0xff, 0x200);
     } else {
-        memset(r->slots[54], 0, sizeof(r->slots[54]));
+        memset(state->unk_6fc0 + RangeOffset, 0, 0x200);
     }
 }

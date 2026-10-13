@@ -7,7 +7,41 @@ int ApplyNodeUpdater020e038c(void*, void*, int);
 #include "Filesystem/BackgroundLoader.h"
 #include "std_library_functions.h"
 
-struct Struct021707d8_0215bf94 { char pad[8]; unsigned char* ptr; };
+#if defined(jpn)
+struct Element020e0310 { int key; int value; };
+struct Container020e0310 {
+    unsigned int count : 12;
+    unsigned int rest : 20;
+    Element020e0310* base;
+};
+typedef Container020e0310 NameTable0215bf94;
+#else
+struct NameEntry0215bf94 {
+    void* first;
+    void* second;
+    unsigned int unknown8;
+    unsigned short key;
+    unsigned short unknownE;
+};
+struct NameTable0215bf94 {
+    unsigned int count : 12;
+    unsigned int rest : 20;
+    NameEntry0215bf94* entries;
+};
+#endif
+struct ItemNameLoader0215bf94 {
+    unsigned char unknown0[0x2d];
+    unsigned char mode;
+    unsigned char unknown2e[0x8c - 0x2e];
+    NameTable0215bf94 names;
+#if defined(jpn)
+    unsigned char unknown94[0x10];
+#else
+    unsigned char unknown94[4];
+#endif
+    void* fileBuffer;
+};
+struct Struct021707d8_0215bf94 { char pad[8]; ItemNameLoader0215bf94* ptr; };
 extern Struct021707d8_0215bf94 data_ov004_021707d8;
 
 extern int data_02109bf4;
@@ -37,24 +71,31 @@ ARM int LoadGP2FileAndDispatch_0215bf94() {
         *bg0++ = 0;
     }
     memset((void*)GetMainBG3ScreenBase(), 0, 0x1000);
-    struct Bits0215bf94 { unsigned char low7 : 7; unsigned char hi1 : 1; };
-    void* g = func_02012fe4();
-    Bits0215bf94* p2 = *(Bits0215bf94**)((char*)g + 8);
-    unsigned char v = ((Bits0215bf94*)((char*)p2 + 0xd))->low7;
+    struct DispatchState0215bf94 {
+        unsigned char unknown0[0xd];
+        unsigned char state : 7;
+        unsigned char unknownHighBit : 1;
+    };
+    struct GlobalState0215bf94 {
+        unsigned char unknown0[8];
+        DispatchState0215bf94* current;
+    };
+    GlobalState0215bf94* owner = (GlobalState0215bf94*)func_02012fe4();
+    unsigned char v = owner->current->state;
     SetStateAndDispatch0209c3b4((struct Actor0209c3b4*)&data_02109bf4, v);
-    SetModeClamped0209ca70(&data_02109bf4, data_ov004_021707d8.ptr[0x2d]);
+    SetModeClamped0209ca70(&data_02109bf4, data_ov004_021707d8.ptr->mode);
     OrGlobalFlag0x40();
 #if defined(jpn)
     unsigned int size;
-    LoadFileIntoMemory(&data_ov004_02170cbc, *(void**)(data_ov004_021707d8.ptr + 0xa4), &size);
-    ApplyNodeUpdater020e038c(data_ov004_021707d8.ptr + 0x8c, *(void**)(data_ov004_021707d8.ptr + 0xa4), (int)size);
+    LoadFileIntoMemory(&data_ov004_02170cbc, data_ov004_021707d8.ptr->fileBuffer, &size);
+    ApplyNodeUpdater020e038c(&data_ov004_021707d8.ptr->names, data_ov004_021707d8.ptr->fileBuffer, (int)size);
 #else
     BackgroundLoader::AddLockGlobal();
     unsigned int size;
     void* buf = ExtractFileFromGP2(&data_ov004_021703d7, &data_ov004_021703ed, &size);
     if (size <= 0x10800) {
-        memcpy(*(void**)(data_ov004_021707d8.ptr + 0x98), buf, size);
-        TryInvoke020e53bc(data_ov004_021707d8.ptr + 0x8c, (int)*(void**)(data_ov004_021707d8.ptr + 0x98), (int)size);
+        memcpy(data_ov004_021707d8.ptr->fileBuffer, buf, size);
+        TryInvoke020e53bc(&data_ov004_021707d8.ptr->names, (int)data_ov004_021707d8.ptr->fileBuffer, (int)size);
     }
     BackgroundLoader::RemoveLockGlobal();
 #endif

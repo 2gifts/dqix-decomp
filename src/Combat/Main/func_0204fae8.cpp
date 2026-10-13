@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontGlyphTable.h"
 #if defined(jpn)
 #define func_0204e038 func_0204f2f8
 #define data_020f0303 data_020f0330
@@ -11,8 +12,6 @@ struct Window0204fae8 {
     unsigned char pad1[0xc5 - 0xac];
     unsigned char flags;
 };
-struct Table020429e4;
-extern "C" char* func_02042a50(Table020429e4*, char*);
 extern "C" void func_0204e038(Window0204fae8*, char*, int, int, int, int, int, int);
 extern char data_020f0303[];
 extern char data_020f0306[];
@@ -27,9 +26,9 @@ extern "C" ARM void func_0204fae8(Window0204fae8* window) {
     }
     x += 4;
     x -= offset;
-    char* graphic = func_02042a50((Table020429e4*)8, data_020f0303);
+    char* graphic = func_02042a50(8, data_020f0303);
     if (graphic) func_0204e038(window, graphic, x, y, 8, 8, 0xf0, 0xf);
     x = (short)((short)(window->width << 3) - 10) + offset;
-    graphic = func_02042a50((Table020429e4*)8, data_020f0306);
+    graphic = func_02042a50(8, data_020f0306);
     if (graphic) func_0204e038(window, graphic, (short)(x - 1), y, 8, 8, 0xf0, 0xf);
 }

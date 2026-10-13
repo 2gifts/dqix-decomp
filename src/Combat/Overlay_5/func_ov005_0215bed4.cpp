@@ -1,11 +1,11 @@
 #include <globaldefs.h>
+#include "Resource/GameResources.h"
 
 #if defined(jpn)
-#define func_ov005_0215bed4 func_ov005_0215d2b4
-enum { kMember = 0x4f8, kResourcePointer = 0x34f8 };
+enum { kMember = 0x4f8 };
 #define func_ov005_021562b8 func_ov005_021578a8
 #else
-enum { kMember = 0x4fc, kResourcePointer = 0x3708 };
+enum { kMember = 0x4fc };
 #endif
 
 
@@ -13,10 +13,10 @@ enum { kMember = 0x4fc, kResourcePointer = 0x3708 };
 struct TouchState
 {
     char unk_0[0x24];
-    unsigned short unk_24;
+    unsigned short touching_;
     char unk_26[0x54 - 0x26];
-    unsigned char unk_54;
-    unsigned char touching_;
+    unsigned char released_;
+    unsigned char pressed_;
     char unk_56[0x5f - 0x56];
     unsigned char unk_5f;
 };
@@ -27,11 +27,6 @@ struct MemberScreen
     int member_;
 };
 
-struct GameResources
-{
-    char unk_0[kResourcePointer];
-    int* unknown_ptr_3708;
-};
 
 struct EquipmentMenu;
 
@@ -46,14 +41,14 @@ extern "C" TouchState data_02114e54;
 // USA: func_ov005_0215bed4
 extern "C" ARM void func_ov005_0215bed4(EquipmentMenu* self)
 {
-    int touched = 0;
-    if (data_02114e54.touching_ || (data_02114e54.unk_5f != 0 && data_02114e54.unk_24 != 0) ||
-        data_02114e54.unk_54 != 0)
+    int touchHandled = 0;
+    if (data_02114e54.pressed_ || (data_02114e54.unk_5f != 0 && data_02114e54.touching_ != 0) ||
+        data_02114e54.released_ != 0)
     {
         func_ov005_021562b8(self);
-        touched = 1;
+        touchHandled = 1;
     }
-    if (!touched)
+    if (!touchHandled)
         func_ov005_0215730c(self);
-    _Z28DispatchByIdxAndCond021551fcPchi(self,_Z19GetField1c_021a193cPi(func_ov017_0218b5b0()->unknown_ptr_3708)->member_, 0);
+    _Z28DispatchByIdxAndCond021551fcPchi(self,_Z19GetField1c_021a193cPi((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3])->member_, 0);
 }

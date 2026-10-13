@@ -11,7 +11,7 @@ int ScaleStatsIfType12_021f6f10(void* self);
 extern "C" void* func_ov004_021551a8(void*);
 extern int TestBitInByteArray(int unused, unsigned char* arr, int index);
 extern "C" void* func_0205ec34(void);
-int TailCallOffset20_021fbdcc(void*, int, int, int);
+void TailCallOffset20_021fbdcc(void*, int);
 
 // USA: func_ov004_021552b8
 ARM int CheckType16ThenTestBit_021552b8(void* a) {
@@ -34,8 +34,6 @@ ARM int CheckType16ThenTestBit_021552b8(void* a) {
             }
         }
     }
-
-    typedef int (*TailFn2)(void*, int);
-    ((TailFn2)&TailCallOffset20_021fbdcc)(node, val);
+    TailCallOffset20_021fbdcc(node, val);
     return 0;
 }

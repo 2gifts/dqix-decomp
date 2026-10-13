@@ -12,21 +12,29 @@ struct Struct_0205ba68;
 struct Node0205bacc;
 struct Struct_0205bcdc;
 
-#if defined(jpn)
-struct EquipmentDimensions { char pad_0[0xf80]; short values[8]; };
-#endif
-
 struct MenuList {
     int unk_0;
     int active_;
-    char unk_8[0x50 - 0x8];
+    char unk_8[0x30 - 0x8];
+};
+
+struct MenuChannelA : MenuList {
+    char unknown30[0x50 - 0x30];
+};
+
+struct MenuChannelB : MenuList {
+    char unknown30[0x40 - 0x30];
 };
 
 struct MenuWindow {
     int unk_0;
-    MenuList listA_;
-    MenuList listB_;
-    char unk_a4[0xa8 - 0xa4];
+    MenuChannelA listA_;
+    MenuChannelB listB_;
+    char unknown94[0xa0 - 0x94];
+    short widthTiles;
+    short heightTiles;
+    short tileX;
+    short tileY;
     short x_;
     short y_;
     short width_;
@@ -109,15 +117,14 @@ extern "C" ARM void func_ov005_02159904(EquipmentMenu* self) {
     func_0205bb04(&window->listB_, choice);
 #endif
 #if defined(jpn)
-    EquipmentDimensions* dimensions = (EquipmentDimensions*)self;
-    dimensions->values[0] = 8;
-    dimensions->values[1] = 7;
-    dimensions->values[2] = 0xc;
-    dimensions->values[3] = 9;
-    dimensions->values[4] = 0xc;
-    dimensions->values[5] = 8;
-    dimensions->values[6] = 0xa;
-    dimensions->values[7] = 0xe;
+    self->window_.widthTiles = 8;
+    self->window_.heightTiles = 7;
+    self->window_.tileX = 0xc;
+    self->window_.tileY = 9;
+    self->window_.x_ = 0xc;
+    self->window_.y_ = 8;
+    self->window_.width_ = 0xa;
+    self->window_.height_ = 0xe;
     self->GetWindow()->unk_b7 = 0xa;
     self->GetWindow()->visible_ = 1;
     self->GetWindow()->unk_b5 = 0;

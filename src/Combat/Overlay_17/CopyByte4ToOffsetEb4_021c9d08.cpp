@@ -1,9 +1,10 @@
 #include <globaldefs.h>
+#include "Resource/GameResources.h"
 
 #if defined(jpn)
-enum { kResourceWorkOffset = 0x3508, kWorkByteOffset = 0xe30 };
+enum { kWorkByteOffset = 0xe30 };
 #else
-enum { kResourceWorkOffset = 0x3718, kWorkByteOffset = 0xeb4 };
+enum { kWorkByteOffset = 0xeb4 };
 #endif
 
 
@@ -13,13 +14,23 @@ enum { kResourceWorkOffset = 0x3718, kWorkByteOffset = 0xeb4 };
 
 extern "C" void* func_ov017_021b8468(void*);
 
+struct ByteEvent {
+    unsigned char unknown0[4];
+    unsigned char value;
+};
+
+struct EventByteWork {
+    unsigned char unknown0[kWorkByteOffset];
+    unsigned char unknownEventByte;
+};
+
 // USA: func_ov017_021c9d08
 #if defined(jpn)
 extern "C"
 #endif
 ARM void CopyByte4ToOffsetEb4_021c9d08(void* unused0, void* src, void* unused2, void* obj) {
-	void* dst = func_ov017_021b8468(*(void**)((char*)obj + kResourceWorkOffset));
+	EventByteWork* dst = (EventByteWork*)func_ov017_021b8468(((GameResources*)obj)->unknown_ptr_3718);
 	if (dst) {
-		*((unsigned char*)dst + kWorkByteOffset) = *((unsigned char*)src + 0x4);
+		dst->unknownEventByte = ((ByteEvent*)src)->value;
 	}
 }

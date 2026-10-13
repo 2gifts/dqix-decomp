@@ -5,14 +5,7 @@
 #endif
 
 
-#if defined(jpn)
-#define func_ov028_021d9208 func_ov028_021d9ac8
-#endif
-
-extern "C" unsigned int _fflt(int);
-extern "C" unsigned int _fmul(unsigned int, unsigned int);
-
-extern "C" void _Z29AccumulateFixedAngle_021d8a74P14Accum_021d8a74f(void* obj, unsigned int angle);
+extern "C" void _Z29AccumulateFixedAngle_021d8a74P14Accum_021d8a74f(void* obj, float angle);
 extern "C" void _Z24FillCombatBuffer021d8ad4PvPc(void* obj, char* buf);
 
 struct ElemFld4_021d9208 {
@@ -55,10 +48,8 @@ extern int data_02114e30;
 
 // USA: func_ov028_021d9208  (semantic: ApplyElementListEffects_021d9208)  (semantic: ApplyElementListEffects_021d9208)
 extern "C" ARM void func_ov028_021d9208(char* self, int arg1) {
-    unsigned int scale = *(unsigned int*)self;
-    unsigned int argF = _fflt(arg1);
-    unsigned int prod = _fmul(argF, scale);
-    unsigned int angle = _fmul(0x3f000000u, prod);
+    float scale = *(float*)self;
+    float angle = 0.5f * ((float)arg1 * scale);
     _Z29AccumulateFixedAngle_021d8a74P14Accum_021d8a74f(self + 0x60, angle);
     _Z24FillCombatBuffer021d8ad4PvPc(self + 0x60, *(char**)(self + 0x40));
 

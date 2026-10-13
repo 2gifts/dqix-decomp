@@ -17,7 +17,7 @@ extern "C" int _Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30(struct Ta
 extern "C" ARM void* func_ov017_021b2164(void);
 extern "C" ARM void* func_ov011_021845f8(void* ctx, int v);
 extern "C" ARM void* func_ov011_021849c8(void* ctx);
-extern "C" int _Z25SetFieldsAndInit_021fba80Pviss(void* a, int b, short c, short d);
+extern "C" int _Z25SetFieldsAndInit_021fba80Pviss(void* a, void* b, int c, int d);
 
 struct ListHead_021f67ac;
 struct ListNode_021f67ac;
@@ -52,7 +52,7 @@ extern "C" ARM int func_ov011_021866e0(struct TaggedNumber02184c30* params, int 
     MenuObject021866e0 prototype;
     prototype.vtable = &data_ov023_021fef74;
     memcpy(object, &prototype, sizeof(MenuObject021866e0));
-    if (!((int (*)(void*, void*, int, int))_Z25SetFieldsAndInit_021fba80Pviss)(object, script, id, heapId))
+    if (!_Z25SetFieldsAndInit_021fba80Pviss(object, script, id, heapId))
         return 0;
 
     _Z25AppendNodeToList_021f67acP17ListHead_021f67acP17ListNode_021f67ac((struct ListHead_021f67ac*)func_ov011_021849c8(script), (struct ListNode_021f67ac*)object);

@@ -1,10 +1,16 @@
 #include <globaldefs.h>
 
+struct NamedRequestRecord {
 #if defined(jpn)
-enum { kClearSize = 0xb, kHalfOffset = 0xc, kSignedByteOffset = 0xe, kFlagOffset = 0xf };
+    char name[11];
+    unsigned char unknownB;
 #else
-enum { kClearSize = 0x30, kHalfOffset = 0x30, kSignedByteOffset = 0x32, kFlagOffset = 0x33 };
+    char name[48];
 #endif
+    short requestId;
+    signed char partySlot;
+    unsigned char flags;
+};
 
 #include "std_library_functions.h"
 
@@ -14,9 +20,10 @@ extern "C" ARM void func_020942ac(char* obj);
 #endif
 
 // USA: func_02093980
-ARM void ClearRegion02093980(char* obj) {
-    memset(obj, 0, kClearSize);
-    *(short*)(obj + kHalfOffset) = -1;
-    *(char*)(obj + kSignedByteOffset) = -1;
-    *(char*)(obj + kFlagOffset) = 0;
+ARM void ClearRegion02093980(char* storage) {
+    NamedRequestRecord* record = reinterpret_cast<NamedRequestRecord*>(storage);
+    memset(record->name, 0, sizeof(record->name));
+    record->requestId = -1;
+    record->partySlot = -1;
+    record->flags = 0;
 }

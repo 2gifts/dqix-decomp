@@ -1,27 +1,6 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
-
-struct SpriteContext0205ac40 {
-    char padding[0x50];
-    unsigned char subScreen;
-};
-
-struct B174Inner;
-
-struct B174Outer {
-    unsigned short count;
-    unsigned short field_2;
-    B174Inner* inner;
-    char padding_8[0xc];
-    int position[2];
-    int field_1c;
-    unsigned short matrixIndex;
-    unsigned char firstObject;
-    unsigned char transformed;
-    unsigned char doubleSize;
-    signed char palette;
-    signed char priority;
-};
+#include "Graphics/SpriteAffineTransform.h"
 
 struct OAM0205ac40 {
     unsigned int attributes;
@@ -29,16 +8,10 @@ struct OAM0205ac40 {
     short matrix;
 };
 
-struct Matrix0205ac40 {
-    int values[4];
-};
-
 extern "C" void* func_0203bd08();
 extern "C" OAM0205ac40* func_0203be4c(void*);
 extern "C" OAM0205ac40* func_0203be40(void*);
-extern "C" void func_0205b0d8(SpriteContext0205ac40*, Matrix0205ac40*, Matrix0205ac40*, B174Outer*);
-extern "C" void func_020b0a1c(OAM0205ac40*, unsigned short, B174Outer*, Matrix0205ac40*, int*, unsigned short, int);
-int GetBits10And11(int, B174Outer*);
+extern "C" void func_020b0a1c(OAM0205ac40*, unsigned short, B174Outer*, Matrix2x2*, int*, unsigned short, int);
 
 // USA: func_0205ac40
 extern "C" ARM void func_0205ac40(SpriteContext0205ac40* context, B174Outer* sprite) {
@@ -47,11 +20,11 @@ extern "C" ARM void func_0205ac40(SpriteContext0205ac40* context, B174Outer* spr
     int priority;
     void* manager;
     OAM0205ac40* objects;
-    Matrix0205ac40* matrix;
+    Matrix2x2* matrix;
     bool doubleSize;
     OAM0205ac40* target;
-    Matrix0205ac40 transform;
-    Matrix0205ac40 affine;
+    Matrix2x2 transform;
+    Matrix2x2 affine;
     int position[2];
     if (sprite != NULL) {
         manager = func_0203bd08();

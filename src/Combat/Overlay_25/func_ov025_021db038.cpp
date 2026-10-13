@@ -5,6 +5,14 @@
 #include <std_library_functions.h>
 
 struct BattleState { char pad0[0x8e14]; signed char outcome; char pad8e15[0xb]; int mode; int count; };
+struct ListEntryTask {
+    int taskId;
+    char unknown04[0x80];
+    int field84;
+    char state88[0x18];
+    unsigned char ready;
+    unsigned char started;
+};
 struct Work {
     char pad0[0x30]; SafeAllocator allocator;
 #if defined(jpn)
@@ -20,9 +28,9 @@ struct Work {
 #endif
 
 #if defined(jpn)
-    char task[0xa0]; unsigned char taskReady; char padAe1[0xaac-0xa5d];
+    ListEntryTask task; char padAe1[0xaac-0xa60];
 #else
-    char task[0xa0]; unsigned char taskReady; char padAe1[0xb30-0xae1];
+    ListEntryTask task; char padAe1[0xb30-0xae4];
 #endif
 
 #if defined(jpn)
@@ -116,9 +124,7 @@ extern "C" void func_0204500c(MessageSystem*,char*,int);
 #endif
 // USA: func_ov025_021db038
 extern "C" ARM void func_ov025_021db038(Work* work) {
-#if defined(jpn)
-    char* taskBase;
-#endif
+    ListEntryTask* task;
     BattleState* battle = work->battle;
     void* list = GetSlotPtr02160f20(work);
     GameState* game = GameState::GetInstance();
@@ -126,14 +132,7 @@ extern "C" ARM void func_ov025_021db038(Work* work) {
     func_02057924();
     GetField02163524(work);
     _ZZ16GetTimer021ef974vE1s = 0;
-#if defined(jpn)
-    taskBase = (char*)work + 0x1bc;
-#define REGION_TASK (taskBase + 0x800)
-#define REGION_READY (*(unsigned char*)(taskBase + 0x8a0))
-#else
-#define REGION_TASK work->task
-#define REGION_READY work->taskReady
-#endif
+    task = &work->task;
     if (!work->active) _ZZ16GetTimer021ef974vE1s = 1;
     if (!work->state) func_ov025_021db6dc(work);
     if (work->state == 1) {
@@ -166,9 +165,9 @@ extern "C" ARM void func_ov025_021db038(Work* work) {
         }
         func_ov025_021dbe10(work);
         if (messageId > 0) {
-            ResetStruct0216fe48((Struct0216fe48*)REGION_TASK);
-            AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)REGION_TASK, (short)messageId);
-            SetField0FromCallFunc0202fa38((Struct0216fd0c*)REGION_TASK);
+            ResetStruct0216fe48((Struct0216fe48*)task);
+            AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)task, (short)messageId);
+            SetField0FromCallFunc0202fa38((Struct0216fd0c*)task);
         }
     }
     if (GetCombatWorkFlags0x55f4(work, 0x1000000)) {
@@ -178,17 +177,15 @@ extern "C" ARM void func_ov025_021db038(Work* work) {
         MessageSystem* messages;
         game = GameState::GetInstance();
         messages = GetGlobalField0x1c020421a0();
-#if defined(jpn)
-        char* taskBase = (char*)work + 0x1bc;
-#endif
-        if (!REGION_READY) {
-            CheckOrSetFlagA0_0216fd38((Struct0216fd38*)REGION_TASK);
-            if (!REGION_READY) return;
-            BeginListEntryTask_0216fd80((EntryTask0216fd80*)REGION_TASK, GetArrayEntry_021e8a54_021e8a54(work->display));
+        ListEntryTask* task = &work->task;
+        if (!task->ready) {
+            CheckOrSetFlagA0_0216fd38((Struct0216fd38*)task);
+            if (!task->ready) return;
+            BeginListEntryTask_0216fd80((EntryTask0216fd80*)task, GetArrayEntry_021e8a54_021e8a54(work->display));
             actor = GetCombatantWithFlag0x100(game, 0);
             format = 0;
-            if (ClassifyField0x81fe((char*)battle) == 1) format = GetFieldByKeyFromWork0x88(REGION_TASK, 0x1ee);
-            else if (ClassifyField0x81fe((char*)battle) == 2) format = GetFieldByKeyFromWork0x88(REGION_TASK, 0x211);
+            if (ClassifyField0x81fe((char*)battle) == 1) format = GetFieldByKeyFromWork0x88(task, 0x1ee);
+            else if (ClassifyField0x81fe((char*)battle) == 2) format = GetFieldByKeyFromWork0x88(task, 0x211);
             if (!actor || !format) return;
             char* name = (char*)actor->baseStats_;
             int length = strlen(format);
@@ -229,6 +226,3 @@ extern "C" ARM void func_ov025_021db038(Work* work) {
     }
     game->SetGameSpeed(0x1000);
 }
-
-#undef REGION_TASK
-#undef REGION_READY

@@ -74,7 +74,8 @@ public:
 };
 
 struct Entry0216920c {
-    char pad00[0x11];
+    char unknown00[6];
+    char name[11];
     unsigned char f11;
     unsigned short value : 14;
     unsigned short active : 1;
@@ -84,7 +85,7 @@ struct Entry0216920c {
 struct Table0216920c {
     unsigned char count;
     char pad01[3];
-    struct Entry0216920c entries[1];
+    struct Entry0216920c entries[16];
 };
 
 struct Slot0216920c { char pad[0x30]; };
@@ -158,10 +159,10 @@ extern "C" ARM int func_ov004_0216920c(struct Scene0216920c* scene) {
         struct Entry0216920c* e = &table->entries[page * 8 + i];
         if (e->active) {
 #if defined(jpn)
-            a->f20 = (char*)e + 6;
+            a->f20 = e->name;
 #else
             struct Slot0216920c* slot = &data_ov004_02171030->slots[i];
-            func_02042764((char*)e + 6, slot, 1);
+            func_02042764(e->name, slot, 1);
             a->f20 = slot;
 #endif
             c->SetValue(e->value);

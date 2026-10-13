@@ -93,11 +93,7 @@ ARM int FilterBytesAndInit02052f44(struct Obj02052f44* obj, signed char* src, in
     obj->f186 = 0;
 
     idx = ((signed char*)((char*)obj + 0x100))[(IS_JPN ? 0x71 : 0x7d)];
-    {
-        char* base = (char*)obj + idx;
-        base = base + 0x100;
-        val = ((signed char*)base)[(IS_JPN ? 0x6c : 0x78)];
-    }
+    val = obj->f178[idx];
     func_0205308c(obj, val);
 
     func_ov017_021cc1f8(obj->field4, src, len, 0);

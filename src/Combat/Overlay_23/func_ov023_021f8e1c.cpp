@@ -6,13 +6,11 @@
 
 
 #if defined(jpn)
-#define func_ov023_021f9da8 func_ov023_021f9234
 #define GetEntryByteIfFlag0x84 func_0204887c
 #endif
 
 
 #if defined(jpn)
-#define func_ov023_021f8e1c func_ov023_021f82a8
 #endif
 #include "GameState/GameState.h"
 

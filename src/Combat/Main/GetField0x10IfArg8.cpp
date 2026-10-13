@@ -1,24 +1,34 @@
 #include <globaldefs.h>
+#include "Resource/FontGlyphTable.h"
 
-extern char data_02107800;
-
+struct FontTableGlobals {
 #if defined(jpn)
-#define GetField0x10IfArg8 func_02042e30
-extern "C" ARM int func_02042e30(int);
+    char unknown0[0x14];
+    FontGlyphTable* font6;
+    char unknown18[8];
+    FontGlyphTable* font8;
+    FontGlyphTable* font10;
+    FontGlyphTable* font12;
+#else
+    char unknown0[0x10];
+    FontGlyphTable* font8;
 #endif
+};
+
+extern FontTableGlobals data_02107800;
 
 // USA: func_020429bc
-ARM int GetField0x10IfArg8(int x) {
-    int r = 0;
+ARM FontGlyphTable* GetFontGlyphTable(int pixelSize) {
+    FontGlyphTable* table = NULL;
 #if defined(jpn)
-    switch (x) {
-    case 6: r = *(int*)(&data_02107800 + 0x14); break;
-    case 8: r = *(int*)(&data_02107800 + 0x20); break;
-    case 10: r = *(int*)(&data_02107800 + 0x24); break;
-    case 12: r = *(int*)(&data_02107800 + 0x28); break;
+    switch (pixelSize) {
+    case 6: table = data_02107800.font6; break;
+    case 8: table = data_02107800.font8; break;
+    case 10: table = data_02107800.font10; break;
+    case 12: table = data_02107800.font12; break;
     }
 #else
-    if (x == 8) r = *(int*)(&data_02107800 + 0x10);
+    if (pixelSize == 8) table = data_02107800.font8;
 #endif
-    return r;
+    return table;
 }

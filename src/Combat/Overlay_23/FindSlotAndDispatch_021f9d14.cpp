@@ -2,7 +2,7 @@
 
 struct Obj021f9d14 {
     char pad[0x20];
-    volatile unsigned short* table;
+    unsigned short* table;
     unsigned short count;
     unsigned short width;
     unsigned short x;
@@ -29,6 +29,7 @@ extern "C" ARM int func_ov023_021f9d14(struct Obj021f9d14* obj, void* param2) {
         }
         idx = x * width + y;
     }
+    idx = x * width + y;
     if (obj->table[idx] == 0) idx = 0;
     DivModField26_021f9bdc((struct Obj021f9bdc*)obj, (unsigned short)idx);
     return func_ov023_021f98e0(obj, param2);

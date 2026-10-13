@@ -11,7 +11,12 @@ enum { kGlobalHolderInnerOffset = 0xc };
 #define RefreshTwoFields_021e7fb4 func_ov025_021e8454
 #endif
 
-extern int data_ov025_021ef988;
+struct CombatContext;
+struct CombatGlobals {
+    char unknown0[kGlobalHolderInnerOffset];
+    CombatContext* context;
+};
+extern CombatGlobals data_ov025_021ef988;
 extern "C" void func_ov025_021e9d14(void* p);
 extern "C" void func_ov025_021e9edc(void* p);
 
@@ -20,9 +25,9 @@ extern "C" void func_ov025_021e9edc(void* p);
 extern "C"
 #endif
 ARM int RefreshTwoFields_021e7fb4() {
-    char* p = *(char**)((char*)&data_ov025_021ef988 + kGlobalHolderInnerOffset);
+    CombatContext* p = data_ov025_021ef988.context;
     func_ov025_021e9d14(p);
-    p = *(char**)((char*)&data_ov025_021ef988 + kGlobalHolderInnerOffset);
+    p = data_ov025_021ef988.context;
     func_ov025_021e9edc(p);
     return 1;
 }

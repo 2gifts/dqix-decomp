@@ -1,21 +1,16 @@
 #include <globaldefs.h>
+#include "GameState/BattleRecordSnapshot.h"
 
 #if defined(jpn)
 #define func_ov023_021eaba0 func_ov023_021eab04
 #endif
 
-struct S_eaba0 {
-    char pad[0x98];
-    unsigned int val : 17;
-};
-
-int LoadBattleBlock020ac4c0(void* dst);
 extern "C" void func_ov017_021d6134(void*, int);
 
 // USA: func_ov023_021eaba0  (semantic: SetFieldWidth17Offset0_021eaba0)
-extern "C" ARM int func_ov023_021eaba0(void* obj) {
-    char buf[0xb0];
-    LoadBattleBlock020ac4c0(buf);
-    func_ov017_021d6134(obj, ((struct S_eaba0*)buf)->val);
+extern "C" ARM int func_ov023_021eaba0(void* outputReference) {
+    BattleRecordSnapshot record;
+    LoadBattleBlock020ac4c0(&record);
+    func_ov017_021d6134(outputReference, record.capture.unknown08_0);
     return 1;
 }

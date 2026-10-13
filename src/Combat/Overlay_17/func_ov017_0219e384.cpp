@@ -818,7 +818,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 		if (node->flag2 != 0 && node->f9b != 0) {
 			self->active = 0;
 			node->f9b = 0;
-		} else if (*(volatile int*)&fld->f24 >= 0) {
+		} else if (*(int*)&fld->f24 >= 0) {
 			int hasBit = ((*actor->p130 & 1) != 0);
 			if (hasBit != 0) {
 				if (fld->f24 < 21000 || fld->f24 >= 40000) {

@@ -9,12 +9,6 @@
 #include "std_library_functions.h"
 #include "Combat/Main/BattleList.h"
 #include "Combat/Overlay_0/GetCombatantByID.h"
-struct CombatantStruct {
-    unsigned short flags;
-    char unk[0x132];
-    struct BaseCombatStats* baseStats;
-    struct ModifiableCombatStats* currentStats;
-};
 
 struct EntryFlags9_021f9874 {
     unsigned char weight : 6;
@@ -75,7 +69,7 @@ struct Obj_021f9874 {
     char pad04[2];
     unsigned char f6;
     char pad07[1];
-    struct CombatantStruct* f8;
+    GameObject* f8;
     char pad0c[8];
     unsigned char f14;
     char pad15[0x17];
@@ -90,7 +84,7 @@ struct Obj_021f9874 {
     char pad41[3];
     float f44[4];
     unsigned char f54[0x28];
-    struct CombatantStruct* combatantList[8];
+    GameObject* combatantList[8];
     int f9c;
     char pada0[0x24];
     int arrC4[25];
@@ -137,21 +131,18 @@ struct FlagsA8_021f9874 {
 };
 
 extern "C" void* __clear(void* dst, int size);
-extern "C" double func_0200c578(float v);
-extern "C" double func_0200b0f0(double a, double b);
-extern "C" double func_0200b608(double a, double b);
 extern "C" void func_ov024_021f6830(void* arr, struct InsertArg_021f9874* item);
 int GetFieldAt0x150(unsigned char* obj);
-extern "C" int _Z32IsCombatantFlag2Mask512_021eadfcP10GameObject(struct CombatantStruct* combatant);
+extern "C" int _Z32IsCombatantFlag2Mask512_021eadfcP10GameObject(GameObject* combatant);
 
-static inline unsigned short GetMaxHP(struct CombatantStruct* c) { return c->currentStats->primaryStats.maxHP; }
-static inline unsigned short GetMaxMP(struct CombatantStruct* c) { return c->currentStats->primaryStats.maxMP; }
-static inline unsigned short GetCurrMP(struct CombatantStruct* c) { return c->currentStats->primaryStats.currMP; }
-static inline unsigned int GetBaseDefense(struct CombatantStruct* c) { return c->baseStats->primaryStats.defense; }
+static inline unsigned short GetMaxHP(GameObject* c) { return c->currentStats_->primaryStats.maxHP; }
+static inline unsigned short GetMaxMP(GameObject* c) { return c->currentStats_->primaryStats.maxMP; }
+static inline unsigned short GetCurrMP(GameObject* c) { return c->currentStats_->primaryStats.currMP; }
+static inline unsigned int GetBaseDefense(GameObject* c) { return c->baseStats_->primaryStats.defense; }
 
-extern unsigned char data_ov024_021ffc98[];
-extern unsigned char data_ov024_021ffca4[];
-extern unsigned char data_ov024_021ffcc5[];
+extern unsigned char data_ov024_021ffc98[12];
+extern unsigned char data_ov024_021ffca4[33];
+extern unsigned char data_ov024_021ffcc5[39];
 
 // USA: func_ov024_021f9874
 extern "C" ARM void func_ov024_021f9874(struct Obj_021f9874* obj, struct Buf_021f9874* buf, unsigned char p2, unsigned char p3) {
@@ -165,11 +156,11 @@ extern "C" ARM void func_ov024_021f9874(struct Obj_021f9874* obj, struct Buf_021
     int arrB[4];
     float slotArr[4];
     struct InsertArg_021f9874 insertBuf;
-    float r4;
+    float normalizedHPScore;
     float total;
     float v98;
     float v9c;
-    float r7c;
+    float costScale;
     float v94;
     float ratioTmp;
     int flagC;
@@ -225,9 +216,9 @@ extern "C" ARM void func_ov024_021f9874(struct Obj_021f9874* obj, struct Buf_021
                 {
                     float x = accumC[i];
                     if (obj->f6 != 0) {
-                        double d1 = func_0200c578(x);
-                        double d2 = func_0200b0f0(0.005, (double)obj->f650);
-                        x = (float)func_0200b608(d1, d2);
+                        double d1 = x;
+                        double d2 = 0.005 * (double)obj->f650;
+                        x = (float)(d1 - d2);
                     }
                     {
                         float sq = x * x;
@@ -257,9 +248,9 @@ extern "C" ARM void func_ov024_021f9874(struct Obj_021f9874* obj, struct Buf_021
     if (obj->f648->f3 != 0) accums14[13] += 30.0f;
 
     if (flags.any != 0) {
-        float* pAcc = accumB;
+        float* accumulated = accumB;
         for (int i = 0; i < obj->f9c; i++) {
-            float acc = pAcc[i];
+            float acc = accumulated[i];
             int raw;
             if (acc <= 0.0f) continue;
             raw = obj->arrC4[i];
@@ -270,14 +261,13 @@ extern "C" ARM void func_ov024_021f9874(struct Obj_021f9874* obj, struct Buf_021
     }
 
     if (flags.f3or4 != 0) {
-        int r7;
-        for (r7 = 0; r7 < 4; r7++) {
-            int val = arrA[r7];
+        for (int slot = 0; slot < 4; slot++) {
+            int val = arrA[slot];
             if (val == 0) continue;
             {
-                float v4 = 100.0f * val / GetMaxHP((struct CombatantStruct*)GetCombatantByID(obj->f0, (short)r7));
-                if (r7 == obj->f128) v4 *= 2.0f;
-                accums14[6] += v4;
+                float normalizedHP = 100.0f * val / GetMaxHP(GetCombatantByID(obj->f0, (short)slot));
+                if (slot == obj->f128) normalizedHP *= 2.0f;
+                accums14[6] += normalizedHP;
             }
         }
         if (obj->f650 != 0) {
@@ -364,7 +354,7 @@ extern "C" ARM void func_ov024_021f9874(struct Obj_021f9874* obj, struct Buf_021
             idx = e->slot;
             if (fpArr[idx] != 0) continue;
             if (e->subtype == 0x12) {
-                struct CombatantStruct* c = obj->combatantList[idx];
+                GameObject* c = obj->combatantList[idx];
                 if (c != 0) {
                     unsigned int defense = GetBaseDefense(c);
                     unsigned short maxHP3 = GetMaxHP(c);
@@ -424,12 +414,12 @@ extern "C" ARM void func_ov024_021f9874(struct Obj_021f9874* obj, struct Buf_021
         insertBuf.f8 = (unsigned short)obj->f650;
     }
 
-    r4 = 0.0f;
+    normalizedHPScore = 0.0f;
     if (flags.any != 0) {
-        r4 = accums14[2];
-        if (obj->f2c != 0) r4 += accums14[11];
-        if (flagC != 0) r4 *= obj->f30;
-        insertBuf.value = r4 - 0.01f * accums14[13];
+        normalizedHPScore = accums14[2];
+        if (obj->f2c != 0) normalizedHPScore += accums14[11];
+        if (flagC != 0) normalizedHPScore *= obj->f30;
+        insertBuf.value = normalizedHPScore - 0.01f * accums14[13];
         func_ov024_021f6830(obj->arr408, &insertBuf);
         if (0.0f == accums14[13]) {
             func_ov024_021f6830(obj->arr438, &insertBuf);
@@ -445,8 +435,8 @@ extern "C" ARM void func_ov024_021f9874(struct Obj_021f9874* obj, struct Buf_021
         func_ov024_021f6830(obj->arr4c8, &insertBuf);
     }
 
-    r7c = 0.1f;
-    if (obj->f6 == 0) r7c = 0.01f;
+    costScale = 0.1f;
+    if (obj->f6 == 0) costScale = 0.01f;
     v94 = 0.0f; v98 = 0.0f; v9c = 0.0f;
 
     if (flags.b0 != 0) {
@@ -456,20 +446,20 @@ extern "C" ARM void func_ov024_021f9874(struct Obj_021f9874* obj, struct Buf_021
         func_ov024_021f6830(obj->arr528, &insertBuf);
     }
     if (obj->f6 == 2 && obj->f64c->code != 0x1f9) {
-        r4 *= 0.3f;
+        normalizedHPScore *= 0.3f;
     }
     if (flags.b1 != 0) {
-        v94 = accums14[9] - accums14[13] * r7c;
+        v94 = accums14[9] - accums14[13] * costScale;
         insertBuf.value = v94;
         func_ov024_021f6830(obj->arr558, &insertBuf);
     }
     if (flags.b2 != 0) {
-        v98 = accums14[10] - accums14[13] * r7c;
+        v98 = accums14[10] - accums14[13] * costScale;
         insertBuf.value = v98;
         func_ov024_021f6830(obj->arr588, &insertBuf);
     }
     if (flags.b3 != 0) {
-        v9c = accums14[11] - accums14[13] * r7c;
+        v9c = accums14[11] - accums14[13] * costScale;
         insertBuf.value = v9c;
         func_ov024_021f6830(obj->arr5b8, &insertBuf);
     }
@@ -483,7 +473,7 @@ extern "C" ARM void func_ov024_021f9874(struct Obj_021f9874* obj, struct Buf_021
             !_Z32IsCombatantFlag2Mask512_021eadfcP10GameObject(obj->f8) &&
             (s0 = buf->entries[0].slot, s0 >= 0) && s0 < 8 &&
             obj->combatantList[s0] != 0 &&
-            (mp0 = obj->combatantList[s0]->currentStats->primaryStats.currMP, mp0 > 0)) {
+            (mp0 = obj->combatantList[s0]->currentStats_->primaryStats.currMP, mp0 > 0)) {
             ratioTmp = (float)GetCurrMP(obj->f8) / GetMaxMP(obj->f8);
             if (ratioTmp <= 0.1f) buf->threshold += 50.0f;
             if (ratioTmp <= 0.3f) buf->threshold += 30.0f;
@@ -494,11 +484,11 @@ extern "C" ARM void func_ov024_021f9874(struct Obj_021f9874* obj, struct Buf_021
     total = buf->threshold + v94;
     total = v98 + total;
     total = v9c + total;
-    total = r4 + total;
-    insertBuf.value = total - accums14[13] * r7c;
+    total = normalizedHPScore + total;
+    insertBuf.value = total - accums14[13] * costScale;
     func_ov024_021f6830(obj->arr3a8, &insertBuf);
 
-    if (!(r4 > 0.0f) || obj->f650 <= 0) {
+    if (!(normalizedHPScore > 0.0f) || obj->f650 <= 0) {
         func_ov024_021f6830(obj->arr3d8, &insertBuf);
     }
 }

@@ -14,7 +14,7 @@ struct Struct02070a30 {
 };
 
 // USA: func_02070a30
-ARM void InitListBuffers02070a30(struct Struct02070a30* obj, SafeAllocator* alloc, void* src) {
+ARM void InitListBuffers02070a30(struct Struct02070a30* obj, SafeAllocator* alloc, void* src, unsigned int sourceLength) {
     if (alloc == NULL || src == NULL) return;
     memcpy(obj, src, 4);
     int size1 = GetListDataSize((struct Struct02070af4*)obj);

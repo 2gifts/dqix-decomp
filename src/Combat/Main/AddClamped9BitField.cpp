@@ -1,16 +1,11 @@
 #include <globaldefs.h>
-
-struct S_a0460 {
-    char pad[0x14];
-    unsigned int val : 9;
-    unsigned int hi : 23;
-};
+#include "GameState/BattleRecordSnapshot.h"
 
 // USA: func_020a0460
-ARM void AddClamped9BitField(struct S_a0460* p, unsigned int amount) {
-    unsigned int v = p->val + amount;
+ARM void AddClamped9BitField(BattleRecordSnapshot* record, unsigned int amount) {
+    unsigned int v = record->unknown14_0 + amount;
     if (v > 500) {
         v = 500;
     }
-    p->val = v;
+    record->unknown14_0 = v;
 }

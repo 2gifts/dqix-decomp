@@ -180,7 +180,6 @@ extern "C" float func_ov024_021db358(struct Combatant_021f7478* obj);
 extern "C" int func_ov000_0215e9fc(int a, short* buf, int max, int start);
 int TestBitAt0x34(unsigned char* obj, unsigned int index);
 extern "C" void __clear(void* dst, int count);
-extern "C" double func_0200c578(float);
 extern "C" double func_02008f5c(double);
 int GetFieldAt0x150(unsigned char* obj);
 extern "C" void* func_02012fe4(void);
@@ -344,7 +343,7 @@ extern "C" ARM void func_ov024_021f7478(struct Obj_021f7478* obj) {
     int total = 0;
     int count = obj->count;
     for (int i = 0; i < count; i++) {
-        total += (int)(float)func_02008f5c(func_0200c578((float)obj->hp[i] / (0.5f + 0.9375f * (float)blended[i]))) + 1;
+        total += (int)(float)func_02008f5c((double)((float)obj->hp[i] / (0.5f + 0.9375f * (float)blended[i]))) + 1;
     }
     obj->total = total;
 

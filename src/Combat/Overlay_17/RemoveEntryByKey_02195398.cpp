@@ -12,8 +12,7 @@ extern "C" ARM void func_ov017_02195398(void* obj, unsigned char key) {
 	unsigned char* o = (unsigned char*)obj;
 	int i = 0;
 	while (i < o[regionalOffset0]) {
-		unsigned char* p = o + i * 15;
-		p = p + 0x4000;
+		unsigned char* p = o + 0x4000 + i * 15;
 		if (key == p[regionalOffset3]) {
 			unsigned char* hdr = o + 0x4000;
 			hdr[regionalOffset2] = hdr[regionalOffset2] - 1;

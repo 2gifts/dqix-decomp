@@ -19475,3 +19475,275 @@ src/Combat/Main/func_020aca88.cpp:
 src/Combat/Main/func_020e3f1c.cpp:
     complete
     .text start:0x020e3f2c end:0x020e4534
+
+src/Combat/Main/func_020956b8.cpp:
+    complete
+    .text start:0x020956c8 end:0x0209577c
+
+src/Combat/Main/func_0209a104.cpp:
+    complete
+    .text start:0x0209a114 end:0x0209a228
+
+src/Combat/Main/func_0204cb20.cpp:
+    complete
+    .text start:0x0204cb30 end:0x0204cc78
+
+src/Combat/Main/func_02059a54.cpp:
+    complete
+    .text start:0x02059a64 end:0x02059ca0
+
+src/Combat/Main/func_02066a6c.cpp:
+    complete
+    .text start:0x02066a7c end:0x02066cd0
+
+src/Combat/Main/func_02095364.cpp:
+    complete
+    .text start:0x02095374 end:0x020954c0
+
+src/Combat/Main/func_02097054.cpp:
+    complete
+    .text start:0x02097064 end:0x020971b8
+
+src/Combat/Main/func_020a6728.cpp:
+    complete
+    .text start:0x020a6738 end:0x020a697c
+
+src/Combat/Main/func_0201fdd0.cpp:
+    complete
+    .text start:0x0201fde0 end:0x02020038
+
+src/Combat/Main/func_02022dc8.cpp:
+    complete
+    .text start:0x02022dd8 end:0x02023074
+
+src/Combat/Main/func_0204b088.cpp:
+    complete
+    .text start:0x0204b098 end:0x0204b0f8
+
+src/Combat/Main/func_0204b620.cpp:
+    complete
+    .text start:0x0204b630 end:0x0204b888
+
+src/Combat/Main/func_020dd4c4.cpp:
+    complete
+    .text start:0x020dd4d4 end:0x020dd728
+
+src/Combat/Main/func_020e2d54.cpp:
+    complete
+    .text start:0x020e2d64 end:0x020e2fb8
+
+src/Combat/Main/func_02014d80.cpp:
+    complete
+    .text start:0x02014d90 end:0x02015144
+
+src/Combat/Main/func_02029634.cpp:
+    complete
+    .text start:0x02029644 end:0x02029998
+
+src/Combat/Main/func_020399b0.cpp:
+    complete
+    .text start:0x020399c0 end:0x02039d34
+
+src/Combat/Main/func_020440cc.cpp:
+    complete
+    .text start:0x020440dc end:0x02044430
+
+src/Combat/Main/func_020449a4.cpp:
+    complete
+    .text start:0x020449b4 end:0x02044c84
+
+src/Combat/Main/func_0206ad74.cpp:
+    complete
+    .text start:0x0206ad84 end:0x0206b114
+
+src/Combat/Main/func_0206cbcc.cpp:
+    complete
+    .text start:0x0206cbdc end:0x0206cf68
+
+src/Combat/Main/func_0208cfcc.cpp:
+    complete
+    .text start:0x0208cfdc end:0x0208d350
+
+src/Combat/Main/func_020a75ec.cpp:
+    complete
+    .text start:0x020a75fc end:0x020a78ec
+
+src/Combat/Main/func_020d80b0.cpp:
+    complete
+    .text start:0x020d80c0 end:0x020d845c
+
+src/Combat/Main/func_02025b0c.cpp:
+    complete
+    .text start:0x02025b1c end:0x02025f38
+
+src/Combat/Main/func_0202b2f0.cpp:
+    complete
+    .text start:0x0202b300 end:0x0202b7e8
+
+src/Combat/Main/func_0202cefc.cpp:
+    complete
+    .text start:0x0202cf0c end:0x0202d0c4
+
+src/Combat/Main/func_0202d3e0.cpp:
+    complete
+    .text start:0x0202d3f0 end:0x0202d55c
+
+src/Combat/Main/func_0202e0a4.cpp:
+    complete
+    .text start:0x0202e0b4 end:0x0202e5d0
+
+src/Combat/Main/func_02056d80.cpp:
+    complete
+    .text start:0x02056d90 end:0x02057344
+
+src/Combat/Main/func_02057334.cpp:
+    complete
+    .text start:0x02057344 end:0x0205766c
+
+src/Combat/Main/func_0205bf58.cpp:
+    complete
+    .text start:0x0205bf68 end:0x0205c4b8
+
+src/Combat/Main/func_0205d97c.cpp:
+    complete
+    .text start:0x0205d98c end:0x0205da48
+
+src/Combat/Main/func_02098630.cpp:
+    complete
+    .text start:0x02098640 end:0x02098844
+
+src/Combat/Main/func_0209dcdc.cpp:
+    complete
+    .text start:0x0209dcec end:0x0209e1dc
+
+src/Combat/Main/func_020a6aac.cpp:
+    complete
+    .text start:0x020a6abc end:0x020a72bc
+
+src/Combat/Main/func_020bb588.cpp:
+    complete
+    .text start:0x020bb598 end:0x020bb708
+
+src/Combat/Main/func_020e4958.cpp:
+    complete
+    .text start:0x020e4968 end:0x020e4b44
+
+src/Combat/Main/func_02009dfc.cpp:
+    complete
+    .text start:0x02009dfc end:0x02009edc
+
+src/Combat/Main/func_02059720.cpp:
+    complete
+    .text start:0x02059730 end:0x02059a3c
+
+src/Combat/Main/func_0205a658.cpp:
+    complete
+    .text start:0x0205a668 end:0x0205a994
+
+src/Combat/Main/func_02096c38.cpp:
+    complete
+    .text start:0x02096c48 end:0x02096f88
+
+src/Combat/Main/func_020e081c.cpp:
+    complete
+    .text start:0x020e082c end:0x020e0a88
+
+src/Combat/Main/func_0206a3c0.cpp:
+    complete
+    .text start:0x0206a3d0 end:0x0206a984
+
+src/Combat/Main/func_0206cf58.cpp:
+    complete
+    .text start:0x0206cf68 end:0x0206d3e4
+
+src/Combat/Main/func_02099004.cpp:
+    complete
+    .text start:0x02099014 end:0x02099314
+
+src/Combat/Main/func_02011b68.cpp:
+    complete
+    .text start:0x02011b78 end:0x02011fc4
+
+src/Combat/Main/func_0201647c.cpp:
+    complete
+    .text start:0x0201648c end:0x02016884
+
+src/Combat/Main/func_02016874.cpp:
+    complete
+    .text start:0x02016884 end:0x02016d9c
+
+src/Combat/Main/func_02018300.cpp:
+    complete
+    .text start:0x02018310 end:0x0201875c
+
+src/Combat/Main/func_020391ac.cpp:
+    complete
+    .text start:0x020391bc end:0x0203971c
+
+src/Combat/Main/func_020439b0.cpp:
+    complete
+    .text start:0x020439c0 end:0x02044084
+
+src/Combat/Main/func_02082828.cpp:
+    complete
+    .text start:0x02082838 end:0x02082cec
+
+src/Combat/Main/func_0208cb08.cpp:
+    complete
+    .text start:0x0208cb18 end:0x0208cfa8
+
+src/Combat/Main/func_020ad61c.cpp:
+    complete
+    .text start:0x020ad62c end:0x020adabc
+
+src/Combat/Main/func_020adaac.cpp:
+    complete
+    .text start:0x020adabc end:0x020addb4
+
+src/Combat/Main/func_020da31c.cpp:
+    complete
+    .text start:0x020da32c end:0x020da78c
+
+src/Combat/Main/func_02017d90.cpp:
+    complete
+    .text start:0x02017da0 end:0x0201820c
+
+src/Combat/Main/func_0203f53c.cpp:
+    complete
+    .text start:0x0203f54c end:0x0203f99c
+
+src/Combat/Main/func_02024518.cpp:
+    complete
+    .text start:0x02024528 end:0x02024d58
+
+src/Combat/Main/func_020a2d14.cpp:
+    complete
+    .text start:0x020a2d24 end:0x020a3578
+
+src/Combat/Main/PickHitElement02080e40.cpp:
+    complete
+    .text start:0x02080e50 end:0x02080f9c
+
+src/Combat/Main/func_0201afd0.cpp:
+    complete
+    .text start:0x0201afe0 end:0x0201b598
+
+src/Combat/Main/func_020200c0.cpp:
+    complete
+    .text start:0x020200d0 end:0x02020530
+
+src/Combat/Main/func_02047b40.cpp:
+    complete
+    .text start:0x02047b50 end:0x02047ee4
+
+src/Combat/Main/func_02069234.cpp:
+    complete
+    .text start:0x02069244 end:0x02069604
+
+src/Combat/Main/func_020930d0.cpp:
+    complete
+    .text start:0x020930e0 end:0x02093438
+
+src/Combat/Main/func_0209afd4.cpp:
+    complete
+    .text start:0x0209afe4 end:0x0209b458

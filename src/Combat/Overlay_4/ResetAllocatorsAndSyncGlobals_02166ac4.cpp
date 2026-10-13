@@ -1,10 +1,6 @@
 #include <globaldefs.h>
 
 #if defined(jpn)
-#define func_ov004_02166ac4 func_ov004_021670b0
-#endif
-
-#if defined(jpn)
 enum { resetFlagOffset = 0x790 };
 #else
 enum { resetFlagOffset = 0x962 };
@@ -25,19 +21,29 @@ extern "C" void* func_0205ec34(void);
 int* GetGlobal02109418(void);
 int GetGlobalField0x1c020421a0(void);
 
+struct State02166ac4 {
+    unsigned char unknown00[0x1c];
+    SafeAllocator allocators[2];
+    int taskId;
+    unsigned char unknown48[8];
+    unsigned char flags;
+    unsigned char savedBytes[0x66];
+    int savedWord;
+};
+
 // USA: func_ov004_02166ac4  (semantic: ResetAllocatorsAndSyncGlobals_02166ac4)
 extern "C" ARM int func_ov004_02166ac4() {
-    char* base = CurrentBase0217101c;
-    int a = (int)BackgroundLoader::GetInstance();
-    int b = *(int*)(base + 0x44);
-    ((BackgroundLoader*)(a))->RemoveTask((int)(b));
-    *(int*)(base + 0x44) = -1;
-    ((SafeAllocator*)(base + 0x30))->Destroy();
-    ((SafeAllocator*)(base + 0x1c))->Destroy();
+    State02166ac4* state = (State02166ac4*)CurrentBase0217101c;
+    BackgroundLoader* loader = BackgroundLoader::GetInstance();
+    int taskId = state->taskId;
+    loader->RemoveTask(taskId);
+    state->taskId = -1;
+    state->allocators[1].Destroy();
+    state->allocators[0].Destroy();
     char* c = (char*)func_0205ec34();
-    memcpy(c + 0x2cc, CurrentBase0217101c + 0x51, 0x66);
+    memcpy(c + 0x2cc, ((State02166ac4*)CurrentBase0217101c)->savedBytes, 0x66);
     int* g = GetGlobal02109418();
-    *(int*)((char*)g + 0xa0) = *(int*)(CurrentBase0217101c + 0xb8);
+    *(int*)((char*)g + 0xa0) = ((State02166ac4*)CurrentBase0217101c)->savedWord;
     char* f = (char*)GetGlobalField0x1c020421a0();
     *(unsigned char*)(f + 0x1000 + resetFlagOffset) = 0;
     return 0;

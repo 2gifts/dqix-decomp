@@ -16,7 +16,7 @@ extern "C" int ScaleStatsIfType12_021f6f10(void* self);
 int ScaleStatsIfType12_021f6f10(void* self);
 #endif
 extern "C" int func_ov023_021f9bc8(char* obj);
-int TailCallOffset20_021fbdcc(void*, int, int, int);
+void TailCallOffset20_021fbdcc(void*, int);
 extern "C" void func_ov011_021848a0(void* obj, int val);
 
 extern char data_ov004_0216fffa;
@@ -34,8 +34,7 @@ extern "C" ARM int func_ov004_02168290(void* obj) {
         }
         int idx = func_ov023_021f9bc8((char*)node2);
         short val = *(short*)(&data_ov004_0216fffa + idx * 4);
-        typedef int (*TailFn2)(void*, int);
-        ((TailFn2)&TailCallOffset20_021fbdcc)(node1, val);
+        TailCallOffset20_021fbdcc(node1, val);
     }
     func_ov011_021848a0(obj, 0x68);
     return 0;

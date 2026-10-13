@@ -23,13 +23,11 @@ extern "C" ARM int func_ov002_0215b720(unsigned char* obj, int key) {
         void* table = GetData02108e10();
         void* entry = SearchBothTables02079e2c((char*)table, key);
         if (entry != 0) {
-            volatile struct Field18_0215b720* f = (volatile struct Field18_0215b720*)((char*)entry + 0x18);
-            unsigned int f1 = f->field1;
-            unsigned int f0 = f->field0;
-            if (f1 == 2 || f1 == 7 || f1 == 0x4f || f1 == 0x50 || f1 == 0x12 || f1 == 0x1a) {
+            struct Field18_0215b720* f = (struct Field18_0215b720*)((char*)entry + 0x18);
+            if (f->field1 == 2 || f->field1 == 7 || f->field1 == 0x4f || f->field1 == 0x50 || f->field1 == 0x12 || f->field1 == 0x1a) {
                 result = 1;
             }
-            if (f0 == 5 && *(int*)(obj + 0x1000 + 0xbb8) == 7) {
+            if (f->field0 == 5 && *(int*)(obj + 0x1000 + 0xbb8) == 7) {
                 result = 1;
             }
         }

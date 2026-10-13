@@ -18,10 +18,7 @@ struct FormationPathState {
 struct FormationPathActor {
     char unknown00[0x13c];
     FormationPathState *path;
-    FormationPathState *GetPath() const {
-        FormationPathState *result = path;
-        return result;
-    }
+    FormationPathState *GetPath() const { return path; }
 };
 
 static inline Vec2_0216f74c GetFormationPosition(const int &cell) {

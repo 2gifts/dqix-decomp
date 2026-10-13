@@ -5,9 +5,6 @@
 #define data_ov013_02187e44 data_ov013_02188ddc
 #define data_ov013_02187e45 data_ov013_02188ddd
 #define data_ov013_02187dac data_ov013_02188cd4
-#define LOW_REGION(j,u) (j)
-#else
-#define LOW_REGION(j,u) (u)
 #endif
 #include "GameState/GameState.h"
 
@@ -23,11 +20,44 @@ extern char data_ov013_02188d4c[];
 extern "C" void func_02046380(void);
 #endif
 
+struct SkillPointMenu {
+    char unknown0[0x1e];
+    short nameEndX;
+#if defined(jpn)
+    char unknown20[0x5ac - 0x20];
+#else
+    char unknown20[0x620 - 0x20];
+#endif
+    char texts[0x18];
+#if defined(jpn)
+    char unknownAfterTexts[0x62c - 0x5c4];
+#else
+    char unknownAfterTexts[0x6a4 - 0x638];
+#endif
+    const char* name;
+    unsigned char vocation;
+    unsigned char skillIds[5];
+    char unknownAfterSkillIds[2];
+    int level;
+    unsigned char hasVocationMarker;
+    char unknownAfterMarker[3];
+    int vocationMarker;
+    unsigned char flags;
+    unsigned char unknownAfterFlags;
+    unsigned short currentHP;
+    unsigned short maxHP;
+    unsigned short currentMP;
+    unsigned short maxMP;
+    unsigned short attack;
+    unsigned short defence;
+    unsigned short agility;
+};
+
 struct Container020e0310;
 ARM int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 ARM int AppendYTag(char* dst, int y);
 ARM int AppendXTag(char* dst, int x);
-ARM int AppendWidthTag(char* dst, int w);
+ARM int AppendWidthTag(char* dst, int levelWidth);
 ARM int AppendPaletteTag(char* dst, int palette);
 ARM int AppendString02042058(char* dst, const char* src);
 ARM int CallFunc020e0434With02153694(int value);
@@ -46,85 +76,84 @@ extern char data_ov013_02187e45;
 extern short data_ov013_02187dac[];
 
 // USA: func_ov013_02185e40  (semantic: AppendStatusMessageTag02185e40)
-extern "C" ARM void func_ov013_02185e40(void* self, char* dst) {
-    unsigned char* obj = (unsigned char*)self;
+extern "C" ARM void func_ov013_02185e40(SkillPointMenu* menu, char* dst) {
     if (dst == 0) return;
 
     GameState::GetInstance();
 
-    short keyA = 0x190;
-    short keyB = 0x1f4;
+    short labelKey = 0x190;
+    short valueKey = 0x1f4;
 #if defined(jpn)
-    int length = strlen(*(const char**)(obj + 0x62c)) + 6;
+    int headingByteLength = strlen(menu->name) + 6;
     int marker;
-    int spacing;
+    int markerSpacing;
     int palette;
-    int state = *(int*)(obj + 0x640);
+    int markerIndex = menu->vocationMarker;
     marker = 0;
-    spacing = 2;
-    if (obj[0x63c] != 0) {
-        spacing = 0;
-        length++;
+    markerSpacing = 2;
+    if (menu->hasVocationMarker != 0) {
+        markerSpacing = 0;
+        headingByteLength++;
         marker = 1;
     }
     palette = 5;
-    if (state == 0xa) palette = 0xd;
-    int x = 0x31 - (int)(((float)length / 4.0f) * 10.0f);
-    int stateText = GetFieldByKey020e0434((Container020e0310*)(obj + 0x5ac), (short)(state + 0x12c));
-    int kindText = GetFieldByKey020e0434((Container020e0310*)(obj + 0x5ac), (short)(obj[0x630] + 0xc8));
-    sprintf(dst, data_ov013_02188d4c, x, *(const char**)(obj + 0x62c), kindText, marker, palette, stateText, spacing, *(int*)(obj + 0x638));
+    if (markerIndex == 0xa) palette = 0xd;
+    int x = 0x31 - (int)(((float)headingByteLength / 4.0f) * 10.0f);
+    int vocationMarkerText = GetFieldByKey020e0434((Container020e0310*)menu->texts, (short)(markerIndex + 0x12c));
+    int vocationText = GetFieldByKey020e0434((Container020e0310*)menu->texts, (short)(menu->vocation + 0xc8));
+    sprintf(dst, data_ov013_02188d4c, x, menu->name, vocationText, marker, palette, vocationMarkerText, markerSpacing, menu->level);
 #else
-    char buf13c[0x200];
-    __clear(buf13c, 0x200);
+    char heading[0x200];
+    __clear(heading, 0x200);
 
-    int nameWidth = func_020420e8(*(void**)(obj + 0x6a4), 0);
-    if (*(int*)(obj + 0x6b8) != 0) {
-        int key = (short)(*(int*)(obj + 0x6b8) + 0x12c);
-        int r7 = GetFieldByKey020e0434((struct Container020e0310*)(obj + LOW_REGION(0x5ac,0x620)), key);
+    int nameWidth = func_020420e8((void*)menu->name, 0);
+    if (menu->vocationMarker != 0) {
+        int key = (short)(menu->vocationMarker + 0x12c);
+        int vocationMarkerText = GetFieldByKey020e0434((Container020e0310*)menu->texts, key);
         int paletteId = 5;
-        if (*(int*)(obj + 0x6b8) == 0xa) paletteId = 0xd;
+        if (menu->vocationMarker == 0xa) paletteId = 0xd;
 
-        AppendYTag(buf13c, 4);
-        AppendString02042058(buf13c, *(const char**)(obj + 0x6a4));
-        AppendWidthTag(buf13c, 0x10);
-        AppendPaletteTag(buf13c, paletteId);
-        AppendString02042058(buf13c, (const char*)r7);
-        AppendWidthTag(buf13c, 4);
-        AppendPaletteTag(buf13c, 0xf);
+        AppendYTag(heading, 4);
+        AppendString02042058(heading, menu->name);
+        AppendWidthTag(heading, 0x10);
+        AppendPaletteTag(heading, paletteId);
+        AppendString02042058(heading, (const char*)vocationMarkerText);
+        AppendWidthTag(heading, 4);
+        AppendPaletteTag(heading, 0xf);
         int v = CallFunc020e0434With02153694(0x3f3);
-        AppendString02042058(buf13c, (const char*)v);
+        AppendString02042058(heading, (const char*)v);
 
-        char buf2c[0x10];
-        __clear(buf2c, 0x10);
-        sprintf(buf2c, &data_ov013_02187e3c, *(int*)(obj + 0x6b0));
-        AppendString02042058(buf13c, buf2c);
+        char levelText[0x10];
+        __clear(levelText, 0x10);
+        sprintf(levelText, &data_ov013_02187e3c, menu->level);
+        AppendString02042058(heading, levelText);
     } else {
-        AppendYTag(buf13c, 4);
-        AppendString02042058(buf13c, *(const char**)(obj + 0x6a4));
-        AppendWidthTag(buf13c, 0x12);
+        AppendYTag(heading, 4);
+        AppendString02042058(heading, menu->name);
+        AppendWidthTag(heading, 0x12);
         int v = CallFunc020e0434With02153694(0x3f3);
-        AppendString02042058(buf13c, (const char*)v);
+        AppendString02042058(heading, (const char*)v);
 
-        char buf1c[0x10];
-        __clear(buf1c, 0x10);
-        sprintf(buf1c, &data_ov013_02187e3c, *(int*)(obj + 0x6b0));
-        AppendString02042058(buf13c, buf1c);
+        char levelText[0x10];
+        __clear(levelText, 0x10);
+        sprintf(levelText, &data_ov013_02187e3c, menu->level);
+        AppendString02042058(heading, levelText);
     }
 
-    char buf3c[0x100];
-    __clear(buf3c, 0x100);
+    char levelLabel[0x100];
+    __clear(levelLabel, 0x100);
     int v2 = CallFunc020e0434With02153694(0x3f3);
-    sprintf(buf3c, &data_ov013_02187e3f, v2, *(int*)(obj + 0x6b0));
-    int w = func_020420e8(buf3c, 0);
+    sprintf(levelLabel, &data_ov013_02187e3f, v2, menu->level);
+    int levelWidth = func_020420e8(levelLabel, 0);
 
-    int r1 = nameWidth + 0x12 + w;
-    if (*(int*)(obj + 0x6b8) != 0) r1 += 9;
-    r1 = 0x78 - r1;
+    int headingSpace = nameWidth + 0x12 + levelWidth;
+    if (menu->vocationMarker != 0) headingSpace += 9;
+    headingSpace = 0x78 - headingSpace;
 
-    *(short*)(obj + 0x1e) = (short)(nameWidth + (r1 >> 1) + 1);
-    AppendXTag(dst, r1 >> 1);
+    menu->nameEndX = (short)(nameWidth + (headingSpace >> 1) + 1);
+    AppendXTag(dst, headingSpace >> 1);
 
-    AppendString02042058(dst, buf13c);
+    AppendString02042058(dst, heading);
 #endif
 #if defined(jpn)
     func_02042638(dst, &data_ov013_02187e44, 0x10);
@@ -132,40 +161,32 @@ extern "C" ARM void func_ov013_02185e40(void* self, char* dst) {
     AppendFormatted02041fac(dst, (int)&data_ov013_02187e44, 0x10);
 #endif
 
-    void* g = GetGlobalField0x1c020421a0();
+    void* textVariables = GetGlobalField0x1c020421a0();
 #if defined(jpn)
-    func_02046380(g);
+    func_02046380(textVariables);
 #else
     func_02046380();
 #endif
 
-    struct StatusCounters02185e40 {
-        char pad[LOW_REGION(0x46,0xbe)];
-        unsigned short c0, c1, c2, c3, c4, c5, c6;
+    int stats[7] = {
+        menu->currentHP, menu->maxHP, menu->currentMP, menu->maxMP,
+        menu->attack, menu->defence, menu->agility
     };
-    int vals[7];
-    vals[0] = ((struct StatusCounters02185e40*)(obj + 0x600))->c0;
-    vals[1] = ((struct StatusCounters02185e40*)(obj + 0x600))->c1;
-    vals[2] = ((struct StatusCounters02185e40*)(obj + 0x600))->c2;
-    vals[3] = ((struct StatusCounters02185e40*)(obj + 0x600))->c3;
-    vals[4] = ((struct StatusCounters02185e40*)(obj + 0x600))->c4;
-    vals[5] = ((struct StatusCounters02185e40*)(obj + 0x600))->c5;
-    vals[6] = ((struct StatusCounters02185e40*)(obj + 0x600))->c6;
 
     for (int i = 0; i < 7; i++) {
-        SetByteAtIndex((unsigned char*)g, i, 1);
-        SetByteInRange((unsigned char*)g, i, 3);
-        StoreInArray0x8b0((struct StoreStruct*)g, i, vals[i]);
+        SetByteAtIndex((unsigned char*)textVariables, i, 1);
+        SetByteInRange((unsigned char*)textVariables, i, 3);
+        StoreInArray0x8b0((struct StoreStruct*)textVariables, i, stats[i]);
     }
 
     for (int i = 0; i < 5; i++) {
-        int fieldA = GetFieldByKey020e0434((struct Container020e0310*)(obj + LOW_REGION(0x5ac,0x620)), keyA++);
+        int fieldA = GetFieldByKey020e0434((Container020e0310*)menu->texts, labelKey++);
         AppendString02042058(dst, (const char*)fieldA);
 
         short xtag = data_ov013_02187dac[i];
         AppendXTag(dst, xtag);
 
-        int fieldB = GetFieldByKey020e0434((struct Container020e0310*)(obj + LOW_REGION(0x5ac,0x620)), keyB++);
+        int fieldB = GetFieldByKey020e0434((Container020e0310*)menu->texts, valueKey++);
         AppendString02042058(dst, (const char*)fieldB);
 
         if (i != 4) {

@@ -5,38 +5,20 @@
 #endif
 
 
-#if defined(jpn)
-#define func_ov023_021fb680 func_ov023_021faa24
-#endif
-
-struct Pair021fb680 { unsigned int a; unsigned int b; };
-extern struct Pair021fb680 data_020e6d5c;
-
-struct Block8Words_021fb680 { unsigned int w[8]; };
-extern struct Block8Words_021fb680 data_ov023_021fd964;
-
-struct DispatchEntry021fb680 { unsigned int fn; unsigned int locator; };
+struct ResourceDispatchState {
+    char unknown0[0x1c];
+    int state;
+};
+typedef int (ResourceDispatchState::*ResourceStateHandler)(void*);
+extern ResourceStateHandler data_020e6d5c;
+struct ResourceStateHandlers { ResourceStateHandler handlers[4]; };
+extern ResourceStateHandlers data_ov023_021fd964;
 
 // USA: func_ov023_021fb680  (semantic: DispatchWithLocalTable_021fb680)
-extern "C" ARM int func_ov023_021fb680(void* obj, void* param2) {
-    struct Block8Words_021fb680 buf;
-    buf = data_ov023_021fd964;
-    unsigned int tmp1 = data_020e6d5c.b;
-    unsigned int tmp0 = data_020e6d5c.a;
-    buf.w[7] = tmp1;
-    buf.w[6] = tmp0;
-    struct DispatchEntry021fb680* entries = (struct DispatchEntry021fb680*)&buf;
-
-    int idx = *(int*)((char*)obj + 0x1c);
-    struct DispatchEntry021fb680* d = &entries[idx];
-    void* base = (char*)obj + ((int)d->locator >> 1);
-    void* callback;
-    if (d->locator & 1) {
-        callback = *(void**)((char*)*(void**)base + d->fn);
-    } else {
-        callback = (void*)d->fn;
-    }
-    int result = ((int(*)(void*, void*))callback)(base, param2);
-    *(int*)((char*)obj + 0x1c) = result;
+extern "C" ARM int func_ov023_021fb680(ResourceDispatchState* obj, void* param2) {
+    ResourceStateHandlers table = data_ov023_021fd964;
+    table.handlers[3] = data_020e6d5c;
+    int result = (obj->*table.handlers[obj->state])(param2);
+    obj->state = result;
     return result;
 }

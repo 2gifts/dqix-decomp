@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Memory/AllocatorLifecycle.h"
 #include "System/OverlayId.h"
 #include "System/Graphics.h"
 #include "GameState/GameState.h"
@@ -47,7 +48,6 @@ void CheckAndApplyDebugCode020ac910();
 int GetFlag0x5cccBit0(StateBits5ccc_11570* gs);
 void ClearFlag0x5cccBit0(StateBits5ccc_1155c* gs);
 void* AllocateFromAllocatorUnion(AllocatorUnion* alloc, unsigned int size);
-extern "C" void _Z17EmptyStub02012de4v(AllocatorUnion* alloc);
 void FreeIfFlag(AllocatorUnion* alloc, void* data, int size);
 void InitBigManagerStruct0208660c(char* p);
 void PrepareAndRunBufferedScript02099cb8(char* table);
@@ -133,7 +133,7 @@ extern "C" void func_020d8670();
         func_020a1940(&OVERLAY_19_ID); \
         void* scene = AllocateFromAllocatorUnion(&data_02114e20, TITLE_SCENE_SIZE); \
         func_ov019_0218b5a0(scene); \
-        _Z17EmptyStub02012de4v(&data_02114e20); \
+        EmptyStub02012de4(&data_02114e20); \
         func_ov019_0218b5a8(scene); \
         func_ov019_0218b5a4(scene); \
         FreeIfFlag(&data_02114e20, scene, TITLE_SCENE_SIZE); \
@@ -145,7 +145,7 @@ extern "C" void func_020d8670();
         func_020a1940(&OVERLAY_20_ID); \
         void* scene = AllocateFromAllocatorUnion(&data_02114e20, WORLD_SCENE_SIZE); \
         func_ov020_0218b5a0(scene); \
-        _Z17EmptyStub02012de4v(&data_02114e20); \
+        EmptyStub02012de4(&data_02114e20); \
         func_ov020_0218b710(scene); \
         func_ov020_0218b700(scene); \
         FreeIfFlag(&data_02114e20, scene, WORLD_SCENE_SIZE); \
@@ -156,7 +156,7 @@ extern "C" void func_020d8670();
     do { \
         void* scene = AllocateFromAllocatorUnion(&data_02114e20, 0x98); \
         func_ov016_0218b5a0(scene); \
-        _Z17EmptyStub02012de4v(&data_02114e20); \
+        EmptyStub02012de4(&data_02114e20); \
         func_ov016_0218b5c4(scene); \
         again16 = *(int*)((char*)scene + 0x94); \
         func_ov016_0218b5c0(scene); \
@@ -168,7 +168,7 @@ extern "C" void func_020d8670();
         func_020a1940(&OVERLAY_21_ID); \
         void* scene = AllocateFromAllocatorUnion(&data_02114e20, 0xbc); \
         func_ov021_0218b5a0(scene); \
-        _Z17EmptyStub02012de4v(&data_02114e20); \
+        EmptyStub02012de4(&data_02114e20); \
         func_ov021_0218b5fc(scene); \
         _Z38ResetAllocatorAndClearField40_0218b5c4P11Obj0218b5c4(scene); \
         FreeIfFlag(&data_02114e20, scene, 0xbc); \
@@ -180,7 +180,7 @@ extern "C" void func_020d8670();
         func_020a1940(&OVERLAY_15_ID); \
         void* scene = AllocateFromAllocatorUnion(&data_02114e20, 0x358); \
         func_ov015_02193294(scene); \
-        _Z17EmptyStub02012de4v(&data_02114e20); \
+        EmptyStub02012de4(&data_02114e20); \
         func_ov015_021934f8(scene); \
         func_ov015_021933bc(scene); \
         FreeIfFlag(&data_02114e20, scene, 0x358); \

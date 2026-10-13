@@ -11,47 +11,56 @@ extern char data_ov023_021fce18[];
 extern char data_ov023_021fce2d[];
 enum { ModeFlagsOffset = 0x6f0, CurrentModeOffset = 0x6f9, PendingModeOffset = 0x6fa, ModeTaskOffset = 0x6fc };
 #else
-extern int data_ov023_021fdb40;
-extern int data_ov023_021fdb52;
-extern int data_ov023_021fdb60;
-extern int data_ov023_021fdb72;
+extern char data_ov023_021fdb40[];
+extern char data_ov023_021fdb52[];
+extern char data_ov023_021fdb60[];
+extern char data_ov023_021fdb72[];
 enum { ModeFlagsOffset = 0x774, CurrentModeOffset = 0x77d, PendingModeOffset = 0x77e, ModeTaskOffset = 0x780 };
 #endif
 
+struct ModeLoadRequest {
+    char unknown0[ModeFlagsOffset];
+    unsigned short flags;
+    char unknownAfterFlags[CurrentModeOffset - ModeFlagsOffset - sizeof(unsigned short)];
+    signed char currentMode;
+    signed char pendingMode;
+    char unknownBeforeTask;
+    int taskId;
+};
+
 // USA: func_ov023_021dd4cc  (semantic: SetCombatMode_021dd4cc)
-extern "C" ARM void func_ov023_021dd4cc(void* objRaw, int mode) {
-    char* obj = (char*)objRaw;
-    int dataResult = (int)BackgroundLoader::GetInstance();
-    signed char scratchVal = *(signed char*)(obj + CurrentModeOffset);
-    if (mode == scratchVal) {
-        if (*(int*)(obj + ModeTaskOffset) < 0) return;
-        ((BackgroundLoader*)(dataResult))->RemoveTask((int)(*(int*)(obj + ModeTaskOffset)));
-        *(int*)(obj + ModeTaskOffset) = -1;
-        obj[PendingModeOffset] = *(signed char*)(obj + CurrentModeOffset);
+extern "C" ARM void func_ov023_021dd4cc(ModeLoadRequest* request, int mode) {
+    BackgroundLoader* loader = BackgroundLoader::GetInstance();
+    signed char currentMode = request->currentMode;
+    if (mode == currentMode) {
+        if (request->taskId < 0) return;
+        loader->RemoveTask(request->taskId);
+        request->taskId = -1;
+        request->pendingMode = request->currentMode;
         return;
     }
-    signed char other = *(signed char*)(obj + PendingModeOffset);
+    signed char other = request->pendingMode;
     if (mode == other) return;
-    if (*(int*)(obj + ModeTaskOffset) >= 0) {
-        ((BackgroundLoader*)(dataResult))->RemoveTask((int)(*(int*)(obj + ModeTaskOffset)));
-        *(int*)(obj + ModeTaskOffset) = -1;
-        obj[PendingModeOffset] = -1;
+    if (request->taskId >= 0) {
+        loader->RemoveTask(request->taskId);
+        request->taskId = -1;
+        request->pendingMode = -1;
     }
     int result;
     if (mode == 2) {
 #if defined(jpn)
-        result = ((BackgroundLoader*)(dataResult))->QueueLoadFile(data_ov023_021fce18, (SafeAllocator*)(0));
+        result = loader->QueueLoadFile(data_ov023_021fce18, NULL);
 #else
-        result = ((BackgroundLoader*)(dataResult))->QueueLoadFileInGP2((const char*)((int)&data_ov023_021fdb40), (const char*)((int)&data_ov023_021fdb52), (SafeAllocator*)(0));
+        result = loader->QueueLoadFileInGP2(data_ov023_021fdb40, data_ov023_021fdb52, NULL);
 #endif
     } else {
 #if defined(jpn)
-        result = ((BackgroundLoader*)(dataResult))->QueueLoadFile(data_ov023_021fce2d, (SafeAllocator*)(0));
+        result = loader->QueueLoadFile(data_ov023_021fce2d, NULL);
 #else
-        result = ((BackgroundLoader*)(dataResult))->QueueLoadFileInGP2((const char*)((int)&data_ov023_021fdb60), (const char*)((int)&data_ov023_021fdb72), (SafeAllocator*)(0));
+        result = loader->QueueLoadFileInGP2(data_ov023_021fdb60, data_ov023_021fdb72, NULL);
 #endif
     }
-    *(int*)(obj + ModeTaskOffset) = result;
-    *(unsigned short*)(obj + ModeFlagsOffset) |= 8;
-    obj[PendingModeOffset] = (char)mode;
+    request->taskId = result;
+    request->flags |= 8;
+    request->pendingMode = (char)mode;
 }

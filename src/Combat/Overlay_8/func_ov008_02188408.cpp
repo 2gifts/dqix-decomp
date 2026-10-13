@@ -1,3 +1,4 @@
+#include "GameState/BattleRecordSnapshot.h"
 #include <globaldefs.h>
 #include <std_library_functions.h>
 #include "GameState/GameState.h"
@@ -6,10 +7,6 @@
 struct Container020e0310;
 struct MessageSystem;
 struct StoreStruct;
-struct S_a0870;
-struct S_a08d8;
-struct S_a08a4;
-struct S_a090c;
 
 extern "C" void __clear(void* buffer, unsigned long size);
 extern "C" void* ExtractFileFromGP2(const char* gp2, const char* inner, unsigned int* size);
@@ -26,10 +23,10 @@ extern "C" void _Z23AppendFormatted0204201cPcii(char* text, int append, int);
 int TestBitInByteArray(int, unsigned char*, int);
 extern "C" const char* _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310* texts, int id);
 extern "C" void _Z23LoadBattleBlock020ac4c0Pv(void* records);
-unsigned int GetFieldPercentOver307(S_a0870* records);
-unsigned int GetFieldPercentOver944(S_a08d8* records);
-unsigned int GetFieldPercentOver232(S_a08a4* records);
-unsigned int GetFieldPercentOver448(S_a090c* records);
+int GetFieldPercentOver307(BattleRecordSnapshot* records);
+int GetFieldPercentOver944(BattleRecordSnapshot* records);
+int GetFieldPercentOver232(BattleRecordSnapshot* records);
+int GetFieldPercentOver448(BattleRecordSnapshot* records);
 void StoreInArray0x8b0(StoreStruct* messages, int index, int value);
 
 extern char data_ov008_0218b465[];
@@ -43,18 +40,6 @@ struct ClearRecords
     unsigned int title_ : 9;
 };
 
-struct PlayRecords
-{
-    char unk_0[0x10];
-    unsigned int unk_10_0 : 9;
-    unsigned int unk_10_9 : 14;
-    unsigned int unk_10_23 : 9;
-    unsigned int unk_14_0 : 9;
-    unsigned int unk_14_9 : 9;
-    unsigned int unk_14_18 : 11;
-    unsigned int unk_14_29 : 3;
-    char unk_18[0xb0 - 0x18];
-};
 
 struct GuestRecords
 {
@@ -163,16 +148,16 @@ extern "C" ARM void func_ov008_02188408(BattleRecords* self, char* text, int kin
         }
         else
         {
-            PlayRecords playRecords;
+            BattleRecordSnapshot playRecords;
             _Z23LoadBattleBlock020ac4c0Pv(&playRecords);
-            int max1 = playRecords.unk_14_0;
-            int max2 = playRecords.unk_14_18;
-            int max3 = playRecords.unk_14_9;
-            int max4 = playRecords.unk_10_23;
-            count1 = GetFieldPercentOver307((S_a0870*)&playRecords);
-            count2 = GetFieldPercentOver944((S_a08d8*)&playRecords);
-            count3 = GetFieldPercentOver232((S_a08a4*)&playRecords);
-            count4 = GetFieldPercentOver448((S_a090c*)&playRecords);
+            int max1 = playRecords.unknown14_0;
+            int max2 = playRecords.unknown14_18;
+            int max3 = playRecords.unknown14_9;
+            int max4 = playRecords.unknown10_23;
+            count1 = GetFieldPercentOver307(&playRecords);
+            count2 = GetFieldPercentOver944(&playRecords);
+            count3 = GetFieldPercentOver232(&playRecords);
+            count4 = GetFieldPercentOver448(&playRecords);
             if (count1 == 0 && max1 > 0)
                 count1 = 1;
             if (count2 == 0 && max2 > 0)

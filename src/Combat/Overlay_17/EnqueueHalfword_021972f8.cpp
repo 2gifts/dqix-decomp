@@ -1,10 +1,20 @@
 #include <globaldefs.h>
 
 #if defined(jpn)
-enum { QUEUE_COUNTER_OFFSET = 0x4210, QUEUE_DATA_OFFSET = 0x4208 };
+enum { kBufferOffset = 0x4208 };
 #else
-enum { QUEUE_COUNTER_OFFSET = 0x44c0, QUEUE_DATA_OFFSET = 0x44b8 };
+enum { kBufferOffset = 0x44b8 };
 #endif
+
+struct FourEntryBuffer {
+    unsigned short entries[4];
+    unsigned char nextSlot;
+};
+
+struct BufferOwner {
+    unsigned char unknown0[kBufferOffset];
+    FourEntryBuffer buffer;
+};
 
 
 #if defined(jpn)
@@ -16,10 +26,8 @@ enum { QUEUE_COUNTER_OFFSET = 0x44c0, QUEUE_DATA_OFFSET = 0x44b8 };
 extern "C"
 #endif
 ARM void EnqueueHalfword_021972f8(void *obj, unsigned short val) {
-	unsigned char *counter = (unsigned char *)obj + QUEUE_COUNTER_OFFSET;
-	unsigned short *arr = (unsigned short *)((unsigned char *)obj + QUEUE_DATA_OFFSET);
-	unsigned char idx = *counter;
-	*counter = idx + 1;
-	arr[idx] = val;
-	*counter = *counter & 3;
+	BufferOwner* owner = (BufferOwner*)obj;
+	unsigned char slot = owner->buffer.nextSlot++;
+	owner->buffer.entries[slot] = val;
+	owner->buffer.nextSlot &= 3;
 }

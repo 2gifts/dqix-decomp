@@ -1,10 +1,5 @@
 #include <globaldefs.h>
-
-#if defined(jpn)
-enum { kResourceTargetOffset = 0x390c };
-#else
-enum { kResourceTargetOffset = 0x3b2c };
-#endif
+#include "Resource/GameResources.h"
 
 
 #if defined(jpn)
@@ -19,7 +14,7 @@ struct Tgt_021cc1d8 { unsigned char pad[0xf]; unsigned char outByte; signed char
 extern "C"
 #endif
 ARM void CopyByteIfFlagMatches_021cc1d8(int unused0, Src_021cc1d8* src, int unused2, unsigned char* base) {
-	Tgt_021cc1d8* tgt = *(Tgt_021cc1d8**)(base + kResourceTargetOffset);
+	Tgt_021cc1d8* tgt = (Tgt_021cc1d8*)((GameResources*)base)->unknown_ptr_array_3afc[12];
 	if (tgt->cmpByte == src->flagByte) {
 		tgt->outByte = (unsigned char)src->val;
 	}

@@ -2,7 +2,6 @@
 
 #if defined(jpn)
 #define func_ov014_021850cc func_ov014_021861cc
-#define func_02097054 func_02098ca4
 #define func_ov014_02188c34 func_ov014_02189a78
 #define data_ov014_021895d5 data_ov014_0218a415
 #define data_ov014_021895ed data_ov014_0218a42d

@@ -9,12 +9,12 @@ struct Bar {
 };
 
 struct Foo {
-    struct Bar* volatile ptr;
+    struct Bar* ptr;
 };
 
 // USA: func_020bc210
 ARM void SetActionParams(struct Foo* obj, short param1, short param2) {
-    if (obj->ptr == 0) {
+    if (*(int*)obj == 0) {
         return;
     }
     obj->ptr->type = 2;

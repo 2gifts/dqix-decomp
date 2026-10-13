@@ -1,3 +1,4 @@
+#include "GameState/BattleRecordSnapshot.h"
 #define __STDC_UTF_16__ 1
 #define __STDC_UTF_32__ 1
 #define _GNU_SOURCE 1
@@ -180,7 +181,7 @@ struct NSBXXNameList
         uint8_t resourceIndex_;
     } treeRoot_8_;
     template<class T>
-    inline T* GetEntryByIndex(unsigned int n) const volatile
+    inline T* GetEntryByIndex(unsigned int n) const 
     {
         if (this != 0 && n < numEntries_)
         {
@@ -1143,10 +1144,10 @@ extern "C" int func_0202c540(void *ctx);
 extern "C" void *_ZN9GameState14GetProtagonistEv(void *battle);
 extern "C" void _Z24CopyOutBattleField0x7ac0Pv(void *dst);
 extern "C" void _Z23CopyHalfwordAndTwoBytesP19SmallRecord020643e0S0_(void *dst, void *src);
-extern "C" int _Z22GetFieldPercentOver307P7S_a0870(void *p);
-extern "C" int _Z22GetFieldPercentOver448P7S_a090c(void *p);
-extern "C" int _Z22GetFieldPercentOver232P7S_a08a4(void *p);
-extern "C" int _Z22GetFieldPercentOver944P7S_a08d8(void *p);
+int GetFieldPercentOver307(BattleRecordSnapshot* record);
+int GetFieldPercentOver448(BattleRecordSnapshot* record);
+int GetFieldPercentOver232(BattleRecordSnapshot* record);
+int GetFieldPercentOver944(BattleRecordSnapshot* record);
 
 struct SnapshotE7 {
     unsigned char head[8];
@@ -1221,17 +1222,6 @@ struct FrameB { short opt; unsigned short flags; unsigned short h4, h6, h8, ha, 
 static inline char *SubA(void *b) { return (char *)b + REGION_VALUE(0x2c4, 0x104); }
 static inline char *SubB(char *a) { return a + REGION_VALUE(0x7000, 0x7400); }
 struct Blk7400 { char pad[REGION_VALUE(0x7000, 0x7400)]; };
-struct StatE7 {
-    int r0;
-    int r4;
-    struct SrcWord44 w8;
-    struct SrcWord48 wc;
-    struct SrcWord4c w10;
-    char pad14[0x40 - 0x14];
-    struct SrcWord44 w40;
-    char pad44[0x90 - 0x44];
-    struct SnapshotE7 snap;
-};
 static inline struct SnapshotE7 *SnapE7(char *r) { return (struct SnapshotE7 *)(r + 0xcc); }
 static inline int GetSlot332(void *obj) { return *((unsigned char *)obj + 0x332); }
 static inline int Field134_30(void *c) { return *(unsigned short *)((char *)*(void **)((char *)c + 0x134) + 0x30); }
@@ -2390,9 +2380,9 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
             return 1;
         SetOrClearBitInArray(obj, (unsigned char *)obj + 0x8c, 0x796, msg->p1);
         char *battle = (char*)_ZN9GameState11GetInstanceEv();
-        struct StatE7 *st = (struct StatE7 *)((char *)&((struct Blk7400 *)SubA(battle))[1] + 0x3c);
-        struct SnapshotE7 *snap = &st->snap;
-        if (!snap->done) {
+        BattleRecordSnapshot* st = (BattleRecordSnapshot*)((char *)&((struct Blk7400 *)SubA(battle))[1] + 0x3c);
+        BattleRecordCapture* snap = &st->capture;
+        if (!snap->captured) {
             void *fields = _Z17GetPtrField0x2a04P9GameState(battle);
             int level = 0;
             void *comb = _ZN9GameState14GetProtagonistEv(battle);
@@ -2400,22 +2390,22 @@ extern "C" ARM int func_02061c04(void *obj, CmdMsg64 *msg, void *param3) {
                 level = *(*(unsigned short **)((char *)comb + 0x134) + 0x18);
             lr.fword0 = 0;
             _Z24CopyOutBattleField0x7ac0Pv((void *)&lr.fword0);
-            _Z23CopyHalfwordAndTwoBytesP19SmallRecord020643e0S0_(snap, st);
-            _Z23CopyHalfwordAndTwoBytesP19SmallRecord020643e0S0_((char *)snap + 4, &st->r4);
-            snap->a_lo = st->w8.v24;
-            snap->a_mid = _Z22GetFieldPercentOver307P7S_a0870(st);
-            snap->a_hi = _Z22GetFieldPercentOver448P7S_a090c(st);
-            snap->b_lo = lr.fword0;
-            snap->b_mid = _Z22GetFieldPercentOver232P7S_a08a4(st);
-            snap->b_hi = _Z22GetFieldPercentOver944P7S_a08d8(st);
-            snap->c_lo = st->w10.v9;
-            snap->c_mid = st->wc.v14;
-            snap->d_lo = st->w8.hi8;
-            snap->d_mid = st->w10.v14;
-            snap->d_hi = level;
-            snap->e_lo = st->w40.v24;
-            snap->total = *(unsigned int *)((char *)fields + 0xf6c) + *(unsigned int *)((char *)fields + 0xf68);
-            snap->done = 1;
+            _Z23CopyHalfwordAndTwoBytesP19SmallRecord020643e0S0_(&snap->playClock, &st->clocks.elapsed);
+            _Z23CopyHalfwordAndTwoBytesP19SmallRecord020643e0S0_(&snap->committedPlayClock, &st->clocks.committed);
+            snap->unknown08_0 = st->unknown08_0;
+            snap->unknown08_17 = GetFieldPercentOver307(st);
+            snap->unknown08_24 = GetFieldPercentOver448(st);
+            snap->unknown0c_0 = lr.fword0;
+            snap->unknown0c_17 = GetFieldPercentOver232(st);
+            snap->unknown0c_24 = GetFieldPercentOver944(st);
+            snap->unknown10_0 = st->unknown10_0;
+            snap->unknown10_9 = st->unknown0c_14;
+            snap->unknown14_0 = st->unknown08_24;
+            snap->unknown14_8 = st->unknown10_9;
+            snap->unknown14_22 = level;
+            snap->unknown18_0 = st->unknown40_0;
+            snap->unknown1c = *(unsigned int *)((char *)fields + 0xf6c) + *(unsigned int *)((char *)fields + 0xf68);
+            snap->captured = 1;
         }
         return 1;
     }

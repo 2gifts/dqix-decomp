@@ -9,9 +9,9 @@ enum { RegionOffset = 0x7c38 };
 enum { RegionOffset = 0x7e78 };
 #endif
 #include "GameState/GameState.h"
+#include "System/Matrix.h"
 
 void* GetField0x3f8Address(GameState* battleStruct);
-extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 extern "C" void* func_02012fe4();
 struct S_bc7c;
 #if defined(jpn)
@@ -33,32 +33,66 @@ struct Data02109bf4 {
 };
 extern struct Data02109bf4 data_02109bf4;
 
+struct SavedLocation {
+    unsigned short zoneId;
+    short unknown2;
+    Vector3i position;
+    unsigned short global27da;
+    unsigned short global27d8;
+    unsigned char flag;
+    signed char entryKey;
+    short entryX;
+    short entryY;
+    short entryZ;
+};
+
+struct PendingLocation {
+    unsigned short zoneId;
+    unsigned char unknown2[5];
+    unsigned char unknown7;
+    unsigned char unknown8[8];
+    Vector3i position;
+    short unknown1c;
+};
+
+struct PendingEntryPosition {
+    short x;
+    short y;
+    short z;
+    signed char key;
+};
+
+struct GamePendingEntryPosition {
+    unsigned char unknown0[RegionOffset];
+    PendingEntryPosition pending;
+};
+
 #if defined(jpn)
 extern "C" ARM int func_020ab9c8(void* srcRaw);
 #endif
 
 // USA: func_020a9d78
 ARM int CopyBlobIntoBattleStruct020a9d78(void* srcRaw) {
-    char* src = (char*)srcRaw;
+    SavedLocation* saved = static_cast<SavedLocation*>(srcRaw);
     GameState* battleStruct = GameState::GetInstance();
-    char* dst = (char*)GetField0x3f8Address(battleStruct);
+    PendingLocation* destination = static_cast<PendingLocation*>(GetField0x3f8Address(battleStruct));
 
-    *(unsigned short*)(dst + 0x0) = *(unsigned short*)(src + 0x0);
-    _ZN8Vector3iaSERKS_((int*)(dst + 0x10), (int*)(src + 0x4));
+    destination->zoneId = saved->zoneId;
+    destination->position = saved->position;
 
-    *(short*)(dst + 0x1c) = *(short*)(src + 0x2);
-    *(unsigned char*)(dst + 0x7) = 1;
+    destination->unknown1c = saved->unknown2;
+    destination->unknown7 = 1;
 
     void* g = func_02012fe4();
-    SetField0x27d8((struct S_bc7c*)g, *(unsigned short*)(src + 0x12));
-    SetField0x27da((struct S_bc88*)g, *(unsigned short*)(src + 0x10));
+    SetField0x27d8((struct S_bc7c*)g, saved->global27d8);
+    SetField0x27da((struct S_bc88*)g, saved->global27da);
 
-    data_02109bf4.b3 = (*(unsigned char*)(src + 0x14) != 0);
+    data_02109bf4.b3 = (saved->flag != 0);
 
-    char* region = (char*)battleStruct + RegionOffset;
-    *(short*)(region + 0x0) = *(short*)(src + 0x16);
-    *(short*)(region + 0x2) = *(short*)(src + 0x18);
-    *(short*)(region + 0x4) = *(short*)(src + 0x1a);
-    *(signed char*)(region + 0x6) = *(signed char*)(src + 0x15);
+    PendingEntryPosition* pending = &reinterpret_cast<GamePendingEntryPosition*>(battleStruct)->pending;
+    pending->x = saved->entryX;
+    pending->y = saved->entryY;
+    pending->z = saved->entryZ;
+    pending->key = saved->entryKey;
     return 1;
 }

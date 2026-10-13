@@ -19,9 +19,9 @@ struct CopyableRecord {
 #if defined(jpn)
     unsigned char byte11;
 #endif
-    short f30;
-    signed char f32;
-    unsigned char f33;
+    short requestId;
+    signed char partySlot;
+    unsigned char flags;
 };
 
 struct Ctx02094030 {
@@ -36,6 +36,16 @@ struct Ctx02094030 {
     unsigned char flags;
 };
 
+struct PartyNameCache {
+#if defined(jpn)
+    unsigned char unknown0[0x413c];
+    char names[4][12];
+#else
+    unsigned char unknown0[0x435c];
+    char names[4][48];
+#endif
+};
+
 extern "C" void _Z19ClearRegion02093980Pc(char* obj);
 #if defined(jpn)
 extern "C" void func_0209446c(struct CopyableRecord* dst, struct CopyableRecord* src);
@@ -48,47 +58,45 @@ extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c540(void* obj);
 
 // USA: func_02094030
-extern "C" ARM int func_02094030(struct Ctx02094030* obj, int value, int unused2, int slot) {
+
+
+extern "C" ARM int func_02094030(struct Ctx02094030* queue, int requestId, int unused2, int slot) {
     GameObject* combatant = GameState::GetInstance()->GetPartyMemberByIndex(slot);
     void* ctx = func_0202ae18();
-    char* base = (char*)func_ov017_0218b5b0();
+    PartyNameCache* cachedNames = reinterpret_cast<PartyNameCache*>(func_ov017_0218b5b0());
 
     if (func_0202c540(ctx) != 0) {
-        if (value == 10000) return 1;
+        if (requestId == 10000) return 1;
     }
-    if (obj->count >= 8) return 1;
+    if (queue->count >= 8) return 1;
 
-    struct CopyableRecord* rec = &obj->records[obj->count];
-    _Z19ClearRegion02093980Pc((char*)rec);
+    struct CopyableRecord* request = &queue->records[queue->count];
+    _Z19ClearRegion02093980Pc((char*)request);
 
-    if (combatant == 0 || value == 3) {
-#if defined(jpn)
-        char* src = base + 0x413c + slot * 0xc;
-#else
-        char* src = base + 0x435c + slot * 0x30;
-#endif
-        if (src[0] == 0) return 1;
-        sprintf((char*)rec, src);
+    if (combatant == 0 || requestId == 3) {
+        char* name = cachedNames->names[slot];
+        if (name[0] == 0) return 1;
+        sprintf(request->payload.data, name);
     } else if (combatant != 0) {
-        sprintf((char*)rec, (const char*)combatant->baseStats_);
+        sprintf(request->payload.data, combatant->baseStats_->unk);
     }
 
-    rec->f30 = (short)value;
-    rec->f32 = (signed char)slot;
-    if (obj->count <= 0) {
-        obj->flags |= 1;
+    request->requestId = (short)requestId;
+    request->partySlot = (signed char)slot;
+    if (queue->count <= 0) {
+        queue->flags |= 1;
     }
 
-    unsigned int rank = (unsigned int)ClassifyByTenThousands(rec->f30);
-    obj->count = obj->count + 1;
+    unsigned int category = (unsigned int)ClassifyByTenThousands(request->requestId);
+    queue->count++;
 
     int i;
-    for (i = obj->count - 1; i >= 2; i--) {
-        if (ClassifyByTenThousands(obj->records[i - 1].f30) <= rank) break;
+    for (i = queue->count - 1; i >= 2; i--) {
+        if (ClassifyByTenThousands(queue->records[i - 1].requestId) <= category) break;
         struct CopyableRecord tmp;
-        CopyRecord(&tmp, &obj->records[i]);
-        CopyRecord(&obj->records[i], &obj->records[i - 1]);
-        CopyRecord(&obj->records[i - 1], &tmp);
+        CopyRecord(&tmp, &queue->records[i]);
+        CopyRecord(&queue->records[i], &queue->records[i - 1]);
+        CopyRecord(&queue->records[i - 1], &tmp);
     }
     return 0;
 }

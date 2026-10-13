@@ -13,10 +13,15 @@ enum { kCombatantFlagsOffset = 0x18c };
 #include "GameState/GameState.h"
 
 struct EventArgs021cee34 {
-    unsigned char pad[4];
-    int id;
-    unsigned int flag;
-    int set;
+    unsigned char header[4];
+    int combatantId;
+    unsigned int mask;
+    int enabled;
+};
+
+struct CombatantFlagsView {
+    unsigned char unknown000[kCombatantFlagsOffset];
+    unsigned int flags;
 };
 
 // USA: func_ov017_021cee34
@@ -24,15 +29,15 @@ struct EventArgs021cee34 {
 extern "C"
 #endif
 ARM void HandleSetFlagAt_021cee34_021cee34(void* unused, EventArgs021cee34* args, GameState* battleStruct) {
-    int set = args->set;
-    unsigned int flag = args->flag;
-    int id = args->id;
+    int enabled = args->enabled;
+    unsigned int mask = args->mask;
+    int id = args->combatantId;
     GameObject* combatant = GetCombatantWithFlag0x100(battleStruct, id);
     if (combatant == NULL) return;
-    unsigned int* field = (unsigned int*)((char*)combatant + kCombatantFlagsOffset);
-    if (set) {
-        *field |= flag;
+    CombatantFlagsView* status = (CombatantFlagsView*)combatant;
+    if (enabled) {
+        status->flags |= mask;
     } else {
-        *field &= ~flag;
+        status->flags &= ~mask;
     }
 }

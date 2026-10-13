@@ -2,7 +2,8 @@
 
 int GetGlobalField0x1c020421a0(void);
 extern "C" void* func_ov023_021f6524(void* ctx, int value);
-extern "C" int func_ov004_02168b08(void* a, int key);
+struct TableA68;
+extern "C" TableA68* func_ov004_02168b08(void* a, int key);
 extern "C" int func_ov023_021f9bc8(char* obj);
 extern "C" void __clear(void* buf, int len);
 extern "C" void func_02046380(void* global);

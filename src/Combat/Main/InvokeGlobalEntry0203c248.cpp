@@ -1,41 +1,65 @@
 #include <globaldefs.h>
-
-extern char* data_02105244;
-extern "C" void func_02042764(void* entry, int arg, int zero);
+#include "std_library_functions.h"
 
 #if defined(jpn)
-int StringLength(const char*);
-extern "C" void* memcpy(void*, const void*, unsigned int);
+struct CachedTextEntry {
+    short fontPixelSize;
+    short tileIndex;
+    char text[10];
+    unsigned char references;
+    unsigned char unknownf;
+};
+struct CachedTextTable {
+    void* drawingBuffer;
+    CachedTextEntry entries[96];
+};
+#else
+struct CachedTextEntry {
+    unsigned char glyphIndices[32];
+    unsigned char unknown20[8];
+};
+struct CachedTextTable {
+    void* drawingBuffer;
+    CachedTextEntry entries[32];
+};
+#endif
+
+extern CachedTextTable* data_02105244;
+int StringLength(const char* text);
+extern "C" void func_02042764(const unsigned char* glyphIndices, char* output, int fontIndex);
+
+#if defined(jpn)
 // USA: func_0203c248
-extern "C" ARM void func_0203bdf4(char* obj, char* output) {
-    char* base = data_02105244;
-    if (base == NULL) return;
-    char* entries;
+extern "C" ARM void func_0203bdf4(const short* textSlots, char* output) {
+    CachedTextTable* cache = data_02105244;
+    if (cache == NULL) return;
+    CachedTextEntry* entries;
     int used = 0;
-    int slot = 0;
-    entries = base + 4;
-    while (slot < 10) {
-        short index = ((short*)obj)[slot];
+    entries = cache->entries;
+
+
+
+    for (int slot = 0; slot < 10; ++slot) {
+        short index = textSlots[slot];
         if (index >= 0) {
-            char* entry = entries + index * 0x10;
-            int length = StringLength(entry + 4);
-            memcpy(output + used, entry + 4, length);
+            CachedTextEntry* entry = &entries[index];
+            int length = StringLength(entry->text);
+            memcpy(output + used, entry->text, length);
             used += length;
-            slot++;
+            ++slot;
         }
-        slot++;
     }
 }
 #else
 // USA: func_0203c248
-ARM void InvokeGlobalEntry0203c248(char* obj, int arg1) {
-    char* base = data_02105244;
-    char* arr;
-    short idx;
-    if (base == NULL) return;
-    arr = base + 4;
-    idx = *(short*)(obj + 0x14);
-    if (idx < 0) return;
-    func_02042764(arr + idx * 0x28, arg1, 0);
+ARM void InvokeGlobalEntry0203c248(char* object, int destination) {
+    CachedTextTable* cache = data_02105244;
+    CachedTextEntry* entries;
+    short index;
+    if (cache == NULL) return;
+    entries = cache->entries;
+    index = *reinterpret_cast<short*>(object + 0x14);
+    if (index < 0) return;
+    func_02042764(entries[index].glyphIndices, reinterpret_cast<char*>(destination), 0);
 }
 #endif

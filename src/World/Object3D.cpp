@@ -1,6 +1,7 @@
 #include "World/Object3D.h"
 #include "Graphics/NSBXX/RenderConfig.h"
 #include "System/Graphics.h"
+#include "System/Memory.h"
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Filesystem/FileIO.h"
@@ -12,7 +13,6 @@
 #include "Graphics/VRAMStaging.h"
 
 #if defined(jpn)
-#define _Z23CopyRegionAndFlushCachePvPKvj func_020d9e88
 #define func_020d1d1c func_020d37e8
 
 #endif
@@ -45,8 +45,6 @@ extern "C"
     // compute a checksum for a string
     void func_020d1d1c(unsigned short* out, const void* data, unsigned int length);
 
-    // memcpy and flush cache
-    void _Z23CopyRegionAndFlushCachePvPKvj(void*, const void*, unsigned);
 }
 
 // if set, drawing doesn't take place. Also does something with
@@ -1052,7 +1050,7 @@ bool Object3D::InternalLoadFromCHRArchive(ObjectArchiveLoadInfo* loadInfo)
                     narc.Destroy();
                     return false;
                 }
-                _Z23CopyRegionAndFlushCachePvPKvj(allocation, fileBytes, allocSize);
+                CopyRegionAndFlushCache(allocation, fileBytes, allocSize);
                 fileBytes = allocation;
             }
             // the pointer is either allocated by us or we're promised it'll stick 
@@ -1111,7 +1109,7 @@ bool Object3D::InternalLoadFromCHRArchive(ObjectArchiveLoadInfo* loadInfo)
                     narc.Destroy();
                     return false;
                 }
-                _Z23CopyRegionAndFlushCachePvPKvj(allocation, fileBytes, fileLength);
+                CopyRegionAndFlushCache(allocation, fileBytes, fileLength);
                 fileBytes = allocation;
             }
             Animation3D* anim3D = &animPackage->pAnim3Ds->data[fileType];

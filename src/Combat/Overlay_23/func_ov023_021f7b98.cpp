@@ -42,12 +42,12 @@ struct Obj021f7b98 {
 };
 
 // USA: func_ov023_021f7b98
-extern "C" ARM void func_ov023_021f7b98(struct Obj021f7b98* self, void* keyObj, int useTag, struct Rec020467f0* entry, void* next) {
+extern "C" ARM void func_ov023_021f7b98(struct Obj021f7b98* self, void* keyObj, int useTag, struct Rec020467f0* entry, unsigned int entryLength) {
     int size;
     void* rp;
     struct List0204af64 list;
 
-    if (entry == 0 || next == 0) {
+    if (entry == 0 || entryLength == 0) {
         return;
     }
     int count = CountActiveEntries((struct ActiveEntry02046900*)entry);

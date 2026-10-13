@@ -1,15 +1,16 @@
 #include <globaldefs.h>
 
 #if defined(jpn)
-enum { kSaveHalfwordOffset = 0xf4, kSaveSecondHalfwordOffset = 0xf6 };
-#else
-enum { kSaveHalfwordOffset = 0xb4, kSaveSecondHalfwordOffset = 0xb6 };
-#endif
-
-
-#if defined(jpn)
 #define SetHalfFields__021d1c84_021d1c84 func_ov017_021d2108
 #endif
+
+enum {
+#if defined(jpn)
+    kSaveHalfwordOffset = 0x27f4, kSaveSecondHalfwordOffset = 0x27f6
+#else
+    kSaveHalfwordOffset = 0x27b4, kSaveSecondHalfwordOffset = 0x27b6
+#endif
+};
 
 struct SearchStruct0202c1a4;
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
@@ -24,7 +25,6 @@ extern "C"
 ARM void SetHalfFields__021d1c84_021d1c84(int unused0, Obj_021d1c84* obj, int unused1, int unused2, struct SearchStruct0202c1a4* search) {
 	if (GetSearchStructCurrentArrEntry(search) == 0) return;
 	unsigned char* base = (unsigned char*)func_02012fe4();
-	base += 0x2700;
 	*(unsigned short*)(base + kSaveHalfwordOffset) = obj->field4;
 	*(unsigned short*)(base + kSaveSecondHalfwordOffset) = obj->field5;
 }

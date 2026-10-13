@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
 #if defined(jpn)
 #define func_ov005_0215ae7c func_ov005_0215c33c
@@ -13,10 +14,6 @@ struct Field150Holder02052e14;
 struct Container020dedd0;
 struct Container020e0310;
 
-struct GameState
-{
-    static GameState* GetInstance();
-};
 
 struct MemberScreen
 {
@@ -24,11 +21,6 @@ struct MemberScreen
     int member_;
 };
 
-struct GameResources
-{
-    char unk_0[LOW_REGION(0x34f8,0x3708)];
-    int* unknown_ptr_3708;
-};
 
 struct Element020de650
 {
@@ -50,7 +42,6 @@ struct EquipmentMenu
 extern "C" MessageSystem* _Z26GetGlobalField0x1c020421a0v();
 extern "C" GameResources* func_ov017_0218b5b0(void);
 extern "C" MemberScreen* _Z19GetField1c_021a193cPi(int* obj);
-Field150Holder02052e14* GetCombatantWithFlag0x100(GameState* gameState, int index);
 short* GetField150Ptr0x488(Field150Holder02052e14* member);
 extern "C" void func_020462d0(MessageSystem* messages, unsigned short* codes, int count);
 extern "C" Element020de650* _Z24FindElementByKey020dedd0P17Container020dedd0i(Container020dedd0* c, int key);
@@ -75,7 +66,7 @@ extern "C" ARM void func_ov005_0215ae7c(EquipmentMenu* self)
     MessageSystem* messages = _Z26GetGlobalField0x1c020421a0v();
     GameState* gameState = GameState::GetInstance();
     Field150Holder02052e14* member =
-        GetCombatantWithFlag0x100(gameState, _Z19GetField1c_021a193cPi(func_ov017_0218b5b0()->unknown_ptr_3708)->member_);
+        (Field150Holder02052e14*)GetCombatantWithFlag0x100(gameState, _Z19GetField1c_021a193cPi((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3])->member_);
     if (member == NULL)
         return;
     short* equipment = GetField150Ptr0x488(member);

@@ -15,7 +15,6 @@ extern "C" void* _Z26GetGlobalField0x1c020421a0v(void);
 struct Bytes02033b88;
 void SetByte0xbeShiftPrev(struct Bytes02033b88* obj, int value);
 
-extern "C" void _ZN8Object3D26RemoveAnimationPackageByIDEi(void* obj, int packageId);
 extern "C" void func_ov017_021cc1f8(int id, const char* src, int len, int extra);
 
 extern char data_02108760;
@@ -27,10 +26,8 @@ struct EntryFlags020531f0 {
 };
 
 struct Obj020531f0 {
-    unsigned short flags;
-    char pad2[0x4 - 0x2];
-    short charId;
-    char pad6[0xb2 - 0x6];
+    Object3D object;
+    char unknown_ac[0xb2 - 0xac];
     unsigned short fieldB2;
     char padB4[0xc1 - 0xb4];
     struct EntryFlags020531f0 entryFlags;
@@ -94,19 +91,19 @@ extern "C" ARM void func_020531f0(struct Obj020531f0* obj) {
     obj->pendingRefresh = 0;
     obj->pendingAdvance = 0;
 
-    if ((obj->flags & 0x200) != 0) {
+    if ((obj->object.unknown_0_ & 0x200) != 0) {
         if (GetByte0x26c((char*)obj) != 0) {
             return;
         }
     }
 
     obj->entryFlags.mode &= ~2;
-    _ZN8Object3D26RemoveAnimationPackageByIDEi((void*)obj, 2);
+    obj->object.RemoveAnimationPackageByID(2);
     obj->fieldB2 = 0;
     SetByte0xbeShiftPrev((struct Bytes02033b88*)obj, 0);
 
     battleStruct = GameState::GetInstance();
-    cid = obj->charId;
+    cid = obj->object.unknown_4_;
     int activeId = GetField0x397cValue(battleStruct);
     if (activeId == cid) {
         target = GetFieldIfFlag4((char*)battleStruct);
@@ -118,5 +115,5 @@ extern "C" ARM void func_020531f0(struct Obj020531f0* obj) {
         }
     }
 
-    func_ov017_021cc1f8(obj->charId, (const char*)eventBuf, 0, 1);
+    func_ov017_021cc1f8(obj->object.unknown_4_, (const char*)eventBuf, 0, 1);
 }

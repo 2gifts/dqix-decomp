@@ -29,7 +29,7 @@ extern "C" ARM void func_ov003_0215c01c(unsigned char* obj, int mode, int flag) 
     else elem[0xc5] &= ~0x40;
     flag = 0;
 
-    if (*(volatile unsigned char*)(elem + 0xc5) & 2) flag = 1;
+    if (*(unsigned char*)(elem + 0xc5) & 2) flag = 1;
     memset(*(void**)(obj + 0x7c), 0, kRegion960);
 
     switch (mode) {

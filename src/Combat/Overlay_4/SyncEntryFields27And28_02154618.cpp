@@ -16,14 +16,14 @@ void FindAndCopyFields_021546c0(Entry6_021546c0* arr, int key1, int key2, unsign
 
 // USA: func_ov004_02154618  (semantic: SyncEntryFields27And28_02154618)
 extern "C" ARM int func_ov004_02154618(void* a) {
-    short fa, f8, f6;
-    func_ov004_02153978(a, &fa, &f8, &f6);
-    unsigned short v = (unsigned short)(*(unsigned short*)&f6 + 0x19);
+    short selectionKind, categoryIndex, entryIndex;
+    func_ov004_02153978(a, &selectionKind, &categoryIndex, &entryIndex);
+    unsigned short selectedId = 0x19 + (unsigned short)entryIndex;
     func_ov023_021f645c(a, 0x27, 4, 0xf);
-    func_ov023_021f645c(a, 0x28, v, 0xf);
+    func_ov023_021f645c(a, 0x28, selectedId, 0xf);
 
     unsigned char out1, out2;
-    FindAndCopyFields_021546c0(data_ov004_021707c0, f8, f6, &out1, &out2);
+    FindAndCopyFields_021546c0(data_ov004_021707c0, categoryIndex, entryIndex, &out1, &out2);
     func_ov023_021f64a8(a, 0x38, out2, 0xf);
 #if !defined(jpn)
     func_ov004_021536e0(a, 0x38, 0x19);

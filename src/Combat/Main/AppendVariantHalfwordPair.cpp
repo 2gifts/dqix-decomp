@@ -1,18 +1,12 @@
 #include <globaldefs.h>
+#include "Resource/Script.h"
 
-struct Variant02030b0c {
-    int tag;
-    union {
-        int i;
-        float f;
-    } u;
-};
+struct Variant02030b0c;
 struct HalfwordPair {
     unsigned short a;
     unsigned short b;
 };
 struct BoundedHalfwordPairList;
-extern "C" int _ZNK6Script9Parameter5ToIntEv(struct Variant02030b0c* p);
 void AppendHalfwordPairCapped(struct BoundedHalfwordPairList* list, struct HalfwordPair* src);
 
 struct Global020fdd30_800c {
@@ -27,9 +21,10 @@ extern "C" ARM int AppendVariantHalfwordPair(struct Variant02030b0c* v);
 
 // USA: func_0202800c
 ARM int AppendVariantHalfwordPair(struct Variant02030b0c* v) {
+    const Script::Parameter* parameters = reinterpret_cast<const Script::Parameter*>(v);
     struct HalfwordPair pair;
-    int a = _ZNK6Script9Parameter5ToIntEv(v);
-    int b = _ZNK6Script9Parameter5ToIntEv(v + 1);
+    int a = parameters[0].ToInt();
+    int b = parameters[1].ToInt();
     pair.a = a;
     pair.b = b;
     AppendHalfwordPairCapped(data_020fdd30.list, &pair);

@@ -2965,6 +2965,14 @@ src/Combat/Overlay_0/func_ov000_0217c908.cpp:
     complete
     .text start:0x0217dc5c end:0x0217df54
 
+src/Combat/Overlay_0/func_ov000_0215440c.cpp:
+    complete
+    .text start:0x02155b8c end:0x02156184
+
+src/Combat/Overlay_0/func_ov000_02157e1c.cpp:
+    complete
+    .text start:0x0215959c end:0x02159a8c
+
 src/Combat/Overlay_0/func_ov000_02171e60.cpp:
     complete
     .text start:0x0217370c end:0x02173834
@@ -3004,10 +3012,6 @@ src/Combat/Overlay_0/func_ov000_0217b6d0.cpp:
 src/Combat/Overlay_0/ResetArrayAndEntry02182114.cpp:
     complete
     .text start:0x02183360 end:0x02183398
-
-src/Combat/Overlay_0/func_ov000_0215440c.cpp:
-    complete
-    .text start:0x02155b8c end:0x02156184
 
 src/Combat/Overlay_25/ResetFields_021e20d8.cpp:
     complete
@@ -3172,3 +3176,4 @@ src/Combat/Overlay_0/func_ov000_0217db4c.cpp:
 src/Combat/Overlay_0/0218214c.cpp:
     complete
     .text start:0x02183398 end:0x021834d0
+    .rodata start:0x021847e0 end:0x02184848

@@ -28,3 +28,6 @@ void VectorizedMemset(void* dst, int value, unsigned int length);
 void VectorizedInvertedMemcpy(const void* src, void* dst, unsigned int length);
 
 }
+
+unsigned int CopyRegionAndFlushCache(void* dst, const void* src, unsigned int length);
+unsigned int ClearAndInit020d84f8(void* dst, unsigned int length);

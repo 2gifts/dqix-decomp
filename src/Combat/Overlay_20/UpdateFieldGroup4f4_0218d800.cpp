@@ -14,27 +14,31 @@ enum { kSecondFadeOffset = 0x4f4 };
 void EncodeSignFlaggedHalfword(short* out, int value);
 int GetSignedField020c39c8(volatile unsigned short* p);
 
+struct MasterBrightnessFade {
+    float currentBrightness;
+    int targetBrightness;
+    int remainingMilliseconds;
+};
+
 struct FieldGroup4f4_0218d800 {
-    char pad[kSecondFadeOffset];
-    float f4f4;
-    int f4f8;
-    int f4fc;
+    char unknown0[kSecondFadeOffset];
+    MasterBrightnessFade subFade;
 };
 
 // USA: func_ov020_0218d800
 #if defined(jpn)
 extern "C"
 #endif
-ARM void UpdateFieldGroup4f4_0218d800(struct FieldGroup4f4_0218d800* obj, int a1, int a2) {
-    if (a2 == 0) {
-        EncodeSignFlaggedHalfword((short*)0x400106c, a1);
-        obj->f4f4 = (float)a1;
-        obj->f4f8 = a1;
-        obj->f4fc = 0;
+ARM void UpdateFieldGroup4f4_0218d800(struct FieldGroup4f4_0218d800* display, int targetBrightness, int durationMilliseconds) {
+    if (durationMilliseconds == 0) {
+        EncodeSignFlaggedHalfword((short*)0x400106c, targetBrightness);
+        display->subFade.currentBrightness = (float)targetBrightness;
+        display->subFade.targetBrightness = targetBrightness;
+        display->subFade.remainingMilliseconds = 0;
     } else {
-        int v = GetSignedField020c39c8((volatile unsigned short*)0x400106c);
-        obj->f4f4 = (float)v;
-        obj->f4f8 = a1;
-        obj->f4fc = a2;
+        int currentBrightness = GetSignedField020c39c8((volatile unsigned short*)0x400106c);
+        display->subFade.currentBrightness = (float)currentBrightness;
+        display->subFade.targetBrightness = targetBrightness;
+        display->subFade.remainingMilliseconds = durationMilliseconds;
     }
 }

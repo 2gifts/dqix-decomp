@@ -133,7 +133,6 @@ struct ArrayContainsByteStruct {
 };
 int ArrayContainsByte(struct ArrayContainsByteStruct* s, int val);
 
-
 void ClearBitsInField4(unsigned int* obj, unsigned int mask);
 void ClearBitsInField8(unsigned int* obj, unsigned int mask);
 void ClearBitsInWord(unsigned int* obj, unsigned int mask);
@@ -241,10 +240,7 @@ struct Slot70 { char data[0x70]; };
 static inline SafeAllocator* GetAllocator38(GameResources* res, int i) { return &res->allocator_array_38[i]; }
 static inline Slot70* GetSlot2cc(GameResources* res, int i) { return &((Slot70*)res->unknown_2cc)[i]; }
 
-static inline short GetObjectId(GameObject* c) {
-    short id = *(short*)((char*)c + 4);
-    return id;
-}
+static inline short GetObjectId(GameObject* c) { return *(short*)((char*)c + 4); }
 
 static inline int IsFlag130Bit0(GameObject* c) {
     return (**(int**)((char*)c + 0x130) & 1) != 0;

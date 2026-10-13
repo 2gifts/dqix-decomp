@@ -54,9 +54,9 @@ struct PaletteTable021e540c {
 };
 
 unsigned short (*GetVariantShortTable02109928())[2];
-void CopyAndClampShorts_021e5fdc(void* unused, short* dst, short* src);
-Element020de650* FindElementByKey020dedd0(Container020dedd0* names, int key);
-int GetNibbleField020de2a4(Obj020de2a4* entry, int which, int female);
+extern "C" void _Z27CopyAndClampShorts_021e5fdcPvPsS0_(void* unused, short* dst, short* src);
+extern "C" Element020de650* _Z24FindElementByKey020dedd0P17Container020dedd0i(Container020dedd0* names, int key);
+extern "C" int _Z22GetNibbleField020de2a4P11Obj020de2a4ii(Obj020de2a4* entry, int which, int female);
 extern short data_ov023_021fd68a[];
 
 // USA: func_ov023_021e540c
@@ -71,7 +71,7 @@ extern "C" ARM void func_ov023_021e540c(Character021e540c* self) {
     StageMemoryToVRAM(VRAMSubregion_TexturePalette, colors->eyes8[eye], paletteOffset + 0x30, 0x10, false, true);
 
     short models[10];
-    CopyAndClampShorts_021e5fdc((void*)self->vocation, models, appearance->models);
+    _Z27CopyAndClampShorts_021e5fdcPvPsS0_((void*)self->vocation, models, appearance->models);
     int i = 0;
     int part;
     for (; (part = data_ov023_021fd68a[i]) >= 0; i++) {
@@ -81,9 +81,9 @@ extern "C" ARM void func_ov023_021e540c(Character021e540c* self) {
         if (names != NULL) {
           VRAMState021e540c* state = &self->vramStates[part];
           if (state != NULL) {
-            Element020de650* entry = FindElementByKey020dedd0(names, (short)modelID);
+            Element020de650* entry = _Z24FindElementByKey020dedd0P17Container020dedd0i(names, (short)modelID);
             if (entry != NULL && entry->model != NULL) {
-                int count = GetNibbleField020de2a4((Obj020de2a4*)entry, 0, female);
+                int count = _Z22GetNibbleField020de2a4P11Obj020de2a4ii((Obj020de2a4*)entry, 0, female);
                 if (count != 0) {
                     count *= 2;
                     Model3D* model = self->parts[part].pModel_;

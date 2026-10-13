@@ -4,7 +4,6 @@
 
 extern "C" void* func_ov000_02161318(void* obj, int id);
 extern "C" void func_0204bc08(void* a, int b, int size, void* src, int extra);
-extern "C" double func_0200c578(float v);
 extern "C" double func_02009424(double v);
 
 struct Entry02174e50 {
@@ -34,7 +33,7 @@ extern "C" ARM void func_ov000_02174e50(char* obj, int id) {
             entry->phase = 0.0f;
             entry->color = 0x7fff;
         } else {
-            float s = func_02009424(func_0200c578(phase * 2.0f));
+            float s = func_02009424((double)(phase * 2.0f));
             if (s < 0.0f) {
                 s = 0.0f - s;
             }

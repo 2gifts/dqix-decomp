@@ -1,27 +1,14 @@
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
+#include "Filesystem/FileIO.h"
+#include "Resource/Script.h"
 
 #if defined(jpn)
 #define data_020f14b0 data_020f15fc
 #endif
 
-struct ResetStruct;
-extern "C" int _ZN6Script10InitializeEv(struct ResetStruct* s);
-
-struct StreamState;
-struct StreamHeader;
-extern "C" int _ZN6Script4LoadEPKvj(struct StreamState* s, struct StreamHeader* buffer, int length);
-
-struct Struct02030774;
-extern "C" int _ZN6Script7ExecuteEv(struct Struct02030774* p);
-
-extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(void* state, void* dataPtr);
-
-void* LoadFileIntoMemory(const char*, void*, unsigned int*);
-
 extern char data_020f14b0[] __attribute__((aligned(4)));
-extern char data_0211e33c[];
-extern int data_020f1444;
+extern Script::OpcodeLookupEntry data_020f1444[];
 
 struct Manager02109404 {
     char pad[0x10];
@@ -32,7 +19,7 @@ extern struct Manager02109404 data_02109404;
 // USA: func_02096524
 extern "C" ARM void func_02096524(char* ctx) {
     unsigned int count;
-    char buf[0x430];
+    Script script;
 
     BackgroundLoader::AddLockGlobal();
     void* header = LoadFileIntoMemory(data_020f14b0, data_0211e33c, &count);
@@ -41,10 +28,10 @@ extern "C" ARM void func_02096524(char* ctx) {
         struct Manager02109404* manager = &data_02109404;
         manager->f10 = slot;
         unsigned int len = count;
-        _ZN6Script10InitializeEv((struct ResetStruct*)buf);
-        _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(buf, &data_020f1444);
-        _ZN6Script4LoadEPKvj((struct StreamState*)buf, (struct StreamHeader*)header, len);
-        _ZN6Script7ExecuteEv((struct Struct02030774*)buf);
+        script.Initialize();
+        script.SetOpcodeLookup(data_020f1444);
+        script.Load(header, len);
+        script.Execute();
     }
     BackgroundLoader::RemoveLockGlobal();
 }

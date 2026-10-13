@@ -11,10 +11,7 @@ struct Rectangle02043600 {
 
 extern "C" void _Z31InvokeTableEntryHandler020435a8iPvS_i(int, void*, void*, int);
 
-inline short GetLeft02043600(const Rectangle02043600* rectangle) {
-    short left = rectangle->x;
-    return left;
-}
+inline short GetLeft02043600(const Rectangle02043600* rectangle) { return rectangle->x; }
 
 // USA: func_02043600
 extern "C" ARM void func_02043600(Border02043600* border, const Rectangle02043600* rectangle) {

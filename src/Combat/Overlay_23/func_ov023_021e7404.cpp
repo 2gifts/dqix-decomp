@@ -1,13 +1,12 @@
+#include "GameState/BattleRecordSnapshot.h"
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
 extern "C" void func_0205d0e0(void* obj, int val);
 struct TimeStamp020103f0;
 void ComputeElapsedPlayTimeHMS020103f0(struct TimeStamp020103f0* obj, unsigned short* outHours, unsigned char* outMinutes, unsigned char* outSeconds);
-struct PlayClock020ac614;
-void AddPlayClockHours020ac614(struct PlayClock020ac614* clock, int amount);
-struct PlayClock020ac644;
-void AddPlayClockMinutes020ac644(struct PlayClock020ac644* clock, int amount);
+void AddPlayClockHours020ac614(struct BattleRecordPlayClock* clock, int amount);
+void AddPlayClockMinutes020ac644(struct BattleRecordPlayClock* clock, int amount);
 struct ShortBytePair021e71a0;
 void ClearShortAndTwoBytes_021e71a0(struct ShortBytePair021e71a0* p);
 class PMFObj021e7c58;
@@ -53,10 +52,10 @@ extern "C" ARM void func_ov023_021e7404(char* obj, int amount) {
         ClearShortAndTwoBytes_021e71a0((struct ShortBytePair021e71a0*)(obj + regionalOffset3));
 
         unsigned short savedHours = *(unsigned short*)(savedClock + 0x3c);
-        AddPlayClockHours020ac614((struct PlayClock020ac614*)(obj + regionalOffset3), (unsigned short)(savedHours + hoursOut));
+        AddPlayClockHours020ac614((struct BattleRecordPlayClock*)(obj + regionalOffset3), (unsigned short)(savedHours + hoursOut));
 
         unsigned char savedMinutes = *(unsigned char*)(savedClock + 0x3e);
-        AddPlayClockMinutes020ac644((struct PlayClock020ac644*)(obj + regionalOffset3), (unsigned char)(savedMinutes + minutesOut));
+        AddPlayClockMinutes020ac644((struct BattleRecordPlayClock*)(obj + regionalOffset3), (unsigned char)(savedMinutes + minutesOut));
 
         unsigned char savedSeconds = *(unsigned char*)(savedClock + 0x3f);
         *(unsigned char*)(obj + regionalOffset4) = *(unsigned char*)(obj + regionalOffset4) + (unsigned char)(savedSeconds + secondsOut);
@@ -74,7 +73,7 @@ extern "C" ARM void func_ov023_021e7404(char* obj, int amount) {
                 }
             }
 
-            AddPlayClockMinutes020ac644((struct PlayClock020ac644*)(obj + regionalOffset3), carryMinutes);
+            AddPlayClockMinutes020ac644((struct BattleRecordPlayClock*)(obj + regionalOffset3), carryMinutes);
             *(unsigned char*)(obj + regionalOffset4) = *(unsigned char*)(obj + regionalOffset4) % 60;
         }
 afterMinuteCarry:

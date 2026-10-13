@@ -5,14 +5,12 @@ extern "C" unsigned int func_ov005_021538fc(unsigned int, unsigned int, unsigned
 // USA: func_ov005_02153728  (semantic: Trans_02153728)
 extern "C" ARM unsigned int func_ov005_02153728(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
     unsigned int stk[1];
-    int cc = 0;
     unsigned int r4 = 0;
     unsigned int r5 = 0;
     unsigned int r6 = 0;
     r6 = r0;
-    cc = (int)(r1) - (int)(0x0);
     r0 = 0xb33;
-    if (cc == 0) { r1 = 0x1; }
+    if (r1 == 0) { r1 = 0x1; }
     r4 = r1 * r0;
     r2 = 0xccc;
     r0 = r6;

@@ -11,10 +11,12 @@ struct Level0204455c {
 extern "C" ARM void func_0204455c(void* p, short* out1, short* out2) {
     if (p == 0) return;
     struct Level0204455c* lv = (struct Level0204455c*)p;
-    volatile struct Level0204455c* vl = lv;
-    short a = vl->fa8;
-    short b = vl->fac;
-    short c = vl->faa;
-    *out1 = (short)(b << 3) + ((short)(a << 3) >> 1);
-    *out2 = (short)(c << 3) - 10;
+    short a = lv->fa8;
+    short b = lv->fac;
+    short c = lv->faa;
+    a <<= 3;
+    b <<= 3;
+    c <<= 3;
+    *out1 = b + (a >> 1);
+    *out2 = c - 10;
 }

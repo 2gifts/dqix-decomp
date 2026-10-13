@@ -20,7 +20,7 @@ extern "C" void func_0204f41c(void* buf, short x, short y, int text, int d, int 
 #if defined(jpn)
 extern "C" void func_02050678(void*,short,short,int,int,int,short*,short*);
 #endif
-extern "C" void _Z31FormatAndDispatchValue_021db3c0iisih(void* buf, int x, short y, float v, unsigned char color);
+extern "C" void _Z31FormatAndDispatchValue_021db3c0Pvisfh(void* buf, int x, short y, float v, unsigned char color);
 extern "C" void _Z24SetPackedFields_021e24b0Pviihhhhhh(void* obj, int val, int f0xc, unsigned char nibbleD, unsigned char p5, unsigned char p6, unsigned char p7, unsigned char p8, unsigned char p9);
 extern "C" void func_ov023_021e257c(void* obj);
 extern "C" void* _Z29CreateAndSetFields8A_021db544PvS_ii(void* a, void* b, int c, int d);
@@ -204,15 +204,15 @@ extern "C" ARM void func_ov023_021ddf5c(struct Obj021ddf5c* obj) {
 #endif
 
 #if defined(jpn)
-                    _Z31FormatAndDispatchValue_021db3c0iisih(buf, (short)(p0 + 8), p1, v, 0xf);
+                    _Z31FormatAndDispatchValue_021db3c0Pvisfh(buf, (short)(p0 + 8), p1, v, 0xf);
 #else
 #if defined(jpn)
-                    _Z31FormatAndDispatchValue_021db3c0iisih(buf, (short)(p0 + 8), p1, v, 0xf);
+                    _Z31FormatAndDispatchValue_021db3c0Pvisfh(buf, (short)(p0 + 8), p1, v, 0xf);
 #else
 #if defined(jpn)
-                    _Z31FormatAndDispatchValue_021db3c0iisih(buf, (short)(p0 + 8), p1, v, 0xf);
+                    _Z31FormatAndDispatchValue_021db3c0Pvisfh(buf, (short)(p0 + 8), p1, v, 0xf);
 #else
-                    _Z31FormatAndDispatchValue_021db3c0iisih(buf, p0, p1, v, 0xf);
+                    _Z31FormatAndDispatchValue_021db3c0Pvisfh(buf, p0, p1, v, 0xf);
 #endif
 
 #endif
@@ -319,15 +319,15 @@ extern "C" ARM void func_ov023_021ddf5c(struct Obj021ddf5c* obj) {
 #endif
 
 #if defined(jpn)
-                    _Z31FormatAndDispatchValue_021db3c0iisih(buf, (short)(p0 + 8), p1, v, 0xf);
+                    _Z31FormatAndDispatchValue_021db3c0Pvisfh(buf, (short)(p0 + 8), p1, v, 0xf);
 #else
 #if defined(jpn)
-                    _Z31FormatAndDispatchValue_021db3c0iisih(buf, (short)(p0 + 8), p1, v, 0xf);
+                    _Z31FormatAndDispatchValue_021db3c0Pvisfh(buf, (short)(p0 + 8), p1, v, 0xf);
 #else
 #if defined(jpn)
-                    _Z31FormatAndDispatchValue_021db3c0iisih(buf, (short)(p0 + 8), p1, v, 0xf);
+                    _Z31FormatAndDispatchValue_021db3c0Pvisfh(buf, (short)(p0 + 8), p1, v, 0xf);
 #else
-                    _Z31FormatAndDispatchValue_021db3c0iisih(buf, p0, p1, v, 0xf);
+                    _Z31FormatAndDispatchValue_021db3c0Pvisfh(buf, p0, p1, v, 0xf);
 #endif
 
 #endif
@@ -447,15 +447,15 @@ extern "C" ARM void func_ov023_021ddf5c(struct Obj021ddf5c* obj) {
 #endif
 
 #if defined(jpn)
-                    _Z31FormatAndDispatchValue_021db3c0iisih(buf, (short)(p0 + 8), p1, v, 0xf);
+                    _Z31FormatAndDispatchValue_021db3c0Pvisfh(buf, (short)(p0 + 8), p1, v, 0xf);
 #else
 #if defined(jpn)
-                    _Z31FormatAndDispatchValue_021db3c0iisih(buf, (short)(p0 + 8), p1, v, 0xf);
+                    _Z31FormatAndDispatchValue_021db3c0Pvisfh(buf, (short)(p0 + 8), p1, v, 0xf);
 #else
 #if defined(jpn)
-                    _Z31FormatAndDispatchValue_021db3c0iisih(buf, (short)(p0 + 8), p1, v, 0xf);
+                    _Z31FormatAndDispatchValue_021db3c0Pvisfh(buf, (short)(p0 + 8), p1, v, 0xf);
 #else
-                    _Z31FormatAndDispatchValue_021db3c0iisih(buf, p0, p1, v, 0xf);
+                    _Z31FormatAndDispatchValue_021db3c0Pvisfh(buf, p0, p1, v, 0xf);
 #endif
 
 #endif
@@ -491,9 +491,9 @@ extern "C" ARM void func_ov023_021ddf5c(struct Obj021ddf5c* obj) {
 #endif
 
 #if defined(jpn)
-                    _Z31FormatAndDispatchValue_021db3c0iisih(buf, (short)(p0 + 8), p1, w, color);
+                    _Z31FormatAndDispatchValue_021db3c0Pvisfh(buf, (short)(p0 + 8), p1, w, color);
 #else
-                    _Z31FormatAndDispatchValue_021db3c0iisih(buf, p0, p1, w, color);
+                    _Z31FormatAndDispatchValue_021db3c0Pvisfh(buf, p0, p1, w, color);
 #endif
 
                 }

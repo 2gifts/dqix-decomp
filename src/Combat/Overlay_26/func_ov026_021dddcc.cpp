@@ -102,7 +102,6 @@ int func_ov000_0215e9fc(BattleState* battle, short* out, int max, int flag);
 int func_ov000_0215eb1c(BattleState* battle, short* out, int max, int flag);
 int func_ov000_02153e78(BattleState* battle, short* out, int max, int group, int flag);
 int func_ov000_02171ffc(SlotWork* slot);
-double func_0200c578(float x);
 double func_02009424(double x);
 void __clear(void* dst, int size);
 }
@@ -250,7 +249,7 @@ extern "C" ARM void func_ov026_021dddcc(BattleWork* self) {
         if (6.28f < angle) {
             angle -= 6.28f;
         }
-        data_ov026_021def00.value = func_02009424(func_0200c578(angle));
+        data_ov026_021def00.value = func_02009424((double)(angle));
     }
 
     for (t = 0; t < n; t++) {

@@ -1,23 +1,14 @@
 #include <globaldefs.h>
+#include "Graphics/GlyphBitmapContext.h"
 
 #if defined(jpn)
 #define func_0202920c func_02028dc4
 #endif
 
-#if defined(jpn)
-struct GfxBufferHolder {
-    char pad[4];
-    void* buffer;
-};
-extern GfxBufferHolder data_020fe6fc;
-#define data_020fe9a4 data_020fe6fc.buffer
-#else
-extern void* data_020fe9a4;
-#endif
 
 // USA: func_0202920c
 extern "C" ARM void func_0202920c(int color, int x, int y, int w, int h) {
-    if (data_020fe9a4 == 0) return;
+    if (glyphBitmapContext.buffer == 0) return;
     if (x + w < 0) return;
     if (y + h < 0) return;
     if (x >= 0x100 || y >= 0xc0) return;
@@ -42,7 +33,7 @@ extern "C" ARM void func_0202920c(int color, int x, int y, int w, int h) {
 
     even = color & 0xff;
     odd = (even << 4) & 0xff;
-    row = (unsigned char*)data_020fe9a4 + y * 0x80 + x / 2;
+    row = (unsigned char*)glyphBitmapContext.buffer + y * 0x80 + x / 2;
 
     for (i = 0; i < h; i++) {
         p = row;

@@ -3,13 +3,16 @@
 extern "C" void* func_020e52a0(void* arr, int key);
 
 #if defined(jpn)
+#include "std_library_functions.h"
+
 struct Container020e0310;
-int LookupFieldByKey020e0440(struct Container020e0310*, int);
-extern "C" char* strcpy(char*, const char*);
+
+
+int LookupFieldByKey020e0440(Container020e0310* names, int nameId);
 // USA: func_020e5294
-extern "C" ARM char* func_020e207c(void* arr, char* destination, int key) {
+extern "C" ARM char* func_020e207c(Container020e0310* names, char* destination, int nameId) {
     if (destination == NULL) return NULL;
-    const char* name = (const char*)LookupFieldByKey020e0440((Container020e0310*)arr, key);
+    const char* name = reinterpret_cast<const char*>(LookupFieldByKey020e0440(names, nameId));
     if (name == NULL) {
         destination[0] = 0;
         return NULL;

@@ -1,11 +1,18 @@
 #include <globaldefs.h>
 
-char* FindNamedRecord0204673c(char* a, char* b);
+char* FindNamedRecord0204673c(char* records, char* path);
+
+struct NamedRecordHeader {
+    char name[0x40];
+    unsigned int payloadOffset;
+    unsigned int payloadLength;
+    unsigned int recordStride;
+};
 
 // USA: func_020467c0
-ARM char* FindEntryAndGetNext(void* a, char* b, void** outField44) {
-    char* p = FindNamedRecord0204673c((char*)a, b);
-    if (p == NULL) return NULL;
-    if (outField44 != NULL) *outField44 = *(void**)(p + 0x44);
-    return p + *(int*)(p + 0x40);
+ARM char* FindEntryAndGetNext(void* records, char* path, unsigned int* outSize) {
+    NamedRecordHeader* record = (NamedRecordHeader*)FindNamedRecord0204673c((char*)records, path);
+    if (record == NULL) return NULL;
+    if (outSize != NULL) *outSize = record->payloadLength;
+    return (char*)record + record->payloadOffset;
 }
