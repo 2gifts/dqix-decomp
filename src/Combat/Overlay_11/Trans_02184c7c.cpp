@@ -1,29 +1,20 @@
 #include <globaldefs.h>
 
-extern "C" unsigned int _Z13SetBrightnessP13GameResourcesii(unsigned int, unsigned int, unsigned int);
-extern "C" unsigned int _Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30(unsigned int);
-extern "C" unsigned int _s32_div_f(unsigned int, unsigned int);
-extern "C" unsigned int func_ov017_0218b5b0();
+struct TaggedNumber02184c30 {
+    int type;
+    union { int i; float f; } value;
+};
+
+struct GameResources;
+
+extern "C" void _Z13SetBrightnessP13GameResourcesii(struct GameResources* resources, int brightness, int duration);
+extern "C" int _Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30(struct TaggedNumber02184c30* v);
+extern "C" struct GameResources* func_ov017_0218b5b0(void);
 
 // USA: func_ov011_02184c7c  (semantic: Trans_02184c7c)
-extern "C" ARM unsigned int func_ov011_02184c7c(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
-    unsigned int r4 = 0;
-    unsigned int r5 = 0;
-    unsigned int r6 = 0;
-    r6 = r0;
-    r0 = (unsigned int)func_ov017_0218b5b0();
-    r5 = r0;
-    r0 = r6;
-    r0 = (unsigned int)_Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30(r0);
-    r4 = r0;
-    r0 = r6 + 0x8;
-    r0 = (unsigned int)_Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30(r0);
-    r1 = 0x22;
-    r0 = (unsigned int)_s32_div_f(r0, r1);
-    r1 = r4;
-    r2 = r0;
-    r0 = r5;
-    r0 = (unsigned int)_Z13SetBrightnessP13GameResourcesii(r0, r1, r2);
-    r0 = 0x1;
-    return r0;
+extern "C" ARM int func_ov011_02184c7c(struct TaggedNumber02184c30* params, int count) {
+    struct GameResources* resources = func_ov017_0218b5b0();
+    int brightness = _Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30(&params[0]);
+    _Z13SetBrightnessP13GameResourcesii(resources, brightness, _Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30(&params[1]) / 34);
+    return 1;
 }

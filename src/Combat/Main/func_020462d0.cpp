@@ -42,7 +42,7 @@ extern "C" ARM void func_020462d0(char* obj, unsigned short* codes, int count) {
             continue;
         }
         _Z15Forward020416c0P13State0204166c((struct State0204166c*)slot);
-        int* counter = (int*)((obj + 0x1b4) + 0x800);
+        int* counter = (int*)(obj + 0x9b4);
         *counter = (*counter - 1) & 0x7f;
     }
 }

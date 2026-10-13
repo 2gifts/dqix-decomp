@@ -4,54 +4,29 @@
 #define func_ov012_02185a24 func_ov012_02186084
 #endif
 
-extern "C" unsigned int _Z28CallFunc0204b04cOverList0x98P12Cont0205d274(unsigned int);
-extern "C" unsigned int _Z28CallFunc0204c8f0OverList0x9cP12Cont0205d228(unsigned int);
-extern "C" unsigned int _Z32ClearBuffers0204b010OverList0x98P12Cont0205d1e0(unsigned int);
-extern "C" unsigned int _Z33UpdateEntryFromDoublePtr_021e6b04Pc(unsigned int);
-extern "C" unsigned int _Z37InitBuffersAndConfigureEntry_021e761cPv(unsigned int);
-extern "C" unsigned int func_0205da88(unsigned int, unsigned int, unsigned int, unsigned int);
-extern "C" unsigned int func_ov023_021e67f4(unsigned int);
-extern "C" unsigned int func_ov023_021e68cc(unsigned int);
-extern "C" unsigned int func_ov023_021e6a14(unsigned int);
-extern "C" unsigned int func_ov024_021e6a90(unsigned int);
+extern "C" void _Z28CallFunc0204b04cOverList0x98P12Cont0205d274(void*);
+extern "C" void _Z28CallFunc0204c8f0OverList0x9cP12Cont0205d228(void*);
+extern "C" void _Z32ClearBuffers0204b010OverList0x98P12Cont0205d1e0(void*);
+extern "C" void _Z33UpdateEntryFromDoublePtr_021e6b04Pc(char*);
+extern "C" void _Z37InitBuffersAndConfigureEntry_021e761cPv(void*);
+extern "C" void func_0205da88(void*, int, int, int);
+extern "C" void func_ov023_021e67f4(char*);
+extern "C" void func_ov023_021e68cc(char*);
+extern "C" void func_ov023_021e6a14(char*);
+extern "C" void func_ov024_021e6a90(char*);
 
 // USA: func_ov012_02185a24  (semantic: Trans_02185a24)
-extern "C" ARM unsigned int func_ov012_02185a24(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
-    unsigned int r4 = 0;
-    r4 = r0;
-    r0 = r4 + 0x128;
-    r0 = r0 + 0xc00;
-    r0 = (unsigned int)_Z37InitBuffersAndConfigureEntry_021e761cPv(r0);
-    r0 = r4 + 0xac;
-    r0 = (unsigned int)_Z32ClearBuffers0204b010OverList0x98P12Cont0205d1e0(r0);
-    r0 = r4 + 0xac;
-    r0 = (unsigned int)_Z28CallFunc0204c8f0OverList0x9cP12Cont0205d228(r0);
-    r0 = r4 + 0xac;
-    r1 = 0x1;
-    r2 = 0x2;
-    r3 = r1;
-    r0 = (unsigned int)func_0205da88(r0, r1, r2, r3);
-    r0 = r4 + 0xac;
-    r1 = 0x1;
-    r2 = 0x3;
-    r3 = r1;
-    r0 = (unsigned int)func_0205da88(r0, r1, r2, r3);
-    r0 = r4 + 0xac;
-    r1 = 0x2;
-    r2 = 0x3;
-    r3 = 0x0;
-    r0 = (unsigned int)func_0205da88(r0, r1, r2, r3);
-    r0 = r4 + 0xac;
-    r0 = (unsigned int)_Z28CallFunc0204b04cOverList0x98P12Cont0205d274(r0);
-    r0 = r4;
-    r0 = (unsigned int)func_ov023_021e67f4(r0);
-    r0 = r4;
-    r0 = (unsigned int)func_ov023_021e68cc(r0);
-    r0 = r4;
-    r0 = (unsigned int)func_ov023_021e6a14(r0);
-    r0 = r4;
-    r0 = (unsigned int)func_ov024_021e6a90(r0);
-    r0 = r4;
-    r0 = (unsigned int)_Z33UpdateEntryFromDoublePtr_021e6b04Pc(r0);
-    return r0;
+extern "C" ARM void func_ov012_02185a24(char* obj) {
+    _Z37InitBuffersAndConfigureEntry_021e761cPv(obj + 0xd28);
+    _Z32ClearBuffers0204b010OverList0x98P12Cont0205d1e0(obj + 0xac);
+    _Z28CallFunc0204c8f0OverList0x9cP12Cont0205d228(obj + 0xac);
+    func_0205da88(obj + 0xac, 1, 2, 1);
+    func_0205da88(obj + 0xac, 1, 3, 1);
+    func_0205da88(obj + 0xac, 2, 3, 0);
+    _Z28CallFunc0204b04cOverList0x98P12Cont0205d274(obj + 0xac);
+    func_ov023_021e67f4(obj);
+    func_ov023_021e68cc(obj);
+    func_ov023_021e6a14(obj);
+    func_ov024_021e6a90(obj);
+    _Z33UpdateEntryFromDoublePtr_021e6b04Pc(obj);
 }

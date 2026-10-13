@@ -6,7 +6,6 @@ enum { kRegionValue840_860 = 0x860 };
 enum { kRegionValue840_860 = 0x840 };
 #endif
 
-
 extern "C" void* func_02012fe4(void);
 
 struct Elem020985ec {
@@ -15,10 +14,15 @@ struct Elem020985ec {
     unsigned char pad1[0xd4];
 };
 
+struct Ctx020985ec {
+    unsigned char pad[0x1b38];
+    int count;
+};
+
 // USA: func_ov003_02170898
 extern "C" ARM void func_ov003_02170898(unsigned char* self) {
     struct Elem020985ec* arr = (struct Elem020985ec*)((char*)func_02012fe4() + kRegionValue840_860);
-    int count = *(int*)(*(char**)(self + 0x170) + 0x1000 + 0xb38);
+    int count = (*(struct Ctx020985ec**)(self + 0x170))->count;
 
     int i;
     for (i = 0; i < 0x1e; i++) {
