@@ -18058,3 +18058,7 @@ src/Combat/Main/LookupTable020982a4.cpp:
 src/Combat/Main/func_0202e0a4.cpp:
     complete
     .text start:0x0202dc14 end:0x0202e130
+
+src/Combat/Main/func_020a1940.cpp:
+    complete
+    .text start:0x020a36b8 end:0x020a37b8
