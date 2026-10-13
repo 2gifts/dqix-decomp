@@ -19803,3 +19803,7 @@ src/Combat/Main/func_0205b734.cpp:
 src/Combat/Main/func_0206e424.cpp:
     complete
     .text start:0x0206e434 end:0x0206e568
+
+src/Combat/Main/sys_readc.cpp:
+    complete
+    .text start:0x0200d8a8 end:0x0200d8bc
