@@ -16,6 +16,7 @@ struct StatusEffectEntry02069234 {
 struct StatusTable02069234 {
     char pad[0x294];
     StatusEffectEntry02069234 effect;
+    StatusEffectEntry02069234* GetEffect() { return &effect; }
 };
 
 struct Combatant02069234 {
@@ -170,7 +171,7 @@ extern "C" ARM void func_02069234(TagContext02069234* sb, char* str, char* dst) 
                 GameState* gameState = _ZN9GameState11GetInstanceEv();
                 Combatant02069234* combatant = _Z25GetCombatantWithFlag0x100P9GameStatei(gameState, sb->combatantId);
                 if (combatant != 0) {
-                    StatusEffectEntry02069234* eff = &combatant->statusTable->effect;
+                    StatusEffectEntry02069234* eff = combatant->statusTable->GetEffect();
                     if (eff != 0) {
                         if (eff->duration > 0) {
                             if (eff->kind == 0) {

@@ -19,6 +19,8 @@ struct Stats021620f0 {
     unsigned char pad_8[0x1d];
     unsigned char slot;
     unsigned char pad_26[0xa4 - 0x26];
+
+    unsigned char GetSlot() { return slot; }
 };
 
 struct Combatant021620f0 {
@@ -82,6 +84,8 @@ struct BattleData021620f0 {
     Random random;
     unsigned char pad_20[0x81b0 - sizeof(Random)];
     Formation021620f0 formation;
+
+    Random* GetRandom() { return &random; }
 };
 
 struct Scene021620f0 {
@@ -116,10 +120,6 @@ void ClearSubstructByte0x56(unsigned char* obj);
 
 extern const short data_ov000_02182ff8[][3];
 extern const signed char data_ov000_02182fd4[][3];
-
-static inline unsigned char GetStatsSlot(Combatant021620f0* c) { unsigned char slot = c->stats->slot; return slot; }
-
-static inline Random* GetRandom(Scene021620f0* scene) { Random* random = &scene->data->random; return random; }
 
 // USA: func_ov000_021620f0
 extern "C" ARM void func_ov000_021620f0(Scene021620f0* scene, int formation) {
@@ -175,7 +175,7 @@ extern "C" ARM void func_ov000_021620f0(Scene021620f0* scene, int formation) {
                 ClearSubstructByte0x56((unsigned char*)c);
                 _Z21RegisterCombatantSlotP9GameStateiP10GameObject(game, id + 0xc0, (GameObject*)c);
             }
-            SetRandomizedShort0x18802048934(c, entry, GetRandom(scene));
+            SetRandomizedShort0x18802048934(c, entry, scene->data->GetRandom());
             unsigned short v0 = c->field_188;
             unsigned short v2 = c->field_18a;
             c->stats->field_0 = v0;
@@ -196,7 +196,7 @@ extern "C" ARM void func_ov000_021620f0(Scene021620f0* scene, int formation) {
             c->group = g;
             c->slot = slot;
             c->active = 1;
-            int bit = GetStatsSlot(c);
+            int bit = c->stats->GetSlot();
             f->pairs[g].slots |= 1 << bit;
             IncrementByteCounterWrapAt0x12((unsigned char*)&f->pairs[g]);
             f->groups[g].ids[j] = id;
