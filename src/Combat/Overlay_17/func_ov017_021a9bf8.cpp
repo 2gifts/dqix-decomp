@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Grotto/Main/TreasureMapMetadata.h"
+#include "Grotto/Main/DetailedTreasureMapData.h"
 #include "System/Memory.h"
 #include "std_library_functions.h"
 
@@ -23,17 +24,15 @@ struct Src02011818 {
     unsigned short field_26;
 };
 struct MapHistory021a9bf8 { unsigned char count; unsigned char field_1; TreasureMapMetadata maps[99]; };
-struct Frame021a9bf8 { unsigned char nodes[0x34]; Src02011818 names; MapHistory021a9bf8 history; };
-struct Window021a9bf8 {
-    char pad_0[0x60];
-    char* text;
-    char pad_64[0x2c8 - 0x64];
-    int field_2c8;
-    char pad_2cc[0x998 - 0x2cc];
-    int busy;
-    char pad_99c[0x19b2 - 0x99c];
-    unsigned char field_19b2;
-};
+#if defined(jpn)
+enum { TextOffset = 0x2c, ChoiceOffset = 0x218, BusyOffset = 0x868, ChoiceFlagOffset = 0x17e2 };
+extern const char data_ov017_021d7c96[];
+extern const char data_ov017_021d7cbf[];
+extern const char data_ov017_021d7ccb[];
+extern const char data_ov017_021d7cd1[];
+#else
+enum { TextOffset = 0x60, ChoiceOffset = 0x2c8, BusyOffset = 0x998, ChoiceFlagOffset = 0x19b2 };
+#endif
 struct MapTask021a9bf8 {
     unsigned char field_0;
     unsigned char complete;
@@ -41,9 +40,14 @@ struct MapTask021a9bf8 {
     unsigned char stage;
     char pad_9;
     TreasureMapMetadata metadata;
-    char pad_26[0x1ec - 0x26];
+    DetailedTreasureMapData detailed;
+#if defined(jpn)
+    char name[4][0x20];
+    char description[0x80];
+#else
     char name[0x40];
     char description[0x40];
+#endif
     unsigned char error;
     unsigned char type;
     unsigned char quality;
@@ -61,14 +65,18 @@ void ClearIntAt0x23c(unsigned char*);
 int AlwaysTrue02094b4c();
 void CancelPendingAction020397cc(Obj020397cc*, int);
 void ResetElapsedState020e11a4();
-Window021a9bf8* GetGlobalField0x1c020421a0();
+char* GetGlobalField0x1c020421a0();
 void SetIndexedName02046574(Obj02046574*, int, char*);
 const char* CallFunc020e0434With02153694(int);
 unsigned char ReadBattleField0x64f4Byte();
 void CopyOutBattleRegion0x64f4(void*);
 void CopyToBattleRegion0x64f4(void*);
-extern "C" void func_0204500c(Window021a9bf8*, char*, int, int);
-extern "C" int func_020457e0(Window021a9bf8*);
+extern "C" void func_0204500c(char*, char*, int
+#if !defined(jpn)
+    , int
+#endif
+);
+extern "C" int func_020457e0(char*);
 void SetNameEntries02011818(void*, Src02011818*);
 void ClearRegion0x649e(char*);
 void CopyStringToField0x649e(char*, unsigned int, const char*);
@@ -81,11 +89,14 @@ extern "C" void func_ov017_021a9fa0(MapTask021a9bf8*);
 extern const char data_ov017_021d781f[];
 extern const char data_ov017_021d782b[];
 
+// JPN: func_ov017_021aa43c
 // USA: func_ov017_021a9bf8
 extern "C" ARM void func_ov017_021a9bf8(MapTask021a9bf8* self) {
     GameState* state = GameState::GetInstance();
     unsigned char* field = GetFieldIfFlag4((char*)state);
-    Frame021a9bf8 frame __attribute__((aligned(4)));
+    MapHistory021a9bf8 history;
+    Src02011818 names;
+    unsigned char nodes[0x34];
     if (func_ov017_021959b4()) { Something_021a9f58((int)self); return; }
     GameObject* object = state->GetUnknownGameObject();
     if (!object) { self->complete = 1; return; }
@@ -101,65 +112,98 @@ extern "C" ARM void func_ov017_021a9bf8(MapTask021a9bf8* self) {
         if (!AlwaysTrue02094b4c()) return;
         CancelPendingAction020397cc((Obj020397cc*)object, 1);
         ResetElapsedState020e11a4();
-        Window021a9bf8* window = GetGlobalField0x1c020421a0();
-        char* text = window->text;
+        char* window = GetGlobalField0x1c020421a0();
+        char* text = (*reinterpret_cast<char**>(window + TextOffset));
+#if defined(jpn)
+        char* protagonistName = state->GetUnknownGameObject()->baseStats_->unk;
+        sprintf(text, data_ov017_021d7c96, protagonistName, self->description);
+#else
         SetIndexedName02046574((Obj02046574*)window, 1, self->description);
         sprintf(text, CallFunc020e0434With02153694(0x40));
+#endif
         if (((unsigned char (*)(GameState*))ReadBattleField0x64f4Byte)(state) >= 99) {
             self->error = 1;
+#if defined(jpn)
+            strcat(text, data_ov017_021d7cbf);
+#else
             strcat(text, data_ov017_021d781f);
+#endif
             self->stage = 2;
         } else {
-            CopyOutBattleRegion0x64f4(&frame.history);
-            VectorizedMemset(&frame.history.maps[frame.history.count], 0, 0x1c);
-            VectorizedInvertedMemcpy(&self->metadata, &frame.history.maps[frame.history.count], 0x1c);
-            frame.history.count++;
-            CopyToBattleRegion0x64f4(&frame.history);
+            CopyOutBattleRegion0x64f4(&history);
+            VectorizedMemset(&history.maps[history.count], 0, 0x1c);
+            VectorizedInvertedMemcpy(&self->metadata, &history.maps[history.count], 0x1c);
+            history.count++;
+            CopyToBattleRegion0x64f4(&history);
+#if defined(jpn)
+            strcat(text, data_ov017_021d7ccb);
+#else
             strcat(text, data_ov017_021d782b);
+#endif
             self->stage = 4;
         }
-        func_0204500c(window, text, 0, 0xe3);
-        window->busy = 1;
-        window->field_19b2 = 0;
+        func_0204500c(window, text, 0
+#if !defined(jpn)
+            , 0xe3
+#endif
+        );
+        (*reinterpret_cast<int*>(window + BusyOffset)) = 1;
+        (*reinterpret_cast<unsigned char*>(window + ChoiceFlagOffset)) = 0;
     } else if (self->stage == 2) {
-        Window021a9bf8* window = GetGlobalField0x1c020421a0();
-        if (window->busy) return;
-        char* text = window->text;
+        char* window = GetGlobalField0x1c020421a0();
+        if ((*reinterpret_cast<int*>(window + BusyOffset))) return;
+        char* text = (*reinterpret_cast<char**>(window + TextOffset));
+#if defined(jpn)
+        char* protagonistName = state->GetUnknownGameObject()->baseStats_->unk;
+        sprintf(text, data_ov017_021d7cd1, self->description, protagonistName, self->description);
+#else
         SetIndexedName02046574((Obj02046574*)window, 0, self->description);
         sprintf(text, CallFunc020e0434With02153694(0x41));
-        window->field_2c8 = 1;
-        func_0204500c(window, text, 0, 0xe3);
-        window->busy = 1;
-        window->field_19b2 = 1;
+#endif
+        (*reinterpret_cast<int*>(window + ChoiceOffset)) = 1;
+        func_0204500c(window, text, 0
+#if !defined(jpn)
+            , 0xe3
+#endif
+        );
+        (*reinterpret_cast<int*>(window + BusyOffset)) = 1;
+        (*reinterpret_cast<unsigned char*>(window + ChoiceFlagOffset)) = 1;
         self->stage = 3;
     } else if (self->stage == 3) {
-        Window021a9bf8* window = GetGlobalField0x1c020421a0();
-        if (window->busy) return;
+        char* window = GetGlobalField0x1c020421a0();
+        if ((*reinterpret_cast<int*>(window + BusyOffset))) return;
         int choice = func_020457e0(window);
         if (choice == 0) self->stage = 4;
         else if (choice == 1) {
-            VectorizedMemset(&frame.names, 0, 0x28);
-            frame.names.discoveredBy = 0;
-            frame.names.clearedBy = 0;
-            frame.names.field_6 = 0;
-            frame.names.location = -1;
-            frame.names.type = self->type;
-            frame.names.quality = self->quality;
-            frame.names.legacyLevel = self->seed;
-            frame.names.seed = self->seed;
-            frame.names.field_6 = 0;
-            frame.names.location = self->metadata.Location;
-            SetNameEntries02011818(state, &frame.names);
+            VectorizedMemset(&names, 0, 0x28);
+            names.discoveredBy = 0;
+            names.clearedBy = 0;
+            names.field_6 = 0;
+            names.location = -1;
+            names.type = self->type;
+            names.quality = self->quality;
+            names.legacyLevel = self->seed;
+            names.seed = self->seed;
+            names.field_6 = 0;
+            names.location = self->metadata.Location;
+            SetNameEntries02011818(state, &names);
             ClearRegion0x649e((char*)state);
+#if defined(jpn)
+            CopyStringToField0x649e((char*)state, 0, self->name[0]);
+            CopyStringToField0x649e((char*)state, 1, self->name[1]);
+            CopyStringToField0x649e((char*)state, 2, self->name[2]);
+            CopyStringToField0x649e((char*)state, 3, self->name[3]);
+#else
             CopyStringToField0x649e((char*)state, 0, self->name);
+#endif
             func_ov017_021a9ff0(0);
             self->stage = 5;
         }
     } else if (self->stage == 4) {
-        if (GetGlobalField0x1c020421a0()->busy) return;
+        if ((*reinterpret_cast<int*>(GetGlobalField0x1c020421a0() + BusyOffset))) return;
         GetGlobal02109400();
         func_02094ab0();
-        if (LookupAndForEachNode020649b0(func_0205ec34(), 0x1b, frame.nodes)) func_0206f81c(frame.nodes);
+        if (LookupAndForEachNode020649b0(func_0205ec34(), 0x1b, nodes)) func_0206f81c(nodes);
         self->stage = 5;
     }
     if (self->stage == 5) {

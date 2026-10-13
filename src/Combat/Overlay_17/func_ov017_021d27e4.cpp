@@ -23,20 +23,19 @@ extern "C" void* _Z24SearchBothTables02079e2cPci(char*, int);
 struct Obj02048350;
 extern "C" int _Z22ConsumeCounter02048350P11Obj02048350i(struct Obj02048350*, int);
 
+#if defined(jpn)
+extern "C" void func_ov017_021a64a0(void*, int);
+#else
 extern "C" void _Z33CallEnqueueEvent94IfFlag_021a5a68v();
+#endif
 typedef void (*EnqueueTag34Fn)(int tag, int first, int second);
 typedef void (*EnqueueEvent94Fn)(void* obj, int arg);
 
-struct Party02a04 {
-    char pad0[0xf78];
-    unsigned char ids[4];
-    unsigned char count;
-};
-
-struct Global020421a0 {
-    char pad0[0x998];
-    int field998;
-};
+#if defined(jpn)
+enum { MessageActiveOffset = 0x868, EquipmentPointerOffset = 0x144 };
+#else
+enum { MessageActiveOffset = 0x998, EquipmentPointerOffset = 0x150 };
+#endif
 
 struct Slot021d27e4 {
     char pad0[8];
@@ -46,10 +45,12 @@ struct Slot021d27e4 {
     unsigned int rest : 13;
     char padc[0xc];
     short value;
+    unsigned char unknown1a[6];
 };
 
 struct Evt021d27e4 {
-    char pad0[4];
+    unsigned char tag;
+    char pad0[3];
     unsigned char type;
     signed char first;
     signed char second;
@@ -64,18 +65,23 @@ struct SlotMap021d27e4 {
     signed char slots[11];
 };
 
+#if defined(jpn)
+extern SlotMap021d27e4 data_ov017_021d7154;
+#else
 extern SlotMap021d27e4 data_ov017_021d6d0c;
+#endif
 
+// JPN: func_ov017_021d2c68
 // USA: func_ov017_021d27e4
-extern "C" ARM void func_ov017_021d27e4(void* unused0, Evt021d27e4* evt, GameState* gs, unsigned char* ctx) {
+extern "C" ARM void func_ov017_021d27e4(void* unused0, Evt021d27e4* evt, GameState* gs, GameResources* ctx) {
     GetField0x3acValue(gs);
-    Party02a04* party = (Party02a04*)GetPtrField0x2a04(gs);
+    unsigned char* party = static_cast<unsigned char*>(GetPtrField0x2a04(gs));
     signed char first = evt->first;
     signed char second = evt->second;
-    unsigned char* ids = party->ids;
+    unsigned char* ids = party + 0xf78;
     int hasFirst = 0;
     int hasSecond = 0;
-    int count = party->count;
+    int count = party[0xf7c];
     int i;
     for (i = 0; i < count; i++) {
         unsigned char id = ids[i];
@@ -87,9 +93,9 @@ extern "C" ARM void func_ov017_021d27e4(void* unused0, Evt021d27e4* evt, GameSta
     case 1: {
         if (!hasSecond) return;
         int ok = 1;
-        if (((Global020421a0*)_Z26GetGlobalField0x1c020421a0v())->field998 != 0) ok = 0;
+        if ((*reinterpret_cast<int*>(static_cast<char*>(_Z26GetGlobalField0x1c020421a0v()) + MessageActiveOffset)) != 0) ok = 0;
         if (CheckSubstructByte0x7cPositive((signed char*)gs->GetUnknownGameObject()) != 0) ok = 0;
-        if (IsField0Null(*(void***)(ctx + 0x3000 + 0x6fc)) == 0) ok = 0;
+        if (IsField0Null(static_cast<void**>(ctx->unknown_ptr_array_36fc[0])) == 0) ok = 0;
         if (func_020dc920((unsigned char)first, 1, 1, 0) == 0) ok = 0;
         if (ok) {
             int flagged = 0;
@@ -98,12 +104,16 @@ extern "C" ARM void func_ov017_021d27e4(void* unused0, Evt021d27e4* evt, GameSta
                 if (**(unsigned int**)((char*)c + 0x130) & 4) flagged = 1;
             }
             if (flagged) {
-                party = (Party02a04*)GetPtrField0x2a04(gs);
+                party = static_cast<unsigned char*>(GetPtrField0x2a04(gs));
+#if defined(jpn)
+                SlotMap021d27e4 map = data_ov017_021d7154;
+#else
                 SlotMap021d27e4 map = data_ov017_021d6d0c;
+#endif
                 int done = 0;
                 for (int j = 0; j < 11; j++) {
                     if (j == 2 || j == 3 || j == 4) continue;
-                    Slot021d27e4* slot = (Slot021d27e4*)(*(char**)((char*)c + 0x150) + 0x194 + (unsigned char)j * 0x20);
+                    Slot021d27e4* slot = reinterpret_cast<Slot021d27e4*>(*reinterpret_cast<char**>(reinterpret_cast<char*>(c) + EquipmentPointerOffset) + 0x194) + (unsigned char)j;
                     if (slot != NULL && slot->active) {
                         func_0207c378((char*)party + 0x1d4, slot->value, 1, slot->keyBits);
                         func_02052d7c(c, map.slots[j], -1);
@@ -136,12 +146,20 @@ extern "C" ARM void func_ov017_021d27e4(void* unused0, Evt021d27e4* evt, GameSta
                 func_ov017_021c9e00(first, 0, 0, 1);
             }
         }
-        ((EnqueueEvent94Fn)_Z33CallEnqueueEvent94IfFlag_021a5a68v)(*(void**)(ctx + 0x3000 + 0x71c), 0xb);
+#if defined(jpn)
+        func_ov017_021a64a0(ctx->unknown_ptr_array_371c[0], 0xb);
+#else
+        ((EnqueueEvent94Fn)_Z33CallEnqueueEvent94IfFlag_021a5a68v)(ctx->unknown_ptr_array_371c[0], 0xb);
+#endif
         return;
     }
     case 3:
         if (!hasFirst) return;
-        ((EnqueueEvent94Fn)_Z33CallEnqueueEvent94IfFlag_021a5a68v)(*(void**)(ctx + 0x3000 + 0x71c), 0xc);
+#if defined(jpn)
+        func_ov017_021a64a0(ctx->unknown_ptr_array_371c[0], 0xc);
+#else
+        ((EnqueueEvent94Fn)_Z33CallEnqueueEvent94IfFlag_021a5a68v)(ctx->unknown_ptr_array_371c[0], 0xc);
+#endif
         return;
     }
 }

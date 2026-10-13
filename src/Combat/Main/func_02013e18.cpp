@@ -13,8 +13,6 @@ enum { kFinalSubflag = 0x3bc };
 
 extern "C" {
     int _Z33ApplyAndClearPendingEntry02013fb4P11Obj02013fb4(void*);
-    int _ZN6Zone3D13UnpackMapAMBLEv(void*);
-    int _ZN6Zone3D14UnpackATS_AMBLEv(void*);
     int _ZN6Zone3D13UnpackMapAMDJEv(void*);
     int _Z29AccumulateHandleStats0201498cPv(void*);
     int func_02019728(void*, int, void*, void*, void*);
@@ -40,10 +38,10 @@ extern "C" ARM int func_02013e18(Zone3D* zone)
     if (!_Z33ApplyAndClearPendingEntry02013fb4P11Obj02013fb4(zone))
         return 0;
 
-    if (!_ZN6Zone3D13UnpackMapAMBLEv(zone))
+    if (!zone->UnpackMapAMBL())
         return 0;
 
-    if (!_ZN6Zone3D14UnpackATS_AMBLEv(zone))
+    if (!zone->UnpackATS_AMBL())
         return 0;
 
     if (!_ZN6Zone3D13UnpackMapAMDJEv(zone))

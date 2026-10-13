@@ -4,7 +4,6 @@
 
 #if defined(jpn)
 enum { kSelectionOffset = 0x1341, kTextOffset = 0x1344, kTextCapacity = 0x800, kWindowOffset = 0x90 };
-#define func_ov012_02189fb0 func_ov012_0218aaa4
 extern "C" void func_0205d304(void*, void*, int, int, int, int, int);
 #else
 enum { kSelectionOffset = 0x1371, kTextOffset = 0x1374, kTextCapacity = 0x960, kWindowOffset = 0xac };

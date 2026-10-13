@@ -659,3 +659,13 @@ src/Combat/Overlay_11/SetXY1c0_02184be0.cpp:
 src/Combat/Overlay_11/CallVTableLoopAt118_02184740.cpp:
     complete
     .text start:0x02185840 end:0x02185850
+
+
+src/Combat/Overlay_11/CallFunc02184c68IfState3_02188534.cpp:
+    complete
+    .text start:0x0218960c end:0x02189638
+
+
+src/Combat/Overlay_11/func_ov011_021873c4.cpp:
+    complete
+    .text start:0x0218849c end:0x0218853c

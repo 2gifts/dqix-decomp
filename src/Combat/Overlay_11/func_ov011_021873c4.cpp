@@ -1,36 +1,50 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
 
-struct TaggedNumber02184c30;
-extern int GetTaggedValueAsInt_02184c30(struct TaggedNumber02184c30* v);
-
-extern "C" void* func_ov017_021b2164(void);
-extern "C" void* func_ov011_021849c8(void* ctx);
-extern "C" void* func_ov023_021f6880(void* obj, int key);
-extern int ScaleStatsIfType12_021f6f10(void* self);
-extern "C" void* func_ov023_021fa598(void* p);
+struct TaggedNumber02184c30 {
+    int type;
+    union { int integer; float real; } value;
+};
+int GetTaggedValueAsInt_02184c30(TaggedNumber02184c30* value);
+extern "C" void* func_ov017_021b2164();
+extern "C" void* func_ov011_021849c8(void* context);
+extern "C" void* func_ov023_021f6880(void* list, int key);
+#if defined(jpn)
+extern "C" int func_ov023_021f6f10(void* node);
+#else
+int ScaleStatsIfType12_021f6f10(void* node);
+#endif
+extern "C" void* func_ov023_021fa598(void* node);
 int GetGlobalField0x1c020421a0();
 struct TableA68;
-void* FindEntryByKey(struct TableA68* table, int key);
-extern "C" void func_0204500c(void* obj, char* buffer, int a, int b);
-
-struct Field998_021873c4 { char pad[0x998]; int field998; };
-struct Field9d2_021873c4 { char pad[0x9d2]; unsigned char field9d2; };
+void* FindEntryByKey(TableA68* table, int key);
 
 // USA: func_ov011_021873c4
-extern "C" ARM int func_ov011_021873c4(struct TaggedNumber02184c30* a) {
-    int v0 = GetTaggedValueAsInt_02184c30(a);
-    int v1 = GetTaggedValueAsInt_02184c30((struct TaggedNumber02184c30*)((char*)a + 8));
-    void* ctx = func_ov017_021b2164();
-    void* obj = func_ov011_021849c8(ctx);
-    void* node = func_ov023_021f6880(obj, v0);
+// JPN: func_ov011_0218849c
+extern "C" ARM int func_ov011_021873c4(TaggedNumber02184c30* arguments) {
+    int nodeKey = GetTaggedValueAsInt_02184c30(&arguments[0]);
+    int textKey = GetTaggedValueAsInt_02184c30(&arguments[1]);
+    void* context = func_ov017_021b2164();
+    void* list = func_ov011_021849c8(context);
+    void* node = func_ov023_021f6880(list, nodeKey);
     if (!node) return 1;
+#if defined(jpn)
+    if (func_ov023_021f6f10(node) != 4) return 1;
+#else
     if (ScaleStatsIfType12_021f6f10(node) != 4) return 1;
-    void* p = func_ov023_021fa598(node);
-    if (!p) return 1;
-    int field = GetGlobalField0x1c020421a0();
-    void* entry = FindEntryByKey((struct TableA68*)p, (short)v1);
-    func_0204500c((void*)field, (char*)entry, 0, 0xe3);
-    ((struct Field998_021873c4*)field)->field998 = 1;
-    ((struct Field9d2_021873c4*)(field + 0x1000))->field9d2 = 1;
+#endif
+    TableA68* texts = (TableA68*)func_ov023_021fa598(node);
+    if (!texts) return 1;
+    MessageSystem* messages = (MessageSystem*)GetGlobalField0x1c020421a0();
+    const char* text = (const char*)FindEntryByKey(texts, (short)textKey);
+#if defined(jpn)
+    func_0204500c(messages, text, 0);
+    *(int*)((char*)messages + 0x868) = 1;
+    messages->flags17ff.flag4 = 1;
+#else
+    func_0204500c(messages, text, 0, (void*)0xe3);
+    *(int*)((char*)messages + 0x998) = 1;
+    messages->b19d2 = 1;
+#endif
     return 1;
 }

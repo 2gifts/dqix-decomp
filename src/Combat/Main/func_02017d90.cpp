@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include "World/Object3D.h"
 #include "System/Matrix.h"
+#include "World/Zone3D.h"
 
 struct GeometryData { int unused; void* polygons; };
 struct TerrainNode {
@@ -20,22 +21,12 @@ struct SceneNode { char pad_00[0x2c]; TerrainNode* terrain; };
 struct Node020196fc { char pad_00[0x44]; SceneNode* scene; };
 struct SceneEntry {
     Node020196fc* node;
-    char pad_04[0x34];
+    char pad_04[0x10];
+    Matrix3x3 rotation;
     int angle;
-    int x;
-    int specialZ;
-    int z;
+    Vector3i position;
 };
-struct Obj020196fc {
-    char pad_00[0x420];
-    SceneEntry* scenes;
-    char pad_424[0x400];
-    TerrainNode** terrain;
-    char pad_828[0x1b90];
-    unsigned char useScenes;
-    char pad_23b9[0x1fb];
-    SceneEntry specialScene;
-};
+struct Obj020196fc;
 struct TerrainGrid {
     short cells[96][12];
     int unused900;
@@ -50,29 +41,33 @@ void StoreThreeWordsAt0x0020130a8(int*, int, int, int);
 extern "C" long long func_020c32f8(int);
 extern "C" long long func_020c3260(int);
 extern "C" float func_0200c700(long long);
+#if defined(jpn)
+#define func_0204c030 func_0204ce50
+#endif
 extern "C" int func_0204c030(void*, TerrainGrid*, TerrainProbe);
 
 // USA: func_02017d90
-extern "C" ARM int func_02017d90(Obj020196fc* self, int index, TerrainGrid* grid, TerrainProbe probe, Object3D* object) {
-    if (self->useScenes) {
+// JPN: func_02017b30
+extern "C" ARM int func_02017d90(Zone3D* self, int index, TerrainGrid* grid, TerrainProbe probe, Object3D* object) {
+    if (self->isInMainGrottoFloor_23b8_) {
         if (!object) return 0;
-        SceneEntry* entry = &self->specialScene;
+        FloorMap* floor = &self->grotto_.floorMap_;
         TerrainNode* node;
         int x, z, angle;
         if (index < 256) {
-            entry = &self->scenes[index];
+            SceneEntry* entry = &static_cast<SceneEntry*>(self->grottoTileMapData_420_)[index];
             if (entry->node) node = entry->node->scene->terrain;
             else return 0;
-            x = entry->x;
-            z = entry->z;
+            x = entry->position.x;
+            z = entry->position.z;
             angle = entry->angle;
         } else {
-            if (GetNodeAtDepth020196fc(self, 4))
-                node = GetNodeAtDepth020196fc(self, 4)->scene->terrain;
+            if (GetNodeAtDepth020196fc(reinterpret_cast<Obj020196fc*>(self), 4))
+                node = GetNodeAtDepth020196fc(reinterpret_cast<Obj020196fc*>(self), 4)->scene->terrain;
             else return 0;
-            x = entry->angle;
-            z = entry->specialZ;
-            angle = entry->z;
+            x = floor->upStairWorldX;
+            z = floor->upStairWorldZ;
+            angle = floor->fpUpStairRotation;
         }
         if (!node) return 0;
         if (!node->geometry) return 0;
@@ -107,7 +102,12 @@ extern "C" ARM int func_02017d90(Obj020196fc* self, int index, TerrainGrid* grid
         grid->angle = angle;
         return count;
     }
-    TerrainNode* node = self->terrain[index];
+#if defined(jpn)
+    TerrainNode** terrain = *reinterpret_cast<TerrainNode***>(reinterpret_cast<char*>(self) + 0x844);
+#else
+    TerrainNode** terrain = *reinterpret_cast<TerrainNode***>(reinterpret_cast<char*>(self) + 0x824);
+#endif
+    TerrainNode* node = terrain[index];
     if (!node->geometry) return 0;
     if (node->flags & 4) return 0;
     TerrainNode* parent = node->parent;

@@ -18127,3 +18127,83 @@ src/Combat/Main/func_0202b2f0.cpp:
 src/Combat/Main/func_020440cc.cpp:
     complete
     .text start:0x02044894 end:0x02044be8
+
+
+src/Combat/Main/PollAndDecompressResource02014c04.cpp:
+    complete
+    .text start:0x020149d0 end:0x02014ae4
+
+
+src/Combat/Main/SlideAndClearEntries_020945ac.cpp:
+    complete
+    .text start:0x02094ea0 end:0x02094f3c
+
+
+src/Combat/Main/UnpackMapAMDJ.cpp:
+    complete
+    .text start:0x020144c8 end:0x020146cc
+
+
+src/Combat/Main/UpdateSublistEntryField6020806d8.cpp:
+    complete
+    .text start:0x02081200 end:0x0208129c
+
+
+src/Combat/Main/_ZN6Zone3D13UnpackMapAMBLEv.cpp:
+    complete
+    .text start:0x02013ed4 end:0x0201415c
+
+
+src/Combat/Main/func_02014d80.cpp:
+    complete
+    .text start:0x02014b4c end:0x02014f00
+
+
+src/Combat/Main/func_02015ef4.cpp:
+    complete
+    .text start:0x02015cc0 end:0x02016248
+
+
+src/Combat/Main/func_0201647c.cpp:
+    complete
+    .text start:0x02016248 end:0x02016614
+
+
+src/Combat/Main/func_02017d90.cpp:
+    complete
+    .text start:0x02017b30 end:0x02017f9c
+
+
+src/Combat/Main/func_0201afd0.cpp:
+    complete
+    .text start:0x0201ad70 end:0x0201b300
+
+
+src/Combat/Main/func_020391ac.cpp:
+    complete
+    .text start:0x02038c04 end:0x02039164
+
+
+src/Combat/Main/func_020399b0.cpp:
+    complete
+    .text start:0x02039408 end:0x0203977c
+
+
+src/Combat/Main/func_020800fc.cpp:
+    complete
+    .text start:0x02080c38 end:0x02080ea8
+
+
+src/Combat/Main/func_020a75ec.cpp:
+    complete
+    .text start:0x020a9390 end:0x020a9660
+
+
+src/Combat/Main/func_020ad61c.cpp:
+    complete
+    .text start:0x020af0e8 end:0x020af578
+
+
+src/Combat/Main/func_020aeb34.cpp:
+    complete
+    .text start:0x020b0600 end:0x020b08d0

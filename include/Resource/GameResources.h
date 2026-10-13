@@ -116,7 +116,11 @@ struct GameResources
     char unknown_432c[0x60]; // offset 410c
 #endif
     void* unknown_ptr_441c; // jpn: offset 416c
-    char unknown_4420[0x6c];
+    char unknown_4420[0x2a];
+    unsigned short orbitEntryIds[4];
+    char unknown_4452[2];
+    int orbitAngularStep;
+    char unknown_4458[0x34];
     struct TreasureMapLanguageDataOffsets* pTMapLanguageOffsets; // usa: offset 448c, jpn: offset 41dc
     char unknown_4490[0x34];
     void* unknown_ptr_44c4;

@@ -1,33 +1,52 @@
 #include <globaldefs.h>
+#include "System/Memory.h"
 
-extern "C" void VectorizedInvertedMemcpy(void *dst, void *src, int size);
-void ClearRegion02093980(char *obj);
+void ClearRegion02093980(char* storage);
 
-struct Ctx0209459c {
-    char pad0[0x3cb];
-    signed char count;
-    char pad1[0x3cd - 0x3cc];
+struct NamedRequestRecord {
+#if defined(jpn)
+    char name[11];
+    unsigned char unknownB;
+#else
+    char name[48];
+#endif
+    short requestId;
+    signed char partySlot;
     unsigned char flags;
 };
 
+struct Ctx0209459c {
+    NamedRequestRecord active[8];
+    NamedRequestRecord saved[8];
+#if defined(jpn)
+    char unknown100[0x13b - 0x100];
+#else
+    char unknown340[0x3cb - 0x340];
+#endif
+    signed char count;
+    signed char savedCount;
+    unsigned char flags;
+};
+
+// JPN: func_02094ea0
 // USA: func_020945ac  (semantic: SlideAndClearEntries_020945ac)
-extern "C" ARM void func_020945ac(Ctx0209459c *ctx) {
-    if (ctx->count <= 0) {
+extern "C" ARM void func_020945ac(Ctx0209459c* queue) {
+    if (queue->count <= 0) {
         return;
     }
-    int last = ctx->count - 1;
+    int last = queue->count - 1;
     for (int i = 0; i < last; i++) {
-        VectorizedInvertedMemcpy((char*)ctx + (i + 1) * 0x34, (char*)ctx + i * 0x34, 0x34);
+        VectorizedInvertedMemcpy(&queue->active[i + 1], &queue->active[i], sizeof(NamedRequestRecord));
     }
     for (int i = last; i < 8; i++) {
-        ClearRegion02093980((char*)ctx + i * 0x34);
+        ClearRegion02093980((char*)&queue->active[i]);
     }
-    if (ctx->count > 0) {
-        ctx->count = ctx->count - 1;
+    if (queue->count > 0) {
+        queue->count = queue->count - 1;
     }
-    if (ctx->count > 0) {
-        ctx->flags = (ctx->flags | 1) & ~4;
+    if (queue->count > 0) {
+        queue->flags = (queue->flags | 1) & ~4;
     } else {
-        ctx->flags = ctx->flags & ~4;
+        queue->flags = queue->flags & ~4;
     }
 }

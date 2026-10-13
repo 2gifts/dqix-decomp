@@ -1,110 +1,148 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-struct Identifier02243e34 {
-    unsigned int number : 12;
-    unsigned int category : 4;
-    unsigned int field_16 : 5;
-    unsigned int field_21 : 5;
-    unsigned int field_26 : 6;
+struct PackedField017 {
+    unsigned int low : 12;
+    unsigned int f12 : 4;
+    unsigned int f16 : 5;
+    unsigned int f21 : 5;
+    unsigned int top : 6;
 };
 
-struct Struct_02245528 {
-    unsigned char padding_0[0x34];
-    unsigned char state;
-    unsigned char phase;
-    unsigned char field_36;
-    unsigned char field_37;
-    unsigned char padding_38[0xc];
-    unsigned char flags;
-    unsigned char padding_45[0x32f];
-    unsigned char options;
-    unsigned char padding_375[3];
-    Identifier02243e34 identifier;
-    unsigned char padding_37c[8];
-    int timer;
-    unsigned char padding_388[0x48];
-    unsigned char field_3d0;
+struct CalendarDate {
+    unsigned int year;
+    unsigned int month;
+    unsigned int day;
+    unsigned int weekday;
 };
 
-struct Settings02243e34 {
-    unsigned char padding_0[0x104];
-    Identifier02243e34 identifier;
+struct CalendarTime {
+    unsigned int hours;
+    unsigned int minutes;
+    unsigned int seconds;
 };
 
-struct StateView02243e34 {
-    unsigned char padding_0[0x5e6c];
-    Settings02243e34 settings;
+struct DownloadedEntry {
+    short id;
+    unsigned short unknown02;
+    unsigned int value : 7;
+    unsigned int unknown04 : 25;
+    unsigned char unknown08[0x20];
 };
 
+struct DownloadedData {
+    short unknown00;
+    unsigned short unknown02;
+    DownloadedEntry entries[6];
+    PackedField017 start;
+    short itemId;
+    unsigned short unknownFA;
+    unsigned short price;
+    unsigned short unknownFE;
+    PackedField017 end;
+    PackedField017 timestamp;
+    unsigned int unknown108;
+    unsigned short flags : 13;
+    unsigned short unknownFlags : 3;
+    unsigned short unknown10E;
+};
+
+struct Struct_02245528;
 extern "C" void func_ov031_022125c8();
 extern "C" int func_ov031_0221268c();
 extern "C" void func_ov031_022120f8();
 void SetField34AndClear35_37_02245528(Struct_02245528*, int);
-extern "C" int func_ov031_0221244c(int*, int*);
-extern "C" int func_ov017_021b2090(Identifier02243e34, Identifier02243e34);
+extern "C" int func_ov031_0221244c(void*, void*);
+extern "C" int func_ov017_021b2090(PackedField017, PackedField017);
 void CallStub022169a0_02212784();
 extern "C" void func_ov031_02245478(Struct_02245528*);
 
-static inline Settings02243e34* GetSettings02243e34(GameState* state) {
-    return &reinterpret_cast<StateView02243e34*>(state)->settings;
-}
-
-static inline int IsNonzero02243e34(int value) {
-    return value != 0;
-}
+#if defined(jpn)
+void SetDataFromIndex_02211c50(int);
+extern unsigned char data_ov031_0224a1b4[];
+#endif
 
 // USA: func_ov031_02243e34
-extern "C" ARM void func_ov031_02243e34(Struct_02245528* object) {
-    switch (object->phase) {
+// JPN: func_ov031_0224460c
+extern "C" ARM void func_ov031_02243e34(void* object) {
+    unsigned char* state = (unsigned char*)object;
+    switch (state[0x35]) {
     case 0:
-        object->phase = 4;
+#if defined(jpn)
+        SetDataFromIndex_02211c50(2);
+#endif
+        state[0x35] = 4;
         break;
     case 4:
         func_ov031_022125c8();
-        object->phase = 5;
+        state[0x35] = 5;
         break;
     case 5: {
         int result = func_ov031_0221268c();
-        if (result == 3) object->phase = 6;
-        else if (result == 4) object->phase = 8;
+        if (result == 3) state[0x35] = 6;
+        else if (result == 4) state[0x35] = 8;
         else if (result == 5 || result == 0) {
             func_ov031_022120f8();
-            SetField34AndClear35_37_02245528(object, 0);
+            SetField34AndClear35_37_02245528((Struct_02245528*)object, 0);
         }
-        if (object->timer < 0x46000) object->timer += 0x333;
+        int& timer = *(int*)(state + 0x384);
+        if (timer < 0x46000) timer += 0x333;
         break;
     }
     case 6: {
-        int first[4];
-        int second[3];
-        if (func_ov031_0221244c(first, second)) {
-            first[0] += 2000;
-            object->identifier.number = first[0];
-            object->identifier.category = first[1];
-            object->identifier.field_16 = first[2];
-            object->identifier.field_21 = second[0];
-            object->identifier.field_26 = second[1];
-            object->flags |= 4;
-            if ((object->options & 0x10) && !IsNonzero02243e34(func_ov017_021b2090(GetSettings02243e34(GameState::GetInstance())->identifier, object->identifier))) {
-                object->flags |= 0x80;
-                object->options &= ~1;
+        CalendarDate date;
+        CalendarTime time;
+        if (func_ov031_0221244c(&date, &time)) {
+            date.year += 2000;
+#if defined(jpn)
+            time.hours += 9;
+            if (time.hours >= 24) {
+                time.hours -= 24;
+                ++date.day;
+                unsigned int monthLength = *(const unsigned int*)(data_ov031_0224a1b4 + date.month * sizeof(unsigned int));
+                if (monthLength < date.day) {
+                    date.day = 1;
+                    if (++date.month > 12) {
+                        date.month = 1;
+                        ++date.year;
+                    }
+                }
             }
-        } else object->options &= ~1;
-        if (object->options & 0x80) object->phase = 7;
-        else if (object->options & 2) {
-            object->field_3d0 = 1;
-            SetField34AndClear35_37_02245528(object, 5);
-        } else if (!(object->options & 1)) object->phase = 7;
-        else SetField34AndClear35_37_02245528(object, 4);
+#endif
+            PackedField017& timestamp = *(PackedField017*)(state + 0x378);
+            timestamp.low = date.year;
+            timestamp.f12 = date.month;
+            timestamp.f16 = date.day;
+            timestamp.f21 = time.hours;
+            timestamp.top = time.minutes;
+            state[0x44] |= 4;
+            if (state[0x374] & 0x10) {
+#if defined(jpn)
+                DownloadedData* downloaded = (DownloadedData*)((char*)GameState::GetInstance() + 0x5c0c);
+#else
+                DownloadedData* downloaded = (DownloadedData*)((char*)GameState::GetInstance() + 0x5e6c);
+#endif
+                bool earlier = func_ov017_021b2090(downloaded->timestamp, timestamp) != 0;
+                if (!earlier) {
+                    state[0x44] |= 0x80;
+                    state[0x374] &= ~1;
+                }
+            }
+        } else state[0x374] &= ~1;
+        if (state[0x374] & 0x80) state[0x35] = 7;
+        else if (state[0x374] & 2) {
+            state[0x3d0] = 1;
+            SetField34AndClear35_37_02245528((Struct_02245528*)object, 5);
+        } else if (!(state[0x374] & 1)) state[0x35] = 7;
+        else SetField34AndClear35_37_02245528((Struct_02245528*)object, 4);
         break;
     }
     case 7:
         CallStub022169a0_02212784();
-        object->phase = 5;
+        state[0x35] = 5;
         break;
     case 8:
-        func_ov031_02245478(object);
+        func_ov031_02245478((Struct_02245528*)object);
         func_ov031_022120f8();
         break;
     }

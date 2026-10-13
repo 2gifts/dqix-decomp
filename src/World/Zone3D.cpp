@@ -35,7 +35,6 @@ extern "C"
 
     void _Z13Reset02013490Pc(void*);
     void _Z22ResetBigStruct02013750Pvi(Zone3D*, bool);
-    void _ZN6Zone3D15ProcessBATSFileEPKvj(Zone3D*, const void*, unsigned);
 
     bool _Z17IsInRange0201b5b0i(int id);
     bool _Z22IsValueInRange0201b5d8i(int id);

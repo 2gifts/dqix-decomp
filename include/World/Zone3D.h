@@ -140,7 +140,15 @@ public:
     int chestRenderingEnabled_274c_;
     char unk_2750[0x2754 - 0x2750];
     char unknown_struct_2754_[0x18];
-    char unk_276c[0x2820 - 0x276c];
+    union {
+        char unk_276c[0x2820 - 0x276c];
+        struct {
+            char unknown_276c_[0x27d8 - 0x276c];
+            unsigned short pendingType2Mask_;
+            unsigned short pendingLootableMask_;
+            char unknown_27dc_[0x2820 - 0x27dc];
+        };
+    };
     char unknown_2820_;
     char unk_2821[3];
 public:
@@ -149,6 +157,13 @@ public:
 
     // usa: _ZN6Zone3D13UnpackMapAMDJEv
     int UnpackMapAMDJ();
+
+    int UnpackMapAMBL();
+    int UnpackATS_AMBL();
+    int ProcessBMBLFile(const void* source, unsigned int sourceLength);
+    int ProcessBPOSFile(const void* source, unsigned int sourceLength);
+    int ProcessBATSFile(const void* source, unsigned int sourceLength);
+    bool ProcessNSBTXFile(const void* source, unsigned int sourceLength, const char* name);
 
     void LoadMapAMDJ();
 };

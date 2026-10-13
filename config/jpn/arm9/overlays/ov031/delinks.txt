@@ -6873,3 +6873,43 @@ src/Combat/Overlay_31/func_ov031_0221f698.cpp:
 src/Combat/Overlay_31/func_ov031_02243018.cpp:
     complete
     .text start:0x022437f8 end:0x02243924
+
+
+src/Combat/Overlay_31/ClearQueue_0221e6d4.cpp:
+    complete
+    .text start:0x0221eeb4 end:0x0221eec0
+
+
+src/Combat/Overlay_31/GetActiveContextRemainingOrStatus_02203b1c.cpp:
+    complete
+    .text start:0x022042fc end:0x0220436c
+
+
+src/Combat/Overlay_31/StoreByteAndForward_0221e538.cpp:
+    complete
+    .text start:0x0221ed18 end:0x0221ed2c
+
+
+src/Combat/Overlay_31/func_ov031_0221dc68.cpp:
+    complete
+    .text start:0x0221e448 end:0x0221e49c
+
+
+src/Combat/Overlay_31/func_ov031_0221df48.cpp:
+    complete
+    .text start:0x0221e728 end:0x0221e7b4
+
+
+src/Combat/Overlay_31/func_ov031_0221e080.cpp:
+    complete
+    .text start:0x0221e860 end:0x0221e8c8
+
+
+src/Combat/Overlay_31/func_ov031_02243850.cpp:
+    complete
+    .text start:0x02244030 end:0x022441b8
+
+
+src/Combat/Overlay_31/func_ov031_02243e34.cpp:
+    complete
+    .text start:0x0224460c end:0x02244894
