@@ -147,15 +147,9 @@ extern "C" void func_ov006_02159108(AlchemyMenu* self, unsigned char category, s
 extern "C" char data_02108760[];
 extern "C" unsigned short data_02114e30[];
 
-static inline unsigned char GetCategory(AlchemyMenu* self) {
-    unsigned char category = self->category_;
-    return category;
-}
+static inline unsigned char GetCategory(AlchemyMenu* self) { return self->category_; }
 
-static inline unsigned char GetCount(AlchemyMenu* self) {
-    unsigned char count = self->count_;
-    return count;
-}
+static inline unsigned char GetCount(AlchemyMenu* self) { return self->count_; }
 
 // USA: func_ov006_0215bb7c
 extern "C" ARM void func_ov006_0215bb7c(AlchemyMenu* self) {

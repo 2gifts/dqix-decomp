@@ -77,6 +77,7 @@ struct RecordList0208bf78 {
 struct Arena0208bf78 {
     unsigned char otherAllocators[0x28];
     SafeAllocator scriptAllocator;
+    SafeAllocator* GetScriptAllocator() { return &scriptAllocator; }
 };
 
 struct RecordView0208bf78 {
@@ -163,7 +164,7 @@ extern "C" ARM void func_0208bf78(RecordView0208bf78* view) {
         view->loadState++;
     } else if (view->loadState == 1) {
         if (!loader->GetTaskStatus(view->taskId)) return;
-        SafeAllocator* allocator = &view->arena->scriptAllocator;
+        SafeAllocator* allocator = view->arena->GetScriptAllocator();
         allocator->Reset();
         void* file = 0;
         unsigned int length = 0;
