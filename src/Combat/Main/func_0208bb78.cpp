@@ -27,12 +27,12 @@ extern Action0208bb78 data_020e6d5c;
 struct HeadNode02046b24;
 struct Struct0200fb08;
 struct GetTableByteOrFFData;
-extern "C" int _Z26AnimateSubBG0Shake0208ca00P18ShakeState0208ca00i(ShakeState0208ca00*, int);
+int AnimateSubBG0Shake0208ca00(ShakeState0208ca00*, int);
 extern "C" void func_0208bf78(ShakeState0208ca00*);
 extern "C" void func_0208b788(int, float, SrcStruct0208baec*, int);
-extern "C" int _Z31SetupDstFromSrcAndScale0208baeciP17DstStruct0208baecP17SrcStruct0208baecifih(int, DstStruct0208baec*, SrcStruct0208baec*, int, float, int, unsigned char);
+int SetupDstFromSrcAndScale0208baec(int, DstStruct0208baec*, SrcStruct0208baec*, int, float, int, unsigned char);
 int GetWord0x0(int*);
-extern "C" unsigned char _Z24NormalizeField5_0200fb08P14Struct0200fb08(Struct0200fb08*);
+unsigned char NormalizeField5_0200fb08(Struct0200fb08*);
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
 int* GetGlobal02109418();
 unsigned char GetTableByteOrFF(GetTableByteOrFFData*, unsigned int);
@@ -42,7 +42,7 @@ int TestBitInByteArrayAt0x84(void*, int);
 extern "C" ARM int func_0208bb78(ShakeState0208ca00* self, int delta) {
     if (self->id < 0) return 1;
     if (!delta) delta = 1;
-    int pivot = _Z26AnimateSubBG0Shake0208ca00P18ShakeState0208ca00i(self, (signed char)delta);
+    int pivot = AnimateSubBG0Shake0208ca00(self, (signed char)delta);
     if (self->countdown) {
         self->countdown -= delta;
         if (self->countdown < 0) self->countdown = 0;
@@ -69,17 +69,17 @@ extern "C" ARM int func_0208bb78(ShakeState0208ca00* self, int delta) {
         if (adjust) slot = 1;
         if (self->flags & 0x100) {
             values.y -= 16;
-            _Z31SetupDstFromSrcAndScale0208baeciP17DstStruct0208baecP17SrcStruct0208baecifih((int)&self->destination, &self->entries[slot], &values, 0x20, scale, pivot, 1);
+            SetupDstFromSrcAndScale0208baec((int)&self->destination, &self->entries[slot], &values, 0x20, scale, pivot, 1);
             SrcStruct0208baec second;
             memcpy(&second, &values, sizeof(second));
             second.y += 0x38;
-            if (_Z24NormalizeField5_0200fb08P14Struct0200fb08((Struct0200fb08*)state) == 5) second.y += 16;
-            _Z31SetupDstFromSrcAndScale0208baeciP17DstStruct0208baecP17SrcStruct0208baecifih((int)&self->destination, &self->entries[(unsigned char)(slot + 1)], &second, 0x30, scale, pivot, 1);
+            if (NormalizeField5_0200fb08((Struct0200fb08*)state) == 5) second.y += 16;
+            SetupDstFromSrcAndScale0208baec((int)&self->destination, &self->entries[(unsigned char)(slot + 1)], &second, 0x30, scale, pivot, 1);
         } else {
             int draw = 1;
             if (GetHeadNodeIdOrMinusOne(head) == 0x2d) slot = draw;
             else if (self->kind == 1) draw = 0;
-            if (draw) _Z31SetupDstFromSrcAndScale0208baeciP17DstStruct0208baecP17SrcStruct0208baecifih((int)&self->destination, &self->entries[slot], &values, 0x40, scale, pivot, 1);
+            if (draw) SetupDstFromSrcAndScale0208baec((int)&self->destination, &self->entries[slot], &values, 0x40, scale, pivot, 1);
         }
     }
     if (self->id != 9999 && self->id >= 0 && self->action != 0 && self->action != 3 && GetHeadNodeIdOrMinusOne(head) != 0x2d) {
@@ -88,7 +88,7 @@ extern "C" ARM int func_0208bb78(ShakeState0208ca00* self, int delta) {
         if (TestBitInByteArrayAt0x84(global, value)) {
             SrcStruct0208baec values;
             func_0208b788(1, 1.0f, &values, 0);
-            _Z31SetupDstFromSrcAndScale0208baeciP17DstStruct0208baecP17SrcStruct0208baecifih((int)&self->destination, &self->entries[1], &values, 0x20, values.scale, pivot, 2);
+            SetupDstFromSrcAndScale0208baec((int)&self->destination, &self->entries[1], &values, 0x20, values.scale, pivot, 2);
         }
     }
     return 0;

@@ -20,7 +20,7 @@ struct S02055080 {
 };
 void* GetField0x4Field0x0OrNull(S02055080*);
 void* GetSubField0x8(S02055080*);
-extern "C" void _Z18InitStruct02058c88P14Struct02058c88(Struct02058c88*);
+void InitStruct02058c88(Struct02058c88*);
 
 #define ToBamAngle(degF) ((int)(4096.0f * (3.14159274f * ((degF) / 180.0f))))
 
@@ -107,7 +107,7 @@ extern "C" ARM void func_02055f5c(struct Spawner02055f5c* self, int elapsedFrame
             self->scale = self->field2c->GetScale();
         }
 
-        _Z18InitStruct02058c88P14Struct02058c88((struct Struct02058c88*)particle);
+        InitStruct02058c88((struct Struct02058c88*)particle);
 
         Vector3fix keyframePosition;
         keyframePosition.x = (int)((((KeyframeElement02055f5c*)keyframe)->data)->x * 4096.0f);
@@ -162,7 +162,7 @@ extern "C" ARM void func_02055f5c(struct Spawner02055f5c* self, int elapsedFrame
             particle = func_02055ed0(self);
             if (particle == 0) continue;
 
-            _Z18InitStruct02058c88P14Struct02058c88((struct Struct02058c88*)particle);
+            InitStruct02058c88((struct Struct02058c88*)particle);
 
             int radiusRandom = rand() % 90;
             float radiusRatio = (float)(radiusRandom + 10) / 100.0f;
