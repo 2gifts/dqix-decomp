@@ -50,8 +50,7 @@ extern "C" void func_0206b224(IndexedHalfword020656d0*);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0*, int, int);
 extern "C" int _Z20IsHighByteFF02044494PvS_(void*, void*);
 extern "C" int _Z16Dispatch02044420PvS_(void*, void*);
-extern "C" void _Z25CheckAndClearFlag020656e4Pv(void*);
-typedef void (*AdvanceToken020440cc)(void*, int);
+void CheckAndClearFlag020656e4(void*, int);
 void SetFlag0x2IfByte0xd4Not3(unsigned char*);
 extern "C" void _Z26ProcessPendingFlag02045688P13State02045688(State02045688*);
 extern "C" void _Z23InitCombatSlots02043040Pc(char*);
@@ -124,7 +123,7 @@ extern "C" ARM int func_020440cc(IndexedHalfword020656d0* self) {
                     if (token == store) {
                         self->savedValue = self->value;
                         self->field19b6 = 1;
-                        reinterpret_cast<AdvanceToken020440cc>(_Z25CheckAndClearFlag020656e4Pv)(self, 1);
+                        CheckAndClearFlag020656e4(self, 1);
                     } else if (token == childFlag && self->child) {
                         SetFlag0x2IfByte0xd4Not3(self->child);
                     }

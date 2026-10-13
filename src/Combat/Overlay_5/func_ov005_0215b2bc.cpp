@@ -26,7 +26,7 @@ extern "C" void _Z22SelectCoordsByFlag0x24PhPiS0_(unsigned char*, int*, int*);
 struct Struct_0205bb84;
 extern "C" int _Z24ComputeScaledSum0205bb84P15Struct_0205bb84(Struct_0205bb84*);
 extern "C" int func_0205bf58(void*, int);
-extern "C" int _Z25CheckFlag30Or401_02157190v(void*);
+int CheckFlag30Or401_02157190(void*);
 extern "C" char* _Z19GetField1c_021a193cPi(int*);
 extern "C" void _Z28DispatchByIdxAndCond021551fcPchi(char*, int, int);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0*, int, int);
@@ -113,7 +113,7 @@ extern "C" ARM void func_ov005_0215b2bc(Menu* self) {
             unsigned int tick = GameState::GetInstance()->GetTickCount();
             func_0205bf58((char*)self + 0x19f4, tick ? tick : found);
             sel = _Z24ComputeScaledSum0205bb84P15Struct_0205bb84((Struct_0205bb84*)&self->scale_[0]);
-            if (_Z25CheckFlag30Or401_02157190v(self)) flag2 = 1;
+            if (CheckFlag30Or401_02157190(self)) flag2 = 1;
         }
         if (found != 0 && self->kind_ != sel) {
             self->unk3dbe_ = self->kind_;

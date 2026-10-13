@@ -34,7 +34,7 @@ void SetByte0xdaAndFlag0x2(unsigned char* obj, int val);
 extern "C" void func_0204c87c(void* entry, int arg);
 extern "C" struct Elem_0205d81c* _Z23FindElementByC40205d81cP15Struct_0205d81ci(struct Struct_0205d81c* s, int key);
 struct Obj0204ffc0;
-extern "C" void _Z29ProcessRefAndDispatch0204ffc0P11Obj0204ffc0(struct Obj0204ffc0* a, int b);
+void ProcessRefAndDispatch0204ffc0(struct Obj0204ffc0* a, int b);
 
 // USA: func_0205d0e0
 extern "C" ARM int func_0205d0e0(void* objPtr, int val) {
@@ -65,7 +65,7 @@ extern "C" ARM int func_0205d0e0(void* objPtr, int val) {
     if (obj->fieldB8 != 0xff) {
         entry = _Z23FindElementByC40205d81cP15Struct_0205d81ci(obj, obj->fieldB8);
         if (entry != 0) {
-            _Z29ProcessRefAndDispatch0204ffc0P11Obj0204ffc0((struct Obj0204ffc0*)entry, -1);
+            ProcessRefAndDispatch0204ffc0((struct Obj0204ffc0*)entry, -1);
         }
         obj->fieldB8 = 0xff;
     }

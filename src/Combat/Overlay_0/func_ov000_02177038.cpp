@@ -11,9 +11,9 @@ int ApplyElemFieldsSlot8(void* obj);
 int IsField0x118Equal2(void* obj);
 extern "C" void _Z38RunElemFieldsIfField_02176498_02176498Pvi(void* obj, int flag);
 extern "C" void _Z30ApplyElemFieldsSlot14_021788d8Pvii(void* obj, int a, int b);
-extern "C" int _Z21ApplyElemFieldsSlot15Pv(void* obj, int a, int b);
-extern "C" int _Z21ApplyElemFieldsSlot16Pv(void* obj, int a, int b);
-extern "C" int _Z21ApplyElemFieldsSlot17Pv(void* obj, int a, int b);
+int ApplyElemFieldsSlot15(void* obj, int a, int b);
+int ApplyElemFieldsSlot16(void* obj, int a, int b);
+int ApplyElemFieldsSlot17(void* obj, int a, int b);
 extern "C" void _Z30ApplyElemFieldsSlot18_02179a14Pvii(void* obj, int a, int b);
 extern "C" void _Z30ApplyElemFieldsSlot21_02179c6cPvi(void* obj, int id);
 extern "C" void func_ov000_0217a0a4(void* obj);
@@ -58,13 +58,13 @@ extern "C" ARM void func_ov000_02177038(void* obj, int arg, int slot, int arg2, 
         _Z30ApplyElemFieldsSlot14_021788d8Pvii(obj, arg, arg3);
         break;
     case 15:
-        _Z21ApplyElemFieldsSlot15Pv(obj, arg2, arg3);
+        ApplyElemFieldsSlot15(obj, arg2, arg3);
         break;
     case 16:
-        _Z21ApplyElemFieldsSlot16Pv(obj, arg2, arg3);
+        ApplyElemFieldsSlot16(obj, arg2, arg3);
         break;
     case 17:
-        _Z21ApplyElemFieldsSlot17Pv(obj, arg2, arg3);
+        ApplyElemFieldsSlot17(obj, arg2, arg3);
         break;
     case 18:
     case 19:

@@ -38,8 +38,8 @@ extern "C" void _Z28InitAndProcessCombat02166880Ph(unsigned char*);
 extern "C" void func_ov000_02166978(void*);
 extern "C" void _Z27SetupContextForMode0205ea20Pvi(void*, int);
 extern "C" void func_ov017_021c812c(int, int);
-extern "C" void _Z24EmptyStub_ov017_021c8398v();
-extern "C" void _Z13NoOp_021c839cv();
+void EmptyStub_ov017_021c8398(int, int);
+void NoOp_021c839c(int, int);
 void SetBitsInField4(unsigned int*, unsigned int);
 void SetFieldsAndSignalData02184220(void*, int);
 extern unsigned char data_02108760;
@@ -123,8 +123,8 @@ extern "C" ARM void func_ov000_02163db4(BattleScene02163db4* scene) {
     REG_BLEND_CONTROL = 0;
     if (scene->config->field_2c) {
         func_ov017_021c812c((unsigned char)scene->config->partyId, 1);
-        ((void (*)(int, int))_Z24EmptyStub_ov017_021c8398v)((unsigned char)scene->config->partyId, 1);
-        ((void (*)(int, int))_Z13NoOp_021c839cv)((unsigned char)scene->config->partyId, 1);
+        EmptyStub_ov017_021c8398((unsigned char)scene->config->partyId, 1);
+        NoOp_021c839c((unsigned char)scene->config->partyId, 1);
     } else {
         SetCombatWorkFlags0x55f4(scene, 0x200000);
     }

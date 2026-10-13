@@ -9,7 +9,7 @@ void SetStateAndDispatch0209c3b4(struct Actor0209c3b4* actor, int val);
 void Forward0203aa80(void* obj, int arg2);
 extern "C" int _Z26SetContextAndQuery0203ab6cPvS_(void* obj, short arg1);
 int IsBattleActiveAndCombatantsBit0Set();
-extern "C" void* _Z24CallFunc020bc594OnField0Pv(void* obj, int unused);
+void* CallFunc020bc594OnField0(void* obj, int unused);
 int IsHandleB8Active0209c6bc(void* obj);
 extern "C" void func_0209c5e8(void* actor);
 
@@ -49,7 +49,7 @@ extern "C" ARM void func_0209c530(struct Actor0209c530* a) {
         if (IsBattleActiveAndCombatantsBit0Set() != 0) {
             DispatchContextByState0209c678((struct Actor0209c678*)a, 0);
         } else {
-            _Z24CallFunc020bc594OnField0Pv(&a->fieldBC, 0);
+            CallFunc020bc594OnField0(&a->fieldBC, 0);
             if (IsHandleB8Active0209c6bc(a) == 0) {
                 func_0209c5e8(a);
             }

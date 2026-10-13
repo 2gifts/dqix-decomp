@@ -67,12 +67,12 @@ void CallHelpersAndSetField253_021ab67c(unsigned char* obj);
 void ClearHandleArrayAndFinalize020d9fc8(Struct020d9fc8* obj);
 
 extern "C" void func_ov004_0216fa48(void* obj);
-extern "C" void _Z13NoOp_0219fc84v(void* obj);
+void NoOp_0219fc84(void* obj);
 extern "C" void _Z30CheckStackAndFinalize_021a5974Pc(void* obj);
 extern "C" void _Z25SetByteAtOffset1_021a7c1cPh(void* obj);
 extern "C" void _Z17SetByte1_021a9670Ph(void* obj);
 extern "C" void func_ov017_021a9fa0(void* obj);
-extern "C" void _Z22BlankFunction_021aa3f0v(void* obj);
+void BlankFunction_021aa3f0(void* obj);
 extern "C" void _Z17SetByte1_021acd24Ph(void* obj);
 extern "C" void func_ov017_021ae760(void* obj);
 extern "C" void _Z21TailCallInit_021aee9cPv(void* obj);
@@ -80,10 +80,10 @@ extern "C" void _Z40ClearPendingAndDestroyAllocator_021b2200P11Obj021b2200(void*
 extern "C" void _Z30ResetEntriesAndNotify_021b33d8Pv(void* obj);
 extern "C" void _Z25ClearFieldcIfSet_021b4760P11Obj021b4760(void* obj);
 extern "C" void _Z17TailCall_021b5a24Pv(void* obj);
-extern "C" void _Z18EmptyFunc_021b65dcv(void* obj);
-extern "C" void _Z13NoOp_021b8d18v(void* obj);
+void EmptyFunc_021b65dc(void* obj);
+void NoOp_021b8d18(void* obj);
 extern "C" void _Z26TailCall_021b8d80_021b98f8Pv(void* obj);
-extern "C" void _Z22BlankFunction_021be09cv(void* obj);
+void BlankFunction_021be09c(void* obj);
 extern "C" void _Z37ClearFieldsAndResetAllocator_021bf398Pc(void* obj);
 extern "C" void _Z21SetByte1True_021c178cPh(void* obj);
 extern "C" void _Z17SetByte1_021c1e34Ph(void* obj);
@@ -109,12 +109,12 @@ extern "C" ARM void func_ov017_021a3ef0(EventQueue_021a3ef0* queue) {
 		switch (node->type) {
 		case 1: SetFlagAndCleanupC_021adb08((unsigned char*)node); break;
 		case 2: CallHelperAndSetFlag_021a1924((S021a1924*)node); break;
-		case 3: _Z13NoOp_0219fc84v(node); break;
+		case 3: NoOp_0219fc84(node); break;
 		case 5: _Z26TailCall_021b8d80_021b98f8Pv(node); break;
 		case 10: CallHelperAndSetFlag_021b83f0((S021b83f0*)node); break;
 		case 12: _Z30CheckStackAndFinalize_021a5974Pc(node); break;
 		case 13: CallTwoHelpersWithSelf_021bf5dc(node); break;
-		case 14: _Z13NoOp_021b8d18v(node); break;
+		case 14: NoOp_021b8d18(node); break;
 		case 15: CallIfField20ThenSetFlag_021baeb0((S021baeb0*)node); break;
 		case 16: CallIfField1cThenSetFlag_021babf8((S021babf8*)node); break;
 		case 17: InitObj_0217e5b0((Obj0217e5b0*)node); break;
@@ -123,7 +123,7 @@ extern "C" ARM void func_ov017_021a3ef0(EventQueue_021a3ef0* queue) {
 		case 19: _Z30ResetEntriesAndNotify_021b33d8Pv(node); break;
 		case 20: _Z25ClearFieldcIfSet_021b4760P11Obj021b4760(node); break;
 		case 21: _Z17TailCall_021b5a24Pv(node); break;
-		case 22: _Z18EmptyFunc_021b65dcv(node); break;
+		case 22: EmptyFunc_021b65dc(node); break;
 		case 23: CallIfField24ThenSetFlag_021b6b8c((S021b6b8c*)node); break;
 		case 24: InitField1_0217ef0c((Obj0217ef0c*)node); break;
 		case 6: CallHelpersAndSetField253_021ab67c((unsigned char*)node); break;
@@ -141,7 +141,7 @@ extern "C" ARM void func_ov017_021a3ef0(EventQueue_021a3ef0* queue) {
 		case 46: RunInitAndSetFlag1_021c168c(node); break;
 		case 47: SetFlag1ThenDestroy_021c1a10((Obj1_021c1a10*)node); break;
 		case 48: _Z21SetByte1True_021c178cPh(node); break;
-		case 50: _Z22BlankFunction_021be09cv(node); break;
+		case 50: BlankFunction_021be09c(node); break;
 		case 51: ForwardGlobalAndSetFlag_021be3ec((Obj_021be3ec*)node); break;
 		case 59: func_ov017_021a9fa0(node); break;
 		case 52: CallHelperAndSetFlag_021befcc((S021befcc*)node); break;
@@ -151,7 +151,7 @@ extern "C" ARM void func_ov017_021a3ef0(EventQueue_021a3ef0* queue) {
 		case 56: CallHelperAndSetFlag_021a9314((S021a9314*)node); break;
 		case 57: _Z17SetByte1_021a9670Ph(node); break;
 		case 58: SetFlagAndForward_021a99c8((unsigned char*)node); break;
-		case 60: _Z22BlankFunction_021aa3f0v(node); break;
+		case 60: BlankFunction_021aa3f0(node); break;
 		case 61: CallHelperAndSetFlag_021a6b84((S021a6b84*)node); break;
 		case 62: CallHelperAndSetFlag_021a72dc((S021a72dc*)node); break;
 		case 63: CallHelperAndSetFlag_021a7a5c((S021a7a5c*)node); break;

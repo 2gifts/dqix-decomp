@@ -5,8 +5,8 @@ int GetField0x3acValue(GameState* battleStruct);
 extern "C" void func_ov017_021a7c94(unsigned char* obj, int id, int arg2);
 struct FieldStruct021a85d4;
 extern "C" void _Z33SetFieldndMaybe_021a85d4_021a85d4P19FieldStruct021a85d4i(struct FieldStruct021a85d4* obj, int val);
-extern "C" void _Z27CallIfGlobalPtrSet_021a5a28v(void* obj, int mode);
-extern "C" int _Z32GetByteAtOffset7289OrFF_021a5a48v(void* obj);
+void CallIfGlobalPtrSet_021a5a28(void* obj, int mode);
+int GetByteAtOffset7289OrFF_021a5a48(void* obj);
 
 struct Evt021d01e4 {
     unsigned char pad0[4];
@@ -75,29 +75,29 @@ extern "C" ARM void func_ov017_021d01e4(int unused0, struct Evt021d01e4* evt, Ga
         break;
     case 4:
         if (foundA) {
-            _Z27CallIfGlobalPtrSet_021a5a28v(p, 2);
+            CallIfGlobalPtrSet_021a5a28(p, 2);
         }
         break;
     case 5:
         if (foundA) {
-            _Z27CallIfGlobalPtrSet_021a5a28v(p, 6);
+            CallIfGlobalPtrSet_021a5a28(p, 6);
         }
         break;
     case 6:
         if (foundA) {
-            if (_Z32GetByteAtOffset7289OrFF_021a5a48v(p) != 4) {
-                _Z27CallIfGlobalPtrSet_021a5a28v(p, 8);
+            if (GetByteAtOffset7289OrFF_021a5a48(p) != 4) {
+                CallIfGlobalPtrSet_021a5a28(p, 8);
             }
         }
         break;
     case 7:
         if (foundA) {
-            _Z27CallIfGlobalPtrSet_021a5a28v(p, 5);
+            CallIfGlobalPtrSet_021a5a28(p, 5);
         }
         break;
     case 8:
         if (foundA) {
-            _Z27CallIfGlobalPtrSet_021a5a28v(p, 7);
+            CallIfGlobalPtrSet_021a5a28(p, 7);
         }
         break;
     }

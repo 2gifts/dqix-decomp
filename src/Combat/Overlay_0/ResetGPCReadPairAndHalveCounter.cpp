@@ -4,7 +4,7 @@
 
 
 // USA: func_ov000_0216638c
-ARM void ResetGPCReadPairAndHalveCounter(void* unused, GPCReadPair* pair) {
+ARM void ResetGPCReadPairAndHalveCounter(void* unused, GPCReadPair* pair, int) {
     pair->Reset();
     BackgroundLoader::RemoveLockGlobal();
 }

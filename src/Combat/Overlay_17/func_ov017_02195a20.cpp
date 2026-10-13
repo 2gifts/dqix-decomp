@@ -15,7 +15,7 @@ extern "C" void _Z26ResetGxEngineState020c52e8v();
 extern "C" void func_020c5414();
 unsigned int GetBitsInField4(unsigned int* obj, unsigned int mask);
 extern "C" void func_ov017_02195ecc(unsigned char* obj, int mode);
-extern "C" void _Z35MaybeUpdateOrDispatchEntry_021959ecv(unsigned char* obj);
+void MaybeUpdateOrDispatchEntry_021959ec(void* obj);
 extern "C" void _Z27SetActiveDmaChannel020c3a0ci(int ch);
 extern "C" void func_ov017_02195bbc(unsigned char* obj);
 int GetHeadNodeIdOrMinusOne(struct HeadNode02046b24** obj);
@@ -47,7 +47,7 @@ extern "C" ARM void func_ov017_02195a20(unsigned char* obj) {
     if (obj[regionalFlag] == 0) {
         func_ov017_02195ecc(obj, 1);
     }
-    _Z35MaybeUpdateOrDispatchEntry_021959ecv(obj);
+    MaybeUpdateOrDispatchEntry_021959ec(obj);
     RenderConfig::SubmitToFifo();
     SendQueuedDataToGeometryFifo();
     LightingManager::GetInstance()->SubmitToRenderConfig();

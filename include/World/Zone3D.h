@@ -144,8 +144,8 @@ public:
     char unknown_2820_;
     char unk_2821[3];
 public:
-    // usa: _ZN6Zone3D10SwitchZoneEt
-    void SwitchZone(unsigned short newID);
+    // usa: _ZN6Zone3D10SwitchZoneEti
+    void SwitchZone(unsigned short newID, int);
 
     // usa: _ZN6Zone3D13UnpackMapAMDJEv
     int UnpackMapAMDJ();

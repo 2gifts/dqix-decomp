@@ -36,8 +36,8 @@ extern "C" char *_Z10GetWord0x0Pi(GameState *);
 struct Obj0205eaa0;
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0 *, int, int);
 extern "C" void _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(void *);
-extern "C" int _Z39CountValidCombatantsMinusField_02160b84v(Scene *);
-extern "C" int _Z34CheckField0AndBattleState_02160b50v(Scene *);
+int CountValidCombatantsMinusField_02160b84(void *);
+int CheckField0AndBattleState_02160b50(void *);
 extern "C" int func_ov003_02160a68(Scene *);
 extern "C" int func_ov003_02160854(Scene *);
 extern "C" void _Z35SetEntryLowNibbleAndElement02080c68Pvii(void *, int, int);
@@ -51,7 +51,7 @@ extern "C" ARM void func_ov003_02163fd4(Scene *self) {
     if (state == 0) {
         _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(entries);
         int idx    = -1;
-        self->c49e = _Z34CheckField0AndBattleState_02160b50v(self);
+        self->c49e = CheckField0AndBattleState_02160b50(self);
         switch (self->c49e) {
             case 0: self->h488 = 0x19; break;
             case 1:
@@ -106,7 +106,7 @@ extern "C" ARM void func_ov003_02163fd4(Scene *self) {
                     break;
                 case 0xa9:
                     _Z25SetOrClearFlag40_02166f80Pvii(self, self->h488, 1);
-                    if (_Z39CountValidCombatantsMinusField_02160b84v(self) == 0) {
+                    if (CountValidCombatantsMinusField_02160b84(self) == 0) {
                         self->c4a3  = 0xe;
                         self->state = 0;
                     } else {

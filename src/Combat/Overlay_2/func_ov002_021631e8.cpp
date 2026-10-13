@@ -20,7 +20,7 @@ extern "C" void _Z21InitBattleTag0215ccc4Pc(char *base);
 extern "C" int _Z27IsFlagAt130Bit0Set_0216364cPv(void *member);
 extern "C" char *_Z24FindElementByKey020dedd0P17Container020dedd0i(struct Container020dedd0 *c, int key);
 extern "C" void _Z32SetupTargetAndApplyState021575d4Pc(char *base);
-extern "C" int _Z34GetInventoryItemFlagField_02157500Ph(unsigned char *base);
+int GetInventoryItemFlagField_02157500(char *base, int, int);
 extern "C" int _Z33CheckAndClearEntryStatus_0215b7d0v();
 extern "C" void func_ov002_02161cf0(char *base);
 extern "C" void func_ov002_0215b814(char *base);
@@ -106,7 +106,7 @@ extern "C" ARM void func_ov002_021631e8(char *base) {
                     return;
                 case 2: {
                     _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0 *) data_02108760, 1, 0);
-                    int r = ((int (*)(char *, int, int)) _Z34GetInventoryItemFlagField_02157500Ph)(
+                    int r = GetInventoryItemFlagField_02157500(
                         base, *(short *) (base + 0x1b00 + 0xe8), *(signed char *) (base + 0x1c00 + 0x20));
                     if (r != 0) {
                         *(unsigned char *) (base + 0x1000 + 0xc32) = 0;

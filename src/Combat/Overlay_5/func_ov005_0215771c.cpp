@@ -53,7 +53,7 @@ int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
 extern "C" void func_ov005_0215792c(EquipmentMenu* self, unsigned char state);
 extern "C" MemberScreen* _Z19GetField1c_021a193cPi(int* p);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0* obj, int a, int b);
-extern "C" int _Z25CheckFlag30Or401_02157190v(EquipmentMenu* self);
+int CheckFlag30Or401_02157190(void* self);
 extern "C" void func_ov005_021579ec(EquipmentMenu* self, unsigned int state, unsigned char slot);
 extern "C" int _Z24ComputeScaledSum0205bb84P15Struct_0205bb84(Struct_0205bb84* s);
 extern "C" void func_ov005_021555c0(EquipmentMenu* self);
@@ -102,7 +102,7 @@ extern "C" ARM void func_ov005_0215771c(EquipmentMenu* self) {
     MemberScreen* screen = _Z19GetField1c_021a193cPi((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
     if (!func_ov005_02157ae8(self, screen->member_))
         return;
-    if (!_Z25CheckFlag30Or401_02157190v(self))
+    if (!CheckFlag30Or401_02157190(self))
         return;
     if (self->slots_[self->slot_].item_ < 0)
         return;

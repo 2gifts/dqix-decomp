@@ -58,7 +58,7 @@ extern "C" int *func_0202ae18();
 extern "C" int _Z18CheckField0NonZeroPi(int *);
 extern "C" int func_0202c508(int *);
 extern "C" void _Z21ClearFlag320_02195540Ph(unsigned char *);
-extern "C" int _Z39CountValidCombatantsMinusField_02160b84v(Scene *);
+int CountValidCombatantsMinusField_02160b84(void *);
 extern "C" int func_ov003_02160a68(Scene *);
 extern "C" void func_ov003_021612c0(Scene *);
 extern "C" int func_ov003_02161344(Scene *);
@@ -160,7 +160,7 @@ extern "C" ARM void func_ov003_0216253c(Scene *self) {
                 _Z21ClearFlag320_02195540Ph(g);
             }
             int a = *(_Z17GetPtrField0x2a04P9GameState(GameState::GetInstance()) + 0xf7c);
-            int n = _Z39CountValidCombatantsMinusField_02160b84v(self);
+            int n = CountValidCombatantsMinusField_02160b84(self);
             if (a + n == 4) {
                 _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(entries);
                 self->flags |= 0x80000;

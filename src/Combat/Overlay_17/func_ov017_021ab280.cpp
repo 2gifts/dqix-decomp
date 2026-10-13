@@ -179,7 +179,7 @@ extern "C" ARM int func_ov017_021ab280(struct Obj_021ab280* obj) {
 
         e[0xc] = 1;
         e[7] = 1;
-        _Z28CallFunc0200fbb4AtField0x3f8Pv(battle, entryV);
+        CallFunc0200fbb4AtField0x3f8(battle, entryV);
 
         InitAndResetHeader_0219e310(*(unsigned char**)(mgr + 0x3000 + kResourceHeaderOffset), 0);
         AppendNodeToTail(*(struct TailList020469b4**)(mgr + 0x3000 + kResourceTailOffset),

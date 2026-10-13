@@ -99,7 +99,7 @@ extern "C" void func_ov017_0219b624(GameResources*);
 void ClearField0x98Bit0(unsigned char*);
 extern "C" void _Z28ReleaseRosterEntries0203de2cP14Roster0203de2c(Roster0203de2c*);
 extern "C" void _Z35ProcessCombatantsIfFlagged_0218f79cPv(void*);
-extern "C" void _Z27ProcessSlotField58_021a2840v();
+void ProcessSlotField58_021a2840(GameResources*);
 extern "C" void _Z23CleanupNodeList02058564P16NodeList02058564(NodeList02058564*);
 void SetField0x1e28(void*, void*);
 extern "C" void _Z25RestorePairTables0207df90Pc(char*);
@@ -224,7 +224,7 @@ extern "C" ARM void func_ov017_021a1284(TransferEvent021a1284* self, void* unuse
         ClearField0x98Bit0((unsigned char*)entries);
         _Z28ReleaseRosterEntries0203de2cP14Roster0203de2c((Roster0203de2c*)entries);
         _Z35ProcessCombatantsIfFlagged_0218f79cPv(resources);
-        ((void (*)(GameResources*))_Z27ProcessSlotField58_021a2840v)(resources);
+        ProcessSlotField58_021a2840(resources);
         _Z23CleanupNodeList02058564P16NodeList02058564(nodes);
         SetField0x1e28(global, ((ResourceTransfer021a1284*)resources)->restored);
         _Z26CopyInternalFields0207df50P11Foo0207df50((Foo0207df50*)((ResourceTransfer021a1284*)resources)->restored);

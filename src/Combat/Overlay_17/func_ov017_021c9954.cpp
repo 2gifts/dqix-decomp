@@ -59,7 +59,7 @@ extern "C" void func_ov017_021b86f8(Party021c9954* party, int id, int flag, int 
 extern "C" void func_02076a8c(void* obj);
 extern "C" Leader021c9954* func_ov017_021b8478(Party021c9954* party);
 extern "C" Leader021c9954* func_ov017_021b8468(Party021c9954* party);
-extern "C" void _Z12NoOp02163778v(Leader021c9954* current);
+void NoOp02163778(void* current);
 extern "C" void func_020dc548(signed char id, signed char* out, signed char* count);
 extern "C" void func_ov017_021917f0(int id, int flag);
 extern "C" Combatant021c9954* _Z32FindCombatantByField16a_021a278cPvi(void* unused, int val);
@@ -87,7 +87,7 @@ extern "C" ARM void func_ov017_021c9954(int id, int checkLeader, int keep, int g
         Leader021c9954* leader = func_ov017_021b8478(party);
         Leader021c9954* current = func_ov017_021b8468(party);
         if (current != 0 && leader != 0 && leader->id == id) {
-            _Z12NoOp02163778v(current);
+            NoOp02163778(current);
         }
     }
 

@@ -11,7 +11,7 @@ extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int 
 #endif
 
 extern "C" int func_0205d0e0(void* objPtr, int val);
-extern "C" void _Z27ClearFourHalfwords_0219a644Pv(unsigned char* base, int value);
+void ClearFourHalfwords_0219a644(void* base, int value);
 
 struct Shorts0219a388 { short v[4]; };
 struct Bytes0219a388 { unsigned char v[4]; };
@@ -79,5 +79,5 @@ extern "C" ARM void func_ov017_0219a388(unsigned char* base) {
 
         func_0205d0e0(win, gs->GetTickCount());
     }
-    _Z27ClearFourHalfwords_0219a644Pv(base, 0xff);
+    ClearFourHalfwords_0219a644(base, 0xff);
 }

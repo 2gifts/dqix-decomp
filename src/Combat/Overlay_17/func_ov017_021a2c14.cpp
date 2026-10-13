@@ -24,8 +24,7 @@ int GetField5cb0Value(char*);
 int GetField5cb4Value(char*);
 int GetField5cb8Value(char*);
 extern "C" void _Z12Init0203cfb4P15Struct_0203cfb4(Struct_0203cfb4*);
-extern "C" void _Z17EmptyStub0203d004v();
-typedef Pool020401fc* (*EmptyStubAbi021a2c14)(void*);
+Pool020401fc* EmptyStub0203d004(void*);
 extern "C" void _Z16InitPool020401fcP12Pool020401fcjP13SafeAllocator(Pool020401fc*, unsigned int, SafeAllocator*);
 void* GetPtrField0x94(void*);
 void* GetPtrField0x90(void*);
@@ -75,7 +74,7 @@ extern "C" ARM int func_ov017_021a2c14(Object021a2c14* object, Request021a2c14* 
     BackgroundLoader::AddLockGlobal();
     sprintf(path, data_ov017_021d76a6, prefix);
     if (!LoadFileIntoMemory(path, data_0211e33c, &archiveSize)) {
-        _Z16InitPool020401fcP12Pool020401fcjP13SafeAllocator(((EmptyStubAbi021a2c14)_Z17EmptyStub0203d004v)(context), 12, allocator);
+        _Z16InitPool020401fcP12Pool020401fcjP13SafeAllocator(EmptyStub0203d004(context), 12, allocator);
         BackgroundLoader::RemoveLockGlobal();
         return 0;
     }

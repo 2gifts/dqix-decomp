@@ -240,7 +240,7 @@ extern "C" ARM void func_ov017_021a7378(BattleIntro* self, int arg) {
             params->height = 0;
             params->offset = 0x100000;
             globals->cameraTarget = camera->position;
-            _Z28CallFunc0200fbb4AtField0x3f8Pv(gs, params);
+            CallFunc0200fbb4AtField0x3f8(gs, params);
             TailNode020469b4* node = (TailNode020469b4*)res->unknown_ptr_array_36fc[4];
             InitAndResetHeader_0219e310((unsigned char*)node, 0);
             AppendNodeToTail(list, node);

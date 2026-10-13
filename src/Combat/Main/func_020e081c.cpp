@@ -41,7 +41,7 @@ extern "C" char* func_0203bd08();
 char* GetData02105254();
 void SetFlag0x9c6(SetFlagStruct*, int);
 extern "C" void func_02021428(void*, int);
-void InitSubScreenDisplay();
+void InitSubScreenDisplay(void*);
 extern "C" void _Z19TailForward0203b66cPc(char*);
 extern "C" void _Z25InitBattleContext0203bd24Pc(char*);
 extern "C" void _Z12Init0205a198P14Struct0205a198(Struct0205a198*);
@@ -73,7 +73,7 @@ extern "C" ARM void func_020e081c(DisplayLoad020e081c* self) {
     if (self->stage == 0) {
         SetFlag0x9c6((SetFlagStruct*)self, 0);
         func_02021428(self, 0x19);
-        ((void (*)(DisplayLoad020e081c*))InitSubScreenDisplay)(self);
+        InitSubScreenDisplay(self);
         allocator->Reset();
         _Z19TailForward0203b66cPc(table);
         _Z25InitBattleContext0203bd24Pc(battle);

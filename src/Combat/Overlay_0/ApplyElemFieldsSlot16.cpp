@@ -25,7 +25,7 @@ int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d, u
 #endif
 
 // USA: func_ov000_02179128
-ARM int ApplyElemFieldsSlot16(void* obj) {
+ARM int ApplyElemFieldsSlot16(void* obj, int, int) {
 	void* entry = FindMatchingTableEntry0217f8c0((struct Struct0217f8c0*)obj);
 	func_ov000_02179194(obj, entry);
 	void* buf = *(void**)(GetGlobalField0x1c020421a0() + REGION_OFFSET_0);

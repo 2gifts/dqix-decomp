@@ -10,7 +10,7 @@ extern "C" void func_02076a8c(void* obj);
 extern "C" void _ZN8Object3D10MakeHiddenEv(unsigned char* obj);
 
 // USA: func_ov017_0219e0ec
-ARM void SetFlagsForFlaggedCombatants_0219e0ec(void) {
+ARM void SetFlagsForFlaggedCombatants_0219e0ec(void*) {
 	int base;
 	GameState* battleStruct;
 	struct Element0x318_02028bac* table;

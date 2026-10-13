@@ -27,7 +27,7 @@ extern int GetOffset0x54FromFallbackChain(struct Struct02040a20* obj);
 struct FlagHolder_020656e4 { char pad[STATUS_FLAG]; unsigned char flag; };
 
 // USA: func_020656e4
-ARM int CheckAndClearFlag020656e4(void* a) {
+ARM int CheckAndClearFlag020656e4(void* a, int) {
     if (!*(unsigned char*)((char*)a + 0x1000 + STATUS_FLAG)) return 0;
 
     struct Entry_203dce4* entry = GetEntryUnlessFlag0x8000(

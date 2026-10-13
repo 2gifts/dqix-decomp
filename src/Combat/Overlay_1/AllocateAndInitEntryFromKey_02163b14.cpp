@@ -11,7 +11,7 @@ struct List0209998c;
 struct Elem0209998c;
 Elem0209998c* FindElementByName0209998c(List0209998c* list, const char* name);
 void InitStruct02013718(char* obj, int a, int b);
-extern "C" void _ZN6Zone3D10SwitchZoneEt(void* g, int val, int flag);
+extern "C" void _ZN6Zone3D10SwitchZoneEti(void* g, int val, int flag);
 
 struct GlobalBlock_02163b14 {
 #if defined(jpn)
@@ -58,7 +58,7 @@ extern "C" ARM int func_ov001_02163b14(void* obj) {
     p2->CreateTypeA(p3, maxAlloc);
 
     InitStruct02013718((char*)p1, (int)p2, extra);
-    _ZN6Zone3D10SwitchZoneEt(p1, key, 0);
+    _ZN6Zone3D10SwitchZoneEti(p1, key, 0);
 
     *(void**)fieldPtr = p1;
     return 1;

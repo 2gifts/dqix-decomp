@@ -90,7 +90,7 @@ extern "C" void func_0208b9a0(void* obj, unsigned char flag);
 extern "C" char* _Z26GetGlobalField0x1c020421a0v(void);
 extern "C" void _Z32InitAllocatorsAndBuffers0208b8c4P11Obj0208b8c4P13SafeAllocator(Obj0208b8c4* obj, SafeAllocator* alloc);
 void* GetGlobalPtr021075f4(void);
-extern "C" void* _Z17EmptyStub0203d004v(void* p);
+void* EmptyStub0203d004(void* p);
 extern "C" void _Z16InitPool020401fcP12Pool020401fcjP13SafeAllocator(Pool020401fc* pool, unsigned int count, SafeAllocator* alloc);
 extern "C" void _Z12Init0205a198P14Struct0205a198(Struct0205a198* p);
 extern "C" void _Z23ClearField0And40205a234P19ClearTarget0205a234(ClearTarget0205a234* p);
@@ -178,7 +178,7 @@ extern "C" ARM int func_ov001_021552a8(Self021552a8* self) {
         *(void**)(msg + 0x8c) = self->timer;
     }
     if ((self->params.flags & 1) || (self->params.flags & 4)) {
-        _Z16InitPool020401fcP12Pool020401fcjP13SafeAllocator((Pool020401fc*)_Z17EmptyStub0203d004v(GetGlobalPtr021075f4()), 0xc, &self->allocator);
+        _Z16InitPool020401fcP12Pool020401fcjP13SafeAllocator((Pool020401fc*)EmptyStub0203d004(GetGlobalPtr021075f4()), 0xc, &self->allocator);
     }
     if (self->params.flags & 0x200) {
         self->allocator.GetMaxPossibleAllocation();

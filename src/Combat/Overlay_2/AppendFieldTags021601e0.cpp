@@ -9,7 +9,7 @@ int AppendLineTag02041cc0(char* dst, int a1);
 int AppendXYTag(char* dst, int x, int y);
 
 // USA: func_ov002_021601e0
-ARM void AppendFieldTags021601e0(unsigned char* obj, char* dst) {
+ARM void AppendFieldTags021601e0(char* obj, char* dst, int) {
     struct Container020e0310* c;
     int field;
 

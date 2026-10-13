@@ -37,7 +37,7 @@ extern PlaybackState data_ov016_0219d0c0;
 void SleepCurrentContext(unsigned int ticks);
 extern "C" RangeEntry020e58dc* _Z22FindRangeEntry020e58dcP17RangeList020e58dci(RangeList020e58dc* list, int key);
 extern "C" int _Z27GetSomeConstByFlag_0218be5cv();
-extern "C" int _Z26CallIfNonNullBool_0218e708Pv(void* object, void* destination, int stride, int mode);
+int CallIfNonNullBool_0218e708(void* object, void* destination, int stride, int mode);
 extern "C" int _Z26CallIfNonNullBool_0218e72cPv(void* object);
 extern "C" void* __clear(void* destination, int size);
 extern "C" int _Z26GetGlobalField0x1c020421a0v();
@@ -57,7 +57,7 @@ extern "C" ARM void func_ov016_0218bec4(void* object, int captionsAddress) {
     if (data_ov016_0219d0c0.consecutive < 2 ||
         data_ov016_0219d0c0.elapsed - displayed <= 1) {
         RangeEntry020e58dc* caption = _Z22FindRangeEntry020e58dcP17RangeList020e58dci((RangeList020e58dc*)captionsAddress, displayed);
-        _Z26CallIfNonNullBool_0218e708Pv(object, (void*)_Z27GetSomeConstByFlag_0218be5cv(), 0x100, 0);
+        CallIfNonNullBool_0218e708(object, (void*)_Z27GetSomeConstByFlag_0218be5cv(), 0x100, 0);
         if (caption != 0 && caption->field4 == 0) {
             __clear(buffer, 0x200);
             func_02046608((void*)_Z26GetGlobalField0x1c020421a0v(), 0xc, caption->field10, (int)buffer, 0xe3, 0, 1);

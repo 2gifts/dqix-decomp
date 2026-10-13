@@ -137,14 +137,14 @@ extern "C" void func_0208fa8c(void* p);
 extern "C" void* _Z19FindInlineEntryByIdP14Entry_02028bd0i(void* table, int id);
 extern "C" void _Z39ProcessEntryFlagsAndCombatants_0219e014PhP17EntryArg_0219e014(Battle0219d250* self, void* entry);
 extern "C" void func_020288e0(void* table);
-extern "C" void _Z37SetFlagsForFlaggedCombatants_0219e0ecv(Battle0219d250* self);
+void SetFlagsForFlaggedCombatants_0219e0ec(void* self);
 extern "C" void _Z12Init0203cfb4P15Struct_0203cfb4(void* p);
 extern "C" void _Z33ResetBattleEncounterState0205859cP17MainBlock0205859c(void* p);
 extern "C" void _Z31UpdateFlagsFromField12_0219e234iiiPv(Battle0219d250* self, Request0219d250* request, Entry0219d250* other, Entry0219d250* entry);
 extern "C" void _Z15SetBitsInField4Pjj(Battle0219d250* self, unsigned int mask);
 extern "C" void func_ov017_0219fda0(Battle0219d250* self);
-extern "C" void _Z33InitEntriesAndAllocators_0219fec0v(Battle0219d250* self);
-extern "C" void _ZN6Zone3D10SwitchZoneEt(char* zone, int id, int flag);
+void InitEntriesAndAllocators_0219fec0(void* self);
+extern "C" void _ZN6Zone3D10SwitchZoneEti(char* zone, int id, int flag);
 extern "C" int _Z19IsIdInRange020981e4ii(void* obj, int id);
 int CheckField0NonZero(int* obj);
 extern "C" void func_ov017_02191108(Battle0219d250* self, int a, int b, int c, int d);
@@ -349,7 +349,7 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
     func_0208fa8c(status);
     _Z39ProcessEntryFlagsAndCombatants_0219e014PhP17EntryArg_0219e014(self, _Z19FindInlineEntryByIdP14Entry_02028bd0i(entryTable, heroZone));
     func_020288e0(entryTable);
-    _Z37SetFlagsForFlaggedCombatants_0219e0ecv(self);
+    SetFlagsForFlaggedCombatants_0219e0ec(self);
     _Z12Init0203cfb4P15Struct_0203cfb4(extRegion);
     _Z33ResetBattleEncounterState0205859cP17MainBlock0205859c(combatants);
     _Z31UpdateFlagsFromField12_0219e234iiiPv(self, request, other, entry);
@@ -363,10 +363,10 @@ extern "C" ARM void func_ov017_0219d250(Battle0219d250* self, unsigned char arg)
     if ((other == NULL || other->id != 3) && entry->id == 3) {
         func_ov017_0219fda0(self);
     } else if (other != NULL && other->id == 3 && entry->id != 3) {
-        _Z33InitEntriesAndAllocators_0219fec0v(self);
+        InitEntriesAndAllocators_0219fec0(self);
     }
     self->b3658 = 0;
-    _ZN6Zone3D10SwitchZoneEt(field, request->id, request->mode);
+    _ZN6Zone3D10SwitchZoneEti(field, request->id, request->mode);
     if (_Z19IsIdInRange020981e4ii(field + 0x840, id) || _Z19IsIdInRange020981e4ii(field + 0x840, heroZone)) {
         if (CheckField0NonZero((int*)search) == 0) {
             func_ov017_02191108(self, 1, 1, 1, 1);

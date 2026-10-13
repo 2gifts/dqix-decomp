@@ -18,8 +18,7 @@ int GetField5cb0Value(char*);
 void AppendNodeToTail(TailList020469b4*, TailNode020469b4*);
 void* GetField0x3f8Address(GameState*);
 void InitStruct02070378(char*);
-void CallFunc0200fbb4AtField0x3f8(void*);
-typedef void (*TransitionCommit)(GameState*, TransitionHeader*);
+void CallFunc0200fbb4AtField0x3f8(void*, const void*);
 void InitAndResetHeader_0219e310(unsigned char*, int);
 void InitAndAppendState61_021a65c4(void*, unsigned char, int);
 
@@ -93,8 +92,7 @@ extern "C" ARM void func_ov017_021d1e50(int unused, TransitionEvent* event, Game
                 header->position.z = 0x1000;
                 break;
             }
-            TransitionCommit commit = (TransitionCommit)CallFunc0200fbb4AtField0x3f8;
-            commit(game, header);
+            CallFunc0200fbb4AtField0x3f8(game, header);
             unsigned char* node = (unsigned char*)resources->unknown_ptr_array_36fc[4];
             InitAndResetHeader_0219e310(node, 0);
             AppendNodeToTail(list, (TailNode020469b4*)node);
@@ -111,8 +109,7 @@ extern "C" ARM void func_ov017_021d1e50(int unused, TransitionEvent* event, Game
             position.y = event->y << 7;
             position.z = event->z << 7;
             zone->position = position;
-            TransitionCommit commit = (TransitionCommit)CallFunc0200fbb4AtField0x3f8;
-            commit(game, header);
+            CallFunc0200fbb4AtField0x3f8(game, header);
             unsigned char* node = (unsigned char*)resources->unknown_ptr_array_36fc[4];
             InitAndResetHeader_0219e310(node, 0);
             AppendNodeToTail(list, (TailNode020469b4*)node);

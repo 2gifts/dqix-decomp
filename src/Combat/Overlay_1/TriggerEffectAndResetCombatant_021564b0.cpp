@@ -13,7 +13,7 @@ extern "C" void _Z28SetScaledEffectParam020708c8P19EffectParam020708c8j(void* p,
 extern "C" void _Z17SetMainBrightnessP13GameResourcesii(void* ov17, int a, int b);
 extern "C" void* _Z26GetGlobalField0x1c020421a0v(void);
 extern "C" void func_02043124(void* v);
-extern "C" void _Z31ClearMultipleFieldBits_02156b20v(void* obj);
+void ClearMultipleFieldBits_02156b20(void* obj);
 extern "C" void func_ov017_021bb27c(void* obj);
 
 struct S021564b0 { char pad0; char flag1; char pad[8]; unsigned short fieldA; };
@@ -30,7 +30,7 @@ extern "C" ARM unsigned short func_ov001_021564b0(struct S021564b0* obj) {
         func_02043124(field);
         char* p1000 = (char*)field + 0x1000;
         p1000[resetOffset] = 0;
-        _Z31ClearMultipleFieldBits_02156b20v(obj);
+        ClearMultipleFieldBits_02156b20(obj);
         func_ov017_021bb27c(obj);
         obj->flag1 = 1;
     }

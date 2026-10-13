@@ -11,7 +11,7 @@ struct ListNode021600f8;
 struct ListNode021600f8* GetNodeAtIndex021600f8(struct List021600f8* list, int index);
 int CheckSubstructFlag0x80(unsigned char* obj);
 extern "C" short func_ov000_0215ffa0(void* obj);
-extern "C" int _Z23GetField0Result02169aa4Pv(void* obj, int type, void* out, int flag);
+int GetField0Result02169aa4(void* obj, int type, void* out, int flag);
 
 // USA: func_ov025_021dfa9c  (semantic: MatchNodesAndGetField_021dfa9c)
 extern "C" ARM int func_ov025_021dfa9c(void* obj, void* base) {
@@ -51,7 +51,7 @@ extern "C" ARM int func_ov025_021dfa9c(void* obj, void* base) {
 
     if (*(short*)((char*)nodeB + 0xe) != func_ov000_0215ffa0(nodeB)) goto fail;
 
-    result = _Z23GetField0Result02169aa4Pv(combatant, flagVal, &localBuf[0], 2);
+    result = GetField0Result02169aa4(combatant, flagVal, &localBuf[0], 2);
     if (result >= 2) return localBuf[1];
 
 fail:

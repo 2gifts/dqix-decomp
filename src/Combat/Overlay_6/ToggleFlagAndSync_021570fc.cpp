@@ -8,7 +8,7 @@
 
 extern "C" void func_ov023_021dd404(void* obj);
 extern "C" void func_ov023_021dd344(void* obj);
-extern "C" void _Z23ClearBg1Screen_021dcd78v(void* p);
+void ClearBg1Screen_021dcd78(void* p);
 
 struct ToggleFlagAndSync_021570fcStruct {
     unsigned char pad[LOW_REGION(0x1054, 0x1258)];
@@ -28,7 +28,7 @@ extern "C" ARM int func_ov006_021570fc(struct ToggleFlagAndSync_021570fcStruct* 
         func_ov023_021dd344((char*)s + LOW_REGION(0x164, 0x2e4) + 0x800);
     }
     if (wasSet && !flag) {
-        _Z23ClearBg1Screen_021dcd78v((char*)s + LOW_REGION(0x164, 0x2e4) + 0x800);
+        ClearBg1Screen_021dcd78((char*)s + LOW_REGION(0x164, 0x2e4) + 0x800);
     }
     return wasSet;
 }

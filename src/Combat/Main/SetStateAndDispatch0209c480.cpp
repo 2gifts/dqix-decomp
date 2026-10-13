@@ -3,7 +3,7 @@
 int IsMissingFromTable0209c0f4(int value, int type);
 void CallField0xa00203aa44(void* obj);
 int GetFromField00203aa64(void* obj);
-void* CallFunc020bc594OnField0(void* obj);
+void* CallFunc020bc594OnField0(void* obj, int);
 void Forward0203aa80(void* obj, int arg2);
 int TryAllocateOrAppend0203aaf8(void* obj, void* arg1, int* out);
 struct Obj0203aba8;
@@ -35,8 +35,7 @@ extern "C" ARM void func_0209c480(struct Actor0209c480* obj, int arg1) {
         CallField0xa00203aa44(obj);
         obj->field_b4 = GetFromField00203aa64(obj);
     } else {
-        typedef void* (*CallFunc020bc594OnField0Fn)(void*, int);
-        ((CallFunc020bc594OnField0Fn)CallFunc020bc594OnField0)(&obj->fieldBC, 1);
+        CallFunc020bc594OnField0(&obj->fieldBC, 1);
         if (obj->field_b4 > 0) {
             Forward0203aa80(obj, obj->field_b4);
         }

@@ -54,7 +54,7 @@ extern "C" void _Z24InitEntryManager020e2490P20EntryManager020e2490iiPvP13SafeAl
 extern "C" void _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(void* a, void* b);
 extern "C" void _Z20WrapAddByteField0x22iPcji(void* a, void* b, unsigned int c, int d);
 extern "C" void _Z21InitNodeChain0207f7f0P15Manager0207f7f0P12Node0207f7f0i(void* a, void* b, int c);
-extern "C" unsigned char _Z34CheckField0AndBattleState_02160b50v(void* a);
+unsigned char CheckField0AndBattleState_02160b50(void* a);
 extern "C" int _Z18TestBitInByteArrayiPhi(void* a, void* b, int c);
 extern "C" void _Z20SetOrClearBitInArrayPvPhii(void* a, void* b, int c, int d);
 extern "C" void ColorEffect_ConfigureAlphaBlend(unsigned int* out, unsigned char a, unsigned char b, unsigned char c, int d);
@@ -390,7 +390,7 @@ extern "C" ARM void func_ov003_021615bc(Scene021615bc* self) {
         func_02081224(m, 0x19);
         func_02081224(m, 0x1a);
         func_02081224(m, 0x1b);
-        self->b49e = _Z34CheckField0AndBattleState_02160b50v(self);
+        self->b49e = CheckField0AndBattleState_02160b50(self);
 #endif
         char* save = (char*)func_0205ec34();
         if (self->flags464 & 0x10000) {
@@ -420,7 +420,7 @@ extern "C" ARM void func_ov003_021615bc(Scene021615bc* self) {
             self->flags464 |= 8;
         } else {
 #if defined(jpn)
-            self->b49e = _Z34CheckField0AndBattleState_02160b50v(self);
+            self->b49e = CheckField0AndBattleState_02160b50(self);
 #endif
             if (self->b49e != 0 && self->b49e != 1) {
                 if (self->b49e == 2) {

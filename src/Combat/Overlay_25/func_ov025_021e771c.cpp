@@ -36,7 +36,7 @@ extern "C" void func_0206f230(void* table, void* owner, void* data, unsigned int
 
 extern "C" unsigned int _Z19LoadGPCFile02166008PvP11GPCReadPairi(void* unused, GPCReadPair* readPair, int flag);
 extern "C" void func_ov000_02166070(CombatWork021e771c* work, GPCReadPair* readPair, int index, int id, int flag, unsigned int length);
-extern "C" void _Z31ResetGPCReadPairAndHalveCounterPvP11GPCReadPair(void* unused, GPCReadPair* pair, int flag);
+void ResetGPCReadPairAndHalveCounter(void* unused, GPCReadPair* pair, int flag);
 
 #if defined(jpn)
 extern char data_ov025_021efb1e[];
@@ -91,7 +91,7 @@ extern "C" ARM int func_ov025_021e771c(short* ids, int count, int a, int b) {
             for (int i = 0; i < count; i++) {
                 func_ov000_02166070(work, &pair, i, ids[i], 0, length);
             }
-            _Z31ResetGPCReadPairAndHalveCounterPvP11GPCReadPair(work, &pair, 0);
+            ResetGPCReadPairAndHalveCounter(work, &pair, 0);
             pair.Reset();
             ZeroDestroyGPCPointer(&pair.pGPCFile);
         }

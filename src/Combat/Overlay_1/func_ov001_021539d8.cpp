@@ -149,7 +149,6 @@ void* memcpy(void* dst, const void* src, unsigned int size);
 int sprintf(char* dst, const char* format, ...);
 void _Z11SetField0xcPii(struct Emitter021539d8* emitter, void* record);
 void _Z11SetField0x8Pii(struct Emitter021539d8* emitter, struct Label021539d8* label);
-int _Z17EmptyStub0203d004v(void* list);
 void _Z27UpdateElementStream0203f02cP11Obj0203f02ciiPcii(struct Stream021539d8* stream, char* name, SafeAllocator* allocator, struct PairTables021539d8* pair, void* data, unsigned int size);
 void func_0203f138(struct Stream021539d8* stream, int enabled);
 void _Z28SetActiveChildShorts020408c8P12Node020408c8sss(struct Emitter021539d8* emitter, int a, int b, int c);
@@ -161,6 +160,8 @@ void NSBXX_Model_SetPolygonID(NSBXXInternalModel* model, int id);
 void _Z15SetBitsInField4Pjj(char* obj, unsigned int bits);
 void __clear(unsigned char* flags, int count);
 }
+
+int EmptyStub0203d004(void* list);
 
 static inline void UpdateStream021539d8(struct Emitter021539d8* emitter, char* name, SafeAllocator* allocator,
                                         struct PairTables021539d8* pair, void* data, unsigned int size) {
@@ -438,7 +439,7 @@ extern "C" ARM void func_ov001_021539d8(struct Self021539d8* self) {
             emitter->stream = stream;
             _Z11SetField0xcPii(emitter, record);
             _Z11SetField0x8Pii(emitter, label);
-            owner = _Z17EmptyStub0203d004v(global);
+            owner = EmptyStub0203d004(global);
             if (emitter->stream != 0) {
                 emitter->stream->owner = owner;
             }

@@ -17,7 +17,7 @@ void ClearFlags020466f4(FlagWord020466f4* word, unsigned int mask);
 struct Struct020db0c4;
 void InitStruct020db0c4(Struct020db0c4* p);
 
-extern "C" void _Z23InitFlag0x28FromOverlayv(void* obj);
+void InitFlag0x28FromOverlay(void* obj);
 
 extern "C" void func_020d8694();
 
@@ -61,6 +61,6 @@ extern "C" ARM void func_020db894(Obj020db894* obj) {
     ConfigureAndDispatchHandle020db304((int)obj, obj->b3c);
     ClearFlags020466f4(GetDataPtr02114e04_020d6c00(), 0x8000);
     InitStruct020db0c4((Struct020db0c4*)obj);
-    _Z23InitFlag0x28FromOverlayv(obj);
+    InitFlag0x28FromOverlay(obj);
     func_020d8694();
 }

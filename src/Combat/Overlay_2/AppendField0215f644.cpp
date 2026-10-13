@@ -11,7 +11,7 @@ struct StackTmp0215f644 {
 };
 
 // USA: func_ov002_0215f644
-ARM void AppendField0215f644(void* self, char* dst) {
+ARM void AppendField0215f644(void* self, char* dst, int) {
     if (dst == NULL) {
         return;
     }

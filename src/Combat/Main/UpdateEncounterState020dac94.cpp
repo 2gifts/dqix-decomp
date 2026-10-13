@@ -45,7 +45,7 @@ struct EncounterState020dac94 {
 };
 
 // USA: func_020dac94
-ARM void UpdateEncounterState020dac94(void* objIn) {
+ARM void UpdateEncounterState020dac94(void* objIn, void*) {
     struct EncounterState020dac94* obj = (struct EncounterState020dac94*)objIn;
     GameState* battle = GameState::GetInstance();
     int state = obj->state;

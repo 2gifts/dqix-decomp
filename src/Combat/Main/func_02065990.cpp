@@ -60,7 +60,7 @@ extern "C" void _Z27SetEntryByte14ByKey0205a42cP17Container0205a3d0ii(void* c, i
 extern "C" void _Z22IterateEntries0205a330P17Container0205a330i(void* c, int step);
 extern "C" void func_0206b104(void* obj);
 extern "C" void _Z24ReinitController02043204Pc(void* obj);
-extern "C" void _Z25CheckAndClearFlag020656e4Pv(void* obj, int step);
+void CheckAndClearFlag020656e4(void* obj, int step);
 extern "C" int _Z28UpdateCounterAndFlag02065758P14Struct02065758i(void* obj, int step);
 extern "C" void _Z24UpdateTimedState0202f380Pvi(void* obj, int step);
 extern "C" int _Z15IsField440EmptyP7CE28Obj(void* obj);
@@ -84,7 +84,7 @@ extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(void* obj, int 
 extern "C" void func_ov016_0218b5c0(int a, signed char b);
 extern "C" void func_ov017_0218b5f8(signed char a);
 extern "C" int _Z14ListContainsIdP16ListHead02046b60i(void* list, int id);
-extern "C" void _Z25CallHelperIfFlag_021a5ab0v(void* p);
+void CallHelperIfFlag_021a5ab0(void* p);
 extern "C" int _Z25TestFlag0SetAndFlag1ClearPti(void* p, int mask);
 extern "C" void* _Z20GetGlobalPtr021075f4v();
 extern "C" void* _Z24GetEntryUnlessFlag0x8000P17EntryList_203dce4i(void* list, int id);
@@ -140,7 +140,7 @@ extern "C" ARM void func_02065990(unsigned char* self, int amount) {
         return;
     }
 
-    _Z25CheckAndClearFlag020656e4Pv(self, step);
+    CheckAndClearFlag020656e4(self, step);
     if (_Z28UpdateCounterAndFlag02065758P14Struct02065758i(self, step) != 0) return;
 
     if ((self + 0x1000)[REGION_VALUE(0x7e1, 0x9b1)] != 0) {
@@ -334,7 +334,7 @@ extern "C" ARM void func_02065990(unsigned char* self, int amount) {
                         func_ov017_0218b5f8(val);
                         unsigned char* who = ((unsigned char*)func_ov017_0218b5b0());
                         if (_Z14ListContainsIdP16ListHead02046b60i(*(void**)(who + REGION_VALUE(0x34ec, 0x36fc)), 0xc) != 0) {
-                            _Z25CallHelperIfFlag_021a5ab0v(*(void**)(who + REGION_VALUE(0x350c, 0x371c)));
+                            CallHelperIfFlag_021a5ab0(*(void**)(who + REGION_VALUE(0x350c, 0x371c)));
                         }
                     }
                 }

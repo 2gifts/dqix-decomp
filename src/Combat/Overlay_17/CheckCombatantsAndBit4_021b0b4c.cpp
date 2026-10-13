@@ -6,7 +6,7 @@ unsigned int GetBitsInField0(unsigned int* obj, unsigned int mask);
 extern "C" void func_ov017_0218f5a4(void* ov, int id, int b, int c, int d);
 
 // USA: func_ov017_021b0b4c
-ARM int CheckCombatantsAndBit4_021b0b4c(void) {
+ARM int CheckCombatantsAndBit4_021b0b4c(void*) {
 	GameState* bs = GameState::GetInstance();
 	GameResources* ov = func_ov017_0218b5b0();
 

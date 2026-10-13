@@ -8,7 +8,7 @@ void SetField0x238True(void* obj);
 void ApplyVecFromField0x246(char* actor);
 extern "C" void func_0209c2e0(void* obj, int a, int b);
 extern "C" void func_ov001_02154da0(void);
-extern "C" void _Z31ClearMultipleFieldBits_02156b20v(void* obj);
+void ClearMultipleFieldBits_02156b20(void* obj);
 extern "C" void func_ov017_021bb27c(void* obj);
 
 extern char data_02109bf4;
@@ -43,7 +43,7 @@ extern "C" ARM unsigned short func_ov001_021567c4(State_021567c4* self) {
 	SetField0x238True(camera);
 	ApplyVecFromField0x246(camera);
 	func_0209c2e0(&data_02109bf4, self->field_0x94, 0);
-	_Z31ClearMultipleFieldBits_02156b20v(self);
+	ClearMultipleFieldBits_02156b20(self);
 	func_ov017_021bb27c(self);
 	self->done = 1;
 	return self->nextState;

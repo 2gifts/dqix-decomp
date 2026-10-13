@@ -18,7 +18,7 @@ extern "C" void _Z26RunFlaggedCallback020db844P13Actor020db844iii(Actor020db844*
 void InitCombatantVisualState(void* obj, int arg1, int arg2, int arg3, int arg4);
 extern "C" void func_020d8694(void);
 extern "C" void _Z30ProcessDisplayDispatch020db5ecP26DisplayDispatchObj020db5ec(DisplayDispatchObj020db5ec* obj);
-void InitFlag0x28FromOverlay(void);
+void InitFlag0x28FromOverlay(void*);
 
 // USA: func_020dbae0
 extern "C" ARM void func_020dbae0(void* obj) {
@@ -66,5 +66,5 @@ extern "C" ARM void func_020dbae0(void* obj) {
         }
         _Z30ProcessDisplayDispatch020db5ecP26DisplayDispatchObj020db5ec((DisplayDispatchObj020db5ec*)obj);
     }
-    ((void (*)(void*))InitFlag0x28FromOverlay)(obj);
+    InitFlag0x28FromOverlay(obj);
 }

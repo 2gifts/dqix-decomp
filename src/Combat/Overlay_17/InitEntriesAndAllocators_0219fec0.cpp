@@ -15,7 +15,7 @@ void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
 extern AllocatorUnion data_02114e20;
 
 // USA: func_ov017_0219fec0
-ARM void InitEntriesAndAllocators_0219fec0(void) {
+ARM void InitEntriesAndAllocators_0219fec0(void*) {
 	func_02012fe4();
 	struct Entry_02028bd0* entryTable = GetEntryTableBase();
 	struct Element0x318_02028bac* elem0 = GetElementStride0x318((struct Element0x318_02028bac*)entryTable, 0);

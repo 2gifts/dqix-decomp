@@ -61,6 +61,6 @@ extern "C" ARM int func_ov001_02161f80(void* target, int count) {
             obj->field69 = 1;
         }
     }
-    _Z28CallFunc0200fbb4AtField0x3f8Pv(battle, obj);
+    CallFunc0200fbb4AtField0x3f8(battle, obj);
     return 1;
 }

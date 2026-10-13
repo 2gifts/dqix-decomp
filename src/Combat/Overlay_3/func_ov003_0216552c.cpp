@@ -5,7 +5,7 @@
 unsigned char* GetGlobal02109030(void);
 extern "C" void func_ov003_021612c0(void* obj);
 extern "C" int func_ov003_02161344(void* obj);
-extern "C" int _Z39CountValidCombatantsMinusField_02160b84v(void* obj);
+int CountValidCombatantsMinusField_02160b84(void* obj);
 int GetFieldIfFlag4(char* obj);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, const int* src);
 void ReadFields0x70To0x78(unsigned char* obj, int* a, int* b, int* c);
@@ -70,7 +70,7 @@ extern "C" ARM void func_ov003_0216552c(Menu0216552c* self) {
             if (result != 1) {
                 return;
             }
-            if (_Z39CountValidCombatantsMinusField_02160b84v(self) != 0) {
+            if (CountValidCombatantsMinusField_02160b84(self) != 0) {
                 self->field_0x488 = 0x1a;
                 self->messageId_ = self->windowMessageId_ = 0xa9;
                 window->messageId_ = self->windowMessageId_;

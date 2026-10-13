@@ -74,7 +74,7 @@ extern "C" void _ZN8Vector3iaSERKS_(void* dst, const Vector3i& src);
 extern "C" void _Z20SetFlagBytes02017d68Pv(void* p);
 extern "C" int _Z13PeekInputLogAv();
 #if defined(jpn)
-extern "C" void _Z31ClearMultipleFieldBits_02156b20v(void);
+void ClearMultipleFieldBits_02156b20(void*);
 #else
 extern "C" void _Z20IsFlag0x14Bit0x40SetP10GameObject(void* p);
 #endif
@@ -464,7 +464,7 @@ extern "C" ARM int func_ov017_021bc77c(Self_021bc77c* self, void* arg) {
     } else {
         if (_Z13PeekInputLogAv() == 1) {
 #if defined(jpn)
-            ((void (*)(void*))_Z31ClearMultipleFieldBits_02156b20v)(self);
+            ClearMultipleFieldBits_02156b20(self);
 #else
             _Z20IsFlag0x14Bit0x40SetP10GameObject(self);
 #endif

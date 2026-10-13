@@ -45,7 +45,7 @@ extern "C" void func_ov005_021589f4(EquipmentMenu* self);
 extern "C" int func_ov005_02158b3c(void* object, void* buffer);
 extern "C" MenuElement* _Z23FindElementByC40205d81cP15Struct_0205d81ci(Struct_0205d81c* s, int key);
 extern "C" int _Z17IsField0x9cEqual3Ph(MenuElement* elem);
-extern "C" int _Z25CheckFlag30Or401_02157190v(EquipmentMenu* self);
+int CheckFlag30Or401_02157190(void* self);
 extern "C" int _Z25TestFlag0SetAndFlag1ClearPti(unsigned short* obj, int mask);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0* sound, int effect, int unk);
 extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(Entry_0205d6a0* window, int unk);
@@ -77,7 +77,7 @@ extern "C" ARM void func_ov005_02158878(EquipmentMenu* self) {
     unsigned char touch;
     touch = data_02114e54[0x55];
     clear = 0;
-    int flag = _Z25CheckFlag30Or401_02157190v(self);
+    int flag = CheckFlag30Or401_02157190(self);
     if (flag | touch) {
         _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)data_02108760, 1, clear);
         if (self->pending_ != 0) {

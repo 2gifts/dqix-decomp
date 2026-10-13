@@ -11,7 +11,7 @@ extern "C" unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f
 extern "C" void func_ov017_021c2b6c(void* self);
 void ForwardResetAndCaptureTimestamp_021c2e50(char* self);
 void InitAndDispatchCombatant_021c2ea4(unsigned char* self);
-extern "C" int _Z28CountValidCombatants02058618v(void* unused);
+int CountValidCombatants02058618(void* unused);
 unsigned long long GetCurrentTimestamp(void);
 extern "C" unsigned long long _ll_udiv(unsigned long long dividend, unsigned int divisor, unsigned int flag);
 int CheckField0NonZero(int* obj);
@@ -66,7 +66,7 @@ extern "C" ARM void func_ov017_021c2f3c(unsigned char* self) {
     if (state != 3) return;
 
     if (*(void**)(self + 0x90) != 0) {
-        if (_Z28CountValidCombatants02058618v(r7) > 0) return;
+        if (CountValidCombatants02058618(r7) > 0) return;
     }
 
     unsigned long long diff = GetCurrentTimestamp() - *(unsigned long long*)(self + 0x98);

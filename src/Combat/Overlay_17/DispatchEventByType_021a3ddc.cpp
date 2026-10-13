@@ -20,9 +20,9 @@ void CallIfField1c_021c1208(void* obj);
 struct Obj0217f230;
 void CallIfFieldCSet_0217f230(Obj0217f230* obj);
 
-void CallHelperIfFlag_021b1ce4(void);
-void NoOp_021b1fa4(void);
-void CallHelperIfFlagB_021b2328(void);
+void CallHelperIfFlag_021b1ce4(void*);
+void NoOp_021b1fa4(void*);
+void CallHelperIfFlagB_021b2328(void*);
 
 // USA: func_ov017_021a3ddc  (semantic: DispatchEventByType_021a3ddc)
 extern "C" ARM void func_ov017_021a3ddc(void* unused, void* obj) {
@@ -55,13 +55,13 @@ extern "C" ARM void func_ov017_021a3ddc(void* unused, void* obj) {
 		CallIfFieldCSet_0217f230((Obj0217f230*)obj);
 		break;
 	case 0x2b:
-		((void (*)(void*))CallHelperIfFlag_021b1ce4)(obj);
+		CallHelperIfFlag_021b1ce4(obj);
 		break;
 	case 0x2c:
-		((void (*)(void*))NoOp_021b1fa4)(obj);
+		NoOp_021b1fa4(obj);
 		break;
 	case 0x2d:
-		((void (*)(void*))CallHelperIfFlagB_021b2328)(obj);
+		CallHelperIfFlagB_021b2328(obj);
 		break;
 	}
 }

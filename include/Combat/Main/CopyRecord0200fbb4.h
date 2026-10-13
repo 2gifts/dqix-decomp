@@ -7,5 +7,5 @@ extern "C" CopyRecord0200fbb4* func_0200fbb4(
 
 extern "C" void* _Z37CallFunc0200fbb4AtField0x3f8_0200fba4Pv(
     void* obj, const void* src);
-extern "C" void* _Z28CallFunc0200fbb4AtField0x3f8Pv(
+void* CallFunc0200fbb4AtField0x3f8(
     void* obj, const void* src);

@@ -9,7 +9,7 @@ void SetSubBg0Control02020968(int screenSize, int colorMode, int screenBase, int
 void SetSubBg1Control0202099c(int screenSize, int colorMode, int screenBase, int charBase, int bit13);
 
 // USA: func_020209d0
-ARM void InitSubScreenDisplay(void) {
+ARM void InitSubScreenDisplay(void*) {
     volatile unsigned int* dispcnt = (volatile unsigned int*)0x4001000;
 
     DisableSubObjVRAMBanks();

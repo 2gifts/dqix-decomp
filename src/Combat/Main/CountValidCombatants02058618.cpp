@@ -3,7 +3,7 @@
 
 
 // USA: func_02058618
-ARM int CountValidCombatants02058618() {
+ARM int CountValidCombatants02058618(void*) {
     GameState* bs = GameState::GetInstance();
     int count = 0;
     int i;

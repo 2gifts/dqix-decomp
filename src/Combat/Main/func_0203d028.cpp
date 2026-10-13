@@ -216,7 +216,7 @@ struct Obj02041598 {
     char pad_c5[0xb];
     int field_d0;
 };
-extern "C" int _Z28SetByteC4AndDispatch02041598P11Obj02041598i(struct Obj02041598* obj, int value, int z);
+int SetByteC4AndDispatch02041598(struct Obj02041598* obj, int value, int z);
 
 extern "C" void _ZN8Object3D10EnableFlagEi(unsigned char* obj, unsigned int mask);
 void StoreVec3AtField0x50(unsigned char* obj, int a, int b, int c);
@@ -230,8 +230,8 @@ extern "C" int _Z28SetWordCCAndDispatch020415b0P11Obj020415b0i(struct Obj020415b
 
 extern "C" void func_0203db44(void* a, void* b, void* c);
 
-extern "C" void _Z31SetByte0x2e8AndDispatch02041628Pvi(void* obj, int v, int z);
-extern "C" void _Z31SetWord0x2f4AndDispatch02041640Pvi(void* obj, int v, int z);
+void SetByte0x2e8AndDispatch02041628(void* obj, int v, int z);
+void SetWord0x2f4AndDispatch02041640(void* obj, int v, int z);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 
 extern "C" int func_02018fbc(void* globalStruct, int* vec3);
@@ -611,7 +611,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
             }
             else if (node->state != 0) {
                 _ZN8Object3D8SetScaleEiii((struct Shorts5c_374e0*)node->state, 0x10a, 0x10a, 0x10a);
-                _Z28SetByteC4AndDispatch02041598P11Obj02041598i((struct Obj02041598*)node->state, info->field1e, 0);
+                SetByteC4AndDispatch02041598((struct Obj02041598*)node->state, info->field1e, 0);
                 if (node->flags & 0x800) {
                     _ZN8Object3D9SetFlag16Ev((unsigned char*)node->state);
                     _ZN8Object3D10EnableFlagEi((unsigned char*)node->state, 0x2000000);
@@ -626,13 +626,13 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
             }
             else if (node->combatant != 0) {
                 _ZN8Object3D8SetScaleEiii((struct Shorts5c_374e0*)node->combatant, 0x10a, 0x10a, 0x10a);
-                _Z31SetByte0x2e8AndDispatch02041628Pvi(node->combatant, info->field1e, 0);
+                SetByte0x2e8AndDispatch02041628(node->combatant, info->field1e, 0);
                 if (node->flags & 0x800) {
                     _ZN8Object3D9SetFlag16Ev((unsigned char*)node->combatant);
                     StoreVec3AtField0x50((unsigned char*)node->combatant, 0x4b5c, info->field1c, 0);
                 }
                 if (info->field58 != 0) {
-                    _Z31SetWord0x2f4AndDispatch02041640Pvi(node->combatant, info->field58, 0);
+                    SetWord0x2f4AndDispatch02041640(node->combatant, info->field58, 0);
                 }
                 int localVec3[3];
                 _ZN8Vector3iaSERKS_(localVec3, (int*)((char*)node->combatant + 0x44));

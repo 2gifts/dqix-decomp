@@ -189,7 +189,6 @@ extern "C" void func_ov017_021cedf4(int id, int a, int b);
 extern "C" void func_ov017_021c9e00(int id, int a, int b, int c);
 extern "C" void func_ov017_02191108(void* self, int a, int b, int c, int d);
 void SetByteField0x253(void* obj);
-extern "C" void _ZN6Zone3D10SwitchZoneEt(Zone3D* zone, int id, int flag);
 extern "C" void func_02015438(void* zone);
 extern "C" MainBlock0205859c* func_02057924(void);
 void ResetBattleEncounterState0205859c(MainBlock0205859c* p);
@@ -367,7 +366,7 @@ extern "C" ARM void func_ov017_021b790c(BattleScene021b790c* self, ListHead02046
         unsigned char* zone = func_02012fe4();
         if (self->flags & 0x400) {
             BackgroundLoader* loader = BackgroundLoader::GetInstance();
-            _ZN6Zone3D10SwitchZoneEt((Zone3D*)zone, *(unsigned short*)zone, 0);
+            ((Zone3D*)zone)->SwitchZone(*(unsigned short*)zone, 0);
             while (*(int*)(zone + SCENE_ZONE_LOCKS_021b790c) != 0) {
                 loader->RemoveAllLocks();
                 func_02015438(zone);

@@ -77,7 +77,7 @@ extern char data_020ef20b[];
 extern char data_020ef222[];
 extern char data_020ef22c[];
 
-void Zone3D::SwitchZone(unsigned short newID)
+void Zone3D::SwitchZone(unsigned short newID, int)
 {
     GameState* gameState = GameState::GetInstance();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();

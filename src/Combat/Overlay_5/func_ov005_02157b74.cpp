@@ -111,7 +111,7 @@ extern "C" int func_0207c7a0(char* list, short key, int category);
 extern "C" int _Z33FindEntryIndexInKeyedList0207caa4P17KeyedList0207caa4ii(char* list, short key, int category);
 extern "C" void _Z33DecrementKeyedStackAmount0207c484P17KeyedList0207c484iii(char* list, short key, int amount, int category);
 extern "C" void _Z27SetEntryInKeyedList0207cb38P17KeyedList0207cb38iiic(char* list, int index, int category, short key, char amount);
-extern "C" void _Z13NoOp_021e4e1cv(Context02157b74* ctx, int actor, short key, int category);
+void NoOp_021e4e1c(void* ctx, int actor, short key, int category);
 extern "C" void func_ov005_02154d18(void* obj, int a, int b);
 extern "C" void func_ov005_02154d50(void* obj, int a, int b);
 
@@ -317,7 +317,7 @@ extern "C" ARM void func_ov005_02157b74(Menu02157b74* self, int key, int keepSto
         func_0207c378(bag + 0x1d4, old, 1, category);
     }
 
-    _Z13NoOp_021e4e1cv(ctx, actor, key, data_ov005_0215cd30[self->tab]);
+    NoOp_021e4e1c(ctx, actor, key, data_ov005_0215cd30[self->tab]);
     func_ov005_02155544(self);
     self->dirty |= 0x10;
     self->f3da8 = 0;

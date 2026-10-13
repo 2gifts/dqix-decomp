@@ -63,7 +63,7 @@ extern "C" void func_ov025_021dee20(ActionState*);
 List02160094* GetSlotPtr02160f20(void*);
 BattleSource* GetNodeAtIndex02160094(List02160094*, int);
 void UpdateFlagAndDispatch_021dc0d8(void*);
-extern "C" void* _Z23GetField0Result02169a58Pv(void*, int);
+void* GetField0Result02169a58(void*, int);
 extern "C" void* func_ov025_021dfa9c(ActionState*, char*);
 int ClassifyField0x81fe(char*);
 extern "C" void* func_ov000_02169a58(void*, int);
@@ -116,7 +116,7 @@ extern "C" ARM void func_ov025_021dbe10(ActionState* state) {
     if (object) {
         int kind = list->kind;
         if (kind == 0x3ae) reset = 0;
-        void* script = _Z23GetField0Result02169a58Pv(object, kind);
+        void* script = GetField0Result02169a58(object, kind);
         void* overrideScript = func_ov025_021dfa9c(state, state->battle);
         if (overrideScript) script = overrideScript;
         if (ClassifyField0x81fe(battle) && source->id == 0)

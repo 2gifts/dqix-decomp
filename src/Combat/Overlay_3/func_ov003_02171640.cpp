@@ -9,7 +9,7 @@ extern "C" void* func_0202ae18(void);
 extern "C" void func_0202b0f4(void* ptr);
 extern "C" void func_0202c288(void* ptr);
 extern "C" unsigned short _Z32GetEntryField0x4OrFieldA0202bc8cP12SearchStruct(struct SearchStruct* obj);
-extern "C" int _Z13GetConstant10v(void* search);
+int GetConstant10(void* search);
 struct Element0202bad4* GetElementAt0x10Stride0xc0(struct ElementArray0202bad4* base, int index);
 void SetSearchFlagBitAt0xc(struct SearchStruct* obj, int value);
 
@@ -30,7 +30,7 @@ extern "C" ARM void func_ov003_02171640(struct Obj02171640* obj) {
     if (dt < obj->timer) {
         obj->timer -= dt;
         unsigned short mask = _Z32GetEntryField0x4OrFieldA0202bc8cP12SearchStruct((struct SearchStruct*)search);
-        int count = _Z13GetConstant10v(search);
+        int count = GetConstant10(search);
         for (int i = 1; i < count; i++) {
             if (mask & (1 << i)) {
                 GetElementAt0x10Stride0xc0((struct ElementArray0202bad4*)search, i);

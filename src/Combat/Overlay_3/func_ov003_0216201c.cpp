@@ -38,7 +38,7 @@ extern "C" unsigned char *_Z17GetPtrField0x2a04P9GameState(GameState *);
 struct Obj0205eaa0;
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0 *, int, int);
 extern "C" void _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(void *);
-extern "C" int _Z39CountValidCombatantsMinusField_02160b84v(Scene *);
+int CountValidCombatantsMinusField_02160b84(void *);
 extern "C" int func_ov003_02160a68(Scene *);
 extern "C" int func_ov003_02160854(Scene *);
 extern "C" void func_ov003_02160c58(Scene *, short *, short *);
@@ -86,7 +86,7 @@ extern "C" ARM void func_ov003_0216201c(Scene *self) {
             switch (self->h48a) {
                 case 0xb4:
                 case 0xb7:
-                    int cv = _Z39CountValidCombatantsMinusField_02160b84v(self);
+                    int cv = CountValidCombatantsMinusField_02160b84(self);
                     cv += gp[0xf7c];
                     if (cv == 4) {
                         self->h484 = 6;

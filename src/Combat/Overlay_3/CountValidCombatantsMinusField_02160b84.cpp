@@ -4,7 +4,7 @@
 GameObject* GetCombatantChecked(GameState* battleStruct, int combatantId);
 
 // USA: func_ov003_02160b84
-ARM int CountValidCombatantsMinusField_02160b84(void) {
+ARM int CountValidCombatantsMinusField_02160b84(void*) {
 	GameState* bs = GameState::GetInstance();
 	int count = 0;
 	int i;

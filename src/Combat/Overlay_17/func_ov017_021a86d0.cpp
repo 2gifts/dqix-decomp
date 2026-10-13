@@ -119,7 +119,7 @@ extern "C" int _Z17GetField5cb0ValuePc(void* gs);
 extern "C" int _Z17GetField5cb4ValuePc(void* gs);
 extern "C" int _Z17GetField5cb8ValuePc(void* gs);
 extern "C" int _Z18TestBitInByteArrayiPhi(unsigned char* obj, unsigned char* array, int bit);
-extern "C" int _Z19ReturnZero_021a01b4v(char* res, int value);
+int ReturnZero_021a01b4(char* res, int value);
 extern "C" void _Z20SetField11c_021bbbf8Pvt(unsigned char* obj, unsigned short value);
 extern "C" void _Z17SetByteField0x253Pv(void* obj);
 extern "C" void func_ov017_021a92a0(Self021a86d0* self);
@@ -378,7 +378,7 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
             int buf[3];
             _Z40SetHalfFieldsAndEnqueueIfActive_021d1c2ctt(self->choice, 0);
             _Z26EnqueueEventTagB5_021d1dc0ssPisi(self->choice, 0, buf, 0, 0);
-            _Z28CallFunc0200fbb4AtField0x3f8Pv(gs, ctx);
+            CallFunc0200fbb4AtField0x3f8(gs, ctx);
             unsigned char* header = *(unsigned char**)(res + ResourceNode);
             _Z27InitAndResetHeader_0219e310Phi(header, 0);
             _Z16AppendNodeToTailP16TailList020469b4P16TailNode020469b4(tail, header);
@@ -462,7 +462,7 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
                 msgA = msgB;
                 msgB = 0;
             }
-            if (_Z19ReturnZero_021a01b4v(res, msgA)) {
+            if (ReturnZero_021a01b4(res, msgA)) {
                 flags[GrottoFlag] = 1;
             }
             *(unsigned short*)(node + 8) = msgA;

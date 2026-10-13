@@ -38,7 +38,7 @@ struct Anchor_021982ac {
 };
 
 extern "C" int func_02094b9c(struct PendingNode_021982ac* node, struct Anchor_021982ac* anchor);
-extern "C" void _Z21BlankFunction020a28dcv(unsigned char* obj, int kind, void* substate, void* extra);
+void BlankFunction020a28dc(void* obj, int kind, void* substate, void* extra);
 
 // USA: func_ov017_021982ac
 extern "C" ARM void func_ov017_021982ac(void) {
@@ -70,7 +70,7 @@ extern "C" ARM void func_ov017_021982ac(void) {
                 _Z32CopySubstateAndSetFlag4_020a296cPhP14Struct020a2928(state, (struct Struct020a2928*)node->substate);
                 applied = 1;
             } else {
-                _Z21BlankFunction020a28dcv(state, kind, node->substate, node->extra);
+                BlankFunction020a28dc(state, kind, node->substate, node->extra);
             }
             if (!node->applied) {
                 ClearFlagAt0x240(state);

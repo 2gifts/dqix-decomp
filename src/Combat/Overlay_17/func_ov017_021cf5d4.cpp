@@ -44,5 +44,5 @@ extern "C" ARM void func_ov017_021cf5d4(void* unused0, struct Evt021cf5d4* evt, 
     if (evt->field7 != 0) {
         ResetAndEnableFieldFlag((struct FieldFlagBlock*)battle);
     }
-    _Z28CallFunc0200fbb4AtField0x3f8Pv(battle, &buf);
+    CallFunc0200fbb4AtField0x3f8(battle, &buf);
 }

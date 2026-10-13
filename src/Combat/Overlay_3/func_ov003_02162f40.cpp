@@ -79,7 +79,7 @@ void SetEntryNibbleByShortId(StatusOwner02081198 *, int, int);
 void SetEntryFlag0x2ByShortId(StatusOwner02081164 *, int, int);
 extern "C" void func_ov003_02165c9c(Scene *);
 void SetOrClearFlag40_02166f80(void *, int, int);
-extern "C" int _Z39CountValidCombatantsMinusField_02160b84v(Scene *);
+int CountValidCombatantsMinusField_02160b84(void *);
 extern "C" void func_ov003_021612c0(Scene *);
 extern "C" int func_ov003_02161344(Scene *);
 void RemoveOrShiftMarkedEntry02086a04(FindEntryContainer02086a04 *, int);
@@ -162,7 +162,7 @@ extern "C" ARM void func_ov003_02162f40(Scene *self) {
         self->h484  = 0x16;
         self->state = 4;
         int a       = GetBattleInfo()->partyCount;
-        int n       = _Z39CountValidCombatantsMinusField_02160b84v(self);
+        int n       = CountValidCombatantsMinusField_02160b84(self);
         if (a + n >= 4) {
             return;
         }
@@ -184,7 +184,7 @@ extern "C" ARM void func_ov003_02162f40(Scene *self) {
                 CallFunc0204c804OverAllElems((Cont0207fe44 *) entries);
                 self->flags |= 0x80000;
                 int a = GetBattleInfo()->partyCount;
-                int n = _Z39CountValidCombatantsMinusField_02160b84v(self);
+                int n = CountValidCombatantsMinusField_02160b84(self);
                 if (a + n < 4) {
                     self->flags |= 0xa;
                     self->h484  = 8;

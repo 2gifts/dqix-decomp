@@ -113,7 +113,7 @@ extern "C" ARM void func_ov017_0219ca88(GameResources* resources) {
         handled = 1;
     }
     if (!handled) return;
-    _Z28CallFunc0200fbb4AtField0x3f8Pv(game, state);
+    CallFunc0200fbb4AtField0x3f8(game, state);
     InitAndResetHeader_0219e310((unsigned char*)resources->unknown_ptr_array_36fc[4], 0);
     AppendNodeToTail((TailList020469b4*)resources->unknown_ptr_array_36fc[0], (TailNode020469b4*)resources->unknown_ptr_array_36fc[4]);
     if (!state->fieldA) {

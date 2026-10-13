@@ -63,7 +63,7 @@ extern "C" void _Z34MaybeDispatchPendingAction02096824Ph(unsigned char*);
 int* GetGlobal02109030();
 extern "C" void _Z36UpdateChannelStateIfEligible02093f68Pc(char*);
 extern "C" void* func_02012fe4(void);
-extern "C" void _Z35MaybeUpdateOrDispatchEntry_021959ecv(Battle021960b8*);
+void MaybeUpdateOrDispatchEntry_021959ec(void*);
 extern "C" Global020421a0* _Z26GetGlobalField0x1c020421a0v();
 
 extern Vector3fix data_ov017_021d6408;
@@ -140,6 +140,6 @@ extern "C" ARM void func_ov017_021960b8(Battle021960b8* self) {
 
     _Z36UpdateChannelStateIfEligible02093f68Pc((char*)GetGlobal02109030());
     if (((AtmosphericEffectSet*)((char*)func_02012fe4() + kAtmosphericOffset))->Draw()) {
-        _Z35MaybeUpdateOrDispatchEntry_021959ecv(self);
+        MaybeUpdateOrDispatchEntry_021959ec(self);
     }
 }

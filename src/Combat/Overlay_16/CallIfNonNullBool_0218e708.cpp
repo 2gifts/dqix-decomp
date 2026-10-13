@@ -3,7 +3,7 @@
 extern "C" int func_ov016_0218f16c(void* object, void* destination, int stride, int mode);
 
 // USA: func_ov016_0218e708
-extern "C" ARM int _Z26CallIfNonNullBool_0218e708Pv(void* object, void* destination, int stride, int mode) {
+ARM int CallIfNonNullBool_0218e708(void* object, void* destination, int stride, int mode) {
     if (object == NULL) return 0;
     return func_ov016_0218f16c(object, destination, stride, mode) == 1;
 }

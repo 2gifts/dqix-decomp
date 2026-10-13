@@ -70,7 +70,7 @@ extern "C" void func_ov023_021f4c04(BattleFrame*);
 extern "C" void func_ov026_021db090(BattleFrame*);
 void HandleField_02160de4(void*);
 void HandleField_02160e94(void*);
-void ProcessFlaggedombatants02160fe4_02160fe4();
+void ProcessFlaggedombatants02160fe4_02160fe4(void*);
 extern "C" void func_ov025_021e9558(void*);
 void ResetInputLogB();
 void PushInputLogB(int);
@@ -141,7 +141,7 @@ extern "C" ARM void func_ov000_02160620(BattleFrame* frame) {
     case 19: HandleField_02160e94(frame); break;
     }
     if (frame->flags & 0x200)
-        ((void (*)(BattleFrame*))ProcessFlaggedombatants02160fe4_02160fe4)(frame);
+        ProcessFlaggedombatants02160fe4_02160fe4(frame);
     if ((frame->flags & 0x2000000) &&
             (frame->state == 8 || frame->state == 7 || frame->state == 1 || frame->state == 0 || frame->state == 9)) {
         if (frame->state == 8)

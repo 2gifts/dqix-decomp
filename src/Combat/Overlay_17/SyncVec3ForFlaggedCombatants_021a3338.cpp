@@ -15,7 +15,7 @@ struct PtrWithU16_021a3338 { unsigned short field0; };
 struct EntryField2_021a3338 { unsigned char pad0[2]; unsigned short field2 : 2; unsigned short pad3 : 14; };
 
 // USA: func_ov017_021a3338
-ARM void SyncVec3ForFlaggedCombatants_021a3338(void) {
+ARM void SyncVec3ForFlaggedCombatants_021a3338(void*) {
     GameState* battleStruct = GameState::GetInstance();
     struct PtrWithU16_021a3338* ptr = (struct PtrWithU16_021a3338*)func_02012fe4();
     unsigned short value = ptr->field0;

@@ -13,7 +13,7 @@ extern "C" char* _Z26GetGlobalField0x1c020421a0v(void);
 extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(char* obj);
 extern "C" void _Z25RestorePairTables0207df90Pc(char* obj);
 extern "C" void _Z24BackupPairTables0207dfacPc(char* obj);
-extern "C" void _Z29CallFunc0202f310AtField0x19e0Pci(char* base, SafeAllocator* alloc, void* data);
+void CallFunc0202f310AtField0x19e0(char* base, void* alloc, void* data);
 
 extern char data_ov017_021d7504[];
 extern char data_ov017_021d7510[];
@@ -50,7 +50,7 @@ extern "C" ARM void func_ov017_0219ba0c(GameResources* res, int skipModels) {
         BackgroundLoader::RemoveLockGlobal();
         return;
     }
-    _Z29CallFunc0202f310AtField0x19e0Pci(controller, alloc, data_0211e33c);
+    CallFunc0202f310AtField0x19e0(controller, alloc, data_0211e33c);
     if (skipModels) {
         narc.Destroy();
         _Z24BackupPairTables0207dfacPc(tables);

@@ -24,7 +24,7 @@ extern char data_0211e33c;
 extern char data_020f1718;
 
 // USA: func_0209cbcc
-ARM void RunScriptIfAvailable0209cbcc(void) {
+ARM void RunScriptIfAvailable0209cbcc(void*) {
     int count;
     char buf[0x430];
 

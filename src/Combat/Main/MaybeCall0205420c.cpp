@@ -14,7 +14,7 @@ struct T0205420c {
 };
 
 // USA: func_0205420c
-ARM void MaybeCall0205420c(struct T0205420c* obj) {
+ARM void MaybeCall0205420c(struct T0205420c* obj, int, int) {
     void* p = obj->field150;
     if (p != NULL) func_02083c48(p);
 }

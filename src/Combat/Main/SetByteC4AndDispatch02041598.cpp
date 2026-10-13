@@ -10,7 +10,7 @@ struct Obj02041598 {
 };
 
 // USA: func_02041598
-ARM int SetByteC4AndDispatch02041598(struct Obj02041598* obj, int value) {
+ARM int SetByteC4AndDispatch02041598(struct Obj02041598* obj, int value, int) {
     obj->field_c4 = value;
     return _ZN8Object3D21MaybeSetBCFGAnimationEii(obj, value, obj->field_d0);
 }

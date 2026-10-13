@@ -40,7 +40,7 @@ void* GetFieldPtrAt0x5ca4(void* obj);
 extern "C" Obj020196fc* func_02012fe4();
 extern "C" char* _Z26GetGlobalField0x1c020421a0v();
 void* GetGlobalPtr021075f4(void);
-extern "C" void* _Z17EmptyStub0203d004v(void* p);
+void* EmptyStub0203d004(void* p);
 extern "C" void* _Z24GetEntryUnlessFlag0x8000P17EntryList_203dce4i(void* list, int id);
 extern "C" int* _Z11GetField0x8Pi(int* p);
 extern "C" int _Z28FindEntryIndexByName02040404P17Container02040404PKc(Container0204039c* c, char* name);
@@ -143,7 +143,7 @@ extern "C" ARM unsigned short func_ov001_02155dd0(Scene02155dd0* self) {
         if (entry != 0) {
             unsigned char* p = (unsigned char*)_Z11GetField0x8Pi(entry);
             if (p[2] == 3) {
-                Container0204039c* cont = (Container0204039c*)_Z17EmptyStub0203d004v(list);
+                Container0204039c* cont = (Container0204039c*)EmptyStub0203d004(list);
                 sprintf(nameBuf, fmt, p + 4);
                 int idx = _Z28FindEntryIndexByName02040404P17Container02040404PKc(cont, nameBuf);
                 _Z30ReleaseOrDecrementSlot0204039cP17Container0204039ci(cont, idx);

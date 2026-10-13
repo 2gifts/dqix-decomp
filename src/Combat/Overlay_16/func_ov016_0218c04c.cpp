@@ -19,7 +19,7 @@ extern "C" int _Z26CallIfNonNullBool_0218e6c0Pv(void* p);
 extern "C" void _Z26CallIfNonNullBool_0218e6e4Pv(void* p);
 extern "C" void _Z26CallIfNonNullBool_0218e72cPv(void* p);
 extern "C" void _Z22ClearAndReset_0218e640Pv(void* p);
-extern "C" int _Z28CheckStateEqualsOne_0218e768Pv(void* p, void* buf);
+int CheckStateEqualsOne_0218e768(void* p, void* buf);
 extern "C" void func_ov016_0218bce8(void* p, unsigned int n);
 extern "C" void func_ov016_0218bec4(void* p, int n);
 extern "C" void func_020d1f0c(int a, int b, int c, int d);
@@ -212,8 +212,8 @@ extern "C" ARM void func_ov016_0218c04c(const char* path, int arg1) {
 						if (state != 0) {
 							long long used; do { used = data_ov016_0219d0c0.written - data_ov016_0219d0c0.read; } while (data_ov016_0219d0c0.frames - used == 0);
 						}
-						_Z28CheckStateEqualsOne_0218e768Pv(node, data_ov016_0219d0c0.bufL + pos);
-						_Z28CheckStateEqualsOne_0218e768Pv(node, data_ov016_0219d0c0.bufR + data_ov016_0219d0c0.pos);
+						CheckStateEqualsOne_0218e768(node, data_ov016_0219d0c0.bufL + pos);
+						CheckStateEqualsOne_0218e768(node, data_ov016_0219d0c0.bufR + data_ov016_0219d0c0.pos);
 						_Z15CleanCacheRangePKvj(data_ov016_0219d0c0.bufL + data_ov016_0219d0c0.pos, bytes);
 						_Z15CleanCacheRangePKvj(data_ov016_0219d0c0.bufR + data_ov016_0219d0c0.pos, bytes);
 						pos = data_ov016_0219d0c0.pos + unit;

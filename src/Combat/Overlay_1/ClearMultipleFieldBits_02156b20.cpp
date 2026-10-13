@@ -10,7 +10,7 @@ void ClearBitsInWord(unsigned int* obj, unsigned int mask);
 extern char data_02109bf4;
 
 // USA: func_ov001_02156b20
-ARM void ClearMultipleFieldBits_02156b20(void) {
+ARM void ClearMultipleFieldBits_02156b20(void*) {
 	unsigned int* obj = (unsigned int*)func_ov017_0218b5b0();
 	if (GetState0209ca68(&data_02109bf4) == 2) {
 		func_0209c530(&data_02109bf4);

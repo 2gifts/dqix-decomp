@@ -3,7 +3,7 @@
 extern int data_ov017_021d83ac;
 
 // USA: func_ov017_021a5a48
-ARM int GetByteAtOffset7289OrFF_021a5a48(void) {
+ARM int GetByteAtOffset7289OrFF_021a5a48(void*) {
 	int v = data_ov017_021d83ac;
 	int result = 0xff;
 	if (v != 0) {

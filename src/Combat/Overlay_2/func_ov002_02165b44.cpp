@@ -40,7 +40,7 @@ void ConsumeCounter02048350(struct Obj02048350 *o, int n);
 int CheckField0NonZero(int *p);
 void *GetField0x3f8Address(GameState *state);
 extern "C" void VectorizedMemset(void *dst, int value, unsigned int length);
-extern "C" void *_Z28CallFunc0200fbb4AtField0x3f8Pv(void *obj, const void *src);
+void *CallFunc0200fbb4AtField0x3f8(void *obj, const void *src);
 void InitAndInsertNode_021acd30(char *g, unsigned char a, unsigned char b, unsigned char c);
 void InitAndResetHeader_0219e310(unsigned char *p, int v);
 void AppendNodeToTail(struct TailList020469b4 *l, struct TailNode020469b4 *n);
@@ -143,7 +143,7 @@ extern "C" ARM void func_ov002_02165b44(char *base) {
                     *(short *) (q + 0x1c)      = *(short *) (e + 0xa);
                     q[7]                       = 1;
                     q[0x63]                    = 0;
-                    _Z28CallFunc0200fbb4AtField0x3f8Pv(gs, q);
+                    CallFunc0200fbb4AtField0x3f8(gs, q);
                     if (func_0202c508(rec) && TestBitInByteArray(save, (unsigned char *) ((char *) save + 0x8c), 0x2b)) {
                         *(unsigned short *) (world + 0x2700 + 0x86) = *(unsigned short *) (e + 0x1a);
                         *(unsigned short *) (world + 0x2700 + 0x84) = *(unsigned short *) (e + 0x1c);

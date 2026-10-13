@@ -29,7 +29,7 @@ struct DualPlaybackState {
 extern DualPlaybackState data_ov016_0219d144;
 void SleepCurrentContext(unsigned int ticks);
 extern "C" RangeEntry020e58dc* _Z22FindRangeEntry020e58dcP17RangeList020e58dci(RangeList020e58dc* list, int key);
-extern "C" int _Z26CallIfNonNullBool_0218e708Pv(void* object, void* destination, int stride, int mode);
+int CallIfNonNullBool_0218e708(void* object, void* destination, int stride, int mode);
 extern "C" int _Z26CallIfNonNullBool_0218e72cPv(void* object);
 extern "C" void func_ov016_0218e240(unsigned short* destination, char* text, unsigned short color, int x, int y, unsigned char centered, int outline, int limit);
 
@@ -51,7 +51,7 @@ extern "C" ARM void func_ov016_0218d0d4(void* first, void* second, int captionsA
         } else {
             destination = (unsigned short*)0x06800000;
         }
-        _Z26CallIfNonNullBool_0218e708Pv(first, destination, 0x100, 0);
+        CallIfNonNullBool_0218e708(first, destination, 0x100, 0);
         if (caption != 0 && caption->field4 == 0) {
             func_ov016_0218e240(destination, (char*)caption->field10, 0x7fff, 0, 0xa8, 1, 1, caption->field0);
             caption->field0 += 4;
@@ -61,7 +61,7 @@ extern "C" ARM void func_ov016_0218d0d4(void* first, void* second, int captionsA
         } else {
             destination = (unsigned short*)GetSubBG2ScreenBase();
         }
-        _Z26CallIfNonNullBool_0218e708Pv(second, destination, 0x100, 0);
+        CallIfNonNullBool_0218e708(second, destination, 0x100, 0);
         if (caption != 0 && caption->field4 == 1) {
             func_ov016_0218e240(destination, (char*)caption->field10, 0xffff, 0, 0xa8, 1, 1, caption->field0);
             caption->field0 += 4;

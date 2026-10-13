@@ -13,7 +13,7 @@ struct Rec0204a848 {
 };
 
 // USA: func_0204a848
-ARM int DeserializeAndDispatch(Rec0204a848* dst, void (*fp)(const void*, int, unsigned int), unsigned char* src) {
+ARM int DeserializeAndDispatch(Rec0204a848* dst, void (*fp)(const void*, int, unsigned int), unsigned char* src, void*) {
     int val;
     int tmp;
     memcpy(&tmp, src, 4);

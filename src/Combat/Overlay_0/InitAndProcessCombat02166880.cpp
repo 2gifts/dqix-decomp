@@ -26,7 +26,7 @@ void* GetPtrField0x468(void* obj);
 struct SearchEntry;
 struct SearchTable;
 struct SearchEntry* FindEntryByHalfwordKey(struct SearchTable* table, int key);
-extern "C" void _ZN6Zone3D10SwitchZoneEt(void* g, int val, int flag);
+extern "C" void _ZN6Zone3D10SwitchZoneEti(void* g, int val, int flag);
 extern "C" void func_02012de8(void);
 struct Obj0202fa00;
 extern "C" void func_02015438(void* p);
@@ -54,7 +54,7 @@ ARM void InitAndProcessCombat02166880(unsigned char* obj) {
     if (entry == NULL || *(unsigned short*)((char*)*(int**)(obj + REGION_OFFSET_3) + 2) == 30000) {
         *(unsigned short*)((char*)*(int**)(obj + REGION_OFFSET_3) + 2) = 0x75a4;
     }
-    _ZN6Zone3D10SwitchZoneEt(obj + REGION_OFFSET_0 + 0xc00, *(unsigned short*)((char*)*(int**)(obj + REGION_OFFSET_3) + 2), 0);
+    _ZN6Zone3D10SwitchZoneEti(obj + REGION_OFFSET_0 + 0xc00, *(unsigned short*)((char*)*(int**)(obj + REGION_OFFSET_3) + 2), 0);
 
     GetCurrentTimestamp();
     for (;;) {

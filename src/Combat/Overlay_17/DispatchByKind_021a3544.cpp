@@ -67,10 +67,10 @@ extern "C" {
 
 struct Obj021b4710;
 void CallIndexedFunc_021b4710(Obj021b4710* p);
-void RunBattleTeardownSequence_021acce4(void);
+void RunBattleTeardownSequence_021acce4(void*, void*);
 struct Obj020dbcc4;
 void FlushOv017Section020dbcc4(struct Obj020dbcc4* obj);
-void UpdateEncounterState020dac94(void* objIn);
+void UpdateEncounterState020dac94(void* objIn, void*);
 struct Ctx021a7b38;
 void RegisterEntryInList_021a7b38(Ctx021a7b38* self);
 struct Obj021aef0c;
@@ -156,7 +156,7 @@ extern "C" ARM void func_ov017_021a3544(void* obj, void* node) {
         func_ov017_021ac3b0(node, obj);
         break;
     case 31:
-        ((void (*)(void*, void*))RunBattleTeardownSequence_021acce4)(node, obj);
+        RunBattleTeardownSequence_021acce4(node, obj);
         break;
     case 32:
         func_ov017_021c01a4(node, obj);
@@ -279,7 +279,7 @@ extern "C" ARM void func_ov017_021a3544(void* obj, void* node) {
         func_020d9b34(node, obj);
         break;
     case 75:
-        ((void (*)(void*, void*))UpdateEncounterState020dac94)(node, obj);
+        UpdateEncounterState020dac94(node, obj);
         break;
     case 76:
         ((void (*)(void*, void*))FlushOv017Section020dbcc4)(node, obj);

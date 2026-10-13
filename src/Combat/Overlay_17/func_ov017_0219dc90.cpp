@@ -75,7 +75,7 @@ InlineEntry* GetEntryTableBase(void);
 extern "C" void* func_02012fe4(void);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* obj);
 extern "C" void func_020288e0(InlineEntry* table);
-extern "C" void _Z37SetFlagsForFlaggedCombatants_0219e0ecv(BattleOverlay0219dc90* self);
+void SetFlagsForFlaggedCombatants_0219e0ec(void* self);
 extern "C" int func_02028a54(InlineEntry* base, int id);
 extern "C" void func_ov017_0219e180(BattleOverlay0219dc90* self, int id);
 extern "C" InlineEntry* _Z19FindInlineEntryByIdP14Entry_02028bd0i(InlineEntry* base, int id);
@@ -95,7 +95,7 @@ extern "C" ARM void func_ov017_0219dc90(BattleOverlay0219dc90* self, int combata
     Combatant0219dc90* combatant = (Combatant0219dc90*)GetCombatantWithFlag0x100(gs, combatantIdx);
     if (GetSearchStructCurrentArrEntry((SearchStruct0202c1a4*)search) != 0) return;
     func_020288e0(table);
-    _Z37SetFlagsForFlaggedCombatants_0219e0ecv(self);
+    SetFlagsForFlaggedCombatants_0219e0ec(self);
     if (combatant == NULL) return;
     int found = func_02028a54(table, id);
     func_ov017_0219e180(self, id);

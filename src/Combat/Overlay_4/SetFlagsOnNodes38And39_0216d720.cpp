@@ -3,7 +3,7 @@
 
 extern "C" void** func_ov011_021849c8(void* obj);
 extern "C" void func_ov011_021848a0(void* obj, int val);
-void SetFieldShortAt46_021f9c60(void* obj, short v);
+void SetFieldShortAt46_021f9c60(void* obj, unsigned short v);
 
 class VNode0216d720 {
 public:

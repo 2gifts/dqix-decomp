@@ -6,7 +6,7 @@ void Forward0204359c(void* obj, int count);
 extern "C" void func_020439b0(int a, int b);
 
 // USA: func_ov017_021a9638
-ARM void RunBattleScaleStepAndFinalize_021a9638(void) {
+ARM void RunBattleScaleStepAndFinalize_021a9638(void*) {
 	GameState* b = GameState::GetInstance();
 	int x = GetGlobalField0x1c020421a0();
 	unsigned int y = b->GetTickCount();

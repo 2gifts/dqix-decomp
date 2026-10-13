@@ -27,7 +27,7 @@ void* GetPtrField0x2a04(GameState* battleStruct);
 struct ArrayContainsByteStruct;
 int ArrayContainsByte(struct ArrayContainsByteStruct* s, int val);
 struct T0205420c;
-extern "C" void _Z17MaybeCall0205420cP9T0205420c(struct T0205420c* obj, int a, int b);
+void MaybeCall0205420c(struct T0205420c* obj, int a, int b);
 void DispatchOrSetupCombatant_02191f4c(int a, int b);
 extern "C" void func_ov017_02192400(int a, int b);
 void OrBitsIntoField0(unsigned int* p, unsigned int mask);
@@ -122,7 +122,7 @@ extern "C" ARM int func_ov001_021557e0(struct Self021557e0* self) {
                 continue;
             }
             if (ArrayContainsByte((struct ArrayContainsByteStruct*)arr, k) != 0) {
-                _Z17MaybeCall0205420cP9T0205420c((struct T0205420c*)c, 1, 0);
+                MaybeCall0205420c((struct T0205420c*)c, 1, 0);
             }
             DispatchOrSetupCombatant_02191f4c((int)res, k);
             func_ov017_02192400((int)res, k);

@@ -42,6 +42,6 @@ extern "C" ARM int func_ov001_021620bc(void) {
     _ZN8Vector3iaSERKS_(obj->vec10, tmpVec);
     obj->field1c = shortCc;
     obj->field68 = 1;
-    _Z28CallFunc0200fbb4AtField0x3f8Pv(battle, obj);
+    CallFunc0200fbb4AtField0x3f8(battle, obj);
     return 1;
 }

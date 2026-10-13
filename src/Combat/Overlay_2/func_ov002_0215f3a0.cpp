@@ -4,7 +4,7 @@
 extern "C" void func_ov002_0215be00(void *base, int a, int b, int c);
 extern "C" void func_ov002_0215f4e8(void *base, void *dst, int flag);
 extern "C" void func_0205d304(void *a, void *b, int p2, int p3, int p4, int p5, int p6, int p7);
-extern "C" void _Z19AppendField0215f644PvPc(void *base, char *dst);
+void AppendField0215f644(void *base, char *dst, int);
 
 struct Struct_0205d81c;
 struct Elem_0205d81c {
@@ -37,7 +37,7 @@ static inline void SetPos0215f3a0(struct Elem_0205d81c *e, short x, short y) {
 extern "C" ARM void func_ov002_0215f3a0(char *base) {
     func_ov002_0215be00(base, 0x16, 0x10, 0x14);
     memset(((struct BufOv0215f3a0 *) (base + 0x1000))->buf, 0, 0x960);
-    ((void (*)(char *, char *, int)) _Z19AppendField0215f644PvPc)(base, ((struct BufOv0215f3a0 *) (base + 0x1000))->buf, 0);
+    AppendField0215f644(base, ((struct BufOv0215f3a0 *) (base + 0x1000))->buf, 0);
     func_0205d304(base + 0xec8, ((struct BufOv0215f3a0 *) (base + 0x1000))->buf, 0, 0, 0, 0, 0, 0);
 
     _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh((struct Struct0205de24 *) (base + 0xec8), 0, 2);

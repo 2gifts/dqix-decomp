@@ -68,7 +68,7 @@ extern "C" void _Z33RegisterFieldTableEntries02042944Pv(void*);
 extern "C" void _Z19ClearStruct0204a82cP14Struct0204a82c(struct Struct0204a82c*);
 int GetScaledElementOffset(struct ScaledElementList0204aa48*);
 extern "C" void _Z18InitStruct02094a24P14Struct02094a24(struct Struct02094a24*);
-extern "C" void _Z21BlankFunction02094a20v(void*, SafeAllocator*);
+void BlankFunction02094a20(void*, SafeAllocator*);
 void StoreGlobal02109400(int);
 void RebaseOffsets(struct RebaseStruct*);
 
@@ -138,7 +138,7 @@ extern "C" ARM void func_020421c4(SafeAllocator* alloc) {
     f1c->f2d4 = &data_0210783c;
     p = alloc->Allocate(0x68);
     _Z18InitStruct02094a24P14Struct02094a24((struct Struct02094a24*)p);
-    _Z21BlankFunction02094a20v(p, alloc);
+    BlankFunction02094a20(p, alloc);
     StoreGlobal02109400((int)p);
     RebaseOffsets((struct RebaseStruct*)((char*)0x01ff9740 + off));
     if ((char*)0x01ff9740 + off != 0) {

@@ -7,7 +7,7 @@ extern void* data_ov017_021d83ac;
 extern "C" void func_ov002_0216bfd4(void* obj, int mode);
 
 // USA: func_ov017_021a5a28
-extern "C" ARM void _Z27CallIfGlobalPtrSet_021a5a28v(void* unused, int mode) {
+ARM void CallIfGlobalPtrSet_021a5a28(void* unused, int mode) {
     if (data_ov017_021d83ac == NULL) {
         return;
     }

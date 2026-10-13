@@ -7,7 +7,7 @@ void UpdateEntry0216d50c(void* work);
 extern "C" void func_0202e0a4(int val);
 
 // USA: func_ov017_021959ec
-ARM void MaybeUpdateOrDispatchEntry_021959ec(void) {
+ARM void MaybeUpdateOrDispatchEntry_021959ec(void*) {
 	GameState* bs = GameState::GetInstance();
 	int val = GetField0x3b0Value(bs);
 	if (val == 0) return;

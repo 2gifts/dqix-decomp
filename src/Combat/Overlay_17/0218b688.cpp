@@ -24,7 +24,7 @@ extern "C" void* _Z20GetField0x3f8AddressP9GameState(GameState* gs);
 extern "C" void _Z12Init0201133cPc(void* gs);
 extern "C" void* _Z15GetData02109dccv();
 extern "C" void _Z19ClearBuffer020a6180Pv(void* p);
-extern "C" void _Z28RunScriptIfAvailable020a6194v(void* p);
+void RunScriptIfAvailable020a6194(void* p);
 extern "C" void* _Z15GetData02105254v();
 extern "C" void _Z25ClearThreeRegions0203b634Pc(void* p);
 extern "C" void* func_0203bd08();
@@ -101,7 +101,7 @@ extern "C" void func_02079900(void* p, void* q);
 extern "C" void _Z25RunBufferedScript020998c4P11Obj020995c0(void* p);
 extern "C" void* _Z17GetGlobalWordListv();
 extern "C" void _Z21ResetWordList0209cbb8P16WordList0209cbb8(void* p);
-extern "C" void _Z28RunScriptIfAvailable0209cbccv(void* p);
+void RunScriptIfAvailable0209cbcc(void* p);
 extern "C" void* _Z17GetGlobal02109a54v();
 extern "C" void _Z35PrepareAndRunBufferedScript02099f6cPc(void* p);
 extern "C" void _Z27ResetAllocatorSlots020e5058v();
@@ -220,7 +220,7 @@ extern "C" int _Z17GetHalfword0x63daPv(void* gs);
 extern "C" void _Z19ClearHalfword0x63daPv(void* gs);
 extern "C" void _Z31DispatchToActiveEntries020bc028i(int a);
 extern "C" void _Z21BlankFunction020d84e0v();
-extern "C" void _Z15Forward0202aff4v(void* p);
+void Forward0202aff4(void* p);
 extern "C" void func_02043368(void* c);
 extern "C" void func_ov017_0218cbd4(void* self);
 extern "C" void func_ov017_02191cc0(void* self);
@@ -232,8 +232,8 @@ extern "C" void func_020bbd9c();
 extern "C" void _Z33CleanInvalidateOamBuffers0203bd88v(void* p);
 extern "C" void _Z15Forward0204359cPvi(void* c, int a);
 extern "C" void _Z24NotifyAllEntries0203dd94Pc(void* p);
-extern "C" void _Z13NoOp_0219a188v(void* self);
-extern "C" void _Z13NoOp_021a63ccv(void* self);
+void NoOp_0219a188(void* self);
+void NoOp_021a63cc(void* self);
 extern "C" void _Z29WriteControlAndToggle020d86d0ii(int a, int b);
 extern "C" void _Z28ForwardObjAndField0_021a4358i(int p);
 extern "C" void _Z22SyncMainSubOam0203bdb0P11Obj0203bdb0(void* p);
@@ -420,7 +420,7 @@ extern "C" ARM void func_ov017_0218b688(Battle0218b688* self) {
     _Z12Init0201133cPc(gs);
     void* scriptBuf = _Z15GetData02109dccv();
     _Z19ClearBuffer020a6180Pv(scriptBuf);
-    _Z28RunScriptIfAvailable020a6194v(scriptBuf);
+    RunScriptIfAvailable020a6194(scriptBuf);
     void* regions3 = _Z15GetData02105254v();
     _Z25ClearThreeRegions0203b634Pc(regions3);
     void* oam = func_0203bd08();
@@ -520,7 +520,7 @@ extern "C" ARM void func_ov017_0218b688(Battle0218b688* self) {
     _Z25RunBufferedScript020998c4P11Obj020995c0(buffered);
     void* wordList = _Z17GetGlobalWordListv();
     _Z21ResetWordList0209cbb8P16WordList0209cbb8(wordList);
-    _Z28RunScriptIfAvailable0209cbccv(wordList);
+    RunScriptIfAvailable0209cbcc(wordList);
     _Z35PrepareAndRunBufferedScript02099f6cPc(_Z17GetGlobal02109a54v());
     func_0204719c(&self->entries[11]);
     int ownAllocator = 0;
@@ -844,7 +844,7 @@ extern "C" ARM void func_ov017_0218b688(Battle0218b688* self) {
                 _Z31DispatchToActiveEntries020bc028i(0);
             }
             _Z21BlankFunction020d84e0v();
-            _Z15Forward0202aff4v(search);
+            Forward0202aff4(search);
             _Z17SetMainBrightnessP13GameResourcesii(self, -16, 0);
             _Z16SetSubBrightnessP13GameResourcesii(self, -16, 0);
             if (_Z10GetByte0x4Pc(gs) == 8) {
@@ -874,8 +874,8 @@ extern "C" ARM void func_ov017_0218b688(Battle0218b688* self) {
         }
         loader->RemoveAllLocks();
         _Z24NotifyAllEntries0203dd94Pc(extRegion);
-        _Z13NoOp_0219a188v(self);
-        _Z13NoOp_021a63ccv(self);
+        NoOp_0219a188(self);
+        NoOp_021a63cc(self);
         if (data_ov017_021d82e0.paused == 0) {
             int speed = *(int*)((char*)gs + 0x3c8);
             for (int f = 1; f < 2 - speed; f++) {

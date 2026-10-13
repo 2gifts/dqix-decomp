@@ -4,7 +4,7 @@
 int CountEntriesType1WithId(int id);
 struct Obj020bc180;
 void CallFunc020c0204OnActiveNode(struct Obj020bc180* obj, int value, int arg);
-extern "C" void* _Z24CallFunc020bc594OnField0Pv(void* obj, int unused);
+void* CallFunc020bc594OnField0(void* obj, int unused);
 void Forward0203aa80(void* obj, int arg2);
 int TryAllocateOrAppend0203aaf8(void* obj, void* arg1, int* out);
 struct Obj0203aba8;
@@ -59,7 +59,7 @@ extern "C" ARM void func_0209c840(struct Actor0209c840* actor) {
             actor->field_ca = actor->field_ca - elapsed;
             return;
         }
-        _Z24CallFunc020bc594OnField0Pv(&actor->fieldBC, 1);
+        CallFunc020bc594OnField0(&actor->fieldBC, 1);
         if (actor->field_b4 > 0) {
             Forward0203aa80(actor, actor->field_b4);
         }
@@ -96,7 +96,7 @@ extern "C" ARM void func_0209c840(struct Actor0209c840* actor) {
         }
         SetContextAndQuery0203ab6c(actor, (void*)(int)actor->field_b8);
         if (actor->fc8_bit0) {
-            _Z24CallFunc020bc594OnField0Pv(&actor->fieldBC, 0);
+            CallFunc020bc594OnField0(&actor->fieldBC, 0);
             CallFunc020c0204OnActiveNode((struct Obj020bc180*)&actor->fieldBC, 0, 0);
             func_0209c2e0(actor, actor->field_cd, 0x1e);
         } else {

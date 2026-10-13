@@ -56,7 +56,7 @@ extern "C" ARM void func_02097cac(Base020989cc* state) {
             case 5: zoneState->zoneId = 0xc47d; break;
             case 6: zoneState->zoneId = 0xc4e1; break;
         }
-        _Z28CallFunc0200fbb4AtField0x3f8Pv(gameState, zoneState);
+        CallFunc0200fbb4AtField0x3f8(gameState, zoneState);
     } else {
         if (func_0202c540(search) == 0 || zoneState->flag65 == 0) return;
         int progress = state->progress;

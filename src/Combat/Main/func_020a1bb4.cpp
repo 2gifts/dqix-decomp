@@ -4,7 +4,7 @@
 #include "Filesystem/OverlayFSManagement.h"
 
 extern "C" void _Z22DispatchByFlag020d9834i(int flag);
-extern "C" void _Z25CallAndReturnTrue020cd584v(OverlayMetadata* meta);
+void CallAndReturnTrue020cd584(OverlayMetadata* meta);
 
 extern volatile int data_01ffd348;
 extern volatile unsigned char data_01ffd344;
@@ -47,7 +47,7 @@ extern "C" ARM int func_020a1bb4(unsigned int id) {
 
     data_01ffd340 = 1;
     LockResourceMutex();
-    _Z25CallAndReturnTrue020cd584v(&data_01ffd394[id]);
+    CallAndReturnTrue020cd584(&data_01ffd394[id]);
     UnlockResourceMutex();
     data_01ffd340 = 0;
 

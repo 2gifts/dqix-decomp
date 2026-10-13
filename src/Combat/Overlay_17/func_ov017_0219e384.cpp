@@ -395,7 +395,7 @@ extern "C" void _Z14SetByteAt0x2c5P23ByteField0x2c5_020a2cbch(void* obj, int v);
 extern "C" void func_020ae53c(int v);
 extern "C" void _Z23NotifyOv017OnFlag0x1130v(void);
 extern "C" void _Z32MarkActiveCombatantSlots02026b7cPh(void* obj);
-extern "C" void _Z37SyncVec3ForFlaggedCombatants_021a3338v(void* ov);
+void SyncVec3ForFlaggedCombatants_021a3338(void* ov);
 void* GetGlobal02109400(void);
 extern "C" void func_02094ab0(void* obj);
 extern "C" void _Z21BlankFunction02094b34v(void* obj, int a, int b, int c, int d);
@@ -974,7 +974,7 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 		func_020ae53c(1);
 		_Z23NotifyOv017OnFlag0x1130v();
 		_Z32MarkActiveCombatantSlots02026b7cPh(*(void**)(ov + Field36d0));
-		_Z37SyncVec3ForFlaggedCombatants_021a3338v(ov);
+		SyncVec3ForFlaggedCombatants_021a3338(ov);
 		if ((fld->flags6e & 8) != 0) {
 			self->state = 9;
 			return;

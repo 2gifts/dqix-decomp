@@ -130,7 +130,7 @@ void ClearFlag0x10IfSet(Struct02074bd0* obj);
 void ClearFlag0x11IfSet(Struct02074bf4* obj);
 void GetFieldAt0x150(unsigned char* obj);
 extern "C" void _Z35ProcessCombatantsIfFlagged_0218f79cPv(void* res);
-extern "C" void _Z27ProcessSlotField58_021a2840v(GameResources* res);
+void ProcessSlotField58_021a2840(GameResources* res);
 extern "C" void* func_02057924(void);
 extern "C" void _Z23CleanupNodeList02058564P16NodeList02058564(NodeList02058564* list);
 extern "C" void func_ov017_0219b624(GameResources* res);
@@ -306,7 +306,7 @@ extern "C" ARM void func_ov003_0217e6b0(SceneSwap0217e6b0* self) {
         SetBitsInField4((unsigned int*)res, 2);
         GetFieldAt0x150((unsigned char*)gs->GetProtagonist());
         _Z35ProcessCombatantsIfFlagged_0218f79cPv(res);
-        _Z27ProcessSlotField58_021a2840v(res);
+        ProcessSlotField58_021a2840(res);
         _Z23CleanupNodeList02058564P16NodeList02058564((NodeList02058564*)func_02057924());
         SetField0x3b0Value(gs, self->fieldB0);
         func_ov017_0219b624(res);

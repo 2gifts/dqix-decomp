@@ -8,7 +8,7 @@ struct EntryList_203dce4 { char pad[0xc]; struct Entry_203dce4* entries[0x20]; }
 extern void* GetGlobalPtr021075f4(void);
 extern struct Entry_203dce4* GetEntryUnlessFlag0x8000(struct EntryList_203dce4* list, int id);
 int GetField0x8(int* obj);
-void EmptyStub0203d004(void);
+void* EmptyStub0203d004(void*);
 extern const char data_ov001_021657d4[];
 
 struct Container02040404;
@@ -27,8 +27,6 @@ void SetSlotIfIndexBelow32(SlotArray0203dd10* obj, unsigned int index, int value
 struct TableEntry_02161754 { int type; int field4; char pad8[8]; };
 struct DataOv001_02161754 { char pad0[4]; struct TableEntry_02161754* table; };
 extern DataOv001_02161754 data_ov001_02165880;
-
-typedef void* (*EmptyStubFn_02161754)(void*);
 
 // USA: func_ov001_02161754  (semantic: ReleaseOrResetTableEntry_02161754)
 extern "C" ARM int func_ov001_02161754(void* self) {
@@ -49,8 +47,7 @@ extern "C" ARM int func_ov001_02161754(void* self) {
 
     if (*(int*)((char*)entry + 0x14) != 0) {
         int field = GetField0x8((int*)entry);
-        EmptyStubFn_02161754 stub = (EmptyStubFn_02161754)EmptyStub0203d004;
-        struct Container02040404* c = (struct Container02040404*)stub(ctxRaw);
+        struct Container02040404* c = (struct Container02040404*)EmptyStub0203d004(ctxRaw);
         char buf[0x10];
 #if defined(jpn)
         sprintf(buf, data_ov001_021657d4, field + 16);

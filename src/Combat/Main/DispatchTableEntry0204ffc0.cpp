@@ -27,7 +27,7 @@ struct Obj0204ffc0 {
 };
 
 // USA: func_0204ffc0
-ARM void ProcessRefAndDispatch0204ffc0(Obj0204ffc0* a) {
+ARM void ProcessRefAndDispatch0204ffc0(Obj0204ffc0* a, int) {
     if (a->ref == NULL || a->buf == NULL)
         return;
     unsigned char lo = a->ref->nib_lo;

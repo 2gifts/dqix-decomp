@@ -9,7 +9,7 @@ extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(struct S
 struct Struct_0205d81c;
 void SetElementFieldC2(struct Struct_0205d81c *s, int a, int b);
 int AppendCursorTag(char *dst, int cursor);
-extern "C" void _Z23AppendFieldTags021601e0PhPc(unsigned char *base, char *dst);
+void AppendFieldTags021601e0(char *base, char *dst, int);
 
 struct BufOv02160068 {
     char pad[0xbd0];
@@ -25,8 +25,7 @@ extern "C" ARM void func_ov002_02160068(char *base) {
     _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh((struct Struct0205de24 *) (base + 0xec8), 0, 3);
     func_ov002_0215be00(base, 0x1d, 0x15, 0xb);
     memset(((struct BufOv02160068 *) (base + 0x1000))->buf, 0, 0x960);
-    ((void (*)(char *, char *, int)) _Z23AppendFieldTags021601e0PhPc)(base, ((struct BufOv02160068 *) (base + 0x1000))->buf,
-                                                                      0);
+    AppendFieldTags021601e0(base, ((struct BufOv02160068 *) (base + 0x1000))->buf, 0);
     func_0205d304(base + 0xec8, ((struct BufOv02160068 *) (base + 0x1000))->buf, 0, 0, 0, 1, 0, 0);
 
     _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh((struct Struct0205de24 *) (base + 0xec8), 0, 3);

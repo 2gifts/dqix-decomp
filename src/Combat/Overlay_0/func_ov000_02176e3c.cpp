@@ -26,9 +26,9 @@ extern "C" void _Z20ApplyElemFieldsSlot8Pv(BattleMenu* menu);
 extern "C" int _Z18IsField0x118Equal2Pv(BattleMenu* menu);
 extern "C" void _Z38RunElemFieldsIfField_02176498_02176498Pvi(void* obj, int flag);
 extern "C" void _Z30ApplyElemFieldsSlot14_021788d8Pvii(BattleMenu* menu, int a, int b);
-extern "C" void _Z21ApplyElemFieldsSlot15Pv(BattleMenu* menu, int a, int b);
-extern "C" void _Z21ApplyElemFieldsSlot16Pv(BattleMenu* menu, int a, int b);
-extern "C" void _Z21ApplyElemFieldsSlot17Pv(BattleMenu* menu, int a, int b);
+void ApplyElemFieldsSlot15(void* menu, int a, int b);
+void ApplyElemFieldsSlot16(void* menu, int a, int b);
+void ApplyElemFieldsSlot17(void* menu, int a, int b);
 extern "C" void _Z30ApplyElemFieldsSlot18_02179a14Pvii(BattleMenu* menu, int a, int b);
 extern "C" void _Z30ApplyElemFieldsSlot21_02179c6cPvi(BattleMenu* menu, int a);
 extern "C" void func_ov000_0217a0a4(BattleMenu* menu, int a);
@@ -86,13 +86,13 @@ extern "C" ARM void func_ov000_02176e3c(BattleMenu* menu, int arg, int slot, int
         _Z30ApplyElemFieldsSlot14_021788d8Pvii(menu, arg, arg3);
         break;
     case 15:
-        _Z21ApplyElemFieldsSlot15Pv(menu, arg2, arg3);
+        ApplyElemFieldsSlot15(menu, arg2, arg3);
         break;
     case 16:
-        _Z21ApplyElemFieldsSlot16Pv(menu, arg2, arg3);
+        ApplyElemFieldsSlot16(menu, arg2, arg3);
         break;
     case 17:
-        _Z21ApplyElemFieldsSlot17Pv(menu, arg2, arg3);
+        ApplyElemFieldsSlot17(menu, arg2, arg3);
         break;
     case 18:
     case 19:

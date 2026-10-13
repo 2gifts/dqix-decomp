@@ -40,7 +40,7 @@ extern int data_02108760;
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
 extern "C" void func_ov005_0215792c(EquipmentMenu* self, unsigned char state);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0* obj, int a, int b);
-extern "C" int _Z25CheckFlag30Or401_02157190v(EquipmentMenu* self);
+int CheckFlag30Or401_02157190(void* self);
 extern "C" void func_ov005_021579ec(EquipmentMenu* self, unsigned int state, unsigned char slot);
 extern "C" int _Z24ComputeScaledSum0205bb84P15Struct_0205bb84(Struct_0205bb84* s);
 extern "C" int func_ov005_02158560(EquipmentMenu* self, unsigned char kind, int silent);
@@ -53,7 +53,7 @@ extern "C" ARM void func_ov005_0215742c(EquipmentMenu* self) {
         self->slot_ = self->kind_;
         if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x80))
             _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)&data_02108760, 2, 0);
-        else if (_Z25CheckFlag30Or401_02157190v(self))
+        else if (CheckFlag30Or401_02157190(self))
             _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)&data_02108760, 1, 0);
         func_ov005_021579ec(self, self->state_, self->slot_);
         return;

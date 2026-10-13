@@ -13,7 +13,7 @@ struct AxisFloats0203b5a0;
 int IsAxisIntWithin16(struct AxisFloats0203b5a0* s, int axis);
 
 extern "C" void func_02020720(char* obj);
-extern "C" void _Z20InitSubScreenDisplayv(void* ctx);
+void InitSubScreenDisplay(void* ctx);
 extern "C" void _Z19TailForward0203b66cPc(char* obj);
 extern "C" void _Z21InitSubObject0203bd78Pc(char* obj);
 extern "C" void _Z25InitBattleContext0203bd24Pc(char* obj);
@@ -98,7 +98,7 @@ extern "C" ARM void func_02021b84(char* self) {
         if (loader->GetTaskStatus(*(int*)(self + 0x9fc)) == 0) return;
         if (loader->GetTaskStatus(*(int*)(self + 0xa00)) == 0) return;
         func_02020720(self);
-        _Z20InitSubScreenDisplayv(self);
+        InitSubScreenDisplay(self);
         alloc->Reset();
         _Z19TailForward0203b66cPc(table);
         _Z21InitSubObject0203bd78Pc(battleCtx);

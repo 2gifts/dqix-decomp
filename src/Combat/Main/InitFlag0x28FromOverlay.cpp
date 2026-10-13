@@ -11,7 +11,7 @@ struct Struct020db814 {
 };
 
 // USA: func_020db814
-ARM void InitFlag0x28FromOverlay(void) {
+ARM void InitFlag0x28FromOverlay(void*) {
     struct Struct020db814* obj = (struct Struct020db814*)func_ov017_0218b5b0();
     if (obj == NULL) {
         return;

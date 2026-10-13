@@ -47,7 +47,6 @@ struct Global02154974* _Z20GetGlobalPtr021075f4v(void);
 void _Z18ClearCombatantSlotP9GameStatei(GameState* gs, int id);
 struct Emitter02154974* _Z29FindEntryPointerByKey0203df78Pvi(void* list, int key);
 int* _Z24GetEntryUnlessFlag0x8000P17EntryList_203dce4i(void* list, int id);
-void* _Z17EmptyStub0203d004v(void* list);
 int _Z28FindEntryIndexByName02040404P17Container02040404PKc(void* container, const char* name);
 void _Z30ReleaseOrDecrementSlot0204039cP17Container0204039ci(void* container, int index);
 void _Z13Reset02040504Pi(int* entry);
@@ -55,6 +54,8 @@ void _Z21SetSlotIfIndexBelow32P17SlotArray0203dd10ji(void* list, int index, int 
 void _Z20CallByIndex_0215acd4i(int index);
 void _Z17ClearBitsInField4Pjj(unsigned int* obj, unsigned int bits);
 }
+
+void* EmptyStub0203d004(void* list);
 
 extern char data_ov001_02164bd1[];
 
@@ -120,7 +121,7 @@ extern "C" ARM void func_ov001_02154974(struct Self02154974* self) {
         case 3: {
             int* entry = _Z24GetEntryUnlessFlag0x8000P17EntryList_203dce4i(global, node->slot);
             if (entry != 0) {
-                void* container = _Z17EmptyStub0203d004v(global);
+                void* container = EmptyStub0203d004(global);
                 _Z30ReleaseOrDecrementSlot0204039cP17Container0204039ci(
                     container, _Z28FindEntryIndexByName02040404P17Container02040404PKc(container, node->name));
                 _Z13Reset02040504Pi(entry);

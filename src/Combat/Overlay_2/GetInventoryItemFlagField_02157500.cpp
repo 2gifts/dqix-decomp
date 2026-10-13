@@ -7,7 +7,7 @@ struct Element020de650;
 struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0* c, int key);
 
 // USA: func_ov002_02157500
-ARM int GetInventoryItemFlagField_02157500(unsigned char* obj) {
+ARM int GetInventoryItemFlagField_02157500(char* obj, int, int) {
     int invId = GetInventoryItemByID(obj);
     if (invId < 0) {
         return 0;

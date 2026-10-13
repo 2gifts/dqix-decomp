@@ -18,13 +18,12 @@ struct EventState0221f324 {
 };
 extern EventState0221f324 data_ov031_0224f670;
 extern void (*data_ov031_0224f6f0)(int, int);
-int DispatchOnZeroPair_0220cdd4(int, int);
+int DispatchOnZeroPair_0220cdd4(int, int, int);
 extern "C" int func_ov031_0220d010(void *, unsigned char *, int);
 extern "C" int func_ov031_0220cce4();
 void ClearHandleIfStatusReady_0220ca88();
 static inline int DispatchBattlePair(int a, int b, int flags) {
-    typedef int (*PairDispatchWithFlags)(int, int, int);
-    return reinterpret_cast<PairDispatchWithFlags>(DispatchOnZeroPair_0220cdd4)(a, b, flags);
+    return DispatchOnZeroPair_0220cdd4(a, b, flags);
 }
 
 // USA: func_ov031_0221f324

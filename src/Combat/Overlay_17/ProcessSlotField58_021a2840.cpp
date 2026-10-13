@@ -1,12 +1,13 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+struct GameResources;
 extern "C" int _ZN7Model3D7GetTEX0Ev(void* obj);
 extern "C" void _Z23StageTexFilePaletteDataPV8NSBXXTexb(int a, int b);
 extern "C" void _Z21StageTexFileImageDataPV8NSBXXTexb(int a, int b);
 
 // USA: func_ov017_021a2840
-ARM void ProcessSlotField58_021a2840(void) {
+ARM void ProcessSlotField58_021a2840(GameResources*) {
     GameState* battleStruct = GameState::GetInstance();
 
     int i;
