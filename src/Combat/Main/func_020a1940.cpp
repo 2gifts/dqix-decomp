@@ -9,7 +9,6 @@ bool LoadCompressedOverlay(const OverlayMetadata& overlay);
 void DecompressAndStaticInitializeOverlay(const OverlayMetadata& overlay);
 
 extern volatile int data_01ffd348;
-// Eight shared mapping rows, each containing six signed overlay slots.
 struct OverlayMappingRow {
     volatile signed char entries[6];
 };
