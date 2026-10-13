@@ -19723,3 +19723,27 @@ src/Combat/Main/func_020a2d14.cpp:
 src/Combat/Main/PickHitElement02080e40.cpp:
     complete
     .text start:0x02080e50 end:0x02080f9c
+
+src/Combat/Main/func_0201afd0.cpp:
+    complete
+    .text start:0x0201afe0 end:0x0201b598
+
+src/Combat/Main/func_020200c0.cpp:
+    complete
+    .text start:0x020200d0 end:0x02020530
+
+src/Combat/Main/func_02047b40.cpp:
+    complete
+    .text start:0x02047b50 end:0x02047ee4
+
+src/Combat/Main/func_02069234.cpp:
+    complete
+    .text start:0x02069244 end:0x02069604
+
+src/Combat/Main/func_020930d0.cpp:
+    complete
+    .text start:0x020930e0 end:0x02093438
+
+src/Combat/Main/func_0209afd4.cpp:
+    complete
+    .text start:0x0209afe4 end:0x0209b458

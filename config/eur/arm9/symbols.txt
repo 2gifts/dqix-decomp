@@ -7703,6 +7703,7 @@ data_02107834 kind:bss addr:0x02107834
 data_02107838 kind:bss addr:0x02107838
 data_0210783c kind:bss addr:0x0210783c
 data_02107850 kind:bss addr:0x02107850
+data_02107850_dup kind:bss addr:0x02107850
 data_02107870 kind:bss addr:0x02107870
 data_02107874 kind:bss addr:0x02107874
 data_021078a8 kind:bss addr:0x021078a8
