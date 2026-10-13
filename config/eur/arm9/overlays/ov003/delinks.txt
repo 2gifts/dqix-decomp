@@ -2020,3 +2020,7 @@ src/Combat/Overlay_3/func_ov003_021769ec.cpp:
 src/Combat/Overlay_3/func_ov003_021594c4.cpp:
     complete
     .text start:0x021594c4 end:0x02159b20
+
+src/Combat/Overlay_3/func_ov003_0215b964.cpp:
+    complete
+    .text start:0x0215b964 end:0x0215bd34
