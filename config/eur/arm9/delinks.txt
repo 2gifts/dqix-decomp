@@ -19787,3 +19787,7 @@ src/Combat/Main/func_0206b974.cpp:
 src/Combat/Main/func_020a1940.cpp:
     complete
     .text start:0x020a1950 end:0x020a1a50
+
+src/Combat/Main/SelectWeightedEntry02073fdc.cpp:
+    complete
+    .text start:0x02073fec end:0x02074070
