@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "World/ZoneChest.h"
 #include "Combat/ActorAction.h"
 #include "GameState/Overlay17DayCycle.h"
@@ -377,10 +378,6 @@ extern "C" void func_020ae53c(int v);
 extern "C" void _Z23NotifyOv017OnFlag0x1130v(void);
 extern "C" void _Z32MarkActiveCombatantSlots02026b7cPh(void* obj);
 void SyncVec3ForFlaggedCombatants_021a3338(void* ov);
-void* GetGlobal02109400(void);
-extern "C" void func_02094ab0(void* obj);
-extern "C" void _Z21BlankFunction02094b34v(void* obj, int a, int b, int c, int d);
-extern "C" int _Z18AlwaysTrue02094b4cv(void* obj);
 extern "C" void _Z29InitAndAppendState61_021a65c4Pvhi(void* ov, unsigned char a, int b);
 extern "C" void _Z27EnqueueEventTag147_021cdaa0v(void);
 extern "C" void _Z17SetByteField0x253Pv(void* obj);
@@ -959,15 +956,15 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 			return;
 		}
 		{
-			void* g400 = GetGlobal02109400();
+			FontBankLoader* g400 = GetGlobal02109400();
 			func_02094ab0(g400);
-			_Z21BlankFunction02094b34v(g400, 0x6f, 5000, 1, 1);
+			BlankFunction02094b34(g400, 0x6f, 5000, 1, 1);
 		}
 		self->state = 10;
 		return;
 	}
 	if (self->state == 10) {
-		if (_Z18AlwaysTrue02094b4cv(GetGlobal02109400()) != 0) {
+		if (AlwaysTrue02094b4c(GetGlobal02109400()) != 0) {
 			self->state = 9;
 		}
 		return;

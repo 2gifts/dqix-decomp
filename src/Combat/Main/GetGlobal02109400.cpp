@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 
 extern int data_02109400;
 
@@ -9,6 +10,6 @@ enum { GLOBAL_WORD_OFFSET = 0 };
 #endif
 
 // USA: func_02094a00
-ARM int GetGlobal02109400(void) {
-    return *(int*)((char*)&data_02109400 + GLOBAL_WORD_OFFSET);
+ARM FontBankLoader* GetGlobal02109400(void) {
+    return *(FontBankLoader**)((char*)&data_02109400 + GLOBAL_WORD_OFFSET);
 }

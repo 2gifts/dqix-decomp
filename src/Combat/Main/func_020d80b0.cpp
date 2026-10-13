@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
@@ -32,20 +33,12 @@ void ClearIntAt0x23c(unsigned char*);
 void* AllocateAligned4(AllocatorUnion*, unsigned int);
 extern "C" void func_020728ac(TableA68*, SafeAllocator*, void*, unsigned int, int, int, int);
 extern "C" void func_02046380(void*);
-int GetGlobal02109400();
-extern "C" void _Z21BlankFunction02094b30v();
-extern "C" int _Z18AlwaysTrue02094b4cv();
-extern "C" void _Z21BlankFunction02094b38v();
-typedef void (*LegacyStart020d80b0)(int, int, int);
-typedef int (*LegacyPoll020d80b0)(int);
-typedef void (*LegacyFinish020d80b0)(int, int);
 int TestBitInByteArray(int, unsigned char*, int);
 void SetOrClearBitInArray(void*, unsigned char*, int, int);
 void* FindEntryByKey(TableA68*, int);
 extern "C" void func_0204500c(void*, char*, int, int);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0*, int, int);
 void SetByteField0x253(void*);
-extern "C" void func_02094ab0(int);
 extern "C" void _Z29SetCombatModeFromCase020dc2d0i(int);
 struct Dialog020d80b0 {
     unsigned char field0[0x5c];
@@ -90,11 +83,11 @@ extern "C" ARM void func_020d80b0(Obj020d8484* self) {
             BackgroundLoader::GetInstance()->RemoveTask(self->task);
             self->task = -1;
             func_02046380(dialog);
-            ((LegacyStart020d80b0)_Z21BlankFunction02094b30v)(GetGlobal02109400(), 0x203, 0);
+            BlankFunction02094b30(GetGlobal02109400(), 0x203, 0);
             self->state = 2;
         }
     } else if (self->state == 2) {
-        if (((LegacyPoll020d80b0)_Z18AlwaysTrue02094b4cv)(GetGlobal02109400())) {
+        if (AlwaysTrue02094b4c(GetGlobal02109400())) {
             if (TestBitInByteArray((int)bits, bits->flags, 0x119e)) self->state = 5;
             else {
                 self->state = 3;
@@ -127,8 +120,8 @@ extern "C" ARM void func_020d80b0(Obj020d8484* self) {
         }
     } else if (self->state == 7) {
         SetByteField0x253(object);
-        int global = GetGlobal02109400();
-        ((LegacyFinish020d80b0)_Z21BlankFunction02094b38v)(global, 0x203);
+        FontBankLoader* global = GetGlobal02109400();
+        BlankFunction02094b38(global, 0x203);
         func_02094ab0(global);
         if (zone && !zone->unknown_c_low_) _Z22ShutdownObject020d8484P11Obj020d8484(self);
         else {

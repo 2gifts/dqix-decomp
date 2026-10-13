@@ -8,15 +8,12 @@
 #define R(j,u) (u)
 #endif
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "std_library_functions.h"
 #include "Memory/SafeAllocator.h"
 
-int GetGlobal02109400(void);
-void BlankFunction02094b38(void);
 
-struct Obj02094ab0;
-extern "C" void func_02094ab0(struct Obj02094ab0* obj);
 
 struct EntryList0204af14;
 void* GetEntryByIndexStride0x10(struct EntryList0204af14* list, unsigned int index);
@@ -35,8 +32,8 @@ void ClearFlag0x11IfSet(struct Struct02074bf4* obj);
 
 // USA: func_ov013_02186fa0  (semantic: ResetAndFlushDisplayState02186fa0)
 extern "C" ARM void func_ov013_02186fa0(unsigned char* obj) {
-    struct Obj02094ab0* g = (struct Obj02094ab0*)GetGlobal02109400();
-    ((void(*)(void*, int))&BlankFunction02094b38)(g, 0x68);
+    FontBankLoader* g = GetGlobal02109400();
+    BlankFunction02094b38(g, 0x68);
     func_02094ab0(g);
 
     if (obj[R(0x50,0x64)] == 0) {

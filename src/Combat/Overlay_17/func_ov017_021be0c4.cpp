@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "GameState/GameState.h"
 #include "Resource/Brightness.h"
 #include "std_library_functions.h"
@@ -22,11 +23,6 @@ extern "C" Context021be0c4* func_02012fe4();
 extern "C" int* func_0202ae18();
 Obj02046574* GetGlobalField0x1c020421a0();
 void CancelPendingAction020397cc(Obj020397cc*, int);
-void* GetGlobal02109400();
-void BlankFunction02094b30();
-int AlwaysTrue02094b4c();
-void BlankFunction02094b38();
-extern "C" void func_02094ab0(void*);
 void SetForwardAndStore0205ebc0(void*, int, int);
 void DispatchIfField0xc4NonNeg_0205ebfc(void*, int, int);
 void ForwardField0xc0_0205ebec(void*);
@@ -59,9 +55,9 @@ extern "C" ARM void func_ov017_021be0c4(State021be0c4* state) {
     GrottoStruct* grotto = game->GetGrottoStruct();
     if (state->step == 0) {
         CancelPendingAction020397cc((Obj020397cc*)game->GetUnknownGameObject(), 1);
-        void* global = GetGlobal02109400();
-        ((void (*)(void*, int, int))BlankFunction02094b30)(global, 0x203, 0);
-        if (((int (*)(void*))AlwaysTrue02094b4c)(global)) state->step = 1;
+        FontBankLoader* global = GetGlobal02109400();
+        BlankFunction02094b30(global, 0x203, 0);
+        if (AlwaysTrue02094b4c(global)) state->step = 1;
     } else if (state->step == 1) {
         SetMainBrightness(resources, 0x10, 0xf);
         SetForwardAndStore0205ebc0(data_02108760, 0x83, 0x83);
@@ -108,8 +104,8 @@ extern "C" ARM void func_ov017_021be0c4(State021be0c4* state) {
         if (!controller->busy) {
             ReinitController02043204((char*)controller);
             SetByteField0x253(game->GetUnknownGameObject());
-            void* global = GetGlobal02109400();
-            ((void (*)(void*, int))BlankFunction02094b38)(global, 0x203);
+            FontBankLoader* global = GetGlobal02109400();
+            BlankFunction02094b38(global, 0x203);
             func_02094ab0(global);
             ForwardField0xc0_0205ebec(data_02108760);
             state->done = 1;

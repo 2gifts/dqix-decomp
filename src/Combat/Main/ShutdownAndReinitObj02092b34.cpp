@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
 
@@ -21,9 +22,6 @@ struct Obj02092b34 {
 int GetGlobalField0x1c020421a0();
 void ReinitController02043204(char* obj);
 extern "C" void func_02043124(char* obj);
-int GetGlobal02109400(void);
-extern "C" void func_02094ab0(void);
-void BlankFunction02094b34(void);
 struct Obj02092aa4;
 void InitObj02092aa4(struct Obj02092aa4* obj, unsigned char param);
 
@@ -38,9 +36,9 @@ extern "C" ARM void func_02092b34(struct Obj02092b34* obj) {
     ReinitController02043204((char*)g);
     func_02043124((char*)g);
     if (!(obj->field37 & 8)) {
-        void* g2 = (void*)GetGlobal02109400();
-        func_02094ab0();
-        ((void(*)(void*, int, int, int, int))&BlankFunction02094b34)(g2, 0x6f, 0x1388, 1, 1);
+        FontBankLoader* g2 = GetGlobal02109400();
+        func_02094ab0(g2);
+        BlankFunction02094b34(g2, 0x6f, 0x1388, 1, 1);
     }
     if (obj->allocator.GetSignedAllocator() != 0) {
         obj->allocator.Destroy();

@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include <std_library_functions.h>
 #include <Filesystem/BackgroundLoader.h>
 #include <Memory/SafeAllocator.h>
@@ -163,10 +164,6 @@ void* FindElementByField020a15bc(Array020a15bc* table, int id);
 const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
 void InitObj_021f222c(Obj_021f222c* page);
 void FormatLabelIntoBufC_021f2304(void* page, char* title);
-void* GetGlobal02109400();
-void BlankFunction02094b40();
-extern "C" void _Z21BlankFunction02094b34v(void* music, int a, int b, int c, int d);
-extern "C" int _Z18AlwaysTrue02094b4cv(void* music);
 void SetOrClearBit10At400_38_021f2348(void* guide, int value);
 GameResources* GetWord0x0(int* gameState);
 void SetMainBrightness(GameResources* resources, int brightness, int duration);
@@ -381,9 +378,9 @@ extern "C" ARM int func_ov023_021f1868(BattleScene_021f1868* self)
             self->items_ = NULL;
             self->titles_ = NULL;
             self->busy_ = 0;
-            void* music = GetGlobal02109400();
-            BlankFunction02094b40();
-            _Z21BlankFunction02094b34v(music, 0x65, 500, 0, 0);
+            FontBankLoader* music = GetGlobal02109400();
+            BlankFunction02094b40(music);
+            BlankFunction02094b34(music, 0x65, 500, 0, 0);
             end->step_ = 8;
         }
     }
@@ -412,14 +409,14 @@ extern "C" ARM int func_ov023_021f1868(BattleScene_021f1868* self)
         self->firstGuide_ = 0;
         self->busy_ = 0;
         SetMainBrightness(GetWord0x0((int*)gameState), 0, 0xf);
-        void* music = GetGlobal02109400();
-        BlankFunction02094b40();
-        _Z21BlankFunction02094b34v(music, 0x65, 500, 0, 0);
+        FontBankLoader* music = GetGlobal02109400();
+        BlankFunction02094b40(music);
+        BlankFunction02094b34(music, 0x65, 500, 0, 0);
         end->step_++;
     }
     else if (end->step_ == 8)
     {
-        if (_Z18AlwaysTrue02094b4cv(GetGlobal02109400()))
+        if (AlwaysTrue02094b4c(GetGlobal02109400()))
             end->step_++;
     }
     else if (end->step_ == 9)

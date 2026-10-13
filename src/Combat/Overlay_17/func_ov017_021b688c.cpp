@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include <GameState/GameState.h>
 #include <Memory/SafeAllocator.h>
 #include <System/Graphics.h>
@@ -54,11 +55,6 @@ extern "C" void func_ov003_0215f9c0(MenuData*, int);
 extern "C" void func_ov003_0215f8cc(MenuData*, SafeAllocator*);
 void ClearIntAt0x23c(unsigned char*);
 extern "C" int func_ov003_0215fce8(MenuData*, unsigned int);
-void* GetGlobal02109400();
-extern "C" void _Z21BlankFunction02094b40v();
-extern "C" void func_02094ab0(void*);
-extern "C" void _Z21BlankFunction02094b34v(void*, int, int, int, int);
-extern "C" int _Z18AlwaysTrue02094b4cv();
 extern "C" void func_ov003_0215fb94(MenuData*);
 extern "C" void func_ov017_021b67d8(MenuWork*);
 int ListContainsId(ListHead02046b60*, int);
@@ -104,14 +100,13 @@ extern "C" ARM void func_ov017_021b688c(MenuWork* work) {
         work->state++;
     } else if (work->state == 1) {
         if (!func_ov003_0215fce8(work->data, game->GetTickCount())) return;
-        void* global = GetGlobal02109400();
-        _Z21BlankFunction02094b40v();
+        FontBankLoader* global = GetGlobal02109400();
+        BlankFunction02094b40(global);
         func_02094ab0(global);
-        _Z21BlankFunction02094b34v(global, 0x6f, 0x1388, 1, 1);
+        BlankFunction02094b34(global, 0x6f, 0x1388, 1, 1);
         work->state++;
     } else if (work->state == 2) {
-        GetGlobal02109400();
-        if (!_Z18AlwaysTrue02094b4cv()) return;
+        if (!AlwaysTrue02094b4c(GetGlobal02109400())) return;
         func_ov003_0215fb94(work->data);
         work->state++;
     } else if (work->state == 3) {

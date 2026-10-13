@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "Memory/AllocatorUnion.h"
 #include "Memory/SafeAllocator.h"
 #include "GameState/GameState.h"
@@ -88,9 +89,6 @@ void TeardownAndResetState020d7aa0(Obj020d7aa0* obj);
 extern "C" void func_020a0cc4(unsigned int size);
 void ClearByteFlagAt0x19c(unsigned char* obj);
 void SetByteFlagAt0x19c(unsigned char* obj);
-void* GetGlobal02109400(void);
-extern "C" void _Z21BlankFunction02094b30v(void* obj, int id, int arg);
-extern "C" int _Z18AlwaysTrue02094b4cv(void* obj);
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
 extern "C" void func_020dfec0(void* dest, SafeAllocator* allocator, void* fileData, unsigned int size);
 int GetFieldByKey020e0434(Container020e0310* c, int key);
@@ -134,9 +132,9 @@ extern "C" ARM void func_ov017_021a7378(BattleIntro* self, int arg) {
         DISPCNT = (DISPCNT & ~0x1f00) | 0x1100;
         func_020a0cc4(0x1400);
         ClearByteFlagAt0x19c((unsigned char*)GetPointerAt0x330((PointerField330_ffd0*)gs));
-        void* g = GetGlobal02109400();
-        _Z21BlankFunction02094b30v(g, 0x205, 0);
-        if (_Z18AlwaysTrue02094b4cv(g)) {
+        FontBankLoader* g = GetGlobal02109400();
+        BlankFunction02094b30(g, 0x205, 0);
+        if (AlwaysTrue02094b4c(g)) {
             self->taskId = BackgroundLoader::GetInstance()->QueueLoadFileInGP2(data_ov017_021d7798, data_ov017_021d77b2, NULL);
             self->allocator.CreateTypeA(AllocateAligned4(&data_02114e20, 0x1400), 0x1400);
             self->state = 1;

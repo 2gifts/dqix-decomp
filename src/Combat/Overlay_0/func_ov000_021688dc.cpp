@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "std_library_functions.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Filesystem/GPC.h"
@@ -88,7 +89,6 @@ extern "C" void func_02046a8c(void* list, void* node);
 extern "C" void func_02076a8c(void* obj);
 extern "C" int func_ov000_02163c80(void* work, int flag);
 extern "C" void func_ov000_02168284(void* work);
-extern "C" void func_02094ab0(int g);
 extern "C" void func_02048150(void* combatant, int a, int b);
 extern "C" int func_0202c540(void* p);
 extern "C" void func_ov017_021917f0(int id, int flag);
@@ -178,8 +178,6 @@ extern "C" void _Z24BackupPairTables0207dfacPc(char* obj);
 struct Struct_203dafc;
 void ClearEightWords(struct Struct_203dafc* obj);
 
-int GetGlobal02109400(void);
-extern "C" void _Z21BlankFunction02094b40v(void);
 extern "C" void _Z27SetupContextForMode0205ea20Pvi(void* objRaw, int mode);
 
 struct TailList020469b4;
@@ -571,8 +569,8 @@ extern "C" ARM void func_ov000_021688dc(unsigned char* work) {
     lm->SetZone((Zone3D*)p30);
     lm->BeginFade(0x1000, 0);
 
-    int g = GetGlobal02109400();
-    _Z21BlankFunction02094b40v();
+    FontBankLoader* g = GetGlobal02109400();
+    BlankFunction02094b40(g);
     func_02094ab0(g);
 
     battle->SetGameSpeed(0x1000);

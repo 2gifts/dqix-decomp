@@ -10,17 +10,14 @@
 #define R(j,u) (u)
 #endif
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
 #include "System/Cache.h"
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
 
-extern "C" void* _Z17GetGlobal02109400v();
 extern "C" void* _Z10GetWord0x0Pi(void* battle);
-extern "C" void func_02094ab0(void*);
-extern "C" void _Z21BlankFunction02094b34v(void*, int, int, int, int);
-extern "C" int _Z18AlwaysTrue02094b4cv(void*);
 extern "C" void _Z16OrGlobalFlag0x40v();
 extern "C" void func_02074af4(void*);
 extern "C" unsigned int _Z7GetWordPj(unsigned int*);
@@ -50,7 +47,7 @@ extern int data_ov028_021d9aa0;
 
 // USA: func_ov028_021d8dd0  (semantic: AdvanceStateMachine_021d8dd0)  (semantic: AdvanceStateMachine_021d8dd0)
 extern "C" ARM void func_ov028_021d8dd0(unsigned char* self) {
-    void* g = _Z17GetGlobal02109400v();
+    FontBankLoader* g = GetGlobal02109400();
     void* data = BackgroundLoader::GetInstance();
     void* battle = GameState::GetInstance();
     void* word = _Z10GetWord0x0Pi(battle);
@@ -58,10 +55,10 @@ extern "C" ARM void func_ov028_021d8dd0(unsigned char* self) {
 
     if (state == 0) {
         func_02094ab0(g);
-        _Z21BlankFunction02094b34v(g, 0x7a, 0x20b, 0, 0);
+        BlankFunction02094b34(g, 0x7a, 0x20b, 0, 0);
         self[0x81] = self[0x81] + 1;
     } else if (state == 1) {
-        if (_Z18AlwaysTrue02094b4cv(g) != 0) {
+        if (AlwaysTrue02094b4c(g) != 0) {
             self[0x81] = self[0x81] + 1;
         }
     } else if (state == 2) {

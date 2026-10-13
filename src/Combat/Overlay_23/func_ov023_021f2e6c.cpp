@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
@@ -62,12 +63,8 @@ extern "C" int func_0202c540(void* p);
 extern "C" int _Z38AreAllListedCombatantsFlagged_021ed92cv(void);
 extern "C" void _Z20ResetFields_021eefacP14Reset_021eefac(int* g);
 extern "C" void _Z18InitStruct020d784cP14Buffer020d784c(IdList021f2e6c* list);
-extern "C" int _Z17GetGlobal02109400v(void);
-extern "C" void _Z21BlankFunction02094b40v(void);
-extern "C" void _Z21BlankFunction02094b30v(int a, int b, int c);
 extern "C" int func_ov023_021f4fc8(void);
 extern "C" void _Z34RegisterCallbackObjectAndRunScriptPvS_P12StreamHeaderih(void* obj, void* alloc, void* data, int len, unsigned char flag);
-extern "C" int _Z18AlwaysTrue02094b4cv(int p);
 extern "C" short _Z22GetMaxOfHalfwords0And4P12Pair020deb08(void* p);
 extern "C" void _Z16ZeroInit020de868Pv(void* p);
 extern "C" void* ExtractFileFromGP2(const char* gp2Path, const char* innerFilePath, unsigned int* outSize);
@@ -238,9 +235,9 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
         _Z18InitStruct020d784cP14Buffer020d784c(*(IdList021f2e6c**)(self + regionalOffset2));
         *(SafeAllocator**)(self + regionalOffset9) = (SafeAllocator*)((SafeAllocator*)(self + 0x30))->Allocate(0x14);
         (*(SafeAllocator**)(self + regionalOffset9))->CreateTypeA(((SafeAllocator*)(self + 0x30))->Allocate(0xf000), 0xf000);
-        int h = _Z17GetGlobal02109400v();
-        _Z21BlankFunction02094b40v();
-        _Z21BlankFunction02094b30v(h, 0x210, 1);
+        FontBankLoader* h = GetGlobal02109400();
+        BlankFunction02094b40(h);
+        BlankFunction02094b30(h, 0x210, 1);
         g[0] = 1;
     } else if (state == 10) {
         if (func_ov023_021f4fc8() != 0) {
@@ -278,7 +275,7 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
             *(short*)(self + regionalOffset3) = 1;
         }
     } else if (state == 1) {
-        if (_Z18AlwaysTrue02094b4cv(_Z17GetGlobal02109400v()) != 0) {
+        if (AlwaysTrue02094b4c(GetGlobal02109400()) != 0) {
             char* heap;
 #if defined(jpn)
             char* sub = self + 0x3ec;

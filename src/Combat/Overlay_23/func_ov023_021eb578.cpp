@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
 #include "GameState/GameState.h"
@@ -20,13 +21,9 @@ struct Struct0205a198;
 struct ClearTarget0205a234;
 
 int GetWord0x0(int* obj);
-int GetGlobal02109400(void);
 void SetSubBrightness(GameResources* resources, int brightness, int duration);
 void SetMainBrightness(GameResources* resources, int brightness, int duration);
-extern "C" void _Z21BlankFunction02094b40v(int g);
-extern "C" void _Z21BlankFunction02094b34v(int g, int a, int b, int c, int d);
 int IsBrightnessTransitionActive(GameResources* resources);
-extern "C" int _Z18AlwaysTrue02094b4cv(int g);
 extern "C" void* _Z27GetDataPtr02114e04_020d6c00v(void);
 void OrBitsIntoField0(unsigned int* p, unsigned int mask);
 void OrGlobalFlag0x40(void);
@@ -131,7 +128,7 @@ struct Scene021eb578 {
 // USA: func_ov023_021eb578
 extern "C" ARM void func_ov023_021eb578(Scene021eb578* self) {
     SafeAllocator* allocs;
-    int g;
+    FontBankLoader* g;
     GameResources* res;
     BackgroundLoader* loader;
     unsigned char state;
@@ -146,8 +143,8 @@ extern "C" ARM void func_ov023_021eb578(Scene021eb578* self) {
         } else if (IS_MAIN_SCREEN_MODE(self)) {
             SetMainBrightness(res, -16, 15);
         }
-        _Z21BlankFunction02094b40v(g);
-        _Z21BlankFunction02094b34v(g, 0x71, 0x201, 0, 0);
+        BlankFunction02094b40(g);
+        BlankFunction02094b34(g, 0x71, 0x201, 0, 0);
         self->state++;
     }
 
@@ -155,7 +152,7 @@ extern "C" ARM void func_ov023_021eb578(Scene021eb578* self) {
         if (IsBrightnessTransitionActive(res)) {
             return;
         }
-        if (_Z18AlwaysTrue02094b4cv(g) == 0) {
+        if (AlwaysTrue02094b4c(g) == 0) {
             return;
         }
         if (self->flags & 0x10) {

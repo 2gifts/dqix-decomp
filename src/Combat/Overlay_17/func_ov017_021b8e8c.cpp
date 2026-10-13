@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
@@ -108,10 +109,6 @@ extern "C" unsigned char* _Z15GetData02108d18v(void);
 extern "C" void _Z12Init0206f510Pc(char* obj);
 extern "C" int func_0206f550(unsigned char* s, char* in, char* out);
 extern "C" int _Z23CommandDispatch0206f6ccPhi(unsigned char* obj, int arg);
-int GetGlobal02109400(void);
-extern "C" void _Z21BlankFunction02094b34v(int, int, int, int, int);
-extern "C" void _Z21BlankFunction02094b40v(int g);
-extern "C" int _Z18AlwaysTrue02094b4cv(int g);
 int ListContainsId(ListHead02046b60* list, int id);
 extern "C" void func_020a0cc4(unsigned int size);
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
@@ -279,14 +276,14 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
         _Z12Init0206f510Pc((char*)script);
         if (func_0206f550(script, in, out) != 0 && _Z23CommandDispatch0206f6ccPhi(script, 0) == 0) {
             self->state = 8;
-            _Z21BlankFunction02094b34v(GetGlobal02109400(), 0x6f, 0x1388, 1, 1);
+            BlankFunction02094b34(GetGlobal02109400(), 0x6f, 0x1388, 1, 1);
             break;
         }
         self->state = 3;
         break;
     }
     case 8:
-        if (_Z18AlwaysTrue02094b4cv(GetGlobal02109400()) != 0) {
+        if (AlwaysTrue02094b4c(GetGlobal02109400()) != 0) {
             if (hud != NULL) {
                 SetField0x23cTrue(hud);
             }
@@ -301,12 +298,12 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
         if (self->hasSub != 0) {
             func_ov008_02184754(self->sub);
         }
-        int fade = GetGlobal02109400();
+        FontBankLoader* fade = GetGlobal02109400();
         if (self->hasSub != 0) {
-            _Z21BlankFunction02094b40v(fade);
-            _Z21BlankFunction02094b34v(fade, 0x6e, 0x1ff, 0, 0);
+            BlankFunction02094b40(fade);
+            BlankFunction02094b34(fade, 0x6e, 0x1ff, 0, 0);
         } else {
-            _Z21BlankFunction02094b34v(fade, 0x6f, 0x1388, 1, 1);
+            BlankFunction02094b34(fade, 0x6f, 0x1388, 1, 1);
         }
         self->state = 4;
         break;
@@ -315,7 +312,7 @@ extern "C" ARM void func_ov017_021b8e8c(Self021b8e8c* self, ListHead02046b60* li
         if (self->hasSub != 0) {
             func_ov008_02184754(self->sub);
         }
-        if (_Z18AlwaysTrue02094b4cv(GetGlobal02109400()) != 0) {
+        if (AlwaysTrue02094b4c(GetGlobal02109400()) != 0) {
             self->state = 2;
         }
         break;

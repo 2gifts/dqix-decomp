@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 #include "Memory/AllocatorUnion.h"
@@ -7,10 +8,6 @@ void SetFlag0x2IfByte0xd4Not3(unsigned char* obj);
 extern "C" void func_0208bb78(void* obj, int count);
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
 extern AllocatorUnion data_02114e20;
-int GetGlobal02109400(void);
-extern "C" void _Z21BlankFunction02094b40v(int val);
-extern "C" void func_02094ab0(int val);
-extern "C" void _Z21BlankFunction02094b2cv(int val, int f20, void* f24, unsigned char f28, unsigned char f29);
 
 struct Obj02154e40 {
     char pad0[0xa];
@@ -51,13 +48,13 @@ extern "C" ARM int func_ov001_02154e40(struct Obj02154e40* self) {
         self->field0x120 = 0;
     }
 
-    int val = GetGlobal02109400();
+    FontBankLoader* val = GetGlobal02109400();
     unsigned char flag = 1;
     if (self->field0x13 != 0) {
         flag = 0;
     }
-    _Z21BlankFunction02094b40v(val);
+    BlankFunction02094b40(val);
     func_02094ab0(val);
-    _Z21BlankFunction02094b2cv(val, 0x6f, (char*)self + 0x62, 1, flag);
+    BlankFunction02094b2c(val, 0x6f, (char*)self + 0x62, 1, flag);
     return 0xd;
 }

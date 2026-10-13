@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 
 #if defined(jpn)
 #define func_ov008_021895a8 func_ov008_0218a2b0
@@ -125,7 +126,6 @@ extern "C" void func_ov008_0218b240(void* self);
 extern "C" void func_ov008_0218aa24(void* self);
 
 char* GetWord0x0(int* gameState);
-void* GetGlobal02109400();
 int IsField0Null(void** field);
 void SetBitsInWord(unsigned int* word, unsigned int bits);
 extern "C" unsigned int* _Z27GetDataPtr02114e04_020d6c00v();
@@ -143,8 +143,6 @@ extern "C" void _Z23ClearField0And40205a234P19ClearTarget0205a234(ClearTarget020
 extern "C" void _Z18InitStruct0205a444Pc(char* renderer);
 int CountActiveEntries(ActiveEntry02046900* archive);
 void* FindRecordByIndex(Rec020467f0* archive, int index, void** name, int* size);
-extern "C" void _Z21BlankFunction02094b34v();
-extern "C" int _Z18AlwaysTrue02094b4cv();
 
 extern char data_ov008_0218b4c8[];
 extern char data_ov008_0218b4df[];
@@ -387,14 +385,13 @@ extern "C" ARM void func_ov008_021895a8(VisitorTalk* self)
             REG_BG2CNT = REG_BG2CNT & ~3;
             REG_BG3CNT = (REG_BG3CNT & ~3) | 3;
             REG_DISPCNT = (REG_DISPCNT & ~0x1f00) | 0x1700;
-            ((void (*)(void*, int, int, int, int))_Z21BlankFunction02094b34v)(GetGlobal02109400(), 0x6b, 0x206, 0, 0);
+            BlankFunction02094b34(GetGlobal02109400(), 0x6b, 0x206, 0, 0);
             self->step_++;
         }
     }
     else if (step == 5)
     {
-        GetGlobal02109400();
-        if (_Z18AlwaysTrue02094b4cv())
+        if (AlwaysTrue02094b4c(GetGlobal02109400()))
         {
             func_ov008_0218aa24(self);
 #if defined(jpn)

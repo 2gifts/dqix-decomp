@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #if defined(jpn)
 #define REGION_VALUE(j,u) j
 #define data_ov008_0218b3e4 data_ov008_0218c064
@@ -198,10 +199,6 @@ extern "C" void _Z37InitManagerAndAllocateBuffers0209fee4P11Obj0209fee4P13SafeAl
 extern "C" void _Z12SetIntAt0x60P21IntField0x60_0209ff64i(void* obj, int value);
 extern "C" void _Z21PollOv017Task0209ff6cP17TaskState0209ff6c(void* obj);
 extern "C" int func_ov008_02185964(void* obj);
-extern "C" int _Z17GetGlobal02109400v(void);
-extern "C" void _Z21BlankFunction02094b40v(void);
-extern "C" void _Z21BlankFunction02094b34v(int a, int b, int c, int d, int e);
-extern "C" int _Z18AlwaysTrue02094b4cv(int a);
 extern "C" void* ExtractFileFromGP2(const char* gp2, const char* inner, unsigned int* outSize);
 extern "C" void func_020dfec0(void* container, SafeAllocator* alloc, void* data, unsigned int size);
 extern "C" void _Z24SetWord0x18ClearByte0x1fPhi(void* obj, int value);
@@ -360,12 +357,12 @@ extern "C" ARM void func_ov008_02184a4c(Obj02184a4c* obj) {
                 return;
             }
         }
-        int global = _Z17GetGlobal02109400v();
-        _Z21BlankFunction02094b40v();
-        _Z21BlankFunction02094b34v(global, 0x6b, 0x1fc, 0, 0);
+        FontBankLoader* global = GetGlobal02109400();
+        BlankFunction02094b40(global);
+        BlankFunction02094b34(global, 0x6b, 0x1fc, 0, 0);
         obj->b11++;
     } else if (state == 3) {
-        if (_Z18AlwaysTrue02094b4cv(_Z17GetGlobal02109400v()) != 0) {
+        if (AlwaysTrue02094b4c(GetGlobal02109400()) != 0) {
 #if defined(jpn)
             obj->alloc14.Reset();
             void* data = obj->alloc14.Allocate(0x2000);

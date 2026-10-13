@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 #include "Grotto/Main/ActiveGrottoClass.h"
@@ -87,7 +88,6 @@ struct Obj02046574;
 struct Container020e0310;
 
 extern "C" struct Display020e3f1c* _Z26GetGlobalField0x1c020421a0v();
-void* GetGlobal02109400();
 extern "C" struct Zone02012fe4* func_02012fe4();
 int GetFieldIfFlag4(char* obj);
 extern "C" int func_ov017_021959b4();
@@ -112,9 +112,7 @@ extern "C" void _Z34ComputeAngleHeightDistance0202ea4cP11Obj0202ea4c(struct Obj0
 extern "C" void func_0202e0a4(struct Camera020e3f1c* camera);
 extern "C" struct Obj020d7aa0* _Z25GetGlobalResetObj020d7a50v();
 extern "C" void _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0(struct Obj020d7aa0* obj);
-extern "C" void _Z21BlankFunction02094b34v(void* mgr, int a, int b, int c, int d);
 extern "C" void func_ov017_021c3e18(int arg);
-extern "C" int _Z18AlwaysTrue02094b4cv(void* mgr);
 extern "C" int sprintf(char* buf, const char* fmt, ...);
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
 extern "C" void* _Z26ResetAndReturnSelf020dfc2cPv(void* p);
@@ -139,7 +137,7 @@ extern "C" ARM void func_020e3f1c(struct BattleIntro020e3f1c* intro) {
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     GameState* gs = GameState::GetInstance();
     struct Display020e3f1c* display = _Z26GetGlobalField0x1c020421a0v();
-    void* mgr = GetGlobal02109400();
+    FontBankLoader* mgr = GetGlobal02109400();
     ActiveGrottoClass* grotto = &func_02012fe4()->activeGrotto;
     struct Camera020e3f1c* camera = (struct Camera020e3f1c*)GetFieldIfFlag4((char*)gs);
     struct Actor020e3f1c* leader = (struct Actor020e3f1c*)gs->GetUnknownGameObject();
@@ -239,7 +237,7 @@ extern "C" ARM void func_020e3f1c(struct BattleIntro020e3f1c* intro) {
         }
         func_0202e0a4(camera);
         _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0(_Z25GetGlobalResetObj020d7a50v());
-        _Z21BlankFunction02094b34v(mgr, 0x74, 0x20e, 0, 0);
+        BlankFunction02094b34(mgr, 0x74, 0x20e, 0, 0);
         func_ov017_021c3e18(0);
         intro->state = 2;
     } else if (intro->state == 2) {
@@ -249,7 +247,7 @@ extern "C" ARM void func_020e3f1c(struct BattleIntro020e3f1c* intro) {
         if (IsMainBrightnessTransitionActive(res)) {
             return;
         }
-        if (!_Z18AlwaysTrue02094b4cv(mgr)) {
+        if (!AlwaysTrue02094b4c(mgr)) {
             return;
         }
         char fileName[16];

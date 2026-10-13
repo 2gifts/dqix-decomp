@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "GameState/GameState.h"
 #include "Grotto/Main/TreasureMapMetadata.h"
 #include "Grotto/Main/DetailedTreasureMapData.h"
@@ -57,12 +58,7 @@ struct MapTask021a9bf8 {
 unsigned char* GetFieldIfFlag4(char*);
 extern "C" int func_ov017_021959b4();
 void Something_021a9f58(int);
-void* GetGlobal02109400();
-extern "C" void func_02094ab0();
-void BlankFunction02094b3c();
-void BlankFunction02094b30();
 void ClearIntAt0x23c(unsigned char*);
-int AlwaysTrue02094b4c();
 void CancelPendingAction020397cc(Obj020397cc*, int);
 void ResetElapsedState020e11a4();
 char* GetGlobalField0x1c020421a0();
@@ -100,15 +96,14 @@ extern "C" ARM void func_ov017_021a9bf8(MapTask021a9bf8* self) {
     GameObject* object = state->GetUnknownGameObject();
     if (!object) { self->complete = 1; return; }
     if (self->stage == 0) {
-        void* global = GetGlobal02109400();
-        func_02094ab0();
-        ((void (*)(void*, int))BlankFunction02094b3c)(global, 12);
-        ((void (*)(void*, int, int))BlankFunction02094b30)(global, 0x203, 0);
+        FontBankLoader* global = GetGlobal02109400();
+        func_02094ab0(global);
+        BlankFunction02094b3c(global, 12);
+        BlankFunction02094b30(global, 0x203, 0);
         ClearIntAt0x23c(field);
         self->stage = 1;
     } else if (self->stage == 1) {
-        GetGlobal02109400();
-        if (!AlwaysTrue02094b4c()) return;
+        if (!AlwaysTrue02094b4c(GetGlobal02109400())) return;
         CancelPendingAction020397cc((Obj020397cc*)object, 1);
         ResetElapsedState020e11a4();
         char* window = GetGlobalField0x1c020421a0();
@@ -200,8 +195,7 @@ extern "C" ARM void func_ov017_021a9bf8(MapTask021a9bf8* self) {
         }
     } else if (self->stage == 4) {
         if ((*reinterpret_cast<int*>(GetGlobalField0x1c020421a0() + BusyOffset))) return;
-        GetGlobal02109400();
-        func_02094ab0();
+        func_02094ab0(GetGlobal02109400());
         if (LookupAndForEachNode020649b0(func_0205ec34(), 0x1b, nodes)) func_0206f81c(nodes);
         self->stage = 5;
     }

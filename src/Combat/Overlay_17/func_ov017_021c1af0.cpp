@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "GameState/GameState.h"
 #include "Graphics/Vector.h"
 #include "World/Zone3D.h"
@@ -32,11 +33,6 @@ extern "C" Zone3D* func_02012fe4();
 extern "C" int* func_0202ae18();
 Obj02046574* GetGlobalField0x1c020421a0();
 void CancelPendingAction020397cc(Obj020397cc*, int);
-void* GetGlobal02109400();
-void BlankFunction02094b30();
-int AlwaysTrue02094b4c();
-void BlankFunction02094b38();
-extern "C" void func_02094ab0(void*);
 int CheckField0NonZero(int*);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
 extern "C" int func_ov017_0219ff58(GameResources*, int, int, int);
@@ -64,9 +60,9 @@ extern "C" ARM void func_ov017_021c1af0(State021c1af0* state) {
     Zone3D* context = func_02012fe4();
     if (state->step == 0) {
         CancelPendingAction020397cc((Obj020397cc*)game->GetProtagonist(), 1);
-        void* global = GetGlobal02109400();
-        ((void (*)(void*, int, int))BlankFunction02094b30)(global, 0x204, 0);
-        if (((int (*)(void*))AlwaysTrue02094b4c)(global)) state->step = 1;
+        FontBankLoader* global = GetGlobal02109400();
+        BlankFunction02094b30(global, 0x204, 0);
+        if (AlwaysTrue02094b4c(global)) state->step = 1;
     } else if (state->step == 1) {
         Obj02046574* controller = GetGlobalField0x1c020421a0();
         int* search = func_0202ae18();
@@ -124,8 +120,8 @@ extern "C" ARM void func_ov017_021c1af0(State021c1af0* state) {
         if (CheckBitsInField0x63dc(game, 1)) {
             func_ov017_0219c520();
         }
-        void* global = GetGlobal02109400();
-        ((void (*)(void*, int))BlankFunction02094b38)(global, 0x1f9);
+        FontBankLoader* global = GetGlobal02109400();
+        BlankFunction02094b38(global, 0x1f9);
         func_02094ab0(global);
         state->done = 1;
     } else if (state->step == 3) {
@@ -134,8 +130,8 @@ extern "C" ARM void func_ov017_021c1af0(State021c1af0* state) {
         if (!(*reinterpret_cast<int*>(reinterpret_cast<char*>(controller) + BusyOffset))) {
             ReinitController02043204((char*)controller);
             SetByteField0x253(game->GetProtagonist());
-            void* global = GetGlobal02109400();
-            ((void (*)(void*, int))BlankFunction02094b38)(global, 0x204);
+            FontBankLoader* global = GetGlobal02109400();
+            BlankFunction02094b38(global, 0x204);
             func_02094ab0(global);
             state->done = 1;
         }

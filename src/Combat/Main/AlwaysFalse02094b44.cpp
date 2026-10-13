@@ -1,34 +1,19 @@
 #include <globaldefs.h>
-
-#if defined(jpn)
-struct RegionalState02094b44 {
-    void* firstTable;
-    void* secondTable;
-    char pad08[0x34];
-    int firstIndex;
-    int secondIndex;
-};
-#endif
+#include "Resource/FontBankLoader.h"
 
 // USA: func_02094b44
-extern "C" ARM void* _Z19AlwaysFalse02094b44v(
-#if defined(jpn)
-    RegionalState02094b44* self, int event
-#else
-    void
-#endif
-) {
+ARM void* AlwaysFalse02094b44(FontBankLoader* loader, int event) {
     void* table = 0;
 #if defined(jpn)
     switch (event) {
     case 8:
-        if (self->secondIndex >= 0) table = self->secondTable;
+        if (loader->supplementalBank >= 0) table = loader->supplementalTable;
         break;
     case 10:
-        if (self->firstIndex >= 0) table = self->firstTable;
+        if (loader->primaryBank >= 0) table = loader->primaryTable;
         break;
     case 12:
-        if (self->secondIndex >= 0) table = self->secondTable;
+        if (loader->supplementalBank >= 0) table = loader->supplementalTable;
         break;
     }
 #endif

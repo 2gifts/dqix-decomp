@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "World/ZoneChest.h"
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
@@ -32,8 +33,6 @@ struct EventFlags021561e0 { char field_0[0x8c]; unsigned char flags[1]; };
 struct Entry_02028bd0;
 struct Obj02028c64;
 extern "C" int _Z28InitAndCheckField3c_02153994v();
-void* GetGlobal02109400();
-extern "C" int _Z18AlwaysTrue02094b4cv();
 extern "C" int* func_0202ae18();
 extern "C" void func_ov001_0215aac8();
 extern "C" void _Z36SetEntryCallbackAndDispatch_021d8c20iii(void*);
@@ -58,8 +57,7 @@ extern AllocatorUnion data_02114e20;
 extern "C" ARM int func_ov001_021561e0(CleanupState021561e0* state) {
     if (_Z28InitAndCheckField3c_02153994v() != 1) return state->state;
     state->complete = 1;
-    GetGlobal02109400();
-    if (!_Z18AlwaysTrue02094b4cv()) return 11;
+    if (!AlwaysTrue02094b4c(GetGlobal02109400())) return 11;
     GameResources* resources = func_ov017_0218b5b0();
     GameState* game = GameState::GetInstance();
     int* manager = func_0202ae18();

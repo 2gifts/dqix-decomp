@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "GameState/Field3b0.h"
 #include <Filesystem/BackgroundLoader.h>
 #include <Memory/SafeAllocator.h>
@@ -98,7 +99,6 @@ extern "C" void* memset(void* dst, int value, unsigned int length);
 extern "C" void* memcpy(void* dst, const void* src, unsigned int length);
 
 int IsMainBrightnessTransitionActive(GameResources* resources);
-void* GetGlobal02109400();
 void SetBitsInField4(unsigned int* field, unsigned int bits);
 extern "C" void _Z25RestorePairTables0207df90Pc(char* tables);
 extern "C" void _Z24BackupPairTables0207dfacPc(char* tables);
@@ -138,9 +138,6 @@ extern "C" void _Z36InitEntryManagerAndAllocator02159c24P11Obj02159c24ii(void* b
 extern "C" {
 GameResources* func_ov017_0218b5b0();
 void func_ov017_0219ba0c(GameResources* resources, int value);
-void _Z21BlankFunction02094b40v(void* music);
-void _Z21BlankFunction02094b34v(void* music, int a, int b, int c, int d);
-int _Z18AlwaysTrue02094b4cv(void* music);
 void func_ov005_02153ba4(void* battle);
 void func_ov005_02153954(void* battle, SafeAllocator* allocator, void* unk);
 void func_ov004_02154da8(void* battle, void* data, unsigned int size);
@@ -176,14 +173,14 @@ extern "C" ARM void func_ov023_021e33b4(BattleSetup021e33b4* self)
 
     if (self->step_4e4 == 1)
     {
-        void* music = GetGlobal02109400();
-        _Z21BlankFunction02094b40v(music);
-        _Z21BlankFunction02094b34v(music, 0x79, 0x1fa, 0, 0);
+        FontBankLoader* music = GetGlobal02109400();
+        BlankFunction02094b40(music);
+        BlankFunction02094b34(music, 0x79, 0x1fa, 0, 0);
         self->step_4e4++;
     }
     else if (self->step_4e4 == 2)
     {
-        if (_Z18AlwaysTrue02094b4cv(GetGlobal02109400()))
+        if (AlwaysTrue02094b4c(GetGlobal02109400()))
         {
             func_ov017_0219ba0c(resources, 1);
             self->task_630 = loader->QueueLoadFileInGP2(data_020f2a38, data_020f2a30, NULL);

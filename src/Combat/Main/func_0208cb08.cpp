@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 #include "Resource/GameResources.h"
@@ -52,10 +53,7 @@ int GetWord0x0(int*);
 void SetBitsInWord(unsigned int*, unsigned int);
 unsigned int* GetDataPtr02114e04_020d6c00();
 void OrBitsIntoField0(unsigned int*, unsigned int);
-int GetGlobal02109400();
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
-void BlankFunction02094b30();
-int AlwaysTrue02094b4c();
 void BackupSubBgControlRegisters(SubBgControlBackup02074b64*);
 void OrGlobalFlag0x40();
 void SetSubBrightness(GameResources*, int, int);
@@ -73,7 +71,6 @@ extern "C" int func_0205a528(void*, void*, int, int);
 extern "C" void func_020dfec0(void*, SafeAllocator*, void*, unsigned int);
 extern "C" void func_0208bf78(Object_0208cb08*);
 extern char data_020f11a2[], data_020f11b3[], data_020f11c0[], data_020f11da[];
-typedef void (*NotificationRequest_0208cb08)(int, int, int);
 
 // USA: func_0208cb08
 extern "C" ARM void func_0208cb08(Object_0208cb08* object) {
@@ -83,7 +80,7 @@ extern "C" ARM void func_0208cb08(Object_0208cb08* object) {
     if (object->state == 0) {
         SetBitsInWord(&resources->brightnessFlags_0, 0x6000);
         OrBitsIntoField0(GetDataPtr02114e04_020d6c00(), 1);
-        int global = GetGlobal02109400();
+        FontBankLoader* global = GetGlobal02109400();
         int notification = 0x67;
         if (GetHeadNodeIdOrMinusOne((HeadNode02046b24**)resources->unknown_ptr_array_36fc[0]) != 0x2d) {
             if (object->target < 0) notification = 0x32;
@@ -93,11 +90,10 @@ extern "C" ARM void func_0208cb08(Object_0208cb08* object) {
                 notification = level + 0x32;
             }
         }
-        ((NotificationRequest_0208cb08)BlankFunction02094b30)(global, notification, 0);
+        BlankFunction02094b30(global, notification, 0);
         ++object->state;
     } else if (object->state == 1) {
-        GetGlobal02109400();
-        if (AlwaysTrue02094b4c()) ++object->state;
+        if (AlwaysTrue02094b4c(GetGlobal02109400())) ++object->state;
     } else if (object->state == 2) {
         BackupSubBgControlRegisters(&object->backup);
         OrGlobalFlag0x40();

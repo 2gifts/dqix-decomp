@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "Memory/AllocatorUnion.h"
 #include "Memory/SafeAllocator.h"
 #include "GameState/GameState.h"
@@ -26,12 +27,7 @@ extern "C" void* _Z27GetDataPtr02114e04_020d6c00v(void);
 void OrBitsIntoField0(unsigned int* obj, unsigned int mask);
 struct Obj020397cc;
 extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(struct Obj020397cc* obj, int arg1);
-int GetGlobal02109400(void);
 extern "C" int _Z26GetGlobalField0x1c020421a0v(void);
-extern "C" int _Z18AlwaysTrue02094b4cv(void);
-extern "C" void _Z21BlankFunction02094b40v();
-extern "C" void func_02094ab0(void* obj);
-extern "C" void _Z21BlankFunction02094b30v(void* a, int b, int c);
 extern "C" void _ZN13SafeAllocator11CreateTypeAEPvj(SafeAllocator* self, void* bufferStart, unsigned int bufferSize);
 extern "C" int _ZN16BackgroundLoader18QueueLoadFileInGP2EPKcS1_P13SafeAllocator(BackgroundLoader* self, const char* gp2, const char* innerFile, SafeAllocator* alloc);
 extern "C" void func_02046380(void* global);
@@ -103,14 +99,13 @@ extern "C" ARM void func_020d9b34(struct Obj020d9b34* self) {
             self->state++;
         }
     } else if (self->state == 2) {
-        int g = GetGlobal02109400();
-        _Z21BlankFunction02094b40v();
-        func_02094ab0((void*)g);
-        _Z21BlankFunction02094b30v((void*)g, 0x207, 0);
+        FontBankLoader* g = GetGlobal02109400();
+        BlankFunction02094b40(g);
+        func_02094ab0(g);
+        BlankFunction02094b30(g, 0x207, 0);
         self->state++;
     } else if (self->state == 3) {
-        GetGlobal02109400();
-        if (_Z18AlwaysTrue02094b4cv() == 0) return;
+        if (AlwaysTrue02094b4c(GetGlobal02109400()) == 0) return;
         void* g = (void*)_Z26GetGlobalField0x1c020421a0v();
         func_02046380(g);
         _Z22SetIndexedName02046574P11Obj02046574iPc((struct Obj02046574*)g, 0, self->name);

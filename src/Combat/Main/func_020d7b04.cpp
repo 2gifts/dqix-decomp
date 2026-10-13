@@ -1,16 +1,13 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
 
 struct FontBankLoader;
-extern "C" FontBankLoader* _Z17GetGlobal02109400v();
 extern "C" void* _Z26GetGlobalField0x1c020421a0v();
-extern "C" int _Z18AlwaysTrue02094b4cv(FontBankLoader*);
 extern "C" int _Z14ListContainsIdP16ListHead02046b60i(void*, int);
 extern "C" void func_ov016_0218b5c0(int, int);
 extern "C" void func_ov017_0218b5f8(int);
-extern "C" void _Z21BlankFunction02094b3cv(FontBankLoader*, int);
-extern "C" void _Z21BlankFunction02094b30v(FontBankLoader*, int, int);
 extern "C" void func_02046380(void*);
 #if defined(jpn)
 extern "C" void func_0204500c(void*, void*, int);
@@ -18,7 +15,6 @@ extern "C" void func_0204500c(void*, void*, int);
 extern "C" void func_0204500c(void*, void*, int, int);
 #endif
 extern "C" void _Z18InitFields02042b3cPv(void*);
-extern "C" void func_02094ab0(FontBankLoader*);
 extern "C" void _Z24ReinitController02043204Pc(char*);
 extern char data_020f2348[];
 
@@ -70,9 +66,9 @@ struct MessageWindowState {
 extern "C" ARM void func_020d7b04(TextMessageQueue* queue) {
     char formattedText[0xc8];
     GameState* game = GameState::GetInstance();
-    FontBankLoader* fonts = _Z17GetGlobal02109400v();
+    FontBankLoader* fonts = GetGlobal02109400();
     MessageWindowState* window = static_cast<MessageWindowState*>(_Z26GetGlobalField0x1c020421a0v());
-    if (queue->fontRequested && !_Z18AlwaysTrue02094b4cv(fonts)) return;
+    if (queue->fontRequested && !AlwaysTrue02094b4c(fonts)) return;
 
     void* requests = func_ov017_0218b5b0()->unknown_ptr_array_36fc[0];
     if (_Z14ListContainsIdP16ListHead02046b60i(requests, 0x25)) return;
@@ -105,8 +101,8 @@ extern "C" ARM void func_020d7b04(TextMessageQueue* queue) {
                 canLoadFont = !_Z14ListContainsIdP16ListHead02046b60i(requests, 0xc);
             }
             if (canLoadFont) {
-                _Z21BlankFunction02094b3cv(fonts, 10);
-                _Z21BlankFunction02094b30v(fonts, 505, 0);
+                BlankFunction02094b3c(fonts, 10);
+                BlankFunction02094b30(fonts, 505, 0);
                 queue->entries[0].style = 0;
                 queue->fontRequested = 1;
                 return;

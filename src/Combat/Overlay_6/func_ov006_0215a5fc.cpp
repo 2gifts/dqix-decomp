@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "GameState/GameState.h"
 
 extern int data_02109bf4;
@@ -21,10 +22,6 @@ extern "C" void* _ZN16BackgroundLoader11GetInstanceEv();
 extern "C" int _Z27SetStateAndDispatch0209c3b4P13Actor0209c3b4i(void*, int);
 extern "C" void _Z11SetFogStateijjt(int, unsigned int, unsigned int, short);
 extern "C" void _Z15Set3DClearColoriiiii(int, int, int, int, int);
-extern "C" void* _Z17GetGlobal02109400v();
-extern "C" void _Z21BlankFunction02094b40v();
-extern "C" void _Z21BlankFunction02094b34v(void*, int, int, int, int);
-extern "C" int _Z18AlwaysTrue02094b4cv(void*);
 extern "C" int _ZN16BackgroundLoader18QueueLoadFileInGP2EPKcS1_P13SafeAllocator(void*, const char*, const char*, void*);
 extern "C" int _ZN16BackgroundLoader13GetTaskStatusEi(void*, int);
 extern "C" void _ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(void*, int, void**, unsigned int*);
@@ -181,13 +178,13 @@ extern "C" ARM void func_ov006_0215a5fc(Scene* obj) {
         }
         _Z11SetFogStateijjt(0, 0, 0, 0);
         _Z15Set3DClearColoriiiii(0, 0, 0x7fff, 0, 0);
-        void* g = _Z17GetGlobal02109400v();
-        _Z21BlankFunction02094b40v();
-        _Z21BlankFunction02094b34v(g, 0x6c, 0x1fd, 0, 0);
+        FontBankLoader* g = GetGlobal02109400();
+        BlankFunction02094b40(g);
+        BlankFunction02094b34(g, 0x6c, 0x1fd, 0, 0);
         obj->f390 = obj->f390 + 1;
     }
     else if (st == 1) {
-        if (_Z18AlwaysTrue02094b4cv(_Z17GetGlobal02109400v()) != 0) {
+        if (AlwaysTrue02094b4c(GetGlobal02109400()) != 0) {
             obj->f390 = obj->f390 + 1;
         }
     }

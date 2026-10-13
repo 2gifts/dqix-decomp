@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include <std_library_functions.h>
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
@@ -51,10 +52,6 @@ void CopyState0207dfc8(State0207dfc8*, State0207dfc8*);
 void RestorePairTables0207df90(char*);
 void Forward02047b30(void*, int, int, int);
 void BackupPairTables0207dfac(char*);
-int GetGlobal02109400();
-void BlankFunction02094b3c();
-void BlankFunction02094b30();
-int AlwaysTrue02094b4c();
 Controller021ae85c* GetGlobalField0x1c020421a0();
 extern "C" void __clear(void*, int);
 void* ZeroInitReturn020de824(void*);
@@ -66,7 +63,6 @@ void* GetField0x3b0Value(GameState*);
 void ComputeTwoFromVec3_0202ec84(void*, Vec3copy0202ec84*, int*, int*);
 void SetVec3At0x1c(Vec3Target0203a46c*, int, int, int);
 void RenderFlaggedIndexedEntry(StructAt020473c8*, int);
-extern "C" void func_02094ab0(int);
 extern Obj0205eaa0 data_02108760;
 extern const char data_ov017_021d79a8[];
 extern AllocatorUnion data_02114e20;
@@ -141,12 +137,12 @@ extern "C" ARM void func_ov017_021ae85c(Event021ae85c* self) {
             }
         }
         loader->RemoveTask(self->task);
-        int global = GetGlobal02109400();
-        ((void (*)(int, int))BlankFunction02094b3c)(global, 10);
-        ((void (*)(int, int, int))BlankFunction02094b30)(global, 0x1f9, 0);
+        FontBankLoader* global = GetGlobal02109400();
+        BlankFunction02094b3c(global, 10);
+        BlankFunction02094b30(global, 0x1f9, 0);
         self->stage = 4;
     } else if (self->stage == 4) {
-        if (!((int (*)(int))AlwaysTrue02094b4c)(GetGlobal02109400())) return;
+        if (!AlwaysTrue02094b4c(GetGlobal02109400())) return;
         GetGlobalField0x1c020421a0();
         char text[0x80] = {};
         Zone021ae85c* zone = func_02012fe4();

@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 #include "Filesystem/BackgroundLoader.h"
@@ -34,11 +35,6 @@ void* AllocateAligned4(AllocatorUnion*, unsigned int);
 extern "C" void func_020728ac(TableA68*, SafeAllocator*, void*, unsigned int, int, int, int);
 extern "C" void func_02046380(Obj02046574*);
 extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(Obj02046574*, int, char*);
-void* GetGlobal02109400();
-extern "C" void _Z21BlankFunction02094b30v();
-extern "C" bool _Z18AlwaysTrue02094b4cv();
-typedef void (*BeginDialog)(void*, int, int);
-typedef bool (*DialogReady)(void*);
 char* FindEntryByKey(TableA68*, int);
 extern "C" void func_0204500c(Obj02046574*, char*, int
 #if !defined(jpn)
@@ -50,9 +46,6 @@ void ClearAllTreasureMapUnknownBits(void*);
 extern "C" void _Z29SetCombatModeFromCase020dc2d0i(int);
 extern "C" void _Z24ReinitController02043204Pc(char*);
 void SetByteField0x253(void*);
-extern "C" void _Z21BlankFunction02094b38v();
-typedef void (*EndDialog)(void*, int);
-extern "C" void func_02094ab0(void*);
 extern "C" void _Z37ClearFieldsAndResetAllocator_021bf398Pc(char*);
 
 // USA: func_ov017_021bf014
@@ -88,13 +81,11 @@ extern "C" ARM void func_ov017_021bf014(GrottoDialogState* self) {
         self->task = -1;
         func_02046380(controller);
         _Z22SetIndexedName02046574P11Obj02046574iPc(controller, 0, game->GetUnknownGameObject()->baseStats_->unk);
-        BeginDialog begin = (BeginDialog)_Z21BlankFunction02094b30v;
-        begin(GetGlobal02109400(), 0x203, 0);
+        BlankFunction02094b30(GetGlobal02109400(), 0x203, 0);
         self->state = 2;
     }
     if (self->state == 2) {
-        DialogReady ready = (DialogReady)_Z18AlwaysTrue02094b4cv;
-        if (!ready(GetGlobal02109400())) return;
+        if (!AlwaysTrue02094b4c(GetGlobal02109400())) return;
         if (grotto->activeMapData.GetDiscoveryState() == DiscoveryState_Undiscovered) self->state = 3;
         else self->state = 4;
     } else if (self->state == 3) {
@@ -140,9 +131,8 @@ extern "C" ARM void func_ov017_021bf014(GrottoDialogState* self) {
     } else if (self->state == 9) {
         _Z24ReinitController02043204Pc((char*)controller);
         SetByteField0x253(combatant);
-        void* global = GetGlobal02109400();
-        EndDialog end = (EndDialog)_Z21BlankFunction02094b38v;
-        end(global, 0x203);
+        FontBankLoader* global = GetGlobal02109400();
+        BlankFunction02094b38(global, 0x203);
         func_02094ab0(global);
         _Z37ClearFieldsAndResetAllocator_021bf398Pc((char*)self);
     }

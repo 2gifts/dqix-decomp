@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Grotto/Main/ActiveGrottoClass.h"
@@ -56,20 +57,15 @@ extern "C" void func_020dfec0(void*, SafeAllocator*, void*, unsigned int);
 extern "C" void func_0204500c(PopupController021bec00*, char*, int, int);
 extern "C" void func_02042b98(PopupController021bec00*, int, int, int, int);
 extern "C" void func_ov017_021bef84(PopupState021bec00*);
-extern "C" void func_02094ab0(void*);
 extern "C" PopupController021bec00* _Z26GetGlobalField0x1c020421a0v();
 extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(Obj020397cc*, int);
 void SetBitsInField4(unsigned int*, unsigned int);
-void* GetGlobal02109400();
-extern "C" void _Z21BlankFunction02094b30v();
-extern "C" int _Z18AlwaysTrue02094b4cv();
 void* AllocateAligned4(AllocatorUnion*, unsigned int);
 GrottoTransitionData* GetField0x3f8Address(GameState*);
 extern "C" void _Z27InitAndResetHeader_0219e310Phi(unsigned char*, int);
 void AppendNodeToTail(TailList020469b4*, TailNode020469b4*);
 extern "C" void _Z24ReinitController02043204Pc(char*);
 void SetByteField0x253(void*);
-extern "C" void _Z21BlankFunction02094b38v();
 extern AllocatorUnion data_02114e20;
 extern char data_ov017_021d7e98[], data_ov017_021d7eb2[];
 // USA: func_ov017_021bec00
@@ -86,9 +82,9 @@ extern "C" ARM void func_ov017_021bec00(PopupState021bec00* self) {
     if (self->state == 0) {
         _Z27CancelPendingAction020397ccP11Obj020397cci((Obj020397cc*)game->GetUnknownGameObject(), 1);
         SetBitsInField4(&resources->brightnessFlags_0, 0xc0);
-        void* music = GetGlobal02109400();
-        ((void (*)(void*, int, int))_Z21BlankFunction02094b30v)(music, 0x203, 0);
-        if (((int (*)(void*))_Z18AlwaysTrue02094b4cv)(music)) {
+        FontBankLoader* music = GetGlobal02109400();
+        BlankFunction02094b30(music, 0x203, 0);
+        if (AlwaysTrue02094b4c(music)) {
             self->state = 1;
             self->allocator.CreateTypeA(AllocateAligned4(&data_02114e20, 0xc00), 0xc00);
             self->task = loader->QueueLoadFile(data_ov017_021d7e98, 0);
@@ -154,8 +150,8 @@ extern "C" ARM void func_ov017_021bec00(PopupState021bec00* self) {
     } else if (self->state == 3 && controller->field9a0 == 0) {
         _Z24ReinitController02043204Pc((char*)controller);
         SetByteField0x253(game->GetUnknownGameObject());
-        void* music = GetGlobal02109400();
-        ((void (*)(void*, int))_Z21BlankFunction02094b38v)(music, 0x1f9);
+        FontBankLoader* music = GetGlobal02109400();
+        BlankFunction02094b38(music, 0x1f9);
         func_02094ab0(music);
         func_ov017_021bef84(self);
         self->complete = 1;

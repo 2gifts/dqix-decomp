@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "Combat/Main/CopyRecord0200fbb4.h"
 
 #if defined(jpn)
@@ -72,9 +73,6 @@ extern "C" void Vector3fix_Subtract(const Vec3_021a86d0* a, const Vec3_021a86d0*
 extern "C" void Vector3fix_Normalize(const Vec3_021a86d0* a, Vec3_021a86d0* out);
 extern "C" int fix32_Atan2(int y, int x);
 #include "Combat/EntryGetterTypes.h"
-extern "C" void* _Z17GetGlobal02109400v(void);
-extern "C" void _Z21BlankFunction02094b30v(void* obj, int a, int b);
-extern "C" int _Z18AlwaysTrue02094b4cv(void* obj);
 extern "C" void* _ZN16BackgroundLoader11GetInstanceEv(void);
 extern "C" int _ZN16BackgroundLoader18QueueLoadFileInGP2EPKcS1_P13SafeAllocator(void* loader, const char* gp2, const char* inner, void* alloc);
 extern "C" void* _Z16AllocateAligned4P14AllocatorUnionj(void* alloc, unsigned int size);
@@ -171,9 +169,9 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
             }
             SetValueOnActiveChild02040af0((Entry_203dce4*)node, angle);
         }
-        void* snd = _Z17GetGlobal02109400v();
-        _Z21BlankFunction02094b30v(snd, 0x205, 0);
-        if (_Z18AlwaysTrue02094b4cv(snd)) {
+        FontBankLoader* snd = GetGlobal02109400();
+        BlankFunction02094b30(snd, 0x205, 0);
+        if (AlwaysTrue02094b4c(snd)) {
 #if defined(jpn)
             self->task = _ZN16BackgroundLoader13QueueLoadFileEPKcP13SafeAllocator(
                 _ZN16BackgroundLoader11GetInstanceEv(), data_ov017_021d7c0c, NULL);

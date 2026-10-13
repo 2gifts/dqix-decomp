@@ -12,12 +12,10 @@
 #define R(j,u) (u)
 #endif
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
 
-int GetGlobal02109400(void);
-void BlankFunction02094b40(void);
-extern "C" void func_02094ab0(int obj);
 void ClearFirstWordThen0xC020972c8(int* p);
 extern "C" void func_ov014_021845ec(void* self);
 
@@ -40,8 +38,8 @@ extern "C" ARM void func_ov014_02186b30(struct Obj_02186b30* self) {
     if (self->field168 >= 0) {
         RemoveLoaderTask(self->field168);
     }
-    int g = GetGlobal02109400();
-    BlankFunction02094b40();
+    FontBankLoader* g = GetGlobal02109400();
+    BlankFunction02094b40(g);
     func_02094ab0(g);
     ClearFirstWordThen0xC020972c8(&self->fieldA4);
     func_ov014_021845ec(self);

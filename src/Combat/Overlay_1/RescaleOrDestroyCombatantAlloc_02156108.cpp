@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "GameState/GameState.h"
 
 #if defined(jpn)
@@ -13,10 +14,6 @@ extern "C" void func_0208bb78(void* obj, int count);
 struct StructAllocGroup0208ba54;
 void DestroyStructAllocGroup0208ba54(struct StructAllocGroup0208ba54*);
 unsigned int GetBitsInField0(unsigned int* obj, unsigned int mask);
-int GetGlobal02109400(void);
-extern "C" void _Z21BlankFunction02094b40v(int val);
-extern "C" void func_02094ab0(int val);
-extern "C" void _Z21BlankFunction02094b34v(int val, int f20, int f24, unsigned char f28, unsigned char f29);
 int StoreArgIfMatched_02153948(unsigned short arg);
 
 struct Obj02156108 {
@@ -57,10 +54,10 @@ extern "C" ARM int func_ov001_02156108(struct Obj02156108* self) {
     }
 
     if (GetBitsInField0(obj17, 0x1000) == 0) {
-        int val = GetGlobal02109400();
-        _Z21BlankFunction02094b40v(val);
+        FontBankLoader* val = GetGlobal02109400();
+        BlankFunction02094b40(val);
         func_02094ab0(val);
-        _Z21BlankFunction02094b34v(val, 0x6f, 0x1388, 1, 1);
+        BlankFunction02094b34(val, 0x6f, 0x1388, 1, 1);
     }
     self->field0xfe = 0;
     StoreArgIfMatched_02153948(self->field0x4e);

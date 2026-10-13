@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include <std_library_functions.h>
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
@@ -35,7 +36,6 @@ struct Lookup021ac3b0 {
 };
 extern "C" Zone021ac3b0* func_02012fe4();
 Controller021ac3b0* GetGlobalField0x1c020421a0();
-int GetGlobal02109400();
 void CancelPendingAction020397cc(Obj020397cc*, int);
 extern "C" int func_ov017_021959b4();
 void ReinitController02043204(char*);
@@ -47,9 +47,6 @@ void* GetGlobalResetObj020d7a50();
 int GetByte0x150Bit6(BitFlags020d805c*);
 void TeardownAndResetState020d7aa0(Obj020d7aa0*);
 extern "C" void func_0204500c(void*, const char*, int, int);
-void BlankFunction02094b3c();
-void BlankFunction02094b30();
-int AlwaysTrue02094b4c();
 extern "C" void func_020a0cc4(unsigned int);
 void SetVecYByMode02033834(Obj02033834*, int);
 extern "C" void func_020a0c0c();
@@ -65,8 +62,6 @@ extern "C" void func_0206f550(char*, char*, char*);
 extern "C" int func_020ac2d4(int, void*, Item021ac3b0*, int);
 extern "C" void func_020ac104(int, Item021ac3b0*, int);
 void SetOrClearBitInArray(void*, unsigned char*, int, int);
-extern "C" void func_02094ab0(int);
-void BlankFunction02094b34();
 void SetByteField0x253(void*);
 int LookupAndForEachNode020649b0(void*, int, void*);
 extern "C" void func_0206f81c(Lookup021ac3b0*);
@@ -82,7 +77,7 @@ extern "C" ARM void func_ov017_021ac3b0(Event021ac3b0* self) {
     Zone021ac3b0* zone = func_02012fe4();
     Controller021ac3b0* controller = GetGlobalField0x1c020421a0();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
-    int global = GetGlobal02109400();
+    FontBankLoader* global = GetGlobal02109400();
     CancelPendingAction020397cc((Obj020397cc*)leader, 1);
     if (!self->cancelled && func_ov017_021959b4()) {
         self->cancelled = 1; ReinitController02043204((char*)controller);
@@ -96,11 +91,11 @@ extern "C" ARM void func_ov017_021ac3b0(Event021ac3b0* self) {
         if (GetByte0x150Bit6((BitFlags020d805c*)reset)) TeardownAndResetState020d7aa0((Obj020d7aa0*)reset);
         func_0204500c(controller, data_ov017_021d7920, 0, 0xe3);
         controller->field19b2 = 0; controller->active = 1;
-        ((void (*)(int, int))BlankFunction02094b3c)(global, 10);
-        ((void (*)(int, int, int))BlankFunction02094b30)(global, 0x1f6, 1);
+        BlankFunction02094b3c(global, 10);
+        BlankFunction02094b30(global, 0x1f6, 1);
         self->stage++;
     } else if (self->stage == 1) {
-        if (((int (*)(int))AlwaysTrue02094b4c)(global)) self->stage++;
+        if (AlwaysTrue02094b4c(global)) self->stage++;
     } else if (self->stage == 2) {
         func_020a0cc4(0x2800);
         CancelPendingAction020397cc((Obj020397cc*)leader, 1);
@@ -170,11 +165,11 @@ extern "C" ARM void func_ov017_021ac3b0(Event021ac3b0* self) {
             }
             SetOrClearBitInArray(flags, flags->bits, self->info->index + 0x114c, 1);
         }
-        int state = GetGlobal02109400(); func_02094ab0(state);
-        ((void (*)(int, int, int, int, int))BlankFunction02094b34)(state, 0x6f, 0x1388, 1, 1);
+        FontBankLoader* state = GetGlobal02109400(); func_02094ab0(state);
+        BlankFunction02094b34(state, 0x6f, 0x1388, 1, 1);
         self->stage = 6;
     } else if (self->stage == 6) {
-        if (!((int (*)(int))AlwaysTrue02094b4c)(GetGlobal02109400())) return;
+        if (!AlwaysTrue02094b4c(GetGlobal02109400())) return;
         func_ov017_021ac32c(self); SetByteField0x253(leader); self->done = 1;
         Flags021ac3b0* flags = func_0205ec34();
         Lookup021ac3b0 lookup;

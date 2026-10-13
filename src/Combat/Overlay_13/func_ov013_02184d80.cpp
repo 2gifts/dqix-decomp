@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 
 #if defined(jpn)
 #define func_ov013_02184d80 func_ov013_02185db4
@@ -15,10 +16,6 @@ extern "C" void _Z23SetChannelAFlag0205cef8Pv(void* window);
 extern "C" void _Z23SetChannelBFlag0205cf04Pv(void* window);
 extern "C" void _Z15InitTag02185310Ph(unsigned char* self);
 extern "C" void func_ov013_02185cc0(void* self);
-void* GetGlobal02109400(void);
-extern "C" void _Z21BlankFunction02094b3cv(void);
-extern "C" void _Z21BlankFunction02094b30v(void);
-extern "C" bool _Z18AlwaysTrue02094b4cv(void);
 void SetWord0x18ClearByte0x1f(unsigned char* graphics, int value);
 extern "C" void func_0204b5b4(void* graphics, int priority);
 struct AllocTarget0204b12c;
@@ -154,14 +151,14 @@ extern "C" ARM void func_ov013_02184d80(SkillPointMenu02184d80* self) {
     {
         if (self->step_ == 0)
         {
-            void* music = GetGlobal02109400();
-            ((void (*)(void*, int))_Z21BlankFunction02094b3cv)(music, 0xc);
-            ((void (*)(void*, int, int))_Z21BlankFunction02094b30v)(music, 0x1f7, 0);
+            FontBankLoader* music = GetGlobal02109400();
+            BlankFunction02094b3c(music, 0xc);
+            BlankFunction02094b30(music, 0x1f7, 0);
             self->step_++;
         }
         else if (self->step_ == 1)
         {
-            if (((bool (*)(void*))_Z18AlwaysTrue02094b4cv)(GetGlobal02109400()))
+            if (AlwaysTrue02094b4c(GetGlobal02109400()))
             {
                 self->text_ = *(char**)((char*)_Z26GetGlobalField0x1c020421a0v()
 #if defined(jpn)

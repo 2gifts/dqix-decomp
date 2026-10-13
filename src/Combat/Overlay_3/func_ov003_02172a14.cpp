@@ -2,6 +2,7 @@
 #include "Memory/SafeAllocator.h"
 #include "std_library_functions.h"
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 
 struct GameResources;
 struct ActiveEntry02046900;
@@ -12,7 +13,6 @@ struct SelfTag0204b3a0;
 struct Zone02172a14;
 
 extern "C" void *func_ov017_0218b5b0(void);
-extern "C" void *_Z17GetGlobal02109400v(void);
 int CountActiveEntries(ActiveEntry02046900 *archive);
 void *FindRecordByIndex(Rec020467f0 *archive, int index, void **name, int *size);
 extern "C" void func_0205a528(void *renderer, void *file, unsigned int size, void *allocator);
@@ -28,8 +28,6 @@ extern "C" void _Z27DispatchByTagLookup0204b3a0P15SelfTag0204b3a0Pc(SelfTag0204b
 extern "C" void ColorEffect_ConfigureAlphaBlend(int control, int a, int b, int c, int d);
 void SetMainBrightness(GameResources *resources, int a, int b);
 extern "C" void func_020728ac(void *a, void *b, void *file, unsigned int size, int c, int d, int e);
-extern "C" void _Z21BlankFunction02094b30v(void *g, int a, int b);
-extern "C" int _Z18AlwaysTrue02094b4cv(void *g);
 
 extern char data_ov003_021809b0[];
 extern char data_ov003_021809c4[];
@@ -98,7 +96,7 @@ struct Self02172a14 {
 extern "C" ARM void func_ov003_02172a14(Self02172a14 *self) {
     GameResources *res       = (GameResources *) func_ov017_0218b5b0();
     BackgroundLoader *loader = BackgroundLoader::GetInstance();
-    void *global             = _Z17GetGlobal02109400v();
+    FontBankLoader* global = GetGlobal02109400();
     if (self->step_ == 0) {
         self->b180_ = 0;
         self->w170_ = self->w128_;
@@ -190,8 +188,8 @@ extern "C" ARM void func_ov003_02172a14(Self02172a14 *self) {
         self->step_ = 5;
     }
     if (self->step_ == 5) {
-        _Z21BlankFunction02094b30v(global, 0x1ff, 0);
-        if (_Z18AlwaysTrue02094b4cv(global) != 0) {
+        BlankFunction02094b30(global, 0x1ff, 0);
+        if (AlwaysTrue02094b4c(global) != 0) {
             self->unk_ec = 2;
             self->step_  = 0;
         }

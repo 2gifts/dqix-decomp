@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include <std_library_functions.h>
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
@@ -119,7 +120,6 @@ int* GetWord0x0(int*);
 void SetBitsInField4(unsigned int*, unsigned int);
 void SetFogState(int, unsigned int, unsigned int, unsigned short);
 void Set3DClearColor(int, int, int, int, int);
-void* GetGlobal02109400();
 int GetField4Low12(Field4Low12_02097420*);
 MonsterListEntry* GetBufferField8(BufferField8_02097418*);
 extern "C" void _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(const char*, char*, int);
@@ -132,10 +132,6 @@ void CopyOutBattleRegion0x75f0(void*);
 extern "C" void _Z21InitNodeChain0207f7f0P15Manager0207f7f0P12Node0207f7f0i(Manager0207f7f0*, Node0207f7f0*, int);
 
 extern "C" {
-void _Z21BlankFunction02094b40v(void* music);
-void _Z21BlankFunction02094b30v(void* music, int id, int);
-bool _Z18AlwaysTrue02094b4cv(void* music);
-void func_02094ab0(void* music);
 void func_020972e0(MonsterList* list, SafeAllocator* allocator, void* file, unsigned int size);
 int func_0207f9f4(Menu* menu);
 void func_0205a528(SpriteRenderer* renderer, void* file, unsigned int size, SafeAllocator* allocator);
@@ -163,15 +159,15 @@ extern "C" ARM void func_ov014_02187568(MonsterListScreen* self)
         SetBitsInField4((unsigned int*)func_ov017_0218b5b0(), 0x609fe);
         SetFogState(0, 0, 0, 0);
         Set3DClearColor(0, 0, 0x7fff, 0, 0);
-        void* music = GetGlobal02109400();
+        FontBankLoader* music = GetGlobal02109400();
         func_02094ab0(music);
-        _Z21BlankFunction02094b40v(music);
-        _Z21BlankFunction02094b30v(music, 0x6a, 0);
+        BlankFunction02094b40(music);
+        BlankFunction02094b30(music, 0x6a, 0);
         self->listStep_++;
     }
     else if (self->listStep_ == 1)
     {
-        if (_Z18AlwaysTrue02094b4cv(GetGlobal02109400()))
+        if (AlwaysTrue02094b4c(GetGlobal02109400()))
             self->listStep_++;
     }
     else if (self->listStep_ == 2)

@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "GameState/GameState.h"
 
 #if defined(jpn)
@@ -8,7 +9,6 @@ extern char data_020f29cc;
 
 extern "C" int func_ov017_021959b4(void);
 extern "C" void* _Z26GetGlobalField0x1c020421a0v(void);
-extern "C" int _Z17GetGlobal02109400v(void);
 extern "C" void* func_0202ae18(void);
 extern "C" char* _Z15GetFieldIfFlag4Pc(void* obj);
 extern "C" unsigned short* func_02012fe4(void);
@@ -17,8 +17,6 @@ extern "C" int _Z18CheckField0NonZeroPi(int* p);
 extern "C" int func_0202c508(void* obj);
 extern "C" void func_ov017_021cf730(int a, int b);
 extern "C" void _Z15ClearIntAt0x23cPh(unsigned char* obj);
-extern "C" void _Z21BlankFunction02094b30v(void* a, int b, int c);
-extern "C" int _Z18AlwaysTrue02094b4cv(void* a);
 extern "C" void func_020531f0(void* obj);
 extern "C" void _Z27CancelPendingAction020397ccP11Obj020397cci(void* obj, int arg1);
 extern "C" void _Z25ResetElapsedState020e11a4v(void);
@@ -53,7 +51,7 @@ extern "C" ARM void func_020d9870(struct Obj020d9870* self) {
     func_ov017_0218b5b0();
     void* unkObj = gs->GetUnknownGameObject();
     void* g1c = _Z26GetGlobalField0x1c020421a0v();
-    int g = _Z17GetGlobal02109400v();
+    FontBankLoader* g = GetGlobal02109400();
     void* t = func_0202ae18();
     char* f4 = _Z15GetFieldIfFlag4Pc(gs);
     unsigned short* p = func_02012fe4();
@@ -70,10 +68,10 @@ extern "C" ARM void func_020d9870(struct Obj020d9870* self) {
         _Z15ClearIntAt0x23cPh((unsigned char*)f4);
         self->state = 1;
     } else if (self->state == 1) {
-        _Z21BlankFunction02094b30v((void*)g, 0x20e, 0);
+        BlankFunction02094b30(g, 0x20e, 0);
         self->state = 2;
     } else if (self->state == 2) {
-        if (_Z18AlwaysTrue02094b4cv((void*)g) != 0) {
+        if (AlwaysTrue02094b4c(g) != 0) {
             self->state = 3;
         }
     } else if (self->state == 3) {

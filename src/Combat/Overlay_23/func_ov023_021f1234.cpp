@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include <Filesystem/BackgroundLoader.h>
 #include <Memory/SafeAllocator.h>
 
@@ -144,7 +145,6 @@ void* GetCombatantWithFlag0x100(GameState* gameState, int member);
 extern "C" void _Z27SetupContextForMode0205ea20Pvi(void* sound, int mode);
 unsigned char* GetFieldAt0x150(unsigned char* member);
 extern "C" void _Z20ResetFields_021eefacP14Reset_021eefac(Reset_021eefac* end);
-void* GetGlobal02109400();
 
 extern "C" {
 GameResources* func_ov017_0218b5b0();
@@ -173,9 +173,6 @@ void func_ov017_021cc730(int id, int a, int b, int c);
 void func_ov017_021ccc34(int id);
 void func_ov017_021c9e00(int id, int a, int b, int c);
 void func_ov017_021cd0d8(int id, unsigned short* skills, int count);
-void _Z21BlankFunction02094b40v(void* music);
-void _Z21BlankFunction02094b34v(void* music, int a, int b, int c, int d);
-int _Z18AlwaysTrue02094b4cv(void* music);
 }
 
 // USA: func_ov023_021f1234
@@ -357,14 +354,14 @@ extern "C" ARM int func_ov023_021f1234(BattleScene_021f1234* self)
         }
         else if (end->step_ == 11)
         {
-            void* music = GetGlobal02109400();
-            _Z21BlankFunction02094b40v(music);
-            _Z21BlankFunction02094b34v(music, 0x65, 500, 0, 0);
+            FontBankLoader* music = GetGlobal02109400();
+            BlankFunction02094b40(music);
+            BlankFunction02094b34(music, 0x65, 500, 0, 0);
             end->step_++;
         }
         else if (end->step_ == 12)
         {
-            if (_Z18AlwaysTrue02094b4cv(GetGlobal02109400()))
+            if (AlwaysTrue02094b4c(GetGlobal02109400()))
             {
                 self->skillMenu_ = NULL;
                 _Z20ResetFields_021eefacP14Reset_021eefac((Reset_021eefac*)end);

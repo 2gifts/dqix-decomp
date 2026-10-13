@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #if defined(jpn)
 #define func_ov008_02188d74 func_ov008_02189a9c
 #define func_ov008_0218712c func_ov008_02188008
@@ -131,12 +132,8 @@ struct Manager02187664;
 struct Struct_0205d81c;
 
 extern "C" MessageSystem* _Z26GetGlobalField0x1c020421a0v();
-void* GetGlobal02109400();
 int TestFlag0SetAndFlag1Clear(unsigned short* pad, int buttons);
 extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(Entry_0205d6a0* window, int value);
-extern "C" void _Z21BlankFunction02094b40v();
-extern "C" void _Z21BlankFunction02094b34v();
-extern "C" int _Z18AlwaysTrue02094b4cv();
 void SetMainBrightness(GameResources* resources, int screen, int brightness);
 extern "C" void _Z18InitConfig02187664P15Manager02187664i(Manager02187664* self, int records);
 extern "C" Canvas* _Z23FindElementByC40205d81cP15Struct_0205d81ci(Struct_0205d81c* window, int canvas);
@@ -163,7 +160,7 @@ extern "C" ARM void func_ov008_02185a70(BattleRecords* self, unsigned int ticks)
     MessageSystem* messages = _Z26GetGlobalField0x1c020421a0v();
     GameResources* resources = func_ov017_0218b5b0();
     BackgroundLoader::GetInstance();
-    void* music = GetGlobal02109400();
+    FontBankLoader* music = GetGlobal02109400();
     unsigned char step = self->step_;
     if (step >= 2)
         messages->unk_19ae = 0;
@@ -218,13 +215,13 @@ extern "C" ARM void func_ov008_02185a70(BattleRecords* self, unsigned int ticks)
     if (step == 5)
     {
         _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i((Entry_0205d6a0*)&self->window_, 1);
-        ((void (*)(void*))_Z21BlankFunction02094b40v)(music);
-        ((void (*)(void*, int, int, int, int))_Z21BlankFunction02094b34v)(music, 0x6b, 0x1fc, 0, 0);
+        BlankFunction02094b40(music);
+        BlankFunction02094b34(music, 0x6b, 0x1fc, 0, 0);
         self->step_++;
     }
     if (step == 6)
     {
-        if (!((int (*)(void*))_Z18AlwaysTrue02094b4cv)(music))
+        if (!AlwaysTrue02094b4c(music))
             return;
         if (func_ov008_02188d74(self))
         {

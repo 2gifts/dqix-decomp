@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 #include "Memory/AllocatorUnion.h"
@@ -19,14 +20,9 @@ void ClearFlagBits(unsigned char* obj, int mask);
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
 void PushInputLogA(int id);
 void PushInputLogB(int id);
-int GetGlobal02109400(void);
 void SetByteField0x253(void* obj);
 extern "C" void func_020a0cc4(unsigned int size, int ticks);
 extern "C" void func_020a0c0c(void);
-extern "C" void func_02094ab0(int g);
-extern "C" void _Z21BlankFunction02094b40v(int g);
-extern "C" void _Z21BlankFunction02094b34v(int g, int a, int b, int c, int d);
-extern "C" int _Z18AlwaysTrue02094b4cv(int g);
 extern "C" void func_ov003_02174114(void* obj);
 extern "C" void func_ov003_02173f70(void* obj, SafeAllocator* alloc);
 extern "C" int func_ov003_021745fc(void* obj);
@@ -92,14 +88,14 @@ extern "C" ARM void func_ov017_021b2ce8(Task_021b2ce8* self) {
         self->state++;
     } else if (self->state == 1) {
         if (func_ov003_021745fc(data_ov017_021d840c)) {
-            int g = GetGlobal02109400();
-            _Z21BlankFunction02094b40v(g);
+            FontBankLoader* g = GetGlobal02109400();
+            BlankFunction02094b40(g);
             func_02094ab0(g);
-            _Z21BlankFunction02094b34v(g, 0x6f, 5000, 1, 1);
+            BlankFunction02094b34(g, 0x6f, 5000, 1, 1);
             self->state++;
         }
     } else if (self->state == 2) {
-        if (_Z18AlwaysTrue02094b4cv(GetGlobal02109400())) {
+        if (AlwaysTrue02094b4c(GetGlobal02109400())) {
             func_ov003_02174454(data_ov017_021d840c);
             self->state++;
         }

@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "GameState/GameState.h"
 #define REG_DISPCNT (*(volatile unsigned int*)0x04000000)
 struct Obj020397cc { char padding[0xb2]; short field_b2; };
@@ -37,7 +38,6 @@ extern "C" void func_ov002_0215505c(char*);
 extern "C" void func_ov002_02154d40(char*, SafeAllocator*);
 extern "C" int func_ov002_02155960(char*, int);
 extern "C" void func_ov002_021556fc(char*);
-extern "C" void func_02094ab0(void*);
 extern "C" void func_ov017_021a55b0(BattleState021a5600*);
 extern "C" void func_ov017_02191108(GameResources*, int, int, int, int);
 extern "C" FlagWord02046708* _Z27GetDataPtr02114e04_020d6c00v();
@@ -52,9 +52,6 @@ void* AllocateAligned4(AllocatorUnion*, unsigned int);
 void PushInputLogA(int);
 void PushInputLogB(int);
 extern "C" void _Z26SetBytes485And486_021556ecPvii(void*, int, int);
-void* GetGlobal02109400();
-extern "C" void _Z21BlankFunction02094b40v();
-extern "C" void _Z21BlankFunction02094b34v();
 int ListContainsId(ListHead02046b60*, int);
 void SetByteField0x253(void*);
 extern "C" void _Z25InitPaletteTables0202ac74v();
@@ -106,10 +103,10 @@ extern "C" ARM void func_ov017_021a5600(BattleState021a5600* self) {
         if (func_ov002_02155960(data_ov017_021d83ac, ticks)) ++self->state;
     } else if (self->state == 2) {
         func_ov002_021556fc(data_ov017_021d83ac);
-        void* music = GetGlobal02109400();
-        _Z21BlankFunction02094b40v();
+        FontBankLoader* music = GetGlobal02109400();
+        BlankFunction02094b40(music);
         func_02094ab0(music);
-        ((void (*)(void*, int, int, int, int))_Z21BlankFunction02094b34v)(music, 5000, 0x6f, 1, 1);
+        BlankFunction02094b34(music, 5000, 0x6f, 1, 1);
         ++self->state;
     } else if (self->state == 3) {
         unsigned int layer = *reinterpret_cast<unsigned int*>(data_ov017_021d83ac + SceneDisplayOffset);

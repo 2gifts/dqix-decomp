@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
@@ -112,7 +113,6 @@ struct ProfileEditor021863fc
 struct TableA68;
 
 int GetWord0x0(int* gameState);
-void* GetGlobal02109400();
 int IsField0Null(void** p);
 void SetBitsInWord(unsigned int* word, unsigned int bits);
 extern "C" void* _Z27GetDataPtr02114e04_020d6c00v();
@@ -126,10 +126,7 @@ extern "C" void func_ov012_02185f74(ProfileEditor021863fc* self);
 extern "C" void func_ov012_021861e0(ProfileEditor021863fc* self);
 extern "C" void func_ov012_021862fc(ProfileEditor021863fc* self);
 extern "C" void func_ov012_02184654(ProfileEditor021863fc* self);
-extern "C" void func_02094ab0();
-extern "C" void _Z21BlankFunction02094b34v(void* music, int a, int b, int c, int d);
 void SetSubBrightness(GameResources* resources, int brightness, int frames);
-extern "C" int _Z18AlwaysTrue02094b4cv();
 int IsSubBrightnessTransitionActive(GameResources* resources);
 extern "C" void func_ov023_021e7220(void* card, int mode);
 extern "C" void _Z30CreateThreeAllocators_021e71b4PvP13SafeAllocator(void* card, SafeAllocator* allocator);
@@ -239,17 +236,16 @@ extern "C" ARM void func_ov012_021863fc(ProfileEditor021863fc* self)
         BG2CNT = (BG2CNT & ~3) | 1;
         BG3CNT = (BG3CNT & ~3) | 0;
         DISPCNT = (DISPCNT & ~0x1f00) | 0x1f00;
-        void* music = GetGlobal02109400();
-        func_02094ab0();
-        _Z21BlankFunction02094b34v(music, 0x6e, 0x1ff, 0, 0);
+        FontBankLoader* music = GetGlobal02109400();
+        func_02094ab0(music);
+        BlankFunction02094b34(music, 0x6e, 0x1ff, 0, 0);
         SetSubBrightness(resources, -16, 15);
         self->step_++;
         return;
     }
     else if (self->step_ == 3)
     {
-        GetGlobal02109400();
-        if (_Z18AlwaysTrue02094b4cv() && !IsSubBrightnessTransitionActive(resources))
+        if (AlwaysTrue02094b4c(GetGlobal02109400()) && !IsSubBrightnessTransitionActive(resources))
         {
             OrGlobalFlag0x40();
             self->allocators_[2].Reset();

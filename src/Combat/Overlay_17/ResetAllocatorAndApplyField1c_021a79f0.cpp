@@ -1,11 +1,8 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "Memory/SafeAllocator.h"
 #include "Memory/AllocatorUnion.h"
 
-int GetGlobal02109400(void);
-void BlankFunction02094b38(void);
-struct Obj02094ab0;
-extern "C" void func_02094ab0(struct Obj02094ab0* obj);
 extern "C" void func_020a0c0c(void);
 void TailForward02012da4(AllocatorUnion*, void*);
 extern AllocatorUnion data_02114e20;
@@ -23,9 +20,9 @@ struct Obj021a79f0 {
 
 // USA: func_ov017_021a79f0  (semantic: ResetAllocatorAndApplyField1c_021a79f0)
 extern "C" ARM void func_ov017_021a79f0(struct Obj021a79f0* self) {
-    void* g = (void*)GetGlobal02109400();
-    ((void (*)(void*, int)) & BlankFunction02094b38)(g, 0x205);
-    func_02094ab0((struct Obj02094ab0*)g);
+    FontBankLoader* g = GetGlobal02109400();
+    BlankFunction02094b38(g, 0x205);
+    func_02094ab0(g);
 
     void* handle = self->allocator.GetSignedAllocator();
     if (handle != NULL) {

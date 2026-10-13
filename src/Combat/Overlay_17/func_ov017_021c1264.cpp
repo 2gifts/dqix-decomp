@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 
 #if defined(jpn)
 enum { kSceneHeapSize = 0x22c00, kSceneObjectSize = 0x338, kSceneFieldOffset = 0x170 };
@@ -19,8 +20,6 @@ void SetFlagsAt0x244(unsigned char* obj, unsigned char mask);
 void SetByteField0x253(void* obj);
 void PushInputLogA(int id);
 void PushInputLogB(int id);
-int GetGlobal02109400(void);
-int AlwaysTrue02094b4c(void);
 
 struct Obj020397cc;
 void CancelPendingAction020397cc(struct Obj020397cc* obj, int arg1);
@@ -30,9 +29,6 @@ extern AllocatorUnion data_02114e20;
 extern "C" void func_020a0cc4(unsigned int);
 extern "C" void func_020a0c0c(void);
 
-extern "C" void func_02094ab0(int val);
-extern "C" void _Z21BlankFunction02094b40v(int val);
-extern "C" void _Z21BlankFunction02094b34v(int val, int f20, int f24, unsigned char f28, unsigned char f29);
 
 extern "C" void func_ov003_02154720(void* mem, unsigned char b);
 extern "C" void func_ov003_021544ec(void* mem, SafeAllocator* alloc);
@@ -95,16 +91,15 @@ extern "C" ARM void func_ov017_021c1404(struct Obj021c1404* obj) {
 	if (step == 1) {
 		unsigned int scaleCount = battle->GetTickCount();
 		if (func_ov003_02154af4((void*)data_ov017_021d8478, scaleCount) == 0) return;
-		int val = GetGlobal02109400();
-		_Z21BlankFunction02094b40v(val);
+		FontBankLoader* val = GetGlobal02109400();
+		BlankFunction02094b40(val);
 		func_02094ab0(val);
-		_Z21BlankFunction02094b34v(val, 0x6f, 0x1388, 1, 1);
+		BlankFunction02094b34(val, 0x6f, 0x1388, 1, 1);
 		obj->step = obj->step + 1;
 		return;
 	}
 	if (step == 2) {
-		GetGlobal02109400();
-		if (!AlwaysTrue02094b4c()) return;
+		if (!AlwaysTrue02094b4c(GetGlobal02109400())) return;
 		func_ov003_021549a8((void*)data_ov017_021d8478);
 		obj->step = obj->step + 1;
 		return;

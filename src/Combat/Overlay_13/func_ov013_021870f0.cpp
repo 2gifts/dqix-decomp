@@ -1,9 +1,6 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #if defined(jpn)
-void* GetGlobal02109400();
-extern "C" void _Z21BlankFunction02094b3cv(void*, int);
-extern "C" void _Z21BlankFunction02094b30v(void*, int, int);
-extern "C" int _Z18AlwaysTrue02094b4cv(void*);
 extern char data_ov013_02188de0[];
 extern char data_ov013_02188dfa[];
 #define data_ov013_02187db8 data_ov013_02188ce0
@@ -145,9 +142,9 @@ extern "C" ARM bool func_ov013_021870f0(SkillAbilityList021870f0* self) {
     if (self->step_ == 0)
     {
 #if defined(jpn)
-        void* manager = GetGlobal02109400();
-        _Z21BlankFunction02094b3cv(manager, 10);
-        _Z21BlankFunction02094b30v(manager, 0x68, 0);
+        FontBankLoader* manager = GetGlobal02109400();
+        BlankFunction02094b3c(manager, 10);
+        BlankFunction02094b30(manager, 0x68, 0);
 #else
         SafeAllocator* allocators = self->allocators_;
         allocators[4].Reset();
@@ -179,7 +176,7 @@ extern "C" ARM bool func_ov013_021870f0(SkillAbilityList021870f0* self) {
     else if (self->step_ == 1)
     {
 #if defined(jpn)
-        if (_Z18AlwaysTrue02094b4cv(GetGlobal02109400())) {
+        if (AlwaysTrue02094b4c(GetGlobal02109400())) {
             self->step_++;
         }
 #else

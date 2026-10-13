@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "Combat/Main/BattleList.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
@@ -40,7 +41,6 @@ extern "C" void _Z19ResetBitfieldRecordP22BitfieldRecord020a1380(void* obj);
 extern "C" void _Z20InitBuffers_021580a0P14Struct021580a0(void* obj);
 extern "C" void* _Z26FindElementByField020a15bcP13Array020a15bci(void* arr, int id);
 extern "C" void _Z30AppendFormattedNumber_02158140P11Obj02158140i(void* obj, int val);
-extern "C" void _Z21BlankFunction02094b34v(void* p0, int p1, int p2, int p3, int p4);
 
 extern "C" struct CombatantStruct* _ZN9GameState21GetPartyMemberByIndexEi(struct BattleStruct* battleStruct, int combatantId);
 extern "C" int _Z18GetField0x3acValueP9GameState(struct BattleStruct* battleStruct);
@@ -49,9 +49,6 @@ void ZeroInit020de848(void* obj);
 ARM int BuildDescriptorFlag1_020de980(void* a, void* b, void* c, int d, int e);
 int GetGlobalField0x1c020421a0(void);
 void ReinitController02043204(char* obj);
-int GetGlobal02109400(void);
-void BlankFunction02094b40(void);
-int AlwaysTrue02094b4c(void);
 void SetCombatModeFromCase020dc2d0(int);
 extern "C" ARM int _Z28IsBrightnessTransitionActiveP13GameResources(int* obj);
 ARM void* Clear0x54Bytes0208247c(void* obj);
@@ -391,13 +388,12 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
             }
         }
     } else if (state == 0x66) {
-        int g = GetGlobal02109400();
-        BlankFunction02094b40();
-        _Z21BlankFunction02094b34v((void*)g, 0x66, 501, 0, 0);
+        FontBankLoader* g = GetGlobal02109400();
+        BlankFunction02094b40(g);
+        BlankFunction02094b34(g, 0x66, 501, 0, 0);
         *(unsigned char*)(s + 0x1f9) = *(unsigned char*)(s + 0x1f9) + 1;
     } else if (state == 0x67) {
-        GetGlobal02109400();
-        if (AlwaysTrue02094b4c() != 0) {
+        if (AlwaysTrue02094b4c(GetGlobal02109400()) != 0) {
             SetCombatModeFromCase020dc2d0(0);
             *(unsigned char*)(s + 0x1f9) = *(unsigned char*)(s + 0x1f9) + 1;
         }

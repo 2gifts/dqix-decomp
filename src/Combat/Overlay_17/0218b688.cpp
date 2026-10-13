@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "World/ZoneLootableRecord.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
@@ -201,13 +202,11 @@ extern "C" void _Z27SetActiveDmaChannel020c3a0ci(int ch);
 extern "C" int _Z23GetHeadNodeIdOrMinusOnePP16HeadNode02046b24(void* p);
 extern "C" void func_0206e424(void* p, int a);
 extern "C" void _Z15InitObj021bdbf0Ph(void* p);
-extern "C" void* _Z17GetGlobal02109400v();
 extern "C" void _Z19ClearBuffer0202ad30v();
 extern "C" void _Z27FlushAndClearBuffer0202adf0v();
 extern "C" int _Z15GetBitsInField0Pjj(void* p, unsigned int bits);
 extern "C" int _Z15GetBitsInField4Pjj(void* p, unsigned int bits);
 extern "C" void _Z28InitCombatSubsystems02012efcv();
-extern "C" void _Z18AlwaysTrue02094b4cv(void* p);
 extern "C" int _Z28IsBrightnessTransitionActiveP13GameResources(void* res);
 extern "C" int _Z12IsField0NullPPv(void* p);
 extern "C" void _ZN8Vector3iaSERKS_(void* dst, const void* src);
@@ -793,7 +792,7 @@ extern "C" ARM void func_ov017_0218b688(Battle0218b688* self) {
     if (_Z18GetByteField0x63d6P20FieldBlock63d6_115a8(gs) != 0) {
         _Z15ClearByte0x63d6P20FieldBlock63d6_115c0(gs);
     }
-    void* global400 = _Z17GetGlobal02109400v();
+    FontBankLoader* global400 = GetGlobal02109400();
     _Z19ClearBuffer0202ad30v();
     _Z27FlushAndClearBuffer0202adf0v();
 
@@ -805,7 +804,7 @@ extern "C" ARM void func_ov017_0218b688(Battle0218b688* self) {
         _Z28InitCombatSubsystems02012efcv();
         GameState::GetInstance();
         func_0205ec34();
-        _Z18AlwaysTrue02094b4cv(global400);
+        AlwaysTrue02094b4c(global400);
         int quit = 0;
         if (self->exitRequest == 1) {
             self->exitRequest = 0;

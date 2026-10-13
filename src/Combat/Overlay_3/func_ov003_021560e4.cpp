@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 
@@ -19,15 +20,12 @@ enum { kTaskOffset = 0x1d0, kPartyResourceOffset = 0x71c, kGlobalFieldOffset = 0
 extern "C" {
 void ColorEffect_ConfigureAlphaBlend(int, int, int, int, int);
 int _Z17FindRecordByIndexP11Rec020467f0iPPvPi(void*, int, void**, int*);
-void* _Z17GetGlobal02109400v(void);
-int _Z18AlwaysTrue02094b4cv(void*);
 int _Z18CountActiveEntriesP19ActiveEntry02046900(void*);
 int _Z18GetField0x3acValueP9GameState(void*);
 void _Z18InitStruct0205a444Pc(void*);
 int _Z18TestBitInByteArrayiPhi(void*, void*, int);
 void _Z19ResetStruct020dfc40P14Struct020dfc40(void*);
 void _Z20ClearFields_021e20c0Pv(void*);
-void _Z21BlankFunction02094b34v(void*, int, int, int, int);
 void* _Z21GetFieldByKey020e0434P17Container020e0310i(void*, int);
 void _Z21InitNodeChain0207f7f0P15Manager0207f7f0P12Node0207f7f0i(void*, void*, int);
 void _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij(void*, void*, int, int);
@@ -63,7 +61,6 @@ void func_0204b5b4(void*, int);
 void func_0205a528(void*, void*, int, void*);
 void* func_0205ec34(void);
 int func_0207f9f4(void*);
-void func_02094ab0(void*);
 void func_020dfec0(void*, void*, void*, unsigned int);
 void func_ov003_02156054(void*);
 void func_ov023_021e20f0(void*, void*, void*, unsigned int);
@@ -149,12 +146,12 @@ extern "C" ARM void func_ov003_021560e4(Ctrl* self) {
             _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0(_Z25GetGlobalResetObj020d7a50v());
         }
         func_ov003_02156054(self);
-        void* g = _Z17GetGlobal02109400v();
+        FontBankLoader* g = GetGlobal02109400();
         func_02094ab0(g);
-        _Z21BlankFunction02094b34v(g, 0x66, 0x1f5, 0, 0);
+        BlankFunction02094b34(g, 0x66, 0x1f5, 0, 0);
         self->state = self->state + 1;
     } else if (state == 1) {
-        if (_Z18AlwaysTrue02094b4cv(_Z17GetGlobal02109400v())) {
+        if (AlwaysTrue02094b4c(GetGlobal02109400())) {
 #if defined(jpn)
             self->task = loader->QueueLoadFile(data_ov003_0217e554, 0);
 #else

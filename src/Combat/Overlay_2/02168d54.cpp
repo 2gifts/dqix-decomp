@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
@@ -41,9 +42,6 @@ int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
 int CheckByteSetAndByteClear(unsigned char* obj);
 extern "C" void _Z24ReinitController02043204Pc(char* obj);
 extern "C" void func_02043124(void* self);
-int GetGlobal02109400(void);
-extern "C" void _Z21BlankFunction02094b3cv(int g, int v);
-extern "C" void func_02094ab0(int g);
 void PushInputLogB(int id);
 extern "C" void _Z13Reset0209fe9cPc(char* obj);
 extern "C" void _Z37InitManagerAndAllocateBuffers0209fee4P11Obj0209fee4P13SafeAllocatorii(Obj0209fee4* obj, SafeAllocator* alloc, int data, int length);
@@ -58,9 +56,6 @@ extern "C" void func_ov023_021eb138(char* obj, int v);
 extern "C" void func_ov023_021eb080(char* obj, SafeAllocator* alloc);
 extern "C" void func_ov023_021eb564(char* obj, int a, int b);
 extern "C" void func_ov023_021eb26c(void* obj);
-extern "C" void _Z21BlankFunction02094b40v(int g);
-extern "C" void _Z21BlankFunction02094b30v(int g, int a, int b);
-extern "C" int _Z18AlwaysTrue02094b4cv(int g);
 extern "C" void ColorEffect_ConfigureAlphaBlend(int control, unsigned int pixel1Source, unsigned int pixel2Source, unsigned int pixel1Alpha, unsigned int pixel2Alpha);
 extern "C" void _Z18ClearFlags020466f4P16FlagWord020466f4j(FlagWord020466f4* word, unsigned int mask);
 void PopStack1AndTrigger(int flag);
@@ -149,8 +144,8 @@ extern "C" ARM void func_ov002_02168d54(char* self) {
         }
         _Z24ReinitController02043204Pc(controller);
         func_02043124(controller);
-        int global = GetGlobal02109400();
-        _Z21BlankFunction02094b3cv(global, 0xc);
+        FontBankLoader* global = GetGlobal02109400();
+        BlankFunction02094b3c(global, 0xc);
         func_02094ab0(global);
         self[0x2454] = 0;
         self[0x2455] = 0;
@@ -225,12 +220,12 @@ extern "C" ARM void func_ov002_02168d54(char* self) {
         self[0x2471] = 0;
         (*(int*)(self + 0x1bc0))++;
     } else if (*(int*)(self + 0x1bc0) == 0xf) {
-        int global = GetGlobal02109400();
-        _Z21BlankFunction02094b40v(global);
-        _Z21BlankFunction02094b30v(global, 100, 0);
+        FontBankLoader* global = GetGlobal02109400();
+        BlankFunction02094b40(global);
+        BlankFunction02094b30(global, 100, 0);
         (*(int*)(self + 0x1bc0))++;
     } else if (*(int*)(self + 0x1bc0) == 0x10) {
-        if (_Z18AlwaysTrue02094b4cv(GetGlobal02109400())) {
+        if (AlwaysTrue02094b4c(GetGlobal02109400())) {
             *(int*)(self + 0x1bc0) = 100;
             ColorEffect_ConfigureAlphaBlend(0x04000050, 2, 1, 10, 6);
         }

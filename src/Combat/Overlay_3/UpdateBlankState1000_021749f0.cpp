@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #if defined(jpn)
 enum { kRegion1041 = 0xfbd };
 enum { kRegion1046 = 0xfc2 };
@@ -8,9 +9,6 @@ enum { kRegion1046 = 0x1046 };
 #endif
 
 
-int GetGlobal02109400(void);
-extern "C" void _Z21BlankFunction02094b34v(int, int, int, int, int);
-int AlwaysTrue02094b4c(void);
 
 // USA: func_ov003_021749f0  (semantic: UpdateBlankState1000_021749f0)
 extern "C" ARM void func_ov003_021749f0(char* self) {
@@ -19,12 +17,11 @@ extern "C" ARM void func_ov003_021749f0(char* self) {
 	}
 	unsigned char state = *(unsigned char*)(self + kRegion1041);
 	if (state == 0) {
-		int g = GetGlobal02109400();
-		_Z21BlankFunction02094b34v(g, 0x1fb, 0x66, 0, 0);
+		FontBankLoader* g = GetGlobal02109400();
+		BlankFunction02094b34(g, 0x1fb, 0x66, 0, 0);
 		*(unsigned char*)(self + kRegion1041) = *(unsigned char*)(self + kRegion1041) + 1;
 	} else if (state == 1) {
-		GetGlobal02109400();
-		if (AlwaysTrue02094b4c() != 0) {
+		if (AlwaysTrue02094b4c(GetGlobal02109400()) != 0) {
 			*(unsigned short*)(self + kRegion1046) &= ~0x40;
 			*(unsigned char*)(self + kRegion1041) = 0;
 		}

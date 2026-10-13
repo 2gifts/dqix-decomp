@@ -1,33 +1,18 @@
 #include <globaldefs.h>
-
-#if defined(jpn)
-struct RegionalState02094b3c {
-    char pad00[0x3c];
-    int firstIndex;
-    int secondIndex;
-};
-
-extern "C" void _Z21BlankFunction02094b38v(RegionalState02094b3c*, int);
-#endif
+#include "Resource/FontBankLoader.h"
 
 // USA: func_02094b3c
-extern "C" ARM void _Z21BlankFunction02094b3cv(
-#if defined(jpn)
-    RegionalState02094b3c* self, int event
-#else
-    void
-#endif
-) {
+ARM void BlankFunction02094b3c(FontBankLoader* loader, int event) {
 #if defined(jpn)
     switch (event) {
     case 8:
-        _Z21BlankFunction02094b38v(self, self->secondIndex);
+        BlankFunction02094b38(loader, loader->supplementalBank);
         break;
     case 10:
-        _Z21BlankFunction02094b38v(self, self->firstIndex);
+        BlankFunction02094b38(loader, loader->primaryBank);
         break;
     case 12:
-        _Z21BlankFunction02094b38v(self, self->secondIndex);
+        BlankFunction02094b38(loader, loader->supplementalBank);
         break;
     }
 #endif

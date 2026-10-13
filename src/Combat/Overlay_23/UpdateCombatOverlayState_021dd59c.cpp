@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/AllocatorUnion.h"
 #include "Memory/SafeAllocator.h"
@@ -10,9 +11,6 @@ int DispatchByMode77c_021ddbb8(void* obj, int a, int b);
 struct Obj021ddbf8;
 int Check_021ddbf8(struct Obj021ddbf8* obj);
 void OrGlobalFlag0x40(void);
-int GetGlobal02109400(void);
-extern "C" void _Z21BlankFunction02094b30v(int, int, int);
-int AlwaysTrue02094b4c(void);
 
 struct SubBgControlBackup02074b64;
 void BackupSubBgControlRegisters(struct SubBgControlBackup02074b64* obj);
@@ -90,12 +88,11 @@ extern "C" ARM void func_ov023_021dd59c(void* objRaw) {
             *(unsigned char*)(obj + regionalOffset0) = 4;
             return;
         }
-        int g = GetGlobal02109400();
-        _Z21BlankFunction02094b30v(g, 0x1fa, 0);
+        FontBankLoader* g = GetGlobal02109400();
+        BlankFunction02094b30(g, 0x1fa, 0);
         *(unsigned char*)(obj + regionalOffset0) = *(unsigned char*)(obj + regionalOffset0) + 1;
     } else if (*(unsigned char*)(obj + regionalOffset0) == 3) {
-        GetGlobal02109400();
-        if (AlwaysTrue02094b4c() != 0) {
+        if (AlwaysTrue02094b4c(GetGlobal02109400()) != 0) {
             *(unsigned char*)(obj + regionalOffset0) = *(unsigned char*)(obj + regionalOffset0) + 1;
         }
     }

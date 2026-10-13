@@ -1,9 +1,6 @@
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 
-int GetGlobal02109400(void);
-void BlankFunction02094b3c(void);
-void BlankFunction02094b30(void);
-int AlwaysTrue02094b4c(void);
 
 struct Self2f00 {
     char pad0[0x36];
@@ -16,15 +13,15 @@ extern "C" ARM void func_02092f00(struct Self2f00* self) {
     unsigned char flags = self->f37;
     if (flags & 8) return;
     if (!(flags & 4)) return;
-    int globalVal = GetGlobal02109400();
+    FontBankLoader* globalVal = GetGlobal02109400();
     if (self->f36 == 0) {
-        ((void (*)(int, int))BlankFunction02094b3c)(globalVal, 0xa);
-        ((void (*)(int, int, int))BlankFunction02094b30)(globalVal, 0x1f8, 0);
+        BlankFunction02094b3c(globalVal, 0xa);
+        BlankFunction02094b30(globalVal, 0x1f8, 0);
         self->f36 = self->f36 + 1;
         return;
     }
     if (self->f36 != 1) return;
-    if (AlwaysTrue02094b4c()) {
+    if (AlwaysTrue02094b4c(globalVal)) {
         self->f37 = self->f37 & ~4;
         self->f36 = 0;
     }

@@ -4,15 +4,13 @@ enum {regionalOffset0=0x568, regionalOffset1=0x120, regionalOffset2=0x11c, regio
 enum {regionalOffset0=0x630, regionalOffset1=0x124, regionalOffset2=0x120, regionalOffset3=0x2d8, regionalOffset4=0x2dc, regionalOffset5=0x2e0};
 #endif
 #include <globaldefs.h>
+#include "Resource/FontBankLoader.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
 
 void* GetDataPtr02114e04_020d6c00(void);
 struct FlagWord020466f4;
 void ClearFlags020466f4(struct FlagWord020466f4*, unsigned int);
-int GetGlobal02109400(void);
-void BlankFunction02094b40(void);
-extern "C" void func_02094ab0(int);
 extern "C" void func_ov005_02154198(void*);
 extern "C" void* func_02012fe4(void);
 void SetFlagBytes02017d68(void* obj);
@@ -36,8 +34,8 @@ ARM void CleanupAndReinitCombatState_021e2f38(void* obj) {
         *(int*)(o + regionalOffset0) = -1;
     }
 
-    int g = GetGlobal02109400();
-    BlankFunction02094b40();
+    FontBankLoader* g = GetGlobal02109400();
+    BlankFunction02094b40(g);
     func_02094ab0(g);
 
     if (*(void**)(o + 0x0) != 0) {
