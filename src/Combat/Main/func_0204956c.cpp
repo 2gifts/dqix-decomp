@@ -23,7 +23,7 @@ void ClearSubstructFlag0x4(unsigned char*);
 int GetSubstructByte0x56(unsigned char*);
 int GetByteWithFallback(unsigned char*);
 int GetSubstructByte0x1c(unsigned char*);
-extern "C" void _Z26DispatchTargetByte020494c0P11Obj020494c0(Obj020494c0*);
+void DispatchTargetByte020494c0(Obj020494c0*);
 extern "C" int func_02031468(Vector3i*, Vector3i*, Vector3i*, Vector3i*);
 extern "C" ClipState0204956c data_02107850;
 namespace ClipAlias0204956c { extern "C" ClipState0204956c data_02107850; }
@@ -105,7 +105,7 @@ extern "C" ARM void func_0204956c(MovementActor0204956c* actor) {
             state->speed = 0xc00 / (frames * 17);
         }
         object->MaybeSetRegularAnimation(data_020f01a4, 1);
-        _Z26DispatchTargetByte020494c0P11Obj020494c0(reinterpret_cast<Obj020494c0*>(actor));
+        DispatchTargetByte020494c0(reinterpret_cast<Obj020494c0*>(actor));
         return;
     }
     int targetId = GetByteWithFallback(bytes);
@@ -150,7 +150,7 @@ extern "C" ARM void func_0204956c(MovementActor0204956c* actor) {
         } else {
             object->StopCurrentAnimation();
             object->MaybeSetRegularAnimation(data_020f01a4, 1);
-            _Z26DispatchTargetByte020494c0P11Obj020494c0(reinterpret_cast<Obj020494c0*>(actor));
+            DispatchTargetByte020494c0(reinterpret_cast<Obj020494c0*>(actor));
         }
     } else if (object->activeAnimationRecord_ && strcmp(object->activeAnimationRecord_->name, data_020f01a4)) {
         ClearSubstructFlag0x4(bytes);

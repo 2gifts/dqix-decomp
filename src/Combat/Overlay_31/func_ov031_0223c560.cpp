@@ -34,7 +34,7 @@ extern "C" void* GetMainBG0ScreenBase();
 extern "C" void func_020b1f48(void*, int, int, int, int, int, int, int);
 extern "C" void CallVTableField14_0223ca40(Fields020b1d48*, int);
 extern "C" void func_ov031_0223c6d8();
-extern "C" void* _Z26CallWithZeroExtra_0223e218PvS_S_i(void*, void*, void*, int);
+void* CallWithZeroExtra_0223e218(void*, void*, void*, int);
 #define REG_SUB_BG0CNT (*(volatile unsigned short*)0x04001008)
 #define REG_MAIN_BG0CNT (*(volatile unsigned short*)0x04000008)
 
@@ -61,6 +61,6 @@ extern "C" ARM Fields020b1d48* func_ov031_0223c560(int screen, int layer) {
     int tile = data_ov031_022493ac[screen];
     func_020b1f48(screenBase, width, height, 0, 0, 0x20, tile, 0xf);
     CallVTableField14_0223ca40(background, 0);
-    background->request = _Z26CallWithZeroExtra_0223e218PvS_S_i((void*)1, (void*)func_ov031_0223c6d8, &data_ov031_02290d38_dup->requestArgs[screen], 0xc8);
+    background->request = CallWithZeroExtra_0223e218((void*)1, (void*)func_ov031_0223c6d8, &data_ov031_02290d38_dup->requestArgs[screen], 0xc8);
     return background;
 }

@@ -19,7 +19,6 @@ static inline void CalculateThirdRowByCrossProduct(Matrix3x3* mat)
     mat->entries[8] = (m11 * m22 - m12 * m21) >> 12;
 }
 
-// KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
 // USA: func_020b8598
 ARM void CalculateRotationFrameAligned(Matrix3x3* out, fix32_t time, NSBXXAnimationJAC::Track::ChannelNonConst* channel, NSBXXAnimationJAC* jac)
 {
@@ -163,4 +162,3 @@ calculate_exact_frame:
         Vector3fix_Normalize(&out->rows[2], &out->rows[2]);
 }
 }
-

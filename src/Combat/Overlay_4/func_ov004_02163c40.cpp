@@ -20,14 +20,14 @@ struct Obj0205eaa0;
 extern MapList3C40* data_ov004_02171010;
 extern Obj0205eaa0 data_02108760;
 extern unsigned short data_ov004_0216fef8[3];
-extern "C" int _Z26GetGlobalField0x1c020421a0v();
-extern "C" int _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0*, int, int);
+int GetGlobalField0x1c020421a0();
+int DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 extern "C" void func_ov004_02163478(MapList3C40*);
 extern "C" void* func_ov011_021849c8(void*);
 extern "C" Node3C40* func_ov023_021f6880(void*, int);
 extern "C" short func_ov023_021f6f10(void*);
-extern "C" void _Z29DispatchNodeIfState6_021f6680Pvi(void*, int);
-extern "C" void _Z26ClearNodeMaskById_021f6600Pvii(void*, int, int);
+void DispatchNodeIfState6_021f6680(void*, int);
+void ClearNodeMaskById_021f6600(void*, int, int);
 extern "C" void func_ov004_02164084(void*);
 
 // USA: func_ov004_02163c40
@@ -46,9 +46,9 @@ extern "C" ARM int func_ov004_02163c40(void* self) {
     int brightness = IsBrightnessTransitionActive(func_ov017_0218b5b0());
     if (brightness && !data_ov004_02171010->field_18fe) return 0;
     if (!data_ov004_02171010->count) return 0;
-    if (reinterpret_cast<Dialog3C40*>(_Z26GetGlobalField0x1c020421a0v())->active) return 0;
+    if (reinterpret_cast<Dialog3C40*>(GetGlobalField0x1c020421a0())->active) return 0;
     if (!data_ov004_02171010->field_18fe) {
-        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
+        DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
     }
     COPY_ARRAY(modes, data_ov004_0216fef8);
     selected = modes[data_ov004_02171010->sortMode];
@@ -119,8 +119,8 @@ extern "C" ARM int func_ov004_02163c40(void* self) {
     func_ov004_02163478(data_ov004_02171010);
     Node3C40* node = func_ov023_021f6880(func_ov011_021849c8(self), 0x35);
     if (node && func_ov023_021f6f10(node) == 8) node->selected = selected;
-    _Z29DispatchNodeIfState6_021f6680Pvi(self, 0x16);
-    _Z26ClearNodeMaskById_021f6600Pvii(self, 0x16, 8);
+    DispatchNodeIfState6_021f6680(self, 0x16);
+    ClearNodeMaskById_021f6600(self, 0x16, 8);
     func_ov004_02164084(self);
     return 0;
 }

@@ -45,10 +45,10 @@ struct ReactionNode02057fd8 {
 };
 struct ReactionManager02057fd8 { unsigned char padding_0x0[8]; ReactionSlot02057fd8 slots[16]; };
 void ClearSevenWords(Struct205563c*);
-extern "C" int _Z17MaybeInit02055660P11Obj02055660iii(Obj02055660*, int, int, int);
+int MaybeInit02055660(Obj02055660*, int, int, int);
 void RegisterCombatantSlot(GameState*, int, GameObject*);
 ModelRenderContext* GetModel3DContext(Model3D*);
-extern "C" void _Z25CallHandlerFlag1_020e2fdcP20RenderCommandHandler(RenderCommandHandler*);
+void CallHandlerFlag1_020e2fdc(RenderCommandHandler*);
 extern const char data_020e7d90[];
 extern const Vector3i data_020e7d84;
 
@@ -98,7 +98,7 @@ extern "C" ARM int func_02057fd8(ReactionManager02057fd8* manager, ReactionNode0
             NSBXXNameList* names = context->internalModel_ ? &context->internalModel_->boneList_ : 0;
             int bone = names ? NSBXXNameList_SearchIndex(names, data_020e7d90) : -1;
             if (bone >= 0) {
-                SetModelRenderContextRenderCommandHook(context, _Z25CallHandlerFlag1_020e2fdcP20RenderCommandHandler, 0, 7, 1);
+                SetModelRenderContextRenderCommandHook(context, CallHandlerFlag1_020e2fdc, 0, 7, 1);
             }
         }
     } else {
@@ -113,7 +113,7 @@ extern "C" ARM int func_02057fd8(ReactionManager02057fd8* manager, ReactionNode0
         COPY_REACTION_FLAGS_02057FD8();
         RegisterCombatantSlot(game, id, reinterpret_cast<GameObject*>(&node->model));
         ClearSevenWords(&manager->slots[index].payload.header);
-        _Z17MaybeInit02055660P11Obj02055660iii(&manager->slots[index].payload.effect, reinterpret_cast<int>(node->effectData), reinterpret_cast<int>(&node->model), node->allocator);
+        MaybeInit02055660(&manager->slots[index].payload.effect, reinterpret_cast<int>(node->effectData), reinterpret_cast<int>(&node->model), node->allocator);
         Matrix4x3 matrix __attribute__((aligned(4)));
         Mat4x3_WriteIdentity(&matrix);
         Mat4x3_ApplyTranslation(&matrix, &matrix, config->position.x, config->position.y, config->position.z);

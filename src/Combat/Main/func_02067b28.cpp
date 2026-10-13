@@ -39,10 +39,10 @@ struct TextContext02067b28 {
     char pad_19c5[0x17];
     unsigned char table;
 };
-extern "C" int _Z20IsHighByteFF02044494PvS_(void*, void*);
-extern "C" int _Z16Dispatch02044420PvS_(void*, void*);
-extern "C" Entry0204254c* _Z22FindEntryByKey0204254cii(int, int);
-extern "C" int _Z27FindEntryIndexByKey020424e4ii(int, int);
+int IsHighByteFF02044494(void*, void*);
+int Dispatch02044420(void*, void*);
+Entry0204254c* FindEntryByKey0204254c(int, int);
+int FindEntryIndexByKey020424e4(int, int);
 int FindMatchingEntryIndex(Container02045c00*, int);
 extern "C" int func_020459b8(TextContext02067b28*, unsigned char, Entry0204254c*, unsigned char);
 extern "C" int func_02001aec(const void*, const void*, int);
@@ -57,11 +57,11 @@ extern "C" ARM void func_02067b28(TextContext02067b28* state) {
         unsigned short* destination = state->output + state->outputCursor;
         unsigned short token;
         memcpy(&token, source, 2);
-        if (_Z20IsHighByteFF02044494PvS_(state, &token)) {
+        if (IsHighByteFF02044494(state, &token)) {
             *destination = token;
             state->inputCursor += 2;
             ++state->outputCursor;
-            int length = _Z16Dispatch02044420PvS_(state, &token);
+            int length = Dispatch02044420(state, &token);
             memcpy(destination + 1, source + 2, length * 2);
             state->inputCursor += length * 2;
             state->outputCursor += length;
@@ -80,8 +80,8 @@ extern "C" ARM void func_02067b28(TextContext02067b28* state) {
                 state->wrapPending = 1;
             }
         }
-        Entry0204254c* entry = _Z22FindEntryByKey0204254cii((int)source, state->table);
-        int tableIndex = _Z27FindEntryIndexByKey020424e4ii((int)source, state->table);
+        Entry0204254c* entry = FindEntryByKey0204254c((int)source, state->table);
+        int tableIndex = FindEntryIndexByKey020424e4((int)source, state->table);
         if (entry && tableIndex >= 0) {
             int index = FindMatchingEntryIndex((Container02045c00*)state, (int)entry);
             state->inputCursor += entry->length;

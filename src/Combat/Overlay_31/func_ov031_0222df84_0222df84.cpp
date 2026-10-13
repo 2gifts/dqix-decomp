@@ -8,7 +8,7 @@ extern TextCoordinates0222df84 data_ov031_02248ee0;
 extern const unsigned char data_ov031_02248f20[12];
 extern "C" void CallVTableField14_0223ca40(void*, int);
 extern "C" void func_ov031_0223c980(TextObject0222df84*, int, int, int, int, int, int, const char*);
-extern "C" void _Z30SetFlagIfMatchesElem0_0223caecPv(void*);
+void SetFlagIfMatchesElem0_0223caec(void*);
 
 // USA: func_ov031_0222df84
 extern "C" ARM void func_ov031_0222df84() {
@@ -29,5 +29,5 @@ extern "C" ARM void func_ov031_0222df84() {
         rectangle[0] = x;
         func_ov031_0223c980(row->object, x, rectangle[1], rectangle[2], rectangle[3], 2, 0x480, reinterpret_cast<const char*>(text));
     } while (++i < 12);
-    _Z30SetFlagIfMatchesElem0_0223caecPv(data_ov031_02290c98->object);
+    SetFlagIfMatchesElem0_0223caec(data_ov031_02290c98->object);
 }
