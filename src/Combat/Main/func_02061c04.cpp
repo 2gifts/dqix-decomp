@@ -181,7 +181,7 @@ struct NSBXXNameList
         uint8_t resourceIndex_;
     } treeRoot_8_;
     template<class T>
-    inline T* GetEntryByIndex(unsigned int n) const 
+    inline T* GetEntryByIndex(unsigned int n) const
     {
         if (this != 0 && n < numEntries_)
         {
@@ -1222,7 +1222,17 @@ struct FrameB { short opt; unsigned short flags; unsigned short h4, h6, h8, ha, 
 static inline char *SubA(void *b) { return (char *)b + REGION_VALUE(0x2c4, 0x104); }
 static inline char *SubB(char *a) { return a + REGION_VALUE(0x7000, 0x7400); }
 struct Blk7400 { char pad[REGION_VALUE(0x7000, 0x7400)]; };
-static inline struct SnapshotE7 *SnapE7(char *r) { return (struct SnapshotE7 *)(r + 0xcc); }
+struct StatE7 {
+    int r0;
+    int r4;
+    struct SrcWord44 w8;
+    struct SrcWord48 wc;
+    struct SrcWord4c w10;
+    char pad14[0x40 - 0x14];
+    struct SrcWord44 w40;
+    char pad44[0x90 - 0x44];
+    struct SnapshotE7 snap;
+};
 static inline int GetSlot332(void *obj) { return *((unsigned char *)obj + 0x332); }
 static inline int Field134_30(void *c) { return *(unsigned short *)((char *)*(void **)((char *)c + 0x134) + 0x30); }
 static inline int AngleMax() { return 0x6488; }
