@@ -6,7 +6,6 @@
 #include "World/Zone3D.h"
 
 #if defined(jpn)
-#define func_020adda4 func_020af870
 #define func_ov017_021a72f4 func_ov017_021a7c9c
 enum { kSavedPosition = 0x27f8, kSavedAngle = 0x2804 };
 #else
