@@ -1,16 +1,19 @@
 #include <globaldefs.h>
 
 extern "C" unsigned int _ZN13SafeAllocator21ResetAllocatorPointerEv();
-extern "C" unsigned int func_02029568(unsigned int);
+extern "C" unsigned int func_02029568(void*);
+
+struct Trans_0218b5a0
+{
+    char unk_0[0x14];
+    char menu[0x80];
+    unsigned int unk_94;
+};
 
 // USA: func_ov016_0218b5a0  (semantic: Trans_0218b5a0)
-extern "C" ARM unsigned int func_ov016_0218b5a0(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
-    unsigned int r4 = 0;
-    r4 = r0;
-    r0 = (unsigned int)_ZN13SafeAllocator21ResetAllocatorPointerEv();
-    r0 = r4 + 0x14;
-    r0 = (unsigned int)func_02029568(r0);
-    r0 = 0x1;
-    *(unsigned int*)((char*)r4 + 0x94) = (unsigned int)r0;
-    return r0;
+extern "C" ARM unsigned int func_ov016_0218b5a0(Trans_0218b5a0* self) {
+    _ZN13SafeAllocator21ResetAllocatorPointerEv();
+    func_02029568(self->menu);
+    self->unk_94 = 1;
+    return 1;
 }

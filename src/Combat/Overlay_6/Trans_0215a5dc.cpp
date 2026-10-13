@@ -1,16 +1,19 @@
 #include <globaldefs.h>
 
-extern "C" unsigned int _Z25SetByte_021571b8_021571b8Pvh(unsigned int, unsigned int);
-extern "C" unsigned int _Z28CallIfFlag_021571cc_021571ccP30CallIfFlag0x800_021571ccStruct(unsigned int);
+struct CallIfFlag0x800_021571ccStruct;
+
+void SetByte_021571b8_021571b8(void* p, unsigned char v);
+void CallIfFlag_021571cc_021571cc(CallIfFlag0x800_021571ccStruct* s);
+
+struct AlchemyMenu {
+    char pad0[0x10];
+    CallIfFlag0x800_021571ccStruct* f10;
+    char pad14[0x38b - 0x14];
+    unsigned char f38b;
+};
 
 // USA: func_ov006_0215a5dc  (semantic: Trans_0215a5dc)
-extern "C" ARM unsigned int func_ov006_0215a5dc(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
-    unsigned int r4 = 0;
-    r4 = r0;
-    r1 = *(unsigned char*)((char*)r4 + 0x38b);
-    r0 = *(unsigned int*)((char*)r4 + 0x10);
-    r0 = (unsigned int)_Z25SetByte_021571b8_021571b8Pvh(r0, r1);
-    r0 = *(unsigned int*)((char*)r4 + 0x10);
-    r0 = (unsigned int)_Z28CallIfFlag_021571cc_021571ccP30CallIfFlag0x800_021571ccStruct(r0);
-    return r0;
+extern "C" ARM void func_ov006_0215a5dc(AlchemyMenu* self) {
+    SetByte_021571b8_021571b8(self->f10, self->f38b);
+    CallIfFlag_021571cc_021571cc(self->f10);
 }

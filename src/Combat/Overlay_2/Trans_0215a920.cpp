@@ -1,12 +1,15 @@
 #include <globaldefs.h>
 
+struct Trans {
+    unsigned char f0;
+    unsigned int f4;
+    int f8;
+};
 
 // USA: func_ov002_0215a920  (semantic: Trans_0215a920)
-extern "C" ARM unsigned int func_ov002_0215a920(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
-    r1 = 0x0;
-    *(unsigned char*)((char*)r0 + 0x0) = (unsigned char)r1;
-    *(unsigned int*)((char*)r0 + 0x4) = (unsigned int)r1;
-    r1 = r1 - 0x1;
-    *(unsigned int*)((char*)r0 + 0x8) = (unsigned int)r1;
-    return r0;
+extern "C" ARM Trans* func_ov002_0215a920(Trans* t) {
+    t->f0 = 0;
+    t->f4 = 0;
+    t->f8 = -1;
+    return t;
 }

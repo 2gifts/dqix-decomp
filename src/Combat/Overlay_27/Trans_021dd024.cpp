@@ -1,11 +1,18 @@
 #include <globaldefs.h>
 
-extern int data_ov027_021e33e0;
+struct Inner021dd024 {
+    unsigned char pad0[8];
+    unsigned int f8;
+};
+
+struct Holder021dd024 {
+    unsigned char pad0[8];
+    Inner021dd024* ptr;
+};
+
+extern Holder021dd024 data_ov027_021e33e0;
 
 // USA: func_ov027_021dd024  (semantic: Trans_021dd024)
-extern "C" ARM unsigned int func_ov027_021dd024(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
-    r0 = (unsigned int)&data_ov027_021e33e0;
-    r0 = *(unsigned int*)((char*)r0 + 0x8);
-    r0 = *(unsigned int*)((char*)r0 + 0x8);
-    return r0;
+extern "C" ARM unsigned int func_ov027_021dd024(void) {
+    return data_ov027_021e33e0.ptr->f8;
 }

@@ -1,14 +1,13 @@
 #include <globaldefs.h>
 
-extern int data_ov025_021ef988;
+struct Target021e85a8 { char pad[0x74a]; unsigned short value; };
+struct Ctx021e85a8 { char pad[0xc]; struct Target021e85a8* target; };
+extern struct Ctx021e85a8 data_ov025_021ef988;
+
+struct Param021e85a8 { char pad[8]; unsigned short value; };
 
 // USA: func_ov025_021e85a8  (semantic: Trans_021e85a8)
-extern "C" ARM unsigned int func_ov025_021e85a8(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
-    r1 = (unsigned int)&data_ov025_021ef988;
-    r2 = *(unsigned short*)((char*)r0 + 0x8);
-    r1 = *(unsigned int*)((char*)r1 + 0xc);
-    r0 = 0x1;
-    r1 = r1 + 0x700;
-    *(unsigned short*)((char*)r1 + 0x4a) = (unsigned short)r2;
-    return r0;
+extern "C" ARM int func_ov025_021e85a8(struct Param021e85a8* p) {
+    data_ov025_021ef988.target->value = p->value;
+    return 1;
 }
