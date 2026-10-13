@@ -58,7 +58,7 @@ struct Actor0209c73c;
 extern "C" void* func_02057924(void);
 extern "C" int func_ov000_0215e9fc(void* party, short* buf, int max, int start);
 extern "C" int func_ov000_0215ec1c(void* party, short* buf, int max, int start);
-extern "C" int _Z28CountValidCombatants02058618v(void* mgr);
+int CountValidCombatants02058618(void* mgr);
 extern "C" unsigned char* _Z15GetData02104b6cv(void);
 extern "C" int _Z25CheckFields6d0And6d4EqualPh(unsigned char* data);
 extern "C" int _Z13Check021ed2f4Pv(void* obj);
@@ -118,7 +118,7 @@ extern "C" ARM int func_ov025_021dc940(Obj_021dc940* obj) {
         }
     }
 
-    if (_Z28CountValidCombatants02058618v(mgr) > 0) {
+    if (CountValidCombatants02058618(mgr) > 0) {
         return 0;
     }
     if (_Z25CheckFields6d0And6d4EqualPh(_Z15GetData02104b6cv()) == 0) {

@@ -171,7 +171,7 @@ extern "C" ARM int func_ov017_021ab860(int arg0, unsigned char arg1) {
             e->vec = data_ov017_021d83bc;
             e->h1c = data_ov017_021d83b0.field_0x18;
             e->b7 = 1;
-            _Z28CallFunc0200fbb4AtField0x3f8Pv(gs, e);
+            CallFunc0200fbb4AtField0x3f8(gs, e);
         }
         struct TailList020469b4* tail;
         unsigned char* header = (unsigned char*)res->unknown_ptr_array_36fc[4];

@@ -53,7 +53,7 @@ unsigned int LoadResourceIntoGlobalBuffer_0215a750(const char*, void**);
 extern "C" int func_ov017_021d60f4(TaggedValue0215f3fc*);
 void Init020404c0(int*);
 void InitializeRandomMotion0203c794(void*);
-void EmptyStub0203d004();
+void* EmptyStub0203d004(void*);
 void SetField0xc(int*, int);
 void SetField0x8(int*, int);
 void UpdateElementStream0203f02c(Obj0203f02c*, int, int, char*, int, int);
@@ -163,8 +163,7 @@ extern "C" ARM int func_ov001_0215f3fc(TaggedValue0215f3fc* arguments, int count
         return 0;
     }
     InitializeRandomMotion0203c794(entry->motion);
-    typedef void* (*ContextStub0215f3fc)(void*);
-    void* context = ((ContextStub0215f3fc)EmptyStub0203d004)(list);
+    void* context = EmptyStub0203d004(list);
     if (entry->motion)
     {
         entry->motion->context = context;

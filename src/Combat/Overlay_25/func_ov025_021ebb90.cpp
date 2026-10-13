@@ -110,11 +110,7 @@ struct Obj0203a588;
 
 void* GetActiveCombatWork(void);
 extern "C" unsigned char _Z25GetByte_021dcc64_021dcc64Pv(void* obj);
-#if defined(jpn)
-extern "C" void _Z16SetByte_021dcc58Pvh(void* obj, unsigned char v);
-#else
-extern "C" void _Z32ConfigureBgSub1AndClear_021dcc58Pv(void* obj, unsigned char v);
-#endif
+void SetByte_021dcc58(void* obj, unsigned char v);
 extern "C" int _Z36CheckCombatantStatusOrTable_02162954Pv(void* self);
 extern "C" int _Z13Check021ed2f4Pv(void* obj);
 extern "C" void func_ov025_021ebb24(struct Struct021ecb90* obj);
@@ -281,11 +277,7 @@ extern "C" ARM void func_ov025_021ebb90(struct Container021ebb90* obj) {
                     for (int j = 1; j < node1->codeCount; j++) {
                         unsigned char* codes = node1->codes;
                         if ((codes[j] == 7 || codes[j] == 8 || codes[j] == 6) && _Z25GetByte_021dcc64_021dcc64Pv(cw) == 0) {
-#if defined(jpn)
-                            _Z16SetByte_021dcc58Pvh(cw, 1);
-#else
-                            _Z32ConfigureBgSub1AndClear_021dcc58Pv(cw, 1);
-#endif
+                            SetByte_021dcc58(cw, 1);
                             struct Struct021ecb90 copyA = obj->entries[i];
                             _Z25CopyStructFields_021ecb90P14Struct021ecb90S0_((struct Struct021ecb90*)(cw + Field6f78), &copyA);
                             obj->entries[i].ringBase = 0;
