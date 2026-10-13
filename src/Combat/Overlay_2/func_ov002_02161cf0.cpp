@@ -9,7 +9,7 @@ extern "C" void _Z23SetChannelAFlag0205cef8Pv(void *p);
 extern "C" void _Z23SetChannelBFlag0205cf04Pv(void *p);
 extern "C" void _Z25ClearChannelAFlag0205cf10Pv(void *p);
 extern "C" void _Z21ClearFlagByte0205cf1cP14Struct0205cf1c(struct Struct0205cf1c *p);
-int ReadBattleField0x64f4Byte();
+unsigned char ReadBattleField0x64f4Byte(GameState* gameState);
 extern "C" int _Z22GetCountByType02157108Pvi(void *base, int id);
 extern "C" void _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii(struct Struct_0205ba68 *p, int a, int b, int c);
 extern "C" void _Z29SetField0AndPropagate0205baccP12Node0205bacci(struct Node0205bacc *p, int v);
@@ -52,8 +52,7 @@ extern "C" ARM void func_ov002_02161cf0(char *base) {
             cols   = 1;
             rows   = 3;
             cursor = *(short *) (base + 0x1b00 + 0xe4);
-            GameState::GetInstance();
-            if (ReadBattleField0x64f4Byte() == 0) {
+            if (ReadBattleField0x64f4Byte(GameState::GetInstance()) == 0) {
                 total = 2;
                 rows  = 2;
             }

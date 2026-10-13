@@ -24,7 +24,7 @@ void ResetAndReposition020e280c(struct Obj020e280c* self, void* b);
 
 int GetField0x15UnlessInactive(signed char* param);
 
-int IsFlag0x2Active020e2984(void);
+int IsFlag0x2Active020e2984(struct Outer020e28dc* window);
 
 struct Obj020e25e8;
 void ResetSelectionState020e25e8(struct Obj020e25e8* obj);
@@ -53,8 +53,7 @@ extern "C" ARM int func_ov003_0215bf18(void* p, int arg1) {
             ResetSelectionState020e25e8((struct Obj020e25e8*)*(void**)(obj + 0x570));
             return result;
         }
-        (void)*(struct Outer020e28dc* volatile*)(obj + 0x570);
-        if (IsFlag0x2Active020e2984()) {
+        if (IsFlag0x2Active020e2984(*(struct Outer020e28dc**)(obj + 0x570))) {
             *(unsigned char*)(obj + 0x581) = 0;
             *(unsigned char*)(obj + 0x59f) &= ~1;
             ResetSelectionState020e25e8((struct Obj020e25e8*)*(void**)(obj + 0x570));

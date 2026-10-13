@@ -275,7 +275,7 @@ extern "C" void func_020a395c();
 extern "C" void _Z29CopyStringToIndexedField0x2ecPciS_(Window02189c70* w, int idx, char* str);
 extern "C" void func_020e4b34(void* obj, void* a, void* b, int c, int d, int e, int f, int g, int h, int i, int j, int k);
 extern "C" int _Z19GetField0x397cValueP9GameState(GameState* gs);
-extern "C" unsigned char _Z25ReadBattleField0x64f4Bytev(GameState* gs);
+unsigned char ReadBattleField0x64f4Byte(GameState* gameState);
 extern "C" void _Z25CopyOutBattleRegion0x64f4Pv(void* dst);
 extern "C" void _Z24CopyToBattleRegion0x64f4Pv(void* src);
 extern "C" void _Z22SetNameEntries02011818PvP11Src02011818(GameState* gs, NameSrc02189c70* src);
@@ -601,7 +601,7 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
         win->f10 = obj144;
         win->f0 = obj150;
 #endif
-        if (_Z25ReadBattleField0x64f4Bytev(gs) >= 0x63) {
+        if (ReadBattleField0x64f4Byte(gs) >= 0x63) {
 #if defined(jpn)
             func_0204500c(win, _Z14FindEntryByKeyP8TableA68i((char*)self + 0x278, 0xc9), 0);
 #else
@@ -619,7 +619,7 @@ extern "C" ARM void func_ov008_02189c70(Self02189c70* self) {
         self->state = 4;
     } else if (self->state == 4) {
         if (win->busy != 0) return;
-        if (_Z25ReadBattleField0x64f4Bytev(gs) >= 0x63) {
+        if (ReadBattleField0x64f4Byte(gs) >= 0x63) {
 #if defined(jpn)
             char* text = win->text;
             char* name = *(char**)((char*)gs->GetUnknownGameObject() + 0x134);

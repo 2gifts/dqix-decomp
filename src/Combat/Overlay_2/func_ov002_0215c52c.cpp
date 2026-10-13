@@ -2,8 +2,9 @@
 
 struct Container020e0310;
 
-extern "C" void *_ZN9GameState11GetInstanceEv();
-int ReadBattleField0x64f4Byte();
+struct GameState;
+extern "C" GameState* _ZN9GameState11GetInstanceEv();
+unsigned char ReadBattleField0x64f4Byte(GameState* gameState);
 extern "C" void _Z22AppendFrameTag02041c08Pciiiii(char *buf, int x, int a, int b, int c, int d);
 void AppendCursorTag(char *buf, int x);
 extern "C" const char *_Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310 *tbl, int key);
@@ -17,8 +18,7 @@ extern "C" ARM void func_ov002_0215c52c(unsigned char *self, char *buf, int fram
     short key = 0x3ea;
     int n     = 3;
     short x   = *(short *) (self + 0x1be4);
-    _ZN9GameState11GetInstanceEv();
-    if (ReadBattleField0x64f4Byte() == 0) n = 2;
+    if (ReadBattleField0x64f4Byte(_ZN9GameState11GetInstanceEv()) == 0) n = 2;
     if (frame) _Z22AppendFrameTag02041c08Pciiiii(buf, x, 8, 5, 5, 5);
     AppendCursorTag(buf, x);
     _Z23AppendFormatted02041facPcii(

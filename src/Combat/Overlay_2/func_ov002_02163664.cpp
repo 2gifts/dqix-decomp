@@ -23,7 +23,7 @@ extern "C" int _Z41CountFlag0x800MatchesEqualsTarget020dcc20ii(int targetCount, 
 extern "C" int _Z27CheckAnyByteMatches020dcbbcPhiiii(unsigned char *arr, int count, int b, int c, int d);
 extern "C" char *_Z24FindElementByKey020dedd0P17Container020dedd0i(struct Container020dedd0 *c, int key);
 extern "C" void _Z27ClearMatchingEntry_02156ff0Phi(unsigned char *self, int v);
-extern "C" int _Z33CheckAndClearEntryStatus_0215b7d0v();
+int CheckAndClearEntryStatus_0215b7d0(char* base);
 extern "C" int func_020dc920(int a, int b, int c, int d);
 extern "C" void func_ov002_0215b814(char *base);
 extern "C" void func_ov002_02161cf0(char *base);
@@ -140,7 +140,7 @@ extern "C" ARM void func_ov002_02163664(char *base) {
             *(short *) (base + 0x1b00 + 0xec) = -1;
         }
     } else if (state == 2) {
-        int r = _Z33CheckAndClearEntryStatus_0215b7d0v();
+        int r = CheckAndClearEntryStatus_0215b7d0(base);
         if (r > 0) {
             *(unsigned char *) (base + 0xf80) = *(int *) (base + 0x1000 + 0xbb8);
             if (*(short *) (base + 0x1c00 + 0x26) != -1) {

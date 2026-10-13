@@ -44,7 +44,7 @@ extern "C" void _Z24ReinitController02043204Pc(char *obj);
 extern "C" void _Z27SetFieldB0AndUpdate0205dee8P11Obj0205dee8i(struct Obj0205dee8 *o, int v);
 extern "C" void _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci(struct Struct_0205bcdc *s, int index);
 extern "C" void func_0205bb04(void *s, int n);
-extern "C" int _Z23IsFlag0x2Active020e2984v(void);
+int IsFlag0x2Active020e2984(struct Outer020e28dc* window);
 extern "C" unsigned short data_02114e30[];
 extern "C" char data_02108760[];
 extern "C" unsigned char data_ov002_0216d3ac;
@@ -239,7 +239,7 @@ extern "C" ARM void func_ov002_0216a300(char *base) {
                     CONFIRM_0216A300();
                     break;
             }
-        } else if (*(void **) (base + 4) != NULL && _Z23IsFlag0x2Active020e2984v()) {
+        } else if (*(struct Outer020e28dc **) (base + 4) != NULL && IsFlag0x2Active020e2984(*(struct Outer020e28dc **) (base + 4))) {
             _Z27ResetSelectionState020e25e8P11Obj020e25e8(*(struct Obj020e25e8 **) (base + 4));
             *(unsigned int *) (base + 0x2000 + 0x47c) &= ~4;
             *(unsigned char *) (base + 0x1000 + 0xc2e) = 0;

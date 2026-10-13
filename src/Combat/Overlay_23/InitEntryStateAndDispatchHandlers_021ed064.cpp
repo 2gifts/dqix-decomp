@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-ARM int DispatchIfFlagsOrByteSet_021ed014(void);
+int DispatchIfFlagsOrByteSet_021ed014(struct GuideWindow_021ec480* window);
 
 struct Elem_0205d81c;
 struct Struct_0205d81c;
@@ -16,7 +16,7 @@ extern unsigned char data_ov023_021fd844[];
 
 // USA: func_ov023_021ed064  (semantic: InitEntryStateAndDispatchHandlers_021ed064)
 extern "C" ARM int func_ov023_021ed064(void* obj) {
-    if (DispatchIfFlagsOrByteSet_021ed014() == 0) {
+    if (DispatchIfFlagsOrByteSet_021ed014((struct GuideWindow_021ec480*)obj) == 0) {
         return 0;
     }
 

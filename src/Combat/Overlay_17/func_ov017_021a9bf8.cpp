@@ -64,7 +64,7 @@ void ResetElapsedState020e11a4();
 char* GetGlobalField0x1c020421a0();
 void SetIndexedName02046574(Obj02046574*, int, char*);
 const char* CallFunc020e0434With02153694(int);
-unsigned char ReadBattleField0x64f4Byte();
+unsigned char ReadBattleField0x64f4Byte(GameState* gameState);
 void CopyOutBattleRegion0x64f4(void*);
 void CopyToBattleRegion0x64f4(void*);
 extern "C" void func_0204500c(char*, char*, int
@@ -115,7 +115,7 @@ extern "C" ARM void func_ov017_021a9bf8(MapTask021a9bf8* self) {
         SetIndexedName02046574((Obj02046574*)window, 1, self->description);
         sprintf(text, CallFunc020e0434With02153694(0x40));
 #endif
-        if (((unsigned char (*)(GameState*))ReadBattleField0x64f4Byte)(state) >= 99) {
+        if (ReadBattleField0x64f4Byte(state) >= 99) {
             self->error = 1;
 #if defined(jpn)
             strcat(text, data_ov017_021d7cbf);

@@ -15,7 +15,7 @@ extern unsigned char data_02114e54;
 
 int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
 int GetInnerFlagBit0020e28dc(struct Outer020e28dc* o);
-int IsFlag0x2Active020e2984(void);
+int IsFlag0x2Active020e2984(struct Outer020e28dc* window);
 void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
 int IsPointInsideElement02080d54(struct Obj2081* obj, int key, int px, int py);
 
@@ -33,8 +33,7 @@ extern "C" ARM int func_ov003_02155208(struct Ctx02155208* self) {
     if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2)) flag = 1;
 
     if (self->ptr1c != NULL && GetInnerFlagBit0020e28dc(self->ptr1c)) {
-        (void)*(struct Outer020e28dc* volatile*)&self->ptr1c;
-        if (IsFlag0x2Active020e2984()) {
+        if (IsFlag0x2Active020e2984(self->ptr1c)) {
             flag = 1;
         }
     } else if (*((unsigned char*)&data_02114e54 + 0x55) != 0) {

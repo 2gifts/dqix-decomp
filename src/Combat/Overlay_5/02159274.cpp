@@ -74,7 +74,7 @@ extern "C" int func_ov005_02158b3c(void* object, void* buffer);
 extern "C" int _Z26GetField0x15UnlessInactivePa(void* w);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0* obj, int a, int b);
 extern "C" void _Z27ResetSelectionState020e25e8P11Obj020e25e8(void* w);
-extern "C" int _Z23IsFlag0x2Active020e2984v(void* w);
+int IsFlag0x2Active020e2984(struct Outer020e28dc* window);
 extern "C" void* _Z24FindElementByKey020dedd0P17Container020dedd0i(Container020dedd0* c, int key);
 extern "C" int _Z23GetFlagFromField0x8BitsP14Struct020dd768(Struct020dd768* s);
 #if defined(jpn)
@@ -108,7 +108,7 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
         if (sel >= 0) {
             _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)data_02108760, 1, 0);
             _Z27ResetSelectionState020e25e8P11Obj020e25e8(self->yesNo_);
-        } else if (_Z23IsFlag0x2Active020e2984v(self->yesNo_)) {
+        } else if (IsFlag0x2Active020e2984((struct Outer020e28dc*)self->yesNo_)) {
             _Z27ResetSelectionState020e25e8P11Obj020e25e8(self->yesNo_);
             sel = -2;
         }
@@ -210,7 +210,7 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
         if (sel >= 0) {
             _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)data_02108760, 1, 0);
             _Z27ResetSelectionState020e25e8P11Obj020e25e8(self->yesNo_);
-        } else if (_Z23IsFlag0x2Active020e2984v(self->yesNo_)) {
+        } else if (IsFlag0x2Active020e2984((struct Outer020e28dc*)self->yesNo_)) {
             _Z27ResetSelectionState020e25e8P11Obj020e25e8(self->yesNo_);
             sel = -2;
         }

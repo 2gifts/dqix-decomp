@@ -33,7 +33,7 @@ extern "C" int func_ov002_0215b720(char *self, int id);
 extern "C" void func_ov002_02157d40(char *self);
 extern "C" int _Z29CheckFlagOrThreshold_02161b48Pci(char *self, int v);
 extern "C" void _Z27ClearMatchingEntry_02156ff0Phi(unsigned char *self, int v);
-extern "C" int _Z33CheckAndClearEntryStatus_0215b7d0v();
+int CheckAndClearEntryStatus_0215b7d0(char* base);
 
 extern "C" unsigned short data_02114e30;
 extern "C" char data_02108760;
@@ -120,7 +120,7 @@ extern "C" ARM void func_ov002_02165764(char *self) {
     if (state != 2) {
         return;
     }
-    int r = _Z33CheckAndClearEntryStatus_0215b7d0v();
+    int r = CheckAndClearEntryStatus_0215b7d0(self);
     if (r > 0) {
         *(unsigned char *) (self + 0xf80) = *(int *) (self + 0x1bb8);
         *(unsigned int *) (self + 0x247c) &= ~4;

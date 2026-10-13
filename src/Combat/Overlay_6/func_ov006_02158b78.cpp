@@ -27,7 +27,7 @@ extern unsigned char data_02114e54[];
 
 int TestFlag0SetAndFlag1Clear(unsigned short*, int);
 extern "C" int _Z24GetInnerFlagBit0020e28dcP13Outer020e28dc(Outer020e28dc*);
-extern "C" int _Z23IsFlag0x2Active020e2984v();
+int IsFlag0x2Active020e2984(struct Outer020e28dc* window);
 void SelectCoordsByFlag0x24(unsigned char*, int*, int*);
 extern "C" int _Z28IsPointInsideElement02080d54P7Obj2081iii(Obj2081*, int, int, int);
 
@@ -134,7 +134,7 @@ extern "C" ARM unsigned char func_ov006_02158b78(AlchemyMenu* self)
         cancelled = 1;
     if (self->choice_ != 0 && _Z24GetInnerFlagBit0020e28dcP13Outer020e28dc((Outer020e28dc*)self->choice_))
     {
-        if (((int (*)(void*))_Z23IsFlag0x2Active020e2984v)(self->choice_))
+        if (IsFlag0x2Active020e2984((struct Outer020e28dc*)self->choice_))
             cancelled = 1;
     }
     else if (data_02114e54[0x55])

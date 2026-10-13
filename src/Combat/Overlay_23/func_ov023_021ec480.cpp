@@ -95,7 +95,7 @@ void SetElementFieldC2(Struct_0205d81c* window, int item, int value);
 extern "C" void _Z27SetValueAndActivate0209c830P14Struct0209c830t(Struct0209c830* obj, unsigned short value);
 int TestBitInByteArray(int a, unsigned char* b, int flag);
 extern "C" int _Z25IsAnimationActive0209ca2cPv(void* obj);
-extern "C" int _Z33DispatchIfFlagsOrByteSet_021ed014v();
+int DispatchIfFlagsOrByteSet_021ed014(struct GuideWindow_021ec480* window);
 extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(Entry_0205d6a0* window, int value);
 extern "C" void _Z25ForwardField0xc0_0205ebecPv(void* sound);
 extern "C" const char* _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310* texts, int id);
@@ -120,7 +120,7 @@ void func_0204500c(MessageSystem_021ec480* messages, const char* text, int a, in
 
 static inline int WasButtonPressed(GuideWindow_021ec480* self)
 {
-    return ((int (*)(GuideWindow_021ec480*))_Z33DispatchIfFlagsOrByteSet_021ed014v)(self);
+    return DispatchIfFlagsOrByteSet_021ed014(self);
 }
 
 // USA: func_ov023_021ec480

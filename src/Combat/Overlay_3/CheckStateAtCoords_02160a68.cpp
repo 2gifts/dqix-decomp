@@ -22,7 +22,7 @@ int IsFieldNotPositive_021a4e70(unsigned char* base);
 
 struct Outer020e28dc;
 int GetInnerFlagBit0020e28dc(struct Outer020e28dc* o);
-int IsFlag0x2Active020e2984(void);
+int IsFlag0x2Active020e2984(struct Outer020e28dc* window);
 void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
 
 struct Obj2081;
@@ -51,8 +51,7 @@ extern "C" ARM int func_ov003_02160a68(struct Ctx02160a68* self) {
     }
 
     if (GetInnerFlagBit0020e28dc(self->ptr390)) {
-        (void)*(struct Outer020e28dc* volatile*)&self->ptr390;
-        if (IsFlag0x2Active020e2984()) {
+        if (IsFlag0x2Active020e2984(self->ptr390)) {
             flag = 1;
         }
     } else if (*((unsigned char*)&data_02114e54 + 0x55) != 0) {

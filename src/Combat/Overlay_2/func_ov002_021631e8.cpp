@@ -21,7 +21,7 @@ extern "C" int _Z27IsFlagAt130Bit0Set_0216364cPv(void *member);
 extern "C" char *_Z24FindElementByKey020dedd0P17Container020dedd0i(struct Container020dedd0 *c, int key);
 extern "C" void _Z32SetupTargetAndApplyState021575d4Pc(char *base);
 int GetInventoryItemFlagField_02157500(char *base, int, int);
-extern "C" int _Z33CheckAndClearEntryStatus_0215b7d0v();
+int CheckAndClearEntryStatus_0215b7d0(char* base);
 extern "C" void func_ov002_02161cf0(char *base);
 extern "C" void func_ov002_0215b814(char *base);
 extern "C" int func_ov002_0215b720(char *self, int id);
@@ -137,7 +137,7 @@ extern "C" ARM void func_ov002_021631e8(char *base) {
             SetElementFieldC2((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 4, 1);
         }
     } else if (state == 2) {
-        int r = ((int (*)(char *)) _Z33CheckAndClearEntryStatus_0215b7d0v)(base);
+        int r = CheckAndClearEntryStatus_0215b7d0(base);
         if (r > 0) {
             *(short *) (base + 0x1c00 + 0x28)          = 0x232a;
             *(short *) (base + 0x1c00 + 0x2a)          = 0x232b;
