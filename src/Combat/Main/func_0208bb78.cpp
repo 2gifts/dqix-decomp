@@ -93,5 +93,3 @@ extern "C" ARM int func_0208bb78(ShakeState0208ca00* self, int delta) {
     }
     return 0;
 }
-
-

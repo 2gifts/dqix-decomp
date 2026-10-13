@@ -140,4 +140,3 @@ extern "C" ARM int func_0201a300(Zone3D* zone, int floor, GrottoTileOwner0201a30
     srand(frame.elapsed);
     return 1;
 }
-

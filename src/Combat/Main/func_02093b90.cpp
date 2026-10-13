@@ -161,4 +161,3 @@ extern "C" ARM void func_02093b90(Obj020941b0* self, int ticks) {
     func_020945ac(self);
     self->elapsed=0;
 }
-

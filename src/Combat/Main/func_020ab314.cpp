@@ -128,4 +128,3 @@ extern "C" ARM int func_020ab314(int* output, int unused, int alternate) {
     BackgroundLoader::RemoveLockGlobal();
     return 1;
 }
-

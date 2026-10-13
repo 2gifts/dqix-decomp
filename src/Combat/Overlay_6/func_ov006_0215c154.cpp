@@ -293,4 +293,3 @@ extern "C" ARM void func_ov006_0215c154(AlchemyMenu* self) {
         }
     }
 }
-
