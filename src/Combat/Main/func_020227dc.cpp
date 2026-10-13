@@ -10,7 +10,7 @@ ARM void* GetData02105254(void);
 
 extern "C" void func_02021428(void* unused0, int amount);
 extern "C" void func_02020720(char* obj);
-extern "C" void _Z20InitSubScreenDisplayv(void* ctx);
+void InitSubScreenDisplay(void* context);
 extern "C" void _Z19TailForward0203b66cPc(char* obj);
 extern "C" void _Z21InitSubObject0203bd78Pc(char* obj);
 extern "C" void _Z25InitBattleContext0203bd24Pc(char* obj);
@@ -167,7 +167,7 @@ extern "C" ARM void func_020227dc(struct Obj020227dc* ctx) {
     if (IsAxisIntWithin16((struct AxisFloats0203b5a0*)axisObj, 1) != 0) return;
 
     func_02020720((char*)ctx);
-    _Z20InitSubScreenDisplayv(ctx);
+    InitSubScreenDisplay(ctx);
     _Z19TailForward0203b66cPc((char*)dataPtr);
     sb->Reset();
     _Z21InitSubObject0203bd78Pc(p8);

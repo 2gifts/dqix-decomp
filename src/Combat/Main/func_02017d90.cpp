@@ -3,30 +3,6 @@
 #include "System/Matrix.h"
 #include "World/Zone3D.h"
 
-struct GeometryData { int unused; void* polygons; };
-struct TerrainNode {
-    unsigned short id;
-    unsigned short flags;
-    short unused4;
-    short angle;
-    Vector3i position;
-    char pad_14[0x10];
-    GeometryData* geometry;
-    TerrainNode* parent;
-    char pad_2c[0x2c];
-    Vector3i lowerMargins;
-    Vector3i upperMargins;
-};
-struct SceneNode { char pad_00[0x2c]; TerrainNode* terrain; };
-struct Node020196fc { char pad_00[0x44]; SceneNode* scene; };
-struct SceneEntry {
-    Node020196fc* node;
-    char pad_04[0x10];
-    Matrix3x3 rotation;
-    int angle;
-    Vector3i position;
-};
-struct Obj020196fc;
 struct TerrainGrid {
     short cells[96][12];
     int unused900;
@@ -36,8 +12,6 @@ struct TerrainGrid {
     int angle;
 };
 struct TerrainProbe { Vector3i upper; Vector3i lower; };
-Node020196fc* GetNodeAtDepth020196fc(Obj020196fc*, int);
-void StoreThreeWordsAt0x0020130a8(int*, int, int, int);
 extern "C" long long func_020c32f8(int);
 extern "C" long long func_020c3260(int);
 extern "C" float func_0200c700(long long);
@@ -52,38 +26,38 @@ extern "C" ARM int func_02017d90(Zone3D* self, int index, TerrainGrid* grid, Ter
     if (self->isInMainGrottoFloor_23b8_) {
         if (!object) return 0;
         FloorMap* floor = &self->grotto_.floorMap_;
-        TerrainNode* node;
+        BmdjSceneElement* node;
         int x, z, angle;
         if (index < 256) {
-            SceneEntry* entry = &static_cast<SceneEntry*>(self->grottoTileMapData_420_)[index];
-            if (entry->node) node = entry->node->scene->terrain;
+            GrottoTileMapRecord* entry = &self->grottoTileMapData_420_[index];
+            if (entry->node) node = entry->node->elements->linkedElement2c;
             else return 0;
             x = entry->position.x;
             z = entry->position.z;
             angle = entry->angle;
         } else {
-            if (GetNodeAtDepth020196fc(reinterpret_cast<Obj020196fc*>(self), 4))
-                node = GetNodeAtDepth020196fc(reinterpret_cast<Obj020196fc*>(self), 4)->scene->terrain;
+            if (GetNodeAtDepth020196fc(self, 4))
+                node = GetNodeAtDepth020196fc(self, 4)->elements->linkedElement2c;
             else return 0;
             x = floor->upStairWorldX;
             z = floor->upStairWorldZ;
             angle = floor->fpUpStairRotation;
         }
         if (!node) return 0;
-        if (!node->geometry) return 0;
+        if (!node->resource) return 0;
         if (node->flags & 4) return 0;
-        TerrainNode* parent = node->parent;
+        BmdjSceneElement* parent = node->parent;
         while (parent) {
             if (parent->flags & 4) return 0;
             parent = parent->parent;
         }
-        void* polygons = node->geometry->polygons;
+        void* polygons = node->resource->polygons;
         if (!polygons) return 0;
         TerrainProbe local;
         Vector3i origin;
         Matrix3x3 rotation;
         local.upper = object->position_;
-        StoreThreeWordsAt0x0020130a8(&origin.x, x, 0, z);
+        StoreThreeWordsAt0x0020130a8(&origin, x, 0, z);
         Vector3fix_Subtract(&local.upper, &origin, &local.upper);
         int rotationAngle = -(angle - 25735);
         int cosine = (int)(4096.0f * (func_0200c700(func_020c32f8(rotationAngle)) / 4294967296.0f));
@@ -102,21 +76,16 @@ extern "C" ARM int func_02017d90(Zone3D* self, int index, TerrainGrid* grid, Ter
         grid->angle = angle;
         return count;
     }
-#if defined(jpn)
-    TerrainNode** terrain = *reinterpret_cast<TerrainNode***>(reinterpret_cast<char*>(self) + 0x844);
-#else
-    TerrainNode** terrain = *reinterpret_cast<TerrainNode***>(reinterpret_cast<char*>(self) + 0x824);
-#endif
-    TerrainNode* node = terrain[index];
-    if (!node->geometry) return 0;
+    BmdjSceneElement* node = self->terrainElements_[index];
+    if (!node->resource) return 0;
     if (node->flags & 4) return 0;
-    TerrainNode* parent = node->parent;
+    BmdjSceneElement* parent = node->parent;
     while (parent) {
         if (parent->flags & 4) return 0;
         parent = parent->parent;
     }
     if (node->flags & 1) return 0;
-    void* polygons = node->geometry->polygons;
+    void* polygons = node->resource->polygons;
     if (!polygons) return 0;
     Vector3i origin = node->position;
     Vector3fix_Subtract(&probe.upper, &origin, &probe.upper);

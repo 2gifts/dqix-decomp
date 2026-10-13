@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "World/ZoneFeatures.h"
-#include "World/Zone3D.h"
+#include "World/ZoneChest.h"
 #include "World/LootableContainer.h"
 #include "Filesystem/FileIO.h"
 #include "Filesystem/BackgroundLoader.h"
@@ -20,7 +20,6 @@ struct ChestLoot0201afd0 {
 
 struct ChestLootList0201afd0;
 
-struct Zone0201afd0;
 
 struct AdjacencyBits0201afd0 {
     unsigned char bits;
@@ -44,7 +43,6 @@ int GenerateGrottoObjectPositionOrientation(void*, int, int, int*, int*, const T
 Entry_1e690* FindEntryById(EntryList_1e690*, int);
 void ClearThreeWords02094d00(ClearThreeWords02094d00Struct*);
 void AllocateArray02094cdc(AllocDest02094cdc*, int, SafeAllocator*);
-void InitStruct020133fc(char*);
 int GetBit5cd0(S_02011430*, int, int);
 int CheckField0NonZero(int*);
 void CopyElemToIndex(Container02094d14*, Elem02094d14*, int);
@@ -83,21 +81,20 @@ static inline int GetFloorSeed0201afd0(const ActiveGrottoClass* grotto, int floo
 
 // USA: func_0201afd0
 // JPN: func_0201ad70
-extern "C" ARM int func_0201afd0(Zone0201afd0* self, const void* treasureArchive) {
-    Zone3D* zone = reinterpret_cast<Zone3D*>(self);
-    ZoneFeatures* features = reinterpret_cast<ZoneFeatures*>(zone->substruct_6c_);
+extern "C" ARM int func_0201afd0(Zone3D* zone, const void* treasureArchive, unsigned int sourceSize, int unused) {
+    ZoneFeatures* features = &zone->substruct_6c_;
     GameState* gs = GameState::GetInstance();
     ActiveGrottoClass* grotto = &zone->grotto_;
     int i;
     FloorMap* map = &grotto->floorMap_;
     void* search = func_0202ae18();
-    ChestLootList0201afd0* lootList = reinterpret_cast<ChestLootList0201afd0*>(zone->unknown_struct_2724_);
+    ChestLootList0201afd0* lootList = (ChestLootList0201afd0*)(zone->unknown_struct_2724_);
 
     zone->numChests_ = map->chestCount;
     if (zone->numChests_ == 0) {
         int elapsed;
 
-        ComputeElapsedTime020105a8(reinterpret_cast<TimeStamp020105a8*>(gs), &elapsed);
+        ComputeElapsedTime020105a8((TimeStamp020105a8*)(gs), &elapsed);
         srand(elapsed + GetFloorSeed0201afd0(grotto, zone->currentGrottoFloor_23ba_));
         return 0;
     }
@@ -131,8 +128,8 @@ extern "C" ARM int func_0201afd0(Zone0201afd0* self, const void* treasureArchive
 
         tile = GetChestTile0201afd0(map, i);
         dir = GenerateGrottoObjectPositionOrientation(
-            self, static_cast<unsigned char>(tile.x), static_cast<unsigned char>(tile.y), &entry.unk_8.vec.x, &entry.unk_8.vec.z, NULL, false);
-        adjacency = GetAdjacency0201afd0(map, static_cast<unsigned char>(tile.x), static_cast<unsigned char>(tile.y));
+            zone, (unsigned char)(tile.x), (unsigned char)(tile.y), &entry.unk_8.vec.x, &entry.unk_8.vec.z, NULL, false);
+        adjacency = GetAdjacency0201afd0(map, (unsigned char)(tile.x), (unsigned char)(tile.y));
         found = 0;
         if (grotto->GetActiveGrottoEnviron() == 2) {
             for (int j = 0; j < 15; j++) {
@@ -195,42 +192,42 @@ extern "C" ARM int func_0201afd0(Zone0201afd0* self, const void* treasureArchive
             distribution.LoadFromScript(&alloc, script, scriptLength);
         }
 
-        ClearThreeWords02094d00(reinterpret_cast<ClearThreeWords02094d00Struct*>(lootList));
-        AllocateArray02094cdc(reinterpret_cast<AllocDest02094cdc*>(lootList), zone->numChests_, zone->pAllocator_68_);
+        ClearThreeWords02094d00((ClearThreeWords02094d00Struct*)(lootList));
+        AllocateArray02094cdc((AllocDest02094cdc*)(lootList), zone->numChests_, zone->pAllocator_68_);
         memset(ranks, 1, sizeof(ranks));
         for (chest = 0; chest < zone->numChests_; chest++) {
             ranks[chest] = grotto->RandomizeChestRank(zone->currentGrottoFloor_23ba_);
         }
 
-        ComputeElapsedTime020105a8(reinterpret_cast<TimeStamp020105a8*>(gs), &elapsed);
+        ComputeElapsedTime020105a8((TimeStamp020105a8*)(gs), &elapsed);
         srand(elapsed + GetFloorSeed0201afd0(grotto, zone->currentGrottoFloor_23ba_));
 
         __clear(itemIDs, sizeof(itemIDs));
         itemCount = 0;
         for (index = 0; index < zone->numChests_; index++) {
-            ZoneFeatures::Opcode6aEntry* entry = reinterpret_cast<ZoneFeatures::Opcode6aEntry*>(FindEntryById(reinterpret_cast<EntryList_1e690*>(features), index));
+            ZoneFeatures::Opcode6aEntry* entry = (ZoneFeatures::Opcode6aEntry*)(FindEntryById((EntryList_1e690*)(features), index));
             const LootDistribution::Outcome* outcome = distribution.Sample(ranks[index]);
 
             if (outcome != NULL) {
                 ZoneChestRenderRecord* record = &zone->unknown_47c_[index];
                 ChestLoot0201afd0 loot;
 
-                InitStruct020133fc(reinterpret_cast<char*>(record));
+                InitStruct020133fc(record);
                 record->position = entry->unk_8.vec;
                 record->angleY = entry->unk_20;
-                *reinterpret_cast<short*>(reinterpret_cast<char*>(record) + 0x10) = 0;
-                *reinterpret_cast<short*>(reinterpret_cast<char*>(record) + 0x1a) = index;
-                *reinterpret_cast<unsigned short*>(reinterpret_cast<char*>(record) + 0x1c) = index;
+                record->counter = 0;
+                record->recordIndex = index;
+                record->uniqueID = index;
                 record->secondPass = 2;
-                if (GetBit5cd0(reinterpret_cast<S_02011430*>(gs), zone->currentGrottoFloor_23ba_, index)) {
+                if (GetBit5cd0((S_02011430*)(gs), zone->currentGrottoFloor_23ba_, index)) {
                     record->active = 8;
                     record->angleX = 0x4000;
                 } else {
                     record->active = 1;
                     record->angleX = 0x647a;
                 }
-                if (CheckField0NonZero(static_cast<int*>(search))) {
-                    *(reinterpret_cast<unsigned char*>(record) + 0x18) = 1;
+                if (CheckField0NonZero((int*)(search))) {
+                    record->special = 1;
                 }
                 if (outcome->lootType == 2) {
                     itemIDs[itemCount++] = outcome->itemID;
@@ -242,7 +239,7 @@ extern "C" ARM int func_0201afd0(Zone0201afd0* self, const void* treasureArchive
                 loot.lootType = outcome->lootType;
                 loot.containerType = 4;
                 loot.position = entry->unk_8.vec;
-                CopyElemToIndex(reinterpret_cast<Container02094d14*>(lootList), reinterpret_cast<Elem02094d14*>(&loot), *reinterpret_cast<unsigned short*>(reinterpret_cast<char*>(record) + 0x1c));
+                CopyElemToIndex((Container02094d14*)(lootList), (Elem02094d14*)(&loot), record->uniqueID);
             }
         }
 

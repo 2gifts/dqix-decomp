@@ -4,28 +4,7 @@
 #include "Graphics/LightingManager.h"
 #include "Graphics/NSBXX/RenderConfig.h"
 
-struct ModelSlot02016874 { int field00; Model3D* model; };
-struct NodeRenderData02016874 {
-    unsigned short field00, flags;
-    char pad04[0x20];
-    ModelSlot02016874* slot;
-};
-struct Node020196fc {
-    char pad00[0x44];
-    NodeRenderData02016874* render;
-    char pad48[0xc];
-    Node020196fc* next;
-};
-struct Obj020196fc;
-struct Ctx0201aedc;
 struct CombatEntryList;
-struct TileRenderRecord02016874 {
-    Node020196fc* node;
-    char pad04[0x10];
-    Matrix3x3 rotation;
-    char pad38[4];
-    Vector3i position;
-};
 struct RenderFlags02016874 {
     float unknown0;
     float unknown4;
@@ -37,8 +16,6 @@ extern RenderFlags02016874 data_020ef0dc;
 extern "C" void func_0201730c(CombatEntryList*);
 extern "C" void func_02017540(Zone3D*);
 int IsInRange0201b5b0(int);
-void ProcessNode0201aedc(Ctx0201aedc*);
-Node020196fc* GetNodeAtDepth020196fc(Obj020196fc*, int);
 void ClearGlobalFlagBits02016d8c(void*);
 void PushMatrixAndRender02016db4(void*, void*);
 extern "C" void func_020ca528(const void*, void*);
@@ -53,11 +30,11 @@ extern "C" ARM void func_02016874(Zone3D* self) {
     data_020ef0dc.normalPending = 1;
     if (IsInRange0201b5b0(self->currentZoneID_)) {
         if (((unsigned char*)self->unk_23bc)[0] == 0) return;
-        ProcessNode0201aedc((Ctx0201aedc*)self);
+        ProcessNode0201aedc(self);
         int environment;
         int minX;
         int z;
-        TileRenderRecord02016874* tile;
+        GrottoTileMapRecord* tile;
         int mapWidth;
         environment = self->grotto_.GetActiveGrottoEnviron();
         mapWidth = self->grotto_.floorWidth_;
@@ -86,12 +63,13 @@ extern "C" ARM void func_02016874(Zone3D* self) {
         z = minZ;
         for (; z < maxZ; z++) {
             for (x = minX; x < maxX; x++) {
-                tile = (TileRenderRecord02016874*)self->grottoTileMapData_420_ + z * 16 + x;
+                tile = &self->grottoTileMapData_420_[z * 16];
+                tile = &tile[x];
                 if (tile->node == 0) continue;
-                NodeRenderData02016874* render = tile->node->render;
+                BmdjSceneElement* render = tile->node->elements;
                 if (render->flags & 4) continue;
                 Model3D* model;
-                model = render->slot->model;
+                model = render->resource->model;
                 if (model == 0 || model->rawInternalModel_ == 0) continue;
                 LightingManager* manager = LightingManager::GetInstance();
                 manager->ApplyAmbientColorToModel(model->rawInternalModel_);
@@ -101,7 +79,7 @@ extern "C" ARM void func_02016874(Zone3D* self) {
                 RenderConfig::SubmitToFifo();
                 model->Draw(true);
                 if (environment == 4) {
-                    model = GetNodeAtDepth020196fc((Obj020196fc*)self, 11)->render->slot->model;
+                    model = GetNodeAtDepth020196fc(self, 11)->elements->resource->model;
                     NSBXXInternalModel* internal = model->rawInternalModel_;
                     if (model != 0 && internal != 0) {
                         Matrix3x3 identity;
@@ -114,7 +92,7 @@ extern "C" ARM void func_02016874(Zone3D* self) {
             }
         }
         if (environment != 5) return;
-        Model3D* model = GetNodeAtDepth020196fc((Obj020196fc*)self, 12)->render->slot->model;
+        Model3D* model = GetNodeAtDepth020196fc(self, 12)->elements->resource->model;
         LightingManager* manager = LightingManager::GetInstance();
         manager->ApplyAmbientColorToModel(model->rawInternalModel_);
         if (playerZ < 4) {
@@ -168,7 +146,7 @@ extern "C" ARM void func_02016874(Zone3D* self) {
         if (time != (unsigned char)self->unk_830[1]) self->unk_830[2] = 1;
         else self->unk_830[2] = 0;
         self->unk_830[1] = time;
-        Node020196fc* node = (Node020196fc*)self->firstBMDJStruct_41c_;
+        BmdjScriptNode* node = self->firstBMDJStruct_41c_;
         while (node != 0) {
             PushMatrixAndRender02016db4(self, node);
             node = node->next;

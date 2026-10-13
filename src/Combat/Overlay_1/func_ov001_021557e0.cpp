@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Combat/ActorAction.h"
 #include "GameState/GameState.h"
 
 // USA: func_ov001_021557e0
@@ -13,7 +14,6 @@ void* GetData02153637(void);
 struct Flags02033fcc;
 void SetFlag0x4At0xe0(struct Flags02033fcc* obj);
 unsigned char GetByte0x26c(char* obj);
-void* GetFieldPtrAt0x26c(void* obj);
 extern "C" void _ZN8Object3D24MaybeSetRegularAnimationEPKci(void* obj, const char* name, int idx);
 void ClearBytesAndZeroBlock02039d24(unsigned char* obj);
 extern "C" void _ZN8Object3D10EnableFlagEi(void* obj, unsigned int mask);
@@ -95,7 +95,7 @@ extern "C" ARM int func_ov001_021557e0(struct Self021557e0* self) {
                 continue;
             }
             SetFlag0x4At0xe0((struct Flags02033fcc*)m);
-            if (GetByte0x26c((char*)m) == 0 || ((unsigned char*)GetFieldPtrAt0x26c(m))[1] != 2) {
+            if (GetByte0x26c((char*)m) == 0 || GetFieldPtrAt0x26c(m)->command != 2) {
                 _ZN8Object3D24MaybeSetRegularAnimationEPKci(m, data_ov001_02164bd1, 0x10);
             }
             ClearBytesAndZeroBlock02039d24((unsigned char*)m);

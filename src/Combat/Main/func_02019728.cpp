@@ -1,43 +1,13 @@
 #include <globaldefs.h>
-#if defined(jpn)
-enum { kListOffset = 0x8c, kMapBase = 0x1f4, kNodeField = 0x440 };
-#else
-enum { kListOffset = 0x6c, kMapBase = 0x1b4, kNodeField = 0x420 };
-#endif
-
-struct Obj020196fc;
-struct List0201e434;
-struct Struct02019f24;
-struct FloorMap02019728;
+#include "World/Zone3D.h"
 
 struct AdjacencyBits02019728 {
     unsigned char bits;
 };
 
-struct Mat02019728 {
-    int m[9];
-};
-
-struct Cell02019728 {
-    void* node;
-    unsigned char info[16];
-    Mat02019728 matrix;
-    int rotation;
-    int x;
-    int y;
-    int z;
-};
-
-struct Tile02019728 {
-    unsigned char data[16];
-};
-
 extern "C" {
 void __clear(void* buf, int size);
 int sprintf(char* buf, const char* fmt, ...);
-int _ZNK8FloorMap16GetAdjacencyBitsEii(const FloorMap02019728* map, int x, int y);
-void Mat3x3_WriteRotationY(Mat02019728* out, int sine, int cosine);
-void Mat3x3_WriteIdentity(Mat02019728* out);
 }
 
 extern const char data_020ef26f[];
@@ -56,23 +26,20 @@ extern const char data_020ef2ab[];
 extern const char data_020ef2b0[];
 extern const char data_020ef2b5[];
 
-extern "C" void* _Z22GetNodeAtDepth020196fcP11Obj020196fci(Obj020196fc* obj, int count);
-extern "C" void* _Z29FindEntryByNameSubstr0201e434P12List0201e434PKc(List0201e434* list, const char* substr);
-extern "C" Struct02019f24* _Z18CopyStruct02019f24P14Struct02019f24S0_(Struct02019f24* dst, Struct02019f24* src);
 void RotateTileGrid3x3(void* obj, unsigned char* buf, int mode);
 
-static inline AdjacencyBits02019728 GetAdjacency02019728(const FloorMap02019728* map, int x, int y) {
+static inline AdjacencyBits02019728 GetAdjacency02019728(const FloorMap* map, int x, int y) {
     AdjacencyBits02019728 result;
-    result.bits = _ZNK8FloorMap16GetAdjacencyBitsEii(map, x, y);
+    result.bits = map->GetAdjacencyBits(x, y);
     return result;
 }
 
 // USA: func_02019728
-extern "C" ARM int func_02019728(void* obj, int unused, List0201e434* listArg, Tile02019728* grid, FloorMap02019728* mapArg)
+extern "C" ARM int func_02019728(Zone3D* obj, int unused, ZoneFeatures* listArg, TileFeaturePlacementData* grid, FloorMap* mapArg)
 {
     char name[8];
-    List0201e434* list = listArg ? listArg : (List0201e434*)((char*)obj + kListOffset);
-    FloorMap02019728* map = mapArg ? mapArg : (FloorMap02019728*)((char*)obj + kMapBase + 0x2400);
+    ZoneFeatures* list = listArg ? listArg : &obj->substruct_6c_;
+    FloorMap* map = mapArg ? mapArg : &obj->grotto_.floorMap_;
     int n;
     int row;
 
@@ -83,14 +50,15 @@ extern "C" ARM int func_02019728(void* obj, int unused, List0201e434* listArg, T
         int col;
         for (col = 0; col < 16; col++) {
             AdjacencyBits02019728 adj;
-            Mat02019728 matrix;
-            Cell02019728* cell;
-            void* entry;
+            Matrix3x3 matrix;
+            GrottoTileMapRecord* cell;
+            TileFeaturePlacementData* entry;
             int rotation;
             int mode;
 
             adj = GetAdjacency02019728(map, col, row);
-            cell = *(Cell02019728**)((char*)obj + kNodeField) + row * 16 + col;
+            cell = &obj->grottoTileMapData_420_[row * 16];
+            cell = &cell[col];
             Mat3x3_WriteIdentity(&matrix);
 
             switch (adj.bits) {
@@ -157,15 +125,15 @@ extern "C" ARM int func_02019728(void* obj, int unused, List0201e434* listArg, T
             }
 
             if (grid == 0) {
-                cell->node = _Z22GetNodeAtDepth020196fcP11Obj020196fci((Obj020196fc*)obj, n);
-                entry = _Z29FindEntryByNameSubstr0201e434P12List0201e434PKc(list, name);
+                cell->node = GetNodeAtDepth020196fc(obj, n);
+                entry = FindEntryByNameSubstr0201e434(list, name);
                 if (entry != 0) {
-                    _Z18CopyStruct02019f24P14Struct02019f24S0_((Struct02019f24*)cell->info, (Struct02019f24*)entry);
+                    CopyStruct02019f24(&cell->info, entry);
                 }
             } else {
-                entry = _Z29FindEntryByNameSubstr0201e434P12List0201e434PKc(list, name);
+                entry = FindEntryByNameSubstr0201e434(list, name);
                 if (entry != 0 && grid != 0) {
-                    _Z18CopyStruct02019f24P14Struct02019f24S0_((Struct02019f24*)(grid + row * 16 + col), (Struct02019f24*)entry);
+                    CopyStruct02019f24(&(grid + row * 16)[col], entry);
                 }
             }
 
@@ -198,14 +166,14 @@ extern "C" ARM int func_02019728(void* obj, int unused, List0201e434* listArg, T
             }
 
             if (grid == 0) {
-                cell->rotation = rotation;
-                RotateTileGrid3x3(obj, cell->info + 2, mode);
-                cell->x = (int)(4096.0f * (8.0f * (float)col));
-                cell->y = 0;
-                cell->z = (int)(4096.0f * (8.0f * (float)row));
-                cell->matrix = matrix;
+                cell->angle = rotation;
+                RotateTileGrid3x3(obj, cell->info.directionBitmasks, mode);
+                cell->position.x = (int)(4096.0f * (8.0f * (float)col));
+                cell->position.y = 0;
+                cell->position.z = (int)(4096.0f * (8.0f * (float)row));
+                cell->rotation = matrix;
             } else {
-                RotateTileGrid3x3(obj, (grid + row * 16 + col)->data + 2, mode);
+                RotateTileGrid3x3(obj, (grid + row * 16)[col].directionBitmasks, mode);
             }
         }
     }

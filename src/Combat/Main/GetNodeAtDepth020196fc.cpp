@@ -1,22 +1,10 @@
 #include <globaldefs.h>
 
-struct Node020196fc {
-    char unk[0x54];
-    struct Node020196fc* next;
-};
-
-struct Obj020196fc {
-#if defined(jpn)
-    char unk[0x43c];
-#else
-    char unk[0x41c];
-#endif
-    struct Node020196fc* head;
-};
+#include "World/Zone3D.h"
 
 // USA: func_020196fc
-ARM struct Node020196fc* GetNodeAtDepth020196fc(struct Obj020196fc* obj, int count) {
-    struct Node020196fc* cur = obj->head;
+ARM BmdjScriptNode* GetNodeAtDepth020196fc(Zone3D* obj, int count) {
+    BmdjScriptNode* cur = obj->firstBMDJStruct_41c_;
     int i;
     for (i = 0; i < count; i++) {
         if (cur == 0) {

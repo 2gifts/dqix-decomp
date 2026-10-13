@@ -1,34 +1,20 @@
 #include <globaldefs.h>
-#if defined(jpn)
-enum { kCountOffset = 0x496 };
-#else
-enum { kCountOffset = 0x476 };
-#endif
-
+#include "World/ZoneChest.h"
 
 struct Entry_02028bd0;
-struct Entry_02028bd0* GetEntryTableBase(void);
-struct Entry_02028bd0* FindInlineEntryById(struct Entry_02028bd0* base, int key);
-
-struct S02013cb0 {
-    unsigned short field0;
-    unsigned char pad2[kCountOffset - 2];
-    unsigned char count;
-    unsigned char pad3;
-    unsigned char* arrayPtr;
-};
+Entry_02028bd0* GetEntryTableBase();
+Entry_02028bd0* FindInlineEntryById(Entry_02028bd0* base, int key);
 
 // USA: func_02013cb0
-ARM void SetElementFlagsFromMask02013cb0(struct S02013cb0* obj, unsigned int mask) {
+ARM void SetElementFlagsFromMask02013cb0(Zone3D* zone, unsigned int mask) {
     int i;
-    for (i = 0; i < obj->count; i++) {
+    for (i = 0; i < zone->unknown_476_; i++) {
         if (mask & (1 << i)) {
-            unsigned char* elem = obj->arrayPtr + i * 0x368;
-            *(short*)(elem + 2) = -1;
+            zone->unknown_478_[i].field2 = -1;
         }
     }
-    struct Entry_02028bd0* base = GetEntryTableBase();
-    struct Entry_02028bd0* result = FindInlineEntryById(base, obj->field0);
+    Entry_02028bd0* base = GetEntryTableBase();
+    Entry_02028bd0* result = FindInlineEntryById(base, zone->currentZoneID_);
     if (result == NULL) {
         return;
     }

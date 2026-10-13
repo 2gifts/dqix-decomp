@@ -8,6 +8,8 @@
 #include "Graphics/LightingInfo.h"
 #include "Grotto/Main/TileFeatures.h"
 #include "World/ZoneLootableRecord.h"
+#include "World/BmdjScriptNode.h"
+#include "ZoneFeatures.h"
 
 struct Zone3D_StructPtr_8
 {
@@ -25,10 +27,18 @@ struct ZoneChestRenderRecord
     Vector3i position;
     short angleY;
     short angleX;
-    char unknown10[6];
+    unsigned short counter;
+    short taskID;
+    signed char owner;
+    unsigned char unknown15;
     unsigned char active;
     unsigned char secondPass;
-    char unknown18[12];
+    unsigned char special;
+    unsigned char delay;
+    short recordIndex;
+    unsigned short uniqueID;
+    unsigned char unknown1e[2];
+    Foo02048004* object;
 };
 
 // sizeof == 0x2824, as seen in the dynamic allocation of one
@@ -76,15 +86,15 @@ public:
 
     // Populated from BMBL and BPOS scripts, among other things holds data
     // about warps and placement of stairs/chests in grottos
-    char substruct_6c_[0x88];
+    ZoneFeatures substruct_6c_;
     AtmosphericEffectSet atmosphericEffects_;
     // populated by BATS files.
     // If you remove it, lighting goes weird outdoors, but I don't see any 
     // change in towns / battlefields
     LightingInfo lighting_;
     Model3DListNode* firstModel_418_;
-    void* firstBMDJStruct_41c_;
-    void* grottoTileMapData_420_;
+    BmdjScriptNode* firstBMDJStruct_41c_;
+    GrottoTileMapRecord* grottoTileMapData_420_;
     int unknown_424_;
     char unk_428[4];
     unsigned char unknown_42c_;
@@ -98,7 +108,7 @@ public:
     char unk_444[0x474 - 0x444];
 
     short unknown_474_;
-    char unknown_476_;
+    unsigned char unknown_476_;
     // this seems to include blue and red chests
     unsigned char numChests_;
     ZoneLootableRecord* unknown_478_;
@@ -107,7 +117,9 @@ public:
     Foo02048004* lootableTemplates_[6];
     Model3D models_498_[2];
     int chestPaletteOffsets_5f0_[4];
-    char unk_600[0x82c - 0x600];
+    char unk_600[0x824 - 0x600];
+    BmdjSceneElement** terrainElements_;
+    int unknown_828_;
 
     int unknown_82c_;
 
@@ -146,7 +158,9 @@ public:
             char unknown_276c_[0x27d8 - 0x276c];
             unsigned short pendingType2Mask_;
             unsigned short pendingLootableMask_;
-            char unknown_27dc_[0x2820 - 0x27dc];
+            char unknown_27dc_[0x281e - 0x27dc];
+            unsigned char unknown_281e_;
+            char unknown_281f_;
         };
     };
     char unknown_2820_;
@@ -167,3 +181,13 @@ public:
 
     void LoadMapAMDJ();
 };
+
+#if defined(jpn)
+typedef char Zone3DNodeHeadOffsetCheck[offsetof(Zone3D, firstBMDJStruct_41c_) == 0x43c ? 1 : -1];
+typedef char Zone3DTerrainArrayOffsetCheck[offsetof(Zone3D, terrainElements_) == 0x844 ? 1 : -1];
+typedef char Zone3DStorageSizeCheck[sizeof(Zone3D) == 0x2864 ? 1 : -1];
+#else
+typedef char Zone3DNodeHeadOffsetCheck[offsetof(Zone3D, firstBMDJStruct_41c_) == 0x41c ? 1 : -1];
+typedef char Zone3DTerrainArrayOffsetCheck[offsetof(Zone3D, terrainElements_) == 0x824 ? 1 : -1];
+typedef char Zone3DStorageSizeCheck[sizeof(Zone3D) == 0x2824 ? 1 : -1];
+#endif

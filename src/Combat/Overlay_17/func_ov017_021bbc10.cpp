@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Combat/ActorAction.h"
 
 #include "Combat/Main/BattleList.h"
 #include "Filesystem/BackgroundLoader.h"
@@ -33,7 +34,6 @@ struct Overlay021bbc10 {
     unsigned char flagFf;
 };
 
-extern "C" void* _Z18GetFieldPtrAt0x26cPv(void* obj);
 extern "C" int _Z12GetByte0x26cPc(GameObject* obj);
 extern "C" int _Z12GetField0x70Pv(void* obj);
 extern "C" void* _Z15GetFieldIfFlag4Pc(GameState* gs);
@@ -92,8 +92,8 @@ extern "C" ARM int func_ov017_021bbc10(Overlay021bbc10* self) {
     if (res->unknown_4080 != 0) {
         return self->result0a;
     }
-    unsigned char* field26c = (unsigned char*)_Z18GetFieldPtrAt0x26cPv(unk);
-    if (_Z12GetByte0x26cPc(unk) != 0 && field26c[1] != 2) {
+    SubBlock02038508* field26c = GetFieldPtrAt0x26c(unk);
+    if (_Z12GetByte0x26cPc(unk) != 0 && field26c->command != 2) {
         return self->result0a;
     }
     if (self->flagFd == 0 && IsField0Null((void**)res->unknown_ptr_array_36fc[1]) == 0) {
@@ -127,7 +127,7 @@ extern "C" ARM int func_ov017_021bbc10(Overlay021bbc10* self) {
         GameObject* member = gs->GetPartyMemberByIndex(ids[i]);
         if (member != NULL) {
             _Z16SetFlag0x4At0xe0P13Flags02033fcc(member);
-            if (_Z12GetByte0x26cPc(member) == 0 || ((unsigned char*)_Z18GetFieldPtrAt0x26cPv(member))[1] != 2) {
+            if (_Z12GetByte0x26cPc(member) == 0 || GetFieldPtrAt0x26c(member)->command != 2) {
                 ((Object3D*)member)->MaybeSetRegularAnimation(data_ov017_021d7d6c, 0x10);
             }
             _Z30ClearBytesAndZeroBlock02039d24Ph((unsigned char*)member);

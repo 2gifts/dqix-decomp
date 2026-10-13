@@ -1,31 +1,18 @@
 #include <globaldefs.h>
-
-struct Node_1e6d4 {
-    char unk0[4];
-    int kind;
-    char unk8[0x24];
-    unsigned short id;
-    char unk2e[0x42];
-    struct Node_1e6d4* next;
-};
-
-struct NodeOwner_1e6d4 {
-    char unk[0x60];
-    struct Node_1e6d4* head;
-};
+#include "World/ZoneFeatures.h"
 
 // USA: func_0201e6d4
-ARM struct Node_1e6d4* FindNodeKind9ById(struct NodeOwner_1e6d4* owner, int id) {
-    struct Node_1e6d4* node;
+ARM ZoneFeatures::Opcode6aEntry* FindNodeKind9ById(ZoneFeatures* owner, int id) {
+    ZoneFeatures::Opcode6aEntry* node;
     if (id < 0) {
         return 0;
     }
-    node = owner->head;
+    node = owner->entries6aByType_[9];
     while (node != 0) {
-        if (node->kind == 9 && node->id == id) {
+        if (node->maybeType == 9 && node->unk_2c.type9.unk_0 == id) {
             return node;
         }
-        node = node->next;
+        node = node->pNext;
     }
     return 0;
 }

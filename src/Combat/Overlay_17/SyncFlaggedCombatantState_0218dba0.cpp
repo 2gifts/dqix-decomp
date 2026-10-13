@@ -5,6 +5,7 @@ enum { RegionOffset36fc = 0x36fc, RegionOffset38 = 0x38, RegionOffset3c = 0x3c }
 #endif
 
 #include <globaldefs.h>
+#include "Combat/ActorAction.h"
 #include "GameState/GameState.h"
 
 extern "C" void* func_02012fe4(void);
@@ -13,7 +14,6 @@ extern "C" void* func_02012fe4(void);
 struct BitField0203402c;
 int CheckField0xc4Low15BitsNonZero(struct BitField0203402c* p);
 
-void* GetFieldPtrAt0x26c(void* obj);
 void* GetField0x3f8Address(GameState* battleStruct);
 
 struct HeadNode02046b24;
@@ -65,16 +65,16 @@ extern "C" ARM void func_ov017_0218dba0(int combatantId) {
     int d = (int)(t * (float)mulResult);
 
     if (combatant != 0) {
-        unsigned char* base = (unsigned char*)GetFieldPtrAt0x26c(combatant);
-        if (base[0] != 0) {
-            base = (unsigned char*)GetFieldPtrAt0x26c(combatant);
-            unsigned char mode = base[1];
+        SubBlock02038508* base = GetFieldPtrAt0x26c(combatant);
+        if (base->active != 0) {
+            base = GetFieldPtrAt0x26c(combatant);
+            unsigned char mode = base->command;
             if (mode == 1 || mode == 4) {
-                d = *(short*)(base + 0x50);
+                d = base->unknown50;
             }
             if (mode == 2 || mode == 6) {
-                d = *(short*)(base + 0x50);
-                selfVec.v[1] = *(unsigned int*)(base + 0x4c);
+                d = base->unknown50;
+                selfVec.v[1] = base->unknown4c;
             }
         }
     }

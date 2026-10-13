@@ -1,20 +1,19 @@
 #include <globaldefs.h>
-void StoreThreeWordsAt0x0020130a8(int*, int, int, int);
-
+#include "World/ZoneChest.h"
 
 // USA: func_020133fc
-ARM void InitStruct020133fc(char* obj) {
-    StoreThreeWordsAt0x0020130a8((int*)obj, 0, 0, 0);
-    *(short*)(obj + 0xc) = 0;
-    *(short*)(obj + 0xe) = 0;
-    *(short*)(obj + 0x10) = 0;
-    *(char*)(obj + 0x16) = 1;
-    *(char*)(obj + 0x17) = 0;
-    *(short*)(obj + 0x1a) = -1;
-    *(short*)(obj + 0x1c) = 0;
-    *(char*)(obj + 0x14) = -1;
-    *(int*)(obj + 0x20) = 0;
-    *(char*)(obj + 0x19) = 0;
-    *(short*)(obj + 0x12) = -1;
-    *(char*)(obj + 0x18) = 0;
+ARM void InitStruct020133fc(ZoneChestRenderRecord* record) {
+    StoreThreeWordsAt0x0020130a8(&record->position, 0, 0, 0);
+    record->angleY = 0;
+    record->angleX = 0;
+    record->counter = 0;
+    record->active = 1;
+    record->secondPass = 0;
+    record->recordIndex = -1;
+    record->uniqueID = 0;
+    record->owner = -1;
+    record->object = NULL;
+    record->delay = 0;
+    record->taskID = -1;
+    record->special = 0;
 }

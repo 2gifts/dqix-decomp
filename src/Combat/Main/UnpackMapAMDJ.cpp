@@ -8,16 +8,6 @@
 #include "Filesystem/FileAccessor.h"
 #include "std_library_functions.h"
 
-struct BmdjScriptNode
-{
-    int unknown0;
-    unsigned char scriptState[0x3c];
-    int unknown40;
-    int unknown44;
-    Vector3i position;
-    BmdjScriptNode* next;
-};
-
 extern "C"
 {
     int _ZN6Zone3D15ProcessBMDJFileEPKvjPN12ZoneFeatures13Opcode64EntryE(Zone3D* zone, const void* src, unsigned int size, ZoneFeatures::Opcode64Entry* entry);
@@ -80,7 +70,7 @@ ARM int Zone3D::UnpackMapAMDJ()
 
             if (strcmp(data_020ef199, extension) == 0)
             {
-                ZoneFeatures* features = reinterpret_cast<ZoneFeatures*>(substruct_6c_);
+                ZoneFeatures* features = &substruct_6c_;
                 int entryCount = features->arraySize64_;
                 for (int i = 0; i < entryCount; i++)
                 {
@@ -92,7 +82,7 @@ ARM int Zone3D::UnpackMapAMDJ()
             fileID++;
         }
 
-        BmdjScriptNode* node = static_cast<BmdjScriptNode*>(firstBMDJStruct_41c_);
+        BmdjScriptNode* node = firstBMDJStruct_41c_;
         while (node != NULL)
         {
             func_02014a24(this, node);

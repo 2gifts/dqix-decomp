@@ -14,7 +14,6 @@ extern "C" void _ZN8Vector3iaSERKS_(void* dst, const void* src);
 extern "C" float _fflt(int value);
 extern "C" float _fmul(float a, float b);
 extern "C" int _ffix(float value);
-extern "C" void _Z28StoreThreeWordsAt0x0020130a8Piiii(int* obj, int a, int b, int c);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(struct Obj0205eaa0* obj, int a, int b);
 
 extern char data_020ef222[];
@@ -53,7 +52,7 @@ extern "C" ARM void func_02017098(struct ActorListManager* manager, int index) {
         int sine = FIX32_MULTIPLY(fix32sin(angle), 0x80);
         int height = _ffix(_fmul(4.0f, _fflt(0x80)));
         int cosine = FIX32_MULTIPLY(fix32cos(angle), 0x80);
-        _Z28StoreThreeWordsAt0x0020130a8Piiii((int*)&e->offsets[i], sine, height, cosine);
+        StoreThreeWordsAt0x0020130a8(&e->offsets[i], sine, height, cosine);
         angle = fix32ReduceAngle0To2Pi(angle + 0x1922);
     }
 

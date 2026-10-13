@@ -77,7 +77,7 @@ extern "C" ARM void func_02017a94(Zone3D* zone) {
                             unsigned short mask;
                             e->flags |= 1;
                             n = (struct FeatureNode02017a94*)
-                                GetPointerFromArray0x3c((unsigned char*)zone->substruct_6c_, 2);
+                                GetPointerFromArray0x3c((unsigned char*)&zone->substruct_6c_, 2);
                             while (n != NULL) {
                                 if (n->id2d == e->key) {
                                     cur = n->field2e;

@@ -10,9 +10,8 @@ ARM int Zone3D::ProcessBMBLFile(const void* source, unsigned int sourceLength) {
     unsigned int size;
     void* script = DecompressLZ77FileIntoScratchSpace(*allocator, source, size);
     Zone3D_StructPtr_8* map = pUnknownStruct_8_;
-    ZoneFeatures* features = reinterpret_cast<ZoneFeatures*>(substruct_6c_);
-    features->Reset();
-    features->LoadFromScript(allocator, script, size);
+    substruct_6c_.Reset();
+    substruct_6c_.LoadFromScript(allocator, script, size);
     pUnknownStruct_8_ = map;
     return 1;
 }

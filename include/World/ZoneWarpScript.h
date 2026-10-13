@@ -11,6 +11,8 @@ struct Struct_020fdc20 {
 
 extern Struct_020fdc20 data_020fdc20;
 
+void ExecuteZoneWarpScript(const void* data, unsigned int length, ZoneFeatures* features, SafeAllocator* allocator);
+
 bool ProcessExtraOpcode69Params(Script::Parameter *param, int numParams, ZoneFeatures::Opcode68Entry &entry);
 int WarpScript_Opcode_69(Script::Parameter *params, int numParams);
 int WarpScript_Opcode_72(Script::Parameter *params, int numParams);
