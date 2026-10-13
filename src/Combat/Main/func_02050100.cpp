@@ -25,14 +25,14 @@ struct Window02050100 {
     unsigned char lastValue;
 };
 struct Glyph02050100 { int field_0; signed char width; };
-extern "C" Glyph02050100* _Z22FindEntryByKey0204254cii(int, int);
+Glyph02050100* FindEntryByKey0204254c(int, int);
 extern char data_020e7bda[];
 extern "C" char* func_02050064(Window02050100*);
 extern "C" void func_0204f41c(Window02050100*, short, short, char*, int, int, short*, short*, int);
 extern "C" void func_0204f914(Window02050100*, int, short, short, short, short);
 extern "C" void func_0204f7e8(Window02050100*, short, short, int, unsigned char, unsigned char, short*, short*, unsigned char, unsigned char, unsigned char, unsigned char);
 typedef void (*WindowUpload02050100)(void*, int, unsigned int);
-extern "C" WindowUpload02050100 _Z21GetTableEntry0204a5e4ii(int, int);
+WindowUpload02050100 GetTableEntry0204a5e4(int, int);
 
 // USA: func_02050100
 extern "C" ARM void func_02050100(Window02050100* self, int upload) {
@@ -60,7 +60,7 @@ extern "C" ARM void func_02050100(Window02050100* self, int upload) {
     style = 1;
     if (self->options & 4) style = 0;
     glyphWidth = 0;
-    Glyph02050100* glyph = _Z22FindEntryByKey0204254cii((int)data_020e7bda, glyphWidth);
+    Glyph02050100* glyph = FindEntryByKey0204254c((int)data_020e7bda, glyphWidth);
     if (glyph) glyphWidth = glyph->width;
     short labelX = center - (glyphWidth >> 1);
     func_0204f41c(self, labelX, y, data_020e7bda, 8, 15, &outWidth, &outHeight, 0);
@@ -73,7 +73,7 @@ extern "C" ARM void func_02050100(Window02050100* self, int upload) {
     func_0204f914(self, style, right, y, right + 14, bottom);
     func_0204f7e8(self, right + 1, y, self->lastValue, 8, 15, &outWidth, &outHeight, 0, displayDigits, 0, 0);
     if (upload) {
-        WindowUpload02050100 uploader = _Z21GetTableEntry0204a5e4ii(low, high);
+        WindowUpload02050100 uploader = GetTableEntry0204a5e4(low, high);
         CleanInvalidateCacheRange(self->buffer, self->bufferSize);
         uploader(self->buffer, self->offset, self->bufferSize);
     }

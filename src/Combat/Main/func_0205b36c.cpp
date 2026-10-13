@@ -4,12 +4,12 @@ struct Rect0205b1ac { int offset; short x, y, width, height; };
 struct GlyphEntry0205b36c { const char* text; signed char width; unsigned char flags; short bitOffset; };
 struct GlyphSheet0205b36c { int field_0; unsigned short width; unsigned short height; int field_8; unsigned char* bitmap; };
 struct GlyphDestination0205b36c { unsigned char* pixels; Rect0205b1ac* rectangles; unsigned char rectangleCount; };
-extern "C" extern int _Z24GetWordFromTable02042638i(int);
-extern "C" extern Rect0205b1ac* _Z31FindRectContainingPoint0205b1acP12Rect0205b1acjii(Rect0205b1ac*, unsigned int, int, int);
+extern int GetWordFromTable02042638(int);
+extern Rect0205b1ac* FindRectContainingPoint0205b1ac(Rect0205b1ac*, unsigned int, int, int);
 
 // USA: func_0205b36c
 extern "C" ARM void func_0205b36c(GlyphDestination0205b36c* destination, GlyphEntry0205b36c* glyph, short x, short y, unsigned char color, unsigned char font) {
-    GlyphSheet0205b36c* sheet = (GlyphSheet0205b36c*)_Z24GetWordFromTable02042638i(font);
+    GlyphSheet0205b36c* sheet = (GlyphSheet0205b36c*)GetWordFromTable02042638(font);
     short bitOffset = glyph->bitOffset;
     unsigned char upperColor = color << 4;
     unsigned char lowerColor = color & 15;
@@ -24,7 +24,7 @@ extern "C" ARM void func_0205b36c(GlyphDestination0205b36c* destination, GlyphEn
         for (int column = 0; column < glyph->width; ++column) {
             if (*source & (1 << shift)) {
                 short destinationX = x + column;
-                Rect0205b1ac* rectangle = _Z31FindRectContainingPoint0205b1acP12Rect0205b1acjii(rectangles, count, destinationX, destinationY);
+                Rect0205b1ac* rectangle = FindRectContainingPoint0205b1ac(rectangles, count, destinationX, destinationY);
                 if (rectangle) {
                     unsigned char* pixels = destination->pixels + rectangle->offset;
                     short localX = destinationX - rectangle->x;

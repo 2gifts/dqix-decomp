@@ -18,7 +18,7 @@ struct PaletteColor0203c35c {
     float green;
     float blue;
 };
-extern "C" int _Z26GetGlobalField0x1c020421a0v();
+int GetGlobalField0x1c020421a0();
 extern PaletteColor0203c35c data_020e78c4[] __attribute__((aligned(4)));
 extern float data_020e78b0[];
 extern unsigned short data_020e78a0[];
@@ -33,7 +33,7 @@ extern "C" ARM void func_0203c35c(PaletteState0203c35c* state) {
     unsigned int i;
     int shade;
     unsigned short colors[16] = {};
-    palette = ((PaletteWork0203c35c*)_Z26GetGlobalField0x1c020421a0v())->palette;
+    palette = ((PaletteWork0203c35c*)GetGlobalField0x1c020421a0())->palette;
     unsigned short paletteBytes = 0xe0;
     memset(palette, 0, paletteBytes);
     for (i = 0; i < 7; i++) {

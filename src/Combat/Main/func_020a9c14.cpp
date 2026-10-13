@@ -12,7 +12,7 @@ struct Payload0201165c {
     char pad1[3];
     unsigned char monsterRank;
 };
-extern "C" void _Z28InitTreasureMapEntry0201165cPcPKvi15Payload0201165c(char*, const void*, int, Payload0201165c);
+void InitTreasureMapEntry0201165c(char*, const void*, int, Payload0201165c);
 extern "C" void func_020a3720();
 extern "C" void func_020a395c();
 struct SavedMapList020a9c14 {
@@ -49,9 +49,9 @@ extern "C" ARM int func_020a9c14(const void* saved) {
     ExportDetailedTreasureMapData(map, &detail, false, 0);
     func_020a395c();
     if (detail.mapType_ == 1) {
-        reinterpret_cast<MapEntryCall020a9c14>(_Z28InitTreasureMapEntry0201165cPcPKvi15Payload0201165c)((char*)state, map, detail.entranceZoneID_, *reinterpret_cast<MapPosition020a9c14*>(&detail.entranceX_), detail.regular_.environ_, detail.regular_.startingMonsterRank_);
+        reinterpret_cast<MapEntryCall020a9c14>(InitTreasureMapEntry0201165c)((char*)state, map, detail.entranceZoneID_, *reinterpret_cast<MapPosition020a9c14*>(&detail.entranceX_), detail.regular_.environ_, detail.regular_.startingMonsterRank_);
     } else if (detail.mapType_ == 2) {
-        reinterpret_cast<MapEntryCall020a9c14>(_Z28InitTreasureMapEntry0201165cPcPKvi15Payload0201165c)((char*)state, map, detail.entranceZoneID_, *reinterpret_cast<MapPosition020a9c14*>(&detail.entranceX_), 0, 0);
+        reinterpret_cast<MapEntryCall020a9c14>(InitTreasureMapEntry0201165c)((char*)state, map, detail.entranceZoneID_, *reinterpret_cast<MapPosition020a9c14*>(&detail.entranceX_), 0, 0);
     }
     GrottoStruct* grotto = state->GetGrottoStruct();
     strcpy(grotto->activeMapImageName, detail.mapImageName_);
