@@ -10,10 +10,17 @@ extern unsigned char data_0211e33c[0x30000] __attribute__((aligned(4)));
 #include "Filesystem/LowNitroHandle.h"
 #include "Filesystem/NitroVM.h"
 #include "std_library_functions.h"
+struct BattleSub7e78 {
+    char pad0[6];
+    unsigned char field6;
+};
 struct BattleStruct {
     int unk0;
     int unk4;
     struct CombatantStruct* combatantList[0xe9];
+    char pad3ac[0x7e78 - 0x3ac];
+    struct BattleSub7e78 sub7e78;
+    struct BattleSub7e78* GetSub7e78() { return &sub7e78; }
 };
 extern "C" struct BattleStruct* _ZN9GameState11GetInstanceEv();
 
@@ -32,7 +39,17 @@ extern "C" void _Z16InitPool020401fcP12Pool020401fcjP13SafeAllocator(struct Pool
 
 extern "C" int _Z21GetFieldAt0x0020652c8Pi(int* obj);
 
-extern "C" void* func_02012fe4(void);
+struct Sub1840_02012fe4 {
+    char pad0[0xb5c];
+    unsigned char* tableB5c;
+};
+struct Global02012fe4 {
+    unsigned short id;
+    char pad2[0x1840 - 2];
+    struct Sub1840_02012fe4 sub1840;
+    struct Sub1840_02012fe4* GetSub1840() { return &sub1840; }
+};
+extern "C" struct Global02012fe4* func_02012fe4(void);
 extern "C" unsigned int* _Z27GetDataPtr02114e04_020d6c00v(void);
 
 extern "C" int _Z19IsIdInRange020981e4ii(int a, int id);
@@ -270,10 +287,6 @@ extern char data_020efe27;
 extern char data_020efe30;
 extern char data_020efe38;
 
-static inline char* GetSub1840(void* run) {
-    return (char*)((int)run + 0x1840);
-}
-
 struct BitFlag0203d028 { unsigned int b0 : 1; };
 
 static inline void Set2e0203d028(void* m, short v) { *(short*)((char*)m + 0x2e) = v; }
@@ -294,7 +307,6 @@ static inline void SetX90_0203d028(void* motion, int v)
     }
 }
 
-
 // USA: func_0203d028
 extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, SafeAllocator* sb, char* fp)
 {
@@ -308,7 +320,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
     struct BattleStruct* battleStruct = _ZN9GameState11GetInstanceEv();
     GameResources* mgr = func_ov017_0218b5b0();
     struct RegNode0203d028* entry = (struct RegNode0203d028*)_Z21GetFieldAt0x0020652c8Pi(&self->listHead);
-    void* globalStruct = func_02012fe4();
+    struct Global02012fe4* globalStruct = func_02012fe4();
     unsigned int* dataFlags = _Z27GetDataPtr02114e04_020d6c00v();
     unsigned int idVal = *(unsigned short*)globalStruct;
     void* childModelPtr = 0;
@@ -334,13 +346,8 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
         SetField0x8((int*)node, (int)entry);
         SetField0xc((int*)node, (int)info);
 
-        {
-            char* p = (char*)((int)battleStruct + 0x278);
-            p = (char*)((int)p + 0x7c00);
-            unsigned char b = *(unsigned char*)(p + 6);
-            if (b != 0xff && info != 0 && info->field1f != 0) {
-                node->flags |= 0x40000;
-            }
+        if (battleStruct->GetSub7e78()->field6 != 0xff && info != 0 && info->field1f != 0) {
+            node->flags |= 0x40000;
         }
 
         int handledFlag = 0;
@@ -374,7 +381,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
             _Z24BackupPairTables0207dfacPc(fp);
         }
         else if (entry->type == 4) {
-            unsigned char* table = *(unsigned char**)(GetSub1840(globalStruct) + 0xb5c);
+            unsigned char* table = globalStruct->GetSub1840()->tableB5c;
             int slot = 5;
             struct Entry0209854c* found = _Z25FindEntryByFieldC0209854cP13Entry0209854ci((struct Entry0209854c*)((char*)globalStruct + 0x840), entry->id);
             if (found != 0) {

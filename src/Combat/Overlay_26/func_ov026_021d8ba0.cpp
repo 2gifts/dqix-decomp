@@ -688,10 +688,9 @@ state1:
                 }
             }
             _Z16SetStoredWorkPtriPv(self->list, count);
+            groups = battle->groups;
+            self->groupKind = groups->kind;
         }
-        Group* top = battle->groups;
-        top++;
-        self->groupKind = (top - 1)->kind;
         self->resultKind = 0;
         ((Object3D*)(self->iconA))->MakeHidden();
         ((Object3D*)(self->iconB))->MakeHidden();

@@ -322,7 +322,7 @@ extern "C" ARM void func_ov006_02155e28(struct CombatLoader02155e28* self) {
                     entry = NULL;
                 } else {
                     for (unsigned short k = 0; k < entryCount; k++) {
-                        entry = &arr[(unsigned int)k];
+                        entry = &arr[k];
                         if (entry->id == 1) {
                             goto found;
                         }

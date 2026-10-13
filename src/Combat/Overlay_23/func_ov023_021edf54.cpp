@@ -136,17 +136,21 @@ struct World_021edf54 {
     char pad8200[0x8d66 - 0x8200];
     Reward_021edf54 rewards_[17];
     char pad8e10[0x8e15 - 0x8e10];
-    volatile unsigned char threshold_;
+    unsigned char threshold_;
     char pad8e16[0x8e20 - 0x8e16];
     int scaled_;
     char pad8e24[0x8e28 - 0x8e24];
-    volatile int baseA_;
-    volatile int baseB_;
+    int baseA_;
+    int baseB_;
     int rewardCount_;
     unsigned int bonus_;
     char pad8e38[0x8e3c - 0x8e38];
     float rateA_;
     float rateB_;
+
+    unsigned char GetThreshold() const { return threshold_; }
+    int GetBaseA() const { return baseA_; }
+    int GetBaseB() const { return baseB_; }
 };
 
 struct BattleInfo_021edf54 {
@@ -284,12 +288,12 @@ extern "C" ARM int func_ov023_021edf54(Scene_021edf54* self) {
 
     if (!CheckField0NonZero((int*)mode) || self->info_->leader_ == GetSearchStructCurrentArrEntry((SearchStruct0202c1a4*)mode)) {
         {
-            int base = self->world_->baseA_;
+            int base = self->world_->GetBaseA();
             float rate = self->world_->rateA_;
             self->valueA_ = (unsigned int)(base * rate);
         }
         {
-            int base = self->world_->baseB_;
+            int base = self->world_->GetBaseB();
             float rate = self->world_->rateB_;
             self->valueB_ = (unsigned int)(base * rate);
         }
@@ -315,7 +319,7 @@ extern "C" ARM int func_ov023_021edf54(Scene_021edf54* self) {
         Reward_021edf54* rewards = w->rewards_;
         if (count == 0) {
             Outcome_021edf54* outcome = &w->outcome_;
-            unsigned char threshold = w->threshold_;
+            unsigned char threshold = w->GetThreshold();
             int high = 0;
             if (outcome->level_ <= threshold)
                 high = 1;

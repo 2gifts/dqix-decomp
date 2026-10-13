@@ -64,7 +64,7 @@ extern "C" void func_ov003_02176f94(void* self);
 extern "C" void func_ov003_021748c4(unsigned char* self);
 extern "C" void func_ov003_021785d4(unsigned char* obj);
 extern "C" void func_ov023_021dcae0(struct Obj021dcae0* obj, int val);
-extern "C" void func_ov023_021ddf5c(void* obj, signed char v);
+extern "C" void func_ov023_021ddf5c(void* obj);
 extern "C" int func_ov003_021765b4(void* self);
 extern "C" int func_ov003_021766e8(void* self);
 extern "C" ARM int func_ov003_021764f4(unsigned char* self);
@@ -92,7 +92,7 @@ extern struct Obj0205eaa0 data_02108760;
 
 static inline void SetSelection(unsigned char* self, signed char v) {
     *(signed char*)(self + (0x7b6 - kRegionSelfShift)) = v;
-    func_ov023_021ddf5c(self + 0x3c, v);
+    func_ov023_021ddf5c(self + 0x3c);
 }
 
 static inline int IsLowKind(struct Element020de650* e) { return e->nibble <= 7; }
@@ -461,7 +461,6 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
 
         if (*(short*)(self + (0x1000 + 0 - kRegionSelfShift)) == *(short*)(*(void**)(self + (0xff8 - kRegionSelfShift))) &&
             *(signed char*)(self + (0x1000 + 0x44 - kRegionSelfShift)) == *(signed char*)(self + (0x1000 + 0x43 - kRegionSelfShift))) {
-            // matches, skip refresh
         } else {
             *(unsigned char*)(self + (0x1000 + 0x44 - kRegionSelfShift)) = *(signed char*)(self + (0x1000 + 0x43 - kRegionSelfShift));
             func_ov003_02177410(self);
@@ -503,8 +502,7 @@ extern "C" ARM void func_ov003_02178910(unsigned char* self) {
             *(unsigned char*)(self + (0x1000 + 0x3f - kRegionSelfShift)) = st3f;
             *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) |= 0x1000;
             *(signed char*)(self + (0x7b6 - kRegionSelfShift)) = st3f - 8;
-            // the ROM leaves r1 unset here: this site calls with the object only
-            ((void (*)(void*))func_ov023_021ddf5c)(self + 0x3c);
+            func_ov023_021ddf5c(self + 0x3c);
             if (*(unsigned char*)(self + (0x1000 + 0x3c - kRegionSelfShift)) != 0) return;
             *(unsigned short*)(self + (0x1000 + 0x46 - kRegionSelfShift)) &= ~0x1000;
             *(short*)(self + (0x1000 + 0x38 - kRegionSelfShift)) = 4;

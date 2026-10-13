@@ -71,8 +71,19 @@ struct ElemList021e0638 {
     char pad2[0x10];
 };
 
-static inline unsigned char* Off21c_021e0638(unsigned char* p) { return p + 0x21c; }
-static inline unsigned char* Off8000_021e0638(unsigned char* p) { return p + 0x8000; }
+struct Lists021e0638 {
+    char pad[0x8000];
+    ElemList021e0638 lists[77];
+};
+
+struct World021e0638 {
+    char pad[0x21c];
+    Lists021e0638 sub;
+    int count;
+};
+
+static inline Lists021e0638* GetSub021e0638(World021e0638* world) { return &world->sub; }
+static inline ElemList021e0638* GetLists021e0638(Lists021e0638* sub) { return sub->lists; }
 
 struct Sub148_021e0638 {
     char pad[0x10];
@@ -136,8 +147,8 @@ extern "C" ARM void func_ov025_021e0638(unsigned char* self) {
     int n;
     Node021e0638* tail;
     GameState* gs = GameState::GetInstance();
-    unsigned char* world = *(unsigned char**)(self + Field29c);
-    ElemList021e0638* cur = (ElemList021e0638*)(world + 0x821c) + *(int*)(self + Field55d8);
+    World021e0638* world = *(World021e0638**)(self + Field29c);
+    ElemList021e0638* cur = &world->sub.lists[*(int*)(self + Field55d8)];
     Ent021e0638 ents[12];
     int ids[60];
     unsigned char seen[0x51];
@@ -181,15 +192,15 @@ extern "C" ARM void func_ov025_021e0638(unsigned char* self) {
     nids = 0;
     changed = 1;
     tail = &head;
-    for (i = *(int*)(self + Field55d8); i < *(int*)(Off8000_021e0638(world) + 0xe24); i++) {
-        unsigned char* o = ((ElemList021e0638*)Off8000_021e0638(Off21c_021e0638(world)))[i].p10;
+    for (i = *(int*)(self + Field55d8); i < world->count; i++) {
+        unsigned char* o = GetLists021e0638(GetSub021e0638(world))[i].p10;
         if (o != 0) {
             ids[nids++] = *(unsigned short*)(o + 0x20);
         }
     }
-    unsigned char* lists = Off21c_021e0638(world);
+    Lists021e0638* lists = &world->sub;
     for (int j = 0; j < *(int*)(self + Field55d8); j++) {
-        ElemList021e0638* e = (ElemList021e0638*)(lists + 0x8000) + j;
+        ElemList021e0638* e = &lists->lists[j];
         if (e->p10 != 0) {
             ids[nids++] = *(unsigned short*)(e->p10 + 0x20);
         }

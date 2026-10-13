@@ -269,25 +269,13 @@ static inline struct Hdr1c00* Hdr(struct BattleMenu* p) {
     struct Hdr1c00* h = (struct Hdr1c00*)((char*)p + 0x1c00);
     return h;
 }
-static inline short* Msg2Ptr(struct BattleMenu* p) {
-    short* m = &p->msgId2;
-    return m;
-}
-static inline signed char* ActorPtr(struct BattleMenu* p) {
-    signed char* a = &p->actor;
-    return a;
-}
-static inline short* CmdPtr(struct BattleMenu* p) {
-    short* c = &p->command;
-    return c;
-}
-
 static inline int CurLimit(struct UnitExt* e) {
     return e->limits[e->level];
 }
 
 static inline int UnitId(struct Unit* u) { int id = u->id; return id; }
 static inline char* UnitName(struct Unit* u) { char* name = u->name; return name; }
+
 enum MsgKey { MSG_KEY_NONE = -1, MSG_KEY_DEAD = 0x232c, MSG_KEY_ALIVE = 0x233a };
 
 // USA: func_ov002_02157d40

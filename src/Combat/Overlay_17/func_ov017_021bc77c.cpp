@@ -11,6 +11,8 @@ enum { kGamePositionOffset = 0x71e4, kGamePositionY = 0x71f0, kGamePositionState
 #include "Memory/SafeAllocator.h"
 #include "Graphics/LightingManager.h"
 
+enum { kInvalidId = -1 };
+
 struct AllocatorUnion;
 
 extern "C" void* func_0202ae18();
@@ -247,10 +249,10 @@ extern "C" ARM int func_ov017_021bc77c(Self_021bc77c* self, void* arg) {
     }
     _Z17SetField0x238TruePv(f28);
     _Z22ApplyVecFromField0x21ePc(f28);
-    if (self->blk.s46 > -1) {
+    if (self->blk.s46 > kInvalidId) {
         _Z20SetOrClearBitInArrayPvPhii(bits, bits + 0x8c, self->blk.s46 + 0x38e, 1);
     }
-    if (self->sa0 > -1 && self->b9c) {
+    if (self->sa0 > kInvalidId && self->b9c) {
         _Z20SetOrClearBitInArrayPvPhii(bits, bits + 0x8c, self->sa0 + 0xbea, 1);
     }
     if (self->b9a) {

@@ -120,8 +120,6 @@ struct Src021cd6d8 {
     float f10;
 };
 
-/* The 16-byte record handed out by GetSubstructAt0x7c0 and by
-   GetEntryBySignedByteIndex. */
 struct Slot021941fc {
     unsigned short f0 : 8;
     unsigned short kind : 8;
@@ -140,12 +138,10 @@ struct Slot021941fc {
     short z;
     short angle;
 };
-
 struct Bits0xc1 {
     unsigned char low : 2;
     unsigned char high : 6;
 };
-
 extern "C" struct SearchStruct* func_0202ae18(void);
 extern "C" void* func_0205ec34(void);
 extern "C" void* _Z27GetDataPtr02114e04_020d6c00v(void);
@@ -225,13 +221,11 @@ extern "C" void func_ov017_021bd4d0(void* obj, unsigned char id, int a, int b);
 extern "C" void func_ov017_021d48f0(void);
 void* GetData02108ea8(void);
 extern "C" void func_0207dba8(void* p);
-
 extern int data_ov017_021d63f0;
 extern int data_ov017_021d63d8;
 extern int data_ov017_021d63e4;
 extern int data_ov017_021d63fc;
 extern unsigned short data_02114e30;
-
 // USA: func_ov017_021941fc
 extern "C" ARM void func_ov017_021941fc(unsigned char* ov, unsigned char* mode, void** list) {
     struct Src021cd6d8 params;
@@ -241,7 +235,6 @@ extern "C" ARM void func_ov017_021941fc(unsigned char* ov, unsigned char* mode, 
     struct Vec3s32_020c3030 target;
     unsigned char region[4];
 
-    /* PERMBLOCK */
     GameState* battle;
     struct SearchStruct* search;
     GameObject* actor;
@@ -251,7 +244,6 @@ extern "C" ARM void func_ov017_021941fc(unsigned char* ov, unsigned char* mode, 
     void* owner;
     int* g;
     unsigned char* status;
-    /* ENDPERM */
     battle = GameState::GetInstance();
     ctx = ((int)func_ov017_0218b5b0());
     search = func_0202ae18();
@@ -263,7 +255,6 @@ extern "C" ARM void func_ov017_021941fc(unsigned char* ov, unsigned char* mode, 
     g = GetGlobal02109030();
     mode = *(unsigned char**)(ov + 0x3000 + kRegionOffset734);
     status = (unsigned char*)GetData02153634();
-
     if (IsField0Null(list) != 0 && *(unsigned short*)(ov + kRegionOffset4400 + kRegionOffsetac) != 0) {
         params.f0 = 0;
         params.f2 = 0;
@@ -277,7 +268,6 @@ extern "C" ARM void func_ov017_021941fc(unsigned char* ov, unsigned char* mode, 
         _Z27EnqueueEventTag142_021cd6d8P11Src021cd6d8(&params);
         *(unsigned short*)(ov + kRegionOffset4400 + kRegionOffsetac) = 0;
     }
-
     if (IsAxisIntZero((struct AxisFloats0203b5f8*)ov, 0) != 0) {
         int restart = 0;
         if (*(unsigned char*)(ov + 0x4000 + kRegionOffset2e3) != 0) {
@@ -303,23 +293,19 @@ extern "C" ARM void func_ov017_021941fc(unsigned char* ov, unsigned char* mode, 
             *(unsigned char*)(ov + 0x4000 + kRegionOffset2e3) = 0;
         }
     }
-
     if (((struct StateFlags3c9*)g)->bit0 &&
         CheckFlag0x3c9Bit0OrByteNonPositive((struct StateFlags3c9*)g) != 0 &&
         CheckField0NonZero((int*)search) == 0 &&
         _Z17TestFlags02046708P16FlagWord02046708j((struct FlagWord02046708*)flags, 0x1000) == 0) {
         ClearFlag0x3c9Bit0AndCleanup((unsigned char*)g);
     }
-
     if (GetBitsInField0((unsigned int*)ov, 2) != 0) return;
     if (CheckField0NonZero((int*)search) == 0) return;
-
     if (*(unsigned char*)(ov + 0x4000 + kRegionOffset2e1) != 0 &&
         ((BackgroundLoader*)loader)->GetNumQueuedTasks() == 0) {
         func_ov017_021c37a4();
         *(unsigned char*)(ov + 0x4000 + kRegionOffset2e1) = 0;
     }
-
     if (func_0202c508(search) != 0) {
         int noTarget = -1;
         for (int i = 1; i < 4; i++) {
@@ -331,11 +317,9 @@ extern "C" ARM void func_ov017_021941fc(unsigned char* ov, unsigned char* mode, 
             _Z24SetSearchFlagBit0202c6dcP12SearchStructi(search, i);
         }
     }
-
     if (_Z17TestFlags02046708P16FlagWord02046708j((struct FlagWord02046708*)flags, 0x40000) == 0) {
         func_ov017_02195658(ov);
     }
-
     if (func_0202c540(search) != 0) {
         if (TestFlagBitAt0xe(search, 0) != 0) {
             _Z26SetFlagAndCleanup_02195618Ph(ov);
@@ -348,9 +332,7 @@ extern "C" ARM void func_ov017_021941fc(unsigned char* ov, unsigned char* mode, 
             _Z24SetSearchFlagBit0202c6dcP12SearchStructi(search, i);
         }
     }
-
     UpdateGlobalAndCombatantFlagBytes(status);
-
     if ((*(unsigned char**)(ov + 0x4000 + kRegionOffset41c))[0] == 0) {
         if (func_0202c508(search) != 0) {
             if (status[1] != 0) goto dispatched;
@@ -359,9 +341,7 @@ extern "C" ARM void func_ov017_021941fc(unsigned char* ov, unsigned char* mode, 
             int accept = 1;
             int used = CopyOutRegion0x5718((char*)battle, region);
             if (used + entry[1] > 4) accept = 0;
-            unsigned char* bits = (unsigned char*)owner;
-            bits += 0x8c;
-            if (TestBitInByteArray((int)owner, bits, 3) != 0) {
+            if (TestBitInByteArray((int)owner, (unsigned char*)owner + 0x8c, 3) != 0) {
                 func_ov017_02195250(ov, entry);
                 accept = 0;
             }
@@ -390,8 +370,7 @@ extern "C" ARM void func_ov017_021941fc(unsigned char* ov, unsigned char* mode, 
             int slot = 0;
             for (int i = 1; i < 4; i++) {
                 if ((*(unsigned char*)(ov + 0x4000 + kRegionOffset31e) & (1 << i)) != 0) {
-                    *(unsigned char*)(ov + 0x4000 + kRegionOffset31e) =
-                        *(volatile unsigned char*)(ov + 0x4000 + kRegionOffset31e) & ~(1 << i);
+                    *(unsigned char*)(ov + 0x4000 + kRegionOffset31e) &= ~(1 << i);
                     slot = i;
                     break;
                 }
@@ -465,13 +444,10 @@ extern "C" ARM void func_ov017_021941fc(unsigned char* ov, unsigned char* mode, 
         }
         (*(unsigned char**)(ov + 0x4000 + kRegionOffset41c))[0] = 0;
     }
-
 dispatched:
     if (GetBitsInField0((unsigned int*)ov, 2) != 0) return;
     if (CheckField0NonZero((int*)search) == 0) return;
-
     struct Slot021941fc* slot = (struct Slot021941fc*)GetSubstructAt0x7c0(search);
-
     if (GetBitsInField0((unsigned int*)ov, 0x40) == 0) {
         int kind = 0;
         unsigned char placed = 0;
@@ -503,7 +479,6 @@ dispatched:
                 kind = placed;
             }
         }
-
         slot->x = (short)(posA[0] >> 7);
         slot->y = (short)(posA[1] >> 7);
         slot->z = (short)(posA[2] >> 7);
@@ -528,7 +503,6 @@ dispatched:
     } else {
         slot->kind = 0;
     }
-
     unsigned char* actorNode = *(unsigned char**)(ov + 0x3000 + kRegionOffsetb30);
     unsigned char* partyNode = *(unsigned char**)(ov + 0x3000 + kRegionOffsetb2c);
     unsigned char* menuNode = *(unsigned char**)(ov + 0x3000 + kRegionOffset718);
@@ -554,7 +528,6 @@ dispatched:
     if (mode[kRegionOffsetcf] == 2) {
         slot->active |= mode[3];
     }
-
     if (GetBitsInField0((unsigned int*)ov, 0x40) == 0) {
     unsigned char* pending = ov + kRegionOffset4300 + kRegionOffset55;
     for (int i = 0; i < 4; i++) {
@@ -567,7 +540,6 @@ dispatched:
         if (c == NULL) continue;
         c = battle->GetPartyMemberByIndex(GetSignedByte0x1ca(c));
         if (c == NULL) continue;
-
         if ((((struct Bits0xc1*)((char*)c + 0xc1))->low & 1) == 0 && other->bit12) {
             target.x = other->x << 7;
             target.y = other->y << 7;
@@ -582,7 +554,6 @@ dispatched:
                 _Z24SetVecYFromValue02033874P11Obj02033874i((struct Obj02033874*)c, angle);
             }
         }
-
         if (other->kind == 2) {
             if (CheckSubstructByte0x7cPositive((signed char*)c) != 0) {
                 func_020531f0(c);
@@ -595,7 +566,6 @@ dispatched:
                 }
             }
         }
-
         if ((((struct Bits0xc1*)((char*)c + 0xc1))->low & 2) == 0) {
             int face = *(unsigned char*)((char*)c + 0xbe);
             if (face == 2 && other->kind != 2) {
@@ -605,14 +575,12 @@ dispatched:
             }
             _Z24SetByteIfChanged02033b68P11Obj02033b68i((struct Obj02033b68*)c, other->kind);
         }
-
         if ((*(unsigned char*)(ov + 0x4000 + kRegionOffset355) & (1 << i)) == 0) continue;
         if (other->bit15 != 1) continue;
         func_ov017_021bd4d0(*(void**)(ov + 0x3000 + kRegionOffset734), i, 1, 1);
         *pending = *pending & ~(1 << i);
     }
     }
-
     func_ov017_021d48f0();
     func_0207dba8(GetData02108ea8());
 }

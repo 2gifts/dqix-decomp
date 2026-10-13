@@ -180,7 +180,7 @@ struct NSBXXNameList
         uint8_t resourceIndex_;
     } treeRoot_8_;
     template<class T>
-    inline T* GetEntryByIndex(unsigned int n) const 
+    inline T* GetEntryByIndex(unsigned int n) const
     {
         if (this != 0 && n < numEntries_)
         {
@@ -1232,7 +1232,6 @@ struct StatE7 {
     char pad44[0x90 - 0x44];
     struct SnapshotE7 snap;
 };
-static inline struct SnapshotE7 *SnapE7(char *r) { return (struct SnapshotE7 *)(r + 0xcc); }
 static inline int GetSlot332(void *obj) { return *((unsigned char *)obj + 0x332); }
 static inline int Field134_30(void *c) { return *(unsigned short *)((char *)*(void **)((char *)c + 0x134) + 0x30); }
 static inline int AngleMax() { return 0x6488; }

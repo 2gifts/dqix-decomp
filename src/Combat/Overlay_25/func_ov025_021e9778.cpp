@@ -117,20 +117,19 @@ extern "C" ARM void func_ov025_021e9778(struct Obj021e9778* self) {
         return;
     }
     while (self->head != 0) {
-        int code = self->head->code;
         int ret;
         if (self->sub.f7c != 0) {
-            if (code == 0xa) {
-                ret = data_ov025_021ef538[code](*(struct Node021e9778* volatile*)&self->head, slot, r8, self->fc);
+            if (self->head->code == 0xa) {
+                ret = data_ov025_021ef538[self->head->code](self->head, slot, r8, self->fc);
             } else {
                 ret = 1;
             }
         } else {
-            if (code == 0xb) {
+            if (self->head->code == 0xb) {
                 ret = 0;
                 self->head = 0;
             } else {
-                ret = data_ov025_021ef538[code](*(struct Node021e9778* volatile*)&self->head, slot, r8, self->fc);
+                ret = data_ov025_021ef538[self->head->code](self->head, slot, r8, self->fc);
             }
         }
         if (ret == 0) {
