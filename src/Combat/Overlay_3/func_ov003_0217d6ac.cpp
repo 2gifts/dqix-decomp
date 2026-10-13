@@ -1,7 +1,8 @@
 #include "GameState/GameState.h"
 #include <globaldefs.h>
 
-extern "C" char *func_02012fe4(void);
+struct Run02012fe4;
+extern "C" struct Run02012fe4 *func_02012fe4(void);
 extern "C" void func_0205d7a0(void *list, int index);
 extern "C" void ColorEffect_ConfigureAlphaBlend(unsigned int *out, unsigned char a, unsigned char b, unsigned char c, int d);
 extern "C" char *_Z26GetGlobalField0x1c020421a0v(void);
@@ -37,9 +38,13 @@ struct Progress02012fe4 {
     int chapter;
 };
 
-static inline struct Progress02012fe4 *GetProgress(void *run) {
-    return (struct Progress02012fe4 *) ((int) run + 0x1840);
-}
+struct Run02012fe4 {
+    unsigned char pad0[0x1840];
+    struct Progress02012fe4 progress;
+};
+
+static inline struct Progress02012fe4 *GetProgress(struct Run02012fe4 *run) { return &run->progress; }
+static inline int GetChapter(struct Progress02012fe4 *progress) { return progress->chapter; }
 
 struct BattleEvent_0217d6ac {
     unsigned char pad0[0x8];
@@ -79,7 +84,7 @@ extern "C" ARM void func_ov003_0217d6ac(State_0217d6ac *self) {
     int extra;
     int sel;
     struct TailList020469b4 *list;
-    char *current;
+    struct Run02012fe4 *current;
     res     = (char *) func_ov017_0218b5b0();
     list    = *(struct TailList020469b4 **) (res + 0x36fc);
     current = func_02012fe4();
@@ -132,7 +137,7 @@ extern "C" ARM void func_ov003_0217d6ac(State_0217d6ac *self) {
     BattleEvent_0217d6ac *event = *(BattleEvent_0217d6ac **) (res + 0x3734);
     func_ov017_021baedc(event, 1);
     event->active = 1;
-    switch (GetProgress(current)->chapter) {
+    switch (GetChapter(GetProgress(current))) {
         case 0:
         case 1:
         case 2: event->messageId = 0xd067; break;

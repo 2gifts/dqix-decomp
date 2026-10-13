@@ -9,6 +9,7 @@ struct Rec020467f0;
 struct List0204af64;
 struct Obj0204b5e8;
 struct SelfTag0204b3a0;
+struct Zone02172a14;
 
 extern "C" void *func_ov017_0218b5b0(void);
 extern "C" void *_Z17GetGlobal02109400v(void);
@@ -16,7 +17,7 @@ int CountActiveEntries(ActiveEntry02046900 *archive);
 void *FindRecordByIndex(Rec020467f0 *archive, int index, void **name, int *size);
 extern "C" void func_0205a528(void *renderer, void *file, unsigned int size, void *allocator);
 extern "C" void func_0204c684(void *canvas);
-extern "C" void *func_02012fe4(void);
+extern "C" Zone02172a14 *func_02012fe4(void);
 extern "C" void __clear(void *dst, int count);
 extern "C" void func_0204f41c(void *canvas, int a, int b, char *text, int c, int d, short *outA, short *outB, int e);
 extern "C" void _Z17ResetList0204af64P12List0204af64(List0204af64 *obj);
@@ -45,9 +46,13 @@ struct Progress02172a14 {
     int value_;
 };
 
-static inline Progress02172a14 *GetProgress(void *run) {
-    return (Progress02172a14 *) ((int) run + 0x1840);
-}
+struct Zone02172a14 {
+    unsigned char pad0[0x1840];
+    Progress02172a14 progress_;
+};
+
+static inline Progress02172a14 *GetProgress(Zone02172a14 *zone) { return &zone->progress_; }
+static inline int GetValue(Progress02172a14 *progress) { return progress->value_; }
 
 struct List02172a14 {
     unsigned char pad0[0x1c];
@@ -142,9 +147,9 @@ extern "C" ARM void func_ov003_02172a14(Self02172a14 *self) {
         canvas.height_ = 0x18;
         canvas.unk_b4  = 8;
         canvas.unk_b6  = 8;
-        char *zone     = (char *) func_02012fe4();
+        Zone02172a14 *zone = func_02012fe4();
         __clear(text, 0x40);
-        int v = GetProgress(zone)->value_;
+        int v = GetValue(GetProgress(zone));
         if (v > 9999) v = 9999;
         sprintf(text, data_ov003_021809f4, v);
         func_0204f41c(&canvas, 0xb0, 0x48, text, 8, 1, &outA, &outB, 0);

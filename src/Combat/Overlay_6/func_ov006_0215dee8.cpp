@@ -170,7 +170,7 @@ extern "C" void func_ov006_0215f9e8(AlchemyMenu* self);
 extern "C" unsigned char func_ov006_021599c0(AlchemyMenu* self);
 int TestFlag0SetAndFlag1Clear(unsigned short* pad, int buttons);
 extern "C" void func_ov006_0215a5dc(AlchemyMenu* self);
-extern "C" unsigned char _Z26CheckFlagOrByte55_02158c70v(AlchemyMenu* self);
+int CheckFlagOrByte55_02158c70();
 
 extern "C" char data_02108760[];
 extern "C" unsigned short data_02114e30[];
@@ -409,7 +409,7 @@ extern "C" ARM void func_ov006_0215dee8(AlchemyMenu* self) {
     }
     else if (self->step_ == 0x64)
     {
-        unsigned char advanced = _Z26CheckFlagOrByte55_02158c70v(self);
+        int advanced = CheckFlagOrByte55_02158c70();
         if (advanced == 0)
             return;
         self->message_ = 1;
@@ -419,7 +419,7 @@ extern "C" ARM void func_ov006_0215dee8(AlchemyMenu* self) {
     }
     else if (self->step_ == 0x65)
     {
-        unsigned char advanced = _Z26CheckFlagOrByte55_02158c70v(self);
+        int advanced = CheckFlagOrByte55_02158c70();
         if (advanced != 0)
         {
             advanced = 0;

@@ -180,13 +180,11 @@ extern "C" ARM void func_ov003_02177938(ListMenu_02177938 *self) {
         SetEntryFlagById02080b40(elemObj, 0xa5);
     }
 
-    unsigned char *nodes = (unsigned char *) self;
-    nodes += 0x74;
     for (unsigned char i = 0; i < 8; i++) {
         int value = 0;
         int count = 0;
         if (ids[i] > 0) {
-            struct Element020de650 *elem = FindElementByKey020dedd0((struct Container020dedd0 *) (nodes + kRegion800), ids[i]);
+            struct Element020de650 *elem = FindElementByKey020dedd0((struct Container020dedd0 *) ((unsigned char *) self + kRegion800 + 0x74), ids[i]);
             if (elem != NULL) {
                 count = elem->count;
                 value = elem->value;

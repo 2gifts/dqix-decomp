@@ -41,7 +41,9 @@ void SetOrClearEntryFlag0x102081130(void *obj, int id, int set);
 void AddSublistEntryFlag2_020806b0(void *obj, int id);
 int SetEntryFlagById02080b2c(void *obj, int id);
 short FindNthPositiveShort0207c6b8(unsigned char *obj, unsigned int index, int target);
-struct Container020dedd0;
+struct Container020dedd0 {
+    unsigned char data[kRegion89c - kRegion800 - 0x74];
+};
 struct Element020de650 {
     char pad0[4];
     int value;
@@ -60,7 +62,8 @@ int LookupValueByEntryKey02081010(void *obj, int key);
 extern "C" void func_020813ec(void *obj, int key);
 
 struct ListMenu_02177dd4 {
-    unsigned char pad0[kRegion89c];
+    unsigned char pad0[kRegion800 + 0x74];
+    struct Container020dedd0 container;
     struct Obj2081 *elemObj;
     unsigned char pad8a0[kRegion100c - kRegion8a0];
     short mode;
@@ -129,8 +132,6 @@ extern "C" ARM void func_ov003_02177dd4(ListMenu_02177dd4 *self) {
 
     short i              = self->page * perPage;
     short end            = i + perPage;
-    unsigned char *nodes = (unsigned char *) self;
-    nodes += 0x74;
     for (; i < end; i++) {
         if (count <= i) {
             AddSublistEntryFlag2_020806b0(elemObj, idA);
@@ -148,7 +149,7 @@ extern "C" ARM void func_ov003_02177dd4(ListMenu_02177dd4 *self) {
             } else {
                 k = FindNthPositiveShort0207c6b8(list + 0x1d4, table, i);
             }
-            struct Element020de650 *elem = FindElementByKey020dedd0((struct Container020dedd0 *) (nodes + kRegion800), k);
+            struct Element020de650 *elem = FindElementByKey020dedd0(&self->container, k);
             if (elem != NULL) {
                 value = elem->value;
                 num   = elem->count;

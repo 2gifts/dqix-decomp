@@ -4,7 +4,8 @@
 #include <globaldefs.h>
 #include "Resource/FontGlyphTable.h"
 
-extern "C" char *func_02012fe4(void);
+struct Run0216e714;
+extern "C" struct Run0216e714 *func_02012fe4(void);
 struct ActiveEntry02046900;
 int CountActiveEntries(ActiveEntry02046900 *pac);
 struct Rec020467f0;
@@ -44,9 +45,13 @@ struct Progress0216e714 {
     int count;
 };
 
-static inline struct Progress0216e714 *GetProgress(void *run) {
-    return (struct Progress0216e714 *) ((int) run + 0x1840);
-}
+struct Run0216e714 {
+    unsigned char pad0[0x1840];
+    struct Progress0216e714 progress;
+};
+
+static inline struct Progress0216e714 *GetProgress(struct Run0216e714 *run) { return &run->progress; }
+static inline int GetCount(struct Progress0216e714 *progress) { return progress->count; }
 
 struct Record0216e714 {
     int unk_0;
@@ -108,7 +113,7 @@ struct Menu0216e714 {
 // USA: func_ov003_0216e714
 extern "C" ARM void func_ov003_0216e714(Menu0216e714 *self) {
     int end;
-    char *run                = func_02012fe4();
+    Run0216e714 *run         = func_02012fe4();
     BackgroundLoader *loader = BackgroundLoader::GetInstance();
     if (self->step == 0) {
         self->task = loader->QueueLoadFileInGP2(data_ov003_0218028b, data_ov003_0218029b, 0);
@@ -153,7 +158,7 @@ extern "C" ARM void func_ov003_0216e714(Menu0216e714 *self) {
             memset(self->kinds, -1, sizeof(self->kinds));
             end = start + 8;
             for (index = start; index < end; row++, index++) {
-                if (index >= GetProgress(run)->count) break;
+                if (index >= GetCount(GetProgress(run))) break;
                 rec          = self->records[index];
                 y            = row * 16 + 0x2f;
                 canvas.fontW = 10;
@@ -191,7 +196,7 @@ extern "C" ARM void func_ov003_0216e714(Menu0216e714 *self) {
                 sprintf(text, data_ov003_021802b6, rec->year + 2000);
                 func_0204f41c(&canvas, 0xf4 - func_020420e8(text, 0), y, text, 10, 15, &outA, &outB, 0);
             }
-            if (GetProgress(run)->count > 8) {
+            if (GetCount(GetProgress(run)) > 8) {
                 char *str = func_02042a50(8, data_ov003_021802b9);
                 if (str != 0) {
                     func_0204e038(&canvas, str, 0xc, 0xb2, 8, 8, 0xf0, 0xf);
