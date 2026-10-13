@@ -40,6 +40,8 @@ struct BattlePaletteState {
     char pad_180[0x1d60 - 0x180];
     signed char states[8];
     signed char stateIndex;
+
+    CursorList* GetCursorList() { return &cursorList; }
 };
 struct PaletteOwner {
     char pad_00[0x38];
@@ -55,7 +57,6 @@ Elem_0205d81c* FindElementByC40205d81c(Struct_0205d81c*, int);
 int IsField0x9cEqual3(unsigned char*);
 void GetFourShortsAtIndex(ShortArrays0204c610*, int, short*, short*, short*, short*);
 extern "C" void* func_ov017_021b8468(void*);
-extern "C" double func_0200c578(float);
 extern "C" double func_02009424(double);
 extern "C" void func_0205ac40(void*, void*);
 struct PaletteChannel {
@@ -85,7 +86,7 @@ extern "C" ARM void func_ov000_021707f0(PaletteOwner* owner) {
     if (!palette) {
         return;
     }
-    CursorList* list = &palette->cursorList;
+    CursorList* list = palette->GetCursorList();
     if (!list || !palette->cursor) {
         return;
     }
@@ -132,7 +133,7 @@ extern "C" ARM void func_ov000_021707f0(PaletteOwner* owner) {
     cursor->size = 0x7c;
     cursor->visible = 0;
     if (colorIndex) {
-        float wave = (float)func_02009424(func_0200c578(owner->phase));
+        float wave = (float)func_02009424(owner->phase);
         int choice = 0;
         if (wave >= 0.5f) {
             choice = 1;
@@ -144,7 +145,7 @@ extern "C" ARM void func_ov000_021707f0(PaletteOwner* owner) {
                 (data_ov000_0218348a[index].value << 5) | (data_ov000_0218348c[index].value << 10);
         }
     } else {
-        amount = (float)func_02009424(func_0200c578(owner->phase));
+        amount = (float)func_02009424(owner->phase);
         slot = 0;
         for (; slot < 2; colorIndex += 2, ++slot) {
             int index = colorIndex;

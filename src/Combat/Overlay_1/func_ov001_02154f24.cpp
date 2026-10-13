@@ -46,7 +46,7 @@ extern "C" void* func_0202ae18();
 unsigned int GetBitsInField0(unsigned int*, unsigned int);
 void* GetGlobal02109400();
 int AlwaysTrue02094b4c();
-void EmptyStub02012de4();
+void EmptyStub02012de4(AllocatorUnion*);
 extern "C" void func_020a0cc4(int);
 extern "C" void func_0203e0a0(void*, int);
 extern "C" void func_ov017_021a316c(GameResources*);
@@ -87,7 +87,6 @@ extern "C" ARM int func_ov001_02154f24(LoadState02154f24* self)
     void* list = GetGlobalPtr021075f4();
     LoadArguments02154f24* arguments = func_02012fe4();
     void* other = func_0202ae18();
-    typedef void (*AllocatorStub02154f24)(AllocatorUnion*);
     if (!GetBitsInField0((unsigned int*)resources, 0x1000))
     {
         GetGlobal02109400();
@@ -100,9 +99,9 @@ extern "C" ARM int func_ov001_02154f24(LoadState02154f24* self)
     {
         return self->state;
     }
-    ((AllocatorStub02154f24)EmptyStub02012de4)(&data_02114e20);
+    EmptyStub02012de4(&data_02114e20);
     func_020a0cc4(0x40400);
-    ((AllocatorStub02154f24)EmptyStub02012de4)(&data_02114e20);
+    EmptyStub02012de4(&data_02114e20);
     if ((self->flags & 1) && !GetBitsInField0((unsigned int*)resources, 0x1000))
     {
         func_0203e0a0(list, arguments->slot);
@@ -140,7 +139,7 @@ extern "C" ARM int func_ov001_02154f24(LoadState02154f24* self)
     {
         ((HMRFAllocator*)self->allocator.pSignedAlloc)->Free(1);
     }
-    ((AllocatorStub02154f24)EmptyStub02012de4)(&data_02114e20);
+    EmptyStub02012de4(&data_02114e20);
     char filename[80];
     if (self->alternatePath)
     {

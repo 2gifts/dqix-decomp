@@ -60,8 +60,8 @@ extern "C" ARM void func_0206e424(LearnedSpellFlags0206e424* owner, int combatan
         if (IsUsableSlot0206e424(slot)) {
             unsigned short spellId = slot->spellId;
             if (spellId) {
-                if (!TestBitInByteArray((int)owner, owner->bits, (spellId + 0x76) + 0xc00)) {
-                    SetOrClearBitInArray(owner, owner->bits, (spellId + 0x76) + 0xc00, 1);
+                if (!TestBitInByteArray((int)owner, owner->bits, spellId + 0xc76)) {
+                    SetOrClearBitInArray(owner, owner->bits, spellId + 0xc76, 1);
                     learned++;
                 }
             }
