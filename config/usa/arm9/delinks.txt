@@ -19873,3 +19873,32 @@ src/Combat/Main/func_020ab314.cpp:
 src/Combat/Main/func_02055f5c.cpp:
     complete
     .text start:0x02055f5c end:0x02056b48
+
+src/Combat/Main/func_0203c35c.cpp:
+    complete
+    .text start:0x0203c35c end:0x0203c4c4
+
+
+src/Combat/Main/func_02050100.cpp:
+    complete
+    .text start:0x02050100 end:0x02050400
+
+
+src/Combat/Main/func_0205a254.cpp:
+    complete
+    .text start:0x0205a254 end:0x0205a330
+
+
+src/Combat/Main/func_0205b36c.cpp:
+    complete
+    .text start:0x0205b36c end:0x0205b530
+
+
+src/Combat/Main/func_020947f0.cpp:
+    complete
+    .text start:0x020947f0 end:0x0209494c
+
+
+src/Combat/Main/func_020a9c14.cpp:
+    complete
+    .text start:0x020a9c14 end:0x020a9d78
