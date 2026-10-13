@@ -6944,3 +6944,13 @@ src/Combat/Overlay_31/0222da60.cpp:
 src/Combat/Overlay_31/02232678.cpp:
     complete
     .text start:0x02232678 end:0x02232780
+
+
+src/Combat/Overlay_31/func_ov031_0221e92c.cpp:
+    complete
+    .text start:0x0221e92c end:0x0221e964
+
+
+src/Combat/Overlay_31/func_ov031_022237dc.cpp:
+    complete
+    .text start:0x022237dc end:0x022238cc
