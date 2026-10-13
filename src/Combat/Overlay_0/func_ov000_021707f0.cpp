@@ -50,8 +50,8 @@ struct PaletteOwner {
 };
 
 int GetWord0x0(int*);
-extern "C" void* _Z20GetOffsetPtr02160f08Pv(void*);
-extern "C" Elem_0205d81c* _Z23FindElementByC40205d81cP15Struct_0205d81ci(Struct_0205d81c*, int);
+void* GetOffsetPtr02160f08(void*);
+Elem_0205d81c* FindElementByC40205d81c(Struct_0205d81c*, int);
 int IsField0x9cEqual3(unsigned char*);
 void GetFourShortsAtIndex(ShortArrays0204c610*, int, short*, short*, short*, short*);
 extern "C" void* func_ov017_021b8468(void*);
@@ -81,7 +81,7 @@ extern "C" ARM void func_ov000_021707f0(PaletteOwner* owner) {
     if (!battle) {
         return;
     }
-    BattlePaletteState* palette = (BattlePaletteState*)_Z20GetOffsetPtr02160f08Pv(battle);
+    BattlePaletteState* palette = (BattlePaletteState*)GetOffsetPtr02160f08(battle);
     if (!palette) {
         return;
     }
@@ -97,7 +97,7 @@ extern "C" ARM void func_ov000_021707f0(PaletteOwner* owner) {
     short top = 0;
     short right = 0;
     short bottom = 0;
-    Elem_0205d81c* element = _Z23FindElementByC40205d81cP15Struct_0205d81ci(owner->elements, 13);
+    Elem_0205d81c* element = FindElementByC40205d81c(owner->elements, 13);
     signed char colorIndex = 0;
     short slot = 0;
     GameObject* unit = GameState::GetInstance()->GetCombatantByIndex(palette->combatantIndex);

@@ -12,7 +12,7 @@ struct TileCanvas0205b734 {
     Rect0205b1ac* rectangles;
     unsigned char rectangleCount;
 };
-extern "C" Rect0205b1ac* _Z31FindRectContainingPoint0205b1acP12Rect0205b1acjii(Rect0205b1ac*, unsigned int, int, int);
+Rect0205b1ac* FindRectContainingPoint0205b1ac(Rect0205b1ac*, unsigned int, int, int);
 
 // USA: func_0205b734
 extern "C" ARM void func_0205b734(TileCanvas0205b734* canvas, short x, short y, short endX, short endY, unsigned char color) {
@@ -33,7 +33,7 @@ extern "C" ARM void func_0205b734(TileCanvas0205b734* canvas, short x, short y, 
     for (row = 0; row < height; row++) {
         columnX = x;
         for (column = 0; column < width; columnX++, column++) {
-            Rect0205b1ac* rectangle = _Z31FindRectContainingPoint0205b1acP12Rect0205b1acjii(rectangles, count, columnX, y);
+            Rect0205b1ac* rectangle = FindRectContainingPoint0205b1ac(rectangles, count, columnX, y);
             if (rectangle) {
                 unsigned char* tile = pixels + rectangle->offset;
                 short localX = columnX - rectangle->x;

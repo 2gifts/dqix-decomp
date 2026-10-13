@@ -33,7 +33,7 @@ extern SlotOrder0206e424 data_020e87b4;
 int GetFieldAt0x150(unsigned char*);
 int TestBitInByteArray(int, unsigned char*, int);
 void SetOrClearBitInArray(void*, unsigned char*, int, int);
-extern "C" void _Z23LoadBattleBlock020ac4c0Pv(void*);
+void LoadBattleBlock020ac4c0(void*);
 void AddClamped11BitFieldAt0x14(S_a04c8*, unsigned int);
 void CopyInBattleField0x7540(void*);
 
@@ -69,7 +69,7 @@ extern "C" ARM void func_0206e424(LearnedSpellFlags0206e424* owner, int combatan
         index++;
     }
     S_a04c8 block;
-    _Z23LoadBattleBlock020ac4c0Pv(&block);
+    LoadBattleBlock020ac4c0(&block);
     AddClamped11BitFieldAt0x14(&block, learned);
     CopyInBattleField0x7540(&block);
 }

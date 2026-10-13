@@ -45,25 +45,25 @@ extern "C" LoadArguments02154f24* func_02012fe4();
 extern "C" void* func_0202ae18();
 unsigned int GetBitsInField0(unsigned int*, unsigned int);
 void* GetGlobal02109400();
-extern "C" int _Z18AlwaysTrue02094b4cv();
-extern "C" void _Z17EmptyStub02012de4v();
+int AlwaysTrue02094b4c();
+void EmptyStub02012de4();
 extern "C" void func_020a0cc4(int);
 extern "C" void func_0203e0a0(void*, int);
 extern "C" void func_ov017_021a316c(GameResources*);
-extern "C" void _Z30InitWithExtendedRegion0203cf58P15Struct_0203cf58(Struct_0203cf58*);
-extern "C" void _Z19TailForward02012da4P14AllocatorUnionPv(AllocatorUnion*, void*);
+void InitWithExtendedRegion0203cf58(Struct_0203cf58*);
+void TailForward02012da4(AllocatorUnion*, void*);
 void* AllocateAligned4(AllocatorUnion*, unsigned int);
 extern "C" void __clear(void*, unsigned int);
 extern "C" void* func_0205ec34();
-extern "C" int _Z28LookupAndForEachNode020649b0PviS_(void*, int, void*);
+int LookupAndForEachNode020649b0(void*, int, void*);
 extern "C" void func_0206f81c(void*);
 TagValueEntry020e385c* GetData02153660();
 void* FindEntryByTagAndValue(TagValueEntry020e385c*, int, int);
 extern "C" int func_0202c508(void*);
-extern "C" void _Z40ResetTaggedEntryAndNotifyOverlay020e3994P21TagValueEntry020e385cii(TagValueEntry020e385c*, int, int);
-extern "C" void _Z43RegisterTaggedEntryAndNotifyOverlay020e392cP21TagValueEntry020e385cii(TagValueEntry020e385c*, int, int);
+void ResetTaggedEntryAndNotifyOverlay020e3994(TagValueEntry020e385c*, int, int);
+void RegisterTaggedEntryAndNotifyOverlay020e392c(TagValueEntry020e385c*, int, int);
 int GetField0x3acValue(GameState*);
-extern "C" void _Z33SetEntryBitUnlessMatching020e39d4P21TagValueEntry020e385ciii(TagValueEntry020e385c*, int, int, int);
+void SetEntryBitUnlessMatching020e39d4(TagValueEntry020e385c*, int, int, int);
 extern AllocatorUnion data_02114e20;
 extern const char data_ov001_02164bef[];
 extern const char data_ov001_02164c01[];
@@ -91,7 +91,7 @@ extern "C" ARM int func_ov001_02154f24(LoadState02154f24* self)
     if (!GetBitsInField0((unsigned int*)resources, 0x1000))
     {
         GetGlobal02109400();
-        if (!_Z18AlwaysTrue02094b4cv())
+        if (!AlwaysTrue02094b4c())
         {
             return self->state;
         }
@@ -100,25 +100,25 @@ extern "C" ARM int func_ov001_02154f24(LoadState02154f24* self)
     {
         return self->state;
     }
-    ((AllocatorStub02154f24)_Z17EmptyStub02012de4v)(&data_02114e20);
+    ((AllocatorStub02154f24)EmptyStub02012de4)(&data_02114e20);
     func_020a0cc4(0x40400);
-    ((AllocatorStub02154f24)_Z17EmptyStub02012de4v)(&data_02114e20);
+    ((AllocatorStub02154f24)EmptyStub02012de4)(&data_02114e20);
     if ((self->flags & 1) && !GetBitsInField0((unsigned int*)resources, 0x1000))
     {
         func_0203e0a0(list, arguments->slot);
         func_ov017_021a316c(resources);
-        _Z30InitWithExtendedRegion0203cf58P15Struct_0203cf58((Struct_0203cf58*)GetGlobalPtr021075f4());
+        InitWithExtendedRegion0203cf58((Struct_0203cf58*)GetGlobalPtr021075f4());
         SafeAllocator* previousAllocator = GetAllocator02154f24(resources, 7);
         self->savedSize = previousAllocator->GetSize();
         void* oldAllocator = previousAllocator->GetSignedAllocator();
         previousAllocator->Destroy();
-        _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, oldAllocator);
+        TailForward02012da4(&data_02114e20, oldAllocator);
     }
     else if (self->flags & 4)
     {
         func_0203e0a0(list, arguments->slot);
         func_ov017_021a316c(resources);
-        _Z30InitWithExtendedRegion0203cf58P15Struct_0203cf58((Struct_0203cf58*)GetGlobalPtr021075f4());
+        InitWithExtendedRegion0203cf58((Struct_0203cf58*)GetGlobalPtr021075f4());
         resources->allocator_array_38[7].Reset();
     }
     unsigned int size = 0x40400;
@@ -140,7 +140,7 @@ extern "C" ARM int func_ov001_02154f24(LoadState02154f24* self)
     {
         ((HMRFAllocator*)self->allocator.pSignedAlloc)->Free(1);
     }
-    ((AllocatorStub02154f24)_Z17EmptyStub02012de4v)(&data_02114e20);
+    ((AllocatorStub02154f24)EmptyStub02012de4)(&data_02114e20);
     char filename[80];
     if (self->alternatePath)
     {
@@ -173,7 +173,7 @@ extern "C" ARM int func_ov001_02154f24(LoadState02154f24* self)
     void* context = func_0205ec34();
     LookupRecord02154f24 record;
     record.index = self->lookupId;
-    if (_Z28LookupAndForEachNode020649b0PviS_(context, 10, &record))
+    if (LookupAndForEachNode020649b0(context, 10, &record))
     {
         func_0206f81c(&record);
     }
@@ -181,9 +181,9 @@ extern "C" ARM int func_ov001_02154f24(LoadState02154f24* self)
     void* found = FindEntryByTagAndValue(table, 1, 0x71e8);
     if (func_0202c508(other) && !found && !FindEntryByTagAndValue(table, 1, self->tag))
     {
-        _Z40ResetTaggedEntryAndNotifyOverlay020e3994P21TagValueEntry020e385cii(table, 1, -1);
-        _Z43RegisterTaggedEntryAndNotifyOverlay020e392cP21TagValueEntry020e385cii(table, 1, self->tag);
+        ResetTaggedEntryAndNotifyOverlay020e3994(table, 1, -1);
+        RegisterTaggedEntryAndNotifyOverlay020e392c(table, 1, self->tag);
     }
-    _Z33SetEntryBitUnlessMatching020e39d4P21TagValueEntry020e385ciii(table, GetField0x3acValue(game), 1, self->tag);
+    SetEntryBitUnlessMatching020e39d4(table, GetField0x3acValue(game), 1, self->tag);
     return 2;
 }

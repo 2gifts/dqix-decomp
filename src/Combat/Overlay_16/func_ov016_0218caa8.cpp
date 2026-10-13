@@ -50,25 +50,25 @@ struct List0204b0e8;
 struct Struct0200fb08;
 
 void EncodeSignFlaggedHalfword(short*, int);
-extern "C" void _Z22ClearField0x0_020bc078Pi(int*);
-extern "C" void _Z21CallField0xa00203aa44Pv(void*);
-extern "C" int _Z27TryAllocateOrAppend0203aaf8PvS_Pi(void*, void*, int*);
-extern "C" void _Z29EnsureInitAndSetFlag_0218be1cv();
-extern "C" void _Z44InitOverlay17ObjAndBumpBattleCounter02012bd8v();
+void ClearField0x0_020bc078(int*);
+void CallField0xa00203aa44(void*);
+int TryAllocateOrAppend0203aaf8(void*, void*, int*);
+void EnsureInitAndSetFlag_0218be1c();
+void InitOverlay17ObjAndBumpBattleCounter02012bd8();
 int SetVBlankIrqEnable(int);
 int GetWord0x7f6c(void*);
 void SetSubBgMode(unsigned int);
 void* AllocateAligned4(AllocatorUnion*, unsigned int);
-extern "C" void _Z19TailForward02012da4P14AllocatorUnionPv(AllocatorUnion*, void*);
-extern "C" void _Z17ResetList0204af64P12List0204af64(List0204af64*);
+void TailForward02012da4(AllocatorUnion*, void*);
+void ResetList0204af64(List0204af64*);
 void SetWord0x18ClearByte0x1f(unsigned char*, int);
-extern "C" void _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator(AllocTarget0204b12c*, SafeAllocator*);
-extern "C" void _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator(Foo0204af38*, int, SafeAllocator*);
+void AllocateAndClearBuffer0204b12c(AllocTarget0204b12c*, SafeAllocator*);
+void AllocateArray0204af38(Foo0204af38*, int, SafeAllocator*);
 int CountActiveEntries(ActiveEntry02046900*);
 void* FindRecordByIndex(Rec020467f0*, int, void**, int*);
-extern "C" int _Z24NormalizeField5_0200fb08P14Struct0200fb08(Struct0200fb08*);
-extern "C" void _Z21DispatchEntry0204b8d0P11Obj0204b8d0jiisssst(Obj0204b8d0*, unsigned int, int, int, short, short, short, short, unsigned short);
-extern "C" void _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv(List0204b0e8*, void*);
+int NormalizeField5_0200fb08(Struct0200fb08*);
+void DispatchEntry0204b8d0(Obj0204b8d0*, unsigned int, int, int, short, short, short, short, unsigned short);
+void FlushAndDispatchList0204b0e8(List0204b0e8*, void*);
 void DelayThenSyncBit0();
 extern "C" void func_020ca458(unsigned int, void*, unsigned int);
 extern "C" void func_0204b5b4(BackgroundGraphics*, int);
@@ -91,13 +91,13 @@ extern "C" ARM void func_ov016_0218caa8(char* name, void* owner, ScriptNode0218c
     data_ov016_0219d0c0.displayState[1] = 0;
     data_ov016_0219d0c0.negativeScene = node->scene < 0;
     data_ov016_0219d0c0.mode = mode;
-    _Z22ClearField0x0_020bc078Pi(&data_ov016_0219d0cc);
+    ClearField0x0_020bc078(&data_ov016_0219d0cc);
     if (data_ov016_0219d0c0.node->flags == 0)
     {
-        _Z21CallField0xa00203aa44Pv(&data_02109bf4);
-        _Z27TryAllocateOrAppend0203aaf8PvS_Pi(&data_02109bf4, (void*)(int)data_ov016_0219d0c0.node->scene, NULL);
+        CallField0xa00203aa44(&data_02109bf4);
+        TryAllocateOrAppend0203aaf8(&data_02109bf4, (void*)(int)data_ov016_0219d0c0.node->scene, NULL);
     }
-    SetInterruptHandler(1, (const void*)_Z29EnsureInitAndSetFlag_0218be1cv);
+    SetInterruptHandler(1, (const void*)EnsureInitAndSetFlag_0218be1c);
     EnableSpecificInterrupts(0x60078);
     unsigned short previousMasterEnable = IRQ_MASTER_ENABLE;
     IRQ_MASTER_ENABLE = 1;
@@ -128,13 +128,13 @@ extern "C" ARM void func_ov016_0218caa8(char* name, void* owner, ScriptNode0218c
         allocator.ResetAllocatorPointer();
         allocator.CreateTypeA(buffer, 0x2000);
         BackgroundGraphics background;
-        _Z17ResetList0204af64P12List0204af64((List0204af64*)&background);
+        ResetList0204af64((List0204af64*)&background);
         background.screen = 1;
         background.layer = 0;
         func_0204b5b4(&background, 0);
         SetWord0x18ClearByte0x1f((unsigned char*)&background, 0);
-        _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator((AllocTarget0204b12c*)&background, &allocator);
-        _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator((Foo0204af38*)&background, 5, &allocator);
+        AllocateAndClearBuffer0204b12c((AllocTarget0204b12c*)&background, &allocator);
+        AllocateArray0204af38((Foo0204af38*)&background, 5, &allocator);
         int task;
         BackgroundLoader* loader = BackgroundLoader::GetInstance();
         loader->MaybeReset();
@@ -159,7 +159,7 @@ extern "C" ARM void func_ov016_0218caa8(char* name, void* owner, ScriptNode0218c
                 }
                 loader->RemoveTask(task);
                 int selection = 0;
-                switch (_Z24NormalizeField5_0200fb08P14Struct0200fb08((Struct0200fb08*)gameState))
+                switch (NormalizeField5_0200fb08((Struct0200fb08*)gameState))
                 {
                 case 2:
                     selection = 1;
@@ -174,12 +174,12 @@ extern "C" ARM void func_ov016_0218caa8(char* name, void* owner, ScriptNode0218c
                     selection = 4;
                     break;
                 }
-                _Z21DispatchEntry0204b8d0P11Obj0204b8d0jiisssst((Obj0204b8d0*)&background, 0, 0, 0, 0, 0, 32, 25, 0xffff);
+                DispatchEntry0204b8d0((Obj0204b8d0*)&background, 0, 0, 0, 0, 0, 32, 25, 0xffff);
                 if (selection > 0)
                 {
-                    _Z21DispatchEntry0204b8d0P11Obj0204b8d0jiisssst((Obj0204b8d0*)&background, (unsigned char)selection, 0, 0, 0, 17, 32, 25, 0xffff);
+                    DispatchEntry0204b8d0((Obj0204b8d0*)&background, (unsigned char)selection, 0, 0, 0, 17, 32, 25, 0xffff);
                 }
-                _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv((List0204b0e8*)&background, NULL);
+                FlushAndDispatchList0204b0e8((List0204b0e8*)&background, NULL);
                 break;
             }
             loader->RemoveAllLocks();
@@ -190,7 +190,7 @@ extern "C" ARM void func_ov016_0218caa8(char* name, void* owner, ScriptNode0218c
         }
         if (buffer != NULL)
         {
-            _Z19TailForward02012da4P14AllocatorUnionPv(&data_02114e20, buffer);
+            TailForward02012da4(&data_02114e20, buffer);
         }
     }
     else
@@ -209,6 +209,6 @@ extern "C" ARM void func_ov016_0218caa8(char* name, void* owner, ScriptNode0218c
     EncodeSignFlaggedHalfword((short*)0x0400006c, 0);
     EncodeSignFlaggedHalfword((short*)0x0400106c, 0);
     func_ov016_0218c04c(name, script);
-    SetInterruptHandler(1, (const void*)_Z44InitOverlay17ObjAndBumpBattleCounter02012bd8v);
+    SetInterruptHandler(1, (const void*)InitOverlay17ObjAndBumpBattleCounter02012bd8);
 }
 

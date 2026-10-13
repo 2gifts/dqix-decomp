@@ -69,18 +69,18 @@ struct Obj02046574 {
 struct StoreStruct;
 struct Obj02048350;
 void* GetData02153637();
-extern "C" void _Z16Dispatch020e3428Pvi(void*, int);
-extern "C" Obj02046574* _Z26GetGlobalField0x1c020421a0v();
+void Dispatch020e3428(void*, int);
+Obj02046574* GetGlobalField0x1c020421a0();
 char* GetData02108e10();
-extern "C" CombatEntry0215a0a4* _Z24SearchBothTables02079e2cPci(char*, int);
-extern "C" void* _Z20Clear12Bytes020e46c4Pv(void*);
+CombatEntry0215a0a4* SearchBothTables02079e2c(char*, int);
+void* Clear12Bytes020e46c4(void*);
 GameObject* GetCombatantWithFlag0x100(GameState*, int);
-extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(Obj02046574*, int, char*);
-extern "C" void _Z30InitObjFromCombatantId020e4bf4Pvi(void*, int);
-extern "C" int _Z22ConsumeCounter02048350P11Obj02048350i(Obj02048350*, int);
+void SetIndexedName02046574(Obj02046574*, int, char*);
+void InitObjFromCombatantId020e4bf4(void*, int);
+int ConsumeCounter02048350(Obj02048350*, int);
 int CheckField0NonZero(int*);
-extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310*, int);
-extern "C" int _Z20AppendString02042058PcPKc(char*, const char*);
+int GetFieldByKey020e0434(Container020e0310*, int);
+int AppendString02042058(char*, const char*);
 void StoreInArray0x8b0(StoreStruct*, int, int);
 int GetByteField0x5721(GameState*);
 extern "C" int* func_0202ae18();
@@ -96,25 +96,25 @@ static inline char* GetCombatantName0215a0a4(GameObject* object) {
 // USA: func_ov002_0215a0a4
 extern "C" ARM void func_ov002_0215a0a4(CombatMessageMenu0215a0a4* menu, CombatCommand0215a0a4* command, int apply) {
     MessageBuffer0215a0a4* buffer;
-    _Z16Dispatch020e3428Pvi(GetData02153637(), 1);
+    Dispatch020e3428(GetData02153637(), 1);
     GameState* game = GameState::GetInstance();
-    Obj02046574* formatter = _Z26GetGlobalField0x1c020421a0v();
+    Obj02046574* formatter = GetGlobalField0x1c020421a0();
     int* state = func_0202ae18();
-    CombatEntry0215a0a4* entry = _Z24SearchBothTables02079e2cPci(GetData02108e10(), menu->command);
+    CombatEntry0215a0a4* entry = SearchBothTables02079e2c(GetData02108e10(), menu->command);
     if (entry == NULL) return;
     memset(menu->primary, 0, 0x960);
     memset(menu->backup, 0, 0x960);
     func_02046380(formatter);
     buffer = menu->primary;
-    _Z20Clear12Bytes020e46c4Pv(&menu->actorReference);
-    _Z20Clear12Bytes020e46c4Pv(&menu->targetReference);
+    Clear12Bytes020e46c4(&menu->actorReference);
+    Clear12Bytes020e46c4(&menu->targetReference);
     GameObject* actor = GetCombatantWithFlag0x100(game, command->actorId);
     if (actor != NULL) {
-        _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 0, (char*)actor->baseStats_);
-        _Z30InitObjFromCombatantId020e4bf4Pvi(&menu->actorReference, command->actorId);
+        SetIndexedName02046574(formatter, 0, (char*)actor->baseStats_);
+        InitObjFromCombatantId020e4bf4(&menu->actorReference, command->actorId);
         formatter->actor = &menu->actorReference;
     }
-    _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 1, entry->name);
+    SetIndexedName02046574(formatter, 1, entry->name);
     if (menu->command == 0x1e || menu->command == 0x1f || menu->command == 0x20 || menu->command == 0x21 || menu->command == 0x23 || menu->command == 0x26 || menu->command == 0x27) {
         menu->active = 1;
         menu->messageId = 0x232d;
@@ -155,7 +155,7 @@ extern "C" ARM void func_ov002_0215a0a4(CombatMessageMenu0215a0a4* menu, CombatC
         menu->y = 0x11;
         menu->field_1bc0 = 0;
         if (consume) {
-            _Z22ConsumeCounter02048350P11Obj02048350i((Obj02048350*)actor, entry->cost);
+            ConsumeCounter02048350((Obj02048350*)actor, entry->cost);
             if (CheckField0NonZero(state))
                 func_ov017_021c9e00(menu->actorId, 0, 0, 1);
         }
@@ -163,8 +163,8 @@ extern "C" ARM void func_ov002_0215a0a4(CombatMessageMenu0215a0a4* menu, CombatC
     }
     if (menu->command != 0x22 && menu->command != 0x310) return;
     if (apply) {
-        func_02046608(formatter, 0xc, _Z21GetFieldByKey020e0434P17Container020e0310i(&menu->messages, 0x232d), buffer->scratch, 0xe3, 0, 1);
-        _Z20AppendString02042058PcPKc(menu->primary->text, buffer->scratch);
+        func_02046608(formatter, 0xc, GetFieldByKey020e0434(&menu->messages, 0x232d), buffer->scratch, 0xe3, 0, 1);
+        AppendString02042058(menu->primary->text, buffer->scratch);
         CommandResult0215a0a4* results = command->results;
         for (int index = 0; index < command->targetCount; ++index) {
             int message;
@@ -174,32 +174,32 @@ extern "C" ARM void func_ov002_0215a0a4(CombatMessageMenu0215a0a4* menu, CombatC
                 GameObject* target = GetCombatantWithFlag0x100(game, command->targetIds[index]);
                 if (target != NULL) {
                     func_02046380(formatter);
-                    _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 2, GetCombatantName0215a0a4(target));
-                    _Z30InitObjFromCombatantId020e4bf4Pvi(&menu->targetReference, command->targetIds[index]);
+                    SetIndexedName02046574(formatter, 2, GetCombatantName0215a0a4(target));
+                    InitObjFromCombatantId020e4bf4(&menu->targetReference, command->targetIds[index]);
                     formatter->target = &menu->targetReference;
                     StoreInArray0x8b0((StoreStruct*)formatter, 9, target->obj3D_.unknown_4_);
-                    func_02046608(formatter, 0xc, _Z21GetFieldByKey020e0434P17Container020e0310i(&menu->messages, message), buffer->scratch, 0xe3, 0, 1);
-                    _Z20AppendString02042058PcPKc(menu->primary->text, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i(&menu->messages, 8));
-                    _Z20AppendString02042058PcPKc(menu->primary->text, buffer->scratch);
+                    func_02046608(formatter, 0xc, GetFieldByKey020e0434(&menu->messages, message), buffer->scratch, 0xe3, 0, 1);
+                    AppendString02042058(menu->primary->text, (const char*)GetFieldByKey020e0434(&menu->messages, 8));
+                    AppendString02042058(menu->primary->text, buffer->scratch);
                 }
             }
         }
-        _Z22ConsumeCounter02048350P11Obj02048350i((Obj02048350*)actor, entry->cost);
+        ConsumeCounter02048350((Obj02048350*)actor, entry->cost);
         if (CheckField0NonZero(state))
             func_ov017_021c9e00(menu->actorId, 0, 0, 1);
     } else {
         GameObject* target = game->GetUnknownGameObject();
         if (target != NULL) {
-            _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 2, (char*)target->baseStats_);
-            _Z30InitObjFromCombatantId020e4bf4Pvi(&menu->targetReference, target->obj3D_.unknown_4_);
+            SetIndexedName02046574(formatter, 2, (char*)target->baseStats_);
+            InitObjFromCombatantId020e4bf4(&menu->targetReference, target->obj3D_.unknown_4_);
             formatter->target = &menu->targetReference;
         }
-        _Z20AppendString02042058PcPKc(buffer->scratch, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i(&menu->messages, 0x2333));
-        _Z20AppendString02042058PcPKc(buffer->scratch, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i(&menu->messages, 8));
+        AppendString02042058(buffer->scratch, (const char*)GetFieldByKey020e0434(&menu->messages, 0x2333));
+        AppendString02042058(buffer->scratch, (const char*)GetFieldByKey020e0434(&menu->messages, 8));
         if (GetByteField0x5721(game) == 1)
-            _Z20AppendString02042058PcPKc(buffer->scratch, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i(&menu->messages, 0x2334));
+            AppendString02042058(buffer->scratch, (const char*)GetFieldByKey020e0434(&menu->messages, 0x2334));
         else
-            _Z20AppendString02042058PcPKc(buffer->scratch, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i(&menu->messages, 0x2335));
+            AppendString02042058(buffer->scratch, (const char*)GetFieldByKey020e0434(&menu->messages, 0x2335));
         func_02046608(formatter, 0xc, (int)buffer->scratch, menu->primary, 0xe3, 0, 1);
     }
     menu->ready = 1;
