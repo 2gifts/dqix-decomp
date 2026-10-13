@@ -19811,3 +19811,7 @@ src/Combat/Main/sys_readc.cpp:
 src/Combat/Main/func_020a9b2c.cpp:
     complete
     .text start:0x020a9b3c end:0x020a9bb4
+
+src/Combat/Main/func_02058d40.cpp:
+    complete
+    .text start:0x02058d50 end:0x02059730
