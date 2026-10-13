@@ -24,9 +24,9 @@ struct DispatchOut021e7324 {
 ARM int LinkCombatantsIfDispatched_021e7324(struct In021e7324* a, int b, int unused, void* obj) {
     struct DispatchOut021e7324 out1;
     struct DispatchOut021e7324 out2;
-    int r1 = DispatchByIndex021820bc(obj, b, a->idx1, (int)&out1.id);
-    int r2 = DispatchByIndex021820bc(obj, b, a->idx2, (int)&out2.id);
-    if (!r1 || !r2) {
+    int found1 = DispatchByIndex021820bc(obj, b, a->idx1, (int)&out1.id);
+    int found2 = DispatchByIndex021820bc(obj, b, a->idx2, (int)&out2.id);
+    if (!found1 || !found2) {
         return 1;
     }
     GameState* bs = GameState::GetInstance();

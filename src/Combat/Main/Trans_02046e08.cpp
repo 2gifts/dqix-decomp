@@ -1,34 +1,41 @@
 #include <globaldefs.h>
+#include "Memory/SafeAllocator.h"
+#include "World/Object3D.h"
 
-extern "C" unsigned int _ZN13SafeAllocator21ResetAllocatorPointerEv(unsigned int);
-extern "C" unsigned int _ZN8Object3D10InitializeEv(unsigned int, unsigned int);
+struct Obj02046e08 {
+    int field0_;
+    int field4_;
+    int field8_;
+    float fieldC_;
+    int field10_;
+    int field14_;
+    int field18_;
+    unsigned char field1c_;
+    unsigned char field1d_;
+    int field20_;
+    SafeAllocator allocator_;
+    int field38_;
+    Object3D object_;
+    int fieldE8_;
+    int fieldEC_;
+};
 
 // KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
 // USA: func_02046e08
-extern "C" ARM unsigned int _Z25InitBattleContext02046e08P11Obj02046e08(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
-    unsigned int r4 = 0;
-    r4 = r0;
-    r1 = 0x0;
-    *(unsigned int*)((char*)r4 + 0x0) = (unsigned int)r1;
-    *(unsigned int*)((char*)r4 + 0x4) = (unsigned int)r1;
-    *(unsigned int*)((char*)r4 + 0x20) = (unsigned int)r1;
-    r0 = 0x41700000;
-    *(unsigned int*)((char*)r4 + 0x8) = (unsigned int)r1;
-    *(unsigned int*)((char*)r4 + 0xc) = (unsigned int)r0;
-    r0 = r1 - 0x1;
-    *(unsigned int*)((char*)r4 + 0xec) = (unsigned int)r0;
-    r1 = 0x1;
-    *(unsigned char*)((char*)r4 + 0x1c) = (unsigned char)r1;
-    r0 = r4 + 0x3c;
-    *(unsigned char*)((char*)r4 + 0x1d) = (unsigned char)r1;
-    r0 = (unsigned int)_ZN8Object3D10InitializeEv(r0, r1);
-    r0 = r4 + 0x24;
-    r0 = (unsigned int)_ZN13SafeAllocator21ResetAllocatorPointerEv(r0);
-    r0 = 0x0;
-    *(unsigned int*)((char*)r4 + 0x38) = (unsigned int)r0;
-    *(unsigned int*)((char*)r4 + 0xe8) = (unsigned int)r0;
-    *(unsigned int*)((char*)r4 + 0x10) = (unsigned int)r0;
-    *(unsigned int*)((char*)r4 + 0x14) = (unsigned int)r0;
-    *(unsigned int*)((char*)r4 + 0x18) = (unsigned int)r0;
-    return r0;
+ARM void InitBattleContext02046e08(Obj02046e08* obj) {
+    obj->field0_ = 0;
+    obj->field4_ = 0;
+    obj->field20_ = 0;
+    obj->field8_ = 0;
+    obj->fieldC_ = 15.0f;
+    obj->fieldEC_ = -1;
+    obj->field1c_ = 1;
+    obj->field1d_ = 1;
+    obj->object_.Initialize();
+    obj->allocator_.ResetAllocatorPointer();
+    obj->field38_ = 0;
+    obj->fieldE8_ = 0;
+    obj->field10_ = 0;
+    obj->field14_ = 0;
+    obj->field18_ = 0;
 }

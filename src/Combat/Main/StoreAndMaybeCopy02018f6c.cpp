@@ -6,10 +6,9 @@ enum { matrixOffset = 0x464 };
 enum { matrixOffset = 0x444 };
 #endif
 
-struct Mtx43_02030d84;
-extern "C" void _Z15RotationMatrixYi(struct Mtx43_02030d84*, int);
-
 struct Buf02018f6c { unsigned int words[12]; };
+struct Buf02018f6c RotationMatrixY(int angle);
+
 struct Obj02018f6c {
     char pad0[matrixOffset];
     unsigned int block[12];
@@ -23,7 +22,7 @@ ARM void StoreAndMaybeCopy02018f6c(struct Obj02018f6c* obj, short arg) {
     obj->flag = arg;
     flag = obj->flag;
     if (flag != 0) {
-        _Z15RotationMatrixYi((struct Mtx43_02030d84*)&buf, flag);
+        buf = RotationMatrixY(flag);
         *(struct Buf02018f6c*)obj->block = buf;
     }
 }
