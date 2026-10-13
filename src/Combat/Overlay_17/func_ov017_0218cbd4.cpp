@@ -7,14 +7,12 @@
 #if defined(jpn)
 #define func_02022dc8 func_02022848
 #define func_ov017_021a624c func_ov017_021a6c40
-#define func_ov017_0219a6b8 func_ov017_0219b25c
 #define func_02011b68 func_020118e0
 #define func_ov017_02196430 func_ov017_02196ff8
 #define func_ov017_021a476c func_ov017_021a51e0
 #define func_ov017_02192700 func_ov017_021932c8
 #define func_ov017_0219ca88 func_ov017_0219d57c
 #define func_ov017_02199f08 func_ov017_0219aab0
-#define func_ov017_0219aa7c func_ov017_0219b620
 #define func_02093b90 func_020944b0
 #endif
 
@@ -120,7 +118,7 @@ extern "C" ARM void func_ov017_0218cbd4(GameResources* self) {
         CopyByteField0x253To0x252(actor);
         (*(Vector3i*)(self->unknown_432c + 0x1c)) = actor->obj3D_.position_;
     }
-    InitObj0219a674((unsigned char*)(self->unknown_35a8 + 0x10c));
+    InitObj0219a674(self->interactionSelection);
     if (!GetBitsInField0(&self->brightnessFlags_0, 4)) {
         func_02015438(world);
         if (dispatch) DispatchByFlag020d9834(1);
@@ -155,7 +153,7 @@ extern "C" ARM void func_ov017_0218cbd4(GameResources* self) {
     if (!paused) {
         func_ov017_021c25ac(self);
         if (GetHeadNodeIdOrMinusOne((HeadNode02046b24**)self->unknown_ptr_array_36fc[0]) != 3 &&
-            GetHeadNodeIdOrMinusOne((HeadNode02046b24**)self->unknown_ptr_array_36fc[0]) != 2 && !((unsigned char*)self->unknown_35a8)[0xb0]) {
+            GetHeadNodeIdOrMinusOne((HeadNode02046b24**)self->unknown_ptr_array_36fc[0]) != 2 && !self->fieldButtonState[0]) {
             func_ov017_021a476c(self);
             RunCombatantUpdatePipeline_0219755c((unsigned char*)self);
             func_ov017_021a51a4(self);

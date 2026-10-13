@@ -18207,3 +18207,108 @@ src/Combat/Main/func_020ad61c.cpp:
 src/Combat/Main/func_020aeb34.cpp:
     complete
     .text start:0x020b0600 end:0x020b08d0
+
+
+src/Combat/Main/ClearFlags0xa97.cpp:
+    complete
+    .text start:0x02027428 end:0x0202743c
+
+
+src/Combat/Main/ClearSubMemberAndReset.cpp:
+    complete
+    .text start:0x02011f7c end:0x02011fa0
+
+
+src/Combat/Main/CopyStringOrDefault02026428.cpp:
+    complete
+    .text start:0x02025dfc end:0x02025e2c
+
+
+src/Combat/Main/CopyStringToField0x649e.cpp:
+    complete
+    .text start:0x020117e4 end:0x02011814
+
+
+src/Combat/Main/ResetAndFinalizeSubMember.cpp:
+    complete
+    .text start:0x02011fa0 end:0x02011fc0
+
+
+src/Combat/Main/SetBoolFlag020263c8.cpp:
+    complete
+    .text start:0x02025d9c end:0x02025db0
+
+
+src/Combat/Main/SetByteFieldAt0x765.cpp:
+    complete
+    .text start:0x02025df4 end:0x02025dfc
+
+
+src/Combat/Main/SetEventStringAndAccumulateLength02026470.cpp:
+    complete
+    .text start:0x02025e2c end:0x02025e64
+
+
+src/Combat/Main/SetField0x27d8.cpp:
+    complete
+    .text start:0x0201b9f4 end:0x0201ba00
+
+
+src/Combat/Main/SetField0x27da.cpp:
+    complete
+    .text start:0x0201ba00 end:0x0201ba0c
+
+
+src/Combat/Main/SetField766AndNotify0202656c.cpp:
+    complete
+    .text start:0x02025ed4 end:0x02025f0c
+
+
+src/Combat/Main/SetString020264e4.cpp:
+    complete
+    .text start:0x02025e64 end:0x02025e9c
+
+
+src/Combat/Main/SetString02026528.cpp:
+    complete
+    .text start:0x02025e9c end:0x02025ed4
+
+
+src/Combat/Main/SetToggleState.cpp:
+    complete
+    .text start:0x02021004 end:0x0202101c
+
+
+src/Combat/Main/UpdateCombatTextFrame.cpp:
+    complete
+    .text start:0x02023c44 end:0x02023d8c
+
+
+src/Combat/Main/func_0200eca0.cpp:
+    complete
+    .text start:0x0200eb64 end:0x0200ec50
+
+
+src/Combat/Main/func_020145a8.cpp:
+    complete
+    .text start:0x02014374 end:0x020144c8
+
+
+src/Combat/Main/func_02025b0c.cpp:
+    complete
+    .text start:0x020254e0 end:0x020258fc
+
+
+src/Combat/Main/func_02040c2c.cpp:
+    complete
+    .text start:0x02041128 end:0x02041444
+
+
+src/Combat/Main/func_020439b0.cpp:
+    complete
+    .text start:0x02044168 end:0x0204483c
+
+
+src/Combat/Main/func_0206aa28.cpp:
+    complete
+    .text start:0x0206c5d8 end:0x0206c730

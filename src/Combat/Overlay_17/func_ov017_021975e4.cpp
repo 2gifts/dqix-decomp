@@ -1,12 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Graphics/Vector.h"
-
-#if defined(jpn)
-enum { RegionOffset6c = 0x8c };
-#else
-enum { RegionOffset6c = 0x6c };
-#endif
+#include "World/Zone3D.h"
 
 struct PathNode_021975e4 {
     char pad0[8];
@@ -27,11 +22,6 @@ struct Walker_021975e4 {
     short heading;
     char padb0[0xe];
     unsigned char mode;
-};
-
-struct TurnState_021975e4 {
-    char pad0[0x42ee];
-    short holdFrames;
 };
 
 struct SubBlock02038508 {
@@ -78,10 +68,11 @@ PathNode_021975e4* FindNodeKind9ById(NodeOwner_1e6d4* owner, int id);
 extern "C" void _Z16CopyBlockTo0x26cP13Owner020398b4P16SubBlock020398b4(Walker_021975e4* obj, SubBlock02038508* block);
 void OrBitsIntoField0(unsigned int* field, unsigned int bits);
 
+// JPN: func_ov017_02198194
 // USA: func_ov017_021975e4
-extern "C" ARM void func_ov017_021975e4(TurnState_021975e4* state) {
+extern "C" ARM void func_ov017_021975e4(GameResources* state) {
     GameState* game = GameState::GetInstance();
-    unsigned char* zone = (unsigned char*)func_02012fe4();
+    Zone3D* zone = (Zone3D*)func_02012fe4();
     unsigned int* flags = _Z27GetDataPtr02114e04_020d6c00v();
     Walker_021975e4* player = (Walker_021975e4*)game->GetUnknownGameObject();
     Vector3i anchor = player->obj.position_;
@@ -99,7 +90,7 @@ extern "C" ARM void func_ov017_021975e4(TurnState_021975e4* state) {
     int idle = player->mode == 0 ? 1 : 0;
     if (idle == 1) return;
 
-    PathNode_021975e4* node = (PathNode_021975e4*)GetPointerFromArray0x3c(zone + RegionOffset6c, 9);
+    PathNode_021975e4* node = (PathNode_021975e4*)GetPointerFromArray0x3c((unsigned char*)zone->substruct_6c_, 9);
     while (node != 0) {
         SubBlock02038508 block;
         _Z17InitBlock02038508P16SubBlock02038508(&block);
@@ -119,7 +110,7 @@ extern "C" ARM void func_ov017_021975e4(TurnState_021975e4* state) {
             playerDir.z = cosine;
             Vector3fix_Normalize(&playerDir, &playerDir);
 
-            Vector3i facing = *(Vector3i*)((char*)res + 0x4438);
+            Vector3i facing = *(Vector3i*)(res->unknown_4420 + 0x18);
             int alignment = Vector3fix_InnerProduct(&nodeDir, &playerDir);
             int lateral = Vector3fix_InnerProduct(&nodeDir, &facing);
             Vector3i offset;
@@ -138,14 +129,14 @@ extern "C" ARM void func_ov017_021975e4(TurnState_021975e4* state) {
             }
 
             int ready = 0;
-            if (state->holdFrames <= 1) {
+            if ((*(short*)(state->unknown_42e3 + 0xb)) <= 1) {
                 if (player->mode == 1 && (lateral < -0xccc || lateral > 0xccc || alignment < -0xccc || alignment > 0xccc)) {
-                    state->holdFrames++;
+                    (*(short*)(state->unknown_42e3 + 0xb))++;
                 } else {
-                    state->holdFrames = 0;
+                    (*(short*)(state->unknown_42e3 + 0xb)) = 0;
                 }
-            } else if (state->holdFrames > 1) {
-                state->holdFrames = 0;
+            } else if ((*(short*)(state->unknown_42e3 + 0xb)) > 1) {
+                (*(short*)(state->unknown_42e3 + 0xb)) = 0;
                 ready = 1;
             }
             if (!ready) {
@@ -153,7 +144,7 @@ extern "C" ARM void func_ov017_021975e4(TurnState_021975e4* state) {
                 continue;
             }
 
-            PathNode_021975e4* partner = FindNodeKind9ById((NodeOwner_1e6d4*)(zone + RegionOffset6c), node->partnerId);
+            PathNode_021975e4* partner = FindNodeKind9ById((NodeOwner_1e6d4*)((unsigned char*)zone->substruct_6c_), node->partnerId);
             if (!partner) return;
 
             block.active = 1;

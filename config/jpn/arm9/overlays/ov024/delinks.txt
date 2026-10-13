@@ -2247,3 +2247,8 @@ src/Combat/Overlay_24/func_ov024_021f9874.cpp:
 src/Combat/Overlay_24/ForwardCode2ToHandler954_021fbec4.cpp:
     complete
     .text start:0x021fc690 end:0x021fc6a0
+
+
+src/Combat/Overlay_24/func_ov024_021eaa50.cpp:
+    complete
+    .text start:0x021eb21c end:0x021eb5c8

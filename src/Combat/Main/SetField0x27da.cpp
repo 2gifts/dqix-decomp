@@ -1,11 +1,14 @@
 #include <globaldefs.h>
 
-struct S_bc88 {
-    char pad[0x27da];
-    unsigned short val;
-};
+struct S_bc88;
 
+// KEEP-NAME
 // USA: func_0201bc88
-ARM void SetField0x27da(struct S_bc88* obj, unsigned short val) {
-    obj->val = val;
+// JPN: func_0201ba00
+ARM void SetField0x27da(S_bc88* obj, unsigned short value) {
+#if defined(jpn)
+    *(unsigned short*)((char*)obj + 0x281a) = value;
+#else
+    *(unsigned short*)((char*)obj + 0x27da) = value;
+#endif
 }

@@ -5,6 +5,7 @@
 #include "Filesystem/FileIO.h"
 #include "Filesystem/FileAccessor.h"
 #include "Filesystem/LowNitroHandle.h"
+#include "World/Zone3D.h"
 extern "C" char* strcpy(char*, const char*);
 extern "C" int sprintf(char*, const char*, ...);
 extern "C" char* strstr(const char*, const char*);
@@ -13,12 +14,20 @@ struct Pool020401fc;
 struct Struct_0203cfb4;
 struct StreamHeader;
 struct EntryList_203dce4;
-union Position021a2c14 { struct { int x, y, z; }; Vector3i vector; };
-struct PositionHolder021a2c14 { int field0; Position021a2c14 position; };
-struct Actor021a2c14 { unsigned char padding0[0x44]; Position021a2c14 position; };
-struct Entry021a2c14 { unsigned int flags; unsigned char padding4[0x10]; PositionHolder021a2c14* holder; Actor021a2c14* actor; };
-struct Object021a2c14 { unsigned char padding0[0xc4]; SafeAllocator allocator; unsigned char paddingD8[0x104]; unsigned char state[0x400]; unsigned char zoneState[4]; };
-struct Request021a2c14 { unsigned short id; unsigned char padding2[3]; char name[1]; };
+struct PositionHolder021a2c14 { int field0; Vector3i position; };
+struct Entry021a2c14 { unsigned int flags; unsigned char padding4[0x10]; PositionHolder021a2c14* holder; Object3D* actor; };
+#if defined(jpn)
+enum { ZoneStateOffset = 0x58c };
+#define func_0203d028 func_0203d560
+#define data_ov017_021d76a6 data_ov017_021d7ae6
+#define data_ov017_021d76bb data_ov017_021d7afb
+#define data_ov017_021d76bf data_ov017_021d7aff
+#define data_ov017_021d76c9 data_ov017_021d7b09
+#define data_ov017_021d76d1 data_ov017_021d7b11
+#define data_ov017_021d76d4 data_ov017_021d7b14
+#else
+enum { ZoneStateOffset = 0x5dc };
+#endif
 void* GetGlobalPtr021075f4();
 int GetField5cb0Value(char*);
 int GetField5cb4Value(char*);
@@ -38,7 +47,7 @@ extern "C" void func_0203d028(void*, int, SafeAllocator*, unsigned char*);
 extern "C" void func_0203e2c4(void*, unsigned short);
 extern "C" void* func_02012fe4();
 Entry021a2c14* GetEntryUnlessFlag0x8000(EntryList_203dce4*, int);
-extern "C" int func_02018fbc(void*, Position021a2c14*);
+extern "C" int func_02018fbc(void*, Vector3i*);
 extern char data_ov017_021d76a6[];
 extern unsigned char data_0211e33c[];
 extern char data_ov017_021d76bb[];
@@ -47,14 +56,15 @@ extern char data_ov017_021d76c9[];
 extern char data_ov017_021d76d1[];
 extern char data_ov017_021d76d4[];
 
+// JPN: func_ov017_021a3690
 // USA: func_ov017_021a2c14
-extern "C" ARM int func_ov017_021a2c14(Object021a2c14* object, Request021a2c14* request) {
+extern "C" ARM int func_ov017_021a2c14(GameResources* object, Zone3D_StructPtr_8* request) {
     GameState* game = GameState::GetInstance();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     void* context = GetGlobalPtr021075f4();
-    SafeAllocator* allocator = &object->allocator;
-    unsigned char* zoneState = object->zoneState;
-    int id = request->id;
+    SafeAllocator* allocator = &object->allocator_array_38[7];
+    unsigned char* zoneState = reinterpret_cast<unsigned char*>(object) + ZoneStateOffset;
+    int id = request->unknown_0_;
     int field0 = GetField5cb0Value((char*)game);
     int field1 = GetField5cb4Value((char*)game);
     int field2 = GetField5cb8Value((char*)game);
@@ -65,11 +75,9 @@ extern "C" ARM int func_ov017_021a2c14(Object021a2c14* object, Request021a2c14* 
     NitroVM vm;
     char resourcePath[0x50];
     char scriptPath[0x50];
-    Position021a2c14 holderPosition;
-    Position021a2c14 actorPosition;
     char prefix[8];
     unsigned int archiveSize;
-    strcpy(prefix, request->name);
+    strcpy(prefix, request->mapShortName_);
     prefix[3] = 0;
     if (prefix[0] == 'F') prefix[1] = 0;
     BackgroundLoader::AddLockGlobal();
@@ -125,13 +133,13 @@ extern "C" ARM int func_ov017_021a2c14(Object021a2c14* object, Request021a2c14* 
         Entry021a2c14* entry = GetEntryUnlessFlag0x8000((EntryList_203dce4*)context, entryIndex);
         if (!entry || (entry->flags & 0x800) || (entry->flags & 0x1000)) continue;
         if (entry->holder) {
-            holderPosition = entry->holder->position;
+            Vector3i holderPosition = entry->holder->position;
             holderPosition.y = func_02018fbc(zone, &holderPosition);
-            entry->holder->position.vector = holderPosition.vector;
+            entry->holder->position = holderPosition;
         } else if (entry->actor) {
-            actorPosition = entry->actor->position;
+            Vector3i actorPosition = entry->actor->position_;
             actorPosition.y = func_02018fbc(zone, &actorPosition);
-            entry->actor->position.vector = actorPosition.vector;
+            entry->actor->position_ = actorPosition;
         }
     }
     return 1;

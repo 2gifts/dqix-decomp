@@ -1,5 +1,11 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define data_ov031_0224b1d4 data_ov031_0224bdd4
+#define data_ov031_0224fb20 data_ov031_02250720
+#define func_ov031_022228f4 func_ov031_022230d4
+#endif
+
 struct HardwareAddress {
     unsigned char bytes[6];
 };
@@ -19,7 +25,7 @@ extern InternetAddress data_ov031_0224b1d4 __attribute__((aligned(4)));
 extern HardwareAddress data_ov031_0224fb20;
 extern HardwareAddress data_ov031_0224fb18;
 extern AddressDebug data_ov031_0224b114;
-extern "C" int func_ov031_022205d8(HardwareAddress* address);
+extern "C" int func_ov031_022205d8(void* address);
 extern "C" int func_02001aec(const void* first, const void* second, unsigned int size);
 extern "C" void func_ov031_022228f4(char* destination, const HardwareAddress* address);
 
@@ -35,6 +41,8 @@ extern "C" void func_ov031_022228f4(char* destination, const HardwareAddress* ad
 } while (0)
 
 // USA: func_ov031_022205e4
+// KEEP-NAME: func_ov031_022205e4
+// JPN: func_ov031_02220dc4
 extern "C" THUMB int func_ov031_022205e4(AddressPair* output) {
     char firstText[32];
     char secondText[32];

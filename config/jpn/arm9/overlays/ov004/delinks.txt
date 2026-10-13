@@ -1737,3 +1737,18 @@ src/Combat/Overlay_4/func_ov004_02158fec.cpp:
 src/Combat/Overlay_4/CheckBitAndNotify_0215c900.cpp:
     complete
     .text start:0x0215d900 end:0x0215d948
+
+
+src/Combat/Overlay_4/AllocateAndScanBits_021567f8.cpp:
+    complete
+    .text start:0x02157a6c end:0x02157be0
+
+
+src/Combat/Overlay_4/SetIndexedNameFromElem_02169a28.cpp:
+    complete
+    .text start:0x02169f44 end:0x02169fd4
+
+
+src/Combat/Overlay_4/SetNodeCountFromBattleBlock_02156760.cpp:
+    complete
+    .text start:0x021579ec end:0x02157a6c

@@ -66,7 +66,12 @@ struct GameResources
     char unknown_2b20[0x70]; // jpn: offset 2910
     Foo02048004 substruct_array_2b90[0x12]; // jpn: offset2980
     char unknown_3520[0x88]; // jpn: offset 3310
-    char unknown_35a8[0x120]; // jpn: offset 3398
+    char unknown_35a8[0x8c]; // jpn: offset 3398
+    unsigned char fieldButtonX[18];
+    unsigned char fieldButtonY[18];
+    unsigned char fieldButtonState[18];
+    char unknown_366a[0x4a];
+    unsigned char interactionSelection[0x14];
 
     void* unknown_ptr_36c8; // jpn: offset 34b8
     void* unknown_ptr_36cc; // jpn: offset 34bc
@@ -126,6 +131,20 @@ struct GameResources
     char unknown_4490[0x34];
     void* unknown_ptr_44c4;
 };
+
+#if defined(jpn)
+typedef char GameResourcesButtonXOffset[(int)&((GameResources*)0)->fieldButtonX == 0x3424 ? 1 : -1];
+typedef char GameResourcesButtonYOffset[(int)&((GameResources*)0)->fieldButtonY == 0x3436 ? 1 : -1];
+typedef char GameResourcesButtonStateOffset[(int)&((GameResources*)0)->fieldButtonState == 0x3448 ? 1 : -1];
+typedef char GameResourcesSelectionOffset[(int)&((GameResources*)0)->interactionSelection == 0x34a4 ? 1 : -1];
+typedef char GameResourcesSizeCheck[sizeof(GameResources) == 0x4218 ? 1 : -1];
+#elif defined(usa)
+typedef char GameResourcesButtonXOffset[(int)&((GameResources*)0)->fieldButtonX == 0x3634 ? 1 : -1];
+typedef char GameResourcesButtonYOffset[(int)&((GameResources*)0)->fieldButtonY == 0x3646 ? 1 : -1];
+typedef char GameResourcesButtonStateOffset[(int)&((GameResources*)0)->fieldButtonState == 0x3658 ? 1 : -1];
+typedef char GameResourcesSelectionOffset[(int)&((GameResources*)0)->interactionSelection == 0x36b4 ? 1 : -1];
+typedef char GameResourcesSizeCheck[sizeof(GameResources) == 0x44c8 ? 1 : -1];
+#endif
 
 // size 0x44.
 // Needs to be moved back to grotto

@@ -41,7 +41,6 @@ struct ResponseIdentifiers {
 };
 
 #if defined(jpn)
-#define func_ov031_0221d52c func_ov031_0221dd0c
 #define func_ov031_0221d6a8 func_ov031_0221de88
 #define func_ov031_0221d82c func_ov031_0221e00c
 #define func_ov031_0221db48 func_ov031_0221e328
