@@ -13,7 +13,7 @@ struct AxisFloats0203b5a0;
 int IsAxisIntWithin16(struct AxisFloats0203b5a0* s, int axis);
 
 extern "C" void func_02020720(char* obj);
-void InitSubScreenDisplay(void* ctx);
+void InitSubScreenDisplay(void* context);
 extern "C" void _Z19TailForward0203b66cPc(char* obj);
 extern "C" void _Z21InitSubObject0203bd78Pc(char* obj);
 extern "C" void _Z25InitBattleContext0203bd24Pc(char* obj);

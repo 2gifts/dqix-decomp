@@ -11,8 +11,8 @@ struct Requirements020dd4c4 {
     unsigned int category : 4;
     unsigned int : 18;
     unsigned int protagonistOnly : 1;
-    unsigned int rank : 2;
-    unsigned int classMask : 12;
+    unsigned int minimumRevocations : 2;
+    unsigned int vocationMask : 12;
     unsigned int : 15;
     unsigned int allowFirst : 1;
     unsigned int allowSecond : 1;
@@ -27,21 +27,32 @@ struct Entry020dd4c4 {
     char pad_c[0xc];
     short count;
 };
-struct Stats020dd4c4 {
+struct PartyRecord020dd4c4 {
     char pad_0[0x186];
-    unsigned char ranks[0x316];
+    unsigned char revocations[13];
+    char pad_193[0x49c - 0x193];
     unsigned char flag : 1;
     unsigned char : 7;
+#if defined(jpn)
+    char pad_49d[0x8b8 - 0x49d];
+#else
     char pad_49d[0x950 - 0x49d];
-    int category;
+#endif
+    int vocation;
+    unsigned short GetRevocationCount(int vocation) const {
+        return revocations[vocation];
+    }
 };
-struct Combatant020dd4c4 { char pad_0[0x150]; Stats020dd4c4* stats; };
+struct Combatant020dd4c4 {
+#if defined(jpn)
+    char pad_0[0x144];
+#else
+    char pad_0[0x150];
+#endif
+    PartyRecord020dd4c4* record;
+};
 static inline Combatant020dd4c4* GetCombatant020dd4c4(int id) {
     return (Combatant020dd4c4*)GetCombatantWithFlag0x100(GameState::GetInstance(), id);
-}
-static inline unsigned short GetRank020dd4c4(Stats020dd4c4* stats) {
-    unsigned short value = stats->ranks[stats->category];
-    return value;
 }
 
 // USA: func_020dd4c4
@@ -50,7 +61,7 @@ extern "C" ARM int func_020dd4c4(int id, Entry020dd4c4* entry) {
     if (entry->count <= 0) return 0x200;
     Combatant020dd4c4* combatant = GetCombatant020dd4c4(id);
     if (!combatant) return 0x20;
-    if (!combatant->stats->category) return 0;
+    if (!combatant->record->vocation) return 0;
     int valid = entry->kind <= 7;
     if (!valid) return 8;
     if (!entry->requirements) return 8;
@@ -69,20 +80,20 @@ extern "C" ARM int func_020dd4c4(int id, Entry020dd4c4* entry) {
     if (entry->kind == 0) classError = 0;
     else if (entry->kind == 1) classError = 0;
     else {
-        int category = GetCombatant020dd4c4(id)->stats->category;
-        if (category == 0) classError = 2;
+        int vocation = GetCombatant020dd4c4(id)->record->vocation;
+        if (vocation == 0) classError = 2;
         else {
-            int mask = 1 << (category - 1);
-            classError = (entry->requirements->classMask & mask) ? 0 : 2;
+            int mask = 1 << (vocation - 1);
+            classError = (entry->requirements->vocationMask & mask) ? 0 : 2;
         }
     }
     result |= classError;
-    Stats020dd4c4* stats = GetCombatant020dd4c4(id)->stats;
-    int rank = GetRank020dd4c4(stats);
-    result |= entry->requirements->rank <= (unsigned short)rank ? 0 : 0x10;
+    PartyRecord020dd4c4* record = GetCombatant020dd4c4(id)->record;
+    int revocations = record->GetRevocationCount(record->vocation);
+    result |= entry->requirements->minimumRevocations <= (unsigned short)revocations ? 0 : 0x10;
     combatant = GetCombatant020dd4c4(id);
     Requirements020dd4c4* requirements = entry->requirements;
-    unsigned int flag = combatant->stats->flag;
+    unsigned int flag = combatant->record->flag;
     int restrictionError;
     if (GetHalfwordEntryFromField150((Field150Holder02052df8*)combatant, 9) == 0x4680 && !requirements->restricted) restrictionError = 0;
     else {

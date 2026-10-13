@@ -1,14 +1,16 @@
 #include <globaldefs.h>
 
-struct ToggleState {
-    char unk[0x9C4];
-    unsigned char isActive;
-    char unk9C5[0x3];
-    unsigned char mode;
-};
+struct ToggleState;
 
+// KEEP-NAME
 // USA: func_02021410
-ARM void SetToggleState(struct ToggleState* state, int active, int mode) {
-    state->isActive = active != 0;
-    state->mode = mode;
+ARM void SetToggleState(ToggleState* state, int active, int mode) {
+    unsigned char* storage = (unsigned char*)state;
+#if defined(jpn)
+    storage[0x918] = active != 0;
+    storage[0x91c] = mode;
+#else
+    storage[0x9c4] = active != 0;
+    storage[0x9c8] = mode;
+#endif
 }

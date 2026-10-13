@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+#include "System/RequestSubmission.h"
+
+#if defined(jpn)
+#define data_021023c0 data_02102100
+#define data_020ef7a8 data_020ef698
+#endif
 
 struct Input0202d3e0 { unsigned short field_0x00, status, command; };
 struct State0202d3e0 {
@@ -10,10 +16,10 @@ struct State0202d3e0 {
     int mode;
 };
 extern State0202d3e0 data_021015a0 __attribute__((aligned(4)));
-extern int data_021023c0, data_02102be0, data_020ef7a8;
+struct BattleEffectContext;
+extern BattleEffectContext data_021023c0, data_02102be0;
+extern int data_020ef7a8;
 void SetField0x48UnlessState9Or10(int);
-int InvokeWithFullMaskType2(int, int);
-extern "C" int func_020d5d34(int, int, int, int, int);
 extern "C" void func_0202dd98();
 
 // USA: func_0202d3e0
@@ -34,7 +40,7 @@ extern "C" ARM void func_0202d3e0(Input0202d3e0* input) {
                     else if (data_021015a0.state != 4) submitted = 0;
                     else {
                         data_021015a0.state = 6;
-                        int result = InvokeWithFullMaskType2((int)&data_021023c0, 13);
+                        int result = InvokeWithFullMaskType2(&data_021023c0, 13);
                         if (result == 0) submitted = 1;
                         else { SetField0x48UnlessState9Or10(result); submitted = 0; }
                     }
@@ -43,7 +49,7 @@ extern "C" ARM void func_0202d3e0(Input0202d3e0* input) {
                 }
             } else if (data_021015a0.mode == 5) {
                 int mask = 15;
-                int result = func_020d5d34((int)&data_02102be0, 13, mask, 0x74, data_020ef7a8);
+                int result = func_020d5d34(&data_02102be0, 13, mask, 0x74, data_020ef7a8);
                 if (result) {
                     SetField0x48UnlessState9Or10(result);
                     func_0202dd98();

@@ -1,22 +1,34 @@
 #include <globaldefs.h>
 
-struct PackFields020946f8Struct { unsigned int w; unsigned short h; };
+struct PackFields020946f8Struct {
+    unsigned int attributes01;
+    unsigned short attributes2;
+    short affineParameter;
+};
+
+enum {
+    SpriteBitmapMode = 3,
+    SpriteAffineEffect = 0x100,
+    SpriteDoubleSizeAffineEffect = 0x300
+};
 
 // USA: func_020946f8
-ARM void PackFields020946f8(struct PackFields020946f8Struct* dst, int p1, int p2, int p3,
-                            int a5, int a6, int a7, int a8, int a9, int a10, int a11, int a12) {
-    if (a7 == 0x100 || a7 == 0x300) {
-        if (a5 == 3) {
-            dst->w = (p2 & 0xff) | (a12 << 0x19) | (a5 << 0xa) | (a6 << 0xc) | a8 | ((p1 & 0x1ff) << 0x10) | a7;
+// KEEP-NAME
+ARM void PackFields020946f8(PackFields020946f8Struct* sprite, int x, int y, int priority,
+                            int mode, int mosaic, int effect, int shape, int colorMode,
+                            int characterIndex, int paletteOrAlpha, int affineIndex) {
+    if (effect == SpriteAffineEffect || effect == SpriteDoubleSizeAffineEffect) {
+        if (mode == SpriteBitmapMode) {
+            sprite->attributes01 = (y & 0xff) | (affineIndex << 25) | (mode << 10) | (mosaic << 12) | shape | ((x & 0x1ff) << 16) | effect;
         } else {
-            dst->w = (p2 & 0xff) | ((a12 << 0x19) | (a9 << 0xd)) | (a5 << 0xa) | (a6 << 0xc) | a8 | ((p1 & 0x1ff) << 0x10) | a7;
+            sprite->attributes01 = (y & 0xff) | ((affineIndex << 25) | (colorMode << 13)) | (mode << 10) | (mosaic << 12) | shape | ((x & 0x1ff) << 16) | effect;
         }
     } else {
-        if (a5 == 3) {
-            dst->w = (p2 & 0xff) | (a5 << 0xa) | (a6 << 0xc) | a8 | ((p1 & 0x1ff) << 0x10) | a7;
+        if (mode == SpriteBitmapMode) {
+            sprite->attributes01 = (y & 0xff) | (mode << 10) | (mosaic << 12) | shape | ((x & 0x1ff) << 16) | effect;
         } else {
-            dst->w = (p2 & 0xff) | (a9 << 0xd) | (a5 << 0xa) | (a6 << 0xc) | a8 | ((p1 & 0x1ff) << 0x10) | a7;
+            sprite->attributes01 = (y & 0xff) | (colorMode << 13) | (mode << 10) | (mosaic << 12) | shape | ((x & 0x1ff) << 16) | effect;
         }
     }
-    dst->h = a10 | (p3 << 0xa) | (a11 << 0xc);
+    sprite->attributes2 = characterIndex | (priority << 10) | (paletteOrAlpha << 12);
 }

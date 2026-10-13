@@ -28,7 +28,7 @@ extern "C" ARM int func_ov017_021afcec(unsigned char* obj) {
  enum {regionalOffset0=0x284};
 #endif
     GameState* bs = GameState::GetInstance();
-    struct GameResources* ov = (struct GameResources*)func_ov017_0218b5b0();
+    GameResources* ov = func_ov017_0218b5b0();
     unsigned char* g = (unsigned char*)GetGlobalField0x1c020421a0();
     unsigned int* dataPtr = (unsigned int*)GetDataPtr02114e04_020d6c00();
 
@@ -44,10 +44,10 @@ extern "C" ARM int func_ov017_021afcec(unsigned char* obj) {
     if (obj[9] != 2) {
         func_ov017_021afb8c((char*)obj, (char*)obj + 0xe);
 #if defined(jpn)
-        strcpy((char*)ov + 0x413c + obj[0xc] * 0xc, (char*)obj + 0xe);
+        strcpy(ov->partyNames[obj[0xc]], (char*)obj + 0xe);
 
 #else
-        char* dst = (char*)ov + 0x435c + obj[0xc] * 0x30;
+        char* dst = ov->partyNames[obj[0xc]];
         char buf[0x30];
         __clear(buf, 0x30);
         func_02042764((char*)obj + 0xe, buf, 1);

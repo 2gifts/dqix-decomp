@@ -1,3 +1,96 @@
+#if defined(jpn)
+#include <globaldefs.h>
+#include "GameState/GameState.h"
+#include "std_library_functions.h"
+
+struct ProfileTitle02186c1c {
+    unsigned int header;
+    unsigned int age : 9;
+    int title : 10;
+    unsigned int upper : 13;
+};
+struct AvailableTitles02186c1c {
+    unsigned short count : 5;
+    unsigned short other : 11;
+};
+struct Struct0205de24;
+struct Struct_0205c570;
+struct TableA68;
+struct Obj0205eaa0;
+struct Obj021e6e20;
+void FindAndLinkMatchingEntry0205de24(Struct0205de24*, unsigned char, unsigned char);
+int GetActiveScaledSum0205d794(Struct_0205c570*);
+void BuildMessageB_021898bc(char*);
+void* FindEntryByKey(TableA68*, int);
+void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
+int TestFlagsAndActiveElement2_021e6e20(Obj021e6e20*);
+extern Obj0205eaa0 data_02108760;
+extern "C" void func_ov023_021e6e60(void*);
+extern "C" int func_ov023_021e7148(void*);
+extern "C" void func_ov012_0218bba0(void*, int, int);
+extern "C" void func_ov012_02189be8(void*, int);
+
+static inline ProfileTitle02186c1c* GetTitleProfile02186c1c(GameState* game) {
+    return (ProfileTitle02186c1c*)((char*)game + 0x543c);
+}
+
+// USA: func_ov012_02186c1c
+extern "C" ARM void func_ov012_02186c1c(char* editor) {
+    if (*(unsigned char*)(editor + 0x1340) == 0) {
+        *(unsigned char*)(editor + 0x1368) = 0;
+        int title = GetTitleProfile02186c1c(GameState::GetInstance())->title;
+        int cursor;
+        if (title < 100) cursor = 2;
+        else if (title < 200) cursor = 0;
+        else if (title < 300) cursor = 1;
+        else if (title == 300) cursor = 3;
+        else cursor = 0;
+        *(int*)(editor + 0x1430) = cursor;
+        FindAndLinkMatchingEntry0205de24((Struct0205de24*)(editor + 0x90), 0, 3);
+        func_ov023_021e6e60(editor);
+        BuildMessageB_021898bc(editor);
+        (*(unsigned char*)(editor + 0x1340))++;
+        return;
+    }
+    if (*(unsigned char*)(editor + 0x1340) != 1) return;
+    *(unsigned char*)(editor + 0x1368) = 1;
+    *(int*)(editor + 0x1430) = GetActiveScaledSum0205d794((Struct_0205c570*)(editor + 0x90));
+    if (func_ov023_021e7148(editor)) {
+        int rebuild = 1;
+        switch (*(int*)(editor + 0x1430)) {
+        case 0:
+            *(unsigned char*)(editor + 0x1341) = 3;
+            *(unsigned char*)(editor + 0x1340) = 0;
+            break;
+        case 1:
+            *(unsigned char*)(editor + 0x1341) = 4;
+            *(unsigned char*)(editor + 0x1340) = 0;
+            break;
+        case 2:
+            if (((AvailableTitles02186c1c*)(editor + 0x141c))->count) {
+                *(unsigned char*)(editor + 0x1341) = 5;
+                *(unsigned char*)(editor + 0x1340) = 0;
+            } else rebuild = 0;
+            break;
+        case 3: {
+            GameState* game = GameState::GetInstance();
+            const char* text = (const char*)FindEntryByKey((TableA68*)(editor + 0x1314), 109);
+            GetTitleProfile02186c1c(game)->title = 300;
+            memset(editor + 0x1498, 0, 64);
+            memcpy(editor + 0x1498, text, strlen(text));
+            func_ov012_0218bba0(editor, 0, -1);
+            func_ov012_02189be8(editor, rebuild);
+            break;
+        }
+        }
+        if (!rebuild) return;
+        DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
+    } else {
+        if (!TestFlagsAndActiveElement2_021e6e20((Obj021e6e20*)editor)) return;
+        func_ov012_02189be8(editor, 1);
+    }
+}
+#else
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
@@ -125,3 +218,4 @@ extern "C" ARM void func_ov012_02186c1c(ProfileEditor* self) {
         func_ov012_0218930c(self, 1);
     }
 }
+#endif

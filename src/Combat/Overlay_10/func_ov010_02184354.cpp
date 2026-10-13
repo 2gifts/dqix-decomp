@@ -2,6 +2,12 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
 #include "GameState/GameState.h"
+#include "Resource/MessageSystem.h"
+
+#if defined(jpn)
+#define data_ov010_02184a80 data_ov010_02185b40
+#define data_ov010_02184aa6 data_ov010_02185b54
+#endif
 
 extern AllocatorUnion data_02114e20;
 extern int data_02108760;
@@ -58,7 +64,6 @@ void SetFlag0x80At0xc2(struct Flags020340b4* p);
 
 extern "C" void _Z30InitObjFromCombatantId020e4bf4Pvi(void* obj, int combatantId);
 extern "C" void func_02046380(void* global);
-extern "C" void func_0204500c(void* global, void* entry, int a, int b);
 extern "C" int func_020457e0(void* global);
 
 struct Foo0207df50;
@@ -86,7 +91,6 @@ extern "C" int func_0202c508(void* obj);
 struct Vec3s02184354 { short x; short y; short z; };
 extern "C" void func_ov017_021d360c(int a, unsigned char b, int c, struct Vec3s02184354 d);
 
-/* Result of func_02012fe4 -- the "current move" record. */
 struct MoveRecord02184354 {
     unsigned short id;
     unsigned char pad2[6];
@@ -102,25 +106,12 @@ struct MoveInfo02184354 {
     unsigned char flagHi : 1;
 };
 
-/* Result of func_ov017_0218b5b0. */
 struct Actor02184354 {
     unsigned char pad0[0xc];
     unsigned char combatantId;
 };
-struct Ov17Data02184354 {
-    unsigned char pad0[0x3ba8];
-    struct Actor02184354* actorInfo;
-};
+extern "C" MessageSystem* _Z26GetGlobalField0x1c020421a0v(void);
 
-/* Result of _Z26GetGlobalField0x1c020421a0v. */
-struct Presenter02184354 {
-    void* pParams;
-    unsigned char pad4[0x994];
-    int busy;
-};
-extern "C" struct Presenter02184354* _Z26GetGlobalField0x1c020421a0v(void);
-
-/* Result of _Z24SearchBothTables02079e2cPci. */
 struct TableEntry02184354 {
     unsigned char pad0[8];
     unsigned int amount : 8;
@@ -167,16 +158,23 @@ struct Ctx02184354 {
 // USA: func_ov010_02184354
 extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
-    struct Presenter02184354* presenter = _Z26GetGlobalField0x1c020421a0v();
+    MessageSystem* presenter = _Z26GetGlobalField0x1c020421a0v();
     GameState* bs = GameState::GetInstance();
     GameObject* caster;
     struct MoveRecord02184354* move;
-    struct Actor02184354* actorInfo = ((struct Ov17Data02184354*)func_ov017_0218b5b0())->actorInfo;
+#if defined(jpn)
+    struct Actor02184354* actorInfo = *(Actor02184354**)((char*)func_ov017_0218b5b0() + 0x3988);
+#else
+    struct Actor02184354* actorInfo = *(Actor02184354**)((char*)func_ov017_0218b5b0() + 0x3ba8);
+#endif
     caster = bs->GetPartyMemberByIndex(actorInfo->combatantId);
     GameObject* active = bs->GetPartyMemberByIndex(GetField0x397cValue(bs));
     void* scene = func_0202ae18();
-    struct Ov17Data02184354* ov17 = ((struct Ov17Data02184354*)func_ov017_0218b5b0());
+    void* ov17 = func_ov017_0218b5b0();
     move = (struct MoveRecord02184354*)func_02012fe4();
+#if defined(jpn)
+    char message[200];
+#endif
 
     if (caster == NULL || active == NULL) {
         _Z28ResetStateAndCleanup021842d8P14Struct021842d8((struct Struct021842d8*)obj);
@@ -192,7 +190,11 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
             return 1;
         }
         obj->alloc.CreateTypeA(buffer, 0x7800);
+#if defined(jpn)
+        obj->taskId = loader->QueueLoadFile(data_ov010_02184a80, NULL);
+#else
         obj->taskId = loader->QueueLoadFileInGP2(data_ov010_02184a80, data_ov010_02184a95, NULL);
+#endif
         obj->state = 1;
     } else if (state == 1) {
         if (loader->GetTaskStatus(obj->taskId) == 0) return 0;
@@ -252,22 +254,38 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
         }
 
         void* entry = FindEntryByKey((struct TableA68*)&obj->list, (short)key);
+#if defined(jpn)
+        sprintf(message, (const char*)entry, *(char**)((char*)caster + 0x134));
+        func_0204500c(presenter, message, 0);
+        *(int*)((char*)presenter + 0x868) = 1;
+#else
         struct Vec3i02184354 casterObj;
         _Z30InitObjFromCombatantId020e4bf4Pvi(&casterObj, actorInfo->combatantId);
         func_02046380(presenter);
-        presenter->pParams = &casterObj;
-        func_0204500c(presenter, entry, 0, 0xe3);
-        presenter->busy = 1;
+        *(void**)presenter = &casterObj;
+        func_0204500c(presenter, (const char*)entry, 0, (void*)0xe3);
+        *(int*)((char*)presenter + 0x998) = 1;
+#endif
     } else if (state == 2) {
-        if (presenter->busy != 0) return 0;
+#if defined(jpn)
+        if (*(int*)((char*)presenter + 0x868) != 0) return 0;
+#else
+        if (*(int*)((char*)presenter + 0x998) != 0) return 0;
+#endif
         if (func_020457e0(presenter) == 0) {
             void* entry = FindEntryByKey((struct TableA68*)&obj->list, 0);
+#if defined(jpn)
+            sprintf(message, (const char*)entry, *(char**)((char*)caster + 0x134));
+            func_0204500c(presenter, message, 0);
+            *(int*)((char*)presenter + 0x868) = 1;
+#else
             struct Vec3i02184354 casterObj;
             _Z30InitObjFromCombatantId020e4bf4Pvi(&casterObj, actorInfo->combatantId);
             func_02046380(presenter);
-            presenter->pParams = &casterObj;
-            func_0204500c(presenter, entry, 0, 0xe3);
-            presenter->busy = 1;
+            *(void**)presenter = &casterObj;
+            func_0204500c(presenter, (const char*)entry, 0, (void*)0xe3);
+            *(int*)((char*)presenter + 0x998) = 1;
+#endif
             _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0*)&data_02108760, 0x64, 0);
             unsigned short* slot = (unsigned short*)GetField0x74deForValidIndex((char*)bs, GetField0x3acValue(bs));
             if (slot != NULL) *slot = 0;
@@ -297,7 +315,11 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
         unsigned int fileLen;
         loader->GetLoadedFileByID(obj->taskId, &filePtr, &fileLen);
 
+#if defined(jpn)
+        char* stage = (char*)ov17 + 0x27c;
+#else
         char* stage = (char*)ov17 + 0x2cc;
+#endif
         struct Vec3i02184354 pos = *(struct Vec3i02184354*)((char*)caster + 0x44);
         _Z26CopyInternalFields0207df50P11Foo0207df50((struct Foo0207df50*)(stage + 0xc40));
         _Z25RestorePairTables0207df90Pc(stage + 0xc40);
@@ -375,11 +397,19 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
         GameState* now = GameState::GetInstance();
         int finished = 0;
         if (obj->visible != 0) {
-            if (now->GetGameObjectByIndex(obj->nodeId) == NULL && presenter->busy == 0) {
+#if defined(jpn)
+            if (now->GetGameObjectByIndex(obj->nodeId) == NULL && *(int*)((char*)presenter + 0x868) == 0) {
+#else
+            if (now->GetGameObjectByIndex(obj->nodeId) == NULL && *(int*)((char*)presenter + 0x998) == 0) {
+#endif
                 finished = 1;
             }
         } else {
-            if (presenter->busy == 0) finished = 1;
+#if defined(jpn)
+            if (*(int*)((char*)presenter + 0x868) == 0) finished = 1;
+#else
+            if (*(int*)((char*)presenter + 0x998) == 0) finished = 1;
+#endif
         }
         if (finished != 0) {
             _Z28ResetStateAndCleanup021842d8P14Struct021842d8((struct Struct021842d8*)obj);

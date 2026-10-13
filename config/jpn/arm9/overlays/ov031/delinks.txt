@@ -6764,3 +6764,151 @@ src/Combat/Overlay_31/func_ov031_0221c4bc.cpp:
 src/Combat/Overlay_31/func_ov031_02239130.cpp:
     complete
     .text start:0x02239910 end:0x02239968
+
+src/Combat/Overlay_31/func_ov031_0223bdb0.cpp:
+    complete
+    .text start:0x0223c590 end:0x0223c624
+
+src/Combat/Overlay_31/func_ov031_0221f7fc.cpp:
+    complete
+    .text start:0x0221ffdc end:0x02220034
+
+src/Combat/Overlay_31/func_ov031_022394b4.cpp:
+    complete
+    .text start:0x02239c94 end:0x02239cf8
+
+src/Combat/Overlay_31/func_ov031_022203f0.cpp:
+    complete
+    .text start:0x02220bd0 end:0x02220bf8
+
+src/Combat/Overlay_31/ByteSwap16_0221e638.cpp:
+    complete
+    .text start:0x0221ee18 end:0x0221ee30
+
+src/Combat/Overlay_31/CopyAndSucceed_022205d8.cpp:
+    complete
+    .text start:0x02220db8 end:0x02220dc4
+
+src/Combat/Overlay_31/FillBytes_02222830.cpp:
+    complete
+    .text start:0x02223010 end:0x02223028
+
+src/Combat/Overlay_31/func_ov031_0221d3b0.cpp:
+    complete
+    .text start:0x0221db90 end:0x0221dc30
+
+src/Combat/Overlay_31/func_ov031_0221d450.cpp:
+    complete
+    .text start:0x0221dc30 end:0x0221dd0c
+
+src/Combat/Overlay_31/func_ov031_0221d604.cpp:
+    complete
+    .text start:0x0221dde4 end:0x0221de88
+
+src/Combat/Overlay_31/func_ov031_0221d7e0.cpp:
+    complete
+    .text start:0x0221dfc0 end:0x0221e00c
+
+src/Combat/Overlay_31/func_ov031_0221db18.cpp:
+    complete
+    .text start:0x0221e2f8 end:0x0221e328
+
+src/Combat/Overlay_31/func_ov031_0221e27c.cpp:
+    complete
+    .text start:0x0221ea5c end:0x0221ea9c
+
+src/Combat/Overlay_31/func_ov031_0221e2e4.cpp:
+    complete
+    .text start:0x0221eac4 end:0x0221eafc
+
+src/Combat/Overlay_31/func_ov031_0221e428.cpp:
+    complete
+    .text start:0x0221ec08 end:0x0221ec38
+
+src/Combat/Overlay_31/func_ov031_02220298.cpp:
+    complete
+    .text start:0x02220a78 end:0x02220aac
+
+src/Combat/Overlay_31/func_ov031_02221f24.cpp:
+    complete
+    .text start:0x02222704 end:0x02222758
+
+src/Combat/Overlay_31/func_ov031_02222848.cpp:
+    complete
+    .text start:0x02223028 end:0x02223050
+
+src/Combat/Overlay_31/ByteSwap16_0221e5f8.cpp:
+    complete
+    .text start:0x0221edd8 end:0x0221edf0
+
+src/Combat/Overlay_31/HasFlag10_0221dc58.cpp:
+    complete
+    .text start:0x0221e438 end:0x0221e448
+
+src/Combat/Overlay_31/NoOp_0221e5b0.cpp:
+    complete
+    .text start:0x0221ed90 end:0x0221ed94
+
+src/Combat/Overlay_31/ValidatePrintable_0221d270.cpp:
+    complete
+    .text start:0x0221da50 end:0x0221da74
+
+src/Combat/Overlay_31/func_ov031_02218a38.cpp:
+    complete
+    .text start:0x02219218 end:0x0221936c
+
+src/Combat/Overlay_31/func_ov031_0221e028.cpp:
+    complete
+    .text start:0x0221e808 end:0x0221e860
+
+src/Combat/Overlay_31/func_ov031_0221f698.cpp:
+    complete
+    .text start:0x0221fe78 end:0x0221febc
+
+src/Combat/Overlay_31/func_ov031_02243018.cpp:
+    complete
+    .text start:0x022437f8 end:0x02243924
+
+src/Combat/Overlay_31/ClearQueue_0221e6d4.cpp:
+    complete
+    .text start:0x0221eeb4 end:0x0221eec0
+
+src/Combat/Overlay_31/GetActiveContextRemainingOrStatus_02203b1c.cpp:
+    complete
+    .text start:0x022042fc end:0x0220436c
+
+src/Combat/Overlay_31/StoreByteAndForward_0221e538.cpp:
+    complete
+    .text start:0x0221ed18 end:0x0221ed2c
+
+src/Combat/Overlay_31/func_ov031_0221dc68.cpp:
+    complete
+    .text start:0x0221e448 end:0x0221e49c
+
+src/Combat/Overlay_31/func_ov031_0221df48.cpp:
+    complete
+    .text start:0x0221e728 end:0x0221e7b4
+
+src/Combat/Overlay_31/func_ov031_0221e080.cpp:
+    complete
+    .text start:0x0221e860 end:0x0221e8c8
+
+src/Combat/Overlay_31/func_ov031_02243850.cpp:
+    complete
+    .text start:0x02244030 end:0x022441b8
+
+src/Combat/Overlay_31/func_ov031_02243e34.cpp:
+    complete
+    .text start:0x0224460c end:0x02244894
+
+src/Combat/Overlay_31/func_ov031_0221d52c.cpp:
+    complete
+    .text start:0x0221dd0c end:0x0221dde4
+
+src/Combat/Overlay_31/func_ov031_022205e4.cpp:
+    complete
+    .text start:0x02220dc4 end:0x02220ec0
+
+src/Combat/Overlay_31/func_ov031_02244660.cpp:
+    complete
+    .text start:0x02244e8c end:0x022452fc

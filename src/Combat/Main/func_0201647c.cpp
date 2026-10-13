@@ -2,43 +2,8 @@
 #include <World/LootableContainer.h>
 #include <Filesystem/BackgroundLoader.h>
 #include <Filesystem/FileIO.h>
+#include <World/ZoneChest.h>
 
-struct LootEntry {
-    Vector3i position;
-    short objectID;
-    short scale;
-    short counter;
-    short field_0x12;
-    unsigned char field_0x14;
-    unsigned char field_0x15;
-    unsigned char state;
-    unsigned char blueChest;
-    unsigned char special;
-    unsigned char field_0x19;
-    short index;
-    unsigned short uniqueID;
-    unsigned short field_0x1e;
-    void* field_0x20;
-};
-struct S02013cb0 {
-    unsigned char field_0x0[8];
-    char* name;
-    unsigned char field_0xc[0x5c];
-    SafeAllocator* allocator;
-    unsigned char nodes[0x40a];
-    unsigned char field_0x476;
-    unsigned char count;
-    unsigned int field_0x478;
-    LootEntry* entries;
-    unsigned char field_0x480[0x22d4];
-    unsigned char loader[0x84];
-    unsigned short pendingType2;
-    unsigned short pendingElements;
-};
-struct SaveState {
-    unsigned char field_0x0[0x8c];
-    unsigned char bits[1];
-};
 struct ZoneNode {
     unsigned int id : 16;
     unsigned int field_0x2 : 16;
@@ -53,76 +18,70 @@ struct ZoneManager {
     unsigned int field_0x8;
     short* ids;
 };
-struct WorldNode {
-    unsigned char field_0x0[0x30];
-    unsigned short containerID;
-};
-extern "C" SaveState* func_0205ec34();
+struct ListNode;
+extern "C" void* func_0205ec34();
 extern "C" int* func_0202ae18();
-extern "C" ZoneManager* func_0208e0a8();
+extern "C" void* func_0208e0a8();
 int IsMatchingName0208e824(void*, char*);
-void InitStruct020133fc(char*);
 int TestBitInByteArray(int, unsigned char*, int);
 int CheckField0NonZero(int*);
-WorldNode* FindNodeById(void*, int, int);
+ListNode* FindNodeById(void*, int, int);
 void ZeroInit020de848(void*);
-extern "C" void func_020de9a4(void*, SafeAllocator*, void*, unsigned int, short*, unsigned short);
-extern "C" void func_02013b70(S02013cb0*, SafeAllocator*);
-void SetElementFlagsFromMask02013cb0(S02013cb0*, unsigned int);
-void UpdateFlaggedType2Entries02018c74(unsigned char*, unsigned int);
+extern "C" int func_020de9a4(void*, SafeAllocator*, void*, unsigned int, short*, unsigned short);
+extern "C" void func_02013b70(Zone3D*, SafeAllocator*);
 extern const char* data_020f2a38;
 extern const char* data_020f2a30;
 
-struct ZoneCopyState {
-    short* source;
-    int index;
-};
+#if defined(jpn)
+extern "C" int func_020e0484(void*, SafeAllocator*, const char*, short*, unsigned short, bool);
+#endif
 
 // USA: func_0201647c
-extern "C" ARM void func_0201647c(S02013cb0* self) {
-    SafeAllocator* allocator = self->allocator;
+extern "C" ARM void func_0201647c(Zone3D* zone) {
+    SafeAllocator* allocator = zone->pAllocator_68_;
     LootableContainerManager* containers = LootableContainerManager::GetMainInstance();
-    SaveState* save = func_0205ec34();
+    unsigned char* save = (unsigned char*)func_0205ec34();
     int* flags = func_0202ae18();
-    ZoneManager* zone = func_0208e0a8();
+    ZoneManager* zoneItems = (ZoneManager*)func_0208e0a8();
     LootableContainerManager::Container* container = containers->pContainerList_;
     bool includeZone = false;
-    if (IsMatchingName0208e824(zone, self->name + 5)) includeZone = true;
+    if (IsMatchingName0208e824(zoneItems, zone->pUnknownStruct_8_->mapShortName_)) includeZone = true;
     int containerCount = 0;
     for (; container; container = container->pNext) {
         if (container->containerType == 0 || container->containerType == 4) containerCount++;
     }
-    self->entries = static_cast<LootEntry*>(allocator->Allocate(containerCount * sizeof(LootEntry)));
-    if (!self->entries) return;
+    zone->unknown_47c_ = (ZoneChestRenderRecord*)allocator->Allocate(containerCount * sizeof(ZoneChestRenderRecord));
+    if (!zone->unknown_47c_) return;
     container = containers->pContainerList_;
-    self->count = 0;
+    zone->numChests_ = 0;
     for (; container; container = container->pNext) {
         if (container->containerType == 0 || container->containerType == 4) {
-            LootEntry* entry = &self->entries[self->count];
-            InitStruct020133fc(reinterpret_cast<char*>(entry));
+            ZoneChestRenderRecord* entry = &zone->unknown_47c_[zone->numChests_];
+            InitStruct020133fc(entry);
             entry->position = container->position;
-            entry->objectID = container->unk_6;
+            entry->angleY = container->unk_6;
             entry->counter = 0;
-            entry->index = self->count;
+            entry->recordIndex = zone->numChests_;
             entry->uniqueID = container->uniqueID;
-            entry->blueChest = 0;
-            if (container->containerType == 4) entry->blueChest = 1;
+            entry->secondPass = 0;
+            if (container->containerType == 4) entry->secondPass = 1;
             if ((container->containerType == 0 &&
-                 TestBitInByteArray(reinterpret_cast<int>(save), save->bits, container->uniqueID + 0x212)) ||
+                 TestBitInByteArray((int)save, save + 0x8c, container->uniqueID + 0x212)) ||
                 (container->containerType == 4 &&
-                 TestBitInByteArray(reinterpret_cast<int>(save), save->bits, container->uniqueID + 0x79e))) {
-                entry->state = 8;
-                entry->scale = 0x4000;
+                 TestBitInByteArray((int)save, save + 0x8c, container->uniqueID + 0x79e))) {
+                entry->active = 8;
+                entry->angleX = 0x4000;
                 container->lootType = 0;
             } else {
-                entry->state = 1;
-                entry->scale = 0x647a;
+                entry->active = 1;
+                entry->angleX = 0x647a;
             }
-            if (CheckField0NonZero(flags) && container->containerType == 4) entry->special = 1;
-            self->count++;
+            if (CheckField0NonZero(flags) && container->containerType == 4)
+                entry->special = 1;
+            zone->numChests_++;
         } else if (container->containerType == 3) {
-            WorldNode* node = FindNodeById(self->nodes, 5, static_cast<unsigned short>(container->unk_6));
-            if (node) node->containerID = container->uniqueID;
+            ListNode* node = FindNodeById(&zone->substruct_6c_, 5, (unsigned short)container->unk_6);
+            if (node) *(unsigned short*)((char*)node + 0x30) = container->uniqueID;
         }
     }
     short ids[100];
@@ -140,13 +99,12 @@ extern "C" ARM void func_0201647c(S02013cb0* self) {
             if (unique) ids[count++] = id;
         }
     }
-    if (includeZone && zone->nodes) {
-        ZoneNode* node = zone->nodes;
+    if (includeZone && zoneItems->nodes) {
+        ZoneNode* node = zoneItems->nodes;
         if (node->kind == 9) {
-            ZoneCopyState copy;
-            copy.source = zone->ids;
-            if (copy.source) {
-                for (copy.index = 0; copy.index < 16; copy.index++) ids[count++] = *copy.source++;
+            short* source = zoneItems->ids;
+            if (source) {
+                for (int i = 0; i < 16; count++, source++, i++) ids[count] = *source;
             }
         } else {
             while (node) {
@@ -155,21 +113,26 @@ extern "C" ARM void func_0201647c(S02013cb0* self) {
             }
         }
     }
-    ZeroInit020de848(self->loader);
+    ZeroInit020de848(zone->unknown_struct_2754_);
     if (count > 0) {
+#if defined(jpn)
+        func_020e0484(zone->unknown_struct_2754_, allocator, data_020f2a38, ids,
+            (unsigned short)count, true);
+#else
         BackgroundLoader::AddLockGlobal();
         unsigned int size = 0;
         void* file = ExtractFileFromGP2(data_020f2a38, data_020f2a30, &size);
-        if (file) func_020de9a4(self->loader, allocator, file, size, ids, static_cast<unsigned short>(count));
+        if (file) func_020de9a4(zone->unknown_struct_2754_, allocator, file, size, ids, (unsigned short)count);
         BackgroundLoader::RemoveLockGlobal();
+#endif
     }
-    func_02013b70(self, self->allocator);
-    if (self->pendingElements) {
-        SetElementFlagsFromMask02013cb0(self, self->pendingElements);
-        self->pendingElements = 0;
+    func_02013b70(zone, zone->pAllocator_68_);
+    if (zone->pendingLootableMask_) {
+        SetElementFlagsFromMask02013cb0(zone, zone->pendingLootableMask_);
+        zone->pendingLootableMask_ = 0;
     }
-    if (self->pendingType2) {
-        UpdateFlaggedType2Entries02018c74(reinterpret_cast<unsigned char*>(self), self->pendingType2);
-        self->pendingType2 = 0;
+    if (zone->pendingType2Mask_) {
+        UpdateFlaggedType2Entries02018c74(zone, zone->pendingType2Mask_);
+        zone->pendingType2Mask_ = 0;
     }
 }

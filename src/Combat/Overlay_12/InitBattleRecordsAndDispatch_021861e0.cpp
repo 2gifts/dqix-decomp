@@ -2,60 +2,49 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
 
+#if defined(jpn)
+enum { kWidgetCount = 17, kWidgetArrayOffset = 0x133c, kTargetOffset = 0x1338, kContainerOffset = 0x1334, kTaskOffset = 0x135c, kAllocatorOffset = 0x54 };
+#else
+enum { kWidgetCount = 19, kWidgetArrayOffset = 0x1364, kTargetOffset = 0x1360, kContainerOffset = 0x135c, kTaskOffset = 0x1390, kAllocatorOffset = 0x5c };
+#endif
 
 struct Struct0205a198;
-void Init0205a198(struct Struct0205a198* p);
-
+void Init0205a198(Struct0205a198*);
 struct ClearTarget0205a234;
-void ClearField0And40205a234(struct ClearTarget0205a234* target);
-
-void InitStruct0205a444(char* obj);
-
-struct List0202fec8;
-
+void ClearField0And40205a234(ClearTarget0205a234*);
+void InitStruct0205a444(char*);
 struct ActiveEntry02046900;
-int CountActiveEntries(struct ActiveEntry02046900* entry);
-
+int CountActiveEntries(ActiveEntry02046900*);
 struct Rec020467f0;
-void* FindRecordByIndex(struct Rec020467f0* rec, int index, void** out, int* out44);
+void* FindRecordByIndex(Rec020467f0*, int, void**, int*);
+extern "C" void func_0205a528(void*, void*, int, void*);
 
-extern "C" void func_0205a528(void* a, void* ptr, int val, void* d);
+// USA: func_ov012_021861e0
+extern "C" ARM void func_ov012_021861e0(char* editor) {
+    BackgroundLoader* loader = BackgroundLoader::GetInstance();
+    for (unsigned char i = 0; i < kWidgetCount; ++i)
+        Init0205a198((Struct0205a198*)(*(char**)(editor + kWidgetArrayOffset) + i * 0x28));
+    ClearField0And40205a234(*(ClearTarget0205a234**)(editor + kTargetOffset));
+    InitStruct0205a444(*(char**)(editor + kContainerOffset));
+    *(unsigned char*)(*(char**)(editor + kContainerOffset) + 0x50) = 0;
+    char* container = *(char**)(editor + kContainerOffset);
+    *(void**)(container + 0x40) = *(void**)(editor + kWidgetArrayOffset);
+    *(short*)(container + 0x4c) = kWidgetCount;
+    void* target = *(void**)(editor + kTargetOffset);
+    char* refreshedContainer = *(char**)(editor + kContainerOffset);
+    *(void**)(refreshedContainer + 0x3c) = target;
 
-// USA: func_ov012_021861e0  (semantic: InitBattleRecordsAndDispatch_021861e0)
-extern "C" ARM void func_ov012_021861e0(char* obj) {
-    int listPtr = (int)BackgroundLoader::GetInstance();
-
-    for (unsigned char i = 0; i < 0x13; i++) {
-        Init0205a198((struct Struct0205a198*)(*(char**)(obj + 0x1000 + 0x364) + i * 0x28));
-    }
-
-    ClearField0And40205a234(*(struct ClearTarget0205a234**)(obj + 0x1000 + 0x360));
-    InitStruct0205a444(*(char**)(obj + 0x1000 + 0x35c));
-
-    *(unsigned char*)(*(char**)(obj + 0x1000 + 0x35c) + 0x50) = 0;
-
-    char* p1 = *(char**)(obj + 0x1000 + 0x35c);
-    *(int*)(p1 + 0x40) = *(int*)(obj + 0x1000 + 0x364);
-    *(short*)(p1 + 0x4c) = 0x13;
-
-    int t360 = *(int*)(obj + 0x1000 + 0x360);
-    char* p2 = *(char**)(obj + 0x1000 + 0x35c);
-    *(int*)(p2 + 0x3c) = t360;
-
-    void* recOut;
-    int out1;
-    int out2;
+    void* recordOut;
+    void* fileData;
+    unsigned int fileSize;
     int fieldOut;
-    ((BackgroundLoader*)((struct List0202fec8*)listPtr))->GetLoadedFileByID((int)(*(int*)(obj + 0x1000 + 0x390)), (void**)(&out1), (unsigned int*)(&out2));
-
-    int count = CountActiveEntries((struct ActiveEntry02046900*)out1);
-    ((SafeAllocator*)(obj + 0x5c))->Reset();
-
-    for (int i = 0; i < count; i++) {
-        void* result = FindRecordByIndex((struct Rec020467f0*)out1, i, &recOut, &fieldOut);
-        func_0205a528(*(char**)(obj + 0x1000 + 0x35c), result, fieldOut, obj + 0x5c);
+    loader->GetLoadedFileByID(*(int*)(editor + kTaskOffset), &fileData, &fileSize);
+    int count = CountActiveEntries((ActiveEntry02046900*)fileData);
+    ((SafeAllocator*)(editor + kAllocatorOffset))->Reset();
+    for (int i = 0; i < count; ++i) {
+        void* record = FindRecordByIndex((Rec020467f0*)fileData, i, &recordOut, &fieldOut);
+        func_0205a528(*(char**)(editor + kContainerOffset), record, fieldOut, editor + kAllocatorOffset);
     }
-
-    ((BackgroundLoader*)(listPtr))->RemoveTask((int)(*(int*)(obj + 0x1000 + 0x390)));
-    *(int*)(obj + 0x1000 + 0x390) = -1;
+    loader->RemoveTask(*(int*)(editor + kTaskOffset));
+    *(int*)(editor + kTaskOffset) = -1;
 }

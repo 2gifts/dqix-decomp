@@ -1,6 +1,36 @@
+#if defined(jpn)
+#define func_ov023_021e6de4 func_ov023_021e7148
+#define func_ov012_02184384 func_ov012_021853f8
+#define func_ov012_0218930c func_ov012_02189be8
+enum {
+    kStepOffset = 0x1340,
+    kStateOffset = 0x1341,
+    kActiveOffset = 0x1368,
+    kWindowOffset = 0x90,
+    kChoiceEOffset = 0x1440,
+    kListCountsOffset = 0x141c,
+    kSecondListOffset = 0x1420
+};
+#else
+enum {
+    kStepOffset = 0x1370,
+    kStateOffset = 0x1371,
+    kActiveOffset = 0x13a0,
+    kWindowOffset = 0xac,
+    kChoiceEOffset = 0x13e8,
+    kListCountsOffset = 0x13c4,
+    kSecondListOffset = 0x13c8
+};
+#endif
+
 #include <globaldefs.h>
 
-extern "C" int func_ov012_02184384(int a, int b);
+struct ProfileListCounts {
+    unsigned short available : 5;
+    unsigned short other : 11;
+};
+
+extern "C" int func_ov012_02184384(unsigned short* entries, int count);
 struct Struct0205de24;
 void FindAndLinkMatchingEntry0205de24(struct Struct0205de24* obj, unsigned char keyLow, unsigned char keyHigh);
 extern "C" void func_ov023_021e6e60(void* obj);
@@ -17,47 +47,42 @@ extern int data_02108760;
 
 // USA: func_ov012_021884f4  (semantic: AdvanceTagState_021884f4)
 extern "C" ARM void func_ov012_021884f4(char* base) {
-    unsigned char state = *(unsigned char*)(base + 0x1000 + 0x370);
+    unsigned char state = *(unsigned char*)(base + kStepOffset);
     if (state == 0) {
-        *(unsigned char*)(base + 0x1000 + 0x3a0) = 0;
-        *(int*)(base + 0x1000 + 0x3e8) = 1;
+        *(unsigned char*)(base + kActiveOffset) = 0;
+        *(int*)(base + kChoiceEOffset) = 1;
 
-        unsigned short raw = *(unsigned short*)(base + 0x1300 + 0xc4);
-        unsigned int field = (unsigned int)raw << 16;
-        field = field >> 21;
-        int ret = func_ov012_02184384(*(int*)(base + 0x1000 + 0x3c8), field);
+        unsigned int count = ((ProfileListCounts*)(base + kListCountsOffset))->other;
+        int ret = func_ov012_02184384(*(unsigned short**)(base + kSecondListOffset), count);
         if (ret < 0) {
-            *(int*)(base + 0x1000 + 0x3e8) = 0;
+            *(int*)(base + kChoiceEOffset) = 0;
         }
 
-        FindAndLinkMatchingEntry0205de24((struct Struct0205de24*)(base + 0xac), 0, 3);
+        FindAndLinkMatchingEntry0205de24((struct Struct0205de24*)(base + kWindowOffset), 0, 3);
         func_ov023_021e6e60(base);
         BuildMessageE_0218a438(base);
 
-        (*(unsigned char*)(base + 0x1000 + 0x370))++;
+        (*(unsigned char*)(base + kStepOffset))++;
         return;
     }
     if (state != 1) return;
 
-    *(unsigned char*)(base + 0x1000 + 0x3a0) = 1;
-    int sum = GetActiveScaledSum0205d794((struct Struct_0205c570*)(base + 0xac));
-    *(int*)(base + 0x1000 + 0x3e8) = sum;
+    *(unsigned char*)(base + kActiveOffset) = 1;
+    int sum = GetActiveScaledSum0205d794((struct Struct_0205c570*)(base + kWindowOffset));
+    *(int*)(base + kChoiceEOffset) = sum;
 
     if (func_ov023_021e6de4(base) != 0) {
-        int v = *(int*)(base + 0x1000 + 0x3e8);
+        int v = *(int*)(base + kChoiceEOffset);
         int cont = 1;
         switch (v) {
         case 0:
-            *(unsigned char*)(base + 0x1000 + 0x371) = 0xb;
-            *(unsigned char*)(base + 0x1000 + 0x370) = 0;
+            *(unsigned char*)(base + kStateOffset) = 0xb;
+            *(unsigned char*)(base + kStepOffset) = 0;
             break;
         case 1: {
-            unsigned short raw2 = *(unsigned short*)(base + 0x1300 + 0xc4);
-            unsigned int field2 = (unsigned int)raw2 << 16;
-            field2 = field2 >> 21;
-            if (field2 != 0) {
-                *(unsigned char*)(base + 0x1000 + 0x371) = 0xc;
-                *(unsigned char*)(base + 0x1000 + 0x370) = 0;
+            if (((ProfileListCounts*)(base + kListCountsOffset))->other != 0) {
+                *(unsigned char*)(base + kStateOffset) = 0xc;
+                *(unsigned char*)(base + kStepOffset) = 0;
             } else {
                 cont = 0;
             }

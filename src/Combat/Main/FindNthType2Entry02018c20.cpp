@@ -1,26 +1,17 @@
 #include <globaldefs.h>
-#if defined(jpn)
-enum { kArrayOffset = 0x8c };
-enum { kCountOffset = 0xb4 };
-#else
-enum { kArrayOffset = 0x6c };
-enum { kCountOffset = 0x94 };
-#endif
-
-
-void* GetElementStride0x74(unsigned char* obj, int index);
+#include "World/ZoneChest.h"
 
 // USA: func_02018c20
-ARM void* FindNthType2Entry02018c20(unsigned char* obj, int n) {
-    unsigned char* p = (unsigned char*)GetElementStride0x74(obj + kArrayOffset, 0);
-    int count = *(int*)(obj + kCountOffset);
+ARM ZoneFeatures::Opcode6aEntry* FindNthType2Entry02018c20(Zone3D* zone, int ordinal) {
+    ZoneFeatures::Opcode6aEntry* entry = GetElementStride0x74(&zone->substruct_6c_, 0);
+    int count = zone->substruct_6c_.arraySize6a_;
     int i;
     for (i = 0; i < count; i++) {
-        if (*(int*)(p + 4) == 2) {
-            if (n == 0) return p;
-            n--;
+        if (entry->maybeType == 2) {
+            if (ordinal == 0) return entry;
+            ordinal--;
         }
-        p += 0x74;
+        entry++;
     }
     return NULL;
 }

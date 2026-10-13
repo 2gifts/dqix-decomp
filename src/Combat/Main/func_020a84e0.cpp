@@ -1,18 +1,13 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-#if defined(jpn)
-enum { EntryListOffset = 0x8c };
-#else
-enum { EntryListOffset = 0x6c };
-#endif
+#include "World/Zone3D.h"
 
 struct FlagWord02046708 { unsigned int flags; };
 
 extern "C" void* _Z27GetDataPtr02114e04_020d6c00v(void);
 extern "C" void* func_02012fe4(void);
 extern "C" void* func_0205ec34(void);
-void* GetElementStride0x74(unsigned char* obj, int index);
 void* GetPtrField0x2a04(GameState* battleStruct);
 extern "C" int _Z17TestFlags02046708P16FlagWord02046708j(struct FlagWord02046708* word, unsigned int mask);
 int ForwardCombatantField0x44(void* self, int combatantId);
@@ -40,22 +35,22 @@ extern "C" ARM void func_020a84e0() {
     GameState* gs = GameState::GetInstance();
     func_ov017_0218b5b0();
     struct FlagWord02046708* fw = (struct FlagWord02046708*)_Z27GetDataPtr02114e04_020d6c00v();
-    unsigned char* obj = (unsigned char*)func_02012fe4();
+    Zone3D* zone = (Zone3D*)func_02012fe4();
     int ctx = (int)func_0205ec34();
     unsigned char* list;
     int j;
     GameObject* po;
     int i = 0;
     for (;;) {
-        unsigned char* entry = (unsigned char*)GetElementStride0x74(obj + EntryListOffset, i);
+        ZoneFeatures::Opcode6aEntry* entry = GetElementStride0x74(&zone->substruct_6c_, i);
         i++;
         if (!entry) {
             break;
         }
-        if (*(int*)(entry + 4) != 0xc) {
+        if (entry->maybeType != 0xc) {
             continue;
         }
-        unsigned char* sub = entry + 0x2c;
+        unsigned char* sub = (unsigned char*)&entry->unk_2c.type12;
         list = (unsigned char*)GetPtrField0x2a04(gs);
         j = 0;
         while (j < *(unsigned char*)(list + 0xf7c)) {
@@ -97,7 +92,7 @@ extern "C" ARM void func_020a84e0() {
             func_020a88e8(sub);
         }
     }
-    if (*(unsigned short*)obj != 0x1644) {
+    if (zone->currentZoneID_ != 0x1644) {
         return;
     }
     if (TestBitInByteArray(ctx, (unsigned char*)ctx + 0x8c, 0x384) == 0) {

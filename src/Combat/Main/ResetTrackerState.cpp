@@ -1,23 +1,13 @@
 #include <globaldefs.h>
-
-struct TrackerState {
-    int unk0;
-    int unk4;
-    int unk8;
-    int unkC;
-    int unk10;
-    int unk14;
-    char unk18[0x20];
-    unsigned char unk38;
-};
+#include "World/BmdjScriptNode.h"
 
 // USA: func_0201f01c
-ARM void ResetTrackerState(struct TrackerState* state) {
-    state->unk0 = 0;
-    state->unk4 = 0;
-    state->unk8 = 0;
-    state->unkC = 0;
-    state->unk10 = 0;
-    state->unk14 = 0;
-    state->unk38 = 0;
+ARM void ResetTrackerState(BmdjScriptState* state) {
+    state->unknown0 = 0;
+    state->unknown4 = 0;
+    state->unknown8 = 0;
+    state->unknownC = 0;
+    state->elementCount = 0;
+    state->unknown14 = 0;
+    state->unknown38 = 0;
 }

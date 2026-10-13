@@ -1,24 +1,29 @@
 #include <globaldefs.h>
+#include "Resource/MessageSystem.h"
+#include "Resource/MessageUpdate.h"
 
 #if defined(jpn)
-enum { kSubobject = 0x1804, kPointer = 0x1c44, kFirst = 0x800, kSecond = 0x7e4, kFlag = 0x17e1, kIndex = 0x1708, kValue = 0x170c, kFlagA = 0x17de, kFlagB = 0x17df, kFlagC = 0x17ed };
+enum { ControllerOffset = 0x1804, RectanglePointerOffset = 0x1c44,
+       FirstRectangleOffset = 0x800, SecondRectangleOffset = 0x7e4 };
 #else
-enum { kSubobject = 0x19e0, kPointer = 0x1e20, kFirst = 0x930, kSecond = 0x914, kFlag = 0x19b1, kIndex = 0x1838, kValue = 0x183c, kFlagA = 0x19ae, kFlagB = 0x19af, kFlagC = 0x19bd };
+enum { ControllerOffset = 0x19e0, RectanglePointerOffset = 0x1e20,
+       FirstRectangleOffset = 0x930, SecondRectangleOffset = 0x914 };
 #endif
 
 struct Struct02043110;
-ARM void ClearField8ViaPointer0x440(struct Struct02043110* s);
+void ClearField8ViaPointer0x440(Struct02043110* controller);
 
 // USA: func_020430b0
-ARM void ResetControllerState020430b0(char* self) {
-    ClearField8ViaPointer0x440((struct Struct02043110*)(self + kSubobject));
-    *(void**)(self + kPointer) = (void*)(self + kFirst);
-    ClearField8ViaPointer0x440((struct Struct02043110*)(self + kSubobject));
-    *(void**)(self + kPointer) = (void*)(self + kSecond);
-    *(char*)(self + kFlag) = 0;
-    *(char*)(self + kFlagA) = 0;
-    *(char*)(self + kFlagB) = 0;
-    *(char*)(self + kFlagC) = 0;
-    *(int*)(self + kIndex) = -1;
-    *(int*)(self + kValue) = 0;
+ARM void ResetControllerState020430b0(MessageSystem* window) {
+    char* storage = (char*)window;
+    ClearField8ViaPointer0x440((Struct02043110*)(storage + ControllerOffset));
+    *(void**)(storage + RectanglePointerOffset) = storage + FirstRectangleOffset;
+    ClearField8ViaPointer0x440((Struct02043110*)(storage + ControllerOffset));
+    *(void**)(storage + RectanglePointerOffset) = storage + SecondRectangleOffset;
+    window->b19b1 = 0;
+    window->b19ae = 0;
+    window->b19af = 0;
+    window->b19bd = 0;
+    window->selectedEntry = -1;
+    window->selectedValue = 0;
 }

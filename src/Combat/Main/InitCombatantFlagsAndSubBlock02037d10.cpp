@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Combat/ActorAction.h"
 #if defined(jpn)
 #define COMBAT_FIELD(x) ((x) - 12)
 #else
@@ -6,8 +7,6 @@
 #endif
 
 extern "C" void _Z35InitCombatantExtendedFields02052a4cPv(void*);
-struct SubBlock02038508;
-extern "C" void _Z17InitBlock02038508P16SubBlock02038508(struct SubBlock02038508*);
 
 // USA: func_02037d10  (semantic: InitCombatantFlagsAndSubBlock02037d10)
 extern "C" ARM void func_02037d10(void* obj) {
@@ -32,5 +31,5 @@ extern "C" ARM void func_02037d10(void* obj) {
     *(unsigned short*)(base + COMBAT_FIELD(0x256)) = 0;
     struct SubBlock02038508* blk = (struct SubBlock02038508*)(base + COMBAT_FIELD(0x26c));
     *(int*)(base + COMBAT_FIELD(0x268)) = 0;
-    _Z17InitBlock02038508P16SubBlock02038508(blk);
+    InitBlock02038508(blk);
 }

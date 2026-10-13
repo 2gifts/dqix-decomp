@@ -1,8 +1,8 @@
 #include <globaldefs.h>
+#include "Combat/ActorAction.h"
 #include "GameState/GameState.h"
 
 unsigned char GetByte0x26c(char* obj);
-void* GetFieldPtrAt0x26c(void* obj);
 int GetField0x3acValue(GameState* battleStruct);
 extern "C" void _ZN8Object3D11DisableFlagEi(unsigned char* obj, unsigned int mask);
 int GetFieldIfFlag4(char* obj);
@@ -24,8 +24,8 @@ extern "C" ARM void func_ov017_02191108(void* unused, int c, int d, int e, int f
 
     GameObject* combatant2 = battle->GetUnknownGameObject();
     if (combatant2 != 0 && GetByte0x26c((char*)combatant2) != 0) {
-        unsigned char* field = (unsigned char*)GetFieldPtrAt0x26c(combatant2);
-        field[0x52] = 1;
+        SubBlock02038508* field = GetFieldPtrAt0x26c(combatant2);
+        field->unknown52 = 1;
         return;
     }
 

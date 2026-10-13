@@ -8,7 +8,11 @@ struct Entry_02028bd0 {
 };
 
 struct SpawnParams {
+#if defined(jpn)
+    char pad_0[0x58];
+#else
     char pad_0[0x38];
+#endif
     unsigned short field_38;
     unsigned int field_3c;
 };

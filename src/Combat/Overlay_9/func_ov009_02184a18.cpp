@@ -1,7 +1,5 @@
 #if defined(jpn)
 #define R(j,u) (j)
-#define _Z18UpdateFlag021885b8P14Struct021885b8 func_ov009_02189378
-#define _Z29UpdateCombatantState_02184d70Pv func_ov009_02186098
 #define data_ov009_0218ab9c data_ov009_0218bb04
 #define func_ov009_02188454 func_ov009_02189214
 #define func_ov009_02188604 func_ov009_021893c4

@@ -3,24 +3,21 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "Filesystem/NarcHandle.h"
 #include "Memory/SafeAllocator.h"
+#include "World/Zone3D.h"
 
-struct Foo0207df50 { unsigned char fields[0x70]; };
+struct Foo0207df50;
 struct Struct0200fb08;
-struct SpriteResource0219b624 { unsigned char fields[0x88]; };
-struct ResourceState0219b624 {
-    unsigned char padding_0[0x9c];
-    SafeAllocator allocator;
-    unsigned char padding_b0[0x4fc - 0xb0];
-    Foo0207df50 pairs;
-    unsigned char padding_56c[0x2b90 - 0x56c];
-    SpriteResource0219b624 sprites[20];
-    unsigned char padding_3630[0x4328 - 0x3630];
-    char* named;
-};
-struct ResourceGlobals0219b624 {
-    unsigned char padding_0[0x480];
-    SpriteResource0219b624* sprites[6];
-};
+#if defined(jpn)
+enum { PairTablesOffset = 0x4ac };
+#define func_02018d28 func_02018ac8
+#define data_ov017_021d656c data_ov017_021d69bc
+#define data_ov017_021d751f data_ov017_021d797b
+#define data_ov017_021d7544 data_ov017_021d7982
+#define data_ov017_021d7555 data_ov017_021d7993
+#define data_ov017_021d7567 data_ov017_021d79a5
+#else
+enum { PairTablesOffset = 0x4fc };
+#endif
 struct ResourceFile0219b624 { int index; const char* name; };
 extern const ResourceFile0219b624 data_ov017_021d656c[];
 extern int data_0211e33c __attribute__((aligned(4)));
@@ -36,26 +33,28 @@ extern "C" int _Z24NormalizeField5_0200fb08P14Struct0200fb08(Struct0200fb08*);
 void* GetData02109020();
 void InitFourNamedSubStructs(char*, int);
 extern "C" {
-ResourceGlobals0219b624* func_02012fe4();
-void func_02018d28(ResourceGlobals0219b624*, SafeAllocator*, void*, unsigned int);
+Zone3D* func_02012fe4();
+void func_02018d28(Zone3D*, SafeAllocator*, void*, unsigned int);
 void func_0204719c(void*);
-void func_02047b40(SpriteResource0219b624*, const void*, SafeAllocator*);
+void func_02047b40(Foo02048004*, const void*, SafeAllocator*);
 void func_02057924();
 void func_0208f36c(void*, Object3D*);
-void func_02013d24(ResourceGlobals0219b624*);
+void func_02013d24(Zone3D*);
 int sprintf(char*, const char*, ...);
 }
 
 // USA: func_ov017_0219b624
-extern "C" ARM void func_ov017_0219b624(ResourceState0219b624* self) {
-    SpriteResource0219b624* sprites;
-    ResourceGlobals0219b624* globals;
+extern "C" ARM void func_ov017_0219b624(GameResources* self) {
+    Foo02048004* sprites;
+    Zone3D* globals;
     SafeAllocator* allocator;
+#if !defined(jpn)
     GameState* game = GameState::GetInstance();
+#endif
     globals = func_02012fe4();
     BackgroundLoader::GetInstance();
-    allocator = &self->allocator;
-    Foo0207df50* pairs = &self->pairs;
+    allocator = &self->allocator_array_38[5];
+    Foo0207df50* pairs = reinterpret_cast<Foo0207df50*>(reinterpret_cast<char*>(self) + PairTablesOffset);
     allocator->Reset();
     _Z26CopyInternalFields0207df50P11Foo0207df50(pairs);
     BackgroundLoader::AddLockGlobal();
@@ -76,33 +75,35 @@ extern "C" ARM void func_ov017_0219b624(ResourceState0219b624* self) {
     char name[0x50];
     int i = 0;
     for (; data_ov017_021d656c[i].index >= 0; i++) {
-        sprites = self->sprites;
+        sprites = self->substruct_array_2b90;
         int index = data_ov017_021d656c[i].index;
         sprintf(name, data_ov017_021d751f, data_ov017_021d656c[i].name);
         func_0204719c(&sprites[index]);
         const void* file = GetFileFromNARCInMemory(name);
         if (file != 0) func_02047b40(&sprites[index], file, allocator);
     }
+#if !defined(jpn)
     sprintf(name, data_ov017_021d751f, data_ov017_021d7526);
     switch (_Z24NormalizeField5_0200fb08P14Struct0200fb08((Struct0200fb08*)game)) {
     case 3: sprintf(name, data_ov017_021d751f, data_ov017_021d7530); break;
     case 5: sprintf(name, data_ov017_021d751f, data_ov017_021d753a); break;
     }
-    func_0204719c(&self->sprites[0]);
+    func_0204719c(&self->substruct_array_2b90[0]);
     {
         const void* file = GetFileFromNARCInMemory(name);
-        if (file != 0) func_02047b40(&self->sprites[0], file, allocator);
+        if (file != 0) func_02047b40(&self->substruct_array_2b90[0], file, allocator);
     }
+#endif
     const void* file;
     file = GetFileFromNARCInMemory(data_ov017_021d7544);
     if (file != 0) {
-        func_0204719c(&self->sprites[18]);
-        func_02047b40(&self->sprites[18], file, allocator);
+        func_0204719c(&(*reinterpret_cast<Foo02048004*>(self->unknown_3520)));
+        func_02047b40(&(*reinterpret_cast<Foo02048004*>(self->unknown_3520)), file, allocator);
     }
     file = GetFileFromNARCInMemory(data_ov017_021d7555);
     if (file != 0) {
-        func_0204719c(&self->sprites[19]);
-        func_02047b40(&self->sprites[19], file, allocator);
+        func_0204719c(&(*reinterpret_cast<Foo02048004*>(self->unknown_35a8)));
+        func_02047b40(&(*reinterpret_cast<Foo02048004*>(self->unknown_35a8)), file, allocator);
     }
     archive.Destroy();
     func_02057924();
@@ -121,13 +122,13 @@ extern "C" ARM void func_ov017_0219b624(ResourceState0219b624* self) {
         }
     }
     BackgroundLoader::RemoveLockGlobal();
-    InitFourNamedSubStructs(self->named, (int)allocator);
+    InitFourNamedSubStructs(static_cast<char*>(self->unknown_ptr_4328), (int)allocator);
     _Z24BackupPairTables0207dfacPc((char*)pairs);
-    globals->sprites[0] = &self->sprites[5];
-    globals->sprites[1] = &self->sprites[6];
-    globals->sprites[2] = &self->sprites[7];
-    globals->sprites[3] = &self->sprites[8];
-    globals->sprites[4] = &self->sprites[9];
-    globals->sprites[5] = &self->sprites[10];
+    globals->lootableTemplates_[0] = &self->substruct_array_2b90[5];
+    globals->lootableTemplates_[1] = &self->substruct_array_2b90[6];
+    globals->lootableTemplates_[2] = &self->substruct_array_2b90[7];
+    globals->lootableTemplates_[3] = &self->substruct_array_2b90[8];
+    globals->lootableTemplates_[4] = &self->substruct_array_2b90[9];
+    globals->lootableTemplates_[5] = &self->substruct_array_2b90[10];
     func_02013d24(globals);
 }

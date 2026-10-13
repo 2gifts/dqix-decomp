@@ -1,12 +1,20 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include <GameState/GameState.h>
 #include <Graphics/Vector.h>
 #include <Resource/GameResources.h>
+#include "World/Zone3D.h"
+
+#if defined(jpn)
+#define func_ov017_021a72f4 func_ov017_021a7c9c
+enum { kSavedPosition = 0x27f8, kSavedAngle = 0x2804 };
+#else
+enum { kSavedPosition = 0x27b8, kSavedAngle = 0x27c4 };
+#endif
 
 struct Trajectory020ad61c {
-    unsigned char field0[0x44];
-    Vector3i position;
-    unsigned char field50[0x5e];
+    Object3D object;
+    short unknown_ac;
     short angle;
     unsigned char fieldb0[0x80];
     int wrapFlags;
@@ -23,12 +31,6 @@ struct Trajectory020ad61c {
     int firstAngle;
     Vector3i secondPosition;
     int secondAngle;
-};
-struct World020ad61c {
-    unsigned short tag;
-    unsigned char field2[0x27b6];
-    Vector3i position;
-    int angle;
 };
 struct HeadNode02046b24;
 struct Touch020ad61c {
@@ -49,7 +51,7 @@ struct Vec3copy0202ec84 {
 };
 struct Entity020AE398;
 struct Obj020ae3f4;
-extern "C" World020ad61c* func_02012fe4(void);
+extern "C" Zone3D* func_02012fe4(void);
 extern "C" void func_020332ac(Trajectory020ad61c*);
 extern "C" void func_020adda4(Trajectory020ad61c*);
 extern "C" void func_020adaac(Trajectory020ad61c*);
@@ -57,9 +59,8 @@ void SubtractHeightOffset020ae398(Entity020AE398*);
 void UpdateFallMotion020ae3f4(Obj020ae3f4*);
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
 void SetByteField0x253(void*);
-int GetField0x3b0Value(GameState*);
 int ComputeTwoFromVec3_0202ec84(void*, Vec3copy0202ec84*, int*, int*);
-extern "C" int func_02018fbc(World020ad61c*, Vec3copy0202ec84*);
+extern "C" int func_02018fbc(Zone3D*, Vec3copy0202ec84*);
 int IsField0Null(void**);
 int TestFlag0SetAndFlag1Clear(unsigned short*, int);
 extern "C" void func_ov017_021a72f4(GameResources*, int);
@@ -70,7 +71,7 @@ extern Flag020ad61c data_ov017_021d82fc;
 
 // USA: func_020ad61c
 extern "C" ARM void func_020ad61c(Trajectory020ad61c* object) {
-    World020ad61c* world;
+    Zone3D* world;
     int touchX;
     int touchY;
     GameState* game = GameState::GetInstance();
@@ -82,8 +83,8 @@ extern "C" ARM void func_020ad61c(Trajectory020ad61c* object) {
     switch (object->state) {
     case 0:
         func_020adaac(object);
-        world->position = object->position;
-        world->angle = object->angle;
+        *(Vector3i*)((char*)world + kSavedPosition) = object->object.position_;
+        *(int*)((char*)world + kSavedAngle) = object->angle;
         object->field140 = 0;
         break;
     case 1:
@@ -97,9 +98,9 @@ extern "C" ARM void func_020ad61c(Trajectory020ad61c* object) {
     object->saved148 = saved148;
     object->phase += game->GetTickCount() * 364;
     object->bobHeight = data_020e9450[(object->phase >> 4) * 2 + 1] >> 4;
-    if (world->tag != 0x2774) return;
+    if (world->currentZoneID_ != 10100) return;
     Vector3i position;
-    position = object->position;
+    position = object->object.position_;
     object->wrapFlags = 0;
     if (position.x >= 0x90000) {
         object->wrapFlags |= 1;
@@ -123,23 +124,23 @@ extern "C" ARM void func_020ad61c(Trajectory020ad61c* object) {
         object->firstPosition.z += 0xe0000;
         object->secondPosition.z += 0xe0000;
     }
-    object->position = position;
+    object->object.position_ = position;
     GameResources* scene = func_ov017_0218b5b0();
     void* camera;
     int groundedHit;
     HeadNode02046b24** head = (HeadNode02046b24**)scene->unknown_ptr_array_36fc[0];
     GameObject* actor = game->GetUnknownGameObject();
     if (actor && GetHeadNodeIdOrMinusOne(head) != 3) {
-        actor->obj3D_.position_ = object->position;
+        actor->obj3D_.position_ = object->object.position_;
         SetByteField0x253(actor);
     }
-    camera = (void*)GetField0x3b0Value(game);
+    camera = GetField0x3b0Value(game);
     int directHit = 0;
     groundedHit = 0;
     int screenX[3];
     int screenY[3];
     Vec3copy0202ec84 points[3] = {};
-    points[0] = *(Vec3copy0202ec84*)&object->position;
+    points[0] = *(Vec3copy0202ec84*)&object->object.position_;
     points[1] = *(Vec3copy0202ec84*)&object->firstPosition;
     points[2] = *(Vec3copy0202ec84*)&object->secondPosition;
     for (int i = 0; i < 3; i++) ComputeTwoFromVec3_0202ec84(camera, &points[i], &screenX[i], &screenY[i]);

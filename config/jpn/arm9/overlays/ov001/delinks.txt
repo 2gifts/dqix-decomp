@@ -1867,3 +1867,83 @@ src/Combat/Overlay_1/ProcessAndDispatchState_02154de4.cpp:
 src/Combat/Overlay_1/func_ov001_02154c64.cpp:
     complete
     .text start:0x021563e4 end:0x02156520
+
+
+src/Combat/Overlay_1/DispatchOv17ResultWrapper_02162488.cpp:
+    complete
+    .text start:0x02163a14 end:0x02163a34
+
+
+src/Combat/Overlay_1/Function_0215647c.cpp:
+    complete
+    .text start:0x02157b88 end:0x02157bbc
+
+
+src/Combat/Overlay_1/Function_02162468.cpp:
+    complete
+    .text start:0x021639f4 end:0x02163a14
+
+
+src/Combat/Overlay_1/InitEntriesFromZero_0215ed2c.cpp:
+    complete
+    .text start:0x0216030c end:0x021603cc
+
+
+src/Combat/Overlay_1/InitField3f8FromLoadedData_021620bc.cpp:
+    complete
+    .text start:0x021636d0 end:0x02163760
+
+
+src/Combat/Overlay_1/InitFieldAndReturnHalfA_02156534.cpp:
+    complete
+    .text start:0x02157c40 end:0x02157c64
+
+
+src/Combat/Overlay_1/InitFieldAndReturnHalfA_02156558.cpp:
+    complete
+    .text start:0x02157c64 end:0x02157c88
+
+
+src/Combat/Overlay_1/ReadByteAt17122_02156858.cpp:
+    complete
+    .text start:0x02157f30 end:0x02157f44
+
+
+src/Combat/Overlay_1/SetByteFlagFromCheck_0215e97c.cpp:
+    complete
+    .text start:0x0215fff4 end:0x02160028
+
+
+src/Combat/Overlay_1/SetFieldFromGlobalByte9bd_0215e374.cpp:
+    complete
+    .text start:0x0215f9f0 end:0x0215fa14
+
+
+src/Combat/Overlay_1/SetFlagAtOffset_02161f64_02161f64.cpp:
+    complete
+    .text start:0x02163578 end:0x02163594
+
+
+src/Combat/Overlay_1/SetGlobalByte9ca_0215e960.cpp:
+    complete
+    .text start:0x0215ffd8 end:0x0215fff4
+
+
+src/Combat/Overlay_1/SetGlobalBytes9c0_95d_0215e900.cpp:
+    complete
+    .text start:0x0215ff78 end:0x0215ff98
+
+
+src/Combat/Overlay_1/SetGlobalFieldByte19c1_0215e920.cpp:
+    complete
+    .text start:0x0215ff98 end:0x0215ffb0
+
+
+src/Combat/Overlay_1/SetGlobalOffset2750FromArg_02161f3c.cpp:
+    complete
+    .text start:0x02163550 end:0x02163578
+
+
+src/Combat/Overlay_1/StoreField_0215e938_0215e938.cpp:
+    complete
+    .text start:0x0215ffb0 end:0x0215ffd8

@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "World/Zone3D.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Filesystem/NarcHandle.h"
 #include "Filesystem/LowNitroHandle.h"
@@ -9,14 +10,17 @@
 
 extern "C" {
     void func_020c9be0();
-    void _ZN6Zone3D17QueueLoadATS_AMBLEv(char* obj);
-    void _ZN6Zone3D16ProcessNSBTXFileEPKvjPKc(char* obj, const void* src, unsigned int size, const char* name);
-    void _ZN6Zone3D15ProcessBMBLFileEPKvj(char* obj, const void* src, unsigned int size);
-    void _ZN6Zone3D15ProcessBPOSFileEPKvj(char* obj, const void* src, unsigned int size);
+    void _ZN6Zone3D17QueueLoadATS_AMBLEv(void* obj);
 }
 
-struct StreamHeader;
-extern "C" void _Z25RunBufferedStream0205e104iiP12StreamHeaderi(int, int, StreamHeader*, int);
+void RunBufferedStream0205e104(char*, SafeAllocator*, const void*, unsigned int);
+#if defined(jpn)
+extern "C" void func_020148d0(void*);
+#define data_020ef13e data_020ef07a
+#define data_020ef145 data_020ef081
+#define data_020ef14b data_020ef087
+#define data_020ef150 data_020ef08c
+#endif
 
 extern char data_020ef13a;
 extern char data_020ef13e;
@@ -24,31 +28,31 @@ extern char data_020ef145;
 extern char data_020ef14b;
 extern char data_020ef150;
 
-// KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
+// KEEP-NAME
 // USA: func_02014108
-extern "C" ARM int _ZN6Zone3D13UnpackMapAMBLEv(char* obj) {
-    if (*(int*)(obj + 0x438) < 0) {
+ARM int Zone3D::UnpackMapAMBL() {
+    if (mapAMBLLoadHandle_ < 0) {
         return 1;
     }
 
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
-    if (!loader->GetTaskStatus(*(int*)(obj + 0x438))) {
+    if (!loader->GetTaskStatus(mapAMBLLoadHandle_)) {
         return 0;
     }
 
-    if (loader->GetDetailedTaskStatus(*(int*)(obj + 0x438)) != 2) {
-        loader->RemoveTask(*(int*)(obj + 0x438));
-        *(int*)(obj + 0x438) = -1;
+    if (loader->GetDetailedTaskStatus(mapAMBLLoadHandle_) != 2) {
+        loader->RemoveTask(mapAMBLLoadHandle_);
+        mapAMBLLoadHandle_ = -1;
         return 1;
     }
 
-    void* out1;
-    unsigned int out2;
-    loader->GetLoadedFileByID(*(int*)(obj + 0x438), &out1, &out2);
+    void* archive;
+    unsigned int archiveLength;
+    loader->GetLoadedFileByID(mapAMBLLoadHandle_, &archive, &archiveLength);
 
     for (int pass = 0; pass < 2; pass++) {
         NarcHandle narc;
-        if (narc.Initialize(&data_020ef13a, (const unsigned char*)out1)) {
+        if (narc.Initialize(&data_020ef13a, static_cast<const unsigned char*>(archive))) {
             NitroVM vm;
             unsigned int idx = 0;
             NitroVM_Initialize(&vm);
@@ -66,18 +70,18 @@ extern "C" ARM int _ZN6Zone3D13UnpackMapAMBLEv(char* obj) {
                 const void* src = narc.GetFileByIndex(idx);
                 if (pass == 0) {
                     if (strcmp(&data_020ef13e, dot) == 0) {
-                        _ZN6Zone3D16ProcessNSBTXFileEPKvjPKc(obj, src, size, name);
+                        ProcessNSBTXFile(src, size, name);
                     }
                 } else if (pass == 1) {
                     if (strcmp(&data_020ef145, dot) == 0) {
-                        _ZN6Zone3D15ProcessBMBLFileEPKvj(obj, src, size);
+                        ProcessBMBLFile(src, size);
                     } else if (strcmp(&data_020ef14b, dot) == 0) {
-                        SafeAllocator* alloc = *(SafeAllocator**)(obj + 0x68);
+                        SafeAllocator* alloc = pAllocator_68_;
                         unsigned int decompSize;
                         void* data = DecompressLZ77FileIntoScratchSpace(*alloc, src, decompSize);
-                        _Z25RunBufferedStream0205e104iiP12StreamHeaderi((int)(obj + 0xc), (int)alloc, (StreamHeader*)data, decompSize);
+                        RunBufferedStream0205e104(reinterpret_cast<char*>(&substruct_c_), alloc, data, decompSize);
                     } else if (strcmp(&data_020ef150, dot) == 0) {
-                        _ZN6Zone3D15ProcessBPOSFileEPKvj(obj, src, size);
+                        ProcessBPOSFile(src, size);
                     }
                 }
                 idx++;
@@ -86,20 +90,24 @@ extern "C" ARM int _ZN6Zone3D13UnpackMapAMBLEv(char* obj) {
         }
 
         if (pass == 0) {
-            unsigned int maxSize = (*(SafeAllocator**)(obj + 0x4c))->GetMaxPossibleAllocation();
-            void* mem = (*(SafeAllocator**)(obj + 0x4c))->Allocate(maxSize);
+            unsigned int maxSize = pAllocator_4c_->GetMaxPossibleAllocation();
+            void* mem = pAllocator_4c_->Allocate(maxSize);
             if (mem == 0) {
                 func_020c9be0();
             }
-            ((SafeAllocator*)(obj + 0x54))->ResetAllocatorPointer();
-            ((SafeAllocator*)(obj + 0x54))->CreateTypeA(mem, maxSize);
-            *(SafeAllocator**)(obj + 0x68) = (SafeAllocator*)(obj + 0x54);
-            ((SafeAllocator*)(obj + 0x54))->Reset();
+            internalAllocator_.ResetAllocatorPointer();
+            internalAllocator_.CreateTypeA(mem, maxSize);
+            pAllocator_68_ = &internalAllocator_;
+            internalAllocator_.Reset();
         }
     }
 
-    loader->RemoveTask(*(int*)(obj + 0x438));
-    *(int*)(obj + 0x438) = -1;
-    _ZN6Zone3D17QueueLoadATS_AMBLEv(obj);
+    loader->RemoveTask(mapAMBLLoadHandle_);
+    mapAMBLLoadHandle_ = -1;
+#if defined(jpn)
+    func_020148d0(this);
+#else
+    _ZN6Zone3D17QueueLoadATS_AMBLEv(this);
+#endif
     return 1;
 }

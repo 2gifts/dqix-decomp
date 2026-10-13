@@ -42,7 +42,7 @@ extern "C" ARM int func_ov002_021536ec(PMFObj021536ec *obj, short *arg) {
     if (item == NULL) return 0;
     struct Entry021536ec *tb;
 
-    int r1 = 0;
+    int resultA = 0;
     if (!(data_ov002_0216d3a0[1] & 1)) {
         MemFn021536ec t            = data_020e6d5c;
         data_ov002_0216cce4[0].fn  = t;
@@ -53,13 +53,13 @@ extern "C" ARM int func_ov002_021536ec(PMFObj021536ec *obj, short *arg) {
     for (int i = 0; data_ov002_0216cce4[i].key >= 0; i++) {
         if (key == data_ov002_0216cce4[i].key) {
             if (data_ov002_0216cce8[i].ptr != 0) {
-                r1 = (obj->*data_ov002_0216cce4[i].fn)(arg, item, 0);
+                resultA = (obj->*data_ov002_0216cce4[i].fn)(arg, item, 0);
             }
             break;
         }
     }
 
-    int r2 = 0;
+    int resultB = 0;
     if (!(data_ov002_0216d3a0[0] & 1)) {
         MemFn021536ec t           = data_020e6d5c;
         data_ov002_0216ccc0[0].fn = t;
@@ -71,10 +71,10 @@ extern "C" ARM int func_ov002_021536ec(PMFObj021536ec *obj, short *arg) {
     for (i = 0, tb = (data_ov002_0216cce4 - 3); tb[i].key >= 0; i++) {
         if (key2 == tb[i].key) {
             if (data_ov002_0216ccc4[i].ptr != 0) {
-                r2 = (obj->*tb[i].fn)(arg, item, 1);
+                resultB = (obj->*tb[i].fn)(arg, item, 1);
             }
             break;
         }
     }
-    return (r1 || r2) ? 1 : 0;
+    return (resultA || resultB) ? 1 : 0;
 }

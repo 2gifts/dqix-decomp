@@ -1,8 +1,8 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 #include "Graphics/Vector.h"
 
-int GetField0x3b0Value(GameState* battleStruct);
 extern "C" void _Z33SetField0x7cClearFields0x1ec0x1eePht(unsigned char* obj, short val);
 extern "C" float func_ov017_021d6110(void*);
 

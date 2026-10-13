@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Combat/SearchEntry.h"
 
 extern "C" void* memset(void* dst, int value, unsigned int length);
 
@@ -21,7 +22,6 @@ extern "C" void func_0202c288(void);
 void* GetSubstructAt0x7c0(void* base);
 
 struct SearchStruct;
-void* GetEntryBySignedByteIndex(struct SearchStruct* obj, int value);
 
 struct Elem0205e22c {
     unsigned char pad[0x10];

@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 
@@ -7,7 +8,6 @@ extern "C" void* func_ov017_021d612c(void*);
 extern int AbsPlus159IfNegative0215ad2c(int x);
 extern SafeAllocator* data_ov001_021658b8[8];
 void* GetFieldPtrAt0x5ca4(void* obj);
-int GetField0x3b0Value(GameState* battleStruct);
 void SetField0x3b0Value(GameState* battleStruct, int value);
 
 struct Obj0204a120;
@@ -49,7 +49,7 @@ extern "C" ARM int func_ov001_02160768(char* self) {
 
 	void* newObj = allocator->Allocate(0x268);
 
-	*(int*)((char*)fieldPtr + 0x4) = GetField0x3b0Value(bs);
+	*(void**)((char*)fieldPtr + 0x4) = GetField0x3b0Value(bs);
 
 	InitState0204a120((struct Obj0204a120*)newObj);
 	SetHolderAndMarkNode0204a3f0((struct Owner0204a3f0*)newObj, (struct Holder0204a3f0*)combatant1);

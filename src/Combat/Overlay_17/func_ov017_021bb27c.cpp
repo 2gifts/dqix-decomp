@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Combat/ActorAction.h"
 #include "GameState/GameState.h"
 #include "Memory/AllocatorUnion.h"
 
@@ -7,7 +8,6 @@ struct Foo02033b58;
 struct Obj02033874;
 struct FlagWord020466f4;
 struct ListHead02046b60;
-struct SubBlock02038508 { unsigned char field0, mode; };
 struct Actor021bb27c {
     Object3D object; char padac[0x15]; unsigned char state:2, rest:6;
     char padc2[0x1e]; unsigned char flags; char pade1[0xab]; unsigned int field18c;
@@ -36,8 +36,6 @@ void DestroyActiveAllocators_0215aa5c();
 void ClearFlag0x4At0xe0(Flags02033fdc*);
 void SetByteSavingPrevious(Foo02033b58*, unsigned char);
 int GetByte0x26c(char*);
-SubBlock02038508* GetFieldPtrAt0x26c(void*);
-void InitBlock02038508(SubBlock02038508*);
 void SetVecYFromValue02033874(Obj02033874*, int);
 int CheckField0NonZero(int*);
 void SetField0x158(void*, int);
@@ -88,7 +86,7 @@ extern "C" ARM void func_ov017_021bb27c(Event021bb27c* self) {
         if (!actor) continue;
         ClearFlag0x4At0xe0((Flags02033fdc*)actor);
         SetByteSavingPrevious((Foo02033b58*)actor, 0);
-        if (!GetByte0x26c((char*)actor) || GetFieldPtrAt0x26c(actor)->mode != 2) {
+        if (!GetByte0x26c((char*)actor) || GetFieldPtrAt0x26c(actor)->command != 2) {
                 actor->obj3D_.MaybeSetRegularAnimation(data_ov017_021d7d6c, 0x10);
         } else if (self->resetActor) {
                 ((Actor021bb27c*)actor)->flags &= ~1;

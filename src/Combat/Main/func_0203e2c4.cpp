@@ -48,14 +48,6 @@ struct SnapshotInfoView {
     SnapshotNodeView *first;
 };
 
-struct EntryLinks {
-    int flags;
-    char pad4[0x10];
-    char *field14;
-    char *field18;
-    char *field1c;
-};
-
 struct PendingPosition {
     short x;
     short y;
@@ -65,13 +57,11 @@ struct PendingPosition {
 
 struct Obj02033874;
 struct Obj02040b2c;
-struct Child02040af0;
 struct Node02040774;
 
 void *FindEntryPointerByKey0203df78(void *receiver, int key);
 void SetVecYFromValue02033874(struct Obj02033874 *obj, int value);
 void PropagateValueToActiveSlot02040b2c(struct Obj02040b2c *obj, int value);
-void SetValueOnActiveChild02040af0(struct Child02040af0 *child, int value);
 void SetActiveChildFields02040774(struct Node02040774 *node, int x, int y, int z);
 
 // USA: func_0203e2c4
@@ -82,7 +72,7 @@ extern "C" ARM void func_0203e2c4(void *receiver, unsigned short id) {
         for (int index = 0; index < self->copiedCount; ++snapshot, ++index) {
             Entry_203dce4 **slot = self->entries;
             for (unsigned int slotIndex = 0; slotIndex < self->count; ++slot, ++slotIndex) {
-                EntryLinks *entry = (EntryLinks *) *slot;
+                Entry_203dce4 *entry = *slot;
                 unsigned short *key = (unsigned short *) GetField0x8((int *) entry);
                 void *info = GetField0xc02040538((S02040538 *) entry);
                 if (key == NULL || info == NULL) {
@@ -96,16 +86,16 @@ extern "C" ARM void func_0203e2c4(void *receiver, unsigned short id) {
                 position.y = snapshot->y << 4;
                 position.z = snapshot->z << 4;
                 short value = snapshot->value;
-                if (entry->field14 != NULL) {
-                    *(Vector3i *) (entry->field14 + 4) = position;
-                } else if (entry->field18 != NULL) {
-                    *(Vector3i *) (entry->field18 + 0x44) = position;
-                } else if (entry->field1c != NULL) {
-                    *(Vector3i *) (entry->field1c + 0x44) = position;
-                    SetVecYFromValue02033874((struct Obj02033874 *) entry->field1c, value);
+                if (entry->child14 != NULL) {
+                    *(Vector3i *) ((char*)entry->child14 + 4) = position;
+                } else if (entry->child18 != NULL) {
+                    *(Vector3i *) ((char*)entry->child18 + 0x44) = position;
+                } else if (entry->child1c != NULL) {
+                    *(Vector3i *) ((char*)entry->child1c + 0x44) = position;
+                    SetVecYFromValue02033874((struct Obj02033874 *) entry->child1c, value);
                 }
                 PropagateValueToActiveSlot02040b2c((struct Obj02040b2c *) entry, value);
-                SetValueOnActiveChild02040af0((struct Child02040af0 *) entry, value);
+                SetValueOnActiveChild02040af0(entry, value);
                 if (snapshot->disabled) {
                     entry->flags |= 0x8000;
                 }

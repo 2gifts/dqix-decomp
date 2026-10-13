@@ -29,10 +29,6 @@ struct TacticsState021cb5f8 {
     unsigned char padding_a[0x158 - 0xa];
     TacticsElement021cb5f8 elements[8];
 };
-struct TacticsGlobals021cb5f8 {
-    unsigned char padding_0[0x3718];
-    void* node;
-};
 struct TacticsLow021cb5f8 {
     unsigned int s0 : 3, s1 : 3, s2 : 3, s3 : 3, s4 : 3;
     unsigned int s5 : 3, s6 : 3, s7 : 3, s8 : 3, s9 : 3;
@@ -52,15 +48,15 @@ struct TacticsMessage021cb5f8 {
     unsigned char padding_1[3];
     TacticsFields021cb5f8 fields;
 };
-extern "C" TacticsState021cb5f8* func_ov017_021b8478(void*);
+extern "C" void* func_ov017_021b8478(void*);
 void* GetData02100044();
 extern "C" void func_0205e330(void*, void*, int);
 
 // USA: func_ov017_021cb5f8
 extern "C" ARM void func_ov017_021cb5f8(TacticsContainer021cb5f8* self) {
     GameState::GetInstance();
-    TacticsGlobals021cb5f8* globals = (TacticsGlobals021cb5f8*)func_ov017_0218b5b0();
-    TacticsState021cb5f8* state = func_ov017_021b8478(globals->node);
+    GameResources* resources = func_ov017_0218b5b0();
+    TacticsState021cb5f8* state = (TacticsState021cb5f8*)func_ov017_021b8478(resources->unknown_ptr_3718);
     void* data = GetData02100044();
     for (int i = 0; i < self->count; i++) {
         TacticsEntry021cb5f8* entry = &self->entries[i];

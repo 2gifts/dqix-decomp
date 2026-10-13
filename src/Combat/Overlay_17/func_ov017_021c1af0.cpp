@@ -1,21 +1,10 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "Graphics/Vector.h"
+#include "World/Zone3D.h"
 #include "std_library_functions.h"
 
 struct State021c1af0 { unsigned char pad0, done; char pad2[6]; int step, alternate; };
-struct Context021c1af0 {
-    char pad0[0x2774];
-    Vector3i primaryPosition;
-    int primaryField;
-    char pad2784[0x30];
-    unsigned short kind;
-    char pad27b6[2];
-    Vector3i alternatePosition;
-    int alternateField;
-    char pad27c8[0x57];
-    unsigned char field_281f;
-};
 struct Action021c1af0 {
     unsigned short kind;
     unsigned char field_2;
@@ -27,27 +16,19 @@ struct Action021c1af0 {
 };
 struct TailNode020469b4 { char pad[8]; unsigned short kind; };
 struct TailList020469b4;
-struct Resource021c1af0 {
-    char pad[0x36fc];
-    TailList020469b4* list;
-    char pad3700[0x34];
-    TailNode020469b4* node;
-};
-struct Obj02046574 {
-    char pad0[0x5c];
-    char* buffer;
-    char pad60[0x938];
-    int active;
-    char pad99c[4];
-    int busy;
-    char pad9a4[0x100a];
-    unsigned char field_19ae;
-    char pad19af[3];
-    unsigned char field_19b2;
-};
+struct Obj02046574;
+#if defined(jpn)
+enum { TextBufferOffset = 0x28, ActiveOffset = 0x868, BusyOffset = 0x870,
+       MessageFlagOffset = 0x17de, ChoiceFlagOffset = 0x17e2 };
+extern const char data_ov017_021d8730[];
+extern const char data_ov017_021d876c[];
+#else
+enum { TextBufferOffset = 0x5c, ActiveOffset = 0x998, BusyOffset = 0x9a0,
+       MessageFlagOffset = 0x19ae, ChoiceFlagOffset = 0x19b2 };
+#endif
 struct Obj020397cc;
 struct SearchStruct0202c1a4;
-extern "C" Context021c1af0* func_02012fe4();
+extern "C" Zone3D* func_02012fe4();
 extern "C" int* func_0202ae18();
 Obj02046574* GetGlobalField0x1c020421a0();
 void CancelPendingAction020397cc(Obj020397cc*, int);
@@ -57,7 +38,7 @@ int AlwaysTrue02094b4c();
 void BlankFunction02094b38();
 extern "C" void func_02094ab0(void*);
 int CheckField0NonZero(int*);
-void* GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
+signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
 extern "C" int func_ov017_0219ff58(GameResources*, int, int, int);
 Action021c1af0* GetField0x3f8Address(GameState*);
 void InitStruct02070378(char*);
@@ -67,7 +48,11 @@ void SetHalfFieldsAndEnqueueIfActive_021d1c2c(unsigned short, unsigned short);
 void EnqueueEventTagB5_021d1dc0(short, short, int*, short, int);
 const char* CallFunc020e0434With02153694(int);
 void SetIndexedName02046574(Obj02046574*, int, char*);
-extern "C" void func_0204500c(void*, const char*, int, int);
+extern "C" void func_0204500c(void*, const char*, int
+#if !defined(jpn)
+    , int
+#endif
+);
 int CheckBitsInField0x63dc(void*, int);
 extern "C" void func_ov017_0219c520();
 void ReinitController02043204(char*);
@@ -76,7 +61,7 @@ void SetByteField0x253(void*);
 // USA: func_ov017_021c1af0
 extern "C" ARM void func_ov017_021c1af0(State021c1af0* state) {
     GameState* game = GameState::GetInstance();
-    Context021c1af0* context = func_02012fe4();
+    Zone3D* context = func_02012fe4();
     if (state->step == 0) {
         CancelPendingAction020397cc((Obj020397cc*)game->GetProtagonist(), 1);
         void* global = GetGlobal02109400();
@@ -87,9 +72,8 @@ extern "C" ARM void func_ov017_021c1af0(State021c1af0* state) {
         int* search = func_0202ae18();
         if (!CheckField0NonZero(search) || (CheckField0NonZero(search) && GetSearchStructCurrentArrEntry((SearchStruct0202c1a4*)search) == 0)) {
             GameResources* resources = func_ov017_0218b5b0();
-            Resource021c1af0* resource = (Resource021c1af0*)resources;
-            TailList020469b4* list = resource->list;
-            TailNode020469b4* node = resource->node;
+            TailList020469b4* list = static_cast<TailList020469b4*>(resources->unknown_ptr_array_36fc[0]);
+            TailNode020469b4* node = static_cast<TailNode020469b4*>(resources->unknown_ptr_array_371c[6]);
             if (func_ov017_0219ff58(resources, 1, 0, 0)) {
                 state->step = 2;
                 return;
@@ -101,12 +85,12 @@ extern "C" ARM void func_ov017_021c1af0(State021c1af0* state) {
                 action->field_2 = 1;
                 action->field_7 = 1;
                 action->kind = 0x2710;
-                action->position = context->primaryPosition;
-                action->field_1c = context->primaryField;
-            } else if (context->kind == 3) {
+                action->position = (*reinterpret_cast<Vector3i*>(context->unk_276c + 0x8));
+                action->field_1c = (*reinterpret_cast<int*>(context->unk_276c + 0x14));
+            } else if ((*reinterpret_cast<unsigned short*>(context->unk_276c + 0x48)) == 3) {
                 func_ov017_021baedc(node, 1);
                 node->kind = 0x7345;
-                context->field_281f = 1;
+                (*reinterpret_cast<unsigned char*>(context->unk_276c + 0xb3)) = 1;
                 AppendNodeToTail(list, node);
                 SetHalfFieldsAndEnqueueIfActive_021d1c2c(0, 1);
                 int position[3];
@@ -116,18 +100,24 @@ extern "C" ARM void func_ov017_021c1af0(State021c1af0* state) {
                 action->field_2 = 1;
                 action->field_7 = 1;
                 action->kind = 0x2774;
-                action->position = context->alternatePosition;
-                action->field_1c = context->alternateField;
+                action->position = (*reinterpret_cast<Vector3i*>(context->unk_276c + 0x4c));
+                action->field_1c = (*reinterpret_cast<int*>(context->unk_276c + 0x58));
             }
             state->step = 2;
         } else {
-            char* buffer = controller->buffer;
+            char* buffer = (*reinterpret_cast<char**>(reinterpret_cast<char*>(controller) + TextBufferOffset));
+#if defined(jpn)
+            if (state->alternate == 0) sprintf(buffer, data_ov017_021d8730, game->GetUnknownGameObject()->baseStats_->unk);
+            else sprintf(buffer, data_ov017_021d876c, game->GetUnknownGameObject()->baseStats_->unk);
+            func_0204500c(controller, buffer, 0);
+#else
             if (state->alternate == 0) sprintf(buffer, CallFunc020e0434With02153694(0x3c));
             else sprintf(buffer, CallFunc020e0434With02153694(0x3d));
             SetIndexedName02046574(controller, 0, (char*)game->GetUnknownGameObject()->baseStats_);
             func_0204500c(controller, buffer, 0, 0xe3);
-            controller->field_19b2 = 0;
-            controller->active = 1;
+#endif
+            (*reinterpret_cast<unsigned char*>(reinterpret_cast<char*>(controller) + ChoiceFlagOffset)) = 0;
+            (*reinterpret_cast<int*>(reinterpret_cast<char*>(controller) + ActiveOffset)) = 1;
             state->step = 3;
         }
     } else if (state->step == 2) {
@@ -140,8 +130,8 @@ extern "C" ARM void func_ov017_021c1af0(State021c1af0* state) {
         state->done = 1;
     } else if (state->step == 3) {
         Obj02046574* controller = GetGlobalField0x1c020421a0();
-        controller->field_19ae = 0;
-        if (!controller->busy) {
+        (*reinterpret_cast<unsigned char*>(reinterpret_cast<char*>(controller) + MessageFlagOffset)) = 0;
+        if (!(*reinterpret_cast<int*>(reinterpret_cast<char*>(controller) + BusyOffset))) {
             ReinitController02043204((char*)controller);
             SetByteField0x253(game->GetProtagonist());
             void* global = GetGlobal02109400();

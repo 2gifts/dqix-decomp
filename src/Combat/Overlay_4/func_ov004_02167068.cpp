@@ -1,16 +1,9 @@
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
+#include "Combat/ScriptElementList.h"
 
 struct StreamHeader;
-struct StreamHeader0208d860 {
-    unsigned int field_0;
-    unsigned short field_4;
-    unsigned short field_6;
-    unsigned int field_8;
-    unsigned short field_c;
-    unsigned short field_e;
-};
 struct Obj02095e90;
 struct Ctx02095ee0;
 struct Obj0208becc { unsigned char field_0[0x100]; };
@@ -37,7 +30,6 @@ extern char data_ov004_021705c0[];
 extern char data_ov004_021705d2[];
 int* GetGlobal02109418();
 extern "C" int _Z25RunBufferedScript020957f4PvP12StreamHeaderi(void*, StreamHeader*, int);
-extern "C" void _Z39SetupHeaderAndRunBufferedScript0208d860P20StreamHeader0208d860PvP12StreamHeaderiist(StreamHeader0208d860*, void*, StreamHeader*, int, int, short, unsigned short);
 extern "C" int _Z28InitObjWithAllocator02095e90P11Obj02095e90P13SafeAllocator(Obj02095e90*, SafeAllocator*);
 extern "C" int _Z23RunOrPollScript02095ee0P11Ctx02095ee0(Ctx02095ee0*);
 extern "C" void func_0209576c(void*, SafeAllocator*, void*, int, int);
@@ -64,7 +56,7 @@ extern "C" ARM int func_ov004_02167068(void* self) {
             loader->GetLoadedFileByID(state->task, &buffer, &size);
             if (buffer) {
                 state->script = _Z25RunBufferedScript020957f4PvP12StreamHeaderi(global, (StreamHeader*)buffer, size);
-                _Z39SetupHeaderAndRunBufferedScript0208d860P20StreamHeader0208d860PvP12StreamHeaderiist(&state->stream, &state->allocator, (StreamHeader*)buffer, size, 0, 0, 1);
+                SetupHeaderAndRunBufferedScript0208d860(&state->stream, &state->allocator, buffer, size, NULL, 0, 1);
             }
             loader->RemoveTask(state->task);
             state->task = -1;

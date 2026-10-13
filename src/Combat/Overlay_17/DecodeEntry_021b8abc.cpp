@@ -1,13 +1,6 @@
 #include <globaldefs.h>
 
-int TryDecodeGlobalBitstreamEntry(void* buf, int id);
-
-struct DecodeBuf021b8abc {
-    unsigned char pad0[2];
-    unsigned short vals[3];
-    unsigned short bytesSrc[3];
-    unsigned char pad1[6];
-};
+#include "Combat/BufferedScriptResult.h"
 
 struct Out021b8abc {
     short vals[3];
@@ -17,7 +10,7 @@ struct Out021b8abc {
 
 // USA: func_ov017_021b8abc
 ARM int DecodeEntry_021b8abc(int id, Out021b8abc* out) {
-    DecodeBuf021b8abc buf;
+    BufferedScriptResult buf;
     if (id <= -1) {
         goto fail;
     }
@@ -25,8 +18,8 @@ ARM int DecodeEntry_021b8abc(int id, Out021b8abc* out) {
         goto fail;
     }
     for (int i = 0; i < 3; i++) {
-        out->vals[i] = buf.vals[i];
-        out->bytes[i] = (unsigned char)buf.bytesSrc[i];
+        out->vals[i] = buf.values[i];
+        out->bytes[i] = (unsigned char)buf.attributes[i];
     }
     return 1;
 fail:

@@ -1,18 +1,38 @@
 #include <globaldefs.h>
+#include "Combat/LootPointEvent.h"
 
 void* GetData02100044(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
+struct LootPointEventPayload {
+    unsigned char mode;
+    signed char partySlot;
+    unsigned char mask;
+    unsigned char pointId;
+    LootPointState packedState;
+};
+
+struct LootPointEvent {
+    unsigned char tag;
+    unsigned char unknown1[3];
+    LootPointEventPayload payload;
+    unsigned char unknownc[8];
+
+    LootPointEventPayload* GetPayload() { return &payload; }
+};
+
 // USA: func_ov017_021d38f8
-ARM void EnqueueEventTag183_021d38f8(unsigned char a0, unsigned char a1, unsigned char a2, unsigned char a3, int* p) {
-	void* d = GetData02100044();
-	unsigned char buf[0x14];
-	buf[0] = 0xb7;
-	unsigned char* b = buf + 4;
-	b[0] = a0;
-	b[1] = a1;
-	b[2] = a2;
-	b[3] = a3;
-	*(int*)(b + 4) = *p;
-	func_0205e330(d, buf, 0);
+ARM void EnqueueEventTag183_021d38f8(unsigned char mode, signed char partySlot,
+                                   unsigned char mask, unsigned char pointId,
+                                   const LootPointState* packedState) {
+    void* dispatcher = GetData02100044();
+    LootPointEvent event;
+    event.tag = 0xb7;
+    LootPointEventPayload* payload = event.GetPayload();
+    payload->mode = mode;
+    payload->partySlot = partySlot;
+    payload->mask = mask;
+    payload->pointId = pointId;
+    payload->packedState = *packedState;
+    func_0205e330(dispatcher, &event, 0);
 }

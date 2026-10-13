@@ -131,7 +131,7 @@ func_ov011_021871b8 kind:function(arm,size=0x110) addr:0x02188290
 _Z22SetFieldCBits_021872c8P24TwoTaggedValues_021872c8 kind:function(arm,size=0x48) addr:0x021883a0
 _Z24ClearFieldCBits_02187310P24TwoTaggedValues_02187310 kind:function(arm,size=0x4c) addr:0x021883e8
 func_ov011_0218735c kind:function(arm,size=0x68) addr:0x02188434
-func_ov011_0218849c kind:function(arm,size=0xa0) addr:0x0218849c
+func_ov011_021873c4 kind:function(arm,size=0xa0) addr:0x0218849c
 _Z40InitControllerFromGlobalField1c_02187460v kind:function(arm,size=0x20) addr:0x0218853c
 func_ov011_02187480 kind:function(arm,size=0x30) addr:0x0218855c
 _Z30SetFieldFromGlobal998_021874b0Pv kind:function(arm,size=0x20) addr:0x0218858c
@@ -177,7 +177,7 @@ func_ov011_02188438 kind:function(arm,size=0x28) addr:0x02189510
 _Z40CallVTableFnAt176WithTaggedArgs_02188460P20TaggedNumber02184c30 kind:function(arm,size=0x4c) addr:0x02189538
 func_ov011_021884ac kind:function(arm,size=0x24) addr:0x02189584
 func_ov011_021884d0 kind:function(arm,size=0x64) addr:0x021895a8
-func_ov011_0218960c kind:function(arm,size=0x2c) addr:0x0218960c
+func_ov011_02188534 kind:function(arm,size=0x2c) addr:0x0218960c
 _Z21SetObjFields_021888ecPv kind:function(arm,size=0x18) addr:0x02189638
 data_ov011_02188904 kind:data(any) addr:0x02189650
 data_ov011_02188914 kind:data(any) addr:0x02189660

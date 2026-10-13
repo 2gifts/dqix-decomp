@@ -307,8 +307,8 @@ data_ov025_021eef78 kind:data(any) addr:0x021ef260
 data_ov025_021eefa0 kind:data(any) addr:0x021ef288
 data_ov025_021eeff0 kind:data(any) addr:0x021ef2d8
 data_ov025_021eeff4 kind:data(any) addr:0x021ef2dc
-data_ov025_021ef2f0 kind:data(any) addr:0x021ef2f0
-data_ov025_021ef2f8 kind:data(any) addr:0x021ef2f8
+data_ov025_021ef008 kind:data(any) addr:0x021ef2f0
+data_ov025_021ef010 kind:data(any) addr:0x021ef2f8
 data_ov025_021ef060 kind:data(any) addr:0x021ef304
 data_ov025_021ef040 kind:data(any) addr:0x021ef324
 data_ov025_021ef020 kind:data(any) addr:0x021ef344

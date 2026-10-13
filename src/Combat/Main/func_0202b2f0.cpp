@@ -1,23 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
-
-union SearchFlags0202b2f0 {
-    unsigned short raw;
-    struct {
-        unsigned short selected:3;
-        unsigned short padding:13;
-    };
-};
-struct SearchEntry0202b2f0 {
-    SearchFlags0202b2f0 flags;
-    unsigned short padding:5;
-    unsigned short selector1:2;
-    unsigned short selector2:2;
-    unsigned short selector3:2;
-    unsigned short padding2:5;
-    unsigned short mask;
-};
+#include "Combat/SearchEntry.h"
 struct SearchStruct {
     int state;
     unsigned short counter;
@@ -43,34 +27,27 @@ struct SearchStruct {
     }
 };
 struct FlagWord02046708;
-struct Container0202c478;
-struct SearchRecord0202b2f0 {
-    unsigned char bytes[0x30];
-};
-struct SearchContext0202b2f0 {
-    unsigned char padding[0x435c];
-    SearchRecord0202b2f0 records[4];
-};
+#if defined(jpn)
+#define func_0202c04c func_0202bbfc
+#endif
 unsigned short GetGlobalHalf0x0();
-SearchEntry0202b2f0* GetEntryBySignedByteIndex(SearchStruct*, int);
-extern "C" FlagWord02046708* _Z27GetDataPtr02114e04_020d6c00v();
-extern "C" int _Z17TestFlags02046708P16FlagWord02046708j(FlagWord02046708*, unsigned int);
+void* GetDataPtr02114e04_020d6c00();
+int TestFlags02046708(FlagWord02046708*, unsigned int);
 int GetGlobalField0x10();
 extern "C" int func_0202d8e8();
 extern "C" void func_0202db64(int, int, int);
 extern "C" void func_0202bc00(SearchStruct*, int);
-extern "C" void _Z20ShiftRecords0202c478P17Container0202c478(Container0202c478*);
 extern "C" void func_0202bf40(SearchStruct*);
 extern "C" void func_0202c04c(SearchStruct*);
 extern "C" int func_0202c508(SearchStruct*);
-extern "C" unsigned short _Z32GetEntryField0x4OrFieldA0202bc8cP12SearchStruct(SearchStruct*);
+unsigned short GetEntryField0x4OrFieldA0202bc8c(SearchStruct*);
 signed char FindSignedByteIndex(SearchStruct*, int);
 int TestMaskBitBySignedByteIndex(SearchStruct*, int);
-extern "C" void _Z25RemoveSearchEntry0202c21cP12SearchStructi(SearchStruct*, int);
+void RemoveSearchEntry0202c21c(SearchStruct*, int);
 int TestBitBySignedByteIndex(SearchStruct*, int);
 void SetFlagBitAt0xe(SearchStruct*, int);
 void SetSearchFlagBitAt0xc(SearchStruct*, int);
-extern "C" void _Z24SetSearchFlagBit0202c660P12SearchStructi(SearchStruct*, int);
+void SetSearchFlagBit0202c660(SearchStruct*, int);
 int GetGlobalField0x48();
 
 // USA: func_0202b2f0
@@ -82,7 +59,7 @@ extern "C" ARM void func_0202b2f0(SearchStruct* object) {
         if (i == object->selectors[GetGlobalHalf0x0()]) {
             continue;
         }
-        SearchEntry0202b2f0* entry = GetEntryBySignedByteIndex(object, i);
+        SearchEntry0202c178* entry = GetEntryBySignedByteIndex(object, i);
         if (!entry) {
             continue;
         }
@@ -94,7 +71,7 @@ extern "C" ARM void func_0202b2f0(SearchStruct* object) {
         entry->mask = mask & ~0xffff;
     }
     GameState::GetInstance();
-    if (_Z17TestFlags02046708P16FlagWord02046708j(_Z27GetDataPtr02114e04_020d6c00v(), 0x1000000)) {
+    if (TestFlags02046708((FlagWord02046708*)GetDataPtr02114e04_020d6c00(), 0x1000000)) {
         object->state = -1;
         return;
     }
@@ -114,7 +91,7 @@ extern "C" ARM void func_0202b2f0(SearchStruct* object) {
         func_0202bc00(object, 1);
         break;
     case 3:
-        _Z20ShiftRecords0202c478P17Container0202c478((Container0202c478*)object);
+        ShiftRecords0202c478(object);
         break;
     case 5:
         func_0202bc00(object, 1);
@@ -131,7 +108,7 @@ extern "C" ARM void func_0202b2f0(SearchStruct* object) {
             if (i == object->selectors[GetGlobalHalf0x0()]) {
                 continue;
             }
-            SearchEntry0202b2f0* entry = GetEntryBySignedByteIndex(object, i);
+            SearchEntry0202c178* entry = GetEntryBySignedByteIndex(object, i);
             if (!entry) {
                 continue;
             }
@@ -140,7 +117,7 @@ extern "C" ARM void func_0202b2f0(SearchStruct* object) {
         }
     } else if (func_0202c508(object)) {
         if (object->refill) {
-            unsigned int mask = _Z32GetEntryField0x4OrFieldA0202bc8cP12SearchStruct(object);
+            unsigned int mask = GetEntryField0x4OrFieldA0202bc8c(object);
             selection = &object->selection;
             unsigned int excluded = selection->excluded;
             for (int i = 1; i < 4; i++) {
@@ -175,7 +152,7 @@ selectorFound:
                 int index = FindSignedByteIndex(object, i);
                 if ((object->activeMask & (1 << index)) && !(selection->excluded & (1 << i))) {
                     if (!TestMaskBitBySignedByteIndex(object, i)) {
-                        _Z25RemoveSearchEntry0202c21cP12SearchStructi(object, i);
+                        RemoveSearchEntry0202c21c(object, i);
                     }
                 } else if (TestBitBySignedByteIndex(object, i)) {
                     if (!TestMaskBitBySignedByteIndex(object, i)) {
@@ -183,21 +160,22 @@ selectorFound:
                     }
                 } else if (TestMaskBitBySignedByteIndex(object, i)) {
                     SetSearchFlagBitAt0xc(object, i);
-                    _Z24SetSearchFlagBit0202c660P12SearchStructi(object, i);
+                    SetSearchFlagBit0202c660(object, i);
                     if (object->IsActive()) {
-                        memset(&((SearchContext0202b2f0*)func_ov017_0218b5b0())->records[i], 0, sizeof(SearchRecord0202b2f0));
+                        GameResources* resources = func_ov017_0218b5b0();
+                        memset(resources->partyNames[i], 0, sizeof(resources->partyNames[i]));
                     }
                 }
             }
         } else {
             for (int i = 1; i < 4; i++) {
                 if (TestBitBySignedByteIndex(object, i) && !TestMaskBitBySignedByteIndex(object, i)) {
-                    _Z25RemoveSearchEntry0202c21cP12SearchStructi(object, i);
+                    RemoveSearchEntry0202c21c(object, i);
                 }
             }
         }
     } else {
-        SearchEntry0202b2f0* entry = GetEntryBySignedByteIndex(object, 0);
+        SearchEntry0202c178* entry = GetEntryBySignedByteIndex(object, 0);
         object->selectors[1] = entry->selector1;
         object->selectors[2] = entry->selector2;
         object->selectors[3] = entry->selector3;

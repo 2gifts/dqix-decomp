@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Combat/SearchEntry.h"
 #include "GameState/GameState.h"
 
 struct SearchStruct {
@@ -6,17 +7,11 @@ struct SearchStruct {
     int fieldFC0;
 };
 
-struct SearchEntry_021af2f8 {
-    unsigned short unk0;
-    unsigned short active : 1;
-};
-
 struct SearchStruct0202c1a4;
 struct FlagWord020466f4;
 struct BitArrayObj0205e854;
 
 extern "C" SearchStruct* func_0202ae18(void);
-SearchEntry_021af2f8* GetEntryBySignedByteIndex(SearchStruct* obj, int value);
 void* GetData02100044(void);
 int TestFlagBitAt0xe(SearchStruct* obj, int value);
 int GetGlobalField0x10(void);
@@ -74,7 +69,7 @@ extern "C" ARM unsigned char func_ov017_021af2f8(Obj021af2f8* obj) {
             if (TestMaskBitBySignedByteIndex(search, i) == 0) {
                 continue;
             }
-            SearchEntry_021af2f8* entry = GetEntryBySignedByteIndex(search, i);
+            SearchEntry0202c178* entry = GetEntryBySignedByteIndex(search, i);
             if (entry == 0) {
                 continue;
             }

@@ -24,10 +24,13 @@ struct AnimationResource14D {
     Animation3D** destination;
     int field10;
 };
-union AnimationTable14D { AnimationResource14D entries[5]; unsigned int words[25]; };
+struct AnimationTable14D { AnimationResource14D entries[5]; };
+#if defined(jpn)
+#define data_020e6fa8 data_020e784c
+#endif
 extern const AnimationTable14D data_020e6fa8;
 const char* GetPointerFromArray0x18(Container_1f368*, int);
-void CallHandlerFlag0_020e2fc0(void*);
+void CallHandlerFlag0_020e2fc0(RenderCommandHandler*);
 
 // USA: func_02014d80
 extern "C" ARM int func_02014d80(Zone3D* zone, void* nodeData, Struct02012ff0* trackerData, Src02015134* recordData) {
@@ -50,7 +53,7 @@ extern "C" ARM int func_02014d80(Zone3D* zone, void* nodeData, Struct02012ff0* t
     FormatFilenameAndSetExtension02014d18(record->id, data_020ef1e8, filename);
     const void* file = GetFileFromNARCInMemory(filename);
     if (file) {
-        tracker->model = (Model3D*)allocator->Allocate(0xac);
+        tracker->model = static_cast<Model3D*>(allocator->Allocate(sizeof(Model3D)));
         void* raw = DecompressLZ77FileIntoAllocatedSpace(*allocator, file, fileLength);
         if (raw && tracker->model) {
             tracker->model->Clear();
@@ -63,7 +66,7 @@ extern "C" ARM int func_02014d80(Zone3D* zone, void* nodeData, Struct02012ff0* t
                 zone->texturePaletteMemory_ += NSBXX_Tex_GetBlock4Length(texture);
             }
             ModelRenderContext* context = tracker->model->unknown_flags_a8_0_ ? &tracker->model->renderContext_ : 0;
-            if (context) SetModelRenderContextRenderCommandHook(context, (RenderCommandHook)CallHandlerFlag0_020e2fc0, 0, 8, 1);
+            if (context) SetModelRenderContextRenderCommandHook(context, CallHandlerFlag0_020e2fc0, 0, 8, 1);
             if (!(record->flags & 0x20) && tinted) lighting->ModelTransformTintBrightnessContrast(tracker->model->rawInternalModel_);
             for (Zone3D::Model3DListNode* model = zone->firstModel_418_; model; model = model->pNext_) {
                 tracker->model->ApplyTexturesFromModel(&model->model_);
@@ -105,7 +108,7 @@ extern "C" ARM int func_02014d80(Zone3D* zone, void* nodeData, Struct02012ff0* t
                 FormatFilenameAndSetExtension02014d18(record->id, entry->extension, filename);
                 file = GetFileFromNARCInMemory(filename);
                 if (file) {
-                    Animation3D* animation = (Animation3D*)allocator->Allocate(0x10);
+                    Animation3D* animation = static_cast<Animation3D*>(allocator->Allocate(sizeof(Animation3D)));
                     void* animationFile = DecompressLZ77FileIntoAllocatedSpace(*allocator, file, fileLength);
                     if (animationFile && animation) {
                         animation->DefaultInitialize();

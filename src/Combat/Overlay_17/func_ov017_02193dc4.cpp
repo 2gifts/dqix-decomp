@@ -37,10 +37,14 @@ struct TerrainNode {
 };
 
 struct Zone02193dc4 {
-    unsigned char pad_0[0x824];
+#if defined(jpn)
+    unsigned char unknown0[0x844];
+#else
+    unsigned char unknown0[0x824];
+#endif
     TerrainNode** terrain;
     unsigned char pad_828[0x4];
-    int count82c;
+    int terrainCount;
 };
 
 struct TerrainGrid02193dc4 {
@@ -97,7 +101,7 @@ extern "C" ARM int func_ov017_02193dc4(Actor02193dc4* self) {
     probe.bottom.y -= 0x28000;
     probe.bottom.z -= self->GetRadius() / 2;
     ClearFlags0x40And0x80At0xe0((ByteFlags02033f2c*)self);
-    for (i = 0; i < zone->count82c; i++) {
+    for (i = 0; i < zone->terrainCount; i++) {
         int count = func_02017d90(zone, i, &grid, probe, self);
         if (count > 0) {
             total += count;

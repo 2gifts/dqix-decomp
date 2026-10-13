@@ -1,14 +1,9 @@
 #include <globaldefs.h>
+#include "GameState/BattleRecordSnapshot.h"
 #include <Memory/SafeAllocator.h>
 
-struct PlayTime {
-    unsigned short hours_;
-    unsigned char minutes_;
-    unsigned char seconds_;
-};
-
 struct ClearRecords {
-    PlayTime times_[2];
+    BattleRecordPlayClock times_[2];
     unsigned int unk_8_0 : 17;
     unsigned int unk_8_17 : 7;
     unsigned int unk_8_24 : 7;
@@ -24,8 +19,8 @@ struct ClearRecords {
 };
 
 struct PlayRecords {
-    PlayTime playTime_;
-    PlayTime unk_4;
+    BattleRecordPlayClock playTime_;
+    BattleRecordPlayClock unk_4;
     unsigned int unk_8;
     unsigned int unk_c;
     unsigned int unk_10_0 : 9;
@@ -64,7 +59,6 @@ struct S020a13c4;
 struct List0204af64;
 struct InitTarget0205cfd4;
 struct Struct_0205bef8;
-struct _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598;
 
 struct Object3D {
     char pad_0[0xac];
@@ -79,7 +73,6 @@ extern "C" void _Z17ResetList0204af64P12List0204af64(List0204af64* background);
 extern "C" void _Z18InitStruct0205cfd4P18InitTarget0205cfd4(InitTarget0205cfd4* window);
 extern "C" void _Z12Init0205bef8P15Struct_0205bef8(Struct_0205bef8* cursor);
 extern "C" void _Z28InitCombatController020a2010Pv(void* camera);
-extern "C" void _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598(struct _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598* time);
 extern "C" void func_0204c684(void* canvas);
 
 struct BattleRecords {
@@ -132,7 +125,7 @@ struct BattleRecords {
 #if !defined(jpn)
     void* guestTitles_;
 #endif
-    PlayTime times_[2];
+    BattleRecordPlayClock times_[2];
 };
 
 extern "C" void func_ov008_02186cec(BattleRecords* self);
@@ -190,8 +183,8 @@ extern "C" ARM void func_ov008_021843f8(BattleRecords* self)
 #if !defined(jpn)
     self->guestTitles_ = NULL;
 #endif
-    _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598((struct _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598*)&self->times_[0]);
-    _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598((struct _Z27ClearShortByteByte_02184598P27ClearShortByteByte_02184598*)&self->times_[1]);
+    ClearShortByteByte_02184598(&self->times_[0]);
+    ClearShortByteByte_02184598(&self->times_[1]);
     SavedRecords* saved = GetSavedRecords(GameState::GetInstance());
     if (saved->records_.unk_10_0 != 0)
         self->flags_ |= 0x2000;

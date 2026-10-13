@@ -1,51 +1,30 @@
-#include <globaldefs.h>
+#include "System/OverlayResponse.h"
 
-struct PacketEnvelope0221d450 {
-    unsigned char padding[0xc];
-    unsigned short flags;
-    unsigned char padding_0xe[2];
-    unsigned char address[8];
-};
-
-struct ResponseFields0221d450 {
-    unsigned char kind;
-    unsigned char padding;
-    unsigned short valid;
-    unsigned int status;
-};
-
-struct Packet0221d450 {
-    unsigned char padding[0xc];
-    PacketEnvelope0221d450 envelope;
-    ResponseFields0221d450 response;
-};
-struct Validation0221d450;
-extern Validation0221d450 data_ov031_0224e720;
+struct ResponseValidation;
+extern ResponseValidation data_ov031_0224e720;
 extern int data_ov031_0224e6e0;
-extern "C" int func_ov031_0221d7e0(void*, unsigned char*);
-extern "C" unsigned short func_ov031_0221e638(unsigned short);
 extern "C" unsigned int func_ov031_0221e610(unsigned int);
 extern "C" void func_ov031_0221d060(int);
-extern "C" int func_ov031_0221d82c(unsigned int*, Validation0221d450*);
+extern "C" int func_ov031_0221d82c(unsigned int*, ResponseValidation*);
 extern "C" bool func_ov031_0221dc58(int);
 
 // USA: func_ov031_0221d450
-extern "C" THUMB int func_ov031_0221d450(int error, Packet0221d450* packet, int* attempts, void* argument) {
+extern "C" THUMB int func_ov031_0221d450(int error, ResponsePacket* packet, int* attempts, ResponseIdentifiers* identifiers) {
     if (error) {
         ++*attempts;
         return error;
     }
-    PacketEnvelope0221d450* outer = &packet->envelope;
-    ResponseFields0221d450* inner = &packet->response;
-    if (func_ov031_0221d7e0(argument, outer->address) < 0) {
+    ResponseHeader* outer = &packet->header;
+    ResponseBody* inner = &packet->body;
+    if (func_ov031_0221d7e0(&identifiers->entries[0], &outer->identifier) < 0) {
         ++*attempts;
         return error;
     }
-    if (!func_ov031_0221e638(inner->valid)) {
+    if (!func_ov031_0221e638(inner->identifier)) {
         ++*attempts;
         return error;
     }
-    if (inner->kind == 7) {
+    if (inner->type == 7) {
         if (func_ov031_0221e610(inner->status) == 0xfffffffeU) {
             func_ov031_0221d060(20);
         } else if (func_ov031_0221e610(inner->status) == 0xfffffffdU) {
@@ -55,7 +34,7 @@ extern "C" THUMB int func_ov031_0221d450(int error, Packet0221d450* packet, int*
         }
         return -1;
     }
-    if (inner->kind != 1) {
+    if (inner->type != 1) {
         ++*attempts;
         return error;
     }

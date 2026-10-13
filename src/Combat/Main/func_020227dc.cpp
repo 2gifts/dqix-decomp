@@ -10,7 +10,7 @@ ARM void* GetData02105254(void);
 
 extern "C" void func_02021428(void* unused0, int amount);
 extern "C" void func_02020720(char* obj);
-void InitSubScreenDisplay(void* ctx);
+void InitSubScreenDisplay(void* context);
 extern "C" void _Z19TailForward0203b66cPc(char* obj);
 extern "C" void _Z21InitSubObject0203bd78Pc(char* obj);
 extern "C" void _Z25InitBattleContext0203bd24Pc(char* obj);
@@ -90,50 +90,50 @@ enum { ContextTailRegionOffset = 0, GlobalHeaderRegionOffset = 0 };
 
 struct Global020fdc4c_020227dc {
     char pad[0x8 - GlobalHeaderRegionOffset];
-    void* allocatorPtr;   // 0x8
+    void* allocatorPtr;
     char pad2[0x10 - 0xc];
-    void* ctxPtr;          // 0x10
+    void* ctxPtr;
 };
 extern struct Global020fdc4c_020227dc data_020fdc4c;
 
 struct Obj020227dc {
     char pad0[0x2];
-    char nameBuf[1];              // 0x2
+    char nameBuf[1];
     char pad1[0x12 - 0x3];
-    unsigned char field0x12;      // 0x12
+    unsigned char field0x12;
     char pad2[0x14 - 0x13];
-    int field0x14;                // 0x14
+    int field0x14;
     char pad3[0x20 - 0x18];
-    void* field0x20;              // 0x20
-    int field0x24;                // 0x24
+    void* field0x20;
+    int field0x24;
     char pad4[0x30 - 0x28];
-    int field0x30;                // 0x30
+    int field0x30;
     char pad5[0x94 - 0x34];
-    char field0x94[1];            // 0x94
+    char field0x94[1];
     char pad6[0xd4 - 0x95];
-    struct Struct0205a198* field0xd4;  // 0xd4
+    struct Struct0205a198* field0xd4;
     char pad7[0xe0 - 0xd8];
-    unsigned short field0xe0;     // 0xe0
+    unsigned short field0xe0;
     char pad7b[0xe4 - 0xe2];
-    unsigned char field0xe4;      // 0xe4
+    unsigned char field0xe4;
     char pad8[0xe8 - 0xe5];
-    struct Struct0205a198 arr_e8[0x1c];  // 0xe8..0x548
+    struct Struct0205a198 arr_e8[0x1c];
     char pad9[0x55c - 0x548];
-    unsigned char field0x55c;     // 0x55c
+    unsigned char field0x55c;
     char pad10[0x779 - ContextTailRegionOffset - 0x55d];
-    unsigned char field0x779;     // 0x779
+    unsigned char field0x779;
     char pad11[0x9ba - 0x77a];
-    unsigned char field0x9ba;     // 0x9ba
+    unsigned char field0x9ba;
     char pad12[0x9c2 - 0x9bb];
-    signed char initState;        // 0x9c2
-    unsigned char field0x9c3;     // 0x9c3
-    unsigned char field0x9c4;     // 0x9c4
+    signed char initState;
+    unsigned char field0x9c3;
+    unsigned char field0x9c4;
     char pad13[0x9c8 - 0x9c5];
-    unsigned char field0x9c8;     // 0x9c8
+    unsigned char field0x9c8;
     char pad14[0xa20 - 0x9c9];
-    int taskA20;                  // 0xa20
-    int taskA24;                  // 0xa24
-    int taskA28;                  // 0xa28
+    int taskA20;
+    int taskA24;
+    int taskA28;
 };
 
 // USA: func_020227dc

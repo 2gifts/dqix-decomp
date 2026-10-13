@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "World/Zone3D.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
@@ -14,7 +15,6 @@ struct Pool020401fc;
 struct ActiveEntry02046900;
 struct Rec020467f0;
 struct Foo0207df50;
-struct Obj020196fc;
 struct SetFlagStruct;
 
 struct List021552a8 {
@@ -64,19 +64,6 @@ struct Self021552a8 {
     Struct0205a198* entries;
 };
 
-struct Elem021552a8 {
-    char pad0[2];
-    unsigned short flags;
-    char pad4[0x6c];
-};
-
-struct Node021552a8 {
-    char pad0[0x14];
-    int count;
-    char pad18[0x2c];
-    Elem021552a8* elems;
-};
-
 struct Events021552a8 {
     char pad0[0x45b];
     unsigned char bits[0x20];
@@ -107,8 +94,7 @@ extern "C" void _Z34ForwardArgsAndClearFlag8c_0215acf8ii(int a, int b);
 extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(Foo0207df50* p);
 extern "C" int _Z26StoreArgIfMatched_02153948t(unsigned short arg);
 extern "C" Events021552a8* func_0205ec34(void);
-extern "C" Obj020196fc* func_02012fe4(void);
-extern "C" Node021552a8* _Z22GetNodeAtDepth020196fcP11Obj020196fci(Obj020196fc* obj, int count);
+extern "C" void* func_02012fe4(void);
 void SetOrClearBitInArray(void* unused, unsigned char* array, int bit, int value);
 extern "C" void* func_0202ae18(void);
 void* GetPtrField0x2a04(GameState* gs);
@@ -240,14 +226,14 @@ extern "C" ARM int func_ov001_021552a8(Self021552a8* self) {
 
     int i;
     int total;
-    Node021552a8* node;
+    BmdjScriptNode* node;
     Events021552a8* events = func_0205ec34();
-    node = _Z22GetNodeAtDepth020196fcP11Obj020196fci(func_02012fe4(), 0);
-    total = node->count;
+    node = GetNodeAtDepth020196fc((Zone3D*)func_02012fe4(), 0);
+    total = node->scriptState.elementCount;
     if (node != NULL) {
         memset(events->bits, 0, sizeof(events->bits));
         for (i = 0; i < total; i++) {
-            Elem021552a8* e = &node->elems[i];
+            BmdjSceneElement* e = &node->elements[i];
             if (e != NULL && !(e->flags & 4)) {
                 SetOrClearBitInArray(events, events->bits, (unsigned char)i, 1);
             }
@@ -258,7 +244,7 @@ extern "C" ARM int func_ov001_021552a8(Self021552a8* self) {
     Params021552a8 params = self->params;
     GameState* state = GameState::GetInstance();
     GameResources* resources = func_ov017_0218b5b0();
-    void* area = func_02012fe4();
+    void* area = (Zone3D*)func_02012fe4();
     func_0202ae18();
     GetPtrField0x2a04(state);
     _Z27GetDataPtr02114e04_020d6c00v();

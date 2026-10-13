@@ -1,59 +1,30 @@
+// KEEP-NAME
 #include <globaldefs.h>
+#include "Memory/SafeAllocator.h"
+#include "Resource/Script.h"
+#include "Combat/ScriptElementList.h"
 
-struct StreamHeader0208d860 {
-    unsigned int w0;
-    unsigned short h4;
-    unsigned short h6;
-    unsigned int w8;
-    unsigned short hc;
-    unsigned short he;
-};
+#if defined(jpn)
+#define data_020f121c data_020f12ec
+#endif
 
-struct Data02108fc0Type {
-    void* field0;
-    struct StreamHeader0208d860* field4;
-};
-extern struct Data02108fc0Type data_02108fc0;
-extern int data_020f121c;
-
-struct ResetStruct {
-    int w0;
-    int w4;
-    int w8;
-    int wc;
-    int w10;
-    int w14;
-    int w18;
-    int w1c;
-    int w20;
-    int w24;
-    int w28;
-    char pad[0x400];
-    unsigned char b42c;
-};
-extern "C" int _ZN6Script10InitializeEv(struct ResetStruct* s);
-
-struct StreamState;
-struct StreamHeader;
-extern "C" int _ZN6Script4LoadEPKvj(struct StreamState* s, struct StreamHeader* buffer, int length);
-
-struct Struct02030774;
-extern "C" int _ZN6Script7ExecuteEv(struct Struct02030774* p);
-
-extern "C" void _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(void* p, void* q);
+extern Script::OpcodeLookupEntry data_020f121c[];
 
 // USA: func_0208d860
-ARM void SetupHeaderAndRunBufferedScript0208d860(struct StreamHeader0208d860* header, void* param1, struct StreamHeader* buffer, int length, int param4, short param5, unsigned short param6) {
-    if (param1 != 0 && buffer != 0 && length != 0) {
-        data_02108fc0.field4 = header;
-        header->w8 = param4;
-        data_02108fc0.field4->hc = param5;
-        data_02108fc0.field4->he = param6;
-        data_02108fc0.field0 = param1;
-        struct ResetStruct local;
-        _ZN6Script10InitializeEv(&local);
-        _ZN6Script15SetOpcodeLookupEPNS_17OpcodeLookupEntryE(&local, &data_020f121c);
-        _ZN6Script4LoadEPKvj((struct StreamState*)&local, buffer, length);
-        _ZN6Script7ExecuteEv((struct Struct02030774*)&local);
+ARM void SetupHeaderAndRunBufferedScript0208d860(StreamHeader0208d860* header, SafeAllocator* allocator,
+                                                const void* bytecode, unsigned int length,
+                                                const short* selectedIds, short selectedCount,
+                                                unsigned short flags) {
+    if (allocator != NULL && bytecode != NULL && length != 0) {
+        data_02108fc0.header = header;
+        data_02108fc0.header->selectedIds = selectedIds;
+        data_02108fc0.header->selectedCount = selectedCount;
+        data_02108fc0.header->flags = flags;
+        data_02108fc0.allocator = allocator;
+        Script script;
+        script.Initialize();
+        script.SetOpcodeLookup(data_020f121c);
+        script.Load(bytecode, length);
+        script.Execute();
     }
 }

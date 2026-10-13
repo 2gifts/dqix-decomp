@@ -1,7 +1,5 @@
 #include <globaldefs.h>
 
-#pragma optimize_for_size off
-
 struct Queue0221e6d4 {
     int head;
     short count;

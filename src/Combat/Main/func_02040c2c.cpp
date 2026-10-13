@@ -1,11 +1,9 @@
 #include <globaldefs.h>
-
-struct Vector3i {
-    int x;
-    int y;
-    int z;
-    Vector3i& operator=(const Vector3i& rhs);
-};
+#include "GameState/Field3b0.h"
+#include "GameState/GameState.h"
+#include "Resource/GameResources.h"
+#include "World/Object3D.h"
+#include "Graphics/LightingManager.h"
 
 struct Vec3_020406f8 { unsigned int v[3]; };
 struct Node020406f8;
@@ -16,37 +14,31 @@ struct Obj0204117c;
 struct Vec3s32_020c3030 { int x; int y; int z; };
 struct HeadNode02046b24;
 
-struct GameState {
-    static GameState* GetInstance();
-};
-
-struct LightingManager {
-    static LightingManager* GetInstance();
-    char pad_00[0x44];
-    unsigned short f44;
-    unsigned short f46;
-};
-
-struct Object3DChild {
-    char pad_00[0x54];
-    void* f54;
-};
-
-struct Object3D {
-    char pad_00[0x8];
-    struct Object3DChild* child08;
-    char pad_0c[0x44 - 0x0c];
-    struct Vector3i v44;
-    struct Vector3i v50;
-    char pad_5c[0xac - 0x5c];
+struct ModelEffect02040c2c {
+    Object3D object;
     unsigned short flags_ac;
     char pad_ae[0xc0 - 0xae];
-    unsigned int limit_c0;
+    unsigned int idleTicks;
 
-    unsigned int GetLimit() { return limit_c0; }
+    unsigned int GetIdleTicks() { return idleTicks; }
+};
 
-    void SetDiffuseColor(unsigned int value);
-    void AdvanceEffects();
+struct SpriteMotion02040c2c {
+    int unknown0;
+    Vec3_020406f8 position;
+    unsigned char unknown10[0x1a];
+    unsigned short diffuseColor;
+    unsigned char unknown2c[0x30];
+    unsigned int flags;
+    int angle;
+    int targetAngle;
+    int angularSpeed;
+    Vector3i previousPosition;
+    Vector3i targetPosition;
+    int unknown84;
+    unsigned int idleTicks;
+
+    unsigned int GetIdleTicks() { return idleTicks; }
 };
 
 struct Container02040c2c {
@@ -56,122 +48,95 @@ struct Container02040c2c {
     struct Vector3i v48;
 };
 
-struct TargetA02040c2c {
-    char pad_00[0x4];
-    struct Vec3_020406f8 v4;
-    char pad_10[0x2a - 0x10];
-    unsigned short f2a;
-    char pad_2c[0x5c - 0x2c];
-    unsigned int flags5c;
-    char pad_60[0x88 - 0x60];
-    unsigned int f88;
-
-    unsigned int GetLimit() { return f88; }
-};
-
 struct Obj02040c2c {
     unsigned int flags;
-    unsigned int timer;
+    unsigned int idleDelay;
     char pad_08[0x4];
-    struct Container02040c2c* cont;
-    struct Object3D* d;
-    struct TargetA02040c2c* a;
-    struct Object3D* b;
+    struct Container02040c2c* settings;
+    struct Object3D* attachment;
+    SpriteMotion02040c2c* spriteMotion;
+    ModelEffect02040c2c* modelMotion;
 };
 
-struct GameObj3b0 {
-    char pad_00[0x10];
-    struct Vector3i v10;
-};
-
-struct Ov017State {
-    char pad_0000[0x36fc];
-    struct HeadNode02046b24** headNode;
-};
-
-extern "C" void func_0203c818();
-extern "C" struct Ov017State* func_ov017_0218b5b0();
+struct Obj0203c818;
+extern "C" void func_0203c818(Obj0203c818*, void*, int, int);
 extern "C" void func_02040f48(struct Obj02040c2c* self, void* vec);
 extern "C" int rand(void);
-extern "C" void Vector3fix_Subtract(void* a, void* b, void* out);
-extern "C" void Vector3fix_Add(void* a, void* b, void* out);
 int GetField0x78(void* p);
-void GetPtrField0x58(void* p);
+void* GetPtrField0x58(void* p);
 
 int GetHeadNodeIdOrMinusOne(struct HeadNode02046b24** head);
-extern "C" void _Z33DispatchNearestActiveNode0204117cP11Obj0204117cP16Vec3s32_020c3030(struct Obj0204117c* obj, struct Vec3s32_020c3030* refPoint);
-extern "C" void _Z28AdvanceAndAccumulate02041298P11Obj02041298i(struct Obj02041298* obj, int value);
-extern "C" void _Z29SelectVec3FromSources020406f8P13Vec3_020406f8P12Node020406f8(struct Vec3_020406f8* out, struct Node020406f8* node);
-extern "C" void _Z23FillVec3Default020407c4P13Vec3_020407c4P12Self020407c4(struct Vec3_020407c4* out, struct Self020407c4* self);
-struct GameObj3b0* GetField0x3b0Value(struct GameState* gs);
-void Vector3fixDivideScalar(const struct Vector3i* a, int b, struct Vector3i* out);
+void DispatchNearestActiveNode0204117c(struct Obj0204117c* obj, struct Vec3s32_020c3030* refPoint);
+void AdvanceAndAccumulate02041298(struct Obj02041298* obj, int value);
+void SelectVec3FromSources020406f8(struct Vec3_020406f8* out, struct Node020406f8* node);
+void FillVec3Default020407c4(struct Vec3_020407c4* out, struct Self020407c4* self);
 
 // USA: func_02040c2c
-extern "C" ARM void func_02040c2c(struct Obj02040c2c* self, int p1, int p2, unsigned int p3) {
-    struct Vec3_020406f8 v30;
-    struct Vec3_020406f8 v24;
-    struct Vec3_020407c4 tmpB;
-    struct Vector3i tmpC;
-    struct Vec3_020406f8 tmpA;
+extern "C" ARM void func_02040c2c(struct Obj02040c2c* self, void* context, int elapsedTicks, int movementTicks) {
+    struct Vec3_020406f8 motionPosition;
+    struct Vec3_020406f8 attachmentPosition;
+    struct Vec3_020407c4 attachmentRotation;
+    struct Vector3i cameraOffset;
+    struct Vec3_020406f8 sourcePosition;
 
-    if (self->a != 0) {
-        func_0203c818();
+    if (self->spriteMotion != 0) {
+        func_0203c818(reinterpret_cast<Obj0203c818*>(self->spriteMotion), context, elapsedTicks, movementTicks);
         struct LightingManager* lm = LightingManager::GetInstance();
         if (lm != 0) {
-            self->a->f2a = lm->f44;
+            self->spriteMotion->diffuseColor = lm->spriteDiffuseColor_;
         }
-        if (GetHeadNodeIdOrMinusOne(func_ov017_0218b5b0()->headNode) != 4) {
+        if (GetHeadNodeIdOrMinusOne((HeadNode02046b24**)func_ov017_0218b5b0()->unknown_ptr_array_36fc[0]) != 4) {
             if (!(self->flags & 1) && !(self->flags & 0x20000)) {
-                if (self->cont != 0 && self->cont->mode != 0) {
-                    struct TargetA02040c2c* a = self->a;
-                    if (!(a->flags5c & 1) && self->timer < self->a->GetLimit()) {
-                        v30 = a->v4;
-                        switch (self->cont->mode) {
+                if (self->settings != 0 && self->settings->mode != 0) {
+                    SpriteMotion02040c2c* a = self->spriteMotion;
+                    if (!(a->flags & 1) && self->idleDelay < self->spriteMotion->GetIdleTicks()) {
+                        motionPosition = a->position;
+                        switch (self->settings->mode) {
                         case 7:
                         case 8:
-                            func_02040f48(self, &v30);
+                            func_02040f48(self, &motionPosition);
                             break;
                         case 9:
                         case 10:
-                            _Z33DispatchNearestActiveNode0204117cP11Obj0204117cP16Vec3s32_020c3030((struct Obj0204117c*)self, (struct Vec3s32_020c3030*)&v30);
+                            DispatchNearestActiveNode0204117c((struct Obj0204117c*)self, (struct Vec3s32_020c3030*)&motionPosition);
                             break;
                         }
                         if (self->flags & 8) {
-                            self->timer = 0;
+                            self->idleDelay = 0;
                         } else {
-                            self->timer = rand() % 2000 + 2000;
+                            self->idleDelay = rand() % 2000 + 2000;
                         }
                     }
                 }
             }
         }
-    } else if (self->b != 0) {
-        _Z28AdvanceAndAccumulate02041298P11Obj02041298i((struct Obj02041298*)self->b, p2);
-        if (self->b->child08 != 0 && self->b->child08->f54 != 0) {
+    } else if (self->modelMotion != 0) {
+        AdvanceAndAccumulate02041298((struct Obj02041298*)self->modelMotion, elapsedTicks);
+        if (self->modelMotion->object.pModel_ != 0 && self->modelMotion->object.pModel_->rawInternalModel_ != 0) {
             if (LightingManager::GetInstance() != 0) {
-                self->b->SetDiffuseColor(LightingManager::GetInstance()->f46);
+                self->modelMotion->object.SetDiffuseColor(LightingManager::GetInstance()->modelDiffuseColor_);
             }
         }
-        if (GetHeadNodeIdOrMinusOne(func_ov017_0218b5b0()->headNode) != 4) {
+        if (GetHeadNodeIdOrMinusOne((HeadNode02046b24**)func_ov017_0218b5b0()->unknown_ptr_array_36fc[0]) != 4) {
             if (!(self->flags & 1) && !(self->flags & 0x20000)) {
-                if (self->cont != 0 && self->cont->mode != 0) {
-                    struct Object3D* b = self->b;
+                if (self->settings != 0 && self->settings->mode != 0) {
+                    ModelEffect02040c2c* b = self->modelMotion;
                     if (!(b->flags_ac & 1)) {
-                        if (self->timer < self->b->GetLimit()) {
-                            switch (self->cont->mode) {
+                        if (self->idleDelay < self->modelMotion->GetIdleTicks()) {
+                            switch (self->settings->mode) {
                             case 7:
                             case 8:
-                                func_02040f48(self, &b->v44);
+                                func_02040f48(self, &b->object.position_);
                                 break;
                             case 9:
                             case 10:
-                                _Z33DispatchNearestActiveNode0204117cP11Obj0204117cP16Vec3s32_020c3030((struct Obj0204117c*)self, (struct Vec3s32_020c3030*)&b->v44);
+                                DispatchNearestActiveNode0204117c((struct Obj0204117c*)self, (struct Vec3s32_020c3030*)&b->object.position_);
                                 break;
                             }
                             if (self->flags & 8) {
-                                self->timer = 0;
+                                self->idleDelay = 0;
                             } else {
-                                self->timer = rand() % 2000 + 2000;
+                                self->idleDelay = rand() % 2000 + 2000;
                             }
                         }
                     }
@@ -180,26 +145,26 @@ extern "C" ARM void func_02040c2c(struct Obj02040c2c* self, int p1, int p2, unsi
         }
     }
 
-    if (self->d != 0) {
-        _Z29SelectVec3FromSources020406f8P13Vec3_020406f8P12Node020406f8(&tmpA, (struct Node020406f8*)self);
-        v24 = tmpA;
-        _Z23FillVec3Default020407c4P13Vec3_020407c4P12Self020407c4(&tmpB, (struct Self020407c4*)self);
-        struct Vector3i* pB = (struct Vector3i*)&tmpB;
-        v24.v[1] += 0x1000;
-        if (self->a != 0) {
-            struct GameObj3b0* r7 = GetField0x3b0Value(GameState::GetInstance());
-            GetPtrField0x58(r7);
-            float fx = (float)GetField0x78(r7);
+    if (self->attachment != 0) {
+        SelectVec3FromSources020406f8(&sourcePosition, (struct Node020406f8*)self);
+        attachmentPosition = sourcePosition;
+        FillVec3Default020407c4(&attachmentRotation, (struct Self020407c4*)self);
+        struct Vector3i* pB = (struct Vector3i*)&attachmentRotation;
+        attachmentPosition.v[1] += 0x1000;
+        if (self->spriteMotion != 0) {
+            unsigned char* camera = (unsigned char*)GetField0x3b0Value(GameState::GetInstance());
+            GetPtrField0x58(camera);
+            float fx = (float)GetField0x78(camera);
             fx *= 3.0f;
-            int r6 = (int)fx;
-            Vector3fix_Subtract(&r7->v10, &v24, &tmpC);
-            Vector3fixDivideScalar(&tmpC, r6, &tmpC);
-            Vector3fix_Add(&v24, &tmpC, &v24);
+            int divisor = (int)fx;
+            Vector3fix_Subtract(reinterpret_cast<Vector3i*>(camera + 0x10), reinterpret_cast<Vector3i*>(&attachmentPosition), &cameraOffset);
+            Vector3fixDivideScalar(&cameraOffset, divisor, &cameraOffset);
+            Vector3fix_Add(reinterpret_cast<Vector3i*>(&attachmentPosition), &cameraOffset, reinterpret_cast<Vector3i*>(&attachmentPosition));
         }
-        Vector3fix_Add(&v24, &self->cont->v48, &v24);
-        self->d->v44 = *(struct Vector3i*)&v24;
-        self->d->v50 = *pB;
-        self->d->AdvanceEffects();
+        Vector3fix_Add(reinterpret_cast<Vector3i*>(&attachmentPosition), &self->settings->v48, reinterpret_cast<Vector3i*>(&attachmentPosition));
+        self->attachment->position_ = *(struct Vector3i*)&attachmentPosition;
+        self->attachment->rotation_ = *pB;
+        self->attachment->AdvanceEffects();
     }
     self->flags &= ~0x20000u;
 }

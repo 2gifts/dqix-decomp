@@ -31,10 +31,6 @@ struct StatState021caea8 {
     unsigned char padding_a[0x158 - 0xa];
     StatElement021caea8 elements[8];
 };
-struct StatGlobals021caea8 {
-    unsigned char padding_0[0x3718];
-    void* node;
-};
 struct StatLevels021caea8 {
     unsigned int s0 : 3, s1 : 3, s2 : 3, s3 : 3, s4 : 3;
     unsigned int s5 : 3, s6 : 3, s7 : 3, s8 : 3, s9 : 3;
@@ -53,15 +49,15 @@ struct StatMessage021caea8 {
     unsigned char padding_1[3];
     StatFields021caea8 fields;
 };
-extern "C" StatState021caea8* func_ov017_021b8478(void*);
+extern "C" void* func_ov017_021b8478(void*);
 void* GetData02100044();
 extern "C" void func_0205e330(void*, void*, int);
 
 // USA: func_ov017_021caea8
 extern "C" ARM void func_ov017_021caea8(StatContainer021caea8* self) {
     GameState::GetInstance();
-    StatGlobals021caea8* globals = (StatGlobals021caea8*)func_ov017_0218b5b0();
-    StatState021caea8* state = func_ov017_021b8478(globals->node);
+    GameResources* resources = func_ov017_0218b5b0();
+    StatState021caea8* state = (StatState021caea8*)func_ov017_021b8478(resources->unknown_ptr_3718);
     void* data = GetData02100044();
     for (int i = 0; i < self->count; i++) {
         StatEntry021caea8* entry = &self->entries[i];

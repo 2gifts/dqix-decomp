@@ -219,9 +219,12 @@ def main():
     with build_ninja_path.open("w") as file:
         n = ninja_syntax.Writer(file)
 
+        n.variable("python", f'"{PYTHON}"')
+        n.newline()
+
         n.rule(
             name="download_tool",
-            command=f'{PYTHON} tools/download_tool.py $tool $tag --path $path'
+            command=f'$python tools/download_tool.py $tool $tag --path $path'
         )
         n.newline()
 
@@ -240,7 +243,7 @@ def main():
         n.rule(
             name="delink",
             # dsd never writes delink.yaml; without this stamp every build re-delinks and relinks
-            command=f'"{PYTHON}" tools/stamp.py $out {DSD} delink --config-path $config_path'
+            command=f'$python tools/stamp.py $out {DSD} delink --config-path $config_path'
         )
         n.newline()
 
@@ -263,14 +266,14 @@ def main():
 
         n.rule(
             name="mwasm",
-            command=f'"{PYTHON}" tools/mwasm.py {WINE} "{AS}" {AS_FLAGS} -o $out $in',
+            command=f'$python tools/mwasm.py {WINE} "{AS}" {AS_FLAGS} -o $out $in',
         )
         n.newline()
 
         n.rule(
             name="lcf",
            # command=f"{DSD} lcf -c $config_path --lcf-file $lcf_file --objects-file $objects_file"
-            command=f'"{PYTHON}" tools/lcf_symbols.py $lcf_file {DSD} lcf --config-path $config_path'
+            command=f'$python tools/lcf_symbols.py $lcf_file {DSD} lcf --config-path $config_path'
         )
         n.newline()
 
@@ -306,7 +309,7 @@ def main():
 
         n.rule(
             name="m2ctx",
-            command=f"{PYTHON} tools/m2ctx.py -f $out $in"
+            command=f"$python tools/m2ctx.py -f $out $in"
         )
         n.newline()
 
@@ -324,13 +327,13 @@ def main():
 
         n.rule(
             name="check_delinks",
-            command=f"{PYTHON} tools/check_delinks.py $in -s $symbols_file"
+            command=f"$python tools/check_delinks.py $in -s $symbols_file"
         )
         n.newline()
 
         n.rule(
             name="sha1",
-            command=f"{PYTHON} tools/sha1.py $in -c $sha1_file"
+            command=f"$python tools/sha1.py $in -c $sha1_file"
         )
         n.newline()
 

@@ -1,7 +1,7 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 
-int GetField0x3b0Value(GameState* battleStruct);
 struct U16Field0x6_020375f8;
 extern "C" unsigned short _ZNK8Object3D10GetField06Ev(struct U16Field0x6_020375f8* obj);
 extern "C" void func_ov017_021973e8(void* obj);

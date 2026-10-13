@@ -5,14 +5,13 @@
 void* DecompressLZ77FileIntoScratchSpace(SafeAllocator& allocator, const void* source, unsigned int& size);
 
 // USA: func_02014390
-extern "C" ARM int _ZN6Zone3D15ProcessBMBLFileEPKvj(Zone3D* zone, const void* source) {
-    SafeAllocator* allocator = zone->pAllocator_68_;
+ARM int Zone3D::ProcessBMBLFile(const void* source, unsigned int sourceLength) {
+    SafeAllocator* allocator = pAllocator_68_;
     unsigned int size;
     void* script = DecompressLZ77FileIntoScratchSpace(*allocator, source, size);
-    Zone3D_StructPtr_8* map = zone->pUnknownStruct_8_;
-    ZoneFeatures* features = reinterpret_cast<ZoneFeatures*>(zone->substruct_6c_);
-    features->Reset();
-    features->LoadFromScript(allocator, script, size);
-    zone->pUnknownStruct_8_ = map;
+    Zone3D_StructPtr_8* map = pUnknownStruct_8_;
+    substruct_6c_.Reset();
+    substruct_6c_.LoadFromScript(allocator, script, size);
+    pUnknownStruct_8_ = map;
     return 1;
 }

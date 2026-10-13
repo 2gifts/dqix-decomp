@@ -52,7 +52,6 @@ struct Self021a86d0 {
     unsigned char container[0x10];
 };
 
-
 extern "C" void* _ZN9GameState11GetInstanceEv(void);
 extern "C" char* _Z26GetGlobalField0x1c020421a0v(void);
 extern "C" char* func_02012fe4(void);
@@ -72,7 +71,7 @@ extern "C" Vec3_021a86d0 _Z29SelectVec3FromSources020406f8P13Vec3_020406f8P12Nod
 extern "C" void Vector3fix_Subtract(const Vec3_021a86d0* a, const Vec3_021a86d0* b, Vec3_021a86d0* out);
 extern "C" void Vector3fix_Normalize(const Vec3_021a86d0* a, Vec3_021a86d0* out);
 extern "C" int fix32_Atan2(int y, int x);
-extern "C" void _Z29SetValueOnActiveChild02040af0P13Child02040af0i(void* obj, int value);
+#include "Combat/EntryGetterTypes.h"
 extern "C" void* _Z17GetGlobal02109400v(void);
 extern "C" void _Z21BlankFunction02094b30v(void* obj, int a, int b);
 extern "C" int _Z18AlwaysTrue02094b4cv(void* obj);
@@ -170,7 +169,7 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
             if (angle < 0) {
                 angle += 0x6488;
             }
-            _Z29SetValueOnActiveChild02040af0P13Child02040af0i(node, angle);
+            SetValueOnActiveChild02040af0((Entry_203dce4*)node, angle);
         }
         void* snd = _Z17GetGlobal02109400v();
         _Z21BlankFunction02094b30v(snd, 0x205, 0);

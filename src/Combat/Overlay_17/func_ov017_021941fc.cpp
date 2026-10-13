@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Combat/SearchEntry.h"
 
 #if defined(jpn)
 enum {
@@ -206,7 +207,6 @@ extern "C" int fix32_Divide(int a, int b);
 int GetHeadNodeIdOrMinusOne(struct HeadNode02046b24** obj);
 extern "C" unsigned short _Z32GetEntryField0x4OrFieldA0202bc8cP12SearchStruct(struct SearchStruct* obj);
 extern "C" int _Z29HasFlag3orFlag2And9a_021bd3a4P12Obj_021bd3a4(struct Obj_021bd3a4* obj);
-void* GetEntryBySignedByteIndex(struct SearchStruct* obj, int value);
 int GetSignedByte0x1ca(void* obj);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 extern "C" void _Z21SetVecYByMode02033834P11Obj02033834i(struct Obj02033834* obj, int value);
@@ -534,7 +534,7 @@ dispatched:
         if (i == 0 && GetBitsInField0((unsigned int*)ov, 0x200) != 0) continue;
         if (TestBitBySignedByteIndex(search, i) == 0) continue;
         if (i == GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)search)) continue;
-        struct Slot021941fc* other = (struct Slot021941fc*)GetEntryBySignedByteIndex(search, i);
+        SearchEntry0202c178* other = GetEntryBySignedByteIndex(search, i);
         if (other == NULL) continue;
         GameObject* c = battle->GetPartyMemberByIndex(i);
         if (c == NULL) continue;
@@ -554,7 +554,7 @@ dispatched:
                 _Z24SetVecYFromValue02033874P11Obj02033874i((struct Obj02033874*)c, angle);
             }
         }
-        if (other->kind == 2) {
+        if (other->flags.kind == 2) {
             if (CheckSubstructByte0x7cPositive((signed char*)c) != 0) {
                 func_020531f0(c);
             }
@@ -568,12 +568,12 @@ dispatched:
         }
         if ((((struct Bits0xc1*)((char*)c + 0xc1))->low & 2) == 0) {
             int face = *(unsigned char*)((char*)c + 0xbe);
-            if (face == 2 && other->kind != 2) {
+            if (face == 2 && other->flags.kind != 2) {
                 func_ov017_021917f0(i, 0);
-            } else if (other->kind == 2 && face != 2) {
+            } else if (other->flags.kind == 2 && face != 2) {
                 func_ov017_021917f0(i, 1);
             }
-            _Z24SetByteIfChanged02033b68P11Obj02033b68i((struct Obj02033b68*)c, other->kind);
+            _Z24SetByteIfChanged02033b68P11Obj02033b68i((struct Obj02033b68*)c, other->flags.kind);
         }
         if ((*(unsigned char*)(ov + 0x4000 + kRegionOffset355) & (1 << i)) == 0) continue;
         if (other->bit15 != 1) continue;

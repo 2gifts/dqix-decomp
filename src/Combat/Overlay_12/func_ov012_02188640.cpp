@@ -1,3 +1,102 @@
+#if defined(jpn)
+#include <globaldefs.h>
+#include "GameState/GameState.h"
+#include "std_library_functions.h"
+
+struct ProfileAccolade {
+    unsigned int year : 12;
+    unsigned int month : 4;
+    unsigned int day : 5;
+    unsigned int design : 4;
+    unsigned int female : 1;
+    unsigned int initialized : 1;
+    unsigned int designChosen : 1;
+    unsigned int birthdayChosen : 1;
+    unsigned int accoladeChosen : 1;
+    unsigned int vocationAccolade : 1;
+    unsigned int showBirthday : 1;
+    unsigned int unknown : 9;
+    int title : 10;
+    int accolade : 11;
+    int edited : 1;
+    unsigned int unknownHigh : 1;
+};
+struct TableA68;
+struct Obj0205eaa0;
+struct Obj021e6e20;
+struct Struct0205de24;
+struct Struct_0205c570;
+extern "C" void _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh(Struct0205de24*, unsigned char, unsigned char);
+extern "C" void func_ov023_021e6e60(void*);
+void SetupBattleTag0218a574(char*);
+extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(Struct_0205c570*);
+extern "C" int func_ov023_021e6448(void*);
+extern "C" int func_ov023_021e7148(void*);
+extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0*, int, int);
+extern "C" void func_0202ae18();
+int GetField5cb0Value(char*);
+const char* FindEntryByKey(TableA68*, int);
+extern "C" void func_ov012_0218bba0(void*, int, int);
+extern "C" void func_ov012_02189be8(void*, int);
+extern "C" int _Z35TestFlagsAndActiveElement2_021e6e20P11Obj021e6e20(Obj021e6e20*);
+extern "C" char data_02108760[];
+
+static inline ProfileAccolade* GetProfileAccolade(GameState* state) {
+    return (ProfileAccolade*)((char*)state + 0x543c);
+}
+
+extern "C" ARM void func_ov012_02188640(char* editor) {
+    if (*(unsigned char*)(editor + 0x1340) == 0) {
+        *(unsigned char*)(editor + 0x1368) = 0;
+        GameState* state = GameState::GetInstance();
+        ProfileAccolade* savedProfile = GetProfileAccolade(state);
+        unsigned int index;
+        if (!savedProfile->vocationAccolade && savedProfile->accolade >= 800 && savedProfile->accolade < 860)
+            index = savedProfile->accolade - 799;
+        else
+            index = 0;
+        *(unsigned int*)(editor + 0x1444) = index;
+        _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh((Struct0205de24*)(editor + 0x90), 0, 3);
+        func_ov023_021e6e60(editor);
+        SetupBattleTag0218a574(editor);
+        ++*(unsigned char*)(editor + 0x1340);
+        return;
+    } else if (*(unsigned char*)(editor + 0x1340) == 1) {
+        *(unsigned char*)(editor + 0x1368) = 1;
+        *(int*)(editor + 0x1444) = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((Struct_0205c570*)(editor + 0x90));
+        if (func_ov023_021e6448(editor))
+            *(int*)(editor + 0x1444) = _Z26GetActiveScaledSum0205d794P15Struct_0205c570((Struct_0205c570*)(editor + 0x90));
+        if (func_ov023_021e7148(editor)) {
+            _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((Obj0205eaa0*)data_02108760, 1, 0);
+            ProfileAccolade* profile = GetProfileAccolade(GameState::GetInstance());
+            GameState* state = GameState::GetInstance();
+            func_0202ae18();
+            if (*(int*)(editor + 0x1444) == 0) {
+                char* character = *(char**)((char*)state->GetProtagonist() + 0x144);
+                int vocation = *(int*)(character + 0x8b8);
+                profile->vocationAccolade = 1;
+                profile->accolade = vocation + 700;
+                if (GetField5cb0Value((char*)state) == 1)
+                    profile->accolade = 713;
+            } else {
+                profile->accolade = *(int*)(editor + 0x1444) + 799;
+                profile->vocationAccolade = 0;
+            }
+            const char* name = FindEntryByKey((TableA68*)(editor + 0x1314), (short)(profile->accolade + 20000));
+            memset(editor + 0x1458, 0, 0x40);
+            memcpy(editor + 0x1458, name, strlen(name));
+            profile->accoladeChosen = 1;
+            func_ov012_0218bba0(editor, 0, -1);
+            func_ov012_02189be8(editor, 0);
+            return;
+        }
+        if (_Z35TestFlagsAndActiveElement2_021e6e20P11Obj021e6e20((Obj021e6e20*)editor))
+            func_ov012_02189be8(editor, 1);
+        return;
+    }
+}
+
+#else
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
@@ -164,3 +263,5 @@ extern "C" ARM void func_ov012_02188640(ProfileEditor02188640* self)
         return;
     }
 }
+
+#endif

@@ -1,3 +1,4 @@
+// USA: func_ov003_02176f94
 #include <globaldefs.h>
 #if defined(jpn)
 enum {
@@ -66,29 +67,34 @@ struct Node02176f94 {
 };
 
 struct Menu02176f94 {
-    char pad0[kRegion101c];
-    int ids[4];
+    unsigned char unknown[kRegion89c];
+    Obj2081* menu;
+    unsigned char unknownBeforeMembers[kRegion101c - kRegion89c - 4];
+    int memberIds[4];
+    unsigned char unknownBeforeCount[kRegion1030 - kRegion101c - 16];
+    int memberCount;
+    unsigned char unknownBeforeItem[kRegion103a - kRegion1030 - 4];
+    short selectedItem;
 };
 
-static inline int IsType02176f94(unsigned int type) {
-    return type <= 7;
+static inline int ShouldHideMemberCounts(unsigned int itemType) {
+    return itemType <= 7;
 }
 
-// USA: func_ov003_02176f94
-extern "C" ARM void func_ov003_02176f94(char *self) {
-    struct Obj2081 *elem = *(struct Obj2081 **) (self + kRegion89c);
+extern "C" ARM void func_ov003_02176f94(Menu02176f94* self) {
+    struct Obj2081 *elem = self->menu;
     GameState *battle    = GameState::GetInstance();
     char *bag            = (char *) GetPtrField0x2a04(battle);
 
     int listId    = 0x19;
-    short idHp    = 0xe9;
+    short idMember    = 0xe9;
     short idCount = 0xeb;
     short idFlagB = 0xed;
     short idFlagA = 0xef;
-    switch (*(int *) (self + kRegion1030)) {
+    switch (self->memberCount) {
         case 2:
             listId  = 0x1a;
-            idHp    = 0xf0;
+            idMember    = 0xf0;
             idCount = 0xf3;
             idFlagB = 0xf6;
             idFlagA = 0xf9;
@@ -98,11 +104,11 @@ extern "C" ARM void func_ov003_02176f94(char *self) {
             idFlagB = 0x103;
             idFlagA = 0x107;
             listId  = 0x1b;
-            idHp    = 0xfb;
+            idMember    = 0xfb;
             break;
         case 4:
             listId  = 0x1c;
-            idHp    = 0x10a;
+            idMember    = 0x10a;
             idCount = 0x10f;
             idFlagB = 0x114;
             idFlagA = 0x119;
@@ -115,24 +121,24 @@ extern "C" ARM void func_ov003_02176f94(char *self) {
 
     bool skip                 = true;
     struct Node02176f94 *node = _Z24FindElementByKey020dedd0P17Container020dedd0i(
-        (struct Container020dedd0 *) (self + kNodeOffset), *(short *) (self + kRegion103a));
-    if (node != NULL) skip = IsType02176f94(node->type);
+        (struct Container020dedd0 *) ((char*)self + kNodeOffset), self->selectedItem);
+    if (node != NULL) skip = ShouldHideMemberCounts(node->type);
     if (!skip) {
-        for (unsigned char i = 0; i < *(int *) (self + kRegion1030); i++) {
-            int hp;
+        for (unsigned char i = 0; i < self->memberCount; i++) {
+            int memberData;
             short count;
             int cid;
-            cid                = (signed char) ((struct Menu02176f94 *) self)->ids[i];
-            hp                 = 0;
+            cid                = (signed char) self->memberIds[i];
+            memberData         = 0;
             count              = 0;
             GameObject *member = battle->GetPartyMemberByIndex(cid);
             if (member != NULL) {
-                hp    = *(int *) ((char *) member + 0x134);
+                memberData = (int)member->baseStats_;
                 count = _Z34CountMatchingUntilNegative02083994P13Slots02083994i(
-                    (struct Slots02083994 *) GetFieldAt0x150((unsigned char *) member), *(short *) (self + kRegion103a));
+                    (struct Slots02083994 *) GetFieldAt0x150((unsigned char *) member), self->selectedItem);
             }
-            _Z26SetEntryFirstField02080f8cP17Container02080f8cii((struct Container02080f8c *) elem, idHp, hp);
-            SetEntryHighNibble0x13((struct Container02080cc0 *) elem, idHp, func_020dcc98(cid));
+            _Z26SetEntryFirstField02080f8cP17Container02080f8cii((struct Container02080f8c *) elem, idMember, memberData);
+            SetEntryHighNibble0x13((struct Container02080cc0 *) elem, idMember, func_020dcc98(cid));
             _Z26SetEntryFirstField02080fa8P17Container02080fa8ii((struct Container02080fa8 *) elem, idCount, count);
             if (count != 0) {
                 _Z24SetEntryFlagById02080b2cPvi(elem, idFlagA);
@@ -140,7 +146,7 @@ extern "C" ARM void func_ov003_02176f94(char *self) {
                 _Z24SetEntryFlagById02080b2cPvi(elem, idCount);
                 _Z24SetEntryFlagById02080b2cPvi(elem, idFlagB);
             }
-            idHp++;
+            idMember++;
             idCount++;
             idFlagB = idFlagB + 1;
             idFlagA = idFlagA + 1;
@@ -150,6 +156,6 @@ extern "C" ARM void func_ov003_02176f94(char *self) {
         SetElementFlag0x20(elem, listId);
     }
     _Z26SetEntryFirstField02080fa8P17Container02080fa8ii((struct Container02080fa8 *) elem, idCount,
-                                                         _Z23SumKeyedLookups02086bf4Pci(bag, *(short *) (self + kRegion103a)));
+                                                         _Z23SumKeyedLookups02086bf4Pci(bag, self->selectedItem));
     func_020813ec(elem, listId);
 }

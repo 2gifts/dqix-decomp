@@ -30,8 +30,8 @@ extern "C" ARM int func_ov000_0215f7a8(Battle* self,short* selected,int count){
  ptr=ids.v;n=func_ov000_0215e9fc(self,ptr,8,1);
  for(i=0;i<n;i++,ptr++){GameObject* unit=GetUnit(*ptr);if(unit)partyTotal+=StatTotal(unit->base);}
  partyTotal/=n;if(enemyTotal*3<=partyTotal)return 1;
- GameState* gs=GameState::GetInstance();const int* thresholds=data_ov000_02182c04;thresholds++;int chance=0;
+ GameState* gs=GameState::GetInstance();const int* thresholds=data_ov000_02182c04;int chance=0;
  for(int j=0;j<count;j++,selected++){GameObject* unit=GetCombatantWithFlag0x100(gs,*selected);if(unit){int value=10+(int)(0.05f*(float)(unsigned short)unit->actor->value);if(chance<value)chance=value;}}
- if(chance<(thresholds-1)[self->attempts])chance=(thresholds-1)[self->attempts];
+ if(chance<thresholds[self->attempts])chance=thresholds[self->attempts];
  self->attempts++;return NextRandomMax(random,100)<chance;
 }

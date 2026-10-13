@@ -1,7 +1,7 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 
-extern "C" void* _Z18GetField0x3b0ValueP9GameState(void* battle);
 extern "C" void _Z23SetLinkIfType3_021d6148P12Node021d6148j(void* node, float v);
 
 struct Triple { int x[3]; };
@@ -9,8 +9,8 @@ struct Triple { int x[3]; };
 // USA: func_ov001_0215da14  (semantic: SetLinksFromField3b0_0215da14)
 extern "C" ARM int func_ov001_0215da14(char* obj) {
     int result;
-    void* battle = GameState::GetInstance();
-    void* field = _Z18GetField0x3b0ValueP9GameState(battle);
+    GameState* battle = GameState::GetInstance();
+    void* field = GetField0x3b0Value(battle);
     if (field == NULL) {
         result = 0;
     } else {

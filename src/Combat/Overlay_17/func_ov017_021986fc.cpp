@@ -1,14 +1,8 @@
 #include <globaldefs.h>
+#include "Combat/LootPointEvent.h"
+#include "Combat/LootPickupEvent.h"
 #include "GameState/GameState.h"
-
-struct BitEntry021986fc {
-    unsigned int timer : 9;
-    unsigned int unk9 : 8;
-    unsigned int flags : 8;
-    unsigned int count : 4;
-    unsigned int unk29 : 2;
-    unsigned int active : 1;
-};
+#include "World/Zone3D.h"
 
 struct Node021986fc {
     unsigned int unk0 : 16;
@@ -18,7 +12,7 @@ struct Node021986fc {
     unsigned int count : 4;
     unsigned int mask : 8;
     unsigned int unk4_29 : 3;
-    BitEntry021986fc* entry;
+    LootPointState* entry;
     Vector3fix pos[8];
     struct Node021986fc* next;
 };
@@ -26,16 +20,6 @@ struct Node021986fc {
 struct Obj0208e7d0 {
     char pad0[4];
     struct Node021986fc* head;
-};
-
-struct Info021986fc {
-    char pad0[5];
-    char name[1];
-};
-
-struct Zone021986fc {
-    char pad0[8];
-    struct Info021986fc* info;
 };
 
 struct Cursor021986fc {
@@ -51,29 +35,13 @@ struct Event021986fc {
     unsigned char padding1[19];
 };
 
-struct Obj021ae800 {
-    unsigned char pad0[0xc];
-    unsigned short id;
-    unsigned char pad0e[6];
-    Vector3fix position;
-    int field20;
-    int field24;
-};
-
 struct TailList020469b4;
 struct TailNode020469b4;
 struct Vec3copy0202ec84;
 struct Cont0208f3b4;
 struct SearchStruct0202c1a4;
 
-struct Resources021986fc {
-    unsigned char pad0[0x36fc];
-    TailList020469b4* list;
-    unsigned char pad3700[0x3b28 - 0x3700];
-    Obj021ae800* effect;
-};
-
-extern "C" Zone021986fc* func_02012fe4(void);
+extern "C" Zone3D* func_02012fe4(void);
 extern "C" Obj0208e7d0* func_0208e0a8(void);
 extern "C" int _Z22IsMatchingName0208e824PvPc(void*, char*);
 int CheckSubstructByte0x7cPositive(signed char*);
@@ -85,23 +53,21 @@ int TestFlag0SetAndFlag1Clear(unsigned short*, int);
 extern "C" int _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(void*, Vec3copy0202ec84*, int*, int*);
 extern "C" SearchStruct0202c1a4* func_0202ae18(void);
 int GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
-extern "C" void _Z27EnqueueEventTag183_021d38f8hhhhPi(unsigned char, signed char, unsigned char, unsigned char, BitEntry021986fc*);
 extern "C" void* func_0205ec34(void);
 void SetOrClearBitInArray(void*, unsigned char*, int, int);
 extern "C" void _Z23RemoveNodeByKey0208f3b4P12Cont0208f3b4i(Cont0208f3b4*, int);
 extern "C" int _Z27GetRandomTableEntry0208e7d0P11Obj0208e7d0(Obj0208e7d0*);
-extern "C" void _Z32ResetHeaderAndAllocator_021ae800P11Obj021ae800(Obj021ae800*);
 void AppendNodeToTail(TailList020469b4*, TailNode020469b4*);
 
 extern unsigned short data_02114e30[];
 extern Cursor021986fc data_02114e54;
 
 // USA: func_ov017_021986fc
-extern "C" ARM void func_ov017_021986fc(Resources021986fc* self) {
-    Zone021986fc* zone = func_02012fe4();
-    Info021986fc* info = zone->info;
+extern "C" ARM void func_ov017_021986fc(GameResources* self) {
+    Zone3D* zone = func_02012fe4();
+    Zone3D_StructPtr_8* info = zone->pUnknownStruct_8_;
     Obj0208e7d0* list = func_0208e0a8();
-    if (!_Z22IsMatchingName0208e824PvPc(list, info->name)) return;
+    if (!_Z22IsMatchingName0208e824PvPc(list, info->mapShortName_)) return;
     GameState* gs = GameState::GetInstance();
     GameObject* actor = gs->GetUnknownGameObject();
     if (CheckSubstructByte0x7cPositive((signed char*)actor)) return;
@@ -147,18 +113,18 @@ extern "C" ARM void func_ov017_021986fc(Resources021986fc* self) {
     else if (screenX - 12 < cursorX && cursorX < screenX + 12 && screenY - 12 < cursorY && cursorY < screenY + 12) proceed = 1;
     if (!proceed) return;
 
-    _Z27EnqueueEventTag183_021d38f8hhhhPi(1, GetSearchStructCurrentArrEntry(func_0202ae18()), mask, node->id, node->entry);
-    node->entry->flags = ~mask & node->entry->flags;
+    EnqueueEventTag183_021d38f8(1, GetSearchStructCurrentArrEntry(func_0202ae18()), mask, node->id, node->entry);
+    node->entry->fields.flags = ~mask & node->entry->fields.flags;
     node->mask = ~mask & node->mask;
-    node->entry->timer = node->entry->count * 30;
+    node->entry->fields.timer = node->entry->fields.count * 30;
     void* base = func_0205ec34();
     SetOrClearBitInArray(base, (unsigned char*)base + 0x8c, node->id + 0xc12, 1);
     _Z23RemoveNodeByKey0208f3b4P12Cont0208f3b4i(GetData02109020(), key);
     if (node->id >= 0x62) node->unk0 = _Z27GetRandomTableEntry0208e7d0P11Obj0208e7d0(list);
-    _Z32ResetHeaderAndAllocator_021ae800P11Obj021ae800(self->effect);
-    self->effect->id = node->unk0;
-    self->effect->position = actor->obj3D_.position_;
-    self->effect->field20 = 0;
-    self->effect->field24 = 0x1f;
-    AppendNodeToTail(self->list, (TailNode020469b4*)self->effect);
+    ResetHeaderAndAllocator_021ae800(((Obj021ae800*)self->unknown_ptr_array_3afc[11]));
+    ((Obj021ae800*)self->unknown_ptr_array_3afc[11])->itemId = node->unk0;
+    ((Obj021ae800*)self->unknown_ptr_array_3afc[11])->position = actor->obj3D_.position_;
+    ((Obj021ae800*)self->unknown_ptr_array_3afc[11])->angle = 0;
+    ((Obj021ae800*)self->unknown_ptr_array_3afc[11])->fade = 0x1f;
+    AppendNodeToTail((TailList020469b4*)self->unknown_ptr_array_36fc[0], (TailNode020469b4*)((Obj021ae800*)self->unknown_ptr_array_3afc[11]));
 }

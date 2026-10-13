@@ -1,7 +1,7 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 
-int GetField0x3b0Value(GameState* battleStruct);
 extern "C" int func_ov000_0215e9fc(int a, short* buf, int max, int start);
 extern "C" int func_ov000_0215ec1c(int a, short* buf, int max, int start);
 extern "C" void* _Z18GetSlotPtr02160f20Pv(void* obj);

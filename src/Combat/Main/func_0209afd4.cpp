@@ -1,6 +1,10 @@
 #include <globaldefs.h>
 #include "Util/Random.h"
 
+#if defined(jpn)
+#define data_020e8e2c data_020e8f40
+#endif
+
 struct LeaderSub0209afd4 {
     unsigned int key : 12;
     unsigned int countMin : 3;
@@ -44,7 +48,11 @@ struct EntryTable0209bd94 {
 };
 
 struct EncounterState0209afd4 {
+#if defined(jpn)
+    unsigned char pad[0x5c];
+#else
     unsigned char pad[0x60];
+#endif
     struct EntryTable0209bd94 table;
 };
 

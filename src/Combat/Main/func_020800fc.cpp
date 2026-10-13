@@ -1,22 +1,38 @@
 #include <globaldefs.h>
 
-struct Ctx0208010c {
-    char pad0[4];
-    char list4[0x3b - 4];
-    signed char f3b;
-    signed char f3c;
-};
-
+struct Node0208036c;
 struct Slot0208010c {
-    char pad0[8];
-    short f8;
-    short fa;
-    short fc;
-    short fe;
-    short f10;
+    short* itemIds;
+    unsigned int unknown4;
+    short id;
+    short tileX;
+    short tileY;
+    short tileWidth;
+    short tileHeight;
+    unsigned char unknown12;
+    unsigned char itemCount;
+    char unknown14[4];
 };
-
-struct List0207f6ac;
+struct List0207f6ac {
+    Node0208036c* entries;
+    short count;
+};
+struct GroupList0208010c {
+    Slot0208010c* entries;
+    short count;
+};
+struct Ctx0208010c {
+    void* table;
+    List0207f6ac items;
+    GroupList0208010c groups;
+#if defined(jpn)
+    char unknown14[0x2f - 0x14];
+#else
+    char unknown14[0x3b - 0x14];
+#endif
+    signed char horizontalEdgePixels;
+    signed char verticalEdgePixels;
+};
 
 struct Node0208036c {
     char pad0[4];
@@ -58,19 +74,19 @@ extern "C" ARM int func_020800fc(struct Ctx0208010c* self, short* outId, short i
         slot = (struct Slot0208010c*)_Z25FindSlotWithValue020810b4Phs((unsigned char*)self, id);
         if (slot != NULL) {
             SelectCoordsByFlag0x24(data_02114e54, &x, &y);
-            ret = func_02080e40(self, slot->f8, (short)x, (short)y);
+            ret = func_02080e40(self, slot->id, (short)x, (short)y);
             if (ret >= 0) {
                 *outId = (short)ret;
             }
             if (setFlag != 0) {
-                short bs = (short)(slot->fa + slot->fe);
-                short xs = (short)(slot->fc + slot->f10);
-                if ((short)(xs << 3) - self->f3c <= y && y < (short)(xs << 3)) {
-                    short za = (short)(slot->fa << 3);
-                    if (za <= x && x < za + self->f3b) {
+                short rightTile = (short)(slot->tileX + slot->tileWidth);
+                short bottomTile = (short)(slot->tileY + slot->tileHeight);
+                if ((short)(bottomTile << 3) - self->verticalEdgePixels <= y && y < (short)(bottomTile << 3)) {
+                    short leftPixel = (short)(slot->tileX << 3);
+                    if (leftPixel <= x && x < leftPixel + self->horizontalEdgePixels) {
                         flags.f0 |= 0x20;
                     }
-                    if ((short)(bs << 3) - self->f3b <= x && x < (short)(bs << 3)) {
+                    if ((short)(rightTile << 3) - self->horizontalEdgePixels <= x && x < (short)(rightTile << 3)) {
                         flags.f0 |= 0x10;
                     }
                 }
@@ -82,7 +98,7 @@ extern "C" ARM int func_020800fc(struct Ctx0208010c* self, short* outId, short i
     if (sel == 0) {
         return flags.f0;
     }
-    e = _Z26FindEntryByShortId0207f6acP12List0207f6aci((struct List0207f6ac*)self->list4, *outId);
+    e = _Z26FindEntryByShortId0207f6acP12List0207f6aci(&self->items, *outId);
     if (e == NULL) {
         return flags.f0;
     }

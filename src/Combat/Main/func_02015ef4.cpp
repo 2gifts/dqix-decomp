@@ -3,6 +3,7 @@
 #include <World/LootableContainer.h>
 #include <Filesystem/BackgroundLoader.h>
 #include <Resource/GameResources.h>
+#include <World/Zone3D.h>
 
 struct Foo02048004;
 struct StructAt020473c8;
@@ -13,6 +14,12 @@ struct StructDE234_020de234;
 struct HeadNode02046b24;
 struct State0207dfc8;
 struct Vec3copy0202ec84;
+
+#if defined(jpn)
+#define func_02015cd0 func_02015a9c
+#define data_020e6e88 data_020e772c
+#define data_020ef20b data_020ef147
+#endif
 
 struct ChestRecord {
     unsigned short id;
@@ -32,9 +39,10 @@ struct PackedElement {
     short marker;
 };
 
-struct LoadEntry {
-    char pad0[0xe];
-    unsigned short scale;
+struct ChestDisplayState {
+    Vector3i position;
+    short angleY;
+    unsigned short angleX;
     unsigned short counter;
     short taskID;
     signed char owner;
@@ -46,50 +54,12 @@ struct LoadEntry {
     char pad1a[2];
     unsigned short uniqueID;
     char pad1e[2];
-    void* object;
-};
-
-struct ObjectRecord {
-    char pad0[0x1c];
-    int posX;
-    int posY;
-    int posZ;
-    char pad28[0x82 - 0x28];
-    unsigned short timer;
-};
-
-struct ObjectSlot {
-    char pad0[0x84];
-    unsigned char flags;
-    char pad85[3];
-};
-
-struct RootFlags {
-    char pad[3];
-    unsigned char hidden;
-};
-
-struct LoadManager {
-    char pad0[0x50];
-    State0207dfc8* stateSrc;
-    char pad54[0x68 - 0x54];
-    int param68;
-    char pad6c[0x47c - 0x6c];
-    LoadEntry* entries;
-    char pad480[0x600 - 0x480];
-    ObjectSlot slots[1];
-    char pad688[0x820 - 0x688];
-    int timer;
-    char pad824[0x23bd - 0x824];
-    unsigned char dirty;
-    char pad23be[0x2724 - 0x23be];
-    char elements[0x30];
-    char keyed[1];
+    Foo02048004* object;
 };
 
 void MaybeInvoke0204719c(Foo02048004*);
-extern "C" int func_02015ae4(LoadEntry*);
-extern "C" int func_02015cd0(LoadEntry*);
+extern "C" int func_02015ae4(ChestDisplayState*);
+extern "C" int func_02015cd0(ChestDisplayState*);
 void* GetElement02094d5c(GetElement02094d5cList*, int);
 void ClearMatchingEntries020159c0(Holder020159c0*, int);
 void* FindElementByKey020dedd0(Container020dedd0*, int);
@@ -112,15 +82,15 @@ extern NameBuf data_020e6e88;
 extern char data_020ef20b[];
 
 // USA: func_02015ef4
-extern "C" ARM int func_02015ef4(LoadManager* self, int index) {
+extern "C" ARM int func_02015ef4(Zone3D* self, int index) {
     GameState* gs = GameState::GetInstance();
-    LoadEntry* entry = &self->entries[index];
+    ChestDisplayState* entry = &reinterpret_cast<ChestDisplayState*>(self->unknown_47c_)[index];
     LootableContainerManager* containers = LootableContainerManager::GetMainInstance();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     int protagonistId = gs->GetProtagonist()->obj3D_.unknown_4_;
     int playerId = gs->GetUnknownGameObject()->obj3D_.unknown_4_;
     int visible = 0;
-    self->dirty = 0;
+    self->unk_23bc[1] = 0;
     if (entry->state == 0 || entry->state == 8) {
         if (entry->object) {
             MaybeInvoke0204719c((Foo02048004*)entry->object);
@@ -131,13 +101,13 @@ extern "C" ARM int func_02015ef4(LoadManager* self, int index) {
     unsigned int delta = gs->GetEffectiveDeltaTime();
     int tick = gs->GetTickCount() + 1;
     if (entry->state == 2) {
-        self->dirty = 1;
+        self->unk_23bc[1] = 1;
         func_02015ae4(entry);
         ChestRecord* rec = 0;
         if (entry->kind == 0 || entry->kind == 1) {
             rec = (ChestRecord*)containers->GetContainerByID(entry->uniqueID, 0);
         } else if (entry->kind == 2) {
-            rec = (ChestRecord*)GetElement02094d5c((GetElement02094d5cList*)self->elements, entry->uniqueID);
+            rec = (ChestRecord*)GetElement02094d5c((GetElement02094d5cList*)self->unknown_struct_2724_, entry->uniqueID);
         }
         if (!rec) {
             entry->state = 8;
@@ -151,7 +121,7 @@ extern "C" ARM int func_02015ef4(LoadManager* self, int index) {
                 entry->state = 4;
                 return 0;
             } else if (rec->lootType == 2) {
-                PackedElement* packed = (PackedElement*)FindElementByKey020dedd0((Container020dedd0*)self->keyed, rec->key);
+                PackedElement* packed = (PackedElement*)FindElementByKey020dedd0((Container020dedd0*)self->unknown_struct_2754_, rec->key);
                 if (packed && packed->marker != 0x5617) {
                     int field = GetPreferredPackedField020de234((StructDE234_020de234*)packed, 0);
                     char path[0x50];
@@ -165,7 +135,7 @@ extern "C" ARM int func_02015ef4(LoadManager* self, int index) {
         entry->object = 0;
         entry->state = 5;
     } else if (entry->state == 4) {
-        self->dirty = 1;
+        self->unk_23bc[1] = 1;
         func_02015ae4(entry);
         if (loader->GetTaskStatus(entry->taskID) == 0) return 0;
         void* file = 0;
@@ -174,16 +144,16 @@ extern "C" ARM int func_02015ef4(LoadManager* self, int index) {
         GameResources* root = func_ov017_0218b5b0();
         HeadNode02046b24** head = (HeadNode02046b24**)root->unknown_ptr_array_36fc[0];
         if (file && GetHeadNodeIdOrMinusOne(head) != 4) {
-            ObjectSlot* slot = &self->slots[entry->owner];
+            Foo02048004* slot = &reinterpret_cast<Foo02048004*>(self->unk_600)[entry->owner];
             entry->object = slot;
             func_0204719c(slot);
-            ((ObjectSlot*)entry->object)->flags |= 4;
+            entry->object->bit2 = 1;
             char saved[0x70];
-            CopyState0207dfc8(self->stateSrc, (State0207dfc8*)saved);
+            CopyState0207dfc8((State0207dfc8*)self->unknown_ptr_50_, (State0207dfc8*)saved);
             RestorePairTables0207df90(saved);
-            Forward02047b30(entry->object, (int)file, size, self->param68);
+            Forward02047b30(entry->object, (int)file, size, (int)self->pAllocator_68_);
             BackupPairTables0207dfac(saved);
-            self->timer = 0x1f;
+            *reinterpret_cast<int*>(self->unk_600 + 0x220) = 0x1f;
             entry->delay = 0;
         } else {
             entry->object = 0;
@@ -192,14 +162,14 @@ extern "C" ARM int func_02015ef4(LoadManager* self, int index) {
         entry->taskID = -1;
         entry->state = 5;
     } else if (entry->state == 5) {
-        self->dirty = 1;
+        self->unk_23bc[1] = 1;
         if (entry->counter > 0xd) visible = 1;
         if (func_02015ae4(entry)) {
             entry->counter = 0;
             entry->state = 6;
         }
     } else if (entry->state == 6) {
-        self->dirty = 1;
+        self->unk_23bc[1] = 1;
         visible = 1;
         entry->counter += delta;
         if (entry->counter > 500) {
@@ -207,11 +177,11 @@ extern "C" ARM int func_02015ef4(LoadManager* self, int index) {
             entry->counter = 0;
         }
     } else if (entry->state == 7) {
-        self->dirty = 1;
+        self->unk_23bc[1] = 1;
         visible = 1;
         if (entry->special == 1) {
             if (func_02015cd0(entry)) {
-                entry->scale = 0x647a;
+                entry->angleX = 0x647a;
                 entry->state = 1;
                 if (entry->object) {
                     MaybeInvoke0204719c((Foo02048004*)entry->object);
@@ -219,7 +189,7 @@ extern "C" ARM int func_02015ef4(LoadManager* self, int index) {
                 }
             }
         } else if (func_02015cd0(entry)) {
-            entry->scale = 0x4000;
+            entry->angleX = 0x4000;
             entry->state = 8;
             if (entry->object) {
                 MaybeInvoke0204719c((Foo02048004*)entry->object);
@@ -227,9 +197,9 @@ extern "C" ARM int func_02015ef4(LoadManager* self, int index) {
             }
         }
     }
-    if (((RootFlags*)func_ov017_0218b5b0()->unknown_ptr_array_3afc[0x22])->hidden != 0) visible = 0;
+    if (static_cast<unsigned char*>(func_ov017_0218b5b0()->unknown_ptr_array_3afc[0x22])[3] != 0) visible = 0;
     if (entry->object && visible) {
-        self->dirty = 1;
+        self->unk_23bc[1] = 1;
         int x = 0;
         int y = 0;
         void* camera = GetField0x3b0Value(gs);
@@ -238,23 +208,23 @@ extern "C" ARM int func_02015ef4(LoadManager* self, int index) {
         y -= 0x28;
         if (entry->delay < 10) entry->delay++;
         if (entry->state == 7 && entry->object) {
-            if (tick < self->timer) {
-                self->timer -= tick;
+            if (tick < *reinterpret_cast<int*>(self->unk_600 + 0x220)) {
+                *reinterpret_cast<int*>(self->unk_600 + 0x220) -= tick;
             } else {
-                self->timer = 0;
+                *reinterpret_cast<int*>(self->unk_600 + 0x220) = 0;
                 entry->object = 0;
                 return 0;
             }
         }
         if (x >= -24 && x < 256 && y >= -24 && y < 192) {
-            int timer = self->timer;
-            ((ObjectRecord*)entry->object)->timer = timer;
+            int timer = *reinterpret_cast<int*>(self->unk_600 + 0x220);
+            entry->object->field82 = timer;
             int px = x;
             int offsetY = y - entry->delay;
-            ObjectRecord* obj = (ObjectRecord*)entry->object;
-            obj->posX = px << 12;
-            obj->posY = offsetY << 12;
-            obj->posZ = 0;
+            Foo02048004* obj = entry->object;
+            obj->words1c[0] = px << 12;
+            obj->words1c[1] = offsetY << 12;
+            obj->words1c[2] = 0;
             RenderFlaggedIndexedEntry((StructAt020473c8*)entry->object, 1);
         }
     }

@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Combat/EntryGetterTypes.h"
 
 #if defined(jpn)
 enum { displayFieldOffset = 0x2c8 };
@@ -7,24 +8,16 @@ enum { displayFieldOffset = 0x2d4 };
 #endif
 int GetField0x64(struct StructF0x64_0203cdf8*);
 
-
-struct Struct_020409e0 {
-    char pad[0x14];
-    void* field14;
-    void* field18;
-    void* field1c;
-};
-
 // USA: func_020409e0
-ARM int GetDisplayValue020409e0(struct Struct_020409e0* obj) {
-    if (obj->field14) {
-        return GetField0x64((struct StructF0x64_0203cdf8*)(obj->field14));
+ARM int GetDisplayValue020409e0(Entry_203dce4* obj) {
+    if (obj->child14) {
+        return GetField0x64((struct StructF0x64_0203cdf8*)(obj->child14));
     }
-    if (obj->field18) {
-        return *(int*)((char*)obj->field18 + 0xb0);
+    if (obj->child18) {
+        return *(int*)((char*)obj->child18 + 0xb0);
     }
-    if (obj->field1c) {
-        return *(int*)((char*)obj->field1c + displayFieldOffset);
+    if (obj->child1c) {
+        return *(int*)((char*)obj->child1c + displayFieldOffset);
     }
     return 0;
 }

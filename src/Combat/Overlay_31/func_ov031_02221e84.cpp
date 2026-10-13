@@ -1,20 +1,11 @@
-#include <globaldefs.h>
-
-struct Md5Ctx02221e84 {
-    unsigned int a;
-    unsigned int b;
-    unsigned int c;
-    unsigned int d;
-    unsigned int e;
-    unsigned int f;
-};
+#include "System/OverlayMD5.h"
 
 // USA: func_ov031_02221e84
-extern "C" THUMB void func_ov031_02221e84(Md5Ctx02221e84* p) {
-    p->f = 0;
-    p->e = 0;
-    p->a = 0x67452301;
-    p->b = 0xefcdab89;
-    p->c = 0x98badcfe;
-    p->d = 0x10325476;
+extern "C" THUMB void func_ov031_02221e84(OverlayMD5Context* context) {
+    context->bitCount[1] = 0;
+    context->bitCount[0] = 0;
+    context->state[0] = 0x67452301;
+    context->state[1] = 0xefcdab89;
+    context->state[2] = 0x98badcfe;
+    context->state[3] = 0x10325476;
 }

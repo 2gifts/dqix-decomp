@@ -1,10 +1,9 @@
 #include <globaldefs.h>
+#include "Combat/ActorAction.h"
 
-struct SubBlock02038508;
 struct Bytes02033b88;
 
 extern "C" void _ZN8Object3D11DisableFlagEi(unsigned char* obj, unsigned int mask);
-void InitBlock02038508(struct SubBlock02038508* p);
 int SetByte0xbeShiftPrev(struct Bytes02033b88* p, int val);
 
 struct Obj02039d84 {

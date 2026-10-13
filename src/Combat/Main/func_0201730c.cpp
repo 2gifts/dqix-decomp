@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 
 #include "GameState/GameState.h"
 #include "Graphics/LightingManager.h"
@@ -58,7 +59,6 @@ struct CombatEntryList {
     void* field2750;
 };
 
-int GetField0x3b0Value(GameState* state);
 void* GetPtrField0x144(void* obj);
 extern "C" void _Z27ClearGlobalFlagBits02016d8cPv(void* arg);
 int GetBoxTestResult(int* out);
@@ -74,7 +74,7 @@ extern "C" ARM void func_0201730c(CombatEntryList* list) {
     if (list->field2750 == NULL) return;
 
     GameState* game = GameState::GetInstance();
-    void* camera = (void*)GetField0x3b0Value(game);
+    void* camera = GetField0x3b0Value(game);
     if (camera == NULL) return;
     game->GetTickCount();
     unsigned short lightColor = LightingManager::GetInstance()->maybePotBarrelDiffuseColor_;

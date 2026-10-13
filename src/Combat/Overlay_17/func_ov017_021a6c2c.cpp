@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Combat/ActorAction.h"
 #include <std_library_functions.h>
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
@@ -7,7 +8,6 @@
 
 struct Obj020397cc;
 struct Base02010834;
-struct SubBlock02038508;
 struct Foo0207df50 { unsigned int words[28]; };
 struct ResourceState021a6c2c { char pad0[0xc40]; Foo0207df50 effectFields; };
 struct Dispatcher021a6c2c { unsigned char fields[0xd0]; };
@@ -52,11 +52,7 @@ extern "C" void _Z26FindNodeAndProcess02057fb4Pvii(void*, int, int);
 extern "C" void _Z26SetForwardAndStore0205ebc0Pvii(void*, int, int);
 extern "C" void _Z34DispatchIfField0xc4NonNeg_0205ebfcPvii(void*, int, int);
 int GetByte0x26c(char*);
-SubBlock02038508* GetFieldPtrAt0x26c(void*);
-extern "C" void _Z17InitBlock02038508P16SubBlock02038508(SubBlock02038508*);
-extern "C" void func_ov017_021d3f00(void*, unsigned char, unsigned char);
 void* GetField0x3f8Address(GameState*);
-extern "C" void VectorizedMemset(void*, unsigned int, unsigned int);
 extern "C" void func_ov017_021a7280(Event021a6c2c*);
 extern char data_ov017_021d777c[];
 extern AllocatorUnion data_02114e20;
@@ -158,7 +154,7 @@ extern "C" ARM void func_ov017_021a6c2c(Event021a6c2c* self) {
         if (IsBrightnessTransitionActive(resources)) return;
         if (GetByte0x26c((char*)leader)) {
             SubBlock02038508* block = GetFieldPtrAt0x26c(leader);
-            _Z17InitBlock02038508P16SubBlock02038508(block);
+            InitBlock02038508(block);
             ((Actor021a6c2c*)leader)->flags &= ~1;
             leader->obj3D_.DisableFlag(0x1180);
             func_ov017_021d3f00(block, 0, 1);

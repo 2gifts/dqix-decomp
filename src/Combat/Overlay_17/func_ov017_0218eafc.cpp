@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 #include "Graphics/NSBXX/GeometryFifo.h"
 #include "Graphics/NSBXX/RenderConfig.h"
@@ -20,7 +21,6 @@ struct Combatant0218eafc {
 extern "C" void* func_02057924(void);
 extern "C" void func_02057ab8(void* list, int id);
 extern "C" int _Z29CheckByteFlagsAt4488_021922acPvj(void* self, unsigned int idx);
-int GetField0x3b0Value(GameState* battleStruct);
 int CheckFlag0x1ceBit2Set(unsigned char* obj);
 unsigned int GetBitsInField4(unsigned int* obj, unsigned int mask);
 int IsField0x1b4Or0x1b8Positive(int* obj);

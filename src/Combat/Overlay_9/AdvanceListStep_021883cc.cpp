@@ -1,26 +1,36 @@
+// USA: func_ov009_021883cc
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+#include "Resource/Brightness.h"
+#include "Resource/CharacterCreationUI.h"
+#include "System/ColorEffects.h"
 
-extern "C" int* _Z10GetWord0x0Pi(void* battle);
-extern "C" void _Z13SetBrightnessP13GameResourcesii(void* obj, int value, int frames);
-extern "C" int _Z28IsBrightnessTransitionActiveP13GameResources(int* word);
-extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(void* p, int flag);
-extern "C" void ColorEffect_ConfigureBrightnessAdjust(unsigned short* dst, int flag, int value);
-extern "C" void _Z20SetStatValue021855dcPhi(unsigned char *self, int val);
+int GetWord0x0(int*);
+struct Entry_0205d6a0;
+void ResetEntryList0205d6a0(Entry_0205d6a0*, int);
+#if defined(jpn)
+extern "C" void func_ov009_021867bc(unsigned char*, int);
+#else
+void SetStatValue021855dc(unsigned char*, int);
+#endif
 
-// USA: func_ov009_021883cc  (semantic: AdvanceListStep_021883cc)
-extern "C" ARM void func_ov009_021883cc(unsigned char *self) {
-    int* word = _Z10GetWord0x0Pi(GameState::GetInstance());
-    unsigned char flag = self[0xc59];
-    if (flag == 0) {
-        _Z13SetBrightnessP13GameResourcesii(word, -16, 15);
-        self[0xc59] = self[0xc59] + 1;
+extern "C" ARM void func_ov009_021883cc(unsigned char* storage) {
+    CharacterCreationUI* editor = (CharacterCreationUI*)storage;
+    GameResources* resources = (GameResources*)GetWord0x0((int*)GameState::GetInstance());
+    unsigned char step = editor->step;
+    if (step == 0) {
+        SetBrightness(resources, -16, 15);
+        ++editor->step;
         return;
     }
-    if (flag != 1) return;
-    if (_Z28IsBrightnessTransitionActiveP13GameResources(word) != 0) return;
-    _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(self + 0x1f8, 1);
-    _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(self + 0x2b4, 1);
-    ColorEffect_ConfigureBrightnessAdjust((unsigned short*)0x04001050, 1, 0);
-    _Z20SetStatValue021855dcPhi(self, 0xc);
+    if (step != 1 || IsBrightnessTransitionActive(resources))
+        return;
+    ResetEntryList0205d6a0((Entry_0205d6a0*)&editor->windows[0], 1);
+    ResetEntryList0205d6a0((Entry_0205d6a0*)&editor->windows[1], 1);
+    ColorEffect_ConfigureBrightnessAdjust(0x04001050, 1, 0);
+#if defined(jpn)
+    func_ov009_021867bc(storage, 12);
+#else
+    SetStatValue021855dc(storage, 12);
+#endif
 }

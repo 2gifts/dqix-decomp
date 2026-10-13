@@ -10,6 +10,7 @@ struct Struct02156534 {
 extern "C" void func_ov001_02154da0(struct Struct02156534* p);
 extern "C" void func_ov017_021bb27c(struct Struct02156534* p);
 
+// KEEP-NAME
 // USA: func_ov001_02156534
 ARM unsigned short InitFieldAndReturnHalfA_02156534(struct Struct02156534* p) {
 	func_ov001_02154da0(p);

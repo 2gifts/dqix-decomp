@@ -1,6 +1,5 @@
 #if defined(jpn)
 #define R(j,u) (j)
-#define _Z22BuildMessageD_02189f38Pc func_ov012_0218aa30
 #define func_ov012_02185bf0 func_ov012_02186248
 #define func_ov012_0218943c func_ov012_02189d18
 #define func_ov012_0218adac func_ov012_0218bba0

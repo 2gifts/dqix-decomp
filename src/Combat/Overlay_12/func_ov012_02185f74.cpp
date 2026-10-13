@@ -4,6 +4,14 @@
 #include "System/Graphics.h"
 #include "System/ColorEffects.h"
 
+#if defined(jpn)
+#define data_ov012_0218af75 data_ov012_0218bcec
+#define data_ov012_0218af78 data_ov012_0218bcef
+enum { kPixels = 0x134c, kTask = 0x1358 };
+#else
+enum { kPixels = 0x137c, kTask = 0x138c };
+#endif
+
 struct Background02185f74
 {
     char unk_0[0x1c];
@@ -20,25 +28,67 @@ struct Canvas02185f74
     char unk_8[0xe0 - 8];
 };
 
-struct Window02185f74
+struct WindowTransform02185f74
 {
-    char unk_0[0x98];
-    Background02185f74* background_;
-    char unk_9c[0xb2 - 0x9c];
-    unsigned char unk_b2;
-    char unk_b3[0xbc - 0xb3];
+    int field0, field4, field8, fieldC;
+    unsigned char field10;
+    int field14, field18, field1C, field20, field24, field28, field2C;
+};
+
+struct WindowFrame02185f74
+{
+    WindowTransform02185f74 transform;
+    int field30, field34;
+    short field38, field3A;
+    int field3C, field40, field44, field48;
+    unsigned char field4C, field4D, field4E;
+};
+
+struct WindowCursor02185f74
+{
+    WindowTransform02185f74 transform;
+    int field30;
+    short field34;
+    unsigned char field36, field37, field38, field39, field3A;
+    unsigned char unknown3B, field3C, field3D;
+};
+
+struct ProfileWindow02185f74
+{
+    unsigned int unknown0;
+    WindowFrame02185f74 frame;
+    WindowCursor02185f74 cursor;
+    unsigned char field94, field95;
+    Background02185f74* backgrounds;
+    Canvas02185f74* canvases;
+    unsigned short fieldA0, fieldA2, fieldA4, fieldA6;
+    unsigned short fieldA8, fieldAA, fieldAC, fieldAE;
+    unsigned char fieldB0, fieldB1, backgroundCount, canvasCount;
+    unsigned char fieldB4, fieldB5, fieldB6, fieldB7, fieldB8;
 };
 
 struct ProfileEditor02185f74
 {
-    char unk_0[0x20];
-    SafeAllocator allocators_[7];
-    Window02185f74 window_;
-    Background02185f74 backgrounds_[3];
-    Canvas02185f74 canvases_[13];
-    char unk_d28[0x137c - 0xd28];
-    void* pixels_;
-    int tasks_[6];
+#if !defined(jpn)
+    void* unknown0;
+    void* unknown4;
+#endif
+    struct BgControl {
+        unsigned short value;
+        unsigned short unknown;
+    } savedBgControls[4];
+    unsigned char bgControlsSaved;
+    unsigned char unknownFlag;
+    unsigned short unknownAlignment;
+    unsigned int savedPlanes;
+#if defined(jpn)
+    SafeAllocator allocators[6];
+#else
+    SafeAllocator allocators[7];
+#endif
+    ProfileWindow02185f74 window;
+    Background02185f74 backgrounds[3];
+    Canvas02185f74 canvases[13];
 };
 
 struct AllocTarget0204b12c;
@@ -72,20 +122,20 @@ extern "C" ARM void func_ov012_02185f74(ProfileEditor02185f74* self)
     int count;
     BackgroundLoader* loader;
     Canvas02185f74* canvas;
-    char name[4];
+    void* name;
     void* file;
     unsigned int size;
-    unsigned int fileSize;
+    int fileSize;
     loader = BackgroundLoader::GetInstance();
-    self->allocators_[0].Reset();
+    self->allocators[0].Reset();
     for (int i = 0; i < 3; i++)
     {
-        background = &self->backgrounds_[i];
+        background = &self->backgrounds[i];
         SetWord0x18ClearByte0x1f((unsigned char*)background, 0);
         background->unk_1c_0_ = 0;
         background->unk_1c_4_ = data_ov012_0218af75[i];
         func_0204b5b4(background, data_ov012_0218af78[i]);
-        _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator((AllocTarget0204b12c*)background, &self->allocators_[0]);
+        _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator((AllocTarget0204b12c*)background, &self->allocators[0]);
         _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((Obj0204b5e8*)background, 0, 0);
     }
     BG1CNT = (BG1CNT & 0x43) | 0x1d00;
@@ -93,33 +143,34 @@ extern "C" ARM void func_ov012_02185f74(ProfileEditor02185f74* self)
     BG3CNT = (BG3CNT & 0x43) | 0x1f08;
     ColorEffect_ConfigureAlphaBlend(0x4000050, 2, 1, 10, 6);
 
-    loader->GetLoadedFileByID(self->tasks_[3], &file, &size);
+    loader->GetLoadedFileByID(*(int*)((char*)self + kTask), &file, &size);
     count = CountActiveEntries((ActiveEntry02046900*)file);
     for (int i = 0; i < count; i++)
     {
-        void* data = FindRecordByIndex((Rec020467f0*)file, i, (void**)name, (int*)&fileSize);
+        void* data = FindRecordByIndex((Rec020467f0*)file, i, &name, &fileSize);
         if (data != 0)
         {
-            func_0204b174(&self->backgrounds_[1], data, &self->allocators_[0], fileSize);
-            func_0204b174(&self->backgrounds_[2], data, &self->allocators_[0], fileSize);
+            func_0204b174(&self->backgrounds[1], data, &self->allocators[0], fileSize);
+            func_0204b174(&self->backgrounds[2], data, &self->allocators[0], fileSize);
         }
     }
     for (int i = 0; i < 3; i++)
     {
-        background = &self->backgrounds_[i];
+        background = &self->backgrounds[i];
         func_0204bc74(background, 0, 0, 0, 0x20, 0x19, 0);
         _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv((List0204b0e8*)background, 0);
     }
-    self->pixels_ = self->allocators_[0].Allocate(0x7800);
+    char* storage = (char*)self;
+    *(void**)(storage + kPixels) = self->allocators[0].Allocate(0x7800);
     for (int i = 0; i < 13; i++)
     {
-        canvas = &self->canvases_[i];
-        _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij((Obj0204c7a8*)canvas, &self->allocators_[0], (int)self->pixels_, 0x800);
-        canvas->background_ = &self->backgrounds_[1];
+        canvas = &self->canvases[i];
+        _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij((Obj0204c7a8*)canvas, &self->allocators[0], (int)*(void**)(storage + kPixels), 0x800);
+        canvas->background_ = &self->backgrounds[1];
     }
-    self->window_.background_ = self->backgrounds_;
-    self->window_.unk_b2 = 3;
-    _Z29LinkArrayPrevPointers0205cf78P15Struct_0205cf78P13Elem_0205cf78h((Struct_0205cf78*)&self->window_, (Elem_0205cf78*)self->canvases_, 13);
-    loader->RemoveTask(self->tasks_[3]);
-    self->tasks_[3] = -1;
+    self->window.backgrounds = self->backgrounds;
+    self->window.backgroundCount = 3;
+    _Z29LinkArrayPrevPointers0205cf78P15Struct_0205cf78P13Elem_0205cf78h((Struct_0205cf78*)&self->window, (Elem_0205cf78*)self->canvases, 13);
+    loader->RemoveTask(*(int*)((char*)self + kTask));
+    *(int*)((char*)self + kTask) = -1;
 }

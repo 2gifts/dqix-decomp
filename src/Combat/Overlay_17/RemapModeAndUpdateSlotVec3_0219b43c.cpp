@@ -5,9 +5,8 @@ enum { RegionOffset630 = 0x630, SlotBaseOffset = 0x2b90 };
 #endif
 
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
-
-int GetField0x3b0Value(GameState* battleStruct);
 
 struct Vec3copy0202ec84 { unsigned int v[3]; };
 int ComputeTwoFromVec3_0202ec84(void* obj, struct Vec3copy0202ec84* src, int* out1, int* out2);
@@ -22,7 +21,7 @@ struct Slot0219b43c { unsigned char pad[0x88]; };
 
 // USA: func_ov017_0219b43c  (semantic: RemapModeAndUpdateSlotVec3_0219b43c)
 extern "C" ARM void func_ov017_0219b43c(char* obj, int mode, struct Vec3copy0202ec84* vec3, int extra, int arg5) {
-    void* fieldVal = (void*)GetField0x3b0Value(GameState::GetInstance());
+    void* fieldVal = GetField0x3b0Value(GameState::GetInstance());
     switch (mode) {
     case 2:
         mode = 2;

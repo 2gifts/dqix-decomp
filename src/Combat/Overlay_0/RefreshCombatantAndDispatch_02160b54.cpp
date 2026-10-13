@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #if defined(jpn)
 enum { flagsOffset = 0x57e4, workOffset = 0xe44, combatantOffset = 0x71c6, stateOffset = 0xe24, dispatchOffset = 0x5ca0 };
 #else
@@ -6,7 +7,6 @@ enum { flagsOffset = 0x55f4, workOffset = 0xec8, combatantOffset = 0x6fd6, state
 #endif
 #include "GameState/GameState.h"
 
-int GetField0x3b0Value(GameState* battleStruct);
 unsigned int GetBitsInField4(unsigned int* obj, unsigned int mask);
 extern "C" void func_02016874(void* big);
 extern "C" void func_ov000_02161020(void* obj);

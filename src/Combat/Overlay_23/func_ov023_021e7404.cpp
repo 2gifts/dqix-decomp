@@ -93,7 +93,7 @@ afterMinuteCarry:
     *(int*)(obj + 0x5ec) = *(int*)(obj + 0x5ec) + (useAmount << 11);
 
     if (*(int*)(obj + 0x5e8) < -0x100000) {
-        *(int*)(obj + 0x5e8) = *(int*)(obj + 0x5e8) + 0x100000;
+        *(int*)(obj + 0x5e8) += 0x100000;
     }
     if (*(int*)(obj + 0x5ec) > 0x100000) {
         *(int*)(obj + 0x5ec) = *(int*)(obj + 0x5ec) - 0x100000;

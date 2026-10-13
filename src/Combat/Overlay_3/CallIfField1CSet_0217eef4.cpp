@@ -1,12 +1,16 @@
+// KEEP-NAME
+// USA: func_ov003_0217eef4
 #include <globaldefs.h>
 
-struct Obj0217eef4 { char pad[0x1c]; void* field1c; };
+struct Obj0217eef4 {
+    unsigned char unknown[0x1c];
+    void* child;
+};
 
 extern "C" void func_ov009_02184ca4(void*);
 
-// USA: func_ov003_0217eef4
-ARM void CallIfField1CSet_0217eef4(struct Obj0217eef4* obj) {
-    if (obj->field1c) {
-        func_ov009_02184ca4(obj->field1c);
+ARM void CallIfField1CSet_0217eef4(Obj0217eef4* owner) {
+    if (owner->child) {
+        func_ov009_02184ca4(owner->child);
     }
 }

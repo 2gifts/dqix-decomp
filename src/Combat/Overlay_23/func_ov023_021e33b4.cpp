@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include <Filesystem/BackgroundLoader.h>
 #include <Memory/SafeAllocator.h>
 #include "GameState/GameState.h"
@@ -68,7 +69,7 @@ struct BattleSetup021e33b4 {
     Model021e33b4* models_120[2];
     Model021e33b4* current_128[2];
     char unk_130[0x138 - 0x130];
-    int camera_138;
+    void* camera_138;
     char camera_13c[0x404 - 0x13c];
     char pairTables_404[0x474 - 0x404];
     char pairTables_474[0x4e4 - 0x474];
@@ -114,7 +115,6 @@ extern "C" void _Z19SetByteC11_021e6150Pvh(void* model, unsigned char value);
 extern "C" void _Z22InitWordsQuad_021e60e0Pvj(void* model, unsigned int value);
 extern "C" void* _Z26GetGlobalField0x1c020421a0v();
 void SetField0x1e28(void* messages, void* tables);
-int GetField0x3b0Value(GameState* gameState);
 void SetField0x3b0Value(GameState* gameState, int camera);
 int GetField0x3acValue(GameState* gameState);
 extern "C" void _Z28InitCombatController020a2010Pv(void* camera);

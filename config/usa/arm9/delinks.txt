@@ -383,6 +383,10 @@ src/Combat/Main/func_0200d894.cpp:
     complete
     .text start:0x0200d894 end:0x0200d8a8
 
+src/Combat/Main/sys_readc.cpp:
+    complete
+    .text start:0x0200d8a8 end:0x0200d8bc
+
 src/Combat/Main/sys_exit.cpp:
     complete
     .text start:0x0200d8bc end:0x0200d8cc
@@ -19805,3 +19809,28 @@ src/Combat/Main/func_020aeb34.cpp:
 src/Combat/Main/func_0206b974.cpp:
     complete
     .text start:0x0206b974 end:0x0206bf2c
+
+
+src/Combat/Main/func_020a1940.cpp:
+    complete
+    .text start:0x020a1940 end:0x020a1a40
+
+src/Combat/Main/SelectWeightedEntry02073fdc.cpp:
+    complete
+    .text start:0x02073fdc end:0x02074060
+
+src/Combat/Main/func_020adda4.cpp:
+    complete
+    .text start:0x020adda4 end:0x020adfa8
+
+src/Combat/Main/func_0205b734.cpp:
+    complete
+    .text start:0x0205b734 end:0x0205b890
+
+src/Combat/Main/func_0206e424.cpp:
+    complete
+    .text start:0x0206e424 end:0x0206e558
+
+src/Combat/Main/func_020a9b2c.cpp:
+    complete
+    .text start:0x020a9b2c end:0x020a9ba4

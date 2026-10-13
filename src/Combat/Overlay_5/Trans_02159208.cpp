@@ -16,39 +16,20 @@
 #endif
 #include <globaldefs.h>
 
-extern "C" unsigned int _Z19GetField1c_021a193cPi(unsigned int);
-extern "C" unsigned int _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(unsigned int, unsigned int);
-extern "C" unsigned int func_ov005_0215792c(unsigned int, unsigned int);
-extern "C" unsigned int func_ov017_0218b5b0(unsigned int, unsigned int);
+extern "C" unsigned char* _Z19GetField1c_021a193cPi(int);
+extern "C" void _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(unsigned char*, int);
+extern "C" void func_ov005_0215792c(unsigned char*, int);
+extern "C" unsigned char* func_ov017_0218b5b0(void);
 
 // USA: func_ov005_02159208  (semantic: Trans_02159208)
-extern "C" ARM unsigned int func_ov005_02159208(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
-    unsigned int r4 = 0;
-    r4 = r0;
-    r0 = r4 + 0x3000;
-    r0 = *(unsigned char*)((char*)r0 + R(0xd54, 0xddc));
-    if (r0 != 0) { return r0; }
-    r0 = r4 + R(0xee0, 0x2e4);
-#if !defined(jpn)
-    r0 = r0 + 0xc00;
-#endif
-    r1 = 0x1;
-    r0 = (unsigned int)_Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(r0, r1);
-    r0 = r4;
-    r1 = 0x6;
-    r0 = (unsigned int)func_ov005_0215792c(r0, r1);
-    r0 = r4 + 0x3000;
-    r1 = 0x0;
-    *(unsigned char*)((char*)r0 + R(0xd54, 0xddc)) = (unsigned char)r1;
-    *(unsigned char*)((char*)r0 + R(0xd56, 0xdde)) = (unsigned char)r1;
-    *(unsigned char*)((char*)r0 + R(0xd57, 0xddf)) = (unsigned char)r1;
-    r0 = (unsigned int)func_ov017_0218b5b0(r0, r1);
-    r0 = r0 + 0x3000;
-    r0 = *(unsigned int*)((char*)r0 + R(0x4f8, 0x708));
-    r0 = (unsigned int)_Z19GetField1c_021a193cPi(r0);
-    r0 = r0 + R(0x500, 0x600);
-    r1 = *(unsigned short*)((char*)r0 + R(0x6c, 0x34));
-    r1 = r1 | 0x81;
-    *(unsigned short*)((char*)r0 + R(0x6c, 0x34)) = (unsigned short)r1;
-    return r0;
+extern "C" ARM void func_ov005_02159208(unsigned char* self) {
+    if (self[R(0x3d54, 0x3ddc)] != 0) {
+        return;
+    }
+    _Z22ResetEntryList0205d6a0P14Entry_0205d6a0i(self + R(0xee0, 0xee4), 1);
+    func_ov005_0215792c(self, 6);
+    self[R(0x3d54, 0x3ddc)] = 0;
+    self[R(0x3d56, 0x3dde)] = 0;
+    self[R(0x3d57, 0x3ddf)] = 0;
+    *(unsigned short*)(_Z19GetField1c_021a193cPi(*(int*)(func_ov017_0218b5b0() + R(0x34f8, 0x3708))) + R(0x56c, 0x634)) |= 0x81;
 }
