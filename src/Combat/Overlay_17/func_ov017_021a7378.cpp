@@ -5,6 +5,7 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "System/Matrix.h"
 #include "System/Graphics.h"
+#include "Combat/Main/CopyRecord0200fbb4.h"
 
 struct MessageWindow {
     char pad0[0x998];
@@ -102,7 +103,6 @@ void InitStruct02070378(char* obj);
 void* GetPtrField0x114(void* obj);
 int CheckBits5To9NonZero0204bedc(unsigned short* obj);
 int ConvertColorToDecimalOffset20000(ColorHolder0204bef4* obj);
-extern "C" void* _Z28CallFunc0200fbb4AtField0x3f8Pv(GameState* gs, CameraParams* params);
 void InitAndResetHeader_0219e310(unsigned char* obj, int flag);
 void AppendNodeToTail(TailList020469b4* list, TailNode020469b4* node);
 void InitAndAppendState61_021a65c4(void* scene, unsigned char kind, int arg);

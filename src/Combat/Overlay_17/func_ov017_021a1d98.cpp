@@ -36,8 +36,7 @@ unsigned int GetBitsInField4(unsigned int*, unsigned int);
 extern "C" int _Z37TickActorFlagStateAndDispatch02076becPhPv(unsigned char*, void*);
 struct BitField0203402c;
 int CheckField0xc4Low15BitsNonZero(BitField0203402c*);
-extern "C" void _ZNK8Object3D20MaybeGetShadowSourceEv(Vector3fix*, GameObject*);
-extern "C" void _Z23SyncBattleState0208f87cPviii(void*, int, int, int, int);
+extern "C" void _Z23SyncBattleState0208f87cPviii(const Vector3fix*, int, int, int, int);
 
 // USA: func_ov017_021a1d98
 extern "C" ARM void func_ov017_021a1d98(unsigned int* flags, int id) {
@@ -86,8 +85,7 @@ extern "C" ARM void func_ov017_021a1d98(unsigned int* flags, int id) {
             int value = (int)((float)field3c / 31.0f * (float)alpha);
             int shadowScale = monster->shadowInfo_ ? monster->shadowInfo_->scale : 0x1000;
             fix32_t size = FIX32_MULTIPLY(shadowScale, monster->obj3D_.GetScale().x * 15);
-            Vector3fix shadow;
-            _ZNK8Object3D20MaybeGetShadowSourceEv(&shadow, monster);
+            const Vector3fix& shadow = monster->obj3D_.MaybeGetShadowSource();
             _Z23SyncBattleState0208f87cPviii(&shadow, field38, size, value, 8);
         }
     }

@@ -158,13 +158,12 @@ void func_0204500c(MessageSystem_021f1234* messages, const char* text, int a, in
 #endif
 #if defined(jpn)
 void func_0204500c(MessageSystem_021f1234*,const char*,int);
-unsigned char func_ov013_021847c4(void*,int);
 #endif
 int func_ov023_021f4fc8();
 void func_ov013_02186eec(SkillAbilityList_021f1234* abilities, int a);
 void func_ov013_02184b4c(SkillPointMenu_021f1234* menu, void* member);
 int func_ov013_021870f0(SkillAbilityList_021f1234* abilities);
-extern "C" unsigned char _Z19ResetFields021847c4P14Struct021847c4(void* menu, int ticks);
+unsigned char func_ov013_021847c4(void* menu, int ticks);
 void func_ov013_0218782c(SkillAbilityList_021f1234* abilities, int member, int skill);
 void func_ov013_02186fa0(SkillAbilityList_021f1234* abilities);
 void func_ov013_02184c8c(SkillPointMenu_021f1234* menu, void* member);
@@ -297,12 +296,7 @@ extern "C" ARM int func_ov023_021f1234(BattleScene_021f1234* self)
         else if (end->step_ == 5)
         {
             void* member = GetCombatantWithFlag0x100(gameState, id);
-#if defined(jpn)
             if (func_ov013_021847c4(self->skillMenu_, gameState->GetTickCount()) == 6)
-#else
-            if (_Z19ResetFields021847c4P14Struct021847c4(self->skillMenu_, gameState->GetTickCount()) == 6)
-#endif
-
             {
                 if (loader->GetNumQueuedTasks() > 0)
                     return self->endState_;

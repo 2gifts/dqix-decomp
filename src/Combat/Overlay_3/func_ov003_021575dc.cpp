@@ -18,9 +18,6 @@ extern "C" void* _Z17GetPtrField0x2a04P9GameState(struct BattleStruct* battleStr
 extern "C" struct CombatantStruct* _Z25GetCombatantWithFlag0x100P9GameStatei(struct BattleStruct* battleStruct, int combatantId);
 extern "C" struct BattleStruct* _ZN9GameState11GetInstanceEv();
 
-// mangled (_Z...) callees -- declared under their literal mangled symbol via
-// extern "C" so the linker resolves the exact ROM symbol without needing the
-// callee's real (unknown) struct types. See doc_cache "EXTERN C AND MANGLING".
 extern "C" int _Z26FindMappedMemberId02080468Pvi(void* obj, int id);
 extern "C" void _Z20ResetWithSub0208203cP11Obj0208203c(void* obj);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(void* obj, int a, int b);
@@ -45,8 +42,6 @@ extern "C" void* _Z26FindElementByField020a15bcP13Array020a15bci(void* arr, int 
 extern "C" void _Z30AppendFormattedNumber_02158140P11Obj02158140i(void* obj, int val);
 extern "C" void _Z21BlankFunction02094b34v(void* p0, int p1, int p2, int p3, int p4);
 
-// plain-C++ callees with already-known real signatures (project headers /
-// sibling files already declare these with matching types).
 extern "C" struct CombatantStruct* _ZN9GameState21GetPartyMemberByIndexEi(struct BattleStruct* battleStruct, int combatantId);
 extern "C" int _Z18GetField0x3acValueP9GameState(struct BattleStruct* battleStruct);
 int TestBitInByteArray(int, unsigned char*, int);
@@ -61,7 +56,6 @@ void SetCombatModeFromCase020dc2d0(int);
 extern "C" ARM int _Z28IsBrightnessTransitionActiveP13GameResources(int* obj);
 ARM void* Clear0x54Bytes0208247c(void* obj);
 
-// func_ names -- raw hex symbols, extern "C" with our own convenient types.
 extern "C" void __clear(void* buf, int len);
 extern "C" void* ExtractFileFromGP2(const char* gp2Path, const char* innerFilePath, unsigned int* outSize);
 extern "C" ARM int func_020813ec(void* obj, int id);
@@ -388,7 +382,7 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
     } else if (state == 0x65) {
         if (*(void**)(s + 0x204) != 0) {
             func_ov023_021eb43c(*(void**)(s + 0x204));
-            if (*(unsigned short*)((char*)*(void**)(s + 0x204) + 0x400 + 0x38) & 4) {
+            if (*(unsigned short*)(*(char**)(s + 0x204) + 0x438) & 4) {
                 func_ov023_021eb26c(*(void**)(s + 0x204));
                 ((SafeAllocator*)(*(char**)s + 0x64))->Reset();
                 *(void**)(s + 0x200) = 0;

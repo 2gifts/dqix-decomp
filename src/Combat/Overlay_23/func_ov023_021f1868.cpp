@@ -164,7 +164,7 @@ const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
 void InitObj_021f222c(Obj_021f222c* page);
 void FormatLabelIntoBufC_021f2304(void* page, char* title);
 void* GetGlobal02109400();
-extern "C" void _Z21BlankFunction02094b40v(void* music);
+void BlankFunction02094b40();
 extern "C" void _Z21BlankFunction02094b34v(void* music, int a, int b, int c, int d);
 extern "C" int _Z18AlwaysTrue02094b4cv(void* music);
 void SetOrClearBit10At400_38_021f2348(void* guide, int value);
@@ -382,7 +382,7 @@ extern "C" ARM int func_ov023_021f1868(BattleScene_021f1868* self)
             self->titles_ = NULL;
             self->busy_ = 0;
             void* music = GetGlobal02109400();
-            _Z21BlankFunction02094b40v(music);
+            BlankFunction02094b40();
             _Z21BlankFunction02094b34v(music, 0x65, 500, 0, 0);
             end->step_ = 8;
         }
@@ -413,7 +413,7 @@ extern "C" ARM int func_ov023_021f1868(BattleScene_021f1868* self)
         self->busy_ = 0;
         SetMainBrightness(GetWord0x0((int*)gameState), 0, 0xf);
         void* music = GetGlobal02109400();
-        _Z21BlankFunction02094b40v(music);
+        BlankFunction02094b40();
         _Z21BlankFunction02094b34v(music, 0x65, 500, 0, 0);
         end->step_++;
     }
