@@ -200,25 +200,13 @@ static inline const SlotMap0201099c* GetSlotMap0201099c(int index) {
     return &data_020e6d74[index];
 }
 
-static inline unsigned short GetStat6c0201099c(const CharacterProfile0201099c* profile) {
-    unsigned short value = profile->stat6c;
-    return value;
-}
+static inline unsigned short GetStat6c0201099c(const CharacterProfile0201099c* profile) { SDK_NULL_ASSERT(profile); return profile->stat6c; }
 
-static inline unsigned short GetStat6e0201099c(const CharacterProfile0201099c* profile) {
-    unsigned short value = profile->stat6e;
-    return value;
-}
+static inline unsigned short GetStat6e0201099c(const CharacterProfile0201099c* profile) { SDK_NULL_ASSERT(profile); return profile->stat6e; }
 
-static inline unsigned short GetStat700201099c(const CharacterProfile0201099c* profile) {
-    unsigned short value = profile->stat70;
-    return value;
-}
+static inline unsigned short GetStat700201099c(const CharacterProfile0201099c* profile) { SDK_NULL_ASSERT(profile); return profile->stat70; }
 
-static inline unsigned short GetStat720201099c(const CharacterProfile0201099c* profile) {
-    unsigned short value = profile->stat72;
-    return value;
-}
+static inline unsigned short GetStat720201099c(const CharacterProfile0201099c* profile) { SDK_NULL_ASSERT(profile); return profile->stat72; }
 
 // USA: func_0201099c
 extern "C" ARM void func_0201099c(GameState0201099c* gs) {
