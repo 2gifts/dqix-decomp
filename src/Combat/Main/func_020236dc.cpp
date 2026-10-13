@@ -44,15 +44,15 @@ extern "C" GameResources* func_ov017_0218b5b0();
 extern "C" void* func_02012fe4();
 extern "C" void* func_0202ae18();
 extern "C" void* func_0205ec34();
-extern "C" void* _Z27GetDataPtr02114e04_020d6c00v();
+void* GetDataPtr02114e04_020d6c00();
 GameObject* GetCombatantWithFlag0x1000(GameState*, int);
-extern "C" int _Z17TestFlags02046708P16FlagWord02046708j(FlagWord02046708*, unsigned int);
+int TestFlags02046708(FlagWord02046708*, unsigned int);
 void GetFields1a8And1ac(S3f58*, int*, int*);
 unsigned char GetField0x1b0(void*);
 int GetField0x3acValue(GameState*);
 int GetSignedByte0x1c9(void*);
 int TestBitInByteArray(int, unsigned char*, int);
-extern "C" int _Z26FindEntryByKeyPair02021394P17Container02021394iiPsS1_(Container02021394*, int, int, short*, short*);
+int FindEntryByKeyPair02021394(Container02021394*, int, int, short*, short*);
 extern unsigned short data_020e704c[];
 
 struct ActionOutputState020236dc {
@@ -68,7 +68,7 @@ extern "C" ARM int func_020236dc(CombatActionPosition* entries, unsigned char* g
     Zone3D* zone = (Zone3D*)func_02012fe4();
     func_0202ae18();
     SaveFlags020236dc* saved = (SaveFlags020236dc*)func_0205ec34();
-    FlagWord02046708* flags = (FlagWord02046708*)_Z27GetDataPtr02114e04_020d6c00v();
+    FlagWord02046708* flags = (FlagWord02046708*)GetDataPtr02114e04_020d6c00();
     Container02021394* container = (Container02021394*)resources->unknown_ptr_36d0;
     ActionOutputState020236dc output;
     output.entries = entries;
@@ -91,7 +91,7 @@ extern "C" ARM int func_020236dc(CombatActionPosition* entries, unsigned char* g
         CombatActionPosition* entry = &output.entries[output.count];
         entry->combatantId = i;
         ++output.count;
-        entry->flag11 = member->fields.field1b2 && !_Z17TestFlags02046708P16FlagWord02046708j(flags, 0x80000) ? 1 : 0;
+        entry->flag11 = member->fields.field1b2 && !TestFlags02046708(flags, 0x80000) ? 1 : 0;
         entry->flag12 = protagonist ? protagonist->obj3D_.GetField06() == member->game.obj3D_.GetField06() : 0;
         if (member->fields.flags & 0x10) {
             GetFields1a8And1ac((S3f58*)member, &entry->position.x, &entry->position.z);
@@ -139,7 +139,7 @@ extern "C" ARM int func_020236dc(CombatActionPosition* entries, unsigned char* g
     if (found && TestBitInByteArray((int)saved, saved->flags, 0x2b)) {
         short x = 0;
         short z = 0;
-        if (_Z26FindEntryByKeyPair02021394P17Container02021394iiPsS1_(container, zoneFields->id, (unsigned char)zoneFields->key, &x, &z)) {
+        if (FindEntryByKeyPair02021394(container, zoneFields->id, (unsigned char)zoneFields->key, &x, &z)) {
             CombatActionPosition* entry = &output.entries[output.count];
             ++output.count;
             VectorizedMemset(entry, 0, sizeof(*entry));
