@@ -19839,3 +19839,23 @@ src/Combat/Main/func_020a9b2c.cpp:
 src/Combat/Main/func_02058d40.cpp:
     complete
     .text start:0x02058d40 end:0x02059720
+
+src/Combat/Main/CalculateRotationFrameAligned.cpp:
+    complete
+    .text start:0x020b8598 end:0x020b89b0
+
+src/Combat/Main/func_0204956c.cpp:
+    complete
+    .text start:0x0204956c end:0x02049a74
+
+src/Combat/Main/func_02057fd8.cpp:
+    complete
+    .text start:0x02057fd8 end:0x02058564
+
+src/Combat/Main/func_02067b28.cpp:
+    complete
+    .text start:0x02067b28 end:0x02067e58
+
+src/Combat/Main/func_02067fec.cpp:
+    complete
+    .text start:0x02067fec end:0x020680cc
