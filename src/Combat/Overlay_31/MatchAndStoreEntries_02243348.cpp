@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include <Combat/Overlay31EntryLookup.h>
 #include "std_library_functions.h"
 
 struct Struct02030b7c {
@@ -7,7 +8,6 @@ struct Struct02030b7c {
 };
 
 extern "C" void* _ZNK6Script9Parameter8ToStringEv(struct Struct02030b7c* s);
-int GetOffset10FromResult_0220ec04(int arg);
 
 struct DataBlock02291e04 {
     unsigned char count;
@@ -33,9 +33,9 @@ extern "C" ARM int func_ov031_02243348(struct Struct02030b7c* s) {
     int matched = 0;
     int i = 0;
     while (i < data_ov031_02291e04.count) {
-        int entry = GetOffset10FromResult_0220ec04(i);
-        if (strcmp((char*)entry + 0xc, (char*)target) == 0) {
-            memcpy((char*)data_ov031_02291e04.entries + matched * 0xc0, (void*)entry, 0xc0);
+        const void* entry = GetOffset10FromResult_0220ec04(i);
+        if (strcmp((const char*)entry + 0xc, (char*)target) == 0) {
+            memcpy((char*)data_ov031_02291e04.entries + matched * 0xc0, entry, 0xc0);
             matched++;
             if (matched >= 8) break;
         }

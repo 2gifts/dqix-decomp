@@ -1,11 +1,5 @@
 #include <globaldefs.h>
-
-struct LookupNode_0220ee50 {
-    int field0;
-    int id;
-    int field8;
-    LookupNode_0220ee50* next;
-};
+#include <Combat/Overlay31EntryLookup.h>
 
 struct LookupList_0220ee50 {
     int field0;
@@ -21,7 +15,7 @@ struct LookupContext_0220ee50 {
 int GetData0224e53c_0220d60c(void);
 
 // USA: func_ov031_0220ee50
-extern "C" ARM int func_ov031_0220ee50(int id) {
+extern "C" ARM LookupNode_0220ee50* func_ov031_0220ee50(int id) {
     LookupContext_0220ee50* context = (LookupContext_0220ee50*)GetData0224e53c_0220d60c();
     LookupList_0220ee50* list = context->list;
     LookupNode_0220ee50* node = NULL;
@@ -34,5 +28,5 @@ extern "C" ARM int func_ov031_0220ee50(int id) {
             } while (node != NULL);
         }
     }
-    return (int)node;
+    return node;
 }
