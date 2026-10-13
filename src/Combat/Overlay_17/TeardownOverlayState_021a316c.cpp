@@ -12,7 +12,7 @@ extern "C" void func_020da244(void* p);
 extern "C" void* func_02012fe4(void);
 extern int data_ov017_021d82fc;
 
-extern "C" void _Z29ClearSlotsAndProcess_021a27e8v(void* unused);
+void ClearSlotsAndProcess_021a27e8(void* controller);
 extern "C" void _ZN8Object3D7DestroyEv(unsigned char* obj);
 
 void* GetGlobalPtr021075f4(void);
@@ -61,7 +61,7 @@ extern "C" ARM void func_ov017_021a316c(unsigned char* obj) {
     }
 
     func_020da244(&data_ov017_021d82fc);
-    _Z29ClearSlotsAndProcess_021a27e8v(obj);
+    ClearSlotsAndProcess_021a27e8(obj);
 
     for (i = 0; i < 0x30; i++) {
         GameObject* c = battleStruct->GetMaybeFieldMonsterByIndex(i + 0x70);

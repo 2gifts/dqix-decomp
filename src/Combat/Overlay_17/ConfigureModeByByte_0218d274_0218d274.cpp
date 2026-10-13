@@ -7,7 +7,7 @@ void ConfigurePairMode020bb48c(unsigned int mode, int installHandlers);
 void InitGlobalStateAndInstallHandlers020bb780(void* value, int installHandlers);
 
 // USA: func_ov017_0218d274
-ARM void ConfigureModeByByte_0218d274_0218d274(void) {
+ARM void ConfigureModeByByte_0218d274_0218d274(void* controller) {
 	if (GetByte0x4((char*)GameState::GetInstance()) == 6) {
 		MapVRAMBanksToTextureImage(3);
 		ConfigurePairMode020bb48c(2, 1);

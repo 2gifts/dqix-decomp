@@ -47,7 +47,7 @@ extern "C" unsigned int* _Z27GetDataPtr02114e04_020d6c00v();
 void OrBitsIntoField0(unsigned int*, unsigned int);
 void EmptyStub02047198(Struct02046f84*);
 extern "C" void _Z31ResetObjectAndAllocator02046f84P14Struct02046f84(Struct02046f84*);
-extern "C" void _Z37ConfigureModeByByte_0218d274_0218d274v();
+void ConfigureModeByByte_0218d274_0218d274(void* controller);
 extern "C" void _Z35ProcessCombatantsIfFlagged_0218f79cPv(void*);
 void ProcessSlotField58_021a2840(GameResources*);
 extern char data_ov017_021d7c10[];
@@ -119,7 +119,7 @@ extern "C" ARM void func_ov017_021b6290(BattleLoad021b6290* self) {
             OrBitsIntoField0(_Z27GetDataPtr02114e04_020d6c00v(), 1);
             EmptyStub02047198(&self->action);
             _Z31ResetObjectAndAllocator02046f84P14Struct02046f84(&self->action);
-            ((void (*)(GameResources*))_Z37ConfigureModeByByte_0218d274_0218d274v)(resources);
+            ConfigureModeByByte_0218d274_0218d274(resources);
             _Z35ProcessCombatantsIfFlagged_0218f79cPv(resources);
             ProcessSlotField58_021a2840(resources);
             SetOrClearBit0x10OnEntries(GetGlobalPtr021075f4(), 1);

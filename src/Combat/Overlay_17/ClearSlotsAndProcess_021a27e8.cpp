@@ -6,7 +6,7 @@ extern "C" void* func_02057924(void);
 extern "C" void func_02057f00(void* obj, int index);
 
 // USA: func_ov017_021a27e8
-ARM void ClearSlotsAndProcess_021a27e8(void) {
+ARM void ClearSlotsAndProcess_021a27e8(void* controller) {
     GameState* battleStruct = GameState::GetInstance();
     void* obj = func_02057924();
 

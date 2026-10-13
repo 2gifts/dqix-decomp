@@ -74,7 +74,7 @@ extern "C" unsigned int DisableMainBGVRAMBanks();
 extern "C" unsigned int DisableSubBGVRAMBanks();
 extern "C" unsigned int DisableMainObjVRAMBanks();
 extern "C" unsigned int DisableSubObjVRAMBanks();
-extern "C" void _Z37ConfigureModeByByte_0218d274_0218d274v(void* self);
+void ConfigureModeByByte_0218d274_0218d274(void* controller);
 extern "C" void MapVRAMBanksToTexturePalette(int value);
 extern "C" void MapVRAMBanksToMainBG(int v);
 extern "C" void MapVRAMBanksToSubBG(int v);
@@ -468,7 +468,7 @@ extern "C" ARM void func_ov017_0218b688(Battle0218b688* self) {
     DisableSubBGVRAMBanks();
     DisableMainObjVRAMBanks();
     DisableSubObjVRAMBanks();
-    _Z37ConfigureModeByByte_0218d274_0218d274v(self);
+    ConfigureModeByByte_0218d274_0218d274(self);
     MapVRAMBanksToTexturePalette(0x40);
     MapVRAMBanksToMainBG(0x10);
     *(volatile unsigned int*)0x4000000 &= ~0x7000000;

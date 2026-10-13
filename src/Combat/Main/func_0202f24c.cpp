@@ -5,7 +5,7 @@
 
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
 void* LoadFileIntoMemory(const char*, void*, unsigned int*);
-void LoadEightEntriesFromTable(char*, void*);
+void LoadEightEntriesFromTable(char*, void*, void*);
 
 extern AllocatorUnion data_02114e20;
 extern char data_020ef7ac[];
@@ -35,7 +35,7 @@ extern "C" ARM void func_0202f24c(struct EntryTable0202f24c* obj) {
     if (fileData != 0) {
         NarcHandle handle;
         if (handle.Initialize(data_020ef7c0, (const unsigned char*)fileData)) {
-            ((void (*)(char*, void*, void*))LoadEightEntriesFromTable)((char*)obj, obj->alloc, fileData);
+            LoadEightEntriesFromTable((char*)obj, obj->alloc, fileData);
             handle.Destroy();
         }
     }

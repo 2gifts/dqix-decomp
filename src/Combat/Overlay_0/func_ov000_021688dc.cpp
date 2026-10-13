@@ -100,7 +100,7 @@ extern "C" void func_ov017_021c9e00(int a, int b, int c, int d);
 extern "C" void func_ov017_0219bd1c(int a, int b, int c, int d);
 extern "C" void func_ov000_021626a0(void* work, int a, int b);
 
-extern "C" void _Z37ConfigureModeByByte_0218d274_0218d274v(int dead);
+void ConfigureModeByByte_0218d274_0218d274(void* controller);
 extern "C" void _Z34SetupCombatantAllocations_021901acv(int dead);
 
 int GetField0x3acValue(GameState* state);
@@ -284,7 +284,7 @@ extern "C" ARM void func_ov000_021688dc(unsigned char* work) {
         }
     }
 
-    _Z37ConfigureModeByByte_0218d274_0218d274v(ovBase);
+    ConfigureModeByByte_0218d274_0218d274((void*)ovBase);
     ClearBitsInField4((unsigned int*)ovBase, 0x200000);
     _Z23ResetEntryByKey0207da7cP13Entry0207d9bct((struct Entry0207d9bc*)dataPtr20, *(unsigned short*)(*(unsigned char**)(work + kWorkConfig) + 8));
     *(unsigned char*)(globalBase + kGlobalTransitionFlag) = 0;

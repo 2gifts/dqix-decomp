@@ -11,7 +11,7 @@ extern int data_020ef7c4;
 struct PathBuf0202f310 { char path[0x28]; };
 
 // USA: func_0202f310
-ARM void LoadEightEntriesFromTable(char* obj, void* param2) {
+ARM void LoadEightEntriesFromTable(char* obj, void* param2, void* data) {
     struct PathBuf0202f310 buf;
     char* p;
     int i;

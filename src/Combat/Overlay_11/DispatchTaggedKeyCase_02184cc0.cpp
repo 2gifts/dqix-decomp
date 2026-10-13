@@ -19,7 +19,7 @@ void SetFlags114_021849ac(void* obj, unsigned int mask);
 
 extern "C" void func_0203e0a0(void* g, unsigned short val);
 void* ResetOverlayAndAllocator_0219bf74(void);
-void ClearSlotsAndProcess_021a27e8(void);
+void ClearSlotsAndProcess_021a27e8(void* controller);
 
 struct Struct_0203cfb4;
 void Init0203cfb4(struct Struct_0203cfb4* obj);
@@ -47,7 +47,7 @@ extern "C" ARM int func_ov011_02184cc0(struct TaggedNumber02184c30* tagged) {
     case 1:
         if (GetField114Masked_021849bc(obj2, 2)) return 1;
         func_0203e0a0(g, *(unsigned short*)s);
-        ((void(*)(int))ClearSlotsAndProcess_021a27e8)(p1);
+        ClearSlotsAndProcess_021a27e8((void*)p1);
         Init0203cfb4((struct Struct_0203cfb4*)g);
         func_ov017_021a316c(p1);
         SetBitsInField4((unsigned int*)p1, 8);

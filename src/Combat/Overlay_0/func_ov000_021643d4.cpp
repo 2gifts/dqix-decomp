@@ -196,7 +196,7 @@ extern "C" void _Z33ResetOverlayAndAllocator_0219bf74v();
 extern "C" void func_ov017_0219bd1c(int a, int b, int c, int d);
 extern "C" struct Field3f8* _Z20GetField0x3f8AddressP9GameState(int gs);
 extern "C" int _Z18GetField0x3acValueP9GameState(int gs);
-extern "C" void _Z29ClearSlotsAndProcess_021a27e8v(int ov);
+void ClearSlotsAndProcess_021a27e8(void* controller);
 extern "C" void func_ov017_0219b938(int ov);
 extern "C" Actor* _ZN9GameState27GetMaybeFieldMonsterByIndexEi(int gs, int idx);
 extern "C" void _ZN8Object3D7DestroyEv(Actor* a);
@@ -358,7 +358,7 @@ extern "C" ARM void func_ov000_021643d4(CombatRoot* c) {
         *(unsigned short*)p = w;
         p[0xa] = 0;
     }
-    _Z29ClearSlotsAndProcess_021a27e8v(ov);
+    ClearSlotsAndProcess_021a27e8((void*)ov);
     func_ov017_0219b938(ov);
     for (int k = 0; k < 12; k++) {
         Actor* fm = _ZN9GameState27GetMaybeFieldMonsterByIndexEi(gs, k + (entry->kind * 12 + 0x70));
