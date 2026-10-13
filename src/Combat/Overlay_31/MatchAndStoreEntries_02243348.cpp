@@ -34,7 +34,7 @@ extern "C" ARM int func_ov031_02243348(struct Struct02030b7c* s) {
     int i = 0;
     while (i < data_ov031_02291e04.count) {
         const void* entry = GetOffset10FromResult_0220ec04(i);
-        if (strcmp(static_cast<const char*>(entry) + 0xc, (char*)target) == 0) {
+        if (strcmp((const char*)entry + 0xc, (char*)target) == 0) {
             memcpy((char*)data_ov031_02291e04.entries + matched * 0xc0, entry, 0xc0);
             matched++;
             if (matched >= 8) break;
