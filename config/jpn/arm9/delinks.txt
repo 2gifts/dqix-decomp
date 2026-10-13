@@ -16946,3 +16946,7 @@ src/Combat/Main/func_02047b40.cpp:
 src/Combat/Main/CalculateScalingAmountSmooth.cpp:
     complete
     .text start:0x020b9ed0 end:0x020ba064
+
+src/Combat/Main/func_02015ae4.cpp:
+    complete
+    .text start:0x020158b0 end:0x02015a9c
