@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 #include "Resource/GameResources.h"
@@ -77,7 +78,7 @@ struct SceneSwap0217e6b0 {
     int word;
     int field4;
     int field8;
-    int fieldB0;
+    void* fieldB0;
     unsigned char sceneArg;
 };
 
@@ -109,7 +110,6 @@ void PushInputLogB(int id);
 extern "C" void func_ov009_0218454c(void* scene, int a, int b);
 extern "C" void func_ov008_021842a0(void* scene, SafeAllocator* alloc);
 extern "C" void func_02082828(void* obj);
-int GetField0x3b0Value(GameState* gs);
 void SetField0x3b0Value(GameState* gs, int v);
 extern "C" void _Z24SetPowCnt1Bit15_0217eea8i(int enable);
 void LockStagedTextureVRAMCopying(void);
@@ -308,7 +308,7 @@ extern "C" ARM void func_ov003_0217e6b0(SceneSwap0217e6b0* self) {
         _Z35ProcessCombatantsIfFlagged_0218f79cPv(res);
         _Z27ProcessSlotField58_021a2840v(res);
         _Z23CleanupNodeList02058564P16NodeList02058564((NodeList02058564*)func_02057924());
-        SetField0x3b0Value(gs, self->fieldB0);
+        SetField0x3b0Value(gs, (int)self->fieldB0);
         func_ov017_0219b624(res);
         func_ov017_0219ba0c(res, 0);
         char* fields = res->unknown_2cc;

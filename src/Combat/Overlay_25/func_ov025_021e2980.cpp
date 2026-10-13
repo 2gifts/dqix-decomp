@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 #include "Graphics/LightingManager.h"
 
@@ -47,7 +48,6 @@ extern char data_ov025_021ef7d9[];
 extern char data_ov025_021ef7df[];
 extern char data_ov025_021ef7e6[];
 extern Obj0205eaa0 data_02108760;
-int GetField0x3b0Value(GameState*);
 int GetFlags(int);
 Object3D* GetField0x21c(S0204a438*);
 void SetAngleAndTrigTable0202e9a4(AngleTrig0202e9a4*, int);
@@ -63,13 +63,13 @@ void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 extern "C" ARM int func_ov025_021e2980(AnimationCommand* command, AnimationTargets* targets, int unused, void* context) {
     GameState* game = GameState::GetInstance();
     if (command->target == 0x19) {
-        int camera = GetField0x3b0Value(game);
-        if (GetFlags(camera) & 0x10) {
+        void* camera = GetField0x3b0Value(game);
+        if (GetFlags((int)camera) & 0x10) {
             Object3D* object = GetField0x21c((S0204a438*)camera);
             if (object) {
                 SetAngleAndTrigTable0202e9a4((AngleTrig0202e9a4*)camera, 0xf000);
                 object->MaybeSetRegularAnimation(command->animation, command->animationFlags);
-                func_0204a170(camera);
+                func_0204a170((int)camera);
                 data_ov025_021ef988.flags |= 8;
             }
         }

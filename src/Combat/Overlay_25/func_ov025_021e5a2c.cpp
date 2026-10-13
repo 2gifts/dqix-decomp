@@ -7,6 +7,7 @@ enum { kWorkFlagBase = 0x6000, kWorkFlagOffset = 0xfd5 };
 #endif
 
 #include "GameState/GameState.h"
+#include "GameState/Field3b0.h"
 
 struct CombatCameraWork {
     char unknown0[kWorkFlagBase + kWorkFlagOffset];
@@ -21,12 +22,11 @@ struct VectorCommand {
     Vector3i vector;
 };
 CombatCameraWork* GetActiveCombatWork(void);
-CameraState* GetField0x3b0Value(GameState* battleStruct);
 
 // USA: func_ov025_021e5a2c
 extern "C" ARM int func_ov025_021e5a2c(VectorCommand* command) {
     GameState* bs = GameState::GetInstance();
-    CameraState* f = GetField0x3b0Value(bs);
+    CameraState* f = (CameraState*)GetField0x3b0Value(bs);
     if (f != 0) {
         f->vector = command->vector;
     }

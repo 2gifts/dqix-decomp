@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+#include "GameState/Field3b0.h"
 
-int GetField0x3b0Value(GameState* battleStruct);
 int TestFlagMask(unsigned short* obj, int mask);
 void SetField0x238True(void* obj);
 void SetField0x238False(void* obj);
@@ -12,12 +12,12 @@ extern unsigned short data_02114e30;
 extern "C" ARM int func_ov015_021925a8() {
     GameState* battle = GameState::GetInstance();
     if (!battle) return 0;
-    int field = GetField0x3b0Value(battle);
+    void* field = GetField0x3b0Value(battle);
     if (!field) return 0;
     if (TestFlagMask(&data_02114e30, 0xc00)) {
-        SetField0x238True((void*)field);
+        SetField0x238True(field);
         return 1;
     }
-    SetField0x238False((void*)field);
+    SetField0x238False(field);
     return 0;
 }

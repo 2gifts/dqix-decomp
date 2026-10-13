@@ -1,9 +1,9 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 
 int GetWord0x0(int* obj);
-int GetField0x3b0Value(GameState* battleStruct);
 void SetField0x7cClearFields0x1ec0x1ee(unsigned char* obj, unsigned short val);
 struct AngleTrig0202e9a4;
 void SetAngleAndTrigTable0202e9a4(struct AngleTrig0202e9a4* objParam, int angle);
@@ -24,7 +24,7 @@ struct Struct02046f84 {
 ARM void ResetObjectAndAllocator02046f84(struct Struct02046f84* s) {
     GameState* battleStruct = GameState::GetInstance();
     GetWord0x0((int*)battleStruct);
-    void* obj = (void*)GetField0x3b0Value(battleStruct);
+    void* obj = GetField0x3b0Value(battleStruct);
     SetField0x7cClearFields0x1ec0x1ee((unsigned char*)obj, 0);
     SetAngleAndTrigTable0202e9a4((struct AngleTrig0202e9a4*)obj, 0xf000);
     func_0202eab8(obj);

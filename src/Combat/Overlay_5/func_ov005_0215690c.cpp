@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include <GameState/GameState.h>
 #include <Graphics/Vector.h>
 
@@ -67,7 +68,6 @@ extern "C" MemberScreen* _Z19GetField1c_021a193cPi(int* p);
 extern "C" int func_ov005_02157ae8(EquipmentMenu* self, int member);
 extern "C" Body* _Z17RunIfPtr_021e4e20P11Obj021e4e20(MemberScreen* screen);
 extern "C" int func_ov005_02155670(EquipmentMenu* self, int x, int y);
-int GetField0x3b0Value(GameState* gs);
 extern "C" int _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(void* obj, Vec3copy0202ec84* src, int* out1, int* out2);
 GameObject* GetCombatantWithFlag0x100(GameState* gs, int id);
 extern "C" double func_0200b454(double x);
@@ -100,7 +100,7 @@ extern "C" ARM void func_ov005_0215690c(EquipmentMenu* self, int x, int y) {
         void* camera;
         int dx;
         int screenY[8];
-        camera = (void*)GetField0x3b0Value(gameState);
+        camera = GetField0x3b0Value(gameState);
         int count;
         Matrix4x3 matrix;
         Vector3fix positions[8];

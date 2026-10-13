@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include <GameState/GameState.h>
+#include "GameState/Field3b0.h"
 #include <Graphics/Vector.h>
 #include <Memory/SafeAllocator.h>
 #include <std_library_functions.h>
@@ -24,7 +25,6 @@ struct FormationStats {
     unsigned int high : 1;
     unsigned short GetGroup() { return group; }
 };
-S0204a438* GetField0x3b0Value(GameState*);
 Object3D* GetField0x21c(S0204a438*);
 int ClassifyField0x81fe(char*);
 int TestBitAt0x34(unsigned char*, unsigned int);
@@ -49,7 +49,7 @@ extern const char data_ov026_021dee57[];
 // USA: func_ov026_021dc040
 extern "C" ARM int func_ov026_021dc040(SafeAllocator* allocator, BattleWork* self, BattleState* battle, PartyState* party) {
     GameState* game = GameState::GetInstance();
-    S0204a438* camera = GetField0x3b0Value(game);
+    S0204a438* camera = (S0204a438*)GetField0x3b0Value(game);
     if (!camera) return 1;
     Object3D* animation = GetField0x21c(camera);
     if (!animation) return 1;

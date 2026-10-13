@@ -8,9 +8,9 @@
 #define func_ov009_02184bbc func_ov009_02185ee8
 #endif
 #include "GameState/GameState.h"
+#include "GameState/Field3b0.h"
 
 extern "C" unsigned int SendQueuedDataToGeometryFifo();
-extern "C" unsigned int _Z18GetField0x3b0ValueP9GameState();
 extern "C" unsigned int _Z26ResetGxEngineState020c52e8v();
 extern "C" void func_ov009_02184c30(void*);
 extern "C" unsigned int _Z29WriteControlAndToggle020d86d0ii(unsigned int, unsigned int);
@@ -23,12 +23,10 @@ extern "C" unsigned int func_ov009_02184bbc(unsigned int);
 
 // USA: func_ov021_0218bb30  (semantic: Trans_0218bb30)
 extern "C" ARM unsigned int func_ov021_0218bb30(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
-    unsigned int r4 = 0;
     unsigned int r5 = 0;
     r5 = r0;
-    r0 = (unsigned int)GameState::GetInstance();
-    r0 = (unsigned int)_Z18GetField0x3b0ValueP9GameState();
-    r4 = r0;
+    GameState* state = GameState::GetInstance();
+    void* context = GetField0x3b0Value(state);
     r0 = (unsigned int)_Z26ResetGxEngineState020c52e8v();
     r0 = (unsigned int)func_020c5414();
     r1 = 0x4000060;
@@ -44,8 +42,8 @@ extern "C" ARM unsigned int func_ov021_0218bb30(unsigned int r0, unsigned int r1
     r0 = r0 & ~0x3000;
     r0 = r0 | 0x20;
     *(unsigned short*)((char*)r1 + 0x0) = (unsigned short)r0;
-    if (r4 != 0) {
-        r0 = r4;
+    if (context != 0) {
+        r0 = (unsigned int)context;
         r0 = (unsigned int)func_0202e0a4(r0, r1);
     }
     r0 = (unsigned int)_ZN12RenderConfig12SubmitToFifoEv();

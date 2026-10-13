@@ -4,6 +4,7 @@ enum {regionalOffset0=0x8c, regionalOffset1=0xc4, regionalOffset2=0xc6};
 enum {regionalOffset0=0x6c, regionalOffset1=0x84, regionalOffset2=0x86};
 #endif
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 
 struct BitField0203402c {
@@ -15,7 +16,6 @@ struct BitField0203402c {
 int CheckSubstructByte0x7cPositive(signed char* obj);
 int CheckField0xc4Low15BitsNonZero(struct BitField0203402c* p);
 extern "C" void* func_02012fe4(void);
-int GetField0x3b0Value(GameState* battleStruct);
 void* GetPointerFromArray0x3c(unsigned char* obj, unsigned int index);
 extern "C" int func_02094b9c(void* self, void* data);
 void InitObj0219a674(unsigned char* self);

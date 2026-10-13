@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 
 struct SearchStruct;
@@ -16,7 +17,6 @@ extern "C" int func_0202c540(struct SearchStruct* obj);
 extern "C" void __clear(void* buf, int n);
 extern "C" void func_02037d88(GameObject* obj);
 extern "C" void func_ov017_0218e210(int id, int flag);
-int GetField0x3b0Value(GameState* battleStruct);
 unsigned int GetBitsInField0(unsigned int* obj, unsigned int mask);
 int TestFlagMask(unsigned short* flags, int mask);
 extern "C" int _Z29HasFlag3orFlag2And9a_021bd3a4P12Obj_021bd3a4(struct Obj_021bd3a4* obj);

@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 #include "Resource/GameResources.h"
 #include "World/Object3D.h"
@@ -69,7 +70,6 @@ void DispatchNearestActiveNode0204117c(struct Obj0204117c* obj, struct Vec3s32_0
 void AdvanceAndAccumulate02041298(struct Obj02041298* obj, int value);
 void SelectVec3FromSources020406f8(struct Vec3_020406f8* out, struct Node020406f8* node);
 void FillVec3Default020407c4(struct Vec3_020407c4* out, struct Self020407c4* self);
-int GetField0x3b0Value(GameState* gs);
 
 // USA: func_02040c2c
 // JPN: func_02041128
@@ -153,7 +153,7 @@ extern "C" ARM void func_02040c2c(struct Obj02040c2c* self, void* context, int e
         struct Vector3i* pB = (struct Vector3i*)&attachmentRotation;
         attachmentPosition.v[1] += 0x1000;
         if (self->spriteMotion != 0) {
-            unsigned char* camera = reinterpret_cast<unsigned char*>(GetField0x3b0Value(GameState::GetInstance()));
+            unsigned char* camera = (unsigned char*)GetField0x3b0Value(GameState::GetInstance());
             GetPtrField0x58(camera);
             float fx = (float)GetField0x78(camera);
             fx *= 3.0f;

@@ -1,9 +1,9 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 
 extern "C" void* func_02012fe4(void);
 
-int GetField0x3b0Value(GameState* battleStruct);
 
 struct Vec3_020406f8 {
     unsigned int v[3];
@@ -45,7 +45,7 @@ struct Roster0203de84 {
 // USA: func_0203de84
 extern "C" ARM void func_0203de84(void* self) {
     struct Roster0203de84* roster = (struct Roster0203de84*)self;
-    int v = GetField0x3b0Value(GameState::GetInstance());
+    void* v = GetField0x3b0Value(GameState::GetInstance());
     func_ov017_0218b5b0();
     struct Ctx02012fe4* ctx = (struct Ctx02012fe4*)func_02012fe4();
     unsigned short a = ctx->f38;
@@ -57,7 +57,7 @@ extern "C" ARM void func_0203de84(void* self) {
         unsigned int fl = roster->nodes[i]->flags;
         if (fl & 0x8000) continue;
         if (roster->f98 != NULL && !(fl & 0x10000)) continue;
-        if (!ProcessPendingSubStates((struct StateWithFourPtrs02040910*)roster->nodes[i], v))
+        if (!ProcessPendingSubStates((struct StateWithFourPtrs02040910*)roster->nodes[i], (int)v))
             continue;
         if (fl & 0x20) continue;
         if (fl & 0x40) continue;

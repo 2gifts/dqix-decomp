@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include <GameState/GameState.h>
 #include <Graphics/Vector.h>
 #include <Resource/GameResources.h>
@@ -59,7 +60,6 @@ void SubtractHeightOffset020ae398(Entity020AE398*);
 void UpdateFallMotion020ae3f4(Obj020ae3f4*);
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
 void SetByteField0x253(void*);
-int GetField0x3b0Value(GameState*);
 int ComputeTwoFromVec3_0202ec84(void*, Vec3copy0202ec84*, int*, int*);
 extern "C" int func_02018fbc(Zone3D*, Vec3copy0202ec84*);
 int IsField0Null(void**);
@@ -136,7 +136,7 @@ extern "C" ARM void func_020ad61c(Trajectory020ad61c* object) {
         actor->obj3D_.position_ = object->object.position_;
         SetByteField0x253(actor);
     }
-    camera = (void*)GetField0x3b0Value(game);
+    camera = GetField0x3b0Value(game);
     int directHit = 0;
     groundedHit = 0;
     int screenX[3];

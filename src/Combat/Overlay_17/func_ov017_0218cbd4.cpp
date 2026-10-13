@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 #include "Resource/MessageUpdate.h"
 #include "Resource/MessageSystem.h"
@@ -51,7 +52,6 @@ void ClearIfMatchAndFinalize_021a3498(Ctx021a3498*);
 extern "C" void func_020a654c(GameResources*);
 extern "C" void func_020ac9ac(GameResources*);
 extern "C" void func_02011b68(GameState*);
-int GetField0x3b0Value(GameState*);
 int GetFlags(int);
 void AdvanceActor020a20d8(void*);
 extern "C" void func_ov000_0216d464(void*);
@@ -135,7 +135,7 @@ extern "C" ARM void func_ov017_0218cbd4(GameResources* self) {
     func_020a654c(self);
     func_020ac9ac(self);
     func_02011b68(state);
-    void* animation = (void*)GetField0x3b0Value(state);
+    void* animation = GetField0x3b0Value(state);
     if (animation) {
         if (GetFlags((int)animation) & 4) AdvanceActor020a20d8(animation);
         else if (GetFlags((int)animation) & 8) func_ov000_0216d464(animation);

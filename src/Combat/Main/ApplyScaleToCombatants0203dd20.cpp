@@ -1,9 +1,9 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 
 struct Obj02040c2c;
 extern "C" void func_02040c2c(Obj02040c2c* entry, void* context, int elapsedTicks, int movementTicks);
-int GetField0x3b0Value(GameState* battleStruct);
 
 struct Entry0203dd20 {
     unsigned int flags;
@@ -22,7 +22,7 @@ ARM void ApplyScaleToCombatants0203dd20(struct Obj0203dd20* obj) {
     unsigned int c;
     int i;
     battleStruct = GameState::GetInstance();
-    context = reinterpret_cast<void*>(GetField0x3b0Value(battleStruct));
+    context = GetField0x3b0Value(battleStruct);
     b = battleStruct->GetEffectiveDeltaTime();
     c = battleStruct->GetTickCount();
     for (i = 0; i < 0x20; i++) {

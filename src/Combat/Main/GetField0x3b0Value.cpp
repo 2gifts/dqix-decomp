@@ -1,7 +1,8 @@
 #include <globaldefs.h>
+#include "GameState/Field3b0.h"
 #include "GameState/GameState.h"
 
 // USA: func_020100bc
-ARM int GetField0x3b0Value(GameState* battleStruct) {
-    return *(int*)((char*)battleStruct + 0x3b0);
+ARM void* GetField0x3b0Value(GameState* battleStruct) {
+    return battleStruct->unknown_3b0_;
 }

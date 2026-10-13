@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+#include "GameState/Field3b0.h"
 #include "Memory/SafeAllocator.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Resource/Brightness.h"
@@ -45,7 +46,6 @@ extern "C" void func_0204b04c(void* obj, int flag);
 extern "C" void func_0204b088(void* obj, int flag);
 extern "C" void _Z23ResetRecordList0204afb4P12List0204afb4(List0204afb4* list);
 void Set3DClearColor(int a, int b, int c, int d, int e);
-Camera0217c7a0* GetField0x3b0Value(GameState* gs);
 void ApplyVec3Tail(void* obj, int* vec);
 void SetField0x238True(void* obj);
 void ApplyVecFromField0x21e(char* obj);
@@ -106,7 +106,7 @@ extern "C" ARM void func_ov003_0217c7a0(Scene0217c7a0* self)
         _Z23ResetRecordList0204afb4P12List0204afb4((List0204afb4*)&self->listB);
 
         Set3DClearColor(0, 0, 0x7fff, 0, 0);
-        Camera0217c7a0* camera = GetField0x3b0Value(gs);
+        Camera0217c7a0* camera = (Camera0217c7a0*)GetField0x3b0Value(gs);
         camera->position = self->cameraPosition;
         ApplyVec3Tail(camera, self->cameraTail);
         SetField0x238True(camera);

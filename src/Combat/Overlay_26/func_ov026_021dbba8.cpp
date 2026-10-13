@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+#include "GameState/Field3b0.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
 #include "System/Matrix.h"
@@ -39,7 +40,6 @@ struct BattleWork {
 
 extern "C" int _Z13TestBitAt0x34Phj(PartyState* party, unsigned char bit);
 int SetByte0xbeShiftPrev(Bytes02033b88* p, int val);
-BattleCamera* GetField0x3b0Value(GameState* gs);
 void SetField0x3b0Value(GameState* gs, int value);
 void ClearCombatantSlot(GameState* gs, int id);
 void ApplyVec3Tail(void* obj, int* vec);
@@ -70,7 +70,7 @@ extern "C" ARM void func_ov026_021dbba8(BattleWork* self) {
         }
     }
 
-    BattleCamera* saved = GetField0x3b0Value(gs);
+    BattleCamera* saved = (BattleCamera*)GetField0x3b0Value(gs);
     BattleCamera* cam = func_ov000_02160f14(self);
     Vector3i offset = saved->offset;
     func_ov000_0216d370(cam, 1, 1, 1);
