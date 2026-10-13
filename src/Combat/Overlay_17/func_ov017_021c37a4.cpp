@@ -62,8 +62,7 @@ struct Field021c37a4 {
     FieldTimer021c37a4 timer;
     char unk23a6[0x2820 - 0x23a6];
     unsigned char flag;
-    FieldTimer021c37a4* GetTimer() { FieldTimer021c37a4* t = &timer; return t; }
-};
+    FieldTimer021c37a4* GetTimer() { return &timer; }};
 
 struct Actor021c37a4 {
     char unk0[0xc8];
@@ -338,7 +337,8 @@ extern "C" ARM void func_ov017_021c37a4(void) {
 
     ResetEightRegionsAndFlags(GetGlobal02109030());
     Field021c37a4* field = func_02012fe4();
-    field->GetTimer()->value = 0;
+    FieldTimer021c37a4* timer = field->GetTimer();
+    timer->value = 0;
     res->unknown_flag_42e2 = 0;
     _Z29ClearTwoBytesAtField_02195748Ph((unsigned char*)res);
     ApplyVecFromField0x246((char*)follower);
