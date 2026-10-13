@@ -44,7 +44,11 @@ struct Entry02026f34 {
 };
 
 struct Member02026f34 {
+#if defined(jpn)
+    char pad[0x1a6];
+#else
     char pad[0x1b2];
+#endif
     unsigned short hp;
 };
 
@@ -58,6 +62,12 @@ extern "C" void func_020200c0(int index, void* obj);
 
 typedef void (*UpdateStateTimer0201fa2cFn)(StateObj0201fa2c* obj, unsigned int arg, unsigned char id);
 
+#if defined(jpn)
+enum { kIdsOffset = 0x6ac, kCountOffset = 0x6b0 };
+#else
+enum { kIdsOffset = 0x758, kCountOffset = 0x75c };
+#endif
+
 // USA: func_02026f34
 extern "C" ARM void func_02026f34(void* objv) {
     unsigned char* obj = (unsigned char*)objv;
@@ -66,9 +76,9 @@ extern "C" ARM void func_02026f34(void* objv) {
     GameState* gs = GameState::GetInstance();
     unsigned int dt = gs->GetEffectiveDeltaTime();
 
-    for (int i = 0; i < obj[0x75c]; i++) {
+    for (int i = 0; i < obj[kCountOffset]; i++) {
         unsigned char* p = obj + i;
-        unsigned char id = p[0x758];
+        unsigned char id = p[kIdsOffset];
         StateObj0201fa2c* sw;
         Entry02026f34* ent;
         unsigned int mask = (unsigned char)(1 << id);

@@ -4,9 +4,9 @@ void CallFunc0204b620IfField0x14_0204b938(void* obj, void* p, int a3, int a4, un
 
 struct Obj0204b988 {
     char pad0[0x10];
-    char* field10;          // 0x10 (base of 16-byte entry array)
-    char pad14[0x9];        // 0x14 .. 0x1c
-    unsigned char field1d;  // 0x1d (entry count)
+    char* field10;
+    char pad14[0x9];
+    unsigned char field1d;
 };
 
 // USA: func_0204b988

@@ -1,7 +1,11 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+extern unsigned short __attribute__((aligned(2))) data_020e8a8c[];
+#else
 extern unsigned short __attribute__((aligned(4))) data_020e8a8c[];
+#endif
 
 int TestBitInArray0x8ec(unsigned char* obj, int index);
 extern "C" int _Z19GetSlotBits0201137cPci(char* base, int id);

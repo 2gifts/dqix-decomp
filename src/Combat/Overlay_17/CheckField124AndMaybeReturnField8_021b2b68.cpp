@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 
-
 extern "C" void func_ov017_0218b5b0(void);
 extern "C" void func_ov017_0219b624(void);
 

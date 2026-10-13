@@ -1,6 +1,12 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+enum { kObjectEventFlagOffset = 0x2c6 };
+#else
+enum { kObjectEventFlagOffset = 0x2d2 };
+#endif
+
 GameObject* GetCombatantWithFlag0x1000(GameState* battleStruct, int combatantId);
 extern "C" void _Z13SetField0x2d0Pvh(void* obj, int value);
 extern "C" void _Z13SetField0x2d1Pvh(void* obj, int value);
@@ -27,5 +33,5 @@ ARM void ApplyEventTag38Fields_021ce3ac(int unused0, LocalEvt021ce3ac* evt, Game
     _Z13SetField0x2d1Pvh(c, evt->field7);
     _Z12SetByte0x1c8Phh(c, evt->field8);
     _Z12SetByte0x1c9Phh(c, evt->field9);
-    *((unsigned char*)c + 0x2d2) = evt->fielda;
+    *((unsigned char*)c + kObjectEventFlagOffset) = evt->fielda;
 }

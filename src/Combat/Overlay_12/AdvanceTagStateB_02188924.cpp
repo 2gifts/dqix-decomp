@@ -1,7 +1,6 @@
 #if defined(jpn)
 #define R(j,u) (j)
 #define _Z22SetupBattleTag0218a7a0Pc func_ov012_0218b234
-#define _Z35TestFlagsAndActiveElement2_021e6e20P11Obj021e6e20 func_ov023_021e7184
 #define func_ov012_0218adac func_ov012_0218bba0
 #define func_ov023_021e6de4 func_ov023_021e7148
 #else
@@ -20,12 +19,7 @@ extern "C" void func_ov023_021e6e60(void* obj);
 extern "C" int func_ov023_021e6448(void* obj);
 extern "C" int func_ov023_021e6de4(char* obj);
 struct Obj021e6e20 { char pad[R(0x90,0xac)]; };
-#if defined(jpn)
-#define TestFlagsAndActiveElement2_021e6e20 func_ov023_021e7184
-extern "C" int TestFlagsAndActiveElement2_021e6e20(struct Obj021e6e20* obj);
-#else
 int TestFlagsAndActiveElement2_021e6e20(struct Obj021e6e20* obj);
-#endif
 #if defined(jpn)
 extern "C" void func_ov012_0218adac(void* self, int a, int b);
 #else

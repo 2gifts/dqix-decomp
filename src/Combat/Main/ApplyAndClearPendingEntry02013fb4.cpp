@@ -1,36 +1,30 @@
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
+#include "World/Zone3D.h"
 
+struct Obj02013fb4;
+struct StreamHeader;
 
-struct List0202fec8;
-
-extern "C" {
-    void func_0201c724(int a, void* b, int c, int d);
-    void _ZN6Zone3D11LoadMapAMBLEv(void* obj);
-}
-
-struct Obj02013fb4 {
-    unsigned short field0;
-    char pad[0x430 - 2];
-    int field0x430;
-};
+extern "C" void func_0201c724(int zoneId, void* mapList, StreamHeader* data, int size);
+extern "C" void _ZN6Zone3D11LoadMapAMBLEv(Zone3D* zone);
 
 // USA: func_02013fb4
-ARM int ApplyAndClearPendingEntry02013fb4(struct Obj02013fb4* obj) {
-    if (obj->field0x430 < 0) {
+ARM int ApplyAndClearPendingEntry02013fb4(Obj02013fb4* object) {
+    Zone3D* zone = reinterpret_cast<Zone3D*>(object);
+    if (zone->mapListLoadHandle_ < 0)
         return 1;
-    }
 
-    int listPtr = (int)BackgroundLoader::GetInstance();
-    if (!((BackgroundLoader*)(listPtr))->GetTaskStatus((int)(obj->field0x430))) {
+    BackgroundLoader* loader = BackgroundLoader::GetInstance();
+    if (!loader->GetTaskStatus(zone->mapListLoadHandle_))
         return 0;
-    }
 
-    int out1, out2;
-    ((BackgroundLoader*)((struct List0202fec8*)listPtr))->GetLoadedFileByID((int)(obj->field0x430), (void**)(&out1), (unsigned int*)(&out2));
-    func_0201c724(obj->field0, (char*)obj + 0xc, out1, out2);
-    ((BackgroundLoader*)(listPtr))->RemoveTask((int)(obj->field0x430));
-    obj->field0x430 = -1;
-    _ZN6Zone3D11LoadMapAMBLEv(obj);
+    void* fileData;
+    unsigned int fileSize;
+    loader->GetLoadedFileByID(zone->mapListLoadHandle_, &fileData, &fileSize);
+    func_0201c724(zone->currentZoneID_, &zone->substruct_c_,
+                 static_cast<StreamHeader*>(fileData), fileSize);
+    loader->RemoveTask(zone->mapListLoadHandle_);
+    zone->mapListLoadHandle_ = -1;
+    _ZN6Zone3D11LoadMapAMBLEv(zone);
     return 1;
 }

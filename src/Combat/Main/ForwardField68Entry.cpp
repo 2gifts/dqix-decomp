@@ -1,16 +1,17 @@
 #include <globaldefs.h>
+#include "World/Zone3D.h"
+#include "World/ZoneFeatures.h"
 
-struct SafeAllocator;
-void* DecompressLZ77FileIntoScratchSpace(struct SafeAllocator&, const void*, unsigned int&);
-extern "C" void _ZN12ZoneFeatures14LoadFromScriptEP13SafeAllocatorPKvj(int, int, int, int);
+void* DecompressLZ77FileIntoScratchSpace(SafeAllocator& allocator, const void* source, unsigned int& size);
 
 // USA: func_020143d8
-extern "C" ARM int _ZN6Zone3D15ProcessBPOSFileEPKvj(char* obj, int arg1) {
-    int f68 = *(int*)(obj + 0x68);
-    int out;
-    int r = (int)DecompressLZ77FileIntoScratchSpace(*(struct SafeAllocator*)f68, (const void*)arg1, *(unsigned int*)&out);
-    int saved = *(int*)(obj + 0x8);
-    _ZN12ZoneFeatures14LoadFromScriptEP13SafeAllocatorPKvj((int)(obj + 0x6c), f68, r, out);
-    *(int*)(obj + 0x8) = saved;
+extern "C" ARM int _ZN6Zone3D15ProcessBPOSFileEPKvj(Zone3D* zone, const void* source) {
+    SafeAllocator* allocator = zone->pAllocator_68_;
+    unsigned int size;
+    void* script = DecompressLZ77FileIntoScratchSpace(*allocator, source, size);
+    Zone3D_StructPtr_8* map = zone->pUnknownStruct_8_;
+    ZoneFeatures* features = reinterpret_cast<ZoneFeatures*>(zone->substruct_6c_);
+    features->LoadFromScript(allocator, script, size);
+    zone->pUnknownStruct_8_ = map;
     return 1;
 }

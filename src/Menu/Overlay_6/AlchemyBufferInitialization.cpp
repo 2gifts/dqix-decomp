@@ -1,8 +1,17 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kWidgetSize = 0x718, kMenuBytes = 0x48, kExtraBytes = 0x34 };
+#else
+enum { kWidgetSize = 0x79c, kMenuBytes = 0x4c, kExtraBytes = 0x40 };
+#endif
+
 #include "Memory/SafeAllocator.h"
 
 struct AlchemyBufferInitializationView {
+#if !defined(jpn)
     char unknown00[0x180];
+#endif
     SafeAllocator* allocators;
     SafeAllocator* activeAllocator;
     SafeAllocator* loadingAllocator;
@@ -17,7 +26,7 @@ struct AlchemyBufferInitializationView {
     char unknown1e4[0x8a0];
     SafeAllocator additionalAllocators[4];
     char unknownad4[0x10];
-    char widget[0x79c];
+    char widget[kWidgetSize];
     SafeAllocator* widgetAllocator;
     SafeAllocator* smallAllocator;
 };
@@ -31,16 +40,17 @@ void func_0204c684(void*);
 void func_0207f84c(void*);
 void _Z12Init0205a198P14Struct0205a198(void*);
 }
+// USA: func_ov006_02154348
 extern "C" ARM void func_ov006_02154348(AlchemyBufferInitializationView* state, SafeAllocator* allocator, void* context)
 {
     state->allocators = (SafeAllocator*)allocator->Allocate(0x78);
     state->activeAllocator = (SafeAllocator*)allocator->Allocate(0x14);
     state->loadingAllocator = (SafeAllocator*)allocator->Allocate(0x14);
     state->byteBuffer = (unsigned char*)allocator->Allocate(0x80);
-    state->menuBuffer = allocator->Allocate(0x4c);
+    state->menuBuffer = allocator->Allocate(kMenuBytes);
     state->pairBuffer = (char (*)[0x20])allocator->Allocate(0x40);
     state->singleBuffer = (char (*)[0xe0])allocator->Allocate(0xe0);
-    state->extraBuffer = allocator->Allocate(0x40);
+    state->extraBuffer = allocator->Allocate(kExtraBytes);
     state->entryBuffer = (char (*)[0x28])allocator->Allocate(0x2a8);
     state->activeAllocator->CreateTypeA(allocator->Allocate(0x258), 0x258);
     state->loadingAllocator->CreateTypeA(allocator->Allocate(0x258), 0x258);

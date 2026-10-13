@@ -1,7 +1,13 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kFirstHalfwordOffset = 0x3a };
+#else
+enum { kFirstHalfwordOffset = 0x3c };
+#endif
+
 struct Obj021fb23c {
-    char pad[0x3c];
+    char pad[kFirstHalfwordOffset];
     short a;
     short b;
     short c;

@@ -16,17 +16,31 @@ struct Pose0204459c {
 };
 
 struct Obj0204459c {
+#if !defined(jpn)
     char pad0[0x34];
+#endif
     void* field34;
     struct Level1_020e23c0* field38;
+#if defined(jpn)
+    char pad3c[0x7d0 - 0x8];
+#else
     char pad3c[0x900 - 0x3c];
+#endif
     struct Pose0204459c pose;
     char pad91c[0x9a0 - 0x91c];
     int mode;
+#if defined(jpn)
+    char pad9a4[0x17de - 0x874];
+#else
     char pad9a4[0x19ae - 0x9a4];
+#endif
     signed char s19ae;
     unsigned char u19af;
+#if defined(jpn)
+    char pad19b0[0x17fb - 0x17e0];
+#else
     char pad19b0[0x19ca - 0x19b0];
+#endif
     unsigned char u19ca;
 };
 

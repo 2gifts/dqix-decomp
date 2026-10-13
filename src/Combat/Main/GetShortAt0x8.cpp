@@ -1,6 +1,7 @@
 #include <globaldefs.h>
+#include "Resource/MonsterDefinition.h"
 
 // USA: func_0206ef40
-ARM short GetShortAt0x8(unsigned char* obj) {
-    return *(short*)(obj + 0x8);
+ARM int GetShortAt0x8(void* entry) {
+    return static_cast<MonsterDefinition*>(entry)->monsterId;
 }

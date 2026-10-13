@@ -1,14 +1,14 @@
 #include <globaldefs.h>
+#include "GameState/BattleRecordSnapshot.h"
 
-int LoadBattleBlock020ac4c0(void* dst);
 extern "C" void func_ov017_021d6134(void*, unsigned int);
 
 // USA: func_ov023_021e9f9c
-ARM int SetClampedFieldFromBlock48_021e9f9c(void* obj) {
-    unsigned char buf[0xb0];
-    LoadBattleBlock020ac4c0(buf);
-    unsigned int v = *(unsigned int*)(buf + 0x48);
-    if (v > 0x7fffffff) v = 0x7fffffff;
-    func_ov017_021d6134(obj, v);
+ARM int SetClampedFieldFromBlock48_021e9f9c(void* outputReference) {
+    BattleRecordSnapshot record;
+    LoadBattleBlock020ac4c0(&record);
+    unsigned int value = record.unknown48;
+    if (value > 0x7fffffff) value = 0x7fffffff;
+    func_ov017_021d6134(outputReference, value);
     return 1;
 }

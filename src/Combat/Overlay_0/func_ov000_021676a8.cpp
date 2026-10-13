@@ -8,7 +8,11 @@ struct BattleCore_021676a8 {
 };
 
 struct Owner_021676a8 {
+#if defined(jpn)
+    char pad0[0x218];
+#else
     char pad0[0x29c];
+#endif
     BattleCore_021676a8* core;
 };
 

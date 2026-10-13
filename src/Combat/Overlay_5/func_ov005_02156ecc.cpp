@@ -3,7 +3,6 @@
 #define data_ov005_0215cd48 data_ov005_0215e128
 #define func_ov005_02157b74 func_ov005_0215916c
 #define func_ov013_02185990 func_ov013_02186b88
-#define func_ov013_02186c64 func_ov013_02187f78
 #else
 #define R(j,u) (u)
 #endif

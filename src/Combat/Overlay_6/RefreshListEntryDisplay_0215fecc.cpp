@@ -2,23 +2,40 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
 
-struct List0202fec8;
-extern "C" void func_02076080(void* a, void* b, int c, int d);
+struct ResultSprite {
+    char unknown0[0x70];
+};
 
-// USA: func_ov006_0215fecc  (semantic: RefreshListEntryDisplay_0215fecc)
-extern "C" ARM int func_ov006_0215fecc(char* self) {
-    void* list = (void*)(int)BackgroundLoader::GetInstance();
-    if (!((BackgroundLoader*)(list))->GetTaskStatus((int)(*(int*)(self + 0x428)))) {
+struct AlchemyMenu {
+#if defined(jpn)
+    char unknown0[4];
+#else
+    char unknown0[0xc];
+#endif
+    SafeAllocator* allocators;
+#if defined(jpn)
+    char unknown8[0x3b8 - 8];
+#else
+    char unknown10[0x3b8 - 0x10];
+#endif
+    ResultSprite resultSprite;
+    int resultTask;
+};
+
+extern "C" void func_02076080(ResultSprite* sprite, SafeAllocator* allocator, void* file, unsigned int size);
+
+// USA: func_ov006_0215fecc
+extern "C" ARM int func_ov006_0215fecc(AlchemyMenu* menu) {
+    BackgroundLoader* loader = BackgroundLoader::GetInstance();
+    if (!loader->GetTaskStatus(menu->resultTask))
         return 0;
-    }
-    char* base = *(char**)(self + 0xc);
-    SafeAllocator* alloc = (SafeAllocator*)(base + 0xb4);
-    alloc->Reset();
-    int out1 = 0;
-    int out2 = 0;
-    ((BackgroundLoader*)((struct List0202fec8*)list))->GetLoadedFileByID((int)(*(int*)(self + 0x428)), (void**)(&out1), (unsigned int*)(&out2));
-    func_02076080(self + 0x3b8, alloc, out1, out2);
-    ((BackgroundLoader*)(list))->RemoveTask((int)(*(int*)(self + 0x428)));
-    *(int*)(self + 0x428) = -1;
+    SafeAllocator* allocator = &menu->allocators[9];
+    allocator->Reset();
+    void* file = NULL;
+    unsigned int fileSize = 0;
+    loader->GetLoadedFileByID(menu->resultTask, &file, &fileSize);
+    func_02076080(&menu->resultSprite, allocator, file, fileSize);
+    loader->RemoveTask(menu->resultTask);
+    menu->resultTask = -1;
     return 1;
 }

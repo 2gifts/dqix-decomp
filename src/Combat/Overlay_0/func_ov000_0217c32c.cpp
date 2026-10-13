@@ -2,9 +2,6 @@
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
 
-#if defined(jpn)
-#define _Z33SetupAndRunBufferedScript0209a348P11Ctx0209a348Pv func_0209c09c
-#endif
 struct ItemData0217c32c {
     unsigned int pad0 : 7;
     unsigned int category : 4;

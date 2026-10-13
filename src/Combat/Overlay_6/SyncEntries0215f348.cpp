@@ -1,12 +1,18 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kMenuPointer = 0xc };
+#else
+enum { kMenuPointer = 0x14 };
+#endif
+
 extern void SetEntryHalfword0xe(void* obj, int id, int value);
 extern "C" void func_020813ec(void*, int);
 
 struct Obj0215f348 {
-    char pad0[0x14];
+    char pad0[kMenuPointer];
     void* f14;
-    char pad1[0x360 - 0x18];
+    char pad1[0x360 - kMenuPointer - 4];
     short f360;
 };
 

@@ -1,7 +1,12 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { EntryListOffset = 0x14 };
+#else
+enum { EntryListOffset = 0x18 };
+#endif
 #include "GameState/GameState.h"
 
-extern "C" int _ZNK8Object3D9IsVisibleEv(unsigned char* obj);
 struct List_02028430;
 struct ListEntry_02028430;
 ListEntry_02028430* GetListEntryChecked(List_02028430* list, int index);
@@ -12,21 +17,21 @@ struct KindField02073d58 {
 };
 
 // USA: func_02073d58
-ARM int CheckAnySlotMatchesId02073d58(int a, void* b, int c) {
+ARM int CheckAnySlotMatchesId02073d58(int entryId, void* spawnGroup, int excludedMonsterId) {
     GameState* bs = GameState::GetInstance();
     int i;
     for (i = 0; i < 0xc; i++) {
-        int kind = ((struct KindField02073d58*)((char*)b + 2))->kind;
-        int tmp = kind * 12 + 0x70;
-        int id = i + tmp;
-        if (c != -1 && id == c) continue;
+        int kind = ((struct KindField02073d58*)((char*)spawnGroup + 2))->kind;
+        int groupFirstMonster = kind * 12 + 0x70;
+        int id = i + groupFirstMonster;
+        if (excludedMonsterId != -1 && id == excludedMonsterId) continue;
         GameObject* combatant = bs->GetMaybeWanderingMonsterByIndex(id);
         if (!combatant) continue;
-        if (!_ZNK8Object3D9IsVisibleEv((unsigned char*)combatant)) continue;
-        unsigned short field_b8 = *(unsigned short*)((char*)combatant + 0xb8);
-        ListEntry_02028430* entry = GetListEntryChecked((List_02028430*)((char*)b + 0x18), field_b8);
+        if (!combatant->obj3D_.IsVisible()) continue;
+        unsigned short field_b8 = *reinterpret_cast<unsigned short*>(&combatant->unk_ac[0xb8 - 0xac]);
+        ListEntry_02028430* entry = GetListEntryChecked((List_02028430*)((char*)spawnGroup + EntryListOffset), field_b8);
         if (!entry) continue;
-        if (*(unsigned char*)entry == a) return 1;
+        if (*(unsigned char*)entry == entryId) return 1;
     }
     return 0;
 }

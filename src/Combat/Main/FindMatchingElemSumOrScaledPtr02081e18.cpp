@@ -1,45 +1,48 @@
 #include <globaldefs.h>
 
-int CheckField0x9cSetWhenField0xd4Present(unsigned char* obj);
+int CheckField0x9cSetWhenField0xd4Present(unsigned char* window);
 struct ScaledElementList0204aa28;
-void* GetScaledElementPtr(struct ScaledElementList0204aa28* list);
+unsigned int GetScaledElementPtr(ScaledElementList0204aa28* layout);
 
-struct SubStruct02081e18 {
-    char pad[0x1c];
-    unsigned char loNibble1c : 4;
-    unsigned char hiNibble1c : 4;
+struct WindowVramLayout {
+    char unknown0[0x1c];
+    unsigned char transferKind : 4;
+    unsigned char bgLayer : 4;
 };
 
-struct Elem02081e18 {
-    char pad0[0x4];
-    void* f4;
-    char pad1[0xa0 - 0x8];
-    int a0;
-    int a4;
-    char pad2[0xe0 - 0xa8];
+struct WindowAllocation {
+    char unknown0[4];
+    WindowVramLayout* layout;
+    char unknown8[0xa0 - 8];
+    unsigned int destinationOffset;
+    unsigned int pixelBytes;
+    char unknownA8[0xe0 - 0xa8];
 };
 
 struct Obj02081e18 {
-    char pad0[0x2c];
-    int f2c;
-    Elem02081e18* f30;
-    char pad1[0x39 - 0x34];
-    unsigned char f39;
+#if defined(jpn)
+    char unknown0[0x20];
+#else
+    char unknown0[0x2c];
+#endif
+    int unknown2c;
+    WindowAllocation* windows;
+    char unknown34[5];
+    unsigned char windowCount;
 };
 
-// USA: func_02081e18
-ARM void* FindMatchingElemSumOrScaledPtr02081e18(Obj02081e18* obj, int type) {
-    if (obj->f2c == 0 || obj->f30 == 0) return NULL;
-    Elem02081e18* elem;
+ARM unsigned int FindMatchingElemSumOrScaledPtr02081e18(Obj02081e18* menu, int bgLayer) {
+    if (menu->unknown2c == 0 || menu->windows == 0) return 0;
+    WindowAllocation* window;
     int i;
-    for (i = (int)obj->f39 - 1; i >= 0; i--) {
-        elem = &obj->f30[i];
-        if (CheckField0x9cSetWhenField0xd4Present((unsigned char*)elem) != 0 && elem->f4 != NULL) {
-            SubStruct02081e18* sub = (SubStruct02081e18*)elem->f4;
-            if (type == sub->hiNibble1c) {
-                return (void*)(elem->a0 + elem->a4);
+    for (i = (int)menu->windowCount - 1; i >= 0; i--) {
+        window = &menu->windows[i];
+        if (CheckField0x9cSetWhenField0xd4Present(reinterpret_cast<unsigned char*>(window)) && window->layout) {
+            WindowVramLayout* layout = window->layout;
+            if (bgLayer == layout->bgLayer) {
+                return window->destinationOffset + window->pixelBytes;
             }
         }
     }
-    return GetScaledElementPtr((struct ScaledElementList0204aa28*)obj->f30->f4);
+    return GetScaledElementPtr(reinterpret_cast<ScaledElementList0204aa28*>(menu->windows->layout));
 }

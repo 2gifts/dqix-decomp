@@ -1,26 +1,24 @@
 #include <globaldefs.h>
+#include "Graphics/LightingManager.h"
 
-struct LightingManager {
-    static LightingManager* GetInstance();
-    void BeginFade(short a, unsigned short b);
+struct LightingFadeCommand {
+    char unknown0[8];
+    fix16_t targetBrightness;
+    unsigned short duration;
 };
-
-struct CombatWork021e74f4 {
-    char pad[0x6fd4];
-    unsigned char fadeStarted;
+struct CombatLightingWork {
+#if defined(jpn)
+    char unknown0[0x71c4];
+#else
+    char unknown0[0x6fd4];
+#endif
+    unsigned char lightingFadeStarted;
 };
+CombatLightingWork* GetActiveCombatWork();
 
-struct Obj021e74f4 {
-    char pad[0x8];
-    short a;
-    unsigned short b;
-};
-
-CombatWork021e74f4* GetActiveCombatWork(void);
-
-// USA: func_ov025_021e74f4  (semantic: Trans_021e74f4)
-extern "C" ARM int func_ov025_021e74f4(struct Obj021e74f4* obj) {
-    LightingManager::GetInstance()->BeginFade(obj->a, obj->b);
-    GetActiveCombatWork()->fadeStarted = 1;
+// USA: func_ov025_021e74f4
+extern "C" ARM int func_ov025_021e74f4(LightingFadeCommand* command) {
+    LightingManager::GetInstance()->BeginFade(command->targetBrightness, command->duration);
+    GetActiveCombatWork()->lightingFadeStarted = 1;
     return 1;
 }

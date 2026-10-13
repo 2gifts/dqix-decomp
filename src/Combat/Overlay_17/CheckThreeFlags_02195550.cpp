@@ -1,14 +1,10 @@
 #include <globaldefs.h>
+#include "Combat/NameEntryQueue.h"
 
 // USA: func_ov017_02195550
-ARM int CheckThreeFlags_02195550(unsigned char* obj) {
-	obj += 0x4000;
-	if (obj[0x31e]) {
-		return 1;
-	}
-	unsigned char* p = *(unsigned char**)(obj + 0x41c);
-	if (*p) {
-		return 1;
-	}
-	return obj[0x2f0] != 0;
+ARM int CheckThreeFlags_02195550(unsigned char* resources) {
+    EntryQueueReceiver02195250* queue = (EntryQueueReceiver02195250*)resources;
+    if (queue->changedEntryMask != 0) return 1;
+    if (queue->active->state != 0) return 1;
+    return queue->count != 0;
 }

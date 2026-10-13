@@ -1,16 +1,27 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
 
-struct EntryManager020e2490;
-void InitEntryManager020e2490(struct EntryManager020e2490* obj, int arg1, int arg2, void* arg3, SafeAllocator* alloc, int count, unsigned char flag);
+#if defined(jpn)
+enum { kManagerOffset = 0xe60, kEntryCount = 3 };
+#else
+enum { kManagerOffset = 0xe64, kEntryCount = 4 };
+#endif
 
-struct Obj02159c24 { char pad[0xe64]; struct EntryManager020e2490* mgr; char pad2[0xe68 - 0xe64 - 4]; int field_e68; };
+struct EntryManager020e2490;
+void InitEntryManager020e2490(EntryManager020e2490*, int, int, void*, SafeAllocator*, int, unsigned char);
+
+struct Obj02159c24 {
+    char unknown0[0x280];
+    SafeAllocator promptAllocator;
+    char unknownAfterAllocator[kManagerOffset - 0x294];
+    EntryManager020e2490* yesNo;
+    void* yesNoState;
+};
 
 // USA: func_ov005_02159c24
-ARM void InitEntryManagerAndAllocator02159c24(Obj02159c24* obj, int arg1, int arg2) {
-	((SafeAllocator*)((char*)obj + 0x280))->Reset();
-	void* mem = ((SafeAllocator*)((char*)obj + 0x280))->Allocate(0x24);
-	obj->mgr = (struct EntryManager020e2490*)mem;
-	InitEntryManager020e2490(obj->mgr, 0, 1, (void*)arg1, (SafeAllocator*)((char*)obj + 0x280), 4, 0x40);
-	obj->field_e68 = arg2;
+ARM void InitEntryManagerAndAllocator02159c24(Obj02159c24* menu, int entriesAddress, int stateAddress) {
+    menu->promptAllocator.Reset();
+    menu->yesNo = (EntryManager020e2490*)menu->promptAllocator.Allocate(0x24);
+    InitEntryManager020e2490(menu->yesNo, 0, 1, (void*)entriesAddress, &menu->promptAllocator, kEntryCount, 0x40);
+    menu->yesNoState = (void*)stateAddress;
 }

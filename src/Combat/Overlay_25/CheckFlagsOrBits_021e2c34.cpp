@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kHolderFlagsOffset = 0xc };
+#else
+enum { kHolderFlagsOffset = 0x1c };
+#endif
+
 #include "GameState/GameState.h"
 
 struct List02160094;
@@ -18,7 +25,7 @@ ARM int CheckFlagsOrBits_021e2c34(void* unused, struct List02160094* list) {
     int id = *(unsigned short*)((char*)node + 0x20);
     GameState* battle = GameState::GetInstance();
     GameObject* c = battle->GetGameObjectByIndex(id);
-    int flags = *(int*)((char*)&data_ov025_021ef988 + 0x1c);
+    int flags = *(int*)((char*)&data_ov025_021ef988 + kHolderFlagsOffset);
     if (flags & 4) return 0;
     if (_ZNK8Object3D19HasAnimationStoppedEv((struct BitFlags02037170*)c)) return 1;
     return _ZNK8Object3D15GetOffset40Bit1Ev((struct S190*)c) != 0;

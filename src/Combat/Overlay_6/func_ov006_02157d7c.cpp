@@ -1,5 +1,11 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kPot = 8, kFlags = 0x962, kButtons = 0xa0, kMenuCursor = 0x2a };
+#else
+enum { kPot = 0x10, kFlags = 0xae2, kButtons = 0xa8, kMenuCursor = 0x36 };
+#endif
+
 struct Obj0207fc6c;
 struct Obj2081;
 struct Outer020e28dc;
@@ -24,7 +30,7 @@ void UpdateEntryStateAndPosition(struct Ctx020e263c* c, int key);
 typedef int (*CheckFlag55Fn)(void* self);
 
 struct Obj02157d7c {
-    char pad0[0x10];
+    char pad0[kPot];
     void* pot_;
     void* menu_;
     void* outer_;
@@ -34,7 +40,7 @@ struct Obj02157d7c {
     char sub9c[0xa8 - 0x9c];
     unsigned short fa8;
     unsigned char faa;
-    char padab[0x300 - 0xab];
+    char padab[0x300 - kButtons - 3];
     char pad300[0x34c - 0x300];
     int f34c;
     int f350;
@@ -112,7 +118,7 @@ extern "C" ARM int func_ov006_02157d7c(struct Obj02157d7c* self, int arg)
         return 0;
     }
 
-    if (*(unsigned short*)((char*)self->pot_ + 0xae2) & 0x380)
+    if (*(unsigned short*)((char*)self->pot_ + kFlags) & 0x380)
     {
         self->f42c = 0;
         return 0;
@@ -123,10 +129,10 @@ extern "C" ARM int func_ov006_02157d7c(struct Obj02157d7c* self, int arg)
         func_02081f20(self->sub9c, arg);
         *(short*)((char*)self + 0x300 + 0x5e) = *self->f44;
         self->f350 = func_020800fc(menu, self->f44, *(short*)((char*)self + 0x300 + 0x5e),
-                                   *(unsigned short*)((char*)self + 0xa8),
-                                   *(unsigned char*)((char*)self + 0xaa),
+                                   *(unsigned short*)((char*)self + kButtons),
+                                   *(unsigned char*)((char*)self + kButtons + 2),
                                    (*(unsigned short*)((char*)self + 0x300 + 0x94) & 4) != 0);
-        *(short*)((char*)menu + 0x36) = *self->f44;
+        *(short*)((char*)menu + kMenuCursor) = *self->f44;
         if (self->f350 != 0)
             ClearSublistEntriesFlag4(menu, *(short*)((char*)self + 0x300 + 0x6e));
         if (*(short*)((char*)self + 0x300 + 0x5e) != *self->f44)

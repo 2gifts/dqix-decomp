@@ -10,7 +10,6 @@
 #include "Graphics/NSBXX/NSBXX.h"
 
 #if defined(jpn)
-#define _Z13Reset02013490Pc func_02013258
 
 #define data_020ef0f0 data_020ef02c
 #endif
@@ -23,7 +22,6 @@ extern "C"
     void* _Z15GetFieldAt0x150Ph(void*);
     void _Z25RunBufferedStream0205e104iiP12StreamHeaderi(const char*, SafeAllocator*, const void*, unsigned int);
 
-    // Texture functions
     void* _Z26CopyInternalFields0207df50P11Foo0207df50(void*);
     void _Z25RestorePairTables0207df90Pc(void*);
     void _Z24BackupPairTables0207dfacPc(void*);
@@ -32,54 +30,52 @@ extern "C"
     void _Z23ClearThreeWords02094d00P29ClearThreeWords02094d00Struct(void*);
     Zone3D_StructPtr_8* _Z22FindEntryByHalfwordKeyP11SearchTablei(void*, unsigned short id);
 
-    void func_020c9be0(); // abort() or similar
+    void func_020c9be0();
     void _Z16ZeroInit020de848Pv(void*);
 
     void _Z13Reset02013490Pc(void*);
     void _Z22ResetBigStruct02013750Pvi(Zone3D*, bool);
     void _ZN6Zone3D15ProcessBATSFileEPKvj(Zone3D*, const void*, unsigned);
 
-    // checks if zone id corresponds to a main floor of a grotto
     bool _Z17IsInRange0201b5b0i(int id);
-    // checks if zone id corresponds to boss floor of a grotto
     bool _Z22IsValueInRange0201b5d8i(int id);
 
     void _ZN12ZoneFeatures5ResetEv(void*);
 }
 
-extern char data_020ef0f0[]; // "data/map/maplist9.bin"
-extern char data_020ef106[]; // "%s/Z0%dM01.ambl"
-extern char data_020ef116[]; // "data/map"
-extern char data_020ef11f[]; // "%s/Z0%dM99.ambl"
-extern char data_020ef12f[]; // "%s/%s.ambl"
-extern char data_020ef13a[]; // "ARC"
-extern char data_020ef13e[]; // ".nsbtx"
-extern char data_020ef145[]; // ".bmbl"
-extern char data_020ef14b[]; // ".dat"
-extern char data_020ef150[]; // ".bpos"
-extern char data_020ef156[]; // "%s/Z0%dM01.amdj"
-extern char data_020ef166[]; // "%s/Z0%dM99.amdj"
-extern char data_020ef176[]; // "%s/%sb.amdj"
-extern char data_020ef182[]; // "%s/%sa.amdj"
-extern char data_020ef18e[]; // "%s/%s.amdj"
-extern char data_020ef199[]; // ".bmdj"
-extern char data_020ef19f[]; // "Z0%dM0100"
-extern char data_020ef1a9[]; // "Z0%dM0101"
-extern char data_020ef1b3[]; // "Z0%dM0102"
-extern char data_020ef1bd[]; // "Z0%dM0103"
-extern char data_020ef1c7[]; // "%s/ats_%c.ambl"
-extern char data_020ef1d6[]; // "%s.bats"
-extern char data_020ef1de[]; // "ARC:/%s"
-extern char data_020ef1e6[]; // "."
-extern char data_020ef1e8[]; // "nsbmd"
-extern char data_020ef1ee[]; // "col2"
-extern char data_020ef1f3[]; // "open"
-extern char data_020ef1f8[]; // "open2"
-extern char data_020ef1fe[]; // "close"
-extern char data_020ef204[]; // "close2"
-extern char data_020ef20b[]; // "/data/ani/d_%c%03d.spr"
-extern char data_020ef222[]; // "tsuboware"
-extern char data_020ef22c[]; // "ARC:%s"
+extern char data_020ef0f0[];
+extern char data_020ef106[];
+extern char data_020ef116[];
+extern char data_020ef11f[];
+extern char data_020ef12f[];
+extern char data_020ef13a[];
+extern char data_020ef13e[];
+extern char data_020ef145[];
+extern char data_020ef14b[];
+extern char data_020ef150[];
+extern char data_020ef156[];
+extern char data_020ef166[];
+extern char data_020ef176[];
+extern char data_020ef182[];
+extern char data_020ef18e[];
+extern char data_020ef199[];
+extern char data_020ef19f[];
+extern char data_020ef1a9[];
+extern char data_020ef1b3[];
+extern char data_020ef1bd[];
+extern char data_020ef1c7[];
+extern char data_020ef1d6[];
+extern char data_020ef1de[];
+extern char data_020ef1e6[];
+extern char data_020ef1e8[];
+extern char data_020ef1ee[];
+extern char data_020ef1f3[];
+extern char data_020ef1f8[];
+extern char data_020ef1fe[];
+extern char data_020ef204[];
+extern char data_020ef20b[];
+extern char data_020ef222[];
+extern char data_020ef22c[];
 
 void Zone3D::SwitchZone(unsigned short newID)
 {
@@ -108,7 +104,7 @@ void Zone3D::SwitchZone(unsigned short newID)
     numChests_ = 0;
     unknown_82c_ = 0;
     unknown_474_ = 0;
-    unknown_82c_ = 0; // why zero it twice?
+    unknown_82c_ = 0;
     unknown_42c_ = 0;
 
     mapListLoadHandle_ = -1;

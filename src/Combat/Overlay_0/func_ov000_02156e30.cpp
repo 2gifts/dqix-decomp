@@ -3,7 +3,11 @@
 #include "Util/Random.h"
 
 struct Combatant02156e30 {
+#if defined(jpn)
+    char pad0[0x144];
+#else
     char pad0[0x150];
+#endif
     unsigned char* status;
 };
 

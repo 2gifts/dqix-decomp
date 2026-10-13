@@ -1,13 +1,8 @@
 #include <globaldefs.h>
 #if defined(jpn)
 #define LIST_OFFSET 0x34
-#define func_ov013_02186bd4 func_ov013_02187f00
 #else
 #define LIST_OFFSET 0x38
-#endif
-
-#if defined(jpn)
-#define func_ov013_02186c64 func_ov013_02187f78
 #endif
 
 struct Struct_0205d81c;

@@ -2,7 +2,6 @@
 #if defined(jpn)
 #define func_ov008_02188d74 func_ov008_02189a9c
 #define func_ov008_0218712c func_ov008_02188008
-#define _Z18InitConfig02187664P15Manager02187664i func_ov008_02188578
 #define func_ov008_02187f6c func_ov008_02188ccc
 #endif
 

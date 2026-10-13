@@ -11,7 +11,6 @@
 #define data_ov008_0218b48f data_ov008_0218c0f0
 #define func_ov008_02188d74 func_ov008_02189a9c
 #define func_ov008_0218712c func_ov008_02188008
-#define _Z18InitConfig02187664P15Manager02187664i func_ov008_02188578
 #define func_ov008_02187f6c func_ov008_02188ccc
 #else
 #define REGION_VALUE(j,u) u
@@ -50,13 +49,11 @@ struct List02184a4c {
     short count;
 };
 
-/* Result of func_ov017_0218b5b0. */
 struct Ov17Data02184a4c {
     char pad0[REGION_VALUE(0x27c, 0x2cc)];
     char stage[0x87c - REGION_VALUE(0x27c, 0x2cc)];
 };
 
-/* The 0xb0-byte block LoadBattleBlock020ac4c0 copies out of the GameState. */
 struct BattleTail02184a4c {
     char pad0[0x10];
     unsigned int lo : 23;
@@ -76,14 +73,12 @@ static inline BattleBlock02184a4c* GetBattleBlock(GameState* gs) {
     return (BattleBlock02184a4c*)(GetSection7400(GetSection104(gs)) + 0x3c);
 }
 
-/* Script poller allocated into obj->poller. */
 struct Poller02184a4c {
     char pad0[0x68];
     short count;
     short ids[1];
 };
 
-/* Message record allocated into obj->message. */
 struct MessageSrc02184a4c {
     unsigned int word0;
     const char* text;

@@ -4,6 +4,7 @@ enum {regionalOffset0=0x1f9cc};
 enum {regionalOffset0=0x1f7dc};
 #endif
 #include <globaldefs.h>
+#include "Memory/AllocatorLifecycle.h"
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 #include "Memory/AllocatorUnion.h"
@@ -33,7 +34,6 @@ struct Self021b71d8 {
 };
 
 extern "C" Holder021b71d8* func_02012fe4(void);
-extern "C" void _Z17EmptyStub02012de4v(AllocatorUnion* alloc);
 extern "C" void func_020a0cc4(unsigned int size);
 void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
 extern AllocatorUnion data_02114e20;
@@ -44,7 +44,7 @@ extern "C" void func_ov000_0215fab0(Context021b71d8* context, unsigned char valu
 extern "C" ARM void func_ov017_021b71d8(Self021b71d8* self) {
     GameState::GetInstance();
     Holder021b71d8* holder = func_02012fe4();
-    _Z17EmptyStub02012de4v(&data_02114e20);
+    EmptyStub02012de4(&data_02114e20);
     func_020a0cc4(regionalOffset0);
     self->allocator.CreateTypeA(AllocateAligned4(&data_02114e20, regionalOffset0), regionalOffset0);
     self->id = holder->id;

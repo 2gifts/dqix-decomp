@@ -43,10 +43,12 @@ extern "C" void* func_02012fe4(void);
 extern "C" const char* _Z21GetFieldByKey020e0434P17Container020e0310i(struct Container020e0310* c, int key);
 extern "C" int _Z20AppendString02042058PcPKc(char* dst, const char* src);
 extern "C" void func_02046380(struct MsgCtl0216b7bc* ctl);
+#if !defined(jpn)
 extern "C" void func_0204500c(struct MsgCtl0216b7bc* ctl, char* text, int a, int b);
+#endif
 #if defined(jpn)
 extern "C" void func_ov003_0216d8d4(struct Msg0216b7bc* obj, int key);
-extern "C" void func_02045d88(struct MsgCtl0216b7bc* ctl, char* text, int flags);
+extern "C" void func_0204500c(struct MsgCtl0216b7bc* ctl, char* text, int flags);
 #else
 extern "C" void func_ov003_0216d8d4(struct Msg0216b7bc* obj, int key, int p3, int p4, int p5);
 #endif
@@ -114,7 +116,7 @@ extern "C" ARM void func_ov003_0216b7bc(struct Msg0216b7bc* obj) {
 #endif
         progress->rewardFlags &= ~0xff;
 #if defined(jpn)
-        func_02045d88(ctl, buf, 0);
+        func_0204500c(ctl, buf, 0);
 #else
         func_02046380(ctl);
         func_0204500c(ctl, buf, 0, 0xe3);

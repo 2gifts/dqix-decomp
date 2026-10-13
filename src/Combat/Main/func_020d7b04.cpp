@@ -1,154 +1,154 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
+#include "GameState/GameState.h"
 
-struct Obj020d7b04;
-#if defined(jpn)
-enum { QueueStride = 0x50, ListOffset = 0x34ec, ActiveOffset = 0x868, StateOffset = 0x17e2 };
-struct QueueBlockFlags { unsigned char low : 2; unsigned char blocked : 1; unsigned char high : 5; };
-#define QUEUE_BLOCKED(p) (((QueueBlockFlags*)((p) + 0x17ff))->blocked)
-extern "C" void func_02045d88(void*, void*, int);
-#else
-enum { QueueStride = 0x70, ListOffset = 0x36fc, ActiveOffset = 0x998, StateOffset = 0x19b2 };
-#define QUEUE_BLOCKED(p) ((p)[0x19d0])
-#endif
-
-extern "C" void* _ZN9GameState11GetInstanceEv();
-extern "C" int _ZNK9GameState21GetEffectiveDeltaTimeEv(void* self);
-extern "C" int _Z17GetGlobal02109400v();
+struct FontBankLoader;
+extern "C" FontBankLoader* _Z17GetGlobal02109400v();
 extern "C" void* _Z26GetGlobalField0x1c020421a0v();
-extern "C" int _Z18AlwaysTrue02094b4cv(int a);
-extern "C" void* func_ov017_0218b5b0();
-extern "C" int _Z14ListContainsIdP16ListHead02046b60i(void* list, int id);
-extern "C" void func_ov016_0218b5c0(int a, int b);
-extern "C" void func_ov017_0218b5f8(int a);
-extern "C" void _Z21BlankFunction02094b3cv(int a, int b);
-extern "C" void _Z21BlankFunction02094b30v(int a, int b, int c);
-extern "C" void func_02046380(void* p);
-extern "C" void func_0204500c(void* p, void* a, int b, int c);
-extern "C" void _Z18InitFields02042b3cPv(void* p);
-extern "C" void func_02094ab0(int a);
-extern "C" void _Z24ReinitController02043204Pc(char* p);
-
+extern "C" int _Z18AlwaysTrue02094b4cv(FontBankLoader*);
+extern "C" int _Z14ListContainsIdP16ListHead02046b60i(void*, int);
+extern "C" void func_ov016_0218b5c0(int, int);
+extern "C" void func_ov017_0218b5f8(int);
+extern "C" void _Z21BlankFunction02094b3cv(FontBankLoader*, int);
+extern "C" void _Z21BlankFunction02094b30v(FontBankLoader*, int, int);
+extern "C" void func_02046380(void*);
+#if defined(jpn)
+extern "C" void func_0204500c(void*, void*, int);
+#else
+extern "C" void func_0204500c(void*, void*, int, int);
+#endif
+extern "C" void _Z18InitFields02042b3cPv(void*);
+extern "C" void func_02094ab0(FontBankLoader*);
+extern "C" void _Z24ReinitController02043204Pc(char*);
 extern char data_020f2348[];
 
-struct Flags020d7b04 {
-    unsigned char lo : 6;
-    unsigned char bit6 : 1;
-    unsigned char bit7 : 1;
+struct QueuedTextEntry {
+#if defined(jpn)
+    char text[0x4f];
+    unsigned char style : 7;
+#else
+    char text[0x6f];
+    unsigned char style : 6;
+    unsigned char compactWindow : 1;
+#endif
+    unsigned char waitForRequestC : 1;
 };
 
-struct Obj020d7b04 {
-    signed char f0;
-#if defined(jpn)
-    unsigned char pad01[0x4e];
-    struct { unsigned char lo : 7; unsigned char bit7 : 1; } b6f;
-#else
-    unsigned char pad01[0x6e];
-    struct Flags020d7b04 b6f;
-#endif
-    unsigned char pad70[0x80];
-#if defined(jpn)
-    unsigned char padF0[0x20];
-#else
-    unsigned char padF0[0x60];
-#endif
-    struct Flags020d7b04 flags;
-    unsigned char pad151;
-    unsigned short field152;
+struct TextMessageQueue {
+    QueuedTextEntry entries[3];
+    unsigned char count : 6;
+    unsigned char windowActive : 1;
+    unsigned char fontRequested : 1;
+    unsigned char unknown151;
+    unsigned short remainingMilliseconds;
 };
 
-// USA: func_020d7b04
-extern "C" ARM void func_020d7b04(struct Obj020d7b04* obj) {
-    char buf[0xc8];
-    void* gs = _ZN9GameState11GetInstanceEv();
-    int g = _Z17GetGlobal02109400v();
-    unsigned char* g1c = (unsigned char*)_Z26GetGlobalField0x1c020421a0v();
-    void* list;
-    unsigned short dt;
-    int ok;
-
-    if (obj->flags.bit7) {
-        if (_Z18AlwaysTrue02094b4cv(g) == 0) goto END;
-    }
-
-    list = *(void**)((char*)func_ov017_0218b5b0() + ListOffset);
-    if (_Z14ListContainsIdP16ListHead02046b60i(list, 0x25) != 0) goto END;
-    if (_Z14ListContainsIdP16ListHead02046b60i(list, 0x26) != 0) goto END;
-
-    dt = (unsigned short)_ZNK9GameState21GetEffectiveDeltaTimeEv(gs);
-
-    if (obj->field152 == 0) goto L2;
-    if (dt < obj->field152) {
-        obj->field152 = obj->field152 - dt;
-        goto END;
-    }
-    if (QUEUE_BLOCKED(g1c) != 0) goto END;
-    obj->field152 = 0;
-    if (obj->flags.lo == 0) goto END;
-    memcpy(obj, (char*)obj + QueueStride, QueueStride);
-    memcpy((char*)obj + QueueStride, (char*)obj + 2 * QueueStride, QueueStride);
-    obj->flags.lo = (unsigned char)(obj->flags.lo + 0xff);
-    if (obj->flags.lo != 0) goto END;
-    func_ov016_0218b5c0(1, -1);
-    func_ov017_0218b5f8(-1);
-    goto END;
-
-L2:
-    if (QUEUE_BLOCKED(g1c) != 0) goto END;
-    if (obj->flags.lo == 0) goto L3;
-    if (obj->b6f.lo == 0) goto L4;
-    ok = 1;
-    if (obj->b6f.bit7) {
-        ok = _Z14ListContainsIdP16ListHead02046b60i(list, 0xc) == 0;
-    }
-    if (ok == 0) goto L4;
-    _Z21BlankFunction02094b3cv(g, 0xa);
-    _Z21BlankFunction02094b30v(g, 0x1f9, 0);
-    obj->b6f.lo = 0;
-    obj->flags.bit7 = 1;
-    goto END;
-
-L4:
-    sprintf(buf, data_020f2348, obj);
-    if (obj->flags.lo > 1) {
-        obj->field152 = 0x3e8;
-    } else {
-        obj->field152 = 0xbb8;
-    }
-    if (obj->f0 != 0) {
+struct MessageWindowState {
 #if defined(jpn)
-        func_02045d88(g1c, buf, 0);
+    char unknown0[0x868];
 #else
-        func_02046380(g1c);
-        if (obj->b6f.bit6) {
-            func_0204500c(g1c, buf, 0, 0xe3);
-        } else {
-            func_0204500c(g1c, buf, 0, 0x100);
+    char unknown0[0x998];
+#endif
+    int active;
+#if defined(jpn)
+    char unknownAfterActive[0x17e2 - 0x86c];
+#else
+    char unknownAfterActive[0x19b2 - 0x99c];
+#endif
+    unsigned char state;
+#if defined(jpn)
+    char unknownAfterState[0x17ff - 0x17e3];
+    unsigned char unknownLow : 2;
+    unsigned char blocked : 1;
+    unsigned char unknownHigh : 5;
+#else
+    char unknownAfterState[0x19d0 - 0x19b3];
+    unsigned char blocked;
+#endif
+};
+
+extern "C" ARM void func_020d7b04(TextMessageQueue* queue) {
+    char formattedText[0xc8];
+    GameState* game = GameState::GetInstance();
+    FontBankLoader* fonts = _Z17GetGlobal02109400v();
+    MessageWindowState* window = static_cast<MessageWindowState*>(_Z26GetGlobalField0x1c020421a0v());
+    if (queue->fontRequested && !_Z18AlwaysTrue02094b4cv(fonts)) return;
+
+    void* requests = func_ov017_0218b5b0()->unknown_ptr_array_36fc[0];
+    if (_Z14ListContainsIdP16ListHead02046b60i(requests, 0x25)) return;
+    if (_Z14ListContainsIdP16ListHead02046b60i(requests, 0x26)) return;
+
+    unsigned short elapsed = game->GetEffectiveDeltaTime();
+    if (queue->remainingMilliseconds != 0) {
+        if (elapsed < queue->remainingMilliseconds) {
+            queue->remainingMilliseconds -= elapsed;
+            return;
         }
+        if (window->blocked) return;
+        queue->remainingMilliseconds = 0;
+        if (queue->count == 0) return;
+        memcpy(&queue->entries[0], &queue->entries[1], sizeof(QueuedTextEntry));
+        memcpy(&queue->entries[1], &queue->entries[2], sizeof(QueuedTextEntry));
+        queue->count--;
+        if (queue->count == 0) {
+            func_ov016_0218b5c0(1, -1);
+            func_ov017_0218b5f8(-1);
+        }
+        return;
+    }
+
+    if (window->blocked) return;
+    if (queue->count != 0) {
+        if (queue->entries[0].style != 0) {
+            int canLoadFont = 1;
+            if (queue->entries[0].waitForRequestC) {
+                canLoadFont = !_Z14ListContainsIdP16ListHead02046b60i(requests, 0xc);
+            }
+            if (canLoadFont) {
+                _Z21BlankFunction02094b3cv(fonts, 10);
+                _Z21BlankFunction02094b30v(fonts, 505, 0);
+                queue->entries[0].style = 0;
+                queue->fontRequested = 1;
+                return;
+            }
+        }
+        sprintf(formattedText, data_020f2348, queue->entries[0].text);
+        if (queue->count > 1) {
+            queue->remainingMilliseconds = 1000;
+        } else {
+            queue->remainingMilliseconds = 3000;
+        }
+        if (queue->entries[0].text[0] != 0) {
+#if defined(jpn)
+            func_0204500c(window, formattedText, 0);
+#else
+            func_02046380(window);
+            if (queue->entries[0].compactWindow) {
+                func_0204500c(window, formattedText, 0, 0xe3);
+            } else {
+                func_0204500c(window, formattedText, 0, 0x100);
+            }
 #endif
-        _Z18InitFields02042b3cPv(g1c);
-        *(int*)(g1c + ActiveOffset) = 1;
-        *(unsigned char*)(g1c + StateOffset) = 1;
-        obj->flags.bit6 = 1;
-        goto END;
+            _Z18InitFields02042b3cPv(window);
+            window->active = 1;
+            window->state = 1;
+            queue->windowActive = 1;
+            return;
+        }
+        queue->windowActive = 0;
+        queue->remainingMilliseconds = 0;
+        queue->count = 0;
+        return;
+    } else {
+        if (queue->fontRequested) {
+            func_02094ab0(fonts);
+            queue->fontRequested = 0;
+        }
+        if (queue->windowActive) {
+            _Z24ReinitController02043204Pc(static_cast<char*>(_Z26GetGlobalField0x1c020421a0v()));
+            queue->windowActive = 0;
+        }
     }
-    obj->flags.bit6 = 0;
-    obj->field152 = 0;
-    obj->flags.lo = 0;
-    goto END;
-
-L3:
-    if (obj->flags.bit7) {
-        func_02094ab0(g);
-        obj->flags.bit7 = 0;
-    }
-    if (obj->flags.bit6) {
-        _Z24ReinitController02043204Pc((char*)_Z26GetGlobalField0x1c020421a0v());
-        obj->flags.bit6 = 0;
-    }
-    obj->field152 = 0;
-    obj->flags.lo = 0;
-
-END:
-    return;
+    queue->remainingMilliseconds = 0;
+    queue->count = 0;
 }

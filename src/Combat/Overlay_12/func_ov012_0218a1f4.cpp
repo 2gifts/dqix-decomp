@@ -29,12 +29,28 @@ int AppendNameTag(char* dst, int n, const char* name);
 extern "C" int func_020420e8(char* str, int id);
 int AppendXYTag(char* dst, int x, int y);
 int AppendString02042058(char* dst, const char* src);
+#if defined(jpn)
+extern "C" void func_02042428(char* dst, int size);
+#endif
 
 // USA: func_ov012_0218a1f4
 extern "C" ARM void func_ov012_0218a1f4(unsigned char* self, char* dst) {
     if (dst == 0) return;
 
     struct StoreStruct* base = (struct StoreStruct*)GetGlobalField0x1c020421a0();
+#if defined(jpn)
+    StoreInArray0x8b0(base, 0, self[0x1457]);
+    SetByteInRange((unsigned char*)base, 0, 2);
+    SetByteAtIndex((unsigned char*)base, 0, 1);
+    func_02042428(dst, 0xc);
+    if (self[0x1341] == 9) {
+        void* name = FindEntryByKey((struct TableA68*)(self + 0x1314), 0x69);
+        AppendNameTag(dst, 0, (const char*)name);
+    } else {
+        void* name = FindEntryByKey((struct TableA68*)(self + 0x1314), 0x66);
+        AppendNameTag(dst, 0, (const char*)name);
+    }
+#else
     StoreInArray0x8b0(base, 0, *(unsigned short*)(self + 0x13fc));
     SetByteInRange((unsigned char*)base, 0, 4);
     SetByteAtIndex((unsigned char*)base, 0, 1);
@@ -50,4 +66,5 @@ extern "C" ARM void func_ov012_0218a1f4(unsigned char* self, char* dst) {
     int len = func_020420e8((char*)str, 0);
     AppendXYTag(dst, (0x60 - len) >> 1, 1);
     AppendString02042058(dst, (const char*)str);
+#endif
 }

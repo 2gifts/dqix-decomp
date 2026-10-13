@@ -1,23 +1,32 @@
 #include <globaldefs.h>
 
-struct Entry021570b4 {
-    char pad[0x7a];
-    unsigned char flagByte;
-    char pad2[0x7c - 0x7b];
+#if defined(jpn)
+enum { kIngredientEntries = 0x714 };
+#else
+enum { kIngredientEntries = 0x894 };
+#endif
+
+struct IngredientSprite {
+    char graphics[0x70];
+    int task;
+    short item;
+    short x;
+    short y;
+    unsigned char loading;
+};
+
+struct AlchemyPot {
+    char unknown0[kIngredientEntries];
+    IngredientSprite ingredients[4];
 };
 
 // USA: func_ov006_021570b4
-ARM int CheckAnyFlag_021570b4(char* obj) {
-    struct Entry021570b4* e = (struct Entry021570b4*)(obj + 0x894);
-    int found = 0;
-    unsigned char i;
-    for (i = 0; i < 4; i++) {
-        if (found | e->flagByte) {
-            found = 1;
-        } else {
-            found = 0;
-        }
-        e = (struct Entry021570b4*)((char*)e + 0x7c);
+ARM int CheckAnyFlag_021570b4(char* storage) {
+    AlchemyPot* pot = (AlchemyPot*)storage;
+    IngredientSprite* ingredient = pot->ingredients;
+    int loading = 0;
+    for (unsigned char i = 0; i < 4; i++, ingredient++) {
+        loading = (loading | ingredient->loading) != 0;
     }
-    return found;
+    return loading;
 }

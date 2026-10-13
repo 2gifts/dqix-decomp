@@ -1,5 +1,13 @@
 #include <globaldefs.h>
 
+#include "Resource/TextQueue.h"
+#if defined(jpn)
+enum { kObjectPointer = 0x144, kResourceWord = 0x4ec };
+extern int data_020f0420[];
+#else
+enum { kObjectPointer = 0x150, kResourceWord = 0x6fc };
+#endif
+
 #if defined(jpn)
 #define func_02052bfc func_02053fd8
 #endif
@@ -34,7 +42,7 @@ struct Sub150_02052bfc {
 struct Obj02052bfc {
     char pad0[4];
     short field4;
-    char pad1[0x150 - 6];
+    char pad1[kObjectPointer - 6];
     Sub150_02052bfc* field150;
 };
 
@@ -46,8 +54,6 @@ int IsField0Null(void** obj);
 int IsEntryEligibleAndFlagged(Struct0201bc94* obj);
 int CallFunc020e0434With02153694(int value);
 void* GetGlobalResetObj020d7a50(void);
-extern "C" void func_020d7e10(void* receiver, void* input, int style, int flag7,
-                              unsigned char ignoreDuplicates, unsigned char flag6);
 extern "C" void func_ov017_02191aac(char* obj, int mode, int idx, unsigned char mask);
 void EnqueueEventTag17_021ce014(int a, unsigned short b, unsigned short c, unsigned short d);
 
@@ -57,7 +63,7 @@ extern "C" ARM void func_02052bfc(struct Obj02052bfc* obj) {
 
     GameState* gs = GameState::GetInstance();
     GameResources* ov = func_ov017_0218b5b0();
-    void* list = *(void**)((char*)ov + 0x3000 + 0x6fc);
+    void* list = *(void**)((char*)ov + 0x3000 + kResourceWord);
     ArrayContainsByteStruct* arr = (ArrayContainsByteStruct*)GetPtrField0x2a04(gs);
     Struct0201bc94* entry = (Struct0201bc94*)func_02012fe4();
     unsigned char idx = obj->field4 & 0xff;
@@ -75,12 +81,24 @@ extern "C" ARM void func_02052bfc(struct Obj02052bfc* obj) {
     obj->field150->field56c = 0;
     if (idx == *(short*)((char*)gs->GetUnknownGameObject() + 4)) {
         if (obj->field150->field56d != 0) {
+            #if defined(jpn)
+            strcpy(buf, (char*)data_020f0420[1]);
+#else
             strcpy(buf, (char*)CallFunc020e0434With02153694(0x33));
+#endif
         }
         else {
+            #if defined(jpn)
+            strcpy(buf, (char*)data_020f0420[5]);
+#else
             strcpy(buf, (char*)CallFunc020e0434With02153694(0x32));
+#endif
         }
+        #if defined(jpn)
+        func_020d7e10(GetGlobalResetObj020d7a50(), buf, 0, 0, 1);
+#else
         func_020d7e10(GetGlobalResetObj020d7a50(), buf, 0, 0, 1, 1);
+#endif
     }
     func_ov017_02191aac((char*)ov, 0, idx, 2);
     EnqueueEventTag17_021ce014(0, 1, 0, idx);

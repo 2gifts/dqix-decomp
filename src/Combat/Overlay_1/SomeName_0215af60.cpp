@@ -5,13 +5,12 @@ void SetLinkIfType3_021d6148(Node021d6148* o, unsigned int v);
 typedef void (*SetLinkFloatFn021d6148)(Node021d6148*, float);
 
 extern "C" float func_ov017_021d6110(void*);
-extern "C" float func_0200c578(float);
-extern "C" double func_02008dcc(float);
+extern "C" double func_02008dcc(double);
 
 // USA: func_ov001_0215af60  (semantic: SomeName_0215af60)
 extern "C" ARM int func_ov001_0215af60(void* obj) {
     float a = func_ov017_021d6110(obj);
-    float c = (float)func_02008dcc(func_0200c578(a));
+    float c = (float)func_02008dcc((double)(a));
     ((SetLinkFloatFn021d6148)SetLinkIfType3_021d6148)((Node021d6148*)((char*)obj + 0x8), c);
     return 1;
 }

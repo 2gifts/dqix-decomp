@@ -1,17 +1,28 @@
+#if defined(jpn)
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
 #include <globaldefs.h>
 
-struct Container020e0310;
+struct Element020e0310;
+struct Container020e0310 {
+    unsigned int count : 12;
+    unsigned int flags : 20;
+    Element020e0310* entries;
+};
 
 struct EquipmentMenu {
     char unk_0[0xdf8];
-    char strings_[0xf84 - 0xdf8];
+    Container020e0310 messages;
+    char unknownAfterMessages[LOW_REGION(0xf80, 0xf84) - 0xdf8 - sizeof(Container020e0310)];
     short menuWidth_;
     short menuHeight_;
     short menuX_;
     short menuY_;
-    char unk_f8c[0x3dbb - 0xf8c];
+    char unk_f8c[LOW_REGION(0x3d33 - 0xf88, 0x3dbb - 0xf8c)];
     signed char slot_;
-    char unk_3dbc[0x3ddc - 0x3dbc];
+    char unk_3dbc[LOW_REGION(0x3d54, 0x3ddc) - LOW_REGION(0x3d34, 0x3dbc)];
     unsigned char menuStep_;
     unsigned char menuResult_;
     signed char menuChoice_;
@@ -39,7 +50,21 @@ extern "C" ARM void func_ov005_02159a30(EquipmentMenu* self, char* text, int fra
         count--;
         shifted = 1;
     }
-    Container020e0310* strings = (Container020e0310*)self->strings_;
+#if defined(jpn)
+    for (int i = 0; i < count; i++) {
+        if (shifted) {
+            if (i == 0)
+                AppendNameTag(text, i, _Z21GetFieldByKey020e0434P17Container020e0310i(&self->messages, 4));
+            else
+                AppendNameTag(text, i, _Z21GetFieldByKey020e0434P17Container020e0310i(&self->messages, (short)(i + 1)));
+        } else {
+            AppendNameTag(text, i, _Z21GetFieldByKey020e0434P17Container020e0310i(&self->messages, (short)i));
+        }
+        if (i != count - 1)
+            _Z20AppendString02042058PcPKc(text, _Z21GetFieldByKey020e0434P17Container020e0310i(&self->messages, 0x64));
+    }
+#else
+    Container020e0310* strings = &self->messages;
     const char* separator = _Z21GetFieldByKey020e0434P17Container020e0310i(strings, 0x64);
     int maxWidth = 0;
     for (int i = 0; i < count; i++) {
@@ -63,4 +88,5 @@ extern "C" ARM void func_ov005_02159a30(EquipmentMenu* self, char* text, int fra
     self->menuHeight_ = 7;
     self->menuX_ = (0x20 - tiles) >> 1;
     self->menuY_ = 9;
+#endif
 }

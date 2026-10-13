@@ -1,16 +1,16 @@
 #include <globaldefs.h>
+#include "System/ProcessorContext.h"
 
-struct ProcessorContext;
 int ClampInt020d9808(int* value, int* lo, int* hi);
-extern "C" void _Z15PopulateContextP16ProcessorContextjjjjj(ProcessorContext*, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
 
 extern int data_020f280c;
 extern int data_020f2800;
 
-// USA: _Z22ClampAndSubmit020d97a8iiiiii
-ARM int ClampAndSubmit020d97a8(int a, int b, int c, int d, int e, int f) {
-    int v = ClampInt020d9808(&d, &data_020f280c, &data_020f2800);
-    int ip = v + 0x10;
-    _Z15PopulateContextP16ProcessorContextjjjjj((ProcessorContext*)a, e, f, b + c, c, ip);
+// USA: func_020d97a8
+ARM int ClampAndSubmit020d97a8(ProcessorContext* context, void* stackSpace, unsigned int stackSize,
+                             int relativePriority, const void* entry, int userdata) {
+    int priority = ClampInt020d9808(&relativePriority, &data_020f280c, &data_020f2800) + 16;
+    PopulateContext(context, (unsigned int)entry, userdata,
+                    (unsigned int)((char*)stackSpace + stackSize), stackSize, priority);
     return 1;
 }

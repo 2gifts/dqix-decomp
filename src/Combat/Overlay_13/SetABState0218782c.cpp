@@ -7,13 +7,11 @@
 #define func_ov013_02186590 func_ov013_021878c0
 #define func_ov013_0218678c func_ov013_02187ab8
 #define func_ov013_0218683c func_ov013_02187b68
-#define func_ov013_02186bd4 func_ov013_02187f00
 #else
 #define R(j,u) (u)
 #endif
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
-
 
 // USA: func_ov013_0218782c  (semantic: SetABState0218782c)
 extern "C" ARM void func_ov013_0218782c(void* obj, int a, int b) {

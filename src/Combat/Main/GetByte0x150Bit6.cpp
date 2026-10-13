@@ -1,7 +1,13 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kByteOffset = 0xf0 };
+#else
+enum { kByteOffset = 0x150 };
+#endif
+
 struct BitFlags020d805c {
-    char pad[0x150];
+    char pad[kByteOffset];
     unsigned char b0 : 1;
     unsigned char b1 : 1;
     unsigned char b2 : 1;

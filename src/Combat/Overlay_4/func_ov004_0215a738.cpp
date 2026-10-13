@@ -14,7 +14,7 @@ extern "C" void* func_ov004_02156f6c(void* obj, int key);
 extern "C" void func_ov023_021f65d4(void* obj, int key, int mask);
 extern "C" void func_ov023_021f809c(void* node, void* obj);
 extern "C" void func_ov023_021dcae0(void* node, int val);
-extern "C" int _Z24CheckThenNotify_02157088v(void* obj, int arg);
+extern "C" void* _Z24CheckThenNotify_02157088Pvi(void* object, int key);
 
 struct Grid021f9b30 {
     char pad0[0x20];
@@ -117,7 +117,7 @@ extern "C" ARM int func_ov004_0215a738(void* obj) {
     _Z26ClearNodeMaskById_021f6600Pvii(obj, 0x46a, 8);
     void* n = func_ov004_02156f6c(obj, 0x17);
     if (n) func_ov023_021f809c(n, obj);
-    void* r = (void*)_Z24CheckThenNotify_02157088v(obj, 7);
+    void* r = (void*)_Z24CheckThenNotify_02157088Pvi(obj, 7);
     int idx2 = _Z28DispatchNodeIfType7_02156e2cPvi(obj, 0x63);
     if (r) func_ov023_021dcae0(r, keys[idx2 + base * 8]);
     return 0;

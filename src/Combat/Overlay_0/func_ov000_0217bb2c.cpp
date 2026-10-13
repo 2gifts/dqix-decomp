@@ -33,14 +33,24 @@ extern "C" void func_ov000_02176e3c(void* ctx, void* obj, int sel, int a, int b,
 
 struct MenuCtx_0217bb2c {
     char pad0[0x188];
+#if defined(jpn)
+    char list[0x1faa - 0x188];
+#else
     char list[0x1d72 - 0x188];
+#endif
     unsigned short flags;
 };
 
 struct MenuGlobals_0217bb2c {
+#if defined(jpn)
+    MenuCtx_0217bb2c* ctx;
+    int field0;
+    int field4;
+#else
     int field0;
     int field4;
     MenuCtx_0217bb2c* ctx;
+#endif
 };
 
 struct MenuObj_0217bb2c {
@@ -57,7 +67,11 @@ struct MenuObj_0217bb2c {
     signed char* order;
     char pad34[0x38 - 0x34];
     void* window;
+#if defined(jpn)
+    char pad3c[0x47d - 0x3c];
+#else
     char pad3c[0x43d - 0x3c];
+#endif
     signed char field43d;
     char pad43e[0x441 - 0x43e];
     signed char field441;

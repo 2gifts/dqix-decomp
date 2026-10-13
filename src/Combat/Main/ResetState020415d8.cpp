@@ -4,7 +4,11 @@ extern "C" void func_02037d10(void*);
 
 struct State020415d8 {
     unsigned short flags_00;
+#if defined(jpn)
+    char pad_02[0x2c2];
+#else
     char pad_02[0x2ce];
+#endif
     unsigned short field_2d0;
     char pad_2d2[2];
     int field_2d4;

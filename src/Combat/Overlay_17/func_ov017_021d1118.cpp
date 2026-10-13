@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include <std_library_functions.h>
 #include "GameState/GameState.h"
+#include "GameState/BattleRecordSnapshot.h"
 #include "System/Memory.h"
 
 void* GetData02100044();
@@ -10,14 +11,10 @@ int GetFieldAt0x0(int* obj);
 extern "C" int _Z24UpdatePlayClocks020ac4f8i(int commit);
 extern "C" int _Z23LoadBattleBlock020ac4c0Pv(void* dst);
 int CopyOutBattleField0x7ac0(void* dst);
-struct S_a0870;
-struct S_a08a4;
-struct S_a08d8;
-struct S_a090c;
-int GetFieldPercentOver307(struct S_a0870* p);
-int GetFieldPercentOver232(struct S_a08a4* p);
-int GetFieldPercentOver944(struct S_a08d8* p);
-int GetFieldPercentOver448(struct S_a090c* p);
+int GetFieldPercentOver307(BattleRecordSnapshot* record);
+int GetFieldPercentOver232(BattleRecordSnapshot* record);
+int GetFieldPercentOver944(BattleRecordSnapshot* record);
+int GetFieldPercentOver448(BattleRecordSnapshot* record);
 
 struct PacketIdentifier { unsigned char bytes[6]; };
 
@@ -36,24 +33,6 @@ struct Packet {
     unsigned char tag;
     char pad_1[3];
     PacketBody body;
-};
-
-struct BattleBlock {
-    unsigned short f00;
-    unsigned char f02;
-    unsigned char f03;
-    unsigned short f04;
-    unsigned char f06;
-    unsigned char f07;
-    unsigned int f08 : 24;
-    unsigned int f08hi : 8;
-    unsigned int f0cA : 14;
-    unsigned int f0cB : 14;
-    unsigned int f0cC : 4;
-    unsigned int f10A : 9;
-    unsigned int f10B : 14;
-    unsigned int f10C : 9;
-    char rest[0xb0 - 0x14];
 };
 
 struct BattleRecord {
@@ -155,7 +134,7 @@ extern "C" ARM void func_ov017_021d1118(int recipient, int flags, bool segmented
         commit = 0;
         if ((kind == 5 && depth > 1) || kind == 6) commit = 1;
         _Z24UpdatePlayClocks020ac4f8i(commit);
-        BattleBlock blk;
+        BattleRecordSnapshot blk;
         _Z23LoadBattleBlock020ac4c0Pv(&blk);
         unsigned int score = 0;
         CopyOutBattleField0x7ac0(&score);
@@ -169,20 +148,20 @@ extern "C" ARM void func_ov017_021d1118(int recipient, int flags, bool segmented
         }
         BattleRecord rec;
         VectorizedMemset(&rec, 0, sizeof(rec));
-        rec.w0A = blk.f00;
-        rec.w8A = blk.f02;
-        rec.w4A = blk.f04;
-        rec.w8B = blk.f06;
-        rec.w4B = blk.f08;
+        rec.w0A = blk.clocks.elapsed.hours;
+        rec.w8A = blk.clocks.elapsed.minutes;
+        rec.w4A = blk.clocks.committed.hours;
+        rec.w8B = blk.clocks.committed.minutes;
+        rec.w4B = blk.unknown08_0;
         rec.w0B = score;
-        rec.wcA = blk.f10A;
-        rec.w10A = blk.f08hi;
-        rec.wcB = blk.f0cB;
-        rec.w10B = blk.f10B;
-        rec.w8C = (unsigned char)GetFieldPercentOver307((struct S_a0870*)&blk);
-        rec.w8D = (unsigned char)GetFieldPercentOver232((struct S_a08a4*)&blk);
-        rec.wcC = (unsigned char)GetFieldPercentOver944((struct S_a08d8*)&blk);
-        rec.w10C = (unsigned char)GetFieldPercentOver448((struct S_a090c*)&blk);
+        rec.wcA = blk.unknown10_0;
+        rec.w10A = blk.unknown08_24;
+        rec.wcB = blk.unknown0c_14;
+        rec.w10B = blk.unknown10_9;
+        rec.w8C = (unsigned char)GetFieldPercentOver307(&blk);
+        rec.w8D = (unsigned char)GetFieldPercentOver232(&blk);
+        rec.wcC = (unsigned char)GetFieldPercentOver944(&blk);
+        rec.w10C = (unsigned char)GetFieldPercentOver448(&blk);
         rec.f14 = block->val;
         rec.protagonistFlag = flag;
         rec.protagonistValue = value;

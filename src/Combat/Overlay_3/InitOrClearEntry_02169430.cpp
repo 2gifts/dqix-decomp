@@ -14,14 +14,16 @@ enum { kRegion4ec = 0x4ec };
 #endif
 
 #if defined(jpn)
-extern "C" void func_02045d88(void*, void*, int);
+extern "C" void func_0204500c(void*, void*, int);
 #endif
 #include "std_library_functions.h"
 
 int GetGlobalField0x1c020421a0(void);
 extern "C" int func_0205d6e4(void* obj, int flag);
 extern "C" void func_ov003_0216abd8(void* obj, void* buf);
+#if !defined(jpn)
 extern "C" void func_0204500c(void* dst, void* src, int a, int b);
+#endif
 
 // USA: func_ov003_02169430  (semantic: InitOrClearEntry_02169430)
 extern "C" ARM void func_ov003_02169430(void* p) {
@@ -33,7 +35,7 @@ extern "C" ARM void func_ov003_02169430(void* p) {
         memset(*(void**)(obj + 0x7c), 0, kRegion960);
         func_ov003_0216abd8(obj, *(void**)(obj + 0x7c));
 #if defined(jpn)
-        func_02045d88((void*)g, *(void**)(obj + 0x7c), 0);
+        func_0204500c((void*)g, *(void**)(obj + 0x7c), 0);
 #else
         func_0204500c((void*)g, *(void**)(obj + 0x7c), 0, 0xe3);
 #endif

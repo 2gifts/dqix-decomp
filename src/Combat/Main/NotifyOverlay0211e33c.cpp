@@ -6,6 +6,11 @@ extern "C" void func_020a1940(unsigned int id);
 extern char data_0211e33c;
 
 // KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
+#if defined(jpn)
+#define NotifyOverlay0211e33c func_020d8614
+extern "C" ARM void NotifyOverlay0211e33c(void);
+#endif
+
 // USA: func_020d6c0c
 ARM void NotifyOverlay0211e33c() {
     func_020a1940(OVERLAY_ID(34));

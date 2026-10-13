@@ -1,15 +1,14 @@
 #include <globaldefs.h>
 
-extern "C" float func_0200c578(float angle);
-extern "C" double func_02009424(float v);
+extern "C" double func_02009424(double v);
 
 struct ShakeState0208ca00 {
     char pad0[0xc8];
-    float angle;              // 0xc8
+    float angle;
     char pad1[0xd7 - 0xcc];
-    unsigned char counter;    // 0xd7
+    unsigned char counter;
     char pad2[0xda - 0xd8];
-    unsigned short flags;     // 0xda, bit 0x80 = shake active
+    unsigned short flags;
 };
 
 // USA: func_0208ca00
@@ -29,7 +28,7 @@ ARM int AnimateSubBG0Shake0208ca00(struct ShakeState0208ca00* obj, int delta) {
         if (3.14f < obj->angle) {
             obj->angle = obj->angle - 6.28f;
         }
-        int val = (int)(speed * (float)func_02009424(func_0200c578(obj->angle)));
+        int val = (int)(speed * (float)func_02009424((double)(obj->angle)));
         *(volatile int*)0x4001010 = val & 0x1ff;
         return val;
     }

@@ -1,6 +1,12 @@
 #include <globaldefs.h>
 
-struct Ctx021ef988 { char pad[0xc]; void* target; };
+#if defined(jpn)
+enum { kGlobalHolderInnerOffset = 0x4 };
+#else
+enum { kGlobalHolderInnerOffset = 0xc };
+#endif
+
+struct Ctx021ef988 { char pad[kGlobalHolderInnerOffset]; void* target; };
 extern struct Ctx021ef988 data_ov025_021ef988;
 
 struct Param021e6394 { char pad[8]; int value; };

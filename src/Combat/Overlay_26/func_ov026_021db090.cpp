@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kBattleOffset = 0x218, kStateToListPadding = 0x28f0, kListToModePadding = 0x236c, kWindowActiveOffset = 0x868, kWindowFlagsOffset = 0x1789, kAfterBusyOffset = 0x874, kWindowFirstFlagOffset = 0x17e1, kAfterFlagsOffset = 0x178a, kWindowFinalFlagOffset = 0x17ee, kAfterTwoFlagsOffset = 0x17e3 };
+#else
+enum { kBattleOffset = 0x29c, kStateToListPadding = 0x28b0, kListToModePadding = 0x2138, kWindowActiveOffset = 0x998, kWindowFlagsOffset = 0x195b, kAfterBusyOffset = 0x9a4, kWindowFirstFlagOffset = 0x19b1, kAfterFlagsOffset = 0x195c, kWindowFinalFlagOffset = 0x19be, kAfterTwoFlagsOffset = 0x19b3 };
+#endif
+
 #include "GameState/GameState.h"
 #include "Combat/Main/BattleList.h"
 
@@ -24,14 +31,14 @@ struct CommandSlot {
 };
 
 struct BattleWork {
-    char pad0[0x29c];
+    char pad0[kBattleOffset];
     BattleState* battle;
     PartyState* party;
     char pad2a4[0xc08];
     int state;
-    char padeb0[0x28b0];
+    char padeb0[kStateToListPadding];
     Container_021dae60 list;
-    char pad3818[0x2138];
+    char pad3818[kListToModePadding];
     unsigned char mode;
 };
 
@@ -67,16 +74,16 @@ struct ObjRef {
 
 struct MessageWindow {
     ObjRef* source;
-    char pad4[0x998 - 4];
+    char pad4[kWindowActiveOffset - 4];
     int active;
     char pad99c[4];
     int busy;
-    char pad9a4[0x195b - 0x9a4];
+    char pad9a4[kWindowFlagsOffset - kAfterBusyOffset];
     unsigned char flags;
-    char pad195c[0x19b1 - 0x195c];
+    char pad195c[kWindowFirstFlagOffset - kAfterFlagsOffset];
     unsigned char b19b1;
     unsigned char b19b2;
-    char pad19b3[0x19be - 0x19b3];
+    char pad19b3[kWindowFinalFlagOffset - kAfterTwoFlagsOffset];
     unsigned char b19be;
 };
 
@@ -103,10 +110,21 @@ void func_020dd0b0(int, char*);
 GameResources* func_ov017_0218b5b0();
 void func_02012fe4();
 void func_ov017_021a23b0(GameResources*, unsigned short);
+#if defined(jpn)
+void func_0204500c(MessageWindow*, char*, int);
+#else
 void func_0204500c(MessageWindow*, char*, int, int);
+#endif
 void func_02043124(MessageWindow*);
 void func_ov000_02160da0(BattleWork*);
 }
+
+#if defined(jpn)
+extern char data_ov026_021df3fa[];
+extern char data_ov026_021df3ff[];
+extern char data_ov026_021df423[];
+extern char data_ov026_021df465[];
+#endif
 
 extern char data_ov026_021dedee[];
 extern IdList data_ov026_021de6bc;
@@ -118,22 +136,41 @@ extern "C" ARM void func_ov026_021db090(BattleWork* self) {
     MessageWindow* win = _Z26GetGlobalField0x1c020421a0v();
 
     if (self->state == 0) {
+#if defined(jpn)
+        char message[0x80];
+        char name[0x40];
+#else
         char message[0x100];
         ObjRef ref;
         unsigned short name[0x20];
+#endif
         TargetInfo info;
         short ids[4];
         IdList picked;
         int n;
+#if defined(jpn)
         int count;
+        int pluralCount;
+#else
+        int count;
+#endif
         int i;
         char* text;
 
+#if defined(jpn)
+        gs->GetProtagonist();
+#else
         sprintf(message, data_ov026_021dedee);
+#endif
         __clear(name, sizeof(name));
         n = func_ov000_0215e9fc(self->battle, ids, 4, 0);
         picked = data_ov026_021de6bc;
+#if defined(jpn)
         count = 0;
+        pluralCount = 0;
+#else
+        count = 0;
+#endif
         for (i = 0; i < n; i++) {
             GameObject* c = gs->GetCombatantByIndex(ids[i]);
             if (c == NULL || IsFlag10088Set((S_10088*)c)) {
@@ -147,15 +184,34 @@ extern "C" ARM void func_ov026_021db090(BattleWork* self) {
                 continue;
             }
             picked.ids[count] = ids[i];
+#if defined(jpn)
             count++;
+            pluralCount++;
+#else
+            count++;
+#endif
         }
+#if defined(jpn)
+        GameObject* first = gs->GetCombatantByIndex(picked.ids[0]);
+        if (first != NULL) {
+            strcpy(name, (char*)first->baseStats_);
+        }
+        if (pluralCount > 1) {
+            strcat(name, data_ov026_021df3fa);
+        }
+#else
         _Z28InitObjFromCombatant020e4c74PvP10GameObject(&ref, gs->GetPartyMemberByIndex(picked.ids[0]));
+#endif
 
         if (self->mode == 2) {
+#if defined(jpn)
+            sprintf(message, data_ov026_021df3ff, name);
+#else
             text = ((TextBuffers*)_Z26GetGlobalField0x1c020421a0v())->text;
             memset(text, 0, 0x960);
             func_020dd0b0(1, text);
             strcat(message, text);
+#endif
 
             int j;
             PartyList* party;
@@ -174,19 +230,31 @@ extern "C" ARM void func_ov026_021db090(BattleWork* self) {
             _Z26EnqueueEventTag86_021c9ad4t(netId);
             func_ov017_021a23b0(res, netId);
         } else if (self->mode == 4) {
+#if defined(jpn)
+            sprintf(message, data_ov026_021df423, name);
+#else
             text = ((TextBuffers*)_Z26GetGlobalField0x1c020421a0v())->text;
             memset(text, 0, 0x960);
             func_020dd0b0(2, text);
             strcat(message, text);
+#endif
         } else {
+#if defined(jpn)
+            sprintf(message, data_ov026_021df465, name);
+#else
             text = ((TextBuffers*)_Z26GetGlobalField0x1c020421a0v())->text;
             memset(text, 0, 0x960);
             func_020dd0b0(3, text);
             strcat(message, text);
+#endif
         }
 
+#if defined(jpn)
+        func_0204500c(win, message, 0);
+#else
         win->source = &ref;
         func_0204500c(win, message, 0, 0xe3);
+#endif
         win->b19b1 = 0;
         win->b19b2 = 0;
         win->b19be = 1;

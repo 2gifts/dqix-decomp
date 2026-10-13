@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "World/ZoneLifecycle.h"
 #include "GameState/GameState.h"
 #include "Resource/Brightness.h"
 #include "Combat/Main/CopyRecord0200fbb4.h"
@@ -25,8 +26,6 @@ void InitObj0219a674(unsigned char*);
 extern "C" void func_ov017_0219b33c(void*, Event02198aa0*);
 int TestFlag0SetAndFlag1Clear(unsigned short*, int);
 int ComputeTwoFromVec3_0202ec84(void*, Vec3copy0202ec84*, int*, int*);
-void MaybeClearGrottoState0201bfd4();
-typedef void (*MaybeClearGrottoAbi02198aa0)(void*);
 void* GetField0x3f8Address(GameState*);
 void InitStruct02070378(char*);
 void InitAndResetHeader_0219e310(unsigned char*, int);
@@ -76,7 +75,7 @@ extern "C" ARM void func_ov017_02198aa0(GameResources* self) {
     }
     if (!proceed) return;
     if ((unsigned char)(discovery + 254) <= 1) {
-        ((MaybeClearGrottoAbi02198aa0)MaybeClearGrottoState0201bfd4)(zone);
+        MaybeClearGrottoState0201bfd4(static_cast<Zone3D*>(zone));
         State02198aa0* state = (State02198aa0*)GetField0x3f8Address(game);
         InitStruct02070378((char*)state);
         state->field7 = 1;

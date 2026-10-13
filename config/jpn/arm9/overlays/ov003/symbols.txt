@@ -6,7 +6,7 @@ _Z29ResetHandlesAndFlags_02153874Pv kind:function(arm,size=0x6c) addr:0x02154ff4
 _Z21IsFieldEq3At_021538e0Pv kind:function(arm,size=0x14) addr:0x02155060
 _Z31ResetIfFlagAndCategory_021538f4Pvi kind:function(arm,size=0xac) addr:0x02155074
 func_ov003_02155120 kind:function(arm,size=0x780) addr:0x02155120
-func_ov003_021558a0 kind:function(arm,size=0x298) addr:0x021558a0
+func_ov003_021541b0 kind:function(arm,size=0x298) addr:0x021558a0
 _Z21CallUnkThunk_02154450v kind:function(arm,size=0xc) addr:0x02155b38
 _Z30HandleStateTransition_0215445cP17SelfState0215445c kind:function(arm,size=0x90) addr:0x02155b44
 func_ov003_021544ec kind:function(arm,size=0x234) addr:0x02155bd4
@@ -34,8 +34,8 @@ _Z26IsTableValueNot99_02155ffcPvi kind:function(arm,size=0x38) addr:0x02157658
 _Z29GetArrayEntryByIndex_02156034Pv kind:function(arm,size=0x20) addr:0x02157690
 func_ov003_02156054 kind:function(arm,size=0x90) addr:0x021576b0
 func_ov003_021560e4 kind:function(arm,size=0x8f4) addr:0x02157740
-func_ov003_02158034 kind:function(arm,size=0x26c) addr:0x02158034
-func_ov003_021582a0 kind:function(arm,size=0x30c) addr:0x021582a0
+func_ov003_02156ad4 kind:function(arm,size=0x26c) addr:0x02158034
+func_ov003_02156d40 kind:function(arm,size=0x30c) addr:0x021582a0
 func_ov003_021585ac kind:function(arm,size=0x584) addr:0x021585ac
 func_ov003_02158b30 kind:function(arm,size=0xa5c) addr:0x02158b30
 _Z20InitBuffers_021580a0P14Struct021580a0 kind:function(arm,size=0x38) addr:0x0215958c
@@ -312,7 +312,7 @@ func_ov003_02171d78 kind:function(arm,size=0x78) addr:0x02171034
 _Z21AllBytesZero_02171df0Ph kind:function(arm,size=0x2c) addr:0x021710ac
 func_ov003_02171e1c kind:function(arm,size=0x164) addr:0x021710d8
 _Z27ClearUnmatchedKeys_02171f80P20KeyArrayObj_02171f80 kind:function(arm,size=0x68) addr:0x0217123c
-func_ov003_021712a4 kind:function(arm,size=0x24c) addr:0x021712a4
+func_ov003_02171fe8 kind:function(arm,size=0x24c) addr:0x021712a4
 func_ov003_021714f0 kind:function(arm,size=0x4c) addr:0x021714f0
 func_ov003_0217153c kind:function(arm,size=0x34) addr:0x0217153c
 func_ov003_021725a4 kind:function(arm,size=0x74) addr:0x02171570
@@ -347,7 +347,7 @@ _Z30SetElementFlagIfValid_0217451cPc kind:function(arm,size=0x34) addr:0x0217365
 func_ov003_02174550 kind:function(arm,size=0xa4) addr:0x02173690
 func_ov003_021745fc kind:function(arm,size=0x208) addr:0x02173734
 func_ov003_0217480c kind:function(arm,size=0x7c) addr:0x0217393c
-func_ov003_021739b8 kind:function(arm,size=0x30) addr:0x021739b8
+func_ov003_02174890 kind:function(arm,size=0x30) addr:0x021739b8
 func_ov003_021748c4 kind:function(arm,size=0xac) addr:0x021739e8
 _Z32ClearFlag80AtOffset1000_02174988Pc kind:function(arm,size=0x38) addr:0x02173a94
 func_ov003_021749c0 kind:function(arm,size=0x30) addr:0x02173acc
@@ -528,7 +528,7 @@ __sinit_ov003_0217fbf0 kind:function(arm,size=0x88) addr:0x0217e460
 data_ov003_0217fc80 kind:data(any) addr:0x0217e500
 data_ov003_0217fc80_tbl kind:data(any) addr:0x0217e500
 data_ov003_0217e520 kind:data(any) addr:0x0217e520
-data_ov003_0217e535 kind:data(any) addr:0x0217e535
+data_ov003_0217fcb5 kind:data(any) addr:0x0217e535
 data_ov003_0217fce0 kind:data(any) addr:0x0217e550
 data_ov003_0217e554 kind:data(any) addr:0x0217e554
 data_ov003_0217e56e kind:data(any) addr:0x0217e56e

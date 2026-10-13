@@ -1,28 +1,25 @@
 #include <globaldefs.h>
 
 extern "C" void __clear(void* buf, int n);
-extern "C" long long func_0200c578(int x);
 #if defined(jpn)
 extern "C" int sprintf(void*, const void*, ...);
-extern "C" float _fmul(int,int);
-extern "C" int _ffix(float);
 #else
-extern "C" int sprintf(void* dst, void* fmt, int a, int b);
+extern "C" int sprintf(void* dst, const void* fmt, ...);
 #endif
 extern "C" int func_020420e8(void* builder, int obj);
-extern "C" void func_0204f41c(int a, short b, short c, void* buf, int d, int e, void* f, void* g, int h);
+extern "C" void func_0204f41c(void* a, short b, short c, void* buf, int d, int e, void* f, void* g, int h);
 extern char data_ov023_021fdb28;
 #if defined(jpn)
 extern const char data_ov023_021fcdec[];
-extern "C" void func_02050678(int, int, short, void*, int, int, void*, void*);
+extern "C" void func_02050678(void*, int, short, void*, int, int, void*, void*);
 #endif
 
 // USA: func_ov023_021db3c0
-ARM void FormatAndDispatchValue_021db3c0(int param0, int param1, short param2, int param3, unsigned char param4) {
+ARM void FormatAndDispatchValue_021db3c0(void* param0, int param1, short param2, float param3, unsigned char param4) {
 #if defined(jpn)
     int integer;
     int color = param4;
-    int scaled = _ffix(_fmul(0x41200000, param3));
+    int scaled = (int)(10.0f * param3);
     integer = scaled;
     scaled %= 10;
     integer /= 10;
@@ -49,8 +46,7 @@ ARM void FormatAndDispatchValue_021db3c0(int param0, int param1, short param2, i
 #else
     char buf[0x40];
     __clear(buf, 0x40);
-    long long val = func_0200c578(param3);
-    sprintf(buf, &data_ov023_021fdb28, (int)val, (int)(val >> 32));
+    sprintf(buf, &data_ov023_021fdb28, (double)param3);
     int r1val = func_020420e8(buf, 0);
     short sum = (short)(param1 - r1val);
     short outA;

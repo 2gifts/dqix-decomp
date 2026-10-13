@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kIngredients = 0x714 };
+#else
+enum { kIngredients = 0x894 };
+#endif
+
 #include "Filesystem/BackgroundLoader.h"
 
 struct Unknown_02075cdc {
@@ -17,7 +24,7 @@ struct IngredientSprite {
 };
 
 struct AlchemyPot {
-    char unk_0[0x894];
+    char unk_0[kIngredients];
     IngredientSprite ingredients_[4];
     SafeAllocator ingredientAllocators_[4];
 };

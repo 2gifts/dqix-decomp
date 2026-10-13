@@ -1,6 +1,13 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+struct EventNodeRoot021759f4 {
+    char pad[0x3508];
+    void* node;
+};
+#endif
+
 struct Combatant020A36A8;
 
 struct PartyEntry {
@@ -17,12 +24,20 @@ struct PartyEntry {
 };
 
 struct PlayerData {
+#if defined(jpn)
+    char pad0[0x8b8];
+#else
     char pad0[0x950];
+#endif
     int vocation;
 };
 
 struct PartyMemberExt {
+#if defined(jpn)
+    char pad0[0x144];
+#else
     char pad0[0x150];
+#endif
     struct PlayerData* data;
 };
 
@@ -32,12 +47,20 @@ struct TeamWork {
     signed char field_0xc[4];
     char pad10[0x20 - 0x10];
     int field_0x20;
+#if defined(jpn)
+    char pad24[0x1faa - 0x24];
+#else
     char pad24[0x1d72 - 0x24];
+#endif
     unsigned short flags;
 };
 
 struct EventSource {
+#if defined(jpn)
+    char pad0[0xe30];
+#else
     char pad0[0xeb4];
+#endif
     unsigned char result;
 };
 
@@ -52,7 +75,11 @@ extern unsigned short data_ov000_02183444[];
 
 // USA: func_ov000_021759f4
 extern "C" ARM int func_ov000_021759f4(struct TeamWork* work) {
+#if defined(jpn)
+    void* node = ((EventNodeRoot021759f4*)func_ov017_0218b5b0())->node;
+#else
     void* node = func_ov017_0218b5b0()->unknown_ptr_3718;
+#endif
     struct Combatant020A36A8* active = func_ov017_021b8478(node);
     if (work->flags & 0x200) {
         return 0;

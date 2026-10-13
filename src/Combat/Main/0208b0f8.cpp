@@ -36,7 +36,11 @@ struct Actor0208b0f8 {
     short active;
     char padb4[0x130 - 0xb4];
     unsigned int* restorationState;
+#if defined(jpn)
+    char pad134[0x144 - 0x134];
+#else
     char pad134[0x150 - 0x134];
+#endif
     unsigned char* skills;
 };
 struct State0208b0f8 {

@@ -2,11 +2,10 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 
-
 #if defined(jpn)
 enum { kTaskOffset = 0x1cc, kPartyResourceOffset = 0x50c, kGlobalFieldOffset = 0x868, kManagerListOffset = 0x20, kManagerStateOffset = 0x2c, kManagerFlagOffset = 0x2e };
 extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(void*, int, char*);
-extern "C" void func_02045d88(void*, void*, int);
+extern "C" void func_0204500c(void*, void*, int);
 extern "C" void func_02080654(void*, void*, const char*);
 extern const char data_ov003_0217e554[];
 extern const char data_ov003_0217e56e[];
@@ -55,7 +54,9 @@ void _Z35SetFieldsFromFormattedValue0207f914P11Obj0207f914iii(void*, void*, cons
 int _Z39IsCombatantFlagit2Set_02155f88_02155f88Pvi(void*, int);
 void _ZN13SafeAllocator5ResetEv(void*);
 int func_020420e8(int, int);
+#if !defined(jpn)
 void func_0204500c(void*, void*, int, int);
+#endif
 void func_02046380(void*);
 void func_0204b174(void*, void*, int, int);
 void func_0204b5b4(void*, int);
@@ -99,7 +100,7 @@ struct Ent20 {
 };
 
 struct Ctrl {
-    void* alloc;               // 0x00
+    void* alloc;
     char pad04[0xc - 4];
     int f0c;
     Ent20* f10;
@@ -120,7 +121,7 @@ struct Ctrl {
     char sube4[0xfc - 0xe4];
     char subfc[0x114 - 0xfc];
     char sub114[kTaskOffset - 0x114];
-    int task;                  // 0x1d0
+    int task;
     char pad1d4[0x1ec - 0x1d4];
     short f1ec;
     short f1ee;
@@ -128,11 +129,11 @@ struct Ctrl {
     unsigned char f1f2;
     char pad1f3[4];
     char f1f7;
-    unsigned char mode;        // 0x1f8
-    unsigned char state;       // 0x1f9
+    unsigned char mode;
+    unsigned char state;
     char pad1fa;
     unsigned char f1fb;
-    unsigned int flags;        // 0x1fc
+    unsigned int flags;
 };
 
 // USA: func_ov003_021560e4
@@ -206,7 +207,7 @@ extern "C" ARM void func_ov003_021560e4(Ctrl* self) {
             void* r = _Z21GetFieldByKey020e0434P17Container020e0310i(self->sube4, key);
             if (r) {
 #if defined(jpn)
-                func_02045d88(g, r, 0);
+                func_0204500c(g, r, 0);
 #else
                 func_0204500c(g, r, 0, 0xe3);
 #endif

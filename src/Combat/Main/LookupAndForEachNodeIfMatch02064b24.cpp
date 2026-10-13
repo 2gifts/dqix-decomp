@@ -1,9 +1,9 @@
 #include <globaldefs.h>
 
 struct Node02064b24 {
-    unsigned short id;      // 0x0
-    char pad2[0x12];        // 0x2..0x13
-    struct Node02064b24* next; // 0x14
+    unsigned short id;
+    char pad2[0x12];
+    struct Node02064b24* next;
 };
 
 struct Obj02064b24 { char pad0[0xc]; void* nodeHead; };

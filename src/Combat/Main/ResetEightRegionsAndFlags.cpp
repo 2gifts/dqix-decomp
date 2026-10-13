@@ -5,13 +5,7 @@
 #define IS_JPN 0
 #endif
 
-
-#if defined(jpn)
-extern "C" void func_020942ac(char* obj);
-#define ClearRegion02093980 func_020942ac
-#else
 void ClearRegion02093980(char* obj);
-#endif
 
 // USA: func_02093a14
 ARM void ResetEightRegionsAndFlags(char* obj) {

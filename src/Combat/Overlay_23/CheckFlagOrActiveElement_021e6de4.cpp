@@ -13,6 +13,12 @@ int TestFlag0SetAndFlag1Clear(unsigned short*, int);
 // USA: func_ov023_021e6de4  (semantic: CheckFlagOrActiveElement_021e6de4)
 extern "C" ARM int func_ov023_021e6de4(char* obj) {
     int a = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
-    int b = ((Fn2_6de4)(void*)&IsActiveElementFlag2Set0205da38)(obj + 0xac, 0x14);
+    int b = ((Fn2_6de4)(void*)&IsActiveElementFlag2Set0205da38)(obj +
+#if defined(jpn)
+        0x90,
+#else
+        0xac,
+#endif
+        0x14);
     return (a | b) != 0;
 }

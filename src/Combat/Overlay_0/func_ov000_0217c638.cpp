@@ -23,7 +23,11 @@ extern "C" void _Z29SetField0AndPropagate0205baccP12Node0205bacci(Node0205bacc*,
 extern "C" void _Z23SetIndexIfValid0205bcdcP15Struct_0205bcdci(Struct_0205bcdc*, int);
 extern "C" void func_0205bb04(void*, int);
 
+#if defined(jpn)
+extern int data_ov000_02184294[3];
+#else
 extern int data_ov000_02184294[2];
+#endif
 
 struct Party {
     char pad[0xf7c];
@@ -31,7 +35,11 @@ struct Party {
 };
 
 struct Member {
+#if defined(jpn)
+    char pad[0x8b4];
+#else
     char pad[0x94c];
+#endif
     int value;
 };
 
@@ -54,7 +62,11 @@ struct Battle0217c638 {
     char flags[4];
     Panel first;
     Panel second;
+#if defined(jpn)
+    char pad22c[0x1f98 - 0x22c];
+#else
     char pad22c[0x1d60 - 0x22c];
+#endif
     signed char commands[8];
     signed char index;
     signed char sel[7];
@@ -69,8 +81,13 @@ extern "C" ARM void func_ov000_0217c638(Battle0217c638* battle, int a, int b) {
     int rows;
     int pages = columns;
     signed char selected;
+#if defined(jpn)
+    data_ov000_02184294[2] = a;
+    data_ov000_02184294[1] = b;
+#else
     data_ov000_02184294[1] = a;
     data_ov000_02184294[0] = b;
+#endif
     GameState* gs = GameState::GetInstance();
     Party* party = (Party*)GetPtrField0x2a04(gs);
     switch (battle->commands[battle->index]) {

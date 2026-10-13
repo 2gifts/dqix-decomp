@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 #include "System/Memory.h"
 
-
 int DispatchNodeIfType7_02156e2c(void* a, int key);
 void* GetEntryFor_021570a4(void* obj, int index);
 extern "C" void* func_ov004_02156f6c(void*, int);
@@ -10,8 +9,7 @@ extern "C" void* func_ov004_02157054(void* a, int key);
 
 struct Obj021fbdf4;
 void SetFieldThenTailCallOffset20_021fbdf4(Obj021fbdf4*, unsigned char);
-int TailCallOffset20_021fbdcc(void*, int, int, int);
-typedef int (*TailCallOffset20Fn_02158bd4)(void*, int);
+void TailCallOffset20_021fbdcc(void*, int);
 typedef void (*SetFieldFn_02158bd4)(Obj021fbdf4*, int);
 
 extern "C" int func_ov004_02156fd4(void* a, int key);
@@ -60,7 +58,7 @@ extern "C" ARM int func_ov004_02158bd4(void* obj) {
             data_ov004_021707d8.ptr[0x9c] = 1;
 #endif
         }
-        ((TailCallOffset20Fn_02158bd4)&TailCallOffset20_021fbdcc)(nodeX, *(short*)((char*)entry + 0));
+        TailCallOffset20_021fbdcc(nodeX, *(short*)((char*)entry + 0));
     }
 
     void* container = (void*)func_ov004_02156fd4(obj, 5);

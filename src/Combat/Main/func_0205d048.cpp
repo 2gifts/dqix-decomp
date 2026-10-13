@@ -1,12 +1,7 @@
 #include <globaldefs.h>
 
 struct Struct_0205c53c;
-#if defined(jpn)
-extern "C" void func_0205d8c4(struct Struct_0205c53c* s);
-#define ForwardInitChannelPair0205c564 func_0205d8c4
-#else
 void ForwardInitChannelPair0205c564(struct Struct_0205c53c* s);
-#endif
 struct Obj0204c754;
 void ResetObject0204c754(struct Obj0204c754* obj);
 struct List0204afb4;

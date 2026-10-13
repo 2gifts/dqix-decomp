@@ -1,12 +1,13 @@
 #include <globaldefs.h>
+#include "Resource/Script.h"
+#include "Combat/CombatScriptContext.h"
 
 struct TaggedValue02030b44;
-extern "C" float _ZNK6Script9Parameter7ToFloatEv(struct TaggedValue02030b44* v);
-extern int data_020fdc4c;
 
 // USA: func_0201f600
 ARM int SetScaledFieldFromTaggedValue0201f600(struct TaggedValue02030b44* v) {
-    float scaled = 4096.0f * _ZNK6Script9Parameter7ToFloatEv(v);
-    *(int*)(*(char**)((char*)&data_020fdc4c + 0x10) + 0x38) = (int)scaled;
+    const Script::Parameter* parameters = reinterpret_cast<const Script::Parameter*>(v);
+    float scaled = 4096.0f * parameters[0].ToFloat();
+    *(int*)(data_020fdc4c.currentObject + 0x38) = (int)scaled;
     return 1;
 }

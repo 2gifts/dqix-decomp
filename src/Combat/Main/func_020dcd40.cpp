@@ -84,10 +84,14 @@ extern "C" ARM int func_020dcd40() {
         _Z13SetField0x2d1Pvh(c, n);
         GetPtrField0x2a04(battle);
         unsigned char* v7 = GetFieldAt0x150((unsigned char*)c);
+#if defined(jpn)
+        strcpy((char*)c->baseStats_, (const char*)entry + 0x140);
+#else
         LocalBuf020dcd40 local;
         __clear(&local, 0x30);
         func_02042764((char*)entry + 0x140, &local, 1);
         strcpy((char*)c->baseStats_, (const char*)&local);
+#endif
         int a = GetFieldAt0x50((Struct020865b0*)entry);
         unsigned char* p = (unsigned char*)entry + GetFieldAt0x50((Struct020865b0*)entry);
         *(unsigned short*)(v7 + a * 2 + 0x16c) = p[2];

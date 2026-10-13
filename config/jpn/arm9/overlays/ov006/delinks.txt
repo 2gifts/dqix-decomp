@@ -268,3 +268,155 @@ src/Combat/Overlay_6/ToggleFlagAndSync_021570fc.cpp:
 src/Combat/Overlay_6/func_ov006_0215f740.cpp:
     complete
     .text start:0x02160b08 end:0x02160bb0
+
+src/Combat/Overlay_6/func_ov006_02156e54.cpp:
+    complete
+    .text start:0x0215845c end:0x0215850c
+
+src/Combat/Overlay_6/func_ov006_0215f3d8.cpp:
+    complete
+    .text start:0x021607f8 end:0x021608fc
+
+src/Combat/Overlay_6/func_ov006_02155508.cpp:
+    complete
+    .text start:0x02156bf0 end:0x02156c98
+
+src/Combat/Overlay_6/func_ov006_02154e58.cpp:
+    complete
+    .text start:0x021565b0 end:0x02156730
+
+src/Combat/Overlay_6/func_ov006_021580b8.cpp:
+    complete
+    .text start:0x02159668 end:0x02159994
+
+src/Combat/Overlay_6/RefreshListEntryDisplay_0215fecc.cpp:
+    complete
+    .text start:0x02161230 end:0x021612b8
+
+src/Combat/Overlay_6/UpdateSelectionAndDispatchState_0215f2b4.cpp:
+    complete
+    .text start:0x021606d4 end:0x02160768
+
+src/Combat/Overlay_6/func_ov006_0215fb7c.cpp:
+    complete
+    .text start:0x02160ef0 end:0x02161064
+
+src/Combat/Overlay_6/Trans_0215a5dc.cpp:
+    complete
+    .text start:0x0215bbd4 end:0x0215bbf4
+
+src/Combat/Overlay_6/Trans_0215f9e8.cpp:
+    complete
+    .text start:0x02160d5c end:0x02160d90
+
+src/Combat/Overlay_6/SyncEntries0215f348.cpp:
+    complete
+    .text start:0x02160768 end:0x021607f8
+
+src/Combat/Overlay_6/func_ov006_02159bb0.cpp:
+    complete
+    .text start:0x0215b0cc end:0x0215b180
+
+src/Combat/Overlay_6/MergeIntoBuffers_0215fd60.cpp:
+    complete
+    .text start:0x021610c4 end:0x02161198
+
+src/Combat/Overlay_6/CheckAnyFlag_021570b4.cpp:
+    complete
+    .text start:0x021586bc end:0x02158704
+
+src/Combat/Overlay_6/CallIfFlag_021571cc_021571cc.cpp:
+    complete
+    .text start:0x021587d4 end:0x02158804
+
+src/Combat/Overlay_6/ClearFlag40_02157184.cpp:
+    complete
+    .text start:0x0215878c end:0x021587c0
+
+src/Combat/Overlay_6/func_ov006_0215b0fc.cpp:
+    complete
+    .text start:0x0215c66c end:0x0215c710
+
+src/Combat/Overlay_6/InitHandleAndDispatch_021571fc.cpp:
+    complete
+    .text start:0x02158804 end:0x02158894
+
+src/Combat/Overlay_6/func_ov006_021555b0.cpp:
+    complete
+    .text start:0x02156c98 end:0x02156d18
+
+src/Combat/Overlay_6/func_ov006_021549ac.cpp:
+    complete
+    .text start:0x0215610c end:0x021561c0
+
+src/Combat/Overlay_6/func_ov006_02156fdc.cpp:
+    complete
+    .text start:0x021585e4 end:0x021586bc
+
+src/Combat/Overlay_6/func_ov006_02159e50.cpp:
+    complete
+    .text start:0x0215b384 end:0x0215b440
+
+src/Combat/Overlay_6/func_ov006_02156f04.cpp:
+    complete
+    .text start:0x0215850c end:0x021585e4
+
+src/Combat/Overlay_6/func_ov006_02159c64.cpp:
+    complete
+    .text start:0x0215b180 end:0x0215b2cc
+
+src/Combat/Overlay_6/func_ov006_02156d70.cpp:
+    complete
+    .text start:0x02158378 end:0x0215845c
+
+src/Combat/Overlay_6/func_ov006_02155630.cpp:
+    complete
+    .text start:0x02156d18 end:0x02156df8
+
+src/Menu/Overlay_6/AlchemyBufferInitialization.cpp:
+    complete
+    .text start:0x02155ac8 end:0x02155d94
+
+src/Combat/Overlay_6/func_ov006_0215fa1c.cpp:
+    complete
+    .text start:0x02160d90 end:0x02160ef0
+
+src/Combat/Overlay_6/func_ov006_021599c0.cpp:
+    complete
+    .text start:0x0215aedc end:0x0215b0cc
+
+src/Combat/Overlay_6/func_ov006_0215a384.cpp:
+    complete
+    .text start:0x0215b97c end:0x0215bbd4
+
+src/Combat/Overlay_6/func_ov006_0215b57c.cpp:
+    complete
+    .text start:0x0215caec end:0x0215cd58
+
+src/Combat/Overlay_6/func_ov006_02157d7c.cpp:
+    complete
+    .text start:0x0215932c end:0x021595e8
+
+src/Combat/Overlay_6/func_ov006_02156bd8.cpp:
+    complete
+    .text start:0x021581e0 end:0x02158378
+
+src/Combat/Overlay_6/func_ov006_0215b7e8.cpp:
+    complete
+    .text start:0x0215cd58 end:0x0215d0ec
+
+src/Combat/Overlay_6/func_ov006_0215b1a0.cpp:
+    complete
+    .text start:0x0215c710 end:0x0215caec
+
+src/Combat/Overlay_6/func_ov006_0215daf0.cpp:
+    complete
+    .text start:0x0215efb0 end:0x0215f3a8
+
+src/Combat/Overlay_6/func_ov006_0215dee8.cpp:
+    complete
+    .text start:0x0215f3a8 end:0x0215fab8
+
+src/Combat/Overlay_6/func_ov006_02155068.cpp:
+    complete
+    .text start:0x021567b4 end:0x02156abc

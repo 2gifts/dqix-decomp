@@ -1,10 +1,10 @@
 #include <globaldefs.h>
-#include "std_library_functions.h"
+#include "Graphics/GlyphBitmapContext.h"
 
-extern void* data_020fe9a4;
-void CleanInvalidateCacheRange(const void* addr, unsigned int size);
-extern "C" void LoadToMainBG1ScreenData(int src, int offset, unsigned int size);
-extern "C" int LoadToSubBG0ScreenData(int arg0, int arg1, unsigned int arg2);
+#include "std_library_functions.h"
+#include "System/LoadToVRAM.h"
+
+#include "System/Cache.h"
 
 struct GfxModeState02028f54 {
     char pad[0xc];
@@ -14,39 +14,40 @@ extern struct GfxModeState02028f54 data_020ef74c;
 
 // USA: func_02028f54  (semantic: RefreshBg1TileMap_02028f54)
 extern "C" ARM void func_02028f54(void) {
-    if (data_020fe9a4 == 0) {
+    if (glyphBitmapContext.buffer == 0) {
         return;
     }
-    if (data_020fe9a4 != 0) {
-        memset(data_020fe9a4, 0, 0x6000);
+
+    if (glyphBitmapContext.buffer != 0) {
+        memset(glyphBitmapContext.buffer, 0, 256 * 192 / 2);
     }
-    unsigned short* p = (unsigned short*)data_020fe9a4;
+    unsigned short* screenEntry = static_cast<unsigned short*>(glyphBitmapContext.buffer);
     unsigned short tile = 0;
     int row;
     int col;
-    for (row = 0; row < 0x18; row++) {
-        for (col = 0; col < 0x20; col++) {
-            *p = tile;
-            p++;
+    for (row = 0; row < 24; row++) {
+        for (col = 0; col < 32; col++) {
+            *screenEntry = tile;
+            screenEntry++;
             tile++;
         }
     }
     int mode = data_020ef74c.mode;
-    CleanInvalidateCacheRange(data_020fe9a4, 0x600);
+    CleanInvalidateCacheRange(glyphBitmapContext.buffer, 32 * 24 * sizeof(unsigned short));
     if (mode == 3) {
-        LoadToMainBG1ScreenData((int)data_020fe9a4, 0, 0x600);
+        LoadToMainBG1ScreenData(glyphBitmapContext.buffer, 0, 32 * 24 * sizeof(unsigned short));
         return;
     }
     if (mode == 4) {
-        LoadToSubBG0ScreenData((int)data_020fe9a4, 0, 0x600);
+        LoadToSubBG0ScreenData(glyphBitmapContext.buffer, 0, 32 * 24 * sizeof(unsigned short));
         return;
     }
     if (mode == 5) {
-        LoadToMainBG1ScreenData((int)data_020fe9a4, 0, 0x600);
+        LoadToMainBG1ScreenData(glyphBitmapContext.buffer, 0, 32 * 24 * sizeof(unsigned short));
         return;
     }
     if (mode == 6) {
-        LoadToSubBG0ScreenData((int)data_020fe9a4, 0, 0x600);
+        LoadToSubBG0ScreenData(glyphBitmapContext.buffer, 0, 32 * 24 * sizeof(unsigned short));
         return;
     }
 }

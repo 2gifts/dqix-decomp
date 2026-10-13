@@ -1,6 +1,5 @@
 #include <globaldefs.h>
 #if defined(jpn)
-#define _Z29SetState3AndDispatch_0202cca4v func_0202c814
 #define data_021023c0 data_02102100
 #endif
 

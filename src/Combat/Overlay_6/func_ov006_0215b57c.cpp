@@ -1,5 +1,11 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kWindowFlags = 0x1054, kMenuCursor = 0x2a };
+#else
+enum { kWindowFlags = 0x1258, kMenuCursor = 0x36 };
+#endif
+
 struct Obj0208203c;
 struct ClearFlag40_02157184Struct;
 struct Obj0205eaa0;
@@ -21,18 +27,20 @@ struct RecipeRecord {
 };
 
 struct AlchemyPot {
-    char unk_0[0x1258];
+    char unk_0[kWindowFlags];
     unsigned short windowFlags_;
 };
 
 struct Menu {
-    char unk_0[0x36];
+    char unk_0[kMenuCursor];
     short cursor_;
 };
 
 struct AlchemyMenu {
+#if !defined(jpn)
     int textPosition_;
     char** texts_;
+#endif
     void* canvasBuffer_;
     void* allocators_;
     AlchemyPot* pot_;
@@ -61,6 +69,9 @@ struct AlchemyMenu {
     int table_[0xc / 4];
     int menuTexts_[0x18 / 4];
     char itemNames_[0xc];
+#if defined(jpn)
+    char reservedBeforeResults_[8];
+#endif
     int results_[4][0x74 / 4];
     int ticks_;
     int menuResult_;

@@ -1,16 +1,9 @@
 #include <globaldefs.h>
+#include "Graphics/SpriteAffineTransform.h"
 
-struct NegatedPairStruct020c111c {
-    int field0;
-    int field4;
-    int field8;
-    int fieldc;
-};
-
-// USA: func_020c111c  (semantic: SetNegatedPairFields020c111c)
-extern "C" THUMB void func_020c111c(struct NegatedPairStruct020c111c* obj, int b, int c) {
-    obj->field0 = c;
-    obj->field4 = b;
-    obj->field8 = -b;
-    obj->fieldc = c;
+extern "C" THUMB void func_020c111c(Matrix2x2* rotation, fix32_t sine, fix32_t cosine) {
+    rotation->values[0] = cosine;
+    rotation->values[1] = sine;
+    rotation->values[2] = -sine;
+    rotation->values[3] = cosine;
 }

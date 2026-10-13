@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kPendingNode = 0x109c, kEffectFlag = 0x10b8 };
+#else
+enum { kPendingNode = 0x12a0, kEffectFlag = 0x12bc };
+#endif
+
 #include "std_library_functions.h"
 
 struct InitStruct02078484Struct;
@@ -45,6 +52,6 @@ ARM void InitHandleAndDispatch_021571fc(char* obj) {
     buf.f2c = 0xc9 - 0x10a;
     buf.f30 = (int)0xfffff554;
     buf.f34 = 0x4526;
-    ProcessPendingNode020dbfa4((struct Obj020dbfa4*)(obj + 0x12a0), (int)&buf);
-    *(unsigned char*)(obj + 0x12bc) = 1;
+    ProcessPendingNode020dbfa4((struct Obj020dbfa4*)(obj + kPendingNode), (int)&buf);
+    *(unsigned char*)(obj + kEffectFlag) = 1;
 }

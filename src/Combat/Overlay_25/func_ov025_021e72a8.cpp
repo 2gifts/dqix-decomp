@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kWorkFlagBase = 0x7000, kWorkFlagOffset = 0x1c5 };
+#else
+enum { kWorkFlagBase = 0x6000, kWorkFlagOffset = 0xfd5 };
+#endif
+
 #include "GameState/GameState.h"
 
 void* GetActiveCombatWork(void);
@@ -16,7 +23,7 @@ struct Param021e72a8 {
 extern "C" ARM int func_ov025_021e72a8(struct Param021e72a8* p) {
     void* w = GetActiveCombatWork();
     if (w != 0) {
-        *(unsigned char*)((char*)w + 0x6000 + 0xfd5) = 1;
+        *(unsigned char*)((char*)w + kWorkFlagBase + kWorkFlagOffset) = 1;
     }
     GameState* bs = GameState::GetInstance();
     int field = GetField0x3b0Value(bs);

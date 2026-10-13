@@ -29,7 +29,6 @@ extern "C" float _fadd(float a, float b);
 extern "C" float _fmul(float a, float b);
 extern "C" int _ffix(float value);
 extern "C" float _d2f(double value);
-extern "C" double func_0200c578(float value);
 extern "C" double func_02009598(double a, double b);
 extern "C" float func_0200c9b4(float value);
 extern "C" void func_0202e5d8(struct Obj0202eab8* obj, int angle, int radiusY, int heightZ);
@@ -42,7 +41,7 @@ extern "C" ARM void func_0202eab8(struct Obj0202eab8* obj) {
     delta.z = _fsub(_fdiv(_fflt(obj->posA.z), 4096.0f), _fdiv(_fflt(obj->posB.z), 4096.0f));
 
     float deltaZ = delta.z;
-    float angle = _d2f(func_02009598(func_0200c578(delta.x), func_0200c578(deltaZ)));
+    float angle = _d2f(func_02009598((double)(delta.x), (double)(deltaZ)));
     if (angle < 0.0f) {
         angle = _fadd(angle, 6.2831855f);
     }

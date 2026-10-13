@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kAllocatorOffset = 0x400 };
+#else
+enum { kAllocatorOffset = 0x470 };
+#endif
+
 #include "Memory/SafeAllocator.h"
 #include "GameState/GameState.h"
 
@@ -19,7 +26,7 @@ extern char data_02109bf4;
 extern char data_02108760;
 
 struct AllocGroup0218d8d8 {
-    char pad[0x470];
+    char pad[kAllocatorOffset];
     SafeAllocator allocator;
 };
 

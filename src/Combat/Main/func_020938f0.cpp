@@ -4,9 +4,6 @@
 #else
 #define IS_JPN 0
 #endif
-#if defined(jpn)
-#define _Z19ClearRegion02093980Pc func_020942ac
-#endif
 
 #include "std_library_functions.h"
 

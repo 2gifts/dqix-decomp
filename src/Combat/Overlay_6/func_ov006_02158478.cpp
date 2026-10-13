@@ -1,6 +1,5 @@
 #if defined(jpn)
 #define R(j,u) (j)
-#define _Z23EmptyDestructor0205cb60Pv func_0205deb8
 #define data_ov011_021889a0 data_ov011_02189700
 #define data_ov013_02187dd8 data_ov013_02188cf0
 #else
@@ -9,7 +8,6 @@
 #include <globaldefs.h>
 #if defined(jpn)
 #define func_ov006_02154fe4 func_ov006_02156730
-#define func_ov006_021570fc func_ov006_02158704
 #endif
 
 struct Obj2081;

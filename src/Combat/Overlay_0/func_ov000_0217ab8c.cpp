@@ -37,7 +37,11 @@ struct Menu {
     Window* window;
     char p3c[0x4c - 0x3c];
     int member;
+#if defined(jpn)
+    char p50[0xc6 - 0x50];
+#else
     char p50[0x86 - 0x50];
+#endif
     signed char total;
     char p87[0x442 - 0x87];
     signed char s442;
@@ -45,13 +49,23 @@ struct Menu {
     unsigned char s444;
 };
 struct GlobalRoot {
+#if defined(jpn)
+    char p[0x1faa];
+#else
     char p[0x1d72];
+#endif
     unsigned short flags;
 };
 struct Global {
+#if defined(jpn)
+    GlobalRoot* root;
+    int field0;
+    int field4;
+#else
     int field0;
     int field4;
     GlobalRoot* root;
+#endif
 };
 struct Slots02083960;
 struct Struct_0205ba68;

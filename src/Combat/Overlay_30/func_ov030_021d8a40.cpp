@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Memory/AllocatorLifecycle.h"
 #include "Memory/SafeAllocator.h"
 
 void* AllocateFromAllocatorUnion(AllocatorUnion* alloc, unsigned int size);
@@ -6,7 +7,6 @@ extern "C" void func_0200ee94(void* array, int count, int size, void* ctor, void
 void* ResetNameTableThenNotify(void* obj);
 void* NotifyThenResetNameTable(void* obj);
 extern "C" void func_ov030_021d9340(unsigned char* self);
-extern "C" void _Z17EmptyStub02012de4v(AllocatorUnion* alloc);
 extern "C" void* _Z29ResetHeaderAndReturn_021d9250Pv(void* p);
 extern "C" void* _Z29ResetHeaderAndReturn_021d9264Pv(void* p);
 extern "C" void* _Z29ResetHeaderAndReturn_021d9278Pv(void* p);
@@ -299,6 +299,6 @@ extern "C" ARM BattleScene* func_ov030_021d8a40(AllocatorUnion* alloc, unsigned 
     }
 
     func_ov030_021d9340((unsigned char*)scene);
-    _Z17EmptyStub02012de4v(alloc);
+    EmptyStub02012de4(alloc);
     return scene;
 }

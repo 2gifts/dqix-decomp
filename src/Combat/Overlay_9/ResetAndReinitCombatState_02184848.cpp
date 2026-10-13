@@ -1,6 +1,5 @@
 #if defined(jpn)
 #define R(j,u) (j)
-#define _Z25ResetBattleObject0203c4c4Pc func_0203c628
 #else
 #define R(j,u) (u)
 #endif

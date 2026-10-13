@@ -1,13 +1,25 @@
 #include <globaldefs.h>
 
-struct Target021e85a8 { char pad[0x74a]; unsigned short value; };
-struct Ctx021e85a8 { char pad[0xc]; struct Target021e85a8* target; };
-extern struct Ctx021e85a8 data_ov025_021ef988;
+struct CombatCommand {
+    char unknown0[8];
+    unsigned short argument;
+};
+struct CombatContext {
+    char unknown0[0x74a];
+    unsigned short unknown74a;
+};
+struct CombatGlobals {
+#if defined(jpn)
+    char unknown0[4];
+#else
+    char unknown0[0xc];
+#endif
+    CombatContext* context;
+};
+extern CombatGlobals data_ov025_021ef988;
 
-struct Param021e85a8 { char pad[8]; unsigned short value; };
-
-// USA: func_ov025_021e85a8  (semantic: Trans_021e85a8)
-extern "C" ARM int func_ov025_021e85a8(struct Param021e85a8* p) {
-    data_ov025_021ef988.target->value = p->value;
+// USA: func_ov025_021e85a8
+extern "C" ARM int func_ov025_021e85a8(CombatCommand* command) {
+    data_ov025_021ef988.context->unknown74a = command->argument;
     return 1;
 }

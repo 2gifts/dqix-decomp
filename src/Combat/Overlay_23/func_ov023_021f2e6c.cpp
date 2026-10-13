@@ -53,7 +53,9 @@ extern "C" void _Z26SetWords_021edf38_021edf38PvP13Words021edf38(Triple021f2e6c*
 extern "C" void __clear(void* dst, int n);
 extern "C" void _Z31DispatchIfCountPositive020dcf7ciPv(int count, void* buf);
 extern "C" void _Z36ResetAndDispatchActorContext0209c6d8Pvs(void* actor, short arg);
+#if !defined(jpn)
 extern "C" void func_0204500c(void* obj, char* buffer, int a, int b);
+#endif
 extern "C" void _Z28SetShortFields0x8e4aTo0x8e4ePviii(void* obj, int a, int b, int c);
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c540(void* p);
@@ -121,7 +123,7 @@ extern char data_ov023_021fd5a2[];
 extern "C" void* _Z28SearchWithComparator0206f4f0P30BinarySearchByComparatorStructi(void*,int);
 extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(void*,int,char*);
 extern "C" void func_020de968(int,char*);
-extern "C" void func_02045d88(void*,char*,int);
+extern "C" void func_0204500c(void*,char*,int);
 extern "C" int func_020e052c(void*,void*,const char*,void*,short,unsigned char);
 #endif
 // USA: func_ov023_021f2e6c
@@ -200,7 +202,7 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
 #endif
                 _Z36ResetAndDispatchActorContext0209c6d8Pvs(&data_02109bf4, 0x3e);
 #if defined(jpn)
-                func_02045d88(st, msg, 1);
+                func_0204500c(st, msg, 1);
 #else
                 func_0204500c(st, msg, 1, 0xe3);
 #endif
@@ -389,7 +391,7 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
                     _Z17StoreInArray0x8b0P11StoreStructii(st, i, (*(Mgr021f2e6c**)(self + regionalOffset1))->arr70[i]);
                 }
 #if defined(jpn)
-                func_02045d88(st, _Z22FindValueByHalfwordKeyP8List794ci(*(IdList021f2e6c**)(self + regionalOffset2), (short)(*(Mgr021f2e6c**)(self + regionalOffset1))->key6c), 1);
+                func_0204500c(st, _Z22FindValueByHalfwordKeyP8List794ci(*(IdList021f2e6c**)(self + regionalOffset2), (short)(*(Mgr021f2e6c**)(self + regionalOffset1))->key6c), 1);
 #else
                 func_0204500c(st, _Z22FindValueByHalfwordKeyP8List794ci(*(IdList021f2e6c**)(self + regionalOffset2), (short)(*(Mgr021f2e6c**)(self + regionalOffset1))->key6c), 1, 0xe3);
 #endif

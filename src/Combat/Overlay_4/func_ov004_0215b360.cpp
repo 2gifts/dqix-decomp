@@ -107,7 +107,7 @@ typedef void (*UnsignedGridCellSetter)(Grid021f9b30*, unsigned short, unsigned i
 typedef void* (*ContextNodeQuery)(void*, int);
 extern "C" void* func_ov004_02156f6c(void*, int);
 extern "C" void func_ov023_021f809c(void*, void*);
-extern "C" int _Z24CheckThenNotify_02157088v();
+extern "C" void* _Z24CheckThenNotify_02157088Pvi(void* object, int key);
 extern "C" void func_ov023_021dcae0(void*, int);
 
 // USA: func_ov004_0215b360
@@ -164,7 +164,7 @@ extern "C" ARM int func_ov004_0215b360(void* object) {
     }
     void* node = func_ov004_02156f6c(object, 0x17);
     if (node) func_ov023_021f809c(node, object);
-    void* notifier = ((ContextNodeQuery)_Z24CheckThenNotify_02157088v)(object, 7);
+    void* notifier = ((ContextNodeQuery)_Z24CheckThenNotify_02157088Pvi)(object, 7);
     if (notifier) func_ov023_021dcae0(notifier, -1);
     return 0;
 }

@@ -1,28 +1,28 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
+#include "System/Matrix.h"
 
-extern "C" void __clear(void* dst, int size);
+extern "C" void __clear(void* destination, int size);
 
-struct Triple02049c08 {
-    unsigned int v[3];
+struct ObjectVectors02049c08 {
+    int unknown0;
+    Vector3i vector4;
+    Vector3i vector10;
 };
-struct Sub02049c08 {
-    unsigned char pad[0x10];
-    unsigned int f10, f14, f18;
-};
+
 struct Obj02049c08 {
-    unsigned char pad[0x13c];
-    struct Sub02049c08* sub;
+    GameObject base;
+    ObjectVectors02049c08* vectors;
 };
 
-// USA: func_02049c08
-ARM struct Triple02049c08 GetSubTriple02049c08(struct Obj02049c08* obj) {
-    struct Triple02049c08 local;
-    __clear(&local, 0xc);
-    if (obj->sub == NULL) return local;
-    unsigned int a = obj->sub->f10;
-    unsigned int c = obj->sub->f18;
-    local.v[0] = a;
-    local.v[1] = 0xcc;
-    local.v[2] = c;
-    return local;
+ARM Vector3i GetSubTriple02049c08(Obj02049c08* object) {
+    Vector3i result;
+    __clear(&result, sizeof(result));
+    if (object->vectors == NULL) return result;
+    fix32_t x = object->vectors->vector10.x;
+    fix32_t z = object->vectors->vector10.z;
+    result.x = x;
+    result.y = 0xcc;
+    result.z = z;
+    return result;
 }

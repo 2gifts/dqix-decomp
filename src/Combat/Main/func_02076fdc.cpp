@@ -1,5 +1,11 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { EntryListOffset = 0x14 };
+#else
+enum { EntryListOffset = 0x18 };
+#endif
+
 struct Vec3 {
     int x;
     int y;
@@ -70,7 +76,7 @@ extern "C" ARM int func_02076fdc(struct Actor02076fdc* self) {
     if (entry == 0) {
         return 0;
     }
-    struct List_020283c0* list = (struct List_020283c0*)((char*)entry + 0x18);
+    struct List_020283c0* list = (struct List_020283c0*)((char*)entry + EntryListOffset);
     if (list == 0) {
         return 0;
     }

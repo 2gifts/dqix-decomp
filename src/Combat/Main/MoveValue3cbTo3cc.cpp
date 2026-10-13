@@ -1,11 +1,41 @@
 #include <globaldefs.h>
 
-extern "C" void func_02093ad8(char* a, char* b, char* c, int d);
+struct CopyPayload {
+#if defined(jpn)
+    char data[11];
+#else
+    char data[48];
+#endif
+};
+struct CopyableRecord {
+    CopyPayload payload;
+#if defined(jpn)
+    unsigned char byte11;
+#endif
+    short f30;
+    signed char f32;
+    unsigned char f33;
+};
 
-// USA: func_02093a58
-ARM void MoveValue3cbTo3cc(char* obj) {
-    func_02093ad8(obj, obj, obj + 0x1a0, obj[0x3cb]);
-    obj[0x3cc] = obj[0x3cb];
-    obj[0x3cb] = 0;
-    ((unsigned char*)obj)[0x3cd] &= ~4;
+struct NamedRequestQueue {
+    CopyableRecord active[8];
+    CopyableRecord saved[8];
+#if defined(jpn)
+    char unknown100[0x13b - 0x100];
+#else
+    char unknown340[0x3cb - 0x340];
+#endif
+    signed char activeCount;
+    signed char savedCount;
+    unsigned char flags;
+};
+
+extern "C" void func_02093ad8(void*, CopyableRecord* source, CopyableRecord* destination, int count);
+
+ARM void MoveValue3cbTo3cc(char* storage) {
+    NamedRequestQueue* queue = reinterpret_cast<NamedRequestQueue*>(storage);
+    func_02093ad8(queue, queue->active, queue->saved, queue->activeCount);
+    queue->savedCount = queue->activeCount;
+    queue->activeCount = 0;
+    queue->flags &= ~4;
 }

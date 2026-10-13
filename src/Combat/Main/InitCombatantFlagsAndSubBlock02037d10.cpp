@@ -1,6 +1,5 @@
 #include <globaldefs.h>
 #if defined(jpn)
-#define _Z35InitCombatantExtendedFields02052a4cPv func_02053e28
 #define COMBAT_FIELD(x) ((x) - 12)
 #else
 #define COMBAT_FIELD(x) (x)
@@ -35,4 +34,3 @@ extern "C" ARM void func_02037d10(void* obj) {
     *(int*)(base + COMBAT_FIELD(0x268)) = 0;
     _Z17InitBlock02038508P16SubBlock02038508(blk);
 }
-

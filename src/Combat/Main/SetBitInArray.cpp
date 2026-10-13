@@ -1,9 +1,11 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
-// USA: func_020113a8
-ARM void SetBitInArray(void* obj, int a, int b) {
-    unsigned int n = (a - 1) * 5 + b;
-    unsigned int byte = n >> 3;
-    unsigned char* p = (unsigned char*)obj + 0x5cd0;
-    p[byte] |= (unsigned char)(1 << (n - (byte << 3)));
+ARM void SetBitInArray(void* owner, int floor, int containerSlot) {
+    GameState* state = static_cast<GameState*>(owner);
+    unsigned int bitIndex = (floor - 1) * 5 + containerSlot;
+    unsigned int byteIndex = bitIndex / 8;
+    unsigned char* flags = reinterpret_cast<unsigned char*>(
+        &state->unk_397d[0x5cd0 - 0x397d]);
+    flags[byteIndex] |= static_cast<unsigned char>(1 << (bitIndex - byteIndex * 8));
 }

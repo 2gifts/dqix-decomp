@@ -31,24 +31,36 @@ struct Struct020aad1c {
 extern "C" ARM int func_020aad1c(struct Struct020aad1c* s, int a1, int a2, int a3) {
     if (s->state == 0) {
         GameState* battle = GameState::GetInstance();
+#if defined(jpn)
+        *((unsigned char*)battle + 0x5a68) = 1;
+#else
         *((unsigned char*)battle + 0x5cc8) = 1;
         GameResources* flagv = func_ov017_0218b5b0();
+#endif
         unsigned int buf;
         if (func_02075910(0, &buf, 1, 0) == 0) {
+#if defined(jpn)
+            SetBrightness(func_ov017_0218b5b0(), -16, 10);
+#else
             SetBrightness(flagv, -16, 10);
+#endif
             SetFlag0x5cccBit0((struct StateBits5ccc_11544*)battle);
             s->state = 4;
             return 1;
         } else {
             BackgroundLoader::FreeAllocationsGlobal();
+#if !defined(jpn)
             unsigned int* flags = (unsigned int*)_Z27GetDataPtr02114e04_020d6c00v();
             OrBitsIntoField0(flags, 0x2000000);
             SetBitsInWord((unsigned int*)flagv, 0x10);
+#endif
             int ptr = (int)&data_0211e33c + 0x1c + 0x29000;
             if (func_02075910(0x8000, (void*)(s->field4 = ptr), 0x6fe4, 1) == 0) {
+#if !defined(jpn)
                 flags = (unsigned int*)_Z27GetDataPtr02114e04_020d6c00v();
                 _Z18ClearFlags020466f4P16FlagWord020466f4j((struct FlagWord020466f4*)flags, 0x2000000);
                 ClearBitsInWord((unsigned int*)flagv, 0x10);
+#endif
                 s->state = 4;
                 return 1;
             } else {
@@ -62,8 +74,10 @@ extern "C" ARM int func_020aad1c(struct Struct020aad1c* s, int a1, int a2, int a
         NotifyU16AndSetFlag02075cb8();
         data_02108e00 = s->field4;
         if (func_020a9eb8(s, a1, a2, a3) == 0) {
+#if !defined(jpn)
             _Z18ClearFlags020466f4P16FlagWord020466f4j((struct FlagWord020466f4*)_Z27GetDataPtr02114e04_020d6c00v(), 0x2000000);
             ClearBitsInWord((unsigned int*)func_ov017_0218b5b0(), 0x10);
+#endif
             s->state = 4;
             return 1;
         } else {
@@ -77,8 +91,10 @@ extern "C" ARM int func_020aad1c(struct Struct020aad1c* s, int a1, int a2, int a
         }
         NotifyU16AndSetFlag02075cb8();
         if (a3 != 0) {
+#if !defined(jpn)
             _Z18ClearFlags020466f4P16FlagWord020466f4j((struct FlagWord020466f4*)_Z27GetDataPtr02114e04_020d6c00v(), 0x2000000);
             ClearBitsInWord((unsigned int*)func_ov017_0218b5b0(), 0x10);
+#endif
             s->state = 4;
             return 1;
         } else {
@@ -90,8 +106,10 @@ extern "C" ARM int func_020aad1c(struct Struct020aad1c* s, int a1, int a2, int a
             return 0;
         }
         NotifyU16AndSetFlag02075cb8();
+#if !defined(jpn)
         _Z18ClearFlags020466f4P16FlagWord020466f4j((struct FlagWord020466f4*)_Z27GetDataPtr02114e04_020d6c00v(), 0x2000000);
         ClearBitsInWord((unsigned int*)func_ov017_0218b5b0(), 0x10);
+#endif
         s->state = 4;
         return 1;
     }

@@ -4,9 +4,6 @@
 #else
 #define IS_JPN 0
 #endif
-#if defined(jpn)
-#define _Z20GetSlotEntry020108d8Pci func_02010734
-#endif
 
 #include <GameState/GameState.h>
 #include <System/Memory.h>

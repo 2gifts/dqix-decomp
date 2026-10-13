@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kFinalSubflag = 0x3dc };
+#else
+enum { kFinalSubflag = 0x3bc };
+#endif
+
 #include "World/Zone3D.h"
 #include "Graphics/LightingManager.h"
 #include "Resource/GameResources.h"
@@ -10,10 +17,9 @@ extern "C" {
     int _ZN6Zone3D14UnpackATS_AMBLEv(void*);
     int _ZN6Zone3D13UnpackMapAMDJEv(void*);
     int _Z29AccumulateHandleStats0201498cPv(void*);
-    long long _s32_div_f(int, int);
     int func_02019728(void*, int, void*, void*, void*);
     int func_0201a600(void*);
-    int func_02017a94(void*);
+    void func_02017a94(Zone3D*);
     int _Z17IsInRange0201b5b0i(int);
     int _Z22IsValueInRange0201b5d8i(int);
     void _Z15Set3DClearColoriiiii(int, int, int, int, int);
@@ -46,11 +52,11 @@ extern "C" ARM int func_02013e18(Zone3D* zone)
     if (!_Z29AccumulateHandleStats0201498cPv(zone))
         return 0;
 
-    int v = *(unsigned short*)zone->pUnknownStruct_8_;
+    int v = zone->pUnknownStruct_8_->unknown_0_;
 
     if (_Z17IsInRange0201b5b0i(v))
     {
-        func_02019728(zone, (int)(_s32_div_f(v, 0x14) >> 32), 0, 0, 0);
+        func_02019728(zone, v % 20, 0, 0, 0);
         func_0201a600(zone);
     }
     else if (_Z22IsValueInRange0201b5d8i(v))
@@ -90,7 +96,7 @@ extern "C" ARM int func_02013e18(Zone3D* zone)
     zone->unknown_424_ = 0;
 
     unsigned char* sub = (unsigned char*)zone + 0x2000;
-    sub[0x3bc] = 1;
+    sub[kFinalSubflag] = 1;
     _Z27UpdateEntryFlagsForNodeListPh((unsigned char*)zone, sub, 1);
     func_02017a94(zone);
     return 1;

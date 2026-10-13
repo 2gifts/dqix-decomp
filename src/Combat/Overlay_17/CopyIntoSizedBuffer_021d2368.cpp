@@ -1,18 +1,42 @@
 #include <globaldefs.h>
+#include "Resource/GameResources.h"
 #include "std_library_functions.h"
 
-struct SrcHdr021d2368 { unsigned char pad[4]; unsigned short low2 : 2; unsigned short off : 14; };
+struct BufferChunkEvent {
+    unsigned char tag;
+    unsigned char reserved[3];
+    unsigned short kind : 2;
+    unsigned short byteOffset : 14;
+    unsigned char bytes[14];
+};
 
-// USA: func_ov017_021d2368
-ARM void CopyIntoSizedBuffer_021d2368(int unused0, unsigned char* srcRaw, int unused2, unsigned char* base) {
-	SrcHdr021d2368* src = (SrcHdr021d2368*)srcRaw;
-	unsigned char* ptr = *(unsigned char**)(base + 0x3000 + 0xb30);
-	if (ptr[2] == 0) return;
-	unsigned char* arrBase = *(unsigned char**)(ptr + 0x288);
-	if (arrBase == NULL) return;
-	unsigned int off = src->off;
-	unsigned int len = 0xe;
-	if (off + 0xe > 0x2e0) len = 0x2e0 - off;
-	if ((int)len < 0) return;
-	memcpy(arrBase + off, srcRaw + 6, len);
+struct SynchronizedBuffer {
+    unsigned char bytes[0x2e0];
+};
+
+struct BufferReceiverView {
+    unsigned char unknown00[2];
+    unsigned char active;
+#if defined(jpn)
+    unsigned char unknown03[0x218 - 3];
+#else
+    unsigned char unknown03[0x288 - 3];
+#endif
+    SynchronizedBuffer* buffer;
+};
+
+ARM void CopyIntoSizedBuffer_021d2368(int unused0, unsigned char* source, int unused2, unsigned char* resourceBase) {
+    BufferChunkEvent* event = (BufferChunkEvent*)source;
+    GameResources* resources = (GameResources*)resourceBase;
+    BufferReceiverView* receiver = (BufferReceiverView*)resources->unknown_ptr_array_3afc[13];
+    if (!receiver->active) return;
+    SynchronizedBuffer* buffer = receiver->buffer;
+    if (buffer == NULL) return;
+    unsigned int offset = event->byteOffset;
+    int length = sizeof(event->bytes);
+    if (offset + sizeof(event->bytes) > sizeof(buffer->bytes)) {
+        length = sizeof(buffer->bytes) - offset;
+    }
+    if (length < 0) return;
+    memcpy(buffer->bytes + offset, event->bytes, length);
 }

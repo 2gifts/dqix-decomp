@@ -1,10 +1,18 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kYesNo = 0xe60 };
+#else
+enum { kYesNo = 0xe64 };
+#endif
+
 #include <GameState/GameState.h>
 
 struct Obj0205eaa0;
 
 struct YesNoLabel {
-    char unk_0[0x39];
+    char unk_0[0x38];
+    unsigned char label_;
     unsigned char palette_;
 };
 
@@ -17,7 +25,7 @@ struct YesNoWindow {
 };
 
 struct EquipmentMenu {
-    char unk_0[0xe64];
+    char unk_0[kYesNo];
     YesNoWindow* yesNo_;
 };
 
@@ -36,7 +44,13 @@ extern "C" ARM void func_ov005_02159b74(EquipmentMenu* self) {
     short x;
     short y;
     _Z26ResetAndReposition020e280cP11Obj020e280cPv(self->yesNo_, (void*)-1);
+#if defined(jpn)
+    YesNoLabel* label = self->yesNo_->GetLabel();
+    label->label_ = 0xc2;
+    label->palette_ = 0x4c;
+#else
     self->yesNo_->GetLabel()->palette_ = 0x4c;
+#endif
     unsigned char* panel = self->yesNo_->panel_;
     _Z26SetHalfwordAtIndex020e16dcPhis(panel, 0, 0x18c6);
     _Z31TransferObjPaletteEntry020e1674P11Obj020e1674ii(panel, 1, 0);

@@ -1,5 +1,11 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kEntries = 0xc, kFiltered = 0x140 };
+#else
+enum { kEntries = 0x14, kFiltered = 0x14c };
+#endif
+
 struct Node02158cfc {
     char pad0[0x10];
     unsigned int padBits:22;
@@ -10,14 +16,14 @@ struct Node02158cfc {
 };
 struct Container02071ffc { Node02158cfc* head; };
 struct Cont02158cfc {
-    char pad0[0x14];
+    char pad0[kEntries];
     void* entries;
     char pad18[0x14];
     Node02158cfc* head;
     Node02158cfc* checkpoint;
-    char pad34[0x14c-0x34];
+    char pad34[kFiltered - kEntries - 0x20];
     Container02071ffc filtered;
-    char pad150[0x35e - 0x150];
+    char pad150[0x35e - kFiltered - 4];
     short previousSelection;
     char pad360[0xa];
     short selection;

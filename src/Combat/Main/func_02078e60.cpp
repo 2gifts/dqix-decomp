@@ -1,9 +1,5 @@
 #include <globaldefs.h>
 
-#if defined(jpn)
-#define _Z29CheckAnySlotMatchesId02073d58iPvi func_02074ee4
-#endif
-
 struct Entry_02028bd0;
 struct Entry_02028bd0* GetEntryTableBase(void);
 struct Entry_02028bd0* FindInlineEntryById(struct Entry_02028bd0* base, int key);

@@ -155,3 +155,23 @@ src/Combat/Overlay_2/GetInventoryItemByID.cpp:
 src/Combat/Overlay_2/SetFieldC7bAndSyncFlags_0216c28c.cpp:
     complete
     .text start:0x0216c8dc end:0x0216c928
+
+src/Combat/Overlay_2/func_ov002_02155f4c.cpp:
+    complete
+    .text start:0x02157634 end:0x02157764
+
+src/Combat/Overlay_2/SetDefaultElementFlags_0215b6c0.cpp:
+    complete
+    .text start:0x0215c914 end:0x0215c974
+
+src/Combat/Overlay_2/func_ov002_02155dbc.cpp:
+    complete
+    .text start:0x021574fc end:0x02157634
+
+src/Combat/Overlay_2/HasPositiveField256Short178_02154b94.cpp:
+    complete
+    .text start:0x02156314 end:0x0215634c
+
+src/Combat/Overlay_2/func_ov002_021536ec.cpp:
+    complete
+    .text start:0x02154e6c end:0x02155064

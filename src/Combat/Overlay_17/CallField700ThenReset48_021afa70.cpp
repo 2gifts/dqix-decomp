@@ -1,8 +1,5 @@
 #include <globaldefs.h>
 
-#if defined(jpn)
-#define func_0205c96c func_0205dcd4
-#endif
 #include "Resource/GameResources.h"
 
 extern "C" void func_ov017_021a3b40(void *p, int v);

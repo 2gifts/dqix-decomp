@@ -2,7 +2,6 @@
 
 unsigned short GetTableValue(void* obj);
 extern "C" double _dflt(int);
-extern "C" double func_0200b0f0(double, double);
 
 struct Obj_021f729c { void* ptr0; char pad[0x18]; float sx; float sy; };
 
@@ -11,6 +10,6 @@ extern "C" ARM int func_ov024_021f729c(struct Obj_021f729c* obj) {
 	int v = GetTableValue(obj->ptr0) * 2;
 	if (v < 0x23) v = 0x23;
 	obj->sx = (float)v;
-	obj->sy = (float)func_0200b0f0(0.85, _dflt(v));
+	obj->sy = (float)((0.85) * (_dflt(v)));
 	return 1;
 }

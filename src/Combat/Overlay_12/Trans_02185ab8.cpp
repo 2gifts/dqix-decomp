@@ -1,14 +1,37 @@
 #include <globaldefs.h>
 
-extern "C" unsigned int _Z19InitEntries0205d2bcP11Obj0205d2bc(unsigned int);
-extern "C" unsigned int _Z29CallInitEntriesIfSet_021e76a8P17Container021e76a8(unsigned int);
-extern "C" unsigned int func_ov023_021e6b8c(unsigned int);
+struct ProfileEditor
+{
+#if defined(jpn)
+    char unknown0[0x90];
+    char window[0xd0c - 0x90];
+    char card[0x608];
+    char unknown1314[0x1340 - 0x1314];
+#else
+    char unknown0[0xac];
+    char window[0xd28 - 0xac];
+    char card[0x60c];
+    char unknown1334[0x1370 - 0x1334];
+#endif
+    unsigned char step;
+    unsigned char state;
+};
 
-// USA: func_ov012_02185ab8  (semantic: Trans_02185ab8)
-extern "C" ARM unsigned int func_ov012_02185ab8(unsigned int self, unsigned int r1, unsigned int r2, unsigned int r3) {
-    _Z29CallInitEntriesIfSet_021e76a8P17Container021e76a8(self + 0xd28);
-    if (*(unsigned char*)(self + 0x1371) != 0) {
-        _Z19InitEntries0205d2bcP11Obj0205d2bc(self + 0xac);
-    }
-    return func_ov023_021e6b8c(self);
+extern "C" void _Z19InitEntries0205d2bcP11Obj0205d2bc(void* window);
+extern "C" void _Z29CallInitEntriesIfSet_021e76a8P17Container021e76a8(void* card);
+extern "C" unsigned int func_ov023_021e6b8c(ProfileEditor* editor);
+
+// USA: func_ov012_02185ab8
+#if defined(jpn)
+extern "C" ARM void func_ov012_02185ab8(ProfileEditor* editor)
+#else
+extern "C" ARM unsigned int func_ov012_02185ab8(ProfileEditor* editor)
+#endif
+{
+    _Z29CallInitEntriesIfSet_021e76a8P17Container021e76a8(editor->card);
+    if (editor->state != 0)
+        _Z19InitEntries0205d2bcP11Obj0205d2bc(editor->window);
+#if !defined(jpn)
+    return func_ov023_021e6b8c(editor);
+#endif
 }

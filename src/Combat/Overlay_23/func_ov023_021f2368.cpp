@@ -17,7 +17,7 @@ void InitObjFromCombatantId020e4bf4(void* obj, int combatantId);
 struct Obj02046574;
 void SetIndexedName02046574(struct Obj02046574* obj, int index, char* str);
 #if defined(jpn)
-extern "C" void func_02045d88(void* obj, char* buffer, int a);
+extern "C" void func_0204500c(void* obj, char* buffer, int a);
 #else
 extern "C" void func_0204500c(void* obj, char* buffer, int a, int b);
 #endif
@@ -35,16 +35,16 @@ extern "C" void func_ov017_021ccea4(int a, unsigned char* b, int c);
 struct Entry1c021f2368 { unsigned char attempts[0x14]; };
 
 struct GlobalState021f2368 {
-    int counter;                     // 0x0
+    int counter;
     char pad0[0x12 - 0x4];
-    unsigned char flagArr[4];        // 0x12
+    unsigned char flagArr[4];
     char pad1[0x18 - 0x16];
-    int id;                          // 0x18
-    struct Entry1c021f2368 arr1c[4]; // 0x1c
-    unsigned char byteArr6c[4];      // 0x6c
-    int field70;                     // 0x70
+    int id;
+    struct Entry1c021f2368 arr1c[4];
+    unsigned char byteArr6c[4];
+    int field70;
     char pad2[0xe5 - 0x74];
-    signed char e5;                  // 0xe5
+    signed char e5;
 };
 
 extern "C" struct GlobalState021f2368* _ZZ17GetGlobal021ffefcvE1s;
@@ -88,7 +88,7 @@ extern "C" ARM int func_ov023_021f2368(unsigned char* obj) {
                     sprintf(msgBuf, e1, combatantName, *(char**)found);
                     char* e2 = (char*)FindEntryByKey((struct TableA68*)(obj + regionalOffset0), 0x22);
                     strcat(msgBuf, e2);
-                    func_02045d88(stateObj, msgBuf, 1);
+                    func_0204500c(stateObj, msgBuf, 1);
 
 #else
                     char buf1[0xc];

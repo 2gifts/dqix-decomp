@@ -1,7 +1,7 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
-// USA: func_02012040
-ARM void SetByte0x63d5(void* obj) {
-    unsigned char* base = (unsigned char*)obj;
-    (base + 0x6000)[0x3d5] = 1;
+ARM void SetByte0x63d5(void* owner) {
+    GameState* state = static_cast<GameState*>(owner);
+    state->unk_397d[0x63d5 - 0x397d] = 1;
 }

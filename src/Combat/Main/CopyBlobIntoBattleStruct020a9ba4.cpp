@@ -8,13 +8,19 @@ struct Blob020a9ba4 {
     int trailer;
 };
 
+#if defined(jpn)
+enum { kSecondOffset = 0x5f20, kFirstOffset = 0x5d20, kTrailerOffset = 0x5d1c };
+#else
+enum { kSecondOffset = 0x6180, kFirstOffset = 0x5f80, kTrailerOffset = 0x5f7c };
+#endif
+
 // USA: func_020a9ba4
 ARM int CopyBlobIntoBattleStruct020a9ba4(void* src) {
     struct Blob020a9ba4 buf;
     GameState* bs = GameState::GetInstance();
     memcpy(&buf, src, sizeof(buf));
-    memcpy((char*)bs + 0x6180, buf.second, 0x200);
-    memcpy((char*)bs + 0x5f80, buf.first, 0x200);
-    *(int*)((char*)bs + 0x5f7c) = buf.trailer;
+    memcpy((char*)bs + kSecondOffset, buf.second, 0x200);
+    memcpy((char*)bs + kFirstOffset, buf.first, 0x200);
+    *(int*)((char*)bs + kTrailerOffset) = buf.trailer;
     return 1;
 }

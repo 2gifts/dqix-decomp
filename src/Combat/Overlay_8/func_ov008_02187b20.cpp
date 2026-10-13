@@ -1,3 +1,9 @@
+#if defined(jpn)
+
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
 #include <globaldefs.h>
 
 #if defined(jpn)
@@ -145,7 +151,9 @@ struct BattleRecords {
     unsigned char kind_;
     unsigned char top_;
     unsigned char closed_;
+#if !defined(jpn)
     int titleX_;
+#endif
     const void* guest_;
     GuestRecords* guestRecords_;
     void* guestTexts_;
@@ -160,7 +168,9 @@ struct GameState {
 struct StoreStruct;
 struct Container020e0310;
 
+#if !defined(jpn)
 extern char data_ov008_0218b4c3[];
+#endif
 
 extern "C" unsigned char* _Z26GetGlobalField0x1c020421a0v();
 void CopyOutBattleField0x7ac0(void* count);
@@ -194,7 +204,7 @@ extern "C" ARM void func_ov008_02187b20(BattleRecords* self, char* text, ClearRe
     unsigned int count2;
     unsigned char shown;
     count2 = 0;
-    saved = (SavedRecords*)((char*)GameState::GetInstance() + 0x104 + 0x7400);
+    saved = (SavedRecords*)((char*)GameState::GetInstance() + LOW_REGION(0x2c4 + 0x7000, 0x104 + 0x7400));
     int count3;
     GuestRecords* guest = self->guestRecords_;
     int count4;
@@ -249,17 +259,17 @@ extern "C" ARM void func_ov008_02187b20(BattleRecords* self, char* text, ClearRe
     SetByteInRange(messages, 1, 5);
     SetByteAtIndex(messages, 1, 1);
     StoreInArray0x8b0((StoreStruct*)messages, 2, count3);
-    SetByteInRange(messages, 2, 5);
+    SetByteInRange(messages, 2, LOW_REGION(3, 5));
     char* store;
     SetByteAtIndex(messages, 2, 1);
     StoreInArray0x8b0((StoreStruct*)messages, 3, count4);
-    SetByteInRange(messages, 3, 5);
+    SetByteInRange(messages, 3, LOW_REGION(3, 5));
     SetByteAtIndex(messages, 3, 1);
     StoreInArray0x8b0((StoreStruct*)messages, 4, count5);
-    SetByteInRange(messages, 4, 5);
+    SetByteInRange(messages, 4, LOW_REGION(4, 5));
     SetByteAtIndex(messages, 4, 1);
     StoreInArray0x8b0((StoreStruct*)messages, 5, count6);
-    SetByteInRange(messages, 5, 5);
+    SetByteInRange(messages, 5, LOW_REGION(4, 5));
     SetByteAtIndex(messages, 5, 1);
     AppendPaletteTag(text, 0xe);
     store = func_0205ec34();
@@ -287,6 +297,10 @@ extern "C" ARM void func_ov008_02187b20(BattleRecords* self, char* text, ClearRe
     {
         if (shown & (1 << i))
         {
+#if defined(jpn)
+            AppendXYTag(text, 2, line * 15 + 1);
+            _Z20AppendString02042058PcPKc(text, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&self->texts_, (short)(i + 0x78)));
+#else
             char label[0x40];
             y = line * 14;
             AppendXYTag(text, 2, y + 7);
@@ -299,6 +313,7 @@ extern "C" ARM void func_ov008_02187b20(BattleRecords* self, char* text, ClearRe
             _Z20AppendString02042058PcPKc(text, label);
             AppendXYTag(text, 0x62, y + 7);
             _Z20AppendString02042058PcPKc(text, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&self->texts_, (short)(i + 500)));
+#endif
             line++;
         }
     }

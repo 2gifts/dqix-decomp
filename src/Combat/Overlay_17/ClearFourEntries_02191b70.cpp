@@ -1,14 +1,27 @@
 #include <globaldefs.h>
 
-struct Entry02191b70 { unsigned char b0; unsigned char pad; unsigned short h2; };
+struct PendingCombatantUpdate {
+    unsigned char pending;
+    unsigned char unknown1;
+    unsigned short value;
+};
+
+struct PendingCombatantUpdatesView {
+#if defined(jpn)
+    unsigned char unknown0000[0x41ec];
+#else
+    unsigned char unknown0000[0x449c];
+#endif
+    PendingCombatantUpdate entries[4];
+};
 
 // USA: func_ov017_02191b70
-ARM void ClearFourEntries_02191b70(void* obj) {
-	Entry02191b70* p = (Entry02191b70*)((char*)obj + 0x9c + 0x4400);
-	int i;
-	for (i = 0; i < 4; i++) {
-		p->b0 = 0;
-		p->h2 = 0;
-		p++;
-	}
+ARM void ClearFourEntries_02191b70(void* resources) {
+    PendingCombatantUpdatesView* updates = (PendingCombatantUpdatesView*)resources;
+    PendingCombatantUpdate* entry = updates->entries;
+    for (int index = 0; index < 4; ++index) {
+        entry->pending = 0;
+        entry->value = 0;
+        ++entry;
+    }
 }

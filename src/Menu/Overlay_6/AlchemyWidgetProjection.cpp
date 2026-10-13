@@ -1,6 +1,5 @@
 #if defined(jpn)
 #define R(j,u) (j)
-#define _Z25ForwardTableValue02075db0P14Struct02075db0ii func_02076ccc
 #define data_0210a00c data_02109cc4
 #define data_ov005_0215cd74 data_ov005_0215e154
 #define data_ov006_0215ff6c data_ov006_021612d0

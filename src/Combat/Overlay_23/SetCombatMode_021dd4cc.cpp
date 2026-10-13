@@ -1,42 +1,62 @@
 #include <globaldefs.h>
 
-#if defined(jpn)
-#define func_ov023_021dd4cc func_ov023_021ddcbc
-#endif
 #include "Filesystem/BackgroundLoader.h"
 
+#if defined(jpn)
+extern char data_ov023_021fce18[];
+extern char data_ov023_021fce2d[];
+enum { ModeFlagsOffset = 0x6f0, CurrentModeOffset = 0x6f9, PendingModeOffset = 0x6fa, ModeTaskOffset = 0x6fc };
+#else
+extern char data_ov023_021fdb40[];
+extern char data_ov023_021fdb52[];
+extern char data_ov023_021fdb60[];
+extern char data_ov023_021fdb72[];
+enum { ModeFlagsOffset = 0x774, CurrentModeOffset = 0x77d, PendingModeOffset = 0x77e, ModeTaskOffset = 0x780 };
+#endif
 
-extern int data_ov023_021fdb40;
-extern int data_ov023_021fdb52;
-extern int data_ov023_021fdb60;
-extern int data_ov023_021fdb72;
+struct ModeLoadRequest {
+    char unknown0[ModeFlagsOffset];
+    unsigned short flags;
+    char unknownAfterFlags[CurrentModeOffset - ModeFlagsOffset - sizeof(unsigned short)];
+    signed char currentMode;
+    signed char pendingMode;
+    char unknownBeforeTask;
+    int taskId;
+};
 
 // USA: func_ov023_021dd4cc  (semantic: SetCombatMode_021dd4cc)
-extern "C" ARM void func_ov023_021dd4cc(void* objRaw, int mode) {
-    char* obj = (char*)objRaw;
-    int dataResult = (int)BackgroundLoader::GetInstance();
-    signed char scratchVal = *(signed char*)(obj + 0x77d);
-    if (mode == scratchVal) {
-        if (*(int*)(obj + 0x780) < 0) return;
-        ((BackgroundLoader*)(dataResult))->RemoveTask((int)(*(int*)(obj + 0x780)));
-        *(int*)(obj + 0x780) = -1;
-        obj[0x77e] = *(signed char*)(obj + 0x700 + 0x7d);
+extern "C" ARM void func_ov023_021dd4cc(ModeLoadRequest* request, int mode) {
+    BackgroundLoader* loader = BackgroundLoader::GetInstance();
+    signed char currentMode = request->currentMode;
+    if (mode == currentMode) {
+        if (request->taskId < 0) return;
+        loader->RemoveTask(request->taskId);
+        request->taskId = -1;
+        request->pendingMode = request->currentMode;
         return;
     }
-    signed char other = *(signed char*)(obj + 0x77e);
+    signed char other = request->pendingMode;
     if (mode == other) return;
-    if (*(int*)(obj + 0x780) >= 0) {
-        ((BackgroundLoader*)(dataResult))->RemoveTask((int)(*(int*)(obj + 0x780)));
-        *(int*)(obj + 0x780) = -1;
-        obj[0x77e] = -1;
+    if (request->taskId >= 0) {
+        loader->RemoveTask(request->taskId);
+        request->taskId = -1;
+        request->pendingMode = -1;
     }
     int result;
     if (mode == 2) {
-        result = ((BackgroundLoader*)(dataResult))->QueueLoadFileInGP2((const char*)((int)&data_ov023_021fdb40), (const char*)((int)&data_ov023_021fdb52), (SafeAllocator*)(0));
+#if defined(jpn)
+        result = loader->QueueLoadFile(data_ov023_021fce18, NULL);
+#else
+        result = loader->QueueLoadFileInGP2(data_ov023_021fdb40, data_ov023_021fdb52, NULL);
+#endif
     } else {
-        result = ((BackgroundLoader*)(dataResult))->QueueLoadFileInGP2((const char*)((int)&data_ov023_021fdb60), (const char*)((int)&data_ov023_021fdb72), (SafeAllocator*)(0));
+#if defined(jpn)
+        result = loader->QueueLoadFile(data_ov023_021fce2d, NULL);
+#else
+        result = loader->QueueLoadFileInGP2(data_ov023_021fdb60, data_ov023_021fdb72, NULL);
+#endif
     }
-    *(int*)(obj + 0x780) = result;
-    *(unsigned short*)(obj + 0x774) |= 8;
-    obj[0x77e] = (char)mode;
+    request->taskId = result;
+    request->flags |= 8;
+    request->pendingMode = (char)mode;
 }

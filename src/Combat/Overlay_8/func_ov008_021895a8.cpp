@@ -17,7 +17,11 @@
 
 struct MessageSystem
 {
+#if defined(jpn)
+    char unk_0[0x28];
+#else
     char unk_0[0x5c];
+#endif
     void* unk_5c;
 };
 
@@ -177,7 +181,11 @@ struct VisitorTalk
     char titles_[0x18];
     char* text_;
     void* pixels_;
+#if defined(jpn)
+    char records_[0xb44];
+#else
     char records_[0xb48];
+#endif
     char entry_[0x2c];
     char profile_[0x7c];
     unsigned char unk_e98;
@@ -189,7 +197,9 @@ struct VisitorTalk
     int backgroundTask_;
     int spriteTask_;
     int profileTask_;
+#if !defined(jpn)
     int sentencesTask_;
+#endif
     int titleTask_;
     unsigned char done_;
     signed char member_;
@@ -215,7 +225,12 @@ extern "C" ARM void func_ov008_021895a8(VisitorTalk* self)
     signed char step = self->step_;
     if (step == 0)
     {
-        if (!IsField0Null(*(void***)(resources + 0x3700)))
+        if (!IsField0Null(*(void***)(resources
+#if defined(jpn)
+            + 0x34f0)))
+#else
+            + 0x3700)))
+#endif
             return;
         SetBitsInWord((unsigned int*)func_ov017_0218b5b0(), 0x10);
         OrBitsIntoField0(_Z27GetDataPtr02114e04_020d6c00v(), 0xd);
@@ -239,12 +254,19 @@ extern "C" ARM void func_ov008_021895a8(VisitorTalk* self)
         {
             female = guest->records_.female_;
         }
+#if defined(jpn)
+        char gp2[0x40];
+        sprintf(gp2, data_ov008_0218b4c8, female);
+        self->textTask_ = loader->QueueLoadFile(data_ov008_0218b4f2, NULL);
+        self->titleTask_ = loader->QueueLoadFile(gp2, NULL);
+#else
         char gp2[0x40];
         char inner[0x20];
         sprintf(gp2, data_ov008_0218b4c8, female);
         sprintf(inner, data_ov008_0218b4df, female);
         self->textTask_ = loader->QueueLoadFileInGP2(data_ov008_0218b4f2, data_ov008_0218b508, NULL);
         self->titleTask_ = loader->QueueLoadFileInGP2(gp2, inner, NULL);
+#endif
         self->backgroundTask_ = loader->QueueLoadFile(data_ov008_0218b51a, NULL);
         self->spriteTask_ = loader->QueueLoadFile(data_ov008_0218b52d, NULL);
         self->step_++;
@@ -375,8 +397,12 @@ extern "C" ARM void func_ov008_021895a8(VisitorTalk* self)
         if (_Z18AlwaysTrue02094b4cv())
         {
             func_ov008_0218aa24(self);
+#if defined(jpn)
+            self->profileTask_ = loader->QueueLoadFile(data_ov008_0218b544, NULL);
+#else
             self->profileTask_ = loader->QueueLoadFileInGP2(data_ov008_0218b544, data_ov008_0218b559, NULL);
             self->sentencesTask_ = loader->QueueLoadFileInGP2(data_ov008_0218b56a, data_ov008_0218b57f, NULL);
+#endif
             self->state_ = 1;
             self->step_ = 0;
         }

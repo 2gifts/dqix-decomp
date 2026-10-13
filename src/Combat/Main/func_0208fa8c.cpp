@@ -1,9 +1,17 @@
 #include <globaldefs.h>
+
 #include "GameState/GameState.h"
 #include "Grotto/Main/DetailedTreasureMapData.h"
 
 struct ZoneState { unsigned short zoneId; };
-struct DetailedMapFlags { char pad0[0x260]; unsigned char field260; };
+struct DetailedMapFlags {
+#if defined(jpn)
+    char pad0[0x280];
+#else
+    char pad0[0x260];
+#endif
+    unsigned char field260;
+};
 GameResources* func_ov017_0218b5b0();
 void* GetField0x3f8Address(GameState*);
 extern "C" int _Z17IsInRange0201b588i(int);

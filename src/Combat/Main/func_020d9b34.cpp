@@ -10,7 +10,7 @@ extern const char data_020f2a18[];
 extern "C" void func_020728ac(int, int, void*, int, int, unsigned short, unsigned char);
 struct TableA68;
 void* FindEntryByKey(TableA68*, int);
-extern "C" void func_02045d88(void*, void*, int);
+extern "C" void func_0204500c(void*, void*, int);
 #else
 #define REGION_VALUE(jpnValue, usaValue) usaValue
 #endif
@@ -35,7 +35,9 @@ extern "C" void _Z21BlankFunction02094b30v(void* a, int b, int c);
 extern "C" void _ZN13SafeAllocator11CreateTypeAEPvj(SafeAllocator* self, void* bufferStart, unsigned int bufferSize);
 extern "C" int _ZN16BackgroundLoader18QueueLoadFileInGP2EPKcS1_P13SafeAllocator(BackgroundLoader* self, const char* gp2, const char* innerFile, SafeAllocator* alloc);
 extern "C" void func_02046380(void* global);
+#if !defined(jpn)
 extern "C" void func_0204500c(void* global, void* entry, int a, int b);
+#endif
 extern "C" void func_020dfec0(void* dest, void* allocator, void* fileData, unsigned int size);
 struct Obj02046574;
 extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(struct Obj02046574* obj, int index, char* name);
@@ -113,7 +115,7 @@ extern "C" ARM void func_020d9b34(struct Obj020d9b34* self) {
         func_02046380(g);
         _Z22SetIndexedName02046574P11Obj02046574iPc((struct Obj02046574*)g, 0, self->name);
 #if defined(jpn)
-        func_02045d88(g, FindEntryByKey((TableA68*)&self->container, self->field8), 0);
+        func_0204500c(g, FindEntryByKey((TableA68*)&self->container, self->field8), 0);
 #else
         func_0204500c(g, (void*)_Z21GetFieldByKey020e0434P17Container020e0310i((struct Container020e0310*)&self->container, self->field8), 0, 0xe3);
 #endif

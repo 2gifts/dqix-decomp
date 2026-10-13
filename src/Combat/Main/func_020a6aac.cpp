@@ -50,8 +50,7 @@ extern "C" void _Z25ApplyElementFlags0201b8c8P11Obj0201b600iii(struct Obj0201b60
 
 extern "C" void func_020da244(void* sb);
 
-struct Vec3Target020a6aa4;
-extern "C" void _Z20SetVec3At0x0020a6aa4P18Vec3Target020a6aa4iii(struct Vec3Target020a6aa4* obj, int x, int y, int z);
+void SetVec3At0x0020a6aa4(Vector3i* obj, int x, int y, int z);
 
 struct EventDispatcher020a6aac;
 extern EventDispatcher020a6aac data_ov017_021d82fc;
@@ -339,7 +338,7 @@ extern "C" ARM void func_020a6aac(unsigned int* obj, int eventCode, int previous
 
     Vector3i fallbackPosition = savedEvent->position;
     if (fallbackPosition.x == 0 && fallbackPosition.z == 0) {
-        _Z20SetVec3At0x0020a6aa4P18Vec3Target020a6aa4iii((struct Vec3Target020a6aa4*)&fallbackPosition, 0x19000, 0x199, 0x38ccc);
+        SetVec3At0x0020a6aa4(&fallbackPosition, 0x19000, 0x199, 0x38ccc);
         savedEvent->position = fallbackPosition;
     }
 }

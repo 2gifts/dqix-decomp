@@ -1,5 +1,11 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kInitialPad = 0x24 };
+#else
+enum { kInitialPad = 0x30 };
+#endif
+
 struct Elem02081de0 {
     unsigned char pad_0[0xc4];
     unsigned char field_c4;
@@ -7,7 +13,7 @@ struct Elem02081de0 {
 };
 
 struct Obj02081de0 {
-    unsigned char pad_0[0x30];
+    unsigned char pad_0[kInitialPad];
     struct Elem02081de0 *field_30;
     unsigned char pad_34[5];
     unsigned char field_39;

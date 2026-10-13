@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 
 #if defined(jpn)
-#define func_ov006_0215f740 func_ov006_02160b08
 #define data_ov006_02160030 data_ov006_02161384
 #define LOW_REGION(j, u) (j)
 #else

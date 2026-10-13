@@ -1517,3 +1517,39 @@ src/Combat/Overlay_3/func_ov003_0217bf78.cpp:
 src/Combat/Overlay_3/func_ov003_0217c2bc.cpp:
     complete
     .text start:0x0217afe4 end:0x0217b474
+
+src/Combat/Overlay_3/RefreshPaletteIfFlagSet_02174890.cpp:
+    complete
+    .text start:0x021739b8 end:0x021739e8
+
+src/Combat/Overlay_3/LoopCallOv017_02172518.cpp:
+    complete
+    .text start:0x021714f0 end:0x0217153c
+
+src/Combat/Overlay_3/ReinitEntryListAndController_0217dc40.cpp:
+    complete
+    .text start:0x0217c8e0 end:0x0217c918
+
+src/Combat/Overlay_3/func_ov003_021704e8.cpp:
+    complete
+    .text start:0x0216fd3c end:0x0216fe58
+
+src/Combat/Overlay_3/func_ov003_0216da90.cpp:
+    complete
+    .text start:0x0216d478 end:0x0216d5f4
+
+src/Combat/Overlay_3/func_ov003_021552b8.cpp:
+    complete
+    .text start:0x021569a0 end:0x02156c04
+
+src/Combat/Overlay_3/func_ov003_02156ad4.cpp:
+    complete
+    .text start:0x02158034 end:0x021582a0
+
+src/Combat/Overlay_3/func_ov003_02156d40.cpp:
+    complete
+    .text start:0x021582a0 end:0x021585ac
+
+src/Combat/Overlay_3/func_ov003_021541b0.cpp:
+    complete
+    .text start:0x021558a0 end:0x02155b38

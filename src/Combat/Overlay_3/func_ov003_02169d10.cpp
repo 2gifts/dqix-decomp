@@ -3,11 +3,7 @@
 
 #if defined(jpn)
 #define PANEL_SHIFT 4
-extern "C" void func_02042564(char*, int, int, int);
-extern "C" void func_020425b0(char*, int, int, int);
 extern "C" void func_02042428(char*, int);
-#define AppendUaTag func_02042564
-#define AppendDbTag func_020425b0
 #define AppendSizeTag func_02042428
 #define data_ov003_02180156 data_ov003_0217e8e5
 #define data_ov003_02180159 data_ov003_0217e8e8

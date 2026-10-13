@@ -1,54 +1,52 @@
 #include <globaldefs.h>
+
 #include "Filesystem/BackgroundLoader.h"
 #include "Filesystem/FileIO.h"
 
 extern "C" int func_ov011_021849d8(void* p);
 
-struct List0202fe68;
+char* FindEntryAndGetNext(void* a, char* b, unsigned int* outSize);
 
-struct List0202fec8;
-
-char* FindEntryAndGetNext(void* a, char* b, void** outField44);
-
-extern "C" void func_ov023_021fab48(void* obj, void* keyObj, int out1, int out2);
+extern "C" void func_ov023_021fab48(void* obj, void* keyObj, const void* fileData, int fileLength);
 
 struct Obj021faa60 {
     char pad0[0x10];
-    char* f10;
+    char* entryName;
     char pad1c[0x1c - 0x14];
-    int field1c;
+    int state;
 };
 
 // USA: func_ov023_021faa60
 extern "C" ARM void func_ov023_021faa60(struct Obj021faa60* obj, void* keyObj) {
-    void* listPtr = (void*)(int)BackgroundLoader::GetInstance();
-    int key = func_ov011_021849d8(keyObj);
-    if (key < 0) {
+    BackgroundLoader* loader = BackgroundLoader::GetInstance();
+    int taskId = func_ov011_021849d8(keyObj);
+    if (taskId < 0) {
         return;
     }
-    if (!((BackgroundLoader*)(listPtr))->GetTaskStatus((int)(key))) {
+    if (!loader->GetTaskStatus(taskId)) {
         return;
     }
-    if (((BackgroundLoader*)((struct List0202fe68*)listPtr))->GetDetailedTaskStatus((int)(key)) != 2) {
-        return;
-    }
-
-    int out1, out2;
-    ((BackgroundLoader*)((struct List0202fec8*)listPtr))->GetLoadedFileByID((int)(key), (void**)(&out1), (unsigned int*)(&out2));
-
-    void* p;
-    unsigned int n;
-    if (GetFileInNarc((void*)out1, obj->f10, (const void**)&p, &n, 0)) {
-        func_ov023_021fab48(obj, keyObj, out1, out2);
-        obj->field1c = 2;
+    if (loader->GetDetailedTaskStatus(taskId) != BackgroundLoader::TaskStatus_Complete) {
         return;
     }
 
-    p = FindEntryAndGetNext((void*)out1, obj->f10, (void**)&n);
-    if (p == NULL) {
+    void* fileData;
+    unsigned int fileLength;
+    loader->GetLoadedFileByID(taskId, &fileData, &fileLength);
+
+    const void* entry;
+    unsigned int entryLength;
+    if (GetFileInNarc(fileData, obj->entryName, &entry, &entryLength, 0)) {
+        func_ov023_021fab48(obj, keyObj, fileData, fileLength);
+        obj->state = 2;
         return;
     }
 
-    func_ov023_021fab48(obj, keyObj, out1, out2);
-    obj->field1c = 2;
+    entry = FindEntryAndGetNext(fileData, obj->entryName, &entryLength);
+    if (entry == NULL) {
+        return;
+    }
+
+    func_ov023_021fab48(obj, keyObj, fileData, fileLength);
+    obj->state = 2;
 }

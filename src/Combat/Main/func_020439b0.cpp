@@ -18,7 +18,7 @@ ARM void ResetControllerState020430b0(char* self);
 extern "C" void func_020437bc(void* buf, void* box, int index);
 
 struct Struct0204394c;
-int PrepareEncodeStreamBuffer0204394c(struct Struct0204394c* obj);
+void PrepareEncodeStreamBuffer0204394c(struct Struct0204394c* obj);
 
 struct Entry020e2cc4;
 void SetEntryEnabled020e2cc4(struct Entry020e2cc4* obj, int enabled);

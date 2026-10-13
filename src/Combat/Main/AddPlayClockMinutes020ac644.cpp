@@ -1,16 +1,10 @@
+#include "GameState/BattleRecordSnapshot.h"
 #include <globaldefs.h>
 
-struct PlayClock020ac614;
-void AddPlayClockHours020ac614(struct PlayClock020ac614* clock, int amount);
-
-struct PlayClock020ac644 {
-    unsigned short hours;
-    unsigned char minutes;
-    unsigned char seconds;
-};
+void AddPlayClockHours020ac614(struct BattleRecordPlayClock* clock, int amount);
 
 // USA: func_020ac644
-ARM void AddPlayClockMinutes020ac644(struct PlayClock020ac644* clock, int amount) {
+ARM void AddPlayClockMinutes020ac644(struct BattleRecordPlayClock* clock, int amount) {
     clock->minutes = clock->minutes + amount;
     unsigned char mins = clock->minutes;
     if (mins <= 0x3b) return;
@@ -23,6 +17,6 @@ ARM void AddPlayClockMinutes020ac644(struct PlayClock020ac644* clock, int amount
         return;
     }
 
-    AddPlayClockHours020ac614((struct PlayClock020ac614*)clock, carryHours);
+    AddPlayClockHours020ac614(clock, carryHours);
     clock->minutes = clock->minutes % 0x3c;
 }

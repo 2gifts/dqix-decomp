@@ -6,7 +6,11 @@ struct Obj0205eaa0;
 struct Entry_0205d6a0;
 
 struct PartyData0217d438 {
+#if defined(jpn)
+    char pad0[0x8b4];
+#else
     char pad0[0x94c];
+#endif
     int field94c;
 };
 
@@ -15,14 +19,22 @@ struct Entry0217d438 {
     unsigned char field24;
     char pad25[0x4c - 0x25];
     int memberIndex;
+#if defined(jpn)
+    char pad50[0x488 - 0x50];
+#else
     char pad50[0x448 - 0x50];
+#endif
 };
 
 struct Menu0217d438 {
     char pad0[0x188];
     char elements[0x958 - 0x188];
     struct Entry0217d438 entries[4];
+#if defined(jpn)
+    char pad1A78[0x1f98 - (0x958 + 4 * 0x488)];
+#else
     char pad1A78[0x1d60 - 0x1a78];
+#endif
     unsigned char stack[8];
     signed char depth;
     char pad1D69[0x1d6b - 0x1d69];

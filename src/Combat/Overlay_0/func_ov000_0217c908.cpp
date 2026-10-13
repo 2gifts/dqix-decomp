@@ -7,16 +7,9 @@ extern "C" void _Z32ClearBuffers0204b010OverList0x98P12Cont0205d1e0(void*);
 extern "C" void _Z28CallFunc0204b04cOverList0x98P12Cont0205d274(void*);
 extern "C" void _Z19InitEntries0205d2bcP11Obj0205d2bc(void*);
 #define KINDS_OFFSET 0x1f98
-#define func_ov000_0217cb5c func_ov000_0217df54
-#define func_ov000_0217d438 func_ov000_0217e830
-#define func_ov000_0217d674 func_ov000_0217ea6c
-#define func_ov000_0217d87c func_ov000_0217ec74
-#define func_ov000_0217db4c func_ov000_0217ef30
-#define func_ov000_0217dcf0 func_ov000_0217f158
 #define func_ov000_0217df08 func_ov000_0217f370
 #define func_ov000_0217e558 func_ov000_0217f888
 #define func_ov000_0217e870 func_ov000_0217fba0
-#define func_ov000_0217eb28 func_ov000_0217fe58
 #else
 #define KINDS_OFFSET 0x1d60
 #endif

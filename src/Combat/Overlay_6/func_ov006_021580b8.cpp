@@ -2,6 +2,9 @@
 
 #if defined(jpn)
 #define func_ov006_021580b8 func_ov006_02159668
+#define LOW_REGION(j,u) (j)
+#else
+#define LOW_REGION(j,u) (u)
 #endif
 
 struct Obj2081;
@@ -87,8 +90,10 @@ void SetFieldsAt0x28And0x2c02076988(int*, int, int);
 void ForwardTableValue02075db0(Struct02075db0*, int, int);
 
 struct AlchemyMenu {
+#if !defined(jpn)
     int textPosition_;
     char** texts_;
+#endif
     void* canvasBuffer_;
     void* allocators_;
     AlchemyPot* pot_;
@@ -113,10 +118,10 @@ struct AlchemyMenu {
     unsigned short buttons_;
     unsigned char unk_aa;
     int renderer_[0x54 / 4];
-    int layout_[0x4c / 4];
+    int layout_[LOW_REGION(0x48,0x4c) / 4];
     int table_[0xc / 4];
     int menuTexts_[0x18 / 4];
-    char itemNames_[0xc];
+    char itemNames_[LOW_REGION(0x18,0xc)];
     int results_[4][0x74 / 4];
     int ticks_;
     int menuResult_;
@@ -198,6 +203,7 @@ extern "C" ARM void func_ov006_021580b8(AlchemyMenu* self)
         void* layer = GetEntryByIndexStride0x10((EntryList0204af14*)self->subBackground_, self->background_);
         if (layer != 0)
             CallFunc0204b620IfField0x14_0204b938(self->subBackground_, layer, 0, 0, 0xffff);
+#if !defined(jpn)
         if (self->background_ == 1)
         {
             unsigned int kind = NormalizeField5_0200fb08((Struct0200fb08*)GameState::GetInstance());
@@ -220,6 +226,7 @@ extern "C" ARM void func_ov006_021580b8(AlchemyMenu* self)
             if (tiles > 1)
                 DispatchEntry0204b8d0((Obj0204b8d0*)self->subBackground_, tiles, 0, 0, 0x16, 2, 9, 2, 0xffff);
         }
+#endif
         void* menu = self->menu_;
         ClearAllBuffers0207fcb8((Obj0207fcb8*)menu);
         CallFunc0204c8f0OverEntries0207fd00((Obj0207fd00*)menu);

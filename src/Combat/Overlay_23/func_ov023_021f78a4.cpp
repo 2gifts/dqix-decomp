@@ -9,7 +9,7 @@ struct List0202fe68;
 
 struct List0202fec8;
 
-extern "C" void func_ov023_021f7b98(void* obj, void* ctx, int flag, int v1, int v2);
+extern "C" void func_ov023_021f7b98(void* obj, void* ctx, int flag, int v1, unsigned int entryLength);
 extern "C" void func_0204b088(void* p, int flag);
 
 struct Obj021f78a4 {

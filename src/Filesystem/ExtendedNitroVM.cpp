@@ -2,14 +2,11 @@
 #include "Filesystem/FSInnerDefs.h"
 #include "Resource/ResourceMutex.h"
 #include "System/Cache.h"
+#include "System/Memory.h"
 #include "std_library_functions.h"
 #include <globaldefs.h>
 
-//#pragma optimize_for_size off
 #if defined(jpn)
-#define _Z20ClearAndInit020d84f8Pvj func_020d9e5c
-#define _Z23CopyRegionAndFlushCachePvPKvj func_020d9e88
-
 
 #define data_01ffd998 data_01ffd9b8
 #define data_01ffd99c data_01ffd9bc
@@ -27,32 +24,18 @@
 
 extern "C"
 {
-    // Get CRC hash for a null terminated string
     unsigned int func_01ff860c(const char*);
-
-    // Zero memory and flush cache
-    extern "C" void _Z20ClearAndInit020d84f8Pvj(void*, unsigned);
-    // another memcpy-style function, cleans/invalidates the cache in destination after
-    extern "C" unsigned int _Z23CopyRegionAndFlushCachePvPKvj(void*, const void*, unsigned);
 
     void DecompressA(Decompressor*, const void*, unsigned);
     void DecompressB(Decompressor*, const void*, unsigned);
     void DecompressC(Decompressor*, const void*, unsigned);
 }
-// files to prepare accessors in cache for
 extern const char* cachedFilePaths[];
-// Seems to hold whether cached file accessors have been saved or not
 extern bool data_01ffd998;
-// CRC hashes for cached file accessors
 extern unsigned int data_01ffd99c[NUM_CACHED_FILES];
-// cached file accessors
 extern NitroFileAccessor data_01ffda90[NUM_CACHED_FILES];
-// holds the intended length of compression metadata (4 bytes)
-// there are two copies of it, the first is used in USA version and the
-// second in JPN version
 extern unsigned int data_020f2384[];
 
-// "data/"
 extern char data_020f27b8[];
 
 unsigned int CompressionPrefix::GetDecompressedLength() const
@@ -62,10 +45,10 @@ unsigned int CompressionPrefix::GetDecompressedLength() const
 
 bool Decompressor::InitAndDecompress(void *out, unsigned int outCapacity, const void *in, unsigned int inLength)
 {
-    _Z20ClearAndInit020d84f8Pvj(this, sizeof(Decompressor));
+    ClearAndInit020d84f8(this, sizeof(Decompressor));
     if (out == NULL || in == NULL || inLength < 4)
         return false;
-    
+
     CleanInvalidateCacheRange(in, inLength);
     unsigned int compressionType = ((const CompressionPrefix*)in)->compressionType;
     if (compressionType >= 5)
@@ -100,7 +83,7 @@ bool Decompressor::InitAndDecompress(void *out, unsigned int outCapacity, const 
 
     if (inLength > 4)
         ProcessBytes((const unsigned char*)in + 4, inLength - 4);
-    
+
     return true;
 }
 
@@ -123,11 +106,11 @@ bool Decompressor::ProcessBytes(const void* input, unsigned int inputLength)
         case 4:
             DecompressC(this, input, inputLength);
             break;
-        case 0: // uncompressed
+        case 0:
         default:
             if (inputLength >= remainingOutputBytes)
                 inputLength = remainingOutputBytes;
-            remainingOutputBytes -= _Z23CopyRegionAndFlushCachePvPKvj(writeStart + probablyDecompressedSize - remainingOutputBytes, input, inputLength);
+            remainingOutputBytes -= CopyRegionAndFlushCache(writeStart + probablyDecompressedSize - remainingOutputBytes, input, inputLength);
             break;
         }
         CleanInvalidateCacheRange(writeStart, writeOutputPtr - writeStart);
@@ -144,7 +127,7 @@ void CacheMainFileAccessors()
         char fullFilePath[64];
 
         const char** pCurrentFilePath = cachedFilePaths;
-        
+
         for (unsigned int i = 0; i < NUM_CACHED_FILES; )
         {
             strcpy(fullFilePath, data_020f27b8);
@@ -152,14 +135,12 @@ void CacheMainFileAccessors()
             unsigned int crc = 0;
             if (CreateFileAccessor(&data_01ffda90[i], fullFilePath))
                 crc = func_01ff860c(fullFilePath);
-            // silly goofy register hack (see RemoveFurigana)
             unsigned int iplusone = i + 1;
             data_01ffd99c[iplusone - 1] = crc;
-            i++;            
+            i++;
             pCurrentFilePath++;
         }
 
-        // bubble sort
         unsigned int passEnd = NUM_CACHED_FILES - 1;
         while (true)
         {
@@ -175,7 +156,7 @@ void CacheMainFileAccessors()
                 ((NitroFileAccessor*)&nextAccessor)->handle = pAccessor[1].handle;
                 ((NitroFileAccessor*)&nextAccessor)->fileID = pAccessor[1].fileID;
                 unsigned int currentCRC = pCRC[0];
-                
+
                 unsigned int nextCRC = pCRC[1];
                 if (currentCRC > nextCRC)
                 {
@@ -183,7 +164,7 @@ void CacheMainFileAccessors()
                     pAccessor[0].fileID = nextAccessor.fileID;
                     pAccessor[1].handle = currentAccessor.handle;
                     pAccessor[1].fileID = currentAccessor.fileID;
-                    
+
                     pCRC[0] = nextCRC;
                     pCRC[1] = currentCRC;
                     changesMadeThisPass = true;
@@ -200,7 +181,7 @@ void CacheMainFileAccessors()
 
 void ExtendedNitroVM::ZeroInitialize()
 {
-    _Z20ClearAndInit020d84f8Pvj(this, sizeof(ExtendedNitroVM));
+    ClearAndInit020d84f8(this, sizeof(ExtendedNitroVM));
     status = Status_NotOpen;
     isBadState = false;
 }
@@ -254,7 +235,7 @@ bool ExtendedNitroVM::Close()
     else if (NitroVM_FinishRead(&machine))
         didSomething = true;
 
-    _Z20ClearAndInit020d84f8Pvj(this, sizeof(ExtendedNitroVM));
+    ClearAndInit020d84f8(this, sizeof(ExtendedNitroVM));
     status = Status_NotOpen;
     isBadState = false;
     return didSomething;
@@ -269,7 +250,7 @@ bool ExtendedNitroVM::Open(const char *filePath, bool skip)
         unsigned int cacheIndex;
         const char* abridgedPath = filePath;
         if (data_01ffd998)
-        {   
+        {
             if (abridgedPath[0] == '/')
                 abridgedPath++;
             unsigned int targetCRC = func_01ff860c(abridgedPath);
@@ -346,18 +327,15 @@ bool ExtendedNitroVM::Abort()
         wasProcessing = true;
     }
     isBadState = true;
-    
+
     UnlockResourceMutex();
     return wasProcessing;
 }
 
-unsigned int ExtendedNitroVM::DecompressWithScratchSpace(Decompressor& decompressor, 
+unsigned int ExtendedNitroVM::DecompressWithScratchSpace(Decompressor& decompressor,
     unsigned int& outDecompressedLength, unsigned int& remainingInputBytes,
     unsigned int& readPosTracker, void *scratchSpace, unsigned int scratchSpaceCapacity)
 {
-    // 'easy case': scratch space is big enough to fit all output data and have
-    // 256 bytes left. Presumably the extra 256 is to avoid any trouble with 
-    // partial decompression overwriting temporary compressed data? 
     if (decompressor.remainingOutputBytes + 256 <= scratchSpaceCapacity)
     {
         void* loadLocation = (void*)(((int)scratchSpace + scratchSpaceCapacity - remainingInputBytes) & ~3);
@@ -368,9 +346,7 @@ unsigned int ExtendedNitroVM::DecompressWithScratchSpace(Decompressor& decompres
         remainingInputBytes -= successfulLoadSize;
         readPosTracker += successfulLoadSize;
     }
-    // this case seems to implicitly assume the scratch space is large enough
-    // for the output to fit, just not with 256 bytes to spare. 
-    else 
+    else
     {
         if (remainingInputBytes > 256)
         {
@@ -383,7 +359,6 @@ unsigned int ExtendedNitroVM::DecompressWithScratchSpace(Decompressor& decompres
             remainingInputBytes -= successfulLoadSize;
             readPosTracker += successfulLoadSize;
         }
-        // if above assumption violated: stack buffer overrun!
         if (remainingInputBytes != 0)
         {
             char stackScratchSpace[256];
@@ -398,11 +373,11 @@ unsigned int ExtendedNitroVM::DecompressWithScratchSpace(Decompressor& decompres
     unsigned int scratchSpaceUsedAmount = (decompressor.probablyDecompressedSize + 4) & ~3;
     if (scratchSpaceUsedAmount >= scratchSpaceCapacity)
         scratchSpaceUsedAmount = scratchSpaceCapacity;
-    _Z20ClearAndInit020d84f8Pvj((unsigned char*)scratchSpace + decompressor.probablyDecompressedSize, 
+    ClearAndInit020d84f8((unsigned char*)scratchSpace + decompressor.probablyDecompressedSize,
         scratchSpaceUsedAmount - decompressor.probablyDecompressedSize);
     CleanInvalidateCacheRange(scratchSpace, scratchSpaceUsedAmount);
     outDecompressedLength = decompressor.probablyDecompressedSize;
-    return readPosTracker; 
+    return readPosTracker;
 }
 
 unsigned int ExtendedNitroVM::DecompressBytes(void* output,
@@ -425,19 +400,18 @@ unsigned int ExtendedNitroVM::DecompressBytes(void* output,
 #endif
     if (metadataLength >= *pMaxLength)
         metadataLength = *pMaxLength;
-    
+
     unsigned int totalReadAmount = Read(&metadata, metadataLength);
 
     if (isBadState)
         return 0;
 
-    Decompressor decompressor;  
+    Decompressor decompressor;
     if (!decompressor.InitAndDecompress(output, outputCapacity, &metadata, totalReadAmount))
         return totalReadAmount;
 
     stack_bytesRemaining -= totalReadAmount;
     readPos += totalReadAmount;
-    // readPos will be further incremented and the final value returned
     return DecompressWithScratchSpace(decompressor, outDecompressedSize,
         stack_bytesRemaining, readPos, output, outputCapacity);
 }

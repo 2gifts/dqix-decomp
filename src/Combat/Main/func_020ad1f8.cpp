@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+
 #include "GameState/GameState.h"
 
 extern "C" void func_0202ae18();
@@ -8,14 +9,12 @@ int GetField5cb0Value(char* obj);
 struct Fields020407b4;
 void SetFields0x44(struct Fields020407b4* obj, int a, int b, int c);
 
-struct Vec3I020ad1f8 {
-    int x;
-    int y;
-    int z;
-};
-
 struct Sub020ad1f8 {
+#if defined(jpn)
+    char pad[0xf4];
+#else
     char pad[0xb4];
+#endif
     unsigned short state;
 };
 
@@ -32,7 +31,7 @@ extern "C" ARM void func_020ad1f8(struct Obj020ad1f8* obj) {
     func_0202ae18();
     battle->GetPartyMemberByIndex(0);
     GameObject* unk = battle->GetUnknownGameObject();
-    struct Vec3I020ad1f8 pos = *(struct Vec3I020ad1f8*)((char*)unk + 0x44);
+    Vector3i pos = unk->obj3D_.position_;
 
     if (obj->field0 == 0x1198) {
         if (obj->sub.state == 1) {

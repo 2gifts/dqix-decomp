@@ -12,11 +12,10 @@ struct List0202fe68;
 
 struct List0202fec8;
 
-
 struct Obj021f7aac;
 struct Rec020467f0;
-extern "C" void func_ov023_021f7aac(struct Obj021f7aac* obj, void* keyObj, struct Rec020467f0* entry, void* next);
-extern "C" void func_ov023_021f7b98(struct Obj021f7aac* obj, void* keyObj, int flag, struct Rec020467f0* entry, void* next);
+extern "C" void func_ov023_021f7aac(struct Obj021f7aac* obj, void* keyObj, struct Rec020467f0* entry, unsigned int entryLength);
+extern "C" void func_ov023_021f7b98(struct Obj021f7aac* obj, void* keyObj, int flag, struct Rec020467f0* entry, unsigned int entryLength);
 
 struct Obj021f7688 {
     char pad0[0xc];
@@ -44,9 +43,9 @@ extern "C" ARM int func_ov023_021f7688(struct Obj021f7688* obj, void* keyObj) {
             ((BackgroundLoader*)((struct List0202fec8*)listPtr))->GetLoadedFileByID((int)(key), (void**)(&v1), (unsigned int*)(&v2));
             if (v1 != 0 && v2 != 0) {
                 if (obj->fieldC & 0x2) {
-                    func_ov023_021f7b98((struct Obj021f7aac*)obj, keyObj, 1, (struct Rec020467f0*)v1, (void*)v2);
+                    func_ov023_021f7b98((struct Obj021f7aac*)obj, keyObj, 1, (struct Rec020467f0*)v1, v2);
                 } else {
-                    func_ov023_021f7aac((struct Obj021f7aac*)obj, keyObj, (struct Rec020467f0*)v1, (void*)v2);
+                    func_ov023_021f7aac((struct Obj021f7aac*)obj, keyObj, (struct Rec020467f0*)v1, v2);
                 }
             }
         }

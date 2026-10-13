@@ -1,8 +1,7 @@
 #include <globaldefs.h>
-
-extern void* data_020fe9a4;
+#include "Graphics/GlyphBitmapContext.h"
 
 // USA: func_02028ddc
 ARM void SetBuffer02028ddc(void* ptr) {
-    data_020fe9a4 = ptr;
+    glyphBitmapContext.buffer = ptr;
 }

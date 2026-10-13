@@ -1,7 +1,13 @@
+#if defined(jpn)
+#define func_ov006_0215f3d8 func_ov006_021607f8
+#endif
+
 #include <globaldefs.h>
 
 #if defined(jpn)
-#define func_ov006_0215f3d8 func_ov006_021607f8
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
 #endif
 
 struct LookupByOffset0x362_021591ecStruct;
@@ -47,13 +53,13 @@ extern "C" ARM void func_ov006_0215f3d8(Struct0215f3d8* obj) {
         return;
     }
     unsigned short total = _Z32LookupByOffset_021591ec_021591ecP34LookupByOffset0x362_021591ecStruct((LookupByOffset0x362_021591ecStruct*)obj);
-    short offset = obj->scroll - _Z26FindMappedMemberId02080468Pvi(obj->f14, 0x11);
+    short offset = obj->scroll - _Z26FindMappedMemberId02080468Pvi(*(void**)((char*)obj + LOW_REGION(0xc, 0x14)), 0x11);
     short pos = offset + obj->cursor * 8;
     if (pos >= total) {
         pos = total - 1;
     }
     pos = pos % 8;
-    obj->scroll = _Z26FindMappedMemberId02080468Pvi(obj->f14, 0x11) + pos;
+    obj->scroll = _Z26FindMappedMemberId02080468Pvi(*(void**)((char*)obj + LOW_REGION(0xc, 0x14)), 0x11) + pos;
     func_ov006_0215f4dc(obj);
     func_ov006_0215f740(obj);
 }

@@ -8,14 +8,8 @@
 #define func_02052bfc func_02053fd8
 #endif
 
-
 extern "C" int _Z8fix32absi(int x);
-#if defined(jpn)
-extern "C" void func_020554e4(void* obj);
-#define ConsumeCountdown0205416c func_020554e4
-#else
 void ConsumeCountdown0205416c(void* obj);
-#endif
 
 extern "C" {
     void _ZN8Object3D14AdvanceEffectsEv(void* obj);

@@ -39,10 +39,12 @@ ARM void UpdateActorMode02078d84(struct Obj02078d84* obj) {
     case 3:
     case 4:
     case 5:
+#if !defined(jpn)
         if (TrySetMode02076ccc(obj, 2) != 0) {
             return;
         }
         obj->field164 = func_02078e60(obj, &localFlag);
+#endif
         TrySetMode02076ccc(obj, 2);
         return;
     case 2:

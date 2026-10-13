@@ -1,7 +1,13 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kHolderFlagsOffset = 0xc };
+#else
+enum { kHolderFlagsOffset = 0x1c };
+#endif
+
 struct Holder021e4a90 {
-    char pad0[0x1c];
+    char pad0[kHolderFlagsOffset];
     unsigned int flags;
 };
 

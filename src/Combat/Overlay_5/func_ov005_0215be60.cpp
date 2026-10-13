@@ -1,6 +1,5 @@
 #if defined(jpn)
 #define R(j,u) (j)
-#define func_ov005_021562b8 func_ov005_021578a8
 extern const char data_ov012_0218bfd7[];
 #else
 #define R(j,u) (u)

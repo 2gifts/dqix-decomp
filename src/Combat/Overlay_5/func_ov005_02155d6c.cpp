@@ -3,6 +3,12 @@
 #if defined(jpn)
 #define func_ov005_02155d6c func_ov005_0215735c
 #endif
+
+#if defined(jpn)
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
 #include "World/ZoneLootableRecord.h"
 #include <Memory/SafeAllocator.h>
 #include <std_library_functions.h>
@@ -51,7 +57,7 @@ struct EquipmentMenu {
     SafeAllocator dragAllocator_;
     char unk_21c[0xd84 - 0x21c];
     VRAMManagerState dragVramState_;
-    char unk_df4[0x2d90 - 0xdf4];
+    char unk_df4[LOW_REGION(0x2d08 - 0xdf4, 0x2d90 - 0xdf4)];
     EquipmentSlot slots_[24];
     MenuModel slotModels_[24];
     MenuModel dragModel_;

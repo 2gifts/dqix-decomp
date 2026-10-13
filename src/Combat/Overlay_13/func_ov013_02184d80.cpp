@@ -2,6 +2,7 @@
 
 #if defined(jpn)
 #define func_ov013_02184d80 func_ov013_02185db4
+extern char data_ov013_02188d20[];
 #endif
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"
@@ -68,11 +69,19 @@ struct TextWindow02184d80 {
 
 struct SkillPointMenu02184d80 {
     SafeAllocator allocator_;
+#if defined(jpn)
+    char unk_14[0x34 - 0x14];
+#else
     char unk_14[0x38 - 0x14];
+#endif
     TextWindow02184d80 window_;
     BackgroundGraphics02184d80 backgrounds_[2];
     Canvas02184d80 canvases_[3];
+#if defined(jpn)
+    char unk_3d4[0x598 - 0x3d0];
+#else
     char unk_3d4[0x60c - 0x3d4];
+#endif
     SafeAllocator textAllocator_;
     char texts_[0x18];
     unsigned char unk_638[4];
@@ -83,7 +92,9 @@ struct SkillPointMenu02184d80 {
     bool subScreen_;
     unsigned int ticks_;
     int windowInput_;
+#if !defined(jpn)
     int previousWindowInput_;
+#endif
     int task_;
     void* canvasPixels_;
     char* text_;
@@ -98,7 +109,11 @@ extern "C" ARM void func_ov013_02184d80(SkillPointMenu02184d80* self) {
     {
         if (self->step_ == 0)
         {
+#if defined(jpn)
+            self->task_ = loader->QueueLoadFile(data_ov013_02188d20, NULL);
+#else
             self->task_ = loader->QueueLoadFileInGP2(data_ov013_02187e00, data_ov013_02187e19, NULL);
+#endif
             self->step_++;
         }
         else if (self->step_ == 1)
@@ -117,7 +132,12 @@ extern "C" ARM void func_ov013_02184d80(SkillPointMenu02184d80* self) {
         }
         else if (self->step_ == 2)
         {
-            self->text_ = *(char**)((char*)_Z26GetGlobalField0x1c020421a0v() + 0x5c);
+            self->text_ = *(char**)((char*)_Z26GetGlobalField0x1c020421a0v()
+#if defined(jpn)
+                + 0x28);
+#else
+                + 0x5c);
+#endif
             BG2CNTSUB = (BG2CNTSUB & ~3) | 1;
             BG0CNTSUB = (BG0CNTSUB & ~3) | 2;
             BG1CNTSUB = (BG1CNTSUB & ~3) | 3;
@@ -143,7 +163,28 @@ extern "C" ARM void func_ov013_02184d80(SkillPointMenu02184d80* self) {
         {
             if (((bool (*)(void*))_Z18AlwaysTrue02094b4cv)(GetGlobal02109400()))
             {
-                self->text_ = *(char**)((char*)_Z26GetGlobalField0x1c020421a0v() + 0x5c);
+                self->text_ = *(char**)((char*)_Z26GetGlobalField0x1c020421a0v()
+#if defined(jpn)
+                + 0x28);
+#else
+                + 0x5c);
+#endif
+#if defined(jpn)
+                SetWord0x18ClearByte0x1f((unsigned char*)&self->backgrounds_[0], 0);
+                self->backgrounds_[0].unk_1c_0_ = 0;
+                self->backgrounds_[0].unk_1c_4_ = 1;
+                func_0204b5b4(&self->backgrounds_[0], 1);
+                _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator((AllocTarget0204b12c*)&self->backgrounds_[0], &self->allocator_);
+                _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((Obj0204b5e8*)&self->backgrounds_[0], 0, 0);
+                BG1CNT = (BG1CNT & (3 | 0x40)) | (0x1d << 8);
+                SetWord0x18ClearByte0x1f((unsigned char*)&self->backgrounds_[1], 0);
+                self->backgrounds_[1].unk_1c_0_ = 0;
+                self->backgrounds_[1].unk_1c_4_ = 2;
+                func_0204b5b4(&self->backgrounds_[1], 0);
+                _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator((AllocTarget0204b12c*)&self->backgrounds_[1], &self->allocator_);
+                _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((Obj0204b5e8*)&self->backgrounds_[1], 0, 0);
+                BG2CNT = (BG2CNT & (3 | 0x40)) | (0x1e << 8);
+#else
                 BackgroundGraphics02184d80* background = self->backgrounds_;
                 for (int i = 0; i < 2; background++, i++)
                 {
@@ -156,6 +197,7 @@ extern "C" ARM void func_ov013_02184d80(SkillPointMenu02184d80* self) {
                 }
                 BG1CNT = (BG1CNT & (3 | 0x40)) | (0x1d << 8);
                 BG2CNT = (BG2CNT & (3 | 0x40)) | (0x1e << 8);
+#endif
                 ColorEffect_ConfigureAlphaBlend(0x04000050, 2, 1, 0xa, 6);
                 self->task_ = loader->QueueLoadFile(data_ov013_02187e29, NULL);
                 self->step_++;
@@ -196,7 +238,11 @@ extern "C" ARM void func_ov013_02184d80(SkillPointMenu02184d80* self) {
                 self->window_.background_ = &self->backgrounds_[0];
                 self->window_.unk_b2 = 2;
                 _Z29LinkArrayPrevPointers0205cf78P15Struct_0205cf78P13Elem_0205cf78h((Struct_0205cf78*)&self->window_, (Elem_0205cf78*)self->canvases_, 3);
-                self->task_ = loader->QueueLoadFileInGP2(data_ov013_02187e00, data_ov013_02187e19, NULL);
+    #if defined(jpn)
+            self->task_ = loader->QueueLoadFile(data_ov013_02188d20, NULL);
+#else
+            self->task_ = loader->QueueLoadFileInGP2(data_ov013_02187e00, data_ov013_02187e19, NULL);
+#endif
                 self->step_++;
             }
         }

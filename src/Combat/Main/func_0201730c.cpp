@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+
 #include "GameState/GameState.h"
 #include "Graphics/LightingManager.h"
 #include "Graphics/NSBXX/RenderConfig.h"
@@ -41,11 +42,19 @@ struct CombatEntry {
 };
 
 struct CombatEntryList {
+    #if defined(jpn)
+    char pad0[0x496];
+#else
     char pad0[0x476];
+#endif
     unsigned char count;
     char pad1[1];
     CombatEntry* entries;
+    #if defined(jpn)
+    char pad2[0x2790 - 0x49c];
+#else
     char pad2[0x2750 - 0x47c];
+#endif
     void* field2750;
 };
 

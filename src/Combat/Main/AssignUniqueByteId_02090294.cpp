@@ -6,8 +6,12 @@ struct Element0x318_02028bac;
 struct Element0x318_02028bac* GetElementStride0x318(struct Element0x318_02028bac* base, int index);
 
 struct Obj02090294 {
+#if defined(jpn)
+    char pad0[0x296];
+#else
     char pad0[0x276];
-    signed char field276; // 0x276
+#endif
+    signed char field276;
 };
 
 // USA: func_02090294  (semantic: AssignUniqueByteId_02090294)

@@ -9,6 +9,6 @@ ARM void ResetHeaderAndSubStructs(char* base)
     record->id = 0;
     record->field2 = -1;
     record->field4 = 0;
-    func_0204719c(&record->blocks[0]);
-    func_0204719c(&record->blocks[1]);
+    func_0204719c(&record->primary[0]);
+    func_0204719c(&record->primary[1]);
 }

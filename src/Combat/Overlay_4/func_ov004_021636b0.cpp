@@ -8,8 +8,21 @@ struct Obj021f9bb0;
 struct Obj0202656c;
 struct TableA68;
 
+struct MapDisplayBuffer {
+    TreasureMapMetadata maps[99];
+    DetailedTreasureMapData details[8];
+
+    DetailedTreasureMapData::RegularMapData* GetRegularMap(int index) {
+        return &details[index].regular_;
+    }
+
+    DetailedTreasureMapData::LegacyBossMapData* GetLegacyMap(int index) {
+        return &details[index].legacy_;
+    }
+};
+
 struct PointerBlock02171010 {
-    char* base;
+    MapDisplayBuffer* base;
     char* slotBuffer;
     void* callTarget;
 };
@@ -24,7 +37,7 @@ extern "C" int func_ov004_0216f8c0(unsigned short id);
 extern "C" void func_02046608(int a, int b, char* text, char* slot, int c, int d, int e);
 extern "C" void* __clear(void* destination, int count);
 
-int ScaleStatsIfType12_021f6f10(void* self);
+extern "C" unsigned int func_ov023_021f6f10(void* self);
 int GetShort28_021f9bb0(struct Obj021f9bb0* obj);
 void CopyStringOrDefault02026428(void* dst, const char* src);
 void SetEventStringAndAccumulateLength02026470(void* dst, int value);
@@ -40,15 +53,25 @@ void SetBoolFlag020263c8(unsigned char* obj, int value);
 void SetByteFieldAt0x764(unsigned char* buf, unsigned char val);
 void RestartTaskWithDebugLog020dc3d4(void);
 
+#if defined(jpn)
+extern "C" int func_ov004_0216ff54(unsigned short id, char* text);
+extern "C" void func_02041f50(const char* src, char* dst);
+#endif
+
 // USA: func_ov004_021636b0
 extern "C" ARM void func_ov004_021636b0(void* a0, const char* a1) {
+#if !defined(jpn)
     char bufB[0x80];
+#endif
     char bufA[0x80];
 
     char* zone = (char*)func_02012fe4();
+#if !defined(jpn)
     DetailedTreasureMapData* det;
+#endif
     void* ov011;
     char* slot;
+    struct TableA68* table;
     unsigned char* buf;
     GameResources* res = func_ov017_0218b5b0();
     buf = (unsigned char*)res->unknown_ptr_36d0;
@@ -59,11 +82,28 @@ extern "C" ARM void func_ov004_021636b0(void* a0, const char* a1) {
 
     void* obj = func_ov023_021f6880(func_ov011_021849c8(a0), 0xa);
     if (obj == NULL) return;
-    if (ScaleStatsIfType12_021f6f10(obj) != 7) return;
+    if (func_ov023_021f6f10(obj) != 7) return;
 
     int idx = GetShort28_021f9bb0((struct Obj021f9bb0*)obj);
-    det = (DetailedTreasureMapData*)(data_ov004_02171010.base + 0xad4 + idx * 0x1c4);
+#if !defined(jpn)
+    det = &data_ov004_02171010.base->details[idx];
+#endif
 
+#if defined(jpn)
+    if (data_ov004_02171010.base->details[idx].mapType_ == 1) {
+        CopyStringOrDefault02026428(buf, data_ov004_02171010.base->GetRegularMap(idx)->nameNoLevel_);
+        SetEventStringAndAccumulateLength02026470(buf, data_ov004_02171010.base->details[idx].regular_.level_);
+    } else if (data_ov004_02171010.base->details[idx].mapType_ == 2) {
+        CopyStringOrDefault02026428(buf, data_ov004_02171010.base->GetLegacyMap(idx)->mapNameNoLevel_);
+        SetEventStringAndAccumulateLength02026470(buf, data_ov004_02171010.base->details[idx].legacy_.level_);
+    }
+    SetString020264e4((char*)buf, data_ov004_02171010.base->details[idx].discoveredBy_);
+    SetString02026528((char*)buf, data_ov004_02171010.base->details[idx].clearedBy_);
+    if (data_ov004_02171010.base->details[idx].mapType_ == 2) {
+        SetField766AndNotify0202656c((struct Obj0202656c*)buf, data_ov004_02171010.base->details[idx].legacy_.minTurns_);
+    }
+
+#else
     if (det->mapType_ == 1) {
         CopyStringOrDefault02026428(buf, det->regular_.nameNoLevel_);
         SetEventStringAndAccumulateLength02026470(buf, det->regular_.level_);
@@ -77,7 +117,30 @@ extern "C" ARM void func_ov004_021636b0(void* a0, const char* a1) {
         SetField766AndNotify0202656c((struct Obj0202656c*)buf, det->legacy_.minTurns_);
     }
 
+#endif
+
     ov011 = func_ov011_021849c8(a0);
+#if defined(jpn)
+    void* obj2 = func_ov023_021f6880(ov011, 0x258);
+    if (obj2 == NULL) return;
+    if (func_ov023_021f6f10(obj2) != 4) return;
+    table = func_ov023_021fa598(obj2);
+    for (int i = 0; i < 3; i++) {
+        __clear(bufA, sizeof(bufA));
+        if (data_ov004_02171010.base->details[idx].discoveredTreasures_[i] == 0) {
+            SetIndexedRecord020265a8((char*)buf, (unsigned char)i, NULL, data_ov004_02171010.base->details[idx].treasureDropRates_[i]);
+            continue;
+        }
+        if (!func_ov004_0216ff54(data_ov004_02171010.base->details[idx].treasureItemIDs_[i], bufA)) {
+            const char* name = (const char*)FindEntryByKey(table, (short)data_ov004_02171010.base->details[idx].treasureItemIDs_[i]);
+            if (name != NULL) {
+                func_02041f50(name, bufA);
+            }
+        }
+        unsigned char rate = data_ov004_02171010.base->details[idx].treasureDropRates_[i];
+        SetIndexedRecord020265a8((char*)buf, (unsigned char)i, bufA, rate);
+    }
+#else
     memset(data_ov004_02171010.slotBuffer, 0, 0x333);
 
     for (int i = 0; i < 3; i++) {
@@ -95,7 +158,7 @@ extern "C" ARM void func_ov004_021636b0(void* a0, const char* a1) {
         if (key != 0) {
             void* obj2 = func_ov023_021f6880(ov011, 0x32);
             if (obj2 == NULL) return;
-            if (ScaleStatsIfType12_021f6f10(obj2) != 4) return;
+            if (func_ov023_021f6f10(obj2) != 4) return;
             struct TableA68* table = func_ov023_021fa598(obj2);
             CopyTextAndUppercaseIfFlagged0206819c((const char*)FindEntryByKey(table, (short)key), bufA, 0);
             func_02046608(tableRoot, 0, bufA, slot, 0x60, 0, 0);
@@ -107,5 +170,6 @@ extern "C" ARM void func_ov004_021636b0(void* a0, const char* a1) {
         SetIndexedRecord020265a8((char*)buf, (unsigned char)i, slot, det->treasureDropRates_[i]);
     }
 
+#endif
     SetBoolFlag020263c8(buf, 1);
 }

@@ -10,7 +10,12 @@ struct TargetMenu {
     signed char selected_;
     char pad1D[0xb8 - 0x1d];
     Container020e0310 strings_;
+#if defined(jpn)
+    char padC0[0x1d94 - 0xc0];
+    char nameSlots[8][0x38];
+#else
     char padC0[0x1d1c - 0xc0];
+#endif
     int groupIDs_[8];
     int combatantIDs_[8];
 };
@@ -34,12 +39,22 @@ extern "C" void func_02046608(StoreStruct*, int, const char*, char*, int, int, i
 int AppendNameTag(char*, int, const char*);
 extern char data_ov000_02184060[];
 
+#if defined(jpn)
+extern "C" void func_0203bdf4(char*, char*);
+extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(StoreStruct*, int, char*);
+extern "C" void func_020474a8(StoreStruct*, int, const char*, char*);
+#endif
+
 // USA: func_ov000_0217a688
 extern "C" ARM void func_ov000_0217a688(TargetMenu* self, void* unused, int count, char* output) {
     if (!output) return;
     int cursor;
     unsigned int previous;
+#if defined(jpn)
+    bool separated;
+#else
     int separated;
+#endif
     int selected;
     int i;
     previous = -1;
@@ -55,23 +70,56 @@ extern "C" ARM void func_ov000_0217a688(TargetMenu* self, void* unused, int coun
         if (i <= selected && selected < i + members) cursor = i;
     }
     StoreStruct* store = _Z26GetGlobalField0x1c020421a0v();
+#if !defined(jpn)
     GameState* game = GameState::GetInstance();
     const char* separator = (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i(&self->strings_, 0);
     const char* format = (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i(&self->strings_, 0x754f);
+#endif
     previous = -1;
-    if (IsField0x118Equal2(self)) _Z22AppendFrameTag02041c08Pciiiii(output, cursor, 8, 5, 5, 5);
+#if defined(jpn)
+    int showCursor = IsField0x118Equal2(self);
+    if (showCursor)
+#else
+    if (IsField0x118Equal2(self))
+#endif
+        _Z22AppendFrameTag02041c08Pciiiii(output, cursor, 8, 5, 5, 5);
     AppendCursorTag(output, cursor);
-    for (i = 0; i < count; ++i) {
+    for (int i = 0; i < count; ++i) {
         int group = self->groupIDs_[i];
         if (previous == group) continue;
         previous = group;
         int members = _Z27CountMatchingValues02175348Pvi(self, group);
         if (!members) continue;
+#if defined(jpn)
+        if (separated) _Z20AppendString02042058PcPKc(output, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i(&self->strings_, 0));
+#else
         if (separated) _Z20AppendString02042058PcPKc(output, separator);
+#endif
+#if defined(jpn)
+        char nameText[0x20];
+        __clear(nameText, sizeof(nameText));
+        char text[0x40];
+        __clear(text, sizeof(text));
+#else
         char text[0x80];
         __clear(text, sizeof(text));
+#endif
         int index = i;
         if (i <= selected && selected < i + members) index = selected;
+#if defined(jpn)
+        func_0203bdf4(self->nameSlots[index], nameText);
+        if (showCursor && cursor == i) {
+            char original[0x20];
+            __clear(original, sizeof(original));
+            memcpy(original, nameText, sizeof(original));
+            memset(nameText, 0, sizeof(nameText));
+            _Z31TrimTrailingLetterCode_0217aa08PcS_(original, nameText);
+        }
+        func_02046380(store);
+        _Z22SetIndexedName02046574P11Obj02046574iPc(store, 0, nameText);
+        StoreInArray0x8b0(store, 0, members);
+        func_020474a8(store, 10, (const char*)_Z21GetFieldByKey020e0434P17Container020e0310i(&self->strings_, 0x754f), text);
+#else
         func_02046380(store);
         NameDescriptor names;
         _Z20Clear12Bytes020e46c4Pv(&names);
@@ -94,8 +142,11 @@ extern "C" ARM void func_ov000_0217a688(TargetMenu* self, void* unused, int coun
         store->names_ = &names;
         StoreInArray0x8b0(store, 0, members);
         func_02046608(store, 10, format, text, 0x100, 0, 0);
+#endif
         AppendNameTag(output, i, text);
         separated = 1;
     }
+#if !defined(jpn)
     _Z20AppendString02042058PcPKc(output, data_ov000_02184060);
+#endif
 }

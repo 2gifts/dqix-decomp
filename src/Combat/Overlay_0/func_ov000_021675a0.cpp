@@ -8,14 +8,24 @@ struct Vec3_021675a0 {
 };
 
 struct Scene021675a0 {
+#if defined(jpn)
+    char pad[0x800];
+#else
     char pad[0x284];
     char* world;
     char pad2[0xc00 - 0x288];
+#endif
     char camera[0x230];
 };
 
 struct Owner021675a0 {
+#if defined(jpn)
+    char pad[0x218];
+    char* world;
+    char pad21c[0x394 - 0x21c];
+#else
     char pad[0x18];
+#endif
     struct Scene021675a0 scene;
 };
 
@@ -41,7 +51,11 @@ extern "C" ARM void func_ov000_021675a0(struct Owner021675a0* owner) {
     GameState* gs = GameState::GetInstance();
     func_ov017_0218b5b0();
     short ids[4];
+#if defined(jpn)
+    world = owner->world;
+#else
     world = owner->scene.world;
+#endif
     camera = owner->scene.camera;
     count = func_ov000_0215e9fc(world, ids, 4, 0);
     if (ClassifyField0x81fe(world)) count = 1;

@@ -1,12 +1,19 @@
 #include <globaldefs.h>
-
 #if defined(jpn)
-#define func_ov008_02184968 func_ov008_02185a64
+#define TryApplyElemFields0205d5d0 _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
 #endif
+
 #include "std_library_functions.h"
 
 struct StructA0205d5d0;
+#if defined(jpn)
+extern "C" int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d);
+#else
 int TryApplyElemFields0205d5d0(struct StructA0205d5d0* a, int b, int c, int d, unsigned char e);
+#endif
 extern "C" void func_ov008_02187278(void* obj, char* dst, int mode, void* extra);
 extern "C" void func_0204b088(void* p, int flag);
 void CallDispatchIfFlagSet_021eb4f4(char* obj);
@@ -41,9 +48,13 @@ extern "C" ARM void func_ov008_02184968(struct Obj02184968* obj) {
     }
 
     if (obj->b18 & 0x800) {
-        memset(obj->bufPtr, 0, 0x960);
+        memset(obj->bufPtr, 0, LOW_REGION(0x800, 0x960));
         func_ov008_02187278(obj, obj->bufPtr, 0, 0);
+#if defined(jpn)
+        TryApplyElemFields0205d5d0((struct StructA0205d5d0*)((char*)obj + 0x130), 1, (int)obj->bufPtr, 1);
+#else
         TryApplyElemFields0205d5d0((struct StructA0205d5d0*)((char*)obj + 0x130), 1, (int)obj->bufPtr, 1, 0);
+#endif
         obj->b18 &= ~0x800;
     }
 

@@ -9,12 +9,12 @@ struct Struct02070a30 {
     unsigned int count : 12;
     unsigned int size2 : 19;
     unsigned int flag  : 1;
-    void* buf1; // 0x4
-    void* buf2; // 0x8
+    void* buf1;
+    void* buf2;
 };
 
 // USA: func_02070a30
-ARM void InitListBuffers02070a30(struct Struct02070a30* obj, SafeAllocator* alloc, void* src) {
+ARM void InitListBuffers02070a30(struct Struct02070a30* obj, SafeAllocator* alloc, void* src, unsigned int sourceLength) {
     if (alloc == NULL || src == NULL) return;
     memcpy(obj, src, 4);
     int size1 = GetListDataSize((struct Struct02070af4*)obj);

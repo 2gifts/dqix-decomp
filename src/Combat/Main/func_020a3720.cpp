@@ -6,12 +6,7 @@
 #include "std_library_functions.h"
 
 extern "C" void func_020a395c(void);
-#if defined(jpn)
-extern "C" int func_020a5444(void**, unsigned int);
-#define AllocateIndexedSlot020a36cc func_020a5444
-#else
 int AllocateIndexedSlot020a36cc(void** out, unsigned int idx);
-#endif
 extern "C" void func_020c9be0(void);
 
 #if defined(jpn)

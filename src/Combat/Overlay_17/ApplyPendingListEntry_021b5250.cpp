@@ -1,9 +1,14 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kHalfwordArrayOffset = 0x40, kPendingEntryOffset = 0x2f4 };
+#else
+enum { kHalfwordArrayOffset = 0x44, kPendingEntryOffset = 0x2f8 };
+#endif
+
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 
-struct List0202fe68;
-struct List0202fec8;
 extern "C" void __clear(void* buf, int size);
 struct HalfwordArray {
     unsigned short arr[12];
@@ -11,44 +16,64 @@ struct HalfwordArray {
 };
 ARM unsigned short CopyHalfwordArrayByCount(struct HalfwordArray* src, struct HalfwordArray* dst);
 void* Clear12Bytes0206efc4(void* obj);
-extern "C" void func_0206f230(void* a, int b, int c, int d, void* e, int f, int g, int h);
+struct Src0206f170;
+#if defined(jpn)
+extern "C" void func_0206f230(void* entries, SafeAllocator* allocator, Src0206f170* source, int length, short* keys, int keyCount);
+#else
+extern "C" void func_0206f230(void* entries, SafeAllocator* allocator, Src0206f170* source, int length, short* keys, int keyCount, SafeAllocator* stringAllocator, unsigned char* keySizes);
+#endif
 
 extern char data_ov017_021d7bc3;
 
-struct Obj021b5250 {
-    char pad0[8];
-    void* sub;
-    int key;
-    unsigned char field10;
-    char pad1[3];
-    int field14;
+struct LoadedEntryResources {
+    char unknown0[0x10];
+    SafeAllocator* allocator;
+    SafeAllocator* stringAllocator;
+    char unknown18[kHalfwordArrayOffset - 0x18];
+    HalfwordArray keys;
+    char unknownAfterKeys[kPendingEntryOffset - kHalfwordArrayOffset - sizeof(HalfwordArray)];
+    char entries[12];
+};
+
+struct EntryLoadRequest {
+    char unknown0[8];
+    LoadedEntryResources* resources;
+    int taskId;
+    unsigned char state;
+    char unknown11[3];
+    unsigned char* keySizes;
 };
 
 // USA: func_ov017_021b5250  (semantic: ApplyPendingListEntry_021b5250)
-extern "C" ARM void func_ov017_021b5250(struct Obj021b5250* obj) {
+extern "C" ARM void func_ov017_021b5250(EntryLoadRequest* request) {
     GameState::GetInstance();
-    int list = (int)BackgroundLoader::GetInstance();
-    if (!((BackgroundLoader*)(list))->GetTaskStatus((int)(obj->key))) {
+    BackgroundLoader* loader = BackgroundLoader::GetInstance();
+    if (!loader->GetTaskStatus(request->taskId)) {
         return;
     }
 
-    if (((BackgroundLoader*)((struct List0202fe68*)list))->GetDetailedTaskStatus((int)(obj->key)) == 2) {
-        int out2, out1;
-        ((BackgroundLoader*)((struct List0202fec8*)list))->GetLoadedFileByID((int)(obj->key), (void**)(&out1), (unsigned int*)(&out2));
-        if (out1 != 0) {
-            char* sub = (char*)obj->sub;
-            unsigned short buf[12];
-            __clear(buf, 0x18);
-            short signedCount = (short)CopyHalfwordArrayByCount((struct HalfwordArray*)(sub + 0x44), (struct HalfwordArray*)buf);
-            sub = (char*)obj->sub;
-            Clear12Bytes0206efc4(sub + 0x2f8);
-            char* sub2 = (char*)obj->sub;
-            func_0206f230(sub + 0x2f8, *(int*)(sub2 + 0x10), out1, out2, buf, signedCount, *(int*)(sub2 + 0x14), obj->field14);
+    if (loader->GetDetailedTaskStatus(request->taskId) == BackgroundLoader::TaskStatus_Complete) {
+        unsigned int fileLength;
+        void* fileData;
+        loader->GetLoadedFileByID(request->taskId, &fileData, &fileLength);
+        if (fileData != NULL) {
+            LoadedEntryResources* resources = request->resources;
+            unsigned short keys[12];
+            __clear(keys, sizeof(keys));
+            short keyCount = (short)CopyHalfwordArrayByCount(&resources->keys, (HalfwordArray*)keys);
+            char* pending = request->resources->entries;
+            Clear12Bytes0206efc4(pending);
+            LoadedEntryResources* currentResources = request->resources;
+            func_0206f230(pending, currentResources->allocator, (Src0206f170*)fileData, fileLength, (short*)keys, keyCount
+#if !defined(jpn)
+                , currentResources->stringAllocator, request->keySizes
+#endif
+            );
         }
     }
 
-    ((BackgroundLoader*)(list))->RemoveTask((int)(obj->key));
-    obj->key = -1;
-    obj->key = ((BackgroundLoader*)(list))->QueueLoadFile((const char*)((int)&data_ov017_021d7bc3), (SafeAllocator*)(0));
-    obj->field10 = 7;
+    loader->RemoveTask(request->taskId);
+    request->taskId = -1;
+    request->taskId = loader->QueueLoadFile(&data_ov017_021d7bc3, NULL);
+    request->state = 7;
 }

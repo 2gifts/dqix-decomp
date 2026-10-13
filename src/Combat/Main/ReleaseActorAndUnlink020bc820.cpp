@@ -6,21 +6,21 @@ void DestroyAllocator020bd984(struct Obj020bd984* obj);
 
 struct Child020bc820 {
     char pad0[8];
-    void* backref;   /* 0x08 */
+    void* backref;
 };
 
 struct ListEntry020bc820 {
     char pad0[0xc];
-    SignedAllocatorList list;  /* 0x0c */
+    SignedAllocatorList list;
     char pad2[0xc];
 };
 extern struct ListEntry020bc820 data_0210f824[];
 
 struct Obj020bc820 {
     char pad0[8];
-    struct Obj020bd984* alloc;    /* 0x08 */
-    struct Child020bc820* child;  /* 0x0c */
-    int index;                    /* 0x10 */
+    struct Obj020bd984* alloc;
+    struct Child020bc820* child;
+    int index;
 };
 
 // USA: func_020bc820

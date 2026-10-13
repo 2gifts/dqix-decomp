@@ -13,7 +13,7 @@ struct Struct02250ba8 {
 
 extern Struct02250ba8 data_ov031_02250ba8;
 
-extern "C" void func_ov031_0222318c(void);
+extern "C" void func_ov031_0222318c(void*);
 extern "C" int func_ov031_0223e2b8(int, void*);
 
 // USA: func_ov031_02222ddc

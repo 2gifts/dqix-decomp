@@ -1,3 +1,9 @@
+#if defined(jpn)
+
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
 #include <globaldefs.h>
 
 #if defined(jpn)
@@ -21,7 +27,7 @@ struct CombatantData {
 };
 
 struct CombatantObject {
-    char unk0[0x150];
+    char unk0[LOW_REGION(0x144, 0x150)];
     struct CombatantData* data;
 };
 
@@ -102,10 +108,14 @@ extern "C" ARM int func_ov000_02171ffc(struct Combatant* obj) {
         }
     }
     if (result == 6 && combatant != 0) {
+#if defined(jpn)
+        result = TestBitInArray0x8ec((unsigned char*)combatant->data, 0xe6) ? 3 : 2;
+#else
         result = 2;
         if (TestBitInArray0x8ec((unsigned char*)combatant->data, 0xe6)) {
             result = 3;
         }
+#endif
     }
     return result;
 }

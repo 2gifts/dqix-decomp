@@ -1,149 +1,31 @@
 #include <globaldefs.h>
+#include <std_library_functions.h>
+#include "GameState/GameState.h"
+#include "Resource/MessageSystem.h"
 
-class GameState {
-public:
-    unsigned char unk_0[0x7f58];
-    short pendingNumber_7f58;
+#if defined(jpn)
 
-    static GameState* GetInstance();
-};
+extern "C" void func_02045ca4(void*, const char*, int);
+extern "C" void func_0206cb14(void*, int, unsigned short);
+extern "C" void func_0205e944(void*, int);
+extern "C" void func_02041bbc(State0204166c*);
+extern "C" void func_02043270(void*, int, int, int, int);
+extern "C" void func_02044d0c(void);
+extern "C" void func_02044104(Struct0204394c*);
+extern "C" void func_020698d8(void*, int, const char*, char*);
+extern "C" void func_02069ecc(MessageSystem0219050c*, const char*, char*);
+extern "C" void func_0206c570(void*, const char*);
+extern "C" unsigned char* _Z20GetField4Ptr020e1b24Pv(void*);
+extern "C" void func_020e1b2c(void*, int);
+extern "C" int func_020e1f1c(void*);
+extern "C" void func_020e2110(void*);
+extern "C" void func_020e23f4(void*);
+void InvokeSubHandlerIfPresent(int*);
+extern "C" void _Z23SetEntryEnabled020e2cc4P13Entry020e2cc4i(Entry020e2cc4*, int);
+extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(Foo0207df50*);
+extern int data_02108760;
 
-struct NumberText0204500c {
-    char* first;
-    char* second;
-    int flags;
-};
-
-struct State0204166c {
-    unsigned char data[0x1c];
-};
-
-struct Foo02042fcc {
-    unsigned char data[0x1c];
-};
-
-struct Entry020e2cc4 {
-    unsigned char data[0x24];
-};
-
-struct Foo0207df50;
-struct Struct0204394c;
-struct Ctx0206a974;
-struct CombatSlots0206b198;
-struct RingBuffer02045824;
-
-struct Battle0204500c {
-    unsigned char pad0[0x18];
-    NumberText0204500c* number18;
-    unsigned char pad1c[0x14];
-    signed char cursor30;
-    signed char cursor31;
-    unsigned char pad32[0x6];
-    void* window38;
-    unsigned char pad3c[0x4];
-    int stream40;
-    int stream44;
-    void* buffer48;
-    void* buffer4c;
-    void* buffer50;
-    unsigned char pad54[0xc];
-    int layout60;
-    int layout64;
-    unsigned char pad68[0x264];
-    unsigned char flags2cc[4];
-    unsigned char pad2d0[0x642];
-    unsigned char b912;
-    unsigned char pad913[0x1d];
-    Foo02042fcc foo930;
-    int w94c[4];
-    unsigned char block95c[0x20];
-    unsigned char block97c[0x10];
-    unsigned char pad98c[0x4];
-    int w990;
-    int w994;
-    unsigned char pad998[0x4];
-    int state99c;
-    int mode9a0;
-    int w9a4;
-    unsigned char pad9a8[0x8];
-    int w9b0;
-    int w9b4;
-    State0204166c states[0x80];
-    unsigned char stateFlags[0x80];
-    unsigned char pad1838[0x20];
-    int w1858;
-    int w185c;
-    int w1860;
-    int w1864;
-    int w1868;
-    unsigned char pad186c[0x10];
-    short h187c;
-    short h187e;
-    unsigned char pad1880[0x2];
-    unsigned short slots[0x40];
-    unsigned char slotData[0x40];
-    unsigned short slotCount;
-    unsigned short h1944;
-    unsigned short h1946;
-    unsigned char pad1948[0x2];
-    signed char levels[4];
-    signed char b194e[4];
-    unsigned char b1952[4];
-    unsigned char b1956;
-    unsigned char b1957;
-    unsigned char b1958;
-    unsigned char pad1959[0x1];
-    unsigned char b195a;
-    unsigned char b195b;
-    unsigned char pad195c[0x1];
-    unsigned char b195d;
-    unsigned char pad195e[0x2];
-    unsigned char b1960;
-    unsigned char pad1961[0x3];
-    Entry020e2cc4 entries[2];
-    unsigned char b19ac;
-    unsigned char b19ad;
-    unsigned char b19ae;
-    unsigned char b19af;
-    unsigned char b19b0;
-    unsigned char b19b1;
-    unsigned char b19b2;
-    unsigned char pad19b3[0x1];
-    unsigned char b19b4;
-    unsigned char b19b5;
-    unsigned char pad19b6[0x2];
-    unsigned char b19b8;
-    unsigned char pad19b9[0x2];
-    unsigned char b19bb;
-    unsigned char b19bc;
-    unsigned char b19bd;
-    unsigned char pad19be[0x1];
-    unsigned char b19bf;
-    unsigned char b19c0;
-    unsigned char b19c1;
-    unsigned char b19c2;
-    unsigned char b19c3;
-    unsigned char b19c4;
-    unsigned char b19c5;
-    unsigned char b19c6;
-    unsigned char b19c7;
-    unsigned char b19c8;
-    unsigned char b19c9;
-    unsigned char b19ca;
-    unsigned char pad19cb[0x1];
-    unsigned char b19cc;
-    unsigned char b19cd;
-    unsigned char b19ce;
-    unsigned char b19cf;
-    unsigned char pad19d0[0x1];
-    unsigned char b19d1;
-    unsigned char b19d2;
-    unsigned char b19d3;
-    unsigned char pad19d4[0x8];
-    unsigned char b19dc;
-    unsigned char pad19dd[0x44b];
-    Foo0207df50* encoder;
-};
+#else
 
 extern "C" void __clear(void* dst, int size);
 extern "C" void* memcpy(void* dst, const void* src, unsigned int size);
@@ -151,21 +33,21 @@ extern "C" void* memset(void* dst, int value, unsigned int size);
 extern "C" void* _Z20Clear12Bytes020e46c4Pv(void*);
 extern "C" void _Z31DispatchIfCountPositive020dcf7ciPv(int, void*);
 int StringLength(const char*);
-extern "C" void func_02044f3c(struct Battle0204500c* obj, const char* name, int mode);
+extern "C" void func_02044f3c(struct MessageSystem* window, const char* text, int mode);
 extern "C" void _Z24DecrementSlotRef0206b198P19CombatSlots0206b198t(struct CombatSlots0206b198*, unsigned short);
 extern "C" void func_0205e944(void* target, int level);
 extern "C" void _Z15Forward020416c0P13State0204166c(struct State0204166c*);
-extern "C" void func_02042b98(struct Battle0204500c* obj, int a, int b, int c, int d);
+extern "C" void func_02042b98(struct MessageSystem* window, int a, int b, int c, int d);
 extern "C" void _Z16ResetFoo02042fccP11Foo02042fcc(struct Foo02042fcc*);
 extern "C" void _Z25SetRingBufferSlot02045824P18RingBuffer02045824ii(struct RingBuffer02045824*, int, int);
 extern "C" void func_02044d0c(void);
-extern "C" int _Z33PrepareEncodeStreamBuffer0204394cP14Struct0204394c(struct Struct0204394c*);
-extern "C" void func_0206831c(struct Battle0204500c* obj, const char* name, int a);
-extern "C" void func_02068418(struct Battle0204500c* obj, int a, int b, int flag);
-extern "C" void func_02068f40(struct Battle0204500c* obj, int a, int b, int flag);
-extern "C" void func_02069234(struct Battle0204500c* obj, int a, int b, int flag);
-extern "C" void func_020695f4(struct Battle0204500c* obj, int a, int b, int flag);
-extern "C" void func_02069fec(struct Battle0204500c* obj, int a, int b);
+extern "C" void _Z33PrepareEncodeStreamBuffer0204394cP14Struct0204394c(struct Struct0204394c*);
+extern "C" void func_0206831c(struct MessageSystem* window, const char* text, char* destination);
+extern "C" void func_02068418(struct MessageSystem* window, const char* source, char* destination, int fontIndex);
+extern "C" void func_02068f40(struct MessageSystem* window, const char* source, char* destination, int fontIndex);
+extern "C" void func_02069234(struct MessageSystem* window, const char* source, char* destination, int fontIndex);
+extern "C" void func_020695f4(struct MessageSystem* window, const char* source, char* destination, int fontIndex);
+extern "C" void func_02069fec(struct MessageSystem* window, const char* source, char* destination);
 extern "C" void _Z25InitContextString0206a974P11Ctx0206a974PKcPv(struct Ctx0206a974*, const char*, void*);
 extern "C" unsigned char* _Z20GetField4Ptr020e1b24Pv(void*);
 extern "C" void func_020e1b2c(void*, int);
@@ -178,178 +60,321 @@ extern "C" void _Z26CopyInternalFields0207df50P11Foo0207df50(struct Foo0207df50*
 
 extern int data_02108760;
 
+#endif
+
+#if defined(jpn)
 // USA: func_0204500c
-extern "C" ARM void func_0204500c(struct Battle0204500c* obj, const char* name, int mode, void* context) {
+extern "C" ARM void func_0204500c(MessageSystem* window, const char* text, int mode) {
+    if (text == 0) return;
+    for (int i = 0; i < 4; i++) {
+        window->b194e[i] = -1;
+        window->b1952[i] = 0;
+    }
+    window->b1956 = 0;
+    window->b1957 = 0;
+    window->flags17ff.flag4 = 1;
+    window->flags17ff.flag3 = 0;
+    window->b1958 = 0;
+    window->b195b = 0;
+    window->w9b0 = 0;
+    window->b195a = 12;
+    if (window->mode == 3) {
+        func_02045ca4(window, text, mode);
+    } else {
+        unsigned short lineGlyphCount = window->lineGlyphCount;
+        unsigned short* lineGlyphSlots = window->lineGlyphSlots;
+        for (unsigned short i = 0; i < lineGlyphCount; i++) {
+            func_0206cb14(window, 10, lineGlyphSlots[i]);
+        }
+        memset(window->lineGlyphSlots, 0xff01, sizeof(window->lineGlyphSlots));
+        window->b19c4 = 0;
+        window->b19c3 = 0;
+        window->lineGlyphCount = 0;
+        window->h1944 = 0;
+        window->b19c2 = 1;
+        window->flags17ff.flag5 = 0;
+        window->b19b0 = 0;
+        window->b19bf = 1;
+        window->flags17ff.flag1 = 1;
+        window->levels[0] = window->levels[1] = window->levels[2] = window->levels[3] = 0x7f;
+        func_0205e944(&data_02108760, 0x7f);
+        memset(window->bitmapAllocationBits, 0, sizeof(window->bitmapAllocationBits));
+        memset(window->textBuffer, 0, 0x800);
+        memset(window->firstLineBuffer, 0, 0x140);
+        memset(window->secondLineBuffer, 0, 0x140);
+        window->b19bd = 1;
+        window->allocatedGlyphCount = 14;
+        for (int slot = 14; slot < 0x80; ++slot) {
+            func_02041bbc(&window->glyphs[slot]);
+            window->glyphReferences[slot] = 0;
+        }
+        window->b19bb = 1;
+        window->w1860 = 0xc;
+        window->w1864 = 0x10;
+        window->h187c = 0x7fff;
+        window->w9a4 = 3;
+        func_02043270(window, 2, 0x80, 0xfc, 0x3e);
+        window->b19b8 = 0;
+        window->b19b1 = 1;
+        window->w990 = 0x80;
+        window->w1868 = 0;
+        window->b912 = 0;
+        window->w994 = -1;
+        window->w94c[0] = 0;
+        window->w94c[1] = 0;
+        window->w94c[2] = 0;
+        window->w94c[3] = 0;
+        window->b19ac = 0;
+        window->b19ad = 0;
+        window->b1960 = 0;
+
+        for (int i = 0; i < 4; i++) window->w1868 = 0;
+        window->field17f2 = 0;
+        window->b19c0 = 0;
+        window->b195d = 0x1e;
+        window->b19c1 = 0;
+        window->b19c6 = 0;
+        window->b19c7 = 0;
+        window->b19c8 = 0;
+        window->b19c9 = 0;
+        window->h187e = 0;
+        window->b19cc = 0;
+        window->flags17ff.streamMode = 0;
+        window->b19cd = 0;
+        if (mode == 1) {
+            window->b19cc = 1;
+        } else if (mode == 1) {
+
+            window->flags17ff.streamMode = 1;
+        }
+        if (window->b19cc != 0) {
+            window->b19cd = 1;
+            window->stream40 = 0;
+            func_02044d0c();
+        }
+        if (window->flags17ff.streamMode != 0) {
+            window->stream44 = 0;
+            func_02044104((Struct0204394c*)window->encoder);
+        }
+        func_020698d8(window, window->b195a, text, window->formatBuffer);
+        func_02069ecc((MessageSystem0219050c*)window, window->formatBuffer, window->expandedBuffer);
+        func_0206c570(window, window->expandedBuffer);
+        func_02043270(window, 2, 0x74, 0xfc, 0x4a);
+        window->w1858 = 2;
+        window->w185c = 0x7e;
+        window->w1860 = 0xc;
+        window->w1864 = 0x14;
+        if (window->frame != 0) {
+            unsigned char* frame = _Z20GetField4Ptr020e1b24Pv(window->frame);
+            if (frame != 0) {
+                frame[0x38] = 2;
+                frame[0x39] = 0x74;
+                frame[0x3a] = 0xfc;
+                frame[0x3b] = 0x4a;
+                func_020e1b2c(window->frame, -1);
+                if (func_020e1f1c(window->frame) != 0) {
+                    func_020e2110(window->frame);
+                    func_020e23f4(window->frame);
+                    InvokeSubHandlerIfPresent((int*)window->frame);
+                }
+            }
+        }
+        memset(window->block95c, 0, sizeof(window->block95c));
+        memset(window->block97c, 0, sizeof(window->block97c));
+        window->w994 = -1;
+        window->b19bc = 0;
+        window->mode = 5;
+        window->b19b2 = 1;
+        window->state = 0;
+        window->b19ae = 0;
+        window->b19af = 0;
+        window->b19b5 = 0;
+        window->b19c5 = 0;
+        window->b19ca = 1;
+        window->b19b4 = 0;
+        for (int i = 0; i < 2; i++) {
+            _Z23SetEntryEnabled020e2cc4P13Entry020e2cc4i(&window->entries[i].prefix, 0);
+        }
+        if (window->encoder != 0) _Z26CopyInternalFields0207df50P11Foo0207df50(window->encoder);
+    }
+}
+#else
+// USA: func_0204500c
+extern "C" ARM void func_0204500c(struct MessageSystem* window, const char* text, int mode, void* context) {
     GameState* gs = GameState::GetInstance();
-    short count = gs->pendingNumber_7f58;
-    NumberText0204500c number;
-    _Z20Clear12Bytes020e46c4Pv(&number);
-    if (count > 0) {
+
+    short itemId = *reinterpret_cast<short*>(&gs->unk_6fc0[0x7f58 - 0x6fc0]);
+    ItemNameText itemName;
+    _Z20Clear12Bytes020e46c4Pv(&itemName);
+    if (itemId > 0) {
         char first[0x80] = {};
         char second[0x80] = {};
-        number.first = first;
-        number.second = second;
-        _Z31DispatchIfCountPositive020dcf7ciPv(count, &number);
-        obj->number18 = &number;
+        itemName.first = first;
+        itemName.second = second;
+        _Z31DispatchIfCountPositive020dcf7ciPv(itemId, &itemName);
+        window->itemName = &itemName;
     }
-    obj->b19dc = 1;
-    if (name == 0) {
+    window->b19dc = 1;
+    if (text == 0) {
         return;
     }
 
-    int len = StringLength(name);
+    int len = StringLength(text);
     for (int pos = 0; pos < len;) {
         int n = 0x40;
         char chunk[0x43] = {};
         if (len < pos + 0x40) {
             n = len - pos;
         }
-        memcpy(chunk, name + pos, n);
+        memcpy(chunk, text + pos, n);
         pos += n;
     }
 
     for (int i = 0; i < 4; i++) {
-        obj->b194e[i] = -1;
-        obj->b1952[i] = 0;
+        window->b194e[i] = -1;
+        window->b1952[i] = 0;
     }
-    obj->b1956 = 0;
-    obj->b1957 = 0;
-    obj->b19d2 = 1;
-    obj->b19d1 = 0;
-    obj->b1958 = 0;
-    obj->b195b = 0;
-    obj->w9b0 = 0;
-    obj->b195a = 8;
+    window->b1956 = 0;
+    window->b1957 = 0;
+    window->b19d2 = 1;
+    window->b19d1 = 0;
+    window->b1958 = 0;
+    window->b195b = 0;
+    window->w9b0 = 0;
+    window->b195a = 8;
 
-    if (obj->mode9a0 == 3) {
-        func_02044f3c(obj, name, mode);
+    if (window->mode == 3) {
+        func_02044f3c(window, text, mode);
     } else {
-        unsigned short slotCount = obj->slotCount;
-        for (unsigned short i = 0; i < slotCount; i++) {
-            _Z24DecrementSlotRef0206b198P19CombatSlots0206b198t((struct CombatSlots0206b198*)obj, obj->slots[i]);
+        unsigned short lineGlyphCount = window->lineGlyphCount;
+        for (unsigned short i = 0; i < lineGlyphCount; i++) {
+            _Z24DecrementSlotRef0206b198P19CombatSlots0206b198t((struct CombatSlots0206b198*)window, window->lineGlyphSlots[i]);
         }
-        memset(obj->slots, 0xff01, sizeof(obj->slots));
-        memset(obj->slotData, 0, sizeof(obj->slotData));
-        obj->b19c4 = 0;
-        obj->b19c3 = 0;
-        obj->slotCount = 0;
-        obj->h1944 = 0;
-        obj->h1946 = 0;
-        obj->b19c2 = 1;
-        obj->b19d3 = 0;
-        obj->b19b0 = 0;
-        obj->b19bf = 1;
-        obj->b19cf = 1;
-        obj->levels[0] = obj->levels[1] = obj->levels[2] = obj->levels[3] = 0x7f;
+        memset(window->lineGlyphSlots, 0xff01, sizeof(window->lineGlyphSlots));
+        memset(window->slotData, 0, sizeof(window->slotData));
+        window->b19c4 = 0;
+        window->b19c3 = 0;
+        window->lineGlyphCount = 0;
+        window->h1944 = 0;
+        window->h1946 = 0;
+        window->b19c2 = 1;
+        window->b19d3 = 0;
+        window->b19b0 = 0;
+        window->b19bf = 1;
+        window->b19cf = 1;
+        window->levels[0] = window->levels[1] = window->levels[2] = window->levels[3] = 0x7f;
         func_0205e944(&data_02108760, 0x7f);
-        memset(obj->flags2cc, 0, sizeof(obj->flags2cc));
-        memset(obj->buffer48, 0, 0x960);
-        memset(obj->buffer4c, 0, 0x280);
-        memset(obj->buffer50, 0, 0x280);
-        obj->b19bd = 1;
-        obj->w9b4 = 0;
-        for (int i = 0; i < 0x80; i++) {
-            _Z15Forward020416c0P13State0204166c(&obj->states[i]);
-            obj->stateFlags[i] = 0;
+        memset(window->bitmapAllocationBits, 0, sizeof(window->bitmapAllocationBits));
+        memset(window->textBuffer, 0, 0x960);
+        memset(window->firstLineBuffer, 0, 0x280);
+        memset(window->secondLineBuffer, 0, 0x280);
+        window->b19bd = 1;
+        window->allocatedGlyphCount = 0;
+        for (int slot = 0; slot < 0x80; ++slot) {
+            _Z15Forward020416c0P13State0204166c(&window->glyphs[slot]);
+            window->glyphReferences[slot] = 0;
         }
-        obj->b19bb = 1;
-        obj->w1860 = 0xc;
-        obj->w1864 = 0x10;
-        obj->h187c = 0x7fff;
-        obj->w9a4 = 3;
-        func_02042b98(obj, 2, 0x80, 0xfc, 0x3e);
-        _Z16ResetFoo02042fccP11Foo02042fcc(&obj->foo930);
-        obj->b19b8 = 0;
-        obj->b19b1 = 1;
-        obj->w990 = 0x80;
-        obj->w1868 = 0;
-        obj->b912 = 0;
-        obj->w994 = -1;
-        obj->w94c[0] = 0;
-        obj->w94c[1] = 0;
-        obj->w94c[2] = 0;
-        obj->w94c[3] = 0;
-        obj->b19ac = 0;
-        obj->b19ad = 0;
-        obj->b1960 = 0;
-        _Z25SetRingBufferSlot02045824P18RingBuffer02045824ii((struct RingBuffer02045824*)obj, 0, -1);
-        obj->b19c0 = 0;
-        obj->b195d = 0x1e;
-        obj->b19c1 = 0;
-        obj->b19c6 = 0;
-        obj->b19c7 = 0;
-        obj->b19c8 = 0;
-        obj->b19c9 = 0;
-        obj->h187e = 0;
-        obj->b19cc = 0;
-        obj->b19ce = 0;
-        obj->b19cd = 0;
+        window->b19bb = 1;
+        window->w1860 = 0xc;
+        window->w1864 = 0x10;
+        window->h187c = 0x7fff;
+        window->w9a4 = 3;
+        func_02042b98(window, 2, 0x80, 0xfc, 0x3e);
+        _Z16ResetFoo02042fccP11Foo02042fcc(&window->foo930);
+        window->b19b8 = 0;
+        window->b19b1 = 1;
+        window->w990 = 0x80;
+        window->w1868 = 0;
+        window->b912 = 0;
+        window->w994 = -1;
+        window->w94c[0] = 0;
+        window->w94c[1] = 0;
+        window->w94c[2] = 0;
+        window->w94c[3] = 0;
+        window->b19ac = 0;
+        window->b19ad = 0;
+        window->b1960 = 0;
+        _Z25SetRingBufferSlot02045824P18RingBuffer02045824ii((struct RingBuffer02045824*)window, 0, -1);
+        window->b19c0 = 0;
+        window->b195d = 0x1e;
+        window->b19c1 = 0;
+        window->b19c6 = 0;
+        window->b19c7 = 0;
+        window->b19c8 = 0;
+        window->b19c9 = 0;
+        window->h187e = 0;
+        window->b19cc = 0;
+        window->b19ce = 0;
+        window->b19cd = 0;
         if (mode == 1) {
-            obj->b19cc = 1;
+            window->b19cc = 1;
         } else if (mode == 1) {
-            obj->b19ce = 1;
+
+            window->b19ce = 1;
         }
-        if (obj->b19cc != 0) {
-            obj->b19cd = 1;
-            obj->stream40 = 0;
+        if (window->b19cc != 0) {
+            window->b19cd = 1;
+            window->stream40 = 0;
             func_02044d0c();
         }
-        if (obj->b19ce != 0) {
-            obj->stream44 = 0;
-            _Z33PrepareEncodeStreamBuffer0204394cP14Struct0204394c((struct Struct0204394c*)obj->encoder);
+        if (window->b19ce != 0) {
+            window->stream44 = 0;
+            _Z33PrepareEncodeStreamBuffer0204394cP14Struct0204394c((struct Struct0204394c*)window->encoder);
         }
-        int a = obj->layout60;
-        int b = obj->layout64;
-        func_0206831c(obj, name, a);
-        func_02068418(obj, a, b, obj->b19dc);
-        func_02068f40(obj, b, a, obj->b19dc);
-        func_02069234(obj, a, b, obj->b19dc);
-        func_020695f4(obj, b, a, obj->b19dc);
-        func_02069fec(obj, a, b);
-        _Z25InitContextString0206a974P11Ctx0206a974PKcPv((struct Ctx0206a974*)obj, (const char*)b, context);
-        func_02042b98(obj, 2, 0x74, 0xfc, 0x4a);
-        obj->w1858 = 2;
-        obj->w185c = 0x7e;
-        obj->w1860 = 0xc;
-        obj->w1864 = 0x14;
-        if (obj->window38 != 0) {
-            unsigned char* frame = _Z20GetField4Ptr020e1b24Pv(obj->window38);
+        char* formatBuffer = window->formatBuffer;
+        char* expandedBuffer = window->expandedBuffer;
+        func_0206831c(window, text, formatBuffer);
+        func_02068418(window, formatBuffer, expandedBuffer, window->b19dc);
+        func_02068f40(window, expandedBuffer, formatBuffer, window->b19dc);
+        func_02069234(window, formatBuffer, expandedBuffer, window->b19dc);
+        func_020695f4(window, expandedBuffer, formatBuffer, window->b19dc);
+        func_02069fec(window, formatBuffer, expandedBuffer);
+        _Z25InitContextString0206a974P11Ctx0206a974PKcPv((struct Ctx0206a974*)window, expandedBuffer, context);
+        func_02042b98(window, 2, 0x74, 0xfc, 0x4a);
+        window->w1858 = 2;
+        window->w185c = 0x7e;
+        window->w1860 = 0xc;
+        window->w1864 = 0x14;
+        if (window->frame != 0) {
+            unsigned char* frame = _Z20GetField4Ptr020e1b24Pv(window->frame);
             if (frame != 0) {
                 frame[0x38] = 2;
                 frame[0x39] = 0x74;
                 frame[0x3a] = 0xfc;
                 frame[0x3b] = 0x4a;
-                func_020e1b2c(obj->window38, -1);
-                if (func_020e1f1c(obj->window38) != 0) {
-                    func_020e2110(obj->window38);
-                    func_020e23f4(obj->window38);
-                    InvokeSubHandlerIfPresent((int*)obj->window38);
+                func_020e1b2c(window->frame, -1);
+                if (func_020e1f1c(window->frame) != 0) {
+                    func_020e2110(window->frame);
+                    func_020e23f4(window->frame);
+                    InvokeSubHandlerIfPresent((int*)window->frame);
                 }
             }
         }
-        memset(obj->block95c, 0, sizeof(obj->block95c));
-        memset(obj->block97c, 0, sizeof(obj->block97c));
-        obj->w994 = -1;
-        obj->b19bc = 0;
-        obj->mode9a0 = 5;
-        obj->b19b2 = 1;
-        obj->state99c = 0;
-        obj->b19ae = 0;
-        obj->b19af = 0;
-        obj->b19b5 = 0;
-        obj->b19c5 = 0;
-        obj->b19ca = 1;
-        obj->b19b4 = 0;
+        memset(window->block95c, 0, sizeof(window->block95c));
+        memset(window->block97c, 0, sizeof(window->block97c));
+        window->w994 = -1;
+        window->b19bc = 0;
+        window->mode = 5;
+        window->b19b2 = 1;
+        window->state = 0;
+        window->b19ae = 0;
+        window->b19af = 0;
+        window->b19b5 = 0;
+        window->b19c5 = 0;
+        window->b19ca = 1;
+        window->b19b4 = 0;
         for (int i = 0; i < 2; i++) {
-            _Z23SetEntryEnabled020e2cc4P13Entry020e2cc4i(&obj->entries[i], 0);
+            _Z23SetEntryEnabled020e2cc4P13Entry020e2cc4i(&window->entries[i], 0);
         }
-        if (obj->encoder != 0) {
-            _Z26CopyInternalFields0207df50P11Foo0207df50(obj->encoder);
+        if (window->encoder != 0) {
+            _Z26CopyInternalFields0207df50P11Foo0207df50(window->encoder);
         }
     }
-    obj->cursor30 = -1;
-    obj->cursor31 = -1;
-    if (count > 0) {
-        gs->pendingNumber_7f58 = 0;
+    window->cursor30 = -1;
+    window->cursor31 = -1;
+    if (itemId > 0) {
+        *reinterpret_cast<short*>(&gs->unk_6fc0[0x7f58 - 0x6fc0]) = 0;
     }
 }
+
+#endif

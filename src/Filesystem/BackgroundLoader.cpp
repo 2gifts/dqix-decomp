@@ -8,9 +8,6 @@
 
 #ifdef jpn
 
-#define _Z22ClampAndSubmit020d97a8iiiiii func_020db1b4
-#define _Z15Forward020d9828Pv func_020db234
-
 #define data_020ef908 data_020ef7f8
 #define data_020ef90f data_020ef7ff
 #endif
@@ -24,20 +21,14 @@ struct Struct_02104304
 
 extern "C"
 {
-    // get system language
     int _Z24NormalizeField5_0200fb08P14Struct0200fb08(GameState*);
 
-    // abort() or similar
     void func_020c9be0();
 
-    // Populates context with priority = relPrio + 16
-    void _Z22ClampAndSubmit020d97a8iiiiii(ProcessorContext* context, void* stackSpace, unsigned stackSize, int relPrio, const void* entry, int arg);
-    void _Z15Forward020d9828Pv(ProcessorContext* context); // thunk for MarkContextReadyAndSwitch
+    char* data_020ef8a4[];
 
-    char* data_020ef8a4[]; // array of subdirectories within data/
-
-    char data_020ef908[]; // "%s%s%s"
-    char data_020ef90f[]; // "data/"
+    char data_020ef908[];
+    char data_020ef90f[];
 }
 
 void BackgroundLoader::Task::ZeroInitialize()
@@ -64,9 +55,9 @@ void BackgroundLoaderThreadFunction(BackgroundLoader *loader)
 
 bool BackgroundLoader::Task::GetFullFilename(char *outBuffer)
 {
-    sprintf(outBuffer, data_020ef908, // "%s%s%s"
-        data_020ef90f, // "data/"
-        data_020ef8a4[containerDirectoryIndex_], // e.g. "ani/" or "bin/tbox/"
+    sprintf(outBuffer, data_020ef908,
+        data_020ef90f,
+        data_020ef8a4[containerDirectoryIndex_],
         outerFilename_);
     return true;
 }
@@ -105,7 +96,7 @@ void BackgroundLoader::InitializeOrReset()
     scratchRightArenaUsage_ = 0;
     unknown_120_ = 0x10000;
     numPendingTasks_ = 0;
-    processLockBits_ = 0; 
+    processLockBits_ = 0;
 
     flags_78c_0_ = true;
     flags_78c_3_ = false;
@@ -128,10 +119,10 @@ void BackgroundLoader::Populate(void* fileLoadSpace, unsigned int spaceCapacity,
     flags_78c_0_ = true;
     flags_78c_2_ = true;
 
-    _Z22ClampAndSubmit020d97a8iiiiii(&context_, s_loaderInstanceData.contextStackSpace_,
+    ClampAndSubmit020d97a8(&context_, s_loaderInstanceData.contextStackSpace_,
         sizeof(s_loaderInstanceData.contextStackSpace_), relativePrio,
         &BackgroundLoaderThreadFunction, (int)this);
-    _Z15Forward020d9828Pv(&context_);
+    Forward020d9828(&context_);
 }
 
 void BackgroundLoader::MaybeWaitIdle()
@@ -201,7 +192,7 @@ int BackgroundLoader::QueueFileTask(const char* filename, int type, const char* 
         if (numPendingTasks_ >= 24)
             func_020c9be0();
         else
-        {   
+        {
             BackgroundLoader::Task* entry = &queuedTasks_[numPendingTasks_];
             entry->taskID_ = s_loaderInstanceData.taskCounter_;
             entry->status_ = BackgroundLoader::TaskStatus_Unallocated;
@@ -214,8 +205,8 @@ int BackgroundLoader::QueueFileTask(const char* filename, int type, const char* 
                 char replacedInnerFile[128] = { 0 };
                 StringReplaceLanguageTag(innerFile, replacedInnerFile, language);
                 strcpy(entry->innerFilename_, replacedInnerFile);
-#elif defined(jpn)     
-                strcpy(entry->innerFilename_, innerFile);     
+#elif defined(jpn)
+                strcpy(entry->innerFilename_, innerFile);
 #endif
             }
 #if defined(jpn)
@@ -229,8 +220,6 @@ int BackgroundLoader::QueueFileTask(const char* filename, int type, const char* 
             }
 
             bool success;
-            // presumably this is used because the filename might be like
-            // "ROM:/data/bin/blah.gp2" and you want to strip the "ROM:/" prefix
             const char* pathTrueStart = strstr(replacedFilename, data_020ef90f);
             if (pathTrueStart == NULL)
                 success = false;
@@ -293,7 +282,7 @@ int BackgroundLoader::QueueOverlayTask(unsigned int id, bool load)
 }
 
 int BackgroundLoader::QueueLoadFile(const char* filename, SafeAllocator* alloc)
-{  
+{
     return QueueFileTask(filename, TaskType_LoadFileDefault, NULL, alloc);
 }
 
@@ -394,7 +383,7 @@ void BackgroundLoader::GetLoadedFileByID(int id, void **outPtr, unsigned int *ou
         {
             if (id != pTask->taskID_)
                 continue;
-            
+
             *outPtr = pTask->pFileData;
             *outLength = pTask->fileLengthOrOverlayID_;
             break;
@@ -500,7 +489,7 @@ void BackgroundLoader::MaybeFreeAllocations()
             break;
         }
         case BackgroundLoader::TaskStatus_Fence:
-            continue; 
+            continue;
         }
         pTask->status_ = BackgroundLoader::TaskStatus_Unallocated;
     }
@@ -523,21 +512,18 @@ void BackgroundLoader::RemoveTask(int taskID)
         {
             if (taskID != pTask->taskID_)
                 continue;
-            
+
             FreeScratchSpace(&pTask->scratchAlloc_);
             pTask->ZeroInitialize();
 
-            // Shift tasks on the right one space to the left
             BackgroundLoader::Task* pLaterTask = &queuedTasks_[i];
             for (int j = i + 1; j < numPendingTasks_; j++, pLaterTask++)
             {
                 *pLaterTask = *(pLaterTask + 1);
             }
-            // Now pLaterTask points to index numPendingTasks-1, i.e. 1 past the new end
             pLaterTask->ZeroInitialize();
             numPendingTasks_--;
 
-            // All tasks at the front before one of status 5 can be removed.
             int numToRemoveFromFront = 0;
             BackgroundLoader::Task* qTask = &queuedTasks_[0];
             for (int j = 0; j < numPendingTasks_; j++, qTask++)
@@ -562,9 +548,6 @@ void BackgroundLoader::RemoveTask(int taskID)
     }
     UnlockResourceMutex();
 }
-
-// here goes BackgroundLoader::Task::operator=
-// (the linker will remove duplicates in overlays)
 
 int BackgroundLoader::GetNumQueuedTasks()
 {
@@ -601,37 +584,31 @@ void* BackgroundLoader::AllocateInScratchSpace(BackgroundLoader::Task::ScratchSp
     if (filesize != 0)
     {
         unsigned int requiredBytesRounded = (filesize + 3) & ~3;
-        // interpretation of this is still pretty shaky
         unsigned int leftoverCapacity = scratchSpaceSize_ - scratchRightArenaUsage_;
-        
+
         unsigned int initialNumBlocks = 0;
         unsigned int initialNumUsedWords = 0;
-        unsigned int requiredWords = requiredBytesRounded >> 2;        
+        unsigned int requiredWords = requiredBytesRounded >> 2;
 
-        // Populate the ordered pointer list
         BackgroundLoader::Task* pTask = &queuedTasks_[0];
         for (unsigned int i = 0; i < numPendingTasks_; i++, pTask++)
         {
             if (pTask->scratchAlloc_.numWords_ == 0)
                 continue;
 
-            // insertion sort (later entries get shifted right)
             BackgroundLoader::Task::ScratchSpaceAllocation** shiftPtr = &orderedBlocks[initialNumBlocks];
             for (int j = initialNumBlocks; j != 0; j--, shiftPtr--)
             {
                 if (pTask->scratchAlloc_.firstWord_ > shiftPtr[-1]->firstWord_)
                     break;
-                
+
                 shiftPtr[0] = shiftPtr[-1];
             }
-            // perform the insertion
             shiftPtr[0] = &pTask->scratchAlloc_;
             initialNumBlocks++;
             initialNumUsedWords += pTask->scratchAlloc_.numWords_;
         }
 
-        // necessary but not sufficient condition: there's collectively enough
-        // space available. Now we'll check if there's a single free block big enough
         if (initialNumUsedWords + requiredWords <= (leftoverCapacity >> 2))
         {
             int allocationPosition = -1;
@@ -643,14 +620,11 @@ void* BackgroundLoader::AllocateInScratchSpace(BackgroundLoader::Task::ScratchSp
                 BackgroundLoader::Task::ScratchSpaceAllocation** searchPtr = &orderedBlocks[0];
                 if (requiredWords <= orderedBlocks[0]->firstWord_)
                     allocationPosition = 0;
-                
+
                 if (allocationPosition < 0)
                 {
                     for (int i = 1; i < initialNumBlocks; i++, searchPtr++)
                     {
-                        // Test to see if we can put it between searchPtr[0]
-                        // and searchPtr[1] (that's why we start i from 1).
-                        // If so, place it right after the end of searchPtr[0]
                         if (requiredWords + (searchPtr[0]->firstWord_ + searchPtr[0]->numWords_) <= searchPtr[1]->firstWord_)
                         {
                             allocationPosition = searchPtr[0]->firstWord_;
@@ -660,12 +634,8 @@ void* BackgroundLoader::AllocateInScratchSpace(BackgroundLoader::Task::ScratchSp
                     }
                 }
 
-                // If we still didn't find a spot, try at the end
-                // (searchPtr[0] is now the last entry in the sorted list)
                 if (allocationPosition < 0)
                 {
-                    // this makes me think leftover capacity is the amount on the
-                    // right of the scratch space
                     if (requiredWords + (searchPtr[0]->firstWord_ + searchPtr[0]->numWords_) <= (leftoverCapacity >> 2))
                     {
                         allocationPosition = searchPtr[0]->firstWord_;

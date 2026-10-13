@@ -1,10 +1,8 @@
 #if defined(jpn)
 #define R(j,u) (j)
 #define _Z22SetupBattleTag02189d68Pc func_ov012_0218a804
-#define _Z35TestFlagsAndActiveElement2_021e6e20P11Obj021e6e20 func_ov023_021e7184
 #define data_ov009_0218ac04 data_ov009_0218bb6c
 #define data_ov013_02187d94 data_ov013_02188cd0
-#define func_ov008_02187278 func_ov008_02188140
 #define func_ov008_02187b20 func_ov008_021888fc
 #define func_ov012_0218432c func_ov012_021853a0
 #define func_ov012_0218930c func_ov012_02189be8

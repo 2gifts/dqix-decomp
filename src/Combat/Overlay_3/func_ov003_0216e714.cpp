@@ -2,6 +2,7 @@
 #include "System/ColorEffects.h"
 #include "System/Graphics.h"
 #include <globaldefs.h>
+#include "Resource/FontGlyphTable.h"
 
 extern "C" char *func_02012fe4(void);
 struct ActiveEntry02046900;
@@ -15,7 +16,6 @@ extern "C" void func_0204f41c(void *obj, short x, short y, void *str, int d, int
 struct Container020e0310;
 extern "C" int _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310 *c, int key);
 extern "C" int func_020420e8(void *p, int flag);
-extern "C" char *func_02042a50(int table, const char *key);
 extern "C" void func_0204e038(void *canvas, char *str, int a, int b, int c, int d, int e, int f);
 struct List0204af64;
 extern "C" void _Z17ResetList0204af64P12List0204af64(struct List0204af64 *obj);

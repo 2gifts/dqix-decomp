@@ -1,5 +1,10 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+extern "C" int func_02042428(char*, int);
+#define AppendSizeTag func_02042428
+#endif
+
 extern char data_020eff43;
 int StringLength(const char* s);
 extern "C" int sprintf(char* dst, const char* fmt, ...);

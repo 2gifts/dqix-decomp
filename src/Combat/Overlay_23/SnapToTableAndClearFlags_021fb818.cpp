@@ -11,17 +11,23 @@ extern "C" ARM int func_ov023_021fb818(void* obj) {
     if (flagA != 0) {
         dx = 1;
         dy = dx;
-    } else {
+    }
+#if !defined(jpn)
+    else {
         unsigned char flagB = *(unsigned char*)((char*)obj + 0xb1);
         if (flagB != 0) {
             dx = dx - 1;
             dy = 1;
         }
     }
+
+#endif
     ForwardTableValue02075db0((struct Struct02075db0*)((char*)obj + 0x20),
         *(int*)((char*)obj + 0xa8) + dx,
         *(int*)((char*)obj + 0xac) + dy);
     *(unsigned char*)((char*)obj + 0xb0) = 0;
+#if !defined(jpn)
     *(unsigned char*)((char*)obj + 0xb1) = 0;
+#endif
     return *(int*)((char*)obj + 0x1c);
 }

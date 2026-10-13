@@ -177,7 +177,9 @@ extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0* so
 extern "C" {
 void* memset(void* buffer, int value, unsigned long size);
 void* ExtractFileFromGP2(char* path, char* inner, unsigned int* size);
+#if !defined(jpn)
 void func_0204500c(MessageSystem* messages, const char* text, int value, int value2);
+#endif
 void func_ov008_02186964(BattleRecords* self);
 int func_ov008_02186a30(BattleRecords* self, int ticks);
 void* func_0202ae18();
@@ -186,7 +188,7 @@ int func_0202c540(void* value);
 
 #if defined(jpn)
 extern "C" void _Z28SubmitScriptFromFile020727f8PvPKciS_h(void*, const char*, int, void*, int);
-extern "C" void func_02045d88(MessageSystem*, const char*, int);
+extern "C" void func_0204500c(MessageSystem*, const char*, int);
 #endif
 
 // USA: func_ov008_02185dc0
@@ -280,7 +282,7 @@ extern "C" ARM void func_ov008_02185dc0(BattleRecords* self, unsigned int ticks)
 #endif
                     _Z20AppendString02042058PcPKc(comment, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&self->texts_, 1000));
 #if defined(jpn)
-                    func_02045d88(messages, comment, 0);
+                    func_0204500c(messages, comment, 0);
 #else
                     func_0204500c(messages, comment, 0, 0xe3);
 #endif
@@ -305,7 +307,7 @@ extern "C" ARM void func_ov008_02185dc0(BattleRecords* self, unsigned int ticks)
                 if (REGION_MESSAGE(self, shown))
                 {
 #if defined(jpn)
-                    func_02045d88(messages, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&self->texts_, 10000), 0);
+                    func_0204500c(messages, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&self->texts_, 10000), 0);
 #else
                     func_0204500c(messages, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)&self->texts_, 10000), 0, 0xe3);
 #endif

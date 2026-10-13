@@ -1,15 +1,14 @@
 #include <globaldefs.h>
-#include "Graphics/LightingInfo.h"
-#include "Memory/SafeAllocator.h"
+#include "World/Zone3D.h"
 
-void* DecompressLZ77FileIntoScratchSpace(SafeAllocator& alloc, const void* src, unsigned int& outSize);
+void* DecompressLZ77FileIntoScratchSpace(SafeAllocator& allocator, const void* source, unsigned int& size);
 
 // USA: func_02014414
-extern "C" ARM int _ZN6Zone3D15ProcessBATSFileEPKvj(char* obj, const void* src) {
-    SafeAllocator* alloc = *(SafeAllocator**)(obj + 0x68);
+extern "C" ARM int _ZN6Zone3D15ProcessBATSFileEPKvj(Zone3D* zone, const void* source) {
+    SafeAllocator* allocator = zone->pAllocator_68_;
     unsigned int size;
-    void* data = DecompressLZ77FileIntoScratchSpace(*alloc, src, size);
-    ((LightingInfo*)(obj + 0x10c))->Initialize();
-    ((LightingInfo*)((int)(obj + 0x10c)))->LoadFromScript((const void*)((int)data), (unsigned int)((int)size), (SafeAllocator*)((int)alloc));
+    void* script = DecompressLZ77FileIntoScratchSpace(*allocator, source, size);
+    zone->lighting_.Initialize();
+    zone->lighting_.LoadFromScript(script, size, allocator);
     return 1;
 }

@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+
 #include "GameState/GameState.h"
 
 struct Vec3_021f8e1c {
@@ -31,7 +32,10 @@ public:
     virtual void v49(); virtual void v50(); virtual void v51(); virtual void v52();
     virtual void v53(); virtual void v54(); virtual void v55(); virtual void v56();
     virtual void v57(); virtual void v58(); virtual void v59(); virtual void v60();
+
+#if !defined(jpn)
     virtual void v61();
+#endif
     virtual int IsDisabled();
 
     char pad4[0x2c];

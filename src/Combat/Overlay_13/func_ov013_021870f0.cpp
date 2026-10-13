@@ -1,8 +1,5 @@
 #include <globaldefs.h>
 #if defined(jpn)
-#define _Z17ClearList0208df10P12List0208df10 func_0208e818
-#define func_ov013_02187a58 func_ov013_02188a24
-#define _Z28DispatchIndexedEntry0204b988P11Obj0204b988jiit func_0204c7a8
 void* GetGlobal02109400();
 extern "C" void _Z21BlankFunction02094b3cv(void*, int);
 extern "C" void _Z21BlankFunction02094b30v(void*, int, int);
@@ -10,7 +7,6 @@ extern "C" int _Z18AlwaysTrue02094b4cv(void*);
 extern char data_ov013_02188de0[];
 extern char data_ov013_02188dfa[];
 #define data_ov013_02187db8 data_ov013_02188ce0
-#define data_ov013_02187eaf data_ov013_02188e11
 #endif
 #include "Filesystem/BackgroundLoader.h"
 #include "Memory/SafeAllocator.h"

@@ -1,7 +1,13 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kLayoutOffset = 0xf8 };
+#else
+enum { kLayoutOffset = 0x100 };
+#endif
+
 struct AlchemyMenu {
-    char unk_0[0x100];
+    char unk_0[kLayoutOffset];
     char layout_[0x4c];
 };
 

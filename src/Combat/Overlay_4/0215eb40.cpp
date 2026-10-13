@@ -4,7 +4,8 @@
 #include "Filesystem/BackgroundLoader.h"
 
 struct PageEntry {
-    unsigned char bytes[0x15];
+    unsigned short keys[7];
+    unsigned char values[7];
     unsigned char count;
 };
 
@@ -21,22 +22,53 @@ struct Pair0209a338 { int a; int b; };
 struct IntField0x4_0209a670 { char pad[4]; int field; };
 
 struct ListEntry {
+#if defined(jpn)
+    unsigned short key : 12;
+    unsigned short pad0 : 4;
+#else
     unsigned short key : 11;
     unsigned short pad0 : 5;
+#endif
     unsigned short mode;
-    unsigned int flags;
+    unsigned int category : 5;
+    unsigned int threshold : 7;
+    unsigned int remainingFlags : 20;
     unsigned int pad;
 };
 
 struct GetList0209a654 { struct ListEntry* entries; int count; };
 
 struct Element020de650 {
-    unsigned int v[3];
+    unsigned int word0;
+    unsigned int word4;
+    unsigned int lowFlags : 4;
+    unsigned int kind : 5;
+    unsigned int highFlags : 23;
     unsigned char pad[8];
     unsigned short v5;
 };
 
 struct Container020dedd0;
+
+class ScriptContainerNode {
+public:
+    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
+    virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
+    virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
+    virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
+    virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19();
+    virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23();
+    virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27();
+    virtual void v28(); virtual void v29(); virtual void v30(); virtual void v31();
+    virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
+    virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39();
+    virtual void v40(); virtual void v41(); virtual void v42(); virtual void v43();
+    virtual void v44(); virtual void v45(); virtual void v46(); virtual void v47();
+    virtual void v48(); virtual void v49(); virtual void v50(); virtual void v51();
+    virtual void v52(); virtual void v53(); virtual void v54(); virtual void v55();
+    virtual void v56(); virtual void v57();
+    virtual Container020dedd0* GetContainer();
+};
 
 struct Slots020d { unsigned char pad[0x454]; short slots[8]; };
 struct Field150 { unsigned char pad[0x464]; unsigned char key[0x20]; };
@@ -93,9 +125,9 @@ extern "C" ARM void func_ov004_0215eb40(void* self) {
 
     container = 0;
     {
-        void* node = func_ov004_0215e47c(self, 0x8d);
+        ScriptContainerNode* node = (ScriptContainerNode*)func_ov004_0215e47c(self, 0x8d);
         if (node != 0) {
-            container = (struct Container020dedd0*)(*(void*(*)(void*))(*(char***)node)[0x3a])(node);
+            container = node->GetContainer();
         }
     }
     if (container == 0) {
@@ -104,7 +136,12 @@ extern "C" ARM void func_ov004_0215eb40(void* self) {
 
     for (k = 0x56f9; k <= 0x5712; k++) {
         found = 0;
-        slots = ((struct Slots020d*)*(void**)((char*)combatant + 0x150))->slots;
+        slots = ((struct Slots020d*)*(void**)((char*)combatant
+#if defined(jpn)
+            + 0x144))->slots;
+#else
+            + 0x150))->slots;
+#endif
         for (j = 0; j < 8; j++) {
             if (slots[j] == k) {
                 found = 1;
@@ -115,7 +152,7 @@ extern "C" ARM void func_ov004_0215eb40(void* self) {
         if (elem == 0) {
             continue;
         }
-        if (((elem->v[2] << 23) >> 27) != 0x1f) {
+        if (elem->kind != 0x1f) {
             continue;
         }
         if (found) {
@@ -131,7 +168,7 @@ afterSlots:
     total = _Z11GetIntAt0x4P20IntField0x4_0209a670((struct IntField0x4_0209a670*)&ctx);
     entry = _Z23GetEntryByIndex0209a654P15GetList0209a654j((struct GetList0209a654*)&ctx, 0);
     for (count = 0; count < total; entry++, count++) {
-        int idx = (signed char)((entry->flags << 27) >> 27);
+        signed char idx = entry->category;
         int slot = (signed char)(idx - 1);
         if (slot < 0) {
             continue;
@@ -141,7 +178,7 @@ afterSlots:
         if (!ok) {
             continue;
         }
-        unsigned char v = (unsigned char)((entry->flags << 20) >> 25);
+        unsigned char v = entry->threshold;
         unsigned char curKey = ((struct Field150*)field150)->key[idx];
         int which = -1;
         if ((int)entry->mode > 0) {
@@ -158,25 +195,25 @@ afterSlots:
         struct Page* page = &data_ov004_02170b90[which];
         unsigned char val = v ? v : 0x6e;
         struct PageEntry* base = &page->entries[slot];
-        char* cur = (char*)base;
-        unsigned char* p = (unsigned char*)base + 0xe;
+        unsigned short* keys = base->keys;
+        unsigned char* values = base->values;
         unsigned char n = base->count;
         int i = 0;
         while (i < n) {
-            if (val < *p) {
+            if (val < *values) {
                 break;
             }
             i++;
-            cur += 2;
-            p++;
+            keys++;
+            values++;
         }
         int rest = n - i;
         if (rest > 0) {
-            memmove(cur + 2, cur, rest * 2);
-            memmove(p + 1, p, rest);
+            memmove(keys + 1, keys, rest * sizeof(*keys));
+            memmove(values + 1, values, rest);
         }
-        *(unsigned short*)cur = save;
-        *p = val;
+        *keys = save;
+        *values = val;
         base->count = base->count + 1;
         if ((signed char)mark[which] == slot) {
             continue;

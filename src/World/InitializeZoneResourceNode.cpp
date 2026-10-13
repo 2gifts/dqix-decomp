@@ -1,3 +1,5 @@
+#include <globaldefs.h>
+
 #include "World/ZoneResourceInitialization.h"
 #include <globaldefs.h>
 

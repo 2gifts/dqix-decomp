@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+#define func_0205cc50 func_0205dfa8
+#endif
+
 int GetGlobalField0x1c020421a0();
 struct Struct_0205bd58;
 void SetFields0205bd58(Struct_0205bd58 *fields, int count, int a, int b, int c, int d);
@@ -27,7 +31,11 @@ struct CombatPairPrefix {
 };
 
 // USA: func_0205cc50
+#if defined(jpn)
+extern "C" ARM void func_0205cc50(void *object) {
+#else
 extern "C" ARM void func_0205cc50(void *object, int alignWidth, int adjustment) {
+#endif
     CombatPairPrefix *pair = static_cast<CombatPairPrefix *>(object);
     GetGlobalField0x1c020421a0();
 
@@ -35,10 +43,12 @@ extern "C" ARM void func_0205cc50(void *object, int alignWidth, int adjustment) 
     int totalHeight = count * 12 + 16;
     pair->width     = pair->maximumPayloadSize + 24;
     pair->height    = totalHeight + (count - 1) * (pair->entryStride - 12);
+#if !defined(jpn)
     if (alignWidth != 0) {
         short alignedWidth = (short) ((pair->width + 7) & ~7);
         pair->width        = alignedWidth + adjustment;
     }
+#endif
     for (int index = 0; index < pair->entryCount; ++index) {
         pair->widths[index]  = 12;
         pair->offsets[index] = pair->entryStride * index + 8;

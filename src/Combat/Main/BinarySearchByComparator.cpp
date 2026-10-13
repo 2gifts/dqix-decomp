@@ -1,19 +1,9 @@
 #include <globaldefs.h>
-
-typedef int (*BinarySearchByComparatorFn)(void* elem);
-
-struct BinarySearchByComparatorElem {
-    unsigned int v[7];
-};
-
-struct BinarySearchByComparatorStruct {
-    unsigned int count : 12;
-    struct BinarySearchByComparatorElem* arr;
-};
+#include "Resource/MonsterDefinition.h"
 
 // USA: func_0206f470
 ARM void* BinarySearchByComparator(struct BinarySearchByComparatorStruct* base, int key, BinarySearchByComparatorFn comp) {
-    struct BinarySearchByComparatorElem* arr;
+    MonsterDefinition* arr;
     int count;
     int low;
     int high;
@@ -24,7 +14,7 @@ ARM void* BinarySearchByComparator(struct BinarySearchByComparatorStruct* base, 
     if (arr == NULL || comp == NULL) {
         return NULL;
     }
-    count = base->count;
+    count = base->header.count;
     if (count == 0) {
         return NULL;
     }

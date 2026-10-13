@@ -118,7 +118,9 @@ extern "C" void func_ov023_021d8ddc(BattleEntry*, int*);
 int GetCheckedSignedByte(void*, unsigned int);
 extern "C" void _Z30InitObjFromCombatantId020e4bf4Pvi(void*, int);
 char* FindEntryByKey(TableA68*, int);
+#if !defined(jpn)
 extern "C" void func_0204500c(MessageController*, char*, int, int);
+#endif
 extern "C" BattleResultEntry* _Z24FindByByteAt118_021f0360Pvi(void*, int);
 extern "C" int func_02082490(LoadedEntry*, void*, unsigned int, unsigned char, int);
 extern "C" int func_ov023_021f4438(BattleWork*);
@@ -126,7 +128,7 @@ extern "C" int func_ov023_021f4fc8();
 extern "C" void _Z20ResetFields_021eefacP14Reset_021eefac(Reset_021eefac*);
 
 #if defined(jpn)
-extern "C" void func_02045d88(MessageController*,char*,int);
+extern "C" void func_0204500c(MessageController*,char*,int);
 #endif
 // USA: func_ov023_021f03a0
 extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
@@ -273,7 +275,7 @@ extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
 
         strcat(text, FindEntryByKey(&work->strings, 0x22));
 #if defined(jpn)
-        func_02045d88(messages, text, 1);
+        func_0204500c(messages, text, 1);
 #else
         func_0204500c(messages, text, 1, 0xe3);
 #endif

@@ -1,13 +1,19 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kEntries = 0xc, kMeter = 0x6c, kTextAdjustment = 2 };
+#else
+enum { kEntries = 0x14, kMeter = 0x74, kTextAdjustment = 4 };
+#endif
+
 struct Container02080fa8;
 struct StatusOwner02081164;
 struct BattleMeter {
-    char pad0[0x14];
+    char pad0[kEntries];
     Container02080fa8* entries;
-    char pad18[0x74-0x18];
+    char pad18[kMeter-kEntries-4];
     int meter;
-    char pad78[0x366-0x78];
+    char pad78[0x366-kMeter-4];
     short command;
     char pad368[0x38f-0x368];
     unsigned char mode;
@@ -37,7 +43,7 @@ extern "C" ARM void func_ov006_0215fa1c(BattleMeter* self, int showValue) {
         }
         SetEntryHalfword0xe(entries, 0x57, text);
         _Z24SetEntryFlagById02080b40Pvi(entries, 0x57);
-        func_020806d8(entries, 0xd, 0x57, 1, 4);
+        func_020806d8(entries, 0xd, 0x57, 1, kTextAdjustment);
         if (showValue) {
             unsigned int meter = (unsigned short)func_ov006_02154138(&self->meter);
             float fraction = (float)meter / 448.0f;

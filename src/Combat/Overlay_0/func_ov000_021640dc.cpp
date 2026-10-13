@@ -52,12 +52,24 @@ struct TurnState021640dc {
 };
 
 struct BattleScene021640dc {
+#if defined(jpn)
+    char pad_0[0x218];
+#else
     char pad_0[0x29c];
+#endif
     struct BattleData021640dc* data;
     struct BattleConfig021640dc* config;
+#if defined(jpn)
+    char pad_2a4[0x371c - 0x220];
+#else
     char pad_2a4[0x3760 - 0x2a4];
+#endif
     struct TurnState021640dc turn;
+#if defined(jpn)
+    char pad_3788[0x56b0 - 0x3744];
+#else
     char pad_3788[0x54bc - 0x3788];
+#endif
     unsigned char field_0x54bc;
 };
 

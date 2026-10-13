@@ -2,9 +2,17 @@
 #include "Filesystem/BackgroundLoader.h"
 
 struct Obj020941f8 {
+#if defined(jpn)
+    char pad0[0x100];
+#else
     char pad0[0x340];
+#endif
     int handle340;
+#if defined(jpn)
+    char pad1[0x138 - 0x104];
+#else
     char pad1[0x3c8 - 0x344];
+#endif
     unsigned char rest3c8 : 7;
     unsigned char flag3c8 : 1;
     char pad2[0x3cb - 0x3c9];

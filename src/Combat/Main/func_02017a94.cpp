@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+
 #include <World/Zone3D.h>
 #include <GameState/GameState.h>
 
@@ -44,11 +45,16 @@ extern "C" ARM void func_02017a94(Zone3D* zone) {
     if (GetField0x3f8Address(gs) == NULL) {
         return;
     }
+#if defined(jpn)
+    enum { BitmapFlagOffset = 0x285d };
+#else
+    enum { BitmapFlagOffset = 0x281d };
+#endif
     unsigned char* bmp = (unsigned char*)func_0205ec34();
     int row;
     int colLow;
     int colHigh;
-    if (bmp != NULL && *(unsigned char*)((char*)zone + 0x281d) != 0) {
+    if (bmp != NULL && *(unsigned char*)((char*)zone + BitmapFlagOffset) != 0) {
         for (row = 0; row < 2; row++) {
             for (colLow = 0; colLow < 0x7f; colLow++) {
                 if (GetBitmapPixel(bmp, (unsigned char)row, (short)colLow)) {

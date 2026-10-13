@@ -74,7 +74,8 @@ public:
 };
 
 struct Entry0216920c {
-    char pad00[0x11];
+    char unknown00[6];
+    char name[11];
     unsigned char f11;
     unsigned short value : 14;
     unsigned short active : 1;
@@ -84,14 +85,18 @@ struct Entry0216920c {
 struct Table0216920c {
     unsigned char count;
     char pad01[3];
-    struct Entry0216920c entries[1];
+    struct Entry0216920c entries[16];
 };
 
 struct Slot0216920c { char pad[0x30]; };
 
 struct Ctx0216920c {
+#if defined(jpn)
+    char pad00[0x10];
+#else
     struct Slot0216920c slots[8];
     char pad180[0x10];
+#endif
     struct Table0216920c* table;
     char pad194[4];
     unsigned char f198;
@@ -118,6 +123,22 @@ extern "C" void _Z21DispatchNode_021f6630iiss(int, int, short, short);
 
 extern struct Ctx0216920c* data_ov004_02171030;
 
+#if defined(jpn)
+extern "C" Node0216920c* func_ov004_02168f08(void*, int);
+extern "C" void func_ov004_02168ed8(void*, int, int);
+extern "C" void func_ov004_02168eac(void*, int, int);
+struct Dispatch0216920c {
+    char pad00[0x104];
+    short page;
+    short column;
+};
+extern "C" Dispatch0216920c* func_ov004_02168fa4(void*, int);
+extern "C" void func_ov023_021f809c(void*, void*);
+#define func_ov023_021f6524 func_ov004_02168f08
+#define _Z26ClearNodeMaskById_021f6600Pvii func_ov004_02168ed8
+#define func_ov023_021f65d4 func_ov004_02168eac
+#endif
+
 // USA: func_ov004_0216920c
 extern "C" ARM int func_ov004_0216920c(struct Scene0216920c* scene) {
     struct Table0216920c* table = data_ov004_02171030->table;
@@ -135,9 +156,13 @@ extern "C" ARM int func_ov004_0216920c(struct Scene0216920c* scene) {
         Node0216920c* d = _Z24GetNodeIfType15_02168a38Pvi(scene, i + 0xe0);
         struct Entry0216920c* e = &table->entries[page * 8 + i];
         if (e->active) {
+#if defined(jpn)
+            a->f20 = e->name;
+#else
             struct Slot0216920c* slot = &data_ov004_02171030->slots[i];
-            func_02042764((char*)e + 6, slot, 1);
+            func_02042764(e->name, slot, 1);
             a->f20 = slot;
+#endif
             c->SetValue(e->value);
             d->SetValue(e->f11);
             d->f3d = 1;
@@ -168,7 +193,16 @@ extern "C" ARM int func_ov004_0216920c(struct Scene0216920c* scene) {
     Node0216920c* first = _Z23GetNodeIfType8_02168a6cPvi(scene, 0xc8);
     first->v44(0xd);
     first->v7c(0xd);
+#if defined(jpn)
+    Dispatch0216920c* dispatch = func_ov004_02168fa4(scene, 0x14);
+    if (dispatch) {
+        dispatch->page = page;
+        dispatch->column = col;
+        func_ov023_021f809c(dispatch, scene);
+    }
+#else
     _Z21DispatchNode_021f6630iiss((int)scene, 0x14, page, col);
+#endif
     if (scene->f1b4 != 0 && scene->f1b8 > 0xf) {
         scene->f1be = 0xf;
     }

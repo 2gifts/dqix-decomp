@@ -7,24 +7,19 @@ extern void* AllocateAndLinkEntry020bda58(struct Obj020bda58* obj, unsigned int 
 extern void* CreateAllocatorHolderInRegion(void* start, unsigned int size);
 
 struct Obj020bc820;
-#if defined(jpn)
-extern "C" void func_020be2ec(struct Obj020bc820* obj);
-#define ReleaseActorAndUnlink020bc820 func_020be2ec
-#else
 extern void ReleaseActorAndUnlink020bc820(struct Obj020bc820* obj);
-#endif
 
 struct Block020bbf84 {
     char pad0[8];
-    void* alloc;      /* 0x8 */
-    void* child;      /* 0xc */
-    int index;        /* 0x10 */
-    char region[4];   /* 0x14 */
+    void* alloc;
+    void* child;
+    int index;
+    char region[4];
 };
 
 struct ListEntry020bbf84 {
     char pad0[0xc];
-    SignedAllocatorList list; /* 0xc */
+    SignedAllocatorList list;
     char pad2[0xc];
 };
 extern struct ListEntry020bbf84 data_0210f824[];

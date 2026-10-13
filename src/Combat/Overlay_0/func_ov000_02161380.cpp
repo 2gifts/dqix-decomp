@@ -1,4 +1,9 @@
 #include <globaldefs.h>
+#if defined(jpn)
+#define LOW_REGION(j,u) (j)
+#else
+#define LOW_REGION(j,u) (u)
+#endif
 #include "GameState/GameState.h"
 
 struct Container02070e60;
@@ -87,7 +92,6 @@ struct Pair02161380 {
     unsigned int slots;
 };
 
-// second view of Formation02161380's count byte; reads through it are not CSE'd with the direct ones
 struct Counts02161380 {
     unsigned char alive : 4;
     unsigned char groupCount : 2;
@@ -114,13 +118,13 @@ struct Source02161380 {
 };
 
 struct Scene02161380 {
-    unsigned char pad_0[0x29c];
+    unsigned char pad_0[LOW_REGION(0x218,0x29c)];
     BattleData02161380* data;
     Roster02161380* roster;
     unsigned char pad_2a4[0xc14];
     Source02161380* sources[4];
     unsigned short field_ec8;
-    unsigned char pad_eca[0x4f5a];
+    unsigned char pad_eca[LOW_REGION(0x51ce,0x4f5a)];
     Combatant02161380 combatants[8];
     Model02161380 models[8];
 };

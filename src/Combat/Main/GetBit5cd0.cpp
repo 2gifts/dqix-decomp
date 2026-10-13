@@ -1,14 +1,14 @@
 #include <globaldefs.h>
+#include "GameState/GameState.h"
 
-struct S_02011430 {
-    char unk[0x5cd0];
-    unsigned char bits[32];
-};
+struct S_02011430;
 
-// USA: func_02011430
-ARM int GetBit5cd0(struct S_02011430* obj, int a, int b) {
-    unsigned int idx = b + (a - 1) * 5;
-    unsigned int q = idx / 8;
-    unsigned char mask = 1 << (idx - q * 8);
-    return (obj->bits[idx / 8] & mask) != 0;
+ARM int GetBit5cd0(S_02011430* owner, int floor, int containerSlot) {
+    GameState* state = reinterpret_cast<GameState*>(owner);
+    const unsigned char* flags = reinterpret_cast<const unsigned char*>(
+        &state->unk_397d[0x5cd0 - 0x397d]);
+    unsigned int bitIndex = containerSlot + (floor - 1) * 5;
+    unsigned int byteIndex = bitIndex / 8;
+    unsigned char mask = 1 << (bitIndex - byteIndex * 8);
+    return (flags[byteIndex] & mask) != 0;
 }

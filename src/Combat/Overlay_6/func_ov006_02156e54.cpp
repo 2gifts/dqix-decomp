@@ -1,7 +1,9 @@
 #include <globaldefs.h>
 
 #if defined(jpn)
-#define func_ov006_02156e54 func_ov006_0215845c
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
 #endif
 #include "Filesystem/BackgroundLoader.h"
 
@@ -35,7 +37,7 @@ struct IngredientSprite {
 extern "C" void func_ov006_0215479c(IngredientSprite* self);
 
 struct AlchemyPot {
-    char unk_0[0x894];
+    char unk_0[LOW_REGION(0x714, 0x894)];
     IngredientSprite ingredients_[4];
 };
 
@@ -51,7 +53,7 @@ extern "C" ARM void func_ov006_02156e54(AlchemyPot* self) {
         ingredient->graphics_.unk_5e = 0;
         ingredient->graphics_.unk_14 = func_0203be40(func_0203bd08()) + (i << 6) + 0x100;
         ingredient->graphics_.unk_38 = i * 0x120 + 0x240;
-        ingredient->graphics_.unk_3c = (i + 10) & 0xf;
+        ingredient->graphics_.unk_3c = (i + LOW_REGION(8, 10)) & 0xf;
         ingredient->graphics_.unk_40 = 0;
         ingredient->x_ = (i << 5) + 0x20;
         ingredient->y_ = 0x80;

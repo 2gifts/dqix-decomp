@@ -1,9 +1,15 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { MEMBER_OFFSET = 0x144 };
+#else
+enum { MEMBER_OFFSET = 0x150 };
+#endif
+
 extern "C" void func_02083c48(void*);
 
 struct T0205420c {
-    char pad[0x150];
+    char pad[MEMBER_OFFSET];
     void* field150;
 };
 

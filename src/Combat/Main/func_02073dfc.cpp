@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { TargetIdOffset = 0x150, TargetPositionOffset = 0x154 };
+#else
+enum { TargetIdOffset = 0x15c, TargetPositionOffset = 0x160 };
+#endif
 #include "GameState/GameState.h"
 
 struct Vec3_02073dfc { int x; int y; int z; };
@@ -18,10 +24,10 @@ extern "C" ARM int func_02073dfc(unsigned short* idPtr, struct Vec3s32_020c3030*
         if (combatant == 0) continue;
         int targetId = _ZNK8Object3D10GetField06Ev((struct U16Field0x6_020375f8*)combatant);
         struct Vec3_02073dfc local = func_02034104(combatant);
-        if (*(int*)((char*)combatant + 0x15c) != -1) {
-            targetId = *(int*)((char*)combatant + 0x15c);
+        if (*(int*)((char*)combatant + TargetIdOffset) != -1) {
+            targetId = *(int*)((char*)combatant + TargetIdOffset);
             if (i == 0 || (combatant->obj3D_.unknown_0_ & 0x1000)) {
-                _ZN8Vector3iaSERKS_((int*)&local, (int*)((char*)combatant + 0x160));
+                _ZN8Vector3iaSERKS_((int*)&local, (int*)((char*)combatant + TargetPositionOffset));
             }
         }
         if (*idPtr == targetId) {

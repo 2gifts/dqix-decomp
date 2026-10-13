@@ -1,3 +1,8 @@
+#if defined(jpn)
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -51,7 +56,7 @@ struct CommandMenu {
     char pad2f[0x1d];
     int field_0x4c;
     struct Obj0203c108 message;
-    char pad68[0x388];
+    char pad68[LOW_REGION(0x3c8, 0x388)];
     struct ActionEntry* entries[16];
 };
 
@@ -82,6 +87,9 @@ extern "C" ARM void func_ov000_02171e60(struct CommandMenu* self) {
             self->stack[self->stackTop] = 100;
         }
     }
+#if defined(jpn)
+    _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(&self->message, (char*)entry->name);
+#else
     char text[0x80];
     __clear(text, 0x80);
     char format[0x80];
@@ -90,4 +98,5 @@ extern "C" ARM void func_ov000_02171e60(struct CommandMenu* self) {
     _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(text, format, 0);
     func_02046608(_Z26GetGlobalField0x1c020421a0v(), 10, format, text, 0x100, 0, 0);
     _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(&self->message, text);
+#endif
 }

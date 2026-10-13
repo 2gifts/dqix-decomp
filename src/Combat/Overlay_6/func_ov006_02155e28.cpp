@@ -3,7 +3,6 @@
 #define _Z35SetFieldsFromFormattedValue0207f914P11Obj0207f914iii func_02080654
 #define data_ov006_0215ff54 data_ov006_021612b8
 #define data_ov006_0215ff64 data_ov006_021612c8
-#define data_ov006_02160080 data_ov006_021613e0
 #define data_ov006_021600af data_ov006_0216140f
 #define data_ov006_021600c4 data_ov006_02161424
 #define data_ov006_021600d7 data_ov006_02161437

@@ -1,5 +1,11 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kGlobalHolderInnerOffset = 0x4 };
+#else
+enum { kGlobalHolderInnerOffset = 0xc };
+#endif
+
 struct Sub021e7450 {
     char pad[0x26];
     unsigned short f26;
@@ -13,7 +19,7 @@ struct Base021e7450 {
 };
 
 struct Holder021e7450 {
-    char pad[0xc];
+    char pad[kGlobalHolderInnerOffset];
     struct Base021e7450* base;
 };
 extern struct Holder021e7450 data_ov025_021ef988;

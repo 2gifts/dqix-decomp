@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 #if defined(jpn)
 #define R(j,u) (j)
-#define func_ov017_021b213c func_ov017_021b2854
 #else
 #define R(j,u) (u)
 #endif

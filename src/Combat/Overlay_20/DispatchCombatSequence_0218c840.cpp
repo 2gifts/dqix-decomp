@@ -2,7 +2,6 @@
 #define REGION(j,u) (j)
 #define data_ov020_0218d974 data_ov020_0218e1c4
 #define data_ov020_0218d990 data_ov020_0218e1e0
-#define func_0205c96c func_0205dcd4
 #else
 #define REGION(j,u) (u)
 #endif

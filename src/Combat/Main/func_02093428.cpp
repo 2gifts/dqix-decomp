@@ -2,12 +2,13 @@
 #include "GameState/GameState.h"
 
 struct FieldFlagBlock;
+struct Ctx0209459c;
 
 extern "C" void func_02012fe4();
 extern "C" int func_020457e0(char* g);
 extern "C" void func_020531f0(GameObject* c);
 extern "C" void func_02043124(char* g);
-extern "C" void func_020945ac();
+extern "C" void func_020945ac(struct Ctx0209459c* ctx);
 void ClearSubstructBytes(void* obj);
 extern "C" void _Z24ReinitController02043204Pc(char* obj);
 void ResetAndEnableFieldFlag(struct FieldFlagBlock* obj);
@@ -36,14 +37,22 @@ struct CombatantIndexList02093428 {
 };
 
 struct GlobalBlock02093428 {
+#if defined(jpn)
+    char unk0[0x868];
+#else
     char unk0[0x998];
+#endif
     int field998;
     char unk99c[0x9a0 - 0x99c];
     int field9a0;
 };
 
 struct GameStateFlags02093428 {
+#if defined(jpn)
+    char unk0[0x7ca0];
+#else
     char unk0[0x7f74];
+#endif
     unsigned char field7f74;
     unsigned char field7f75;
 };
@@ -51,7 +60,11 @@ struct GameStateFlags02093428 {
 struct CombatantFields02093428 {
     char unk0[0xbe];
     unsigned char fieldbe;
+#if defined(jpn)
+    char unkbf[0x1a6 - 0xbf];
+#else
     char unkbf[0x1b2 - 0xbf];
+#endif
     unsigned short field1b2;
 };
 
@@ -122,8 +135,7 @@ extern "C" ARM void func_02093428(struct BattlePhaseState02093428* s) {
         if (((struct GameStateFlags02093428*)bs)->field7f75 != 0) {
             ResetAndEnableFieldFlag((struct FieldFlagBlock*)bs);
         }
-        GetGlobal02109030();
-        func_020945ac();
+        func_020945ac((struct Ctx0209459c*)GetGlobal02109030());
         s->field34 = 4;
         s->field35 = 0;
         return;
@@ -132,8 +144,7 @@ extern "C" ARM void func_02093428(struct BattlePhaseState02093428* s) {
     if (state == 3) {
         _Z24ReinitController02043204Pc(gf);
         func_02043124(gf);
-        GetGlobal02109030();
-        func_020945ac();
+        func_020945ac((struct Ctx0209459c*)GetGlobal02109030());
         s->field34 = 4;
         s->field35 = 0;
         ClearSubstructBytes(bs);

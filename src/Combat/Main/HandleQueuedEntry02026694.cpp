@@ -1,54 +1,55 @@
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 
+struct Obj02026780;
+extern "C" int func_02026780(Obj02026780* context, void* archive, unsigned int archiveSize);
 
-extern "C" int func_02026780(void* self, int a, int b);
+#if defined(jpn)
+enum { SuccessOffset = 0x6cd };
+#else
+enum { SuccessOffset = 0x779 };
+#endif
 
-struct List0202fec8;
+extern const char data_020ef6d7[];
 
-extern int data_020ef6d7;
+struct TreasureLoadContextPrefix {
+    unsigned char unknown0[SuccessOffset];
+    unsigned char succeeded;
+    unsigned char unknownAfterSuccess[0x23e];
+    unsigned char pending;
+    unsigned char state;
+    unsigned char complete;
+    unsigned char unknownAfterComplete[0x71];
+    int taskId;
+};
 
 // USA: func_02026694
-ARM void HandleQueuedEntry02026694(char* self) {
-    int obj;
-    int out1;
-    int out2;
+ARM void HandleQueuedEntry02026694(char* context) {
+    TreasureLoadContextPrefix* request = reinterpret_cast<TreasureLoadContextPrefix*>(context);
+    if (request->pending == 0) return;
 
-    if (*(unsigned char*)(self + 0x9b8) == 0) {
+    BackgroundLoader* loader = BackgroundLoader::GetInstance();
+    if (request->state == 0) {
+        loader->RemoveTask(request->taskId);
+        loader->AddFence();
+        request->taskId = loader->QueueLoadFile(data_020ef6d7, NULL);
+        request->state++;
         return;
     }
+    if (request->state != 1) return;
+    if (loader->GetTaskStatus(request->taskId) == 0) return;
 
-    obj = (int)BackgroundLoader::GetInstance();
-
-    if (*(unsigned char*)(self + 0x9b9) == 0) {
-        ((BackgroundLoader*)(obj))->RemoveTask((int)(*(int*)(self + 0xa2c)));
-        ((BackgroundLoader*)((unsigned char*)obj))->AddFence();
-        *(int*)(self + 0xa2c) = ((BackgroundLoader*)(obj))->QueueLoadFile((const char*)((int)&data_020ef6d7), (SafeAllocator*)(0));
-        *(unsigned char*)(self + 0x9b9) += 1;
-        return;
-    }
-
-    if (*(unsigned char*)(self + 0x9b9) != 1) {
-        return;
-    }
-
-    if (((BackgroundLoader*)(obj))->GetTaskStatus((int)(*(int*)(self + 0xa2c))) == 0) {
-        return;
-    }
-
-    out1 = 0;
-    out2 = 0;
-    ((BackgroundLoader*)((struct List0202fec8*)obj))->GetLoadedFileByID((int)(*(int*)(self + 0xa2c)), (void**)(&out1), (unsigned int*)(&out2));
-
-    if (func_02026780(self, out1, out2) == 0) {
-        *(unsigned char*)(self + 0x9ba) = 1;
+    void* archive = NULL;
+    unsigned int archiveSize = 0;
+    loader->GetLoadedFileByID(request->taskId, &archive, &archiveSize);
+    if (func_02026780(reinterpret_cast<Obj02026780*>(context), archive, archiveSize) == 0) {
+        request->complete = 1;
     } else {
-        *(unsigned char*)(self + 0x779) = 1;
-        *(unsigned char*)(self + 0x9ba) = 1;
+        request->succeeded = 1;
+        request->complete = 1;
     }
-
-    ((BackgroundLoader*)(obj))->RemoveTask((int)(*(int*)(self + 0xa2c)));
-    *(int*)(self + 0xa2c) = -1;
-    *(unsigned char*)(self + 0x9b8) = 0;
-    *(unsigned char*)(self + 0x9b9) += 1;
+    loader->RemoveTask(request->taskId);
+    request->taskId = -1;
+    request->pending = 0;
+    request->state++;
 }

@@ -10,7 +10,6 @@
 #define data_ov015_0219415c data_ov015_02194c9c
 #define data_ov015_02194160 data_ov015_02194ca0
 #define data_ov015_02194167 data_ov015_02194ca7
-#define func_ov008_02184968 func_ov008_02185a64
 #define func_ov008_021895a8 func_ov008_0218a2b0
 #define func_ov008_02189c70 func_ov008_0218a930
 #define func_ov008_0218aee4 func_ov008_0218bb50

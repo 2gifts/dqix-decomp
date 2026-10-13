@@ -1,12 +1,7 @@
 #include <globaldefs.h>
 
 struct List0208df10;
-#if defined(jpn)
-extern "C" void func_0208e818(struct List0208df10* l);
-#define ClearList0208df10 func_0208e818
-#else
 void ClearList0208df10(struct List0208df10* l);
-#endif
 struct List020727d8;
 void ResetListHeader020727d8(struct List020727d8* list);
 struct List0204af64;

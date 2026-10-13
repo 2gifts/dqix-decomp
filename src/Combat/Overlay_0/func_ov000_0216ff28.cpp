@@ -2,12 +2,27 @@
 #include "std_library_functions.h"
 
 struct State0xc0cc {
+#if defined(jpn)
+    char entries[0x14];
+    int unk14;
+    int unk18;
+    int unk1c;
+    int unk20;
+    int unk24;
+    int unk28;
+    int unk2c;
+    unsigned int low16 : 16;
+    unsigned int next8 : 8;
+    unsigned int high8 : 8;
+    int unk34;
+#else
     int unk0;
     int unk4;
     int unk8;
     int unkC;
     int unk10;
     short unk14;
+#endif
 };
 
 void InitFields0x0(struct State0xc0cc* obj);

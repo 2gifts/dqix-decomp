@@ -1,8 +1,15 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kGlobalHolderInnerOffset = 0x4 };
+#else
+enum { kGlobalHolderInnerOffset = 0xc };
+#endif
+
 #include "Filesystem/BackgroundLoader.h"
 #include "std_library_functions.h"
 
-struct Ctx021e40e4 { char pad[0xc]; void* target; };
+struct Ctx021e40e4 { char pad[kGlobalHolderInnerOffset]; void* target; };
 extern struct Ctx021e40e4 data_ov025_021ef988;
 extern char data_ov025_021ef7ef;
 

@@ -1,3 +1,8 @@
+#if defined(jpn)
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
 #include <globaldefs.h>
 #include <std_library_functions.h>
 
@@ -30,9 +35,9 @@ struct MenuWindow {
 struct EquipmentMenu {
     char unk_0[0xe10];
     unsigned short* text_;
-    char unk_e14[0xee4 - 0xe14];
+    char unk_e14[LOW_REGION(0xee0, 0xee4) - 0xe14];
     MenuWindow window_;
-    char unk_f98[0x3ddd - 0xf98];
+    char unk_f98[LOW_REGION(0x3d55, 0x3ddd) - LOW_REGION(0xf94, 0xf98)];
     unsigned char textMode_;
     MenuWindow* GetWindow() { return &window_; }
 };
@@ -40,7 +45,11 @@ struct EquipmentMenu {
 extern Touch02114e54 data_02114e54;
 
 extern "C" void func_ov005_02159a30(EquipmentMenu* self, unsigned short* text, int touched);
+#if defined(jpn)
+extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(StructA0205d5d0* a, int b, int c, int d);
+#else
 extern "C" int _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih(StructA0205d5d0* a, int b, int c, int d, unsigned char e);
+#endif
 
 // USA: func_ov005_02158ed0
 extern "C" ARM void func_ov005_02158ed0(EquipmentMenu* self) {
@@ -53,9 +62,13 @@ extern "C" ARM void func_ov005_02158ed0(EquipmentMenu* self) {
             return;
         touched = 1;
     }
-    memset(self->text_, 0, 0x960);
+    memset(self->text_, 0, LOW_REGION(0x800, 0x960));
     unsigned char style = self->window_.style_;
     if (style == 1)
         func_ov005_02159a30(self, self->text_, touched);
+#if defined(jpn)
+    _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((StructA0205d5d0*)&self->window_, style, (int)self->text_, 1);
+#else
     _Z26TryApplyElemFields0205d5d0P15StructA0205d5d0iiih((StructA0205d5d0*)&self->window_, style, (int)self->text_, 1, 0);
+#endif
 }

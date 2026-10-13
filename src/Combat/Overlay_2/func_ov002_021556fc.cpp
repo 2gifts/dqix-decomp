@@ -40,7 +40,6 @@
 #define FIELD_8a0 0x8a0
 #endif
 
-
 struct S020466c8;
 struct Struct02074bd0;
 struct Cont0205d1e0;
@@ -49,12 +48,7 @@ struct Obj0205d2bc;
 struct Obj0205d048;
 
 char *GetGlobalField0x1c020421a0();
-#if defined(jpn)
-extern "C" void func_020474e8(S020466c8*, int);
-#define SetField0x38 func_020474e8
-#else
 void SetField0x38(S020466c8 *s, int v);
-#endif
 void *GetPtrField0x2a04(GameState *gameState);
 extern "C" void func_ov017_021cff8c(int id, int a);
 extern "C" void func_ov016_0218b5c0(int a, int b);

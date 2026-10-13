@@ -2,14 +2,12 @@
 #include "std_library_functions.h"
 #include "Memory/SafeAllocator.h"
 
+int Reset3FieldsAndDispatch_0216aa10(void);
 #if defined(jpn)
 enum { handlerCount = 18 };
 #define data_ov004_021700ec data_ov004_02170844
-extern "C" int func_ov004_0216ac84(void);
-#define Reset3FieldsAndDispatch_0216aa10 func_ov004_0216ac84
 #else
 enum { handlerCount = 19 };
-int Reset3FieldsAndDispatch_0216aa10(void);
 #endif
 
 struct Block0x4c_0216aa70 { unsigned int w[handlerCount]; };

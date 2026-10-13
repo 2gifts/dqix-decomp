@@ -1,26 +1,8 @@
 #include <globaldefs.h>
 
-struct SafeAllocator {
-    void* Allocate(unsigned int len);
-    void Reset();
-};
-
-struct BackgroundLoader {
-    static BackgroundLoader* GetInstance();
-    int QueueLoadFileInGP2(const char* gp2, const char* innerFile, SafeAllocator* alloc);
-    int GetTaskStatus(int taskID);
-    void GetLoadedFileByID(int taskID, void** outPtr, unsigned int* outLength);
-    void RemoveTask(int taskID);
-};
-
-struct GrottoStruct {
-    unsigned char unknown_0[5];
-};
-
-struct GameState {
-    static GameState* GetInstance();
-    GrottoStruct* GetGrottoStruct();
-};
+#include "Memory/SafeAllocator.h"
+#include "Filesystem/BackgroundLoader.h"
+#include "GameState/GameState.h"
 
 struct Struct0205a198;
 struct ClearTarget0205a234;
@@ -48,7 +30,11 @@ struct LoadTable {
 };
 
 struct LoadController {
+#if defined(jpn)
+    char pad0[0x220];
+#else
     char pad0[0x2d0];
+#endif
     int taskId;
     SafeAllocator* allocator;
     struct LoadTable* table;
@@ -74,7 +60,11 @@ extern "C" ARM void func_02043368(struct LoadController* self) {
         if (grotto != 0 && grotto->unknown_0[0] != 0 && grotto->unknown_0[2] == 0) {
             return;
         }
+#if defined(jpn)
+        self->taskId = loader->QueueLoadFile(&data_020f0093, 0);
+#else
         self->taskId = loader->QueueLoadFileInGP2(&data_020f007f, &data_020f0093, 0);
+#endif
         self->state++;
         return;
     }

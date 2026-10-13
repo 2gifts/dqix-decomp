@@ -20,19 +20,36 @@ extern "C" void func_ov000_02176e3c(void* ctx, void* obj, int sel, int a, int b,
 
 struct MenuCtx_0217b6d0 {
     char pad0[0x188];
+#if defined(jpn)
+    char list[0x1faa - 0x188];
+#else
     char list[0x1d72 - 0x188];
+#endif
     unsigned short flags;
 };
 
 struct MenuGlobals_0217b6d0 {
+#if defined(jpn)
+    MenuCtx_0217b6d0* ctx;
+    int field0;
+    int field4;
+    MenuCtx_0217b6d0* const& GetWindow() const {
+        return ctx;
+    }
+#else
     int field0;
     int field4;
     MenuCtx_0217b6d0* ctx;
+#endif
     short cur;
 };
 
 struct MemberInfo_0217b6d0 {
+#if defined(jpn)
+    char pad0[0x8ca];
+#else
     char pad0[0x962];
+#endif
     unsigned short lastSpell;
 };
 
@@ -53,14 +70,73 @@ struct MenuObj_0217b6d0 {
     Window_0217b6d0* window;
     char pad3c[0x4c - 0x3c];
     int memberIndex;
+#if defined(jpn)
+    char pad50[0x484 - 0x50];
+#else
     char pad50[0x444 - 0x50];
+#endif
     unsigned char field444;
+#if defined(jpn)
+    const short& GetSelection() const {
+        return selected;
+    }
+#endif
 };
 
 extern MenuGlobals_0217b6d0 data_ov000_02184294;
 extern unsigned short data_02114e30;
 extern char data_02108760;
 
+#if defined(jpn)
+// USA: func_ov000_0217b6d0
+extern "C" ARM int func_ov000_0217b6d0(MenuObj_0217b6d0* obj, int arg1, int arg2) {
+    MenuCtx_0217b6d0* ctx;
+    enum Selection { kSelectionMin = -32768, kSelectionMax = 32767 };
+    Selection cur;
+    data_ov000_02184294.ctx->flags |= 0x100;
+    const short prev = obj->GetSelection();
+    cur = (Selection)(short)_Z26GetActiveScaledSum0205d794P15Struct_0205c570((struct Struct_0205c570*)obj->window);
+    obj->selected = cur;
+    {
+    ctx = data_ov000_02184294.GetWindow();
+    _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii((struct Struct_0205def8*)ctx->list, 1, 0x23);
+    if (prev != cur) {
+        return -1;
+    }
+    int t = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
+    bool active = (t | _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(obj->window, 0x14)) != 0;
+    if (active || obj->field444 != 0) {
+        if (!_Z20IsBitFlagSet0217c4e8Pvi(obj, cur)) {
+            return obj->selections[obj->depth];
+        }
+        _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii((struct Struct_0205def8*)ctx->list, 0, 0x23);
+        _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii((struct Obj0205eaa0*)&data_02108760, 1, 0);
+        func_ov000_021716d0(obj);
+        GameObject* member = GameState::GetInstance()->GetPartyMemberByIndex(obj->memberIndex);
+        if (member != NULL) {
+            MemberInfo_0217b6d0* info = (MemberInfo_0217b6d0*)GetFieldAt0x150((unsigned char*)member);
+            if (info != NULL) {
+                info->lastSpell = obj->actionId;
+            }
+        }
+        if (obj->selections[obj->depth] != 0x64) {
+            obj->window->state = 0x10;
+        }
+        return obj->selections[obj->depth];
+    }
+    if (_Z35CheckFlagsOrField_0217ab48_0217ab48Pv(obj)) {
+        func_ov000_0217629c(obj);
+        obj->selections[obj->depth] = 0;
+        obj->depth--;
+        obj->selected = -1;
+        obj->actionId = 0;
+        func_ov000_0217ab8c(obj, arg1, arg2);
+        func_ov000_02176e3c(data_ov000_02184294.ctx, obj, obj->selections[obj->depth], data_ov000_02184294.field4, data_ov000_02184294.field0, 0);
+    }
+    return -1;
+    }
+}
+#else
 // USA: func_ov000_0217b6d0
 extern "C" ARM int func_ov000_0217b6d0(MenuObj_0217b6d0* obj, int arg1, int arg2) {
     MenuCtx_0217b6d0* ctx;
@@ -106,3 +182,4 @@ extern "C" ARM int func_ov000_0217b6d0(MenuObj_0217b6d0* obj, int arg1, int arg2
     }
     return -1;
 }
+#endif

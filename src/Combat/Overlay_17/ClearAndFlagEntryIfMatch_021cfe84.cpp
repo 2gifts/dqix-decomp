@@ -1,5 +1,11 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kResourceEntryOffset = 0x3524 };
+#else
+enum { kResourceEntryOffset = 0x3734 };
+#endif
+
 extern "C" void* func_02012fe4(void);
 extern "C" void* func_ov017_0218b5b0(void);
 struct Base02019508;
@@ -19,7 +25,7 @@ ARM void ClearAndFlagEntryIfMatch_021cfe84(int unused0, Obj021cfe84* obj) {
 		return;
 	}
 	unsigned char* self = (unsigned char*)func_ov017_0218b5b0();
-	unsigned char* work = *(unsigned char**)(self + 0x3000 + 0x734);
+	unsigned char* work = *(unsigned char**)(self + kResourceEntryOffset);
 	if (work[3] != 0) {
 		return;
 	}

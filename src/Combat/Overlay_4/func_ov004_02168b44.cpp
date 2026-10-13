@@ -1,3 +1,4 @@
+#include "GameState/BattleRecordSnapshot.h"
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
 #include "std_library_functions.h"
@@ -9,15 +10,11 @@ enum { extensionOffset = 0x144, slotsOffset = 0x7280, contextBytes = 0x24, table
 enum { extensionOffset = 0x150, slotsOffset = 0x74c0, contextBytes = 0x1a4, tableOffset = 0x71fc, fieldOffset = 0x569c, entryOffset = 0x6c, pointerOffset = 0x3b84, flagOffset = 0x1962, firstOffset = 0x1964, secondOffset = 0x1988 };
 #endif
 
-struct S_a0870;
-struct S_a08a4;
-struct S_a08d8;
-struct S_a090c;
 struct S_e830;
-int GetFieldPercentOver307(struct S_a0870* p);
-int GetFieldPercentOver232(struct S_a08a4* p);
-int GetFieldPercentOver944(struct S_a08d8* p);
-int GetFieldPercentOver448(struct S_a090c* p);
+int GetFieldPercentOver307(BattleRecordSnapshot* p);
+int GetFieldPercentOver232(BattleRecordSnapshot* p);
+int GetFieldPercentOver944(BattleRecordSnapshot* p);
+int GetFieldPercentOver448(BattleRecordSnapshot* p);
 int GetFieldAt0x7e(struct S_e830* p);
 int GetFieldAt0x0(int* obj);
 extern "C" int _Z24UpdatePlayClocks020ac4f8i(int commit);
@@ -53,30 +50,6 @@ struct Slot3_02168b44 {
     signed char f9;
 };
 
-// the 0xb0 block filled in by _Z23LoadBattleBlock020ac4c0Pv (same object S_a0870/S_a08a4/... describe)
-struct Blk02168b44 {
-    unsigned short f00;
-    unsigned char f02;
-    unsigned char f03;
-    unsigned short f04;
-    unsigned char f06;
-    unsigned char f07;
-    unsigned int f08 : 24;
-    unsigned int f08hi : 8;
-    unsigned int f0cA : 14;
-    unsigned int f0cB : 14;
-    unsigned int f0cC : 4;
-    unsigned int f10A : 9;
-    unsigned int f10B : 14;
-    unsigned int f10C : 9;
-    unsigned int f14A : 9;
-    unsigned int f14B : 9;
-    unsigned int f14C : 11;
-    unsigned int f14D : 3;
-    char rest[0xb0 - 0x18];
-};
-
-// the 0x18-byte packed record allocated into ctx->f194
 struct Packed02168b44 {
     unsigned int w0A : 14;
     unsigned int w0B : 17;
@@ -172,7 +145,7 @@ extern "C" ARM int func_ov004_02168b44(void* a) {
     ctx->f1a0 = 1;
     data_ov004_02171030->f190 = (unsigned char*)bs + tableOffset;
 
-    struct Blk02168b44 blk;
+    BattleRecordSnapshot blk;
     int ok = _Z23LoadBattleBlock020ac4c0Pv(&blk);
     unsigned int score = 0;
     CopyOutBattleField0x7ac0(&score);
@@ -187,24 +160,24 @@ extern "C" ARM int func_ov004_02168b44(void* a) {
     memset(data_ov004_02171030->f194, 0, 0x18);
 
     if (ok) {
-        data_ov004_02171030->f194->w0A = blk.f00;
-        data_ov004_02171030->f194->w8A = blk.f02;
-        data_ov004_02171030->f194->w4A = blk.f04;
-        data_ov004_02171030->f194->w8B = blk.f06;
-        data_ov004_02171030->f194->w4B = blk.f08;
+        data_ov004_02171030->f194->w0A = blk.clocks.elapsed.hours;
+        data_ov004_02171030->f194->w8A = blk.clocks.elapsed.minutes;
+        data_ov004_02171030->f194->w4A = blk.clocks.committed.hours;
+        data_ov004_02171030->f194->w8B = blk.clocks.committed.minutes;
+        data_ov004_02171030->f194->w4B = blk.unknown08_0;
         data_ov004_02171030->f194->w0B = score;
-        data_ov004_02171030->f194->wcA = blk.f10A;
-        data_ov004_02171030->f194->w10A = blk.f08hi;
-        data_ov004_02171030->f194->wcB = blk.f0cB;
-        data_ov004_02171030->f194->w10B = blk.f10B;
+        data_ov004_02171030->f194->wcA = blk.unknown10_0;
+        data_ov004_02171030->f194->w10A = blk.unknown08_24;
+        data_ov004_02171030->f194->wcB = blk.unknown0c_14;
+        data_ov004_02171030->f194->w10B = blk.unknown10_9;
         data_ov004_02171030->f194->w8C =
-            (unsigned char)GetFieldPercentOver307((struct S_a0870*)&blk);
+            (unsigned char)GetFieldPercentOver307(&blk);
         data_ov004_02171030->f194->w8D =
-            (unsigned char)GetFieldPercentOver232((struct S_a08a4*)&blk);
+            (unsigned char)GetFieldPercentOver232(&blk);
         data_ov004_02171030->f194->wcC =
-            (unsigned char)GetFieldPercentOver944((struct S_a08d8*)&blk);
+            (unsigned char)GetFieldPercentOver944(&blk);
         data_ov004_02171030->f194->w10C =
-            (unsigned char)GetFieldPercentOver448((struct S_a090c*)&blk);
+            (unsigned char)GetFieldPercentOver448(&blk);
         data_ov004_02171030->f194->f14 = fld->val;
         data_ov004_02171030->f194->f16 = bit;
     }

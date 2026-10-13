@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kDisplayFlagOffset = 0x717 };
+#else
+enum { kDisplayFlagOffset = 0x79b };
+#endif
+
 #include "std_library_functions.h"
 
 extern "C" unsigned int GetMainBG1ScreenBase(void);
@@ -6,7 +13,7 @@ extern "C" unsigned int GetMainBG2ScreenBase(void);
 void ResetPendingSlotsAndFlags_021dcdf4(void* obj);
 
 struct Obj021dcd90 {
-    char pad[0x79b];
+    char pad[kDisplayFlagOffset];
     unsigned char bit0 : 1;
     unsigned char flagBit1 : 1;
     unsigned char rest : 6;

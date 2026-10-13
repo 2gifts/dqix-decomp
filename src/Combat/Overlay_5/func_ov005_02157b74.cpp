@@ -4,6 +4,12 @@
 #define func_ov005_02157b74 func_ov005_0215916c
 #endif
 
+#if defined(jpn)
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
+
 struct GameState;
 
 struct ItemDef02157b74 {
@@ -13,68 +19,68 @@ struct ItemDef02157b74 {
 };
 
 struct Item02157b74 {
-    ItemDef02157b74* def;          // 0x00
-    int f4;                        // 0x04
-    unsigned int equipType : 4;    // 0x08
+    ItemDef02157b74* def;
+    int f4;
+    unsigned int equipType : 4;
     unsigned int pad0 : 14;
     unsigned int cursed : 1;
     unsigned int pad1 : 13;
-    int fc;                        // 0x0c
-    unsigned int pad2 : 20;        // 0x10
+    int fc;
+    unsigned int pad2 : 20;
     unsigned int kind : 8;
     unsigned int pad3 : 4;
 };
 
 struct Linked02157b74 {
     char pad0[0x18];
-    short id;                      // 0x18
+    short id;
 };
 
 struct Equip02157b74 {
     char pad0[0x16];
-    short linkedId;                // 0x16
+    short linkedId;
 };
 
 struct Combatant02157b74 {
     char pad0[4];
-    short id;                      // 0x04
-    char pad1[0x150 - 6];
-    void* model;                   // 0x150
+    short id;
+    char pad1[LOW_REGION(0x144 - 6, 0x150 - 6)];
+    void* model;
 };
 
 struct Context02157b74 {
-    char pad0[0x4fc];
-    int actor;                     // 0x4fc
-    char pad1[0x634 - 0x500];
-    unsigned short flags;          // 0x634
+    char pad0[LOW_REGION(0x4f8, 0x4fc)];
+    int actor;
+    char pad1[LOW_REGION(0x56c - 0x4fc, 0x634 - 0x500)];
+    unsigned short flags;
 };
 
 struct Entry02157b74 {
-    short id;                      // 0x00
-    signed char state;             // 0x02
+    short id;
+    signed char state;
     char pad[0x1c - 3];
 };
 
 struct Menu02157b74 {
     char pad0[0xdf4];
-    void* items;                   // 0x0df4
-    char pad1[0x1a34 - 0xdf8];
-    char cursor[0x2d90 - 0x1a34];  // 0x1a34
-    Entry02157b74 entries[0x18];   // 0x2d90
+    void* items;
+    char pad1[LOW_REGION(0x19ac - 0xdf8, 0x1a34 - 0xdf8)];
+    char cursor[0x2d90 - 0x1a34];
+    Entry02157b74 entries[0x18];
     char pad2[0x3da8 - 0x3030];
-    unsigned char f3da8;           // 0x3da8
+    unsigned char f3da8;
     unsigned char f3da9;
-    unsigned char f3daa;           // 0x3daa
+    unsigned char f3daa;
     unsigned char f3dab;
-    unsigned short f3dac;          // 0x3dac
+    unsigned short f3dac;
     char pad3[0x3dbb - 0x3dae];
-    signed char selected;          // 0x3dbb
-    unsigned char tab;             // 0x3dbc
+    signed char selected;
+    unsigned char tab;
     char pad4[0x3dcc - 0x3dbd];
-    unsigned int dirty;            // 0x3dcc
+    unsigned int dirty;
     unsigned char pad5;
-    unsigned char message;         // 0x3dd1
-    unsigned char nextMessage;     // 0x3dd2
+    unsigned char message;
+    unsigned char nextMessage;
 };
 
 extern "C" GameState* _ZN9GameState11GetInstanceEv();
@@ -118,7 +124,7 @@ extern unsigned char data_ov005_0215cd30[];
 extern "C" ARM void func_ov005_02157b74(Menu02157b74* self, int key, int keepStock) {
     char* bag;
     GameState* gs = _ZN9GameState11GetInstanceEv();
-    Context02157b74* ctx = _Z19GetField1c_021a193cPi(*(int*)(func_ov017_0218b5b0() + 0x3708));
+    Context02157b74* ctx = _Z19GetField1c_021a193cPi(*(int*)(func_ov017_0218b5b0() + LOW_REGION(0x34f8, 0x3708)));
     int bareArg;
     int actor = ctx->actor;
     Combatant02157b74* who = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, actor);
@@ -174,7 +180,7 @@ extern "C" ARM void func_ov005_02157b74(Menu02157b74* self, int key, int keepSto
             func_0207c378(bag + 0x1d4, cur, 1, data_ov005_0215cd38[self->tab]);
         }
         self->entries[self->selected].id = -1;
-        _Z28DispatchByIdxAndCond021551fcPchi(self, _Z19GetField1c_021a193cPi(*(int*)(func_ov017_0218b5b0() + 0x3708))->actor, 1);
+        _Z28DispatchByIdxAndCond021551fcPchi(self, _Z19GetField1c_021a193cPi(*(int*)(func_ov017_0218b5b0() + LOW_REGION(0x34f8, 0x3708)))->actor, 1);
         func_ov005_02155544(self);
         self->dirty |= 0x10;
         self->f3da8 = 0;
@@ -267,7 +273,7 @@ extern "C" ARM void func_ov005_02157b74(Menu02157b74* self, int key, int keepSto
         if (item->equipType == 7) {
             _Z23SetPtrFieldByte021583fcP14Holder021583fcc(who, 1);
         }
-        _Z28DispatchByIdxAndCond021551fcPchi(self, _Z19GetField1c_021a193cPi(*(int*)(func_ov017_0218b5b0() + 0x3708))->actor, 1);
+        _Z28DispatchByIdxAndCond021551fcPchi(self, _Z19GetField1c_021a193cPi(*(int*)(func_ov017_0218b5b0() + LOW_REGION(0x34f8, 0x3708)))->actor, 1);
     }
 
     if (kind == 0x62) {

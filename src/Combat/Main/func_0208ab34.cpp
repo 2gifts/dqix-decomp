@@ -1,6 +1,5 @@
 #include <globaldefs.h>
 #if defined(jpn)
-#define _Z31InitFieldsIfHandleValid0208ad1cPv func_0208b610
 #define data_020e8cc6 data_020e8de2
 #define data_020e8cc5 data_020e8de1
 #endif

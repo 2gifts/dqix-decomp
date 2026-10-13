@@ -106,7 +106,9 @@ extern const char data_ov014_021897ac[];
 extern "C" ARM void func_ov014_021886f8(MonsterListScreen* self)
 {
     SafeAllocator* allocators;
+#if !defined(jpn)
     GameState* gameState = GameState::GetInstance();
+#endif
     if (!(self->listFlags_ & 0x10))
         return;
 
@@ -141,7 +143,11 @@ extern "C" ARM void func_ov014_021886f8(MonsterListScreen* self)
         func_0204b5b4(&graphics, 2);
         _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator((AllocTarget0204b12c*)&graphics, &allocators[1]);
         _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii((Obj0204b5e8*)&graphics, 0, 0);
+#if defined(jpn)
+        _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator((Foo0204af38*)&graphics, 1, &allocators[1]);
+#else
         _Z21AllocateArray0204af38P11Foo0204af38iP13SafeAllocator((Foo0204af38*)&graphics, 5, &allocators[1]);
+#endif
         for (int i = 1; i < numFiles; i++)
         {
             void* data = FindRecordByIndex((Rec020467f0*)file, i, &name, (int*)&dataSize);
@@ -151,6 +157,7 @@ extern "C" ARM void func_ov014_021886f8(MonsterListScreen* self)
         loader->RemoveTask(self->listBackgroundTaskID_);
         self->listBackgroundTaskID_ = -1;
 
+#if !defined(jpn)
         int language = _Z24NormalizeField5_0200fb08P14Struct0200fb08((Struct0200fb08*)gameState);
         int title = 0;
         switch (language)
@@ -168,10 +175,14 @@ extern "C" ARM void func_ov014_021886f8(MonsterListScreen* self)
             title = 4;
             break;
         }
+#endif
         _Z19ClearBuffer0204b010P11Obj0204b010Pv((Obj0204b010*)&graphics, 0);
         _Z28DispatchIndexedEntry0204b988P11Obj0204b988jiit((Obj0204b988*)&graphics, 0, 0, 0, 0xffff);
+
+#if !defined(jpn)
         if (title != 0)
             _Z21DispatchEntry0204b8d0P11Obj0204b8d0jiisssst((Obj0204b8d0*)&graphics, title, 0, 0, 0x16, 2, 9, 2, 0xffff);
+#endif
         _Z28FlushAndDispatchList0204b0e8P12List0204b0e8Pv((List0204b0e8*)&graphics, 0);
 
         allocators[1].Reset();

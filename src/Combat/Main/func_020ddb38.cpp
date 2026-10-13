@@ -1,4 +1,10 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { CombatantSlotsOffset = 0x144 };
+#else
+enum { CombatantSlotsOffset = 0x150 };
+#endif
 #include "GameState/GameState.h"
 #include "Util/Random.h"
 
@@ -44,7 +50,7 @@ extern "C" ARM int func_020ddb38(int n, int idx, struct Container020ddb38* conta
     ok:
         elem = (struct Element020ddb38*)_Z33GetPointerField_02171b9c_02171b9cPvi(container, idx);
     } else {
-        elem = (struct Element020ddb38*)((char*)(*(struct Slots0208386c**)((char*)combatant + 0x150)) + 0x2d4);
+        elem = (struct Element020ddb38*)((char*)(*(struct Slots0208386c**)((char*)combatant + CombatantSlotsOffset)) + 0x2d4);
     }
     if (elem == 0) return 0;
     if (!IsField8Bit19Set(elem->v)) return 0;
@@ -52,7 +58,7 @@ extern "C" ARM int func_020ddb38(int n, int idx, struct Container020ddb38* conta
     case 8:
     case 9:
     case 0xa:
-        _Z27RemoveSlotShiftDown0208386cP13Slots0208386ci(*(struct Slots0208386c**)((char*)combatant + 0x150), (signed char)idx);
+        _Z27RemoveSlotShiftDown0208386cP13Slots0208386ci(*(struct Slots0208386c**)((char*)combatant + CombatantSlotsOffset), (signed char)idx);
         break;
     default:
         if (*(short*)((char*)elem + 0x18) == 0x4667) {

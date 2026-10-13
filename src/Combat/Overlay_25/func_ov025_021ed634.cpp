@@ -26,7 +26,7 @@ struct Node021600f8 {
 };
 struct Node02160094 {
     char pad0[0x18];
-    int f18;
+    float f18;
     char pad1c[4];
     unsigned short s20;
 };
@@ -76,6 +76,11 @@ struct Cur {
 };
 struct Obj12 { void* a; void* b; int c; };
 struct Arr16 { short v[16]; };
+struct MessageEntryCounts {
+    unsigned char unknown00[0x30];
+    unsigned char flaggedEntries;
+    unsigned char positiveFlaggedEntries;
+};
 
 extern Arr16 data_ov025_021ef040;
 extern Arr16 data_ov025_021ef060;
@@ -122,8 +127,9 @@ int TestBitAt0x34(unsigned char* obj, unsigned int index);
 char* GetFieldByKeyFromWork0x88(void* work, int key);
 extern "C" unsigned int strlen(const char* s);
 extern "C" int sprintf(char* buf, const char* fmt, ...);
-extern "C" long long func_0200c578(int x);
+#if !defined(jpn)
 extern "C" void func_0204500c(void* g, char* s, int a, int b);
+#endif
 extern "C" void func_02042b98(void* self, int a, int b, int c, int d);
 
 #if defined(jpn)
@@ -134,7 +140,7 @@ extern "C" void* _Z27GetBoundedField156_02171674Pvi(void*, int);
 extern "C" void* _Z27GetBoundedField420_0217199cPvi(void*, int);
 extern "C" void _Z22SetIndexedName02046574P11Obj02046574iPc(void*, int, char*);
 extern "C" void func_020474a8(void*, int, char*, char*);
-extern "C" void func_02045d88(void*, char*, int);
+extern "C" void func_0204500c(void*, char*, int);
 extern "C" void func_02043270(void*, int, int, int, int);
 extern "C" char* strcpy(char*, const char*);
 extern "C" char* strcat(char*, const char*);
@@ -299,21 +305,21 @@ extern "C" ARM void func_ov025_021ed634(Self021ed634* self) {
             }
         }
         if (cnt3c > 0) {
-            int r2 = sum38 / cnt3c;
-            if (r2 == 0) { if (sum38 != 0) r2 = -1; }
+            int displayValue = sum38 / cnt3c;
+            if (displayValue == 0 && sum38 != 0) displayValue = -1;
             #if defined(jpn)
-func_02047410(g, r2);
+func_02047410(g, displayValue);
 #else
-StoreInArray0x8b0((StoreStruct*)g, 0, r2);
+StoreInArray0x8b0((StoreStruct*)g, 0, displayValue);
 #endif
         } else if (cnt[0] != 0) {
-            int r2 = fp / cnt[0];
-            if ((unsigned int)(id - 0x261) <= 1) r2 = fp;
-            if (r2 == 0) { if (fp != 0) r2 = 1; }
+            int displayValue = fp / cnt[0];
+            if ((unsigned int)(id - 0x261) <= 1) displayValue = fp;
+            if (displayValue == 0 && fp != 0) displayValue = 1;
             #if defined(jpn)
-func_02047410(g, r2);
+func_02047410(g, displayValue);
 #else
-StoreInArray0x8b0((StoreStruct*)g, 0, r2);
+StoreInArray0x8b0((StoreStruct*)g, 0, displayValue);
 #endif
         } else {
             #if defined(jpn)
@@ -530,21 +536,19 @@ found_entry:
             *(g + 0x1000 + 0x9d7) = 1;
         }
         int n5 = _Z19CopyOutRegion0x571dPcPv(gs, out);
-        int r7 = 0;
-        int r8 = 0;
+        unsigned char positiveFlaggedEntries = 0;
+        unsigned char flaggedEntries = 0;
         unsigned char* tb = (unsigned char*)func_ov017_021b8478(func_ov017_0218b5b0()->unknown_ptr_3718);
         char* ew = _Z20GetOffsetPtr02160f08Pv(GetActiveCombatWork());
         for (int q = 0; q < n5; q++) {
             Entry021dafd0* e = (Entry021dafd0*)_Z22FindEntryById_021dafd0Pci(ew, (unsigned char)out[q]);
-            if (e != 0) {
-                if (TestBitAt0x34(tb, (unsigned char)out[q]) != 0) {
-                    r8 = (unsigned char)(r8 + 1);
-                    if (e->v > 0) r7 = (unsigned char)(r7 + 1);
-                }
+            if (e != 0 && TestBitAt0x34(tb, (unsigned char)out[q]) != 0) {
+                ++flaggedEntries;
+                if (e->v > 0) ++positiveFlaggedEntries;
             }
         }
-        g[0x30] = r8;
-        g[0x31] = r7;
+        ((MessageEntryCounts*)g)->flaggedEntries = flaggedEntries;
+        ((MessageEntryCounts*)g)->positiveFlaggedEntries = positiveFlaggedEntries;
 
 #endif
         char* fmt = GetFieldByKeyFromWork0x88(self->f168, (short)id);
@@ -558,9 +562,9 @@ found_entry:
             __clear(buf, 0x100);
             void* obj = _Z20GetField6b0_021b8470Pv(func_ov017_0218b5b0()->unknown_ptr_3718);
             if (id == 0x205) {
-                sprintf(buf, fmt, func_0200c578(node->f18));
+                sprintf(buf, fmt, (double)node->f18);
             } else if (obj != 0) {
-                sprintf(buf, fmt, func_0200c578(*(int*)((char*)obj + 0x8e3c)));
+                sprintf(buf, fmt, (double)*(float*)((char*)obj + 0x8e3c));
             }
             if (id == 0x1bf || id == 0x224 || id == 0x1c0 || id == 0x225 || (unsigned int)(id - 0x264) <= 7) {
                 Comb* c = (Comb*)_Z25GetCombatantWithFlag0x400P9GameStatei(gs, self->list->s6);
@@ -579,7 +583,7 @@ found_entry:
 #endif
         }
 #if defined(jpn)
-        func_02045d88(g, output, 0);
+        func_0204500c(g, output, 0);
         *(g + 0x17e1) = 0;
         *(int*)(g + 0x1730) = 0xc;
         *(int*)(g + 0x1734) = 0x12;

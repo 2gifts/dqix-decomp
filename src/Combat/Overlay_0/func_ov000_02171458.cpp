@@ -1,3 +1,8 @@
+#if defined(jpn)
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
+#endif
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
@@ -26,7 +31,9 @@ struct Entry02171458 {
 extern "C" int func_ov000_02171210(struct Entry02171458* entry, void* menu);
 extern "C" struct Entry02171458* func_ov000_02170cf8(void* menu, int id);
 extern "C" void* __clear(void* dst, int count);
+#if !defined(jpn)
 extern "C" void func_020e4864(int a, char* b, int c, int d, int e, int f);
+#endif
 extern "C" void _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(const char* src, char* dst, int flag);
 
 struct MenuState02171458 {
@@ -49,7 +56,7 @@ struct Menu02171458 {
     char pad28[0x4c - 0x28];
     int combatantId;
     struct Obj0203c108 label;
-    char pad66[0x9c - 0x66];
+    char pad66[LOW_REGION(0xdc, 0x9c) - 0x66];
     struct Entry02171458* entries[1];
 };
 
@@ -88,6 +95,9 @@ extern "C" ARM void func_ov000_02171458(struct Menu02171458* menu) {
     if (entry == NULL) {
         return;
     }
+#if defined(jpn)
+    _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(&menu->label, (char*)entry->name);
+#else
     char buf1[0x80];
     __clear(buf1, 0x80);
     char buf2[0x80];
@@ -95,4 +105,5 @@ extern "C" ARM void func_ov000_02171458(struct Menu02171458* menu) {
     func_020e4864(entry->name, buf1, 1, 0, 0, 0);
     _Z37CopyTextAndUppercaseIfFlagged0206819cPKcPci(buf1, buf2, 0);
     _Z23SwapGlobalEntry0203c108P11Obj0203c108Pc(&menu->label, buf2);
+#endif
 }

@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kModeOffset = 0x915, kFlagsOffset = 0x9cb, kBattleFlagsOffset = 0xa6c };
+#else
+enum { kModeOffset = 0x9c1, kFlagsOffset = 0xa97, kBattleFlagsOffset = 0xccc };
+#endif
+
 #include "GameState/GameState.h"
 
 void* GetDataPtr02114e04_020d6c00(void);
@@ -24,7 +31,7 @@ extern "C" {
 }
 
 struct BattleFlags5ccc020235c8 {
-    char pad[0xccc];
+    char pad[kBattleFlagsOffset];
     unsigned int flagsBit0 : 1;
     signed int flagsBit1 : 1;
     unsigned int flagsRest : 30;
@@ -33,9 +40,9 @@ struct BattleFlags5ccc020235c8 {
 struct Obj020235c8 {
     char pad0[0x14];
     int field0x14;
-    char pad1[0x9c1 - 0x18];
+    char pad1[kModeOffset - 0x18];
     unsigned char field0x9c1;
-    char pad2[0xa97 - 0x9c2];
+    char pad2[kFlagsOffset - (kModeOffset + 1)];
     unsigned char field0xa97;
 };
 

@@ -7,9 +7,17 @@ struct Obj021e4358 {
     char pad0[0xc8];
     void* fc8;
     void* fcc;
+    #if defined(jpn)
+    char pad1[0x4e4 - 0xd0];
+#else
     char pad1[0x4e8 - 0xd0];
+#endif
     int f4e8;
+    #if defined(jpn)
+    char pad2[0x56c - 0x4e8];
+#else
     char pad2[0x634 - 0x4ec];
+#endif
     unsigned short f634;
 };
 

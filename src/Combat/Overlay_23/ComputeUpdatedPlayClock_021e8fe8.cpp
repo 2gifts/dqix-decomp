@@ -1,11 +1,10 @@
+#include "GameState/BattleRecordSnapshot.h"
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-struct PlayClock020ac614 { unsigned short hours; unsigned char minutes; unsigned char seconds; };
-void AddPlayClockHours020ac614(struct PlayClock020ac614* clock, int amount);
+void AddPlayClockHours020ac614(struct BattleRecordPlayClock* clock, int amount);
 
-struct PlayClock020ac644 { unsigned short hours; unsigned char minutes; unsigned char seconds; };
-void AddPlayClockMinutes020ac644(struct PlayClock020ac644* clock, int amount);
+void AddPlayClockMinutes020ac644(struct BattleRecordPlayClock* clock, int amount);
 
 struct TimeStamp020103f0;
 void ComputeElapsedPlayTimeHMS020103f0(struct TimeStamp020103f0* obj, unsigned short* outHours, unsigned char* outMinutes, unsigned char* outSeconds);
@@ -19,9 +18,9 @@ int GetFieldAt0x0(int* obj);
 extern "C" int _s32_div_f(int a, int b);
 
 // USA: func_ov023_021e8fe8  (semantic: ComputeUpdatedPlayClock_021e8fe8)
-extern "C" ARM struct PlayClock020ac614 func_ov023_021e8fe8(struct PlayClock020ac614 clock, int flag) {
+extern "C" ARM struct BattleRecordPlayClock func_ov023_021e8fe8(struct BattleRecordPlayClock clock, int flag) {
     GameState* battle = GameState::GetInstance();
-    struct PlayClock020ac614 result;
+    struct BattleRecordPlayClock result;
     unsigned short tHours;
     unsigned char tMinutes;
     unsigned char tSeconds;
@@ -49,7 +48,7 @@ extern "C" ARM struct PlayClock020ac614 func_ov023_021e8fe8(struct PlayClock020a
     }
 
     AddPlayClockHours020ac614(&result, (unsigned short)(clock.hours + tHours));
-    AddPlayClockMinutes020ac644((struct PlayClock020ac644*)&result, (unsigned char)(clock.minutes + tMinutes));
+    AddPlayClockMinutes020ac644(&result, (unsigned char)(clock.minutes + tMinutes));
 
     result.seconds = result.seconds + (unsigned char)(clock.seconds + tSeconds);
     unsigned char secs = result.seconds;
@@ -64,7 +63,7 @@ extern "C" ARM struct PlayClock020ac614 func_ov023_021e8fe8(struct PlayClock020a
                 goto done;
             }
         }
-        AddPlayClockMinutes020ac644((struct PlayClock020ac644*)&result, carry);
+        AddPlayClockMinutes020ac644(&result, carry);
         result.seconds = result.seconds % 0x3c;
     }
 done:

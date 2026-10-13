@@ -11,7 +11,6 @@
 #define data_ov015_021945a0 data_ov015_021951c0
 #define data_ov015_021945d0 data_ov015_021951f0
 #define data_ov024_021ff17c data_ov023_021ff17c
-#define func_ov005_02158560 func_ov005_02159b58
 #else
 #define R(j,u) (u)
 #endif

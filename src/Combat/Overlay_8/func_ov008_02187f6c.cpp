@@ -2,6 +2,9 @@
 
 #if defined(jpn)
 #define func_ov008_02187f6c func_ov008_02188ccc
+#define LOW_REGION(j,u) (j)
+#else
+#define LOW_REGION(j,u) (u)
 #endif
 #include <std_library_functions.h>
 #include "GameState/GameState.h"
@@ -17,7 +20,15 @@ extern "C" int func_020420e8(const char* text, int large);
 extern "C" char* func_0205ec34();
 
 struct TextWindow;
+#if defined(jpn)
+extern "C" void func_0205d304(TextWindow* window, char* text, int, int, int, int, int);
+extern "C" void func_020e2168(char*, const char*, unsigned int, unsigned char, int);
+extern "C" void func_02041f50(char*, char*);
+int StringLength(const char*);
+extern char data_ov008_0218c0d5[];
+#else
 extern "C" void func_0205d304(TextWindow* window, char* text, int, int, int, int, int, int);
+#endif
 
 extern "C" MessageSystem* _Z26GetGlobalField0x1c020421a0v();
 void AppendXYTag(char* text, int x, int y);
@@ -74,7 +85,7 @@ struct PartyData
 
 struct Hero
 {
-    char unk_0[0x150];
+    char unk_0[LOW_REGION(0x144,0x150)];
     PartyData* partyData_;
 };
 
@@ -94,26 +105,41 @@ extern "C" ARM void func_ov008_02187f6c(BattleRecords* self, ClearRecords* recor
 {
     if (records != NULL)
     {
-        self->window_.width_ = 0x14;
+        self->window_.width_ = LOW_REGION(0x10,0x14);
         self->window_.height_ = 3;
-        self->window_.unk_a4 = 6;
+        self->window_.unk_a4 = LOW_REGION(8,6);
         self->window_.unk_a6 = 0x11;
         self->window_.unk_a8 = 0;
-        self->window_.unk_aa = 6;
+        self->window_.unk_aa = LOW_REGION(5,6);
         self->window_.unk_ac = 0xc;
         self->window_.unk_ae = 0xe;
         self->window_.unk_b7 = 0xc;
         self->window_.unk_b1 = 4;
         self->window_.unk_b5 = 1;
         self->window_.unk_b6 = 1;
-        memset(self->text_, 0, 0x960);
+        memset(self->text_, 0, LOW_REGION(0x800,0x960));
         char* text = self->text_;
         if (text != NULL)
         {
             _Z26GetGlobalField0x1c020421a0v();
             if (records != NULL)
             {
-                Hero* hero = (Hero*)GameState::GetInstance()->GetProtagonist();
+    #if defined(jpn)
+            Hero* hero = (Hero*)GameState::GetInstance()->GetProtagonist();
+            char* name = self->text_ + 0x780;
+            func_020e2168(name, data_ov008_0218c0d5, records->title_, hero->partyData_->appearance_.female_, 1);
+            char plainName[0x80];
+            __clear(plainName, sizeof(plainName));
+            func_02041f50(name, plainName);
+            int length = StringLength(plainName);
+            int y;
+            int x = (0x80 - (length / 2) * 12) / 2;
+            y = 6;
+            if (length != StringLength(name)) y = 8;
+            AppendXYTag(text, x, y);
+            _Z20AppendString02042058PcPKc(text, name);
+#else
+            Hero* hero = (Hero*)GameState::GetInstance()->GetProtagonist();
                 char* name = self->text_ + 0x8e0;
                 BackgroundLoader::AddLockGlobal();
                 unsigned int size = 0;
@@ -133,6 +159,7 @@ extern "C" ARM void func_ov008_02187f6c(BattleRecords* self, ClearRecords* recor
                 AppendXYTag(text, x, 6);
                 if (name != NULL)
                     _Z20AppendString02042058PcPKc(text, name);
+#endif
             }
             else
             {
@@ -148,10 +175,14 @@ extern "C" ARM void func_ov008_02187f6c(BattleRecords* self, ClearRecords* recor
                 }
             }
         }
-        func_0205d304(&self->window_, self->text_, 0, 0, 0, 0, 0, 1);
+        #if defined(jpn)
+    func_0205d304(&self->window_, self->text_, 0, 0, 0, 0, 0);
+#else
+    func_0205d304(&self->window_, self->text_, 0, 0, 0, 0, 0, 1);
+#endif
         return;
     }
-    self->window_.width_ = 0x16;
+    self->window_.width_ = LOW_REGION(0x12,0x16);
     self->window_.height_ = 8;
     self->window_.unk_a4 = 1;
     self->window_.unk_a6 = 0xf;
@@ -163,13 +194,28 @@ extern "C" ARM void func_ov008_02187f6c(BattleRecords* self, ClearRecords* recor
     self->window_.unk_b1 = 4;
     self->window_.unk_b5 = 1;
     self->window_.unk_b6 = 1;
-    memset(self->text_, 0, 0x960);
+    memset(self->text_, 0, LOW_REGION(0x800,0x960));
     char* labels = self->text_;
     if (labels != NULL)
     {
         _Z26GetGlobalField0x1c020421a0v();
         if (records != NULL)
         {
+#if defined(jpn)
+            Hero* hero = (Hero*)GameState::GetInstance()->GetProtagonist();
+            char* name = self->text_ + 0x780;
+            func_020e2168(name, data_ov008_0218c0d5, records->title_, hero->partyData_->appearance_.female_, 1);
+            char plainName[0x80];
+            __clear(plainName, sizeof(plainName));
+            func_02041f50(name, plainName);
+            int length = StringLength(plainName);
+            int y;
+            int x = (0x80 - (length / 2) * 12) / 2;
+            y = 6;
+            if (length != StringLength(name)) y = 8;
+            AppendXYTag(labels, x, y);
+            _Z20AppendString02042058PcPKc(labels, name);
+#else
             Hero* hero = (Hero*)GameState::GetInstance()->GetProtagonist();
             char* name = self->text_ + 0x8e0;
             BackgroundLoader::AddLockGlobal();
@@ -190,6 +236,7 @@ extern "C" ARM void func_ov008_02187f6c(BattleRecords* self, ClearRecords* recor
             AppendXYTag(labels, x, 6);
             if (name != NULL)
                 _Z20AppendString02042058PcPKc(labels, name);
+#endif
         }
         else
         {
@@ -205,10 +252,14 @@ extern "C" ARM void func_ov008_02187f6c(BattleRecords* self, ClearRecords* recor
             }
         }
     }
+    #if defined(jpn)
+    func_0205d304(&self->window_, self->text_, 0, 0, 0, 0, 0);
+#else
     func_0205d304(&self->window_, self->text_, 0, 0, 0, 0, 0, 0);
-    self->window_.width_ = 3;
+#endif
+    self->window_.width_ = LOW_REGION(5,3);
     self->window_.height_ = 8;
-    self->window_.unk_a4 = 0x1b;
+    self->window_.unk_a4 = LOW_REGION(0x1a,0x1b);
     self->window_.unk_a6 = 0xf;
     self->window_.unk_a8 = 4;
     self->window_.unk_aa = 5;
@@ -218,7 +269,11 @@ extern "C" ARM void func_ov008_02187f6c(BattleRecords* self, ClearRecords* recor
     self->window_.unk_b1 = 5;
     self->window_.unk_b5 = 1;
     self->window_.unk_b6 = 1;
-    memset(self->text_, 0, 0x960);
+    memset(self->text_, 0, LOW_REGION(0x800,0x960));
     func_ov008_02188408(self, self->text_, 1, records);
+    #if defined(jpn)
+    func_0205d304(&self->window_, self->text_, 0, 0, 0, 0, 0);
+#else
     func_0205d304(&self->window_, self->text_, 0, 0, 0, 0, 0, 0);
+#endif
 }

@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+
 #include "Util/Random.h"
 
 int CheckField0x14FiveFlagsClear0208810c(unsigned char* obj);
@@ -12,9 +13,7 @@ extern "C" ARM int func_0208767c(unsigned char* obj, struct Random* rng) {
         if (rng == 0) rng = GetBTRandom();
         if (NextRandomMax(rng, 2) >= 1) return -1;
     }
-    int inc = obj[0x24] + 1;
-    obj[0x24] = inc;
-    if ((unsigned int)(inc & 0xff) >= 4) {
+    if (++obj[0x24] >= 4) {
         if (CheckField0x14FiveFlagsClear0208810c(obj)) {
             obj[0x24] = 4;
             ResetAndSetFlag0x1000000(obj);

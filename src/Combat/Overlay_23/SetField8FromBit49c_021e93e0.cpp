@@ -1,23 +1,42 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-extern "C" int func_ov017_021d60f4(void* obj);
-extern "C" void* func_ov023_021e8f28(int v);
-extern "C" void func_ov017_021d6134(void* obj, int v);
-
-struct Sub0x150_021e93e0 {
-    char pad[0x49c];
-    unsigned char bit0 : 1;
+struct BattleCommandArgument {
+    int type;
+    union {
+        int integer;
+        float real;
+        BattleCommandArgument* reference;
+    } value;
 };
 
-// USA: func_ov023_021e93e0
-ARM int SetField8FromBit49c_021e93e0(void* obj) {
+struct PartyMemberRecordView {
+    char unknown000[0x464];
+    unsigned char skillProgress[32];
+    char unknown484[4];
+    short models[10];
+    unsigned char female : 1;
+};
+
+struct PartyRecordOwnerView {
+#if defined(jpn)
+    char unknown000[0x144];
+#else
+    char unknown000[0x150];
+#endif
+    PartyMemberRecordView* record;
+};
+
+extern "C" int func_ov017_021d60f4(BattleCommandArgument* argument);
+extern "C" GameObject* func_ov023_021e8f28(int partyIndex);
+extern "C" void func_ov017_021d6134(BattleCommandArgument* output, int value);
+
+ARM int SetField8FromBit49c_021e93e0(void* command) {
+    BattleCommandArgument* arguments = (BattleCommandArgument*)command;
     GameState::GetInstance();
-    void* p = func_ov023_021e8f28(func_ov017_021d60f4(obj));
-    if (p == NULL) {
-        return 0;
-    }
-    struct Sub0x150_021e93e0* q = *(struct Sub0x150_021e93e0**)((char*)p + 0x150);
-    func_ov017_021d6134((char*)obj + 8, q->bit0);
+    GameObject* member = func_ov023_021e8f28(func_ov017_021d60f4(&arguments[0]));
+    if (member == NULL) return 0;
+    PartyMemberRecordView* record = ((PartyRecordOwnerView*)member)->record;
+    func_ov017_021d6134(&arguments[1], record->female);
     return 1;
 }

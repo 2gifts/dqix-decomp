@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum CommandLayoutOffsets { kCombatantCommandsOffset = 0x144, kSpecialListOffset = 0x8b8, kEligibilityOffset = 0xc7 };
+#else
+enum CommandLayoutOffsets { kCombatantCommandsOffset = 0x150, kSpecialListOffset = 0x950, kEligibilityOffset = 0x87 };
+#endif
+
 #include "GameState/GameState.h"
 
 struct Struct0217193c;
@@ -48,7 +55,7 @@ struct CommandSlot {
     char pad0[0x10];
     unsigned char selections[8];
     signed char selection;
-    char pad19[0x87 - 0x19];
+    char pad19[kEligibilityOffset - 0x19];
     unsigned char eligible;
 };
 struct LearnedCommands {
@@ -56,10 +63,10 @@ struct LearnedCommands {
     short equipped[8];
     char pad464[0x488 - 0x464];
     short equipment[9];
-    char pad49a[0x950 - 0x49a];
+    char pad49a[kSpecialListOffset - 0x49a];
     int useSpecialList;
 };
-struct CombatantView { char pad0[0x150]; LearnedCommands* commands; };
+struct CombatantView { char pad0[kCombatantCommandsOffset]; LearnedCommands* commands; };
 struct AbilityEntry { unsigned short id, command; char pad4[6]; unsigned short order; };
 struct Entry0209a9dc { unsigned short id, command; };
 struct PartyRoster { char pad0[0xf78]; unsigned char ids[4]; unsigned char count; };

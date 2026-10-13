@@ -1,15 +1,26 @@
 #include <globaldefs.h>
 
 extern unsigned short data_02114e30;
+int TestFlag0SetAndFlag1Clear(unsigned short* input, int mask);
 
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
-extern "C" int func_0205d97c(void*);
+struct Struct_0205d81c {
+    char unknown_000[0xb0];
+    unsigned char selected;
+};
 
-struct Obj021e6e20 { char pad[0xac]; };
+extern "C" int func_0205d97c(Struct_0205d81c* elements);
 
-// USA: func_ov023_021e6e20
-ARM int TestFlagsAndActiveElement2_021e6e20(struct Obj021e6e20* obj) {
-    int a = TestFlag0SetAndFlag1Clear(&data_02114e30, 2);
-    int b = func_0205d97c((char*)obj + 0xac) == 2;
-    return (a | b) != 0;
+struct Obj021e6e20 {
+#if defined(jpn)
+    char unknown_000[0x90];
+#else
+    char unknown_000[0xac];
+#endif
+    Struct_0205d81c elements;
+};
+
+ARM int TestFlagsAndActiveElement2_021e6e20(Obj021e6e20* selection) {
+    int inputTriggered = TestFlag0SetAndFlag1Clear(&data_02114e30, 2);
+    int touchOutsideSelection = func_0205d97c(&selection->elements) == 2;
+    return (inputTriggered | touchOutsideSelection) != 0;
 }

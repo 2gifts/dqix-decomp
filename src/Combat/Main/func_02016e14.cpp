@@ -5,6 +5,7 @@
 #include "Graphics/NSBXX/RenderConfig.h"
 #include "Graphics/Vector.h"
 #include "System/Matrix.h"
+#include "System/Graphics.h"
 #include "World/Object3D.h"
 
 struct Pair02016e14 { unsigned char a; unsigned char b; };
@@ -18,10 +19,18 @@ struct State02016e14 { short unk0; short val2; short unk4; unsigned short flags6
 struct Context02016e14 {
     char pad0[0x8];
     struct Bits02016e14* info8;
+#if defined(jpn)
+    char pad1[0x852 - 0xc];
+#else
     char pad1[0x832 - 0xc];
+#endif
     unsigned char visible832;
     unsigned char visible833;
+#if defined(jpn)
+    char pad2[0x281c - 0x854];
+#else
     char pad2[0x27dc - 0x834];
+#endif
     struct Pair02016e14 pairs[0x20];
     unsigned char count;
 };
@@ -46,24 +55,22 @@ struct Node02016e14 {
     Object3D* object;
 };
 
-struct LightingShift02016e14 { char pad[0x98]; int shift; };
-
 extern "C" void _Z27ClearGlobalFlagBits02016d8cPv(void* arg0);
 extern "C" void Mat3x3_WriteRotationY(Matrix3x3* out, int sine, int cosine);
 
 // USA: func_02016e14
 extern "C" ARM void func_02016e14(struct Context02016e14* ctx, void* parent, struct Node02016e14* node, int visit) {
     GameState::GetInstance();
-    struct LightingShift02016e14* lighting = (struct LightingShift02016e14*)LightingManager::GetInstance();
+    LightingManager* lighting = LightingManager::GetInstance();
     struct Entry02016e14* entry = node->entry;
     struct State02016e14* state = node->state;
-    int shift = lighting->shift;
+    int timeOfDay = lighting->timeOfDayIndex_;
 
     if ((ctx->visible832 != 0 || ctx->visible833 != 0) && ctx->info8 != NULL) {
         unsigned int nibble = ctx->info8->nibble;
         if (nibble == 0 || nibble == 7 || ctx->visible833 != 0) {
             if (!(state->flags6 & 0x10)) {
-                if (state->flags6 & (1 << shift)) {
+                if (state->flags6 & (1 << timeOfDay)) {
                     node->flags2 &= ~4;
                 } else {
                     node->flags2 |= 4;
@@ -72,7 +79,7 @@ extern "C" ARM void func_02016e14(struct Context02016e14* ctx, void* parent, str
         }
     }
 
-    *(int*)0x40004c0 = 0x7fff7fff;
+    GXFIFO_DIFFUSE_AMBIENT = 0x7fff7fff;
 
     Model3D* model = NULL;
     Object3D* object = NULL;

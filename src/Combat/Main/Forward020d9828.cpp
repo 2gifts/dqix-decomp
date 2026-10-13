@@ -1,8 +1,7 @@
 #include <globaldefs.h>
-struct ProcessorContext;
-void MarkContextReadyAndSwitch(struct ProcessorContext*);
+#include "System/ProcessorContext.h"
 
-// USA: _Z15Forward020d9828Pv
-ARM void Forward020d9828(void* p) {
-    MarkContextReadyAndSwitch((struct ProcessorContext*)p);
+// USA: func_020d9828
+ARM void Forward020d9828(ProcessorContext* context) {
+    MarkContextReadyAndSwitch(context);
 }

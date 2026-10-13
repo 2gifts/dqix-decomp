@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kDragModel = 0x3c68 };
+#else
+enum { kDragModel = 0x3cf0 };
+#endif
+
 #include <System/Matrix.h>
 #include <std_library_functions.h>
 
@@ -11,7 +18,7 @@ struct MenuModel {
 };
 
 struct EquipmentMenu {
-    char unk_0[0x3cf0];
+    char unk_0[kDragModel];
     MenuModel dragModel_;
     short dragged_;
 };

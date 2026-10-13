@@ -14,7 +14,11 @@ extern "C" {
 }
 
 struct Obj020214f0 {
+#if defined(jpn)
+    char pad[0x915];
+#else
     char pad[0x9c1];
+#endif
     unsigned char field0x9c1;
     unsigned char pad2;
     unsigned char field0x9c3;

@@ -2,8 +2,6 @@
 #define R(j,u) (j)
 #define data_ov006_0215fffe data_ov006_02161350
 #define func_ov006_0215f3d8 func_ov006_021607f8
-#define func_ov006_0215f4dc func_ov006_021608fc
-#define func_ov006_0215f740 func_ov006_02160b08
 #else
 #define R(j,u) (u)
 #endif

@@ -1,5 +1,9 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+extern unsigned int data_ov000_02184704[4];
+#endif
+
 struct Struct_0205d81c;
 struct Struct_0205c570;
 struct Entry_0205d6a0;
@@ -28,7 +32,11 @@ struct Menu0217db4c {
     unsigned char mode;
     char pad_241[0x956 - 0x241];
     unsigned char field_0x956;
+#if defined(jpn)
+    char pad_957[0x1f98 - 0x957];
+#else
     char pad_957[0x1d60 - 0x957];
+#endif
     signed char stack[8];
     signed char depth;
     char pad_1d69[0x1d6f - 0x1d69];
@@ -52,7 +60,22 @@ extern "C" ARM void func_ov000_0217db4c(struct Menu0217db4c* menu, int arg1, int
         _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
         menu->mode = 7;
         void* element = _Z32FindElementByComputedKey021815e4Pc((char*)menu);
+#if defined(jpn)
+        int result = func_020dd4c4(GetAdjustedByteField0x1d6b(menu), element);
+        if (result != 0) {
+            for (unsigned char i = 0; data_ov000_02184704[i] != 0; i++) {
+                if (result & data_ov000_02184704[i]) {
+                    menu->depth++;
+                    menu->stack[menu->depth] = 0x1f;
+                    func_ov000_02176634(menu, _Z30FindMatchingTableEntry0217f8c0P14Struct0217f8c0((struct Struct0217f8c0*)menu), 0x1f, arg1, arg2);
+                    return;
+                }
+            }
+            return;
+        }
+#else
         func_020dd4c4(GetAdjustedByteField0x1d6b(menu), element);
+#endif
         menu->depth++;
         menu->stack[menu->depth] = 0x20;
         func_ov000_02176634(menu, _Z30FindMatchingTableEntry0217f8c0P14Struct0217f8c0((struct Struct0217f8c0*)menu), menu->stack[menu->depth], arg1, arg2);

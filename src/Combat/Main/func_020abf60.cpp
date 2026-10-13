@@ -1,33 +1,55 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { BattleTableOffset = 0x73b0 };
+#else
+enum { BattleTableOffset = 0x75f0 };
+#endif
 #include "GameState/GameState.h"
 
 extern "C" void* func_0205ec34(void);
 int TestBitInByteArray(int unused, unsigned char* arr, int index);
 void SetOrClearBitInArray(void* unused, unsigned char* array, int bit, int value);
-extern "C" void* func_02097430(void* c, int key);
+struct Container_02097430;
+struct Node_02097430 {
+    unsigned char unknown0[0x1a];
+    short progressId;
+    unsigned char unknown1c[4];
+};
+extern "C" Node_02097430* func_02097430(Container_02097430* entries, int key);
 
-extern short data_020e90d4[];
+struct EventFlagState {
+    unsigned char unknown0[0x8c];
+    unsigned char bits[0x234];
+};
+
+struct GameProgressRecords {
+    unsigned char unknown0[BattleTableOffset];
+    unsigned int records[308];
+};
+
+extern short data_020e90d4[21];
 
 // USA: func_020abf60
-extern "C" ARM int func_020abf60(void* param) {
-    if (param == 0) {
+
+extern "C" ARM int func_020abf60(void* entriesData) {
+    if (entriesData == 0) {
         return 0;
     }
-    void* ctx = func_0205ec34();
-    if (TestBitInByteArray((int)ctx, (unsigned char*)ctx + 0x8c, 0x796) == 0 ||
-        TestBitInByteArray((int)ctx, (unsigned char*)ctx + 0x8c, 0x1143) != 0) {
+    EventFlagState* events = static_cast<EventFlagState*>(func_0205ec34());
+    if (TestBitInByteArray((int)events, events->bits, 0x796) == 0 ||
+        TestBitInByteArray((int)events, events->bits, 0x1143) != 0) {
         return 0;
     }
-    SetOrClearBitInArray(ctx, (unsigned char*)ctx + 0x8c, 0x1143, 1);
-    int* table = (int*)((char*)GameState::GetInstance() + 0x75f0);
+    SetOrClearBitInArray(events, events->bits, 0x1143, 1);
+    unsigned int* table = reinterpret_cast<GameProgressRecords*>(GameState::GetInstance())->records;
     short* keys = data_020e90d4;
     int i;
     for (i = 0; i < 0x15; i++) {
         short key = *keys;
         keys++;
-        short idx = *(short*)((char*)func_02097430(param, key) + 0x1a);
-        idx = idx - 1;
-        table[idx] |= 0x400;
+        short index = func_02097430(static_cast<Container_02097430*>(entriesData), key)->progressId - 1;
+        table[index] |= 0x400;
     }
     return 1;
 }

@@ -67,9 +67,11 @@ void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
 void SetByteInRange(unsigned char* base, int index, unsigned char value);
 
 #if defined(jpn)
-extern "C" void func_02045d88(void*, char*, int);
+extern "C" void func_0204500c(void*, char*, int);
 #endif
+#if !defined(jpn)
 extern "C" void func_0204500c(void* obj, char* buffer, int a, int b);
+#endif
 extern "C" void func_ov003_0216982c(struct BattleMenu02168b50* self);
 extern "C" void func_ov003_0216997c(struct BattleMenu02168b50* self);
 void SetElementFieldC2(struct Struct_0205d81c* s, int key, int value);
@@ -98,7 +100,7 @@ extern "C" ARM void func_ov003_02168b50(struct BattleMenu02168b50* self) {
         }
         work->field_0x998 = 1;
 #if defined(jpn)
-        func_02045d88(work, self->text, 0);
+        func_0204500c(work, self->text, 0);
 #else
         func_0204500c(work, self->text, 0, 0xe3);
 #endif

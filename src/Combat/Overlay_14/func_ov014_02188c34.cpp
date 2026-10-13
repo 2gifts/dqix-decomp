@@ -1,8 +1,10 @@
 #include <globaldefs.h>
-
 #if defined(jpn)
-#define func_ov014_02188c34 func_ov014_02189a78
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
 #endif
+
 #include "Filesystem/BackgroundLoader.h"
 
 struct HandleState_02188d10;
@@ -19,7 +21,11 @@ extern "C" ARM int func_ov014_02188c34(void* selfRaw) {
     short state = *(short*)(self + 0x16);
     switch (state) {
     case 1:
+#if defined(jpn)
+        *(int*)(self + 0x18) = ((BackgroundLoader*)(r))->QueueLoadFile((const char*)(*(int*)&data_ov014_021897c4), (SafeAllocator*)(0));
+#else
         *(int*)(self + 0x18) = ((BackgroundLoader*)(r))->QueueLoadFileInGP2((const char*)(*(int*)((char*)&data_ov014_021897c4 + 4)), (const char*)(*(int*)&data_ov014_021897c4), (SafeAllocator*)(0));
+#endif
         *(short*)(self + 0x16) = 2;
         return func_ov014_02188c34(self);
     case 2:

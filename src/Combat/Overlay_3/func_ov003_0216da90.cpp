@@ -61,7 +61,11 @@ struct Menu0216da90
 {
     char unk_0[0x10];
     int mode;
+#if defined(jpn)
+    char unk_14[0x1150 - 0x14];
+#else
     char unk_14[0x12c0 - 0x14];
+#endif
     Window0216da90* window;
     char unk_12c4[0x1324 - 0x12c4];
     char texts_[4];
@@ -75,7 +79,11 @@ extern "C" int _Z26GetActiveScaledSum0205d794P15Struct_0205c570(Struct_0205c570*
 extern "C" void _Z22AppendFrameTag02041c08Pciiiii(char* text, int a, int b, int c, int d, int e);
 extern "C" const char* _Z21GetFieldByKey020e0434P17Container020e0310i(Container020e0310* c, int key);
 extern "C" void _Z20AppendString02042058PcPKc(char* text, const char* append);
+#if defined(jpn)
+extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g);
+#else
 extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g, int h);
+#endif
 extern "C" Window0216da90* _Z23FindElementByC40205d81cP15Struct_0205d81ci(Struct_0205d81c* s, int key);
 extern "C" void _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii(Struct_0205ba68* s, int a, int b, int mode);
 extern "C" void _Z29SetField0AndPropagate0205baccP12Node0205bacci(Node0205bacc* s, int val);
@@ -87,14 +95,20 @@ extern "C" ARM void func_ov003_0216da90(Menu0216da90* self)
 {
     _Z32FindAndLinkMatchingEntry0205de24P14Struct0205de24hh((Struct0205de24*)self->window, 0, 1);
     self->window->field_b1 = 0;
+#if defined(jpn)
+    self->window->frame.SetPosition(0xc, 7);
+    self->window->frame.SetSize(0x11, 1);
+#endif
     self->window->body.SetPosition(0xd, 5);
     self->window->body.SetSize(0xa, 0xc);
     self->window->field_b5 = 1;
     _Z23SetChannelAFlag0205cef8Pv(self->window);
 
+#if !defined(jpn)
     short x = data_ov003_0217f560[_Z24NormalizeField5_0200fb08P14Struct0200fb08((Struct0200fb08*)GameState::GetInstance())];
     self->window->frame.SetPosition(x, 7);
     self->window->frame.SetSize(0x1f - x, 1);
+#endif
 
     char text[0x100];
     char sub[0x40];
@@ -103,11 +117,17 @@ extern "C" ARM void func_ov003_0216da90(Menu0216da90* self)
     if (self->mode == 2)
         _Z22AppendFrameTag02041c08Pciiiii(text, _Z26GetActiveScaledSum0205d794P15Struct_0205c570((Struct_0205c570*)self->window), 8, 5, 5, 5);
     _Z20AppendString02042058PcPKc(text, _Z21GetFieldByKey020e0434P17Container020e0310i((Container020e0310*)self->texts_, 0x5c));
+#if defined(jpn)
+    func_0205d304(self->window, text, 0, 0, 0, 1, 0);
+#else
     func_0205d304(self->window, text, 0, 0, 0, 1, 0, 0);
+#endif
 
+#if !defined(jpn)
     Window0216da90* found = _Z23FindElementByC40205d81cP15Struct_0205d81ci((Struct_0205d81c*)self->window, 0);
     if (found)
         found->body.SetSize(0x1f - found->body.x, found->body.height);
+#endif
 
     Window0216da90* window = self->window;
     window->tableA.field4 = 1;

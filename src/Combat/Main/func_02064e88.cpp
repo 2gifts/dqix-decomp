@@ -2,6 +2,13 @@
 
 #include "Memory/SafeAllocator.h"
 
+#if defined(jpn)
+enum { kResourceOffset = 0x860 };
+extern "C" char* strcpy(char*, const char*);
+#else
+enum { kResourceOffset = 0x840 };
+#endif
+
 struct Elem020984b0;
 
 struct Entry020984dc {
@@ -21,6 +28,9 @@ struct LabelNode02064e88 {
     unsigned short id;
     unsigned char rareFlag;
     unsigned char namedFlag;
+#if defined(jpn)
+    char firstName[0xc];
+#endif
     char label[0xc];
     struct LabelNode02064e88* next;
 };
@@ -74,28 +84,34 @@ extern "C" ARM int func_02064e88(struct LabelNode02064e88** head, void* nodeDb, 
     int id;
     struct LabelNode02064e88* node;
     struct Entry020984dc* entries[10];
+#if !defined(jpn)
     char buf[0x30];
+#endif
 
     global = func_02012fe4();
     zone = *global;
-    base = _Z19LookupTable020982a4ii((int)((char*)global + 0x840),
-                               GetTableValueMod100((int)((char*)global + 0x840), zone));
-    ClearField0xcBits24To29((struct Elem020984b0*)((char*)global + 0x840));
-    count = _Z28CollectEntriesByType020984dcP13Entry020984dciPS0_((struct Entry020984dc*)((char*)global + 0x840),
-                                         GetTableValueMod100((int)((char*)global + 0x840), zone), entries);
+    base = _Z19LookupTable020982a4ii((int)((char*)global + kResourceOffset),
+                               GetTableValueMod100((int)((char*)global + kResourceOffset), zone));
+    ClearField0xcBits24To29((struct Elem020984b0*)((char*)global + kResourceOffset));
+    count = _Z28CollectEntriesByType020984dcP13Entry020984dciPS0_((struct Entry020984dc*)((char*)global + kResourceOffset),
+                                         GetTableValueMod100((int)((char*)global + kResourceOffset), zone), entries);
     for (i = 0; i < count; i++) {
         id = i + 1 + base;
         if (FindNodeByByteId(nodeDb, id) == 0) {
             continue;
         }
-        node = (struct LabelNode02064e88*)allocator->Allocate(0x14);
+        node = (struct LabelNode02064e88*)allocator->Allocate(sizeof(LabelNode02064e88));
         if (node == 0) {
             break;
         }
         node->id = id;
         node->rareFlag = entries[i]->isRare ? 4 : 0;
+#if defined(jpn)
+        strcpy(node->firstName, (const char*)entries[i]);
+#else
         __clear(buf, 0x30);
         func_02042764(entries[i], buf, 1);
+#endif
         if (entries[i]->isNamed == 0) {
             switch (entries[i]->kind) {
             case 0: sprintf(node->label, data_020f0618); break;

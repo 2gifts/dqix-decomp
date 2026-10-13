@@ -1,14 +1,9 @@
+#include "GameState/BattleRecordSnapshot.h"
 #include <globaldefs.h>
 
-struct S_a090c {
-    char pad[0x10];
-    unsigned int lo : 23;
-    unsigned int val : 9;
-};
-
 // USA: func_020a090c
-ARM int GetFieldPercentOver448(struct S_a090c* p) {
-    unsigned int v = p->val;
+ARM int GetFieldPercentOver448(BattleRecordSnapshot* record) {
+    unsigned int v = record->unknown10_23;
     unsigned int pct = v * 100 / 448;
     if (pct != 0) {
         return pct;

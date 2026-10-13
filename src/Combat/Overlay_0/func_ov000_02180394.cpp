@@ -5,7 +5,11 @@ extern "C" void _Z36InitArrEntriesAndClearFlag4_0217f480Pc(char* self);
 struct Combatant02180394 {
     char pad0[0x4c];
     int combatantId;
+#if defined(jpn)
+    char pad1[0xc7 - 0x50];
+#else
     char pad1[0x87 - 0x50];
+#endif
     unsigned char active;
     char pad2[0x448 - 0x88];
 };

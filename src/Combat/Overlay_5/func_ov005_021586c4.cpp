@@ -1,8 +1,15 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kMember = 0x4f8 };
+#else
+enum { kMember = 0x4fc };
+#endif
+
 #include <GameState/GameState.h>
 #include <Graphics/Vector.h>
 
-struct Obj021e4e20 { char pad[0x4fc]; int member; };
+struct Obj021e4e20 { char pad[kMember]; int member; };
 struct Body { char pad[0x50]; Vector3fix rotation; };
 struct Vec3copy0202ec84;
 struct SlotDepth { int depth; int padding[2]; };

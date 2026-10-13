@@ -4,7 +4,40 @@
 struct Struct_0205ba68;
 struct Node0205bacc;
 
-extern "C" int _Z26GetGlobalField0x1c020421a0v();
+struct TextWorkspace {
+#if defined(jpn)
+    char unknown0[0x28];
+#else
+    char unknown0[0x5c];
+#endif
+    char* textBuffer;
+};
+struct BattleMenuPanel {
+    char unknown0[0xa0];
+    short width;
+    short height;
+    short tileX;
+    short tileY;
+    short fieldA8;
+    short fieldAA;
+    short fieldAC;
+    short fieldAE;
+    unsigned char unknownB0;
+    unsigned char elementId;
+    char unknownB2[0xa];
+};
+struct GroupSelection {
+    int count;
+    int pages;
+    char unknown8[0x48];
+};
+struct BattleTargetMenu {
+    char unknown0[0x188];
+    BattleMenuPanel panel;
+    GroupSelection groups;
+};
+
+extern "C" TextWorkspace* _Z26GetGlobalField0x1c020421a0v();
 extern "C" void _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii(struct Struct_0205ba68* s, int a, int b, int mode);
 extern "C" void _Z29SetField0AndPropagate0205baccP12Node0205bacci(struct Node0205bacc* s, int val);
 extern "C" void func_0205bb04(void* s, int n);
@@ -12,7 +45,11 @@ extern "C" int func_ov000_0217538c(void* objRaw);
 extern "C" int func_ov000_021753d8(void* objRaw, int targetIndex);
 extern "C" void func_ov000_0217ab8c(void* obj, int a, int b);
 extern "C" void func_ov000_02178938(void* obj, void* in, int b, void* buf);
+#if defined(jpn)
+extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g);
+#else
 extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g, int h);
+#endif
 
 struct InStruct_021787b8 {
     char pad0[0x1d];
@@ -23,32 +60,47 @@ struct InStruct_021787b8 {
 };
 
 // USA: func_ov000_021787b8
-extern "C" ARM void func_ov000_021787b8(void* objRaw, struct InStruct_021787b8* in, int mode, int arg3) {
-    char* obj = (char*)objRaw;
+extern "C" ARM void func_ov000_021787b8(BattleTargetMenu* menu, struct InStruct_021787b8* in, int mode, int arg3) {
     if (in == 0) {
         return;
     }
     int x = in->x;
     int y = in->y;
-    int groupCount = func_ov000_0217538c(obj);
-    int group = func_ov000_021753d8(obj, in->position);
+    int groupCount = func_ov000_0217538c(menu);
+    int group = func_ov000_021753d8(menu, in->position);
     func_ov000_0217ab8c(in, mode, arg3);
-    char* s = obj + 0x188;
-    *(short*)(s + 0xa0) = 0x10;
-    *(short*)(s + 0xa2) = 1;
-    *(short*)(s + 0xa4) = (x >> 3) + 0xe;
-    *(short*)(s + 0xa6) = y >> 3;
-    *(short*)(s + 0xa8) = 0xc;
-    *(short*)(s + 0xaa) = 6;
-    *(short*)(s + 0xac) = 0xa;
-    *(short*)(s + 0xae) = 0x10;
-    *(unsigned char*)(s + 0xb1) = 0xe;
-    _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii((struct Struct_0205ba68*)(obj + 0x244), 1, groupCount, 0);
-    *(int*)(obj + 0x248) = 1;
-    _Z29SetField0AndPropagate0205baccP12Node0205bacci((struct Node0205bacc*)(obj + 0x244), groupCount);
-    func_0205bb04(obj + 0x244, group);
-    void* buf = *(void**)((char*)_Z26GetGlobalField0x1c020421a0v() + 0x5c);
-    memset(buf, 0, 0x960);
-    func_ov000_02178938(obj, in, arg3, buf);
-    func_0205d304(s, buf, 0, 1, 0, 1, 0, 0);
+    BattleMenuPanel* panel = &menu->panel;
+#if defined(jpn)
+    panel->width = 1;
+#else
+    panel->width = 0x10;
+#endif
+    panel->height = 1;
+    panel->tileX = (x >> 3) + 0xe;
+#if defined(jpn)
+    panel->tileY = (y >> 3) + 1;
+#else
+    panel->tileY = y >> 3;
+#endif
+    panel->fieldA8 = 0xc;
+    panel->fieldAA = 6;
+    panel->fieldAC = 0xa;
+    panel->fieldAE = 0x10;
+    panel->elementId = 0xe;
+    _Z25SetupPointerTable0205ba68P15Struct_0205ba68iii((struct Struct_0205ba68*)&menu->groups, 1, groupCount, 0);
+    menu->groups.pages = 1;
+    _Z29SetField0AndPropagate0205baccP12Node0205bacci((struct Node0205bacc*)&menu->groups, groupCount);
+    func_0205bb04(&menu->groups, group);
+    char* text = _Z26GetGlobalField0x1c020421a0v()->textBuffer;
+#if defined(jpn)
+    memset(text, 0, 0x800);
+#else
+    memset(text, 0, 0x960);
+#endif
+    func_ov000_02178938(menu, in, arg3, text);
+#if defined(jpn)
+    func_0205d304(panel, text, 0, 1, 0, 1, 0);
+#else
+    func_0205d304(panel, text, 0, 1, 0, 1, 0, 0);
+#endif
 }

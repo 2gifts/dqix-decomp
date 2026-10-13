@@ -2,5 +2,10 @@
 
 // USA: func_02053cd4
 ARM int GetFieldAt0x1b8(unsigned char* obj) {
-    return *(int*)(obj + 0x1b8);
+#if defined(jpn)
+    enum { kFieldOffset = 0x1ac };
+#else
+    enum { kFieldOffset = 0x1b8 };
+#endif
+    return *(int*)(obj + kFieldOffset);
 }

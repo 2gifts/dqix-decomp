@@ -1,14 +1,15 @@
 #include <globaldefs.h>
+#include "Resource/Script.h"
+#include "Combat/CombatScriptContext.h"
 
-struct Variant02030b0c { int tag; union { int i; float f; } u; };
-extern "C" int _ZNK6Script9Parameter5ToIntEv(Variant02030b0c* p);
-extern int data_020fdc4c;
+struct Variant02030b0c;
 
 // USA: func_0201f4cc
 ARM int StoreTwoDecodedIntsAt0x18(Variant02030b0c* args) {
-    int v1 = _ZNK6Script9Parameter5ToIntEv(args);
-    int v2 = _ZNK6Script9Parameter5ToIntEv(args + 1);
-    char* obj = *(char**)((char*)&data_020fdc4c + 0x10);
+    const Script::Parameter* parameters = reinterpret_cast<const Script::Parameter*>(args);
+    int v1 = parameters[0].ToInt();
+    int v2 = parameters[1].ToInt();
+    char* obj = data_020fdc4c.currentObject;
     *(int*)(obj + 0x18) = v1;
     *(int*)(obj + 0x1c) = v2;
     return 1;

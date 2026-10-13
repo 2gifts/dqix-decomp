@@ -1,7 +1,13 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { MEMBER_OFFSET = 0x19c };
+#else
+enum { MEMBER_OFFSET = 0x1a8 };
+#endif
+
 struct S3f58 {
-    char unk[0x1a8];
+    char unk[MEMBER_OFFSET];
     int field1a8;
     int field1ac;
 };

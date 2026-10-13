@@ -2,8 +2,16 @@
 #include <std_library_functions.h>
 #include "GameState/GameState.h"
 
+#if defined(jpn)
+struct PartyRecord { char pad0[0x8b8]; int vocation; };
+#else
 struct PartyRecord { char pad0[0x950]; int vocation; };
+#endif
+#if defined(jpn)
+struct PartyCombatant : GameObject { char pad13c[8]; PartyRecord* record; };
+#else
 struct PartyCombatant : GameObject { char pad13c[0x14]; PartyRecord* record; };
+#endif
 struct Entry_0205d6a0 { int field0; };
 struct Struct0217f8c0 {
     char pad0[0x10];
@@ -15,7 +23,11 @@ struct Struct0217f8c0 {
     int protagonist;
     char pad180[8];
     Entry_0205d6a0 list;
+#if defined(jpn)
+    char pad18c[0x1f98-0x18c];
+#else
     char pad18c[0x1d60-0x18c];
+#endif
     unsigned char commands[8];
     signed char commandIndex;
     char pad1d69[4];

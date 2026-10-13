@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kInitialPad = 0x868, kIndexGap = 0x7e, kEnabledGap = 0x5c };
+#else
+enum { kInitialPad = 0x998, kIndexGap = 0x120, kEnabledGap = 0x5a };
+#endif
+
 #include <GameState/GameState.h>
 #include <Combat/EntryGetterTypes.h>
 
@@ -12,13 +19,13 @@ union VectorBuffer020675fc {
     Vec3copy0202ec84 copied;
 };
 struct Owner020675fc {
-    unsigned char padding[0x998];
+    unsigned char padding[kInitialPad];
     int active;
     unsigned char padding_0x99c[0xe9c];
     int entryId;
-    unsigned char padding_0x183c[0x120];
+    unsigned char padding_0x183c[kIndexGap];
     unsigned char index;
-    unsigned char padding_0x195d[0x5a];
+    unsigned char padding_0x195d[kEnabledGap];
     unsigned char enabled;
 };
 EntryList_203dce4* GetGlobalPtr021075f4();

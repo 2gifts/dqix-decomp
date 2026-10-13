@@ -48,3 +48,51 @@ src/Combat/Overlay_12/GetOffsetInBattleFieldRange_0218432c.cpp:
 src/Combat/Overlay_12/CheckAndRebuildEntry0218930c.cpp:
     complete
     .text start:0x02189be8 end:0x02189c90
+
+src/Combat/Overlay_12/FindAndApplyEntry_021893b4.cpp:
+    complete
+    .text start:0x02189c90 end:0x02189d18
+
+src/Combat/Overlay_12/DispatchElemHandlerAndApply_02185bf0.cpp:
+    complete
+    .text start:0x02186248 end:0x0218634c
+
+src/Combat/Overlay_12/func_ov012_02185cf8.cpp:
+    complete
+    .text start:0x0218634c end:0x02186468
+
+src/Combat/Overlay_12/func_ov012_0218adac.cpp:
+    complete
+    .text start:0x0218bba0 end:0x0218bcec
+
+src/Combat/Overlay_12/func_ov012_0218a844.cpp:
+    complete
+    .text start:0x0218b2f0 end:0x0218b47c
+
+src/Combat/Overlay_12/SetupBattleTag0218943c.cpp:
+    complete
+    .text start:0x02189d18 end:0x02189d8c
+
+src/Combat/Overlay_12/Trans_02185a24.cpp:
+    complete
+    .text start:0x02186084 end:0x02186118
+
+src/Combat/Overlay_12/func_ov012_0218a374.cpp:
+    complete
+    .text start:0x0218acd8 end:0x0218ad7c
+
+src/Combat/Overlay_12/func_ov012_0218a2b8.cpp:
+    complete
+    .text start:0x0218ad7c end:0x0218ae20
+
+src/Combat/Overlay_12/func_ov012_0218a1f4.cpp:
+    complete
+    .text start:0x0218ae20 end:0x0218aec4
+
+src/Combat/Overlay_12/SetupBattleTag0218a7a0.cpp:
+    complete
+    .text start:0x0218b234 end:0x0218b2f0
+
+src/Combat/Overlay_12/Trans_02185ab8.cpp:
+    complete
+    .text start:0x02186118 end:0x02186148

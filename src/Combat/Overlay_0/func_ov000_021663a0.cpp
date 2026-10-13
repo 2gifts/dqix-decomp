@@ -37,7 +37,11 @@ struct BattleConfig021663a0 {
 };
 
 struct BattleScene021663a0 {
+#if defined(jpn)
+    char pad_0[0x218];
+#else
     char pad_0[0x29c];
+#endif
     struct BattleData021663a0* data;
     struct BattleConfig021663a0* config;
 };

@@ -122,6 +122,10 @@ int IsPrimaryContextSetUp();
 void PopulateContext(ProcessorContext* context, unsigned int startAddress, unsigned int userdata,
     unsigned int stackBottom, unsigned int stackSize, unsigned int priority);
 
+int ClampAndSubmit020d97a8(ProcessorContext* context, void* stackSpace, unsigned int stackSize,
+                         int relativePriority, const void* entry, int userdata);
+void Forward020d9828(ProcessorContext* context);
+
 void ContextExecutionReturnProc();
 void ExitContext(ProcessorContext* context, int exitCode);
 void ExitCurrentContext(int code);

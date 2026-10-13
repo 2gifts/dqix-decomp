@@ -4,7 +4,7 @@ void RunStageSequence02067e98(unsigned char* obj, int b);
 extern "C" void func_02044d0c(unsigned char* p);
 
 struct Struct0204394c;
-int PrepareEncodeStreamBuffer0204394c(struct Struct0204394c* obj);
+void PrepareEncodeStreamBuffer0204394c(struct Struct0204394c* obj);
 
 // USA: func_02044f3c  (semantic: UpdateStreamStateAndDispatch02044f3c)
 extern "C" ARM void func_02044f3c(unsigned char* obj, int b, int flag3) {

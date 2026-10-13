@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+
 #include <std_library_functions.h>
 #include "Memory/SafeAllocator.h"
 #include "World/Object3D.h"
@@ -37,7 +38,9 @@ struct RecipeRecord {
 };
 
 struct AlchemyPot {
+#if !defined(jpn)
     char names_[3][0x80];
+#endif
     SafeAllocator* allocators_;
     SafeAllocator* itemAllocator_;
     SafeAllocator* nextItemAllocator_;

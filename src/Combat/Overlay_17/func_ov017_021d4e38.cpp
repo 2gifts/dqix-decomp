@@ -50,18 +50,12 @@ extern "C" extern int _Z22PopStackEntry_021d4b9cP11Obj021d4b9c(Obj021d4b9c* obj)
 extern "C" extern void _Z32DispatchIndexedCallback_021d4bc8P9A021d4bc8P9B021d4bc8i(A021d4bc8* a, B021d4bc8* b, int c);
 extern "C" int func_ov017_021d4af8(Ctx021d4af8* self, Arg021d4af8* arg, int retAddr);
 
-// 021d4980, 021d49ac and 021d4ad8 are committed under the parameter lists their callee-side
-// reconstructions used. This caller needs the real ones — an operand, an operand plus the type
-// table, and a float — so bind the committed mangled names directly.
 extern "C" int _Z18OrNonZero_021d49ac9S021d49ac(Pair021d4a64 v);
 extern "C" int _Z23CallHelperIfF0_021d498014Struct021d4980(Pair021d4a64 v, void* typeInfo);
 extern "C" void _Z28SetEntryAndAdvance1_021d4ad8P11S1_021d4ad8i(Interp021d4e38* self, float v);
 
 extern "C" void func_0200159c(int code) __attribute__((noreturn));
 extern "C" void func_02001878(void* text);
-// Spelled as an explicit call because mwcc's implicit float->double conversion binds `_f2d`,
-// which this ROM does not export under that name.
-extern "C" double func_0200c578(float v);
 extern "C" float _d2f(double v);
 extern "C" double func_02009424(double v);
 extern "C" double func_02008dcc(double v);
@@ -83,8 +77,6 @@ inline Pair021d4a64 Pop(Interp021d4e38* self) {
 	return *self->stack;
 }
 
-// Case 20 walks the operands it drops with a cursor it never reads; keeping that cursor is what
-// puts the cursor in a callee-saved register and the diagnostic text alongside it.
 #pragma opt_dead_assignments off
 
 // USA: func_ov017_021d4e38
@@ -361,9 +353,9 @@ extern "C" ARM void func_ov017_021d4e38(Interp021d4e38* self, Instr021d4e38* sta
 		case 29:
 			rhs = Pop(self);
 			if (rhs.type == 0) {
-				PushFloat(self, _d2f(func_02009424(func_0200c578((float)rhs.i))));
+				PushFloat(self, _d2f(func_02009424((double)((float)rhs.i))));
 			} else if (rhs.type == 1) {
-				PushFloat(self, _d2f(func_02009424(func_0200c578(rhs.f))));
+				PushFloat(self, _d2f(func_02009424((double)(rhs.f))));
 			} else {
 				func_0200159c(-1);
 			}
@@ -372,9 +364,9 @@ extern "C" ARM void func_ov017_021d4e38(Interp021d4e38* self, Instr021d4e38* sta
 		case 30:
 			rhs = Pop(self);
 			if (rhs.type == 0) {
-				PushFloat(self, _d2f(func_02008dcc(func_0200c578((float)rhs.i))));
+				PushFloat(self, _d2f(func_02008dcc((double)((float)rhs.i))));
 			} else if (rhs.type == 1) {
-				PushFloat(self, _d2f(func_02008dcc(func_0200c578(rhs.f))));
+				PushFloat(self, _d2f(func_02008dcc((double)(rhs.f))));
 			} else {
 				func_0200159c(-1);
 			}

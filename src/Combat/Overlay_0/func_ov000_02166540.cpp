@@ -52,12 +52,20 @@ struct CombatantRoster {
     };
 };
 struct Struct5e00 {
+#if defined(jpn)
+    unsigned char pad_00[0x21c];
+#else
     unsigned char pad_00[0x2a0];
+#endif
     CombatantRoster* roster;
     unsigned char pad_2a4[0xc14];
     CombatantSource* sources[4];
     unsigned short field_ec8;
+#if defined(jpn)
+    unsigned char pad_eca[0x6014 - 0xe46];
+#else
     unsigned char pad_eca[0x4f5a];
+#endif
     NameCombatant combatants[8];
     CombatantModelState models[8];
 };

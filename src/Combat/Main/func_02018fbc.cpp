@@ -7,7 +7,11 @@ struct Vector3fix {
 };
 
 struct TerrainCtx02018fbc {
+#if defined(jpn)
+    char pad0[0x84c];
+#else
     char pad0[0x82c];
+#endif
     int count82c;
     char pad1[0x23b8 - 0x830];
     unsigned char flag23b8;

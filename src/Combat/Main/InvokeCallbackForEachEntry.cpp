@@ -1,34 +1,16 @@
 #include <globaldefs.h>
-
-struct Entry0206f110 {
-    char pad[0x1c];
-};
-
-struct EntryList0206f110 {
-    unsigned int count : 12;
-    unsigned int rest : 20;
-    struct Entry0206f110* entries;
-};
+#include "Resource/MonsterDefinition.h"
 
 // USA: func_0206f110
-ARM int InvokeCallbackForEachEntry(struct EntryList0206f110* self,
-                                   void (*callback)(struct EntryList0206f110*, struct Entry0206f110*)) {
+ARM int InvokeCallbackForEachEntry(List0206f170* table, MonsterDefinitionVisitor visit) {
     int count;
-    struct Entry0206f110* entry = self->entries;
-    int i;
-    if (entry != NULL) {
-        count = self->count;
-        if (count != 0 && callback != NULL) {
-            goto run;
-        }
+    MonsterDefinition* definition = table->table.arr;
+    int index;
+    if (definition == NULL || (count = table->table.header.count) == 0 || visit == NULL) {
+        return 0;
     }
-    return 0;
-run:
-    i = 0;
-    while (i < count) {
-        callback(self, entry);
-        i++;
-        entry++;
+    for (index = 0; index < count; index++, definition++) {
+        visit(table, definition);
     }
     return 1;
 }

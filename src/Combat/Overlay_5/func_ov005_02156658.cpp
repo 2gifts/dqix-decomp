@@ -1,7 +1,13 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kMode = 0x3d30 };
+#else
+enum { kMode = 0x3db8 };
+#endif
+
 struct EquipmentMenu {
-    char unk_0[0x3db8];
+    char unk_0[kMode];
     unsigned char mode_;
     char unk_3db9[3];
     unsigned char kind_;

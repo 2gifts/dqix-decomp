@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kGlobalStateOffset = 0x868, kGlobalFlagOffset = 0x17fc, kSceneFlagOffset = 0x3448, kNodeListOffset = 0x34ec, kPendingActionOffset = 0x4108, kAtmosphericOffset = 0x114 };
+#else
+enum { kGlobalStateOffset = 0x998, kGlobalFlagOffset = 0x19cb, kSceneFlagOffset = 0x3658, kNodeListOffset = 0x36fc, kPendingActionOffset = 0x4328, kAtmosphericOffset = 0xf4 };
+#endif
+
 #include "GameState/GameState.h"
 #include "Graphics/AtmosphericEffect.h"
 #include "Graphics/LightingManager.h"
@@ -12,9 +19,9 @@ struct Timer020707c8 {
 };
 
 struct Global020421a0 {
-    char pad0[0x998];
+    char pad0[kGlobalStateOffset];
     int field998;
-    char pad1[0x19cb - 0x99c];
+    char pad1[kGlobalFlagOffset - (kGlobalStateOffset + 4)];
     unsigned char field19cb;
 };
 
@@ -27,11 +34,11 @@ struct Field02114e54 {
 
 struct Battle021960b8 {
     unsigned int flags[2];
-    char pad8[0x3658 - 0x8];
+    char pad8[kSceneFlagOffset - 0x8];
     unsigned char field3658;
-    char pad3659[0x36fc - 0x3659];
+    char pad3659[kNodeListOffset - (kSceneFlagOffset + 1)];
     HeadNode02046b24** nodeList;
-    char pad3700[0x4328 - 0x3700];
+    char pad3700[kPendingActionOffset - (kNodeListOffset + 4)];
     unsigned char* pendingAction;
 };
 
@@ -132,7 +139,7 @@ extern "C" ARM void func_ov017_021960b8(Battle021960b8* self) {
     }
 
     _Z36UpdateChannelStateIfEligible02093f68Pc((char*)GetGlobal02109030());
-    if (((AtmosphericEffectSet*)((char*)func_02012fe4() + 0xf4))->Draw()) {
+    if (((AtmosphericEffectSet*)((char*)func_02012fe4() + kAtmosphericOffset))->Draw()) {
         _Z35MaybeUpdateOrDispatchEntry_021959ecv(self);
     }
 }

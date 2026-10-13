@@ -1,7 +1,13 @@
+#if defined(jpn)
+#define func_ov005_0215a418 func_ov005_0215b96c
+#endif
+
 #include <globaldefs.h>
 
 #if defined(jpn)
-#define func_ov005_0215a418 func_ov005_0215b96c
+#define LOW_REGION(j, u) (j)
+#else
+#define LOW_REGION(j, u) (u)
 #endif
 
 struct Mtx43_02030d84 { unsigned int v[12]; };
@@ -30,9 +36,9 @@ struct Sub0215a418 {
 };
 
 struct Scene0215a418 {
-    char pad0[0x1a70];
-    Entry0215a418 entries[(0x3db8 - 0x1a70) / 0x88];
-    char pad1[0x3db8 - 0x1a70 - ((0x3db8 - 0x1a70) / 0x88) * 0x88];
+    char pad0[LOW_REGION(0x19e8, 0x1a70)];
+    Entry0215a418 entries[(LOW_REGION(0x3d30, 0x3db8) - LOW_REGION(0x19e8, 0x1a70)) / 0x88];
+    char pad1[LOW_REGION(0x3d30, 0x3db8) - LOW_REGION(0x19e8, 0x1a70) - ((LOW_REGION(0x3d30, 0x3db8) - LOW_REGION(0x19e8, 0x1a70)) / 0x88) * 0x88];
     unsigned char mode;
     char pad2[3];
     unsigned char cursor;
@@ -42,9 +48,9 @@ struct Scene0215a418 {
 extern "C" ARM void func_ov005_0215a418(Scene0215a418* self) {
     void* gs = _ZN9GameState11GetInstanceEv();
     char* res = func_ov017_0218b5b0();
-    char* holder = _Z19GetField1c_021a193cPi(*(void**)(res + 0x3708));
+    char* holder = _Z19GetField1c_021a193cPi(*(void**)(res + LOW_REGION(0x34f8, 0x3708)));
     short* tbl = _Z19GetField150Ptr0x488P22Field150Holder02052e14(
-        _Z25GetCombatantWithFlag0x100P9GameStatei(gs, *(int*)(holder + 0x4fc)));
+        _Z25GetCombatantWithFlag0x100P9GameStatei(gs, *(int*)(holder + LOW_REGION(0x4f8, 0x4fc))));
     if (self->mode != 0) return;
 
     for (int i = 0; i < 8; i++) {
@@ -55,7 +61,7 @@ extern "C" ARM void func_ov005_0215a418(Scene0215a418* self) {
         G3_MTX_PUSH = 0;
         G3_MTX_TRANS = 0x7f000;
         int off = (k + 4) * 0x88;
-        Entry0215a418* ents = ((Sub0215a418*)((char*)self + 0xa70))->entries;
+        Entry0215a418* ents = ((Sub0215a418*)((char*)self + LOW_REGION(0x9e8, 0xa70)))->entries;
         G3_MTX_TRANS = y;
         G3_MTX_TRANS = -0x200000;
         func_02047554((Entry0215a418*)((char*)ents + off), 0, 1);

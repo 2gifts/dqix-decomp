@@ -1,4 +1,11 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kSelectionPointer = 0x10 };
+#else
+enum { kSelectionPointer = 0x18 };
+#endif
+
 #include "GameState/GameState.h"
 
 int GetWord0x0(int* obj);
@@ -13,9 +20,9 @@ extern "C" int _Z28IsBrightnessTransitionActiveP13GameResources(int* obj);
 extern int data_02109bf4;
 
 struct Struct0215f2b4 {
-	unsigned char pad0[0x18];
+	unsigned char pad0[kSelectionPointer];
 	struct Obj020e25e8* f18;
-	unsigned char pad1[0x38f - 0x1c];
+	unsigned char pad1[0x38f - kSelectionPointer - 4];
 	unsigned char f38f;
 	unsigned char f390;
 	unsigned char pad2[0x394 - 0x391];

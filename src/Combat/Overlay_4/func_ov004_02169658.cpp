@@ -4,9 +4,7 @@
 #define func_ov023_021f6524 func_ov004_02168f08
 #define _Z26ClearNodeMaskById_021f6600Pvii func_ov004_02168ed8
 #define _Z29DispatchNodeIfState6_021f6680Pvi func_ov004_02168fa4
-#define func_ov004_02169b4c func_ov004_0216a044
 #endif
-
 
 struct Grid021f9b30;
 struct Triple02169658 { int a, b, c; };

@@ -1,12 +1,10 @@
 #include "Filesystem/GPC.h"
+#include "System/Memory.h"
 #include <globaldefs.h>
 
 #pragma dont_inline on
 
 #if defined(jpn)
-#define _Z19ReturnFalse02075090PKc func_0207621c
-#define _Z20ClearAndInit020d84f8Pvj func_020d9e5c
-#define _Z23CopyRegionAndFlushCachePvPKvj func_020d9e88
 
 #define data_020f27e8 data_020f29a4
 #define data_020f27f0 data_020f29ac
@@ -15,34 +13,23 @@
 
 extern "C"
 {
-    // Calculate CRC for a null-terminated string
     unsigned int func_01ff860c(const char*);
 
-    // always zero. Based on where it is, and the fact that the argument
-    // is a file path, maybe it used to check if the file was loaded into 
-    // memory? But now it just says no
     extern "C" int _Z19ReturnFalse02075090PKc(const char*);
 
-    // zero memory and flush
-    extern "C" void _Z20ClearAndInit020d84f8Pvj(void*, unsigned int);
-    // memcpy and flush
-    extern "C" void _Z23CopyRegionAndFlushCachePvPKvj(void*, const void*, unsigned int);
 }
 
 struct GPCImplementationData
 {
-    const char* pRevisionNumberString; // "17659 $"
-    const char* pRevisionString; // "$Revision: 17659 $"
+    const char* pRevisionNumberString;
+    const char* pRevisionString;
     unsigned int gpc0Signature;
     unsigned int gpc1Signature;
     unsigned int gpc2Signature;
 } extern data_020f27c0;
 
-// GPC0 signature
 extern char data_020f27e8[8];
-// GPC1 signature
 extern char data_020f27f0[8];
-// GPC2 signature
 extern char data_020f27f8[8];
 
 extern "C" bool GetUnknownGP2Data_020d8fcc(void** pOutPtr, unsigned int* pOutNumber, GPCFile* gpc, const GPCFile::FileEntry* file)
@@ -69,10 +56,10 @@ GPCFile::FileEntry* GPCFile::GetFileByCRC(unsigned int crc)
         return NULL;
 
     FileEntry* entryList = (FileEntry*)GetMainDataStart();
-    
+
     unsigned int found = -1;
     unsigned int currentIdx = 0;
-    
+
     int rightAddition = 1 << header.binarySearchStepCount;
     while (rightAddition > 0)
     {
@@ -146,7 +133,6 @@ bool LoadAndDecompressGPCHeaderAndInnerFileInfo(GPCFile **ppGPC, ExtendedNitroVM
     const char *gpcFilePath, void *outputBuffer, unsigned int &outDecompressedLength,
     unsigned int outputCapacity, bool rightAlignOutput, bool *pOutReadSuccessful)
 {
-    
 
     if (pOutReadSuccessful != NULL)
         *pOutReadSuccessful = false;
@@ -164,7 +150,7 @@ bool LoadAndDecompressGPCHeaderAndInnerFileInfo(GPCFile **ppGPC, ExtendedNitroVM
         *pOutReadSuccessful = true;
 
     GPCFile::Header header;
-    _Z20ClearAndInit020d84f8Pvj(&header, sizeof(GPCFile::Header));
+    ClearAndInit020d84f8(&header, sizeof(GPCFile::Header));
     unsigned int desiredSignature = data_020f27c0.gpc2Signature;
     header.signature = desiredSignature;
     if (!machine.Read(&header, sizeof(GPCFile::Header)))
@@ -180,7 +166,7 @@ bool LoadAndDecompressGPCHeaderAndInnerFileInfo(GPCFile **ppGPC, ExtendedNitroVM
 
     if (rightAlignOutput)
         outputBuffer = (void*)((((int)outputBuffer + outputCapacity) & ~3) - longerLength);
-    _Z23CopyRegionAndFlushCachePvPKvj(outputBuffer, &header, sizeof(GPCFile::Header));
+    CopyRegionAndFlushCache(outputBuffer, &header, sizeof(GPCFile::Header));
     ((GPCFile::Header*)outputBuffer)->headerLength = 0;
     ((GPCFile::Header*)outputBuffer)->fileInfoLength = 0;
     unsigned int decompressProcOutputLength = 0;
@@ -190,9 +176,8 @@ bool LoadAndDecompressGPCHeaderAndInnerFileInfo(GPCFile **ppGPC, ExtendedNitroVM
         header.fileInfoLength * 4 - sizeof(GPCFile::Header),
         longerLength - sizeof(GPCFile::Header)))
         goto end;
-    
-    GPCFile::Header* outputBufferAsHeader = (GPCFile::Header*)outputBuffer; 
-    // goofy way to write sizeof(GPCFile::Header) / 4 == 5
+
+    GPCFile::Header* outputBufferAsHeader = (GPCFile::Header*)outputBuffer;
     outputBufferAsHeader->headerLength = ((unsigned int)(outputBufferAsHeader + 1) - (unsigned int)outputBufferAsHeader) / 4;
     *ppGPC = (GPCFile*)outputBuffer;
     outDecompressedLength = longerLength;
@@ -221,18 +206,18 @@ unsigned int GetGPCInnerFileLength(ExtendedNitroVM& machine,
         else
             length = ((CompressionPrefix*)&prefixU32)->GetDecompressedLength();
     }
-    
+
     return length;
 }
 
-unsigned int GetGPCInnerFileLengthByName(GPCFile* const& gpc, 
+unsigned int GetGPCInnerFileLengthByName(GPCFile* const& gpc,
     ExtendedNitroVM& machine, const char* filename)
 {
     unsigned int crc = func_01ff860c(filename);
     return GetGPCInnerFileLengthByCRC(gpc, machine, crc);
 }
 
-unsigned int GetGPCInnerFileLengthByCRC(GPCFile *const &gpc, 
+unsigned int GetGPCInnerFileLengthByCRC(GPCFile *const &gpc,
     ExtendedNitroVM &machine, unsigned int crc)
 {
     if (gpc == NULL || !machine.IsInReadableState())
@@ -252,10 +237,8 @@ bool DecompressFileFromGPC(ExtendedNitroVM &machine, void *outputBuffer,
     machine.Seek((gpcHeader.firstFileOffset + file->offset) * 4);
     if (gpcHeader.isUncompressed)
     {
-        // note: compressedSizeBytes is actually the uncompressed size
-        // (because we aren't compressed on this branch!)
         bool success;
-        if (outputCapacity >= file->compressedSizeBytes && 
+        if (outputCapacity >= file->compressedSizeBytes &&
             machine.Read(outputBuffer, file->compressedSizeBytes) &&
             machine.isBadState == 0)
         {
@@ -264,12 +247,12 @@ bool DecompressFileFromGPC(ExtendedNitroVM &machine, void *outputBuffer,
         }
         else
             success = false;
-        
+
         return success;
     }
     else
     {
-        return machine.DecompressBytes(outputBuffer, outDecompressedLength, 
+        return machine.DecompressBytes(outputBuffer, outDecompressedLength,
             file->compressedSizeBytes, outputCapacity);
     }
 }
@@ -290,7 +273,7 @@ bool DecompressFileFromGPCByCRC(GPCFile* const& gpc, ExtendedNitroVM& machine,
     outDecompressedLength = 0;
     if (gpc == NULL || !machine.IsInReadableState())
         return false;
-    
+
     const GPCFile::Header& header = gpc->header;
     GPCFile::FileEntry* entry = gpc->GetFileByCRC(crc);
     return DecompressFileFromGPC(machine, outputBuffer,

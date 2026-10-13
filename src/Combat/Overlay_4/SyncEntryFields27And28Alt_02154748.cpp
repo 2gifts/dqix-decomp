@@ -21,6 +21,8 @@ extern "C" ARM int func_ov004_02154748(void* a) {
     unsigned char out1, out2;
     FindAndCopyFields_021546c0(data_ov004_021707c0, f8, -1, &out1, &out2);
     func_ov023_021f64a8(a, 0x38, out2, 0xf);
+#if !defined(jpn)
     func_ov004_021536e0(a, 0x38, 0x19);
+#endif
     return 0;
 }

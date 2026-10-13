@@ -1,12 +1,21 @@
 #include <globaldefs.h>
+
+#if defined(jpn)
+enum { kMember = 0x4f8 };
+enum { kScreenFlags = 0x56c, kCursor = 0x196c };
+#else
+enum { kMember = 0x4fc };
+enum { kScreenFlags = 0x634, kCursor = 0x19f4 };
+#endif
+
 #include <GameState/GameState.h>
 
 struct Obj0205eaa0;
 
 struct MemberScreen {
-    char unk_0[0x4fc];
+    char unk_0[kMember];
     int member_;
-    char unk_500[0x634 - 0x500];
+    char unk_500[kScreenFlags - kMember - 4];
     unsigned short flags_;
 };
 
@@ -23,7 +32,7 @@ struct EquipmentSlot {
 };
 
 struct EquipmentMenu {
-    char unk_0[0x19f4];
+    char unk_0[kCursor];
     char cursor_[0x2d90 - 0x19f4];
     EquipmentSlot slots_[24];
     char slotModels_[0x3d78 - 0x3030];

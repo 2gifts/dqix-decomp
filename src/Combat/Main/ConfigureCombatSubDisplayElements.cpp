@@ -19,11 +19,21 @@ void SetElementFields0202756c(void *receiver, int x, int y, int index, unsigned 
                               unsigned short field7, unsigned char field8, int scaleX, int scaleY);
 
 struct CombatMarkerReceiverView {
+#if defined(jpn)
+    unsigned char unknown0[0x6b9];
+#else
     unsigned char unknown0[0x765];
+#endif
     unsigned char markerElementsEnabled;
     unsigned short markerValue;
     unsigned char extendedDisplayMode;
 };
+
+#if defined(jpn)
+enum { kSecondMarkerId = 0x2b, kThirdMarkerId = 0x38, kFourthMarkerId = 0x3b, kThirdX = 161, kThirdY = 20, kFourthY = 159 };
+#else
+enum { kSecondMarkerId = 0x26, kThirdMarkerId = 0x33, kFourthMarkerId = 0x41, kThirdX = 5, kThirdY = 30, kFourthY = 129 };
+#endif
 
 // USA: func_020e0f74
 extern "C" ARM void func_020e0f74(void *receiver) {
@@ -50,14 +60,14 @@ extern "C" ARM void func_020e0f74(void *receiver) {
         x += 14;
     }
     SetElementFields0202756c(receiver, x << 12, 5 << 12, 0, 0x1f, 1, 0xff, 0xff, 0x1000, 0x1000);
-    SetElementFields0202756c(receiver, 106 << 12, 130 << 12, 1, 0x26, 1, 0xff, 0xff, 0x1000, 0x1000);
+    SetElementFields0202756c(receiver, 106 << 12, 130 << 12, 1, kSecondMarkerId, 1, 0xff, 0xff, 0x1000, 0x1000);
 
     if (state->markerValue < 1000 && state->markerValue != 0) {
-        int y = 30;
+        int y = kThirdY;
         if (CheckField0NonZero(value)) {
             y += 11;
         }
-        SetElementFields0202756c(receiver, 5 << 12, y << 12, 2, 0x33, 1, 0xff, 0xff, 0x1000, 0x1000);
+        SetElementFields0202756c(receiver, kThirdX << 12, y << 12, 2, kThirdMarkerId, 1, 0xff, 0xff, 0x1000, 0x1000);
     }
-    SetElementFields0202756c(receiver, 0, 129 << 12, 3, 0x41, 1, 0xff, 0xff, 0x1000, 0x1000);
+    SetElementFields0202756c(receiver, 0, kFourthY << 12, 3, kFourthMarkerId, 1, 0xff, 0xff, 0x1000, 0x1000);
 }

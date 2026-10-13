@@ -1,18 +1,24 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kMenuOffset = 0xc, kRepeatToChoice = 0x2d8 };
+#else
+enum { kMenuOffset = 0x14, kRepeatToChoice = 0x2d0 };
+#endif
+
 struct Obj2081;
 struct Obj0208203c;
 struct Obj0205eaa0;
 struct Obj020e25e8;
 
 struct AlchemyMenu {
-    char unk_0[0x14];
+    char unk_0[kMenuOffset];
     Obj2081* menu_;
     Obj020e25e8* choice_;
     char unk_1c[0x28];
     short* cursor_;
     char unk_48[0x54];
-    char repeat_[0x2d0];
+    char repeat_[kRepeatToChoice];
     short choiceCursor_;
     short group_;
     char unk_370[0xbc];

@@ -20,7 +20,11 @@ void func_ov003_02158334(void *);
 extern char data_02108760[];
 
 struct Obj02156d40 {
+#if defined(jpn)
+    char pad0[0x2a];
+#else
     char pad0[0x36];
+#endif
     short f36;
 };
 
@@ -36,7 +40,11 @@ struct Ctrl02156d40 {
     void *f18;
     char pad1c[0x80 - 0x1c];
     char sub80[0x80];
+#if defined(jpn)
+    char pad100[0x1de - 0x100];
+#else
     char pad100[0x1e2 - 0x100];
+#endif
     short f1e2;
     char pad1e4[2];
     short f1e6;

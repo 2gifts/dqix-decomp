@@ -1,5 +1,11 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kMergeBuffer = 0x140 };
+#else
+enum { kMergeBuffer = 0x14c };
+#endif
+
 extern "C" void __clear(void* buf, int len);
 extern "C" void func_02071da4(void* obj, short* bufB, unsigned char* bufA, int val);
 
@@ -27,5 +33,5 @@ ARM void MergeIntoBuffers_0215fd60(void* obj, short* arr1, unsigned char* arr2, 
 			}
 		}
 	}
-	func_02071da4((char*)obj + 0x14c, bufB, bufA, val);
+	func_02071da4((char*)obj + kMergeBuffer, bufB, bufA, val);
 }

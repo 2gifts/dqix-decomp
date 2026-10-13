@@ -1,15 +1,9 @@
 #include "Graphics/Vector.h"
 
-#if defined(jpn)
-#define data_020e9450 data_020e955c
-#endif
-
 extern const fix16_t data_020e9450[0x10000 * 2];
 
 fix32_t fix32sin(fix32_t x)
 {
-    // The table has 0x10000 sine entries, and so using a 16-bit 
-    // value ensures perfect wraparound for values outside of (0, 2pi)
     unsigned short normalizedAngle = (x << 16) / FIX_2PI;
     int tableIndex = normalizedAngle >> 4;
 
@@ -18,8 +12,6 @@ fix32_t fix32sin(fix32_t x)
 
 fix32_t fix32cos(fix32_t x)
 {
-    // The table has 0x10000 cosine entries, and so using a 16-bit 
-    // value ensures perfect wraparound for values outside of (0, 2pi)
     unsigned short normalizedAngle = (x << 16) / FIX_2PI;
     int tableIndex = normalizedAngle >> 4;
 
@@ -106,7 +98,6 @@ fix32_t fix32ReduceAngle0To2Pi(fix32_t angle)
 {
     if (angle < 0)
     {
-        // bitwise AND gets floor of (-angle / 2pi)
         fix32_t periods = (fix32_Divide(-angle, FIX_2PI) + (1 << 12)) & ~0xfff;
         angle += FIX32_MULTIPLY(periods, FIX_2PI);
     }
@@ -136,7 +127,7 @@ fix32_t Vector3fixSquaredDistance(const Vector3fix* a, const Vector3fix* b)
     fix32_t ysq = FIX32_MULTIPLY(dy, dy);
     fix32_t xsq = FIX32_MULTIPLY(dx, dx);
 
-    fix32_t sum = xsq + ysq; // ...
+    fix32_t sum = xsq + ysq;
     return xsq + ysq + zsq;
 }
 
@@ -145,7 +136,6 @@ fix32_t Vector3fixAngleToPoint(const Vector3fix* source, const Vector3fix* targe
     Vector3fix difference;
     Vector3fix_Subtract(target, source, &difference);
     difference.y = 0;
-    // not sure why we need this. is it just numerical stability?
     Vector3fix_Normalize(&difference, &difference);
     fix32_t angle = fix32_Atan2(difference.x, difference.z);
     return fix32ReduceAngle0To2Pi(angle);

@@ -1,7 +1,13 @@
 #include <globaldefs.h>
 
+#if defined(jpn)
+enum { kGlobalHolderInnerOffset = 0x4 };
+#else
+enum { kGlobalHolderInnerOffset = 0xc };
+#endif
+
 struct DataOv025021ef988_021e82a0 {
-    char pad[0xc];
+    char pad[kGlobalHolderInnerOffset];
     void* ptr;
 };
 
