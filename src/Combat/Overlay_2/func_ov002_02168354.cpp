@@ -7,7 +7,7 @@
 struct Container020e0310;
 struct List020727d8;
 
-extern "C" int _Z19ResetFields021847c4P14Struct021847c4(void *obj, int a);
+extern "C" unsigned char func_ov013_021847c4(void *obj, int a);
 extern "C" char *_Z26GetGlobalField0x1c020421a0v();
 extern "C" int _Z29GetField110ArrayValue021574d4Pvi(void *self, int index);
 extern "C" void func_ov013_02184c8c(void *menu, void *member);
@@ -33,7 +33,7 @@ extern "C" const char data_ov002_0216d315[];
 extern "C" ARM void func_ov002_02168354(char *self) {
     unsigned int size;
     *(unsigned int *) (self + 0x247c) |= 4;
-    if (_Z19ResetFields021847c4P14Struct021847c4(self + 0xd70 + 0x1000, *(int *) (self + 0x1ba0)) != 6) {
+    if (func_ov013_021847c4(self + 0xd70 + 0x1000, *(int *) (self + 0x1ba0)) != 6) {
         return;
     }
     GameState *gs = GameState::GetInstance();

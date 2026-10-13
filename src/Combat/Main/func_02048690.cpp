@@ -4,7 +4,6 @@ extern "C" void func_020489e8(void* obj);
 extern "C" void _Z20SetByte0xbeShiftPrevP13Bytes02033b88i(void* obj, int val);
 extern "C" void* func_02057924(void);
 extern "C" void _ZN8Object3D24TransitionInheritedAlphaEii(void* obj, int a, int b);
-extern "C" void _ZNK8Object3D20MaybeGetShadowSourceEv(int* out, void* obj);
 extern "C" void _Z26FindNodeAndProcess02057fb4Pvii(void* list, int id, void* a3);
 
 struct Obj0205eaa0;
@@ -15,6 +14,11 @@ struct Vec3i02048690 {
     int x;
     int y;
     int z;
+};
+
+class Object3D {
+public:
+    Vec3i02048690 MaybeGetShadowSource() const;
 };
 
 struct InitStruct02048690 {
@@ -103,8 +107,7 @@ extern "C" ARM void func_02048690(void* selfp) {
     s.b6 = 0;
     s.b7 = 0;
 
-    struct Vec3i02048690 p;
-    _ZNK8Object3D20MaybeGetShadowSourceEv((int*)&p, self);
+    const struct Vec3i02048690& p = ((Object3D*)self)->MaybeGetShadowSource();
     s.f2c = p.x;
     s.f30 = p.y;
     s.f34 = p.z;

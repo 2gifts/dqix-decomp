@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+#include "Combat/Main/CopyRecord0200fbb4.h"
 
 struct ZoneState { unsigned short zoneId; unsigned short previousZoneId; };
 struct ZoneState02097cac {
@@ -16,7 +17,6 @@ extern "C" void* func_0202ae18();
 extern "C" ZoneState* func_02012fe4();
 extern "C" int func_0202c508(void* obj);
 extern "C" int func_0202c540(void* obj);
-extern "C" void* _Z28CallFunc0200fbb4AtField0x3f8Pv(void* obj, const void* src);
 void* GetField0x3f8Address(GameState* battleStruct);
 int IsIdInRange020981e4(int a, int id);
 int IsIdInRange02098240(int a, int id);

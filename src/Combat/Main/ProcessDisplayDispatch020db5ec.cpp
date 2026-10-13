@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-extern "C" int func_020937f0(int a);
+extern "C" unsigned int func_020937f0(int a);
 int GetDisplayModeCode0209378c(int a);
 extern "C" void func_0203bd08(int a);
 
@@ -40,17 +40,17 @@ struct DisplayDispatchObj020db5ec {
 // USA: func_020db5ec
 ARM void ProcessDisplayDispatch020db5ec(struct DisplayDispatchObj020db5ec* obj) {
     if (obj->field51 == 0) return;
-    int x = func_020937f0(obj->field3c);
+    unsigned int base = func_020937f0(obj->field3c);
     int shift = GetDisplayModeCode0209378c(obj->field3c);
-    int r6 = (unsigned int)(x - 0xb80) >> shift;
-    int r7 = (unsigned int)(x - 0x800) >> shift;
+    int offsetA = (base - 0xb80) >> shift;
+    int offsetB = (base - 0x800) >> shift;
     func_0203bd08(shift);
     int handle = GetObjectValue020db2dc((int)obj, obj->field3c);
     SyncSwapBitState020db360((struct Struct020db9a8*)obj, 0);
     if (obj->field53 != 0) {
-        func_020db6e4(obj, r7);
+        func_020db6e4(obj, offsetB);
     }
-    TickCounterAndProcessSlots020db768((struct Entity020db768*)obj, (void*)r6);
+    TickCounterAndProcessSlots020db768((struct Entity020db768*)obj, (void*)offsetA);
     CleanInvalidateCacheRange((const void*)handle, 0xe0);
     data_020f2904[obj->field3c](handle, 0, 0xe0);
     CleanCacheRange((const void*)handle, 0xe0);

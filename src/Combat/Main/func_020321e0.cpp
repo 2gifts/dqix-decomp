@@ -10,7 +10,7 @@ static inline int FxSquare(int a) {
 
 extern "C" ARM void Vector3fix_Subtract(const struct Vec3* a, const struct Vec3* b, struct Vec3* out);
 extern "C" ARM void Vector3fix_Add(const struct Vec3* a, const struct Vec3* b, struct Vec3* out);
-extern "C" ARM void _Z15RotationMatrixYi(struct Mtx43* dst, int angle);
+ARM struct Mtx43 RotationMatrixY(int angle);
 extern "C" ARM void Mat4x3_ApplyToVector(const struct Vec3* v, const struct Mtx43* m, struct Vec3* out);
 extern "C" ARM int _Z22fix32ReduceAngle0To2Pii(int angle);
 extern "C" ARM int func_02031118(struct Vec3* p, struct Bounds* b);
@@ -20,7 +20,6 @@ extern "C" ARM int func_020321e0(const struct Vec3* self, struct Bounds* bounds,
     struct Vec3 out = *self;
     struct Vec3 diff;
     struct Mtx43 mtxCopy;
-    struct Mtx43 mtx;
     int len2;
 
     if (angle != 0) {
@@ -33,8 +32,7 @@ extern "C" ARM int func_020321e0(const struct Vec3* self, struct Bounds* bounds,
         if (radiusSq < len2) {
             return 0;
         }
-        _Z15RotationMatrixYi(&mtx, _Z22fix32ReduceAngle0To2Pii(-angle));
-        mtxCopy = mtx;
+        mtxCopy = RotationMatrixY(_Z22fix32ReduceAngle0To2Pii(-angle));
         Mat4x3_ApplyToVector(&diff, &mtxCopy, &diff);
         Vector3fix_Add(&diff, pivot, &out);
     }
