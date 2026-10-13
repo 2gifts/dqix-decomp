@@ -19747,3 +19747,35 @@ src/Combat/Main/func_020930d0.cpp:
 src/Combat/Main/func_0209afd4.cpp:
     complete
     .text start:0x0209afe4 end:0x0209b458
+
+src/Combat/Main/CalculateScalingAmountSmooth.cpp:
+    complete
+    .text start:0x020b8414 end:0x020b85a8
+
+src/Combat/Main/func_02069fec.cpp:
+    complete
+    .text start:0x02069ffc end:0x0206a3d0
+
+src/Combat/Main/func_020a78dc.cpp:
+    complete
+    .text start:0x020a78ec end:0x020a7cf0
+
+src/Combat/Main/func_02015ae4.cpp:
+    complete
+    .text start:0x02015af4 end:0x02015ce0
+
+src/Combat/Main/func_02015ef4.cpp:
+    complete
+    .text start:0x02015f04 end:0x0201648c
+
+src/Combat/Main/func_02040c2c.cpp:
+    complete
+    .text start:0x02040c3c end:0x02040f58
+
+src/Combat/Main/func_020800fc.cpp:
+    complete
+    .text start:0x0208010c end:0x0208037c
+
+src/Combat/Main/func_020aeb34.cpp:
+    complete
+    .text start:0x020aeb44 end:0x020aee14

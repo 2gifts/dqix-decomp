@@ -21,11 +21,11 @@ extern "C" ARM int func_ov031_0222336c(int a0, int a1, int a2) {
 	}
 	func_ov031_022234d8((int)&data_ov031_0224b1dc, (void*)LoadToSubBG0ScreenData);
 	*(int*)0x4001010 = 0x1920000;
-	int r4 = func_ov031_0223c560(1, 0);
-	int r5 = func_ov031_022276cc(data_ov031_02290c4c, a0, a1, a2);
+	int window = func_ov031_0223c560(1, 0);
+	int result = func_ov031_022276cc(data_ov031_02290c4c, a0, a1, a2);
 	int table = GetTableEntryByField0_022236d0();
-	func_ov031_0223c980(r4, 0x14, 0, 0xd8, 0x40, 2, table, r5);
-	SetFlagIfMatchesElem0_0223caec((void*)r4);
+	func_ov031_0223c980(window, 0x14, 0, 0xd8, 0x40, 2, table, result);
+	SetFlagIfMatchesElem0_0223caec((void*)window);
 	data_ov031_02250bac = 1;
 	return 1;
 }

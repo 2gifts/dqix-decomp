@@ -1,45 +1,70 @@
 #include <globaldefs.h>
+#include "Memory/SafeAllocator.h"
 
-extern "C" unsigned int _Z18InitStruct020979c0P11Obj020979c0h(unsigned int, unsigned int);
-extern "C" unsigned int _ZN13SafeAllocator21ResetAllocatorPointerEv(unsigned int, unsigned int);
-extern "C" unsigned int func_ov028_021d98b8();
+struct Trans_021d98b8 {
+    float scale;
+    unsigned int unk4;
+    unsigned short unk8;
+    unsigned short unkA;
+};
+
+struct Obj020979c0 {
+    unsigned int data[8];
+};
+
+struct Trans_021d8b90 {
+    Trans_021d98b8 trans;
+    unsigned char unkC[0x10];
+    unsigned char unk1c;
+    unsigned char unk1d;
+    Obj020979c0 unk20;
+    unsigned int unk40;
+    SafeAllocator allocator;
+    unsigned int unk58;
+    unsigned int unk5c;
+    unsigned int unk60;
+    unsigned int unk64;
+    unsigned int unk68;
+    unsigned short unk6c;
+    unsigned char unk6e;
+    int unk70;
+    unsigned int unk74;
+    unsigned int unk78;
+    unsigned int unk7c;
+    unsigned char unk80;
+    unsigned char unk81;
+};
+
+void InitStruct020979c0(Obj020979c0* obj, unsigned char flag);
+extern "C" Trans_021d98b8* func_ov028_021d98b8(Trans_021d98b8* self);
+
+static inline unsigned int GX_GetVisiblePlane(void) {
+    return (*(volatile unsigned int*)0x4000000 & 0x1f00) >> 8;
+}
+
+static inline unsigned int GXS_GetVisiblePlane(void) {
+    return (*(volatile unsigned int*)0x4001000 & 0x1f00) >> 8;
+}
 
 // USA: func_ov028_021d8b90  (semantic: Trans_021d8b90)
-extern "C" ARM unsigned int func_ov028_021d8b90(unsigned int r0, unsigned int r1, unsigned int r2, unsigned int r3) {
-    unsigned int r4 = 0;
-    r4 = r0;
-    r0 = (unsigned int)func_ov028_021d98b8();
-    r1 = 0x0;
-    *(unsigned char*)((char*)r4 + 0x1c) = (unsigned char)r1;
-    r0 = r4 + 0x20;
-    *(unsigned char*)((char*)r4 + 0x1d) = (unsigned char)r1;
-    r0 = (unsigned int)_Z18InitStruct020979c0P11Obj020979c0h(r0, r1);
-    r1 = 0x0;
-    r0 = r4 + 0x44;
-    *(unsigned int*)((char*)r4 + 0x40) = (unsigned int)r1;
-    r0 = (unsigned int)_ZN13SafeAllocator21ResetAllocatorPointerEv(r0, r1);
-    r2 = 0x4000000;
-    r0 = *(unsigned int*)((char*)r2 + 0x0);
-    r1 = 0x0;
-    r0 = r0 & 0x1f00;
-    r0 = r0 >> 0x8;
-    *(unsigned int*)((char*)r4 + 0x58) = (unsigned int)r0;
-    r0 = r2 + 0x1000;
-    r2 = *(unsigned int*)((char*)r0 + 0x0);
-    r0 = r1 - 0x1;
-    r2 = r2 & 0x1f00;
-    r2 = r2 >> 0x8;
-    *(unsigned int*)((char*)r4 + 0x5c) = (unsigned int)r2;
-    *(unsigned int*)((char*)r4 + 0x60) = (unsigned int)r1;
-    *(unsigned int*)((char*)r4 + 0x64) = (unsigned int)r1;
-    *(unsigned short*)((char*)r4 + 0x6c) = (unsigned short)r1;
-    *(unsigned int*)((char*)r4 + 0x68) = (unsigned int)r1;
-    *(unsigned char*)((char*)r4 + 0x6e) = (unsigned char)r1;
-    *(unsigned int*)((char*)r4 + 0x70) = (unsigned int)r0;
-    *(unsigned int*)((char*)r4 + 0x74) = (unsigned int)r1;
-    *(unsigned int*)((char*)r4 + 0x78) = (unsigned int)r1;
-    *(unsigned int*)((char*)r4 + 0x7c) = (unsigned int)r1;
-    *(unsigned char*)((char*)r4 + 0x80) = (unsigned char)r1;
-    *(unsigned char*)((char*)r4 + 0x81) = (unsigned char)r1;
-    return r0;
+extern "C" ARM void func_ov028_021d8b90(Trans_021d8b90* self) {
+    func_ov028_021d98b8(&self->trans);
+    self->unk1c = 0;
+    self->unk1d = 0;
+    InitStruct020979c0(&self->unk20, 0);
+    self->unk40 = 0;
+    self->allocator.ResetAllocatorPointer();
+    self->unk58 = GX_GetVisiblePlane();
+    self->unk5c = GXS_GetVisiblePlane();
+    self->unk60 = 0;
+    self->unk64 = 0;
+    self->unk6c = 0;
+    self->unk68 = 0;
+    self->unk6e = 0;
+    self->unk70 = -1;
+    self->unk74 = 0;
+    self->unk78 = 0;
+    self->unk7c = 0;
+    self->unk80 = 0;
+    self->unk81 = 0;
 }

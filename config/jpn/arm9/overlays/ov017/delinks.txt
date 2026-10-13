@@ -4000,3 +4000,7 @@ src/Combat/Overlay_17/func_ov017_021d3fa8.cpp:
 src/Combat/Overlay_17/func_ov017_0218fd34.cpp:
     complete
     .text start:0x02190918 end:0x02190d90
+
+src/Combat/Overlay_17/func_ov017_0218d2f0.cpp:
+    complete
+    .text start:0x0218ded0 end:0x0218e098
