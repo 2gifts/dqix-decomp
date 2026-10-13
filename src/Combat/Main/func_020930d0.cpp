@@ -3,6 +3,7 @@
 #include "Resource/GameResources.h"
 
 struct ListHead02046b60;
+struct BattlePhaseState020930d0;
 
 extern "C" void func_02092d60(void* s, int b);
 extern "C" int func_020457e0(char* g);
@@ -12,8 +13,8 @@ extern "C" char* _Z26GetGlobalField0x1c020421a0v(void);
 extern "C" void _Z24ReinitController02043204Pc(char* obj);
 void* GetPtrField0x2a04(GameState* gs);
 int* GetGlobal02109030(void);
-extern "C" unsigned int _Z33CountMatchingTableEntries02092cd0ii(int s, int kind);
-extern "C" int _Z30FindMatchingTableIndex02092d18ii(int s, int kind);
+unsigned int CountMatchingTableEntries02092cd0(BattlePhaseState020930d0* state, int kind);
+int FindMatchingTableIndex02092d18(BattlePhaseState020930d0* state, int kind);
 int ListContainsId(struct ListHead02046b60* list, int id);
 int CountSetBitsAt0x34(unsigned char* p);
 
@@ -35,19 +36,28 @@ struct CombatantIndexList020930d0 {
 };
 
 struct GameStateFlags020930d0 {
+#if defined(jpn)
+    char unk0[0x7ca2];
+#else
     char unk0[0x7f76];
+#endif
     unsigned char slots[4];
     unsigned char flags;
 };
 
 struct GlobalBlock020930d0 {
+#if defined(jpn)
+    char unk0[0x868];
+#else
     char unk0[0x998];
+#endif
     int field998;
     char unk99c[0x9a0 - 0x99c];
     int field9a0;
 };
 
 // USA: func_020930d0
+// JPN: func_02093a04
 extern "C" ARM void func_020930d0(struct BattlePhaseState020930d0* s) {
     GameResources* res;
     GameState* gs;
@@ -75,7 +85,7 @@ extern "C" ARM void func_020930d0(struct BattlePhaseState020930d0* s) {
     }
 
     if (state == 1) {
-        tableCount = _Z33CountMatchingTableEntries02092cd0ii((int)s, 1);
+        tableCount = CountMatchingTableEntries02092cd0(s, 1);
         present = 0;
         for (i = 0; i < 4; i++) {
             if (gs->GetPartyMemberByIndex(i)) present++;
@@ -97,8 +107,8 @@ extern "C" ARM void func_020930d0(struct BattlePhaseState020930d0* s) {
             if (s->field32 != 0) return;
             _Z24ReinitController02043204Pc((char*)gf);
             int next;
-            int c0 = _Z33CountMatchingTableEntries02092cd0ii((int)s, 0);
-            int c5 = _Z33CountMatchingTableEntries02092cd0ii((int)s, 5);
+            int c0 = CountMatchingTableEntries02092cd0(s, 0);
+            int c5 = CountMatchingTableEntries02092cd0(s, 5);
             if (c0 == 4 && missing == 0) {
                 next = 8;
             } else {
@@ -141,10 +151,10 @@ extern "C" ARM void func_020930d0(struct BattlePhaseState020930d0* s) {
             s->field3b = 0;
             func_02094030(g, 0x4e24, -1, 0);
         }
-        if (_Z33CountMatchingTableEntries02092cd0ii((int)s, 2) > 1) {
-            func_02094030(g, 0x4e22, -1, _Z30FindMatchingTableIndex02092d18ii((int)s, 2));
-        } else if (_Z33CountMatchingTableEntries02092cd0ii((int)s, 2) == 1) {
-            func_02094030(g, 0x4e21, -1, _Z30FindMatchingTableIndex02092d18ii((int)s, 2));
+        if (CountMatchingTableEntries02092cd0(s, 2) > 1) {
+            func_02094030(g, 0x4e22, -1, FindMatchingTableIndex02092d18(s, 2));
+        } else if (CountMatchingTableEntries02092cd0(s, 2) == 1) {
+            func_02094030(g, 0x4e21, -1, FindMatchingTableIndex02092d18(s, 2));
         }
         for (unsigned char i = 0; i < 4; i++) {
             if (((struct GameStateFlags020930d0*)gs)->slots[i] == 4) {

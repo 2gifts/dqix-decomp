@@ -48,3 +48,33 @@ src/Combat/Overlay_9/SyncEntryPairAndRefreshFlags_02188454.cpp:
 src/Combat/Overlay_9/func_ov009_02188604.cpp:
     complete
     .text start:0x021893c4 end:0x02189704
+
+
+src/Combat/Overlay_9/AdvanceListStep_021883cc.cpp:
+    complete
+    .text start:0x0218918c end:0x02189214
+
+
+src/Combat/Overlay_9/GetPriorityGroupIndex_02188b14.cpp:
+    complete
+    .text start:0x021898cc end:0x021899b0
+
+
+src/Combat/Overlay_9/SyncCombatantAndFlushMatrix_02184c30.cpp:
+    complete
+    .text start:0x02185f5c end:0x02185fd0
+
+
+src/Combat/Overlay_9/UpdateCombatantState_02184d70.cpp:
+    complete
+    .text start:0x02186098 end:0x02186158
+
+
+src/Combat/Overlay_9/UpdateFlag021885b8.cpp:
+    complete
+    .text start:0x02189378 end:0x021893c4
+
+
+src/Combat/Overlay_9/func_ov009_02184ca4.cpp:
+    complete
+    .text start:0x02185fd0 end:0x02186098

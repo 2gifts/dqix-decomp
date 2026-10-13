@@ -3,45 +3,67 @@
 #include "std_library_functions.h"
 
 struct PartyExtension { char pad[0x568]; short preserved; };
-struct PartyObject { GameObject object; char pad13c[0x18]; short* reset; char pad158[0x17a]; unsigned char order; };
+struct PartyObject {
+    GameObject object;
+#if defined(jpn)
+    char unknownAfterObject[0x0c];
+#else
+    char unknownAfterObject[0x18];
+#endif
+    short* modelOwner;
+    char unknownAfterModelOwner[0x17a];
+    unsigned char order;
+};
 struct PartySlot { char pad[2]; unsigned char active; };
-struct PartyResource { char pad[0x36fc]; void* list; void* slots; char pad3704[0x30]; void* node; char pad3738[0xc24]; char names[4][0x30]; };
+struct PartyNameStorage {
+#if defined(jpn)
+    char unknown0[0x413c];
+    char names[4][12];
+#else
+    char unknown0[0x435c];
+    char names[4][48];
+#endif
+};
 struct PartyIndices { int slots[13]; };
 struct PartyOutput { int fields[4]; };
 struct FieldBlock63d6_115a8;
 struct SearchStruct0202c1a4;
 extern "C" int* func_0202ae18();
-extern "C" bool func_ov017_021925e0(int*);
+extern "C" int func_ov017_021925e0();
 PartyExtension* GetFieldAt0x150(unsigned char*);
 extern "C" void func_02082828(PartyExtension*);
 extern "C" void _Z27SetFlagAndSyncVec3_021bd3d4Pvi(void*, int);
 extern "C" PartySlot* func_ov017_021a4658(GameResources*, int);
 extern "C" void func_02046a8c(void*, PartySlot*);
 extern "C" void _Z30ResetEntriesAndNotify_021b33d8Pv(void*);
-bool CheckField0NonZero(int*);
-short* GetField0x74deForValidIndex(char*, unsigned int);
-bool CheckSubstructByte0x7cPositive(signed char*);
+int CheckField0NonZero(int*);
+void* GetField0x74deForValidIndex(char*, unsigned int);
+int CheckSubstructByte0x7cPositive(signed char*);
 extern "C" void func_020531f0(GameObject*);
 void InvalidateField0(short*);
-unsigned char GetByteField0x63d6(FieldBlock63d6_115a8*);
+int GetByteField0x63d6(FieldBlock63d6_115a8*);
 void ClearCombatantSlot(GameState*, int);
 GameObject* GetCombatantWithFlag0x1000(GameState*, int);
 extern "C" void func_ov017_02191108(GameResources*, int, int, int, int);
-int GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
+signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
 extern "C" void func_ov017_02190884(int, PartyOutput*, int*, int, int, int);
 extern "C" void func_ov017_02191234(GameResources*);
+#if defined(jpn)
+#define data_ov017_021d622c data_ov017_021d667c
+#endif
 extern PartyIndices data_ov017_021d622c;
 static inline int ValidPartyIndex(int index) { return index >= 0 && index <= 3; }
 
+// JPN: func_ov017_02190e48
 // USA: func_ov017_02190264
 extern "C" ARM void func_ov017_02190264(GameResources* resources, int index) {
     int valid = ValidPartyIndex(index);
     if (!valid) return;
     GameState* game = GameState::GetInstance();
     int* search = func_0202ae18();
-    PartyResource* party = (PartyResource*)resources;
-    void* node = party->node;
-    if (func_ov017_021925e0(search)) {
+    PartyNameStorage* names = (PartyNameStorage*)resources;
+    void* node = resources->unknown_ptr_array_371c[6];
+    if (func_ov017_021925e0()) {
         GameObject* member = game->GetPartyMemberByIndex(index);
         if (member && (member->obj3D_.unknown_0_ & 0x1000)) {
             PartyExtension* extension = GetFieldAt0x150((unsigned char*)member);
@@ -56,18 +78,18 @@ extern "C" ARM void func_ov017_02190264(GameResources* resources, int index) {
     }
     PartySlot* slot = func_ov017_021a4658(resources, index);
     if (slot->active) {
-        func_02046a8c(party->slots, slot);
+        func_02046a8c(resources->unknown_ptr_array_36fc[1], slot);
         _Z30ResetEntriesAndNotify_021b33d8Pv(slot);
     }
     GameObject* combatant = GetCombatantWithFlag0x100(game, index);
     if (combatant) {
         if (CheckField0NonZero(search) && (combatant->obj3D_.unknown_0_ & 0x200)) {
-            short* field = GetField0x74deForValidIndex((char*)game, index);
+            short* field = (short*)GetField0x74deForValidIndex((char*)game, index);
             if (field) *field = 0;
         }
         if (CheckSubstructByte0x7cPositive((signed char*)combatant)) func_020531f0(combatant);
-        strcpy(party->names[index], (char*)combatant->baseStats_);
-        short* reset = ((PartyObject*)combatant)->reset;
+        strcpy(names->names[index], (char*)combatant->baseStats_);
+        short* reset = ((PartyObject*)combatant)->modelOwner;
         if (reset) InvalidateField0(reset);
         if (!GetByteField0x63d6((FieldBlock63d6_115a8*)game)) {
             PartyExtension* extension = GetFieldAt0x150((unsigned char*)combatant);

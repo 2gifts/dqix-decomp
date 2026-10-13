@@ -1,7 +1,15 @@
+// USA: func_ov003_02175504
+// JPN: func_ov003_02174558
 #include <globaldefs.h>
 
 struct Obj2081;
-struct Container020dedd0;
+struct Container020dedd0 {
+    unsigned short count;
+    unsigned char unknown02[10];
+    void* entries;
+    unsigned char unknown10[4];
+    unsigned char useBinarySearch;
+};
 struct Obj020dee58;
 
 unsigned char *FindElementByByte0xc4(Obj2081 *, int);
@@ -12,8 +20,13 @@ int LookupValueFromField8(Obj020dee58 *);
 extern "C" void _Z25InitEntryAtIndex_0217585cPviiih(void *, int, int, int, unsigned char);
 bool CheckField0x9cSetWhenField0xd4Present(unsigned char *);
 
+#if defined(jpn)
+extern unsigned char data_ov003_0217e34d[];
+extern unsigned char data_ov003_0217e32c[];
+#else
 extern unsigned char data_ov003_0217fabd[];
 extern unsigned char data_ov003_0217fa9c[];
+#endif
 
 struct Entry02175504 {
     char unk_0[0xac];
@@ -22,34 +35,39 @@ struct Entry02175504 {
 };
 
 struct Battle02175504 {
-    char unk_0[0x74];
-    char blk74_[0x848 - 0x74];
-    short keys_[0xc];
-    char unk_860[0x89c - 0x860];
-    Obj2081 *obj_;
-    char unk_8a0[0xf00 - 0x8a0];
-    char unk_f00[0xff8 - 0xf00];
-    int ff8_;
-    char unk_ffc[0x1000 - 0xffc];
-    char unk_1000[0xc];
-    short s100c_;
-    char unk_100e[2];
-    short s1010_;
-    short s1012_;
-    short s1014_;
+#if defined(jpn)
+    unsigned char unknownBeforeKeys[0x7c4];
+#else
+    unsigned char unknownBeforeKeys[0x848];
+#endif
+    short keys_[12];
+    unsigned char unknownBeforeEntries[0x14];
+    Container020dedd0 entries;
+    unsigned char unknownAfterEntries[0x10];
+    Obj2081* menu;
+    unsigned char unknownBeforeUpdate[0xff8 - 0x8a0];
+    int updateEnabled;
+    unsigned char unknownBeforeIndex[2];
+    short selectedIndex;
+    unsigned char unknownBeforeState[0xc];
+    short state;
+    unsigned char unknownAfterState[2];
+    short unknown1010;
+    short selection;
+    short page;
 };
 
 // USA: func_ov003_02175504
 extern "C" ARM void func_ov003_02175504(Battle02175504 *self) {
-    Obj2081 *obj     = self->obj_;
+    Obj2081 *obj     = self->menu;
     unsigned char k  = 6;
     unsigned char *e = FindElementByByte0xc4(obj, 3);
     if (e) {
         if (!IsField0x9cEqual3(e)) return;
         short a = 7;
-        short b = (short) (self->s1014_ * 6);
+        short b = (short) (self->page * 6);
         for (unsigned char i = 0; i < 6; i++) {
-            Obj020dee58 *it = _Z24FindElementByKey020dedd0P17Container020dedd0i((Container020dedd0 *) (self->blk74_ + 0x800),
+            Obj020dee58 *it = _Z24FindElementByKey020dedd0P17Container020dedd0i(&self->entries,
                                                                                 self->keys_[b]);
             if (it) {
                 short x, y;
@@ -63,7 +81,7 @@ extern "C" ARM void func_ov003_02175504(Battle02175504 *self) {
         }
         return;
     }
-    if (self->s100c_ == 0x77) {
+    if (self->state == 0x77) {
         Entry02175504 *cand = 0;
         e                   = FindElementByByte0xc4(obj, 0x15);
         if (e && IsField0x9cEqual3(e)) cand = (Entry02175504 *) e;
@@ -76,12 +94,16 @@ extern "C" ARM void func_ov003_02175504(Battle02175504 *self) {
             int cy = cand->y_;
             cx     = (short) (cx << 3) + 3;
             cy     = (short) (cy << 3) + 3;
-            _Z25InitEntryAtIndex_0217585cPviiih(self, cx, cy, data_ov003_0217fabd[(self->s1012_ + (k - 0x124)) & 0xff], k);
+#if defined(jpn)
+            _Z25InitEntryAtIndex_0217585cPviiih(self, cx, cy, data_ov003_0217e34d[(self->selection + (k - 0x124)) & 0xff], k);
+#else
+            _Z25InitEntryAtIndex_0217585cPviiih(self, cx, cy, data_ov003_0217fabd[(self->selection + (k - 0x124)) & 0xff], k);
+#endif
             return;
         }
     }
-    if (self->ff8_ == 0) return;
-    if (*(short *) ((char *) self + 0xffe) < 0) return;
+    if (self->updateEnabled == 0) return;
+    if (self->selectedIndex < 0) return;
     e = FindElementByByte0xc4(obj, 0xe);
     if (!e) return;
     if (!CheckField0x9cSetWhenField0xd4Present(e)) return;
@@ -89,7 +111,11 @@ extern "C" ARM void func_ov003_02175504(Battle02175504 *self) {
     for (unsigned char i = 0; i < 8; i++) {
         short x, y;
         _Z29GetLookAndTurnOffsets020809c4PviiPsS0_(obj, 0xe, a, &x, &y);
+#if defined(jpn)
+        _Z25InitEntryAtIndex_0217585cPviiih(self, x, y - 1, data_ov003_0217e32c[i], k);
+#else
         _Z25InitEntryAtIndex_0217585cPviiih(self, x, y - 1, data_ov003_0217fa9c[i], k);
+#endif
         a++;
         k++;
     }

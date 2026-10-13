@@ -1,30 +1,38 @@
+// USA: func_ov006_0215fcf0
+// JPN: func_ov006_02161064
 #include <globaldefs.h>
 
 struct StatusOwner02081164;
 struct Obj2081;
-
-extern void SetEntryHalfword0xe(void* obj, int id, int value);
-extern void SetSublistEntryField14LowBits_02080798(void* obj, int id, int value);
-extern void SetEntryFlag0x2ByShortId(struct StatusOwner02081164* owner, int id, int enable);
-extern "C" int func_020813ec(void* obj, int id);
-extern void SetEntryLowNibbleAndElement02080c68(void* obj, int id, int value);
-extern void ClearElementFlag0x20(struct Obj2081* obj, int key);
+extern void SetEntryHalfword0xe(void*, int, int);
+extern void SetSublistEntryField14LowBits_02080798(void*, int, int);
+extern void SetEntryFlag0x2ByShortId(StatusOwner02081164*, int, int);
+extern "C" int func_020813ec(void*, int);
+extern void SetEntryLowNibbleAndElement02080c68(void*, int, int);
+extern void ClearElementFlag0x20(Obj2081*, int);
 
 struct Obj0215fcf0 {
-    char pad0[0x14];
-    void* f14;
-    char pad1[0x386 - 0x18];
-    unsigned char f386;
+#if defined(jpn)
+    unsigned char unknown[0xc];
+    void* menu;
+    unsigned char unknownAfterMenu[0x386 - 0x10];
+#else
+    unsigned char unknown[0x14];
+    void* menu;
+    unsigned char unknownAfterMenu[0x386 - 0x18];
+#endif
+    unsigned char sortMode;
 };
 
-// USA: func_ov006_0215fcf0  (semantic: ApplyStatusEffectSet_0215fcf0)
-extern "C" ARM void func_ov006_0215fcf0(struct Obj0215fcf0* obj) {
-    void* sub = obj->f14;
-    int val = (short)(obj->f386 + 0x29);
-    SetEntryHalfword0xe(sub, 0x5a, val);
-    SetSublistEntryField14LowBits_02080798(sub, 0x5a, 1);
-    SetEntryFlag0x2ByShortId((struct StatusOwner02081164*)sub, 0xf, 1);
-    func_020813ec(sub, 0xf);
-    SetEntryLowNibbleAndElement02080c68(sub, 0xf, 2);
-    ClearElementFlag0x20((struct Obj2081*)sub, 0xf);
+extern "C" ARM void func_ov006_0215fcf0(Obj0215fcf0* owner) {
+    void* menu = owner->menu;
+    int textKey = (short)(owner->sortMode + 0x29);
+    SetEntryHalfword0xe(menu, 0x5a, textKey);
+#if !defined(jpn)
+    SetSublistEntryField14LowBits_02080798(menu, 0x5a, 1);
+#endif
+    SetEntryFlag0x2ByShortId((StatusOwner02081164*)menu, 0xf, 1);
+    func_020813ec(menu, 0xf);
+    SetEntryLowNibbleAndElement02080c68(menu, 0xf, 2);
+    ClearElementFlag0x20((Obj2081*)menu, 0xf);
 }

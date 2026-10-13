@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "GameState/Overlay17DayCycle.h"
 
 #if defined(jpn)
 enum { Field23ec = 0x240c, Field840 = 0x860, Field44ae = 0x41fe, Field44ac = 0x41fc, Field42e9 = 0x40c9, Field3700 = 0x34f0, Field3704 = 0x34f4, Field36f8 = 0x34e8, Field3a9c = 0x388c, Field281f = 0x285f, Field3734 = 0x3524, Field23b8 = 0x23d8, Field1840 = 0x1860, Field36fc = 0x34ec, Field5cac = 0x5a4c, Field3718 = 0x3508, Field36d0 = 0x34c0, Field7f60 = 0x7c8c, Field2786 = 0x27c6, Field2784 = 0x27c4, Field2788 = 0x27c8, Field2774 = 0x27b4, Field2780 = 0x27c0, Field44b2 = 0x4202, WarpLow = 0xfe, WarpHigh = 0x4100 };
@@ -420,7 +421,6 @@ extern "C" void func_02094030(void* obj, int a, int b, int c);
 extern int data_02109bf4;
 extern int data_02108760;
 extern const char data_ov017_021d75fc[];
-extern int data_ov017_021d75b8;
 extern const char data_ov017_021d7619[];
 extern const char data_ov017_021d761e[];
 extern char data_0211e33c[];
@@ -718,16 +718,16 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 		func_0208e520(func_0208e0a8(), run->header + 5);
 		_ZN13SafeAllocator5ResetEv(ov + 0x18c);
 		_ZN24LootableContainerManager5ResetEv(region);
-		*(&data_ov017_021d75b8 + 1) = _ZN16BackgroundLoader13QueueLoadFileEPKcP13SafeAllocator(loader, data_ov017_021d75fc, 0);
+		data_ov017_021d75b8.lootableLoadTask = _ZN16BackgroundLoader13QueueLoadFileEPKcP13SafeAllocator(loader, data_ov017_021d75fc, 0);
 		self->state = 6;
 		return;
 	}
 	if (self->state == 6) {
-		if (_ZN16BackgroundLoader13GetTaskStatusEi(loader, *(&data_ov017_021d75b8 + 1)) == 0) {
+		if (_ZN16BackgroundLoader13GetTaskStatusEi(loader, data_ov017_021d75b8.lootableLoadTask) == 0) {
 			return;
 		}
-		if (_ZN16BackgroundLoader21GetDetailedTaskStatusEi(loader, *(&data_ov017_021d75b8 + 1)) == 2) {
-			_ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(loader, *(&data_ov017_021d75b8 + 1), &workLo.buf, &workLo.fileSize);
+		if (_ZN16BackgroundLoader21GetDetailedTaskStatusEi(loader, data_ov017_021d75b8.lootableLoadTask) == 2) {
+			_ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(loader, data_ov017_021d75b8.lootableLoadTask, &workLo.buf, &workLo.fileSize);
 			if (workLo.buf != 0) {
 				unsigned char* header = run->header;
 				if (*(unsigned char*)((char*)run + Field23b8) != 0) {
@@ -744,10 +744,10 @@ extern "C" ARM void func_ov017_0219e384(struct Seq0219e384* self, void* list) {
 				}
 			}
 		}
-		_ZN16BackgroundLoader10RemoveTaskEi(loader, *(&data_ov017_021d75b8 + 1));
+		_ZN16BackgroundLoader10RemoveTaskEi(loader, data_ov017_021d75b8.lootableLoadTask);
 		{
 			unsigned short id = run->mapId;
-			*(&data_ov017_021d75b8 + 1) = -1;
+			data_ov017_021d75b8.lootableLoadTask = -1;
 			if (_Z19IsIdInRange020981e4ii((void*)runContext, id) != 0 &&
 			    _Z17IsIdInSet02098210ii((void*)runContext, id) == 0 &&
 			    func_0202c540(search) != 0) {

@@ -1,10 +1,10 @@
 #include <globaldefs.h>
+#include "System/RequestSubmission.h"
 
 extern "C" ARM void func_ov031_02239368(int val);
 ARM void SetField54IfTagNot9Or10(int v);
-ARM int InvokeWithFullMaskType2(int a, int b);
 
-struct Outer02239920 { unsigned char pad[4]; int inner; };
+struct Outer02239920 { unsigned char pad[4]; unsigned char* inner; };
 extern Outer02239920 data_ov031_02290d18;
 
 // USA: func_ov031_022398e8

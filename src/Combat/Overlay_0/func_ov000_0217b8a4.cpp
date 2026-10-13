@@ -1,3 +1,5 @@
+// USA: func_ov000_0217b8a4
+// JPN: func_ov000_0217cbf8
 #include <globaldefs.h>
 
 struct Struct_0205c570;
@@ -13,17 +15,35 @@ extern "C" void _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii(Struct_0
 int TestFlag0SetAndFlag1Clear(unsigned short*, int);
 extern "C" int _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(Obj_0205da38*);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0*, int, int);
+#if defined(jpn)
+extern "C" void func_ov000_0217370c(void*);
+#else
 extern "C" void func_ov000_02171e60(void*);
+#endif
 extern "C" int _Z35CheckFlagsOrField_0217ab48_0217ab48Pv(void*);
 extern "C" void func_ov000_0217629c(void*);
 extern "C" void func_ov000_0217ab8c(void*, int, int);
 extern "C" void func_ov000_02176e3c(void*, void*, int, int, int, int);
 struct MenuContext0217b8a4 {
     char pad_0[0x188];
+#if defined(jpn)
+    char list[0x1faa - 0x188];
+#else
     char list[0x1d72 - 0x188];
+#endif
     unsigned short flags;
 };
-struct MenuGlobals0217b8a4 { int field_0; int field_4; MenuContext0217b8a4* context; };
+struct MenuGlobals0217b8a4 {
+#if defined(jpn)
+    MenuContext0217b8a4* context;
+    int field_0;
+    int field_4;
+#else
+    int field_0;
+    int field_4;
+    MenuContext0217b8a4* context;
+#endif
+};
 struct MenuWindow0217b8a4 {
     char pad_0[4];
     char selection[0x54 - 4];
@@ -43,7 +63,11 @@ struct Menu0217b8a4 {
     short selectedCount;
     char pad_2e[0x38 - 0x2e];
     MenuWindow0217b8a4* window;
+#if defined(jpn)
+    char pad_3c[0x430 - 0x3c];
+#else
     char pad_3c[0x3f0 - 0x3c];
+#endif
     MenuItem0217b8a4* items[21];
     unsigned char field_444;
 };
@@ -89,7 +113,11 @@ extern "C" ARM int func_ov000_0217b8a4(Menu0217b8a4* obj, int arg1, int arg2) {
         obj->selectedCount = count;
         _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii((Struct_0205def8*)context->list, 0, 0x24);
         _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
+#if defined(jpn)
+        func_ov000_0217370c(obj);
+#else
         func_ov000_02171e60(obj);
+#endif
         if (obj->selections[obj->depth] != 100) obj->window->state = 0x11;
         return obj->selections[obj->depth];
     }

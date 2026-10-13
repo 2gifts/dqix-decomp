@@ -6764,3 +6764,72 @@ src/Combat/Overlay_31/func_ov031_0221c4bc.cpp:
 src/Combat/Overlay_31/func_ov031_02239130.cpp:
     complete
     .text start:0x02239910 end:0x02239968
+
+src/Combat/Overlay_31/ByteSwap16_0221e638.cpp:
+    complete
+    .text start:0x0221ee18 end:0x0221ee30
+
+
+src/Combat/Overlay_31/CopyAndSucceed_022205d8.cpp:
+    complete
+    .text start:0x02220db8 end:0x02220dc4
+
+
+src/Combat/Overlay_31/FillBytes_02222830.cpp:
+    complete
+    .text start:0x02223010 end:0x02223028
+
+
+src/Combat/Overlay_31/func_ov031_0221d3b0.cpp:
+    complete
+    .text start:0x0221db90 end:0x0221dc30
+
+
+src/Combat/Overlay_31/func_ov031_0221d450.cpp:
+    complete
+    .text start:0x0221dc30 end:0x0221dd0c
+
+
+src/Combat/Overlay_31/func_ov031_0221d604.cpp:
+    complete
+    .text start:0x0221dde4 end:0x0221de88
+
+
+src/Combat/Overlay_31/func_ov031_0221d7e0.cpp:
+    complete
+    .text start:0x0221dfc0 end:0x0221e00c
+
+
+src/Combat/Overlay_31/func_ov031_0221db18.cpp:
+    complete
+    .text start:0x0221e2f8 end:0x0221e328
+
+
+src/Combat/Overlay_31/func_ov031_0221e27c.cpp:
+    complete
+    .text start:0x0221ea5c end:0x0221ea9c
+
+
+src/Combat/Overlay_31/func_ov031_0221e2e4.cpp:
+    complete
+    .text start:0x0221eac4 end:0x0221eafc
+
+
+src/Combat/Overlay_31/func_ov031_0221e428.cpp:
+    complete
+    .text start:0x0221ec08 end:0x0221ec38
+
+
+src/Combat/Overlay_31/func_ov031_02220298.cpp:
+    complete
+    .text start:0x02220a78 end:0x02220aac
+
+
+src/Combat/Overlay_31/func_ov031_02221f24.cpp:
+    complete
+    .text start:0x02222704 end:0x02222758
+
+
+src/Combat/Overlay_31/func_ov031_02222848.cpp:
+    complete
+    .text start:0x02223028 end:0x02223050

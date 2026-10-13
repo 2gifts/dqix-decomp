@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+#include "GameState/Overlay17DayCycle.h"
 #include "Graphics/LightingManager.h"
 
 struct TimeEntry0219c774 {
@@ -9,15 +10,7 @@ struct TimeEntry0219c774 {
 };
 float GetActiveBitIndex(GameState*);
 extern "C" void func_020103c8(GameState*, float);
-extern float data_ov017_021d837c[6];
-struct TimeIntervals0219c774 {
-    float step;
-    float fields_4[3];
-    float end;
-    float field_14;
-};
-extern TimeIntervals0219c774 data_ov017_021d75b8;
-
+// JPN: func_ov017_0219d264
 // USA: func_ov017_0219c774
 extern "C" ARM int func_ov017_0219c774(TimeEntry0219c774* entry, int apply) {
     GameState* game = GameState::GetInstance();
@@ -31,38 +24,38 @@ extern "C" ARM int func_ov017_0219c774(TimeEntry0219c774* entry, int apply) {
         lighting->timeOfDayIndex_ = game->GetTimeOfDay();
         return 0;
     }
-    int next = 0;
-    if (time >= data_ov017_021d837c[2]) next = 3;
-    else if (time >= data_ov017_021d837c[1]) next = 2;
-    else if (time >= data_ov017_021d837c[3]) next = 1;
+    int next = TimeOfDay_Night;
+    if (time >= data_ov017_021d837c.eveningStart) next = TimeOfDay_Evening;
+    else if (time >= data_ov017_021d837c.dayStart) next = TimeOfDay_Day;
+    else if (time >= data_ov017_021d837c.morningStart) next = TimeOfDay_Morning;
     int previous = game->GetTimeOfDay();
     if (next == previous) {
         int i;
-        float bounds[4] = {data_ov017_021d837c[3], data_ov017_021d837c[1], data_ov017_021d837c[2], data_ov017_021d837c[2] + data_ov017_021d75b8.end};
+        float bounds[4] = {data_ov017_021d837c.morningStart, data_ov017_021d837c.dayStart, data_ov017_021d837c.eveningStart, data_ov017_021d837c.eveningStart + data_ov017_021d75b8.eveningDuration};
         float step;
         i = 0;
         for (; i < 4; i++) {
-            step = data_ov017_021d75b8.step;
+            step = data_ov017_021d75b8.boundaryStep;
             if (bounds[i] - 2.0f * step < time && time < bounds[i]) {
                 time = bounds[i] - 2.0f * step;
                 reference = bounds[i];
             }
         }
-        if (data_ov017_021d837c[5] <= reference) reference = 0.0f;
+        if (data_ov017_021d837c.cycleLength <= reference) reference = 0.0f;
         if (entry == 0 || entry->kind != 0) time = reference;
     }
     if ((next + 1) % 4 == previous) {
-        float bounds[4] = {data_ov017_021d837c[3], data_ov017_021d837c[1], data_ov017_021d837c[2], data_ov017_021d837c[2] + data_ov017_021d75b8.end};
-        float values[4] = {data_ov017_021d837c[4], data_ov017_021d837c[3], data_ov017_021d837c[1], data_ov017_021d837c[2]};
-        if (bounds[next] - 2.0f * data_ov017_021d75b8.step < time && time < bounds[next]) {
+        float bounds[4] = {data_ov017_021d837c.morningStart, data_ov017_021d837c.dayStart, data_ov017_021d837c.eveningStart, data_ov017_021d837c.eveningStart + data_ov017_021d75b8.eveningDuration};
+        float values[4] = {data_ov017_021d837c.nightStart, data_ov017_021d837c.morningStart, data_ov017_021d837c.dayStart, data_ov017_021d837c.eveningStart};
+        if (bounds[next] - 2.0f * data_ov017_021d75b8.boundaryStep < time && time < bounds[next]) {
             time = values[previous];
             reference = time;
         }
     }
-    next = 0;
-    if (time >= data_ov017_021d837c[2]) next = 3;
-    else if (time >= data_ov017_021d837c[1]) next = 2;
-    else if (time >= data_ov017_021d837c[3]) next = 1;
+    next = TimeOfDay_Night;
+    if (time >= data_ov017_021d837c.eveningStart) next = TimeOfDay_Evening;
+    else if (time >= data_ov017_021d837c.dayStart) next = TimeOfDay_Day;
+    else if (time >= data_ov017_021d837c.morningStart) next = TimeOfDay_Morning;
     if (next == previous) apply = 1;
     if (apply) {
         game->SetDayTimer(time);

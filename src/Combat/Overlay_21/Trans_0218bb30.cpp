@@ -1,6 +1,5 @@
 #if defined(jpn)
 #define R(j,u) (j)
-#define _Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30 func_ov009_02185f5c
 #else
 #define R(j,u) (u)
 #endif
@@ -13,7 +12,7 @@
 extern "C" unsigned int SendQueuedDataToGeometryFifo();
 extern "C" unsigned int _Z18GetField0x3b0ValueP9GameState();
 extern "C" unsigned int _Z26ResetGxEngineState020c52e8v();
-extern "C" unsigned int _Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30(unsigned int);
+extern "C" void func_ov009_02184c30(void*);
 extern "C" unsigned int _Z29WriteControlAndToggle020d86d0ii(unsigned int, unsigned int);
 extern "C" unsigned int _Z33CleanInvalidateOamBuffers0203bd88v();
 extern "C" unsigned int _ZN12RenderConfig12SubmitToFifoEv();
@@ -52,7 +51,7 @@ extern "C" ARM unsigned int func_ov021_0218bb30(unsigned int r0, unsigned int r1
     r0 = (unsigned int)_ZN12RenderConfig12SubmitToFifoEv();
     r0 = (unsigned int)SendQueuedDataToGeometryFifo();
     r0 = *(unsigned int*)((char*)r5 + 0x40);
-    r0 = (unsigned int)_Z28GetTaggedValueAsInt_02184c30P20TaggedNumber02184c30(r0);
+    func_ov009_02184c30((void*)r0);
     r0 = *(unsigned int*)((char*)r5 + 0x40);
     r0 = (unsigned int)func_ov009_02184bbc(r0);
     r0 = (unsigned int)func_0203bd08();

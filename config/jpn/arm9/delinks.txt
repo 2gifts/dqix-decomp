@@ -18067,3 +18067,33 @@ src/Combat/Main/PackFields020946f8.cpp:
 src/Combat/Main/RelocateThreeFields.cpp:
     complete
     .text start:0x020700ac end:0x020700e4
+
+
+src/Combat/Main/SetSubBg0Control0208c9cc.cpp:
+    complete
+    .text start:0x0208d2ac end:0x0208d2e0
+
+
+src/Combat/Main/SetupHeaderAndRunBufferedScript0208d860.cpp:
+    complete
+    .text start:0x0208e11c end:0x0208e1a8
+
+
+src/Combat/Main/func_0202d3e0.cpp:
+    complete
+    .text start:0x0202cf50 end:0x0202d0bc
+
+
+src/Combat/Main/func_020930d0.cpp:
+    complete
+    .text start:0x02093a04 end:0x02093d5c
+
+
+src/Combat/Main/func_0209afd4.cpp:
+    complete
+    .text start:0x0209cd4c end:0x0209d1c0
+
+
+src/Combat/Main/func_020dd4c4.cpp:
+    complete
+    .text start:0x020dee40 end:0x020df094

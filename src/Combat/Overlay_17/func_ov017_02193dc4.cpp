@@ -37,10 +37,14 @@ struct TerrainNode {
 };
 
 struct Zone02193dc4 {
-    unsigned char pad_0[0x824];
+#if defined(jpn)
+    unsigned char unknown0[0x844];
+#else
+    unsigned char unknown0[0x824];
+#endif
     TerrainNode** terrain;
     unsigned char pad_828[0x4];
-    int count82c;
+    int terrainCount;
 };
 
 struct TerrainGrid02193dc4 {
@@ -70,10 +74,14 @@ extern "C" long long func_020c32f8(int);
 extern "C" long long func_020c3260(int);
 extern "C" float func_0200c700(long long);
 extern "C" int func_020312bc(GeometryTriangle* triangles, int count, Vector3fix* start, Vector3fix* end, Vector3fix* point);
+#if defined(jpn)
+#define func_02017d90 func_02017b30
+#endif
 extern "C" int func_02017d90(Zone02193dc4* zone, int index, TerrainGrid02193dc4* grid, Probe02193dc4 probe, Actor02193dc4* self);
 void ClearFlags0x40And0x80At0xe0(struct ByteFlags02033f2c* p);
 void CopyFourHalfwordsToField0x114(void* obj, FourHalfwords02033f7c* src);
 
+// JPN: func_ov017_0219498c
 // USA: func_ov017_02193dc4
 extern "C" ARM int func_ov017_02193dc4(Actor02193dc4* self) {
     TerrainGrid02193dc4 grid;
@@ -97,7 +105,7 @@ extern "C" ARM int func_ov017_02193dc4(Actor02193dc4* self) {
     probe.bottom.y -= 0x28000;
     probe.bottom.z -= self->GetRadius() / 2;
     ClearFlags0x40And0x80At0xe0((ByteFlags02033f2c*)self);
-    for (i = 0; i < zone->count82c; i++) {
+    for (i = 0; i < zone->terrainCount; i++) {
         int count = func_02017d90(zone, i, &grid, probe, self);
         if (count > 0) {
             total += count;

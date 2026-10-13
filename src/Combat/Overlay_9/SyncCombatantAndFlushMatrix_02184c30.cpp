@@ -1,23 +1,19 @@
+// USA: func_ov009_02184c30
+// JPN: func_ov009_02185f5c
 #include <globaldefs.h>
+#include "Resource/CharacterCreationUI.h"
 
-extern "C" void func_ov023_021e5628(void* obj, void* ctx);
-extern "C" void _ZN8Object3D4DrawEb(void* obj, int flag);
+extern "C" void func_ov023_021e5628(void*, void*);
 
-// USA: func_ov009_02184c30  (semantic: SyncCombatantAndFlushMatrix_02184c30)
-extern "C" ARM void func_ov009_02184c30(void* objRaw) {
-    char* obj = (char*)objRaw;
-    signed char id = *(signed char*)(obj + 0xc58);
-    if (id == 0 || id == 0xc) {
+extern "C" ARM void func_ov009_02184c30(void* storage) {
+    CharacterCreationUI* editor = (CharacterCreationUI*)storage;
+    if (editor->state == 0 || editor->state == 12)
         return;
+    *(volatile unsigned int*)0x04000444 = 0;
+    func_ov023_021e5628(editor->character, 0);
+    if (editor->flags & 0x200) {
+        editor->model.Draw(true);
+        editor->secondModel.Draw(true);
     }
-
-    *(int*)0x4000444 = 0;
-    func_ov023_021e5628(*(void**)(obj + 0x7f8), 0);
-
-    if (*(int*)(obj + 0xd9c) & 0x200) {
-        _ZN8Object3D4DrawEb(obj + 0x878, 1);
-        _ZN8Object3D4DrawEb(obj + 0xcd8, 1);
-    }
-
-    *(int*)0x4000448 = 1;
+    *(volatile unsigned int*)0x04000448 = 1;
 }
