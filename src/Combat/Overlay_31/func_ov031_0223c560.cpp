@@ -23,7 +23,7 @@ struct State0223c560 {
     unsigned char requestArgs[2];
 };
 struct Dimension0223c560 { unsigned short value; unsigned short padding; };
-extern State0223c560* data_ov031_02290d38_dup;
+extern State0223c560* data_ov031_02290d38;
 extern Dimension0223c560 data_ov031_022493b2[];
 extern Dimension0223c560 data_ov031_022493b0[];
 extern const unsigned short data_ov031_022493ac[];
@@ -42,7 +42,7 @@ void* CallWithZeroExtra_0223e218(void*, void*, void*, int);
 extern "C" ARM Fields020b1d48* func_ov031_0223c560(int screen, int layer) {
     unsigned short height = data_ov031_022493b2[screen].value;
     unsigned short width = data_ov031_022493b0[screen].value;
-    Fields020b1d48* background = &data_ov031_02290d38_dup->backgrounds[screen];
+    Fields020b1d48* background = &data_ov031_02290d38->backgrounds[screen];
     background->buffer = func_ov031_0223cf4c(width * height * 0x20, 0x20);
     if (screen == 1) {
         REG_SUB_BG0CNT &= ~0x40;
@@ -52,7 +52,7 @@ extern "C" ARM Fields020b1d48* func_ov031_0223c560(int screen, int layer) {
         REG_MAIN_BG0CNT = (REG_MAIN_BG0CNT & 0x43) | 0xc00;
     }
     InitFieldsWithData(background, background->buffer, width, height, 4);
-    void* layerData = &data_ov031_02290d38_dup->layers[layer];
+    void* layerData = &data_ov031_02290d38->layers[layer];
     background->self = background;
     background->layer = layerData;
     background->field20 = 1;
@@ -61,6 +61,6 @@ extern "C" ARM Fields020b1d48* func_ov031_0223c560(int screen, int layer) {
     int tile = data_ov031_022493ac[screen];
     func_020b1f48(screenBase, width, height, 0, 0, 0x20, tile, 0xf);
     CallVTableField14_0223ca40(background, 0);
-    background->request = CallWithZeroExtra_0223e218((void*)1, (void*)func_ov031_0223c6d8, &data_ov031_02290d38_dup->requestArgs[screen], 0xc8);
+    background->request = CallWithZeroExtra_0223e218((void*)1, (void*)func_ov031_0223c6d8, &data_ov031_02290d38->requestArgs[screen], 0xc8);
     return background;
 }
