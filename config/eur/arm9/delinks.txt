@@ -11105,10 +11105,6 @@ src/Combat/Main/Clear12Bytes.cpp:
     complete
     .text start:0x0209a000 end:0x0209a014
 
-src/Combat/Main/BinarySearchRecord0209a004.cpp:
-    complete
-    .text start:0x0209a014 end:0x0209a098
-
 src/Combat/Main/InitObjFromSource0209a088.cpp:
     complete
     .text start:0x0209a098 end:0x0209a104
@@ -13992,10 +13988,6 @@ src/Combat/Main/ScaleMatrixAndCopyTranslation020c1948.cpp:
     complete
     .text start:0x020c1958 end:0x020c198c
 
-src/Combat/Main/Mat4x3_WriteRotationZ_020c19b8.s:
-    complete
-    .text start:0x020c19c8 end:0x020c19e4
-
 src/Combat/Main/MulVec3MtxTranslate020c2034.cpp:
     complete
     .text start:0x020c2044 end:0x020c20e4
@@ -14550,22 +14542,6 @@ src/Combat/Main/RunAndClearCallback.cpp:
     complete
     .text start:0x020ca374 end:0x020ca3a0
 
-src/Combat/Main/func_020ca390.cpp:
-    complete
-    .text start:0x020ca3a0 end:0x020ca3c8
-
-src/Combat/Main/func_020ca3b8.cpp:
-    complete
-    .text start:0x020ca3c8 end:0x020ca3fc
-
-src/Combat/Main/func_020ca408.cpp:
-    complete
-    .text start:0x020ca418 end:0x020ca440
-
-src/Combat/Main/func_020ca430.cpp:
-    complete
-    .text start:0x020ca440 end:0x020ca468
-
 src/Combat/Main/func_020ca50c.cpp:
     complete
     .text start:0x020ca51c end:0x020ca538
@@ -14581,10 +14557,6 @@ src/Combat/Main/func_020ca544.cpp:
 src/Combat/Main/func_020ca568.cpp:
     complete
     .text start:0x020ca578 end:0x020ca5a4
-
-src/Combat/Main/VectorizedMemset_020ca594.cpp:
-    complete
-    .text start:0x020ca5a4 end:0x020ca660
 
 src/Combat/Main/AtomicSwap.cpp:
     complete
@@ -14627,14 +14599,6 @@ src/Filesystem/OverlayFSManagement.cpp:
 src/Combat/Main/CallAndReturnTrue020cd584.cpp:
     complete
     .text start:0x020cd594 end:0x020cd5a4
-
-src/Combat/Main/SaveDivSqrtState_020cd594.s:
-    complete
-    .text start:0x020cd5a4 end:0x020cd5e4
-
-src/Combat/Main/func_020cd5d4_020cd5d4.s:
-    complete
-    .text start:0x020cd5e4 end:0x020cd620
 
 src/Combat/Main/InitIPCCommandDispatch020cd890.cpp:
     complete
@@ -14832,10 +14796,6 @@ src/Combat/Main/EnterCombatModeAlt020cf1e0.cpp:
 src/Combat/Main/GetOrInitStoredValueAt0x2c.cpp:
     complete
     .text start:0x020cf26c end:0x020cf2a4
-
-src/Combat/Main/func_020cf294.cpp:
-    complete
-    .text start:0x020cf2a4 end:0x020cf7f4
 
 src/Combat/Main/BcdToBinary.cpp:
     complete
