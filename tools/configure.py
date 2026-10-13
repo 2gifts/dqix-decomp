@@ -219,9 +219,24 @@ def main():
     with build_ninja_path.open("w") as file:
         n = ninja_syntax.Writer(file)
 
+        # The interpreter is emitted as a ninja variable rather than interpolated into each rule,
+        # for two reasons.
+        #
+        # 1. It was previously referenced as `$python` in the non-Windows mwcc rule with no such
+        #    variable ever emitted. Ninja expands an undefined variable to the empty string, so that
+        #    rule ran `&& tools/transform_dep.py ...` -- a bare script name, which fails on any
+        #    platform where the file is not executable or lacks a usable shebang.
+        #
+        # 2. Emitting it as a variable keeps the generated graph honest about which interpreter it
+        #    runs, and lets it be overridden without regenerating: `ninja python=/usr/bin/python3.12`.
+        #    Baking sys.executable into every rule froze the graph to whichever interpreter happened
+        #    to run configure.py, so a build run under a different one silently used the old path.
+        n.variable("python", PYTHON)
+        n.newline()
+
         n.rule(
             name="download_tool",
-            command=f'{PYTHON} tools/download_tool.py $tool $tag --path $path'
+            command=f'$python tools/download_tool.py $tool $tag --path $path'
         )
         n.newline()
 
@@ -240,7 +255,7 @@ def main():
         n.rule(
             name="delink",
             # dsd never writes delink.yaml; without this stamp every build re-delinks and relinks
-            command=f'"{PYTHON}" tools/stamp.py $out {DSD} delink --config-path $config_path'
+            command=f'$python tools/stamp.py $out {DSD} delink --config-path $config_path'
         )
         n.newline()
 
@@ -263,14 +278,14 @@ def main():
 
         n.rule(
             name="mwasm",
-            command=f'"{PYTHON}" tools/mwasm.py {WINE} "{AS}" {AS_FLAGS} -o $out $in',
+            command=f'$python tools/mwasm.py {WINE} "{AS}" {AS_FLAGS} -o $out $in',
         )
         n.newline()
 
         n.rule(
             name="lcf",
            # command=f"{DSD} lcf -c $config_path --lcf-file $lcf_file --objects-file $objects_file"
-            command=f'"{PYTHON}" tools/lcf_symbols.py $lcf_file {DSD} lcf --config-path $config_path'
+            command=f'$python tools/lcf_symbols.py $lcf_file {DSD} lcf --config-path $config_path'
         )
         n.newline()
 
@@ -306,7 +321,7 @@ def main():
 
         n.rule(
             name="m2ctx",
-            command=f"{PYTHON} tools/m2ctx.py -f $out $in"
+            command=f"$python tools/m2ctx.py -f $out $in"
         )
         n.newline()
 
@@ -324,13 +339,13 @@ def main():
 
         n.rule(
             name="check_delinks",
-            command=f"{PYTHON} tools/check_delinks.py $in -s $symbols_file"
+            command=f"$python tools/check_delinks.py $in -s $symbols_file"
         )
         n.newline()
 
         n.rule(
             name="sha1",
-            command=f"{PYTHON} tools/sha1.py $in -c $sha1_file"
+            command=f"$python tools/sha1.py $in -c $sha1_file"
         )
         n.newline()
 
