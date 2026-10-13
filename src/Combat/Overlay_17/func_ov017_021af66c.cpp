@@ -237,7 +237,7 @@ extern "C" ARM void func_ov017_021af66c(CombatStepObj* obj, void* list) {
 #if defined(jpn)
     messages->flags17ff.flag2 = 0;
 #else
-    messages->pad19d0[0] = 0;
+    messages->b19d0 = 0;
 #endif
     if (static_cast<CombatMenuNode*>(res->unknown_ptr_3718)->active == 0) {
         ClearFlags020466f4(flags, 0x40000);
