@@ -4360,3 +4360,28 @@ src/Combat/Overlay_17/SetListField22FromCombatant_021a4e0c.cpp:
 src/Combat/Overlay_17/SetFlag2e6_0219aa6c.cpp:
     complete
     .text start:0x0219b610 end:0x0219b620
+
+
+src/Combat/Overlay_17/NoOp_0219a188.cpp:
+    complete
+    .text start:0x0219ad30 end:0x0219ad34
+
+
+src/Combat/Overlay_17/NoOp_021a63cc.cpp:
+    complete
+    .text start:0x021a6dbc end:0x021a6dc0
+
+
+src/Combat/Overlay_17/func_ov017_021c32b0.cpp:
+    complete
+    .text start:0x021c378c end:0x021c3a88
+
+
+src/Combat/Overlay_17/func_ov017_021c7b8c.cpp:
+    complete
+    .text start:0x021c803c end:0x021c836c
+
+
+src/Combat/Overlay_17/func_ov017_021d1118.cpp:
+    complete
+    .text start:0x021d1594 end:0x021d1a2c

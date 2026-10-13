@@ -4,15 +4,10 @@
 struct StatPayload021c7b8c {
     unsigned short eventId;
     unsigned short combatantId;
-    union {
-        struct {
-            unsigned int level0:3, level1:3, level2:3, level3:3, level4:3;
-            unsigned int level5:3, level6:3, level7:3, level8:3, level9:3;
-            unsigned int :0;
-            unsigned int level10:3, level11:3, level12:3, level13:3, level14:4;
-        };
-        struct { unsigned int lowWord; unsigned int highWord; };
-    };
+    unsigned int level0:3, level1:3, level2:3, level3:3, level4:3;
+    unsigned int level5:3, level6:3, level7:3, level8:3, level9:3;
+    unsigned int :0;
+    unsigned int level10:3, level11:3, level12:3, level13:3, level14:4;
     unsigned char selector;
 };
 struct StatMessage021c7b8c {
@@ -37,6 +32,7 @@ void* GetData02100044();
 int TestBitAt0x34(unsigned char*, unsigned int);
 extern "C" void func_0205e330(void*, StatMessage021c7b8c*, int);
 
+// JPN: func_ov017_021c803c
 // USA: func_ov017_021c7b8c
 extern "C" ARM void func_ov017_021c7b8c() {
     GameState* game = GameState::GetInstance();
@@ -50,7 +46,6 @@ extern "C" ARM void func_ov017_021c7b8c() {
         if (!TestBitAt0x34((unsigned char*)event, index & 255)) continue;
         GameObject* combatant = game->GetCombatantByIndex(index);
         if (!combatant || !((StatSource021c7b8c*)combatant->currentStats_)->active) continue;
-        unsigned int high = payload->highWord & ~7u;
         payload->eventId = event->eventId;
         payload->combatantId = index;
         StatSource021c7b8c* stats = (StatSource021c7b8c*)combatant->currentStats_;
@@ -65,7 +60,7 @@ extern "C" ARM void func_ov017_021c7b8c() {
         payload->level7 = stats->primary[7];
         payload->level8 = stats->primary[8];
         payload->level9 = stats->primary[9];
-        payload->highWord = high | (stats->primary[10] & 7);
+        payload->level10 = stats->primary[10];
         payload->level11 = stats->primary[11];
         payload->level12 = stats->primary[12];
         payload->level13 = stats->primary[13];

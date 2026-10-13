@@ -2,6 +2,8 @@
 #include "Resource/MonsterDefinition.h"
 
 // USA: func_0206ef48
+// KEEP-NAME
+// JPN: func_020700ac
 ARM int RelocateThreeFields(List0206f170* table, MonsterDefinition* definition) {
     definition->name = reinterpret_cast<char*>(func_0206ef94(reinterpret_cast<Struct0206ef94*>(table), definition->name, 0));
 #if !defined(jpn)
