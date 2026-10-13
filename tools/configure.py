@@ -251,8 +251,9 @@ def main():
         # EUR is the USA code compiled with both macros. They sit on this rule, outside
         # $cc_flags, so a gate that substitutes $cc_flags does not drop them.
         region_defines = "-d usa -d eur" if args.version == "eur" else "-d $game_version"
-        mwcc_cmd = f'{WINE} "$cc_exe" {CC_FLAGS} {CC_INCLUDES} $cc_flags {region_defines} -MD -c $in -o $basedir'
-        mwcc_implicit = [CC] + WINE_DEP
+        mwcc_cmd = (f'$python tools/mwcc.py $basefile.o {WINE} "$cc_exe" {CC_FLAGS} {CC_INCLUDES} $cc_flags '
+                    f'{region_defines} -MD -c $in -o $basedir')
+        mwcc_implicit = [CC, "tools/mwcc.py"] + WINE_DEP
         if platform.system != "windows":
             transform_dep = "tools/transform_dep.py"
             mwcc_cmd += f" && $python {transform_dep} $basefile.d $basefile.d"
