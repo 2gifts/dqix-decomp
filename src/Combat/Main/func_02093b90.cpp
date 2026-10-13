@@ -52,7 +52,7 @@ void TailForward02012da4(AllocatorUnion*, void*);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 extern "C" void func_020945ac(Obj020941b0*);
 
-static inline unsigned char* GetText02093b90(Obj020941b0* obj) { unsigned char* text=obj->text; return text; }
+static inline unsigned char* GetText02093b90(Obj020941b0* obj) { return obj->text; }
 
 // USA: func_02093b90
 extern "C" ARM void func_02093b90(Obj020941b0* self, int ticks) {
