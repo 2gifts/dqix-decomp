@@ -37,20 +37,11 @@ struct Obj_021e6104 {
     void* ctx;
 };
 
-static inline short CurrMP(GameObject* c) {
-    short v = c->currentStats_->primaryStats.currMP;
-    return v;
-}
+static inline short CurrMP(GameObject* c) { SDK_NULL_ASSERT(c); return c->currentStats_->primaryStats.currMP; }
 
-static inline unsigned short CurrHP(GameObject* c) {
-    unsigned short v = c->currentStats_->primaryStats.currHP;
-    return v;
-}
+static inline unsigned short CurrHP(GameObject* c) { SDK_NULL_ASSERT(c); return c->currentStats_->primaryStats.currHP; }
 
-static inline unsigned short MaxHP(GameObject* c) {
-    unsigned short v = c->currentStats_->primaryStats.maxHP;
-    return v;
-}
+static inline unsigned short MaxHP(GameObject* c) { SDK_NULL_ASSERT(c); return c->currentStats_->primaryStats.maxHP; }
 
 static inline int IsPartySlot(int id) {
     return id >= 0 && id <= 3;

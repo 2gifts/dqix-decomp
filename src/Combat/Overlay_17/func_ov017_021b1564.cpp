@@ -114,7 +114,7 @@ extern Overlay006021b1564* data_ov017_021d83ec;
 #define REG_MAIN_DISPLAY (*(volatile unsigned int*)0x04000000)
 #define REG_SUB_DISPLAY (*(volatile unsigned int*)0x04001000)
 
-static inline int CurrentZone021b1564(Zone3D* zone) { int id = zone->currentZoneID_; return id; }
+static inline int CurrentZone021b1564(Zone3D* zone) { SDK_NULL_ASSERT(zone); return zone->currentZoneID_; }
 
 // USA: func_ov017_021b1564
 extern "C" ARM void func_ov017_021b1564(Transition021b1564* self, TailList020469b4* list) {

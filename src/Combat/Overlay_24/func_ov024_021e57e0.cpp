@@ -39,10 +39,7 @@ extern "C" void _Z22PopulateEntry_0215ccbciP17OutStruct0215ccbcP10GameObjectsssi
                             short valC, short valA, short valB, unsigned long long words, unsigned char byteE);
 extern "C" void _Z32AppendToChainAndIncCount0215fe84PvS_i(void* chain, void* node, int idx);
 
-static inline short GetCurrentMP(GameObject* c) {
-    short mp = c->currentStats_->primaryStats.currMP;
-    return mp;
-}
+static inline short GetCurrentMP(GameObject* c) { SDK_NULL_ASSERT(c); return c->currentStats_->primaryStats.currMP; }
 
 // USA: func_ov024_021e57e0
 extern "C" ARM void func_ov024_021e57e0(struct Act_021e57e0* self, int id, struct Rec_021e57e0* rec) {

@@ -39,8 +39,8 @@ extern "C" void _Z18AppendNode021600ccP11Obj021600ccP12Node021600cc(Obj021600cc*
 int ArrayContainsByte(ArrayContainsByteStruct*, int);
 extern "C" void _Z39IncrementByteCounterCapped0x63_0215a8d4Phi(unsigned char*, int);
 static inline short GetSource(GameObject* combatant) { return ((CombatSource*)combatant->currentStats_)->id; }
-static inline short GetHP(GameObject* combatant) { short value = combatant->currentStats_->primaryStats.currHP; return value; }
-static inline short GetMP(GameObject* combatant) { short value = combatant->currentStats_->primaryStats.currMP; return value; }
+static inline short GetHP(GameObject* combatant) { SDK_NULL_ASSERT(combatant); return combatant->currentStats_->primaryStats.currHP; }
+static inline short GetMP(GameObject* combatant) { SDK_NULL_ASSERT(combatant); return combatant->currentStats_->primaryStats.currMP; }
 static inline Obj021600cc* AsTargetAction(Obj02160068* action) { Obj021600cc* value = (Obj021600cc*)action; return value; }
 
 // USA: func_ov000_0215a908

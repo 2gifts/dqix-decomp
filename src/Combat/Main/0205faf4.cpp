@@ -153,14 +153,8 @@ static inline struct Flags1840_0205faf4* Flags1840_0205faf4(void* p) {
 #define STAT130(c) (*(void**)((char*)(c) + 0x130))
 #define SUB150(c) (*(char**)((char*)(c) + REGION_VALUE(0x144, 0x150)))
 
-static inline int Field950_0205faf4(struct CombatantStruct* c) {
-    int v = *(int*)(SUB150(c) + REGION_VALUE(0x8b8, 0x950));
-    return v;
-}
-static inline int Extra24_0205faf4(struct ExtraStruct0205faf4* extra) {
-    int v = EW(0x24);
-    return v;
-}
+static inline int Field950_0205faf4(struct CombatantStruct* c) { SDK_NULL_ASSERT(c); return *(int*)(SUB150(c) + REGION_VALUE(0x8b8, 0x950)); }
+static inline int Extra24_0205faf4(struct ExtraStruct0205faf4* extra) { SDK_NULL_ASSERT(extra); return EW(0x24); }
 
 // USA: func_0205faf4
 extern "C" ARM int func_0205faf4(struct BattleStruct* obj, void* cmd, struct ExtraStruct0205faf4* extra) {

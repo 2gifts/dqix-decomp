@@ -68,8 +68,8 @@ static inline int IsPartyIndex(int index) {
     return index >= 0 && index <= 3;
 }
 
-static inline short CurrHP(GameObject* c) { short v = c->currentStats_->primaryStats.currHP; return v; }
-static inline short CurrMP(GameObject* c) { short v = c->currentStats_->primaryStats.currMP; return v; }
+static inline short CurrHP(GameObject* c) { SDK_NULL_ASSERT(c); return c->currentStats_->primaryStats.currHP; }
+static inline short CurrMP(GameObject* c) { SDK_NULL_ASSERT(c); return c->currentStats_->primaryStats.currMP; }
 
 // USA: func_ov000_0215af54
 extern "C" ARM void func_ov000_0215af54(struct Battle0215af54* battle, int index, int mode) {

@@ -77,9 +77,9 @@ extern "C" void _Z31SetRandomizedShort0x18802048934PvP19FieldStruct02048934P6Ran
 extern "C" int func_ov000_02161bb8(ZeroableStruct021620d8*);
 void IncrementByteCounterWrapAt0x12(unsigned char*);
 static inline void* GetEntryPayload(FieldStruct02048934* entry) { return entry->payload; }
-static inline int GetGroupCount(PartyRoster* roster) { int value = roster->groupCount; return value; }
+static inline int GetGroupCount(PartyRoster* roster) { SDK_NULL_ASSERT(roster); return roster->groupCount; }
 
-static inline unsigned char GetBlobSlot(Combatant* actor) { unsigned char slot = actor->blob->slot; return slot; }
+static inline unsigned char GetBlobSlot(Combatant* actor) { SDK_NULL_ASSERT(actor); return actor->blob->slot; }
 
 // USA: func_ov000_02161e30
 extern "C" ARM void func_ov000_02161e30(BattleState* state, int id, int key) {

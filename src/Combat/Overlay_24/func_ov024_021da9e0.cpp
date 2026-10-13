@@ -98,10 +98,7 @@ static inline int IsPartySlotS_021da9e0(short id) {
     return id >= 0 && id <= 3;
 }
 
-static inline unsigned short CurrMP_021da9e0(GameObject* c) {
-    unsigned short v = c->currentStats_->primaryStats.currMP;
-    return v;
-}
+static inline unsigned short CurrMP_021da9e0(GameObject* c) { SDK_NULL_ASSERT(c); return c->currentStats_->primaryStats.currMP; }
 
 // USA: func_ov024_021da9e0
 extern "C" ARM struct Entry_021da9e0* func_ov024_021da9e0(struct Act_021da9e0* obj, short a, int id, struct Rec_021da9e0* rec, int dmg, int* flags, unsigned char cnt) {

@@ -26,10 +26,7 @@ struct State_021567c4 {
 	int field_0x94;
 };
 
-static inline unsigned char* GetPtr3718(GameResources* resources) {
-	unsigned char* p = (unsigned char*)resources->unknown_ptr_3718;
-	return p;
-}
+static inline unsigned char* GetPtr3718(GameResources* resources) { SDK_NULL_ASSERT(resources); return (unsigned char*)resources->unknown_ptr_3718; }
 
 // USA: func_ov001_021567c4
 extern "C" ARM unsigned short func_ov001_021567c4(State_021567c4* self) {

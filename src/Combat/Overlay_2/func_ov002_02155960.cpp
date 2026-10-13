@@ -98,10 +98,7 @@ extern unsigned int data_ov002_0216d3a8;
 extern BattleHandler data_020e6d5c;
 extern BattleHandler data_ov002_0216cd74[44];
 
-static inline BattleElementRegion* GetElements(BattleActor* actor) {
-    BattleElementRegion* elements = &actor->elements;
-    return elements;
-}
+static inline BattleElementRegion* GetElements(BattleActor* actor) { SDK_NULL_ASSERT(actor); return &actor->elements; }
 
 // USA: func_ov002_02155960
 extern "C" ARM int func_ov002_02155960(BattleActor* actor, int delta) {

@@ -273,8 +273,8 @@ static inline int CurLimit(struct UnitExt* e) {
     return e->limits[e->level];
 }
 
-static inline int UnitId(struct Unit* u) { int id = u->id; return id; }
-static inline char* UnitName(struct Unit* u) { char* name = u->name; return name; }
+static inline int UnitId(struct Unit* u) { SDK_NULL_ASSERT(u); return u->id; }
+static inline char* UnitName(struct Unit* u) { SDK_NULL_ASSERT(u); return u->name; }
 
 enum MsgKey { MSG_KEY_NONE = -1, MSG_KEY_DEAD = 0x232c, MSG_KEY_ALIVE = 0x233a };
 

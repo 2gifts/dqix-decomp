@@ -19,7 +19,7 @@ struct InternalOwner0218f064 { char pad_0[0x2cc]; InternalBlock0218f064 blocks[2
 struct DisposableOwner0218f064 { char pad_0[0x4334]; Object3D* first; Object3D* second; Object3D* third; Object3D* fourth; };
 struct ZoneSpecial0218f064 { char pad_0[0xb58]; T020545b8* special; char* companion; };
 struct ZoneOwner0218f064 { char pad_0[0x1840]; ZoneSpecial0218f064 tail; };
-static inline ZoneSpecial0218f064* ZoneSpecials0218f064(Zone3D* zone) { ZoneSpecial0218f064* tail = &((ZoneOwner0218f064*)zone)->tail; return tail; }
+static inline ZoneSpecial0218f064* ZoneSpecials0218f064(Zone3D* zone) { SDK_NULL_ASSERT(zone); return &((ZoneOwner0218f064*)zone)->tail; }
 struct Ticket0218f064 { char pad_0[0x10]; Vector3i position; short rotation; };
 struct Combatant0218f064 {
     Object3D object;
@@ -55,7 +55,7 @@ extern "C" void _Z24SetLowNibble56b_0218f57cPvi(void*, int);
 extern "C" int func_ov017_0218f5a4(GameResources*, int, int, int, int);
 extern const char data_ov017_021d73a4[];
 
-static inline InternalBlock0218f064* InternalBlocks0218f064(GameResources* resources) { InternalBlock0218f064* blocks = ((InternalOwner0218f064*)resources)->blocks; return blocks; }
+static inline InternalBlock0218f064* InternalBlocks0218f064(GameResources* resources) { SDK_NULL_ASSERT(resources); return ((InternalOwner0218f064*)resources)->blocks; }
 
 // USA: func_ov017_0218f064
 extern "C" ARM void func_ov017_0218f064(GameResources* resources, int id, int kind, int registerEffect, int mode) {

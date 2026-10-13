@@ -32,10 +32,7 @@ extern "C" short _Z17ConsumeMP0215a124Pvii(void* world, int id, int amount);
 extern "C" void _Z22PopulateEntry_0215ccbciP17OutStruct0215ccbcP10GameObjectsssiih(void* world, struct OutStruct0215ccbc* out, GameObject* combatant,
                             short valC, short valA, short valB, unsigned long long words, unsigned char byteE);
 
-static inline int GetCurrentHP(GameObject* c) {
-    int hp = c->currentStats_->primaryStats.currHP;
-    return hp;
-}
+static inline int GetCurrentHP(GameObject* c) { SDK_NULL_ASSERT(c); return c->currentStats_->primaryStats.currHP; }
 
 extern "C" void _Z32AppendToChainAndIncCount0215fe84PvS_i(void*,void*,int);
 extern "C" void func_ov024_021e8bf0(Obj_021de274*,void*,unsigned short*);

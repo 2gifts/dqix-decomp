@@ -58,10 +58,7 @@ void* GetPtrField0x2a04(GameState* gameState);
 int ArrayContainsByte(struct ArrayContainsByteStruct* s, int val);
 extern "C" void _Z39IncrementByteCounterCapped0x63_0215a8d4Phi(unsigned char* obj, int idx);
 
-static inline short GetOwner_021e9b74(struct Cbt_021e9b74* c) {
-    short owner = c->stats->owner2a;
-    return owner;
-}
+static inline short GetOwner_021e9b74(struct Cbt_021e9b74* c) { SDK_NULL_ASSERT(c); return c->stats->owner2a; }
 
 static inline int IsKind_021e9b74(struct Cbt_021e9b74* c, int kind) {
     return c->stats->kind21 == kind;

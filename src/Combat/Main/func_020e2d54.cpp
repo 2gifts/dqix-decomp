@@ -19,8 +19,8 @@ int SubmitBlock0x40IfNotBusy(int);
 void SetFields0x0_0x4_0x8(int*, int, int, int);
 extern "C" void* _Z32GetSubstructAt0x40OrNull020e2fb0Pv(void*);
 extern "C" void func_020ca430(const void*, void*, int);
-static inline int GetBoneScale020e2d54(Bone020e2d54* bone) { int value = bone->scaleZ; return value; }
-static inline int GetVectorZ020e2d54(Vector3fix* vector) { int value = vector->z; return value; }
+static inline int GetBoneScale020e2d54(Bone020e2d54* bone) { SDK_NULL_ASSERT(bone); return bone->scaleZ; }
+static inline int GetVectorZ020e2d54(Vector3fix* vector) { SDK_NULL_ASSERT(vector); return vector->z; }
 static inline int Divide020e2d54(int a, int b) { int value = fix32_Divide(a, b); return value; }
 
 // USA: func_020e2d54

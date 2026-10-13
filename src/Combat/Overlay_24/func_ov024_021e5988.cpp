@@ -28,7 +28,7 @@ struct Obj_021e5988 {
 	void* field0x10;
 };
 
-static inline short GetStatField2_021e5988(GameObject* c) { short v = ((struct Stats_021e5988*)c->currentStats_)->field2; return v; }
+static inline short GetStatField2_021e5988(GameObject* c) { SDK_NULL_ASSERT(c); return ((struct Stats_021e5988*)c->currentStats_)->field2; }
 
 // USA: func_ov024_021e5988
 extern "C" ARM void func_ov024_021e5988(struct Obj_021e5988* obj, int id, struct Action_021e5988* action) {

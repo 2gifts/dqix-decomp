@@ -72,10 +72,7 @@ void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
 void SetByteInRange(unsigned char* base, int index, unsigned char value);
 void SetByteAtIndex(unsigned char* base, int index, unsigned char value);
 
-static inline struct Grid0216aa28* GetGrid(void* list) {
-    struct Grid0216aa28* grid = ((struct GridList0216aa28*)list)->grids;
-    return grid;
-}
+static inline struct Grid0216aa28* GetGrid(void* list) { SDK_NULL_ASSERT(list); return ((struct GridList0216aa28*)list)->grids; }
 
 // USA: func_ov003_0216aa28
 extern "C" ARM void func_ov003_0216aa28(struct Menu0216aa28* menu) {

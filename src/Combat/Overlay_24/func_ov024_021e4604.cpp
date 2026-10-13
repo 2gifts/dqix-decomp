@@ -28,10 +28,7 @@ struct Stats_021e4604 {
     unsigned char field0x48;
 };
 
-static inline unsigned short GetCurrentHP(GameObject* c) {
-    unsigned short hp = c->currentStats_->primaryStats.currHP;
-    return hp;
-}
+static inline unsigned short GetCurrentHP(GameObject* c) { SDK_NULL_ASSERT(c); return c->currentStats_->primaryStats.currHP; }
 
 // USA: func_ov024_021e4604
 extern "C" ARM unsigned long long func_ov024_021e4604(struct Obj_021e4604* obj, int srcId, int id, int extra) {

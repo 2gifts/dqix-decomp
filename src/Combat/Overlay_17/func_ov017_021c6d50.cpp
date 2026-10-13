@@ -34,10 +34,10 @@ struct StatusMsg {
 static inline struct StatusBits* GetStatusBits(GameObject* c) {
     return (struct StatusBits*)((unsigned char*)c->currentStats_ + 0x22);
 }
-static inline unsigned char GetFieldA(GameObject* c) { unsigned char v = GetStatusBits(c)->fieldA; return v; }
-static inline unsigned char GetFieldB(GameObject* c) { unsigned char v = GetStatusBits(c)->fieldB; return v; }
-static inline unsigned char GetFieldC(GameObject* c) { unsigned char v = GetStatusBits(c)->fieldC; return v; }
-static inline unsigned char GetState(GameObject* c) { unsigned char v = GetStatusBits(c)->state; return v; }
+static inline unsigned char GetFieldA(GameObject* c) { SDK_NULL_ASSERT(c); return GetStatusBits(c)->fieldA; }
+static inline unsigned char GetFieldB(GameObject* c) { SDK_NULL_ASSERT(c); return GetStatusBits(c)->fieldB; }
+static inline unsigned char GetFieldC(GameObject* c) { SDK_NULL_ASSERT(c); return GetStatusBits(c)->fieldC; }
+static inline unsigned char GetState(GameObject* c) { SDK_NULL_ASSERT(c); return GetStatusBits(c)->state; }
 
 // USA: func_ov017_021c6d50
 extern "C" ARM void func_ov017_021c6d50() {

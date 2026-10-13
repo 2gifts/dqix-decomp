@@ -131,10 +131,7 @@ static inline Stats_021e4c04* StatsOf(GameObject* c) {
     return (Stats_021e4c04*)c->currentStats_;
 }
 
-static inline unsigned short GetHP(GameObject* c) {
-    unsigned short hp = StatsOf(c)->hp;
-    return hp;
-}
+static inline unsigned short GetHP(GameObject* c) { SDK_NULL_ASSERT(c); return StatsOf(c)->hp; }
 
 // USA: func_ov024_021e4c04
 extern "C" ARM void func_ov024_021e4c04(Self_021e4c04* self, int attackerId, int targetId, Record_021e4c04* rec, int amount) {

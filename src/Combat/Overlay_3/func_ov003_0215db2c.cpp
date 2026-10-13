@@ -45,10 +45,7 @@ struct MenuList_0215db2c {
     struct MenuCursor_0215db2c cursors[1];
 };
 
-static inline struct MenuCursor_0215db2c* GetCursor(struct MenuList_0215db2c* list) {
-    struct MenuCursor_0215db2c* cursor = list->cursors;
-    return cursor;
-}
+static inline struct MenuCursor_0215db2c* GetCursor(struct MenuList_0215db2c* list) { SDK_NULL_ASSERT(list); return list->cursors; }
 
 // USA: func_ov003_0215db2c
 extern "C" ARM void func_ov003_0215db2c(char* self) {

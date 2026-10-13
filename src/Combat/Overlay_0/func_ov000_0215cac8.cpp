@@ -63,8 +63,8 @@ static inline GameObject* GetCombatant(int id) {
     return gs->GetCombatantByIndex(id);
 }
 
-static inline short CurrHP(GameObject* c) { short v = c->currentStats_->primaryStats.currHP; return v; }
-static inline short CurrMP(GameObject* c) { short v = c->currentStats_->primaryStats.currMP; return v; }
+static inline short CurrHP(GameObject* c) { SDK_NULL_ASSERT(c); return c->currentStats_->primaryStats.currHP; }
+static inline short CurrMP(GameObject* c) { SDK_NULL_ASSERT(c); return c->currentStats_->primaryStats.currMP; }
 
 // USA: func_ov000_0215cac8
 extern "C" ARM void func_ov000_0215cac8(Battle* self, short* ids, int count, short action,

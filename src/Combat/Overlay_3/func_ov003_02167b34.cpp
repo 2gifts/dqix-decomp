@@ -44,10 +44,7 @@ extern "C" void func_ov003_02167fa4(Menu_02167b34* menu, int flag, unsigned char
 extern "C" void _Z31SetEntryFieldsForRange_02168088P15Wrapper02168088Pi(struct Wrapper02168088* obj, int* arr);
 extern "C" void func_020813ec(void* list, int arg);
 
-static inline BaseCombatStats* GetBaseStats(GameObject* c) {
-    BaseCombatStats* stats = c->baseStats_;
-    return stats;
-}
+static inline BaseCombatStats* GetBaseStats(GameObject* c) { SDK_NULL_ASSERT(c); return c->baseStats_; }
 
 // USA: func_ov003_02167b34
 extern "C" ARM void func_ov003_02167b34(Menu_02167b34* menu) {

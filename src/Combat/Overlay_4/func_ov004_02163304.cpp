@@ -17,10 +17,7 @@ struct MenuState021707e8 {
 
 extern MenuState021707e8 data_ov004_021707e8;
 
-static inline int GetZoneId(char* zone) {
-    int id = *(unsigned short*)zone;
-    return id;
-}
+static inline int GetZoneId(char* zone) { SDK_NULL_ASSERT(zone); return *(unsigned short*)zone; }
 
 // USA: func_ov004_02163304
 extern "C" ARM int func_ov004_02163304(void* self) {

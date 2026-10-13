@@ -29,10 +29,10 @@ extern "C" void _Z32AppendToChainAndIncCount0215ffc4PvS_i(void*, void*, int);
 extern "C" void _Z18AppendNode02160068P11Obj02160068P12Node02160068(Obj02160068*, Node02160068*);
 extern "C" void _Z18AppendNode021600ccP11Obj021600ccP12Node021600cc(Obj021600cc*, Node021600cc*);
 extern short data_ov000_02182c24[8];
-static inline short GetSource(GameObject* combatant) { short value = ((CombatSource*)combatant->currentStats_)->id; return value; }
-static inline short GetHP(GameObject* combatant) { short value = combatant->currentStats_->primaryStats.currHP; return value; }
-static inline short GetMP(GameObject* combatant) { short value = combatant->currentStats_->primaryStats.currMP; return value; }
-static inline short GetCombatantId(short* combatants, int index) { short value = combatants[index]; return value; }
+static inline short GetSource(GameObject* combatant) { SDK_NULL_ASSERT(combatant); return ((CombatSource*)combatant->currentStats_)->id; }
+static inline short GetHP(GameObject* combatant) { SDK_NULL_ASSERT(combatant); return combatant->currentStats_->primaryStats.currHP; }
+static inline short GetMP(GameObject* combatant) { SDK_NULL_ASSERT(combatant); return combatant->currentStats_->primaryStats.currMP; }
+static inline short GetCombatantId(short* combatants, int index) { SDK_NULL_ASSERT(combatants); return combatants[index]; }
 
 // USA: func_ov000_0215c4cc
 extern "C" ARM void func_ov000_0215c4cc(BattleEvents* events) {

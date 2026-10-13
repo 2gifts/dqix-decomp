@@ -34,15 +34,9 @@ extern "C" int _Z17ConsumeMP0215a124Pvii(void* world, int id, int amount);
 extern "C" void _Z22PopulateEntry_0215ccbciP17OutStruct0215ccbcP10GameObjectsssiih(void* world, struct OutStruct0215ccbc* out, GameObject* combatant,
                             short valC, short valA, short valB, unsigned long long words, unsigned char byteE);
 
-static inline int GetCurrentHP(GameObject* c) {
-    int hp = c->currentStats_->primaryStats.currHP;
-    return hp;
-}
+static inline int GetCurrentHP(GameObject* c) { SDK_NULL_ASSERT(c); return c->currentStats_->primaryStats.currHP; }
 
-static inline unsigned short GetMaxMP(GameObject* c) {
-    unsigned short maxMP = c->currentStats_->primaryStats.maxMP;
-    return maxMP;
-}
+static inline unsigned short GetMaxMP(GameObject* c) { SDK_NULL_ASSERT(c); return c->currentStats_->primaryStats.maxMP; }
 
 // USA: func_ov024_021dc540
 extern "C" ARM struct OutStruct0215ccbc* func_ov024_021dc540(struct Obj_021dc540* obj, int srcId, int id, struct Range_021dc540* range, int amount, int unused, unsigned char flagArg) {

@@ -51,11 +51,11 @@ extern "C" Elem_0205d81c* _Z23FindElementByC40205d81cP15Struct_0205d81ci(Struct_
 void GetFourShortsAtIndex(ShortArrays0204c610*, int, short*, short*, short*, short*);
 extern "C" void _Z22SetEntryFields02154bcciiPvihh(int, int, void*, int, u8, u8);
 
-static inline short GetX(Elem_0205d81c* entry) { short x = entry->xOrigin; return x; }
-static inline short GetY(Elem_0205d81c* entry) { short y = entry->yOrigin; return y; }
-static inline short GetOffset(FormationMenu* self) { short offset = self->xOffset; return offset; }
+static inline short GetX(Elem_0205d81c* entry) { SDK_NULL_ASSERT(entry); return entry->xOrigin; }
+static inline short GetY(Elem_0205d81c* entry) { SDK_NULL_ASSERT(entry); return entry->yOrigin; }
+static inline short GetOffset(FormationMenu* self) { SDK_NULL_ASSERT(self); return self->xOffset; }
 
-static inline int AddOrigin(const short* value, short origin) { int result = *value + origin; return result; }
+static inline int AddOrigin(const short* value, short origin) { SDK_NULL_ASSERT(value); return *value + origin; }
 static inline short AddPosition(short offset, short x) { short result = x + (offset + 3); return result; }
 
 // USA: func_ov002_0215ab60

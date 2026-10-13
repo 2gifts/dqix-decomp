@@ -75,10 +75,7 @@ struct Field3f8 {
 };
 
 struct Combatant0219e384 {
-	short GetId() const {
-		short id = s4;
-		return id;
-	}
+	short GetId() const { SDK_NULL_ASSERT(this); return s4; }
 
 	unsigned char unk0[4];
 	short s4;

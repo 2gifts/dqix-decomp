@@ -114,10 +114,7 @@ struct LocalMsg020a6aac
 };
 
 static inline const Vector3i* SavedPosition020a6aac(SavedEvent020a6aac* event)
-{
-    const Vector3i* position = &event->position;
-    return position;
-}
+{ SDK_NULL_ASSERT(event); return &event->position; }
 
 // USA: func_020a6aac
 extern "C" ARM void func_020a6aac(unsigned int* obj, int eventCode, int previousCode)
