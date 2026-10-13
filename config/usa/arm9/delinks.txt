@@ -19770,16 +19770,13 @@ src/Combat/Main/func_0209afd4.cpp:
     complete
     .text start:0x0209afd4 end:0x0209b448
 
-
 src/Combat/Main/CalculateScalingAmountSmooth.cpp:
     complete
     .text start:0x020b8404 end:0x020b8598
 
-
 src/Combat/Main/func_02069fec.cpp:
     complete
     .text start:0x02069fec end:0x0206a3c0
-
 
 src/Combat/Main/func_020a78dc.cpp:
     complete
@@ -19805,11 +19802,9 @@ src/Combat/Main/func_020aeb34.cpp:
     complete
     .text start:0x020aeb34 end:0x020aee04
 
-
 src/Combat/Main/func_0206b974.cpp:
     complete
     .text start:0x0206b974 end:0x0206bf2c
-
 
 src/Combat/Main/func_020a1940.cpp:
     complete
@@ -19835,7 +19830,6 @@ src/Combat/Main/func_020a9b2c.cpp:
     complete
     .text start:0x020a9b2c end:0x020a9ba4
 
-
 src/Combat/Main/func_02058d40.cpp:
     complete
     .text start:0x02058d40 end:0x02059720
@@ -19859,3 +19853,23 @@ src/Combat/Main/func_02067b28.cpp:
 src/Combat/Main/func_02067fec.cpp:
     complete
     .text start:0x02067fec end:0x020680cc
+
+src/Combat/Main/func_0207f158.cpp:
+    complete
+    .text start:0x0207f158 end:0x0207f4a8
+
+src/Combat/Main/func_0208bb78.cpp:
+    complete
+    .text start:0x0208bb78 end:0x0208be8c
+
+src/Combat/Main/func_02093b90.cpp:
+    complete
+    .text start:0x02093b90 end:0x02093f68
+
+src/Combat/Main/func_020ab314.cpp:
+    complete
+    .text start:0x020ab314 end:0x020ab5d4
+
+src/Combat/Main/func_02055f5c.cpp:
+    complete
+    .text start:0x02055f5c end:0x02056b48
