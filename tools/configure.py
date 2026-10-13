@@ -219,19 +219,7 @@ def main():
     with build_ninja_path.open("w") as file:
         n = ninja_syntax.Writer(file)
 
-        # The interpreter is emitted as a ninja variable rather than interpolated into each rule,
-        # for two reasons.
-        #
-        # 1. It was previously referenced as `$python` in the non-Windows mwcc rule with no such
-        #    variable ever emitted. Ninja expands an undefined variable to the empty string, so that
-        #    rule ran `&& tools/transform_dep.py ...` -- a bare script name, which fails on any
-        #    platform where the file is not executable or lacks a usable shebang.
-        #
-        # 2. Emitting it as a variable keeps the generated graph honest about which interpreter it
-        #    runs, and lets it be overridden without regenerating: `ninja python=/usr/bin/python3.12`.
-        #    Baking sys.executable into every rule froze the graph to whichever interpreter happened
-        #    to run configure.py, so a build run under a different one silently used the old path.
-        n.variable("python", PYTHON)
+        n.variable("python", f'"{PYTHON}"')
         n.newline()
 
         n.rule(
