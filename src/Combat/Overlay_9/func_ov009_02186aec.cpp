@@ -1,33 +1,40 @@
 #include <globaldefs.h>
+#include "Resource/CharacterCreationUI.h"
 
-extern "C" void func_ov009_02188c2c(void *self);
-extern "C" void func_ov009_02188d9c(void *self);
-extern "C" void func_ov009_02188e70(void *self, unsigned char val);
-extern "C" void func_ov009_02188944(void *self, unsigned char val);
-extern "C" int func_ov009_02188ee8(void *self);
+#if defined(jpn)
+#define func_ov009_02188ee8 func_ov009_02189e04
+#define _Z20SetStatValue021855dcPhi func_ov009_021867bc
+#endif
+
+extern "C" void func_ov009_02188c2c(CharacterCreationUI* self);
+extern "C" void func_ov009_02188d9c(CharacterCreationUI* self);
+extern "C" void func_ov009_02188e70(CharacterCreationUI* self, int val);
+extern "C" void func_ov009_02188944(CharacterCreationUI* self, int val);
+extern "C" int func_ov009_02188ee8(CharacterCreationUI* self);
 extern "C" ARM void _Z20SetStatValue021855dcPhi(unsigned char *self, int val);
 
 // USA: func_ov009_02186aec  (semantic: AdvanceStatStep_02186aec)
-extern "C" ARM void func_ov009_02186aec(unsigned char *self) {
-	unsigned char step = self[0xc59];
+// JPN: func_ov009_02187c18
+extern "C" ARM void func_ov009_02186aec(CharacterCreationUI* self) {
+	unsigned char step = self->step;
 	if (step == 0) {
 		func_ov009_02188c2c(self);
 		func_ov009_02188d9c(self);
-		int idx = self[0xda3];
-		unsigned char val = *(self + idx + 0xdaa);
+		int idx = self->sex;
+		unsigned char val = self->eyeColor[idx];
 		func_ov009_02188e70(self, val);
-		*(unsigned int*)(self + 0xd9c) |= 1;
-		self[0xc59] = self[0xc59] + 1;
+		self->flags |= 1;
+		self->step = self->step + 1;
 		return;
 	}
 	if (step == 1) {
-		if (*(unsigned int*)(self + 0xd9c) & 0x80) {
+		if (self->flags & 0x80) {
 			return;
 		}
-		int idx = self[0xda3];
-		unsigned char val = *(self + idx + 0xdaa);
+		int idx = self->sex;
+		unsigned char val = self->eyeColor[idx];
 		func_ov009_02188944(self, val);
-		self[0xc59] = self[0xc59] + 1;
+		self->step = self->step + 1;
 		return;
 	}
 	if (step != 2) {
@@ -35,24 +42,24 @@ extern "C" ARM void func_ov009_02186aec(unsigned char *self) {
 	}
 	int result = func_ov009_02188ee8(self);
 	if (result == -2) {
-		_Z20SetStatValue021855dcPhi(self, 7);
+		_Z20SetStatValue021855dcPhi((unsigned char*)self, 7);
 		return;
 	}
 	if (result == -3) {
-		_Z20SetStatValue021855dcPhi(self, 5);
+		_Z20SetStatValue021855dcPhi((unsigned char*)self, 5);
 		return;
 	}
 	if (result < 0x65 || result > 0x6c) {
 		return;
 	}
-	int idx2 = self[0xda3];
+	int idx2 = self->sex;
 	int v = result - 0x64;
-	signed char *arr = (signed char*)(self + 0xda0);
+	signed char *arr = self->furthestState;
 	if (v > arr[idx2]) {
 		return;
 	}
-	if (v == *(signed char*)(self + 0xc58)) {
+	if (v == self->state) {
 		return;
 	}
-	_Z20SetStatValue021855dcPhi(self, v & 0xff);
+	_Z20SetStatValue021855dcPhi((unsigned char*)self, v & 0xff);
 }

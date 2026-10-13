@@ -1,15 +1,9 @@
 #include <globaldefs.h>
-
-struct LookupNode_0220ee50 {
-    int field0;
-    int id;
-    int field8;
-    LookupNode_0220ee50* next;
-};
+#include "System/WirelessScanDescriptor.h"
 
 struct LookupList_0220ee50 {
     int field0;
-    LookupNode_0220ee50* head;
+    WirelessScanNode* head;
 };
 
 struct LookupContext_0220ee50 {
@@ -21,18 +15,18 @@ struct LookupContext_0220ee50 {
 int GetData0224e53c_0220d60c(void);
 
 // USA: func_ov031_0220ee50
-extern "C" ARM int func_ov031_0220ee50(int id) {
+extern "C" ARM WirelessScanNode* func_ov031_0220ee50(int id) {
     LookupContext_0220ee50* context = (LookupContext_0220ee50*)GetData0224e53c_0220d60c();
     LookupList_0220ee50* list = context->list;
-    LookupNode_0220ee50* node = NULL;
+    WirelessScanNode* node = NULL;
     if (list != NULL && context->state > 12) {
         node = list->head;
         if (node != NULL) {
             do {
-                if (node->id == id) break;
+                if (node->index == id) break;
                 node = node->next;
             } while (node != NULL);
         }
     }
-    return (int)node;
+    return node;
 }

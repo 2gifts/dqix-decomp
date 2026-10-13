@@ -11,7 +11,7 @@ extern "C" void func_020733d8(void* elem, int mode);
 struct EntryFlags_021a205c { unsigned short pad0 : 3; unsigned short flag3 : 1; unsigned short pad4 : 12; };
 
 // USA: func_ov017_021a205c
-ARM void ProcessFlaggedCombatants800_021a205c(void) {
+ARM void ProcessFlaggedCombatants800_021a205c(GameResources*) {
 	GameState* battleStruct = GameState::GetInstance();
 	struct Element0x318_02028bac* table = (struct Element0x318_02028bac*)GetEntryTableBase();
 	(int)BackgroundLoader::GetInstance();

@@ -17,7 +17,7 @@ struct SendFlags0221e080 {
 extern SendState0221e080 data_ov031_0224e6e0;
 extern SendFlags0221e080 data_ov031_0224e700;
 extern "C" void func_ov031_0221e52c(void*, int, unsigned int);
-extern "C" unsigned short func_ov031_0221e5f8(short);
+extern "C" unsigned short func_ov031_0221e5f8(unsigned short);
 extern "C" unsigned int func_ov031_0221e5d0(unsigned int);
 extern "C" int func_ov031_0221e5a0(int, const void*, int, int, const SendHeader0221e080*, int);
 

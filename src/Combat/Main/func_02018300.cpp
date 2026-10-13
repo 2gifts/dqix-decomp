@@ -24,17 +24,29 @@ struct Entry02018b34 {
     Entry02018b34* parent;
     char pad_2c[8];
     short destinationAngle;
-    short verticalAngle;
+    short rotationSpeed;
     short copiedAngle;
-    short duration;
+    short movementSpeed;
     Vector3i destination;
     Vector3i direction;
+    unsigned char unknown54[0x1c];
 };
 struct Owner02018b34 {
     unsigned short id;
+#if defined(jpn)
+    char pad_02[0x8a];
+#else
     char pad_02[0x6a];
-    unsigned char list[0x7b8];
-    Entry02018b34** entries;
+#endif
+    unsigned char list[0x88];
+    unsigned char unknownF4[0x730];
+    struct LinkedEntry {
+        unsigned short key;
+        unsigned short flags;
+        unsigned char unknown4[0x24];
+        Entry02018b34* entry;
+    };
+    LinkedEntry** entries;
     int unused828;
     int entryCount;
     unsigned char state;
@@ -60,7 +72,10 @@ struct EventParameter {
 };
 Entry02018b34* FindEntryByNodeIdAndKey(Owner02018b34*, Param02018b34*);
 extern "C" void* func_0205ec34();
-void LookupAndForEachNodeIfMatch02064b24(void*, int, unsigned short, void*);
+int LookupAndForEachNodeIfMatch02064b24(void*, int, unsigned short, void*);
+#if defined(jpn)
+#define data_020e6e74 data_020e7718
+#endif
 int fix32ReduceAngle0To2Pi(int);
 int fix32cos(int);
 int fix32sin(int);
@@ -77,6 +92,7 @@ extern const SoundTable data_020e6e74;
 extern Obj0205eaa0 data_02108760;
 
 // USA: func_02018300
+// JPN: func_020180a0
 extern "C" ARM void func_02018300(Owner02018b34* self, Param02018b34* param, int sound, int forced, int notify) {
     Entry02018b34* entry = FindEntryByNodeIdAndKey(self, param);
     if (!entry) return;
@@ -112,7 +128,7 @@ extern "C" ARM void func_02018300(Owner02018b34* self, Param02018b34* param, int
         Vector3i destination;
         Vector3fix_Add(&entry->position, &direction, &destination);
         entry->destination = destination;
-        entry->duration = 0x266;
+        entry->movementSpeed = 0x266;
     } else {
         int delta = (param->flags & 64) ? 0x1922 : 0x141b;
         if (param->flags & 256) {
@@ -134,14 +150,14 @@ extern "C" ARM void func_02018300(Owner02018b34* self, Param02018b34* param, int
                 entry->destinationAngle = entry->angle + delta;
             }
         }
-        entry->verticalAngle = 0x199;
+        entry->rotationSpeed = 0x199;
     }
     param->flags = (unsigned short)(param->flags | 1);
     entry->flags |= 1;
     for (int i = 0; i < self->entryCount; i++) {
-        Entry02018b34* child = self->entries[i];
-        if (child->parent == entry) {
-            child->flags |= 1;
+        Owner02018b34::LinkedEntry* linked = self->entries[i];
+        if (linked->entry == entry) {
+            linked->flags |= 1;
             break;
         }
     }

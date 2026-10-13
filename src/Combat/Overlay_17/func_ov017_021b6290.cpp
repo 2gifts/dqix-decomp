@@ -2,6 +2,10 @@
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
 #include "Resource/Brightness.h"
+
+#if defined(jpn)
+#define data_ov017_021d7c10 data_ov017_021d832c
+#endif
 struct Obj020397cc { char padding[0xb2]; short field_b2; };
 struct Struct02046f84 { char padding[0xf0]; };
 struct BattleLoad021b6290 {
@@ -24,7 +28,7 @@ extern "C" unsigned char* func_020704fc();
 extern "C" void func_02017c58(void*);
 extern "C" int func_02046cc8(Struct02046f84*);
 extern "C" int func_0204700c(Struct02046f84*);
-extern "C" StreamOwner021b6290* func_ov017_021b8478(void*);
+extern "C" void* func_ov017_021b8478(void*);
 extern "C" void func_0209c480(Actor0209c678*, int);
 extern "C" void func_0209c2e0(Actor0209c678*, int, int);
 extern "C" void func_0205e944(void*, int);
@@ -51,6 +55,7 @@ extern "C" void _Z27ProcessSlotField58_021a2840v();
 extern char data_ov017_021d7c10[];
 extern Actor0209c678 data_02109bf4;
 extern char data_02108760[];
+// JPN: func_ov017_021b6844
 // USA: func_ov017_021b6290
 extern "C" ARM void func_ov017_021b6290(BattleLoad021b6290* self) {
     GameState* game = GameState::GetInstance();
@@ -85,7 +90,7 @@ extern "C" ARM void func_ov017_021b6290(BattleLoad021b6290* self) {
                 StreamHeader temporary;
                 StreamHeader* header = &temporary;
                 if (ListContainsId((ListHead02046b60*)resources->unknown_ptr_array_36fc[0], 10)) {
-                    StreamOwner021b6290* owner = func_ov017_021b8478(streamOwner);
+                    StreamOwner021b6290* owner = static_cast<StreamOwner021b6290*>(func_ov017_021b8478(streamOwner));
                     if (owner) header = &owner->header;
                 }
                 if (_Z25RunBufferedStream0207416ciiP12StreamHeaderi((int)header, self->streamID, (StreamHeader*)data, length)) id = header->id;

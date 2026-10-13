@@ -26,9 +26,14 @@ struct TileRenderRecord02016874 {
     char pad38[4];
     Vector3i position;
 };
-struct RenderFlags02016874 { int fields[3]; int enabled; };
+struct RenderFlags02016874 {
+    float unknown0;
+    float unknown4;
+    float unknown8;
+    int normalPending;
+    float unknown10;
+};
 extern RenderFlags02016874 data_020ef0dc;
-extern Matrix3x3 data_0210a0cc;
 extern "C" void func_0201730c(CombatEntryList*);
 extern "C" void func_02017540(Zone3D*);
 int IsInRange0201b5b0(int);
@@ -39,12 +44,13 @@ void PushMatrixAndRender02016db4(void*, void*);
 extern "C" void func_020ca528(const void*, void*);
 
 // USA: func_02016874
+// JPN: func_02016614
 extern "C" ARM void func_02016874(Zone3D* self) {
     if (self->unknown_424_ != 0) return;
     func_0201730c((CombatEntryList*)self);
     func_02017540(self);
     self->unk_276c[0xb0] = 0;
-    data_020ef0dc.enabled = 1;
+    data_020ef0dc.normalPending = 1;
     if (IsInRange0201b5b0(self->currentZoneID_)) {
         if (((unsigned char*)self->unk_23bc)[0] == 0) return;
         ProcessNode0201aedc((Ctx0201aedc*)self);
@@ -89,7 +95,7 @@ extern "C" ARM void func_02016874(Zone3D* self) {
                 if (model == 0 || model->rawInternalModel_ == 0) continue;
                 LightingManager* manager = LightingManager::GetInstance();
                 manager->ApplyAmbientColorToModel(model->rawInternalModel_);
-                func_020ca528(&tile->rotation, &data_0210a0cc);
+                func_020ca528(&tile->rotation, &data_0210a010.objectRotationPosition);
                 data_0210a010.flags &= ~0xa4;
                 RenderConfig::SetObjectPosition(&tile->position);
                 RenderConfig::SubmitToFifo();

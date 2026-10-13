@@ -60,7 +60,7 @@ extern "C" void _Z27SetEntryByte14ByKey0205a42cP17Container0205a3d0ii(void* c, i
 extern "C" void _Z22IterateEntries0205a330P17Container0205a330i(void* c, int step);
 extern "C" void func_0206b104(void* obj);
 extern "C" void _Z24ReinitController02043204Pc(void* obj);
-extern "C" void _Z25CheckAndClearFlag020656e4Pv(void* obj, int step);
+int CheckAndClearFlag020656e4(void* obj, int step);
 extern "C" int _Z28UpdateCounterAndFlag02065758P14Struct02065758i(void* obj, int step);
 extern "C" void _Z24UpdateTimedState0202f380Pvi(void* obj, int step);
 extern "C" int _Z15IsField440EmptyP7CE28Obj(void* obj);
@@ -70,7 +70,8 @@ extern "C" int func_020657c8(void* obj, int step);
 extern "C" void _Z17UpdateStatusTimerPhj(void* obj, unsigned int step);
 extern "C" int _Z25IsAnimationActive0209ca2cPv(void* p);
 extern "C" void _Z19StepCounter020456d0P14Battle020456d0(void* obj);
-extern "C" int func_020440cc(void* obj);
+struct MessageSystem;
+extern "C" int func_020440cc(MessageSystem* obj);
 extern "C" void _Z29ResetOrConsumeCounter02065920Phj(void* obj, unsigned int step);
 extern "C" void _Z25HandleRepeatInput02045740P14Repeat02045740(void* obj);
 extern "C" void func_020676e0(void* obj, int step);
@@ -140,7 +141,7 @@ extern "C" ARM void func_02065990(unsigned char* self, int amount) {
         return;
     }
 
-    _Z25CheckAndClearFlag020656e4Pv(self, step);
+    CheckAndClearFlag020656e4(self, step);
     if (_Z28UpdateCounterAndFlag02065758P14Struct02065758i(self, step) != 0) return;
 
     if ((self + 0x1000)[REGION_VALUE(0x7e1, 0x9b1)] != 0) {
@@ -189,7 +190,7 @@ extern "C" ARM void func_02065990(unsigned char* self, int amount) {
         }
 
         _Z19StepCounter020456d0P14Battle020456d0(self);
-        if (func_020440cc(self) != 0) {
+        if (func_020440cc(reinterpret_cast<MessageSystem*>(self)) != 0) {
             REGION_FLAG(bit3, 0x9d1) = 1;
             (self + 0x1000)[REGION_VALUE(0x786, 0x958)] = 5;
             return;

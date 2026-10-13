@@ -36,13 +36,8 @@ struct Camera0202e0a4 {
 };
 extern "C" void func_0202ef14(Camera0202e0a4*);
 extern "C" void func_0202f0e0(Camera0202e0a4*);
-extern Matrix4x4 data_0210a018;
 extern const Vector3i data_020e73c0;
-extern Matrix4x3 data_0210a05c;
 extern const short data_020e9450[];
-extern Vector3i data_0210a250;
-extern Vector3i data_0210a25c;
-extern Vector3i data_0210a268;
 
 static inline void RotateCameraTarget0202e0a4(Vector3i& position, Vector3i& target, short yaw) {
     Vector3i yawDifference;
@@ -54,6 +49,7 @@ static inline void RotateCameraTarget0202e0a4(Vector3i& position, Vector3i& targ
 }
 
 // USA: func_0202e0a4
+// JPN: func_0202dc14
 extern "C" ARM void func_0202e0a4(Camera0202e0a4* camera) {
     func_0202ef14(camera);
     func_0202f0e0(camera);
@@ -63,7 +59,7 @@ extern "C" ARM void func_0202e0a4(Camera0202e0a4* camera) {
         Mat4x3_ApplyToVector(&camera->effectivePosition, &camera->transform, &camera->effectivePosition);
         Mat4x3_ApplyToVector(&camera->effectiveTarget, &camera->transform, &camera->effectiveTarget);
     }
-    Mat4x4_MaybeWriteFrustum(camera->frustum[0], camera->frustum[1], camera->frustum[2], camera->frustum[3], camera->frustum[4], 0x1000, &data_0210a018);
+    Mat4x4_MaybeWriteFrustum(camera->frustum[0], camera->frustum[1], camera->frustum[2], camera->frustum[3], camera->frustum[4], 0x1000, &data_0210a010.projectionMatrix);
     data_0210a010.flags &= ~0x50;
     if (camera->roll == 0) {
         camera->up.x = 0;
@@ -94,8 +90,9 @@ extern "C" ARM void func_0202e0a4(Camera0202e0a4* camera) {
         }
     }
     if (camera->shakeAmplitude > 0) {
-        Vector3i first = { data_0210a05c.rows[0].x, data_0210a05c.rows[0].y, data_0210a05c.rows[0].z };
-        Vector3i second = { data_0210a05c.rows[1].x, data_0210a05c.rows[1].y, data_0210a05c.rows[1].z };
+        const Matrix4x3& view = data_0210a010.viewMatrix;
+        Vector3i first = { view.rows[0].x, view.rows[0].y, view.rows[0].z };
+        Vector3i second = { view.rows[1].x, view.rows[1].y, view.rows[1].z };
         switch (rand() % 4) {
         case 0:
             Vector3fixMultiplyScalar(&first, camera->shakeAmplitude, &first);
@@ -134,10 +131,10 @@ extern "C" ARM void func_0202e0a4(Camera0202e0a4* camera) {
     if (yaw) {
         RotateCameraTarget0202e0a4(position, target, yaw);
     }
-    data_0210a250 = position;
-    data_0210a25c = camera->up;
-    data_0210a268 = target;
-    Mat4x3_WriteViewMatrix(&position, &camera->up, &target, &data_0210a05c);
+    data_0210a010.eyeVector = position;
+    data_0210a010.upVector = camera->up;
+    data_0210a010.targetVector = target;
+    Mat4x3_WriteViewMatrix(&position, &camera->up, &target, &data_0210a010.viewMatrix);
     data_0210a010.flags &= ~0xe8;
     Vector3fix_Subtract(&camera->effectiveTarget, &camera->effectivePosition, &camera->direction);
     Vector3fix_Normalize(&camera->direction, &camera->direction);

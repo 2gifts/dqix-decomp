@@ -1,5 +1,21 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
+#include "Resource/MessageUpdate.h"
+#include "World/Zone3D.h"
+
+#if defined(jpn)
+#define func_02022dc8 func_02022848
+#define func_ov017_021a624c func_ov017_021a6c40
+#define func_ov017_0219a6b8 func_ov017_0219b25c
+#define func_02011b68 func_020118e0
+#define func_ov017_02196430 func_ov017_02196ff8
+#define func_ov017_021a476c func_ov017_021a51e0
+#define func_ov017_02192700 func_ov017_021932c8
+#define func_ov017_0219ca88 func_ov017_0219d57c
+#define func_ov017_02199f08 func_ov017_0219aab0
+#define func_ov017_0219aa7c func_ov017_0219b620
+#define func_02093b90 func_020944b0
+#endif
 
 struct SearchStruct0202c1a4;
 struct HeadNode02046b24;
@@ -9,28 +25,35 @@ struct Obj0203dd20;
 struct Foo020579b4;
 struct ResetObj020d7a5c;
 struct Event020da2fc { char pad_00[0xe]; unsigned char active; };
-struct World0218cbd4 {
-    char pad_00[0x424];
-    int paused;
-    char pad_428[0x223c];
-    unsigned char grotto[1];
+struct Global0218cbd4 {
+#if defined(jpn)
+    char unknown0[0x868];
+#else
+    char unknown0[0x998];
+#endif
+    int pending;
 };
-struct Global0218cbd4 { char pad_00[0x998]; int pending; };
 struct Flags0218cbd4 { char pad_00[2]; unsigned char active; };
 struct Resources0218cbd4 {
-    char pad_00[0x3658];
+#if defined(jpn)
+    char unknown0[0x3448];
+#else
+    char unknown0[0x3658];
+#endif
     unsigned char blocked;
-    char pad_3659[0x5b];
-    unsigned char initData[1];
-    char pad_36b5[0x47b];
-    Flags0218cbd4* flags;
-    char pad_3b34[0x7b4];
+    char unknown1[0x5b];
+    unsigned char initData[0x14];
+#if defined(jpn)
+    char unknown2[0xc10];
+#else
+    char unknown2[0xc20];
+#endif
     unsigned char reset;
-    char pad_42e9[0x5f];
+    char unknown3[0x5f];
     Vector3i position;
 };
 extern "C" void* func_0202ae18();
-extern "C" World0218cbd4* func_02012fe4();
+extern "C" Zone3D* func_02012fe4();
 extern "C" Foo020579b4* func_02057924();
 void* GetData02104b6c();
 void* GetGlobalPtr021075f4();
@@ -52,8 +75,6 @@ extern "C" void func_02022dc8(void*);
 extern "C" void func_ov017_021a624c(GameResources*);
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
 extern "C" void func_ov017_0219a6b8(GameResources*);
-void Forward020444d4();
-typedef void (*ForwardWithTick0218cbd4)(Global0218cbd4*, unsigned int);
 extern "C" void func_020966e0(void*);
 void ClearIfMatchAndFinalize_021a3498(Ctx021a3498*);
 extern "C" void func_020a654c(GameResources*);
@@ -67,8 +88,7 @@ extern "C" void func_0204a170(void*);
 extern "C" void func_ov017_0218d0ec(GameResources*);
 int CheckField0NonZero(int*);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
-void ProcessFlaggedCombatants800_021a205c();
-typedef void (*ProcessFlaggedWithResources0218cbd4)(GameResources*);
+void ProcessFlaggedCombatants800_021a205c(GameResources*);
 extern "C" int func_ov017_02196430(GameResources*);
 extern "C" int func_ov017_02196c4c(GameResources*);
 extern "C" void func_ov017_021c25ac(GameResources*);
@@ -100,11 +120,12 @@ extern "C" void func_020e30f0(void*);
 void ProcessEntry56_0218d818(unsigned char*);
 extern Event020da2fc data_ov017_021d82fc;
 
+// JPN: func_ov017_0218d7b4
 // USA: func_ov017_0218cbd4
 extern "C" ARM void func_ov017_0218cbd4(GameResources* self) {
     GameState* state = GameState::GetInstance();
     void* search = func_0202ae18();
-    World0218cbd4* world = func_02012fe4();
+    Zone3D* world = func_02012fe4();
     Foo020579b4* array = func_02057924();
     GetData02104b6c();
     GameObject* actor = state->GetUnknownGameObject();
@@ -136,8 +157,8 @@ extern "C" ARM void func_ov017_0218cbd4(GameResources* self) {
     func_ov017_021a624c(self);
     if (GetHeadNodeIdOrMinusOne((HeadNode02046b24**)self->unknown_ptr_array_36fc[0]) != 3)
         func_ov017_0219a6b8(self);
-    if (global->pending && !fields->flags->active) {
-        ((ForwardWithTick0218cbd4)Forward020444d4)(global, ticks);
+    if (global->pending && !static_cast<Flags0218cbd4*>(self->unknown_ptr_array_3afc[13])->active) {
+        Forward020444d4(reinterpret_cast<MessageSystem*>(global), ticks);
     }
     func_020966e0(self->unknown_ptr_4328);
     ClearIfMatchAndFinalize_021a3498((Ctx021a3498*)self->unknown_ptr_array_36fc[0]);
@@ -153,7 +174,7 @@ extern "C" ARM void func_ov017_0218cbd4(GameResources* self) {
     func_ov017_0218d0ec(self);
     if (GetHeadNodeIdOrMinusOne((HeadNode02046b24**)self->unknown_ptr_array_36fc[0]) != 3) {
         if (!CheckField0NonZero((int*)search) || GetSearchStructCurrentArrEntry((SearchStruct0202c1a4*)search) == 0)
-            ((ProcessFlaggedWithResources0218cbd4)ProcessFlaggedCombatants800_021a205c)(self);
+            ProcessFlaggedCombatants800_021a205c(self);
     }
     int stateA = func_ov017_02196430(self);
     int stateB = func_ov017_02196c4c(self);
@@ -169,16 +190,16 @@ extern "C" ARM void func_ov017_0218cbd4(GameResources* self) {
         }
         if (GetHeadNodeIdOrMinusOne((HeadNode02046b24**)self->unknown_ptr_array_36fc[0]) != 3) {
             func_0208ec78(GetData02109020());
-            ProcessGrottoTurnEvent0208f4e4(world->grotto);
+            ProcessGrottoTurnEvent0208f4e4(reinterpret_cast<unsigned char*>(world->unk_2664));
         }
-        if (!fields->flags->active) InitCombatantFlagsAndPropagateCapture((Obj0208b088*)GetData02108f0c());
+        if (!static_cast<Flags0218cbd4*>(self->unknown_ptr_array_3afc[13])->active) InitCombatantFlagsAndPropagateCapture((Obj0208b088*)GetData02108f0c());
         ApplyScaleToCombatants0203dd20(scales);
         if (dispatch) DispatchByFlag020d9834(0);
         func_ov017_0218d06c(self);
         if (dispatch) DispatchByFlag020d9834(0);
         if (data_ov017_021d82fc.active) DispatchEvent020da2fc(&data_ov017_021d82fc);
         ProcessArray020579b4(array, ticks);
-        if (!world->paused) func_ov017_02192700(self);
+        if (!world->unknown_424_) func_ov017_02192700(self);
         if (!GetBitsInField0(&self->brightnessFlags_0, 16))
             ClearIfMatchAndFinalize_021a3498((Ctx021a3498*)self->unknown_ptr_array_36fc[1]);
         if (!GetBitsInField0(&self->brightnessFlags_0, 128))

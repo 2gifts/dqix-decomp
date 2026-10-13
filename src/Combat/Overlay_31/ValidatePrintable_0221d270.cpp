@@ -1,8 +1,7 @@
 #include <globaldefs.h>
 
-#pragma optimize_for_size off
-
 // USA: func_ov031_0221d270  (semantic: ValidatePrintable_0221d270)
+// JPN: func_ov031_0221da50
 extern "C" THUMB int func_ov031_0221d270(const unsigned char* text, int count) {
     int i = 0;
     if (i < count) {

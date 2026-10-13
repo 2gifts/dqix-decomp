@@ -15,7 +15,7 @@ extern "C" void func_ov031_0221e52c(void*, int, unsigned int);
 extern "C" void func_ov031_0221e51c(void*, const void*, unsigned int);
 extern "C" int func_ov031_0221e650(const char*);
 extern "C" void func_ov031_0221e354(PacketFields0221dedc*, int, const char*, int);
-extern "C" void func_ov031_0221e028(void*, int, int, int, int, int, const PacketFields0221dedc*);
+extern "C" void func_ov031_0221e028(void*, int, int, int, signed char, signed char, const void*);
 extern "C" int func_ov031_0221e080(const void*, int, int, int);
 
 // USA: func_ov031_0221dedc

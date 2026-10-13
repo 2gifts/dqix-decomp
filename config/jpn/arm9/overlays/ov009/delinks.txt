@@ -78,3 +78,58 @@ src/Combat/Overlay_9/UpdateFlag021885b8.cpp:
 src/Combat/Overlay_9/func_ov009_02184ca4.cpp:
     complete
     .text start:0x02185fd0 end:0x02186098
+
+
+src/Combat/Overlay_9/AdvanceStatStep_021865dc.cpp:
+    complete
+    .text start:0x02187708 end:0x0218781c
+
+
+src/Combat/Overlay_9/AdvanceStatStep_021868c4.cpp:
+    complete
+    .text start:0x021879f0 end:0x02187b04
+
+
+src/Combat/Overlay_9/DispatchTypeAndInitPair_02188c2c.cpp:
+    complete
+    .text start:0x02189af0 end:0x02189c60
+
+
+src/Combat/Overlay_9/GetEntryPair02188bf8.cpp:
+    complete
+    .text start:0x021899b0 end:0x02189af0
+
+
+src/Combat/Overlay_9/func_ov009_021863d0.cpp:
+    complete
+    .text start:0x02187500 end:0x02187708
+
+
+src/Combat/Overlay_9/func_ov009_021866f0.cpp:
+    complete
+    .text start:0x0218781c end:0x021879f0
+
+
+src/Combat/Overlay_9/func_ov009_021869d8.cpp:
+    complete
+    .text start:0x02187b04 end:0x02187c18
+
+
+src/Combat/Overlay_9/func_ov009_02186aec.cpp:
+    complete
+    .text start:0x02187c18 end:0x02187d2c
+
+
+src/Combat/Overlay_9/func_ov009_02186c00.cpp:
+    complete
+    .text start:0x02187d2c end:0x02187f2c
+
+
+src/Combat/Overlay_9/func_ov009_02188944.cpp:
+    complete
+    .text start:0x02189704 end:0x021898cc
+
+
+src/Combat/Overlay_9/func_ov009_02188e70.cpp:
+    complete
+    .text start:0x02189d30 end:0x02189e04

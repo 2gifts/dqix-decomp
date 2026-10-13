@@ -16,7 +16,7 @@ int TestFlag0SetAndFlag1Clear(unsigned short*, int);
 extern "C" int _Z31IsActiveElementFlag2Set0205da38P12Obj_0205da38(Obj_0205da38*);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0*, int, int);
 #if defined(jpn)
-extern "C" void func_ov000_0217370c(void*);
+extern "C" void func_ov000_02171e60(void*);
 #else
 extern "C" void func_ov000_02171e60(void*);
 #endif
@@ -114,7 +114,7 @@ extern "C" ARM int func_ov000_0217b8a4(Menu0217b8a4* obj, int arg1, int arg2) {
         _Z31SetElementFlag0x20ByKey0205def8P15Struct_0205def8ii((Struct_0205def8*)context->list, 0, 0x24);
         _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(&data_02108760, 1, 0);
 #if defined(jpn)
-        func_ov000_0217370c(obj);
+        func_ov000_02171e60(obj);
 #else
         func_ov000_02171e60(obj);
 #endif

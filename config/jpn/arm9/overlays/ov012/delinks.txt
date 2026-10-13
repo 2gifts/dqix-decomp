@@ -96,3 +96,48 @@ src/Combat/Overlay_12/SetupBattleTag0218a7a0.cpp:
 src/Combat/Overlay_12/Trans_02185ab8.cpp:
     complete
     .text start:0x02186118 end:0x02186148
+
+
+src/Combat/Overlay_12/BuildMessageB_021898bc.cpp:
+    complete
+    .text start:0x0218a2d8 end:0x0218a34c
+
+
+src/Combat/Overlay_12/BuildMessageC_02189c44.cpp:
+    complete
+    .text start:0x0218a6e4 end:0x0218a758
+
+
+src/Combat/Overlay_12/BuildMessageD_02189f38.cpp:
+    complete
+    .text start:0x0218aa30 end:0x0218aaa4
+
+
+src/Combat/Overlay_12/BuildMessageE_0218a438.cpp:
+    complete
+    .text start:0x0218aec4 end:0x0218af38
+
+
+src/Combat/Overlay_12/BuildMessageF_0218a974.cpp:
+    complete
+    .text start:0x0218b47c end:0x0218b4f0
+
+
+src/Combat/Overlay_12/SetupBattleTag02189a78.cpp:
+    complete
+    .text start:0x0218a494 end:0x0218a50c
+
+
+src/Combat/Overlay_12/SetupBattleTag02189d68.cpp:
+    complete
+    .text start:0x0218a804 end:0x0218a894
+
+
+src/Combat/Overlay_12/SetupBattleTag0218a574.cpp:
+    complete
+    .text start:0x0218b000 end:0x0218b078
+
+
+src/Combat/Overlay_12/SetupBattleTag0218aabc.cpp:
+    complete
+    .text start:0x0218b5c0 end:0x0218b634

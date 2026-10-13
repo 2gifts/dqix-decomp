@@ -1,4 +1,5 @@
 #include <globaldefs.h>
+#include "Combat/LootPointEvent.h"
 #if defined(jpn)
 #define IS_JPN 1
 #else
@@ -9,12 +10,11 @@
 
 extern "C" void* func_02012fe4(void);
 extern "C" int _s32_div_f(int a, int b);
-void EnqueueEventTag183_021d38f8(unsigned char a0, unsigned char a1, unsigned char a2, unsigned char a3, int* p);
 
 struct BitHistory0208f048 {
     char pad[0x188];
-    unsigned int hist0188;
-    unsigned int hist018c;
+    LootPointState hist0188;
+    LootPointState hist018c;
 };
 
 // USA: func_0208f048  (semantic: UpdateAndEnqueueBitHistory0208f048)
@@ -44,24 +44,24 @@ extern "C" ARM void func_0208f048(unsigned char* p0) {
 
     i = 0;
     while (count1 > 0) {
-        unsigned int v = base7->hist018c;
+        unsigned int v = base7->hist018c.word;
         unsigned int t1 = (v << 7) >> 24;
-        base7->hist018c = (v & 0xfe01ffff) | (((t1 | (1u << i)) << 24) >> 7);
+        base7->hist018c.word = (v & 0xfe01ffff) | (((t1 | (1u << i)) << 24) >> 7);
         i++;
         count1--;
     }
-    EnqueueEventTag183_021d38f8(0, 0, (base7->hist018c << 7) >> 24, 0x63, (int*)&base7->hist018c);
+    EnqueueEventTag183_021d38f8(0, 0, (base7->hist018c.word << 7) >> 24, 0x63, &base7->hist018c);
 
     if (i > 0) {
         i = 0;
         total = 7;
     }
     while (total > 0) {
-        unsigned int v = base7->hist0188;
+        unsigned int v = base7->hist0188.word;
         unsigned int t1 = (v << 7) >> 24;
-        base7->hist0188 = (v & 0xfe01ffff) | (((t1 | (1u << i)) << 24) >> 7);
+        base7->hist0188.word = (v & 0xfe01ffff) | (((t1 | (1u << i)) << 24) >> 7);
         total--;
         i++;
     }
-    EnqueueEventTag183_021d38f8(0, 0, (base7->hist0188 << 7) >> 24, 0x62, (int*)&base7->hist0188);
+    EnqueueEventTag183_021d38f8(0, 0, (base7->hist0188.word << 7) >> 24, 0x62, &base7->hist0188);
 }

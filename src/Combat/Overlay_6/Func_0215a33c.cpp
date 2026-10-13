@@ -5,7 +5,7 @@
 #include "Filesystem/BackgroundLoader.h"
 
 #if defined(jpn)
-extern "C" void func_ov006_0215845c(void*);
+extern "C" void func_ov006_02156e54(void*);
 extern const char* data_020f2a38;
 #else
 extern "C" void func_ov006_02156e54(void*);
@@ -28,7 +28,7 @@ struct Obj0215a33c {
 
 ARM void Func_0215a33c(Obj0215a33c* owner) {
 #if defined(jpn)
-    func_ov006_0215845c(owner->pot);
+    func_ov006_02156e54(owner->pot);
 #else
     func_ov006_02156e54(owner->pot);
 #endif
