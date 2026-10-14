@@ -1,6 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/Field3b0.h"
 #include "World/Zone3D.h"
+#include "World/ZoneTerrain.h"
 
 struct GameResources;
 
@@ -168,7 +169,6 @@ extern "C" int _ZN16BackgroundLoader11GetInstanceEv();
 extern "C" int func_0202ae18(int);
 extern "C" GameResources* func_ov017_0218b5b0();
 extern "C" int _Z28FindEntryByCurrentId02027cb0v();
-extern "C" void* func_02012fe4();
 extern "C" PtrBlock* _Z17GetPtrField0x2a04P9GameState(int gs);
 extern "C" Actor* _ZN9GameState14GetProtagonistEv(int gs);
 extern "C" Actor* _Z32FindCombatantByField16a_021a278cPvi(int ov, int id);
@@ -185,8 +185,6 @@ extern "C" int _Z18GetSignedByte0x1caPv(Actor* a);
 extern "C" Actor* _ZN9GameState31GetMaybeWanderingMonsterByIndexEi(int gs, int idx);
 extern "C" int _ZNK8Object3D9GetRadiusEv(Actor* a);
 extern "C" void _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(const Vec3* v, int s, Vec3* out);
-extern "C" Vec3 func_02019210(int a, const Vec3* b, const Vec3* c, int d);
-extern "C" int func_02018fbc(int a, Vec3* v);
 extern "C" void _Z21AimAndSetVecY020338d4P14Struct020338d4P4Vec3(Actor* a, Vec3* v);
 extern "C" void _Z26EnqueueEventTag20_021cee78ih(int id, unsigned char v);
 extern "C" int _ZNK8Object3D10GetField06Ev(Actor* a);
@@ -257,7 +255,7 @@ extern "C" ARM void func_ov000_021643d4(CombatRoot* c) {
     GameResources* resources = func_ov017_0218b5b0();
     int ov = (int)resources;
     EntryInfo* entry = (EntryInfo*)_Z28FindEntryByCurrentId02027cb0v();
-    Zone3D* obj14 = (Zone3D*)func_02012fe4();
+    Zone3D* obj14 = func_02012fe4();
     PtrBlock* pb = _Z17GetPtrField0x2a04P9GameState(gs);
     Actor* hero = _ZN9GameState14GetProtagonistEv(gs);
     Actor* enemy = _Z32FindCombatantByField16a_021a278cPvi(ov, c->info->id8);
@@ -315,8 +313,8 @@ extern "C" ARM void func_ov000_021643d4(CombatRoot* c) {
                 int r = _ZNK8Object3D9GetRadiusEv(mon);
                 int half = (r + _ZNK8Object3D9GetRadiusEv(enemy)) / 2;
                 _Z24Vector3fixMultiplyScalarPK8Vector3iiPS_(&dir, dist - (half + 0x1000), &off);
-                mp = func_02019210((int)obj14, &mp, &off, _ZNK8Object3D9GetRadiusEv(mon) / 2);
-                mp.y = func_02018fbc((int)obj14, &mp);
+                mp = func_02019210(obj14, &mp, &off, _ZNK8Object3D9GetRadiusEv(mon) / 2);
+                mp.y = func_02018fbc(obj14, &mp);
                 mon->pos = mp;
             }
             _Z21AimAndSetVecY020338d4P14Struct020338d4P4Vec3(mon, &ep);
