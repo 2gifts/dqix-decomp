@@ -52,6 +52,7 @@ struct ActionDataTables {
 };
 
 extern "C" void func_02079900(ActionDataTables* tables, SafeAllocator* allocator);
+extern "C" void func_02079cf8(ActionDataTables* tables, SafeAllocator* allocator, SafeAllocator* dataAllocator);
 
 typedef char VerifyActionTableSize[sizeof(Struct02079a58) == 12 ? 1 : -1];
 typedef char VerifyDamageTableSize[sizeof(Header02079bac) == 12 ? 1 : -1];
