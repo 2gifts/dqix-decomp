@@ -59,4 +59,3 @@ ARM int WarpScript_Opcode_7c(Script::Parameter* params, int numParams)
     return 1;
 }
 #endif
-
