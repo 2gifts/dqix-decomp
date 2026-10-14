@@ -7,7 +7,7 @@
 #define R(j,u) (u)
 #endif
 #if defined(jpn)
-extern "C" void func_ov009_02185c58(void*);
+extern "C" int func_ov009_02185c58(void*);
 #endif
 #include <globaldefs.h>
 #include "GameState/GameState.h"
