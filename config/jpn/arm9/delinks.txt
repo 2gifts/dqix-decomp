@@ -18551,3 +18551,7 @@ src/Combat/Main/FormatAndDispatchWeightedEntries_020230fc.cpp:
 src/Combat/Main/FormatAndDispatchWeightedEntries_02023218.cpp:
     complete
     .text start:0x02022cbc end:0x02022da0
+
+src/Combat/Main/func_020aff0c.cpp:
+    complete
+    .text start:0x020b19d8 end:0x020b1b28
