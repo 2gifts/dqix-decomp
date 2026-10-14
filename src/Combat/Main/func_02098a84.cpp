@@ -25,7 +25,6 @@ struct Ctx02098a84 {
 
 // USA: func_02098a84
 #pragma opt_common_subs off
-#pragma opt_propagation off
 extern "C" ARM int func_02098a84(struct S02098834* arr) {
     if (((struct Ctx02098a84*)((unsigned char*)arr + 0x1000))->b38 == 0) {
         return 0;
@@ -144,5 +143,4 @@ extern "C" ARM int func_02098a84(struct S02098834* arr) {
     func_02098364(&arr[((struct Ctx02098a84*)((unsigned char*)arr + 0x1000))->b74]);
     return ((struct Ctx02098a84*)((unsigned char*)arr + 0x1000))->b74;
 }
-#pragma opt_propagation reset
 #pragma opt_common_subs reset
