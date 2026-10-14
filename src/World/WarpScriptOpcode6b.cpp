@@ -27,14 +27,14 @@ ARM int WarpScript_Opcode_6b(Script::Parameter* params, int numParams)
         entry.unk_22 = fix32ReduceAngle0To2Pi(angle);
     }
     entry.unk_20 = 4096.0f * (params++)->ToFloat();
-    
+
     fix32_t halfx = entry.unk_14.vec.x / 2;
     fix32_t halfz = entry.unk_14.vec.z / 2;
     fix32_t xsqu = FIX32_MULTIPLY(halfx, halfx);
     fix32_t zsqu = FIX32_MULTIPLY(halfz, halfz);
     entry.unk_24 = zsqu;
     entry.unk_24 = xsqu + zsqu;
-    
+
     if (entry.maybeType == 2)
     {
         entry.unk_2c.type2.unk_0 = (params++)->ToInt();
@@ -109,7 +109,7 @@ ARM int WarpScript_Opcode_6b(Script::Parameter* params, int numParams)
         entry.unk_2c.type5.unk_2 = (params++)->ToInt();
         entry.unk_2c.type5.unk_4 = 0;
     }
-    
+
     ZoneFeatures* instance = data_020fdc20.warp;
     entry.pNext = NULL;
     instance->CreateOpcode6aEntry(entry);
