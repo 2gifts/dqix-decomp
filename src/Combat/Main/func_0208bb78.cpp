@@ -22,7 +22,11 @@ struct ShakeState0208ca00 {
 };
 typedef void (ShakeState0208ca00::*Action0208bb78)();
 struct Actions0208bb78 { Action0208bb78 actions[5]; };
+#if defined(jpn)
+extern Actions0208bb78 data_020e8e00;
+#else
 extern Actions0208bb78 data_020e8ce4;
+#endif
 extern Action0208bb78 data_020e6d5c;
 struct HeadNode02046b24;
 struct Struct0200fb08;
@@ -49,7 +53,11 @@ extern "C" ARM int func_0208bb78(ShakeState0208ca00* self, int delta) {
     }
     if (self->flags & 0x20) func_0208bf78(self);
     else {
+#if defined(jpn)
+        Actions0208bb78 actions = data_020e8e00;
+#else
         Actions0208bb78 actions = data_020e8ce4;
+#endif
         actions.actions[4] = data_020e6d5c;
         if (!actions.actions[self->action]) return 1;
         (self->*actions.actions[self->action])();
@@ -69,12 +77,22 @@ extern "C" ARM int func_0208bb78(ShakeState0208ca00* self, int delta) {
         if (adjust) slot = 1;
         if (self->flags & 0x100) {
             values.y -= 16;
+#if defined(jpn)
+            SetupDstFromSrcAndScale0208baec((int)&self->destination, &self->entries[slot], &values, 0x40, scale, pivot, 1);
+#else
             SetupDstFromSrcAndScale0208baec((int)&self->destination, &self->entries[slot], &values, 0x20, scale, pivot, 1);
+#endif
             SrcStruct0208baec second;
             memcpy(&second, &values, sizeof(second));
             second.y += 0x38;
+#if !defined(jpn)
             if (NormalizeField5_0200fb08((Struct0200fb08*)state) == 5) second.y += 16;
+#endif
+#if defined(jpn)
+            SetupDstFromSrcAndScale0208baec((int)&self->destination, &self->entries[(unsigned char)(slot + 1)], &second, 0x60, scale, pivot, 1);
+#else
             SetupDstFromSrcAndScale0208baec((int)&self->destination, &self->entries[(unsigned char)(slot + 1)], &second, 0x30, scale, pivot, 1);
+#endif
         } else {
             int draw = 1;
             if (GetHeadNodeIdOrMinusOne(head) == 0x2d) slot = draw;
