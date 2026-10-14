@@ -1759,3 +1759,7 @@ src/Combat/Overlay_4/SetNodeCountFromBattleBlock_02156760.cpp:
 src/Combat/Overlay_4/func_ov004_02167068.cpp:
     complete
     .text start:0x0216767c end:0x0216791c
+
+src/Combat/Overlay_4/func_ov004_0215d738.cpp:
+    complete
+    .text start:0x0215e698 end:0x0215e96c
