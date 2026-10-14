@@ -6,9 +6,14 @@
 #include "Combat/Main/CopyRecord0200fbb4.h"
 
 #if defined(jpn)
-enum { kResourceHeaderOffset = 0x4fc, kResourceTailOffset = 0x4ec };
+enum { kResourceHeaderOffset = 0x4fc, kResourceTailOffset = 0x4ec,
+       kTargetIdOffset = 0x41fe, kTargetArgOffset = 0x4200 };
+#define data_ov017_021d83bc data_ov017_021d8c7c
+#define data_ov017_021d78c4 data_ov017_021d7e2c
+#define data_ov017_021d78a4 data_ov017_021d7e0c
 #else
-enum { kResourceHeaderOffset = 0x70c, kResourceTailOffset = 0x6fc };
+enum { kResourceHeaderOffset = 0x70c, kResourceTailOffset = 0x6fc,
+       kTargetIdOffset = 0x44ae, kTargetArgOffset = 0x44b0 };
 #endif
 
 int GetWord0x0(int* p);
@@ -178,8 +183,8 @@ extern "C" ARM int func_ov017_021ab860(int arg0, unsigned char arg1) {
         tail = (struct TailList020469b4*)res->unknown_ptr_array_36fc[0];
         InitAndResetHeader_0219e310(header, 0);
         AppendNodeToTail(tail, (struct TailNode020469b4*)header);
-        *(short*)((unsigned char*)res + 0x44ae) = 0;
-        *(short*)((unsigned char*)res + 0x44b0) = 0;
+        *(short*)((unsigned char*)res + kTargetIdOffset) = 0;
+        *(short*)((unsigned char*)res + kTargetArgOffset) = 0;
         return 3;
     }
     return 0;

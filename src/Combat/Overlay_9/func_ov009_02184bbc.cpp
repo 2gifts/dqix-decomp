@@ -1,5 +1,6 @@
 #include <globaldefs.h>
 #if defined(jpn)
+#include "Resource/CharacterCreationUI.h"
 #define R(j,u) (j)
 #else
 #define R(j,u) (u)
@@ -12,7 +13,6 @@
 
 #if defined(jpn)
 #define func_ov023_021da274 func_ov023_021daa30
-#define func_ov023_021da770 func_ov023_021daf74
 #define func_ov023_021da9b4 func_ov023_021db240
 #endif
 struct Cont0205d1e0;
@@ -24,7 +24,11 @@ void CallFunc0204c8f0OverList0x9c(Cont0205d228*);
 void CallFunc0204b04cOverList0x98(Cont0205d274*);
 
 extern "C" void func_ov023_021da274(void* obj);
+#if defined(jpn)
+extern "C" void func_ov023_021da770(CharacterCreationUI* obj);
+#else
 extern "C" void func_ov023_021da770(void* obj);
+#endif
 extern "C" void func_ov023_021da9b4(void* obj);
 
 // USA: func_ov009_02184bbc
@@ -36,7 +40,11 @@ extern "C" ARM void func_ov009_02184bbc(void* objRaw) {
     }
 
     func_ov023_021da274(obj);
+#if defined(jpn)
+    func_ov023_021da770((CharacterCreationUI*)objRaw);
+#else
     func_ov023_021da770(obj);
+#endif
     func_ov023_021da9b4(obj);
 
     if (*(signed char*)(obj + R(0xc1c, 0xc58)) != 0xa) {

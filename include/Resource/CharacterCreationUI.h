@@ -2,6 +2,9 @@
 
 #include "World/Object3D.h"
 
+struct SpriteContext0205ac40;
+struct B174Outer;
+
 struct CreationTextEntry {
     int key;
     const char* text;
@@ -87,7 +90,10 @@ struct CharacterCreationUI {
     CreationTileMap tileMaps[4];
     unsigned char unknownBeforeWindows[0x20];
     CreationWindow windows[2];
-    unsigned char unknownBeforeCharacter[0x7f8 - 0x370];
+    unsigned char unknownBeforeSprites[0x7e4 - 0x370];
+    SpriteContext0205ac40* spriteContext;
+    B174Outer* sprites;
+    unsigned char unknownBeforeCharacter[0x7f8 - 0x7ec];
     void* character;
     void* nextCharacter;
     unsigned int unknown800;
