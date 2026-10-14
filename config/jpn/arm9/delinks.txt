@@ -18334,3 +18334,63 @@ src/Combat/Main/InitCp15_02000ab0.cpp:
 src/World/WarpScriptOpcode6b.cpp:
     complete
     .text start:0x0201cdd0 end:0x0201d1b0
+
+src/Combat/Main/func_0200af44.cpp:
+    complete
+    .text start:0x0200ae60 end:0x0200aeac
+
+src/Combat/Main/func_0200afe8.cpp:
+    complete
+    .text start:0x0200aeac end:0x0200af38
+
+src/Combat/Main/func_0200b074.cpp:
+    complete
+    .text start:0x0200af38 end:0x0200af78
+
+src/Combat/Main/func_0200b0b4.cpp:
+    complete
+    .text start:0x0200af78 end:0x0200afb4
+
+src/Combat/Main/func_0200b0f0.cpp:
+    complete
+    .text start:0x0200afb4 end:0x0200b318
+
+src/Combat/Main/func_0200bbe0.cpp:
+    complete
+    .text start:0x0200baa4 end:0x0200bb3c
+
+src/Combat/Main/func_0200c0e4.cpp:
+    complete
+    .text start:0x0200bfa8 end:0x0200c010
+
+src/Combat/Main/func_0200c14c.cpp:
+    complete
+    .text start:0x0200c010 end:0x0200c078
+
+src/Combat/Main/func_0200c578.cpp:
+    complete
+    .text start:0x0200c43c end:0x0200c4c0
+
+src/Combat/Main/func_0200c5fc.cpp:
+    complete
+    .text start:0x0200c4c0 end:0x0200c4f4
+
+src/Combat/Main/func_0200c630.cpp:
+    complete
+    .text start:0x0200c4f4 end:0x0200c534
+
+src/Combat/Main/func_0200c670.cpp:
+    complete
+    .text start:0x0200c534 end:0x0200c57c
+
+src/Combat/Main/func_0200c6b8.cpp:
+    complete
+    .text start:0x0200c57c end:0x0200c5c4
+
+src/Combat/Main/func_0200c7d4.cpp:
+    complete
+    .text start:0x0200c698 end:0x0200c878
+
+src/Combat/Main/func_0200cf24.cpp:
+    complete
+    .text start:0x0200cde8 end:0x0200ce08
