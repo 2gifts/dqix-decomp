@@ -2393,6 +2393,10 @@ src/Combat/Overlay_23/DispatchByField776_021dc488.cpp:
     complete
     .text start:0x021dcd88 end:0x021dce20
 
+src/Combat/Overlay_23/func_ov023_021dc520.cpp:
+    complete
+    .text start:0x021dce20 end:0x021dd2fc
+
 src/Combat/Overlay_23/func_ov023_021dd344.cpp:
     complete
     .text start:0x021ddb34 end:0x021ddbf4
