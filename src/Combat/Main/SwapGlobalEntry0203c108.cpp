@@ -13,11 +13,14 @@ struct RefArray0xc6b8;
 void IncrementEntryCount0x24(struct RefArray0xc6b8* obj, short index);
 
 struct RefArray0xc6fc;
+#if defined(jpn)
+void DecrementEntryCount0x24(struct RefArray0xc6fc* obj, const short* indices);
+#else
 void DecrementEntryCount0x24(struct RefArray0xc6fc* obj, short index);
+#endif
 
 #if defined(jpn)
 extern "C" void func_0203cb58(void*, void*);
-extern "C" void func_0203cbe4(void*, void*);
 extern "C" void func_0203bf00(void*, char*, void*, int);
 extern "C" void func_0203c5a8(void*, void*, void*, int);
 #endif
@@ -39,7 +42,8 @@ ARM void SwapGlobalEntry0203c108(struct Obj0203c108* obj, char* fmt) {
         func_0203bf00(obj, fmt, buf, 10);
         *(int*)((char*)obj + 0x20) = 10;
         func_0203c5a8(data_02105244, buf, obj, 10);
-        func_0203cbe4(data_02105244, saved);
+        DecrementEntryCount0x24(static_cast<RefArray0xc6fc*>(data_02105244),
+                               reinterpret_cast<const short*>(saved));
 #else
         char buf[0x100];
         __clear(buf, 0x100);

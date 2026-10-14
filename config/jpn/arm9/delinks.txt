@@ -18473,3 +18473,7 @@ src/Filesystem/LoadSelectedTextEntries.cpp:
     complete
     .text start:0x020e1fc4 end:0x020e203c
 
+
+src/Combat/Main/DecrementEntryCount0x24.cpp:
+    complete
+    .text start:0x0203cbe4 end:0x0203cc74
