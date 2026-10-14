@@ -12443,7 +12443,11 @@ src/Grotto/Main/TreasureMapDataStructs.cpp:
 src/Grotto/Main/DetailedTreasureMapData.cpp:
     complete
     .rodata start:0x020e9038 end:0x020e9074
-    .text start:0x020a3ee4 end:0x020a5cb8
+    .text start:0x020a3ee4 end:0x020a57e4
+
+src/Grotto/Main/DetailedTreasureMapLoad.cpp:
+    complete
+    .text start:0x020a5b1c end:0x020a5cb8
 
 src/Grotto/Main/TreasureMapMetadata.cpp:
     complete
@@ -14623,7 +14627,11 @@ src/System/IPC.cpp:
 src/Filesystem/NitroVM.cpp:
     complete
     .rodata start:0x020ed6c8 end:0x020ed6ec
-    .text start:0x020cb034 end:0x020cc0fc
+    .text start:0x020cb034 end:0x020cb764
+
+src/Filesystem/NitroVMQueue.cpp:
+    complete
+    .text start:0x020cbb10 end:0x020cc0fc
 
 src/Filesystem/LowNitroHandle.cpp:
     complete
@@ -14635,7 +14643,11 @@ src/Filesystem/FileAccessor.cpp:
 
 src/Filesystem/OverlayFSManagement.cpp:
     complete
-    .text start:0x020ccf7c end:0x020cd494
+    .text start:0x020ccf7c end:0x020ccffc
+
+src/Filesystem/OverlayLoad.cpp:
+    complete
+    .text start:0x020cd1f0 end:0x020cd494
 
 src/Combat/Main/CallAndReturnTrue020cd584.cpp:
     complete
