@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void* GetData02108ea8(void);
+void* GetData02108ea8_0207d78c(void);
 struct Entry0207d9bc;
 struct Entry0207d9bc* FindEntryByHalfword(struct Entry0207d9bc* arr, unsigned short key);
 
@@ -10,7 +10,7 @@ extern unsigned char data_ov017_021d7654[4];
 // USA: func_ov017_021a1944  (semantic: AssignUniqueEventId_021a1944)
 extern "C" ARM unsigned short func_ov017_021a1944(void) {
     GameState* bs = GameState::GetInstance();
-    void* table = GetData02108ea8();
+    void* table = GetData02108ea8_0207d78c();
     int i, j;
 retry:
     if (*(unsigned short*)(data_ov017_021d7654) > 0x7ff7) {

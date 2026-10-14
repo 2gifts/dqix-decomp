@@ -2,6 +2,6 @@
 #include "GameState/GameState.h"
 
 // USA: func_020103e8
-ARM float GetActiveBitIndex(GameState* battleStruct) {
+ARM float GetActiveBitIndex_020103e8(GameState* battleStruct) {
     return battleStruct->unknown_3e0_;
 }

@@ -9,7 +9,7 @@ struct ResetBytesAndSetByte0x16Data {
 };
 
 // USA: func_0205c77c
-ARM void ResetBytesAndSetByte0x16(struct ResetBytesAndSetByte0x16Data* p, int val) {
+ARM void ResetBytesAndSetByte0x16_0205c77c(struct ResetBytesAndSetByte0x16Data* p, int val) {
     p->f13 = 0;
     p->f15 = 0;
     p->f16 = val;

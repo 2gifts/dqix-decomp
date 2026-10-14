@@ -12,7 +12,7 @@ struct Triple0216e250 {
 };
 struct Obj02049b54;
 struct Triple0216e250 GetSubTriple02049b54(struct Obj02049b54* obj);
-void ApplyVec3Tail(void* obj, int* vec);
+void ApplyVec3Tail_0202e694(void* obj, int* vec);
 
 extern int data_ov000_0218323c[];
 extern int data_ov000_02183244[];
@@ -64,6 +64,6 @@ extern "C" ARM void func_ov000_0216e250(struct Obj0216e250* obj, int* ids, int c
     vec[1] = 0;
     vec[2] = 0x9000;
     obj->position = center;
-    ApplyVec3Tail(obj, vec);
+    ApplyVec3Tail_0202e694(obj, vec);
     obj->field238 = b;
 }

@@ -54,7 +54,7 @@ struct Parameter02089b90 {
     void* str;
 };
 
-int StringLength(const char* s);
+int StringLength_020d2ff0(const char* s);
 extern "C" float _fflt(int v);
 extern "C" float _fdiv(float a, float b);
 
@@ -84,7 +84,7 @@ extern "C" ARM int func_02089b90(struct Parameter02089b90* p) {
         e.b0 = (signed char)((Script::Parameter*)&p[0])->ToInt();
         str = (char*)(void*)((Script::Parameter*)&p[1])->ToString();
         if (str != 0) {
-            int len = StringLength(str);
+            int len = StringLength_020d2ff0(str);
             e.w4 = (int)data_02108efc.alloc->Allocate(len + 1);
             memset((void*)e.w4, 0, len + 1);
             memcpy((void*)e.w4, str, len);

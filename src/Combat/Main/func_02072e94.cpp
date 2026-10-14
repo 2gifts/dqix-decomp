@@ -3,7 +3,7 @@
 #include "GameState/GameState.h"
 #include "Combat/Main/BattleList.h"
 
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 struct Field150Holder02052e2c;
 short* GetField150Ptr0x488_02052e2c(Field150Holder02052e2c* obj);
 struct StructDE234_020de234 {
@@ -32,8 +32,8 @@ extern char data_020f0d0a[];
 // USA: func_02072e94
 extern "C" ARM int func_02072e94(char* out, int combatantId, int kind,
                                 StructDE234_020de234* entry, void* optional) {
-    GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), combatantId);
-    unsigned char* fields = (unsigned char*)GetFieldAt0x150((unsigned char*)combatant);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), combatantId);
+    unsigned char* fields = (unsigned char*)GetFieldAt0x150_02053c6c((unsigned char*)combatant);
     EffectTable02072e94* table = (EffectTable02072e94*)GetField150Ptr0x488_02052e2c((Field150Holder02052e2c*)combatant);
     int preferred = table->preferred;
     int value = GetPreferredPackedField020de234(entry, table->preferred);

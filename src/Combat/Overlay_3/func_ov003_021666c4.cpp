@@ -36,7 +36,7 @@ struct CombatMenu021666c4 {
     u8 selection;
 };
 
-void SetSublistEntriesFlag1(void*, int);
+void SetSublistEntriesFlag1_02080b54(void*, int);
 extern "C" void func_0202ae18();
 void SetEntryHighNibble0x13(Container02080cc0*, int, int);
 void SetEntryFlagById02080b40(void*, int);
@@ -51,7 +51,7 @@ extern "C" void func_ov003_02160794(CombatMenu021666c4*);
 // USA: func_ov003_021666c4
 extern "C" ARM void func_ov003_021666c4(CombatMenu021666c4* self) {
     Container02080cc0* menu = self->menu;
-    SetSublistEntriesFlag1(menu, 16);
+    SetSublistEntriesFlag1_02080b54(menu, 16);
     int id = 69;
     func_0202ae18();
     self->selection = id;

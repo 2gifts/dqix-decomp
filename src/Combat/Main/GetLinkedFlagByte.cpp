@@ -30,7 +30,7 @@ struct LookupBase {
 };
 
 // USA: func_020479b8
-ARM unsigned char GetLinkedFlagByte(struct LookupBase* base) {
+ARM unsigned char GetLinkedFlagByte_020479b8(struct LookupBase* base) {
     struct ElemA* a;
     struct ElemB* b;
     struct ElemE* e;

@@ -9,7 +9,7 @@ enum { queueOffset = 0x1d60, countOffset = 0x1d68, flagsOffset = 0x1d72 };
 struct Entry_0205d6a0;
 void ResetEntryList0205d6a0(struct Entry_0205d6a0* a, int flag);
 int HasAnyFlags_021719f8_021719f8(int* obj);
-void ResetElem2081Entry(void* obj);
+void ResetElem2081Entry_0204c804(void* obj);
 
 struct Combatant02174c14 {
     char pad0[0xc];
@@ -55,7 +55,7 @@ extern "C" ARM void func_ov000_02174c14(char* obj) {
         struct Elem02174c14* elem = (struct Elem02174c14*)(obj + 0x284);
         int x = c->posX;
         int y = c->posY;
-        ResetElem2081Entry(elem);
+        ResetElem2081Entry_0204c804(elem);
         elem->x = (x >> 3) + 9;
         elem->y = y >> 3;
         elem->fieldC2 = 0;

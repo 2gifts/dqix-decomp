@@ -19,7 +19,7 @@ struct Struct0215fef0;
 
 int ShiftRowsDown_021deda0(struct Table_021deda0* table, struct ThreeShorts021ded84* out);
 void InitStruct02160030(void* obj);
-void ResetBlockAndSetField0x1cToNeg1(void* p);
+void ResetBlockAndSetField0x1cToNeg1_ov000_0215fe64(void* p);
 void ResetStruct0215fef0(struct Struct0215fef0* obj);
 
 struct Record1_021dee20 {
@@ -78,7 +78,7 @@ extern "C" ARM void func_ov025_021dee20(void* obj) {
     if (!rec2) {
         return;
     }
-    ResetBlockAndSetField0x1cToNeg1(rec2);
+    ResetBlockAndSetField0x1cToNeg1_ov000_0215fe64(rec2);
     ((struct Record2_021dee20*)rec2)->field0x30 = 0;
     ((struct Record2_021dee20*)rec->sub0x10)->field0x20 = row.a;
     ((struct Record2_021dee20*)rec->sub0x10)->field0x22 = combatant->currentStats_->primaryStats.currHP;

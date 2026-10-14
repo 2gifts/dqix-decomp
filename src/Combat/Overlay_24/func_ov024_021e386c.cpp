@@ -5,10 +5,10 @@
 
 struct Ctx_021e9320;
 struct Obj_021e8ca0;
-int CheckField0x14FlagsClear(unsigned char* obj);
+int CheckField0x14FlagsClear_020883ac(unsigned char* obj);
 int SelectResultCode_021e9320(struct Ctx_021e9320* ctx, int id, int mode);
 int IsFlagAllowedMask_021eb4b0(int a0, int flags, int mask);
-void ResetStateFields0x18(unsigned char* obj);
+void ResetStateFields0x18_020883cc(unsigned char* obj);
 void* AddEntryToListAndIncCount_021e8ca0(struct Obj_021e8ca0* obj, int id);
 extern "C" void func_ov000_02159eac(void* a0, void* buf, int a2);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, unsigned long long ef, int g);
@@ -49,7 +49,7 @@ extern "C" ARM unsigned long long func_ov024_021e386c(struct Obj_021e386c* obj, 
     GameObject* c = GetCombatantByID((int)obj->ctx, id);
     if (!c) return 0;
     if (StatsOf(c)->resistRate == 0) return 0;
-    if (!CheckField0x14FlagsClear((unsigned char*)StatsOf(c))) return 0;
+    if (!CheckField0x14FlagsClear_020883ac((unsigned char*)StatsOf(c))) return 0;
     int roll = NextRandomMax((struct Random*)obj->ctx, 100);
     float chance = 100.0f;
     if (!obj->action->flag) {
@@ -65,7 +65,7 @@ extern "C" ARM unsigned long long func_ov024_021e386c(struct Obj_021e386c* obj, 
     if (IsFlagAllowedMask_021eb4b0((int)obj, StatsOf(c)->stateFlags, 0x20)) {
         func_ov000_02159eac(obj->ctx, &words, 0x2b);
     }
-    ResetStateFields0x18((unsigned char*)StatsOf(c));
+    ResetStateFields0x18_020883cc((unsigned char*)StatsOf(c));
     func_ov000_02159eac(obj->ctx, &words, 0x17);
     void* entry = AddEntryToListAndIncCount_021e8ca0((struct Obj_021e8ca0*)obj, sel);
     if (entry) {

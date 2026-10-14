@@ -9,7 +9,7 @@ enum { kSectionOffset = 0x840 };
 #include "GameState/GameState.h"
 
 extern "C" void* func_02012fe4(void);
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 struct Struct0205e7d0;
 int GetSection0x1000Count0205e7d0(struct Struct0205e7d0* s);
 extern "C" int func_ov017_021d3d40(void* dst, int len, int val, unsigned char byte, int cursor);
@@ -31,7 +31,7 @@ ARM void FlushOv017Section020dbcc4(struct Obj020dbcc4* obj, void* context) {
     GameState::GetInstance();
     char* base = (char*)func_02012fe4() + kSectionOffset;
     if (obj->field10 != 0) return;
-    if (GetSection0x1000Count0205e7d0((struct Struct0205e7d0*)GetData02100044()) < 0x76) return;
+    if (GetSection0x1000Count0205e7d0((struct Struct0205e7d0*)GetData02100044_0202ae24()) < 0x76) return;
 
     flag = 0;
     for (i = 0; i < 4; i++) {

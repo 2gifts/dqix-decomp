@@ -1,10 +1,10 @@
 #include <globaldefs.h>
 
 struct Hdr02b0074;
-unsigned char* GetTableEnd(Hdr02b0074* h);
+unsigned char* GetTableEnd_020b0074(Hdr02b0074* h);
 struct Hdr02b00e0;
-unsigned char* GetEntryVarStride(Hdr02b00e0* h, unsigned int i);
-void RelocateOffsetArrayAtOffset8(char* base);
+unsigned char* GetEntryVarStride_020b00e0(Hdr02b00e0* h, unsigned int i);
+void RelocateOffsetArrayAtOffset8_020b0094(char* base);
 
 struct EntryField020b0108 {
     char pad[4];
@@ -24,11 +24,11 @@ struct Table020b0108 {
 // USA: func_020b0108  (semantic: RelocateTable020b0108)
 extern "C" ARM void func_020b0108(Table020b0108* self) {
     self->base = self->base + (unsigned int)self;
-    unsigned char* tableEnd = GetTableEnd((Hdr02b0074*)self);
+    unsigned char* tableEnd = GetTableEnd_020b0074((Hdr02b0074*)self);
     unsigned short i = 0;
     if (i < self->count) {
         do {
-            EntryField020b0108* e = (EntryField020b0108*)GetEntryVarStride((Hdr02b00e0*)self, i);
+            EntryField020b0108* e = (EntryField020b0108*)GetEntryVarStride_020b00e0((Hdr02b00e0*)self, i);
             e->offset4 = e->offset4 + (int)tableEnd;
             i = i + 1;
         } while (i < self->count);
@@ -41,6 +41,6 @@ extern "C" ARM void func_020b0108(Table020b0108* self) {
     }
     if (self->offsetArrayBase != 0) {
         self->offsetArrayBase = self->offsetArrayBase + (unsigned int)self;
-        RelocateOffsetArrayAtOffset8(self->offsetArrayBase);
+        RelocateOffsetArrayAtOffset8_020b0094(self->offsetArrayBase);
     }
 }

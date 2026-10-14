@@ -27,12 +27,12 @@ int GetGlobalField0x1c020421a0();
 extern "C" SearchStruct* func_0202ae18(void);
 extern "C" void* func_02012fe4(void);
 FlagWord02046708* GetDataPtr02114e04_020d6c00();
-unsigned char* GetField0x3f8Address(GameState* gs);
-int IsField0Null(void** list);
-int GetByteField0x252(void* obj);
-int CheckSubstructByte0x7cPositive(signed char* obj);
+unsigned char* GetField0x3f8Address_0200fd0c(GameState* gs);
+int IsField0Null_02046b08(void** list);
+int GetByteField0x252_02039820(void* obj);
+int CheckSubstructByte0x7cPositive_020535c8(signed char* obj);
 int TestFlags02046708(FlagWord02046708* flags, unsigned int mask);
-int TestFlag0SetAndFlag1Clear(unsigned short* flags, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* flags, int mask);
 int CheckField0xc4Low15BitsNonZero(BitField0203402c* obj);
 int GetSignedField020c39c8(volatile unsigned short* reg);
 int NormalizeField5_0200fb08(Struct0200fb08* obj);
@@ -43,12 +43,12 @@ void AppendNodeToTail(TailList020469b4* list, TailNode020469b4* node);
 void CancelPendingAction020397cc(Obj020397cc* obj, int flag);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0* obj, int a, int b);
 extern "C" void func_ov017_021a5568(void* node);
-int GetByte0x26c(char* obj);
+int GetByte0x26c_02039d7c(char* obj);
 void InitObjState_021b2174(unsigned char* obj);
 void SetNameChecked_021b2ba0(S021b2ba0* obj, char* name);
 void SetFields30And34_021b2bd0(void* obj, int handler, int overlayId);
 void SetCombatModeFromCase020dc2d0(int mode);
-void SetFlag0x9c6(SetFlagStruct* obj, int value);
+void SetFlag0x9c6_020213fc(SetFlagStruct* obj, int value);
 void SetFlagsAt0xa97(FlagBlob02027bac* obj, unsigned char value);
 void AllocateAndCopyBuf28_0216ae2c(SafeAllocator* allocator, void* arg);
 extern unsigned short data_02114e30;
@@ -132,14 +132,14 @@ extern "C" ARM void func_ov017_021a51a4(Res021a51a4* res) {
     search = func_0202ae18();
     grottoInfo = *(Grotto021a51a4**)((char*)func_02012fe4() + 8);
     flagWord = GetDataPtr02114e04_020d6c00();
-    field3f8 = GetField0x3f8Address(gs);
-    if (!IsField0Null((void**)res->list)) {
+    field3f8 = GetField0x3f8Address_0200fd0c(gs);
+    if (!IsField0Null_02046b08((void**)res->list)) {
         return;
     }
-    if (!GetByteField0x252(unknown)) {
+    if (!GetByteField0x252_02039820(unknown)) {
         return;
     }
-    if (CheckSubstructByte0x7cPositive((signed char*)unknown)) {
+    if (CheckSubstructByte0x7cPositive_020535c8((signed char*)unknown)) {
         return;
     }
     if (unknown->f18c & 1) {
@@ -153,7 +153,7 @@ extern "C" ARM void func_ov017_021a51a4(Res021a51a4* res) {
     }
     start = 0;
     if (!TestFlags02046708(flagWord, 0x800)) {
-        if ((TestFlag0SetAndFlag1Clear(&data_02114e30, 0x400) || res->pending == 1) && unknown->fac == 0) {
+        if ((TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x400) || res->pending == 1) && unknown->fac == 0) {
             if (!CheckField0xc4Low15BitsNonZero((BitField0203402c*)unknown)) {
                 start = 1;
             }
@@ -184,7 +184,7 @@ extern "C" ARM void func_ov017_021a51a4(Res021a51a4* res) {
         touched = 0;
     }
     if (func_0202c508(search) && grotto[0] != 0 && grottoInfo->kind == 0
-        && (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x800) || touched)) {
+        && (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x800) || touched)) {
         InitState53_021befe4(res->state53);
         AppendNodeToTail(res->list, (TailNode020469b4*)res->state53);
         return;
@@ -208,7 +208,7 @@ extern "C" ARM void func_ov017_021a51a4(Res021a51a4* res) {
     if (res->f41c0 != 0) {
         return;
     }
-    if (!TestFlag0SetAndFlag1Clear(&data_02114e30, 0x800)) {
+    if (!TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x800)) {
         return;
     }
     if (res->pending != 0 || unknown->fac != 0) {
@@ -217,7 +217,7 @@ extern "C" ARM void func_ov017_021a51a4(Res021a51a4* res) {
     if (CheckField0xc4Low15BitsNonZero((BitField0203402c*)unknown)) {
         return;
     }
-    if (GetByte0x26c((char*)unknown)) {
+    if (GetByte0x26c_02039d7c((char*)unknown)) {
         return;
     }
     CancelPendingAction020397cc((Obj020397cc*)unknown, 1);
@@ -228,6 +228,6 @@ extern "C" ARM void func_ov017_021a51a4(Res021a51a4* res) {
     SetFields30And34_021b2bd0(dialog, (int)AllocateAndCopyBuf28_0216ae2c, OVERLAY_ID(4));
     AppendNodeToTail(res->list, (TailNode020469b4*)dialog);
     SetCombatModeFromCase020dc2d0(3);
-    SetFlag0x9c6(res->flags, 1);
+    SetFlag0x9c6_020213fc(res->flags, 1);
     SetFlagsAt0xa97((FlagBlob02027bac*)res->flags, 1);
 }

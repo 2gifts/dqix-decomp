@@ -6,7 +6,7 @@ static inline BaseCombatStats* GetBaseStats(GameObject* obj) {
 }
 
 // USA: func_02069120
-ARM void AccumulateFlag0x800CombatantValue(void* unused, int* accum) {
+ARM void AccumulateFlag0x800CombatantValue_02069120(void* unused, int* accum) {
     GameState* battleStruct = GameState::GetInstance();
     GameObject* combatant = battleStruct->GetPartyMemberByIndex(0);
     if (combatant == NULL) {

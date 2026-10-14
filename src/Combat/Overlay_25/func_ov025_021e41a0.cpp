@@ -54,7 +54,7 @@ extern "C" void* func_02057924();
 EffectSource* GetNodeAtIndex02160094(List02160094*, int);
 EffectTarget* GetNodeAtIndex021600f8(List021600f8*, int);
 void InitStruct02078484(InitStruct02078484Struct*);
-EffectWork* GetActiveCombatWork();
+EffectWork* GetActiveCombatWork_ov000_02160130();
 void* FindNodeAndProcess02057fb4(void*, int, int);
 void** GetSlotPtr_021e8cf0_021e8cf0(char*, int);
 
@@ -118,7 +118,7 @@ extern "C" ARM int func_ov025_021e41a0(EffectCommand* command, List021600f8* lis
         effect.scale.y = 0x800;
         effect.scale.z = 0x800;
     }
-    EffectWork* work = GetActiveCombatWork();
+    EffectWork* work = GetActiveCombatWork_ov000_02160130();
     work->id = command->id;
     void* instance = FindNodeAndProcess02057fb4(manager, command->id, (int)&effect);
     void** slot = GetSlotPtr_021e8cf0_021e8cf0(data_ov025_021ef988.slots, command->slot);

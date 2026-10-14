@@ -5,10 +5,9 @@ enum { kValueOffset = 0x2c8 };
 enum { kValueOffset = 0x2d4 };
 #endif
 
-
 struct State0xcda8;
-void StoreAlignedValue0x60(struct State0xcda8* obj, int value);
-void StoreVec3AtField0x50(unsigned char* obj, int a, int b, int c);
+void StoreAlignedValue0x60_0203cda8(struct State0xcda8* obj, int value);
+void StoreVec3AtField0x50_0203db34(unsigned char* obj, int a, int b, int c);
 
 struct Obj0204085c {
     char pad[0x14];
@@ -26,12 +25,12 @@ ARM void HandleObjEvent0204085c(struct Obj0204085c* obj, int a, int b, int c) {
         *(int*)((char*)p + 0x10) = a;
         *(int*)((char*)p + 0x14) = b;
         *(int*)((char*)p + 0x18) = c;
-        StoreAlignedValue0x60(obj->field14, b);
+        StoreAlignedValue0x60_0203cda8(obj->field14, b);
         return;
     }
     q = obj->field18;
     if (q != NULL) {
-        StoreVec3AtField0x50(q, a, b, c);
+        StoreVec3AtField0x50_0203db34(q, a, b, c);
         q = obj->field18;
         *(int*)(q + 0xb0) = b;
         return;
@@ -40,7 +39,7 @@ ARM void HandleObjEvent0204085c(struct Obj0204085c* obj, int a, int b, int c) {
     if (q == NULL) {
         return;
     }
-    StoreVec3AtField0x50(q, a, b, c);
+    StoreVec3AtField0x50_0203db34(q, a, b, c);
     q = obj->field1c;
     *(int*)(q + kValueOffset) = b;
 }

@@ -35,27 +35,27 @@ struct Script020e081c {
 
 extern "C" void* func_02012fe4();
 extern "C" char* func_0203bd08();
-char* GetData02105254();
-void SetFlag0x9c6(SetFlagStruct*, int);
+char* GetData02105254_0203b628();
+void SetFlag0x9c6_020213fc(SetFlagStruct*, int);
 extern "C" void func_02021428(void*, int);
-void InitSubScreenDisplay(void* context);
+void InitSubScreenDisplay_020209d0(void* context);
 void TailForward0203b66c(char*);
 void InitBattleContext0203bd24(char*);
 void Init0205a198(Struct0205a198*);
 void InitStruct0205a444(char*);
 int IsAxisIntWithin16(AxisFloats0203b5a0*, int);
 int ProcessRecords0205a498(void*, Rec020467f0*, int, void*);
-void* GetGlobalPtr02105244();
+void* GetGlobalPtr02105244_0203bd14();
 extern "C" void* func_0203be4c(char*);
 extern "C" void func_020c9be0();
-void DelayThenSyncBit0();
+void DelayThenSyncBit0_020c9820();
 #if defined(jpn)
 void FinalizeRecordListDisplay02020cb8(void*, int);
 #else
 void FinalizeRecordListDisplay02020cb8(void*, int*);
 #endif
 void ReleaseHandle02022b90(void*, int*);
-void SetToggleState(ToggleState*, int, int);
+void SetToggleState_02021410(ToggleState*, int, int);
 extern const char data_020f2b78[];
 
 static inline SafeAllocator* GetResourceAllocator(GameResources* resources, int index) {
@@ -70,12 +70,12 @@ extern "C" ARM void func_020e081c(char* self) {
     func_02012fe4();
     GameResources* resources = func_ov017_0218b5b0();
     char* battle = func_0203bd08();
-    char* table = GetData02105254();
+    char* table = GetData02105254_0203b628();
     SafeAllocator* allocator = GetResourceAllocator(resources, 12);
     if (*(signed char*)(self + kStage) == 0) {
-        SetFlag0x9c6((SetFlagStruct*)self, 0);
+        SetFlag0x9c6_020213fc((SetFlagStruct*)self, 0);
         func_02021428(self, 0x19);
-        InitSubScreenDisplay(self);
+        InitSubScreenDisplay_020209d0(self);
         allocator->Reset();
         TailForward0203b66c(table);
         InitBattleContext0203bd24(battle);
@@ -103,23 +103,23 @@ extern "C" ARM void func_020e081c(char* self) {
         unsigned int length = 0;
         loader->GetLoadedFileByID(*(int*)(self + kObjectTask), &file, &length);
         ProcessRecords0205a498(self + 0x94, (Rec020467f0*)file, length, allocator);
-        *(int*)((char*)GetGlobalPtr02105244() + kDisplayWidth) = 0x2800;
+        *(int*)((char*)GetGlobalPtr02105244_0203bd14() + kDisplayWidth) = 0x2800;
         void* display = (char*)func_0203be4c(func_0203bd08()) + kDisplay;
-        *(void**)GetGlobalPtr02105244() = display;
+        *(void**)GetGlobalPtr02105244_0203bd14() = display;
         if (!*(SafeAllocator**)(self + kBackupAllocator)) func_020c9be0();
         if (*(SafeAllocator**)(self + kBackupAllocator) && *(void**)(self + kBackupBuffer))
             (*(SafeAllocator**)(self + kBackupAllocator))->Free(*(void**)(self + kBackupBuffer));
         *(unsigned int*)(self + kBackupSize) = kBackupBytes;
         *(void**)(self + kBackupBuffer) = (*(SafeAllocator**)(self + kBackupAllocator))->Allocate(*(unsigned int*)(self + kBackupSize));
         VectorizedInvertedMemcpy((const void*)0x06600000, *(void**)(self + kBackupBuffer), *(unsigned int*)(self + kBackupSize));
-        DelayThenSyncBit0();
+        DelayThenSyncBit0_020c9820();
 #if defined(jpn)
         FinalizeRecordListDisplay02020cb8(self, *(int*)(self + kBaseTask));
 #else
         FinalizeRecordListDisplay02020cb8(self, (int*)(self + kBaseTask));
 #endif
         ReleaseHandle02022b90(self, (int*)(self + kObjectTask));
-        SetToggleState((ToggleState*)self, 1, 3);
+        SetToggleState_02021410((ToggleState*)self, 1, 3);
         *(unsigned char*)(self + kActive) = 0;
         ++*(signed char*)(self + kStage);
     }

@@ -3,7 +3,7 @@
 #include "Memory/PlacementNew.h"
 
 // USA: func_0201c0e8
-ARM void* ResetNameTableThenNotify(void* obj)
+ARM void* ResetNameTableThenNotify_0201c0e8(void* obj)
 {
     Foo02048004* block = new (obj) Foo02048004;
     ClearNameTable(&block->nameTable);

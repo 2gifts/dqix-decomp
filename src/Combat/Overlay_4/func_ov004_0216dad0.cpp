@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void SetByte0x7f70(void* obj, unsigned char value);
-int CheckSaveBufferStatus(int flag);
+void SetByte0x7f70_02012028(void* obj, unsigned char value);
+int CheckSaveBufferStatus_020ab9c0(int flag);
 
 extern "C" int func_020ab5d4(void* buf, int a, int b, void* out);
 
@@ -25,11 +25,11 @@ extern State_0216dad0 data_ov004_02171034;
 // USA: func_ov004_0216dad0
 extern "C" ARM int func_ov004_0216dad0(void) {
     GameState* gs = GameState::GetInstance();
-    SetByte0x7f70(gs, 1);
+    SetByte0x7f70_02012028(gs, 1);
     data_ov004_02171034.status = 0;
     data_ov004_02171034.mode = 0;
-    int s0 = CheckSaveBufferStatus(0);
-    int s1 = CheckSaveBufferStatus(1);
+    int s0 = CheckSaveBufferStatus_020ab9c0(0);
+    int s1 = CheckSaveBufferStatus_020ab9c0(1);
     if (s0 == 1 || s1 == 1) {
         data_ov004_02171034.status = 6;
         return 0;

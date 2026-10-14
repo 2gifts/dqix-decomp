@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 extern "C" void* func_ov017_021b8478(void* obj);
-int GetField0x3acValue(GameState* battleStruct);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 
 struct SrcEntry021ca4a8 {
 	char pad0[4];
@@ -26,7 +26,7 @@ ARM void CopySrcEntryIntoSlot_021ca4a8(int unused0, struct SrcEntry021ca4a8* src
 	if (obj == NULL) {
 		return;
 	}
-	if (*(signed char*)(obj + 0x2a) == GetField0x3acValue(battleStruct)) {
+	if (*(signed char*)(obj + 0x2a) == GetField0x3acValue_020100a8(battleStruct)) {
 		return;
 	}
 	if (*(unsigned short*)(obj + 8) != src->field4) {

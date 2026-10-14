@@ -7,11 +7,11 @@ enum { kObjectEventFlagOffset = 0x2c6 };
 enum { kObjectEventFlagOffset = 0x2d2 };
 #endif
 
-GameObject* GetCombatantWithFlag0x1000(GameState* battleStruct, int combatantId);
-void SetField0x2d0(void*, int);
-void SetField0x2d1(void*, int);
-void SetByte0x1c8(unsigned char*, int);
-void SetByte0x1c9(unsigned char*, int);
+GameObject* GetCombatantWithFlag0x1000_0200ff58(GameState* battleStruct, int combatantId);
+void SetField0x2d0_020546a0(void*, int);
+void SetField0x2d1_020546b4(void*, int);
+void SetByte0x1c8_02039858(unsigned char*, int);
+void SetByte0x1c9_0203986c(unsigned char*, int);
 
 struct LocalEvt021ce3ac {
     unsigned char pad0[4];
@@ -25,13 +25,13 @@ struct LocalEvt021ce3ac {
 
 // USA: func_ov017_021ce3ac
 ARM void ApplyEventTag38Fields_021ce3ac(int unused0, LocalEvt021ce3ac* evt, GameState* battleStruct) {
-    GameObject* c = GetCombatantWithFlag0x1000(battleStruct, evt->field4);
+    GameObject* c = GetCombatantWithFlag0x1000_0200ff58(battleStruct, evt->field4);
     if (c == NULL) {
         return;
     }
-    SetField0x2d0(c, evt->field6);
-    SetField0x2d1(c, evt->field7);
-    SetByte0x1c8((unsigned char*)c, evt->field8);
-    SetByte0x1c9((unsigned char*)c, evt->field9);
+    SetField0x2d0_020546a0(c, evt->field6);
+    SetField0x2d1_020546b4(c, evt->field7);
+    SetByte0x1c8_02039858((unsigned char*)c, evt->field8);
+    SetByte0x1c9_0203986c((unsigned char*)c, evt->field9);
     *((unsigned char*)c + kObjectEventFlagOffset) = evt->fielda;
 }

@@ -37,7 +37,7 @@ struct Menu_02167b34 {
     signed char combatantId;
 };
 
-void* GetFieldAt0x150(unsigned char* obj);
+void* GetFieldAt0x150_02053c6c(unsigned char* obj);
 extern "C" void func_02083e28(void* data, int arg);
 extern "C" void func_ov003_02167e28(Menu_02167b34* menu, BaseCombatStats* stats, int flag, unsigned char index, int byteValue, int halfValue, int wordValue);
 extern "C" void func_ov003_02167fa4(Menu_02167b34* menu, int flag, unsigned char* table);
@@ -48,9 +48,9 @@ static inline BaseCombatStats* GetBaseStats(GameObject* c) { SDK_NULL_ASSERT(c);
 
 // USA: func_ov003_02167b34
 extern "C" ARM void func_ov003_02167b34(Menu_02167b34* menu) {
-    GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), menu->combatantId);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), menu->combatantId);
     if (combatant == 0) return;
-    CombatantData_02167b34* data = (CombatantData_02167b34*)GetFieldAt0x150((unsigned char*)combatant);
+    CombatantData_02167b34* data = (CombatantData_02167b34*)GetFieldAt0x150_02053c6c((unsigned char*)combatant);
     func_02083e28(data, 0);
     func_ov003_02167e28(menu, GetBaseStats(combatant), data->flag, data->index, data->byteTable[data->index], data->halfTable[data->index], data->wordTable[data->index]);
     func_ov003_02167fa4(menu, data->index & 0xff, data->entryTable);

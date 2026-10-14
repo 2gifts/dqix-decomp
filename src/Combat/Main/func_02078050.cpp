@@ -16,7 +16,7 @@ int* GetField0xe4IfFlag0x40(struct BitFlag02033f44* self);
 
 void TrySetMode02076ccc(void* self, int mode);
 
-int CheckField0NonZero(int*);
+int CheckField0NonZero_0202b7d8(int*);
 
 extern "C" void func_020794f8(void* self, int a, int b);
 
@@ -63,7 +63,7 @@ extern "C" ARM void func_02078050(struct Entity02078050* self) {
     if (GetField0xe4IfFlag0x40((struct BitFlag02033f44*)self) != 0) {
         TrySetMode02076ccc(self, 1);
         self->f154 = 0;
-        if (CheckField0NonZero((int*)mgr) == 0) {
+        if (CheckField0NonZero_0202b7d8((int*)mgr) == 0) {
             return;
         }
         func_020794f8(self, 0, 0);
@@ -105,7 +105,7 @@ extern "C" ARM void func_02078050(struct Entity02078050* self) {
 
     TrySetMode02076ccc(self, 1);
     self->f154 = 0;
-    if (CheckField0NonZero((int*)mgr) == 0) {
+    if (CheckField0NonZero_0202b7d8((int*)mgr) == 0) {
         return;
     }
     if (GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)mgr) != 0) {

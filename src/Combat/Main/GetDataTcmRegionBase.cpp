@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
-// USA: _Z20GetDataTcmRegionBasev
-ARM unsigned int GetDataTcmRegionBase(void) {
+// USA: _Z29GetDataTcmRegionBase_020c89e4v
+ARM unsigned int GetDataTcmRegionBase_020c89e4(void) {
     unsigned int v;
     asm {
         mrc p15, 0, v, c9, c1, 0

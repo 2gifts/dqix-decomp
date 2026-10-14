@@ -22,7 +22,7 @@ struct CombatWorkD600 {
 extern "C" void func_ov000_0216d370(AngleTrig0202e9a4*, int, int, int);
 void SetAngleAndTrigTable0202e9a4(AngleTrig0202e9a4*, int);
 void StoreVec3Words0216d368(Vec3Ints0216d368*, int, int, int);
-CombatWorkD600* GetActiveCombatWork();
+CombatWorkD600* GetActiveCombatWork_ov000_02160130();
 extern "C" void func_0202eab8(AngleTrig0202e9a4*);
 extern "C" int func_ov000_0216f210(AngleTrig0202e9a4*, int*);
 
@@ -72,7 +72,7 @@ extern "C" ARM void func_ov000_0216d600(AngleTrig0202e9a4* camera, int side, int
         }
     }
     if (overridePosition) {
-        CombatWorkD600* work = GetActiveCombatWork();
+        CombatWorkD600* work = GetActiveCombatWork_ov000_02160130();
         if (work && work->overrideIndex != -1) {
             StoreVec3Words0216d368(&eye, work->eye.x, work->eye.y, work->eye.z);
             StoreVec3Words0216d368(&target, work->target.x, work->target.y, work->target.z);

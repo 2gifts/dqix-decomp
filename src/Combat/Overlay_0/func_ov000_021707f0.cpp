@@ -51,10 +51,10 @@ struct PaletteOwner {
     float phase;
 };
 
-int GetWord0x0(int*);
+int GetWord0x0_0200fb8c(int*);
 void* GetOffsetPtr02160f08(void*);
 Elem_0205d81c* FindElementByC40205d81c(Struct_0205d81c*, int);
-int IsField0x9cEqual3(unsigned char*);
+int IsField0x9cEqual3_0204c7cc(unsigned char*);
 void GetFourShortsAtIndex(ShortArrays0204c610*, int, short*, short*, short*, short*);
 extern "C" void* func_ov017_021b8468(void*);
 extern "C" double func_02009424(double);
@@ -74,7 +74,7 @@ extern "C" ARM void func_ov000_021707f0(PaletteOwner* owner) {
     if (!state) {
         return;
     }
-    GameResources* resources = (GameResources*)GetWord0x0((int*)state);
+    GameResources* resources = (GameResources*)GetWord0x0_0200fb8c((int*)state);
     if (!resources || !resources->unknown_ptr_3718) {
         return;
     }
@@ -119,7 +119,7 @@ extern "C" ARM void func_ov000_021707f0(PaletteOwner* owner) {
     if (!element || !slot) {
         return;
     }
-    if (!IsField0x9cEqual3((unsigned char*)element)) {
+    if (!IsField0x9cEqual3_0204c7cc((unsigned char*)element)) {
         return;
     }
     if (element->suppressionFlags) {

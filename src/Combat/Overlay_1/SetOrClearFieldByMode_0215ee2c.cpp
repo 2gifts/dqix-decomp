@@ -2,8 +2,8 @@
 
 extern "C" int func_ov017_0218b5b0(void);
 extern "C" int func_ov017_021d60f4(void*);
-void SetBitsInField4(unsigned int*, unsigned int);
-void ClearBitsInField4(unsigned int*, unsigned int);
+void SetBitsInField4_0203b4d8(unsigned int*, unsigned int);
+void ClearBitsInField4_0203b4e8(unsigned int*, unsigned int);
 
 // USA: func_ov001_0215ee2c
 ARM int SetOrClearFieldByMode_0215ee2c(void* self) {
@@ -16,16 +16,16 @@ ARM int SetOrClearFieldByMode_0215ee2c(void* self) {
 	switch (a) {
 	case 0:
 		if (b != 0) {
-			ClearBitsInField4((unsigned int*)obj, 8);
+			ClearBitsInField4_0203b4e8((unsigned int*)obj, 8);
 		} else {
-			SetBitsInField4((unsigned int*)obj, 8);
+			SetBitsInField4_0203b4d8((unsigned int*)obj, 8);
 		}
 		break;
 	case 1:
 		if (b != 0) {
-			ClearBitsInField4((unsigned int*)obj, 0x400);
+			ClearBitsInField4_0203b4e8((unsigned int*)obj, 0x400);
 		} else {
-			SetBitsInField4((unsigned int*)obj, 0x400);
+			SetBitsInField4_0203b4d8((unsigned int*)obj, 0x400);
 		}
 		break;
 	}

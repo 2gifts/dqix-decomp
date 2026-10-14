@@ -1,16 +1,16 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-int TestBitAt0x34(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
 struct ArrayContainsByteStruct;
-int ArrayContainsByte(struct ArrayContainsByteStruct* s, int val);
-int GetFieldAt0x150(unsigned char* obj);
+int ArrayContainsByte_02086ef0(struct ArrayContainsByteStruct* s, int val);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 extern "C" void func_02083c48(void* p, int flag, int mode);
 
 // USA: func_ov000_021674f4
 ARM void ProcessFlagits021674f4_021674f4(unsigned char* obj, int skipArrayCheck) {
     GameState* battle = GameState::GetInstance();
-    struct ArrayContainsByteStruct* base = (struct ArrayContainsByteStruct*)GetPtrField0x2a04(battle);
+    struct ArrayContainsByteStruct* base = (struct ArrayContainsByteStruct*)GetPtrField0x2a04_02010828(battle);
 #if defined(jpn)
     enum { randomOffset = 0x218 };
 #else
@@ -18,14 +18,14 @@ ARM void ProcessFlagits021674f4_021674f4(unsigned char* obj, int skipArrayCheck)
 #endif
     unsigned char* bits = *(unsigned char**)((char*)*(void**)(obj + randomOffset) + 0x8000 + 0xe18);
     for (int i = 0; i < 4; i++) {
-        if (!TestBitAt0x34(bits, (unsigned char)i)) continue;
+        if (!TestBitAt0x34_020a35e0(bits, (unsigned char)i)) continue;
         if (skipArrayCheck == 0) {
-            if (!ArrayContainsByte(base, i)) continue;
+            if (!ArrayContainsByte_02086ef0(base, i)) continue;
         }
         GameObject* c = battle->GetPartyMemberByIndex(i);
         if (!c) continue;
-        int val150 = GetFieldAt0x150((unsigned char*)c);
-        int contains = ArrayContainsByte(base, i);
+        int val150 = GetFieldAt0x150_02053c6c((unsigned char*)c);
+        int contains = ArrayContainsByte_02086ef0(base, i);
         func_02083c48((void*)val150, contains, 1);
     }
 }

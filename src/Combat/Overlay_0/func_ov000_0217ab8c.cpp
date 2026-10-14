@@ -76,8 +76,8 @@ struct S02171698;
 int CountNonZero02171698(S02171698*);
 struct S021719c0;
 int CountNonZero021719c0(S021719c0*);
-GameObject* GetCombatantWithFlag0x100(GameState*, int);
-int GetFieldAt0x150(unsigned char*);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState*, int);
+int GetFieldAt0x150_02053c6c(unsigned char*);
 int CountPositiveSlots02083960(Slots02083960*);
 void ClearChannelAFlag0205cf10(void*);
 struct Struct0205cf1c;
@@ -151,8 +151,8 @@ extern "C" ARM void func_ov000_0217ab8c(Menu* self, int arg1, int arg2) {
         break;
     case 17: {
         GameState* gs = GameState::GetInstance();
-        GameObject* unit = GetCombatantWithFlag0x100(gs, self->member);
-        int field = GetFieldAt0x150((unsigned char*)unit);
+        GameObject* unit = GetCombatantWithFlag0x100_0200ff1c(gs, self->member);
+        int field = GetFieldAt0x150_02053c6c((unsigned char*)unit);
         if (field != 0) {
             int n = CountPositiveSlots02083960((Slots02083960*)field);
             pages = (self->total - n + 3) / 4 + (n + 3) / 4;

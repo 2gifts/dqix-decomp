@@ -45,7 +45,7 @@ struct KeyManager {
     char pad_74de[0xaae];
     State0200fad4 cache[3];
 };
-int CompareSixBytes(unsigned char*, SixBytes);
+int CompareSixBytes_02011fb4(unsigned char*, SixBytes);
 void ClearFlagsAndValue0200fad4(State0200fad4*);
 
 // USA: func_02011b68
@@ -68,7 +68,7 @@ extern "C" ARM void func_02011b68(KeyManager* self) {
                 if (previous->id >= 0 && previous->id != self->protagonist) {
                     insert = 1;
                     for (int k = 0; k < 3; k++) {
-                        if (CompareSixBytes(self->cache[k].key.b, key)) {
+                        if (CompareSixBytes_02011fb4(self->cache[k].key.b, key)) {
                             self->cache[k].state.active = 1;
                             insert = 0;
                             break;
@@ -111,7 +111,7 @@ checkedKey:
             if (self->cache[i].elapsed >= 60.0f) {
                 TimedKey* entry = self->timed;
                 for (int j = 0; j < 16; j++, entry++) {
-                    if (entry->active && CompareSixBytes(entry->key.b, self->cache[i].key)) {
+                    if (entry->active && CompareSixBytes_02011fb4(entry->key.b, self->cache[i].key)) {
                         if (++entry->timer >= 60) {
                             if (entry->count >= 9999) entry->timer = 59;
                             else {

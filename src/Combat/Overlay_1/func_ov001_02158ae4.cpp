@@ -29,9 +29,9 @@ struct CameraState {
     int forceRotation;
 };
 struct Camera { int field0; Vector3i position; Vector3i target; };
-void* GetField0x3b0Value(GameState*);
+void* GetField0x3b0Value_020100bc(GameState*);
 extern "C" void func_ov001_021588e4(CameraState*);
-void ReadFields0x70To0x78(unsigned char*, int*, int*, int*);
+void ReadFields0x70To0x78_0202e7d4(unsigned char*, int*, int*, int*);
 extern "C" CameraCommand* func_ov001_02158e8c(CameraState*, CameraCommand*, int);
 extern "C" void func_0202e5d8(Camera*, int, int, int);
 extern "C" void func_0202eab8(Camera*);
@@ -43,11 +43,11 @@ extern "C" ARM void func_ov001_02158ae4(CameraState* state) {
     CameraCommand* command;
     GameState* game = GameState::GetInstance();
     if (!game) { func_ov001_021588e4(state); return; }
-    Camera* camera = (Camera*)GetField0x3b0Value(game);
+    Camera* camera = (Camera*)GetField0x3b0Value_020100bc(game);
     if (!camera) { func_ov001_021588e4(state); return; }
     state->position = camera->position;
     state->target = camera->target;
-    ReadFields0x70To0x78((unsigned char*)camera, &state->yaw, &state->pitch, &state->roll);
+    ReadFields0x70To0x78_0202e7d4((unsigned char*)camera, &state->yaw, &state->pitch, &state->roll);
     Vector3i oldPosition = state->position;
     Vector3i oldTarget = state->target;
     int oldYaw = state->yaw;

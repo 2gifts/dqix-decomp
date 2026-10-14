@@ -2,8 +2,8 @@
 
 struct Obj2081;
 struct Elem2081;
-Elem2081* FindElementByByte0xc4(struct Obj2081* obj, int key);
-int IsField0x9cEqual3(unsigned char* obj);
+Elem2081* FindElementByByte0xc4_02081da8(struct Obj2081* obj, int key);
+int IsField0x9cEqual3_0204c7cc(unsigned char* obj);
 void FindTableEntryPayload_02173f08(char* out1, char* out2, char* out3, char* out4);
 void InitEntryAtIndex_0217585c(void* obj, int a, int b, int idx, unsigned char c);
 
@@ -22,9 +22,9 @@ extern "C" ARM void func_ov003_0217545c(void* obj) {
     enum { entriesOffset = 0x89c };
 #endif
 	o = *(struct Obj2081**)((char*)obj + entriesOffset);
-	elem = FindElementByByte0xc4(o, 10);
+	elem = FindElementByByte0xc4_02081da8(o, 10);
 	if (elem == NULL) return;
-	if (!IsField0x9cEqual3((unsigned char*)elem)) return;
+	if (!IsField0x9cEqual3_0204c7cc((unsigned char*)elem)) return;
 
 	elemAE = *(short*)((char*)elem + 0xae);
 	elemAC = *(short*)((char*)elem + 0xac);

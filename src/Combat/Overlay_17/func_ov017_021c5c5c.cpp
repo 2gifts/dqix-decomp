@@ -64,10 +64,10 @@ struct Combatant_021c5c5c {
 
 extern "C" Event_021c5c5c* func_ov017_021b8478(Node718_021c5c5c* node);
 Combatant_021c5c5c* FindCombatantByField16a_021a278c(void* base, int val);
-unsigned char GetByte0x26c(char* obj);
+unsigned char GetByte0x26c_02039d7c(char* obj);
 int ListContainsId(ListHead02046b60* list, int id);
 void SetFlagAndMaybeNotify_021ab010(void* obj, int flag);
-int IsField0Null(void** list);
+int IsField0Null_02046b08(void** list);
 
 // USA: func_ov017_021c5c5c
 extern "C" ARM int func_ov017_021c5c5c(int unused, int id) {
@@ -105,7 +105,7 @@ extern "C" ARM int func_ov017_021c5c5c(int unused, int id) {
     if (leader->obj3D.GetField06() != other->obj3D.GetField06()) {
         return 0;
     }
-    if (GetByte0x26c((char*)leader) != 0) {
+    if (GetByte0x26c_02039d7c((char*)leader) != 0) {
         return 0;
     }
 
@@ -124,7 +124,7 @@ extern "C" ARM int func_ov017_021c5c5c(int unused, int id) {
     }
     if (node->field3 != 0 && node->field1 == 0) {
         SetFlagAndMaybeNotify_021ab010(node, 0);
-    } else if (!IsField0Null((void**)list)) {
+    } else if (!IsField0Null_02046b08((void**)list)) {
         return 0;
     }
     return 1;

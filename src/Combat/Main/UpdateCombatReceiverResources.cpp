@@ -22,7 +22,7 @@ struct ScrollState02027438;
 
 void *GetDataPtr02114e04_020d6c00();
 int TestFlags02046708(FlagWord02046708 *flags, unsigned int mask);
-int *GetGlobal02109030();
+int *GetGlobal02109030_020936f8();
 #if defined(jpn)
 extern "C" int func_02095264(List0209497c *list, int key);
 #define ListContainsId0209497c func_02095264
@@ -35,8 +35,8 @@ extern "C" int func_0209529c(List020949bc *list, int key);
 #else
 int ListContainsId020949bc(List020949bc *list, int key);
 #endif
-void MoveValue3cbTo3cc(char *list);
-void MoveValue3ccTo3cb(char *list);
+void MoveValue3cbTo3cc_02093a58(char *list);
+void MoveValue3ccTo3cb_02093a98(char *list);
 extern "C" int func_020e0a78(void *receiver);
 extern "C" void func_020e0f74(void *receiver);
 extern "C" void func_02026f34(void *receiver);
@@ -67,15 +67,15 @@ extern "C" ARM void func_0202343c(void *receiver) {
     if (TestFlags02046708(static_cast<FlagWord02046708 *>(GetDataPtr02114e04_020d6c00()), 0x41)) return;
 
     GameResources *resources = func_ov017_0218b5b0();
-    int *list                = GetGlobal02109030();
+    int *list                = GetGlobal02109030_020936f8();
     if (state->field9c3 || state->loadState <= 0) {
         if (ListContainsId0209497c(reinterpret_cast<List0209497c *>(list), 4)) {
-            MoveValue3cbTo3cc(reinterpret_cast<char *>(list));
+            MoveValue3cbTo3cc_02093a58(reinterpret_cast<char *>(list));
         }
         return;
     }
     if (ListContainsId020949bc(reinterpret_cast<List020949bc *>(list), 4)) {
-        MoveValue3ccTo3cb(reinterpret_cast<char *>(list));
+        MoveValue3ccTo3cb_02093a98(reinterpret_cast<char *>(list));
     }
     if (state->field764) {
         if (state->field778) {

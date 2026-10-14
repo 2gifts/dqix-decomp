@@ -26,8 +26,8 @@ struct Summary020dd8b4 {
     unsigned short hp; short field_0x76;
     unsigned short mp;
 };
-char* GetFieldAt0x150(unsigned char*);
-int AccumulateSlotBits20To29AsTenths(char*);
+char* GetFieldAt0x150_02053c6c(unsigned char*);
+int AccumulateSlotBits20To29AsTenths_02084fc8(char*);
 int AccumulateCharm02084ee8(void*);
 int AccumulateMagicalMight02084f58(void*);
 int AccumulateMagicalMending02084e78(void*);
@@ -39,12 +39,12 @@ extern "C" ARM void func_020dd8b4(Summary020dd8b4* obj, int id, int arg, unsigne
     obj->id = id;
     obj->details.arg = arg;
     obj->flag = flag;
-    Combatant020dd8b4* combatant = (Combatant020dd8b4*)GetCombatantWithFlag0x100(GameState::GetInstance(), obj->id);
+    Combatant020dd8b4* combatant = (Combatant020dd8b4*)GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), obj->id);
     if (!combatant) return;
-    char* data = GetFieldAt0x150((unsigned char*)combatant);
+    char* data = GetFieldAt0x150_02053c6c((unsigned char*)combatant);
     obj->attack = combatant->stats->primaryStats.attack;
     obj->defense = combatant->stats->primaryStats.defense;
-    obj->slotBonus = AccumulateSlotBits20To29AsTenths(data);
+    obj->slotBonus = AccumulateSlotBits20To29AsTenths_02084fc8(data);
     obj->charmBonus = AccumulateCharm02084ee8(data);
     obj->mightBonus = AccumulateMagicalMight02084f58(data);
     obj->mendingBonus = AccumulateMagicalMending02084e78(data);

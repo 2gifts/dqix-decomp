@@ -13,7 +13,7 @@ struct StrideEntry0203f138 {
 };
 
 extern struct Element0203f138* GetValidElement02040468(struct List02040468* list, int index);
-extern void* GetElementStride0x14(unsigned char* obj, unsigned int index);
+extern void* GetElementStride0x14_0203f1c8(unsigned char* obj, unsigned int index);
 extern int data_02114e50;
 
 struct State0203f138 {
@@ -48,7 +48,7 @@ extern "C" ARM void func_0203f138(struct State0203f138* obj, int b) {
     if (obj->field30 == b) {
         return;
     }
-    stride = (struct StrideEntry0203f138*)GetElementStride0x14((unsigned char*)elem + 0x10, b);
+    stride = (struct StrideEntry0203f138*)GetElementStride0x14_0203f1c8((unsigned char*)elem + 0x10, b);
     if (stride == 0) {
         return;
     }

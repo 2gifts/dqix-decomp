@@ -22,7 +22,7 @@ struct ActionChance {
 };
 union EffectFlags { struct { int low; int high; }; unsigned long long value; };
 
-int CheckField0x14Flags0x9Clear(unsigned char*);
+int CheckField0x14Flags0x9Clear_0208830c(unsigned char*);
 int SelectMessageByFlags_021e929c(Ctx_021e929c*, int, int);
 int IsFlagAllowedMask_021eb4b0(int, int, int);
 extern "C" void func_ov000_02159eac(void*, EffectFlags*, int);
@@ -38,7 +38,7 @@ extern "C" ARM unsigned long long func_ov024_021e33a4(CombatAction* self, int ac
     GameObject* target = GetCombatantByID((int)self->context_, targetID);
     if (!target) return 0;
     if (((StatusFields*)target->currentStats_)->chance_ == 0) return 0;
-    if (!CheckField0x14Flags0x9Clear((unsigned char*)target->currentStats_)) return 0;
+    if (!CheckField0x14Flags0x9Clear_0208830c((unsigned char*)target->currentStats_)) return 0;
     int roll = NextRandomMax(self->context_, 100);
     float probability = 100.0f;
     if (!self->action_->forced_) {

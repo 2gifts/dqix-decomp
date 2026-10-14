@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 extern "C" void func_ov017_021b6f18(void* node);
-int GetField0x3acValue(GameState* battleStruct);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 extern "C" void func_ov017_021b6e70(void* evt, unsigned short tag);
 extern "C" void func_ov017_021b7104(void* node, void* out);
 struct TailList020469b4;
@@ -53,7 +53,7 @@ extern "C" ARM void func_ov017_021b8bb0(int id) {
     evt.ff = 0;
     evt.f14 = 0;
 
-    evt.f1 = GetField0x3acValue(bs);
+    evt.f1 = GetField0x3acValue_020100a8(bs);
     evt.f2 = 0xffff;
     evt.f4 = (unsigned short)(id + 0x8005);
     evt.f8 = id;

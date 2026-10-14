@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
-unsigned short (*GetVariantShortTable02109928(void))[2];
-int CallWithAddr4000330(int a);
+unsigned short (*GetVariantShortTable02109928_02099cac(void))[2];
+int CallWithAddr4000330_020c555c(int a);
 extern "C" void _ZN8Object3D14AdvanceEffectsEv(void* obj);
 struct S1a0;
 extern "C" void _ZN8Object3D23SetCurrentAnimationTimeEi(struct S1a0* obj, unsigned int v);
@@ -55,12 +55,12 @@ extern "C" ARM void func_ov023_021e5628(TagObj021e5628* obj, CtxObj021e5628* ctx
     if (obj->field_c12 != 0) return;
     if (obj->field_c14 == 0) return;
 
-    unsigned short (*table)[2] = GetVariantShortTable02109928();
+    unsigned short (*table)[2] = GetVariantShortTable02109928_02099cac();
     if (table == 0) return;
 
     unsigned short v = *(unsigned short*)((char*)table + 0x128);
     unsigned short buf[8] = {v, v, v, v, v, v, v, v};
-    CallWithAddr4000330((int)buf);
+    CallWithAddr4000330_020c555c((int)buf);
 
     if (obj->field2 >= 0) {
         _ZN8Object3D14AdvanceEffectsEv(obj);

@@ -3,15 +3,15 @@
 
 struct Flags0202ecfc;
 void ClearFlag0x1At0x168(struct Flags0202ecfc* p);
-void SetField0x7cClearFields0x1ec0x1ee(unsigned char* obj, unsigned short val);
+void SetField0x7cClearFields0x1ec0x1ee_0202e874(unsigned char* obj, unsigned short val);
 struct AngleTrig0202e9a4;
 void SetAngleAndTrigTable0202e9a4(struct AngleTrig0202e9a4* obj, int angle);
-void ClearFields0x20e0x210(unsigned char* obj);
+void ClearFields0x20e0x210_0202e948(unsigned char* obj);
 struct HalfwordTriple0202e98c;
 void ClearThreeHalfwords(struct HalfwordTriple0202e98c* p);
-void* CallFunc020a0d58AtField0x16c(char* obj);
-void* CallFunc020a0d58AtField0x194(void* obj);
-void* CallFunc020a0d58AtField0x1bc(void* obj);
+void* CallFunc020a0d58AtField0x16c_0202ee84(char* obj);
+void* CallFunc020a0d58AtField0x194_0202ee94(void* obj);
+void* CallFunc020a0d58AtField0x1bc_0202eea4(void* obj);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
 
 struct Vec3_0216d370 { int x, y, z; };
@@ -33,7 +33,7 @@ extern "C" ARM void func_ov000_0216d370(char* obj, int flagA, int flagB, int fla
     *(unsigned char*)(obj + 0x260) = 0;
 
     if (flagA) {
-        SetField0x7cClearFields0x1ec0x1ee((unsigned char*)obj, 0);
+        SetField0x7cClearFields0x1ec0x1ee_0202e874((unsigned char*)obj, 0);
     }
 
     if (flagB) {
@@ -41,12 +41,12 @@ extern "C" ARM void func_ov000_0216d370(char* obj, int flagA, int flagB, int fla
     }
 
     if (flagC) {
-        ClearFields0x20e0x210((unsigned char*)obj);
+        ClearFields0x20e0x210_0202e948((unsigned char*)obj);
         ClearThreeHalfwords((struct HalfwordTriple0202e98c*)obj);
     }
 
     memset(obj + 0x264, 0, 0x14);
-    CallFunc020a0d58AtField0x16c(obj);
-    CallFunc020a0d58AtField0x194(obj);
-    CallFunc020a0d58AtField0x1bc(obj);
+    CallFunc020a0d58AtField0x16c_0202ee84(obj);
+    CallFunc020a0d58AtField0x194_0202ee94(obj);
+    CallFunc020a0d58AtField0x1bc_0202eea4(obj);
 }

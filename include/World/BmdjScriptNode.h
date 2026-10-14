@@ -73,7 +73,7 @@ struct GrottoTileMapRecord {
 BmdjScriptNode* GetNodeAtDepth020196fc(Zone3D* zone, int depth);
 void Reset02013490(GrottoTileMapRecord* record);
 void InitStruct02013454(BmdjScriptNode* node);
-void ResetTrackerState(BmdjScriptState* state);
+void ResetTrackerState_0201f01c(BmdjScriptState* state);
 void ProcessNode0201aedc(Zone3D* zone);
 TileFeaturePlacementData* FindEntryByNameSubstr0201e434(ZoneFeatures* features, const char* name);
 TileFeaturePlacementData* CopyStruct02019f24(TileFeaturePlacementData* destination, const TileFeaturePlacementData* source);

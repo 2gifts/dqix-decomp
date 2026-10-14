@@ -92,7 +92,7 @@ extern "C" ARM void func_ov000_0217d87c(MenuState* menu, int arg1, int arg2) {
     if (func_ov000_0217c594(menu, 5) != 0) {
         menu->field956 = 0;
         GameState* gs = GameState::GetInstance();
-        unsigned char* party = (unsigned char*)GetPtrField0x2a04(gs);
+        unsigned char* party = (unsigned char*)GetPtrField0x2a04_02010828(gs);
         int bits = GetNthSetBit0218158c(menu, menu->activeSum);
         if (func_0207c984(party + 0x1d4, id, bits & 0xff, menu->field26, &menu->field66) != 0) {
             return;
@@ -136,7 +136,7 @@ extern "C" ARM void func_ov000_0217d87c(MenuState* menu, int arg1, int arg2) {
             node->flags &= ~4;
         }
         GameState* gs = GameState::GetInstance();
-        unsigned char count = ((unsigned char*)GetPtrField0x2a04(gs))[0xf7c];
+        unsigned char count = ((unsigned char*)GetPtrField0x2a04_02010828(gs))[0xf7c];
         for (unsigned char i = 0; i < count; i++) {
             int memberId = menu->members[i];
             ElemNode* other = func_ov000_02161318(menu, memberId);

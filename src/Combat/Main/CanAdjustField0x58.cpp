@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_0208776c
-ARM int CanAdjustField0x58(void* obj, int dir) {
+ARM int CanAdjustField0x58_0208776c(void* obj, int dir) {
     unsigned char* base = (unsigned char*)obj;
     if (*(int*)(base + 0x14) & 1) {
         return 0;

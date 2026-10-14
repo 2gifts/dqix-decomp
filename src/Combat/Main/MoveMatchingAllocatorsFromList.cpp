@@ -3,10 +3,10 @@
 
 unsigned int DisableIRQInterrupts(void);
 unsigned int SetIRQInterruptState(int mask);
-void InsertAllocatorHeaderLocked(SignedAllocatorHeader* header);
+void InsertAllocatorHeaderLocked_020bf458(SignedAllocatorHeader* header);
 
 // USA: func_020bf358
-ARM void MoveMatchingAllocatorsFromList(SignedAllocatorList* list, SignedAllocatorHeader* matchNext) {
+ARM void MoveMatchingAllocatorsFromList_020bf358(SignedAllocatorList* list, SignedAllocatorHeader* matchNext) {
     unsigned int mask;
     SignedAllocatorHeader* element;
     SignedAllocatorHeader* next;
@@ -17,7 +17,7 @@ ARM void MoveMatchingAllocatorsFromList(SignedAllocatorList* list, SignedAllocat
             next = list->ElementAfter(element);
             if (element->pNextAllocator == matchNext) {
                 list->Remove(element);
-                InsertAllocatorHeaderLocked(element);
+                InsertAllocatorHeaderLocked_020bf458(element);
             }
             element = next;
         } while (element != 0);

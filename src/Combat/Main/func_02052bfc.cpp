@@ -46,13 +46,13 @@ struct Obj02052bfc {
     Sub150_02052bfc* field150;
 };
 
-int ArrayContainsByte(ArrayContainsByteStruct*, int);
-void* GetPtrField0x2a04(GameState*);
+int ArrayContainsByte_02086ef0(ArrayContainsByteStruct*, int);
+void* GetPtrField0x2a04_02010828(GameState*);
 extern "C" void* func_02012fe4(void);
 extern "C" long long _ll_udiv(long long a, long long b);
-int IsField0Null(void** obj);
+int IsField0Null_02046b08(void** obj);
 int IsEntryEligibleAndFlagged(Struct0201bc94* obj);
-int CallFunc020e0434With02153694(int value);
+int CallFunc020e0434With02153694_020e51cc(int value);
 void* GetGlobalResetObj020d7a50(void);
 extern "C" void func_ov017_02191aac(char* obj, int mode, int idx, unsigned char mask);
 void EnqueueEventTag17_021ce014(int a, unsigned short b, unsigned short c, unsigned short d);
@@ -64,17 +64,17 @@ extern "C" ARM void func_02052bfc(struct Obj02052bfc* obj) {
     GameState* gs = GameState::GetInstance();
     GameResources* ov = func_ov017_0218b5b0();
     void* list = *(void**)((char*)ov + 0x3000 + kResourceWord);
-    ArrayContainsByteStruct* arr = (ArrayContainsByteStruct*)GetPtrField0x2a04(gs);
+    ArrayContainsByteStruct* arr = (ArrayContainsByteStruct*)GetPtrField0x2a04_02010828(gs);
     Struct0201bc94* entry = (Struct0201bc94*)func_02012fe4();
     unsigned char idx = obj->field4 & 0xff;
 
-    if (!ArrayContainsByte(arr, idx)) return;
+    if (!ArrayContainsByte_02086ef0(arr, idx)) return;
     if (obj->field150->field56c == 0) return;
 
     uint64_t diff = GetCurrentTimestamp() - obj->field150->stamp;
     long long elapsed = _ll_udiv(diff << 6, 0x1ff6210);
 
-    if (!IsField0Null((void**)list)) return;
+    if (!IsField0Null_02046b08((void**)list)) return;
     if (elapsed < 0x12c && IsEntryEligibleAndFlagged(entry)) return;
 
     char buf[0x80];
@@ -84,14 +84,14 @@ extern "C" ARM void func_02052bfc(struct Obj02052bfc* obj) {
             #if defined(jpn)
             strcpy(buf, (char*)data_020f0420[1]);
 #else
-            strcpy(buf, (char*)CallFunc020e0434With02153694(0x33));
+            strcpy(buf, (char*)CallFunc020e0434With02153694_020e51cc(0x33));
 #endif
         }
         else {
             #if defined(jpn)
             strcpy(buf, (char*)data_020f0420[5]);
 #else
-            strcpy(buf, (char*)CallFunc020e0434With02153694(0x32));
+            strcpy(buf, (char*)CallFunc020e0434With02153694_020e51cc(0x32));
 #endif
         }
         #if defined(jpn)

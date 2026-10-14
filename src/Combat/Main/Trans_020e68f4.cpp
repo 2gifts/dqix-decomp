@@ -6,7 +6,7 @@ extern int _Z26ResetAndReturnSelf020dfc2cPv;
 extern int data_02153680;
 extern int data_02153694;
 struct SafeAllocator;
-unsigned int ResetAndReturnAllocator(SafeAllocator*);
+unsigned int ResetAndReturnAllocator_020466d0(SafeAllocator*);
 extern "C" unsigned int func_0200ee94(unsigned int, unsigned int, unsigned int, unsigned int);
 
 // USA: func_020e68f4  (semantic: Trans_020e68f4)
@@ -21,6 +21,6 @@ extern "C" __declspec(initcode) ARM unsigned int __sinit_020e68f4(unsigned int r
     *(unsigned int*)((char*)stk + 0x0) = (unsigned int)r12;
     r0 = (unsigned int)func_0200ee94(r0, r1, r2, r3);
     r0 = (unsigned int)&data_02153680;
-    r0 = (unsigned int)ResetAndReturnAllocator((SafeAllocator*)r0);
+    r0 = (unsigned int)ResetAndReturnAllocator_020466d0((SafeAllocator*)r0);
     return r0;
 }

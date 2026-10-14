@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 struct Obj02053f7c;
 void SetField0x1b2IfMatchOrFlag02053f7c(struct Obj02053f7c* obj, unsigned short a, int b);
@@ -31,7 +31,7 @@ struct Msg021c60a4 {
 
 // USA: func_ov017_021c60a4  (semantic: BroadcastAndFlagCombatants_021c60a4)
 extern "C" ARM void func_ov017_021c60a4(struct Source021c60a4* obj) {
-    void* data = GetData02100044();
+    void* data = GetData02100044_0202ae24();
 
     struct Msg021c60a4 msg;
     msg.tag = 0x65;
@@ -53,7 +53,7 @@ extern "C" ARM void func_ov017_021c60a4(struct Source021c60a4* obj) {
     GameState* bs = GameState::GetInstance();
     for (unsigned int i = 0; i < 4; i++) {
         if ((signed char)obj->flags[i] == 0) continue;
-        GameObject* c = GetCombatantWithFlag0x100(bs, i);
+        GameObject* c = GetCombatantWithFlag0x100_0200ff1c(bs, i);
         if (c == NULL) continue;
         SetField0x1b2IfMatchOrFlag02053f7c((struct Obj02053f7c*)c, obj->field0, 1);
     }

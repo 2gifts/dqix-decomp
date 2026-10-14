@@ -7,7 +7,7 @@ enum { kListOffset = 0x18 };
 #endif
 
 struct Entry_02028bd0;
-struct Entry_02028bd0* GetEntryTableBase(void);
+struct Entry_02028bd0* GetEntryTableBase_02027ca4(void);
 
 struct U16Field0x6_020375f8;
 
@@ -32,7 +32,7 @@ ARM unsigned short FindAndCacheListIndex(struct Obj02079040* obj, unsigned char*
     int id;
     int idx;
     *outFlag = 0;
-    base = GetEntryTableBase();
+    base = GetEntryTableBase_02027ca4();
     key = ((Object3D*)((struct U16Field0x6_020375f8*)obj))->GetField06();
     entry = FindInlineEntryById(base, key);
     if (entry == NULL) {

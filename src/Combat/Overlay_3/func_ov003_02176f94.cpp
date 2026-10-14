@@ -37,13 +37,13 @@ enum {
 #include "GameState/GameState.h"
 
 struct Obj2081;
-void ClearElementFlag0x20(struct Obj2081 *obj, int key);
+void ClearElementFlag0x20_02080c20(struct Obj2081 *obj, int key);
 void SetEntryLowNibbleAndElement02080c68(void *obj, int id, int value);
-void ClearSublistEntriesFlag1(void *obj, int id);
+void ClearSublistEntriesFlag1_02080bac(void *obj, int id);
 struct Container020dedd0;
 struct Node02176f94;
 struct Node02176f94 *FindElementByKey020dedd0(struct Container020dedd0 *c, int key);
-void *GetFieldAt0x150(unsigned char *obj);
+void *GetFieldAt0x150_02053c6c(unsigned char *obj);
 struct Slots02083994;
 int CountMatchingUntilNegative02083994(struct Slots02083994 *s, int value);
 struct Container02080f8c;
@@ -54,11 +54,11 @@ void SetEntryHighNibble0x13(struct Container02080cc0 *obj, int id, int value);
 struct Container02080fa8;
 void SetEntryFirstField02080fa8(struct Container02080fa8 *obj, int id, int value);
 int SetEntryFlagById02080b2c(void *obj, int id);
-void SetSublistEntriesFlag1(void *obj, int id);
-void SetElementFlag0x20(struct Obj2081 *obj, int key);
+void SetSublistEntriesFlag1_02080b54(void *obj, int id);
+void SetElementFlag0x20_02080c04(struct Obj2081 *obj, int key);
 short SumKeyedLookups02086bf4(char *obj, int key);
 extern "C" void func_020813ec(void *obj, int key);
-void *GetPtrField0x2a04(GameState *battleStruct);
+void *GetPtrField0x2a04_02010828(GameState *battleStruct);
 
 struct Node02176f94 {
     char pad0[8];
@@ -84,7 +84,7 @@ static inline int ShouldHideMemberCounts(unsigned int itemType) {
 extern "C" ARM void func_ov003_02176f94(Menu02176f94* self) {
     struct Obj2081 *elem = self->menu;
     GameState *battle    = GameState::GetInstance();
-    char *bag            = (char *) GetPtrField0x2a04(battle);
+    char *bag            = (char *) GetPtrField0x2a04_02010828(battle);
 
     int listId    = 0x19;
     short idMember    = 0xe9;
@@ -115,9 +115,9 @@ extern "C" ARM void func_ov003_02176f94(Menu02176f94* self) {
             break;
     }
 
-    ClearElementFlag0x20(elem, listId);
+    ClearElementFlag0x20_02080c20(elem, listId);
     SetEntryLowNibbleAndElement02080c68(elem, listId, 0);
-    ClearSublistEntriesFlag1(elem, listId);
+    ClearSublistEntriesFlag1_02080bac(elem, listId);
 
     bool skip                 = true;
     struct Node02176f94 *node = FindElementByKey020dedd0(
@@ -135,7 +135,7 @@ extern "C" ARM void func_ov003_02176f94(Menu02176f94* self) {
             if (member != NULL) {
                 memberData = (int)member->baseStats_;
                 count = CountMatchingUntilNegative02083994(
-                    (struct Slots02083994 *) GetFieldAt0x150((unsigned char *) member), self->selectedItem);
+                    (struct Slots02083994 *) GetFieldAt0x150_02053c6c((unsigned char *) member), self->selectedItem);
             }
             SetEntryFirstField02080f8c((struct Container02080f8c *) elem, idMember, memberData);
             SetEntryHighNibble0x13((struct Container02080cc0 *) elem, idMember, func_020dcc98(cid));
@@ -152,8 +152,8 @@ extern "C" ARM void func_ov003_02176f94(Menu02176f94* self) {
             idFlagA = idFlagA + 1;
         }
     } else {
-        SetSublistEntriesFlag1(elem, listId);
-        SetElementFlag0x20(elem, listId);
+        SetSublistEntriesFlag1_02080b54(elem, listId);
+        SetElementFlag0x20_02080c04(elem, listId);
     }
     SetEntryFirstField02080fa8((struct Container02080fa8 *) elem, idCount,
                                                          SumKeyedLookups02086bf4(bag, self->selectedItem));

@@ -34,8 +34,8 @@ struct DollBones
     char names_[9][0x14];
 };
 
-CharacterColors* GetVariantShortTable02109928();
-int CallWithAddr4000330(int a);
+CharacterColors* GetVariantShortTable02109928_02099cac();
+int CallWithAddr4000330_020c555c(int a);
 ModelRenderContext* GetModel3DContext(Model3D* model);
 
 extern const DollBones data_ov015_02193ee8;
@@ -44,9 +44,9 @@ extern const DollAnimated data_ov015_02193d9c;
 // USA: func_ov015_0218eb04
 extern "C" ARM void func_ov015_0218eb04(ViewObject* self)
 {
-    unsigned short edge = GetVariantShortTable02109928()->edge_;
+    unsigned short edge = GetVariantShortTable02109928_02099cac()->edge_;
     unsigned short edges[8] = {edge, edge, edge, edge, edge, edge, edge, edge};
-    CallWithAddr4000330((int)edges);
+    CallWithAddr4000330_020c555c((int)edges);
     self->quads_ = 0;
     self->triangles_ = 0;
     Model3D* model = self->objects_->pModel_;

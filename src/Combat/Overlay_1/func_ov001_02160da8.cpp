@@ -30,9 +30,9 @@ struct ScriptState {
 struct Obj02061bd8;
 extern "C" int func_ov017_021d60f4(ScriptArgument*);
 extern "C" const char* func_ov017_021d612c(ScriptArgument*);
-int GetField0x397cValue(GameState*);
-GameObject* GetCombatantWithFlag0x1000(GameState*, int);
-int GetNibbleAt56b(void*);
+int GetField0x397cValue_020100b0(GameState*);
+GameObject* GetCombatantWithFlag0x1000_0200ff58(GameState*, int);
+int GetNibbleAt56b_ov001_021612ac(void*);
 int CheckField0x56bLowNibble(Obj02061bd8*);
 extern SafeAllocator* data_ov001_021658b8[];
 extern const char data_ov001_02165728[];
@@ -66,10 +66,10 @@ extern "C" ARM int func_ov001_02160da8(ScriptArgument* arguments, int count) {
     case 9:
         if (count < 2) return 0;
         command->action = func_ov017_021d60f4(arguments + 1);
-        if (command->kind == 1) command->objectId = GetField0x397cValue(game);
+        if (command->kind == 1) command->objectId = GetField0x397cValue_020100b0(game);
         else if (command->kind == 9) {
             command->objectId = state->selectedObject;
-            if (!GetCombatantWithFlag0x100(game, command->objectId)) command->objectId = GetField0x397cValue(game);
+            if (!GetCombatantWithFlag0x100_0200ff1c(game, command->objectId)) command->objectId = GetField0x397cValue_020100b0(game);
         }
         if (command->objectId == 0) command->group = 1;
         else command->group = 2;
@@ -80,7 +80,7 @@ extern "C" ARM int func_ov001_02160da8(ScriptArgument* arguments, int count) {
         if (count < 2) return 0;
         command->action = func_ov017_021d60f4(arguments + 1);
         command->group = 2;
-        GetField0x397cValue(game);
+        GetField0x397cValue_020100b0(game);
         if (command->kind == 11) command->objectId = 3;
         else if (command->kind == 12) command->objectId = 2;
         else if (command->kind == 13) command->objectId = 1;
@@ -93,17 +93,17 @@ extern "C" ARM int func_ov001_02160da8(ScriptArgument* arguments, int count) {
         if (count < 2) return 0;
         command->action = func_ov017_021d60f4(arguments + 1);
         int group = 0;
-        GameObject* member = GetCombatantWithFlag0x1000(game, 0xce);
+        GameObject* member = GetCombatantWithFlag0x1000_0200ff58(game, 0xce);
         if (member) {
             command->objectId = 0xce;
-            group = GetNibbleAt56b(member);
+            group = GetNibbleAt56b_ov001_021612ac(member);
         } else {
             int index;
             for (index = 0; index < 4; ++index) {
-                GameObject* member = GetCombatantWithFlag0x1000(game, index);
+                GameObject* member = GetCombatantWithFlag0x1000_0200ff58(game, index);
                 if (member && CheckField0x56bLowNibble((Obj02061bd8*)member)) {
                     command->objectId = index;
-                    group = GetNibbleAt56b(member);
+                    group = GetNibbleAt56b_ov001_021612ac(member);
                     break;
                 }
             }

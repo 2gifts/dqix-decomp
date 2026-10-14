@@ -3,7 +3,7 @@
 
 struct EntryA68 { short key; void* value; };
 struct TableA68 { struct EntryA68* entries; short count; };
-ARM void* FindEntryByKey(struct TableA68* table, int key);
+ARM void* FindEntryByKey_02072a68(struct TableA68* table, int key);
 
 struct Flags0208166c {
     unsigned char loNibble : 4;
@@ -14,7 +14,7 @@ struct Flags14_0208166c {
     unsigned char f14pad : 6;
 };
 
-ARM int IsValueEqual12(int x);
+ARM int IsValueEqual12_02042190(int x);
 ARM int GetGlobalField0x1c020421a0(void);
 
 extern "C" int func_020420e8(void* p, int flag);
@@ -35,9 +35,9 @@ ARM void ApplyEntryToTarget0208166c(void* holderRaw, void* targetRaw, void* entr
         hiNibbleOrFive = 5;
     }
 
-    int boolResult = IsValueEqual12(F13(entry)->loNibble);
+    int boolResult = IsValueEqual12_02042190(F13(entry)->loNibble);
 
-    void* found = FindEntryByKey((struct TableA68*)*(void**)(holder + 0x0), *(short*)(entry + 0xe));
+    void* found = FindEntryByKey_02072a68((struct TableA68*)*(void**)(holder + 0x0), *(short*)(entry + 0xe));
     if (found) {
         if (*(unsigned char*)(entry + 0x2a) & 0x8) {
             int scaled = *(short*)(target + 0xa8) << 0x13;

@@ -4,7 +4,7 @@
 
 extern "C" void func_02052d7c(void* combatant, int arg1, int arg2);
 extern "C" void func_02072afc(int id, void* out1, void* out2);
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 extern char data_020f0cf4[];
 
 struct EffectSlot02072c9c {
@@ -15,11 +15,11 @@ struct EffectSlot02072c9c {
 
 // USA: func_02072c9c
 ARM void FormatEffectStats02072c9c(int combatantId, char* buf) {
-    GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), combatantId);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), combatantId);
     if (combatant == NULL) {
         return;
     }
-    int fieldVal = GetFieldAt0x150((unsigned char*)combatant);
+    int fieldVal = GetFieldAt0x150_02053c6c((unsigned char*)combatant);
     if (fieldVal == 0) {
         return;
     }

@@ -14,9 +14,9 @@ struct GlobalList020fdc20_c944 {
 extern struct GlobalList020fdc20_c944 data_020fdc20;
 
 // USA: func_0201c944
-ARM int WarpScript_Opcode_66(Script::Parameter* arg0, int) {
+ARM int WarpScript_Opcode_66_0201c944(Script::Parameter* arg0, int) {
     struct Variant02030b0c* v = (struct Variant02030b0c*)arg0;
     int n = ((Script::Parameter*)v)->ToInt();
-    ((ZoneFeatures*)data_020fdc20.array)->AllocateOpcode66Entries(n, data_020fdc20.alloc);
+    ((ZoneFeatures*)data_020fdc20.array)->AllocateOpcode66Entries_0201e480(n, data_020fdc20.alloc);
     return 1;
 }

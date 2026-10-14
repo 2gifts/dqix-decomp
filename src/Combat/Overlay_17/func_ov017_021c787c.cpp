@@ -4,7 +4,7 @@
 extern "C" void* func_ov017_021b8478(void*);
 extern "C" void* func_ov017_021b8468(void*);
 void* GetField6b0_021b8470(void*);
-int GetField0x3acValue(GameState*);
+int GetField0x3acValue_020100a8(GameState*);
 
 struct EventInfo021c787c {
     unsigned char padding0[8];
@@ -39,7 +39,7 @@ extern "C" ARM void func_ov017_021c787c(int unused, StatPacket021c787c* packet, 
     if (!event) return;
     if (!func_ov017_021b8468(handle)) return;
     if (!GetField6b0_021b8470(handle)) return;
-    int index = GetField0x3acValue(game);
+    int index = GetField0x3acValue_020100a8(game);
     if (event->combatantIndex == index) return;
     if (event->eventId != packet->eventId) return;
     GameObject* combatant = game->GetCombatantByIndex(packet->combatantId);

@@ -3,7 +3,7 @@
 
 struct SearchStruct0202c1a4;
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4*);
-int TestBitAt0x34(unsigned char*, unsigned int);
+int TestBitAt0x34_020a35e0(unsigned char*, unsigned int);
 extern "C" void* func_ov017_021b8478(void* obj);
 
 struct U16Field0x6_020375f0;
@@ -29,14 +29,14 @@ extern "C" ARM void func_ov017_021c435c(int unused0, struct Src021c435c* src, Ga
     }
     unsigned int idx = src->loNibble;
     if (idx == GetSearchStructCurrentArrEntry(search)) return;
-    GameObject* c = GetCombatantWithFlag0x100(battleStruct, idx);
+    GameObject* c = GetCombatantWithFlag0x100_0200ff1c(battleStruct, idx);
     if (!c) return;
     unsigned short val = src->field6;
     if (src->field4 & 2) val = src->field8;
     unsigned char* node = *(unsigned char**)(obj + 0x3000 + regionalOffset0);
     void* p = func_ov017_021b8478(node);
     if (node[2] != 0) {
-        if (TestBitAt0x34((unsigned char*)p, src->loNibble)) {
+        if (TestBitAt0x34_020a35e0((unsigned char*)p, src->loNibble)) {
             *(unsigned int*)((char*)c + regionalOffset1) = val;
             return;
         }

@@ -13,7 +13,7 @@ struct StateFlags3c9 {
 };
 
 // USA: func_0209494c
-ARM int CheckFlag0x3c9Bit0OrByteNonPositive(struct StateFlags3c9* obj) {
+ARM int CheckFlag0x3c9Bit0OrByteNonPositive_0209494c(struct StateFlags3c9* obj) {
     if (obj->bit0) {
         return obj->value3cb <= 0;
     }

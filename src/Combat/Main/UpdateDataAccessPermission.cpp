@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_020c8a18
-ARM void UpdateDataAccessPermission(unsigned int clearMask, unsigned int setMask) {
+ARM void UpdateDataAccessPermission_020c8a18(unsigned int clearMask, unsigned int setMask) {
     unsigned int v;
     asm {
         mrc p15, 0, v, c5, c0, 2

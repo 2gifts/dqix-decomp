@@ -5,7 +5,7 @@
 #include "Resource/CharacterCreationUI.h"
 #include "System/ColorEffects.h"
 
-int GetWord0x0(int*);
+int GetWord0x0_0200fb8c(int*);
 struct Entry_0205d6a0;
 void ResetEntryList0205d6a0(Entry_0205d6a0*, int);
 #if defined(jpn)
@@ -16,7 +16,7 @@ void SetStatValue021855dc(unsigned char*, int);
 
 extern "C" ARM void func_ov009_021883cc(unsigned char* storage) {
     CharacterCreationUI* editor = (CharacterCreationUI*)storage;
-    GameResources* resources = (GameResources*)GetWord0x0((int*)GameState::GetInstance());
+    GameResources* resources = (GameResources*)GetWord0x0_0200fb8c((int*)GameState::GetInstance());
     unsigned char step = editor->step;
     if (step == 0) {
         SetBrightness(resources, -16, 15);

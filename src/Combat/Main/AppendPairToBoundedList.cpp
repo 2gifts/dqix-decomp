@@ -15,7 +15,7 @@ struct AppendPairList {
 };
 
 // USA: func_020281d8
-ARM void AppendPairToBoundedList(struct AppendPairList* list, struct AppendEntry* src) {
+ARM void AppendPairToBoundedList_020281d8(struct AppendPairList* list, struct AppendEntry* src) {
     struct AppendEntry* dst;
     if (list->capacity <= list->count) {
         return;

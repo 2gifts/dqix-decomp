@@ -3,7 +3,7 @@
 
 extern "C" int func_ov017_0218b5b0(void);
 extern "C" void func_ov017_021a2fa0(int h);
-void ClearBitsInField4(unsigned int* obj, unsigned int mask);
+void ClearBitsInField4_0203b4e8(unsigned int* obj, unsigned int mask);
 
 struct Obj021b2b14 {
     unsigned char pad0[8];
@@ -19,8 +19,8 @@ ARM int CheckFieldOrClearBits_021b2b14(Obj021b2b14* p) {
     }
     int h = func_ov017_0218b5b0();
     func_ov017_021a2fa0(h);
-    ClearBitsInField4((unsigned int*)h, 8);
-    ClearBitsInField4((unsigned int*)h, 0x10);
+    ClearBitsInField4_0203b4e8((unsigned int*)h, 8);
+    ClearBitsInField4_0203b4e8((unsigned int*)h, 0x10);
     p->f38 &= ~2;
     return 3;
 }

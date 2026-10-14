@@ -183,22 +183,22 @@ extern unsigned short data_02114e30[];
 extern TouchState data_02114e54;
 extern Obj0205eaa0 data_02108760;
 
-GameResources* GetWord0x0(int* gameState);
+GameResources* GetWord0x0_0200fb8c(int* gameState);
 MessageSystem* GetGlobalField0x1c020421a0();
 void SetSubBrightness(GameResources* resources, int brightness, int frames);
 int IsBrightnessTransitionActive(GameResources* resources);
 void* LoadFileIntoMemory(const char* path, void* archive, unsigned int* size);
 void ResetListHeader020727d8(List020727d8* list);
 extern "C" void _Z26SubmitAndRunScript02072928PvP12StreamHeaderiiS_h(void* list, StreamHeader* file, int size, int id, void* output, int female);
-int GetField0x3acValue(GameState* gameState);
-PartyMember* GetCombatantWithFlag0x100(GameState* gameState, int index);
+int GetField0x3acValue_020100a8(GameState* gameState);
+PartyMember* GetCombatantWithFlag0x100_0200ff1c(GameState* gameState, int index);
 const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
 void AppendString02042058(char* text, const char* append);
 Canvas* FindElementByC40205d81c(Struct_0205d81c* window, int canvas);
 struct Manager02187664;
 void InitConfig02187664(Manager02187664*, int);
-int TestFlag0SetAndFlag1Clear(unsigned short* pad, int buttons);
-void SelectCoordsByFlag0x24(unsigned char* touch, int* x, int* y);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* pad, int buttons);
+void SelectCoordsByFlag0x24_02012a84(unsigned char* touch, int* x, int* y);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0* sound, int effect, int value);
 
 extern "C" {
@@ -228,7 +228,7 @@ static inline ClearRecords* GetClearRecords(SavedRecords* saved, int i)
 extern "C" ARM void func_ov008_02186388(BattleRecords* self)
 {
     GameState* gameState = GameState::GetInstance();
-    GameResources* resources = GetWord0x0((int*)gameState);
+    GameResources* resources = GetWord0x0_0200fb8c((int*)gameState);
     BackgroundLoader::GetInstance();
     MessageSystem* messages = GetGlobalField0x1c020421a0();
     ClearRecords* clear = GetClearRecords(GetSavedRecords(gameState), 0);
@@ -284,7 +284,7 @@ extern "C" ARM void func_ov008_02186388(BattleRecords* self)
             file = ExtractFileFromGP2(path, inner, &size);
             if (file != NULL)
             {
-                PartyMember* member = GetCombatantWithFlag0x100(gameState, GetField0x3acValue(gameState));
+                PartyMember* member = GetCombatantWithFlag0x100_0200ff1c(gameState, GetField0x3acValue_020100a8(gameState));
                 ResetListHeader020727d8((List020727d8*)&list);
                 int female = member->data_->female_;
                 _Z26SubmitAndRunScript02072928PvP12StreamHeaderiiS_h(&list, (StreamHeader*)file, size, clear->title_, comment, female);
@@ -316,9 +316,9 @@ extern "C" ARM void func_ov008_02186388(BattleRecords* self)
         int x;
         int y;
         int ok = 0;
-        if (TestFlag0SetAndFlag1Clear(data_02114e30, 0x403))
+        if (TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x403))
             ok = 1;
-        SelectCoordsByFlag0x24((unsigned char*)&data_02114e54, &x, &y);
+        SelectCoordsByFlag0x24_02012a84((unsigned char*)&data_02114e54, &x, &y);
         if (data_02114e54.touching_)
         {
             int index = func_ov008_02186b18(self, x, y);

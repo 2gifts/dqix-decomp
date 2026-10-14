@@ -15,9 +15,8 @@ enum { kRegion10d = 0x10d };
 enum { kRegion124 = 0x124 };
 #endif
 
-
 extern "C" int func_ov017_0218b5b0(void);
-void OrGlobalFlag0x40(void);
+void OrGlobalFlag0x40_020dc2bc(void);
 struct SubBgControlBackup02074b64;
 void BackupSubBgControlRegisters(struct SubBgControlBackup02074b64* obj);
 
@@ -37,7 +36,7 @@ extern "C" ARM void func_ov003_02173508(S02173508* obj) {
     func_ov017_0218b5b0();
     if (obj->field_ef != 0) return;
 
-    OrGlobalFlag0x40();
+    OrGlobalFlag0x40_020dc2bc();
     BackupSubBgControlRegisters((struct SubBgControlBackup02074b64*)((char*)obj + kRegion10c));
 
     volatile unsigned int* reg = (volatile unsigned int*)0x4001000;

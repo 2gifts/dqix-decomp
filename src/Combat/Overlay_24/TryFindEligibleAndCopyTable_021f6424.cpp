@@ -5,7 +5,7 @@
 
 extern "C" int func_ov000_0215e9fc(int battle, unsigned short* table, int count, int flag);
 extern "C" int func_ov024_021ede2c(int* a0);
-int CheckFlag0x14Bit0x10Set(unsigned char* obj);
+int CheckFlag0x14Bit0x10Set_020882f8(unsigned char* obj);
 
 extern unsigned short data_ov024_021feb04;
 
@@ -27,7 +27,7 @@ extern "C" ARM int func_ov024_021f6424(int* a0, int a1, int a2, int* outCount, v
 	int found = 0;
 	for (int i = 0; i < count; i++) {
 		GameObject* member = GetCombatantByID(*a0, *(short*)&buf[i]);
-		if (member && !CheckFlag0x14Bit0x10Set((unsigned char*)member->currentStats_)) {
+		if (member && !CheckFlag0x14Bit0x10Set_020882f8((unsigned char*)member->currentStats_)) {
 			found = 1;
 			break;
 		}

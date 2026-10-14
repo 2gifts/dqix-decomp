@@ -2,8 +2,8 @@
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
 
-void* GetData02100044(void);
-GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
+void* GetData02100044_0202ae24(void);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* battleStruct, int combatantId);
 void* ResetBuffer02052a10(char* obj);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
@@ -17,8 +17,8 @@ struct LocalEvt021c45b4 {
 // USA: func_ov017_021c45b4
 ARM void EnqueueNameTag3_021c45b4(int combatantId) {
     GameState* bs = GameState::GetInstance();
-    void* p = GetData02100044();
-    GameObject* c = GetCombatantWithFlag0x100(bs, combatantId);
+    void* p = GetData02100044_0202ae24();
+    GameObject* c = GetCombatantWithFlag0x100_0200ff1c(bs, combatantId);
     if (!c) return;
 
     struct LocalEvt021c45b4 buf;

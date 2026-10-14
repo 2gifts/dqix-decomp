@@ -32,10 +32,10 @@ struct Unit {char p[0x138];Ability* ability;};
 extern GlobalData data_ov000_02184294;
 extern unsigned short data_02114e30[];
 extern Obj0205eaa0 data_02108760;
-GameObject* GetCombatantWithFlag0x100(GameState*,int);
-int GetFieldAt0x150(unsigned char*);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState*,int);
+int GetFieldAt0x150_02053c6c(unsigned char*);
 int GetActiveScaledSum0205d794(Struct_0205c570*);
-bool TestFlag0SetAndFlag1Clear(unsigned short*,int);
+bool TestFlag0SetAndFlag1Clear_02012444(unsigned short*,int);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*,int,int);
 int GetFieldByKey020e0434(Container020e0310*,int);
 void SwapGlobalEntry0203c108(Obj0203c108*,char*);
@@ -44,7 +44,7 @@ void ResetEntryList0205d6a0(Entry_0205d6a0*,int);
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 extern "C" {
 void func_02012fe4();
-void* _Z16GetStoredWorkPtrv(GlobalRoot*);
+void* _Z31GetStoredWorkPtr_ov000_02174504v(GlobalRoot*);
 int func_ov000_0217c2a0(void*);int func_ov000_0217aa78(void*,int,int);
 void func_ov000_0217c32c(void*);void func_ov000_02171c04(void*);
 }
@@ -52,19 +52,19 @@ void func_ov000_0217c32c(void*);void func_ov000_02171c04(void*);
 // USA: func_ov000_0217ae90
 extern "C" ARM int func_ov000_0217ae90(Root* self)
 {
-    Unit* unit=(Unit*)GetCombatantWithFlag0x100(GameState::GetInstance(),self->member);
+    Unit* unit=(Unit*)GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(),self->member);
     int state=0;
-    if(unit)state=GetFieldAt0x150((unsigned char*)unit);
+    if(unit)state=GetFieldAt0x150_02053c6c((unsigned char*)unit);
     func_02012fe4();
     CommandState* command=&self->command;
     command->mode=GetActiveScaledSum0205d794(self->active);
     command->kind=0;
     data_ov000_02184294.root->flags|=0x100;
-    bool flag=TestFlag0SetAndFlag1Clear(data_02114e30,0x601);
+    bool flag=TestFlag0SetAndFlag1Clear_02012444(data_02114e30,0x601);
     bool active=flag | IsActiveElementFlag2Set0205da38((Obj_0205da38*)self->active,20);
     if(active){
         self->flag=0;
-        data_ov000_02184294.work=_Z16GetStoredWorkPtrv(data_ov000_02184294.root);
+        data_ov000_02184294.work=_Z31GetStoredWorkPtr_ov000_02174504v(data_ov000_02184294.root);
         switch(command->mode){
         case 0:
             self->saved=self->command.commands[self->command.index];

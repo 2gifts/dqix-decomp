@@ -11,13 +11,13 @@ extern "C" int func_020aaf84(void* buf, int a, int b, int c);
 extern "C" void* func_0205ec34();
 extern "C" void func_020a9a50(void* ctx, char* dst, int flag);
 void CopyBlobIntoBattleStruct020a9ba4(void* blob);
-void LoadBattleRegion0x5cdc(unsigned char* p);
+void LoadBattleRegion0x5cdc_020a9af8(unsigned char* p);
 extern "C" void func_020a9b2c(void* p);
-void ClearAllTreasureMapUnknownBits(void* p);
-void* GetField0x74deForValidIndex(char* p, unsigned int index);
+void ClearAllTreasureMapUnknownBits_020116c8(void* p);
+void* GetField0x74deForValidIndex_020120a0(char* p, unsigned int index);
 
 struct StateBits5ccc_11544;
-void SetFlag0x5cccBit0(struct StateBits5ccc_11544* p);
+void SetFlag0x5cccBit0_02011544(struct StateBits5ccc_11544* p);
 
 // USA: func_020abd20
 extern "C" ARM int func_020abd20() {
@@ -27,7 +27,7 @@ extern "C" ARM int func_020abd20() {
     ((unsigned char*)gs)[0x5cc8] = 0;
     char buf[8];
     if (func_020aaf84(buf, 0, 0, 1) == 0) {
-        SetFlag0x5cccBit0((struct StateBits5ccc_11544*)gs);
+        SetFlag0x5cccBit0_02011544((struct StateBits5ccc_11544*)gs);
         return 0;
     }
     {
@@ -37,7 +37,7 @@ extern "C" ARM int func_020abd20() {
         func_020a9a50(base + 0x2cac, (char*)func_0205ec34(), 1);
         memcpy(((unsigned char*)GameState::GetInstance()) + 0x5e6c, base + 0x6c3c, 0x110);
         CopyBlobIntoBattleStruct020a9ba4(base + 0x5a04);
-        LoadBattleRegion0x5cdc(base + 0x33c0);
+        LoadBattleRegion0x5cdc_020a9af8(base + 0x33c0);
         func_020a9b2c(base + 0x3ec4);
         unsigned char* sub = base + 4;
         *(unsigned short*)((zone + 0x2700) + 0x86) = *(unsigned short*)(sub + 0x2c5c);
@@ -51,8 +51,8 @@ extern "C" ARM int func_020abd20() {
         unsigned char* z1840 = zone + 0x1840;
         *(unsigned int*)(z1840 + 0xb48) = *(unsigned int*)(sub + 0x2c80);
         *(unsigned int*)(z1840 + 0xb4c) = *(unsigned int*)(sub + 0x2c84);
-        ClearAllTreasureMapUnknownBits(gs);
-        memcpy(GetField0x74deForValidIndex((char*)gs, 0), base + 0x2c54, 8);
+        ClearAllTreasureMapUnknownBits_020116c8(gs);
+        memcpy(GetField0x74deForValidIndex_020120a0((char*)gs, 0), base + 0x2c54, 8);
         BackgroundLoader::RemoveLockGlobal();
         return 1;
     }

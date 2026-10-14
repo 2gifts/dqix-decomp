@@ -29,10 +29,10 @@ int IsIdInRange020981e4(int, int);
 unsigned short GetField6b4_021b8480(void* obj);
 extern "C" unsigned char* func_ov017_021b8478(void* obj);
 extern "C" int _Z27GetByteAtPtrOrZero_02191b58v(OvCtx0218e8c8* ov, int idx);
-unsigned int GetBitsInField8(unsigned int* obj, unsigned int mask);
-int TestBitAt0x34(unsigned char* obj, unsigned int index);
+unsigned int GetBitsInField8_0203b534(unsigned int* obj, unsigned int mask);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
 extern "C" void func_ov017_0218eafc(OvCtx0218e8c8* ov, int idx);
-int CheckFlag0x1ceBit2Set(unsigned char* obj);
+int CheckFlag0x1ceBit2Set_02039d68(unsigned char* obj);
 extern "C" int func_02032fdc(void* obj, int a, int b);
 extern "C" void func_ov017_0218dba0(int id);
 
@@ -65,17 +65,17 @@ extern "C" ARM void func_ov017_0218e8c8(OvCtx0218e8c8* ov, int id, int mode) {
         }
 
         int skip = 0;
-        GameObject* c = GetCombatantWithFlag0x100(gs, i);
+        GameObject* c = GetCombatantWithFlag0x100_0200ff1c(gs, i);
         GameObject* obj = gs->GetGameObjectByIndex(i * 0xc + 0x14);
         if (c == NULL) continue;
 
-        if (GetBitsInField8((unsigned int*)ov, 2) == 0 && c->obj3D_.GetFlag(0x800000) == 0) {
+        if (GetBitsInField8_0203b534((unsigned int*)ov, 2) == 0 && c->obj3D_.GetFlag(0x800000) == 0) {
             if (id != c->obj3D_.GetField06()) continue;
-        } else if (GetBitsInField8((unsigned int*)ov, 4) != 0) {
+        } else if (GetBitsInField8_0203b534((unsigned int*)ov, 4) != 0) {
             if (id != c->obj3D_.GetField06()) continue;
         }
 
-        if (mask != NULL && TestBitAt0x34(mask, (unsigned char)i) == 0) continue;
+        if (mask != NULL && TestBitAt0x34_020a35e0(mask, (unsigned char)i) == 0) continue;
 
         if (inRange && obj != NULL) {
             if (obj->obj3D_.unknown_2_ == 0x2347 || obj->obj3D_.unknown_2_ == 0x2348 ||
@@ -89,7 +89,7 @@ extern "C" ARM void func_ov017_0218e8c8(OvCtx0218e8c8* ov, int id, int mode) {
     }
 
     GameObject* member = gs->GetPartyMemberByIndex(0xce);
-    if (member != NULL && !CheckFlag0x1ceBit2Set((unsigned char*)member) && func_02032fdc(member, 1, 0)) {
+    if (member != NULL && !CheckFlag0x1ceBit2Set_02039d68((unsigned char*)member) && func_02032fdc(member, 1, 0)) {
         func_ov017_0218dba0(0xce);
     }
 }

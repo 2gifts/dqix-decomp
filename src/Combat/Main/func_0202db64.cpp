@@ -15,9 +15,9 @@ struct Command0202db64 {
 struct Ctx020d507c;
 extern State0202db64 data_021015a0;
 extern Command0202db64 data_02101640;
-int GetOwnerDataFortuneValue();
+int GetOwnerDataFortuneValue_020d4b58();
 int IssueBattleCommandSlot7(int, Ctx020d507c*);
-void SetField0x48UnlessState9Or10(int);
+void SetField0x48UnlessState9Or10_0202c848(int);
 void CheckField2ThenSubmitOrError0202c864(unsigned short*);
 // USA: func_0202db64
 extern "C" ARM int func_0202db64(int mode, int first, int second) {
@@ -27,7 +27,7 @@ extern "C" ARM int func_0202db64(int mode, int first, int second) {
     data_021015a0.state = 3;
     data_02101640.field_0xc = first;
     data_02101640.field_0x32 = second;
-    data_02101640.fortune = GetOwnerDataFortuneValue();
+    data_02101640.fortune = GetOwnerDataFortuneValue_020d4b58();
     data_02101640.field_0x34 = 0x1d4;
     data_02101640.field_0x36 = 0x74;
     data_02101640.field_0x10 = 3;
@@ -39,7 +39,7 @@ extern "C" ARM int func_0202db64(int mode, int first, int second) {
         data_021015a0.state = 3;
         int result = IssueBattleCommandSlot7((int)CheckField2ThenSubmitOrError0202c864, (Ctx020d507c*)&data_02101640);
         if (result == 2) return 1;
-        SetField0x48UnlessState9Or10(result);
+        SetField0x48UnlessState9Or10_0202c848(result);
         data_021015a0.state = 9;
         return 0;
     }

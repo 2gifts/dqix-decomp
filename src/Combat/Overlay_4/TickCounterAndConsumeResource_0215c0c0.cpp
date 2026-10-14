@@ -3,7 +3,7 @@
 
 int DispatchNodeIfType7_02156e2c(void* a, int key);
 void* GetEntryFor_021570a4(void* obj, int index);
-void* GetPtrField0x2a04(GameState* battleStruct);
+void* GetPtrField0x2a04_02010828(GameState* battleStruct);
 extern "C" void func_ov011_021848a0(void* obj, int val);
 
 struct Struct021707d8_0215c0c0 { char pad[0x8]; unsigned char* ptr; };
@@ -18,7 +18,7 @@ extern "C" ARM int func_ov004_0215c0c0(void* obj) {
     if (code < 0) return 0;
     void* entry = GetEntryFor_021570a4(obj, code & 0xff);
     if (!entry) return 0;
-    struct Field2a04_0215c0c0* fld = (struct Field2a04_0215c0c0*)GetPtrField0x2a04(GameState::GetInstance());
+    struct Field2a04_0215c0c0* fld = (struct Field2a04_0215c0c0*)GetPtrField0x2a04_02010828(GameState::GetInstance());
     struct Combined0215c0c0* c = (struct Combined0215c0c0*)((char*)entry + 4);
     unsigned char rate = data_ov004_021707d8.ptr[0x11];
     unsigned int restVal = c->rest;

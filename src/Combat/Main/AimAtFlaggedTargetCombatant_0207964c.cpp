@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-int GetField0x17dBits4To5IfFlag8(unsigned char* obj);
+int GetField0x17dBits4To5IfFlag8_020795cc(unsigned char* obj);
 struct Vector3i;
 int fix32ReduceAngle0To2Pi(int arg);
 struct Obj02033874;
@@ -20,7 +20,7 @@ struct CombatantFlagObj0207964c {
 extern "C" ARM void func_0207964c(unsigned char* self) {
     if (self[0x17d] & 8) {
         GameState* battleStruct = GameState::GetInstance();
-        int field = GetField0x17dBits4To5IfFlag8(self);
+        int field = GetField0x17dBits4To5IfFlag8_020795cc(self);
         unsigned char* combatant = (unsigned char*)battleStruct->GetPartyMemberByIndex(field);
         if (combatant != NULL) {
             if (!(((struct CombatantFlagObj0207964c*)combatant)->flags2 & 1)) {

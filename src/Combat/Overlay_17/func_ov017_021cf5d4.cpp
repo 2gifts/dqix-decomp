@@ -3,11 +3,11 @@
 #include "GameState/GameState.h"
 
 struct S02046b1c;
-int GetField0x3acValue(GameState* battleStruct);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 int GetField0x0List02046b1c(struct S02046b1c* p);
 void InitStruct02070378(char*);
 struct FieldFlagBlock;
-void ResetAndEnableFieldFlag(struct FieldFlagBlock* block);
+void ResetAndEnableFieldFlag_02011b24(struct FieldFlagBlock* block);
 
 struct Evt021cf5d4 {
     unsigned char pad0[4];
@@ -29,7 +29,7 @@ extern "C" ARM void func_ov017_021cf5d4(void* unused0, struct Evt021cf5d4* evt, 
 #else
  enum {regionalOffset0=0x6fc};
 #endif
-    int v = GetField0x3acValue(battle);
+    int v = GetField0x3acValue_020100a8(battle);
     if (evt->field6 != v) {
         return;
     }
@@ -42,7 +42,7 @@ extern "C" ARM void func_ov017_021cf5d4(void* unused0, struct Evt021cf5d4* evt, 
     buf.field0 = evt->field4;
     buf.field2 = 1;
     if (evt->field7 != 0) {
-        ResetAndEnableFieldFlag((struct FieldFlagBlock*)battle);
+        ResetAndEnableFieldFlag_02011b24((struct FieldFlagBlock*)battle);
     }
-    CallFunc0200fbb4AtField0x3f8(battle, &buf);
+    CallFunc0200fbb4AtField0x3f8_0200fcfc(battle, &buf);
 }

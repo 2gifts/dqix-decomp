@@ -1,11 +1,11 @@
 #include <globaldefs.h>
 
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 // USA: func_ov017_021cdb00  (semantic: EnqueueEventTag145_021cdb00)
 extern "C" ARM void func_ov017_021cdb00(unsigned char a0, unsigned short a1, int a2, unsigned char a3) {
-    void* p = GetData02100044();
+    void* p = GetData02100044_0202ae24();
     unsigned char buf[0x14];
     buf[0] = 0x91;
     unsigned char* q = buf + 4;

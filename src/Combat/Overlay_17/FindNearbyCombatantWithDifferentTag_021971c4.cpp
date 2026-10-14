@@ -29,7 +29,7 @@ extern "C" ARM unsigned short func_ov017_021971c4(unsigned char* ov) {
     if (combatant == NULL) {
         return 0;
     }
-    struct Party021971c4* party = (struct Party021971c4*)GetPtrField0x2a04(battleStruct);
+    struct Party021971c4* party = (struct Party021971c4*)GetPtrField0x2a04_02010828(battleStruct);
     int flags[4];
     unsigned short result = 0;
     __clear(flags, 0x10);
@@ -42,7 +42,7 @@ extern "C" ARM unsigned short func_ov017_021971c4(unsigned char* ov) {
         if (flags[j] != 0) {
             continue;
         }
-        GameObject* other = GetCombatantWithFlag0x100(battleStruct, j);
+        GameObject* other = GetCombatantWithFlag0x100_0200ff1c(battleStruct, j);
         if (other == NULL) {
             continue;
         }

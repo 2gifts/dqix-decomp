@@ -14,7 +14,7 @@ extern "C" void func_ov023_021dd344(void* obj);
 
 #if defined(jpn)
 extern "C" void func_02041f50(const char*, char*);
-int StringLength(const char*);
+int StringLength_020d2ff0(const char*);
 extern "C" int func_02050678(void*, int, int, const char*, int, int, void*, void*);
 #define LOG_OFFSET 0x6d8
 #define FLAGS_OFFSET 0x6f0
@@ -43,7 +43,7 @@ extern "C" ARM void func_ov023_021dde00(void* objRaw) {
                 char converted[0x40];
                 __clear(converted, 0x40);
                 func_02041f50(*(const char**)((char*)info + 4), converted);
-                short len = StringLength(converted);
+                short len = StringLength_020d2ff0(converted);
                 short half = len >> 1;
                 short measured = half * 10;
                 int arg1 = ((0x70 - measured) << 15) >> 16;

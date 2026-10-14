@@ -4,23 +4,23 @@ struct Pair020bf658 { unsigned int a; unsigned int b; };
 
 struct Obj020bf658 {
     char pad0[0xc0];
-    unsigned char state;                 // 0xc0
+    unsigned char state;
     char pad1[0xc4 - 0xc1];
-    unsigned short field0xc4;            // 0xc4
+    unsigned short field0xc4;
     char pad2[0x110 - 0xc6];
-    unsigned int flags0x110;             // 0x110
+    unsigned int flags0x110;
     char pad3[0x13c - 0x114];
-    int (*fn0x13c)(int, Pair020bf658*, Pair020bf658*, int); // 0x13c
-    int field0x140;                      // 0x140
-    int field0x144;                      // 0x144
-    int field0x148;                      // 0x148
+    int (*fn0x13c)(int, Pair020bf658*, Pair020bf658*, int);
+    int field0x140;
+    int field0x144;
+    int field0x148;
     char pad4[0x160 - 0x14c];
-    int field0x160;                      // 0x160
-    int (*fn0x164)(void*, unsigned int); // 0x164
-    void (*fn0x168)(void*);              // 0x168
+    int field0x160;
+    int (*fn0x164)(void*, unsigned int);
+    void (*fn0x168)(void*);
 };
 
-void* GetOffsetEntry0x24(int index);
+void* GetOffsetEntry0x24_020bd5e4(int index);
 void InitActionHandlers020bffc4(void* obj, unsigned int id);
 
 // USA: func_020bf658
@@ -39,7 +39,7 @@ ARM void UpdateAndDispatch020bf658(struct Obj020bf658* obj) {
     p2.b = 0;
     if (!obj->fn0x13c(0, &p1, &p2, obj->field0x140)) return;
 
-    entry = (unsigned int*)GetOffsetEntry0x24(p2.a);
+    entry = (unsigned int*)GetOffsetEntry0x24_020bd5e4(p2.a);
     if (entry == 0) return;
 
     oldC0 = obj->state;

@@ -13,11 +13,11 @@ extern "C" void func_0205bb04(void* s, int n);
 
 int GetGlobalField0x1c020421a0();
 int GetScaledSumIfActive0205cecc(void* s);
-int CallFunc0205c570AtField0x1c(void* obj);
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+int CallFunc0205c570AtField0x1c_0205cb64(void* obj);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 void ReinitController02043204(char* obj);
 void ResetGlobalObjAndInitSelfPointer0205ce94(unsigned char* p);
-void InvalidateBattlerField0x18(unsigned char* obj);
+void InvalidateBattlerField0x18_0201250c(unsigned char* obj);
 
 struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
@@ -62,9 +62,9 @@ extern "C" ARM void func_ov013_02186590(void* obj) {
     if (o[R(0x5ca,0x63e)] != 1) return;
 
     int scaled = GetScaledSumIfActive0205cecc(o + R(0x3d0,0x3d4));
-    if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601) != 0) {
-        scaled = CallFunc0205c570AtField0x1c(o + R(0x3d0,0x3d4));
-    } else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2) != 0) {
+    if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x601) != 0) {
+        scaled = CallFunc0205c570AtField0x1c_0205cb64(o + R(0x3d0,0x3d4));
+    } else if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 2) != 0) {
         scaled = -2;
         oneFlag = 0;
     }
@@ -98,7 +98,7 @@ caseReset:
 caseInvalidate:
     o[R(0x5c8,0x63c)] = 1;
     o[R(0x5ca,0x63e)] = 0;
-    InvalidateBattlerField0x18((unsigned char*)&data_02114e30);
+    InvalidateBattlerField0x18_0201250c((unsigned char*)&data_02114e30);
     if (oneFlag != 0) {
         DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
     }

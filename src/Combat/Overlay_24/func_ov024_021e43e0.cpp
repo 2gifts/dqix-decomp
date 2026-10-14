@@ -27,7 +27,7 @@ int CheckField0x14Bit0Clear02088840(unsigned char* obj);
 extern "C" int func_ov024_021e9198(struct Obj_021e43e0* ctx, int id, short code, int mode);
 int IsFlagAllowedMask_021eb4b0(int a0, int flags, int mask);
 extern "C" void func_ov000_02159eac(void* a0, void* buf, int a2);
-void SetFlag0x40AndBytes(unsigned char* obj);
+void SetFlag0x40AndBytes_02088854(unsigned char* obj);
 struct Obj_021e8ca0;
 void* AddEntryToListAndIncCount_021e8ca0(struct Obj_021e8ca0* obj, int id);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, int e, int f, int g);
@@ -61,7 +61,7 @@ extern "C" ARM unsigned long long func_ov024_021e43e0(struct Obj_021e43e0* obj, 
 		if (IsFlagAllowedMask_021eb4b0((int)obj, ((struct Stats_021e43e0*)c->currentStats_)->flags, 0x40)) {
 			func_ov000_02159eac(obj->field0x10, &local, 0x2b);
 		}
-		SetFlag0x40AndBytes((unsigned char*)c->currentStats_);
+		SetFlag0x40AndBytes_02088854((unsigned char*)c->currentStats_);
 		((struct Stats_021e43e0*)c->currentStats_)->code = (unsigned char)code;
 	}
 	void* entry = AddEntryToListAndIncCount_021e8ca0((struct Obj_021e8ca0*)obj, msg);

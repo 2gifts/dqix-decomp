@@ -5,12 +5,12 @@ typedef union Matrix4x3 {
     int a[12];
 } Matrix4x3;
 Matrix4x3 RotationMatrixZ(int angle);
-void IssueCommand0x19(int cmd);
+void IssueCommand0x19_020c51a4(int cmd);
 
 // USA: func_02031278
 extern "C" ARM void func_02031278(void* p) {
     Matrix4x3 rot;
     if (p == NULL) return;
     rot = RotationMatrixZ((int)p);
-    IssueCommand0x19((int)&rot);
+    IssueCommand0x19_020c51a4((int)&rot);
 }

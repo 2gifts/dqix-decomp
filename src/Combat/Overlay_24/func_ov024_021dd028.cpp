@@ -10,7 +10,7 @@ struct Wrapper_021ea78c;
 int CheckCombatantInTable_021ea78c(Wrapper_021ea78c*, int, Obj3_021ea78c*);
 extern "C" void func_ov000_02159eac(void*,void*,int);
 extern "C" void func_ov000_0215a004(void*,int,int,int,void*,Params021dd028*,int,int);
-void ClearFlag0x400000AndBytes(unsigned char*);
+void ClearFlag0x400000AndBytes_02088b34(unsigned char*);
 unsigned short SelectByIndexRange0to3_021da644(int,int,int);
 extern "C" void* func_ov000_0215e958(void*);
 extern "C" void func_ov024_021e8bf0(Obj021dd028*,void*,unsigned short*);
@@ -39,7 +39,7 @@ extern "C" ARM void* func_ov024_021dd028(Obj021dd028* obj,int sourceID,int id,Pa
             func_ov000_02159eac(obj->context,&effects,0x29);
             func_ov000_0215a004(obj->context,sourceID,id,GetHP(c)-1,&effects,params,obj->action->flag!=0,0);
             func_ov000_02159eac(obj->context,&effects,0xfe);
-            ClearFlag0x400000AndBytes((unsigned char*)c->currentStats_);
+            ClearFlag0x400000AndBytes_02088b34((unsigned char*)c->currentStats_);
             selection=0xc8;
         }else{
             func_ov000_0215a004(obj->context,sourceID,id,0xffff,&effects,params,obj->action->flag!=0,8);

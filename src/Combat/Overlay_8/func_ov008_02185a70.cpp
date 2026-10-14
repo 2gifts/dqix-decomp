@@ -132,7 +132,7 @@ struct Manager02187664;
 struct Struct_0205d81c;
 
 MessageSystem* GetGlobalField0x1c020421a0();
-int TestFlag0SetAndFlag1Clear(unsigned short* pad, int buttons);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* pad, int buttons);
 void ResetEntryList0205d6a0(Entry_0205d6a0* window, int value);
 void SetMainBrightness(GameResources* resources, int screen, int brightness);
 void InitConfig02187664(Manager02187664* self, int records);
@@ -160,7 +160,7 @@ extern "C" ARM void func_ov008_02185a70(BattleRecords* self, unsigned int ticks)
     MessageSystem* messages = GetGlobalField0x1c020421a0();
     GameResources* resources = func_ov017_0218b5b0();
     BackgroundLoader::GetInstance();
-    FontBankLoader* music = GetGlobal02109400();
+    FontBankLoader* music = GetGlobal02109400_02094a00();
     unsigned char step = self->step_;
     if (step >= 2)
         messages->unk_19ae = 0;
@@ -170,7 +170,7 @@ extern "C" ARM void func_ov008_02185a70(BattleRecords* self, unsigned int ticks)
             return;
         self->step_++;
     }
-    if (step == 1 && (TestFlag0SetAndFlag1Clear(data_02114e30, 0xff3) || data_02114e54.touching_))
+    if (step == 1 && (TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0xff3) || data_02114e54.touching_))
         self->step_++;
     if (step == 2)
     {

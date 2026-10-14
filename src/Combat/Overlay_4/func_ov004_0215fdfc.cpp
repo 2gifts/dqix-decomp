@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 #include "Combat/Main/BattleList.h"
 
-unsigned char CopyOutRegion0x571d(char* obj, void* dst);
+unsigned char CopyOutRegion0x571d_020114ec(char* obj, void* dst);
 int CheckField0x56bLowNibble(struct Obj02061bd8* obj);
 unsigned short GetFlagBitFromField150_0215eb20(void* obj, int bit);
 struct Obj0205eaa0;
@@ -88,17 +88,17 @@ extern "C" ARM int func_ov004_0215fdfc(void* a) {
     int n;
     unsigned char order[4];
     gs = GameState::GetInstance();
-    n = CopyOutRegion0x571d((char*)gs, order);
+    n = CopyOutRegion0x571d_020114ec((char*)gs, order);
     target = data_ov004_021707e8.combatant;
     none = 0;
     saved = data_ov004_021707e8.index;
-    if (GetCombatantWithFlag0x100(gs, target) == NULL) none = 1;
+    if (GetCombatantWithFlag0x100_0200ff1c(gs, target) == NULL) none = 1;
     if (!none) {
         data_ov004_021707e8.index = data_ov004_021707e8.index + 1;
         data_ov004_021707e8.index = (unsigned)data_ov004_021707e8.index % n;
     }
     data_ov004_021707e8.combatant = order[data_ov004_021707e8.index];
-    c = GetCombatantWithFlag0x100(gs, data_ov004_021707e8.combatant);
+    c = GetCombatantWithFlag0x100_0200ff1c(gs, data_ov004_021707e8.combatant);
     if (data_ov004_021707e8.combatant == target && !none) {
         c = NULL;
         while (c == NULL) {
@@ -113,7 +113,7 @@ extern "C" ARM int func_ov004_0215fdfc(void* a) {
                 if (nd) nd->flags |= 0x78;
                 return 0;
             }
-            c = GetCombatantWithFlag0x100(gs, data_ov004_021707e8.combatant);
+            c = GetCombatantWithFlag0x100_0200ff1c(gs, data_ov004_021707e8.combatant);
             if (c != NULL) break;
         }
     }
@@ -130,7 +130,7 @@ extern "C" ARM int func_ov004_0215fdfc(void* a) {
                 if (nd) nd->flags |= 0x78;
                 return 0;
             }
-            c = GetCombatantWithFlag0x100(gs, data_ov004_021707e8.combatant);
+            c = GetCombatantWithFlag0x100_0200ff1c(gs, data_ov004_021707e8.combatant);
             if (c != NULL) break;
         }
     }
@@ -146,7 +146,7 @@ extern "C" ARM int func_ov004_0215fdfc(void* a) {
                 data_ov004_021707e8.busy = 0;
                 return 0;
             }
-            c = GetCombatantWithFlag0x100(gs, data_ov004_021707e8.combatant);
+            c = GetCombatantWithFlag0x100_0200ff1c(gs, data_ov004_021707e8.combatant);
             if (c == NULL) {
                 data_ov004_021707e8.index = saved;
                 data_ov004_021707e8.combatant = target;

@@ -7,7 +7,7 @@
 struct Struct020dfc40;
 void ResetStruct020dfc40(Struct020dfc40* texts);
 extern "C" void func_020dfec0(void* texts, SafeAllocator* allocator, void* file, unsigned int size);
-void SetWord0x18ClearByte0x1f(unsigned char* graphics, int value);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char* graphics, int value);
 extern "C" void func_0204b5b4(void* graphics, int priority);
 struct Obj0204b5e8;
 void DispatchViaTable0204b5e8(Obj0204b5e8* graphics, int a, int b);
@@ -113,7 +113,7 @@ extern "C" ARM void func_ov017_021999fc(FieldMenu021999fc* self) {
         for (int i = 0; i < 2; i++)
         {
             background = &self->backgrounds_[i];
-            SetWord0x18ClearByte0x1f((unsigned char*)background, 0);
+            SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)background, 0);
             background->unk_1c_0_ = 0;
             background->unk_1c_4_ = nibbles.values[i];
             func_0204b5b4(background, priorities.values[i]);

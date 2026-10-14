@@ -12,13 +12,13 @@ struct FlagWord020466f4;
 struct Actor0209c678;
 
 char *GetGlobalField0x1c020421a0();
-int GetWord0x0(int *p);
+int GetWord0x0_0200fb8c(int *p);
 void *GetDataPtr02114e04_020d6c00();
-void SetElementFieldC2(struct Struct_0205d81c *s, int key, int value);
+void SetElementFieldC2_0205deb4(struct Struct_0205d81c *s, int key, int value);
 extern "C" void *func_0202ae18();
-int CheckField0NonZero(int *p);
+int CheckField0NonZero_0202b7d8(int *p);
 void SetElementFlag0x20ByKey0205def8(struct Struct_0205def8 *s, int clear, int key);
-void OrBitsIntoField0(unsigned int *p, unsigned int mask);
+void OrBitsIntoField0_020466e4(unsigned int *p, unsigned int mask);
 struct Struct0205a198;
 void Init0205a198(Struct0205a198*);
 struct ClearTarget0205a234;
@@ -29,7 +29,7 @@ extern "C" void func_0205a528(void *renderer, void *file, unsigned int size, Saf
 void ClearStruct020a9ea4(struct Struct020a9ea4 *p);
 extern "C" int func_020aad1c(void *loader, void *name, int a, int b);
 void ClearFlags020466f4(FlagWord020466f4 *field, unsigned int bits);
-void SetByte0x4(char *gs, unsigned char value);
+void SetByte0x4_0200fb94(char *gs, unsigned char value);
 void DispatchContextByState0209c678(Actor0209c678 *actor, int state);
 void SetFieldFlag17188_0218d258(void *obj);
 
@@ -49,7 +49,7 @@ extern "C" ARM void func_ov002_02169efc(char *self) {
     int recSize;
     void *name;
     char *g                  = GetGlobalField0x1c020421a0();
-    GameResources *res       = (GameResources *) GetWord0x0((int *) GameState::GetInstance());
+    GameResources *res       = (GameResources *) GetWord0x0_0200fb8c((int *) GameState::GetInstance());
     void *flags              = GetDataPtr02114e04_020d6c00();
     BackgroundLoader *loader = BackgroundLoader::GetInstance();
     int state                = *(int *) (self + 0x1bc0);
@@ -59,9 +59,9 @@ extern "C" ARM void func_ov002_02169efc(char *self) {
         *(int *) (self + 0x1bb8)           = 0x26;
         *(int *) (self + 0x1bbc)           = 0x24;
         *(unsigned char *) (self + 0x1c2e) = 1;
-        SetElementFieldC2((struct Struct_0205d81c *) OBJ, 0x15, 1);
-        SetElementFieldC2((struct Struct_0205d81c *) OBJ, 0x16, 1);
-        if (CheckField0NonZero((int *) func_0202ae18())) {
+        SetElementFieldC2_0205deb4((struct Struct_0205d81c *) OBJ, 0x15, 1);
+        SetElementFieldC2_0205deb4((struct Struct_0205d81c *) OBJ, 0x16, 1);
+        if (CheckField0NonZero_0202b7d8((int *) func_0202ae18())) {
             *(short *) (self + 0x1c28)         = 0x125f;
             *(int *) (self + 0x1bbc)           = 0x15;
             *(unsigned char *) (self + 0x1c2e) = 0;
@@ -75,7 +75,7 @@ extern "C" ARM void func_ov002_02169efc(char *self) {
         *(int *) (self + 0x1bbc)           = 0x24;
         *(unsigned char *) (self + 0x1c2e) = 0;
         *(int *) (self + 0x1bc0)           = 0;
-        OrBitsIntoField0((unsigned int *) flags, 0x80);
+        OrBitsIntoField0_020466e4((unsigned int *) flags, 0x80);
         *(int *) (self + 0x1bc4) = loader->QueueLoadFile(data_ov002_0216d384, 0);
     } else if (state == 2) {
         if (loader->GetTaskStatus(*(int *) (self + 0x1bc4)) == 0) {
@@ -128,7 +128,7 @@ extern "C" ARM void func_ov002_02169efc(char *self) {
         *(int *) (self + 0x1bc0)           = 0;
         ClearFlags020466f4((FlagWord020466f4 *) flags, 0x80);
         *(unsigned int *) (self + 0x247c) &= ~8;
-        SetByte0x4((char *) GameState::GetInstance(), 0);
+        SetByte0x4_0200fb94((char *) GameState::GetInstance(), 0);
     } else if (state == 3) {
         *(unsigned char *) (g + 0x19af) = 0;
         DispatchContextByState0209c678((Actor0209c678 *) &data_02109bf4, 0x3c);

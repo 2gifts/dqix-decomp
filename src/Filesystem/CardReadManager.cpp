@@ -23,22 +23,18 @@ void SendTaskToReadContext(CardReadManager::ReadProc);
 
 extern "C"
 {
-    // Gets the base of the tightly coupled memory region
-    extern "C" unsigned int _Z20GetDataTcmRegionBasev();
+    extern "C" unsigned int _Z29GetDataTcmRegionBase_020c89e4v();
 
-    // Seems to set up DMA to repeatedly read from the read parameter into write
-    // pointer, incrementing the write pointer but not the read pointer.
     extern "C" void _Z25StartDmaWithFlush020ca8e8jjjj(unsigned int dmaChannel, const void* readFrom, void* writeTo, unsigned int length);
-    
-    extern "C" void _Z23RegisterType0x11Handlerv();
 
-    extern "C" void _Z24SyncIfBufferValueChangedj(unsigned int);
+    extern "C" void _Z32RegisterType0x11Handler_020d1118v();
+
+    extern "C" void _Z33SyncIfBufferValueChanged_020d1234j(unsigned int);
 }
 
 void WaitForReadManagerIdle_Internal();
 Struct_02111f20::LowLevelReadProc GetLowLevelCartridgeReadProc();
 
-// Returns true if there's more to be copied after
 extern "C" bool TransferScratchBuffer(Struct_02111f20* input)
 {
     CardReadManager* ptr = &data_021118e0;
@@ -50,7 +46,7 @@ extern "C" bool TransferScratchBuffer(Struct_02111f20* input)
         unsigned int usefulLength = 0x200 - offsetFromAlignment;
         if (usefulLength > ptr->writeLength)
             usefulLength = ptr->writeLength;
-        
+
         VectorizedInvertedMemcpy(input->scratchBuffer + offsetFromAlignment,
             ptr->writeDst, usefulLength);
         ptr->cartridgeReadOffset += usefulLength;
@@ -60,18 +56,11 @@ extern "C" bool TransferScratchBuffer(Struct_02111f20* input)
     return ptr->writeLength != 0;
 }
 
-// Notably this is not a uint64 parameter. This way you can write
-// (0x11223344, 0x55667788) and it will write the eight bytes
-// (11, 22, 33, 44, 55, 66, 77, 88)
 void SendGamecardBusCommand(unsigned int firstWord, unsigned int secondWord)
 {
     volatile unsigned int* control = (unsigned int*)ADDR_GAMECARD_BUS_ROMCTRL;
     while (*control & ROMCTRL_FLAG_BUSY) {}
 
-    // Upper byte of "AUXSPICNT - Gamecard ROM and SPI Control (R/W)"
-    // Set byte 15 (enable NDS slot), set byte 14 (enable transfer ready IRQ)
-    // and clear byte 13 (0 meaning parallel NDS slot mode)
-    // (Note bytes 12-8 are unused)
     *(unsigned char*)0x40001a1 = 0xC0;
 
     GAMECARD_BUS_COMMAND_BYTE(0) = firstWord >> 24;
@@ -104,7 +93,7 @@ void DMAChainSegmentInterruptHandler()
     ResetDMAChannel(data_021118e0.dmaChannel);
 
     CardReadManager* manager = &data_021118e0;
-    
+
     manager->cartridgeReadOffset += 512;
     manager->writeDst += 512;
     manager->writeLength -= 512;
@@ -117,7 +106,7 @@ void DMAChainSegmentInterruptHandler()
         AcknowledgeSpecificInterrupts(IRQ_MASK_GAMECARD_DATA_TRANSFER_DONE);
         CardReadManager* readManager = &data_021118e0;
         unsigned int romChipID = SetupNormalGamecardBusCommandMode();
-        _Z24SyncIfBufferValueChangedj(romChipID);
+        _Z33SyncIfBufferValueChanged_020d1234j(romChipID);
 
         readManager->pSharedData->unknown_0 = 0;
         CardReadManager::CompletionCallback cleanProc = readManager->onComplete;
@@ -145,30 +134,29 @@ extern "C" bool TryReadViaDMA(Struct_02111f20* handler)
 {
     CardReadManager* readManager = &data_021118e0;
     unsigned int length = readManager->writeLength;
-    
+
     bool canDoDMARead = false;
     bool readAlignedToCartridgeSegments = false;
-    bool destinationIsSuitableMemoryType = false; // i.e. not DTCM or ITCM
-    bool destinationIsCacheAligned = false; 
-    
+    bool destinationIsSuitableMemoryType = false;
+    bool destinationIsCacheAligned = false;
+
     unsigned int destination = (unsigned int)readManager->writeDst;
     unsigned int alignmentMod32 = (unsigned int)destination & 0x1f;
-    
+
     if (alignmentMod32 == 0 && ((readManager->dmaChannel <= 3)))
         destinationIsCacheAligned = true;
-    
+
     if (destinationIsCacheAligned)
     {
-        unsigned int dtcmBase = _Z20GetDataTcmRegionBasev();
+        unsigned int dtcmBase = _Z29GetDataTcmRegionBase_020c89e4v();
         bool isDTCM = true;
         bool isITCM = false;
         if (destination + length > ADDR_ITCM_START && destination < ADDR_ITCM_END)
             isITCM = true;
-        
-        // 0x4000 = 16kb is the size of data tightly coupled memory
+
         if (!isITCM && (dtcmBase >= destination + length || dtcmBase + 0x4000 <= destination))
             isDTCM = false;
-        
+
         if (!isDTCM)
             destinationIsSuitableMemoryType = true;
     }
@@ -178,9 +166,9 @@ extern "C" bool TryReadViaDMA(Struct_02111f20* handler)
 
     if (readAlignedToCartridgeSegments && length != 0)
         canDoDMARead = true;
-    
+
     handler->control_4 = (data_020f22cc->gamecardBusControlNormalSettings & ~0x07000000) | 0xa1000000;
-    
+
     if (canDoDMARead)
     {
         int oldState = DisableIRQInterrupts();
@@ -223,8 +211,6 @@ extern "C" void ReadBlocksFromCartridge(Struct_02111f20* handler)
     {
         unsigned int alignedOffset = readManager->cartridgeReadOffset & 0xfffffe00;
         unsigned int* practicalWriteLoc;
-        // If read offset is not 512-byte aligned, write dst is not 4-byte aligned
-        // or we're loading < 512 bytes, use the scratch space in the input struct
         if (alignedOffset != readManager->cartridgeReadOffset ||
             ((unsigned int)readManager->writeDst & 3) ||
             readManager->writeLength < 0x200)
@@ -245,9 +231,6 @@ extern "C" void ReadBlocksFromCartridge(Struct_02111f20* handler)
             if (control & ROMCTRL_FLAG_WORD_READY)
             {
                 unsigned int data = *(volatile unsigned int*)ADDR_GAMECARD_RECEIVED_DATA;
-                // The gamecard bus command only allows for reading 512 bytes,
-                // so is this necessary? I guess if you try to read past the end
-                // and get garbage data?
                 if (bytesCopied < 0x200)
                 {
                     practicalWriteLoc[wordIndex] = data;
@@ -257,8 +240,6 @@ extern "C" void ReadBlocksFromCartridge(Struct_02111f20* handler)
             }
         } while (control & ROMCTRL_FLAG_BUSY);
 
-        // If we performed an aligned write, can just move on to the next
-        // aligned write
         if (practicalWriteLoc == (unsigned int*)readManager->writeDst)
         {
             unsigned int remainingLength;
@@ -278,35 +259,29 @@ extern "C" void ReadBlocksFromCartridge(Struct_02111f20* handler)
 
 unsigned int SetupNormalGamecardBusCommandMode()
 {
-    // Get ROM chip ID
     SendGamecardBusCommand(0xb8000000, 0x00000000);
     unsigned int newSettings = data_020f22cc->gamecardBusControlNormalSettings;
-    newSettings &= ~0x07000000; // clear data block size to 0 = none
-    newSettings |=  0xa7000000; // set block size to 7 = 4 bytes, block status = started/busy, release RESB?
-    newSettings &=  0xffffe000; // disable bit 14 (unknown?) and 13 (don't KEY2 encrypt)
+    newSettings &= ~0x07000000;
+    newSettings |=  0xa7000000;
+    newSettings &=  0xffffe000;
     *(volatile unsigned int*)ADDR_GAMECARD_BUS_ROMCTRL = newSettings;
     do {
     } while ((*(volatile unsigned int*)ADDR_GAMECARD_BUS_ROMCTRL & ROMCTRL_FLAG_WORD_READY) == 0);
     return *(volatile unsigned int*)ADDR_GAMECARD_RECEIVED_DATA;
 }
 
-// I don't know that this is safe per se, but in practice it wraps
-// ReadBlocksFromCartridge (the readProc) with some auxiliary stuff
 extern "C" void SafeReadBlocksFromCartridge(CardReadManager*)
 {
     Struct_02111f20* rawHandler = &data_02111f00.innerStruct;
     if (TransferScratchBuffer(rawHandler))
     {
         Struct_02111f20::LowLevelReadProc readProc = rawHandler->lowLevelReadProc;
-        // This is (usually?) ReadBlocksFromCartridge
         readProc(rawHandler);
     }
 
     CardReadManager* readManager = &data_021118e0;
     unsigned int romChipID = SetupNormalGamecardBusCommandMode();
-    // Does a few things, but in the end it resets all four DMA channels,
-    // so it's some kind of cleanup
-    _Z24SyncIfBufferValueChangedj(romChipID);
+    _Z33SyncIfBufferValueChanged_020d1234j(romChipID);
 
     readManager->pSharedData->unknown_0 = 0;
     CardReadManager::CompletionCallback callback = readManager->onComplete;
@@ -319,7 +294,7 @@ extern "C" void SafeReadBlocksFromCartridge(CardReadManager*)
     if (readManager->flags & (1 << CARTRIDGE_READ_CONTEXT_FLAG_4))
         MarkContextReadyAndSwitch(&readManager->cartridgeReadContext);
     SetIRQInterruptState(oldState);
-    
+
     if (callback != NULL)
         callback(handle);
 
@@ -385,7 +360,7 @@ void InitializeCardReading()
     data_02111f00.number = 0;
     InitializeCardReadManager();
     data_02111f00.innerStruct.lowLevelReadProc = GetLowLevelCartridgeReadProc();
-    _Z23RegisterType0x11Handlerv();
+    _Z32RegisterType0x11Handler_020d1118v();
 }
 
 void WaitForReadManagerIdle_Internal()
@@ -404,10 +379,10 @@ void IPCCommand11Proc(unsigned int command, unsigned int argument, unsigned int 
         return;
 
     CardReadManager* manager = (CardReadManager*)&data_021118e0;
-    
+
     ProcessorContext* context = manager->currentTaskExecutionContext;
     manager->flags &= ~(1 << READ_MANAGER_FLAG_AWAITING_ARM7_ACTION);
-    
+
     MarkContextReadyAndSwitch(context);
 }
 

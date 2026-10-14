@@ -6,7 +6,7 @@ enum { kMenuPointer = 0xc };
 enum { kMenuPointer = 0x14 };
 #endif
 
-extern void SetEntryHalfword0xe(void* obj, int id, int value);
+extern void SetEntryHalfword0xe_0208103c(void* obj, int id, int value);
 extern "C" void func_020813ec(void*, int);
 
 struct Obj0215f348 {
@@ -31,7 +31,7 @@ ARM void SyncEntries0215f348(struct Obj0215f348* o) {
     }
     short v1 = 5;
     for (unsigned char i = 0; i < 3; i++) {
-        SetEntryHalfword0xe(o->f14, v1, v2);
+        SetEntryHalfword0xe_0208103c(o->f14, v1, v2);
         v1 = (short)(v1 + 1);
         if (v2 >= 0) {
             v2 = (short)(v2 + 1);

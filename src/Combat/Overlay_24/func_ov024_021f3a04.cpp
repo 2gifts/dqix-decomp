@@ -3,14 +3,14 @@
 #include <Combat/Overlay_0/GetCombatantByID.h>
 
 struct CombatRecoveryState { char pad[0x2c]; short field_0x2c; };
-GameObject* GetCombatantWithFlag0x400ByID(int, int);
+GameObject* GetCombatantWithFlag0x400ByID_ov000_021536f8(int, int);
 extern "C" float func_ov024_021db358(GameObject*);
 extern "C" int func_ov000_0215eb1c(int, short*, int, int);
 extern const short data_ov024_021fee3c[8] __attribute__((aligned(4)));
 
 // USA: func_ov024_021f3a04
 extern "C" ARM int func_ov024_021f3a04(int* context, int id, void*, int* outCount, short* outTargets) {
-    GameObject* incoming = GetCombatantWithFlag0x400ByID(*context, id);
+    GameObject* incoming = GetCombatantWithFlag0x400ByID_ov000_021536f8(*context, id);
     if (!incoming) return 0;
     if (func_ov024_021db358(incoming) < 0.5f) return 0;
     short table[8];

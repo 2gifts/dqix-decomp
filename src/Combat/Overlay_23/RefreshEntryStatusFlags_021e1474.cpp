@@ -8,7 +8,7 @@ struct Element020de650;
 struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0* c, int key);
 
 extern "C" void* func_0205ec34(void);
-int TestBitInByteArray(int unused, unsigned char* arr, int index);
+int TestBitInByteArray_0206dfb0(int unused, unsigned char* arr, int index);
 
 struct FoundElem_021e1474 {
     char pad0[0xc];
@@ -51,7 +51,7 @@ ARM void RefreshEntryStatusFlags_021e1474(ObjStruct_021e1474* obj, struct Contai
         void* baseData = func_0205ec34();
         int index = bits + 0x76;
         unsigned char* arr = (unsigned char*)baseData + 0x8c;
-        if (TestBitInByteArray((int)baseData, arr, index + 0xc00)) {
+        if (TestBitInByteArray_0206dfb0((int)baseData, arr, index + 0xc00)) {
             entry->flags |= 0x2;
         }
     }

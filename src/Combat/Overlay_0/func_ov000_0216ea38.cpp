@@ -8,9 +8,9 @@ int fix32SignedAngleDistance(int,int);
 int fix32abs(int);
 void Vector3fixMultiplyScalar(const Vector3i*, int, Vector3i*);
 int IsValueInRange0216f728(unsigned short*);
-void ApplyVec3Tail(void*, int*);
-int GetField0x7c(void*);
-extern "C" void _Z33SetField0x7cClearFields0x1ec0x1eePht(unsigned char*, int);
+void ApplyVec3Tail_0202e694(void*, int*);
+int GetField0x7c_0202e88c(void*);
+extern "C" void _Z42SetField0x7cClearFields0x1ec0x1ee_0202e874Pht(unsigned char*, int);
 extern "C" {
 void Vector3fix_Subtract(const Vector3i*, const Vector3i*, Vector3i*);
 int Vector3fix_Length(const Vector3i*);
@@ -116,7 +116,7 @@ extern "C" ARM void func_ov000_0216ea38(Root0216ea38* obj) {
     if (data_ov000_02183fc8) {
         obj->position = result;
         func_0202e5d8(obj,firstAngle,desiredY,desiredZ);
-        _Z33SetField0x7cClearFields0x1ec0x1eePht((unsigned char*)obj,desiredTail);
+        _Z42SetField0x7cClearFields0x1ec0x1ee_0202e874Pht((unsigned char*)obj,desiredTail);
         data_ov000_02183fc8 = 0;
     } else {
         if (moved.y > 0x2000) moved.y = 0x2000;
@@ -131,9 +131,9 @@ extern "C" ARM void func_ov000_0216ea38(Root0216ea38* obj) {
         next.x = fix32ReduceAngle0To2Pi(angles.x+difference);
         next.y = (int)((float)angles.y + 0.02f*(float)(desiredY-angles.y));
         next.z = (int)((float)angles.z + 0.02f*(float)(desiredZ-angles.z));
-        ApplyVec3Tail(obj,&next.x);
+        ApplyVec3Tail_0202e694(obj,&next.x);
         int change, tailLimit;
-        int tail = GetField0x7c(obj);
+        int tail = GetField0x7c_0202e88c(obj);
         float scaledChange = (float)fix32SignedAngleDistance(tail,desiredTail);
         scaledChange *= 0.1f;
         change = (int)scaledChange;
@@ -142,6 +142,6 @@ extern "C" ARM void func_ov000_0216ea38(Root0216ea38* obj) {
             if (change > 0) change = tailLimit;
             else change = -tailLimit;
         }
-        if (change) _Z33SetField0x7cClearFields0x1ec0x1eePht((unsigned char*)obj,(short)fix32ReduceAngle0To2Pi(change+tail));
+        if (change) _Z42SetField0x7cClearFields0x1ec0x1ee_0202e874Pht((unsigned char*)obj,(short)fix32ReduceAngle0To2Pi(change+tail));
     }
 }

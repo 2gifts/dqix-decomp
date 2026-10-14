@@ -7,7 +7,7 @@ extern "C" void func_ov000_0216d370(void* obj, int flagA, int flagB, int flagC);
 struct Block0202ecc8 { unsigned int v[12]; };
 struct Dst0202ecc8;
 void CopyBlockToField0xf0(struct Dst0202ecc8* dst, struct Block0202ecc8* src);
-void ApplyVec3Tail(void* obj, int* vec);
+void ApplyVec3Tail_0202e694(void* obj, int* vec);
 
 extern "C" void func_ov000_0216d234(void* forward, void* position, void* dest);
 
@@ -41,5 +41,5 @@ extern "C" ARM void func_ov000_0216de00(struct Obj0216de00* obj, int idxA, int i
     tail[1] = 0;
     tail[2] = 0x1000;
     obj->field10 = v;
-    ApplyVec3Tail(obj, tail);
+    ApplyVec3Tail_0202e694(obj, tail);
 }

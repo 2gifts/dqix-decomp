@@ -1,15 +1,15 @@
 #include <globaldefs.h>
 
 struct CallbackData020ca364 {
-    int flag;                 // 0x0
-    char pad[0xc];            // 0x4
-    void (*callback)(void*);  // 0x10
-    void* arg;                // 0x14
+    int flag;
+    char pad[0xc];
+    void (*callback)(void*);
+    void* arg;
 };
 extern struct CallbackData020ca364 data_02111684;
 
 // USA: func_020ca364
-ARM void RunAndClearCallback(void) {
+ARM void RunAndClearCallback_020ca364(void) {
     void (*cb)(void*);
     void* arg;
     data_02111684.flag = 0;

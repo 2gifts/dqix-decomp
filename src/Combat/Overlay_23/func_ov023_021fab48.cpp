@@ -5,7 +5,7 @@ extern "C" void* func_ov011_021845f8(void* a, int b);
 extern "C" void* func_ov011_021849c8(void*);
 
 struct B190Outer;
-int GetBits12To15Clamped(int unused, struct B190Outer* obj);
+int GetBits12To15Clamped_0205af18(int unused, struct B190Outer* obj);
 void* GetEntryPtr_021fa854(char* obj, unsigned int idx);
 void SetBit_021f6e10(void* obj, int idx, unsigned int bit);
 int GetGlobalField0x1c020421a0();
@@ -68,7 +68,7 @@ extern "C" ARM void func_ov023_021fab48(void* obj, void* ctx, const void* narcBu
     for (unsigned int i = 0; i < *(unsigned short*)((char*)obj + regionalOffset6); i++) {
         void* entry = GetEntryPtr_021fa854((char*)obj + regionalOffset0, (unsigned short)i);
         if (entry != 0) {
-            int bits = GetBits12To15Clamped((int)((char*)obj + regionalOffset0), (struct B190Outer*)entry);
+            int bits = GetBits12To15Clamped_0205af18((int)((char*)obj + regionalOffset0), (struct B190Outer*)entry);
             unsigned char byteVal = *(unsigned char*)((char*)obj + regionalOffset5);
             SetBit_021f6e10(list, byteVal, (unsigned int)bits);
         }

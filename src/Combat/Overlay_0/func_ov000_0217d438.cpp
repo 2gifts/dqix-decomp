@@ -52,9 +52,9 @@ int CheckFlagsOrField_0217c5f4_0217c5f4(void* objRaw);
 extern "C" int func_ov000_0217c594(void* objRaw, int limit);
 extern "C" void func_ov000_0217c638(void* obj, int arg1, int arg2);
 extern "C" void* func_ov000_02161318(void* obj, int index);
-struct PartyData0217d438* GetFieldAt0x150(unsigned char* obj);
+struct PartyData0217d438* GetFieldAt0x150_02053c6c(unsigned char* obj);
 extern "C" void func_ov000_02170ffc(void* obj);
-int ApplyElemFieldsSlot3(void* obj);
+int ApplyElemFieldsSlot3_ov000_02177798(void* obj);
 extern "C" void func_ov017_021c847c();
 extern "C" void func_ov000_0217fa60(void* obj);
 extern "C" void func_ov000_02174c14(void* obj);
@@ -78,11 +78,11 @@ extern "C" ARM void func_ov000_0217d438(struct Menu0217d438* menu, int arg1, int
             if (entry != NULL) {
                 GameObject* obj = gs->GetPartyMemberByIndex(member);
                 if (obj != NULL) {
-                    struct PartyData0217d438* data = GetFieldAt0x150((unsigned char*)obj);
+                    struct PartyData0217d438* data = GetFieldAt0x150_02053c6c((unsigned char*)obj);
                     if ((signed char)data->field94c != menu->field1D6C) {
                         data->field94c = menu->field1D6C;
                         func_ov000_02170ffc(entry);
-                        ApplyElemFieldsSlot3(menu);
+                        ApplyElemFieldsSlot3_ov000_02177798(menu);
                     }
                 }
             }
@@ -100,7 +100,7 @@ extern "C" ARM void func_ov000_0217d438(struct Menu0217d438* menu, int arg1, int
                 if (!(obj->obj3D_.unknown_0_ & 0x1000)) {
                     continue;
                 }
-                struct PartyData0217d438* data = GetFieldAt0x150((unsigned char*)obj);
+                struct PartyData0217d438* data = GetFieldAt0x150_02053c6c((unsigned char*)obj);
                 if ((signed char)data->field94c == menu->field1D6C) {
                     continue;
                 }

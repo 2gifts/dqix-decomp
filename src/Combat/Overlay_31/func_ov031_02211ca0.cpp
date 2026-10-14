@@ -16,7 +16,7 @@ struct Glob0224e5b4_02211ca0 {
 
 extern Glob0224e5b4_02211ca0 data_ov031_0224e5b4;
 
-void SetGlobal0224e5a4IfNotNine(int a, int b);
+void SetGlobal0224e5a4IfNotNine_ov031_02211b08(int a, int b);
 extern "C" int func_ov031_02212d40(void* buf);
 void* CallWithConst32_02211b54(void*, void*);
 extern "C" void func_ov031_02211b98(void*, void*);
@@ -46,10 +46,10 @@ extern "C" ARM void func_ov031_02211ca0(void) {
 			q->field4 = 2;
 
 			if (func_ov031_02212d40(&buf) == 0) {
-				SetGlobal0224e5a4IfNotNine(9, 0xffff3be9);
+				SetGlobal0224e5a4IfNotNine_ov031_02211b08(9, 0xffff3be9);
 			}
 		}
 	} else {
-		SetGlobal0224e5a4IfNotNine(9, 0xffff3be9);
+		SetGlobal0224e5a4IfNotNine_ov031_02211b08(9, 0xffff3be9);
 	}
 }

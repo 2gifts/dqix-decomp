@@ -28,8 +28,8 @@ struct CameraOutputs0218e670
 
 extern CameraOutputs0218e670 data_ov015_02194564;
 extern unsigned short data_02114e30;
-ViewerCamera0218e670* GetFieldIfFlag2(char*);
-int TestFlag0SetAndFlag1Clear(unsigned short*, int);
+ViewerCamera0218e670* GetFieldIfFlag2_020100cc(char*);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short*, int);
 extern "C" void func_020c5414();
 extern "C" void func_0202eab8(ViewerCamera0218e670*);
 
@@ -42,13 +42,13 @@ extern "C" ARM void func_ov015_0218e670(ViewerCameraState0218e670* self)
     GameState* game = GameState::GetInstance();
     if (game == NULL)
         return;
-    ViewerCamera0218e670* camera = GetFieldIfFlag2((char*)game);
+    ViewerCamera0218e670* camera = GetFieldIfFlag2_020100cc((char*)game);
     if (camera == NULL)
         return;
     bool update = false;
     if (self->inputEnabled)
     {
-        if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x100))
+        if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x100))
             update = true;
     }
     else

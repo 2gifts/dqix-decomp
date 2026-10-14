@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void ClearSublistEntriesFlag4(void* obj, int p1);
+void ClearSublistEntriesFlag4_020804fc(void* obj, int p1);
 extern "C" void func_020813ec(void* obj, int p1);
 
 struct List0207f0ac;
@@ -23,7 +23,7 @@ SubEntry0207f6ac* FindEntryByShortId0207f6ac(List0207f6ac* list, int id);
 // USA: func_02080558  (semantic: UpdateSublistFlagBit02080558)
 extern "C" ARM void func_02080558(void* obj, int p1, int result, int flag, unsigned char extra) {
     if (flag) {
-        ClearSublistEntriesFlag4(obj, p1);
+        ClearSublistEntriesFlag4_020804fc(obj, p1);
     }
     SubEntry0207f0ac* e = FindEntryByShortId0207f0ac((List0207f0ac*)((char*)obj + 0xc), p1);
     if (e != 0) {

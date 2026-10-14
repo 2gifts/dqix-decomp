@@ -10,8 +10,8 @@ enum { kSlotFieldOffset = 0x950 };
 
 struct SearchStruct0202c1a4;
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
-GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
-int GetFieldAt0x150(unsigned char* obj);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* battleStruct, int combatantId);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 
 extern "C" void func_ov017_021c41fc(int combatantId, signed char flag10);
 extern "C" ARM void func_ov017_021c4418(int combatantId, signed char flag10);
@@ -56,9 +56,9 @@ extern "C" ARM void func_ov017_021cc4f8(signed char flag, struct DispatchArgs021
     }
     if (flags & 0x8) {
         func_ov017_021ce704(id);
-        GameObject* c = GetCombatantWithFlag0x100(bs, id);
+        GameObject* c = GetCombatantWithFlag0x100_0200ff1c(bs, id);
         if (c) {
-            int f150 = GetFieldAt0x150((unsigned char*)c);
+            int f150 = GetFieldAt0x150_02053c6c((unsigned char*)c);
             unsigned char slot = *(int*)((char*)f150 + kSlotFieldOffset) & 0xff;
             func_ov017_021cf078(id, slot, 1);
         }

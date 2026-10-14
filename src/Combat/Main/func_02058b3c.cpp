@@ -7,10 +7,10 @@ struct Entry02058b3c { unsigned int time; float value, randomRange; };
 struct Node02058b3c { Entry02058b3c* entry; };
 struct Count02058b3c { char pad[8]; unsigned char count; };
 struct Obj02058b3c { char pad[4]; unsigned int time; char pad2[0x20]; Track02058b3c* track; char pad3[0x20]; float velocity; char pad4[0x10]; float value; char pad5[6]; unsigned short index; };
-void* GetField0x4Field0x20OrNull(S02055080*);
+void* GetField0x4Field0x20OrNull_02055150(S02055080*);
 // USA: func_02058b3c
 extern "C" ARM void func_02058b3c(Obj02058b3c* self) {
-    Count02058b3c* counts = (Count02058b3c*)GetField0x4Field0x20OrNull((S02055080*)self->track);
+    Count02058b3c* counts = (Count02058b3c*)GetField0x4Field0x20OrNull_02055150((S02055080*)self->track);
     if (counts->count <= 1 || counts->count <= self->index) return;
     Node02058b3c* previous = (Node02058b3c*)self->track->entries.GetNthElement(self->index);
     if (!previous || previous->entry->time >= self->time) return;

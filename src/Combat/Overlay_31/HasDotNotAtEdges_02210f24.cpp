@@ -1,11 +1,11 @@
 #include <globaldefs.h>
 
-int StringLength(const char* s);
+int StringLength_020d2ff0(const char* s);
 
 // USA: func_ov031_02210f24  (semantic: HasDotNotAtEdges_02210f24)
 extern "C" ARM int func_ov031_02210f24(const char* s) {
     if (s != NULL) {
-        int len = StringLength(s);
+        int len = StringLength_020d2ff0(s);
         if (len > 2) {
             if (len <= 0x40) {
                 int end = len - 1;

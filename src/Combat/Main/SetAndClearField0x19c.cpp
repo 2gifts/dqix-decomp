@@ -16,7 +16,7 @@ struct Field0x19cData {
 };
 
 // USA: func_02053da0
-ARM void SetAndClearField0x19c(char* obj, struct Field0x19cData* p) {
+ARM void SetAndClearField0x19c_02053da0(char* obj, struct Field0x19cData* p) {
     *(struct Field0x19cData**)(obj + POINTER_FIELD_OFFSET) = p;
     p->f0 = 0;
     p->f2 = 0;

@@ -46,10 +46,10 @@ struct Menu_021777e4 {
     unsigned char choices[8];
 };
 
-int IsField0x118Equal2(void* obj);
+int IsField0x118Equal2_ov000_0217542c(void* obj);
 int AppendFrameTag02041c08(char* dst, int a1, int a2, int a3, int a4, int a5);
-int AppendCursorTag(char* dst, int cursor);
-MemberInfo_021777e4* GetFieldAt0x150(unsigned char* obj);
+int AppendCursorTag_02041ea4(char* dst, int cursor);
+MemberInfo_021777e4* GetFieldAt0x150_02053c6c(unsigned char* obj);
 extern "C" void __clear(void* dst, int size);
 extern "C" int func_ov000_02170c7c(MenuEntry_021777e4* entry);
 int FormatCombatLogSuffix02041dd0(char* dst, int value);
@@ -59,11 +59,11 @@ extern "C" void func_0203bdf4(char* slot, char* out);
 #else
 extern "C" void _Z25InvokeGlobalEntry0203c248Pci(char* slot, char* out);
 #endif
-int AppendNameTag(char* dst, int n, const char* name);
-int AppendXTag(char* dst, int x);
+int AppendNameTag_02041b70(char* dst, int n, const char* name);
+int AppendXTag_02041a28(char* dst, int x);
 const char* GetFieldByKey020e0434(struct Container020e0310* c, int key);
 int AppendString02042058(char* dst, const char* src);
-const char* CallFunc020e0434With02153694(int key);
+const char* CallFunc020e0434With02153694_020e51cc(int key);
 #if defined(jpn)
 extern char data_ov000_02185160[];
 #endif
@@ -96,12 +96,12 @@ extern "C" ARM void func_ov000_021777e4(Menu_021777e4* menu, char* dst) {
     cursor = menu->cursor;
     n = 0;
 
-    if (IsField0x118Equal2(menu)) {
+    if (IsField0x118Equal2_ov000_0217542c(menu)) {
         AppendFrameTag02041c08(dst, cursor, 8, 5, 5, 5);
     }
-    AppendCursorTag(dst, cursor);
+    AppendCursorTag_02041ea4(dst, cursor);
 
-    party = (PartyInfo_021777e4*)GetPtrField0x2a04(gs);
+    party = (PartyInfo_021777e4*)GetPtrField0x2a04_02010828(gs);
     for (i = 0; i < party->memberCount; i++) {
         entry = &menu->entries[menu->order[i]];
         member = entry->memberIndex;
@@ -110,14 +110,14 @@ extern "C" ARM void func_ov000_021777e4(Menu_021777e4* menu, char* dst) {
 
         obj = gs->GetPartyMemberByIndex(member);
         if (obj == NULL) return;
-        info = GetFieldAt0x150((unsigned char*)obj);
+        info = GetFieldAt0x150_02053c6c((unsigned char*)obj);
         __clear(name, sizeof(name));
         vocation = info->vocation;
 
         FormatCombatLogSuffix02041dd0(dst, func_ov000_02170c7c(entry));
         _Z25InvokeGlobalEntry0203c248Pci(entry->nameSlot, name);
-        AppendNameTag(dst, n, name);
-        AppendXTag(dst, 0x4e);
+        AppendNameTag_02041b70(dst, n, name);
+        AppendXTag_02041a28(dst, 0x4e);
         FormatCombatLogSuffix02041dd0(dst, 0);
         AppendString02042058(dst, GetFieldByKey020e0434((struct Container020e0310*)menu->strings, (short)(vocation + 0x753e)));
         AppendString02042058(dst, GetFieldByKey020e0434((struct Container020e0310*)menu->strings, 0));
@@ -126,8 +126,8 @@ extern "C" ARM void func_ov000_021777e4(Menu_021777e4* menu, char* dst) {
     }
     menu->choices[n] = 4;
 #if defined(jpn)
-    AppendNameTag(dst, n, data_ov000_02185160);
+    AppendNameTag_02041b70(dst, n, data_ov000_02185160);
 #else
-    AppendNameTag(dst, n, CallFunc020e0434With02153694(0x1a));
+    AppendNameTag_02041b70(dst, n, CallFunc020e0434With02153694_020e51cc(0x1a));
 #endif
 }

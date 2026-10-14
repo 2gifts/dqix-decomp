@@ -3,7 +3,7 @@
 struct Container0205a3d0;
 struct Elem0205a3d0;
 #if defined(jpn)
-void SetEntryPosition(Container0205a3d0*, int, short, short);
+void SetEntryPosition_020e27ec(Container0205a3d0*, int, short, short);
 #endif
 extern "C" void func_ov003_021703f0(void*, short*, short*);
 void SetEntryFlag2ByKey0205a370(Container0205a3d0*, int);
@@ -29,7 +29,7 @@ extern "C" ARM void func_ov003_0217033c(char* base) {
         }
         IterateEntries0205a330((Container0205a330*)cont, 2);
 #if defined(jpn)
-        SetEntryPosition(cont, 0, outA, outB);
+        SetEntryPosition_020e27ec(cont, 0, outA, outB);
 #else
         short a, b;
         b = outB;

@@ -9,7 +9,7 @@ struct Struct0x10 {
 };
 
 // USA: func_020a810c
-ARM void ZeroStruct0x10(struct Struct0x10* obj) {
+ARM void ZeroStruct0x10_020a810c(struct Struct0x10* obj) {
     obj->a = 0;
     obj->b = 0;
     obj->c = 0;

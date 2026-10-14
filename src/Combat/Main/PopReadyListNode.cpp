@@ -14,7 +14,7 @@ struct GlobalListState020d28a8 {
 extern struct GlobalListState020d28a8 data_02112780;
 
 // USA: func_020d28a8
-ARM struct ListNode020d28a8* PopReadyListNode(void) {
+ARM struct ListNode020d28a8* PopReadyListNode_020d28a8(void) {
     unsigned int mask = DisableIRQInterrupts();
     struct ListNode020d28a8* node = data_02112780.head;
     if (node == NULL) {

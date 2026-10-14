@@ -7,7 +7,7 @@ struct S_a059c {
 };
 
 // USA: func_020a059c
-ARM void AddClamped16BitLowAt0x20(struct S_a059c* p, unsigned int amount) {
+ARM void AddClamped16BitLowAt0x20_020a059c(struct S_a059c* p, unsigned int amount) {
     unsigned int v = p->val + amount;
     if (v > 0xffff) {
         v = 0xffff;

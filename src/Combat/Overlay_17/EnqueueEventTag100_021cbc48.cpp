@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 extern "C" void func_ov017_021cbdcc(void* obj);
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct Src021cbc48 {
@@ -34,7 +34,7 @@ struct LocalEvt021cbc48 {
 // USA: func_ov017_021cbc48
 ARM void EnqueueEventTag100_021cbc48(Src021cbc48* src) {
 	func_ov017_021cbdcc(src);
-	void* p = GetData02100044();
+	void* p = GetData02100044_0202ae24();
 
 	LocalEvt021cbc48 buf;
 	buf.tag = 0x64;

@@ -4,10 +4,10 @@
 #include "GameState/GameState.h"
 
 void ProcessCombatState020534ac(char* combatant);
-int GetIntField0x260(void* obj);
-int GetField0x3acValue(GameState* gameState);
-int GetIndexedEntryField0x178(signed char* obj);
-unsigned int GetBitsInField4(unsigned int* obj, unsigned int mask);
+int GetIntField0x260_02039750(void* obj);
+int GetField0x3acValue_020100a8(GameState* gameState);
+int GetIndexedEntryField0x178_02053604(signed char* obj);
+unsigned int GetBitsInField4_0203b4fc(unsigned int* obj, unsigned int mask);
 
 struct Entry_02199684 { unsigned char pad[0x14]; int val; unsigned char pad2[0x20 - 0x18]; };
 void FillEntriesEncoded_02199684(Entry_02199684* arr, int count, int value);
@@ -44,7 +44,7 @@ extern "C" ARM void func_ov017_0219a18c(unsigned char* self) {
  enum {regionalOffset0=0x4080, regionalOffset1=0x4074, regionalOffset2=0x4078, regionalOffset3=0xb4, regionalOffset4=0x3c00, regionalOffset5=0xcb0};
 #endif
     for (int i = 0; i < 4; i++) {
-        GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), i);
+        GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), i);
         if (combatant != 0) {
             ProcessCombatState020534ac((char*)combatant);
         }
@@ -58,7 +58,7 @@ extern "C" ARM void func_ov017_0219a18c(unsigned char* self) {
     }
 
     GameState* gs = GameState::GetInstance();
-    if (GetIntField0x260(gs->GetUnknownGameObject()) != -1) {
+    if (GetIntField0x260_02039750(gs->GetUnknownGameObject()) != -1) {
         return;
     }
 
@@ -68,11 +68,11 @@ extern "C" ARM void func_ov017_0219a18c(unsigned char* self) {
     func_0205da88(*(void**)(self + 0x3000 + regionalOffset5), 1, 2, 1);
 
     GameObject* protagonist = gs->GetProtagonist();
-    GameObject* combatant = GetCombatantWithFlag0x100(gs, GetField0x3acValue(gs));
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(gs, GetField0x3acValue_020100a8(gs));
     int found = 0;
     int key;
-    int mode = GetIntField0x260(protagonist);
-    int entry = GetIndexedEntryField0x178((signed char*)combatant);
+    int mode = GetIntField0x260_02039750(protagonist);
+    int entry = GetIndexedEntryField0x178_02053604((signed char*)combatant);
     switch (mode) {
     case -1:
         break;
@@ -102,7 +102,7 @@ extern "C" ARM void func_ov017_0219a18c(unsigned char* self) {
     }
 
     CallFunc0204b04cOverList0x98(*(Cont0205d274**)(self + 0x3000 + regionalOffset5));
-    if (GetBitsInField4((unsigned int*)self, 0x10000) == 0) {
+    if (GetBitsInField4_0203b4fc((unsigned int*)self, 0x10000) == 0) {
         InitEntries0205d2bc(*(Obj0205d2bc**)(self + 0x3000 + regionalOffset5));
     }
     ClearAndEncodeEntries_021996bc((Entry_02199684*)(self + regionalOffset3 + regionalOffset4), 2);

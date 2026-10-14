@@ -2,23 +2,23 @@
 
 #include "GameState/GameState.h"
 
-int IsField0Null(void** obj);
+int IsField0Null_02046b08(void** obj);
 void CancelActionIfHeadIdMatches_02199e98(void* obj);
-void* GetPtrField0x2a04(GameState* gs);
-int GetIntField0x260(void* obj);
+void* GetPtrField0x2a04_02010828(GameState* gs);
+int GetIntField0x260_02039750(void* obj);
 int CheckField0xc4Low15BitsNonZero(struct BitField0203402c* p);
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
-unsigned char GetByteField0x252(void* obj);
-int CheckSubstructByte0x7cPositive(signed char* obj);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
+unsigned char GetByteField0x252_02039820(void* obj);
+int CheckSubstructByte0x7cPositive_020535c8(signed char* obj);
 void CancelPendingAction020397cc(struct Obj020397cc* obj, int arg1);
 void* GetDataPtr02114e04_020d6c00(void);
-void OrBitsIntoField0(unsigned int* p, unsigned int mask);
+void OrBitsIntoField0_020466e4(unsigned int* p, unsigned int mask);
 extern "C" void func_ov017_021a5bac(unsigned char* base);
 void InitFieldArenaListsAndCounters_021996fc(unsigned char* base);
-int TestFlagInSecondWord(unsigned short* obj, unsigned int mask);
+int TestFlagInSecondWord_02012468(unsigned short* obj, unsigned int mask);
 int TestFlags02046708(struct FlagWord02046708* word, unsigned int mask);
 extern "C" void func_ov017_021999fc(unsigned char* self);
-int TestFlagMask(unsigned short* obj, int mask);
+int TestFlagMask_02012430(unsigned short* obj, int mask);
 
 struct Entry_02199684 { unsigned char pad[0x14]; int val; unsigned char pad2[0x20 - 0x18]; };
 void FillEntriesEncoded_02199684(Entry_02199684* arr, int count, int value);
@@ -50,7 +50,7 @@ extern "C" ARM void func_ov017_02199f08(unsigned char* self) {
 #endif
 
     struct HeadNode02046b24;
-    if (IsField0Null((void**)*(struct HeadNode02046b24***)(self + 0x3000 + 0x6fc)) == 0) {
+    if (IsField0Null_02046b08((void**)*(struct HeadNode02046b24***)(self + 0x3000 + 0x6fc)) == 0) {
         CancelActionIfHeadIdMatches_02199e98(self);
         return;
     }
@@ -58,20 +58,20 @@ extern "C" ARM void func_ov017_02199f08(unsigned char* self) {
     GameState* gs = GameState::GetInstance();
     gs->GetProtagonist();
     GameObject* actor = gs->GetUnknownGameObject();
-    unsigned char* party = (unsigned char*)GetPtrField0x2a04(gs);
-    int mode = GetIntField0x260(actor);
+    unsigned char* party = (unsigned char*)GetPtrField0x2a04_02010828(gs);
+    int mode = GetIntField0x260_02039750(actor);
 
     if (mode == -1) {
         if (CheckField0xc4Low15BitsNonZero((BitField0203402c*)actor) == 0 &&
             *(int*)(self + regionalOffset0) == 0) {
-            if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2) &&
-                GetByteField0x252(actor) &&
+            if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 2) &&
+                GetByteField0x252_02039820(actor) &&
                 (*(int*)((char*)actor + 0x18c) & 1) == 0 &&
-                CheckSubstructByte0x7cPositive((signed char*)actor) == 0 &&
+                CheckSubstructByte0x7cPositive_020535c8((signed char*)actor) == 0 &&
                 *(short*)((char*)actor + 0xac) == 0) {
                 CancelPendingAction020397cc((Obj020397cc*)actor, 1);
                 *(unsigned short*)((char*)actor + 0xb2) = 0;
-                OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 0x400);
+                OrBitsIntoField0_020466e4((unsigned int*)GetDataPtr02114e04_020d6c00(), 0x400);
                 func_ov017_021a5bac(self);
 
                 volatile unsigned short* reg = (volatile unsigned short*)0x400000a;
@@ -96,7 +96,7 @@ extern "C" ARM void func_ov017_02199f08(unsigned char* self) {
         }
     }
 
-    if (TestFlagInSecondWord(&data_02114e30, 2) != 0 ||
+    if (TestFlagInSecondWord_02012468(&data_02114e30, 2) != 0 ||
         *(short*)((char*)actor + 0xac) != 0 ||
         CheckField0xc4Low15BitsNonZero((BitField0203402c*)actor) != 0) {
         CancelActionIfHeadIdMatches_02199e98(self);
@@ -122,7 +122,7 @@ extern "C" ARM void func_ov017_02199f08(unsigned char* self) {
 
     Entry_02199684* e;
     int i;
-    if (TestFlagMask(&data_02114e30, 2) != 0 && mode != -1) {
+    if (TestFlagMask_02012430(&data_02114e30, 2) != 0 && mode != -1) {
         FillEntriesEncoded_02199684((Entry_02199684*)(self + regionalOffset3 + regionalOffset4), 2, 0x800);
         for (i = 0; i < 2; i++) {
             e = (Entry_02199684*)(self + regionalOffset3 + regionalOffset4) + i;

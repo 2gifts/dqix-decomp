@@ -3,8 +3,8 @@
 #include "Combat/FormationPosition.h"
 
 extern "C" int func_ov000_02153e40(void* obj, short* buf, int max, int start);
-int GetSubstructByte0x1c(unsigned char* obj);
-void SetSubstructFields0x10And0x18ClearFlag0x1(unsigned char* obj, int* src);
+int GetSubstructByte0x1c_020493a4(unsigned char* obj);
+void SetSubstructFields0x10And0x18ClearFlag0x1_02049bd4(unsigned char* obj, int* src);
 
 struct Words3_02168144 { unsigned int v[3]; };
 extern struct Words3_02168144 data_ov000_021830f0;
@@ -27,11 +27,11 @@ extern "C" ARM void func_ov000_02168144(unsigned char* obj) {
     for (i = 0; i < count; i++) {
         GameObject* c = battle->GetCombatantByIndex(ids[i]);
         if (c != 0) {
-            Vec2_0216f74c pos = GetFormationPosition(GetSubstructByte0x1c((unsigned char*)c));
+            Vec2_0216f74c pos = GetFormationPosition(GetSubstructByte0x1c_020493a4((unsigned char*)c));
             struct Words3_02168144 fields = data_ov000_021830f0;
             fields.v[0] = pos.x;
             fields.v[2] = pos.y;
-            SetSubstructFields0x10And0x18ClearFlag0x1((unsigned char*)c, (int*)&fields);
+            SetSubstructFields0x10And0x18ClearFlag0x1_02049bd4((unsigned char*)c, (int*)&fields);
         }
     }
 }

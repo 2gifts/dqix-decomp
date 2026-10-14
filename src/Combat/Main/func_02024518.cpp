@@ -60,7 +60,7 @@ extern short data_020e7076[][2];
 extern signed char data_020e7056[][2];
 extern signed char data_020e7057[][2];
 
-void *GetData02105254();
+void *GetData02105254_0203b628();
 extern "C" Zone3D *func_02012fe4();
 int IsInRange0201b5b0(int id);
 extern "C" void func_02027974(void *object, const unsigned char* adjacencyData, int state);
@@ -68,7 +68,7 @@ extern "C" void func_0203b8bc(void *data, int mode, int index, int x, int y, int
                               unsigned short palette);
 void SetArraySlotFlag0203b718(void *owner, int mode, int index, int value);
 Entry_02027878 *GetEntryFromList(List_02027878 *list, int index);
-void ForwardParamsToB8bc(Bcb8Params *params, int a, int b);
+void ForwardParamsToB8bc_0203bcb8(Bcb8Params *params, int a, int b);
 void AccumulateBattleTimer0202441c(BattleTimer0202441c *receiver);
 int CheckCombatantReadyForAction020243b8(void *receiver, int combatantId);
 int CheckActionAllowed(Actor02024d48 *entry, int state);
@@ -82,7 +82,7 @@ extern "C" ARM void func_02024518(MapReceiver02024518 *self) {
     int px;
     GameState *gameState  = GameState::GetInstance();
     GameObject *object    = gameState->GetUnknownGameObject();
-    void *displayState    = GetData02105254();
+    void *displayState    = GetData02105254_0203b628();
     Zone3D *zone          = func_02012fe4();
     int count;
     int zoneId            = zone->currentZoneID_;
@@ -163,7 +163,7 @@ extern "C" ARM void func_02024518(MapReceiver02024518 *self) {
         SetArraySlotFlag0203b718(displayState, 1, 0, self->forwardingFill);
         int mapX        = self->forwardingX - tileX;
         int mapY        = self->forwardingY - tileZ + 16;
-        void *mapLayer  = GetData02105254();
+        void *mapLayer  = GetData02105254_0203b628();
         func_0203b8bc(mapLayer, 1, 0, mapX + 32, mapY, self->mapState, 32, 32, self->mapPalette);
     } else {
         self->forwardingPending = 0;
@@ -171,7 +171,7 @@ extern "C" ARM void func_02024518(MapReceiver02024518 *self) {
         for (int i = 0; i < self->forwardingCount; i++) {
             Entry_02027878 *entry = GetEntryFromList((List_02027878*)self, self->forwarding[i].entryIndex);
             if (entry) {
-                ForwardParamsToB8bc((Bcb8Params*)((char*)entry + 8),
+                ForwardParamsToB8bc_0203bcb8((Bcb8Params*)((char*)entry + 8),
                                     self->forwardingX + self->forwarding[i].x - tileX + 32,
                                     self->forwardingY + self->forwarding[i].y - tileZ + 16);
             }

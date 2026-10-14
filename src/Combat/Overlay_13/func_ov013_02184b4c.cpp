@@ -14,7 +14,7 @@
 
 #pragma opt_arithtransformation off
 
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 int GetTableByte020dd11c(unsigned int a, unsigned int b);
 
 // USA: func_ov013_02184b4c
@@ -28,7 +28,7 @@ extern "C" ARM void func_ov013_02184b4c(void* obj, void* arg) {
 
     if (arg == 0) return;
 
-    ctx = (unsigned char*)GetFieldAt0x150(p);
+    ctx = (unsigned char*)GetFieldAt0x150_02053c6c(p);
     *(void**)(o + R(0x62c,0x6a4)) = *(void**)(p + 0x134);
 
     baseVal = *(unsigned short*)(ctx + 0x564);

@@ -8,7 +8,7 @@
 int GetListEntryWord8020bd8ac(unsigned int index);
 void SetListEntryWord8020bd8d4(unsigned int index, int value);
 extern "C" int func_020bd7c4(unsigned int index, void* buf, int size, int flag);
-void* GetGlobalContext02110370(void);
+void* GetGlobalContext02110370_020bd444(void);
 void CleanCacheRange(const void* addr, unsigned int size);
 
 struct Obj020bda58;
@@ -31,7 +31,6 @@ extern "C" ARM void* func_020be2ec(unsigned int index, struct Obj020bda58* obj, 
     if (func_020bd7c4(index, &data_02110374, 0x3c, 0) != 0x3c) {
         return NULL;
     }
-    // raw address (not &data_02110374) so this load gets its own pool slot, matching ROM
     struct ListHeader020be2ec* hdr = (struct ListHeader020be2ec*)0x02110374;
     unsigned int sizeField = hdr->field38;
     unsigned int size1 = sizeField * 4;
@@ -39,7 +38,7 @@ extern "C" ARM void* func_020be2ec(unsigned int index, struct Obj020bda58* obj, 
     if (obj == NULL) {
         return NULL;
     }
-    void* ctx = flag ? GetGlobalContext02110370() : NULL;
+    void* ctx = flag ? GetGlobalContext02110370_020bd444() : NULL;
     entry = AllocateAndLinkEntry020bda58(obj, size2 + 0x5c, (int)&PrepareAndClearList020be4d4, (int)ctx, index);
     if (entry == NULL) {
         return NULL;

@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void* GetData02153660(void);
+void* GetData02153660_020e3808(void);
 extern "C" int func_0202c508(void*);
 extern "C" void func_ov017_021cebcc(int, int, int);
 
@@ -29,7 +29,7 @@ struct Obj021cec70 {
 
 // USA: func_ov017_021cec70
 extern "C" ARM void func_ov017_021cec70(int bit, struct Obj021cec70* obj, int unused2, int unused3, void* arg4) {
-    struct TagValueEntry020e385c* table = (struct TagValueEntry020e385c*)GetData02153660();
+    struct TagValueEntry020e385c* table = (struct TagValueEntry020e385c*)GetData02153660_020e3808();
     int inBattle = func_0202c508(arg4);
     int caseSel = obj->caseSel;
 

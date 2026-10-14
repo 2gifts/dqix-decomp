@@ -19,7 +19,7 @@ void EnqueueNode(struct QList0205e18c* list, struct QNode0205e18c* node);
 
 extern "C" void* func_0202ae18(void);
 extern "C" void func_0202c288(void);
-void* GetSubstructAt0x7c0(void* base);
+void* GetSubstructAt0x7c0_0202c19c(void* base);
 
 struct SearchStruct;
 
@@ -45,7 +45,7 @@ extern "C" ARM void func_0205e22c(void* obj) {
     void* base = func_0202ae18();
     func_0202c288();
 
-    struct Elem0205e22c* arr = (struct Elem0205e22c*)GetSubstructAt0x7c0(base);
+    struct Elem0205e22c* arr = (struct Elem0205e22c*)GetSubstructAt0x7c0_0202c19c(base);
     memset(arr, 0, 0x74);
 
     for (int j = 0; j < 5; j++) {
@@ -56,7 +56,7 @@ extern "C" ARM void func_0205e22c(void* obj) {
     int off = 0;
     int size = 0x74;
     for (; idx < 4; idx++) {
-        void* entry = GetEntryBySignedByteIndex((struct SearchStruct*)base, idx);
+        void* entry = GetEntryBySignedByteIndex_0202c178((struct SearchStruct*)base, idx);
         if (entry != NULL) {
             memset(entry, off, size);
         }

@@ -10,7 +10,7 @@ struct BattleTarget948 {
 };
 
 // USA: func_020bc948
-ARM int BuildTargetMaskFromBytes(struct BattleTarget948* obj, int count, unsigned char* arr) {
+ARM int BuildTargetMaskFromBytes_020bc948(struct BattleTarget948* obj, int count, unsigned char* arr) {
     int mask = 0;
     int i = 0;
     if (i < count) {

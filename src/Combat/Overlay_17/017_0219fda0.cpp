@@ -7,7 +7,7 @@
 
 extern "C" void* func_02012fe4(void);
 struct Entry_02028bd0;
-struct Entry_02028bd0* GetEntryTableBase(void);
+struct Entry_02028bd0* GetEntryTableBase_02027ca4(void);
 struct Element0x318_02028bac {
 	unsigned short kind;
 	unsigned short flags;
@@ -24,9 +24,9 @@ struct Element0x318_02028bac* GetElementStride0x318(struct Element0x318_02028bac
 struct BigRecord020289c4;
 void InitializeSubObjectsAndFields020289c4(struct BigRecord020289c4* obj);
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 void Clear12Bytes020a8e88(void* p);
-void ClearCombatantSlot(GameState* battleStruct, int id);
+void ClearCombatantSlot_0200fd48(GameState* battleStruct, int id);
 extern "C" void _Z33DeserializeElementBuffers020a8e9cP11Obj020a8e9cP13SafeAllocatorPv(
 	void* obj, SafeAllocator* allocator, void* src, unsigned int srcSize);
 
@@ -39,7 +39,7 @@ extern unsigned char data_0211e33c[0x30000];
 extern "C" ARM void func_ov017_0219fda0(void) {
 	GameState* battle = GameState::GetInstance();
 	func_02012fe4();
-	struct Entry_02028bd0* entryTable = GetEntryTableBase();
+	struct Entry_02028bd0* entryTable = GetEntryTableBase_02027ca4();
 	for (int i = 0; i < 4; i++) {
 		struct Element0x318_02028bac* elem = GetElementStride0x318((struct Element0x318_02028bac*)entryTable, i);
 		InitializeSubObjectsAndFields020289c4((struct BigRecord020289c4*)elem);
@@ -50,13 +50,13 @@ extern "C" ARM void func_ov017_0219fda0(void) {
 		}
 	}
 	for (int id = 0x70; id <= 0x9f; id++) {
-		ClearCombatantSlot(battle, id);
+		ClearCombatantSlot_0200fd48(battle, id);
 	}
 	struct Element0x318_02028bac* elem0 = GetElementStride0x318((struct Element0x318_02028bac*)entryTable, 0);
 	unsigned int size = 0xa000;
 	elem0->flags |= 4;
 	elem0->kind = 3;
-	void* buffer = AllocateAligned4(&data_02114e20, size);
+	void* buffer = AllocateAligned4_02012d88(&data_02114e20, size);
 	elem0->allocator->CreateTypeA(buffer, size);
 	if (elem0 == NULL) return;
 	Clear12Bytes020a8e88(elem0->buffers);

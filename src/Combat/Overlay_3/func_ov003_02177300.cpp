@@ -13,7 +13,7 @@ enum { kOffset89c = 0x89c };
 #include "GameState/GameState.h"
 
 struct Obj2081;
-void ClearElementFlag0x20(struct Obj2081* obj, int key);
+void ClearElementFlag0x20_02080c20(struct Obj2081* obj, int key);
 void SetEntryLowNibbleAndElement02080c68(void* obj, int id, int value);
 struct Container02080f8c;
 void SetEntryFirstField02080f8c(struct Container02080f8c* obj, int id, int value);
@@ -48,14 +48,14 @@ extern "C" ARM void func_ov003_02177300(char* self) {
         return;
     }
 
-    ClearElementFlag0x20(elemObj, key1);
+    ClearElementFlag0x20_02080c20(elemObj, key1);
     SetEntryLowNibbleAndElement02080c68(elemObj, key1, 0);
 
     int hp;
     unsigned char i;
     for (i = 0; i < *(int*)(self + kOffset1030); i++) {
         hp = 0;
-        GameObject* combatant = GetCombatantWithFlag0x100(battle, *(int*)(self + kOffset101c + i * 4));
+        GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(battle, *(int*)(self + kOffset101c + i * 4));
         if (combatant != 0) {
             hp = *(int*)((char*)combatant + 0x134);
         }

@@ -2,14 +2,14 @@
 #include "GameState/GameState.h"
 #include "Combat/Overlay_0/GetCombatantByID.h"
 
-GameObject* GetCombatantWithFlag0x400ByID(int unused, int id);
+GameObject* GetCombatantWithFlag0x400ByID_ov000_021536f8(int unused, int id);
 extern "C" float func_ov024_021db358(GameObject* obj);
 extern "C" int func_ov000_0215eb1c(int battle, short* table, int count, int flag);
 extern const short data_ov024_021fee2c[8] __attribute__((aligned(4)));
 
 // USA: func_ov024_021f38f0
 extern "C" ARM int func_ov024_021f38f0(int* context, int id, void* unusedResource, int* outCount, short* outTargets) {
-    GameObject* incoming = GetCombatantWithFlag0x400ByID(*context, id);
+    GameObject* incoming = GetCombatantWithFlag0x400ByID_ov000_021536f8(*context, id);
     if (!incoming) return 0;
     if (func_ov024_021db358(incoming) < 0.5f) return 0;
 

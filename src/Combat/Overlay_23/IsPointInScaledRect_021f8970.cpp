@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 extern unsigned char data_02114e54;
-void SelectCoordsByFlag0x24(unsigned char*, int*, int*);
+void SelectCoordsByFlag0x24_02012a84(unsigned char*, int*, int*);
 
 struct RectObj021f8970 {
     char pad0[0xc8];
@@ -18,7 +18,7 @@ extern "C" ARM int func_ov023_021f8970(struct RectObj021f8970* obj) {
     short width = obj->width;
     short height = obj->height;
     int px, py;
-    SelectCoordsByFlag0x24(&data_02114e54, &px, &py);
+    SelectCoordsByFlag0x24_02012a84(&data_02114e54, &px, &py);
     if ((short)(x << 3) > px) goto fail;
     short xScaled = (short)(x << 3);
     short widthScaled = (short)(width << 3);

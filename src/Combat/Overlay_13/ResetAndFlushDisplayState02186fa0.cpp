@@ -13,8 +13,6 @@
 #include "std_library_functions.h"
 #include "Memory/SafeAllocator.h"
 
-
-
 struct EntryList0204af14;
 void* GetEntryByIndexStride0x10(struct EntryList0204af14* list, unsigned int index);
 
@@ -32,7 +30,7 @@ void ClearFlag0x11IfSet(struct Struct02074bf4* obj);
 
 // USA: func_ov013_02186fa0  (semantic: ResetAndFlushDisplayState02186fa0)
 extern "C" ARM void func_ov013_02186fa0(unsigned char* obj) {
-    FontBankLoader* g = GetGlobal02109400();
+    FontBankLoader* g = GetGlobal02109400_02094a00();
     BlankFunction02094b38(g, 0x68);
     func_02094ab0(g);
 

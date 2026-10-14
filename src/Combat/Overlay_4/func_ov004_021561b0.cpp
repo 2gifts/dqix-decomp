@@ -87,9 +87,9 @@ extern "C" void* func_ov023_021f6880(void*, int);
 extern "C" int func_ov023_021f6f10(void*);
 extern "C" TableA68* func_ov023_021fa598(void*);
 void* GetGlobalField0x1c020421a0();
-void* FindEntryByKey(TableA68*, int);
+void* FindEntryByKey_02072a68(TableA68*, int);
 extern "C" void func_02046608(void*, int, void*, char*, int, int, int);
-char* FindSubstring(char*, char*);
+char* FindSubstring_020d2f88(char*, char*);
 void SetCellIfInBounds_021f9b30(Grid021f9b30*, short, unsigned int, unsigned int);
 typedef void (*UnsignedGridCellSetter)(Grid021f9b30*, unsigned short, unsigned int, unsigned int);
 typedef void (*UnsignedOffsetSetter)(char*, unsigned short, unsigned short);
@@ -126,13 +126,13 @@ extern "C" ARM int func_ov004_021561b0(void* object) {
         if (data_ov004_021707c8.keys[index] > 0) {
             void* context = GetGlobalField0x1c020421a0();
             memset(buffers->scratch.bytes, 0, 0x100);
-            void* entry = FindEntryByKey(table, data_ov004_021707c8.keys[index]);
+            void* entry = FindEntryByKey_02072a68(table, data_ov004_021707c8.keys[index]);
             func_02046608(context, 0, entry, buffers->scratch.bytes, 0x60, 0, 0);
             Vector3fix position = node->getPosition();
             Vector3fix offset = node->getOffset();
             int y = (i / 2 * 20) << 12;
             padding = 0;
-            if (FindSubstring(buffers->scratch.bytes, data_ov004_02170398)) {
+            if (FindSubstring_020d2f88(buffers->scratch.bytes, data_ov004_02170398)) {
                 y -= 0x5000;
                 padding = 0x5000;
             }

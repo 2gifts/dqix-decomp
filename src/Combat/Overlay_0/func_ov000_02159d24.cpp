@@ -18,7 +18,7 @@ extern struct TableEntry02182d8a data_ov000_02182d8a[];
 
 // USA: func_ov000_02159d24
 extern "C" ARM int func_ov000_02159d24(int unused, int combatantId) {
-    GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), combatantId);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), combatantId);
     if (combatant == 0) {
         return 0;
     }

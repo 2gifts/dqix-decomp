@@ -19,7 +19,7 @@ void ResetList0204af64(struct List0204af64* obj);
 
 extern "C" void func_0204c684(void*);
 
-int GetField0x3acValue(GameState* battleStruct);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 
 struct ShortBytePair021e71a0;
 void ClearShortAndTwoBytes_021e71a0(struct ShortBytePair021e71a0* p);
@@ -57,7 +57,7 @@ extern "C" ARM void func_ov023_021e7220(void* obj, int val) {
     *(int*)((char*)obj + 0x5e4) = -1;
     *(int*)((char*)obj + 0x5ec) = 0;
     *(int*)((char*)obj + 0x5e8) = 0;
-    *(int*)((char*)obj + 0x5f0) = GetField0x3acValue(battleStruct);
+    *(int*)((char*)obj + 0x5f0) = GetField0x3acValue_020100a8(battleStruct);
     *(int*)((char*)obj + 0x5f4) = 0;
     *(int*)((char*)obj + 0x5f8) = 0;
     *(int*)((char*)obj + 0x5fc) = 0;

@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_02011408
-ARM void ClearBitArray(void* obj) {
+ARM void ClearBitArray_02011408(void* obj) {
     char* base = (char*)obj;
     int i;
     for (i = 0; i < 10; i++) {

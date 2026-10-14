@@ -8,17 +8,17 @@ struct Vec3 {
 
 extern "C" void* _ZN9GameState11GetInstanceEv(void);
 extern "C" unsigned int _ZNK9GameState12GetTickCountEv(void* self);
-int GetBit6At0xe0(unsigned char* p);
-void* GetFieldPtrAt0x11c(void* obj);
-int CheckBits5To9NonZero(unsigned short* obj);
+int GetBit6At0xe0_02033f5c(unsigned char* p);
+void* GetFieldPtrAt0x11c_02033fc4(void* obj);
+int CheckBits5To9NonZero_0204be78(unsigned short* obj);
 short fix32cos(int x);
 short fix32sin(int x);
 struct BitFlag02033f44;
 void* GetField0xe4IfFlag0x40(BitFlag02033f44*);
 extern "C" void Vector3fix_Normalize(struct Vec3* in, struct Vec3* out);
 extern "C" int Vector3fix_InnerProduct(struct Vec3* a, struct Vec3* b);
-int PackColorChannelsToDecimal(unsigned short* obj);
-int GetBits10To14(unsigned short* obj);
+int PackColorChannelsToDecimal_0204bea0(unsigned short* obj);
+int GetBits10To14_0204be90(unsigned short* obj);
 
 struct F02033f44 {
     char pad0[0x24];
@@ -40,14 +40,14 @@ extern "C" ARM int func_020a7d74(struct Obj020a7d74* self, int* out1, int* out2)
     if (self->f134 == 0) {
         ok = 0;
     }
-    if (GetBit6At0xe0((unsigned char*)self) == 0) {
+    if (GetBit6At0xe0_02033f5c((unsigned char*)self) == 0) {
         ok = 0;
     }
-    unsigned short* p = (unsigned short*)GetFieldPtrAt0x11c(self);
+    unsigned short* p = (unsigned short*)GetFieldPtrAt0x11c_02033fc4(self);
     if (p == 0) {
         ok = 0;
     }
-    if (CheckBits5To9NonZero(p) == 0) {
+    if (CheckBits5To9NonZero_0204be78(p) == 0) {
         ok = 0;
     }
     if (ok == 0) {
@@ -82,7 +82,7 @@ extern "C" ARM int func_020a7d74(struct Obj020a7d74* self, int* out1, int* out2)
     if (self->f138 < 0x28) {
         return 0;
     }
-    *out1 = PackColorChannelsToDecimal(p);
-    *out2 = GetBits10To14(p);
+    *out1 = PackColorChannelsToDecimal_0204bea0(p);
+    *out2 = GetBits10To14_0204be90(p);
     return 1;
 }

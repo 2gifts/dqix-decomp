@@ -9,9 +9,9 @@ struct ListNode02160094* GetNodeAtIndex02160094(struct List02160094* list, int i
 struct List021600f8;
 struct ListNode021600f8;
 struct ListNode021600f8* GetNodeAtIndex021600f8(struct List021600f8* list, int index);
-int CheckSubstructFlag0x80(unsigned char* obj);
+int CheckSubstructFlag0x80_02048bd0(unsigned char* obj);
 extern "C" short func_ov000_0215ffa0(void* obj);
-int GetField0Result02169aa4(void* obj, int type, void* out, int flag);
+int GetField0Result02169aa4_02048ae0(void* obj, int type, void* out, int flag);
 
 // USA: func_ov025_021dfa9c  (semantic: MatchNodesAndGetField_021dfa9c)
 extern "C" ARM int func_ov025_021dfa9c(void* obj, void* base) {
@@ -34,7 +34,7 @@ extern "C" ARM int func_ov025_021dfa9c(void* obj, void* base) {
     if (combatant == NULL) goto fail;
     if (count <= 0) goto fail;
     if (flagVal != 1) goto fail;
-    if (!CheckSubstructFlag0x80((unsigned char*)combatant)) goto fail;
+    if (!CheckSubstructFlag0x80_02048bd0((unsigned char*)combatant)) goto fail;
 
     target = (char*)base + 0x21c + 0x8000 + (count - 1) * 0x28;
     if (target == NULL) goto fail;
@@ -51,7 +51,7 @@ extern "C" ARM int func_ov025_021dfa9c(void* obj, void* base) {
 
     if (*(short*)((char*)nodeB + 0xe) != func_ov000_0215ffa0(nodeB)) goto fail;
 
-    result = GetField0Result02169aa4(combatant, flagVal, &localBuf[0], 2);
+    result = GetField0Result02169aa4_02048ae0(combatant, flagVal, &localBuf[0], 2);
     if (result >= 2) return localBuf[1];
 
 fail:

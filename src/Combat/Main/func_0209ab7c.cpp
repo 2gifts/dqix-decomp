@@ -23,14 +23,14 @@ struct Field150_0209ab7c {
     int slot;
 };
 
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 
 // USA: func_0209ab7c
 extern "C" ARM int func_0209ab7c(struct Holder0209ab7c* h, unsigned char* path, unsigned char* out,
                                  int threshold) {
     if (&h->base->slots[0].pairs[0] == NULL) return 0;
     if (&h->base->counts[0] == NULL) return 0;
-    struct Field150_0209ab7c* f = (struct Field150_0209ab7c*)GetFieldAt0x150(path);
+    struct Field150_0209ab7c* f = (struct Field150_0209ab7c*)GetFieldAt0x150_02053c6c(path);
     if (f == 0) return 0;
     int slot = f->slot;
     int idx;

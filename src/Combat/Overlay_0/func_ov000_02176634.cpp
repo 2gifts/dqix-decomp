@@ -138,12 +138,12 @@ struct Obj02046574;
 void SetIndexedName02046574(Obj02046574*, int, char*);
 extern "C" Node02176634* func_ov000_02161318(Menu02176634*, int);
 Skill02176634* GetBoundedField420_0217199c(void*, int);
-int GetAdjustedByteField0x1d6b(void*);
+int GetAdjustedByteField0x1d6b_ov000_021815c8(void*);
 Item02176634* FindElementByComputedKey021815e4(char*);
 extern "C" GameState* _ZN9GameState11GetInstanceEv();
-char* GetPtrField0x2a04(GameState*);
-Combatant02176634* GetCombatantWithFlag0x100(GameState*, int);
-PartyData02176634* GetFieldAt0x150(unsigned char*);
+char* GetPtrField0x2a04_02010828(GameState*);
+Combatant02176634* GetCombatantWithFlag0x100_0200ff1c(GameState*, int);
+PartyData02176634* GetFieldAt0x150_02053c6c(unsigned char*);
 struct Outer_02054000;
 Item02176634* GetActiveSub_02054000(Outer_02054000*);
 void DispatchIfCountPositive020dcf7c(int, void*);
@@ -152,7 +152,7 @@ extern "C" void func_0207c378(char*, short, int, int);
 extern "C" void func_02052d7c(Combatant02176634*, int, short);
 struct KeyedList0207c484;
 void DecrementKeyedStackAmount0207c484(KeyedList0207c484*, int, int, int);
-void TrySetFlags0x130(unsigned char*, unsigned short);
+void TrySetFlags0x130_020483f0(unsigned char*, unsigned short);
 extern "C" void func_ov017_021c9e00(int, int, int, int);
 extern "C" void func_02046608(Formatter02176634*, int, char*, char*, int, int, int);
 extern "C" void func_ov000_0217ab8c(Entry02176634*, int, int);
@@ -336,7 +336,7 @@ extern "C" ARM void func_ov000_02176634(Menu02176634* menu, Entry02176634* entry
     }
     case 0x1f: {
         Item02176634* selected = FindElementByComputedKey021815e4((char*)menu);
-        int flags = func_020dd4c4(GetAdjustedByteField0x1d6b(menu), selected);
+        int flags = func_020dd4c4(GetAdjustedByteField0x1d6b_ov000_021815c8(menu), selected);
         short msgId = 0x1a;
         for (unsigned char i = 0; data_ov000_02184550[i] != 0; i++) {
             if (flags & data_ov000_02184550[i]) {
@@ -351,12 +351,12 @@ extern "C" ARM void func_ov000_02176634(Menu02176634* menu, Entry02176634* entry
     case 0x20: {
         menu->dispatched = 0;
         short msgId = 0x14;
-        combatantId = GetAdjustedByteField0x1d6b(menu);
+        combatantId = GetAdjustedByteField0x1d6b_ov000_021815c8(menu);
         elem = FindElementByComputedKey021815e4((char*)menu);
         GameState* gs = _ZN9GameState11GetInstanceEv();
-        bag = GetPtrField0x2a04(gs);
-        combatant = GetCombatantWithFlag0x100(gs, combatantId);
-        data = GetFieldAt0x150((unsigned char*)combatant);
+        bag = GetPtrField0x2a04_02010828(gs);
+        combatant = GetCombatantWithFlag0x100_0200ff1c(gs, combatantId);
+        data = GetFieldAt0x150_02053c6c((unsigned char*)combatant);
         Item02176634* sub = GetActiveSub_02054000((Outer_02054000*)combatant);
         kind = 0x20;
         item = elem->id;
@@ -384,7 +384,7 @@ extern "C" ARM void func_ov000_02176634(Menu02176634* menu, Entry02176634* entry
             if (combatant->stats->flags & 1) msgId++;
             if (elem->cursed) {
                 msgId = 0x24;
-                TrySetFlags0x130((unsigned char*)combatant, 4);
+                TrySetFlags0x130_020483f0((unsigned char*)combatant, 4);
                 data->flags |= 4;
                 func_ov017_021c9e00(combatantId, 0, 0, 1);
                 ResetAndDispatchActorContext0209c6d8(data_02109bf4, 0x3d);
@@ -505,12 +505,12 @@ extern "C" ARM void func_ov000_02176634(Menu02176634* menu, Entry02176634* entry
     case 0x20: {
         menu->dispatched = 0;
         msgId = 0x14;
-        combatantId = GetAdjustedByteField0x1d6b(menu);
+        combatantId = GetAdjustedByteField0x1d6b_ov000_021815c8(menu);
         elem = FindElementByComputedKey021815e4((char*)menu);
         GameState* gs = _ZN9GameState11GetInstanceEv();
-        bag = GetPtrField0x2a04(gs);
-        combatant = GetCombatantWithFlag0x100(gs, combatantId);
-        data = GetFieldAt0x150((unsigned char*)combatant);
+        bag = GetPtrField0x2a04_02010828(gs);
+        combatant = GetCombatantWithFlag0x100_0200ff1c(gs, combatantId);
+        data = GetFieldAt0x150_02053c6c((unsigned char*)combatant);
         Item02176634* sub = GetActiveSub_02054000((Outer_02054000*)combatant);
         kind = 0x20;
         item = elem->id;
@@ -545,7 +545,7 @@ extern "C" ARM void func_ov000_02176634(Menu02176634* menu, Entry02176634* entry
             }
             if (elem->cursed) {
                 msgId = 0x24;
-                TrySetFlags0x130((unsigned char*)combatant, 4);
+                TrySetFlags0x130_020483f0((unsigned char*)combatant, 4);
                 data->flags |= 4;
                 func_ov017_021c9e00(combatantId, 0, 0, 1);
                 ResetAndDispatchActorContext0209c6d8(data_02109bf4, 0x3d);

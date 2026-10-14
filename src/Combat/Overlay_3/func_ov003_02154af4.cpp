@@ -45,15 +45,15 @@ struct Obj0207fc6c;
 void CallFunc0204c87cOverEntries0207fc6c(Obj0207fc6c*, int);
 extern "C" void* _ZN9GameState11GetInstanceEv();
 struct GameState;
-Party* GetPtrField0x2a04(GameState*);
+Party* GetPtrField0x2a04_02010828(GameState*);
 extern "C" Member* _ZN9GameState21GetPartyMemberByIndexEi(void*,int);
-unsigned int GetTableValue(void*);
+unsigned int GetTableValue_0202053c(void*);
 struct Obj2081;
-int HasElementByByte0xc4(Obj2081*, int);
+int HasElementByByte0xc4_020811d0(Obj2081*, int);
 extern "C" void func_ov003_02158334(Scene*);
 extern "C" void func_02081f20(void*,unsigned int);
 extern "C" int func_020800fc(Model*,short*,int,unsigned short,unsigned char,int);
-void ClearSublistEntriesFlag4(void*, int);
+void ClearSublistEntriesFlag4_020804fc(void*, int);
 extern "C" void func_020813ec(Model*,int);
 struct Ctx020e263c;
 void UpdateEntryStateAndPosition(Ctx020e263c*, int);
@@ -78,7 +78,7 @@ extern "C" ARM int func_ov003_02154af4(Scene* self,unsigned int scale) {
   int i; Cache* c; Member* member; bool changed; int id; Party* party; void* gs;
   changed=false;
   gs=_ZN9GameState11GetInstanceEv();
-  party=GetPtrField0x2a04((GameState*)gs);
+  party=GetPtrField0x2a04_02010828((GameState*)gs);
   int count=party->count;
   for(i=0;i<count;i++) {
    id=party->ids[i];
@@ -87,20 +87,20 @@ extern "C" ARM int func_ov003_02154af4(Scene* self,unsigned int scale) {
     c=&self->cache[id];
     unsigned int hp=member->HP();
     unsigned int maxhp,mp,maxmp,voc,flags;
-    if(!(c->hp==hp && ((maxhp=member->MaxHP()), c->maxHP==maxhp) && ((mp=member->MP()), c->mp==mp) && ((maxmp=member->MaxMP()), c->maxMP==maxmp) && ((voc=member->Voc()), c->vocation==voc) && c->table==GetTableValue(member) && ((flags=member->Flags()), c->flags==flags))) {
+    if(!(c->hp==hp && ((maxhp=member->MaxHP()), c->maxHP==maxhp) && ((mp=member->MP()), c->mp==mp) && ((maxmp=member->MaxMP()), c->maxMP==maxmp) && ((voc=member->Voc()), c->vocation==voc) && c->table==GetTableValue_0202053c(member) && ((flags=member->Flags()), c->flags==flags))) {
      c->hp=member->status->hp; c->maxHP=member->profile->hp; c->mp=member->status->mp; c->maxMP=member->profile->mp;
-     c->vocation=member->vocation->value; c->table=GetTableValue(member); changed=true; c->flags=member->status->flags;
+     c->vocation=member->vocation->value; c->table=GetTableValue_0202053c(member); changed=true; c->flags=member->status->flags;
     }
    }
   }
-  if(changed) for(int i=0;i<3;i++) if(HasElementByByte0xc4((Obj2081*)model, data_ov003_0217f2a8[i])) { func_ov003_02158334(self);break; }
+  if(changed) for(int i=0;i<3;i++) if(HasElementByByte0xc4_020811d0((Obj2081*)model, data_ov003_0217f2a8[i])) { func_ov003_02158334(self);break; }
  }
  if(self->selection) {
   func_02081f20(self->selector,scale);
   self->previous=*self->selection;
   self->changed=func_020800fc(model,self->selection,self->previous,self->field8c,self->field8e,(self->flags&4)!=0);
   model->selected=*self->selection;
-  if(self->changed) ClearSublistEntriesFlag4(model, self->element);
+  if(self->changed) ClearSublistEntriesFlag4_020804fc(model, self->element);
   if(self->previous!=*self->selection) func_020813ec(model,self->element);
  }
  if(self->inner && GetInnerFlagBit0020e28dc((Outer020e28dc*)self->inner)) UpdateEntryStateAndPosition((Ctx020e263c*)self->inner, self->scale);

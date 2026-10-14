@@ -43,22 +43,22 @@ struct EquipmentMenu {
 };
 
 struct Struct_0205d81c;
-MenuElement* FindElementForFieldB0(Struct_0205d81c*);
+MenuElement* FindElementForFieldB0_0205d8c4(Struct_0205d81c*);
 int GetInnerFlagBit0020e28dc(Outer020e28dc* p);
 extern "C" void func_0205ae8c(void* obj);
-int CheckField0x9cSetWhenField0xd4Present(unsigned char* obj);
+int CheckField0x9cSetWhenField0xd4Present_0204c7e0(unsigned char* obj);
 int GetActiveScaledSum0205d794(Struct_0205c570* window);
 void* GetField1c_021a193c(int* p);
 extern "C" void func_ov023_021e3304(void* cursor, short x, short y);
 
 // USA: func_ov005_0215a7ec
 extern "C" ARM void func_ov005_0215a7ec(EquipmentMenu* self) {
-    MenuElement* elem = FindElementForFieldB0((Struct_0205d81c*)self->window_);
+    MenuElement* elem = FindElementForFieldB0_0205d8c4((Struct_0205d81c*)self->window_);
     if (elem != NULL) {
         unsigned char kind = elem->kind_;
         if (self->yesNo_ != NULL && GetInnerFlagBit0020e28dc(self->yesNo_)) {
             func_0205ae8c(self->yesNoState_);
-        } else if (kind == 1 && CheckField0x9cSetWhenField0xd4Present((unsigned char*)elem)) {
+        } else if (kind == 1 && CheckField0x9cSetWhenField0xd4Present_0204c7e0((unsigned char*)elem)) {
             short x = (short)(elem->col_ << 3) + elem->offsetX_;
             short y = (short)(elem->row_ << 3) + elem->offsetY_;
             if (kind == 2) {

@@ -10,7 +10,7 @@ struct Foo0201e518 {
 };
 
 // USA: func_0201e518
-ARM void ZoneFeatures::AllocateOpcode68Entries(int count, SafeAllocator* alloc) {
+ARM void ZoneFeatures::AllocateOpcode68Entries_0201e518(int count, SafeAllocator* alloc) {
     struct Foo0201e518* obj = (struct Foo0201e518*)this;
     obj->ptr = alloc->Allocate(count * 0x70);
     obj->idx = 0;

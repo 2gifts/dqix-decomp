@@ -17,8 +17,8 @@ struct Obj0203c108 {
 };
 void SwapGlobalEntry0203c108(struct Obj0203c108* obj, char* fmt);
 
-int IsFlag0x18Bit0x200Set(GameObject* obj);
-int AdjustValueByFieldFlag(void* obj, unsigned int value);
+int IsFlag0x18Bit0x200Set_ov000_02153a8c(GameObject* obj);
+int AdjustValueByFieldFlag_020dd290(void* obj, unsigned int value);
 
 struct Entry02171458 {
     int name;
@@ -72,16 +72,16 @@ extern "C" ARM void func_ov000_02171458(struct Menu02171458* menu) {
         SwapGlobalEntry0203c108(&menu->label, GetFieldByKey020e0434(menu->container, 5));
         return;
     }
-    GameObject* c = GetCombatantWithFlag0x100(GameState::GetInstance(), menu->combatantId);
+    GameObject* c = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), menu->combatantId);
     int value = menu->entries[cursor]->value;
-    if (c != NULL && IsFlag0x18Bit0x200Set(c)) {
+    if (c != NULL && IsFlag0x18Bit0x200Set_ov000_02153a8c(c)) {
         value = 0;
     } else if (menu->entries[cursor]->id == 0x28) {
         value = 0x14;
     } else if (menu->entries[cursor]->value >= 0xff) {
         value = 1;
     } else {
-        value = AdjustValueByFieldFlag(c, value);
+        value = AdjustValueByFieldFlag_020dd290(c, value);
     }
     if (menu->state.limit < value) {
         state->depth++;

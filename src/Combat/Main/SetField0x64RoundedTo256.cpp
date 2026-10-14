@@ -6,7 +6,7 @@ struct Struct_203cdd8 {
 };
 
 // USA: func_0203cdd8
-ARM void SetField0x64RoundedTo256(struct Struct_203cdd8* obj, int value) {
+ARM void SetField0x64RoundedTo256_0203cdd8(struct Struct_203cdd8* obj, int value) {
     int rounded = value & ~0xff;
     obj->value = value;
     if ((unsigned int)(value & 0xff) >= (unsigned int)-128) {

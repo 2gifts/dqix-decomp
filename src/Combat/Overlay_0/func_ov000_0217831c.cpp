@@ -34,19 +34,19 @@ struct BattleItemMenu {
 void ComputeProductSums0205c508(struct UnkStruct0205c508* s, int* first, int* last);
 const char* GetFieldByKey020e0434(struct Container020e0310* c, int key);
 struct ActiveSub02054000* GetActiveSub_02054000(struct Outer_02054000* p);
-int IsField0x118Equal2(void* obj);
+int IsField0x118Equal2_ov000_0217542c(void* obj);
 int AppendFrameTag02041c08(char* dst, int a1, int a2, int a3, int a4, int a5);
-int AppendCursorTag(char* dst, int cursor);
+int AppendCursorTag_02041ea4(char* dst, int cursor);
 struct ItemNameEntry* FindElementByKey020dedd0(struct Container020dedd0* c, int key);
 void CopyTextAndUppercaseIfFlagged0206819c(const char* src, char* dst, int flag);
 int AppendString02042058(char* dst, const char* src);
 #if defined(jpn)
 extern "C" int func_02042158(char* dst, int w);
-#define AppendWidthTag func_02042158
+#define AppendWidthTag_02041acc func_02042158
 #else
-int AppendWidthTag(char* dst, int w);
+int AppendWidthTag_02041acc(char* dst, int w);
 #endif
-int AppendNameTag(char* dst, int n, const char* name);
+int AppendNameTag_02041b70(char* dst, int n, const char* name);
 extern "C" void __clear(void* dst, unsigned int size);
 
 // USA: func_ov000_0217831c
@@ -65,15 +65,15 @@ extern "C" ARM void func_ov000_0217831c(BattleItemMenu* menu, char* dst)
     signed char combatantId = menu->combatantIds[menu->currentCombatant];
     int selectedKey = -1;
     GameState* state = GameState::GetInstance();
-    GameObject* combatant = GetCombatantWithFlag0x100(state, combatantId);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(state, combatantId);
     struct ActiveSub02054000* sub = GetActiveSub_02054000((struct Outer_02054000*)combatant);
     if (sub != NULL) {
         selectedKey = sub->itemKey;
     }
-    if (IsField0x118Equal2(menu)) {
+    if (IsField0x118Equal2_ov000_0217542c(menu)) {
         AppendFrameTag02041c08(dst, cursor - start, 8, 5, 5, 5);
     }
-    AppendCursorTag(dst, cursor - start);
+    AppendCursorTag_02041ea4(dst, cursor - start);
     for (signed char i = start; i < end; i++) {
         char line[0x40];
         __clear(line, sizeof(line));
@@ -93,13 +93,13 @@ extern "C" ARM void func_ov000_0217831c(BattleItemMenu* menu, char* dst)
         if (selectedKey == key) {
             AppendString02042058(line, GetFieldByKey020e0434(texts, 0x13));
 #if !defined(jpn)
-            AppendWidthTag(line, 3);
+            AppendWidthTag_02041acc(line, 3);
 #endif
         } else {
-            AppendWidthTag(line, 8);
+            AppendWidthTag_02041acc(line, 8);
         }
         AppendString02042058(line, name);
-        AppendNameTag(dst, n, line);
+        AppendNameTag_02041b70(dst, n, line);
         if (i != end - 1) {
             AppendString02042058(dst, separator);
         }

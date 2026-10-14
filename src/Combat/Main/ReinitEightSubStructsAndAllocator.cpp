@@ -4,19 +4,19 @@
 #include "Memory/AllocatorUnion.h"
 
 struct Foo02048004;
-extern void MaybeInvoke0204719c(struct Foo02048004* obj);
-extern void InitEightSubStructs(char* obj);
+extern void MaybeInvoke0204719c_02047230(struct Foo02048004* obj);
+extern void InitEightSubStructs_0202f1a4(char* obj);
 extern void TailForward02012da4(AllocatorUnion* alloc, void* data);
 
 extern AllocatorUnion data_02114e20;
 
 // USA: func_0202f1dc
-ARM void ReinitEightSubStructsAndAllocator(char* obj) {
+ARM void ReinitEightSubStructsAndAllocator_0202f1dc(char* obj) {
     char* p;
     int i;
     p = obj;
     for (i = 0; i < 8; i++) {
-        MaybeInvoke0204719c((struct Foo02048004*)p);
+        MaybeInvoke0204719c_02047230((struct Foo02048004*)p);
         p += 0x88;
     }
 
@@ -27,5 +27,5 @@ ARM void ReinitEightSubStructsAndAllocator(char* obj) {
         TailForward02012da4(&data_02114e20, *(SafeAllocator**)(obj + 0x444));
     }
 
-    InitEightSubStructs(obj);
+    InitEightSubStructs_0202f1a4(obj);
 }

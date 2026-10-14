@@ -40,18 +40,18 @@ struct Action0216c42c {
     unsigned int id : 7;
 };
 
-void* GetPtrField0x2a04(GameState* gs);
+void* GetPtrField0x2a04_02010828(GameState* gs);
 extern "C" void* memset(void* dst, int c, unsigned int n);
-int ArrayContainsByte(ArrayContainsByteStruct* s, int val);
+int ArrayContainsByte_02086ef0(ArrayContainsByteStruct* s, int val);
 
-int GetField0x3acValue(GameState* gs);
+int GetField0x3acValue_020100a8(GameState* gs);
 void EnqueueEventTag37_021d2cc0(void* src);
 
 // USA: func_ov002_0216c42c
 extern "C" ARM void func_ov002_0216c42c(char* base, Src0216c42c* src, Action0216c42c* action) {
     if (src == NULL || action == NULL) return;
     GameState* gs = GameState::GetInstance();
-    ArrayContainsByteStruct* party = (ArrayContainsByteStruct*)GetPtrField0x2a04(gs);
+    ArrayContainsByteStruct* party = (ArrayContainsByteStruct*)GetPtrField0x2a04_02010828(gs);
     Event0216c42c ev;
     memset(&ev, 0, 0x10);
     ev.kind = 1;
@@ -77,14 +77,14 @@ extern "C" ARM void func_ov002_0216c42c(char* base, Src0216c42c* src, Action0216
     signed char n = 0;
     for (int i = 0; i < src->count; i++) {
         int id = src->ids[i];
-        if (ArrayContainsByte(party, id) == 0) {
+        if (ArrayContainsByte_02086ef0(party, id) == 0) {
             ev.ids[n] = id;
             Val0216c42c* d = &ev.vals[n];
             SrcVal0216c42c* v = &src->lo[i];
             d->lo = v->lo;
             d->hi = src->hi[i].lo;
             if (ev.type == 4 && v->kind == 3) {
-                char* c = (char*)GetCombatantWithFlag0x100(gs, id);
+                char* c = (char*)GetCombatantWithFlag0x100_0200ff1c(gs, id);
                 if (c != NULL) {
                     *(unsigned char*)(base + 0x2522) = 1;
                     *(unsigned char*)(base + 0x2523) = 0;
@@ -95,6 +95,6 @@ extern "C" ARM void func_ov002_0216c42c(char* base, Src0216c42c* src, Action0216
         }
     }
     ev.count = n;
-    ev.fe = GetField0x3acValue(gs);
+    ev.fe = GetField0x3acValue_020100a8(gs);
     EnqueueEventTag37_021d2cc0(&ev);
 }

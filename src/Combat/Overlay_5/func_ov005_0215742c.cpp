@@ -37,7 +37,7 @@ struct EquipmentMenu {
 extern unsigned short data_02114e30;
 extern int data_02108760;
 
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 extern "C" void func_ov005_0215792c(EquipmentMenu* self, unsigned char state);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0* obj, int a, int b);
 int CheckFlag30Or401_02157190(void* self);
@@ -48,10 +48,10 @@ extern "C" void func_ov005_021555c0(EquipmentMenu* self);
 
 // USA: func_ov005_0215742c
 extern "C" ARM void func_ov005_0215742c(EquipmentMenu* self) {
-    if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x80)) {
+    if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x80)) {
         func_ov005_0215792c(self, 3);
         self->slot_ = self->kind_;
-        if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x80))
+        if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x80))
             DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 2, 0);
         else if (CheckFlag30Or401_02157190(self))
             DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 1, 0);

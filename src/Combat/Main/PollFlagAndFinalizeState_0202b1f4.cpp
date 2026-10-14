@@ -11,12 +11,12 @@ void* GetDataPtr02114e04_020d6c00(void);
 struct FlagWord02046708;
 int TestFlags02046708(struct FlagWord02046708* word, unsigned int mask);
 int PollUntilFieldMatchesOrLimit0202b284(int unused, int threshold);
-void OrBitsIntoField0(unsigned int* p, unsigned int mask);
+void OrBitsIntoField0_020466e4(unsigned int* p, unsigned int mask);
 extern "C" void func_ov017_021c37a4(void);
 struct GameResources;
 void SetBrightness(GameResources*, int, int);
 struct StateBits5ccc_11544;
-void SetFlag0x5cccBit0(struct StateBits5ccc_11544* state);
+void SetFlag0x5cccBit0_02011544(struct StateBits5ccc_11544* state);
 
 // USA: func_0202b1f4  (semantic: PollFlagAndFinalizeState_0202b1f4)
 extern "C" ARM int func_0202b1f4(int* outPtr) {
@@ -30,11 +30,11 @@ extern "C" ARM int func_0202b1f4(int* outPtr) {
     if ((unsigned int)((result + 0xfe) & 0xff) > 1) {
         return result;
     }
-    OrBitsIntoField0((unsigned int*)flagWord, 0x1000000);
+    OrBitsIntoField0_020466e4((unsigned int*)flagWord, 0x1000000);
     func_ov017_021c37a4();
     SetBrightness((GameResources*)ctx, -16, 10);
     *(unsigned char*)((char*)battleStruct + kRegionalFieldOffset) = 4;
-    SetFlag0x5cccBit0((struct StateBits5ccc_11544*)battleStruct);
+    SetFlag0x5cccBit0_02011544((struct StateBits5ccc_11544*)battleStruct);
     *outPtr = 3;
     return 3;
 }

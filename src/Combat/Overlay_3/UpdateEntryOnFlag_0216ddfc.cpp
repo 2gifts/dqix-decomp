@@ -13,12 +13,11 @@ enum { kRegiondf = 0xdf };
 
 #include "GameState/GameState.h"
 
-
 struct Container0205a3d0;
 struct Elem0205a3d0;
 void SetEntryFlag2ByKey0205a370(struct Container0205a3d0* c, int key);
 struct Elem0205a3d0* FindEntryByHalfword0205a3d0(struct Container0205a3d0* c, int key);
-void SetEntryPosition(struct Container0205a3d0* c, int key, short a, short b);
+void SetEntryPosition_020e27ec(struct Container0205a3d0* c, int key, short a, short b);
 void SetEntryByte14ByKey0205a42c(struct Container0205a3d0* c, int key, int val);
 
 struct Container0205a330;
@@ -41,11 +40,11 @@ extern "C" ARM void func_ov003_0216ddfc(char* obj) {
                 *(unsigned char*)((char*)e + 0x15) |= 8;
             }
             IterateEntries0205a330((struct Container0205a330*)cont, battle->GetTickCount());
-            SetEntryPosition(cont, 1, kRegiondf, 0x96);
+            SetEntryPosition_020e27ec(cont, 1, kRegiondf, 0x96);
             SetEntryByte14ByKey0205a42c(cont, 1, 0x10);
 #if !defined(jpn)
             if (NormalizeField5_0200fb08((struct Struct0200fb08*)GameState::GetInstance()) == 3) {
-                SetEntryPosition(cont, 1, 0xd7, 0x96);
+                SetEntryPosition_020e27ec(cont, 1, 0xd7, 0x96);
             }
 #endif
         }

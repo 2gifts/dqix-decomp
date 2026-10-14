@@ -12,7 +12,7 @@ struct Struct_203dafc {
 };
 
 // USA: func_0203dafc
-ARM void ClearEightWords(struct Struct_203dafc* obj) {
+ARM void ClearEightWords_0203dafc(struct Struct_203dafc* obj) {
     obj->field0 = 0;
     obj->field4 = 0;
     obj->field8 = 0;

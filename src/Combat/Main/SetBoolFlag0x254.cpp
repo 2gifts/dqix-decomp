@@ -7,6 +7,6 @@ enum { FIELD_OFFSET = 0x254 };
 #endif
 
 // USA: func_0203983c
-ARM void SetBoolFlag0x254(unsigned char* obj, int value) {
+ARM void SetBoolFlag0x254_0203983c(unsigned char* obj, int value) {
     obj[FIELD_OFFSET] = value != 0;
 }

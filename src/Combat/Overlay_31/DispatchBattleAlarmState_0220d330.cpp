@@ -4,10 +4,10 @@ unsigned int DisableIRQInterrupts(void);
 void SetIRQInterruptState(int mask);
 void InvalidateDataCacheRange(const void* addr, unsigned int size);
 int ClearBattleSaveContext020d3fdc(void);
-int SubmitBattleContextSlot4(int value);
-int IssueBattleCommandSlot6(int fn);
-int IssueBattleCommandSlot1(int fn);
-unsigned short* GetBattleField4IfActive(void);
+int SubmitBattleContextSlot4_020d4ebc(int value);
+int IssueBattleCommandSlot6_020d4f3c(int fn);
+int IssueBattleCommandSlot1_020d5004(int fn);
+unsigned short* GetBattleField4IfActive_020d46a8(void);
 extern "C" void func_ov031_0220da1c(int);
 extern "C" void func_ov031_0220dc40(void);
 extern "C" void func_ov031_0220e7b0(void);
@@ -64,7 +64,7 @@ extern "C" ARM int func_ov031_0220d330(void) {
 				goto epilogue3;
 			}
 			{
-				unsigned short* field4 = GetBattleField4IfActive();
+				unsigned short* field4 = GetBattleField4IfActive_020d46a8();
 				InvalidateDataCacheRange(field4, 2);
 				switch (*field4) {
 					case 0:
@@ -75,14 +75,14 @@ extern "C" ARM int func_ov031_0220d330(void) {
 						SetIRQInterruptState(mask);
 						return 0;
 					case 1:
-						result = SubmitBattleContextSlot4((int)func_ov031_0220dc40);
+						result = SubmitBattleContextSlot4_020d4ebc((int)func_ov031_0220dc40);
 						break;
 					case 2:
-						result = IssueBattleCommandSlot6((int)func_ov031_0220dc40);
+						result = IssueBattleCommandSlot6_020d4f3c((int)func_ov031_0220dc40);
 						break;
 					default:
 						data_ov031_0224e53c->flag226b = 1;
-						result = IssueBattleCommandSlot1((int)func_ov031_0220e7b0);
+						result = IssueBattleCommandSlot1_020d5004((int)func_ov031_0220e7b0);
 						break;
 				}
 			}

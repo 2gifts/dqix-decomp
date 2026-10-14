@@ -68,7 +68,7 @@ extern "C" void _Z13Func_0215a33cP11Obj0215a33c(Obj0215cc70* self, int critical)
 extern "C" int func_ov006_0215a384(Obj0215cc70* self, int critical);
 extern "C" void func_ov006_0215fe34(Obj0215cc70* self, void* list);
 extern "C" int func_ov006_0215fecc(Obj0215cc70* self);
-int GetField0x3acValue(GameState* gs);
+int GetField0x3acValue_020100a8(GameState* gs);
 extern "C" int func_020dd4c4(signed char a, void* list);
 extern "C" void func_ov006_02159db0(Obj0215cc70* self);
 extern "C" int func_ov006_02159e50(Obj0215cc70* self);
@@ -77,14 +77,14 @@ void* GetBTRandom(void);
 struct Random;
 unsigned int NextRandomMax(Random*, int);
 struct Obj2081;
-void SetElementFlag0x20(Obj2081*, int);
-void ClearElementFlag0x20(Obj2081*, int);
+void SetElementFlag0x20_02080c04(Obj2081*, int);
+void ClearElementFlag0x20_02080c20(Obj2081*, int);
 extern "C" int _Z26CheckFlagOrByte55_02158c70v(Obj0215cc70* self);
 extern "C" void func_ov006_02153cbc(void* table, int a, int b, void* out);
 extern "C" void func_ov006_0215759c(void* list, Entry0215cc70* entry, int count);
 extern "C" void func_ov006_02158de0(Obj0215cc70* self);
 unsigned int* GetDataPtr02114e04_020d6c00(void);
-void OrBitsIntoField0(unsigned int* p, unsigned int bits);
+void OrBitsIntoField0_020466e4(unsigned int* p, unsigned int bits);
 struct Struct020a9ea4;
 void ClearStruct020a9ea4(Struct020a9ea4*);
 extern "C" void* func_0202ae18(void);
@@ -92,17 +92,17 @@ extern "C" int func_0202c540(void* p);
 extern "C" int func_020aad1c(void* loader, void* name, int a, int b);
 struct FlagWord020466f4;
 void ClearFlags020466f4(FlagWord020466f4*, unsigned int);
-void** CallFunc020e52a0(void* lookup, int id);
+void** CallFunc020e52a0_020e5294(void* lookup, int id);
 extern "C" void* memset(void* dst, int c, unsigned int n);
 extern "C" void func_020e4864(void* src, void* dst, int a, int b, int c, int d);
 struct Container02080f8c;
 void SetEntryFirstField02080f8c(Container02080f8c*, int, int);
-void Forward0207f7acObjPlus4Size0x40(void* elements, int key);
+void Forward0207f7acObjPlus4Size0x40_020805f4(void* elements, int key);
 extern "C" void func_020813ec(void* elements, int key);
 void InitHandleAndDispatch_021571fc(char*);
 struct Struct0209c830;
 void SetValueAndActivate0209c830(Struct0209c830*, int);
-void CallFunc0204c804OnMatchingKey(Obj2081*, int);
+void CallFunc0204c804OnMatchingKey_0207fdcc(Obj2081*, int);
 void SetByte_0215728c_0215728c(void*);
 
 static inline short* ChancePtr(Obj0215cc70* self) { return (short*)((char*)self + 0x382); }
@@ -144,7 +144,7 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
                 func_ov006_0215fe34(self, self->list);
             }
         } else if (func_ov006_0215fecc(self)) {
-            int r = func_020dd4c4(GetField0x3acValue(GameState::GetInstance()), self->list);
+            int r = func_020dd4c4(GetField0x3acValue_020100a8(GameState::GetInstance()), self->list);
             self->state = 5;
             if (r & 0x10) {
                 self->flags |= 0x20;
@@ -186,10 +186,10 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
                 }
                 _Z13Func_0215a33cP11Obj0215a33c(self, self->IsCritical());
             } else {
-                SetElementFlag0x20((Obj2081*)self->elements, 0x10);
-                SetElementFlag0x20((Obj2081*)self->elements, 0x11);
-                SetElementFlag0x20((Obj2081*)self->elements, 1);
-                SetElementFlag0x20((Obj2081*)self->elements, 0);
+                SetElementFlag0x20_02080c04((Obj2081*)self->elements, 0x10);
+                SetElementFlag0x20_02080c04((Obj2081*)self->elements, 0x11);
+                SetElementFlag0x20_02080c04((Obj2081*)self->elements, 1);
+                SetElementFlag0x20_02080c04((Obj2081*)self->elements, 0);
                 self->ctx->flags |= 0x10;
                 self->field432 = 1;
                 self->waitCount = 0;
@@ -275,7 +275,7 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
             ExpireStatusSlot02159094((Obj02159094*)self);
             ExpireStatusSlot02159094((Obj02159094*)self);
             self->flags = (self->flags | 0x20) & ~0x40;
-            ClearElementFlag0x20((Obj2081*)self->elements, 0);
+            ClearElementFlag0x20_02080c20((Obj2081*)self->elements, 0);
             self->message = 0x19;
             self->messageTimer = 0;
             self->flags |= 0x20;
@@ -283,7 +283,7 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
         }
     } else if (self->state == 0x5a) {
         if (_Z26CheckFlagOrByte55_02158c70v(self)) {
-            ClearElementFlag0x20((Obj2081*)self->elements, 0);
+            ClearElementFlag0x20_02080c20((Obj2081*)self->elements, 0);
             self->message = 0x24;
             self->messageTimer = 0;
             self->flags |= 0x20;
@@ -294,12 +294,12 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
     } else if (self->state == 0xd) {
         self->message = 0x36;
         self->messageTimer = 0;
-        SetElementFlag0x20((Obj2081*)self->elements, 0);
+        SetElementFlag0x20_02080c04((Obj2081*)self->elements, 0);
         self->state++;
     } else if (self->state == 0xe) {
         self->flags |= 0x200;
         if (BackgroundLoader::GetInstance()->GetNumQueuedTasks() <= 0) {
-            OrBitsIntoField0(GetDataPtr02114e04_020d6c00(), 0x80);
+            OrBitsIntoField0_020466e4(GetDataPtr02114e04_020d6c00(), 0x80);
             ClearStruct020a9ea4((Struct020a9ea4*)self->loader);
             self->state++;
         }
@@ -326,16 +326,16 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
             self->message = 0x1a;
             self->messageTimer = 0;
             self->flags |= 0x20;
-            ClearElementFlag0x20((Obj2081*)self->elements, 0);
+            ClearElementFlag0x20_02080c20((Obj2081*)self->elements, 0);
             self->state++;
         }
     } else if (self->state == 0x12) {
         self->field42c = 0;
         if (_Z26CheckFlagOrByte55_02158c70v(self)) {
-            SetElementFlag0x20((Obj2081*)self->elements, 0x10);
-            SetElementFlag0x20((Obj2081*)self->elements, 0x11);
-            SetElementFlag0x20((Obj2081*)self->elements, 1);
-            SetElementFlag0x20((Obj2081*)self->elements, 0);
+            SetElementFlag0x20_02080c04((Obj2081*)self->elements, 0x10);
+            SetElementFlag0x20_02080c04((Obj2081*)self->elements, 0x11);
+            SetElementFlag0x20_02080c04((Obj2081*)self->elements, 1);
+            SetElementFlag0x20_02080c04((Obj2081*)self->elements, 0);
             self->ctx->flags |= 0x10;
             self->field432 = 1;
             self->waitCount = 0;
@@ -352,13 +352,13 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
         void** res;
         int sound;
         self->busy = 1;
-        res = CallFunc020e52a0(self->lookup, self->lookupId);
+        res = CallFunc020e52a0_020e5294(self->lookup, self->lookupId);
         if (res != 0) {
             memset(*self->buffer, 0, 0x80);
             func_020e4864(*res, *self->buffer, 1, 0, 0, 0);
             SetEntryFirstField02080f8c((Container02080f8c*)self->elements, 0x7f, (int)(*self->buffer));
         }
-        Forward0207f7acObjPlus4Size0x40(self->elements, 0x7f);
+        Forward0207f7acObjPlus4Size0x40_020805f4(self->elements, 0x7f);
         func_020813ec(self->elements, 0x12);
         ctx->flags |= 0x400;
         self->field42f = 1;
@@ -380,7 +380,7 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
     } else if (self->state == 0x17) {
         if (_Z26CheckFlagOrByte55_02158c70v(self)) {
             short id;
-            CallFunc0204c804OnMatchingKey((Obj2081*)self->elements, 0x12);
+            CallFunc0204c804OnMatchingKey_0207fdcc((Obj2081*)self->elements, 0x12);
             self->busy = 0;
             ctx->flags &= ~0x800;
             id = 0x1f;
@@ -415,13 +415,13 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
         if (self->entry != 0) {
             void** res;
             self->busy = 1;
-            res = CallFunc020e52a0(self->lookup, self->lookupId);
+            res = CallFunc020e52a0_020e5294(self->lookup, self->lookupId);
             if (res != 0) {
                 memset(*self->buffer, 0, 0x80);
                 func_020e4864(*res, *self->buffer, 1, 0, 0, 0);
                 SetEntryFirstField02080f8c((Container02080f8c*)self->elements, 0x7f, (int)(*self->buffer));
             }
-            Forward0207f7acObjPlus4Size0x40(self->elements, 0x7f);
+            Forward0207f7acObjPlus4Size0x40_020805f4(self->elements, 0x7f);
             func_020813ec(self->elements, 0x12);
             func_ov006_02153cbc(self->table, self->entry->id, -1, self->out);
             func_ov006_0215759c(self->list, self->entry, self->mergeCount);
@@ -430,7 +430,7 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
             self->field42f = 1;
             SetValueAndActivate0209c830((Struct0209c830*)&data_02109bf4, 0x3e);
             ctx->flags |= 0x400;
-            SetElementFlag0x20((Obj2081*)self->elements, 0);
+            SetElementFlag0x20_02080c04((Obj2081*)self->elements, 0);
             self->message = 0xc;
             self->messageTimer = 0;
             self->state++;
@@ -453,9 +453,9 @@ extern "C" ARM void func_ov006_0215cc70(Obj0215cc70* self) {
         if (self->field42f != 0) {
             self->field42c = 0;
         } else if (_Z26CheckFlagOrByte55_02158c70v(self)) {
-            CallFunc0204c804OnMatchingKey((Obj2081*)self->elements, 0x12);
+            CallFunc0204c804OnMatchingKey_0207fdcc((Obj2081*)self->elements, 0x12);
             ctx->flags &= ~0x800;
-            ClearElementFlag0x20((Obj2081*)self->elements, 0);
+            ClearElementFlag0x20_02080c20((Obj2081*)self->elements, 0);
             self->flags |= 0x20;
             self->message = 0x24;
             self->messageTimer = 0;

@@ -53,7 +53,7 @@ extern "C" Zone021a6c2c* func_02012fe4();
 extern "C" void func_020a0cc4(unsigned int);
 void CheckAndEnqueueTag_021d1cb8_021d1cb8();
 void CancelPendingAction020397cc(Obj020397cc*, int);
-void* AllocateAligned4(AllocatorUnion*, unsigned int);
+void* AllocateAligned4_02012d88(AllocatorUnion*, unsigned int);
 void CopyInternalFields0207df50(Foo0207df50*);
 void CleanInvalidateCacheRange(const void*, unsigned int);
 extern "C" void func_02057e6c(void*, int, SafeAllocator*, void*, unsigned int, Foo0207df50*);
@@ -62,8 +62,8 @@ void CopyCountedBytesToIntArray02010834(Base02010834*, int, int*, int*);
 void FindNodeAndProcess02057fb4(void*, int, int);
 void SetForwardAndStore0205ebc0(void*, int, int);
 void DispatchIfField0xc4NonNeg_0205ebfc(void*, int, int);
-int GetByte0x26c(char*);
-void* GetField0x3f8Address(GameState*);
+int GetByte0x26c_02039d7c(char*);
+void* GetField0x3f8Address_0200fd0c(GameState*);
 #if defined(jpn)
 #define func_ov017_021a7280 func_ov017_021a7c28
 #define data_ov017_021d777c data_ov017_021d7bb8
@@ -112,7 +112,7 @@ extern "C" ARM void func_ov017_021a6c2c(Event021a6c2c* self) {
         if (!loader->GetTaskStatus(self->task)) return;
         void* file; unsigned int length;
         loader->GetLoadedFileByID(self->task, &file, &length);
-        self->allocator.CreateTypeA(AllocateAligned4(&data_02114e20, 0x7000), 0x7000);
+        self->allocator.CreateTypeA(AllocateAligned4_02012d88(&data_02114e20, 0x7000), 0x7000);
         self->allocator.Reset();
         Foo0207df50* fields = &ResourceStateBuffer021a6c2c(resources)->effectFields;
         CopyInternalFields0207df50(fields);
@@ -167,14 +167,14 @@ extern "C" ARM void func_ov017_021a6c2c(Event021a6c2c* self) {
         self->stage++;
     } else if (self->stage == 6) {
         if (IsBrightnessTransitionActive(resources)) return;
-        if (GetByte0x26c((char*)leader)) {
-            SubBlock02038508* block = GetFieldPtrAt0x26c(leader);
+        if (GetByte0x26c_02039d7c((char*)leader)) {
+            SubBlock02038508* block = GetFieldPtrAt0x26c_020399a8(leader);
             InitBlock02038508(block);
             ((Actor021a6c2c*)leader)->flags &= ~1;
             leader->obj3D_.DisableFlag(0x1180);
             func_ov017_021d3f00(block, 0, 1);
         }
-        Encounter021a6c2c* encounter = (Encounter021a6c2c*)GetField0x3f8Address(game);
+        Encounter021a6c2c* encounter = (Encounter021a6c2c*)GetField0x3f8Address_0200fd0c(game);
         VectorizedMemset(encounter, 0, 0x70);
         encounter->field4 = 1; encounter->field8 = 1; encounter->field9 = 1;
         encounter->fieldb = -1;

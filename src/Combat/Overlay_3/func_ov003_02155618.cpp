@@ -9,11 +9,10 @@ enum { kRegionValue1EA_1E6 = 0x1ea };
 enum { kRegionValue1E6_1E2 = 0x1e6 };
 #endif
 
-
 struct IntField0x23c_020a27c4;
-int GetFieldIfFlag4(char* obj);
+int GetFieldIfFlag4_020100f8(char* obj);
 int GetIntAt0x23c(struct IntField0x23c_020a27c4* obj);
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 extern "C" int func_ov003_021550dc(void* obj);
 extern "C" int func_ov003_02155208(void* self);
 
@@ -21,7 +20,7 @@ struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 
 struct Obj2081;
-void CallFunc0204c804OnMatchingKey(struct Obj2081* obj, int key);
+void CallFunc0204c804OnMatchingKey_0207fdcc(struct Obj2081* obj, int key);
 
 struct Obj0208203c;
 void ResetWithSub0208203c(struct Obj0208203c* obj);
@@ -39,9 +38,9 @@ extern "C" ARM int func_ov003_02155618(char* obj) {
     int flagB = result;
 
     GameState* battle = GameState::GetInstance();
-    struct IntField0x23c_020a27c4* p = (struct IntField0x23c_020a27c4*)GetFieldIfFlag4((char*)battle);
+    struct IntField0x23c_020a27c4* p = (struct IntField0x23c_020a27c4*)GetFieldIfFlag4_020100f8((char*)battle);
     if (p != 0 && ((*((unsigned char*)p + 0x244) & 2) != 0 || GetIntAt0x23c(p) == 0)) {
-        flagB = (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x200) != 0) ? 1 : 0;
+        flagB = (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x200) != 0) ? 1 : 0;
     }
 
     if (func_ov003_021550dc(obj) != 0 || flagB != 0) {
@@ -57,7 +56,7 @@ extern "C" ARM int func_ov003_02155618(char* obj) {
     }
 
     if (result != 0) {
-        CallFunc0204c804OnMatchingKey(*(struct Obj2081**)(obj + 0x18), *(short*)(obj + kRegionValue1E6_1E2));
+        CallFunc0204c804OnMatchingKey_0207fdcc(*(struct Obj2081**)(obj + 0x18), *(short*)(obj + kRegionValue1E6_1E2));
         ResetWithSub0208203c((struct Obj0208203c*)(obj + 0x80));
         *(void**)(obj + 8) = 0;
     }

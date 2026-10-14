@@ -87,8 +87,8 @@ void InitObj02174408(InitStruct02174408 *);
 void InitWithSub02081ee4(Obj02081ee4 *, Sub02081ee4 *);
 void ResetList0204af64(List0204af64 *);
 extern "C" void func_0204c684(void *);
-unsigned char CopyOutRegion0x5718(char *, void *);
-GameObject *GetCombatantWithFlag0x100(GameState *, int);
+unsigned char CopyOutRegion0x5718_02011494(char *, void *);
+GameObject *GetCombatantWithFlag0x100_0200ff1c(GameState *, int);
 class GameState {
 public:
     static GameState *GetInstance();
@@ -171,14 +171,14 @@ extern "C" ARM void func_ov003_02174114(Battle02174114 *self) {
 
     GameState *gs = GameState::GetInstance();
     unsigned char buf[8];
-    int n = CopyOutRegion0x5718((char *) gs, buf);
+    int n = CopyOutRegion0x5718_02011494((char *) gs, buf);
     for (int m = 0; m < n; m++)
         self->ids_[m] = buf[m];
     self->count_ = n;
 
     int r = 0;
     while (r < self->count_) {
-        GameObject *c = GetCombatantWithFlag0x100(gs, self->ids_[r]);
+        GameObject *c = GetCombatantWithFlag0x100_0200ff1c(gs, self->ids_[r]);
         if (c) {
             Fighter02174114 *f = *(Fighter02174114 **) ((char *) c + 0x150);
             bool alive         = f ? (f->lo_ != 0) : false;

@@ -2,7 +2,7 @@
 #include "std_library_functions.h"
 
 extern "C" void* func_0205ec34(void* obj);
-void ClassifyPriceCategoryAndNotifyBattle(unsigned char* table, int price);
+void ClassifyPriceCategoryAndNotifyBattle_02064b98(unsigned char* table, int price);
 
 // USA: func_ov017_021cdccc  (semantic: AppendClampedDataAndMaybeNotify_021cdccc)
 extern "C" ARM void func_ov017_021cdccc(void* obj, int pos, void* data) {
@@ -21,5 +21,5 @@ extern "C" ARM void func_ov017_021cdccc(void* obj, int pos, void* data) {
     void* dst = memcpy(buf + pos, data, len);
     if (!truncated) return;
 
-    ClassifyPriceCategoryAndNotifyBattle((unsigned char*)func_0205ec34(dst), 0xc3b5);
+    ClassifyPriceCategoryAndNotifyBattle_02064b98((unsigned char*)func_0205ec34(dst), 0xc3b5);
 }

@@ -5,7 +5,7 @@ struct Obj020bdbf0;
 extern int InitAllocatorHolder020bdbf0(Obj020bdbf0* obj, HMRFAllocator* allocator);
 
 // USA: func_020bd914
-ARM void* CreateAllocatorHolderInRegion(void* start, unsigned int size)
+ARM void* CreateAllocatorHolderInRegion_020bd914(void* start, unsigned int size)
 {
     unsigned int end = (unsigned int)start + size;
     unsigned int alignedStart = ((unsigned int)start + 3) & ~3;

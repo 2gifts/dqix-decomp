@@ -1,10 +1,10 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
-void RotateLowNibbleBits(void* obj, unsigned char* p, int mode);
+void RotateLowNibbleBits_0201a108(void* obj, unsigned char* p, int mode);
 
 // USA: func_02019f6c
-ARM void RotateTileGrid3x3(void* obj, unsigned char* buf, int mode) {
+ARM void RotateTileGrid3x3_02019f6c(void* obj, unsigned char* buf, int mode) {
     unsigned char tmp[9];
     int i;
     memcpy(tmp, buf, 9);
@@ -21,7 +21,7 @@ ARM void RotateTileGrid3x3(void* obj, unsigned char* buf, int mode) {
         buf[7] = tmp[3];
         buf[8] = tmp[6];
         for (i = 0; i < 9; i++) {
-            RotateLowNibbleBits(obj, buf + i, 1);
+            RotateLowNibbleBits_0201a108(obj, buf + i, 1);
         }
         break;
     case 2:
@@ -35,7 +35,7 @@ ARM void RotateTileGrid3x3(void* obj, unsigned char* buf, int mode) {
         buf[7] = tmp[1];
         buf[8] = tmp[0];
         for (i = 0; i < 9; i++) {
-            RotateLowNibbleBits(obj, buf + i, 2);
+            RotateLowNibbleBits_0201a108(obj, buf + i, 2);
         }
         break;
     case 3:
@@ -49,7 +49,7 @@ ARM void RotateTileGrid3x3(void* obj, unsigned char* buf, int mode) {
         buf[7] = tmp[5];
         buf[8] = tmp[2];
         for (i = 0; i < 9; i++) {
-            RotateLowNibbleBits(obj, buf + i, 3);
+            RotateLowNibbleBits_0201a108(obj, buf + i, 3);
         }
         break;
     }

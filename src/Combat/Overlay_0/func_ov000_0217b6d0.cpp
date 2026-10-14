@@ -7,13 +7,13 @@ struct Obj0205eaa0;
 
 int GetActiveScaledSum0205d794(struct Struct_0205c570* s);
 void SetElementFlag0x20ByKey0205def8(struct Struct_0205def8* s, int clear, int key);
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 struct Obj_0205da38;
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 int IsBitFlagSet0217c4e8(void* obj, int bit);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 extern "C" void func_ov000_021716d0(void* obj);
-void* GetFieldAt0x150(unsigned char* obj);
+void* GetFieldAt0x150_02053c6c(unsigned char* obj);
 int CheckFlagsOrField_0217ab48_0217ab48(void* obj);
 extern "C" void func_ov000_0217629c(void* obj);
 extern "C" void func_ov000_0217ab8c(void* obj, int a, int b);
@@ -104,7 +104,7 @@ extern "C" ARM int func_ov000_0217b6d0(MenuObj_0217b6d0* obj, int arg1, int arg2
     if (prev != cur) {
         return -1;
     }
-    int t = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
+    int t = TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x601);
     bool active = (t | IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)obj->window, 0x14)) != 0;
     if (active || obj->field444 != 0) {
         if (!IsBitFlagSet0217c4e8(obj, cur)) {
@@ -115,7 +115,7 @@ extern "C" ARM int func_ov000_0217b6d0(MenuObj_0217b6d0* obj, int arg1, int arg2
         func_ov000_021716d0(obj);
         GameObject* member = GameState::GetInstance()->GetPartyMemberByIndex(obj->memberIndex);
         if (member != NULL) {
-            MemberInfo_0217b6d0* info = (MemberInfo_0217b6d0*)GetFieldAt0x150((unsigned char*)member);
+            MemberInfo_0217b6d0* info = (MemberInfo_0217b6d0*)GetFieldAt0x150_02053c6c((unsigned char*)member);
             if (info != NULL) {
                 info->lastSpell = obj->actionId;
             }
@@ -151,7 +151,7 @@ extern "C" ARM int func_ov000_0217b6d0(MenuObj_0217b6d0* obj, int arg1, int arg2
     if (prev != cur) {
         return -1;
     }
-    int t = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
+    int t = TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x601);
     int active = (t | IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)obj->window, 0x14)) != 0;
     if (active || obj->field444 != 0) {
         if (!IsBitFlagSet0217c4e8(obj, cur)) {
@@ -162,7 +162,7 @@ extern "C" ARM int func_ov000_0217b6d0(MenuObj_0217b6d0* obj, int arg1, int arg2
         func_ov000_021716d0(obj);
         GameObject* member = GameState::GetInstance()->GetPartyMemberByIndex(obj->memberIndex);
         if (member != NULL) {
-            MemberInfo_0217b6d0* info = (MemberInfo_0217b6d0*)GetFieldAt0x150((unsigned char*)member);
+            MemberInfo_0217b6d0* info = (MemberInfo_0217b6d0*)GetFieldAt0x150_02053c6c((unsigned char*)member);
             if (info != NULL) {
                 info->lastSpell = obj->actionId;
             }

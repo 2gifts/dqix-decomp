@@ -7,7 +7,7 @@ extern "C" ARM int func_020151cc(Zone3D *zone, Struct02012ff0 *tracker, Src02015
     SafeAllocator *allocator  = zone->pAllocator_68_;
     char *pairTables          = static_cast<char *>(zone->unknown_ptr_50_);
     LightingManager *lighting = LightingManager::GetInstance();
-    int applyLighting         = static_cast<ZoneLoadState *>(GetField0x3f8Address(gameState))->unknown20 < 0;
+    int applyLighting         = static_cast<ZoneLoadState *>(GetField0x3f8Address_0200fd0c(gameState))->unknown20 < 0;
     zone->unknown_834_        = applyLighting;
     char filename[0x50];
     unsigned int size;

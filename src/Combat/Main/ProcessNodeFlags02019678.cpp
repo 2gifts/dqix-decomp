@@ -10,7 +10,7 @@ enum { kRegionalFieldOffset = 0x41c };
 
 struct Manager_1f2a4;
 struct Element_1f2a4;
-struct Element_1f2a4* GetElementByIndexStride0x20(struct Manager_1f2a4* manager, int index);
+struct Element_1f2a4* GetElementByIndexStride0x20_0201f2a4(struct Manager_1f2a4* manager, int index);
 struct Struct02013380;
 void SetFlag0x40AndToggle0x4(struct Struct02013380* obj, int unused, int clear4);
 
@@ -26,7 +26,7 @@ extern "C" ARM void func_02019678(void* a) {
     void* node = *(void**)((char*)a + kRegionalFieldOffset);
     while (node != 0) {
         for (int j = 0; j < *(int*)((char*)node + 0x14); j++) {
-            GetElementByIndexStride0x20((struct Manager_1f2a4*)((char*)node + 4), j);
+            GetElementByIndexStride0x20_0201f2a4((struct Manager_1f2a4*)((char*)node + 4), j);
             struct Entry02019678* entry = (struct Entry02019678*)((char*)(*(void**)((char*)node + 0x44)) + j * 0x70);
             if (entry->field2 & 0x40) continue;
             int rawId = *(int*)node;

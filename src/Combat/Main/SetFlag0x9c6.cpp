@@ -10,6 +10,6 @@ struct SetFlagStruct {
 };
 
 // USA: func_020213fc
-ARM void SetFlag0x9c6(struct SetFlagStruct* p, int value) {
+ARM void SetFlag0x9c6_020213fc(struct SetFlagStruct* p, int value) {
     p->field9c6 = (value != 0) ? 1 : 0;
 }

@@ -3,13 +3,13 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 
-int GetIndexedEntryField0x178(signed char* obj);
+int GetIndexedEntryField0x178_02053604(signed char* obj);
 void ForwardToTargetOrDefault0205eabc(void* target, void* param, int arg);
-int GetByte0x26c(char* obj);
-int GetField0x397cValue(GameState* battleStruct);
-int GetFieldIfFlag4(char* obj);
-int TestFlagMask(unsigned short* word, int mask);
-void SetByte0x2c4To2IfByte0x2c5Set(unsigned char* p);
+int GetByte0x26c_02039d7c(char* obj);
+int GetField0x397cValue_020100b0(GameState* battleStruct);
+int GetFieldIfFlag4_020100f8(char* obj);
+int TestFlagMask_02012430(unsigned short* word, int mask);
+void SetByte0x2c4To2IfByte0x2c5Set_020a2c8c(unsigned char* p);
 void* GetGlobalField0x1c020421a0(void);
 
 struct Bytes02033b88;
@@ -69,7 +69,7 @@ extern "C" ARM void func_020531f0(struct Obj020531f0* obj) {
         obj->taskId = -1;
     }
 
-    if (GetIndexedEntryField0x178((signed char*)obj) == 0x19) {
+    if (GetIndexedEntryField0x178_02053604((signed char*)obj) == 0x19) {
         ForwardToTargetOrDefault0205eabc((void*)&data_02108760, (char*)obj + targetOffset, 0);
     }
 
@@ -92,7 +92,7 @@ extern "C" ARM void func_020531f0(struct Obj020531f0* obj) {
     obj->pendingAdvance = 0;
 
     if ((obj->object.unknown_0_ & 0x200) != 0) {
-        if (GetByte0x26c((char*)obj) != 0) {
+        if (GetByte0x26c_02039d7c((char*)obj) != 0) {
             return;
         }
     }
@@ -104,13 +104,13 @@ extern "C" ARM void func_020531f0(struct Obj020531f0* obj) {
 
     battleStruct = GameState::GetInstance();
     cid = obj->object.unknown_4_;
-    int activeId = GetField0x397cValue(battleStruct);
+    int activeId = GetField0x397cValue_020100b0(battleStruct);
     if (activeId == cid) {
-        target = GetFieldIfFlag4((char*)battleStruct);
+        target = GetFieldIfFlag4_020100f8((char*)battleStruct);
         if (target != 0) {
-            if (TestFlagMask(&data_02114e30, 2) == 0
+            if (TestFlagMask_02012430(&data_02114e30, 2) == 0
                 || ((unsigned char*)GetGlobalField0x1c020421a0())[globalByteOffset] != 0) {
-                SetByte0x2c4To2IfByte0x2c5Set((unsigned char*)target);
+                SetByte0x2c4To2IfByte0x2c5Set_020a2c8c((unsigned char*)target);
             }
         }
     }

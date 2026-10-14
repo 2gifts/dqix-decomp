@@ -109,7 +109,7 @@ struct Slot021ebb90 { unsigned char idx; unsigned char cat; };
 struct Bytes02033b88;
 struct Obj0203a588;
 
-void* GetActiveCombatWork(void);
+void* GetActiveCombatWork_ov000_02160130(void);
 unsigned char GetByte_021dcc64_021dcc64(void* obj);
 void SetByte_021dcc58(void* obj, unsigned char v);
 int CheckCombatantStatusOrTable_02162954(void* self);
@@ -122,18 +122,18 @@ void AppendUniqueShort0216346c(char* obj, int val);
 void AppendUniqueShort021634c8(char* obj, int val);
 extern "C" short func_ov000_0215ffa0(void* obj);
 extern "C" int func_ov025_021d8c30(void* sl_, void* sb_, int kind, int category, int idx, int inner, int flag);
-void ClearSubstructFlag0x4(unsigned char* obj);
-int GetSubstructByte0x56(unsigned char* obj);
+void ClearSubstructFlag0x4_02049ae4(unsigned char* obj);
+int GetSubstructByte0x56_02049ee8(unsigned char* obj);
 int SetByte0xbeShiftPrev(struct Bytes02033b88* p, int val);
 void* GetGlobalField0x1c020421a0(void);
 extern "C" void func_02043124(void* self);
-struct Obj0203a588* GetData02104b6c(void);
+struct Obj0203a588* GetData02104b6c_02039e70(void);
 void ResetLowFlagEntries0203a588(struct Obj0203a588* obj);
-void ZeroFieldsAt0x6e8(void* obj);
+void ZeroFieldsAt0x6e8_ov000_02182a44(void* obj);
 struct GameResources;
 void SetMainBrightness(GameResources*, int, int);
-int TestBit0At0x2f4(unsigned char* obj);
-int TestBit1At0x2f4(unsigned char* obj);
+int TestBit0At0x2f4_02085078(unsigned char* obj);
+int TestBit1At0x2f4_020850a4(unsigned char* obj);
 extern "C" void* func_02057924(void);
 struct Vector3i;
 void Vector3fixMultiplyScalar(Vector3i const*, int, Vector3i*);
@@ -177,7 +177,7 @@ extern "C" ARM void func_ov025_021ebb90(struct Container021ebb90* obj) {
     unsigned char* codes;
 
     GameState* battle = GameState::GetInstance();
-    unsigned char* cw = (unsigned char*)GetActiveCombatWork();
+    unsigned char* cw = (unsigned char*)GetActiveCombatWork_ov000_02160130();
     void* p54 = func_ov017_0218b5b0();
 
     if (GetByte_021dcc64_021dcc64(cw) != 0 && GetByte_021dcc64_021dcc64(cw) < 3) return;
@@ -232,7 +232,7 @@ extern "C" ARM void func_ov025_021ebb90(struct Container021ebb90* obj) {
         unsigned int sp4c = fpv + obj->entries[i].e;
 
         if (!(obj->entries[i].d & 0x10)) {
-            struct Row02079e2c* row = SearchBothTables02079e2c((char*)GetData02108e10(),
+            struct Row02079e2c* row = SearchBothTables02079e2c((char*)GetData02108e10_020797dc(),
                                                                ((struct List021600f8*)obj->entries[i].a)->id);
             for (int spRow = 0; spRow < ((struct List021600f8*)obj->entries[i].a)->count; spRow++) {
                 struct ListNode021600f8* node = GetNodeAtIndex021600f8((struct List021600f8*)obj->entries[i].a, spRow);
@@ -265,10 +265,10 @@ extern "C" ARM void func_ov025_021ebb90(struct Container021ebb90* obj) {
                 struct ListNode02160094* n0 = GetNodeAtIndex02160094((struct List02160094*)obj->entries[i].a, 0);
                 int partyBlocked = 0;
                 if (n0 != 0 && n0 != 0 && IsPartyId021ebb90(n0->id)) {
-                    GameObject* member = GetCombatantWithFlag0x100(battle, n0->id);
+                    GameObject* member = GetCombatantWithFlag0x100_0200ff1c(battle, n0->id);
                     if (member != 0 &&
-                        (TestBit0At0x2f4(*(unsigned char**)((char*)member + CombatantSubobject)) != 0 ||
-                         TestBit1At0x2f4(*(unsigned char**)((char*)member + CombatantSubobject)) != 0)) {
+                        (TestBit0At0x2f4_02085078(*(unsigned char**)((char*)member + CombatantSubobject)) != 0 ||
+                         TestBit1At0x2f4_020850a4(*(unsigned char**)((char*)member + CombatantSubobject)) != 0)) {
                         if (row != 0 && row->flags >> 28 != 2) partyBlocked = 1;
                     }
                 }
@@ -319,14 +319,14 @@ extern "C" ARM void func_ov025_021ebb90(struct Container021ebb90* obj) {
                         GameObject* c2 = battle->GetCombatantByIndex(targetId2);
                         if (c2 != 0) {
                             ((Object3D*)((unsigned char*)c2))->MakeVisible();
-                            ClearSubstructFlag0x4((unsigned char*)c2);
-                            if (GetSubstructByte0x56((unsigned char*)c2) != 0) {
+                            ClearSubstructFlag0x4_02049ae4((unsigned char*)c2);
+                            if (GetSubstructByte0x56_02049ee8((unsigned char*)c2) != 0) {
                                 SetByte0xbeShiftPrev((struct Bytes02033b88*)c2, 0);
                             }
                         }
                         func_02043124(GetGlobalField0x1c020421a0());
-                        ResetLowFlagEntries0203a588(GetData02104b6c());
-                        ZeroFieldsAt0x6e8(cw + Field6ffc);
+                        ResetLowFlagEntries0203a588(GetData02104b6c_02039e70());
+                        ZeroFieldsAt0x6e8_ov000_02182a44(cw + Field6ffc);
                     }
                 }
                 obj->entries[i].d |= 8;

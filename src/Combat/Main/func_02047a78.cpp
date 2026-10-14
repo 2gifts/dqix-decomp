@@ -6,7 +6,7 @@ extern "C" void func_0204719c(void* obj, int flag);
 extern "C" void* __clear(void* dst, int count);
 extern "C" void func_02047b40(void* obj, void* handle, void* extra);
 
-int GetData02107800Word0(void);
+int GetData02107800Word0_020429d4(void);
 void* LoadFileIntoMemory(const char* path, void* dst, unsigned int* outCount);
 
 extern int data_020f0118;
@@ -38,7 +38,7 @@ extern "C" ARM void func_02047a78(struct Obj02047a78* obj, const char* path, voi
     }
     __clear(buf, 0x80);
     sprintf(buf, (const char*)&data_020f0118, path);
-    handle = (void*)GetData02107800Word0();
+    handle = (void*)GetData02107800Word0_020429d4();
     BackgroundLoader::AddLockGlobal();
     if (LoadFileIntoMemory(buf, handle, 0) != 0) {
         func_02047b40(obj, handle, extra);

@@ -52,8 +52,8 @@ void InitBuffersIfFlag431_021eb4b8(void* obj);
 void DispatchAndFlush02175480(void* obj);
 void ResetCombatEntry02184a58(void* obj);
 void CallIfFieldNot0Or3_021d8c60(struct Obj021d8c60* obj);
-struct Obj0203a588* GetData02104b6c(void);
-int PeekInputLogB(void);
+struct Obj0203a588* GetData02104b6c_02039e70(void);
+int PeekInputLogB_020a1fa8(void);
 struct Obj020444e0* GetGlobalField0x1c020421a0();
 void ReleaseField0x38IfValid020444e0(struct Obj020444e0* obj);
 extern "C" void func_ov013_02187784(void* obj);
@@ -82,9 +82,9 @@ extern "C" ARM void func_ov000_02160c84(struct CombatWork02160c84* work) {
         } else if (!(work->flags & 0x40000)) {
             func_ov000_02173954(work->battleField);
         }
-        func_0203a0b4(GetData02104b6c());
+        func_0203a0b4(GetData02104b6c_02039e70());
         func_ov000_0218251c(work->field6FFC);
-        if (work->phase == 7 && PeekInputLogB() == 3) {
+        if (work->phase == 7 && PeekInputLogB_020a1fa8() == 3) {
             func_ov026_021dddcc(work);
         }
     }

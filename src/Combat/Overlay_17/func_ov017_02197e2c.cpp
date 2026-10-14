@@ -18,10 +18,10 @@ struct S02046b1c;
 struct Vec3;
 extern "C" Zone3D* func_02012fe4();
 void* GetGlobalField0x1c020421a0();
-void* GetField0x3b0Value(GameState*);
-bool CheckSubstructByte0x7cPositive(signed char*);
+void* GetField0x3b0Value_020100bc(GameState*);
+bool CheckSubstructByte0x7cPositive_020535c8(signed char*);
 void* GetField0x0List02046b1c(S02046b1c*);
-ZoneChestRenderRecord* GetElementStride0x24(unsigned char*, int);
+ZoneChestRenderRecord* GetElementStride0x24_020177a8(unsigned char*, int);
 int fix32abs(int);
 extern "C" int func_020c32f8(int);
 extern "C" int func_020c3260(int);
@@ -38,10 +38,10 @@ extern "C" ARM void func_ov017_02197e2c(GameResources* resources) {
     GameState* game = GameState::GetInstance();
     Zone3D* zone = func_02012fe4();
     GetGlobalField0x1c020421a0();
-    GetField0x3b0Value(game);
+    GetField0x3b0Value_020100bc(game);
     InteractionPlayer* player = (InteractionPlayer*)game->GetUnknownGameObject();
     Vector3i* position = &player->obj.position_;
-    if (CheckSubstructByte0x7cPositive((signed char*)player)) return;
+    if (CheckSubstructByte0x7cPositive_020535c8((signed char*)player)) return;
     if (!zone->numChests_) return;
     int direction = 0;
     int hasList = 0;
@@ -52,7 +52,7 @@ extern "C" ARM void func_ov017_02197e2c(GameResources* resources) {
     ZoneChestRenderRecord* selected = 0;
     int selectedIndex = -1;
     for (int i = 0; i < zone->numChests_; i++) {
-        candidate = GetElementStride0x24((unsigned char*)zone, i);
+        candidate = GetElementStride0x24_020177a8((unsigned char*)zone, i);
         if (!candidate) continue;
         Vector3i distance;
         Vector3i delta = *position;

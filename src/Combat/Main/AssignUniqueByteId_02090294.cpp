@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 struct Entry_02028bd0;
-struct Entry_02028bd0* GetEntryTableBase(void);
+struct Entry_02028bd0* GetEntryTableBase_02027ca4(void);
 struct Element0x318_02028bac;
 struct Element0x318_02028bac* GetElementStride0x318(struct Element0x318_02028bac* base, int index);
 
@@ -16,7 +16,7 @@ struct Obj02090294 {
 
 // USA: func_02090294  (semantic: AssignUniqueByteId_02090294)
 extern "C" ARM int func_02090294(struct Obj02090294* obj) {
-    struct Element0x318_02028bac* table = (struct Element0x318_02028bac*)GetEntryTableBase();
+    struct Element0x318_02028bac* table = (struct Element0x318_02028bac*)GetEntryTableBase_02027ca4();
     int i = 0;
     int j;
 retry:

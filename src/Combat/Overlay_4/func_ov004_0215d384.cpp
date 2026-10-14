@@ -52,7 +52,7 @@ extern "C" ARM int func_ov004_0215d384(void* a) {
     VObjA0215d384* nodeA = (VObjA0215d384*)func_ov004_02156f38(a, 0x1dc);
     if (!nodeA) return 0;
 
-    int matches = SumCombatantKeyMatches02086aec((struct Obj02086aec*)GetPtrField0x2a04(bs), *(short*)entry);
+    int matches = SumCombatantKeyMatches02086aec((struct Obj02086aec*)GetPtrField0x2a04_02010828(bs), *(short*)entry);
     nodeA->MethodE0(matches);
 
     void* nodeC = func_ov004_02156f6c(a, 0x1b);

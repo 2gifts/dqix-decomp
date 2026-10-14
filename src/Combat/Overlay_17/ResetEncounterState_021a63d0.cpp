@@ -9,15 +9,15 @@ extern "C" void* func_02012fe4(void);
 extern "C" int func_0202c540(void* p);
 extern "C" void func_0205ac40(void* a, void* b);
 
-int GetIntField0x260(void* obj);
+int GetIntField0x260_02039750(void* obj);
 int GetGlobalField0x1c020421a0();
 void* GetGlobalContext020daf90(void);
-int IsField0Null(void** obj);
+int IsField0Null_02046b08(void** obj);
 
 struct Something02015a2c;
 int CheckSlotsForFlagState02015a2c(struct Something02015a2c* obj);
 
-int GetField0x50(void* obj);
+int GetField0x50_020db2d4(void* obj);
 
 struct Node0x20_021a5ad0;
 void FillFieldWithEncoded_021a5ad0(struct Node0x20_021a5ad0* arr, int count, int val);
@@ -25,7 +25,6 @@ void ClearAndEncodeField14_021a5b08(struct Node0x20_021a5ad0* arr, int count);
 
 struct Struct0200fb08;
 unsigned char NormalizeField5_0200fb08(struct Struct0200fb08* obj);
-
 
 struct Cont0205d1e0;
 struct Cont0205d228;
@@ -71,7 +70,7 @@ extern "C" ARM void func_ov017_021a63d0(unsigned char* base) {
     if (*(int*)(base + OFF_41b4) == 0) return;
 
     void* searchObj = func_0202ae18();
-    int f260 = GetIntField0x260(GameState::GetInstance()->GetProtagonist());
+    int f260 = GetIntField0x260_02039750(GameState::GetInstance()->GetProtagonist());
     int glob1c = GetGlobalField0x1c020421a0();
     void* g = func_02012fe4();
     void* ctx = GetGlobalContext020daf90();
@@ -82,13 +81,13 @@ extern "C" ARM void func_ov017_021a63d0(unsigned char* base) {
     if (f4080 != 0) return;
     if (f260 != -1) return;
 
-    if (!IsField0Null(*(void***)(base + OFF_36fc))) return;
+    if (!IsField0Null_02046b08(*(void***)(base + OFF_36fc))) return;
     if (func_0202c540(searchObj)) return;
 
-    if (IsGlobalU16InRange(GameState::GetInstance()) != 0) return;
+    if (IsGlobalU16InRange_020117f0(GameState::GetInstance()) != 0) return;
     if (*(int*)((char*)glob1c + OFF_998) != 0) return;
     if (CheckSlotsForFlagState02015a2c((struct Something02015a2c*)g)) return;
-    if (GetField0x50(ctx)) return;
+    if (GetField0x50_020db2d4(ctx)) return;
 
     FillFieldWithEncoded_021a5ad0((struct Node0x20_021a5ad0*)(base + OFF_4094), 2, 0x800);
 

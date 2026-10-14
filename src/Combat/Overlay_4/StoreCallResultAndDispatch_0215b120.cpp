@@ -16,9 +16,9 @@ struct Element020de650 {
     unsigned char unknown1a[6];
 };
 struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0* c, int key);
-void* CallFunc020e52a0(void* arr, int key);
+void* CallFunc020e52a0_020e5294(void* arr, int key);
 struct StoreStruct;
-void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
+void StoreInArray0x8b0_020465c0(struct StoreStruct* base, int index, int value);
 
 #if defined(jpn)
 struct Element020e0310 { int key; int value; };
@@ -73,21 +73,21 @@ extern "C" ARM int func_ov004_0215b120(void* self) {
         func_020e207c(names, name, elem->key);
         SetIndexedName02046574((Obj02046574*)g, 1, name);
 #else
-        void* r = CallFunc020e52a0(names, elem->key);
+        void* r = CallFunc020e52a0_020e5294(names, elem->key);
         *(void**)((char*)g + 0x18) = r;
 #endif
-        StoreInArray0x8b0((struct StoreStruct*)g, 0, data_ov004_021707d8.ptr->value);
+        StoreInArray0x8b0_020465c0((struct StoreStruct*)g, 0, data_ov004_021707d8.ptr->value);
     } else {
 #if defined(jpn)
         char name[80];
         func_020e207c(names, name, elem->key);
         SetIndexedName02046574((Obj02046574*)g, 1, name);
 #else
-        void* r = CallFunc020e52a0(names, elem->key);
+        void* r = CallFunc020e52a0_020e5294(names, elem->key);
         *(void**)((char*)g + 0x18) = r;
 #endif
-        StoreInArray0x8b0((struct StoreStruct*)g, 0, data_ov004_021707d8.ptr->value);
-        StoreInArray0x8b0((struct StoreStruct*)g, 1, data_ov004_021707d8.ptr->quantity);
+        StoreInArray0x8b0_020465c0((struct StoreStruct*)g, 0, data_ov004_021707d8.ptr->value);
+        StoreInArray0x8b0_020465c0((struct StoreStruct*)g, 1, data_ov004_021707d8.ptr->quantity);
     }
     return 0;
 }

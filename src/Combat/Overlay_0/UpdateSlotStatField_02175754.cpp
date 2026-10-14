@@ -11,7 +11,7 @@ ARM void UpdateSlotStatField_02175754(void* obj) {
         void* slot = func_ov000_02161318(obj, i);
         if (slot) {
             int combatantId = *(int*)((char*)slot + 0x4c);
-            GameObject* c = GetCombatantWithFlag0x100(bs, combatantId);
+            GameObject* c = GetCombatantWithFlag0x100_0200ff1c(bs, combatantId);
             if (c) {
                 *(int*)((char*)slot + 0x28) = *(int*)((char*)c->currentStats_ + 0x14);
             }

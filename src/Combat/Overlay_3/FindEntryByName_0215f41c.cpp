@@ -1,11 +1,11 @@
 #include <globaldefs.h>
 
-int StringLength(const char* s);
+int StringLength_020d2ff0(const char* s);
 extern "C" int func_02001aec(void* a, void* b, int n);
 
 struct FindResult0215f41c {
-    void* match;                          // 0x0
-    void* list;                           // 0x4
+    void* match;
+    void* list;
     char pad8[0x18 - 8];
     int field_18;
     short field_1c;
@@ -24,7 +24,7 @@ extern "C" ARM void func_ov003_0215f41c(struct FindResult0215f41c* self, char* n
     self->field_1c = 0;
     self->field_1e = 1;
     self->field_20 = 0;
-    len = StringLength(name);
+    len = StringLength_020d2ff0(name);
     char* list = (char*)self->list;
     count = *(short*)(list + 6);
     item = *(char**)(list + 0);

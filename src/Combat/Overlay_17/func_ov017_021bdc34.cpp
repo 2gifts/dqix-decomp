@@ -49,7 +49,7 @@ extern "C" ARM void func_ov017_021bdc34(LoadState021bdc34* self) {
     GameState* game = GameState::GetInstance();
     LoadGlobals021bdc34* globals = (LoadGlobals021bdc34*)func_ov017_0218b5b0();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
-    LoadActor021bdc34* actor = (LoadActor021bdc34*)GetCombatantWithFlag0x100(game, 0);
+    LoadActor021bdc34* actor = (LoadActor021bdc34*)GetCombatantWithFlag0x100_0200ff1c(game, 0);
     if (actor == 0) return;
     LoadEntry021bdc34* entry = FindNegativeEntry_021a11b4((S021a11b4*)globals);
     if (entry == 0) {

@@ -173,13 +173,13 @@ extern char data_ov008_0218b4c3[];
 #endif
 
 unsigned char* GetGlobalField0x1c020421a0();
-void CopyOutBattleField0x7ac0(void* count);
-void StoreInArray0x8b0(StoreStruct* messages, int index, int value);
-void SetByteInRange(unsigned char* messages, int index, unsigned char digits);
-void SetByteAtIndex(unsigned char* messages, int index, unsigned char value);
-void AppendPaletteTag(char* text, int color);
-int TestBitInByteArray(int store, unsigned char* bits, int flag);
-void AppendXYTag(char* text, int x, int y);
+void CopyOutBattleField0x7ac0_020ac0b4(void* count);
+void StoreInArray0x8b0_020465c0(StoreStruct* messages, int index, int value);
+void SetByteInRange_020465f0(unsigned char* messages, int index, unsigned char digits);
+void SetByteAtIndex_020465d8(unsigned char* messages, int index, unsigned char value);
+void AppendPaletteTag_02041e70(char* text, int color);
+int TestBitInByteArray_0206dfb0(int store, unsigned char* bits, int flag);
+void AppendXYTag_02041a90(char* text, int x, int y);
 const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
 void AppendString02042058(char* text, const char* append);
 
@@ -231,7 +231,7 @@ extern "C" ARM void func_ov008_02187b20(BattleRecords* self, char* text, ClearRe
     else
     {
         count1 = saved->records_.unk_8_0;
-        CopyOutBattleField0x7ac0(&count2);
+        CopyOutBattleField0x7ac0_020ac0b4(&count2);
         count3 = saved->records_.unk_10_0;
         count4 = saved->records_.unk_8_24;
         count5 = saved->records_.unk_c_14;
@@ -252,26 +252,26 @@ extern "C" ARM void func_ov008_02187b20(BattleRecords* self, char* text, ClearRe
     if (count6 > 9999)
         count6 = 9999;
     func_02046380(messages);
-    StoreInArray0x8b0((StoreStruct*)messages, 0, count1);
-    SetByteInRange(messages, 0, 5);
-    SetByteAtIndex(messages, 0, 1);
-    StoreInArray0x8b0((StoreStruct*)messages, 1, count2);
-    SetByteInRange(messages, 1, 5);
-    SetByteAtIndex(messages, 1, 1);
-    StoreInArray0x8b0((StoreStruct*)messages, 2, count3);
-    SetByteInRange(messages, 2, LOW_REGION(3, 5));
+    StoreInArray0x8b0_020465c0((StoreStruct*)messages, 0, count1);
+    SetByteInRange_020465f0(messages, 0, 5);
+    SetByteAtIndex_020465d8(messages, 0, 1);
+    StoreInArray0x8b0_020465c0((StoreStruct*)messages, 1, count2);
+    SetByteInRange_020465f0(messages, 1, 5);
+    SetByteAtIndex_020465d8(messages, 1, 1);
+    StoreInArray0x8b0_020465c0((StoreStruct*)messages, 2, count3);
+    SetByteInRange_020465f0(messages, 2, LOW_REGION(3, 5));
     char* store;
-    SetByteAtIndex(messages, 2, 1);
-    StoreInArray0x8b0((StoreStruct*)messages, 3, count4);
-    SetByteInRange(messages, 3, LOW_REGION(3, 5));
-    SetByteAtIndex(messages, 3, 1);
-    StoreInArray0x8b0((StoreStruct*)messages, 4, count5);
-    SetByteInRange(messages, 4, LOW_REGION(4, 5));
-    SetByteAtIndex(messages, 4, 1);
-    StoreInArray0x8b0((StoreStruct*)messages, 5, count6);
-    SetByteInRange(messages, 5, LOW_REGION(4, 5));
-    SetByteAtIndex(messages, 5, 1);
-    AppendPaletteTag(text, 0xe);
+    SetByteAtIndex_020465d8(messages, 2, 1);
+    StoreInArray0x8b0_020465c0((StoreStruct*)messages, 3, count4);
+    SetByteInRange_020465f0(messages, 3, LOW_REGION(3, 5));
+    SetByteAtIndex_020465d8(messages, 3, 1);
+    StoreInArray0x8b0_020465c0((StoreStruct*)messages, 4, count5);
+    SetByteInRange_020465f0(messages, 4, LOW_REGION(4, 5));
+    SetByteAtIndex_020465d8(messages, 4, 1);
+    StoreInArray0x8b0_020465c0((StoreStruct*)messages, 5, count6);
+    SetByteInRange_020465f0(messages, 5, LOW_REGION(4, 5));
+    SetByteAtIndex_020465d8(messages, 5, 1);
+    AppendPaletteTag_02041e70(text, 0xe);
     store = func_0205ec34();
     shown = 0;
     if (records != NULL)
@@ -282,14 +282,14 @@ extern "C" ARM void func_ov008_02187b20(BattleRecords* self, char* text, ClearRe
     else
     {
         shown += 1;
-        if (TestBitInByteArray((int)store, (unsigned char*)(store + 0x8c), 0x1198))
+        if (TestBitInByteArray_0206dfb0((int)store, (unsigned char*)(store + 0x8c), 0x1198))
             shown += 2;
         shown += 4;
         if (saved->records_.unk_8_24 != 0)
             shown += 8;
         if (saved->records_.unk_c_14 != 0)
             shown += 0x10;
-        if (TestBitInByteArray((int)store, (unsigned char*)(store + 0x8c), 0x1199))
+        if (TestBitInByteArray_0206dfb0((int)store, (unsigned char*)(store + 0x8c), 0x1199))
             shown += 0x20;
     }
     int line = 0;
@@ -298,12 +298,12 @@ extern "C" ARM void func_ov008_02187b20(BattleRecords* self, char* text, ClearRe
         if (shown & (1 << i))
         {
 #if defined(jpn)
-            AppendXYTag(text, 2, line * 15 + 1);
+            AppendXYTag_02041a90(text, 2, line * 15 + 1);
             AppendString02042058(text, GetFieldByKey020e0434((Container020e0310*)&self->texts_, (short)(i + 0x78)));
 #else
             char label[0x40];
             y = line * 14;
-            AppendXYTag(text, 2, y + 7);
+            AppendXYTag_02041a90(text, 2, y + 7);
             __clear(label, sizeof(label));
             const char* name = GetFieldByKey020e0434((Container020e0310*)&self->texts_, (short)(i + 0x78));
             memcpy(label, name, strlen(name));
@@ -311,7 +311,7 @@ extern "C" ARM void func_ov008_02187b20(BattleRecords* self, char* text, ClearRe
             if (value != NULL)
                 *value = 0;
             AppendString02042058(text, label);
-            AppendXYTag(text, 0x62, y + 7);
+            AppendXYTag_02041a90(text, 0x62, y + 7);
             AppendString02042058(text, GetFieldByKey020e0434((Container020e0310*)&self->texts_, (short)(i + 500)));
 #endif
             line++;

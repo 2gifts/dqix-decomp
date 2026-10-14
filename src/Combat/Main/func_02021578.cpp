@@ -18,7 +18,7 @@ extern "C" void func_02022da0(void*);
 
 extern "C" Zone3D* func_02012fe4(void);
 extern "C" void* func_0203bd08(void);
-void* GetData02105254(void);
+void* GetData02105254_0203b628(void);
 extern "C" void func_02021428(void* obj, int amount);
 
 struct AxisFloats0203b5a0;
@@ -55,7 +55,7 @@ extern "C" void func_02020fc4(void* obj, int* handle, SafeAllocator* alloc);
 extern "C" void func_020210f8(char* obj, int* handle, SafeAllocator* alloc);
 extern "C" void func_0202445c(void* obj);
 extern "C" void func_ov017_02191234(void* obj);
-void DelayThenSyncBit0(void);
+void DelayThenSyncBit0_020c9820(void);
 extern "C" void func_0202343c(void* obj);
 void MarkActiveCombatantSlots02026b7c(unsigned char* obj);
 extern "C" void func_02026bdc(void* obj, int flag);
@@ -93,7 +93,7 @@ extern "C" ARM void func_02021578(MapDisplay* self) {
     modes = func_02012fe4()->pUnknownStruct_8_;
     axis = func_ov017_0218b5b0();
     battleCtx = (char*)func_0203bd08();
-    table = (char*)GetData02105254();
+    table = (char*)GetData02105254_0203b628();
     state = self->loadStage;
     alloc = GetResourceAllocator(axis, 12);
 
@@ -255,7 +255,7 @@ extern "C" ARM void func_02021578(MapDisplay* self) {
         self->field9c8 = 0;
         self->field9c3 = 0;
         self->loadStage = self->loadStage + 1;
-        DelayThenSyncBit0();
+        DelayThenSyncBit0_020c9820();
         func_0202343c(self);
         func_0202445c(self);
         MarkActiveCombatantSlots02026b7c((unsigned char*)self);

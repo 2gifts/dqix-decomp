@@ -8,7 +8,7 @@ struct Struct_203ce00 {
 };
 
 // USA: func_0203ce00
-ARM int GetField0x60Or0x64ByFlag0x2(struct Struct_203ce00* obj) {
+ARM int GetField0x60Or0x64ByFlag0x2_0203ce00(struct Struct_203ce00* obj) {
     if (obj->flags & 0x2) {
         return obj->field64;
     }

@@ -35,7 +35,7 @@ struct Selection0216276c { char padding[7]; unsigned char state; char padding8[0
 extern Selection0216276c data_ov004_021707e8;
 extern int data_ov004_0216fe5c[];
 extern unsigned char data_ov004_02170845[];
-Equipment0216276c* GetFieldAt0x150(unsigned char*);
+Equipment0216276c* GetFieldAt0x150_02053c6c(unsigned char*);
 extern "C" void* func_ov011_021849c8(void*);
 extern "C" void func_ov004_0215e574(void*, int, int, int, int);
 extern "C" SlotNode0216276c* func_ov023_021f6880(void*, int);
@@ -49,9 +49,9 @@ extern "C" SlotNode0216276c* func_ov004_0215e47c(void*, int);
 // USA: func_ov004_0216276c
 extern "C" ARM int func_ov004_0216276c(void* self) {
     data_ov004_021707e8.state = 0x68;
-    GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), data_ov004_021707e8.combatant);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), data_ov004_021707e8.combatant);
     if (!combatant) return 0;
-    Equipment0216276c* equipment = GetFieldAt0x150(reinterpret_cast<unsigned char*>(combatant));
+    Equipment0216276c* equipment = GetFieldAt0x150_02053c6c(reinterpret_cast<unsigned char*>(combatant));
     if (!equipment) return 0;
     void* list = func_ov011_021849c8(self);
     func_ov004_0215e574(self, 12, 255, 0, 0);

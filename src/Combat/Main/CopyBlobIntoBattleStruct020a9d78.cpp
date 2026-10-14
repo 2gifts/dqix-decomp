@@ -8,12 +8,12 @@ enum { RegionOffset = 0x7e78 };
 #include "GameState/GameState.h"
 #include "System/Matrix.h"
 
-void* GetField0x3f8Address(GameState* battleStruct);
+void* GetField0x3f8Address_0200fd0c(GameState* battleStruct);
 extern "C" void* func_02012fe4();
 struct S_bc7c;
-void SetField0x27d8(struct S_bc7c* obj, unsigned short val);
+void SetField0x27d8_0201bc7c(struct S_bc7c* obj, unsigned short val);
 struct S_bc88;
-void SetField0x27da(struct S_bc88* obj, unsigned short val);
+void SetField0x27da_0201bc88(struct S_bc88* obj, unsigned short val);
 
 struct Data02109bf4 {
     unsigned char pad[0xc8];
@@ -62,7 +62,7 @@ struct GamePendingEntryPosition {
 ARM int CopyBlobIntoBattleStruct020a9d78(void* srcRaw) {
     SavedLocation* saved = static_cast<SavedLocation*>(srcRaw);
     GameState* battleStruct = GameState::GetInstance();
-    PendingLocation* destination = static_cast<PendingLocation*>(GetField0x3f8Address(battleStruct));
+    PendingLocation* destination = static_cast<PendingLocation*>(GetField0x3f8Address_0200fd0c(battleStruct));
 
     destination->zoneId = saved->zoneId;
     destination->position = saved->position;
@@ -71,8 +71,8 @@ ARM int CopyBlobIntoBattleStruct020a9d78(void* srcRaw) {
     destination->unknown7 = 1;
 
     void* g = func_02012fe4();
-    SetField0x27d8((struct S_bc7c*)g, saved->global27d8);
-    SetField0x27da((struct S_bc88*)g, saved->global27da);
+    SetField0x27d8_0201bc7c((struct S_bc7c*)g, saved->global27d8);
+    SetField0x27da_0201bc88((struct S_bc88*)g, saved->global27da);
 
     data_02109bf4.b3 = (saved->flag != 0);
 

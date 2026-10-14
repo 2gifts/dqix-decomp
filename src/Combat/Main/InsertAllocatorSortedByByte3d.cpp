@@ -2,7 +2,7 @@
 #include "Memory/SignedAllocator.h"
 
 // USA: func_020bc658
-ARM void InsertAllocatorSortedByByte3d(SignedAllocatorList* list, SignedAllocatorHeader* what) {
+ARM void InsertAllocatorSortedByByte3d_020bc658(SignedAllocatorList* list, SignedAllocatorHeader* what) {
     SignedAllocatorHeader* e = list->ElementAfter(NULL);
     if (e != NULL) {
         do {

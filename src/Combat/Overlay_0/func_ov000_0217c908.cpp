@@ -2,7 +2,7 @@
 #if defined(jpn)
 #include "std_library_functions.h"
 extern "C" unsigned short data_02114e30[];
-int TestFlag0SetAndFlag1Clear(unsigned short*, int);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short*, int);
 extern "C" void _Z32ClearBuffers0204b010OverList0x98P12Cont0205d1e0(void*);
 extern "C" void _Z28CallFunc0204b04cOverList0x98P12Cont0205d274(void*);
 extern "C" void _Z19InitEntries0205d2bcP11Obj0205d2bc(void*);
@@ -111,7 +111,7 @@ extern "C" ARM void func_ov000_0217c908(struct Battle0217c908* battle, int arg1,
     }
     func_ov000_02177038(battle, 0, battle->kinds[battle->kindIndex], arg1, arg2);
 #if defined(jpn)
-    if (TestFlag0SetAndFlag1Clear(data_02114e30, 0x2000) && battle->kinds[battle->kindIndex] != 1) {
+    if (TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x2000) && battle->kinds[battle->kindIndex] != 1) {
         memset(battle->kinds, 0, 8);
         battle->kindIndex = 0;
         battle->kinds[battle->kindIndex] = 1;

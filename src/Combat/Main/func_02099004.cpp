@@ -18,8 +18,8 @@ extern unsigned char data_020e8dac[2];
 struct PagePrefix02099004 { char text[7]; };
 extern const PagePrefix02099004 data_020e8dae;
 int GetGlobalField0x1c020421a0();
-int StringLength(const char*);
-char* CallFunc020e0434With02153694(int);
+int StringLength_020d2ff0(const char*);
+char* CallFunc020e0434With02153694_020e51cc(int);
 void AppendFormattedData02098f70(int*, void*, int, int);
 extern "C" void func_02046608(int, int, const char*, char*, int, int, int);
 extern "C" void __clear(void*, int);
@@ -40,11 +40,11 @@ extern "C" ARM int func_02099004(Script::Parameter* params, int count) {
     char* output = data_021098e8.output;
     char* cursor = output + strlen(output);
     PagePrefix02099004 prefix = data_020e8dae;
-    int prefixLength = StringLength(prefix.text);
+    int prefixLength = StringLength_020d2ff0(prefix.text);
     char message[0x20];
     char formatted[0x400];
     char body[0x20];
-    const char* messageText = CallFunc020e0434With02153694(0x3ea);
+    const char* messageText = CallFunc020e0434With02153694_020e51cc(0x3ea);
     func_02046608(base, 12, messageText, message, 0xe3, 0, 1);
     char separator[2];
     separator[0] = data_020e8dac[0];
@@ -56,7 +56,7 @@ extern "C" ARM int func_02099004(Script::Parameter* params, int count) {
         int messageLength = strlen(message);
         memcpy(cursor, message, messageLength);
         cursor += messageLength;
-        int textLength = StringLength(profileText);
+        int textLength = StringLength_020d2ff0(profileText);
         int position = 0;
         do {
             int length = textLength - position;

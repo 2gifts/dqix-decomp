@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-GameObject* GetCombatantChecked(GameState*, int);
+GameObject* GetCombatantChecked_0200ff94(GameState*, int);
 
 struct Entry021710ac {
     char pad0[0x8];
@@ -23,7 +23,7 @@ extern "C" ARM void func_ov000_021710ac(struct Entry021710ac* obj, int combatant
     if (!ok) {
         return;
     }
-    GameObject* c = GetCombatantChecked(GameState::GetInstance(), combatantId);
+    GameObject* c = GetCombatantChecked_0200ff94(GameState::GetInstance(), combatantId);
     if (c == 0) {
         return;
     }

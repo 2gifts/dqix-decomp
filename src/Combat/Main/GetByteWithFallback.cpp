@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_020494a0
-ARM int GetByteWithFallback(unsigned char* obj) {
+ARM int GetByteWithFallback_020494a0(unsigned char* obj) {
     unsigned char* p = *(unsigned char**)(obj + 0x13c);
     unsigned char val;
     if (p == 0) {

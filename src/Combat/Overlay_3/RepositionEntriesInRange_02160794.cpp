@@ -8,14 +8,13 @@ enum { kRegionValue470_298 = 0x470 };
 enum { kRegionValue324_20C = 0x324 };
 #endif
 
-
 extern short data_ov003_0217f420[3];
 
 void GetEntryFieldsAt0x602080828(void* obj, int id, short* outX, short* outY);
 void SetEntryFieldsAt0x602080854(void* obj, int id, int x, int y);
 
 struct Parent809a0;
-ARM void SetEntryPositionById(struct Parent809a0* obj, int id, short x, short y);
+ARM void SetEntryPositionById_020809a0(struct Parent809a0* obj, int id, short x, short y);
 
 // USA: func_ov003_02160794  (semantic: RepositionEntriesInRange_02160794)
 extern "C" ARM void func_ov003_02160794(void* self) {
@@ -38,7 +37,7 @@ extern "C" ARM void func_ov003_02160794(void* self) {
             short x, y;
             GetEntryFieldsAt0x602080828(list, id, &x, &y);
             SetEntryFieldsAt0x602080854(list, id, x, y);
-            SetEntryPositionById((struct Parent809a0*)list, id, 0xd0, 0xa);
+            SetEntryPositionById_020809a0((struct Parent809a0*)list, id, 0xd0, 0xa);
             id = (short)(id + 1);
         }
     }

@@ -46,9 +46,9 @@ struct Self021aa1ac {
 };
 
 extern "C" GameState* _ZN9GameState11GetInstanceEv(void);
-Party021aa1ac* GetPtrField0x2a04(GameState* gameState);
+Party021aa1ac* GetPtrField0x2a04_02010828(GameState* gameState);
 Controller021aa1ac* GetGlobalField0x1c020421a0(void);
-Combatant021aa1ac* GetCombatantWithFlag0x100(GameState* gameState, int combatantId);
+Combatant021aa1ac* GetCombatantWithFlag0x100_0200ff1c(GameState* gameState, int combatantId);
 extern "C" void func_ov017_021c9e00(int id, int a, int b, int c);
 extern "C" void __clear(void* dst, unsigned int size);
 #if defined(jpn)
@@ -64,7 +64,7 @@ extern char data_ov017_021d7868[];
 // USA: func_ov017_021aa1ac
 extern "C" ARM void func_ov017_021aa1ac(Self021aa1ac* self) {
     GameState* gs = _ZN9GameState11GetInstanceEv();
-    Party021aa1ac* party = GetPtrField0x2a04(gs);
+    Party021aa1ac* party = GetPtrField0x2a04_02010828(gs);
     Controller021aa1ac* controller = GetGlobalField0x1c020421a0();
     int memberCount = party->memberCount;
     if (self->step == 0) {
@@ -73,7 +73,7 @@ extern "C" ARM void func_ov017_021aa1ac(Self021aa1ac* self) {
         self->count = 0;
         for (int i = 0; i < memberCount; i++) {
             int id = party->memberIds[i];
-            Combatant021aa1ac* combatant = GetCombatantWithFlag0x100(gs, id);
+            Combatant021aa1ac* combatant = GetCombatantWithFlag0x100_0200ff1c(gs, id);
             if (combatant == NULL) {
                 continue;
             }
@@ -88,7 +88,7 @@ extern "C" ARM void func_ov017_021aa1ac(Self021aa1ac* self) {
         if (self->count != 0) {
             char text[0x100];
             __clear(text, sizeof(text));
-            sprintf(text, data_ov017_021d783c, GetCombatantWithFlag0x100(gs, self->ids[0])->name);
+            sprintf(text, data_ov017_021d783c, GetCombatantWithFlag0x100_0200ff1c(gs, self->ids[0])->name);
             if (++self->shown >= self->count) {
                 self->step++;
             } else {
@@ -112,7 +112,7 @@ extern "C" ARM void func_ov017_021aa1ac(Self021aa1ac* self) {
         }
         char text[0x100];
         __clear(text, sizeof(text));
-        sprintf(text, data_ov017_021d783c, GetCombatantWithFlag0x100(gs, self->ids[self->shown])->name);
+        sprintf(text, data_ov017_021d783c, GetCombatantWithFlag0x100_0200ff1c(gs, self->ids[self->shown])->name);
         if (++self->shown >= self->count) {
             self->step++;
         } else {

@@ -3,7 +3,7 @@
 #include "Resource/GameResources.h"
 
 struct SearchStruct;
-void SetSearchFlagBitAt0xc(struct SearchStruct* obj, int value);
+void SetSearchFlagBitAt0xc_0202c1e8(struct SearchStruct* obj, int value);
 extern "C" void* func_0202ae18(void);
 extern "C" void func_ov017_0218f064(GameResources* ov, int id, int b, int c, int d);
 
@@ -31,7 +31,7 @@ extern "C" ARM void func_ov017_021b0a7c(unsigned char* obj) {
     int j;
     for (j = 0; j < 4; j++) {
         if ((obj + j)[0x1b] == 1) {
-            SetSearchFlagBitAt0xc(ss, j);
+            SetSearchFlagBitAt0xc_0202c1e8(ss, j);
         }
     }
 }

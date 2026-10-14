@@ -9,7 +9,7 @@ struct Combatant_20885b4 {
 };
 
 // USA: func_020885b4
-ARM int CheckFlag0x2AndKind1(struct Combatant_20885b4* obj) {
+ARM int CheckFlag0x2AndKind1_020885b4(struct Combatant_20885b4* obj) {
     if (obj->flags14 & 0x2) {
         if (obj->kind == 1) {
             return 1;

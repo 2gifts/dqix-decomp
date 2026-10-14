@@ -12,7 +12,7 @@ struct Elem_0205d81c;
 
 void SetElementFlag0x20ByKey0205def8(struct Struct_0205def8* s, int clear, int key);
 struct Elem_0205d81c* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
-int IsField0x9cEqual3(unsigned char* obj);
+int IsField0x9cEqual3_0204c7cc(unsigned char* obj);
 void SetEntryFields02154bcc(int a, int b, void* obj, int idx, unsigned char arg5, unsigned char arg6);
 
 // USA: func_ov002_0215b138
@@ -31,7 +31,7 @@ extern "C" ARM void func_ov002_0215b138(unsigned char* obj) {
     if (elem == 0) {
         return;
     }
-    if (!IsField0x9cEqual3((unsigned char*)elem)) {
+    if (!IsField0x9cEqual3_0204c7cc((unsigned char*)elem)) {
         return;
     }
 

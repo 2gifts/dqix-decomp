@@ -4,8 +4,8 @@ void InitializeCardReading(void);
 void SetReadContextPriority(unsigned int priority);
 int GenerateLockOwnerID(void);
 extern "C" void func_020c9be0(void);
-void SelectBattleContextMode2(int mode);
-int DispatchCartridgeReadToArm7(void* handle);
+void SelectBattleContextMode2_020d0040(int mode);
+int DispatchCartridgeReadToArm7_020d06fc(void* handle);
 void PrepareAndCommit020d0050(int value);
 
 struct Flag02108dfc {
@@ -31,8 +31,8 @@ ARM void InitBattleModeAndCommit020758a8(void) {
     }
 
     data_02108dfc.value = (unsigned short)id;
-    SelectBattleContextMode2((int)data_02108dfc.value);
-    DispatchCartridgeReadToArm7((void*)0x1001);
+    SelectBattleContextMode2_020d0040((int)data_02108dfc.value);
+    DispatchCartridgeReadToArm7_020d06fc((void*)0x1001);
     PrepareAndCommit020d0050((int)data_02108dfc.value);
     data_020f0dc8 = 1;
 }

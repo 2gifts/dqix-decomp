@@ -2,16 +2,16 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 
-int GetGlobal02109400(void);
+int GetGlobal02109400_02094a00(void);
 extern "C" void func_02094ab0(void);
-void SetByteField0x253(void* obj);
+void SetByteField0x253_020397c0(void* obj);
 void* GetDataPtr02114e04_020d6c00(void);
 
 struct FlagWord020466f4;
 void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int mask);
 
-int GetFieldIfFlag4(char* obj);
-void SetField0x23cTrue(void* obj);
+int GetFieldIfFlag4_020100f8(char* obj);
+void SetField0x23cTrue_020a27ac(void* obj);
 void InitContext020e1154(void* obj);
 
 struct Flags0xc1_020e455c {
@@ -29,11 +29,11 @@ struct MainStruct020e455c {
 // USA: func_020e455c
 ARM void ProcessBattleTick020e455c(struct MainStruct020e455c* obj) {
     GameState* battleStruct = GameState::GetInstance();
-    GetGlobal02109400();
+    GetGlobal02109400_02094a00();
     func_02094ab0();
     GameObject* c = battleStruct->GetUnknownGameObject();
     if (c != 0) {
-        SetByteField0x253(c);
+        SetByteField0x253_020397c0(c);
     }
     ClearFlags020466f4((struct FlagWord020466f4*)GetDataPtr02114e04_020d6c00(), 2);
 
@@ -53,7 +53,7 @@ ARM void ProcessBattleTick020e455c(struct MainStruct020e455c* obj) {
         obj->fc = -1;
     }
 
-    SetField0x23cTrue((void*)GetFieldIfFlag4((char*)battleStruct));
+    SetField0x23cTrue_020a27ac((void*)GetFieldIfFlag4_020100f8((char*)battleStruct));
     InitContext020e1154((void*)0x3e8);
     obj->f1 = 1;
 }

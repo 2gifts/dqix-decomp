@@ -102,8 +102,8 @@ extern "C" void func_020dea64(void*, SafeAllocator*, void*, unsigned int, const 
 struct Struct02072488;
 void ZeroListHeader(Struct02072488*);
 struct StreamHeader;
-void InitCommandStreamSession(int, int, StreamHeader*, int);
-void* GetData02108d18(void);
+void InitCommandStreamSession_0207249c(int, int, StreamHeader*, int);
+void* GetData02108d18_0206f504(void);
 struct List0206f7f4;
 short GetHalfwordChecked(List0206f7f4*, int);
 struct List020725d8;
@@ -114,7 +114,7 @@ void InitObj02174408(InitStruct02174408*);
 extern "C" void func_020dfc84(void*, SafeAllocator*, char*, char*, int, int);
 #endif
 extern "C" int func_020dfd40(void*, int, int);
-void SetWord0x18ClearByte0x1f(unsigned char*, int);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char*, int);
 extern "C" void func_0204b5b4(void*, int);
 struct AllocTarget0204b12c;
 void AllocateAndClearBuffer0204b12c(AllocTarget0204b12c*, SafeAllocator*);
@@ -135,7 +135,7 @@ void AllocateBuffer0204c7a8(Obj0204c7a8*, SafeAllocator*, int, unsigned int);
 struct Obj0207f914;
 void SetFieldsFromFormattedValue0207f914(Obj0207f914*, int, int, int);
 extern "C" int func_0207f9f4(void*);
-void DispatchEntryOp0x8(void*, int);
+void DispatchEntryOp0x8_0208108c(void*, int);
 extern "C" void func_0205a528(void*, void*, int, SafeAllocator*);
 Glob02174a80* GetGlobalField0x1c020421a0(void);
 extern "C" void func_ov003_02176798(void*);
@@ -200,8 +200,8 @@ extern "C" ARM void func_ov003_02174a80(Self02174a80* self) {
             al = self->alloc;
             al->a[1].Reset();
             ZeroListHeader((Struct02072488*)&hdr);
-            InitCommandStreamSession((int)&hdr, (int)&al->a[1], (StreamHeader*)((int)file), size);
-            self->h1034 = GetHalfwordChecked((List0206f7f4*)GetData02108d18(), 0);
+            InitCommandStreamSession_0207249c((int)&hdr, (int)&al->a[1], (StreamHeader*)((int)file), size);
+            self->h1034 = GetHalfwordChecked((List0206f7f4*)GetData02108d18_0206f504(), 0);
             Rec02174a80* rec = FindEntryById020725d8((List020725d8*)&hdr, self->h1034);
             InitObj02174408((InitStruct02174408*)&self->b834);
             self->b834 = 0x63;
@@ -253,7 +253,7 @@ extern "C" ARM void func_ov003_02174a80(Self02174a80* self) {
         allocs->a[4].Reset();
         for (i = 0; i < 2; i++) {
             e = &self->ents[i];
-            SetWord0x18ClearByte0x1f((unsigned char*)e, 0);
+            SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)e, 0);
             e->lo = 0;
             e->hi = data_ov003_0217fa94[i];
             func_0204b5b4(e, data_ov003_0217fa90[i]);
@@ -325,21 +325,21 @@ extern "C" ARM void func_ov003_02174a80(Self02174a80* self) {
 
     if (self->state == 9) {
         void* p = self->p89c;
-        DispatchEntryOp0x8(p, 0x21);
-        DispatchEntryOp0x8(p, 0x2c);
-        DispatchEntryOp0x8(p, 0x3c);
-        DispatchEntryOp0x8(p, 0x51);
+        DispatchEntryOp0x8_0208108c(p, 0x21);
+        DispatchEntryOp0x8_0208108c(p, 0x2c);
+        DispatchEntryOp0x8_0208108c(p, 0x3c);
+        DispatchEntryOp0x8_0208108c(p, 0x51);
 #if !defined(jpn)
-        DispatchEntryOp0x8(p, 0x52);
-        DispatchEntryOp0x8(p, 0x55);
+        DispatchEntryOp0x8_0208108c(p, 0x52);
+        DispatchEntryOp0x8_0208108c(p, 0x55);
 #endif
-        DispatchEntryOp0x8(p, 0x5c);
-        DispatchEntryOp0x8(p, 0x5f);
-        DispatchEntryOp0x8(p, 0x63);
-        DispatchEntryOp0x8(p, 0x70);
-        DispatchEntryOp0x8(p, 0x71);
-        DispatchEntryOp0x8(p, 0x75);
-        DispatchEntryOp0x8(p, 0xd2);
+        DispatchEntryOp0x8_0208108c(p, 0x5c);
+        DispatchEntryOp0x8_0208108c(p, 0x5f);
+        DispatchEntryOp0x8_0208108c(p, 0x63);
+        DispatchEntryOp0x8_0208108c(p, 0x70);
+        DispatchEntryOp0x8_0208108c(p, 0x71);
+        DispatchEntryOp0x8_0208108c(p, 0x75);
+        DispatchEntryOp0x8_0208108c(p, 0xd2);
         BG0CNT = (BG0CNT & ~3) | 3;
         BG1CNT = (BG1CNT & ~3) | 2;
         BG2CNT = (BG2CNT & ~3) | 1;

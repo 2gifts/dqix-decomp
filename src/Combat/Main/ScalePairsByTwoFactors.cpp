@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "Graphics/SpriteAffineTransform.h"
 
-ARM void ScalePairsByTwoFactors(const Matrix2x2* source, Matrix2x2* destination,
+ARM void ScalePairsByTwoFactors_020c1128(const Matrix2x2* source, Matrix2x2* destination,
                                fix32_t scaleX, fix32_t scaleY) {
     destination->values[0] = FIX32_MULTIPLY_SIMPLE(scaleX, source->values[0]);
     destination->values[1] = FIX32_MULTIPLY_SIMPLE(scaleX, source->values[1]);

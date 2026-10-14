@@ -15,10 +15,10 @@ struct S_b20c {
 };
 
 void InitWeightedEntries02023064(struct Struct02020520* arr, unsigned int count, short* a, short* b, short* c, short* d);
-void ClearTwoWordsAndByte(struct S_b20c* obj);
+void ClearTwoWordsAndByte_0205b20c(struct S_b20c* obj);
 void SetField0_0205b220(void* obj, int value);
 void SetFieldsAt0x4And0x8_0205b228(void* obj, int value, unsigned char flag);
-int StringLength(const char* s);
+int StringLength_020d2ff0(const char* s);
 extern "C" int func_0205b234(void*, short, short, int, unsigned char, unsigned char);
 
 extern short data_020ee864[];
@@ -31,17 +31,17 @@ extern "C" ARM void func_020e0b4c(void* obj, int b, int c) {
     struct Struct02020520 arr[13];
     InitWeightedEntries02023064(arr, 13, data_020ee864, data_020ee87e, data_020ee898, data_020ee8b2);
     struct S_b20c localObj;
-    ClearTwoWordsAndByte(&localObj);
+    ClearTwoWordsAndByte_0205b20c(&localObj);
     SetField0_0205b220(&localObj, b + c);
     SetFieldsAt0x4And0x8_0205b228(&localObj, (int)arr, 13);
     for (int i = 0; i < 3; i++) {
         func_0205b234(&localObj, (short)0xa, (short)(i * 13 + 0x10), (int)((char*)obj + 0x1fc + 0x400 + i * 0x48), (unsigned char)0xf, (unsigned char)0);
         char* s = (char*)obj + 0x2d4 + 0x400 + i * 8;
-        if (StringLength(s) == 3) {
+        if (StringLength_020d2ff0(s) == 3) {
             func_0205b234(&localObj, (short)0x74, (short)(i * 13 + 0x10), (int)s, (unsigned char)0xf, (unsigned char)0);
-        } else if (StringLength(s) == 2) {
+        } else if (StringLength_020d2ff0(s) == 2) {
             func_0205b234(&localObj, (short)0x78, (short)(i * 13 + 0x10), (int)s, (unsigned char)0xf, (unsigned char)0);
-        } else if (StringLength(s) == 1) {
+        } else if (StringLength_020d2ff0(s) == 1) {
             func_0205b234(&localObj, (short)0x7d, (short)(i * 13 + 0xf), (int)s, (unsigned char)0xf, (unsigned char)0);
         } else {
             func_0205b234(&localObj, (short)0x74, (short)(i * 13 + 0x10), (int)s, (unsigned char)0xf, (unsigned char)0);

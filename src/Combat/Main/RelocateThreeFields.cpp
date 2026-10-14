@@ -3,7 +3,7 @@
 
 // USA: func_0206ef48
 // KEEP-NAME
-ARM int RelocateThreeFields(List0206f170* table, MonsterDefinition* definition) {
+ARM int RelocateThreeFields_0206ef48(List0206f170* table, MonsterDefinition* definition) {
     definition->name = func_0206ef94(table, definition->name, 0);
 #if !defined(jpn)
     definition->localizedText = func_0206ef94(table, definition->localizedText, 0);

@@ -6,11 +6,11 @@
 extern "C" void* func_0202ae18(void);
 extern "C" void* func_02012fe4(void);
 extern "C" int func_0202c508(void* p);
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
-int GetField5cb0Value(char* obj);
-int GetField5cb4Value(char* obj);
-int GetField5cb8Value(char* obj);
+int GetField5cb0Value_0201079c(char* obj);
+int GetField5cb4Value_020107d0(char* obj);
+int GetField5cb8Value_02010804(char* obj);
 struct Battle021d0490;
 Battle021d0490* GetField6b0_021b8470(void* obj);
 
@@ -96,16 +96,16 @@ extern "C" ARM void func_ov017_021d0490(int mode) {
     Actor021d0490* actor = GetActor(res);
     Zone021d0490* zone = GetZone(res);
     Zone021d0490* other = GetOther(res);
-    void* queue = GetData02100044();
+    void* queue = GetData02100044_0202ae24();
     Packet021d0490 packet;
     packet.tag = 0x97;
     Payload021d0490* p = &packet.payload;
 
     if (func_0202c508(link) != 0) {
         p->mode = mode;
-        p->field_0x0 = GetField5cb0Value((char*)battle);
-        p->field_0x1 = GetField5cb4Value((char*)battle);
-        p->field_0x2 = GetField5cb8Value((char*)battle);
+        p->field_0x0 = GetField5cb0Value_0201079c((char*)battle);
+        p->field_0x1 = GetField5cb4Value_020107d0((char*)battle);
+        p->field_0x2 = GetField5cb8Value_02010804((char*)battle);
         p->field_0x4 = *data;
         Battle021d0490* field = GetField6b0_021b8470(zone);
 

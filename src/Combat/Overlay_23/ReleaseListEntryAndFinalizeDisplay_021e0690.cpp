@@ -6,7 +6,7 @@ struct List0202fec8;
 struct Container020e0310;
 int GetFieldByKey020e0434(struct Container020e0310*, int);
 extern "C" char* func_020e046c(char* buf, void* b, void* c, int idx);
-void ClearStruct16(void* p);
+void ClearStruct16_020df83c(void* p);
 struct Struct020dfc40;
 void ResetAndDetach020dfc6c(struct Struct020dfc40* p);
 
@@ -72,9 +72,9 @@ extern "C" ARM int func_ov023_021e0690(void* obj_) {
             *(int*)(obj + regionalOffset3) = -1;
         }
 
-        ClearStruct16(obj + 0x6c);
+        ClearStruct16_020df83c(obj + 0x6c);
         ResetAndDetach020dfc6c((struct Struct020dfc40*)(obj + 0x8c));
-        ClearStruct16(obj + 0x7c);
+        ClearStruct16_020df83c(obj + 0x7c);
         ResetAndDetach020dfc6c((struct Struct020dfc40*)(obj + 0xa4));
 
         void* p = *(void**)(obj + 0x4c);

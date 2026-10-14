@@ -20,8 +20,8 @@ struct Entry_203dce4 {
 
 void SetValueOnActiveChild02040af0(Entry_203dce4* entry, int value);
 int GetDisplayValue020409e0(Entry_203dce4* entry);
-int GetOffset0x54FromFallbackChain(Entry_203dce4* entry);
+int GetOffset0x54FromFallbackChain_02040a20(Entry_203dce4* entry);
 
 int GetField0x60(StructF0x60_0203cdd0 *obj);
-int GetField0x8(int *obj);
+int GetField0x8_02040528(int *obj);
 void *GetField0xc02040538(S02040538 *p);

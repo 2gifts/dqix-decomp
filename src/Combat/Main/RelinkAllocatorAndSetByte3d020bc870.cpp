@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "Memory/SignedAllocator.h"
 
-void InsertAllocatorSortedByByte3d(SignedAllocatorList* list, SignedAllocatorHeader* what);
+void InsertAllocatorSortedByByte3d_020bc658(SignedAllocatorList* list, SignedAllocatorHeader* what);
 void InsertSortedByByte3dGlobal020bc6a8(SignedAllocatorHeader* what);
 
 extern SignedAllocatorList data_0210f3d8;
@@ -16,7 +16,7 @@ ARM void RelinkAllocatorAndSetByte3d020bc870(SignedAllocatorHeader* header, unsi
     data_0210f3d8.Remove(header);
     *((unsigned char*)header + 0x3d) = b;
     if (list != NULL) {
-        InsertAllocatorSortedByByte3d(list, header);
+        InsertAllocatorSortedByByte3d_020bc658(list, header);
     }
     InsertSortedByByte3dGlobal020bc6a8(header);
 }

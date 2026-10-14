@@ -53,12 +53,12 @@ struct TextSlot02174738 {
     short e;
 };
 
-int GetField0x3acValue(GameState* battleStruct);
-void ClearTwoWordsAndByte(struct S_b20c* obj);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
+void ClearTwoWordsAndByte_0205b20c(struct S_b20c* obj);
 void SetField0_0205b220(void* obj, int value);
 void SetFieldsAt0x4And0x8_0205b228(void* obj, int value, unsigned char flag);
 void* GetTableEntry020421b0(int idx);
-void SetOrClearFlag0x4At0x24(void* obj, int cond);
+void SetOrClearFlag0x4At0x24_ov000_02174a38(void* obj, int cond);
 
 extern "C" void func_ov000_021710ac(struct Entry02174738* obj, int combatantId, int flag);
 extern "C" void func_ov000_02171138(void* obj);
@@ -135,7 +135,7 @@ checkvalid:
                 text.c = 0;
                 text.d = 0x10;
                 text.e = 0x10;
-                ClearTwoWordsAndByte(&local);
+                ClearTwoWordsAndByte_0205b20c(&local);
                 SetField0_0205b220(&local, (int)vram);
                 SetFieldsAt0x4And0x8_0205b228(&local, (int)&text, 1);
                 char* field150 = *(char**)((char*)c + 0x150);
@@ -166,8 +166,8 @@ checkvalid:
         if (e->field4c >= 0) {
             continue;
         }
-        func_ov000_021710ac(e, id, id == GetField0x3acValue(bs));
-        SetOrClearFlag0x4At0x24(e, id == GetField0x3acValue(bs));
+        func_ov000_021710ac(e, id, id == GetField0x3acValue_020100a8(bs));
+        SetOrClearFlag0x4At0x24_ov000_02174a38(e, id == GetField0x3acValue_020100a8(bs));
         func_ov000_02171138(e);
         data_ov000_02183ff0 = data_ov000_02183ff0 + 1;
         func_ov000_02174b14(self);

@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 #if defined(jpn)
-#define AppendSizeTag func_02042428
+#define AppendSizeTag_02041d9c func_02042428
 #define func_ov013_02185900 func_ov013_02186aec
 #endif
 
@@ -22,14 +22,14 @@ extern "C"
 #else
 enum { CancelMessage = 1000, ConfirmMessage = 1001, PointLimitMessage = 1002 };
 #endif
-int AppendSizeTag(char* dst, int size);
+int AppendSizeTag_02041d9c(char* dst, int size);
 struct Container020e0310;
 int GetFieldByKey020e0434(Container020e0310* texts, int key);
 int AppendString02042058(char* dst, const char* src);
 
 // USA: func_ov013_02185900
 extern "C" ARM void func_ov013_02185900(SkillPointMenu* menu, char* dst) {
-    AppendSizeTag(dst, 12);
+    AppendSizeTag_02041d9c(dst, 12);
 
     unsigned char state = menu->state;
     if (state == 4) {

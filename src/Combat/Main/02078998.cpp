@@ -7,9 +7,9 @@ extern "C" int rand();
 extern "C" void* __clear(void*, int);
 struct Actor02076ccc;
 extern "C" void* func_0202ae18();
-int CheckField0NonZero(int*);
+int CheckField0NonZero_0202b7d8(int*);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
-int GetFieldAt0x150(unsigned char*);
+int GetFieldAt0x150_02053c6c(unsigned char*);
 bool TrySetMode02076ccc(void*, int);
 struct Vec3i021c95ec { int x, y, z; };
 extern "C" void func_ov017_021c95ec(int, int, int, int, int, Vec3i021c95ec, int, unsigned char, unsigned char);
@@ -61,10 +61,10 @@ extern "C" ARM void func_02078998(Actor02078998* self) {
     if (self->counter <= 225) return;
     self->rising = 0;
     int* search = (int*)func_0202ae18();
-    if (CheckField0NonZero(search) && GetSearchStructCurrentArrEntry((SearchStruct0202c1a4*)search)) return;
-    GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), self->combatantId);
+    if (CheckField0NonZero_0202b7d8(search) && GetSearchStructCurrentArrEntry((SearchStruct0202c1a4*)search)) return;
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), self->combatantId);
     if (combatant == NULL) return;
-    GetFieldAt0x150((unsigned char*)combatant);
+    GetFieldAt0x150_02053c6c((unsigned char*)combatant);
     int extraAttack = 0;
     int extraDefense = 0;
     int attack = combatant->baseStats_->primaryStats.attack;
@@ -119,7 +119,7 @@ extern "C" ARM void func_02078998(Actor02078998* self) {
             break;
         }
     }
-    if (!CheckField0NonZero(search) || GetSearchStructCurrentArrEntry((SearchStruct0202c1a4*)search)) return;
+    if (!CheckField0NonZero_0202b7d8(search) || GetSearchStructCurrentArrEntry((SearchStruct0202c1a4*)search)) return;
     unsigned short id = self->obj.GetField06();
     int unused = self->obj.unknown_2_;
     int nibble = (self->obj.unknown_4_ - 112) % 12;

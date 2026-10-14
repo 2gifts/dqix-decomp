@@ -28,7 +28,7 @@ struct State0xc0cc {
 };
 
 // USA: func_0203c0cc
-ARM void InitFields0x0(struct State0xc0cc* obj) {
+ARM void InitFields0x0_0203c0cc(struct State0xc0cc* obj) {
 #if defined(jpn)
     memset(obj->entries, -1, sizeof(obj->entries));
     obj->unk18 = 0;

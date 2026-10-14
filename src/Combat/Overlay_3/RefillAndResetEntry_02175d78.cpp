@@ -14,7 +14,7 @@ enum { kRegion103c = 0x103c };
 struct Container020dedd0;
 struct Element020de650;
 struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0* c, int key);
-void* GetPtrField0x2a04(GameState* battleStruct);
+void* GetPtrField0x2a04_02010828(GameState* battleStruct);
 extern "C" void func_ov003_02176798(void* obj);
 
 // USA: func_ov003_02175d78
@@ -27,7 +27,7 @@ ARM int RefillAndResetEntry_02175d78(char* obj) {
 	unsigned int b;
 	unsigned int delta;
 	if (elem == NULL) return 0;
-	p = GetPtrField0x2a04(bs);
+	p = GetPtrField0x2a04_02010828(bs);
 	a = *(unsigned char*)(obj + kRegion103c);
 	b = *(unsigned short*)((char*)elem + 0x1a);
 	delta = a * b;

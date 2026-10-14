@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
-void ClearBitInArrayGuarded(int unused, unsigned char* arr, int index);
+void ClearBitInArrayGuarded_020960cc(int unused, unsigned char* arr, int index);
 
 struct Entry0209645c {
     unsigned int id : 9;
@@ -22,7 +22,7 @@ extern "C" ARM int func_0209645c(List0209645c* list, int value) {
         if (value == (int)list->entries[i].id) break;
     }
     if (i == list->count) return 0;
-    ClearBitInArrayGuarded((int)list, (unsigned char*)list + 0x4a8, value);
+    ClearBitInArrayGuarded_020960cc((int)list, (unsigned char*)list + 0x4a8, value);
     Entry0209645c temp[9];
     memset(temp, 0, sizeof(temp));
     memcpy(temp, list->entries, 0x80);

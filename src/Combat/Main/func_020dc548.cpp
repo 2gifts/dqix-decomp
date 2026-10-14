@@ -2,8 +2,8 @@
 #include "GameState/GameState.h"
 
 void FilterSlotsWithFlag0x800020dc4d0(signed char*, signed char*);
-GameObject* GetCombatantWithFlag0x1000(GameState*, int);
-int GetSignedByte0x2d0(void*);
+GameObject* GetCombatantWithFlag0x1000_0200ff58(GameState*, int);
+int GetSignedByte0x2d0_020546a8(void*);
 static inline int ValidPartyIndex(int index) { return index >= 0 && index <= 3; }
 
 // USA: func_020dc548
@@ -19,9 +19,9 @@ extern "C" ARM void func_020dc548(int index, signed char* out, signed char* outC
     signed char groupCounts[4] = {};
     for (signed char i = 0; i < count; ++i) {
         int slot = slots[i];
-        GameObject* object = GetCombatantWithFlag0x1000(game, slot);
+        GameObject* object = GetCombatantWithFlag0x1000_0200ff58(game, slot);
         if (object) {
-            if (leader == GetSignedByte0x2d0(object)) {
+            if (leader == GetSignedByte0x2d0_020546a8(object)) {
                 groups[group][member] = slot;
                 ++groupCounts[group];
                 ++member;

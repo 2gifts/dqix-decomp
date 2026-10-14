@@ -13,12 +13,12 @@ extern "C" void* func_ov017_0218b5b0(void);
 extern "C" void func_020db894(void* obj);
 int GetSwapBitIfFlag54Clear(Struct020db9a8* obj);
 extern "C" void func_020db3f4(Obj020db3f4* obj);
-void PushInterruptDisableState(void);
+void PushInterruptDisableState_020d8654(void);
 void RunFlaggedCallback020db844(Actor020db844* a, int b, int c, int d);
-void InitCombatantVisualState(void* obj, int arg1, int arg2, int arg3, int arg4);
+void InitCombatantVisualState_020db264(void* obj, int arg1, int arg2, int arg3, int arg4);
 extern "C" void func_020d8694(void);
 void ProcessDisplayDispatch020db5ec(DisplayDispatchObj020db5ec* obj);
-void InitFlag0x28FromOverlay(void*);
+void InitFlag0x28FromOverlay_020db814(void*);
 
 // USA: func_020dbae0
 extern "C" ARM void func_020dbae0(void* obj) {
@@ -49,7 +49,7 @@ extern "C" ARM void func_020dbae0(void* obj) {
         func_020db3f4((Obj020db3f4*)obj);
     } else {
         if (swapBit != *(unsigned char*)(p + 0x3c)) {
-            PushInterruptDisableState();
+            PushInterruptDisableState_020d8654();
             RunFlaggedCallback020db844((Actor020db844*)obj, *(unsigned char*)(p + 0x3c), *(short*)(p + 0x66), 0);
             short target = *(short*)(p + 0x6a);
             unsigned char a = *(unsigned char*)(p + 0x50);
@@ -60,11 +60,11 @@ extern "C" ARM void func_020dbae0(void* obj) {
             *(short*)(p + 0x68) = 0;
             *(unsigned char*)(p + 0x3c) = swapBit;
             *(short*)(p + 0x6a) = *(short*)(p + 0x66) = target;
-            InitCombatantVisualState(obj, a, b, c, d);
+            InitCombatantVisualState_020db264(obj, a, b, c, d);
             func_020d8694();
             return;
         }
         ProcessDisplayDispatch020db5ec((DisplayDispatchObj020db5ec*)obj);
     }
-    InitFlag0x28FromOverlay(obj);
+    InitFlag0x28FromOverlay_020db814(obj);
 }

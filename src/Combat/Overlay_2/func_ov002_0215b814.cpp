@@ -26,7 +26,7 @@ struct Entry {
 };
 extern "C" struct BattleStruct *_ZN9GameState11GetInstanceEv();
 struct GameState;
-struct CombatantStruct * GetCombatantWithFlag0x100(GameState*, int);
+struct CombatantStruct * GetCombatantWithFlag0x100_0200ff1c(GameState*, int);
 extern "C" void *memset(void *dst, int c, unsigned int n);
 extern "C" int sprintf(char *buf, const char *fmt, ...);
 
@@ -38,7 +38,7 @@ extern "C" ARM void func_ov002_0215b814(char *self) {
     for (i = 0; i < 4; i++) {
         e = (struct Entry *) (self + 0x1ab0) + i;
         memset(e, 0, 4);
-        struct CombatantStruct *c = GetCombatantWithFlag0x100((GameState*)gs, i);
+        struct CombatantStruct *c = GetCombatantWithFlag0x100_0200ff1c((GameState*)gs, i);
         if (c != 0 && c->b->name[0] != 0) {
             sprintf(e->name, c->b->name);
             e->unk34 = c->a->unk4;

@@ -7,7 +7,7 @@ struct Hdr02b0074 {
 };
 
 // USA: func_020b0074
-ARM unsigned char *GetTableEnd(struct Hdr02b0074 *h) {
+ARM unsigned char *GetTableEnd_020b0074(struct Hdr02b0074 *h) {
     if (h->flags & 1) {
         return h->base + (h->count << 4);
     }

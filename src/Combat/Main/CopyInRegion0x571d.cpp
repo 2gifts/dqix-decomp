@@ -2,7 +2,7 @@
 #include "std_library_functions.h"
 
 // USA: func_020114c0
-ARM void CopyInRegion0x571d(char* obj, int len, void* src) {
+ARM void CopyInRegion0x571d_020114c0(char* obj, int len, void* src) {
 #if defined(jpn)
     memcpy(obj + 0x54bd, src, len);
 #else

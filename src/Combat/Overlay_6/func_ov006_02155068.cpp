@@ -93,9 +93,9 @@ struct AlchemyPot {
     unsigned char resetBlend_;
 };
 
-void* GetWord0x0(int* gameState);
-void SetBitsInField4(unsigned int* resources, unsigned int bits);
-void ClearBitsInField4(unsigned int* resources, unsigned int bits);
+void* GetWord0x0_0200fb8c(int* gameState);
+void SetBitsInField4_0203b4d8(unsigned int* resources, unsigned int bits);
+void ClearBitsInField4_0203b4e8(unsigned int* resources, unsigned int bits);
 void SetForwardAndStore0205ebc0(void* sound, int a, int b);
 void DispatchIfField0xc4NonNeg_0205ebfc(void* sound, int a, int b);
 void ForwardField0xc0_0205ebec(void* sound);
@@ -114,10 +114,10 @@ extern char data_ov006_021600a9[];
 
 // USA: func_ov006_02155068
 extern "C" ARM void func_ov006_02155068(AlchemyPot* self) {
-    unsigned int* resources = (unsigned int*)GetWord0x0((int*)GameState::GetInstance());
+    unsigned int* resources = (unsigned int*)GetWord0x0_0200fb8c((int*)GameState::GetInstance());
     unsigned short flags = self->flags_;
     if (flags & 0x2000) {
-        SetBitsInField4(resources, 0x2000);
+        SetBitsInField4_0203b4d8(resources, 0x2000);
         self->steam_.MaybeSetRegularAnimation(data_ov006_02160080, 9);
         self->steam_.EnableFlag(0x1000);
         return;
@@ -166,7 +166,7 @@ extern "C" ARM void func_ov006_02155068(AlchemyPot* self) {
             self->animationStep_++;
             return;
         }
-        ClearBitsInField4(resources, 0x2000);
+        ClearBitsInField4_0203b4e8(resources, 0x2000);
         ForwardField0xc0_0205ebec(data_02108760);
         self->animationStep_ = 0;
         self->pot_.MaybeSetRegularAnimation(data_ov006_021600a0, 1);

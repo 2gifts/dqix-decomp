@@ -3,17 +3,17 @@
 
 struct Struct020A2CF0;
 void ResetState020a2cf0(struct Struct020A2CF0* obj);
-void SetBitsInField0(unsigned int* obj, unsigned int mask);
-void Clear0x28Bytes(void* p);
-void ResetFields0x2c4SetByte0x2c5(unsigned char* obj);
-void ApplyVecFromField0x246(char* actor);
+void SetBitsInField0_0202e08c(unsigned int* obj, unsigned int mask);
+void Clear0x28Bytes_020a0d58(void* p);
+void ResetFields0x2c4SetByte0x2c5_020a2ca0(unsigned char* obj);
+void ApplyVecFromField0x246_020a2718(char* actor);
 
 // USA: func_020a2010
 ARM void InitCombatController020a2010(void* objIn) {
     char* obj = (char*)objIn;
 
     ResetState020a2cf0((struct Struct020A2CF0*)objIn);
-    SetBitsInField0((unsigned int*)objIn, 4);
+    SetBitsInField0_0202e08c((unsigned int*)objIn, 4);
 
     *(int*)(obj + 0x220) = 0;
     *(int*)(obj + 0x224) = 0x6000;
@@ -29,7 +29,7 @@ ARM void InitCombatController020a2010(void* objIn) {
     obj[0x245] = 0;
     *(short*)(obj + 0x246) = 0;
 
-    Clear0x28Bytes(obj + 0x248);
+    Clear0x28Bytes_020a0d58(obj + 0x248);
 
     obj[0x270] = (char)0xff;
     *(int*)(obj + 0x274) = 0;
@@ -46,6 +46,6 @@ ARM void InitCombatController020a2010(void* objIn) {
 
     *(short*)(obj + 0x21e) = 0;
 
-    ResetFields0x2c4SetByte0x2c5((unsigned char*)obj);
-    ApplyVecFromField0x246(obj);
+    ResetFields0x2c4SetByte0x2c5_020a2ca0((unsigned char*)obj);
+    ApplyVecFromField0x246_020a2718(obj);
 }

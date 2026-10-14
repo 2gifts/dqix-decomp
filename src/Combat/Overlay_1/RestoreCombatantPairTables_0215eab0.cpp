@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 extern "C" int func_ov017_021d60f4(void*);
-int GetWord0x0(int* obj);
+int GetWord0x0_0200fb8c(int* obj);
 
 struct Block0207df50 { unsigned int v[10]; };
 struct Pair0207df50 { unsigned int v[2]; };
@@ -28,7 +28,7 @@ ARM int RestoreCombatantPairTables_0215eab0(void* self, int mode) {
     if (bs == NULL) {
         return 0;
     }
-    int base = GetWord0x0((int*)bs);
+    int base = GetWord0x0_0200fb8c((int*)bs);
     if (base == 0) {
         return 0;
     }

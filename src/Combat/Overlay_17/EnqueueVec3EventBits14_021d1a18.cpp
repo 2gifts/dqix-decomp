@@ -13,11 +13,11 @@ struct SearchStruct0202c1a4 {
 };
 
 extern "C" int* func_0202ae18(void);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
-void* GetField0x3f8Address(GameState* battleStruct);
+void* GetField0x3f8Address_0200fd0c(GameState* battleStruct);
 extern "C" void* func_02012fe4(void* unused);
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct Vec3i021d1a18 { int x, y, z; };
@@ -45,13 +45,13 @@ struct LocalEvt021d1a18 {
 
 // USA: func_ov017_021d1a18  (semantic: EnqueueVec3EventBits14_021d1a18)
 extern "C" ARM void func_ov017_021d1a18(int a, short b, short c, unsigned char d) {
-    if (!CheckField0NonZero(func_0202ae18())) return;
+    if (!CheckField0NonZero_0202b7d8(func_0202ae18())) return;
     if (GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)func_0202ae18()) != 0) return;
 
     ((int)func_ov017_0218b5b0());
     GameState* bs = GameState::GetInstance();
-    void* base = func_02012fe4(GetField0x3f8Address(bs));
-    void* p = GetData02100044();
+    void* base = func_02012fe4(GetField0x3f8Address_0200fd0c(bs));
+    void* p = GetData02100044_0202ae24();
 
     struct LocalEvt021d1a18 buf;
     buf.tag = 0xb2;

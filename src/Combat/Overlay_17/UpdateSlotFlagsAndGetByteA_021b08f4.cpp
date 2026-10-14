@@ -12,7 +12,7 @@ extern "C" void func_ov000_021682ec(void* p);
 extern "C" void func_ov017_021d0b30(int a, int b, int c);
 extern "C" void func_ov017_021b0bc0(void* obj);
 int CheckCombatantsAndBit4_021b0b4c(void*);
-int IsField0Null(void** obj);
+int IsField0Null_02046b08(void** obj);
 
 struct Ctx021b08f4 {
     char pad0[0x9];
@@ -49,7 +49,7 @@ extern "C" ARM unsigned char func_ov017_021b08f4(Ctx021b08f4* obj) {
                 obj->byte26 = 2;
             }
         } else if (obj->byte26 == 1) {
-            if (IsField0Null((void**)p700) != 0) {
+            if (IsField0Null_02046b08((void**)p700) != 0) {
                 obj->byte26 = obj->byte26 + 1;
             }
         } else if (obj->byte26 == 2) {
@@ -70,7 +70,7 @@ extern "C" ARM unsigned char func_ov017_021b08f4(Ctx021b08f4* obj) {
                 }
             }
         } else if (obj->byte26 == 1) {
-            if (IsField0Null((void**)p700) != 0) {
+            if (IsField0Null_02046b08((void**)p700) != 0) {
                 func_ov017_021d0b30(6, 0, 0);
                 obj->byte26 = obj->byte26 + 1;
             }

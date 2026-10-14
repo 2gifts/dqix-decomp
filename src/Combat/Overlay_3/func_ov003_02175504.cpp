@@ -11,13 +11,13 @@ struct Container020dedd0 {
 };
 struct Obj020dee58;
 
-unsigned char *FindElementByByte0xc4(Obj2081 *, int);
-bool IsField0x9cEqual3(unsigned char *);
+unsigned char *FindElementByByte0xc4_02081da8(Obj2081 *, int);
+bool IsField0x9cEqual3_0204c7cc(unsigned char *);
 Obj020dee58 *FindElementByKey020dedd0(Container020dedd0 *, int);
 void GetLookAndTurnOffsets020809c4(void *, int, int, short *, short *);
 int LookupValueFromField8(Obj020dee58 *);
 void InitEntryAtIndex_0217585c(void *, int, int, int, unsigned char);
-bool CheckField0x9cSetWhenField0xd4Present(unsigned char *);
+bool CheckField0x9cSetWhenField0xd4Present_0204c7e0(unsigned char *);
 
 #if defined(jpn)
 extern unsigned char data_ov003_0217e34d[];
@@ -60,9 +60,9 @@ struct Battle02175504 {
 extern "C" ARM void func_ov003_02175504(Battle02175504 *self) {
     Obj2081 *obj     = self->menu;
     unsigned char k  = 6;
-    unsigned char *e = FindElementByByte0xc4(obj, 3);
+    unsigned char *e = FindElementByByte0xc4_02081da8(obj, 3);
     if (e) {
-        if (!IsField0x9cEqual3(e)) return;
+        if (!IsField0x9cEqual3_0204c7cc(e)) return;
         short a = 7;
         short b = (short) (self->page * 6);
         for (unsigned char i = 0; i < 6; i++) {
@@ -82,12 +82,12 @@ extern "C" ARM void func_ov003_02175504(Battle02175504 *self) {
     }
     if (self->state == 0x77) {
         Entry02175504 *cand = 0;
-        e                   = FindElementByByte0xc4(obj, 0x15);
-        if (e && IsField0x9cEqual3(e)) cand = (Entry02175504 *) e;
-        e = FindElementByByte0xc4(obj, 0x16);
-        if (e && IsField0x9cEqual3(e)) cand = (Entry02175504 *) e;
-        e = FindElementByByte0xc4(obj, 0x1e);
-        if (e && IsField0x9cEqual3(e)) cand = (Entry02175504 *) e;
+        e                   = FindElementByByte0xc4_02081da8(obj, 0x15);
+        if (e && IsField0x9cEqual3_0204c7cc(e)) cand = (Entry02175504 *) e;
+        e = FindElementByByte0xc4_02081da8(obj, 0x16);
+        if (e && IsField0x9cEqual3_0204c7cc(e)) cand = (Entry02175504 *) e;
+        e = FindElementByByte0xc4_02081da8(obj, 0x1e);
+        if (e && IsField0x9cEqual3_0204c7cc(e)) cand = (Entry02175504 *) e;
         if (cand) {
             int cx = cand->x_;
             int cy = cand->y_;
@@ -103,9 +103,9 @@ extern "C" ARM void func_ov003_02175504(Battle02175504 *self) {
     }
     if (self->updateEnabled == 0) return;
     if (self->selectedIndex < 0) return;
-    e = FindElementByByte0xc4(obj, 0xe);
+    e = FindElementByByte0xc4_02081da8(obj, 0xe);
     if (!e) return;
-    if (!CheckField0x9cSetWhenField0xd4Present(e)) return;
+    if (!CheckField0x9cSetWhenField0xd4Present_0204c7e0(e)) return;
     short a = 0x68;
     for (unsigned char i = 0; i < 8; i++) {
         short x, y;

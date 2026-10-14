@@ -4,7 +4,6 @@
 #include "Memory/SafeAllocator.h"
 #include "Filesystem/FileIO.h"
 
-
 struct Obj021dcb70;
 unsigned char LookupByField8_021dcb70(struct Obj021dcb70* p);
 
@@ -27,7 +26,7 @@ struct List0204af64 {
 void ResetList0204af64(struct List0204af64* obj);
 
 extern "C" void func_0204b5b4(void*, int);
-void SetWord0x18ClearByte0x1f(unsigned char* obj, int value);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char* obj, int value);
 
 struct Obj0204b5e8;
 int DispatchViaTable0204b5e8(struct Obj0204b5e8* obj, int a, int b);
@@ -95,7 +94,7 @@ extern "C" ARM int func_ov023_021dfecc(void* objRaw) {
             }
 
             func_0204b5b4(&listObj, 3);
-            SetWord0x18ClearByte0x1f((unsigned char*)&listObj, 0);
+            SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)&listObj, 0);
             DispatchViaTable0204b5e8((struct Obj0204b5e8*)&listObj, 0, 0);
 
             if (*(signed char*)(obj + regionalOffset1 + regionalOffset2) == 1) {

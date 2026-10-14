@@ -6,7 +6,7 @@ struct FieldPtrObj_021f5228 { char pad[0x144]; char *ptr150; };
 #else
 struct FieldPtrObj_021f5228 { char pad[0x150]; char *ptr150; };
 #endif
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 int GetTableByte020dd11c(unsigned int a, unsigned int b);
 
 // USA: func_ov023_021f5228
@@ -17,9 +17,9 @@ ARM int CheckThresholdOverAny_021f5228(int id) {
  enum {regionalOffset0=0x950};
 #endif
 	GameState *bs = GameState::GetInstance();
-	struct FieldPtrObj_021f5228 *combatant = (struct FieldPtrObj_021f5228*)GetCombatantWithFlag0x100(bs, id);
+	struct FieldPtrObj_021f5228 *combatant = (struct FieldPtrObj_021f5228*)GetCombatantWithFlag0x100_0200ff1c(bs, id);
 	if (!combatant) return 0;
-	int field150 = GetFieldAt0x150((unsigned char*)combatant);
+	int field150 = GetFieldAt0x150_02053c6c((unsigned char*)combatant);
 	if (!field150) return 0;
 	int val = *(int*)(combatant->ptr150 + regionalOffset0);
 	unsigned int byteVal = val & 0xff;

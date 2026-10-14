@@ -1,9 +1,9 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
-int GetFieldAt0x150(unsigned char* obj);
-void* GetData02100044(void);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* battleStruct, int combatantId);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* buf, int c);
 
 struct Dst021ccb58 {
@@ -17,12 +17,12 @@ struct Dst021ccb58 {
 // USA: func_ov017_021ccb58
 extern "C" ARM void func_ov017_021ccb58(int id, int idx) {
 	GameState* battle = GameState::GetInstance();
-	GameObject* c = GetCombatantWithFlag0x100(battle, id);
+	GameObject* c = GetCombatantWithFlag0x100_0200ff1c(battle, id);
 	if (!c) return;
-	unsigned char* base = (unsigned char*)GetFieldAt0x150((unsigned char*)c);
+	unsigned char* base = (unsigned char*)GetFieldAt0x150_02053c6c((unsigned char*)c);
 	if (!base) return;
 
-	void* d = GetData02100044();
+	void* d = GetData02100044_0202ae24();
 	Dst021ccb58 buf;
 	buf.marker = 0xd;
 	buf.field10 = (unsigned short)id;

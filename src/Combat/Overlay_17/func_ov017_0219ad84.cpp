@@ -21,23 +21,23 @@ struct Combatant0219ad84 {
     Object3D obj3D; char padac[0x1b2 - 0xac]; unsigned short field1b2;
 };
 
-int GetBitsInField4(unsigned int*, unsigned int);
+int GetBitsInField4_0203b4fc(unsigned int*, unsigned int);
 extern "C" Zone0219ad84* func_02012fe4();
 Controller0219ad84* GetGlobalField0x1c020421a0();
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
 void AdvanceStreamRecord0204724c(Obj0204724C*);
 void RenderFlaggedIndexedEntry(StructAt020473c8*, int);
-unsigned char GetByte0x26c(char*);
+unsigned char GetByte0x26c_02039d7c(char*);
 int CheckField0xc4Low15BitsNonZero(BitField0203402c*);
 void SetVec3At0x1c(Vec3Target0203a46c*, int, int, int);
 void RecomputeField0x7c(Struct020478bc*, int);
 extern "C" void func_02047554(Foo02048004*, int, int);
-int CheckSubstructByte0x7cPositive(signed char*);
-int IsField0Null(void**);
+int CheckSubstructByte0x7cPositive_020535c8(signed char*);
+int IsField0Null_02046b08(void**);
 extern "C" SearchStruct0202c1a4* func_0202ae18();
-int CheckField0NonZero(int*);
+int CheckField0NonZero_0202b7d8(int*);
 int GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
-void* GetField0x3f8Address(GameState*);
+void* GetField0x3f8Address_0200fd0c(GameState*);
 void ComputeTwoFromVec3_0202ec84(void*, Vec3copy0202ec84*, int*, int*);
 int HasFlagBit_0218d4ec(void*, int);
 
@@ -50,12 +50,12 @@ static inline unsigned char WindowOpen(void* window) {
 
 // USA: func_ov017_0219ad84
 extern "C" ARM void func_ov017_0219ad84(GameResources* self) {
-    if (GetBitsInField4((unsigned int*)self, 0x40)) return;
+    if (GetBitsInField4_0203b4fc((unsigned int*)self, 0x40)) return;
     GameState* game = GameState::GetInstance();
     Zone0219ad84* zone = func_02012fe4();
-    void* camera = GetField0x3b0Value(game);
+    void* camera = GetField0x3b0Value_020100bc(game);
     Controller0219ad84* controller = GetGlobalField0x1c020421a0();
-    Window0219ad84* field = (Window0219ad84*)GetField0x3f8Address(game);
+    Window0219ad84* field = (Window0219ad84*)GetField0x3f8Address_0200fd0c(game);
     GameObject* actor = game->GetUnknownGameObject();
     if (!actor) return;
 
@@ -95,7 +95,7 @@ extern "C" ARM void func_ov017_0219ad84(GameResources* self) {
     busy |= WindowOpen(self->unknown_ptr_array_3afc[30]);
     busy |= WindowOpen(self->unknown_ptr_array_3afc[21]);
     busy |= WindowOpen(self->unknown_ptr_array_3afc[43]);
-    busy |= GetByte0x26c((char*)actor);
+    busy |= GetByte0x26c_02039d7c((char*)actor);
     int check = CheckField0xc4Low15BitsNonZero((BitField0203402c*)actor);
     if (busy | check | WindowOpen(field)) idle = 0;
     if (idle) {
@@ -106,10 +106,10 @@ extern "C" ARM void func_ov017_0219ad84(GameResources* self) {
         GXFIFO_MATRIX_POP = 1;
     }
 
-    if (self->interactionSelection[1] != 0x12 && !CheckSubstructByte0x7cPositive((signed char*)actor) &&
-        IsField0Null((void**)self->unknown_ptr_array_36fc[0])) {
+    if (self->interactionSelection[1] != 0x12 && !CheckSubstructByte0x7cPositive_020535c8((signed char*)actor) &&
+        IsField0Null_02046b08((void**)self->unknown_ptr_array_36fc[0])) {
         int show = 1;
-        if (GetBitsInField4((unsigned int*)self, 8) && self->interactionSelection[0] == 0) show = 0;
+        if (GetBitsInField4_0203b4fc((unsigned int*)self, 8) && self->interactionSelection[0] == 0) show = 0;
         if (self->interactionSelection[1] == 0x11) show = 0;
         if (show) {
             int selection = self->interactionSelection[1];
@@ -122,13 +122,13 @@ extern "C" ARM void func_ov017_0219ad84(GameResources* self) {
     }
 
     SearchStruct0202c1a4* search = func_0202ae18();
-    if (!CheckField0NonZero((int*)search) || !camera) return;
-    if (CheckSubstructByte0x7cPositive((signed char*)actor)) return;
+    if (!CheckField0NonZero_0202b7d8((int*)search) || !camera) return;
+    if (CheckSubstructByte0x7cPositive_020535c8((signed char*)actor)) return;
     int current = GetSearchStructCurrentArrEntry(search);
     int drawn = 0;
     for (int i = 0; i < 4; i++) {
         if (i == current) continue;
-        Combatant0219ad84* member = (Combatant0219ad84*)GetCombatantWithFlag0x100(game, i);
+        Combatant0219ad84* member = (Combatant0219ad84*)GetCombatantWithFlag0x100_0200ff1c(game, i);
         if (!member) continue;
         if (!member->obj3D.IsVisible()) continue;
         if (!member->obj3D.GetInheritedAlpha()) continue;

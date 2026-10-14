@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_0208a018
-ARM void* GetElementStride0x40(unsigned char* obj, int index) {
+ARM void* GetElementStride0x40_0208a018(unsigned char* obj, int index) {
     unsigned char* base = *(unsigned char**)obj;
     if (base == 0) {
         return NULL;

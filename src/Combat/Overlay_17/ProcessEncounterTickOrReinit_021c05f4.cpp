@@ -10,17 +10,17 @@ enum { RegionOffset6fc = 0x6fc, RegionOffset18c = 0x18c, RegionOffset998 = 0x998
 void* GetGlobalField0x1c020421a0(void);
 void* GetDataPtr02114e04_020d6c00(void);
 extern "C" void* func_0205ec34(void);
-int TestBitInByteArray(int a, unsigned char* p, int bit);
-int IsField0Null(void** p);
-int GetByteField0x252(void* obj);
-int CheckSubstructByte0x7cPositive(signed char* p);
+int TestBitInByteArray_0206dfb0(int a, unsigned char* p, int bit);
+int IsField0Null_02046b08(void** p);
+int GetByteField0x252_02039820(void* obj);
+int CheckSubstructByte0x7cPositive_020535c8(signed char* p);
 struct BitField0203402c;
 int CheckField0xc4Low15BitsNonZero(BitField0203402c* p);
 struct FlagWord02046708;
 int TestFlags02046708(FlagWord02046708* w, unsigned int mask);
-int GetByte0x26c(char* p);
+int GetByte0x26c_02039d7c(char* p);
 int GetSignedField020c39c8(volatile unsigned short* p);
-int TestFlag0SetAndFlag1Clear(unsigned short*, int);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short*, int);
 struct Obj0205eaa0;
 int DispatchWithShortB4_0205eaa0(Obj0205eaa0* obj, int a, int b);
 void ReinitController02043204(char* p);
@@ -44,18 +44,18 @@ extern "C" ARM void func_ov017_021c05f4(void* p9, unsigned char p8, unsigned cha
         GameObject* combatant = GameState::GetInstance()->GetUnknownGameObject();
         void* d = GetDataPtr02114e04_020d6c00();
         void* f = func_0205ec34();
-        if (TestBitInByteArray((int)f, (unsigned char*)f + 0x8c, 0x119a) == 0) return;
-        if (IsField0Null((void**)*(void**)((char*)p9 + 0x3000 + RegionOffset6fc)) == 0) return;
-        if (GetByteField0x252(combatant) == 0) return;
-        if (CheckSubstructByte0x7cPositive((signed char*)combatant) != 0) return;
+        if (TestBitInByteArray_0206dfb0((int)f, (unsigned char*)f + 0x8c, 0x119a) == 0) return;
+        if (IsField0Null_02046b08((void**)*(void**)((char*)p9 + 0x3000 + RegionOffset6fc)) == 0) return;
+        if (GetByteField0x252_02039820(combatant) == 0) return;
+        if (CheckSubstructByte0x7cPositive_020535c8((signed char*)combatant) != 0) return;
         if (*(int*)((char*)combatant + RegionOffset18c) & 1) return;
         if (CheckField0xc4Low15BitsNonZero((BitField0203402c*)combatant) != 0 ||
             *(short*)((char*)combatant + 0xac) != 0 ||
             *(int*)((char*)g + RegionOffset998) != 0) return;
         if (TestFlags02046708((FlagWord02046708*)d, 0x800) != 0) return;
-        if (GetByte0x26c((char*)combatant) != 0) return;
+        if (GetByte0x26c_02039d7c((char*)combatant) != 0) return;
         if (GetSignedField020c39c8((volatile unsigned short*)0x400006c) != 0) return;
-        if (TestFlag0SetAndFlag1Clear((unsigned short*)&data_02114e30, 4) == 0) return;
+        if (TestFlag0SetAndFlag1Clear_02012444((unsigned short*)&data_02114e30, 4) == 0) return;
         *(unsigned short*)((char*)combatant + 0xb2) = 0;
         DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
     } else {

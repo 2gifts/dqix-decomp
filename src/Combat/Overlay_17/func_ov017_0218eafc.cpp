@@ -20,13 +20,13 @@ struct Battle0218eafc {
 extern "C" void* func_02057924(void);
 extern "C" void func_02057ab8(void* list, int id);
 int CheckByteFlagsAt4488_021922ac(void* self, unsigned int idx);
-int CheckFlag0x1ceBit2Set(unsigned char* obj);
-unsigned int GetBitsInField4(unsigned int* obj, unsigned int mask);
-int IsField0x1b4Or0x1b8Positive(int* obj);
-int GetFieldAt0x1b8(unsigned char* obj);
+int CheckFlag0x1ceBit2Set_02039d68(unsigned char* obj);
+unsigned int GetBitsInField4_0203b4fc(unsigned int* obj, unsigned int mask);
+int IsField0x1b4Or0x1b8Positive_02053cdc(int* obj);
+int GetFieldAt0x1b8_02053cd4(unsigned char* obj);
 extern "C" int func_02032fdc(void* obj, int clip, Vector3i* out);
 int CheckField0x56bLowNibble(Obj02061bd8* obj);
-unsigned char GetByteFieldAt0x1a0(void* obj, int extra);
+unsigned char GetByteFieldAt0x1a0_02053eb4(void* obj, int extra);
 extern "C" void func_02031234(int angle);
 extern "C" Object3D* func_ov017_021bdbcc(void* obj);
 Object3D* GetField4334_021bdbc0(unsigned char* ov);
@@ -38,13 +38,13 @@ extern "C" ARM void func_ov017_0218eafc(Battle0218eafc* battle, int idx) {
     void* list = func_02057924();
     int flagged = CheckByteFlagsAt4488_021922ac(battle, (unsigned char)idx);
     if (flagged) func_02057ab8(list, idx);
-    if (GetField0x3b0Value(gs) == 0) return;
+    if (GetField0x3b0Value_020100bc(gs) == 0) return;
 
     CombatantRecovery* member = (CombatantRecovery*)gs->GetPartyMemberByIndex(idx);
     int shadowId = idx * 12 + 0x13;
     Object3D* shadow = (Object3D*)gs->GetGameObjectByIndex(shadowId);
     if (member->obj3D_.GetFlag(0x200)) return;
-    if (CheckFlag0x1ceBit2Set((unsigned char*)member)) return;
+    if (CheckFlag0x1ceBit2Set_02039d68((unsigned char*)member)) return;
     if (member->obj3D_.IsChild()) return;
     Model3D* model = member->obj3D_.pModel_;
     if (model == NULL) return;
@@ -52,15 +52,15 @@ extern "C" ARM void func_ov017_0218eafc(Battle0218eafc* battle, int idx) {
     if (context == NULL) return;
 
     bool clip = true;
-    if (GetBitsInField4((unsigned int*)battle, 0x1000)) clip = false;
+    if (GetBitsInField4_0203b4fc((unsigned int*)battle, 0x1000)) clip = false;
     int alpha = member->obj3D_.GetCombinedAlpha();
     fix32_t alphaScale = member->obj3D_.GetAlphaScaleFactor();
 
     Vector3i saved;
-    if (IsField0x1b4Or0x1b8Positive((int*)member)) {
+    if (IsField0x1b4Or0x1b8Positive_02053cdc((int*)member)) {
         saved = member->obj3D_.position_;
         Vector3i raised = saved;
-        raised.y += GetFieldAt0x1b8((unsigned char*)member);
+        raised.y += GetFieldAt0x1b8_02053cd4((unsigned char*)member);
         member->obj3D_.position_ = raised;
         if (shadow) shadow->position_ = raised;
     }
@@ -95,7 +95,7 @@ extern "C" ARM void func_ov017_0218eafc(Battle0218eafc* battle, int idx) {
         }
 
         if (!CheckField0x56bLowNibble((Obj02061bd8*)member)) {
-            int handBone = GetByteFieldAt0x1a0(member, 0);
+            int handBone = GetByteFieldAt0x1a0_02053eb4(member, 0);
             GetModelBonePositionAndDirectionMatrices(context, NULL, NULL, handBone);
             Object3D* part = (Object3D*)gs->GetGameObjectByIndex(weaponId);
             if (part) {
@@ -116,7 +116,7 @@ extern "C" ARM void func_ov017_0218eafc(Battle0218eafc* battle, int idx) {
                 part->EnableFlag(0x8000);
                 part->Draw(false);
             }
-            GetModelBonePositionAndDirectionMatrices(context, NULL, NULL, GetByteFieldAt0x1a0(member, 3));
+            GetModelBonePositionAndDirectionMatrices(context, NULL, NULL, GetByteFieldAt0x1a0_02053eb4(member, 3));
             part = (Object3D*)gs->GetGameObjectByIndex(extraId);
             if (part && part->unknown_2_ > 0) {
                 part->EnableFlag(0x8000);
@@ -143,7 +143,7 @@ extern "C" ARM void func_ov017_0218eafc(Battle0218eafc* battle, int idx) {
             if (idx == 0) {
                 Object3D* effect = GetField4334_021bdbc0((unsigned char*)battle);
                 if (effect) {
-                    GetModelBonePositionAndDirectionMatrices(context, NULL, NULL, GetByteFieldAt0x1a0(member, 2));
+                    GetModelBonePositionAndDirectionMatrices(context, NULL, NULL, GetByteFieldAt0x1a0_02053eb4(member, 2));
                     effect->EnableFlag(0x8000);
                     effect->Draw(false);
                 }
@@ -158,7 +158,7 @@ extern "C" ARM void func_ov017_0218eafc(Battle0218eafc* battle, int idx) {
         if (!flagged) func_02057ab8(list, idx);
     }
 
-    if (IsField0x1b4Or0x1b8Positive((int*)member)) {
+    if (IsField0x1b4Or0x1b8Positive_02053cdc((int*)member)) {
         member->obj3D_.position_ = saved;
         if (shadow) shadow->position_ = saved;
     }

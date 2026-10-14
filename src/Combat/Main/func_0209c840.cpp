@@ -1,10 +1,10 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-int CountEntriesType1WithId(int id);
+int CountEntriesType1WithId_020bc0a4(int id);
 struct Obj020bc180;
 void CallFunc020c0204OnActiveNode(struct Obj020bc180* obj, int value, int arg);
-void* CallFunc020bc594OnField0(void* obj, int unused);
+void* CallFunc020bc594OnField0_020bc068(void* obj, int unused);
 void Forward0203aa80(void* obj, int arg2);
 int TryAllocateOrAppend0203aaf8(void* obj, void* arg1, int* out);
 struct Obj0203aba8;
@@ -16,20 +16,20 @@ int SetContextAndQuery0203ab6c(void* obj, void* arg1);
 
 struct Actor0209c840 {
     char pad0[0xb0];
-    int state;                   // 0xb0
-    int field_b4;                // 0xb4
-    short field_b8;               // 0xb8
-    short field_ba;                // 0xba
-    void* fieldBC;                  // 0xbc
-    void* fieldC0;                    // 0xc0
-    void* fieldC4;                      // 0xc4
-    unsigned char fc8_bit0 : 1;           // 0xc8
+    int state;
+    int field_b4;
+    short field_b8;
+    short field_ba;
+    void* fieldBC;
+    void* fieldC0;
+    void* fieldC4;
+    unsigned char fc8_bit0 : 1;
     unsigned char fc8_rest : 7;
-    unsigned char field_c9;                 // 0xc9  phase
-    unsigned short field_ca;                  // 0xca  timer
-    unsigned char field_cc;                     // 0xcc
-    unsigned char field_cd;                       // 0xcd
-    short field_ce;                                 // 0xce
+    unsigned char field_c9;
+    unsigned short field_ca;
+    unsigned char field_cc;
+    unsigned char field_cd;
+    short field_ce;
 };
 
 // USA: func_0209c840
@@ -39,7 +39,7 @@ extern "C" ARM void func_0209c840(struct Actor0209c840* actor) {
     if (actor->field_c9 == 1) {
         actor->field_ca = 0x320;
         if (actor->state == 1) {
-            int count = CountEntriesType1WithId(actor->field_b8);
+            int count = CountEntriesType1WithId_020bc0a4(actor->field_b8);
             if (count <= 0) {
                 actor->field_ca = 0;
             } else {
@@ -59,7 +59,7 @@ extern "C" ARM void func_0209c840(struct Actor0209c840* actor) {
             actor->field_ca = actor->field_ca - elapsed;
             return;
         }
-        CallFunc020bc594OnField0(&actor->fieldBC, 1);
+        CallFunc020bc594OnField0_020bc068(&actor->fieldBC, 1);
         if (actor->field_b4 > 0) {
             Forward0203aa80(actor, actor->field_b4);
         }
@@ -76,7 +76,7 @@ extern "C" ARM void func_0209c840(struct Actor0209c840* actor) {
         return;
     }
 
-    if (actor->field_ce > -1 && CountEntriesType1WithId(actor->field_ce) > 0) {
+    if (actor->field_ce > -1 && CountEntriesType1WithId_020bc0a4(actor->field_ce) > 0) {
         return;
     }
 
@@ -96,7 +96,7 @@ extern "C" ARM void func_0209c840(struct Actor0209c840* actor) {
         }
         SetContextAndQuery0203ab6c(actor, (void*)(int)actor->field_b8);
         if (actor->fc8_bit0) {
-            CallFunc020bc594OnField0(&actor->fieldBC, 0);
+            CallFunc020bc594OnField0_020bc068(&actor->fieldBC, 0);
             CallFunc020c0204OnActiveNode((struct Obj020bc180*)&actor->fieldBC, 0, 0);
             func_0209c2e0(actor, actor->field_cd, 0x1e);
         } else {

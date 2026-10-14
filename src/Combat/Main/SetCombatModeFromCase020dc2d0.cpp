@@ -19,12 +19,11 @@ struct StructWithNibble020dc2d0 {
 };
 
 void SetModeBasedOnCombatState020dc214(int mode);
-int* GetGlobal02109030(void);
+int* GetGlobal02109030_020936f8(void);
 void ReleaseHandleAndClearFlags(struct Obj020941b0* p);
 void* GetDataPtr02114e04_020d6c00(void);
 void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int mask);
 int ListContainsId(struct ListHead02046b60* list, int id);
-
 
 #if defined(jpn)
 enum { CombatModeListOffset = 0x4ec };
@@ -76,6 +75,6 @@ ARM void SetCombatModeFromCase020dc2d0(int mode) {
         SetModeBasedOnCombatState020dc214(0);
     }
 
-    ReleaseHandleAndClearFlags((Obj020941b0*)GetGlobal02109030());
+    ReleaseHandleAndClearFlags((Obj020941b0*)GetGlobal02109030_020936f8());
     ClearFlags020466f4((FlagWord020466f4*)GetDataPtr02114e04_020d6c00(), 0x41);
 }

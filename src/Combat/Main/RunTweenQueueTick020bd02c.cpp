@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 extern "C" int func_020d1f0c(int a0, int a1, int a2, int a3);
-int GetInterruptSafeQueueField(void);
+int GetInterruptSafeQueueField_020d26ec(void);
 extern "C" void func_020d24c4(int a);
 void ProcessQueueUntilValueCommitted020d2680(unsigned int a);
 
@@ -18,7 +18,7 @@ extern "C" ARM void func_020bd02c(void) {
     int a = *(int*)(base + 0x24);
     int b = *(int*)(base + 0x28);
     func_020d1f0c(a, b, mask, 0);
-    int x = GetInterruptSafeQueueField();
+    int x = GetInterruptSafeQueueField_020d26ec();
     func_020d24c4(1);
     ProcessQueueUntilValueCommitted020d2680((unsigned int)x);
 }

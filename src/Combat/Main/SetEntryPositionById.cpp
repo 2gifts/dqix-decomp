@@ -20,7 +20,7 @@ struct Parent809a0 {
 };
 
 // USA: func_020809a0
-ARM void SetEntryPositionById(struct Parent809a0* obj, int id, short x, short y) {
+ARM void SetEntryPositionById_020809a0(struct Parent809a0* obj, int id, short x, short y) {
     struct Entry809a0* e = FindEntryByShortId0207f6ac(&obj->list, id);
     if (e != NULL) {
         e->valX = x;

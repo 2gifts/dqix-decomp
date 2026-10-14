@@ -5,8 +5,8 @@
 extern "C" void __clear(void* buf, int size);
 
 struct S_10088;
-int IsFlag10088Set(struct S_10088* obj);
-int IsFlag0x18Bit0x2000Set(GameObject* combatant);
+int IsFlag10088Set_02010088(struct S_10088* obj);
+int IsFlag0x18Bit0x2000Set_ov000_02153c0c(GameObject* combatant);
 
 struct EnemyGroup02153aa4 {
     unsigned short value;
@@ -42,7 +42,7 @@ extern "C" ARM void func_ov000_02153aa4(BattleAI02153aa4* ai, int groupIdx, int*
     if (c == NULL) {
         return;
     }
-    if (!IsFlag10088Set((struct S_10088*)c) && !IsFlag0x18Bit0x2000Set(c)) {
+    if (!IsFlag10088Set_02010088((struct S_10088*)c) && !IsFlag0x18Bit0x2000Set_ov000_02153c0c(c)) {
         return;
     }
     EnemyGroup02153aa4* groups = ai->groups;
@@ -74,7 +74,7 @@ extern "C" ARM void func_ov000_02153aa4(BattleAI02153aa4* ai, int groupIdx, int*
     for (j = 0; j < group->total; j++) {
         id = members[j] + 0xc0;
         GameObject* m = GetCombatant(id);
-        if (m != NULL && !IsFlag10088Set((struct S_10088*)m) && !IsFlag0x18Bit0x2000Set(m)) {
+        if (m != NULL && !IsFlag10088Set_02010088((struct S_10088*)m) && !IsFlag0x18Bit0x2000Set_ov000_02153c0c(m)) {
             idp[n] = id;
             n++;
         }

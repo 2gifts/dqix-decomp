@@ -12,7 +12,7 @@ struct AppendEntry {
     int b;
 };
 struct AppendPairList;
-void AppendPairToBoundedList(struct AppendPairList* list, struct AppendEntry* src);
+void AppendPairToBoundedList_020281d8(struct AppendPairList* list, struct AppendEntry* src);
 
 extern void* data_020fdd30;
 
@@ -31,7 +31,7 @@ extern "C" ARM int func_02027eec(void* param0) {
         pair.b = cur;
         id++;
         if (pair.a != 0 && cur != 0) {
-            AppendPairToBoundedList((struct AppendPairList*)data_020fdd30, &pair);
+            AppendPairToBoundedList_020281d8((struct AppendPairList*)data_020fdd30, &pair);
         }
         if (pair.b != 0) pair.a = pair.b;
     }

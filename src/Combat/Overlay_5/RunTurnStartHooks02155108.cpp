@@ -20,7 +20,7 @@ void InitEntries0205d2bc(struct Obj0205d2bc* obj);
 extern "C" void func_ov005_0215a620(void* obj);
 extern "C" void func_0204b088(void* p, int flag);
 struct Entry020e2cc4;
-void SetFieldsAt0x4And0x8(int* obj, int a, int b);
+void SetFieldsAt0x4And0x8_020e2d24(int* obj, int a, int b);
 extern "C" void func_ov005_0215ae7c(void* obj);
 struct Outer020e28dc;
 int GetInnerFlagBit0020e28dc(struct Outer020e28dc* o);
@@ -51,7 +51,7 @@ ARM void RunTurnStartHooks02155108(void* obj) {
     if (*(void**)(base + R(0xe60, 0xe64)) != NULL) {
         unsigned char* r5 = *(unsigned char**)((unsigned char*)(*(void**)(base + R(0xe60, 0xe64))) + 0x10);
         int flag;
-        SetFieldsAt0x4And0x8((int*)(r5 + 0x28), 0x1f, 1);
+        SetFieldsAt0x4And0x8_020e2d24((int*)(r5 + 0x28), 0x1f, 1);
         flag = GetInnerFlagBit0020e28dc((struct Outer020e28dc*)*(void**)(base + R(0xe60, 0xe64)));
         SetEntryEnabled020e2cc4((struct Entry020e2cc4*)(r5 + 0x28), flag);
         SetYesNoButtonPalette020e2834((struct SelfState020e2834*)*(void**)(base + R(0xe60, 0xe64)));

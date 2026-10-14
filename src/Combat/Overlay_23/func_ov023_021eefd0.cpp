@@ -186,20 +186,20 @@ extern "C" void func_0204500c(MessageSystem_021eefd0*, const char*, int);
 
 MessageSystem_021eefd0* GetGlobalField0x1c020421a0();
 void Clear12Bytes0206efc4(void* monsters);
-void WrapCall0206f230With1000(int monsters, int allocator, int file, int size, int monster);
+void WrapCall0206f230With1000_0206f200(int monsters, int allocator, int file, int size, int monster);
 void* SearchWithComparator0206f4f0(BinarySearchByComparatorStruct* monsters, int id);
 void Clear12Bytes020e46c4(void* name);
-const char* FindEntryByKey(TableA68* texts, int id);
+const char* FindEntryByKey_02072a68(TableA68* texts, int id);
 void LoadBattleBlock020ac4c0(void* records);
-void AddClamped24BitFieldAt0x8(S_a0330* records, unsigned int value);
-void AddClamped16BitFieldHighAt0x10(S_a0110* time, unsigned int value);
-void AddClamped14BitFieldMidAt0xc(S_a0388* records, unsigned int value);
-void CopyInBattleField0x7540(void* records);
+void AddClamped24BitFieldAt0x8_020a0330(S_a0330* records, unsigned int value);
+void AddClamped16BitFieldHighAt0x10_020a0110(S_a0110* time, unsigned int value);
+void AddClamped14BitFieldMidAt0xc_020a0388(S_a0388* records, unsigned int value);
+void CopyInBattleField0x7540_020ac494(void* records);
 void ResetAndDispatchActorContext0209c6d8(void* obj, short value);
 void EnqueueEventTag162_021cfc74(unsigned char value);
 void ResetFields_021eefac(Reset_021eefac* end);
 int IsInRange0201b588(int zone);
-void DispatchAndSetTreasureMapUnknownBit(char* gameState, int map);
+void DispatchAndSetTreasureMapUnknownBit_020117cc(char* gameState, int map);
 
 extern "C" {
 void __clear(void* buffer, unsigned long size);
@@ -242,7 +242,7 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
                     self->allocator_.Reset();
                     monsters = _ZZ17GetGlobal021ffefcvE1s->monsters_;
                     Clear12Bytes0206efc4(monsters);
-                    WrapCall0206f230With1000((int)monsters, (int)&self->allocator_, (int)file, size, (short)self->victoryMonster_);
+                    WrapCall0206f230With1000_0206f200((int)monsters, (int)&self->allocator_, (int)file, size, (short)self->victoryMonster_);
                 }
                 loader->RemoveTask(_ZZ17GetGlobal021ffefcvE1s->task3_);
                 _ZZ17GetGlobal021ffefcvE1s->task3_ = -1;
@@ -288,15 +288,15 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
             void* monster = SearchWithComparator0206f4f0((BinarySearchByComparatorStruct*)monsters, (short)self->victoryMonster_);
             if (monster != NULL)
                 strcpy(name, *(const char**)monster);
-            sprintf(text, FindEntryByKey((TableA68*)self->texts_, 1), name);
+            sprintf(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 1), name);
             break;
         }
         case 1:
         {
             void* monster = SearchWithComparator0206f4f0((BinarySearchByComparatorStruct*)monsters, (short)self->victoryMonster_);
             if (monster != NULL)
-                sprintf(name, FindEntryByKey((TableA68*)self->texts_, 5), *(const char**)monster);
-            sprintf(text, FindEntryByKey((TableA68*)self->texts_, 1), name);
+                sprintf(name, FindEntryByKey_02072a68((TableA68*)self->texts_, 5), *(const char**)monster);
+            sprintf(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 1), name);
             break;
         }
         case 2:
@@ -304,8 +304,8 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
             if (kind == 0x36 || kind == 0x43 || kind == 0x50)
                 strcpy(name, data_ov023_021fd504);
             else
-                strcpy(name, FindEntryByKey((TableA68*)self->texts_, 4));
-            sprintf(text, FindEntryByKey((TableA68*)self->texts_, 1), name);
+                strcpy(name, FindEntryByKey_02072a68((TableA68*)self->texts_, 4));
+            sprintf(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 1), name);
             break;
         }
         case 3:
@@ -313,21 +313,21 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
             void* monster = SearchWithComparator0206f4f0((BinarySearchByComparatorStruct*)monsters, (short)self->victoryMonster_);
             if (monster != NULL)
                 strcpy(name, *(const char**)monster);
-            sprintf(text, FindEntryByKey((TableA68*)self->texts_, 3), name);
+            sprintf(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 3), name);
             break;
         }
         case 4:
         {
             void* monster = SearchWithComparator0206f4f0((BinarySearchByComparatorStruct*)monsters, (short)self->victoryMonster_);
             if (monster != NULL)
-                sprintf(name, FindEntryByKey((TableA68*)self->texts_, 5), *(const char**)monster);
-            sprintf(text, FindEntryByKey((TableA68*)self->texts_, 3), name);
+                sprintf(name, FindEntryByKey_02072a68((TableA68*)self->texts_, 5), *(const char**)monster);
+            sprintf(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 3), name);
             break;
         }
         case 5:
         {
-            strcpy(name, FindEntryByKey((TableA68*)self->texts_, 4));
-            sprintf(text, FindEntryByKey((TableA68*)self->texts_, 3), name);
+            strcpy(name, FindEntryByKey_02072a68((TableA68*)self->texts_, 4));
+            sprintf(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 3), name);
             break;
         }
         case 6:
@@ -335,21 +335,21 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
             void* monster = SearchWithComparator0206f4f0((BinarySearchByComparatorStruct*)monsters, (short)self->victoryMonster_);
             if (monster != NULL)
                 strcpy(name, *(const char**)monster);
-            sprintf(text, FindEntryByKey((TableA68*)self->texts_, 2), name);
+            sprintf(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 2), name);
             break;
         }
         case 7:
         {
             void* monster = SearchWithComparator0206f4f0((BinarySearchByComparatorStruct*)monsters, (short)self->victoryMonster_);
             if (monster != NULL)
-                sprintf(name, FindEntryByKey((TableA68*)self->texts_, 5), *(const char**)monster);
-            sprintf(text, FindEntryByKey((TableA68*)self->texts_, 2), name);
+                sprintf(name, FindEntryByKey_02072a68((TableA68*)self->texts_, 5), *(const char**)monster);
+            sprintf(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 2), name);
             break;
         }
         case 8:
         {
-            strcpy(name, FindEntryByKey((TableA68*)self->texts_, 4));
-            sprintf(text, FindEntryByKey((TableA68*)self->texts_, 2), name);
+            strcpy(name, FindEntryByKey_02072a68((TableA68*)self->texts_, 4));
+            sprintf(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 2), name);
             break;
         }
         }
@@ -372,45 +372,45 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
         switch (self->victory_)
         {
         case 0:
-            sprintf(text, FindEntryByKey((TableA68*)self->texts_, 1));
+            sprintf(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 1));
             break;
         case 1:
             messages->unk_19d7 = 1;
-            sprintf(text, FindEntryByKey((TableA68*)self->texts_, 1));
+            sprintf(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 1));
             break;
         case 2:
             if (kind == 0x36 || kind == 0x43 || kind == 0x50)
-                sprintf(text, FindEntryByKey((TableA68*)self->texts_, 1));
+                sprintf(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 1));
             else
-                sprintf(text, FindEntryByKey((TableA68*)self->texts_, 0x32));
+                sprintf(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 0x32));
             break;
         case 3:
-            sprintf(text, FindEntryByKey((TableA68*)self->texts_, 3));
+            sprintf(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 3));
             break;
         case 4:
             messages->unk_19d7 = 1;
-            sprintf(text, FindEntryByKey((TableA68*)self->texts_, 3));
+            sprintf(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 3));
             break;
         case 5:
-            sprintf(text, FindEntryByKey((TableA68*)self->texts_, 0x34));
+            sprintf(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 0x34));
             break;
         case 6:
-            sprintf(text, FindEntryByKey((TableA68*)self->texts_, 2));
+            sprintf(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 2));
             break;
         case 7:
             messages->unk_19d7 = 1;
-            sprintf(text, FindEntryByKey((TableA68*)self->texts_, 2));
+            sprintf(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 2));
             break;
         case 8:
-            sprintf(text, FindEntryByKey((TableA68*)self->texts_, 0x33));
+            sprintf(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 0x33));
             break;
         }
 
 #endif
         if (self->info_->legacyBoss_ != 0)
-            strcat(text, FindEntryByKey((TableA68*)self->texts_, 0x22));
+            strcat(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 0x22));
         else if (end->nothing_ == 0)
-            strcat(text, FindEntryByKey((TableA68*)self->texts_, 0x22));
+            strcat(text, FindEntryByKey_02072a68((TableA68*)self->texts_, 0x22));
 #if defined(jpn)
         func_0204500c(messages, text, 1);
 #else
@@ -423,9 +423,9 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
         {
             PlayRecords_021eefd0 records;
             LoadBattleBlock020ac4c0(&records);
-            AddClamped24BitFieldAt0x8((S_a0330*)&records, 1);
-            AddClamped16BitFieldHighAt0x10((S_a0110*)records.unk_68, 1);
-            CopyInBattleField0x7540(&records);
+            AddClamped24BitFieldAt0x8_020a0330((S_a0330*)&records, 1);
+            AddClamped16BitFieldHighAt0x10_020a0110((S_a0110*)records.unk_68, 1);
+            CopyInBattleField0x7540_020ac494(&records);
         }
         if (!func_0202c540(func_0202ae18()) || self->info_->legacyBoss_ == 0)
             ResetAndDispatchActorContext0209c6d8(data_02109bf4, 0x36);
@@ -465,10 +465,10 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
             {
                 PlayRecords_021eefd0 records;
                 LoadBattleBlock020ac4c0(&records);
-                AddClamped14BitFieldMidAt0xc((S_a0388*)&records, 1);
+                AddClamped14BitFieldMidAt0xc_020a0388((S_a0388*)&records, 1);
                 if (map != NULL && map->mapType_ == 2 && map->legacyLevel_ > records.unk_c_7)
                     records.unk_c_7 = map->legacyLevel_;
-                CopyInBattleField0x7540(&records);
+                CopyInBattleField0x7540_020ac494(&records);
             }
             return 4;
         }
@@ -495,17 +495,17 @@ extern "C" ARM int func_ov023_021eefd0(BattleScene_021eefd0* self)
                 VectorizedInvertedMemcpy(buffer, map2->clearedBy_, sizeof(buffer));
 #endif
 
-                DispatchAndSetTreasureMapUnknownBit((char*)gameState, (int)map2);
+                DispatchAndSetTreasureMapUnknownBit_020117cc((char*)gameState, (int)map2);
                 func_02011744(gameState);
             }
             if (IsInRange0201b588(zone->id_))
             {
                 PlayRecords_021eefd0 records;
                 LoadBattleBlock020ac4c0(&records);
-                AddClamped14BitFieldMidAt0xc((S_a0388*)&records, 1);
+                AddClamped14BitFieldMidAt0xc_020a0388((S_a0388*)&records, 1);
                 if (map != NULL && map->mapType_ == 1 && map->regularLevel_ > records.unk_c_0)
                     records.unk_c_0 = map->regularLevel_;
-                CopyInBattleField0x7540(&records);
+                CopyInBattleField0x7540_020ac494(&records);
             }
         }
         return end->nothing_ ? 0xe : 6;

@@ -5,7 +5,7 @@
 #include "Resource/GameResources.h"
 
 extern "C" void* func_0202ae18(void);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 extern "C" int func_0202c508(void* obj);
 struct SearchStruct;
 struct SearchStruct0202c1a4;
@@ -19,17 +19,17 @@ extern "C" ARM Vector3fix func_02034104(void* obj) {
     Object3D* object = (Object3D*)obj;
     void* thing = func_0202ae18();
     func_ov017_0218b5b0();
-    if (CheckField0NonZero((int*)thing)) {
+    if (CheckField0NonZero_0202b7d8((int*)thing)) {
         if (func_0202c508(thing)) {
             short field4 = object->unknown_4_;
-            if (GetEntryBySignedByteIndex((struct SearchStruct*)thing, field4)) {
+            if (GetEntryBySignedByteIndex_0202c178((struct SearchStruct*)thing, field4)) {
                 field4 = object->unknown_4_;
                 signed char cur = GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)thing);
                 if (cur != field4) {
                     FlagsByte0xc1_02034104* flags = (FlagsByte0xc1_02034104*)((char*)obj + 0xc1);
                     if (flags->lowBits2 & 1) {
                         field4 = object->unknown_4_;
-                        SearchEntry0202c178* entry = GetEntryBySignedByteIndex((struct SearchStruct*)thing, field4);
+                        SearchEntry0202c178* entry = GetEntryBySignedByteIndex_0202c178((struct SearchStruct*)thing, field4);
                         Vector3fix16 tmp;
 #if defined(jpn)
                         tmp.x = entry->x;

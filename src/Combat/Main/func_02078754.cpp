@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 extern "C" void* func_0202ae18(void);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 
 struct SearchStruct0202c1a4;
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
@@ -66,7 +66,7 @@ extern "C" ARM int func_02078754(struct Entity02078754* self) {
     self->f17a = 0;
 
     void* g = func_0202ae18();
-    if (CheckField0NonZero((int*)g) && GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)g) == 0) {
+    if (CheckField0NonZero_0202b7d8((int*)g) && GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)g) == 0) {
         int c1 = ((Object3D*)((struct U16Field0x6_020375f8*)self))->GetField06();
         int f2val = self->f2;
         struct Vec3* p44 = &self->f44;

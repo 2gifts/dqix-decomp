@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-int ComputeMaskedIndexOffset(void*, int, int, int);
+int ComputeMaskedIndexOffset_020d6884(void*, int, int, int);
 extern "C" int func_020ca3b8(int, int, int);
 extern "C" void func_020ca390(int, void*, unsigned int);
 unsigned int DisableIRQInterrupts();
@@ -38,7 +38,7 @@ ARM void ClearAndSetBlockFlag020d6610(struct Obj020d6610* obj, int bit, int extr
         idx = (idx + 1) & 3;
         if (!(obj->blocks[idx].flagsA & mask)) return;
     }
-    int val = ComputeMaskedIndexOffset(obj, flags, (int)&obj->blocks[idx] + 4, bit);
+    int val = ComputeMaskedIndexOffset_020d6884(obj, flags, (int)&obj->blocks[idx] + 4, bit);
     if (extra != 0) {
         func_020ca3b8(extra, val, obj->sub.field10);
     } else {

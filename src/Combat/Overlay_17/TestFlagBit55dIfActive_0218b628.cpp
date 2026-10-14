@@ -6,7 +6,7 @@ enum { ACTIVE_OBJECT_FIELD = 0x4c0 };
 enum { ACTIVE_OBJECT_FIELD = 0x6d0 };
 #endif
 
-int TestFlagBit0x55d(unsigned char* base, int bit);
+int TestFlagBit0x55d_02020084(unsigned char* base, int bit);
 
 struct FlagPair_0218b628 { int a; int b; };
 extern FlagPair_0218b628 data_ov017_021d82e0;
@@ -17,5 +17,5 @@ ARM int TestFlagBit55dIfActive_0218b628(int bit) {
     if (b == 0) return 0;
     int val = *(int*)((char*)b + 0x3000 + ACTIVE_OBJECT_FIELD);
     if (val == 0) return 0;
-    return TestFlagBit0x55d((unsigned char*)val, bit);
+    return TestFlagBit0x55d_02020084((unsigned char*)val, bit);
 }

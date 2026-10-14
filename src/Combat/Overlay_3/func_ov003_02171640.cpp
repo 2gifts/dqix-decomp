@@ -9,9 +9,9 @@ extern "C" void* func_0202ae18(void);
 extern "C" void func_0202b0f4(void* ptr);
 extern "C" void func_0202c288(void* ptr);
 unsigned short GetEntryField0x4OrFieldA0202bc8c(struct SearchStruct* obj);
-int GetConstant10(void* search);
+int GetConstant10_0202baec(void* search);
 struct Element0202bad4* GetElementAt0x10Stride0xc0(struct ElementArray0202bad4* base, int index);
-void SetSearchFlagBitAt0xc(struct SearchStruct* obj, int value);
+void SetSearchFlagBitAt0xc_0202c1e8(struct SearchStruct* obj, int value);
 
 struct Obj02171640 {
     unsigned char state;
@@ -30,12 +30,12 @@ extern "C" ARM void func_ov003_02171640(struct Obj02171640* obj) {
     if (dt < obj->timer) {
         obj->timer -= dt;
         unsigned short mask = GetEntryField0x4OrFieldA0202bc8c((struct SearchStruct*)search);
-        int count = GetConstant10(search);
+        int count = GetConstant10_0202baec(search);
         for (int i = 1; i < count; i++) {
             if (mask & (1 << i)) {
                 GetElementAt0x10Stride0xc0((struct ElementArray0202bad4*)search, i);
                 obj->selected = i;
-                SetSearchFlagBitAt0xc((struct SearchStruct*)search, (unsigned char)i);
+                SetSearchFlagBitAt0xc_0202c1e8((struct SearchStruct*)search, (unsigned char)i);
                 func_0202c288(search);
                 obj->state = 2;
                 return;

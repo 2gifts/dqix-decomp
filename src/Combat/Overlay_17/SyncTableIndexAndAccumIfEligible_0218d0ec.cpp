@@ -12,12 +12,12 @@ extern "C" void* func_02012fe4(void);
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c508(void* obj);
 extern "C" void* func_0205ec34(void);
-void SetOrClearBitInArray(void* unused, unsigned char* array, int bit, int value);
+void SetOrClearBitInArray_0206df6c(void* unused, unsigned char* array, int bit, int value);
 
 struct HeadNode02046b24;
 int GetHeadNodeIdOrMinusOne(struct HeadNode02046b24** obj);
-unsigned char GetByte0x4(char* obj);
-int GetWord0x7f6c(void* obj);
+unsigned char GetByte0x4_0200fb9c(char* obj);
+int GetWord0x7f6c_0201201c(void* obj);
 
 struct ScaledAccum02010240;
 
@@ -25,7 +25,6 @@ void EnqueueEventTag147_021cdaa0(void);
 int IsField600B4Zero_021b8b54(void* obj);
 
 struct Data02107930 { unsigned char pad0[0x94]; float accum; int tableIndex; };
-
 
 struct Struct020fb3f0 { unsigned char pad0[8]; unsigned char* field8; };
 struct NibbleByte0218d0ec { unsigned char lowNibble : 4; unsigned char highNibble : 4; };
@@ -37,8 +36,8 @@ extern "C" ARM void func_ov017_0218d0ec(unsigned char* ov) {
     void* p2 = func_0202ae18();
 
     if (GetHeadNodeIdOrMinusOne(*(struct HeadNode02046b24***)(ov + 0x3000 + RegionOffset6fc)) == 3) return;
-    if (GetByte0x4((char*)bs) == 6) return;
-    if (GetWord0x7f6c(bs) == 5) return;
+    if (GetByte0x4_0200fb9c((char*)bs) == 6) return;
+    if (GetWord0x7f6c_0201201c(bs) == 5) return;
 
     NibbleByte0218d0ec* nb = (NibbleByte0218d0ec*)(p1->field8 + 0xc);
     unsigned int nibble = nb->lowNibble;
@@ -66,7 +65,7 @@ extern "C" ARM void func_ov017_0218d0ec(unsigned char* ov) {
     if (prevIdx != bs->GetTimeOfDay()) {
         if (bs->GetTimeOfDay() == 1 || bs->GetTimeOfDay() == 0) {
             void* base = func_0205ec34();
-            SetOrClearBitInArray(base, (unsigned char*)base + 0x8c, 0x1140, 1);
+            SetOrClearBitInArray_0206df6c(base, (unsigned char*)base + 0x8c, 0x1140, 1);
         }
     }
 

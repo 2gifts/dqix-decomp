@@ -21,8 +21,8 @@ struct Ctx021b05c4 {
 };
 
 void EnqueueEventTag23Field_021d0d58(void);
-int GetFieldAt0x150(unsigned char* obj);
-void* GetData02100044(void);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
+void* GetData02100044_0202ae24(void);
 int CheckSlotsAllFree0205e488(void* obj);
 extern "C" void* func_ov017_021b0fe0(int a, int b);
 
@@ -48,16 +48,16 @@ extern "C" ARM unsigned char func_ov017_021b05c4(struct Ctx021b05c4* self) {
         if (idx < 0) {
             return self->byteA;
         }
-        GameObject* combatant = GetCombatantWithFlag0x100(bs, idx);
+        GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(bs, idx);
         if (combatant == 0) {
             return self->byteA;
         }
-        int field150 = GetFieldAt0x150((unsigned char*)combatant);
+        int field150 = GetFieldAt0x150_02053c6c((unsigned char*)combatant);
         int val = *(int*)((char*)field150 + RegionOffset950) & 0xff;
         func_ov017_021b0fe0(idx, val);
         self->byte23 = self->byte23 + 1;
     } else if (self->byte23 == 1) {
-        void* data = GetData02100044();
+        void* data = GetData02100044_0202ae24();
         if (CheckSlotsAllFree0205e488(data) != 0) {
             self->byte23 = 0;
         }

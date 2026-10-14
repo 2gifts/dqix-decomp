@@ -17,7 +17,7 @@ struct Param021e4f00 {
 extern "C" ARM int func_ov025_021e4f00(struct Param021e4f00* p, int b, int unused, void* d) {
     int targetIds[8];
     int cameraIds[8];
-    void* obj = GetField0x3b0Value(GameState::GetInstance());
+    void* obj = GetField0x3b0Value_020100bc(GameState::GetInstance());
     if (obj != 0) {
         if (GetFlags((int)obj) & 0x10) {
             if (DispatchByIndex021820bc(d, b, p->targetIndex, (int)targetIds) != 1) {

@@ -9,7 +9,7 @@ int CanAdjustStatStageBit3(StatStageStruct02087860* p, int decrease);
 extern "C" int func_020878b4(void* stats, int delta);
 int CanAdjustStatStageBit21(StatStageStruct02087e18* p, int decrease);
 int ClampAndUpdateField0x58(Obj02087e6c* obj, int delta);
-int CanAdjustField0x58(void* stats, int dir);
+int CanAdjustField0x58_0208776c(void* stats, int dir);
 extern "C" int func_020877c0(void* stats, int delta);
 void UpdateCombatantDefense(int random, int combatantId);
 void UpdateCombatantAttack(int random, int combatantId);
@@ -55,7 +55,7 @@ extern "C" ARM void* func_ov024_021e1ed4(struct Obj_021e1ed4* obj, int unused, i
 		}
 		AddEntryAndIncrementCount0215a88c(obj->field0x10, entry, msg);
 	}
-	if (CanAdjustField0x58(c->currentStats_, 0)) {
+	if (CanAdjustField0x58_0208776c(c->currentStats_, 0)) {
 		changed = 1;
 		int delta = func_020877c0(c->currentStats_, 1);
 		UpdateCombatantAttack((int)obj->field0x10, id);

@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 extern "C" int _s32_div_f(int a, int b);
 
 // USA: func_ov017_021920dc
@@ -18,9 +18,9 @@ ARM int HasFieldSlotOrFlagBit27_021920dc(int unused, int id) {
 	}
 
 	if (idx >= 0) {
-		GameObject* c = GetCombatantWithFlag0x100(battleStruct, idx);
+		GameObject* c = GetCombatantWithFlag0x100_0200ff1c(battleStruct, idx);
 		if (c != NULL) {
-			int val = GetFieldAt0x150((unsigned char*)c);
+			int val = GetFieldAt0x150_02053c6c((unsigned char*)c);
 			GameObject* c2 = battleStruct->GetCombatantByIndex(idx);
 			if (val != 0 && *((unsigned char*)val + 0x56c) != 0) {
 				goto setResult;

@@ -26,7 +26,7 @@ struct Container0201e574 {
 };
 
 // USA: func_0201e574
-extern "C" ARM void _ZN12ZoneFeatures19CreateOpcode68EntryERKNS_13Opcode68EntryE(struct Container0201e574* c, struct Entry0201e574* src) {
+extern "C" ARM void _ZN12ZoneFeatures28CreateOpcode68Entry_0201e574ERKNS_13Opcode68EntryE(struct Container0201e574* c, struct Entry0201e574* src) {
     struct Entry0201e574* dst;
     if (c->count >= c->capacity) return;
     dst = &c->base[c->count];

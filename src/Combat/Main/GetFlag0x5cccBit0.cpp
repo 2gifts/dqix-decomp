@@ -10,6 +10,6 @@ struct StateBits5ccc_11570 {
 };
 
 // USA: func_02011570
-ARM int GetFlag0x5cccBit0(struct StateBits5ccc_11570* state) {
+ARM int GetFlag0x5cccBit0_02011570(struct StateBits5ccc_11570* state) {
     return state->flag;
 }

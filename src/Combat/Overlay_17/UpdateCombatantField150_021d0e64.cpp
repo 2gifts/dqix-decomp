@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 extern "C" void func_ov017_0218f5a4(void* a, int i, int b, int c, int d);
 
 struct ArgA021d0e64 {
@@ -19,7 +19,7 @@ ARM void UpdateCombatantField150_021d0e64(void* unused0, ArgA021d0e64* a1, GameS
 #endif
     GameObject* c = bs->GetPartyMemberByIndex(a1->field4);
     if (!c) return;
-    int field150 = GetFieldAt0x150((unsigned char*)c);
+    int field150 = GetFieldAt0x150_02053c6c((unsigned char*)c);
     if (!field150) return;
 
     unsigned char* f = (unsigned char*)field150;

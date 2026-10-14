@@ -10,9 +10,9 @@
 #endif
 
 unsigned char* GetGlobalField0x1c020421a0(void);
-void SetField0x1e20(void* obj, void* value);
+void SetField0x1e20_02042b10(void* obj, void* value);
 void UpdateTimedState0202f380(void* obj, int amount);
-void InitSelfPointer(unsigned char* base);
+void InitSelfPointer_02042b1c(unsigned char* base);
 int CheckGlobalObjState2AndInit0205cde8(unsigned char* p);
 extern "C" int func_0205c5b0(void* selfPtr, void* p1);
 
@@ -28,9 +28,9 @@ ARM void SetupAndDispatch0205c904(unsigned char* obj, int flag) {
     }
 
     unsigned char* ctx = GetGlobalField0x1c020421a0();
-    SetField0x1e20(ctx, obj + 0xb4);
+    SetField0x1e20_02042b10(ctx, obj + 0xb4);
     UpdateTimedState0202f380(ctx + TIMED_STATE, flag);
-    InitSelfPointer(ctx);
+    InitSelfPointer_02042b1c(ctx);
 
     if (CheckGlobalObjState2AndInit0205cde8(obj) == 0) {
         return;

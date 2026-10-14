@@ -23,11 +23,11 @@ void SetElementFlag0x20ByKey0205def8(struct Struct_0205def8 *s, int clear, int k
 char *GetField4Ptr020e1b24(void *p);
 void ResetAndReposition020e280c(struct Obj020e280c *self, void *b);
 int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
-char *GetFieldIfFlag4(char *obj);
+char *GetFieldIfFlag4_020100f8(char *obj);
 int GetIntAt0x23c(struct IntField0x23c_020a27c4 *obj);
-int TestFlag0SetAndFlag1Clear(unsigned short *p, int n);
-int GetField0x15UnlessInactive(signed char *param);
-int GetSignedByteAt0x14(signed char *p);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short *p, int n);
+int GetField0x15UnlessInactive_020e2918(signed char *param);
+int GetSignedByteAt0x14_020e2910(signed char *p);
 void ResetSelectionState020e25e8(struct Obj020e25e8 *obj);
 char *FindElementByKey020dedd0(struct Container020dedd0 *c, int key);
 extern "C" void func_ov002_0215b9a4(char *self, unsigned char key, int flag);
@@ -38,7 +38,7 @@ extern "C" void func_ov002_0216bfd4(char *self, int a);
 void EnqueueEventTag170_021d0198(int a, int b, int c, int d);
 int CheckStateAndGetCode0215753c(unsigned char *p);
 extern "C" void func_ov002_02156e90(void *base);
-void SetElementFieldC2(struct Struct_0205d81c *s, int a, int b);
+void SetElementFieldC2_0205deb4(struct Struct_0205d81c *s, int a, int b);
 void ReinitController02043204(char *obj);
 void SetFieldB0AndUpdate0205dee8(struct Obj0205dee8 *o, int v);
 void SetIndexIfValid0205bcdc(struct Struct_0205bcdc *s, int index);
@@ -83,7 +83,7 @@ struct Bits0216a300 {
         if (*(unsigned char *) (base + 0x2000 + 0x521) != 0) { \
             *(int *) (base + 0x1000 + 0xbb8) = *(int *) (base + 0x1000 + 0xbbc); \
             SetFieldB0AndUpdate0205dee8((struct Obj0205dee8 *) LST(base), 4); \
-            SetElementFieldC2((struct Struct_0205d81c *) LST(base), 4, 0); \
+            SetElementFieldC2_0205deb4((struct Struct_0205d81c *) LST(base), 4, 0); \
             func_ov002_02161cf0(base); \
             *(unsigned char *) (base + 0x2000 + 0x521) = 0; \
         } else if ((*(short *) (base + 0x1b00 + 0xf0) >= 0 || *(short *) (base + 0x1b00 + 0xe8) >= 0 || \
@@ -100,8 +100,8 @@ struct Bits0216a300 {
             *(int *) (base + 0x1000 + 0xbb8) = 0xb; \
             func_ov002_0215b9a4(base, 0xb, 0); \
             SetFieldB0AndUpdate0205dee8((struct Obj0205dee8 *) LST(base), 0xb); \
-            SetElementFieldC2((struct Struct_0205d81c *) LST(base), 0xb, 0); \
-            SetElementFieldC2((struct Struct_0205d81c *) LST(base), 0xd, 1); \
+            SetElementFieldC2_0205deb4((struct Struct_0205d81c *) LST(base), 0xb, 0); \
+            SetElementFieldC2_0205deb4((struct Struct_0205d81c *) LST(base), 0xd, 1); \
             func_ov002_02161cf0(base); \
         } \
     } while (0)
@@ -131,13 +131,13 @@ extern "C" ARM void func_ov002_0216a300(char *base) {
         *(short *) (base + 0x1c00 + 0x12) =
             GetActiveScaledSum0205d794((struct Struct_0205c570 *) LST(base));
         int ok  = 0;
-        char *f = GetFieldIfFlag4((char *) GameState::GetInstance());
+        char *f = GetFieldIfFlag4_020100f8((char *) GameState::GetInstance());
         if (f != NULL && ((*(unsigned char *) (f + 0x244) & 2) || GetIntAt0x23c((struct IntField0x23c_020a27c4 *) f) == 0)) {
-            ok = TestFlag0SetAndFlag1Clear(data_02114e30, 0x200) ? 1 : 0;
+            ok = TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x200) ? 1 : 0;
         }
-        *(short *) (base + 0x1c00 + 0x12) = GetField0x15UnlessInactive(*(signed char **) (base + 4));
+        *(short *) (base + 0x1c00 + 0x12) = GetField0x15UnlessInactive_020e2918(*(signed char **) (base + 4));
         if (*(short *) (base + 0x1c00 + 0x12) >= 0 || ok) {
-            *(short *) (base + 0x1c00 + 0x12) = GetSignedByteAt0x14(*(signed char **) (base + 4));
+            *(short *) (base + 0x1c00 + 0x12) = GetSignedByteAt0x14_020e2910(*(signed char **) (base + 4));
             ResetSelectionState020e25e8(*(struct Obj020e25e8 **) (base + 4));
             DispatchWithShortB4_0205eaa0((struct Obj0205eaa0 *) data_02108760, 1, 0);
             data_ov002_0216d3ac = 0;
@@ -164,7 +164,7 @@ extern "C" ARM void func_ov002_0216a300(char *base) {
                         ResetEntryList0205d6a0((struct Entry_0205d6a0 *) LST(base), 0);
                         switch (*(unsigned char *) (base + 0x1000 + 0xc79)) {
                             case 0: {
-                                char *m = (char *)GetCombatantWithFlag0x100(GameState::GetInstance(), *(signed char *) (base + 0x1c00 + 0x21));
+                                char *m = (char *)GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), *(signed char *) (base + 0x1c00 + 0x21));
                                 int go  = 1;
                                 if (m != NULL && *(unsigned short *) (*(char **) (m + 0x130) + 4) == 0) go = 0;
                                 if (!func_020dc920(*(unsigned char *) (base + 0x1000 + 0xc21), 1, 0, 0)) go = 0;
@@ -220,14 +220,14 @@ extern "C" ARM void func_ov002_0216a300(char *base) {
                         *(int *) (base + 0x1000 + 0xbc0) = 0;
                     }
                     if (*(int *) (base + 0x1000 + 0xbbc) == 0x24) {
-                        SetElementFieldC2((struct Struct_0205d81c *) LST(base), 0x15, 1);
+                        SetElementFieldC2_0205deb4((struct Struct_0205d81c *) LST(base), 0x15, 1);
                         *(int *) (base + 0x1000 + 0xbb8) = 0x24;
                         *(int *) (base + 0x1000 + 0xbc0) = 1;
                     }
                     if (*(int *) (base + 0x1000 + 0xbbc) == 0xb) {
                         func_ov002_0215b9a4(base, 0xd, 0);
-                        SetElementFieldC2((struct Struct_0205d81c *) LST(base), 0xb, 1);
-                        SetElementFieldC2((struct Struct_0205d81c *) LST(base), 0xd, 1);
+                        SetElementFieldC2_0205deb4((struct Struct_0205d81c *) LST(base), 0xb, 1);
+                        SetElementFieldC2_0205deb4((struct Struct_0205d81c *) LST(base), 0xd, 1);
                     }
                     break;
                 }

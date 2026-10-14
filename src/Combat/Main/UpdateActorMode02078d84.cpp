@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-int CheckField0NonZero(int*);
+int CheckField0NonZero_0202b7d8(int*);
 
 struct SearchStruct0202c1a4;
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4*);
@@ -22,7 +22,7 @@ struct Obj02078d84 {
 // USA: func_02078d84
 ARM void UpdateActorMode02078d84(struct Obj02078d84* obj) {
     void* s = func_0202ae18(obj);
-    if (CheckField0NonZero((int*)s) != 0) {
+    if (CheckField0NonZero_0202b7d8((int*)s) != 0) {
         if (GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)s) != 0) {
             return;
         }

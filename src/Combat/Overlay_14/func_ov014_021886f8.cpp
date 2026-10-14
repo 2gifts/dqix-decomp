@@ -81,7 +81,7 @@ struct Obj0204c7a8;
 
 int CountActiveEntries(ActiveEntry02046900*);
 void ResetList0204af64(List0204af64*);
-void SetWord0x18ClearByte0x1f(unsigned char*, int);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char*, int);
 void AllocateAndClearBuffer0204b12c(AllocTarget0204b12c*, SafeAllocator*);
 void DispatchViaTable0204b5e8(Obj0204b5e8*, int, int);
 void AllocateArray0204af38(Foo0204af38*, int, SafeAllocator*);
@@ -137,7 +137,7 @@ extern "C" ARM void func_ov014_021886f8(MonsterListScreen* self)
         allocators = self->listAllocators_;
         allocators[1].Reset();
         ResetList0204af64((List0204af64*)&graphics);
-        SetWord0x18ClearByte0x1f((unsigned char*)&graphics, 0);
+        SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)&graphics, 0);
         graphics.unk_1c_0_ = 1;
         graphics.unk_1c_4_ = 2;
         func_0204b5b4(&graphics, 2);
@@ -192,7 +192,7 @@ extern "C" ARM void func_ov014_021886f8(MonsterListScreen* self)
             ResetList0204af64((List0204af64*)background);
             background->unk_1c_0_ = 1;
             background->unk_1c_4_ = i;
-            SetWord0x18ClearByte0x1f((unsigned char*)background, 0);
+            SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)background, 0);
             func_0204b5b4(background, i);
             AllocateAndClearBuffer0204b12c((AllocTarget0204b12c*)background, &allocators[1]);
             DispatchViaTable0204b5e8((Obj0204b5e8*)background, 0, 0);

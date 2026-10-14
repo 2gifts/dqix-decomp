@@ -28,7 +28,7 @@ extern "C" ARM BattleEquipmentEntry* func_ov000_02171d90(BattleEquipmentList* li
     if (itemId < 0) {
         return NULL;
     }
-    char* actor = (char*)GetCombatantWithFlag0x100(GameState::GetInstance(), list->partyIndex);
+    char* actor = (char*)GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), list->partyIndex);
     if (actor) {
         unsigned char equipmentOrder[8];
         unsigned int bytes = sizeof(equipmentOrder);

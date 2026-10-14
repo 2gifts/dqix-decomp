@@ -59,12 +59,12 @@ struct TableA68* DispatchAdjustmentIfType4_02157018(void* a, int key);
 #if defined(jpn)
 extern "C" void func_020e207c(void*, char*, int);
 #else
-int CallFunc020e52a0(void* p, int key);
+int CallFunc020e52a0_020e5294(void* p, int key);
 #endif
 extern "C" int rand(void);
-char* FindEntryByKey(struct TableA68* table, int key);
+char* FindEntryByKey_02072a68(struct TableA68* table, int key);
 void SetIndexedName02046574(struct Obj02046574* obj, int index, char* str);
-void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
+void StoreInArray0x8b0_020465c0(struct StoreStruct* base, int index, int value);
 void* ZeroInitReturn020de824(void* obj);
 void InitStruct0207cbe8(char* obj);
 extern "C" void func_0207d300(void* buf, int a, int b, int c);
@@ -74,7 +74,7 @@ extern "C" void func_ov004_0215b7c8(void* obj);
 extern "C" ARM int func_ov004_0215b934(void* obj) {
     if (data_ov004_021707d8.ptr->active) {
         GameState* gs = GameState::GetInstance();
-        Wallet0215b934* wallet = (Wallet0215b934*)GetPtrField0x2a04(gs);
+        Wallet0215b934* wallet = (Wallet0215b934*)GetPtrField0x2a04_02010828(gs);
         Element0215b934* elem;
         Message0215b934* msg;
         unsigned int amount;
@@ -101,11 +101,11 @@ extern "C" ARM int func_ov004_0215b934(void* obj) {
             func_020e207c(data_ov004_021707d8.ptr->table, name, elem->nameId);
             SetIndexedName02046574((Obj02046574*)msg, 1, name);
 #else
-            msg->name = CallFunc020e52a0(data_ov004_021707d8.ptr->table, elem->nameId);
+            msg->name = CallFunc020e52a0_020e5294(data_ov004_021707d8.ptr->table, elem->nameId);
 #endif
-            SetIndexedName02046574((struct Obj02046574*)msg, 2, FindEntryByKey(names, (short)(rand() % 0x3a)));
-            SetIndexedName02046574((struct Obj02046574*)msg, 3, FindEntryByKey(names, (short)(rand() % 6 + 1000)));
-            StoreInArray0x8b0((struct StoreStruct*)msg, 0, amount);
+            SetIndexedName02046574((struct Obj02046574*)msg, 2, FindEntryByKey_02072a68(names, (short)(rand() % 0x3a)));
+            SetIndexedName02046574((struct Obj02046574*)msg, 3, FindEntryByKey_02072a68(names, (short)(rand() % 6 + 1000)));
+            StoreInArray0x8b0_020465c0((struct StoreStruct*)msg, 0, amount);
             func_ov011_021848a0(obj, 0x3a8);
         } else if (kind & 2) {
             char buf[0x38];
@@ -119,7 +119,7 @@ extern "C" ARM int func_ov004_0215b934(void* obj) {
             func_020e207c(data_ov004_021707d8.ptr->table, name, elem->nameId);
             SetIndexedName02046574((Obj02046574*)msg, 1, name);
 #else
-            msg->name = CallFunc020e52a0(data_ov004_021707d8.ptr->table, elem->nameId);
+            msg->name = CallFunc020e52a0_020e5294(data_ov004_021707d8.ptr->table, elem->nameId);
 #endif
             func_ov011_021848a0(obj, 0x3a9);
         } else {

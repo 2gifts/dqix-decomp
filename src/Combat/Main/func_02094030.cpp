@@ -33,8 +33,8 @@ struct Ctx02094030 {
 };
 
 void ClearRegion02093980(char* obj);
-void CopyRecord(struct CopyableRecord* dst, struct CopyableRecord* src);
-int ClassifyByTenThousands(int x);
+void CopyRecord_02093b54(struct CopyableRecord* dst, struct CopyableRecord* src);
+int ClassifyByTenThousands_0209372c(int x);
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c540(void* obj);
 
@@ -67,16 +67,16 @@ extern "C" ARM int func_02094030(struct Ctx02094030* queue, int requestId, int u
         queue->flags |= 1;
     }
 
-    unsigned int category = (unsigned int)ClassifyByTenThousands(request->requestId);
+    unsigned int category = (unsigned int)ClassifyByTenThousands_0209372c(request->requestId);
     queue->count++;
 
     int i;
     for (i = queue->count - 1; i >= 2; i--) {
-        if (ClassifyByTenThousands(queue->records[i - 1].requestId) <= category) break;
+        if (ClassifyByTenThousands_0209372c(queue->records[i - 1].requestId) <= category) break;
         struct CopyableRecord tmp;
-        CopyRecord(&tmp, &queue->records[i]);
-        CopyRecord(&queue->records[i], &queue->records[i - 1]);
-        CopyRecord(&queue->records[i - 1], &tmp);
+        CopyRecord_02093b54(&tmp, &queue->records[i]);
+        CopyRecord_02093b54(&queue->records[i], &queue->records[i - 1]);
+        CopyRecord_02093b54(&queue->records[i - 1], &tmp);
     }
     return 0;
 }

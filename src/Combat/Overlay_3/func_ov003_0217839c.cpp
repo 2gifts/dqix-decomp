@@ -40,7 +40,7 @@ extern unsigned char data_ov003_0217fb60[];
 // USA: func_ov003_0217839c
 extern "C" ARM int func_ov003_0217839c(int id, void* entry) {
     if (((Entry0217839c*)entry)->kind != 7) return 0;
-    GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), id);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), id);
     if (combatant == 0) return 0;
 
     unsigned char i;

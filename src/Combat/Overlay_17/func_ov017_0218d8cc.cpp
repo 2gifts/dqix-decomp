@@ -3,8 +3,8 @@
 #include "GameState/GameState.h"
 #include "System/Matrix.h"
 
-int TestFlagMask(unsigned short* obj, int mask);
-void GetVec3FromShorts(unsigned char* src, int* out);
+int TestFlagMask_02012430(unsigned short* obj, int mask);
+void GetVec3FromShorts_020968a4(unsigned char* src, int* out);
 
 extern unsigned short data_02114e30;
 
@@ -37,7 +37,7 @@ struct Battle0218d8cc {
 extern "C" ARM void func_ov017_0218d8cc(Battle0218d8cc* self) {
     GameState* gs = GameState::GetInstance();
     GameObject* player = gs->GetUnknownGameObject();
-    Camera0218d8cc* camera = (Camera0218d8cc*)GetField0x3b0Value(gs);
+    Camera0218d8cc* camera = (Camera0218d8cc*)GetField0x3b0Value_020100bc(gs);
     if (player == 0 || camera == 0) {
         return;
     }
@@ -66,20 +66,20 @@ extern "C" ARM void func_ov017_0218d8cc(Battle0218d8cc* self) {
     self->moveDir.y = 0;
     self->moveDir.z = 0;
 
-    if (TestFlagMask(&data_02114e30, 0x40)) {
+    if (TestFlagMask_02012430(&data_02114e30, 0x40)) {
         Vector3fix_Add(&self->moveDir, &forward, &self->moveDir);
-    } else if (TestFlagMask(&data_02114e30, 0x80)) {
+    } else if (TestFlagMask_02012430(&data_02114e30, 0x80)) {
         Vector3fix_Add(&self->moveDir, &back, &self->moveDir);
     }
 
-    if (TestFlagMask(&data_02114e30, 0x20)) {
+    if (TestFlagMask_02012430(&data_02114e30, 0x20)) {
         Vector3fix_Add(&self->moveDir, &left, &self->moveDir);
-    } else if (TestFlagMask(&data_02114e30, 0x10)) {
+    } else if (TestFlagMask_02012430(&data_02114e30, 0x10)) {
         Vector3fix_Add(&self->moveDir, &right, &self->moveDir);
     }
 
     if (self->input->hasStick) {
-        GetVec3FromShorts((unsigned char*)self->input, &self->moveDir.x);
+        GetVec3FromShorts_020968a4((unsigned char*)self->input, &self->moveDir.x);
     }
     Vector3fix_Normalize(&self->moveDir, &self->moveDir);
 }

@@ -37,7 +37,7 @@ struct Loader021b5070 {
 
 extern "C" void __clear(void* buf, int size);
 extern "C" void* memset(void* dst, int value, unsigned int size);
-unsigned short CopyHalfwordArrayByCount(HalfwordArray* src, HalfwordArray* dst);
+unsigned short CopyHalfwordArrayByCount_0209c0c0(HalfwordArray* src, HalfwordArray* dst);
 void SetupAndRunBufferedScript0209af58(void* param0, StreamHeader* param1, int param2, int param3, int param4);
 
 void* LoadFileIntoMemory(const char* path, void* buffer, unsigned int* outLength);
@@ -78,7 +78,7 @@ extern "C" ARM void func_ov017_021b5070(Loader021b5070* self) {
     Scene021b5070* scene = self->scene;
     unsigned short ids[12];
     __clear(ids, sizeof(ids));
-    short count = CopyHalfwordArrayByCount(&scene->ids, (HalfwordArray*)ids);
+    short count = CopyHalfwordArrayByCount_0209c0c0(&scene->ids, (HalfwordArray*)ids);
     SafeAllocator* allocator = self->scene->allocator;
     unsigned char* table;
     if (allocator == NULL) {

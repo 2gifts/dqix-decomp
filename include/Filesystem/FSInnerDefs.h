@@ -20,7 +20,7 @@
 
 extern "C"
 {
-    extern "C" CBool _Z21GetGlobalWord02112140v();
+    extern "C" CBool _Z30GetGlobalWord02112140_020d1198v();
 }
 
 #define GET_FLAG_BIT(what, idx) (((what) & (1 << (idx))) ? 1 : 0)

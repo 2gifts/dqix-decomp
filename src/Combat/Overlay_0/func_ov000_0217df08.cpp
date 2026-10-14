@@ -57,13 +57,13 @@ struct Battle0217df08 {
 
 Messages0217df08* GetGlobalField0x1c020421a0();
 extern "C" Node0217df08* func_ov000_02161318(void* obj, int id);
-int IsFlag0x28Bit0Set(void*);
+int IsFlag0x28Bit0Set_ov000_02171a60(void*);
 void Clear12Bytes020e46c4(void*);
 struct Container020e0310;
 const char* GetFieldByKey020e0434(Container020e0310*, int);
 extern "C" void* memset(void* dst, int value, unsigned int length);
 extern "C" int sprintf(char* buffer, const char* format, ...);
-Combatant0217df08* GetCombatantWithFlag0x400(GameState*, int);
+Combatant0217df08* GetCombatantWithFlag0x400_0200fea4(GameState*, int);
 extern "C" void func_020e4ce8(NameParts0217df08*, Combatant0217df08*, int);
 extern "C" int func_ov000_0217ff34(void* self, int id, int* amount);
 extern "C" void func_02046380(Messages0217df08*);
@@ -75,7 +75,7 @@ extern "C" void __clear(void*, int);
 void TrimTrailingLetterCode_0217aa08(char*, char*);
 extern "C" void func_020e4f18(NameParts0217df08*, NameParts0217df08*, int);
 extern "C" void func_0204500c(Messages0217df08*, char*, int, int);
-int TestFlag0SetAndFlag1Clear(unsigned short*, int);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short*, int);
 extern "C" void func_02043124(Messages0217df08*);
 void ReinitController02043204(char*);
 extern "C" void func_ov000_0217c638(Battle0217df08* obj, int arg1, int arg2);
@@ -110,7 +110,7 @@ extern "C" ARM void func_ov000_0217df08(Battle0217df08* self, int arg1, int arg2
                     Node0217df08* node = func_ov000_02161318(self, i);
                     if (node != 0) {
                         present++;
-                        if (!IsFlag0x28Bit0Set(node)) {
+                        if (!IsFlag0x28Bit0Set_ov000_02171a60(node)) {
                             if (node->fc != 0) {
                                 ready++;
                             }
@@ -134,7 +134,7 @@ extern "C" ARM void func_ov000_0217df08(Battle0217df08* self, int arg1, int arg2
                 int msg;
                 Rank0217df08* rank;
                 for (i = 0; i < arg2; i++) {
-                    Combatant0217df08* c = GetCombatantWithFlag0x400(gs, self->combatantIds[i]);
+                    Combatant0217df08* c = GetCombatantWithFlag0x400_0200fea4(gs, self->combatantIds[i]);
                     if (c != 0) {
                         rank = c->rank;
                         if (rank == 0) {
@@ -149,7 +149,7 @@ extern "C" ARM void func_ov000_0217df08(Battle0217df08* self, int arg1, int arg2
                 }
                 appended = 0;
                 for (j = 0; j < arg2; j++) {
-                    Combatant0217df08* c = GetCombatantWithFlag0x400(gs, self->combatantIds[j]);
+                    Combatant0217df08* c = GetCombatantWithFlag0x400_0200fea4(gs, self->combatantIds[j]);
                     if (c != 0) {
                         int amount = -1;
                         msg = func_ov000_0217ff34(self, self->combatantIds[j], &amount);
@@ -213,7 +213,7 @@ extern "C" ARM void func_ov000_0217df08(Battle0217df08* self, int arg1, int arg2
             self->state++;
         }
     } else if (self->state == 2) {
-        if (g->active == 0 || TestFlag0SetAndFlag1Clear((unsigned short*)&data_02114e30, 0x800) != 0) {
+        if (g->active == 0 || TestFlag0SetAndFlag1Clear_02012444((unsigned short*)&data_02114e30, 0x800) != 0) {
             func_02043124(g);
             ReinitController02043204((char*)g);
             self->state = 0;

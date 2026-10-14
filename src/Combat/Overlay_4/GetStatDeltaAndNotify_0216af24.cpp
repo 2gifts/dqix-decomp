@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 
 struct TableA68;
-void* FindEntryByKey(struct TableA68* table, int key);
-int IsValueEqual12(int x);
+void* FindEntryByKey_02072a68(struct TableA68* table, int key);
+int IsValueEqual12_02042190(int x);
 
 struct Node0216af24 {
     char pad0[0x20];
@@ -32,12 +32,12 @@ extern "C" ARM int func_ov004_0216af24(void* a, int key) {
         Node0216af24* node2 = func_ov023_021f6880(obj, node->field36);
         if (ScaleStatsIfType12_021f6f10(node2) == 4) {
             struct TableA68* table = (struct TableA68*)func_ov023_021fa598(node2);
-            entry = FindEntryByKey(table, node->field38);
+            entry = FindEntryByKey_02072a68(table, node->field38);
         }
     }
     int result = 0;
     if (entry) {
-        result = func_020420e8(entry, IsValueEqual12(node->field44));
+        result = func_020420e8(entry, IsValueEqual12_02042190(node->field44));
     }
     return result;
 }

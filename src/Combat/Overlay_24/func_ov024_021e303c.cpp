@@ -25,13 +25,13 @@ struct ActionChance {
 };
 union EffectFlags { struct { int low; int high; }; unsigned long long value; };
 
-int CheckFlag0x1ClearAndFlag0x1000000Clear(unsigned char*);
-int CheckFlags0x1And0x1000000ClearAndKindNot2(Combatant_20885e0*);
+int CheckFlag0x1ClearAndFlag0x1000000Clear_02088540(unsigned char*);
+int CheckFlags0x1And0x1000000ClearAndKindNot2_020885e0(Combatant_20885e0*);
 int SelectMessageByFlags2_021e939c(Ctx_021e939c*, int, int, int);
 int IsFlagAllowedMask_021eb4b0(int, int, int);
 extern "C" void func_ov000_02159eac(void*, EffectFlags*, int);
-void ResetAndSetFlag0x2AndBits(unsigned char*);
-void SetFlag0x2AndKind1(Combatant_2088624*);
+void ResetAndSetFlag0x2AndBits_02088560(unsigned char*);
+void SetFlag0x2AndKind1_02088624(Combatant_2088624*);
 void* AddEntryToListAndIncCount_021e8ca0(Obj_021e8ca0*, int);
 extern "C" void func_ov000_0215cd44(void*, void*, GameObject*, int, int, int, int);
 
@@ -42,8 +42,8 @@ extern "C" ARM unsigned long long func_ov024_021e303c(CombatAction* self, int ac
     if (!target) return 0;
     if (((StatusFields*)target->currentStats_)->chance_ == 0) return 0;
     if (chance->kind_ > 0) {
-        if (!CheckFlag0x1ClearAndFlag0x1000000Clear((unsigned char*)target->currentStats_)) return 0;
-    } else if (!CheckFlags0x1And0x1000000ClearAndKindNot2((Combatant_20885e0*)target->currentStats_)) return 0;
+        if (!CheckFlag0x1ClearAndFlag0x1000000Clear_02088540((unsigned char*)target->currentStats_)) return 0;
+    } else if (!CheckFlags0x1And0x1000000ClearAndKindNot2_020885e0((Combatant_20885e0*)target->currentStats_)) return 0;
     int roll = NextRandomMax(self->context_, 100);
     float probability = 100.0f;
     if (!self->action_->forced_) {
@@ -62,8 +62,8 @@ extern "C" ARM unsigned long long func_ov024_021e303c(CombatAction* self, int ac
     effects.high = 0;
     if (IsFlagAllowedMask_021eb4b0((int)self, ((StatusFields*)target->currentStats_)->flags_, 2))
         func_ov000_02159eac(self->context_, &effects, 0x2b);
-    if (kind) ResetAndSetFlag0x2AndBits((unsigned char*)target->currentStats_);
-    else SetFlag0x2AndKind1((Combatant_2088624*)target->currentStats_);
+    if (kind) ResetAndSetFlag0x2AndBits_02088560((unsigned char*)target->currentStats_);
+    else SetFlag0x2AndKind1_02088624((Combatant_2088624*)target->currentStats_);
     func_ov000_02159eac(self->context_, &effects, 0xf);
     void* entry = AddEntryToListAndIncCount_021e8ca0((Obj_021e8ca0*)self, message);
     if (entry) func_ov000_0215cd44(self->context_, entry, target, 0, 0, 0, 0);

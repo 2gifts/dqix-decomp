@@ -8,8 +8,8 @@ enum { RegionOffset370c = 0x370c, RegionOffset9c = 0x9c, RegionOffset4400 = 0x44
 #include "Combat/CombatantRecovery.h"
 #include "GameState/GameState.h"
 
-void* GetField0x3f8Address(GameState* battleStruct);
-GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
+void* GetField0x3f8Address_0200fd0c(GameState* battleStruct);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* battleStruct, int combatantId);
 
 extern "C" void func_ov017_021c9e00(int i, int one1, int zero, int one2);
 
@@ -21,7 +21,7 @@ ARM void ClearMonsterFlagEntries_02191bdc(unsigned char* a, int b) {
 	if (*(short*)((char*)combatant + 0xac) != 0) return;
 	if (((Object3D*)combatant)->GetFlag(0x8000000) != 0) return;
 	if (b == 0) {
-		unsigned char* fieldAddr = (unsigned char*)GetField0x3f8Address(battleStruct);
+		unsigned char* fieldAddr = (unsigned char*)GetField0x3f8Address_0200fd0c(battleStruct);
 		unsigned char* q = *(unsigned char**)(a + RegionOffset370c);
 		if (q[2] != 0) return;
 		if (fieldAddr[2] != 0) return;
@@ -29,7 +29,7 @@ ARM void ClearMonsterFlagEntries_02191bdc(unsigned char* a, int b) {
 	unsigned char* entry = a + RegionOffset9c + RegionOffset4400;
 	for (int i = 0; i < 4; entry += 4, i++) {
 		if (entry[0] == 0) continue;
-		GameObject* c2 = GetCombatantWithFlag0x100(battleStruct, i);
+		GameObject* c2 = GetCombatantWithFlag0x100_0200ff1c(battleStruct, i);
 		if (c2 != NULL) {
 			ClearFieldBit02053fe4(c2, *(short*)(entry + 2), 1);
 			func_ov017_021c9e00(i, 1, 0, 1);

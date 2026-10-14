@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void* GetGlobalInstance02109d8c(void);
+void* GetGlobalInstance02109d8c_0209fe8c(void);
 extern "C" int func_ov017_021d60f4(void*);
 
 struct S_9ffe0_9244 {
@@ -13,7 +13,7 @@ void AppendHalfwordCapped0209ffe0(S_9ffe0*, short);
 
 // USA: func_ov023_021e9244  (semantic: AppendManagerFieldToBuffer_021e9244)
 extern "C" ARM int func_ov023_021e9244(void* arg) {
-	struct S_9ffe0_9244* s = (struct S_9ffe0_9244*)GetGlobalInstance02109d8c();
+	struct S_9ffe0_9244* s = (struct S_9ffe0_9244*)GetGlobalInstance02109d8c_0209fe8c();
 	if (s != NULL) {
 		AppendHalfwordCapped0209ffe0((S_9ffe0*)s, func_ov017_021d60f4(arg));
 	}

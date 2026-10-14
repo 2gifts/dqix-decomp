@@ -9,7 +9,7 @@ extern "C" ARM void* func_ov003_02160bf8(void* obj, int key) {
     if (key < 0) {
         return 0;
     }
-    p2000 = (unsigned char*)GetPtrField0x2a04(GameState::GetInstance());
+    p2000 = (unsigned char*)GetPtrField0x2a04_02010828(GameState::GetInstance());
     arr = (signed char*)p2000 + 0xf80;
     p2000 += 0x2000;
     i = 0;

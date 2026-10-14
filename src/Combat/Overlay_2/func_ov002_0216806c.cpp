@@ -6,10 +6,10 @@ struct Obj0205eaa0;
 
 int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
 int CheckFlagOrThreshold_02161b48(char *self, int flag);
-int TestFlag0SetAndFlag1Clear(unsigned short *obj, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short *obj, int mask);
 struct Obj_0205da38;
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
-void *GetFieldAt0x150(unsigned char *p);
+void *GetFieldAt0x150_02053c6c(unsigned char *p);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0 *obj, int a, int b);
 void CopyPaletteEntry0215af64(char *self);
 extern "C" void func_ov002_02161cf0(char *self);
@@ -19,11 +19,11 @@ extern "C" void func_ov017_0218f5a4(void *obj, int id, int b, int c, int d);
 extern "C" void func_ov002_02161a8c();
 extern "C" void func_020dc7e8(int a, int b);
 extern "C" int *func_0202ae18();
-int CheckField0NonZero(int *p);
+int CheckField0NonZero_0202b7d8(int *p);
 void ForEachEntry_021d0dbc();
 extern "C" void func_ov002_02156e90(char *self);
 struct Struct_0205d81c;
-void SetElementFieldC2(Struct_0205d81c*, int, int);
+void SetElementFieldC2_0205deb4(Struct_0205d81c*, int, int);
 
 extern unsigned short data_02114e30;
 extern Obj0205eaa0 data_02108760;
@@ -44,7 +44,7 @@ extern "C" ARM void func_ov002_0216806c(char *self) {
             CopyPaletteEntry0215af64(self);
             func_ov002_0215b9a4(self, 0x1d, 0);
         }
-        int a  = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
+        int a  = TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x601);
         int b  = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(self + 0xec8), 0x14);
         int ok = (a | b) ? 1 : 0;
         if (ok) {
@@ -52,7 +52,7 @@ extern "C" ARM void func_ov002_0216806c(char *self) {
             int id             = *(signed char *) (self + 0x1c20);
             GameObject *member = GameState::GetInstance()->GetPartyMemberByIndex(id);
             if (member == 0) return;
-            unsigned char *f = (unsigned char *) GetFieldAt0x150((unsigned char *) member);
+            unsigned char *f = (unsigned char *) GetFieldAt0x150_02053c6c((unsigned char *) member);
             if (f[0x56a] != *(short *) (self + 0x1c06) && *(short *) (f + 0x488) < 0) {
                 *(short *) ((char *) member + 2) = -1;
                 func_ov017_0218f5a4(func_ov017_0218b5b0(), id, 0, 0, 0);
@@ -64,20 +64,20 @@ extern "C" ARM void func_ov002_0216806c(char *self) {
             func_020dc7e8(6, -1);
             func_020dc7e8(7, -1);
             int *p = func_0202ae18();
-            if (p != 0 && CheckField0NonZero(p)) {
+            if (p != 0 && CheckField0NonZero_0202b7d8(p)) {
                 ForEachEntry_021d0dbc();
             }
             func_ov002_02156e90(self);
             func_ov002_02156e90(self);
-            SetElementFieldC2((Struct_0205d81c*)(self + 0xec8), 0x18, 0);
-            SetElementFieldC2((Struct_0205d81c*)(self + 0xec8), 0x1a, 0);
-            SetElementFieldC2((Struct_0205d81c*)(self + 0xec8), 0x1b, 0);
+            SetElementFieldC2_0205deb4((Struct_0205d81c*)(self + 0xec8), 0x18, 0);
+            SetElementFieldC2_0205deb4((Struct_0205d81c*)(self + 0xec8), 0x1a, 0);
+            SetElementFieldC2_0205deb4((Struct_0205d81c*)(self + 0xec8), 0x1b, 0);
         } else if (CheckFlagOrThreshold_02161b48(self, 1)) {
             func_ov002_02156e90(self);
             func_ov002_02156e90(self);
-            SetElementFieldC2((Struct_0205d81c*)(self + 0xec8), 0x18, 0);
-            SetElementFieldC2((Struct_0205d81c*)(self + 0xec8), 0x1a, 0);
-            SetElementFieldC2((Struct_0205d81c*)(self + 0xec8), 0x1b, 0);
+            SetElementFieldC2_0205deb4((Struct_0205d81c*)(self + 0xec8), 0x18, 0);
+            SetElementFieldC2_0205deb4((Struct_0205d81c*)(self + 0xec8), 0x1a, 0);
+            SetElementFieldC2_0205deb4((Struct_0205d81c*)(self + 0xec8), 0x1b, 0);
         }
     }
 }

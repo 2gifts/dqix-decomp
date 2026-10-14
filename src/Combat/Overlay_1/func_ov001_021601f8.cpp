@@ -28,8 +28,8 @@ struct Manager_1f2cc {
     int count;
 };
 
-struct Element_1f2cc* FindElementByHalfwordKey(struct Manager_1f2cc* manager, int key);
-struct Entry_1f170* FindEntryBySignedId(struct EntryList_1f170* list, int id);
+struct Element_1f2cc* FindElementByHalfwordKey_0201f2cc(struct Manager_1f2cc* manager, int key);
+struct Entry_1f170* FindEntryBySignedId_0201f170(struct EntryList_1f170* list, int id);
 
 struct ModelHolder_021601f8 {
     char pad0[0x54];
@@ -70,8 +70,8 @@ extern "C" ARM void func_ov001_021601f8(struct SceneNode_021601f8* node, struct 
     LightingManager* lighting = LightingManager::GetInstance();
     struct RenderObj_021601f8* obj = node->obj;
     int timeOfDay = ((struct LightingView_021601f8*)lighting)->timeOfDay;
-    struct Element_1f2cc* element = FindElementByHalfwordKey(manager, node->key);
-    struct Entry_1f170* entry = FindEntryBySignedId(&manager->entryList, element->entryId);
+    struct Element_1f2cc* element = FindElementByHalfwordKey_0201f2cc(manager, node->key);
+    struct Entry_1f170* entry = FindEntryBySignedId_0201f170(&manager->entryList, element->entryId);
     struct Entry_1f170* variant = entry->next;
     while (variant != NULL) {
         if (variant->id == timeOfDay) {

@@ -18,7 +18,7 @@ enum { kRegionValue2E0_230 = 0x2e0 };
 enum { kRegionValue4E4_4E0 = 0x4e4 };
 #endif
 
-int GetGlobal02109400(void);
+int GetGlobal02109400_02094a00(void);
 extern "C" void func_02094ab0(void);
 struct Struct02074bd0;
 void ClearFlag0x10IfSet(struct Struct02074bd0* obj);
@@ -38,7 +38,7 @@ extern "C" void* __clear(void* dst, int count);
 
 // USA: func_ov003_02168324  (semantic: TeardownControllerAndDestroyAllocators_02168324)
 extern "C" ARM void func_ov003_02168324(char* obj) {
-    GetGlobal02109400();
+    GetGlobal02109400_02094a00();
     func_02094ab0();
 
     int* reg = (int*)0x4000000;

@@ -61,9 +61,9 @@ struct Bytes02033b88;
 
 void GetField02163524(void*);
 extern "C" void func_ov000_0217feb0(void* obj, unsigned char value, int id);
-int TestBitAt0x34(unsigned char*, unsigned int);
+int TestBitAt0x34_020a35e0(unsigned char*, unsigned int);
 extern "C" void func_ov000_02174a50(void* obj, int combatantId);
-struct Combatant02164d74* GetCombatantWithFlag0x400(GameState* gs, int id);
+struct Combatant02164d74* GetCombatantWithFlag0x400_0200fea4(GameState* gs, int id);
 void SetByte0xbeShiftPrev(Bytes02033b88*, int);
 void InitPackedFields02089560(char* dst, char* buf, char* src);
 void CopyCombatantStats0208936c(char* dst, char* src1, char* src2);
@@ -73,12 +73,12 @@ extern "C" void func_ov017_021917f0(int id, int flag);
 extern "C" void func_ov000_021675a0(struct Battle02164d74* battle);
 extern "C" void func_ov000_021676a8(struct Battle02164d74* battle);
 extern "C" void _Z34SetupCombatantAllocations_021901acv(void* ov);
-void ClearBitsInField4(unsigned int* obj, unsigned int mask);
-void ClearSubstructByte0x56(unsigned char* obj);
+void ClearBitsInField4_0203b4e8(unsigned int* obj, unsigned int mask);
+void ClearSubstructByte0x56_02049f3c(unsigned char* obj);
 extern "C" void func_ov000_021677fc(struct Battle02164d74* battle);
 extern "C" void func_ov000_02167cd4(struct Battle02164d74* battle);
 void RunFlagPassAndSetMode02167dd8_02167dd8(unsigned char* obj);
-void SetCombatWorkFlags0x55f4(void* work, int mask);
+void SetCombatWorkFlags0x55f4_ov000_02160fa8(void* work, int mask);
 
 #define REG_POWCNT1 (*(volatile unsigned short*)0x04000304)
 
@@ -87,18 +87,18 @@ extern "C" ARM void func_ov000_02164d74(struct Battle02164d74* battle) {
     GameState* gs = GameState::GetInstance();
     GameResources* ov = func_ov017_0218b5b0();
     GetField02163524(battle);
-    struct PtrBlock02164d74* pb = (PtrBlock02164d74*)GetPtrField0x2a04(gs);
+    struct PtrBlock02164d74* pb = (PtrBlock02164d74*)GetPtrField0x2a04_02010828(gs);
     int i;
     for (i = 0; i < pb->count; i++) {
         func_ov000_0217feb0(battle->sub3760, 1, pb->ids[i]);
     }
     REG_POWCNT1 |= 0x8000;
     for (i = 0; i < 4; i++) {
-        if (!TestBitAt0x34((unsigned char*)battle->info, (unsigned char)i)) {
+        if (!TestBitAt0x34_020a35e0((unsigned char*)battle->info, (unsigned char)i)) {
             func_ov000_02174a50(battle->sub3760, i);
             continue;
         }
-        struct Combatant02164d74* c = (Combatant02164d74*)GetCombatantWithFlag0x100(gs, i);
+        struct Combatant02164d74* c = (Combatant02164d74*)GetCombatantWithFlag0x100_0200ff1c(gs, i);
         if (c == NULL) {
             continue;
         }
@@ -124,19 +124,19 @@ extern "C" ARM void func_ov000_02164d74(struct Battle02164d74* battle) {
     func_ov000_021675a0(battle);
     func_ov000_021676a8(battle);
     _Z34SetupCombatantAllocations_021901acv(ov);
-    ClearBitsInField4((unsigned int*)ov, 4);
+    ClearBitsInField4_0203b4e8((unsigned int*)ov, 4);
     if (battle->info->field2c != 0) {
         unsigned char mask = battle->field77d4;
         for (i = 0; i < 8; i++) {
-            struct Combatant02164d74* c = GetCombatantWithFlag0x400(gs, i + 0xc0);
+            struct Combatant02164d74* c = GetCombatantWithFlag0x400_0200fea4(gs, i + 0xc0);
             if (c != NULL && !(mask & (1 << i))) {
                 c->obj3D.MakeHidden();
-                ClearSubstructByte0x56((unsigned char*)c);
+                ClearSubstructByte0x56_02049f3c((unsigned char*)c);
             }
         }
     }
     func_ov000_021677fc(battle);
     func_ov000_02167cd4(battle);
     RunFlagPassAndSetMode02167dd8_02167dd8((unsigned char*)battle);
-    SetCombatWorkFlags0x55f4(battle, 0x200);
+    SetCombatWorkFlags0x55f4_ov000_02160fa8(battle, 0x200);
 }

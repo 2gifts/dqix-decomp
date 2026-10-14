@@ -27,9 +27,9 @@ struct AlchemyMenu {
 
 extern "C" unsigned char func_ov006_02158a28(AlchemyMenu* self);
 extern "C" unsigned char func_ov006_02158b78(AlchemyMenu* self);
-int TestFlag0SetAndFlag1Clear(unsigned short* pad, int buttons);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* pad, int buttons);
 unsigned char DispatchWithShortB4_0205eaa0(Obj0205eaa0* sound, int effect, int unk);
-void CallFunc0204c804OnMatchingKey(Obj2081* menu, int group);
+void CallFunc0204c804OnMatchingKey_0207fdcc(Obj2081* menu, int group);
 void ResetWithSub0208203c(Obj0208203c* repeat);
 void ResetSelectionState020e25e8(Obj020e25e8* choice);
 
@@ -41,7 +41,7 @@ extern "C" ARM signed char func_ov006_02159e50(AlchemyMenu* self) {
     signed char result = 0;
     self->arrowTimer_ = 0;
     self->cursor_ = &self->choiceCursor_;
-    if (func_ov006_02158a28(self) || TestFlag0SetAndFlag1Clear(data_02114e30, 0x200)) {
+    if (func_ov006_02158a28(self) || TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x200)) {
         DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
         result = -1;
         if (self->choiceCursor_ == 0x22)
@@ -50,7 +50,7 @@ extern "C" ARM signed char func_ov006_02159e50(AlchemyMenu* self) {
         result = -1;
     }
     if (result != 0) {
-        CallFunc0204c804OnMatchingKey(self->menu_, self->group_);
+        CallFunc0204c804OnMatchingKey_0207fdcc(self->menu_, self->group_);
         ResetWithSub0208203c((Obj0208203c*)self->repeat_);
         self->cursor_ = 0;
     }

@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void SetSublistEntriesFlag1(void* obj, int id);
+void SetSublistEntriesFlag1_02080b54(void* obj, int id);
 int SetEntryFlagById02080b40(void* obj, int id);
 extern "C" void func_020813ec(void* obj, int key);
 
@@ -19,7 +19,7 @@ ARM void SetThreeEntryFlags_021ab060(Obj021ab060* self) {
     }
     void* p = self->p18;
     int i;
-    SetSublistEntriesFlag1(p, 1);
+    SetSublistEntriesFlag1_02080b54(p, 1);
     for (i = 0; i < 3; i++) {
         SetEntryFlagById02080b40(p, startId);
         startId = (short)(startId + 1);

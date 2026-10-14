@@ -12,7 +12,7 @@ enum { kResourceOffset = 0x840, kRegNodeSize = 0x14 };
 #include "std_library_functions.h"
 
 int IsIdInRange020981e4(int a, int id);
-int IsInRange1To63(int a, int x);
+int IsInRange1To63_02098268(int a, int x);
 
 extern "C" void* func_02012fe4(void);
 
@@ -36,12 +36,12 @@ ARM int RegisterNode02064d48(char* obj) {
     char* g = (char*)func_02012fe4();
 
     if (IsIdInRange020981e4((int)(g + kResourceOffset), *(unsigned short*)g)) {
-        if (IsInRange1To63((int)(g + kResourceOffset), b)) {
+        if (IsInRange1To63_02098268((int)(g + kResourceOffset), b)) {
             return 1;
         }
     }
 
-    if (FindNodeByByteId(*(void**)((char*)&data_02108ce0 + 4), b) == NULL) {
+    if (FindNodeByByteId_0206db20(*(void**)((char*)&data_02108ce0 + 4), b) == NULL) {
         return 1;
     }
 

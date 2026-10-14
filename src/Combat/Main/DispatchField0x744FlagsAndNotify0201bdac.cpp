@@ -15,8 +15,8 @@ extern "C" void func_ov017_021aa4cc(void* overlay, int flag);
 extern "C" void* func_0202ae18(void);
 extern "C" void func_020ae53c(int arg);
 
-void* GetPtrField0x2a04(GameState* battleStruct);
-int IsField0Null(void** obj);
+void* GetPtrField0x2a04_02010828(GameState* battleStruct);
+int IsField0Null_02046b08(void** obj);
 
 struct AxisFloats0203b5f8 { unsigned char pad0[0xc]; float f0c; unsigned char pad10[8]; float f18; };
 int IsAxisIntZero(AxisFloats0203b5f8* s, int axis);
@@ -28,20 +28,20 @@ void AppendNodeToTail(TailList020469b4* list, TailNode020469b4* node);
 struct Struct020d9850 { unsigned char byte0; unsigned char pad1[7]; unsigned char byte8; };
 void Init020d9850(Struct020d9850* p);
 
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 
 struct Obj02086b98;
 int AreListedCombatantsBit0Set(Obj02086b98* o);
 
 // USA: func_0201bdac
-ARM void DispatchField0x744FlagsAndNotify(unsigned char* src) {
+ARM void DispatchField0x744FlagsAndNotify_0201bdac(unsigned char* src) {
     GameState* bs = GameState::GetInstance();
     unsigned char* ov = (unsigned char*)func_ov017_0218b5b0();
     TailList020469b4* list = *(TailList020469b4**)(ov + 0x3000 + kOffset6fc);
     void* table = func_0202ae18();
-    void* ptr2a04 = GetPtrField0x2a04(bs);
+    void* ptr2a04 = GetPtrField0x2a04_02010828(bs);
 
-    if (!IsField0Null((void**)list)) return;
+    if (!IsField0Null_02046b08((void**)list)) return;
     if (!IsAxisIntZero((AxisFloats0203b5f8*)ov, 0)) return;
     if (!IsAxisIntZero((AxisFloats0203b5f8*)ov, 1)) return;
 
@@ -73,7 +73,7 @@ ARM void DispatchField0x744FlagsAndNotify(unsigned char* src) {
         return;
     }
 
-    if (CheckField0NonZero((int*)table)) {
+    if (CheckField0NonZero_0202b7d8((int*)table)) {
         if (AreListedCombatantsBit0Set((Obj02086b98*)ptr2a04) != 0 || (*(src + 0x2000 + kOffset744) & 8)) {
             func_ov017_021aa4cc(ov, 1);
         }

@@ -5,7 +5,7 @@ struct EntryFlags_0219e0ec { unsigned short pad0 : 2; unsigned short flag2 : 1; 
 struct Element0x318_02028bac { unsigned char data[0x318]; };
 struct Element0x318_02028bac* GetElementStride0x318(struct Element0x318_02028bac* base, int index);
 struct Entry_02028bd0;
-struct Entry_02028bd0* GetEntryTableBase(void);
+struct Entry_02028bd0* GetEntryTableBase_02027ca4(void);
 extern "C" void func_02076a8c(void* obj);
 
 // USA: func_ov017_0219e0ec
@@ -14,7 +14,7 @@ ARM void SetFlagsForFlaggedCombatants_0219e0ec(void*) {
 	GameState* battleStruct;
 	struct Element0x318_02028bac* table;
 	battleStruct = GameState::GetInstance();
-	table = (struct Element0x318_02028bac*)GetEntryTableBase();
+	table = (struct Element0x318_02028bac*)GetEntryTableBase_02027ca4();
 	for (int outer = 0; outer < 4; outer++) {
 		struct Element0x318_02028bac* elem = GetElementStride0x318(table, outer);
 		if (!elem) continue;

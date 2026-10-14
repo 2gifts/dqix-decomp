@@ -16,7 +16,7 @@ extern "C" void func_ov017_021cedf4(int a, int b, int c);
 extern "C" void func_ov017_021c9e00(int a, int b, int c, int d);
 extern "C" void func_ov017_0219bfb4(int a, int b);
 
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 
 struct Combatant020482bc;
 int RestoreMaxMpToFull(struct Combatant020482bc* c);
@@ -24,7 +24,7 @@ int RestoreMaxMpToFull(struct Combatant020482bc* c);
 struct Bytes02033b88;
 int SetByte0xbeShiftPrev(struct Bytes02033b88* p, int val);
 
-void SetOrClearBitInArray(void* unused, unsigned char* array, int bit, int value);
+void SetOrClearBitInArray_0206df6c(void* unused, unsigned char* array, int bit, int value);
 
 extern int data_020f83d8;
 
@@ -41,7 +41,7 @@ ARM void ResetMpForFlaggedCombatants02010604(GameState* obj, int arg1, int arg2,
     int i;
 
     if (arg1 != 0) {
-        if (CheckField0NonZero((int*)g)) {
+        if (CheckField0NonZero_0202b7d8((int*)g)) {
             func_ov017_021d2400();
         }
     }
@@ -57,7 +57,7 @@ ARM void ResetMpForFlaggedCombatants02010604(GameState* obj, int arg1, int arg2,
         RestoreMaxMpToFull((struct Combatant020482bc*)combatant);
         view->field18c &= ~1;
         SetByte0xbeShiftPrev((struct Bytes02033b88*)combatant, 0);
-        if (CheckField0NonZero((int*)g)) {
+        if (CheckField0NonZero_0202b7d8((int*)g)) {
             func_ov017_021cedf4(id, 1, 0);
             func_ov017_021c9e00(id, 0, 0, 1);
         }
@@ -73,7 +73,7 @@ ARM void ResetMpForFlaggedCombatants02010604(GameState* obj, int arg1, int arg2,
     if (*(int*)((char*)obj + 0x5000 + kOffsetcb0) == 0x10 && *(int*)((char*)obj + 0x5000 + kOffsetcb4) == 2 &&
         *(int*)((char*)obj + 0x5000 + kOffsetcb8) == 1) {
         void* g2 = func_0205ec34();
-        SetOrClearBitInArray(g2, (unsigned char*)((char*)g2 + 0x8c), 0x113a, 0);
+        SetOrClearBitInArray_0206df6c(g2, (unsigned char*)((char*)g2 + 0x8c), 0x113a, 0);
     }
 
     *((unsigned char*)&data_020f83d8 + kOffset729) = 0;

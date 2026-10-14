@@ -1,11 +1,10 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-
 // USA: func_ov003_02169938
 ARM int AddCappedFieldF6c_02169938(int unused, int amount) {
     GameState* bs = GameState::GetInstance();
-    void* p = GetPtrField0x2a04(bs);
+    void* p = GetPtrField0x2a04_02010828(bs);
     int val = *(int*)((char*)p + 0xf6c);
     if (val < -amount) {
         return 0;

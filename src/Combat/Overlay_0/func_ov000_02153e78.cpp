@@ -2,9 +2,9 @@
 #include "GameState/GameState.h"
 
 struct S_10088;
-int IsFlag10088Set(struct S_10088* obj);
-int IsFlag0x18Bit0x2000Set(GameObject* combatant);
-GameObject* GetCombatantWithFlag0x400(GameState* battleStruct, int combatantId);
+int IsFlag10088Set_02010088(struct S_10088* obj);
+int IsFlag0x18Bit0x2000Set_ov000_02153c0c(GameObject* combatant);
+GameObject* GetCombatantWithFlag0x400_0200fea4(GameState* battleStruct, int combatantId);
 
 struct Combatant_02153e78 {
     char pad0[0x17c];
@@ -36,11 +36,11 @@ extern "C" ARM int func_ov000_02153e78(struct Battle_02153e78* battle, short* ou
         unsigned char* ids = groups[g].memberIds;
         int i;
         for (i = 0; i < groups[g].memberCount; i++) {
-            GameObject* c = GetCombatantWithFlag0x400(bs, ids[i] + 0xc0);
+            GameObject* c = GetCombatantWithFlag0x400_0200fea4(bs, ids[i] + 0xc0);
             if (c == NULL) continue;
             if (side != ((struct Combatant_02153e78*)c)->side) continue;
-            if (!(flags & 0x10) && IsFlag0x18Bit0x2000Set(c)) continue;
-            if ((flags & 1) && IsFlag10088Set((struct S_10088*)c)) continue;
+            if (!(flags & 0x10) && IsFlag0x18Bit0x2000Set_ov000_02153c0c(c)) continue;
+            if ((flags & 1) && IsFlag10088Set_02010088((struct S_10088*)c)) continue;
             out[found] = ids[i] + 0xc0;
             found++;
             if (found == max) return found;

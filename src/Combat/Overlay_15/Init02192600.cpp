@@ -2,7 +2,7 @@
 #include "Memory/AllocatorUnion.h"
 
 extern "C" void func_0207de48(void* dst, int a, int b);
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 
 extern AllocatorUnion data_02114e20;
 
@@ -24,9 +24,9 @@ ARM void Init02192600(struct Obj02192600* obj) {
     struct RowTable02192600 local = data_ov015_02193e48;
     int k;
     for (k = 0; k < 4; k++) {
-        obj->arrC4[k].p = AllocateAligned4(&data_02114e20, 0x460);
-        obj->arrE4[k].p = AllocateAligned4(&data_02114e20, 0x460);
-        obj->arr104[k].p = AllocateAligned4(&data_02114e20, 0x70);
+        obj->arrC4[k].p = AllocateAligned4_02012d88(&data_02114e20, 0x460);
+        obj->arrE4[k].p = AllocateAligned4_02012d88(&data_02114e20, 0x460);
+        obj->arr104[k].p = AllocateAligned4_02012d88(&data_02114e20, 0x70);
         int j;
         for (j = 0; j < 10; j++) {
             func_0207de48((char*)obj->arrC4[k].p + j * 0x70, local.rows[j].f0, local.rows[j].f1);

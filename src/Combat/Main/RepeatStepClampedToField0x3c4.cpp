@@ -4,7 +4,7 @@
 extern "C" void func_02067b28(void* obj);
 
 // USA: func_02067e58
-ARM void RepeatStepClampedToField0x3c4(void* obj, int count) {
+ARM void RepeatStepClampedToField0x3c4_02067e58(void* obj, int count) {
     GameState* battleStruct;
     unsigned int minCount;
     if (count == 0) {

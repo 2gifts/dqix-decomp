@@ -10,7 +10,7 @@ enum { kRegionalFieldOffset = 0x718 };
 extern "C" void* func_ov017_021b8478(void* obj);
 extern "C" int func_ov017_021b8468(void* obj);
 void* GetField6b0_021b8470(void* obj);
-int GetField0x3acValue(GameState* battleStruct);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 struct Obj02088818;
 void SetStateAndByte0x6a(struct Obj02088818* obj, unsigned short mode);
 
@@ -46,7 +46,7 @@ extern "C" ARM void func_ov017_021c6ebc(int unused0, struct SrcEntry021c6ebc* sr
     if (GetField6b0_021b8470(table) == 0) {
         return;
     }
-    if (*(signed char*)(obj + 0x2a) == GetField0x3acValue(battleStruct)) {
+    if (*(signed char*)(obj + 0x2a) == GetField0x3acValue_020100a8(battleStruct)) {
         return;
     }
     if (*(unsigned short*)(obj + 8) != src->field4) {

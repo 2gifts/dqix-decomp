@@ -8,7 +8,7 @@ struct Record12 {
     unsigned short fa;
 };
 
-void CopyStructFields12(struct Record12* dst, struct Record12* src);
+void CopyStructFields12_0209a530(struct Record12* dst, struct Record12* src);
 
 struct RecordList0209a4f0 {
     struct Record12* items;
@@ -24,5 +24,5 @@ ARM void AppendRecord12Capped0209a4f0(struct RecordList0209a4f0* list, struct Re
     count = list->count;
     if (count >= 0x11f) return;
     list->count = count + 1;
-    CopyStructFields12(&list->items[count], src);
+    CopyStructFields12_0209a530(&list->items[count], src);
 }

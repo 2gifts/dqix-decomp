@@ -17,9 +17,9 @@ struct Group021cc388 {
 	unsigned char kinds[3];
 };
 
-int GetField0x3acValue(GameState* battleStruct);
-GameObject* GetCombatantWithFlag0x1000(GameState* battleStruct, int combatantId);
-GameObject* GetCombatantWithFlag0x200(GameState* battleStruct, int combatantId);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
+GameObject* GetCombatantWithFlag0x1000_0200ff58(GameState* battleStruct, int combatantId);
+GameObject* GetCombatantWithFlag0x200_0200fee0(GameState* battleStruct, int combatantId);
 
 extern "C" void func_ov017_02190264(unsigned char* ov, int combatantId);
 extern "C" void func_ov017_021905b8(unsigned char* ov, int combatantId, int mode);
@@ -34,7 +34,7 @@ extern "C" void func_0202c288(struct SearchStruct* search);
 extern "C" ARM void func_ov017_021cc388(int tag, Group021cc388* group, GameState* battleStruct,
                                         unsigned char* ov, struct SearchStruct* search) {
 	if (group->ownerId >= 0) {
-		if (group->ownerId != GetField0x3acValue(battleStruct)) return;
+		if (group->ownerId != GetField0x3acValue_020100a8(battleStruct)) return;
 	}
 
 	unsigned char* bits = *(unsigned char**)(ov + 0x3000 + kRegionalFieldOffset);
@@ -45,9 +45,9 @@ extern "C" ARM void func_ov017_021cc388(int tag, Group021cc388* group, GameState
 		unsigned char idByte = group->ids[i];
 		int id = idByte;
 		int kind = group->kinds[i];
-		if (GetCombatantWithFlag0x1000(battleStruct, id)) {
+		if (GetCombatantWithFlag0x1000_0200ff58(battleStruct, id)) {
 			func_ov017_02190264(ov, id);
-		} else if (GetCombatantWithFlag0x200(battleStruct, id)) {
+		} else if (GetCombatantWithFlag0x200_0200fee0(battleStruct, id)) {
 			func_ov017_021905b8(ov, id, 1);
 		}
 		if (kind == 0) {

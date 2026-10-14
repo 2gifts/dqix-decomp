@@ -6,7 +6,7 @@
 
 class AllocatorUnion;
 int TailForward02012da4(AllocatorUnion*, void*);
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 
 extern AllocatorUnion data_02114e20;
 extern int data_ov017_021d669c[];
@@ -26,6 +26,6 @@ ARM void ResetTaskAndDestroyAllocators_021a050c(GameResources* self) {
         }
     }
 
-    void* buf = AllocateAligned4(&data_02114e20, 0x6f78);
+    void* buf = AllocateAligned4_02012d88(&data_02114e20, 0x6f78);
     self->allocator_array_38[5].CreateTypeA(buf, 0x6f78);
 }

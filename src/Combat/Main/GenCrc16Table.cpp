@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_020d1ba0
-ARM void GenCrc16Table(unsigned short* table, unsigned short poly) {
+ARM void GenCrc16Table_020d1ba0(unsigned short* table, unsigned short poly) {
     unsigned int crc;
     unsigned int i;
     unsigned int bit;

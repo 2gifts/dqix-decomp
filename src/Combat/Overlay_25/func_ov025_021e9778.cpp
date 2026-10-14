@@ -57,17 +57,17 @@ struct ActionModeWord {
 
 typedef int (*Handler021e9778)(struct Node021e9778*, struct Slot021e9778*, void*, int);
 
-void* GetActiveCombatWork(void);
+void* GetActiveCombatWork_ov000_02160130(void);
 void* GetOffsetPtr02160f00(void* obj);
 void* GetSlotPtr02160f20(void* obj);
 ListNode02160094* GetNodeAtIndex02160094(List02160094* list, int index);
 void InitStruct02078484(InitStruct02078484Struct* p);
 extern "C" void* func_ov000_02160f14(void* obj);
-void StoreFields0x1e4And0x1e8IfNonZero(unsigned char* obj, int a, int b);
+void StoreFields0x1e4And0x1e8IfNonZero_0202ea10(unsigned char* obj, int a, int b);
 short ClampScaledStat_0216352c(int id, float a, float b);
 void FindNodeAndProcess02057fb4(void* list, int id, int argument);
 extern "C" void* func_02057924(void);
-GameObject* GetCombatantWithFlag0x400(GameState* battleStruct, int combatantId);
+GameObject* GetCombatantWithFlag0x400_0200fea4(GameState* battleStruct, int combatantId);
 extern "C" void func_ov025_021eb6fc(Obj021eb6fc* self, int force);
 extern "C" int func_ov025_021eb46c(Ctx021eb46c* self);
 extern "C" int func_ov025_021eb204(Loader021eb204* self);
@@ -85,7 +85,7 @@ extern char data_ov025_021ef8de[];
 extern "C" ARM void func_ov025_021e9778(void* self) {
     unsigned char* object = (unsigned char*)self;
     GameState* gs = GameState::GetInstance();
-    void* work = GetActiveCombatWork();
+    void* work = GetActiveCombatWork_ov000_02160130();
     void* workData = GetOffsetPtr02160f00(work);
     struct Slot021e9778* slot = (struct Slot021e9778*)GetSlotPtr02160f20(work);
     data_ov025_021ef994 = self;
@@ -144,7 +144,7 @@ extern "C" ARM void func_ov025_021e9778(void* self) {
         GameState* gs2 = GameState::GetInstance();
         int isParty = (id >= 0xc0 && id <= 0xc7);
         if (isParty != 0) {
-            GameObject* c = GetCombatantWithFlag0x400(gs2, id);
+            GameObject* c = GetCombatantWithFlag0x400_0200fea4(gs2, id);
             if (c != 0) {
                 short v = *(short*)((char*)c + 2);
                 if (v == 0x200 || (unsigned int)(v - 0x289) <= 4) {
@@ -164,7 +164,7 @@ extern "C" ARM void func_ov025_021e9778(void* self) {
             if (slot->kind & 1) {
                 strcpy((char*)&s, data_ov025_021ef8de);
                 unsigned char* p = (unsigned char*)func_ov000_02160f14(work);
-                StoreFields0x1e4And0x1e8IfNonZero(p, 0x199, 0x3e8);
+                StoreFields0x1e4And0x1e8IfNonZero_0202ea10(p, 0x199, 0x3e8);
             }
             int inParty = (id >= 0xc0 && id <= 0xc7);
             if (inParty != 0) {

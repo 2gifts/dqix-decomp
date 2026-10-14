@@ -5,11 +5,11 @@ extern "C" void* func_02012fe4(void);
 extern "C" void func_ov017_021d1874(unsigned char a, unsigned char b, unsigned char c, int d, int e, int f, int g);
 
 // USA: func_020a8740
-ARM void NotifyOv017OnFlag0x1130(void) {
+ARM void NotifyOv017OnFlag0x1130_020a8740(void) {
     Zone3D* zone = (Zone3D*)func_02012fe4();
     int i = 0;
     for (;;) {
-        ZoneFeatures::Opcode6aEntry* entry = GetElementStride0x74(&zone->substruct_6c_, i);
+        ZoneFeatures::Opcode6aEntry* entry = GetElementStride0x74_0201e664(&zone->substruct_6c_, i);
         i++;
         if (!entry) return;
         if (entry->maybeType != 0xc) continue;

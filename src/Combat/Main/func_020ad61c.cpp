@@ -58,11 +58,11 @@ extern "C" void func_020adaac(Trajectory020ad61c*);
 void SubtractHeightOffset020ae398(Entity020AE398*);
 void UpdateFallMotion020ae3f4(Obj020ae3f4*);
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
-void SetByteField0x253(void*);
+void SetByteField0x253_020397c0(void*);
 int ComputeTwoFromVec3_0202ec84(void*, Vec3copy0202ec84*, int*, int*);
 extern "C" int func_02018fbc(Zone3D*, Vec3copy0202ec84*);
-int IsField0Null(void**);
-int TestFlag0SetAndFlag1Clear(unsigned short*, int);
+int IsField0Null_02046b08(void**);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short*, int);
 extern "C" void func_ov017_021a72f4(GameResources*, int);
 extern short data_020e9450[];
 extern Touch020ad61c data_02114e54;
@@ -132,9 +132,9 @@ extern "C" ARM void func_020ad61c(Trajectory020ad61c* object) {
     GameObject* actor = game->GetUnknownGameObject();
     if (actor && GetHeadNodeIdOrMinusOne(head) != 3) {
         actor->obj3D_.position_ = object->object.position_;
-        SetByteField0x253(actor);
+        SetByteField0x253_020397c0(actor);
     }
-    camera = GetField0x3b0Value(game);
+    camera = GetField0x3b0Value_020100bc(game);
     int directHit = 0;
     groundedHit = 0;
     int screenX[3];
@@ -166,12 +166,12 @@ extern "C" ARM void func_020ad61c(Trajectory020ad61c* object) {
             }
         }
     }
-    if (IsField0Null((void**)head) && object->state == 0) {
-        if (TestFlag0SetAndFlag1Clear(&data_02114e30, 1) || groundedHit) {
+    if (IsField0Null_02046b08((void**)head) && object->state == 0) {
+        if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 1) || groundedHit) {
             func_ov017_021a72f4(scene, 1);
-        } else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2) || directHit) {
+        } else if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 2) || directHit) {
             func_ov017_021a72f4(scene, 0);
-        } else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 256)) {
+        } else if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 256)) {
             if (!(data_ov017_021d82fc.flags & 16)) data_ov017_021d82fc.flags |= 16;
         }
     }

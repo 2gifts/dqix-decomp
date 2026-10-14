@@ -11,7 +11,7 @@ struct Obj64af8 {
 };
 
 // USA: func_02064af8
-ARM void AppendNodeToField494(struct Obj64af8* obj, struct Node64af8* node) {
+ARM void AppendNodeToField494_02064af8(struct Obj64af8* obj, struct Node64af8* node) {
     struct Node64af8* cur = obj->head;
     if (cur == 0) {
         obj->head = node;

@@ -30,11 +30,11 @@ extern IdList data_ov000_02182cf4;
 extern TargetList data_ov000_02182bc4;
 
 struct GameState;
-Combatant* GetCombatantWithFlag0x400(GameState*, int);
-void SetBool0x17fClear0x180(unsigned char*, int);
-void SetBool0x180Clear0x17f(unsigned char*, int);
-void ClearBits0x1And0x4(unsigned char*);
-int ClassifyField0x81fe(char*);
+Combatant* GetCombatantWithFlag0x400_0200fea4(GameState*, int);
+void SetBool0x17fClear0x180_020488ac(unsigned char*, int);
+void SetBool0x180Clear0x17f_020488cc(unsigned char*, int);
+void ClearBits0x1And0x4_0208979c(unsigned char*);
+int ClassifyField0x81fe_ov000_0215fc60(char*);
 extern "C" int func_ov000_02153e40(Battle* battle, short* buf, int max, int start);
 extern "C" int func_ov000_0215e9fc(Battle* battle, short* buf, int max, int start);
 extern "C" void func_ov000_0215a23c(Battle* battle);
@@ -60,14 +60,14 @@ extern "C" ARM void func_ov000_0215e6e8(Battle* battle) {
                     }
                 }
                 if (isPlayerSlot == 0) {
-                    Combatant* other = GetCombatantWithFlag0x400((GameState*)GameState::GetInstance(), id2);
+                    Combatant* other = GetCombatantWithFlag0x400_0200fea4((GameState*)GameState::GetInstance(), id2);
                     if (other != NULL) {
                         other->busy = 0;
-                        SetBool0x17fClear0x180((unsigned char*)other, 0);
-                        SetBool0x180Clear0x17f((unsigned char*)other, 0);
+                        SetBool0x17fClear0x180_020488ac((unsigned char*)other, 0);
+                        SetBool0x180Clear0x17f_020488cc((unsigned char*)other, 0);
                     }
                 }
-                ClearBits0x1And0x4((unsigned char*)c->stats);
+                ClearBits0x1And0x4_0208979c((unsigned char*)c->stats);
                 c->stats->field_0x21 = 0;
             }
         }
@@ -83,7 +83,7 @@ extern "C" ARM void func_ov000_0215e6e8(Battle* battle) {
             battle->result = 1;
         }
     }
-    if (ClassifyField0x81fe((char*)battle) != 0) {
+    if (ClassifyField0x81fe_ov000_0215fc60((char*)battle) != 0) {
         battle->result = 0;
     }
     battle->turnCount++;
@@ -91,7 +91,7 @@ extern "C" ARM void func_ov000_0215e6e8(Battle* battle) {
         count = func_ov000_0215e9fc(battle, ids.v, 0x10, 0);
         void* gs = GameState::GetInstance();
         for (int i = 0; i < count; i++) {
-            (Combatant*)GetCombatantWithFlag0x100((GameState*)gs, ids.v[i]);
+            (Combatant*)GetCombatantWithFlag0x100_0200ff1c((GameState*)gs, ids.v[i]);
         }
     }
 }

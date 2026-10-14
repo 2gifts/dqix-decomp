@@ -11,24 +11,24 @@ enum { extensionOffset = 0x150, slotsOffset = 0x74c0, contextBytes = 0x1a4, tabl
 #endif
 
 struct S_e830;
-int GetFieldPercentOver307(BattleRecordSnapshot* p);
-int GetFieldPercentOver232(BattleRecordSnapshot* p);
-int GetFieldPercentOver944(BattleRecordSnapshot* p);
-int GetFieldPercentOver448(BattleRecordSnapshot* p);
-int GetFieldAt0x7e(struct S_e830* p);
-int GetFieldAt0x0(int* obj);
+int GetFieldPercentOver307_020a0870(BattleRecordSnapshot* p);
+int GetFieldPercentOver232_020a08a4(BattleRecordSnapshot* p);
+int GetFieldPercentOver944_020a08d8(BattleRecordSnapshot* p);
+int GetFieldPercentOver448_020a090c(BattleRecordSnapshot* p);
+int GetFieldAt0x7e_0201e830(struct S_e830* p);
+int GetFieldAt0x0_0202ba00(int* obj);
 int UpdatePlayClocks020ac4f8(int commit);
 int LoadBattleBlock020ac4c0(void* dst);
-int CopyOutBattleField0x7ac0(void* dst);
-unsigned int GetWord(unsigned int* obj);
-unsigned int GetField4(unsigned int* obj);
-unsigned int GetField8(unsigned int* obj);
-void SetBitsInWord(unsigned int* obj, unsigned int mask);
-void SetBitsInField4(unsigned int* obj, unsigned int mask);
-void Set3DClearColor(int color, int alpha, int depth, int polygonId, int fogEnable);
+int CopyOutBattleField0x7ac0_020ac0b4(void* dst);
+unsigned int GetWord_0203b498(unsigned int* obj);
+unsigned int GetField4_0203b4d0(unsigned int* obj);
+unsigned int GetField8_0203b508(unsigned int* obj);
+void SetBitsInWord_0203b4a0(unsigned int* obj, unsigned int mask);
+void SetBitsInField4_0203b4d8(unsigned int* obj, unsigned int mask);
+void Set3DClearColor_020c5588(int color, int alpha, int depth, int polygonId, int fogEnable);
 int GetGlobalField0x1c020421a0(void);
 void ReinitController02043204(char* obj);
-void SetFieldsAt0x4And0x8(int* obj, int a, int b);
+void SetFieldsAt0x4And0x8_020e2d24(int* obj, int a, int b);
 void* GetNodeIfType11_02168ad4(void* a, int id);
 extern "C" void* func_02012fe4(void);
 extern "C" void* func_0202ae18(void);
@@ -121,7 +121,7 @@ extern "C" ARM int func_ov004_02168b44(void* a) {
             if (slot->f7 != 0 || slot->f8 != 0 || slot->f9 >= 0) return 1;
         }
     }
-    int kind = GetFieldAt0x0((int*)obj);
+    int kind = GetFieldAt0x0_0202ba00((int*)obj);
     int depth = *((unsigned char*)obj + 0x100d);
     int commit = 0;
     if ((kind == 5 && depth > 1) || kind == 6) commit = 1;
@@ -148,7 +148,7 @@ extern "C" ARM int func_ov004_02168b44(void* a) {
     BattleRecordSnapshot blk;
     int ok = LoadBattleBlock020ac4c0(&blk);
     unsigned int score = 0;
-    CopyOutBattleField0x7ac0(&score);
+    CopyOutBattleField0x7ac0_020ac0b4(&score);
     if (score > 0x1869f) score = 0x1869f;
     int bit = 0;
     struct Combatant02168b44* c =
@@ -171,13 +171,13 @@ extern "C" ARM int func_ov004_02168b44(void* a) {
         data_ov004_02171030->f194->wcB = blk.unknown0c_14;
         data_ov004_02171030->f194->w10B = blk.unknown10_9;
         data_ov004_02171030->f194->w8C =
-            (unsigned char)GetFieldPercentOver307(&blk);
+            (unsigned char)GetFieldPercentOver307_020a0870(&blk);
         data_ov004_02171030->f194->w8D =
-            (unsigned char)GetFieldPercentOver232(&blk);
+            (unsigned char)GetFieldPercentOver232_020a08a4(&blk);
         data_ov004_02171030->f194->wcC =
-            (unsigned char)GetFieldPercentOver944(&blk);
+            (unsigned char)GetFieldPercentOver944_020a08d8(&blk);
         data_ov004_02171030->f194->w10C =
-            (unsigned char)GetFieldPercentOver448(&blk);
+            (unsigned char)GetFieldPercentOver448_020a090c(&blk);
         data_ov004_02171030->f194->f14 = fld->val;
         data_ov004_02171030->f194->f16 = bit;
     }
@@ -189,15 +189,15 @@ extern "C" ARM int func_ov004_02168b44(void* a) {
     if (!base) return 0;
     struct S_e830* rec = (struct S_e830*)((char*)base + entryOffset);
     if (!rec) return 0;
-    data_ov004_02171030->f18c = GetFieldAt0x7e(rec);
+    data_ov004_02171030->f18c = GetFieldAt0x7e_0201e830(rec);
 
     unsigned int* w = (unsigned int*)func_ov017_0218b5b0();
-    data_ov004_02171030->f180 = GetWord(w);
-    data_ov004_02171030->f184 = GetField4(w);
-    data_ov004_02171030->f188 = GetField8(w);
-    SetBitsInWord(w, 4);
-    SetBitsInField4(w, 0x8de);
-    Set3DClearColor(0, 0, 0x7fff, 0, 0);
+    data_ov004_02171030->f180 = GetWord_0203b498(w);
+    data_ov004_02171030->f184 = GetField4_0203b4d0(w);
+    data_ov004_02171030->f188 = GetField8_0203b508(w);
+    SetBitsInWord_0203b4a0(w, 4);
+    SetBitsInField4_0203b4d8(w, 0x8de);
+    Set3DClearColor_020c5588(0, 0, 0x7fff, 0, 0);
 
     struct Node02168b44* node = (struct Node02168b44*)NODE_LOOKUP_CALL(a, 0x64);
     if (data_ov004_02171030->f190[0] <= 8) {
@@ -223,7 +223,7 @@ extern "C" ARM int func_ov004_02168b44(void* a) {
     char* g = (char*)GetGlobalField0x1c020421a0();
     ReinitController02043204(g);
     *(unsigned char*)(g + flagOffset) = 1;
-    SetFieldsAt0x4And0x8((int*)(g + firstOffset), 9, 1);
-    SetFieldsAt0x4And0x8((int*)(g + secondOffset), 0x19, 1);
+    SetFieldsAt0x4And0x8_020e2d24((int*)(g + firstOffset), 9, 1);
+    SetFieldsAt0x4And0x8_020e2d24((int*)(g + secondOffset), 0x19, 1);
     return 0;
 }

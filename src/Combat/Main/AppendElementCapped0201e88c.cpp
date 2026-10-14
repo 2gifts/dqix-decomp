@@ -22,7 +22,7 @@ struct Container0201e88c {
 };
 
 // USA: func_0201e88c
-extern "C" ARM void _ZN12ZoneFeatures19CreateOpcode7bEntryERKNS_13Opcode7bEntryE(struct Container0201e88c* c, struct Elem0201e88c* src) {
+extern "C" ARM void _ZN12ZoneFeatures28CreateOpcode7bEntry_0201e88cERKNS_13Opcode7bEntryE(struct Container0201e88c* c, struct Elem0201e88c* src) {
     unsigned short count;
     struct Elem0201e88c* dst;
     if (c->base == NULL) {

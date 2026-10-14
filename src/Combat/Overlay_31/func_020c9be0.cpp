@@ -2,7 +2,7 @@
 
 extern "C" ARM void func_020c9be0(void);
 extern "C" ARM void func_ov031_02239368(int val);
-int IssueBattleCommandSlot2(int arg);
+int IssueBattleCommandSlot2_020d503c(int arg);
 void SetTagFromFlag2_02239b98(short* p);
 
 struct Inner_0223a47c { unsigned char pad[0x40]; int field40; };
@@ -15,7 +15,7 @@ extern "C" ARM int func_ov031_0223a47c(void) {
         func_020c9be0();
     }
     func_ov031_02239368(3);
-    int r = IssueBattleCommandSlot2((int)SetTagFromFlag2_02239b98);
+    int r = IssueBattleCommandSlot2_020d503c((int)SetTagFromFlag2_02239b98);
     if (r == 2) {
         return 1;
     }

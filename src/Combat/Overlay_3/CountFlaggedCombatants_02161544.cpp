@@ -9,13 +9,12 @@ enum { kRegionValue400_200 = 0x400 };
 enum { kRegionValue82_AA = 0x82 };
 #endif
 
-
-void* GetPtrField0x2a04(GameState* battleStruct);
+void* GetPtrField0x2a04_02010828(GameState* battleStruct);
 
 // USA: func_ov003_02161544
 ARM int CountFlaggedCombatants_02161544(void* self) {
     GameState* bs = GameState::GetInstance();
-    unsigned char* arr = (unsigned char*)GetPtrField0x2a04(bs);
+    unsigned char* arr = (unsigned char*)GetPtrField0x2a04_02010828(bs);
     unsigned char count = 0;
     unsigned char i = 0;
     while (i < arr[0xf7c]) {

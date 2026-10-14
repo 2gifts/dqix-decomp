@@ -23,11 +23,11 @@ int func_ov006_02154138(void*);
 bool func_020ac2d4(int, short*, AlchemyEntryUpdateView*, int);
 void func_020ac104(void*, AlchemyEntryUpdateView*, int);
 AlchemyCatalogFlagsView* _Z22FindEntryByKey02071d60P12List02071d60i(void*, short);
-bool _Z24CopyOutBattleField0x7ac0Pv(unsigned int*);
-void _Z24CopyInBattleRegion0x7ac0Pv(unsigned int*);
+bool _Z33CopyOutBattleField0x7ac0_020ac0b4Pv(unsigned int*);
+void _Z33CopyInBattleRegion0x7ac0_020ac08cPv(unsigned int*);
 int _Z23LoadBattleBlock020ac4c0Pv(void*);
-void _Z30AddClamped16BitFieldHighAt0x18P7S_a0228j(void*, int);
-int _Z23CopyInBattleField0x7540Pv(void*);
+void _Z39AddClamped16BitFieldHighAt0x18_020a0228P7S_a0228j(void*, int);
+int _Z32CopyInBattleField0x7540_020ac494Pv(void*);
 }
 extern "C" ARM void func_ov006_02153cbc(void* state, short selectedItem, short addedItem, void* catalog)
 {
@@ -60,14 +60,14 @@ extern "C" ARM void func_ov006_02153cbc(void* state, short selectedItem, short a
         }
     }
     unsigned int count = 0;
-    if (_Z24CopyOutBattleField0x7ac0Pv(&count)) {
+    if (_Z33CopyOutBattleField0x7ac0_020ac0b4Pv(&count)) {
         count++;
         if (count > 99999) count = 99999;
-        _Z24CopyInBattleRegion0x7ac0Pv(&count);
+        _Z33CopyInBattleRegion0x7ac0_020ac08cPv(&count);
         AlchemyUpdateWorkView work;
         _Z23LoadBattleBlock020ac4c0Pv(&work);
-        _Z30AddClamped16BitFieldHighAt0x18P7S_a0228j(work.updateData, 1);
-        _Z23CopyInBattleField0x7540Pv(&work);
+        _Z39AddClamped16BitFieldHighAt0x18_020a0228P7S_a0228j(work.updateData, 1);
+        _Z32CopyInBattleField0x7540_020ac494Pv(&work);
     }
     BackgroundLoader::RemoveLockGlobal();
 }

@@ -8,8 +8,8 @@ struct Elem_0205d81c {
 
 struct Struct_0205d81c;
 struct Elem_0205d81c* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
-int CheckField0NonZero(int* obj);
-void GetFourSubstructPointers(unsigned char* elem, unsigned char** a, unsigned char** b, unsigned char** c,
+int CheckField0NonZero_0202b7d8(int* obj);
+void GetFourSubstructPointers_0204f138(unsigned char* elem, unsigned char** a, unsigned char** b, unsigned char** c,
                               unsigned char** d);
 
 extern "C" void* func_0202ae18(void);
@@ -25,7 +25,7 @@ struct CursorTag_0216d990 {
 extern "C" ARM void func_ov003_0216d990(char* obj) {
     void* g = func_0202ae18();
     if (*(short*)(obj + 4) != 2 || *(short*)(obj + 6) != 2) return;
-    if (CheckField0NonZero((int*)g) != 0) return;
+    if (CheckField0NonZero_0202b7d8((int*)g) != 0) return;
 
     struct CursorTag_0216d990* tag = 0;
 #if defined(jpn)
@@ -52,7 +52,7 @@ extern "C" ARM void func_ov003_0216d990(char* obj) {
     short* yMin;
     short* xWidth;
     short* yWidth;
-    GetFourSubstructPointers((unsigned char*)elem, (unsigned char**)&xMin, (unsigned char**)&yMin, (unsigned char**)&xWidth,
+    GetFourSubstructPointers_0204f138((unsigned char*)elem, (unsigned char**)&xMin, (unsigned char**)&yMin, (unsigned char**)&xWidth,
                              (unsigned char**)&yWidth);
     int x = xMin[1] + xWidth[1] + ex;
     int y = yMin[1] + ey;

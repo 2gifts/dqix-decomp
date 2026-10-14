@@ -21,7 +21,7 @@ struct Obj021e6e20;
 void FindAndLinkMatchingEntry0205de24(Struct0205de24*, unsigned char, unsigned char);
 int GetActiveScaledSum0205d794(Struct_0205c570*);
 void BuildMessageB_021898bc(char*);
-void* FindEntryByKey(TableA68*, int);
+void* FindEntryByKey_02072a68(TableA68*, int);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 int TestFlagsAndActiveElement2_021e6e20(Obj021e6e20*);
 extern Obj0205eaa0 data_02108760;
@@ -74,7 +74,7 @@ extern "C" ARM void func_ov012_02186c1c(char* editor) {
             break;
         case 3: {
             GameState* game = GameState::GetInstance();
-            const char* text = (const char*)FindEntryByKey((TableA68*)(editor + 0x1314), 109);
+            const char* text = (const char*)FindEntryByKey_02072a68((TableA68*)(editor + 0x1314), 109);
             GetTitleProfile02186c1c(game)->title = 300;
             memset(editor + 0x1498, 0, 64);
             memcpy(editor + 0x1498, text, strlen(text));
@@ -145,7 +145,7 @@ static inline ProfileTitle* GetTitleProfile(GameState* game) {
 void FindAndLinkMatchingEntry0205de24(Struct0205de24*, unsigned char, unsigned char);
 int GetActiveScaledSum0205d794(Struct_0205c570*);
 void BuildMessageB_021898bc(char*);
-void* FindEntryByKey(TableA68*, int);
+void* FindEntryByKey_02072a68(TableA68*, int);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 int TestFlagsAndActiveElement2_021e6e20(Obj021e6e20*);
 extern Obj0205eaa0 data_02108760;
@@ -201,7 +201,7 @@ extern "C" ARM void func_ov012_02186c1c(ProfileEditor* self) {
             break;
         case 3: {
             GameState* game = GameState::GetInstance();
-            const char* text = (const char*)FindEntryByKey(&self->strings, 0x6d);
+            const char* text = (const char*)FindEntryByKey_02072a68(&self->strings, 0x6d);
             GetTitleProfile(game)->title = 300;
             memset(self->titleText, 0, sizeof(self->titleText));
             int length = strlen(text);

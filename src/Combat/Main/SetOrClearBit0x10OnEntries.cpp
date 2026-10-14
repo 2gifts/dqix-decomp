@@ -16,7 +16,7 @@ struct RootEntries {
 };
 
 // USA: func_0203e5d8
-ARM void SetOrClearBit0x10OnEntries(struct RootEntries* root, int flag) {
+ARM void SetOrClearBit0x10OnEntries_0203e5d8(struct RootEntries* root, int flag) {
     struct AEntry** p = root->arr;
     int i;
     for (i = 0; i < 0x20; i++, p++) {

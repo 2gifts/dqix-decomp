@@ -25,7 +25,7 @@ struct NotifyEntriesStruct0207f8bc;
 void* GetDataPtr02114e04_020d6c00(void);
 void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int mask);
 extern "C" void* func_ov017_0218b5b0(void);
-void ClearBitsInField4(unsigned int* obj, unsigned int mask);
+void ClearBitsInField4_0203b4e8(unsigned int* obj, unsigned int mask);
 void ClearFlag0x10IfSet(struct Struct02074bd0* obj);
 void ClearAllBuffers0207fcb8(struct Obj0207fcb8* obj);
 void CallFunc0204b04cOverList0x2c(struct Cont0207fd44* obj);
@@ -72,7 +72,7 @@ extern "C" ARM void func_ov003_0215fb94(BattleView0215fb94* view) {
     void* resources = func_ov017_0218b5b0();
     volatile unsigned int* dispcnt = (volatile unsigned int*)0x4000000;
     *dispcnt = (*dispcnt & ~0x1f00) | (view->savedBgMode << 8);
-    ClearBitsInField4((unsigned int*)resources, 0xc0);
+    ClearBitsInField4_0203b4e8((unsigned int*)resources, 0xc0);
     *dispcnt = (*dispcnt & ~0x1f00) | 0x100;
     *(volatile unsigned short*)0x4000050 = 0;
 

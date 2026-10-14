@@ -43,7 +43,7 @@ struct Combatant {
 
 int GetActiveScaledSum0205d794(Struct_0205c570*);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
-void* GetPtrField0x2a04(GameState*);
+void* GetPtrField0x2a04_02010828(GameState*);
 void ResetEntryList0205d6a0(Entry_0205d6a0*, int);
 TableEntry0217f8c0* FindMatchingTableEntry0217f8c0(Struct0217f8c0*);
 extern Obj0205eaa0 data_02108760;
@@ -82,7 +82,7 @@ extern "C" ARM void func_ov000_0217cb5c(Battle* self, int a, int b)
                 self->flags &= ~4;
                 self->field17c = -1;
                 GameState* game = GameState::GetInstance();
-                Party* party = (Party*)GetPtrField0x2a04(game);
+                Party* party = (Party*)GetPtrField0x2a04_02010828(game);
                 unsigned char count = party->count;
                 for (unsigned char i = 0; i < count; i++) {
                     Combatant* c = func_ov000_02161318(self, self->members[i]);

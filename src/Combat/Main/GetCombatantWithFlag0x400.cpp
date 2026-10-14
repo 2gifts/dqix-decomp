@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 // USA: func_0200fea4
-ARM GameObject* GetCombatantWithFlag0x400(GameState* battleStruct, int combatantId) {
+ARM GameObject* GetCombatantWithFlag0x400_0200fea4(GameState* battleStruct, int combatantId) {
     GameObject* combatant;
     if (combatantId < 0) {
         return 0;

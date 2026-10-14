@@ -37,7 +37,7 @@ ARM void FormatAndAppendCombatMessage02072d58(int combatantId, char* statsBuf, c
         sprintf(outBuf, data_020f0cff, statsBuf, 0x65);
     }
 
-    GameObject* c2 = GetCombatantWithFlag0x100(GameState::GetInstance(), combatantId);
+    GameObject* c2 = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), combatantId);
     if (c2 == NULL) {
         return;
     }

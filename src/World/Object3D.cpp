@@ -26,10 +26,10 @@ void CreateRotationZ(Matrix3x3* out, fix32_t s, fix32_t c);
 
 extern "C"
 {
-    void* _Z18GetField0x3b0ValueP9GameState(GameState*);
+    void* _Z27GetField0x3b0Value_020100bcP9GameState(GameState*);
     void _Z27ClearGlobalFlagBits02016d8cPv(void* rotation);
 
-    const Matrix3x3* _Z16GetPtrField0x144Pv(void*);
+    const Matrix3x3* _Z25GetPtrField0x144_0202ed74Pv(void*);
 
     void func_020311f0(fix32_t);
     void func_02031234(fix32_t);
@@ -551,7 +551,7 @@ void Object3D::PopulateRenderConfigWorld()
         RenderConfig::SetObjectPosition(&position_);
         if (flags_ & (1 << OBJECT3D_FLAG_19))
         {
-            const Matrix3x3* rotation = _Z16GetPtrField0x144Pv(_Z18GetField0x3b0ValueP9GameState(GameState::GetInstance()));
+            const Matrix3x3* rotation = _Z25GetPtrField0x144_0202ed74Pv(_Z27GetField0x3b0Value_020100bcP9GameState(GameState::GetInstance()));
             func_020ca528(rotation, &data_0210a010.objectRotationPosition.rotation);
             data_0210a010.flags &= ~((1 << RENDER_CONFIG_FLAG_WORLDVIEW_CACHE_VALID) | (1 << RENDER_CONFIG_FLAG_5) | (1 << RENDER_CONFIG_FLAG_2));
         }
@@ -1022,7 +1022,7 @@ bool Object3D::InternalLoadFromCHRArchive(ObjectArchiveLoadInfo* loadInfo)
                     narc.Destroy();
                     return false;
                 }
-                CopyRegionAndFlushCache(allocation, fileBytes, allocSize);
+                CopyRegionAndFlushCache_020d8524(allocation, fileBytes, allocSize);
                 fileBytes = allocation;
             }
             if (!SetModelFromFile(allocator, const_cast<void*>(fileBytes), fileLength, Model3D::TextureStagingMode_Normal))
@@ -1076,7 +1076,7 @@ bool Object3D::InternalLoadFromCHRArchive(ObjectArchiveLoadInfo* loadInfo)
                     narc.Destroy();
                     return false;
                 }
-                CopyRegionAndFlushCache(allocation, fileBytes, fileLength);
+                CopyRegionAndFlushCache_020d8524(allocation, fileBytes, fileLength);
                 fileBytes = allocation;
             }
             Animation3D* anim3D = &animPackage->pAnim3Ds->data[fileType];

@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void SetField54IfTagNot9Or10(int v);
+void SetField54IfTagNot9Or10_ov031_022393e4(int v);
 extern "C" void func_ov031_02239368(int);
 extern "C" int func_ov031_02239cd4(int);
 
@@ -24,7 +24,7 @@ extern int data_ov031_0224c44c;
 extern "C" ARM void func_ov031_02239d70(S02239d70* s) {
     unsigned short field2 = s->field2;
     if (field2 != 0) {
-        SetField54IfTagNot9Or10(field2);
+        SetField54IfTagNot9Or10_ov031_022393e4(field2);
         func_ov031_02239368(9);
         return;
     }

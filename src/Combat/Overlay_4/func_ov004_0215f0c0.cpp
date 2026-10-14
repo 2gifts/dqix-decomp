@@ -90,7 +90,7 @@ struct CombatantName {
 struct Struct0200fb08;
 struct TableA68;
 
-unsigned char* GetFieldAt0x150(unsigned char* obj);
+unsigned char* GetFieldAt0x150_02053c6c(unsigned char* obj);
 extern "C" HudNode* func_ov004_0215e47c(void* a, int key);
 extern "C" void* func_ov023_021fad18(void* node);
 struct PortraitEntry* GetArrayEntry_0215e438(void* arr, int idx);
@@ -100,16 +100,16 @@ unsigned char NormalizeField5_0200fb08(struct Struct0200fb08* obj);
 extern "C" void* func_ov011_021849c8(void* ctx);
 extern "C" HudNode* func_ov023_021f6880(void* list, int key);
 extern "C" int func_ov023_021f6f10(HudNode* node);
-int IsValueEqual12(int x);
+int IsValueEqual12_02042190(int x);
 extern "C" int func_020420e8(void* p, int flag);
-int CallFunc020e0434With02153694(int value);
+int CallFunc020e0434With02153694_020e51cc(int value);
 int CheckAfterTwoCalls_0215e460(void);
 void SetField38IfState8_0215e49c(void*, int, int);
 extern "C" struct TableA68* func_ov023_021fa598(HudNode* node);
 void InitObjFromCombatantId020e4bf4(void* obj, int combatantId);
 int GetGlobalField0x1c020421a0(void);
 extern "C" void func_02046380(void* global);
-void* FindEntryByKey(struct TableA68* table, int key);
+void* FindEntryByKey_02072a68(struct TableA68* table, int key);
 extern "C" void func_02046608(int a, int b, void* fmt, void* dst, int p4, int p5, int p6);
 void* CheckNodeState6_0215e4c0(void* a, int key);
 extern "C" void func_ov023_021f809c(void* obj, void* param2);
@@ -121,8 +121,8 @@ extern unsigned short data_ov004_0216fdd0[];
 // USA: func_ov004_0215f0c0
 extern "C" ARM void func_ov004_0215f0c0(void* self) {
     GameState* gs = GameState::GetInstance();
-    struct HudCombatant* combatant = (struct HudCombatant*)GetCombatantWithFlag0x100(gs, data_ov004_021707e8.combatantId);
-    struct HudField150* field150 = (struct HudField150*)GetFieldAt0x150((unsigned char*)combatant);
+    struct HudCombatant* combatant = (struct HudCombatant*)GetCombatantWithFlag0x100_0200ff1c(gs, data_ov004_021707e8.combatantId);
+    struct HudField150* field150 = (struct HudField150*)GetFieldAt0x150_02053c6c((unsigned char*)combatant);
     int dead = 0;
     int palette = 0xf;
     if ((int)combatant->stats->hp <= 0) {
@@ -186,7 +186,7 @@ extern "C" ARM void func_ov004_0215f0c0(void* self) {
         void* baseStats = node->data = combatant->baseStats;
         int width = 0;
         if (baseStats != 0) {
-            width = func_020420e8(baseStats, IsValueEqual12(node->kind));
+            width = func_020420e8(baseStats, IsValueEqual12_02042190(node->kind));
         }
         Vector3i pos;
         pos = node->GetPosition();
@@ -219,7 +219,7 @@ extern "C" ARM void func_ov004_0215f0c0(void* self) {
         }
         node = func_ov023_021f6880(list, 0x7d);
         if (node != 0) {
-            node->data = (void*)CallFunc020e0434With02153694(0x3f3);
+            node->data = (void*)CallFunc020e0434With02153694_020e51cc(0x3f3);
         }
     } else {
         node = func_ov023_021f6880(list, 0x7e);
@@ -237,7 +237,7 @@ extern "C" ARM void func_ov004_0215f0c0(void* self) {
         }
         node = func_ov023_021f6880(list, 0x7d);
         if (node != 0) {
-            node->data = (void*)CallFunc020e0434With02153694(0x3f3);
+            node->data = (void*)CallFunc020e0434With02153694_020e51cc(0x3f3);
         }
     }
 
@@ -272,7 +272,7 @@ extern "C" ARM void func_ov004_0215f0c0(void* self) {
             int g = GetGlobalField0x1c020421a0();
             func_02046380((void*)g);
             *(struct CombatantName**)g = &name;
-            func_02046608(g, 0, FindEntryByKey(table, 0x202), text, 0x1e, 0, 0);
+            func_02046608(g, 0, FindEntryByKey_02072a68(table, 0x202), text, 0x1e, 0, 0);
             label->data = text;
         }
         for (int i = 0; i < 3; i++) {

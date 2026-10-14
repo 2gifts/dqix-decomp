@@ -17,10 +17,10 @@ struct S_b20c {
 };
 
 extern "C" void* func_02012fe4(void);
-int StringLength(const char* text);
+int StringLength_020d2ff0(const char* text);
 extern "C" void* __clear(void* dst, int count);
 void InitWeightedEntries02023064(struct Struct02020520* arr, unsigned int count, short* a, short* b, short* c, short* d);
-void ClearTwoWordsAndByte(struct S_b20c* obj);
+void ClearTwoWordsAndByte_0205b20c(struct S_b20c* obj);
 void SetField0_0205b220(void* obj, int value);
 void SetFieldsAt0x4And0x8_0205b228(void* obj, int value, unsigned char flag);
 extern "C" int func_0205b234(void* selector, short weight, int mode, char* buf, int a, int b);
@@ -63,8 +63,8 @@ extern "C" ARM void func_020230fc(MapDisplay* obj, char* buffer, int offset) {
         InitWeightedEntries02023064(arr, 0x12, a, b, c, d);
 
 #if defined(jpn)
-        int tileCount = (StringLength(zone->substruct_c_.jpbuffer) / 2 * 10) / 8 + 1;
-        weight = tileCount * 8 - StringLength(zone->substruct_c_.jpbuffer) / 2 * 10;
+        int tileCount = (StringLength_020d2ff0(zone->substruct_c_.jpbuffer) / 2 * 10) / 8 + 1;
+        weight = tileCount * 8 - StringLength_020d2ff0(zone->substruct_c_.jpbuffer) / 2 * 10;
         weight /= 2;
 #else
         v = obj->scriptNameWidth;
@@ -76,7 +76,7 @@ extern "C" ARM void func_020230fc(MapDisplay* obj, char* buffer, int offset) {
         }
 #endif
 
-        ClearTwoWordsAndByte(&sel);
+        ClearTwoWordsAndByte_0205b20c(&sel);
         SetField0_0205b220(&sel, (int)(buffer + offset));
         SetFieldsAt0x4And0x8_0205b228(&sel, (int)arr, 0x12);
 

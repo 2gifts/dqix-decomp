@@ -54,7 +54,7 @@ extern Matrix4x3* data_ov006_0216038c[3];
 struct AlchemyProjectionLayout { unsigned char entries[4][4]; };
 extern AlchemyProjectionLayout data_ov006_0215ff6c;
 extern int data_0210a00c;
-void* _Z18GetField0x3b0ValueP9GameState(GameState*);
+void* _Z27GetField0x3b0Value_020100bcP9GameState(GameState*);
 void _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(void*, const Vector3fix*, int*, int*);
 void func_0203bd08();
 void* func_0203be40();
@@ -91,7 +91,7 @@ extern "C" ARM void func_ov006_02154a60(AlchemyProjectionView* state)
     }
     unsigned char layout = state->layout;
     AlchemyProjectionLayout lookup = data_ov006_0215ff6c;
-    void* camera = _Z18GetField0x3b0ValueP9GameState(GameState::GetInstance());
+    void* camera = _Z27GetField0x3b0Value_020100bcP9GameState(GameState::GetInstance());
     if (camera) {
         AlchemyProjectedWidgetView* widget = state->widgets;
         for (unsigned char index = 0; index < 4; index++, widget++) {

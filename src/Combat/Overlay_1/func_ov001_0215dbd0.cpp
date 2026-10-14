@@ -27,7 +27,7 @@ extern "C" ARM int func_ov001_0215dbd0(void* self) {
     origin.b = (int)(4096.0f * func_ov017_021d6110((char*)self + 0x8));
     origin.c = (int)(4096.0f * func_ov017_021d6110((char*)self + 0x10));
 
-    Vector3fix polar = *(Vector3fix*)((char*)GetField0x3b0Value(gs) + 0x70);
+    Vector3fix polar = *(Vector3fix*)((char*)GetField0x3b0Value_020100bc(gs) + 0x70);
     Vector3fix offset;
     offset.x = 0;
     offset.y = polar.y;

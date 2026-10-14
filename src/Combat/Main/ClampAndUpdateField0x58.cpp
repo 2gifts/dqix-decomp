@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 
-void ClearFlags0x14And0x58AndBytes(unsigned char* p);
-void ClearFlag0x2AndBytes(unsigned char* p);
-void ClearFlag0x4AndBytes(unsigned char* p);
+void ClearFlags0x14And0x58AndBytes_02087efc(unsigned char* p);
+void ClearFlag0x2AndBytes_02088c38(unsigned char* p);
+void ClearFlag0x4AndBytes_02088c9c(unsigned char* p);
 
 struct Obj02087e6c {
     char pad0[0x14];
@@ -28,7 +28,7 @@ ARM int ClampAndUpdateField0x58(struct Obj02087e6c* obj, int delta) {
     }
 
     if (val == 0) {
-        ClearFlags0x14And0x58AndBytes((unsigned char*)obj);
+        ClearFlags0x14And0x58AndBytes_02087efc((unsigned char*)obj);
         return 0;
     }
 
@@ -36,7 +36,7 @@ ARM int ClampAndUpdateField0x58(struct Obj02087e6c* obj, int delta) {
     obj->byte75 = 5;
     obj->byte98 = 0;
     obj->field14 |= 0x20000;
-    ClearFlag0x2AndBytes((unsigned char*)obj);
-    ClearFlag0x4AndBytes((unsigned char*)obj);
+    ClearFlag0x2AndBytes_02088c38((unsigned char*)obj);
+    ClearFlag0x4AndBytes_02088c9c((unsigned char*)obj);
     return obj->field58;
 }

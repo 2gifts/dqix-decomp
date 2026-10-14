@@ -24,7 +24,7 @@ extern "C" void func_0204b174(struct Foo0204af38* obj, void* data, SafeAllocator
 struct List0204af64;
 void ResetList0204af64(struct List0204af64* obj);
 
-void SetWord0x18ClearByte0x1f(unsigned char* obj, int value);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char* obj, int value);
 
 struct AllocTarget0204b12c;
 void AllocateAndClearBuffer0204b12c(struct AllocTarget0204b12c* obj, SafeAllocator* alloc);
@@ -54,7 +54,7 @@ struct Obj0202fa00;
 
 extern "C" void ColorEffect_ConfigureAlphaBlend(unsigned int* out, unsigned char a, unsigned char b, unsigned char c, int d);
 
-void EncodeSignFlaggedHalfword(short* out, int value);
+void EncodeSignFlaggedHalfword_020c39a0(short* out, int value);
 
 extern int data_ov020_0218d95c;
 extern int data_ov020_0218d968;
@@ -82,7 +82,7 @@ extern "C" ARM void func_ov020_0218c98c(void* self) {
     func_ov020_0218c7bc(0, 1, 1, 1, 0);
 
     ResetList0204af64((struct List0204af64*)(base + REGION(0x42c, 0x49c)));
-    SetWord0x18ClearByte0x1f((unsigned char*)(base + REGION(0x42c, 0x49c)), 0);
+    SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)(base + REGION(0x42c, 0x49c)), 0);
     ((struct SelfLayout_0218c98c*)self)->bits1_lo = 0;
     ((struct SelfLayout_0218c98c*)self)->bits1_hi = 1;
     func_0204b5b4(base + REGION(0x42c, 0x49c), 1);
@@ -94,7 +94,7 @@ extern "C" ARM void func_ov020_0218c98c(void* self) {
     func_ov020_0218cd64(0, 1, 1, 1, 0);
 
     ResetList0204af64((struct List0204af64*)(base + REGION(0x44c, 0x4bc)));
-    SetWord0x18ClearByte0x1f((unsigned char*)(base + REGION(0x44c, 0x4bc)), 0);
+    SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)(base + REGION(0x44c, 0x4bc)), 0);
     ((struct SelfLayout_0218c98c*)self)->bits2_lo = 1;
     ((struct SelfLayout_0218c98c*)self)->bits2_hi = 0;
     func_0204b5b4(base + REGION(0x44c, 0x4bc), 0);
@@ -152,6 +152,6 @@ extern "C" ARM void func_ov020_0218c98c(void* self) {
 
     *(unsigned int*)0x4000000 = (*(unsigned int*)0x4000000 & ~0x1f00) | 0x300;
     *(unsigned int*)0x4001000 = (*(unsigned int*)0x4001000 & ~0x1f00) | 0x100;
-    EncodeSignFlaggedHalfword((short*)0x400006c, 0);
-    EncodeSignFlaggedHalfword((short*)0x400106c, 0);
+    EncodeSignFlaggedHalfword_020c39a0((short*)0x400006c, 0);
+    EncodeSignFlaggedHalfword_020c39a0((short*)0x400106c, 0);
 }

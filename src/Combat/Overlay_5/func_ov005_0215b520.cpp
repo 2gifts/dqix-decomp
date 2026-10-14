@@ -16,7 +16,7 @@ struct MemberScreen {
     int member;
 };
 
-void IssueCommand0x19(int cmd);
+void IssueCommand0x19_020c51a4(int cmd);
 
 struct BackgroundResourceEntry;
 struct Obj0204b8d0 {
@@ -113,7 +113,7 @@ extern "C" ARM void func_ov005_0215b520(Scene0215b520* self) {
         void* gs = (void*)GameState::GetInstance();
         GameResources* res = func_ov017_0218b5b0();
         MemberScreen* holder = GetField1c_021a193c((int*)res->unknown_ptr_array_36fc[3]);
-        short* tbl = GetField150Ptr0x488((Field150Holder02052e14*)GetCombatantWithFlag0x100((GameState*)gs, holder->member));
+        short* tbl = GetField150Ptr0x488((Field150Holder02052e14*)GetCombatantWithFlag0x100_0200ff1c((GameState*)gs, holder->member));
         self->accum += self->step;
         if (self->accum >= 3) {
             self->accum -= 3;
@@ -141,7 +141,7 @@ extern "C" ARM void func_ov005_0215b520(Scene0215b520* self) {
                 G3_MTX_TRANS = -0x200000;
                 Matrix4x3 rot;
                 rot = RotationMatrixY(0x3244);
-                IssueCommand0x19((int)&rot);
+                IssueCommand0x19_020c51a4((int)&rot);
                 func_02047554(&self->models[k + 4], 0, 1);
                 G3_MTX_POP = 1;
                 G3_MTX_PUSH = 0;
@@ -228,7 +228,7 @@ extern "C" ARM void func_ov005_0215b520(Scene0215b520* self) {
         void* gs = (void*)GameState::GetInstance();
         GameResources* res = func_ov017_0218b5b0();
         MemberScreen* holder = GetField1c_021a193c((int*)res->unknown_ptr_array_36fc[3]);
-        short* tbl = GetField150Ptr0x488((Field150Holder02052e14*)GetCombatantWithFlag0x100((GameState*)gs, holder->member));
+        short* tbl = GetField150Ptr0x488((Field150Holder02052e14*)GetCombatantWithFlag0x100_0200ff1c((GameState*)gs, holder->member));
         self->accum += self->step;
         if (self->accum >= 3) {
             self->accum -= 3;
@@ -256,7 +256,7 @@ extern "C" ARM void func_ov005_0215b520(Scene0215b520* self) {
                 G3_MTX_TRANS = -0x200000;
                 Matrix4x3 rot;
                 rot = RotationMatrixY(0x3244);
-                IssueCommand0x19((int)&rot);
+                IssueCommand0x19_020c51a4((int)&rot);
                 func_02047554(&self->models[k + 4], 0, 1);
                 G3_MTX_POP = 1;
                 G3_MTX_PUSH = 0;

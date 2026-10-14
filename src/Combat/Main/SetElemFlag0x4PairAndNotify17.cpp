@@ -2,14 +2,14 @@
 
 bool IsFieldAEqual4020ae4c8();
 extern "C" void* func_02012fe4(void);
-void SetFlagBitAndNotifyOverlay17(int param0, int param1);
+void SetFlagBitAndNotifyOverlay17_020ae4ec(int param0, int param1);
 
 struct Obj0201b600;
 struct Elem0201b600 { unsigned short key; unsigned short flags; };
 struct Elem0201b600* FindElemByKeys(Obj0201b600*, int, unsigned short);
 
 // USA: func_020ae7d4
-ARM void SetElemFlag0x4PairAndNotify17(int mode) {
+ARM void SetElemFlag0x4PairAndNotify17_020ae7d4(int mode) {
     struct Obj0201b600* obj = (struct Obj0201b600*)func_02012fe4();
     if (*(unsigned short*)obj != 0x1bbd) return;
 
@@ -26,5 +26,5 @@ ARM void SetElemFlag0x4PairAndNotify17(int mode) {
             elem2->flags &= ~0x4;
         }
     }
-    SetFlagBitAndNotifyOverlay17(9, mode != 0 ? 1 : 0);
+    SetFlagBitAndNotifyOverlay17_020ae4ec(9, mode != 0 ? 1 : 0);
 }

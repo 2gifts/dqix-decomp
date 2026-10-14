@@ -9,7 +9,7 @@ struct Combatant_2088644 {
 };
 
 // USA: func_02088644
-ARM void ClearFlag0x2AndKind(struct Combatant_2088644* obj) {
+ARM void ClearFlag0x2AndKind_02088644(struct Combatant_2088644* obj) {
     obj->flags14 &= ~0x2;
     obj->kind = 0;
 }

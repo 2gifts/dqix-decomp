@@ -19,7 +19,7 @@ extern "C" ARM void func_ov000_02163928(char* obj) {
         counter--;
         if (counter <= 0) {
             *(signed char*)(obj + timerOffset + i) = -1;
-            GameObject* c = GetCombatantWithFlag0x100(battle, timerId);
+            GameObject* c = GetCombatantWithFlag0x100_0200ff1c(battle, timerId);
             if (c != 0) {
                 ((Object3D*)c)->MaybeSetRegularAnimation((char const*)data_ov000_021838df, 1);
             }

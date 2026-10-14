@@ -8,7 +8,7 @@ enum { kRegionValue90_8C = 0x90 };
 
 extern unsigned char data_02114e54[];
 
-void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
+void SelectCoordsByFlag0x24_02012a84(unsigned char* obj, int* out1, int* out2);
 
 struct Elem_0205d81c {
     char pad0[0xa8];
@@ -47,7 +47,7 @@ extern "C" ARM int func_ov003_0217e1e4(struct Obj0217e1e4* self) {
     if (data_02114e54[0x55] == 0) {
         goto fail;
     }
-    SelectCoordsByFlag0x24(data_02114e54, &x, &y);
+    SelectCoordsByFlag0x24_02012a84(data_02114e54, &x, &y);
     struct Elem_0205d81c* e = FindElementByC40205d81c((struct Struct_0205d81c*)self->list, 0);
     if (e == NULL) {
         goto fail;

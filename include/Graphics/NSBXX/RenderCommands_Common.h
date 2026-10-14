@@ -113,18 +113,18 @@ struct Struct_0210b678
 extern "C"
 {  
     // load the specified matrix into the current matrix (3x4).
-    void _Z16IssueCommand0x17i(const fix32_t*);
+    void _Z25IssueCommand0x17_020c5188i(const fix32_t*);
     // multiply the current matrix by the specified one (3x4), i.e carry
     // out GXFIFO operation 0x19
-    void _Z16IssueCommand0x19i(const fix32_t*);
+    void _Z25IssueCommand0x19_020c51a4i(const fix32_t*);
     // multiply by the specified 3x3 matrix (instruction 0x1a)
-    void _Z16IssueCommand0x1Ai(const fix32_t*);
+    void _Z25IssueCommand0x1A_020c51c0i(const fix32_t*);
     // try to get the clip matrix into the pointer specified (4x4 fix32_t matrix)
     // returns -1 if still waiting, 0 if done
-    int _Z24SubmitBlock0x40IfNotBusyi(void*);
+    int _Z33SubmitBlock0x40IfNotBusy_020c54fci(void*);
     // try to get the result matrix (current directional vector matrix)
     // returns -1 if still waiting, 0 if done
-    int _Z24SubmitBlock0x80IfNotBusyi(void*);
+    int _Z33SubmitBlock0x80IfNotBusy_020c552ci(void*);
     // memset via u32 values
     void func_020ca3ec(int value, void* dst, unsigned int len);
     // memcpy via u32 values

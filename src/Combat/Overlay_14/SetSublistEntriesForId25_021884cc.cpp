@@ -2,8 +2,8 @@
 
 struct StatusOwner02081164;
 
-void SetEntryHalfword0xe(void* obj, int id, int value);
-void DispatchEntryOp0x8(void* obj, int id);
+void SetEntryHalfword0xe_0208103c(void* obj, int id, int value);
+void DispatchEntryOp0x8_0208108c(void* obj, int id);
 void SetEntryFlag0x2ByShortId(struct StatusOwner02081164* obj, int id, int value);
 void SetEntryLowNibbleAndElement02080c68(void* obj, int id, int value);
 extern "C" void func_020813ec(void* obj, int key);
@@ -18,8 +18,8 @@ extern "C" ARM void func_ov014_021884cc(void* self) {
             adj = v2 - 4;
         }
     }
-    SetEntryHalfword0xe(*(void**)((char*)self + 0xc0), 0x19, adj);
-    DispatchEntryOp0x8(*(void**)((char*)self + 0xc0), 0x19);
+    SetEntryHalfword0xe_0208103c(*(void**)((char*)self + 0xc0), 0x19, adj);
+    DispatchEntryOp0x8_0208108c(*(void**)((char*)self + 0xc0), 0x19);
     SetEntryFlag0x2ByShortId(*(struct StatusOwner02081164**)((char*)self + 0xc0), 3, 1);
     SetEntryLowNibbleAndElement02080c68(*(void**)((char*)self + 0xc0), 3, 1);
     func_020813ec(*(void**)((char*)self + 0xc0), 3);

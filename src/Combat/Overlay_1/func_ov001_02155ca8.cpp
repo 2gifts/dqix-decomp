@@ -3,7 +3,7 @@
 
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c508(void* obj);
-void* GetData02153637(void);
+void* GetData02153637_020e2ff8(void);
 struct Container020e34bc;
 int GetEntryStatusForKey020e34bc(struct Container020e34bc* obj, int key);
 extern "C" void func_ov017_021bd5d0(void);
@@ -12,7 +12,7 @@ void CancelPendingAction020397cc(struct Obj020397cc* obj, int arg1);
 void Dispatch020e3428(void* a, int b);
 struct Entry020e3054;
 void ClearEntryIfCurrentArrMatches020e3468(struct Entry020e3054* list, int key);
-void StoreInFirstEmptySlot(unsigned char* base, unsigned char val);
+void StoreInFirstEmptySlot_020e3368(unsigned char* base, unsigned char val);
 struct Self02154de4;
 int ProcessAndDispatchState_02154de4(struct Self02154de4* self);
 
@@ -34,7 +34,7 @@ extern "C" ARM int func_ov001_02155ca8(struct Self02155ca8* obj) {
     void* search = func_0202ae18();
     if (obj->flag_f8 & 0x10) {
         if (func_0202c508(search) != 0) {
-            void* key = GetData02153637();
+            void* key = GetData02153637_020e2ff8();
             int status = GetEntryStatusForKey020e34bc((struct Container020e34bc*)key, 1);
             if (status == 1) {
                 func_ov017_021bd5d0();
@@ -45,7 +45,7 @@ extern "C" ARM int func_ov001_02155ca8(struct Self02155ca8* obj) {
                     return obj->field_a;
                 }
                 ClearEntryIfCurrentArrMatches020e3468((struct Entry020e3054*)key, 1);
-                StoreInFirstEmptySlot((unsigned char*)key, 1);
+                StoreInFirstEmptySlot_020e3368((unsigned char*)key, 1);
                 return obj->field_a;
             }
         }

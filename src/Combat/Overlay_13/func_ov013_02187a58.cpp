@@ -19,10 +19,10 @@ struct SkillSortEntry02187a58 {
 extern "C" SkillEntry02187a58* func_0208e934(void* list, int kind, int index);
 extern "C" SkillEntry02187a58* func_0208e97c(void* list, int id);
 int GetTableByte020dd11c(unsigned int, unsigned int);
-int GetFieldAt0x150(unsigned char*);
+int GetFieldAt0x150_02053c6c(unsigned char*);
 struct TableA68;
-void* FindEntryByKey(TableA68*, int);
-int StringLength(const char*);
+void* FindEntryByKey_02072a68(TableA68*, int);
+int StringLength_020d2ff0(const char*);
 extern "C" void __clear(void*, int);
 extern "C" void func_02050678(void*, short, short, const char*, int, unsigned char, short*, short*);
 extern "C" void func_020749ac(void*, int, int, int);
@@ -35,22 +35,22 @@ extern char data_ov013_02188e64[];
 extern "C" ARM void func_ov013_02187a58(void* self, void* canvas) {
     unsigned char* menu = (unsigned char*)self;
     if (!canvas) return;
-    GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), *(signed char*)(menu + 0x53));
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), *(signed char*)(menu + 0x53));
     if (!combatant) return;
     int palette;
-    unsigned char* stats = (unsigned char*)GetFieldAt0x150((unsigned char*)combatant);
+    unsigned char* stats = (unsigned char*)GetFieldAt0x150_02053c6c((unsigned char*)combatant);
     if (!stats) return;
     int kind = GetTableByte020dd11c(*(unsigned int*)(stats + 0x8b8) & 0xff, menu[0x54]);
     int availablePoints = (stats + kind)[0x464];
     int y = 30;
-    const char* title = (const char*)FindEntryByKey((TableA68*)(menu + 4), kind);
+    const char* title = (const char*)FindEntryByKey_02072a68((TableA68*)(menu + 4), kind);
     short width, height;
     SkillSortEntry02187a58 entries[10];
     char nameText[256];
     char pointsText[32];
     char suffix[16];
 
-    func_02050678(canvas, (short)(128 - (StringLength(title) >> 2) * 10), 12, title, 10, 15, &width, &height);
+    func_02050678(canvas, (short)(128 - (StringLength_020d2ff0(title) >> 2) * 10), 12, title, 10, 15, &width, &height);
     memset(entries, 0, sizeof(entries));
     for (unsigned char i = 0; i < 10; i++) {
         SkillSortEntry02187a58* sorted = &entries[i];
@@ -108,9 +108,9 @@ struct TableA68;
 
 ARM struct Node02187a58* FindNthNodeByKind0208e024(struct List0208e024* list, int kind, int index);
 ARM struct Node02187a58* FindNodeById0208e06c(struct List0208e06c* list, int id);
-ARM void* FindEntryByKey(struct TableA68* table, int key);
+ARM void* FindEntryByKey_02072a68(struct TableA68* table, int key);
 ARM int GetTableByte020dd11c(unsigned int a, unsigned int b);
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 void* GetGlobalField0x1c020421a0(void);
 
 extern "C" void __clear(void* buf, int n);
@@ -139,13 +139,13 @@ extern "C" ARM void func_ov013_02187a58(void* self, void* ctx) {
     }
 
     GameObject* combatant =
-        GetCombatantWithFlag0x100(GameState::GetInstance(), *(signed char*)(obj + 0x67));
+        GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), *(signed char*)(obj + 0x67));
     if (combatant == 0) {
         return;
     }
 
     int palette;
-    unsigned char* field = (unsigned char*)GetFieldAt0x150((unsigned char*)combatant);
+    unsigned char* field = (unsigned char*)GetFieldAt0x150_02053c6c((unsigned char*)combatant);
     if (field == 0) {
         return;
     }
@@ -153,7 +153,7 @@ extern "C" ARM void func_ov013_02187a58(void* self, void* ctx) {
     int kind = GetTableByte020dd11c(*(unsigned int*)(field + 0x950) & 0xff, obj[0x68]);
     int cap = (field + kind)[0x464];
     int y = 0x1e;
-    void* label = FindEntryByKey((struct TableA68*)(obj + 4), kind);
+    void* label = FindEntryByKey_02072a68((struct TableA68*)(obj + 4), kind);
 
     short outA;
     short outB;

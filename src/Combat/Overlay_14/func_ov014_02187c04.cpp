@@ -73,9 +73,9 @@ struct Obj0208203c;
 
 short FindMappedMemberId02080468(void* obj, int id);
 void ResetWithSub0208203c(Obj0208203c*);
-void CallFunc0204c804OnMatchingKey(Obj2081*, int);
+void CallFunc0204c804OnMatchingKey_0207fdcc(Obj2081*, int);
 int CheckFlagAndPointInElement_02186ff0(char*);
-bool TestFlag0SetAndFlag1Clear(unsigned short*, int);
+bool TestFlag0SetAndFlag1Clear_02012444(unsigned short*, int);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 
 extern "C" {
@@ -128,10 +128,10 @@ extern "C" ARM void func_ov014_02187c04(MonsterListScreen* self)
                 self->listStep_ = 0;
                 break;
             }
-            CallFunc0204c804OnMatchingKey((Obj2081*)self->menu_, self->group_);
+            CallFunc0204c804OnMatchingKey_0207fdcc((Obj2081*)self->menu_, self->group_);
             self->cursor_ = NULL;
         }
-        else if (CheckFlagAndPointInElement_02186ff0((char*)self) || TestFlag0SetAndFlag1Clear(data_02114e30, 0x800))
+        else if (CheckFlagAndPointInElement_02186ff0((char*)self) || TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x800))
         {
             self->listState_ = 5;
             self->listStep_ = 0;

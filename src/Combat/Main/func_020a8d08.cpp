@@ -6,9 +6,9 @@ struct FlagWord020466f4;
 struct Obj02033874;
 struct Obj020397cc;
 
-void* GetPtrField0x2a04(GameState* battleStruct);
-int GetSignedByte0x1c8(void* obj);
-void SetByteField0x253(void* obj);
+void* GetPtrField0x2a04_02010828(GameState* battleStruct);
+int GetSignedByte0x1c8_02039860(void* obj);
+void SetByteField0x253_020397c0(void* obj);
 void EnqueueEventTag35_021d2ad0(short a, int b, int c, int d, unsigned char e);
 void EnqueueEventTag36_021d2c34(unsigned char a, unsigned char b, unsigned char c);
 void* GetDataPtr02114e04_020d6c00();
@@ -40,8 +40,8 @@ extern "C" ARM void func_020a8d08(struct Obj020a8d08* obj, unsigned char index) 
     GameState* state = GameState::GetInstance();
     Combatant020a8d08* actor = (Combatant020a8d08*)state->GetPartyMemberByIndex(index);
     Object3D* other = &state->GetUnknownGameObject()->obj3D_;
-    GetPtrField0x2a04(state);
-    state->GetPartyMemberByIndex(GetSignedByte0x1c8(actor));
+    GetPtrField0x2a04_02010828(state);
+    state->GetPartyMemberByIndex(GetSignedByte0x1c8_02039860(actor));
     if ((obj->f4 & (1 << index)) == 0) {
         return;
     }
@@ -55,7 +55,7 @@ extern "C" ARM void func_020a8d08(struct Obj020a8d08* obj, unsigned char index) 
     actor->obj.position_ = t;
     if (actor->height == 0) {
         actor->f_c1 &= ~8;
-        SetByteField0x253(actor);
+        SetByteField0x253_020397c0(actor);
         obj->f5 |= (1 << index);
         if (actor->obj.unknown_4_ != other->unknown_4_) {
             actor->obj.position_ = other->position_;

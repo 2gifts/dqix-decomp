@@ -4,9 +4,9 @@
 
 extern "C" void* func_0202ae18(void);
 struct SearchStruct;
-int TestFlagBitAt0xe(struct SearchStruct* s, int idx);
-void* GetData02100044(void);
-unsigned char GetField0x397cValue(GameState* bs);
+int TestFlagBitAt0xe_0202c578(struct SearchStruct* s, int idx);
+void* GetData02100044_0202ae24(void);
+unsigned char GetField0x397cValue_020100b0(GameState* bs);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct Sub021d3f00 {
@@ -30,8 +30,8 @@ extern "C" ARM void func_ov017_021d3f00(SubBlock02038508* obj, unsigned char b, 
     if (!obj) return;
     GameState* bs = GameState::GetInstance();
     void* search = func_0202ae18();
-    if (TestFlagBitAt0xe((struct SearchStruct*)search, 0)) return;
-    void* p = GetData02100044();
+    if (TestFlagBitAt0xe_0202c578((struct SearchStruct*)search, 0)) return;
+    void* p = GetData02100044_0202ae24();
 
     struct Msg021d3f00 msg;
     struct Sub021d3f00* sub = &msg.sub;
@@ -41,6 +41,6 @@ extern "C" ARM void func_ov017_021d3f00(SubBlock02038508* obj, unsigned char b, 
     sub->nibLo = b;
     sub->nibHi = c;
     sub->fWord = obj->unknown48;
-    sub->fResult = GetField0x397cValue(bs);
+    sub->fResult = GetField0x397cValue_020100b0(bs);
     func_0205e330(p, &msg, 0);
 }

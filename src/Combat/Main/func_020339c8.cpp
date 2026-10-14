@@ -22,7 +22,7 @@ struct RoutedObject : Object3D {
     char padAC[0xb8 - 0xac]; unsigned short routeIndex_;
     char padBA[8]; unsigned char fieldC2_ : 6; unsigned char routeEnabled_ : 1;
 };
-Entry_02028bd0* GetEntryTableBase();
+Entry_02028bd0* GetEntryTableBase_02027ca4();
 Entry_02028bd0* FindInlineEntryById(Entry_02028bd0*, int);
 ListEntry_02028430* GetListEntryChecked(List_02028430*, int);
 int FindListIndexById(List_020283fc*, int);
@@ -32,7 +32,7 @@ extern "C" int func_02028524(List_02028430*, const Vector3fix&);
 // USA: func_020339c8
 extern "C" ARM void func_020339c8(RoutedObject* self) {
     if (!self->routeEnabled_) return;
-    Entry_02028bd0* table = GetEntryTableBase();
+    Entry_02028bd0* table = GetEntryTableBase_02027ca4();
     Entry_02028bd0* entry = FindInlineEntryById(table, self->GetField06());
     if (!entry || !entry->active_) return;
     ListEntry_02028430* node = GetListEntryChecked(&entry->list_, self->routeIndex_);

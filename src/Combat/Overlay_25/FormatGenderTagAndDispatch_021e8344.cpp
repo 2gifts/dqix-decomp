@@ -30,7 +30,7 @@ extern "C" ARM int func_ov025_021e8344(void* unused0, struct Param021e8344* ctx)
     GetArrayEntry_021e8a54_021e8a54((char*)data_ov025_021ef988.target);
     GameState* bs = GameState::GetInstance();
     int id = *(unsigned short*)((char*)ctx->field0x10 + 0x20);
-    GameObject* c = GetCombatantWithFlag0x100(bs, id);
+    GameObject* c = GetCombatantWithFlag0x100_0200ff1c(bs, id);
     struct Inner021e8344* c2 = *(struct Inner021e8344**)((char*)c + regionalOffset0);
     char ch = 'm';
     if (c2->flag == 1) {

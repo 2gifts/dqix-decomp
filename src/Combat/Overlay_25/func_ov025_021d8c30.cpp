@@ -170,7 +170,7 @@ struct Obj02176134;
 struct Obj02176150;
 
 extern "C" void* func_0202ae18(void);
-struct Obj0203a588* GetData02104b6c(void);
+struct Obj0203a588* GetData02104b6c_02039e70(void);
 int GetField02163524(void* obj);
 void* SearchBothTables02079e2c(char* p, int key);
 unsigned char GetByte_021dcc64_021dcc64(void* obj);
@@ -187,42 +187,42 @@ extern "C" void func_ov025_021eaf48(unsigned char* obj, int idx, int category, i
 extern "C" void func_ov025_021ea604(unsigned char* obj, int idx, int category, int entry);
 extern "C" void func_ov000_02162dc4(unsigned char* sl, GameObject* lead, GameObject* actor, unsigned int flags,
                                     int b1d, int b1e, unsigned long long mask, int zero);
-void ClearSubstructFlag0x4(unsigned char* obj);
+void ClearSubstructFlag0x4_02049ae4(unsigned char* obj);
 void SetPosAndFields0216f1e4(void* obj, int* srcVec3, int a, int b);
-void StoreFields0x1e4And0x1e8IfNonZero(unsigned char* obj, int a, int b);
-void SetShortTriple0x6e44(void* obj, unsigned short a, unsigned short b, unsigned short c);
+void StoreFields0x1e4And0x1e8IfNonZero_0202ea10(unsigned char* obj, int a, int b);
+void SetShortTriple0x6e44_ov000_02163440(void* obj, unsigned short a, unsigned short b, unsigned short c);
 void Forward0205ec20(void* obj, void* target, int arg);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
-GameObject* GetCombatantWithFlag0x400(GameState* battleStruct, int combatantId);
+GameObject* GetCombatantWithFlag0x400_0200fea4(GameState* battleStruct, int combatantId);
 extern "C" int func_ov025_021ed444(char* obj, int id, int val2, int type, int val3, short val4, unsigned short val5);
 extern "C" int func_ov025_021ed380(char* obj, int id, int val2, int type, int val3, short val4, unsigned short val5);
 extern "C" void* func_02057924(void);
 void InitStruct02078484(struct InitStruct02078484Struct* p);
 extern "C" void _ZN8Vector3iaSERKS_(Vector3fix* dst, const Vector3fix& src);
 void FindNodeAndProcess02057fb4(void* list, int id, int a3);
-int TestBit0At0x2f4(unsigned char* obj);
-int TestBit1At0x2f4(unsigned char* obj);
+int TestBit0At0x2f4_02085078(unsigned char* obj);
+int TestBit1At0x2f4_020850a4(unsigned char* obj);
 extern "C" int func_ov000_0215fd90(void* entry, int effect);
-void SetFields0xbaAnd0xbc(struct ShortPair0xba0xbc* obj, short a, short b);
-void* GetActiveCombatWork(void);
+void SetFields0xbaAnd0xbc_02032fd0(struct ShortPair0xba0xbc* obj, short a, short b);
+void* GetActiveCombatWork_ov000_02160130(void);
 void* GetOffsetPtr02160f08(void* obj);
 void* FindEntryById_021dafd0(char* obj, int id);
 extern "C" void func_ov000_0217616c(void* p);
-void SetSubstructWord0x68(unsigned char* obj, int value);
+void SetSubstructWord0x68_0204a00c(unsigned char* obj, int value);
 extern "C" void _Z23QueuePopupEntry0203a48cP11Obj0203a48ctP15Vec3Int0203a48chii(
     struct Obj0203a48c* obj, int id, Vector3fix* pos, int style, int field4, int field2);
-void SetSubstructByte0x56(unsigned char* obj);
+void SetSubstructByte0x56_02049f28(unsigned char* obj);
 void CopyObjectFields02048588(unsigned char* self, unsigned char* dst);
 void AllocateSlotAndConfigureField02166784(struct Struct5e00* obj1, unsigned char* obj2, unsigned char* obj3);
 extern "C" void func_ov000_021677fc(void* p);
 int SetByte0xbeShiftPrev(struct Bytes02033b88* p, int val);
-int GetSubstructByte0x56(unsigned char* obj);
+int GetSubstructByte0x56_02049ee8(unsigned char* obj);
 void ResetCombatantSlot020d7334(unsigned char* base, int index);
-void ClearSubstructByte0x56(unsigned char* obj);
+void ClearSubstructByte0x56_02049f3c(unsigned char* obj);
 void ClearBitIfValueFound02167434(unsigned char* obj, int value);
 extern "C" void func_ov017_02191aac(char* obj, int mode, int idx, unsigned char mask);
 extern "C" void func_02054028(void* obj, int n);
-int GetWord0x0(int* obj);
+int GetWord0x0_0200fb8c(int* obj);
 void SetMainBrightness(GameResources* resources, int brightness, int duration);
 void DispatchIfField0xc4NonNeg_0205ebfc(void* obj, int a, int b);
 extern "C" void func_ov000_021823dc(unsigned char* obj, int val);
@@ -231,7 +231,7 @@ extern "C" void* __clear(void* dst, int count);
 void SetShortField0xC02176134(struct Obj02176134* obj, short val);
 void SetShortField0xE02176150(struct Obj02176150* obj, short val);
 void SetByteField37_0216ff20(char* obj, unsigned char val);
-int GetField0x3acValue(GameState* battleStruct);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 extern "C" void func_ov017_021c9d2c(int a0, int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8);
 
 extern struct Obj0205eaa0 data_02108760;
@@ -328,10 +328,10 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
     battle = GameState::GetInstance();
     ov17 = (char*)func_ov017_0218b5b0();
     func_0202ae18();
-    camera = (unsigned char*)GetField0x3b0Value(battle);
-    popups = (struct Obj0203a48c*)GetData02104b6c();
+    camera = (unsigned char*)GetField0x3b0Value_020100bc(battle);
+    popups = (struct Obj0203a48c*)GetData02104b6c_02039e70();
     slotBase = GetField02163524(sl);
-    entry = (struct TableEntry_021d8c30*)SearchBothTables02079e2c((char*)GetData02108e10(), *(short*)sb);
+    entry = (struct TableEntry_021d8c30*)SearchBothTables02079e2c((char*)GetData02108e10_020797dc(), *(short*)sb);
     entryIsKind2 = 0;
     if (entry != 0 && entry->kind18 == 2) {
         entryIsKind2 = 1;
@@ -465,7 +465,7 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
         func_ov000_02162dc4(sl, leadObj, actor, target->flags18, target->b1d, target->b1e, target->mask, 0);
     }
     if (actor) {
-        ClearSubstructFlag0x4((unsigned char*)actor);
+        ClearSubstructFlag0x4_02049ae4((unsigned char*)actor);
     }
 
     cleared = 0;
@@ -489,9 +489,9 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
                 pos.y = FIX32_MULTIPLY(pos.y, q);
                 pos.z = 0x7000;
                 SetPosAndFields0216f1e4(sl + CameraBase, &pos.x, 0xb33, 0);
-                StoreFields0x1e4And0x1e8IfNonZero(sl + CameraBase, 0xcc, 0x3e8);
+                StoreFields0x1e4And0x1e8IfNonZero_0202ea10(sl + CameraBase, 0xcc, 0x3e8);
                 if (kind != 2) {
-                    SetShortTriple0x6e44(sl, 0x199, 0x258, 0x32);
+                    SetShortTriple0x6e44_ov000_02163440(sl, 0x199, 0x258, 0x32);
                 }
                 if (sl[Field6fd8]) {
                     Forward0205ec20(&data_02108760, 0, 0);
@@ -504,7 +504,7 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
                 }
                 animSaved = 0;
                 if (!IsPartyMember(slotId)) {
-                    GameObject* f = GetCombatantWithFlag0x400(battle, slotId);
+                    GameObject* f = GetCombatantWithFlag0x400_0200fea4(battle, slotId);
                     if (f && f->obj3D_.unknown_2_ == 0xf4) {
                         animObj = slotObj;
                         didAnim = 1;
@@ -551,9 +551,9 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
                 if (row->codes[2] == 1 || row->codes[2] == 2) continue;
                 alt = 0;
                 if (leadNode && IsPartyIndex(leadNode->combatantId)) {
-                    GameObject* lead = GetCombatantWithFlag0x100(battle, leadNode->combatantId);
-                    if (lead && (TestBit0At0x2f4(*(unsigned char**)((unsigned char*)lead + CombatantSubobject)) ||
-                                 TestBit1At0x2f4(*(unsigned char**)((unsigned char*)lead + CombatantSubobject)))) {
+                    GameObject* lead = GetCombatantWithFlag0x100_0200ff1c(battle, leadNode->combatantId);
+                    if (lead && (TestBit0At0x2f4_02085078(*(unsigned char**)((unsigned char*)lead + CombatantSubobject)) ||
+                                 TestBit1At0x2f4_020850a4(*(unsigned char**)((unsigned char*)lead + CombatantSubobject)))) {
                         if (entry && entry->kind14 != 2) alt = 1;
                     }
                 }
@@ -587,7 +587,7 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
                     didAnim = 1;
                     soundId = 0x23;
                 } else {
-                    GameObject* f = GetCombatantWithFlag0x400(battle, slotId);
+                    GameObject* f = GetCombatantWithFlag0x400_0200fea4(battle, slotId);
                     if (f && (f->obj3D_.unknown_2_ == 0x3c || f->obj3D_.unknown_2_ == 0x3d)) {
                         slotObj->obj3D_.MaybeSetRegularAnimation(data_ov025_021ef3e8, 0x19);
                     }
@@ -702,7 +702,7 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
                 hr = hr->next;
             }
             if (total == 0) {
-                SetFields0xbaAnd0xbc((struct ShortPair0xba0xbc*)actor, 0x800, 0x1f4);
+                SetFields0xbaAnd0xbc_02032fd0((struct ShortPair0xba0xbc*)actor, 0x800, 0x1f4);
             }
         }
         DispatchWithShortB4_0205eaa0(&data_02108760, 0x3a, 0);
@@ -727,7 +727,7 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
                     actor->obj3D_.MaybeSetRegularAnimation(data_ov025_021ef3d0, 1);
                 }
             } else {
-                SetFields0xbaAnd0xbc((struct ShortPair0xba0xbc*)actor, 0xcc, 0x12c);
+                SetFields0xbaAnd0xbc_02032fd0((struct ShortPair0xba0xbc*)actor, 0xcc, 0x12c);
             }
         }
     }
@@ -736,7 +736,7 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
         actor->obj3D_.MaybeSetRegularAnimation(data_ov025_021ef3f5, 1);
     }
 
-    work = GetActiveCombatWork();
+    work = GetActiveCombatWork_ov000_02160130();
     void* off = 0;
     void* hud = 0;
     if (work) off = GetOffsetPtr02160f08(work);
@@ -746,10 +746,10 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
         func_ov000_0217616c(hud);
     }
     if (func_ov000_0215fd90(target, 0x27)) {
-        SetSubstructWord0x68((unsigned char*)actor, (int)target);
+        SetSubstructWord0x68_0204a00c((unsigned char*)actor, (int)target);
     }
     if ((target->flags18 & 0x80000) && target->b1d == 0xa) {
-        SetSubstructWord0x68((unsigned char*)actor, (int)target);
+        SetSubstructWord0x68_0204a00c((unsigned char*)actor, (int)target);
     }
     if (func_ov000_0215fd90(target, 0x23) || func_ov000_0215fd90(target, 7)) {
         int popupId = 0;
@@ -768,7 +768,7 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
     }
 
     if (func_ov000_0215fd90(target, 3)) {
-        SetSubstructByte0x56((unsigned char*)actor);
+        SetSubstructByte0x56_02049f28((unsigned char*)actor);
         actor->obj3D_.MakeVisible();
         actor->obj3D_.SetInheritedAlpha(0x1f);
         if (actor->obj3D_.unknown_0_ & 0x100) {
@@ -793,17 +793,17 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
         SetByte0xbeShiftPrev((struct Bytes02033b88*)actor, 0);
         actor->obj3D_.SkipAnimationTransition();
     } else if (func_ov000_0215fd90(target, 0xd)) {
-        if (GetSubstructByte0x56((unsigned char*)actor)) {
+        if (GetSubstructByte0x56_02049ee8((unsigned char*)actor)) {
             SetByte0xbeShiftPrev((struct Bytes02033b88*)actor, 4);
         }
         ResetCombatantSlot020d7334((unsigned char*)slotBase, id);
-        ClearSubstructByte0x56((unsigned char*)actor);
+        ClearSubstructByte0x56_02049f3c((unsigned char*)actor);
         ClearBitIfValueFound02167434(sl, actor->obj3D_.GetTexturePaletteOffset());
         func_ov017_02191aac(ov17, 0, id, 2);
         func_ov017_02191aac(ov17, 0, id, 4);
         if (!entryIsKind2 && kind != 0) {
             LightingManager::GetInstance()->BeginFade(0x800, 0x12c);
-            SetShortTriple0x6e44(sl, 0x199, 0x258, 0x96);
+            SetShortTriple0x6e44_ov000_02163440(sl, 0x199, 0x258, 0x96);
             didAnim = 1;
             soundId = 0x1b;
             flags |= 1;
@@ -824,11 +824,11 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
             Vector3fix pos = *(Vector3fix*)(sl + CameraPosition);
             pos.z = FIX32_MULTIPLY(pos.z, 0xe66);
             SetPosAndFields0216f1e4(sl + CameraBase, &pos.x, 0xccc, 0);
-            StoreFields0x1e4And0x1e8IfNonZero(sl + CameraBase, 0xcc, 0x3e8);
+            StoreFields0x1e4And0x1e8IfNonZero_0202ea10(sl + CameraBase, 0xcc, 0x3e8);
         }
-        if (!((unsigned char*)GetField0x3b0Value(battle) == sl + CameraBase && sl[ModeByte] == 2) &&
+        if (!((unsigned char*)GetField0x3b0Value_020100bc(battle) == sl + CameraBase && sl[ModeByte] == 2) &&
             *(int*)(sl + Field4d0) == 0) {
-            SetShortTriple0x6e44(sl, 0x199, 0x2bc, 0x96);
+            SetShortTriple0x6e44_ov000_02163440(sl, 0x199, 0x2bc, 0x96);
         }
     }
 
@@ -857,7 +857,7 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
         if (func_ov000_0215fd90(target, 2)) {
             SetByte0xbeShiftPrev((struct Bytes02033b88*)actor, 4);
             ResetCombatantSlot020d7334((unsigned char*)slotBase, id);
-            ClearSubstructByte0x56((unsigned char*)actor);
+            ClearSubstructByte0x56_02049f3c((unsigned char*)actor);
             ClearBitIfValueFound02167434(sl, actor->obj3D_.GetTexturePaletteOffset());
             func_ov017_02191aac(ov17, 0, id, 2);
             func_ov017_02191aac(ov17, 0, id, 4);
@@ -865,7 +865,7 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
         } else {
             GameState* gs = GameState::GetInstance();
             if (actor->obj3D_.unknown_0_ & 0x400) {
-                GameObject* f = GetCombatantWithFlag0x400(gs, actor->obj3D_.unknown_4_);
+                GameObject* f = GetCombatantWithFlag0x400_0200fea4(gs, actor->obj3D_.unknown_4_);
                 unsigned char* info;
                 if (f && (info = *(unsigned char**)((unsigned char*)f + 0x144)) != 0) {
                     short k = *(short*)(info + 8);
@@ -879,7 +879,7 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
             }
         skipFlash:
             if (((struct Nibbles_021d8c30*)((unsigned char*)actor + 0xc1))->hi != 1 && !animSaved &&
-                GetSubstructByte0x56((unsigned char*)actor)) {
+                GetSubstructByte0x56_02049ee8((unsigned char*)actor)) {
                 actor->obj3D_.MaybeSetRegularAnimation(data_ov025_021ef3f5, 9);
             }
         }
@@ -889,7 +889,7 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
         tough = played;
         party = IsPartyMember(id);
         if (!party) {
-            GameObject* f = GetCombatantWithFlag0x400(battle, id);
+            GameObject* f = GetCombatantWithFlag0x400_0200fea4(battle, id);
             struct MonsterInfo_021d8c30* m;
             if (f && (m = *(struct MonsterInfo_021d8c30**)((unsigned char*)f + 0x148)) != 0) {
                 deadly = m->bit28;
@@ -898,11 +898,11 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
             if (deadly) {
                 if (cleared) {
                     sfx = 0x25;
-                    GameResources* res = (GameResources*)GetWord0x0((int*)battle);
+                    GameResources* res = (GameResources*)GetWord0x0_0200fb8c((int*)battle);
                     if (res) {
                         SetMainBrightness(res, 0x10, 0);
                         SetMainBrightness(res, 0, 0x1e);
-                        SetShortTriple0x6e44(sl, 0x199, 0x3e8, 0x96);
+                        SetShortTriple0x6e44_ov000_02163440(sl, 0x199, 0x3e8, 0x96);
                     }
                 } else if (sfx >= 0) {
                     sfx = 0x24;
@@ -951,10 +951,10 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
         }
         if (msg->duration) {
             if (!quiet) {
-                StoreFields0x1e4And0x1e8IfNonZero(camera, msg->strength, msg->duration);
+                StoreFields0x1e4And0x1e8IfNonZero_0202ea10(camera, msg->strength, msg->duration);
             }
         } else if (target->show) {
-            StoreFields0x1e4And0x1e8IfNonZero(camera, 0x333, 0x1f4);
+            StoreFields0x1e4And0x1e8IfNonZero_0202ea10(camera, 0x333, 0x1f4);
         }
         Vector3fix pos = actor->obj3D_.position_;
         pos.y += actor->obj3D_.GetHeight();
@@ -1116,8 +1116,8 @@ extern "C" ARM int func_ov025_021d8c30(unsigned char* sl, struct EventRow_021d8c
         }
     }
 
-    if ((*(signed char**)(sl + Field2a0))[0x2a] == GetField0x3acValue(battle) && IsPartyMember(id) &&
-        GetCombatantWithFlag0x100(battle, id)) {
+    if ((*(signed char**)(sl + Field2a0))[0x2a] == GetField0x3acValue_020100a8(battle) && IsPartyMember(id) &&
+        GetCombatantWithFlag0x100_0200ff1c(battle, id)) {
         func_ov017_021c9d2c(id, target->s0e, target->s12, target->s10, target->s14, target->flags18, 0, 0, 0);
     }
 

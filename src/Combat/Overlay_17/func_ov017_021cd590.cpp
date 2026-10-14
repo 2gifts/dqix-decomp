@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct Msg021cd590 {
@@ -13,7 +13,7 @@ struct Msg021cd590 {
 
 // USA: func_ov017_021cd590
 extern "C" ARM void func_ov017_021cd590(unsigned short id, unsigned int* list, unsigned char a2, unsigned char a3) {
-    void* p = GetData02100044();
+    void* p = GetData02100044_0202ae24();
     unsigned char buf[0x14];
     Msg021cd590* m = (Msg021cd590*)(buf + 4);
     m->field_e = a2;

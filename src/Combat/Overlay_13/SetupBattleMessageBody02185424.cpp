@@ -43,13 +43,13 @@ struct Container020e0310;
 int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 extern "C" void* __clear(void* dst, int count);
 extern "C" int func_020420e8(char* str, int id);
-int AppendXTag(char* dst, int x);
+int AppendXTag_02041a28(char* dst, int x);
 int AppendString02042058(char* dst, const char* src);
 int AppendFormatted02041fac(char* buf, int a, int b);
 int AppendFrameTag02041c08(char* dst, int a1, int a2, int a3, int a4, int a5);
-int AppendCursorTag(char* dst, int cursor);
-int AppendPaletteTag(char* dst, int palette);
-int AppendYTag(char* dst, int y);
+int AppendCursorTag_02041ea4(char* dst, int cursor);
+int AppendPaletteTag_02041e70(char* dst, int palette);
+int AppendYTag_02041a5c(char* dst, int y);
 int AppendLineTag02041cc0(char* dst, int a1);
 int AppendLineYTag02041d48(char* dst, int a1, int a2, int a3, int a4);
 extern "C" int sprintf(char* dst, const char* fmt, ...);
@@ -68,7 +68,7 @@ extern "C" ARM void func_ov013_02185424(SkillPointMenu* menu, char* out) {
 #else
     char* str = (char*)GetFieldByKey020e0434((struct Container020e0310*)menu->texts, 0x2718);
     int len = func_020420e8(str, 0);
-    AppendXTag(buf, (0xf0 - len) >> 1);
+    AppendXTag_02041a28(buf, (0xf0 - len) >> 1);
     AppendString02042058(buf, str);
     AppendFormatted02041fac(out, (int)buf, 0x10);
 
@@ -77,13 +77,13 @@ extern "C" ARM void func_ov013_02185424(SkillPointMenu* menu, char* out) {
     if (menu->windowInput == 2) {
         AppendFrameTag02041c08(out, menu->selectedSkill, 8, 3, 6, 2);
     }
-    AppendCursorTag(out, menu->selectedSkill);
+    AppendCursorTag_02041ea4(out, menu->selectedSkill);
 
     for (unsigned char id = 0; id < 5; id++) {
         if (menu->lockedSkills[id] == 0) {
-            AppendPaletteTag(out, 0xf);
+            AppendPaletteTag_02041e70(out, 0xf);
         } else {
-            AppendPaletteTag(out, 3);
+            AppendPaletteTag_02041e70(out, 3);
         }
         int key = (short)(menu->skillIds[id] + 0x64);
         int v1 = GetFieldByKey020e0434((struct Container020e0310*)menu->texts, key);
@@ -100,7 +100,7 @@ extern "C" ARM void func_ov013_02185424(SkillPointMenu* menu, char* out) {
 #if defined(jpn)
     func_020420e8(out, 0x15);
 #else
-    AppendYTag(out, 0x15);
+    AppendYTag_02041a5c(out, 0x15);
 #endif
 
 #if defined(jpn)

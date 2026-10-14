@@ -2,7 +2,7 @@
 
 struct Obj0204085c;
 struct Obj02040b2c;
-void StoreVec3AtField0x50(unsigned char* obj, int a, int b, int c);
+void StoreVec3AtField0x50_0203db34(unsigned char* obj, int a, int b, int c);
 void HandleObjEvent0204085c(struct Obj0204085c* obj, int a, int b, int c);
 void PropagateValueToActiveSlot02040b2c(struct Obj02040b2c* self, int value);
 
@@ -26,17 +26,17 @@ extern "C" ARM int func_ov001_02164320(struct DispatchEntry02164320* arr, int in
     case 5:
         t = e->target;
         if (t == NULL) return 0;
-        StoreVec3AtField0x50(t, argA, argB, argC);
+        StoreVec3AtField0x50_0203db34(t, argA, argB, argC);
         return 1;
     case 0:
         t = e->target;
         if (t == NULL) return 0;
-        StoreVec3AtField0x50(t, argA, argB, argC);
+        StoreVec3AtField0x50_0203db34(t, argA, argB, argC);
         return 1;
     case 1:
         t = e->target;
         if (t == NULL) return 0;
-        StoreVec3AtField0x50(t, argA, argB, argC);
+        StoreVec3AtField0x50_0203db34(t, argA, argB, argC);
         return 1;
     case 2:
     case 6:

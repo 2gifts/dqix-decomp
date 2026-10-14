@@ -13,7 +13,7 @@ extern signed char data_020f1977[];
 static inline int GetCountB(const InputLog* p) { return p->countB; }
 
 // USA: func_020a1f4c
-ARM void PopStack1AndTrigger(int flag) {
+ARM void PopStack1AndTrigger_020a1f4c(int flag) {
     if (GetCountB(&data_02109da4) == 0) return;
     data_02109da4.countB--;
     if (flag == 0 || GetCountB(&data_02109da4) == 0) return;

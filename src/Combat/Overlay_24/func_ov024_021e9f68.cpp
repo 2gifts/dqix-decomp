@@ -54,12 +54,12 @@ extern const struct IdList_021e9f68 data_ov024_021fe768;
 extern const struct IdList_021e9f68 data_ov024_021fe708;
 
 struct Cbt_021e9f68* GetCombatantByID(int, int);
-int IsFlag10088Set(struct S_10088* obj);
+int IsFlag10088Set_02010088(struct S_10088* obj);
 int IsCombatantFlag2Mask8192_021e6798(GameObject*);
 struct GameObject;
 int IsCombatantFlag2Mask2048_021e7ba8(GameObject*);
 void PushEntry0215ff50(void* obj, short val1, unsigned char val2);
-int AnySlotHasBit18At0x2f4(unsigned char* obj);
+int AnySlotHasBit18At0x2f4_02085474(unsigned char* obj);
 int NextRandomMax(struct Random* random, int maximum);
 extern "C" int func_ov000_02155f9c(struct Random* battle, int id, int checkSubFlag);
 extern "C" int func_ov024_021ea500(struct Ctx_021e9f68* ctx, struct Action_021e9f68* action, int id);
@@ -88,7 +88,7 @@ extern "C" ARM int func_ov024_021e9f68(struct Ctx_021e9f68* ctx, short* a, short
     if (!self) {
         return 0;
     }
-    if (IsFlag10088Set((struct S_10088*)self) || IsCombatantFlag2Mask8192_021e6798((GameObject*)self)) {
+    if (IsFlag10088Set_02010088((struct S_10088*)self) || IsCombatantFlag2Mask8192_021e6798((GameObject*)self)) {
         return 0;
     }
     gs = GameState::GetInstance();
@@ -110,8 +110,8 @@ extern "C" ARM int func_ov024_021e9f68(struct Ctx_021e9f68* ctx, short* a, short
         }
         int inRange = *b >= 0 && *b <= 3;
         if (inRange) {
-            struct Cbt_021e9f68* c = (Cbt_021e9f68*)GetCombatantWithFlag0x100(gs, *b);
-            if (c && AnySlotHasBit18At0x2f4(c->field150) && NextRandomMax(rnd, 4) == 0) {
+            struct Cbt_021e9f68* c = (Cbt_021e9f68*)GetCombatantWithFlag0x100_0200ff1c(gs, *b);
+            if (c && AnySlotHasBit18At0x2f4_02085474(c->field150) && NextRandomMax(rnd, 4) == 0) {
                 PushEntry0215ff50(queue, *a, 1);
                 *a = *b;
                 *b = saved;

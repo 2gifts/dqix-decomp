@@ -10,7 +10,7 @@ struct Entry021faed0;
 ARM void* GetEntryPtr_021fa854(char* obj, unsigned int idx);
 
 extern "C" void func_0205ac40(void* obj, void* entry);
-void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
+void SelectCoordsByFlag0x24_02012a84(unsigned char* obj, int* out1, int* out2);
 
 struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
@@ -210,7 +210,7 @@ DONE:
         if (result == 0) return;
 
         int px, py;
-        SelectCoordsByFlag0x24((unsigned char*)&data_02114e54, &px, &py);
+        SelectCoordsByFlag0x24_02012a84((unsigned char*)&data_02114e54, &px, &py);
         int ax1 = (obj->f28 >> 12) + obj->f30;
         int ay1 = (obj->f2c >> 12) + obj->f32;
         int ax2 = ax1 + obj->f34;

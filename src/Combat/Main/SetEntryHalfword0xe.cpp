@@ -11,7 +11,7 @@ struct List0207f6ac;
 extern struct Entry0208103c* FindEntryByShortId0207f6ac(struct List0207f6ac*, int);
 
 // USA: func_0208103c
-ARM void SetEntryHalfword0xe(void* obj, int id, int value) {
+ARM void SetEntryHalfword0xe_0208103c(void* obj, int id, int value) {
     struct Entry0208103c* e = FindEntryByShortId0207f6ac((struct List0207f6ac*)((char*)obj + 4), id);
     if (e != NULL) {
         e->field_e = (short)value;

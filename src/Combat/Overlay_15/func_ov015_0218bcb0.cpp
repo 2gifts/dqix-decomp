@@ -23,11 +23,11 @@ struct PartSizes
     unsigned int sizes_[11][2];
 };
 
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 ViewerSlot* FindFreeSlot021931f8(char* viewer);
 ViewerSlot* FindFreeSlot0219322c(char* viewer);
 ViewerSlot* FindFreeSlot02193260(char* viewer);
-void ClearSevenWords(Struct205563c* obj);
+void ClearSevenWords_0205563c(Struct205563c* obj);
 
 extern AllocatorUnion data_02114e20;
 extern const ObjectSizes data_ov015_02193d80;
@@ -40,13 +40,13 @@ extern "C" ARM int func_ov015_0218bcb0(void* context)
     if (self->kind_ == 0 || self->kind_ == 1)
     {
         PartSizes sizes = data_ov015_02193df0;
-        self->allocators_ = (SafeAllocator*)AllocateAligned4(&data_02114e20, 10 * sizeof(SafeAllocator));
+        self->allocators_ = (SafeAllocator*)AllocateAligned4_02012d88(&data_02114e20, 10 * sizeof(SafeAllocator));
         if (self->allocators_ == NULL)
         {
             func_ov015_0218f0c4(self);
             return 0;
         }
-        self->objects_ = (Object3D*)AllocateAligned4(&data_02114e20, 10 * sizeof(Object3D));
+        self->objects_ = (Object3D*)AllocateAligned4_02012d88(&data_02114e20, 10 * sizeof(Object3D));
         if (self->objects_ == NULL)
         {
             func_ov015_0218f0c4(self);
@@ -55,14 +55,14 @@ extern "C" ARM int func_ov015_0218bcb0(void* context)
         for (int i = 0; i < 10; i++)
         {
             self->allocators_[i].ResetAllocatorPointer();
-            void* buffer = AllocateAligned4(&data_02114e20, sizes.sizes_[i][self->kind_]);
+            void* buffer = AllocateAligned4_02012d88(&data_02114e20, sizes.sizes_[i][self->kind_]);
             if (buffer == NULL)
                 return 0;
             self->allocators_[i].CreateTypeA(buffer, sizes.sizes_[i][self->kind_]);
             self->allocators_[i].Reset();
             self->objects_[i].Initialize();
         }
-        self->parts_ = (int*)AllocateAligned4(&data_02114e20, 10 * sizeof(int));
+        self->parts_ = (int*)AllocateAligned4_02012d88(&data_02114e20, 10 * sizeof(int));
         if (self->parts_ == NULL)
         {
             func_ov015_0218f0c4(self);
@@ -87,7 +87,7 @@ extern "C" ARM int func_ov015_0218bcb0(void* context)
         }
         self->slot_->used_ = 1;
         self->bufferSize_ = sizes.sizes_[10][self->kind_];
-        self->buffer_ = AllocateAligned4(&data_02114e20, self->bufferSize_);
+        self->buffer_ = AllocateAligned4_02012d88(&data_02114e20, self->bufferSize_);
         if (self->buffer_ == NULL)
         {
             func_ov015_0218f0c4(self);
@@ -97,14 +97,14 @@ extern "C" ARM int func_ov015_0218bcb0(void* context)
     else
     {
         ObjectSizes sizes = data_ov015_02193d80;
-        self->allocators_ = (SafeAllocator*)AllocateAligned4(&data_02114e20, sizeof(SafeAllocator));
+        self->allocators_ = (SafeAllocator*)AllocateAligned4_02012d88(&data_02114e20, sizeof(SafeAllocator));
         if (self->allocators_ == NULL)
         {
             func_ov015_0218f0c4(self);
             return 0;
         }
         self->allocators_->ResetAllocatorPointer();
-        void* buffer = AllocateAligned4(&data_02114e20, sizes.sizes_[self->kind_]);
+        void* buffer = AllocateAligned4_02012d88(&data_02114e20, sizes.sizes_[self->kind_]);
         if (buffer == NULL)
             return 0;
         self->allocators_->CreateTypeA(buffer, sizes.sizes_[self->kind_]);
@@ -119,14 +119,14 @@ extern "C" ARM int func_ov015_0218bcb0(void* context)
         if (self->kind_ == 2 || self->kind_ == 3)
         {
             self->bufferSize_ = 0xc000;
-            self->buffer_ = AllocateAligned4(&data_02114e20, self->bufferSize_);
+            self->buffer_ = AllocateAligned4_02012d88(&data_02114e20, self->bufferSize_);
             if (self->buffer_ == NULL)
             {
                 func_ov015_0218f0c4(self);
                 return 0;
             }
         }
-        self->objects_ = (Object3D*)AllocateAligned4(&data_02114e20, sizeof(Object3D));
+        self->objects_ = (Object3D*)AllocateAligned4_02012d88(&data_02114e20, sizeof(Object3D));
         if (self->objects_ == NULL)
         {
             func_ov015_0218f0c4(self);
@@ -135,13 +135,13 @@ extern "C" ARM int func_ov015_0218bcb0(void* context)
         self->objects_->Initialize();
         if (self->kind_ == 4)
         {
-            self->effect_ = (Struct205563c*)AllocateAligned4(&data_02114e20, 0x1c);
+            self->effect_ = (Struct205563c*)AllocateAligned4_02012d88(&data_02114e20, 0x1c);
             if (self->effect_ == NULL)
             {
                 func_ov015_0218f0c4(self);
                 return 0;
             }
-            ClearSevenWords(self->effect_);
+            ClearSevenWords_0205563c(self->effect_);
         }
     }
     return 1;

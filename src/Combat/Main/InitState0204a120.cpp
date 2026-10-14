@@ -2,7 +2,7 @@
 
 struct Struct020A2CF0;
 void ResetState020a2cf0(struct Struct020A2CF0*);
-ARM void SetBitsInField0(unsigned int* obj, unsigned int mask);
+ARM void SetBitsInField0_0202e08c(unsigned int* obj, unsigned int mask);
 
 struct Obj0204a120 {
     char pad0[0x21c];
@@ -25,7 +25,7 @@ struct Obj0204a120 {
 // USA: func_0204a120
 ARM void InitState0204a120(struct Obj0204a120* obj) {
     ResetState020a2cf0((struct Struct020A2CF0*)obj);
-    SetBitsInField0((unsigned int*)obj, 0x10);
+    SetBitsInField0_0202e08c((unsigned int*)obj, 0x10);
     obj->field_21c = 0;
     obj->field_220 = 0;
     obj->field_224 = 0;

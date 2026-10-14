@@ -43,7 +43,7 @@ extern "C" int func_ov014_02188b18(NatEntry* entry);
 extern "C" NatEntry* func_ov014_021892d4(NatTable* table, int key, int (*getKey)(NatEntry* entry));
 extern "C" char* func_ov014_02188ba0(NatTable* table, char* pointer, char* defaultValue);
 extern "C" char* func_0205ec34();
-bool TestBitInByteArray(int, unsigned char*, int flag);
+bool TestBitInByteArray_0206dfb0(int, unsigned char*, int flag);
 extern "C" void* func_02012fe4();
 char* AllocateStringCopy020da150(SafeAllocator* allocator, const char* string);
 bool IsInRange0201b588(int zoneID);
@@ -100,7 +100,7 @@ extern "C" ARM bool func_ov014_02188d48(HabitatTable* self, SafeAllocator* alloc
             char* buffer;
 
             flags = func_0205ec34();
-            grottosKnown = TestBitInByteArray((int)flags, (unsigned char*)(flags + 0x8c), 0x79d) != false;
+            grottosKnown = TestBitInByteArray_0206dfb0((int)flags, (unsigned char*)(flags + 0x8c), 0x79d) != false;
             zoneStruct = func_02012fe4();
 
             groups = (NatGroup*)(source.entries_ + source.numEntries_);

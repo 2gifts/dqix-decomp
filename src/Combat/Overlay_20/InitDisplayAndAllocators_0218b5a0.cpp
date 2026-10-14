@@ -9,9 +9,9 @@ extern "C" void* func_0202ae18(void);
 extern "C" void func_0200f3a4(void*);
 extern "C" void MapVRAMBanksToMainBG(int v);
 void SetDispcntModeAndFlags020c391c(int mode, int flagsA, int valB);
-void SetSubBgMode(unsigned int mode);
-void Set3DClearColor(int color, int alpha, int depth, int polygonId, int fogEnable);
-unsigned char GetByte0x4(char* obj);
+void SetSubBgMode_020c3984(unsigned int mode);
+void Set3DClearColor_020c5588(int color, int alpha, int depth, int polygonId, int fogEnable);
+unsigned char GetByte0x4_0200fb9c(char* obj);
 void ComputeAndLoadMatrix020c5770(int a0, int a1, int a2, int a3, int b0, int b1, int b2, int gate, void* outBuf);
 
 struct Ov020DisplayState_0218b5a0 {
@@ -44,15 +44,15 @@ extern "C" ARM void func_ov020_0218b5a0(struct Ov020DisplayState_0218b5a0* obj) 
     *dispcnt = *dispcnt & ~0x7000000;
     *dispcnt = *dispcnt & ~0x38000000;
     SetDispcntModeAndFlags020c391c(1, 0, 1);
-    SetSubBgMode(0);
+    SetSubBgMode_020c3984(0);
 
     volatile unsigned short* bgcnt = (volatile unsigned short*)0x4000008;
     bgcnt[0] = bgcnt[0] & ~0x3;
     bgcnt[1] = (bgcnt[1] & ~0x3) | 0x1;
-    Set3DClearColor(0, 0, 0x7fff, 0x3f, 0);
+    Set3DClearColor_020c5588(0, 0, 0x7fff, 0x3f, 0);
 
-    if (GetByte0x4(battleStruct) == 6) {
-        Set3DClearColor(0, 0x1f, 0x7fff, 0, 0);
+    if (GetByte0x4_0200fb9c(battleStruct) == 6) {
+        Set3DClearColor_020c5588(0, 0x1f, 0x7fff, 0, 0);
     }
 
     ComputeAndLoadMatrix020c5770(0, 0xc0000, 0, 0x100000, -0x400000, 0x400000, 0x400000, 1, 0);

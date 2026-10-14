@@ -28,9 +28,9 @@ struct LoadState {
     unsigned char resourceKind;
 };
 
-void RunCombatFlagStateAction(void*);
-HandleStruct* FindEntryWithField8Neg1(unsigned char*);
-void ResetHandleFields(HandleStruct*);
+void RunCombatFlagStateAction_020dabd0(void*);
+HandleStruct* FindEntryWithField8Neg1_020daa20(unsigned char*);
+void ResetHandleFields_020da22c(HandleStruct*);
 
 // USA: func_020da77c
 extern "C" ARM int func_020da77c(LoadState* state, unsigned char kind, LoadRequest* req) {
@@ -43,14 +43,14 @@ extern "C" ARM int func_020da77c(LoadState* state, unsigned char kind, LoadReque
     if (!loader) return 0;
     if (state->flags & 1) return 0;
     if (state->resourceKind != 0) {
-        RunCombatFlagStateAction(state);
+        RunCombatFlagStateAction_020dabd0(state);
     }
     allocator = state->allocator;
     if (!allocator) return 0;
     allocator->Reset();
     state->flags = 0;
     state->resourceKind = kind;
-    entry = FindEntryWithField8Neg1((unsigned char*)state);
+    entry = FindEntryWithField8Neg1_020daa20((unsigned char*)state);
     if (!entry) return 0;
     entry->field0 = req->field0;
     entry->field4 = req->field4;
@@ -70,7 +70,7 @@ extern "C" ARM int func_020da77c(LoadState* state, unsigned char kind, LoadReque
         break;
     }
     if (result == -1) {
-        ResetHandleFields(entry);
+        ResetHandleFields_020da22c(entry);
         return 0;
     }
     entry->taskId = result;

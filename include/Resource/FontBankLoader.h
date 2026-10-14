@@ -24,7 +24,7 @@ struct FontBankLoader {
     unsigned char supplementalLoaded;
 };
 
-FontBankLoader* GetGlobal02109400(void);
+FontBankLoader* GetGlobal02109400_02094a00(void);
 extern "C" void func_02094ab0(FontBankLoader* loader);
 void BlankFunction02094b2c(FontBankLoader* loader, int index, const char* text, unsigned char primaryMode,
                            unsigned char supplementalMode);

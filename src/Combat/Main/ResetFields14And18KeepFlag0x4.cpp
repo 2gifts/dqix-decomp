@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_0208902c
-ARM void ResetFields14And18KeepFlag0x4(unsigned char* obj, int val) {
+ARM void ResetFields14And18KeepFlag0x4_0208902c(unsigned char* obj, int val) {
     unsigned int x = *(unsigned int*)(obj + 0x14);
     int had4 = 0;
     if (x & 0x4) {

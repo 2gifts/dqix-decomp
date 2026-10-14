@@ -3,7 +3,7 @@
 #include "GameState/GameState.h"
 
 void* GetField6b0_021b8470(void* obj);
-int GetField0x3acValue(GameState* battleStruct);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 
 struct SrcEntry021ca918 {
     char pad0[4];
@@ -29,7 +29,7 @@ extern "C" ARM void func_ov017_021ca918(int unused0, struct SrcEntry021ca918* sr
     unsigned char* obj = *(unsigned char**)((char*)state + 0x8000 + 0xe18);
     if (obj == NULL) return;
 
-    if (*(signed char*)(obj + 0x2a) == GetField0x3acValue(battleStruct)) return;
+    if (*(signed char*)(obj + 0x2a) == GetField0x3acValue_020100a8(battleStruct)) return;
     if (*(unsigned short*)(obj + 8) != src->field4) return;
 
     int idx = src->field6 - 0xc0;

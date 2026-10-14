@@ -14,7 +14,7 @@ extern int data_ov017_021d82fc;
 
 void ClearSlotsAndProcess_021a27e8(void* controller);
 
-void* GetGlobalPtr021075f4(void);
+void* GetGlobalPtr021075f4_0203cf4c(void);
 struct Struct_0203cfb4;
 void Init0203cfb4(struct Struct_0203cfb4* obj);
 
@@ -22,11 +22,11 @@ struct InitState0208f7ecStruct;
 void InitState0208f7ec(struct InitState0208f7ecStruct* s);
 
 struct PointerField32c_ffc0;
-void* GetPointerAt0x32c(struct PointerField32c_ffc0* obj);
+void* GetPointerAt0x32c_0200ffc0(struct PointerField32c_ffc0* obj);
 struct PointerField330_ffd0;
-void* GetPointerAt0x330(struct PointerField330_ffd0* obj);
+void* GetPointerAt0x330_0200ffd0(struct PointerField330_ffd0* obj);
 
-void ClearCombatantSlot(GameState* battleStruct, int id);
+void ClearCombatantSlot_0200fd48(GameState* battleStruct, int id);
 
 struct Foo0207df50;
 void CopyInternalFields0207df50(struct Foo0207df50* p);
@@ -79,20 +79,20 @@ extern "C" ARM void func_ov017_021a316c(unsigned char* obj) {
         }
     }
 
-    Init0203cfb4((struct Struct_0203cfb4*)GetGlobalPtr021075f4());
+    Init0203cfb4((struct Struct_0203cfb4*)GetGlobalPtr021075f4_0203cf4c());
     InitState0208f7ec((struct InitState0208f7ecStruct*)(globalPtr + Field2664));
 
-    if (GetPointerAt0x32c((struct PointerField32c_ffc0*)battleStruct)) {
-        ClearCombatantSlot(battleStruct, 0xc9);
+    if (GetPointerAt0x32c_0200ffc0((struct PointerField32c_ffc0*)battleStruct)) {
+        ClearCombatantSlot_0200fd48(battleStruct, 0xc9);
     }
-    if (GetPointerAt0x330((struct PointerField330_ffd0*)battleStruct)) {
-        ClearCombatantSlot(battleStruct, 0xca);
+    if (GetPointerAt0x330_0200ffd0((struct PointerField330_ffd0*)battleStruct)) {
+        ClearCombatantSlot_0200fd48(battleStruct, 0xca);
     }
 
     for (k = 1; k < 4; k++) {
         if (battleStruct->GetGameObjectByIndex(k + 0xca)) {
-            ClearCombatantSlot(battleStruct, k + 0xca);
+            ClearCombatantSlot_0200fd48(battleStruct, k + 0xca);
         }
     }
-    ClearCombatantSlot(battleStruct, 0xce);
+    ClearCombatantSlot_0200fd48(battleStruct, 0xce);
 }

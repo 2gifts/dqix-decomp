@@ -64,7 +64,7 @@ struct Scene02169658 {
     short f1be;
 };
 
-unsigned char* GetFieldAt0x150(unsigned char* obj);
+unsigned char* GetFieldAt0x150_02053c6c(unsigned char* obj);
 extern "C" Node02169658* func_ov023_021f6524(void* ctx, int value);
 Node02169658* GetNodeIfType8_02168a6c(void* a, int id);
 Node02169658* GetNodeIfType15_02168a38(void* a, int id);
@@ -85,7 +85,7 @@ extern struct Ctx02169658* data_ov004_02171030;
 
 // USA: func_ov004_02169658
 extern "C" ARM int func_ov004_02169658(struct Scene02169658* scene) {
-    unsigned char* base = GetFieldAt0x150((unsigned char*)GameState::GetInstance()->GetUnknownGameObject()) + 0x3c;
+    unsigned char* base = GetFieldAt0x150_02053c6c((unsigned char*)GameState::GetInstance()->GetUnknownGameObject()) + 0x3c;
     Node02169658* grid = func_ov023_021f6524(scene, 0x64);
     int i;
     for (i = 0; i < 8; i++) {

@@ -35,7 +35,7 @@ void DispatchWithShortB4_0205eaa0(Obj0205eaa0* sound, int effect, int unk);
 void ClearChannelAFlag0205cf10(void* window);
 void ClearFlagByte0205cf1c(Struct0205cf1c* window);
 void ResetEntryList0205d6a0(Entry_0205d6a0* window, int unk);
-int TestFlag0SetAndFlag1Clear(unsigned short* pad, int buttons);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* pad, int buttons);
 
 // USA: func_ov005_02158f80
 extern "C" ARM void func_ov005_02158f80(EquipmentMenu* self) {
@@ -82,7 +82,7 @@ extern "C" ARM void func_ov005_02158f80(EquipmentMenu* self) {
             self->menuStep_ = 0;
             return;
         }
-        if (!TestFlag0SetAndFlag1Clear(&data_02114e30, 2))
+        if (!TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 2))
             return;
         ClearChannelAFlag0205cf10(self->window_);
         ClearFlagByte0205cf1c((Struct0205cf1c*)self->window_);

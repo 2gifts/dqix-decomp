@@ -33,8 +33,8 @@ struct TextItem {
     short xOffset;
     unsigned char flags;
 };
-int IsValueEqual12(int);
-void* FindEntryByKey(TableA68*, int);
+int IsValueEqual12_02042190(int);
+void* FindEntryByKey_02072a68(TableA68*, int);
 extern "C" int func_020420e8(char*, int);
 int GetGlobalField0x1c020421a0();
 extern "C" void func_02046380(Obj02046574*);
@@ -46,9 +46,9 @@ extern "C" void func_0204f41c(TextWindow*, short, int, char*, int, int, short*, 
 extern "C" ARM void func_02081870(TextRenderer* renderer, TextWindow* window, TextItem* item) {
     int color = item->color;
     if (item->flags & 4) color = 5;
-    int font = IsValueEqual12(item->font);
+    int font = IsValueEqual12_02042190(item->font);
     if (item->flags & 8) {
-        char* text = (char*)FindEntryByKey(renderer->strings, item->stringId);
+        char* text = (char*)FindEntryByKey_02072a68(renderer->strings, item->stringId);
         if (text) {
             short width = window->width * 8;
             item->x = (short)(width - func_020420e8(text, font)) >> 1;
@@ -58,7 +58,7 @@ extern "C" ARM void func_02081870(TextRenderer* renderer, TextWindow* window, Te
     memset(renderer->buffer, 0, 0x960);
     func_02046380(formatter);
     SetIndexedName02046574(formatter, item->nameIndex, item->name);
-    void* text = FindEntryByKey(renderer->strings, item->stringId);
+    void* text = FindEntryByKey_02072a68(renderer->strings, item->stringId);
     func_02046608(formatter, item->font, text, renderer->buffer, 0x100, 0, 0);
     int firstFont = item->font;
     window->firstFont = firstFont;

@@ -2,8 +2,8 @@
 
 unsigned int DisableIRQInterrupts(void);
 unsigned int SetIRQInterruptState(int mask);
-int TryAcquireLock(void);
-void RetryHelperUntilZero(int cmd);
+int TryAcquireLock_020ce128(void);
+void RetryHelperUntilZero_020ce870(int cmd);
 extern "C" void func_020c976c(int);
 extern "C" void func_020ce234(int value, int* ptr);
 
@@ -17,7 +17,7 @@ extern "C" ARM void func_020ce39c(int* arr, int count) {
     int i;
     for (;;) {
         unsigned irq = DisableIRQInterrupts();
-        if (!TryAcquireLock()) {
+        if (!TryAcquireLock_020ce128()) {
             SetIRQInterruptState(irq);
             continue;
         }
@@ -27,7 +27,7 @@ extern "C" ARM void func_020ce39c(int* arr, int count) {
         i = 0;
         if (count > 0) {
             do {
-                RetryHelperUntilZero(arr[i]);
+                RetryHelperUntilZero_020ce870(arr[i]);
                 i++;
             } while (i < count);
         }

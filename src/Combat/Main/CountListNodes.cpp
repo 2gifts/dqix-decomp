@@ -10,7 +10,7 @@ struct CountHead {
 };
 
 // USA: func_02046c78
-ARM int CountListNodes(struct CountHead* head) {
+ARM int CountListNodes_02046c78(struct CountHead* head) {
     int count = 0;
     struct CountNode* n = head->first;
     while (n != 0) {

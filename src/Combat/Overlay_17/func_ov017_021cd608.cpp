@@ -14,9 +14,9 @@ struct Owner021cd608 {
 
 extern "C" struct Owner021cd608* func_ov017_021b8478(void* obj);
 extern "C" void* func_ov017_021b8468(void* obj);
-int GetField0x3acValue(GameState* battleStruct);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 int LoadBattleBlock020ac4c0(void* dst);
-int CopyInBattleField0x7540(void* src);
+int CopyInBattleField0x7540_020ac494(void* src);
 void CopyFourAndSetFlag02163378(void* dst, int* src, unsigned char val);
 
 struct S_a0858 {
@@ -30,8 +30,8 @@ struct S_a0300 {
     unsigned int top : 8;
 };
 
-void AddSaturateField0x48(struct S_a0858* p, unsigned int amount);
-void AddClamped24BitFieldAt0x24(struct S_a0300* p, unsigned int amount);
+void AddSaturateField0x48_020a0858(struct S_a0858* p, unsigned int amount);
+void AddClamped24BitFieldAt0x24_020a0300(struct S_a0300* p, unsigned int amount);
 
 struct BattleBlock021cd608 {
     struct S_a0858 head;
@@ -74,11 +74,11 @@ extern "C" ARM void func_ov017_021cd608(int unused0, struct Evt021cd608* evt, in
         amounts[i] = p->low[i] + (p->high[i] << 16);
     }
     if (p->apply) {
-        int idx = GetField0x3acValue(GameState::GetInstance());
+        int idx = GetField0x3acValue_020100a8(GameState::GetInstance());
         LoadBattleBlock020ac4c0(&block);
-        AddSaturateField0x48(&block.head, amounts[idx]);
-        AddClamped24BitFieldAt0x24(&block.tail, amounts[idx]);
-        CopyInBattleField0x7540(&block);
+        AddSaturateField0x48_020a0858(&block.head, amounts[idx]);
+        AddClamped24BitFieldAt0x24_020a0300(&block.tail, amounts[idx]);
+        CopyInBattleField0x7540_020ac494(&block);
     } else {
         CopyFourAndSetFlag02163378(b, amounts, p->val);
     }

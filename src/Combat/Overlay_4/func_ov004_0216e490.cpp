@@ -3,13 +3,13 @@
 
 extern "C" int func_020aaf84(void* ptr, int a, int b, int c);
 struct StateBits5ccc_1155c;
-void ClearFlag0x5cccBit0(struct StateBits5ccc_1155c* state);
+void ClearFlag0x5cccBit0_0201155c(struct StateBits5ccc_1155c* state);
 unsigned char GetField0xcc0209ca98(char* obj);
-unsigned char GetByteFieldAt0xcc(unsigned char* obj);
+unsigned char GetByteFieldAt0xcc_0205ea18(unsigned char* obj);
 void SetModeClamped0209ca70(void* obj, int val);
 struct Obj0205e9f4;
 void SetStateAndDispatch0205e9f4(struct Obj0205e9f4* obj, int state);
-int VerifyAndApplySaveBuffer(int flag);
+int VerifyAndApplySaveBuffer_020ac864(int flag);
 extern "C" void func_ov011_021848a0(void* obj, int val);
 int SendShortBufferOrReturnZero020aba5c(int flag);
 int GetGlobalField0x1c020421a0(void);
@@ -17,7 +17,7 @@ void ReinitController02043204(char* obj);
 extern "C" void func_02043124(char* obj);
 void* GetNodeIfType6_0216ae9c(void* a, int id);
 void SetOffset100Fields_021f8960(char* base, short a, unsigned short b);
-void SetByte0x4(char* obj, unsigned char value);
+void SetByte0x4_0200fb94(char* obj, unsigned char value);
 
 extern unsigned char data_ov004_02171034[];
 extern int data_02109bf4;
@@ -34,7 +34,7 @@ extern "C" ARM int func_ov004_0216e490(void* obj) {
     int res = func_020aaf84(*(void**)&data_ov004_02171034[0x10], 0, 1, 0);
 #endif
     if (res == 0) {
-        ClearFlag0x5cccBit0((struct StateBits5ccc_1155c*)bs);
+        ClearFlag0x5cccBit0_0201155c((struct StateBits5ccc_1155c*)bs);
 #if defined(jpn)
         data_ov004_02171034[3] = 1;
 #else
@@ -47,7 +47,7 @@ extern "C" ARM int func_ov004_0216e490(void* obj) {
 #else
         data_ov004_02171034[4] = v1;
 #endif
-        unsigned char v2 = GetByteFieldAt0xcc((unsigned char*)&data_02108760);
+        unsigned char v2 = GetByteFieldAt0xcc_0205ea18((unsigned char*)&data_02108760);
 #if defined(jpn)
         data_ov004_02171034[6] = v2;
 #else
@@ -55,7 +55,7 @@ extern "C" ARM int func_ov004_0216e490(void* obj) {
 #endif
         SetModeClamped0209ca70(&data_02109bf4, 3);
         SetStateAndDispatch0205e9f4((struct Obj0205e9f4*)&data_02108760, 3);
-        if (VerifyAndApplySaveBuffer(1) == 0) {
+        if (VerifyAndApplySaveBuffer_020ac864(1) == 0) {
 #if defined(jpn)
             data_ov004_02171034[3] = 1;
 #else
@@ -86,7 +86,7 @@ extern "C" ARM int func_ov004_0216e490(void* obj) {
             func_ov011_021848a0(obj, 0x1f5);
             return 0;
         } else {
-            SetByte0x4((char*)bs, 5);
+            SetByte0x4_0200fb94((char*)bs, 5);
 #if defined(jpn)
             data_ov004_02171034[0] = 0;
 #else

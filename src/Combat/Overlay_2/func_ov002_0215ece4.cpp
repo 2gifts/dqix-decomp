@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-int AppendNameTag(char* dst, int n, const char* name);
+int AppendNameTag_02041b70(char* dst, int n, const char* name);
 int AppendString02042058(char* dst, const char* src);
 void SetElementStateOrCreate0215b918(unsigned char* obj, int key, int b, int c);
 
@@ -20,7 +20,7 @@ extern "C" ARM void func_ov002_0215ece4(void* base, char* dst, int c, int produc
             void* entry = *(void**)(obj + (i << 2) + 0x2000 + 0x4a0);
             if (entry != 0) {
                 const char* name = *(const char**)entry;
-                AppendNameTag(dst, tag, name);
+                AppendNameTag_02041b70(dst, tag, name);
                 if (i != last) {
                     AppendString02042058(dst, *(char**)(buf + 0xbdc));
                 }

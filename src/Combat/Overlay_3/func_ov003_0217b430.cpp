@@ -9,14 +9,14 @@ struct Container020dedd0;
 struct Obj02179e18;
 struct Obj021dcae0;
 
-void *GetPtrField0x2a04(GameState *gs);
+void *GetPtrField0x2a04_02010828(GameState *gs);
 
 extern "C" int func_ov003_02179f34(char *obj);
 short FindMappedMemberId02080468(void *obj, int id);
 extern "C" int func_ov003_02175f20(void *obj);
 extern "C" void func_ov003_02177dd4(void *obj);
 extern "C" void func_ov003_021769ec(void *obj);
-void SetElementFlag0x40(struct Obj2081 *obj, int id, int value);
+void SetElementFlag0x40_02081ea4(struct Obj2081 *obj, int id, int value);
 void SetEntryLowNibbleAndElement02080c68(void *obj, int id, int value);
 void ResetWithSub0208203c(struct Obj0208203c *obj);
 extern "C" void func_ov003_021748c4(unsigned char *self);
@@ -40,8 +40,8 @@ unsigned short GetInnerShort_0217b200(void **obj);
 extern "C" int func_0207c7a0(void *map, int value, int key);
 unsigned int ComputeTimeRemaining_02179e18(struct Obj02179e18 *obj);
 extern "C" int func_ov003_021782a0(struct Obj2081 *obj);
-int TestFlag0SetAndFlag1Clear(unsigned short *obj, int mask);
-void CallFunc0204c804OnMatchingKey(struct Obj2081 *obj, int key);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short *obj, int mask);
+void CallFunc0204c804OnMatchingKey_0207fdcc(struct Obj2081 *obj, int key);
 extern "C" void func_ov003_02176468(unsigned char *self);
 extern "C" int func_ov003_021764f4(unsigned char *self);
 void RefillAndResetEntry_02175d78(char *obj);
@@ -58,7 +58,7 @@ static inline int ElemKind(struct Element020de650 *e) {
 // USA: func_ov003_0217b430
 extern "C" ARM void func_ov003_0217b430(unsigned char *self) {
     GameState *battle = GameState::GetInstance();
-    char *battleSum   = (char *) GetPtrField0x2a04(battle);
+    char *battleSum   = (char *) GetPtrField0x2a04_02010828(battle);
     void *elemObj     = *(void **) (self + 0x89c);
     int state         = *(unsigned char *) (self + 0x1000 + 0x3f);
 
@@ -77,7 +77,7 @@ extern "C" ARM void func_ov003_0217b430(unsigned char *self) {
         *(unsigned char *) (self + 0x1000 + 0x3c) = 1;
         func_ov003_02177dd4(self);
         func_ov003_021769ec(self);
-        SetElementFlag0x40((struct Obj2081 *) elemObj, *(short *) (self + 0xf00 + 0xfe), 0);
+        SetElementFlag0x40_02081ea4((struct Obj2081 *) elemObj, *(short *) (self + 0xf00 + 0xfe), 0);
         SetEntryLowNibbleAndElement02080c68(elemObj, *(short *) (self + 0xf00 + 0xfe), 0);
         ResetWithSub0208203c((struct Obj0208203c *) (self + 0x88c));
         *(void **) (self + 0xff8)                 = 0;
@@ -195,7 +195,7 @@ extern "C" ARM void func_ov003_0217b430(unsigned char *self) {
             func_ov003_0217726c((char *) self);
         }
         int hit = func_ov003_021782a0((struct Obj2081 *) self);
-        if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x401) != 0 || hit == 1) {
+        if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x401) != 0 || hit == 1) {
             DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
             CallFunc0204c804OnNonMatchingKey((struct Cont0207fdf0 *) elemObj, 0);
             *(short *) (self + 0x1000 + 0x36) = 0xd;
@@ -211,9 +211,9 @@ extern "C" ARM void func_ov003_0217b430(unsigned char *self) {
             *(unsigned char *) (self + 0x1000 + 0x3f) = 4;
             return;
         }
-        if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2) != 0 || hit == -1) {
-            CallFunc0204c804OnMatchingKey((struct Obj2081 *) elemObj, 9);
-            CallFunc0204c804OnMatchingKey((struct Obj2081 *) elemObj, 0xa);
+        if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 2) != 0 || hit == -1) {
+            CallFunc0204c804OnMatchingKey_0207fdcc((struct Obj2081 *) elemObj, 9);
+            CallFunc0204c804OnMatchingKey_0207fdcc((struct Obj2081 *) elemObj, 0xa);
             ResetWithSub0208203c((struct Obj0208203c *) (self + 0x88c));
             *(unsigned char *) (self + 0x1000 + 0x3f) = 0;
         }

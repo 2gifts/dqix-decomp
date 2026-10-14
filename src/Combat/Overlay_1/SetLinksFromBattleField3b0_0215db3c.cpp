@@ -11,7 +11,7 @@ struct Vec3Int_0215db3c { int a, b, c; };
 
 // USA: func_ov001_0215db3c  (semantic: SetLinksFromBattleField3b0_0215db3c)
 extern "C" ARM int func_ov001_0215db3c(void* self) {
-    int* base = (int*)GetField0x3b0Value(GameState::GetInstance());
+    int* base = (int*)GetField0x3b0Value_020100bc(GameState::GetInstance());
     if (base == NULL) return 0;
     Vec3Int_0215db3c v = *(Vec3Int_0215db3c*)((char*)base + 0x70);
     SetLinkIfType3_021d6148((Node021d6148*)self, _fdiv(_fflt(v.a), 0x45800000u));

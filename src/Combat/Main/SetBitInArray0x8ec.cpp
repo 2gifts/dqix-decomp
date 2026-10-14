@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_02083acc
-ARM void SetBitInArray0x8ec(unsigned char* obj, int index) {
+ARM void SetBitInArray0x8ec_02083acc(unsigned char* obj, int index) {
 #if defined(jpn)
     unsigned char* p = obj + 0x854;
 #else

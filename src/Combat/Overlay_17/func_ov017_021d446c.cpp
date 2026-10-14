@@ -3,7 +3,7 @@
 
 extern "C" void* func_02012fe4(void);
 struct Entry_02028bd0;
-struct Entry_02028bd0* GetEntryTableBase(void);
+struct Entry_02028bd0* GetEntryTableBase_02027ca4(void);
 struct Entry_02028bd0* FindInlineEntryById(struct Entry_02028bd0* base, int key);
 
 struct Entry_02028bd0 {
@@ -27,7 +27,7 @@ struct Out021d446c {
 extern "C" ARM int func_ov017_021d446c(Src021d446c* p0, Out021d446c* out, int p2) {
     GameState* bs = GameState::GetInstance();
     void* tbl = func_02012fe4();
-    struct Entry_02028bd0* entryBase = GetEntryTableBase();
+    struct Entry_02028bd0* entryBase = GetEntryTableBase_02027ca4();
 
     if (p0->field0 != *(unsigned short*)tbl && p2 != 1) {
         return 0;

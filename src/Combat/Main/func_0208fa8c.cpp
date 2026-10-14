@@ -13,10 +13,10 @@ struct DetailedMapFlags {
     unsigned char field260;
 };
 GameResources* func_ov017_0218b5b0();
-void* GetField0x3f8Address(GameState*);
+void* GetField0x3f8Address_0200fd0c(GameState*);
 int IsInRange0201b588(int);
 void ClearOrFillBattleRegion02027ad8(int, int);
-int CheckField0NonZero(int*);
+int CheckField0NonZero_0202b7d8(int*);
 extern "C" {
 int* func_0202ae18();
 ZoneState* func_02012fe4();
@@ -34,7 +34,7 @@ extern "C" ARM void func_0208fa8c(DetailedTreasureMapData* map) {
     GameState* game = GameState::GetInstance();
     GameResources* resources = func_ov017_0218b5b0();
     int* session = func_0202ae18();
-    current = (ZoneState*)GetField0x3f8Address(game);
+    current = (ZoneState*)GetField0x3f8Address_0200fd0c(game);
     GrottoStruct* grotto = game->GetGrottoStruct();
     int currentZone;
     void* region = resources->unknown_ptr_36d0;
@@ -55,7 +55,7 @@ extern "C" ARM void func_0208fa8c(DetailedTreasureMapData* map) {
         if (region && nextZone) ClearOrFillBattleRegion02027ad8((int)region, map->discoveryState_ == 3);
     } else if (!IsInRange0201b588(currentZone) && IsInRange0201b588(nextZone) &&
                (currentZone < 30000 || currentZone > 39999)) {
-        if (CheckField0NonZero(session) && func_0202c540(session) && !grotto->unknown_0[1])
+        if (CheckField0NonZero_0202b7d8(session) && func_0202c540(session) && !grotto->unknown_0[1])
             grotto->unknown_0[1] = 0;
         else grotto->unknown_0[1] = 1;
         if (region) ClearOrFillBattleRegion02027ad8((int)region, 0);

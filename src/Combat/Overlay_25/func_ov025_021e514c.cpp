@@ -10,10 +10,10 @@ struct Vector3i;
 struct List02160094* GetNodeAtIndex02160094(struct List02160094* list, int idx);
 struct List021600f8* GetNodeAtIndex021600f8(struct List021600f8* list, int idx);
 int DispatchByIndex021820bc(void* obj, int unused, int index, int arg);
-void* GetField0x3b0Value(GameState* gs);
-int GetField0x70(void* obj);
+void* GetField0x3b0Value_020100bc(GameState* gs);
+int GetField0x70_0202e7f0(void* obj);
 void SetVecYFromValue02033874(struct Obj02033874* obj, int arg);
-void StoreVec3AtField0x50(unsigned char* obj, int x, int y, int z);
+void StoreVec3AtField0x50_0203db34(unsigned char* obj, int x, int y, int z);
 extern "C" void* __clear(void* dst, int count);
 
 static inline fix32_t FxMul(fix32_t a, fix32_t b) {
@@ -97,9 +97,9 @@ extern "C" ARM int func_ov025_021e514c(struct Self021e514c* self, struct List021
         if (flagB) dir = 2; else dir = 1;
         break;
     case 3: {
-        void* target = GetField0x3b0Value(bs);
+        void* target = GetField0x3b0Value_020100bc(bs);
         if (target) {
-            Matrix4x3 m = RotationMatrixY(GetField0x70(target));
+            Matrix4x3 m = RotationMatrixY(GetField0x70_0202e7f0(target));
             Mat4x3_ApplyToVector(&self->vec, &m, &result);
         }
         break;
@@ -133,7 +133,7 @@ extern "C" ARM int func_ov025_021e514c(struct Self021e514c* self, struct List021
                 if (((Obj021e514c*)t)->flags & 2) {
                     SetVecYFromValue02033874((struct Obj02033874*)t, angle);
                 } else {
-                    StoreVec3AtField0x50((unsigned char*)t, 0, angle, 0);
+                    StoreVec3AtField0x50_0203db34((unsigned char*)t, 0, angle, 0);
                 }
             }
         }
@@ -159,7 +159,7 @@ extern "C" ARM int func_ov025_021e514c(struct Self021e514c* self, struct List021
         break;
     }
     case 8: {
-        int* tgt = (int*)GetField0x3b0Value(bs);
+        int* tgt = (int*)GetField0x3b0Value_020100bc(bs);
         if (!tgt) return 1;
         Case8Local021e514c L;
         *(Vector3i*)((int*)&L.b) = *(Vector3i const*)(tgt + 4);
@@ -212,7 +212,7 @@ extern "C" ARM int func_ov025_021e514c(struct Self021e514c* self, struct List021
             if (((Obj021e514c*)t)->flags & 2) {
                 SetVecYFromValue02033874((struct Obj02033874*)t, yaw);
             } else {
-                StoreVec3AtField0x50((unsigned char*)t, 0, yaw, 0);
+                StoreVec3AtField0x50_0203db34((unsigned char*)t, 0, yaw, 0);
             }
         }
     }

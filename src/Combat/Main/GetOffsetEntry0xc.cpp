@@ -6,7 +6,7 @@ extern struct Holder020bd4b8* data_02110370;
 struct OffsetTable020bd4b8 { int count; int offsets[1]; };
 
 // USA: func_020bd4b8
-ARM void* GetOffsetEntry0xc(int index) {
+ARM void* GetOffsetEntry0xc_020bd4b8(int index) {
     unsigned char* p = data_02110370->base;
     int rel = *(int*)(p + 0xc);
     p = (rel == 0) ? 0 : p + rel;

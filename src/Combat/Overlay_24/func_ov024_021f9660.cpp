@@ -43,15 +43,15 @@ struct HandlerTable021f9660 { SkillHandler021f9660 handlers[79]; };
 extern HandlerTable021f9660 data_ov024_021ffeac;
 extern unsigned int data_ov024_02200150;
 extern SkillHandler021f9660 data_020e6d5c;
-void* GetFieldAt0x150(unsigned char*);
+void* GetFieldAt0x150_02053c6c(unsigned char*);
 Skill021f9660* SearchBothTables02079e2c(char*, int);
 extern "C" int func_ov024_021f8874(Planner021f9660*, Skill021f9660*, GameObject*, int*);
 
 // USA: func_ov024_021f9660
 extern "C" ARM void func_ov024_021f9660(Planner021f9660* planner) {
     GameObject* combatant = planner->combatant;
-    GetFieldAt0x150((unsigned char*)combatant);
-    ActionDataTables* database = GetData02108e10();
+    GetFieldAt0x150_02053c6c((unsigned char*)combatant);
+    ActionDataTables* database = GetData02108e10_020797dc();
     if (!(data_ov024_02200150 & 1)) {
         SkillHandler021f9660 empty = data_020e6d5c;
         data_ov024_021ffeac.handlers[0] = empty;

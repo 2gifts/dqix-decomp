@@ -3,7 +3,7 @@
 extern "C" void func_020ca390(int val, void* dst, unsigned int nBytes);
 extern "C" int func_020ca3b8(int src, int dst, int nBytes);
 extern "C" unsigned short func_ov027_021dab38(unsigned short* data, int len);
-int IssueBattleCommandSlot24(int a0, int a1, int a2, int a3, unsigned short a4, unsigned char a5);
+int IssueBattleCommandSlot24_020d69cc(int a0, int a1, int a2, int a3, unsigned short a4, unsigned char a5);
 
 struct DispatchState021dafc0 {
     unsigned char pad0[0x1c];
@@ -68,5 +68,5 @@ extern "C" ARM int func_ov027_021dafc0(int arg0, unsigned short arg1, int arg2) 
         data_ov027_021dd940.f24 = 4;
     }
 
-    return IssueBattleCommandSlot24(0, (int)&data_ov027_021dd980, 0x70, arg0, arg1, (arg2 | 3) & 0xff);
+    return IssueBattleCommandSlot24_020d69cc(0, (int)&data_ov027_021dd980, 0x70, arg0, arg1, (arg2 | 3) & 0xff);
 }

@@ -6,9 +6,9 @@ extern "C" void func_020bbd14(void*);
 extern "C" void func_020bd368(void*, int);
 extern "C" void func_020be6c4(int);
 void ClearField0x0_020bc078(int* field);
-void SetEntryByte(int index, int value);
-void SetEntryHalfword(int index, int value);
-void SetTableEntryPointer(int index, void* value);
+void SetEntryByte_020bbf34(int index, int value);
+void SetEntryHalfword_020bbf4c(int index, int value);
+void SetTableEntryPointer_020bbf6c(int index, void* value);
 void* CallWithZeroExtra_0223e218(void* a, void* b, void* c, int d);
 extern "C" void func_ov031_02236900(void);
 
@@ -31,9 +31,9 @@ extern "C" ARM void func_ov031_0223677c(void) {
 
 	int i = 0;
 	do {
-		SetEntryByte(i, 0x7f);
-		SetEntryHalfword(i, 1);
-		SetTableEntryPointer(i, 0);
+		SetEntryByte_020bbf34(i, 0x7f);
+		SetEntryHalfword_020bbf4c(i, 1);
+		SetTableEntryPointer_020bbf6c(i, 0);
 		i++;
 	} while (i < 0x20);
 

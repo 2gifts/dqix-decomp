@@ -58,68 +58,68 @@ struct PlayerTransfer021a1284 {
 };
 struct SettingsTransfer021a1284 { char pad_0[0x56b]; unsigned char unavailable : 4; unsigned char reserved : 4; };
 struct EntryList_203dce4;
-EntryList_203dce4* GetGlobalPtr021075f4();
+EntryList_203dce4* GetGlobalPtr021075f4_0203cf4c();
 extern "C" Zone3D* func_02012fe4();
 extern "C" NodeList02058564* func_02057924();
 extern "C" int* func_0202ae18();
-GameResources* GetWord0x0(int*);
+GameResources* GetWord0x0_0200fb8c(int*);
 void* GetGlobalField0x1c020421a0();
 void CancelPendingAction020397cc(Obj020397cc*, int);
 void SetBrightness(GameResources*, int, int);
 int IsBrightnessTransitionActive(GameResources*);
-int GetByteField0x254(void*);
-int GetField0x3acValue(GameState*);
+int GetByteField0x254_02039850(void*);
+int GetField0x3acValue_020100a8(GameState*);
 void ComputeAndCall_021a1178(char*, int);
-void SetBoolFlag0x254(unsigned char*, int);
+void SetBoolFlag0x254_0203983c(unsigned char*, int);
 extern "C" void func_0204500c(void*, unsigned char*, int, int);
 void ReinitController02043204(char*);
-void SetField0x98Bit0(unsigned char*);
+void SetField0x98Bit0_0203d008(unsigned char*);
 extern "C" void func_0203e0a0(EntryList_203dce4*, unsigned short);
-void SetBitsInWord(unsigned int*, unsigned int);
+void SetBitsInWord_0203b4a0(unsigned int*, unsigned int);
 extern "C" void func_020a0cc4(unsigned int);
-void* AllocateAligned4(AllocatorUnion*, unsigned int);
+void* AllocateAligned4_02012d88(AllocatorUnion*, unsigned int);
 extern "C" void func_020a0c0c();
 void ResetOverlayAndAllocator_0219bf74();
 void CopyInternalFields0207df50(Foo0207df50*);
 extern "C" void func_ov017_0219b938(GameResources*);
 int IsIdInRange020981e4(int, int);
 extern "C" void func_ov017_021a316c(GameResources*);
-void PushInputLogA(int);
-void PushInputLogB(int);
+void PushInputLogA_020a1df8(int);
+void PushInputLogB_020a1ef0(int);
 extern "C" void func_ov023_021e2dd8(Plugin021a1284*);
 extern "C" void __clear(void*, unsigned int);
-int CopyOutRegion0x5718(char*, void*);
-GameObject* GetCombatantWithFlag0x100(GameState*, int);
+int CopyOutRegion0x5718_02011494(char*, void*);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState*, int);
 void CopyBytesToInts_021e31b0(Obj021e31b0*, unsigned char*, int);
 extern "C" int func_ov017_021959b4();
 void SetFlagt_021e338c_021e338c(char*);
 extern "C" void func_ov023_021e3030(Plugin021a1284*);
 extern "C" void func_ov017_021a18c8(TransferEvent021a1284*);
 extern "C" void func_ov017_0219b624(GameResources*);
-void ClearField0x98Bit0(unsigned char*);
+void ClearField0x98Bit0_0203d018(unsigned char*);
 void ReleaseRosterEntries0203de2c(Roster0203de2c*);
 void ProcessCombatantsIfFlagged_0218f79c(void*);
 void ProcessSlotField58_021a2840(GameResources*);
 void CleanupNodeList02058564(NodeList02058564*);
-void SetField0x1e28(void*, void*);
+void SetField0x1e28_02042b30(void*, void*);
 void RestorePairTables0207df90(char*);
 extern "C" void func_020432c4(void*);
 void BackupPairTables0207dfac(char*);
 extern "C" int func_ov017_0218f5a4(GameResources*, int, int, int, int);
-int CheckField0NonZero(int*);
-int ArrayContainsByte(ArrayContainsByteStruct*, int);
+int CheckField0NonZero_0202b7d8(int*);
+int ArrayContainsByte_02086ef0(ArrayContainsByteStruct*, int);
 extern "C" void func_ov017_021c3fb4(int, int);
 extern "C" void func_ov017_021c4418(int, int);
-void ClearBitsInWord(unsigned int*, unsigned int);
+void ClearBitsInWord_0203b4b0(unsigned int*, unsigned int);
 extern "C" void func_ov017_0219ba0c(GameResources*, int);
-int IsField0Null(void**);
-void CallFuncForEachOfFour();
+int IsField0Null_02046b08(void**);
+void CallFuncForEachOfFour_020732a8();
 extern "C" void func_ov017_0219bd1c(int, int, int, int);
-void ClearBitsInField4(unsigned int*, unsigned int);
-void SetBitsInField4(unsigned int*, unsigned int);
-unsigned char* GetFieldIfFlag4(char*);
-void ClearFlagBits(unsigned char*, int);
-void SetByteField0x253(void*);
+void ClearBitsInField4_0203b4e8(unsigned int*, unsigned int);
+void SetBitsInField4_0203b4d8(unsigned int*, unsigned int);
+unsigned char* GetFieldIfFlag4_020100f8(char*);
+void ClearFlagBits_020a28b0(unsigned char*, int);
+void SetByteField0x253_020397c0(void*);
 extern AllocatorUnion data_02114e20;
 
 // USA: func_ov017_021a1284
@@ -127,11 +127,11 @@ extern "C" ARM void func_ov017_021a1284(TransferEvent021a1284* self, void* unuse
     GameState* game = GameState::GetInstance();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     Zone3D* zone = func_02012fe4();
-    EntryList_203dce4* entries = GetGlobalPtr021075f4();
+    EntryList_203dce4* entries = GetGlobalPtr021075f4_0203cf4c();
     NodeList02058564* nodes = func_02057924();
     int* search = func_0202ae18();
     GameObject* player = game->GetUnknownGameObject();
-    GameResources* resources = GetWord0x0((int*)game);
+    GameResources* resources = GetWord0x0_0200fb8c((int*)game);
     void* global = GetGlobalField0x1c020421a0();
     CancelPendingAction020397cc((Obj020397cc*)player, 1);
     ((PlayerTransfer021a1284*)player)->field_b2 = 0;
@@ -142,23 +142,23 @@ extern "C" ARM void func_ov017_021a1284(TransferEvent021a1284* self, void* unuse
         if (!IsBrightnessTransitionActive(resources)) self->stage = 2;
     } else if (self->stage == 2) {
         if (loader->GetNumQueuedTasks() > 0) return;
-        if (GetByteField0x254(player)) {
+        if (GetByteField0x254_02039850(player)) {
             player->obj3D_.unknown_2_ = -1;
             ((PlayerTransfer021a1284*)player)->field_b0 = 0x324;
             ((PlayerTransfer021a1284*)player)->field_b4 = 0x189;
             player->obj3D_.SetHeight(0x1800);
             player->obj3D_.SetRadius(0x1000);
-            ComputeAndCall_021a1178((char*)resources, GetField0x3acValue(game));
-            SetBoolFlag0x254((unsigned char*)player, 0);
+            ComputeAndCall_021a1178((char*)resources, GetField0x3acValue_020100a8(game));
+            SetBoolFlag0x254_0203983c((unsigned char*)player, 0);
         }
         unsigned char flag = 0;
         func_0204500c(global, &flag, 0, 0xe3);
         ReinitController02043204((char*)global);
-        SetField0x98Bit0((unsigned char*)entries);
+        SetField0x98Bit0_0203d008((unsigned char*)entries);
         func_0203e0a0(entries, zone->currentZoneID_);
-        SetBitsInWord((unsigned int*)resources, 0x10);
+        SetBitsInWord_0203b4a0((unsigned int*)resources, 0x10);
         func_020a0cc4(0x17600);
-        void* buffer = AllocateAligned4(&data_02114e20, 0x17600);
+        void* buffer = AllocateAligned4_02012d88(&data_02114e20, 0x17600);
         if (!buffer) {
             func_020a0c0c();
             self->stage = 4;
@@ -181,8 +181,8 @@ extern "C" ARM void func_ov017_021a1284(TransferEvent021a1284* self, void* unuse
             current = &resources->allocator_array_38[7];
             current->Reset();
         }
-        PushInputLogA(5);
-        PushInputLogB(1);
+        PushInputLogA_020a1df8(5);
+        PushInputLogB_020a1ef0(1);
         self->plugin = (Plugin021a1284*)current->Allocate(0x648);
         self->plugin->mode = self->mode;
         self->plugin->parameter = self->parameter;
@@ -199,9 +199,9 @@ extern "C" ARM void func_ov017_021a1284(TransferEvent021a1284* self, void* unuse
             unsigned char selected[4];
             unsigned char selectedCount = 0;
             for (int i = 0; i < 4; ++i) selected[i] = 0xff;
-            int count = CopyOutRegion0x5718((char*)game, roster);
+            int count = CopyOutRegion0x5718_02011494((char*)game, roster);
             for (int i = 0; i < count; ++i) {
-                GameObject* combatant = GetCombatantWithFlag0x100(game, roster[i]);
+                GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(game, roster[i]);
                 if (!combatant) continue;
                 SettingsTransfer021a1284* settings = (SettingsTransfer021a1284*)((PlayerTransfer021a1284*)combatant)->settings;
                 int blocked;
@@ -221,41 +221,41 @@ extern "C" ARM void func_ov017_021a1284(TransferEvent021a1284* self, void* unuse
         func_ov017_021a316c(resources);
         resources->allocator_array_38[7].Reset();
         func_ov017_0219b624(resources);
-        ClearField0x98Bit0((unsigned char*)entries);
+        ClearField0x98Bit0_0203d018((unsigned char*)entries);
         ReleaseRosterEntries0203de2c((Roster0203de2c*)entries);
         ProcessCombatantsIfFlagged_0218f79c(resources);
         ProcessSlotField58_021a2840(resources);
         CleanupNodeList02058564(nodes);
-        SetField0x1e28(global, ((ResourceTransfer021a1284*)resources)->restored);
+        SetField0x1e28_02042b30(global, ((ResourceTransfer021a1284*)resources)->restored);
         CopyInternalFields0207df50((Foo0207df50*)((ResourceTransfer021a1284*)resources)->restored);
         RestorePairTables0207df90(((ResourceTransfer021a1284*)resources)->restored);
         func_020432c4(global);
         BackupPairTables0207dfac(((ResourceTransfer021a1284*)resources)->restored);
-        ArrayContainsByteStruct* party = (ArrayContainsByteStruct*)GetPtrField0x2a04(game);
+        ArrayContainsByteStruct* party = (ArrayContainsByteStruct*)GetPtrField0x2a04_02010828(game);
         for (int i = 0; i < 4; ++i) {
-            if (func_ov017_0218f5a4(resources, i, 0, 0, 0) && CheckField0NonZero(search) && ArrayContainsByte(party, i)) {
+            if (func_ov017_0218f5a4(resources, i, 0, 0, 0) && CheckField0NonZero_0202b7d8(search) && ArrayContainsByte_02086ef0(party, i)) {
                 func_ov017_021c3fb4(i, 1);
                 func_ov017_021c4418(i, -1);
             }
         }
-        ClearBitsInWord((unsigned int*)resources, 0x10);
+        ClearBitsInWord_0203b4b0((unsigned int*)resources, 0x10);
         func_ov017_0219ba0c(resources, 0);
         self->stage = 5;
     } else if (self->stage == 5) {
-        if (!IsField0Null(((ResourceTransfer021a1284*)resources)->pending)) return;
-        CallFuncForEachOfFour();
+        if (!IsField0Null_02046b08(((ResourceTransfer021a1284*)resources)->pending)) return;
+        CallFuncForEachOfFour_020732a8();
         func_ov017_0219bd1c(1, 0, 0, 0);
         if (zone->currentZoneID_ == 0x2710 || zone->currentZoneID_ == 0x2774) {
-            ClearBitsInField4((unsigned int*)resources, 0x601fe);
-            SetBitsInField4((unsigned int*)resources, 0x10004);
-        } else ClearBitsInField4((unsigned int*)resources, 0x601fe);
+            ClearBitsInField4_0203b4e8((unsigned int*)resources, 0x601fe);
+            SetBitsInField4_0203b4d8((unsigned int*)resources, 0x10004);
+        } else ClearBitsInField4_0203b4e8((unsigned int*)resources, 0x601fe);
         self->stage = 6;
     } else if (self->stage == 6) {
         if (((ZoneTransfer021a1284*)func_02012fe4())->pending) return;
-        ClearFlagBits(GetFieldIfFlag4((char*)game), 3);
+        ClearFlagBits_020a28b0(GetFieldIfFlag4_020100f8((char*)game), 3);
         self->stage = 7;
     } else if (self->stage == 7) {
-        if (self->mode == 3) SetByteField0x253(player);
+        if (self->mode == 3) SetByteField0x253_020397c0(player);
         self->inactive = 1;
     }
 }

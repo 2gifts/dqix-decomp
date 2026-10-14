@@ -34,7 +34,7 @@ extern "C" ARM int func_ov002_021538e4(void* unused, struct ThresholdConfig_0215
     if (sb != 0) {
     if (p->mode == 2) {
         GameState* bs = GameState::GetInstance();
-        GameObject* combatant = GetCombatantWithFlag0x100(bs, combatantId);
+        GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(bs, combatantId);
         if (combatant == 0) {
             return 0;
         }

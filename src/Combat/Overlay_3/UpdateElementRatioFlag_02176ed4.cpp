@@ -11,11 +11,11 @@ enum { kRegion89c = 0x89c };
 
 #include "GameState/GameState.h"
 
-void* GetPtrField0x2a04(GameState*);
+void* GetPtrField0x2a04_02010828(GameState*);
 
 struct Obj2081;
-void ClearElementFlag0x20(struct Obj2081* obj, int key);
-void SetElementFlag0x20(struct Obj2081* obj, int key);
+void ClearElementFlag0x20_02080c20(struct Obj2081* obj, int key);
+void SetElementFlag0x20_02080c04(struct Obj2081* obj, int key);
 void SetEntryLowNibbleAndElement02080c68(void* obj, int id, int value);
 
 struct Container020dedd0;
@@ -36,8 +36,8 @@ extern "C" void func_020813ec(void* obj, int key);
 // USA: func_ov003_02176ed4  (semantic: UpdateElementRatioFlag_02176ed4)
 extern "C" ARM void func_ov003_02176ed4(char* self) {
     struct Obj2081* elemObj = *(struct Obj2081**)(self + kRegion89c);
-    struct Obj02086aec* battleSum = (struct Obj02086aec*)GetPtrField0x2a04(GameState::GetInstance());
-    ClearElementFlag0x20(elemObj, 8);
+    struct Obj02086aec* battleSum = (struct Obj02086aec*)GetPtrField0x2a04_02010828(GameState::GetInstance());
+    ClearElementFlag0x20_02080c20(elemObj, 8);
     SetEntryLowNibbleAndElement02080c68(elemObj, 8, 0);
     int flag = 0;
     struct Element020de650* elem = FindElementByKey020dedd0((struct Container020dedd0*)(self + kRegion874), *(short*)(self + kRegion103a));
@@ -50,7 +50,7 @@ extern "C" ARM void func_ov003_02176ed4(char* self) {
         int sum = SumCombatantKeyMatches02086aec(battleSum, key);
         SetEntryFirstField02080fa8((struct Container02080fa8*)elemObj, 0x54, sum);
     } else {
-        SetElementFlag0x20(elemObj, 8);
+        SetElementFlag0x20_02080c04(elemObj, 8);
     }
     func_020813ec(elemObj, 8);
 }

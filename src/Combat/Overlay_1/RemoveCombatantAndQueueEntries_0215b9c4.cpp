@@ -3,7 +3,7 @@
 
 extern "C" int func_ov017_021d60f4(void*);
 extern int AbsPlus159IfNegative0215ad2c(int x);
-void ClearCombatantSlot(GameState* battleStruct, int id);
+void ClearCombatantSlot_0200fd48(GameState* battleStruct, int id);
 extern "C" void func_ov001_0215acb4(void* p);
 
 struct GlobalTable_0215b9c4 { int pad0; unsigned char* elems; };
@@ -19,7 +19,7 @@ extern "C" ARM int func_ov001_0215b9c4(void* self) {
 	GameObject* combatant = bs->GetGameObjectByIndex(id);
 	if (combatant == 0) return 0;
 	((Object3D*)((unsigned char*)combatant))->Destroy();
-	ClearCombatantSlot(bs, id);
+	ClearCombatantSlot_0200fd48(bs, id);
 	if (data_ov001_02165880.elems != 0) {
 		int i;
 		for (i = 0; i < 0x20; i++) {

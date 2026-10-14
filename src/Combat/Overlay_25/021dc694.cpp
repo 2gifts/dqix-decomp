@@ -48,7 +48,7 @@ extern "C" ARM void func_ov025_021dc694(void* arg) {
     unsigned int fileLen = 0;
     loader->GetLoadedFileByID(data_ov025_021ef404, &filePtr, &fileLen);
 
-    ActionDataTables* table = GetData02108e10();
+    ActionDataTables* table = GetData02108e10_020797dc();
     struct SearchEntry_021dc694* entry = (struct SearchEntry_021dc694*)SearchBothTables02079e2c((char*)table, *(short*)slot);
 
     if (filePtr != 0 && fileLen != 0 && entry != 0) {

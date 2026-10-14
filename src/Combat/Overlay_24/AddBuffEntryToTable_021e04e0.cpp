@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-GameObject* GetCombatantWithFlag0x400ByID(int unused, int id);
-void SetBool0x17fClear0x180(unsigned char* obj, int value);
+GameObject* GetCombatantWithFlag0x400ByID_ov000_021536f8(int unused, int id);
+void SetBool0x17fClear0x180_020488ac(unsigned char* obj, int value);
 extern "C" int func_ov024_021eb08c(void* obj, int mode, int id, int a3);
 extern "C" void func_ov000_0215a908(void* a0, int id);
 extern "C" void* func_ov000_0215e958(void* a0);
@@ -17,11 +17,11 @@ struct Obj_021e04e0 { char pad0[0xc]; void* field0xc; void* field0x10; int field
 
 // USA: func_ov024_021e04e0  (semantic: AddBuffEntryToTable_021e04e0)
 extern "C" ARM void* func_ov024_021e04e0(struct Obj_021e04e0* obj, short value, int id) {
-	GameObject* c = GetCombatantWithFlag0x400ByID((int)obj->field0x10, id);
+	GameObject* c = GetCombatantWithFlag0x400ByID_ov000_021536f8((int)obj->field0x10, id);
 	if (!c) return 0;
 	if (IsFlagBit12Field18Set_021e05e4((struct FlagObj_021e05e4*)c)) {
 		*(short*)((char*)c->currentStats_ + 0x2e) = value;
-		SetBool0x17fClear0x180((unsigned char*)c, 1);
+		SetBool0x17fClear0x180_020488ac((unsigned char*)c, 1);
 		func_ov000_0215a908(obj->field0x10, id);
 		*(unsigned char*)((char*)c + 0x182) = 1;
 		obj->field0x14++;

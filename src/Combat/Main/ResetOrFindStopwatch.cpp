@@ -13,7 +13,7 @@ struct RawEntry02027288 { char raw[0x14]; };
 extern struct RawEntry02027288 data_020fdc60[4];
 
 // USA: func_02027288
-ARM void ResetOrFindStopwatch(unsigned char* obj, int id) {
+ARM void ResetOrFindStopwatch_02027288(unsigned char* obj, int id) {
     if (id < 0) {
         int i;
         for (i = 0; i < 4; i++) {

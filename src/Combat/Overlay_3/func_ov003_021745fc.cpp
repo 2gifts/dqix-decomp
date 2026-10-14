@@ -65,7 +65,7 @@ void SetElementFlagIfValid_0217451c(char* self);
 int GetGlobalField0x1c020421a0();
 void ReinitController02043204(char* obj);
 void CallFunc0204c87cOverEntries0207fc6c(Obj0207fc6c* obj, int ticks);
-void ClearSublistEntriesFlag4(void* menu, int group);
+void ClearSublistEntriesFlag4_020804fc(void* menu, int group);
 int GetInnerFlagBit0020e28dc(Outer020e28dc* o);
 void UpdateEntryStateAndPosition(Ctx020e263c* ctx, int ticks);
 
@@ -101,7 +101,7 @@ extern "C" ARM bool func_ov003_021745fc(BattleMenu021745fc* self, int ticks) {
             self->menuEvents_ = func_020800fc(menu, self->cursor_, self->prevCursor_, self->repeatButtons_, self->unk_89a, (self->flags_ & 0x400) != 0);
             menu->cursor_ = *self->cursor_;
             if (self->menuEvents_ != 0)
-                ClearSublistEntriesFlag4(menu, self->group_);
+                ClearSublistEntriesFlag4_020804fc(menu, self->group_);
             if (self->prevCursor_ != *self->cursor_)
                 func_020813ec(menu, self->group_);
         }

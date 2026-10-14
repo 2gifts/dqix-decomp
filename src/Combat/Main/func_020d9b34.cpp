@@ -10,7 +10,7 @@
 extern const char data_020f2a18[];
 extern "C" void func_020728ac(int, int, void*, int, int, unsigned short, unsigned char);
 struct TableA68;
-void* FindEntryByKey(TableA68*, int);
+void* FindEntryByKey_02072a68(TableA68*, int);
 extern "C" void func_0204500c(void*, void*, int);
 #else
 #define REGION_VALUE(jpnValue, usaValue) usaValue
@@ -22,9 +22,9 @@ extern const char data_020f2826[];
 
 struct Struct02012dd0;
 unsigned int GetMaxAlloc02012dd0(Struct02012dd0* self);
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 void* GetDataPtr02114e04_020d6c00(void);
-void OrBitsIntoField0(unsigned int* obj, unsigned int mask);
+void OrBitsIntoField0_020466e4(unsigned int* obj, unsigned int mask);
 struct Obj020397cc;
 void CancelPendingAction020397cc(struct Obj020397cc* obj, int arg1);
 int GetGlobalField0x1c020421a0(void);
@@ -65,9 +65,9 @@ extern "C" ARM void func_020d9b34(struct Obj020d9b34* self) {
             return;
         }
         CancelPendingAction020397cc((struct Obj020397cc*)GameState::GetInstance()->GetUnknownGameObject(), 1);
-        OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 0xe);
+        OrBitsIntoField0_020466e4((unsigned int*)GetDataPtr02114e04_020d6c00(), 0xe);
         self->allocator.ResetAllocatorPointer();
-        self->allocator.CreateTypeA(AllocateAligned4(&data_02114e20, 0x400), 0x400);
+        self->allocator.CreateTypeA(AllocateAligned4_02012d88(&data_02114e20, 0x400), 0x400);
         self->allocator.Reset();
 #if defined(jpn)
         self->taskId = BackgroundLoader::GetInstance()->QueueLoadFile(data_020f2a18, NULL);
@@ -97,18 +97,18 @@ extern "C" ARM void func_020d9b34(struct Obj020d9b34* self) {
             self->state++;
         }
     } else if (self->state == 2) {
-        FontBankLoader* g = GetGlobal02109400();
+        FontBankLoader* g = GetGlobal02109400_02094a00();
         BlankFunction02094b40(g);
         func_02094ab0(g);
         BlankFunction02094b30(g, 0x207, 0);
         self->state++;
     } else if (self->state == 3) {
-        if (AlwaysTrue02094b4c(GetGlobal02109400()) == 0) return;
+        if (AlwaysTrue02094b4c(GetGlobal02109400_02094a00()) == 0) return;
         void* g = (void*)GetGlobalField0x1c020421a0();
         func_02046380(g);
         SetIndexedName02046574((struct Obj02046574*)g, 0, self->name);
 #if defined(jpn)
-        func_0204500c(g, FindEntryByKey((TableA68*)&self->container, self->field8), 0);
+        func_0204500c(g, FindEntryByKey_02072a68((TableA68*)&self->container, self->field8), 0);
 #else
         func_0204500c(g, (void*)GetFieldByKey020e0434((struct Container020e0310*)&self->container, self->field8), 0, 0xe3);
 #endif

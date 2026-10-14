@@ -7,7 +7,7 @@ struct Obj02086aec {
     unsigned char count;
 };
 
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 
 struct Slots02083994;
 int CountMatchingUntilNegative02083994(struct Slots02083994* s, int value);
@@ -31,9 +31,9 @@ ARM short SumCombatantKeyMatches02086aec(struct Obj02086aec* obj, int key) {
     acc = 0;
     bs = GameState::GetInstance();
     for (i = 0; i < obj->count; i++) {
-        c = GetCombatantWithFlag0x100(bs, obj->ids[i]);
+        c = GetCombatantWithFlag0x100_0200ff1c(bs, obj->ids[i]);
         if (c != NULL) {
-            x = (void*)GetFieldAt0x150((unsigned char*)c);
+            x = (void*)GetFieldAt0x150_02053c6c((unsigned char*)c);
             if (x != NULL) {
                 acc = acc + CountMatchingUntilNegative02083994((struct Slots02083994*)x, key);
                 if (FindEntryByShortField02083554((struct Container02083554*)x, key) != NULL) {

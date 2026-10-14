@@ -42,7 +42,7 @@ struct CombatantData021ce5b4 {
     CombatantEventRegion021ce5b4 eventRegion;
 };
 
-CombatantData021ce5b4* GetFieldAt0x150(unsigned char* obj);
+CombatantData021ce5b4* GetFieldAt0x150_02053c6c(unsigned char* obj);
 
 static inline CombatantEventRegion021ce5b4* GetEventRegion(CombatantData021ce5b4* data) {
     return &data->eventRegion;
@@ -54,10 +54,10 @@ static inline CombatantEventFields021ce5b4* GetEventFields(CombatantEventRegion0
 
 // USA: func_ov017_021ce5b4
 extern "C" ARM void* func_ov017_021ce5b4(int unused, CombatantEvent021ce5b4* event, GameState* gameState) {
-    GameObject* combatant = GetCombatantWithFlag0x100(gameState, event->combatantId);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(gameState, event->combatantId);
     if (combatant == NULL) return combatant;
 
-    CombatantData021ce5b4* data = GetFieldAt0x150((unsigned char*)combatant);
+    CombatantData021ce5b4* data = GetFieldAt0x150_02053c6c((unsigned char*)combatant);
     if (data == NULL) return data;
 
     CombatantEventFields021ce5b4* fields = GetEventFields(GetEventRegion(data));

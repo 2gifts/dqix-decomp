@@ -10,7 +10,7 @@ struct List0201e634 {
 };
 
 // USA: func_0201e634
-ARM void ZoneFeatures::AllocateOpcode6aEntries(int capacity, SafeAllocator* alloc) {
+ARM void ZoneFeatures::AllocateOpcode6aEntries_0201e634(int capacity, SafeAllocator* alloc) {
     struct List0201e634* self = (struct List0201e634*)this;
     self->buf = alloc->Allocate(capacity * 0x74);
     self->count = 0;

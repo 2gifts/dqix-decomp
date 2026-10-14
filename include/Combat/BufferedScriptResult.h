@@ -10,6 +10,6 @@ struct BufferedScriptResult {
 };
 
 int RunBufferedStream0207416c(BufferedScriptResult* result, int key, const void* bytecode, unsigned int length);
-int TryDecodeGlobalBitstreamEntry(BufferedScriptResult* result, int key);
+int TryDecodeGlobalBitstreamEntry_02074114(BufferedScriptResult* result, int key);
 
 typedef char BufferedScriptResultSizeCheck[sizeof(BufferedScriptResult) == 20 ? 1 : -1];

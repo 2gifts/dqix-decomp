@@ -26,9 +26,9 @@ extern void ResetAnimStateIfIdle_0215e3fc(struct Self0215e3fc* self);
 
 struct Struct_0205d81c;
 struct Elem_0205d81c;
-extern struct Elem_0205d81c* FindElementForFieldB0(struct Struct_0205d81c* s);
-extern int IsField0x9cEqual3(unsigned char* obj);
-extern void SetFieldAt0x30(void* obj, int value);
+extern struct Elem_0205d81c* FindElementForFieldB0_0205d8c4(struct Struct_0205d81c* s);
+extern int IsField0x9cEqual3_0204c7cc(unsigned char* obj);
+extern void SetFieldAt0x30_0205bc24(void* obj, int value);
 extern "C" int func_0205d0e0(void* p, int val);
 
 typedef void (*DispatchFn_0217fe94)(void*, int);
@@ -56,9 +56,9 @@ extern "C" ARM int func_ov003_0215c924(unsigned char* self, int amount) {
     }
 
     if (self[kRegionValue3BC_3D4] != 0) {
-        struct Elem_0205d81c* elem = FindElementForFieldB0((struct Struct_0205d81c*)(self + kRegionValue98_B0));
-        if (elem != 0 && IsField0x9cEqual3((unsigned char*)elem) != 0 && (*((unsigned char*)elem + 0xc5) & 2) == 0) {
-            SetFieldAt0x30(self + kRegionValue9C_B4, -1);
+        struct Elem_0205d81c* elem = FindElementForFieldB0_0205d8c4((struct Struct_0205d81c*)(self + kRegionValue98_B0));
+        if (elem != 0 && IsField0x9cEqual3_0204c7cc((unsigned char*)elem) != 0 && (*((unsigned char*)elem + 0xc5) & 2) == 0) {
+            SetFieldAt0x30_0205bc24(self + kRegionValue9C_B4, -1);
         }
         self[kRegionValue3BA_3D2] = (unsigned char)func_0205d0e0(self + kRegionValue98_B0, amount);
     }

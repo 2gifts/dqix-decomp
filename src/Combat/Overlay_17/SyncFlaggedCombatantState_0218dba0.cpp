@@ -14,7 +14,7 @@ extern "C" void* func_02012fe4(void);
 struct BitField0203402c;
 int CheckField0xc4Low15BitsNonZero(struct BitField0203402c* p);
 
-void* GetField0x3f8Address(GameState* battleStruct);
+void* GetField0x3f8Address_0200fd0c(GameState* battleStruct);
 
 struct HeadNode02046b24;
 int GetHeadNodeIdOrMinusOne(struct HeadNode02046b24** obj);
@@ -60,9 +60,9 @@ extern "C" ARM void func_ov017_0218dba0(int combatantId) {
     int d = (int)(t * (float)mulResult);
 
     if (combatant != 0) {
-        SubBlock02038508* base = GetFieldPtrAt0x26c(combatant);
+        SubBlock02038508* base = GetFieldPtrAt0x26c_020399a8(combatant);
         if (base->active != 0) {
-            base = GetFieldPtrAt0x26c(combatant);
+            base = GetFieldPtrAt0x26c_020399a8(combatant);
             unsigned char mode = base->command;
             if (mode == 1 || mode == 4) {
                 d = base->unknown50;
@@ -74,7 +74,7 @@ extern "C" ARM void func_ov017_0218dba0(int combatantId) {
         }
     }
 
-    if (*(short*)((char*)GetField0x3f8Address(battle) + 0x6c) == 0x270f) {
+    if (*(short*)((char*)GetField0x3f8Address_0200fd0c(battle) + 0x6c) == 0x270f) {
         if (GetHeadNodeIdOrMinusOne((struct HeadNode02046b24**)headArr) == 3) {
             d = 0;
         }

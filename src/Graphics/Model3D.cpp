@@ -19,7 +19,7 @@
 
 extern "C"
 {
-    extern "C" int _Z16GetBoxTestResultPi(int*);
+    extern "C" int _Z25GetBoxTestResult_020c56b0Pi(int*);
 }
 
 extern unsigned int (*data_020f1ee8)(unsigned int, int, int);
@@ -43,8 +43,8 @@ void Model3D::Clear()
     unknown_flags_a8_2_ = false;
     imageStagingTaskID_ = 0xffff;
     paletteStagingTaskID_ = 0xffff;
-    memset(this, 0, 0x54); // substruct
-    memset(&xMax_, 0, 6 * sizeof(fix32_t)); 
+    memset(this, 0, 0x54);
+    memset(&xMax_, 0, 6 * sizeof(fix32_t));
 }
 
 void Model3D::Func0207e2e0()
@@ -138,7 +138,7 @@ void Model3D::ProcessRawFile(TextureStagingMode stagingMode)
         block1Succeeded = true;
         block23Succeeded = true;
         block4Succeeded = true;
-        
+
         tex0 = (NSBXXTex*)NSBXX_GetTEXFile(data);
         if (tex0 != NULL)
         {
@@ -146,7 +146,7 @@ void Model3D::ProcessRawFile(TextureStagingMode stagingMode)
 
             unsigned int block1Len = NSBXX_Tex_GetBlock1Length(tex0);
             unsigned int block2Len = NSBXX_Tex_GetBlock2Length(tex0);
-            unsigned int block4Len = NSBXX_Tex_GetBlock4Length(tex0);            
+            unsigned int block4Len = NSBXX_Tex_GetBlock4Length(tex0);
 
             if (block1Len != 0)
             {
@@ -165,7 +165,7 @@ void Model3D::ProcessRawFile(TextureStagingMode stagingMode)
             }
             else
                 block2Alloc = 0;
-            
+
             if (block4Len != 0)
             {
                 block4Alloc = data_020f1ef0(block4Len, tex0->maybeBlock23Flags_20_ & 0x8000, 0);
@@ -183,7 +183,7 @@ void Model3D::ProcessRawFile(TextureStagingMode stagingMode)
                     data_020f1eec(block2Alloc);
                 if (block1Succeeded)
                     data_020f1eec(block1Alloc);
-                break; // from switch statement
+                break;
             }
             else
             {
@@ -223,14 +223,14 @@ void Model3D::ProcessRawFile(TextureStagingMode stagingMode)
     {
         NSBXXNameList* nameList = &mdl0->nameList_;
         intptr_t pModelOffset;
-        unsigned int zero = 0; // prevents compiler from optimising > 0 to != 0
+        unsigned int zero = 0;
         if (nameList != NULL && mdl0->nameList_.numEntries_ > zero)
         {
             pModelOffset = (intptr_t)nameList + mdl0->nameList_.offsetToDataStart_ + 4;
         }
         else
             pModelOffset = 0;
-        
+
         if (pModelOffset != NULL)
         {
             model = (NSBXXInternalModel*)((intptr_t)mdl0 + *(int*)pModelOffset);
@@ -241,7 +241,7 @@ void Model3D::ProcessRawFile(TextureStagingMode stagingMode)
     model = NULL;
 found_a_model:
     rawInternalModel_ = model;
-    
+
     PopulateModelRenderContext(&renderContext_, model);
     rawTEX_ = (NSBXXTex*)NSBXX_GetTEXFile((NSBXXContainer*)rawBMD_);
     if (((NSBXXContainer*)rawBMD_)->signature_ == SIGNATURE_NSBMD)
@@ -319,16 +319,9 @@ int Model3D::TestVisible()
 {
     GXFIFO_MATRIX_PUSH = 0;
     int scale = rawInternalModel_->maybeScale_;
-    // presumably 3 times for each of the components
     GXFIFO_MATRIX_SCALE = scale;
     GXFIFO_MATRIX_SCALE = scale;
     GXFIFO_MATRIX_SCALE = scale;
-    // respectively, these mean
-    // render 1-dot polygons behind DISP_1DOT_DEPTH (?)
-    // render polygons intersecting the far-plane
-    // render front surface
-    // render back surface
-    // enable light 0 (but not 1, 2 or 3)
     GXFIFO_POLYGON_ATTRIBUTES = (1 << 13) | (1 << 12) | (1 << 7) | (1 << 6) | (1 << 0);
     GXFIFO_POLYGON_BEGIN = 0;
     GXFIFO_POLYGON_END = 0;
@@ -350,14 +343,12 @@ int Model3D::TestVisible()
     boxparams.box.ySize_ = model->bounds_.ySize_;
     boxparams.box.zSize_ = model->bounds_.zSize_;
 
-    // we pass two parameters at a time here
-    // (xmin, ymin), (zmin, xsize), (ysize, zsize)
     GXFIFO_TEST_BOX = boxparams.u32s.a;
     GXFIFO_TEST_BOX = boxparams.u32s.b;
     GXFIFO_TEST_BOX = boxparams.u32s.c;
 
     int result;
-    while (_Z16GetBoxTestResultPi(&result) != 0) {}
+    while (_Z25GetBoxTestResult_020c56b0Pi(&result) != 0) {}
     GXFIFO_MATRIX_POP = 1;
     return result;
 }

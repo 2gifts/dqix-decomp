@@ -13,7 +13,7 @@ struct Foo {
 };
 
 // USA: func_020bc210
-ARM void SetActionParams(struct Foo* obj, short param1, short param2) {
+ARM void SetActionParams_020bc210(struct Foo* obj, short param1, short param2) {
     if (*(int*)obj == 0) {
         return;
     }

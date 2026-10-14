@@ -4,7 +4,7 @@ struct Callback020ce240 { unsigned char pad[0x1c]; int lock; void (*fn)(int, int
 extern struct Callback020ce240 data_021117ec;
 
 // USA: func_020ce240
-ARM void FirePendingCallback(int a) {
+ARM void FirePendingCallback_020ce240(int a) {
     void (*fn)(int, int);
     int arg;
     fn = data_021117ec.fn;

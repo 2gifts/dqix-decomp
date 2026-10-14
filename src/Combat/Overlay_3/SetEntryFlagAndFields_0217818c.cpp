@@ -5,10 +5,9 @@ enum { kRegion89c = 0x818 };
 enum { kRegion89c = 0x89c };
 #endif
 
-
 int SetEntryFlagById02080b40(void* obj, int id);
 int SetEntryFlagById02080b2c(void* obj, int id);
-void SetEntryHalfword0xe(void* obj, int id, int value);
+void SetEntryHalfword0xe_0208103c(void* obj, int id, int value);
 void SetSublistEntryField14LowBits_02080798(void* obj, int id, int value);
 
 struct Arg1_0217818c {
@@ -30,7 +29,7 @@ extern "C" ARM void func_ov003_0217818c(char* self, struct Arg1_0217818c* arg1, 
 	}
 	if (flag) {
 		SetEntryFlagById02080b40(obj89c, id);
-		SetEntryHalfword0xe(obj89c, value, 0x48);
+		SetEntryHalfword0xe_0208103c(obj89c, value, 0x48);
 #if !defined(jpn)
 #if !defined(jpn)
 		SetSublistEntryField14LowBits_02080798(obj89c, value, 1);
@@ -38,7 +37,7 @@ extern "C" ARM void func_ov003_0217818c(char* self, struct Arg1_0217818c* arg1, 
 #endif
 	} else {
 		SetEntryFlagById02080b2c(obj89c, id);
-		SetEntryHalfword0xe(obj89c, value, 0x46);
+		SetEntryHalfword0xe_0208103c(obj89c, value, 0x46);
 #if !defined(jpn)
 #if !defined(jpn)
 		SetSublistEntryField14LowBits_02080798(obj89c, value, 1);

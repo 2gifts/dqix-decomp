@@ -22,7 +22,7 @@ struct Obj_021b3444 {
 extern "C" ARM int func_ov017_021b3444(struct Obj_021b3444* obj) {
     GameState* bs = GameState::GetInstance();
     int field4 = (int)BackgroundLoader::GetInstance();
-    GameObject* combatant = GetCombatantWithFlag0x100(bs, obj->id);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(bs, obj->id);
     if (combatant != 0) {
         if (GetSubByteField56e_021b354c((Obj150_021b354c*)combatant) != 0) {
 #if defined(jpn)

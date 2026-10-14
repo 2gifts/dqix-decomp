@@ -1,11 +1,10 @@
 #include <globaldefs.h>
 void RegisterSlotA020cf0fc(int);
 
-
 struct Date02098f20 { int year; int month; int day; int pad; };
 
 // USA: func_02098f20
-ARM int CalculateAge(int birthYear, int birthMonth, int birthDay) {
+ARM int CalculateAge_02098f20(int birthYear, int birthMonth, int birthDay) {
     struct Date02098f20 now;
     int age;
     RegisterSlotA020cf0fc((int)(&now));

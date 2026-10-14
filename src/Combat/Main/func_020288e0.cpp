@@ -26,9 +26,9 @@ struct CombatantId020288e0 {
     int field15c;
 };
 
-GameObject* GetCombatantWithFlag0x200(GameState* battleStruct, int combatantId);
-int GetField0x158(void* obj);
-void ClearCombatantSlot(GameState* battleStruct, int id);
+GameObject* GetCombatantWithFlag0x200_0200fee0(GameState* battleStruct, int combatantId);
+int GetField0x158_02053ed0(void* obj);
+void ClearCombatantSlot_0200fd48(GameState* battleStruct, int id);
 void InitializeSubObjectsAndFields020289c4(BigRecord020289c4*);
 
 // USA: func_020288e0
@@ -41,9 +41,9 @@ extern "C" ARM void func_020288e0(BigRecord020289c4* records)
         if (!record->flagB) continue;
         bool found = false;
         for (int j = 0; j < 4; ++j) {
-            GameObject* combatant = GetCombatantWithFlag0x200(state, j);
+            GameObject* combatant = GetCombatantWithFlag0x200_0200fee0(state, j);
             if (combatant == NULL) continue;
-            if (!GetField0x158(combatant)) {
+            if (!GetField0x158_02053ed0(combatant)) {
                 if (((Object3D*)combatant)->GetField06() != key) continue;
             } else {
                 if (key != ((CombatantId020288e0*)combatant)->field15c) continue;
@@ -53,7 +53,7 @@ extern "C" ARM void func_020288e0(BigRecord020289c4* records)
         }
         if (found) continue;
         for (int k = 0; k < 12; ++k) {
-            ClearCombatantSlot(state, k + (i * 12 + 0x70));
+            ClearCombatantSlot_0200fd48(state, k + (i * 12 + 0x70));
         }
         InitializeSubObjectsAndFields020289c4(record);
     }

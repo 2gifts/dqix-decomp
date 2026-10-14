@@ -17,7 +17,7 @@ struct Obj_02172518;
 extern "C" void* func_0202ae18(void);
 extern "C" void func_0202b0f4(void* p);
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
-void SetSearchFlagBitAt0xc(struct SearchStruct* obj, int value);
+void SetSearchFlagBitAt0xc_0202c1e8(struct SearchStruct* obj, int value);
 extern "C" void func_0202c288(void* obj);
 void LoopCallOv017_02172518(struct Obj_02172518* obj, int flag);
 
@@ -50,8 +50,8 @@ extern "C" ARM void func_ov003_02171af0(struct Obj02171af0* obj) {
     }
 
     signed char entry = GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)ptr);
-    SetSearchFlagBitAt0xc((struct SearchStruct*)ptr, entry);
-    SetSearchFlagBitAt0xc((struct SearchStruct*)ptr, obj->field199);
+    SetSearchFlagBitAt0xc_0202c1e8((struct SearchStruct*)ptr, entry);
+    SetSearchFlagBitAt0xc_0202c1e8((struct SearchStruct*)ptr, obj->field199);
     func_0202c288(ptr);
 
 #if defined(jpn)

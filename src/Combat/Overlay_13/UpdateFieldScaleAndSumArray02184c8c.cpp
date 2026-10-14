@@ -9,13 +9,13 @@
 #endif
 #include <globaldefs.h>
 
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 
 // USA: func_ov013_02184c8c  (semantic: UpdateFieldScaleAndSumArray02184c8c)
 extern "C" ARM void func_ov013_02184c8c(unsigned char* obj, unsigned char* other) {
     if (other == 0 || *(unsigned char*)(obj + R(0x5ec,0x664)) == 0) return;
 
-    unsigned char* fieldPtr = (unsigned char*)GetFieldAt0x150(other);
+    unsigned char* fieldPtr = (unsigned char*)GetFieldAt0x150_02053c6c(other);
     *(unsigned short*)(fieldPtr + 0x564) = *(int*)(obj + R(0x5f4,0x66c));
 
     for (int i = 0; i < 5; i++) {

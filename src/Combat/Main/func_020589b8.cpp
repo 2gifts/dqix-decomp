@@ -21,11 +21,11 @@ struct Obj020589b8 {
     char pad4[8];
     unsigned short index;
 };
-void* GetField0x4Field0x1cOrNull(S02055080*);
+void* GetField0x4Field0x1cOrNull_02055138(S02055080*);
 
 // USA: func_020589b8
 extern "C" ARM void func_020589b8(Obj020589b8* self) {
-    Count020589b8* counts = (Count020589b8*)GetField0x4Field0x1cOrNull((S02055080*)self->track);
+    Count020589b8* counts = (Count020589b8*)GetField0x4Field0x1cOrNull_02055138((S02055080*)self->track);
     if (counts->count <= 1 || counts->count <= self->index) return;
     Node020589b8* previous = (Node020589b8*)self->track->entries.GetNthElement(self->index);
     if (!previous || previous->entry->time >= self->time) return;

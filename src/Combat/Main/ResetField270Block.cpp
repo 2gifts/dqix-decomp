@@ -13,7 +13,7 @@ struct S_a28e0 {
 };
 
 // USA: func_020a28e0
-ARM void ResetField270Block(struct S_a28e0* p) {
+ARM void ResetField270Block_020a28e0(struct S_a28e0* p) {
     p->field270 = -1;
     p->field274 = 0;
     p->field278 = 0;

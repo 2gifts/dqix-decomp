@@ -28,22 +28,22 @@ struct EventParams021a6648 {
 extern "C" void* func_02057924();
 unsigned int* GetDataPtr02114e04_020d6c00();
 void CancelPendingAction020397cc(Obj020397cc*, int);
-int IsField0Null(void**);
-void SetBitsInWord(unsigned int*, unsigned int);
-void OrBitsIntoField0(unsigned int*, unsigned int);
+int IsField0Null_02046b08(void**);
+void SetBitsInWord_0203b4a0(unsigned int*, unsigned int);
+void OrBitsIntoField0_020466e4(unsigned int*, unsigned int);
 extern "C" void func_020a0cc4(unsigned int);
-void* AllocateAligned4(AllocatorUnion*, unsigned int);
+void* AllocateAligned4_02012d88(AllocatorUnion*, unsigned int);
 void CopyInternalFields0207df50(Foo0207df50*);
-void BackupPairTableToBuffer(int*);
+void BackupPairTableToBuffer_020bb700(int*);
 void ReadGlobalPair020bb910(int*);
 void CleanInvalidateCacheRange(const void*, unsigned int);
 extern "C" int func_02057e6c(void*, int, SafeAllocator*, void*, unsigned int, Foo0207df50*);
 void FindNodeAndProcess02057fb4(void*, int, int);
 void SetForwardAndStore0205ebc0(void*, int, int);
 void DispatchIfField0xc4NonNeg_0205ebfc(void*, int, int);
-void SetByteField0x253(void*);
+void SetByteField0x253_020397c0(void*);
 void ForwardField0xc0_0205ebec(void*);
-void ClearBitsInWord(unsigned int*, unsigned int);
+void ClearBitsInWord_0203b4b0(unsigned int*, unsigned int);
 void ClearFlags020466f4(FlagWord020466f4*, unsigned int);
 void SetCombatModeFromCase020dc2d0(int);
 void RegisterNodeAndNotify_0219593c();
@@ -71,9 +71,9 @@ extern "C" ARM void func_ov017_021a6648(Transition021a6648* self, ListHead02046b
     if (self->state == 0) {
         leader->obj3D_.MakeHidden();
         CancelPendingAction020397cc((Obj020397cc*)leader, 1);
-        if (!IsField0Null((void**)resources->unknown_ptr_array_36fc[1])) return;
-        SetBitsInWord(&resources->brightnessFlags_0, 0x10);
-        OrBitsIntoField0(flags, 1);
+        if (!IsField0Null_02046b08((void**)resources->unknown_ptr_array_36fc[1])) return;
+        SetBitsInWord_0203b4a0(&resources->brightnessFlags_0, 0x10);
+        OrBitsIntoField0_020466e4(flags, 1);
         func_020a0cc4(0x7000);
         self->task = loader->QueueLoadFile(data_ov017_021d771c[self->kind], 0);
         self->state++;
@@ -82,12 +82,12 @@ extern "C" ARM void func_ov017_021a6648(Transition021a6648* self, ListHead02046b
         void* data;
         unsigned int length;
         loader->GetLoadedFileByID(self->task, &data, &length);
-        self->allocator.CreateTypeA(AllocateAligned4(&data_02114e20, 0x7000), 0x7000);
+        self->allocator.CreateTypeA(AllocateAligned4_02012d88(&data_02114e20, 0x7000), 0x7000);
         self->allocator.Reset();
         BattleStateTable021a6648* table = (BattleStateTable021a6648*)resources->unknown_2cc;
         Foo0207df50* fields = &table->transition;
         CopyInternalFields0207df50(fields);
-        BackupPairTableToBuffer(self->backup);
+        BackupPairTableToBuffer_020bb700(self->backup);
         ReadGlobalPair020bb910(self->pair);
         void* copy = self->allocator.Allocate(length);
         memcpy(copy, data, length);
@@ -139,9 +139,9 @@ extern "C" ARM void func_ov017_021a6648(Transition021a6648* self, ListHead02046b
     } else if (self->state == 5) {
         self->timer += game->GetTickCount();
         if (self->timer < data_ov017_021d6aaa[self->kind * 3]) return;
-        SetByteField0x253(leader);
+        SetByteField0x253_020397c0(leader);
         ForwardField0xc0_0205ebec(&data_02108760);
-        ClearBitsInWord(&resources->brightnessFlags_0, 0x10);
+        ClearBitsInWord_0203b4b0(&resources->brightnessFlags_0, 0x10);
         ClearFlags020466f4((FlagWord020466f4*)flags, 1);
         SetCombatModeFromCase020dc2d0(0);
         if (self->reset) {
@@ -150,7 +150,7 @@ extern "C" ARM void func_ov017_021a6648(Transition021a6648* self, ListHead02046b
         }
         if (!self->skipLists && ListContainsId(list, 0xa)) {
             func_02046a8c(list, resources->unknown_ptr_3718);
-            ClearBitsInWord(&resources->brightnessFlags_0, 0x800);
+            ClearBitsInWord_0203b4b0(&resources->brightnessFlags_0, 0x800);
         }
         if (!self->skipLists && ListContainsId(list, 0x40)) func_02046a8c(list, resources->unknown_ptr_array_3afc[0x27]);
         func_ov017_021a6b30(self);

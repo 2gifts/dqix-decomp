@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 #include "System/Matrix.h"
 
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct Payload021c4664 {
@@ -23,7 +23,7 @@ struct Evt021c4664 {
 // USA: func_ov017_021c4664
 extern "C" ARM void func_ov017_021c4664(int mapId, Vector3i pos, short param) {
     GameState* battleStruct = GameState::GetInstance();
-    void* data = GetData02100044();
+    void* data = GetData02100044_0202ae24();
     Evt021c4664 evt;
     Payload021c4664* p = &evt.payload;
     evt.tag = 0x36;

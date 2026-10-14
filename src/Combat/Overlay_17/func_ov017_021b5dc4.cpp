@@ -11,17 +11,16 @@ enum { RegionOffset600 = 0x600, RegionOffset2cc = 0x2cc };
 #include "Memory/SafeAllocator.h"
 #include "Memory/AllocatorUnion.h"
 
-
 struct Struct0218d618;
 int IsField10Eq2_0218d618(struct Struct0218d618* p);
 
 extern "C" void* func_02012fe4(void);
-int GetField0x3acValue(GameState* battleStruct);
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 extern AllocatorUnion data_02114e20;
 
 struct Foo02048004;
-void MaybeInvoke0204719c(struct Foo02048004* obj);
+void MaybeInvoke0204719c_02047230(struct Foo02048004* obj);
 
 struct State0207dfc8;
 void CopyState0207dfc8(struct State0207dfc8* src, struct State0207dfc8* dst);
@@ -41,15 +40,15 @@ extern "C" ARM int func_ov017_021b5dc4(char* self) {
                 void* outPtr;
                 unsigned int outSize;
                 loader->GetLoadedFileByID(*(int*)(self + 0x28), &outPtr, &outSize);
-                void* allocated = AllocateAligned4(&data_02114e20, 0x100);
+                void* allocated = AllocateAligned4_02012d88(&data_02114e20, 0x100);
                 if (outSize != 0 && allocated != 0) {
                     ((SafeAllocator*)(self + 0x40))->CreateTypeA(allocated, 0x100);
                     GameState* battle = GameState::GetInstance();
                     char* base = (char*)func_02012fe4();
-                    int idx = GetField0x3acValue(battle);
+                    int idx = GetField0x3acValue_020100a8(battle);
                     char* p = base + RegionOffset600 + idx * 0x88;
                     *(int*)(self + 0x20) = (int)p;
-                    MaybeInvoke0204719c((struct Foo02048004*)*(int*)(self + 0x20));
+                    MaybeInvoke0204719c_02047230((struct Foo02048004*)*(int*)(self + 0x20));
                     func_0204719c((struct Foo02048004*)*(int*)(self + 0x20));
                     unsigned char local[0x70];
                     short* mid = (short*)(((char*)func_ov017_0218b5b0()) + RegionOffset2cc);

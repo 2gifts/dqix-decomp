@@ -54,7 +54,7 @@ int GetActiveScaledSum0205d794(struct Struct_0205c570* s);
 void SetupBattleTag02189a78(char* base);
 
 struct TableA68;
-void* FindEntryByKey(struct TableA68* table, int key);
+void* FindEntryByKey_02072a68(struct TableA68* table, int key);
 
 struct Obj0205eaa0;
 extern struct Obj0205eaa0 data_02108760;
@@ -101,7 +101,7 @@ extern "C" ARM void func_ov012_02186e38(char* self) {
 		DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
 		void* battleStruct = GameState::GetInstance();
 		int val = *(int*)(self + kChoiceBOffset);
-		void* name = FindEntryByKey((struct TableA68*)(self + kStringsOffset), (short)(val + kNameKeyBase));
+		void* name = FindEntryByKey_02072a68((struct TableA68*)(self + kStringsOffset), (short)(val + kNameKeyBase));
 		ProfileNameSelection* profile = GetProfileNameSelection((GameState*)battleStruct);
 
 		memset(self + kTitleTextOffset, 0, 0x40);

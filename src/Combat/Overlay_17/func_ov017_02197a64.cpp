@@ -61,13 +61,13 @@ struct GroupEvent02197a64 {
 };
 
 extern "C" void* func_02012fe4(void);
-void* GetPointerFromArray0x3c(unsigned char* obj, unsigned int index);
+void* GetPointerFromArray0x3c_0201e838(unsigned char* obj, unsigned int index);
 Obj020968d0* GetField4328_0218d268(void* res);
 void InitObj0219a674(unsigned char* self);
 extern "C" int func_02094b9c(void* a, void* b);
 int BuildAndForwardVec_0218da48(void* obj, int angle, int c, int d, unsigned char e);
 int CheckAndComputeDistance020968d0(Obj020968d0* obj, int* outDist);
-int TestFlagMask(unsigned short* flags, int mask);
+int TestFlagMask_02012430(unsigned short* flags, int mask);
 extern "C" void __clear(void* buf, int count);
 struct Vec3;
 short GetAbsAngleDeltaBetween_021a4754(Vec3*, int, Vec3*);
@@ -85,7 +85,7 @@ extern "C" ARM void func_ov017_02197a64(Self02197a64* self) {
     void* cache = func_02012fe4();
     Leader02197a64* leader = (Leader02197a64*)gs->GetUnknownGameObject();
     Vector3fix filter = leader->position;
-    GroupNode02197a64* node = (GroupNode02197a64*)GetPointerFromArray0x3c((unsigned char*)cache + RegionOffset6c, 2);
+    GroupNode02197a64* node = (GroupNode02197a64*)GetPointerFromArray0x3c_0201e838((unsigned char*)cache + RegionOffset6c, 2);
     Obj020968d0* field = GetField4328_0218d268(res);
     int notify = 0;
     GroupEvent02197a64 event;
@@ -114,7 +114,7 @@ extern "C" ARM void func_ov017_02197a64(Self02197a64* self) {
             int facing = Vector3fix_InnerProduct(&dir, &fwd);
             int along = Vector3fix_InnerProduct(&dir, &heading);
             if ((heading.x != 0 || heading.z != 0) &&
-                (CheckAndComputeDistance020968d0(field, NULL) != 0 || TestFlagMask(&data_02114e30, 0xf0) != 0)) {
+                (CheckAndComputeDistance020968d0(field, NULL) != 0 || TestFlagMask_02012430(&data_02114e30, 0xf0) != 0)) {
                 facing = along;
             }
             if (node->flags & 0x10) {

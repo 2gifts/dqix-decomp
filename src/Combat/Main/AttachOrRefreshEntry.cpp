@@ -17,7 +17,7 @@ struct Entry020bee20 {
 extern struct Entry020bee20 data_02110a4c[];
 
 // USA: func_020bee20
-ARM void* AttachOrRefreshEntry(void** self, int index, int value) {
+ARM void* AttachOrRefreshEntry_020bee20(void** self, int index, int value) {
     if (*self != NULL) {
         ClearInnerField14c020bec80((struct Outer020bec80*)self);
     }

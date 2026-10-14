@@ -2,7 +2,7 @@
 struct Vector3i { int x,y,z; };
 struct Object3D { char pad[0x44]; Vector3i position; int GetRadius() const; int GetHeight() const; int IsVisible() const; int GetInheritedAlpha() const; int GetOwnAlpha() const; };
 class GameState { public: static GameState* GetInstance(); Object3D* GetCombatantByIndex(int); };
-void* GetActiveCombatWork();
+void* GetActiveCombatWork_ov000_02160130();
 float GetScaledField0x6002049fec(char*);
 struct Obj02049f50;
 void SetField41AndScaleSub02049f50(Obj02049f50*,int,int);
@@ -34,7 +34,7 @@ extern "C" ARM void func_ov000_0216f3d4(Camera* self) {
         Vector3fix_Subtract(&position,&origin,&delta);
         int distance=Vector3fix_InnerProduct(&delta,&delta);
         int selected=self->index==*id;
-        if(GetActiveCombatWork() && (self->active || self->work) && !selected) {
+        if(GetActiveCombatWork_ov000_02160130() && (self->active || self->work) && !selected) {
             Work* work=self->work;
             if(work) {
                 Node* n=work->nodes;

@@ -9,7 +9,7 @@ struct Container020dedd0;
 void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char keyLow,
                                                                         unsigned char keyHigh);
 int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
-int TestFlag0SetAndFlag1Clear(unsigned short *p, int n);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short *p, int n);
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0 *o, int a, int b);
 char *FindElementByKey020dedd0(struct Container020dedd0 *c, int key);
@@ -42,7 +42,7 @@ extern "C" ARM void func_ov002_0216bd34(char *base) {
         int actor = *(signed char *) (base + 0x1c00 + 0x20);
         int key   = *(short *) (base + 0x1c00 + 0x22);
         int done  = 0;
-        int a     = TestFlag0SetAndFlag1Clear(data_02114e30, 0x601);
+        int a     = TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x601);
         int b     = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(base + 0x2c8 + 0xc00), 0x14);
         if ((a | b) ? 1 : 0) {
             *(unsigned char *) (base + 0xf80) = *(int *) (base + 0x1000 + 0xbb8);

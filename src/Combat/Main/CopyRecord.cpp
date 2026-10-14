@@ -19,7 +19,7 @@ struct CopyableRecord {
 };
 
 // USA: func_02093b54
-ARM void CopyRecord(struct CopyableRecord* dst, struct CopyableRecord* src) {
+ARM void CopyRecord_02093b54(struct CopyableRecord* dst, struct CopyableRecord* src) {
     dst->payload = src->payload;
 #if defined(jpn)
     dst->byte11 = src->byte11;

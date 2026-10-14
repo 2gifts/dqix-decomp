@@ -3,17 +3,17 @@
 #include "GameState/GameState.h"
 
 extern "C" int func_ov017_02195658(void);
-void* GetData02108ea8(void);
+void* GetData02108ea8_0207d78c(void);
 extern "C" void func_ov000_02174a50(void* obj, int combatantId);
-void ClearBitAt0x34(unsigned char* obj, int index);
+void ClearBitAt0x34_020a367c(unsigned char* obj, int index);
 
 struct Entry0207da94;
 void ProcessEntries0207da94(struct Entry0207da94* list, int idx);
 
-int TestBitAt0x34(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
 
 extern "C" int func_ov017_021959b4(void);
-void SetCombatWorkFlags0x55f4(void* work, int mask);
+void SetCombatWorkFlags0x55f4_ov000_02160fa8(void* work, int mask);
 
 void ResetAndReinit_021f52c8(void* obj);
 void InitCombatEntry_021d8b6c(void* obj);
@@ -53,13 +53,13 @@ extern "C" ARM void func_ov023_021ed9f8(char* obj) {
     unsigned char* p = *(unsigned char**)(obj + regionalOffset0);
     int n = func_ov017_02195658();
     if (n > 0) {
-        void* q = GetData02108ea8();
+        void* q = GetData02108ea8_0207d78c();
         func_ov000_02174a50(obj + regionalOffset1, n);
-        ClearBitAt0x34(p, n & 0xff);
+        ClearBitAt0x34_020a367c(p, n & 0xff);
         ProcessEntries0207da94((struct Entry0207da94*)q, (int)(unsigned char)n);
         if (n == (signed char)p[0x2a]) {
             for (int i = 0; i < 4; i++) {
-                if (TestBitAt0x34(p, i & 0xff)) {
+                if (TestBitAt0x34_020a35e0(p, i & 0xff)) {
                     p[0x2a] = i;
                     break;
                 }
@@ -91,7 +91,7 @@ extern "C" ARM void func_ov023_021ed9f8(char* obj) {
     int reinit = 0;
     if (func_ov017_021959b4()) {
         if (*(unsigned char*)(obj + regionalOffset3) == 0) {
-            SetCombatWorkFlags0x55f4(obj, 0x2000000);
+            SetCombatWorkFlags0x55f4_ov000_02160fa8(obj, 0x2000000);
             reinit = 1;
         }
     }

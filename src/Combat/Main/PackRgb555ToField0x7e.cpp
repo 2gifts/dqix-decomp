@@ -17,7 +17,7 @@ struct Global020fdc20_d4ec {
 extern struct Global020fdc20_d4ec data_020fdc20;
 
 // USA: func_0201d4ec
-ARM int WarpScript_Opcode_70(Script::Parameter* arg0, int) {
+ARM int WarpScript_Opcode_70_0201d4ec(Script::Parameter* arg0, int) {
     struct Variant02030b0c* v = (struct Variant02030b0c*)arg0;
     int a = ((Script::Parameter*)v)->ToInt();
     int b = ((Script::Parameter*)(v + 1))->ToInt();

@@ -8,7 +8,7 @@ enum { kIdsOffset = 0x758, kCountOffset = 0x75c, kMaskOffset = 0x75d };
 #include "GameState/GameState.h"
 
 extern "C" void func_0203bd08(void);
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 void SetElementFields0202756c(void* obj, int p1, int p2, int idx,
         unsigned char p5, unsigned char p6, unsigned short p7, unsigned char p8, int p9, int p10);
 extern Display0201fdd0 data_020fdc60[];
@@ -25,11 +25,11 @@ ARM void ProcessCombatantElements02027100(unsigned char* obj) {
         if (obj[kMaskOffset] & (1 << id)) {
             continue;
         }
-        GameObject* combatant = GetCombatantWithFlag0x100(battle, id);
+        GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(battle, id);
         if (combatant == NULL) {
             continue;
         }
-        if (GetFieldAt0x150((unsigned char*)combatant) == 0) {
+        if (GetFieldAt0x150_02053c6c((unsigned char*)combatant) == 0) {
             continue;
         }
         if (*(int*)((char*)&data_020fdcb0 + (id << 5)) < 0) {

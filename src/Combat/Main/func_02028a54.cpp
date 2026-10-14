@@ -21,8 +21,8 @@ struct Combatant02028a54 {
 };
 
 void InitializeSubObjectsAndFields020289c4(BigRecord020289c4*);
-void ClearCombatantSlot(GameState*, int);
-void RegisterCombatantSlot(GameState*, int, GameObject*);
+void ClearCombatantSlot_0200fd48(GameState*, int);
+void RegisterCombatantSlot_0200fd38(GameState*, int, GameObject*);
 extern "C" void func_0202ae18();
 extern "C" void func_02012fe4();
 extern "C" void func_02076a8c(GameObject*);
@@ -58,7 +58,7 @@ extern "C" ARM int func_02028a54(BigRecord020289c4* records, int id)
     int i = 0;
     if (!objects) {
         int firstSlot = index * 12 + 0x70;
-        for (; i < 12; ++i) ClearCombatantSlot(state, i + firstSlot);
+        for (; i < 12; ++i) ClearCombatantSlot_0200fd48(state, i + firstSlot);
         return 0;
     }
     int firstSlot = index * 12;
@@ -66,7 +66,7 @@ extern "C" ARM int func_02028a54(BigRecord020289c4* records, int id)
     for (; i < 12; ++i) {
         func_02076a8c(&objects[i].object);
         objects[i].object.obj3D_.MakeHidden();
-        RegisterCombatantSlot(state, i + firstSlot, &objects[i].object);
+        RegisterCombatantSlot_0200fd38(state, i + firstSlot, &objects[i].object);
     }
     return 1;
 }

@@ -10,7 +10,7 @@ struct Obj02033b68 {
 void SetByteIfChanged02033b68(struct Obj02033b68* obj, int newVal);
 
 // USA: func_0207872c
-ARM int EnsureByte0xbeIs2(struct Obj02033b68* p) {
+ARM int EnsureByte0xbeIs2_0207872c(struct Obj02033b68* p) {
     if (p->fbe != 2) {
         SetByteIfChanged02033b68(p, 2);
     }

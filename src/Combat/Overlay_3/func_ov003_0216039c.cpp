@@ -33,16 +33,16 @@ struct Elem0205a3d0 {
     unsigned char flags;
 };
 
-unsigned char* FindElementByByte0xc4(Obj2081* obj, int key);
+unsigned char* FindElementByByte0xc4_02081da8(Obj2081* obj, int key);
 int GetInnerFlagBit0020e28dc(Outer020e28dc* o);
 void SetEntryByte14ByKey0205a42c(Container0205a3d0* c, int key, int val);
 extern "C" void func_0205ae8c(void* obj);
-int CheckField0x9cSetWhenField0xd4Present(unsigned char* obj);
+int CheckField0x9cSetWhenField0xd4Present_0204c7e0(unsigned char* obj);
 void GetLookAndTurnOffsets020809c4(void* obj, int id, int id2, short* out1, short* out2);
 void SetEntryFlag2ByKey0205a370(Container0205a3d0* c, int key);
 Elem0205a3d0* FindEntryByHalfword0205a3d0(Container0205a3d0* c, int key);
 void IterateEntries0205a330(Container0205a330* c, int arg);
-void SetEntryPosition(Container0205a3d0* c, int key, short a, short b);
+void SetEntryPosition_020e27ec(Container0205a3d0* c, int key, short a, short b);
 
 struct Scene0216039c {
     char pad0[kRegionValue324_20C];
@@ -64,7 +64,7 @@ extern "C" ARM void func_ov003_0216039c(Scene0216039c* self) {
     if (self->p470 == NULL || self->h488 < 0 || self->p324 == NULL) {
         return;
     }
-    unsigned char* elem = FindElementByByte0xc4(self->p324, self->h488);
+    unsigned char* elem = FindElementByByte0xc4_02081da8(self->p324, self->h488);
     if (elem == NULL) {
         return;
     }
@@ -73,7 +73,7 @@ extern "C" ARM void func_ov003_0216039c(Scene0216039c* self) {
         func_0205ae8c(self->x334);
         return;
     }
-    if (CheckField0x9cSetWhenField0xd4Present(elem) == 0) {
+    if (CheckField0x9cSetWhenField0xd4Present_0204c7e0(elem) == 0) {
         return;
     }
     short x;
@@ -91,6 +91,6 @@ extern "C" ARM void func_ov003_0216039c(Scene0216039c* self) {
         e->flags &= ~8;
     }
     IterateEntries0205a330((Container0205a330*)self->p38c, self->field_460);
-    SetEntryPosition(self->p38c, 0, x, y);
+    SetEntryPosition_020e27ec(self->p38c, 0, x, y);
     func_0205ae8c(self->x334);
 }

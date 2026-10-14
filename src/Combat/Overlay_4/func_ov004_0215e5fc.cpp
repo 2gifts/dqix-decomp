@@ -29,8 +29,8 @@ extern "C" void func_0208358c(void*, void*, int);
 extern "C" int func_02046608(int, int, void*, void*, int, int, int);
 extern "C" void func_02083e28(void*, int);
 int GetGlobalField0x1c020421a0(void);
-int GetFieldAt0x150(unsigned char*);
-char* FindSubstring(char*, char*);
+int GetFieldAt0x150_02053c6c(unsigned char*);
+char* FindSubstring_020d2f88(char*, char*);
 
 struct Triple0215e5fc { int a, b, c; };
 
@@ -137,9 +137,9 @@ extern "C" ARM void func_ov004_0215e5fc(void* a, int idx) {
     int key2;
     int v2;
     void* c;
-    void* combatant = GetCombatantWithFlag0x100(gs, idx);
+    void* combatant = GetCombatantWithFlag0x100_0200ff1c(gs, idx);
     if (combatant != 0) {
-        prot = (char*)GetFieldAt0x150((unsigned char*)combatant);
+        prot = (char*)GetFieldAt0x150_02053c6c((unsigned char*)combatant);
         Node0215e5fc* node = (Node0215e5fc*)func_ov004_0215e47c(a, 0x81);
         if (node != 0) {
             c = node->GetContainer();
@@ -210,7 +210,7 @@ extern "C" ARM void func_ov004_0215e5fc(void* a, int idx) {
             char* buf = data_ov004_021704a4[i][idx];
             struct Triple0215e5fc t = n->Get();
             int off = (i * 20) << 12;
-            if (FindSubstring(buf, data_ov004_02170525)) {
+            if (FindSubstring_020d2f88(buf, data_ov004_02170525)) {
                 off -= 0x5000;
             }
             t.b = off + 0x15000;

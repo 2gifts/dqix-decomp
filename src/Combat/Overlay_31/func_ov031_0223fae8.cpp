@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void CopyFrom027ffcf4(void*);
+void CopyFrom027ffcf4_020c99ac(void*);
 extern "C" int func_ov031_0223fc7c(char*, unsigned int, int);
 extern "C" int func_ov031_0223e454(void*, const void*, int);
 
@@ -8,7 +8,7 @@ extern "C" int func_ov031_0223e454(void*, const void*, int);
 extern "C" ARM void func_ov031_0223fae8(void* destination) {
     unsigned char bytes[6];
     char encoded[12];
-    CopyFrom027ffcf4(bytes);
+    CopyFrom027ffcf4_020c99ac(bytes);
     int index = 0;
     unsigned char* cursor = bytes;
     int offset = 0;

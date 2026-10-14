@@ -1,11 +1,11 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void* GetPtrField0x2a04(GameState* battleStruct);
+void* GetPtrField0x2a04_02010828(GameState* battleStruct);
 int HasFlag101_021571d8(int a);
 int DispatchNodeIfType7_02156e2c(void* a, int key);
-void* GetPointerFromArray0xbd0(unsigned char* obj, unsigned int index);
-void* GetPointerAt0xbf0(void* base, unsigned int index);
+void* GetPointerFromArray0xbd0_0207c5f8(unsigned char* obj, unsigned int index);
+void* GetPointerAt0xbf0_0207c60c(void* base, unsigned int index);
 void ClearNodeMaskById_021f6600(void* obj, int id, int mask);
 extern "C" int func_ov004_02157128(void* obj);
 extern "C" void* func_ov004_02156fd4(void* obj, int key);
@@ -70,7 +70,7 @@ extern "C" ARM int func_ov004_0215a738(void* obj) {
     short base;
     short saved;
     GameState* bs = GameState::GetInstance();
-    unsigned char* p = (unsigned char*)GetPtrField0x2a04(bs);
+    unsigned char* p = (unsigned char*)GetPtrField0x2a04_02010828(bs);
     if (!p) return 0;
     Grid021f9b30* grid = func_ov004_02156ed0(obj, 0x63);
     base = grid->field5c;
@@ -80,8 +80,8 @@ extern "C" ARM int func_ov004_0215a738(void* obj) {
     if (HasFlag101_021571d8((int)obj)) {
         int idx = DispatchNodeIfType7_02156e2c(obj, 0x65);
         if (idx < 0) return 0;
-        keys = (short*)GetPointerFromArray0xbd0(p + 0x1d4, *(data_ov004_021707d8.ptr + idx + 0x7c));
-        bytes = (signed char*)GetPointerAt0xbf0(p + 0x1d4, *(data_ov004_021707d8.ptr + idx + 0x7c));
+        keys = (short*)GetPointerFromArray0xbd0_0207c5f8(p + 0x1d4, *(data_ov004_021707d8.ptr + idx + 0x7c));
+        bytes = (signed char*)GetPointerAt0xbf0_0207c60c(p + 0x1d4, *(data_ov004_021707d8.ptr + idx + 0x7c));
     } else {
         if (func_ov004_02157128(obj) >= 0) return 0;
         keys = (short*)(p + 0xc);

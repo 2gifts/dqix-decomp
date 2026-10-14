@@ -53,8 +53,8 @@ struct Obj0203c818;
 extern "C" void func_0203c818(Obj0203c818*, void*, int, int);
 extern "C" void func_02040f48(struct Obj02040c2c* self, void* vec);
 extern "C" int rand(void);
-int GetField0x78(void* p);
-void* GetPtrField0x58(void* p);
+int GetField0x78_0202e800(void* p);
+void* GetPtrField0x58_0202ed6c(void* p);
 
 int GetHeadNodeIdOrMinusOne(struct HeadNode02046b24** head);
 void DispatchNearestActiveNode0204117c(struct Obj0204117c* obj, struct Vec3s32_020c3030* refPoint);
@@ -143,9 +143,9 @@ extern "C" ARM void func_02040c2c(struct Obj02040c2c* self, void* context, int e
         struct Vector3i* pB = (struct Vector3i*)&attachmentRotation;
         attachmentPosition.v[1] += 0x1000;
         if (self->spriteMotion != 0) {
-            unsigned char* camera = (unsigned char*)GetField0x3b0Value(GameState::GetInstance());
-            GetPtrField0x58(camera);
-            float fx = (float)GetField0x78(camera);
+            unsigned char* camera = (unsigned char*)GetField0x3b0Value_020100bc(GameState::GetInstance());
+            GetPtrField0x58_0202ed6c(camera);
+            float fx = (float)GetField0x78_0202e800(camera);
             fx *= 3.0f;
             int divisor = (int)fx;
             Vector3fix_Subtract(reinterpret_cast<Vector3i*>(camera + 0x10), reinterpret_cast<Vector3i*>(&attachmentPosition), &cameraOffset);

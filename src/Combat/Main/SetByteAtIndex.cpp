@@ -7,7 +7,7 @@ enum { ARRAY_BYTE_OFFSET = 0x8f1 };
 #endif
 
 // USA: func_020465d8
-ARM void SetByteAtIndex(unsigned char* base, int index, unsigned char value) {
+ARM void SetByteAtIndex_020465d8(unsigned char* base, int index, unsigned char value) {
     if (index < 0) {
         return;
     }

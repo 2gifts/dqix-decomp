@@ -2,15 +2,15 @@
 
 #include "System/Cache.h"
 
-int GetBattleReadyCode(void);
-void SetBattleContextArrayEntry(int index, int value);
+int GetBattleReadyCode_020d4204(void);
+void SetBattleContextArrayEntry_020d404c(int index, int value);
 extern "C" int func_020d40bc(int, int, int, int, int);
 
 #pragma optimize_for_size off
 
 // USA: func_020d6950
-ARM int IssueBattleCommandSlot39(int a0, int a1, int a2, int a3) {
-    int r = GetBattleReadyCode();
+ARM int IssueBattleCommandSlot39_020d6950(int a0, int a1, int a2, int a3) {
+    int r = GetBattleReadyCode_020d4204();
     if (r != 0) {
         return r;
     }
@@ -23,7 +23,7 @@ ARM int IssueBattleCommandSlot39(int a0, int a1, int a2, int a3) {
         }
         CleanCacheRange((const void*)a3, 0x50);
     }
-    SetBattleContextArrayEntry(0x27, a0);
+    SetBattleContextArrayEntry_020d404c(0x27, a0);
     r = func_020d40bc(0x27, 3, a1, a3, a2);
     if (r == 0) {
         r = 2;

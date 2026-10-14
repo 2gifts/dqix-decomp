@@ -6,13 +6,13 @@ extern "C" void func_02046380(void);
 int GetGlobalField0x1c020421a0(void);
 extern "C" void* func_0202ae18(void);
 extern "C" void* func_02012fe4(void);
-unsigned char CopyOutRegion0x571d(char* obj, void* dst);
-int TestBitAt0x34(unsigned char* obj, unsigned int index);
+unsigned char CopyOutRegion0x571d_020114ec(char* obj, void* dst);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
 extern "C" int func_ov023_021f4438(void* obj);
 struct TableA68;
-void* FindEntryByKey(struct TableA68* table, int key);
+void* FindEntryByKey_02072a68(struct TableA68* table, int key);
 struct StoreStruct;
-void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
+void StoreInArray0x8b0_020465c0(struct StoreStruct* base, int index, int value);
 int IsValueInRange0201b5d8(int x);
 extern "C" void func_0204500c(void* obj, char* buffer, int a, int b);
 extern "C" int func_ov023_021f4fc8(void);
@@ -37,14 +37,14 @@ extern "C" ARM int func_ov023_021f2638(unsigned char* obj) {
             char msgBuf[0x100];
             unsigned char idBuf[4];
             GameObject* combatant;
-            int n = CopyOutRegion0x571d((char*)battleStruct, idBuf);
+            int n = CopyOutRegion0x571d_020114ec((char*)battleStruct, idBuf);
             unsigned char flagged = 0;
             unsigned char total = 0;
             int i;
             for (i = 0; i < n; i++) {
                 combatant = battleStruct->GetCombatantByIndex(idBuf[i]);
                 if (combatant == NULL) continue;
-                if (!TestBitAt0x34(*(unsigned char**)(obj + 0x2a0), idBuf[i])) continue;
+                if (!TestBitAt0x34_020a35e0(*(unsigned char**)(obj + 0x2a0), idBuf[i])) continue;
                 total = total + 1;
                 void* p130 = *(void**)((char*)combatant + 0x130);
                 if ((*(int*)p130 & 1) == 0) flagged = flagged + 1;
@@ -52,15 +52,15 @@ extern "C" ARM int func_ov023_021f2638(unsigned char* obj) {
             stateObj[0x30] = total;
             stateObj[0x31] = flagged;
             int fieldCheck = func_ov023_021f4438(obj);
-            char* e1 = (char*)FindEntryByKey((struct TableA68*)(obj + 0x5904), 0x10);
+            char* e1 = (char*)FindEntryByKey_02072a68((struct TableA68*)(obj + 0x5904), 0x10);
             sprintf(msgBuf, e1);
-            StoreInArray0x8b0((struct StoreStruct*)stateObj, 0, *(int*)(obj + 0x5768));
+            StoreInArray0x8b0_020465c0((struct StoreStruct*)stateObj, 0, *(int*)(obj + 0x5768));
             int inRange = 0;
             if (*(unsigned char*)(obj + 0x5900) == 0 && *(int*)(obj + 0x6e24) != 0) {
                 if (IsValueInRange0201b5d8(*(unsigned short*)search) != 0) inRange = 1;
             }
             if (fieldCheck != 0 && inRange == 0) {
-                char* e2 = (char*)FindEntryByKey((struct TableA68*)(obj + 0x5904), 0x22);
+                char* e2 = (char*)FindEntryByKey_02072a68((struct TableA68*)(obj + 0x5904), 0x22);
                 strcat(msgBuf, e2);
             }
             func_0204500c(stateObj, msgBuf, 1, 0xe3);

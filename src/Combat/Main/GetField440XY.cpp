@@ -11,7 +11,7 @@ struct Field440XYObj {
 };
 
 // USA: func_02066cc0
-ARM void GetField440XY(struct Field440XYObj* obj, short* outX, short* outY) {
+ARM void GetField440XY_02066cc0(struct Field440XYObj* obj, short* outX, short* outY) {
     if (obj->field440 != NULL) {
         *outX = obj->field440->x;
         *outY = obj->field440->y;

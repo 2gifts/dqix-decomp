@@ -10,7 +10,7 @@ extern "C" void func_020c9be0(void);
 extern "C" void func_020d0fc4(CardReadManager* manager, int command, int arg);
 
 // USA: func_020d06fc
-ARM int DispatchCartridgeReadToArm7(void* handle) {
+ARM int DispatchCartridgeReadToArm7_020d06fc(void* handle) {
     CardReadManager* manager = &data_021118e0;
     int oldState;
     NitroHandle* savedHandle;

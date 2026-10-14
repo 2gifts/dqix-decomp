@@ -16,17 +16,17 @@ extern "C" char* func_0205ec34();
 extern "C" void func_02046380(MessageSystem* messages);
 
 MessageSystem* GetGlobalField0x1c020421a0();
-void AppendXYTag(char* text, int x, int y);
-void AppendYTag(char* text, int y);
+void AppendXYTag_02041a90(char* text, int x, int y);
+void AppendYTag_02041a5c(char* text, int y);
 void AppendString02042058(char* text, const char* append);
 void AppendFormatted0204201c(char* text, int append, int);
-int TestBitInByteArray(int, unsigned char*, int);
+int TestBitInByteArray_0206dfb0(int, unsigned char*, int);
 const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
-int GetFieldPercentOver307(BattleRecordSnapshot* records);
-int GetFieldPercentOver944(BattleRecordSnapshot* records);
-int GetFieldPercentOver232(BattleRecordSnapshot* records);
-int GetFieldPercentOver448(BattleRecordSnapshot* records);
-void StoreInArray0x8b0(StoreStruct* messages, int index, int value);
+int GetFieldPercentOver307_020a0870(BattleRecordSnapshot* records);
+int GetFieldPercentOver944_020a08d8(BattleRecordSnapshot* records);
+int GetFieldPercentOver232_020a08a4(BattleRecordSnapshot* records);
+int GetFieldPercentOver448_020a090c(BattleRecordSnapshot* records);
+void StoreInArray0x8b0_020465c0(StoreStruct* messages, int index, int value);
 
 extern char data_ov008_0218b465[];
 extern char data_ov008_0218b47c[];
@@ -113,20 +113,20 @@ extern "C" ARM void func_ov008_02188408(BattleRecords* self, char* text, int kin
         int x = (0xa0 - func_020420e8(name, 1)) / 2;
         if (x < 0)
             x = 0;
-        AppendXYTag(text, x, 6);
+        AppendXYTag_02041a90(text, x, 6);
         if (name != NULL)
             AppendString02042058(text, name);
         return;
     }
     int count = 3;
     char* store = func_0205ec34();
-    if (TestBitInByteArray((int)store, (unsigned char*)store + 0x8c, 0x1198))
+    if (TestBitInByteArray_0206dfb0((int)store, (unsigned char*)store + 0x8c, 0x1198))
         count = 4;
     if (kind == 0)
     {
         for (int i = 0; i < count; i++)
         {
-            AppendXYTag(text, 4, i * 15 + 4);
+            AppendXYTag_02041a90(text, 4, i * 15 + 4);
             AppendString02042058(text, GetFieldByKey020e0434((Container020e0310*)&self->texts_, (short)(i + 0x82)));
         }
     }
@@ -152,10 +152,10 @@ extern "C" ARM void func_ov008_02188408(BattleRecords* self, char* text, int kin
             int max2 = playRecords.unknown14_18;
             int max3 = playRecords.unknown14_9;
             int max4 = playRecords.unknown10_23;
-            count1 = GetFieldPercentOver307(&playRecords);
-            count2 = GetFieldPercentOver944(&playRecords);
-            count3 = GetFieldPercentOver232(&playRecords);
-            count4 = GetFieldPercentOver448(&playRecords);
+            count1 = GetFieldPercentOver307_020a0870(&playRecords);
+            count2 = GetFieldPercentOver944_020a08d8(&playRecords);
+            count3 = GetFieldPercentOver232_020a08a4(&playRecords);
+            count4 = GetFieldPercentOver448_020a090c(&playRecords);
             if (count1 == 0 && max1 > 0)
                 count1 = 1;
             if (count2 == 0 && max2 > 0)
@@ -166,13 +166,13 @@ extern "C" ARM void func_ov008_02188408(BattleRecords* self, char* text, int kin
                 count4 = 1;
         }
         func_02046380(messages);
-        StoreInArray0x8b0((StoreStruct*)messages, 0, count1);
-        StoreInArray0x8b0((StoreStruct*)messages, 1, count2);
-        StoreInArray0x8b0((StoreStruct*)messages, 2, count3);
-        StoreInArray0x8b0((StoreStruct*)messages, 3, count4);
+        StoreInArray0x8b0_020465c0((StoreStruct*)messages, 0, count1);
+        StoreInArray0x8b0_020465c0((StoreStruct*)messages, 1, count2);
+        StoreInArray0x8b0_020465c0((StoreStruct*)messages, 2, count3);
+        StoreInArray0x8b0_020465c0((StoreStruct*)messages, 3, count4);
         for (int i = 0; i < count; i++)
         {
-            AppendYTag(text, i * 15 + 4);
+            AppendYTag_02041a5c(text, i * 15 + 4);
             AppendFormatted0204201c(text, (int)GetFieldByKey020e0434((Container020e0310*)&self->texts_, (short)(i + 0x8c)), 0x18);
         }
     }

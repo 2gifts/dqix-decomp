@@ -4,7 +4,7 @@
 #include "Util/Random.h"
 
 extern "C" int func_ov000_0215eb1c(int a0, short* buf, int count, int flag);
-int IsFlag10088Set(struct S_10088* obj);
+int IsFlag10088Set_02010088(struct S_10088* obj);
 int PickRandomTableEntryResetCounter_021ed890(struct Random** rngPtr, int* maxAndFlag, short* table);
 
 struct Gate_021eebbc { char pad0; unsigned char flags:4; unsigned char pad1:4; };
@@ -27,7 +27,7 @@ extern "C" ARM int func_ov024_021eebbc(struct Obj_021eebbc* obj, int unused1, in
     for (int i = 0; i < count; i++) {
         GameObject* c = GetCombatantByID(obj->field0, buf.v[i]);
         if (!c) continue;
-        if (!IsFlag10088Set((struct S_10088*)c)) continue;
+        if (!IsFlag10088Set_02010088((struct S_10088*)c)) continue;
         int idx = *outCount;
         *outCount = idx + 1;
         outArray[idx] = buf.v[i];

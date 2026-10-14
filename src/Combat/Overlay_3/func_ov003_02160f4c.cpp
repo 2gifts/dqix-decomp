@@ -11,8 +11,8 @@ struct Flag174_02160f4c {
 
 void *GetGlobalField0x1c020421a0(void);
 extern "C" void func_02046380(void *messages);
-void *GetPtrField0x2a04(GameState *gameState);
-void StoreInArray0x8b0(StoreStruct *base, int index, int value);
+void *GetPtrField0x2a04_02010828(GameState *gameState);
+void StoreInArray0x8b0_020465c0(StoreStruct *base, int index, int value);
 extern "C" void *__clear(void *destination, int count);
 void SetIndexedName02046574(Obj02046574 *obj, int index, char *str);
 void *GetFieldByKey020e0434(Container020e0310 *c, int key);
@@ -36,8 +36,8 @@ extern "C" ARM void func_ov003_02160f4c(unsigned char *self) {
     if (self[0x4a5] == 0) {
         func_02046380(ctl);
         GameState *gs    = GameState::GetInstance();
-        unsigned char *p = (unsigned char *) GetPtrField0x2a04(gs);
-        StoreInArray0x8b0((StoreStruct *) ctl, 0, p[0xf7c] - 1);
+        unsigned char *p = (unsigned char *) GetPtrField0x2a04_02010828(gs);
+        StoreInArray0x8b0_020465c0((StoreStruct *) ctl, 0, p[0xf7c] - 1);
         __clear(nameBuf, 0x30);
         if (*(unsigned int *) (self + 0x464) & 4) {
             unsigned char *e = self + *(short *) (self + 0x400 + 0x98) * 0x37;

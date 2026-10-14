@@ -9,12 +9,11 @@ enum { kRegionValue1000_F7C = 0x1000 };
 enum { kRegionValue89C_818 = 0x89c };
 #endif
 
-
-void* GetPtrField0x2a04(GameState* battleStruct);
+void* GetPtrField0x2a04_02010828(GameState* battleStruct);
 short FindMappedMemberId02080468(void* obj, int id);
 unsigned char GetTableByte0207ca94(int index);
 short CountPositiveEntries0207c638(void* base, unsigned int index);
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 struct Slots02083960;
 int CountPositiveSlots02083960(struct Slots02083960* s);
 struct S_a0b8c;
@@ -24,7 +23,7 @@ int CountNonZeroValues020a0b8c(struct S_a0b8c* p);
 extern "C" ARM int func_ov003_02179f34(char* obj) {
     int result = 0;
     GameState* battle = GameState::GetInstance();
-    void* ptr = GetPtrField0x2a04(battle);
+    void* ptr = GetPtrField0x2a04_02010828(battle);
     short val = *(short*)(obj + kRegionValue1000_F7C + 0xc);
     void* field89c = *(void**)(obj + kRegionValue89C_818);
 
@@ -42,7 +41,7 @@ extern "C" ARM int func_ov003_02179f34(char* obj) {
         if (flag) {
             GameObject* combatant = battle->GetPartyMemberByIndex(field43);
             if (combatant != 0) {
-                int f150 = GetFieldAt0x150((unsigned char*)combatant);
+                int f150 = GetFieldAt0x150_02053c6c((unsigned char*)combatant);
                 result = (short)CountPositiveSlots02083960((struct Slots02083960*)f150);
             }
         } else {

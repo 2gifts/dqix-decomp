@@ -8,7 +8,7 @@ struct Elem_0205d81c {
 
 struct Struct_0205d81c;
 struct Elem_0205d81c* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
-int CheckField0x9cSetWhenField0xd4Present(unsigned char* obj);
+int CheckField0x9cSetWhenField0xd4Present_0204c7e0(unsigned char* obj);
 
 struct ShortArrays0204c610;
 void GetFourShortsAtIndex(struct ShortArrays0204c610* base, int index, short* out0, short* out1, short* out2, short* out3);
@@ -29,7 +29,7 @@ struct Obj_021703f0 {
 // USA: func_ov003_021703f0
 extern "C" ARM void func_ov003_021703f0(struct Obj_021703f0* obj, short* outX, short* outY) {
     if (obj->state == 5) {
-        if (obj->owner != 0 && CheckField0x9cSetWhenField0xd4Present(obj->owner) != 0) {
+        if (obj->owner != 0 && CheckField0x9cSetWhenField0xd4Present_0204c7e0(obj->owner) != 0) {
 #if defined(jpn)
             *outX = 0x2c;
             *outY = obj->index * 17 + 0x3a;

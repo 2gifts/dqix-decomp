@@ -6,15 +6,15 @@ struct Struct_0205d81c;
 struct Container020e0310;
 struct StoreStruct;
 void* GetGlobalField0x1c020421a0();
-void SetElementFieldC2(Struct_0205d81c*, int, int);
+void SetElementFieldC2_0205deb4(Struct_0205d81c*, int, int);
 int GetFieldByKey020e0434(Container020e0310*, int);
 int AppendString02042058(char*, const char*);
 extern "C" void func_ov003_0216abd8(void*, char*);
 extern "C" void func_ov003_02169c3c(void*);
 extern "C" int func_ov003_02169eec(void*, void*);
 extern "C" void func_02046380(void*);
-void StoreInArray0x8b0(StoreStruct*, int, int);
-void SetByteInRange(unsigned char*, int, unsigned char);
+void StoreInArray0x8b0_020465c0(StoreStruct*, int, int);
+void SetByteInRange_020465f0(unsigned char*, int, unsigned char);
 extern "C" void func_0205d6e4(Struct_0205d81c*, int);
 void* FindElementByC40205d81c(Struct_0205d81c*, int);
 int AddCappedFieldF6c_02169938(int, int);
@@ -72,10 +72,10 @@ static inline void Format68d3c(Global68d3c* g,int fmt,char* out) {
 extern "C" ARM void func_ov003_02168d3c(Obj68d3c* self, void* arg, int key) {
     GameState* gs=GameState::GetInstance();
     Global68d3c* global=(Global68d3c*)GetGlobalField0x1c020421a0();
-    Party68d3c* party=(Party68d3c*)GetPtrField0x2a04(gs);
+    Party68d3c* party=(Party68d3c*)GetPtrField0x2a04_02010828(gs);
     if(global->stage==3) global->flag=0;
     if(self->state==0) {
-        SetElementFieldC2((Struct_0205d81c*)self->menu,1,1);
+        SetElementFieldC2_0205deb4((Struct_0205d81c*)self->menu,1,1);
         if(key==0x3f2) {
             int error=-1;
             if(party->bank>=0x3b9ac618) error=(short)(key+5);
@@ -112,8 +112,8 @@ extern "C" ARM void func_ov003_02168d3c(Obj68d3c* self, void* arg, int key) {
                 return;
             }
             func_02046380(global);
-            StoreInArray0x8b0((StoreStruct*)global,0,party->bank);
-            SetByteInRange((unsigned char*)global,0,0);
+            StoreInArray0x8b0_020465c0((StoreStruct*)global,0,party->bank);
+            SetByteInRange_020465f0((unsigned char*)global,0,0);
             unsigned int value=party->bank/1000;
             unsigned int money=party->money/1000;
             int multiplier=1;
@@ -132,8 +132,8 @@ extern "C" ARM void func_ov003_02168d3c(Obj68d3c* self, void* arg, int key) {
     } else if(self->state==1) {
         if(global->stage==3) {
             func_ov003_02169c3c(self);
-            SetElementFieldC2((Struct_0205d81c*)self->menu,0,0);
-            SetElementFieldC2((Struct_0205d81c*)self->menu,2,0);
+            SetElementFieldC2_0205deb4((Struct_0205d81c*)self->menu,0,0);
+            SetElementFieldC2_0205deb4((Struct_0205d81c*)self->menu,2,0);
             self->state++;
         }
     } else if(self->state==2) {
@@ -141,7 +141,7 @@ extern "C" ARM void func_ov003_02168d3c(Obj68d3c* self, void* arg, int key) {
         if(result==-1) return;
         if(result==-2) {
             func_0205d6e4((Struct_0205d81c*)self->menu,1);
-            SetElementFieldC2((Struct_0205d81c*)self->menu,1,1);
+            SetElementFieldC2_0205deb4((Struct_0205d81c*)self->menu,1,1);
             memset(self->text,0,kTextSize68d3c);
             int text=GetFieldByKey020e0434((Container020e0310*)self->messages,0x406);
             AppendString02042058(self->text,(const char*)text);
@@ -181,8 +181,8 @@ extern "C" ARM void func_ov003_02168d3c(Obj68d3c* self, void* arg, int key) {
             self->changed=1;
             memset(self->text,0,kTextSize68d3c);
             func_02046380(global);
-            StoreInArray0x8b0((StoreStruct*)global,0,self->selected);
-            SetByteInRange((unsigned char*)global,0,0);
+            StoreInArray0x8b0_020465c0((StoreStruct*)global,0,self->selected);
+            SetByteInRange_020465f0((unsigned char*)global,0,0);
             int text=GetFieldByKey020e0434((Container020e0310*)self->messages,(short)(message+1));
             Format68d3c(global,text,self->text);
             func_ov003_0216abd8(self,self->text);
@@ -190,8 +190,8 @@ extern "C" ARM void func_ov003_02168d3c(Obj68d3c* self, void* arg, int key) {
             self->state++;
         } else if(error) {
             func_02046380(global);
-            StoreInArray0x8b0((StoreStruct*)global,0,0x3b9ac618-party->bank);
-            SetByteInRange((unsigned char*)global,0,0);
+            StoreInArray0x8b0_020465c0((StoreStruct*)global,0,0x3b9ac618-party->bank);
+            SetByteInRange_020465f0((unsigned char*)global,0,0);
             int text=GetFieldByKey020e0434((Container020e0310*)self->messages,message);
             Format68d3c(global,text,self->text);
             func_ov003_0216abd8(self,self->text);

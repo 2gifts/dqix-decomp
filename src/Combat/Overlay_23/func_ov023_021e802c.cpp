@@ -18,7 +18,7 @@ extern "C" void func_ov023_021e8e34(void* obj);
 void AppendEntryByKey_021e8ef8_021e8ef8(void* obj);
 
 struct Struct_0205d81c;
-void SetElementFieldC2(struct Struct_0205d81c* s, int key, int value);
+void SetElementFieldC2_0205deb4(struct Struct_0205d81c* s, int key, int value);
 
 struct Obj021e802c {
     char pad[0x5d8];
@@ -97,6 +97,6 @@ extern "C" ARM void func_ov023_021e802c(struct Obj021e802c* obj) {
 #endif
 
     for (int i = 0; i < 5; i++) {
-        SetElementFieldC2((struct Struct_0205d81c*)((char*)obj + 0x78), (unsigned char)(i + 0xc), 0);
+        SetElementFieldC2_0205deb4((struct Struct_0205d81c*)((char*)obj + 0x78), (unsigned char)(i + 0xc), 0);
     }
 }

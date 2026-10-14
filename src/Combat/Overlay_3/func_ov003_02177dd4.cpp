@@ -33,10 +33,10 @@ int ComputePositiveCount_02175f90(void *obj);
 struct S_a0b8c;
 int CountNonZeroValues020a0b8c(struct S_a0b8c *p);
 struct Obj2081;
-void ClearElementFlag0x20(struct Obj2081 *obj, int key);
+void ClearElementFlag0x20_02080c20(struct Obj2081 *obj, int key);
 void SetEntryLowNibbleAndElement02080c68(void *obj, int id, int value);
-void ClearSublistEntriesFlag1(void *obj, int id);
-void ClearSublistEntriesFlag2(void *obj, int id);
+void ClearSublistEntriesFlag1_02080bac(void *obj, int id);
+void ClearSublistEntriesFlag2_0208065c(void *obj, int id);
 void SetOrClearEntryFlag0x102081130(void *obj, int id, int set);
 void AddSublistEntryFlag2_020806b0(void *obj, int id);
 int SetEntryFlagById02080b2c(void *obj, int id);
@@ -51,9 +51,9 @@ struct Element020de650 {
     unsigned short count;
 };
 struct Element020de650 *FindElementByKey020dedd0(struct Container020dedd0 *c, int key);
-int GetNthPositiveEntryValue(void *obj, unsigned int index, short n);
+int GetNthPositiveEntryValue_0207c72c(void *obj, unsigned int index, short n);
 extern "C" void func_ov003_0217818c(void *self, struct Element020de650 *elem, int id, int value);
-void Forward0207f7acObjPlus4Size0x40(void *obj, int value);
+void Forward0207f7acObjPlus4Size0x40_020805f4(void *obj, int value);
 struct Container02080f8c;
 void SetEntryFirstField02080f8c(struct Container02080f8c *obj, int id, int value);
 struct Container02080fa8;
@@ -76,7 +76,7 @@ struct ListMenu_02177dd4 {
 
 // USA: func_ov003_02177dd4
 extern "C" ARM void func_ov003_02177dd4(ListMenu_02177dd4 *self) {
-    unsigned char *list = (unsigned char *) GetPtrField0x2a04(GameState::GetInstance());
+    unsigned char *list = (unsigned char *) GetPtrField0x2a04_02010828(GameState::GetInstance());
     unsigned int table  = 0;
     short hdr;
     short idD;
@@ -124,10 +124,10 @@ extern "C" ARM void func_ov003_02177dd4(ListMenu_02177dd4 *self) {
         key   = 0x7a;
     }
 
-    ClearElementFlag0x20(elemObj, group);
+    ClearElementFlag0x20_02080c20(elemObj, group);
     SetEntryLowNibbleAndElement02080c68(elemObj, group, 0);
-    ClearSublistEntriesFlag1(elemObj, group);
-    ClearSublistEntriesFlag2(elemObj, group);
+    ClearSublistEntriesFlag1_02080bac(elemObj, group);
+    ClearSublistEntriesFlag2_0208065c(elemObj, group);
     SetOrClearEntryFlag0x102081130(elemObj, group, perPage < count);
 
     short i              = self->page * perPage;
@@ -158,10 +158,10 @@ extern "C" ARM void func_ov003_02177dd4(ListMenu_02177dd4 *self) {
             if (vals != 0) {
                 extra = vals[i];
             } else {
-                extra = GetNthPositiveEntryValue(list + 0x1d4, table, i);
+                extra = GetNthPositiveEntryValue_0207c72c(list + 0x1d4, table, i);
             }
             func_ov003_0217818c(self, elem, idB, idC);
-            Forward0207f7acObjPlus4Size0x40(elemObj, idA);
+            Forward0207f7acObjPlus4Size0x40_020805f4(elemObj, idA);
             SetEntryFirstField02080f8c((struct Container02080f8c *) elemObj, idA, value);
             SetEntryFirstField02080fa8((struct Container02080fa8 *) elemObj, idB, num);
             SetEntryFirstField02080fa8((struct Container02080fa8 *) elemObj, idE, extra);

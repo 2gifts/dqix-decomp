@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-int ScaleField0xccBy1000(void* obj);
+int ScaleField0xccBy1000_020becd4(void* obj);
 int ScaleAndNotify0203ad88(void* obj, void* target, int arg2);
 int SetKeyAndApplyRecord0203ad14(void* obj, int key, void* target, int arg3);
 typedef int (*SetKeyAndApplyRecord0203ad14ShortFn)(void*, short, void*, int);
@@ -25,9 +25,9 @@ ARM void UpdateScaleOrApplyRecord0203ae4c(void* obj, int doScale, void* target) 
             int result;
 
             if (target != NULL) {
-                scaled = ScaleField0xccBy1000(target);
+                scaled = ScaleField0xccBy1000_020becd4(target);
             } else {
-                scaled = ScaleField0xccBy1000(p + 0x9c);
+                scaled = ScaleField0xccBy1000_020becd4(p + 0x9c);
             }
 
             savedKey = *(short*)(p + 0xa4);

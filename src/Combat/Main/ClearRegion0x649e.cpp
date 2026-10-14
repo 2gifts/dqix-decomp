@@ -2,7 +2,7 @@
 #include "System/Memory.h"
 
 // USA: func_02011ab8
-ARM void ClearRegion0x649e(char* obj) {
+ARM void ClearRegion0x649e_02011ab8(char* obj) {
 #if defined(jpn)
     VectorizedMemset(obj + 0x621e, 0, 0x80);
 #else

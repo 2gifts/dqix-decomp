@@ -19,21 +19,13 @@
 
 extern "C"
 {
-    void _Z13PushInputLogAi(unsigned int);
-    void _Z19PopStack0AndTriggeri(unsigned int);
+    void _Z22PushInputLogA_020a1df8i(unsigned int);
+    void _Z28PopStack0AndTrigger_020a1e54i(unsigned int);
 
-    // copies character name into the buffer? (not used in jpn version)
     void func_020426bc(void*, char* buffer, int);
 
-    // Based on where it's called, this is probably returning a language-
-    // dependent string for "Lv. " (at least, if called with 1011 as arg).
-    // Not used in jpn version
-    const char* _Z28CallFunc020e0434With02153694i(int);
+    const char* _Z37CallFunc020e0434With02153694_020e51cci(int);
 
-    // seems to get the game language. In the USA version, if it would
-    // return a value other than 2 or 5, it returns 1, which seems to reflect
-    // lack of support for German & Italian.
-    // not used in jpn version
     int _Z24NormalizeField5_0200fb08P14Struct0200fb08(GameState*);
 }
 

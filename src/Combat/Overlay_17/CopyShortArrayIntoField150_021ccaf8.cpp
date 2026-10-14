@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
-int GetFieldAt0x150(unsigned char* obj);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* battleStruct, int combatantId);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 
 struct Src021ccaf8 {
 	unsigned short arr[6];
@@ -14,10 +14,10 @@ struct Src021ccaf8 {
 ARM void CopyShortArrayIntoField150_021ccaf8(int unused0, char* p1raw, GameState* bs) {
 	struct Src021ccaf8* p1 = (struct Src021ccaf8*)(p1raw + 4);
 
-	GameObject* c = GetCombatantWithFlag0x100(bs, p1->id);
+	GameObject* c = GetCombatantWithFlag0x100_0200ff1c(bs, p1->id);
 	if (!c) return;
 
-	int field150 = GetFieldAt0x150((unsigned char*)c);
+	int field150 = GetFieldAt0x150_02053c6c((unsigned char*)c);
 	if (!field150) return;
 
 	unsigned char idx = p1->idx;

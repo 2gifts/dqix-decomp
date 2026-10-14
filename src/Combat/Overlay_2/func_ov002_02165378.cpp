@@ -20,7 +20,7 @@ char *FindElementByC40205d81c(struct Struct_0205d81c *s, int key);
 void SetOrClearByteC5Bit8_0216574c(void *elem, int on);
 int TryApplyElemFields0205d5d0(struct StructA0205d5d0 *, int, int, int, unsigned char);
 int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
-int TestFlag0SetAndFlag1Clear(unsigned short *pad, int buttons);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short *pad, int buttons);
 struct Obj_0205da38;
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 extern "C" int func_0205df38(void *list, int key);
@@ -89,7 +89,7 @@ extern "C" ARM void func_ov002_02165378(char *self) {
                                                              *(int *) (self + 0x1bd0), 1, 0);
         return;
     }
-    int t  = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
+    int t  = TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x601);
     int u  = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(self + 0x2c8 + 0xc00), 0x14);
     int ok = (t | u) ? 1 : 0;
     if (ok || func_0205df38(self + 0x2c8 + 0xc00, 0x11) != 0) {

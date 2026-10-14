@@ -18,12 +18,12 @@ struct BattleManagerCtx020da244 {
     SlotEntry020da244 slots[4];
 };
 
-void RunCombatFlagStateAction(void* ctx);
+void RunCombatFlagStateAction_020dabd0(void* ctx);
 void ResetFields020da2e4(unsigned char* entry);
 
 // USA: func_020da244  (semantic: ResetBattleManagerState_020da244)
 extern "C" ARM void func_020da244(BattleManagerCtx020da244* sb) {
-    RunCombatFlagStateAction(sb);
+    RunCombatFlagStateAction_020dabd0(sb);
     SlotEntry020da244* entry = sb->slots;
     int commandId = (int)BackgroundLoader::GetInstance();
     if (commandId != 0) {

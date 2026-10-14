@@ -13,17 +13,17 @@ struct GrottoPacket {
 
 struct ZoneWord { char pad[0xc]; int zone; };
 extern "C" int* func_0202ae18();
-int CheckField0NonZero(int*);
+int CheckField0NonZero_0202b7d8(int*);
 extern "C" int func_0202c540(int*);
-void* GetData02100044();
+void* GetData02100044_0202ae24();
 extern "C" void func_0205e330(void*, void*, int);
 
 // USA: func_ov017_021cf730
 extern "C" ARM void func_ov017_021cf730(signed char player, unsigned char refresh) {
     int* control = func_0202ae18();
-    if (!CheckField0NonZero(control) || func_0202c540(control)) return;
+    if (!CheckField0NonZero_0202b7d8(control) || func_0202c540(control)) return;
     GameState* state = GameState::GetInstance();
-    void* destination = GetData02100044();
+    void* destination = GetData02100044_0202ae24();
     unsigned char buffer[0x14];
     GrottoPacket* packet = (GrottoPacket*)(buffer + 4);
     GrottoStruct* grotto = state->GetGrottoStruct();

@@ -3,7 +3,7 @@
 #include "GameState/GameState.h"
 #include "Combat/Overlay_0/GetCombatantByID.h"
 
-GameObject* GetCombatantWithFlag0x400ByID(int unused, int id);
+GameObject* GetCombatantWithFlag0x400ByID_ov000_021536f8(int unused, int id);
 extern "C" int func_ov000_0215e9fc(int battle, short* buf, int max, int flag);
 extern "C" int func_ov000_0215eb1c(int battle, short* buf, int max, int flag);
 struct S_bf3c_021f0d0c;
@@ -16,7 +16,7 @@ extern struct Buf8_021f0e90 data_ov024_021feebc;
 
 // USA: func_ov024_021f0e90
 extern "C" ARM int func_ov024_021f0e90(struct RngHolder_021ed9dc* holder, int id, int unused, int* outCount, short* outArray) {
-    GameObject* self = GetCombatantWithFlag0x400ByID(holder->field0, id);
+    GameObject* self = GetCombatantWithFlag0x400ByID_ov000_021536f8(holder->field0, id);
     if (!self) return 0;
     if (!IsBitfield1Set_021f0d0c((struct S_bf3c_021f0d0c*)self)) return 0;
 

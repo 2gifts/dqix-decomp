@@ -4,7 +4,7 @@ extern "C" void __clear(void* dst, int count);
 int IsPrefixMatch020d857c(signed char* a, signed char* b);
 extern "C" char* strcpy(char* dst, const char* src);
 extern "C" void* memcpy(void* dst, void* src, unsigned int length);
-int StringLength(const char* s);
+int StringLength_020d2ff0(const char* s);
 
 struct MatchToken0217f600 {
     signed char* value;
@@ -26,7 +26,7 @@ extern ReplToken0217f608 data_ov003_0217f608[];
 extern "C" ARM void func_ov003_02170a7c(signed char* str, void* outBuf) {
     if (outBuf != 0 && str != 0) {
         char localBuf[16];
-        int rawLen = StringLength((const char*)str) + 1;
+        int rawLen = StringLength_020d2ff0((const char*)str) + 1;
         unsigned char remaining = rawLen;
         unsigned char index = 0;
         __clear(localBuf, 0x10);
@@ -44,7 +44,7 @@ extern "C" ARM void func_ov003_02170a7c(signed char* str, void* outBuf) {
             }
             const char* repl = *(const char* const*)((char*)data_ov003_0217f608 + (int)index * 12);
             strcpy(localBuf + cursor, repl);
-            cursor += StringLength(repl);
+            cursor += StringLength_020d2ff0(repl);
             remaining = remaining - 2;
             str += 2;
             index = 0;

@@ -4,7 +4,7 @@
 extern "C" void* func_ov017_021b8478(void* obj);
 extern "C" void* func_ov017_021b8468(void* obj);
 void* GetField6b0_021b8470(void* obj);
-void SetSubstructByte0x1c(unsigned char* obj, unsigned char value);
+void SetSubstructByte0x1c_02049390(unsigned char* obj, unsigned char value);
 
 struct Ret021c8ab0 {
     unsigned char pad[8];
@@ -42,14 +42,14 @@ extern "C" ARM void func_ov017_021c8ab0(int unused0, struct Evt021c8ab0* evt, Ga
     for (i = 0; i < 4; i++) {
         GameObject* c = bs->GetCombatantByIndex(i);
         if (c != NULL && p->arr1[i] != 0xff) {
-            SetSubstructByte0x1c((unsigned char*)c, p->arr1[i]);
+            SetSubstructByte0x1c_02049390((unsigned char*)c, p->arr1[i]);
         }
     }
     int j;
     for (j = 0; j < 8; j++) {
         GameObject* c = bs->GetCombatantByIndex(j + 0xc0);
         if (c != NULL && p->arr2[j] != 0xff) {
-            SetSubstructByte0x1c((unsigned char*)c, p->arr2[j]);
+            SetSubstructByte0x1c_02049390((unsigned char*)c, p->arr2[j]);
         }
     }
 }

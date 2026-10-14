@@ -25,7 +25,7 @@ struct Entry6759c { char pad[8]; unsigned int size; void* data; };
 extern "C" {
 void* __clear(void*, int);
 void _Z17ResetList0204af64P12List0204af64(void*);
-void _Z24SetWord0x18ClearByte0x1fPhi(void*, int);
+void _Z33SetWord0x18ClearByte0x1f_0204b11cPhi(void*, int);
 void func_0204b5b4(void*, int);
 void _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator(void*,SafeAllocator*);
 void _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(void*,int,int);
@@ -80,7 +80,7 @@ extern "C" ARM int func_ov003_0216759c(View6759c* self) {
         for (int i=0; i<2; i++) {
             list = self->lists+i;
             _Z17ResetList0204af64P12List0204af64(list);
-            _Z24SetWord0x18ClearByte0x1fPhi(list, words[i]);
+            _Z33SetWord0x18ClearByte0x1f_0204b11cPhi(list, words[i]);
             list->lo=1;
             list->hi=i;
             func_0204b5b4(list,i);

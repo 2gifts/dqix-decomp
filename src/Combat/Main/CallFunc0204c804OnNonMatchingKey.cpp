@@ -5,8 +5,7 @@ enum { kEntriesOffset = 0x24 };
 enum { kEntriesOffset = 0x30 };
 #endif
 
-void ResetElem2081Entry(void*);
-
+void ResetElem2081Entry_0204c804(void*);
 
 struct Elem0207fdf0 { char pad[0xc4]; unsigned char key; char pad2[0x1b]; };
 
@@ -25,7 +24,7 @@ ARM void CallFunc0204c804OnNonMatchingKey(Cont0207fdf0* obj, int key) {
     count = obj->count39;
     for (i = 0; i < count; i++) {
         if (key != obj->elems[i].key) {
-            ResetElem2081Entry((void*)(&obj->elems[i]));
+            ResetElem2081Entry_0204c804((void*)(&obj->elems[i]));
         }
     }
 }

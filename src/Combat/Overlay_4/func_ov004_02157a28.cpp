@@ -62,11 +62,11 @@ Element_02157a28* FindElementByKey020dedd0(Container020dedd0*, int);
 void* ZeroInitReturn020de824(void*);
 void InitStruct0207cbe8(char*);
 void InitStruct0207cc0c(char*);
-void* GetPtrField0x2a04(GameState*);
+void* GetPtrField0x2a04_02010828(GameState*);
 int GetHalfwordEntryFromField150(Field150Holder02052df8*, int);
 void DecrementKeyedStackAmount0207c484(KeyedList0207c484*, int, int, int);
-void TrySetFlags0x130(unsigned char*, unsigned short);
-int CheckField0NonZero(int*);
+void TrySetFlags0x130_020483f0(unsigned char*, unsigned short);
+int CheckField0NonZero_0202b7d8(int*);
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
 void ClearIfMatchAndFinalize_021a3498(Ctx021a3498*);
 
@@ -75,7 +75,7 @@ extern "C" ARM int func_ov004_02157a28(void* a, int flag) {
     short id = func_ov004_02157128(a);
     int* search = func_0202ae18();
     GameState* gs = GameState::GetInstance();
-    GameObject* c = GetCombatantWithFlag0x100(gs, id);
+    GameObject* c = GetCombatantWithFlag0x100_0200ff1c(gs, id);
     if (!c) return 0;
     Container020dedd0* cont = (Container020dedd0*)func_ov004_02156fd4(a, 5);
     if (!cont) return 0;
@@ -104,7 +104,7 @@ extern "C" ARM int func_ov004_02157a28(void* a, int flag) {
     int slot = table.v[i];
     if (slot < 0) return 0;
 
-    char* bag = (char*)GetPtrField0x2a04(gs);
+    char* bag = (char*)GetPtrField0x2a04_02010828(gs);
     int equipped = GetHalfwordEntryFromField150((Field150Holder02052df8*)c, slot);
     int same = data_ov004_021707d8.ptr->key == equipped;
     func_02052d7c(c, slot, data_ov004_021707d8.ptr->key);
@@ -128,10 +128,10 @@ extern "C" ARM int func_ov004_02157a28(void* a, int flag) {
         int did = 0;
         Element_02157a28* e2 = FindElementByKey020dedd0(cont, data_ov004_021707d8.ptr->key);
         if (e2 && e2->bits.flag) {
-            TrySetFlags0x130((unsigned char*)c, 4);
+            TrySetFlags0x130_020483f0((unsigned char*)c, 4);
             did = 1;
         }
-        if (CheckField0NonZero(search)) {
+        if (CheckField0NonZero_0202b7d8(search)) {
             func_ov017_021c3fb4(id, 1);
             func_ov017_021c4418(id, -1);
             if (did) func_ov017_021c9e00(id, 0, 0, 1);

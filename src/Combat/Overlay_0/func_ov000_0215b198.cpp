@@ -34,8 +34,8 @@ void* GetWorkArrayEntry0215e9d8(void* work);
 void InitStruct02160030(void* obj);
 ActionEntry* GetNodeAtIndex02160094(List02160094* list, int index);
 void* GetNodeAtIndex021600f8(List021600f8* list, int index);
-int IsFlag10088Set(S_10088* obj);
-int IsFlag0x18Bit0x2000Set(GameObject* combatant);
+int IsFlag10088Set_02010088(S_10088* obj);
+int IsFlag0x18Bit0x2000Set_ov000_02153c0c(GameObject* combatant);
 
 // USA: func_ov000_0215b198
 extern "C" ARM void func_ov000_0215b198(Battle* battle) {
@@ -61,10 +61,10 @@ extern "C" ARM void func_ov000_0215b198(Battle* battle) {
             continue;
         }
         action->flags |= 4;
-        if (IsFlag10088Set((S_10088*)c)) {
+        if (IsFlag10088Set_02010088((S_10088*)c)) {
             continue;
         }
-        if (IsFlag0x18Bit0x2000Set(c)) {
+        if (IsFlag0x18Bit0x2000Set_ov000_02153c0c(c)) {
             continue;
         }
         memcpy(work, action, sizeof(List02160094));

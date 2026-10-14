@@ -5,7 +5,7 @@ extern "C" int func_ov017_021c9d2c(int a0, int a1, int a2, int a3, int a4, int a
 
 // USA: func_ov000_0217616c  (semantic: Dispatch_0217616c)
 extern "C" ARM void func_ov000_0217616c(char* obj) {
-    GameObject* c = GetCombatantWithFlag0x100(GameState::GetInstance(), *(int*)(obj + 0x4c));
+    GameObject* c = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), *(int*)(obj + 0x4c));
     if (c == 0) {
         return;
     }

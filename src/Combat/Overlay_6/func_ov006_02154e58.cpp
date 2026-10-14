@@ -111,10 +111,10 @@ struct Data0210a010 {
 extern Data0210a010 data_0210a010;
 
 void InitCombatController020a2010(void* camera);
-void SetFields0x10To0x18(unsigned char* camera, int x, int y, int z);
+void SetFields0x10To0x18_0202e5c8(unsigned char* camera, int x, int y, int z);
 extern "C" void func_0202e5d8(void* camera, int x, int y, int z);
 extern "C" void func_0202e0a4(void* camera);
-void SetField0x238False(void* camera);
+void SetField0x238False_020a27a0(void* camera);
 void InitCombatEntry021542f4(void* camera);
 
 // USA: func_ov006_02154e58
@@ -136,10 +136,10 @@ extern "C" ARM void func_ov006_02154e58(AlchemyPot* self) {
         BG2CNT = (BG2CNT & ~3) | 2;
         if (camera != 0) {
             InitCombatController020a2010(camera);
-            SetFields0x10To0x18((unsigned char*)self->camera_, 0, -0x1e8f, 0);
+            SetFields0x10To0x18_0202e5c8((unsigned char*)self->camera_, 0, -0x1e8f, 0);
             func_0202e5d8(self->camera_, 0, 0x2bae, 0x9199);
             func_0202e0a4(self->camera_);
-            SetField0x238False(self->camera_);
+            SetField0x238False_020a27a0(self->camera_);
         }
         self->resetBlend_ = 0;
     } else {

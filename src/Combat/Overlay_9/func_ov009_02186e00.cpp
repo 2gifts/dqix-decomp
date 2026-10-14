@@ -14,7 +14,7 @@ extern "C" int func_ov009_02188ee8(CharacterCreationUI*);
 extern "C" void func_ov009_0218ad0c(void*);
 extern "C" void func_ov009_021867bc(unsigned char*, int);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
-int TestFlag0SetAndFlag1Clear(unsigned short*, int);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short*, int);
 extern char data_ov009_0218bc59[];
 extern const char data_020ef078[];
 extern unsigned short data_02114e30[];
@@ -68,11 +68,11 @@ extern "C" ARM void func_ov009_02186e00(CharacterCreationUI* self)
             func_ov009_021867bc((unsigned char*)self, 9);
         }
     } else if (self->step == 2) {
-        if (TestFlag0SetAndFlag1Clear(data_02114e30, 0x401) || data_02114e54.touching != 0) {
+        if (TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x401) || data_02114e54.touching != 0) {
             DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
             self->flags = (self->flags & ~0x400000) | 0x2000;
             self->step = 1;
-        } else if (TestFlag0SetAndFlag1Clear(data_02114e30, 2)) {
+        } else if (TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 2)) {
             self->flags = (self->flags & ~0x400000) | 0x2000;
             self->step = 1;
         }
@@ -154,7 +154,7 @@ extern "C" int func_ov009_02188ee8(void* self);
 extern "C" void func_ov009_02189a4c(void* self);
 void SetStatValue021855dc(unsigned char* self, int state);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0* sound, int effect, int a);
-int TestFlag0SetAndFlag1Clear(unsigned short* pad, int buttons);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* pad, int buttons);
 void BuildFieldTag_021d9e60(char* self);
 extern "C" KeyboardKey* func_ov003_0215f4a4(Keyboard* keyboard, int a);
 void ResetEntrySkill0218a8b8(void* self);
@@ -265,7 +265,7 @@ extern "C" ARM void func_ov009_02186e00(CharacterCreation* self)
             DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 2, 0);
             break;
         case 9:
-            if (!TestFlag0SetAndFlag1Clear((unsigned short*)data_02114e30, 1) && data_02114e54.touching_ == 0)
+            if (!TestFlag0SetAndFlag1Clear_02012444((unsigned short*)data_02114e30, 1) && data_02114e54.touching_ == 0)
                 SetStatValue021855dc((unsigned char*)self, 7);
             else
                 DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
@@ -278,7 +278,7 @@ extern "C" ARM void func_ov009_02186e00(CharacterCreation* self)
         case 7:
         case 8:
         case 11:
-            if (!TestFlag0SetAndFlag1Clear((unsigned short*)data_02114e30, 2))
+            if (!TestFlag0SetAndFlag1Clear_02012444((unsigned short*)data_02114e30, 2))
                 DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
             self->flags_ |= 0x8100;
             break;
@@ -286,7 +286,7 @@ extern "C" ARM void func_ov009_02186e00(CharacterCreation* self)
             DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
             self->flags_ |= 0x8100;
             BuildFieldTag_021d9e60((char*)self);
-            if (TestFlag0SetAndFlag1Clear((unsigned short*)data_02114e30, 1))
+            if (TestFlag0SetAndFlag1Clear_02012444((unsigned short*)data_02114e30, 1))
             {
                 KeyboardKey* key = func_ov003_0215f4a4(self->keyboard_, 6);
                 if (key != NULL)
@@ -313,7 +313,7 @@ extern "C" ARM void func_ov009_02186e00(CharacterCreation* self)
             return;
         default:
             self->flags_ &= ~0x2000;
-            if (TestFlag0SetAndFlag1Clear((unsigned short*)data_02114e30, 4) && result != -2)
+            if (TestFlag0SetAndFlag1Clear_02012444((unsigned short*)data_02114e30, 4) && result != -2)
             {
                 if (self->keyboard_->key_ != NULL)
                 {
@@ -322,7 +322,7 @@ extern "C" ARM void func_ov009_02186e00(CharacterCreation* self)
                     return;
                 }
             }
-            else if (TestFlag0SetAndFlag1Clear((unsigned short*)data_02114e30, 0xc0))
+            else if (TestFlag0SetAndFlag1Clear_02012444((unsigned short*)data_02114e30, 0xc0))
             {
                 self->flags_ |= 0x2000;
             }
@@ -338,7 +338,7 @@ extern "C" ARM void func_ov009_02186e00(CharacterCreation* self)
             cursor->unk_4 = 1;
             func_0205bb04(cursor, 0);
         }
-        if (TestFlag0SetAndFlag1Clear((unsigned short*)data_02114e30, 8) && !(self->flags_ & 0x8100) &&
+        if (TestFlag0SetAndFlag1Clear_02012444((unsigned short*)data_02114e30, 8) && !(self->flags_ & 0x8100) &&
             self->keyboard_->key_ != NULL && checked == 0)
             func_ov009_02189a4c(self);
         if (self->flags_ & 0x400000)
@@ -362,13 +362,13 @@ extern "C" ARM void func_ov009_02186e00(CharacterCreation* self)
     }
     else if (self->step_ == 3)
     {
-        if (TestFlag0SetAndFlag1Clear((unsigned short*)data_02114e30, 0x401) || data_02114e54.touching_ != 0)
+        if (TestFlag0SetAndFlag1Clear_02012444((unsigned short*)data_02114e30, 0x401) || data_02114e54.touching_ != 0)
         {
             DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
             self->flags_ = (self->flags_ & ~0x1400000) | 0x2000;
             self->step_ = 2;
         }
-        else if (TestFlag0SetAndFlag1Clear((unsigned short*)data_02114e30, 2))
+        else if (TestFlag0SetAndFlag1Clear_02012444((unsigned short*)data_02114e30, 2))
         {
             self->flags_ = (self->flags_ & ~0x1400000) | 0x2000;
             self->step_ = 2;

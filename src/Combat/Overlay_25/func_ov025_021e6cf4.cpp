@@ -24,7 +24,7 @@ struct PairTask021e6cf4 {
     unsigned char arg;
 };
 
-unsigned char* GetActiveCombatWork(void);
+unsigned char* GetActiveCombatWork_ov000_02160130(void);
 void RunFlaglearAndSetMode02167e6c_02167e6c(unsigned char* work);
 void RunFlagPassAndSetMode02167dd8_02167dd8(unsigned char* work);
 extern "C" void func_ov000_02167f10(unsigned char* work);
@@ -36,7 +36,7 @@ void AimAndSetVecY020338d4(Struct020338d4* obj, Vec3* target);
 
 // USA: func_ov025_021e6cf4
 extern "C" ARM int func_ov025_021e6cf4(PairTask021e6cf4* task, void* list) {
-    unsigned char* work = GetActiveCombatWork();
+    unsigned char* work = GetActiveCombatWork_ov000_02160130();
     if (task->kind == 0) {
         RunFlaglearAndSetMode02167e6c_02167e6c(work);
     } else if (task->kind == 1) {

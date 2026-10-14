@@ -11,36 +11,31 @@
 #define ADDR_REGISTERED_OWNERS_LOW 0x027fffb0
 #define REGISTERED_OWNER_FLAGS ((unsigned int*)ADDR_REGISTERED_OWNERS_LOW)
 
-
 #define PTR_NDS_BUS_LOCK ((GamecardBusLock*)0x027fffe0)
 #define PTR_GBA_BUS_LOCK ((GamecardBusLock*)0x027fffe8)
 #define PTR_UNKNOWN_BUS_LOCK ((GamecardBusLock*)0x027ffff0)
 
 #pragma optimize_for_size off
 
-
 extern "C"
 {
     void WaitByLoop(int);
 
-    // aligned memset clone
     void func_020ca3ec(int val, void* dst, unsigned len);
 
-    // Performs an atomic swap
-    extern "C" unsigned int _Z10AtomicSwapiPi(unsigned int newValue, volatile unsigned int* atomic);
+    extern "C" unsigned int _Z19AtomicSwap_020ca7e0iPi(unsigned int newValue, volatile unsigned int* atomic);
 }
 
 int TryLockGamecardBusLock(unsigned short owner, GamecardBusLock* lock, void (*onLock)(), bool strict);
 int WeakLockGamecardBusLock(unsigned short owner, GamecardBusLock* lock, void (*onLock)());
 int WeakUnlockGamecardBusLock(unsigned short owner, GamecardBusLock* lock, void (*onUnlock)());
 
-void MarkGBABusAcquired(); // acquire gba bus
-void MarkGBABusReleased(); // release gba bus
+void MarkGBABusAcquired();
+void MarkGBABusReleased();
 
 void MarkNDSBusAcquired();
 void MarkNDSBusReleased();
 
-// can be static
 int LockGamecardBusLock(unsigned short owner, GamecardBusLock* lock, void (*onLock)(), bool strict)
 {
     if (TryLockGamecardBusLock(owner, lock, onLock, strict) > 0)
@@ -51,18 +46,16 @@ int LockGamecardBusLock(unsigned short owner, GamecardBusLock* lock, void (*onLo
     }
 }
 
-// can be static
 int WeakLockGamecardBusLock(unsigned short owner, GamecardBusLock* lock, void (*onLock)())
 {
     return LockGamecardBusLock(owner, lock, onLock, false);
 }
 
-// can be static
 int UnlockGamecardBusLock(unsigned short owner, GamecardBusLock* lock, void (*onUnlock)(), bool strict)
 {
     if (owner != lock->ownerID)
         return -2;
-    
+
     int priorState;
     if (strict)
         priorState = DisableIRQAndFIQInterrupts();
@@ -82,13 +75,11 @@ int UnlockGamecardBusLock(unsigned short owner, GamecardBusLock* lock, void (*on
     return 0;
 }
 
-// can be static
 int WeakUnlockGamecardBusLock(unsigned short owner, GamecardBusLock* lock, void (*onUnlock)())
 {
     return UnlockGamecardBusLock(owner, lock, onUnlock, false);
 }
 
-// can be static
 int TryLockGamecardBusLock(unsigned short owner, GamecardBusLock* lock, void (*onLock)(), bool strict)
 {
     int priorState;
@@ -97,7 +88,7 @@ int TryLockGamecardBusLock(unsigned short owner, GamecardBusLock* lock, void (*o
     else
         priorState = DisableIRQInterrupts();
 
-    int oldAtomic = _Z10AtomicSwapiPi(owner, &lock->atomic);
+    int oldAtomic = _Z19AtomicSwap_020ca7e0iPi(owner, &lock->atomic);
     if (oldAtomic == 0)
     {
         if (onLock != NULL)
@@ -112,13 +103,11 @@ int TryLockGamecardBusLock(unsigned short owner, GamecardBusLock* lock, void (*o
     return oldAtomic;
 }
 
-// can be static
 int InternalReleaseGBABus(unsigned short owner)
 {
     return UnlockGamecardBusLock(owner, PTR_GBA_BUS_LOCK, &MarkGBABusReleased, true);
 }
 
-// must be exposed
 #ifdef __MWERKS__
 asm int ReleaseGBABus(unsigned short owner)
 {
@@ -132,49 +121,41 @@ int ReleaseGBABus(unsigned short owner)
 }
 #endif
 
-// must be exposed
 int TryAcquireGBABus(unsigned short owner)
 {
     return TryLockGamecardBusLock(owner, PTR_GBA_BUS_LOCK, &MarkGBABusAcquired, true);
 }
 
-// can be static
 void MarkGBABusAcquired()
 {
     REG_EXTMEMCTRL &= ~EXTMEMCTRL_FLAG_RELINQUISH_GBA_BUS;
 }
 
-// can be static
 void MarkGBABusReleased()
 {
     REG_EXTMEMCTRL |= EXTMEMCTRL_FLAG_RELINQUISH_GBA_BUS;
 }
 
-// must be exposed
 int AcquireNDSBus(unsigned short owner)
 {
     return WeakLockGamecardBusLock(owner, PTR_NDS_BUS_LOCK, &MarkNDSBusAcquired);
 }
 
-// must be exposed
 int ReleaseNDSBus(unsigned short owner)
 {
     return WeakUnlockGamecardBusLock(owner, PTR_NDS_BUS_LOCK, &MarkNDSBusReleased);
 }
 
-// can be static
 void MarkNDSBusAcquired()
 {
     REG_EXTMEMCTRL &= ~EXTMEMCTRL_FLAG_RELINQUISH_NDS_BUS;
 }
 
-// can be static
 void MarkNDSBusReleased()
 {
     REG_EXTMEMCTRL |= EXTMEMCTRL_FLAG_RELINQUISH_NDS_BUS;
 }
 
-// must be exposed
 unsigned short GetLockOwner(GamecardBusLock* lock)
 {
     return lock->ownerID;
@@ -186,7 +167,3 @@ inline int leadZeroCount(unsigned int what)
     __asm("clz %[output], %[input]" : : [output] "=r" (ret), [input] "r" (what));
     return ret;
 }
-
-// GenerateLockOwnerID and ReleaseLockOwnerID are the next two functions,
-// but they appear to be written in assembly (they use clz which the compiler
-// never emits, and more generally are quite weird for compiled code)

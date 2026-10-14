@@ -25,15 +25,15 @@ struct ActionRule {
     unsigned char padD;
 };
 extern ActionRule data_ov024_021fe9b8[];
-int* GetGlobal02109418();
+int* GetGlobal02109418_02094d6c();
 int SumCombatantKeyMatches02086aec(Obj02086aec*, int);
-int CheckFlag0x14Bit0x10Set(unsigned char*);
+int CheckFlag0x14Bit0x10Set_020882f8(unsigned char*);
 
 // USA: func_ov024_021df71c
 extern "C" ARM int func_ov024_021df71c(Combatant* self, unsigned int actionID, int alternate, unsigned short* resultID, unsigned short* combatantKey, unsigned short* entryID) {
-    GlobalEntries* global = (GlobalEntries*)GetGlobal02109418();
+    GlobalEntries* global = (GlobalEntries*)GetGlobal02109418_02094d6c();
     if (!global->count_) return 0;
-    Obj02086aec* battle = (Obj02086aec*)GetPtrField0x2a04(GameState::GetInstance());
+    Obj02086aec* battle = (Obj02086aec*)GetPtrField0x2a04_02010828(GameState::GetInstance());
     int key = 0;
     if (self->info_) key = self->info_->key_;
     for (int i = 0; i < global->count_; ++i) {
@@ -48,7 +48,7 @@ extern "C" ARM int func_ov024_021df71c(Combatant* self, unsigned int actionID, i
             if (SumCombatantKeyMatches02086aec(battle, (short)rule->resultID_) > 0) continue;
             if (rule->condition_ != 0) {
                 if (rule->condition_ == 1) {
-                    if (!CheckFlag0x14Bit0x10Set((unsigned char*)self->currentStats_)) continue;
+                    if (!CheckFlag0x14Bit0x10Set_020882f8((unsigned char*)self->currentStats_)) continue;
                 } else if (rule->condition_ == 2) {
                     if (self->currentStats_->primaryStats.currHP > 700) continue;
                 } else if (rule->condition_ == 3) {

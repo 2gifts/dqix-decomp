@@ -3,8 +3,8 @@
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 
-int GetWord0x0(int* obj);
-void SetField0x7cClearFields0x1ec0x1ee(unsigned char* obj, unsigned short val);
+int GetWord0x0_0200fb8c(int* obj);
+void SetField0x7cClearFields0x1ec0x1ee_0202e874(unsigned char* obj, unsigned short val);
 struct AngleTrig0202e9a4;
 void SetAngleAndTrigTable0202e9a4(struct AngleTrig0202e9a4* objParam, int angle);
 extern "C" void func_0202eab8(void* obj);
@@ -23,9 +23,9 @@ struct Struct02046f84 {
 // USA: func_02046f84
 ARM void ResetObjectAndAllocator02046f84(struct Struct02046f84* s) {
     GameState* battleStruct = GameState::GetInstance();
-    GetWord0x0((int*)battleStruct);
-    void* obj = GetField0x3b0Value(battleStruct);
-    SetField0x7cClearFields0x1ec0x1ee((unsigned char*)obj, 0);
+    GetWord0x0_0200fb8c((int*)battleStruct);
+    void* obj = GetField0x3b0Value_020100bc(battleStruct);
+    SetField0x7cClearFields0x1ec0x1ee_0202e874((unsigned char*)obj, 0);
     SetAngleAndTrigTable0202e9a4((struct AngleTrig0202e9a4*)obj, 0xf000);
     func_0202eab8(obj);
 

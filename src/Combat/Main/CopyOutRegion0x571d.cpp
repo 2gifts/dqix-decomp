@@ -2,7 +2,7 @@
 #include "std_library_functions.h"
 
 // USA: func_020114ec
-ARM unsigned char CopyOutRegion0x571d(char* obj, void* dst) {
+ARM unsigned char CopyOutRegion0x571d_020114ec(char* obj, void* dst) {
 #if defined(jpn)
     unsigned char len = *(unsigned char*)(obj + 0x54c1);
 #else

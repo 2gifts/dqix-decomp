@@ -32,11 +32,11 @@ struct GameResources;
 void SetBrightness(GameResources*, int, int);
 int IsBrightnessTransitionActive(GameResources*);
 
-extern "C" unsigned char _Z19CopyOutRegion0x5718PcPv(void* src, void* dst);
-#define CopyOutRegion0x5718 _Z19CopyOutRegion0x5718PcPv
+extern "C" unsigned char _Z28CopyOutRegion0x5718_02011494PcPv(void* src, void* dst);
+#define CopyOutRegion0x5718_02011494 _Z28CopyOutRegion0x5718_02011494PcPv
 
-void* GetField0x3f8Address(GameState* battleStruct);
-int GetField0x3acValue(GameState* battleStruct);
+void* GetField0x3f8Address_0200fd0c(GameState* battleStruct);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 extern "C" void VectorizedMemset(void* dst, int val, int size);
 struct Vector3i;
 void InitAndResetHeader_0219e310(unsigned char* obj, int flag);
@@ -141,7 +141,7 @@ extern "C" ARM int func_ov017_021ab280(struct Obj_021ab280* obj) {
         ((Object3D*)((unsigned char*)combatant))->DisableFlag(0x01000080);
 
         unsigned char buf[4];
-        unsigned char count = CopyOutRegion0x5718((void*)battle, buf);
+        unsigned char count = CopyOutRegion0x5718_02011494((void*)battle, buf);
         for (int i = 0; i < count; i++) {
             GameObject* c = battle->GetGameObjectByIndex(buf[i]);
             if (c != 0) {
@@ -149,8 +149,8 @@ extern "C" ARM int func_ov017_021ab280(struct Obj_021ab280* obj) {
             }
         }
 
-        void* entryV = GetField0x3f8Address(battle);
-        GetField0x3acValue(battle);
+        void* entryV = GetField0x3f8Address_0200fd0c(battle);
+        GetField0x3acValue_020100a8(battle);
         VectorizedMemset(entryV, 0, 0x70);
         unsigned char* e = (unsigned char*)entryV;
         unsigned char one = 1;
@@ -178,7 +178,7 @@ extern "C" ARM int func_ov017_021ab280(struct Obj_021ab280* obj) {
 
         e[0xc] = 1;
         e[7] = 1;
-        CallFunc0200fbb4AtField0x3f8(battle, entryV);
+        CallFunc0200fbb4AtField0x3f8_0200fcfc(battle, entryV);
 
         InitAndResetHeader_0219e310(*(unsigned char**)(mgr + 0x3000 + kResourceHeaderOffset), 0);
         AppendNodeToTail(*(struct TailList020469b4**)(mgr + 0x3000 + kResourceTailOffset),

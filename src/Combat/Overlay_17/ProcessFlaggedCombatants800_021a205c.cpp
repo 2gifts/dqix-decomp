@@ -5,7 +5,7 @@
 struct Element0x318_02028bac { unsigned char data[0x318]; };
 struct Element0x318_02028bac* GetElementStride0x318(struct Element0x318_02028bac* base, int index);
 struct Entry_02028bd0;
-struct Entry_02028bd0* GetEntryTableBase(void);
+struct Entry_02028bd0* GetEntryTableBase_02027ca4(void);
 extern "C" void func_020733d8(void* elem, int mode);
 
 struct EntryFlags_021a205c { unsigned short pad0 : 3; unsigned short flag3 : 1; unsigned short pad4 : 12; };
@@ -13,7 +13,7 @@ struct EntryFlags_021a205c { unsigned short pad0 : 3; unsigned short flag3 : 1; 
 // USA: func_ov017_021a205c
 ARM void ProcessFlaggedCombatants800_021a205c(GameResources*) {
 	GameState* battleStruct = GameState::GetInstance();
-	struct Element0x318_02028bac* table = (struct Element0x318_02028bac*)GetEntryTableBase();
+	struct Element0x318_02028bac* table = (struct Element0x318_02028bac*)GetEntryTableBase_02027ca4();
 	(int)BackgroundLoader::GetInstance();
 	for (int i = 0; i < 4; i++) {
 		battleStruct->GetPartyMemberByIndex(i);

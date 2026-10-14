@@ -5,7 +5,7 @@
 struct Obj021f9bb0;
 struct Info02011930;
 
-int GetWord0x0(int* obj);
+int GetWord0x0_0200fb8c(int* obj);
 struct GameResources;
 int IsBrightnessTransitionActive(GameResources*);
 extern "C" void* func_ov011_021849c8(void* obj);
@@ -18,10 +18,10 @@ extern "C" void* func_02012fe4(void);
 extern "C" int func_0202c540(void* p);
 unsigned char GetAndConsumeNameEntries02011930(void* obj, struct Info02011930* info, void* name1, void* name2);
 int GetScaledStat_021634dc_021634dc(void* a);
-unsigned char CopyToRegion0x6482IfDst(char* obj, void* dst);
+unsigned char CopyToRegion0x6482IfDst_020119f8(char* obj, void* dst);
 unsigned int GetShort28_021f9bb0(struct Obj021f9bb0* obj);
 unsigned int GetFieldShort36_021f9ba0(void* obj);
-int IsGlobalU16InRange(GameState* state);
+int IsGlobalU16InRange_020117f0(GameState* state);
 
 extern char* data_ov004_02171010;
 
@@ -46,7 +46,7 @@ extern "C" ARM int func_ov004_02165630(void* a) {
     if (!node || func_ov023_021f6f10(node) != 7) return 0;
 
     GameState* state = GameState::GetInstance();
-    if (IsBrightnessTransitionActive((GameResources*)((int*)GetWord0x0((int*)state))) != 0) {
+    if (IsBrightnessTransitionActive((GameResources*)((int*)GetWord0x0_0200fb8c((int*)state))) != 0) {
         node->active = 0;
         return 0;
     }
@@ -63,7 +63,7 @@ extern "C" ARM int func_ov004_02165630(void* a) {
             return 0;
         }
         func_ov011_021848a0(a, 0x68);
-    } else if (CopyToRegion0x6482IfDst((char*)state, NULL) != 0) {
+    } else if (CopyToRegion0x6482IfDst_020119f8((char*)state, NULL) != 0) {
         unsigned int k = GetShort28_021f9bb0((struct Obj021f9bb0*)node2);
         if (*(unsigned char*)(data_ov004_02171010 + k * recordStride + 0xad4) != 3) {
             node->active = 0;
@@ -75,7 +75,7 @@ extern "C" ARM int func_ov004_02165630(void* a) {
         func_02012fe4();
         if (func_0202c540(search)) {
             func_ov011_021848a0(a, 0x6e);
-        } else if (IsGlobalU16InRange(state)) {
+        } else if (IsGlobalU16InRange_020117f0(state)) {
             func_ov011_021848a0(a, 0x76);
         } else {
             short x = node2->x;

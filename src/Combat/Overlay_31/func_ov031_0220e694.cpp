@@ -3,7 +3,7 @@
 extern "C" void func_ov031_0220da1c(int);
 extern "C" void func_ov031_0220db6c(void);
 extern "C" void func_ov031_0220d984(int, int, int, int);
-extern int IssueBattleCommandSlot13(int, unsigned int);
+extern int IssueBattleCommandSlot13_020d559c(int, unsigned int);
 extern void* data_ov031_0224e53c;
 
 struct TypeStruct_0220e694 { short f0; unsigned short type; };
@@ -20,7 +20,7 @@ extern "C" ARM void func_ov031_0220e694(struct TypeStruct_0220e694 *s) {
 			func_ov031_0220db6c();
 			return;
 		}
-		int r = IssueBattleCommandSlot13((int)func_ov031_0220e4bc, 0);
+		int r = IssueBattleCommandSlot13_020d559c((int)func_ov031_0220e4bc, 0);
 		if (r == 2) return;
 		if (r == 3) goto case0_r3;
 		if (r != 8) goto case0_r740;

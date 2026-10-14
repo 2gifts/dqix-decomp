@@ -18,20 +18,20 @@ extern "C" void* func_0202ae18(void);
 extern "C" void func_02012de8(void);
 
 void RunOverlayScript0216d1c4(int, StreamHeader*, int, int*);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 void BlankFunction020d84f4(void);
 void* ResetObjectState02079a3c(void* obj);
-int TestBitAt0x34(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
 int CheckField0x56bLowNibble(Obj02061bd8* obj);
 void CopyInternalFields0207df50(Foo0207df50* p);
 void RestorePairTables0207df90(char* obj);
 void BackupPairTables0207dfac(char* obj);
 void FormatEffectStats02072c9c(int combatantId, char* buf);
-void ClearEightWords(Struct_203dafc* obj);
+void ClearEightWords_0203dafc(Struct_203dafc* obj);
 extern "C" void func_02049c88(void* obj, void* state);
-void SetPtrFieldIfNonNull0x13c(void*, int);
+void SetPtrFieldIfNonNull0x13c_ov000_02165480(void*, int);
 struct CombatantData02164fac;
-CombatantData02164fac* GetFieldAt0x150(unsigned char* obj);
+CombatantData02164fac* GetFieldAt0x150_02053c6c(unsigned char* obj);
 extern "C" void func_ov000_02166a94(void* work);
 int GetFieldB08_0219e008(void* ov);
 void CopyState0207dfc8(State0207dfc8* src, State0207dfc8* dst);
@@ -112,7 +112,7 @@ extern "C" ARM void func_ov000_02164fac(BattleWork02164fac* work) {
     CopyInternalFields0207df50((Foo0207df50*)&blocks[7]);
     BackgroundLoader::AddLockGlobal();
     func_02012de8();
-    ActionDataTables* table = GetData02108e10();
+    ActionDataTables* table = GetData02108e10_020797dc();
     work->tableAllocator.Reset();
     func_02079cf8(table, allocator, &work->tableAllocator);
     func_02012de8();
@@ -124,7 +124,7 @@ extern "C" ARM void func_ov000_02164fac(BattleWork02164fac* work) {
             RunOverlayScript0216d1c4(work->scriptOwner, (StreamHeader*)script, scriptSize, &work->scriptState);
         }
     }
-    if (CheckField0NonZero(search)) {
+    if (CheckField0NonZero_0202b7d8(search)) {
         BlankFunction020d84f4();
     }
 
@@ -138,10 +138,10 @@ extern "C" ARM void func_ov000_02164fac(BattleWork02164fac* work) {
         capacity -= size;
 
         for (int i = 0; i < 4; i++) {
-            if (!TestBitAt0x34(work->roster, (unsigned char)i)) {
+            if (!TestBitAt0x34_020a35e0(work->roster, (unsigned char)i)) {
                 continue;
             }
-            Combatant02164fac* c = (Combatant02164fac*)GetCombatantWithFlag0x100(game, i);
+            Combatant02164fac* c = (Combatant02164fac*)GetCombatantWithFlag0x100_0200ff1c(game, i);
             unsigned char* model;
             if (c == NULL || (model = c->model) == NULL) {
                 continue;
@@ -173,7 +173,7 @@ extern "C" ARM void func_ov000_02164fac(BattleWork02164fac* work) {
             if (size != 0) {
                 c->object.RemoveAllAnimationPackages();
                 ((SafeAllocator*)(model + 0x52c))->Reset();
-                ClearEightWords((Struct_203dafc*)&info);
+                ClearEightWords_0203dafc((Struct_203dafc*)&info);
                 info.allocator = alloc;
                 info.unk_10 = 1;
                 info.packageID = 0;
@@ -200,7 +200,7 @@ extern "C" ARM void func_ov000_02164fac(BattleWork02164fac* work) {
             if (size != 0) {
                 c->object.RemoveAnimationPackageByID(1);
                 ((SafeAllocator*)(model + 0x540))->Reset();
-                ClearEightWords((Struct_203dafc*)&info2);
+                ClearEightWords_0203dafc((Struct_203dafc*)&info2);
                 info2.unk_10 = 1;
                 info2.packageID = 1;
                 info2.allocator = (SafeAllocator*)(model + 0x540);
@@ -209,19 +209,19 @@ extern "C" ARM void func_ov000_02164fac(BattleWork02164fac* work) {
                 c->object.LoadFromCCHROrCMOTArchive(&info2, NULL);
                 if (FindFilesInNarcBySubstring(buf, data_ov000_021839e2, &script2, &scriptSize2, 1)) {
                     RunOverlayScript0216d1c4((int)(model + 0x540), (StreamHeader*)script2, scriptSize2, &scriptState);
-                    SetPtrFieldIfNonNull0x13c(c, scriptState);
+                    SetPtrFieldIfNonNull0x13c_ov000_02165480(c, scriptState);
                 }
             }
 
             c->flags |= 0x20;
             c->object.MaybeSetRegularAnimation(data_ov000_021839e8, 0);
             if (CheckField0x56bLowNibble((Obj02061bd8*)c)) {
-                CombatantData02164fac* data = GetFieldAt0x150((unsigned char*)c);
+                CombatantData02164fac* data = GetFieldAt0x150_02053c6c((unsigned char*)c);
                 if (data != NULL) {
                     data->phase = 0;
                 }
             }
-            if (CheckField0NonZero(search)) {
+            if (CheckField0NonZero_0202b7d8(search)) {
                 BlankFunction020d84f4();
             }
         }

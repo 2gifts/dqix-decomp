@@ -67,8 +67,8 @@ void ResetList0204af64(List0204af64* background);
 void ResetListHeader020727d8(List020727d8* texts);
 void ResetStruct020dfc40(Struct020dfc40* texts);
 void ResetSubStruct02189228(void* entry);
-PartyMemberData* GetFieldAt0x150(unsigned char* member);
-int CheckField0NonZero(int*);
+PartyMemberData* GetFieldAt0x150_02053c6c(unsigned char* member);
+int CheckField0NonZero_0202b7d8(int*);
 
 struct VisitorTalk
 {
@@ -210,7 +210,7 @@ extern "C" ARM void func_ov008_02188f5c(VisitorTalk* self, signed char member, G
         GameObject* object = gameState->GetPartyMemberByIndex(member);
         if (object != NULL)
         {
-            PartyMemberData* data = GetFieldAt0x150((unsigned char*)object);
+            PartyMemberData* data = GetFieldAt0x150_02053c6c((unsigned char*)object);
             if (data != NULL)
             {
                 ResetSubStruct02189228(&self->entry_);
@@ -223,7 +223,7 @@ extern "C" ARM void func_ov008_02188f5c(VisitorTalk* self, signed char member, G
                 memcpy(self->entry_.name_, name, sizeof(self->entry_.name_));
 #endif
                 self->entry_.used_ = 1;
-                if (CheckField0NonZero((int*)func_0202ae18()))
+                if (CheckField0NonZero_0202b7d8((int*)func_0202ae18()))
                 {
                     func_ov017_021d1014(member, 0, 0);
                     func_ov017_021d1118(member, 1, 1, 0);

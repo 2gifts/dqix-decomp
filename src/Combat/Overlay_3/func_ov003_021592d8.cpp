@@ -50,15 +50,15 @@ struct BattleMenu021592d8 {
 };
 
 struct MessageWork021592d8* GetGlobalField0x1c020421a0();
-struct VocationData021592d8* GetFieldAt0x150(unsigned char* obj);
+struct VocationData021592d8* GetFieldAt0x150_02053c6c(unsigned char* obj);
 extern "C" void func_02046380(void* obj);
 void InitObjFromCombatantId020e4bf4(void* obj, int combatantId);
 int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 void SetIndexedName02046574(struct Obj02046574* obj, int index, char* str);
 void* Clear0x54Bytes0208247c(void* obj);
 extern "C" int func_02082490(void* output, void* resource, unsigned int size, int selection, int extra);
-void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
-void SetByteInRange(unsigned char* base, int index, unsigned char value);
+void StoreInArray0x8b0_020465c0(struct StoreStruct* base, int index, int value);
+void SetByteInRange_020465f0(unsigned char* base, int index, unsigned char value);
 extern "C" void func_02046608(void* messages, int a, const char* input, char* output, int b, int c, int d);
 
 extern char data_ov003_0217fe18[];
@@ -71,7 +71,7 @@ extern "C" ARM void func_ov003_021592d8(struct BattleMenu021592d8* self, struct 
         return;
     }
     struct MessageWork021592d8* work = GetGlobalField0x1c020421a0();
-    struct VocationData021592d8* data = GetFieldAt0x150((unsigned char*)combatant);
+    struct VocationData021592d8* data = GetFieldAt0x150_02053c6c((unsigned char*)combatant);
     int vocation = data->vocation;
     func_02046380(work);
 #if defined(jpn)
@@ -104,8 +104,8 @@ extern "C" ARM void func_ov003_021592d8(struct BattleMenu021592d8* self, struct 
             remaining = entry->exp - data->exp[vocation];
         }
         if (remaining > 0) {
-            StoreInArray0x8b0((struct StoreStruct*)work, 0, remaining);
-            SetByteInRange((unsigned char*)work, 0, 0);
+            StoreInArray0x8b0_020465c0((struct StoreStruct*)work, 0, remaining);
+            SetByteInRange_020465f0((unsigned char*)work, 0, 0);
             key = 0x3fd;
         } else {
             key = 0x3ff;

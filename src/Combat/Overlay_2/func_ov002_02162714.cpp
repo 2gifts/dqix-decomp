@@ -10,11 +10,11 @@ void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char 
                                                                         unsigned char keyHigh);
 int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
 int CheckFlagOrThreshold_02161b48(char *self, int flag);
-int TestFlag0SetAndFlag1Clear(unsigned short *obj, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short *obj, int mask);
 struct Obj_0205da38;
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
-int GetWord0x0(int *p);
-void *GetFieldAt0x150(unsigned char *p);
+int GetWord0x0_0200fb8c(int *p);
+void *GetFieldAt0x150_02053c6c(unsigned char *p);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0 *obj, int a, int b);
 int GetCountByType02157108(void *self, int type);
 Obj020d7aa0 *GetGlobalResetObj020d7a50();
@@ -44,7 +44,7 @@ extern "C" ARM void func_ov002_02162714(char *self) {
         if (old != *(short *) (self + 0x1be4)) {
             return;
         }
-        int a  = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
+        int a  = TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x601);
         int b  = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(self + 0xec8), 0x14);
         int ok = (a | b) ? 1 : 0;
         if (ok) {
@@ -52,10 +52,10 @@ extern "C" ARM void func_ov002_02162714(char *self) {
             if (flags & 2) return;
             if (!(flags & 0x10)) return;
             GameState *gs = GameState::GetInstance();
-            GetWord0x0((int *) gs);
+            GetWord0x0_0200fb8c((int *) gs);
             GameObject *prot = gs->GetProtagonist();
             if (prot != 0) {
-                *(short *) ((char *) GetFieldAt0x150((unsigned char *) prot) + 0x95a) = *(short *) (self + 0x1be4);
+                *(short *) ((char *) GetFieldAt0x150_02053c6c((unsigned char *) prot) + 0x95a) = *(short *) (self + 0x1be4);
             }
             switch (*(short *) (self + 0x1be4)) {
                 case 0:

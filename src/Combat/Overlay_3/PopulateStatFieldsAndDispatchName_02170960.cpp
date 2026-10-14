@@ -11,7 +11,7 @@ extern "C" void func_020e4b34(Dest_020e4b34* dst, void* a1, int a2, unsigned int
     unsigned char b0, unsigned char b1, unsigned char b2, unsigned char b3,
     unsigned char b4, unsigned char b5, unsigned char b6, unsigned char b7);
 
-int CallFunc020e0434With02153694(int value);
+int CallFunc020e0434With02153694_020e51cc(int value);
 
 struct Container020e0310;
 int GetFieldByKey020e0434(struct Container020e0310* c, int key);
@@ -44,7 +44,7 @@ extern "C" ARM void func_ov003_02170960(struct Obj02170960* obj, int key, struct
         func_020e4b34(&structA, buf, 0, 0, 0, 0, 0, p3->bit0, 0, 1, 0, 1);
         *(void**)(g + 0x10) = &structA;
 
-        int fmt = CallFunc020e0434With02153694(p3->nibble);
+        int fmt = CallFunc020e0434With02153694_020e51cc(p3->nibble);
 
         func_020e4b34(&structB, (void*)fmt, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         *(void**)(g + 0x28) = &structB;

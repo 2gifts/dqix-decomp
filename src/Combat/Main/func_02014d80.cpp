@@ -29,7 +29,7 @@ struct AnimationTable14D { AnimationResource14D entries[5]; };
 #define data_020e6fa8 data_020e784c
 #endif
 extern const AnimationTable14D data_020e6fa8;
-const char* GetPointerFromArray0x18(Container_1f368*, int);
+const char* GetPointerFromArray0x18_0201f368(Container_1f368*, int);
 void CallHandlerFlag0_020e2fc0(RenderCommandHandler*);
 
 // USA: func_02014d80
@@ -43,7 +43,7 @@ extern "C" ARM int func_02014d80(Zone3D* zone, void* nodeData, Struct02012ff0* t
     LightingManager* lighting = LightingManager::GetInstance();
     int lightingIndex = lighting->timeOfDayIndex_;
     Zone3D::Model3DListNode* alternate = 0;
-    int tinted = ((ZoneLoadState*)GetField0x3f8Address(game))->unknown20 < 0;
+    int tinted = ((ZoneLoadState*)GetField0x3f8Address_0200fd0c(game))->unknown20 < 0;
     zone->unknown_834_ = tinted;
     for (ResourceRecord14D* candidate = record->next; candidate; candidate = candidate->next) {
         if (candidate->lightingIndex == lightingIndex) { record = candidate; break; }
@@ -77,7 +77,7 @@ extern "C" ARM int func_02014d80(Zone3D* zone, void* nodeData, Struct02012ff0* t
             int index;
             for (index = 0; index < 8; index++) {
                 if (record->textureMask & (1 << index)) {
-                    name = GetPointerFromArray0x18(&node->names, index);
+                    name = GetPointerFromArray0x18_0201f368(&node->names, index);
                     if (name) {
                         alternate = first;
                         while (alternate) {

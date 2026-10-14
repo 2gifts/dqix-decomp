@@ -5,11 +5,11 @@
 #include "Memory/AllocatorUnion.h"
 #include "System/Memory.h"
 
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
-char* FindEntryAndGetNext(void* a, char* b, unsigned int* outSize);
-int GetCharBlock(void* file, void** out);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
+char* FindEntryAndGetNext_020467c0(void* a, char* b, unsigned int* outSize);
+int GetCharBlock_020b01a4(void* file, void** out);
 struct Hdr02b0288;
-int FindPlttChunkAndRelocate(struct Hdr02b0288* h, void** out);
+int FindPlttChunkAndRelocate_020b01f0(struct Hdr02b0288* h, void** out);
 extern "C" void func_020c9be0(void);
 
 extern AllocatorUnion data_02114e20;
@@ -49,7 +49,7 @@ ARM void LoadObjLoadingGraphicsResources(Manager020db0f0* mgr) {
     PlttChunkData020db0f0* plttChunk;
     void* buf;
 
-    mgr->allocator.CreateTypeA(AllocateAligned4(&data_02114e20, 0x300), 0x300);
+    mgr->allocator.CreateTypeA(AllocateAligned4_02012d88(&data_02114e20, 0x300), 0x300);
     mgr->allocator.Reset();
     BackgroundLoader::AddLockGlobal();
 
@@ -60,11 +60,11 @@ ARM void LoadObjLoadingGraphicsResources(Manager020db0f0* mgr) {
 
     characterFileLength = 0;
     paletteFileLength = 0;
-    ncgrEntry = FindEntryAndGetNext(buf, (char*)&data_020f2925, &characterFileLength);
-    nclrEntry = (Hdr02b0288*)FindEntryAndGetNext(buf, (char*)&data_020f2936, &paletteFileLength);
+    ncgrEntry = FindEntryAndGetNext_020467c0(buf, (char*)&data_020f2925, &characterFileLength);
+    nclrEntry = (Hdr02b0288*)FindEntryAndGetNext_020467c0(buf, (char*)&data_020f2936, &paletteFileLength);
 
     charBlock = NULL;
-    if (!GetCharBlock(ncgrEntry, (void**)&charBlock)) {
+    if (!GetCharBlock_020b01a4(ncgrEntry, (void**)&charBlock)) {
         func_020c9be0();
     }
 
@@ -73,7 +73,7 @@ ARM void LoadObjLoadingGraphicsResources(Manager020db0f0* mgr) {
     VectorizedInvertedMemcpy(charBlock->data, mgr->charBuf, mgr->charBufSize);
 
     plttChunk = NULL;
-    if (!FindPlttChunkAndRelocate(nclrEntry, (void**)&plttChunk)) {
+    if (!FindPlttChunkAndRelocate_020b01f0(nclrEntry, (void**)&plttChunk)) {
         func_020c9be0();
     }
 

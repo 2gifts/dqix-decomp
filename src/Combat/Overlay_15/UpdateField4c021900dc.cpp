@@ -3,7 +3,7 @@
 struct IndexNode_0202a9ac;
 struct IndexList_0202a9ac;
 struct IndexNode_0202a9ac* GetNodeAtIndex(struct IndexList_0202a9ac* list, int index);
-void* GetSubstructAt0x4(void* base);
+void* GetSubstructAt0x4_02029560(void* base);
 extern "C" void* func_ov015_0218f39c(void* obj, void* param2);
 
 struct Obj021900dc {
@@ -23,7 +23,7 @@ ARM void UpdateField4c021900dc(struct Obj021900dc* obj) {
 	if (node == 0) {
 		return;
 	}
-	sub = GetSubstructAt0x4(node);
+	sub = GetSubstructAt0x4_02029560(node);
 	result = func_ov015_0218f39c(obj, sub);
 	if (result != 0) {
 		obj->field4c = *(int*)((char*)result + 0x18);

@@ -290,7 +290,7 @@ extern "C"
     // usa: func_020c3554
     // works like Atan2 but the range is rescaled so that pi = 0x8000,
     // so for example (x = 0, y > 0) gives 0x4000 = 4.0
-    fix32_t fix32_Atan2_Rescaled(fix32_t y, fix32_t x);
+    fix32_t fix32_Atan2_Rescaled_020c3544(fix32_t y, fix32_t x);
 
 #ifdef __cplusplus
 }

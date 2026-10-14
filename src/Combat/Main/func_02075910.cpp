@@ -11,8 +11,8 @@ struct Flag02108dfc {
 extern struct Flag02108dfc data_02108dfc;
 extern unsigned char data_020f0dc8;
 
-void SelectBattleContextMode2(int mode);
-int GetBattleSysInnerField4();
+void SelectBattleContextMode2_020d0040(int mode);
+int GetBattleSysInnerField4_020d06d4();
 void PrepareAndCommit020d0050(int value);
 int GetCardReadManagerSharedStatus();
 int ForwardWaitForField0x114Bit4ClearIsNull020d0834();
@@ -35,17 +35,17 @@ extern "C" ARM int func_02075910(int a1, int a2, int a3, int a4) {
 
     data_02108dfc.flag = 0;
     int result = 1;
-    SelectBattleContextMode2((int)data_02108dfc.value);
+    SelectBattleContextMode2_020d0040((int)data_02108dfc.value);
 
-    int b = ((GetBattleSysInnerField4() & 0xff) == 1);
+    int b = ((GetBattleSysInnerField4_020d06d4() & 0xff) == 1);
     if (b) {
         func_020d05ec(a1, a2, a3, EmptyDestructor020758a0, 0, 1, 6, 1, 0);
     } else {
-        b = ((GetBattleSysInnerField4() & 0xff) == 2);
+        b = ((GetBattleSysInnerField4_020d06d4() & 0xff) == 2);
         if (b) {
             func_020d05ec(a1, a2, a3, EmptyDestructor020758a0, 0, 1, 6, 1, 0);
         } else {
-            b = ((GetBattleSysInnerField4() & 0xff) == 3);
+            b = ((GetBattleSysInnerField4_020d06d4() & 0xff) == 3);
             if (b) {
                 func_020d05ec(a1, a2, a3, EmptyDestructor020758a0, 0, 1, 6, 1, 0);
             }

@@ -3,7 +3,7 @@
 class GameState;
 
 extern "C" GameState *_ZN9GameState11GetInstanceEv();
-unsigned char *GetCombatantWithFlag0x100(GameState *gs, int slot);
+unsigned char *GetCombatantWithFlag0x100_0200ff1c(GameState *gs, int slot);
 extern "C" int func_020dc920(int a, int b, int c, int d);
 int TestFlagBit55dIfActive_0218b628(int bit);
 extern int data_020fdcb0[][8];
@@ -20,7 +20,7 @@ extern "C" ARM int func_ov002_02159774(char *self, int id, int check, int a, uns
     unsigned char *c;
     float cur, max, ratio;
     int res;
-    c = GetCombatantWithFlag0x100(_ZN9GameState11GetInstanceEv(), id);
+    c = GetCombatantWithFlag0x100_0200ff1c(_ZN9GameState11GetInstanceEv(), id);
     if (c == 0) return 3;
     if (check) {
         int special = 0;

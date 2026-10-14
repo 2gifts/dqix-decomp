@@ -8,9 +8,9 @@
 struct GameObject;
 struct CombatState020e3c34;
 void Init020e3c34(CombatState020e3c34* p);
-GameObject* GetCombatantWithFlag0x100(GameState* gameState, int combatantId);
-int GetFieldAt0x150(unsigned char* obj);
-int GetField0x3acValue(GameState* gameState);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* gameState, int combatantId);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
+int GetField0x3acValue_020100a8(GameState* gameState);
 extern "C" int func_020897b4(int a, int b, int c, int d, int e, int f, int g, int h, int i);
 extern "C" int func_ov017_0218f5a4(char* self, int combatantId, int flag2, int flag3, int flag4);
 extern char* data_020ee9cc[];
@@ -35,11 +35,11 @@ struct CombatState020e3c34 {
 extern "C" ARM void func_020e3c94(CombatState020e3c34* obj) {
     GameState* gs = GameState::GetInstance();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
-    GameObject* combatant = GetCombatantWithFlag0x100(gs, obj->byte9);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(gs, obj->byte9);
     unsigned char* base = 0;
 
     if (combatant) {
-        base = (unsigned char*)GetFieldAt0x150((unsigned char*)combatant);
+        base = (unsigned char*)GetFieldAt0x150_02053c6c((unsigned char*)combatant);
     }
 
     if (obj->word_1c == 0) {
@@ -87,7 +87,7 @@ extern "C" ARM void func_020e3c94(CombatState020e3c34* obj) {
                  obj->byte_24, (int)ptr0, (int)len0, (int)ptr1, (int)len1);
 
     if (base) {
-        if ((obj->word_20 & 1) && (obj->byte9 == GetField0x3acValue(gs))) {
+        if ((obj->word_20 & 1) && (obj->byte9 == GetField0x3acValue_020100a8(gs))) {
             *(unsigned short*)(base + 0x564) = v;
         }
         if (obj->word_20 & 2) {

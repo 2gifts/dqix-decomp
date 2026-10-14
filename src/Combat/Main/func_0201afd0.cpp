@@ -39,11 +39,11 @@ struct Elem02094d14;
 extern "C" void* func_0202ae18();
 void ComputeElapsedTime020105a8(TimeStamp020105a8*, int*);
 int GenerateGrottoObjectPositionOrientation(void*, int, int, int*, int*, const TileFeaturePlacementData*, bool);
-Entry_1e690* FindEntryById(EntryList_1e690*, int);
+Entry_1e690* FindEntryById_0201e690(EntryList_1e690*, int);
 void ClearThreeWords02094d00(ClearThreeWords02094d00Struct*);
 void AllocateArray02094cdc(AllocDest02094cdc*, int, SafeAllocator*);
 int GetBit5cd0(S_02011430*, int, int);
-int CheckField0NonZero(int*);
+int CheckField0NonZero_0202b7d8(int*);
 void CopyElemToIndex(Container02094d14*, Elem02094d14*, int);
 void ZeroInit020de848(void*);
 extern "C" int func_020de9a4(void*, SafeAllocator*, void*, unsigned int, unsigned short*, unsigned short);
@@ -98,7 +98,7 @@ extern "C" ARM int func_0201afd0(Zone3D* zone, const void* treasureArchive, unsi
     }
 
     zone->unknown_47c_ = (ZoneChestRenderRecord*)zone->pAllocator_68_->Allocate(zone->numChests_ * sizeof(ZoneChestRenderRecord));
-    features->AllocateOpcode6aEntries(zone->numChests_, zone->pAllocator_68_);
+    features->AllocateOpcode6aEntries_0201e634(zone->numChests_, zone->pAllocator_68_);
     srand(GetFloorSeed0201afd0(grotto, zone->currentGrottoFloor_23ba_));
 
     for (i = 0; i < zone->numChests_; i++) {
@@ -165,7 +165,7 @@ extern "C" ARM int func_0201afd0(Zone3D* zone, const void* treasureArchive, unsi
             entry.unk_24 = xSq + zSq;
         }
         entry.pNext = NULL;
-        features->CreateOpcode6aEntry(entry);
+        features->CreateOpcode6aEntry_0201e710(entry);
     }
 
     {
@@ -203,7 +203,7 @@ extern "C" ARM int func_0201afd0(Zone3D* zone, const void* treasureArchive, unsi
         __clear(itemIDs, sizeof(itemIDs));
         itemCount = 0;
         for (index = 0; index < zone->numChests_; index++) {
-            ZoneFeatures::Opcode6aEntry* entry = (ZoneFeatures::Opcode6aEntry*)(FindEntryById((EntryList_1e690*)(features), index));
+            ZoneFeatures::Opcode6aEntry* entry = (ZoneFeatures::Opcode6aEntry*)(FindEntryById_0201e690((EntryList_1e690*)(features), index));
             const LootDistribution::Outcome* outcome = distribution.Sample(ranks[index]);
 
             if (outcome != NULL) {
@@ -224,7 +224,7 @@ extern "C" ARM int func_0201afd0(Zone3D* zone, const void* treasureArchive, unsi
                     record->active = 1;
                     record->angleX = 0x647a;
                 }
-                if (CheckField0NonZero((int*)(search))) {
+                if (CheckField0NonZero_0202b7d8((int*)(search))) {
                     record->special = 1;
                 }
                 if (outcome->lootType == 2) {

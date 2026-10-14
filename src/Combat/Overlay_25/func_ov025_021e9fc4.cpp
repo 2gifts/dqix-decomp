@@ -20,7 +20,7 @@ struct ListNode021600f8 {
     ListNode021600f8* next;
 };
 struct Self021ed634;
-void* GetActiveCombatWork();
+void* GetActiveCombatWork_ov000_02160130();
 void* GetSlotPtr02160f20(void*);
 int CheckOrSetFlagA0_0216fd38(Struct0216fd38*);
 void AppendUniqueShort0216fdf8(ShortSetStruct0216fdf8*, int);
@@ -63,7 +63,7 @@ extern "C" ARM void func_ov025_021e9fc4(char* self) {
         if ((*(unsigned char*)(self + 0x87c)) != 0) func_ov025_021ed634((Self021ed634*)(self + 0x5e8));
     } else if (((int*)(self + 0x10))[(unsigned char)self[0x30]] != 0 &&
                CheckOrSetFlagA0_0216fd38((Struct0216fd38*)(self + 0x798)) != 0) {
-        unsigned char* slot = (unsigned char*)GetSlotPtr02160f20(GetActiveCombatWork());
+        unsigned char* slot = (unsigned char*)GetSlotPtr02160f20(GetActiveCombatWork_ov000_02160130());
         AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)(self + 0x798), ((short*)(slot + 0x18))[0]);
         AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)(self + 0x798), ((short*)(slot + 0x18))[1]);
         AppendUniqueShort0216fdf8((ShortSetStruct0216fdf8*)(self + 0x798), ((short*)(slot + 0x18))[2]);

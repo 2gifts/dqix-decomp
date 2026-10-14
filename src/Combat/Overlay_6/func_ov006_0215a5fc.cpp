@@ -18,11 +18,11 @@ extern char data_ov006_0216032e[];
 extern char data_ov006_02160340[];
 extern char data_ov006_02160359[];
 
-int GetWord0x0(int* obj);
+int GetWord0x0_0200fb8c(int* obj);
 struct Actor0209c3b4;
 int SetStateAndDispatch0209c3b4(Actor0209c3b4*, int);
-void SetFogState(int, unsigned int, unsigned int, unsigned short);
-void Set3DClearColor(int, int, int, int, int);
+void SetFogState_020c54a4(int, unsigned int, unsigned int, unsigned short);
+void Set3DClearColor_020c5588(int, int, int, int, int);
 struct Struct020dfc40;
 void ResetStruct020dfc40(Struct020dfc40*);
 extern "C" void func_020dfec0(void*, void*, void*, unsigned int);
@@ -34,7 +34,7 @@ extern "C" void* GetSubBG0ScreenBase();
 extern "C" void* memset(void*, int, unsigned int);
 struct List0204af64;
 void ResetList0204af64(List0204af64*);
-void SetWord0x18ClearByte0x1f(unsigned char*, int);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char*, int);
 extern "C" void func_0204b5b4(void*, int);
 struct Obj0204b5e8;
 void DispatchViaTable0204b5e8(Obj0204b5e8*, int, int);
@@ -58,17 +58,17 @@ extern "C" void func_ov023_021e20f0(void*, void*, void*, unsigned int);
 extern "C" void* func_ov006_02157368(void*, int);
 extern "C" void func_0205a528(void*, void*, void*, void*);
 void InitStruct0205a444(char*);
-void Zero4Bytes(void*);
+void Zero4Bytes_020e526c(void*);
 extern "C" void func_020e5604(void*, void*, void*, unsigned int);
 extern "C" void func_0207f84c(void*);
 struct Obj0207f914;
 void SetFieldsFromFormattedValue0207f914(Obj0207f914*, int, int, int);
 extern "C" int func_0207f9f4(void*);
-void DispatchEntryOp0x10(void*, int);
+void DispatchEntryOp0x10_020810a0(void*, int);
 struct Manager0207f7f0;
 struct Node0207f7f0;
 void InitNodeChain0207f7f0(Manager0207f7f0*, Node0207f7f0*, int);
-void DispatchEntryOp0x8(void*, int);
+void DispatchEntryOp0x8_0208108c(void*, int);
 extern "C" void ColorEffect_ConfigureAlphaBlend(unsigned int*, int, int, int, int);
 extern "C" void func_ov006_02158de0(void*);
 extern "C" void func_ov006_02153744(void*, void*, void*, int);
@@ -81,7 +81,7 @@ struct StatusOwner02081164;
 void SetEntryFlag0x2ByShortId(StatusOwner02081164*, int, int);
 extern "C" void func_020813ec(void*, int);
 struct Obj2081;
-void* FindElementByByte0xc4(Obj2081*, int);
+void* FindElementByByte0xc4_02081da8(Obj2081*, int);
 extern "C" void __clear(void*, int);
 void* GetGlobalField0x1c020421a0();
 struct Container020e0310;
@@ -183,7 +183,7 @@ struct Frame {
 // USA: func_ov006_0215a5fc
 extern "C" ARM void func_ov006_0215a5fc(Scene* obj) {
     Frame f;
-    GetWord0x0((int*)GameState::GetInstance());
+    GetWord0x0_0200fb8c((int*)GameState::GetInstance());
     void* loader = BackgroundLoader::GetInstance();
     unsigned char st = obj->f390;
 
@@ -191,15 +191,15 @@ extern "C" ARM void func_ov006_0215a5fc(Scene* obj) {
         if ((obj->f394 & 2) == 0) {
             SetStateAndDispatch0209c3b4((Actor0209c3b4*)&data_02109bf4, 8);
         }
-        SetFogState(0, 0, 0, 0);
-        Set3DClearColor(0, 0, 0x7fff, 0, 0);
-        FontBankLoader* g = GetGlobal02109400();
+        SetFogState_020c54a4(0, 0, 0, 0);
+        Set3DClearColor_020c5588(0, 0, 0x7fff, 0, 0);
+        FontBankLoader* g = GetGlobal02109400_02094a00();
         BlankFunction02094b40(g);
         BlankFunction02094b34(g, 0x6c, 0x1fd, 0, 0);
         obj->f390 = obj->f390 + 1;
     }
     else if (st == 1) {
-        if (AlwaysTrue02094b4c(GetGlobal02109400()) != 0) {
+        if (AlwaysTrue02094b4c(GetGlobal02109400_02094a00()) != 0) {
             obj->f390 = obj->f390 + 1;
         }
     }
@@ -249,7 +249,7 @@ extern "C" ARM void func_ov006_0215a5fc(Scene* obj) {
         *(volatile unsigned int*)0x04001010 = 0;
         ((SafeAllocator*)((char*)obj->alloc + 0x3c))->Reset();
         ResetList0204af64((List0204af64*)((char*)obj + 0x54));
-        SetWord0x18ClearByte0x1f((unsigned char*)((char*)obj + 0x54), 0);
+        SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)((char*)obj + 0x54), 0);
         obj->f70 = (unsigned char)((obj->f70 & ~0xf) | 1);
         obj->f70 = (unsigned char)((obj->f70 & ~0xf0) | 0x30);
         func_0204b5b4((char*)obj + 0x54, 3);
@@ -273,7 +273,7 @@ extern "C" ARM void func_ov006_0215a5fc(Scene* obj) {
                     for (j = 0; j < 2; j++) {
                         unsigned char* o = (unsigned char*)obj->f1c + (j << 5);
                         ResetList0204af64((List0204af64*)o);
-                        SetWord0x18ClearByte0x1f((unsigned char*)o, 0);
+                        SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)o, 0);
                         Nib* nib = (Nib*)(o + 0x1c);
                         nib->lo = 1;
                         nib->hi = (unsigned char)(j + 1);
@@ -375,7 +375,7 @@ extern "C" ARM void func_ov006_0215a5fc(Scene* obj) {
             if (f.cd != 0) {
                 void* alloc = obj->alloc;
                 ((SafeAllocator*)((char*)alloc + 0x28))->Reset();
-                Zero4Bytes((char*)obj + 0x170);
+                Zero4Bytes_020e526c((char*)obj + 0x170);
                 func_020e5604((char*)obj + 0x170, (char*)alloc + 0x28, f.cd, f.cs);
             }
             ((BackgroundLoader*)loader)->RemoveTask(obj->f354);
@@ -400,7 +400,7 @@ extern "C" ARM void func_ov006_0215a5fc(Scene* obj) {
         }
     }
     else if (st == 0x10) {
-        DispatchEntryOp0x10(obj->f14, 1);
+        DispatchEntryOp0x10_020810a0(obj->f14, 1);
         {
             Node14* n2 = (Node14*)obj->f14;
             n2->f2c = obj->f1c;
@@ -408,8 +408,8 @@ extern "C" ARM void func_ov006_0215a5fc(Scene* obj) {
         }
         InitNodeChain0207f7f0((Manager0207f7f0*)obj->f14, (Node0207f7f0*)obj->f20, 7);
         ((Node14*)obj->f14)->f3a = 1;
-        DispatchEntryOp0x8(obj->f14, 0x20);
-        DispatchEntryOp0x8(obj->f14, 0x3e);
+        DispatchEntryOp0x8_0208108c(obj->f14, 0x20);
+        DispatchEntryOp0x8_0208108c(obj->f14, 0x3e);
         volatile unsigned short* bg = (volatile unsigned short*)0x04001008;
         bg[0] = bg[0] & ~3;
         bg[1] = (bg[1] & ~3) | 1;
@@ -435,7 +435,7 @@ extern "C" ARM void func_ov006_0215a5fc(Scene* obj) {
             SetEntryFlag0x2ByShortId((StatusOwner02081164*)obj->f14, 1, 1);
             func_020813ec(obj->f14, 0);
             func_020813ec(obj->f14, 1);
-            Canvas* cv = (Canvas*)FindElementByByte0xc4((Obj2081*)obj->f14, 1);
+            Canvas* cv = (Canvas*)FindElementByByte0xc4_02081da8((Obj2081*)obj->f14, 1);
             if (cv != 0) {
                 cv->fb8 = 0xc;
                 cv->fba = 0x10;

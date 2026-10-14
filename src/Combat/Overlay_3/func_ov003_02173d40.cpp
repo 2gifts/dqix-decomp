@@ -46,8 +46,8 @@ struct Struct02074bd0;
 void ClearFlag0x10IfSet(struct Struct02074bd0* obj);
 struct Struct02074bf4;
 void ClearFlag0x11IfSet(struct Struct02074bf4* obj);
-void ClearBitsInWord(unsigned int* obj, unsigned int mask);
-void ClearBitsInField4(unsigned int* obj, unsigned int mask);
+void ClearBitsInWord_0203b4b0(unsigned int* obj, unsigned int mask);
+void ClearBitsInField4_0203b4e8(unsigned int* obj, unsigned int mask);
 struct List020727d8 {
     void* entries;
     short capacity;
@@ -94,8 +94,8 @@ extern "C" ARM void func_ov003_02173d40(BattleScene_02173d40* scene) {
     volatile unsigned int* subDispcnt = (volatile unsigned int*)0x4001000;
     *subDispcnt = (*subDispcnt & ~0x1f00) | (scene->subBgPriority << 8);
 
-    ClearBitsInWord(&resources->brightnessFlags_0, 4);
-    ClearBitsInField4(&resources->brightnessFlags_0, 0x81e);
+    ClearBitsInWord_0203b4b0(&resources->brightnessFlags_0, 4);
+    ClearBitsInField4_0203b4e8(&resources->brightnessFlags_0, 0x81e);
     ResetListHeader020727ec(&scene->lists[0]);
     ResetListHeader020727ec(&scene->lists[1]);
     ResetListHeader020727ec(&scene->lists[2]);

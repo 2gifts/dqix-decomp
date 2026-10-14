@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 extern "C" int func_ov017_021d60f4(void*);
-void* GetWord0x0(int*);
+void* GetWord0x0_0200fb8c(int*);
 struct GameResources;
 void SetMainBrightness(GameResources*, int, int);
 
@@ -13,7 +13,7 @@ ARM int UpdateCounterFromBattleWordAlt_0215b4c0(void* self, int mode) {
         func_ov017_021d60f4((char*)self + 0x8);
     }
     void* battle = GameState::GetInstance();
-    void* obj = GetWord0x0((int*)battle);
+    void* obj = GetWord0x0_0200fb8c((int*)battle);
     if (obj != NULL) {
         SetMainBrightness((GameResources*)obj, 0, frames);
         func_ov017_0218b5b0();

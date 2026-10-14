@@ -70,7 +70,7 @@ extern "C" ARM void func_ov000_02171e60(struct CommandMenu* self) {
         SwapGlobalEntry0203c108(&self->message, GetFieldByKey020e0434(self->texts, 5));
         return;
     }
-    void* rec = SearchBothTables02079e2c((char*)GetData02108e10(), entry->recordId);
+    void* rec = SearchBothTables02079e2c((char*)GetData02108e10_020797dc(), entry->recordId);
     if (rec == NULL) {
         self->stackTop++;
         self->stack[self->stackTop] = 0xe;
@@ -83,7 +83,7 @@ extern "C" ARM void func_ov000_02171e60(struct CommandMenu* self) {
     if (self->stack[self->stackTop] == 0x13) {
         self->field_0x21 = 0;
         self->field_0x2e = self->field_0x4c;
-        if (((struct BattleInfo2a04*)GetPtrField0x2a04(GameState::GetInstance()))->mode == 1) {
+        if (((struct BattleInfo2a04*)GetPtrField0x2a04_02010828(GameState::GetInstance()))->mode == 1) {
             self->stack[self->stackTop] = 100;
         }
     }

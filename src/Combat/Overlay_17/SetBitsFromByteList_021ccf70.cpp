@@ -2,9 +2,9 @@
 
 #include "GameState/GameState.h"
 
-GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
-int GetFieldAt0x150(unsigned char* obj);
-void SetBitInArray0x910(unsigned char* obj, int index);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* battleStruct, int combatantId);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
+void SetBitInArray0x910_02083b60(unsigned char* obj, int index);
 
 struct Hdr021ccf70 {
 	unsigned char id : 3;
@@ -26,13 +26,13 @@ struct ByteBitListEvent {
 ARM void SetBitsFromByteList_021ccf70(int unused0, unsigned char* obj, GameState* battleStruct) {
     ByteBitList* list = &((ByteBitListEvent*)obj)->payload;
     Hdr021ccf70* hdr = &list->header;
-	GameObject* c = GetCombatantWithFlag0x100(battleStruct, hdr->id);
+	GameObject* c = GetCombatantWithFlag0x100_0200ff1c(battleStruct, hdr->id);
 	if (!c) return;
 
-	unsigned char* base = (unsigned char*)GetFieldAt0x150((unsigned char*)c);
+	unsigned char* base = (unsigned char*)GetFieldAt0x150_02053c6c((unsigned char*)c);
 	if (!base) return;
 
 	for (int i = 0; i < hdr->count; i++) {
-        SetBitInArray0x910(base, list->bitIndices[i]);
+        SetBitInArray0x910_02083b60(base, list->bitIndices[i]);
 	}
 }

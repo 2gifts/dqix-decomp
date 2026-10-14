@@ -182,10 +182,10 @@ CBool SetROMFilesystemRoot(const char* path)
     return true;
 }
 
-int GetGlobalWord02112140(void);
+int GetGlobalWord02112140_020d1198(void);
 void OnCartridgeDataLoadCompletion(NitroHandle* handle)
 {
-    int result = GetGlobalWord02112140() ? NITRO_RESULT_5 : NITRO_RESULT_SUCCESS;
+    int result = GetGlobalWord02112140_020d1198() ? NITRO_RESULT_5 : NITRO_RESULT_SUCCESS;
     NitroHandle_OnTaskCompletion(handle, result);
 }
 

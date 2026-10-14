@@ -9,10 +9,10 @@ struct Obj0205eaa0;
 void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char keyLow,
                                                                         unsigned char keyHigh);
 int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
-int TestFlag0SetAndFlag1Clear(unsigned short *p, int n);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short *p, int n);
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0 *o, int a, int b);
-int GetWord0x0(int *p);
+int GetWord0x0_0200fb8c(int *p);
 int CheckFlagOrThreshold_02161b48(char *base, int a);
 extern "C" void func_ov002_02161cf0(void *base);
 extern "C" void func_ov002_0215c2c8(void *base);
@@ -43,7 +43,7 @@ extern "C" ARM void func_ov002_0216257c(char *base) {
         *(unsigned int *) (base + 0x2000 + 0x47c) |= 4;
         *(short *) (base + 0x1b00 + 0xe2) =
             GetActiveScaledSum0205d794((struct Struct_0205c570 *) (base + 0x2c8 + 0xc00));
-        int a = TestFlag0SetAndFlag1Clear(data_02114e30, 0x601);
+        int a = TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x601);
         int b = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(base + 0x2c8 + 0xc00), 0x14);
         if ((a | b) ? 1 : 0) {
             *(signed char *) (base + 0x1000 + 0xc20) =
@@ -52,7 +52,7 @@ extern "C" ARM void func_ov002_0216257c(char *base) {
             if (!InRange0216257c(v)) return;
             *(unsigned int *) (base + 0x2000 + 0x47c) &= ~4;
             DispatchWithShortB4_0205eaa0((struct Obj0205eaa0 *) data_02108760, 1, 0);
-            SetNodeFieldsAndInsert_021a120c((GameResources*)GetWord0x0((int*)GameState::GetInstance()), 3, v);
+            SetNodeFieldsAndInsert_021a120c((GameResources*)GetWord0x0_0200fb8c((int*)GameState::GetInstance()), 3, v);
             *(int *) (base + 0x1000 + 0xbb8) = 0x2b;
             *(int *) (base + 0x1000 + 0xbc0) = 0;
             func_02012fe4();

@@ -4,7 +4,7 @@
 extern "C" void* func_ov017_021b8478(void* obj);
 extern "C" void* func_ov017_021b8468(void* obj);
 void* GetField6b0_021b8470(void* obj);
-int GetField0x3acValue(GameState* battleStruct);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 
 struct Ret021c6ca0 {
     unsigned char pad0[8];
@@ -35,7 +35,7 @@ extern "C" ARM void func_ov017_021c6ca0(int unused0, Src021c6ca0* src, GameState
     if (!r) return;
     if (!func_ov017_021b8468(h)) return;
     if (!GetField6b0_021b8470(h)) return;
-    if (r->field2a == GetField0x3acValue(battleStruct)) return;
+    if (r->field2a == GetField0x3acValue_020100a8(battleStruct)) return;
     if (r->field8 != src->field4) return;
     GameObject* c = battleStruct->GetCombatantByIndex(src->field6);
     if (!c) return;

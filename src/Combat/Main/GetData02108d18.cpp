@@ -6,6 +6,6 @@
 extern char data_02108d18;
 
 // USA: func_0206f504
-ARM void* GetData02108d18(void) {
+ARM void* GetData02108d18_0206f504(void) {
     return &data_02108d18;
 }

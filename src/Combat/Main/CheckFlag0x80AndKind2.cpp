@@ -10,7 +10,7 @@ struct S886f8 {
 };
 
 // USA: func_020886f8
-ARM int CheckFlag0x80AndKind2(struct S886f8* obj) {
+ARM int CheckFlag0x80AndKind2_020886f8(struct S886f8* obj) {
     if (obj->flags & 0x80) {
         if (obj->kind == 2) {
             return 1;

@@ -54,7 +54,7 @@ struct Globals0217101c {
 extern "C" void* func_0205ec34();
 void DispatchStateTransitions_02166608(void*);
 extern "C" Grid021f9b30* func_ov023_021f6524(void*, int);
-GetTableByteOrFFData* GetGlobal02109418();
+GetTableByteOrFFData* GetGlobal02109418_02094d6c();
 void GetGlobalField0x1c020421a0();
 extern "C" void func_ov023_021f65d4(void*, int, int);
 Found0208d994* FindElementByKey0208d994(List0208d994*, int);
@@ -62,11 +62,11 @@ extern "C" void _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(Grid021f9b30*, 
 Node02165ea4* SetFieldIfType1_02165ea4_02165ea4(void*, int, int);
 struct Struct0200fb08;
 int NormalizeField5_0200fb08(Struct0200fb08*);
-unsigned int GetTableByteOrFF(GetTableByteOrFFData*, unsigned char);
+unsigned int GetTableByteOrFF_020965ac(GetTableByteOrFFData*, unsigned char);
 int TestBitInByteArray02096100(int, unsigned char*, int);
 const char* Lookup4Entry_021f63ac(void*, int, int);
 extern "C" void* memset(void*, int, unsigned int);
-void AppendXTag(char*, int);
+void AppendXTag_02041a28(char*, int);
 void AppendString02042058(char*, const char*);
 extern "C" void func_ov023_021f63f8(void*, int, char*, int);
 void ClearNodeMaskById_021f6600(void*, int, int);
@@ -98,7 +98,7 @@ extern "C" ARM int func_ov004_02166bd8(void* a) {
         skip--;
         entry = entry->next;
     }
-    GetTableByteOrFFData* table = GetGlobal02109418();
+    GetTableByteOrFFData* table = GetGlobal02109418_02094d6c();
     GetGlobalField0x1c020421a0();
     unsigned char* bits = table->bits;
     for (short i = 0; i < 8; idA++, idB++, idC++, idD++, i++) {
@@ -136,7 +136,7 @@ extern "C" ARM int func_ov004_02166bd8(void* a) {
                     }
                     extra = 1;
                 }
-                unsigned int id = GetTableByteOrFF(table, (unsigned char)entry->key);
+                unsigned int id = GetTableByteOrFF_020965ac(table, (unsigned char)entry->key);
                 int seen = TestBitInByteArray02096100((int)table, bits + 0x400, id);
                 int type = 10;
                 const char* text = found->text;
@@ -155,9 +155,9 @@ extern "C" ARM int func_ov004_02166bd8(void* a) {
                 }
                 char* buf = data_ov004_0217101c.buffers[i];
                 memset(buf, 0, 0x80);
-                AppendXTag(buf, 0x1c);
+                AppendXTag_02041a28(buf, 0x1c);
                 AppendString02042058(buf, entry->name);
-                AppendXTag(buf, 0x2e);
+                AppendXTag_02041a28(buf, 0x2e);
                 if (text)
                     AppendString02042058(buf, text);
                 func_ov023_021f63f8(a, idA, buf, 0xf);

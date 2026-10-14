@@ -14,7 +14,7 @@ struct ResetFieldsStruct {
     int f14;
     short f18;
 };
-void ResetStructFields(struct ResetFieldsStruct* s);
+void ResetStructFields_02089db4(struct ResetFieldsStruct* s);
 void ForwardResetStructFields02089ddc(struct ResetFieldsStruct* s);
 void SetupHeaderAndRunBufferedScript02089de8(void* param0, void* param1, const char* param2);
 
@@ -30,7 +30,7 @@ struct Entry02089fb0* FindEntryBySignedId02089fb0(struct EntryArray02089fb0* arr
 
 extern "C" int func_020426bc(char* str, unsigned char* out, int id);
 
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
 extern AllocatorUnion data_02114e20;
 
@@ -51,9 +51,9 @@ extern "C" ARM void func_020a93e0(char* param0) {
             SafeAllocator localAlloc;
             localAlloc.ResetAllocatorPointer();
             localAlloc.ResetAllocatorPointer();
-            void* mem = AllocateAligned4(&data_02114e20, 0x800);
+            void* mem = AllocateAligned4_02012d88(&data_02114e20, 0x800);
             localAlloc.CreateTypeA(mem, 0x800);
-            ResetStructFields(&fields);
+            ResetStructFields_02089db4(&fields);
             SetupHeaderAndRunBufferedScript02089de8(&fields, &localAlloc, 0);
             end = *(unsigned char*)(param0 + 0x1d11) + *(unsigned char*)(param0 + 0x1d0c);
             for (; i < end; i++) {

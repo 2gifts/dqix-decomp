@@ -7,7 +7,7 @@ extern "C" int func_ov023_021f6f10(void* obj);
 struct Obj021f9bb0;
 unsigned int GetShort28_021f9bb0(struct Obj021f9bb0* obj);
 int GetScaledStat_021634dc_021634dc(void* self);
-void CopyInToRegion0x6482(char* dst, void* src);
+void CopyInToRegion0x6482_02011a24(char* dst, void* src);
 extern "C" void func_ov011_021848a0(void* obj, int val);
 extern "C" void func_ov017_0218d77c(GameResources* res, int val);
 
@@ -30,9 +30,9 @@ extern "C" ARM int func_ov004_02165a1c(void* self) {
     char* base = data_ov004_02171010;
     unsigned char kind = *(unsigned char*)((int)(base + 0xad5) + idx * entryStride);
     if (kind == 1) {
-        CopyInToRegion0x6482((char*)state, base + stat * 0x1c);
+        CopyInToRegion0x6482_02011a24((char*)state, base + stat * 0x1c);
     } else if (kind == 2) {
-        CopyInToRegion0x6482((char*)state, base + stat * 0x1c);
+        CopyInToRegion0x6482_02011a24((char*)state, base + stat * 0x1c);
     }
     func_ov011_021848a0(self, 0x73);
     func_ov017_0218d77c(func_ov017_0218b5b0(), 2);

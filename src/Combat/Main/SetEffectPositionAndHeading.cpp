@@ -17,7 +17,7 @@ struct Global020fdc20_d494 {
 extern struct Global020fdc20_d494 data_020fdc20;
 
 // USA: func_0201d494
-extern "C" ARM int _Z20WarpScript_Opcode_6ePN6Script9ParameterEi(void* arg0) {
+extern "C" ARM int _Z29WarpScript_Opcode_6e_0201d494PN6Script9ParameterEi(void* arg0) {
     int vec[3];
     struct TaggedValue02030b44* v = (struct TaggedValue02030b44*)_ZN6Script9Parameter9ToVec3fixEP8Vector3i((struct TaggedValue02030b44*)(arg0), (int*)(vec));
     float f = _ZNK6Script9Parameter7ToFloatEv(v);

@@ -22,7 +22,7 @@ struct TailList020469b4;
 struct TailNode020469b4;
 void AppendNodeToTail(struct TailList020469b4* list, struct TailNode020469b4* node);
 void InitAndResetHeader_0219e310(unsigned char* obj, int arg);
-void* GetField0x3f8Address(GameState* state);
+void* GetField0x3f8Address_0200fd0c(GameState* state);
 void InitStruct02070378(char* obj);
 
 struct Progress02012fe4 {
@@ -106,7 +106,7 @@ extern "C" ARM void func_ov003_0217d53c(State_0217d53c* self) {
         AppendNodeToTail(list, (struct TailNode020469b4*)event);
         unsigned char* header = *(unsigned char**)(res + kRegion370c);
         InitAndResetHeader_0219e310(header, 0);
-        EventRecord_0217d53c* record = (EventRecord_0217d53c*)GetField0x3f8Address(gs);
+        EventRecord_0217d53c* record = (EventRecord_0217d53c*)GetField0x3f8Address_0200fd0c(gs);
         InitStruct02070378((char*)record);
         record->id = 0xc3bc;
         record->field_0x7 = 1;

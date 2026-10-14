@@ -8,12 +8,11 @@ enum { kRegionValue1E6_1E2 = 0x1e6 };
 enum { kRegionValue1DC_1D8 = 0x1dc };
 #endif
 
-
 struct Obj2081;
 struct Elem2081;
-Elem2081* FindElementByByte0xc4(Obj2081* obj, int key);
+Elem2081* FindElementByByte0xc4_02081da8(Obj2081* obj, int key);
 
-int CheckField0x9cSetWhenField0xd4Present(unsigned char* obj);
+int CheckField0x9cSetWhenField0xd4Present_0204c7e0(unsigned char* obj);
 
 struct Outer020e28dc;
 int GetInnerFlagBit0020e28dc(struct Outer020e28dc* o);
@@ -36,11 +35,11 @@ extern "C" ARM void func_ov003_0215501c(unsigned char* self) {
     if (*(short*)(self + kRegionValue1E6_1E2) < 0) {
         return;
     }
-    Elem2081* elem = FindElementByByte0xc4(*(Obj2081**)(self + 0x18), *(short*)(self + kRegionValue1E6_1E2));
+    Elem2081* elem = FindElementByByte0xc4_02081da8(*(Obj2081**)(self + 0x18), *(short*)(self + kRegionValue1E6_1E2));
     if (elem == NULL) {
         return;
     }
-    if (CheckField0x9cSetWhenField0xd4Present((unsigned char*)elem) == 0 || *(void**)(self + 0x1c) == NULL) {
+    if (CheckField0x9cSetWhenField0xd4Present_0204c7e0((unsigned char*)elem) == 0 || *(void**)(self + 0x1c) == NULL) {
         return;
     }
     if (GetInnerFlagBit0020e28dc(*(Outer020e28dc**)(self + 0x1c)) != 0) {

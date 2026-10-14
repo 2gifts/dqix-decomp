@@ -13,8 +13,7 @@ enum { kRegionValue100E_F8A = 0x100e };
 enum { kRegionValue103A_FB6 = 0x103a };
 #endif
 
-
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 short FindMappedMemberId02080468(void* obj, int id);
 
 // USA: func_ov003_0217a220
@@ -23,7 +22,7 @@ ARM void ComputeMappedOffset_0217a220(unsigned char* obj) {
     GameState* bs = GameState::GetInstance();
     GameObject* c = bs->GetPartyMemberByIndex(*(signed char*)(obj + kRegionValue1043_FBF));
     if (c != NULL) {
-        unsigned char* base = (unsigned char*)GetFieldAt0x150((unsigned char*)c);
+        unsigned char* base = (unsigned char*)GetFieldAt0x150_02053c6c((unsigned char*)c);
         short id = FindMappedMemberId02080468(*(void**)(obj + kRegionValue89C_818), 0x15);
         short diff = *(short*)(obj + kRegionValue100E_F8A) - id;
         result = *(short*)(base + diff * 2 + 0x400 + 0x54);

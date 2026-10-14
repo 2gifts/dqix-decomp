@@ -6,7 +6,7 @@
 #include "System/Cache.h"
 
 GameObject* GetField4334_021bdbc0(unsigned char* base);
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
 
 struct SlotIdTable_0218fd34 {
@@ -93,7 +93,7 @@ extern "C" ARM void func_ov017_0218fd34(unsigned char* ov, int idx, unsigned sho
         size = tex->block4NumEightBytes_ << 3;
 
         if (mode == 0) {
-            bufs[i] = (unsigned short*)AllocateAligned4(&data_02114e20, size);
+            bufs[i] = (unsigned short*)AllocateAligned4_02012d88(&data_02114e20, size);
             if (bufs[i] == NULL) {
                 continue;
             }
@@ -119,7 +119,7 @@ extern "C" ARM void func_ov017_0218fd34(unsigned char* ov, int idx, unsigned sho
             CleanInvalidateCacheRange(bufs[i], size);
             StageMemoryToVRAM(VRAMSubregion_TexturePalette, bufs[i], offset, size, false, true);
         } else if (mode == 1) {
-            bufs[i] = (unsigned short*)AllocateAligned4(&data_02114e20, size);
+            bufs[i] = (unsigned short*)AllocateAligned4_02012d88(&data_02114e20, size);
             if (bufs[i] == NULL) {
                 continue;
             }
@@ -129,7 +129,7 @@ extern "C" ARM void func_ov017_0218fd34(unsigned char* ov, int idx, unsigned sho
             CleanInvalidateCacheRange(bufs[i], size);
             StageMemoryToVRAM(VRAMSubregion_TexturePalette, bufs[i], offset, size, false, true);
         } else if (mode == 2) {
-            bufs[i] = (unsigned short*)AllocateAligned4(&data_02114e20, size);
+            bufs[i] = (unsigned short*)AllocateAligned4_02012d88(&data_02114e20, size);
             if (bufs[i] == NULL) {
                 continue;
             }

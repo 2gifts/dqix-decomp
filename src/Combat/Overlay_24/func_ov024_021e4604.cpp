@@ -7,7 +7,7 @@ struct FlagObj_021e47dc;
 
 extern "C" int func_ov000_02156068(void* obj, int id, int a2, int a3);
 int IsFlagBit22Set_021e47dc(struct FlagObj_021e47dc* obj);
-void ClearFlag0x400000AndBytes(unsigned char* stats);
+void ClearFlag0x400000AndBytes_02088b34(unsigned char* stats);
 extern "C" void func_ov000_0215a004(void* a0, int id1, int id2, int flags, void* buf, int extra, int flag, int mode);
 extern "C" void func_ov000_02159eac(void* a0, void* buf, int a2);
 
@@ -47,7 +47,7 @@ extern "C" ARM unsigned long long func_ov024_021e4604(struct Obj_021e4604* obj, 
     local.lo = 0;
     local.hi = 0;
     if (IsFlagBit22Set_021e47dc((struct FlagObj_021e47dc*)c)) {
-        ClearFlag0x400000AndBytes((unsigned char*)c->currentStats_);
+        ClearFlag0x400000AndBytes_02088b34((unsigned char*)c->currentStats_);
         func_ov000_0215a004(obj->field0x10, srcId, id, GetCurrentHP(c) - 1, &local, extra, obj->ctl->flag != 0, 0);
         func_ov000_02159eac(obj->field0x10, &local, 0x29);
     } else {

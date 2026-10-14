@@ -10,7 +10,7 @@ struct Data02109404 {
 extern struct Data02109404 data_02109404;
 
 // USA: func_020954e8
-ARM int BumpCounterForValidVariant(struct Variant02030b0c* p) {
+ARM int BumpCounterForValidVariant_020954e8(struct Variant02030b0c* p) {
     int v = ((Script::Parameter*)p)->ToInt();
     if (v == 0xff || v == 0) {
         return 1;

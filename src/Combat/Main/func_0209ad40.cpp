@@ -5,11 +5,11 @@ struct Variant02030b0c { int tag; int u; };
 
 struct StoreCellWordHalfSource;
 struct StoreCellWordHalfRow;
-void StoreCellWordHalf(struct StoreCellWordHalfRow *base, int i, int j,
+void StoreCellWordHalf_0209b988(struct StoreCellWordHalfRow *base, int i, int j,
                        struct StoreCellWordHalfSource *src);
 
 struct GetRowByIndexRow;
-struct GetRowByIndexRow* GetRowByIndex(struct GetRowByIndexRow* base, int i);
+struct GetRowByIndexRow* GetRowByIndex_0209b9c0(struct GetRowByIndexRow* base, int i);
 
 struct Source0209ad40 {
     unsigned int w;
@@ -38,12 +38,12 @@ extern "C" ARM int func_0209ad40(struct Variant02030b0c* arg0) {
     src.b.hi = (unsigned char)(v >> 8);
 
     q = *(char**)((char*)data_02109bac + 0x0);
-    StoreCellWordHalf((struct StoreCellWordHalfRow*)q, i, j, (struct StoreCellWordHalfSource*)&src);
+    StoreCellWordHalf_0209b988((struct StoreCellWordHalfRow*)q, i, j, (struct StoreCellWordHalfSource*)&src);
 
     *(int*)(*(char**)((char*)data_02109bac + 0x0) + 0x1cc) = j + 1;
 
     q = *(char**)((char*)data_02109bac + 0x0);
-    struct GetRowByIndexRow* row = GetRowByIndex((struct GetRowByIndexRow*)q, i);
+    struct GetRowByIndexRow* row = GetRowByIndex_0209b9c0((struct GetRowByIndexRow*)q, i);
     if (row != 0) {
         unsigned char* cnt = (unsigned char*)row + 2;
         *cnt = *cnt + 1;

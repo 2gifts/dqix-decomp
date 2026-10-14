@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 extern "C" void func_02083e28(void* a, int arg2);
 
 struct BitTriple10 {
@@ -27,9 +27,9 @@ struct Src021ce8ac {
 
 // USA: func_ov017_021ce8ac
 extern "C" ARM void func_ov017_021ce8ac(int unused0, Src021ce8ac* src, GameState* battleStruct) {
-    GameObject* c = GetCombatantWithFlag0x100(battleStruct, src->w3.id);
+    GameObject* c = GetCombatantWithFlag0x100_0200ff1c(battleStruct, src->w3.id);
     if (!c) return;
-    unsigned char* p = (unsigned char*)GetFieldAt0x150((unsigned char*)c);
+    unsigned char* p = (unsigned char*)GetFieldAt0x150_02053c6c((unsigned char*)c);
     if (!p) return;
 #if defined(jpn)
     BitTriple10* stats = (BitTriple10*)(p + 0x884);

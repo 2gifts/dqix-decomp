@@ -5,13 +5,13 @@ extern SignedAllocatorList data_0210f3d8;
 
 struct ListEntry020bc0a4 {
     unsigned char pad[0x34];
-    unsigned short type;   // 0x34
-    unsigned short pad36;  // 0x36
-    unsigned short id;     // 0x38
+    unsigned short type;
+    unsigned short pad36;
+    unsigned short id;
 };
 
 // USA: func_020bc0a4
-ARM int CountEntriesType1WithId(int id) {
+ARM int CountEntriesType1WithId_020bc0a4(int id) {
     int count = 0;
     SignedAllocatorHeader* e = data_0210f3d8.ElementAfter(NULL);
     if (e != NULL) {

@@ -1,18 +1,18 @@
 #include <globaldefs.h>
 
-void PushInterruptDisableState(void);
+void PushInterruptDisableState_020d8654(void);
 struct Struct020db9a8;
 void SyncSwapBitState020db360(struct Struct020db9a8* obj, int b);
 int GetSwapBitIfFlag54Clear(struct Struct020db9a8* obj);
 extern "C" void func_020d8694(void);
 
 // USA: func_020db264
-ARM void InitCombatantVisualState(void* obj, int arg1, int arg2, int arg3, int arg4) {
+ARM void InitCombatantVisualState_020db264(void* obj, int arg1, int arg2, int arg3, int arg4) {
     char* p = (char*)obj;
     if (*(unsigned char*)(p + 0x50) != 0 && arg1 != 0) {
         return;
     }
-    PushInterruptDisableState();
+    PushInterruptDisableState_020d8654();
     if (arg3 == 0) {
         *(short*)(p + 0x66) = 0;
     }

@@ -7,8 +7,8 @@ enum { kPaletteFlagOffset = 0xccc };
 #include "GameState/GameState.h"
 #include "System/Cache.h"
 
-extern int GetFieldAt0x150(unsigned char* obj);
-extern void* GetData02109dcc(void);
+extern int GetFieldAt0x150_02053c6c(unsigned char* obj);
+extern void* GetData02109dcc_020a6084(void);
 
 extern "C" int LoadToMainObjStandardPalette(int arg0, int arg1, unsigned int arg2);
 extern "C" void LoadToMainBGStandardPalette(int src, int dstOffset, unsigned int size);
@@ -21,7 +21,7 @@ ARM void UpdateObjPaletteEntry020dc70c(int id, int p1, int p2, int p3, unsigned 
     GameObject* c = battle->GetPartyMemberByIndex(id);
     if (c == NULL)
         return;
-    int monster = GetFieldAt0x150((unsigned char*)c);
+    int monster = GetFieldAt0x150_02053c6c((unsigned char*)c);
     if (monster == 0)
         return;
     unsigned char idx = *(unsigned char*)(monster + 0x56a);
@@ -30,7 +30,7 @@ ARM void UpdateObjPaletteEntry020dc70c(int id, int p1, int p2, int p3, unsigned 
     if (end > 0x200)
         return;
     unsigned int size = off << 1;
-    int base = (int)GetData02109dcc();
+    int base = (int)GetData02109dcc_020a6084();
     int src = base + (idx << 5) + (p1 << 1);
     CleanInvalidateCacheRange((void*)src, count);
     if (p2 == 0) {

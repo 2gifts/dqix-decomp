@@ -8,7 +8,7 @@ enum { RegionalOffset = 0x74fe };
 #include "Util/Random.h"
 
 int RegisterSlotB020cf1a8(int a);
-void CopyFrom027ffcf4(void* dst);
+void CopyFrom027ffcf4_020c99ac(void* dst);
 unsigned long long GetCurrentTimestamp(void);
 extern "C" unsigned long long _u32_div_f(unsigned int a, unsigned int b);
 extern char data_020ef0ca;
@@ -22,7 +22,7 @@ extern "C" ARM void func_020120f0(unsigned char* self) {
     RegisterSlotB020cf1a8((int)slotBuf);
 
     unsigned char raw[6];
-    CopyFrom027ffcf4(raw);
+    CopyFrom027ffcf4_020c99ac(raw);
 
     unsigned long long seeds[6];
     seeds[0] = (unsigned int)slotBuf[0];

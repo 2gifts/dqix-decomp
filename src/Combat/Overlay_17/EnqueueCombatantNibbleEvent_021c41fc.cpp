@@ -7,7 +7,7 @@ enum { kRegionalFieldOffset = 0x15c };
 #endif
 #include "GameState/GameState.h"
 
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 struct U16Field0x6_020375f8;
 extern "C" void func_0205e330(void* a, void* b, int c);
 
@@ -33,7 +33,7 @@ extern "C" ARM void func_ov017_021c41fc(int combatantId, int mode) {
     GameObject* combatant = battleStruct->GetPartyMemberByIndex(combatantId);
     if (combatant == NULL) return;
 
-    void* data = GetData02100044();
+    void* data = GetData02100044_0202ae24();
 
     struct Evt021c41fc evt;
     struct Payload021c41fc* p = &evt.payload;

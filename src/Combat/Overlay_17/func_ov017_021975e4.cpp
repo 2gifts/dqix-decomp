@@ -12,13 +12,13 @@ struct ListHead02046b60;
 extern unsigned short data_02114e30;
 extern "C" void* func_02012fe4(void);
 unsigned int* GetDataPtr02114e04_020d6c00();
-int TestFlagMask(unsigned short* flags, int mask);
-int CheckSubstructByte0x7cPositive(signed char* obj);
+int TestFlagMask_02012430(unsigned short* flags, int mask);
+int CheckSubstructByte0x7cPositive_020535c8(signed char* obj);
 int CheckField0xc4Low15BitsNonZero(BitField0203402c* obj);
 int ListContainsId(ListHead02046b60* list, int id);
-void* GetPointerFromArray0x3c(unsigned char* obj, unsigned int index);
+void* GetPointerFromArray0x3c_0201e838(unsigned char* obj, unsigned int index);
 extern "C" int func_02094b9c(PathNode_021975e4* node, Vector3i* point);
-void OrBitsIntoField0(unsigned int* field, unsigned int bits);
+void OrBitsIntoField0_020466e4(unsigned int* field, unsigned int bits);
 
 // USA: func_ov017_021975e4
 extern "C" ARM void func_ov017_021975e4(GameResources* state) {
@@ -27,12 +27,12 @@ extern "C" ARM void func_ov017_021975e4(GameResources* state) {
     unsigned int* flags = GetDataPtr02114e04_020d6c00();
     GameObject* player = game->GetUnknownGameObject();
     Vector3i anchor = player->obj3D_.position_;
-    SubBlock02038508* current = GetFieldPtrAt0x26c(player);
+    SubBlock02038508* current = GetFieldPtrAt0x26c_020399a8(player);
     GameResources* res = func_ov017_0218b5b0();
     ListHead02046b60* list = (ListHead02046b60*)res->unknown_ptr_array_36fc[0];
 
-    if (TestFlagMask(&data_02114e30, 0x402)) return;
-    if (CheckSubstructByte0x7cPositive((signed char*)player) || current->active) return;
+    if (TestFlagMask_02012430(&data_02114e30, 0x402)) return;
+    if (CheckSubstructByte0x7cPositive_020535c8((signed char*)player) || current->active) return;
     if (CheckField0xc4Low15BitsNonZero((BitField0203402c*)player)) return;
     if (ListContainsId(list, 0xc)) return;
     if (ListContainsId(list, 0x2d)) return;
@@ -41,7 +41,7 @@ extern "C" ARM void func_ov017_021975e4(GameResources* state) {
     int idle = ((unsigned char*)player)[0xbe] == 0 ? 1 : 0;
     if (idle == 1) return;
 
-    PathNode_021975e4* node = (PathNode_021975e4*)GetPointerFromArray0x3c((unsigned char*)&zone->substruct_6c_, 9);
+    PathNode_021975e4* node = (PathNode_021975e4*)GetPointerFromArray0x3c_0201e838((unsigned char*)&zone->substruct_6c_, 9);
     while (node != 0) {
         SubBlock02038508 block;
         InitBlock02038508(&block);
@@ -95,7 +95,7 @@ extern "C" ARM void func_ov017_021975e4(GameResources* state) {
                 continue;
             }
 
-            PathNode_021975e4* partner = FindNodeKind9ById(&zone->substruct_6c_, node->unk_2c.type9.unk_2);
+            PathNode_021975e4* partner = FindNodeKind9ById_0201e6d4(&zone->substruct_6c_, node->unk_2c.type9.unk_2);
             if (!partner) return;
 
             block.active = 1;
@@ -135,8 +135,8 @@ extern "C" ARM void func_ov017_021975e4(GameResources* state) {
                 block.startHeading -= 0x3243;
                 if (block.startHeading < 0) block.startHeading += 0x6487;
             }
-            CopyBlockTo0x26c(player, &block);
-            OrBitsIntoField0(flags, 0x400);
+            CopyBlockTo0x26c_020398b4(player, &block);
+            OrBitsIntoField0_020466e4(flags, 0x400);
         }
         node = node->pNext;
     }

@@ -7,7 +7,7 @@ struct ArrayContainsByteStruct {
 };
 
 // USA: func_02086ef0
-ARM int ArrayContainsByte(struct ArrayContainsByteStruct* s, int val) {
+ARM int ArrayContainsByte_02086ef0(struct ArrayContainsByteStruct* s, int val) {
     int i;
     for (i = 0; i < s->count; i++) {
         if (val == s->arr[i]) {

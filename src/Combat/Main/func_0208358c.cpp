@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include <std_library_functions.h>
 #if defined(jpn)
-int StringLength(const char*);
+int StringLength_020d2ff0(const char*);
 #endif
 struct Block0208358c { int field_0x0, field_0x4, field_0x8, field_0xc, field_0x10, field_0x14, field_0x18, field_0x1c; };
 struct Record020836e4 { Block0208358c* block; char* text; unsigned int flags:4; unsigned int rest:28; char tail[20]; };
@@ -40,7 +40,7 @@ extern "C" ARM void func_0208358c(Object0208358c* obj, Record020836e4* src, int 
     out->field_0x10 = in->field_0x10; out->field_0x14 = in->field_0x14; out->field_0x18 = in->field_0x18; out->field_0x1c = in->field_0x1c;
 #if defined(jpn)
     memset(text, 0, 0x14);
-    if (src->text) { memcpy(text, src->text, StringLength(src->text)); }
+    if (src->text) { memcpy(text, src->text, StringLength_020d2ff0(src->text)); }
 #else
     *text = 0;
     if (src->text) { memset(text, 0, 0x30); sprintf(text, src->text); }

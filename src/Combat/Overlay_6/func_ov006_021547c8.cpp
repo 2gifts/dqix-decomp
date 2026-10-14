@@ -100,7 +100,7 @@ struct AlchemyPot {
 
 extern "C" void func_ov023_021dc354(ItemInfoWindow* window);
 extern "C" void func_ov006_02156e54(AlchemyPot* self);
-void SetField0x3b0Value(GameState* gameState, int camera);
+void SetField0x3b0Value_020100c4(GameState* gameState, int camera);
 void ResetTask020dbebc(void* effect);
 extern "C" void func_ov006_02154614(AlchemyPot* self);
 
@@ -140,7 +140,7 @@ extern "C" ARM void func_ov006_021547c8(AlchemyPot* self) {
     }
     if (self->previousCamera_ != 0) {
         GameState* gameState = GameState::GetInstance();
-        SetField0x3b0Value(gameState, (int)self->previousCamera_);
+        SetField0x3b0Value_020100c4(gameState, (int)self->previousCamera_);
         self->previousCamera_ = 0;
     }
     if (!(self->flags_ & 8)) {

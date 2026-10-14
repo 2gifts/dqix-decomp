@@ -7,7 +7,7 @@ void NitroVM_Command_AcquireCardReadResources(unsigned short owner);
 unsigned int SetSpecificInterruptsEnabled(unsigned int which);
 unsigned int AcknowledgeSpecificInterrupts(unsigned int flagMask);
 void ResetDMAChannel(int channel);
-void RetrySendIpcCommand(int command);
+void RetrySendIpcCommand_020c98c4(int command);
 
 static inline int IsMultiBootChild()
 {
@@ -32,7 +32,7 @@ ARM void ResetSystemAndBoot020c98f0(int parameter)
     ResetDMAChannel(3);
 
     *(volatile unsigned long*)0x027ffc20 = parameter;
-    RetrySendIpcCommand(0x10);
+    RetrySendIpcCommand_020c98c4(0x10);
 
     asm
     {

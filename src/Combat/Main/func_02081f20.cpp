@@ -3,8 +3,8 @@
 extern unsigned short __attribute__((aligned(4))) data_020e8a84[];
 extern unsigned short data_02114e30[];
 
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
-int TestFlagMask(unsigned short* pad, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
+int TestFlagMask_02012430(unsigned short* pad, int mask);
 
 struct Sub0208203c {
     unsigned short field_0;
@@ -38,7 +38,7 @@ extern "C" ARM unsigned short func_02081f20(struct Obj0208203c* obj, int ticks) 
         int i;
         for (i = 0; i < 4; i++) {
             unsigned short id = ids[i];
-            if (TestFlag0SetAndFlag1Clear(data_02114e30, id)) {
+            if (TestFlag0SetAndFlag1Clear_02012444(data_02114e30, id)) {
                 obj->field_0->field_0 = id;
                 obj->field_8 = obj->field_6;
                 obj->field_0->field_2 = 1;
@@ -48,7 +48,7 @@ extern "C" ARM unsigned short func_02081f20(struct Obj0208203c* obj, int ticks) 
         goto end;
     }
     if (obj->field_0->field_0 != 0) {
-        if (TestFlagMask(data_02114e30, obj->field_0->field_0)) {
+        if (TestFlagMask_02012430(data_02114e30, obj->field_0->field_0)) {
             obj->field_8 -= (signed char)ticks;
             if (obj->field_8 < 0) {
                 obj->field_8 += obj->field_7;

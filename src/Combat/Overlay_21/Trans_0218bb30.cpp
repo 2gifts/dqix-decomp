@@ -32,7 +32,7 @@ void WriteControlAndToggle020d86d0(int a, int b);
 extern "C" ARM void func_ov021_0218bb30(Trans0218bb30* self)
 {
     GameState* gameState = GameState::GetInstance();
-    void* camera = GetField0x3b0Value(gameState);
+    void* camera = GetField0x3b0Value_020100bc(gameState);
     ResetGxEngineState020c52e8();
     func_020c5414();
     DISP3DCNT = (DISP3DCNT & ~0x3000) | 8;

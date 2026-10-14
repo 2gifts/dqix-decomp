@@ -30,7 +30,7 @@ struct Obj021e9b2c {
 
 extern unsigned int data_ov025_021ef9a4;
 
-void* GetActiveCombatWork(void);
+void* GetActiveCombatWork_ov000_02160130(void);
 List021600f8* GetSlotPtr02160f20(void* work);
 void ResetFields_021df9b0(void* fields);
 struct GatherObj02163a7c;
@@ -53,7 +53,7 @@ extern "C" ARM void func_ov025_021e9b2c(Obj021e9b2c* self) {
  enum { regionalOffset = 0x5ab0 };
 #endif
     GameState::GetInstance();
-    void* work = GetActiveCombatWork();
+    void* work = GetActiveCombatWork_ov000_02160130();
     List021600f8* slot = GetSlotPtr02160f20(work);
     if (data_ov025_021ef9a4 & 8) {
         func_ov025_021eb6fc(self, 0);

@@ -8,8 +8,8 @@ enum { RegionOffset278 = 0x278, RegionOffsetad0 = 0xad0, RegionOffset2cc = 0x2cc
 #include "Memory/AllocatorUnion.h"
 #include "Memory/SafeAllocator.h"
 
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
-void RestorePairTableFromBuffer(int* out);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
+void RestorePairTableFromBuffer_020bb740(int* out);
 void WriteGlobalPair020bb92c(int* src);
 extern "C" void func_0207de48(void* p, int a, int b);
 
@@ -33,13 +33,13 @@ extern "C" ARM void func_ov017_021a0630(char* self) {
     int i;
     int size;
     for (i = 0; (size = data_ov017_021d66cc[i].size) != 0; i++) {
-        void* p = AllocateAligned4(&data_02114e20, size);
+        void* p = AllocateAligned4_02012d88(&data_02114e20, size);
         int idx = data_ov017_021d66c8[i].index;
         SafeAllocator* alloc = (SafeAllocator*)(self + 0x38 + idx * 0x14);
         alloc->CreateTypeA(p, size);
     }
 
-    RestorePairTableFromBuffer((int*)(self + RegionOffset278 + 0x2800));
+    RestorePairTableFromBuffer_020bb740((int*)(self + RegionOffset278 + 0x2800));
     WriteGlobalPair020bb92c((int*)(self + RegionOffsetad0 + 0x2000));
 
     int cond;
@@ -49,7 +49,7 @@ extern "C" ARM void func_ov017_021a0630(char* self) {
         func_0207de48((self + RegionOffset2cc) + a * 0x70, cond, b);
     }
 
-    RestorePairTableFromBuffer((int*)(self + RegionOffset2a8 + 0x2800));
+    RestorePairTableFromBuffer_020bb740((int*)(self + RegionOffset2a8 + 0x2800));
 
     for (i = 0; (cond = data_ov017_021d6804[i].v) != 0; i++) {
         int a = data_ov017_021d6800[i].v;

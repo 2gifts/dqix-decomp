@@ -4,8 +4,8 @@ extern "C" void* func_ov017_021b8478(void* obj);
 extern "C" void* func_ov017_021b8468(void* obj);
 bool GetTreasureMapTypeFromItemID(unsigned short itemID, unsigned char* out);
 void SetFields0216341c(void* work, unsigned char b1, unsigned char b2, short h);
-void SetByteField0x5901AndFlag0x8000(void* work, unsigned char val);
-void SetCombatWorkFlags0x55f4(void* work, int mask);
+void SetByteField0x5901AndFlag0x8000_ov000_02163404(void* work, unsigned char val);
+void SetCombatWorkFlags0x55f4_ov000_02160fa8(void* work, int mask);
 typedef void (*SetByteField0x5901Fn)(void*, int);
 typedef void (*SetFields0216341cFn)(void*, unsigned char, unsigned char, unsigned short);
 
@@ -32,7 +32,7 @@ extern "C" ARM void func_ov017_021cd510(int unused0, Src021cd510* src, int unuse
     ((SetFields0216341cFn)SetFields0216341c)(work, buf[0], buf[1], *(unsigned short*)(buf + 2));
 
     if (src->field8 >= 0) {
-        ((SetByteField0x5901Fn)SetByteField0x5901AndFlag0x8000)(work, src->field8);
+        ((SetByteField0x5901Fn)SetByteField0x5901AndFlag0x8000_ov000_02163404)(work, src->field8);
     }
-    SetCombatWorkFlags0x55f4(work, 0x8000);
+    SetCombatWorkFlags0x55f4_ov000_02160fa8(work, 0x8000);
 }

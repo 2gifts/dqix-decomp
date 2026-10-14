@@ -7,9 +7,9 @@
 #if defined(jpn)
 struct GameState { static GameState* GetInstance(); };
 struct GameObject { char unknown0[0x134]; const char* name; };
-int GetField0x3acValue(GameState*);
-GameObject* GetCombatantWithFlag0x100(GameState*, int);
-int StringLength(const char*);
+int GetField0x3acValue_020100a8(GameState*);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState*, int);
+int StringLength_020d2ff0(const char*);
 #endif
 
 #if defined(jpn)
@@ -83,8 +83,8 @@ extern "C" {
             Overlay8SpriteEntry* entry = menu->extraEntry;
 #if defined(jpn)
             GameState* game = GameState::GetInstance();
-            GameObject* hero = GetCombatantWithFlag0x100(game, GetField0x3acValue(game));
-            entry->x = ((StringLength(hero->name) >> 1) * 10 + 0x74) << 12;
+            GameObject* hero = GetCombatantWithFlag0x100_0200ff1c(game, GetField0x3acValue_020100a8(game));
+            entry->x = ((StringLength_020d2ff0(hero->name) >> 1) * 10 + 0x74) << 12;
             entry->y = 0;
 #else
             entry->x = menu->extraX;

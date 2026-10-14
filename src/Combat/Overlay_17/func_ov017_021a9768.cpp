@@ -13,23 +13,23 @@ struct Manager0218936c;
 
 extern "C" SearchStruct* func_0202ae18(void);
 void CancelPendingAction020397cc(Obj020397cc* obj, int flag);
-void SetBitsInField4(unsigned int* field, unsigned int bits);
-void ClearBitsInField4(unsigned int* field, unsigned int bits);
+void SetBitsInField4_0203b4d8(unsigned int* field, unsigned int bits);
+void ClearBitsInField4_0203b4e8(unsigned int* field, unsigned int bits);
 extern "C" void func_020a0cc4(unsigned int size);
 extern "C" void func_020a0c0c(void);
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 Obj020d7aa0* GetGlobalResetObj020d7a50();
 void TeardownAndResetState020d7aa0(Obj020d7aa0* obj);
-void PushInputLogB(int value);
-void PopStack1AndTrigger(int value);
+void PushInputLogB_020a1ef0(int value);
+void PopStack1AndTrigger_020a1f4c(int value);
 extern "C" void func_020a1940(unsigned int id);
 extern "C" void func_ov008_02188f5c(void* scene, int index, int arg);
 void SetupAllocators_02189284(Layout02189284* layout, SafeAllocator* allocator);
 unsigned char Dispatch0218936c(Manager0218936c* manager, unsigned int ticks);
-int TestFlagBitAt0xe(SearchStruct* search, int index);
+int TestFlagBitAt0xe_0202c578(SearchStruct* search, int index);
 extern "C" void func_ov008_0218b240(void* scene);
 extern "C" void func_ov008_021894b8(void* scene);
-void SetByteField0x253(void* obj);
+void SetByteField0x253_020397c0(void* obj);
 extern char data_02114e20;
 
 struct Scene021a9768 {
@@ -59,14 +59,14 @@ extern "C" ARM void func_ov017_021a9768(Task021a9768* task) {
     GameObject* unknown = gs->GetUnknownGameObject();
     SearchStruct* search = func_0202ae18();
     CancelPendingAction020397cc((Obj020397cc*)unknown, 1);
-    SetBitsInField4((unsigned int*)res, 0xc0);
+    SetBitsInField4_0203b4d8((unsigned int*)res, 0xc0);
     if (task->step == 0) {
 #if defined(jpn)
         func_020a0cc4(0x1c704);
-        void* buffer = AllocateAligned4((AllocatorUnion*)&data_02114e20, 0x1c704);
+        void* buffer = AllocateAligned4_02012d88((AllocatorUnion*)&data_02114e20, 0x1c704);
 #else
         func_020a0cc4(0x1c70c);
-        void* buffer = AllocateAligned4((AllocatorUnion*)&data_02114e20, 0x1c70c);
+        void* buffer = AllocateAligned4_02012d88((AllocatorUnion*)&data_02114e20, 0x1c70c);
 #endif
         if (buffer == NULL) {
             func_020a0c0c();
@@ -80,7 +80,7 @@ extern "C" ARM void func_ov017_021a9768(Task021a9768* task) {
         task->allocator.CreateTypeA(buffer, 0x1c70c);
 #endif
         task->allocator.Reset();
-        PushInputLogB(1);
+        PushInputLogB_020a1ef0(1);
         func_020a1940(OVERLAY_ID(8));
 #if defined(jpn)
         task->scene = (Scene021a9768*)task->allocator.Allocate(0xec4);
@@ -100,7 +100,7 @@ extern "C" ARM void func_ov017_021a9768(Task021a9768* task) {
         if (Dispatch0218936c((Manager0218936c*)task->scene, gs->GetTickCount())) {
             task->step++;
         }
-        if (TestFlagBitAt0xe(search, 0)) {
+        if (TestFlagBitAt0xe_0202c578(search, 0)) {
             func_ov008_0218b240(task->scene);
         }
         int valid = 0;
@@ -110,7 +110,7 @@ extern "C" ARM void func_ov017_021a9768(Task021a9768* task) {
         if (!valid) {
             return;
         }
-        if (gs->GetGameObjectByIndex(task->index) != NULL && !TestFlagBitAt0xe(search, task->index)) {
+        if (gs->GetGameObjectByIndex(task->index) != NULL && !TestFlagBitAt0xe_0202c578(search, task->index)) {
             return;
         }
         func_ov008_0218b240(task->scene);
@@ -124,12 +124,12 @@ extern "C" ARM void func_ov017_021a9768(Task021a9768* task) {
     if (task->step != 3) {
         return;
     }
-    SetByteField0x253(GameState::GetInstance()->GetUnknownGameObject());
+    SetByteField0x253_020397c0(GameState::GetInstance()->GetUnknownGameObject());
     *(volatile unsigned int*)0x4000000 = (task->scene->planes << 8) | (*(volatile unsigned int*)0x4000000 & ~0x1f00);
     task->scene = NULL;
-    PopStack1AndTrigger(1);
+    PopStack1AndTrigger_020a1f4c(1);
     func_ov017_021a9714(task);
     func_020a0c0c();
-    ClearBitsInField4((unsigned int*)res, 0x80);
+    ClearBitsInField4_0203b4e8((unsigned int*)res, 0x80);
     task->failed = 1;
 }

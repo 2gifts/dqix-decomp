@@ -11,22 +11,22 @@ struct TargetMenu { char pad0[0xb8]; char messages[0x20]; char pad1[0x1c44]; int
 #endif
 struct TargetSelection { char pad[0x1d]; signed char index; };
 int CountMatchingValues02175348(void*, int);
-int IsField0x118Equal2(void*);
+int IsField0x118Equal2_ov000_0217542c(void*);
 StoreStruct* GetGlobalField0x1c020421a0();
 int GetFieldByKey020e0434(Container020e0310*, int);
 void AppendFrameTag02041c08(char*, int, int, int, int, int);
-void AppendCursorTag(char*, int);
+void AppendCursorTag_02041ea4(char*, int);
 void AppendString02042058(char*, const char*);
 extern "C" void __clear(void*, int);
 extern "C" void func_02046380(StoreStruct*);
 void Clear12Bytes020e46c4(void*);
-GameObject* GetCombatantWithFlag0x400(GameState*, int);
+GameObject* GetCombatantWithFlag0x400_0200fea4(GameState*, int);
 extern "C" void func_020e4ce8(NameParts*, GameObject*, int);
 void TrimTrailingLetterCode_0217aa08(char*, char*);
 extern "C" void func_020e4f18(NameParts*, NameParts*, int);
-void StoreInArray0x8b0(StoreStruct*, int, int);
+void StoreInArray0x8b0_020465c0(StoreStruct*, int, int);
 extern "C" void func_02046608(StoreStruct*, int, const char*, char*, int, int, int);
-void AppendNameTag(char*, int, const char*);
+void AppendNameTag_02041b70(char*, int, const char*);
 extern const char data_ov000_02184060[];
 
 #if defined(jpn)
@@ -57,7 +57,7 @@ extern "C" ARM void func_ov000_02178938(TargetMenu* menu, TargetSelection* selec
             if (i <= selected && selected < i + groupSize) selectedStart = i;
         }
     }
-    int showCursor = IsField0x118Equal2(menu);
+    int showCursor = IsField0x118Equal2_ov000_0217542c(menu);
     StoreStruct* formatter = GetGlobalField0x1c020421a0();
 #if !defined(jpn)
     GameState* game = GameState::GetInstance();
@@ -68,7 +68,7 @@ extern "C" ARM void func_ov000_02178938(TargetMenu* menu, TargetSelection* selec
     if (showCursor) {
         AppendFrameTag02041c08(output, selectedStart, 8, 5, 5, 5);
     }
-    AppendCursorTag(output, selectedStart);
+    AppendCursorTag_02041ea4(output, selectedStart);
     for (int i = 0; i < count; i++) {
         int kind = menu->kinds[i];
         if (previous != kind) {
@@ -102,13 +102,13 @@ extern "C" ARM void func_ov000_02178938(TargetMenu* menu, TargetSelection* selec
                 }
                 func_02046380(formatter);
                 _Z22SetIndexedName02046574P11Obj02046574iPc(formatter, 0, nameText);
-                StoreInArray0x8b0(formatter, 0, groupSize);
+                StoreInArray0x8b0_020465c0(formatter, 0, groupSize);
                 func_020474a8(formatter, 10, (const char*)GetFieldByKey020e0434((Container020e0310*)menu->messages, 0x754f), text);
 #else
                 func_02046380(formatter);
                 NameParts name;
                 Clear12Bytes020e46c4(&name);
-                GameObject* combatant = GetCombatantWithFlag0x400(game, menu->combatants[index]);
+                GameObject* combatant = GetCombatantWithFlag0x400_0200fea4(game, menu->combatants[index]);
                 char singular[128];
                 char plural[128];
                 __clear(singular, 128);
@@ -125,10 +125,10 @@ extern "C" ARM void func_ov000_02178938(TargetMenu* menu, TargetSelection* selec
                     name.flags &= ~0x80000000;
                 }
                 formatter->name = &name;
-                StoreInArray0x8b0(formatter, 0, groupSize);
+                StoreInArray0x8b0_020465c0(formatter, 0, groupSize);
                 func_02046608(formatter, 10, format, text, 256, 0, 0);
 #endif
-                AppendNameTag(output, i, text);
+                AppendNameTag_02041b70(output, i, text);
                 appended = 1;
             }
         }

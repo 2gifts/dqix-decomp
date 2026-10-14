@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_02049b20
-ARM void SetSubstructFields4And0xcClearFlag0x2(unsigned char* obj, int* src) {
+ARM void SetSubstructFields4And0xcClearFlag0x2_02049b20(unsigned char* obj, int* src) {
     if (*(int**)(obj + 0x13c) == 0) {
         return;
     }

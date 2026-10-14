@@ -7,7 +7,7 @@ struct NodeDB20 {
     NodeDB20 *next;
 };
 
-NodeDB20 *FindNodeByByteId(void *base, int key);
+NodeDB20 *FindNodeByByteId_0206db20(void *base, int key);
 void UnlinkNodeByByteId0206dd68(void *base, int key);
 
 #endif

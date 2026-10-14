@@ -2,7 +2,7 @@
 
 struct Out0215fb54 { int keys[2]; };
 int FindRecordByKey0215fb54(int unused, short key, Out0215fb54* out);
-void* GetActiveCombatWork();
+void* GetActiveCombatWork_ov000_02160130();
 extern "C" void* _Z26FindNodeByShortKey02162d88Pvs(void* obj, int key);
 
 struct Gate_021f58dc { char pad0; unsigned char flags : 4; unsigned char pad1 : 4; };
@@ -23,7 +23,7 @@ extern "C" ARM int func_ov024_021f58dc(Obj_021f58dc* obj, int id, SkillRecord_02
     void* work;
     Gate_021f58dc* gate = (Gate_021f58dc*)((char*)obj->field0 + 0x81b0);
     if (!gate) return 0;
-    work = GetActiveCombatWork();
+    work = GetActiveCombatWork_ov000_02160130();
     if (!work) return 0;
     if (skill->kind == 0xc) {
         Out0215fb54 keys;

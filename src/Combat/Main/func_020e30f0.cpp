@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 extern "C" void* func_0202ae18(void);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4*);
 
 struct Entry020e3054 {
@@ -23,7 +23,7 @@ void Dispatch020e3328(void* a, int b);
 // USA: func_020e30f0
 extern "C" ARM void func_020e30f0(Entry020e3054* list) {
     void* ctx = func_0202ae18();
-    if (!CheckField0NonZero((int*)ctx)) return;
+    if (!CheckField0NonZero_0202b7d8((int*)ctx)) return;
 
     Entry020e3054* e = list;
     int i;

@@ -7,12 +7,12 @@ struct Entry_02028bd0 {
     unsigned short field_2;
     unsigned short activeMask;
 };
-Entry_02028bd0* GetEntryTableBase();
+Entry_02028bd0* GetEntryTableBase_02027ca4();
 Entry_02028bd0* FindInlineEntryById(Entry_02028bd0*, int);
 
 // USA: func_0201874c
 extern "C" ARM void func_0201874c(Zone3D* owner, ZoneFeatures::Opcode6aEntry* parameter) {
-    BmdjSceneElement* entry = FindEntryByNodeIdAndKey(owner, parameter);
+    BmdjSceneElement* entry = FindEntryByNodeIdAndKey_02018b34(owner, parameter);
     if (!entry) return;
     entry->flags &= ~1;
     entry->flags &= ~4;
@@ -44,7 +44,7 @@ extern "C" ARM void func_0201874c(Zone3D* owner, ZoneFeatures::Opcode6aEntry* pa
     owner->unk_830[0] = 0xf;
     if (!(parameter->unk_2c.type2.unk_2_high & 8)) {
         int index = FindMatchingElementIndex02018bc4(owner, parameter);
-        Entry_02028bd0* table = GetEntryTableBase();
+        Entry_02028bd0* table = GetEntryTableBase_02027ca4();
         Entry_02028bd0* saved = FindInlineEntryById(table, owner->currentZoneID_);
         if (saved) saved->activeMask &= ~(1 << index);
     }

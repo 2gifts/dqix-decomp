@@ -1,12 +1,12 @@
 #include <globaldefs.h>
 
-ARM void CopyFrom027ffcf4(void* dst);
+ARM void CopyFrom027ffcf4_020c99ac(void* dst);
 
 // USA: func_020d4be8
 #pragma optimize_for_size off
 ARM unsigned short GetOwnerDataFortuneValue020d4be8() {
     unsigned char buf[8];
-    CopyFrom027ffcf4(buf);
+    CopyFrom027ffcf4_020c99ac(buf);
     unsigned char* p = buf;
     unsigned short sum;
     int i;

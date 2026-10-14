@@ -31,15 +31,15 @@ struct PointerField330_ffd0;
 struct Obj02033874;
 struct Flags02033fdc;
 
-void* GetPointerAt0x330(struct PointerField330_ffd0* obj);
+void* GetPointerAt0x330_0200ffd0(struct PointerField330_ffd0* obj);
 void InitObj020ad59c(void* obj);
-void ClearEightWords(struct Struct_203dafc* obj);
+void ClearEightWords_0203dafc(struct Struct_203dafc* obj);
 void RestorePairTables0207df90(char* tables);
 void BackupPairTables0207dfac(char* tables);
 extern "C" void func_02012fe4();
 void SetVecYFromValue02033874(struct Obj02033874* obj, int value);
 void ClearFlag0x4At0xe0(struct Flags02033fdc* obj);
-void RegisterCombatantSlot(GameState* state, int slot, GameObject* obj);
+void RegisterCombatantSlot_0200fd38(GameState* state, int slot, GameObject* obj);
 extern "C" void func_020adfa8(struct Prop020aca88* prop);
 void ResetContainerAndHandleFields020da1ac(void* container);
 
@@ -58,7 +58,7 @@ extern "C" ARM void func_020aca88(GameResources* res, int message) {
         BackgroundLoader* loader = BackgroundLoader::GetInstance();
         SafeAllocator* alloc = &res->allocator_array_38[7];
         char* tables = ((PairTable020aca88*)res->unknown_2cc)[7];
-        GetPointerAt0x330((struct PointerField330_ffd0*)state);
+        GetPointerAt0x330_0200ffd0((struct PointerField330_ffd0*)state);
         if (loader->GetNumQueuedTasks() > 0) {
             return;
         }
@@ -74,7 +74,7 @@ extern "C" ARM void func_020aca88(GameResources* res, int message) {
             return;
         }
         InitObj020ad59c(prop);
-        ClearEightWords((struct Struct_203dafc*)&info);
+        ClearEightWords_0203dafc((struct Struct_203dafc*)&info);
         RestorePairTables0207df90(tables);
         info.unk_8 = size;
         info.fileData = file;
@@ -98,7 +98,7 @@ extern "C" ARM void func_020aca88(GameResources* res, int message) {
         ClearFlag0x4At0xe0((struct Flags02033fdc*)prop);
         prop->hidden_e0 = 0;
         prop->obj3D.EnableFlag(0x80);
-        RegisterCombatantSlot(state, 0xca, (GameObject*)prop);
+        RegisterCombatantSlot_0200fd38(state, 0xca, (GameObject*)prop);
         state->GetGameObjectByIndex(0xcb);
 
         file = LoadFileIntoNewAllocation(data_020f1c20, *alloc, &size);
@@ -110,7 +110,7 @@ extern "C" ARM void func_020aca88(GameResources* res, int message) {
             return;
         }
         obj->Initialize();
-        ClearEightWords((struct Struct_203dafc*)&info);
+        ClearEightWords_0203dafc((struct Struct_203dafc*)&info);
         RestorePairTables0207df90(tables);
         info.unk_8 = size;
         info.fileData = file;
@@ -121,7 +121,7 @@ extern "C" ARM void func_020aca88(GameResources* res, int message) {
         obj->SetScale(&scale);
         obj->MakeVisible();
         obj->EnableFlag(0x180);
-        RegisterCombatantSlot(state, 0xcb, (GameObject*)obj);
+        RegisterCombatantSlot_0200fd38(state, 0xcb, (GameObject*)obj);
         state->GetGameObjectByIndex(0xcc);
 
         file = LoadFileIntoNewAllocation(data_020f1c38, *alloc, &size);
@@ -133,7 +133,7 @@ extern "C" ARM void func_020aca88(GameResources* res, int message) {
             return;
         }
         obj->Initialize();
-        ClearEightWords((struct Struct_203dafc*)&info);
+        ClearEightWords_0203dafc((struct Struct_203dafc*)&info);
         RestorePairTables0207df90(tables);
         info.unk_8 = size;
         info.fileData = file;
@@ -148,7 +148,7 @@ extern "C" ARM void func_020aca88(GameResources* res, int message) {
         obj->SetScale(&scale);
         obj->MakeVisible();
         obj->EnableFlag(0x180);
-        RegisterCombatantSlot(state, 0xcc, (GameObject*)obj);
+        RegisterCombatantSlot_0200fd38(state, 0xcc, (GameObject*)obj);
         state->GetGameObjectByIndex(0xcd);
 
         file = LoadFileIntoNewAllocation(data_020f1c51, *alloc, &size);
@@ -160,7 +160,7 @@ extern "C" ARM void func_020aca88(GameResources* res, int message) {
             return;
         }
         obj->Initialize();
-        ClearEightWords((struct Struct_203dafc*)&info);
+        ClearEightWords_0203dafc((struct Struct_203dafc*)&info);
         RestorePairTables0207df90(tables);
         info.unk_8 = size;
         info.fileData = file;
@@ -175,7 +175,7 @@ extern "C" ARM void func_020aca88(GameResources* res, int message) {
         obj->SetScale(&scale);
         obj->MakeVisible();
         obj->EnableFlag(0x180);
-        RegisterCombatantSlot(state, 0xcd, (GameObject*)obj);
+        RegisterCombatantSlot_0200fd38(state, 0xcd, (GameObject*)obj);
 
         func_020adfa8(prop);
         SafeAllocator* subAlloc = (SafeAllocator*)alloc->Allocate(0x14);

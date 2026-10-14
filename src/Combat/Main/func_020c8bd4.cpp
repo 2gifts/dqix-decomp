@@ -4,8 +4,8 @@ extern int data_02111588[3];
 extern char data_021115b4;
 extern int data_0211158c;
 extern int data_02111590;
-void EnableSystemControlBit0();
-void DisableSystemControlBit0();
+void EnableSystemControlBit0_020c89f8();
+void DisableSystemControlBit0_020c8a08();
 
 // USA: func_020c8bd4
 extern "C" ARM void func_020c8bd4()
@@ -21,7 +21,7 @@ extern "C" ARM void func_020c8bd4()
             mov r1, sp
             mov sp, r0
             stmdb sp!, {r1, r2}
-            bl EnableSystemControlBit0
+            bl EnableSystemControlBit0_020c89f8
             ldr r0, =data_021115b4
             ldr r1, =data_0211158c
             ldr r1, [r1]
@@ -30,7 +30,7 @@ extern "C" ARM void func_020c8bd4()
             ldr lr, =@ret
             bx r12
 @ret:
-            bl DisableSystemControlBit0
+            bl DisableSystemControlBit0_020c8a08
             ldmia sp!, {r1, r2}
             mov sp, r1
             msr cpsr_fsxc, r2

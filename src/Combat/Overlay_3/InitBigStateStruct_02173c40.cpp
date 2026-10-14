@@ -78,9 +78,8 @@ enum { kRegionValue1E0_1EC = 0x1e0 };
 enum { kRegionValue344_350 = 0x344 };
 #endif
 
-
 struct S_a64bc;
-void InitFieldsWithDefaults(S_a64bc* p);
+void InitFieldsWithDefaults_020a64bc(S_a64bc* p);
 void InitStruct0205a444(char* obj);
 struct List020727d8;
 void ResetListHeader020727d8(List020727d8* list);
@@ -108,7 +107,7 @@ extern "C" ARM void func_ov003_02173c40(char* obj) {
     *(int*)(obj + kRegionValueD0_CC) = 0;
     obj[kRegionValueD4_D0] = 0;
     obj[kRegionValueD5_D1] = 0;
-    InitFieldsWithDefaults((S_a64bc*)(obj + kRegionValueD8_D4));
+    InitFieldsWithDefaults_020a64bc((S_a64bc*)(obj + kRegionValueD8_D4));
 
     obj[kRegionValueEC_E8] = 0;
     obj[kRegionValueED_E9] = 0;

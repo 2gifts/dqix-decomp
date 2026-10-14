@@ -9,7 +9,7 @@ void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char 
 int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
 int CheckFlagOrThreshold_02161b48(char *self, int flag);
 void *GetDataPtr02114e04_020d6c00(void);
-void OrBitsIntoField0(unsigned int *p, unsigned int mask);
+void OrBitsIntoField0_020466e4(unsigned int *p, unsigned int mask);
 extern "C" int GetInventoryItemByID(char *self, int idx, int member);
 extern "C" void func_ov002_02161cf0(char *self);
 extern "C" void func_ov002_0215d864(char *self);
@@ -29,7 +29,7 @@ extern "C" ARM void func_ov002_021642e4(char *self) {
         FindAndLinkMatchingEntry0205de24((struct Struct0205de24 *) (self + 0xec8), 0, 2);
         func_ov002_02161cf0(self);
         func_ov002_0215d864(self);
-        OrBitsIntoField0((unsigned int *) GetDataPtr02114e04_020d6c00(), 1);
+        OrBitsIntoField0_020466e4((unsigned int *) GetDataPtr02114e04_020d6c00(), 1);
         if (*(int *) (self + 0x247c) & 1) {
             ((SafeAllocator *) (self + 0x864))->Reset();
             func_ov023_021dc9e8(self + 0x50, (SafeAllocator *) (self + 0x864),

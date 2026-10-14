@@ -1,11 +1,11 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-int AdjustValueByFieldFlag(void *obj, unsigned int flag);
+int AdjustValueByFieldFlag_020dd290(void *obj, unsigned int flag);
 void *GetGlobalField0x1c020421a0();
 extern "C" void func_02046380();
 struct StoreStruct;
-void StoreInArray0x8b0(StoreStruct*, int, int);
+void StoreInArray0x8b0_020465c0(StoreStruct*, int, int);
 struct Container020e0310;
 int GetFieldByKey020e0434(Container020e0310*, int);
 extern "C" void func_02046608(void *g, int a, int b, int c, int d, int e, int f);
@@ -37,13 +37,13 @@ extern "C" ARM void func_ov002_0215f084(void *objPtr, int param2) {
     }
     struct FlagsField8 { unsigned int byte0 : 8; unsigned int rest : 24; };
     unsigned int flagByte = ((FlagsField8*)((char*)entry + 8))->byte0;
-    int adjResult = AdjustValueByFieldFlag(combatant, flagByte);
+    int adjResult = AdjustValueByFieldFlag_020dd290(combatant, flagByte);
     short s = *(short*)((char*)combatant + 4);
     Struct020fdcb0 *e = &data_020fdcb0[s];
     void *g = GetGlobalField0x1c020421a0();
     func_02046380();
-    StoreInArray0x8b0((StoreStruct*)g, 0, adjResult);
-    StoreInArray0x8b0((StoreStruct*)g, 1, e->f4);
+    StoreInArray0x8b0_020465c0((StoreStruct*)g, 0, adjResult);
+    StoreInArray0x8b0_020465c0((StoreStruct*)g, 1, e->f4);
     int fieldResult = GetFieldByKey020e0434((Container020e0310*)(base + 0x20), 0xbb8);
     func_02046608(g, 0xa, fieldResult, param2, 0x100, 0, 0);
 }

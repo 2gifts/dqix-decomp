@@ -8,19 +8,19 @@ struct Struct_0205def8;
 struct Obj0205eaa0;
 struct Obj020d7aa0;
 
-int GetWord0x0(int *p);
+int GetWord0x0_0200fb8c(int *p);
 extern "C" void func_02012fe4(void);
 void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char keyLow,
                                                                         unsigned char keyHigh);
 extern "C" void func_ov002_02161cf0(char *self);
 extern "C" void func_ov002_0215f3a0(void *base);
 void SetElementFlag0x20ByKey0205def8(struct Struct_0205def8 *s, int clear, int key);
-void SetElementFieldC2(struct Struct_0205d81c *s, int key, int value);
+void SetElementFieldC2_0205deb4(struct Struct_0205d81c *s, int key, int value);
 int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
 char *FindElementByC40205d81c(struct Struct_0205d81c *s, int key);
 int IsElementFlagBit40Set_0216197c(int key, struct Struct_0205d81c *s);
 extern "C" void func_ov002_0215b9a4(void *self, int mode, int flag);
-int TestFlag0SetAndFlag1Clear(unsigned short *pad, int buttons);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short *pad, int buttons);
 struct Obj_0205da38;
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 Obj020d7aa0 *GetGlobalResetObj020d7a50();
@@ -30,7 +30,7 @@ extern "C" int func_ov002_02161920(void *self);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0 *obj, int a, int b);
 void InitNodeAndInsertAt_021c1798_021c1798(GameResources *res, unsigned char v);
 void SetPendingFlagAndSync_0215a878(char *self);
-int GetField0x3acValue(GameState *gs);
+int GetField0x3acValue_020100a8(GameState *gs);
 extern "C" void func_ov017_021bff8c(int a, int b);
 int CheckFlagOrThreshold_02161b48(char *self, int v);
 extern "C" void func_ov002_02156e90(void *obj);
@@ -43,7 +43,7 @@ extern "C" char data_02108760;
 // USA: func_ov002_02166168
 extern "C" ARM void func_ov002_02166168(char *self) {
     GameState *gs      = GameState::GetInstance();
-    GameResources *res = (GameResources *) GetWord0x0((int *) gs);
+    GameResources *res = (GameResources *) GetWord0x0_0200fb8c((int *) gs);
     func_02012fe4();
     int state = *(int *) (self + 0x1bc0);
     if (state == 0) {
@@ -56,7 +56,7 @@ extern "C" ARM void func_ov002_02166168(char *self) {
         *(unsigned int *) (self + 0x247c) |= 4;
         SetElementFlag0x20ByKey0205def8((struct Struct_0205def8 *) OBJ, 1, 0x29);
         SetElementFlag0x20ByKey0205def8((struct Struct_0205def8 *) OBJ, 1, 1);
-        SetElementFieldC2((struct Struct_0205d81c *) OBJ, 0x15, 0);
+        SetElementFieldC2_0205deb4((struct Struct_0205d81c *) OBJ, 0x15, 0);
         short old                  = *(short *) (self + 0x1bfe);
         *(short *) (self + 0x1bfe) = GetActiveScaledSum0205d794((struct Struct_0205c570 *) OBJ);
         char *e                    = FindElementByC40205d81c((struct Struct_0205d81c *) OBJ, 0x16);
@@ -71,7 +71,7 @@ extern "C" ARM void func_ov002_02166168(char *self) {
         if (old != *(short *) (self + 0x1bfe)) {
             func_ov002_0215b9a4(self, 0x16, 0);
         }
-        int t  = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
+        int t  = TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x601);
         int u  = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)OBJ, 0x14);
         int ok = (t | u) ? 1 : 0;
         if (ok) {
@@ -131,9 +131,9 @@ extern "C" ARM void func_ov002_02166168(char *self) {
                     break;
                 case 8: {
                     DispatchWithShortB4_0205eaa0((struct Obj0205eaa0 *) &data_02108760, 1, 0);
-                    int id = (signed char) GetField0x3acValue(gs);
+                    int id = (signed char) GetField0x3acValue_020100a8(gs);
                     for (int i = 0; i < *(int *) (self + 0x1c50); i++) {
-                        char *c = (char *) GetCombatantWithFlag0x100(gs, *(int *) (self + i * 4 + 0x1c54));
+                        char *c = (char *) GetCombatantWithFlag0x100_0200ff1c(gs, *(int *) (self + i * 4 + 0x1c54));
                         if (c != 0 && !(**(int **) (c + 0x130) & 1)) {
                             id = (signed char) ((int *) (self + 0x1c54))[i];
                             break;

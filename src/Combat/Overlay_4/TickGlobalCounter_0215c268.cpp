@@ -17,7 +17,7 @@ ARM int TickGlobalCounter_0215c268(void* obj) {
 	unsigned char* p = (unsigned char*)data_ov004_021707d8.p;
 	if (p[0x30] == 0) goto skip;
 	{
-		FontBankLoader* g = GetGlobal02109400();
+		FontBankLoader* g = GetGlobal02109400_02094a00();
 		unsigned char* p2 = (unsigned char*)data_ov004_021707d8.p;
 		if (p2[0x2c] != 0) goto elseBranch;
 		BlankFunction02094b34(g, 0x72, 0x202, 0, 0);

@@ -47,30 +47,30 @@ struct PartyFlags02166a90 {
 extern Vector3i data_ov003_0217f4b8[3];
 
 extern "C" SelectedEntry02166a90* func_ov003_02160bf8(SelectionPage02166a90*, int);
-int GetWord0x0(int*);
+int GetWord0x0_0200fb8c(int*);
 extern "C" void* func_02012fe4(void);
 void* FindRecordByShortField020108f0(void*, int);
 void* FindSlotWithNegShort02010954(char*);
 void ResetShortFields02086380(unsigned char*);
 extern "C" void func_02082d6c(SlotState02082d6c*, SlotRecord02082d6c*);
 extern "C" void func_ov017_0218f064(GameResources*, int, int, int, int);
-GameObject* GetCombatantWithFlag0x1000(GameState*, int);
+GameObject* GetCombatantWithFlag0x1000_0200ff58(GameState*, int);
 void SetVecYFromValue02033874(Obj02033874*, int);
 extern "C" unsigned char* func_ov017_021a4658(unsigned char*, int);
-int GetField0x3acValue(GameState*);
-void SetField0x2d0(void*, int);
-int GetSignedByte0x2d0(void*);
-void SetField0x2d1(void*, int);
+int GetField0x3acValue_020100a8(GameState*);
+void SetField0x2d0_020546a0(void*, int);
+int GetSignedByte0x2d0_020546a8(void*);
+void SetField0x2d1_020546b4(void*, int);
 typedef void (*ByteSetterWithIntArgument02166a90)(void*, int);
-int GetFieldAt0x150(unsigned char*);
+int GetFieldAt0x150_02053c6c(unsigned char*);
 extern "C" void func_02042764(unsigned char*, char*, int);
 int GetFieldAt0x50(Struct020865b0*);
-void SetBit0x954StoreIndex0x950(unsigned char*, int);
+void SetBit0x954StoreIndex0x950_02083ca0(unsigned char*, int);
 void* GetDataPtr02114e04_020d6c00(void);
-void OrBitsIntoField0(unsigned int*, unsigned int);
+void OrBitsIntoField0_020466e4(unsigned int*, unsigned int);
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
 extern "C" void* func_0202ae18(void);
-int CheckField0NonZero(int*);
+int CheckField0NonZero_0202b7d8(int*);
 void EnqueueEventTag7_021cc340(int, int, int);
 extern "C" void func_ov017_021cf078(int, unsigned short, unsigned char);
 void EnqueueEventTag11_021cc97c(int);
@@ -78,7 +78,7 @@ extern "C" void func_ov017_021cca5c(int, int);
 extern "C" void func_ov017_021ccb58(int, int);
 extern "C" void* func_0205ec34(void);
 extern "C" void func_0206e424(void*, int);
-void SetOrClearBitInArray(void*, unsigned char*, int, int);
+void SetOrClearBitInArray_0206df6c(void*, unsigned char*, int, int);
 void ClearFlags020466f4(FlagWord020466f4*, unsigned int);
 extern "C" void func_ov017_02191234(unsigned char*);
 void SetCombatModeFromCase020dc2d0(int);
@@ -98,7 +98,7 @@ extern "C" ARM int func_ov003_02166a90(SelectionPage02166a90* self, int key) {
         special = 1;
     }
     GameState* state = GameState::GetInstance();
-    GameResources* resources = (GameResources*)GetWord0x0((int*)state);
+    GameResources* resources = (GameResources*)GetWord0x0_0200fb8c((int*)state);
     unsigned short* field06 = (unsigned short*)func_02012fe4();
     if (self->step == 0) {
         int freeSlot = -1;
@@ -129,7 +129,7 @@ extern "C" ARM int func_ov003_02166a90(SelectionPage02166a90* self, int key) {
         ResetShortFields02086380((unsigned char*)record);
         func_02082d6c((SlotState02082d6c*)record, (SlotRecord02082d6c*)entry);
         func_ov017_0218f064(resources, self->slot, 0x1000, 1, 0);
-        GameObject* member = GetCombatantWithFlag0x1000(state, self->slot);
+        GameObject* member = GetCombatantWithFlag0x1000_0200ff58(state, self->slot);
         if (member == 0) {
             return 0;
         }
@@ -141,37 +141,37 @@ extern "C" ARM int func_ov003_02166a90(SelectionPage02166a90* self, int key) {
         if (special == 0) {
             event->flags |= 8;
         }
-        int group = GetField0x3acValue(state);
-        ((ByteSetterWithIntArgument02166a90)SetField0x2d0)(member, group);
+        int group = GetField0x3acValue_020100a8(state);
+        ((ByteSetterWithIntArgument02166a90)SetField0x2d0_020546a0)(member, group);
         int sameGroup = 0;
         for (int slot = 0; slot < 4; slot++) {
-            GameObject* other = GetCombatantWithFlag0x1000(state, slot);
+            GameObject* other = GetCombatantWithFlag0x1000_0200ff58(state, slot);
             if (other != 0 && slot != self->slot) {
-                if (group == GetSignedByte0x2d0(other)) {
+                if (group == GetSignedByte0x2d0_020546a8(other)) {
                     sameGroup++;
                 }
             }
         }
-        ((ByteSetterWithIntArgument02166a90)SetField0x2d1)(member, sameGroup);
-        GetPtrField0x2a04(state);
-        Appearance02166a90* appearance = (Appearance02166a90*)GetFieldAt0x150((unsigned char*)member);
+        ((ByteSetterWithIntArgument02166a90)SetField0x2d1_020546b4)(member, sameGroup);
+        GetPtrField0x2a04_02010828(state);
+        Appearance02166a90* appearance = (Appearance02166a90*)GetFieldAt0x150_02053c6c((unsigned char*)member);
         char name[0x30] = {0};
         func_02042764(entry->name, name, 1);
         strcpy(((Combatant02166a90*)member)->name, name);
         int index = GetFieldAt0x50((Struct020865b0*)entry);
         appearance->values[index] = entry->metadataValues[GetFieldAt0x50((Struct020865b0*)entry)];
-        SetBit0x954StoreIndex0x950((unsigned char*)appearance, GetFieldAt0x50((Struct020865b0*)entry));
+        SetBit0x954StoreIndex0x950_02083ca0((unsigned char*)appearance, GetFieldAt0x50((Struct020865b0*)entry));
         self->step++;
     }
     if (self->step == 2) {
         HeadNode02046b24** head = (HeadNode02046b24**)resources->unknown_ptr_array_36fc[1];
-        OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 0x41);
+        OrBitsIntoField0_020466e4((unsigned int*)GetDataPtr02114e04_020d6c00(), 0x41);
         if (GetHeadNodeIdOrMinusOne(head) != 0x13) {
             self->step++;
         }
     }
     if (self->step == 3) {
-        if (CheckField0NonZero((int*)func_0202ae18()) != 0) {
+        if (CheckField0NonZero_0202b7d8((int*)func_0202ae18()) != 0) {
             EnqueueEventTag7_021cc340(self->slot, 1, -1);
             for (int i = 0; i < 13; i++) {
                 func_ov017_021cf078(self->slot, (unsigned char)i, 0);
@@ -187,7 +187,7 @@ extern "C" ARM int func_ov003_02166a90(SelectionPage02166a90* self, int key) {
         func_0206e424(func_0205ec34(), self->slot);
         state->GetPartyMemberByIndex(self->slot);
         PartyFlags02166a90* flags = (PartyFlags02166a90*)func_0205ec34();
-        SetOrClearBitInArray(flags, flags->flags, 0x784, 1);
+        SetOrClearBitInArray_0206df6c(flags, flags->flags, 0x784, 1);
         self->step = 0;
         ClearFlags020466f4((FlagWord020466f4*)GetDataPtr02114e04_020d6c00(), 0x41);
         func_ov017_02191234((unsigned char*)resources);
@@ -198,10 +198,10 @@ extern "C" ARM int func_ov003_02166a90(SelectionPage02166a90* self, int key) {
         func_020dc7e8(6, -1);
         func_020dc7e8(7, -1);
         int* eventStatus = (int*)func_0202ae18();
-        if (eventStatus != 0 && CheckField0NonZero(eventStatus) != 0) {
+        if (eventStatus != 0 && CheckField0NonZero_0202b7d8(eventStatus) != 0) {
             ForEachEntry_021d0dbc();
         }
-        if (CheckField0NonZero((int*)func_0202ae18()) != 0) {
+        if (CheckField0NonZero_0202b7d8((int*)func_0202ae18()) != 0) {
             EnqueueEventTag20_021cee78(self->slot, 1);
         }
         return 1;

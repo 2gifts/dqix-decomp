@@ -3,7 +3,7 @@
 
 extern "C" void* func_ov017_021b8478(void* obj);
 void* GetField6b0_021b8470(void* obj);
-int GetField0x3acValue(GameState* battleStruct);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 
 struct Src021c840c {
 	unsigned char pad0[4];
@@ -35,7 +35,7 @@ ARM void UpdateFieldIfHalfwordsMatch_021c840c(int unused0, Src021c840c* src, Gam
 	if (!r) return;
 	void* work = GetField6b0_021b8470(h);
 	if (!work) return;
-	int val = GetField0x3acValue(battleStruct);
+	int val = GetField0x3acValue_020100a8(battleStruct);
 	if (r->field2a == val) return;
 	if (r->field8 == src->field4) {
 		*(int*)((unsigned char*)work + 0x8000 + 0xe20) = src->field8;

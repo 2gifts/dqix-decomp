@@ -1,12 +1,11 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-
 struct KeyedList0207c484;
 int DecrementKeyedStackAmount0207c484(struct KeyedList0207c484* obj, int value, int amount, int key);
 struct KeyMap020a0a08;
 int DecrementKeyValue020a0a08(struct KeyMap020a0a08* map, int key, int amount);
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 struct Slots020838c4;
 int RemoveSlotValueAndCompact020838c4(struct Slots020838c4* s, int value);
 void* ResetCombatantFields_0215a2f8(void* obj);
@@ -18,8 +17,8 @@ extern Struct021707d8_0215b1d4 data_ov004_021707d8;
 struct Bits0xc_0215b1d4 { unsigned short low13 : 13; unsigned short high3 : 3; };
 
 #if defined(jpn)
-extern "C" void* GetPtrField0x2a04(GameState*);
-extern "C" GameObject* GetCombatantWithFlag0x100(GameState*, int);
+extern "C" void* GetPtrField0x2a04_02010828(GameState*);
+extern "C" GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState*, int);
 
 #else
 #endif
@@ -38,23 +37,23 @@ extern "C" ARM int func_ov004_0215b1d4(void* obj) {
 
     int cnt = *(int*)(data_ov004_021707d8.ptr + 0x74);
     if (cnt >= 0) {
-        void* result = GetPtrField0x2a04(bs);
+        void* result = GetPtrField0x2a04_02010828(bs);
         if (!result) return 0;
         short key = *(short*)(data_ov004_021707d8.ptr + 0x6c);
         signed char amt = *(signed char*)(data_ov004_021707d8.ptr + 0x6e);
         int key2 = *(int*)(data_ov004_021707d8.ptr + 0x74);
         DecrementKeyedStackAmount0207c484((struct KeyedList0207c484*)((char*)result + 0x1d4), key, amt, key2);
     } else if (*(signed char*)(data_ov004_021707d8.ptr + 0x70) == -1) {
-        void* result = GetPtrField0x2a04(bs);
+        void* result = GetPtrField0x2a04_02010828(bs);
         if (!result) return 0;
         short key = *(short*)(data_ov004_021707d8.ptr + 0x6c);
         signed char amt = *(signed char*)(data_ov004_021707d8.ptr + 0x6e);
         DecrementKeyValue020a0a08((struct KeyMap020a0a08*)result, key, amt);
     } else {
         int combatantId = *(signed char*)(data_ov004_021707d8.ptr + 0x70);
-        GameObject* c = GetCombatantWithFlag0x100(bs, combatantId);
+        GameObject* c = GetCombatantWithFlag0x100_0200ff1c(bs, combatantId);
         if (!c) return 0;
-        int field = GetFieldAt0x150((unsigned char*)c);
+        int field = GetFieldAt0x150_02053c6c((unsigned char*)c);
         short key = *(short*)(data_ov004_021707d8.ptr + 0x6c);
         RemoveSlotValueAndCompact020838c4((struct Slots020838c4*)field, key);
     }

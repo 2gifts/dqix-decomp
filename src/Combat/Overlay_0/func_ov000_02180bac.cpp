@@ -5,7 +5,7 @@ void CallListEntry0204bbb4(struct Obj0204bbb4* obj, unsigned int idx, int a2, in
                            short a4, short a5, short a6, short a7, unsigned short a8);
 extern "C" void func_0205ac40(void* dst, void* src);
 extern "C" int* func_0202ae18(void);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 
 extern const int data_ov000_021836a0[];
 
@@ -54,7 +54,7 @@ extern "C" ARM void func_ov000_02180bac(struct Obj02180bac* obj) {
         func_0205ac40(obj->field11c, e);
     }
     int flag = (obj->flags1d72 & 0x400) ? 1 : 0;
-    if (flag & CheckField0NonZero(func_0202ae18())) {
+    if (flag & CheckField0NonZero_0202b7d8(func_0202ae18())) {
         struct Entry02180bac* e = &obj->entries[6];
         int idx = obj->field1a - 2;
         if (obj->field1a < 0) {

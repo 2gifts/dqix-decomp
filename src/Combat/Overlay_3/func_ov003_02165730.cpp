@@ -21,7 +21,7 @@ struct Global02109030 {
 
 extern "C" GameResources* func_ov017_0218b5b0(void);
 void* GetDataPtr02114e04_020d6c00(void);
-Global02109030* GetGlobal02109030(void);
+Global02109030* GetGlobal02109030_020936f8(void);
 int GetGlobalField0x1c020421a0(void);
 void ReinitController02043204(char* obj);
 int TestFlags02046708(struct FlagWord02046708* word, unsigned int mask);
@@ -53,15 +53,15 @@ extern "C" ARM void func_ov003_02165730(BattleView02165730* view) {
     void* flagData = GetDataPtr02114e04_020d6c00();
 
     if (view->step == 0) {
-        GetGlobal02109030()->flag3c9 = 1;
+        GetGlobal02109030_020936f8()->flag3c9 = 1;
         ReinitController02043204((char*)GetGlobalField0x1c020421a0());
         view->field_0x484 = view->field_0x486 = -1;
         view->field_0x4a5 = 0;
 
         GameState* gs = GameState::GetInstance();
-        PartyList2a04* party = (PartyList2a04*)GetPtrField0x2a04(gs);
+        PartyList2a04* party = (PartyList2a04*)GetPtrField0x2a04_02010828(gs);
         for (int i = 0; i < party->count; i++) {
-            GameObject* member = GetCombatantWithFlag0x100(gs, party->members[i]);
+            GameObject* member = GetCombatantWithFlag0x100_0200ff1c(gs, party->members[i]);
             if (member != NULL) {
                 member->obj3D_.MakeVisible();
             }

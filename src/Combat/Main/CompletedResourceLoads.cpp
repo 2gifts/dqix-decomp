@@ -6,7 +6,7 @@
 struct State0xbb1c;
 struct Obj0203bb3c;
 
-void ClearFields0x8(State0xbb1c *state);
+void ClearFields0x8_0203bb1c(State0xbb1c *state);
 void SetupAndDispatchCharTransfer0203bb3c(Obj0203bb3c *state, char *source, SafeAllocator *allocator, int category,
                                           unsigned short flags);
 
@@ -72,7 +72,7 @@ extern "C" ARM void func_020210f8(char *receiver, int *handles, SafeAllocator *a
 
     for (int index = 0; index < state->entryCount; index++) {
         loader->GetLoadedFileByID(handles[index], &fileData, &fileLength);
-        ClearFields0x8(reinterpret_cast<State0xbb1c *>(state->entries[index].pad8));
+        ClearFields0x8_0203bb1c(reinterpret_cast<State0xbb1c *>(state->entries[index].pad8));
         SetupAndDispatchCharTransfer0203bb3c(reinterpret_cast<Obj0203bb3c *>(state->entries[index].pad8),
                                              static_cast<char *>(fileData), allocator, 1, 0);
         BackgroundLoader::GetInstance()->RemoveTask(handles[index]);

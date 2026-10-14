@@ -9,7 +9,7 @@ ARM void* FilterByTypeAndBytes020a86b8(int unused, int flag, unsigned char b0, u
     Zone3D* zone = (Zone3D*)func_02012fe4();
     int i = 0;
     for (;;) {
-        ZoneFeatures::Opcode6aEntry* entry = GetElementStride0x74(&zone->substruct_6c_, i);
+        ZoneFeatures::Opcode6aEntry* entry = GetElementStride0x74_0201e664(&zone->substruct_6c_, i);
         i++;
         if (!entry) return entry;
         if (entry->maybeType != 0xc) continue;

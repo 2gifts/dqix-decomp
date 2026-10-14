@@ -11,7 +11,7 @@ extern "C" void* func_0205ec34(void);
 int LookupAndForEachNode020649b0(void* a, int mode, void* c);
 extern "C" void func_0206f81c(void* p);
 void InitObj_021adc58(unsigned char* self);
-unsigned char GetField0x397cValue(GameState* battleStruct);
+unsigned char GetField0x397cValue_020100b0(GameState* battleStruct);
 int fix32ReduceAngle0To2Pi(int angle);
 struct Vector3i;
 struct TailList020469b4;
@@ -48,7 +48,7 @@ extern "C" ARM void func_ov017_0219922c(unsigned char* self) {
     node = *(unsigned char**)(self + 0x3000 + RegionOffsetb24);
     node[0xa] = (unsigned char)val_b6;
 
-    int fv = GetField0x397cValue(battle);
+    int fv = GetField0x397cValue_020100b0(battle);
     node = *(unsigned char**)(self + 0x3000 + RegionOffsetb24);
     node[8] = (unsigned char)fv;
 

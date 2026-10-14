@@ -12,8 +12,8 @@ struct Elem_0205d81c {
     short fbc;
     short fbe;
 };
-struct Elem_0205d81c *FindElementForFieldB0(struct Struct_0205d81c *s);
-int CheckField0x9cSetWhenField0xd4Present(unsigned char *p);
+struct Elem_0205d81c *FindElementForFieldB0_0205d8c4(struct Struct_0205d81c *s);
+int CheckField0x9cSetWhenField0xd4Present_0204c7e0(unsigned char *p);
 
 struct Container0205a3d0;
 struct Elem0205a3d0 {
@@ -22,7 +22,7 @@ struct Elem0205a3d0 {
 };
 struct Elem0205a3d0 *FindEntryByHalfword0205a3d0(struct Container0205a3d0 *c, int key);
 void SetEntryFlag2ByKey0205a370(struct Container0205a3d0 *c, int key);
-void SetEntryPosition(struct Container0205a3d0 *c, int key, short a, short b);
+void SetEntryPosition_020e27ec(struct Container0205a3d0 *c, int key, short a, short b);
 
 struct Container0205a330;
 void IterateEntries0205a330(struct Container0205a330 *c, int arg);
@@ -35,9 +35,9 @@ extern "C" ARM void func_ov002_0215afb8(char *obj) {
 
     if (!(*(int *) (obj + 0x2000 + 0x47c) & 4)) return;
 
-    struct Elem_0205d81c *elem = FindElementForFieldB0((struct Struct_0205d81c *) (obj + 0x2c8 + 0xc00));
+    struct Elem_0205d81c *elem = FindElementForFieldB0_0205d8c4((struct Struct_0205d81c *) (obj + 0x2c8 + 0xc00));
     if (elem == NULL) return;
-    if (!CheckField0x9cSetWhenField0xd4Present((unsigned char *) elem)) return;
+    if (!CheckField0x9cSetWhenField0xd4Present_0204c7e0((unsigned char *) elem)) return;
     struct Outer020e28dc *choice = *(struct Outer020e28dc **) (obj + 4);
     if (choice == NULL) return;
     if (GetInnerFlagBit0020e28dc(choice)) return;
@@ -53,6 +53,6 @@ extern "C" ARM void func_ov002_0215afb8(char *obj) {
         e->flags |= 8;
     }
     IterateEntries0205a330((struct Container0205a330 *) cont, *(int *) (obj + 0x1000 + 0xba0));
-    SetEntryPosition(cont, 0, x - 8, y - 2);
+    SetEntryPosition_020e27ec(cont, 0, x - 8, y - 2);
     func_0205ae8c(*(void **) (obj + 0x1000 + 0xa68));
 }

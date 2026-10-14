@@ -116,7 +116,7 @@ struct BackgroundGraphics {
 extern "C" void func_ov023_021dcd90(ItemInfoWindow* window, unsigned char inMenu);
 int CountActiveEntries(ActiveEntry02046900* pac);
 void ResetList0204af64(List0204af64* background);
-void SetWord0x18ClearByte0x1f(unsigned char* background, int a);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char* background, int a);
 extern "C" void func_0204b5b4(void* background, int a);
 void DispatchViaTable0204b5e8(Obj0204b5e8* background, int a, int b);
 void* FindRecordByIndex(Rec020467f0* pac, int index, void** name, int* size);
@@ -147,7 +147,7 @@ extern "C" ARM void func_ov006_02156bd8(AlchemyPot* self) {
             int count = CountActiveEntries((ActiveEntry02046900*)pac);
             BackgroundGraphics background;
             ResetList0204af64((List0204af64*)&background);
-            SetWord0x18ClearByte0x1f((unsigned char*)&background, 0);
+            SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)&background, 0);
             background.unk_1c_0_ = 0;
             background.unk_1c_4_ = 3;
             func_0204b5b4(&background, 3);

@@ -5,7 +5,7 @@
 extern "C" Zone3D* func_02012fe4(void);
 extern "C" void DisableSubObjVRAMBanks(void);
 extern "C" int DisableSubBGVRAMBanks(void);
-void SetSubBgMode(unsigned int mode);
+void SetSubBgMode_020c3984(unsigned int mode);
 extern "C" void MapVRAMBanksToSubObj(unsigned short value);
 extern "C" void MapVRAMBanksToSubBG(int);
 void SetSubBg0Control02020968(int screenSize, int colorMode, int screenBase, int charBase, int bit13);
@@ -18,7 +18,7 @@ extern "C" ARM void func_02020838(MapDisplay* unusedContext) {
 
     DisableSubBGVRAMBanks();
     DisableSubObjVRAMBanks();
-    SetSubBgMode(0);
+    SetSubBgMode_020c3984(0);
     MapVRAMBanksToSubBG(0x80);
 
     if (state->unknown_c_low_ == 0) {

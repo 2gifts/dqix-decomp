@@ -2,7 +2,7 @@
 #include "Combat/Main/CopyRecord0200fbb4.h"
 #include "GameState/GameState.h"
 
-void* GetField0x3f8Address(GameState*);
+void* GetField0x3f8Address_0200fd0c(GameState*);
 extern "C" void func_02012fe4(void);
 extern "C" int func_ov017_021d60f4(void* obj);
 extern "C" float func_ov017_021d6110(void* obj);
@@ -28,7 +28,7 @@ struct S3f8_02161f80 {
 extern "C" ARM int func_ov001_02161f80(void* target, int count) {
     int tmpArr[3];
     void* battle = GameState::GetInstance();
-    struct S3f8_02161f80* obj = (struct S3f8_02161f80*)GetField0x3f8Address((GameState*)battle);
+    struct S3f8_02161f80* obj = (struct S3f8_02161f80*)GetField0x3f8Address_0200fd0c((GameState*)battle);
     func_02012fe4();
     int flag2 = -1;
     int fixedD;
@@ -60,6 +60,6 @@ extern "C" ARM int func_ov001_02161f80(void* target, int count) {
             obj->field69 = 1;
         }
     }
-    CallFunc0200fbb4AtField0x3f8(battle, obj);
+    CallFunc0200fbb4AtField0x3f8_0200fcfc(battle, obj);
     return 1;
 }

@@ -8,7 +8,7 @@ void FindAndLinkMatchingEntry0205de24(struct Struct0205de24* obj, unsigned char 
 struct Container020e0310;
 int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 
-int GetField0x3acValue(GameState* battleStruct);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 int GetGlobalField0x1c020421a0(void);
 void InitObjFromCombatantId020e4bf4(void* obj, int combatantId);
 
@@ -23,7 +23,6 @@ void AppendString02042058(char*, const char*);
 #else
 extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g, int h);
 #endif
-
 
 struct Bits0205de24_021ed4b8 { unsigned char low4 : 4; unsigned char high4 : 4; };
 
@@ -80,8 +79,8 @@ extern "C" ARM void func_ov023_021ed4b8(char* obj) {
     GameState* bs = GameState::GetInstance();
 #endif
 
-    int id = GetField0x3acValue(bs);
-    GameObject* combatant = GetCombatantWithFlag0x100(bs, id);
+    int id = GetField0x3acValue_020100a8(bs);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(bs, id);
     if (combatant == NULL) return;
 
     int g = GetGlobalField0x1c020421a0();
@@ -101,7 +100,6 @@ extern "C" ARM void func_ov023_021ed4b8(char* obj) {
 
     int key = GetFieldByKey020e0434((struct Container020e0310*)(obj + 0x4), 0x64);
     func_02046608(g, 1, (void*)(long)key, *(void**)(obj + 0x1c), 0xe3, 0, 1);
-
 
 #endif
 #if defined(jpn)

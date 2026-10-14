@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 extern "C" int func_ov000_02156b38(int a0, int id, unsigned int idx);
-GameObject* GetCombatantWithFlag0x400(GameState* battleStruct, int combatantId);
+GameObject* GetCombatantWithFlag0x400_0200fea4(GameState* battleStruct, int combatantId);
 
 struct FlagsIdObj_021f875c { unsigned short flags; unsigned short pad2; short id; };
 struct Params_021f875c { char pad0[0x8]; int field8; char pad1[0x4]; int field10; char pad2[0x4]; int field18; };
@@ -12,7 +12,7 @@ struct Inner144_021f875c { char pad[0xa]; unsigned short lowBits : 12; unsigned 
 extern "C" ARM int func_ov024_021f875c(int* obj0, struct FlagsIdObj_021f875c* obj1, struct Params_021f875c* obj2, int obj3) {
 	GameState* bs = GameState::GetInstance();
 	if (obj1->flags & 0x400) {
-		GameObject* c = GetCombatantWithFlag0x400(bs, obj1->id);
+		GameObject* c = GetCombatantWithFlag0x400_0200fea4(bs, obj1->id);
 		if (c && *(void**)((char*)c + 0x144)) {
 			struct Inner144_021f875c* inner = *(struct Inner144_021f875c**)((char*)c + 0x144);
 			if (inner->flagBit12) {

@@ -20,7 +20,7 @@ extern "C" void func_ov000_0217979c(void* obj, void* entry, void* buf);
 
 struct StructA0205d5d0;
 // USA: func_ov000_021795e0
-ARM int ApplyElemFieldsSlot17(void* obj, int, int) {
+ARM int ApplyElemFieldsSlot17_ov000_021795e0(void* obj, int, int) {
 	void* entry = FindMatchingTableEntry0217f8c0((struct Struct0217f8c0*)obj);
 	func_ov000_0217964c(obj, entry);
 	void* buf = *(void**)(GetGlobalField0x1c020421a0() + REGION_OFFSET_0);

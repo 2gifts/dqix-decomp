@@ -7,15 +7,15 @@ struct Container020dedd0;
 struct KeyMap020a0b3c;
 
 extern "C" GameState *_ZN9GameState11GetInstanceEv();
-char *GetPtrField0x2a04(GameState *gs);
+char *GetPtrField0x2a04_02010828(GameState *gs);
 void *GetGlobalField0x1c020421a0();
 int AppendFrameTag02041c08(char *dst, int a1, int a2, int a3, int a4, int a5);
-int AppendCursorTag(char *dst, int cursor);
-int AppendNameTag(char *dst, int n, const char *name);
+int AppendCursorTag_02041ea4(char *dst, int cursor);
+int AppendNameTag_02041b70(char *dst, int n, const char *name);
 int AppendString02042058(char *dst, const char *src);
 void ComputeProductSums0205c508(struct UnkStruct0205c508 *s, int *out1, int *out2);
 extern "C" void func_02046380(void *messages);
-void StoreInArray0x8b0(StoreStruct *messages, int index, int value);
+void StoreInArray0x8b0_020465c0(StoreStruct *messages, int index, int value);
 char *FindElementByKey020dedd0(Container020dedd0 *c, int key);
 void CopyTextAndUppercaseIfFlagged0206819c(const char *src, char *dst, int flag);
 int LookupValueByKey020a0b3c(KeyMap020a0b3c *map, int key);
@@ -36,8 +36,8 @@ extern "C" ARM void func_ov002_0215d950(char *p, char *dst, int flag2) {
     if (dst == 0) return;
     int cursor = *(short *) (p + 0x1be8) & 7;
     if (flag2) AppendFrameTag02041c08(dst, cursor, 8, 5, 5, 5);
-    AppendCursorTag(dst, cursor);
-    tbl       = GetPtrField0x2a04(_ZN9GameState11GetInstanceEv()) + 0xe04;
+    AppendCursorTag_02041ea4(dst, cursor);
+    tbl       = GetPtrField0x2a04_02010828(_ZN9GameState11GetInstanceEv()) + 0xe04;
     void *msg = GetGlobalField0x1c020421a0();
     char *fld = p + 0x2c8 + 0xc00;
     int sel   = *(int *) (fld + 0x68);
@@ -46,13 +46,13 @@ extern "C" ARM void func_ov002_0215d950(char *p, char *dst, int flag2) {
     n = 0;
     for (i = out1; i < out2; i++) {
         func_02046380(msg);
-        StoreInArray0x8b0((StoreStruct *) msg, 0, n);
+        StoreInArray0x8b0_020465c0((StoreStruct *) msg, 0, n);
         char *e = FindElementByKey020dedd0((Container020dedd0 *) (p + 0x3ec + 0x400),
                                                                     *(short *) (tbl + i * 2 + 0xc));
         if (e != 0) {
             __clear(name, sizeof(name));
             CopyTextAndUppercaseIfFlagged0206819c(*(const char **) (e + 4), name, 0);
-            AppendNameTag(dst, n, name);
+            AppendNameTag_02041b70(dst, n, name);
             __clear(line, sizeof(line));
             sprintf(line, data_ov002_0216d270,
                     LookupValueByKey020a0b3c((KeyMap020a0b3c *) tbl, *(short *) (e + 0x18)));

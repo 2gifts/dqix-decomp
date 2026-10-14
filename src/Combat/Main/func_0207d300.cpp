@@ -23,10 +23,10 @@ struct Element020de650 {
 
 extern struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0* c, int key);
 extern void* InitAllocatorAndLoadGp2File0207d6dc(SafeAllocator* self, int param1, int param2);
-extern void* GetPtrField0x2a04(GameState* battleStruct);
-extern GameObject* GetCombatantWithFlag0x100(GameState* gameState, int combatantId);
+extern void* GetPtrField0x2a04_02010828(GameState* battleStruct);
+extern GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* gameState, int combatantId);
 extern int CheckField0x56bLowNibble(struct Obj02061bd8* obj);
-extern unsigned char* GetFieldAt0x150(unsigned char* obj);
+extern unsigned char* GetFieldAt0x150_02053c6c(unsigned char* obj);
 extern int CountPositiveSlots02083960(struct Slots02083960* slots);
 extern "C" int func_0207ccf0(struct Obj0207d200* self, int key, int one, int id, int zero0, int zero1, int zero2);
 extern "C" int func_0207cf30(struct Obj0207d200* self, int key, int count, int zero);
@@ -62,11 +62,11 @@ extern "C" ARM int func_0207d300(struct Obj0207d200* self, short key, short coun
         }
     } else {
         GameState* bs = GameState::GetInstance();
-        char* p = (char*)GetPtrField0x2a04(bs);
+        char* p = (char*)GetPtrField0x2a04_02010828(bs);
         unsigned char i;
         for (i = 0; i < *(unsigned char*)(p + 0xf7c); i++) {
             int id = *(signed char*)(p + i + 0xf78);
-            GameObject* c = GetCombatantWithFlag0x100(bs, id);
+            GameObject* c = GetCombatantWithFlag0x100_0200ff1c(bs, id);
             if (c == NULL) {
                 continue;
             }
@@ -82,7 +82,7 @@ extern "C" ARM int func_0207d300(struct Obj0207d200* self, short key, short coun
                     continue;
                 }
             }
-            unsigned char* slots = GetFieldAt0x150((unsigned char*)c);
+            unsigned char* slots = GetFieldAt0x150_02053c6c((unsigned char*)c);
             if (slots == NULL) {
                 continue;
             }

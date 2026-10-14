@@ -94,12 +94,12 @@ struct AlchemyMenu {
     unsigned char closeRequested_;
 };
 
-void SetEntryHalfword0xe(void* menu, int id, int text);
-void DispatchEntryOp0x8(void* menu, int id);
+void SetEntryHalfword0xe_0208103c(void* menu, int id, int text);
+void DispatchEntryOp0x8_0208108c(void* menu, int id);
 void SetEntryFlag0x2ByShortId(StatusOwner02081164* menu, int id, int flag);
 extern "C" void func_020813ec(void* menu, int id);
 void SetEntryLowNibbleAndElement02080c68(void* menu, int id, int value);
-void ClearElementFlag0x20(Obj2081* menu, int id);
+void ClearElementFlag0x20_02080c20(Obj2081* menu, int id);
 
 // USA: func_ov006_0215fb7c
 extern "C" ARM void func_ov006_0215fb7c(AlchemyMenu* self) {
@@ -175,10 +175,10 @@ extern "C" ARM void func_ov006_0215fb7c(AlchemyMenu* self) {
         text = 0x1c;
         break;
     }
-    SetEntryHalfword0xe(menu, 0x59, text);
-    DispatchEntryOp0x8(menu, 0x59);
+    SetEntryHalfword0xe_0208103c(menu, 0x59, text);
+    DispatchEntryOp0x8_0208108c(menu, 0x59);
     SetEntryFlag0x2ByShortId((StatusOwner02081164*)menu, 0xe, 1);
     func_020813ec(menu, 0xe);
     SetEntryLowNibbleAndElement02080c68(menu, 0xe, 2);
-    ClearElementFlag0x20((Obj2081*)menu, 0xe);
+    ClearElementFlag0x20_02080c20((Obj2081*)menu, 0xe);
 }

@@ -7,7 +7,7 @@ extern "C" void func_0204f41c(TextSurface0208d42c*, short, short, char*, int, un
 extern char data_020f120d, data_020f1212, data_020f1217;
 #if defined(jpn)
 extern char data_020f12e0[], data_020f12e5[], data_020f129b[];
-int StringLength(const char*);
+int StringLength_020d2ff0(const char*);
 extern "C" void func_02050678(TextSurface0208d42c*, short, short, const char*, int, unsigned char, short*, short*);
 #endif
 
@@ -23,7 +23,7 @@ extern "C" ARM void func_0208d42c(void*, TextSurface0208d42c* surface, short x, 
             if (mode == 2) sprintf(text, data_020f12e0, value);
             else sprintf(text, data_020f12e5, value);
         } else sprintf(text, data_020f129b, value);
-        int length = StringLength(text);
+        int length = StringLength_020d2ff0(text);
         if (rightAlign) offset = (mode - length) * 8;
         func_02050678(surface, x + offset, y, text, 8, style, &width, &height);
 #else

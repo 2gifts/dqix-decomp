@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 extern "C" int func_ov000_0215eb1c(int a0, short* buf, int count, int flag);
-GameObject* GetCombatantWithFlag0x400ByID(int unused, int id);
+GameObject* GetCombatantWithFlag0x400ByID_ov000_021536f8(int unused, int id);
 
 struct Obj_021f65fc { int field0; };
 struct Buf8_021f65fc { short v[8]; };
@@ -15,7 +15,7 @@ extern "C" ARM int func_ov024_021f65fc(struct Obj_021f65fc* obj, short value, in
     if (count <= 0) return 0;
     *outCount = 0;
     for (int i = 0; i < count; i++) {
-        GameObject* c = GetCombatantWithFlag0x400ByID(obj->field0, buf.v[i]);
+        GameObject* c = GetCombatantWithFlag0x400ByID_ov000_021536f8(obj->field0, buf.v[i]);
         if (c && *(short*)((char*)c + 2) == 0xb4) {
             (*outCount)++;
         }

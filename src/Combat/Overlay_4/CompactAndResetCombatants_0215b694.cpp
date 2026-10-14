@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void* GetPtrField0x2a04(GameState* battleStruct);
+void* GetPtrField0x2a04_02010828(GameState* battleStruct);
 int Compact0207c51c(unsigned char* base, int key);
 void* ResetCombatantFields_0215a2f8(void* obj);
 extern "C" void func_ov011_021848a0(void* obj, int val);
@@ -12,7 +12,7 @@ extern Struct021707d8_0215b694 data_ov004_021707d8;
 
 // USA: func_ov004_0215b694  (semantic: CompactAndResetCombatants_0215b694)
 extern "C" ARM int func_ov004_0215b694(void* obj) {
-    void* ptr = GetPtrField0x2a04(GameState::GetInstance());
+    void* ptr = GetPtrField0x2a04_02010828(GameState::GetInstance());
     if (!ptr) {
         return 0;
     }

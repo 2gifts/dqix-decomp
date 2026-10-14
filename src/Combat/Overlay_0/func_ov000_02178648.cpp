@@ -3,13 +3,13 @@
 
 struct Container020e0310;
 
-int IsField0x118Equal2(void* obj);
+int IsField0x118Equal2_ov000_0217542c(void* obj);
 int AppendFrameTag02041c08(char* dst, int a1, int a2, int a3, int a4, int a5);
-int AppendCursorTag(char* dst, int cursor);
+int AppendCursorTag_02041ea4(char* dst, int cursor);
 int FormatCombatLogSuffix02041dd0(char* dst, int kind);
-int AppendNameTag(char* dst, int n, const char* name);
-int AppendPaletteTag(char* dst, int palette);
-int AppendXTag(char* dst, int x);
+int AppendNameTag_02041b70(char* dst, int n, const char* name);
+int AppendPaletteTag_02041e70(char* dst, int palette);
+int AppendXTag_02041a28(char* dst, int x);
 int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 int AppendString02042058(char* dst, const char* src);
 extern "C" int func_ov000_02170c7c(void* entry);
@@ -43,12 +43,12 @@ extern "C" ARM void func_ov000_02178648(char* obj, char* dst) {
     int n = 0;
     unsigned char count;
     GameState* gs = GameState::GetInstance();
-    GetPtrField0x2a04(gs);
+    GetPtrField0x2a04_02010828(gs);
 
-    if (IsField0x118Equal2(obj)) {
+    if (IsField0x118Equal2_ov000_0217542c(obj)) {
         AppendFrameTag02041c08(dst, cursor, 8, 5, 5, 5);
     }
-    AppendCursorTag(dst, cursor);
+    AppendCursorTag_02041ea4(dst, cursor);
 
     count = *(unsigned char*)(obj + 0x79);
     for (unsigned char i = 0; i < count; i++) {
@@ -56,9 +56,9 @@ extern "C" ARM void func_ov000_02178648(char* obj, char* dst) {
         GameObject* member = gs->GetPartyMemberByIndex((signed char)entry->field4c);
         if (member != NULL) {
             FormatCombatLogSuffix02041dd0(dst, func_ov000_02170c7c(entry));
-            AppendNameTag(dst, n, (const char*)member->baseStats_);
-            AppendPaletteTag(dst, 0xf);
-            AppendXTag(dst, 0x46);
+            AppendNameTag_02041b70(dst, n, (const char*)member->baseStats_);
+            AppendPaletteTag_02041e70(dst, 0xf);
+            AppendXTag_02041a28(dst, 0x46);
             struct MemberInfo02178648* info = (struct MemberInfo02178648*)member->baseStats_;
             AppendString02042058(dst, (const char*)GetFieldByKey020e0434((struct Container020e0310*)(obj + 0xb8), (short)((unsigned short)info->flag30 + 0x7551)));
             if (i != count - 1) {
@@ -68,6 +68,6 @@ extern "C" ARM void func_ov000_02178648(char* obj, char* dst) {
         n++;
     }
 #if !defined(jpn)
-    AppendXTag(dst, 0x7a);
+    AppendXTag_02041a28(dst, 0x7a);
 #endif
 }

@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_020120b8
-ARM int* GetNegativeEntry(char* obj, int index) {
+ARM int* GetNegativeEntry_020120b8(char* obj, int index) {
 #if defined(jpn)
     int* arr = (int*)(obj + 0x5a7c);
 #else

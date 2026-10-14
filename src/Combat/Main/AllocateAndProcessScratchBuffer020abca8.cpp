@@ -8,7 +8,7 @@ enum { kStateOffset = 0x5cc8 };
 #include "Memory/AllocatorUnion.h"
 #include "GameState/GameState.h"
 
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
 extern AllocatorUnion data_02114e20;
 
@@ -21,7 +21,7 @@ ARM int AllocateAndProcessScratchBuffer020abca8() {
     int zero = 0;
     *(unsigned char*)((char*)bs + kStateOffset) = zero;
 
-    void* alloc = AllocateAligned4(&data_02114e20, 0x6fe4);
+    void* alloc = AllocateAligned4_02012d88(&data_02114e20, 0x6fe4);
     if (alloc != NULL) {
         zero = func_02075910(0x10, alloc, 0x6fe4, zero);
         if (zero != 0) {

@@ -48,8 +48,8 @@ short* GetField150Ptr0x488_02052e2c(Field150Holder02052e2c*);
 struct Field150Holder02052df8;
 int GetHalfwordEntryFromField150(Field150Holder02052df8*, int);
 extern "C" void func_02052d7c(Combatant02162db0* combatant, int index, short value);
-void* GetPtrField0x2a04(GameState* gameState);
-void ClearBitsInWord(unsigned int* word, unsigned int mask);
+void* GetPtrField0x2a04_02010828(GameState* gameState);
+void ClearBitsInWord_0203b4b0(unsigned int* word, unsigned int mask);
 extern "C" void func_ov017_0218f5a4(GameResources* resources, int combatantId, int a, int b, int c);
 
 extern SlotFlags02162db0 data_ov001_02165880;
@@ -70,7 +70,7 @@ extern "C" ARM int func_ov001_02162db0(void* args, int argc) {
 
     gameState = GameState::GetInstance();
     combatantId = func_ov017_021d60f4(args);
-    combatant = (Combatant02162db0*)GetCombatantWithFlag0x100(gameState, combatantId);
+    combatant = (Combatant02162db0*)GetCombatantWithFlag0x100_0200ff1c(gameState, combatantId);
     if (combatant == NULL) {
         return 0;
     }
@@ -104,7 +104,7 @@ extern "C" ARM int func_ov001_02162db0(void* args, int argc) {
 
     resources = func_ov017_0218b5b0();
     saved = (SavedSlot02162db0*)resources->unknown_ptr_array_371c[6];
-    GetPtrField0x2a04(gameState);
+    GetPtrField0x2a04_02010828(gameState);
     gameState->GetGameObjectByIndex(data_ov001_02164d44[slot]);
 
     if (mode == 0) {
@@ -122,7 +122,7 @@ extern "C" ARM int func_ov001_02162db0(void* args, int argc) {
         }
     }
 
-    ClearBitsInWord(&resources->brightnessFlags_0, 0x10);
+    ClearBitsInWord_0203b4b0(&resources->brightnessFlags_0, 0x10);
     BackgroundLoader::GetInstance();
     func_ov017_0218f5a4(resources, combatantId, 1, 0, 0);
     return 1;

@@ -8,6 +8,6 @@ struct PackedFields {
 };
 
 // USA: func_020de3ac
-ARM int MatchesPackedFields(struct PackedFields* obj, int a, int unused, int b) {
+ARM int MatchesPackedFields_020de3ac(struct PackedFields* obj, int a, int unused, int b) {
     return obj->fieldA == a && obj->fieldB == b;
 }

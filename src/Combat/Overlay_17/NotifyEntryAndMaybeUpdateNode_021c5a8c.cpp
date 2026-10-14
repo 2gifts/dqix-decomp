@@ -3,7 +3,7 @@
 extern "C" void func_0202ae18(void);
 extern "C" int func_0202c508(void);
 void EnqueueEventTag90_021ca2a0(int a, int b);
-void* GetData02108ea8(void);
+void* GetData02108ea8_0207d78c(void);
 struct Entry0207d9bc;
 struct Entry0207d9bc* FindEntryByHalfword(struct Entry0207d9bc* arr, unsigned short key);
 extern "C" void func_0207d7f4(void* arr, unsigned short key, int val, int flag, int a2, unsigned short b2, unsigned char c2);
@@ -22,7 +22,7 @@ extern "C" ARM void func_ov017_021c5a8c(int a, int key) {
     if (func_0202c508()) {
         EnqueueEventTag90_021ca2a0(a, (unsigned short)key);
 
-        void* arr = GetData02108ea8();
+        void* arr = GetData02108ea8_0207d78c();
         struct Entry0207d9bc* entry = FindEntryByHalfword((struct Entry0207d9bc*)arr, key);
         if (entry != NULL) {
             char* e = (char*)entry;

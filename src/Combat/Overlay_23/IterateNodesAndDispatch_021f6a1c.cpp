@@ -1,7 +1,5 @@
 #include <globaldefs.h>
 
-// Two virtual calls on the same node; target methods at vtable indices
-// 0xa8/4 = 42 and 0xb8/4 = 46.
 class VNode021f6a1c {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
@@ -28,7 +26,7 @@ struct ListHead021f6a1c {
 };
 
 extern unsigned char data_02114e54;
-void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
+void SelectCoordsByFlag0x24_02012a84(unsigned char* obj, int* out1, int* out2);
 extern "C" void func_ov011_02184a40(void* a, int b);
 
 // USA: func_ov023_021f6a1c  (semantic: IterateNodesAndDispatch_021f6a1c)
@@ -38,7 +36,7 @@ extern "C" ARM void func_ov023_021f6a1c(struct ListHead021f6a1c* obj, void* arg1
     }
 
     int a, b;
-    SelectCoordsByFlag0x24(&data_02114e54, &a, &b);
+    SelectCoordsByFlag0x24_02012a84(&data_02114e54, &a, &b);
 
     VNode021f6a1c* node = obj->head;
     while (node != NULL) {

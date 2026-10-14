@@ -4,7 +4,7 @@
 #include "Util/Random.h"
 #include "std_library_functions.h"
 
-GameObject* GetCombatantWithFlag0x400ByID(int unused, int id);
+GameObject* GetCombatantWithFlag0x400ByID_ov000_021536f8(int unused, int id);
 struct S_bf3c_021f0d0c;
 int IsBitfield1Set_021f0d0c(struct S_bf3c_021f0d0c* obj);
 extern "C" int func_ov000_0215e9fc(int battle, short* table, int count, int flag);
@@ -19,7 +19,7 @@ extern struct Buf8_021f0b84 data_ov024_021fee7c;
 
 // USA: func_ov024_021f0b84
 extern "C" ARM int func_ov024_021f0b84(struct Obj_021f0b84* obj, int id, int unused, int* outCount, short* outArray) {
-    GameObject* c = GetCombatantWithFlag0x400ByID(obj->field0, id);
+    GameObject* c = GetCombatantWithFlag0x400ByID_ov000_021536f8(obj->field0, id);
     if (!c) return 0;
     if (!IsBitfield1Set_021f0d0c((struct S_bf3c_021f0d0c*)c)) return 0;
 

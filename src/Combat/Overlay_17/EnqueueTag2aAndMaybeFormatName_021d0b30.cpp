@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 extern "C" int func_ov017_0218b5b0(void);
 extern "C" void __clear(void* buf, int size);
@@ -25,7 +25,7 @@ extern "C" ARM void func_ov017_021d0b30(unsigned short a, unsigned short b, char
 #else
  enum {regionalOffset0=0x35c, regionalOffset1=0x30};
 #endif
-    void* data = GetData02100044();
+    void* data = GetData02100044_0202ae24();
     struct LocalEvt021d0b30 buf;
     struct Sub021d0b30* s = &buf.sub;
 

@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct LocalEvtBody021c9d2c {
@@ -28,7 +28,7 @@ static inline int IsValidSlot(int slot) {
 
 // USA: func_ov017_021c9d2c
 extern "C" ARM void func_ov017_021c9d2c(int slot, unsigned short a1, unsigned short a2, unsigned short a3, int a4, unsigned int a5, unsigned char a6, int flagA, int flagB) {
-    void* p = GetData02100044();
+    void* p = GetData02100044_0202ae24();
     GameState::GetInstance();
     if (IsValidSlot(slot)) {
         LocalEvt021c9d2c buf;

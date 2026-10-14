@@ -24,7 +24,7 @@ extern "C" void* func_0202ae18(void);
 extern "C" Vector3fix func_020341e0(void* obj);
 extern "C" int func_020322c0(int a, int* b, int c);
 extern "C" void func_020794f8(void* obj, int a, int b);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 struct SearchStruct0202c1a4;
 struct BitFlag02033f44;
 struct Obj02033834;
@@ -36,7 +36,7 @@ void SetVecYByMode02033834(struct Obj02033834* obj, int angle);
 void SetByteIfChanged02033b68(struct Obj02033b68* obj, int value);
 void TrySetMode02076ccc(void* obj, int mode);
 int GetField0x8OrDefault02077a20(struct Outer02077a20* obj);
-int GetIntField0x264(void* obj);
+int GetIntField0x264_02039760(void* obj);
 
 // USA: func_02077788
 extern "C" ARM void func_02077788(struct Entity02077788* self) {
@@ -69,7 +69,7 @@ extern "C" ARM void func_02077788(struct Entity02077788* self) {
     if (inRange) {
         TrySetMode02076ccc(self, 1);
         self->f154 = 0;
-        if (CheckField0NonZero((int*)g)) {
+        if (CheckField0NonZero_0202b7d8((int*)g)) {
             func_020794f8(self, 0, 0);
         }
         return;
@@ -79,7 +79,7 @@ extern "C" ARM void func_02077788(struct Entity02077788* self) {
     if (combatant->obj3D_.unknown_0_ & 0x1000) {
         index = 0;
     }
-    if (!CheckField0NonZero((int*)g) || index == GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)g)) {
+    if (!CheckField0NonZero_0202b7d8((int*)g) || index == GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)g)) {
         Vector3fix pos2 = func_020341e0(combatant);
         int radius = combatant->obj3D_.GetRadius();
         int scaledSpacing = self->object.GetScale().x * 15;
@@ -91,21 +91,21 @@ extern "C" ARM void func_02077788(struct Entity02077788* self) {
             TrySetMode02076ccc(self, 1);
             self->f154 = 0;
             self->f17b = 1;
-            if (CheckField0NonZero((int*)g)) {
+            if (CheckField0NonZero_0202b7d8((int*)g)) {
                 func_020794f8(self, 1, 0);
             }
             return;
         }
     }
 
-    if (CheckField0NonZero((int*)g) && GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)g) != 0) {
+    if (CheckField0NonZero_0202b7d8((int*)g) && GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)g) != 0) {
         return;
     }
     if (static_cast<unsigned char>(combatant->unk_ac[0xc0 - 0xac]) == 6 ||
-        GetIntField0x264(battleStruct->GetProtagonist()) == 2) {
+        GetIntField0x264_02039760(battleStruct->GetProtagonist()) == 2) {
         TrySetMode02076ccc(self, 1);
         self->f154 = 0;
-        if (CheckField0NonZero((int*)g) && GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)g) == 0) {
+        if (CheckField0NonZero_0202b7d8((int*)g) && GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)g) == 0) {
             func_020794f8(self, 0, 0);
         }
     }

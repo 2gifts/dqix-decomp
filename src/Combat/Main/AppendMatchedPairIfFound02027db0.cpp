@@ -12,7 +12,7 @@ struct AppendEntry {
     int b;
 };
 struct AppendPairList;
-void AppendPairToBoundedList(struct AppendPairList* list, struct AppendEntry* src);
+void AppendPairToBoundedList_020281d8(struct AppendPairList* list, struct AppendEntry* src);
 
 extern void* data_020fdd30;
 
@@ -28,6 +28,6 @@ ARM int AppendMatchedPairIfFound02027db0(void* param0) {
     entry.a = (int)FindListEntryById((struct List_020283c0*)data_020fdd30, a);
     entry.b = (int)FindListEntryById((struct List_020283c0*)data_020fdd30, b);
     if (entry.a == 0 || entry.b == 0) return 0;
-    AppendPairToBoundedList((struct AppendPairList*)data_020fdd30, &entry);
+    AppendPairToBoundedList_020281d8((struct AppendPairList*)data_020fdd30, &entry);
     return 1;
 }

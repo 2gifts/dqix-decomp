@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void* GetOffsetEntry0xc(int index);
+void* GetOffsetEntry0xc_020bd4b8(int index);
 int GetListEntryWord8020bd8ac(unsigned int index);
 
 struct Elem020c01ac { int f0; int f4; int f8; };
@@ -12,8 +12,8 @@ extern "C" int func_020be924(void *obj, unsigned char b9, unsigned short h4, uns
 
 // USA: func_020be7a8
 #pragma optimize_for_size off
-ARM int TrySetActionFromListEntry(void *obj, int id, int index) {
-    void *p = GetOffsetEntry0xc(id);
+ARM int TrySetActionFromListEntry_020be7a8(void *obj, int id, int index) {
+    void *p = GetOffsetEntry0xc_020bd4b8(id);
     if (p == NULL) {
         return 0;
     }

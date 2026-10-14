@@ -20,7 +20,7 @@ extern "C" void* __clear(void* dst, int count);
 void ResetObjectState02079a3c(void* obj);
 
 struct Struct_203dafc;
-void ClearEightWords(struct Struct_203dafc* obj);
+void ClearEightWords_0203dafc(struct Struct_203dafc* obj);
 
 extern char data_ov015_02194020[27] __attribute__((aligned(4)));
 extern char data_ov015_0219403b[7];
@@ -64,7 +64,7 @@ extern "C" ARM void func_ov015_0218c538(Obj0218c274* self, char* arg) {
         sprintf(name, data_ov015_0219403b, status);
         if (DecompressFileFromGPCByName(pair.pGPCFile, pair.machine, buffer, size, room, name)) {
             ObjectArchiveLoadInfo info1;
-            ClearEightWords((Struct_203dafc*)&info1);
+            ClearEightWords_0203dafc((Struct_203dafc*)&info1);
             info1.allocator = &allocator;
             info1.unk_8 = size;
             info1.fileData = buffer;
@@ -78,7 +78,7 @@ extern "C" ARM void func_ov015_0218c538(Obj0218c274* self, char* arg) {
             sprintf(name, data_ov015_02194042, status);
             if (DecompressFileFromGPCByName(pair.pGPCFile, pair.machine, buffer, size, room, name)) {
                 ObjectArchiveLoadInfo info2;
-                ClearEightWords((Struct_203dafc*)&info2);
+                ClearEightWords_0203dafc((Struct_203dafc*)&info2);
 info2.allocator = &allocator;
             info2.unk_8 = size;
             info2.fileData = buffer;
@@ -90,7 +90,7 @@ info2.allocator = &allocator;
             sprintf(name, data_ov015_0219404a, status);
             if (DecompressFileFromGPCByName(pair.pGPCFile, pair.machine, buffer, size, room, name)) {
                 ObjectArchiveLoadInfo info3;
-                ClearEightWords((Struct_203dafc*)&info3);
+                ClearEightWords_0203dafc((Struct_203dafc*)&info3);
 info3.allocator = &allocator;
             info3.unk_8 = size;
             info3.fileData = buffer;
@@ -109,7 +109,7 @@ info3.allocator = &allocator;
         }
         if (DecompressFileFromGPCByName(pair.pGPCFile, pair.machine, buffer, size, room, name)) {
             ObjectArchiveLoadInfo info4;
-            ClearEightWords((Struct_203dafc*)&info4);
+            ClearEightWords_0203dafc((Struct_203dafc*)&info4);
             info4.allocator = &allocator;
             info4.unk_8 = size;
             info4.fileData = buffer;
@@ -133,7 +133,7 @@ info3.allocator = &allocator;
         }
         if (LoadFileIntoMemory(name, data_0211e33c, &size)) {
             ObjectArchiveLoadInfo info5;
-            ClearEightWords((Struct_203dafc*)&info5);
+            ClearEightWords_0203dafc((Struct_203dafc*)&info5);
             info5.allocator = &allocator;
             info5.fileData = data_0211e33c;
             info5.unk_8 = size;

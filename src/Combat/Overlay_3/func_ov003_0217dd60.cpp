@@ -52,12 +52,12 @@ int GetGlobalField0x1c020421a0();
 extern "C" void func_02012fe4();
 extern "C" void __clear(void* buf, int n);
 int GetFieldByKey020e0434(struct Container020e0310* c, int key);
-void AppendNameTag(char* dst, int n, const char* name);
+void AppendNameTag_02041b70(char* dst, int n, const char* name);
 void AppendString02042058(char* dst, const char* src);
-unsigned char* GetElementByB4IfAbsent(struct Struct_0205d81c* s, int key);
-void SetField0xd8State(unsigned char* elem, int state);
-void SetByte0xd9AndFlag0x2(unsigned char* elem, unsigned char value);
-void SetByte0xdaAndFlag0x2(unsigned char* elem, int value);
+unsigned char* GetElementByB4IfAbsent_0205e00c(struct Struct_0205d81c* s, int key);
+void SetField0xd8State_02050400(unsigned char* elem, int state);
+void SetByte0xd9AndFlag0x2_0205042c(unsigned char* elem, unsigned char value);
+void SetByte0xdaAndFlag0x2_02050440(unsigned char* elem, int value);
 extern "C" void func_0205d304(void* window, char* buf, int a, int b, int c, int d, int e, int f);
 void SetupPointerTable0205ba68(struct Struct_0205ba68* t, int a, int b, int c);
 void SetField0AndPropagate0205bacc(struct Node0205bacc* n, int value);
@@ -111,17 +111,17 @@ extern "C" ARM void func_ov003_0217dd60(struct ListMenu0217dd60* menu) {
     }
     for (i = page * 6; i < end; i++) {
         const char* name = (const char*)GetFieldByKey020e0434((struct Container020e0310*)menu->names, (short)(menu->items[i] + 100));
-        AppendNameTag(buf, i % 6, name);
+        AppendNameTag_02041b70(buf, i % 6, name);
         if (i != end - 1) {
             AppendString02042058(buf, data_ov003_02180c7f);
         }
     }
     if (menu->field32 > 1) {
-        unsigned char* elem = GetElementByB4IfAbsent((struct Struct_0205d81c*)menu->window, 0);
+        unsigned char* elem = GetElementByB4IfAbsent_0205e00c((struct Struct_0205d81c*)menu->window, 0);
         if (elem != NULL) {
-            SetField0xd8State(elem, 1);
-            SetByte0xd9AndFlag0x2(elem, page);
-            SetByte0xdaAndFlag0x2(elem, menu->field32);
+            SetField0xd8State_02050400(elem, 1);
+            SetByte0xd9AndFlag0x2_0205042c(elem, page);
+            SetByte0xdaAndFlag0x2_02050440(elem, menu->field32);
         }
     }
     if (menu->field32 > 1) {

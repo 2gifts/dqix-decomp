@@ -49,7 +49,7 @@ struct EquipmentMenu {
 extern unsigned short data_02114e30;
 extern int data_02108760;
 
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 extern "C" void func_ov005_0215792c(EquipmentMenu* self, unsigned char state);
 MemberScreen* GetField1c_021a193c(int* p);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0* obj, int a, int b);
@@ -65,7 +65,7 @@ extern "C" ARM void func_ov005_0215771c(EquipmentMenu* self) {
     signed char slot;
     int index = self->slot_ - 8;
     int cursor;
-    if (index < 4 && TestFlag0SetAndFlag1Clear(&data_02114e30, 0x40)) {
+    if (index < 4 && TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x40)) {
         func_ov005_0215792c(self, 3);
         self->slot_ = self->kind_;
         func_ov005_021579ec(self, self->state_, ComputeScaledSum0205bb84((Struct_0205bb84*)self->cursor_));
@@ -74,11 +74,11 @@ extern "C" ARM void func_ov005_0215771c(EquipmentMenu* self) {
     int column = index % 4;
     int changed = 0;
     if (column == 0) {
-        if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x20)) {
+        if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x20)) {
             changed = func_ov005_021585fc(self, -1);
             self->flags_ |= 0x20000;
         }
-    } else if (column == 3 && TestFlag0SetAndFlag1Clear(&data_02114e30, 0x10)) {
+    } else if (column == 3 && TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x10)) {
         changed = func_ov005_021585fc(self, 1);
         self->flags_ |= 0x40000;
     }

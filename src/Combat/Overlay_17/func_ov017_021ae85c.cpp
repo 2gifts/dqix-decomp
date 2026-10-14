@@ -60,10 +60,10 @@ void CancelPendingAction020397cc(Obj020397cc*, int);
 void SetByteIfChanged02033b68(Obj02033b68*, int);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 StructDE234_020de234* FindElementByKey020dedd0(Container020dedd0*, int);
-int GetField0x3acValue(GameState*);
+int GetField0x3acValue_020100a8(GameState*);
 unsigned short GetPreferredPackedField020de234(StructDE234_020de234*, int);
-void SetByteField0x253(void*);
-void* AllocateAligned4(AllocatorUnion*, unsigned int);
+void SetByteField0x253_020397c0(void*);
+void* AllocateAligned4_02012d88(AllocatorUnion*, unsigned int);
 void CopyState0207dfc8(State0207dfc8*, State0207dfc8*);
 void RestorePairTables0207df90(char*);
 void Forward02047b30(void*, int, int, int);
@@ -74,7 +74,7 @@ void* ZeroInitReturn020de824(void*);
 void InitStruct0207cbe8(char*);
 extern "C" int func_0207d538(void*, int, int, char*, int);
 void* GetGlobalResetObj020d7a50();
-void* GetField0x3b0Value(GameState*);
+void* GetField0x3b0Value_020100bc(GameState*);
 void ComputeTwoFromVec3_0202ec84(void*, Vec3copy0202ec84*, int*, int*);
 void SetVec3At0x1c(Vec3Target0203a46c*, int, int, int);
 void RenderFlaggedIndexedEntry(StructAt020473c8*, int);
@@ -123,14 +123,14 @@ extern "C" ARM void func_ov017_021ae85c(Event021ae85c* self) {
         Zone021ae85c* zone = func_02012fe4();
         StructDE234_020de234* entry = FindElementByKey020dedd0(&zone->container, self->key);
         if (entry) {
-            self->sprite = &zone->sprites[GetField0x3acValue(game)];
-            MaybeInvoke0204719c(self->sprite);
+            self->sprite = &zone->sprites[GetField0x3acValue_020100a8(game)];
+            MaybeInvoke0204719c_02047230(self->sprite);
             char filename[0x80];
             sprintf(filename, data_ov017_021d79a8, (signed char)entry->kind, GetPreferredPackedField020de234(entry, 0));
             self->task = loader->QueueLoadFile(filename, 0);
         } else {
             func_ov017_021aeea8(self); self->done = 1;
-            SetByteField0x253(game->GetUnknownGameObject()); return;
+            SetByteField0x253_020397c0(game->GetUnknownGameObject()); return;
         }
         self->stage = 3;
     } else if (self->stage == 3) {
@@ -138,11 +138,11 @@ extern "C" ARM void func_ov017_021ae85c(Event021ae85c* self) {
         void* file = 0; unsigned int length = 0;
         loader->GetLoadedFileByID(self->task, &file, &length);
         if (file) {
-            void* buffer = AllocateAligned4(&data_02114e20, 0x100);
+            void* buffer = AllocateAligned4_02012d88(&data_02114e20, 0x100);
             if (buffer) {
                 self->allocator.ResetAllocatorPointer();
                 self->allocator.CreateTypeA(buffer, 0x100); self->allocator.Reset();
-                MaybeInvoke0204719c(self->sprite); func_0204719c(self->sprite);
+                MaybeInvoke0204719c_02047230(self->sprite); func_0204719c(self->sprite);
                 State0207dfc8 saved;
                 CopyState0207dfc8(&ResourceStateBuffer021ae85c(resources)->spriteTables, &saved);
                 RestorePairTables0207df90((char*)&saved);
@@ -150,17 +150,17 @@ extern "C" ARM void func_ov017_021ae85c(Event021ae85c* self) {
                 BackupPairTables0207dfac((char*)&saved);
             } else {
                 func_ov017_021aeea8(self); self->done = 1;
-                SetByteField0x253(game->GetUnknownGameObject());
+                SetByteField0x253_020397c0(game->GetUnknownGameObject());
                 loader->RemoveTask(self->task); return;
             }
         }
         loader->RemoveTask(self->task);
-        FontBankLoader* global = GetGlobal02109400();
+        FontBankLoader* global = GetGlobal02109400_02094a00();
         BlankFunction02094b3c(global, 10);
         BlankFunction02094b30(global, 0x1f9, 0);
         self->stage = 4;
     } else if (self->stage == 4) {
-        if (!AlwaysTrue02094b4c(GetGlobal02109400())) return;
+        if (!AlwaysTrue02094b4c(GetGlobal02109400_02094a00())) return;
         GetGlobalField0x1c020421a0();
         char text[0x80] = {};
         Zone021ae85c* zone = func_02012fe4();
@@ -180,7 +180,7 @@ extern "C" ARM void func_ov017_021ae85c(Event021ae85c* self) {
     } else if (self->stage == 5) {
         self->timer--;
         int tick = game->GetTickCount();
-        void* camera = GetField0x3b0Value(game);
+        void* camera = GetField0x3b0Value_020100bc(game);
         Vector3fix position = self->position;
         if (self->angle < 0x191e) self->angle += tick * 0x199;
         position.y += fix32sin(self->angle);
@@ -194,7 +194,7 @@ extern "C" ARM void func_ov017_021ae85c(Event021ae85c* self) {
     } else if (self->stage == 6) {
         self->timer--;
         int tick = game->GetTickCount();
-        void* camera = GetField0x3b0Value(game);
+        void* camera = GetField0x3b0Value_020100bc(game);
         Vector3fix position = self->position;
         position.y += fix32sin(self->angle);
         if (self->fade) {
@@ -211,12 +211,12 @@ extern "C" ARM void func_ov017_021ae85c(Event021ae85c* self) {
         if (!self->timer) { GetGlobalField0x1c020421a0(); self->stage = 7; }
         else if (self->timer == 5) {
             GameObject* actor = game->GetUnknownGameObject();
-            SetByteField0x253(actor); SetByteIfChanged02033b68((Obj02033b68*)actor, 0);
+            SetByteField0x253_020397c0(actor); SetByteIfChanged02033b68((Obj02033b68*)actor, 0);
         }
     } else if (self->stage == 7) {
         Controller021ae85c* controller = GetGlobalField0x1c020421a0();
         controller->field2d8 = 0; controller->field2e6 = 1;
-        func_02094ab0(GetGlobal02109400());
+        func_02094ab0(GetGlobal02109400_02094a00());
         func_ov017_021aeea8(self); self->done = 1;
     }
 }

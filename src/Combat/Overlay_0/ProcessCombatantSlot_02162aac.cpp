@@ -12,7 +12,6 @@
 #define REGION_OFFSET_3 0x3000
 #endif
 
-
 struct StructAt3c_02162aac {
     signed char f0;
     signed char f1;
@@ -24,7 +23,7 @@ struct StructAt3c_02162aac {
     unsigned short f8;
 };
 
-int GetClampedArrayField0xd3c(char* base, int index);
+int GetClampedArrayField0xd3c_ov000_021761ec(char* base, int index);
 extern "C" void func_ov000_02174428(void* obj, int a, int f0, int f1, int bestIdxByte, int f6, int f4, int f8);
 
 // USA: func_ov000_02162aac
@@ -46,7 +45,7 @@ ARM void ProcessCombatantSlot_02162aac(void* self, int a, struct StructAt3c_0216
     int bestIdx = -1;
     int i = 0;
     while (i < 12) {
-        int val = GetClampedArrayField0xd3c((char*)self + REGION_OFFSET_2 + REGION_OFFSET_3, i);
+        int val = GetClampedArrayField0xd3c_ov000_021761ec((char*)self + REGION_OFFSET_2 + REGION_OFFSET_3, i);
         if (s->f3 == val) {
             bestIdx = i;
             break;

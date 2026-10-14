@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_020118fc
-ARM void ResetState(void* obj) {
+ARM void ResetState_020118fc(void* obj) {
     unsigned char* p = (unsigned char*)obj;
 #if defined(jpn)
     *(unsigned char*)(p + 0x61ec) = 0;

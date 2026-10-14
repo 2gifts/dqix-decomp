@@ -73,12 +73,12 @@ void CancelPendingAction020397cc(Obj020397cc* obj, int arg1);
 int ListContainsId(ListHead02046b60* list, int id);
 extern "C" void func_ov017_021ac2a8(void* obj);
 extern "C" void func_02046a8c(void* list, void* node);
-int IsField0Null(void** obj);
-void SetBitsInWord(unsigned int* obj, unsigned int mask);
-int GetGlobal02109400(void);
+int IsField0Null_02046b08(void** obj);
+void SetBitsInWord_0203b4a0(unsigned int* obj, unsigned int mask);
+int GetGlobal02109400_02094a00(void);
 extern "C" void func_02094ab0(int g);
 extern "C" void func_020a0cc4(unsigned int size);
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 void CopyInternalFields0207df50(Foo0207df50* p);
 extern "C" int func_02057e6c(void* mgr, int id, SafeAllocator* alloc, void* data, unsigned int length, Foo0207df50* fields);
 void CopyCountedBytesToIntArray02010834(Base02010834* base, int index, int* out, int* outCount);
@@ -89,13 +89,13 @@ void SetForwardAndStore0205ebc0(void* obj, int arg1, int arg2);
 void DispatchIfField0xc4NonNeg_0205ebfc(void* obj, int a, int b);
 void SetBrightness(GameResources* resources, int brightness, int duration);
 int IsBrightnessTransitionActive(GameResources* resources);
-void ClearBitsInWord(unsigned int* obj, unsigned int mask);
+void ClearBitsInWord_0203b4b0(unsigned int* obj, unsigned int mask);
 void CallListIfFlagsSet_02197528(void);
-void SetByteField0x253(void* obj);
+void SetByteField0x253_020397c0(void* obj);
 void ForwardField0xc0_0205ebec(void* obj);
 extern "C" void* func_0205ec34(void);
-void SetOrClearBitInArray(void* unused, unsigned char* array, int bit, int value);
-int CheckBitsInField0x63dc(void* obj, int mask);
+void SetOrClearBitInArray_0206df6c(void* unused, unsigned char* array, int bit, int value);
+int CheckBitsInField0x63dc_02011b50(void* obj, int mask);
 void InitObjState_021b2174(unsigned char* obj);
 void SetNameChecked_021b2ba0(S021b2ba0* obj, char* name);
 void SetFields30And34_021b2bd0(void* obj, int a, int b);
@@ -128,9 +128,9 @@ extern "C" ARM void func_ov017_021abba8(Loader021abba8* self, ListHead02046b60* 
             if (ListContainsId(list, 3)) {
                 func_02046a8c(list, res->unknown_ptr_array_36fc[4]);
             }
-        } else if (IsField0Null((void**)res->unknown_ptr_array_36fc[1])) {
-            SetBitsInWord((unsigned int*)res, 0x10);
-            func_02094ab0(GetGlobal02109400());
+        } else if (IsField0Null_02046b08((void**)res->unknown_ptr_array_36fc[1])) {
+            SetBitsInWord_0203b4a0((unsigned int*)res, 0x10);
+            func_02094ab0(GetGlobal02109400_02094a00());
             func_020a0cc4(0x2800);
             self->task = loader->QueueLoadFile(&data_ov017_021d78da, NULL);
             self->state++;
@@ -144,7 +144,7 @@ extern "C" ARM void func_ov017_021abba8(Loader021abba8* self, ListHead02046b60* 
             unsigned int length;
             void* data;
             loader->GetLoadedFileByID(self->task, &data, &length);
-            self->allocator.CreateTypeA(AllocateAligned4(&data_02114e20, 0x2800), 0x2800);
+            self->allocator.CreateTypeA(AllocateAligned4_02012d88(&data_02114e20, 0x2800), 0x2800);
             self->allocator.Reset();
             Foo0207df50* fields = (Foo0207df50*)(*(char**)((char*)gs->GetUnknownGameObject() + kContextPointerOffset) + 0x568);
             CopyInternalFields0207df50(fields);
@@ -254,17 +254,17 @@ extern "C" ARM void func_ov017_021abba8(Loader021abba8* self, ListHead02046b60* 
                     }
                 }
             }
-            ClearBitsInWord((unsigned int*)res, 0x10);
+            ClearBitsInWord_0203b4b0((unsigned int*)res, 0x10);
             CallListIfFlagsSet_02197528();
             self->done = 1;
-            SetByteField0x253(leader);
+            SetByteField0x253_020397c0(leader);
             func_ov017_021ac2a8(self);
             ForwardField0xc0_0205ebec(&data_02108760);
             if (func_0202c508(search)) {
                 unsigned char* flags = (unsigned char*)func_0205ec34();
-                SetOrClearBitInArray(flags, flags + 0x8c, 0x113d, 1);
+                SetOrClearBitInArray_0206df6c(flags, flags + 0x8c, 0x113d, 1);
             }
-            if (CheckBitsInField0x63dc(gs, 1) && self->active != 0) {
+            if (CheckBitsInField0x63dc_02011b50(gs, 1) && self->active != 0) {
                 TailList020469b4* tail;
                 unsigned char* node = (unsigned char*)res->unknown_ptr_array_3afc[0x14];
                 tail = (TailList020469b4*)res->unknown_ptr_array_36fc[0];

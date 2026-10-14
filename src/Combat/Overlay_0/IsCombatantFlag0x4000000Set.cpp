@@ -2,6 +2,6 @@
 #include "GameState/GameState.h"
 
 // USA: func_ov000_021598bc
-ARM int IsCombatantFlag0x4000000Set(GameObject* combatant) {
+ARM int IsCombatantFlag0x4000000Set_ov000_021598bc(GameObject* combatant) {
     return (*(unsigned int*)((char*)combatant->currentStats_ + 0x14) & 0x4000000) != 0;
 }

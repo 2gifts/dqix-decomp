@@ -36,7 +36,7 @@ extern "C" ARM void func_02092b34(struct Obj02092b34* obj) {
     ReinitController02043204((char*)g);
     func_02043124((char*)g);
     if (!(obj->field37 & 8)) {
-        FontBankLoader* g2 = GetGlobal02109400();
+        FontBankLoader* g2 = GetGlobal02109400_02094a00();
         func_02094ab0(g2);
         BlankFunction02094b34(g2, 0x6f, 0x1388, 1, 1);
     }

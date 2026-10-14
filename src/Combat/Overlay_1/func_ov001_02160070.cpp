@@ -6,7 +6,7 @@ extern "C" float func_ov017_021d6110(void*);
 
 struct Struct_203cec4;
 struct Struct_0203fc5c;
-void SetOrClearFlag0x8(struct Struct_203cec4* obj, int enable);
+void SetOrClearFlag0x8_0203cec4(struct Struct_203cec4* obj, int enable);
 ARM int SetField40IfPositive(struct Struct_0203fc5c* obj, float value);
 
 struct TableStruct02160070 { void* unused0; char* base; };
@@ -26,7 +26,7 @@ extern "C" ARM int func_ov001_02160070(char* obj) {
         Member02160070* member = 0;
         if (table) member = (Member02160070*)table[idx].fieldC;
         if (member == NULL) return 0;
-        if (member->field14 != NULL) SetOrClearFlag0x8((struct Struct_203cec4*)member->field14, 1);
+        if (member->field14 != NULL) SetOrClearFlag0x8_0203cec4((struct Struct_203cec4*)member->field14, 1);
         if (member->field14 != NULL) SetField40IfPositive((struct Struct_0203fc5c*)member->field14, f);
     } else if (type == 1 || type == 0 || type == 4 || type == 5) {
         void* member2 = 0;

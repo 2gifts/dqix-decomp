@@ -2,13 +2,13 @@
 struct HeaderStruct { unsigned short* arr; unsigned short capacity, count, size, mask; };
 struct SortedU16List0203e6c8 { unsigned short* arr; unsigned short capacity, count, size, mask; };
 struct SortedU16List0203e63c { unsigned short* arr; unsigned short capacity, count, size, mask; };
-void ResetHeader(HeaderStruct*);
+void ResetHeader_0203e624(HeaderStruct*);
 int InsertKeyInSortedU16List(SortedU16List0203e6c8*, unsigned int);
 unsigned char FindKeyInSortedU16List(SortedU16List0203e63c*, unsigned int);
 void CleanInvalidateCacheRange(const void*, unsigned int);
 // USA: func_0203e7b4
 extern "C" ARM int func_0203e7b4(HeaderStruct* header, unsigned short* list, unsigned char* output, unsigned short* input, int capacity, int width, int height, int stride) {
-    ResetHeader(header);
+    ResetHeader_0203e624(header);
     if (!list || !output || !input) return 0;
     header->arr = list;
     header->capacity = capacity;
@@ -45,6 +45,6 @@ extern "C" ARM int func_0203e7b4(HeaderStruct* header, unsigned short* list, uns
         input += stride;
     }
     CleanInvalidateCacheRange(output, width * height);
-    ResetHeader(header);
+    ResetHeader_0203e624(header);
     return 1;
 }

@@ -2,17 +2,17 @@
 
 unsigned int DisableIRQInterrupts(void);
 unsigned int SetIRQInterruptState(int mask);
-int CheckState0x12(void);
+int CheckState0x12_020cf89c(void);
 
 struct State02111818_020cf134 {
     unsigned char pad0[0xc];
-    unsigned int busy;   // 0xc
-    unsigned int f10;     // 0x10
-    unsigned int f14;      // 0x14
-    unsigned char gap1[4]; // 0x18
-    unsigned int f1c;        // 0x1c
-    unsigned int f20;         // 0x20
-    unsigned int f24;          // 0x24
+    unsigned int busy;
+    unsigned int f10;
+    unsigned int f14;
+    unsigned char gap1[4];
+    unsigned int f1c;
+    unsigned int f20;
+    unsigned int f24;
 };
 
 extern struct State02111818_020cf134 data_02111818;
@@ -31,5 +31,5 @@ extern "C" ARM int func_020cf134(int a, int b, int c) {
     data_02111818.f14 = a;
     data_02111818.f10 = b;
     data_02111818.f1c = c;
-    return CheckState0x12() ? 0 : 3;
+    return CheckState0x12_020cf89c() ? 0 : 3;
 }

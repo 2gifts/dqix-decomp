@@ -35,7 +35,7 @@ typedef int (*Comparator020dfb48)(void *);
 extern void *BinarySearchByComparator020dfb48(struct Container020dfb48 *, int, Comparator020dfb48);
 
 char *AllocateStringCopy020da150(SafeAllocator *, const char *);
-short GetShortAt0x0(short *);
+short GetShortAt0x0_020df774(short *);
 
 // USA: func_020df850
 extern "C" ARM int func_020df850(struct MergedContainer020dfabc *self, SafeAllocator *alloc,
@@ -72,7 +72,7 @@ extern "C" ARM int func_020df850(struct MergedContainer020dfabc *self, SafeAlloc
         memset(&local, 0, 0x10);
         MergeContainer020dfabc(&local, src, &flag, func_020df77c);
         elem = (struct Element020df850 *)BinarySearchByComparator020dfb48(
-            (struct Container020dfb48 *)&local, mode, (Comparator020dfb48)GetShortAt0x0);
+            (struct Container020dfb48 *)&local, mode, (Comparator020dfb48)GetShortAt0x0_020df774);
         if (elem != NULL) {
             memset(self, 0, 0x10);
             self->count = 1;

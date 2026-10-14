@@ -11,12 +11,12 @@ struct S_10088;
 struct Obj53dfc;
 struct Container02070e60;
 
-int GetCheckedSignedByte(void* obj, unsigned int idx);
-int TestBitAt0x34(unsigned char* obj, unsigned int index);
-int IsFlag10088Set(struct S_10088* obj);
-int GetField8FromField19c(struct Obj53dfc* obj);
-int TestBitInArray0x8ec(unsigned char* obj, int index);
-unsigned short GetTableValue(void* obj);
+int GetCheckedSignedByte_02011518(void* obj, unsigned int idx);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int IsFlag10088Set_02010088(struct S_10088* obj);
+int GetField8FromField19c_02053dfc(struct Obj53dfc* obj);
+int TestBitInArray0x8ec_02083b00(unsigned char* obj, int index);
+unsigned short GetTableValue_0202053c(void* obj);
 
 struct Element_021f454c {
     unsigned short key;
@@ -132,14 +132,14 @@ extern "C" ARM void func_ov023_021f454c(struct Scene_021f454c* self) {
     for (round = 0; round < 5; round++) {
         rate = 100;
         if (round > 0) {
-            int member = GetCheckedSignedByte(gs, (unsigned char)(round - 1));
-            struct Combatant_021f454c* c = (struct Combatant_021f454c*)GetCombatantWithFlag0x100(gs, member);
+            int member = GetCheckedSignedByte_02011518(gs, (unsigned char)(round - 1));
+            struct Combatant_021f454c* c = (struct Combatant_021f454c*)GetCombatantWithFlag0x100_0200ff1c(gs, member);
             if (c == 0) continue;
-            if (!TestBitAt0x34((unsigned char*)self->info, (unsigned char)member)) continue;
-            if (IsFlag10088Set((struct S_10088*)c)) continue;
-            if ((float)(unsigned int)GetField8FromField19c((struct Obj53dfc*)c) / scaledF < 0.5f) continue;
-            if (!TestBitInArray0x8ec(c->status, 0xa4)) continue;
-            rate = GetTableValue(c);
+            if (!TestBitAt0x34_020a35e0((unsigned char*)self->info, (unsigned char)member)) continue;
+            if (IsFlag10088Set_02010088((struct S_10088*)c)) continue;
+            if ((float)(unsigned int)GetField8FromField19c_02053dfc((struct Obj53dfc*)c) / scaledF < 0.5f) continue;
+            if (!TestBitInArray0x8ec_02083b00(c->status, 0xa4)) continue;
+            rate = GetTableValue_0202053c(c);
             cur->member = member;
         } else {
             cur->member = -1;
@@ -255,10 +255,10 @@ extern "C" ARM void func_ov023_021f454c(struct Scene_021f454c* self) {
 
     if (self->dropCount != 0 || self->map != 0) {
         for (int i = 0; i < 4; i++) {
-            if (!TestBitAt0x34((unsigned char*)self->info, (unsigned char)i)) continue;
-            struct Combatant_021f454c* c = (struct Combatant_021f454c*)GetCombatantWithFlag0x100(gs, i);
+            if (!TestBitAt0x34_020a35e0((unsigned char*)self->info, (unsigned char)i)) continue;
+            struct Combatant_021f454c* c = (struct Combatant_021f454c*)GetCombatantWithFlag0x100_0200ff1c(gs, i);
             if (c == 0) continue;
-            if (!((float)(unsigned int)GetField8FromField19c((struct Obj53dfc*)c) / scaledF < 0.5f)) {
+            if (!((float)(unsigned int)GetField8FromField19c_02053dfc((struct Obj53dfc*)c) / scaledF < 0.5f)) {
                 self->memberMask |= 1 << i;
             }
         }

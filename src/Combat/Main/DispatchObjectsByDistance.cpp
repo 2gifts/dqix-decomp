@@ -7,7 +7,7 @@
 struct ListNode02057854;
 int CheckListStableAndField8LtField402057854(ListNode02057854 *node);
 struct S02055080;
-void *GetSubField0x14(S02055080 *source);
+void *GetSubField0x14_02055108(S02055080 *source);
 
 extern "C" void func_02059a54(void *node);
 
@@ -45,11 +45,11 @@ extern "C" ARM void func_0205765c(int value) {
         return;
     }
 
-    DispatchSourcePrefix *source = (DispatchSourcePrefix *) GetSubField0x14(self->source);
+    DispatchSourcePrefix *source = (DispatchSourcePrefix *) GetSubField0x14_02055108(self->source);
     if (!source->directOrder) {
         SortEntry_02056c3c entries[64];
         memset(entries, 0, sizeof(entries));
-        Vector3fix viewPosition  = ((ViewPositionPrefix *) GetField0x3b0Value(GameState::GetInstance()))->position;
+        Vector3fix viewPosition  = ((ViewPositionPrefix *) GetField0x3b0Value_020100bc(GameState::GetInstance()))->position;
         viewPosition.y           = 0;
         int count                = 0;
         DispatchNodePrefix *node = self->head;

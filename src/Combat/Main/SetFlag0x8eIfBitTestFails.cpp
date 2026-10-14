@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 extern "C" void* func_0205ec34(void);
-int TestBitInByteArray(int unused, unsigned char* arr, int index);
+int TestBitInByteArray_0206dfb0(int unused, unsigned char* arr, int index);
 
 #if defined(jpn)
 enum { kEntryBase = 0x600, kPresentOffset = 0xe0, kStateOffset = 0xde, kIndexOffset = 0xd8, kFlagOffset = 0xe2 };
@@ -10,7 +10,7 @@ enum { kEntryBase = 0x700, kPresentOffset = 0x8c, kStateOffset = 0x8a, kIndexOff
 #endif
 
 // USA: func_02023a9c
-ARM int SetFlag0x8eIfBitTestFails(char* base, int index) {
+ARM int SetFlag0x8eIfBitTestFails_02023a9c(char* base, int index) {
     void* g = func_0205ec34();
     int offset = index * 0x1c;
     char* entry = base;
@@ -23,7 +23,7 @@ ARM int SetFlag0x8eIfBitTestFails(char* base, int index) {
     unsigned short f8a = *(unsigned short*)(entry + kStateOffset);
     if (f8a == 0) {
         unsigned short f84 = *(unsigned short*)(entry + kIndexOffset);
-        if (TestBitInByteArray((int)g, (unsigned char*)g + 0x8c, f84 + 0x12 + 0x200)) {
+        if (TestBitInByteArray_0206dfb0((int)g, (unsigned char*)g + 0x8c, f84 + 0x12 + 0x200)) {
             char* entry2 = base;
             entry2 += offset;
             entry2 += kEntryBase;

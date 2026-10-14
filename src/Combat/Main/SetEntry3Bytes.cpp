@@ -8,7 +8,7 @@ struct EntryDEC8 {
 };
 
 // USA: func_0206dec8
-ARM void SetEntry3Bytes(EntryDEC8* base, unsigned char index, unsigned char a, unsigned char b, unsigned char c) {
+ARM void SetEntry3Bytes_0206dec8(EntryDEC8* base, unsigned char index, unsigned char a, unsigned char b, unsigned char c) {
     base[index].a = a;
     base[index].b = b;
     base[index].c = c;

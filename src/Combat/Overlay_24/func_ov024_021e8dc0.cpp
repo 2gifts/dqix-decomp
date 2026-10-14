@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 #include "Util/Random.h"
 
-int TestBit2At0x2f4(unsigned char* obj);
+int TestBit2At0x2f4_020850d0(unsigned char* obj);
 int RollChanceFromTable_021564cc(struct Random* rand, int id);
 
 struct Ctx_021e8dc0 {
@@ -63,8 +63,8 @@ extern "C" ARM int func_ov024_021e8dc0(struct Ctx_021e8dc0* ctx, int id, struct 
 	}
 	if (count > 1) ctx->field0x7a = 1;
 	if (IsPartyMember(id)) {
-		struct Combatant_021e8dc0* c = (struct Combatant_021e8dc0*)GetCombatantWithFlag0x100(GameState::GetInstance(), id);
-		if (c && (params->flags10 & 0x100000) && TestBit2At0x2f4(c->field150)) {
+		struct Combatant_021e8dc0* c = (struct Combatant_021e8dc0*)GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), id);
+		if (c && (params->flags10 & 0x100000) && TestBit2At0x2f4_020850d0(c->field150)) {
 			ctx->field0x7a = 1;
 			count *= 2;
 		}

@@ -33,7 +33,7 @@ extern "C" void func_ov000_0217616c(void* p);
 void* GetOffsetPtr02160f08(void* obj);
 
 struct ArrayContainsByteStruct;
-int ArrayContainsByte(ArrayContainsByteStruct* s, int val);
+int ArrayContainsByte_02086ef0(ArrayContainsByteStruct* s, int val);
 
 struct ListHead02046b60;
 int ListContainsId(struct ListHead02046b60* list, int id);
@@ -68,7 +68,7 @@ extern "C" ARM void func_ov017_021b0fe0(int id) {
 	func_ov017_021c9e00(id, 1, 0, 1);
 	func_ov017_021d25f4(id & 0xff);
 
-	if (!ArrayContainsByte((ArrayContainsByteStruct*)GetPtrField0x2a04(GameState::GetInstance()), id)) {
+	if (!ArrayContainsByte_02086ef0((ArrayContainsByteStruct*)GetPtrField0x2a04_02010828(GameState::GetInstance()), id)) {
 		return;
 	}
 

@@ -17,7 +17,7 @@ void* GetNodeIfType1_02168aa0(void* a, int id);
 extern "C" void* func_ov011_021849c8(void* ctx);
 extern "C" void* func_ov023_021f6880(void* list, int value);
 extern "C" int func_ov023_021f6f10(void* obj);
-int CheckField0x9cSetWhenField0xd4Present(unsigned char* obj);
+int CheckField0x9cSetWhenField0xd4Present_0204c7e0(unsigned char* obj);
 extern "C" void func_ov023_021f8120(void* obj);
 extern "C" void* func_ov011_021845f8(void* ctx, int v);
 extern "C" void func_ov023_021f6844(void* extra, int v);
@@ -57,7 +57,7 @@ extern "C" ARM int func_ov004_021698f4(void* a) {
 
     if (node2) {
         unsigned char* f20 = (unsigned char*)node2 + 0x20;
-        if (f20 && CheckField0x9cSetWhenField0xd4Present(f20)) {
+        if (f20 && CheckField0x9cSetWhenField0xd4Present_0204c7e0(f20)) {
             func_ov023_021f8120(node2);
             void* av = func_ov011_021845f8(a, 2);
             if (av) {

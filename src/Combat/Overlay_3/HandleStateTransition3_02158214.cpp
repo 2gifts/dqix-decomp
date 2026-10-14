@@ -21,7 +21,7 @@ enum { kRegionValue200_1FC = 0x200 };
 enum { kRegionValue1F8_1F4 = 0x1f8 };
 #endif
 
-int GetWord0x0(int* obj);
+int GetWord0x0_0200fb8c(int* obj);
 int GetGlobalField0x1c020421a0();
 void ReinitController02043204(char* obj);
 
@@ -41,7 +41,7 @@ extern "C" void func_ov023_021eb26c(void* obj);
 extern "C" ARM void func_ov003_02158214(void* p) {
     char* self = (char*)p;
     GameState* bs = GameState::GetInstance();
-    int word0 = GetWord0x0((int*)bs);
+    int word0 = GetWord0x0_0200fb8c((int*)bs);
     unsigned char state = *(unsigned char*)(self + kRegionValue1F9_1F5);
 
     if (state == 0) {

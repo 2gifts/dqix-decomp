@@ -14,7 +14,7 @@ struct HalfwordArray {
     unsigned short arr[12];
     unsigned short count;
 };
-ARM unsigned short CopyHalfwordArrayByCount(struct HalfwordArray* src, struct HalfwordArray* dst);
+ARM unsigned short CopyHalfwordArrayByCount_0209c0c0(struct HalfwordArray* src, struct HalfwordArray* dst);
 void* Clear12Bytes0206efc4(void* obj);
 struct Src0206f170;
 #if defined(jpn)
@@ -60,7 +60,7 @@ extern "C" ARM void func_ov017_021b5250(EntryLoadRequest* request) {
             LoadedEntryResources* resources = request->resources;
             unsigned short keys[12];
             __clear(keys, sizeof(keys));
-            short keyCount = (short)CopyHalfwordArrayByCount(&resources->keys, (HalfwordArray*)keys);
+            short keyCount = (short)CopyHalfwordArrayByCount_0209c0c0(&resources->keys, (HalfwordArray*)keys);
             char* pending = request->resources->entries;
             Clear12Bytes0206efc4(pending);
             LoadedEntryResources* currentResources = request->resources;

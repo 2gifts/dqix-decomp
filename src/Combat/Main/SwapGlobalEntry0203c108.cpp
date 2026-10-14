@@ -10,7 +10,7 @@ extern void* data_02105244;
 void ReleaseGlobalEntry0203c198(char* obj);
 
 struct RefArray0xc6b8;
-void IncrementEntryCount0x24(struct RefArray0xc6b8* obj, short index);
+void IncrementEntryCount0x24_0203c6b8(struct RefArray0xc6b8* obj, short index);
 
 struct RefArray0xc6fc;
 #if defined(jpn)
@@ -49,7 +49,7 @@ ARM void SwapGlobalEntry0203c108(struct Obj0203c108* obj, char* fmt) {
         __clear(buf, 0x100);
         sprintf(buf, fmt);
         short oldIdx = obj->idx;
-        IncrementEntryCount0x24((struct RefArray0xc6b8*)data_02105244, oldIdx);
+        IncrementEntryCount0x24_0203c6b8((struct RefArray0xc6b8*)data_02105244, oldIdx);
         ReleaseGlobalEntry0203c198((char*)obj);
         func_0203c5a8(data_02105244, buf, &obj->idx);
         DecrementEntryCount0x24((struct RefArray0xc6fc*)data_02105244, oldIdx);

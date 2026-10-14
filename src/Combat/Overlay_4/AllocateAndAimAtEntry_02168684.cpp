@@ -7,7 +7,7 @@ struct Block0x88_02168684 { unsigned int w[0x88 / 4]; };
 extern struct Block0x88_02168684 data_ov004_02170038;
 extern "C" void func_ov011_02184a24(void* target, void* buf, int kind);
 
-void* GetGlobalPtr021075f4(void);
+void* GetGlobalPtr021075f4_0203cf4c(void);
 void* FindEntryPointerByKey0203df78(void* base, int key);
 
 struct Vec3_020406f8 { unsigned int v[3]; };
@@ -30,7 +30,7 @@ extern "C" ARM void func_ov004_02168684(SafeAllocator* a, void* target) {
     func_ov011_02184a24(target, buf, 0x22);
 
     GameState* bs = GameState::GetInstance();
-    void* entry = FindEntryPointerByKey0203df78(GetGlobalPtr021075f4(), 0x67);
+    void* entry = FindEntryPointerByKey0203df78(GetGlobalPtr021075f4_0203cf4c(), 0x67);
     if (!entry) return;
     GameObject* combatant = bs->GetUnknownGameObject();
     if (!combatant) return;

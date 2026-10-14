@@ -9,7 +9,7 @@ void SetChannelAFlag0205cef8(void *p);
 void SetChannelBFlag0205cf04(void *p);
 void ClearChannelAFlag0205cf10(void *p);
 void ClearFlagByte0205cf1c(struct Struct0205cf1c *p);
-unsigned char ReadBattleField0x64f4Byte(GameState* gameState);
+unsigned char ReadBattleField0x64f4Byte_02011804(GameState* gameState);
 int GetCountByType02157108(void *base, int id);
 void SetupPointerTable0205ba68(struct Struct_0205ba68 *p, int a, int b, int c);
 void SetField0AndPropagate0205bacc(struct Node0205bacc *p, int v);
@@ -52,7 +52,7 @@ extern "C" ARM void func_ov002_02161cf0(char *base) {
             cols   = 1;
             rows   = 3;
             cursor = *(short *) (base + 0x1b00 + 0xe4);
-            if (ReadBattleField0x64f4Byte(GameState::GetInstance()) == 0) {
+            if (ReadBattleField0x64f4Byte_02011804(GameState::GetInstance()) == 0) {
                 total = 2;
                 rows  = 2;
             }

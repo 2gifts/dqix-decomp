@@ -53,7 +53,7 @@ extern "C" ARM void func_0205ac40(SpriteContext0205ac40* context, B174Outer* spr
         palette = sprite->palette;
         priority = sprite->priority;
         if (palette < 0 && priority < 0) return;
-        int mode = GetBits10And11((int)context, sprite);
+        int mode = GetBits10And11_0205b174((int)context, sprite);
         count = sprite->count;
         while (count != 0) {
             if (palette >= 0) {

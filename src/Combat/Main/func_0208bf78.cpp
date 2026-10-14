@@ -100,29 +100,29 @@ struct RecordView0208bf78 {
 };
 
 void ForwardInitStreamHeader0208d854(StreamHeader0208d82c*);
-GetTableByteOrFFData* GetGlobal02109418();
-unsigned char GetTableByteOrFF(GetTableByteOrFFData*, unsigned char);
+GetTableByteOrFFData* GetGlobal02109418_02094d6c();
+unsigned char GetTableByteOrFF_020965ac(GetTableByteOrFFData*, unsigned char);
 int RunBufferedScript02095870(void*, StreamHeader*, int, int, unsigned char*);
 int CountActiveEntries(ActiveEntry02046900*);
 void* FindRecordByIndex(Rec020467f0*, int, void**, int*);
 int GetElementField4ByKey0208d9e8(List0208d994*, int);
-int TestBitInByteArrayAt0x84(void*, int);
+int TestBitInByteArrayAt0x84_02096088(void*, int);
 int TestBitInByteArray02096100(int, unsigned char*, int);
 int GetFieldByKey020e0434(Container020e0310*, int);
 int GetPackedNibbleField(PackedNibbleArray0206e120*, int);
 unsigned char GetEntryField0209618c(FindEntryById02096134Table*, int);
 int LookupArrayFieldByCase0208da18(List0208d994*, int, int);
-int GetElementField0x10ByKey(List0208d994*, int);
+int GetElementField0x10ByKey_0208dac4(List0208d994*, int);
 int GetElementField8ByKey0208da00(List0208d994*, int);
-int GetWord0x0(int*);
+int GetWord0x0_0200fb8c(int*);
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
-int GetElementField0x14ByKey(List0208d994*, int);
+int GetElementField0x14ByKey_0208dadc(List0208d994*, int);
 int GetPackedNibbleFlag0x4(PackedNibbleArray0206e260*, int);
 StoreStruct* GetGlobalField0x1c020421a0();
 StatEntry0208bf78* FindEntryById02096134(FindEntryById02096134Table*, int);
-void StoreInArray0x8b0(StoreStruct*, int, int);
+void StoreInArray0x8b0_020465c0(StoreStruct*, int, int);
 void ResetList0204af64(List0204af64*);
-void SetWord0x18ClearByte0x1f(unsigned char*, int);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char*, int);
 void DispatchViaTable0204b5e8(Obj0204b5e8*, int, int);
 void SetSubBg0Control0208c9cc(int, int, int, int, int);
 void DispatchByTag0204b2e0(void*, char*);
@@ -140,7 +140,7 @@ extern char data_020f1120[], data_020f113b[], data_020f114d[], data_020f116b[], 
 extern char data_020f1192[], data_020f1197[];
 
 static inline unsigned char GetMonsterIndex0208bf78(GetTableByteOrFFData* table, int target) {
-    return GetTableByteOrFF(table, target);
+    return GetTableByteOrFF_020965ac(table, target);
 }
 
 static inline SaveDate0208bf78 GetSaveDate0208bf78(GetTableByteOrFFData* table, unsigned char id) {
@@ -185,7 +185,7 @@ extern "C" ARM void func_0208bf78(RecordView0208bf78* view) {
         unsigned int length;
         loader->GetLoadedFileByID(view->taskId, &file, &length);
         if (file) {
-            GetTableByteOrFFData* table = GetGlobal02109418();
+            GetTableByteOrFFData* table = GetGlobal02109418_02094d6c();
             unsigned char revealed = 0;
             RunBufferedScript02095870(table, (StreamHeader*)file, length, GetMonsterIndex0208bf78(table, view->target), &revealed);
             view->revealed = revealed;
@@ -225,14 +225,14 @@ extern "C" ARM void func_0208bf78(RecordView0208bf78* view) {
         view->flags &= ~8;
         if (view->target != 9999) {
             func_0205ec34();
-            GetTableByteOrFFData* table = GetGlobal02109418();
+            GetTableByteOrFFData* table = GetGlobal02109418_02094d6c();
             short target = view->target;
             char number[8] = {0};
             sprintf(number, data_020f1192, target);
             func_0204f41c(&window, 0x18, 0x14, number, 0xc, 0xf, &width, &height, 0);
             int text = GetElementField4ByKey0208d9e8((List0208d994*)&view->elements, target);
             bool unknown = 0;
-            if (view->revealed && !TestBitInByteArrayAt0x84(table, GetMonsterIndex0208bf78(table, target))) {
+            if (view->revealed && !TestBitInByteArrayAt0x84_02096088(table, GetMonsterIndex0208bf78(table, target))) {
                 if (!TestBitInByteArray02096100((int)table, table->defeated, GetMonsterIndex0208bf78(table, target))) unknown = 1;
             }
             if (unknown) text = GetFieldByKey020e0434(&view->strings, 3);
@@ -242,14 +242,14 @@ extern "C" ARM void func_0208bf78(RecordView0208bf78* view) {
                 text = LookupArrayFieldByCase0208da18((List0208d994*)&view->elements, target,
                                                       GetEntryField0209618c((FindEntryById02096134Table*)table, GetMonsterIndex0208bf78(table, target)));
                 kind = 1;
-                if (TestBitInByteArrayAt0x84(table, GetMonsterIndex0208bf78(table, target))) view->flags |= 8;
+                if (TestBitInByteArrayAt0x84_02096088(table, GetMonsterIndex0208bf78(table, target))) view->flags |= 8;
             } else if (HasStatus0208bf78(GetMonsterIndex0208bf78(table, target), 3)) {
                 view->flags |= 8;
-                text = GetElementField0x10ByKey((List0208d994*)&view->elements, target);
+                text = GetElementField0x10ByKey_0208dac4((List0208d994*)&view->elements, target);
                 kind = 2;
-            } else if (view->showDefeated && TestBitInByteArrayAt0x84(table, GetMonsterIndex0208bf78(table, target))) {
+            } else if (view->showDefeated && TestBitInByteArrayAt0x84_02096088(table, GetMonsterIndex0208bf78(table, target))) {
                 view->flags |= 8;
-                text = GetElementField0x10ByKey((List0208d994*)&view->elements, target);
+                text = GetElementField0x10ByKey_0208dac4((List0208d994*)&view->elements, target);
                 kind = 2;
             } else {
                 unsigned char id = GetMonsterIndex0208bf78(table, target);
@@ -262,9 +262,9 @@ extern "C" ARM void func_0208bf78(RecordView0208bf78* view) {
                         if (HasStatus0208bf78(GetMonsterIndex0208bf78(table, target), 0)) {
                             text = GetFieldByKey020e0434(&view->strings, 4);
                         } else if (HasStatus0208bf78(GetMonsterIndex0208bf78(table, target), 1)) {
-                            GameResources* resources = (GameResources*)GetWord0x0((int*)GameState::GetInstance());
+                            GameResources* resources = (GameResources*)GetWord0x0_0200fb8c((int*)GameState::GetInstance());
                             if (GetHeadNodeIdOrMinusOne((HeadNode02046b24**)resources->unknown_ptr_array_36fc[0]) == 0x2d) {
-                                text = GetElementField0x14ByKey((List0208d994*)&view->elements, target);
+                                text = GetElementField0x14ByKey_0208dadc((List0208d994*)&view->elements, target);
                             }
                         }
                     }
@@ -285,13 +285,13 @@ extern "C" ARM void func_0208bf78(RecordView0208bf78* view) {
                     for (int i = 0; i < 3; i++) {
                         int value = entry->stats[i];
                         if (value > 99) value = 99;
-                        StoreInArray0x8b0(formatter, i, value);
+                        StoreInArray0x8b0_020465c0(formatter, i, value);
                     }
                 }
                 for (int i = 0; i < 2; i++) {
                     int value = entry->resists[i];
                     if (value > 99) value = 99;
-                    StoreInArray0x8b0(formatter, i + 3, value);
+                    StoreInArray0x8b0_020465c0(formatter, i + 3, value);
                 }
             }
             func_02046608(formatter, 0xc, (const char*)text, buffer, 0xe0, 0, 1);
@@ -312,7 +312,7 @@ extern "C" ARM void func_0208bf78(RecordView0208bf78* view) {
         }
         RecordList0208bf78 list;
         ResetList0204af64((List0204af64*)&list);
-        SetWord0x18ClearByte0x1f((unsigned char*)&list, 0);
+        SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)&list, 0);
         list.mode = 1;
         list.layer = 0;
         func_0204b5b4(&list, 0);

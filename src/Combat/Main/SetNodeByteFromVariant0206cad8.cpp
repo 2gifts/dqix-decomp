@@ -27,7 +27,7 @@ struct Node0206cad8 {
 ARM int SetNodeByteFromVariant0206cad8(void* param0) {
     struct Node0206cad8* node;
     int key = ((Script::Parameter*)((struct Variant02030b0c*)param0))->ToInt();
-    node = (Node0206cad8*)FindNodeByByteId(data_02108cec.field0x10, key);
+    node = (Node0206cad8*)FindNodeByByteId_0206db20(data_02108cec.field0x10, key);
     if (node == 0) {
         return 0;
     }

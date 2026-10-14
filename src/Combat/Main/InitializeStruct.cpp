@@ -19,7 +19,7 @@ struct InitStruct {
 };
 
 // USA: func_020280b0
-ARM void InitializeStruct(struct InitStruct* s) {
+ARM void InitializeStruct_020280b0(struct InitStruct* s) {
     s->w1c = 0;
     s->b0 = 0;
     s->b1 = 0;

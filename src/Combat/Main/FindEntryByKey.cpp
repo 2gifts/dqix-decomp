@@ -11,7 +11,7 @@ struct TableA68 {
 };
 
 // USA: func_02072a68
-ARM void* FindEntryByKey(struct TableA68* table, int key) {
+ARM void* FindEntryByKey_02072a68(struct TableA68* table, int key) {
     int i;
     for (i = 0; i < table->count; i++) {
         if (key == table->entries[i].key) {

@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 // USA: func_0200ffe0
-ARM GameObject* FindCombatantByField0x16a(GameState* battleStruct, int id) {
+ARM GameObject* FindCombatantByField0x16a_0200ffe0(GameState* battleStruct, int id) {
     GameObject* combatant;
     int i;
     if (id < 0) {

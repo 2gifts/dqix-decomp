@@ -47,10 +47,10 @@ TableA68* DispatchAdjustmentIfType4_02157018(void* obj, int key);
 extern "C" Grid021f9b30* func_ov004_02156ed0(void* obj, int key);
 extern "C" Node0215a31c* func_ov004_02156f04(void* obj, int key);
 extern "C" Node0215a31c* func_ov004_02156f38(void* obj, int key);
-void* FindEntryByKey(TableA68* table, int key);
+void* FindEntryByKey_02072a68(TableA68* table, int key);
 int CountNonZeroValues020a0b8c(S_a0b8c* p);
 void ClearNodeMaskById_021f6600(void* obj, int id, int mask);
-unsigned char* GetFieldAt0x150(unsigned char* obj);
+unsigned char* GetFieldAt0x150_02053c6c(unsigned char* obj);
 extern "C" int func_020dcc98(int combatantId);
 extern "C" void func_ov023_021f65d4(void* obj, int id, int mask);
 Element0215a31c* FindElementByKey020dedd0(Container020dedd0* c, int key);
@@ -72,13 +72,13 @@ extern "C" ARM int func_ov004_0215a31c(void* obj) {
     int slot;
 
     if (flag == -1) {
-        unsigned char* list = (unsigned char*)GetPtrField0x2a04(GameState::GetInstance());
+        unsigned char* list = (unsigned char*)GetPtrField0x2a04_02010828(GameState::GetInstance());
         if (!list) return 0;
         keys = (short*)(list + 0xc);
         signed char* counts = (signed char*)(list + 0x13c);
         Node0215a31c* node = func_ov004_02156f04(obj, 0x454);
         if (node) {
-            node->data = FindEntryByKey(table, 0xb);
+            node->data = FindEntryByKey_02072a68(table, 0xb);
         }
         short page = grid->page;
         short pageCount = grid->pageCount;
@@ -104,9 +104,9 @@ extern "C" ARM int func_ov004_0215a31c(void* obj) {
             func_ov004_02156f38(obj, i + 0x461)->SetValue(counts[i]);
         }
     } else {
-        GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), flag);
+        GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), flag);
         if (!combatant) return 0;
-        keys = (short*)(GetFieldAt0x150((unsigned char*)combatant) + 0x454);
+        keys = (short*)(GetFieldAt0x150_02053c6c((unsigned char*)combatant) + 0x454);
         Node0215a31c* node = func_ov004_02156f04(obj, 0x454);
         if (node) {
             node->data = combatant->baseStats_;

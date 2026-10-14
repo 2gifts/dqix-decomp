@@ -10,13 +10,13 @@ struct CombatantFlagsC2 {
 };
 
 extern "C" void* func_0202ae18(void);
-int CheckField0NonZero(int* obj);
-int GetField0x3acValue(GameState* gameState);
-int IsEntryFlagBit11Set(struct SearchStruct* search, int id);
-int IsEntryFlagBit13Set(struct SearchStruct* search, int id);
-int IsEntryFlagBit14Set(struct SearchStruct* search, int id);
-char* GetCombatantWithFlag0x1000(GameState* gameState, int index);
-int GetSignedByte0x2d0(void* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
+int GetField0x3acValue_020100a8(GameState* gameState);
+int IsEntryFlagBit11Set_0202be08(struct SearchStruct* search, int id);
+int IsEntryFlagBit13Set_0202be70(struct SearchStruct* search, int id);
+int IsEntryFlagBit14Set_0202bed8(struct SearchStruct* search, int id);
+char* GetCombatantWithFlag0x1000_0200ff58(GameState* gameState, int index);
+int GetSignedByte0x2d0_020546a8(void* obj);
 
 // USA: func_020dc920
 extern "C" ARM int func_020dc920(int a, int b, int c, int d) {
@@ -26,33 +26,33 @@ extern "C" ARM int func_020dc920(int a, int b, int c, int d) {
     if (protagonist != NULL) {
         GameObject* party = battle->GetPartyMemberByIndex(a);
         if (party != NULL) {
-            if (CheckField0NonZero((int*)search) && d) {
+            if (CheckField0NonZero_0202b7d8((int*)search) && d) {
                 int id = a;
                 if (party->obj3D_.unknown_0_ & 0x1000)
                     id = 0;
-                if (id != GetField0x3acValue(battle)) {
-                    if (!IsEntryFlagBit13Set(search, id))
+                if (id != GetField0x3acValue_020100a8(battle)) {
+                    if (!IsEntryFlagBit13Set_0202be70(search, id))
                         return 0;
                 }
             }
-            if (b != 0 && a != GetField0x3acValue(battle)) {
-                if (IsEntryFlagBit11Set(search, a))
+            if (b != 0 && a != GetField0x3acValue_020100a8(battle)) {
+                if (IsEntryFlagBit11Set_0202be08(search, a))
                     return 0;
-                char* combatant = GetCombatantWithFlag0x1000(battle, a);
+                char* combatant = GetCombatantWithFlag0x1000_0200ff58(battle, a);
                 if (combatant != NULL) {
-                    int id = GetSignedByte0x2d0(combatant);
-                    if (IsEntryFlagBit11Set(search, id)) {
-                        if (id != GetField0x3acValue(battle))
+                    int id = GetSignedByte0x2d0_020546a8(combatant);
+                    if (IsEntryFlagBit11Set_0202be08(search, id)) {
+                        if (id != GetField0x3acValue_020100a8(battle))
                             return 0;
                     }
                 }
-                if (IsEntryFlagBit14Set(search, a))
+                if (IsEntryFlagBit14Set_0202bed8(search, a))
                     return 0;
-                combatant = GetCombatantWithFlag0x1000(battle, a);
+                combatant = GetCombatantWithFlag0x1000_0200ff58(battle, a);
                 if (combatant != NULL) {
-                    int id = GetSignedByte0x2d0(combatant);
-                    if (IsEntryFlagBit14Set(search, id)) {
-                        if (id != GetField0x3acValue(battle))
+                    int id = GetSignedByte0x2d0_020546a8(combatant);
+                    if (IsEntryFlagBit14Set_0202bed8(search, id)) {
+                        if (id != GetField0x3acValue_020100a8(battle))
                             return 0;
                     }
                 }

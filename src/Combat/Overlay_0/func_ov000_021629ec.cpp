@@ -10,10 +10,10 @@
 
 struct Obj02048c90;
 void ResetInnerState02048c90(struct Obj02048c90* obj);
-void ClearSubstructFlag0x4(unsigned char* obj);
-void SetSubstructByte0x4c(unsigned char* obj, unsigned char value);
-void SetSubstructByte0x4d(unsigned char* obj, unsigned char value);
-void SetSubstructByte0x1e(unsigned char* obj, unsigned char value);
+void ClearSubstructFlag0x4_02049ae4(unsigned char* obj);
+void SetSubstructByte0x4c_02049458(unsigned char* obj, unsigned char value);
+void SetSubstructByte0x4d_0204947c(unsigned char* obj, unsigned char value);
+void SetSubstructByte0x1e_020493dc(unsigned char* obj, unsigned char value);
 extern "C" int func_ov000_0215e9fc(int a, short* buf, int max, int start);
 extern "C" int func_ov000_0215ec1c(int a, short* buf, int max, int start);
 
@@ -33,10 +33,10 @@ extern "C" ARM void func_ov000_021629ec(struct GatherObj021629ec* obj) {
         GameObject* c = bs->GetCombatantByIndex(buf[i]);
         if (c) {
             ResetInnerState02048c90((struct Obj02048c90*)c);
-            ClearSubstructFlag0x4((unsigned char*)c);
-            SetSubstructByte0x4c((unsigned char*)c, 0xff);
-            SetSubstructByte0x4d((unsigned char*)c, 0xff);
-            SetSubstructByte0x1e((unsigned char*)c, 0xff);
+            ClearSubstructFlag0x4_02049ae4((unsigned char*)c);
+            SetSubstructByte0x4c_02049458((unsigned char*)c, 0xff);
+            SetSubstructByte0x4d_0204947c((unsigned char*)c, 0xff);
+            SetSubstructByte0x1e_020493dc((unsigned char*)c, 0xff);
         }
     }
 }

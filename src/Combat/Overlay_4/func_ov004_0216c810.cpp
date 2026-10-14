@@ -10,12 +10,12 @@ struct Obj_02184ad8;
 void SetModeClamped0209ca70(void* obj, int val);
 void SetStateAndDispatch0205e9f4(struct Obj0205e9f4* obj, int state);
 void SetStateAndDispatch0209c3b4(struct Actor0209c3b4* actor, int val);
-void SetByte0x7f70(void* obj, unsigned char value);
+void SetByte0x7f70_02012028(void* obj, unsigned char value);
 void* SetFieldAndClearBufferIfType7_0216b1c4(void* a, int id);
 void* GetNodeIfType6_0216ae9c(void* a, int id);
 unsigned char NormalizeField5_0200fb08(struct Struct0200fb08* obj);
 void SetField1c8True_02184ad8(struct Obj_02184ad8* obj);
-void* FindEntryByKey(struct TableA68* table, int key);
+void* FindEntryByKey_02072a68(struct TableA68* table, int key);
 
 class UiNode0216c810 {
 public:
@@ -101,7 +101,7 @@ extern "C" ARM int func_ov004_0216c810(void* a) {
         SetStateAndDispatch0209c3b4((struct Actor0209c3b4*)data_02109bf4, 2);
     }
     gs = GameState::GetInstance();
-    GetPtrField0x2a04(gs);
+    GetPtrField0x2a04_02010828(gs);
     mode = 0;
     sub = 0;
     data_ov004_02171034.flag2 = 0;
@@ -186,7 +186,7 @@ extern "C" ARM int func_ov004_0216c810(void* a) {
             node->SetColor(8);
         }
     } else if (data_ov004_02171034.state3 == 4) {
-        SetByte0x7f70(gs, 0);
+        SetByte0x7f70_02012028(gs, 0);
         func_ov011_021848a0(a, 0x190);
         return 0;
     } else if (data_ov004_02171034.state3 == 5) {
@@ -213,7 +213,7 @@ extern "C" ARM int func_ov004_0216c810(void* a) {
             node->SetColor(0xa);
         }
     } else if (data_ov004_02171034.state3 == 6) {
-        SetByte0x7f70(gs, 0);
+        SetByte0x7f70_02012028(gs, 0);
         void* list = func_ov011_021849c8(a);
         UiNode0216c810* box = func_ov023_021f6880(list, 1);
         if (box == 0) return 0;
@@ -225,13 +225,13 @@ extern "C" ARM int func_ov004_0216c810(void* a) {
         struct TableA68* table = func_ov023_021fa598(text);
         MessageWindow0216c810* win = GetGlobalField0x1c020421a0();
         win->busy = 1;
-        func_0204500c(win, FindEntryByKey(table, 0x5dc), 0, 0xe3);
+        func_0204500c(win, FindEntryByKey_02072a68(table, 0x5dc), 0, 0xe3);
         win->flag19ca = 0;
         win->flag19af = 0;
-        SetByte0x7f70(gs, 0);
+        SetByte0x7f70_02012028(gs, 0);
         return 0;
     } else if (data_ov004_02171034.state3 == 7) {
-        SetByte0x7f70(gs, 0);
+        SetByte0x7f70_02012028(gs, 0);
         func_ov011_021848a0(a, 0x258);
         return 0;
     }

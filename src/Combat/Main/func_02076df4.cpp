@@ -4,7 +4,7 @@
 struct U16Field0x6_020375f8 { char unk[0x6]; unsigned short field; };
 
 struct Entry_02028bd0;
-struct Entry_02028bd0* GetEntryTableBase(void);
+struct Entry_02028bd0* GetEntryTableBase_02027ca4(void);
 struct Entry_02028bd0* FindInlineEntryById(struct Entry_02028bd0* base, int key);
 
 extern "C" void* func_0202ae18(void);
@@ -38,7 +38,7 @@ struct Actor02076df4 {
 extern "C" ARM void func_02076df4(struct Actor02076df4* obj) {
     GameState* battleStruct = GameState::GetInstance();
     void* g = func_0202ae18();
-    struct Entry_02028bd0* table = GetEntryTableBase();
+    struct Entry_02028bd0* table = GetEntryTableBase_02027ca4();
     GameObject* combatant = battleStruct->GetPartyMemberByIndex(obj->field166);
     int key = ((Object3D*)((struct U16Field0x6_020375f8*)obj))->GetField06();
     struct Entry_02028bd0* entry = FindInlineEntryById(table, key);

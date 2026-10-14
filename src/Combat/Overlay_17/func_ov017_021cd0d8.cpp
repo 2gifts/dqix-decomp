@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct LocalEvt021cd0d8 {
@@ -15,7 +15,7 @@ struct LocalEvt021cd0d8 {
 
 // USA: func_ov017_021cd0d8  (semantic: SendShortArrayInChunks_021cd0d8)
 extern "C" ARM void func_ov017_021cd0d8(int a0, unsigned short* a1, int a2) {
-    void* p = GetData02100044();
+    void* p = GetData02100044_0202ae24();
     int consumed;
     int j;
 

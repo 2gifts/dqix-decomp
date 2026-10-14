@@ -8,7 +8,7 @@ struct StatStageStruct02087c84 {
     int stage : 3;
 };
 
-void ClearBattleFlags0x14And0x58(void* obj);
+void ClearBattleFlags0x14And0x58_02087cfc(void* obj);
 
 // USA: func_02087c84
 ARM int SetStatStageBit15(struct StatStageStruct02087c84* p, int delta) {
@@ -16,7 +16,7 @@ ARM int SetStatStageBit15(struct StatStageStruct02087c84* p, int delta) {
     if (newStage > 2) newStage = 2;
     if (newStage < -2) newStage = -2;
     if (newStage == 0) {
-        ClearBattleFlags0x14And0x58(p);
+        ClearBattleFlags0x14And0x58_02087cfc(p);
         return 0;
     }
     p->stage = newStage;

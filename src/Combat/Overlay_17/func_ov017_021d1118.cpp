@@ -4,17 +4,17 @@
 #include "GameState/BattleRecordSnapshot.h"
 #include "System/Memory.h"
 
-void* GetData02100044();
+void* GetData02100044_0202ae24();
 extern "C" void func_0205e330(void* dispatcher, void* packet, int flag);
 extern "C" void* func_0202ae18(void);
-int GetFieldAt0x0(int* obj);
+int GetFieldAt0x0_0202ba00(int* obj);
 int UpdatePlayClocks020ac4f8(int commit);
 int LoadBattleBlock020ac4c0(void* dst);
-int CopyOutBattleField0x7ac0(void* dst);
-int GetFieldPercentOver307(BattleRecordSnapshot* record);
-int GetFieldPercentOver232(BattleRecordSnapshot* record);
-int GetFieldPercentOver944(BattleRecordSnapshot* record);
-int GetFieldPercentOver448(BattleRecordSnapshot* record);
+int CopyOutBattleField0x7ac0_020ac0b4(void* dst);
+int GetFieldPercentOver307_020a0870(BattleRecordSnapshot* record);
+int GetFieldPercentOver232_020a08a4(BattleRecordSnapshot* record);
+int GetFieldPercentOver944_020a08d8(BattleRecordSnapshot* record);
+int GetFieldPercentOver448_020a090c(BattleRecordSnapshot* record);
 
 struct PacketIdentifier { unsigned char bytes[6]; };
 
@@ -126,7 +126,7 @@ extern "C" ARM void func_ov017_021d1118(int recipient, int flags, bool segmented
     int blockLeft;
     LinkBlock* block;
     gs = GameState::GetInstance();
-    dispatcher = GetData02100044();
+    dispatcher = GetData02100044_0202ae24();
     Packet packet;
     body = &packet.body;
     packet.tag = 0x1a;
@@ -143,7 +143,7 @@ extern "C" ARM void func_ov017_021d1118(int recipient, int flags, bool segmented
     }
     if (flags & 1) {
         session = (Session*)func_0202ae18();
-        kind = GetFieldAt0x0((int*)session);
+        kind = GetFieldAt0x0_0202ba00((int*)session);
         depth = session->depth;
         commit = 0;
         if ((kind == 5 && depth > 1) || kind == 6) commit = 1;
@@ -151,7 +151,7 @@ extern "C" ARM void func_ov017_021d1118(int recipient, int flags, bool segmented
         BattleRecordSnapshot blk;
         LoadBattleBlock020ac4c0(&blk);
         unsigned int score = 0;
-        CopyOutBattleField0x7ac0(&score);
+        CopyOutBattleField0x7ac0_020ac0b4(&score);
         flag = 0;
         value = 0;
         protagonist = (ProtagonistObject*)gs->GetProtagonist();
@@ -172,10 +172,10 @@ extern "C" ARM void func_ov017_021d1118(int recipient, int flags, bool segmented
         rec.w10A = blk.unknown08_24;
         rec.wcB = blk.unknown0c_14;
         rec.w10B = blk.unknown10_9;
-        rec.w8C = (unsigned char)GetFieldPercentOver307(&blk);
-        rec.w8D = (unsigned char)GetFieldPercentOver232(&blk);
-        rec.wcC = (unsigned char)GetFieldPercentOver944(&blk);
-        rec.w10C = (unsigned char)GetFieldPercentOver448(&blk);
+        rec.w8C = (unsigned char)GetFieldPercentOver307_020a0870(&blk);
+        rec.w8D = (unsigned char)GetFieldPercentOver232_020a08a4(&blk);
+        rec.wcC = (unsigned char)GetFieldPercentOver944_020a08d8(&blk);
+        rec.w10C = (unsigned char)GetFieldPercentOver448_020a090c(&blk);
         rec.f14 = block->val;
         rec.protagonistFlag = flag;
         rec.protagonistValue = value;

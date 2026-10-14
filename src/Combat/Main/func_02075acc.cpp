@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 #include "System/Memory.h"
 
-void SelectBattleContextMode2(int mode);
-int GetBattleSysInnerField4();
+void SelectBattleContextMode2_020d0040(int mode);
+int GetBattleSysInnerField4_020d06d4();
 void PrepareAndCommit020d0050(int value);
 void EmptyDestructor020758a4(void* obj);
 int GetCardReadManagerSharedStatus();
@@ -40,17 +40,17 @@ extern "C" ARM int func_02075acc(int offset, void* src, unsigned int length, int
 
     data_02108dfc.flag = 0;
     result = 1;
-    SelectBattleContextMode2((int)data_02108dfc.value);
+    SelectBattleContextMode2_020d0040((int)data_02108dfc.value);
 
-    isOne = (GetBattleSysInnerField4() & 0xff) == 1;
+    isOne = (GetBattleSysInnerField4_020d06d4() & 0xff) == 1;
     if (isOne) {
         func_020d05ec(src, offset, length, EmptyDestructor020758a4, 0, 1, 8, 10, 2);
     } else {
-        isTwo = (GetBattleSysInnerField4() & 0xff) == 2;
+        isTwo = (GetBattleSysInnerField4_020d06d4() & 0xff) == 2;
         if (isTwo) {
             func_020d05ec(src, offset, length, EmptyDestructor020758a4, 0, 1, 7, 10, 2);
         } else {
-            isThree = (GetBattleSysInnerField4() & 0xff) == 3;
+            isThree = (GetBattleSysInnerField4_020d06d4() & 0xff) == 3;
             if (isThree) {
                 func_020d05ec(src, offset, length, EmptyDestructor020758a4, 0, 1, 8, 10, 2);
             }

@@ -26,11 +26,11 @@ struct Container0205a330;
 void SetEntryByte14ByKey0205a42c(Container0205a3d0*, int, int);
 void SetEntryFlag2ByKey0205a370(Container0205a3d0*, int);
 Elem0205a3d0* FindEntryByHalfword0205a3d0(Container0205a3d0*, int);
-void SetEntryPosition(Container0205a3d0*, int, short, short);
+void SetEntryPosition_020e27ec(Container0205a3d0*, int, short, short);
 void IterateEntries0205a330(Container0205a330*, int);
 extern "C" void func_0205ae8c(void*);
 Elem_0205d81c* FindElementByC40205d81c(Struct_0205d81c*, int);
-int CheckField0x9cSetWhenField0xd4Present(unsigned char*);
+int CheckField0x9cSetWhenField0xd4Present_0204c7e0(unsigned char*);
 
 extern "C" ARM void func_ov023_021da9b4(CharacterCreationUI* self) {
     GameState* state = GameState::GetInstance();
@@ -44,14 +44,14 @@ extern "C" ARM void func_ov023_021da9b4(CharacterCreationUI* self) {
             if (entry != NULL) entry->flags |= 8;
             unsigned int ticks = state->GetTickCount();
             IterateEntries0205a330((Container0205a330*)self->firstSpriteEntries, ticks);
-            SetEntryPosition(self->firstSpriteEntries, 0, 0x6c, y);
+            SetEntryPosition_020e27ec(self->firstSpriteEntries, 0, 0x6c, y);
             func_0205ae8c(self->firstSpriteContext);
         }
     }
     if (self->spriteContext == NULL) return;
     Elem_0205d81c* element = FindElementByC40205d81c((Struct_0205d81c*)&self->windows[1], 1);
     if (element == NULL) return;
-    if (!CheckField0x9cSetWhenField0xd4Present((unsigned char*)element)) return;
+    if (!CheckField0x9cSetWhenField0xd4Present_0204c7e0((unsigned char*)element)) return;
     short dx = (short)(element->tileX << 3);
     short dy = (short)(element->tileY << 3);
     dx = (short)(dx + element->pixelX);
@@ -62,7 +62,7 @@ extern "C" ARM void func_ov023_021da9b4(CharacterCreationUI* self) {
     if (entry != NULL) entry->flags |= 8;
     unsigned int ticks = state->GetTickCount();
     IterateEntries0205a330((Container0205a330*)self->spriteEntries, ticks);
-    SetEntryPosition(self->spriteEntries, 0, (short)(dx - 8), (short)(dy - 2));
+    SetEntryPosition_020e27ec(self->spriteEntries, 0, (short)(dx - 8), (short)(dy - 2));
     func_0205ae8c(self->spriteContext);
 }
 #else
@@ -74,7 +74,7 @@ void SetEntryByte14ByKey0205a42c(struct Container0205a3d0* c, int key, int val);
 void SetEntryFlag2ByKey0205a370(struct Container0205a3d0* c, int key);
 struct Elem0205a3d0;
 struct Elem0205a3d0* FindEntryByHalfword0205a3d0(struct Container0205a3d0* c, int key);
-ARM void SetEntryPosition(struct Container0205a3d0* c, int key, short a, short b);
+ARM void SetEntryPosition_020e27ec(struct Container0205a3d0* c, int key, short a, short b);
 
 struct Container0205a330;
 void IterateEntries0205a330(struct Container0205a330* c, int arg);
@@ -91,7 +91,7 @@ struct Elem_0205d81c_021da9b4 {
     short y1;
 };
 ARM struct Elem_0205d81c_021da9b4* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
-ARM int CheckField0x9cSetWhenField0xd4Present(unsigned char* obj);
+ARM int CheckField0x9cSetWhenField0xd4Present_0204c7e0(unsigned char* obj);
 
 // USA: func_ov023_021da9b4  (semantic: UpdateEntryPositionsFromDamageAndElement_021da9b4)
 extern "C" ARM void func_ov023_021da9b4(void* obj) {
@@ -114,7 +114,7 @@ extern "C" ARM void func_ov023_021da9b4(void* obj) {
             }
             unsigned int scaleCount = bs2->GetTickCount();
             IterateEntries0205a330((struct Container0205a330*)c, scaleCount);
-            SetEntryPosition(c, 0, posA, posB);
+            SetEntryPosition_020e27ec(c, 0, posA, posB);
             func_0205ae8c(*(void**)((char*)obj + 0x7d8));
         }
     }
@@ -126,7 +126,7 @@ extern "C" ARM void func_ov023_021da9b4(void* obj) {
     if (elem == 0) {
         return;
     }
-    if (!CheckField0x9cSetWhenField0xd4Present((unsigned char*)elem)) {
+    if (!CheckField0x9cSetWhenField0xd4Present_0204c7e0((unsigned char*)elem)) {
         return;
     }
     short dx = (short)(elem->x0 << 3);
@@ -143,7 +143,7 @@ extern "C" ARM void func_ov023_021da9b4(void* obj) {
     }
     unsigned int scaleCount2 = bs1->GetTickCount();
     IterateEntries0205a330((struct Container0205a330*)c2, scaleCount2);
-    SetEntryPosition(c2, 0, (short)(dx - 8), (short)(dy - 2));
+    SetEntryPosition_020e27ec(c2, 0, (short)(dx - 8), (short)(dy - 2));
     func_0205ae8c(*(void**)((char*)obj + 0x7e4));
 }
 #endif

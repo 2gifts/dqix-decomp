@@ -21,7 +21,7 @@ struct CombatWork021e771c {
 };
 
 extern "C" Resources021e771c* func_ov017_021b8478(void* node);
-CombatWork021e771c* GetActiveCombatWork(void);
+CombatWork021e771c* GetActiveCombatWork_ov000_02160130(void);
 extern "C" void func_ov000_02166804(CombatWork021e771c* work);
 void* LoadFileIntoMemory(const char* path, void* dst, unsigned int* outSize);
 extern "C" void* ExtractFileFromGP2(const char* gp2Path, const char* innerFilePath, unsigned int* outSize);
@@ -36,7 +36,7 @@ extern "C" void func_0206f230(void* table, void* owner, void* data, unsigned int
 
 unsigned int LoadGPCFile02166008(void* unused, GPCReadPair* readPair, int flag);
 extern "C" void func_ov000_02166070(CombatWork021e771c* work, GPCReadPair* readPair, int index, int id, int flag, unsigned int length);
-void ResetGPCReadPairAndHalveCounter(void* unused, GPCReadPair* pair, int flag);
+void ResetGPCReadPairAndHalveCounter_ov000_0216638c(void* unused, GPCReadPair* pair, int flag);
 
 #if defined(jpn)
 extern char data_ov025_021efb1e[];
@@ -52,7 +52,7 @@ extern "C" ARM int func_ov025_021e771c(short* ids, int count, int a, int b) {
     GameResources* resources = func_ov017_0218b5b0();
     GameState::GetInstance();
     Resources021e771c* res = func_ov017_021b8478(resources->unknown_ptr_3718);
-    CombatWork021e771c* work = GetActiveCombatWork();
+    CombatWork021e771c* work = GetActiveCombatWork_ov000_02160130();
     func_ov000_02166804(work);
     Table021e771c* tableA = &res->tableA;
     Table021e771c* tableB = &res->tableB;
@@ -91,7 +91,7 @@ extern "C" ARM int func_ov025_021e771c(short* ids, int count, int a, int b) {
             for (int i = 0; i < count; i++) {
                 func_ov000_02166070(work, &pair, i, ids[i], 0, length);
             }
-            ResetGPCReadPairAndHalveCounter(work, &pair, 0);
+            ResetGPCReadPairAndHalveCounter_ov000_0216638c(work, &pair, 0);
             pair.Reset();
             ZeroDestroyGPCPointer(&pair.pGPCFile);
         }

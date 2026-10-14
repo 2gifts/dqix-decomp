@@ -74,7 +74,7 @@ extern "C" ARM void func_0203e0a0(void *receiver, unsigned short id) {
             snapshot->y         = (short) (y >> 4);
             snapshot->z         = (short) (z >> 4);
             snapshot->value     = value;
-            unsigned short *key = (unsigned short *) GetField0x8((int *) entry);
+            unsigned short *key = (unsigned short *) GetField0x8_02040528((int *) entry);
             if (key != NULL) {
                 snapshot->key = *key;
             }

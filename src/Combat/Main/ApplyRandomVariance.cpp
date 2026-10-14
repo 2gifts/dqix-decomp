@@ -2,7 +2,7 @@
 #include "Util/Random.h"
 
 // USA: func_02074838
-ARM float ApplyRandomVariance(int value, int narrow, struct Random* random) {
+ARM float ApplyRandomVariance_02074838(int value, int narrow, struct Random* random) {
     if (random == NULL) {
         random = &data_02108ddc;
     }

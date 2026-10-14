@@ -3,7 +3,7 @@
 #include "Combat/Overlay_0/GetCombatantByID.h"
 #include "Util/Random.h"
 
-GameObject* GetCombatantWithFlag0x400ByID(int unused, int id);
+GameObject* GetCombatantWithFlag0x400ByID_ov000_021536f8(int unused, int id);
 struct S_bf3c_021f1440;
 int IsBitfield2Set_021f1440(struct S_bf3c_021f1440* obj);
 int IsCombatantFlagMask512_021eda60(GameObject* combatant);
@@ -26,7 +26,7 @@ struct BuffWord_021f145c {
 
 // USA: func_ov024_021f145c
 extern "C" ARM int func_ov024_021f145c(int* a0, int a1, int a2, int* outCount, short* outArray) {
-	GameObject* gate = GetCombatantWithFlag0x400ByID(*a0, a1);
+	GameObject* gate = GetCombatantWithFlag0x400ByID_ov000_021536f8(*a0, a1);
 	if (!gate) return 0;
 	if (!IsBitfield2Set_021f1440((struct S_bf3c_021f1440*)gate)) return 0;
 

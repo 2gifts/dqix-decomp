@@ -21,11 +21,11 @@ struct SearchArguments { int category; char padding4[0x30]; };
 extern "C" PackedNibbleArray0206e120* func_0205ec34();
 extern "C" SearchStruct0202c1a4* func_0202ae18();
 int GetPackedNibbleFlag0x8(PackedNibbleArray0206e2dc*, int);
-int CheckField0NonZero(int*);
+int CheckField0NonZero_0202b7d8(int*);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
 int ForEachNodeUntilFalse02064704(void*, Node02064704*, void*);
 int GetPackedNibbleField(PackedNibbleArray0206e120*, int);
-int IsNibbleFieldZeroOrOne(PackedNibbleArray0206e120*, int);
+int IsNibbleFieldZeroOrOne_02095ae0(PackedNibbleArray0206e120*, int);
 extern "C" void func_0206e164(PackedNibbleArray0206e120*, int, int);
 
 static inline int IsSearchState(PackedNibbleArray0206e120* values, int index, int state) {
@@ -40,13 +40,13 @@ extern "C" ARM int func_02095924(SearchTable* table, int category) {
     for (SearchNode* node = table->first; node; node = node->next) {
         if (node->category != category) continue;
         if (node->enabled && !GetPackedNibbleFlag0x8((PackedNibbleArray0206e2dc*)values, node->index)) continue;
-        if (CheckField0NonZero((int*)search) && GetSearchStructCurrentArrEntry(search) && !node->allowDuringSearch) continue;
+        if (CheckField0NonZero_0202b7d8((int*)search) && GetSearchStructCurrentArrEntry(search) && !node->allowDuringSearch) continue;
         arguments.category = category;
         if (ForEachNodeUntilFalse02064704(values, node->conditions, &arguments)) {
             if (IsSearchState(values, node->index, 3)) {
                 if (!node->allowDuringSearch || node->blocked) continue;
             }
-            if (!IsNibbleFieldZeroOrOne(values, node->index)) continue;
+            if (!IsNibbleFieldZeroOrOne_02095ae0(values, node->index)) continue;
             func_0206e164(values, node->index, 1);
             return node->index;
         } else {

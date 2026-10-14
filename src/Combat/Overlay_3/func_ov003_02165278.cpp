@@ -34,11 +34,11 @@ struct Battle02165278 {
 };
 
 void* GetDataPtr02114e04_020d6c00(void);
-Global02109030* GetGlobal02109030(void);
+Global02109030* GetGlobal02109030_020936f8(void);
 extern "C" void func_ov003_021612c0(struct Battle02165278* obj);
 extern "C" int func_ov003_02161344(struct Battle02165278* obj);
 void CallFunc0204c804OverAllElems(struct Cont0207fe44* model);
-void OrBitsIntoField0(unsigned int* p, unsigned int mask);
+void OrBitsIntoField0_020466e4(unsigned int* p, unsigned int mask);
 void ClearStruct020a9ea4(struct Struct020a9ea4* p);
 extern "C" int func_020aad1c(void* a, void* b, int c, int d);
 extern int data_0211e33c;
@@ -51,7 +51,7 @@ extern "C" void func_ov017_021c35ac(void);
 // USA: func_ov003_02165278
 extern "C" ARM void func_ov003_02165278(struct Battle02165278* obj) {
     void* data = GetDataPtr02114e04_020d6c00();
-    Global02109030* global = GetGlobal02109030();
+    Global02109030* global = GetGlobal02109030_020936f8();
     unsigned char step = obj->step;
     struct Cont0207fe44* model = obj->model;
 
@@ -83,7 +83,7 @@ extern "C" ARM void func_ov003_02165278(struct Battle02165278* obj) {
         if (BackgroundLoader::GetInstance()->GetNumQueuedTasks() != 0) {
             return;
         }
-        OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 0x80);
+        OrBitsIntoField0_020466e4((unsigned int*)GetDataPtr02114e04_020d6c00(), 0x80);
         ClearStruct020a9ea4((struct Struct020a9ea4*)((char*)obj + 0x4b4));
         obj->step++;
     } else if (step == 0xf) {

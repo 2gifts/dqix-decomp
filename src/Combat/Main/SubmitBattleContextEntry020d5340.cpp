@@ -2,33 +2,33 @@
 #include "System/Memory.h"
 
 extern "C" int func_020d424c(int a, int b, int c, int d);
-void SetBattleContextArrayEntry(int index, int value);
+void SetBattleContextArrayEntry_020d404c(int index, int value);
 int CommitBattleContextBuffer020d4168(void* a, unsigned int b);
 
 struct BattleCtx020d5340 {
-    int field0;               // 0x0
-    unsigned short field4;    // 0x4
-    unsigned short field6;    // 0x6
-    unsigned short field8;    // 0x8
-    unsigned char mid[6];     // 0xa
-    unsigned short type;      // 0x10
-    unsigned short field0x12; // 0x12
-    unsigned char tail[0x20]; // 0x14
-    unsigned short field0x34; // 0x34
+    int field0;
+    unsigned short field4;
+    unsigned short field6;
+    unsigned short field8;
+    unsigned char mid[6];
+    unsigned short type;
+    unsigned short field0x12;
+    unsigned char tail[0x20];
+    unsigned short field0x34;
 };
 
 struct BattleReqBuf020d5340 {
-    unsigned short tag;        // 0x0
-    unsigned short field2;     // 0x2
-    int field4;                // 0x4
-    unsigned short field8;     // 0x8
-    unsigned short fielda;     // 0xa
-    unsigned char mid[6];      // 0xc
-    unsigned short field0x12;  // 0x12
-    unsigned short field0x14;  // 0x14
-    unsigned char tail[0x20];  // 0x16
-    unsigned short field0x36;  // 0x36
-    unsigned char pad[4];      // 0x38
+    unsigned short tag;
+    unsigned short field2;
+    int field4;
+    unsigned short field8;
+    unsigned short fielda;
+    unsigned char mid[6];
+    unsigned short field0x12;
+    unsigned short field0x14;
+    unsigned char tail[0x20];
+    unsigned short field0x36;
+    unsigned char pad[4];
 };
 
 #pragma optimize_for_size off
@@ -59,7 +59,7 @@ ARM int SubmitBattleContextEntry020d5340(int a0, struct BattleCtx020d5340* ctx) 
             return 6;
         }
     }
-    SetBattleContextArrayEntry(0x26, a0);
+    SetBattleContextArrayEntry_020d404c(0x26, a0);
     struct BattleReqBuf020d5340 buf;
     buf.tag = 0x26;
     buf.field2 = ctx->field6;

@@ -20,11 +20,11 @@ extern "C" unsigned long long func_ov024_021e4b14(struct Obj_021e07b0* obj, int 
 extern "C" void* func_ov000_0215e958(void* a0);
 struct FlagObj_021e05e4;
 int IsFlagBit12Field18Set_021e05e4(struct FlagObj_021e05e4* obj);
-void SetBool0x180Clear0x17f(unsigned char* obj, int value);
-void ClearFlag0x1000AndBytes7eA1(unsigned char* obj);
+void SetBool0x180Clear0x17f_020488cc(unsigned char* obj, int value);
+void ClearFlag0x1000AndBytes7eA1_02088e64(unsigned char* obj);
 void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
 struct ArrayContainsByteStruct;
-int ArrayContainsByte(struct ArrayContainsByteStruct* s, int val);
+int ArrayContainsByte_02086ef0(struct ArrayContainsByteStruct* s, int val);
 void IncrementByteCounterCapped0x63_0215a8d4(unsigned char* obj, int amount);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, unsigned long long ef, int g);
 
@@ -39,12 +39,12 @@ extern "C" ARM void* func_ov024_021e07b0(struct Obj_021e07b0* obj, unsigned char
     if (IsFlagBit12Field18Set_021e05e4((struct FlagObj_021e05e4*)c)) {
         int isParty = (id >= 0 && id <= 3);
         if (!isParty) {
-            SetBool0x180Clear0x17f((unsigned char*)c, 1);
+            SetBool0x180Clear0x17f_020488cc((unsigned char*)c, 1);
         }
-        ClearFlag0x1000AndBytes7eA1((unsigned char*)c->currentStats_);
+        ClearFlag0x1000AndBytes7eA1_02088e64((unsigned char*)c->currentStats_);
         AddEntryAndIncrementCount0215a88c(obj->field0x10, entry, 0x164);
         added = 1;
-        if (ArrayContainsByte((struct ArrayContainsByteStruct*)GetPtrField0x2a04(GameState::GetInstance()), slot) && move->id == 0xc6) {
+        if (ArrayContainsByte_02086ef0((struct ArrayContainsByteStruct*)GetPtrField0x2a04_02010828(GameState::GetInstance()), slot) && move->id == 0xc6) {
             IncrementByteCounterCapped0x63_0215a8d4((unsigned char*)obj->field0x10, added);
         }
     }

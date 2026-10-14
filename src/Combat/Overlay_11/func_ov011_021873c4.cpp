@@ -17,7 +17,7 @@ int ScaleStatsIfType12_021f6f10(void* node);
 extern "C" void* func_ov023_021fa598(void* node);
 int GetGlobalField0x1c020421a0();
 struct TableA68;
-void* FindEntryByKey(TableA68* table, int key);
+void* FindEntryByKey_02072a68(TableA68* table, int key);
 
 // USA: func_ov011_021873c4
 extern "C" ARM int func_ov011_021873c4(TaggedNumber02184c30* arguments) {
@@ -35,7 +35,7 @@ extern "C" ARM int func_ov011_021873c4(TaggedNumber02184c30* arguments) {
     TableA68* texts = (TableA68*)func_ov023_021fa598(node);
     if (!texts) return 1;
     MessageSystem* messages = (MessageSystem*)GetGlobalField0x1c020421a0();
-    const char* text = (const char*)FindEntryByKey(texts, (short)textKey);
+    const char* text = (const char*)FindEntryByKey_02072a68(texts, (short)textKey);
 #if defined(jpn)
     func_0204500c(messages, text, 0);
     *(int*)((char*)messages + 0x868) = 1;

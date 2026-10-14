@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
-int StringLength(const char* s);
+int StringLength_020d2ff0(const char* s);
 // USA: func_02068e1c
 char* JoinDelimitedParts02068e1c(char* dst, char* first, char* second, char* third) {
     char* cursor = dst;
@@ -17,8 +17,8 @@ char* JoinDelimitedParts02068e1c(char* dst, char* first, char* second, char* thi
         if (!c) {
             goto done;
         }
-        cursor = a + StringLength(first);
-        int thirdLen = StringLength(third);
+        cursor = a + StringLength_020d2ff0(first);
+        int thirdLen = StringLength_020d2ff0(third);
         char* out = cursor;
         char* src = cursor;
         for (;;) {

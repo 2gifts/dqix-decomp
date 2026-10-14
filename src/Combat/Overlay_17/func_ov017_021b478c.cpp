@@ -7,9 +7,9 @@
 #include "World/GrottoTileGraph.h"
 
 extern "C" Zone3D* func_02012fe4(void);
-void* GetPtrField0x468(void* obj);
+void* GetPtrField0x468_02011584(void* obj);
 int IsInRange0201b5b0(int id);
-void ClearHalfword0x18(void* obj);
+void ClearHalfword0x18_0209bffc(void* obj);
 void ClearBuffer0209bc84(void* obj);
 struct ResetObject0209af34Struct;
 void ResetObject0209af34(struct ResetObject0209af34Struct* obj);
@@ -31,7 +31,7 @@ struct MonsterEntry021b478c {
 };
 
 struct SearchTable;
-MonsterEntry021b478c* FindEntryByHalfwordKey(struct SearchTable* table, int key);
+MonsterEntry021b478c* FindEntryByHalfwordKey_02099950(struct SearchTable* table, int key);
 
 struct Request021b478c {
     unsigned char pad0;
@@ -60,14 +60,14 @@ extern "C" ARM void func_ov017_021b478c(Request021b478c* request) {
 
     battle = GameState::GetInstance();
     loader = BackgroundLoader::GetInstance();
-    table = (struct SearchTable*)GetPtrField0x468(battle);
+    table = (struct SearchTable*)GetPtrField0x468_02011584(battle);
     zone = func_02012fe4();
     grotto = &zone->grotto_;
     id = request->monster->zoneId;
-    entry = FindEntryByHalfwordKey(table, id);
+    entry = FindEntryByHalfwordKey_02099950(table, id);
 
     monster = (char*)request->monster;
-    ClearHalfword0x18(monster + regionalOffset1);
+    ClearHalfword0x18_0209bffc(monster + regionalOffset1);
     ClearBuffer0209bc84(monster + regionalOffset2);
     ResetObject0209af34((struct ResetObject0209af34Struct*)(monster + regionalOffset3));
     Clear12Bytes0206efc4(monster + regionalOffset4);

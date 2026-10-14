@@ -17,13 +17,13 @@ enum {
 #include "GameState/GameState.h"
 
 struct Obj2081;
-void ClearElementFlag0x20(struct Obj2081 *obj, int key);
+void ClearElementFlag0x20_02080c20(struct Obj2081 *obj, int key);
 void SetEntryLowNibbleAndElement02080c68(void *obj, int id, int value);
-void ClearSublistEntriesFlag1(void *obj, int id);
+void ClearSublistEntriesFlag1_02080bac(void *obj, int id);
 struct Container02080f8c;
 void SetEntryFirstField02080f8c(struct Container02080f8c *obj, int id, int value);
-void Forward0207f7acObjPlus4Size0x40(void *obj, int value);
-void SetEntryHalfword0xe(void *obj, int id, int value);
+void Forward0207f7acObjPlus4Size0x40_020805f4(void *obj, int value);
+void SetEntryHalfword0xe_0208103c(void *obj, int id, int value);
 struct Container02080cc0;
 void SetEntryHighNibble0x13(struct Container02080cc0 *obj, int id, int value);
 int SetEntryFlagById02080b2c(void *obj, int id);
@@ -63,7 +63,7 @@ struct Menu02177550 {
 // USA: func_ov003_02177550
 extern "C" ARM void func_ov003_02177550(Menu02177550 *self) {
     GameState *battle     = GameState::GetInstance();
-    GameObject *combatant = GetCombatantWithFlag0x100(battle, self->combatantId);
+    GameObject *combatant = GetCombatantWithFlag0x100_0200ff1c(battle, self->combatantId);
     if (combatant == NULL) {
         return;
     }
@@ -74,19 +74,19 @@ extern "C" ARM void func_ov003_02177550(Menu02177550 *self) {
         return;
     }
 
-    ClearElementFlag0x20(elemObj, 0xf);
+    ClearElementFlag0x20_02080c20(elemObj, 0xf);
     SetEntryLowNibbleAndElement02080c68(elemObj, 0xf, 0);
-    ClearSublistEntriesFlag1(elemObj, 0xf);
+    ClearSublistEntriesFlag1_02080bac(elemObj, 0xf);
     SetEntryFirstField02080f8c((struct Container02080f8c *) elemObj, 0x70, node->value);
-    Forward0207f7acObjPlus4Size0x40(elemObj, 0x70);
+    Forward0207f7acObjPlus4Size0x40_020805f4(elemObj, 0x70);
     int ready         = func_020dd4c4(self->combatantId, node);
     unsigned int tier = node->tier;
     if (tier != 0) {
-        SetEntryHalfword0xe(elemObj, 0x71, (short) (tier + 0x2f));
+        SetEntryHalfword0xe_0208103c(elemObj, 0x71, (short) (tier + 0x2f));
     }
 
     if (ready != 0) {
-        SetEntryHalfword0xe(elemObj, 0x75, 0xb);
+        SetEntryHalfword0xe_0208103c(elemObj, 0x75, 0xb);
         SetEntryHighNibble0x13((struct Container02080cc0 *) elemObj, 0x75, 3);
         SetEntryFlagById02080b2c(elemObj, 0x72);
         SetEntryFlagById02080b2c(elemObj, 0x73);
@@ -101,7 +101,7 @@ extern "C" ARM void func_ov003_02177550(Menu02177550 *self) {
         }
         short have = GetHalfwordEntryFromField150((Field150Holder02052df8 *) combatant, index);
         if (have == node->count) {
-            SetEntryHalfword0xe(elemObj, 0x75, 0x22);
+            SetEntryHalfword0xe_0208103c(elemObj, 0x75, 0x22);
             SetEntryFlagById02080b2c(elemObj, 0x72);
             SetEntryFlagById02080b2c(elemObj, 0x73);
             SetEntryFlagById02080b2c(elemObj, 0x74);

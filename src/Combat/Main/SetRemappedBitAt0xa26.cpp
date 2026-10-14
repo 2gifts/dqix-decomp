@@ -11,7 +11,7 @@ struct RemapFlagOwner {
 };
 
 // USA: func_020d76b8
-ARM void SetRemappedBitAt0xa26(struct RemapFlagOwner* obj, int index) {
+ARM void SetRemappedBitAt0xa26_020d76b8(struct RemapFlagOwner* obj, int index) {
     if (index >= 0xc0) {
         index -= 0xbc;
     }

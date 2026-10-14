@@ -55,15 +55,15 @@ extern unsigned char data_0211e33c[0x30000] __attribute__((aligned(4)));
 extern const char data_020f1bf0[];
 extern "C" int func_02075910(int, void*, unsigned int, int);
 int VerifyBuffer020a94f8(Buf020a94f8*, int);
-int VerifyAndApplySaveBuffer(int);
-void SetFlag0x5cccBit0(StateBits5ccc_11544*);
+int VerifyAndApplySaveBuffer_020ac864(int);
+void SetFlag0x5cccBit0_02011544(StateBits5ccc_11544*);
 extern "C" int func_01ff85b8(void*, int);
 extern "C" void* func_0205ec34();
-Globals020ab314* GetGlobal02109418();
+Globals020ab314* GetGlobal02109418_02094d6c();
 void* GetSlotEntry020108d8(char*, int);
 extern "C" void func_020a95a4(void*, void*, unsigned char*);
 extern "C" int func_020a9a50(void*, void*, int);
-void LoadBattleRegion0x5cdc(unsigned char*);
+void LoadBattleRegion0x5cdc_020a9af8(unsigned char*);
 extern "C" void func_020a9b2c(void*);
 void CopyBlobIntoBattleStruct020a9ba4(void*);
 extern "C" void func_020a9c14(void*);
@@ -89,7 +89,7 @@ extern "C" ARM int func_020ab314(int* output, int unused, int alternate) {
     Buf020a94f8 header;
     if (!VerifyBuffer020a94f8(&header, alternate != 0)) valid = 0;
     VectorizedInvertedMemcpy(&header, &buffer->header, 0x14);
-    VerifyAndApplySaveBuffer(alternate ? 1 : 0);
+    VerifyAndApplySaveBuffer_020ac864(alternate ? 1 : 0);
     VectorizedInvertedMemcpy(saveState->globals, buffer->globals, 0x54);
     if (!func_02075910(id, &buffer->body, 0x6f60, 0)) valid = 0;
     SaveBody020ab314* body = &buffer->body;
@@ -100,18 +100,18 @@ extern "C" ARM int func_020ab314(int* output, int unused, int alternate) {
         }
     }
     if (!valid) {
-        SetFlag0x5cccBit0((StateBits5ccc_11544*)state);
+        SetFlag0x5cccBit0_02011544((StateBits5ccc_11544*)state);
         BackgroundLoader::RemoveLockGlobal();
         return 0;
     }
     void* context = func_0205ec34();
-    Globals020ab314* globals = GetGlobal02109418();
+    Globals020ab314* globals = GetGlobal02109418_02094d6c();
     unsigned char status = 0;
     func_020a95a4(body->actorData, GetSlotEntry020108d8((char*)state, 0), &status);
     func_020a9a50(body->context, context, 0);
     memcpy(globals, body->globalData, 0xa0);
-    memcpy(GetGlobal02109418()->extra, body->globalExtra, 0x330);
-    LoadBattleRegion0x5cdc(body->region);
+    memcpy(GetGlobal02109418_02094d6c()->extra, body->globalExtra, 0x330);
+    LoadBattleRegion0x5cdc_020a9af8(body->region);
     memcpy(saveState->state75f0, body->state75f0, 0x4d0);
     memcpy(saveState->state7ac0, body->state7ac0, 0x3b4);
     memcpy(saveState->state7504, body->state7504, 0xec);

@@ -4,8 +4,8 @@
 struct FlagObj_021dd260;
 int IsFlagBit24Set_021dd260(FlagObj_021dd260*);
 int CheckField0x14FiveFlagsClear020881c4(unsigned char*);
-void SetFlag0x800000AndByte0x24(void*, int);
-void ResetAndSetFlag0x1000000(void*);
+void SetFlag0x800000AndByte0x24_02088220(void*, int);
+void ResetAndSetFlag0x1000000_02088150(void*);
 extern "C" void* func_ov000_0215e958(void*);
 void AddEntryAndIncrementCount0215a88c(void*,void*,int);
 void AppendToChainAndIncCount0215ffc4(void*,void*,int);
@@ -58,12 +58,12 @@ extern "C" ARM void* func_ov024_021e191c(Obj021e191c* obj,int unused,int id,Para
    obj->changed=1;
    AddEntryAndIncrementCount0215a88c(obj->context,step,message);
   }
-  SetFlag0x800000AndByte0x24(target->currentStats_,3);
+  SetFlag0x800000AndByte0x24_02088220(target->currentStats_,3);
   }
   if(obj->mode || original>=3){
    void* last=func_ov000_0215e958(obj->context);
    if(!last)return 0;
-   ResetAndSetFlag0x1000000(target->currentStats_);
+   ResetAndSetFlag0x1000000_02088150(target->currentStats_);
    AddEntryAndIncrementCount0215a88c(obj->context,last,0x34);
    func_ov000_02159eac(obj->context,&effects,7);
    func_ov000_0215cd44(obj->context,last,target,4,effects,obj->action->flag!=0);

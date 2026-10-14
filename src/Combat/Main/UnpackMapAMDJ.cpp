@@ -10,7 +10,7 @@
 
 extern "C"
 {
-    int _ZN6Zone3D15ProcessBMDJFileEPKvjPN12ZoneFeatures13Opcode64EntryE(Zone3D* zone, const void* src, unsigned int size, ZoneFeatures::Opcode64Entry* entry);
+    int _ZN6Zone3D24ProcessBMDJFile_02014900EPKvjPN12ZoneFeatures13Opcode64EntryE(Zone3D* zone, const void* src, unsigned int size, ZoneFeatures::Opcode64Entry* entry);
     int func_02014a24(Zone3D* zone, void* node);
 }
 
@@ -22,8 +22,8 @@ extern char data_020ef199[];
 
 // KEEP-NAME
 // USA: func_020146fc
-// USA: _ZN6Zone3D13UnpackMapAMDJEv
-ARM int Zone3D::UnpackMapAMDJ()
+// USA: _ZN6Zone3D22UnpackMapAMDJ_020146fcEv
+ARM int Zone3D::UnpackMapAMDJ_020146fc()
 {
     if (mapAMDJLoadHandle_ < 0)
         return 1;
@@ -73,9 +73,9 @@ ARM int Zone3D::UnpackMapAMDJ()
                 int entryCount = features->arraySize64_;
                 for (int i = 0; i < entryCount; i++)
                 {
-                    ZoneFeatures::Opcode64Entry* entry = features->GetOpcode64Entry(i);
+                    ZoneFeatures::Opcode64Entry* entry = features->GetOpcode64Entry_0201e2d8(i);
                     if (strstr(innerFilePath, entry->string_10) != NULL)
-                        _ZN6Zone3D15ProcessBMDJFileEPKvjPN12ZoneFeatures13Opcode64EntryE(this, innerFile, innerFileLength, entry);
+                        _ZN6Zone3D24ProcessBMDJFile_02014900EPKvjPN12ZoneFeatures13Opcode64EntryE(this, innerFile, innerFileLength, entry);
                 }
             }
             fileID++;
@@ -98,7 +98,7 @@ ARM int Zone3D::UnpackMapAMDJ()
 
     if (unknown_42c_ == 1)
     {
-        LoadMapAMDJ();
+        LoadMapAMDJ_020145a8();
         return 0;
     }
 

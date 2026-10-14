@@ -33,8 +33,8 @@ static inline unsigned int GetBit2(StatusStats* stats) { return stats->status.bi
 static inline unsigned int GetBit3(StatusStats* stats) { return stats->status.bit3; }
 static inline unsigned int GetCount(StatusStats* stats) { return stats->status.count; }
 extern "C" StatusSelection* func_ov017_021b8478(void*);
-void* GetData02100044();
-int TestBitAt0x34(unsigned char*, unsigned int);
+void* GetData02100044_0202ae24();
+int TestBitAt0x34_020a35e0(unsigned char*, unsigned int);
 extern "C" void func_0205e330(void*, void*, int);
 
 // USA: func_ov017_021c71a4
@@ -45,12 +45,12 @@ extern "C" ARM void func_ov017_021c71a4() {
 #else
     StatusSelection* selection = func_ov017_021b8478(func_ov017_0218b5b0()->unknown_ptr_3718);
 #endif
-    void* context = GetData02100044();
+    void* context = GetData02100044_0202ae24();
     StatusMessage message;
     message.type = 0x71;
     StatusPayload* payload = (StatusPayload*)message.payload;
     for (int i = 0; i < 4; ++i) {
-        if (!TestBitAt0x34((unsigned char*)selection, (unsigned char)i)) continue;
+        if (!TestBitAt0x34_020a35e0((unsigned char*)selection, (unsigned char)i)) continue;
         GameObject* combatant = game->GetCombatantByIndex(i);
         if (!combatant || !((StatusStats*)combatant->currentStats_)->active) continue;
         payload->event = selection->event;

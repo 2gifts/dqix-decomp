@@ -10,29 +10,29 @@ int InitAndCheckField3c_02153994(void);
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c540(void* obj);
 extern "C" int func_0202c508(void* obj);
-void* GetData02153637(void);
+void* GetData02153637_020e2ff8(void);
 struct Flags02033fcc;
 void SetFlag0x4At0xe0(struct Flags02033fcc* obj);
-unsigned char GetByte0x26c(char* obj);
+unsigned char GetByte0x26c_02039d7c(char* obj);
 void ClearBytesAndZeroBlock02039d24(unsigned char* obj);
-int GetField0x3acValue(GameState* battleStruct);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 struct Base02010834;
 void CopyCountedBytesToIntArray02010834(struct Base02010834* base, int index, int* out, int* outCount);
-void ClearFlag0x1ceBit0x4(unsigned char* obj);
+void ClearFlag0x1ceBit0x4_02039d58(unsigned char* obj);
 void* GetDataPtr02114e04_020d6c00(void);
-void* GetPtrField0x2a04(GameState* battleStruct);
+void* GetPtrField0x2a04_02010828(GameState* battleStruct);
 struct ArrayContainsByteStruct;
-int ArrayContainsByte(struct ArrayContainsByteStruct* s, int val);
+int ArrayContainsByte_02086ef0(struct ArrayContainsByteStruct* s, int val);
 struct T0205420c;
 void MaybeCall0205420c(struct T0205420c* obj, int a, int b);
 void DispatchOrSetupCombatant_02191f4c(int a, int b);
 extern "C" void func_ov017_02192400(int a, int b);
-void OrBitsIntoField0(unsigned int* p, unsigned int mask);
-int CheckField0NonZero(int* obj);
-unsigned char GetField0x397cValue(GameState* battleStruct);
+void OrBitsIntoField0_020466e4(unsigned int* p, unsigned int mask);
+int CheckField0NonZero_0202b7d8(int* obj);
+unsigned char GetField0x397cValue_020100b0(GameState* battleStruct);
 extern "C" void func_ov017_021917f0(int a, int b);
-void SetBitsInField4(unsigned int* obj, unsigned int mask);
-void StoreInFirstEmptySlot(unsigned char* base, unsigned char val);
+void SetBitsInField4_0203b4d8(unsigned int* obj, unsigned int mask);
+void StoreInFirstEmptySlot_020e3368(unsigned char* base, unsigned char val);
 struct Self02154de4;
 int ProcessAndDispatchState_02154de4(struct Self02154de4* self);
 
@@ -80,7 +80,7 @@ extern "C" ARM int func_ov001_021557e0(struct Self021557e0* self) {
     if (self->f12 != 0 && func_0202c540(search) != 0) {
         self->f103 = 1;
         if (self->flag_f8 & 0x10) {
-            GameObject* g = GetCombatantWithFlag0x100(bs, 0);
+            GameObject* g = GetCombatantWithFlag0x100_0200ff1c(bs, 0);
             ((unsigned int*)((char*)g + 0x18c))[0] |= 2;
         }
     }
@@ -92,7 +92,7 @@ extern "C" ARM int func_ov001_021557e0(struct Self021557e0* self) {
                 continue;
             }
             SetFlag0x4At0xe0((struct Flags02033fcc*)m);
-            if (GetByte0x26c((char*)m) == 0 || GetFieldPtrAt0x26c(m)->command != 2) {
+            if (GetByte0x26c_02039d7c((char*)m) == 0 || GetFieldPtrAt0x26c_020399a8(m)->command != 2) {
                 ((Object3D*)m)->MaybeSetRegularAnimation(data_ov001_02164bd1, 0x10);
             }
             ClearBytesAndZeroBlock02039d24((unsigned char*)m);
@@ -101,40 +101,40 @@ extern "C" ARM int func_ov001_021557e0(struct Self021557e0* self) {
 
         int list[4];
         int count;
-        CopyCountedBytesToIntArray02010834((struct Base02010834*)bs, GetField0x3acValue(bs), list, &count);
+        CopyCountedBytesToIntArray02010834((struct Base02010834*)bs, GetField0x3acValue_020100a8(bs), list, &count);
         for (int j = 0; j < count; j++) {
             GameObject* m = bs->GetPartyMemberByIndex(list[j]);
             if (m == 0) {
                 continue;
             }
             ((Object3D*)m)->SetInheritedAlpha(0x1f);
-            ClearFlag0x1ceBit0x4((unsigned char*)m);
+            ClearFlag0x1ceBit0x4_02039d58((unsigned char*)m);
         }
 
         unsigned int* data = (unsigned int*)GetDataPtr02114e04_020d6c00();
-        void* arr = GetPtrField0x2a04(bs);
+        void* arr = GetPtrField0x2a04_02010828(bs);
         for (int k = 0; k < 4; k++) {
-            struct Combatant021557e0* c = (struct Combatant021557e0*)GetCombatantWithFlag0x100(bs, k);
+            struct Combatant021557e0* c = (struct Combatant021557e0*)GetCombatantWithFlag0x100_0200ff1c(bs, k);
             if (c == 0) {
                 continue;
             }
-            if (ArrayContainsByte((struct ArrayContainsByteStruct*)arr, k) != 0) {
+            if (ArrayContainsByte_02086ef0((struct ArrayContainsByteStruct*)arr, k) != 0) {
                 MaybeCall0205420c((struct T0205420c*)c, 1, 0);
             }
             DispatchOrSetupCombatant_02191f4c((int)res, k);
             func_ov017_02192400((int)res, k);
         }
-        OrBitsIntoField0(data, 0x20000);
+        OrBitsIntoField0_020466e4(data, 0x20000);
     }
 
-    if (CheckField0NonZero((int*)search) != 0 && self->f12 != 0 && self->f116 < 0) {
+    if (CheckField0NonZero_0202b7d8((int*)search) != 0 && self->f12 != 0 && self->f116 < 0) {
         if (self->f101 != 0) {
-            int limit = GetField0x397cValue(bs);
+            int limit = GetField0x397cValue_020100b0(bs);
             for (int n = 0; n < 4; n++) {
                 if (n == limit) {
                     continue;
                 }
-                struct Combatant021557e0* c = (struct Combatant021557e0*)GetCombatantWithFlag0x100(bs, n);
+                struct Combatant021557e0* c = (struct Combatant021557e0*)GetCombatantWithFlag0x100_0200ff1c(bs, n);
                 if (c == 0) {
                     continue;
                 }
@@ -147,7 +147,7 @@ extern "C" ARM int func_ov001_021557e0(struct Self021557e0* self) {
             }
         }
     } else if (self->f116 >= 0) {
-        struct Combatant021557e0* c = (struct Combatant021557e0*)GetCombatantWithFlag0x100(bs, self->f116);
+        struct Combatant021557e0* c = (struct Combatant021557e0*)GetCombatantWithFlag0x100_0200ff1c(bs, self->f116);
         if (c != 0) {
             c->field_c1 |= 1;
             c->field_c1 |= 2;
@@ -156,7 +156,7 @@ extern "C" ARM int func_ov001_021557e0(struct Self021557e0* self) {
         }
     }
 
-    SetBitsInField4((unsigned int*)res, 0x1000);
+    SetBitsInField4_0203b4d8((unsigned int*)res, 0x1000);
 
     if (self->f50 & 0x200) {
         volatile unsigned int* reg = (volatile unsigned int*)0x4000000;
@@ -164,7 +164,7 @@ extern "C" ARM int func_ov001_021557e0(struct Self021557e0* self) {
     }
 
     if ((self->flag_f8 & 0x10) && func_0202c508(search) != 0) {
-        StoreInFirstEmptySlot((unsigned char*)GetData02153637(), 1);
+        StoreInFirstEmptySlot_020e3368((unsigned char*)GetData02153637_020e2ff8(), 1);
         return 0x12;
     }
     return ProcessAndDispatchState_02154de4((struct Self02154de4*)self);

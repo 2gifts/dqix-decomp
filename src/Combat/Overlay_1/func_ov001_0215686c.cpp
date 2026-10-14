@@ -53,14 +53,14 @@ struct ResPtr0215686c {
     unsigned char* p2c;
 };
 
-int GetBitsInField0(unsigned int* p, unsigned int bits);
+int GetBitsInField0_0203b4c4(unsigned int* p, unsigned int bits);
 int GetSignedField020c39c8(volatile unsigned short* p);
 struct AxisFloats0203b57c;
 int GetAxisIntValue(AxisFloats0203b57c*, int);
 extern "C" void* func_0202ae18(void);
 void* GetDataPtr02114e04_020d6c00(void);
-void OrBitsIntoField0(unsigned int* p, unsigned int mask);
-void OrGlobalFlag0x40();
+void OrBitsIntoField0_020466e4(unsigned int* p, unsigned int mask);
+void OrGlobalFlag0x40_020dc2bc();
 void ResetList0204af64(struct List0204af64* obj);
 
 static inline unsigned int GetEntryMode(Obj0215686c* o) {
@@ -96,7 +96,7 @@ extern "C" ARM void func_ov001_0215686c(void) {
     func_0202ae18();
 
     if (!(o->f50 & 0x20)) {
-        if (GetBitsInField0((unsigned int*)res, 0x1000) == 0) {
+        if (GetBitsInField0_0203b4c4((unsigned int*)res, 0x1000) == 0) {
             goto cont;
         }
     }
@@ -121,8 +121,8 @@ cont:
         }
     }
 
-    OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 1);
-    OrGlobalFlag0x40();
+    OrBitsIntoField0_020466e4((unsigned int*)GetDataPtr02114e04_020d6c00(), 1);
+    OrGlobalFlag0x40_020dc2bc();
 
     volatile unsigned int* r32 = (volatile unsigned int*)0x4001000;
     volatile unsigned short* r16 = (volatile unsigned short*)0x4001000;

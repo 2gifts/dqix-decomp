@@ -11,9 +11,9 @@ struct FlagObj_021dd260;
 int IsFlagBit12Field18Set_021e05e4(struct FlagObj_021e05e4* obj);
 int IsFlagBit8388608Set_021da998(struct FlagObj_021da998* obj);
 int IsFlagBit24Set_021dd260(struct FlagObj_021dd260* obj);
-void SetBool0x180Clear0x17f(unsigned char* obj, int value);
-void ClearFlag0x1000AndBytes7eA1(unsigned char* stats);
-void DecrementCounter0x24UpdateFlag0x14(void* obj);
+void SetBool0x180Clear0x17f_020488cc(unsigned char* obj, int value);
+void ClearFlag0x1000AndBytes7eA1_02088e64(unsigned char* stats);
+void DecrementCounter0x24UpdateFlag0x14_02087704(void* obj);
 void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
 void AppendToChainAndIncCount0215ffc4(void* obj, void* node, int idx);
 extern "C" struct OutStruct0215ccbc* func_ov000_0215e958(void* ctx);
@@ -41,8 +41,8 @@ extern "C" ARM unsigned long long func_ov024_021e3f14(struct Obj_021e3f14* obj, 
     if (!entry) return 0;
     int added = 0;
     if (IsFlagBit12Field18Set_021e05e4((struct FlagObj_021e05e4*)c)) {
-        if (!IsPartySlot(id)) SetBool0x180Clear0x17f((unsigned char*)c, 1);
-        ClearFlag0x1000AndBytes7eA1((unsigned char*)c->currentStats_);
+        if (!IsPartySlot(id)) SetBool0x180Clear0x17f_020488cc((unsigned char*)c, 1);
+        ClearFlag0x1000AndBytes7eA1_02088e64((unsigned char*)c->currentStats_);
         AddEntryAndIncrementCount0215a88c(obj->ctx, entry, 0x164);
         added = 1;
     }
@@ -50,7 +50,7 @@ extern "C" ARM unsigned long long func_ov024_021e3f14(struct Obj_021e3f14* obj, 
     words.lo = 0;
     words.hi = 0;
     if (IsFlagBit8388608Set_021da998((struct FlagObj_021da998*)c) || IsFlagBit24Set_021dd260((struct FlagObj_021dd260*)c)) {
-        DecrementCounter0x24UpdateFlag0x14(c->currentStats_);
+        DecrementCounter0x24UpdateFlag0x14_02087704(c->currentStats_);
         int msg = 0;
         unsigned char stage = ((struct Stats_021e3f14*)c->currentStats_)->stage;
         switch (stage) {

@@ -19,7 +19,7 @@ Element020de650* FindElementByKey020dedd0(Container020dedd0* c, int key);
 extern "C" void func_020dd7ac(void* buf);
 extern "C" void* func_ov004_02156f04(void* a, int key);
 extern "C" int func_020dcc98(signed char combatantId);
-int IsValueInCombatantField150List(int combatantId, int value);
+int IsValueInCombatantField150List_020dd718(int combatantId, int value);
 extern "C" void func_ov023_021f65d4(void* obj, int id, int mask);
 void ClearNodeMaskById_021f6600(void* obj, int id, int mask);
 extern "C" int func_020dd4c4(int id, void* node);
@@ -98,7 +98,7 @@ extern "C" ARM int func_ov004_0215cec4(void* a) {
             if (!stat) return 0;
             stat->stats = member->baseStats_;
             stat->SetIcon(func_020dcc98(members.ids[j]));
-            if (IsValueInCombatantField150List((signed char)members.ids[j], entry->key)) {
+            if (IsValueInCombatantField150List_020dd718((signed char)members.ids[j], entry->key)) {
                 func_ov023_021f65d4(a, j + 0x1c6, 8);
                 func_ov023_021f65d4(a, j + 0x1ce, 8);
                 func_ov023_021f65d4(a, j + 0x1ca, 8);

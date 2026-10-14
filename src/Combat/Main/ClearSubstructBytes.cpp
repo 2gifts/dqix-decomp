@@ -21,7 +21,7 @@
 #include <globaldefs.h>
 
 // USA: func_0200fb40
-ARM void ClearSubstructBytes(void* obj) {
+ARM void ClearSubstructBytes_0200fb40(void* obj) {
     char* base = (char*)obj;
     unsigned char i;
     base[SUBSTRUCT_BYTE0_OFFSET] = 0;

@@ -44,8 +44,8 @@ struct StreamResources0215f3fc
     char pad_0x0[0x2cc];
     StreamRecord0215f3fc records[33];
 };
-void* GetGlobalPtr021075f4();
-int GetWord0x0(int*);
+void* GetGlobalPtr021075f4_0203cf4c();
+int GetWord0x0_0200fb8c(int*);
 extern "C" const char* func_ov017_021d612c(void*);
 int FindEmptySlotIndex(SlotArray_0203e03c*);
 extern "C" void func_ov017_021d6134(void*, int);
@@ -54,8 +54,8 @@ extern "C" int func_ov017_021d60f4(TaggedValue0215f3fc*);
 void Init020404c0(int*);
 void InitializeRandomMotion0203c794(void*);
 void* EmptyStub0203d004(void*);
-void SetField0xc(int*, int);
-void SetField0x8(int*, int);
+void SetField0xc_02040530(int*, int);
+void SetField0x8_02040520(int*, int);
 void UpdateElementStream0203f02c(Obj0203f02c*, int, int, char*, int, int);
 extern "C" void func_0203f138(Obj0203f02c*, int);
 void SetActiveChildShorts020408c8(Node020408c8*, short, short, short);
@@ -71,8 +71,8 @@ extern const char data_ov001_021657d1[];
 extern "C" ARM int func_ov001_0215f3fc(TaggedValue0215f3fc* arguments, int count)
 {
     GameState* game = GameState::GetInstance();
-    void* list = GetGlobalPtr021075f4();
-    StreamResources0215f3fc* resources = (StreamResources0215f3fc*)GetWord0x0((int*)game);
+    void* list = GetGlobalPtr021075f4_0203cf4c();
+    StreamResources0215f3fc* resources = (StreamResources0215f3fc*)GetWord0x0_0200fb8c((int*)game);
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     if (!resources)
     {
@@ -184,8 +184,8 @@ extern "C" ARM int func_ov001_0215f3fc(TaggedValue0215f3fc* arguments, int count
     {
         sprintf(descriptor->name, data_ov001_021657d1, name);
     }
-    SetField0xc((int*)entry, (int)record);
-    SetField0x8((int*)entry, (int)descriptor);
+    SetField0xc_02040530((int*)entry, (int)record);
+    SetField0x8_02040520((int*)entry, (int)descriptor);
     StreamRecord0215f3fc* recordBase = resources->records;
     char* recordData = recordBase[recordIndex].data;
     unsigned int loadedLength = length;

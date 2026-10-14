@@ -7,15 +7,15 @@ struct KeyMap020a0b3c;
 struct S_a0b8c;
 struct StoreStruct;
 int AppendFrameTag02041c08(char *dst, int a1, int a2, int a3, int a4, int a5);
-int AppendCursorTag(char *dst, int cursor);
+int AppendCursorTag_02041ea4(char *dst, int cursor);
 char *GetGlobalField0x1c020421a0();
-unsigned char *GetFieldAt0x150(unsigned char *p);
-int ArrayContainsByte(ArrayContainsByteStruct *arr, int value);
+unsigned char *GetFieldAt0x150_02053c6c(unsigned char *p);
+int ArrayContainsByte_02086ef0(ArrayContainsByteStruct *arr, int value);
 int GetCountByType02157108(void *self, int type);
-void StoreInArray0x8b0(struct StoreStruct *base, int index, int value);
+void StoreInArray0x8b0_020465c0(struct StoreStruct *base, int index, int value);
 char *FindElementByKey020dedd0(struct Container020dedd0 *c, int key);
 void CopyTextAndUppercaseIfFlagged0206819c(const char *src, char *dst, int flag);
-int AppendNameTag(char *dst, int n, const char *name);
+int AppendNameTag_02041b70(char *dst, int n, const char *name);
 int AppendString02042058(char *dst, const char *src);
 int CountNonZeroValues020a0b8c(struct S_a0b8c *s);
 int LookupValueByKey020a0b3c(KeyMap020a0b3c *map, int key);
@@ -44,11 +44,11 @@ extern "C" ARM void func_ov002_0215de9c(char *base, char *dst, int flag) {
         if (flag) {
             AppendFrameTag02041c08(dst, cur, 8, 5, 5, 5);
         }
-        AppendCursorTag(dst, cur);
+        AppendCursorTag_02041ea4(dst, cur);
     }
     GameState *gs = GameState::GetInstance();
     char *g       = GetGlobalField0x1c020421a0();
-    char *party   = (char *) GetPtrField0x2a04(gs);
+    char *party   = (char *) GetPtrField0x2a04_02010828(gs);
     int actor     = *(signed char *) (base + 0x1c00 + 0x21);
     int ok        = 0;
     unsigned char *f;
@@ -60,29 +60,29 @@ extern "C" ARM void func_ov002_0215de9c(char *base, char *dst, int flag) {
         ok = 1;
     }
     if (ok) {
-        GameObject *m = GetCombatantWithFlag0x100(gs, actor);
+        GameObject *m = GetCombatantWithFlag0x100_0200ff1c(gs, actor);
         if (m == NULL) return;
-        f = GetFieldAt0x150((unsigned char *) m);
-        if (!ArrayContainsByte((ArrayContainsByteStruct *) party, *(signed char *) (base + 0x1c00 + 0x21))) return;
+        f = GetFieldAt0x150_02053c6c((unsigned char *) m);
+        if (!ArrayContainsByte_02086ef0((ArrayContainsByteStruct *) party, *(signed char *) (base + 0x1c00 + 0x21))) return;
         int n     = GetCountByType02157108(base, *(signed char *) (base + 0x1c00 + 0x21));
         int extra = 0;
         if (n < 8) extra = 1;
         for (int i = 0; i < n + extra; i++) {
             func_02046380(g);
-            StoreInArray0x8b0((struct StoreStruct *) g, 0, i);
+            StoreInArray0x8b0_020465c0((struct StoreStruct *) g, 0, i);
             char *e = FindElementByKey020dedd0((struct Container020dedd0 *) (base + 0x3ec + 0x400),
                                                                         *(short *) (f + i * 2 + 0x454));
             if (e != NULL) {
                 __clear(nameA, 0x100);
                 CopyTextAndUppercaseIfFlagged0206819c(*(const char **) (e + 4), nameA, 0);
-                AppendNameTag(dst, i, nameA);
+                AppendNameTag_02041b70(dst, i, nameA);
                 if (i != n - 1) {
                     AppendString02042058(dst, *(const char **) (base + 0x1000 + 0xbdc));
                 } else if (extra == 1) {
                     AppendString02042058(dst, *(const char **) (base + 0x1000 + 0xbdc));
                 }
             } else if (i == n) {
-                AppendNameTag(dst, i, data_ov002_0216d288);
+                AppendNameTag_02041b70(dst, i, data_ov002_0216d288);
             }
         }
     } else {
@@ -94,13 +94,13 @@ extern "C" ARM void func_ov002_0215de9c(char *base, char *dst, int flag) {
         pages = (CountNonZeroValues020a0b8c((struct S_a0b8c *) party) + 7) / 8;
         for (; i < end; i++) {
             func_02046380(g);
-            StoreInArray0x8b0((struct StoreStruct *) g, 0, i);
+            StoreInArray0x8b0_020465c0((struct StoreStruct *) g, 0, i);
             char *e = FindElementByKey020dedd0((struct Container020dedd0 *) (base + 0x3ec + 0x400),
                                                                         *(short *) (party + i * 2 + 0xc));
             if (e == NULL) continue;
             __clear(nameB, 0x100);
             CopyTextAndUppercaseIfFlagged0206819c(*(const char **) (e + 4), nameB, 0);
-            AppendNameTag(dst, i, nameB);
+            AppendNameTag_02041b70(dst, i, nameB);
             __clear(num, 0x40);
             sprintf(num, data_ov002_0216d270,
                     LookupValueByKey020a0b3c((KeyMap020a0b3c *) party, *(short *) (e + 0x18)));

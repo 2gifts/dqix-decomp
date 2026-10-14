@@ -9,7 +9,7 @@ struct Entry_02028bd0 {
 struct Entry_02028bd0* FindEntryByCurrentId02027cb0(void);
 GameObject* FindCombatantByField2_021a2738(void* unused, int value);
 struct PairStruct;
-void CopyPairAndStoreField(struct PairStruct* src, struct PairStruct* dst);
+void CopyPairAndStoreField_02072adc(struct PairStruct* src, struct PairStruct* dst);
 struct Bytes02033b88;
 int SetByte0xbeShiftPrev(struct Bytes02033b88* p, int val);
 
@@ -28,7 +28,7 @@ extern "C" ARM void func_ov017_021a2b1c(void* param) {
         if (!combatant) continue;
         GameObject* found = FindCombatantByField2_021a2738(param, *(short*)((char*)combatant + 2));
         if (!found) continue;
-        CopyPairAndStoreField((struct PairStruct*)found, (struct PairStruct*)combatant);
+        CopyPairAndStoreField_02072adc((struct PairStruct*)found, (struct PairStruct*)combatant);
         switch (*(int*)((char*)combatant + 0x130)) {
             case 0:
                 SetByte0xbeShiftPrev((struct Bytes02033b88*)combatant, 5);

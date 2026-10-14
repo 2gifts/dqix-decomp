@@ -9,7 +9,7 @@ struct Obj021e1318;
 struct ObjStruct_021e1474;
 struct Container020dedd0;
 short CountNonZeroValues020a0b8c(struct S_a0b8c *s);
-unsigned char *GetFieldAt0x150(unsigned char *p);
+unsigned char *GetFieldAt0x150_02053c6c(unsigned char *p);
 void ClearObj_021e1318(struct Obj021e1318 *obj);
 void InitScriptAndRun_021e133c(void *a, void *b, int c, int d, int e, short f);
 void ClearElements_021e1518(void *p);
@@ -34,7 +34,7 @@ extern "C" ARM void func_ov002_0215b2c8(char *base) {
     short v;
     short count;
     gs    = GameState::GetInstance();
-    party = (char *) GetPtrField0x2a04(gs);
+    party = (char *) GetPtrField0x2a04_02010828(gs);
     src   = *(void **) party;
     count = CountNonZeroValues020a0b8c((struct S_a0b8c *) party);
     memset(buf, -1, sizeof(buf));
@@ -42,7 +42,7 @@ extern "C" ARM void func_ov002_0215b2c8(char *base) {
     for (i = 0; i < *(unsigned char *) (party + 0xf7c); i++) {
         m = gs->GetPartyMemberByIndex(*(signed char *) (party + 0xf78 + i));
         if (m == NULL) continue;
-        data = GetFieldAt0x150((unsigned char *) m);
+        data = GetFieldAt0x150_02053c6c((unsigned char *) m);
         for (j = 0; j < 8; j++) {
             v = ((short *) (data + 0x454))[j];
             if (v > 0) {

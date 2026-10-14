@@ -25,12 +25,12 @@ struct Obj02053f7c {
     struct Sub02053f7c sub;
 };
 
-void* GetPtrField0x2a04(GameState* gs);
+void* GetPtrField0x2a04_02010828(GameState* gs);
 
 // KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
 // USA: func_02053f7c
 ARM void SetField0x1b2IfMatchOrFlag02053f7c(Obj02053f7c* obj, unsigned short a, int b) {
-    struct Obj02086aec* p = (struct Obj02086aec*)GetPtrField0x2a04(GameState::GetInstance());
+    struct Obj02086aec* p = (struct Obj02086aec*)GetPtrField0x2a04_02010828(GameState::GetInstance());
     int found = 0;
     int i;
     if (p != NULL) {

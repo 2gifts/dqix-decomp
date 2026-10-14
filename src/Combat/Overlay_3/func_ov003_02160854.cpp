@@ -30,12 +30,12 @@ struct Ctx02160854 {
     short group_;
 };
 
-int GetWord0x0(int* obj);
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+int GetWord0x0_0200fb8c(int* obj);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 int IsFieldNotPositive_021a4e70(unsigned char* base);
 int GetInnerFlagBit0020e28dc(Outer020e28dc* o);
-int GetField0x15UnlessInactive(signed char* obj);
-void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
+int GetField0x15UnlessInactive_020e2918(signed char* obj);
+void SelectCoordsByFlag0x24_02012a84(unsigned char* obj, int* out1, int* out2);
 int RunAndCheckFlagBit02080dd4(void* obj, int p1, int p2, int p3, unsigned char* outFlag, unsigned char extra);
 
 extern "C" {
@@ -51,15 +51,15 @@ void func_ov003_02160794(void* self);
 // USA: func_ov003_02160854
 extern "C" ARM unsigned char func_ov003_02160854(Ctx02160854* self) {
     unsigned char confirmed = 0;
-    unsigned char* battleWord = (unsigned char*)GetWord0x0((int*)GameState::GetInstance());
-    if (TestFlag0SetAndFlag1Clear(data_02114e30, 0x401)) {
+    unsigned char* battleWord = (unsigned char*)GetWord0x0_0200fb8c((int*)GameState::GetInstance());
+    if (TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x401)) {
         if (IsFieldNotPositive_021a4e70(battleWord)) {
             confirmed = 1;
         }
     }
 
     if (GetInnerFlagBit0020e28dc(self->choice_)) {
-        int choice = GetField0x15UnlessInactive((signed char*)self->choice_);
+        int choice = GetField0x15UnlessInactive_020e2918((signed char*)self->choice_);
         if (choice >= 0) {
             confirmed = 1;
             *self->cursor_ = choice + 0x2c;
@@ -68,7 +68,7 @@ extern "C" ARM unsigned char func_ov003_02160854(Ctx02160854* self) {
         int x;
         int y;
         Menu02160854* menu = self->menu_;
-        SelectCoordsByFlag0x24(data_02114e54, &x, &y);
+        SelectCoordsByFlag0x24_02012a84(data_02114e54, &x, &y);
         int item = RunAndCheckFlagBit02080dd4(menu, self->group_, (short)x, (short)y, &confirmed, 0);
         if (item < 0)
             return 0;

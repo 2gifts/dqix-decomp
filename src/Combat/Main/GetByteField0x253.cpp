@@ -7,6 +7,6 @@ enum { FIELD_OFFSET = 0x253 };
 #endif
 
 // USA: func_02039828
-ARM unsigned char GetByteField0x253(void* obj) {
+ARM unsigned char GetByteField0x253_02039828(void* obj) {
     return *((unsigned char*)obj + FIELD_OFFSET);
 }

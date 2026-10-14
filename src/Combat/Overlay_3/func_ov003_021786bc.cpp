@@ -8,7 +8,7 @@ struct Obj0205eaa0;
 short FindMappedMemberId02080468(void* obj, int id);
 extern "C" void func_020813ec(void* obj, int id, int value);
 void SetEntryLowNibbleAndElement02080c68(void* obj, int id, int value);
-void SetElementFlag0x40(struct Obj2081* obj, int id, int value);
+void SetElementFlag0x40_02081ea4(struct Obj2081* obj, int id, int value);
 void ResetWithSub0208203c(struct Obj0208203c* obj);
 extern "C" int func_ov003_021765b4(void* self);
 extern "C" int func_ov003_021766e8(void* self);
@@ -33,7 +33,7 @@ extern "C" ARM void func_ov003_021786bc(unsigned char* self) {
         *(short*)((char*)elemObj + 0x36) = value;
         func_020813ec(elemObj, *(short*)(self + 0xf00 + 0xfe), value);
         SetEntryLowNibbleAndElement02080c68(elemObj, *(short*)(self + 0xf00 + 0xfe), 0);
-        SetElementFlag0x40(elemObj, *(short*)(self + 0xf00 + 0xfe), 0);
+        SetElementFlag0x40_02081ea4(elemObj, *(short*)(self + 0xf00 + 0xfe), 0);
         ResetWithSub0208203c((struct Obj0208203c*)(self + 0x88c));
         *(void**)(self + 0xff8) = 0;
         (*(unsigned char*)(self + 0x1000 + 0x3f))++;

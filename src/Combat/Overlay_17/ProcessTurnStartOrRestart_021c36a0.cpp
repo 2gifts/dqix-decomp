@@ -3,12 +3,12 @@
 #include "std_library_functions.h"
 
 extern "C" void* func_0202ae18(void);
-void* GetData02100044(void);
-void* GetData02153637(void);
-void* GetData02153634(void);
+void* GetData02100044_0202ae24(void);
+void* GetData02153637_020e2ff8(void);
+void* GetData02153634_020e3580(void);
 extern "C" int func_0202b000(void* obj);
 extern "C" void func_ov017_021c37a4(void);
-void OrByte0x1029With0x30ClearField0x1034(unsigned char* obj);
+void OrByte0x1029With0x30ClearField0x1034_0202c778(unsigned char* obj);
 int SetStateToThreeAndDispatch0202b800(int* p);
 extern "C" void func_0205e22c(void* p);
 struct SlotTable020e3004;
@@ -18,7 +18,7 @@ void ClearThreeBytes020e358c(struct Bytes020e358c* s);
 void ClearTwoBytesAtField_02195748(unsigned char* base);
 void CollectValidCombatants02010890(GameState* bs, int* outList, int* outCount);
 extern "C" void __clear(void* buf, int len);
-int StringLength(const char* s);
+int StringLength_020d2ff0(const char* s);
 extern "C" void func_0202c360(void* obj, char* name);
 void ClearBufferAndFlag_021972cc(char* p);
 void ClearByteField17182_02195520(void* obj);
@@ -29,9 +29,9 @@ extern "C" ARM void func_ov017_021c36a0(void) {
 	void* objA = (void*)(int)((int)func_ov017_0218b5b0());
 	void* objB = func_0202ae18();
 	GameObject* combatant = bs->GetProtagonist();
-	void* d100044 = GetData02100044();
-	void* d153637 = GetData02153637();
-	void* d153634 = GetData02153634();
+	void* d100044 = GetData02100044_0202ae24();
+	void* d153637 = GetData02153637_020e2ff8();
+	void* d153634 = GetData02153634_020e3580();
 
 	if (func_0202b000(objB) != 0) {
 		func_ov017_021c37a4();
@@ -39,7 +39,7 @@ extern "C" ARM void func_ov017_021c36a0(void) {
 	}
 
 #if !defined(jpn)
-	OrByte0x1029With0x30ClearField0x1034((unsigned char*)objB);
+	OrByte0x1029With0x30ClearField0x1034_0202c778((unsigned char*)objB);
 #endif
 	SetStateToThreeAndDispatch0202b800((int*)objB);
 	func_0205e22c(d100044);
@@ -54,7 +54,7 @@ extern "C" ARM void func_ov017_021c36a0(void) {
 	char buf[20];
 	__clear(buf, 0x14);
 
-	int len = StringLength(*(char**)((char*)combatant + 0x134));
+	int len = StringLength_020d2ff0(*(char**)((char*)combatant + 0x134));
 	if (len > 0x14) {
 		len = 0x14;
 	}

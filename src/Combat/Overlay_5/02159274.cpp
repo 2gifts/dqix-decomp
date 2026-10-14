@@ -72,7 +72,7 @@ void UpdateEntryStateAndPosition(Ctx020e263c* w, int value);
 extern "C" void func_ov005_021589f4(void* self);
 extern "C" void func_ov005_02159b74(void* self);
 extern "C" int func_ov005_02158b3c(void* object, void* buffer);
-int GetField0x15UnlessInactive(signed char*);
+int GetField0x15UnlessInactive_020e2918(signed char*);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0* obj, int a, int b);
 struct Obj020e25e8;
 void ResetSelectionState020e25e8(Obj020e25e8*);
@@ -101,7 +101,7 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
         return;
     }
     if (self->step_ == 1) {
-        sel = GetField0x15UnlessInactive((signed char*)self->yesNo_);
+        sel = GetField0x15UnlessInactive_020e2918((signed char*)self->yesNo_);
         if (sel >= 0) {
             DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
             ResetSelectionState020e25e8((Obj020e25e8*)self->yesNo_);
@@ -139,7 +139,7 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
                     func_ov005_02157b74(self, 0xffff, 1);
                 } else if (self->selectedSlot >= 8 &&
                        self->selectedSlot < 0x18) {
-                    char* list = (char*)GetPtrField0x2a04(GameState::GetInstance());
+                    char* list = (char*)GetPtrField0x2a04_02010828(GameState::GetInstance());
                     int amount = ((ItemBits02159274*)((char*)item + 8))->amount;
                     sel = *(short*)((char*)item + 0x18);
                     DecrementKeyedStackAmount0207c484((KeyedList0207c484*)(list + 0x1d4), sel, 1, amount);
@@ -202,7 +202,7 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
         return;
     }
     if (self->step_ == 3) {
-        sel = GetField0x15UnlessInactive((signed char*)self->yesNo_);
+        sel = GetField0x15UnlessInactive_020e2918((signed char*)self->yesNo_);
         if (sel >= 0) {
             DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
             ResetSelectionState020e25e8((Obj020e25e8*)self->yesNo_);
@@ -236,7 +236,7 @@ extern "C" ARM void func_ov005_02159274(Menu02159274* self) {
                 }
                 func_ov005_02157b74(self, 0xffff, 1);
             } else if (self->selectedSlot >= 8 && self->selectedSlot < 0x18) {
-                char* list = (char*)GetPtrField0x2a04(GameState::GetInstance());
+                char* list = (char*)GetPtrField0x2a04_02010828(GameState::GetInstance());
                 item = FindElementByKey020dedd0(
                     self->items_,
                     self->slots[self->selectedSlot].id);

@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "System/IPC.h"
 
-void ValidateCode0x10OrHalt(int unused, unsigned int code);
+void ValidateCode0x10OrHalt_020c9890(int unused, unsigned int code);
 
 extern short data_02111668;
 
@@ -12,5 +12,5 @@ extern "C" ARM void func_020c983c(void) {
     InitializeInterProcessorCommunication();
     while (IsIPCCommandHandlerRegistered(0xc, IPCSide_Arm7) == 0) {
     }
-    SetArm9IPCCommandHandler(0xc, (IPCCommandHandler)ValidateCode0x10OrHalt);
+    SetArm9IPCCommandHandler(0xc, (IPCCommandHandler)ValidateCode0x10OrHalt_020c9890);
 }

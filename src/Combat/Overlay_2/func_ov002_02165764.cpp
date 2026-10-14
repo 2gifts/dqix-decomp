@@ -19,15 +19,15 @@ void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char 
 extern "C" void func_ov002_02161cf0(char *self);
 extern "C" void func_ov002_0215eadc(void *obj, int val);
 void SetFieldB0AndUpdate0205dee8(struct Obj0205dee8 *obj, int val);
-void SetElementFieldC2(struct Struct_0205d81c *s, int key, int value);
+void SetElementFieldC2_0205deb4(struct Struct_0205d81c *s, int key, int value);
 extern "C" void func_ov002_0215b9a4(void *self, int mode, int flag);
 extern "C" void func_ov002_02161b98(char *self);
 int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
 int IsElementFlagBit40Set_0216197c(int key, struct Struct_0205d81c *s);
-int TestFlag0SetAndFlag1Clear(unsigned short *pad, int buttons);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short *pad, int buttons);
 struct Obj_0205da38;
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
-char *GetCombatantChecked(GameState *gs, int id);
+char *GetCombatantChecked_0200ff94(GameState *gs, int id);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0 *obj, int a, int b);
 extern "C" int func_ov002_0215b720(char *self, int id);
 extern "C" void func_ov002_02157d40(char *self);
@@ -50,7 +50,7 @@ extern "C" ARM void func_ov002_02165764(char *self) {
         func_ov002_02161cf0(self);
         func_ov002_0215eadc(self, 0);
         SetFieldB0AndUpdate0205dee8((struct Obj0205dee8 *) OBJ, 0x11);
-        SetElementFieldC2((struct Struct_0205d81c *) OBJ, 0x11, 0);
+        SetElementFieldC2_0205deb4((struct Struct_0205d81c *) OBJ, 0x11, 0);
         func_ov002_0215b9a4(self, *(int *) (self + 0x1bb8) & 0xff, 0);
         *(int *) (self + 0x1bc0) += 1;
         return;
@@ -63,19 +63,19 @@ extern "C" ARM void func_ov002_02165764(char *self) {
         if (old != *(short *) (self + 0x1bfa)) {
             *(int *) (self + 0x1bcc) = 1;
         }
-        SetElementFieldC2((struct Struct_0205d81c *) OBJ, 0x12, 0);
-        SetElementFieldC2((struct Struct_0205d81c *) OBJ, 0x13, 0);
+        SetElementFieldC2_0205deb4((struct Struct_0205d81c *) OBJ, 0x12, 0);
+        SetElementFieldC2_0205deb4((struct Struct_0205d81c *) OBJ, 0x13, 0);
         if (IsElementFlagBit40Set_0216197c(*(int *) (self + 0x1bb8) & 0xff,
                                                                   (struct Struct_0205d81c *) OBJ))
         {
             func_ov002_0215b9a4(self, *(int *) (self + 0x1bb8) & 0xff, 0);
         }
-        int t  = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
+        int t  = TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x601);
         int u  = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)OBJ, 0x14);
         int ok = (t | u) ? 1 : 0;
         if (ok) {
             *(unsigned char *) (self + 0x1c84) = 3;
-            char *c = GetCombatantChecked(GameState::GetInstance(), *(signed char *) (self + 0x1c20));
+            char *c = GetCombatantChecked_0200ff94(GameState::GetInstance(), *(signed char *) (self + 0x1c20));
             if (c == 0) {
                 return;
             }
@@ -106,9 +106,9 @@ extern "C" ARM void func_ov002_02165764(char *self) {
             *(short *) (self + 0x1c26) = -1;
             *(int *) (self + 0x1bb8)   = 0x10;
             ClearMatchingEntry_02156ff0((unsigned char *) self, 0x11);
-            SetElementFieldC2((struct Struct_0205d81c *) OBJ, 0x11, 1);
+            SetElementFieldC2_0205deb4((struct Struct_0205d81c *) OBJ, 0x11, 1);
             SetFieldB0AndUpdate0205dee8((struct Obj0205dee8 *) OBJ, 0x10);
-            SetElementFieldC2((struct Struct_0205d81c *) OBJ, 0x10, 0);
+            SetElementFieldC2_0205deb4((struct Struct_0205d81c *) OBJ, 0x10, 0);
             *(int *) (self + 0x1bc0) = 1;
             *(int *) (self + 0x1bb8) = 0x10;
             func_ov002_0215b9a4(self, *(int *) (self + 0x1bb8) & 0xff, 0);

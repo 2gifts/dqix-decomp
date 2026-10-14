@@ -13,12 +13,11 @@ enum { kRegionValue330_32C = 0x330 };
 enum { kRegionValue334_330 = 0x334 };
 #endif
 
-
 extern "C" float _fflt(int v);
 extern "C" float _fmul(float a, float b);
 extern "C" int _ffix(float v);
 extern "C" void* func_0202ae18(void);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 extern "C" void func_ov017_021c9e00(int id, int flagA, int flagB, int flagC);
 
 // USA: func_ov003_02155740  (semantic: RescaleCombatantSizeTarget_02155740)
@@ -49,7 +48,7 @@ extern "C" ARM void func_ov003_02155740(char* obj) {
     }
 
     void* ptr = func_0202ae18();
-    if (CheckField0NonZero((int*)ptr) == 0) {
+    if (CheckField0NonZero_0202b7d8((int*)ptr) == 0) {
         return;
     }
     signed char id2 = *(signed char*)(obj + kRegionValue1F7_1F3);

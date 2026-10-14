@@ -2,9 +2,9 @@
 
 int GetSignedField020c39c8(volatile unsigned short* p);
 extern "C" int abs(int x);
-unsigned short GetMaskedKeyInput(void);
+unsigned short GetMaskedKeyInput_02012354(void);
 extern "C" void* func_0205ec34(void);
-void SetOrClearBitInArray(void* unused, unsigned char* array, int bit, int value);
+void SetOrClearBitInArray_0206df6c(void* unused, unsigned char* array, int bit, int value);
 
 struct InputStickState_0201229c {
     unsigned short f0;
@@ -40,10 +40,10 @@ skipFlag:
         return;
     }
     obj->f2 = obj->f0;
-    obj->f0 = GetMaskedKeyInput();
+    obj->f0 = GetMaskedKeyInput_02012354();
     if (obj->f0 == 0) {
         return;
     }
     data = func_0205ec34();
-    SetOrClearBitInArray(data, (unsigned char*)data + 0x8c, 0x113e, 1);
+    SetOrClearBitInArray_0206df6c(data, (unsigned char*)data + 0x8c, 0x113e, 1);
 }

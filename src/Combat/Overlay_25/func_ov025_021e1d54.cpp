@@ -12,8 +12,8 @@ struct Unit021e1d54 {
     unsigned char* obj;
 };
 
-int GetSubstructByte0x1c(unsigned char* obj);
-void SetSubstructByte0x1d(unsigned char* obj, unsigned char value);
+int GetSubstructByte0x1c_020493a4(unsigned char* obj);
+void SetSubstructByte0x1d_020493b8(unsigned char* obj, unsigned char value);
 void ClearMatchingBytes_021e169c(unsigned char* p, int val);
 extern "C" void func_ov000_0216f82c(Neighbors021e1d54* out, const int* cell);
 extern "C" void func_ov025_021e13e0(unsigned char* grid, Unit021e1d54* unit);
@@ -32,7 +32,7 @@ extern "C" ARM void func_ov025_021e1d54(Unit021e1d54* unit, unsigned char* grid)
     int cell;
     Neighbors021e1d54 tmp2;
     int from;
-    cell = GetSubstructByte0x1c(unit->obj);
+    cell = GetSubstructByte0x1c_020493a4(unit->obj);
     func_ov000_0216f82c(&tmp, &cell);
     near = tmp;
     unsigned char freeCount = 0;
@@ -67,6 +67,6 @@ extern "C" ARM void func_ov025_021e1d54(Unit021e1d54* unit, unsigned char* grid)
         if (bestCell < 0x51) {
             func_ov025_021e13e0(grid, unit);
         }
-        SetSubstructByte0x1d(unit->obj, bestCell);
+        SetSubstructByte0x1d_020493b8(unit->obj, bestCell);
     }
 }

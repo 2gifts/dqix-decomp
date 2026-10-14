@@ -8,12 +8,12 @@ struct Struct_0205c570;
 int GetActiveScaledSum0205d794(Struct_0205c570*);
 int GetFieldC54ArrayValue021573f8(void *self, int v);
 struct Struct_0205d81c;
-void SetElementFieldC2(Struct_0205d81c*, int, int);
+void SetElementFieldC2_0205deb4(Struct_0205d81c*, int, int);
 extern "C" void func_ov002_0215b9a4(char *self, unsigned char key, int flag);
 struct Struct_0205def8;
 void SetElementFlag0x20ByKey0205def8(Struct_0205def8*, int, int);
 void * FindElementByC40205d81c(Struct_0205d81c*, int);
-int TestFlag0SetAndFlag1Clear(unsigned short*, int);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short*, int);
 struct Obj_0205da38;
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 struct Obj0205eaa0;
@@ -42,7 +42,7 @@ extern "C" ARM void func_ov002_021644a8(char *self) {
         *(char *) (self + 0x1c20) = GetFieldC54ArrayValue021573f8(self, *(short *) (self + 0x1bf0));
         signed char cur = *(signed char *) (self + 0x1c20);
         *(char *) (self + 0x1c21) = cur;
-        SetElementFieldC2((Struct_0205d81c*)(self + 0xec8), 0xd, 1);
+        SetElementFieldC2_0205deb4((Struct_0205d81c*)(self + 0xec8), 0xd, 1);
         if (*(short *) (self + 0x1bf0) != 0) {
             func_ov002_0215b9a4(self, 0xd, 0);
             SetElementFlag0x20ByKey0205def8((Struct_0205def8*)(self + 0xec8), 1, 0xd);
@@ -60,14 +60,14 @@ extern "C" ARM void func_ov002_021644a8(char *self) {
         if (saved != *(short *) (self + 0x1bf0)) {
             return;
         }
-        int t = TestFlag0SetAndFlag1Clear((unsigned short*)&data_02114e30, 0x601);
+        int t = TestFlag0SetAndFlag1Clear_02012444((unsigned short*)&data_02114e30, 0x601);
         int u = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(self + 0xec8), 0x14);
         int hit = (t | u) != 0;
         if (hit != 0) {
             *(char *) (self + 0x1c32) = 0;
             *(char *) (self + 0xf80) = *(int *) (self + 0x1bb8);
             *(int *) (self + 0x247c) &= ~4;
-            SetElementFieldC2((Struct_0205d81c*)(self + 0xec8), 0xb, 1);
+            SetElementFieldC2_0205deb4((Struct_0205d81c*)(self + 0xec8), 0xb, 1);
             DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 1, 0);
             *(short *) (self + 0x1c12) = 0;
             *(short *) (self + 0x1c28) = 0x238d;

@@ -68,7 +68,7 @@ extern "C" void func_0204500c(TextRenderer*, const char*, int);
 extern "C" void* func_0202ae18();
 TextRenderer* GetGlobalField0x1c020421a0();
 unsigned int* GetDataPtr02114e04_020d6c00();
-void OrBitsIntoField0(unsigned int*, unsigned int);
+void OrBitsIntoField0_020466e4(unsigned int*, unsigned int);
 void EnqueueEventTag86_021c9ad4(unsigned short);
 extern "C" void func_ov017_021a23b0(GameResources*, int);
 void DispatchContextByState0209c678(Actor0209c678*, int);
@@ -78,13 +78,13 @@ extern "C" void func_02057f00(void*, int);
 void DestroyAllocatorAt0xa28(Obj020d6f0c*);
 void ConstructEntryManager020d6d18(Container020d6d18*);
 void ResetArrayAndEntry021823a4(char*);
-Container0203a54c* GetData02104b6c();
+Container0203a54c* GetData02104b6c_02039e70();
 void ProcessAllSubObjects0203a54c(Container0203a54c*);
 void ClearFirstTwoWords0209a338(Pair0209a338*);
 void ClearField00209a804(int*);
 void ResetAndInit_021f52a0(void*);
 void Clear12Bytes0206efc4(void*);
-void PushInputLogB(int);
+void PushInputLogB_020a1ef0(int);
 void InitAndDispatch_021f52f8(void*, void*);
 extern "C" int func_0202c540(void*);
 extern "C" void func_02046380(TextRenderer*);
@@ -93,13 +93,13 @@ void Clear12Bytes020e46c4(void*);
 void* SearchWithComparator0206f4f0(BinarySearchByComparatorStruct*, int);
 extern "C" Words021edf38 func_ov023_021ed804(Words021edf38, void*);
 void SetWords_021edf38_021edf38(void*, Words021edf38*);
-const char* CallFunc020e0434With02153694(int);
+const char* CallFunc020e0434With02153694_020e51cc(int);
 #if !defined(jpn)
 extern "C" void func_0204500c(TextRenderer*, const char*, int, int);
 #endif
 void ResetAndDispatchActorContext0209c6d8(void*, short);
 extern "C" int func_0202c508(void*);
-TagValueEntry020e385c* GetData02153660();
+TagValueEntry020e385c* GetData02153660_020e3808();
 void ResetTaggedEntryAndNotifyOverlay020e3994(TagValueEntry020e385c*, int, int);
 void RegisterTaggedEntryAndNotifyOverlay020e392c(TagValueEntry020e385c*, int, int);
 void SetEntryBitUnlessMatching020e39d4(TagValueEntry020e385c*, int, int, int);
@@ -119,7 +119,7 @@ extern "C" ARM int func_ov023_021edc08(CombatScreen* self) {
     GameResources* resources = func_ov017_0218b5b0();
     void* mode = func_0202ae18();
     TextRenderer* renderer = GetGlobalField0x1c020421a0();
-    OrBitsIntoField0(GetDataPtr02114e04_020d6c00(), 0x20000);
+    OrBitsIntoField0_020466e4(GetDataPtr02114e04_020d6c00(), 0x20000);
     EnqueueEventTag86_021c9ad4(self->battle_->event_);
     func_ov017_021a23b0(resources, self->battle_->event_);
     DispatchContextByState0209c678(&data_02109bf4, 0);
@@ -133,7 +133,7 @@ extern "C" ARM int func_ov023_021edc08(CombatScreen* self) {
         self->manager_ = 0;
     }
     ResetArrayAndEntry021823a4(self->entries_);
-    ProcessAllSubObjects0203a54c(GetData02104b6c());
+    ProcessAllSubObjects0203a54c(GetData02104b6c_02039e70());
     SafeAllocator* const allocator = GetAllocator(resources, 5);
     allocator->Reset();
     CombatWork* work = (CombatWork*)allocator->Allocate(sizeof(CombatWork));
@@ -158,7 +158,7 @@ extern "C" ARM int func_ov023_021edc08(CombatScreen* self) {
     ClearField00209a804(&work->fieldF0_);
     ResetAndInit_021f52a0(work->dispatch_);
     Clear12Bytes0206efc4(&work->words_);
-    PushInputLogB(1);
+    PushInputLogB_020a1ef0(1);
     InitAndDispatch_021f52f8(_ZZ17GetGlobal021ffefcvE1s.work_->dispatch_, allocator);
     if (func_0202c540(mode) && self->battle_->special_) {
 #if defined(jpn)
@@ -183,7 +183,7 @@ extern "C" ARM int func_ov023_021edc08(CombatScreen* self) {
             }
         }
         char message[256];
-        sprintf(message, CallFunc020e0434With02153694(200));
+        sprintf(message, CallFunc020e0434With02153694_020e51cc(200));
         func_0204500c(renderer, message, 1, 0xe3);
 
 #endif
@@ -191,7 +191,7 @@ extern "C" ARM int func_ov023_021edc08(CombatScreen* self) {
         ResetAndDispatchActorContext0209c6d8(&data_02109bf4, 0x36);
     }
     if (func_0202c508(mode) && self->battle_->type_ == 19) {
-        TagValueEntry020e385c* tags = GetData02153660();
+        TagValueEntry020e385c* tags = GetData02153660_020e3808();
         ResetTaggedEntryAndNotifyOverlay020e3994(tags, 1, -1);
         RegisterTaggedEntryAndNotifyOverlay020e392c(tags, 1, 0x71e8);
         SetEntryBitUnlessMatching020e39d4(tags, 0, 1, 0x71e8);

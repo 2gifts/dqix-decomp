@@ -10,25 +10,25 @@
 extern "C" void* func_02012fe4(void);
 extern "C" void* func_0202ae18(void);
 extern "C" void* func_0205ec34(void);
-void* GetFieldIfFlag4(char* obj);
+void* GetFieldIfFlag4_020100f8(char* obj);
 
 struct PointerField32c_ffc0
 {
     char padding0[0x32c];
     void* field_0x32c;
 };
-void* GetPointerAt0x32c(struct PointerField32c_ffc0* obj);
+void* GetPointerAt0x32c_0200ffc0(struct PointerField32c_ffc0* obj);
 
-void* GetField0x3f8Address(GameState*);
+void* GetField0x3f8Address_0200fd0c(GameState*);
 
 extern "C" void func_020da77c(void* target, int type, void* msg);
 
-void SetField0x21c(void* obj, short value);
+void SetField0x21c_020a2770(void* obj, short value);
 
-void SetBitsInField4(unsigned int* obj, unsigned int mask);
-void ClearBitsInField4(unsigned int* obj, unsigned int mask);
+void SetBitsInField4_0203b4d8(unsigned int* obj, unsigned int mask);
+void ClearBitsInField4_0203b4e8(unsigned int* obj, unsigned int mask);
 
-void StoreVec3AtField0x50(unsigned char* obj, int a, int b, int c);
+void StoreVec3AtField0x50_0203db34(unsigned char* obj, int a, int b, int c);
 
 extern "C" int func_0202c508(void* obj);
 extern "C" int func_0202c540(void* obj);
@@ -44,7 +44,7 @@ extern "C" int func_02018fbc(TerrainCtx02018fbc*, Vector3fix*);
 extern "C" void func_ov017_0219c598(int* srcVec3, short* srcAngle, int forceFlag);
 
 void* FindNodeByField0x2c0201b754(void* obj, int key);
-void ClearCombatantSlot(GameState*, int);
+void ClearCombatantSlot_0200fd48(GameState*, int);
 
 struct Obj0201b600;
 struct Elem0201b600;
@@ -118,10 +118,10 @@ extern "C" ARM void func_020a6aac(unsigned int* obj, int eventCode, int previous
     LightingManager::GetInstance();
     void* events = func_0202ae18();
     func_0205ec34();
-    EventController020a6aac* controller = (EventController020a6aac*)GetFieldIfFlag4((char*)state);
-    ActorView020a6aac* actor = (ActorView020a6aac*)GetPointerAt0x32c((struct PointerField32c_ffc0*)state);
+    EventController020a6aac* controller = (EventController020a6aac*)GetFieldIfFlag4_020100f8((char*)state);
+    ActorView020a6aac* actor = (ActorView020a6aac*)GetPointerAt0x32c_0200ffc0((struct PointerField32c_ffc0*)state);
     GameObject* unknown = state->GetUnknownGameObject();
-    MovementView020a6aac* movement = (MovementView020a6aac*)GetField0x3f8Address(state);
+    MovementView020a6aac* movement = (MovementView020a6aac*)GetField0x3f8Address_0200fd0c(state);
 
     if ((unsigned int)(eventCode - 0x170c) <= 3) {
         controller->transitionActive = 1;
@@ -132,7 +132,7 @@ extern "C" ARM void func_020a6aac(unsigned int* obj, int eventCode, int previous
     }
 
     if (eventCode == 0x2710) {
-        MovementView020a6aac* movementState = (MovementView020a6aac*)GetField0x3f8Address(state);
+        MovementView020a6aac* movementState = (MovementView020a6aac*)GetField0x3f8Address_0200fd0c(state);
         int flagMatch = 0;
         if (movementState->eventId == 0x25f1)
         {
@@ -148,18 +148,18 @@ extern "C" ARM void func_020a6aac(unsigned int* obj, int eventCode, int previous
             local.id = 0xc9;
             func_020da77c(&data_ov017_021d82fc, 1, &local);
         }
-        SetField0x21c(controller, 0xc9);
+        SetField0x21c_020a2770(controller, 0xc9);
         actor->object.DisableFlag(0x100);
         actor->object.MakeVisible();
         actor->scripted = 1;
         actor->object.SetScale(0xa0, 0xa0, 0xa0);
-        SetBitsInField4(obj, 0x10004);
+        SetBitsInField4_0203b4d8(obj, 0x10004);
         ZoneSavedActorState* saved = savedEvent->GetSavedActorState();
         actor->object.position_ = saved->position;
         saved = savedEvent->GetSavedActorState();
         actor->secondaryPosition = saved->position;
         int savedRotationY = savedEvent->savedActor_.rotationY;
-        StoreVec3AtField0x50((unsigned char*)actor, 0, savedRotationY, 0);
+        StoreVec3AtField0x50_0203db34((unsigned char*)actor, 0, savedRotationY, 0);
         if (func_0202c508(events) != 0 && flagMatch == 0) {
             savedEvent->savedActor_.active = 1;
             func_ov017_021d1a18(1, -1, 1, 0);
@@ -188,14 +188,14 @@ extern "C" ARM void func_020a6aac(unsigned int* obj, int eventCode, int previous
                     spawnPosition.y = func_02018fbc((TerrainCtx02018fbc*)savedEvent, &spawnPosition);
                     if (movement->busy == 0) {
                         unknown->obj3D_.position_ = spawnPosition;
-                        StoreVec3AtField0x50((unsigned char*)unknown, 0, node1->height, 0);
+                        StoreVec3AtField0x50_0203db34((unsigned char*)unknown, 0, node1->height, 0);
                         func_ov017_0219c598(&spawnPosition.x, &node1->height, 0);
                     }
                     savedEvent->savedActor_.nodeId = node1->id;
                     savedEvent->savedActor_.zoneId = (unsigned short)eventCode;
                 }
-                SetField0x21c(controller, unknown->obj3D_.unknown_4_);
-                ClearBitsInField4(obj, 0x10004);
+                SetField0x21c_020a2770(controller, unknown->obj3D_.unknown_4_);
+                ClearBitsInField4_0203b4e8(obj, 0x10004);
                 savedEvent->savedActor_.active = 0;
                 short savedEventId = (short)savedEvent->savedActor_.zoneId;
                 short savedNodeId = savedEvent->savedActor_.nodeId;
@@ -211,8 +211,8 @@ extern "C" ARM void func_020a6aac(unsigned int* obj, int eventCode, int previous
                         func_ov017_0219c598(&spawnPosition.x, &node2->height, 0);
                     }
                 }
-                SetField0x21c(controller, unknown->obj3D_.unknown_4_);
-                ClearBitsInField4(obj, 0x10004);
+                SetField0x21c_020a2770(controller, unknown->obj3D_.unknown_4_);
+                ClearBitsInField4_0203b4e8(obj, 0x10004);
             }
             unsigned short savedEventId = savedEvent->savedActor_.zoneId;
             if (eventCode == savedEventId) {
@@ -234,9 +234,9 @@ extern "C" ARM void func_020a6aac(unsigned int* obj, int eventCode, int previous
     } else if (eventCode == 0x170c) {
         if (previousCode == 0x2710) {
             GameObject* currentObject = state->GetUnknownGameObject();
-            SetField0x21c(controller, currentObject->obj3D_.unknown_4_);
-            ClearBitsInField4(obj, 0x10004);
-            ClearCombatantSlot(state, 0xc9);
+            SetField0x21c_020a2770(controller, currentObject->obj3D_.unknown_4_);
+            ClearBitsInField4_0203b4e8(obj, 0x10004);
+            ClearCombatantSlot_0200fd48(state, 0xc9);
             if (func_0202c540(events) != 0) {
                 if (savedEvent->savedActor_.active == 0) {
                     ApplyElementFlags0201b8c8((struct Obj0201b600*)savedEvent, 0, 1, 0);
@@ -273,8 +273,8 @@ extern "C" ARM void func_020a6aac(unsigned int* obj, int eventCode, int previous
             savedState->savedActor_.nodeId = 0;
             savedState->savedActor_.zoneId = (unsigned short)eventCode;
             short objectId = state->GetUnknownGameObject()->obj3D_.unknown_4_;
-            SetField0x21c(controller, objectId);
-            ClearBitsInField4(obj, 0x10004);
+            SetField0x21c_020a2770(controller, objectId);
+            ClearBitsInField4_0203b4e8(obj, 0x10004);
             struct Elem0201b600* firstSlot = FindElemByKeys((struct Obj0201b600*)savedState, 0, 4);
             if (firstSlot != 0)
             {
@@ -311,13 +311,13 @@ extern "C" ARM void func_020a6aac(unsigned int* obj, int eventCode, int previous
                 }
             }
         }
-        ClearCombatantSlot(state, 0xc9);
+        ClearCombatantSlot_0200fd48(state, 0xc9);
     } else {
         if (previousCode == 0x2710) {
-            ClearBitsInField4(obj, 0x10004);
-            ClearCombatantSlot(state, 0xc9);
+            ClearBitsInField4_0203b4e8(obj, 0x10004);
+            ClearCombatantSlot_0200fd48(state, 0xc9);
             short actorId = state->GetUnknownGameObject()->obj3D_.unknown_4_;
-            SetField0x21c(controller, actorId);
+            SetField0x21c_020a2770(controller, actorId);
             short savedEventId = (short)savedEvent->savedActor_.zoneId;
             short savedNodeId = savedEvent->savedActor_.nodeId;
             unsigned char flag2788 = savedEvent->savedActor_.active;

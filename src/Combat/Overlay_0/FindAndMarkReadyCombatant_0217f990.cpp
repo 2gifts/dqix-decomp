@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 int HasAnyFlags_021719f8_021719f8(int* obj);
-void* GetFieldAt0x150(unsigned char* obj);
+void* GetFieldAt0x150_02053c6c(unsigned char* obj);
 extern "C" ARM void* func_ov000_02161318(void* obj, int id);
 
 struct Entry0217f990 {
@@ -26,7 +26,7 @@ struct Entry0217f990 {
 // USA: func_ov000_0217f990  (semantic: FindAndMarkReadyCombatant_0217f990)
 extern "C" ARM int func_ov000_0217f990(char* obj) {
     GameState* bs = GameState::GetInstance();
-    unsigned char* field2a04 = (unsigned char*)GetPtrField0x2a04(bs);
+    unsigned char* field2a04 = (unsigned char*)GetPtrField0x2a04_02010828(bs);
     unsigned char limit = field2a04[0xf7c];
     int result = 0;
     unsigned char i;
@@ -46,7 +46,7 @@ extern "C" ARM int func_ov000_0217f990(char* obj) {
 #else
         enum { statusOffset = 0x94c };
 #endif
-        if (c != 0 && (signed char)(*(int*)((char*)GetFieldAt0x150((unsigned char*)c) + statusOffset)) != 5) continue;
+        if (c != 0 && (signed char)(*(int*)((char*)GetFieldAt0x150_02053c6c((unsigned char*)c) + statusOffset)) != 5) continue;
         *(int*)(obj + 0x17c) = idx;
         result = 1;
         break;

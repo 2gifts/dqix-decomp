@@ -60,7 +60,7 @@ extern "C" ARM void func_ov000_021604f0(struct CombatWork_021604f0* work) {
     if (!(work->flags & 0x800)) {
         func_ov000_02172720(work->field_3760);
     }
-    ClearTwoRegions02079f9c((char*)GetData02108e10());
+    ClearTwoRegions02079f9c((char*)GetData02108e10_020797dc());
     void* slots = func_02057924();
     for (int* p = data_ov000_02182fe0; *p >= 0; p++) {
         func_02057f00(slots, *p);

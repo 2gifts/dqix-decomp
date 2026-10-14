@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct Vec3i021c95ec {
@@ -27,7 +27,7 @@ struct Evt021c95ec {
 // USA: func_ov017_021c95ec
 extern "C" ARM void func_ov017_021c95ec(int id, int lowNibble, int unused, int kind, int highNibble,
                                         struct Vec3i021c95ec v, int field8, unsigned char flag6, unsigned char flag7) {
-    void* data = GetData02100044();
+    void* data = GetData02100044_0202ae24();
     struct Evt021c95ec evt;
     evt.lowNibble = lowNibble;
     evt.highNibble = highNibble;

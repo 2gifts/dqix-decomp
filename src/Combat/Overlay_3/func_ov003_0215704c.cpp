@@ -9,7 +9,7 @@ void func_ov003_02158480(void *);
 void _Z20ResetWithSub0208203cP11Obj0208203c(void *);
 void _Z31ResetIfFlagAndCategory_021538f4Pvi(void *, int);
 int _Z29GetArrayEntryByIndex_02156034Pv(void *);
-void *_Z10GetWord0x0Pi(void *);
+void *_Z19GetWord0x0_0200fb8cPi(void *);
 int _Z17IsAxisIntWithin16P18AxisFloats0203b5a0i(void *, int);
 int _Z31IsSubBrightnessTransitionActiveP13GameResources(void *);
 int func_ov003_021550dc(void *);
@@ -20,8 +20,8 @@ int func_ov003_02155208(void *);
 void _Z29ResetHandlesAndFlags_02153874Pv(void *);
 void func_ov003_02155580(void *, int);
 int func_ov003_02155618(void *);
-void *_Z25GetCombatantWithFlag0x100P9GameStatei(void *, int);
-void *_Z15GetFieldAt0x150Ph(void *);
+void *_Z34GetCombatantWithFlag0x100_0200ff1cP9GameStatei(void *, int);
+void *_Z24GetFieldAt0x150_02053c6cPh(void *);
 void *_Z29OffsetByIndexTimes16_02155e14ii(void *, int);
 void func_020de9a4(void *, void *, void *, unsigned int, void *, int);
 void _ZN13SafeAllocator5ResetEv(void *);
@@ -34,7 +34,7 @@ void func_ov003_0215582c(void *);
 int _Z23GetHeadNodeIdOrMinusOnePP16HeadNode02046b24(void *);
 int _ZNK8Object3D19HasAnimationStoppedEv(void *);
 int func_0202ae18(void);
-int _Z18CheckField0NonZeroPi(int);
+int _Z27CheckField0NonZero_0202b7d8Pi(int);
 void func_ov017_021c3fb4(int, int);
 void func_ov017_021c4418(int, int);
 void func_ov017_021cf078(int, int, int);
@@ -42,7 +42,7 @@ void func_ov017_021ccc34(int);
 void func_ov017_021cc730(int, int, int, int);
 void func_02083e28(void *, int);
 void func_ov003_02155740(void *);
-void *_Z17GetGlobal02109418v(void);
+void *_Z26GetGlobal02109418_02094d6cv(void);
 int func_ov003_02158754(void *);
 }
 
@@ -139,7 +139,7 @@ extern "C" ARM void func_ov003_0215704c(struct Ctrl0215704c *self) {
         if (o->f5d & 1) {
             ok = 0;
         }
-        void *res = _Z10GetWord0x0Pi(GameState::GetInstance());
+        void *res = _Z19GetWord0x0_0200fb8cPi(GameState::GetInstance());
         if (_Z17IsAxisIntWithin16P18AxisFloats0203b5a0i(res, 1) == 0) {
             ok = 0;
         }
@@ -176,7 +176,7 @@ extern "C" ARM void func_ov003_0215704c(struct Ctrl0215704c *self) {
         if (r != -1) {
             if (r == 1) {
                 self->cmd             = 0xc;
-                struct Cmb0215704c *c = (struct Cmb0215704c *) _Z25GetCombatantWithFlag0x100P9GameStatei(gs, self->f1f7);
+                struct Cmb0215704c *c = (struct Cmb0215704c *) _Z34GetCombatantWithFlag0x100_0200ff1cP9GameStatei(gs, self->f1f7);
                 if (c != 0) {
                     c->f130[8] = 0;
                 }
@@ -199,7 +199,7 @@ extern "C" ARM void func_ov003_0215704c(struct Ctrl0215704c *self) {
             _ZN13SafeAllocator5ResetEv((char *) self->alloc + 0x78);
             void *pm = GameState::GetInstance()->GetPartyMemberByIndex(self->f1f7);
             if (pm != 0) {
-                char *f = (char *) _Z15GetFieldAt0x150Ph(pm);
+                char *f = (char *) _Z24GetFieldAt0x150_02053c6cPh(pm);
                 if (f != 0) {
                     void *slot =
                         _Z29OffsetByIndexTimes16_02155e14ii(f + 0xa4 + 0x400, _Z29GetArrayEntryByIndex_02156034Pv(self));
@@ -235,19 +235,19 @@ extern "C" ARM void func_ov003_0215704c(struct Ctrl0215704c *self) {
             return;
         }
         self->f32c = 0;
-        if (_Z18CheckField0NonZeroPi(func_0202ae18()) != 0) {
+        if (_Z27CheckField0NonZero_0202b7d8Pi(func_0202ae18()) != 0) {
             func_ov017_021c3fb4(self->f1f7, 0);
             func_ov017_021c4418(self->f1f7, -1);
             func_ov017_021cf078(self->f1f7, (unsigned char) _Z29GetArrayEntryByIndex_02156034Pv(self), 0);
             func_ov017_021ccc34(self->f1f7);
             func_ov017_021cc730(self->f1f7, 1, 0, 0);
         }
-        void *c2 = _Z25GetCombatantWithFlag0x100P9GameStatei(gs, self->f1f7);
+        void *c2 = _Z34GetCombatantWithFlag0x100_0200ff1cP9GameStatei(gs, self->f1f7);
         if (c2 != 0) {
             func_02083e28(*(void **) ((char *) c2 + 0x150), 0);
         }
         func_ov003_02155740(self);
-        struct Glob0215704c *g = (struct Glob0215704c *) _Z17GetGlobal02109418v();
+        struct Glob0215704c *g = (struct Glob0215704c *) _Z26GetGlobal02109418_02094d6cv();
         struct Rec0215704c *rp = g->recs;
         unsigned char cnt      = g->count;
         int i;

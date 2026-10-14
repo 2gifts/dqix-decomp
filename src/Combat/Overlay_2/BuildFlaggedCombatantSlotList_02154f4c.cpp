@@ -7,14 +7,14 @@ struct Sub {
     unsigned char slots[5];
 };
 
-unsigned char CopyOutRegion0x571d(char* obj, void* dst);
+unsigned char CopyOutRegion0x571d_020114ec(char* obj, void* dst);
 extern "C" void func_ov002_02154c30(void* p);
 
 // USA: func_ov002_02154f4c
 ARM int BuildFlaggedCombatantSlotList_02154f4c(unsigned char* obj) {
     GameState* battle = GameState::GetInstance();
     unsigned char buf[8];
-    unsigned char n = CopyOutRegion0x571d((char*)battle, buf);
+    unsigned char n = CopyOutRegion0x571d_020114ec((char*)battle, buf);
     unsigned char count = 0;
     unsigned char i;
 

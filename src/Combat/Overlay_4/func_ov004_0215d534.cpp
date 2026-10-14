@@ -10,14 +10,14 @@ extern Data021707d8 data_ov004_021707d8;
 struct SearchStruct;
 int DispatchNodeIfType7_02156e2c(void* obj, int key);
 extern "C" SearchStruct* func_0202ae18(void);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 extern "C" int func_ov004_0215c0c0(void* obj);
 extern "C" Stat0215d534* func_ov004_02156ed0(void* obj, int key);
 void* GetEntryFor_021570a4(void* obj, int index);
 extern "C" int func_0202c508(SearchStruct* obj);
 void EnqueueEventTag184_021d3bbc(int a, int b, int c, int d);
 extern "C" void func_ov011_021848a0(void* obj, int val);
-int TestFlagBitAt0xe(SearchStruct* obj, int value);
+int TestFlagBitAt0xe_0202c578(SearchStruct* obj, int value);
 extern "C" void func_ov011_02184a40(void* obj, int val);
 
 // USA: func_ov004_0215d534
@@ -31,7 +31,7 @@ extern "C" ARM int func_ov004_0215d534(void* obj) {
     if (key < 0) return 0;
 
     SearchStruct* search = func_0202ae18();
-    if (!CheckField0NonZero((int*)search)) {
+    if (!CheckField0NonZero_0202b7d8((int*)search)) {
         func_ov004_0215c0c0(obj);
     } else {
         int slot = func_ov004_02156ed0(obj, 0x5b)->cur * 6 + key;
@@ -44,7 +44,7 @@ extern "C" ARM int func_ov004_0215d534(void* obj) {
             } else {
                 func_ov011_021848a0(obj, 0x2367);
             }
-        } else if (!TestFlagBitAt0xe(search, 0)) {
+        } else if (!TestFlagBitAt0xe_0202c578(search, 0)) {
             char* p = (char*)GameState::GetInstance() + stateOffset;
             *(unsigned short*)(p + 0x5d00 + 0xc) &= ~0xe000;
             EnqueueEventTag184_021d3bbc(slot, data_ov004_021707d8.battle->count, 3, 0);

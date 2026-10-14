@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-unsigned int SetData020f2284();
+unsigned int SetData020f2284_020c7dcc();
 
 struct MemoryRegionState {
     int initialized;
@@ -18,7 +18,7 @@ extern "C" ARM unsigned int func_020c862c(unsigned int mode) {
         return 0x022a3200;
 #endif
     case 2: {
-        if (data_0211155c.optionalRegionEnabled == 0 || (SetData020f2284() & 3) == 1) return 0;
+        if (data_0211155c.optionalRegionEnabled == 0 || (SetData020f2284_020c7dcc() & 3) == 1) return 0;
         return 0x023e0000;
     }
     case 3:

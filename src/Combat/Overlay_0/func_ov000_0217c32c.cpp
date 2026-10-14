@@ -35,7 +35,7 @@ struct EquipSlot0217c32c* GetActiveSub_02054000(struct Outer_02054000* p);
 
 struct Field150Holder02052e14;
 short* GetField150Ptr0x488(struct Field150Holder02052e14* obj);
-void* GetFieldAt0x150(unsigned char* obj);
+void* GetFieldAt0x150_02053c6c(unsigned char* obj);
 
 struct Pair0209a338;
 void ClearFirstTwoWords0209a338(struct Pair0209a338* p);
@@ -82,7 +82,7 @@ struct Menu0217c32c {
 
 // USA: func_ov000_0217c32c
 extern "C" ARM void func_ov000_0217c32c(struct Menu0217c32c* menu) {
-    struct Outer_02054000* c = (struct Outer_02054000*)GetCombatantWithFlag0x100(GameState::GetInstance(), menu->combatantId);
+    struct Outer_02054000* c = (struct Outer_02054000*)GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), menu->combatantId);
     if (c == NULL) {
         return;
     }
@@ -97,7 +97,7 @@ extern "C" ARM void func_ov000_0217c32c(struct Menu0217c32c* menu) {
             shield = NULL;
         }
     }
-    if (GetFieldAt0x150((unsigned char*)c) == NULL) {
+    if (GetFieldAt0x150_02053c6c((unsigned char*)c) == NULL) {
         return;
     }
     memset(menu->usable, 0, sizeof(menu->usable));

@@ -10,13 +10,13 @@ struct Cont0207fdf0;
 struct Obj0205eaa0;
 struct Obj0208203c;
 
-void* GetPtrField0x2a04(GameState* gs);
+void* GetPtrField0x2a04_02010828(GameState* gs);
 void CallFunc0204c804OnNonMatchingKey(struct Cont0207fdf0* obj, int key);
 extern "C" void func_ov003_021749c0(char* base);
 short FindMappedMemberId02080468(void* obj, int id);
 extern "C" void func_ov003_02177820(void* self);
 extern "C" void func_ov003_02177938(void* self);
-void SetElementFlag0x40(struct Obj2081* obj, int id, int value);
+void SetElementFlag0x40_02081ea4(struct Obj2081* obj, int id, int value);
 void SetEntryLowNibbleAndElement02080c68(void* obj, int id, int value);
 void ResetWithSub0208203c(struct Obj0208203c* obj);
 extern "C" int func_ov003_021765b4(void* self);
@@ -59,7 +59,7 @@ struct Menu_0217a4ac {
 
 // USA: func_ov003_0217a4ac
 extern "C" ARM void func_ov003_0217a4ac(struct Menu_0217a4ac* self) {
-    GetPtrField0x2a04(GameState::GetInstance());
+    GetPtrField0x2a04_02010828(GameState::GetInstance());
     struct Obj2081* menu = self->menu;
     if (self->step == 0) {
         self->member1014 = 0;
@@ -90,7 +90,7 @@ extern "C" ARM void func_ov003_0217a4ac(struct Menu_0217a4ac* self) {
         menu->selected = self->member1010;
         func_ov003_02177820(self);
         func_ov003_02177938(self);
-        SetElementFlag0x40(menu, self->key, 0);
+        SetElementFlag0x40_02081ea4(menu, self->key, 0);
         SetEntryLowNibbleAndElement02080c68(menu, self->key, 0);
         ResetWithSub0208203c((struct Obj0208203c*)self->repeat);
         self->cursor = 0;

@@ -2,7 +2,7 @@
 #include "Graphics/LightingManager.h"
 
 extern "C" ARM void* func_0205ec34(void);
-int TestBitInByteArray(int unused, unsigned char* arr, int index);
+int TestBitInByteArray_0206dfb0(int unused, unsigned char* arr, int index);
 
 struct Word0209cc3c {
     unsigned int id : 16;
@@ -22,7 +22,7 @@ extern "C" ARM int func_0209cc3c(struct Obj0209cc3c* obj, unsigned short id) {
     for (i = 0; i < obj->count; i++) {
         struct Word0209cc3c* w = &obj->words[i];
         if (w->id != id) continue;
-        if (!TestBitInByteArray((int)self, (unsigned char*)self + 0x8c, w->field22)) continue;
+        if (!TestBitInByteArray_0206dfb0((int)self, (unsigned char*)self + 0x8c, w->field22)) continue;
         if (!w->flag31 || data->field98 == 0) return w->field16;
     }
     return -1;

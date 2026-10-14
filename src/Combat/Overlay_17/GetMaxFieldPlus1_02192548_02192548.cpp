@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-GameObject* GetCombatantWithFlag0x1000(GameState* battleStruct, int combatantId);
+GameObject* GetCombatantWithFlag0x1000_0200ff58(GameState* battleStruct, int combatantId);
 
 struct CombatantSequenceView {
 #if defined(jpn)
@@ -17,7 +17,7 @@ ARM int GetMaxFieldPlus1_02192548_02192548(void) {
     GameState* battle = GameState::GetInstance();
     int maximumSequence = 0;
     for (int partyIndex = 1; partyIndex < 4; ++partyIndex) {
-        GameObject* member = GetCombatantWithFlag0x1000(battle, partyIndex);
+        GameObject* member = GetCombatantWithFlag0x1000_0200ff58(battle, partyIndex);
         if (member != NULL) {
             unsigned char sequence = ((CombatantSequenceView*)member)->sequence;
             if (maximumSequence < sequence) maximumSequence = sequence;

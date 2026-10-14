@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void EncodeSignFlaggedHalfword(short* out, int value);
+void EncodeSignFlaggedHalfword_020c39a0(short* out, int value);
 
 struct Brightness0203b540 {
     char pad0[0xc];
@@ -11,6 +11,6 @@ struct Brightness0203b540 {
 
 // USA: func_0203b540
 ARM void SetBrightnessRegisters0203b540(struct Brightness0203b540* obj) {
-    EncodeSignFlaggedHalfword((short*)0x400006c, (int)obj->fieldC);
-    EncodeSignFlaggedHalfword((short*)0x400106c, (int)obj->field18);
+    EncodeSignFlaggedHalfword_020c39a0((short*)0x400006c, (int)obj->fieldC);
+    EncodeSignFlaggedHalfword_020c39a0((short*)0x400106c, (int)obj->field18);
 }

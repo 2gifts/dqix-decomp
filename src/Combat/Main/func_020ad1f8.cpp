@@ -5,7 +5,7 @@
 extern "C" void func_0202ae18();
 extern "C" void func_0201bd04(void* obj, int a, int b);
 extern "C" void func_0201bd3c(void* obj, int a, int b);
-int GetField5cb0Value(char* obj);
+int GetField5cb0Value_0201079c(char* obj);
 struct Fields020407b4;
 void SetFields0x44(struct Fields020407b4* obj, int a, int b, int c);
 
@@ -64,7 +64,7 @@ extern "C" ARM void func_020ad1f8(struct Obj020ad1f8* obj) {
         }
         return;
     } else if (obj->field0 == 0x1130) {
-        int v = GetField5cb0Value((char*)battle);
+        int v = GetField5cb0Value_0201079c((char*)battle);
         if (obj->sub.state == 5 || v >= 0x13) {
             func_0201bd04(obj, 0x17, 0);
             func_0201bd04(obj, 1, 0);

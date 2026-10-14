@@ -8,7 +8,7 @@
 #include "GameState/Field3b0.h"
 
 void AdvanceActor020a20d8(void* actor);
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 extern unsigned short data_02114e30;
 
 struct Struct021931b4;
@@ -42,7 +42,7 @@ extern "C" ARM void func_ov015_02190d7c(struct S02190d7c* obj) {
     if (bs == 0) {
         return;
     }
-    void* f3b0 = GetField0x3b0Value(bs);
+    void* f3b0 = GetField0x3b0Value_020100bc(bs);
     if (f3b0 != 0) {
         AdvanceActor020a20d8(f3b0);
     }
@@ -53,7 +53,7 @@ extern "C" ARM void func_ov015_02190d7c(struct S02190d7c* obj) {
         node = node->next;
     }
 
-    if (!TestFlag0SetAndFlag1Clear(&data_02114e30, 4)) {
+    if (!TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 4)) {
         return;
     }
 

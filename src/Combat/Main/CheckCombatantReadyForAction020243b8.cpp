@@ -8,7 +8,7 @@ ARM int CheckCombatantReadyForAction020243b8(void* unused, int combatantId) {
     if (combatantId < 0) {
         return 1;
     }
-    GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), combatantId);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), combatantId);
     if (combatant == NULL) {
         return 1;
     }

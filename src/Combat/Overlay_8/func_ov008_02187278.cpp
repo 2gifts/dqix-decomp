@@ -110,8 +110,8 @@ struct GameState {
 struct Container020e0310;
 
 void* GetGlobalField0x1c020421a0();
-void AppendPaletteTag(char* text, int color);
-void AppendYTag(char* text, int y);
+void AppendPaletteTag_02041e70(char* text, int color);
+void AppendYTag_02041a5c(char* text, int y);
 const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
 void AppendString02042058(char* text, const char* append);
 
@@ -123,9 +123,9 @@ int sprintf(char* buffer, const char* format, ...);
 #if defined(jpn)
 struct StoreStruct;
 extern "C" void func_02046380(void*);
-void StoreInArray0x8b0(StoreStruct*, int, int);
-void SetByteInRange(unsigned char*, int, unsigned char);
-void SetByteAtIndex(unsigned char*, int, unsigned char);
+void StoreInArray0x8b0_020465c0(StoreStruct*, int, int);
+void SetByteInRange_020465f0(unsigned char*, int, unsigned char);
+void SetByteAtIndex_020465d8(unsigned char*, int, unsigned char);
 extern "C" void func_020474a8(void*, int, const char*, char*);
 #endif
 
@@ -175,19 +175,19 @@ extern "C" ARM void func_ov008_02187278(BattleRecords* self, char* text, int ind
     char buffer[0x40];
     __clear(buffer, sizeof(buffer));
     func_02046380(messages);
-    StoreInArray0x8b0((StoreStruct*)messages, 0, time->hours);
-    SetByteInRange((unsigned char*)messages, 0, 4);
-    SetByteAtIndex((unsigned char*)messages, 0, 1);
-    StoreInArray0x8b0((StoreStruct*)messages, 1, time->minutes);
-    SetByteInRange((unsigned char*)messages, 1, 2);
-    SetByteAtIndex((unsigned char*)messages, 1, 1);
+    StoreInArray0x8b0_020465c0((StoreStruct*)messages, 0, time->hours);
+    SetByteInRange_020465f0((unsigned char*)messages, 0, 4);
+    SetByteAtIndex_020465d8((unsigned char*)messages, 0, 1);
+    StoreInArray0x8b0_020465c0((StoreStruct*)messages, 1, time->minutes);
+    SetByteInRange_020465f0((unsigned char*)messages, 1, 2);
+    SetByteAtIndex_020465d8((unsigned char*)messages, 1, 1);
     func_020474a8(messages, 10, GetFieldByKey020e0434((Container020e0310*)&self->texts_, 0x6e), buffer);
-    AppendPaletteTag(text, 0xe);
+    AppendPaletteTag_02041e70(text, 0xe);
     AppendString02042058(text, buffer);
 #else
     GetGlobalField0x1c020421a0();
-    AppendPaletteTag(text, 0xe);
-    AppendYTag(text, 2);
+    AppendPaletteTag_02041e70(text, 0xe);
+    AppendYTag_02041a5c(text, 2);
     char buffer[0x40];
     __clear(buffer, sizeof(buffer));
     const char* format = GetFieldByKey020e0434((Container020e0310*)&self->texts_, 0x6e);

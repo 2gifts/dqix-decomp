@@ -15,7 +15,7 @@ enum { kRegion960 = 0x960 };
 
 void* GetGlobalField0x1c020421a0(void);
 struct Struct_0205d81c;
-void SetElementFieldC2(Struct_0205d81c*, int, int);
+void SetElementFieldC2_0205deb4(Struct_0205d81c*, int, int);
 struct Container020e0310;
 void* GetFieldByKey020e0434(Container020e0310*, int);
 extern "C" void func_ov003_02159250(void*, void*);
@@ -26,11 +26,11 @@ void ResetAndApply0215be20(void*);
 int StepStateMachine0215bd34(void*);
 extern "C" void func_ov003_0215c01c(void*, int, int);
 extern "C" void* memset(void*, int, unsigned int);
-unsigned char* GetFieldAt0x150(unsigned char*);
+unsigned char* GetFieldAt0x150_02053c6c(unsigned char*);
 extern "C" int _s32_div_f(int, int);
 struct StoreStruct;
-void StoreInArray0x8b0(StoreStruct*, int, int);
-void SetByteInRange(unsigned char*, int, unsigned char);
+void StoreInArray0x8b0_020465c0(StoreStruct*, int, int);
+void SetByteInRange_020465f0(unsigned char*, int, unsigned char);
 void InitObjFromCombatantId020e4bf4(void*, int);
 struct Obj02046574;
 void SetIndexedName02046574(Obj02046574*, int, char*);
@@ -40,12 +40,12 @@ struct Struct0209c830;
 void SetValueAndActivate0209c830(Struct0209c830*, int);
 int IsAnimationActive0209ca2c(void*);
 extern "C" void func_02048150(void*, int, int);
-void TryClearFlags0x130(unsigned char*, unsigned short);
-void* GetPtrField0x2a04(GameState*);
+void TryClearFlags0x130_02048418(unsigned char*, unsigned short);
+void* GetPtrField0x2a04_02010828(GameState*);
 extern "C" void func_0207c378(void*, short, int, int);
 extern "C" void func_02052d7c(void*, signed char, int);
 extern "C" void* func_0202ae18(void);
-int CheckField0NonZero(int*);
+int CheckField0NonZero_0202b7d8(int*);
 extern "C" void func_ov017_021c3fb4(int, int);
 extern "C" void func_ov017_021c4418(int, int);
 extern "C" void func_ov017_0218f5a4(void*, int, int, int, int);
@@ -88,9 +88,9 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
     unsigned char state = *(unsigned char*)(s + 0x580);
 
     if (state == 0) {
-        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 0, 0);
-        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 1, 1);
-        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 2, 0);
+        SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 0, 0);
+        SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 1, 1);
+        SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 2, 0);
         func_ov003_02159250(self,
             GetFieldByKey020e0434((Container020e0310*)(s + 0x64), (short)p2));
         *(unsigned char*)(s + 0x580) = *(unsigned char*)(s + 0x580) + 1;
@@ -119,8 +119,8 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
             func_ov003_0215c01c(self, 2, 1);
             *(unsigned char*)(s + 0x5a1) = (unsigned char)r;
             unsigned char* combatant =
-                (unsigned char*)(void*)GetCombatantWithFlag0x100(game, *(unsigned char*)(s + *(signed char*)(s + 0x5a1) + 0x591));
-            unsigned char* sub = GetFieldAt0x150(combatant);
+                (unsigned char*)(void*)GetCombatantWithFlag0x100_0200ff1c(game, *(unsigned char*)(s + *(signed char*)(s + 0x5a1) + 0x591));
+            unsigned char* sub = GetFieldAt0x150_02053c6c(combatant);
             int x = *(int*)(sub + 0x950);
             *(int*)(s + 0x5a4) = *(int*)(combatant + 0x134);
             *(int*)(s + 0x5a8) = *(int*)(*(int**)(combatant + 0x130));
@@ -147,8 +147,8 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
                 }
             }
             if (flag != 0) {
-                StoreInArray0x8b0((StoreStruct*)g, 0, *(int*)(s + 0x5ac));
-                SetByteInRange(g, 0, 0);
+                StoreInArray0x8b0_020465c0((StoreStruct*)g, 0, *(int*)(s + 0x5ac));
+                SetByteInRange_020465f0(g, 0, 0);
                 memset(*(void**)(s + 0x7c), 0, kRegion960);
                 AppendFieldTwice_02159290(self, (unsigned short)0x425, 0x42e);
                 func_ov003_02159250(self, *(void**)(s + 0x7c));
@@ -170,9 +170,9 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
     if (state == 3) {
         if (*(int*)(g + kRegion9a0) != 3) return;
         int r = func_ov003_0215bf18(self, 0);
-        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 0, 0);
-        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 1, 1);
-        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 2, 1);
+        SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 0, 0);
+        SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 1, 1);
+        SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 2, 1);
         if (r == -1) return;
         if (r == -2 || r == 1) {
             memset(*(void**)(s + 0x7c), 0, kRegion960);
@@ -196,9 +196,9 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
                 *(unsigned char*)(s + 0x580) = *(unsigned char*)(s + 0x580) + 1;
             }
         }
-        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 0, 0);
-        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 1, 1);
-        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 2, 0);
+        SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 0, 0);
+        SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 1, 1);
+        SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 2, 0);
     }
 
     if (state == 4) {
@@ -213,7 +213,7 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
         }
         if (IsAnimationActive0209ca2c(&data_02109bf4) != 0) return;
         int cid = *(unsigned char*)(s + *(signed char*)(s + 0x5a1) + 0x591);
-        unsigned char* combatant = (unsigned char*)(void*)GetCombatantWithFlag0x100(game, cid);
+        unsigned char* combatant = (unsigned char*)(void*)GetCombatantWithFlag0x100_0200ff1c(game, cid);
         switch (p2) {
         case 0x406: {
             func_02048150(combatant, 0, 1);
@@ -224,11 +224,11 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
             break;
         }
         case 0x410:
-            TryClearFlags0x130((unsigned char*)combatant, 2);
+            TryClearFlags0x130_02048418((unsigned char*)combatant, 2);
             break;
         case 0x406 + 20: {
-            TryClearFlags0x130((unsigned char*)combatant, 4);
-            unsigned char* c4 = (unsigned char*)GetPtrField0x2a04(game);
+            TryClearFlags0x130_02048418((unsigned char*)combatant, 4);
+            unsigned char* c4 = (unsigned char*)GetPtrField0x2a04_02010828(game);
             int flag = 0;
             for (int i = 0; i < 0xb; i++) {
                 if (i == 2 || i == 3 || i == 4) continue;
@@ -244,7 +244,7 @@ extern "C" ARM void func_ov003_0215a740(void* self, int p1, int p2) {
                 flag = 1;
             }
             if (flag != 0) {
-                if (CheckField0NonZero((int*)func_0202ae18()) != 0) {
+                if (CheckField0NonZero_0202b7d8((int*)func_0202ae18()) != 0) {
                     func_ov017_021c3fb4(cid, 1);
                     func_ov017_021c4418(cid, -1);
                 }

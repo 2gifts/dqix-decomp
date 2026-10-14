@@ -2,7 +2,7 @@
 
 unsigned int DisableIRQInterrupts(void);
 unsigned int SetIRQInterruptState(int state);
-int IssueBattleCommandSlot6(int fn);
+int IssueBattleCommandSlot6_020d4f3c(int fn);
 extern "C" void func_ov031_0220da1c(int a);
 extern "C" void func_ov031_0220dc40(void);
 extern int data_ov031_0224e53c;
@@ -30,7 +30,7 @@ L_default:
     return 1;
 
 L_slot: {
-    int r = IssueBattleCommandSlot6((int)func_ov031_0220dc40);
+    int r = IssueBattleCommandSlot6_020d4f3c((int)func_ov031_0220dc40);
     switch (r) {
     case 2:
         func_ov031_0220da1c(4);

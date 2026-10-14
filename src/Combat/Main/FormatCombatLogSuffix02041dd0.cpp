@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-int StringLength(const char* s);
+int StringLength_020d2ff0(const char* s);
 extern "C" int sprintf(void* dest, const void* fmt);
 
 extern char data_020eff4d;
@@ -10,7 +10,7 @@ extern char data_020eff6b;
 
 // USA: func_02041dd0
 ARM int FormatCombatLogSuffix02041dd0(char* buf, int index) {
-    char* p = buf + StringLength(buf);
+    char* p = buf + StringLength_020d2ff0(buf);
     switch (index) {
         case 0:
             p += sprintf(p, &data_020eff4d);

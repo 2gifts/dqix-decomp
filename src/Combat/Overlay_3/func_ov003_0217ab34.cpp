@@ -52,19 +52,19 @@ struct Menu_0217ab34 {
     unsigned char down;
 };
 
-void* GetPtrField0x2a04(GameState* gs);
+void* GetPtrField0x2a04_02010828(GameState* gs);
 short FindMappedMemberId02080468(void* obj, int id);
-void SetElementFlag0x40(struct Obj2081* obj, int id, int value);
+void SetElementFlag0x40_02081ea4(struct Obj2081* obj, int id, int value);
 void SetEntryLowNibbleAndElement02080c68(void* obj, int id, int value);
 void ResetWithSub0208203c(struct Obj0208203c* obj);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 struct Obj02179e18* FindElementByKey020dedd0(struct Container020dedd0* c, int key);
 void CallFunc0204c804OnNonMatchingKey(struct Cont0207fdf0* obj, int key);
-void CallFunc0204c804OnMatchingKey(struct Obj2081* obj, int key);
+void CallFunc0204c804OnMatchingKey_0207fdcc(struct Obj2081* obj, int key);
 unsigned short GetInnerShort_0217b200(void** obj);
 int SumKeyedLookups02086bf4(char* table, int key);
 int ComputeTimeRemaining_02179e18(struct Obj02179e18* elem);
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 void RefillAndResetEntry_02175d78(char* obj);
 
 extern "C" int func_ov003_02179f34(void* self);
@@ -89,7 +89,7 @@ extern unsigned short data_02114e30;
 
 // USA: func_ov003_0217ab34
 extern "C" ARM void func_ov003_0217ab34(struct Menu_0217ab34* self) {
-    char* data = (char*)GetPtrField0x2a04(GameState::GetInstance());
+    char* data = (char*)GetPtrField0x2a04_02010828(GameState::GetInstance());
     struct Obj2081* menu = self->menu;
 
     if (self->step == 0) {
@@ -108,7 +108,7 @@ extern "C" ARM void func_ov003_0217ab34(struct Menu_0217ab34* self) {
         self->sel = table->vals[(short)(self->member1014 * 8 + idx)];
         self->count = 1;
         func_ov003_02177dd4(self);
-        SetElementFlag0x40(menu, self->key, 0);
+        SetElementFlag0x40_02081ea4(menu, self->key, 0);
         SetEntryLowNibbleAndElement02080c68(menu, self->key, 0);
         ResetWithSub0208203c((struct Obj0208203c*)self->repeat);
         self->cursor = 0;
@@ -226,7 +226,7 @@ extern "C" ARM void func_ov003_0217ab34(struct Menu_0217ab34* self) {
             func_ov003_0217726c(self);
         }
         int pressed = func_ov003_021782a0(self);
-        if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x401) != 0 || pressed == 1) {
+        if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x401) != 0 || pressed == 1) {
             DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
             CallFunc0204c804OnNonMatchingKey((struct Cont0207fdf0*)menu, 0);
             self->nextState = 0xd;
@@ -240,9 +240,9 @@ extern "C" ARM void func_ov003_0217ab34(struct Menu_0217ab34* self) {
                 self->nextState = 0x11;
                 self->step = 4;
             }
-        } else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2) != 0 || pressed == -1) {
-            CallFunc0204c804OnMatchingKey(menu, 9);
-            CallFunc0204c804OnMatchingKey(menu, 10);
+        } else if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 2) != 0 || pressed == -1) {
+            CallFunc0204c804OnMatchingKey_0207fdcc(menu, 9);
+            CallFunc0204c804OnMatchingKey_0207fdcc(menu, 10);
             ResetWithSub0208203c((struct Obj0208203c*)self->repeat);
             self->step = 0;
         }

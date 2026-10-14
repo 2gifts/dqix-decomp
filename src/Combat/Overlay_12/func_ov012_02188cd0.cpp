@@ -94,7 +94,7 @@ extern "C" void func_ov023_021e6e60(ProfileEditor02188cd0* self);
 void SetupBattleTag0218aabc(char* self);
 extern "C" void func_ov003_0215f41c(void* keyboard, const char* text);
 extern "C" void func_ov012_0218ab34(ProfileEditor02188cd0* self, char* text, int hidden);
-int TestFlag0SetAndFlag1Clear(unsigned short* pad, int buttons);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* pad, int buttons);
 extern "C" int func_0205d97c(void* window);
 extern "C" int func_ov003_0215f000(void* keyboard, int input);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0* sound, int effect, int a);
@@ -105,7 +105,7 @@ void SetElementFlag0x20ByKey0205def8(Struct_0205def8* window, int a, int b);
 extern "C" void func_020426bc(const char* text, char* codes, int a);
 extern "C" void func_ov012_0218943c(ProfileEditor02188cd0* self);
 Messages02188cd0* GetGlobalField0x1c020421a0();
-const char* FindEntryByKey(TableA68* texts, int id);
+const char* FindEntryByKey_02072a68(TableA68* texts, int id);
 extern "C" void func_0204500c(Messages02188cd0* messages, const char* text, int a, int b);
 
 extern "C" const char data_ov012_0218b2ea[];
@@ -190,7 +190,7 @@ extern "C" ARM void func_ov012_02188cd0(ProfileEditor02188cd0* self)
     }
     else if (self->step_ == 4)
     {
-        if ((TestFlag0SetAndFlag1Clear(data_02114e30, 2) || func_0205d97c(self->window_) == 2) && *self->message_ == 0)
+        if ((TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 2) || func_0205d97c(self->window_) == 2) && *self->message_ == 0)
         {
             ResetEntryList0205d6a0((Entry_0205d6a0*)self->window_, 1);
             self->step_++;
@@ -272,7 +272,7 @@ extern "C" ARM void func_ov012_02188cd0(ProfileEditor02188cd0* self)
     else if (self->step_ == 10)
     {
         Messages02188cd0* messages = GetGlobalField0x1c020421a0();
-        func_0204500c(messages, FindEntryByKey((TableA68*)self->strings_, 501), 0, 0xe3);
+        func_0204500c(messages, FindEntryByKey_02072a68((TableA68*)self->strings_, 501), 0, 0xe3);
         messages->busy_ = 1;
         self->step_++;
         return;

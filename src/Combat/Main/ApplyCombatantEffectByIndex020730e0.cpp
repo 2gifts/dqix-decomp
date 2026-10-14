@@ -7,20 +7,19 @@ enum { RegionalOffset = 0x154 };
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-int GetField0x3acValue(GameState* battleStruct);
-int GetFieldAt0x150(unsigned char* obj);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 
 struct Field150Holder02052e2c;
 short* GetField150Ptr0x488_02052e2c(struct Field150Holder02052e2c* obj);
 
-unsigned short (*GetVariantShortTable02109928(void))[2];
+unsigned short (*GetVariantShortTable02109928_02099cac(void))[2];
 
 struct Container02083554;
 void* FindEntryByShortField02083554(struct Container02083554* c, int id);
 
 struct Obj020de2a4;
 int GetNibbleField020de2a4(struct Obj020de2a4* obj, int a, int b);
-
 
 extern "C" void func_02072afc(int id, int* arr, short* arr2);
 extern "C" void func_02099d34(void* obj, int a, int b, int c);
@@ -54,21 +53,21 @@ ARM void ApplyCombatantEffectByIndex020730e0(int id, int index) {
     short bufB[12];
 
     if (id < 0) {
-        id = GetField0x3acValue(bs);
+        id = GetField0x3acValue_020100a8(bs);
     }
 
-    combatant = GetCombatantWithFlag0x100(bs, id);
+    combatant = GetCombatantWithFlag0x100_0200ff1c(bs, id);
     if (!combatant || *(int*)((char*)combatant + RegionalOffset) == 0) {
         return;
     }
 
-    val150 = GetFieldAt0x150((unsigned char*)combatant);
+    val150 = GetFieldAt0x150_02053c6c((unsigned char*)combatant);
     if (val150 == 0) {
         return;
     }
 
     table = (struct TableEntry020730e0*)GetField150Ptr0x488_02052e2c((struct Field150Holder02052e2c*)combatant);
-    GetVariantShortTable02109928();
+    GetVariantShortTable02109928_02099cac();
 
     func_02072afc(id, bufA, bufB);
     if (bufB[index] < 0) {

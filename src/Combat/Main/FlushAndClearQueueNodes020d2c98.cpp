@@ -14,7 +14,6 @@ struct QueueObj020d2c98 {
 };
 
 // USA: func_020d2c98
-// Kept as extern "C" func_020d2c98: PostRangeEvent0x20 and PrepareAndClearList020be4d4 reference this symbol.
 extern "C" ARM void func_020d2c98(int a) {
     struct QueueObj020d2c98* obj = (struct QueueObj020d2c98*)a;
     struct QueueNode020d2c98* node;

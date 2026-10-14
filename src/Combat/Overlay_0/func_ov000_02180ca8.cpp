@@ -78,7 +78,7 @@ extern "C" int func_ov000_0217fe30(State02180ca8*);
 extern "C" void func_0205ac40(void*, void*);
 int HasAnyFlags_021719f8_021719f8(int*);
 int GetHPCategory02174e34(int, int);
-Struct0203c1c8* GetSlotSubField0x68(void*, int);
+Struct0203c1c8* GetSlotSubField0x68_ov000_02174e1c(void*, int);
 extern "C" int func_ov000_02171ffc(Action02180ca8*);
 void AdjustAndDispatchEntry0203c1c8(Struct0203c1c8*);
 void* GetEntryByIndexStride0x10(EntryList0204af14*, unsigned int);
@@ -104,7 +104,7 @@ extern "C" ARM void func_ov000_02180ca8(State02180ca8* self, Action02180ca8* act
     int actorId = action->actorId;
     tileX = x >> 3;
     tileY = y >> 3;
-    GameObject* actor = GetCombatantWithFlag0x100(GameState::GetInstance(), actorId);
+    GameObject* actor = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), actorId);
     if (func_ov000_0217fe30(self) && actor && action->amount && ((Actor02180ca8*)actor)->stats->special)  {
         DisplayEntry02180ca8* display = &self->displayEntries[30];
         display->x = 0;
@@ -147,7 +147,7 @@ extern "C" ARM void func_ov000_02180ca8(State02180ca8* self, Action02180ca8* act
             entry = &self->entries[displayIndex];
         }
         if (ValidSlot(slot))  {
-            entry = GetSlotSubField0x68(self, slot);
+            entry = GetSlotSubField0x68_ov000_02174e1c(self, slot);
         }
         switch (func_ov000_02171ffc(action))  {
             case 3:

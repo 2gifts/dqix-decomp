@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_0201bf98
-ARM void SetOrClearBit(unsigned char* obj, int bit, int set) {
+ARM void SetOrClearBit_0201bf98(unsigned char* obj, int bit, int set) {
     if (set) {
 #if defined(jpn)
         obj[0x2784] |= (1 << bit);

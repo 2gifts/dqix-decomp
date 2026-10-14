@@ -23,7 +23,7 @@ enum { kRegionValue468_290 = 0x468 };
 #endif
 
 void* GetDataPtr02114e04_020d6c00(void);
-void OrBitsIntoField0(unsigned int* word, unsigned int bits);
+void OrBitsIntoField0_020466e4(unsigned int* word, unsigned int bits);
 void ApplyElementEffect02161438(void* obj);
 
 struct View02160cf8 {
@@ -58,7 +58,7 @@ extern "C" ARM int func_ov003_02160cf8(struct Self02160cf8* self) {
 		self->state++;
 	} else if (self->state == 1) {
 		if (IsSubBrightnessTransitionActive(res) == 0) {
-			OrBitsIntoField0((unsigned int*)dataPtr, 1);
+			OrBitsIntoField0_020466e4((unsigned int*)dataPtr, 1);
 			self->alloc23c.Reset();
 			func_ov003_021672e4(self->view, 0, -1);
 			self->view->field0 = self->field398;

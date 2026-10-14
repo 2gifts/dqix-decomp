@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 extern "C" int func_ov000_0215eb1c(void* p0, short* arr, int count, int flag);
-GameObject* GetCombatantWithFlag0x400(GameState* battleStruct, int combatantId);
+GameObject* GetCombatantWithFlag0x400_0200fea4(GameState* battleStruct, int combatantId);
 extern short data_ov000_02182c44[8];
 
 struct ShortBlob8_0215fc8c { short v[8]; };
@@ -18,7 +18,7 @@ ARM int FindCombatantWithValue_0215fc8c(void* p0, int targetVal) {
     while (i < count) {
         short id = localArray[i];
         GameState* bs = GameState::GetInstance();
-        GameObject* c = GetCombatantWithFlag0x400(bs, id);
+        GameObject* c = GetCombatantWithFlag0x400_0200fea4(bs, id);
         if (c != NULL) {
             struct Inner0215fc8c* inner = *(struct Inner0215fc8c**)((char*)c + 0x144);
             if (inner != NULL) {

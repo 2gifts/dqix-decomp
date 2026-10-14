@@ -19,14 +19,14 @@ extern State0202d3e0 data_021015a0 __attribute__((aligned(4)));
 struct BattleEffectContext;
 extern BattleEffectContext data_021023c0, data_02102be0;
 extern int data_020ef7a8;
-void SetField0x48UnlessState9Or10(int);
+void SetField0x48UnlessState9Or10_0202c848(int);
 extern "C" void func_0202dd98();
 
 // USA: func_0202d3e0
 extern "C" ARM void func_0202d3e0(Input0202d3e0* input) {
     if (input->status != 0) {
         if (input->status != 15 && input->status != 9 && input->status != 13) {
-            SetField0x48UnlessState9Or10(input->status);
+            SetField0x48UnlessState9Or10_0202c848(input->status);
             data_021015a0.state = 9;
         }
     } else {
@@ -40,9 +40,9 @@ extern "C" ARM void func_0202d3e0(Input0202d3e0* input) {
                     else if (data_021015a0.state != 4) submitted = 0;
                     else {
                         data_021015a0.state = 6;
-                        int result = InvokeWithFullMaskType2(&data_021023c0, 13);
+                        int result = InvokeWithFullMaskType2_020d68b4(&data_021023c0, 13);
                         if (result == 0) submitted = 1;
-                        else { SetField0x48UnlessState9Or10(result); submitted = 0; }
+                        else { SetField0x48UnlessState9Or10_0202c848(result); submitted = 0; }
                     }
                     if (!submitted) func_0202dd98();
                     break;
@@ -51,7 +51,7 @@ extern "C" ARM void func_0202d3e0(Input0202d3e0* input) {
                 int mask = 15;
                 int result = func_020d5d34(&data_02102be0, 13, mask, 0x74, data_020ef7a8);
                 if (result) {
-                    SetField0x48UnlessState9Or10(result);
+                    SetField0x48UnlessState9Or10_0202c848(result);
                     func_0202dd98();
                 } else {
                     data_021015a0.state = 5;

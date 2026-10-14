@@ -10,12 +10,12 @@ struct Entry_0205d6a0;
 struct Obj0205eaa0;
 struct TableEntry0217f8c0;
 struct Struct0217f8c0;
-void SetElementFieldC2(struct Struct_0205d81c* s, int key, int value);
+void SetElementFieldC2_0205deb4(struct Struct_0205d81c* s, int key, int value);
 int GetActiveScaledSum0205d794(struct Struct_0205c570* s);
 extern "C" int func_ov000_0217c594(void* obj, int limit);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 void* FindElementByComputedKey021815e4(char* obj);
-int GetAdjustedByteField0x1d6b(void* obj);
+int GetAdjustedByteField0x1d6b_ov000_021815c8(void* obj);
 extern "C" int func_020dd4c4(int id, void* node);
 struct TableEntry0217f8c0* FindMatchingTableEntry0217f8c0(struct Struct0217f8c0* s);
 extern "C" void func_ov000_02176634(void* obj, struct TableEntry0217f8c0* entry, int val, int arg1, int arg2);
@@ -48,7 +48,7 @@ struct Menu0217db4c {
 // USA: func_ov000_0217db4c
 extern "C" ARM void func_ov000_0217db4c(struct Menu0217db4c* menu, int arg1, int arg2) {
     menu->flags |= 0x100;
-    SetElementFieldC2((struct Struct_0205d81c*)menu->list, 0x21, 0);
+    SetElementFieldC2_0205deb4((struct Struct_0205d81c*)menu->list, 0x21, 0);
     signed char prev = menu->activeSum;
     int sum = GetActiveScaledSum0205d794((struct Struct_0205c570*)menu->list);
     menu->activeSum = sum;
@@ -61,7 +61,7 @@ extern "C" ARM void func_ov000_0217db4c(struct Menu0217db4c* menu, int arg1, int
         menu->mode = 7;
         void* element = FindElementByComputedKey021815e4((char*)menu);
 #if defined(jpn)
-        int result = func_020dd4c4(GetAdjustedByteField0x1d6b(menu), element);
+        int result = func_020dd4c4(GetAdjustedByteField0x1d6b_ov000_021815c8(menu), element);
         if (result != 0) {
             for (unsigned char i = 0; data_ov000_02184704[i] != 0; i++) {
                 if (result & data_ov000_02184704[i]) {
@@ -74,7 +74,7 @@ extern "C" ARM void func_ov000_0217db4c(struct Menu0217db4c* menu, int arg1, int
             return;
         }
 #else
-        func_020dd4c4(GetAdjustedByteField0x1d6b(menu), element);
+        func_020dd4c4(GetAdjustedByteField0x1d6b_ov000_021815c8(menu), element);
 #endif
         menu->depth++;
         menu->stack[menu->depth] = 0x20;

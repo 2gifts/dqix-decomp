@@ -50,7 +50,7 @@ struct AnimationTiming02057334
 
 int CheckListStableAndField8LtField402057854(ListNode02057854*);
 void InitStruct02058c88(Struct02058c88*);
-void* GetSubField0x8(S02055080*);
+void* GetSubField0x8_020550c0(S02055080*);
 void UpdateCounterAndMaybeComputeSlope02055c30(Obj02055c30*);
 extern "C" void func_02056d80(ListNode02057854*);
 extern "C" void func_020557a4(ListNode02057854*);
@@ -92,7 +92,7 @@ extern "C" ARM int func_02057334(ListNode02057854* self)
                 self->delay -= ticks;
                 if (self->delay < 0)
                 {
-                    int interval = ((AnimationTiming02057334*)GetSubField0x8(self->resource))->interval;
+                    int interval = ((AnimationTiming02057334*)GetSubField0x8_020550c0(self->resource))->interval;
                     self->delay = interval;
                     if (ticks < interval + 1)
                     {

@@ -24,7 +24,7 @@ void* LoadFileIntoMemory(const char* path, void* buf, unsigned int* outLen);
 extern "C" void _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(void* obj, void* params, int flag);
 
 struct Struct_203dafc;
-void ClearEightWords(struct Struct_203dafc* obj);
+void ClearEightWords_0203dafc(struct Struct_203dafc* obj);
 
 struct Params02036804 {
     int flag;
@@ -61,7 +61,7 @@ extern "C" ARM void func_ov015_0218cb2c(void* self, int val) {
 
         if (buffer != 0) {
             struct Params02036804 params;
-            ClearEightWords((struct Struct_203dafc*)&params);
+            ClearEightWords_0203dafc((struct Struct_203dafc*)&params);
             params.alloc = &allocator;
             params.data = &data_0211e33c;
             params.size = length;

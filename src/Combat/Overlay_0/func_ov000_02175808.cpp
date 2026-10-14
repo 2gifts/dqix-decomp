@@ -39,7 +39,7 @@ struct PartySlots { char pad0[0xf78]; signed char ids[4]; unsigned char count; }
 struct CombatCommand { char pad0[0x10]; unsigned char commands[8]; signed char index; };
 extern "C" void __clear(void*, unsigned long);
 extern "C" void func_ov000_021757ac(Struct0217f8c0*, unsigned short);
-int GetField0x3acValue(GameState*);
+int GetField0x3acValue_020100a8(GameState*);
 extern "C" CombatCommand* func_ov000_02161318(Struct0217f8c0*, int);
 void ResetEntryList0205d6a0(Entry_0205d6a0*, int);
 int FindMatchingTableEntry0217f8c0(Struct0217f8c0*);
@@ -71,9 +71,9 @@ extern "C" ARM void func_ov000_02175808(Struct0217f8c0* self) {
     }
     if (!count) return;
     GameState* current = GameState::GetInstance();
-    self->protagonist = GetField0x3acValue(current);
+    self->protagonist = GetField0x3acValue_020100a8(current);
     func_ov000_021757ac(self, 0);
-    PartySlots* party = (PartySlots*)GetPtrField0x2a04(current);
+    PartySlots* party = (PartySlots*)GetPtrField0x2a04_02010828(current);
     unsigned char slots = party->count;
     for (unsigned char i = 0; i < slots; ++i) {
         CombatCommand* command = func_ov000_02161318(self, party->ids[i]);

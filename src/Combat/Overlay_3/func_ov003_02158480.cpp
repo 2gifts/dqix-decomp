@@ -14,15 +14,15 @@ struct PartyStatusPanel {
     signed char selected;
 };
 
-void SetSublistEntriesFlag1(void*, int);
-void SetSublistEntriesFlag2(void*, int);
+void SetSublistEntriesFlag1_02080b54(void*, int);
+void SetSublistEntriesFlag2_02080608(void*, int);
 void SetEntryFlagById02080b40(void*, int);
-void DispatchEntryOp0x8(void*, int);
+void DispatchEntryOp0x8_0208108c(void*, int);
 struct Obj0215570c;
 int CountNonZeroEntries_0215570c(Obj0215570c*);
-unsigned char* GetFieldAt0x150(unsigned char*);
+unsigned char* GetFieldAt0x150_02053c6c(unsigned char*);
 void ClearSublistEntryFlag2_020806c4(void*, int);
-void SetEntryHalfword0xe(void*, int, int);
+void SetEntryHalfword0xe_0208103c(void*, int, int);
 struct Container02080fa8;
 void SetEntryFirstField02080fa8(Container02080fa8*, int, int);
 void GetEntryFieldsAt0x602080828(void*, int, short*, short*);
@@ -45,10 +45,10 @@ extern "C" ARM void func_ov003_02158480(PartyStatusPanel* self) {
     short sub = 0x2b;
     short cell = 0x37;
 
-    SetSublistEntriesFlag1(entries, 6);
-    SetSublistEntriesFlag2(entries, 6);
+    SetSublistEntriesFlag1_02080b54(entries, 6);
+    SetSublistEntriesFlag2_02080608(entries, 6);
     SetEntryFlagById02080b40(entries, 0x43);
-    DispatchEntryOp0x8(entries, 0x43);
+    DispatchEntryOp0x8_0208108c(entries, 0x43);
 
     int count = CountNonZeroEntries_0215570c((Obj0215570c*)self);
     int r8 = -1;
@@ -63,7 +63,7 @@ extern "C" ARM void func_ov003_02158480(PartyStatusPanel* self) {
     GameState* gs = GameState::GetInstance();
     unsigned char* member = (unsigned char*)gs->GetPartyMemberByIndex(self->selected);
     if (member != NULL) {
-        unsigned char* base = GetFieldAt0x150(member);
+        unsigned char* base = GetFieldAt0x150_02053c6c(member);
         for (unsigned char i = 0; i < 12; i++) {
             int slot = self->slots[i];
             if (slot != 0) {
@@ -71,7 +71,7 @@ extern "C" ARM void func_ov003_02158480(PartyStatusPanel* self) {
                 SetEntryFlagById02080b40(entries, row);
                 SetEntryFlagById02080b40(entries, col);
                 SetEntryFlagById02080b40(entries, sub);
-                SetEntryHalfword0xe(entries, row, (short)(slot - 1));
+                SetEntryHalfword0xe_0208103c(entries, row, (short)(slot - 1));
                 SetEntryFirstField02080fa8((Container02080fa8*)entries, sub, *(unsigned short*)(base + 0x16c + slot * 2));
 
                 unsigned char* entry = base + slot;

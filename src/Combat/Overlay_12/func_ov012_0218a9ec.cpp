@@ -32,9 +32,9 @@ struct ProfileHeader {
 };
 
 int AppendFrameTag02041c08(char* dst, int a1, int a2, int a3, int a4, int a5);
-int AppendCursorTag(char* dst, int cursor);
-void* FindEntryByKey(struct TableA68* table, int key);
-int AppendNameTag(char* dst, int n, const char* name);
+int AppendCursorTag_02041ea4(char* dst, int cursor);
+void* FindEntryByKey_02072a68(struct TableA68* table, int key);
+int AppendNameTag_02041b70(char* dst, int n, const char* name);
 int AppendString02042058(char* dst, const char* src);
 
 // USA: func_ov012_0218a9ec
@@ -48,15 +48,15 @@ extern "C" ARM void func_ov012_0218a9ec(unsigned char* self, char* dst, int c) {
     if (c != 0) {
         AppendFrameTag02041c08(dst, cursor, 8, 5, 5, 5);
     }
-    AppendCursorTag(dst, cursor);
+    AppendCursorTag_02041ea4(dst, cursor);
 
     int i;
     for (i = 0; i < 8; i++) {
         if (i != 0) {
             AppendString02042058(dst, *(char**)(self + kSeparatorOffset));
         }
-        void* name = FindEntryByKey((struct TableA68*)(self + kStringsOffset),
+        void* name = FindEntryByKey_02072a68((struct TableA68*)(self + kStringsOffset),
                                     (short)(((short)profile->female) + i * 2 + 0x7530));
-        AppendNameTag(dst, i, (const char*)name);
+        AppendNameTag_02041b70(dst, i, (const char*)name);
     }
 }

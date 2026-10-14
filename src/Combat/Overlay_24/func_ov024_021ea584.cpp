@@ -44,8 +44,8 @@ struct ComboCombatant : GameObject {
 #endif
     unsigned char* traits;
 };
-int TestBit2At0x2f4(unsigned char*);
-void ZeroFieldsAt0xe58And0xe82And0x8e52(void*);
+int TestBit2At0x2f4_020850d0(unsigned char*);
+void ZeroFieldsAt0xe58And0xe82And0x8e52_ov000_0215cd80(void*);
 static inline int IsPartyMember(int id) { return id >= 0 && id <= 3; }
 
 // USA: func_ov024_021ea584
@@ -54,8 +54,8 @@ extern "C" ARM void func_ov024_021ea584(ComboAction* action, int actor, int targ
     if (parameters->restriction && action->state > 0) return;
     if (action->restricted && action->state > 0) return;
     if (IsPartyMember(actor)) {
-        ComboCombatant* combatant = (ComboCombatant*)GetCombatantWithFlag0x100(GameState::GetInstance(), actor);
-        if (combatant && (parameters->flags & 0x100000) && TestBit2At0x2f4(combatant->traits) && action->state > 0) return;
+        ComboCombatant* combatant = (ComboCombatant*)GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), actor);
+        if (combatant && (parameters->flags & 0x100000) && TestBit2At0x2f4_020850d0(combatant->traits) && action->state > 0) return;
     }
     if (parameters->combo) {
         if (IsPartyMember(actor)) {
@@ -72,5 +72,5 @@ extern "C" ARM void func_ov024_021ea584(ComboAction* action, int actor, int targ
         if (target != action->battle->target) action->battle->count = 0;
         action->battle->target = target;
         action->battle->action = action->action;
-    } else ZeroFieldsAt0xe58And0xe82And0x8e52(action->battle);
+    } else ZeroFieldsAt0xe58And0xe82And0x8e52_ov000_0215cd80(action->battle);
 }

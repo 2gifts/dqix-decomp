@@ -2,7 +2,7 @@
 #include "Resource/Script.h"
 #include "Memory/SafeAllocator.h"
 
-int StringLength(const char*);
+int StringLength_020d2ff0(const char*);
 struct ScriptRecord021aca2c {
     char* first;
     char* second;
@@ -32,7 +32,7 @@ extern "C" ARM int func_ov017_021aca2c(Script::Parameter* params, int count) {
     data_ov017_021d83cc.record->field_15 = params[3].ToInt();
     const char* text = params[4].ToString();
     if (text) {
-        int length = StringLength(text);
+        int length = StringLength_020d2ff0(text);
         if (length) {
             data_ov017_021d83cc.record->first = (char*)data_ov017_021d83cc.allocator->Allocate(length + 1);
             memset(data_ov017_021d83cc.record->first, 0, length + 1);
@@ -42,7 +42,7 @@ extern "C" ARM int func_ov017_021aca2c(Script::Parameter* params, int count) {
     }
     text = params[5].ToString();
     if (text) {
-        int length = StringLength(text);
+        int length = StringLength_020d2ff0(text);
         if (length) {
             data_ov017_021d83cc.record->second = (char*)data_ov017_021d83cc.allocator->Allocate(length + 1);
             memset(data_ov017_021d83cc.record->second, 0, length + 1);
@@ -54,7 +54,7 @@ extern "C" ARM int func_ov017_021aca2c(Script::Parameter* params, int count) {
     params += 7;
     text = lastText->ToString();
     if (text) {
-        int length = StringLength(text);
+        int length = StringLength_020d2ff0(text);
         if (length) {
             data_ov017_021d83cc.record->third = (char*)data_ov017_021d83cc.allocator->Allocate(length + 1);
             memset(data_ov017_021d83cc.record->third, 0, length + 1);

@@ -5,7 +5,7 @@ extern char data_02101600;
 extern char data_02101640;
 
 extern "C" int func_0202c958(void);
-void SetField0x48UnlessState9Or10(int arg);
+void SetField0x48UnlessState9Or10_0202c848(int arg);
 void CheckField2ThenSetState9_0202c918(unsigned short* a);
 int SubmitBattleAction020d68dc(int value, unsigned int count, void* data);
 
@@ -16,7 +16,7 @@ ARM void CheckField2ThenSubmitOrError0202c864(unsigned short* a)
 {
     unsigned short v = a[1];
     if (v != 0) {
-        SetField0x48UnlessState9Or10(v);
+        SetField0x48UnlessState9Or10_0202c848(v);
         *(int*)(&data_021015a0 + 0x10) = 9;
         return;
     }
@@ -30,7 +30,7 @@ ARM void CheckField2ThenSubmitOrError0202c864(unsigned short* a)
         if (result == 2) {
             result = 1;
         } else {
-            SetField0x48UnlessState9Or10(result);
+            SetField0x48UnlessState9Or10_0202c848(result);
             *(int*)(&data_021015a0 + 0x10) = 9;
             result = 0;
         }

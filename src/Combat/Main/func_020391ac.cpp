@@ -45,7 +45,7 @@ int fix32ReduceAngle0To2Pi(int);
 void SetVecYByMode02033834(Obj02033834*, int);
 void ClearBytesAndZeroBlock02039d24(unsigned char*);
 void SetByteSavingPrevious(Foo02033b58*, unsigned char);
-int IsField0Null(void**);
+int IsField0Null_02046b08(void**);
 void SetVecYFromValue02033874(Obj02033874*, int);
 
 // USA: func_020391ac
@@ -170,7 +170,7 @@ extern "C" ARM void func_020391ac(FollowingActor* actor) {
         actor->animation = 0x189;
     threshold = spacing + 0xb33;
     ready = 1;
-    if (!IsField0Null(resource))
+    if (!IsField0Null_02046b08(resource))
         ready = 0;
     if (gap >= 1 || (separation > threshold && ready) || moving) {
         Vector3fix origin = actor->object.position_;

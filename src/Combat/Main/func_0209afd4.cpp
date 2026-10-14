@@ -66,7 +66,7 @@ struct Shuffle0209afd4 {
 };
 
 struct LeaderSub0209afd4* FindSubByKeyAndId0209b8d4(struct Entry0209b8d4* table, int key, int id, int* out);
-struct FindRowByIdRow* FindRowById(struct FindRowByIdRow* base, int key);
+struct FindRowByIdRow* FindRowById_0209b9e4(struct FindRowByIdRow* base, int key);
 struct Entry0209bd94* FindEntryByHalfword0209bd94(struct EntryTable0209bd94* table, int key);
 
 extern struct Shuffle0209afd4 data_020e8e2c;
@@ -112,7 +112,7 @@ extern "C" ARM void func_0209afd4(struct FindRowByIdRow* rows, int leaderId, int
             kind = 3;
         }
         if (kind != 1) {
-            row = FindRowById(rows, rowId);
+            row = FindRowById_0209b9e4(rows, rowId);
             total = 0;
             for (i = 0; i < 6; i++) {
                 member = &row->members[i];

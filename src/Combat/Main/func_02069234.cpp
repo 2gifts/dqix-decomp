@@ -37,12 +37,12 @@ struct TagContext02069234 {
     signed char combatantId;
 };
 
-Combatant02069234* GetCombatantWithFlag0x100(GameState* gameState, int combatantId);
+Combatant02069234* GetCombatantWithFlag0x100_0200ff1c(GameState* gameState, int combatantId);
 extern "C" GameState* _ZN9GameState11GetInstanceEv();
 
-char* FindUnescapedAngleBracket(char* str);
+char* FindUnescapedAngleBracket_020424ac(char* str);
 int IsPrefixMatch020d857c(signed char* a, signed char* b);
-int StringLength(const char* s);
+int StringLength_020d2ff0(const char* s);
 extern "C" int func_02005a94(void* p);
 extern "C" int func_02001aec(void* a, void* b, int n);
 extern "C" char* func_020e4958(char** dst, void* val, int a2, int a3, int a4, int a5);
@@ -85,7 +85,7 @@ extern "C" ARM void func_02069234(TagContext02069234* sb, char* str, char* dst) 
             break;
         }
         if (c == '<') {
-            char* gt = FindUnescapedAngleBracket(str);
+            char* gt = FindUnescapedAngleBracket_020424ac(str);
             if (gt == 0) {
                 goto copy_char;
             }
@@ -98,7 +98,7 @@ extern "C" ARM void func_02069234(TagContext02069234* sb, char* str, char* dst) 
                 }
                 if (rec->handler != 0) {
                     int index = 0;
-                    int len = StringLength(rec->prefix);
+                    int len = StringLength_020d2ff0(rec->prefix);
                     signed char d = tag[len];
                     if (d >= '1' && d <= '9') {
                         index = func_02005a94(tag + len) - 1;
@@ -129,7 +129,7 @@ extern "C" ARM void func_02069234(TagContext02069234* sb, char* str, char* dst) 
                 if (key == 0) {
                     break;
                 }
-                int len = StringLength(key);
+                int len = StringLength_020d2ff0(key);
                 if (func_02001aec(tag, key, len) == 0) {
                     handled = 1;
                     tag += len;
@@ -169,7 +169,7 @@ extern "C" ARM void func_02069234(TagContext02069234* sb, char* str, char* dst) 
             if (func_02001aec(str, data_020f0904, 4) == 0) {
                 str += 4;
                 GameState* gameState = _ZN9GameState11GetInstanceEv();
-                Combatant02069234* combatant = GetCombatantWithFlag0x100(gameState, sb->combatantId);
+                Combatant02069234* combatant = GetCombatantWithFlag0x100_0200ff1c(gameState, sb->combatantId);
                 if (combatant != 0) {
                     StatusEffectEntry02069234* eff = combatant->statusTable->GetEffect();
                     if (eff != 0) {

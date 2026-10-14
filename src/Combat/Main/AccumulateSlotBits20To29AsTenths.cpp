@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_02084fc8
-ARM float AccumulateSlotBits20To29AsTenths(char* base) {
+ARM float AccumulateSlotBits20To29AsTenths_02084fc8(char* base) {
     float sum = 0.0f;
     int i;
     for (i = 0; i < 11; i++) {

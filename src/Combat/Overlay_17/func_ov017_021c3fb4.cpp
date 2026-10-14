@@ -3,7 +3,7 @@
 
 struct Field150Holder02052e14;
 short* GetField150Ptr0x488(struct Field150Holder02052e14* obj);
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct Evt021c3fb4 {
@@ -18,13 +18,13 @@ struct Evt021c3fb4 {
 // USA: func_ov017_021c3fb4
 extern "C" ARM void func_ov017_021c3fb4(int combatantId, int flag) {
     GameState* bs = GameState::GetInstance();
-    GameObject* c = GetCombatantWithFlag0x100(bs, combatantId);
+    GameObject* c = GetCombatantWithFlag0x100_0200ff1c(bs, combatantId);
     if (c == NULL) return;
 
     short* list = GetField150Ptr0x488((struct Field150Holder02052e14*)c);
     if (list == NULL) return;
 
-    void* data = GetData02100044();
+    void* data = GetData02100044_0202ae24();
 
     struct Evt021c3fb4 evt;
     evt.tag = 2;

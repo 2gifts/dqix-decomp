@@ -5,13 +5,13 @@
 extern "C" void* func_02012fe4(void);
 extern "C" int func_ov017_021d60f4(void* obj);
 extern "C" void* func_ov017_021d612c(void* obj);
-void* GetFieldPtrAt0x5ca4(void* obj);
-void* GetPtrField0x468(void* obj);
+void* GetFieldPtrAt0x5ca4_02010768(void* obj);
+void* GetPtrField0x468_02011584(void* obj);
 struct List0209998c;
 struct Elem0209998c;
 Elem0209998c* FindElementByName0209998c(List0209998c* list, const char* name);
 void InitStruct02013718(char* obj, int a, int b);
-extern "C" void _ZN6Zone3D10SwitchZoneEti(void* g, int val, int flag);
+extern "C" void _ZN6Zone3D19SwitchZone_0201383cEti(void* g, int val, int flag);
 
 struct GlobalBlock_02163b14 {
 #if defined(jpn)
@@ -27,7 +27,7 @@ struct GlobalBlock_02163b14 {
 extern "C" ARM int func_ov001_02163b14(void* obj) {
     GameState* battle = GameState::GetInstance();
     struct GlobalBlock_02163b14* g = (struct GlobalBlock_02163b14*)func_02012fe4();
-    void* fieldPtr = GetFieldPtrAt0x5ca4(battle);
+    void* fieldPtr = GetFieldPtrAt0x5ca4_02010768(battle);
     int type = *(int*)obj;
     int key = -1;
     if (type == 0) {
@@ -35,7 +35,7 @@ extern "C" ARM int func_ov001_02163b14(void* obj) {
     } else if (type == 2) {
         key = (int)func_ov017_021d612c(obj);
         if (key == 0) return 0;
-        void* table = GetPtrField0x468(battle);
+        void* table = GetPtrField0x468_02011584(battle);
         struct Elem0209998c* entry = FindElementByName0209998c((struct List0209998c*)table, (const char*)key);
         if (entry == 0) return 0;
         key = *(unsigned short*)entry;
@@ -58,7 +58,7 @@ extern "C" ARM int func_ov001_02163b14(void* obj) {
     p2->CreateTypeA(p3, maxAlloc);
 
     InitStruct02013718((char*)p1, (int)p2, extra);
-    _ZN6Zone3D10SwitchZoneEti(p1, key, 0);
+    _ZN6Zone3D19SwitchZone_0201383cEti(p1, key, 0);
 
     *(void**)fieldPtr = p1;
     return 1;

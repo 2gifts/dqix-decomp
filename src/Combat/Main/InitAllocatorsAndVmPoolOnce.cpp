@@ -43,7 +43,7 @@ struct Elem02110a4c {
 extern Elem02110a4c data_02110a4c[4];
 
 // USA: func_020be9e8
-ARM void InitAllocatorsAndVmPoolOnce(void* arg0, void* arg1) {
+ARM void InitAllocatorsAndVmPoolOnce_020be9e8(void* arg0, void* arg1) {
     int i;
     int j;
 

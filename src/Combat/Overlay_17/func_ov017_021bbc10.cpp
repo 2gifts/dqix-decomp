@@ -34,29 +34,29 @@ struct Overlay021bbc10 {
     unsigned char flagFf;
 };
 
-int GetByte0x26c(char*);
-int GetField0x70(void* obj);
-void* GetFieldIfFlag4(char*);
-int CheckField0NonZero(int*);
-void SetBitsInWord(unsigned int*, unsigned int);
-int GetBitsInField0(unsigned int*, unsigned int);
-int PeekInputLogA(void);
-void PushInputLogA(int);
+int GetByte0x26c_02039d7c(char*);
+int GetField0x70_0202e7f0(void* obj);
+void* GetFieldIfFlag4_020100f8(char*);
+int CheckField0NonZero_0202b7d8(int*);
+void SetBitsInWord_0203b4a0(unsigned int*, unsigned int);
+int GetBitsInField0_0203b4c4(unsigned int*, unsigned int);
+int PeekInputLogA_020a1eb0(void);
+void PushInputLogA_020a1df8(int);
 unsigned int* GetDataPtr02114e04_020d6c00(void);
-void OrBitsIntoField0(unsigned int* p, unsigned int mask);
-void ClearIntAt0x23c(unsigned char* obj);
+void OrBitsIntoField0_020466e4(unsigned int* p, unsigned int mask);
+void ClearIntAt0x23c_020a27b8(unsigned char* obj);
 void* GetGlobalResetObj020d7a50(void);
 void TeardownAndResetState020d7aa0(Obj020d7aa0* obj);
 void CancelPendingAction020397cc(Obj020397cc* obj, int arg1);
-void SetField0x158(void*, int);
+void SetField0x158_02053ec8(void*, int);
 void CaptureTransformState02053ed8(void* obj);
-int GetField0x3acValue(GameState* gs);
+int GetField0x3acValue_020100a8(GameState* gs);
 void CopyCountedBytesToIntArray02010834(Base02010834* base, int index, int* out, int* outCount);
 void SetFlag0x4At0xe0(Flags02033fcc*);
 void ClearBytesAndZeroBlock02039d24(unsigned char* obj);
 struct Obj021bb088;
 void InitTimerObj_021bb088(Obj021bb088*);
-int* GetFieldPtrAt0x5ca4(void* obj);
+int* GetFieldPtrAt0x5ca4_02010768(void* obj);
 struct SafeAllocator;
 void ClearAllocSlotsAndStore_0215aa14(SafeAllocator*);
 extern "C" void* func_02012fe4(void);
@@ -64,7 +64,7 @@ extern "C" void* func_0202ae18(void);
 extern "C" ARM int func_ov017_021bb27c(Overlay021bbc10* self);
 
 int ListContainsId(ListHead02046b60* list, int id);
-int IsField0Null(void** obj);
+int IsField0Null_02046b08(void** obj);
 void SetBrightness(GameResources* resources, int brightness, int duration);
 char* strstr(const char* str, const char* substr);
 
@@ -81,7 +81,7 @@ extern "C" ARM int func_ov017_021bbc10(Overlay021bbc10* self) {
     GameState* gs = GameState::GetInstance();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     GameObject* unk = gs->GetUnknownGameObject();
-    unsigned char* field4 = (unsigned char*)GetFieldIfFlag4((char*)gs);
+    unsigned char* field4 = (unsigned char*)GetFieldIfFlag4_020100f8((char*)gs);
     GameResources* res = func_ov017_0218b5b0();
     void* search = func_0202ae18();
 
@@ -90,33 +90,33 @@ extern "C" ARM int func_ov017_021bbc10(Overlay021bbc10* self) {
         self->flag01 = 1;
         return self->result0a;
     }
-    OrBitsIntoField0(GetDataPtr02114e04_020d6c00(), 0x400e);
+    OrBitsIntoField0_020466e4(GetDataPtr02114e04_020d6c00(), 0x400e);
     if (res->unknown_4080 != 0) {
         return self->result0a;
     }
-    SubBlock02038508* field26c = GetFieldPtrAt0x26c(unk);
-    if (GetByte0x26c((char*)unk) != 0 && field26c->command != 2) {
+    SubBlock02038508* field26c = GetFieldPtrAt0x26c_020399a8(unk);
+    if (GetByte0x26c_02039d7c((char*)unk) != 0 && field26c->command != 2) {
         return self->result0a;
     }
-    if (self->flagFd == 0 && IsField0Null((void**)res->unknown_ptr_array_36fc[1]) == 0) {
+    if (self->flagFd == 0 && IsField0Null_02046b08((void**)res->unknown_ptr_array_36fc[1]) == 0) {
         return self->result0a;
     }
-    SetBitsInWord((unsigned int*)res, 0x10);
-    if (GetBitsInField0((unsigned int*)res, 0x1000) == 0 && PeekInputLogA() != 1) {
-        PushInputLogA(1);
+    SetBitsInWord_0203b4a0((unsigned int*)res, 0x10);
+    if (GetBitsInField0_0203b4c4((unsigned int*)res, 0x1000) == 0 && PeekInputLogA_020a1eb0() != 1) {
+        PushInputLogA_020a1df8(1);
     }
     ClearAllocSlotsAndStore_0215aa14((SafeAllocator*)NULL);
     CancelPendingAction020397cc((Obj020397cc*)unk, 1);
-    ClearIntAt0x23c(field4);
+    ClearIntAt0x23c_020a27b8(field4);
     TeardownAndResetState020d7aa0((Obj020d7aa0*)GetGlobalResetObj020d7a50());
-    *(unsigned short*)(field4 + 0x21e) = GetField0x70(field4);
+    *(unsigned short*)(field4 + 0x21e) = GetField0x70_0202e7f0(field4);
 
-    if (CheckField0NonZero((int*)search)) {
-        char* arr = (char*)GetPtrField0x2a04(gs);
+    if (CheckField0NonZero_0202b7d8((int*)search)) {
+        char* arr = (char*)GetPtrField0x2a04_02010828(gs);
         for (int i = 0; i < *(unsigned char*)(arr + 0xf7c); i++) {
-            GameObject* combatant = GetCombatantWithFlag0x100(gs, *(unsigned char*)(arr + i + 0xf78));
+            GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(gs, *(unsigned char*)(arr + i + 0xf78));
             if (combatant != NULL) {
-                SetField0x158(combatant, 3);
+                SetField0x158_02053ec8(combatant, 3);
                 CaptureTransformState02053ed8(combatant);
             }
         }
@@ -124,12 +124,12 @@ extern "C" ARM int func_ov017_021bbc10(Overlay021bbc10* self) {
 
     int count;
     int ids[4];
-    CopyCountedBytesToIntArray02010834((Base02010834*)gs, GetField0x3acValue(gs), ids, &count);
+    CopyCountedBytesToIntArray02010834((Base02010834*)gs, GetField0x3acValue_020100a8(gs), ids, &count);
     for (int i = 0; i < count; i++) {
         GameObject* member = gs->GetPartyMemberByIndex(ids[i]);
         if (member != NULL) {
             SetFlag0x4At0xe0((Flags02033fcc*)member);
-            if (GetByte0x26c((char*)member) == 0 || GetFieldPtrAt0x26c(member)->command != 2) {
+            if (GetByte0x26c_02039d7c((char*)member) == 0 || GetFieldPtrAt0x26c_020399a8(member)->command != 2) {
                 ((Object3D*)member)->MaybeSetRegularAnimation(data_ov017_021d7d6c, 0x10);
             }
             ClearBytesAndZeroBlock02039d24((unsigned char*)member);
@@ -140,7 +140,7 @@ extern "C" ARM int func_ov017_021bbc10(Overlay021bbc10* self) {
         ClearBytesAndZeroBlock02039d24((unsigned char*)extra);
     }
     InitTimerObj_021bb088((Obj021bb088*)self->timerObj_d0);
-    int* ptr5ca4 = GetFieldPtrAt0x5ca4(gs);
+    int* ptr5ca4 = GetFieldPtrAt0x5ca4_02010768(gs);
     ptr5ca4[0] = 0;
     ptr5ca4[1] = 0;
     loader->AddFence();

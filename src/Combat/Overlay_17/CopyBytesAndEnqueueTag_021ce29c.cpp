@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 extern "C" int func_ov017_0218b5b0(void);
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct LocalEvt021ce29c {
@@ -18,7 +18,7 @@ extern "C" ARM void func_ov017_021ce29c(void) {
 #else
  enum {regionalOffset0=0xb30};
 #endif
-	void* p = GetData02100044();
+	void* p = GetData02100044_0202ae24();
 	int raw = func_ov017_0218b5b0();
 	unsigned char* src = *(unsigned char**)((char*)raw + 0x3000 + regionalOffset0);
 

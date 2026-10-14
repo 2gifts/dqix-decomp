@@ -21,12 +21,12 @@ struct PartyList021bd704 {
     unsigned char count;
 };
 extern "C" void* func_0202ae18();
-unsigned char GetField0x397cValue(GameState*);
+unsigned char GetField0x397cValue_020100b0(GameState*);
 extern "C" int func_0202c508(void*);
-void SetFlag0x1ceBit0x4(unsigned char*);
+void SetFlag0x1ceBit0x4_02039d48(unsigned char*);
 int fix32sin(int);
 int fix32cos(int);
-unsigned char GetByte0x26c(char*);
+unsigned char GetByte0x26c_02039d7c(char*);
 void ResetObjectState02039d84(Obj02039d84*);
 void EnqueueEventTag60Field_021d440c(int);
 void SetVecYFromValue02033874(Obj02033874*, int);
@@ -46,7 +46,7 @@ extern "C" ARM void func_ov017_021bd704(FormationState021bd704* self) {
         position = game->GetUnknownGameObject()->obj3D_.position_;
         angle = game->GetUnknownGameObject()->obj3D_.rotation_.y;
     }
-    PartyList021bd704* party = (PartyList021bd704*)GetPtrField0x2a04(game);
+    PartyList021bd704* party = (PartyList021bd704*)GetPtrField0x2a04_02010828(game);
     if (party != 0) {
         for (int i = 0; i < party->count; i++) {
             int id = party->members[i];
@@ -54,9 +54,9 @@ extern "C" ARM void func_ov017_021bd704(FormationState021bd704* self) {
             if (member == 0) continue;
             if (func_0202c508(search)) {
                 int member_id = member->obj3D_.unknown_4_;
-                if (member_id != GetField0x397cValue(game) && anchor) {
+                if (member_id != GetField0x397cValue_020100b0(game) && anchor) {
                     member->obj3D_.SetInheritedAlpha(0);
-                    SetFlag0x1ceBit0x4((unsigned char*)member);
+                    SetFlag0x1ceBit0x4_02039d48((unsigned char*)member);
                 }
             } else if (self->enabled && !suppress) {
                 if (id == 1) {
@@ -80,7 +80,7 @@ extern "C" ARM void func_ov017_021bd704(FormationState021bd704* self) {
                     position.x += x;
                 }
             }
-            if (self->id != 8100 && GetByte0x26c((char*)member)) {
+            if (self->id != 8100 && GetByte0x26c_02039d7c((char*)member)) {
                 ResetObjectState02039d84((Obj02039d84*)member);
                 EnqueueEventTag60Field_021d440c(-1);
             }

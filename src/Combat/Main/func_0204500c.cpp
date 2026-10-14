@@ -20,7 +20,7 @@ extern "C" void func_020e1b2c(void*, int);
 extern "C" int func_020e1f1c(void*);
 extern "C" void func_020e2110(void*);
 extern "C" void func_020e23f4(void*);
-void InvokeSubHandlerIfPresent(int*);
+void InvokeSubHandlerIfPresent_020e2478(int*);
 void SetEntryEnabled020e2cc4(Entry020e2cc4*, int);
 void CopyInternalFields0207df50(Foo0207df50*);
 extern int data_02108760;
@@ -32,7 +32,7 @@ extern "C" void* memcpy(void* dst, const void* src, unsigned int size);
 extern "C" void* memset(void* dst, int value, unsigned int size);
 void* Clear12Bytes020e46c4(void*);
 void DispatchIfCountPositive020dcf7c(int, void*);
-int StringLength(const char*);
+int StringLength_020d2ff0(const char*);
 extern "C" void func_02044f3c(struct MessageSystem* window, const char* text, int mode);
 void DecrementSlotRef0206b198(struct CombatSlots0206b198*, unsigned short);
 extern "C" void func_0205e944(void* target, int level);
@@ -54,7 +54,7 @@ extern "C" void func_020e1b2c(void*, int);
 extern "C" int func_020e1f1c(void*);
 extern "C" void func_020e2110(void*);
 extern "C" void func_020e23f4(void*);
-void InvokeSubHandlerIfPresent(int*);
+void InvokeSubHandlerIfPresent_020e2478(int*);
 void SetEntryEnabled020e2cc4(struct Entry020e2cc4*, int);
 void CopyInternalFields0207df50(struct Foo0207df50*);
 
@@ -175,7 +175,7 @@ extern "C" ARM void func_0204500c(MessageSystem* window, const char* text, int m
                 if (func_020e1f1c(window->frame) != 0) {
                     func_020e2110(window->frame);
                     func_020e23f4(window->frame);
-                    InvokeSubHandlerIfPresent((int*)window->frame);
+                    InvokeSubHandlerIfPresent_020e2478((int*)window->frame);
                 }
             }
         }
@@ -219,7 +219,7 @@ extern "C" ARM void func_0204500c(struct MessageSystem* window, const char* text
         return;
     }
 
-    int len = StringLength(text);
+    int len = StringLength_020d2ff0(text);
     for (int pos = 0; pos < len;) {
         int n = 0x40;
         char chunk[0x43] = {};
@@ -346,7 +346,7 @@ extern "C" ARM void func_0204500c(struct MessageSystem* window, const char* text
                 if (func_020e1f1c(window->frame) != 0) {
                     func_020e2110(window->frame);
                     func_020e23f4(window->frame);
-                    InvokeSubHandlerIfPresent((int*)window->frame);
+                    InvokeSubHandlerIfPresent_020e2478((int*)window->frame);
                 }
             }
         }

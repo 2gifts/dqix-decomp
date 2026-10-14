@@ -14,8 +14,8 @@ struct Elem_0205d81c {
     unsigned char padc0[0x5];
     unsigned char flagsC5;
 };
-struct Elem_0205d81c* FindElementForFieldB0(struct Struct_0205d81c* s);
-int CheckField0x9cSetWhenField0xd4Present(unsigned char* p);
+struct Elem_0205d81c* FindElementForFieldB0_0205d8c4(struct Struct_0205d81c* s);
+int CheckField0x9cSetWhenField0xd4Present_0204c7e0(unsigned char* p);
 
 struct Container0205a3d0;
 struct Elem0205a3d0 {
@@ -24,7 +24,7 @@ struct Elem0205a3d0 {
 };
 struct Elem0205a3d0* FindEntryByHalfword0205a3d0(struct Container0205a3d0* c, int key);
 void SetEntryFlag2ByKey0205a370(struct Container0205a3d0* c, int key);
-void SetEntryPosition(struct Container0205a3d0* c, int key, short a, short b);
+void SetEntryPosition_020e27ec(struct Container0205a3d0* c, int key, short a, short b);
 void SetEntryByte14ByKey0205a42c(struct Container0205a3d0* c, int key, int val);
 
 struct Container0205a330;
@@ -43,9 +43,9 @@ extern "C" ARM void func_ov003_0215c32c(char* obj) {
 			return;
 		}
 
-		struct Elem_0205d81c* elem = FindElementForFieldB0((struct Struct_0205d81c*)(obj + 0xf4));
+		struct Elem_0205d81c* elem = FindElementForFieldB0_0205d8c4((struct Struct_0205d81c*)(obj + 0xf4));
 		if (elem == NULL) return;
-		if (!CheckField0x9cSetWhenField0xd4Present((unsigned char*)elem)) return;
+		if (!CheckField0x9cSetWhenField0xd4Present_0204c7e0((unsigned char*)elem)) return;
 		if (elem->flagsC5 & 0x20) return;
 
 		short x = (short)(elem->fac * 8);
@@ -60,7 +60,7 @@ extern "C" ARM void func_ov003_0215c32c(char* obj) {
 				e->flags |= 8;
 			}
 			IterateEntries0205a330((struct Container0205a330*)cont, *(int*)(obj + 0x574));
-			SetEntryPosition(cont, 0, x - 8, y - 2);
+			SetEntryPosition_020e27ec(cont, 0, x - 8, y - 2);
 			SetEntryByte14ByKey0205a42c(cont, 0, 0);
 		}
 		func_0205ae8c(obj + 0x98);

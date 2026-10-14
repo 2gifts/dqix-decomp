@@ -54,23 +54,23 @@ struct Foo0207df50;
 struct FlagWord020466f4;
 
 extern "C" Object3D* func_ov023_021e6194(void* character);
-GameResources* GetWord0x0(int* gameState);
+GameResources* GetWord0x0_0200fb8c(int* gameState);
 unsigned int* GetDataPtr02114e04_020d6c00();
 extern "C" void func_ov023_021dac40(void* self, unsigned int ticks);
 extern "C" int func_ov009_0218a930(void* self, unsigned int ticks);
-void CallFunc020a0db8AtField0x16c(char* camera, int position, int duration);
-void CallFunc020a0db8AtField0x194AndClearFlag2(char* camera, int target, int duration);
+void CallFunc020a0db8AtField0x16c_0202ee38(char* camera, int position, int duration);
+void CallFunc020a0db8AtField0x194AndClearFlag2_0202ee58(char* camera, int target, int duration);
 void DispatchContextByState0209c678(Actor0209c678* actor, int state);
-int AnySubObjectField0NonZero(char* camera);
+int AnySubObjectField0NonZero_0202eeb4(char* camera);
 void SetForwardAndStore0205ebc0(void* sound, int a, int b);
 const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
 void CopyInternalFields0207df50(Foo0207df50* a);
 void RestorePairTables0207df90(char* a);
 void BackupPairTables0207dfac(char* a);
 void DispatchIfField0xc4NonNeg_0205ebfc(void* sound, int a, int b);
-void OrBitsIntoField0(unsigned int* field, unsigned int bits);
+void OrBitsIntoField0_020466e4(unsigned int* field, unsigned int bits);
 void ClearFlags020466f4(FlagWord020466f4* field, unsigned int bits);
-void EncodeSignFlaggedHalfword(short* reg, int brightness);
+void EncodeSignFlaggedHalfword_020c39a0(short* reg, int brightness);
 void ForwardField0xc0_0205ebec(void* sound);
 #if defined(jpn)
 #define SetStatValue021855dc func_ov009_021867bc
@@ -132,7 +132,7 @@ struct CharacterCreation {
 extern "C" ARM void func_ov009_02187b34(CharacterCreation* self)
 {
     GameState* gameState = GameState::GetInstance();
-    GameResources* resources = GetWord0x0((int*)gameState);
+    GameResources* resources = GetWord0x0_0200fb8c((int*)gameState);
     Object3D* preview = func_ov023_021e6194(self->character_);
     unsigned int* unknown = GetDataPtr02114e04_020d6c00();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
@@ -154,8 +154,8 @@ extern "C" ARM void func_ov009_02187b34(CharacterCreation* self)
         self->flags_ |= 8;
         Vec3 position = data_ov009_0218aa28;
         Vec3 target = data_ov009_0218aa34;
-        CallFunc020a0db8AtField0x16c(self->camera_, (int)&position, 0x1e000);
-        CallFunc020a0db8AtField0x194AndClearFlag2(self->camera_, (int)&target, 0x1e000);
+        CallFunc020a0db8AtField0x16c_0202ee38(self->camera_, (int)&position, 0x1e000);
+        CallFunc020a0db8AtField0x194AndClearFlag2_0202ee58(self->camera_, (int)&target, 0x1e000);
         self->unk_d98 = 90;
         self->flags_ |= 0x10000;
         DispatchContextByState0209c678((Actor0209c678*)data_02109bf4, 120);
@@ -171,7 +171,7 @@ extern "C" ARM void func_ov009_02187b34(CharacterCreation* self)
     case 1:
         if (self->flags_ & 8)
             break;
-        if (AnySubObjectField0NonZero(self->camera_) != 0)
+        if (AnySubObjectField0NonZero_0202eeb4(self->camera_) != 0)
             break;
         self->flags_ |= 0x800000;
         if (func_ov023_021e6194(self->character_)->normalizedAnimationTime_ >= 0xccc)
@@ -311,7 +311,7 @@ extern "C" ARM void func_ov009_02187b34(CharacterCreation* self)
         self->step_ = 7;
         break;
     case 7:
-        OrBitsIntoField0(unknown, 0x100);
+        OrBitsIntoField0_020466e4(unknown, 0x100);
         SetBrightness(resources, 16, 40);
         DispatchIfField0xc4NonNeg_0205ebfc(data_02108760, 1, 0);
         self->step_ = 8;
@@ -339,8 +339,8 @@ extern "C" ARM void func_ov009_02187b34(CharacterCreation* self)
     case 10:
         if (IsBrightnessTransitionActive(resources))
             break;
-        EncodeSignFlaggedHalfword(REG_MASTER_BRIGHT, -16);
-        EncodeSignFlaggedHalfword(REG_MASTER_BRIGHT_SUB, -16);
+        EncodeSignFlaggedHalfword_020c39a0(REG_MASTER_BRIGHT, -16);
+        EncodeSignFlaggedHalfword_020c39a0(REG_MASTER_BRIGHT_SUB, -16);
         ClearFlags020466f4((FlagWord020466f4*)unknown, 0x100);
         ColorEffect_ConfigureBrightnessAdjust(REG_BLDCNT, 0x1f, 0);
         ColorEffect_ConfigureBrightnessAdjust(REG_BLDCNT_SUB, 0x1f, 0);

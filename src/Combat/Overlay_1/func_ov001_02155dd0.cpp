@@ -18,14 +18,14 @@ struct Scene02155dd0 {
 };
 
 extern "C" GameResources* func_ov017_0218b5b0();
-char* GetFieldIfFlag4(char* obj);
-void* GetFieldPtrAt0x5ca4(void* obj);
+char* GetFieldIfFlag4_020100f8(char* obj);
+void* GetFieldPtrAt0x5ca4_02010768(void* obj);
 extern "C" void* func_02012fe4();
 char* GetGlobalField0x1c020421a0();
-void* GetGlobalPtr021075f4(void);
+void* GetGlobalPtr021075f4_0203cf4c(void);
 void* EmptyStub0203d004(void* p);
-void* GetEntryUnlessFlag0x8000(EntryList_203dce4*, int);
-int* GetField0x8(int* p);
+void* GetEntryUnlessFlag0x8000_0203dce4(EntryList_203dce4*, int);
+int* GetField0x8_02040528(int* p);
 struct Container02040404;
 int FindEntryIndexByName02040404(Container02040404*, char const*);
 void ReleaseOrDecrementSlot0204039c(Container0204039c* c, int idx);
@@ -33,27 +33,27 @@ void Reset02040504(int* p);
 void SetSlotIfIndexBelow32(SlotArray0203dd10*, unsigned int, int);
 void ReinitController02043204(char* obj);
 extern "C" void func_02043124(char* obj);
-void ClearBitsInField4(unsigned int* p, unsigned int bits);
+void ClearBitsInField4_0203b4e8(unsigned int* p, unsigned int bits);
 int IsScaledFieldPositive0203adfc(void* a, void* b);
 void ScaleAndNotify0203ad88(void* a, void* b, int c);
-void SetField0x7cClearFields0x1ec0x1ee(unsigned char*, unsigned short);
-void SetFields0x1f0And0x1f4(void* obj, int a, int b);
+void SetField0x7cClearFields0x1ec0x1ee_0202e874(unsigned char*, unsigned short);
+void SetFields0x1f0And0x1f4_0202f0c4(void* obj, int a, int b);
 extern "C" void* func_020704fc();
 struct EffectParam020708c8;
 void SetScaledEffectParam020708c8(EffectParam020708c8*, unsigned int);
-int GetBitsInField0(unsigned int* p, unsigned int bits);
+int GetBitsInField0_0203b4c4(unsigned int* p, unsigned int bits);
 void ResetAndReinit0209c278(void* obj);
-void Dispatch0203a974With0x57000(void* obj);
+void Dispatch0203a974With0x57000_0209c290(void* obj);
 void SetupContextForMode0205ea20(void* obj, int mode);
-void ClearBitsInWord(unsigned int*, unsigned int);
+void ClearBitsInWord_0203b4b0(unsigned int*, unsigned int);
 extern "C" void func_ov028_021d9714();
-void PopStack1AndTrigger(int v);
+void PopStack1AndTrigger_020a1f4c(int v);
 extern "C" void* func_0205ec34();
-int TestBitInByteArray(int p, unsigned char* arr, int bit);
+int TestBitInByteArray_0206dfb0(int p, unsigned char* arr, int bit);
 struct Bytes02033b88;
 void SetByte0xbeShiftPrev(Bytes02033b88*, int);
-void ClearCombatantSlot(GameState* gs, int id);
-void SetField0x3b0Value(GameState* gs, int val);
+void ClearCombatantSlot_0200fd48(GameState* gs, int id);
+void SetField0x3b0Value_020100c4(GameState* gs, int val);
 
 extern char data_ov001_02164c4a[];
 extern char data_02108760[];
@@ -81,12 +81,12 @@ extern "C" ARM unsigned short func_ov001_02155dd0(Scene02155dd0* self) {
         GameState* gs;
 
     gs = GameState::GetInstance();
-    hud = GetFieldIfFlag4((char*)gs);
+    hud = GetFieldIfFlag4_020100f8((char*)gs);
     res2 = func_ov017_0218b5b0();
     area = (Zone3D*)func_02012fe4();
     globalA = GetGlobalField0x1c020421a0();
     loader = BackgroundLoader::GetInstance();
-    ptr6 = (int*)GetFieldPtrAt0x5ca4(gs);
+    ptr6 = (int*)GetFieldPtrAt0x5ca4_02010768(gs);
 
     for (i = 0; i < 4; i++) {
         obj = gs->GetMaybeWanderingMonsterByIndex(i);
@@ -104,18 +104,18 @@ extern "C" ARM unsigned short func_ov001_02155dd0(Scene02155dd0* self) {
         obj = gs->GetGameObjectByIndex(j + 0xa0);
         if (obj != 0) {
             obj->obj3D_.Destroy();
-            ClearCombatantSlot(gs, j + 0xa0);
+            ClearCombatantSlot_0200fd48(gs, j + 0xa0);
         }
     }
 
     if (ptr6[1] != 0) {
-        if (GetFieldIfFlag4((char*)gs) == 0) {
-            SetField0x3b0Value(gs, ptr6[1]);
-            hud = GetFieldIfFlag4((char*)gs);
+        if (GetFieldIfFlag4_020100f8((char*)gs) == 0) {
+            SetField0x3b0Value_020100c4(gs, ptr6[1]);
+            hud = GetFieldIfFlag4_020100f8((char*)gs);
         }
     }
 
-    void* list = GetGlobalPtr021075f4();
+    void* list = GetGlobalPtr021075f4_0203cf4c();
     char buf[16];
     const char* fmt;
     char* nameBuf;
@@ -124,9 +124,9 @@ extern "C" ARM unsigned short func_ov001_02155dd0(Scene02155dd0* self) {
     nameBuf = buf;
     fmt = data_ov001_02164c4a;
     for (; k < 0x20; k++) {
-        int* entry = (int*)GetEntryUnlessFlag0x8000((EntryList_203dce4*)list, k);
+        int* entry = (int*)GetEntryUnlessFlag0x8000_0203dce4((EntryList_203dce4*)list, k);
         if (entry != 0) {
-            unsigned char* p = (unsigned char*)GetField0x8(entry);
+            unsigned char* p = (unsigned char*)GetField0x8_02040528(entry);
             if (p[2] == 3) {
                 Container0204039c* cont = (Container0204039c*)EmptyStub0203d004(list);
                 sprintf(nameBuf, fmt, p + 4);
@@ -140,24 +140,24 @@ extern "C" ARM unsigned short func_ov001_02155dd0(Scene02155dd0* self) {
 
     ReinitController02043204(globalA);
     func_02043124(globalA);
-    ClearBitsInField4((unsigned int*)res2, 8);
+    ClearBitsInField4_0203b4e8((unsigned int*)res2, 8);
     if (IsScaledFieldPositive0203adfc(data_02108760, 0) != 0) {
         ScaleAndNotify0203ad88(data_02109bf4, 0, 0);
     }
-    ClearBitsInField4((unsigned int*)res2, 0x2000);
-    SetField0x7cClearFields0x1ec0x1ee((unsigned char*)hud, 0);
-    SetFields0x1f0And0x1f4(hud, 0xf000, 0);
+    ClearBitsInField4_0203b4e8((unsigned int*)res2, 0x2000);
+    SetField0x7cClearFields0x1ec0x1ee_0202e874((unsigned char*)hud, 0);
+    SetFields0x1f0And0x1f4_0202f0c4(hud, 0xf000, 0);
     SetScaledEffectParam020708c8((EffectParam020708c8*)func_020704fc(), 0);
     loader->MaybeReset();
 
     REG_DISPSTAT_304 &= ~0x8000;
-    if (GetBitsInField0((unsigned int*)res2, 0x1000) != 0) {
+    if (GetBitsInField0_0203b4c4((unsigned int*)res2, 0x1000) != 0) {
         ResetAndReinit0209c278(data_02109bf4);
-        Dispatch0203a974With0x57000(data_02109bf4);
+        Dispatch0203a974With0x57000_0209c290(data_02109bf4);
         SetupContextForMode0205ea20(data_02108760, 0x64);
-        ClearBitsInWord((unsigned int*)((int)res2), 0x1000);
+        ClearBitsInWord_0203b4b0((unsigned int*)((int)res2), 0x1000);
         func_ov028_021d9714();
-        PopStack1AndTrigger(1);
+        PopStack1AndTrigger_020a1f4c(1);
     }
 
     DISPCNT = (DISPCNT & ~0x1f00) | 0x100;
@@ -169,7 +169,7 @@ extern "C" ARM unsigned short func_ov001_02155dd0(Scene02155dd0* self) {
     if (node != 0) {
         for (int n = 0; n < count; n++) {
             e = &node->elements[n];
-            if (TestBitInByteArray((int)events, (unsigned char*)((char*)events + 0x45b), n & 0xff) != 0) {
+            if (TestBitInByteArray_0206dfb0((int)events, (unsigned char*)((char*)events + 0x45b), n & 0xff) != 0) {
                 if (e != 0) {
                     e->flags &= ~4;
                 }

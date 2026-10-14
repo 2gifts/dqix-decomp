@@ -37,12 +37,12 @@ struct Entry020a83fc {
 extern "C" void* func_0202ae18(void);
 extern "C" void* func_02012fe4(void);
 extern "C" void* func_0205ec34(void);
-void* GetPtrField0x2a04(GameState* gameState);
-void* GetField0x3f8Address(GameState* battleStruct);
+void* GetPtrField0x2a04_02010828(GameState* gameState);
+void* GetField0x3f8Address_0200fd0c(GameState* battleStruct);
 extern "C" int func_0202c540(void* p);
 extern "C" int func_0206e558(void* obj);
 extern "C" int func_0202c508(void* p);
-int TestBitInByteArray(int unused, unsigned char* arr, int index);
+int TestBitInByteArray_0206dfb0(int unused, unsigned char* arr, int index);
 extern "C" void __clear(void* dst, unsigned int size);
 void ClearStruct020a8170(Struct020a8170* s);
 extern "C" void func_020a818c(void* cont, SafeAllocator* alloc);
@@ -54,8 +54,8 @@ void InitStruct02070378(char* obj);
 void InitAndResetHeader_0219e310(unsigned char* node, int v);
 void AppendNodeToTail(TailList020469b4* list, TailNode020469b4* node);
 void ClearFlagBytes02017d7c(void* obj);
-void ClearFlag0x1ceBit0x4(unsigned char* obj);
-void SetFlag0x1ceBit0x4(unsigned char* obj);
+void ClearFlag0x1ceBit0x4_02039d58(unsigned char* obj);
+void SetFlag0x1ceBit0x4_02039d48(unsigned char* obj);
 int GetGlobalField0x1c020421a0(void);
 void ReinitController02043204(char* obj);
 extern "C" int func_ov017_0219ff58(void* base, int a, int b, int c);
@@ -67,9 +67,9 @@ void SetBit5_021b2c0c(S021b2c0c* obj, unsigned int v);
 void SetBit3_021b2bdc(S021b2bdc* obj, unsigned int v);
 int LoadFileIntoMemory(const char* path, void* buffer, unsigned int* outLength);
 void ResetListHeader020727d8(List020727d8* list);
-int GetField5cb0Value(char* obj);
+int GetField5cb0Value_0201079c(char* obj);
 void SubmitAndRunScript02072928(void* list, StreamHeader* header, int length, int id, void* out, unsigned char index);
-int CompareStrings(const char* a, const char* b);
+int CompareStrings_020d3018(const char* a, const char* b);
 extern "C" int func_02005a94(signed char* s);
 void InitState16_021ba90c(Obj021ba90c* p);
 void AllocateAndCopyBuf20_021689d8(SafeAllocator* a, void* target);
@@ -87,8 +87,8 @@ static inline unsigned char GetScriptIndex(int slot, int offset) {
 extern "C" ARM void func_ov017_0219bfb4(int mode, unsigned short id) {
     GameResources* res = func_ov017_0218b5b0();
     GameState* gs = GameState::GetInstance();
-    char* party = (char*)GetPtrField0x2a04(gs);
-    char* record = (char*)GetField0x3f8Address(gs);
+    char* party = (char*)GetPtrField0x2a04_02010828(gs);
+    char* record = (char*)GetField0x3f8Address_0200fd0c(gs);
     void* search = func_0202ae18();
     char* field = (char*)func_02012fe4();
     unsigned char* flags = (unsigned char*)func_0205ec34();
@@ -110,7 +110,7 @@ extern "C" ARM void func_ov017_0219bfb4(int mode, unsigned short id) {
         status[kStatusFlagOffset] = 0;
     }
     if (mode == 2 && func_0202c508(search)) {
-        if (TestBitInByteArray((int)flags, flags + 0x8c, 0x2b)) {
+        if (TestBitInByteArray_0206dfb0((int)flags, flags + 0x8c, 0x2b)) {
             char buf[0x533];
             __clear(buf, 0x533);
             SafeAllocator alloc;
@@ -159,10 +159,10 @@ extern "C" ARM void func_ov017_0219bfb4(int mode, unsigned short id) {
         GameObject* member = gs->GetPartyMemberByIndex(*(unsigned char*)(party + i + 0xf78));
         if (member) {
             if (i == 0) {
-                ClearFlag0x1ceBit0x4((unsigned char*)member);
+                ClearFlag0x1ceBit0x4_02039d58((unsigned char*)member);
                 ((Object3D*)member)->SetInheritedAlpha(0x1f);
             } else {
-                SetFlag0x1ceBit0x4((unsigned char*)member);
+                SetFlag0x1ceBit0x4_02039d48((unsigned char*)member);
                 ((Object3D*)member)->SetInheritedAlpha(0);
             }
         }
@@ -203,7 +203,7 @@ extern "C" ARM void func_ov017_0219bfb4(int mode, unsigned short id) {
     if (id != 0) {
         scriptId = id;
     }
-    int now = GetField5cb0Value((char*)gs);
+    int now = GetField5cb0Value_0201079c((char*)gs);
     for (int j = 0; j < 3; j++) {
         unsigned char fromIndex = GetScriptIndex(j, 0);
         unsigned char toIndex = GetScriptIndex(j, 1);
@@ -215,10 +215,10 @@ extern "C" ARM void func_ov017_0219bfb4(int mode, unsigned short id) {
         SubmitAndRunScript02072928(scripts, (StreamHeader*)&data_0211e33c, length, scriptId, to, toIndex);
         int start = 0;
         int end = 0;
-        if (CompareStrings(from, &data_ov017_021d75fa)) {
+        if (CompareStrings_020d3018(from, &data_ov017_021d75fa)) {
             start = func_02005a94((signed char*)from);
         }
-        if (CompareStrings(to, &data_ov017_021d75fa)) {
+        if (CompareStrings_020d3018(to, &data_ov017_021d75fa)) {
             end = func_02005a94((signed char*)to);
         }
         int inRange = 0;
@@ -241,7 +241,7 @@ extern "C" ARM void func_ov017_0219bfb4(int mode, unsigned short id) {
     BackgroundLoader::RemoveLockGlobal();
 
     signed char state = 1;
-    if (CompareStrings(result, &data_ov017_021d75fa)) {
+    if (CompareStrings_020d3018(result, &data_ov017_021d75fa)) {
         state = func_02005a94((signed char*)result);
     }
     if (state != 3) {

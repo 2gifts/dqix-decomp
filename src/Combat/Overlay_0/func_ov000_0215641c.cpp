@@ -27,7 +27,7 @@ extern "C" ARM float func_ov000_0215641c(int unused, int id) {
     float result = 0.0f;
     int valid = (id >= 0 && id <= 3);
     if (valid) {
-        Combatant0215641c* c = (Combatant0215641c*)GetCombatantWithFlag0x100(gs, id);
+        Combatant0215641c* c = (Combatant0215641c*)GetCombatantWithFlag0x100_0200ff1c(gs, id);
         if (c == NULL) {
             return 0.0f;
         }

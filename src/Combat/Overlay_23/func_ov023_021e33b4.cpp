@@ -99,7 +99,7 @@ extern "C" void* memset(void* dst, int value, unsigned int length);
 extern "C" void* memcpy(void* dst, const void* src, unsigned int length);
 
 int IsMainBrightnessTransitionActive(GameResources* resources);
-void SetBitsInField4(unsigned int* field, unsigned int bits);
+void SetBitsInField4_0203b4d8(unsigned int* field, unsigned int bits);
 void RestorePairTables0207df90(char* tables);
 void BackupPairTables0207dfac(char* tables);
 void CopyInternalFields0207df50(Foo0207df50* tables);
@@ -114,14 +114,14 @@ void SetIntC0C_021e6198(void* model, int value);
 void SetByteC11_021e6150(void* model, unsigned char value);
 void InitWordsQuad_021e60e0(void* model, unsigned int value);
 void* GetGlobalField0x1c020421a0();
-void SetField0x1e28(void* messages, void* tables);
-void SetField0x3b0Value(GameState* gameState, int camera);
-int GetField0x3acValue(GameState* gameState);
+void SetField0x1e28_02042b30(void* messages, void* tables);
+void SetField0x3b0Value_020100c4(GameState* gameState, int camera);
+int GetField0x3acValue_020100a8(GameState* gameState);
 void InitCombatController020a2010(void* camera);
 void SetVec3At0x4(Vec3Target0202e5c0* camera, int x, int y, int z);
-void SetFields0x10To0x18(unsigned char* camera, int x, int y, int z);
-void SetField0x238False(void* camera);
-void SetFogState(int a, unsigned int b, unsigned int c, unsigned short d);
+void SetFields0x10To0x18_0202e5c8(unsigned char* camera, int x, int y, int z);
+void SetField0x238False_020a27a0(void* camera);
+void SetFogState_020c54a4(int a, unsigned int b, unsigned int c, unsigned short d);
 void InitStruct0205a444(char* list);
 void Init0205a198(Struct0205a198* entry);
 int CountActiveEntries(ActiveEntry02046900* file);
@@ -130,8 +130,8 @@ void Clear12Bytes020e46c4(void* arg);
 void InitObjFromCombatantId020e4bf4(void* arg, int combatant);
 void* GetFieldByKey020e0434(Container020e0310* container, int key);
 void ClearFields_021e20c0(void* table);
-void* GetFieldAt0x150(unsigned char* combatant);
-void CallWithAddr4000330(int addr);
+void* GetFieldAt0x150_02053c6c(unsigned char* combatant);
+void CallWithAddr4000330_020c555c(int addr);
 void CopyByteFieldToNextAndSet_021e33a0_021e33a0(char* self, signed char mode);
 void InitEntryManagerAndAllocator02159c24(Obj02159c24*, int, int);
 
@@ -173,14 +173,14 @@ extern "C" ARM void func_ov023_021e33b4(BattleSetup021e33b4* self)
 
     if (self->step_4e4 == 1)
     {
-        FontBankLoader* music = GetGlobal02109400();
+        FontBankLoader* music = GetGlobal02109400_02094a00();
         BlankFunction02094b40(music);
         BlankFunction02094b34(music, 0x79, 0x1fa, 0, 0);
         self->step_4e4++;
     }
     else if (self->step_4e4 == 2)
     {
-        if (AlwaysTrue02094b4c(GetGlobal02109400()))
+        if (AlwaysTrue02094b4c(GetGlobal02109400_02094a00()))
         {
             func_ov017_0219ba0c(resources, 1);
             self->task_630 = loader->QueueLoadFileInGP2(data_020f2a38, data_020f2a30, NULL);
@@ -194,7 +194,7 @@ extern "C" ARM void func_ov023_021e33b4(BattleSetup021e33b4* self)
             void* data;
             unsigned int size;
             loader->GetLoadedFileByID(self->task_630, &data, &size);
-            SetBitsInField4((unsigned int*)resources, 0x601fe);
+            SetBitsInField4_0203b4d8((unsigned int*)resources, 0x601fe);
             RestorePairTables0207df90(self->pairTables_8);
             self->allocator_14->Reset();
             ZeroInit020de848(self->descriptor_a4);
@@ -266,18 +266,18 @@ extern "C" ARM void func_ov023_021e33b4(BattleSetup021e33b4* self)
             CopyInternalFields0207df50((Foo0207df50*)self->pairTables_404);
 
             void* messages = GetGlobalField0x1c020421a0();
-            SetField0x1e28(messages, self->pairTables_474);
+            SetField0x1e28_02042b30(messages, self->pairTables_474);
             RestorePairTables0207df90(self->pairTables_474);
             func_020432c4(messages);
             BackupPairTables0207dfac(self->pairTables_474);
 
-            self->camera_138 = GetField0x3b0Value(gameState);
+            self->camera_138 = GetField0x3b0Value_020100bc(gameState);
             InitCombatController020a2010(self->camera_13c);
             SetVec3At0x4((Vec3Target0202e5c0*)self->camera_13c, 0xb666, 0xa800, 0x42ccc);
-            SetFields0x10To0x18((unsigned char*)self->camera_13c, 0xb666, 0xa800, 0);
-            SetField0x238False(self->camera_13c);
-            SetField0x3b0Value(gameState, (int)self->camera_13c);
-            SetFogState(0, 0, 0, 0);
+            SetFields0x10To0x18_0202e5c8((unsigned char*)self->camera_13c, 0xb666, 0xa800, 0);
+            SetField0x238False_020a27a0(self->camera_13c);
+            SetField0x3b0Value_020100c4(gameState, (int)self->camera_13c);
+            SetFogState_020c54a4(0, 0, 0, 0);
 
             loader->RemoveTask(self->task_630);
             self->task_630 = -1;
@@ -343,7 +343,7 @@ extern "C" ARM void func_ov023_021e33b4(BattleSetup021e33b4* self)
     {
         TextArg021e33b4 arg;
         Clear12Bytes020e46c4(&arg);
-        InitObjFromCombatantId020e4bf4(&arg, GetField0x3acValue(gameState));
+        InitObjFromCombatantId020e4bf4(&arg, GetField0x3acValue_020100a8(gameState));
         void* messages = GetGlobalField0x1c020421a0();
         Container020e0310* texts = (Container020e0310*)((char*)self->battle_0 + 0xdf8);
         for (int i = 0; i < 2; i++)
@@ -377,11 +377,11 @@ extern "C" ARM void func_ov023_021e33b4(BattleSetup021e33b4* self)
     }
     else
     {
-        void* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), self->combatant_4fc);
+        void* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), self->combatant_4fc);
         if (combatant != NULL)
         {
             InitWordsQuad_021e60e0(self->models_120[0], 0x1eb);
-            func_ov023_021e5974(self->models_120[0], GetFieldAt0x150((unsigned char*)combatant), self->combatant_4fc, 0, 0);
+            func_ov023_021e5974(self->models_120[0], GetFieldAt0x150_02053c6c((unsigned char*)combatant), self->combatant_4fc, 0, 0);
         }
         self->current_128[0] = self->models_120[0];
         self->current_128[1] = self->models_120[1];
@@ -392,7 +392,7 @@ extern "C" ARM void func_ov023_021e33b4(BattleSetup021e33b4* self)
             func_ov005_0215a960(self->battle_0);
             func_ov005_0215ae7c(self->battle_0);
         }
-        CallWithAddr4000330((int)data_ov023_021fdc94);
+        CallWithAddr4000330_020c555c((int)data_ov023_021fdc94);
         func_ov023_021e3d3c(self->table_d4, 0x11, 1);
         func_ov023_021e3d3c(self->table_d4, 0x12, 1);
         func_ov023_021e3d3c(self->table_d4, 0x1b, 1);

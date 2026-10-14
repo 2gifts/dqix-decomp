@@ -4,7 +4,7 @@
 
 extern "C" void* __clear(void* dst, int count);
 extern "C" int sprintf(char* dst, const char* fmt, ...);
-int IsValueEqual12(int x);
+int IsValueEqual12_02042190(int x);
 extern "C" int func_020420e8(char* str, int id);
 extern "C" void func_0204f41c(int a, short b, short c, char* buf, int d, int e, void* f, void* g, int h);
 extern char data_020f02f5;
@@ -34,7 +34,7 @@ extern "C" ARM void func_0204f7e8(int target, short width, short height, int val
         sprintf(buf, &data_020f0300, value);
     }
 
-    int index = IsValueEqual12(style);
+    int index = IsValueEqual12_02042190(style);
     if (measure) {
         width = width - func_020420e8(buf, index);
     }

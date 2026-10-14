@@ -7,7 +7,7 @@ enum { kFlagOffset = 0x1ce };
 
 #include "GameState/GameState.h"
 
-GameObject* GetCombatantWithFlag0x1000(GameState* battleStruct, int combatantId);
+GameObject* GetCombatantWithFlag0x1000_0200ff58(GameState* battleStruct, int combatantId);
 
 struct U16Field0x6_020375f8;
 
@@ -32,7 +32,7 @@ ARM void ApplyStatusTickEffect(struct Obj02039df4* obj) {
     GameObject* combatant;
 
     if (obj->flagBit0xc2) return;
-    combatant = GetCombatantWithFlag0x1000(GameState::GetInstance(), obj->combatantId);
+    combatant = GetCombatantWithFlag0x1000_0200ff58(GameState::GetInstance(), obj->combatantId);
     if (combatant == NULL) return;
     q = ((Object3D*)((struct U16Field0x6_020375f8*)obj))->GetField06() / 100;
     if (q != 0x2b && q != 0x2d && q != 0x40 && q != 0x29) return;

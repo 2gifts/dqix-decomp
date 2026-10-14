@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void* GetData02100044();
+void* GetData02100044_0202ae24();
 extern "C" void func_0205e330(void* p, void* buf, int flag);
 
 struct SubField4_021d1014 {
@@ -18,7 +18,7 @@ struct LocalBuf021d1014 {
 
 // USA: func_ov017_021d1014  (semantic: PackAndDispatchBuf_021d1014)
 extern "C" ARM void func_ov017_021d1014(int arg0, unsigned char arg1, int arg2) {
-    void* g = GetData02100044();
+    void* g = GetData02100044_0202ae24();
     struct LocalBuf021d1014 buf;
     struct SubField4_021d1014* sub = &buf.sub;
     sub->low7 = arg0;

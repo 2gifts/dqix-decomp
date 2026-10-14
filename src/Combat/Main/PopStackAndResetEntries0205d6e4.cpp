@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void ResetElem2081Entry(void* obj);
+void ResetElem2081Entry_0204c804(void* obj);
 
 struct Ctx0205d6e4 {
     char pad0[0x98];
@@ -32,7 +32,7 @@ extern "C" ARM void func_0205d6e4(Ctx0205d6e4* self, unsigned int count) {
         Elem0205d6e4* e1 = (Elem0205d6e4*)((char*)arr1 + idx1 * 0xe0);
         e1->fc2 = 0;
         e1->fc4 = 0;
-        ResetElem2081Entry(e1);
+        ResetElem2081Entry_0204c804(e1);
 
         int newFb4 = self->fb4 - 1;
         self->fb4 = newFb4;

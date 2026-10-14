@@ -1,9 +1,9 @@
 #include <globaldefs.h>
 
 extern "C" void func_020ca390(int a, void* buf, unsigned int size);
-int CallFunc020d4fa4Zero(int a, int b, int c);
+int CallFunc020d4fa4Zero_020d4f7c(int a, int b, int c);
 extern "C" void func_ov031_022359e0(void* obj);
-int CopyToBattleContextBuffer(void* src);
+int CopyToBattleContextBuffer_020d4848(void* src);
 unsigned short GetOwnerDataFortuneValue020d4be8(void);
 extern "C" int func_ov031_022358b4(void);
 
@@ -16,13 +16,13 @@ extern Block022357e8 data_ov031_02249204;
 extern "C" ARM int func_ov031_022357e8(void) {
 	func_020ca390(0, data_ov031_02290cf8 + 0x1300, 0x348);
 
-	int r = CallFunc020d4fa4Zero((int)data_ov031_02290cf8, (int)func_ov031_022359e0, 3);
+	int r = CallFunc020d4fa4Zero_020d4f7c((int)data_ov031_02290cf8, (int)func_ov031_022359e0, 3);
 	if (r != 2) return 0;
 
 	char* ip;
 	do {
 		ip = data_ov031_02290cf8;
-		CopyToBattleContextBuffer(ip + 0x28c + 0x1400);
+		CopyToBattleContextBuffer_020d4848(ip + 0x28c + 0x1400);
 		ip = data_ov031_02290cf8;
 	} while (*(unsigned short*)(ip + 0x1600 + 0x8c) != 2);
 

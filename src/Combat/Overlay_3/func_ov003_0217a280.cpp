@@ -4,11 +4,11 @@ struct Obj2081 {
     char unk_0[0x36];
     short selected;
 };
-int HasElementByByte0xc4(struct Obj2081* obj, int key);
+int HasElementByByte0xc4_020811d0(struct Obj2081* obj, int key);
 short FindMappedMemberId02080468(void* obj, int id);
 extern "C" void func_020813ec(void* obj, int key);
 void SetEntryLowNibbleAndElement02080c68(void* obj, int id, int value);
-void CallFunc0204c804OnMatchingKey(struct Obj2081* obj, int key);
+void CallFunc0204c804OnMatchingKey_0207fdcc(struct Obj2081* obj, int key);
 
 struct Obj0208203c;
 void ResetWithSub0208203c(struct Obj0208203c* obj);
@@ -48,7 +48,7 @@ extern "C" ARM void func_ov003_0217a280(struct Menu_0217a280* self) {
     struct Obj2081* menu = self->menu;
     if (self->step == 0) {
         self->key = 2;
-        if (HasElementByByte0xc4(menu, self->key) == 0) {
+        if (HasElementByByte0xc4_020811d0(menu, self->key) == 0) {
             if (self->member1004 < 0) {
                 self->member1004 = FindMappedMemberId02080468(menu, self->key);
             }
@@ -95,7 +95,7 @@ extern "C" ARM void func_ov003_0217a280(struct Menu_0217a280* self) {
             self->nextState = 0xa;
             self->mode = 1;
             self->step = 0;
-            CallFunc0204c804OnMatchingKey(menu, self->key);
+            CallFunc0204c804OnMatchingKey_0207fdcc(menu, self->key);
         }
     }
 }

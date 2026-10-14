@@ -56,14 +56,14 @@ struct S02190c2c
 };
 
 extern "C" int func_ov015_021925a8(S02190c2c* self);
-int TestFlagInSecondWord(unsigned short* pad, unsigned int buttons);
-int TestFlag0SetAndFlag1Clear(unsigned short* pad, int buttons);
-int TestFlagMask(unsigned short* pad, int buttons);
+int TestFlagInSecondWord_02012468(unsigned short* pad, unsigned int buttons);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* pad, int buttons);
+int TestFlagMask_02012430(unsigned short* pad, int buttons);
 extern "C" int func_0201248c(unsigned short* pad, int buttons);
 void SetField18_0219011c(Obj0219011c* object, int step);
 extern "C" int func_ov015_02191284(DebugMenu* menu);
 void* GetNodeAtIndex(IndexList_0202a9ac* menu, int index);
-const char* GetSubstructAt0x4(void* item);
+const char* GetSubstructAt0x4_02029560(void* item);
 extern "C" void func_ov015_0218f364(ViewObject* object, const char* name);
 void UpdateField4c021900dc(Obj021900dc* object);
 extern "C" void func_ov015_02192700(S02190c2c* self, int unk);
@@ -76,22 +76,22 @@ extern "C" ARM void func_ov015_02191294(S02190c2c* self)
 {
     if (func_ov015_021925a8(self))
         return;
-    if (TestFlagInSecondWord(&data_02114e30, 0x20) || TestFlagInSecondWord(&data_02114e30, 0x10) ||
-        TestFlagInSecondWord(&data_02114e30, 0x100))
+    if (TestFlagInSecondWord_02012468(&data_02114e30, 0x20) || TestFlagInSecondWord_02012468(&data_02114e30, 0x10) ||
+        TestFlagInSecondWord_02012468(&data_02114e30, 0x100))
     {
         self->repeatDelay_ = 0x1e;
         self->repeatTimer_ = 0;
     }
-    if (TestFlag0SetAndFlag1Clear(&data_02114e30, 1))
+    if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 1))
     {
-        if (TestFlagMask(&data_02114e30, 0x100))
+        if (TestFlagMask_02012430(&data_02114e30, 0x100))
         {
             ViewObject* current = self->current_;
             current->playing_ = current->playing_ == 0;
             self->redraw_ = 1;
             return;
         }
-        if (TestFlagMask(&data_02114e30, 0x200))
+        if (TestFlagMask_02012430(&data_02114e30, 0x200))
         {
             ViewObject* current = self->current_;
             int loop = current->loop_;
@@ -122,18 +122,18 @@ extern "C" ARM void func_ov015_02191294(S02190c2c* self)
             if (self->syncMotion_)
             {
                 for (ViewObjectNode* node = self->objects_; node != NULL; node = node->next_)
-                    func_ov015_0218f364(node->object_, GetSubstructAt0x4(item));
+                    func_ov015_0218f364(node->object_, GetSubstructAt0x4_02029560(item));
             }
             else
             {
-                func_ov015_0218f364(self->current_, GetSubstructAt0x4(item));
+                func_ov015_0218f364(self->current_, GetSubstructAt0x4_02029560(item));
             }
         }
         UpdateField4c021900dc((Obj021900dc*)self->current_);
         self->redraw_ = 1;
         return;
     }
-    if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2))
+    if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 2))
     {
         SetField18_0219011c((Obj0219011c*)self->current_, self->current_->step_);
         self->current_->playing_ = 0;
@@ -144,7 +144,7 @@ extern "C" ARM void func_ov015_02191294(S02190c2c* self)
         func_ov015_02192700(self, 0);
         return;
     }
-    if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x100))
+    if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x100))
     {
         if (self->current_->playing_)
             self->redraw_ = 1;
@@ -152,7 +152,7 @@ extern "C" ARM void func_ov015_02191294(S02190c2c* self)
     }
     if (func_0201248c(&data_02114e30, 0x20))
     {
-        if (TestFlagMask(&data_02114e30, 0x100))
+        if (TestFlagMask_02012430(&data_02114e30, 0x100))
         {
             AdjustSubstructField_0219015c_0219015c((S0219015c*)self->current_, -0x28);
         }
@@ -169,7 +169,7 @@ extern "C" ARM void func_ov015_02191294(S02190c2c* self)
     }
     if (func_0201248c(&data_02114e30, 0x10))
     {
-        if (TestFlagMask(&data_02114e30, 0x100))
+        if (TestFlagMask_02012430(&data_02114e30, 0x100))
         {
             AdjustSubstructField_0219015c_0219015c((S0219015c*)self->current_, 0x28);
         }
@@ -184,9 +184,9 @@ extern "C" ARM void func_ov015_02191294(S02190c2c* self)
         self->redraw_ = 1;
         return;
     }
-    if (TestFlagMask(&data_02114e30, 0x20))
+    if (TestFlagMask_02012430(&data_02114e30, 0x20))
     {
-        if (!TestFlagMask(&data_02114e30, 0x100))
+        if (!TestFlagMask_02012430(&data_02114e30, 0x100))
             return;
         if (self->repeatTimer_ < self->repeatDelay_)
         {
@@ -199,9 +199,9 @@ extern "C" ARM void func_ov015_02191294(S02190c2c* self)
         self->redraw_ = 1;
         return;
     }
-    if (!TestFlagMask(&data_02114e30, 0x10))
+    if (!TestFlagMask_02012430(&data_02114e30, 0x10))
         return;
-    if (!TestFlagMask(&data_02114e30, 0x100))
+    if (!TestFlagMask_02012430(&data_02114e30, 0x100))
         return;
     if (self->repeatTimer_ < self->repeatDelay_)
     {

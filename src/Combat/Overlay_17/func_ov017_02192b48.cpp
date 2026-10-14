@@ -106,8 +106,8 @@ extern "C" long long func_020c3260(int);
 extern "C" float func_0200c700(long long);
 extern "C" int func_020312bc(GeometryTriangle* triangles, int count, Vector3fix* start, Vector3fix* end, Vector3fix* point);
 extern "C" int func_020315b8(GeometryTriangle* triangles, int count, Vector3fix* originalPosition, fix32_t radius, Vector3fix* position, Vector3i* backupPosition);
-void CopyFourHalfwordsToField0x114(void* obj, FourHalfwords02033f7c* src);
-void SetFlag0x80AndCopyToField0x11c(void* obj, FourHalfwords02033f7c* src);
+void CopyFourHalfwordsToField0x114_02033f6c(void* obj, FourHalfwords02033f7c* src);
+void SetFlag0x80AndCopyToField0x11c_02033fa8(void* obj, FourHalfwords02033f7c* src);
 void CopyBlocksSetFlag0x40(CopyDst02033edc* dst, CopySrc02033edc* src);
 
 // USA: func_ov017_02192b48
@@ -186,7 +186,7 @@ extern "C" ARM int func_ov017_02192b48(TerrainGrid* grid, Probe02192b48* probe, 
                             if (node != NULL && (geometry = node->geometry) != NULL && (polygons = geometry->polygons) != NULL) {
                                 if (polygons->header->type == 3) {
                                     FourHalfwords02033f7c material = polygons->materials[grid->materialIndex[idx]];
-                                    CopyFourHalfwordsToField0x114(self, &material);
+                                    CopyFourHalfwordsToField0x114_02033f6c(self, &material);
                                 }
                             }
                         }
@@ -255,7 +255,7 @@ extern "C" ARM int func_ov017_02192b48(TerrainGrid* grid, Probe02192b48* probe, 
                 if (node != NULL && (geometry = node->geometry) != NULL && (polygons = geometry->polygons) != NULL) {
                     if (polygons->header->type == 3) {
                         FourHalfwords02033f7c material = polygons->materials[grid->materialIndex[idx]];
-                        SetFlag0x80AndCopyToField0x11c(self, &material);
+                        SetFlag0x80AndCopyToField0x11c_02033fa8(self, &material);
                     }
                 }
             }

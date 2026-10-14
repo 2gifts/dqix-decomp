@@ -9,7 +9,7 @@ void _ZN13SafeAllocator5ResetEv(void *);
 void _Z26CopyInternalFields0207df50P11Foo0207df50(void *);
 void _Z25RestorePairTables0207df90Pc(void *);
 void _Z24BackupPairTables0207dfacPc(void *);
-int _Z15GetBitsInField4Pjj(void *, unsigned int);
+int _Z24GetBitsInField4_0203b4fcPjj(void *, unsigned int);
 void _Z19CopyVec3ToField0x44P14Target02059f38P13Vec3_02059f38(void *, void *);
 void _Z13SetFields0x44P14Fields020407b4iii(void *, int, int, int);
 int _Z17IsIdInSet02098210ii(int, int);
@@ -76,7 +76,7 @@ extern "C" ARM int func_ov003_02158754(struct Ctrl02158754 *self) {
         unsigned short *d     = func_02012fe4();
         unsigned int id       = d[0];
         if (pm->IsVisible() && pm->GetInheritedAlpha() != 0 && id != 10000) {
-            if (_Z15GetBitsInField4Pjj(res, 4) == 0 || ((struct PM02158754 *) pm)->f4 == 0) {
+            if (_Z24GetBitsInField4_0203b4fcPjj(res, 4) == 0 || ((struct PM02158754 *) pm)->f4 == 0) {
                 _Z19CopyVec3ToField0x44P14Target02059f38P13Vec3_02059f38(obj, (char *) pm + 0x44);
                 const Vector3fix &sc2 = pm->GetScale();
                 obj->SetScale(&sc2);

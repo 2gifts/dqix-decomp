@@ -4,7 +4,7 @@
 #endif
 #include "GameState/GameState.h"
 
-int TestBitInArray0x8ec(unsigned char* obj, int index);
+int TestBitInArray0x8ec_02083b00(unsigned char* obj, int index);
 int GetSlotBits0201137c(char* base, int id);
 extern short data_020e8aaa[];
 
@@ -17,11 +17,10 @@ ARM int AccumulateFlaggedSlotBits02086164(unsigned char* actor) {
     list = data_020e8aaa;
     short id;
     while ((id = list[i]) != -1) {
-        if (TestBitInArray0x8ec(actor, id)) {
+        if (TestBitInArray0x8ec_02083b00(actor, id)) {
             total += GetSlotBits0201137c((char*)bs, id);
         }
         i = (i + 1) & 0xff;
     }
     return total;
 }
-

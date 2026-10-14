@@ -5,7 +5,7 @@
 extern Script::OpcodeLookupEntry data_020ef388[];
 
 // USA: func_0201e1d0
-ARM void ExecuteZoneWarpScript(const void* data, unsigned int length, ZoneFeatures* features, SafeAllocator* allocator) {
+ARM void ExecuteZoneWarpScript_0201e1d0(const void* data, unsigned int length, ZoneFeatures* features, SafeAllocator* allocator) {
     if (length == 0) return;
     data_020fdc20.warp = features;
     data_020fdc20.allocator = allocator;

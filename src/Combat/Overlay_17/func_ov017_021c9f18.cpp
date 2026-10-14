@@ -34,16 +34,16 @@ enum { DisplayFlagsOffset = 0x180 };
 enum { DisplayFlagsOffset = 0x18c };
 #endif
 
-void* GetFieldAt0x150(unsigned char*);
+void* GetFieldAt0x150_02053c6c(unsigned char*);
 extern "C" void func_02083e28(void*, int);
 unsigned short GetField6b4_021b8480(void*);
-void SetFlags0x180At0x18c(void*);
-void ClearFlag0x80SetFlag0x100(void*);
+void SetFlags0x180At0x18c_02054224(void*);
+void ClearFlag0x80SetFlag0x100_02054234(void*);
 extern "C" void func_ov017_0218b5f8(int);
-void SetBoolFlagAt558(unsigned char*, int, int);
+void SetBoolFlagAt558_02026f08(unsigned char*, int, int);
 void SetArrayEntryFlag02026f20(int, int);
-int GetSignedByte0x2d0(void*);
-int GetField0x397cValue(GameState*);
+int GetSignedByte0x2d0_020546a8(void*);
+int GetField0x397cValue_020100b0(GameState*);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
 void CallHelperWithBuf_021907dc(int, int, int, int, int);
 extern "C" void func_ov017_02191108(void*, int, int, int, int);
@@ -59,7 +59,7 @@ extern "C" ARM void func_ov017_021c9f18(void* unused, const PartyStatsEvent* eve
     if (valid == 0) return;
     member = game->GetPartyMemberByIndex(index);
     if (member == NULL) return;
-    void* effect = GetFieldAt0x150((unsigned char*)member);
+    void* effect = GetFieldAt0x150_02053c6c((unsigned char*)member);
     if (effect == NULL) return;
     changed = 0;
     int wasDead = (*reinterpret_cast<CombatStatus**>(reinterpret_cast<char*>(member) + 0x130))->flags & 1;
@@ -81,20 +81,20 @@ extern "C" ARM void func_ov017_021c9f18(void* unused, const PartyStatsEvent* eve
             if (event->hp == 0) (*reinterpret_cast<unsigned int*>(reinterpret_cast<char*>(member) + DisplayFlagsOffset)) |= 1;
             else (*reinterpret_cast<unsigned int*>(reinterpret_cast<char*>(member) + DisplayFlagsOffset)) &= ~1;
         } else {
-            if (event->hp == 0) SetFlags0x180At0x18c(member);
-            else ClearFlag0x80SetFlag0x100(member);
+            if (event->hp == 0) SetFlags0x180At0x18c_02054224(member);
+            else ClearFlag0x80SetFlag0x100_02054234(member);
         }
     }
     if (event->special != 0) func_ov017_0218b5f8(-1);
     MapDisplay* flagTable = controller->unknown_ptr_36d0;
     if (flagTable != NULL) {
-        SetBoolFlagAt558((unsigned char*)flagTable, (unsigned char)index, event->special);
+        SetBoolFlagAt558_02026f08((unsigned char*)flagTable, (unsigned char)index, event->special);
         if (event->special != 0 && (oldHP != event->hp || oldMP != event->mp)) SetArrayEntryFlag02026f20((int)flagTable, index & 0xff);
     }
     if (changed == 0) return;
     memberIndex = index;
-    if ((member->obj3D_.unknown_0_ & 0x1000) != 0) memberIndex = GetSignedByte0x2d0(member);
-    GetField0x397cValue(game);
+    if ((member->obj3D_.unknown_0_ & 0x1000) != 0) memberIndex = GetSignedByte0x2d0_020546a8(member);
+    GetField0x397cValue_020100b0(game);
     if (memberIndex != GetSearchStructCurrentArrEntry(search)) CallHelperWithBuf_021907dc((int)controller, memberIndex, 1, 1, 1);
     else func_ov017_02191108(controller, 1, 1, 1, 1);
 }

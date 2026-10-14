@@ -10,6 +10,6 @@ struct FourHalfwords02033f7c {
 void CopyFourHalfwords(struct FourHalfwords02033f7c* dst, struct FourHalfwords02033f7c* src);
 
 // USA: func_02033f6c
-ARM void CopyFourHalfwordsToField0x114(void* obj, struct FourHalfwords02033f7c* src) {
+ARM void CopyFourHalfwordsToField0x114_02033f6c(void* obj, struct FourHalfwords02033f7c* src) {
     CopyFourHalfwords((struct FourHalfwords02033f7c*)((char*)obj + 0x114), src);
 }

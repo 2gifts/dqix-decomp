@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-int TestFlagMask(unsigned short* obj, int mask);
+int TestFlagMask_02012430(unsigned short* obj, int mask);
 extern unsigned short data_02114e30;
 
 extern "C" int func_02075910(int a0, void* out, int a1, int a2);
@@ -14,9 +14,9 @@ struct Buf020ab9c0 {
 };
 
 // USA: func_020ab9c0
-ARM int CheckSaveBufferStatus(int flag) {
+ARM int CheckSaveBufferStatus_020ab9c0(int flag) {
     int id = flag ? 0x8010 : 0x10;
-    if (TestFlagMask(&data_02114e30, 0x2000)) {
+    if (TestFlagMask_02012430(&data_02114e30, 0x2000)) {
         return 2;
     }
 

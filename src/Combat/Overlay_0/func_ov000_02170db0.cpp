@@ -15,7 +15,7 @@ struct CombatantExt02170db0 {
 
 struct Container020e0310;
 int GetFieldByKey020e0434(struct Container020e0310* c, int key);
-struct CombatantExt02170db0* GetFieldAt0x150(unsigned char* obj);
+struct CombatantExt02170db0* GetFieldAt0x150_02053c6c(unsigned char* obj);
 
 struct Obj0203c108 {
     #if defined(jpn)
@@ -75,11 +75,11 @@ extern char data_ov000_02183ff4[];
 extern "C" ARM void func_ov000_02170db0(struct Obj02170db0* obj) {
     struct Entry02170cf8* entry = func_ov000_02170cf8(obj, obj->entryKey);
     struct Equipment02171d90* equip = func_ov000_02171d90(obj, obj->itemId);
-    GameObject* c = GetCombatantWithFlag0x100(GameState::GetInstance(), obj->combatantId);
+    GameObject* c = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), obj->combatantId);
     if (c == NULL) {
         return;
     }
-    struct CombatantExt02170db0* ext = GetFieldAt0x150((unsigned char*)c);
+    struct CombatantExt02170db0* ext = GetFieldAt0x150_02053c6c((unsigned char*)c);
     obj->label.dirty = 1;
     if (HasAnyFlags_021719f8_021719f8((int*)obj)) {
 #if defined(jpn)

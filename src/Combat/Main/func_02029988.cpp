@@ -72,13 +72,13 @@ struct WrapField_0202a678;
 
 extern "C" void func_02029634(DebugMenu* menu, int ticks);
 DebugMenuItem* GetNodeAtIndex(IndexList_0202a9ac*, int);
-void SelectCoordsByFlag0x24(unsigned char*, int*, int*);
+void SelectCoordsByFlag0x24_02012a84(unsigned char*, int*, int*);
 void SetState0x6cAndInvoke(Callback_0202a91c*);
 void Deactivate0202a8cc(char*, int);
 void FormatAndDispatch0202ad98(int a, int b, int c, const char* fmt, ...);
 void FormatAndDispatch020290e8(int a, int b, const char* fmt, ...);
-int TestFlag0SetAndFlag1Clear(unsigned short*, int);
-int TestFlagMask(unsigned short*, int);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short*, int);
+int TestFlagMask_02012430(unsigned short*, int);
 extern "C" int func_0201248c(unsigned short*, unsigned int);
 void AdjustValueWrapOrClamp(WrapField_0202a678*, int);
 extern "C" void func_0202a6c4(DebugMenu* menu);
@@ -138,7 +138,7 @@ extern "C" ARM void func_02029988(DebugMenu* menu, int ticks) {
             if (data_02114e54.pressed) {
                 int tx, ty;
                 menu->touching = 1;
-                SelectCoordsByFlag0x24((unsigned char*)&data_02114e54, &tx, &ty);
+                SelectCoordsByFlag0x24_02012a84((unsigned char*)&data_02114e54, &tx, &ty);
                 if (menu->x < tx && tx < menu->x + menu->width - 12 &&
                     menu->y < ty && ty < menu->y + menu->height) {
                     menu->touchList = 1;
@@ -148,7 +148,7 @@ extern "C" ARM void func_02029988(DebugMenu* menu, int ticks) {
                 }
             } else if (menu->touching && menu->touchList && data_02114e54.down && data_02114e54.held) {
                 int tx, ty;
-                SelectCoordsByFlag0x24((unsigned char*)&data_02114e54, &tx, &ty);
+                SelectCoordsByFlag0x24_02012a84((unsigned char*)&data_02114e54, &tx, &ty);
                 if (menu->x < tx && tx < menu->x + menu->width - 12 &&
                     menu->y < ty && ty < menu->y + menu->height) {
                     int row = (ty - menu->y) / data_020ef74c.rowHeight - 1;
@@ -161,7 +161,7 @@ extern "C" ARM void func_02029988(DebugMenu* menu, int ticks) {
                 }
             } else if (menu->touching && menu->touchBar && data_02114e54.down && data_02114e54.held) {
                 int tx, ty;
-                SelectCoordsByFlag0x24((unsigned char*)&data_02114e54, &tx, &ty);
+                SelectCoordsByFlag0x24_02012a84((unsigned char*)&data_02114e54, &tx, &ty);
                 barY = ty - barH / 2;
                 if (barY < menu->y) {
                     barY = menu->y;
@@ -276,7 +276,7 @@ extern "C" ARM void func_02029988(DebugMenu* menu, int ticks) {
                     int suffix;
                     if (item->type == 2) {
                         if (menu->selected == row && item->disabled == 0 &&
-                            TestFlag0SetAndFlag1Clear(&data_02114e30, 0x30)) {
+                            TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x30)) {
                             item->value = item->value == 0;
                         }
                         if (item->value) {
@@ -297,7 +297,7 @@ extern "C" ARM void func_02029988(DebugMenu* menu, int ticks) {
                             int savedLast;
                             int old = item->value;
                             int step = 1;
-                            if (TestFlagMask(&data_02114e30, 8)) step = 100;
+                            if (TestFlagMask_02012430(&data_02114e30, 8)) step = 100;
                             if (func_0201248c(&data_02114e30, 0x10)) {
                                 AdjustValueWrapOrClamp((WrapField_0202a678*)item, step);
                                 adjusted = 1;

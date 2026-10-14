@@ -4,7 +4,7 @@ extern "C" void* func_02057924(void* obj);
 extern "C" void func_02057f00(void* self, int code);
 
 // USA: func_020dabd0
-ARM int RunCombatFlagStateAction(void* obj) {
+ARM int RunCombatFlagStateAction_020dabd0(void* obj) {
     void* self = func_02057924(obj);
     unsigned char sel = *((unsigned char*)obj + 0xe);
     switch (sel) {

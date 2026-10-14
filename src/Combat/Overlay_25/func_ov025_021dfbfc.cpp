@@ -10,8 +10,8 @@ struct CombatInfo_021dfbfc {
     int status;
 };
 
-struct CombatInfo_021dfbfc* GetFieldAt0x150(unsigned char* obj);
-void SetSubstructByte0x4c(unsigned char* obj, unsigned char value);
+struct CombatInfo_021dfbfc* GetFieldAt0x150_02053c6c(unsigned char* obj);
+void SetSubstructByte0x4c_02049458(unsigned char* obj, unsigned char value);
 
 struct Action_021dfbfc {
     char pad0[0xe];
@@ -63,9 +63,9 @@ extern "C" ARM void func_ov025_021dfbfc(BattleCtrl_021dfbfc* obj) {
             if (IsInRange(id)) {
                 apply = 1;
             } else {
-                GameObject* c = GetCombatantWithFlag0x100(bs, id);
+                GameObject* c = GetCombatantWithFlag0x100_0200ff1c(bs, id);
                 if (c != 0) {
-                    struct CombatInfo_021dfbfc* info = GetFieldAt0x150((unsigned char*)c);
+                    struct CombatInfo_021dfbfc* info = GetFieldAt0x150_02053c6c((unsigned char*)c);
                     if (info != 0 && (signed char)info->status != 5) {
                         apply = 1;
                     }
@@ -74,7 +74,7 @@ extern "C" ARM void func_ov025_021dfbfc(BattleCtrl_021dfbfc* obj) {
             if (apply) {
                 GameObject* target = bs->GetCombatantByIndex(id);
                 if (target != 0 && slot->action != 0) {
-                    SetSubstructByte0x4c((unsigned char*)target, slot->action->value);
+                    SetSubstructByte0x4c_02049458((unsigned char*)target, slot->action->value);
                 }
             }
         }

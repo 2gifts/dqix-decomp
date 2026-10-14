@@ -59,8 +59,8 @@ void SetField38IfState8_0215e49c(void*, int, int);
 extern "C" Node02162108* func_ov023_021f6880(void* list, int key);
 extern "C" int func_ov023_021f6f10(Node02162108* node);
 extern "C" struct TableA68* func_ov023_021fa598(Node02162108* node);
-extern "C" char* _Z14FindEntryByKeyP8TableA68i(struct TableA68* table, short key);
-char* FindSubstring(char* str, char* sub);
+extern "C" char* _Z23FindEntryByKey_02072a68P8TableA68i(struct TableA68* table, short key);
+char* FindSubstring_020d2f88(char* str, char* sub);
 int GetGlobalField0x1c020421a0(void);
 extern "C" void func_02046608(int g, int mode, char* fmt, char* dst, int size, int a, int b);
 void SetNodeFieldsAndMaybeNotify_0215f6f4(void* a, short v1, short v2, int flag);
@@ -168,8 +168,8 @@ extern "C" ARM int func_ov004_02162108(void* self) {
                         text = data_ov004_021707e8.textBuf + (k + off) * 0x80;
                         memset(text, 0, 0x80);
                         indent = 0;
-                        if (FindSubstring(_Z14FindEntryByKeyP8TableA68i(table, key), data_ov004_02170527)) indent = 0x14;
-                        func_02046608(GetGlobalField0x1c020421a0(), 0, _Z14FindEntryByKeyP8TableA68i(table, key), text, 0x78 - indent, 0, 0);
+                        if (FindSubstring_020d2f88(_Z23FindEntryByKey_02072a68P8TableA68i(table, key), data_ov004_02170527)) indent = 0x14;
+                        func_02046608(GetGlobalField0x1c020421a0(), 0, _Z23FindEntryByKey_02072a68P8TableA68i(table, key), text, 0x78 - indent, 0, 0);
                         label = func_ov004_0215e47c(self, id);
                         if (label != 0 && func_ov023_021f6f10(label) == 8) label->data = text;
                     }

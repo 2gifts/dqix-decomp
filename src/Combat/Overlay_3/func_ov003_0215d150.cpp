@@ -59,9 +59,9 @@ extern "C" int *func_0202ae18();
 extern "C" Zone *func_02012fe4();
 extern "C" void func_02046380(void *obj);
 struct StoreStruct;
-void StoreInArray0x8b0(StoreStruct*, int, int);
-void SetByteInRange(unsigned char *, int, unsigned char);
-int CheckField0NonZero(int *p);
+void StoreInArray0x8b0_020465c0(StoreStruct*, int, int);
+void SetByteInRange_020465f0(unsigned char *, int, unsigned char);
+int CheckField0NonZero_0202b7d8(int *p);
 extern "C" int func_0202c540(int *p);
 extern "C" int func_0202c508(int *p);
 struct Obj02046574;
@@ -73,7 +73,7 @@ extern "C" void func_ov003_0215ddc0(char *base);
 extern "C" void func_ov003_0215df1c(void *self);
 extern "C" void func_ov003_0215dd3c(char *obj);
 struct Struct_0205d81c;
-void SetElementFieldC2(Struct_0205d81c*, int, int);
+void SetElementFieldC2_0205deb4(Struct_0205d81c*, int, int);
 void SetChannelAFlag0205cef8(void *obj);
 void SetChannelBFlag0205cf04(void *obj);
 int GetActiveScaledSum0205d794(Struct_0205c570 *);
@@ -103,14 +103,14 @@ extern "C" ARM void func_ov003_0215d150(Scene *self) {
 
     if (state == 0) {
         func_02046380(g);
-        StoreInArray0x8b0((StoreStruct*)g, 0, self->b3c3);
-        SetByteInRange((unsigned char *) g, 0, 0);
-        StoreInArray0x8b0((StoreStruct*)g, 1, self->w3cc);
-        SetByteInRange((unsigned char *) g, 1, 0);
+        StoreInArray0x8b0_020465c0((StoreStruct*)g, 0, self->b3c3);
+        SetByteInRange_020465f0((unsigned char *) g, 0, 0);
+        StoreInArray0x8b0_020465c0((StoreStruct*)g, 1, self->w3cc);
+        SetByteInRange_020465f0((unsigned char *) g, 1, 0);
 
         int sb;
         sb = (self->w3d0 == 0) ? 1 : 0;
-        if (CheckField0NonZero(a) != 0) {
+        if (CheckField0NonZero_0202b7d8(a) != 0) {
             if (func_0202c540(a) != 0) {
                 sb = 2;
             }
@@ -171,7 +171,7 @@ extern "C" ARM void func_ov003_0215d150(Scene *self) {
             func_ov003_0215ddc0((char *) self);
         }
         func_ov003_0215df1c(self);
-        SetElementFieldC2((Struct_0205d81c*)self->list98, 0, 0);
+        SetElementFieldC2_0205deb4((Struct_0205d81c*)self->list98, 0, 0);
         self->state = self->state + 1;
     }
     if (state == 3) {

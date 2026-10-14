@@ -3,7 +3,7 @@
 #include <std_library_functions.h>
 struct Struct0200fb08;
 int NormalizeField5_0200fb08(Struct0200fb08*);
-int StringLength(const char*);
+int StringLength_020d2ff0(const char*);
 extern "C" int func_02001aec(const void*, const void*, unsigned int);
 extern char data_020e7e35[7];
 extern char data_020e7e30[5];
@@ -14,7 +14,7 @@ extern "C" ARM int func_020680cc(const char* text) {
         char suffix[5];
         INLINE_MEMCPY(endings, data_020e7e35, 7);
         INLINE_MEMCPY(suffix, data_020e7e30, 5);
-        int length = StringLength(text);
+        int length = StringLength_020d2ff0(text);
         if (length) {
             char last = text[length - 1];
             for (char* ending = endings; *ending; ending++) {

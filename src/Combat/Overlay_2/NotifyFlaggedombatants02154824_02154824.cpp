@@ -7,7 +7,7 @@ struct Obj020541a4;
 extern "C" void func_ov002_02153e90(void* obj);
 extern "C" struct Struct0201bc94* func_02012fe4();
 int IsEntryEligibleAndFlagged(struct Struct0201bc94* obj);
-void* GetPtrField0x2a04(GameState* battleStruct);
+void* GetPtrField0x2a04_02010828(GameState* battleStruct);
 void NotifySub020541a4(struct Obj020541a4* obj, unsigned char val);
 
 // USA: func_ov002_02154824
@@ -24,7 +24,7 @@ ARM int NotifyFlaggedombatants02154824_02154824(void* unused, unsigned char* obj
     func_ov002_02153e90(obj + 8);
     if (IsEntryEligibleAndFlagged(func_02012fe4())) {
         battleStruct = GameState::GetInstance();
-        base = (unsigned char*)GetPtrField0x2a04(battleStruct);
+        base = (unsigned char*)GetPtrField0x2a04_02010828(battleStruct);
         for (i = 0; i < (int)base[0xf7c]; i++) {
             unsigned char* p = base + i;
             GameObject* combatant = battleStruct->GetPartyMemberByIndex(p[0xf78]);

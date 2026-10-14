@@ -11,7 +11,7 @@ struct Struct205563c {
 };
 
 // USA: func_0205563c
-ARM void ClearSevenWords(struct Struct205563c* obj) {
+ARM void ClearSevenWords_0205563c(struct Struct205563c* obj) {
     obj->field0 = 0;
     obj->field8 = 0;
     obj->field4 = 0;

@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 extern "C" void* func_0202ae18(void);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 
 struct CheckField0AndGlobalHalfStruct0202c508 { int field0; };
 extern "C" int func_0202c508(CheckField0AndGlobalHalfStruct0202c508* obj);
@@ -19,7 +19,7 @@ void EnqueueEventTag51_021ceae4(unsigned char a, unsigned char b, unsigned char 
 // USA: func_020e321c  (semantic: ProcessCombatantTagEntry_020e321c)
 extern "C" ARM void func_020e321c(Entry020e3054* a, int b, unsigned char c) {
     int* g = (int*)func_0202ae18();
-    if (!CheckField0NonZero(g)) return;
+    if (!CheckField0NonZero_0202b7d8(g)) return;
 
     if (func_0202c508((CheckField0AndGlobalHalfStruct0202c508*)g)) {
         unsigned char tag = 0;

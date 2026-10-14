@@ -2,7 +2,7 @@
 
 unsigned int DisableIRQInterrupts(void);
 unsigned int SetIRQInterruptState(int mask);
-int StoreValueCountingDecreases(int value);
+int StoreValueCountingDecreases_020c96a8(int value);
 extern "C" void func_020c9be0(void);
 struct VCountAlarmNode020c92d0;
 void InsertVCountAlarmNode(struct VCountAlarmNode020c92d0* node);
@@ -14,7 +14,7 @@ extern "C" ARM void func_020c93d0(void* node, int a1, int a2, int a3, int a4) {
         func_020c9be0();
     }
     int vcount = *(volatile unsigned short*)0x4000006;
-    int decreases = StoreValueCountingDecreases(vcount);
+    int decreases = StoreValueCountingDecreases_020c96a8(vcount);
     *(int*)((char*)node + 0x1c) = 1;
     *(short*)((char*)node + 0x10) = (short)a1;
     if (a1 <= vcount) decreases = decreases + 1;

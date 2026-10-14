@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-int GetWord0x0(int* obj);
+int GetWord0x0_0200fb8c(int* obj);
 extern "C" void func_ov017_021bac24(int obj);
 extern "C" void func_ov017_021ba8e0(int obj);
 extern "C" void func_ov003_0217e300(int obj);
@@ -18,7 +18,7 @@ ARM int CommandDispatch0206f6cc(unsigned char* p, int idx) {
         return 1;
     }
 
-    int ctx = GetWord0x0((int*)GameState::GetInstance());
+    int ctx = GetWord0x0_0200fb8c((int*)GameState::GetInstance());
     unsigned char cmd = p[idx];
     switch (cmd) {
         case 1: func_ov017_021bac24(ctx); break;

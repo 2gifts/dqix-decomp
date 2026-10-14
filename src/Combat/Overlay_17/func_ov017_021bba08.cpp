@@ -8,8 +8,8 @@ enum { RegionOffset9c = 0x9c };
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
 
-int GetField5cb0Value(char* obj);
-int GetField5cb4Value(char* obj);
+int GetField5cb0Value_0201079c(char* obj);
+int GetField5cb4Value_020107d0(char* obj);
 extern "C" void func_ov017_021baedc(void* self, int flag);
 
 extern char data_ov017_021d7d7e[0xc];
@@ -49,10 +49,10 @@ extern "C" ARM void func_ov017_021bba08(struct Obj021bba08* obj, unsigned char* 
 
     GameState* bs = GameState::GetInstance();
     char* b = (char*)bs;
-    obj->f0xc = (unsigned char)GetField5cb0Value(b);
-    obj->f0xe = (unsigned char)GetField5cb0Value(b);
-    obj->f0xd = (unsigned char)GetField5cb4Value(b);
-    obj->f0xf = (unsigned char)GetField5cb4Value(b);
+    obj->f0xc = (unsigned char)GetField5cb0Value_0201079c(b);
+    obj->f0xe = (unsigned char)GetField5cb0Value_0201079c(b);
+    obj->f0xd = (unsigned char)GetField5cb4Value_020107d0(b);
+    obj->f0xf = (unsigned char)GetField5cb4Value_020107d0(b);
 
     obj->f0x16 = 3;
     obj->f0x10 = 1;

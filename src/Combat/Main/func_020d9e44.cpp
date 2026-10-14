@@ -14,7 +14,7 @@ struct Obj020397cc;
 void CancelPendingAction020397cc(struct Obj020397cc* obj, int arg1);
 
 void* GetDataPtr02114e04_020d6c00(void);
-void OrBitsIntoField0(unsigned int* word, unsigned int mask);
+void OrBitsIntoField0_020466e4(unsigned int* word, unsigned int mask);
 
 extern const char data_020f2838[];
 
@@ -40,7 +40,7 @@ extern "C" ARM void func_020d9e44(Self020d9e44* self) {
             return;
         }
         CancelPendingAction020397cc((struct Obj020397cc*)GameState::GetInstance()->GetUnknownGameObject(), 1);
-        OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 0x1e);
+        OrBitsIntoField0_020466e4((unsigned int*)GetDataPtr02114e04_020d6c00(), 0x1e);
         if (self->flags & 1) {
             self->tasks[0] = loader->QueueLoadFile(data_020f2838, NULL);
         }

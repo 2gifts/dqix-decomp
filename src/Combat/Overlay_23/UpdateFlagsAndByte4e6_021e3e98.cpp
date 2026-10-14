@@ -5,7 +5,7 @@ enum {regionalOffset0=0x4e4, regionalOffset1=0x4e8, regionalOffset2=0x634, regio
 #endif
 #include <globaldefs.h>
 
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 extern "C" int func_ov023_021e29d0(void* a);
 
 extern unsigned short data_02114e30;
@@ -34,7 +34,7 @@ extern "C" ARM void func_ov023_021e3e98(struct Obj021e3e98* obj) {
         return;
     }
 
-    if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2) != 0) {
+    if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 2) != 0) {
         cond = 1;
     }
     if (!cond) {

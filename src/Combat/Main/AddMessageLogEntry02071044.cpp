@@ -12,7 +12,7 @@ struct Struct02030b7c {
     void* field4;
 };
 
-int StringLength(const char* s);
+int StringLength_020d2ff0(const char* s);
 
 struct MsgArgs02071044 {
     struct Variant02030b0c v0;
@@ -84,7 +84,7 @@ extern "C" ARM int func_02071044(struct MsgArgs02071044* args) {
 
         memset(data_02108d70.entries[data_02108d70.count].text, 0, 0x20);
 
-        len = StringLength((const char*)text);
+        len = StringLength_020d2ff0((const char*)text);
         if (len < 0x1f) {
             memcpy(data_02108d70.entries[data_02108d70.count].text, text, len);
         } else {

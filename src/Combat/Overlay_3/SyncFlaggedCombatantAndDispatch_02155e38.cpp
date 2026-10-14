@@ -11,12 +11,11 @@ enum { kRegionValue150_144 = 0x150 };
 enum { kRegionValue950_8B8 = 0x950 };
 #endif
 
-
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 extern "C" void func_02083cbc(void* a, void* obj, void* tail);
 extern "C" void func_02083e28(void* a, int arg2);
 extern "C" void* func_0202ae18(void);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 
 extern "C" void func_ov017_021cc730(int id, unsigned char arg1, unsigned char arg2, unsigned char arg3);
 extern "C" void func_ov017_021cf078(int combatantId, unsigned short slot, unsigned char flag);
@@ -34,7 +33,7 @@ extern "C" ARM void func_ov003_02155e38(void* p) {
     }
     int t = *(int*)((char*)c + kRegionValue150_144);
     int slot = *(int*)((char*)t + kRegionValue950_8B8);
-    int field150 = GetFieldAt0x150((unsigned char*)c);
+    int field150 = GetFieldAt0x150_02053c6c((unsigned char*)c);
     char* arr = (char*)field150;
     *(short*)(arr + slot * 2 + 0x16c) = 1;
     unsigned char* cntArr = (unsigned char*)(arr + 0x186);
@@ -47,7 +46,7 @@ extern "C" ARM void func_ov003_02155e38(void* p) {
     func_02083e28(arr, 0);
     *(unsigned short*)(*(char**)((char*)c + 0x130) + 4) = *(unsigned short*)(*(char**)((char*)c + 0x134) + 0x30);
     *(unsigned short*)(*(char**)((char*)c + 0x130) + 6) = *(unsigned short*)(*(char**)((char*)c + 0x134) + 0x32);
-    if (CheckField0NonZero((int*)func_0202ae18()) == 0) {
+    if (CheckField0NonZero_0202b7d8((int*)func_0202ae18()) == 0) {
         return;
     }
     signed char id2 = *(signed char*)(obj + kRegionValue1F7_1F3);

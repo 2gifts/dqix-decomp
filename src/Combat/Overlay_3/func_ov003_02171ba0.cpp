@@ -11,11 +11,10 @@ enum { kRegionValue72C_628 = 0x72c };
 enum { kRegionValue724_620 = 0x724 };
 #endif
 
-
 struct SearchStruct;
 extern "C" void* func_0202ae18(void);
-void* GetData02100044(void);
-int TestFlagBitAt0xe(struct SearchStruct*, int);
+void* GetData02100044_0202ae24(void);
+int TestFlagBitAt0xe_0202c578(struct SearchStruct*, int);
 void RemoveSearchEntry0202c21c(struct SearchStruct*, int);
 extern "C" void func_0202b0f4(void*);
 
@@ -41,9 +40,9 @@ struct Obj02171ba0 {
 extern "C" ARM void func_ov003_02171ba0(struct Obj02171ba0* obj) {
     GameState* battle = GameState::GetInstance();
     struct SearchStruct* searchPtr = (struct SearchStruct*)func_0202ae18();
-    void* ptr2 = GetData02100044();
+    void* ptr2 = GetData02100044_0202ae24();
 
-    if (TestFlagBitAt0xe(searchPtr, obj->field199)) {
+    if (TestFlagBitAt0xe_0202c578(searchPtr, obj->field199)) {
         RemoveSearchEntry0202c21c(searchPtr, obj->field199);
     }
     obj->field72c += battle->GetEffectiveDeltaTime();
@@ -52,7 +51,7 @@ extern "C" ARM void func_ov003_02171ba0(struct Obj02171ba0* obj) {
         obj->field0 = 0;
         return;
     }
-    if (TestFlagBitAt0xe(searchPtr, 0) && obj->field71c == 0) {
+    if (TestFlagBitAt0xe_0202c578(searchPtr, 0) && obj->field71c == 0) {
         GetElementAt0x10Stride0xc0((struct ElementArray0202bad4*)searchPtr, obj->field199);
         func_0202b0f4(searchPtr);
         obj->field0 = 0;

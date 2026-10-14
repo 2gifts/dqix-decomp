@@ -2,7 +2,7 @@
 #include "Memory/SignedAllocator.h"
 
 struct S02055080;
-void* GetField0x4Field0x0Field0x0OrNull(struct S02055080* p);
+void* GetField0x4Field0x0Field0x0OrNull_02055168(struct S02055080* p);
 
 struct Wrap020578e8;
 float ComputeSlope020578e8(Wrap020578e8* a, Wrap020578e8* b);
@@ -25,7 +25,7 @@ struct Obj020557a4 {
 
 // USA: func_020557a4
 extern "C" ARM void func_020557a4(struct Obj020557a4* obj) {
-    void* subPtr = GetField0x4Field0x0Field0x0OrNull((struct S02055080*)obj->ptr30);
+    void* subPtr = GetField0x4Field0x0Field0x0OrNull_02055168((struct S02055080*)obj->ptr30);
 
     {
         if (*(unsigned char*)((char*)subPtr + 0x10) <= 1)

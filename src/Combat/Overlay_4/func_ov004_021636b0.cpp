@@ -46,11 +46,11 @@ void SetString02026528(char* dst, char* src);
 void SetField766AndNotify0202656c(struct Obj0202656c* obj, int value);
 int GetGlobalField0x1c020421a0(void);
 void SetIndexedRecord020265a8(char* dst, int index, const char* name, int rate);
-void* FindEntryByKey(struct TableA68* table, int key);
+void* FindEntryByKey_02072a68(struct TableA68* table, int key);
 void CopyTextAndUppercaseIfFlagged0206819c(const char* source, char* destination, int tableIndex);
-void* CallFunc020e52a0(void* obj, int index);
+void* CallFunc020e52a0_020e5294(void* obj, int index);
 void SetBoolFlag020263c8(unsigned char* obj, int value);
-void SetByteFieldAt0x764(unsigned char* buf, unsigned char val);
+void SetByteFieldAt0x764_02026418(unsigned char* buf, unsigned char val);
 void RestartTaskWithDebugLog020dc3d4(void);
 
 #if defined(jpn)
@@ -77,7 +77,7 @@ extern "C" ARM void func_ov004_021636b0(void* a0, const char* a1) {
     buf = (unsigned char*)res->unknown_ptr_36d0;
     strcpy(zone + 0x26, a1);
     RestartTaskWithDebugLog020dc3d4();
-    SetByteFieldAt0x764(buf, 1);
+    SetByteFieldAt0x764_02026418(buf, 1);
     *(int*)(buf + 0x14) = 1;
 
     void* obj = func_ov023_021f6880(func_ov011_021849c8(a0), 0xa);
@@ -132,7 +132,7 @@ extern "C" ARM void func_ov004_021636b0(void* a0, const char* a1) {
             continue;
         }
         if (!func_ov004_0216ff54(data_ov004_02171010.base->details[idx].treasureItemIDs_[i], bufA)) {
-            const char* name = (const char*)FindEntryByKey(table, (short)data_ov004_02171010.base->details[idx].treasureItemIDs_[i]);
+            const char* name = (const char*)FindEntryByKey_02072a68(table, (short)data_ov004_02171010.base->details[idx].treasureItemIDs_[i]);
             if (name != NULL) {
                 func_02041f50(name, bufA);
             }
@@ -160,10 +160,10 @@ extern "C" ARM void func_ov004_021636b0(void* a0, const char* a1) {
             if (obj2 == NULL) return;
             if (func_ov023_021f6f10(obj2) != 4) return;
             struct TableA68* table = func_ov023_021fa598(obj2);
-            CopyTextAndUppercaseIfFlagged0206819c((const char*)FindEntryByKey(table, (short)key), bufA, 0);
+            CopyTextAndUppercaseIfFlagged0206819c((const char*)FindEntryByKey_02072a68(table, (short)key), bufA, 0);
             func_02046608(tableRoot, 0, bufA, slot, 0x60, 0, 0);
         } else {
-            char** entry = (char**)CallFunc020e52a0(data_ov004_02171010.callTarget, (short)det->treasureItemIDs_[i]);
+            char** entry = (char**)CallFunc020e52a0_020e5294(data_ov004_02171010.callTarget, (short)det->treasureItemIDs_[i]);
             CopyTextAndUppercaseIfFlagged0206819c(*entry, bufA, 0);
             func_02046608(tableRoot, 0, bufA, slot, 0x60, 0, 0);
         }

@@ -12,7 +12,7 @@ struct CombatantExt02170ffc {
 
 struct Container020e0310;
 int GetFieldByKey020e0434(struct Container020e0310* c, int key);
-struct CombatantExt02170ffc* GetFieldAt0x150(unsigned char* obj);
+struct CombatantExt02170ffc* GetFieldAt0x150_02053c6c(unsigned char* obj);
 
 struct Obj0203c108 {
     char pad[0x14];
@@ -77,7 +77,7 @@ extern "C" ARM void func_ov000_02170ffc(struct Obj02170ffc* obj) {
     if (member == NULL) {
         return;
     }
-    struct CombatantExt02170ffc* ext = GetFieldAt0x150((unsigned char*)member);
+    struct CombatantExt02170ffc* ext = GetFieldAt0x150_02053c6c((unsigned char*)member);
     key += (signed char)ext->field94c;
     SwapGlobalEntry0203c108(&obj->label, (char*)GetFieldByKey020e0434(obj->container, key));
 }

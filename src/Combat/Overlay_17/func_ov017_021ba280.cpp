@@ -4,7 +4,7 @@
 
 struct SearchStruct0202c1a4;
 extern "C" SearchStruct0202c1a4* func_0202ae18(void);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* obj);
 
 extern "C" int func_ov017_021b9bcc(int id, const char* name);
@@ -35,7 +35,7 @@ extern "C" ARM int func_ov017_021ba280(Script::Parameter* params, int count) {
 
     GameState::GetInstance();
     SearchStruct0202c1a4* search = func_0202ae18();
-    if (!CheckField0NonZero((int*)search)) return 1;
+    if (!CheckField0NonZero_0202b7d8((int*)search)) return 1;
     if (GetSearchStructCurrentArrEntry(search) == 0) return 1;
 
     int lo = params[0].ToInt();

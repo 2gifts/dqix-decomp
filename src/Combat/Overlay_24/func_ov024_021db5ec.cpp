@@ -2,7 +2,7 @@
 #include "Combat/Overlay_0/GetCombatantByID.h"
 #include "GameState/GameState.h"
 
-int CanAdjustField0x58(void* obj, int dir);
+int CanAdjustField0x58_0208776c(void* obj, int dir);
 struct StatStageStruct020877c0;
 extern "C" int func_020877c0(struct StatStageStruct020877c0* p, int delta);
 void UpdateCombatantAttack(int unused, int combatantId);
@@ -43,7 +43,7 @@ extern "C" ARM void* func_ov024_021db5ec(struct Obj_021db5ec* obj, short arg, in
     if (stage < 0) decrease = 1;
     if (enabled != 0) {
         res = func_ov024_021e4b14(obj, arg, id, params, 1);
-        if (CanAdjustField0x58(c->currentStats_, (unsigned char)decrease)) {
+        if (CanAdjustField0x58_0208776c(c->currentStats_, (unsigned char)decrease)) {
             result = func_020877c0((struct StatStageStruct020877c0*)c->currentStats_, (signed char)stage);
             UpdateCombatantAttack((int)obj->ctx, id);
             applied = true;

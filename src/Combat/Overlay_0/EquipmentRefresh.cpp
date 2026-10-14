@@ -29,8 +29,8 @@ struct BattleEquipmentList {
     BattleEquipmentEntry* entries[16];
 };
 extern "C" {
-    char* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState*, unsigned int);
-    void* _Z15GetFieldAt0x150Ph(void*);
+    char* _Z34GetCombatantWithFlag0x100_0200ff1cP9GameStatei(GameState*, unsigned int);
+    void* _Z24GetFieldAt0x150_02053c6cPh(void*);
     extern unsigned char data_ov000_02183380[8];
     void _Z28SetPointerField0x3f002171b68PviS_(BattleEquipmentList*, int, BattleEquipmentEntry*);
 }
@@ -41,8 +41,8 @@ extern "C" ARM void func_ov000_02171c04(BattleEquipmentList* list)
     signed char partyIndex = list->partyIndex;
     int valid = partyIndex >= 0 && partyIndex <= 3;
     if (valid) {
-        char* actor = _Z25GetCombatantWithFlag0x100P9GameStatei(GameState::GetInstance(), partyIndex);
-        if (actor && _Z15GetFieldAt0x150Ph(actor)) {
+        char* actor = _Z34GetCombatantWithFlag0x100_0200ff1cP9GameStatei(GameState::GetInstance(), partyIndex);
+        if (actor && _Z24GetFieldAt0x150_02053c6cPh(actor)) {
             list->entryCount = 0;
             for (signed char slot = 0; slot < 16; ++slot) {
                 BattleEquipmentEntry* entry = list->entries[slot];

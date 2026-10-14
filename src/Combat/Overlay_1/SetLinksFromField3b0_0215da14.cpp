@@ -10,7 +10,7 @@ struct Triple { int x[3]; };
 extern "C" ARM int func_ov001_0215da14(char* obj) {
     int result;
     GameState* battle = GameState::GetInstance();
-    void* field = GetField0x3b0Value(battle);
+    void* field = GetField0x3b0Value_020100bc(battle);
     if (field == NULL) {
         result = 0;
     } else {

@@ -11,7 +11,7 @@ struct ListEeec {
 };
 
 // USA: func_0206eeec
-ARM void PushNodeToList(struct ListEeec* list, struct NodeEeec* node) {
+ARM void PushNodeToList_0206eeec(struct ListEeec* list, struct NodeEeec* node) {
     struct NodeEeec* head = list->head;
     if (head != 0) {
         node->next = head;

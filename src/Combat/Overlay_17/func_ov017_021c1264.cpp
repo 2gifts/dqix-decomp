@@ -11,24 +11,23 @@ enum { kSceneHeapSize = 0x24000, kSceneObjectSize = 0x33c, kSceneFieldOffset = 0
 #include "Memory/SafeAllocator.h"
 #include "Memory/AllocatorUnion.h"
 
-int GetWord0x0(int* obj);
-int GetFieldIfFlag4(char* obj);
-void SetBitsInField4(unsigned int* obj, unsigned int mask);
-void ClearBitsInField4(unsigned int* obj, unsigned int mask);
-void ClearFlagBits(unsigned char* obj, int mask);
-void SetFlagsAt0x244(unsigned char* obj, unsigned char mask);
-void SetByteField0x253(void* obj);
-void PushInputLogA(int id);
-void PushInputLogB(int id);
+int GetWord0x0_0200fb8c(int* obj);
+int GetFieldIfFlag4_020100f8(char* obj);
+void SetBitsInField4_0203b4d8(unsigned int* obj, unsigned int mask);
+void ClearBitsInField4_0203b4e8(unsigned int* obj, unsigned int mask);
+void ClearFlagBits_020a28b0(unsigned char* obj, int mask);
+void SetFlagsAt0x244_020a28a0(unsigned char* obj, unsigned char mask);
+void SetByteField0x253_020397c0(void* obj);
+void PushInputLogA_020a1df8(int id);
+void PushInputLogB_020a1ef0(int id);
 
 struct Obj020397cc;
 void CancelPendingAction020397cc(struct Obj020397cc* obj, int arg1);
 
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 extern AllocatorUnion data_02114e20;
 extern "C" void func_020a0cc4(unsigned int);
 extern "C" void func_020a0c0c(void);
-
 
 extern "C" void func_ov003_02154720(void* mem, unsigned char b);
 extern "C" void func_ov003_021544ec(void* mem, SafeAllocator* alloc);
@@ -53,19 +52,19 @@ struct Obj021c1404 {
 // USA: func_ov017_021c1404  (semantic: AdvanceEncounterSequenceStep_021c1404)
 extern "C" ARM void func_ov017_021c1404(struct Obj021c1404* obj) {
 	GameState* battle = GameState::GetInstance();
-	int* word0 = (int*)GetWord0x0((int*)battle);
+	int* word0 = (int*)GetWord0x0_0200fb8c((int*)battle);
 	GameObject* combatant = battle->GetUnknownGameObject();
-	int fieldVal = GetFieldIfFlag4((char*)battle);
-	SetBitsInField4((unsigned int*)word0, 0xc0);
+	int fieldVal = GetFieldIfFlag4_020100f8((char*)battle);
+	SetBitsInField4_0203b4d8((unsigned int*)word0, 0xc0);
 	if (combatant) {
 		CancelPendingAction020397cc((struct Obj020397cc*)combatant, 1);
 	}
-	SetFlagsAt0x244((unsigned char*)fieldVal, 3);
+	SetFlagsAt0x244_020a28a0((unsigned char*)fieldVal, 3);
 	unsigned char step = obj->step;
 
 	if (step == 0) {
 		func_020a0cc4(kSceneHeapSize);
-		void* buf = AllocateAligned4(&data_02114e20, kSceneHeapSize);
+		void* buf = AllocateAligned4_02012d88(&data_02114e20, kSceneHeapSize);
 		if (!buf) {
 			func_020a0c0c();
 			obj->flag1 = 1;
@@ -80,8 +79,8 @@ extern "C" ARM void func_ov017_021c1404(struct Obj021c1404* obj) {
 			obj->flag1 = 1;
 			return;
 		}
-		PushInputLogA(3);
-		PushInputLogB(1);
+		PushInputLogA_020a1df8(3);
+		PushInputLogB_020a1ef0(1);
 		func_ov003_02154720((void*)data_ov017_021d8478, obj->field1e);
 		func_ov003_021544ec((void*)data_ov017_021d8478, &obj->allocator);
 		func_ov017_021c1264();
@@ -91,7 +90,7 @@ extern "C" ARM void func_ov017_021c1404(struct Obj021c1404* obj) {
 	if (step == 1) {
 		unsigned int scaleCount = battle->GetTickCount();
 		if (func_ov003_02154af4((void*)data_ov017_021d8478, scaleCount) == 0) return;
-		FontBankLoader* val = GetGlobal02109400();
+		FontBankLoader* val = GetGlobal02109400_02094a00();
 		BlankFunction02094b40(val);
 		func_02094ab0(val);
 		BlankFunction02094b34(val, 0x6f, 0x1388, 1, 1);
@@ -99,7 +98,7 @@ extern "C" ARM void func_ov017_021c1404(struct Obj021c1404* obj) {
 		return;
 	}
 	if (step == 2) {
-		if (!AlwaysTrue02094b4c(GetGlobal02109400())) return;
+		if (!AlwaysTrue02094b4c(GetGlobal02109400_02094a00())) return;
 		func_ov003_021549a8((void*)data_ov017_021d8478);
 		obj->step = obj->step + 1;
 		return;
@@ -109,9 +108,9 @@ extern "C" ARM void func_ov017_021c1404(struct Obj021c1404* obj) {
 	int* dispReg = (int*)0x4000000;
 	unsigned int memField = *(unsigned int*)((char*)data_ov017_021d8478 + kSceneFieldOffset);
 	*dispReg = (memField << 8) | (*dispReg & ~0x1f00);
-	ClearBitsInField4((unsigned int*)word0, 0xc0);
-	SetByteField0x253(combatant);
-	ClearFlagBits((unsigned char*)fieldVal, 3);
+	ClearBitsInField4_0203b4e8((unsigned int*)word0, 0xc0);
+	SetByteField0x253_020397c0(combatant);
+	ClearFlagBits_020a28b0((unsigned char*)fieldVal, 3);
 	func_ov017_021c1394(obj);
 	func_020a0c0c();
 	obj->flag1 = 1;

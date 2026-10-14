@@ -10,16 +10,16 @@ enum { kRegionalFieldOffset = 0x6c };
 struct Struct020a2928;
 struct S_a28e0;
 
-void* GetPointerFromArray0x3c(unsigned char* obj, unsigned int index);
-int GetFieldIfFlag4(char* obj);
-int CheckField0x245Bit0x2Set(unsigned char* obj);
-void SetOrClearField0x245Bit0x2(unsigned char* obj, int flag);
+void* GetPointerFromArray0x3c_0201e838(unsigned char* obj, unsigned int index);
+int GetFieldIfFlag4_020100f8(char* obj);
+int CheckField0x245Bit0x2Set_020a2cc4(unsigned char* obj);
+void SetOrClearField0x245Bit0x2_020a2cd8(unsigned char* obj, int flag);
 void CopySubstateAndSetFlag4_020a2908(unsigned char* obj, struct Struct020a2928* src);
 void CopySubstateAndSetFlag4_020a296c(unsigned char* obj, struct Struct020a2928* src);
-void ClearFlagAt0x240(unsigned char* obj);
-void SetFlagAt0x240(unsigned char* obj);
-void ResetField270Block(struct S_a28e0* p);
-void ClearFlag0x4At0x245(unsigned char* obj);
+void ClearFlagAt0x240_020a28d0(unsigned char* obj);
+void SetFlagAt0x240_020a28c4(unsigned char* obj);
+void ResetField270Block_020a28e0(struct S_a28e0* p);
+void ClearFlag0x4At0x245_020a298c(unsigned char* obj);
 
 extern "C" void* func_02012fe4(void);
 
@@ -50,8 +50,8 @@ extern "C" ARM void func_ov017_021982ac(void) {
     unsigned char* state;
     int applied;
 
-    node = (struct PendingNode_021982ac*)GetPointerFromArray0x3c((unsigned char*)ctx + kRegionalFieldOffset, 4);
-    state = (unsigned char*)GetFieldIfFlag4((char*)battle);
+    node = (struct PendingNode_021982ac*)GetPointerFromArray0x3c_0201e838((unsigned char*)ctx + kRegionalFieldOffset, 4);
+    state = (unsigned char*)GetFieldIfFlag4_020100f8((char*)battle);
     if (state == 0) {
         return;
     }
@@ -61,8 +61,8 @@ extern "C" ARM void func_ov017_021982ac(void) {
         if (func_02094b9c(node, &anchor)) {
             int kind = node->kind;
             if (kind == 4) {
-                if (CheckField0x245Bit0x2Set(state)) {
-                    SetOrClearField0x245Bit0x2(state, 0);
+                if (CheckField0x245Bit0x2Set_020a2cc4(state)) {
+                    SetOrClearField0x245Bit0x2_020a2cd8(state, 0);
                 }
                 CopySubstateAndSetFlag4_020a2908(state, (struct Struct020a2928*)node->substate);
                 applied = 1;
@@ -73,7 +73,7 @@ extern "C" ARM void func_ov017_021982ac(void) {
                 BlankFunction020a28dc(state, kind, node->substate, node->extra);
             }
             if (!node->applied) {
-                ClearFlagAt0x240(state);
+                ClearFlagAt0x240_020a28d0(state);
             }
             break;
         }
@@ -81,10 +81,10 @@ extern "C" ARM void func_ov017_021982ac(void) {
     }
 
     if (node == 0) {
-        SetFlagAt0x240(state);
-        ResetField270Block((struct S_a28e0*)state);
+        SetFlagAt0x240_020a28c4(state);
+        ResetField270Block_020a28e0((struct S_a28e0*)state);
     }
     if (!applied) {
-        ClearFlag0x4At0x245(state);
+        ClearFlag0x4At0x245_020a298c(state);
     }
 }

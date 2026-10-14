@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 extern "C" void* func_0202ae18(void);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 
 struct Entry020e3054 {
     unsigned char f0;
@@ -28,7 +28,7 @@ void ClearFourBytes020e303c(Bytes020e303c* s);
 // USA: func_020e3468
 ARM void ClearEntryIfCurrentArrMatches020e3468(Entry020e3054* list, int key) {
     void* searchObj = func_0202ae18();
-    if (!CheckField0NonZero((int*)searchObj)) return;
+    if (!CheckField0NonZero_0202b7d8((int*)searchObj)) return;
     Entry020e3054* entry = FindEntryByField1(list, key);
     if (entry == NULL) return;
     signed char cur = GetSearchStructCurrentArrEntry((SearchStruct0202c1a4*)searchObj);

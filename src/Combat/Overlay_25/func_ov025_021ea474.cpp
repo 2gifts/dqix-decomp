@@ -2,7 +2,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void* GetActiveCombatWork();
+void* GetActiveCombatWork_ov000_02160130();
 void* GetSlotPtr02160f20(void* work);
 struct List02160094;
 void* GetNodeAtIndex02160094(List02160094*, int);
@@ -41,7 +41,7 @@ struct Entry021ea474 {
 extern "C" ARM void func_ov025_021ea474(char* self) {
     if (*(int*)(self + 0x1c4) & 1) return;
     void* gs = GameState::GetInstance();
-    Slot021ea474* slot = (Slot021ea474*)GetSlotPtr02160f20(GetActiveCombatWork());
+    Slot021ea474* slot = (Slot021ea474*)GetSlotPtr02160f20(GetActiveCombatWork_ov000_02160130());
     if (slot != 0) {
         Node021ea474* first = (Node021ea474*)GetNodeAtIndex02160094((List02160094*)slot, 0);
         int who = 0;
@@ -56,7 +56,7 @@ extern "C" ARM void func_ov025_021ea474(char* self) {
             SetShortArrayEntry128_021ed350(self + 0x5e8, (unsigned short)(*(unsigned char*)(self + 0x738) - 1), 0x1130);
             func_ov025_021ed380(self + 0x5e8, 0x1e0, who, 0, 0, -1, 100);
         }
-        Entry021ea474* e = (Entry021ea474*)SearchBothTables02079e2c((char*)GetData02108e10(), (short)slot->type);
+        Entry021ea474* e = (Entry021ea474*)SearchBothTables02079e2c((char*)GetData02108e10_020797dc(), (short)slot->type);
         if ((e != 0 && ((e->f18 << 16) >> 28) == 2) || slot->type == 0x5c || slot->type == 0x67 ||
             slot->type == 0xa0 || slot->type == 0xbf) {
             func_ov025_021ed380(self + 0x5e8, slot->extraMsgId, who, 0, 0, -1, 0);

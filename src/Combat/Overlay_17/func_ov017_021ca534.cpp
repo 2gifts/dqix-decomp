@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 extern "C" void* func_ov017_021b8478(void* obj);
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct Slot021ca534 {
@@ -81,7 +81,7 @@ extern "C" ARM void func_ov017_021ca534(Header021ca534* obj) {
     unsigned char* ov = (unsigned char*)func_ov017_0218b5b0();
     void* h = *(void**)(ov + 0x3000 + regionalOffset);
     Combatants021ca534* c = (Combatants021ca534*)func_ov017_021b8478(h);
-    void* p = GetData02100044();
+    void* p = GetData02100044_0202ae24();
 
     for (int i = 0; i < obj->outerCount; i++) {
         Entry021ca534* e = &obj->entries[i];

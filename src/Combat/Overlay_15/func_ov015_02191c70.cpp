@@ -31,8 +31,8 @@ struct AllocatorUnion;
 extern AllocatorUnion data_02114e20;
 extern unsigned short data_02114e30;
 Entry8_0218bb14* GetEntry8_0218bb14(List8_0218bb14*, int);
-int TestFlagMask(unsigned short*, int);
-void* AllocateAligned4(AllocatorUnion*, unsigned int);
+int TestFlagMask_02012430(unsigned short*, int);
+void* AllocateAligned4_02012d88(AllocatorUnion*, unsigned int);
 void TailForward02012da4(AllocatorUnion*, void*);
 void InitCombatFieldStruct0218eef0(ResetStruct0218eef0*);
 int SetFieldAndModeThenDispatch0218f02c(Self0218f02c*, int, int);
@@ -44,7 +44,7 @@ extern "C" int func_ov015_0218f27c(Self0218f02c*, CommandInfo*);
 extern "C" ARM void func_ov015_02191c70(CombatMenu* self, int index) {
     Entry8_0218bb14* entry = GetEntry8_0218bb14(&self->list, index);
     if (!entry) return;
-    if (TestFlagMask(&data_02114e30, 0x100)) {
+    if (TestFlagMask_02012430(&data_02114e30, 0x100)) {
         CombatNode* node = self->head;
         while (node) {
             func_ov015_0218f0c4(node->object);
@@ -72,11 +72,11 @@ extern "C" ARM void func_ov015_02191c70(CombatMenu* self, int index) {
         } else if (command->mode == 11) {
             if (object) func_ov015_0218f308(object, command->value);
         } else {
-            node = (CombatNode*)AllocateAligned4(&data_02114e20, 8);
+            node = (CombatNode*)AllocateAligned4_02012d88(&data_02114e20, 8);
             if (!node) return;
             node->object = 0;
             node->next = 0;
-            object = node->object = (Self0218f02c*)AllocateAligned4(&data_02114e20, 0x5c);
+            object = node->object = (Self0218f02c*)AllocateAligned4_02012d88(&data_02114e20, 0x5c);
             if (!object) {
                 TailForward02012da4(&data_02114e20, node);
                 return;

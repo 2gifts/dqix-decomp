@@ -9,7 +9,7 @@ struct GetSubField0x10Data {
 };
 
 // USA: func_020550f0
-ARM void* GetSubField0x10(struct S02055080* p) {
+ARM void* GetSubField0x10_020550f0(struct S02055080* p) {
     struct GetSubField0x10Data* r = (struct GetSubField0x10Data*)GetField0x4OrNull(p);
     return r == NULL ? NULL : r->field10;
 }

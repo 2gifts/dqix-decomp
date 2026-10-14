@@ -2,20 +2,20 @@
 
 struct QNode0205e18c {
     char pad[0x18];
-    struct QNode0205e18c* next;  /* 0x18 */
+    struct QNode0205e18c* next;
 };
 struct QList0205e18c {
-    struct QNode0205e18c* head;  /* 0x0 */
-    struct QNode0205e18c* tail;  /* 0x4 */
-    int count;                   /* 0x8 */
+    struct QNode0205e18c* head;
+    struct QNode0205e18c* tail;
+    int count;
 };
 
-void PushInterruptDisableState(void);
+void PushInterruptDisableState_020d8654(void);
 extern "C" void func_020d8694(void);
 
 // USA: func_0205e18c
 ARM void EnqueueNode(struct QList0205e18c* list, struct QNode0205e18c* node) {
-    PushInterruptDisableState();
+    PushInterruptDisableState_020d8654();
     if (list->head != NULL) {
         list->tail->next = node;
         list->tail = node;

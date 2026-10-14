@@ -38,10 +38,10 @@ extern "C" void* func_ov017_0218b5b0();
 int IsChannelValueZero0203b5e0(void*, int);
 extern "C" int func_020941f8(Obj020941b0*);
 extern "C" int func_020943dc(Obj020941b0*);
-void* AllocateAligned4(AllocatorUnion*, unsigned int);
+void* AllocateAligned4_02012d88(AllocatorUnion*, unsigned int);
 int GetDisplayModeCode0209378c(int);
 extern "C" int func_020937f0(int);
-void ClearTwoWordsAndByte(S_b20c*);
+void ClearTwoWordsAndByte_0205b20c(S_b20c*);
 void SetField0_0205b220(void*, int);
 void SetFieldsAt0x4And0x8_0205b228(void*, int, unsigned char);
 extern "C" void func_0205b234(void*, int, int, void*, int, int);
@@ -81,7 +81,7 @@ extern "C" ARM void func_02093b90(Obj020941b0* self, int ticks) {
     if (func_020943dc(self)) return;
     if (TestFlags02046708(flags, 0x8000)) return;
     if (self->text[0]) {
-        void* pixels = AllocateAligned4(&data_02114e20, 0x800);
+        void* pixels = AllocateAligned4_02012d88(&data_02114e20, 0x800);
         if (!pixels) return;
         int display = self->display;
         if (pixels) {
@@ -116,7 +116,7 @@ extern "C" ARM void func_02093b90(Obj020941b0* self, int ticks) {
                     offset+=256;
                 }
                 S_b20c descriptor;
-                ClearTwoWordsAndByte(&descriptor);
+                ClearTwoWordsAndByte_0205b20c(&descriptor);
                 SetField0_0205b220(&descriptor, (int)pixels);
                 SetFieldsAt0x4And0x8_0205b228(&descriptor, (int)tiles, 8);
                 func_0205b234(&descriptor, 16, 3, text, 15, 0);
@@ -144,7 +144,7 @@ extern "C" ARM void func_02093b90(Obj020941b0* self, int ticks) {
     }
     if (self->count>0 && self->entries[0].code==0x4e23) limit=150;
     if (limit>=self->elapsed) return;
-    void* pixels = AllocateAligned4(&data_02114e20,0x800);
+    void* pixels = AllocateAligned4_02012d88(&data_02114e20,0x800);
     if (pixels) {
         int display=self->display;
         if (pixels) {

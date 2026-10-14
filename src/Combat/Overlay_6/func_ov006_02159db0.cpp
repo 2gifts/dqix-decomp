@@ -40,9 +40,9 @@ extern Obj0205eaa0 data_02108760;
 extern "C" int func_020813ec(void*, int);
 void ResetWithSub0208203c(Obj0208203c*);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
-void SetElementFlag0x20(Obj2081*, int);
+void SetElementFlag0x20_02080c04(Obj2081*, int);
 void ResetAndReposition020e280c(Obj020e280c*, void*);
-void SetFieldsAt0x4And0x8(int*, int, int);
+void SetFieldsAt0x4And0x8_020e2d24(int*, int, int);
 
 struct Ctx02159db0 {
 #if defined(jpn)
@@ -80,12 +80,12 @@ extern "C" ARM void func_ov006_02159db0(Ctx02159db0* owner) {
     owner->activeCursor = 0;
     if (owner->choice == 0)
         return;
-    SetElementFlag0x20(owner->menu, owner->group);
+    SetElementFlag0x20_02080c04(owner->menu, owner->group);
     ResetAndReposition020e280c(owner->choice, (void*)-1);
 #if defined(jpn)
     ChoicePanel* panel = owner->choice->panel;
     panel->x = 0xc2;
     panel->y = 0x48;
 #endif
-    SetFieldsAt0x4And0x8(owner->choice->window->fields28, 0x18, 1);
+    SetFieldsAt0x4And0x8_020e2d24(owner->choice->window->fields28, 0x18, 1);
 }

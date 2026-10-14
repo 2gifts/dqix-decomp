@@ -2,13 +2,13 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 
-unsigned char* GetGlobal02109030(void);
+unsigned char* GetGlobal02109030_020936f8(void);
 extern "C" void func_ov003_021612c0(void* obj);
 extern "C" int func_ov003_02161344(void* obj);
 int CountValidCombatantsMinusField_02160b84(void* obj);
-int GetFieldIfFlag4(char* obj);
+int GetFieldIfFlag4_020100f8(char* obj);
 struct Vector3i;
-void ReadFields0x70To0x78(unsigned char* obj, int* a, int* b, int* c);
+void ReadFields0x70To0x78_0202e7d4(unsigned char* obj, int* a, int* b, int* c);
 extern "C" void func_ov017_021c37a4(void);
 struct GlobalObj0202e6a8;
 void AddWrappedField0x70_0202e784(struct GlobalObj0202e6a8* obj, int value);
@@ -18,7 +18,7 @@ struct Obj0202e71c;
 void SetField78Clamped0202e71c(struct Obj0202e71c* obj, int value);
 struct Cont0207fe44;
 void CallFunc0204c804OverAllElems(struct Cont0207fe44* menu);
-void ClearFlag0x3c9Bit0AndCleanup(unsigned char* obj);
+void ClearFlag0x3c9Bit0AndCleanup_020939fc(unsigned char* obj);
 
 struct Camera0216552c {
     char unk_0[0x4];
@@ -51,7 +51,7 @@ struct Menu0216552c {
 
 // USA: func_ov003_0216552c
 extern "C" ARM void func_ov003_0216552c(Menu0216552c* self) {
-    unsigned char* global = GetGlobal02109030();
+    unsigned char* global = GetGlobal02109030_020936f8();
     Window0216552c* window = self->window_;
     short* nextState = self->nextState_;
 
@@ -85,11 +85,11 @@ extern "C" ARM void func_ov003_0216552c(Menu0216552c* self) {
                 int angle;
                 int position[3];
                 int target[3];
-                Camera0216552c* camera = (Camera0216552c*)GetFieldIfFlag4((char*)GameState::GetInstance());
+                Camera0216552c* camera = (Camera0216552c*)GetFieldIfFlag4_020100f8((char*)GameState::GetInstance());
                 if (camera != NULL) {
                     *(Vector3i*)position = *(Vector3i const*)camera->position_;
                     *(Vector3i*)target = *(Vector3i const*)camera->target_;
-                    ReadFields0x70To0x78((unsigned char*)camera, &angle, &height, &distance);
+                    ReadFields0x70To0x78_0202e7d4((unsigned char*)camera, &angle, &height, &distance);
                 }
                 func_ov017_021c37a4();
                 if (camera != NULL) {
@@ -105,7 +105,7 @@ extern "C" ARM void func_ov003_0216552c(Menu0216552c* self) {
                 nextState[1] = 1;
                 self->code_ = 10;
                 self->step_ = 0;
-                ClearFlag0x3c9Bit0AndCleanup(global);
+                ClearFlag0x3c9Bit0AndCleanup_020939fc(global);
             }
         } else {
             self->field_0x488 = 0x1a;

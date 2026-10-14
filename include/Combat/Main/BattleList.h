@@ -34,6 +34,6 @@ struct ModifiableCombatStats {
 class GameState;
 class GameObject;
 
-GameObject* GetCombatantWithFlag0x100(GameState* gameState, int combatantId);
-void* GetPtrField0x2a04(GameState* gameState);
-int GetByteField0x5721(GameState* gameState);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* gameState, int combatantId);
+void* GetPtrField0x2a04_02010828(GameState* gameState);
+int GetByteField0x5721_02011538(GameState* gameState);

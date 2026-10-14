@@ -10,11 +10,11 @@ struct ShortArrays0204c610;
 void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char keyLow,
                                                                         unsigned char keyHigh);
 int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
-int TestFlag0SetAndFlag1Clear(unsigned short *p, int n);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short *p, int n);
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0 *o, int a, int b);
 int CheckFlagOrThreshold_02161b48(char *base, int a);
-void SelectCoordsByFlag0x24(unsigned char *p, int *x, int *y);
+void SelectCoordsByFlag0x24_02012a84(unsigned char *p, int *x, int *y);
 char *FindElementByC40205d81c(struct Struct_0205d81c *s, int key);
 void GetFourShortsAtIndex(struct ShortArrays0204c610 *p, int idx, short *a, short *b, short *c, short *d);
 void SetIndexIfValid0205bcdc(struct Struct_0205bcdc *s, int idx);
@@ -48,7 +48,7 @@ extern "C" ARM void func_ov002_02169bb0(char *base) {
         if (data_02114e54[0x55] != 0) {
             int tx, ty;
             short x0, y0, w, h;
-            SelectCoordsByFlag0x24(data_02114e54, &tx, &ty);
+            SelectCoordsByFlag0x24_02012a84(data_02114e54, &tx, &ty);
             char *e = FindElementByC40205d81c((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 0x23);
             if (e != NULL) {
                 short key = 3;
@@ -78,9 +78,9 @@ extern "C" ARM void func_ov002_02169bb0(char *base) {
             if (sel != 2) {
                 unsigned char *p = vals[sel];
                 int d            = 0;
-                if (TestFlag0SetAndFlag1Clear(data_02114e30, 0x20)) {
+                if (TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x20)) {
                     d = -1;
-                } else if (TestFlag0SetAndFlag1Clear(data_02114e30, 0x10)) {
+                } else if (TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x10)) {
                     d = 1;
                 }
                 if (d != 0) {
@@ -93,7 +93,7 @@ extern "C" ARM void func_ov002_02169bb0(char *base) {
                 }
             }
         }
-        int a = TestFlag0SetAndFlag1Clear(data_02114e30, 0x601);
+        int a = TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x601);
         int b = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(base + 0x2c8 + 0xc00), 0x14);
         if (((a | b) ? 1 : 0) && *(short *) (base + 0x1c00 + 0xe) == 2) {
             DispatchWithShortB4_0205eaa0((struct Obj0205eaa0 *) data_02108760, 1, 0);

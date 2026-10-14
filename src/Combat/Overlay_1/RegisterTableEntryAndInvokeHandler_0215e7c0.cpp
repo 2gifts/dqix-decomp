@@ -16,7 +16,7 @@ struct List0204af64 {
     unsigned char b1f;
 };
 void ResetList0204af64(struct List0204af64* obj);
-void SetWord0x18ClearByte0x1f(unsigned char* obj, int value);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char* obj, int value);
 
 extern "C" void func_0204b5b4(void*, int);
 
@@ -53,7 +53,7 @@ struct Table_02153884 { struct Entry_02153884* pairs; int count; };
 void* FindTableEntry_02153884(struct Table_02153884* t, int key);
 extern struct Table_02153884 data_ov001_021658d8;
 
-void SetField0xa0AndByte0xc4IfFlag0x1Clear(unsigned char* obj, int value, int b);
+void SetField0xa0AndByte0xc4IfFlag0x1Clear_0204f160(unsigned char* obj, int value, int b);
 
 #if defined(jpn)
 extern "C" void func_02050678(void* obj, short b, int c, void* field18, int nibble, int initial4, short* fieldAaddr, short* fieldCaddr);
@@ -70,7 +70,7 @@ extern "C" ARM int func_ov001_0215e7c0(void* combatant) {
     ResetList0204af64(&list);
     list.b1c_lo = 1;
     list.b1c_hi = 0;
-    SetWord0x18ClearByte0x1f((unsigned char*)&list, 0);
+    SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)&list, 0);
     func_0204b5b4(&list, 0);
     DispatchViaTable0204b5e8((struct Obj0204b5e8*)&list, 0, 0);
 
@@ -94,7 +94,7 @@ extern "C" ARM int func_ov001_0215e7c0(void* combatant) {
         return 0;
     }
 
-    SetField0xa0AndByte0xc4IfFlag0x1Clear((unsigned char*)&obj, 0x60, 0);
+    SetField0xa0AndByte0xc4IfFlag0x1Clear_0204f160((unsigned char*)&obj, 0x60, 0);
 
     short fieldA;
     short fieldC;

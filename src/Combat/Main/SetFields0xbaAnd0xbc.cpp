@@ -7,7 +7,7 @@ struct ShortPair0xba0xbc {
 };
 
 // USA: func_02032fd0
-ARM void SetFields0xbaAnd0xbc(struct ShortPair0xba0xbc* obj, short a, short b) {
+ARM void SetFields0xbaAnd0xbc_02032fd0(struct ShortPair0xba0xbc* obj, short a, short b) {
     obj->field_ba = a;
     obj->field_bc = b;
 }

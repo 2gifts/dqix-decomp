@@ -26,7 +26,7 @@ struct Battle021c3e18 {
 
 extern "C" unsigned short* func_02012fe4(void);
 extern "C" void* func_0202ae18(void);
-unsigned char GetField0x397cValue(GameState* gs);
+unsigned char GetField0x397cValue_020100b0(GameState* gs);
 void SetVec3_021c3f68(struct Vec3_021c3f68* obj, int x, int y, int z);
 extern "C" void* func_ov017_021b8468(void* obj);
 void* GetSlot021677d8(void* work, int idx);
@@ -38,10 +38,10 @@ extern "C" ARM void func_ov017_021c3e18(unsigned char arg) {
     unsigned short* mapId = func_02012fe4();
     GameState* gs = GameState::GetInstance();
     GameResources* res = func_ov017_0218b5b0();
-    Party021c3e18* party = (Party021c3e18*)GetPtrField0x2a04(gs);
+    Party021c3e18* party = (Party021c3e18*)GetPtrField0x2a04_02010828(gs);
     Battle021c3e18* battle = (Battle021c3e18*)res->unknown_ptr_3718;
     void* search = func_0202ae18();
-    unsigned char self = GetField0x397cValue(gs);
+    unsigned char self = GetField0x397cValue_020100b0(gs);
     for (int i = 0; i < party->memberCount; i++) {
         unsigned char id = party->memberIds[i];
         if (id == self) {

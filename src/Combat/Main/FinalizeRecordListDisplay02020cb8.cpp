@@ -13,7 +13,7 @@ void* FindRecordByIndex(struct Rec020467f0* rec, int index, void** out, int* out
 struct List0204af64;
 void ResetList0204af64(struct List0204af64* obj);
 
-void SetWord0x18ClearByte0x1f(unsigned char* obj, int value);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char* obj, int value);
 
 extern "C" void func_0204b5b4(void*, int);
 
@@ -66,7 +66,7 @@ ARM void FinalizeRecordListDisplay02020cb8(void* self, MapDisplayTaskHandle hand
     s.b1c_lo = 1;
     s.b1c_hi = 1;
     func_0204b5b4(&s, 3);
-    SetWord0x18ClearByte0x1f((unsigned char*)&s, 0);
+    SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)&s, 0);
     DispatchViaTable0204b5e8((struct Obj0204b5e8*)&s, 0, 0);
 
     s.byteCount = 0x6000;

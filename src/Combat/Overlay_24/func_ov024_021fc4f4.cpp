@@ -4,10 +4,10 @@
 #include "GameState/GameState.h"
 #include "Combat/Overlay_0/GetCombatantByID.h"
 
-int GetFieldAt0x150(unsigned char* obj);
-int TestBitAt0x34(unsigned char* obj, unsigned int index);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
 struct S_10088;
-int IsFlag10088Set(struct S_10088* obj);
+int IsFlag10088Set_02010088(struct S_10088* obj);
 struct AddEntryList_021f6a1c;
 void AddEntryIfUnderLimit16_021f6a1c(struct AddEntryList_021f6a1c* obj, void* src);
 extern "C" void func_ov024_021f9874(void* obj, void* buf, int unused, int val);
@@ -57,8 +57,8 @@ struct Obj_021fc4f4 {
 extern "C" ARM void func_ov024_021fc4f4(struct Obj_021fc4f4* obj) {
     if (obj->field6 == 0) return;
     struct Actor_021fc4f4* actor = obj->actor;
-    GetFieldAt0x150((unsigned char*)actor);
-    GetData02108e10();
+    GetFieldAt0x150_02053c6c((unsigned char*)actor);
+    GetData02108e10_020797dc();
     struct Action_021fc4f4* action = obj->action;
     if (action->mode == 1) return;
     GetCombatantByID((int)obj->battle, (short)obj->field128);
@@ -67,11 +67,11 @@ extern "C" ARM void func_ov024_021fc4f4(struct Obj_021fc4f4* obj) {
     struct EntryList_021fc4f4 list;
     memset(&list, 0, sizeof(list));
     for (int i = 0; i < 4; i++) {
-        if (!TestBitAt0x34(obj->battle->partyWork, i & 0xff)) continue;
+        if (!TestBitAt0x34_020a35e0(obj->battle->partyWork, i & 0xff)) continue;
         if (action->targetKind == 1 && i != obj->field4) continue;
         GameObject* c = GetCombatantByID((int)obj->battle, (short)i);
         if (!c) continue;
-        if (!IsFlag10088Set((struct S_10088*)c)) continue;
+        if (!IsFlag10088Set_02010088((struct S_10088*)c)) continue;
         if ((action->flags10 & 0x400) && (((struct StatsFlags_021fc4f4*)c->currentStats_)->flags & 0x200)) continue;
         struct Entry_021fc4f4 e;
         float percent = 100.0f;

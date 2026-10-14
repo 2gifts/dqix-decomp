@@ -3,7 +3,7 @@
 struct Struct_0205d81c;
 
 struct Elem_0205d81c* FindElementByC40205d81c(struct Struct_0205d81c*, int);
-int IsField0x9cEqual3(unsigned char*);
+int IsField0x9cEqual3_0204c7cc(unsigned char*);
 void* GetArrayElement02184338(void*, unsigned int);
 extern "C" void func_0205ac40(void* list, void* entry);
 
@@ -25,7 +25,7 @@ extern "C" ARM void func_ov013_02186db4(void* obj) {
 
     unsigned char* elem = (unsigned char*)FindElementByC40205d81c((struct Struct_0205d81c*)(o + 0x38), 4);
     if (elem == 0) return;
-    if (IsField0x9cEqual3(elem) == 0) return;
+    if (IsField0x9cEqual3_0204c7cc(elem) == 0) return;
     if ((elem[0xc5] & 0x20) != 0) return;
 
     int tagId = 0x2a;

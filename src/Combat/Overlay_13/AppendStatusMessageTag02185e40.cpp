@@ -52,19 +52,19 @@ struct SkillPointMenu {
 
 struct Container020e0310;
 ARM int GetFieldByKey020e0434(struct Container020e0310* c, int key);
-ARM int AppendYTag(char* dst, int y);
-ARM int AppendXTag(char* dst, int x);
-ARM int AppendWidthTag(char* dst, int levelWidth);
-ARM int AppendPaletteTag(char* dst, int palette);
+ARM int AppendYTag_02041a5c(char* dst, int y);
+ARM int AppendXTag_02041a28(char* dst, int x);
+ARM int AppendWidthTag_02041acc(char* dst, int levelWidth);
+ARM int AppendPaletteTag_02041e70(char* dst, int palette);
 ARM int AppendString02042058(char* dst, const char* src);
-ARM int CallFunc020e0434With02153694(int value);
+ARM int CallFunc020e0434With02153694_020e51cc(int value);
 ARM int AppendFormatted02041fac(char* buf, int a, int b);
 void* GetGlobalField0x1c020421a0(void);
 
 struct StoreStruct;
-ARM void SetByteAtIndex(unsigned char* base, int index, unsigned char value);
-ARM void SetByteInRange(unsigned char* base, int index, unsigned char value);
-ARM void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
+ARM void SetByteAtIndex_020465d8(unsigned char* base, int index, unsigned char value);
+ARM void SetByteInRange_020465f0(unsigned char* base, int index, unsigned char value);
+ARM void StoreInArray0x8b0_020465c0(struct StoreStruct* base, int index, int value);
 
 extern char data_ov013_02187e3c;
 extern char data_ov013_02187e3f;
@@ -110,14 +110,14 @@ extern "C" ARM void func_ov013_02185e40(SkillPointMenu* menu, char* dst) {
         int paletteId = 5;
         if (menu->vocationMarker == 0xa) paletteId = 0xd;
 
-        AppendYTag(heading, 4);
+        AppendYTag_02041a5c(heading, 4);
         AppendString02042058(heading, menu->name);
-        AppendWidthTag(heading, 0x10);
-        AppendPaletteTag(heading, paletteId);
+        AppendWidthTag_02041acc(heading, 0x10);
+        AppendPaletteTag_02041e70(heading, paletteId);
         AppendString02042058(heading, (const char*)vocationMarkerText);
-        AppendWidthTag(heading, 4);
-        AppendPaletteTag(heading, 0xf);
-        int v = CallFunc020e0434With02153694(0x3f3);
+        AppendWidthTag_02041acc(heading, 4);
+        AppendPaletteTag_02041e70(heading, 0xf);
+        int v = CallFunc020e0434With02153694_020e51cc(0x3f3);
         AppendString02042058(heading, (const char*)v);
 
         char levelText[0x10];
@@ -125,10 +125,10 @@ extern "C" ARM void func_ov013_02185e40(SkillPointMenu* menu, char* dst) {
         sprintf(levelText, &data_ov013_02187e3c, menu->level);
         AppendString02042058(heading, levelText);
     } else {
-        AppendYTag(heading, 4);
+        AppendYTag_02041a5c(heading, 4);
         AppendString02042058(heading, menu->name);
-        AppendWidthTag(heading, 0x12);
-        int v = CallFunc020e0434With02153694(0x3f3);
+        AppendWidthTag_02041acc(heading, 0x12);
+        int v = CallFunc020e0434With02153694_020e51cc(0x3f3);
         AppendString02042058(heading, (const char*)v);
 
         char levelText[0x10];
@@ -139,7 +139,7 @@ extern "C" ARM void func_ov013_02185e40(SkillPointMenu* menu, char* dst) {
 
     char levelLabel[0x100];
     __clear(levelLabel, 0x100);
-    int v2 = CallFunc020e0434With02153694(0x3f3);
+    int v2 = CallFunc020e0434With02153694_020e51cc(0x3f3);
     sprintf(levelLabel, &data_ov013_02187e3f, v2, menu->level);
     int levelWidth = func_020420e8(levelLabel, 0);
 
@@ -148,7 +148,7 @@ extern "C" ARM void func_ov013_02185e40(SkillPointMenu* menu, char* dst) {
     headingSpace = 0x78 - headingSpace;
 
     menu->nameEndX = (short)(nameWidth + (headingSpace >> 1) + 1);
-    AppendXTag(dst, headingSpace >> 1);
+    AppendXTag_02041a28(dst, headingSpace >> 1);
 
     AppendString02042058(dst, heading);
 #endif
@@ -171,9 +171,9 @@ extern "C" ARM void func_ov013_02185e40(SkillPointMenu* menu, char* dst) {
     };
 
     for (int i = 0; i < 7; i++) {
-        SetByteAtIndex((unsigned char*)textVariables, i, 1);
-        SetByteInRange((unsigned char*)textVariables, i, 3);
-        StoreInArray0x8b0((struct StoreStruct*)textVariables, i, stats[i]);
+        SetByteAtIndex_020465d8((unsigned char*)textVariables, i, 1);
+        SetByteInRange_020465f0((unsigned char*)textVariables, i, 3);
+        StoreInArray0x8b0_020465c0((struct StoreStruct*)textVariables, i, stats[i]);
     }
 
     for (int i = 0; i < 5; i++) {
@@ -181,7 +181,7 @@ extern "C" ARM void func_ov013_02185e40(SkillPointMenu* menu, char* dst) {
         AppendString02042058(dst, (const char*)fieldA);
 
         short xtag = data_ov013_02187dac[i];
-        AppendXTag(dst, xtag);
+        AppendXTag_02041a28(dst, xtag);
 
         int fieldB = GetFieldByKey020e0434((Container020e0310*)menu->texts, valueKey++);
         AppendString02042058(dst, (const char*)fieldB);

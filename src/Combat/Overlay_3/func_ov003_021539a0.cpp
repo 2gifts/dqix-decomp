@@ -77,11 +77,11 @@ struct SafeAllocator;
 extern "C" void __clear(void*, int);
 extern "C" int sprintf(char* dst, const char* fmt, ...);
 void* Clear0x54Bytes0208247c(void*);
-unsigned char* GetFieldAt0x150(unsigned char*);
+unsigned char* GetFieldAt0x150_02053c6c(unsigned char*);
 extern "C" int func_02082490(void*, void*, unsigned int, int, int);
 struct Rec020467f0;
 char* FindRecordByIndex(Rec020467f0*, int, void**, int*);
-void SetWord0x18ClearByte0x1f(unsigned char*, int);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char*, int);
 extern "C" void func_0204b5b4(void*, int);
 struct Obj0204b5e8;
 void DispatchViaTable0204b5e8(Obj0204b5e8*, int, int);
@@ -108,7 +108,7 @@ void SetPackedFields_021e24b0(void*, int, int, unsigned char, unsigned char, uns
 extern "C" void func_ov023_021e257c(void*);
 void CleanInvalidateCacheRange(const void*, unsigned int);
 extern "C" void LoadToSubBG0CharacterData(int, int, unsigned int);
-void* GetWord0x0(int*);
+void* GetWord0x0_0200fb8c(int*);
 int IsAxisIntWithin16(AxisFloats0203b5a0*, int);
 struct GameResources;
 void SetSubBrightness(GameResources*, int, int);
@@ -153,7 +153,7 @@ extern "C" ARM void func_ov003_021539a0(struct Self_021539a0* self) {
         unsigned char* base = 0;
         unsigned char* gfx;
         if (obj != 0 && file != 0) {
-            base = GetFieldAt0x150(obj);
+            base = GetFieldAt0x150_02053c6c(obj);
             func_02082490(self->stats, file, size, *(unsigned short*)(base + 0x100 + self->idx * 2 + 0x6c), 0);
         }
         ((BackgroundLoader*)loader)->RemoveTask(self->task50);
@@ -163,7 +163,7 @@ extern "C" ARM void func_ov003_021539a0(struct Self_021539a0* self) {
         if (obj != 0) {
             list.lo = 1;
             list.hi = 0;
-            SetWord0x18ClearByte0x1f((unsigned char*)&list, 0);
+            SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)&list, 0);
             func_0204b5b4(&list, 0);
             DispatchViaTable0204b5e8((Obj0204b5e8*)&list, 0, 0);
             gfx = obj + 0x10;
@@ -250,7 +250,7 @@ extern "C" ARM void func_ov003_021539a0(struct Self_021539a0* self) {
         ((BackgroundLoader*)loader)->RemoveTask(self->task54);
         self->task54 = -1;
         self->f10 = self->idx;
-        void* axis = GetWord0x0((int*)gs);
+        void* axis = GetWord0x0_0200fb8c((int*)gs);
         if ((self->flags & 2) || !IsAxisIntWithin16((AxisFloats0203b5a0*)axis, 1)) {
             self->flags &= ~2;
             self->state++;
@@ -259,7 +259,7 @@ extern "C" ARM void func_ov003_021539a0(struct Self_021539a0* self) {
             self->state = 0;
         }
     } else if (self->state == 2) {
-        SetSubBrightness((GameResources*)(GetWord0x0((int*)GameState::GetInstance())), 0, 1);
+        SetSubBrightness((GameResources*)(GetWord0x0_0200fb8c((int*)GameState::GetInstance())), 0, 1);
         self->state = 0;
         self->flags &= ~1;
     }

@@ -18,15 +18,13 @@ static ResourceMutex s_resourceMutex;
 
 extern "C"
 {
-    // set up the main context
     void func_020c745c();
-    // check if the main context has been set up
-    extern "C" bool _Z21GetGlobalWord021112ecv();
+    extern "C" bool _Z30GetGlobalWord021112ec_020c75a4v();
 }
 
 void InitializeResourceMutex()
 {
-    if (!_Z21GetGlobalWord021112ecv())
+    if (!_Z30GetGlobalWord021112ec_020c75a4v())
         func_020c745c();
 
     ZeroInitializeMutex(&s_resourceMutex.mutex_);

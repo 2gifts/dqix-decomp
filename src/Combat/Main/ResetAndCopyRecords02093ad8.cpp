@@ -19,7 +19,7 @@ struct CopyableRecord {
 };
 
 void ClearRegion02093980(char* storage);
-void CopyRecord(CopyableRecord* destination, CopyableRecord* source);
+void CopyRecord_02093b54(CopyableRecord* destination, CopyableRecord* source);
 
 // USA: func_02093ad8  (semantic: ResetAndCopyRecords02093ad8)
 extern "C" ARM void func_02093ad8(void* unused, CopyableRecord* source, CopyableRecord* destination, int count) {
@@ -29,7 +29,7 @@ extern "C" ARM void func_02093ad8(void* unused, CopyableRecord* source, Copyable
     }
     int j;
     for (j = 0; j < count; j++) {
-        CopyRecord(destination + j, source + j);
+        CopyRecord_02093b54(destination + j, source + j);
     }
     int k;
     for (k = 0; k < 8; k++) {

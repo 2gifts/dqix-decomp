@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 #include "Resource/FontBankLoader.h"
 
-
 struct LoaderSub_021561b0 {
     char pad[0x47a];
     unsigned char state;
@@ -22,7 +21,7 @@ extern "C" ARM void func_ov002_021561b0(struct Loader_021561b0* self) {
     }
     unsigned char state = self->sub.state;
     if (state == 0) {
-        FontBankLoader* g = GetGlobal02109400();
+        FontBankLoader* g = GetGlobal02109400_02094a00();
         func_02094ab0(g);
         BlankFunction02094b3c(g, 0xc);
         BlankFunction02094b34(g, 0x64, 0x208, 0, 0);
@@ -32,7 +31,7 @@ extern "C" ARM void func_ov002_021561b0(struct Loader_021561b0* self) {
     if (state != 1) {
         return;
     }
-    if (!AlwaysTrue02094b4c(GetGlobal02109400())) {
+    if (!AlwaysTrue02094b4c(GetGlobal02109400_02094a00())) {
         return;
     }
     self->sub.flags = self->sub.flags & ~2;

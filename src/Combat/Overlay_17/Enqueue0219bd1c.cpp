@@ -8,7 +8,7 @@ enum { RegionOffset70c = 0x70c, RegionOffset6fc = 0x6fc };
 #include "GameState/GameState.h"
 
 struct Field3f8Struct;
-Field3f8Struct* GetField0x3f8Address(GameState* bs);
+Field3f8Struct* GetField0x3f8Address_0200fd0c(GameState* bs);
 extern "C" void func_02046a8c(void* list, void* node);
 unsigned char InitFieldsFromCombatant_0219bcac(unsigned char v);
 void InitAndResetHeader_0219e310(unsigned char* node, int v);
@@ -21,7 +21,7 @@ void InsertNodeAfterHead(struct List02046a3c* list, struct Node02046a3c* node);
 struct TailList020469b4;
 struct TailNode020469b4;
 void AppendNodeToTail(struct TailList020469b4* list, struct TailNode020469b4* node);
-void ClearBitsInWord(unsigned int* p, unsigned int mask);
+void ClearBitsInWord_0203b4b0(unsigned int* p, unsigned int mask);
 
 struct NodeHdr0219bd1c {
     char pad[2];
@@ -44,7 +44,7 @@ extern "C" ARM void func_ov017_0219bd1c(int prepend, unsigned char sb, int inser
     struct Field3f8Struct0219bd1c* field;
     void* list = *(void**)(ctx + RegionOffset6fc);
     struct NodeHdr0219bd1c* node = *(struct NodeHdr0219bd1c**)(ctx + RegionOffset70c);
-    field = (struct Field3f8Struct0219bd1c*)GetField0x3f8Address(bs);
+    field = (struct Field3f8Struct0219bd1c*)GetField0x3f8Address_0200fd0c(bs);
     if (node->flag3) return;
     if (node->flag2) {
         func_02046a8c(list, node);
@@ -60,5 +60,5 @@ extern "C" ARM void func_ov017_0219bd1c(int prepend, unsigned char sb, int inser
     } else {
         AppendNodeToTail((struct TailList020469b4*)list, (struct TailNode020469b4*)node);
     }
-    ClearBitsInWord((unsigned int*)ctxRaw, 4);
+    ClearBitsInWord_0203b4b0((unsigned int*)ctxRaw, 4);
 }

@@ -64,9 +64,9 @@ extern "C" void func_ov025_021dee20(ActionState*);
 List02160094* GetSlotPtr02160f20(void*);
 BattleSource* GetNodeAtIndex02160094(List02160094*, int);
 void UpdateFlagAndDispatch_021dc0d8(void*);
-void* GetField0Result02169a58(void*, int);
+void* GetField0Result02169a58_02048ab4(void*, int);
 extern "C" void* func_ov025_021dfa9c(ActionState*, char*);
-int ClassifyField0x81fe(char*);
+int ClassifyField0x81fe_ov000_0215fc60(char*);
 extern "C" void* func_ov000_02169a58(void*, int);
 extern "C" void func_ov025_021e88d8(void*);
 void SetTwoFields_021e8a40(char*, int, int);
@@ -116,10 +116,10 @@ extern "C" ARM void func_ov025_021dbe10(ActionState* state) {
     if (object) {
         int kind = list->kind;
         if (kind == 0x3ae) reset = 0;
-        void* script = GetField0Result02169a58(object, kind);
+        void* script = GetField0Result02169a58_02048ab4(object, kind);
         void* overrideScript = func_ov025_021dfa9c(state, state->battle);
         if (overrideScript) script = overrideScript;
-        if (ClassifyField0x81fe(battle) && source->id == 0)
+        if (ClassifyField0x81fe_ov000_0215fc60(battle) && source->id == 0)
             script = func_ov000_02169a58(state->specialCombatant, 0xdd);
         if (script) {
             func_ov025_021e88d8(state->script);
@@ -128,7 +128,7 @@ extern "C" ARM void func_ov025_021dbe10(ActionState* state) {
             func_ov025_021e8d20(state->script, script);
             func_ov025_021db8d8(state);
         } else {
-            ActionMetadata* metadata = SearchBothTables02079e2c((char*)GetData02108e10(), (short)kind);
+            ActionMetadata* metadata = SearchBothTables02079e2c((char*)GetData02108e10_020797dc(), (short)kind);
             if (metadata) {
                 if (metadata->category == 0x22) ProcessPairs_021d8a40(state, (S021d8a40*)list);
                 else {

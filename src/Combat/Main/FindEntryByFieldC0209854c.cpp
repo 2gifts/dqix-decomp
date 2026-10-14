@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-int IsInRange1To63(int a, int x);
+int IsInRange1To63_02098268(int a, int x);
 
 struct Entry0209854c {
     char pad0[0xc];
@@ -13,7 +13,7 @@ struct Entry0209854c {
 // USA: func_0209854c
 ARM struct Entry0209854c* FindEntryByFieldC0209854c(struct Entry0209854c* list, int target) {
     int i;
-    if (IsInRange1To63((int)list, target) == 0) return 0;
+    if (IsInRange1To63_02098268((int)list, target) == 0) return 0;
     for (i = 0; i < 0x1e; i++) {
         if (target == list[i].val) return &list[i];
     }

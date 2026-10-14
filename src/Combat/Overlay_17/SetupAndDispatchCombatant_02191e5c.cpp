@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* battleStruct, int combatantId);
 struct Obj02061bd8;
 int CheckField0x56bLowNibble(struct Obj02061bd8* obj);
 
@@ -23,7 +23,7 @@ ARM void SetupAndDispatchCombatant_02191e5c(int a, int b, short c, unsigned char
 	((Object3D*)((unsigned char*)combatant))->SetField9e(d);
 	int inRange2 = (b >= 0 && b <= 3);
 	if (inRange2) {
-		GameObject* c2 = GetCombatantWithFlag0x100(battleStruct, b);
+		GameObject* c2 = GetCombatantWithFlag0x100_0200ff1c(battleStruct, b);
 		if (!c2) return;
 		if (!CheckField0x56bLowNibble((struct Obj02061bd8*)c2)) {
 			func_ov017_0218fd34(a, b, e);

@@ -14,7 +14,7 @@ struct RefArray0xc6b8 {
 };
 
 // USA: func_0203c6b8
-ARM void IncrementEntryCount0x24(struct RefArray0xc6b8* obj, short index) {
+ARM void IncrementEntryCount0x24_0203c6b8(struct RefArray0xc6b8* obj, short index) {
     struct Entry0xc6b8* entry;
     unsigned char count;
     if (index < 0) {

@@ -6,6 +6,6 @@ struct B88e4Obj {
 };
 
 // USA: func_020688e4
-ARM int IsByte0x19d6Zero(int unused, struct B88e4Obj* obj) {
+ARM int IsByte0x19d6Zero_020688e4(int unused, struct B88e4Obj* obj) {
     return obj->field == 0;
 }

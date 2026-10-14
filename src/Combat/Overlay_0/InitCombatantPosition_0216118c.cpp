@@ -8,7 +8,7 @@ enum { objectOffset = 0xc18, mirrorOffset = 0x29c, positionOffset = 0xc88 };
 
 extern "C" void func_ov000_021626a0(void* self, int a, int b);
 extern "C" void func_ov000_0216d600(void* obj, int a1, int a2, int a3, int a4, int a5, int a6, int a7);
-void ApplyVec3Tail(void* obj, int* vec);
+void ApplyVec3Tail_0202e694(void* obj, int* vec);
 void SetPosAndFields0216f1e4(void* obj, int* srcVec3, int a, int b);
 
 struct Vec3_0216118c { int v[3]; };
@@ -30,6 +30,6 @@ ARM void InitCombatantPosition_0216118c(void* self, int flag) {
     struct Vec3_0216118c temp2 = temp1;
     temp2.v[1] += 0x800;
     temp2.v[2] += 0x3000;
-    ApplyVec3Tail((char*)self + objectOffset, temp2.v);
+    ApplyVec3Tail_0202e694((char*)self + objectOffset, temp2.v);
     SetPosAndFields0216f1e4((char*)self + objectOffset, temp1.v, 0xf33, 0);
 }

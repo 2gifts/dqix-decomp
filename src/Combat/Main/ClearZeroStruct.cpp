@@ -10,7 +10,7 @@ struct ZeroStruct {
 };
 
 // USA: func_020e1568
-ARM void ClearZeroStruct(struct ZeroStruct* s) {
+ARM void ClearZeroStruct_020e1568(struct ZeroStruct* s) {
     s->field0 = 0;
     s->field4 = 0;
     s->field9 = 0;

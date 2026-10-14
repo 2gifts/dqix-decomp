@@ -2,7 +2,7 @@
 #include "System/Cache.h"
 
 // USA: func_020d2a48
-ARM void InitGridRowsAndFlushCache(void* p0) {
+ARM void InitGridRowsAndFlushCache_020d2a48(void* p0) {
     int i, j, k;
     char* row;
 

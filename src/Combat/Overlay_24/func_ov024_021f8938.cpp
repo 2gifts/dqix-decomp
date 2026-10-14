@@ -30,7 +30,7 @@ Element02079f20* LookupElementByKey02079ee0(void*, int);
 
 // USA: func_ov024_021f8938
 extern "C" ARM void func_ov024_021f8938(void* unused, float* value, float* spread, int unused2, ActionScaling* action, GameObject* actor) {
-    ActionDataTables* data = GetData02108e10();
+    ActionDataTables* data = GetData02108e10_020797dc();
     *value = 0;
     *spread = 0;
     Element02079f20* element = LookupElementByKey02079ee0(data, action->key_);

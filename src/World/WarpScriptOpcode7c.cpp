@@ -5,7 +5,7 @@
 #if defined(usa)
 
 // USA: func_0201e018
-ARM int WarpScript_Opcode_7c(Script::Parameter* params, int numParams)
+ARM int WarpScript_Opcode_7c_0201e018(Script::Parameter* params, int numParams)
 {
     ZoneFeatures::Opcode7bEntry entry;
     params = params->ToVec3fix(&entry.vector_0.vec);
@@ -55,7 +55,7 @@ ARM int WarpScript_Opcode_7c(Script::Parameter* params, int numParams)
     entry.minZ += entry.vector_0.vec.z;
     entry.maxX += entry.vector_0.vec.x;
     entry.maxZ += entry.vector_0.vec.z;
-    data_020fdc20.warp->CreateOpcode7bEntry(entry);
+    data_020fdc20.warp->CreateOpcode7bEntry_0201e88c(entry);
     return 1;
 }
 #endif

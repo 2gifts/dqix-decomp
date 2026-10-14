@@ -5,10 +5,10 @@
 struct Container020e0310;
 
 int AppendFrameTag02041c08(char* dst, int a1, int a2, int a3, int a4, int a5);
-int AppendCursorTag(char* dst, int cursor);
-int AppendNameTag(char* dst, int n, const char* name);
-int AppendPaletteTag(char* dst, int palette);
-int AppendXTag(char* dst, int x);
+int AppendCursorTag_02041ea4(char* dst, int cursor);
+int AppendNameTag_02041b70(char* dst, int n, const char* name);
+int AppendPaletteTag_02041e70(char* dst, int palette);
+int AppendXTag_02041a28(char* dst, int x);
 int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 int AppendString02042058(char* dst, const char* src);
 
@@ -41,7 +41,7 @@ extern "C" ARM void func_ov000_02176500(struct Menu_02176500* menu, char* dst, i
     if (dst == NULL || menu->messages == NULL) {
         return;
     }
-    GameObject* c = GetCombatantWithFlag0x100(GameState::GetInstance(), menu->combatantId);
+    GameObject* c = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), menu->combatantId);
     if (c == NULL) {
         return;
     }
@@ -53,21 +53,21 @@ extern "C" ARM void func_ov000_02176500(struct Menu_02176500* menu, char* dst, i
     if (framed) {
         AppendFrameTag02041c08(dst, cursor, 8, 5, 5, 5);
     }
-    AppendCursorTag(dst, cursor);
+    AppendCursorTag_02041ea4(dst, cursor);
     for (int i = 0; i < 6; i++) {
         int item = data_ov000_021834f8[i];
         if (flag == 0 && item == 5) {
-            AppendPaletteTag(dst, 3);
+            AppendPaletteTag_02041e70(dst, 3);
         }
-        AppendNameTag(dst, item, (const char*)GetFieldByKey020e0434(menu->messages, (short)(item + 0x7534)));
+        AppendNameTag_02041b70(dst, item, (const char*)GetFieldByKey020e0434(menu->messages, (short)(item + 0x7534)));
         if (i == 5) {
             return;
         }
         if (i & 1) {
             AppendString02042058(dst, (const char*)GetFieldByKey020e0434(menu->messages, 0));
         } else {
-            AppendXTag(dst, 0x45);
+            AppendXTag_02041a28(dst, 0x45);
         }
-        AppendPaletteTag(dst, 0xf);
+        AppendPaletteTag_02041e70(dst, 0xf);
     }
 }

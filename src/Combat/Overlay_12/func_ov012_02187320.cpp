@@ -59,7 +59,7 @@ struct Struct_0205c570;
 struct Obj021e6e20;
 
 Messages02187320* GetGlobalField0x1c020421a0();
-const char* FindEntryByKey(TableA68* table, int key);
+const char* FindEntryByKey_02072a68(TableA68* table, int key);
 #if defined(jpn)
 extern "C" void func_0204500c(Messages02187320* messages, const char* text, int a);
 #else
@@ -100,9 +100,9 @@ extern "C" ARM void func_ov012_02187320(ProfileEditor02187320* self)
     if (self->step_ == 0)
     {
 #if defined(jpn)
-        func_0204500c(messages, FindEntryByKey((TableA68*)self->strings_, 0xf), 0);
+        func_0204500c(messages, FindEntryByKey_02072a68((TableA68*)self->strings_, 0xf), 0);
 #else
-        func_0204500c(messages, FindEntryByKey((TableA68*)self->strings_, 0xf), 0, 0xe3);
+        func_0204500c(messages, FindEntryByKey_02072a68((TableA68*)self->strings_, 0xf), 0, 0xe3);
 #endif
         messages->busy_ = 1;
         ResetEntryList0205d6a0((Entry_0205d6a0*)self->window_, 1);

@@ -15,7 +15,7 @@ int IsFlagBit24Set_021dd260(FlagObj_021dd260*);
 int IsFlagBit22Set_021e47dc(FlagObj_021e47dc*);
 int IsFlagBit67108864Set_021edc08(S_flag4000000*);
 int IsFlagBit8Set_021dd010(FlagObj_021dd010*);
-int IsField0x18Flag0x80Set(Combatant_2088660*);
+int IsField0x18Flag0x80Set_02088660(Combatant_2088660*);
 int IsFlagBit2Set_021fb430(S_flag2b*);
 int IsFlagBit4Set_021fb448(S_flag4b*);
 int IsCombatantFlag2Mask512_021eadfc(GameObject*);
@@ -83,7 +83,7 @@ extern "C" ARM void func_ov024_021fc754(Battle021fc754* battle) {
         statuses.entries[11].active = IsFlagBit67108864Set_021edc08((S_flag4000000*)object);
         statuses.entries[12].active = (GetStats021fc754(object)->statusFlags & 0x200000) != 0;
         statuses.entries[13].active = (GetStats021fc754(object)->statusFlags & 0x80000000) != 0;
-        statuses.entries[14].active = IsField0x18Flag0x80Set((Combatant_2088660*)object->currentStats_);
+        statuses.entries[14].active = IsField0x18Flag0x80Set_02088660((Combatant_2088660*)object->currentStats_);
         statuses.entries[15].active = (GetStats021fc754(object)->conditionFlags & 8) != 0;
         statuses.entries[16].active = (GetStats021fc754(object)->conditionFlags & 0x10) != 0;
         statuses.entries[17].active = IsFlagBit2Set_021fb430((S_flag2b*)object);

@@ -48,7 +48,7 @@ struct WMDataSharingInfo
 };
 
 extern "C" void func_020ca3b8(const void* src, void* dst, unsigned long size);
-unsigned short GetBattleContextField0x150();
+unsigned short GetBattleContextField0x150_020d46cc();
 
 // USA: func_020d651c
 extern "C" ARM void func_020d651c(void* callback)
@@ -70,7 +70,7 @@ extern "C" ARM void func_020d651c(void* callback)
             dataSet = (WMDataSet*)cb->data;
             length = cb->length;
             aidBitmap = dataSet->aidBitmap;
-            aid = GetBattleContextField0x150();
+            aid = GetBattleContextField0x150_020d46cc();
             if (length != dsInfo->dataSetLength)
             {
                 if (length > sizeof(WMDataSet))

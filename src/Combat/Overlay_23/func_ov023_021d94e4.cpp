@@ -84,14 +84,14 @@ int AccumulateSlotBitsFromTable020862a8(unsigned char* data);
 int AccumulateSlotBitsFromTable02086314(unsigned char* data);
 const char* GetFieldByKey020e0434(struct Container020e0310* c, int key);
 extern "C" int func_020420e8(const char* text, int large);
-void AppendXYTag(char* text, int x, int y);
+void AppendXYTag_02041a90(char* text, int x, int y);
 void AppendFormatted02041fac(char* text, int line, int value);
 extern "C" void __clear(void* buffer, unsigned long size);
 extern "C" void func_02046380(void* messages);
 void SetIndexedName02046574(struct Obj02046574* obj, int index, char* str);
-void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
-void SetByteAtIndex(unsigned char* base, int index, unsigned char value);
-void SetByteInRange(unsigned char* base, int index, unsigned char value);
+void StoreInArray0x8b0_020465c0(struct StoreStruct* base, int index, int value);
+void SetByteAtIndex_020465d8(unsigned char* base, int index, unsigned char value);
+void SetByteInRange_020465f0(unsigned char* base, int index, unsigned char value);
 extern "C" int sprintf(char* buffer, const char* format, ...);
 extern "C" void func_02046608(void* messages, int, const char* input, char* output, int, int, int);
 void AppendString02042058(char* text, const char* append);
@@ -158,24 +158,24 @@ extern "C" ARM void func_ov023_021d94e4(BattleResultWindow_021d94e4* self, char*
     AppendString02042058(text, title);
     for (int line = 0; line < 9; line++) {
         if (lines != 0) {
-            AppendXYTag(text, 10, line * 15 + 0x15);
+            AppendXYTag_02041a90(text, 10, line * 15 + 0x15);
             char input[0x100] = {0};
     func_02046380(messages);
     SetIndexedName02046574((Obj02046574*)messages, 0, (char*)GetFieldByKey020e0434(self->texts_, (short)(line + 0x760c)));
     short before = stats[line][0];
-    StoreInArray0x8b0((StoreStruct*)messages, 0, before);
-    SetByteAtIndex((unsigned char*)messages, 0, 1);
-    SetByteInRange((unsigned char*)messages, 0, 3);
+    StoreInArray0x8b0_020465c0((StoreStruct*)messages, 0, before);
+    SetByteAtIndex_020465d8((unsigned char*)messages, 0, 1);
+    SetByteInRange_020465f0((unsigned char*)messages, 0, 3);
     short after = stats[line][1];
-    StoreInArray0x8b0((StoreStruct*)messages, 1, after);
-    SetByteAtIndex((unsigned char*)messages, 1, 1);
-    SetByteInRange((unsigned char*)messages, 1, 3);
+    StoreInArray0x8b0_020465c0((StoreStruct*)messages, 1, after);
+    SetByteAtIndex_020465d8((unsigned char*)messages, 1, 1);
+    SetByteInRange_020465f0((unsigned char*)messages, 1, 3);
     int color = 15;
     if (after > before)
         color = 5;
-            StoreInArray0x8b0((StoreStruct*)messages, 2, color);
-            SetByteAtIndex((unsigned char*)messages, 2, 1);
-            SetByteInRange((unsigned char*)messages, 2, 0);
+            StoreInArray0x8b0_020465c0((StoreStruct*)messages, 2, color);
+            SetByteAtIndex_020465d8((unsigned char*)messages, 2, 1);
+            SetByteInRange_020465f0((unsigned char*)messages, 2, 0);
             func_020474a8(messages,12,GetFieldByKey020e0434(self->texts_,0x7603),input);
             AppendString02042058(text, input);
             lines--;
@@ -184,26 +184,26 @@ extern "C" ARM void func_ov023_021d94e4(BattleResultWindow_021d94e4* self, char*
 
 #else
     const char* title = GetFieldByKey020e0434(self->texts_, 0x7602);
-    AppendXYTag(text, (0xd0 - func_020420e8(title, 0)) >> 1, 1);
+    AppendXYTag_02041a90(text, (0xd0 - func_020420e8(title, 0)) >> 1, 1);
     AppendFormatted02041fac(text, (int)title, 0x10);
     int line;
     const char* format = GetFieldByKey020e0434(self->texts_, 0x7603);
     line = lines - 1;
     if (line < 0)
         return;
-    AppendXYTag(text, 10, line * 15 + 0x15);
+    AppendXYTag_02041a90(text, 10, line * 15 + 0x15);
     char output[0x100] = {0};
     char input[0x100] = {0};
     func_02046380(messages);
     SetIndexedName02046574((Obj02046574*)messages, 0, (char*)GetFieldByKey020e0434(self->texts_, (short)(line + 0x760c)));
     short before = stats[line][0];
-    StoreInArray0x8b0((StoreStruct*)messages, 0, before);
-    SetByteAtIndex((unsigned char*)messages, 0, 1);
-    SetByteInRange((unsigned char*)messages, 0, 3);
+    StoreInArray0x8b0_020465c0((StoreStruct*)messages, 0, before);
+    SetByteAtIndex_020465d8((unsigned char*)messages, 0, 1);
+    SetByteInRange_020465f0((unsigned char*)messages, 0, 3);
     short after = stats[line][1];
-    StoreInArray0x8b0((StoreStruct*)messages, 1, after);
-    SetByteAtIndex((unsigned char*)messages, 1, 1);
-    SetByteInRange((unsigned char*)messages, 1, 3);
+    StoreInArray0x8b0_020465c0((StoreStruct*)messages, 1, after);
+    SetByteAtIndex_020465d8((unsigned char*)messages, 1, 1);
+    SetByteInRange_020465f0((unsigned char*)messages, 1, 3);
     int color = 15;
     if (after > before)
         color = 5;

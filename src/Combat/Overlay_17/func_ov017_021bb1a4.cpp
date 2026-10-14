@@ -25,8 +25,8 @@ extern unsigned int data_ov017_021d845c;
 extern StateFn021bb1a4 data_020e6d5c;
 
 extern "C" void func_0208bb78(void* timer, unsigned int ticks);
-unsigned int GetBitsInField0(unsigned int* obj, unsigned int mask);
-int PopStack0AndTrigger(int flag);
+unsigned int GetBitsInField0_0203b4c4(unsigned int* obj, unsigned int mask);
+int PopStack0AndTrigger_020a1e54(int flag);
 extern "C" void func_020a0c0c(void);
 
 // USA: func_ov017_021bb1a4
@@ -45,8 +45,8 @@ extern "C" ARM void func_ov017_021bb1a4(StateMachine021bb1a4* self, int arg) {
     }
 
     if (self->checkExit_ != 0) {
-        if (GetBitsInField0(&func_ov017_0218b5b0()->brightnessFlags_0, 0x1000) == 0) {
-            PopStack0AndTrigger(1);
+        if (GetBitsInField0_0203b4c4(&func_ov017_0218b5b0()->brightnessFlags_0, 0x1000) == 0) {
+            PopStack0AndTrigger_020a1e54(1);
             func_020a0c0c();
         }
     }

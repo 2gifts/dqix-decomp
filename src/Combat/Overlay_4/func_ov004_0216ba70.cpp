@@ -81,7 +81,7 @@ struct DataTable02171034 {
 
 struct Struct0200fb08;
 extern unsigned char NormalizeField5_0200fb08(struct Struct0200fb08* obj);
-extern int CallFunc020e0434With02153694(int value);
+extern int CallFunc020e0434With02153694_020e51cc(int value);
 struct Obj_02184ad8;
 extern void SetField1c8True_02184ad8(struct Obj_02184ad8* obj);
 void* GetNodeIfType6_0216ae9c(void* a, int id);
@@ -196,7 +196,7 @@ extern "C" ARM int func_ov004_0216ba70(void* a) {
 
     VObjNode* node4 = func_ov023_021f6880(func_ov011_021849c8(a), 0x3a);
     if (node4) {
-        node4->field20 = (void*)CallFunc020e0434With02153694(0x3f3);
+        node4->field20 = (void*)CallFunc020e0434With02153694_020e51cc(0x3f3);
     }
 
     func_ov004_0216afb0(a, 0x47, 2, 0xd3, 0x3e7, 0xa1, base + 0x13, 8, 1);
@@ -218,7 +218,7 @@ extern "C" ARM int func_ov004_0216ba70(void* a) {
 
             VObjNode* node5 = func_ov023_021f6880(func_ov011_021849c8(a), idx3 + 0x3a);
             if (node5) {
-                node5->field20 = (void*)CallFunc020e0434With02153694(0x3f3);
+                node5->field20 = (void*)CallFunc020e0434With02153694_020e51cc(0x3f3);
             }
 
             func_ov004_0216afb0(a, i + 0x47, 2, 0xd3, msgBase, 0xa1, base + 0x13, 8, 1);

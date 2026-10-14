@@ -29,7 +29,7 @@ struct VRAMManagerState {
     char unk_0[0x70];
 };
 
-void MaybeInvoke0204719c(Foo02048004* model);
+void MaybeInvoke0204719c_02047230(Foo02048004* model);
 void CopyInternalFields0207df50(Foo0207df50* state);
 void RestorePairTables0207df90(char* state);
 extern "C" void func_02047b40(MenuModel* model, void* file, SafeAllocator* allocator);
@@ -90,7 +90,7 @@ extern "C" ARM void func_ov005_02155d6c(EquipmentMenu* self) {
         if (self->dragStep_ == 1) {
             EquipmentSlot* slot = &self->slots_[self->dragged_];
             if (slot->offset_ == 0) {
-                MaybeInvoke0204719c((Foo02048004*)&self->dragModel_);
+                MaybeInvoke0204719c_02047230((Foo02048004*)&self->dragModel_);
                 CopyInternalFields0207df50((Foo0207df50*)&self->dragVramState_);
                 RestorePairTables0207df90((char*)&self->dragVramState_);
                 self->dragAllocator_.Reset();

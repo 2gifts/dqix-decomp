@@ -5,7 +5,7 @@ int LockMutex(Mutex*);
 extern "C" void func_020bf1a0(void* entry);
 
 struct BattleTarget9a8;
-void ClearTargetMask(struct BattleTarget9a8* obj);
+void ClearTargetMask_020bc9a8(struct BattleTarget9a8* obj);
 
 struct RefNode020c80f8;
 void UnlockMutex(Mutex*);
@@ -39,7 +39,7 @@ ARM void DetachAndReleaseRefs020bf484(int expected, void* unused1, struct Ctx020
     obj->field0x130 = 0;
     obj->flag0x124 = 0;
     if (obj->count0x120 > 0) {
-        ClearTargetMask((struct BattleTarget9a8*)obj);
+        ClearTargetMask_020bc9a8((struct BattleTarget9a8*)obj);
         obj->count0x120 = 0;
     }
 

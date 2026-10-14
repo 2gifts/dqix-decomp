@@ -51,7 +51,7 @@ struct BattleMenu {
 };
 
 GlobalText* GetGlobalField0x1c020421a0();
-void* GetFieldAt0x150(unsigned char* obj);
+void* GetFieldAt0x150_02053c6c(unsigned char* obj);
 ActionInfo* GetPointerField_02171b9c_02171b9c(void* obj, int idx);
 extern "C" void _Z35NotifyLocalizedResourceLoad020dcfc8iPc(int id, char* buf);
 extern "C" void func_02046608(GlobalText* g, int a, char* src, char* dst, int b, int c, int d);
@@ -78,11 +78,11 @@ extern "C" ARM void func_ov000_0217964c(BattleMenu* menu, BattleActor* actor) {
     }
     char* text = GetGlobalField0x1c020421a0()->textBuf;
     memset(text, 0, textSize);
-    GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), actor->combatantId);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), actor->combatantId);
     if (combatant == NULL) {
         return;
     }
-    GetFieldAt0x150((unsigned char*)combatant);
+    GetFieldAt0x150_02053c6c((unsigned char*)combatant);
     ActionInfo* action = GetPointerField_02171b9c_02171b9c(actor, actor->actionSlot);
     if (action == NULL) {
         return;

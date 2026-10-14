@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 void WaitForSharedFlagBit7020d2820(void);
-void InitGridRowsAndFlushCache(void*);
+void InitGridRowsAndFlushCache_020d2a48(void*);
 struct MsgNode020d248c;
 void EnqueueTailNode(MsgNode020d248c*);
 extern "C" int func_020d2404(int);
@@ -65,7 +65,7 @@ extern "C" ARM void func_020d2220(void) {
     data_02112780.field20 = 1;
     data_02112780.field4 = 0;
     data_021142c0 = &data_021127e0;
-    InitGridRowsAndFlushCache(&data_021127e0);
+    InitGridRowsAndFlushCache_020d2a48(&data_021127e0);
     node = (struct MsgNode020d2220*)func_020d2404(1);
     if (node == 0) return;
     node->kind = 0x1d;

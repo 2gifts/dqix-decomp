@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_0206b7b0
-ARM void StoreClampedDeltas(char* base) {
+ARM void StoreClampedDeltas_0206b7b0(char* base) {
     short a = *(short*)(base + 0x914);
     short b = *(short*)(base + 0x918);
     short c = *(short*)(base + 0x148);

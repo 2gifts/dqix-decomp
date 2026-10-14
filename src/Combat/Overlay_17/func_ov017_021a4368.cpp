@@ -38,7 +38,7 @@ void ResetBattleScaleFieldAndDtor_021a925c(char*);
 void RunBattleScaleStepAndFinalize_021a9638(void*);
 void CallIfField20_021a99b0(struct S021a99b0*);
 void ResetBattleScaleFieldAndDtor_021a79ac(char*);
-void RunBattleScaleStepAndFinalize(void*);
+void RunBattleScaleStepAndFinalize_020d844c(void*);
 void DispatchField0xcHandler(struct Obj020dae80*);
 
 struct EventHeader021a4368 {
@@ -82,7 +82,7 @@ extern "C" ARM void func_ov017_021a4368(void* unused, EventHeader021a4368* event
     case 57: RunBattleScaleStepAndFinalize_021a9638(event); return;
     case 58: CallIfField20_021a99b0((S021a99b0*)event); return;
     case 63: ResetBattleScaleFieldAndDtor_021a79ac((char*)event); return;
-    case 67: RunBattleScaleStepAndFinalize(event); return;
+    case 67: RunBattleScaleStepAndFinalize_020d844c(event); return;
     case 75: DispatchField0xcHandler((Obj020dae80*)event); return;
     }
 }

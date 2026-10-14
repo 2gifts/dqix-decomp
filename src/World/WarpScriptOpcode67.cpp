@@ -2,7 +2,7 @@
 #include <globaldefs.h>
 
 // USA: func_0201c96c
-ARM int WarpScript_Opcode_67(Script::Parameter *params, int numParams) {
+ARM int WarpScript_Opcode_67_0201c96c(Script::Parameter *params, int numParams) {
     float centreX = params[0].ToFloat();
     float centreY = params[1].ToFloat();
     float centreZ = params[2].ToFloat();
@@ -28,6 +28,6 @@ ARM int WarpScript_Opcode_67(Script::Parameter *params, int numParams) {
     entry.unk_18[1] = value1;
     entry.unk_20    = 4096.0f * extraValue;
 
-    data_020fdc20.warp->CreateOpcode66Entry(entry);
+    data_020fdc20.warp->CreateOpcode66Entry_0201e4b0(entry);
     return 1;
 }

@@ -16,7 +16,7 @@ struct ActorListManager {
 };
 
 // USA: func_0201777c
-ARM struct ActorEntry* GetActorEntryByIndex(struct ActorListManager* manager, int index) {
+ARM struct ActorEntry* GetActorEntryByIndex_0201777c(struct ActorListManager* manager, int index) {
     struct ActorEntry* entry;
     if (index < 0 || manager->count <= index) {
         entry = 0;

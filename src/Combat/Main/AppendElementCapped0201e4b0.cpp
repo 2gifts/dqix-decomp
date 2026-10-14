@@ -22,7 +22,7 @@ struct List0201e4b0 {
 };
 
 // USA: func_0201e4b0
-extern "C" ARM void _ZN12ZoneFeatures19CreateOpcode66EntryERKNS_13Opcode66EntryE(struct List0201e4b0* list, struct Elem0201e4b0* src) {
+extern "C" ARM void _ZN12ZoneFeatures28CreateOpcode66Entry_0201e4b0ERKNS_13Opcode66EntryE(struct List0201e4b0* list, struct Elem0201e4b0* src) {
     int count = list->count;
     struct Elem0201e4b0* dst;
     if (count >= list->capacity) {

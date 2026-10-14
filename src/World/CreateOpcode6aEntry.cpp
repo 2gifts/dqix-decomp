@@ -2,7 +2,7 @@
 #include <globaldefs.h>
 
 // USA: func_0201e710
-ARM ZoneFeatures::Opcode6aEntry *ZoneFeatures::CreateOpcode6aEntry(const Opcode6aEntry &source) {
+ARM ZoneFeatures::Opcode6aEntry *ZoneFeatures::CreateOpcode6aEntry_0201e710(const Opcode6aEntry &source) {
     if (arraySize6a_ < arrayCapacity6a_) {
         Opcode6aEntry &dest            = entries6a_[arraySize6a_];
         entries6a_[arraySize6a_].unk_0 = source.unk_0;

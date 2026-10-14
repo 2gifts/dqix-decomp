@@ -3,14 +3,14 @@
 struct S02055080;
 
 extern void* GetField0x4OrNull(struct S02055080* obj);
-extern void* GetField0x4Field0x0OrNull(struct S02055080* obj);
-extern void* GetField0x4Field0x4OrNull(struct S02055080* obj);
-extern void* GetSubField0x8(struct S02055080* p);
-extern void* GetSubField0xC(struct S02055080* p);
-extern void* GetSubField0x18(struct S02055080* p);
-extern void* GetField0x4Field0x1cOrNull(struct S02055080* obj);
-extern void* GetField0x4Field0x20OrNull(struct S02055080* obj);
-extern void* GetField0x4Field0x0Field0x0OrNull(struct S02055080* obj);
+extern void* GetField0x4Field0x0OrNull_02055090(struct S02055080* obj);
+extern void* GetField0x4Field0x4OrNull_020550a8(struct S02055080* obj);
+extern void* GetSubField0x8_020550c0(struct S02055080* p);
+extern void* GetSubField0xC_020550d8(struct S02055080* p);
+extern void* GetSubField0x18_02055120(struct S02055080* p);
+extern void* GetField0x4Field0x1cOrNull_02055138(struct S02055080* obj);
+extern void* GetField0x4Field0x20OrNull_02055150(struct S02055080* obj);
+extern void* GetField0x4Field0x0Field0x0OrNull_02055168(struct S02055080* obj);
 extern "C" void func_020546c8(struct S02055080* sl);
 
 struct S02055080 {
@@ -65,14 +65,14 @@ extern "C" ARM int func_02055180(struct S02055080* sl, void* arg1, void* arg2, v
         RELOCATE(g9->a[i]);
     }
 
-    struct Group2* g2 = (struct Group2*)GetField0x4Field0x0OrNull(sl);
+    struct Group2* g2 = (struct Group2*)GetField0x4Field0x0OrNull_02055090(sl);
     if (g2 == 0) {
         return 0;
     }
     RELOCATE(g2->a[0]);
     RELOCATE(g2->a[1]);
 
-    struct Group3x3* g3 = (struct Group3x3*)GetField0x4Field0x4OrNull(sl);
+    struct Group3x3* g3 = (struct Group3x3*)GetField0x4Field0x4OrNull_020550a8(sl);
     if (g3 == 0) {
         return 0;
     }
@@ -82,13 +82,13 @@ extern "C" ARM int func_02055180(struct S02055080* sl, void* arg1, void* arg2, v
         RELOCATE(g3->c[i]);
     }
 
-    struct Group1* g1 = (struct Group1*)GetSubField0x8(sl);
+    struct Group1* g1 = (struct Group1*)GetSubField0x8_020550c0(sl);
     if (g1 == 0) {
         return 0;
     }
     RELOCATE(g1->a[0]);
 
-    struct Group4* g4 = (struct Group4*)GetSubField0xC(sl);
+    struct Group4* g4 = (struct Group4*)GetSubField0xC_020550d8(sl);
     if (g4 == 0) {
         return 0;
     }
@@ -96,7 +96,7 @@ extern "C" ARM int func_02055180(struct S02055080* sl, void* arg1, void* arg2, v
         RELOCATE(g4->a[i]);
     }
 
-    struct Group2* g5 = (struct Group2*)GetSubField0x18(sl);
+    struct Group2* g5 = (struct Group2*)GetSubField0x18_02055120(sl);
     if (g5 == 0) {
         return 0;
     }
@@ -104,7 +104,7 @@ extern "C" ARM int func_02055180(struct S02055080* sl, void* arg1, void* arg2, v
         RELOCATE(g5->a[i]);
     }
 
-    struct Group2* g6 = (struct Group2*)GetField0x4Field0x1cOrNull(sl);
+    struct Group2* g6 = (struct Group2*)GetField0x4Field0x1cOrNull_02055138(sl);
     if (g6 == 0) {
         return 0;
     }
@@ -112,13 +112,13 @@ extern "C" ARM int func_02055180(struct S02055080* sl, void* arg1, void* arg2, v
         RELOCATE(g6->a[i]);
     }
 
-    struct Group2* g7 = (struct Group2*)GetField0x4Field0x20OrNull(sl);
+    struct Group2* g7 = (struct Group2*)GetField0x4Field0x20OrNull_02055150(sl);
     if (g7 == 0) {
         return 0;
     }
     RELOCATE(g7->a[1]);
 
-    struct Group4* g8 = (struct Group4*)GetField0x4Field0x0Field0x0OrNull(sl);
+    struct Group4* g8 = (struct Group4*)GetField0x4Field0x0Field0x0OrNull_02055168(sl);
     if (g8 == 0) {
         return 0;
     }

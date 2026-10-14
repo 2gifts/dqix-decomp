@@ -3,7 +3,7 @@
 #include "GameState/GameState.h"
 
 int CheckField0x14Bit0Clear02088d10(unsigned char* obj);
-void SetFlag0x10ClearFlag0x8(unsigned char* obj);
+void SetFlag0x10ClearFlag0x8_02088d24(unsigned char* obj);
 unsigned short SelectByIndexRange0to3_021da644(int idx, int a, int b);
 extern "C" void* func_ov000_0215e958(void* a0);
 extern "C" void func_ov024_021e8bf0(void* work, void* fieldC, unsigned short* sel);
@@ -27,7 +27,7 @@ ARM void* func_ov024_021e1218(struct Obj_021e1218* obj, int unused, int id, stru
 	unsigned short sel = 0;
 	int clear = CheckField0x14Bit0Clear02088d10((unsigned char*)c->currentStats_);
 	if (clear != 0 && flagArg != 0) {
-		SetFlag0x10ClearFlag0x8((unsigned char*)c->currentStats_);
+		SetFlag0x10ClearFlag0x8_02088d24((unsigned char*)c->currentStats_);
 		sel = SelectByIndexRange0to3_021da644(id, range->f20.c, range->f24.a);
 	} else {
 		sel = SelectByIndexRange0to3_021da644(id, range->f24.b, range->f24.c);

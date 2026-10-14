@@ -13,7 +13,7 @@ struct Struct02030b7c {
     void* field4;
 };
 
-int StringLength(const char* s);
+int StringLength_020d2ff0(const char* s);
 
 struct Struct0215e498 {
     short f0;
@@ -72,7 +72,7 @@ extern "C" ARM int func_ov003_0215e510(struct Args0215e510* obj) {
 
     char* text1 = (char*)(void*)((Script::Parameter*)&obj->v3)->ToString();
     if (text1 != NULL) {
-        int len1 = StringLength(text1);
+        int len1 = StringLength_020d2ff0(text1);
         if (len1 != 0) {
             char* buf1 = (char*)((SafeAllocator*)data_ov003_02180cb8.allocator)->Allocate(len1 + 1);
             local.f4 = (int)buf1;
@@ -82,7 +82,7 @@ extern "C" ARM int func_ov003_0215e510(struct Args0215e510* obj) {
 
     char* text2 = (char*)(void*)((Script::Parameter*)&obj->v4)->ToString();
     if (text2 != NULL) {
-        int len2 = StringLength(text2);
+        int len2 = StringLength_020d2ff0(text2);
         if (len2 != 0) {
             char* buf2 = (char*)((SafeAllocator*)data_ov003_02180cb8.allocator)->Allocate(len2 + 1);
             local.f8 = (int)buf2;

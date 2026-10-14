@@ -69,8 +69,8 @@ void ClearStruct0204a82c(struct Struct0204a82c*);
 int GetScaledElementOffset(struct ScaledElementList0204aa48*);
 void InitStruct02094a24(struct Struct02094a24*);
 void BlankFunction02094a20(void*, SafeAllocator*);
-void StoreGlobal02109400(int);
-void RebaseOffsets(struct RebaseStruct*);
+void StoreGlobal02109400_02094a10(int);
+void RebaseOffsets_02042998(struct RebaseStruct*);
 
 // USA: func_020421c4
 extern "C" ARM void func_020421c4(SafeAllocator* alloc) {
@@ -139,8 +139,8 @@ extern "C" ARM void func_020421c4(SafeAllocator* alloc) {
     p = alloc->Allocate(0x68);
     InitStruct02094a24((struct Struct02094a24*)p);
     BlankFunction02094a20(p, alloc);
-    StoreGlobal02109400((int)p);
-    RebaseOffsets((struct RebaseStruct*)((char*)0x01ff9740 + off));
+    StoreGlobal02109400_02094a10((int)p);
+    RebaseOffsets_02042998((struct RebaseStruct*)((char*)0x01ff9740 + off));
     if ((char*)0x01ff9740 + off != 0) {
         data_02107800.f10 = (void*)((char*)0x01ff9740 + off);
     }

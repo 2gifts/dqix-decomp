@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 struct Container0205a3d0;
-void SetEntryPosition(struct Container0205a3d0* c, int key, short a, short b);
+void SetEntryPosition_020e27ec(struct Container0205a3d0* c, int key, short a, short b);
 
 struct WinObj020e28f0 {
     char pad0[0x1c];
@@ -12,5 +12,5 @@ struct WinObj020e28f0 {
 
 // USA: func_020e28f0
 ARM void SetEntryPositionFromObject(struct WinObj020e28f0* obj, short a, short b) {
-    SetEntryPosition(obj->container, obj->key, a, b);
+    SetEntryPosition_020e27ec(obj->container, obj->key, a, b);
 }

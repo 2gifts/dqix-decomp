@@ -19,7 +19,7 @@ struct Random;
 struct Obj0205eaa0;
 
 void* GetDataPtr02114e04_020d6c00(void);
-int* GetGlobal02109030(void);
+int* GetGlobal02109030_020936f8(void);
 extern "C" void* func_0202ae18(void);
 
 extern "C" void func_ov003_021612c0(void* self);
@@ -38,14 +38,14 @@ void InitState37_021aeedc(struct Struct021aeedc* p);
 void PrependNodeToHead(struct HeadList020469f8* list, struct HeadNode020469f8* node);
 
 void CallFunc0204c804OverAllElems(struct Cont0207fe44* obj);
-void ClearFlag0x3c9Bit0AndCleanup(unsigned char* obj);
-void OrBitsIntoField0(unsigned int* p, unsigned int mask);
+void ClearFlag0x3c9Bit0AndCleanup_020939fc(unsigned char* obj);
+void OrBitsIntoField0_020466e4(unsigned int* p, unsigned int mask);
 void ClearStruct020a9ea4(struct Struct020a9ea4* p);
 void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int mask);
 int IsElementFieldActive020811e8(struct Obj2081* obj, int key);
-void CallFunc0204c804OnMatchingKey(struct Obj2081* obj, int key);
+void CallFunc0204c804OnMatchingKey_0207fdcc(struct Obj2081* obj, int key);
 void UpdateEntryFlagsNibble02080cec(void* obj, int a, int b);
-void DispatchEntryOp0x8(void* obj, int id);
+void DispatchEntryOp0x8_0208108c(void* obj, int id);
 extern "C" void func_020813ec(void* obj, int key);
 void ResetWithSub0208203c(struct Obj0208203c* obj);
 void ResetAndSetFlag0x3c9Bit0_020939dc(void* obj);
@@ -56,15 +56,15 @@ void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 short FindMappedMemberId02080468(void* obj, int id);
 void SetEntryNibbleByShortId(struct StatusOwner02081198* owner, int id, int enable);
 void SetEntryFlag0x2ByShortId(struct StatusOwner02081164* obj, int id, int value);
-int GetField0xc(void* obj);
+int GetField0xc_0202bae4(void* obj);
 struct Element0202bad4* GetElementAt0x10Stride0xc0(struct ElementArray0202bad4* base, int index);
 extern "C" int func_02001aec(int val, int key, int field5);
 struct Random* GetBTRandom(void);
 int NextRandomMax(struct Random* random, int maximum);
-void SetSublistEntriesFlag1(void* obj, int id);
+void SetSublistEntriesFlag1_02080b54(void* obj, int id);
 int SetEntryFlagById02080b40(void* obj, int id);
-extern struct Elem2081* FindElementByByte0xc4(struct Obj2081*, int);
-int IsField0x9cEqual3(unsigned char* obj);
+extern struct Elem2081* FindElementByByte0xc4_02081da8(struct Obj2081*, int);
+int IsField0x9cEqual3_0204c7cc(unsigned char* obj);
 
 extern unsigned char data_02114e54;
 extern int data_0211e33c;
@@ -102,7 +102,7 @@ extern "C" ARM void func_ov003_02164400(unsigned char* self) {
     unsigned char state;
     int work;
     flagWord = GetDataPtr02114e04_020d6c00();
-    globalPtr = GetGlobal02109030();
+    globalPtr = GetGlobal02109030_020936f8();
     r8val = func_0202ae18();
     state = self[0x4a4];
     elementObj = *(struct Obj2081**)(self + 0x324);
@@ -119,7 +119,7 @@ extern "C" ARM void func_ov003_02164400(unsigned char* self) {
             if (result == 1) {
                 self[0x4a4] = 2;
                 CallFunc0204c804OverAllElems((struct Cont0207fe44*)elementObj);
-                ClearFlag0x3c9Bit0AndCleanup((unsigned char*)globalPtr);
+                ClearFlag0x3c9Bit0AndCleanup_020939fc((unsigned char*)globalPtr);
             }
         } else {
             *(short*)(self + 0x488) = 0x19;
@@ -162,7 +162,7 @@ extern "C" ARM void func_ov003_02164400(unsigned char* self) {
     }
     if (state == 0xb) {
         if (BackgroundLoader::GetInstance()->GetNumQueuedTasks() != 0) return;
-        OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 0x80);
+        OrBitsIntoField0_020466e4((unsigned int*)GetDataPtr02114e04_020d6c00(), 0x80);
         ClearStruct020a9ea4((struct Struct020a9ea4*)(self + 0x4b4));
         self[0x4a4] = 0xc;
         return;
@@ -185,20 +185,20 @@ extern "C" ARM void func_ov003_02164400(unsigned char* self) {
     if (state == 5) {
         if (IsElementFieldActive020811e8(elementObj, 0x10) != 0) {
             *(int*)(self + 0x45c) = 0;
-            CallFunc0204c804OnMatchingKey(elementObj, 0x10);
+            CallFunc0204c804OnMatchingKey_0207fdcc(elementObj, 0x10);
             *(unsigned int*)(self + 0x464) |= 0x180000;
         } else {
             memset(self, 0, 0x226);
             *(short*)(self + 0x226) = 0;
             UpdateEntryFlagsNibble02080cec(elementObj, 0xf, 0xf);
-            DispatchEntryOp0x8(elementObj, 0x43);
-            DispatchEntryOp0x8(elementObj, 0x44);
+            DispatchEntryOp0x8_0208108c(elementObj, 0x43);
+            DispatchEntryOp0x8_0208108c(elementObj, 0x44);
             func_020813ec(elementObj, 0xf);
             ResetWithSub0208203c((struct Obj0208203c*)(self + 0x308));
             *(void**)(self + 0x470) = 0;
             self[0x4a4] = 6;
             func_0202b0f4((int*)r8val);
-            ClearFlag0x3c9Bit0AndCleanup((unsigned char*)globalPtr);
+            ClearFlag0x3c9Bit0AndCleanup_020939fc((unsigned char*)globalPtr);
             func_ov017_021c36a0();
             *(short*)(self + 0x476) = 0;
             *(short*)(self + 0x478) = 0;
@@ -215,7 +215,7 @@ extern "C" ARM void func_ov003_02164400(unsigned char* self) {
             *(short*)(self + 0x478) = 0;
             if (*(unsigned short*)(self + 0x476) > 0x3c) {
                 msg484[0] = 0xa;
-                CallFunc0204c804OnMatchingKey(elementObj, 0xf);
+                CallFunc0204c804OnMatchingKey_0207fdcc(elementObj, 0xf);
                 self[0x4a4] = 7;
                 return;
             }
@@ -232,7 +232,7 @@ extern "C" ARM void func_ov003_02164400(unsigned char* self) {
                 self[0x4a3] = 0xa;
                 self[0x4a4] = 0;
                 func_0202b0f4((int*)r8val);
-                ClearFlag0x3c9Bit0AndCleanup((unsigned char*)globalPtr);
+                ClearFlag0x3c9Bit0AndCleanup_020939fc((unsigned char*)globalPtr);
                 return;
             }
         }
@@ -247,7 +247,7 @@ extern "C" ARM void func_ov003_02164400(unsigned char* self) {
         self[0x4a3] = 0xa;
         self[0x4a4] = 0;
         func_0202b0f4((int*)r8val);
-        ClearFlag0x3c9Bit0AndCleanup((unsigned char*)globalPtr);
+        ClearFlag0x3c9Bit0AndCleanup_020939fc((unsigned char*)globalPtr);
         return;
     }
     if (state == 7) {
@@ -362,7 +362,7 @@ extern "C" ARM void func_ov003_02164400(unsigned char* self) {
         self[0x4a4] = 0;
         *(unsigned int*)(self + 0x464) = (*(unsigned int*)(self + 0x464) | 0x80000) & ~0xf00000u;
         func_0202b0f4((int*)r8val);
-        ClearFlag0x3c9Bit0AndCleanup((unsigned char*)globalPtr);
+        ClearFlag0x3c9Bit0AndCleanup_020939fc((unsigned char*)globalPtr);
         return;
     }
     if (state == 9) {
@@ -378,8 +378,8 @@ extern "C" ARM void func_ov003_02164400(unsigned char* self) {
                 self[0x4a4] = 0xd;
                 msg484[0] = 0x38;
                 *(unsigned int*)(self + 0x464) |= 4;
-                CallFunc0204c804OnMatchingKey(elementObj, 0x10);
-                CallFunc0204c804OnMatchingKey(elementObj, 0xe);
+                CallFunc0204c804OnMatchingKey_0207fdcc(elementObj, 0x10);
+                CallFunc0204c804OnMatchingKey_0207fdcc(elementObj, 0xe);
                 *(unsigned int*)(self + 0x464) |= 0x80000;
             }
         } else {
@@ -391,22 +391,22 @@ extern "C" ARM void func_ov003_02164400(unsigned char* self) {
     if (state == 0xd) {
         if (*(unsigned short*)(self + 0x47a) == 0) {
             *(short*)(self + 0x488) = 0x11;
-            SetSublistEntriesFlag1(elementObj, 0x11);
+            SetSublistEntriesFlag1_02080b54(elementObj, 0x11);
             SetEntryFlagById02080b40(elementObj, 0x51);
-            DispatchEntryOp0x8(elementObj, 0x51);
+            DispatchEntryOp0x8_0208108c(elementObj, 0x51);
             func_020813ec(elementObj, *(short*)(self + 0x488));
             ResetWithSub0208203c((struct Obj0208203c*)(self + 0x308));
             *(void**)(self + 0x470) = 0;
             *(unsigned short*)(self + 0x47a) = *(unsigned short*)(self + 0x47a) + 1;
         }
-        void* found = FindElementByByte0xc4(elementObj, 0x11);
+        void* found = FindElementByByte0xc4_02081da8(elementObj, 0x11);
         if (found == 0) {
             *(short*)(self + 0x484) = 0x30;
             self[0x4a4] = self[0x4a4] + 1;
             *(short*)(self + 0x47a) = 0;
             self[0x4a4] = 0xe;
         }
-        if (IsField0x9cEqual3((unsigned char*)found) == 0) return;
+        if (IsField0x9cEqual3_0204c7cc((unsigned char*)found) == 0) return;
         *(short*)(self + 0x47a) = 0;
         self[0x4a4] = 0xe;
         return;
@@ -423,7 +423,7 @@ extern "C" ARM void func_ov003_02164400(unsigned char* self) {
         int count;
         cur = self + (*(short*)(self + 0x498)) * 0x37;
         arr = func_0202ae18();
-        count = GetField0xc(arr);
+        count = GetField0xc_0202bae4(arr);
         for (idx = 0; idx < count; idx++) {
             struct Element0202bad4* elem = GetElementAt0x10Stride0xc0((struct ElementArray0202bad4*)arr, idx);
             if (func_02001aec((int)(cur + 0x31), (int)((char*)elem + 4), 6) == 0) goto found;
@@ -433,7 +433,7 @@ extern "C" ARM void func_ov003_02164400(unsigned char* self) {
         {
         if (idx < 0 || ((struct RecordByte0*)(self + (*(short*)(self + 0x498)) * 0x37))->used == 0) {
             if (flag != 0) {
-                CallFunc0204c804OnMatchingKey(elementObj, 0x11);
+                CallFunc0204c804OnMatchingKey_0207fdcc(elementObj, 0x11);
                 ((struct GlobalBig1000*)((char*)GetGlobalField0x1c020421a0() + 0x1000))->flag9ca = 1;
                 msg484[0] = 0x37;
                 *(unsigned int*)(self + 0x464) |= 4;
@@ -447,7 +447,7 @@ extern "C" ARM void func_ov003_02164400(unsigned char* self) {
         }
 
         *(int*)(self + 0x4b0) = 0;
-        OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 0x80000);
+        OrBitsIntoField0_020466e4((unsigned int*)GetDataPtr02114e04_020d6c00(), 0x80000);
         {
             char* ov = (char*)func_ov017_0218b5b0() + 0x3000;
             struct Struct021aeedc* p4 = *(struct Struct021aeedc**)(ov + 0xb2c);
@@ -470,7 +470,7 @@ extern "C" ARM void func_ov003_02164400(unsigned char* self) {
         void* p = *(void**)(ov + 0xb2c);
         signed char v = *((signed char*)p + 0xf);
         if (v == 1) {
-            CallFunc0204c804OnMatchingKey(elementObj, 0x11);
+            CallFunc0204c804OnMatchingKey_0207fdcc(elementObj, 0x11);
             self[0x4a4] = 0x11;
         } else if (v == -1) {
             CallFunc0204c804OverAllElems((struct Cont0207fe44*)elementObj);

@@ -53,8 +53,8 @@ struct ListMenu_021e6448 {
     int scrolled_;
 };
 
-int SelectField0x8Or0x58ByFlags(unsigned char* obj);
-void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
+int SelectField0x8Or0x58ByFlags_0205c6e4(unsigned char* obj);
+void SelectCoordsByFlag0x24_02012a84(unsigned char* obj, int* out1, int* out2);
 Element_021e6448* FindElementByC40205d81c(Struct_0205d81c* s, int key);
 void AdvanceWrappedAccumulator0205c4a8(Struct_0205c4a8* s, int delta);
 int ComputeScaledSum0205bb84(Struct_0205bb84* s);
@@ -65,11 +65,11 @@ extern "C" TouchState_021e6448 data_02114e54;
 
 // USA: func_ov023_021e6448
 extern "C" ARM int func_ov023_021e6448(ListMenu_021e6448* self) {
-    if (SelectField0x8Or0x58ByFlags((unsigned char*)&self->list_) <= 1)
+    if (SelectField0x8Or0x58ByFlags_0205c6e4((unsigned char*)&self->list_) <= 1)
         return 0;
     if (data_02114e54.touching_ != 0) {
         int x, y;
-        SelectCoordsByFlag0x24((unsigned char*)&data_02114e54, &x, &y);
+        SelectCoordsByFlag0x24_02012a84((unsigned char*)&data_02114e54, &x, &y);
         Element_021e6448* e = FindElementByC40205d81c((Struct_0205d81c*)&self->list_, self->selectedKey_);
         if (e != NULL) {
             short right = e->x;

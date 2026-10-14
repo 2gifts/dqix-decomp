@@ -8,7 +8,7 @@ enum { RegionOffset4084 = 0x4084, RegionLabelExtra = 0 };
 #include "GameState/GameState.h"
 
 int AppendFormatted02041f70(char* buf, int a, int b);
-int AppendXTag(char* dst, int x);
+int AppendXTag_02041a28(char* dst, int x);
 struct Container020e0310;
 int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 int GetCombatSignedByteAt0x2c8d02039730(void* unused, int index);
@@ -41,7 +41,7 @@ ARM void AppendFieldTagWithLookup_0219a544(unsigned char* a, char* buf, int type
 	struct Container020e0310* container = *(struct Container020e0310**)(a + RegionOffset4084);
 	int fieldResult = GetFieldByKey020e0434(container, key);
 	if (!fieldResult) return;
-	AppendXTag(buf, 0);
+	AppendXTag_02041a28(buf, 0);
 	int width = data_ov017_021d6460[type];
 	AppendDotLeaderLabel02042084(buf, (char*)fieldResult, width, RegionLabelExtra);
 }

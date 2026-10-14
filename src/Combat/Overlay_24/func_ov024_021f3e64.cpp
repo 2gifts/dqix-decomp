@@ -37,7 +37,7 @@ int IsFlagBit67108864Set_021edc08(S_flag4000000*);
 int IsFlagBit1073741824Set_021edc50(S_flag40000000*);
 int IsFlagBit2097152Set_021edc38(S_flag200000*);
 int IsFlagBit2147483648Set_021edc68(S_flag80000000*);
-int IsField0x18Flag0x80Set(Combatant_2088660*);
+int IsField0x18Flag0x80Set_02088660(Combatant_2088660*);
 int IsFlagBit8Set_021f273c(S_flag8b*);
 
 // USA: func_ov024_021f3e64
@@ -70,7 +70,7 @@ extern "C" ARM int func_ov024_021f3e64(int* context, int unused, int unused2, in
             || IsFlagBit67108864Set_021edc08((S_flag4000000*)target)
             || IsFlagBit2097152Set_021edc38((S_flag200000*)target)
             || IsFlagBit2147483648Set_021edc68((S_flag80000000*)target)
-            || IsField0x18Flag0x80Set((Combatant_2088660*)target->currentStats_)
+            || IsField0x18Flag0x80Set_02088660((Combatant_2088660*)target->currentStats_)
             || IsFlagBit8Set_021f273c((S_flag8b*)target)
             || (((StatusFields*)target->currentStats_)->flags_ & 2)
             || (((StatusFields*)target->currentStats_)->flags_ & 4)

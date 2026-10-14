@@ -6,7 +6,7 @@ struct Field150_021ab6b0 {
     unsigned char pad0[0x566];
     unsigned short id;
 };
-Field150_021ab6b0* GetFieldAt0x150(unsigned char* obj);
+Field150_021ab6b0* GetFieldAt0x150_02053c6c(unsigned char* obj);
 
 struct Header021ab6b0 {
     unsigned short id;
@@ -45,7 +45,7 @@ extern "C" ARM int func_ov017_021ab6b0(Script::Parameter* params, int numParams)
         }
         return 0;
     }
-    Field150_021ab6b0* info = GetFieldAt0x150((unsigned char*)GameState::GetInstance()->GetProtagonist());
+    Field150_021ab6b0* info = GetFieldAt0x150_02053c6c((unsigned char*)GameState::GetInstance()->GetProtagonist());
     unsigned short id;
     float a, b, c, d;
     for (int i = 0; i < count; i++) {

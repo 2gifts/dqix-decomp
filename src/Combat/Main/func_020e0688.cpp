@@ -20,7 +20,7 @@ struct FlagWord02046708;
 int TestFlags02046708(struct FlagWord02046708* word, unsigned int mask);
 void* GetDataPtr02114e04_020d6c00(void);
 void ReleaseHandle02022b90(void* owner, int* handle);
-void DelayThenSyncBit0(void);
+void DelayThenSyncBit0_020c9820(void);
 
 struct ActiveEntry02046900;
 int CountActiveEntries(struct ActiveEntry02046900* entry);
@@ -31,7 +31,7 @@ void* FindRecordByIndex(struct Rec020467f0* rec, int index, void** out, int* out
 struct List0204af64;
 void ResetList0204af64(struct List0204af64* obj);
 
-void SetWord0x18ClearByte0x1f(unsigned char* obj, int value);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char* obj, int value);
 
 extern "C" void func_0204b5b4(void*, int);
 
@@ -89,12 +89,12 @@ extern "C" ARM void func_020e0688(struct Obj020e0688* self) {
             arrayC[i] = FindRecordByIndex((struct Rec020467f0*)recListHead, i, &dummyPtr, &arrayB[i]);
         }
 
-        DelayThenSyncBit0();
+        DelayThenSyncBit0_020c9820();
         ResetList0204af64((struct List0204af64*)&s);
         s.lo = 1;
         s.hi = 0;
         func_0204b5b4(&s, 2);
-        SetWord0x18ClearByte0x1f((unsigned char*)&s, 0);
+        SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)&s, 0);
         DispatchViaTable0204b5e8((struct Obj0204b5e8*)&s, 0, 0);
 
         for (int i = 0; i < count; i++) {

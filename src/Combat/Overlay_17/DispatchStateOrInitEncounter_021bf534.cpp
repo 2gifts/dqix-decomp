@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 #include "Resource/GameResources.h"
 
-void SetByteField0x253(void* obj);
+void SetByteField0x253_020397c0(void* obj);
 extern "C" void func_ov017_021bf490(void*);
 int GetGlobalField0x1c020421a0();
 void CallIfField498_0218d5ac(void* obj);
@@ -38,7 +38,7 @@ extern "C" ARM void func_ov017_021bf534(struct Obj_021bf534* obj) {
         obj->state = (unsigned char)handler(obj);
     } else {
         if (combatant) {
-            SetByteField0x253(combatant);
+            SetByteField0x253_020397c0(combatant);
         }
         func_ov017_021bf490(obj);
         obj->field1 = 1;

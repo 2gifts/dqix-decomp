@@ -42,7 +42,7 @@ extern State_1f9b8 data_020fdcb0[4];
 extern Stopwatch0201f9e8 data_020fdc60[4];
 void InitStruct_0201f9b8(State_1f9b8*);
 extern "C" void InitStopwatch0201f9e8(Stopwatch0201f9e8*);
-unsigned short GetTableValue(void*);
+unsigned short GetTableValue_0202053c(void*);
 FlagWord02046708* GetDataPtr02114e04_020d6c00(void);
 int TestFlags02046708(FlagWord02046708*, unsigned int);
 #if defined(jpn)
@@ -76,7 +76,7 @@ extern "C" ARM void func_02022dc8(MapDisplay* receiver) {
         int mp = member->combatFields_.savedState_130_->mp;
         int currentMP = member->baseStats_->primaryStats.maxMP;
         int valueIndex = member->data->index;
-        unsigned char value = GetTableValue(member);
+        unsigned char value = GetTableValue_0202053c(member);
         int status = member->combatFields_.savedState_130_->flags;
         state->stateChanged |= state->index != valueIndex;
         state->stateChanged |= state->tableValue != value;

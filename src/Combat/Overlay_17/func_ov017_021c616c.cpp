@@ -11,7 +11,7 @@ extern "C" void* func_ov017_021b8478(void* obj);
 extern "C" void func_ov017_021b848c(void* h, void* buf, int a, int b, int c, int d, int e, int f);
 GameObject* FindCombatantByField16a_021a278c(void* unused, int val);
 void TrySetMode02076ccc(void*, int);
-GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* battleStruct, int combatantId);
 struct Obj02053f7c;
 void SetField0x1b2IfMatchOrFlag02053f7c(struct Obj02053f7c* obj, unsigned short a, int b);
 #define SetField0x1b2IfMatchOrFlag02053f7c SetField0x1b2IfMatchOrFlag02053f7c
@@ -47,7 +47,7 @@ extern "C" ARM void func_ov017_021c616c(int unused0, unsigned char* evtRaw, Game
     }
     for (unsigned int i = 0; i < 4; i++) {
         if (evt->flags[i] != 0) {
-            GameObject* c2 = GetCombatantWithFlag0x100(battleStruct, i);
+            GameObject* c2 = GetCombatantWithFlag0x100_0200ff1c(battleStruct, i);
             if (c2 != NULL) {
                 SetField0x1b2IfMatchOrFlag02053f7c((struct Obj02053f7c*)c2, evt->field4, 1);
             }

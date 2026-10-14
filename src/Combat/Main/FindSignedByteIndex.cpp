@@ -6,7 +6,7 @@ struct SearchStruct {
 };
 
 // USA: func_0202bcbc
-ARM signed char FindSignedByteIndex(struct SearchStruct* obj, int value) {
+ARM signed char FindSignedByteIndex_0202bcbc(struct SearchStruct* obj, int value) {
     int i;
     for (i = 0; i < 16; i++) {
         if (obj->arr[i] == value) {

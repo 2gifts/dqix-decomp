@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-GameObject* GetCombatantWithFlag0x400(GameState* battleStruct, int combatantId);
+GameObject* GetCombatantWithFlag0x400_0200fea4(GameState* battleStruct, int combatantId);
 extern "C" int func_ov000_02154a04(int field0, int id, int flag, int p3);
 
 struct Field148_0208a91c {
@@ -22,7 +22,7 @@ typedef int (*Fn0208a91c)(void*, int, int*, int);
 // USA: func_0208a91c
 extern "C" ARM int func_0208a91c(int* p0, int value, int id, int* outPtr, int p3) {
     GameState* bs = GameState::GetInstance();
-    GameObject* c = GetCombatantWithFlag0x400(bs, id);
+    GameObject* c = GetCombatantWithFlag0x400_0200fea4(bs, id);
     struct Field148_0208a91c* field148 = *(struct Field148_0208a91c**)((char*)c + 0x148);
     *p0 = value;
     int category = field148->category;

@@ -2,10 +2,10 @@
 #include "System/Interrupts.h"
 
 struct RemoveNodeEntry;
-RemoveNodeEntry* RemoveNode(RemoveNodeEntry* head, RemoveNodeEntry* node);
+RemoveNodeEntry* RemoveNode_020c8784(RemoveNodeEntry* head, RemoveNodeEntry* node);
 
 struct DListNode;
-DListNode* InsertNodeAtHead(DListNode* oldHead, DListNode* newNode);
+DListNode* InsertNodeAtHead_020c8768(DListNode* oldHead, DListNode* newNode);
 
 struct FreeBlock020c87ac {
     struct FreeBlock020c87ac* prev;
@@ -57,7 +57,7 @@ extern "C" ARM void* func_020c8854(int tableIdx, int count, int size) {
     }
     unsigned int remaining = cursor->size - size;
     if (remaining < 0x40) {
-        entry->freeList = (struct FreeBlock020c87ac*)RemoveNode((struct RemoveNodeEntry*)entry->freeList, (struct RemoveNodeEntry*)cursor);
+        entry->freeList = (struct FreeBlock020c87ac*)RemoveNode_020c8784((struct RemoveNodeEntry*)entry->freeList, (struct RemoveNodeEntry*)cursor);
     } else {
         cursor->size = size;
         struct FreeBlock020c87ac* newBlock = (struct FreeBlock020c87ac*)((char*)cursor + size);
@@ -73,7 +73,7 @@ extern "C" ARM void* func_020c8854(int tableIdx, int count, int size) {
             entry->freeList = newBlock;
         }
     }
-    entry->usedList = (struct RemoveNodeEntry*)InsertNodeAtHead((struct DListNode*)entry->usedList, (struct DListNode*)cursor);
+    entry->usedList = (struct RemoveNodeEntry*)InsertNodeAtHead_020c8768((struct DListNode*)entry->usedList, (struct DListNode*)cursor);
     SetIRQInterruptState(state);
     return (char*)cursor + 0x20;
 }

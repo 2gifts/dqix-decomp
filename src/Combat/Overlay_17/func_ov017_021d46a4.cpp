@@ -51,12 +51,12 @@ struct WorldState {
 };
 struct ZoneState { unsigned short zone_; };
 extern "C" ZoneState* func_02012fe4();
-void* GetEntryTableBase();
+void* GetEntryTableBase_02027ca4();
 MonsterDefinition* FindEntryByCurrentId02027cb0();
 extern "C" void func_02076a8c(GameObject*);
 int ListContainsNode(ListHead02046b38*, ListNode02046b38*);
 PairStruct* FindCombatantByField2_021a2738(void*, int);
-void CopyPairAndStoreField(PairStruct*, PairStruct*);
+void CopyPairAndStoreField_02072adc(PairStruct*, PairStruct*);
 extern "C" int func_02018fbc(ZoneState*, Vector3i*);
 SubEntry0209be84* FindSubEntry0209be84(EntryTable0209bd94*, unsigned int, int);
 void SetVecYFromValue02033874(Obj02033874*, int);
@@ -64,7 +64,7 @@ void SetField0x16c(S02076cc4*, int);
 void SetByte0xbeShiftPrev(Bytes02033b88*, int);
 void TrySetMode02076ccc(void*, int);
 extern "C" void func_0207964c(GameObject*);
-Src020795e8* FindNodeBySignedId(void*, int);
+Src020795e8* FindNodeBySignedId_0206ef18(void*, int);
 void CopyBitFields020795e8(Dst020795e8*, Src020795e8*);
 
 // USA: func_ov017_021d46a4
@@ -76,7 +76,7 @@ extern "C" ARM void func_ov017_021d46a4(void*, MonsterUpdate* update) {
     GameState* state = GameState::GetInstance();
     WorldState* world = (WorldState*)func_ov017_0218b5b0();
     ZoneState* zone = func_02012fe4();
-    GetEntryTableBase();
+    GetEntryTableBase_02027ca4();
     ListHead02046b38* list = world->list_;
     MonsterDefinition* definition;
     int index;
@@ -91,7 +91,7 @@ extern "C" ARM void func_ov017_021d46a4(void*, MonsterUpdate* update) {
     func_02076a8c(actor);
     if (!ListContainsNode(list, node)) {
         PairStruct* previous = FindCombatantByField2_021a2738(world, update->monsterId_);
-        if (previous) CopyPairAndStoreField(previous, (PairStruct*)actor);
+        if (previous) CopyPairAndStoreField_02072adc(previous, (PairStruct*)actor);
     }
     Vector3i position;
     position.x = update->x_ << 7;
@@ -120,6 +120,6 @@ extern "C" ARM void func_ov017_021d46a4(void*, MonsterUpdate* update) {
     fields->field166_ = update->fieldD_;
     TrySetMode02076ccc(actor, update->mode_);
     func_0207964c(actor);
-    Src020795e8* saved = FindNodeBySignedId(definition->nodes_, (short)update->monsterId_);
+    Src020795e8* saved = FindNodeBySignedId_0206ef18(definition->nodes_, (short)update->monsterId_);
     if (saved) CopyBitFields020795e8((Dst020795e8*)actor, saved);
 }

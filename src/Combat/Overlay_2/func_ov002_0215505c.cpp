@@ -21,7 +21,7 @@ void InitStruct0205cfd4(struct InitTarget0205cfd4 *t);
 void ResetList0204af64(struct List0204af64 *l);
 extern "C" void func_0204c684(void *p);
 extern "C" void *memset(void *dst, int value, unsigned int length);
-int CopyOutRegion0x5718(char *obj, void *dst);
+int CopyOutRegion0x5718_02011494(char *obj, void *dst);
 extern "C" char *func_0205ec34(void);
 unsigned short BuildBitmask0206e384(unsigned char *obj);
 short GetShortFromTable0206e3d4(int unused, int index);
@@ -176,7 +176,7 @@ extern "C" ARM void func_ov002_0215505c(char *self) {
     U8(0x1c7b)                              = 0;
     S8(0x1c73)                              = 0;
     GameState *gs                           = GameState::GetInstance();
-    S32(0x1c38)                             = CopyOutRegion0x5718((char *) gs, buf);
+    S32(0x1c38)                             = CopyOutRegion0x5718_02011494((char *) gs, buf);
     for (int i = 0; i < S32(0x1c38); i++) {
         *(int *) (self + i * 4 + 0x1c3c) = buf[i];
         GameObject *m                    = gs->GetPartyMemberByIndex(buf[i]);
@@ -185,7 +185,7 @@ extern "C" ARM void func_ov002_0215505c(char *self) {
             S8(0x1c73)++;
         }
     }
-    S32(0x1c50) = CopyOutRegion0x5718((char *) gs, buf);
+    S32(0x1c50) = CopyOutRegion0x5718_02011494((char *) gs, buf);
     for (int i = 0; i < S32(0x1c50); i++) {
         *(int *) (self + i * 4 + 0x1c54) = buf[i];
     }

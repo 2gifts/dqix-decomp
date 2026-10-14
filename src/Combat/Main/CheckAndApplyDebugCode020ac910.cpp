@@ -12,7 +12,7 @@ extern "C" int func_02075910(int a, void* p, unsigned int size, int c);
 extern "C" int func_02075acc(int a, void* p, unsigned int size, int c);
 extern "C" void func_020abb64(void);
 struct StateBits5ccc_11544;
-extern void SetFlag0x5cccBit0(StateBits5ccc_11544* state);
+extern void SetFlag0x5cccBit0_02011544(StateBits5ccc_11544* state);
 extern char data_020f1bf8[];
 
 // USA: func_020ac910
@@ -23,7 +23,7 @@ ARM int CheckAndApplyDebugCode020ac910() {
     if (result == 0) {
         GameState* bs = GameState::GetInstance();
         *(unsigned char*)((char*)bs + kRegionalFieldOffset) = 0;
-        SetFlag0x5cccBit0((StateBits5ccc_11544*)bs);
+        SetFlag0x5cccBit0_02011544((StateBits5ccc_11544*)bs);
         return 0;
     }
     if (strcmp(buf, data_020f1bf8) != 0) {

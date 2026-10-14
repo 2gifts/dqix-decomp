@@ -5,7 +5,7 @@
 #include "std_library_functions.h"
 
 struct TableA68;
-void* FindEntryByKey(TableA68* table, int key);
+void* FindEntryByKey_02072a68(TableA68* table, int key);
 extern "C" void func_020728ac(void* table, SafeAllocator* allocator, const void* file, unsigned int size, int, int, int);
 #if defined(jpn)
 extern char data_ov012_0218bf40[];
@@ -28,7 +28,7 @@ extern "C" ARM void func_ov012_02185e18(char* editor) {
     }
     ((SafeAllocator*)(editor + 0x2c))->Reset();
     func_020728ac(editor + 0x1314, (SafeAllocator*)(editor + 0x2c), file, size, 0, 0, 0);
-    *(void**)(editor + 0x1348) = FindEntryByKey((TableA68*)(editor + 0x1314), 0);
+    *(void**)(editor + 0x1348) = FindEntryByKey_02072a68((TableA68*)(editor + 0x1314), 0);
     if (!GetFileInNarc(archive, data_ov012_0218bf52, &file, (unsigned int*)(editor + 0x1410), 0)) {
         loader->RemoveTask(*(int*)(editor + 0x1350));
         *(int*)(editor + 0x1350) = -1;
@@ -44,7 +44,7 @@ extern "C" ARM void func_ov012_02185e18(char* editor) {
     loader->GetLoadedFileByID(task, &file, &size);
     ((SafeAllocator*)(editor + 0x34))->Reset();
     func_020728ac(editor + 0x133c, (SafeAllocator*)(editor + 0x34), file, size, 0, 0, 0);
-    *(void**)(editor + 0x1378) = FindEntryByKey((TableA68*)(editor + 0x133c), 0);
+    *(void**)(editor + 0x1378) = FindEntryByKey_02072a68((TableA68*)(editor + 0x133c), 0);
     loader->RemoveTask(*(int*)(editor + 0x1380));
     *(int*)(editor + 0x1380) = -1;
 #endif

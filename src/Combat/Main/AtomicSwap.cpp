@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
-// USA: _Z10AtomicSwapiPi
-ARM int AtomicSwap(int value, int* addr) {
+// USA: _Z19AtomicSwap_020ca7e0iPi
+ARM int AtomicSwap_020ca7e0(int value, int* addr) {
     asm {
         swp value, value, [addr]
     }

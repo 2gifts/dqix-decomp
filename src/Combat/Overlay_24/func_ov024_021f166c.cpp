@@ -6,7 +6,7 @@
 extern "C" int func_ov000_0215eb1c(int battle, unsigned short* table, int count, int flag);
 struct S_bf3c_021f1440;
 int IsBitfield2Set_021f1440(struct S_bf3c_021f1440* obj);
-GameObject* GetCombatantWithFlag0x400ByID(int unused, int id);
+GameObject* GetCombatantWithFlag0x400ByID_ov000_021536f8(int unused, int id);
 int IsCombatantFlagMask512_021eda60(GameObject* combatant);
 
 struct Obj_021f166c { int field0; };
@@ -26,7 +26,7 @@ extern unsigned short data_ov024_021fef6c;
 
 // USA: func_ov024_021f166c  (semantic: FindLowUnkBuff21Unflagged_021f166c)
 extern "C" ARM int func_ov024_021f166c(struct Obj_021f166c* obj, short id, int unused2, int* outCount, void* outArr) {
-    GameObject* c0 = GetCombatantWithFlag0x400ByID(obj->field0, id);
+    GameObject* c0 = GetCombatantWithFlag0x400ByID_ov000_021536f8(obj->field0, id);
     if (!c0) return 0;
     if (!IsBitfield2Set_021f1440((struct S_bf3c_021f1440*)c0)) return 0;
 

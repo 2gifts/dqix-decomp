@@ -32,7 +32,7 @@ extern "C" void func_020813ec(void *, int);
 struct Obj0208203c;
 void ResetWithSub0208203c(Obj0208203c*);
 int FindMappedMemberId02080468(void *, int);
-char * GetWord0x0(int*);
+char * GetWord0x0_0200fb8c(int*);
 struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0 *, int, int);
 struct Cont0207fe44;
@@ -72,7 +72,7 @@ extern "C" ARM void func_ov003_02163fd4(Scene *self) {
         ResetWithSub0208203c((Obj0208203c*)self->sub308);
         self->state = self->state + 1;
         self->flags &= ~0x300;
-        *(unsigned char *) (GetWord0x0((int*)GameState::GetInstance()) + 0x4000 + 0x354) = 0xa;
+        *(unsigned char *) (GetWord0x0_0200fb8c((int*)GameState::GetInstance()) + 0x4000 + 0x354) = 0xa;
     } else if (state == 1) {
         self->p470 = &self->h48a;
         SetEntryLowNibbleAndElement02080c68(entries, self->h488, 0);
@@ -83,7 +83,7 @@ extern "C" ARM void func_ov003_02163fd4(Scene *self) {
             self->p470 = 0;
             switch (self->h48a) {
                 case 0xa6:
-                    if ((int) *((unsigned char *)GetPtrField0x2a04(GameState::GetInstance()) + 0xf7c) > 1) {
+                    if ((int) *((unsigned char *)GetPtrField0x2a04_02010828(GameState::GetInstance()) + 0xf7c) > 1) {
                         p[0]        = 3;
                         p[1]        = 4;
                         self->c4a3  = 0xb;
@@ -96,7 +96,7 @@ extern "C" ARM void func_ov003_02163fd4(Scene *self) {
                     }
                     break;
                 case 0xa7:
-                    if (*((unsigned char *)GetPtrField0x2a04(GameState::GetInstance()) + 0xf7c) == 4) {
+                    if (*((unsigned char *)GetPtrField0x2a04_02010828(GameState::GetInstance()) + 0xf7c) == 4) {
                         p[0] = 0x14;
                         p[1] = 1;
                     } else {

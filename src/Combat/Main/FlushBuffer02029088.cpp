@@ -4,7 +4,7 @@
 #include "System/Cache.h"
 
 #if defined(jpn)
-int GetData02107800Word0(void);
+int GetData02107800Word0_020429d4(void);
 
 typedef unsigned char TileRow4bpp[4];
 typedef TileRow4bpp Tile4bpp[8];
@@ -16,7 +16,7 @@ typedef Scanline4bpp ScanlineBand4bpp[8];
 ARM void FlushBuffer02029088() {
     if (glyphBitmapContext.buffer == NULL) return;
 #if defined(jpn)
-    unsigned char* tiledBand = reinterpret_cast<unsigned char*>(GetData02107800Word0());
+    unsigned char* tiledBand = reinterpret_cast<unsigned char*>(GetData02107800Word0_020429d4());
     unsigned char* image = static_cast<unsigned char*>(glyphBitmapContext.buffer);
     unsigned char* destination;
     const unsigned char* source;

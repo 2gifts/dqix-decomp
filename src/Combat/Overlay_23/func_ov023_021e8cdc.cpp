@@ -5,7 +5,7 @@
 extern int data_ov023_021fdd6c;
 extern "C" void* __clear(void* dst, int count);
 extern "C" int func_020426bc(void* src, void* dst, int flag);
-int StringLength(const char* s);
+int StringLength_020d2ff0(const char* s);
 int FindEntryIndexByKey020424e4(int key, int tableIdx);
 extern "C" void func_02042764(void* a, void* b, int flag);
 
@@ -17,16 +17,16 @@ struct Entry0204254c {
     char pad6[2];
 };
 struct Entry0204254c* FindEntryByKey0204254c(int key, int tableIdx);
-int AppendXTag(char* dst, int x);
+int AppendXTag_02041a28(char* dst, int x);
 void AppendString02042058(char* dst, const char* src);
-int AppendYTag(char* dst, int y);
+int AppendYTag_02041a5c(char* dst, int y);
 
 #if defined(jpn)
 extern "C" void func_020420e8(char*, int);
 extern "C" void func_02042428(char*, int);
 struct TableA68;
-char* FindEntryByKey(TableA68*, int);
-int AppendXYTag(char*, int, int);
+char* FindEntryByKey_02072a68(TableA68*, int);
+int AppendXYTag_02041a90(char*, int, int);
 #endif
 
 // USA: func_ov023_021e8cdc
@@ -39,7 +39,7 @@ extern "C" ARM void func_ov023_021e8cdc(char* obj) {
     char* battle = (char*)GameState::GetInstance() + 0x3c + 0x5400;
     func_020420e8(dst, 8);
     func_02042428(dst, 12);
-    AppendString02042058(dst, FindEntryByKey(*(TableA68**)(obj + 0x5f4), 0x73));
+    AppendString02042058(dst, FindEntryByKey_02072a68(*(TableA68**)(obj + 0x5f4), 0x73));
     dst += strlen(dst);
     char* src = battle + 8;
     if (*(char**)(obj + 0x600)) src = *(char**)(obj + 0x600);
@@ -48,9 +48,9 @@ extern "C" ARM void func_ov023_021e8cdc(char* obj) {
         src += 0x26;
         dst += 0x26;
         if (row != 2) {
-            AppendXYTag(dst, 1, row * 0x13 + 0x1b);
+            AppendXYTag_02041a90(dst, 1, row * 0x13 + 0x1b);
             dst += strlen(dst);
-            memcpy(dst, FindEntryByKey(*(TableA68**)(obj + 0x5f4), 0x7b), 2);
+            memcpy(dst, FindEntryByKey_02072a68(*(TableA68**)(obj + 0x5f4), 0x7b), 2);
             dst += 2;
         }
     }
@@ -65,7 +65,7 @@ extern "C" ARM void func_ov023_021e8cdc(char* obj) {
     if (src != 0) {
         len = func_020426bc(src, buf, 1);
     } else {
-        len = StringLength(battle + 8);
+        len = StringLength_020d2ff0(battle + 8);
         memcpy(buf, battle + 8, len);
     }
 
@@ -84,7 +84,7 @@ extern "C" ARM void func_ov023_021e8cdc(char* obj) {
         int step = 1;
         struct Entry0204254c* e = FindEntryByKey0204254c((int)p, step);
         if (e != 0) {
-            AppendXTag(dst, x);
+            AppendXTag_02041a28(dst, x);
             AppendString02042058(dst, (const char*)e->val);
             step = e->field5;
         }
@@ -95,7 +95,7 @@ extern "C" ARM void func_ov023_021e8cdc(char* obj) {
             y += 0x13;
             x = resetX;
             col = 0;
-            AppendYTag(dst, y);
+            AppendYTag_02041a5c(dst, y);
         }
     }
 #endif

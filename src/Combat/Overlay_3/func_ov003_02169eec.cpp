@@ -38,11 +38,11 @@ void SetField0AndPropagate0205bacc(Node0205bacc* obj, int v);
 void SetIndexIfValid0205bcdc(Struct_0205bcdc* obj, int v);
 void SetFields0205bd58(Struct_0205bd58* obj, int a, int b, int c, int d, int e);
 void ClearFields_0216a85c(S0216a85c* obj);
-unsigned char* FindElementForFieldB0(Struct_0205d81c* chan);
-void GetFourSubstructPointers(unsigned char* elem, unsigned char** a, unsigned char** b, unsigned char** c,
+unsigned char* FindElementForFieldB0_0205d8c4(Struct_0205d81c* chan);
+void GetFourSubstructPointers_0204f138(unsigned char* elem, unsigned char** a, unsigned char** b, unsigned char** c,
                               unsigned char** d);
-void SelectCoordsByFlag0x24(unsigned char* input, int* x, int* y);
-void SetFieldAt0x30(void* obj, int v);
+void SelectCoordsByFlag0x24_02012a84(unsigned char* input, int* x, int* y);
+void SetFieldAt0x30_0205bc24(void* obj, int v);
 extern "C" int _Z25UpdateActiveState0205bc2cP15Struct_0205bc2c(Struct_0205bc2c* obj, int v);
 int GetScaledSumIfActive0205bd04(Struct_0205bd04* obj);
 int GetField0_0205bafc(void* obj);
@@ -50,9 +50,9 @@ void ClearFlagFields_02169658(void* self);
 void ClearBytes0x4cTo0x4e(Struct_0205bc10* obj);
 int GetActiveScaledSum0205d794(Struct_0205c570* chan);
 void UpdateEntryAndField4ea_021694b8(void* self, int v);
-int TestFlagMask(unsigned short* flags, int mask);
-int TestFlag0SetAndFlag1Clear(unsigned short* flags, int mask);
-int TestFlagInSecondWord(unsigned short* flags, unsigned int mask);
+int TestFlagMask_02012430(unsigned short* flags, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* flags, int mask);
+int TestFlagInSecondWord_02012468(unsigned short* flags, unsigned int mask);
 void ResetState0205bf3c(Struct_0205bf3c* obj);
 int ComputeScaledSum0205bb84(Struct_0205bb84* obj);
 int NormalizeField5_0200fb08(Struct0200fb08* gs);
@@ -176,13 +176,13 @@ extern "C" ARM int func_ov003_02169eec(Menu02169eec* self, unsigned int sb) {
         self->rectA.xWidthArr = &self->h58c[4];
         self->rectA.yWidthArr = &self->h58c[6];
         ClearFields_0216a85c((S0216a85c*)&self->rectB);
-        unsigned char* elem = FindElementForFieldB0((Struct_0205d81c*)self->chan);
+        unsigned char* elem = FindElementForFieldB0_0205d8c4((Struct_0205d81c*)self->chan);
         short ex = ElemX(elem);
         short ey = ElemY(elem);
         self->rectB.originX = ex << 3;
         self->rectB.originY = ey << 3;
         self->rectB.count = 4;
-        GetFourSubstructPointers(elem, (unsigned char**)&self->rectB.xMinArr, (unsigned char**)&self->rectB.yMinArr,
+        GetFourSubstructPointers_0204f138(elem, (unsigned char**)&self->rectB.xMinArr, (unsigned char**)&self->rectB.yMinArr,
                                  (unsigned char**)&self->rectB.xWidthArr, (unsigned char**)&self->rectB.yWidthArr);
         self->state++;
     } else if (self->state == 1) {
@@ -191,8 +191,8 @@ extern "C" ARM int func_ov003_02169eec(Menu02169eec* self, unsigned int sb) {
         cur = self->cursor;
         if (data_02114e54.b55 != 0 || (data_02114e54.b5f != 0 && data_02114e54.h24 != 0) ||
             data_02114e54.b54 != 0) {
-            SelectCoordsByFlag0x24((unsigned char*)&data_02114e54, &ax, &ay);
-            int r8 = (FindElementForFieldB0((Struct_0205d81c*)self->chan)[0xc5] & 2) != 0;
+            SelectCoordsByFlag0x24_02012a84((unsigned char*)&data_02114e54, &ax, &ay);
+            int r8 = (FindElementForFieldB0_0205d8c4((Struct_0205d81c*)self->chan)[0xc5] & 2) != 0;
             unsigned char r7 = 0;
             if (data_02114e54.b55 != 0) {
                 short bx = GetBX(self);
@@ -216,7 +216,7 @@ extern "C" ARM int func_ov003_02169eec(Menu02169eec* self, unsigned int sb) {
                 self->h576 = y;
                 self->rectA.originX = x;
                 self->rectA.originY = y;
-                SetFieldAt0x30(self->node, func_ov003_02169674(self, ax, ay, &self->rectA));
+                SetFieldAt0x30_0205bc24(self->node, func_ov003_02169674(self, ax, ay, &self->rectA));
                 if (func_ov003_02169674(self, ax, ay, &self->rectA) >= 0) {
                     r7 = 1;
                     if (_Z25UpdateActiveState0205bc2cP15Struct_0205bc2c((Struct_0205bc2c*)self->node, sb) != 0) {
@@ -295,10 +295,10 @@ extern "C" ARM int func_ov003_02169eec(Menu02169eec* self, unsigned int sb) {
                 }
             }
         } else {
-            if (TestFlagMask(&data_02114e30, 0x40) || TestFlag0SetAndFlag1Clear(&data_02114e30, 0x40) ||
-                TestFlagInSecondWord(&data_02114e30, 0x40) || TestFlagMask(&data_02114e30, 0x80) ||
-                TestFlag0SetAndFlag1Clear(&data_02114e30, 0x80) ||
-                TestFlagInSecondWord(&data_02114e30, 0x80)) {
+            if (TestFlagMask_02012430(&data_02114e30, 0x40) || TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x40) ||
+                TestFlagInSecondWord_02012468(&data_02114e30, 0x40) || TestFlagMask_02012430(&data_02114e30, 0x80) ||
+                TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x80) ||
+                TestFlagInSecondWord_02012468(&data_02114e30, 0x80)) {
                 ResetState0205bf3c((Struct_0205bf3c*)((char*)self + kResetOffset));
                 int old = cells[cur];
                 int n = GetField0_0205bafc(self->list);
@@ -316,12 +316,12 @@ extern "C" ARM int func_ov003_02169eec(Menu02169eec* self, unsigned int sb) {
                 if (before != after) {
                     func_ov003_021696f4(self, after);
                 }
-                if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x10) && self->cursor == 3) {
+                if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x10) && self->cursor == 3) {
                     for (int i = 0; i < 4; i++) {
                         self->cells[i] = 0;
                     }
                     self->code = 1;
-                } else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x20) && self->cursor == 0) {
+                } else if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x20) && self->cursor == 0) {
                     for (int i = 0; i < 4; i++) {
                         self->cells[i] = self->alt[i];
                     }
@@ -346,7 +346,7 @@ extern "C" ARM int func_ov003_02169eec(Menu02169eec* self, unsigned int sb) {
         int hit1 = 0;
         int hit2 = 0;
         if (data_02114e54.b55 != 0) {
-            SelectCoordsByFlag0x24((unsigned char*)&data_02114e54, &px, &py);
+            SelectCoordsByFlag0x24_02012a84((unsigned char*)&data_02114e54, &px, &py);
             if (py >= 0x60 && py < 0x6b) {
 #if defined(jpn)
                 short lox = 0x8f;
@@ -377,11 +377,11 @@ extern "C" ARM int func_ov003_02169eec(Menu02169eec* self, unsigned int sb) {
                 }
             }
         }
-        int a = TestFlag0SetAndFlag1Clear(&data_02114e30, 1);
-        int b = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x400);
+        int a = TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 1);
+        int b = TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x400);
         if ((a | b) != 0) {
             hit1 = 1;
-        } else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2) != 0) {
+        } else if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 2) != 0) {
             hit2 = 1;
         }
         if (hit1 != 0) {

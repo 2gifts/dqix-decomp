@@ -2,16 +2,16 @@
 #include "Combat/Overlay_0/GetCombatantByID.h"
 #include "GameState/GameState.h"
 
-int CheckFlag0x1ClearAndFlag0x1000000Clear(unsigned char* obj);
+int CheckFlag0x1ClearAndFlag0x1000000Clear_02088540(unsigned char* obj);
 struct Combatant_20885e0;
-int CheckFlags0x1And0x1000000ClearAndKindNot2(struct Combatant_20885e0* obj);
+int CheckFlags0x1And0x1000000ClearAndKindNot2_020885e0(struct Combatant_20885e0* obj);
 struct Ctx_021e939c;
 int SelectMessageByFlags2_021e939c(struct Ctx_021e939c* ctx, int id, int flag1, int flag2);
 int IsFlagAllowedMask_021eb4b0(int a0, int flags, int mask);
 extern "C" void func_ov000_02159eac(void* a0, void* buf, int a2);
-void ResetAndSetFlag0x2AndBits(unsigned char* obj);
+void ResetAndSetFlag0x2AndBits_02088560(unsigned char* obj);
 struct Combatant_2088624;
-void SetFlag0x2AndKind1(struct Combatant_2088624* obj);
+void SetFlag0x2AndKind1_02088624(struct Combatant_2088624* obj);
 extern "C" void* func_ov000_0215e958(void* a0);
 extern "C" void func_ov024_021e8bf0(void* work, void* fieldC, unsigned short* sel);
 void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
@@ -29,12 +29,12 @@ extern "C" ARM void* func_ov024_021dbaf4(struct Obj_021dbaf4* obj, int unused, i
 	int apply = 0;
 	int full = apply;
 	if (action->field30 > 0) {
-		if (CheckFlag0x1ClearAndFlag0x1000000Clear((unsigned char*)c->currentStats_) && flagArg) {
+		if (CheckFlag0x1ClearAndFlag0x1000000Clear_02088540((unsigned char*)c->currentStats_) && flagArg) {
 			apply = 1;
 			full = apply;
 		}
 	} else {
-		if (CheckFlags0x1And0x1000000ClearAndKindNot2((struct Combatant_20885e0*)c->currentStats_) && flagArg) {
+		if (CheckFlags0x1And0x1000000ClearAndKindNot2_020885e0((struct Combatant_20885e0*)c->currentStats_) && flagArg) {
 			apply = 1;
 		}
 	}
@@ -47,9 +47,9 @@ extern "C" ARM void* func_ov024_021dbaf4(struct Obj_021dbaf4* obj, int unused, i
 			func_ov000_02159eac(obj->field0x10, &local, 0x2b);
 		}
 		if (full) {
-			ResetAndSetFlag0x2AndBits((unsigned char*)c->currentStats_);
+			ResetAndSetFlag0x2AndBits_02088560((unsigned char*)c->currentStats_);
 		} else {
-			SetFlag0x2AndKind1((struct Combatant_2088624*)c->currentStats_);
+			SetFlag0x2AndKind1_02088624((struct Combatant_2088624*)c->currentStats_);
 		}
 		func_ov000_02159eac(obj->field0x10, &local, 0xf);
 	}

@@ -1,8 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-
-void SetByte0x7f70(void* obj, unsigned char value);
+void SetByte0x7f70_02012028(void* obj, unsigned char value);
 extern "C" void func_ov004_0216afb0(void* obj, int a, int b, int c, int d, int e, int f, int g, int h);
 extern "C" int func_ov004_0216b7bc(void* obj, int a, int b, int c);
 void* SetFieldAndClearBufferIfType7_0216b1c4(void* a, int id);
@@ -17,7 +16,7 @@ extern unsigned char data_ov004_02171034[];
 
 // USA: func_ov004_0216d1c4
 extern "C" ARM int func_ov004_0216d1c4(void* a) {
-    SetByte0x7f70(GameState::GetInstance(), 0);
+    SetByte0x7f70_02012028(GameState::GetInstance(), 0);
 #if defined(jpn)
     int v0c = *(int*)&data_ov004_02171034[0x10];
 #else

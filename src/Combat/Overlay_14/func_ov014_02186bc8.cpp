@@ -87,7 +87,7 @@ struct ListHeadStruct021874f8;
 void ResetBattlerNav_02186df0(Obj02186df0*);
 void CallFunc0204c87cOverEntries0207fc6c(Obj0207fc6c*, int);
 short CountLinkedListNodes_021874f8(ListHeadStruct021874f8*);
-void ClearSublistEntriesFlag4(void*, int);
+void ClearSublistEntriesFlag4_020804fc(void*, int);
 
 extern "C" {
 bool func_ov017_021959b4();
@@ -124,7 +124,7 @@ extern "C" ARM bool func_ov014_02186bc8(MonsterListScreen* self, int ticks)
             self->menuEvents_ = func_020800fc(self->menu_, self->cursor_, self->prevCursor_, self->repeatButtons_, self->unk_15a, scrolls);
             self->menu_->cursor_ = *self->cursor_;
             if (self->menuEvents_ != 0)
-                ClearSublistEntriesFlag4(self->menu_, self->group_);
+                ClearSublistEntriesFlag4_020804fc(self->menu_, self->group_);
             if (self->prevCursor_ != *self->cursor_)
                 func_020813ec(self->menu_, self->group_);
         }

@@ -2,10 +2,10 @@
 #include "GameState/GameState.h"
 #include "Filesystem/BackgroundLoader.h"
 
-int* GetWord0x0(int*);
+int* GetWord0x0_0200fb8c(int*);
 struct GameResources;
 int IsBrightnessTransitionActive(GameResources*);
-void OrGlobalFlag0x40();
+void OrGlobalFlag0x40_020dc2bc();
 
 #define REG_DISPCNT_SUB (*(volatile unsigned int*)0x04001000)
 #define REG_BG0CNT_SUB (*(volatile unsigned short*)0x04001008)
@@ -15,7 +15,7 @@ void OrGlobalFlag0x40();
 
 // USA: func_ov008_0218599c
 extern "C" ARM void func_ov008_0218599c(void* obj) {
-    int* word = GetWord0x0((int*)GameState::GetInstance());
+    int* word = GetWord0x0_0200fb8c((int*)GameState::GetInstance());
     BackgroundLoader::GetInstance();
     unsigned char flag = *((unsigned char*)obj + 0xb11);
     if (flag == 0) {
@@ -26,7 +26,7 @@ extern "C" ARM void func_ov008_0218599c(void* obj) {
     if (flag != 1) {
         return;
     }
-    OrGlobalFlag0x40();
+    OrGlobalFlag0x40_020dc2bc();
 
     REG_BG0CNT_SUB = (REG_BG0CNT_SUB & 0x43) | 0x600;
     REG_BG1CNT_SUB = (REG_BG1CNT_SUB & 0x43) | 0x304 | 0x400;

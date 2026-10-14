@@ -30,9 +30,9 @@ struct Owner021675a0 {
 };
 
 extern "C" int func_ov000_0215e9fc(char* world, short* buf, int max, int start);
-int ClassifyField0x81fe(char* base);
-void SetSubstructFields4And0xcClearFlag0x2(unsigned char* obj, int* src);
-void SetSubstructField0x8ClearFlag0x2(unsigned char* obj, int* src);
+int ClassifyField0x81fe_ov000_0215fc60(char* base);
+void SetSubstructFields4And0xcClearFlag0x2_02049b20(unsigned char* obj, int* src);
+void SetSubstructField0x8ClearFlag0x2_02049bac(unsigned char* obj, int* src);
 void SetIntField552_0216f708(void* obj, int val);
 void SetIntField556_0216f710(void* obj, int val);
 
@@ -58,7 +58,7 @@ extern "C" ARM void func_ov000_021675a0(struct Owner021675a0* owner) {
 #endif
     camera = owner->scene.camera;
     count = func_ov000_0215e9fc(world, ids, 4, 0);
-    if (ClassifyField0x81fe(world)) count = 1;
+    if (ClassifyField0x81fe_ov000_0215fc60(world)) count = 1;
 
     width = (count - 1) * 0x1800;
     x = width / 2;
@@ -69,8 +69,8 @@ extern "C" ARM void func_ov000_021675a0(struct Owner021675a0* owner) {
             struct Vec3_021675a0 rot = data_ov000_021830b4;
             pos.x = x;
             rot.y = data_ov000_02183158[count - 1][i];
-            SetSubstructFields4And0xcClearFlag0x2((unsigned char*)c, (int*)&pos);
-            SetSubstructField0x8ClearFlag0x2((unsigned char*)c, (int*)&rot);
+            SetSubstructFields4And0xcClearFlag0x2_02049b20((unsigned char*)c, (int*)&pos);
+            SetSubstructField0x8ClearFlag0x2_02049bac((unsigned char*)c, (int*)&rot);
         }
         x -= 0x1800;
     }

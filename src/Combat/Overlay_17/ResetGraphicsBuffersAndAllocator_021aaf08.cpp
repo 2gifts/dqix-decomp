@@ -8,7 +8,7 @@ struct NotifyEntriesStruct0207f8bc;
 void FlushNotifyEntries(struct NotifyEntriesStruct0207f8bc* p);
 extern "C" int func_ov017_0218b5b0(void);
 void* GetDataPtr02114e04_020d6c00(void);
-void ClearBitsInField4(unsigned int* obj, unsigned int mask);
+void ClearBitsInField4_0203b4e8(unsigned int* obj, unsigned int mask);
 void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int mask);
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
 void CleanInvalidateCacheRange(const void* addr, unsigned int size);
@@ -34,7 +34,7 @@ extern "C" ARM void func_ov017_021aaf08(char* self) {
 
     int h = func_ov017_0218b5b0();
     void* d = GetDataPtr02114e04_020d6c00();
-    ClearBitsInField4((unsigned int*)h, 0x80);
+    ClearBitsInField4_0203b4e8((unsigned int*)h, 0x80);
     ClearFlags020466f4((struct FlagWord020466f4*)d, 0x200);
 
     SafeAllocator* allocator = (SafeAllocator*)(self + 0x24);

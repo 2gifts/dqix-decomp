@@ -5,7 +5,7 @@ extern "C" void __clear(void* buf, int size);
 extern "C" void func_02042764(char* name, void* buf, int flag);
 struct Obj02046574;
 void SetIndexedName02046574(struct Obj02046574* obj, int index, char* str);
-int CallFunc020e0434With02153694(int value);
+int CallFunc020e0434With02153694_020e51cc(int value);
 extern "C" void func_02046608(void* a, int b, int c, void* d, int e, int f, int g);
 void InitBigStruct0205c790(char* obj);
 struct Struct_0205ba68;
@@ -21,10 +21,10 @@ extern char data_ov017_021d7f74[];
 extern char data_ov017_021d8104[];
 #endif
 struct ResetBytesAndSetByte0x16Data;
-void ResetBytesAndSetByte0x16(struct ResetBytesAndSetByte0x16Data* p, int val);
-void SetupGlobalObjType1AndInitSelfPointer(unsigned char* obj);
+void ResetBytesAndSetByte0x16_0205c77c(struct ResetBytesAndSetByte0x16Data* p, int val);
+void SetupGlobalObjType1AndInitSelfPointer_0205cd28(unsigned char* obj);
 void* GetDataPtr02114e04_020d6c00(void);
-void OrBitsIntoField0(unsigned int* p, unsigned int mask);
+void OrBitsIntoField0_020466e4(unsigned int* p, unsigned int mask);
 
 // USA: func_ov017_021afb8c  (semantic: InitObjAndDispatchName_021afb8c)
 extern "C" ARM void func_ov017_021afb8c(char* self, char* name) {
@@ -45,10 +45,9 @@ extern "C" ARM void func_ov017_021afb8c(char* self, char* name) {
         func_02042764(name, buf1, 1);
         SetIndexedName02046574((struct Obj02046574*)g, 0, buf1);
 
-        int ret = CallFunc020e0434With02153694(0x24);
+        int ret = CallFunc020e0434With02153694_020e51cc(0x24);
         char buf2[0x64];
         func_02046608(g, 0xc, ret, buf2, 0x100, 0, 1);
-
 
 #endif
         InitBigStruct0205c790(self + 0x48);
@@ -67,18 +66,17 @@ extern "C" ARM void func_ov017_021afb8c(char* self, char* name) {
         func_0205cc50(self + 0x48, 0, -4);
 #endif
 
-
         self[regionalOffset0] = 1;
-        ResetBytesAndSetByte0x16((struct ResetBytesAndSetByte0x16Data*)(self + 0x4c), 1);
+        ResetBytesAndSetByte0x16_0205c77c((struct ResetBytesAndSetByte0x16Data*)(self + 0x4c), 1);
         self[regionalOffset1] = 1;
         self[regionalOffset0] = 1;
-        ResetBytesAndSetByte0x16((struct ResetBytesAndSetByte0x16Data*)(self + 0x4c), 1);
+        ResetBytesAndSetByte0x16_0205c77c((struct ResetBytesAndSetByte0x16Data*)(self + 0x4c), 1);
 
         short v = *(short*)(self + 0x100);
         *(short*)(self + 0xfc) = (0x100 - v) / 2;
         *(short*)(self + 0xfe) = 0x40;
 
-        SetupGlobalObjType1AndInitSelfPointer((unsigned char*)(self + 0x48));
-        OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 0x800000);
+        SetupGlobalObjType1AndInitSelfPointer_0205cd28((unsigned char*)(self + 0x48));
+        OrBitsIntoField0_020466e4((unsigned int*)GetDataPtr02114e04_020d6c00(), 0x800000);
     }
 }

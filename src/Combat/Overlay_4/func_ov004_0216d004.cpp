@@ -1,12 +1,11 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-
 int GetGlobalField0x1c020421a0(void);
 struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 extern struct Obj0205eaa0 data_02108760;
-void SetByte0x7f70(void* obj, unsigned char value);
+void SetByte0x7f70_02012028(void* obj, unsigned char value);
 struct Struct020a9ea4;
 void ClearStruct020a9ea4(struct Struct020a9ea4* p);
 extern "C" void func_ov004_0216afb0(void* obj, int a, int b, int c, int d, int e, int f, int g, int h);
@@ -43,7 +42,7 @@ extern "C" ARM int func_ov004_0216d004(void* a) {
 #endif
     DispatchWithShortB4_0205eaa0(&data_02108760, 5, 0);
 
-    SetByte0x7f70((void*)GameState::GetInstance(), 0);
+    SetByte0x7f70_02012028((void*)GameState::GetInstance(), 0);
     ClearStruct020a9ea4(data_ov004_02171034.ptr10);
     data_ov004_02171034.flag2 = 1;
 

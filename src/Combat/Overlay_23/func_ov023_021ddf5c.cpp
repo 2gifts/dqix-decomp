@@ -24,7 +24,7 @@ void FormatAndDispatchValue_021db3c0(void* buf, int x, short y, float v, unsigne
 void SetPackedFields_021e24b0(void* obj, int val, int f0xc, unsigned char nibbleD, unsigned char p5, unsigned char p6, unsigned char p7, unsigned char p8, unsigned char p9);
 extern "C" void func_ov023_021e257c(void* obj);
 void* CreateAndSetFields8A_021db544(void* a, void* b, int c, int d);
-int IsValueInCombatantField150List(int combatantId, int value);
+int IsValueInCombatantField150List_020dd718(int combatantId, int value);
 extern "C" int func_020dd4c4(int id, void* node);
 extern "C" int func_ov023_021ddc98(void* buf, int val, unsigned short len, int flag);
 extern "C" long labs(long);
@@ -237,7 +237,7 @@ extern "C" ARM void func_ov023_021ddf5c(struct Obj021ddf5c* obj) {
         FlushList(obj, buf);
         CreateAndSetFields8A_021db544(obj->list, (void*)0xb, a0, a1);
         SetEntryOff(obj, 0xb);
-    } else if (IsValueInCombatantField150List(obj->id, obj->node->field18)) {
+    } else if (IsValueInCombatantField150List_020dd718(obj->id, obj->node->field18)) {
         short k0;
         int key;
         float v;

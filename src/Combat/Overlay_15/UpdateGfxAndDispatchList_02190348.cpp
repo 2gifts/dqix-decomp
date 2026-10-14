@@ -43,7 +43,7 @@ extern "C" ARM void func_ov015_02190348(struct Obj02190348* obj) {
     }
     if (obj->flag19c) {
         GameState* bs = GameState::GetInstance();
-        void* f3b0 = GetField0x3b0Value(bs);
+        void* f3b0 = GetField0x3b0Value_020100bc(bs);
         func_0208b610(*(struct Vec3_02190348*)((char*)f3b0 + 0x10), 0x3dff, 0x800, 0x800, 0x800, 0);
     }
     struct ListNode02190348* node = obj->list;

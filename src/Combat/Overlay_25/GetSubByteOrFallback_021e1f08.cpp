@@ -1,15 +1,15 @@
 #include <globaldefs.h>
 
-int GetSubstructByte0x4c(unsigned char*);
-int GetSubstructByte0x4d(unsigned char*);
+int GetSubstructByte0x4c_02049468(unsigned char*);
+int GetSubstructByte0x4d_0204948c(unsigned char*);
 
 // USA: func_ov025_021e1f08
 ARM int GetSubByteOrFallback_021e1f08(unsigned char* obj, unsigned char* other) {
-    int a = GetSubstructByte0x4c(obj);
+    int a = GetSubstructByte0x4c_02049468(obj);
     if (a != 0xff) {
         return a;
     }
-    int b = GetSubstructByte0x4d(obj);
+    int b = GetSubstructByte0x4d_0204948c(obj);
     if (b != 0xff) {
         return b;
     }

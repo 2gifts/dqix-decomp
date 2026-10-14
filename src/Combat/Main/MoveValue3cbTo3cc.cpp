@@ -32,7 +32,7 @@ struct NamedRequestQueue {
 
 extern "C" void func_02093ad8(void*, CopyableRecord* source, CopyableRecord* destination, int count);
 
-ARM void MoveValue3cbTo3cc(char* storage) {
+ARM void MoveValue3cbTo3cc_02093a58(char* storage) {
     NamedRequestQueue* queue = reinterpret_cast<NamedRequestQueue*>(storage);
     func_02093ad8(queue, queue->active, queue->saved, queue->activeCount);
     queue->savedCount = queue->activeCount;

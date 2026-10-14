@@ -43,16 +43,16 @@ struct Active02154974 {
 };
 
 extern "C" {
-struct Global02154974* _Z20GetGlobalPtr021075f4v(void);
-void _Z18ClearCombatantSlotP9GameStatei(GameState* gs, int id);
+struct Global02154974* _Z29GetGlobalPtr021075f4_0203cf4cv(void);
+void _Z27ClearCombatantSlot_0200fd48P9GameStatei(GameState* gs, int id);
 struct Emitter02154974* _Z29FindEntryPointerByKey0203df78Pvi(void* list, int key);
-int* _Z24GetEntryUnlessFlag0x8000P17EntryList_203dce4i(void* list, int id);
+int* _Z33GetEntryUnlessFlag0x8000_0203dce4P17EntryList_203dce4i(void* list, int id);
 int _Z28FindEntryIndexByName02040404P17Container02040404PKc(void* container, const char* name);
 void _Z30ReleaseOrDecrementSlot0204039cP17Container0204039ci(void* container, int index);
 void _Z13Reset02040504Pi(int* entry);
 void _Z21SetSlotIfIndexBelow32P17SlotArray0203dd10ji(void* list, int index, int arg);
 void _Z20CallByIndex_0215acd4i(int index);
-void _Z17ClearBitsInField4Pjj(unsigned int* obj, unsigned int bits);
+void _Z26ClearBitsInField4_0203b4e8Pjj(unsigned int* obj, unsigned int bits);
 }
 
 void* EmptyStub0203d004(void* list);
@@ -62,7 +62,7 @@ extern char data_ov001_02164bd1[];
 // USA: func_ov001_02154974
 extern "C" ARM void func_ov001_02154974(struct Self02154974* self) {
     GameState* gs = GameState::GetInstance();
-    struct Global02154974* global = _Z20GetGlobalPtr021075f4v();
+    struct Global02154974* global = _Z29GetGlobalPtr021075f4_0203cf4cv();
     GameResources* base = func_ov017_0218b5b0();
     struct Other02154974* other;
     struct Node02154974* node;
@@ -102,7 +102,7 @@ extern "C" ARM void func_ov001_02154974(struct Self02154974* self) {
             break;
         }
         case 4: {
-            _Z18ClearCombatantSlotP9GameStatei(gs, node->slot);
+            _Z27ClearCombatantSlot_0200fd48P9GameStatei(gs, node->slot);
             struct Emitter02154974* em = _Z29FindEntryPointerByKey0203df78Pvi(global, node->key);
             if (em != 0 && em->object != 0) {
                 ((struct Active02154974*)em->object)->active = 0;
@@ -115,11 +115,11 @@ extern "C" ARM void func_ov001_02154974(struct Self02154974* self) {
         case 7:
         case 8:
             if (gs->GetGameObjectByIndex(node->slot) != 0) {
-                _Z18ClearCombatantSlotP9GameStatei(gs, node->slot);
+                _Z27ClearCombatantSlot_0200fd48P9GameStatei(gs, node->slot);
             }
             break;
         case 3: {
-            int* entry = _Z24GetEntryUnlessFlag0x8000P17EntryList_203dce4i(global, node->slot);
+            int* entry = _Z33GetEntryUnlessFlag0x8000_0203dce4P17EntryList_203dce4i(global, node->slot);
             if (entry != 0) {
                 void* container = EmptyStub0203d004(global);
                 _Z30ReleaseOrDecrementSlot0204039cP17Container0204039ci(
@@ -142,10 +142,10 @@ extern "C" ARM void func_ov001_02154974(struct Self02154974* self) {
         return;
     }
     if (self->mode & 1) {
-        _Z17ClearBitsInField4Pjj((unsigned int*)base, 8);
+        _Z26ClearBitsInField4_0203b4e8Pjj((unsigned int*)base, 8);
     }
     if (self->mode & 2) {
-        _Z17ClearBitsInField4Pjj((unsigned int*)base, 0x10);
+        _Z26ClearBitsInField4_0203b4e8Pjj((unsigned int*)base, 0x10);
     }
     if (self->mode & 4) {
         int j;
@@ -157,9 +157,9 @@ extern "C" ARM void func_ov001_02154974(struct Self02154974* self) {
         }
     }
     if (self->mode & 8) {
-        _Z17ClearBitsInField4Pjj((unsigned int*)base, 0x400);
+        _Z26ClearBitsInField4_0203b4e8Pjj((unsigned int*)base, 0x400);
     }
     if (self->mode & 0x20) {
-        _Z20GetGlobalPtr021075f4v()->flags &= ~2;
+        _Z29GetGlobalPtr021075f4_0203cf4cv()->flags &= ~2;
     }
 }

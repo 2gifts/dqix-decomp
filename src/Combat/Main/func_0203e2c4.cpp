@@ -73,7 +73,7 @@ extern "C" ARM void func_0203e2c4(void *receiver, unsigned short id) {
             Entry_203dce4 **slot = self->entries;
             for (unsigned int slotIndex = 0; slotIndex < self->count; ++slot, ++slotIndex) {
                 Entry_203dce4 *entry = *slot;
-                unsigned short *key = (unsigned short *) GetField0x8((int *) entry);
+                unsigned short *key = (unsigned short *) GetField0x8_02040528((int *) entry);
                 void *info = GetField0xc02040538((S02040538 *) entry);
                 if (key == NULL || info == NULL) {
                     continue;

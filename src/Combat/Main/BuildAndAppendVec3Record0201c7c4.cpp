@@ -21,7 +21,7 @@ struct Entry0201e304 {
     struct WordSix0201e304 g40;
 };
 struct Container0201e304;
-extern "C" extern void _ZN12ZoneFeatures19CreateOpcode64EntryERKNS_13Opcode64EntryE(struct Container0201e304* c, struct Entry0201e304* src);
+extern "C" extern void _ZN12ZoneFeatures28CreateOpcode64Entry_0201e304ERKNS_13Opcode64EntryE(struct Container0201e304* c, struct Entry0201e304* src);
 
 struct GlobalCtx0201c7c4 {
     int pad0;
@@ -31,7 +31,7 @@ struct GlobalCtx0201c7c4 {
 extern struct GlobalCtx0201c7c4 data_020fdc20;
 
 // USA: func_0201c7c4
-extern "C" ARM int _Z20WarpScript_Opcode_65PN6Script9ParameterEi(unsigned char* arg0, int count) {
+extern "C" ARM int _Z29WarpScript_Opcode_65_0201c7c4PN6Script9ParameterEi(unsigned char* arg0, int count) {
     char* extra1;
     char* extra2;
     int id;
@@ -61,7 +61,7 @@ extern "C" ARM int _Z20WarpScript_Opcode_65PN6Script9ParameterEi(unsigned char* 
         strcpy(entry.a.v, name);
         if (extra1 == NULL) entry.b.v[0] = 0; else strcpy(entry.b.v, extra1);
         if (extra2 == NULL) entry.c.v[0] = 0; else strcpy(entry.c.v, extra2);
-        _ZN12ZoneFeatures19CreateOpcode64EntryERKNS_13Opcode64EntryE(data_020fdc20.c, &entry);
+        _ZN12ZoneFeatures28CreateOpcode64Entry_0201e304ERKNS_13Opcode64EntryE(data_020fdc20.c, &entry);
     }
     return 1;
 }

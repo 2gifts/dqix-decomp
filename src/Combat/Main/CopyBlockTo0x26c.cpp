@@ -8,7 +8,7 @@ enum { kOffset26c = 0x26c };
 #endif
 
 // USA: func_020398b4
-ARM void CopyBlockTo0x26c(GameObject* obj, SubBlock02038508* src) {
+ARM void CopyBlockTo0x26c_020398b4(GameObject* obj, SubBlock02038508* src) {
     ((SubBlock02038508*)((char*)obj + kOffset26c))->active = src->active;
     ((SubBlock02038508*)((char*)obj + kOffset26c))->command = src->command;
     ((SubBlock02038508*)((char*)obj + kOffset26c))->unknown2 = src->unknown2;

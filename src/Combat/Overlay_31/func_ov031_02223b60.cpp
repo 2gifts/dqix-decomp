@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
-int GetSharedHalfwordOrBattleDefault(void);
-int GetBattleSubField0xbcForState(void);
+int GetSharedHalfwordOrBattleDefault_020d4aa8(void);
+int GetBattleSubField0xbcForState_020d4ac8(void);
 extern "C" int func_ov031_0223bdb0(int, int, int);
 
 struct Target02223b60 {
@@ -24,8 +24,8 @@ extern "C" ARM void func_ov031_02223b60(void) {
 	int base = 0;
 	unsigned short saved = *ime;
 	*ime = 0;
-	if (GetSharedHalfwordOrBattleDefault() != 0x8000) {
-		base = GetBattleSubField0xbcForState();
+	if (GetSharedHalfwordOrBattleDefault_020d4aa8() != 0x8000) {
+		base = GetBattleSubField0xbcForState_020d4ac8();
 	}
 
 	(void)*ime;

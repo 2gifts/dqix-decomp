@@ -37,20 +37,20 @@ extern "C" RewardGlobal _ZZ17GetGlobal021ffefcvE1s;
 extern Obj0205eaa0 data_02108760;
 TextRenderer* GetGlobalField0x1c020421a0();
 extern "C" void func_02046380(TextRenderer*);
-void CopyOutRegion0x571d(char*, void*);
-int TestBitAt0x34(unsigned char*, unsigned int);
+void CopyOutRegion0x571d_020114ec(char*, void*);
+int TestBitAt0x34_020a35e0(unsigned char*, unsigned int);
 FoundReward* SearchWithComparator0206f4f0(BinarySearchByComparatorStruct*, int);
 void Clear12Bytes020e46c4(void*);
 extern "C" Words021edf38 func_ov023_021ed804(Words021edf38, FoundReward*);
 void SetWords_021edf38_021edf38(void*, Words021edf38*);
 void DispatchIfCountPositive020dcf7c(int, void*);
-const char* FindEntryByKey(TableA68*, int);
+const char* FindEntryByKey_02072a68(TableA68*, int);
 void InitObjFromCombatantId020e4bf4(void*, int);
 void InitObjFromCombatant020e4c74(void*, GameObject*);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 extern "C" void func_0204500c(TextRenderer*, const char*, int, int);
 void ClearFlagBits10to24_021ed7e0(Flags_021ed7e0*);
-int CopyIndexedRegion0x75f0(void*, short*, int*, int);
+int CopyIndexedRegion0x75f0_020ac020(void*, short*, int*, int);
 extern "C" void func_020abe84(void*, short*, Flags_021ed7e0*, int);
 extern "C" int func_ov023_021f4fc8();
 
@@ -69,12 +69,12 @@ extern "C" ARM int func_ov023_021f2a48(RewardScreen* self) {
         int plural = reward->plural_;
         signed char combatant = reward->combatant_;
         unsigned char order[4];
-        CopyOutRegion0x571d((char*)state, order);
+        CopyOutRegion0x571d_020114ec((char*)state, order);
         GameObject* recipient = 0;
         for (int i = 0; i < 4; ++i) {
             GameObject* actor = state->GetCombatantByIndex(order[i]);
             if (!actor) continue;
-            if (!TestBitAt0x34((unsigned char*)self->battle_, order[i])) continue;
+            if (!TestBitAt0x34_020a35e0((unsigned char*)self->battle_, order[i])) continue;
             if (((ActorView*)actor)->status_->flags_ & 1) continue;
             recipient = state->GetPartyMemberByIndex(order[i]);
             break;
@@ -98,19 +98,19 @@ extern "C" ARM int func_ov023_021f2a48(RewardScreen* self) {
         renderer->description_ = &description;
         char message[512] = {0};
         if (combatant >= 0) {
-            GetCombatantWithFlag0x100(state, combatant);
-            sprintf(message, FindEntryByKey(&self->texts_, 0x25));
+            GetCombatantWithFlag0x100_0200ff1c(state, combatant);
+            sprintf(message, FindEntryByKey_02072a68(&self->texts_, 0x25));
             InitObjFromCombatantId020e4bf4(&actorText, combatant);
             renderer->actor_ = &actorText;
         } else {
             char suffix[0x164] = {0};
-            sprintf(message, FindEntryByKey(&self->texts_, 0x11));
+            sprintf(message, FindEntryByKey_02072a68(&self->texts_, 0x11));
             InitObjFromCombatant020e4c74(&actorText, recipient);
             renderer->recipient_ = &actorText;
-            if (!plural) sprintf(suffix, FindEntryByKey(&self->texts_, 0x12));
-            else sprintf(suffix, FindEntryByKey(&self->texts_, 0x13));
+            if (!plural) sprintf(suffix, FindEntryByKey_02072a68(&self->texts_, 0x12));
+            else sprintf(suffix, FindEntryByKey_02072a68(&self->texts_, 0x13));
             strcat(message, suffix);
-            if (work->index_ < self->count_ - 1) strcat(message, FindEntryByKey(&self->texts_, 0x22));
+            if (work->index_ < self->count_ - 1) strcat(message, FindEntryByKey_02072a68(&self->texts_, 0x22));
         }
         DispatchWithShortB4_0205eaa0(&data_02108760, 0x15, 0);
         func_0204500c(renderer, message, 1, 0xe3);
@@ -120,7 +120,7 @@ extern "C" ARM int func_ov023_021f2a48(RewardScreen* self) {
             Flags_021ed7e0 flags;
             ClearFlagBits10to24_021ed7e0(&flags);
             short id = found->id_;
-            if (CopyIndexedRegion0x75f0(0, &id, (int*)&flags, 1)) {
+            if (CopyIndexedRegion0x75f0_020ac020(0, &id, (int*)&flags, 1)) {
                 switch (self->entries_[work->index_].counter_) {
                 case 1: { unsigned int count = flags.first_ + 1; if (count > 99) count = 99; flags.first_ = count; break; }
                 case 2: { unsigned int count = flags.second_ + 1; if (count > 99) count = 99; flags.second_ = count; break; }

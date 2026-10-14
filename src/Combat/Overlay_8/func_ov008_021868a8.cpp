@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-int* GetWord0x0(int*);
+int* GetWord0x0_0200fb8c(int*);
 struct GameResources;
 void SetBrightness(GameResources*, int, int);
 void SetSubBrightness(GameResources*, int, int);
@@ -30,7 +30,7 @@ struct Obj021868a8 {
 
 // USA: func_ov008_021868a8
 extern "C" ARM void func_ov008_021868a8(struct Obj021868a8* obj) {
-    int* word = GetWord0x0((int*)GameState::GetInstance());
+    int* word = GetWord0x0_0200fb8c((int*)GameState::GetInstance());
     unsigned char flag = obj->b11;
     if (flag == 0) {
         if (obj->b24 == 0) {

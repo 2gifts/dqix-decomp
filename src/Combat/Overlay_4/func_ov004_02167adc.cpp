@@ -12,7 +12,7 @@ extern "C" ARM int func_ov004_02167adc(void* self) {
     short m1, m2, m3;
     unsigned char flag;
     int idx;
-    GetPtrField0x2a04(GameState::GetInstance());
+    GetPtrField0x2a04_02010828(GameState::GetInstance());
     func_ov004_0216794c(&m1, &m2, &m3, &flag, &idx);
     if (idx < 0) {
         goto end;

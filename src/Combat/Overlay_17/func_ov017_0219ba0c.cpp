@@ -13,7 +13,7 @@ struct Foo0207df50;
 void CopyInternalFields0207df50(Foo0207df50*);
 void RestorePairTables0207df90(char* obj);
 void BackupPairTables0207dfac(char* obj);
-void CallFunc0202f310AtField0x19e0(char* base, void* alloc, void* data);
+void CallFunc0202f310AtField0x19e0_020440b8(char* base, void* alloc, void* data);
 
 extern char data_ov017_021d7504[];
 extern char data_ov017_021d7510[];
@@ -50,7 +50,7 @@ extern "C" ARM void func_ov017_0219ba0c(GameResources* res, int skipModels) {
         BackgroundLoader::RemoveLockGlobal();
         return;
     }
-    CallFunc0202f310AtField0x19e0(controller, alloc, data_0211e33c);
+    CallFunc0202f310AtField0x19e0_020440b8(controller, alloc, data_0211e33c);
     if (skipModels) {
         narc.Destroy();
         BackupPairTables0207dfac(tables);

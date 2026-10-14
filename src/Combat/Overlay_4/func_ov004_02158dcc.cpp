@@ -62,7 +62,7 @@ extern "C" void func_020e207c(void*, char*, int);
 struct Obj02046574;
 void SetIndexedName02046574(Obj02046574*, int, char*);
 #else
-int CallFunc020e52a0(void* p, int key);
+int CallFunc020e52a0_020e5294(void* p, int key);
 #endif
 Message02158dcc* GetGlobalField0x1c020421a0(void);
 extern "C" int func_ov004_0215799c(void* a, int e, unsigned int kind, int d);
@@ -86,12 +86,12 @@ extern "C" ARM int func_ov004_02158dcc(void* obj) {
     func_020e207c(data_ov004_021707d8.ptr->table, name, elem->nameId);
     SetIndexedName02046574((Obj02046574*)GetGlobalField0x1c020421a0(), 1, name);
 #else
-    int name = CallFunc020e52a0(data_ov004_021707d8.ptr->table, elem->nameId);
+    int name = CallFunc020e52a0_020e5294(data_ov004_021707d8.ptr->table, elem->nameId);
     GetGlobalField0x1c020421a0()->name = name;
 #endif
     if (entry->count == 0) return 0;
 
-    Wallet02158dcc* wallet = (Wallet02158dcc*)GetPtrField0x2a04(GameState::GetInstance());
+    Wallet02158dcc* wallet = (Wallet02158dcc*)GetPtrField0x2a04_02010828(GameState::GetInstance());
     if (func_ov004_0215799c(wallet, entry->id, elem->kind, data_ov004_021707d8.ptr->level) == 0) {
         SetFieldConditional_021849e0((struct Fields021849e0*)obj, 0);
         func_ov011_021848a0(obj, 0x236b);

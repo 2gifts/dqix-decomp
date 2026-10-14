@@ -5,7 +5,7 @@ void RetargetTween020c0204(struct Tween020c0260* t, int end, int duration);
 extern "C" void func_020bf1a0(void* obj);
 
 // USA: func_020bf148
-ARM void RetargetTweenIfFlag2Enabled(void* obj, int arg1) {
+ARM void RetargetTweenIfFlag2Enabled_020bf148(void* obj, int arg1) {
     char* p = (char*)obj;
     if (((*(int*)(p + 0x110) << 30) >> 31) == 0) { func_020bf1a0(obj); return; }
     if (arg1 == 0) { func_020bf1a0(obj); return; }

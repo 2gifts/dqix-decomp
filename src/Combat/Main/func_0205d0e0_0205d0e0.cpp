@@ -27,10 +27,10 @@ struct Struct0205d888;
 void* GetLastEntry0205d888(struct Struct0205d888* p);
 
 extern "C" int func_0205c5b0(void* selfPtr, int p1);
-unsigned int SelectField0x18Or0x68ByFlags(unsigned char* obj);
-void SetByte0xd9AndFlag0x2(unsigned char* obj, unsigned char value);
-unsigned int SelectField0x8Or0x58ByFlags(unsigned char* obj);
-void SetByte0xdaAndFlag0x2(unsigned char* obj, int val);
+unsigned int SelectField0x18Or0x68ByFlags_0205c710(unsigned char* obj);
+void SetByte0xd9AndFlag0x2_0205042c(unsigned char* obj, unsigned char value);
+unsigned int SelectField0x8Or0x58ByFlags_0205c6e4(unsigned char* obj);
+void SetByte0xdaAndFlag0x2_02050440(unsigned char* obj, int val);
 extern "C" void func_0204c87c(void* entry, int arg);
 struct Elem_0205d81c* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
 struct Obj0204ffc0;
@@ -52,8 +52,8 @@ extern "C" ARM int func_0205d0e0(void* objPtr, int val) {
         ret = func_0205c5b0(objPtr, val);
         if (obj->fieldB0 == entry->fieldC4) {
             if (entry->fieldD8_bit0) {
-                SetByte0xd9AndFlag0x2((unsigned char*)entry, SelectField0x18Or0x68ByFlags((unsigned char*)objPtr));
-                SetByte0xdaAndFlag0x2((unsigned char*)entry, (unsigned char)SelectField0x8Or0x58ByFlags((unsigned char*)objPtr));
+                SetByte0xd9AndFlag0x2_0205042c((unsigned char*)entry, SelectField0x18Or0x68ByFlags_0205c710((unsigned char*)objPtr));
+                SetByte0xdaAndFlag0x2_02050440((unsigned char*)entry, (unsigned char)SelectField0x8Or0x58ByFlags_0205c6e4((unsigned char*)objPtr));
             }
         }
     }

@@ -5,8 +5,8 @@
 
 struct Struct02030b7c { int field0; void* field4; };
 struct Variant02030b0c { int tag; union { int i; float f; } u; };
-int StringLength(const char* s);
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+int StringLength_020d2ff0(const char* s);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 
 struct Entry8_0218ba1c { int a; int b; };
 struct List8_0218ba1c { void* f0; Entry8_0218ba1c* arr; void* f8; int count; };
@@ -31,8 +31,8 @@ extern "C" ARM int func_ov015_0218b6e4(char* obj, int count) {
     entry.a = 0;
     entry.b = 0;
     if (n0 != 0) {
-        int len = StringLength(n0);
-        char* buf = (char*)AllocateAligned4(&data_02114e20, len + 1);
+        int len = StringLength_020d2ff0(n0);
+        char* buf = (char*)AllocateAligned4_02012d88(&data_02114e20, len + 1);
         entry.a = (int)buf;
         if (buf != 0) {
             strcpy(buf, n0);
@@ -48,14 +48,14 @@ extern "C" ARM int func_ov015_0218b6e4(char* obj, int count) {
         obj = obj + 0x18;
         int v2 = ((Script::Parameter*)((struct Variant02030b0c*)v2addr))->ToInt();
 
-        node = (struct NamedNode0218b6e4*)AllocateAligned4(&data_02114e20, 0xc);
+        node = (struct NamedNode0218b6e4*)AllocateAligned4_02012d88(&data_02114e20, 0xc);
         node->name = 0;
         node->val1 = 0;
         node->val2 = 0;
         node->next = 0;
         if (name != 0) {
-            int len = StringLength(name);
-            char* buf = (char*)AllocateAligned4(&data_02114e20, len + 1);
+            int len = StringLength_020d2ff0(name);
+            char* buf = (char*)AllocateAligned4_02012d88(&data_02114e20, len + 1);
             node->name = buf;
             if (buf != 0) {
                 strcpy(buf, name);

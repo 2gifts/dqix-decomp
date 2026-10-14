@@ -7,9 +7,9 @@ extern "C" int func_ov000_0215e9fc(int battle, unsigned short* table, int count,
 extern "C" int func_ov024_021ede2c(int* a0);
 
 struct Combatant_20885b4;
-int CheckFlag0x2AndKind1(struct Combatant_20885b4* obj);
+int CheckFlag0x2AndKind1_020885b4(struct Combatant_20885b4* obj);
 struct S88514;
-int CheckFlag0x2AndState2(struct S88514* obj);
+int CheckFlag0x2AndState2_02088514(struct S88514* obj);
 
 extern unsigned short data_ov024_021fea8c;
 
@@ -31,8 +31,8 @@ extern "C" ARM int func_ov024_021f4a54(int* a0, int a1, int a2, int* a3, short* 
 	*a3 = 0;
 	for (int i = 0; i < count; i++) {
 		GameObject* c = GetCombatantByID(*a0, buf[i]);
-		if (c && !CheckFlag0x2AndKind1((struct Combatant_20885b4*)c->currentStats_) &&
-		    !CheckFlag0x2AndState2((struct S88514*)c->currentStats_)) {
+		if (c && !CheckFlag0x2AndKind1_020885b4((struct Combatant_20885b4*)c->currentStats_) &&
+		    !CheckFlag0x2AndState2_02088514((struct S88514*)c->currentStats_)) {
 			int idx = *a3;
 			*a3 = idx + 1;
 			a4[idx] = buf[i];

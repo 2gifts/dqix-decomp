@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-signed char AsciiToLower(int c);
+signed char AsciiToLower_020d8550(int c);
 
 // USA: func_020d85dc
 ARM int StringStartsWithCI020d85dc(const char* str, const char* prefix) {
@@ -14,7 +14,7 @@ ARM int StringStartsWithCI020d85dc(const char* str, const char* prefix) {
         return 1;
     }
     signed char a, b;
-    while ((a = *str) != 0 && (b = *prefix) != 0 && AsciiToLower(a) == AsciiToLower(b)) {
+    while ((a = *str) != 0 && (b = *prefix) != 0 && AsciiToLower_020d8550(a) == AsciiToLower_020d8550(b)) {
         str++;
         prefix++;
     }

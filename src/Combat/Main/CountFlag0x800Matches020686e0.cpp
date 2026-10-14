@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void* GetPtrField0x2a04(GameState* battleStruct);
+void* GetPtrField0x2a04_02010828(GameState* battleStruct);
 
 struct PartyRow020686e0 {
     char pad[0xf78];
@@ -20,7 +20,7 @@ struct Obj020686e0 {
 
 // USA: func_020686e0
 ARM int CountFlag0x800Matches020686e0(GameState* battleStruct, struct Obj020686e0* obj2) {
-    unsigned char* p = (unsigned char*)GetPtrField0x2a04(battleStruct);
+    unsigned char* p = (unsigned char*)GetPtrField0x2a04_02010828(battleStruct);
     signed char count = obj2->field31;
     if (count < 0) {
         int i;

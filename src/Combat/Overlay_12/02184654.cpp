@@ -34,9 +34,9 @@ struct Appearance02184654 {
 struct TableA68;
 struct Container020e0310;
 extern "C" void* func_0202ae18();
-unsigned char* GetFieldAt0x150(unsigned char*);
-int CalculateAge(int, int, int);
-void* FindEntryByKey(TableA68*, int);
+unsigned char* GetFieldAt0x150_02053c6c(unsigned char*);
+int CalculateAge_02098f20(int, int, int);
+void* FindEntryByKey_02072a68(TableA68*, int);
 int GetFieldByKey020e0434(Container020e0310*, int);
 extern "C" void func_ov023_021e66ac(void*);
 
@@ -49,12 +49,12 @@ extern "C" ARM void func_ov012_02184654(char* editor) {
     GameState* gameState = GameState::GetInstance();
     ProfileHeader02184654* profile = GetProfile02184654(gameState);
     signed char padding[3];
-    memcpy(padding, FindEntryByKey((TableA68*)(editor + 0x1314), 113), 3);
+    memcpy(padding, FindEntryByKey_02072a68((TableA68*)(editor + 0x1314), 113), 3);
     func_0202ae18();
     unsigned char* characterData = 0;
     GameObject* protagonist = gameState->GetProtagonist();
     if (protagonist)
-        characterData = GetFieldAt0x150((unsigned char*)protagonist);
+        characterData = GetFieldAt0x150_02053c6c((unsigned char*)protagonist);
     if (!characterData) return;
     *(void**)(editor + 0x1408) = characterData + 0x3c;
 
@@ -76,19 +76,19 @@ extern "C" ARM void func_ov012_02184654(char* editor) {
         }
         profile->initialized = 1;
     }
-    profile->age = CalculateAge(profile->year, profile->month, profile->day);
+    profile->age = CalculateAge_02098f20(profile->year, profile->month, profile->day);
     signed char* text = profile->profileText;
     while (*(unsigned char*)(editor + 0x1375) < 114) {
         if (text[0] == padding[0] && text[1] == padding[1]) break;
         *(unsigned char*)(editor + 0x1375) += 2;
         text += 2;
     }
-    const char* label = (const char*)FindEntryByKey((TableA68*)(editor + 0x1314), (short)(profile->title + 10000));
+    const char* label = (const char*)FindEntryByKey_02072a68((TableA68*)(editor + 0x1314), (short)(profile->title + 10000));
     memcpy(editor + 0x1498, label, strlen(label));
     if (profile->accolade < 700)
         label = (const char*)GetFieldByKey020e0434((Container020e0310*)(editor + 0x131c), (short)profile->accolade);
     else
-        label = (const char*)FindEntryByKey((TableA68*)(editor + 0x1314), (short)(profile->accolade + 20000));
+        label = (const char*)FindEntryByKey_02072a68((TableA68*)(editor + 0x1314), (short)(profile->accolade + 20000));
     memcpy(editor + 0x1458, label, strlen(label));
     func_ov023_021e66ac(editor);
 }
@@ -172,9 +172,9 @@ struct ProfileEditor02184654
 };
 
 extern "C" void* func_0202ae18();
-unsigned char* GetFieldAt0x150(unsigned char* obj);
-int CalculateAge(int year, int month, int day);
-void* FindEntryByKey(struct TableA68* table, int key);
+unsigned char* GetFieldAt0x150_02053c6c(unsigned char* obj);
+int CalculateAge_02098f20(int year, int month, int day);
+void* FindEntryByKey_02072a68(struct TableA68* table, int key);
 int GetFieldByKey020e0434(struct Container020e0310* texts, int key);
 extern "C" void func_ov023_021e66ac(ProfileEditor02184654* self);
 
@@ -197,7 +197,7 @@ extern "C" ARM void func_ov012_02184654(ProfileEditor02184654* self)
     Field02184654* field = 0;
     Member02184654* protagonist = (Member02184654*)gameState->GetProtagonist();
     if (protagonist != 0)
-        field = (Field02184654*)GetFieldAt0x150((unsigned char*)protagonist);
+        field = (Field02184654*)GetFieldAt0x150_02053c6c((unsigned char*)protagonist);
     if (field == 0)
         return;
 
@@ -223,15 +223,15 @@ extern "C" ARM void func_ov012_02184654(ProfileEditor02184654* self)
         profile->initialized_ = 1;
     }
 
-    profile->unk_4_0 = CalculateAge(profile->year_, profile->month_, profile->day_);
+    profile->unk_4_0 = CalculateAge_02098f20(profile->year_, profile->month_, profile->day_);
 
-    name2 = FindEntryByKey((struct TableA68*)self->strings_, (short)(profile->title_ + 10000));
+    name2 = FindEntryByKey_02072a68((struct TableA68*)self->strings_, (short)(profile->title_ + 10000));
     memcpy(self->accoladeText_, name2, strlen((char*)name2));
 
     if (profile->accolade_ < 700)
         name2 = (void*)GetFieldByKey020e0434((struct Container020e0310*)self->texts_, (short)profile->accolade_);
     else
-        name2 = FindEntryByKey((struct TableA68*)self->strings_, (short)(profile->accolade_ + 20000));
+        name2 = FindEntryByKey_02072a68((struct TableA68*)self->strings_, (short)(profile->accolade_ + 20000));
     memcpy(self->nameText_, name2, strlen((char*)name2));
 
     func_ov023_021e66ac(self);

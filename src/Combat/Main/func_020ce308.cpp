@@ -30,7 +30,7 @@ struct PMStatics
 
 extern PMStatics data_021117ec;
 
-void FirePendingCallback(int result);
+void FirePendingCallback_020ce240(int result);
 
 // USA: func_020ce308
 extern "C" ARM void func_020ce308(unsigned int tag, unsigned int data, unsigned int err)
@@ -49,7 +49,7 @@ extern "C" ARM void func_020ce308(unsigned int tag, unsigned int data, unsigned 
             result = RESULT_ERROR;
             break;
         }
-        FirePendingCallback(result);
+        FirePendingCallback_020ce240(result);
         return;
     }
     switch (command)
@@ -68,5 +68,5 @@ extern "C" ARM void func_020ce308(unsigned int tag, unsigned int data, unsigned 
         data_021117ec.sleepEndFlag = true;
         break;
     }
-    FirePendingCallback(result);
+    FirePendingCallback_020ce240(result);
 }

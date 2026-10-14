@@ -3,7 +3,7 @@
 
 struct Struct_021fa76c;
 int CheckAllFlagsClear_021fa76c(struct Struct_021fa76c* combatant);
-int CheckField0x14FlagsClear(unsigned char* obj);
+int CheckField0x14FlagsClear_020883ac(unsigned char* obj);
 struct FlagObj_021de25c;
 int IsFlagBit5Set_021de25c(struct FlagObj_021de25c* obj);
 extern "C" void func_ov024_021fd088(void* obj, float pct, int a2);
@@ -24,7 +24,7 @@ struct Obj_021fd5c4 {
 extern "C" ARM void func_ov024_021fd5c4(struct Obj_021fd5c4* obj) {
 	GameObject* c = obj->ptr668;
 	if (!CheckAllFlagsClear_021fa76c((struct Struct_021fa76c*)c)) return;
-	if (!CheckField0x14FlagsClear((unsigned char*)c->currentStats_)) return;
+	if (!CheckField0x14FlagsClear_020883ac((unsigned char*)c->currentStats_)) return;
 	if (IsFlagBit5Set_021de25c((struct FlagObj_021de25c*)c)) return;
 	float valF = (float)obj->state64c->bits.val;
 	unsigned char pctBase = *(unsigned char*)((char*)c->currentStats_ + 0x4a);

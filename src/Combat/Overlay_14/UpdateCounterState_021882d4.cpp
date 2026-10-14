@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-int GetWord0x0(int* obj);
+int GetWord0x0_0200fb8c(int* obj);
 struct GameResources;
 void SetBrightness(GameResources*, int, int);
 int IsBrightnessTransitionActive(GameResources*);
@@ -14,7 +14,7 @@ struct S021882d4 {
 
 // USA: func_ov014_021882d4
 ARM void UpdateCounterState_021882d4(struct S021882d4* r4) {
-	int val = GetWord0x0((int*)GameState::GetInstance());
+	int val = GetWord0x0_0200fb8c((int*)GameState::GetInstance());
 	if (r4->byte17b == 0) {
 		SetBrightness((GameResources*)val, -16, 8);
 		r4->byte17b++;

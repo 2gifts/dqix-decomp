@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void* GetField0x3f8Address(GameState* battleStruct);
+void* GetField0x3f8Address_0200fd0c(GameState* battleStruct);
 extern "C" unsigned short* func_02012fe4(void* fieldPtr);
 void InitStruct02070378(char* obj);
 struct Vector3i;
@@ -9,7 +9,7 @@ struct Vector3i;
 // USA: func_ov017_0219bcac
 ARM void InitFieldsFromCombatant_0219bcac(unsigned char flag) {
     GameState* battleStruct = GameState::GetInstance();
-    char* obj = (char*)GetField0x3f8Address(battleStruct);
+    char* obj = (char*)GetField0x3f8Address_0200fd0c(battleStruct);
     unsigned short* val = func_02012fe4(obj);
     char* combatant = (char*)battleStruct->GetProtagonist();
     InitStruct02070378(obj);

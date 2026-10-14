@@ -11,7 +11,7 @@ extern Struct021707d8_02159888 data_ov004_021707d8;
 
 struct EntryStruct02159888 { short field0; short pad2; unsigned int field4 : 7; };
 
-void* GetPtrField0x2a04(GameState* battleStruct);
+void* GetPtrField0x2a04_02010828(GameState* battleStruct);
 
 struct Container020dedd0;
 struct Element020de650 { char pad[8]; unsigned int field8 : 4; };
@@ -30,7 +30,7 @@ extern "C" ARM int func_ov004_02159888(void* obj) {
 
     if (data_ov004_021707d8.ptr[0x11] >= entry->field4) return 0;
 
-    void* ptr2a04 = GetPtrField0x2a04(GameState::GetInstance());
+    void* ptr2a04 = GetPtrField0x2a04_02010828(GameState::GetInstance());
     unsigned int cap = *(unsigned int*)((char*)entry + 4) >> 7;
     if (*(unsigned int*)((char*)ptr2a04 + 0xf6c) < (data_ov004_021707d8.ptr[0x11] + 1) * cap) return 0;
 

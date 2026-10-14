@@ -20,7 +20,7 @@ struct Rec020467f0;
 
 extern "C" void* memset(void* dst, int value, unsigned int length);
 extern "C" void func_020a620c(void* obj);
-int IsFieldSet(unsigned char* obj);
+int IsFieldSet_020a64a8(unsigned char* obj);
 int CountActiveEntries(struct ActiveEntry02046900* entry);
 void* FindRecordByIndex(struct Rec020467f0* rec, int index, void** out, int* outSize);
 
@@ -71,7 +71,7 @@ extern "C" ARM void func_ov003_021735c4(struct Obj021735c4* self) {
             *(volatile unsigned int*)0x4001010 = (self->scrollY << 16) & 0x1ff0000;
             loader->RemoveTask(self->handle);
             self->handle = -1;
-            if (IsFieldSet(self->fade) == 0) {
+            if (IsFieldSet_020a64a8(self->fade) == 0) {
                 self->state = 2;
             } else {
                 SetSubBrightness(res, 0, 0x18);
@@ -79,7 +79,7 @@ extern "C" ARM void func_ov003_021735c4(struct Obj021735c4* self) {
             }
         }
     } else if (self->state == 2) {
-        if (IsFieldSet(self->fade) != 0) {
+        if (IsFieldSet_020a64a8(self->fade) != 0) {
             SetSubBrightness(res, 0, 0x18);
             self->state = 3;
         }

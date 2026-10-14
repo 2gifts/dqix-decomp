@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 #if defined(jpn)
-#define AppendSizeTag func_02042428
+#define AppendSizeTag_02041d9c func_02042428
 #endif
 
 #if defined(jpn)
@@ -44,15 +44,15 @@ struct SkillPointMenu {
 
 struct Container020e0310;
 int AppendFrameTag02041c08(char* dst, int a1, int a2, int a3, int a4, int a5);
-int AppendCursorTag(char* dst, int cursor);
+int AppendCursorTag_02041ea4(char* dst, int cursor);
 extern "C" void* __clear(void* dst, int count);
 #if defined(jpn)
 extern "C"
 #endif
-int AppendSizeTag(char* dst, int size);
+int AppendSizeTag_02041d9c(char* dst, int size);
 int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 int AppendString02042058(char* dst, const char* src);
-int AppendNameTag(char* dst, int n, const char* name);
+int AppendNameTag_02041b70(char* dst, int n, const char* name);
 
 // USA: func_ov013_02185be0  (semantic: AppendCursorAndFieldNameTags02185be0)
 extern "C" ARM void func_ov013_02185be0(SkillPointMenu* menu, char* dst) {
@@ -62,13 +62,13 @@ extern "C" ARM void func_ov013_02185be0(SkillPointMenu* menu, char* dst) {
     if (menu->windowInput == 2) {
         AppendFrameTag02041c08(dst, menu->confirmationChoice, 9, 3, 6, 2);
     }
-    AppendCursorTag(dst, menu->confirmationChoice);
+    AppendCursorTag_02041ea4(dst, menu->confirmationChoice);
 
     for (choice = 0; choice < 2; choice++) {
         __clear(choiceText, 0x20);
-        AppendSizeTag(choiceText, 0xc);
+        AppendSizeTag_02041d9c(choiceText, 0xc);
         AppendString02042058(choiceText, (const char*)GetFieldByKey020e0434((Container020e0310*)menu->texts, (short)(choice + 0xa)));
-        AppendNameTag(dst, choice, choiceText);
+        AppendNameTag_02041b70(dst, choice, choiceText);
         if (choice < 1) {
             AppendString02042058(dst, (const char*)GetFieldByKey020e0434((Container020e0310*)menu->texts, 0));
         }

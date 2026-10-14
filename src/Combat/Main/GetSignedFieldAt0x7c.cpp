@@ -6,6 +6,6 @@ struct S_e820 {
 };
 
 // USA: func_0201e820
-ARM int GetSignedFieldAt0x7c(struct S_e820* p) {
+ARM int GetSignedFieldAt0x7c_0201e820(struct S_e820* p) {
     return p->field7c;
 }

@@ -10,6 +10,6 @@ enum { GLOBAL_WORD_OFFSET = 0 };
 #endif
 
 // USA: func_02094a00
-ARM FontBankLoader* GetGlobal02109400(void) {
+ARM FontBankLoader* GetGlobal02109400_02094a00(void) {
     return *(FontBankLoader**)((char*)&data_02109400 + GLOBAL_WORD_OFFSET);
 }

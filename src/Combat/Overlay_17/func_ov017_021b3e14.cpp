@@ -16,10 +16,10 @@ void ApplyCombatantEffectByIndex020730e0(int id, int index);
 extern "C" int NSBXX_Model_GetMaterialPolygonID(NSBXXInternalModel* model, unsigned int materialIndex);
 int GetField6b0_021b8470(void* obj);
 extern "C" unsigned char* func_ov017_021b8478(void* obj);
-int TestBitAt0x34(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
 
 struct Struct_203dafc;
-void ClearEightWords(struct Struct_203dafc* obj);
+void ClearEightWords_0203dafc(struct Struct_203dafc* obj);
 struct StreamHeader;
 void RunOverlayScript0216d1c4(int arg0, struct StreamHeader* buffer, int length, int* out);
 
@@ -33,13 +33,13 @@ struct Bytes02033b88;
 int SetByte0xbeShiftPrev(struct Bytes02033b88* p, int val);
 struct SearchStruct;
 extern "C" struct SearchStruct* func_0202ae18(void);
-GameObject* GetCombatantWithFlag0x1000(GameState* battleStruct, int combatantId);
-int GetSignedByte0x2d0(void* obj);
-int IsEntryFlagBit11Set(struct SearchStruct* search, int id);
+GameObject* GetCombatantWithFlag0x1000_0200ff58(GameState* battleStruct, int combatantId);
+int GetSignedByte0x2d0_020546a8(void* obj);
+int IsEntryFlagBit11Set_0202be08(struct SearchStruct* search, int id);
 struct Outer_02054000;
 void* GetActiveSub_02054000(struct Outer_02054000* p);
-int GetFieldAt0x150(unsigned char* obj);
-int TrySetFlags0x130(unsigned char* obj, unsigned short flag);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
+int TrySetFlags0x130_020483f0(unsigned char* obj, unsigned short flag);
 extern "C" void func_02083e28(void* a, int arg2);
 void ApplyCombatantBuffs(int world, int id);
 extern "C" void func_ov017_021c6bc8(void);
@@ -184,7 +184,7 @@ extern "C" ARM int func_ov017_021b3e14(struct LoadWork021b3e14* self) {
     world = GetField6b0_021b8470(p3718);
     unsigned char* bits = func_ov017_021b8478(p3718);
     if (((unsigned char*)p3718)[2] != 0 && bits != NULL) {
-        if (TestBitAt0x34(bits, (unsigned char)self->id)) {
+        if (TestBitAt0x34_020a35e0(bits, (unsigned char)self->id)) {
             hasScript = 1;
         }
     }
@@ -216,7 +216,7 @@ extern "C" ARM int func_ov017_021b3e14(struct LoadWork021b3e14* self) {
         switch (slot) {
         case 11: {
             ObjectArchiveLoadInfo info;
-            ClearEightWords((struct Struct_203dafc*)&info);
+            ClearEightWords_0203dafc((struct Struct_203dafc*)&info);
             info.allocator = &models->allocator_52c;
             info.fileData = file;
             info.unk_8 = size;
@@ -225,7 +225,7 @@ extern "C" ARM int func_ov017_021b3e14(struct LoadWork021b3e14* self) {
         }
         case 13: {
             ObjectArchiveLoadInfo info2;
-            ClearEightWords((struct Struct_203dafc*)&info2);
+            ClearEightWords_0203dafc((struct Struct_203dafc*)&info2);
             info2.allocator = &models->allocator_540;
             info2.fileData = file;
             info2.packageID = 1;
@@ -270,11 +270,11 @@ extern "C" ARM int func_ov017_021b3e14(struct LoadWork021b3e14* self) {
         if (world == 0) {
             struct SearchStruct* search = func_0202ae18();
             int v = member->obj3D_.unknown_4_;
-            GameObject* c = GetCombatantWithFlag0x1000(gs, v);
+            GameObject* c = GetCombatantWithFlag0x1000_0200ff58(gs, v);
             if (c != NULL) {
-                v = GetSignedByte0x2d0(c);
+                v = GetSignedByte0x2d0_020546a8(c);
             }
-            int set = IsEntryFlagBit11Set(search, v);
+            int set = IsEntryFlagBit11Set_0202be08(search, v);
             if (*member->flags130 & 1) {
                 if (set == 0) {
                     member->flags18c |= 1;
@@ -291,13 +291,13 @@ extern "C" ARM int func_ov017_021b3e14(struct LoadWork021b3e14* self) {
                 member->obj3D_.MaybeSetRegularAnimation(data_ov017_021d7ae3, 0);
             }
             if (world != 0) {
-                struct Member021b3e14* c = (struct Member021b3e14*)GetCombatantWithFlag0x100(gs, self->id);
+                struct Member021b3e14* c = (struct Member021b3e14*)GetCombatantWithFlag0x100_0200ff1c(gs, self->id);
                 if (c != NULL) {
                     struct Active02054000* act = (struct Active02054000*)GetActiveSub_02054000((struct Outer_02054000*)c);
                     if (act != NULL && act->count > 0 && act->active) {
-                        int* f = (int*)GetFieldAt0x150((unsigned char*)c);
+                        int* f = (int*)GetFieldAt0x150_02053c6c((unsigned char*)c);
                         if (f != NULL) {
-                            TrySetFlags0x130((unsigned char*)c, 4);
+                            TrySetFlags0x130_020483f0((unsigned char*)c, 4);
                             f[0xa8 / 4] |= 4;
                         }
                     }

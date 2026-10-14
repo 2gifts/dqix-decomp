@@ -4,7 +4,7 @@
 
 struct Struct02012dd0;
 unsigned int GetMaxAlloc02012dd0(struct Struct02012dd0* self);
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
 unsigned int LoadROMFilesystemFileTables(void* where, unsigned int capacity);
 void CacheMainFileAccessors();
@@ -31,8 +31,8 @@ extern "C" ARM void func_020a0c0c() {
     if (loader != NULL)
         loader->AddLock();
 
-    tmp = AllocateAligned4(&data_02114e20, max - (size + 0x10));
-    data_02109d90 = AllocateAligned4(&data_02114e20, size);
+    tmp = AllocateAligned4_02012d88(&data_02114e20, max - (size + 0x10));
+    data_02109d90 = AllocateAligned4_02012d88(&data_02114e20, size);
     TailForward02012da4(&data_02114e20, tmp);
 
     if (data_02109d90 != NULL)

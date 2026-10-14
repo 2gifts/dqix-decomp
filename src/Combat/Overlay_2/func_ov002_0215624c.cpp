@@ -18,16 +18,16 @@ struct Struct0205de24;
 struct ActiveEntry02046900;
 struct Container020e0310;
 
-int TestFlag0SetAndFlag1Clear(unsigned short *obj, int mask);
-unsigned char *FindElementForFieldB0(struct Struct_0205d81c *s);
-int IsField0x9cEqual3(unsigned char *obj);
-void SetFieldAt0x30(void *obj, int value);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short *obj, int mask);
+unsigned char *FindElementForFieldB0_0205d8c4(struct Struct_0205d81c *s);
+int IsField0x9cEqual3_0204c7cc(unsigned char *obj);
+void SetFieldAt0x30_0205bc24(void *obj, int value);
 extern "C" int func_0205d0e0(void *obj, int val);
 int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
-void PushInputLogB(int id);
-int GetWord0x0(int *obj);
+void PushInputLogB_020a1ef0(int id);
+int GetWord0x0_0200fb8c(int *obj);
 int GetGlobalField0x1c020421a0(void);
-void SetWord0x18ClearByte0x1f(unsigned char *obj, int value);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char *obj, int value);
 extern "C" void func_0204b5b4(void *obj, int val);
 void AllocateAndClearBuffer0204b12c(struct AllocTarget0204b12c *obj,
                                                                                          SafeAllocator *alloc);
@@ -109,10 +109,10 @@ extern char data_ov002_0216cf11[];
 extern "C" ARM void func_ov002_0215624c(char *self) {
     BackgroundLoader *loader = BackgroundLoader::GetInstance();
 
-    if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601)) {
+    if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x601)) {
         U8(0x1c2f) = 1;
     }
-    if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x802)) {
+    if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x802)) {
         U8(0x1c2f)  = 0;
         S32(0x1bb8) = 0x2b;
         if (S32(0x1bc4) >= 0) {
@@ -126,9 +126,9 @@ extern "C" ARM void func_ov002_0215624c(char *self) {
         return;
     }
 
-    unsigned char *e = FindElementForFieldB0((struct Struct_0205d81c *) (self + 0xec8));
-    if (e != 0 && IsField0x9cEqual3(e) && !(e[0xc5] & 2)) {
-        SetFieldAt0x30(&((struct Obj0ec8_0215624c *) (self + 0xec8))->f4, -1);
+    unsigned char *e = FindElementForFieldB0_0205d8c4((struct Struct_0205d81c *) (self + 0xec8));
+    if (e != 0 && IsField0x9cEqual3_0204c7cc(e) && !(e[0xc5] & 2)) {
+        SetFieldAt0x30_0205bc24(&((struct Obj0ec8_0215624c *) (self + 0xec8))->f4, -1);
     }
     S32(0x1bc8) = func_0205d0e0(self + 0xec8, S32(0x1ba0));
     short old   = S16(0x1be0);
@@ -142,8 +142,8 @@ extern "C" ARM void func_ov002_0215624c(char *self) {
     }
 
     if (S32(0x1bc0) == 0) {
-        PushInputLogB(1);
-        char *w     = (char *) GetWord0x0((int *) GameState::GetInstance());
+        PushInputLogB_020a1ef0(1);
+        char *w     = (char *) GetWord0x0_0200fb8c((int *) GameState::GetInstance());
         S32(0x1bd0) = *(int *) ((char *) GetGlobalField0x1c020421a0() + 0x5c);
         ((SafeAllocator *) (self + 0x828))->Reset();
 
@@ -152,7 +152,7 @@ extern "C" ARM void func_ov002_0215624c(char *self) {
         struct Layer0215624c *o;
         for (int i = 0; i < 3; i++) {
             o = (struct Layer0215624c *) (self + 0xf84 + i * 0x20);
-            SetWord0x18ClearByte0x1f((unsigned char *) o, 0);
+            SetWord0x18ClearByte0x1f_0204b11c((unsigned char *) o, 0);
             o->lo = 0;
             o->hi = prio.v[i];
             func_0204b5b4(o, layer.v[i]);

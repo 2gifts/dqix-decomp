@@ -14,15 +14,15 @@ enum { Field105 = 0x105, Field2cc = 0x2cc };
 extern "C" void func_020c9be0(void);
 extern "C" void* func_02012fe4(void);
 extern "C" void func_020a1940(unsigned int id);
-void PushInputLogB(int value);
-void PushInputLogA(int value);
+void PushInputLogB_020a1ef0(int value);
+void PushInputLogA_020a1df8(int value);
 extern "C" void func_ov011_0218438c(char* obj);
 extern "C" void func_ov011_02184550(char* obj, SafeAllocator* allocator, void* data, unsigned int length);
 void InitAndCreateTypeB021845c8(char* obj, void* buffer, unsigned int size);
 void InitEntry02184640(char* obj, char* entry);
 extern "C" void func_ov011_02184694(char* obj);
-void SetBitsInField4(unsigned int* field, unsigned int bits);
-void Set3DClearColor(int a, int b, int c, int d, int e);
+void SetBitsInField4_0203b4d8(unsigned int* field, unsigned int bits);
+void Set3DClearColor_020c5588(int a, int b, int c, int d, int e);
 
 struct Flags021b24d0 {
     char pad[Field105];
@@ -77,8 +77,8 @@ extern "C" ARM int func_ov017_021b24d0(Task021b24d0* task) {
         func_020c9be0();
     }
     func_020a1940(OVERLAY_ID(11));
-    PushInputLogB(1);
-    PushInputLogA(4);
+    PushInputLogB_020a1ef0(1);
+    PushInputLogA_020a1df8(4);
     data_ov017_021d83f0.scene = (char*)task->allocator.Allocate(0x1e0);
     if (data_ov017_021d83f0.scene == NULL) {
         func_020c9be0();
@@ -97,8 +97,8 @@ extern "C" ARM int func_ov017_021b24d0(Task021b24d0* task) {
 #endif
     func_ov011_02184694(data_ov017_021d83f0.scene);
     if (!task->keepField4Bits) {
-        SetBitsInField4((unsigned int*)res, 0x609fe);
+        SetBitsInField4_0203b4d8((unsigned int*)res, 0x609fe);
     }
-    Set3DClearColor(0, 0, 0x7fff, 0, 0);
+    Set3DClearColor_020c5588(0, 0, 0x7fff, 0, 0);
     return 2;
 }

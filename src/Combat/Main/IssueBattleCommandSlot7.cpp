@@ -4,7 +4,7 @@ extern "C" int func_020d424c(int, int);
 extern "C" int func_020d40bc(int, int, int);
 struct Fields020d5158;
 int CheckFieldsInRange020d5158(struct Fields020d5158* o);
-void SetBattleContextArrayEntry(int index, int value);
+void SetBattleContextArrayEntry_020d404c(int index, int value);
 void CleanCacheRange(const void* addr, unsigned int size);
 
 struct Ctx020d507c {
@@ -38,7 +38,7 @@ ARM int IssueBattleCommandSlot7(int a, struct Ctx020d507c* b) {
     }
 
     CheckFieldsInRange020d5158((struct Fields020d5158*)b);
-    SetBattleContextArrayEntry(7, a);
+    SetBattleContextArrayEntry_020d404c(7, a);
     CleanCacheRange(b, 0x40);
     if (b->field4 != 0) {
         CleanCacheRange((void*)b->field0, b->field4);

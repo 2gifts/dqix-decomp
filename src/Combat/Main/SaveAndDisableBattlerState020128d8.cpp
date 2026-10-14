@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 
 extern "C" void func_020cdbe4(void);
-void WaitWhileFlagsSet(int mask);
-int GetMaskedStatus(int mask);
+void WaitWhileFlagsSet_020ce0fc(int mask);
+int GetMaskedStatus_020ce114(int mask);
 void StoreValueWithInterruptsDisabled020cdac4(int value);
 void ResetBattlerState0201289c(unsigned char* obj);
 
@@ -33,8 +33,8 @@ ARM void SaveAndDisableBattlerState020128d8(struct Obj020128d8* obj) {
         obj->field6c = obj->field34;
     }
     func_020cdbe4();
-    WaitWhileFlagsSet(4);
-    GetMaskedStatus(4);
+    WaitWhileFlagsSet_020ce0fc(4);
+    GetMaskedStatus_020ce114(4);
     StoreValueWithInterruptsDisabled020cdac4(0);
     ResetBattlerState0201289c((unsigned char*)obj);
     obj->field60 = 1;

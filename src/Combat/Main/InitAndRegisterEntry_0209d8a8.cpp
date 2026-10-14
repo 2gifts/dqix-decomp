@@ -9,7 +9,7 @@ enum { kFieldOffset = 0x718 };
 #include "Memory/SafeAllocator.h"
 #include "GameState/GameState.h"
 
-void* GetPtrField0x2a04(GameState* battleStruct);
+void* GetPtrField0x2a04_02010828(GameState* battleStruct);
 void* GetGlobalManager0209dccc();
 extern "C" int func_ov017_021d60f4(void* p);
 extern "C" void* func_ov017_021b8468(int a);
@@ -41,7 +41,7 @@ extern "C" ARM int func_0209d8a8(void* obj) {
     SelfBuf0209d8a8 self;
     int b0;
     int b1;
-    GetPtrField0x2a04(GameState::GetInstance());
+    GetPtrField0x2a04_02010828(GameState::GetInstance());
     GlobalManagerFields0209d8a8* mgr = (GlobalManagerFields0209d8a8*)GetGlobalManager0209dccc();
     if (mgr == NULL) {
         return 0;

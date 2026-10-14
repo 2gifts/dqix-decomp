@@ -34,7 +34,7 @@ struct ZoneResourceNode {
     Struct02012ff0 *trackers;
 };
 
-void *GetElementStride0xc(unsigned char *obj, int index);
+void *GetElementStride0xc_0201f144(unsigned char *obj, int index);
 void InitTrackerFields02012ff0(Struct02012ff0 *s);
 extern "C" int func_02015134(Ctx02015134 *ctx, Out02015134 *out, Src02015134 *src);
 extern "C" int func_020151cc(Zone3D *zone, Struct02012ff0 *tracker, Src02015134 *source);

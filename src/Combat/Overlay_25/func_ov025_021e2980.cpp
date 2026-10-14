@@ -54,16 +54,16 @@ void SetAngleAndTrigTable0202e9a4(AngleTrig0202e9a4*, int);
 extern "C" void func_0204a170(int);
 int DispatchByIndex021820bc(void*, int, int, int);
 void ResetInnerState02048c90(Obj02048c90*);
-void ClearSubstructFlag0x4(unsigned char*);
+void ClearSubstructFlag0x4_02049ae4(unsigned char*);
 void SetByte0xbeShiftPrev(Bytes02033b88*, int);
-AnimationWork* GetActiveCombatWork();
+AnimationWork* GetActiveCombatWork_ov000_02160130();
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 
 // USA: func_ov025_021e2980
 extern "C" ARM int func_ov025_021e2980(AnimationCommand* command, AnimationTargets* targets, int unused, void* context) {
     GameState* game = GameState::GetInstance();
     if (command->target == 0x19) {
-        void* camera = GetField0x3b0Value(game);
+        void* camera = GetField0x3b0Value_020100bc(game);
         if (GetFlags((int)camera) & 0x10) {
             Object3D* object = GetField0x21c((S0204a438*)camera);
             if (object) {
@@ -82,7 +82,7 @@ extern "C" ARM int func_ov025_021e2980(AnimationCommand* command, AnimationTarge
             if (!combatant) continue;
             if (combatant->object.unknown_0_ & 0x80) {
                 ResetInnerState02048c90((Obj02048c90*)combatant);
-                ClearSubstructFlag0x4((unsigned char*)combatant);
+                ClearSubstructFlag0x4_02049ae4((unsigned char*)combatant);
                 int state = combatant->state;
                 if (state != 0 && state != 4 && state != 6)
                     SetByte0xbeShiftPrev((Bytes02033b88*)combatant, 0);
@@ -97,7 +97,7 @@ extern "C" ARM int func_ov025_021e2980(AnimationCommand* command, AnimationTarge
         }
         LightingManager* lighting = LightingManager::GetInstance();
         if (!(command->flags & 2) && targets->kind != 1 && targets->kind != 2 && targets->kind != 0xdb) {
-            AnimationWork* work = GetActiveCombatWork();
+            AnimationWork* work = GetActiveCombatWork_ov000_02160130();
             if (!work->faded) {
                 lighting->BeginFade(0x999, 300);
                 work->faded = 1;

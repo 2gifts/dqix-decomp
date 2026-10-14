@@ -76,7 +76,7 @@ extern "C" float func_0200c700(long long);
 extern "C" int func_020312bc(GeometryTriangle* triangles, int count, Vector3fix* start, Vector3fix* end, Vector3fix* point);
 extern "C" int func_02017d90(Zone02193dc4* zone, int index, TerrainGrid02193dc4* grid, Probe02193dc4 probe, Actor02193dc4* self);
 void ClearFlags0x40And0x80At0xe0(struct ByteFlags02033f2c* p);
-void CopyFourHalfwordsToField0x114(void* obj, FourHalfwords02033f7c* src);
+void CopyFourHalfwordsToField0x114_02033f6c(void* obj, FourHalfwords02033f7c* src);
 
 // USA: func_ov017_02193dc4
 extern "C" ARM int func_ov017_02193dc4(Actor02193dc4* self) {
@@ -136,7 +136,7 @@ extern "C" ARM int func_ov017_02193dc4(Actor02193dc4* self) {
                 if (node != NULL && (geometry = node->geometry) != NULL && (polygons = geometry->polygons) != NULL) {
                     if (polygons->header->type == 3) {
                         FourHalfwords02033f7c material = polygons->materials[grid.materialIndex[idx]];
-                        CopyFourHalfwordsToField0x114(self, &material);
+                        CopyFourHalfwordsToField0x114_02033f6c(self, &material);
                     }
                 }
             }

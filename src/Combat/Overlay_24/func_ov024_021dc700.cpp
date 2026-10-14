@@ -1,9 +1,9 @@
 #include <globaldefs.h>
 #include "Combat/Overlay_0/GetCombatantByID.h"
 #include "GameState/GameState.h"
-void* GetPtrField0x2a04(GameState*);
+void* GetPtrField0x2a04_02010828(GameState*);
 struct ArrayContainsByteStruct;
-int ArrayContainsByte(ArrayContainsByteStruct*, int);
+int ArrayContainsByte_02086ef0(ArrayContainsByteStruct*, int);
 void IncrementByteCounterCapped0x63_0215a8d4(unsigned char*, int);
 short ApplyHPDelta0215a16c(void*,int,int,short*);
 extern "C" void* func_ov000_0215e958(void*);
@@ -33,8 +33,8 @@ extern "C" ARM void* func_ov024_021dc700(Obj021dc700* obj,int sourceID,int id,Pa
     unsigned short selection;
     if(enabled && amount>0){
         selection=SelectByIndexRange0to3_021da644(id,params->field20.c,params->field24.a);
-        void* list=GetPtrField0x2a04(GameState::GetInstance());
-        if(ArrayContainsByte((ArrayContainsByteStruct*)list, sourceID) && target->currentStats_->primaryStats.currHP==1 && params->code.value==0xb7)
+        void* list=GetPtrField0x2a04_02010828(GameState::GetInstance());
+        if(ArrayContainsByte_02086ef0((ArrayContainsByteStruct*)list, sourceID) && target->currentStats_->primaryStats.currHP==1 && params->code.value==0xb7)
             IncrementByteCounterCapped0x63_0215a8d4((unsigned char*)obj->context, 2);
     }else{
         amount=0;

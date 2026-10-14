@@ -32,7 +32,7 @@ struct Node0206d464 {
 // USA: func_0206d464  (semantic: SetNodeVec3AndFlag0206d464)
 extern "C" ARM int func_0206d464(void* param0) {
     int key = ((Script::Parameter*)((struct Variant02030b0c*)param0))->ToInt();
-    struct Node0206d464* node = (Node0206d464*)FindNodeByByteId(data_02108cec.field0x10, key);
+    struct Node0206d464* node = (Node0206d464*)FindNodeByByteId_0206db20(data_02108cec.field0x10, key);
     if (node == 0) return 0;
     while (node != 0) {
         if (node->id0x44 == data_02108cec.field0xa) break;

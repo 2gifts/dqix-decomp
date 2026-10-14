@@ -3,7 +3,7 @@
 #include "Graphics/Vector.h"
 #include "GameState/GameState.h"
 
-void StoreVec3AtField0x50(unsigned char* object, int x, int y, int z);
+void StoreVec3AtField0x50_0203db34(unsigned char* object, int x, int y, int z);
 
 struct Mover021df5e4 {
     Object3D body;
@@ -46,8 +46,8 @@ extern "C" ARM void func_ov025_021df5e4(Mover021df5e4* self, int source, int tar
         self->steps = 10;
     }
     fix32_t angle = fix32ReduceAngle0To2Pi(fix32_Atan2(self->direction.x, self->direction.z));
-    StoreVec3AtField0x50((unsigned char*)&self->body, 0, angle, 0);
-    StoreVec3AtField0x50((unsigned char*)&self->shadow, 0, angle, 0);
+    StoreVec3AtField0x50_0203db34((unsigned char*)&self->body, 0, angle, 0);
+    StoreVec3AtField0x50_0203db34((unsigned char*)&self->shadow, 0, angle, 0);
     Vector3fixMultiplyScalar(&self->direction, speed, &self->direction);
     self->step = 0;
     memset(self->work, 0, 0x14);

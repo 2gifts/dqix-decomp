@@ -13,8 +13,8 @@ extern "C" int func_020ab7a8(void* obj, int flag);
 struct FlagWord020466f4;
 void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int mask);
 extern "C" void func_ov011_021848a0(void* obj, int val);
-void* FindEntryByKey(struct TableA68* table, int key);
-void SetByte0x7f70(void* obj, unsigned char value);
+void* FindEntryByKey_02072a68(struct TableA68* table, int key);
+void SetByte0x7f70_02012028(void* obj, unsigned char value);
 
 struct FieldGroup02171034 {
     #if defined(jpn)
@@ -58,24 +58,24 @@ extern "C" ARM int func_ov004_0216dd78(void* a) {
     } else if (state == 1) {
         ClearFlags020466f4(flagWord, 0x80);
         data_ov004_02171034.ptr10[1] = 0;
-        void* entry = FindEntryByKey((struct TableA68*)table, 0x5dc);
+        void* entry = FindEntryByKey_02072a68((struct TableA68*)table, 0x5dc);
 #if defined(jpn)
         func_0204500c(message, (const char*)entry, 0);
 #else
         func_0204500c(message, (const char*)entry, 0, (void*)0xe3);
 #endif
-        SetByte0x7f70(battle, 0);
+        SetByte0x7f70_02012028(battle, 0);
         ret = 0;
     } else if (state == 2) {
         ClearFlags020466f4(flagWord, 0x80);
         data_ov004_02171034.ptr10[1] = 0;
-        void* entry = FindEntryByKey((struct TableA68*)table, 0x5dd);
+        void* entry = FindEntryByKey_02072a68((struct TableA68*)table, 0x5dd);
 #if defined(jpn)
         func_0204500c(message, (const char*)entry, 0);
 #else
         func_0204500c(message, (const char*)entry, 0, (void*)0xe3);
 #endif
-        SetByte0x7f70(battle, 0);
+        SetByte0x7f70_02012028(battle, 0);
         ret = 0;
     } else if (state == 3) {
         ClearFlags020466f4(flagWord, 0x80);

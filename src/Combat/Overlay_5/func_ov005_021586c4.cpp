@@ -32,7 +32,7 @@ extern "C" ARM int func_ov005_021586c4(void*, int x, int y) {
     if (x > 0 && x < 128) {
         int screenX[8];
         int screenY[8];
-        camera = GetField0x3b0Value(game);
+        camera = GetField0x3b0Value_020100bc(game);
         Matrix4x3 matrix;
         Vector3fix positions[8];
         matrix = RotationMatrixY(RunIfPtr_021e4e20(screen)->rotation.y);
@@ -40,7 +40,7 @@ extern "C" ARM int func_ov005_021586c4(void*, int x, int y) {
             Mat4x3_ApplyToVector(&data_ov005_0215cc24[i], &matrix, &positions[i]);
             ComputeTwoFromVec3_0202ec84(camera, (Vec3copy0202ec84*)&positions[i], &screenX[i], &screenY[i]);
         }
-        GetCombatantWithFlag0x100(game, member);
+        GetCombatantWithFlag0x100_0200ff1c(game, member);
         int count = 0;
         float radii[8];
         int touched[8];

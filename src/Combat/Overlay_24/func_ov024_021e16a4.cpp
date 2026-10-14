@@ -5,7 +5,7 @@
 struct Container02070e60;
 struct Element_021e16a4 { char pad0[2]; unsigned char kind; };
 struct Element_021e16a4* SearchWithLow15Comparator02070fd0(struct Container02070e60* container, int key);
-GameObject* GetCombatantWithFlag0x400ByID(int unused, int id);
+GameObject* GetCombatantWithFlag0x400ByID_ov000_021536f8(int unused, int id);
 extern "C" void* func_ov000_0215e958(void* a0);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, int e, int f, int g);
 
@@ -44,7 +44,7 @@ struct Obj_021e16a4 {
 
 // USA: func_ov024_021e16a4
 extern "C" ARM void* func_ov024_021e16a4(struct Obj_021e16a4* obj, int unused, int id, struct Range_021e16a4* range) {
-    GameObject* c = GetCombatantWithFlag0x400ByID((int)obj->ctx, id);
+    GameObject* c = GetCombatantWithFlag0x400ByID_ov000_021536f8((int)obj->ctx, id);
     if (!c) return 0;
     if (obj->done == 0) {
         int slot = *((unsigned char*)c + 0x17c);

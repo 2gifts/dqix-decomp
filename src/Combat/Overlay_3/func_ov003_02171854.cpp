@@ -22,7 +22,7 @@ extern "C" void func_0202b0f4(void* p);
 extern int SetStateToThreeAndDispatch0202b800(int* p);
 extern "C" void func_0202c360(void* self, int value);
 extern "C" void func_0202b2f0(void* obj);
-void CopyBattleTailToObjField0x102c(void* obj);
+void CopyBattleTailToObjField0x102c_0202c410(void* obj);
 
 struct SearchStruct;
 extern void RemoveSearchEntry0202c21c(struct SearchStruct* obj, int value);
@@ -48,7 +48,7 @@ extern "C" ARM void func_ov003_02171854(char* self) {
     SetStateToThreeAndDispatch0202b800((int*)search);
     func_0202c360(search, *(int*)((char*)combatant + 0x134));
     func_0202b2f0(search);
-    CopyBattleTailToObjField0x102c(search);
+    CopyBattleTailToObjField0x102c_0202c410(search);
     RemoveSearchEntry0202c21c((struct SearchStruct*)search, 0xf);
     func_0202c288(search);
 

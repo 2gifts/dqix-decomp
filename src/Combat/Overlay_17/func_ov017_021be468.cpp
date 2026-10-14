@@ -42,18 +42,18 @@ struct GrottoViewE468 {
 #endif
 extern AllocatorUnion data_02114e20; extern char data_ov017_021d7e80[]; extern char data_02108760[];
 extern "C" void func_0202ae18(); extern "C" void* func_02057924(); extern "C" unsigned char* func_02012fe4();
-void CancelPendingAction020397cc(Obj020397cc*,int); void SetOrClearBit(unsigned char*,int,int);
+void CancelPendingAction020397cc(Obj020397cc*,int); void SetOrClearBit_0201bf98(unsigned char*,int,int);
 int ListContainsId(ListHead02046b60*,int); extern "C" void func_02046b8c(void*,int); extern "C" void func_02046a8c(void*,void*);
-void EnqueueEventTag33_021d2738(unsigned char,unsigned char); int IsField0Null(void**); void SetBitsInWord(unsigned int*,unsigned int);
-void* GetGlobal02109400(); extern "C" void func_02094ab0(void*); extern "C" void func_020a0cc4(unsigned int);
-void* AllocateAligned4(AllocatorUnion*,unsigned int); void CopyInternalFields0207df50(Foo0207df50*);
+void EnqueueEventTag33_021d2738(unsigned char,unsigned char); int IsField0Null_02046b08(void**); void SetBitsInWord_0203b4a0(unsigned int*,unsigned int);
+void* GetGlobal02109400_02094a00(); extern "C" void func_02094ab0(void*); extern "C" void func_020a0cc4(unsigned int);
+void* AllocateAligned4_02012d88(AllocatorUnion*,unsigned int); void CopyInternalFields0207df50(Foo0207df50*);
 extern "C" void func_02057e6c(void*,int,SafeAllocator*,void*,unsigned int,Foo0207df50*);
 int IsMainBrightnessTransitionActive(GameResources*); void CopyCountedBytesToIntArray02010834(Base02010834*,int,int*,int*);
 void FindNodeAndProcess02057fb4(void*,int,int); void SetForwardAndStore0205ebc0(void*,int,int); void DispatchIfField0xc4NonNeg_0205ebfc(void*,int,int);
-void SetBrightness(GameResources*,int,int); void ClearBitsInWord(unsigned int*,unsigned int); void CallListIfFlagsSet_02197528();
-WorldE468* GetField0x3f8Address(GameState*); extern "C" void VectorizedMemset(void*,int,int);
+void SetBrightness(GameResources*,int,int); void ClearBitsInWord_0203b4b0(unsigned int*,unsigned int); void CallListIfFlagsSet_02197528();
+WorldE468* GetField0x3f8Address_0200fd0c(GameState*); extern "C" void VectorizedMemset(void*,int,int);
 void InitAndResetHeader_0219e310(unsigned char*,int); void AppendNodeToTail(TailList020469b4*,TailNode020469b4*);
-void SetByteField0x253(void*); extern "C" void func_ov017_021beb48(StateE468*); void ForwardField0xc0_0205ebec(void*);
+void SetByteField0x253_020397c0(void*); extern "C" void func_ov017_021beb48(StateE468*); void ForwardField0xc0_0205ebec(void*);
 
 // USA: func_ov017_021be468
 extern "C" ARM void func_ov017_021be468(StateE468* self,ListHead02046b60* list) {
@@ -62,13 +62,13 @@ extern "C" ARM void func_ov017_021be468(StateE468* self,ListHead02046b60* list) 
     GameObject* actor=game->GetUnknownGameObject();
     void* battle=func_02057924(); BackgroundLoader* loader=BackgroundLoader::GetInstance(); unsigned char* zone=func_02012fe4();
     if(self->state==0) {
-        CancelPendingAction020397cc((Obj020397cc*)actor,1); SetOrClearBit(zone,1,0);
+        CancelPendingAction020397cc((Obj020397cc*)actor,1); SetOrClearBit_0201bf98(zone,1,0);
         if(ListContainsId(list,3)) func_02046b8c(list,3);
         else {
             if(ListContainsId(list,0x34)) func_02046a8c(list,resources->unknown_ptr_array_3afc[28]);
             if(ListContainsId(list,0x2e)) { func_02046a8c(list,resources->unknown_ptr_array_3afc[21]); EnqueueEventTag33_021d2738((unsigned char)actor->obj3D_.unknown_4_,0); }
-            if(IsField0Null((void**)resources->unknown_ptr_array_36fc[1])) {
-                SetBitsInWord((unsigned int*)resources,0x10); func_02094ab0(GetGlobal02109400()); func_020a0cc4(0x2800);
+            if(IsField0Null_02046b08((void**)resources->unknown_ptr_array_36fc[1])) {
+                SetBitsInWord_0203b4a0((unsigned int*)resources,0x10); func_02094ab0(GetGlobal02109400_02094a00()); func_020a0cc4(0x2800);
                 self->task=loader->QueueLoadFile(data_ov017_021d7e80,0); self->state++;
             }
         }
@@ -77,7 +77,7 @@ extern "C" ARM void func_ov017_021be468(StateE468* self,ListHead02046b60* list) 
             if(loader->GetDetailedTaskStatus(self->task)!=2) { loader->RemoveTask(self->task); self->done=1; }
             {
                 unsigned int length; void* file; loader->GetLoadedFileByID(self->task,&file,&length);
-                self->allocator.CreateTypeA(AllocateAligned4(&data_02114e20,0x2800),0x2800); self->allocator.Reset();
+                self->allocator.CreateTypeA(AllocateAligned4_02012d88(&data_02114e20,0x2800),0x2800); self->allocator.Reset();
                 Foo0207df50* source=&((ActorE468*)game->GetUnknownGameObject())->data->saved;
                 CopyInternalFields0207df50(source);
                 void* copy=self->allocator.Allocate(length); memcpy(copy,file,length);
@@ -116,8 +116,8 @@ extern "C" ARM void func_ov017_021be468(StateE468* self,ListHead02046b60* list) 
         self->timer++;
         if(self->timer>85) {
             for(int i=0;i<5;i++) if(self->actors&(1<<i)) { GameObject* member=game->GetGameObjectByIndex(i); if(member!=NULL) member->obj3D_.DisableFlag(1); }
-            ClearBitsInWord((unsigned int*)resources,0x10); CallListIfFlagsSet_02197528();
-            WorldE468* world=GetField0x3f8Address(game); VectorizedMemset(world,0,0x70);
+            ClearBitsInWord_0203b4b0((unsigned int*)resources,0x10); CallListIfFlagsSet_02197528();
+            WorldE468* world=GetField0x3f8Address_0200fd0c(game); VectorizedMemset(world,0,0x70);
             world->field4=1; world->field8=1; world->field9=1; world->fieldb=-1;
             world->field20=-1; world->field24=-1; world->field28=-1; world->field2c=-1; world->field1e=-1; world->fieldc=0; world->field6c=-1;
             world->id=self->field1c; world->field7=1; world->field1c=0x3244; world->position=self->position;
@@ -131,7 +131,7 @@ extern "C" ARM void func_ov017_021be468(StateE468* self,ListHead02046b60* list) 
                 grotto->field83=self->field3e; grotto->field84=self->field3f; grotto->field86=self->field40;
                 grotto->rank=self->low; grotto->environment=self->high; grotto->field8=self->field48; grotto->pending=0; self->pending=0;
             }
-            self->done=1; SetByteField0x253(actor); func_ov017_021beb48(self);
+            self->done=1; SetByteField0x253_020397c0(actor); func_ov017_021beb48(self);
             ForwardField0xc0_0205ebec(data_02108760);
         }
     }

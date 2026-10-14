@@ -3,7 +3,7 @@
 
 struct Variant02030b0c;
 
-void* GetElementStride0x30(unsigned char* obj, short index);
+void* GetElementStride0x30_0207f700(unsigned char* obj, short index);
 
 struct Data02108ee0 { void* field0; void* field4; };
 extern struct Data02108ee0 data_02108ee0;
@@ -28,7 +28,7 @@ struct Entry0207f4a8 {
 // USA: func_0207f4a8
 ARM int FillEntryVariantFields0207f4a8(struct Variant02030b0c* p) {
     struct EntryArray0207f594* list = (struct EntryArray0207f594*)data_02108ee0.field4;
-    struct Entry0207f4a8* e = (struct Entry0207f4a8*)GetElementStride0x30((unsigned char*)list, (short)(list->count - 1));
+    struct Entry0207f4a8* e = (struct Entry0207f4a8*)GetElementStride0x30_0207f700((unsigned char*)list, (short)(list->count - 1));
     if (e != NULL) {
         e->f18 = ((Script::Parameter*)p)->ToInt();
         e->f1c = ((Script::Parameter*)((struct Variant02030b0c*)((char*)p + 8)))->ToInt();

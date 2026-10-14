@@ -34,19 +34,19 @@ extern "C" void func_020c9be0();
 void RestorePairTables0207df90(char*);
 void BackupPairTables0207dfac(char*);
 void CreateAndRegisterNode02057de0(NodeList02057de0*, int, SafeAllocator*, int, int);
-void ClearEightWords(Struct_203dafc*);
+void ClearEightWords_0203dafc(Struct_203dafc*);
 void Forward02047b30(void*, int, int, int);
 void ResetArrayAndEntry02182114(char*);
 extern "C" void func_ov000_0218214c(void*, SafeAllocator*, const void*);
-char* GetData02104b6c();
+char* GetData02104b6c_02039e70();
 void ResetBattleArrays02039e7c(void*);
 void LoadObjectResourceFiles02039f04(char*, int, const void*);
 void ConstructEntryManager020d6d18(Container020d6d18*);
 void LoadFilesAndBuildNodeList020d6d90(Obj020d6d90*, const void*, SafeAllocator*, char*);
 void MergeLowNibbleField(MergeLowNibbleField020d76fc*);
-void OrMaskedField24IntoField26(unsigned char*);
+void OrMaskedField24IntoField26_020d771c(unsigned char*);
 void InitEntryManagerAllocator020d6ec8(Container020d6f44*, SafeAllocator*);
-void SetCombatWorkFlags0x55f4(void*, int);
+void SetCombatWorkFlags0x55f4_ov000_02160fa8(void*, int);
 extern const char data_ov000_02183a5a[], data_ov000_02183a6f[], data_ov000_02183a7a[], data_ov000_02183a85[], data_ov000_02183a93[];
 extern const char data_ov000_02183910[][16];
 struct BattleModelIDList02166a94 {
@@ -112,7 +112,7 @@ extern "C" ARM void func_ov000_02166a94(BattleWork02166a94* self) {
         if (data) {
             modelSlots = models;
             model = modelSlots[modelIndex];
-            ClearEightWords(&loadInfo.words);
+            ClearEightWords_0203dafc(&loadInfo.words);
             const void* modelData;
             int modelSize;
             modelSize = size;
@@ -137,7 +137,7 @@ extern "C" ARM void func_ov000_02166a94(BattleWork02166a94* self) {
     char* battleResources = self->battleResources;
     ResetArrayAndEntry02182114(battleResources);
     func_ov000_0218214c(battleResources, destinationAllocator, data_0211e33c);
-    char* objectResources = GetData02104b6c();
+    char* objectResources = GetData02104b6c_02039e70();
     ResetBattleArrays02039e7c(objectResources);
     LoadObjectResourceFiles02039f04(objectResources, (int)destinationAllocator, data_0211e33c);
     BackupPairTables0207dfac(pairTables->tables);
@@ -145,10 +145,10 @@ extern "C" ARM void func_ov000_02166a94(BattleWork02166a94* self) {
     ConstructEntryManager020d6d18((Container020d6d18*)self->entryManager);
     LoadFilesAndBuildNodeList020d6d90((Obj020d6d90*)self->entryManager, data_0211e33c, destinationAllocator, pairTables->tables);
     MergeLowNibbleField((MergeLowNibbleField020d76fc*)self->entryManager);
-    OrMaskedField24IntoField26((unsigned char*)self->entryManager);
+    OrMaskedField24IntoField26_020d771c((unsigned char*)self->entryManager);
     InitEntryManagerAllocator020d6ec8((Container020d6f44*)self->entryManager, self->allocator);
     RestorePairTables0207df90(pairTables->tables);
     BackupPairTables0207dfac(pairTables->tables);
-    SetCombatWorkFlags0x55f4(self, 0x40);
+    SetCombatWorkFlags0x55f4_ov000_02160fa8(self, 0x40);
     BackgroundLoader::RemoveLockGlobal();
 }

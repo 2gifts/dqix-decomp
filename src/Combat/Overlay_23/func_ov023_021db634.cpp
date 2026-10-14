@@ -89,7 +89,7 @@ extern "C" Statics_021db634 data_ov023_021ff9e0;
 extern "C" const short data_ov023_021fd5b8[3];
 
 const char* GetFieldByKey020e0434(struct Container020e0310* c, int key);
-const char* CallFunc020e0434With02153694(int id);
+const char* CallFunc020e0434With02153694_020e51cc(int id);
 extern "C" LayoutElement_021db634* func_ov023_021db4e4(Layout_021db634* layout, int id);
 void SetEntryFields_021e23d0(void* layout, int id, int text, unsigned char color, unsigned char shadow);
 extern "C" void* memset(void* dst, int value, unsigned int length);
@@ -100,13 +100,13 @@ extern "C" long func_02005a94(const char* text);
 extern "C" void* func_02012fe4();
 int LookupBitFromValueRange0201bb78(struct Obj_0201bb78* flags, unsigned int id);
 extern "C" void* func_0205ec34();
-int TestBitInByteArray(int flags, unsigned char* flags2, int id);
+int TestBitInByteArray_0206dfb0(int flags, unsigned char* flags2, int id);
 extern "C" void func_020ac2d4(int, short* ids, void* results, int count);
 int BuildBitmask0206e384(unsigned char* flags);
 int GetShortFromTable0206e3d4(int flags, int index);
 unsigned int ParseCodeLetter_021db564(char* text);
 void CopyIntAndByte_021dbb20(struct IntBytePair021dbb20* dst, struct IntBytePair021dbb20* src);
-int GetField5cb0Value(char* gameState);
+int GetField5cb0Value_0201079c(char* gameState);
 void UpdateEntryAndReset_021db45c(void* layout, struct StructAcAe021db45c* canvas, int id, short* x, short* y);
 extern "C" void func_ov023_021e257c(Layout_021db634* layout);
 void CreateAndSetFields8A_021db544(void* layout, void* id, int x, int y);
@@ -150,7 +150,7 @@ extern "C" ARM void func_ov023_021db634(Layout_021db634* layout, Canvas_021db634
     alchemy = data_ov023_021fcdfe;
 #else
     trade = GetFieldByKey020e0434(data_ov023_021ff9e0.sTexts, 0x2a);
-    alchemy = CallFunc020e0434With02153694(0x56);
+    alchemy = CallFunc020e0434With02153694_020e51cc(0x56);
 #endif
 
     SHOW_ELEMENT(layout, 0xf);
@@ -195,7 +195,7 @@ extern "C" ARM void func_ov023_021db634(Layout_021db634* layout, Canvas_021db634
             {
                 short recipe = func_02005a94(text + 1);
                 void* flags = func_0205ec34();
-                if (!TestBitInByteArray((int)flags, (unsigned char*)flags + 0x8c, 0x1198))
+                if (!TestBitInByteArray_0206dfb0((int)flags, (unsigned char*)flags + 0x8c, 0x1198))
                     continue;
                 struct
                 {
@@ -239,7 +239,7 @@ extern "C" ARM void func_ov023_021db634(Layout_021db634* layout, Canvas_021db634
                 break;
         }
     }
-    if (GetField5cb0Value((char*)GameState::GetInstance()) == 1)
+    if (GetField5cb0Value_0201079c((char*)GameState::GetInstance()) == 1)
         count = 0;
     shown = count;
     if (count == 4)

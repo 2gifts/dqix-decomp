@@ -9,7 +9,7 @@ extern "C" int func_ov023_021f6f10(void* self);
 int ScaleStatsIfType12_021f6f10(void* self);
 #endif
 extern "C" void* func_ov004_021551a8(void*);
-extern int TestBitInByteArray(int unused, unsigned char* arr, int index);
+extern int TestBitInByteArray_0206dfb0(int unused, unsigned char* arr, int index);
 extern "C" void* func_0205ec34(void);
 void TailCallOffset20_021fbdcc(void*, int);
 
@@ -29,7 +29,7 @@ ARM int CheckType16ThenTestBit_021552b8(void* a) {
         int bits = bits16;
         if (bits > 0) {
             unsigned char* base = (unsigned char*)func_0205ec34();
-            if (!TestBitInByteArray((int)base, base + 0x8c, bits + 0x76 + 0xc00)) {
+            if (!TestBitInByteArray_0206dfb0((int)base, base + 0x8c, bits + 0x76 + 0xc00)) {
                 val = -1;
             }
         }

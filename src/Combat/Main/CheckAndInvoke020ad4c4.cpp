@@ -10,7 +10,7 @@ enum { kListOffset = 0x36fc, kModeOffset = 0x27b4 };
 
 struct ListHead02046b60;
 extern int ListContainsId(struct ListHead02046b60* list, int id);
-extern int GetField5cb0Value(char* obj);
+extern int GetField5cb0Value_0201079c(char* obj);
 extern "C" int func_0201bd74(void* obj, int threshold, int zero);
 
 struct Obj020ad4c4 {
@@ -35,7 +35,7 @@ ARM int CheckAndInvoke020ad4c4(struct Obj020ad4c4* obj) {
         mode = 3;
         threshold = 2;
     } else if (obj->field0 == 0x1198 - 0x68) {
-        if (GetField5cb0Value((char*)battleStruct) >= 0x13) {
+        if (GetField5cb0Value_0201079c((char*)battleStruct) >= 0x13) {
             return 0;
         }
         mode = 5;

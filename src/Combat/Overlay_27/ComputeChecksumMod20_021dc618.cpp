@@ -1,12 +1,12 @@
 #include <globaldefs.h>
 
-ARM void CopyFrom027ffcf4(void* dst);
+ARM void CopyFrom027ffcf4_020c99ac(void* dst);
 
 // USA: func_ov027_021dc618  (semantic: ComputeChecksumMod20_021dc618)
 #pragma optimize_for_size off
 extern "C" ARM unsigned int func_ov027_021dc618() {
     unsigned char buf[8];
-    CopyFrom027ffcf4(buf);
+    CopyFrom027ffcf4_020c99ac(buf);
     unsigned char* p = buf;
     unsigned int sum;
     int i;

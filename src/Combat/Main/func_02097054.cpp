@@ -37,10 +37,10 @@ struct ForEachNode02097000Container;
 struct ForEachNode02097000Node;
 struct BinarySearch020971a8Container;
 struct BinarySearch020971a8Node;
-int ComputeAlignedBufferSize(ComputeAlignedBufferSizeHeader*);
+int ComputeAlignedBufferSize_02096fd8(ComputeAlignedBufferSizeHeader*);
 int ForEachNode02097000(ForEachNode02097000Container*, void (*)(ForEachNode02097000Container*, ForEachNode02097000Node*));
 BinarySearch020971a8Node* BinarySearch020971a8(BinarySearch020971a8Container*, int, int (*)(BinarySearch020971a8Node*));
-short GetShortAt0x4(unsigned char*);
+short GetShortAt0x4_02096f78(unsigned char*);
 extern "C" char* func_02096f80(BufferHeader02097054*, unsigned int, int);
 char* AllocateStringCopy020da150(SafeAllocator*, const char*);
 
@@ -52,14 +52,14 @@ extern "C" ARM void func_02097054(BufferCopy02097054* dst, SafeAllocator* alloca
     if (source != 0) {
         memcpy(&header, source, 8);
         header.nodes = source->nodes;
-        header.strings = (unsigned int*)((char*)source + (8 + ComputeAlignedBufferSize((ComputeAlignedBufferSizeHeader*)&header)));
+        header.strings = (unsigned int*)((char*)source + (8 + ComputeAlignedBufferSize_02096fd8((ComputeAlignedBufferSizeHeader*)&header)));
         if (header.ready == 0) {
             ForEachNode02097000((ForEachNode02097000Container*)&header, 0);
             header.ready = 1;
             source->ready = 1;
         }
     }
-    BufferNode02097054* found = (BufferNode02097054*)BinarySearch020971a8((BinarySearch020971a8Container*)&header, key, (int (*)(BinarySearch020971a8Node*))GetShortAt0x4);
+    BufferNode02097054* found = (BufferNode02097054*)BinarySearch020971a8((BinarySearch020971a8Container*)&header, key, (int (*)(BinarySearch020971a8Node*))GetShortAt0x4_02096f78);
     BufferNode02097054* copy = (BufferNode02097054*)allocator->Allocate(0x30);
     if (found == 0 || copy == 0) return;
     memcpy(copy, found, 0x30);

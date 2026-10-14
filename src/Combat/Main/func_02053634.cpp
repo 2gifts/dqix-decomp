@@ -5,9 +5,9 @@
 #include "World/Object3D.h"
 
 int GetGlobalField0x1c020421a0(void);
-unsigned char GetField0x397cValue(GameState* battleStruct);
-int GetSignedByte0x1c9(void* obj);
-int GetIndexedEntryField0x178(signed char* obj);
+unsigned char GetField0x397cValue_020100b0(GameState* battleStruct);
+int GetSignedByte0x1c9_02039874(void* obj);
+int GetIndexedEntryField0x178_02053604(signed char* obj);
 
 extern "C" void func_020531f0(void* obj);
 struct ObjectArchiveLoadInfo;
@@ -21,11 +21,11 @@ void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 
 void ForwardToTargetOrDefault0205eabc(void* obj, void* target, int arg);
 int SetTargetFieldAndForEach02064a9c(void* param0, void* param1);
-int GetFieldIfFlag4(char* obj);
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+int GetFieldIfFlag4_020100f8(char* obj);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 void EnqueueEventTag6_021cc2f0(int);
-void SetFlagsAt0x244(unsigned char* obj, unsigned char mask);
-void ClearFlagBits(unsigned char* obj, int mask);
+void SetFlagsAt0x244_020a28a0(unsigned char* obj, unsigned char mask);
+void ClearFlagBits_020a28b0(unsigned char* obj, int mask);
 
 struct Params02036804 {
     int flag;
@@ -64,7 +64,7 @@ extern "C" ARM void func_02053634(void* obj) {
     int hasEntries0 = ctx[OBJECT_OFFSET(0x17c)] > 0 ? 1 : 0;
     if (hasEntries0 != 0) {
         short cid0 = *(short*)(ctx + 4);
-        int activeCid0 = GetField0x397cValue(bs);
+        int activeCid0 = GetField0x397cValue_020100b0(bs);
         if (activeCid0 == cid0
             && ((unsigned char*)GetGlobalField0x1c020421a0())[GLOBAL_ACTIVE_OFFSET] != 0) {
             func_020531f0(ctx);
@@ -75,7 +75,7 @@ extern "C" ARM void func_02053634(void* obj) {
     GameObject* combatant = bs->GetPartyMemberByIndex(*(short*)(ctx + 4));
     int hasEntries = ctx[OBJECT_OFFSET(0x17c)] > 0 ? 1 : 0;
     if (hasEntries != 0) {
-        if (GetSignedByte0x1c9(combatant) > 0) {
+        if (GetSignedByte0x1c9_02039874(combatant) > 0) {
             func_020531f0(ctx);
             return;
         }
@@ -137,7 +137,7 @@ extern "C" ARM void func_02053634(void* obj) {
 
             struct Entry02053634* e = data_020e7c94;
             for (; e->id > 0; e++) {
-                if (e->id != GetIndexedEntryField0x178((signed char*)ctx)) continue;
+                if (e->id != GetIndexedEntryField0x178_02053604((signed char*)ctx)) continue;
                 void* arg2 = 0;
                 if (e->kind == 0x4e) {
                     arg2 = ctx + OBJECT_OFFSET(0x198);
@@ -188,7 +188,7 @@ extern "C" ARM void func_02053634(void* obj) {
                     return;
                 }
                 short cid = *(short*)(ctx + 4);
-                if (cid == GetField0x397cValue(bs)) {
+                if (cid == GetField0x397cValue_020100b0(bs)) {
                     void* p = func_0205ec34();
                     unsigned char req[0x34];
                     for (int i = 0; i < 4; i++) {
@@ -205,7 +205,7 @@ extern "C" ARM void func_02053634(void* obj) {
                 int mode = 0;
                 if (ctx[OBJECT_OFFSET(0x17c)] > 1) {
                     mode = 1;
-                    if (GetIndexedEntryField0x178((signed char*)ctx) == 0x19) {
+                    if (GetIndexedEntryField0x178_02053604((signed char*)ctx) == 0x19) {
                         ForwardToTargetOrDefault0205eabc((void*)&data_02108760, ctx + OBJECT_OFFSET(0x198), 0);
                     }
                 }
@@ -221,7 +221,7 @@ extern "C" ARM void func_02053634(void* obj) {
             }
         } else if (state == 2) {
             bs = GameState::GetInstance();
-            int target = GetFieldIfFlag4((char*)bs);
+            int target = GetFieldIfFlag4_020100f8((char*)bs);
             int flag = 0;
             if (ctx[OBJECT_OFFSET(0x17c)] > 1) {
                 if (((Object3D*)ctx)->HasAnimationStopped() != 0) {
@@ -229,8 +229,8 @@ extern "C" ARM void func_02053634(void* obj) {
                 }
             } else {
                 short cid = *(short*)(ctx + 4);
-                if (cid == GetField0x397cValue(bs)
-                    && TestFlag0SetAndFlag1Clear(&data_02114e30, 0xc03) != 0) {
+                if (cid == GetField0x397cValue_020100b0(bs)
+                    && TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0xc03) != 0) {
                     flag = 1;
                     EnqueueEventTag6_021cc2f0(*(short*)(ctx + 4));
                 } else {
@@ -238,11 +238,11 @@ extern "C" ARM void func_02053634(void* obj) {
                         ctx[OBJECT_OFFSET(0x184)] = *(unsigned char*)(ctx + OBJECT_OFFSET(0x184)) - 1;
                         flag = 1;
                     } else if (target != 0) {
-                        SetFlagsAt0x244((unsigned char*)target, 1);
+                        SetFlagsAt0x244_020a28a0((unsigned char*)target, 1);
                     }
                 }
                 if (flag != 0 && target != 0) {
-                    ClearFlagBits((unsigned char*)target, 1);
+                    ClearFlagBits_020a28b0((unsigned char*)target, 1);
                 }
             }
             if (flag == 0) {
@@ -267,7 +267,7 @@ extern "C" ARM void func_02053634(void* obj) {
             if (((Object3D*)ctx)->HasAnimationStopped() == 0) {
                 return;
             }
-            if (GetIndexedEntryField0x178((signed char*)ctx) == 0x19) {
+            if (GetIndexedEntryField0x178_02053604((signed char*)ctx) == 0x19) {
                 ForwardToTargetOrDefault0205eabc((void*)&data_02108760, ctx + OBJECT_OFFSET(0x198), 0);
             }
             ctx[OBJECT_OFFSET(0x17d)] = ctx[OBJECT_OFFSET(0x17d)] + 1;
@@ -277,7 +277,7 @@ extern "C" ARM void func_02053634(void* obj) {
                 return;
             }
             short cid = *(short*)(ctx + 4);
-            if (cid == GetField0x397cValue(bs)) {
+            if (cid == GetField0x397cValue_020100b0(bs)) {
                 void* p = func_0205ec34();
                 unsigned char req[0x34];
                 for (int i = 0; i < 4; i++) {

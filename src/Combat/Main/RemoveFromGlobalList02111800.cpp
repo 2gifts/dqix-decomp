@@ -6,6 +6,6 @@ void UnlinkNodeWithInterruptsDisabled(struct ListNode020ceeb4**, struct ListNode
 extern int data_02111800;
 
 // USA: func_020cef7c
-ARM void RemoveFromGlobalList02111800(void* node) {
+ARM void RemoveFromGlobalList02111800_020cef7c(void* node) {
     UnlinkNodeWithInterruptsDisabled((struct ListNode020ceeb4**)&data_02111800, (struct ListNode020ceeb4*)node);
 }

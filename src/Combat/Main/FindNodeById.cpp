@@ -7,7 +7,7 @@ struct ListNode {
 };
 
 // USA: func_0201e844
-ARM struct ListNode* FindNodeById(void* base, int index, int key) {
+ARM struct ListNode* FindNodeById_0201e844(void* base, int index, int key) {
     struct ListNode* node;
     if (key < 0) {
         return 0;

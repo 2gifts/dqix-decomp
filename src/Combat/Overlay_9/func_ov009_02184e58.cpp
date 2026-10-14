@@ -30,7 +30,7 @@ struct EntryList0204af14;
 struct Struct0200fb08;
 
 void ResetList0204af64(List0204af64* background);
-void SetWord0x18ClearByte0x1f(unsigned char* background, int value);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char* background, int value);
 extern "C" void func_0204b5b4(BackgroundGraphics* background, int screen);
 void DispatchViaTable0204b5e8(Obj0204b5e8* background, int a, int b);
 void AllocateAndClearBuffer0204b12c(AllocTarget0204b12c* background, SafeAllocator* allocator);
@@ -99,7 +99,7 @@ extern "C" ARM void func_ov009_02184e58(CharacterCreation* self)
         {
             BackgroundGraphics* background = backgrounds[i];
             ResetList0204af64((List0204af64*)background);
-            SetWord0x18ClearByte0x1f((unsigned char*)background, 0);
+            SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)background, 0);
             background->unk_1c_0_ = 0;
             background->unk_1c_4_ = data_ov009_0218a963[i];
             func_0204b5b4(background, data_ov009_0218a969[i]);
@@ -153,7 +153,7 @@ extern "C" ARM void func_ov009_02184e58(CharacterCreation* self)
     {
         BackgroundGraphics* background = backgrounds[i];
         ResetList0204af64((List0204af64*)background);
-        SetWord0x18ClearByte0x1f((unsigned char*)background, 0);
+        SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)background, 0);
         background->unk_1c_0_ = 1;
         background->unk_1c_4_ = data_ov009_0218a95f[i];
         func_0204b5b4(background, data_ov009_0218a961[i]);

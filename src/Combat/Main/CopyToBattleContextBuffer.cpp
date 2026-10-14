@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
-void* GetBattleContext(void);
-int GetBattleStateCode(void);
+void* GetBattleContext_020d41d8(void);
+int GetBattleStateCode_020d41e8(void);
 void InvalidateDataCacheRange(const void* addr, unsigned int size);
 extern "C" int func_020ca4b4(void*, void*, int);
 
@@ -11,9 +11,9 @@ struct BattleCtx020d4848 {
 };
 
 // USA: func_020d4848
-ARM int CopyToBattleContextBuffer(void* src) {
-    struct BattleCtx020d4848* ctx = (struct BattleCtx020d4848*)GetBattleContext();
-    int state = GetBattleStateCode();
+ARM int CopyToBattleContextBuffer_020d4848(void* src) {
+    struct BattleCtx020d4848* ctx = (struct BattleCtx020d4848*)GetBattleContext_020d41d8();
+    int state = GetBattleStateCode_020d41e8();
     if (state != 0) {
         return state;
     }

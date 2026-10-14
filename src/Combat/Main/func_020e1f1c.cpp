@@ -40,7 +40,7 @@ int GetHalfProductField8(HasDims020e1288*);
 extern "C" void func_020e2018(void* owner);
 void ClearStruct02020520(Struct02020520* s);
 struct S_b20c;
-void ClearTwoWordsAndByte(S_b20c*);
+void ClearTwoWordsAndByte_0205b20c(S_b20c*);
 void SetField0_0205b220(void* obj, int value);
 void SetFieldsAt0x4And0x8_0205b228(void* obj, int value, unsigned char flag);
 
@@ -65,7 +65,7 @@ extern "C" ARM void* func_020e1f1c(Owner020e1f1c* owner) {
             d->e = s->h;
         }
         void* obj = owner->panel->obj;
-        ClearTwoWordsAndByte((S_b20c*)obj);
+        ClearTwoWordsAndByte_0205b20c((S_b20c*)obj);
         SetField0_0205b220(obj, (int)((unsigned int)owner->buffer + owner->panel->offset));
         SetFieldsAt0x4And0x8_0205b228(obj, (int)owner->panel->layouts, count);
     }

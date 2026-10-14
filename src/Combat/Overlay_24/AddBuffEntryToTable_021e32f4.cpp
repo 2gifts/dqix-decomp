@@ -4,7 +4,7 @@
 
 struct FlagObj_021da9b0;
 int IsFlagBit8Set_021da9b0(struct FlagObj_021da9b0* obj);
-void ClearFlag0x14Bit0x8AndBytes(void* obj);
+void ClearFlag0x14Bit0x8AndBytes_020882dc(void* obj);
 extern "C" void func_ov000_02159eac(void* a0, void* buf, int a2);
 struct Obj_021e8ca0;
 void* AddEntryToListAndIncCount_021e8ca0(struct Obj_021e8ca0* obj, int id);
@@ -21,7 +21,7 @@ ARM unsigned long long AddBuffEntryToTable_021e32f4(struct Obj_021e32f4* obj, in
 	local.lo = 0;
 	local.hi = 0;
 	if (IsFlagBit8Set_021da9b0((struct FlagObj_021da9b0*)c)) {
-		ClearFlag0x14Bit0x8AndBytes((void*)c->currentStats_);
+		ClearFlag0x14Bit0x8AndBytes_020882dc((void*)c->currentStats_);
 		func_ov000_02159eac(obj->field0x10, &local, 0x1a);
 		((struct Bit3b_021e32f4*)((char*)c->currentStats_ + 0x3b))->bit0 = 1;
 		void* entry = AddEntryToListAndIncCount_021e8ca0((struct Obj_021e8ca0*)obj, 0x1f9);

@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 extern char data_021015a0;
-void SetField0x48UnlessState9Or10(int);
+void SetField0x48UnlessState9Or10_0202c848(int);
 extern "C" int func_0202d788(unsigned short);
 
 struct S0202d840 {
@@ -15,7 +15,7 @@ struct S0202d840 {
 // USA: func_0202d840  (semantic: UpdateSlotBitmaskAndDispatchNext_0202d840)
 extern "C" ARM void func_0202d840(struct S0202d840* obj) {
     if (obj->f2 != 0) {
-        SetField0x48UnlessState9Or10(obj->f2);
+        SetField0x48UnlessState9Or10_0202c848(obj->f2);
         *(int*)(&data_021015a0 + 0x10) = 9;
         return;
     }

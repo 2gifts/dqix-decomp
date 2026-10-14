@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 struct Entry0207d9bc { unsigned short id; unsigned short pad; unsigned int a; unsigned int b; };
-void* GetData02108ea8(void);
+void* GetData02108ea8_0207d78c(void);
 int CheckEntryBytes0207d978(Entry0207d9bc* arr, unsigned short key);
 Entry0207d9bc* FindEntryByHalfword(Entry0207d9bc* arr, unsigned short key);
 
@@ -10,7 +10,7 @@ ARM int CheckByteAtIndex_021c5bf8(int index, int keyIn) {
 	if (index >= 4)
 		goto zero;
 	{
-	Entry0207d9bc* arr = (Entry0207d9bc*)GetData02108ea8();
+	Entry0207d9bc* arr = (Entry0207d9bc*)GetData02108ea8_0207d78c();
 	if (!CheckEntryBytes0207d978(arr, (unsigned short)keyIn))
 		goto zero;
 	{

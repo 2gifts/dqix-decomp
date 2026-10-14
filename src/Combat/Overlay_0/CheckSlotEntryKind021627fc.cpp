@@ -16,7 +16,7 @@ ARM int CheckSlotEntryKind021627fc(void* obj) {
     if (IsMatchingID02163690(id)) {
         id = 1;
     }
-    ActionDataTables* table = GetData02108e10();
+    ActionDataTables* table = GetData02108e10_020797dc();
     void* entry = SearchBothTables02079e2c((char*)table, (short)id);
     if (entry == 0) {
         return 0;

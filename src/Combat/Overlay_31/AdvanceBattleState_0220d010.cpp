@@ -2,7 +2,7 @@
 #include "System/Interrupts.h"
 #include "System/Memory.h"
 
-int IssueBattleCommandSlot29(int arg, int a, int b, int c, unsigned short d);
+int IssueBattleCommandSlot29_020d6ad4(int arg, int a, int b, int c, unsigned short d);
 extern "C" void func_ov031_0220da1c(int);
 extern "C" int func_ov031_0220d570(int);
 extern "C" void func_ov031_0220dc40(void);
@@ -58,7 +58,7 @@ extern "C" ARM int func_ov031_0220d010(void* a0, unsigned char* a1, int a2) {
 		return 1;
 	}
 
-	int r = IssueBattleCommandSlot29((int)func_ov031_0220dc40, 0xffff, 0x50, 0xffff, 0xffff);
+	int r = IssueBattleCommandSlot29_020d6ad4((int)func_ov031_0220dc40, 0xffff, 0x50, 0xffff, 0xffff);
 	switch (r) {
 	case 2:
 		func_ov031_0220da1c(8);

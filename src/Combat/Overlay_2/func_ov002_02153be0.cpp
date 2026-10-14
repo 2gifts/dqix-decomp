@@ -11,7 +11,7 @@ extern "C" ARM int func_ov002_02153be0(void* obj, unsigned char* req, int combat
     int result = 0;
     unsigned int kind = *(unsigned int*)(req + 0x18);
     if (((kind << 14) >> 30) == 1) {
-        GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), combatantId);
+        GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), combatantId);
         if (combatant == 0) {
             return 0;
         }

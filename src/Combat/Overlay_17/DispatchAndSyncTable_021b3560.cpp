@@ -3,7 +3,7 @@
 #include "GameState/GameState.h"
 
 struct List0202fec8;
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 struct Obj02083508;
 void InitIndexedElements02083508(struct Obj02083508* o);
 int InitAndDispatch020deef4(int a0, int a1, int a2, short* a3, short a4);
@@ -32,12 +32,12 @@ extern "C" ARM int func_ov017_021b3560(struct Obj021b3560* self) {
         return 0;
     }
 
-    GameObject* combatant = GetCombatantWithFlag0x100(bs, self->field8);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(bs, self->field8);
     if (!combatant) {
         return 0;
     }
 
-    void* obj150 = (void*)GetFieldAt0x150((unsigned char*)combatant);
+    void* obj150 = (void*)GetFieldAt0x150_02053c6c((unsigned char*)combatant);
     if (!obj150) {
         return 0;
     }

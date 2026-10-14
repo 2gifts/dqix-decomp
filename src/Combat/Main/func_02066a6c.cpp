@@ -19,11 +19,11 @@ struct Display02066a6c {
     char pad19dd[3]; Holder02042c24 holder;
 };
 void LoadStateBytePair0206b804(char*, int*, int*);
-void GetField440XY(Field440XYObj*, short*, short*);
+void GetField440XY_02066cc0(Field440XYObj*, short*, short*);
 void SetSubstructXY02042c24(Holder02042c24*, int, int);
-void EmitScaledField0x440(void*, int, int);
+void EmitScaledField0x440_0202f404(void*, int, int);
 int GetWordFromTable02042648(int);
-void SetIntIntShortAt0xc(SetIntIntShortAt0xcStruct*, int, int, short);
+void SetIntIntShortAt0xc_02066ce0(SetIntIntShortAt0xcStruct*, int, int, short);
 extern "C" void func_020417b0(SetIntIntShortAt0xcStruct*, int, int, int);
 extern "C" void func_020654b8(Display02066a6c*, void*, SetIntIntShortAt0xcStruct*, int, int, int);
 
@@ -46,7 +46,7 @@ extern "C" ARM void func_02066a6c(Display02066a6c* obj, int absolute) {
         int offsetX, offsetY;
         short x, y;
         LoadStateBytePair0206b804((char*)obj, &offsetX, &offsetY);
-        GetField440XY((Field440XYObj*)holder, &x, &y);
+        GetField440XY_02066cc0((Field440XYObj*)holder, &x, &y);
         y -= 19;
         holder->transform = &obj->active;
         if (holder->transform) {
@@ -57,7 +57,7 @@ extern "C" ARM void func_02066a6c(Display02066a6c* obj, int absolute) {
         if (absolute) SetSubstructXY02042c24(holder, x, y);
         else {
             SetSubstructXY02042c24(holder, (short)(x + offsetX), (short)(y + offsetY));
-            EmitScaledField0x440(holder, 1, 0);
+            EmitScaledField0x440_0202f404(holder, 1, 0);
         }
         short remainder = 8 - (obj->width & 7);
         x += (remainder + 18) >> 1;
@@ -73,7 +73,7 @@ extern "C" ARM void func_02066a6c(Display02066a6c* obj, int absolute) {
             glyph = &obj->glyphs[code];
             if (absolute) func_020654b8(obj, obj->context, glyph, x, y, 15);
             else {
-                SetIntIntShortAt0xc(glyph, x, y, 0);
+                SetIntIntShortAt0xc_02066ce0(glyph, x, y, 0);
                 func_020417b0(glyph, obj->font, 0, 31);
             }
             if (glyph->metrics) x += glyph->metrics->width + 1;

@@ -15,8 +15,8 @@ enum { kOffset54 = 0x54, kOffset6c = 0x6c, kOffsetf4 = 0xf4, kOffset10c = 0x10c,
 extern "C" void func_0200ee94(void* obj, int a, int b, void* cb1, void* cb2);
 extern "C" void* _ZN7Model3DC1Ev(void* obj);
 extern "C" void* _ZN7Model3DD1Ev(void* obj);
-void* NotifyThenResetNameTable(void* obj);
-void* ResetNameTableThenNotify(void* obj);
+void* NotifyThenResetNameTable_0201c108(void* obj);
+void* ResetNameTableThenNotify_0201c0e8(void* obj);
 
 extern "C" void func_020982b4(void* obj);
 
@@ -37,7 +37,7 @@ ARM void* InitBigStruct0201c014(void* obj) {
     *(int*)((char*)obj + kOffsetf4) = 0;
     ((LightingInfo*)((char*)obj + kOffset10c))->Initialize();
     func_0200ee94((char*)obj + kOffset498, 2, 0xac, (void*)_ZN7Model3DC1Ev, (void*)_ZN7Model3DD1Ev);
-    func_0200ee94((char*)obj + kOffset600, 4, 0x88, (void*)ResetNameTableThenNotify, (void*)NotifyThenResetNameTable);
+    func_0200ee94((char*)obj + kOffset600, 4, 0x88, (void*)ResetNameTableThenNotify_0201c0e8, (void*)NotifyThenResetNameTable_0201c108);
     func_020982b4((char*)obj + kOffset840);
     ActiveGrottoClass* grotto = (ActiveGrottoClass*)((char*)obj + kGrottoLow + kGrottoHigh);
     ((FloorMap*)((char*)grotto + kOffset1c8))->Clear();

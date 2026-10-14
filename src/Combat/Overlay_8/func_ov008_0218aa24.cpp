@@ -92,22 +92,22 @@ extern "C" void func_02046380(void* w);
 struct Obj02046574;
 void SetIndexedName02046574(Obj02046574*, int, char*);
 struct StoreStruct;
-void StoreInArray0x8b0(StoreStruct*, int, int);
-char* FindEntryByKey(TableA68*, int);
+void StoreInArray0x8b0_020465c0(StoreStruct*, int, int);
+char* FindEntryByKey_02072a68(TableA68*, int);
 extern "C" void func_02046608(void* w, int a, char* str, char* buf, int b, int c, int d);
 extern "C" int func_020420e8(const char* text, int large);
 void FindAndLinkMatchingEntry0205de24(Struct0205de24*, unsigned char, unsigned char);
 extern "C" void* memset(void* p, int v, unsigned int n);
-Ent0218aa24* GetFieldAt0x150(unsigned char*);
+Ent0218aa24* GetFieldAt0x150_02053c6c(unsigned char*);
 extern "C" void func_ov008_0218b240(Self0218aa24* self);
 extern "C" void func_02042764(const void* codes, char* text, int value);
 void* FindElementByC40205d81c(Struct_0205d81c*, int);
-int AppendXYTag(char* dst, int x, int y);
+int AppendXYTag_02041a90(char* dst, int x, int y);
 void AppendString02042058(char* text, const char* append);
 void AppendLineXTag02041cf4(char* dst, int color, int a, int b, int c);
-int AppendPaletteTag(char* dst, int palette);
-void SetByteAtIndex(unsigned char*, int, unsigned char);
-void SetByteInRange(unsigned char*, int, unsigned char);
+int AppendPaletteTag_02041e70(char* dst, int palette);
+void SetByteAtIndex_020465d8(unsigned char*, int, unsigned char);
+void SetByteInRange_020465f0(unsigned char*, int, unsigned char);
 extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g, int h);
 
 // USA: func_ov008_0218aa24
@@ -121,8 +121,8 @@ extern "C" ARM void func_ov008_0218aa24(Self0218aa24* self) {
     __clear(buf40, 0x40);
     func_02046380(win);
     SetIndexedName02046574((Obj02046574*)win, 0, data_ov008_0218b590);
-    StoreInArray0x8b0((StoreStruct*)win, 2, 0x21);
-    func_02046608(win, 10, FindEntryByKey((TableA68*)self->texts, 0x1f8), buf40, 0x100, 0, 0);
+    StoreInArray0x8b0_020465c0((StoreStruct*)win, 2, 0x21);
+    func_02046608(win, 10, FindEntryByKey_02072a68((TableA68*)self->texts, 0x1f8), buf40, 0x100, 0, 0);
     int width = (func_020420e8(buf40, 0) + 0x17) & ~7;
     if (width < 0x58) width = 0x58;
     FindAndLinkMatchingEntry0205de24((Struct0205de24*)self->list, 0, 2);
@@ -152,7 +152,7 @@ extern "C" ARM void func_ov008_0218aa24(Self0218aa24* self) {
         if (m == 0) {
             fail = 1;
         } else {
-            ent = GetFieldAt0x150((unsigned char*)m);
+            ent = GetFieldAt0x150_02053c6c((unsigned char*)m);
             if (ent == 0) fail = 1;
         }
         if (fail) {
@@ -177,47 +177,47 @@ extern "C" ARM void func_ov008_0218aa24(Self0218aa24* self) {
     }
     func_02042764(codes, name, 1);
     FindElementByC40205d81c((Struct_0205d81c*)self->list, 0);
-    AppendXYTag(self->text, (width - func_020420e8(name, 0)) / 2, 3);
+    AppendXYTag_02041a90(self->text, (width - func_020420e8(name, 0)) / 2, 3);
     AppendString02042058(self->text, name);
     AppendLineXTag02041cf4(self->text, 0x7fff, 2, width - 2, 0xf);
 
     char* str;
     if (female) {
-        str = FindEntryByKey((TableA68*)self->texts, (short)(vocation + 0x46));
+        str = FindEntryByKey_02072a68((TableA68*)self->texts, (short)(vocation + 0x46));
     } else {
-        str = FindEntryByKey((TableA68*)self->texts, (short)vocation);
+        str = FindEntryByKey_02072a68((TableA68*)self->texts, (short)vocation);
     }
     int x = (width - func_020420e8(str, 0)) / 2;
     if (rank != 0) x -= 5;
-    AppendXYTag(self->text, x, 0x12);
+    AppendXYTag_02041a90(self->text, x, 0x12);
     AppendString02042058(self->text, str);
     if (rank != 0) {
         if (rank >= 10) {
             rank = 10;
-            AppendPaletteTag(self->text, 0xd);
+            AppendPaletteTag_02041e70(self->text, 0xd);
         } else {
-            AppendPaletteTag(self->text, 5);
+            AppendPaletteTag_02041e70(self->text, 5);
         }
         int x2 = x + func_020420e8(str, 0);
-        str = FindEntryByKey((TableA68*)self->texts, (short)(rank + 0x12c));
-        AppendXYTag(self->text, x2 + 2, 0x12);
+        str = FindEntryByKey_02072a68((TableA68*)self->texts, (short)(rank + 0x12c));
+        AppendXYTag_02041a90(self->text, x2 + 2, 0x12);
         AppendString02042058(self->text, str);
-        AppendPaletteTag(self->text, 0xf);
+        AppendPaletteTag_02041e70(self->text, 0xf);
     }
 
     func_02046380(win);
-    StoreInArray0x8b0((StoreStruct*)win, 0, scroll);
-    SetByteAtIndex((unsigned char*)win, 0, 0);
-    SetByteInRange((unsigned char*)win, 0, 3);
-    func_02046608(win, 10, FindEntryByKey((TableA68*)self->texts, 0x1f6), buf80, 0x100, 0, 0);
-    AppendXYTag(self->text, (width >> 1) - 13, 0x1e);
+    StoreInArray0x8b0_020465c0((StoreStruct*)win, 0, scroll);
+    SetByteAtIndex_020465d8((unsigned char*)win, 0, 0);
+    SetByteInRange_020465f0((unsigned char*)win, 0, 3);
+    func_02046608(win, 10, FindEntryByKey_02072a68((TableA68*)self->texts, 0x1f6), buf80, 0x100, 0, 0);
+    AppendXYTag_02041a90(self->text, (width >> 1) - 13, 0x1e);
     AppendString02042058(self->text, buf80);
     AppendLineXTag02041cf4(self->text, 0x7fff, 2, width - 2, 0x28);
     memset(buf80, 0, 0x80);
-    SetIndexedName02046574((Obj02046574*)win, 0, FindEntryByKey((TableA68*)self->texts, (short)(self->e1c_title + 0x1f9)));
-    StoreInArray0x8b0((StoreStruct*)win, 2, self->e1c_scroll);
-    func_02046608(win, 10, FindEntryByKey((TableA68*)self->texts, 0x1f8), buf80, 0x100, 0, 0);
-    AppendXYTag(self->text, 12, 0x2a);
+    SetIndexedName02046574((Obj02046574*)win, 0, FindEntryByKey_02072a68((TableA68*)self->texts, (short)(self->e1c_title + 0x1f9)));
+    StoreInArray0x8b0_020465c0((StoreStruct*)win, 2, self->e1c_scroll);
+    func_02046608(win, 10, FindEntryByKey_02072a68((TableA68*)self->texts, 0x1f8), buf80, 0x100, 0, 0);
+    AppendXYTag_02041a90(self->text, 12, 0x2a);
     AppendString02042058(self->text, buf80);
     func_0205d304(self->list, self->text, 0, 0, 0, 1, 0, 0);
     self->link->level115 = (signed char)level;

@@ -67,7 +67,7 @@ extern "C" void func_02046c78(MessageSystem0219050c* system, unsigned short* lin
 extern "C" void func_02045f3c(MessageSystem0219050c* system, unsigned short* line, int x, int y, int color, int a, int b, int c, int d, int e);
 #endif
 void* GetNodeAtIndex(IndexList_0202a9ac* list, int index);
-void* GetSubstructAt0x4(void* item);
+void* GetSubstructAt0x4_02029560(void* item);
 extern "C" AnimationRecord0219050c* func_ov015_0218f39c(ViewObject* self, void* name);
 float GetRatio0218f3c4(Obj0218f3c4* obj);
 float GetRatio0218f408(Obj0218f408* obj);
@@ -142,7 +142,7 @@ extern "C" ARM void func_ov015_0219050c(CharacterViewer* self)
         void* item = GetNodeAtIndex((IndexList_0202a9ac*)&self->menuList_, self->current_->motion_);
         if (item == NULL)
             return;
-        AnimationRecord0219050c* record = func_ov015_0218f39c(self->current_, GetSubstructAt0x4(item));
+        AnimationRecord0219050c* record = func_ov015_0218f39c(self->current_, GetSubstructAt0x4_02029560(item));
         if (record == NULL)
             return;
         sprintf(text, data_ov015_02194273, record->name);

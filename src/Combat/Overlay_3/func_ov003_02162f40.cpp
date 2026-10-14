@@ -57,7 +57,7 @@ struct Scene {
 };
 
 static inline BattleInfo *GetBattleInfo() {
-    return (BattleInfo *) GetPtrField0x2a04(GameState::GetInstance());
+    return (BattleInfo *) GetPtrField0x2a04_02010828(GameState::GetInstance());
 }
 
 struct SceneView {

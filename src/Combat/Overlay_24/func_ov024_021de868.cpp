@@ -4,8 +4,8 @@
 #include "GameState/GameState.h"
 
 struct S_10088;
-int IsFlag10088Set(struct S_10088* obj);
-void ResetFields14And18KeepFlag0x4(unsigned char* obj, int val);
+int IsFlag10088Set_02010088(struct S_10088* obj);
+void ResetFields14And18KeepFlag0x4_0208902c(unsigned char* obj, int val);
 extern "C" void func_ov000_02159eac(void* a0, void* buf, int a2);
 extern "C" float func_ov024_021db358(GameObject* obj);
 short ApplyHPDelta0215a16c(void* unused, int id, int delta, short* outApplied);
@@ -31,14 +31,14 @@ extern "C" ARM void* func_ov024_021de868(struct Obj_021de868* obj, int unused, i
 	local.lo = 0;
 	local.hi = 0;
 	int msg;
-	if (IsFlag10088Set((struct S_10088*)c)) {
-		ResetFields14And18KeepFlag0x4((unsigned char*)c->currentStats_, c->currentStats_->primaryStats.maxHP);
+	if (IsFlag10088Set_02010088((struct S_10088*)c)) {
+		ResetFields14And18KeepFlag0x4_0208902c((unsigned char*)c->currentStats_, c->currentStats_->primaryStats.maxHP);
 		func_ov000_02159eac(obj->field0x10, &local, 3);
 		((struct StatsFlags_021de868*)c->currentStats_)->bit0 = 1;
 		msg = 0x20;
 		int inRange = (id >= 0 && id <= 3);
 		if (inRange) {
-			GameObject* member = GetCombatantWithFlag0x100(GameState::GetInstance(), id);
+			GameObject* member = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), id);
 			if (member) {
 				((struct StatsFlags_021de868*)member->currentStats_)->byte0x3a = 1;
 			}

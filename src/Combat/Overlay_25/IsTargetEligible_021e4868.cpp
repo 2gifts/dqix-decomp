@@ -39,7 +39,7 @@ extern "C" ARM int func_ov025_021e4868(struct Param021e4868* p, int b, int unuse
     }
     GameState* battle = GameState::GetInstance();
     if (p->field8 == 0x19) {
-        void* val = GetField0x3b0Value(battle);
+        void* val = GetField0x3b0Value_020100bc(battle);
         if (GetFlags((int)val) & 0x10) {
             obj = GetField0x21c((struct S0204a438*)val);
         } else {

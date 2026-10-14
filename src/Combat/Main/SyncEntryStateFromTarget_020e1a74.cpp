@@ -6,7 +6,7 @@ ARM void SetEntryEnabled020e2cc4(struct Entry020e2cc4*, int);
 struct Desc020e13dc;
 ARM void Dispatch020e13dc(struct Desc020e13dc*);
 
-ARM void SetByteAt0x1(unsigned char*, unsigned char);
+ARM void SetByteAt0x1_020e2d4c(unsigned char*, unsigned char);
 
 struct Rect020e2d2c;
 ARM void SetRectFromPosAndSize(struct Rect020e2d2c*, int, int, int, int);
@@ -45,7 +45,7 @@ extern "C" ARM void func_020e1a74(struct Self020e1a74* self) {
         self->target->b3f &= ~2;
     }
     if (self->target->bit0) {
-        SetByteAt0x1((unsigned char*)((char*)self + 0x28), self->target->b3e);
+        SetByteAt0x1_020e2d4c((unsigned char*)((char*)self + 0x28), self->target->b3e);
         int a = self->target->b38 + 2;
         int b = self->target->b39 + 2;
         int c = self->target->b3a - 4;

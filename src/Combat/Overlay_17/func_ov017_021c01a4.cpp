@@ -5,14 +5,14 @@
 
 struct Obj020397cc;
 void CancelPendingAction020397cc(struct Obj020397cc* obj, int arg1);
-unsigned char* GetFieldIfFlag4(char* obj);
-void SetFlagsAt0x244(unsigned char* obj, unsigned char mask);
-void ClearFlagBits(unsigned char* obj, int mask);
-void SetByteField0x253(void* obj);
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+unsigned char* GetFieldIfFlag4_020100f8(char* obj);
+void SetFlagsAt0x244_020a28a0(unsigned char* obj, unsigned char mask);
+void ClearFlagBits_020a28b0(unsigned char* obj, int mask);
+void SetByteField0x253_020397c0(void* obj);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 struct Obj02092aa4;
 void InitObj02092aa4(Obj02092aa4*, int);
-void CreateTypeAFromAllocator(SafeAllocator* self, SafeAllocator* src);
+void CreateTypeAFromAllocator_02092a74(SafeAllocator* self, SafeAllocator* src);
 extern "C" int func_020a0cc4(int id);
 extern "C" void func_020a0c0c();
 extern "C" int func_02092bcc(struct Obj02092aa4* obj, int delta);
@@ -37,12 +37,12 @@ extern "C" ARM void func_ov017_021c01a4(struct Obj021c01a4* self) {
     GameState* gs = GameState::GetInstance();
     GameObject* obj = gs->GetUnknownGameObject();
     CancelPendingAction020397cc((struct Obj020397cc*)obj, 1);
-    unsigned char* flags = GetFieldIfFlag4((char*)gs);
-    SetFlagsAt0x244(flags, 1);
+    unsigned char* flags = GetFieldIfFlag4_020100f8((char*)gs);
+    SetFlagsAt0x244_020a28a0(flags, 1);
 
     if (self->state == 0) {
         func_020a0cc4(0xc3c);
-        void* buf = AllocateAligned4(&data_02114e20, 0xc3c);
+        void* buf = AllocateAligned4_02012d88(&data_02114e20, 0xc3c);
         if (buf == NULL) {
             func_020a0c0c();
             self->done = 1;
@@ -57,7 +57,7 @@ extern "C" ARM void func_ov017_021c01a4(struct Obj021c01a4* self) {
             return;
         }
         InitObj02092aa4(data_ov017_021d8474, self->b20);
-        CreateTypeAFromAllocator((SafeAllocator*)data_ov017_021d8474, &self->alloc);
+        CreateTypeAFromAllocator_02092a74((SafeAllocator*)data_ov017_021d8474, &self->alloc);
         self->state++;
     } else if (self->state == 1) {
         if (func_02092bcc(data_ov017_021d8474, GameState::GetInstance()->GetTickCount())) {
@@ -68,8 +68,8 @@ extern "C" ARM void func_ov017_021c01a4(struct Obj021c01a4* self) {
         self->state++;
     } else if (self->state == 3) {
         func_ov017_021c0160(self);
-        ClearFlagBits(flags, 1);
-        SetByteField0x253(obj);
+        ClearFlagBits_020a28b0(flags, 1);
+        SetByteField0x253_020397c0(obj);
         self->state++;
         self->done = 1;
         func_020a0c0c();

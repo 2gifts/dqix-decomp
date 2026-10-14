@@ -6,7 +6,7 @@ struct State020c0278 { char unk0[8]; int field8; int fieldC; };
 ARM void AdvanceTweenStep020c0260(struct Tween020c0260* t);
 ARM int CheckField8GeFieldC(struct State020c0278* state);
 ARM int EvaluateTween020c022c(struct Tween020c0260* t);
-int EnqueueEvent0x14(int a, int b, int c);
+int EnqueueEvent0x14_020d1ff0(int a, int b, int c);
 
 extern "C" void func_020bcf3c(void);
 
@@ -33,6 +33,6 @@ ARM void UpdateTweenAndNotify020bceb4(void) {
     if (v == *(int*)(base + 0x50)) {
         return;
     }
-    EnqueueEvent0x14(*(int*)(base + 0x24), v, 0);
+    EnqueueEvent0x14_020d1ff0(*(int*)(base + 0x24), v, 0);
     *(int*)(base + 0x50) = v;
 }

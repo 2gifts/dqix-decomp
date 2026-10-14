@@ -6,11 +6,11 @@ enum { ParamAOffset = 0x2785, ParamBOffset = 0x2786, ParamCOffset = 0x2788 };
 enum { ParamAOffset = 0x2745, ParamBOffset = 0x2746, ParamCOffset = 0x2748 };
 #endif
 
-ARM void SetOrClearBit(unsigned char* obj, int bit, int set);
+ARM void SetOrClearBit_0201bf98(unsigned char* obj, int bit, int set);
 
 // USA: func_0201bf38
 ARM void StoreBattleParams0201bf38(unsigned char* obj, int set, int a, int b, unsigned short c) {
-    SetOrClearBit(obj, 0, set);
+    SetOrClearBit_0201bf98(obj, 0, set);
     obj[ParamAOffset] = a;
     obj[ParamBOffset] = b;
     *(unsigned short*)(obj + ParamCOffset) = c;

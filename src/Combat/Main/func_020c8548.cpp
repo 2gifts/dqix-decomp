@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include <System/DTCM.h>
 
-unsigned int SetData020f2284();
+unsigned int SetData020f2284_020c7dcc();
 
 extern int data_0211155c;
 
@@ -16,7 +16,7 @@ extern "C" ARM unsigned int func_020c8548(unsigned int mode) {
     case 2: {
         int v = *(int*)((char*)&data_0211155c + 4);
         if (v == 0) goto ret0;
-        v = SetData020f2284();
+        v = SetData020f2284_020c7dcc();
         if ((v & 3) != 1) goto ret270;
     ret0:
         return 0;

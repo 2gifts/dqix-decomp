@@ -16,7 +16,7 @@
 
 #include "std_library_functions.h"
 
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 extern "C" void func_ov000_02180404(void* obj);
 extern "C" void func_ov000_02174b14(void* obj);
 extern "C" void func_ov000_0217a8f4(void* obj);
@@ -35,7 +35,7 @@ extern unsigned char data_02114e54;
 
 // USA: func_ov000_0217e46c  (semantic: InitCombatEncounterState_0217e46c)
 extern "C" ARM void func_ov000_0217e46c(char* obj) {
-    if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x802) == 0) {
+    if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x802) == 0) {
         if (*(&data_02114e54 + 0x55) == 0) {
             return;
         }

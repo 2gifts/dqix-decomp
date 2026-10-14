@@ -116,10 +116,10 @@ struct Struct020dfc40;
 struct Manager0207f7f0;
 struct Node0207f7f0;
 
-int* GetWord0x0(int*);
-void SetBitsInField4(unsigned int*, unsigned int);
-void SetFogState(int, unsigned int, unsigned int, unsigned short);
-void Set3DClearColor(int, int, int, int, int);
+int* GetWord0x0_0200fb8c(int*);
+void SetBitsInField4_0203b4d8(unsigned int*, unsigned int);
+void SetFogState_020c54a4(int, unsigned int, unsigned int, unsigned short);
+void Set3DClearColor_020c5588(int, int, int, int, int);
 int GetField4Low12(Field4Low12_02097420*);
 MonsterListEntry* GetBufferField8(BufferField8_02097418*);
 void CopyTextAndUppercaseIfFlagged0206819c(const char*, char*, int);
@@ -128,7 +128,7 @@ void SetSublistEntryField14LowBits_02080798(void*, int, int);
 int CountActiveEntries(ActiveEntry02046900*);
 void* FindRecordByIndex(Rec020467f0*, int, void**, int*);
 void ResetStruct020dfc40(Struct020dfc40*);
-void CopyOutBattleRegion0x75f0(void*);
+void CopyOutBattleRegion0x75f0_020abf38(void*);
 void InitNodeChain0207f7f0(Manager0207f7f0*, Node0207f7f0*, int);
 
 extern "C" {
@@ -152,14 +152,14 @@ extern const char data_ov014_02189784[];
 // USA: func_ov014_02187568
 extern "C" ARM void func_ov014_02187568(MonsterListScreen* self)
 {
-    int* resources = GetWord0x0((int*)GameState::GetInstance());
+    int* resources = GetWord0x0_0200fb8c((int*)GameState::GetInstance());
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     if (self->listStep_ == 0)
     {
-        SetBitsInField4((unsigned int*)func_ov017_0218b5b0(), 0x609fe);
-        SetFogState(0, 0, 0, 0);
-        Set3DClearColor(0, 0, 0x7fff, 0, 0);
-        FontBankLoader* music = GetGlobal02109400();
+        SetBitsInField4_0203b4d8((unsigned int*)func_ov017_0218b5b0(), 0x609fe);
+        SetFogState_020c54a4(0, 0, 0, 0);
+        Set3DClearColor_020c5588(0, 0, 0x7fff, 0, 0);
+        FontBankLoader* music = GetGlobal02109400_02094a00();
         func_02094ab0(music);
         BlankFunction02094b40(music);
         BlankFunction02094b30(music, 0x6a, 0);
@@ -167,7 +167,7 @@ extern "C" ARM void func_ov014_02187568(MonsterListScreen* self)
     }
     else if (self->listStep_ == 1)
     {
-        if (AlwaysTrue02094b4c(GetGlobal02109400()))
+        if (AlwaysTrue02094b4c(GetGlobal02109400_02094a00()))
             self->listStep_++;
     }
     else if (self->listStep_ == 2)
@@ -291,7 +291,7 @@ extern "C" ARM void func_ov014_02187568(MonsterListScreen* self)
     else if (self->listStep_ == 13)
     {
         func_020abf60(&self->list_);
-        CopyOutBattleRegion0x75f0(self->records_);
+        CopyOutBattleRegion0x75f0_020abf38(self->records_);
         func_ov014_02187488(self);
         BG0CNTSUB = (BG0CNTSUB & ~3);
         BG1CNTSUB = (BG1CNTSUB & ~3) | 1;

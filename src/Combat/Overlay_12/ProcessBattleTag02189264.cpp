@@ -15,7 +15,7 @@ extern "C" void func_ov023_021e6594(void* self);
 void* GetDataPtr02114e04_020d6c00(void);
 struct FlagWord020466f4;
 void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int mask);
-void ClearBitsInWord(unsigned int* obj, unsigned int mask);
+void ClearBitsInWord_0203b4b0(unsigned int* obj, unsigned int mask);
 
 // USA: func_ov012_02189264  (semantic: ProcessBattleTag02189264)
 extern "C" ARM void func_ov012_02189264(char* self) {
@@ -34,7 +34,7 @@ extern "C" ARM void func_ov012_02189264(char* self) {
     func_ov023_021e7340(self + kCardOffset);
     func_ov023_021e6594(self);
     ClearFlags020466f4((struct FlagWord020466f4*)GetDataPtr02114e04_020d6c00(), 0xf);
-    ClearBitsInWord((unsigned int*)handle, 0x10);
+    ClearBitsInWord_0203b4b0((unsigned int*)handle, 0x10);
     *(int*)(self + kFinishedOffset) = 1;
     *(unsigned char*)(self + kStepOffset) = 0;
 }

@@ -2,7 +2,7 @@
 #include "World/ZoneFeatures.h"
 
 // USA: func_0201e6d4
-ARM ZoneFeatures::Opcode6aEntry* FindNodeKind9ById(ZoneFeatures* owner, int id) {
+ARM ZoneFeatures::Opcode6aEntry* FindNodeKind9ById_0201e6d4(ZoneFeatures* owner, int id) {
     ZoneFeatures::Opcode6aEntry* node;
     if (id < 0) {
         return 0;

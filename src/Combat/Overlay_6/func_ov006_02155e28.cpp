@@ -43,7 +43,7 @@ struct List0204af64 {
     unsigned char pad1d[3];
 };
 void ResetList0204af64(struct List0204af64* list);
-void SetWord0x18ClearByte0x1f(unsigned char* list, int value);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char* list, int value);
 extern "C" void func_0204b5b4(void* list, int priority);
 struct AllocTarget0204b12c;
 void AllocateAndClearBuffer0204b12c(struct AllocTarget0204b12c* list, SafeAllocator* alloc);
@@ -104,9 +104,9 @@ static inline struct Progress02012fe4* GetProgress(void* run) {
     return (struct Progress02012fe4*)((char*)run + R(0x1860,0x1840));
 }
 
-char* GetWord0x0(int* gs);
-int GetFieldIfFlag4(char* gs);
-void SetField0x3b0Value(GameState* gs, int value);
+char* GetWord0x0_0200fb8c(int* gs);
+int GetFieldIfFlag4_020100f8(char* gs);
+void SetField0x3b0Value_020100c4(GameState* gs, int value);
 struct Foo0207df50;
 void CopyInternalFields0207df50(struct Foo0207df50* p);
 void RestorePairTables0207df90(char* obj);
@@ -238,7 +238,7 @@ extern "C" ARM void func_ov006_02155e28(struct CombatLoader02155e28* self) {
             ResetList0204af64(list);
             list->kind = 0;
             list->slot = i + 1;
-            SetWord0x18ClearByte0x1f((unsigned char*)list, 0);
+            SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)list, 0);
             func_0204b5b4(list, priority.v[i]);
             AllocateAndClearBuffer0204b12c((struct AllocTarget0204b12c*)list, alloc);
             DispatchViaTable0204b5e8((struct Obj0204b5e8*)list, 0, 0);
@@ -360,7 +360,7 @@ extern "C" ARM void func_ov006_02155e28(struct CombatLoader02155e28* self) {
         unsigned int size;
         loader->GetLoadedFileByID(self->taskId, &data, &size);
         if (data != NULL) {
-            GameResources* res = (GameResources*)GetWord0x0((int*)GameState::GetInstance());
+            GameResources* res = (GameResources*)GetWord0x0_0200fb8c((int*)GameState::GetInstance());
             SafeAllocator* alloc = GetAllocator(res, 0);
             alloc->Reset();
             CopyInternalFields0207df50((struct Foo0207df50*)res->unknown_2cc);
@@ -387,7 +387,7 @@ extern "C" ARM void func_ov006_02155e28(struct CombatLoader02155e28* self) {
         unsigned int size;
         loader->GetLoadedFileByID(self->taskId, &data, &size);
         if (data != NULL) {
-            GameResources* res = (GameResources*)GetWord0x0((int*)GameState::GetInstance());
+            GameResources* res = (GameResources*)GetWord0x0_0200fb8c((int*)GameState::GetInstance());
             SafeAllocator* alloc = GetAllocator(res, 0);
             RestorePairTables0207df90(res->unknown_2cc);
             ObjectArchiveLoadInfo info;
@@ -413,7 +413,7 @@ extern "C" ARM void func_ov006_02155e28(struct CombatLoader02155e28* self) {
         unsigned int size;
         loader->GetLoadedFileByID(self->taskId, &data, &size);
         if (data != NULL) {
-            GameResources* res = (GameResources*)GetWord0x0((int*)GameState::GetInstance());
+            GameResources* res = (GameResources*)GetWord0x0_0200fb8c((int*)GameState::GetInstance());
             SafeAllocator* alloc = GetAllocator(res, 0);
             RestorePairTables0207df90(res->unknown_2cc);
             ObjectArchiveLoadInfo info;
@@ -467,7 +467,7 @@ extern "C" ARM void func_ov006_02155e28(struct CombatLoader02155e28* self) {
         unsigned int size;
         loader->GetLoadedFileByID(self->taskId, &data, &size);
         if (data != NULL) {
-            GameResources* res = (GameResources*)GetWord0x0((int*)GameState::GetInstance());
+            GameResources* res = (GameResources*)GetWord0x0_0200fb8c((int*)GameState::GetInstance());
             SafeAllocator* alloc = GetAllocator(res, 0);
             RestorePairTables0207df90(res->unknown_2cc);
             ObjectArchiveLoadInfo info;
@@ -512,9 +512,9 @@ extern "C" ARM void func_ov006_02155e28(struct CombatLoader02155e28* self) {
         self->objs[1].MaybeSetBCFGAnimation(0, 0);
         self->objs[2].MaybeSetBCFGAnimation(0, 0);
         GameState* gs = GameState::GetInstance();
-        self->field1a0 = GetFieldIfFlag4((char*)gs);
+        self->field1a0 = GetFieldIfFlag4_020100f8((char*)gs);
         InitCombatEntry021542f4(self->entry);
-        SetField0x3b0Value(gs, (int)self->entry);
+        SetField0x3b0Value_020100c4(gs, (int)self->entry);
         struct Manager0207f7f0* mgr = self->mgr;
         mgr->lists = self->lists;
         mgr->mode = 2;
@@ -525,7 +525,7 @@ extern "C" ARM void func_ov006_02155e28(struct CombatLoader02155e28* self) {
         ColorEffect_ConfigureAlphaBlend((unsigned int*)0x4000050, 4, 1, 10, 6);
         self->flags = self->flags | 0x1000;
         self->flags = self->flags & ~0x40;
-        GameResources* res = (GameResources*)GetWord0x0((int*)gs);
+        GameResources* res = (GameResources*)GetWord0x0_0200fb8c((int*)gs);
         BeginTask020dbf18(&self->task, (int)data_ov006_0216019a, (int)&self->allocs[5],
                           (int)res->unknown_2cc, 0x18);
         self->state++;

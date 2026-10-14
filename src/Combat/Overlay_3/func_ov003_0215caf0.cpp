@@ -16,7 +16,7 @@ struct ActiveEntry02046900;
 struct Container020e0310;
 struct List0206f7f4;
 
-List0206f7f4 *GetData02108d18();
+List0206f7f4 *GetData02108d18_0206f504();
 short GetHalfwordChecked(List0206f7f4 *, int);
 extern "C" char *strcpy(char *dst, const char *src);
 extern "C" int sprintf(char *dst, const char *fmt, ...);
@@ -25,7 +25,7 @@ extern "C" int func_02005a94();
 extern "C" void func_ov003_0215e1ec(char *self);
 void SetAndMulField_0215ca90(void *self, int v);
 void ResetList0204af64(struct List0204af64 *obj);
-void SetWord0x18ClearByte0x1f(unsigned char *obj, int value);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char *obj, int value);
 extern "C" void func_0204b5b4(void *obj, int val);
 void AllocateAndClearBuffer0204b12c(struct AllocTarget0204b12c *obj,
                                                                                          SafeAllocator *alloc);
@@ -83,7 +83,7 @@ extern "C" ARM void func_ov003_0215caf0(char *self) {
 
     if (state == 0) {
         S32(0x3b4) = (int) ((SafeAllocator *) (self + 0x3c))->Allocate(0xc);
-        int idx    = (short) (GetHalfwordChecked(GetData02108d18(), 0) - 1);
+        int idx    = (short) (GetHalfwordChecked(GetData02108d18_0206f504(), 0) - 1);
         if (idx < 0) {
             idx = 0;
         }
@@ -137,7 +137,7 @@ extern "C" ARM void func_ov003_0215caf0(char *self) {
             for (int i = 0; i < 2; i++) {
                 o = (struct Layer0215caf0 *) (self + 0x154 + i * 0x20);
                 ResetList0204af64((struct List0204af64 *) o);
-                SetWord0x18ClearByte0x1f((unsigned char *) o, 0);
+                SetWord0x18ClearByte0x1f_0204b11c((unsigned char *) o, 0);
                 o->lo = 0;
                 o->hi = prio.v[i];
                 func_0204b5b4(o, layer.v[i]);

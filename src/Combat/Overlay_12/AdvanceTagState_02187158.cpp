@@ -45,7 +45,7 @@ struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 extern int data_02108760;
 struct TableA68;
-void* FindEntryByKey(struct TableA68* table, int key);
+void* FindEntryByKey_02072a68(struct TableA68* table, int key);
 
 struct CountField0218a5f0 { unsigned short count : 5; unsigned short rest : 11; };
 
@@ -80,7 +80,7 @@ extern "C" ARM void func_ov012_02187158(char* base) {
         GameState* bs = GameState::GetInstance();
         int val = (*(signed char**)(base + 0x1000 + R(0x418,0x3c0)))[*(int*)(base + 0x1000 + R(0x43c,0x3e4))];
         short key = (short)(val + 0x2710);
-        char* name = (char*)FindEntryByKey((struct TableA68*)(base + R(0x1314,0x133c)), key);
+        char* name = (char*)FindEntryByKey_02072a68((struct TableA68*)(base + R(0x1314,0x133c)), key);
         char* p = (char*)bs + R(0x3c,0x29c) + 0x5400;
         memset(base + R(0x1498,0x1440), 0, 0x40);
         memcpy(base + R(0x1498,0x1440), name, strlen(name));

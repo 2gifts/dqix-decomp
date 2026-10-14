@@ -9,7 +9,7 @@ struct Element020de650;
 extern struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0* c, int key);
 
 extern void* InitAllocatorAndLoadGp2File0207d6dc(SafeAllocator* self, int param1, int param2);
-extern void* GetPtrField0x2a04(GameState* battleStruct);
+extern void* GetPtrField0x2a04_02010828(GameState* battleStruct);
 
 struct KeyedList0207c378;
 extern "C" int func_0207c378(struct KeyedList0207c378* obj, int value, int amount, int key);
@@ -22,8 +22,8 @@ extern AllocatorUnion data_02114e20;
 
 struct Obj0207d134 {
     char pad[0x2c];
-    struct Container020dedd0* container; // 0x2c
-    void* field30;                       // 0x30
+    struct Container020dedd0* container;
+    void* field30;
 };
 
 struct ElemFlags0207d134 {
@@ -42,7 +42,7 @@ extern "C" ARM int func_0207d134(struct Obj0207d134* self, short key, int amount
     struct Element020de650* elem = FindElementByKey020dedd0(self->container, key);
     if (elem != NULL) {
         GameState* battleStruct = GameState::GetInstance();
-        char* p = (char*)GetPtrField0x2a04(battleStruct) + 0x1d4;
+        char* p = (char*)GetPtrField0x2a04_02010828(battleStruct) + 0x1d4;
         unsigned int nibble = ((struct ElemFlags0207d134*)elem)->nibble;
         ret = func_0207c378((struct KeyedList0207c378*)p, key, amount, nibble);
         if (ret) {

@@ -94,13 +94,13 @@ struct TextBuffers {
 
 extern "C" void __clear(void* p, int size);
 MessageWindow* GetGlobalField0x1c020421a0();
-int IsFlag10088Set(struct S_10088*);
+int IsFlag10088Set_02010088(struct S_10088*);
 void InitObjFromCombatant020e4c74(void*, GameObject*);
-void SetField0x158(void*, int);
+void SetField0x158_02053ec8(void*, int);
 void EnqueueEventTag86_021c9ad4(unsigned short);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 void ReinitController02043204(char*);
-void SetFieldsAndSignalData02184220(void*, int);
+void SetFieldsAndSignalData02184220_ov000_02160d80(void*, int);
 CommandSlot* FindSlotById_021dae60(Container_021dae60*, int);
 
 extern "C" {
@@ -173,7 +173,7 @@ extern "C" ARM void func_ov026_021db090(BattleWork* self) {
 #endif
         for (i = 0; i < n; i++) {
             GameObject* c = gs->GetCombatantByIndex(ids[i]);
-            if (c == NULL || IsFlag10088Set((S_10088*)c)) {
+            if (c == NULL || IsFlag10088Set_02010088((S_10088*)c)) {
                 continue;
             }
             func_ov000_02162c14(self, ids[i], &info);
@@ -217,11 +217,11 @@ extern "C" ARM void func_ov026_021db090(BattleWork* self) {
             PartyList* party;
             GameState* state;
             state = GameState::GetInstance();
-            party = (PartyList*)GetPtrField0x2a04(state);
+            party = (PartyList*)GetPtrField0x2a04_02010828(state);
             for (j = 0; j < party->count; j++) {
-                GameObject* member = GetCombatantWithFlag0x100(state, party->members[j]);
+                GameObject* member = GetCombatantWithFlag0x100_0200ff1c(state, party->members[j]);
                 if (member != NULL) {
-                    SetField0x158(member, 2);
+                    SetField0x158_02053ec8(member, 2);
                 }
             }
             GameResources* res = func_ov017_0218b5b0();
@@ -268,7 +268,7 @@ extern "C" ARM void func_ov026_021db090(BattleWork* self) {
             ReinitController02043204((char*)win);
             func_02043124(win);
             if (self->mode == 2) {
-                SetFieldsAndSignalData02184220(self, 4);
+                SetFieldsAndSignalData02184220_ov000_02160d80(self, 4);
             } else {
                 for (int i = 0; i < 4; i++) {
                     CommandSlot* slot = FindSlotById_021dae60(&self->list, i);

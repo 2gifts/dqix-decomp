@@ -33,9 +33,9 @@ struct TextWindow {
 };
 
 void AdvanceActor020a20d8(void* camera);
-Canvas* FindElementForFieldB0(Struct_0205d81c* window);
-int IsField0x9cEqual3(unsigned char* canvas);
-void SetFieldAt0x30(void* frame, int value);
+Canvas* FindElementForFieldB0_0205d8c4(Struct_0205d81c* window);
+int IsField0x9cEqual3_0204c7cc(unsigned char* canvas);
+void SetFieldAt0x30_0205bc24(void* frame, int value);
 extern "C" int func_0205d0e0(TextWindow* window, unsigned int ticks);
 extern "C" void func_ov023_021e5020(void* character);
 extern "C" void func_ov009_02188604(void* self, unsigned int ticks);
@@ -84,9 +84,9 @@ extern "C" ARM int func_ov009_02184a18(CharacterCreation* self)
         AdvanceActor020a20d8(self->camera_);
     if (self->state_ == 9 && self->step_ == 2)
     {
-        Canvas* canvas = FindElementForFieldB0((Struct_0205d81c*)&self->windows_[1]);
-        if (canvas != NULL && IsField0x9cEqual3((unsigned char*)canvas) != 0 && !(canvas->flags_ & 2))
-            SetFieldAt0x30(&self->windows_[1].base_.frame_, -1);
+        Canvas* canvas = FindElementForFieldB0_0205d8c4((Struct_0205d81c*)&self->windows_[1]);
+        if (canvas != NULL && IsField0x9cEqual3_0204c7cc((unsigned char*)canvas) != 0 && !(canvas->flags_ & 2))
+            SetFieldAt0x30_0205bc24(&self->windows_[1].base_.frame_, -1);
     }
     func_0205d0e0(&self->windows_[0], ticks);
     self->unk_d85 = func_0205d0e0(&self->windows_[1], ticks);

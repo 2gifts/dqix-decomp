@@ -19,7 +19,7 @@ struct ZoneStruct0219b938 {
 extern "C" struct ZoneStruct0219b938* func_02012fe4(void);
 void InvokeAllEntries020966a0(struct Entry020966a0* entries);
 extern "C" void func_0204719c(void* p);
-void* GetData02109020(void);
+void* GetData02109020_0208e9e8(void);
 extern "C" void func_0208f36c(void* p, int value);
 void CopyInternalFields0207df50(struct Foo0207df50* p);
 
@@ -65,7 +65,7 @@ extern "C" ARM void func_ov017_0219b938(struct Battle0219b938* self) {
     }
     func_0204719c(&self->entries[0x12]);
     func_0204719c(&self->entries[0x13]);
-    func_0208f36c(GetData02109020(), 0);
+    func_0208f36c(GetData02109020_0208e9e8(), 0);
     self->allocator.Reset();
     CopyInternalFields0207df50((struct Foo0207df50*)self->fields4fc);
 }

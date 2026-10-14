@@ -9,9 +9,9 @@
 	.section .text
 	.arm
 
-	.global _Z16SaveDivSqrtStatePv
+	.global _Z25SaveDivSqrtState_020cd594Pv
 
-_Z16SaveDivSqrtStatePv:
+_Z25SaveDivSqrtState_020cd594Pv:
 	ldr r1, _P3c
 	stmdb sp!, {r4}
 	ldmia r1, {r2, r3, r4, ip}

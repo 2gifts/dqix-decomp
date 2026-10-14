@@ -11,10 +11,10 @@ struct Obj0205eaa0;
 
 int GetActiveScaledSum0205d794(struct Struct_0205c570* s);
 void SetElementFlag0x20ByKey0205def8(struct Struct_0205def8* s, int clear, int key);
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 struct Obj_0205da38;
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
-void* GetFieldAt0x150(unsigned char* obj);
+void* GetFieldAt0x150_02053c6c(unsigned char* obj);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 
 void* SearchBothTables02079e2c(char* p, int key);
@@ -93,17 +93,17 @@ extern "C" ARM int func_ov000_0217bdf4(MenuObj_0217bdf4* obj, int arg1, int arg2
     obj->field23 = GetActiveScaledSum0205d794((struct Struct_0205c570*)obj->field38);
     MenuCtx_0217bdf4* ctx = data_ov000_02184294.ctx;
     SetElementFlag0x20ByKey0205def8((struct Struct_0205def8*)ctx->list, 1, 0x16);
-    int t = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
+    int t = TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x601);
     int active = (t | IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)obj->field38, 0x14)) != 0;
     if (active || obj->field444 != 0) {
         GameObject* member = GameState::GetInstance()->GetPartyMemberByIndex(obj->memberIndex);
         if (member == NULL) {
             return -1;
         }
-        int kind = ((MemberInfo_0217bdf4*)GetFieldAt0x150((unsigned char*)member))->spellKind;
+        int kind = ((MemberInfo_0217bdf4*)GetFieldAt0x150_02053c6c((unsigned char*)member))->spellKind;
         DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 1, 0);
         obj->field1d = 0;
-        ActionDataTables* data = GetData02108e10();
+        ActionDataTables* data = GetData02108e10_020797dc();
         if (data == NULL) {
             return -1;
         }

@@ -6,15 +6,15 @@
 #endif
 
 struct Obj2081;
-int FindElementByByte0xc4(Obj2081*, int);
+int FindElementByByte0xc4_02081da8(Obj2081*, int);
 struct List0207f0ac;
 int FindEntryByShortId0207f0ac(List0207f0ac*, int);
 struct Obj02081e18;
 unsigned int FindMatchingElemSumOrScaledPtr02081e18(Obj02081e18*, int);
 struct Obj02081de0;
 int FindElementWithByte0xc4Is0xff(Obj02081de0*);
-int ClearSublistEntriesFlag4(void *obj, int id);
-int SetField0xa0AndByte0xc4IfFlag0x1Clear(unsigned char*, int, int);
+int ClearSublistEntriesFlag4_020804fc(void *obj, int id);
+int SetField0xa0AndByte0xc4IfFlag0x1Clear_0204f160(unsigned char*, int, int);
 struct Params02081498;
 int DispatchMessageAndInvokeList02081498(void*, void*, Params02081498*);
 int ProcessEntryList02081574(void *obj, void *a, void *b);
@@ -27,7 +27,7 @@ extern "C" ARM int func_020813ec(void *obj, int id) {
         return 1;
     }
 
-    int a = FindElementByByte0xc4((Obj2081*)obj, id);
+    int a = FindElementByByte0xc4_02081da8((Obj2081*)obj, id);
     int b = FindEntryByShortId0207f0ac((List0207f0ac*)((char *)obj + 0xc), id);
     if (b == 0) {
         return 1;
@@ -38,11 +38,11 @@ extern "C" ARM int func_020813ec(void *obj, int id) {
 
     if (a == 0) {
         a = FindElementWithByte0xc4Is0xff((Obj02081de0*)obj);
-        ClearSublistEntriesFlag4(obj, id);
+        ClearSublistEntriesFlag4_020804fc(obj, id);
     }
 
     if (a != 0) {
-        SetField0xa0AndByte0xc4IfFlag0x1Clear((unsigned char*)a, c, id);
+        SetField0xa0AndByte0xc4IfFlag0x1Clear_0204f160((unsigned char*)a, c, id);
         DispatchMessageAndInvokeList02081498(obj, (void *)a, (Params02081498*)b);
         ProcessEntryList02081574(obj, (void *)a, (void *)b);
         InvokeHandlerAfterCacheFlush0204fbf8((Obj0204fbf8*)a);

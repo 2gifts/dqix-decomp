@@ -9,7 +9,7 @@
 #endif
 #include "GameState/GameState.h"
 
-int GetWord0x0(int* obj);
+int GetWord0x0_0200fb8c(int* obj);
 extern "C" void func_ov014_02188330(void* self);
 short FindMappedMemberId02080468(void* obj, int id);
 extern "C" void func_020813ec(void* obj, int key);
@@ -19,7 +19,7 @@ int IsBrightnessTransitionActive(GameResources*);
 
 // USA: func_ov014_02187b38  (semantic: AdvanceMappedMemberIdState_02187b38)
 extern "C" ARM void func_ov014_02187b38(void* self) {
-    int w = GetWord0x0((int*)GameState::GetInstance());
+    int w = GetWord0x0_0200fb8c((int*)GameState::GetInstance());
     unsigned char state = *((unsigned char*)self + 0x17b);
     if (state == 0) {
         *(void**)((char*)self + 0x5c) = (char*)self + 0xe0;

@@ -30,7 +30,7 @@ ARM int SetNodeFlagsFromVariantArray0206ca3c(void* param0, int count) {
     int i;
     param0 = (char*)param0 + 8;
     int key = ((Script::Parameter*)((struct Variant02030b0c*)orig))->ToInt();
-    node = (Node0206ca3c*)FindNodeByByteId(data_02108cec.field0x10, key);
+    node = (Node0206ca3c*)FindNodeByByteId_0206db20(data_02108cec.field0x10, key);
     if (node == 0) {
         return 0;
     }

@@ -7,7 +7,7 @@ struct S_a0810 {
 };
 
 // USA: func_020a0810
-ARM void AddClamped24BitFieldAt0x40(struct S_a0810* p, unsigned int amount) {
+ARM void AddClamped24BitFieldAt0x40_020a0810(struct S_a0810* p, unsigned int amount) {
     unsigned int v = p->val + amount;
     if (v > 0xffffff) {
         v = 0xffffff;

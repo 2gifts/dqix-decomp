@@ -2,7 +2,7 @@
 #include "std_library_functions.h"
 
 // USA: func_0204c804
-ARM void ResetElem2081Entry(void* obj) {
+ARM void ResetElem2081Entry_0204c804(void* obj) {
     unsigned char* base = (unsigned char*)obj;
     *(int*)(base + 0x9c) = 0;
     *(short*)(base + 0xac) = 0;

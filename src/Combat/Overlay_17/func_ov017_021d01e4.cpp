@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-int GetField0x3acValue(GameState* battleStruct);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 extern "C" void func_ov017_021a7c94(unsigned char* obj, int id, int arg2);
 struct FieldStruct021a85d4;
 void SetFieldndMaybe_021a85d4_021a85d4(struct FieldStruct021a85d4* obj, int val);
@@ -34,8 +34,8 @@ struct Work021d01e4 {
 
 // USA: func_ov017_021d01e4
 extern "C" ARM void func_ov017_021d01e4(int unused0, struct Evt021d01e4* evt, GameState* bs, struct Work021d01e4* work) {
-    GetField0x3acValue(bs);
-    unsigned char* list = (unsigned char*)GetPtrField0x2a04(bs);
+    GetField0x3acValue_020100a8(bs);
+    unsigned char* list = (unsigned char*)GetPtrField0x2a04_02010828(bs);
     unsigned char* ids = list + 0xf78;
     unsigned char count = list[0xf7c];
     int idA = evt->idA;

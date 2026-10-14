@@ -30,7 +30,7 @@ struct State_021ef988 {
 
 struct Reset021e3158;
 
-CombatWork_021e58f0* GetActiveCombatWork(void);
+CombatWork_021e58f0* GetActiveCombatWork_ov000_02160130(void);
 extern "C" ZoneInfo_021e58f0* func_ov017_021b8478(void* obj);
 struct Obj02018f6c;
 void StoreAndMaybeCopy02018f6c(Obj02018f6c*, short);
@@ -41,20 +41,20 @@ extern Reset021e3158 data_ov025_021ef9a8;
 
 // USA: func_ov025_021e58f0
 extern "C" ARM int func_ov025_021e58f0(Args_021e58f0* args) {
-    CombatWork_021e58f0* work = GetActiveCombatWork();
+    CombatWork_021e58f0* work = GetActiveCombatWork_ov000_02160130();
     Zone3D* zone = &work->zone;
     ZoneInfo_021e58f0* info = func_ov017_021b8478(func_ov017_0218b5b0()->unknown_ptr_3718);
     if (data_ov025_021ef988.phase == 0) {
         unsigned short id = info->zoneId;
         if (args->zoneName != 0) {
-            List0209998c* list = (List0209998c*)GetPtrField0x468(GameState::GetInstance());
+            List0209998c* list = (List0209998c*)GetPtrField0x468_02011584(GameState::GetInstance());
             Elem0209998c* elem = FindElementByName0209998c(list, args->zoneName);
             if (elem == 0) {
                 return 1;
             }
             id = elem->f0;
         }
-        zone->SwitchZone(id, 0);
+        zone->SwitchZone_0201383c(id, 0);
         data_ov025_021ef988.phase = 1;
     } else if (data_ov025_021ef988.phase == 1 && zone->unknown_424_ == 0) {
         StoreAndMaybeCopy02018f6c((Obj02018f6c*)zone, work->zoneAngle);

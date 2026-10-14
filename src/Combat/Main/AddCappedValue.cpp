@@ -7,7 +7,7 @@ struct Field0x30 {
 };
 
 // USA: func_020a0750
-ARM void AddCappedValue(struct Field0x30* obj, unsigned int amount) {
+ARM void AddCappedValue_020a0750(struct Field0x30* obj, unsigned int amount) {
     unsigned int v = obj->value + amount;
     if (v > 0xffffff) {
         v = 0xffffff;

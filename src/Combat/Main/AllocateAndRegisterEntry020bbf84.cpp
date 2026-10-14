@@ -4,7 +4,7 @@
 struct Obj020bda58;
 extern void* AllocateAndLinkEntry020bda58(struct Obj020bda58* obj, unsigned int size, int a2, int a3, int a4);
 
-extern void* CreateAllocatorHolderInRegion(void* start, unsigned int size);
+extern void* CreateAllocatorHolderInRegion_020bd914(void* start, unsigned int size);
 
 struct Obj020bc820;
 extern void ReleaseActorAndUnlink020bc820(struct Obj020bc820* obj);
@@ -34,7 +34,7 @@ ARM int AllocateAndRegisterEntry020bbf84(int index, struct Obj020bda58* obj, uns
     block->child = NULL;
     block->index = index;
     block->alloc = NULL;
-    void* allocator = CreateAllocatorHolderInRegion(&block->region[0], size);
+    void* allocator = CreateAllocatorHolderInRegion_020bd914(&block->region[0], size);
     if (allocator == NULL) {
         return 0;
     }

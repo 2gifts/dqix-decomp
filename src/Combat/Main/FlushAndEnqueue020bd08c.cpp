@@ -2,7 +2,7 @@
 
 extern "C" void func_020ca3ec(int value, void* dst, int size);
 void CleanInvalidateCacheRange(const void* addr, unsigned int size);
-int EnqueueEvent0x0C(int a, int b, int c, int d);
+int EnqueueEvent0x0C_020d1ee4(int a, int b, int c, int d);
 
 struct Flag0210fd74 {
     char pad[0x48];
@@ -36,5 +36,5 @@ extern "C" ARM void func_020bd08c(void) {
     CleanInvalidateCacheRange(ctx->p0x10, ctx->size14);
     int shift = ctx->f2c;
     int mask = (shift >= 0) ? (1 << shift) : 0;
-    EnqueueEvent0x0C(ctx->f24, ctx->f28, mask, 0);
+    EnqueueEvent0x0C_020d1ee4(ctx->f24, ctx->f28, mask, 0);
 }

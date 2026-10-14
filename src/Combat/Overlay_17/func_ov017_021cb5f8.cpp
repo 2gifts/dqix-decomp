@@ -49,7 +49,7 @@ struct TacticsMessage021cb5f8 {
     TacticsFields021cb5f8 fields;
 };
 extern "C" void* func_ov017_021b8478(void*);
-void* GetData02100044();
+void* GetData02100044_0202ae24();
 extern "C" void func_0205e330(void*, void*, int);
 
 // USA: func_ov017_021cb5f8
@@ -57,7 +57,7 @@ extern "C" ARM void func_ov017_021cb5f8(TacticsContainer021cb5f8* self) {
     GameState::GetInstance();
     GameResources* resources = func_ov017_0218b5b0();
     TacticsState021cb5f8* state = (TacticsState021cb5f8*)func_ov017_021b8478(resources->unknown_ptr_3718);
-    void* data = GetData02100044();
+    void* data = GetData02100044_0202ae24();
     for (int i = 0; i < self->count; i++) {
         TacticsEntry021cb5f8* entry = &self->entries[i];
         TacticsMessage021cb5f8 first;

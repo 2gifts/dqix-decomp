@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void* GetData02153637(void);
+void* GetData02153637_020e2ff8(void);
 extern "C" int func_0202c508(void*);
 extern "C" void func_020e321c(void*, int, int);
 extern "C" void func_020e33b4(void*, int, int);
@@ -26,7 +26,7 @@ struct LocalEvt021ceb28 {
 
 // USA: func_ov017_021ceb28  (semantic: SetEntryFlagFromSearchMatch_021ceb28)
 extern "C" ARM void func_ov017_021ceb28(int count, struct LocalEvt021ceb28* evt, int unused2, int unused3, struct SearchStruct0202c1a4* extra) {
-    void* obj = GetData02153637();
+    void* obj = GetData02153637_020e2ff8();
     int inBattle = func_0202c508(extra);
     if (inBattle != 0 && count > 0) {
         if (evt->field4 != 0) {

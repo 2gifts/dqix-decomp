@@ -48,7 +48,7 @@ extern "C" ARM void func_ov000_0217dcf0(char* obj, int arg1, int arg2) {
     if (func_ov000_0217c594(obj, 0)) {
         DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)data_02108760, 1, 0);
         GameState* gs = GameState::GetInstance();
-        unsigned char* field2a04 = (unsigned char*)GetPtrField0x2a04(gs);
+        unsigned char* field2a04 = (unsigned char*)GetPtrField0x2a04_02010828(gs);
         signed char cursor = *(signed char*)(obj + ActiveSelectionOffset0217dcf0);
         if (cursor < field2a04[0xf7c]) {
             struct Entry0217dcf0* entry = &((struct Entry0217dcf0*)(obj + 0x958))[*(signed char*)(obj + cursor + 0x70)];

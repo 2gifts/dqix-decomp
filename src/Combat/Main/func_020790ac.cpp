@@ -4,7 +4,7 @@
 extern "C" void* func_0202ae18(void);
 extern "C" void __clear(void* buf, int n);
 
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 struct SearchStruct0202c1a4;
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
 
@@ -40,7 +40,7 @@ extern "C" ARM void func_020790ac(struct Obj020790ac* obj) {
     if (obj->f130 != 1 && obj->f130 != 2) return;
 
     void* g = func_0202ae18();
-    if (CheckField0NonZero((int*)g) && GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)g) != 0) {
+    if (CheckField0NonZero_0202b7d8((int*)g) && GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)g) != 0) {
         return;
     }
     if (obj->f154 < 0x7d0) return;
@@ -60,7 +60,7 @@ extern "C" ARM void func_020790ac(struct Obj020790ac* obj) {
     TrySetMode02076ccc(obj, 0xa);
 
     void* g2 = func_0202ae18();
-    if (!CheckField0NonZero((int*)g2) || GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)g2) != 0) {
+    if (!CheckField0NonZero_0202b7d8((int*)g2) || GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)g2) != 0) {
         return;
     }
 

@@ -5,7 +5,7 @@ extern "C" void func_02012fe4(void);
 extern "C" void* func_0202ae18(void);
 struct Entry_02028bd0;
 struct Entry_02028bd0* FindEntryInGlobalTable02027ccc(int key);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 extern "C" int func_0202c508(void* obj);
 extern "C" void func_02076a8c(void* obj);
 void EnqueueEventTag134_021c9544(int a0, int a1, int a2, int a3);
@@ -30,7 +30,7 @@ ARM void EnqueueEventForFlaggedCombatants_021a33e0(void* unused, int key) {
         if (combatant) {
             func_02076a8c(combatant);
             ((Object3D*)((unsigned char*)combatant))->MakeHidden();
-            if (CheckField0NonZero((int*)search) && func_0202c508(search)) {
+            if (CheckField0NonZero_0202b7d8((int*)search) && func_0202c508(search)) {
                 EnqueueEventTag134_021c9544(key, i, *(short*)((char*)combatant + 0x2), -1);
             }
         }

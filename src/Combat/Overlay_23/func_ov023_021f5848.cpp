@@ -57,7 +57,7 @@ extern "C" ARM int func_ov023_021f5848(struct Variant02030b0c* obj) {
             data_ov023_021fff08.ptr->bits.low13 |= 2;
             return 0;
         }
-        GetPtrField0x2a04(GameState::GetInstance());
+        GetPtrField0x2a04_02010828(GameState::GetInstance());
         float a = ((Script::Parameter*)((struct TaggedValue02030b44*)((char*)obj + 8)))->ToFloat();
         float b = ((Script::Parameter*)((struct TaggedValue02030b44*)((char*)obj + 0x10)))->ToFloat();
         struct Random* rng = GetBTRandom();

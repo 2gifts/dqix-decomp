@@ -11,9 +11,9 @@ struct PartyData02160c58 {
 // USA: func_ov003_02160c58
 extern "C" ARM void func_ov003_02160c58(int id, short* outTotal, short* outRemaining) {
     short total = 12;
-    unsigned char used = ((PartyData02160c58*)GetPtrField0x2a04(GameState::GetInstance()))->memberCount;
+    unsigned char used = ((PartyData02160c58*)GetPtrField0x2a04_02010828(GameState::GetInstance()))->memberCount;
     total -= 4;
-    PartyData02160c58* data = (PartyData02160c58*)GetPtrField0x2a04(GameState::GetInstance());
+    PartyData02160c58* data = (PartyData02160c58*)GetPtrField0x2a04_02010828(GameState::GetInstance());
     if (data->extraSlots > 4) {
         data->extraSlots = 4;
     }

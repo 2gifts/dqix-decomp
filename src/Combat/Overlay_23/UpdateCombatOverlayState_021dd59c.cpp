@@ -5,12 +5,12 @@
 #include "Memory/SafeAllocator.h"
 #include "GameState/GameState.h"
 
-int GetWord0x0(int* obj);
+int GetWord0x0_0200fb8c(int* obj);
 
 int DispatchByMode77c_021ddbb8(void* obj, int a, int b);
 struct Obj021ddbf8;
 int Check_021ddbf8(struct Obj021ddbf8* obj);
-void OrGlobalFlag0x40(void);
+void OrGlobalFlag0x40_020dc2bc(void);
 
 struct SubBgControlBackup02074b64;
 void BackupSubBgControlRegisters(struct SubBgControlBackup02074b64* obj);
@@ -27,7 +27,7 @@ extern "C" void func_020dfec0(void* dest, void* allocator, void* fileData, unsig
 void ConfigureBgSub1AndClear_021dcc58(void* obj);
 ARM void ResetIfNonNeg_021db2e4(volatile int* p);
 
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 extern AllocatorUnion data_02114e20;
 
 #if defined(jpn)
@@ -58,11 +58,11 @@ extern "C" ARM void func_ov023_021dd59c(void* objRaw) {
 #endif
     char* obj = (char*)objRaw;
     int dataResult = (int)BackgroundLoader::GetInstance();
-    GetWord0x0((int*)GameState::GetInstance());
+    GetWord0x0_0200fb8c((int*)GameState::GetInstance());
 
     if (*(unsigned char*)(obj + regionalOffset0) == 0) {
         if (data_ov023_021ff9e0.field4 == 0) {
-            data_ov023_021ff9e0.field4 = AllocateAligned4(&data_02114e20, 0x1800);
+            data_ov023_021ff9e0.field4 = AllocateAligned4_02012d88(&data_02114e20, 0x1800);
         }
         if (!(*(unsigned short*)(obj + regionalOffset1) & 0x40)) {
             *(unsigned char*)(obj + regionalOffset0) = 2;
@@ -77,7 +77,7 @@ extern "C" ARM void func_ov023_021dd59c(void* objRaw) {
     if (*(unsigned char*)(obj + regionalOffset0) == 1) {
         if (Check_021ddbf8((struct Obj021ddbf8*)obj) == 0) {
             if (*(signed char*)(obj + regionalOffset2) != 1) {
-                OrGlobalFlag0x40();
+                OrGlobalFlag0x40_020dc2bc();
             }
             *(unsigned char*)(obj + regionalOffset0) = *(unsigned char*)(obj + regionalOffset0) + 1;
         }
@@ -88,11 +88,11 @@ extern "C" ARM void func_ov023_021dd59c(void* objRaw) {
             *(unsigned char*)(obj + regionalOffset0) = 4;
             return;
         }
-        FontBankLoader* g = GetGlobal02109400();
+        FontBankLoader* g = GetGlobal02109400_02094a00();
         BlankFunction02094b30(g, 0x1fa, 0);
         *(unsigned char*)(obj + regionalOffset0) = *(unsigned char*)(obj + regionalOffset0) + 1;
     } else if (*(unsigned char*)(obj + regionalOffset0) == 3) {
-        if (AlwaysTrue02094b4c(GetGlobal02109400()) != 0) {
+        if (AlwaysTrue02094b4c(GetGlobal02109400_02094a00()) != 0) {
             *(unsigned char*)(obj + regionalOffset0) = *(unsigned char*)(obj + regionalOffset0) + 1;
         }
     }

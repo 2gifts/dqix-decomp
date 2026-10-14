@@ -42,7 +42,7 @@ void RunInitAndSetFlag1_021c168c(void* obj);
 void SetFlagAndCleanupA_021ac294(unsigned char* obj);
 void SetFlagAndCleanupB_021aca00(unsigned char* obj);
 void SetFlagAndCleanupC_021adb08(unsigned char* obj);
-void InitBattleAndControllerState(void* obj);
+void InitBattleAndControllerState_020d9ab0(void* obj);
 void SetFlag1ThenDestroy_021c1a10(Obj1_021c1a10* obj);
 void SetFlag1ThenDestroy_021c30f8(Obj1_021c30f8* obj);
 void CallHelperAndSetFlag_021a1924(S021a1924* obj);
@@ -165,7 +165,7 @@ extern "C" ARM void func_ov017_021a3ef0(EventQueue_021a3ef0* queue) {
 		case 69: SetByte1_021c2b1c((unsigned char*)node); break;
 		case 70: SetFlag1ThenDestroy_021c30f8((Obj1_021c30f8*)node); break;
 		case 71: SetByte1_021c32a4((unsigned char*)node); break;
-		case 72: InitBattleAndControllerState(node); break;
+		case 72: InitBattleAndControllerState_020d9ab0(node); break;
 		case 73: ClearHandleArrayAndFinalize020d9fc8((Struct020d9fc8*)node); break;
 		case 74: SetFlagByteAt0x1020d9db8((unsigned char*)node); break;
 		case 75: Reset020dae08AndSetByte1((Obj020dae98*)node); break;

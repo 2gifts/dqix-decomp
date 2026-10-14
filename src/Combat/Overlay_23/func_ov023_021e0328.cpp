@@ -4,7 +4,7 @@
 struct List0202fec8;
 
 struct InitStruct2075;
-void ClearStructFields(struct InitStruct2075* p);
+void ClearStructFields_02075d64(struct InitStruct2075* p);
 
 extern "C" void func_02076080(void* a, void* b, int c, int d);
 
@@ -23,7 +23,7 @@ extern "C" ARM int func_ov023_021e0328(void* obj) {
     if (((BackgroundLoader*)(listPtr))->GetTaskStatus((int)(*(int*)((char*)obj + regionalOffset0)))) {
         int out1, out2;
         ((BackgroundLoader*)((struct List0202fec8*)listPtr))->GetLoadedFileByID((int)(*(int*)((char*)obj + regionalOffset0)), (void**)(&out1), (unsigned int*)(&out2));
-        ClearStructFields(*(struct InitStruct2075**)((char*)obj + 0xc8));
+        ClearStructFields_02075d64(*(struct InitStruct2075**)((char*)obj + 0xc8));
 
 #if defined(jpn)
         if (out1 != 0) {

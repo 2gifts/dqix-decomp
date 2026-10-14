@@ -26,12 +26,12 @@ extern "C" PackedNibbleArray0206e120* func_0205ec34();
 extern "C" SearchStruct0202c1a4* func_0202ae18();
 extern "C" unsigned short* func_02012fe4();
 int GetPackedNibbleFlag0x8(PackedNibbleArray0206e2dc*, int);
-int CheckField0NonZero(int*);
+int CheckField0NonZero_0202b7d8(int*);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
 int ForEachNodeUntilFalse02064704(void*, Node02064704*, void*);
 int GetPackedNibbleField(PackedNibbleArray0206e120*, int);
-int IsNibbleFieldZeroOrOne(PackedNibbleArray0206e120*, int);
-void GetEntry3Bytes(EntryDEE8*, unsigned char, unsigned char*, unsigned char*, unsigned char*);
+int IsNibbleFieldZeroOrOne_02095ae0(PackedNibbleArray0206e120*, int);
+void GetEntry3Bytes_0206dee8(EntryDEE8*, unsigned char, unsigned char*, unsigned char*, unsigned char*);
 extern "C" void func_0206e164(PackedNibbleArray0206e120*, int, int);
 
 static inline int IsSearchState(PackedNibbleArray0206e120* values, int index, int state) {
@@ -47,16 +47,16 @@ extern "C" ARM void func_02095b30(SearchTable* table, int checkThreshold) {
     SearchArguments arguments;
     for (SearchNode* node = table->first; node; node = node->next) {
         if (node->enabled && !GetPackedNibbleFlag0x8((PackedNibbleArray0206e2dc*)values, node->index)) continue;
-        if (CheckField0NonZero((int*)search) && GetSearchStructCurrentArrEntry(search) && !node->allowDuringSearch) continue;
+        if (CheckField0NonZero_0202b7d8((int*)search) && GetSearchStructCurrentArrEntry(search) && !node->allowDuringSearch) continue;
         if (checkThreshold) {
-            GetEntry3Bytes((EntryDEE8*)values, 0, &components[2], &components[1], &components[0]);
+            GetEntry3Bytes_0206dee8((EntryDEE8*)values, 0, &components[2], &components[1], &components[0]);
             if (!node->enabled) continue;
             if (node->whole * 100 + node->fraction > (unsigned int)(components[2] * 100 + components[1])) continue;
         }
         arguments.category = *func_02012fe4();
         if (!ForEachNodeUntilFalse02064704(values, node->conditions, &arguments)) continue;
         if (IsSearchState(values, node->index, 3) && !node->allowDuringSearch) continue;
-        if (!IsNibbleFieldZeroOrOne(values, node->index)) {
+        if (!IsNibbleFieldZeroOrOne_02095ae0(values, node->index)) {
             if (!IsSearchState(values, node->index, 3) || !node->blocked) continue;
         }
         func_0206e164(values, node->index, 1);

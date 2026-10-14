@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 void* GetField6b0_021b8470(void* obj);
-int GetField0x3acValue(GameState* battleStruct);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 
 struct Packed10x3_021cb2f4 {
     unsigned int f0 : 3;
@@ -58,7 +58,7 @@ extern "C" ARM void func_ov017_021cb2f4(int unused0, Src021cb2f4* src, GameState
     if (!work) return;
     Ret021cb2f4* r = *(Ret021cb2f4**)((unsigned char*)work + 0x8000 + 0xe18);
     if (!r) return;
-    int val = GetField0x3acValue(battleStruct);
+    int val = GetField0x3acValue_020100a8(battleStruct);
     if (r->field2a == val) return;
     if (r->field8 != src->field4) return;
     int idx = (int)src->field6 - 0xc0;

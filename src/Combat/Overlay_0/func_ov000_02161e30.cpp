@@ -67,7 +67,7 @@ struct Combatant {
 extern "C" int* func_0202ae18();
 FieldStruct02048934* SearchWithLow15Comparator02070fd0(Container02070e60*, int);
 Param02048850* SearchWithComparator0206f4f0(BinarySearchByComparatorStruct*, int);
-Combatant* GetCombatantWithFlag0x400(GameState*, int);
+Combatant* GetCombatantWithFlag0x400_0200fea4(GameState*, int);
 void ZeroStruct021620d8(ZeroableStruct021620d8*);
 void FindOrAssignSlot02167c28(unsigned char*, int);
 extern "C" void func_020891cc(CombatBlob*);
@@ -75,7 +75,7 @@ extern "C" void func_02089630(CombatBlob*, void*, int);
 void SetupFieldsFromParam02048850(Obj02048850*, Param02048850*);
 void SetRandomizedShort0x18802048934(void*, FieldStruct02048934*, Random*);
 extern "C" int func_ov000_02161bb8(ZeroableStruct021620d8*);
-void IncrementByteCounterWrapAt0x12(unsigned char*);
+void IncrementByteCounterWrapAt0x12_ov000_02161bec(unsigned char*);
 static inline void* GetEntryPayload(FieldStruct02048934* entry) { return entry->payload; }
 static inline int GetGroupCount(PartyRoster* roster) { SDK_NULL_ASSERT(roster); return roster->groupCount; }
 
@@ -93,7 +93,7 @@ extern "C" ARM void func_ov000_02161e30(BattleState* state, int id, int key) {
     entry = SearchWithLow15Comparator02070fd0((Container02070e60*)resources->entries, key);
     Param02048850* param = SearchWithComparator0206f4f0(params, (short)key);
     if (!entry || !param) return;
-    actor = GetCombatantWithFlag0x400(game, id);
+    actor = GetCombatantWithFlag0x400_0200fea4(game, id);
     int group = actor->group;
     roster->count -= roster->slots[group].count - 1;
     roster->memberCount -= roster->slots[group].mode - 1;
@@ -144,5 +144,5 @@ extern "C" ARM void func_ov000_02161e30(BattleState* state, int id, int key) {
     actor->active = 1;
     int bit = GetBlobSlot(actor);
     roster->groups[index].flags |= 1 << bit;
-    IncrementByteCounterWrapAt0x12(&selected->cursor);
+    IncrementByteCounterWrapAt0x12_ov000_02161bec(&selected->cursor);
 }

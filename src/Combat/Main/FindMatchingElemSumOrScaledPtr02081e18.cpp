@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-int CheckField0x9cSetWhenField0xd4Present(unsigned char* window);
+int CheckField0x9cSetWhenField0xd4Present_0204c7e0(unsigned char* window);
 struct ScaledElementList0204aa28;
 unsigned int GetScaledElementPtr(ScaledElementList0204aa28* layout);
 
@@ -37,7 +37,7 @@ ARM unsigned int FindMatchingElemSumOrScaledPtr02081e18(Obj02081e18* menu, int b
     int i;
     for (i = (int)menu->windowCount - 1; i >= 0; i--) {
         window = &menu->windows[i];
-        if (CheckField0x9cSetWhenField0xd4Present(reinterpret_cast<unsigned char*>(window)) && window->layout) {
+        if (CheckField0x9cSetWhenField0xd4Present_0204c7e0(reinterpret_cast<unsigned char*>(window)) && window->layout) {
             WindowVramLayout* layout = window->layout;
             if (bgLayer == layout->bgLayer) {
                 return window->destinationOffset + window->pixelBytes;

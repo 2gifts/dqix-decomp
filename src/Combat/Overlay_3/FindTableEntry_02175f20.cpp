@@ -11,14 +11,13 @@ enum { kRegionValue100E_F8A = 0x100e };
 enum { kRegionValue1014_F90 = 0x1014 };
 #endif
 
-
 unsigned char GetTableByte0207ca94(int index);
 int FindNthPositiveShort0207c6b8(unsigned char* obj, unsigned int index, int target);
 
 // USA: func_ov003_02175f20  (semantic: FindTableEntry_02175f20)
 extern "C" ARM int func_ov003_02175f20(void* obj) {
     GameState* bs = GameState::GetInstance();
-    void* p = GetPtrField0x2a04(bs);
+    void* p = GetPtrField0x2a04_02010828(bs);
     short v1 = *(short*)((char*)obj + kRegionValue1012_F8E);
     int idx = (short)(v1 - 286);
     unsigned char cnt = GetTableByte0207ca94(idx);

@@ -21,9 +21,9 @@ extern "C" {
 void ColorEffect_ConfigureAlphaBlend(int, int, int, int, int);
 int _Z17FindRecordByIndexP11Rec020467f0iPPvPi(void*, int, void**, int*);
 int _Z18CountActiveEntriesP19ActiveEntry02046900(void*);
-int _Z18GetField0x3acValueP9GameState(void*);
+int _Z27GetField0x3acValue_020100a8P9GameState(void*);
 void _Z18InitStruct0205a444Pc(void*);
-int _Z18TestBitInByteArrayiPhi(void*, void*, int);
+int _Z27TestBitInByteArray_0206dfb0iPhi(void*, void*, int);
 void _Z19ResetStruct020dfc40P14Struct020dfc40(void*);
 void _Z20ClearFields_021e20c0Pv(void*);
 void* _Z21GetFieldByKey020e0434P17Container020e0310i(void*, int);
@@ -32,7 +32,7 @@ void _Z22AllocateBuffer0204c7a8P11Obj0204c7a8P13SafeAllocatorij(void*, void*, in
 void _Z23ClearAllBuffers0207fcb8P11Obj0207fcb8(void*);
 void _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(void*, int, int);
 void _Z24SetEntryScaledXY020807fcPviii(void*, int, int, int);
-void _Z24SetWord0x18ClearByte0x1fPhi(void*, int);
+void _Z33SetWord0x18ClearByte0x1f_0204b11cPhi(void*, int);
 void* _Z25GetGlobalResetObj020d7a50v(void);
 void* _Z26GetGlobalField0x1c020421a0v(void);
 void _Z27GetEntryFieldsAt0x602080828PviPsS0_(void*, short, short*, short*);
@@ -146,12 +146,12 @@ extern "C" ARM void func_ov003_021560e4(Ctrl* self) {
             _Z29TeardownAndResetState020d7aa0P11Obj020d7aa0(_Z25GetGlobalResetObj020d7a50v());
         }
         func_ov003_02156054(self);
-        FontBankLoader* g = GetGlobal02109400();
+        FontBankLoader* g = GetGlobal02109400_02094a00();
         func_02094ab0(g);
         BlankFunction02094b34(g, 0x66, 0x1f5, 0, 0);
         self->state = self->state + 1;
     } else if (state == 1) {
-        if (AlwaysTrue02094b4c(GetGlobal02109400())) {
+        if (AlwaysTrue02094b4c(GetGlobal02109400_02094a00())) {
 #if defined(jpn)
             self->task = loader->QueueLoadFile(data_ov003_0217e554, 0);
 #else
@@ -180,7 +180,7 @@ extern "C" ARM void func_ov003_021560e4(Ctrl* self) {
                 GameState* gs = GameState::GetInstance();
                 GameObject* pm = gs->GetPartyMemberByIndex(id);
                 if (pm == 0) {
-                    pm = gs->GetPartyMemberByIndex(_Z18GetField0x3acValueP9GameState(gs));
+                    pm = gs->GetPartyMemberByIndex(_Z27GetField0x3acValue_020100a8P9GameState(gs));
                 }
                 func_02046380(g);
 #if defined(jpn)
@@ -193,7 +193,7 @@ extern "C" ARM void func_ov003_021560e4(Ctrl* self) {
 #endif
             } else {
                 char* x = (char*)func_0205ec34();
-                if (_Z18TestBitInByteArrayiPhi(x, x + 0x8c, 0x799)) {
+                if (_Z27TestBitInByteArray_0206dfb0iPhi(x, x + 0x8c, 0x799)) {
                     key = 0;
                 } else {
                     self->f1ec = 0;
@@ -247,7 +247,7 @@ extern "C" ARM void func_ov003_021560e4(Ctrl* self) {
             BytePair B = data_ov003_0217f29c[1];
             for (unsigned char i = 0; i < 2; i++) {
                 Ent20* e = self->f10 + i;
-                _Z24SetWord0x18ClearByte0x1fPhi(e, 0);
+                _Z33SetWord0x18ClearByte0x1f_0204b11cPhi(e, 0);
                 e->b1c.lo = 0;
                 e->b1c.hi = A.v[i];
                 func_0204b5b4(e, B.v[i]);
@@ -389,7 +389,7 @@ extern "C" ARM void func_ov003_021560e4(Ctrl* self) {
             if (self->flags & 1) {
                 GameState* gs = GameState::GetInstance();
                 if (self->f1fb == 0) {
-                    self->f1f7 = _Z18GetField0x3acValueP9GameState(gs);
+                    self->f1f7 = _Z27GetField0x3acValue_020100a8P9GameState(gs);
                     self->state = 0;
                     if (_Z39IsCombatantFlagit2Set_02155f88_02155f88Pvi(self, self->f1f7)) {
                         self->f1ec = 8;
@@ -409,7 +409,7 @@ extern "C" ARM void func_ov003_021560e4(Ctrl* self) {
                 }
             } else {
                 char* x = (char*)func_0205ec34();
-                if (_Z18TestBitInByteArrayiPhi(x, x + 0x8c, 0x796)) {
+                if (_Z27TestBitInByteArray_0206dfb0iPhi(x, x + 0x8c, 0x796)) {
                     self->f1ec = 4;
                     self->mode = 1;
                 } else {

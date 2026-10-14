@@ -71,7 +71,7 @@ struct Ticket021bbfc4 {
 struct GameView021bbfc4 { char pad_0[0x5cac]; unsigned char restart; char pad_5cad[0x1547]; int pending; };
 int IsSubBrightnessTransitionActive(GameResources*);
 extern "C" int* func_0202ae18();
-unsigned char* GetFieldIfFlag4(char*);
+unsigned char* GetFieldIfFlag4_020100f8(char*);
 extern "C" Zone3D* func_02012fe4();
 extern "C" void func_020531f0(GameObject*);
 extern "C" void func_ov017_021bb27c(LoadEvent021bbfc4*);
@@ -79,29 +79,29 @@ extern "C" void* GetMainBG1CharacterBase();
 extern "C" void* GetMainBG1ScreenBase();
 int InitStreamAndRun0208dc00(StreamHeader*, int, int);
 void SetBrightness(GameResources*, int, int);
-Ticket021bbfc4* GetField0x3f8Address(GameState*);
-void SetFlag0x9c6(SetFlagStruct*, int);
+Ticket021bbfc4* GetField0x3f8Address_0200fd0c(GameState*);
+void SetFlag0x9c6_020213fc(SetFlagStruct*, int);
 void InitStruct02070378(char*);
 int RunScriptAndAdjustObj02071488(StreamHeader*, int, int, Obj02071488*);
 unsigned int* GetDataPtr02114e04_020d6c00();
-void OrBitsIntoField0(unsigned int*, unsigned int);
+void OrBitsIntoField0_020466e4(unsigned int*, unsigned int);
 extern "C" void* func_0205ec34();
-void SetOrClearBitInArray(void*, unsigned char*, int, int);
-int TestBitInByteArray(int, unsigned char*, int);
-ColorHolder0204bd7c* GetPtrField0x114(void*);
+void SetOrClearBitInArray_0206df6c(void*, unsigned char*, int, int);
+int TestBitInByteArray_0206dfb0(int, unsigned char*, int);
+ColorHolder0204bd7c* GetPtrField0x114_02033fa0(void*);
 int ConvertColorToDecimalOffset30000(ColorHolder0204bd7c*);
 extern "C" int func_0202c540(int*);
-int GetField5cb0Value(char*);
-int GetField5cb4Value(char*);
-int GetField5cb8Value(char*);
+int GetField5cb0Value_0201079c(char*);
+int GetField5cb4Value_020107d0(char*);
+int GetField5cb8Value_02010804(char*);
 TimeOfDay ConvertToTimeOfDay(float);
-void SetField5cb0AndRecordByte0(char*, int);
-void SetField5cb4AndRecordByte1(char*, int);
+void SetField5cb0AndRecordByte0_02010774(char*, int);
+void SetField5cb4AndRecordByte1_020107a8(char*, int);
 void SetSlotByte020107dc(char*, int);
-int CheckField0NonZero(int*);
+int CheckField0NonZero_0202b7d8(int*);
 extern "C" int func_0202c508(int*);
 extern "C" void func_ov017_021d0924(int, int, int, unsigned short);
-int GetBitsInField0(unsigned int*, unsigned int);
+int GetBitsInField0_0203b4c4(unsigned int*, unsigned int);
 extern "C" void func_ov017_021bc6e0(LoadEvent021bbfc4*, int, int);
 int GetField0xcd0209c3ac(char*);
 extern "C" void func_0209c2e0(void*, int, int);
@@ -116,7 +116,7 @@ extern "C" ARM int func_ov017_021bbfc4(LoadEvent021bbfc4* self) {
     GameResources* resources = func_ov017_0218b5b0();
     int* search = func_0202ae18();
     GameObject* original = game->GetUnknownGameObject();
-    GetFieldIfFlag4((char*)game);
+    GetFieldIfFlag4_020100f8((char*)game);
     Zone3D* zone = func_02012fe4();
     if (IsSubBrightnessTransitionActive(resources)) return self->next;
     for (int i = 0; i < 4; ++i) {
@@ -154,8 +154,8 @@ extern "C" ARM int func_ov017_021bbfc4(LoadEvent021bbfc4* self) {
         self->script.moved = 1;
         if (self->source.zone != zone->currentZoneID_) {
             loader->RemoveTask(self->task);
-            Ticket021bbfc4* ticket = GetField0x3f8Address(game);
-            SetFlag0x9c6((SetFlagStruct*)resources->unknown_ptr_36d0, 1);
+            Ticket021bbfc4* ticket = GetField0x3f8Address_0200fd0c(game);
+            SetFlag0x9c6_020213fc((SetFlagStruct*)resources->unknown_ptr_36d0, 1);
             InitStruct02070378((char*)ticket);
             ticket->zone = self->source.zone;
             ticket->pending = 1;
@@ -171,34 +171,34 @@ extern "C" ARM int func_ov017_021bbfc4(LoadEvent021bbfc4* self) {
         return self->next;
     }
     loader->RemoveTask(self->task);
-    if (self->flags & 0x100) OrBitsIntoField0(GetDataPtr02114e04_020d6c00(), 1);
+    if (self->flags & 0x100) OrBitsIntoField0_020466e4(GetDataPtr02114e04_020d6c00(), 1);
     self->copiedParameter = self->script.parameter;
     int transition;
     int restart;
     int reposition;
     int exists;
     Flags021bbfc4* flags = (Flags021bbfc4*)func_0205ec34();
-    if (self->reset) SetOrClearBitInArray(flags, flags->bits, self->key + 0x38e, 0);
+    if (self->reset) SetOrClearBitInArray_0206df6c(flags, flags->bits, self->key + 0x38e, 0);
     exists = 0;
-    if (TestBitInByteArray((int)flags, flags->bits, self->key + 0x38e)) exists = 1;
+    if (TestBitInByteArray_0206dfb0((int)flags, flags->bits, self->key + 0x38e)) exists = 1;
     if (exists) {
         SetBrightness(resources, 0, 0x28);
         ((GameView021bbfc4*)game)->pending = 0;
         func_ov017_021bb27c(self);
         self->inactive = 1;
-        SetFlag0x9c6((SetFlagStruct*)resources->unknown_ptr_36d0, 0);
+        SetFlag0x9c6_020213fc((SetFlagStruct*)resources->unknown_ptr_36d0, 0);
         return self->next;
     }
     transition = 0;
     restart = 0;
     reposition = 0;
     if (self->reset) transition = 1;
-    if (self->flags & 0x80) self->script.zone = ConvertColorToDecimalOffset30000(GetPtrField0x114(original));
+    if (self->flags & 0x80) self->script.zone = ConvertColorToDecimalOffset30000(GetPtrField0x114_02033fa0(original));
     if (self->script.zone != zone->currentZoneID_) transition = 1;
     if (func_0202c540(search) && self->hasTime) {
-        if (self->chapter != GetField5cb0Value((char*)game) || self->entry != GetField5cb4Value((char*)game) || self->slot != GetField5cb8Value((char*)game) || ConvertToTimeOfDay(self->dayTimer) != game->GetTimeOfDay()) {
-            SetField5cb0AndRecordByte0((char*)game, self->chapter);
-            SetField5cb4AndRecordByte1((char*)game, self->entry);
+        if (self->chapter != GetField5cb0Value_0201079c((char*)game) || self->entry != GetField5cb4Value_020107d0((char*)game) || self->slot != GetField5cb8Value_02010804((char*)game) || ConvertToTimeOfDay(self->dayTimer) != game->GetTimeOfDay()) {
+            SetField5cb0AndRecordByte0_02010774((char*)game, self->chapter);
+            SetField5cb4AndRecordByte1_020107a8((char*)game, self->entry);
             SetSlotByte020107dc((char*)game, self->slot);
             game->SetDayTimer(self->dayTimer);
             LightingManager* lighting = LightingManager::GetInstance();
@@ -209,29 +209,29 @@ extern "C" ARM int func_ov017_021bbfc4(LoadEvent021bbfc4* self) {
             restart = 1;
         }
     }
-    int entry = GetField5cb4Value((char*)game);
-    int chapter = GetField5cb0Value((char*)game);
+    int entry = GetField5cb4Value_020107d0((char*)game);
+    int chapter = GetField5cb0Value_0201079c((char*)game);
     int current = chapter * 1000 + entry;
     unsigned int nextChapter = self->script.chapter;
     unsigned int nextEntry = self->script.entry;
     int next = nextChapter * 1000 + nextEntry;
     if (!transition && !self->script.skip && nextChapter <= 19 && (nextChapter && nextEntry) && current < next) {
-        SetField5cb0AndRecordByte0((char*)game, nextChapter);
-        SetField5cb4AndRecordByte1((char*)game, self->script.entry);
-        if (CheckField0NonZero(search)) {
+        SetField5cb0AndRecordByte0_02010774((char*)game, nextChapter);
+        SetField5cb4AndRecordByte1_020107a8((char*)game, self->script.entry);
+        if (CheckField0NonZero_0202b7d8(search)) {
             if (func_0202c540(search)) { reposition = restart = 1; }
         }
         if (func_0202c508(search)) {
-            int chapter = GetField5cb0Value((char*)game);
-            int entry = GetField5cb4Value((char*)game);
-            int slot = GetField5cb8Value((char*)game);
+            int chapter = GetField5cb0Value_0201079c((char*)game);
+            int entry = GetField5cb4Value_020107d0((char*)game);
+            int slot = GetField5cb8Value_02010804((char*)game);
             func_ov017_021d0924(2, flags->index, 0, (unsigned short)((chapter << 10) | (entry << 5) | slot));
         }
         transition = 1;
     }
     if (self->restart || ((GameView021bbfc4*)game)->restart) restart = 1;
     if (transition) {
-        Ticket021bbfc4* ticket = GetField0x3f8Address(game);
+        Ticket021bbfc4* ticket = GetField0x3f8Address_0200fd0c(game);
         InitStruct02070378((char*)ticket);
         ticket->zone = self->script.zone;
         ticket->parameter = self->parameter;
@@ -242,14 +242,14 @@ extern "C" ARM int func_ov017_021bbfc4(LoadEvent021bbfc4* self) {
             ticket->rotation = player->obj3D_.rotation_.y;
             ticket->positioned = 1;
         }
-        if (GetBitsInField0((unsigned int*)resources, 0x1000)) ticket->flags |= 9;
+        if (GetBitsInField0_0203b4c4((unsigned int*)resources, 0x1000)) ticket->flags |= 9;
         ticket->restart = restart;
-        SetFlag0x9c6((SetFlagStruct*)resources->unknown_ptr_36d0, 1);
+        SetFlag0x9c6_020213fc((SetFlagStruct*)resources->unknown_ptr_36d0, 1);
         func_ov017_021bb27c(self);
         self->inactive = 1;
         return self->next;
     }
-    if (CheckField0NonZero(search) && self->script.request && self->searchIndex < 0 && func_0202c508(search)) func_ov017_021bc6e0(self, -1, self->flags);
+    if (CheckField0NonZero_0202b7d8(search) && self->script.request && self->searchIndex < 0 && func_0202c508(search)) func_ov017_021bc6e0(self, -1, self->flags);
     self->status = GetField0xcd0209c3ac(data_02109bf4);
     if (self->script.kind == 3) func_0209c2e0(data_02109bf4, 0, 0);
     if (((self->flags & 1) || (self->flags & 4)) && !self->restart) {
@@ -261,5 +261,5 @@ extern "C" ARM int func_ov017_021bbfc4(LoadEvent021bbfc4* self) {
     }
     if (self->restart && self->refresh) self->refresh = 0;
     self->restart = 0;
-    return GetBitsInField0((unsigned int*)resources, 0x1000) ? 13 : 12;
+    return GetBitsInField0_0203b4c4((unsigned int*)resources, 0x1000) ? 13 : 12;
 }

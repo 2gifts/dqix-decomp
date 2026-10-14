@@ -30,10 +30,10 @@ struct FlagWord02046708;
 #if defined(jpn)
 #define func_0202c04c func_0202bbfc
 #endif
-unsigned short GetGlobalHalf0x0();
+unsigned short GetGlobalHalf0x0_0202df58();
 void* GetDataPtr02114e04_020d6c00();
 int TestFlags02046708(FlagWord02046708*, unsigned int);
-int GetGlobalField0x10();
+int GetGlobalField0x10_0202d6a8();
 extern "C" int func_0202d8e8();
 extern "C" void func_0202db64(int, int, int);
 extern "C" void func_0202bc00(SearchStruct*, int);
@@ -41,14 +41,14 @@ extern "C" void func_0202bf40(SearchStruct*);
 extern "C" void func_0202c04c(SearchStruct*);
 extern "C" int func_0202c508(SearchStruct*);
 unsigned short GetEntryField0x4OrFieldA0202bc8c(SearchStruct*);
-signed char FindSignedByteIndex(SearchStruct*, int);
-int TestMaskBitBySignedByteIndex(SearchStruct*, int);
+signed char FindSignedByteIndex_0202bcbc(SearchStruct*, int);
+int TestMaskBitBySignedByteIndex_0202bd34(SearchStruct*, int);
 void RemoveSearchEntry0202c21c(SearchStruct*, int);
-int TestBitBySignedByteIndex(SearchStruct*, int);
-void SetFlagBitAt0xe(SearchStruct*, int);
-void SetSearchFlagBitAt0xc(SearchStruct*, int);
+int TestBitBySignedByteIndex_0202c1c0(SearchStruct*, int);
+void SetFlagBitAt0xe_0202c5bc(SearchStruct*, int);
+void SetSearchFlagBitAt0xc_0202c1e8(SearchStruct*, int);
 void SetSearchFlagBit0202c660(SearchStruct*, int);
-int GetGlobalField0x48();
+int GetGlobalField0x48_0202d6b8();
 
 // USA: func_0202b2f0
 extern "C" ARM void func_0202b2f0(SearchStruct* object) {
@@ -56,10 +56,10 @@ extern "C" ARM void func_0202b2f0(SearchStruct* object) {
     unsigned short savedFlags[4];
     unsigned short savedMask[4];
     for (int i = 0; i < 4; i++) {
-        if (i == object->selectors[GetGlobalHalf0x0()]) {
+        if (i == object->selectors[GetGlobalHalf0x0_0202df58()]) {
             continue;
         }
-        SearchEntry0202c178* entry = GetEntryBySignedByteIndex(object, i);
+        SearchEntry0202c178* entry = GetEntryBySignedByteIndex_0202c178(object, i);
         if (!entry) {
             continue;
         }
@@ -75,7 +75,7 @@ extern "C" ARM void func_0202b2f0(SearchStruct* object) {
         object->state = -1;
         return;
     }
-    switch (GetGlobalField0x10()) {
+    switch (GetGlobalField0x10_0202d6a8()) {
     case 7: {
         int value = func_0202d8e8();
         object->counter++;
@@ -105,10 +105,10 @@ extern "C" ARM void func_0202b2f0(SearchStruct* object) {
     }
     if (object->preserveEntries) {
         for (int i = 0; i < 4; i++) {
-            if (i == object->selectors[GetGlobalHalf0x0()]) {
+            if (i == object->selectors[GetGlobalHalf0x0_0202df58()]) {
                 continue;
             }
-            SearchEntry0202c178* entry = GetEntryBySignedByteIndex(object, i);
+            SearchEntry0202c178* entry = GetEntryBySignedByteIndex_0202c178(object, i);
             if (!entry) {
                 continue;
             }
@@ -145,21 +145,21 @@ selectorFound:
             }
         }
         object->pendingMask = 0;
-        int index = FindSignedByteIndex(object, 0);
+        int index = FindSignedByteIndex_0202bcbc(object, 0);
         if (!(object->activeMask & (1 << index))) {
             selection = &object->selection;
             for (int i = 1; i < 4; i++) {
-                int index = FindSignedByteIndex(object, i);
+                int index = FindSignedByteIndex_0202bcbc(object, i);
                 if ((object->activeMask & (1 << index)) && !(selection->excluded & (1 << i))) {
-                    if (!TestMaskBitBySignedByteIndex(object, i)) {
+                    if (!TestMaskBitBySignedByteIndex_0202bd34(object, i)) {
                         RemoveSearchEntry0202c21c(object, i);
                     }
-                } else if (TestBitBySignedByteIndex(object, i)) {
-                    if (!TestMaskBitBySignedByteIndex(object, i)) {
-                        SetFlagBitAt0xe(object, i);
+                } else if (TestBitBySignedByteIndex_0202c1c0(object, i)) {
+                    if (!TestMaskBitBySignedByteIndex_0202bd34(object, i)) {
+                        SetFlagBitAt0xe_0202c5bc(object, i);
                     }
-                } else if (TestMaskBitBySignedByteIndex(object, i)) {
-                    SetSearchFlagBitAt0xc(object, i);
+                } else if (TestMaskBitBySignedByteIndex_0202bd34(object, i)) {
+                    SetSearchFlagBitAt0xc_0202c1e8(object, i);
                     SetSearchFlagBit0202c660(object, i);
                     if (object->IsActive()) {
                         GameResources* resources = func_ov017_0218b5b0();
@@ -169,13 +169,13 @@ selectorFound:
             }
         } else {
             for (int i = 1; i < 4; i++) {
-                if (TestBitBySignedByteIndex(object, i) && !TestMaskBitBySignedByteIndex(object, i)) {
+                if (TestBitBySignedByteIndex_0202c1c0(object, i) && !TestMaskBitBySignedByteIndex_0202bd34(object, i)) {
                     RemoveSearchEntry0202c21c(object, i);
                 }
             }
         }
     } else {
-        SearchEntry0202c178* entry = GetEntryBySignedByteIndex(object, 0);
+        SearchEntry0202c178* entry = GetEntryBySignedByteIndex_0202c178(object, 0);
         object->selectors[1] = entry->selector1;
         object->selectors[2] = entry->selector2;
         object->selectors[3] = entry->selector3;
@@ -189,7 +189,7 @@ selectorFound:
             object->previousSelectors[3] = entry->selector3;
         }
     }
-    if (object->selectors[GetGlobalHalf0x0()] != 0 && GetGlobalField0x48() == 20) {
-        SetFlagBitAt0xe(object, 0);
+    if (object->selectors[GetGlobalHalf0x0_0202df58()] != 0 && GetGlobalField0x48_0202d6b8() == 20) {
+        SetFlagBitAt0xe_0202c5bc(object, 0);
     }
 }

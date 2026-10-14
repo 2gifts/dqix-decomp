@@ -7,6 +7,6 @@ enum { SIGNED_BYTE_OFFSET = 0x17c };
 #endif
 
 // USA: func_020535c8
-ARM int CheckSubstructByte0x7cPositive(signed char* obj) {
+ARM int CheckSubstructByte0x7cPositive_020535c8(signed char* obj) {
     return obj[SIGNED_BYTE_OFFSET] > 0;
 }

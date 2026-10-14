@@ -8,9 +8,9 @@ struct PartyInfo {
 
 extern "C" void *_ZN9GameState11GetInstanceEv();
 struct GameState;
-PartyInfo * GetPtrField0x2a04(GameState*);
+PartyInfo * GetPtrField0x2a04_02010828(GameState*);
 extern "C" void *_ZN9GameState21GetPartyMemberByIndexEi(void *gs, int idx);
-unsigned char * GetFieldAt0x150(unsigned char*);
+unsigned char * GetFieldAt0x150_02053c6c(unsigned char*);
 void CleanInvalidateCacheRange(const void *p, unsigned int size);
 extern "C" void LoadToMainObjStandardPalette(const void *src, unsigned int offset, unsigned int size);
 
@@ -21,14 +21,14 @@ extern "C" ARM void func_ov002_02161a8c() {
     colors[1]           = 0x7fff;
     colors[0]           = 0x2108;
     void *gs            = _ZN9GameState11GetInstanceEv();
-    PartyInfo *party    = GetPtrField0x2a04((GameState*)gs);
+    PartyInfo *party    = GetPtrField0x2a04_02010828((GameState*)gs);
     unsigned char count = party->count;
     for (unsigned char i = 0; i < count; i++) {
         int idx      = party->order[i];
         color        = &colors[1];
         void *member = _ZN9GameState21GetPartyMemberByIndexEi(gs, idx);
         if (member == 0) continue;
-        unsigned char *f = GetFieldAt0x150((unsigned char*)member);
+        unsigned char *f = GetFieldAt0x150_02053c6c((unsigned char*)member);
         if (f == 0) continue;
         unsigned char v = f[0x56a];
         if (v == 1 || v == 15) color = &colors[0];

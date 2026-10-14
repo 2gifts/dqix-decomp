@@ -11,29 +11,29 @@ extern "C" void* func_02012fe4(void);
 int fix32ReduceAngle0To2Pi(int angle);
 extern "C" void func_020399b0(GameObject* combatant, unsigned short arg1, int* vec3, int value);
 
-void* GetField0x3f8Address(GameState* battleStruct);
-unsigned char GetByte0x26c(char* obj);
+void* GetField0x3f8Address_0200fd0c(GameState* battleStruct);
+unsigned char GetByte0x26c_02039d7c(char* obj);
 struct Vector3i;
 
 struct Owner_1e80c;
 struct S_e820;
 struct ThreeWords_1e80c { int field0; int field4; int field8; };
-ThreeWords_1e80c GetThreeWordsAt0x70(Owner_1e80c* src);
-int GetSignedFieldAt0x7c(S_e820* p);
+ThreeWords_1e80c GetThreeWordsAt0x70_0201e80c(Owner_1e80c* src);
+int GetSignedFieldAt0x7c_0201e820(S_e820* p);
 
 // USA: func_ov017_0219c598  (semantic: DispatchVec3EventToFlaggedCombatants_0219c598)
 extern "C" ARM void func_ov017_0219c598(int* srcVec3, short* srcAngle, int forceFlag) {
     GameState* battleStruct = GameState::GetInstance();
-    unsigned char* field3f8 = (unsigned char*)GetField0x3f8Address(battleStruct);
+    unsigned char* field3f8 = (unsigned char*)GetField0x3f8Address_0200fd0c(battleStruct);
     void* dataBase = func_02012fe4();
     ((int)func_ov017_0218b5b0());
-    unsigned char* field2a04 = (unsigned char*)GetPtrField0x2a04(battleStruct);
+    unsigned char* field2a04 = (unsigned char*)GetPtrField0x2a04_02010828(battleStruct);
     GameObject* combatant = battleStruct->GetUnknownGameObject();
 
     if (field3f8[0xa] != 0 && forceFlag == 0) {
         return;
     }
-    if (field3f8[0x67] != 0 && GetByte0x26c((char*)combatant) != 0) {
+    if (field3f8[0x67] != 0 && GetByte0x26c_02039d7c((char*)combatant) != 0) {
         return;
     }
 
@@ -49,8 +49,8 @@ extern "C" ARM void func_ov017_0219c598(int* srcVec3, short* srcAngle, int force
         *(Vector3i*)vec3 = *(Vector3i const*)((int*)(field3f8 + 0x10));
         angle = *(short*)(field3f8 + 0x1c);
     } else {
-        *(Vector3i*)vec3 = *(Vector3i const*)((int*)&GetThreeWordsAt0x70((Owner_1e80c*)((char*)dataBase + RegionOffset6c)));
-        angle = GetSignedFieldAt0x7c((S_e820*)((char*)dataBase + RegionOffset6c));
+        *(Vector3i*)vec3 = *(Vector3i const*)((int*)&GetThreeWordsAt0x70_0201e80c((Owner_1e80c*)((char*)dataBase + RegionOffset6c)));
+        angle = GetSignedFieldAt0x7c_0201e820((S_e820*)((char*)dataBase + RegionOffset6c));
     }
 
     int value = fix32ReduceAngle0To2Pi(angle);

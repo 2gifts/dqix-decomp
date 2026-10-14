@@ -31,13 +31,13 @@ extern "C" void* func_02012fe4();
 extern "C" void* func_0202ae18();
 extern "C" void* func_0205ec34();
 void* GetDataPtr02114e04_020d6c00();
-GameObject* GetCombatantWithFlag0x1000(GameState*, int);
+GameObject* GetCombatantWithFlag0x1000_0200ff58(GameState*, int);
 int TestFlags02046708(FlagWord02046708*, unsigned int);
-void GetFields1a8And1ac(S3f58*, int*, int*);
-unsigned char GetField0x1b0(void*);
-int GetField0x3acValue(GameState*);
-int GetSignedByte0x1c9(void*);
-int TestBitInByteArray(int, unsigned char*, int);
+void GetFields1a8And1ac_02053f58(S3f58*, int*, int*);
+unsigned char GetField0x1b0_02053f74(void*);
+int GetField0x3acValue_020100a8(GameState*);
+int GetSignedByte0x1c9_02039874(void*);
+int TestBitInByteArray_0206dfb0(int, unsigned char*, int);
 int FindEntryByKeyPair02021394(Container02021394*, int, int, short*, short*);
 #if defined(jpn)
 #define data_020e704c data_020e78e8
@@ -63,9 +63,9 @@ extern "C" ARM int func_020236dc(CombatActionPosition* entries, unsigned char* g
     output.entries = entries;
     output.count = 0;
     for (int i = 0; i < 4; ++i) {
-        Member020236dc* member = (Member020236dc*)GetCombatantWithFlag0x100(game, i);
+        Member020236dc* member = (Member020236dc*)GetCombatantWithFlag0x100_0200ff1c(game, i);
         if (!member || !(member->recoveryFlags & 8)) continue;
-        if (GetCombatantWithFlag0x1000(game, i)) {
+        if (GetCombatantWithFlag0x1000_0200ff58(game, i)) {
             unsigned char index = 0;
             unsigned short zoneId = zone->unknown_4_;
             int excluded = 0;
@@ -83,11 +83,11 @@ extern "C" ARM int func_020236dc(CombatActionPosition* entries, unsigned char* g
         entry->flag11 = member->field1b2 && !TestFlags02046708(flags, 0x80000) ? 1 : 0;
         entry->flag12 = protagonist ? protagonist->obj3D_.GetField06() == member->obj3D_.GetField06() : 0;
         if (member->recoveryFlags & 0x10) {
-            GetFields1a8And1ac((S3f58*)member, &entry->position.x, &entry->position.z);
-            entry->group = GetField0x1b0(member);
+            GetFields1a8And1ac_02053f58((S3f58*)member, &entry->position.x, &entry->position.z);
+            entry->group = GetField0x1b0_02053f74(member);
             entry->variant = groups[entry->group];
             ++groups[entry->group];
-            if (i == GetField0x3acValue(game)) {
+            if (i == GetField0x3acValue_020100a8(game)) {
                 position->x = entry->position.x;
                 position->z = entry->position.z;
             }
@@ -101,10 +101,10 @@ extern "C" ARM int func_020236dc(CombatActionPosition* entries, unsigned char* g
         entry->elementId = 5;
         entry->palette = member->obj3D_.unknown_4_ + 4;
         GameObject* party = game->GetPartyMemberByIndex(i);
-        GameObject* active = GetCombatantWithFlag0x1000(game, i);
-        if (party && (member->obj3D_.unknown_4_ == 0 || active)) entry->type = GetSignedByte0x1c9(party) + 0x58;
+        GameObject* active = GetCombatantWithFlag0x1000_0200ff58(game, i);
+        if (party && (member->obj3D_.unknown_4_ == 0 || active)) entry->type = GetSignedByte0x1c9_02039874(party) + 0x58;
         else entry->type = member->obj3D_.unknown_4_ + 0x5b;
-        if (party) entry->flag13 = GetSignedByte0x1c9(party);
+        if (party) entry->flag13 = GetSignedByte0x1c9_02039874(party);
         if (member->combatFields_.savedState_130_->flags & 1) {
             entry->elementId = 6;
             entry->palette = 6;
@@ -124,7 +124,7 @@ extern "C" ARM int func_020236dc(CombatActionPosition* entries, unsigned char* g
             }
         }
     }
-    if (found && TestBitInByteArray((int)saved, saved->flags, 0x2b)) {
+    if (found && TestBitInByteArray_0206dfb0((int)saved, saved->flags, 0x2b)) {
         short x = 0;
         short z = 0;
         if (FindEntryByKeyPair02021394(container, zone->savedActor_.zoneId, (unsigned char)zone->savedActor_.nodeId, &x, &z)) {

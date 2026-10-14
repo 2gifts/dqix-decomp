@@ -25,7 +25,7 @@ struct Obj2081 {
 Entry0207f0ac* FindEntryByShortId0207f0ac(List0207f0ac*, int);
 Entry0207f6ac* FindEntryByShortId0207f6ac(List0207f6ac*, int);
 extern "C" int func_020813ec(void*, int);
-void CallFunc0204c804OnMatchingKey(Obj2081*, int);
+void CallFunc0204c804OnMatchingKey_0207fdcc(Obj2081*, int);
 
 // USA: func_02081224
 extern "C" ARM void func_02081224(Obj2081* object, int id) {
@@ -83,5 +83,5 @@ extern "C" ARM void func_02081224(Obj2081* object, int id) {
             position += spacing + entry->width;
         }
     }
-    CallFunc0204c804OnMatchingKey(object, id);
+    CallFunc0204c804OnMatchingKey_0207fdcc(object, id);
 }

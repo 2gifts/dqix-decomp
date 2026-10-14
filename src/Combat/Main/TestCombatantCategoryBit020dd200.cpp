@@ -8,7 +8,7 @@ enum { kOffset150 = 0x150 };
 
 #include "GameState/GameState.h"
 
-int TestBitInArray0x8ec(unsigned char* obj, int index);
+int TestBitInArray0x8ec_02083b00(unsigned char* obj, int index);
 
 struct Pair16_dd200 { unsigned short a; unsigned short b; };
 extern Pair16_dd200 data_020ee712[];
@@ -18,7 +18,7 @@ extern Pair16_dd200 data_020ee710[];
 ARM int TestCombatantCategoryBit020dd200(int combatantId, int category) {
     int result = 0;
     GameState* battleStruct = GameState::GetInstance();
-    GameObject* combatant = GetCombatantWithFlag0x100(battleStruct, combatantId);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(battleStruct, combatantId);
     if (combatant == 0) {
         return result;
     }
@@ -26,7 +26,7 @@ ARM int TestCombatantCategoryBit020dd200(int combatantId, int category) {
     while (data_020ee710[idx].a != 0xffff) {
         unsigned int cat2 = data_020ee712[idx].a & 0xff;
         if (cat2 == category) {
-            if (TestBitInArray0x8ec(*(unsigned char**)((char*)combatant + kOffset150), data_020ee710[idx].a) != 0) {
+            if (TestBitInArray0x8ec_02083b00(*(unsigned char**)((char*)combatant + kOffset150), data_020ee710[idx].a) != 0) {
                 result = 1;
             }
             break;

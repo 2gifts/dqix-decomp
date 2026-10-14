@@ -8,7 +8,7 @@ extern "C" void* func_ov017_0218b5b0(void);
 struct Obj021f672c;
 extern void InitObj_021f672c(struct Obj021f672c* obj);
 
-extern void SetBitsInField4(unsigned int* obj, unsigned int mask);
+extern void SetBitsInField4_0203b4d8(unsigned int* obj, unsigned int mask);
 
 struct SubBgControlBackup02074b64;
 extern void BackupSubBgControlRegisters(struct SubBgControlBackup02074b64* obj);
@@ -72,7 +72,7 @@ extern "C" ARM void func_ov011_0218438c(struct Struct_218438c* obj) {
     obj->f114 = 0;
     InitObj_021f672c((struct Obj021f672c*)((char*)obj + 0x118));
     obj->f18c = -1;
-    SetBitsInField4((unsigned int*)func_ov017_0218b5b0(), 0xc0);
+    SetBitsInField4_0203b4d8((unsigned int*)func_ov017_0218b5b0(), 0xc0);
     obj->f190 = (*(unsigned short*)0x4000304 & 0x8000) >> 15;
     obj->f1a4 = 0;
     obj->f1a5 = 0;

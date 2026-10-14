@@ -31,14 +31,14 @@ extern Global021dc324 data_ov025_021ef404;
 extern "C" Timer021dc324 _ZZ16GetTimer021ef974vE1s;
 Slot021dc324* GetSlotPtr02160f20(void*);
 int GetByte2105_021ea46c(void*);
-int GetByteField0x261Or1(void*);
+int GetByteField0x261Or1_ov000_0216f0bc(void*);
 Skill021dc324* SearchBothTables02079e2c(char*, int);
 int IsMatchingID02163690(int);
-int ClassifyField0x81fe(char*);
+int ClassifyField0x81fe_ov000_0215fc60(char*);
 extern "C" void func_ov025_021df5e4(void*, int, int);
 extern "C" int func_ov025_021df9f4(GameObject*);
-int CheckSubstructFlag0x10(unsigned char*);
-void SetSubstructByte0x6c(unsigned char*, int);
+int CheckSubstructFlag0x10_0204936c(unsigned char*);
+void SetSubstructByte0x6c_0204a030(unsigned char*, int);
 extern "C" void func_02033920(GameObject*, int, int);
 extern "C" void func_ov025_021ea474(void*);
 extern "C" void func_ov025_021eb6fc(void*, int);
@@ -51,10 +51,10 @@ extern "C" ARM void func_ov025_021dc324(BattleEffectWork021dc324* self) {
     Slot021dc324* slot = GetSlotPtr02160f20(self);
     body = &self->body;
     if (!GetByte2105_021ea46c(&self->display)) return;
-    ActionDataTables* data = GetData02108e10();
+    ActionDataTables* data = GetData02108e10_020797dc();
     ObjectRegion021dc324* objectRegion = &self->objectRegion;
     if (data_ov025_021ef404.active) {
-        if (!GetByteField0x261Or1(body->checkTask)) return;
+        if (!GetByteField0x261Or1_ov000_0216f0bc(body->checkTask)) return;
         objectRegion->object.MakeHidden();
         self->object2.MakeHidden();
         int special = 0;
@@ -69,7 +69,7 @@ extern "C" ARM void func_ov025_021dc324(BattleEffectWork021dc324* self) {
             int actor = slot->actor->id;
             int target = slot->target->id;
             allow = 1;
-            if (ClassifyField0x81fe(battle)) {
+            if (ClassifyField0x81fe_ov000_0215fc60(battle)) {
                 if (actor == 0) allow = 0;
             }
             if (!body->active) allow = 0;
@@ -78,8 +78,8 @@ extern "C" ARM void func_ov025_021dc324(BattleEffectWork021dc324* self) {
             }
             GameObject* combatant = game->GetCombatantByIndex(target);
             if (func_ov025_021df9f4(combatant)) {
-                if (skill->id == 0xae && CheckSubstructFlag0x10((unsigned char*)combatant)) return;
-                if (_ZZ16GetTimer021ef974vE1s.flag) SetSubstructByte0x6c((unsigned char*)combatant, actor);
+                if (skill->id == 0xae && CheckSubstructFlag0x10_0204936c((unsigned char*)combatant)) return;
+                if (_ZZ16GetTimer021ef974vE1s.flag) SetSubstructByte0x6c_0204a030((unsigned char*)combatant, actor);
                 else func_02033920(combatant, actor, 1);
             }
         }
@@ -96,7 +96,7 @@ extern "C" ARM void func_ov025_021dc324(BattleEffectWork021dc324* self) {
             int ready;
             while (target) {
                 GameObject* combatant = readyGame->GetCombatantByIndex(target->id);
-                if (combatant && CheckSubstructFlag0x10((unsigned char*)combatant)) { ready = 0; goto readinessDone; }
+                if (combatant && CheckSubstructFlag0x10_0204936c((unsigned char*)combatant)) { ready = 0; goto readinessDone; }
                 target = target->next;
             }
             ready = 1;

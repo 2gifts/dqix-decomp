@@ -18,7 +18,7 @@ struct Globals0208e444 {
 extern struct Globals0208e444 data_02108fe4;
 
 // USA: func_0208e444
-ARM int CheckAndFillShortBuffer(char* v) {
+ARM int CheckAndFillShortBuffer_0208e444(char* v) {
     unsigned char* p = (unsigned char*)GameState::GetInstance() + 0x5000;
     unsigned char expected = p[expectedFieldOffset];
     unsigned char got = (unsigned char)((Script::Parameter*)((Variant02030b0c*)v))->ToInt();

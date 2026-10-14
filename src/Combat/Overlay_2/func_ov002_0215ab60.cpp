@@ -72,7 +72,7 @@ extern "C" ARM void func_ov002_0215ab60(FormationMenu* self) {
         Elem_0205d81c* positions = FindElementByC40205d81c(&self->elements, 0x18);
         if (positions) {
             GameState* gameState = GameState::GetInstance();
-            GetPtrField0x2a04(gameState);
+            GetPtrField0x2a04_02010828(gameState);
             u8 count = self->count;
             short originX = positions->xOrigin * 8;
             short originY = positions->yOrigin * 8;

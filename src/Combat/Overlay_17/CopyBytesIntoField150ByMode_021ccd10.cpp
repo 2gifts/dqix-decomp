@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
-int GetFieldAt0x150(unsigned char* obj);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* battleStruct, int combatantId);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 
 struct Src021ccd10 {
 	unsigned char id : 3;
@@ -14,10 +14,10 @@ struct Src021ccd10 {
 // USA: func_ov017_021ccd10  (semantic: CopyBytesIntoField150ByMode_021ccd10)
 extern "C" ARM void func_ov017_021ccd10(int unused0, char* p1raw, GameState* battleStruct) {
 	struct Src021ccd10* p1 = (struct Src021ccd10*)(p1raw + 4);
-	GameObject* c = GetCombatantWithFlag0x100(battleStruct, p1->id);
+	GameObject* c = GetCombatantWithFlag0x100_0200ff1c(battleStruct, p1->id);
 	if (!c) return;
 
-	unsigned char* dst = (unsigned char*)GetFieldAt0x150((unsigned char*)c);
+	unsigned char* dst = (unsigned char*)GetFieldAt0x150_02053c6c((unsigned char*)c);
 	if (!dst) return;
 
 	if (!p1->mode) {

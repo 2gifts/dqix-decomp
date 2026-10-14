@@ -47,7 +47,7 @@ extern "C" void* _ZN9GameState11GetInstanceEv(void);
 extern "C" void* _ZN16BackgroundLoader11GetInstanceEv(void);
 extern "C" void* func_ov017_0218b5b0(void);
 struct GameState;
-Combatant021b2fac* GetCombatantWithFlag0x100(GameState*, int);
+Combatant021b2fac* GetCombatantWithFlag0x100_0200ff1c(GameState*, int);
 void ResetEntriesAndNotify_021b33d8(void* p);
 extern "C" void _ZN8Object3D7DestroyEv(void* o);
 extern "C" int _ZN16BackgroundLoader18QueueLoadFileInGP2EPKcS1_P13SafeAllocator(void* l, const char* a, const char* b, void* alloc);
@@ -77,7 +77,7 @@ extern "C" void memcpy(void* d, const void* s, unsigned int n);
 extern "C" void func_ov017_02191508(int id, void* e);
 extern "C" void sprintf(char* buf, const char* fmt, ...);
 struct Struct_203dafc;
-void ClearEightWords(Struct_203dafc*);
+void ClearEightWords_0203dafc(Struct_203dafc*);
 void RestorePairTables0207df90(char* p);
 void BackupPairTables0207dfac(char* p);
 extern "C" void _ZN8Object3D25LoadFromCCHROrCMOTArchiveEP21ObjectArchiveLoadInfoPFiPN4BCFG15AnimationRecordEE(void* o, void* info, void* cb);
@@ -85,7 +85,7 @@ extern "C" void _ZN8Object3D8SetScaleEiii(void* o, int x, int y, int z);
 struct Bytes02033b88;
 void SetByte0xbeShiftPrev(Bytes02033b88*, int);
 extern "C" void _ZN8Object3D17SetInheritedAlphaEi(void* o, int a);
-void SetFlag0x1ceBit0x4(unsigned char*);
+void SetFlag0x1ceBit0x4_02039d48(unsigned char*);
 extern "C" void func_ov017_02191fec(void* p, int v);
 
 extern char data_ov017_021d7a78[];
@@ -118,7 +118,7 @@ extern "C" ARM void func_ov017_021b2fac(struct Task021b2fac* task) {
     gs = _ZN9GameState11GetInstanceEv();
     loader = _ZN16BackgroundLoader11GetInstanceEv();
     mgr = func_ov017_0218b5b0();
-    c = GetCombatantWithFlag0x100((GameState*)gs, task->combatantId);
+    c = GetCombatantWithFlag0x100_0200ff1c((GameState*)gs, task->combatantId);
     if (c == 0) {
         ResetEntriesAndNotify_021b33d8(task);
         task->done = 1;
@@ -166,7 +166,7 @@ extern "C" ARM void func_ov017_021b2fac(struct Task021b2fac* task) {
     }
     if (task->state == 3) {
         if (func_ov017_021b3e14(task) != 0) {
-            c2 = GetCombatantWithFlag0x100((GameState*)gs, task->combatantId);
+            c2 = GetCombatantWithFlag0x100_0200ff1c((GameState*)gs, task->combatantId);
             if (c2->field9c != 0) {
                 m = func_ov017_0218b5b0();
                 CallHelperIfCheckPasses_0218fcf8((int)m, task->combatantId, c2->field9c);
@@ -217,7 +217,7 @@ extern "C" ARM void func_ov017_021b2fac(struct Task021b2fac* task) {
             if (_ZN16BackgroundLoader21GetDetailedTaskStatusEi(loader, task->taskId) == 2) {
                 _ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(loader, task->taskId, &file5, &size5);
                 if (file5 != 0) {
-                    ClearEightWords((Struct_203dafc*)&info);
+                    ClearEightWords_0203dafc((Struct_203dafc*)&info);
                     info.data = file5;
                     info.size = size5;
                     info.alloc = alloc4;
@@ -230,7 +230,7 @@ extern "C" ARM void func_ov017_021b2fac(struct Task021b2fac* task) {
             SetByte0xbeShiftPrev((Bytes02033b88*)c, 0);
             _ZN8Object3D11DisableFlagEi(c, 0x200);
             _ZN8Object3D17SetInheritedAlphaEi(c, 0);
-            SetFlag0x1ceBit0x4((unsigned char*)c);
+            SetFlag0x1ceBit0x4_02039d48((unsigned char*)c);
             func_ov017_02191fec(mgr, c->field4);
             _ZN16BackgroundLoader10RemoveTaskEi(loader, task->taskId);
             task->taskId = -1;

@@ -1,13 +1,13 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
-int GetSignedByte0x2d0(void* obj);
-int GetSignedByte0x2d1(void* obj);
-int GetSignedByte0x1c8(void* obj);
-int GetSignedByte0x1c9(void* obj);
-GameObject* GetCombatantWithFlag0x1000(GameState* battleStruct, int combatantId);
+int GetSignedByte0x2d0_020546a8(void* obj);
+int GetSignedByte0x2d1_020546bc(void* obj);
+int GetSignedByte0x1c8_02039860(void* obj);
+int GetSignedByte0x1c9_02039874(void* obj);
+GameObject* GetCombatantWithFlag0x1000_0200ff58(GameState* battleStruct, int combatantId);
 
 struct LocalEvt021ce32c {
 	unsigned char tag;
@@ -28,18 +28,18 @@ ARM void EnqueueEventTag38_021ce32c(int id) {
 #else
  enum {regionalOffset0=0x2d2};
 #endif
-	void* p = GetData02100044();
-	GameObject* c = GetCombatantWithFlag0x1000(GameState::GetInstance(), id);
+	void* p = GetData02100044_0202ae24();
+	GameObject* c = GetCombatantWithFlag0x1000_0200ff58(GameState::GetInstance(), id);
 	if (c == NULL) {
 		return;
 	}
 	LocalEvt021ce32c buf;
 	buf.tag = 0x26;
 	buf.field4 = id;
-	buf.field6 = GetSignedByte0x2d0(c);
-	buf.field7 = GetSignedByte0x2d1(c);
-	buf.field8 = GetSignedByte0x1c8(c);
-	buf.field9 = GetSignedByte0x1c9(c);
+	buf.field6 = GetSignedByte0x2d0_020546a8(c);
+	buf.field7 = GetSignedByte0x2d1_020546bc(c);
+	buf.field8 = GetSignedByte0x1c8_02039860(c);
+	buf.field9 = GetSignedByte0x1c9_02039874(c);
 	buf.fielda = *(unsigned char*)((char*)c + regionalOffset0);
 	func_0205e330(p, &buf, 0);
 }

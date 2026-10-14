@@ -45,9 +45,9 @@ extern "C" void func_0205d0e0(void* window);
 extern "C" void func_ov005_021589f4(EquipmentMenu* self);
 extern "C" int func_ov005_02158b3c(void* object, void* buffer);
 MenuElement* FindElementByC40205d81c(Struct_0205d81c* s, int key);
-int IsField0x9cEqual3(unsigned char*);
+int IsField0x9cEqual3_0204c7cc(unsigned char*);
 int CheckFlag30Or401_02157190(void* self);
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0* sound, int effect, int unk);
 void ResetEntryList0205d6a0(Entry_0205d6a0* window, int unk);
 // USA: func_ov005_02158878
@@ -59,7 +59,7 @@ extern "C" ARM void func_ov005_02158878(EquipmentMenu* self) {
         return;
     }
     if (self->step_ == 1) {
-        if (IsField0x9cEqual3((unsigned char*)(FindElementByC40205d81c((Struct_0205d81c*)&self->window_, 0)))) {
+        if (IsField0x9cEqual3_0204c7cc((unsigned char*)(FindElementByC40205d81c((Struct_0205d81c*)&self->window_, 0)))) {
             if (self->kind_ == 0xc || self->kind_ == 0xd)
                 self->flags_ |= 0x10000;
         }
@@ -88,7 +88,7 @@ extern "C" ARM void func_ov005_02158878(EquipmentMenu* self) {
             return;
         }
         clear = 1;
-    } else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2)) {
+    } else if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 2)) {
         clear = 1;
     }
     if (clear) {

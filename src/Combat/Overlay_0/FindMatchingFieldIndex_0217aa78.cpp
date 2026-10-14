@@ -12,7 +12,7 @@
 
 #include "GameState/GameState.h"
 
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 int GetBoundedField156_02171674(void* obj, int index);
 int GetBoundedField420_0217199c(void* obj, int index);
 
@@ -27,7 +27,7 @@ extern "C" ARM int func_ov000_0217aa78(void* obj, int limit, int flag) {
     if (combatant == 0) {
         return 0;
     }
-    int field150 = GetFieldAt0x150((unsigned char*)combatant);
+    int field150 = GetFieldAt0x150_02053c6c((unsigned char*)combatant);
     if (field150 == 0) {
         return 0;
     }

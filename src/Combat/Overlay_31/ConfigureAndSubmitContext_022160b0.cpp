@@ -3,7 +3,7 @@
 
 extern void* data_ov031_0224e5d8;
 
-int GetSharedHalfwordOrBattleDefault(void);
+int GetSharedHalfwordOrBattleDefault_020d4aa8(void);
 unsigned short GetOwnerDataFortuneValue020d4be8(void);
 extern "C" void func_ov031_02215ce0(void);
 
@@ -17,7 +17,7 @@ extern "C" ARM int func_ov031_022160b0(int arg) {
     }
     *(void**)((char*)data_ov031_0224e5d8 + 0x1000 + 0x300) = (char*)data_ov031_0224e5d8 + 0xf00;
     *(unsigned short*)((char*)data_ov031_0224e5d8 + 0x1300 + 0x4) = 0x400;
-    int v1 = GetSharedHalfwordOrBattleDefault();
+    int v1 = GetSharedHalfwordOrBattleDefault_020d4aa8();
     *(unsigned short*)((char*)data_ov031_0224e5d8 + 0x1300 + 0x6) = v1;
     unsigned short v2 = GetOwnerDataFortuneValue020d4be8();
     *(unsigned short*)((char*)data_ov031_0224e5d8 + 0x1300 + 0x8) = v2;

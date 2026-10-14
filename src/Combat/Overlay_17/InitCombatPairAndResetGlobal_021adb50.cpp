@@ -12,7 +12,7 @@ struct Struct_0205ba68;
 void SetupPointerTable0205ba68(struct Struct_0205ba68* s, int a, int b, int mode);
 struct Node0205bacc;
 void SetField0AndPropagate0205bacc(struct Node0205bacc* s, int val);
-int CallFunc020e0434With02153694(int value);
+int CallFunc020e0434With02153694_020e51cc(int value);
 void ProcessCombatEntry0205cb74(char* obj, int value);
 extern "C" void func_0205cc50(void* obj, int a, int b);
 #if defined(jpn)
@@ -22,8 +22,8 @@ extern char data_ov017_021d7f74[];
 extern char data_ov017_021d8104[];
 #endif
 struct ResetBytesAndSetByte0x16Data;
-void ResetBytesAndSetByte0x16(struct ResetBytesAndSetByte0x16Data* p, int val);
-void SetupGlobalObjType1AndInitSelfPointer(unsigned char* obj);
+void ResetBytesAndSetByte0x16_0205c77c(struct ResetBytesAndSetByte0x16Data* p, int val);
+void SetupGlobalObjType1AndInitSelfPointer_0205cd28(unsigned char* obj);
 
 // USA: func_ov017_021adb50
 ARM void InitCombatPairAndResetGlobal_021adb50(char* self) {
@@ -42,7 +42,7 @@ ARM void InitCombatPairAndResetGlobal_021adb50(char* self) {
 #if defined(jpn)
     int val = (int)data_ov017_021d7f74;
 #else
-    int val = CallFunc020e0434With02153694(0x1f);
+    int val = CallFunc020e0434With02153694_020e51cc(0x1f);
 #endif
 
     ProcessCombatEntry0205cb74(self + 0x44, val);
@@ -55,10 +55,10 @@ ARM void InitCombatPairAndResetGlobal_021adb50(char* self) {
 #endif
 
     self[regionalOffset0] = 1;
-    ResetBytesAndSetByte0x16((struct ResetBytesAndSetByte0x16Data*)(self + 0x48), 1);
+    ResetBytesAndSetByte0x16_0205c77c((struct ResetBytesAndSetByte0x16Data*)(self + 0x48), 1);
     self[regionalOffset1] = 1;
     self[regionalOffset0] = 1;
-    ResetBytesAndSetByte0x16((struct ResetBytesAndSetByte0x16Data*)(self + 0x48), 1);
+    ResetBytesAndSetByte0x16_0205c77c((struct ResetBytesAndSetByte0x16Data*)(self + 0x48), 1);
 #if defined(jpn)
 
 #else
@@ -67,5 +67,5 @@ ARM void InitCombatPairAndResetGlobal_021adb50(char* self) {
     *(short*)(self + 0xfa) = 0x40;
 
 #endif
-    SetupGlobalObjType1AndInitSelfPointer((unsigned char*)(self + 0x44));
+    SetupGlobalObjType1AndInitSelfPointer_0205cd28((unsigned char*)(self + 0x44));
 }

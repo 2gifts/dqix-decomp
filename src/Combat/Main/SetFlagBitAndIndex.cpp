@@ -7,7 +7,7 @@ struct SetFlagBitStruct {
 };
 
 // USA: func_02086598
-ARM void SetFlagBitAndIndex(struct SetFlagBitStruct* s, int n) {
+ARM void SetFlagBitAndIndex_02086598(struct SetFlagBitStruct* s, int n) {
     s->f54 |= 1 << n;
     s->f50 = n;
 }

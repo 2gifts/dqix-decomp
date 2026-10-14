@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void PushInterruptDisableState();
+void PushInterruptDisableState_020d8654();
 
 struct Obj020db964;
 void RefreshSlots0x5cFromCallbacks(Obj020db964* obj);
@@ -17,7 +17,7 @@ void ClearFlags020466f4(FlagWord020466f4* word, unsigned int mask);
 struct Struct020db0c4;
 void InitStruct020db0c4(Struct020db0c4* p);
 
-void InitFlag0x28FromOverlay(void* obj);
+void InitFlag0x28FromOverlay_020db814(void* obj);
 
 extern "C" void func_020d8694();
 
@@ -47,7 +47,7 @@ extern "C" ARM void func_020db894(Obj020db894* obj) {
     if (!obj->b51) {
         return;
     }
-    PushInterruptDisableState();
+    PushInterruptDisableState_020d8654();
     RefreshSlots0x5cFromCallbacks((Obj020db964*)obj);
     if (obj->b53) {
         RunFlaggedCallback020db844((Actor020db844*)obj, obj->b3c, obj->sh6a, 0);
@@ -61,6 +61,6 @@ extern "C" ARM void func_020db894(Obj020db894* obj) {
     ConfigureAndDispatchHandle020db304((int)obj, obj->b3c);
     ClearFlags020466f4(GetDataPtr02114e04_020d6c00(), 0x8000);
     InitStruct020db0c4((Struct020db0c4*)obj);
-    InitFlag0x28FromOverlay(obj);
+    InitFlag0x28FromOverlay_020db814(obj);
     func_020d8694();
 }

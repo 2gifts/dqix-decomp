@@ -11,12 +11,12 @@ extern "C" unsigned char* func_ov017_021b8478(void* p);
 extern "C" void func_02094030(int* obj, short a, short b, int c);
 char* GetGlobalField0x1c020421a0(void);
 void ReinitController02043204(char* obj);
-void* GetPtrField0x2a04(GameState* gs);
-int* GetGlobal02109030(void);
+void* GetPtrField0x2a04_02010828(GameState* gs);
+int* GetGlobal02109030_020936f8(void);
 unsigned int CountMatchingTableEntries02092cd0(BattlePhaseState020930d0* state, int kind);
 int FindMatchingTableIndex02092d18(BattlePhaseState020930d0* state, int kind);
 int ListContainsId(struct ListHead02046b60* list, int id);
-int CountSetBitsAt0x34(unsigned char* p);
+int CountSetBitsAt0x34_020a35f8(unsigned char* p);
 
 struct BattlePhaseState020930d0 {
     char unk0[0x30];
@@ -73,8 +73,8 @@ extern "C" ARM void func_020930d0(struct BattlePhaseState020930d0* s) {
     gf = (GlobalBlock020930d0*)GetGlobalField0x1c020421a0();
     res = func_ov017_0218b5b0();
     list = (struct ListHead02046b60*)res->unknown_ptr_array_36fc[0];
-    party = (struct CombatantIndexList020930d0*)GetPtrField0x2a04(gs);
-    g = GetGlobal02109030();
+    party = (struct CombatantIndexList020930d0*)GetPtrField0x2a04_02010828(gs);
+    g = GetGlobal02109030_020936f8();
     state = s->field35;
 
     if (state == 0) {
@@ -113,7 +113,7 @@ extern "C" ARM void func_020930d0(struct BattlePhaseState020930d0* s) {
             } else {
                 next = 6;
                 if (ListContainsId(list, 10)) {
-                    if (total == CountSetBitsAt0x34(func_ov017_021b8478(res->unknown_ptr_3718)) && c0 + c5 == 4) s->field3b = 1;
+                    if (total == CountSetBitsAt0x34_020a35f8(func_ov017_021b8478(res->unknown_ptr_3718)) && c0 + c5 == 4) s->field3b = 1;
                 }
             }
             s->field30 = next;

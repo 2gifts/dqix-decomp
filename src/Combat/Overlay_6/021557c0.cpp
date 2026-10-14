@@ -143,10 +143,10 @@ void* FindElementByKey020dedd0(Container020dedd0* c, int key);
 extern "C" void func_ov023_021dcd90(ItemInfoWindow* window, unsigned char inMenu);
 extern "C" void func_ov023_021dcae0(ItemInfoWindow* window, int item);
 extern "C" void func_ov023_021dced4(ItemInfoWindow* window, unsigned char multiplier);
-const char** CallFunc020e52a0(void* names, int item);
+const char** CallFunc020e52a0_020e5294(void* names, int item);
 extern "C" void func_020e4864(const char* src, char* dst, int a, int b, int c, int d);
-GameObject* GetCombatantWithFlag0x100(GameState* gameState, int combatantId);
-void* GetPtrField0x2a04(GameState* gameState);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* gameState, int combatantId);
+void* GetPtrField0x2a04_02010828(GameState* gameState);
 void SetFields_021dceac(char* window, int index, int name, unsigned char count, unsigned char maximum, unsigned char unk);
 
 extern unsigned char data_ov006_0215ff5c[8];
@@ -250,17 +250,17 @@ extern "C" ARM void func_ov006_021557c0(AlchemyPot* self) {
             names[2] = (const char*)GetFieldByKey020e0434((Container020e0310*)self->itemNames_, self->nextRecipe_->ingredients_[2]);
 #else
             memset(self->names_, 0, sizeof(self->names_));
-            const char** name = CallFunc020e52a0(self->itemNames_, self->nextRecipe_->ingredients_[0]);
+            const char** name = CallFunc020e52a0_020e5294(self->itemNames_, self->nextRecipe_->ingredients_[0]);
             if (name != 0) {
                 func_020e4864(*name, self->names_[0], 1, 0, 0, 0);
                 names[0] = self->names_[0];
             }
-            name = CallFunc020e52a0(self->itemNames_, self->nextRecipe_->ingredients_[1]);
+            name = CallFunc020e52a0_020e5294(self->itemNames_, self->nextRecipe_->ingredients_[1]);
             if (name != 0) {
                 func_020e4864(*name, self->names_[1], 1, 0, 0, 0);
                 names[1] = self->names_[1];
             }
-            name = CallFunc020e52a0(self->itemNames_, self->nextRecipe_->ingredients_[2]);
+            name = CallFunc020e52a0_020e5294(self->itemNames_, self->nextRecipe_->ingredients_[2]);
             if (name != 0) {
                 func_020e4864(*name, self->names_[2], 1, 0, 0, 0);
                 names[2] = self->names_[2];
@@ -269,9 +269,9 @@ extern "C" ARM void func_ov006_021557c0(AlchemyPot* self) {
         }
         unsigned char counts[3] = {0};
         GameState* gs = GameState::GetInstance();
-        Party021557c0* party = (Party021557c0*)GetPtrField0x2a04(gs);
+        Party021557c0* party = (Party021557c0*)GetPtrField0x2a04_02010828(gs);
         for (int i = 0; i < party->count; i++) {
-            char* actor = (char*)GetCombatantWithFlag0x100(gs, party->ids[i]);
+            char* actor = (char*)GetCombatantWithFlag0x100_0200ff1c(gs, party->ids[i]);
             if (actor != 0) {
                 for (int j = 0; j < 8; j++) {
                     BattleEquipmentView* equipment = *(BattleEquipmentView**)(actor

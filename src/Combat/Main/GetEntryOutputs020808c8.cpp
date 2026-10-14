@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-int StringLength(const char*);
+int StringLength_020d2ff0(const char*);
 
 struct TableA68;
 struct List0207f6ac {
@@ -15,8 +15,8 @@ struct MenuEntryContainer {
 };
 
 extern void* FindEntryByShortId0207f6ac(struct List0207f6ac* list, int entryId);
-extern void* FindEntryByKey(struct TableA68* table, int key);
-extern int IsValueEqual12(int x);
+extern void* FindEntryByKey_02072a68(struct TableA68* table, int key);
+extern int IsValueEqual12_02042190(int x);
 extern "C" int func_020420e8(void* value, int flag);
 
 struct Entry020808c8 {
@@ -41,18 +41,18 @@ ARM void GetEntryOutputs020808c8(void* container, int entryId, short* width, sho
     }
 
 #if !defined(jpn)
-    int isTwelve = IsValueEqual12(entry->fontSize);
+    int isTwelve = IsValueEqual12_02042190(entry->fontSize);
 #endif
     int kind = entry->kind;
 
     switch (kind) {
     case 0: {
-        void* found = FindEntryByKey(menu->textTable, entry->textId);
+        void* found = FindEntryByKey_02072a68(menu->textTable, entry->textId);
         if (found == NULL) {
             return;
         }
 #if defined(jpn)
-        int glyphUnits = StringLength((const char*)found) >> 1;
+        int glyphUnits = StringLength_020d2ff0((const char*)found) >> 1;
         int glyphPixels = entry->fontSize;
         *width = (short)(glyphUnits * glyphPixels);
 #else
@@ -70,7 +70,7 @@ ARM void GetEntryOutputs020808c8(void* container, int entryId, short* width, sho
             return;
         }
 #if defined(jpn)
-        int glyphUnits = StringLength(entry->literalText) >> 1;
+        int glyphUnits = StringLength_020d2ff0(entry->literalText) >> 1;
         int glyphPixels = entry->fontSize;
         *width = (short)(glyphUnits * glyphPixels);
 #else

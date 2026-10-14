@@ -28,7 +28,7 @@ struct GoldCombatant : GameObject {
     unsigned char pad_13c[0xc];
     MonsterGold* monster;
 };
-GameObject* GetCombatantWithFlag0x400ByID(int, int);
+GameObject* GetCombatantWithFlag0x400ByID_ov000_021536f8(int, int);
 extern "C" void* func_ov000_0215e958(void*);
 extern "C" int func_ov000_0215ffa0(void*);
 int IsIdOrEffectMatchTarget0215fd24(int, int);
@@ -45,7 +45,7 @@ extern "C" ARM void func_ov024_021e5c7c(GoldAction* action, int id, int unused, 
     if ((int)(float)NextRandomMax((Random*)action->battle, 2) <= 0) return;
     void* entry = func_ov000_0215e958(action->battle);
     if (!entry) return;
-    GoldInventory* inventory = (GoldInventory*)GetPtrField0x2a04(GameState::GetInstance());
+    GoldInventory* inventory = (GoldInventory*)GetPtrField0x2a04_02010828(GameState::GetInstance());
     int other;
     int amount;
     GoldActionEntry* source = action->source;
@@ -54,7 +54,7 @@ extern "C" ARM void func_ov024_021e5c7c(GoldAction* action, int id, int unused, 
     if (IsPartyMember(other)) return;
     amount = 0;
     if (IsPartyMember(id)) {
-        GoldCombatant* monster = (GoldCombatant*)GetCombatantWithFlag0x400ByID((int)action->battle, other);
+        GoldCombatant* monster = (GoldCombatant*)GetCombatantWithFlag0x400ByID_ov000_021536f8((int)action->battle, other);
         if (monster) {
             amount = (int)(0.1f * (float)(unsigned int)monster->monster->gold);
             if (amount > 100) amount = 100;

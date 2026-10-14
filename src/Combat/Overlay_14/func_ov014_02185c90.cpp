@@ -117,7 +117,7 @@ extern "C" int* func_ov014_02189430(void*, int, void*);
 extern "C" void func_ov023_021e257c(void*);
 struct List0204af64;
 void ResetList0204af64(List0204af64*);
-void SetWord0x18ClearByte0x1f(unsigned char*, int);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char*, int);
 extern "C" void func_0204b5b4(void*, int);
 struct Obj0204b5e8;
 void DispatchViaTable0204b5e8(Obj0204b5e8*, int, int);
@@ -288,7 +288,7 @@ extern "C" ARM void func_ov014_02185c90(struct Panel* self) {
                 e->s12 = 1;
                 func_ov023_021e257c(self->ents);
                 ResetList0204af64((List0204af64*)&list);
-                SetWord0x18ClearByte0x1f((unsigned char*)&list, 0);
+                SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)&list, 0);
                 list.lo = 0;
                 list.hi = 1;
                 func_0204b5b4(&list, 1);
@@ -316,7 +316,7 @@ extern "C" ARM void func_ov014_02185c90(struct Panel* self) {
         _ZN16BackgroundLoader17GetLoadedFileByIDEiPPvPj(loader, self->id70, &file, &size);
         int count = CountActiveEntries((ActiveEntry02046900*)file);
         ResetList0204af64((List0204af64*)&list);
-        SetWord0x18ClearByte0x1f((unsigned char*)&list, 0);
+        SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)&list, 0);
         list.lo = 0;
         list.hi = 1;
         func_0204b5b4(&list, 1);

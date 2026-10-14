@@ -10,7 +10,7 @@ struct S1f8 { char pad[0x1f8]; unsigned char active; char pad2[7]; float field20
 // USA: func_ov001_02161e00  (semantic: ApplyKnockbackToCombatant_02161e00)
 extern "C" ARM int func_ov001_02161e00(void* obj) {
     GameState* battle = GameState::GetInstance();
-    struct S1f8* combatant = (struct S1f8*)GetField0x3b0Value(battle);
+    struct S1f8* combatant = (struct S1f8*)GetField0x3b0Value_020100bc(battle);
     int flag = func_ov017_021d60f4(obj);
     float a = func_ov017_021d6110((char*)obj + 8);
     float b = func_ov017_021d6110((char*)obj + 0x10);

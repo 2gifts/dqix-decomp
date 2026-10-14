@@ -84,14 +84,14 @@ struct Wave {
 extern "C" {
 GameState* _ZN9GameState11GetInstanceEv();
 Combatant* _ZN9GameState21GetPartyMemberByIndexEi(GameState* gs, int index);
-unsigned char* _Z15GetFieldAt0x150Ph(unsigned char* obj);
-char* _Z15GetData02109dccv();
+unsigned char* _Z24GetFieldAt0x150_02053c6cPh(unsigned char* obj);
+char* _Z24GetData02109dcc_020a6084v();
 SlotWork* _Z21FindSlotById_021dae60P18Container_021dae60i(Container_021dae60* list, int id);
 int _Z29HasAnyFlags_021719f8_021719f8Pi(int* obj);
-int _Z25GetClampedArrayField0xd1cPci(char* base, int index);
-int _Z25GetClampedArrayField0xd3cPci(char* base, int index);
-Combatant* _Z25GetCombatantWithFlag0x400P9GameStatei(GameState* gs, int id);
-void* _Z18GetField0x3b0ValueP9GameState(GameState* gs);
+int _Z40GetClampedArrayField0xd1c_ov000_021761c8Pci(char* base, int index);
+int _Z40GetClampedArrayField0xd3c_ov000_021761ecPci(char* base, int index);
+Combatant* _Z34GetCombatantWithFlag0x400_0200fea4P9GameStatei(GameState* gs, int id);
+void* _Z27GetField0x3b0Value_020100bcP9GameState(GameState* gs);
 int _ZNK8Object3D9GetHeightEv(Combatant* obj);
 int _Z27ComputeTwoFromVec3_0202ec84PvP16Vec3copy0202ec84PiS2_(void* obj, Pos3* src, int* out1, int* out2);
 void _Z25RenderFlaggedIndexedEntryP16StructAt020473c8i(IconSprite* obj, int param1);
@@ -157,11 +157,11 @@ extern "C" ARM void func_ov026_021dddcc(BattleWork* self) {
     }
 
     __clear(icons, sizeof(icons));
-    data = _Z15GetData02109dccv();
+    data = _Z24GetData02109dcc_020a6084v();
     for (m = 0; m < 4; m++) {
         Combatant* c = _ZN9GameState21GetPartyMemberByIndexEi(gs, m);
         if (c != 0) {
-            unsigned char* f = _Z15GetFieldAt0x150Ph((unsigned char*)c);
+            unsigned char* f = _Z24GetFieldAt0x150_02053c6cPh((unsigned char*)c);
             if (f != 0) {
                 icons[m] = *(unsigned short*)(data + f[0x56a] * 0x20 + 0x1e);
             }
@@ -193,8 +193,8 @@ extern "C" ARM void func_ov026_021dddcc(BattleWork* self) {
         if (slot->cmds[slot->cursor] != 0xe && slot->cmds[slot->cursor] != 0x64) continue;
         target = slot->target;
         if (target < 0) continue;
-        group = _Z25GetClampedArrayField0xd1cPci(self->list, target);
-        target = _Z25GetClampedArrayField0xd3cPci(self->list, target);
+        group = _Z40GetClampedArrayField0xd1c_ov000_021761c8Pci(self->list, target);
+        target = _Z40GetClampedArrayField0xd3c_ov000_021761ecPci(self->list, target);
         switch (func_ov000_02171ffc(slot)) {
         case 3:
             counts[i] = nEnemies;
@@ -274,8 +274,8 @@ extern "C" ARM void func_ov026_021dddcc(BattleWork* self) {
         if (slot->cmds[slot->cursor] != 0xe && slot->cmds[slot->cursor] != 0x64) continue;
         target = slot->target;
         if (target < 0) continue;
-        group = _Z25GetClampedArrayField0xd1cPci(self->list, target);
-        target = _Z25GetClampedArrayField0xd3cPci(self->list, target);
+        group = _Z40GetClampedArrayField0xd1c_ov000_021761c8Pci(self->list, target);
+        target = _Z40GetClampedArrayField0xd3c_ov000_021761ecPci(self->list, target);
         mode = func_ov000_02171ffc(slot);
         Ids8 targets;
         targets = data_ov026_021de822;
@@ -297,7 +297,7 @@ extern "C" ARM void func_ov026_021dddcc(BattleWork* self) {
             break;
         }
         for (j = 0; j < count; j++) {
-            Combatant* c = _Z25GetCombatantWithFlag0x400P9GameStatei(gs, targets.v[j]);
+            Combatant* c = _Z34GetCombatantWithFlag0x400_0200fea4P9GameStatei(gs, targets.v[j]);
             int e;
             if (c == 0) continue;
             e = c->id - 0xc0;
@@ -317,7 +317,7 @@ extern "C" ARM void func_ov026_021dddcc(BattleWork* self) {
                 Vector3fix_Normalize(&dir, &shake);
                 shake.v[0] = (float)shake.v[0] * (0.2f * data_ov026_021def00.value);
                 shake.v[1] = (float)shake.v[1] * (0.2f * data_ov026_021def00.value);
-                view = _Z18GetField0x3b0ValueP9GameState(gs);
+                view = _Z27GetField0x3b0Value_020100bcP9GameState(gs);
                 pos = c->pos;
                 pos.v[1] += _ZNK8Object3D9GetHeightEv(c);
                 Vector3fix_Add(&pos, &shake, &pos);
@@ -347,7 +347,7 @@ extern "C" ARM void func_ov026_021dddcc(BattleWork* self) {
                 Vector3fix_Normalize(&dir, &shake);
                 shake.v[0] = 0;
                 shake.v[1] = 0;
-                view = _Z18GetField0x3b0ValueP9GameState(gs);
+                view = _Z27GetField0x3b0Value_020100bcP9GameState(gs);
                 pos = c->pos;
                 pos.v[1] += _ZNK8Object3D9GetHeightEv(c);
                 Vector3fix_Add(&pos, &shake, &pos);

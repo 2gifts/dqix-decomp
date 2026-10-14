@@ -10,9 +10,9 @@ struct TableEntry_0215ab54 { char pad0[0x90]; fix32_t radius; };
 
 struct Entry_203dce4;
 struct EntryList_203dce4;
-EntryList_203dce4* GetGlobalPtr021075f4(void);
-Entry_203dce4* GetEntryUnlessFlag0x8000(EntryList_203dce4* list, int id);
-int GetField0x3acValue(GameState* state);
+EntryList_203dce4* GetGlobalPtr021075f4_0203cf4c(void);
+Entry_203dce4* GetEntryUnlessFlag0x8000_0203dce4(EntryList_203dce4* list, int id);
+int GetField0x3acValue_020100a8(GameState* state);
 void SetQueueEntryChecked_02164214(void* table, int slot, int mode, int id, int target);
 void SetQueueEntryChecked_02164248(void* table, int slot, int mode, int id, int target);
 
@@ -30,7 +30,7 @@ extern "C" ARM void func_ov001_0215ab54(int mode, int id, int slot) {
     if (mode == 0 || mode == 1 || mode == 4 || mode == 5) {
         GameObject* object = NULL;
         if (mode == 0) {
-            object = state->GetGameObjectByIndex(GetField0x3acValue(state));
+            object = state->GetGameObjectByIndex(GetField0x3acValue_020100a8(state));
         } else if (mode == 1) {
             object = state->GetGameObjectByIndex(id);
         } else if (mode == 4) {
@@ -42,7 +42,7 @@ extern "C" ARM void func_ov001_0215ab54(int mode, int id, int slot) {
         SetQueueEntryChecked_02164214(data_ov001_02165880.table, slot, mode, id, (int)object);
         radius = object->obj3D_.GetRadius();
     } else if (mode == 2 || mode == 6) {
-        Entry_203dce4* entry = GetEntryUnlessFlag0x8000(GetGlobalPtr021075f4(), id);
+        Entry_203dce4* entry = GetEntryUnlessFlag0x8000_0203dce4(GetGlobalPtr021075f4_0203cf4c(), id);
         if (entry == NULL) return;
         SetQueueEntryChecked_02164248(data_ov001_02165880.table, slot, mode, id, (int)entry);
     }

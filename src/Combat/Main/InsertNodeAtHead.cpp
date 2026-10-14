@@ -6,7 +6,7 @@ struct DListNode {
 };
 
 // USA: func_020c8768
-ARM struct DListNode* InsertNodeAtHead(struct DListNode* oldHead, struct DListNode* newNode) {
+ARM struct DListNode* InsertNodeAtHead_020c8768(struct DListNode* oldHead, struct DListNode* newNode) {
     newNode->field4 = oldHead;
     newNode->field0 = 0;
     if (oldHead != 0) {

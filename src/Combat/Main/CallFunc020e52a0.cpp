@@ -21,7 +21,7 @@ extern "C" ARM char* func_020e207c(Container020e0310* names, char* destination, 
 }
 #else
 // USA: func_020e5294
-ARM void* CallFunc020e52a0(void* arr, int key) {
+ARM void* CallFunc020e52a0_020e5294(void* arr, int key) {
     return func_020e52a0(arr, key);
 }
 #endif

@@ -13,10 +13,10 @@ struct BitField0203402c {
     unsigned short bit15 : 1;
 };
 
-int CheckSubstructByte0x7cPositive(signed char* obj);
+int CheckSubstructByte0x7cPositive_020535c8(signed char* obj);
 int CheckField0xc4Low15BitsNonZero(struct BitField0203402c* p);
 extern "C" void* func_02012fe4(void);
-void* GetPointerFromArray0x3c(unsigned char* obj, unsigned int index);
+void* GetPointerFromArray0x3c_0201e838(unsigned char* obj, unsigned int index);
 extern "C" int func_02094b9c(void* self, void* data);
 void InitObj0219a674(unsigned char* self);
 extern "C" void func_ov017_0219b33c(void* a, void* buf, int b, int tag);
@@ -40,12 +40,12 @@ extern "C" ARM void func_ov017_02198618(void* p0) {
     GameState* battle = GameState::GetInstance();
     GameObject* c = battle->GetUnknownGameObject();
     if (c == NULL) return;
-    if (CheckSubstructByte0x7cPositive((signed char*)c) != 0) return;
+    if (CheckSubstructByte0x7cPositive_020535c8((signed char*)c) != 0) return;
     if (CheckField0xc4Low15BitsNonZero((struct BitField0203402c*)c) != 0) return;
 
     unsigned char* misc = (unsigned char*)func_02012fe4();
-    GetField0x3b0Value(battle);
-    unsigned char* arr = (unsigned char*)GetPointerFromArray0x3c(misc + regionalOffset0, 10);
+    GetField0x3b0Value_020100bc(battle);
+    unsigned char* arr = (unsigned char*)GetPointerFromArray0x3c_0201e838(misc + regionalOffset0, 10);
     struct Buf3021986 buf3 = *(struct Buf3021986*)((char*)c + 0x44);
 
     while (arr != NULL) {

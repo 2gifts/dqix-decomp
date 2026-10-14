@@ -9,7 +9,7 @@ extern "C" void func_0207d300(void* buf, void* b, int c, int d);
 
 // USA: func_ov004_02167a6c
 ARM int InitAndDispatchEntry_02167a6c(void* a, void* b) {
-	GetPtrField0x2a04(GameState::GetInstance());
+	GetPtrField0x2a04_02010828(GameState::GetInstance());
 	void* node = (void*)func_ov004_02167908(a, 5);
 	if (node != NULL) {
 		char buf[0x38];

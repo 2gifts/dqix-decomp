@@ -31,7 +31,7 @@ struct Obj021ead5c {
     char queue[1];
 };
 
-void* GetActiveCombatWork(void);
+void* GetActiveCombatWork_ov000_02160130(void);
 List021600f8* GetSlotPtr02160f20(void* work);
 ListNode021600f8* GetNodeAtIndex021600f8(List021600f8* list, int index);
 extern "C" int func_ov000_0215fd90(Member0215fd90* member, int flag);
@@ -60,7 +60,7 @@ extern "C" ARM void func_ov025_021ead5c(Obj021ead5c* self, int all) {
         }
         self->triggeredAll = 1;
     }
-    List021600f8* slot = GetSlotPtr02160f20(GetActiveCombatWork());
+    List021600f8* slot = GetSlotPtr02160f20(GetActiveCombatWork_ov000_02160130());
     unsigned char seen[4];
     int partyIds[4];
     __clear(seen, sizeof(seen));

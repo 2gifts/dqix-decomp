@@ -14,16 +14,16 @@ extern "C" void func_ov013_02184c8c(void *menu, void *member);
 extern "C" void *memset(void *dst, int value, unsigned int length);
 extern "C" unsigned char func_0209a678(char *table, void *member, unsigned short *skills);
 extern "C" void *func_0202ae18();
-int CheckField0NonZero(int *p);
+int CheckField0NonZero_0202b7d8(int *p);
 extern "C" void func_ov017_021c9e00(int id, int a, int b, int c);
 extern "C" void func_ov017_021ccc34(int id);
 extern "C" void func_ov017_021cd0d8(int id, unsigned short *skills, int count);
 const char *GetFieldByKey020e0434(Container020e0310 *texts, int id);
 void ResetListHeader020727d8(List020727d8 *list);
 extern "C" void func_020728ac(void *list, void *alloc, void *buffer, unsigned int length, int a4, int a5, int a6);
-void Zero4Bytes(void *reader);
+void Zero4Bytes_020e526c(void *reader);
 extern "C" void func_020e5604(void *reader, void *alloc, void *buffer, unsigned int length);
-void *GetFieldAt0x150(unsigned char *member);
+void *GetFieldAt0x150_02053c6c(unsigned char *member);
 extern "C" void func_02083e28(void *model, int arg);
 
 extern "C" const char data_ov002_0216d300[];
@@ -41,7 +41,7 @@ extern "C" ARM void func_ov002_02168354(char *self) {
     *(unsigned int *) (self + 0x247c) &= ~4;
     if (*(unsigned char *) (self + 0x2455) == 0) {
         char *member =
-            (char *) GetCombatantWithFlag0x100(gs, GetField110ArrayValue021574d4(self, *(short *) (self + 0x1c08)));
+            (char *) GetCombatantWithFlag0x100_0200ff1c(gs, GetField110ArrayValue021574d4(self, *(short *) (self + 0x1c08)));
         if (member != 0) {
             func_ov013_02184c8c(self + 0xd70 + 0x1000, member);
         }
@@ -51,7 +51,7 @@ extern "C" ARM void func_ov002_02168354(char *self) {
             memset(*(void **) (self + 0x2450), 0, 0x6e);
             *(unsigned char *) (self + 0x2455) =
                 func_0209a678(self + 0x3c + 0x2400, member, *(unsigned short **) (self + 0x2450));
-            if (CheckField0NonZero((int *) func_0202ae18())) {
+            if (CheckField0NonZero_0202b7d8((int *) func_0202ae18())) {
                 int id = GetField110ArrayValue021574d4(self, *(short *) (self + 0x1c08));
                 func_ov017_021c9e00(id, 0, 0, 0);
                 func_ov017_021ccc34(id);
@@ -73,12 +73,12 @@ extern "C" ARM void func_ov002_02168354(char *self) {
             }
             file                       = ExtractFileFromGP2(data_ov002_0216d300, data_ov002_0216d315, &size);
             *(void **) (self + 0x244c) = ((SafeAllocator *) (self + 0x64 + 0x800))->Allocate(0xc);
-            Zero4Bytes(*(void **) (self + 0x244c));
+            Zero4Bytes_020e526c(*(void **) (self + 0x244c));
             if (file != 0) {
                 func_020e5604(*(void **) (self + 0x244c), self + 0x64 + 0x800, file, size);
             }
             BackgroundLoader::RemoveLockGlobal();
-            func_02083e28(GetFieldAt0x150((unsigned char *) member), 0);
+            func_02083e28(GetFieldAt0x150_02053c6c((unsigned char *) member), 0);
         }
     }
     *(int *) (self + 0x1bc0) += 1;

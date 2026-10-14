@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_020c8a08
-ARM void DisableSystemControlBit0(void) {
+ARM void DisableSystemControlBit0_020c8a08(void) {
     unsigned int v;
     asm {
         mrc p15, 0, v, c1, c0, 0

@@ -31,7 +31,7 @@ struct ActionDisplay {
     unsigned short timer;
 };
 struct CombatStatus { char pad0[0x28]; short relatedActor; };
-void* GetActiveCombatWork();
+void* GetActiveCombatWork_ov000_02160130();
 List021600f8* GetSlotPtr02160f20(void*);
 ListNode021600f8* GetNodeAtIndex021600f8(List021600f8*, int);
 extern "C" short func_ov000_0215ffa0(ListNode021600f8*);
@@ -45,7 +45,7 @@ inline int IsPartyActor(int id) { return id >= 0 && id <= 3; }
 // USA: func_ov025_021ea604
 extern "C" ARM void func_ov025_021ea604(ActionDisplay* display, int index, int, Effect* effect) {
     GameState* game = GameState::GetInstance();
-    List021600f8* list = GetSlotPtr02160f20(GetActiveCombatWork());
+    List021600f8* list = GetSlotPtr02160f20(GetActiveCombatWork_ov000_02160130());
     ListNode021600f8* node = GetNodeAtIndex021600f8(list, index);
     int force = 0;
     if (display->blocked) {

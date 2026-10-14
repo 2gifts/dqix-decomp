@@ -5,9 +5,9 @@
 int DispatchByIndex021820bc(void* obj, int unused, int index, int arg);
 struct Obj02046574;
 struct Obj02046574* GetGlobalField0x1c020421a0(void);
-void* GetActiveCombatWork(void);
-GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
-GameObject* GetCombatantWithFlag0x400(GameState* battleStruct, int combatantId);
+void* GetActiveCombatWork_ov000_02160130(void);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* battleStruct, int combatantId);
+GameObject* GetCombatantWithFlag0x400_0200fea4(GameState* battleStruct, int combatantId);
 void SetIndexedName02046574(struct Obj02046574* obj, int index, char* str);
 
 struct Param021e5e84 {
@@ -26,7 +26,7 @@ extern "C" ARM int func_ov025_021e5e84(struct Param021e5e84* p, int b, int unuse
     GameState* bs = GameState::GetInstance();
     struct Obj02046574* names = GetGlobalField0x1c020421a0();
     int id = ids[0];
-    GetActiveCombatWork();
+    GetActiveCombatWork_ov000_02160130();
 #if defined(jpn)
     GameObject* c = bs->GetCombatantByIndex(id);
     if (c != NULL) {
@@ -37,12 +37,12 @@ extern "C" ARM int func_ov025_021e5e84(struct Param021e5e84* p, int b, int unuse
 
     int isPartyMember = (id >= 0 && id <= 3) ? 1 : 0;
     if (isPartyMember) {
-        GameObject* c = GetCombatantWithFlag0x100(bs, id);
+        GameObject* c = GetCombatantWithFlag0x100_0200ff1c(bs, id);
         if (c != NULL) {
             SetIndexedName02046574(names, p->nameIndex, (char*)c->baseStats_);
         }
     } else {
-        GameObject* c = GetCombatantWithFlag0x400(bs, id);
+        GameObject* c = GetCombatantWithFlag0x400_0200fea4(bs, id);
         if (c != NULL) {
             SetIndexedName02046574(names, p->nameIndex, (char*)c + 0x14c);
         }

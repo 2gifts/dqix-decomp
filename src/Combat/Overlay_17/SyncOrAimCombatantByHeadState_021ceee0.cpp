@@ -11,10 +11,10 @@ struct HeadNode02046b24 { signed char id; };
 int GetHeadNodeIdOrMinusOne(struct HeadNode02046b24** obj);
 
 struct ArrayContainsByteStruct;
-int ArrayContainsByte(struct ArrayContainsByteStruct* s, int val);
+int ArrayContainsByte_02086ef0(struct ArrayContainsByteStruct* s, int val);
 
-void* GetPtrField0x2a04(GameState* battleStruct);
-GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
+void* GetPtrField0x2a04_02010828(GameState* battleStruct);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* battleStruct, int combatantId);
 struct Vector3i;
 
 struct Obj02033834;
@@ -37,7 +37,7 @@ extern "C" ARM void func_ov017_021ceee0(void* unused0, struct Info021ceee0* info
     GameObject* held;
     struct HeadNode02046b24** list = *(struct HeadNode02046b24***)(obj + 0x3000 + RegionOffset6fc);
     held = battle->GetMaybeWanderingMonsterByIndex(info->field12);
-    if (ArrayContainsByte((struct ArrayContainsByteStruct*)GetPtrField0x2a04(battle), info->field12)) {
+    if (ArrayContainsByte_02086ef0((struct ArrayContainsByteStruct*)GetPtrField0x2a04_02010828(battle), info->field12)) {
         return;
     }
     if (!held) {
@@ -51,7 +51,7 @@ extern "C" ARM void func_ov017_021ceee0(void* unused0, struct Info021ceee0* info
         if (!(*(unsigned short*)held & 0x80)) {
             return;
         }
-        GameObject* target = GetCombatantWithFlag0x100(battle, info->field12);
+        GameObject* target = GetCombatantWithFlag0x100_0200ff1c(battle, info->field12);
         if (!target) {
             return;
         }

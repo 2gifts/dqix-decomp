@@ -3,7 +3,7 @@
 extern "C" int func_ov031_0221b780(int a0, int a1, int a2);
 int CheckAndCompare_0221b7fc(int a, int b, int c, int d);
 extern "C" int func_ov031_0221b848(void);
-unsigned short Crc16Compute(const unsigned short* table, const unsigned char* data, unsigned int len);
+unsigned short Crc16Compute_020d1cc8(const unsigned short* table, const unsigned char* data, unsigned int len);
 
 struct Data0224e6a0 {
 	unsigned char pad[8];
@@ -18,7 +18,7 @@ extern "C" ARM int func_ov031_0221b0ac(int obj) {
 	int base8 = obj;
 
 	do {
-		unsigned short crc = Crc16Compute((const unsigned short*)(obj + 0x500), (const unsigned char*)base8, 0xfe);
+		unsigned short crc = Crc16Compute_020d1cc8((const unsigned short*)(obj + 0x500), (const unsigned char*)base8, 0xfe);
 		*(unsigned short*)(obj + (i << 8) + 0xfe) = crc;
 		do {
 			func_ov031_0221b780(base5, 0x100, base8);

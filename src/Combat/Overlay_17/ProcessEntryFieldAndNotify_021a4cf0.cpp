@@ -7,11 +7,11 @@ enum { RegionOffset710 = 0x710, RegionOffset724 = 0x724, RegionOffset6fc = 0x6fc
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void* GetGlobalPtr021075f4(void);
+void* GetGlobalPtr021075f4_0203cf4c(void);
 struct EntryList_203dce4;
-struct Entry_203dce4* GetEntryUnlessFlag0x8000(struct EntryList_203dce4* list, int id);
-int GetField0x8(int* obj);
-int* GetGlobal02109418(void);
+struct Entry_203dce4* GetEntryUnlessFlag0x8000_0203dce4(struct EntryList_203dce4* list, int id);
+int GetField0x8_02040528(int* obj);
+int* GetGlobal02109418_02094d6c(void);
 extern "C" void func_02095924(int* g, int val);
 extern "C" void* func_0205ec34(void* arg);
 int LookupAndForEachNode020649b0(void* a, int mode, void* c);
@@ -34,13 +34,13 @@ struct LocalC021a4cf0 {
 
 // USA: func_ov017_021a4cf0
 ARM void ProcessEntryFieldAndNotify_021a4cf0(char* self) {
-    void* list = GetGlobalPtr021075f4();
+    void* list = GetGlobalPtr021075f4_0203cf4c();
     short id = *(short*)((char*)&data_ov017_021d76d8 + 0x2);
-    struct Entry_203dce4* entry = GetEntryUnlessFlag0x8000((struct EntryList_203dce4*)list, id);
+    struct Entry_203dce4* entry = GetEntryUnlessFlag0x8000_0203dce4((struct EntryList_203dce4*)list, id);
     if (entry == NULL) {
         return;
     }
-    int* field = (int*)GetField0x8((int*)entry);
+    int* field = (int*)GetField0x8_02040528((int*)entry);
     if (field == NULL) {
         return;
     }
@@ -48,7 +48,7 @@ ARM void ProcessEntryFieldAndNotify_021a4cf0(char* self) {
     if (*((unsigned char*)obj710 + 0x130) != 0) {
         return;
     }
-    int* g = GetGlobal02109418();
+    int* g = GetGlobal02109418_02094d6c();
     unsigned short v = *(unsigned short*)field;
     func_02095924(g, v & 0xff);
     GameState* bs = GameState::GetInstance();

@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
-extern int StringLength(const char* s);
+extern int StringLength_020d2ff0(const char* s);
 extern char data_ov002_0216d2fc[];
 
 struct CopySrc02168ca8 { int a; char* b; int c; };
@@ -27,5 +27,5 @@ extern "C" ARM void func_ov002_02168ca8(MsgBuf02168ca8* dst, CopySrc02168ca8* sr
     const char* text = src->b;
     if (text == 0) return;
     memset(dst->buf, 0, sizeof(dst->buf));
-    sprintf(dst->buf + StringLength((const char*)dst->buf), data_ov002_0216d2fc, text);
+    sprintf(dst->buf + StringLength_020d2ff0((const char*)dst->buf), data_ov002_0216d2fc, text);
 }

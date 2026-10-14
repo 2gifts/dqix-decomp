@@ -27,7 +27,7 @@ struct SearchCtx_02028524 {
 };
 
 struct Vec3s;
-void CopyVec3s(Vec3s*, Vec3s*);
+void CopyVec3s_0202861c(Vec3s*, Vec3s*);
 extern "C" int abs(int x);
 
 // USA: func_02028524
@@ -41,12 +41,12 @@ extern "C" ARM int func_02028524(struct SearchCtx_02028524* ctx, struct Vec3s32_
 
     int bestIdx = 0;
     struct Vec3s_02028524 v0;
-    CopyVec3s((Vec3s*)&v0, (Vec3s*)&nodes[0].vec);
+    CopyVec3s_0202861c((Vec3s*)&v0, (Vec3s*)&nodes[0].vec);
     int bestDist = abs(v0.x - (sx >> 16)) + abs(v0.y - (sy >> 16)) + abs(v0.z - (sz >> 16));
 
     for (int i = 1; i < ctx->count; i++) {
         struct Vec3s_02028524 v;
-        CopyVec3s((Vec3s*)&v, (Vec3s*)&nodes[i].vec);
+        CopyVec3s_0202861c((Vec3s*)&v, (Vec3s*)&nodes[i].vec);
         int d = abs(v.x - (sx >> 16)) + abs(v.y - (sy >> 16)) + abs(v.z - (sz >> 16));
         if (d < bestDist) {
             bestIdx = i;

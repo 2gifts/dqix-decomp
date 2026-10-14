@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct Struct021c90b4 {
@@ -84,7 +84,7 @@ extern "C" ARM void func_ov017_021c8f3c(int index, int mode) {
     pos.b = m->obj3D_.rotation_.y;
     pos.f = m->field130;
 
-    void* data = GetData02100044();
+    void* data = GetData02100044_0202ae24();
     msg.tag = 0x83;
     msg.kind = 0;
     CopyStruct021c90b4(&msg.payload.info, &info);

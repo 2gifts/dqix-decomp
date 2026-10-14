@@ -58,7 +58,7 @@ struct ViewObject
 
 PartEntry* FindElementByKey020dedd0(Container020dedd0* c, int key);
 int GetNibbleField020de2a4(Obj020de2a4* obj, int a, int b);
-CharacterColors* GetVariantShortTable02109928();
+CharacterColors* GetVariantShortTable02109928_02099cac();
 extern "C" void func_02099d34(void* obj, int a, int b, int c);
 
 // USA: func_ov015_0218c3a4
@@ -83,7 +83,7 @@ extern "C" ARM void func_ov015_0218c3a4(ViewObject* self, int part)
         if (part == 0)
             start = 0x200;
         position -= size - start;
-        CharacterColors* colors = GetVariantShortTable02109928();
+        CharacterColors* colors = GetVariantShortTable02109928_02099cac();
         const void* source = NULL;
         int length = count * 2;
         switch (count)

@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 #include "Combat/Overlay_0/GetCombatantByID.h"
 
-GameObject* GetCombatantWithFlag0x400ByID(int unused, int id);
+GameObject* GetCombatantWithFlag0x400ByID_ov000_021536f8(int unused, int id);
 extern "C" float func_ov024_021db358(GameObject* obj);
 extern "C" int func_ov000_0215eb1c(int a0, short* buf, int count, int flag);
 int PickRandomTableEntryResetCounter_021ed890(struct Random** rngPtr, int* maxAndFlag, short* table);
@@ -13,7 +13,7 @@ extern struct Buf8_021f2754 data_ov024_021feccc;
 
 // USA: func_ov024_021f2754
 extern "C" ARM int func_ov024_021f2754(struct Obj_021f2754* obj, int selfId, int unused, int* outCount, short* outArr) {
-	GameObject* self = GetCombatantWithFlag0x400ByID(obj->field0, selfId);
+	GameObject* self = GetCombatantWithFlag0x400ByID_ov000_021536f8(obj->field0, selfId);
 	if (!self) return 0;
 	if (func_ov024_021db358(self) < 0.5f) return 0;
 	struct Buf8_021f2754 buf = data_ov024_021feccc;

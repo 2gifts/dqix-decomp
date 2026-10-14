@@ -23,7 +23,7 @@ extern unsigned char data_02112a60[0x1800];
 
 void CleanInvalidateCacheRange(const void* addr, unsigned int size);
 int SendCommandToArm7(int command, int data, bool error);
-void WaitUntilChannel7Ready();
+void WaitUntilChannel7Ready_020d2880();
 extern "C" void* func_020d22f4(unsigned long flags);
 
 // USA: func_020d24c4
@@ -74,6 +74,6 @@ extern "C" ARM int func_020d24c4(unsigned long flags) {
     data_02112780.currentTag++;
     SetIRQInterruptState(lastState);
     if (flags & 2)
-        WaitUntilChannel7Ready();
+        WaitUntilChannel7Ready_020d2880();
     return true;
 }

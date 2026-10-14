@@ -52,8 +52,8 @@ struct MenuEntry_021716d0 {
 
 int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 void SwapGlobalEntry0203c108(struct Obj0203c108* obj, char* text);
-int IsFlag0x18Bit0x200Set(GameObject* obj);
-int AdjustValueByFieldFlag(void* obj, unsigned int value);
+int IsFlag0x18Bit0x200Set_ov000_02153a8c(GameObject* obj);
+int AdjustValueByFieldFlag_020dd290(void* obj, unsigned int value);
 extern "C" int func_ov000_02171210(void* a, void* b);
 extern "C" int* func_ov000_02170cf8(void* obj, int id);
 extern "C" void __clear(void* dst, int size);
@@ -75,18 +75,18 @@ extern "C" ARM void func_ov000_021716d0(MenuEntry_021716d0* self) {
     }
 
     GameState* gs = GameState::GetInstance();
-    GameObject* actor = GetCombatantWithFlag0x100(gs, self->memberIndex);
+    GameObject* actor = GetCombatantWithFlag0x100_0200ff1c(gs, self->memberIndex);
     int cost = self->spells[sel]->mpCost;
     int have = self->state.mp;
-    if (actor != NULL && IsFlag0x18Bit0x200Set(actor)) {
+    if (actor != NULL && IsFlag0x18Bit0x200Set_ov000_02153a8c(actor)) {
         cost = 0;
     } else if (self->spells[sel]->mpCost >= 0xff) {
         cost = 1;
     } else {
-        cost = AdjustValueByFieldFlag(actor, cost);
+        cost = AdjustValueByFieldFlag_020dd290(actor, cost);
     }
     if (self->spells[sel]->kind == 6) {
-        PartyInfo_021716d0* party = (PartyInfo_021716d0*)GetPtrField0x2a04(gs);
+        PartyInfo_021716d0* party = (PartyInfo_021716d0*)GetPtrField0x2a04_02010828(gs);
         have = party->gold;
         cost = self->spells[sel]->goldCost;
     }

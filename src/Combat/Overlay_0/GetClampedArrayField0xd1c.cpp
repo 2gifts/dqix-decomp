@@ -10,7 +10,7 @@ struct Obj021761c8 {
 };
 
 // USA: func_ov000_021761c8
-ARM int GetClampedArrayField0xd1c(char* base, int index) {
+ARM int GetClampedArrayField0xd1c_ov000_021761c8(char* base, int index) {
     if (index < 0 || index >= 8) index = 0;
     return ((struct Obj021761c8*)(base + 0x1000))->arr[index];
 }

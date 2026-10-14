@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_02053ec0
-ARM void SetByteFieldAt0x1a7(unsigned char* obj, int value) {
+ARM void SetByteFieldAt0x1a7_02053ec0(unsigned char* obj, int value) {
 #if defined(jpn)
     obj[0x19b] = value;
 #else

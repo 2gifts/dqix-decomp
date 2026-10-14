@@ -7,10 +7,10 @@ extern "C" void func_02094ab0(void);
 int GetGlobalField0x1c020421a0(void);
 void ReinitController02043204(char* obj);
 extern "C" void func_02043124(void* self);
-int GetGlobal02109400(void);
-void SetByteField0x253(void* obj);
-int GetFieldIfFlag4(char* obj);
-void ClearFlagBits(unsigned char* obj, int mask);
+int GetGlobal02109400_02094a00(void);
+void SetByteField0x253_020397c0(void* obj);
+int GetFieldIfFlag4_020100f8(char* obj);
+void ClearFlagBits_020a28b0(unsigned char* obj, int mask);
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
 extern "C" void func_020a0c0c(void);
 
@@ -27,10 +27,10 @@ extern "C" ARM void func_ov017_021ac32c(struct Obj021ac32c* self) {
     void* ctrl = (void*)GetGlobalField0x1c020421a0();
     ReinitController02043204((char*)ctrl);
     func_02043124(ctrl);
-    GetGlobal02109400();
+    GetGlobal02109400_02094a00();
     func_02094ab0();
     GameState* battle = GameState::GetInstance();
-    SetByteField0x253(battle->GetUnknownGameObject());
+    SetByteField0x253_020397c0(battle->GetUnknownGameObject());
 
     void* p = self->allocator.GetSignedAllocator();
     if (p != NULL) {
@@ -39,7 +39,7 @@ extern "C" ARM void func_ov017_021ac32c(struct Obj021ac32c* self) {
         func_020a0c0c();
     }
     self->field0xc = 0;
-    int flag = GetFieldIfFlag4((char*)battle);
+    int flag = GetFieldIfFlag4_020100f8((char*)battle);
     if (flag == 0) return;
-    ClearFlagBits((unsigned char*)flag, 3);
+    ClearFlagBits_020a28b0((unsigned char*)flag, 3);
 }

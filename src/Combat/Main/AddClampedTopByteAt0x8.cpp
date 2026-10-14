@@ -7,7 +7,7 @@ struct S_a0364 {
 };
 
 // USA: func_020a0364
-ARM void AddClampedTopByteAt0x8(struct S_a0364* p, unsigned int amount) {
+ARM void AddClampedTopByteAt0x8_020a0364(struct S_a0364* p, unsigned int amount) {
     unsigned int v = p->val + amount;
     if (v > 0xfa) {
         v = 0xfa;

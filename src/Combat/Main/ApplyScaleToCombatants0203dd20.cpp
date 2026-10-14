@@ -16,7 +16,7 @@ ARM void ApplyScaleToCombatants0203dd20(struct Obj0203dd20* obj) {
     unsigned int c;
     int i;
     battleStruct = GameState::GetInstance();
-    context = GetField0x3b0Value(battleStruct);
+    context = GetField0x3b0Value_020100bc(battleStruct);
     b = battleStruct->GetEffectiveDeltaTime();
     c = battleStruct->GetTickCount();
     for (i = 0; i < 0x20; i++) {

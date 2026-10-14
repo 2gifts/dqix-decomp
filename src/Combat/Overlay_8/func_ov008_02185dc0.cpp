@@ -156,22 +156,22 @@ extern unsigned char data_0211e33c[];
 extern unsigned short data_02114e30[];
 extern Obj0205eaa0 data_02108760;
 
-GameResources* GetWord0x0(int* gameState);
+GameResources* GetWord0x0_0200fb8c(int* gameState);
 MessageSystem* GetGlobalField0x1c020421a0();
 void SetBrightness(GameResources* resources, int screen, int brightness);
 int IsBrightnessTransitionActive(GameResources* resources);
 void LoadBattleBlock020ac4c0(void* records);
-void AddClamped16BitHighAt0x20(S_a05d8* records, unsigned int value);
-void CopyInBattleField0x7540(void* records);
+void AddClamped16BitHighAt0x20_020a05d8(S_a05d8* records, unsigned int value);
+void CopyInBattleField0x7540_020ac494(void* records);
 void* LoadFileIntoMemory(const char* path, void* archive, unsigned int* size);
 void ResetListHeader020727d8(List020727d8* list);
 extern "C" void _Z26SubmitAndRunScript02072928PvP12StreamHeaderiiS_h(void* list, StreamHeader* file, int size, int id, void* output, int female);
-int GetField0x3acValue(GameState* gameState);
-PartyMember* GetCombatantWithFlag0x100(GameState* gameState, int index);
+int GetField0x3acValue_020100a8(GameState* gameState);
+PartyMember* GetCombatantWithFlag0x100_0200ff1c(GameState* gameState, int index);
 const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
 void AppendString02042058(char* text, const char* append);
 int ComputeScaledSum0205bb84(Struct_0205bb84* cursor);
-int TestFlag0SetAndFlag1Clear(unsigned short* pad, int buttons);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* pad, int buttons);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0* sound, int effect, int value);
 
 extern "C" {
@@ -195,7 +195,7 @@ extern "C" void func_0204500c(MessageSystem*, const char*, int);
 extern "C" ARM void func_ov008_02185dc0(BattleRecords* self, unsigned int ticks)
 {
     GameState* gameState = GameState::GetInstance();
-    GameResources* resources = GetWord0x0((int*)gameState);
+    GameResources* resources = GetWord0x0_0200fb8c((int*)gameState);
     MessageSystem* messages = GetGlobalField0x1c020421a0();
     if (messages->busy_ != 0)
         messages->unk_19ae = 0;
@@ -241,8 +241,8 @@ extern "C" ARM void func_ov008_02185dc0(BattleRecords* self, unsigned int ticks)
                     {
                         PlayRecords records;
                         LoadBattleBlock020ac4c0(&records);
-                        AddClamped16BitHighAt0x20((S_a05d8*)&records, 1);
-                        CopyInBattleField0x7540(&records);
+                        AddClamped16BitHighAt0x20_020a05d8((S_a05d8*)&records, 1);
+                        CopyInBattleField0x7540_020ac494(&records);
                     }
                     memset(self->text_, 0, REGION_LAYOUT(0x800, 0x960));
 #if defined(jpn)
@@ -251,7 +251,7 @@ extern "C" ARM void func_ov008_02185dc0(BattleRecords* self, unsigned int ticks)
                     TextList list;
                     ResetListHeader020727d8((List020727d8*)&list);
                     _Z28SubmitScriptFromFile020727f8PvPKciS_h(&list, data_ov008_0218b400, self->comment_, path, 0);
-                    PartyMember* member = GetCombatantWithFlag0x100(gameState, GetField0x3acValue(gameState));
+                    PartyMember* member = GetCombatantWithFlag0x100_0200ff1c(gameState, GetField0x3acValue_020100a8(gameState));
                     ResetListHeader020727d8((List020727d8*)&list);
                     int female = member->data_->female_;
                     _Z28SubmitScriptFromFile020727f8PvPKciS_h(&list, path, self->title_, comment, female);
@@ -273,7 +273,7 @@ extern "C" ARM void func_ov008_02185dc0(BattleRecords* self, unsigned int ticks)
                     file = ExtractFileFromGP2(path, inner, &size);
                     if (file != NULL)
                     {
-                        PartyMember* member = GetCombatantWithFlag0x100(gameState, GetField0x3acValue(gameState));
+                        PartyMember* member = GetCombatantWithFlag0x100_0200ff1c(gameState, GetField0x3acValue_020100a8(gameState));
                         ResetListHeader020727d8((List020727d8*)&list);
                         int female = member->data_->female_;
                         _Z26SubmitAndRunScript02072928PvP12StreamHeaderiiS_h(&list, (StreamHeader*)file, size, self->title_, comment, female);
@@ -348,7 +348,7 @@ extern "C" ARM void func_ov008_02185dc0(BattleRecords* self, unsigned int ticks)
             self->top_ = selected;
 #endif
         unsigned char kind = self->items_[selected];
-        if (TestFlag0SetAndFlag1Clear(data_02114e30, 0x401) || result == 1)
+        if (TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x401) || result == 1)
         {
             if (!func_0202c540(func_0202ae18()) || kind != 5)
             {
@@ -360,7 +360,7 @@ extern "C" ARM void func_ov008_02185dc0(BattleRecords* self, unsigned int ticks)
                 return;
             }
         }
-        else if (TestFlag0SetAndFlag1Clear(data_02114e30, 0x806) || result == -2)
+        else if (TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x806) || result == -2)
         {
             self->state_ = 13;
             self->step_ = 0;

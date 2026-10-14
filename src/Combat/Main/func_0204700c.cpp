@@ -12,8 +12,8 @@ struct GameState {
     int GetTickCount() const;
 };
 
-void* GetField0x3b0Value(GameState* gs);
-extern "C" void _Z33SetField0x7cClearFields0x1ec0x1eePht(unsigned char* obj, short val);
+void* GetField0x3b0Value_020100bc(GameState* gs);
+extern "C" void _Z42SetField0x7cClearFields0x1ec0x1ee_0202e874Pht(unsigned char* obj, short val);
 
 struct AngleTrig0202e9a4;
 void SetAngleAndTrigTable0202e9a4(struct AngleTrig0202e9a4* obj, int angle);
@@ -46,9 +46,9 @@ extern "C" ARM int func_0204700c(char* self) {
 
     *(float*)(self + 0xc) = _fsub(*(float*)(self + 0xc), 0.4333f);
 
-    void* obj = GetField0x3b0Value(gs);
+    void* obj = GetField0x3b0Value_020100bc(gs);
     short ang16 = fix32ReduceAngle0To2Pi(_ffix(_fmul(4096.0f, ang)));
-    _Z33SetField0x7cClearFields0x1ec0x1eePht((unsigned char*)obj, ang16);
+    _Z42SetField0x7cClearFields0x1ec0x1ee_0202e874Pht((unsigned char*)obj, ang16);
     SetAngleAndTrigTable0202e9a4((struct AngleTrig0202e9a4*)obj,
                                  _ffix(_fmul(4096.0f, *(float*)(self + 0xc))));
 

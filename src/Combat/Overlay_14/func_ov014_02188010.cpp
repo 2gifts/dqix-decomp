@@ -101,9 +101,9 @@ struct SoundState02184f10;
 
 short FindMappedMemberId02080468(void* obj, int id);
 void ResetWithSub0208203c(Obj0208203c*);
-void CallFunc0204c804OnMatchingKey(Obj2081*, int);
+void CallFunc0204c804OnMatchingKey_0207fdcc(Obj2081*, int);
 int CheckFlagAndPointInElement_02186ff0(char*);
-bool TestFlag0SetAndFlag1Clear(unsigned short*, int);
+bool TestFlag0SetAndFlag1Clear_02012444(unsigned short*, int);
 MonsterRecord* GetArrayEntryByField1a_02187450(ObjStruct_02187450*, KeyStruct_02187450*);
 void UpdateSoundStateA_02184f10(SoundState02184f10*, int, int);
 void ProcessEntry02184e3c(unsigned char*);
@@ -191,7 +191,7 @@ extern "C" ARM void func_ov014_02188010(MonsterListScreen* self)
             else
                 ProcessEntry02184e3c((unsigned char*)self);
         }
-        else if (TestFlag0SetAndFlag1Clear(data_02114e30, 0x800))
+        else if (TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x800))
             func_ov014_02184dcc(self);
         else if (CheckFlagAndPointInElement_02186ff0((char*)self))
         {
@@ -203,11 +203,11 @@ extern "C" ARM void func_ov014_02188010(MonsterListScreen* self)
             self->monster_ = NULL;
             self->prevMonster_ = NULL;
             self->listFlags_ |= 0x10;
-            CallFunc0204c804OnMatchingKey((Obj2081*)self->menu_, self->group_);
+            CallFunc0204c804OnMatchingKey_0207fdcc((Obj2081*)self->menu_, self->group_);
             self->listStep_ = 0;
             self->cursor_ = NULL;
-            CallFunc0204c804OnMatchingKey((Obj2081*)self->menu_, 4);
-            CallFunc0204c804OnMatchingKey((Obj2081*)self->menu_, 3);
+            CallFunc0204c804OnMatchingKey_0207fdcc((Obj2081*)self->menu_, 4);
+            CallFunc0204c804OnMatchingKey_0207fdcc((Obj2081*)self->menu_, 3);
             func_ov014_02184d08(self);
         }
     }

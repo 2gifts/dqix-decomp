@@ -30,13 +30,13 @@ struct IndexList021c8c44 {
 
 extern const IndexList021c8c44 data_ov017_021d6d18;
 
-GameObject* GetCombatantWithFlag0x1000(GameState* gameState, int combatantId);
-int GetSignedByte0x2d0(void* obj);
+GameObject* GetCombatantWithFlag0x1000_0200ff58(GameState* gameState, int combatantId);
+int GetSignedByte0x2d0_020546a8(void* obj);
 extern "C" void func_0202738c(void* a, int b, int c, int d);
 extern "C" void func_02027304(void* obj, int id);
 extern "C" void func_ov017_021b86f8(void* obj, int key, int a, int flag);
 extern "C" int func_0202c508(void* search);
-Entry0207d9bc* GetData02108ea8(void);
+Entry0207d9bc* GetData02108ea8_0207d78c(void);
 void ResetEntryByKey0207da7c(Entry0207d9bc* arr, unsigned short key);
 void EnqueueEventForFlaggedCombatants_021a33e0(void* ctx, int key);
 void SetField0x1b2IfMatchOrFlag02053f7c(Obj02053f7c* obj, unsigned short a, int b);
@@ -59,8 +59,8 @@ extern "C" ARM void func_ov017_021c8c44(int id, Evt021c8c44* evt, GameState* gs,
         if (i == id) {
             match = 1;
         } else {
-            GameObject* c = GetCombatantWithFlag0x1000(inst, i);
-            if (c != NULL && id == GetSignedByte0x2d0(c)) {
+            GameObject* c = GetCombatantWithFlag0x1000_0200ff58(inst, i);
+            if (c != NULL && id == GetSignedByte0x2d0_020546a8(c)) {
                 match = 1;
             }
         }
@@ -77,7 +77,7 @@ extern "C" ARM void func_ov017_021c8c44(int id, Evt021c8c44* evt, GameState* gs,
 #endif
 
     if (func_0202c508(search)) {
-        ResetEntryByKey0207da7c(GetData02108ea8(), key);
+        ResetEntryByKey0207da7c(GetData02108ea8_0207d78c(), key);
         if (target != -1) {
             IndexList021c8c44 list = data_ov017_021d6d18;
             int n = 0;
@@ -97,12 +97,12 @@ extern "C" ARM void func_ov017_021c8c44(int id, Evt021c8c44* evt, GameState* gs,
     }
 
     for (int j = 0; j < 4; j++) {
-        Combatant021c8c44* c = (Combatant021c8c44*)GetCombatantWithFlag0x100(gs, j);
+        Combatant021c8c44* c = (Combatant021c8c44*)GetCombatantWithFlag0x100_0200ff1c(gs, j);
         if (c != NULL) {
             if (id == c->obj3D.unknown_4_) {
                 SetField0x1b2IfMatchOrFlag02053f7c((Obj02053f7c*)c, 0, 1);
             } else if (c->obj3D.unknown_0_ & 0x1000) {
-                Combatant021c8c44* leader = (Combatant021c8c44*)GetCombatantWithFlag0x100(gs, 0);
+                Combatant021c8c44* leader = (Combatant021c8c44*)GetCombatantWithFlag0x100_0200ff1c(gs, 0);
                 if (leader != NULL) {
                     SetField0x1b2IfMatchOrFlag02053f7c((Obj02053f7c*)c, leader->field_1b2, 1);
                 }

@@ -16,7 +16,7 @@ void SetChannelAFlag0205cef8(void* window);
 void SetChannelBFlag0205cf04(void* window);
 void InitTag02185310(unsigned char* self);
 extern "C" void func_ov013_02185cc0(void* self);
-void SetWord0x18ClearByte0x1f(unsigned char* graphics, int value);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char* graphics, int value);
 extern "C" void func_0204b5b4(void* graphics, int priority);
 struct AllocTarget0204b12c;
 void AllocateAndClearBuffer0204b12c(AllocTarget0204b12c* graphics, SafeAllocator* allocator);
@@ -151,14 +151,14 @@ extern "C" ARM void func_ov013_02184d80(SkillPointMenu02184d80* self) {
     {
         if (self->step_ == 0)
         {
-            FontBankLoader* music = GetGlobal02109400();
+            FontBankLoader* music = GetGlobal02109400_02094a00();
             BlankFunction02094b3c(music, 0xc);
             BlankFunction02094b30(music, 0x1f7, 0);
             self->step_++;
         }
         else if (self->step_ == 1)
         {
-            if (AlwaysTrue02094b4c(GetGlobal02109400()))
+            if (AlwaysTrue02094b4c(GetGlobal02109400_02094a00()))
             {
                 self->text_ = *(char**)((char*)GetGlobalField0x1c020421a0()
 #if defined(jpn)
@@ -167,14 +167,14 @@ extern "C" ARM void func_ov013_02184d80(SkillPointMenu02184d80* self) {
                 + 0x5c);
 #endif
 #if defined(jpn)
-                SetWord0x18ClearByte0x1f((unsigned char*)&self->backgrounds_[0], 0);
+                SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)&self->backgrounds_[0], 0);
                 self->backgrounds_[0].unk_1c_0_ = 0;
                 self->backgrounds_[0].unk_1c_4_ = 1;
                 func_0204b5b4(&self->backgrounds_[0], 1);
                 AllocateAndClearBuffer0204b12c((AllocTarget0204b12c*)&self->backgrounds_[0], &self->allocator_);
                 DispatchViaTable0204b5e8((Obj0204b5e8*)&self->backgrounds_[0], 0, 0);
                 BG1CNT = (BG1CNT & (3 | 0x40)) | (0x1d << 8);
-                SetWord0x18ClearByte0x1f((unsigned char*)&self->backgrounds_[1], 0);
+                SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)&self->backgrounds_[1], 0);
                 self->backgrounds_[1].unk_1c_0_ = 0;
                 self->backgrounds_[1].unk_1c_4_ = 2;
                 func_0204b5b4(&self->backgrounds_[1], 0);
@@ -185,7 +185,7 @@ extern "C" ARM void func_ov013_02184d80(SkillPointMenu02184d80* self) {
                 BackgroundGraphics02184d80* background = self->backgrounds_;
                 for (int i = 0; i < 2; background++, i++)
                 {
-                    SetWord0x18ClearByte0x1f((unsigned char*)background, 0);
+                    SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)background, 0);
                     background->unk_1c_0_ = 0;
                     background->unk_1c_4_ = data_ov013_02187d8a[i];
                     func_0204b5b4(background, data_ov013_02187d88[i]);

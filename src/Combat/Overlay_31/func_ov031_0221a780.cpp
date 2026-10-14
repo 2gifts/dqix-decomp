@@ -3,7 +3,7 @@
 
 extern "C" void func_ov031_022183b4(void* p);
 extern "C" int func_ov031_0221a89c(void);
-void SetGlobal0224e5a4IfNotNine(int a, int b);
+void SetGlobal0224e5a4IfNotNine_ov031_02211b08(int a, int b);
 bool IsContextInactive(ProcessorContext* context);
 
 extern char* data_ov031_0224e69c;
@@ -27,7 +27,7 @@ extern "C" ARM int func_ov031_0221a780(void) {
 			return 5;
 		default:
 			func_ov031_022183b4(data_ov031_0224e69c + 8);
-			SetGlobal0224e5a4IfNotNine(0x11, 0xffffa1db);
+			SetGlobal0224e5a4IfNotNine_ov031_02211b08(0x11, 0xffffa1db);
 			return 4;
 		}
 	} else {

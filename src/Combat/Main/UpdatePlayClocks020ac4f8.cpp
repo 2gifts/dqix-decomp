@@ -15,7 +15,7 @@ struct TimeStamp020104cc;
 void ComputeElapsedPlayTimeHMS020104cc(struct TimeStamp020104cc* obj, unsigned short* outHours, unsigned char* outMinutes, unsigned char* outSeconds);
 
 int LoadBattleBlock020ac4c0(void* dst);
-int CopyInBattleField0x7540(void* src);
+int CopyInBattleField0x7540_020ac494(void* src);
 
 unsigned long long GetCurrentTimestamp(void);
 
@@ -66,5 +66,5 @@ ARM int UpdatePlayClocks020ac4f8(int commit) {
         battle->altTimestamp_ = ts;
     }
 
-    return CopyInBattleField0x7540(&record);
+    return CopyInBattleField0x7540_020ac494(&record);
 }

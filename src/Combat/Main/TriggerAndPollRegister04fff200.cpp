@@ -5,7 +5,7 @@ unsigned int DisableIRQInterrupts(void);
 unsigned int SetIRQInterruptState(int mask);
 
 // USA: func_020d28f0
-ARM int TriggerAndPollRegister04fff200(void) {
+ARM int TriggerAndPollRegister04fff200_020d28f0(void) {
     if (func_020c7dc4() == 0) {
         return 1;
     }

@@ -41,7 +41,7 @@ void ResetEntryList0205d6a0(Entry_0205d6a0*, int);
 struct Struct0217f8c0;
 struct TableEntry0217f8c0* FindMatchingTableEntry0217f8c0(Struct0217f8c0*);
 int CheckFlagsOrField_0217c5f4_0217c5f4(void*);
-int CountSetBitsLow12_0x68(void*);
+int CountSetBitsLow12_0x68_ov000_0218155c(void*);
 struct Struct_0205d81c;
 void SetElementStateIfLess0217a9d0(int, int, int, Struct_0205d81c*);
 struct Struct_0205def8;
@@ -80,7 +80,7 @@ extern "C" ARM void func_ov000_0217d674(MenuState* menu, int arg1, int arg2) {
         menu->depth = menu->depth + 1;
         menu->modeStack[menu->depth] = 6;
         func_ov000_02176634(menu, FindMatchingTableEntry0217f8c0((Struct0217f8c0*)menu), 6, arg1, arg2);
-        SetElementStateIfLess0217a9d0(6, CountSetBitsLow12_0x68(menu), 4, (Struct_0205d81c*)menu->elements);
+        SetElementStateIfLess0217a9d0(6, CountSetBitsLow12_0x68_ov000_0218155c(menu), 4, (Struct_0205d81c*)menu->elements);
         SetElementFlag0x20ByKey0205def8((Struct_0205def8*)menu->elements, 0, 1);
         SetElementFlag0x20ByKey0205def8((Struct_0205def8*)menu->elements, 0, 2);
         SetElementFlag0x20ByKey0205def8((Struct_0205def8*)menu->elements, 0, 5);

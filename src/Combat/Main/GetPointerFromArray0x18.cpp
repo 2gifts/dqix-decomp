@@ -7,7 +7,7 @@ struct Container_1f368 {
 };
 
 // USA: func_0201f368
-ARM void* GetPointerFromArray0x18(struct Container_1f368* container, int index) {
+ARM void* GetPointerFromArray0x18_0201f368(struct Container_1f368* container, int index) {
     if (index < 0 || container->count <= index) {
         return 0;
     }

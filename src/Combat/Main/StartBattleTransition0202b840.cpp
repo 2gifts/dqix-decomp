@@ -3,8 +3,8 @@
 
 extern char data_020feffc[];
 
-int GetGlobalField0x10(void);
-int AdvanceStateIfState2(void);
+int GetGlobalField0x10_0202d6a8(void);
+int AdvanceStateIfState2_0202d0b4(void);
 void SleepCurrentContext(unsigned int);
 int Init0202dc40(int mode, void* src);
 unsigned long long GetCurrentTimestamp(void);
@@ -19,8 +19,8 @@ ARM int StartBattleTransition0202b840(int* state, int id) {
     }
 
     i = 0;
-    while (GetGlobalField0x10() == 2) {
-        AdvanceStateIfState2();
+    while (GetGlobalField0x10_0202d6a8() == 2) {
+        AdvanceStateIfState2_0202d0b4();
         i++;
         if (i > 0x1388) {
             return 0;
@@ -29,7 +29,7 @@ ARM int StartBattleTransition0202b840(int* state, int id) {
     }
 
     i = 0;
-    while (GetGlobalField0x10() != 1) {
+    while (GetGlobalField0x10_0202d6a8() != 1) {
         i++;
         if (i > 0x1388) {
             return 0;

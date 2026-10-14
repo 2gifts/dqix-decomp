@@ -9,7 +9,7 @@ int CheckCombatantInTable_021ea78c(Wrapper_021ea78c*, int, Obj3_021ea78c*);
 extern "C" short func_ov000_0215a004(void*,int,int,int,void*,Params021de9dc*,int,int);
 extern "C" void func_ov000_02159eac(void*,void*,int);
 extern "C" int func_ov000_02159f18(void*,unsigned long long,int);
-void ClearFlag0x400000AndBytes(unsigned char*);
+void ClearFlag0x400000AndBytes_02088b34(unsigned char*);
 unsigned short SelectByIndexRange0to3_021da644(int,int,int);
 extern "C" void* func_ov000_0215e958(void*);
 extern "C" void func_ov024_021e8bf0(Obj021de9dc*,void*,unsigned short*);
@@ -35,7 +35,7 @@ extern "C" ARM void* func_ov024_021de9dc(Obj021de9dc* obj,int sourceID,int id,Pa
             amount=0;
             hp=func_ov000_0215a004(obj->context,sourceID,id,GetHP(c)-1,&effects,params,obj->action->flag!=0,0x20);
             func_ov000_02159eac(obj->context,&effects,0x29);
-            ClearFlag0x400000AndBytes((unsigned char*)c->currentStats_);
+            ClearFlag0x400000AndBytes_02088b34((unsigned char*)c->currentStats_);
             selection=0xc8;
             handled=1;
         }

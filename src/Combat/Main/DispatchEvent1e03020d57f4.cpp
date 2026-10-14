@@ -16,7 +16,7 @@ struct Struct020d57f4 {
 extern "C" void func_020d5684(int, int, int, int, unsigned short, struct Struct020d57f4*);
 
 // USA: func_020d57f4
-ARM void DispatchEvent1e03(int a, int b, int c, int d, unsigned short e, unsigned short f, unsigned short g, int h, int i, int j, int k) {
+ARM void DispatchEvent1e03_020d57f4(int a, int b, int c, int d, unsigned short e, unsigned short f, unsigned short g, int h, int i, int j, int k) {
     struct Struct020d57f4 s;
     func_020ca3ec(0, &s, 0x10);
     s.type = 0x1e03;

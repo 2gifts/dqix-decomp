@@ -7,12 +7,12 @@ struct Container020e0310;
 
 int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 extern "C" int func_020420e8(const char* text, int large);
-int IsField0x118Equal2(void* obj);
+int IsField0x118Equal2_ov000_0217542c(void* obj);
 int AppendFrameTag02041c08(char* dst, int a1, int a2, int a3, int a4, int a5);
-int AppendCursorTag(char* dst, int cursor);
-int AppendNameTag(char* dst, int n, const char* name);
+int AppendCursorTag_02041ea4(char* dst, int cursor);
+int AppendNameTag_02041b70(char* dst, int n, const char* name);
 int AppendString02042058(char* dst, const char* src);
-int AppendXTag(char* dst, int x);
+int AppendXTag_02041a28(char* dst, int x);
 
 extern int data_ov000_021834e0[6];
 
@@ -38,13 +38,13 @@ extern "C" ARM void func_ov000_02177ac8(char* obj, char* dst) {
         }
     }
 #endif
-    if (IsField0x118Equal2(obj)) {
+    if (IsField0x118Equal2_ov000_0217542c(obj)) {
         AppendFrameTag02041c08(dst, cursor, 8, 5, 5, 5);
     }
-    AppendCursorTag(dst, cursor);
+    AppendCursorTag_02041ea4(dst, cursor);
     for (int i = 0; i < 6; i++) {
         int id = data_ov000_021834e0[i];
-        AppendNameTag(dst, id, (const char*)GetFieldByKey020e0434((struct Container020e0310*)(obj + 0xb8), (short)(id + 30014)));
+        AppendNameTag_02041b70(dst, id, (const char*)GetFieldByKey020e0434((struct Container020e0310*)(obj + 0xb8), (short)(id + 30014)));
         if (i == 5) {
             break;
         }
@@ -53,7 +53,7 @@ extern "C" ARM void func_ov000_02177ac8(char* obj, char* dst) {
             AppendString02042058(dst, (const char*)GetFieldByKey020e0434((struct Container020e0310*)(obj + 0xb8), 0));
         }
         if (!odd) {
-            AppendXTag(dst, maxWidth + 0x20);
+            AppendXTag_02041a28(dst, maxWidth + 0x20);
         }
     }
 }

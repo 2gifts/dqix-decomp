@@ -100,18 +100,18 @@ struct Party0215582c {
     char bag[1];
 };
 
-void* GetPtrField0x2a04(GameState* battleStruct);
-struct Stats0215582c* GetFieldAt0x150(unsigned char* obj);
+void* GetPtrField0x2a04_02010828(GameState* battleStruct);
+struct Stats0215582c* GetFieldAt0x150_02053c6c(unsigned char* obj);
 int OffsetByIndexTimes16_02155e14(int base, int idx);
 short* GetField150Ptr0x488(struct Field150Holder02052e14* obj);
 extern "C" int func_0207c378(void* obj, int value, int amount, int key);
 int GetArrayEntryByIndex_02156034(void* obj);
-void SetBit0x954StoreIndex0x950(unsigned char* obj, int index);
-int GetField0x3acValue(GameState* battleStruct);
+void SetBit0x954StoreIndex0x950_02083ca0(unsigned char* obj, int index);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 int LoadBattleBlock020ac4c0(void* dst);
-void AddClamped10BitFieldHighAt0x28(struct S_a06ec* p, unsigned int amount);
-void AddClamped10BitFieldAt0x1c(struct S_a0258* p, unsigned int amount);
-int CopyInBattleField0x7540(void* src);
+void AddClamped10BitFieldHighAt0x28_020a06ec(struct S_a06ec* p, unsigned int amount);
+void AddClamped10BitFieldAt0x1c_020a0258(struct S_a0258* p, unsigned int amount);
+int CopyInBattleField0x7540_020ac494(void* src);
 extern "C" int func_0207c7a0(void* map, int value, int key);
 struct ItemEntry0215582c* FindElementByKey020dedd0(struct Container020dedd0* c, int key);
 extern "C" void func_02052d7c(void* obj, int index, int value);
@@ -119,7 +119,7 @@ int DecrementKeyedStackAmount0207c484(struct KeyedList0207c484* obj, int value, 
 short* GetField150Ptr0x488_02052e2c(struct Field150Holder02052e2c* obj);
 extern "C" void func_02083738(void* o, int a1);
 extern "C" void func_02083cbc(void* a, void* obj, void* tail);
-void SetBitInArray0x910(unsigned char* obj, int index);
+void SetBitInArray0x910_02083b60(unsigned char* obj, int index);
 extern "C" void* func_0202ae18(void);
 extern "C" void func_ov017_0218f5a4(void* self, int combatantId, int flag2, int flag3, int flag4);
 
@@ -134,12 +134,12 @@ static inline int IsValidKind(unsigned int kind) {
 // USA: func_ov003_0215582c
 extern "C" ARM void func_ov003_0215582c(struct Self0215582c* self) {
     GameState* gs = GameState::GetInstance();
-    struct Party0215582c* party = (struct Party0215582c*)GetPtrField0x2a04(gs);
+    struct Party0215582c* party = (struct Party0215582c*)GetPtrField0x2a04_02010828(gs);
     struct Combatant0215582c* c = (struct Combatant0215582c*)gs->GetPartyMemberByIndex(self->combatantId);
     if (c == NULL) {
         return;
     }
-    struct Stats0215582c* stats = GetFieldAt0x150((unsigned char*)c);
+    struct Stats0215582c* stats = GetFieldAt0x150_02053c6c((unsigned char*)c);
     if (stats == NULL) {
         return;
     }
@@ -175,9 +175,9 @@ extern "C" ARM void func_ov003_0215582c(struct Self0215582c* self) {
         }
     }
 
-    SetBit0x954StoreIndex0x950((unsigned char*)stats, GetArrayEntryByIndex_02156034(self));
+    SetBit0x954StoreIndex0x950_02083ca0((unsigned char*)stats, GetArrayEntryByIndex_02156034(self));
 
-    value = GetField0x3acValue(gs);
+    value = GetField0x3acValue_020100a8(gs);
     if (value == c->id) {
         GameState* g = GameState::GetInstance();
         struct Word569c0215582c* w = (struct Word569c0215582c*)((char*)g + 0x29c + 0x5400);
@@ -193,9 +193,9 @@ extern "C" ARM void func_ov003_0215582c(struct Self0215582c* self) {
         }
         int buf[0x2c];
         LoadBattleBlock020ac4c0(buf);
-        AddClamped10BitFieldHighAt0x28((struct S_a06ec*)buf, 1);
-        AddClamped10BitFieldAt0x1c((struct S_a0258*)(buf + 0x1a), 1);
-        CopyInBattleField0x7540(buf);
+        AddClamped10BitFieldHighAt0x28_020a06ec((struct S_a06ec*)buf, 1);
+        AddClamped10BitFieldAt0x1c_020a0258((struct S_a0258*)(buf + 0x1a), 1);
+        CopyInBattleField0x7540_020ac494(buf);
     }
 
     int unchanged = 0;
@@ -255,7 +255,7 @@ extern "C" ARM void func_ov003_0215582c(struct Self0215582c* self) {
                     }
                 }
                 if (equipped[data_ov003_0217f2bc[k]] != -1) {
-                    struct Stats0215582c* s = GetFieldAt0x150((unsigned char*)c);
+                    struct Stats0215582c* s = GetFieldAt0x150_02053c6c((unsigned char*)c);
                     func_02083738(s, kind);
                     s->equip[k].f0[0] = 0;
                     s->equip[k].f0[1] = 0;
@@ -277,10 +277,10 @@ extern "C" ARM void func_ov003_0215582c(struct Self0215582c* self) {
     func_02083cbc(stats, self->f90, self->fcc);
     switch (GetArrayEntryByIndex_02156034(self)) {
     case 2:
-        SetBitInArray0x910((unsigned char*)stats, 0x1a);
+        SetBitInArray0x910_02083b60((unsigned char*)stats, 0x1a);
         break;
     case 3:
-        SetBitInArray0x910((unsigned char*)stats, 0);
+        SetBitInArray0x910_02083b60((unsigned char*)stats, 0);
         break;
     }
 

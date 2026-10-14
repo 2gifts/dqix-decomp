@@ -11,7 +11,7 @@ struct Vector3i;
 struct GameState;
 
 extern "C" char* func_0205ec34();
-int TestBitInByteArray(int, unsigned char*, int);
+int TestBitInByteArray_0206dfb0(int, unsigned char*, int);
 int TestBitWithBias0206eb98(unsigned char*, int);
 void UnlinkNodeByByteId0206dd68(void*, int);
 void ClearWorkRecord0206bf2c(struct Rec0206bf2c*);
@@ -62,7 +62,7 @@ extern "C" ARM int func_0206d4e0(void* param0, int param1) {
         second = ((Script::Parameter*)next)->ToInt();
         int mode = packed >> 16;
         if (mode == 1) {
-            int hit = TestBitInByteArray((int)ctx, (unsigned char*)(ctx + 0x8c), (unsigned short)packed);
+            int hit = TestBitInByteArray_0206dfb0((int)ctx, (unsigned char*)(ctx + 0x8c), (unsigned short)packed);
             if ((second != 0 && hit == 0) || (second == 0 && hit != 0)) {
                 return 1;
             }

@@ -15,7 +15,7 @@ struct EffectObject020d6f9c { unsigned char pad0[0xe8]; Matrix4x3 matrix; };
 struct Obj02055660 { void* field0; void* field4; int field8; int fieldc; };
 
 void InitStruct02059cc8(unsigned char* obj);
-void ClearSevenWords(Struct205563c* obj);
+void ClearSevenWords_0205563c(Struct205563c* obj);
 int MaybeInit02055660(Obj02055660* obj, int data, int model, int allocator);
 extern const Vector3fix data_020ee20c;
 extern const Vector3fix data_020ee200;
@@ -176,7 +176,7 @@ extern "C" ARM void func_020d6f9c(void* param0, int combatantId, int reason) {
         manager->slots[combatantId].fieldbc = config.field1c;
         manager->slots[combatantId].velocity = config.velocity;
         manager->slots[combatantId].flags.bit1 = config.flags.bit0 != 0;
-        ClearSevenWords(&manager->slots[combatantId].payload.clearHeader);
+        ClearSevenWords_0205563c(&manager->slots[combatantId].payload.clearHeader);
         MaybeInit02055660(&manager->slots[combatantId].payload.effect, (int)&node->effectData, (int)&node->model, (int)&manager->allocator);
         Matrix4x3 matrix;
         Mat4x3_WriteIdentity(&matrix);

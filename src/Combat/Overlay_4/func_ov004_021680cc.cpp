@@ -30,7 +30,7 @@ extern short data_ov004_0216fff8;
 
 // USA: func_ov004_021680cc
 extern "C" ARM int func_ov004_021680cc(void* a) {
-    short matches = SumCombatantKeyMatches02086aec((struct Obj02086aec*)GetPtrField0x2a04(GameState::GetInstance()), 0x5617);
+    short matches = SumCombatantKeyMatches02086aec((struct Obj02086aec*)GetPtrField0x2a04_02010828(GameState::GetInstance()), 0x5617);
 #if defined(jpn)
     {
         JPDispatchNode* entry = (JPDispatchNode*)func_ov023_021f6880(func_ov011_021849c8(a), 0x2b);

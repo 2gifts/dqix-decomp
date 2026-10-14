@@ -8,7 +8,7 @@ struct HeaderStruct {
 };
 
 // USA: func_0203e624
-ARM void ResetHeader(struct HeaderStruct* s) {
+ARM void ResetHeader_0203e624(struct HeaderStruct* s) {
     s->w0 = 0;
     s->h4 = 0;
     s->h6 = 0;

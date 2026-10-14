@@ -55,22 +55,22 @@ struct Save0205ec34 {
 
 extern unsigned short data_02114e30;
 
-unsigned int GetBitsInField0(unsigned int* obj, unsigned int mask);
-int TestFlagMask(unsigned short* flags, int mask);
+unsigned int GetBitsInField0_0203b4c4(unsigned int* obj, unsigned int mask);
+int TestFlagMask_02012430(unsigned short* flags, int mask);
 extern "C" SearchStruct0202c1a4* func_0202ae18(void);
 extern "C" Save0205ec34* func_0205ec34(void);
-struct Entry_02028bd0* GetEntryTableBase(void);
-int CheckField0NonZero(int* p);
+struct Entry_02028bd0* GetEntryTableBase_02027ca4(void);
+int CheckField0NonZero_0202b7d8(int* p);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* obj);
 extern "C" int func_ov017_02194140(Actor02192700* self, Actor02192700* other);
-int CheckFlag0x1ceBit2Set(unsigned char* obj);
-void* GetPtrField0x2a04(GameState* state);
-int ArrayContainsByte(ArrayContainsByteStruct* arr, int value);
+int CheckFlag0x1ceBit2Set_02039d68(unsigned char* obj);
+void* GetPtrField0x2a04_02010828(GameState* state);
+int ArrayContainsByte_02086ef0(ArrayContainsByteStruct* arr, int value);
 extern "C" void func_ov017_0219b33c(Ctx02192700* self, Msg02192700* msg);
 void InitState71WithFlag_021c316c(Struct021c316c* p, int flag);
 int HasFlagBit_0218d4ec(void* obj, int bit);
-int TestBitInByteArray(int base, unsigned char* bits, int index);
-int GetSignedByte0x1c8(void* obj);
+int TestBitInByteArray_0206dfb0(int base, unsigned char* bits, int index);
+int GetSignedByte0x1c8_02039860(void* obj);
 extern "C" void func_ov017_0219344c(Actor02192700* actor, int a, int b, int c, int d, int e);
 
 static inline Ctx02192700* PostFound() {
@@ -97,8 +97,8 @@ static inline void PostNotice(Ctx02192700* res, Actor02192700* member) {
 
 // USA: func_ov017_02192700
 extern "C" ARM void func_ov017_02192700(Ctx02192700* ctx) {
-    if ((GetBitsInField0(&ctx->flags, 0x20) != 0 && TestFlagMask(&data_02114e30, 1) != 0) ||
-        GetBitsInField0(&ctx->flags, 0x2000) != 0) {
+    if ((GetBitsInField0_0203b4c4(&ctx->flags, 0x20) != 0 && TestFlagMask_02012430(&data_02114e30, 1) != 0) ||
+        GetBitsInField0_0203b4c4(&ctx->flags, 0x2000) != 0) {
         return;
     }
     GameState* game = GameState::GetInstance();
@@ -109,9 +109,9 @@ extern "C" ARM void func_ov017_02192700(Ctx02192700* ctx) {
         return;
     }
     unsigned short leaderMap = leader->obj3D.GetField06();
-    GetEntryTableBase();
+    GetEntryTableBase_02027ca4();
     Entry02192700* entry = ctx->entry;
-    if (CheckField0NonZero((int*)search)) {
+    if (CheckField0NonZero_0202b7d8((int*)search)) {
         for (int i = 0; i <= 3; i++) {
             Actor02192700* member = (Actor02192700*)game->GetPartyMemberByIndex(i);
             if (member == NULL || member == leader) {
@@ -138,14 +138,14 @@ extern "C" ARM void func_ov017_02192700(Ctx02192700* ctx) {
                 if (!other->obj3D.IsVisible()) {
                     continue;
                 }
-                if (CheckFlag0x1ceBit2Set((unsigned char*)other)) {
+                if (CheckFlag0x1ceBit2Set_02039d68((unsigned char*)other)) {
                     continue;
                 }
-                ArrayContainsByteStruct* party = (ArrayContainsByteStruct*)GetPtrField0x2a04(state);
+                ArrayContainsByteStruct* party = (ArrayContainsByteStruct*)GetPtrField0x2a04_02010828(state);
                 if (party == NULL) {
                     continue;
                 }
-                if (ArrayContainsByte(party, member->obj3D.unknown_4_)) {
+                if (ArrayContainsByte_02086ef0(party, member->obj3D.unknown_4_)) {
                     continue;
                 }
                 Ctx02192700* res = PostFound();
@@ -155,11 +155,11 @@ extern "C" ARM void func_ov017_02192700(Ctx02192700* ctx) {
                 continue;
             }
             if (HasFlagBit_0218d4ec(ctx, member->obj3D.unknown_4_) &&
-                TestBitInByteArray((int)save, save->flags, 0x799) &&
+                TestBitInByteArray_0206dfb0((int)save, save->flags, 0x799) &&
                 func_ov017_02194140(leader, member)) {
                 PostNotice((Ctx02192700*)func_ov017_0218b5b0(), member);
             }
-            if (GetSignedByte0x1c8(member) >= 0) {
+            if (GetSignedByte0x1c8_02039860(member) >= 0) {
                 continue;
             }
             if (!member->obj3D.IsVisible()) {
@@ -176,7 +176,7 @@ extern "C" ARM void func_ov017_02192700(Ctx02192700* ctx) {
             }
         }
     }
-    if (!CheckField0NonZero((int*)search) || !GetSearchStructCurrentArrEntry(search)) {
+    if (!CheckField0NonZero_0202b7d8((int*)search) || !GetSearchStructCurrentArrEntry(search)) {
         for (int i = 0x70; i <= 0x9f; i++) {
             Actor02192700* monster = (Actor02192700*)GameState::GetInstance()->GetMaybeFieldMonsterByIndex(i);
             if (monster == NULL || monster->obj3D.unknown_2_ < 0) {

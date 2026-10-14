@@ -88,7 +88,7 @@ void ClearPackedTriples02082cdc(Obj02082cdc*);
 void InitFlagsAndTimers020827c4(Obj020827c4*);
 void CopyStruct02082d38(Struct02082d38*, Struct02082d38*);
 void InitIndexedElements02083508(Obj02083508*);
-void CopyFrom027ffcf4(void*);
+void CopyFrom027ffcf4_020c99ac(void*);
 extern char data_020f1010[];
 extern char data_020ef078[];
 
@@ -176,7 +176,7 @@ extern "C" ARM void func_02082828(Combatant02082828* object) {
     unsigned char hardwareAddress[6];
 #if defined(jpn)
     char suffix[11];
-    CopyFrom027ffcf4(hardwareAddress);
+    CopyFrom027ffcf4_020c99ac(hardwareAddress);
     char firstLetter[] = "\x82\x60";
     char secondLetter[] = "\x82\x60";
     signed char first = (hardwareAddress[0] + hardwareAddress[1] + hardwareAddress[2]) % 26;
@@ -186,7 +186,7 @@ extern "C" ARM void func_02082828(Combatant02082828* object) {
     sprintf(suffix, data_020f1130, firstLetter, secondLetter);
 #else
     char suffix[18];
-    CopyFrom027ffcf4(hardwareAddress);
+    CopyFrom027ffcf4_020c99ac(hardwareAddress);
     int first = (hardwareAddress[0] + hardwareAddress[2] + hardwareAddress[4]) % 26;
     int second = (hardwareAddress[1] + hardwareAddress[3] + hardwareAddress[5]) % 26;
     sprintf(suffix, data_020f1010, (signed char)(first + 65), (signed char)(second + 65));

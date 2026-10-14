@@ -7,7 +7,7 @@ struct Global02111654 { int f0; int f4; int f8; };
 extern Global02111654 data_02111654;
 
 // USA: func_020c96a8
-ARM int StoreValueCountingDecreases(int value) {
+ARM int StoreValueCountingDecreases_020c96a8(int value) {
     unsigned int mask;
     mask = DisableIRQInterrupts();
     if (value < data_02111654.f4) {

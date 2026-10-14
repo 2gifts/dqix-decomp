@@ -51,9 +51,9 @@ struct BattleCamera {
     short zoom;
 };
 
-GameResources* GetWord0x0(int* obj);
-int GetField0x70(void* obj);
-int TestFlagMask(unsigned short* pad, int mask);
+GameResources* GetWord0x0_0200fb8c(int* obj);
+int GetField0x70_0202e7f0(void* obj);
+int TestFlagMask_02012430(unsigned short* pad, int mask);
 int IsBrightnessTransitionActive(GameResources* resources);
 int IsChannelValueZero0203b5e0(void* resources, int axis);
 int fix32SignedAngleDistance(int a, int b);
@@ -64,7 +64,7 @@ void ClampField74BySign(struct CamState0202e6c0* obj, int value);
 void SetField78Clamped0202e71c(struct Obj0202e71c* obj, int value);
 int CheckField0NonZero020a10a8(int* obj);
 void DispatchMemberFn020a0dec(struct DispatchObj020a0dec* obj);
-void CopyVec3ToField0x10AndCall0202e5d8(char* obj, int* vec);
+void CopyVec3ToField0x10AndCall0202e5d8_0202ec5c(char* obj, int* vec);
 void Vector3fixMultiplyScalar(const Vector3i* in, int scale, Vector3i* out);
 extern "C" void __clear(void* ptr, int size);
 extern "C" void Vector3fix_Add(const Vector3i* a, const Vector3i* b, Vector3i* out);
@@ -84,13 +84,13 @@ static inline int FxMul(int a, int b) {
 extern "C" ARM void func_020a212c(BattleCamera* self, int checkInput) {
     GameState* gs = GameState::GetInstance();
     Object3D* target = gs->GetGameObjectByIndex(self->followIndex);
-    GameResources* res = GetWord0x0((int*)gs);
-    int angle = GetField0x70(self);
+    GameResources* res = GetWord0x0_0200fb8c((int*)gs);
+    int angle = GetField0x70_0202e7f0(self);
     int left = 0;
     int right = 0;
     if (checkInput) {
-        left = TestFlagMask(&data_02114e30, 0x200);
-        right = TestFlagMask(&data_02114e30, 0x100);
+        left = TestFlagMask_02012430(&data_02114e30, 0x200);
+        right = TestFlagMask_02012430(&data_02114e30, 0x100);
     }
     if (IsBrightnessTransitionActive(res) || IsChannelValueZero0203b5e0(res, 0)) {
         left = 0;
@@ -171,7 +171,7 @@ extern "C" ARM void func_020a212c(BattleCamera* self, int checkInput) {
             DispatchMemberFn020a0dec((struct DispatchObj020a0dec*)&self->dispatch);
             eye = self->dispatch.result;
         }
-        CopyVec3ToField0x10AndCall0202e5d8((char*)self, (int*)&eye);
+        CopyVec3ToField0x10AndCall0202e5d8_0202ec5c((char*)self, (int*)&eye);
         blended = func_020a299c(self, &pos, target);
     }
     if (self->flags245 & 0x10) {
@@ -208,7 +208,7 @@ extern "C" ARM void func_020a212c(BattleCamera* self, int checkInput) {
     if (blended) {
         Vector3i eye = self->eye;
         eye.y = pos.y + FxMul(eye.y - pos.y, 0x1000 - self->zoom);
-        CopyVec3ToField0x10AndCall0202e5d8((char*)self, (int*)&eye);
+        CopyVec3ToField0x10AndCall0202e5d8_0202ec5c((char*)self, (int*)&eye);
         func_0202eab8(self);
         look = self->target;
     }
@@ -220,7 +220,7 @@ extern "C" ARM void func_020a212c(BattleCamera* self, int checkInput) {
         Vector3fix_Subtract(&eye, &center, &delta);
         Vector3fixMultiplyScalar(&delta, self->zoom, &delta);
         Vector3fix_Subtract(&eye, &delta, &eye);
-        CopyVec3ToField0x10AndCall0202e5d8((char*)self, (int*)&eye);
+        CopyVec3ToField0x10AndCall0202e5d8_0202ec5c((char*)self, (int*)&eye);
     }
     int t = 0x1000 - self->zoom;
     func_0202e5d8(self, look.x, FxMul(look.y - 0x34cc, t) + 0x34cc, FxMul(look.z - 0x6000, t) + 0x6000);

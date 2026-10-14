@@ -15,8 +15,8 @@ struct Output020e2d54 {
 };
 extern char data_020ee9b8[];
 extern int data_020ef0e8;
-int SubmitBlock0x40IfNotBusy(int);
-void SetFields0x0_0x4_0x8(int*, int, int, int);
+int SubmitBlock0x40IfNotBusy_020c54fc(int);
+void SetFields0x0_0x4_0x8_020e2fa8(int*, int, int, int);
 void* GetSubstructAt0x40OrNull020e2fb0(void*);
 extern "C" void func_020ca430(const void*, void*, int);
 static inline int GetBoneScale020e2d54(Bone020e2d54* bone) { SDK_NULL_ASSERT(bone); return bone->scaleZ; }
@@ -32,8 +32,8 @@ extern "C" ARM void func_020e2d54(int mode, RenderCommandHandler* entry, Output0
         SendQueuedDataToGeometryFifo();
         REG_GXFIFO = 0x151110;
         REG_GXFIFO = 0;
-        while (SubmitBlock0x40IfNotBusy((int)&matrix)) {}
-        SetFields0x0_0x4_0x8(&scale.x, 0x1000, 0x1000, 0x1000);
+        while (SubmitBlock0x40IfNotBusy_020c54fc((int)&matrix)) {}
+        SetFields0x0_0x4_0x8_020e2fa8(&scale.x, 0x1000, 0x1000, 0x1000);
         int correction = 0;
         if (mode == 1) {
             scale.x = Vector3fix_Length(&matrix.rows[0].xyz);
@@ -41,7 +41,7 @@ extern "C" ARM void func_020e2d54(int mode, RenderCommandHandler* entry, Output0
             scale.z = Vector3fix_Length(&matrix.rows[2].xyz);
         }
         if (mode == 1) {
-            SetFields0x0_0x4_0x8(&offset.x, 0, 0, 0);
+            SetFields0x0_0x4_0x8_020e2fa8(&offset.x, 0, 0, 0);
             NSBXXInternalModel* model = entry->modelContext_->internalModel_;
             NSBXXNameList* list = (NSBXXNameList*)GetSubstructAt0x40OrNull020e2fb0(model);
             int index = list ? NSBXXNameList_SearchIndex(list, data_020ee9b8) : -1;

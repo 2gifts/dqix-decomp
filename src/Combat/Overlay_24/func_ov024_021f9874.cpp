@@ -126,7 +126,7 @@ struct FlagsA8_021f9874 {
 
 extern "C" void* __clear(void* dst, int size);
 extern "C" void func_ov024_021f6830(void* arr, struct InsertArg_021f9874* item);
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 int IsCombatantFlag2Mask512_021eadfc(GameObject* combatant);
 
 static inline unsigned short GetMaxHP(GameObject* c) { return c->currentStats_->primaryStats.maxHP; }
@@ -459,7 +459,7 @@ extern "C" ARM void func_ov024_021f9874(struct Obj_021f9874* obj, struct Buf_021
     }
 
     if (obj->f6 != 0 && obj->f64c->code == 1) {
-        unsigned char* fld = (unsigned char*)GetFieldAt0x150((unsigned char*)obj->f8);
+        unsigned char* fld = (unsigned char*)GetFieldAt0x150_02053c6c((unsigned char*)obj->f8);
         int s0;
         int mp0;
         if (fld != 0 && *(short*)(fld + 0x2ac) > 0 &&

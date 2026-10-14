@@ -8,9 +8,9 @@ void SaveAndDisableBattlerState020128d8(struct Obj020128d8* obj);
 extern "C" void func_02012938(unsigned char* obj);
 struct StateA020129b4;
 int UpdateTargetTrackingState(struct StateA020129b4* obj);
-void SetCompareFlags0x50To0x53(unsigned char* obj);
+void SetCompareFlags0x50To0x53_020127cc(unsigned char* obj);
 int TickByteFlagCounter02012ad0(unsigned char* obj);
-void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
+void SelectCoordsByFlag0x24_02012a84(unsigned char* obj, int* out1, int* out2);
 
 // USA: func_02012538
 extern "C" ARM int func_02012538(unsigned char* obj) {
@@ -46,7 +46,7 @@ extern "C" ARM int func_02012538(unsigned char* obj) {
         } else {
             obj[0x5d] = 1;
         }
-        SetCompareFlags0x50To0x53(obj);
+        SetCompareFlags0x50To0x53_020127cc(obj);
         obj[0x5c] = TickByteFlagCounter02012ad0(obj);
         return *(unsigned short*)(obj + 0x24) != 0;
     }
@@ -59,7 +59,7 @@ extern "C" ARM int func_02012538(unsigned char* obj) {
     if (!UpdateTargetTrackingState((struct StateA020129b4*)obj)) {
         return 0;
     }
-    SetCompareFlags0x50To0x53(obj);
+    SetCompareFlags0x50To0x53_020127cc(obj);
 
     if (*(unsigned short*)(obj + 0x24) != 0) {
         obj[0x55] = 1;
@@ -68,7 +68,7 @@ extern "C" ARM int func_02012538(unsigned char* obj) {
             *(int*)(obj + 0x30) = f68;
             *(int*)(obj + 0x34) = *(int*)(obj + 0x6c);
         } else {
-            SelectCoordsByFlag0x24(obj, (int*)(obj + 0x30), (int*)(obj + 0x34));
+            SelectCoordsByFlag0x24_02012a84(obj, (int*)(obj + 0x30), (int*)(obj + 0x34));
         }
         obj[0x5d] = 1;
     } else {

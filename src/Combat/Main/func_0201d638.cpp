@@ -29,7 +29,7 @@ struct Elem0209998c {
 struct List0209998c { struct Elem0209998c* data; int count; int cap; };
 extern struct Elem0209998c* FindElementByName0209998c(struct List0209998c* list, const char* name);
 
-void* GetPtrField0x468(void* obj);
+void* GetPtrField0x468_02011584(void* obj);
 
 struct GlobalCtx0201d638 { unsigned char* lastEntry; };
 extern struct GlobalCtx0201d638 data_020fdc20;
@@ -46,10 +46,10 @@ struct Bits2e { unsigned short low4 : 4; unsigned short high12 : 12; };
 #define BITS2E (*(struct Bits2e*)(REC + 0x2e))
 
 // USA: func_0201d638
-extern "C" ARM int _Z20WarpScript_Opcode_74PN6Script9ParameterEi(unsigned char* src, int count) {
+extern "C" ARM int _Z29WarpScript_Opcode_74_0201d638PN6Script9ParameterEi(unsigned char* src, int count) {
     if (data_020fdc20.lastEntry == 0) return 0;
 
-    void* nameList = GetPtrField0x468((void*)GameState::GetInstance());
+    void* nameList = GetPtrField0x468_02011584((void*)GameState::GetInstance());
 
     switch (W(4)) {
     case 0:

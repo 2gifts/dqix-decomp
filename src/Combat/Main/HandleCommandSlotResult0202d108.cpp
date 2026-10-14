@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void SetField0x48UnlessState9Or10(int arg);
+void SetField0x48UnlessState9Or10_0202c848(int arg);
 extern char data_021015a0;
 int SetState3AndInvokeHandler0202d180(void);
 int TryTransitionState0202d224(void);
@@ -14,7 +14,7 @@ struct Struct0202d108 {
 extern "C" ARM void func_0202d108(struct Struct0202d108* p) {
     unsigned short v = p->field2;
     if (v != 0) {
-        SetField0x48UnlessState9Or10(v);
+        SetField0x48UnlessState9Or10_0202c848(v);
         return;
     }
     *(int*)(&data_021015a0 + 0x10) = 1;

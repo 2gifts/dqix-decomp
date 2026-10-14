@@ -24,6 +24,6 @@ ARM int ApplyAndClearPendingEntry02013fb4(Obj02013fb4* object) {
                  static_cast<StreamHeader*>(fileData), fileSize);
     loader->RemoveTask(zone->mapListLoadHandle_);
     zone->mapListLoadHandle_ = -1;
-    zone->LoadMapAMBL();
+    zone->LoadMapAMBL_0201403c();
     return 1;
 }

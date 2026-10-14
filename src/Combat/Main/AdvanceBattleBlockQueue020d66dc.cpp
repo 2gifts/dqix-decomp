@@ -2,23 +2,23 @@
 
 unsigned int DisableIRQInterrupts();
 unsigned int SetIRQInterruptState(int mask);
-unsigned short GetBattleContextField0x14cLow16(void);
+unsigned short GetBattleContextField0x14cLow16_020d46fc(void);
 extern "C" void func_020ca390(int, void*, unsigned int);
 extern "C" int func_020d59bc(void* cb, void* obj, void* blockPtr, unsigned short f14, unsigned short maskedFlags, unsigned short f16, int one);
 extern "C" int func_020d6318(void*);
 
 struct Sub020d66dc {
-    unsigned short resultArr[4]; // 0x0
-    unsigned short cur;          // 0x8
-    unsigned short counter;      // 0xa
-    unsigned char pad0[2];       // 0xc
-    unsigned short flags;        // 0xe
-    unsigned char pad1[4];       // 0x10
-    unsigned short field14;      // 0x14
-    unsigned short field16;      // 0x16
-    unsigned short state;        // 0x18
-    unsigned char pad2[2];       // 0x1a
-    unsigned short status;       // 0x1c
+    unsigned short resultArr[4];
+    unsigned short cur;
+    unsigned short counter;
+    unsigned char pad0[2];
+    unsigned short flags;
+    unsigned char pad1[4];
+    unsigned short field14;
+    unsigned short field16;
+    unsigned short state;
+    unsigned char pad2[2];
+    unsigned short status;
 };
 
 struct Block020d66dc {
@@ -36,7 +36,7 @@ struct Obj020d66dc {
 ARM void AdvanceBattleBlockQueue020d66dc(Obj020d66dc* obj, int mode) {
     unsigned int state = DisableIRQInterrupts();
     if (obj->blocks[obj->sub.cur].flagsA == 0) {
-        unsigned short ctxVal = GetBattleContextField0x14cLow16();
+        unsigned short ctxVal = GetBattleContextField0x14cLow16_020d46fc();
         unsigned short oldCur = obj->sub.cur;
         unsigned short newCur = (oldCur + 1) & 3;
         int nextIdx = (obj->sub.state == 1) ? ((newCur + 1) & 3) : newCur;

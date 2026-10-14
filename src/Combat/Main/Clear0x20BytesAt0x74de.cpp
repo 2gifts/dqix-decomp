@@ -9,6 +9,6 @@ enum { kClearOffset = 0x74de };
 #include "std_library_functions.h"
 
 // USA: func_02012084
-ARM void* Clear0x20BytesAt0x74de(unsigned char* obj) {
+ARM void* Clear0x20BytesAt0x74de_02012084(unsigned char* obj) {
     return memset(obj + kClearOffset, 0, 0x20);
 }

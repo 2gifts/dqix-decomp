@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_0202053c
-ARM unsigned short GetTableValue(void* obj) {
+ARM unsigned short GetTableValue_0202053c(void* obj) {
 #if defined(jpn)
     char* p = *(char**)((char*)obj + 0x144);
 #else

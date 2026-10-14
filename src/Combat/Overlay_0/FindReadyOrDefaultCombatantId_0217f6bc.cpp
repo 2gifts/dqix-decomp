@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 int HasAnyFlags_021719f8_021719f8(int* obj);
-void* GetFieldAt0x150(unsigned char* obj);
+void* GetFieldAt0x150_02053c6c(unsigned char* obj);
 
 struct Entry0217f6bc {
     char pad0[0x18];
@@ -43,7 +43,7 @@ extern "C" ARM int func_ov000_0217f6bc(char* obj) {
 #else
         enum { statusOffset = 0x94c };
 #endif
-        if (c == 0 || (signed char)(*(int*)((char*)GetFieldAt0x150((unsigned char*)c) + statusOffset)) == 5) {
+        if (c == 0 || (signed char)(*(int*)((char*)GetFieldAt0x150_02053c6c((unsigned char*)c) + statusOffset)) == 5) {
             return entry->field4c;
         }
     }

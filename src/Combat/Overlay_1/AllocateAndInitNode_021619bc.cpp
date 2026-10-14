@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "Memory/SafeAllocator.h"
 
-void PushInputLogB(int id);
+void PushInputLogB_020a1ef0(int id);
 extern "C" char* func_ov017_0218b5b0(void);
 extern SafeAllocator* data_ov001_021658b8[1];
 extern "C" void func_ov028_021d8b90(void* obj);
@@ -14,7 +14,7 @@ extern "C" ARM int func_ov001_021619bc(void) {
 #else
     enum { queueOffset = 0x734, objectOffset = 0x160, flagOffset = 0x164 };
 #endif
-    PushInputLogB(5);
+    PushInputLogB_020a1ef0(5);
     char* p = *(char**)(func_ov017_0218b5b0() + 0x3000 + queueOffset);
     void* newObj = data_ov001_021658b8[0]->Allocate(0x84);
     if (newObj == 0) return 0;

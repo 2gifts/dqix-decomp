@@ -11,9 +11,9 @@ void* GetSlotPtr02160f20(void* obj);
 int CheckSlotEntryKind021627fc(void* obj);
 struct List021600f8;
 void* GetNodeAtIndex021600f8(struct List021600f8* list, int index);
-void ClearSubstructFlag0x4(unsigned char* obj);
-int CheckSubstructFlag0x200(unsigned char* obj);
-void SetSubstructByte0x6c(unsigned char*, int);
+void ClearSubstructFlag0x4_02049ae4(unsigned char* obj);
+int CheckSubstructFlag0x200_02048c10(unsigned char* obj);
+void SetSubstructByte0x6c_0204a030(unsigned char*, int);
 extern "C" void func_02033920(void* a, int b, int c);
 
 extern char data_ov025_021ef404[];
@@ -65,15 +65,15 @@ extern "C" ARM void func_ov025_021dc220(void* obj) {
         while (node != NULL) {
             GameObject* combatant = battle->GetCombatantByIndex(node->id);
             if (combatant != NULL) {
-                ClearSubstructFlag0x4((unsigned char*)combatant);
+                ClearSubstructFlag0x4_02049ae4((unsigned char*)combatant);
                 if (idx >= 0) {
                     int allow = allowDefault;
-                    if (CheckSubstructFlag0x200((unsigned char*)combatant) || self->field_e78 == 0) {
+                    if (CheckSubstructFlag0x200_02048c10((unsigned char*)combatant) || self->field_e78 == 0) {
                         allow = 0;
                     }
                     if (allow) {
                         if (_ZZ16GetTimer021ef974vE1s != 0) {
-                            SetSubstructByte0x6c((unsigned char*)combatant, idx);
+                            SetSubstructByte0x6c_0204a030((unsigned char*)combatant, idx);
                         } else {
                             func_02033920(combatant, idx, 1);
                         }

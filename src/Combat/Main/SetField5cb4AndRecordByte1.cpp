@@ -3,7 +3,7 @@
 extern "C" unsigned char* func_0205ec34(void);
 
 // USA: func_020107a8
-ARM void SetField5cb4AndRecordByte1(char* obj, int v) {
+ARM void SetField5cb4AndRecordByte1_020107a8(char* obj, int v) {
 #if defined(jpn)
     *(int*)(obj + 0x5a54) = v;
 #else

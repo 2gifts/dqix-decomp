@@ -2,7 +2,7 @@
 
 extern char data_02114e54;
 
-void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
+void SelectCoordsByFlag0x24_02012a84(unsigned char* obj, int* out1, int* out2);
 struct RectList020e1eb0;
 ARM int FindRectContainingPoint020e1eb0(struct RectList020e1eb0* list, int x, int y);
 
@@ -13,7 +13,7 @@ ARM int FindRectIndexForCurrentCoords020e1e4c(struct RectList020e1eb0* list) {
     }
     {
         int x, y;
-        SelectCoordsByFlag0x24((unsigned char*)&data_02114e54, &x, &y);
+        SelectCoordsByFlag0x24_02012a84((unsigned char*)&data_02114e54, &x, &y);
         int idx = FindRectContainingPoint020e1eb0(list, (short)x, (short)y);
         return (idx < 0) ? -2 : idx;
     }

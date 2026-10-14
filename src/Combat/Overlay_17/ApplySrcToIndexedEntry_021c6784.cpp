@@ -3,7 +3,7 @@
 
 extern "C" void* func_ov017_021b8478(void* obj);
 void* GetField6b0_021b8470(void* obj);
-int GetField0x3acValue(GameState* battleStruct);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 
 struct Src021c6784 {
 	unsigned char pad0[4];
@@ -42,7 +42,7 @@ extern "C" ARM void func_ov017_021c6784(int unused0, Src021c6784* src, GameState
 	void* state = GetField6b0_021b8470(table);
 	if (!state) return;
 
-	int value = GetField0x3acValue(battleStruct);
+	int value = GetField0x3acValue_020100a8(battleStruct);
 	if (*((signed char*)fieldObj + 0x2a) == value) return;
 	if (*(unsigned short*)((char*)fieldObj + 0x8) != src->field8) return;
 

@@ -41,8 +41,8 @@ struct Container020e0310;
 int GetFieldByKey020e0434(Container020e0310*, int);
 int GetGlobalField0x1c020421a0(void);
 extern "C" int func_020420e8(void*, int);
-int AppendXTag(char*, int);
-int AppendHeightTag(char*, int);
+int AppendXTag_02041a28(char*, int);
+int AppendHeightTag_02041b00(char*, int);
 int AppendFormatted02041fac(char*, int, int);
 extern "C" void __clear(void*, int);
 void* Find_021d994c(void*, int);
@@ -51,9 +51,9 @@ extern "C" void func_02046380(int);
 ARM void InitObjFromCombatantId020e4bf4(void*, int);
 int ApplyEqual12Flag020426a4(int, int);
 struct StoreStruct;
-void StoreInArray0x8b0(struct StoreStruct*, int, int);
+void StoreInArray0x8b0_020465c0(struct StoreStruct*, int, int);
 extern "C" void func_02046608(int, int, void*, void*, int, int, int);
-int AppendXYTag(char*, int, int);
+int AppendXYTag_02041a90(char*, int, int);
 extern "C" int sprintf(char*, const char*, ...);
 
 struct EntryLocal_021d9290 {
@@ -72,8 +72,8 @@ extern "C" ARM void func_ov023_021d9290(char* obj, char* buf, unsigned char coun
 
     char* fieldStr = (char*)GetFieldByKey020e0434(window->texts, 0x75f8);
     int len = func_020420e8(fieldStr, 0);
-    AppendXTag(buf, (0xc0 - len) >> 1);
-    AppendHeightTag(buf, 1);
+    AppendXTag_02041a28(buf, (0xc0 - len) >> 1);
+    AppendHeightTag_02041b00(buf, 1);
     AppendFormatted02041fac(buf, (int)fieldStr, 0x10);
 
     unsigned char* idArr = window->memberIds;
@@ -100,7 +100,7 @@ extern "C" ARM void func_ov023_021d9290(char* obj, char* buf, unsigned char coun
                 if (found != 0) {
                     char* fieldStr0 = (char*)GetFieldByKey020e0434(window->texts, 0);
                     AppendString02042058(buf, fieldStr0);
-                    AppendHeightTag(buf, adj);
+                    AppendHeightTag_02041b00(buf, adj);
                 }
                 func_02046380(g);
                 struct EntryLocal_021d9290 local;
@@ -111,7 +111,7 @@ extern "C" ARM void func_ov023_021d9290(char* obj, char* buf, unsigned char coun
                 *(void**)(g + 0x10) = &local;
                 int applyResult = ApplyEqual12Flag020426a4(8, window->resultCounts[i]);
                 sprintf(buf2, fieldStr2, 0x94 - applyResult);
-                StoreInArray0x8b0((struct StoreStruct*)g, 1, window->resultCounts[i]);
+                StoreInArray0x8b0_020465c0((struct StoreStruct*)g, 1, window->resultCounts[i]);
                 func_02046608(g, 0xa, buf2, buf1, 0x100, 0, 0);
                 AppendString02042058(buf, buf1);
                 found = 1;
@@ -124,7 +124,7 @@ extern "C" ARM void func_ov023_021d9290(char* obj, char* buf, unsigned char coun
         char* fieldStr3 = (char*)GetFieldByKey020e0434(window->texts, 0x75fa);
         int len3 = func_020420e8(fieldStr3, 0);
         len3 = 0xc0 - len3;
-        AppendXYTag(buf, len3 >> 1, (total8 - 0x1a) / 2 + 0x10);
+        AppendXYTag_02041a90(buf, len3 >> 1, (total8 - 0x1a) / 2 + 0x10);
         AppendString02042058(buf, fieldStr3);
     }
 }

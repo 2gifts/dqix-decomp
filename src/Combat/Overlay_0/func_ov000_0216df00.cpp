@@ -3,12 +3,12 @@ struct Vector3i { int x,y,z; Vector3i& operator=(const Vector3i&); };
 struct Object3D { char pad[0x44]; Vector3i position; int GetHeight() const; };
 class GameState { public: static GameState* GetInstance(); Object3D* GetCombatantByIndex(int); };
 int ClampScaledStat_0216352c(int,float,float);
-void ReadFields0x70To0x78(unsigned char*,int*,int*,int*);
+void ReadFields0x70To0x78_0202e7d4(unsigned char*,int*,int*,int*);
 int fix32abs(int);
 int Vector3fixSquaredDistance(const Vector3i*,const Vector3i*);
 void SetFlagOrState0216d530(void*,int);
-void SetFields0x10To0x18(unsigned char*,int,int,int);
-void* GetActiveCombatWork();
+void SetFields0x10To0x18_0202e5c8(unsigned char*,int,int,int);
+void* GetActiveCombatWork_ov000_02160130();
 extern "C" { void func_ov000_0216d370(void*,int,int,int); void func_0202e5d8(void*,int,int,int); void func_ov000_02167f10(void*); }
 struct Camera { char p0[0x10]; Vector3i position; char p1[0x5c-0x1c]; int divisor,scale; char p2[0x220-0x64]; unsigned char mode; char p3[3]; int index; char p4[0x23c-0x228]; int angle; };
 inline int IsParty(int n) { return n>=0 && n<=3; }
@@ -33,7 +33,7 @@ extern "C" ARM void func_ov000_0216df00(Camera* self,int id,int force,float offs
     if(distance<minimum) distance=minimum;
     if(reuse) {
         int x=0,y=0,z=0;
-        ReadFields0x70To0x78((unsigned char*)self,&x,&y,&z);
+        ReadFields0x70To0x78_0202e7d4((unsigned char*)self,&x,&y,&z);
         if(x==0) {
             int tolerance=Mul(distance,0x400);
             if(fix32abs(z-distance)<tolerance) {
@@ -46,8 +46,8 @@ extern "C" ARM void func_ov000_0216df00(Camera* self,int id,int force,float offs
     func_ov000_0216d370(self,1,1,1);
     self->mode=1;
     SetFlagOrState0216d530(self,id);
-    if(party) { int y=HeightOffset(half,offset); SetFields0x10To0x18((unsigned char*)self,0,y,0); }
-    else SetFields0x10To0x18((unsigned char*)self,0,half,0);
+    if(party) { int y=HeightOffset(half,offset); SetFields0x10To0x18_0202e5c8((unsigned char*)self,0,y,0); }
+    else SetFields0x10To0x18_0202e5c8((unsigned char*)self,0,half,0);
     int low=half-0x1800;
     if(low<0) low=0;
     func_0202e5d8(self,0,low,distance);
@@ -63,7 +63,7 @@ extern "C" ARM void func_ov000_0216df00(Camera* self,int id,int force,float offs
     pos.x=coordinates[0]; pos.z=coordinates[1];
     if(changed) {
         pos.y=0xcc;
-        func_ov000_02167f10(GetActiveCombatWork());
+        func_ov000_02167f10(GetActiveCombatWork_ov000_02160130());
         unit->position=pos;
     }
 }

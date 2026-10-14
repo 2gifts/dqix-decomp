@@ -16,7 +16,7 @@ struct Global020fdc14View8 {
 extern struct Global020fdc14View8 data_020fdc14;
 
 // USA: func_0201c3a4
-ARM int AppendEntryFromStructField4(struct Struct02030b7c* arg) {
+ARM int AppendEntryFromStructField4_0201c3a4(struct Struct02030b7c* arg) {
     struct Elem0201c470 buf;
     void* name = (void*)((Script::Parameter*)arg)->ToString();
     memset(&buf, 0, 0x1f);

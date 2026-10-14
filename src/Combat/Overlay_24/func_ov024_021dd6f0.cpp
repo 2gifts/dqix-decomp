@@ -5,7 +5,7 @@
 struct FlagObj_021da9b0;
 int IsFlagBit8Set_021da9b0(struct FlagObj_021da9b0* obj);
 unsigned short SelectByIndexRange0to3_021da644(int idx, int a, int b);
-void ClearFlag0x14Bit0x8AndBytes(void* obj);
+void ClearFlag0x14Bit0x8AndBytes_020882dc(void* obj);
 extern "C" void func_ov000_02159eac(void* a0, void* buf, int a2);
 extern "C" void* func_ov000_0215e958(void* a0);
 void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
@@ -33,7 +33,7 @@ extern "C" ARM void* func_ov024_021dd6f0(struct Obj_021dd6f0* obj, int unused, i
 	unsigned short sel;
 	if (IsFlagBit8Set_021da9b0((struct FlagObj_021da9b0*)c) && flagArg != 0) {
 		sel = SelectByIndexRange0to3_021da644(id, range->f20.c, range->f24.a);
-		ClearFlag0x14Bit0x8AndBytes((void*)c->currentStats_);
+		ClearFlag0x14Bit0x8AndBytes_020882dc((void*)c->currentStats_);
 		func_ov000_02159eac(obj->field0x10, &local, 0x1a);
 		((struct Bit3b_021dd6f0*)((char*)c->currentStats_ + 0x3b))->bit0 = 1;
 		obj->field0x14++;

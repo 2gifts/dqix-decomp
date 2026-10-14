@@ -16,7 +16,7 @@ enum { kRegion1043 = 0x1043 };
 #include "GameState/GameState.h"
 
 struct Obj2081;
-void ClearElementFlag0x20(struct Obj2081* obj, int key);
+void ClearElementFlag0x20_02080c20(struct Obj2081* obj, int key);
 void SetEntryLowNibbleAndElement02080c68(void* obj, int id, int value);
 struct TableRef02081214;
 void* FindEntryInTableRef(struct TableRef02081214* ref, int key);
@@ -25,7 +25,7 @@ struct Container02080cc0;
 void SetEntryHighNibble0x13(struct Container02080cc0* obj, int id, int value);
 struct Container02080f8c;
 void SetEntryFirstField02080f8c(struct Container02080f8c* obj, int id, int value);
-void Forward0207f7acObjPlus4Size0x40(void* obj, int value);
+void Forward0207f7acObjPlus4Size0x40_020805f4(void* obj, int value);
 extern "C" void func_020813ec(void* obj, int key);
 
 struct SlotList02177410 {
@@ -64,10 +64,10 @@ struct Menu02177410 {
 extern "C" ARM void func_ov003_02177410(Menu02177410* self) {
     GameState* battle = GameState::GetInstance();
     struct Obj2081* elemObj = self->elemObj;
-    ClearElementFlag0x20(elemObj, 0xe);
+    ClearElementFlag0x20_02080c20(elemObj, 0xe);
     SetEntryLowNibbleAndElement02080c68(elemObj, 0xe, 0);
 
-    Combatant02177410* combatant = (Combatant02177410*)GetCombatantWithFlag0x100(battle, self->combatantId);
+    Combatant02177410* combatant = (Combatant02177410*)GetCombatantWithFlag0x100_0200ff1c(battle, self->combatantId);
     if (combatant == NULL) {
         return;
     }
@@ -99,7 +99,7 @@ extern "C" ARM void func_ov003_02177410(Menu02177410* self) {
         SetEntryHighNibble0x13((struct Container02080cc0*)elemObj, id, nibble);
         SetEntryFirstField02080f8c((struct Container02080f8c*)elemObj, id, value);
 #if !defined(jpn)
-        Forward0207f7acObjPlus4Size0x40(elemObj, id);
+        Forward0207f7acObjPlus4Size0x40_020805f4(elemObj, id);
 #endif
     }
 

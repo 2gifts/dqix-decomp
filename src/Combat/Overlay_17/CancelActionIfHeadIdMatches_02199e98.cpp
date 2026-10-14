@@ -5,7 +5,7 @@ struct FlagWord020466f4;
 struct HeadNode02046b24;
 struct Obj020397cc;
 
-void SetByteField0x253(void* obj);
+void SetByteField0x253_020397c0(void* obj);
 void* GetDataPtr02114e04_020d6c00(void);
 void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int mask);
 int GetHeadNodeIdOrMinusOne(struct HeadNode02046b24** obj);
@@ -22,7 +22,7 @@ static const int kActive=0x4080, kList=0x6fc;
 ARM void CancelActionIfHeadIdMatches_02199e98(void* obj) {
     if (*(int*)((char*)obj + kActive) == 0) return;
     GameObject* combatant = GameState::GetInstance()->GetUnknownGameObject();
-    SetByteField0x253(combatant);
+    SetByteField0x253_020397c0(combatant);
     ClearFlags020466f4((struct FlagWord020466f4*)GetDataPtr02114e04_020d6c00(), 0x400);
     func_ov017_02199780(obj);
     struct HeadNode02046b24** list = *(struct HeadNode02046b24***)((char*)obj + 0x3000 + kList);

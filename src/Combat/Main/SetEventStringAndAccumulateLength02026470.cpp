@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
-int CallFunc020e0434With02153694(int value);
+int CallFunc020e0434With02153694_020e51cc(int value);
 extern "C" int func_020420e8(char*, int);
 
 #if defined(jpn)
@@ -19,7 +19,7 @@ ARM void SetEventStringAndAccumulateLength02026470(void* obj, int number) {
 #if defined(jpn)
         sprintf((char*)obj + 0x5f4, &data_020ef6c5, number);
 #else
-        const char* prefix = (const char*)CallFunc020e0434With02153694(0x3f3);
+        const char* prefix = (const char*)CallFunc020e0434With02153694_020e51cc(0x3f3);
         sprintf((char*)obj + 0x5f4, &data_020ef6c5, prefix, number);
 #endif
     }

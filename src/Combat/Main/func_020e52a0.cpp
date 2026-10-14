@@ -12,7 +12,7 @@ struct Header020e52a0 {
     struct Entry020e52a0* entries;
 };
 
-extern unsigned short GetU16At0xc(unsigned char* obj);
+extern unsigned short GetU16At0xc_020e51fc(unsigned char* obj);
 
 // USA: func_020e52a0
 extern "C" ARM void* func_020e52a0(void* arr, int key) {
@@ -23,7 +23,7 @@ extern "C" ARM void* func_020e52a0(void* arr, int key) {
         return 0;
     }
     table = ((struct Header020e52a0*)arr)->entries;
-    if (table == 0 || (void*)GetU16At0xc == 0) {
+    if (table == 0 || (void*)GetU16At0xc_020e51fc == 0) {
         res = 0;
         goto found;
     }
@@ -37,7 +37,7 @@ extern "C" ARM void* func_020e52a0(void* arr, int key) {
     while (lo <= hi) {
         mid = lo + ((hi - lo + 1) >> 1);
         res = &table[mid];
-        k = GetU16At0xc((unsigned char*)res);
+        k = GetU16At0xc_020e51fc((unsigned char*)res);
         if (k == key) {
             goto found;
         }

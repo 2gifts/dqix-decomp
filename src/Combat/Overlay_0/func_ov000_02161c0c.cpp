@@ -8,7 +8,7 @@ struct Obj02048850;
 struct Param02048850;
 struct Bytes02033b88;
 
-GameObject* GetCombatantWithFlag0x400(GameState* gameState, int combatantId);
+GameObject* GetCombatantWithFlag0x400_0200fea4(GameState* gameState, int combatantId);
 void FindOrAssignSlot02167c28(unsigned char* obj, int id);
 unsigned char* SearchWithLow15Comparator02070fd0(struct Container02070e60* table, int key);
 struct Param02048850* SearchWithComparator0206f4f0(struct BinarySearchByComparatorStruct* table, int key);
@@ -21,7 +21,7 @@ void CopyBlob_02161dfc(unsigned char* dst, unsigned char* src);
 void BuildName020488ec(char* obj);
 void SyncNameFlag_02161274(GameObject* obj);
 void AllocateSlotAndConfigureField02166784(struct Struct5e00* obj1, unsigned char* obj2, unsigned char* obj3);
-void ClearCombatantSlot(GameState* gameState, int id);
+void ClearCombatantSlot_0200fd48(GameState* gameState, int id);
 
 struct Node02161c0c {
     char pad0[2];
@@ -43,7 +43,7 @@ enum { kCombatData = 0x2a0, kNodes = 0xeb8, kField06 = 0xec8, kPartyData = 0x29c
 // USA: func_ov000_02161c0c
 extern "C" ARM void func_ov000_02161c0c(unsigned char* obj, int id) {
     GameState* gs = GameState::GetInstance();
-    unsigned char* c = (unsigned char*)GetCombatantWithFlag0x400(gs, id);
+    unsigned char* c = (unsigned char*)GetCombatantWithFlag0x400_0200fea4(gs, id);
     unsigned char* data = *(unsigned char**)(obj + kCombatData);
     struct Container02070e60* entries = (struct Container02070e60*)(data + 0x684);
     struct BinarySearchByComparatorStruct* infos = (struct BinarySearchByComparatorStruct*)(data + 0x678);
@@ -91,7 +91,7 @@ extern "C" ARM void func_ov000_02161c0c(unsigned char* obj, int id) {
     int group = slot;
     obj = *(unsigned char**)(obj + kPartyData) + 0x81b0;
     for (id = 0; id < ((struct PartyEntry02161c0c*)(obj + group * 0x18))->count; id++) {
-        ClearCombatantSlot(gs, (short)(((struct PartyEntry02161c0c*)(obj + group * 0x18))->ids[id] + 0xc0));
+        ClearCombatantSlot_0200fd48(gs, (short)(((struct PartyEntry02161c0c*)(obj + group * 0x18))->ids[id] + 0xc0));
     }
     memset(obj + 0x11 + slot * 0x18, 0, 8);
     (obj + slot * 0x18)[0x19] = 0;

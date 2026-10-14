@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 extern unsigned char data_02114e54;
-void SelectCoordsByFlag0x24(unsigned char*, int*, int*);
+void SelectCoordsByFlag0x24_02012a84(unsigned char*, int*, int*);
 extern "C" void* func_ov023_021db4e4(void* obj, int key);
 extern "C" void* func_ov023_021e2418(void* obj, int key);
 struct Obj021e2b5c;
@@ -12,7 +12,7 @@ extern "C" ARM int func_ov023_021e2868(void* obj) {
     if (*((unsigned char*)&data_02114e54 + 0x5f) == 0 || *(unsigned short*)((char*)&data_02114e54 + 0x24) == 0) return 0;
 
     int boundX, boundY;
-    SelectCoordsByFlag0x24(&data_02114e54, &boundX, &boundY);
+    SelectCoordsByFlag0x24_02012a84(&data_02114e54, &boundX, &boundY);
 
     char* entry;
     unsigned short i;

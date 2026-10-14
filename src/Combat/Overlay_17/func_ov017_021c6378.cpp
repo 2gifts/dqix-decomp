@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void* memset(void* dst, int value, unsigned int size);
 extern "C" void func_0205e330(void* a, void* b, int c);
 extern "C" void func_ov017_021c6254(char* self, int index);
@@ -51,7 +51,7 @@ struct Msg021c6378 {
 
 // USA: func_ov017_021c6378
 extern "C" ARM void func_ov017_021c6378(char* self) {
-    void* data = GetData02100044();
+    void* data = GetData02100044_0202ae24();
     Msg021c6378 msg;
     msg.tag = 0x40;
     Payload021c6378* p = &msg.payload;

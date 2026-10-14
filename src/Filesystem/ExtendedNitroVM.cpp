@@ -110,7 +110,7 @@ bool Decompressor::ProcessBytes(const void* input, unsigned int inputLength)
         default:
             if (inputLength >= remainingOutputBytes)
                 inputLength = remainingOutputBytes;
-            remainingOutputBytes -= CopyRegionAndFlushCache(writeStart + probablyDecompressedSize - remainingOutputBytes, input, inputLength);
+            remainingOutputBytes -= CopyRegionAndFlushCache_020d8524(writeStart + probablyDecompressedSize - remainingOutputBytes, input, inputLength);
             break;
         }
         CleanInvalidateCacheRange(writeStart, writeOutputPtr - writeStart);

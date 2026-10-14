@@ -50,7 +50,7 @@ struct LabelState021e6b8c {
     unsigned char padding_1372[10];
     void* buffer;
 };
-void ClearTwoWordsAndByte(S_b20c*);
+void ClearTwoWordsAndByte_0205b20c(S_b20c*);
 void SetField0_0205b220(void*, int);
 void SetFieldsAt0x4And0x8_0205b228(void*, int, unsigned char);
 extern "C" {
@@ -97,7 +97,7 @@ extern "C" ARM void func_ov023_021e6b8c(LabelState021e6b8c* self, unsigned short
     if (label->mode == 0 && (mode != 0 || (flags & 2) != 0)) text = label->alternate;
     int center = (x - func_020420e8(text, 1)) >> 1;
     S_b20c destination;
-    ClearTwoWordsAndByte(&destination);
+    ClearTwoWordsAndByte_0205b20c(&destination);
     SetField0_0205b220(&destination, (int)self->buffer);
     SetFieldsAt0x4And0x8_0205b228(&destination, (int)entries, 3);
     func_0205b734(&destination, 9, 9, (short)(x + 7), (short)(y + 7), 9);

@@ -22,7 +22,7 @@ struct Obj020d8080;
 struct TailList020469b4;
 struct TailNode020469b4;
 extern MapList02164928* data_ov004_02171010;
-GameResources* GetWord0x0(int*);
+GameResources* GetWord0x0_0200fb8c(int*);
 extern "C" Zone02164928* func_02012fe4();
 int IsBrightnessTransitionActive(GameResources*);
 int GetScaledStat_021634dc_021634dc(void*);
@@ -35,9 +35,9 @@ typedef void (*InitMap02164928)(char*, const void*, int, MapCoordinates02164928,
 extern "C" unsigned char func_02090294(ActiveGrottoClass*);
 extern "C" void func_0208f748(char*, int*);
 void EnqueueEventTag163_021cfcec(unsigned char);
-void ClearBitArray(void*);
+void ClearBitArray_02011408(void*);
 extern "C" int* func_0202ae18();
-int CheckField0NonZero(int*);
+int CheckField0NonZero_0202b7d8(int*);
 extern "C" int func_0202c508(int*);
 extern "C" void func_ov017_021cfabc();
 extern "C" void func_ov017_021cf730(int, int);
@@ -50,7 +50,7 @@ extern "C" ARM int func_ov004_02164928(void* self) {
     if (data_ov004_02171010->count == 0) return 0;
     ZoneArea02164928* area;
     GameState* state = GameState::GetInstance();
-    GameResources* resources = GetWord0x0(reinterpret_cast<int*>(state));
+    GameResources* resources = GetWord0x0_0200fb8c(reinterpret_cast<int*>(state));
     Zone02164928* zone = func_02012fe4();
     area = &zone->active.area;
     GrottoStruct* grotto = state->GetGrottoStruct();
@@ -94,9 +94,9 @@ extern "C" ARM int func_ov004_02164928(void* self) {
     }
     active->unknown_0[3] = 0;
     EnqueueEventTag163_021cfcec(1);
-    ClearBitArray(state);
+    ClearBitArray_02011408(state);
     int* context = func_0202ae18();
-    if (CheckField0NonZero(context) && func_0202c508(context)) {
+    if (CheckField0NonZero_0202b7d8(context) && func_0202c508(context)) {
         func_ov017_021cfabc();
         func_ov017_021cf730(-1, 0);
         EnqueueEventTag167_021d3ec8();

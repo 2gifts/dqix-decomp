@@ -3,9 +3,9 @@
 #include "GameState/GameState.h"
 
 extern "C" void* func_0202ae18(void);
-int GetField5cb0Value(char* obj);
+int GetField5cb0Value_0201079c(char* obj);
 struct TableA68;
-void* FindEntryByKey(struct TableA68* table, int key);
+void* FindEntryByKey_02072a68(struct TableA68* table, int key);
 
 struct BattleExt021e6594 {
     unsigned int : 29;
@@ -40,8 +40,8 @@ extern "C" ARM void func_ov023_021e6594(char* obj) {
     struct BattleExt021e6594* ext = (struct BattleExt021e6594*)((char*)battleStruct + regionalOffset0);
     if (!ext->flag29) {
         void* entry;
-        if (GetField5cb0Value((char*)battleStruct) == 1) {
-            entry = FindEntryByKey((struct TableA68*)(obj + regionalOffset1), 0x50e9);
+        if (GetField5cb0Value_0201079c((char*)battleStruct) == 1) {
+            entry = FindEntryByKey_02072a68((struct TableA68*)(obj + regionalOffset1), 0x50e9);
         } else {
             func_0202ae18();
             GameObject* combatant = battleStruct->GetProtagonist();
@@ -54,7 +54,7 @@ extern "C" ARM void func_ov023_021e6594(char* obj) {
             key += sub->f950;
 #endif
 
-            entry = FindEntryByKey((struct TableA68*)(obj + regionalOffset1), (short)key);
+            entry = FindEntryByKey_02072a68((struct TableA68*)(obj + regionalOffset1), (short)key);
         }
         memset(obj + regionalOffset3, 0, 0x40);
         int len = strlen((char*)entry);
@@ -62,7 +62,7 @@ extern "C" ARM void func_ov023_021e6594(char* obj) {
     }
     if (ext->field9 != 0x12c) return;
     memset(obj + regionalOffset4, 0, 0x40);
-    void* entry2 = FindEntryByKey((struct TableA68*)(obj + regionalOffset1), 0x283c);
+    void* entry2 = FindEntryByKey_02072a68((struct TableA68*)(obj + regionalOffset1), 0x283c);
     int len2 = strlen((char*)entry2);
     memcpy(obj + regionalOffset4, (char*)entry2, len2);
 }

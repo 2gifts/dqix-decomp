@@ -7,7 +7,7 @@ void* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
 extern "C" int func_02050064(void* obj);
 extern "C" void* __clear(void* dst, int count);
 extern "C" int func_020426bc(void* src, void* dst, int flag);
-int StringLength(const char* s);
+int StringLength_020d2ff0(const char* s);
 extern "C" void func_ov023_021e709c(void* ctx, void* arr, int index);
 void* GetTableEntry0204a5e4(int a, int b);
 void CleanInvalidateCacheRange(void const*, unsigned int);
@@ -47,7 +47,7 @@ extern "C" ARM void func_ov023_021e8270(char* obj) {
     if (src != 0) {
         len = func_020426bc(src, buf, 1);
     } else {
-        len = StringLength(battle + 8);
+        len = StringLength_020d2ff0(battle + 8);
         memcpy(buf, battle + 8, len);
     }
 

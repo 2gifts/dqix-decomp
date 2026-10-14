@@ -13,7 +13,7 @@ struct Entry0217fe30 {
 extern "C" ARM int func_ov000_0217fe30(char* obj) {
     int result = 0;
     GameState* battle = GameState::GetInstance();
-    char* ptr = (char*)GetPtrField0x2a04(battle);
+    char* ptr = (char*)GetPtrField0x2a04_02010828(battle);
     unsigned char limit = *(unsigned char*)(ptr + 0xf7c);
     unsigned char idx;
     for (idx = 0; idx < limit; idx++) {

@@ -19,10 +19,10 @@ extern "C" void func_ov006_021549ac(void* pot, int ticks);
 void CallFunc0204c87cOverEntries0207fc6c(struct Obj0207fc6c* obj, int arg);
 extern "C" void func_ov006_0215a00c(void* self, int n);
 int CheckFlagOrByte55_02158c70();
-void CallFunc0204c804OnMatchingKey(struct Obj2081* obj, int key);
+void CallFunc0204c804OnMatchingKey_0207fdcc(struct Obj2081* obj, int key);
 extern "C" unsigned short func_02081f20(void* obj, int ticks);
 extern "C" int func_020800fc(void* obj, short* key, short a, unsigned short b, unsigned char c, int d);
-int ClearSublistEntriesFlag4(void* obj, int id);
+int ClearSublistEntriesFlag4_020804fc(void* obj, int id);
 extern "C" int func_020813ec(void* obj, int id);
 int GetInnerFlagBit0020e28dc(struct Outer020e28dc* o);
 void UpdateEntryStateAndPosition(struct Ctx020e263c* c, int key);
@@ -111,8 +111,8 @@ extern "C" ARM int func_ov006_02157d7c(struct Obj02157d7c* self, int arg)
     {
         if (((CheckFlag55Fn)CheckFlagOrByte55_02158c70)(self) != 0)
         {
-            CallFunc0204c804OnMatchingKey((Obj2081*)menu, 0);
-            CallFunc0204c804OnMatchingKey((Obj2081*)menu, 1);
+            CallFunc0204c804OnMatchingKey_0207fdcc((Obj2081*)menu, 0);
+            CallFunc0204c804OnMatchingKey_0207fdcc((Obj2081*)menu, 1);
             *(unsigned short*)((char*)self + 0x300 + 0x94) &= ~0x100;
         }
         return 0;
@@ -134,7 +134,7 @@ extern "C" ARM int func_ov006_02157d7c(struct Obj02157d7c* self, int arg)
                                    (*(unsigned short*)((char*)self + 0x300 + 0x94) & 4) != 0);
         *(short*)((char*)menu + kMenuCursor) = *self->f44;
         if (self->f350 != 0)
-            ClearSublistEntriesFlag4(menu, *(short*)((char*)self + 0x300 + 0x6e));
+            ClearSublistEntriesFlag4_020804fc(menu, *(short*)((char*)self + 0x300 + 0x6e));
         if (*(short*)((char*)self + 0x300 + 0x5e) != *self->f44)
             func_020813ec(menu, *(short*)((char*)self + 0x300 + 0x6e));
     }

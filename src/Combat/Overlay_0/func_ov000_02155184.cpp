@@ -3,7 +3,7 @@
 
 class GameState { public: static GameState* GetInstance(); };
 struct Unit02155184;
-Unit02155184* GetCombatantWithFlag0x400(GameState*, int);
+Unit02155184* GetCombatantWithFlag0x400_0200fea4(GameState*, int);
 struct Container02070e60;
 struct BinarySearchByComparatorStruct;
 void* SearchWithLow15Comparator02070fd0(Container02070e60*, int);
@@ -37,7 +37,7 @@ static inline int IsPartySlot02155184(int id) { return id >= 0 && id <= 3; }
 // USA: func_ov000_02155184
 extern "C" ARM void func_ov000_02155184(Root02155184* obj, int id, int flags) {
     if (IsPartySlot02155184(id)) return;
-    Unit02155184* unit = GetCombatantWithFlag0x400(GameState::GetInstance(), id);
+    Unit02155184* unit = GetCombatantWithFlag0x400_0200fea4(GameState::GetInstance(), id);
     if (!unit) return;
     char* search = obj->info + 0x284;
     unsigned short key = unit->key;

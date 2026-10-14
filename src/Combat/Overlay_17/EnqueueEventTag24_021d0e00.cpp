@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void* GetData02100044(void);
-int GetFieldAt0x150(unsigned char* obj);
+void* GetData02100044_0202ae24(void);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct LocalEvt021d0e00 {
@@ -15,7 +15,7 @@ struct LocalEvt021d0e00 {
 
 // USA: func_ov017_021d0e00  (semantic: EnqueueEventTag24_021d0e00)
 extern "C" ARM void func_ov017_021d0e00(int id) {
-    void* p = GetData02100044();
+    void* p = GetData02100044_0202ae24();
     struct LocalEvt021d0e00 buf;
     buf.tag = 0x18;
     unsigned char* dst = &buf.id;
@@ -23,7 +23,7 @@ extern "C" ARM void func_ov017_021d0e00(int id) {
     GameState* bs = GameState::GetInstance();
     GameObject* c = bs->GetPartyMemberByIndex(id);
     if (!c) return;
-    int field150 = GetFieldAt0x150((unsigned char*)c);
+    int field150 = GetFieldAt0x150_02053c6c((unsigned char*)c);
     if (!field150) return;
 
     dst[0] = (unsigned char)id;

@@ -31,7 +31,7 @@ struct Combatant021e9edc {
     View021e9edc* view;
 };
 
-void* GetActiveCombatWork(void);
+void* GetActiveCombatWork_ov000_02160130(void);
 CombatSlot021e9edc* GetSlotPtr02160f20(void* work);
 int GetWord_021def24(void* work);
 char* GetOffsetPtr02160f08(void* work);
@@ -44,13 +44,13 @@ static inline int IsPartyMember(int id) {
 
 // USA: func_ov025_021e9edc
 extern "C" ARM void func_ov025_021e9edc(void* p) {
-    void* work = GetActiveCombatWork();
+    void* work = GetActiveCombatWork_ov000_02160130();
     CombatSlot021e9edc* slot = GetSlotPtr02160f20(work);
     if (GetWord_021def24(work) != 0) {
         return;
     }
     GameState* gs = GameState::GetInstance();
-    char* list = GetOffsetPtr02160f08(GetActiveCombatWork());
+    char* list = GetOffsetPtr02160f08(GetActiveCombatWork_ov000_02160130());
     for (CombatNode021e9edc* node = slot->head; node != 0; node = node->next) {
         int id = node->id;
         unsigned short value = node->value;

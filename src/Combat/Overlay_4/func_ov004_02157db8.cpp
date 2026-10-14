@@ -77,17 +77,17 @@ extern char data_02109bf4[];
 
 extern "C" void* func_ov011_021845f8(unsigned char*, unsigned int);
 void ClearStruct020a9ea4(struct Struct020a9ea4*);
-void Zero4Bytes(void*);
+void Zero4Bytes_020e526c(void*);
 void Clear12Bytes020e46c4(void*);
 extern "C" void* func_02012fe4(void);
-unsigned short GetFieldAt0x7e(struct S_e830* p);
-unsigned int GetWord(unsigned int* obj);
-unsigned int GetField4(unsigned int* obj);
-unsigned int GetField8(unsigned int* obj);
-void SetBitsInWord(unsigned int* obj, unsigned int mask);
-void SetBitsInField4(unsigned int* obj, unsigned int mask);
-void Set3DClearColor(int, int, int, int, int);
-void SetFogState(int, unsigned int, unsigned int, unsigned short);
+unsigned short GetFieldAt0x7e_0201e830(struct S_e830* p);
+unsigned int GetWord_0203b498(unsigned int* obj);
+unsigned int GetField4_0203b4d0(unsigned int* obj);
+unsigned int GetField8_0203b508(unsigned int* obj);
+void SetBitsInWord_0203b4a0(unsigned int* obj, unsigned int mask);
+void SetBitsInField4_0203b4d8(unsigned int* obj, unsigned int mask);
+void Set3DClearColor_020c5588(int, int, int, int, int);
+void SetFogState_020c54a4(int, unsigned int, unsigned int, unsigned short);
 extern "C" void* func_ov004_02156fd4(void* a, int b);
 void SetDataPtr_021f5598(void*);
 void RegisterSlotA020cf0fc(int);
@@ -96,8 +96,8 @@ struct Obj020397cc;
 void CancelPendingAction020397cc(Obj020397cc*, int);
 unsigned char GetField0xcc0209ca98(char*);
 void* GetDataPtr02114e04_020d6c00();
-void OrBitsIntoField0(unsigned int*, unsigned int);
-unsigned char CopyOutRegion0x5718(char*, void*);
+void OrBitsIntoField0_020466e4(unsigned int*, unsigned int);
+unsigned char CopyOutRegion0x5718_02011494(char*, void*);
 
 // USA: func_ov004_02157db8
 extern "C" ARM int func_ov004_02157db8(void* a) {
@@ -157,7 +157,7 @@ extern "C" ARM int func_ov004_02157db8(void* a) {
     blk->word74 = neg2;
     blk->word78 = 0;
     ClearStruct020a9ea4((struct Struct020a9ea4*)blk->pad84);
-    Zero4Bytes(blk->pad8c);
+    Zero4Bytes_020e526c(blk->pad8c);
     blk->word98 = 0;
     blk->b9c = 0;
     blk->b9d = 0;
@@ -168,18 +168,18 @@ extern "C" ARM int func_ov004_02157db8(void* a) {
     if (!v) return 0;
     void* p = (char*)v + 0x6c;
     if (!p) return 0;
-    data_ov004_021707d8.ptr->half0c = GetFieldAt0x7e((struct S_e830*)p);
+    data_ov004_021707d8.ptr->half0c = GetFieldAt0x7e_0201e830((struct S_e830*)p);
 
     unsigned int* obj = (unsigned int*)func_ov017_0218b5b0();
-    data_ov004_021707d8.ptr->word00 = GetWord(obj);
-    data_ov004_021707d8.ptr->word04 = GetField4(obj);
-    data_ov004_021707d8.ptr->word08 = GetField8(obj);
-    SetBitsInWord(obj, 4);
-    SetBitsInField4(obj, 0x8de);
+    data_ov004_021707d8.ptr->word00 = GetWord_0203b498(obj);
+    data_ov004_021707d8.ptr->word04 = GetField4_0203b4d0(obj);
+    data_ov004_021707d8.ptr->word08 = GetField8_0203b508(obj);
+    SetBitsInWord_0203b4a0(obj, 4);
+    SetBitsInField4_0203b4d8(obj, 0x8de);
 
     int pad0 = 0;
-    Set3DClearColor(0, 0x1f, 0x7fff, 0, 0);
-    SetFogState(0, 0, 0, 0);
+    Set3DClearColor_020c5588(0, 0x1f, 0x7fff, 0, 0);
+    SetFogState_020c54a4(0, 0, 0, 0);
 
     void* d = func_ov004_02156fd4(a, 5);
     if (d != 0) {
@@ -200,7 +200,7 @@ extern "C" ARM int func_ov004_02157db8(void* a) {
     data_ov004_021707d8.ptr->b2d = GetField0xcc0209ca98(data_02109bf4);
     unsigned int subword = *(unsigned int*)(sub4000 + 0x50);
     data_ov004_021707d8.ptr->b2f = (subword & 1) ? 1 : 0;
-    OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 0xf);
+    OrBitsIntoField0_020466e4((unsigned int*)GetDataPtr02114e04_020d6c00(), 0xf);
 
     short* pp = (short*)(base5 + 4);
     for (int i = 0; i < 6; ) {
@@ -219,14 +219,14 @@ extern "C" ARM int func_ov004_02157db8(void* a) {
     memset((void*)data_ov004_021707d8.ptr->word98, 0, 0x10800);
 
     unsigned char ids[4];
-    unsigned char count = CopyOutRegion0x5718((char*)bs, ids);
+    unsigned char count = CopyOutRegion0x5718_02011494((char*)bs, ids);
     for (int i = 0; i < count; i++) {
         data_ov004_021707d8.ptr->arr32[i] = ids[i];
     }
     data_ov004_021707d8.ptr->arr32[4] = count;
 
     for (int i = 0; i < data_ov004_021707d8.ptr->arr32[4]; i++) {
-        void* combatant = (void*)GetCombatantWithFlag0x100(bs, data_ov004_021707d8.ptr->arr32[i]);
+        void* combatant = (void*)GetCombatantWithFlag0x100_0200ff1c(bs, data_ov004_021707d8.ptr->arr32[i]);
         if (combatant != 0) {
             struct Nib56b_02157db8* field150 = ((struct Combatant150_02157db8*)combatant)->f150;
             int flag;

@@ -3,7 +3,7 @@
 
 // KEEP-NAME
 // USA: func_02011a74
-ARM void CopyStringToField0x649e(char* obj, unsigned int index, const char* source) {
+ARM void CopyStringToField0x649e_02011a74(char* obj, unsigned int index, const char* source) {
     if (source == NULL) return;
 #if defined(jpn)
     char* destination = obj + 0x621e;

@@ -4,13 +4,13 @@ extern "C" void func_020c9be0(void);
 extern "C" void func_020d11a8(void);
 
 struct InitGuard020d1144 {
-    int done;              /* 0x0 */
-    int (*callback)(void); /* 0x4 */
+    int done;
+    int (*callback)(void);
 };
 extern InitGuard020d1144 data_02112140;
 
 // USA: func_020d1144
-extern "C" ARM void _Z24DispatchType0x11InitOnceii(unsigned int context, unsigned int code, unsigned int error) {
+extern "C" ARM void _Z33DispatchType0x11InitOnce_020d1144ii(unsigned int context, unsigned int code, unsigned int error) {
     if ((code & 0x3f) == 0x11) {
         if (data_02112140.done != 0) return;
         data_02112140.done = 1;

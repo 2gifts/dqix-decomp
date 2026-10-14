@@ -10,12 +10,12 @@ struct BoundedArray {
 };
 
 extern "C" char* func_02012fe4(void);
-int GetField5cb0Value(char* battleStruct);
-int GetField5cb4Value(char* battleStruct);
+int GetField5cb0Value_0201079c(char* battleStruct);
+int GetField5cb4Value_020107d0(char* battleStruct);
 int IsInRange0201b5b0(int monsterId);
 extern "C" void func_0209c008(void* obj, struct StreamHeader* buffer, int length, int idFlag, int mulVal, int addVal);
-void ClearHalfword0x18(void* obj);
-void AppendHalfwordCapped(BoundedArray* arr, unsigned short value);
+void ClearHalfword0x18_0209bffc(void* obj);
+void AppendHalfwordCapped_0209c08c(BoundedArray* arr, unsigned short value);
 
 extern const char data_ov017_021d7b5d;
 
@@ -57,14 +57,14 @@ extern "C" ARM void func_ov017_021b4dc8(struct ScriptRequest_021b4dc8* request) 
     }
 
     source = request->source;
-    ClearHalfword0x18(&source->entries);
+    ClearHalfword0x18_0209bffc(&source->entries);
     if (loader->GetDetailedTaskStatus(request->taskId) == BackgroundLoader::TaskStatus_Complete) {
         unsigned int size;
         void* data;
         loader->GetLoadedFileByID(request->taskId, &data, &size);
         if (data != 0) {
-            int field5cb0 = GetField5cb0Value((char*)battle);
-            int field5cb4 = GetField5cb4Value((char*)battle);
+            int field5cb0 = GetField5cb0Value_0201079c((char*)battle);
+            int field5cb4 = GetField5cb4Value_020107d0((char*)battle);
             int scriptId = monsterId;
             if (IsInRange0201b5b0(monsterId)) {
                 int rank = grotto->GetFloorMonsterRank(monsterId % 20);
@@ -76,12 +76,12 @@ extern "C" ARM void func_ov017_021b4dc8(struct ScriptRequest_021b4dc8* request) 
     }
 
     if (request->extraEntry != 0) {
-        AppendHalfwordCapped(&source->entries, request->extraEntry);
+        AppendHalfwordCapped_0209c08c(&source->entries, request->extraEntry);
     }
     if (IsInRange0201b5b0(monsterId)) {
-        AppendHalfwordCapped(&source->entries, 0x26);
-        AppendHalfwordCapped(&source->entries, 0x27);
-        AppendHalfwordCapped(&source->entries, 0x28);
+        AppendHalfwordCapped_0209c08c(&source->entries, 0x26);
+        AppendHalfwordCapped_0209c08c(&source->entries, 0x27);
+        AppendHalfwordCapped_0209c08c(&source->entries, 0x28);
     }
 
     loader->RemoveTask(request->taskId);

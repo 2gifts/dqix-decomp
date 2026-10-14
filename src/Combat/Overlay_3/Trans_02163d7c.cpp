@@ -31,7 +31,7 @@ struct Field150 {
 struct TailList020469b4;
 struct TailNode020469b4;
 void AppendNodeToTail(TailList020469b4*, TailNode020469b4*);
-int CheckField0NonZero(int*);
+int CheckField0NonZero_0202b7d8(int*);
 void SetFlag320_02195530(unsigned char*);
 struct Field150Holder02052e2c;
 Field150* GetField150Ptr0x488_02052e2c(Field150Holder02052e2c*);
@@ -58,7 +58,7 @@ extern "C" ARM void func_ov003_02163d7c(char* self) {
     AppendNodeToTail((TailList020469b4*)list, (TailNode020469b4*)node);
     self[kRegionValue4A3_2CB] = 0x10;
     *(unsigned int*)(self + kRegionValue464_28C) &= ~0x8000;
-    if (!CheckField0NonZero((int*)entry)) {
+    if (!CheckField0NonZero_0202b7d8((int*)entry)) {
         return;
     }
     if (!func_0202c508(entry)) {

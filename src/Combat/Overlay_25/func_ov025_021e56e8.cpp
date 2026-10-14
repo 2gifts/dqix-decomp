@@ -11,9 +11,9 @@ struct Param021e56e8 {
 
 int DispatchByIndex021820bc(void* obj, int unused, int index, int arg);
 void SetThreeWords_021e4448(int* obj, int a, int b, int c);
-void* GetActiveCombatWork(void);
+void* GetActiveCombatWork_ov000_02160130(void);
 extern "C" void* func_ov000_02160f14(void* work);
-int GetField0x78(void* obj);
+int GetField0x78_0202e800(void* obj);
 
 extern Vector3fix data_ov025_021eef24;
 
@@ -26,12 +26,12 @@ extern "C" ARM int func_ov025_021e56e8(struct Param021e56e8* p, int b, int unuse
     if (p->mode == 0) {
         SetThreeWords_021e4448((int*)&scale, 0x10a, 0x10a, 0x10a);
     } else if (p->mode == 2) {
-        void* field = func_ov000_02160f14(GetActiveCombatWork());
+        void* field = func_ov000_02160f14(GetActiveCombatWork_ov000_02160130());
         float y0 = 0.065f;
         float y1 = 0.08f;
         float x0 = 6.5f;
         float x1 = 7.0f;
-        float zoom = GetField0x78(field) / 4096.0f;
+        float zoom = GetField0x78_0202e800(field) / 4096.0f;
         float s = zoom * ((y1 - y0) / (x1 - x0)) + (x1 * y0 - x0 * y1) / (x1 - x0);
         if (s < 0.065f) {
             s = 0.065f;

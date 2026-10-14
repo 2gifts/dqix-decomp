@@ -6,8 +6,8 @@ extern char data_02110f8c;
 extern char data_021112ec;
 #endif
 
-// USA: _Z21GetGlobalWord021112ecv
-ARM int GetGlobalWord021112ec(void) {
+// USA: _Z30GetGlobalWord021112ec_020c75a4v
+ARM int GetGlobalWord021112ec_020c75a4(void) {
 #if defined(jpn)
     return *(int*)(&data_02110f8c);
 #else

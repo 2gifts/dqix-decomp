@@ -9,12 +9,12 @@
 
 struct FlagWord02046708;
 
-void *GetData02105254();
+void *GetData02105254_0203b628();
 extern "C" void *func_02012fe4();
 void *GetDataPtr02114e04_020d6c00();
 int TestFlags02046708(FlagWord02046708 *flags, unsigned int mask);
 extern "C" void *func_0202ae18();
-int CheckField0NonZero(int *value);
+int CheckField0NonZero_0202b7d8(int *value);
 void SetElementFields0202756c(void *receiver, int x, int y, int index, unsigned char field5, unsigned char field6,
                               unsigned short field7, unsigned char field8, int scaleX, int scaleY);
 
@@ -39,7 +39,7 @@ enum { kSecondMarkerId = 0x26, kThirdMarkerId = 0x33, kFourthMarkerId = 0x41, kT
 extern "C" ARM void func_020e0f74(void *receiver) {
     CombatMarkerReceiverView *state = static_cast<CombatMarkerReceiverView *>(receiver);
     GameState::GetInstance();
-    GetData02105254();
+    GetData02105254_0203b628();
     func_02012fe4();
     if (TestFlags02046708(static_cast<FlagWord02046708 *>(GetDataPtr02114e04_020d6c00()), 0x41)) {
         return;
@@ -56,7 +56,7 @@ extern "C" ARM void func_020e0f74(void *receiver) {
 
     int *value = static_cast<int *>(func_0202ae18());
     int x      = 5;
-    if (CheckField0NonZero(value)) {
+    if (CheckField0NonZero_0202b7d8(value)) {
         x += 14;
     }
     SetElementFields0202756c(receiver, x << 12, 5 << 12, 0, 0x1f, 1, 0xff, 0xff, 0x1000, 0x1000);
@@ -64,7 +64,7 @@ extern "C" ARM void func_020e0f74(void *receiver) {
 
     if (state->markerValue < 1000 && state->markerValue != 0) {
         int y = kThirdY;
-        if (CheckField0NonZero(value)) {
+        if (CheckField0NonZero_0202b7d8(value)) {
             y += 11;
         }
         SetElementFields0202756c(receiver, kThirdX << 12, y << 12, 2, kThirdMarkerId, 1, 0xff, 0xff, 0x1000, 0x1000);

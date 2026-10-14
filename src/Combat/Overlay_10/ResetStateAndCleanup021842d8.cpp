@@ -6,7 +6,7 @@
 extern AllocatorUnion data_02114e20;
 
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
-void SetByteField0x253(void* obj);
+void SetByteField0x253_020397c0(void* obj);
 
 extern "C" void* func_02057924();
 extern "C" void func_02057f00(void* head, int value);
@@ -16,7 +16,7 @@ struct Struct021842d8 {
     unsigned char pad0[4];
     int field4;
     unsigned char pad8[0xc];
-    SafeAllocator safeAlloc; // offset 0x14
+    SafeAllocator safeAlloc;
 };
 
 // USA: func_ov010_021842d8
@@ -34,7 +34,7 @@ ARM void ResetStateAndCleanup021842d8(struct Struct021842d8* obj) {
     }
     GameObject* c = GameState::GetInstance()->GetUnknownGameObject();
     if (c != NULL) {
-        SetByteField0x253(c);
+        SetByteField0x253_020397c0(c);
     }
     func_ov010_021842a0(obj);
 }

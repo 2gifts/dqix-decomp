@@ -8,7 +8,7 @@ struct TailList020469b4;
 struct TailNode020469b4;
 void AppendNodeToTail(struct TailList020469b4* list, struct TailNode020469b4* node);
 struct Field3f8Struct;
-Field3f8Struct* GetField0x3f8Address(GameState* bs);
+Field3f8Struct* GetField0x3f8Address_0200fd0c(GameState* bs);
 extern "C" void VectorizedMemset(void* dst, int value, unsigned int length);
 struct ListHead02046b60;
 int ListContainsId(struct ListHead02046b60* list, int id);
@@ -82,7 +82,7 @@ extern "C" ARM void func_ov017_0219577c(unsigned char mode, int resetField, int 
     AppendNodeToTail((struct TailList020469b4*)list, (struct TailNode020469b4*)node);
 
     if (resetField) {
-        Field3f8Struct0219577c* field = (Field3f8Struct0219577c*)GetField0x3f8Address(gs);
+        Field3f8Struct0219577c* field = (Field3f8Struct0219577c*)GetField0x3f8Address_0200fd0c(gs);
         VectorizedMemset(field, 0, 0x70);
         field->field_4 = 1;
         field->field_8 = 1;

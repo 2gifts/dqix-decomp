@@ -11,15 +11,15 @@ struct Obj0205dee8;
 void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char keyLow,
                                                                         unsigned char keyHigh);
 int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
-int TestFlag0SetAndFlag1Clear(unsigned short *p, int n);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short *p, int n);
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0 *o, int a, int b);
 int CheckFlagOrThreshold_02161b48(char *base, int a);
-void SetElementFieldC2(struct Struct_0205d81c *s, int a, int b);
+void SetElementFieldC2_0205deb4(struct Struct_0205d81c *s, int a, int b);
 void SetFieldB0AndUpdate0205dee8(struct Obj0205dee8 *o, int v);
 void *GetDataPtr02114e04_020d6c00();
-void OrBitsIntoField0(unsigned int *p, unsigned int mask);
-unsigned char *GetFieldAt0x150(unsigned char *p);
+void OrBitsIntoField0_020466e4(unsigned int *p, unsigned int mask);
+unsigned char *GetFieldAt0x150_02053c6c(unsigned char *p);
 extern "C" int GetInventoryItemByID(char *self, int idx, int member);
 extern "C" void func_ov002_02161cf0(void *base);
 extern "C" void func_ov002_02161b98(char *self);
@@ -47,11 +47,11 @@ extern "C" ARM void func_ov002_02162e50(char *base) {
         func_ov002_02161cf0(base);
         func_ov002_0215b9a4(base, 5, 0);
         *(int *) (base + 0x1000 + 0xbc0) += 1;
-        SetElementFieldC2((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 4, 1);
-        SetElementFieldC2((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 5, 0);
+        SetElementFieldC2_0205deb4((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 4, 1);
+        SetElementFieldC2_0205deb4((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 5, 0);
         SetFieldB0AndUpdate0205dee8((struct Obj0205dee8 *) (base + 0x2c8 + 0xc00), 5);
         int item = GetInventoryItemByID(base, *(short *) (base + 0x1b00 + 0xe8), *(signed char *) (base + 0x1c00 + 0x20));
-        OrBitsIntoField0((unsigned int *) GetDataPtr02114e04_020d6c00(), 1);
+        OrBitsIntoField0_020466e4((unsigned int *) GetDataPtr02114e04_020d6c00(), 1);
         if (*(unsigned int *) (base + 0x2000 + 0x47c) & 1) {
             ((SafeAllocator *) (base + 0x64 + 0x800))->Reset();
             func_ov023_021dc9e8(base + 0x50, (SafeAllocator *) (base + 0x64 + 0x800), item, base + 0x3ec + 0x400, 0x50);
@@ -73,7 +73,7 @@ extern "C" ARM void func_ov002_02162e50(char *base) {
         int prev = *(short *) (base + 0x1b00 + 0xe8);
         *(short *) (base + 0x1b00 + 0xe8) =
             GetActiveScaledSum0205d794((struct Struct_0205c570 *) (base + 0x2c8 + 0xc00));
-        if (TestFlag0SetAndFlag1Clear(data_02114e30, 4) || func_0205df38(base + 0x2c8 + 0xc00, 0x28)) {
+        if (TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 4) || func_0205df38(base + 0x2c8 + 0xc00, 0x28)) {
             if (*(short *) (base + 0x1b00 + 0xe6) == *(signed char *) (base + 0x1c00 + 0x73)) {
                 func_ov002_0215b458(base, 1);
                 *(short *) (base + 0x1c00 + 0x22) =
@@ -86,7 +86,7 @@ extern "C" ARM void func_ov002_02162e50(char *base) {
             GetInventoryItemByID(base, *(short *) (base + 0x1b00 + 0xe8), *(signed char *) (base + 0x1c00 + 0x20));
         func_ov023_021dcae0(base + 0x50, *(short *) (base + 0x1c00 + 0x22));
         if (prev != *(short *) (base + 0x1b00 + 0xe8)) return;
-        int a = TestFlag0SetAndFlag1Clear(data_02114e30, 0x601);
+        int a = TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x601);
         int b = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(base + 0x2c8 + 0xc00), 0x14);
         if ((a | b) ? 1 : 0) {
             *(unsigned char *) (base + 0xf80) = *(int *) (base + 0x1000 + 0xbb8);
@@ -103,14 +103,14 @@ extern "C" ARM void func_ov002_02162e50(char *base) {
             if (ok) return;
             GameObject *p = GameState::GetInstance()->GetProtagonist();
             if (p == NULL) return;
-            *(short *) (GetFieldAt0x150((unsigned char *) p) + 0x900 + 0x58) = *(short *) (base + 0x1c00 + 0x22);
+            *(short *) (GetFieldAt0x150_02053c6c((unsigned char *) p) + 0x900 + 0x58) = *(short *) (base + 0x1c00 + 0x22);
         } else if (CheckFlagOrThreshold_02161b48(base, 1)) {
             *(short *) (base + 0x1c00 + 0x22) = -1;
             *(short *) (base + 0x1b00 + 0xe8) = -1;
             *(int *) (base + 0x1000 + 0xbb8)  = 4;
             *(int *) (base + 0x1000 + 0xbc0)  = 1;
             SetFieldB0AndUpdate0205dee8((struct Obj0205dee8 *) (base + 0x2c8 + 0xc00), 4);
-            SetElementFieldC2((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 4, 0);
+            SetElementFieldC2_0205deb4((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 4, 0);
             func_ov002_02161cf0(base);
             func_ov023_021dca88(base + 0x50);
         }

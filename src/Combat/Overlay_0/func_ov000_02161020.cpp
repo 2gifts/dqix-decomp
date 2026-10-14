@@ -30,13 +30,13 @@ struct Combatant02161020 {
 
 extern "C" void* func_02057924(void);
 extern "C" RenderCtx02161020* func_02012fe4(void);
-GameObject* GetCombatantWithFlag0x400(GameState* gameState, int combatantId);
-unsigned int GetBitsInField4(unsigned int* obj, unsigned int mask);
+GameObject* GetCombatantWithFlag0x400_0200fea4(GameState* gameState, int combatantId);
+unsigned int GetBitsInField4_0203b4fc(unsigned int* obj, unsigned int mask);
 extern "C" int func_02032fdc(GameObject* obj, int a1, int a2);
 extern "C" void func_02057ab8(void* g, int id);
 extern "C" void _Z23SyncBattleState0208f87cPviii(const Vector3fix* pos, int color, int scale, int alpha, int polygonId);
-void SetRemappedBitAt0xa26(RemapFlagOwner* obj, int index);
-void ClearFlagBit(unsigned char* base, int bit);
+void SetRemappedBitAt0xa26_020d76b8(RemapFlagOwner* obj, int index);
+void ClearFlagBit_020d76d8(unsigned char* base, int bit);
 
 // USA: func_ov000_02161020
 extern "C" ARM void func_ov000_02161020(BattleWork02161020* work) {
@@ -47,7 +47,7 @@ extern "C" ARM void func_ov000_02161020(BattleWork02161020* work) {
     RemapFlagOwner* owner = work->remapOwner;
     unsigned short color = ctx->color;
     for (int i = 0; i < 8; i++) {
-        GameObject* c = GetCombatantWithFlag0x400(bs, i + 0xc0);
+        GameObject* c = GetCombatantWithFlag0x400_0200fea4(bs, i + 0xc0);
         if (c == NULL) {
             continue;
         }
@@ -55,7 +55,7 @@ extern "C" ARM void func_ov000_02161020(BattleWork02161020* work) {
             continue;
         }
         int drawn = 0;
-        if (GetBitsInField4((unsigned int*)res, 0x200) == 0) {
+        if (GetBitsInField4_0203b4fc((unsigned int*)res, 0x200) == 0) {
             drawn = func_02032fdc(c, 1, drawn);
         }
         if (drawn != 0) {
@@ -71,11 +71,11 @@ extern "C" ARM void func_ov000_02161020(BattleWork02161020* work) {
             const Vector3fix& pos = c->obj3D_.MaybeGetShadowSource();
             _Z23SyncBattleState0208f87cPviii(&pos, color, ((Combatant02161020*)c)->shadowScale, alpha, polygonId);
             if (owner != NULL) {
-                SetRemappedBitAt0xa26(owner, i + 0xc0);
+                SetRemappedBitAt0xa26_020d76b8(owner, i + 0xc0);
             }
         } else {
             if (owner != NULL) {
-                ClearFlagBit((unsigned char*)owner, i + 0xc0);
+                ClearFlagBit_020d76d8((unsigned char*)owner, i + 0xc0);
             }
         }
     }

@@ -7,7 +7,7 @@ enum { stateFieldOffset = 0x1c4 };
 #endif
 #include "GameState/GameState.h"
 
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 
 // USA: func_020dcc20
 ARM int CountFlag0x800MatchesEqualsTarget020dcc20(int targetCount, int flag) {
@@ -17,7 +17,7 @@ ARM int CountFlag0x800MatchesEqualsTarget020dcc20(int targetCount, int flag) {
         GameObject* c = battle->GetPartyMemberByIndex(i);
         if (c != NULL) {
             if (!(flag != 0 && *(int*)((char*)c + stateFieldOffset) != 0)) {
-                if (GetFieldAt0x150((unsigned char*)c) != 0) {
+                if (GetFieldAt0x150_02053c6c((unsigned char*)c) != 0) {
                     count = count + 1;
                 }
             }

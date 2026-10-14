@@ -1,11 +1,11 @@
 #include <globaldefs.h>
-void InsertShortIntoTable021098f4(unsigned short value);
+void InsertShortIntoTable021098f4_0209953c(unsigned short value);
 // USA: func_0206ec64
 void IncrementNibble0206ec64(int unused, int index, unsigned char* data, unsigned int count) {
     int rem = index % 2;
     int half = index / 2;
     if (count <= (unsigned int)half) {
-        InsertShortIntoTable021098f4(0x3e7);
+        InsertShortIntoTable021098f4_0209953c(0x3e7);
         return;
     }
 

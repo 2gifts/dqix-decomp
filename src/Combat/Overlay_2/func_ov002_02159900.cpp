@@ -5,7 +5,7 @@ struct Container020dedd0;
 struct Container020e0310;
 struct Obj02046574;
 struct StoreStruct;
-void *GetData02153637(void);
+void *GetData02153637_020e2ff8(void);
 void Dispatch020e3428(void *a, int b);
 int GetGlobalField0x1c020421a0(void);
 char *FindElementByKey020dedd0(struct Container020dedd0 *c, int key);
@@ -16,8 +16,8 @@ void SetIndexedName02046574(struct Obj02046574 *obj, int index, char *str);
 void InitObjFromCombatantId020e4bf4(void *obj, int combatantId);
 extern "C" void __clear(void *buf, int n);
 void DispatchIfCountPositive020dcf7c(int count, void *buf);
-void SetByteInRange(unsigned char *base, int index, unsigned char value);
-void StoreInArray0x8b0(struct StoreStruct *base, int index, int value);
+void SetByteInRange_020465f0(unsigned char *base, int index, unsigned char value);
+void StoreInArray0x8b0_020465c0(struct StoreStruct *base, int index, int value);
 int GetFieldByKey020e0434(struct Container020e0310 *c, int key);
 int AppendString02042058(char *dst, const char *src);
 extern "C" void func_02046608(void *a, int b, int c, void *d, int e, int f, int g);
@@ -34,7 +34,7 @@ struct Names9900 {
 
 // USA: func_ov002_02159900
 extern "C" ARM void func_ov002_02159900(char *base, char *arr, int any) {
-    Dispatch020e3428(GetData02153637(), 1);
+    Dispatch020e3428(GetData02153637_020e2ff8(), 1);
     GameState *gs      = GameState::GetInstance();
     char *g            = (char *) GetGlobalField0x1c020421a0();
     unsigned char *ent = (unsigned char *) (arr + 8);
@@ -47,7 +47,7 @@ extern "C" ARM void func_ov002_02159900(char *base, char *arr, int any) {
     Clear12Bytes020e46c4(base + 8);
     Clear12Bytes020e46c4(base + 0x14);
     char *out = *(char **) (base + 0x1000 + 0xbd0);
-    char *m   = (char *)GetCombatantWithFlag0x100(gs, *(signed char *) (arr + 2));
+    char *m   = (char *)GetCombatantWithFlag0x100_0200ff1c(gs, *(signed char *) (arr + 2));
     if (m != NULL) {
         SetIndexedName02046574((struct Obj02046574 *) g, 0, *(char **) (m + 0x134));
         InitObjFromCombatantId020e4bf4(base + 8, *(signed char *) (arr + 2));
@@ -64,13 +64,13 @@ extern "C" ARM void func_ov002_02159900(char *base, char *arr, int any) {
     DispatchIfCountPositive020dcf7c(*(short *) (e + 0x18), &nm);
     *(struct Names9900 **) (g + 0x18) = &nm;
     SetIndexedName02046574((struct Obj02046574 *) g, 1, nm.a);
-    char *m2 = (char *)GetCombatantWithFlag0x100(gs, *(signed char *) (arr + 4));
+    char *m2 = (char *)GetCombatantWithFlag0x100_0200ff1c(gs, *(signed char *) (arr + 4));
     if (m2 != NULL) {
         SetIndexedName02046574((struct Obj02046574 *) g, 2, *(char **) (m2 + 0x134));
         InitObjFromCombatantId020e4bf4(base + 0x14, *(signed char *) (arr + 4));
         *(char **) (g + 0x10) = base + 0x14;
-        SetByteInRange((unsigned char *) g, 9, 0);
-        StoreInArray0x8b0((struct StoreStruct *) g, 9, *(short *) (m2 + 4));
+        SetByteInRange_020465f0((unsigned char *) g, 9, 0);
+        StoreInArray0x8b0_020465c0((struct StoreStruct *) g, 9, *(short *) (m2 + 4));
     }
     int a              = 0x7918;
     int b              = 0x7919;
@@ -137,13 +137,13 @@ extern "C" ARM void func_ov002_02159900(char *base, char *arr, int any) {
                     }
                     if (b >= 0) {
                         int cid = *(signed char *) (arr + i + 4);
-                        char *c = (char *)GetCombatantWithFlag0x100(gs, cid);
+                        char *c = (char *)GetCombatantWithFlag0x100_0200ff1c(gs, cid);
                         if (c != NULL) {
                             func_02046380(g);
                             SetIndexedName02046574((struct Obj02046574 *) g, 2, *(char **) (c + 0x134));
                             InitObjFromCombatantId020e4bf4(base + 0x14, cid);
                             *(char **) (g + 0x10) = base + 0x14;
-                            StoreInArray0x8b0((struct StoreStruct *) g, 9, cid);
+                            StoreInArray0x8b0_020465c0((struct StoreStruct *) g, 9, cid);
                             func_02046608(g, 0xc, TXT(b), out + 0x860, 0xe3, 0, 1);
                             AppendString02042058(BD0, (const char *) TXT(8));
                             AppendString02042058(BD0, out + 0x860);
@@ -161,8 +161,8 @@ extern "C" ARM void func_ov002_02159900(char *base, char *arr, int any) {
                 a = 0x7936;
                 break;
             }
-            SetByteInRange((unsigned char *) g, done, done);
-            StoreInArray0x8b0((struct StoreStruct *) g, 0, *(short *) (ent + 2));
+            SetByteInRange_020465f0((unsigned char *) g, done, done);
+            StoreInArray0x8b0_020465c0((struct StoreStruct *) g, 0, *(short *) (ent + 2));
             a = 0x792c;
             b = 0x795f;
             break;
@@ -176,8 +176,8 @@ extern "C" ARM void func_ov002_02159900(char *base, char *arr, int any) {
             break;
         case 13:
             if (ent[0] == 3) {
-                SetByteInRange((unsigned char *) g, done, done);
-                StoreInArray0x8b0((struct StoreStruct *) g, 0, *(short *) (ent + 2));
+                SetByteInRange_020465f0((unsigned char *) g, done, done);
+                StoreInArray0x8b0_020465c0((struct StoreStruct *) g, 0, *(short *) (ent + 2));
                 int k = -1;
                 switch (*(short *) (e + 0x18)) {
                     case 0x561d: k = 0x7991; break;
@@ -202,8 +202,8 @@ extern "C" ARM void func_ov002_02159900(char *base, char *arr, int any) {
                 a = 0x7936;
                 break;
             }
-            SetByteInRange((unsigned char *) g, done, done);
-            StoreInArray0x8b0((struct StoreStruct *) g, 0, *(short *) (ent + 2));
+            SetByteInRange_020465f0((unsigned char *) g, done, done);
+            StoreInArray0x8b0_020465c0((struct StoreStruct *) g, 0, *(short *) (ent + 2));
             a = 0x792c;
             b = 0x799b;
             break;

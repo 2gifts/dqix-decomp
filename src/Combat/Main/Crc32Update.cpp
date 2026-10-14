@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_020d1c64
-ARM void Crc32Update(const unsigned int* table, unsigned int* pcrc, const unsigned char* data, unsigned int len) {
+ARM void Crc32Update_020d1c64(const unsigned int* table, unsigned int* pcrc, const unsigned char* data, unsigned int len) {
     unsigned int crc = *pcrc;
     unsigned int i = 0;
     if (i < len) {

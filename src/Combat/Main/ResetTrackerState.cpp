@@ -2,7 +2,7 @@
 #include "World/BmdjScriptNode.h"
 
 // USA: func_0201f01c
-ARM void ResetTrackerState(BmdjScriptState* state) {
+ARM void ResetTrackerState_0201f01c(BmdjScriptState* state) {
     state->unknown0 = 0;
     state->unknown4 = 0;
     state->unknown8 = 0;

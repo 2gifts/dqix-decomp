@@ -53,7 +53,7 @@ struct PaletteTable021e540c {
     unsigned short skin[16][2];
 };
 
-unsigned short (*GetVariantShortTable02109928())[2];
+unsigned short (*GetVariantShortTable02109928_02099cac())[2];
 void CopyAndClampShorts_021e5fdc(void* unused, short* dst, short* src);
 Element020de650* FindElementByKey020dedd0(Container020dedd0* names, int key);
 int GetNibbleField020de2a4(Obj020de2a4* entry, int which, int female);
@@ -62,7 +62,7 @@ extern short data_ov023_021fd68a[];
 // USA: func_ov023_021e540c
 extern "C" ARM void func_ov023_021e540c(Character021e540c* self) {
     Appearance021e540c* appearance = &self->member->appearance;
-    PaletteTable021e540c* colors = (PaletteTable021e540c*)GetVariantShortTable02109928();
+    PaletteTable021e540c* colors = (PaletteTable021e540c*)GetVariantShortTable02109928_02099cac();
     unsigned int eye = appearance->eyeColor;
     unsigned int skin = appearance->skinColor;
     unsigned int paletteOffset = self->vramStates[2].palette << 3;
@@ -96,7 +96,7 @@ extern "C" ARM void func_ov023_021e540c(Character021e540c* self) {
                             int reserved = 0x20;
                             if (part == 0) reserved = 0x200;
                             offset -= size - reserved;
-                            PaletteTable021e540c* table = (PaletteTable021e540c*)GetVariantShortTable02109928();
+                            PaletteTable021e540c* table = (PaletteTable021e540c*)GetVariantShortTable02109928_02099cac();
                             if (table != NULL) {
                                 const void* data = NULL;
                                 unsigned int bytes = count * 2;

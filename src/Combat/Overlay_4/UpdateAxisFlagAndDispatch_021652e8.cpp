@@ -18,7 +18,7 @@ struct SelectionState {
     unsigned char unknownFA[2];
     unsigned char mode;
 };
-void SetByteFieldAt0x765(unsigned char* obj, unsigned char value);
+void SetByteFieldAt0x765_02026420(unsigned char* obj, unsigned char value);
 struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 extern struct Obj0205eaa0 data_02108760;
@@ -53,9 +53,9 @@ ARM int UpdateAxisFlagAndDispatch_021652e8(void* a1) {
         unsigned char* fieldObj = *(unsigned char**)((char*)func_ov017_0218b5b0() + 0x3000 + ObjectOffset021652e8);
         unsigned char v2 = ((SelectionState*)data_ov004_02171010)->mode;
         if (v2 == 1) {
-            SetByteFieldAt0x765(fieldObj, 0);
+            SetByteFieldAt0x765_02026420(fieldObj, 0);
         } else if (v2 == 0) {
-            SetByteFieldAt0x765(fieldObj, 1);
+            SetByteFieldAt0x765_02026420(fieldObj, 1);
         }
 
         ToggleFlag8OnTwoObjs_021651c8(a1);

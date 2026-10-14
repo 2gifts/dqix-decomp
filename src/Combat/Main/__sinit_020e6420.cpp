@@ -4,7 +4,7 @@
 #pragma define_section initcode ".init" RX
 
 extern "C" void func_0200ee94(void* obj, int count, int size, void* cb1, void* cb2);
-char* Fill6BytesWithFFAndReturn(char* p);
+char* Fill6BytesWithFFAndReturn_020a1ffc(char* p);
 
 extern char data_01ffd364[8][6];
 
@@ -32,7 +32,7 @@ extern struct OverlayRowTable data_020f1940;
 // KEEP-NAME: the ROM symbol here is the mangled C++ name, not a func_ tag.
 // USA: func_020e6420
 extern "C" __declspec(initcode) ARM void __sinit_020e6420(void) {
-    func_0200ee94(data_01ffd364, 8, 6, (void*)Fill6BytesWithFFAndReturn, 0);
+    func_0200ee94(data_01ffd364, 8, 6, (void*)Fill6BytesWithFFAndReturn_020a1ffc, 0);
     data_020f1940.f22 = OVERLAY_ID(0);
     data_020f1940.f23 = OVERLAY_ID(1);
     data_020f1940.f24 = OVERLAY_ID(2);

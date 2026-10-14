@@ -16,7 +16,7 @@ struct EventNode0216c28c {
 };
 
 // USA: func_ov000_0216c28c
-ARM int EnqueueEvent0x5e(void) {
+ARM int EnqueueEvent0x5e_ov000_0216c28c(void) {
     struct EventNode0216c28c* node = (struct EventNode0216c28c*)data_ov000_02184264.allocator->Allocate(0xc);
     node->type = 0;
     node->next = 0;

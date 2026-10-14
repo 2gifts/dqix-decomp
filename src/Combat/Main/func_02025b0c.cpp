@@ -30,11 +30,11 @@ struct Receiver02025b0c {
     char padding4c[0x74 - 0x4c];
     int forwardingFill;
 };
-void* GetData02105254();
+void* GetData02105254_0203b628();
 extern "C" void* func_02012fe4();
 void SetArraySlotFlag0203b718(void*, int, int, int);
 Entry_02027878* GetEntryFromList(List_02027878*, int);
-void ForwardParamsToB8bc(Bcb8Params*, int, int);
+void ForwardParamsToB8bc_0203bcb8(Bcb8Params*, int, int);
 void AccumulateBattleTimer0202441c(BattleTimer0202441c*);
 int CheckCombatantReadyForAction020243b8(void*, int);
 int CheckActionAllowed(Actor02024d48*, int);
@@ -50,7 +50,7 @@ enum { actionStateOffset = 0x9c0 };
 extern "C" ARM void func_02025b0c(Receiver02025b0c* self) {
     unsigned char* receiver = reinterpret_cast<unsigned char*>(self);
     GameObject* object = GameState::GetInstance()->GetUnknownGameObject();
-    void* displayState = GetData02105254();
+    void* displayState = GetData02105254_0203b628();
     func_02012fe4();
     Vector3i position = object->obj3D_.position_;
     CombatActionPosition entries[17];
@@ -83,7 +83,7 @@ extern "C" ARM void func_02025b0c(Receiver02025b0c* self) {
         if (entry) {
             int forwardY = self->forwardingY + self->forwarding[i].y;
             int forwardX = self->forwardingX + self->forwarding[i].x;
-            ForwardParamsToB8bc(reinterpret_cast<Bcb8Params*>(reinterpret_cast<unsigned char*>(entry) + 8), forwardX + 16, tileY + forwardY + 16);
+            ForwardParamsToB8bc_0203bcb8(reinterpret_cast<Bcb8Params*>(reinterpret_cast<unsigned char*>(entry) + 8), forwardX + 16, tileY + forwardY + 16);
         }
     }
     AccumulateBattleTimer0202441c((BattleTimer0202441c*)self);

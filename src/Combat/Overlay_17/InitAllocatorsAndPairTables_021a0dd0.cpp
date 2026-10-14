@@ -2,8 +2,8 @@
 #include "Memory/AllocatorUnion.h"
 #include "Memory/SafeAllocator.h"
 
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
-void RestorePairTableFromBuffer(int* out);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
+void RestorePairTableFromBuffer_020bb740(int* out);
 void WriteGlobalPair020bb92c(int* src);
 extern "C" int func_020bb588(unsigned int size, int a, int b);
 extern "C" void func_0207de48(void* p, int a, int b);
@@ -34,13 +34,13 @@ extern "C" ARM void func_ov017_021a0dd0(char* self) {
     int i;
     int size;
     for (i = 0; (size = data_ov017_021d678c[i].size) != 0; i++) {
-        void* p = AllocateAligned4(&data_02114e20, size);
+        void* p = AllocateAligned4_02012d88(&data_02114e20, size);
         int idx = data_ov017_021d6788[i].index;
         SafeAllocator* alloc = (SafeAllocator*)(self + 0x38 + idx * 0x14);
         alloc->CreateTypeA(p, size);
     }
 
-    RestorePairTableFromBuffer((int*)(self + PairBufferOffset));
+    RestorePairTableFromBuffer_020bb740((int*)(self + PairBufferOffset));
     WriteGlobalPair020bb92c((int*)(self + GlobalPairOffset));
     func_020bb588(0x20000, 0, 0);
 
@@ -51,7 +51,7 @@ extern "C" ARM void func_ov017_021a0dd0(char* self) {
         func_0207de48((self + EntryBaseOffset) + a * 0x70, cond, b);
     }
 
-    RestorePairTableFromBuffer((int*)(self + SecondPairBufferOffset));
+    RestorePairTableFromBuffer_020bb740((int*)(self + SecondPairBufferOffset));
 
     for (i = 0; (cond = data_ov017_021d672c[i].v) != 0; i++) {
         int a = data_ov017_021d6728[i].v;

@@ -87,12 +87,12 @@ struct MonsterListScreen {
 struct Obj2081;
 struct Obj0205eaa0;
 
-Canvas* FindElementByByte0xc4(Obj2081*, int);
-bool CheckField0x9cSetWhenField0xd4Present(unsigned char*);
-void SelectCoordsByFlag0x24(unsigned char*, int*, int*);
-bool TestFlag0SetAndFlag1Clear(unsigned short*, int);
+Canvas* FindElementByByte0xc4_02081da8(Obj2081*, int);
+bool CheckField0x9cSetWhenField0xd4Present_0204c7e0(unsigned char*);
+void SelectCoordsByFlag0x24_02012a84(unsigned char*, int*, int*);
+bool TestFlag0SetAndFlag1Clear_02012444(unsigned short*, int);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
-void ClearSublistEntriesFlag4(void*, int);
+void ClearSublistEntriesFlag4_020804fc(void*, int);
 
 extern "C" {
 MonsterListEntry* func_ov014_021873a0(MonsterListScreen* self);
@@ -115,8 +115,8 @@ inline short TilesToPixels(short tiles)
 extern "C" ARM bool func_ov014_02187074(MonsterListScreen* self)
 {
     bool toggle = false;
-    Canvas* canvas = FindElementByByte0xc4((Obj2081*)self->menu_, 4);
-    if (canvas != NULL && CheckField0x9cSetWhenField0xd4Present((unsigned char*)canvas))
+    Canvas* canvas = FindElementByByte0xc4_02081da8((Obj2081*)self->menu_, 4);
+    if (canvas != NULL && CheckField0x9cSetWhenField0xd4Present_0204c7e0((unsigned char*)canvas))
     {
         short y = canvas->y_;
         short height = canvas->height_;
@@ -130,12 +130,12 @@ extern "C" ARM bool func_ov014_02187074(MonsterListScreen* self)
         {
             int x;
             int y;
-            SelectCoordsByFlag0x24(data_02114e54, &x, &y);
+            SelectCoordsByFlag0x24_02012a84(data_02114e54, &x, &y);
             if (left <= x && x < right && top <= y && y < bottom)
                 toggle = true;
         }
     }
-    if (TestFlag0SetAndFlag1Clear(data_02114e30, 4))
+    if (TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 4))
         toggle = true;
     if (toggle)
     {
@@ -156,7 +156,7 @@ extern "C" ARM bool func_ov014_02187074(MonsterListScreen* self)
         self->entries_ = func_020974b0(&self->list_, self->family_, -1, (self->listFlags_ & 8) != 0, 0x10, &count);
         func_ov014_02187228(self, entry);
         DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
-        ClearSublistEntriesFlag4(self->menu_, 5);
+        ClearSublistEntriesFlag4_020804fc(self->menu_, 5);
         func_ov014_0218854c(self);
         func_ov014_021885bc(self);
     }

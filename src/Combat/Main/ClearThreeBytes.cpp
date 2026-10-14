@@ -8,7 +8,7 @@ struct ThreeByteStruct {
 };
 
 // USA: func_020966cc
-ARM void ClearThreeBytes(struct ThreeByteStruct* s) {
+ARM void ClearThreeBytes_020966cc(struct ThreeByteStruct* s) {
     s->f224 = 0;
     s->f225 = 0;
     s->f226 = 0;

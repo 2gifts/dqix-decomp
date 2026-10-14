@@ -49,8 +49,8 @@ struct Battle0215af54 {
     unsigned char effectCount;
 };
 
-int IsFlag10088Set(struct S_10088* obj);
-int IsFlag0x18Bit0x2000Set(GameObject* combatant);
+int IsFlag10088Set_02010088(struct S_10088* obj);
+int IsFlag0x18Bit0x2000Set_ov000_02153c0c(GameObject* combatant);
 void InitStruct02160030(void* obj);
 void ResetStruct02157cdc(void* obj);
 void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
@@ -84,10 +84,10 @@ extern "C" ARM void func_ov000_0215af54(struct Battle0215af54* battle, int index
     if (c == NULL) {
         return;
     }
-    if (IsFlag10088Set((struct S_10088*)c)) {
+    if (IsFlag10088Set_02010088((struct S_10088*)c)) {
         return;
     }
-    if (IsFlag0x18Bit0x2000Set(c)) {
+    if (IsFlag0x18Bit0x2000Set_ov000_02153c0c(c)) {
         return;
     }
 

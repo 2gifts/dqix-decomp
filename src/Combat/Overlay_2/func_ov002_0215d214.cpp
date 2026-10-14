@@ -33,7 +33,7 @@ struct NameObj_0215d214 {
     unsigned int hi8 : 6;
 };
 
-void *GetFieldAt0x150(unsigned char *member);
+void *GetFieldAt0x150_02053c6c(unsigned char *member);
 char *FindElementByKey020dedd0(struct Container020dedd0 *c, int key);
 char *GetGlobalField0x1c020421a0();
 extern "C" void func_02046380(void *messages);
@@ -44,7 +44,7 @@ char *GetFieldByKey020e0434(struct Container020e0310 *c, int key);
 extern "C" int sprintf(char *dst, const char *fmt, ...);
 extern "C" char *strstr(const char *str, const char *substr);
 extern "C" void *memcpy(void *dst, const void *src, unsigned int n);
-void StoreInArray0x8b0(StoreStruct *messages, int index, int value);
+void StoreInArray0x8b0_020465c0(StoreStruct *messages, int index, int value);
 extern "C" void func_02046608(void *messages, int a, const char *format, char *output, int size, int b, int c);
 
 extern "C" unsigned char data_ov002_0216cac4[];
@@ -71,9 +71,9 @@ extern "C" ARM void func_ov002_0215d214(char *self, char *dst, int unused) {
         }
     }
     int cid = ids[*(short *) (self + 0x1bec)];
-    char *c = (char *) GetCombatantWithFlag0x100(gs, cid);
+    char *c = (char *) GetCombatantWithFlag0x100_0200ff1c(gs, cid);
     if (c == 0) return;
-    Stats_0215d214 *pm = (Stats_0215d214 *) GetFieldAt0x150((unsigned char *) c);
+    Stats_0215d214 *pm = (Stats_0215d214 *) GetFieldAt0x150_02053c6c((unsigned char *) c);
     if (pm == 0) return;
     char *e = 0;
     if (*(short *) (self + 0x1c26) < 0) {
@@ -180,7 +180,7 @@ extern "C" ARM void func_ov002_0215d214(char *self, char *dst, int unused) {
             memcpy(p + 4, tmp, 2);
         }
     }
-    StoreInArray0x8b0((StoreStruct *) msgs, 0, val);
-    StoreInArray0x8b0((StoreStruct *) msgs, 1, max);
+    StoreInArray0x8b0_020465c0((StoreStruct *) msgs, 0, val);
+    StoreInArray0x8b0_020465c0((StoreStruct *) msgs, 1, max);
     func_02046608(msgs, 10, buf, dst, 0x100, 0, 0);
 }

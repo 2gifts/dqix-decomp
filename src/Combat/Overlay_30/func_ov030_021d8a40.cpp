@@ -2,10 +2,10 @@
 #include "Memory/AllocatorLifecycle.h"
 #include "Memory/SafeAllocator.h"
 
-void* AllocateFromAllocatorUnion(AllocatorUnion* alloc, unsigned int size);
+void* AllocateFromAllocatorUnion_02012db0(AllocatorUnion* alloc, unsigned int size);
 extern "C" void func_0200ee94(void* array, int count, int size, void* ctor, void* dtor);
-void* ResetNameTableThenNotify(void* obj);
-void* NotifyThenResetNameTable(void* obj);
+void* ResetNameTableThenNotify_0201c0e8(void* obj);
+void* NotifyThenResetNameTable_0201c108(void* obj);
 extern "C" void func_ov030_021d9340(unsigned char* self);
 void* ResetHeaderAndReturn_021d9250(void* p);
 void* ResetHeaderAndReturn_021d9264(void* p);
@@ -79,12 +79,12 @@ struct BattleScene {
 
 // USA: func_ov030_021d8a40
 extern "C" ARM BattleScene* func_ov030_021d8a40(AllocatorUnion* alloc, unsigned char** dataOut) {
-    *dataOut = (unsigned char*)AllocateFromAllocatorUnion(alloc, kSceneDataSize);
+    *dataOut = (unsigned char*)AllocateFromAllocatorUnion_02012db0(alloc, kSceneDataSize);
     if (*dataOut == NULL) {
         return NULL;
     }
 
-    BattleScene* scene = (BattleScene*)AllocateFromAllocatorUnion(alloc, sizeof(BattleScene));
+    BattleScene* scene = (BattleScene*)AllocateFromAllocatorUnion_02012db0(alloc, sizeof(BattleScene));
     if (scene != NULL) {
         unsigned char* d = *dataOut;
         void *q36c8, *q36cc, *q36d0, *q36d8, *q36fc, *q3700, *q3704, *q3708;
@@ -204,9 +204,9 @@ extern "C" ARM BattleScene* func_ov030_021d8a40(AllocatorUnion* alloc, unsigned 
             g++;
         } while (g < scene->groups + 4);
         scene->a2b0c.ResetAllocatorPointer();
-        func_0200ee94(scene->nameTables, 0x12, 0x88, (void*)ResetNameTableThenNotify, (void*)NotifyThenResetNameTable);
-        ResetNameTableThenNotify(scene->nameTable3520);
-        ResetNameTableThenNotify(scene->nameTable35a8);
+        func_0200ee94(scene->nameTables, 0x12, 0x88, (void*)ResetNameTableThenNotify_0201c0e8, (void*)NotifyThenResetNameTable_0201c108);
+        ResetNameTableThenNotify_0201c0e8(scene->nameTable3520);
+        ResetNameTableThenNotify_0201c0e8(scene->nameTable35a8);
 
         scene->p36c8 = q36c8;
         scene->p36cc = q36cc;

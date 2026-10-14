@@ -7,7 +7,7 @@ struct S_b20c {
 };
 
 // USA: func_0205b20c
-ARM void ClearTwoWordsAndByte(struct S_b20c* obj) {
+ARM void ClearTwoWordsAndByte_0205b20c(struct S_b20c* obj) {
     obj->field0 = 0;
     obj->field4 = 0;
     obj->field8 = 0;

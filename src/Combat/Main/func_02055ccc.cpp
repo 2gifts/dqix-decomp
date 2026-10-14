@@ -2,7 +2,7 @@
 #include "Memory/SignedAllocator.h"
 
 struct S02055080;
-void* GetSubField0xC(struct S02055080* p);
+void* GetSubField0xC_020550d8(struct S02055080* p);
 
 struct Point4_020578e8 {
     int x;
@@ -40,7 +40,7 @@ struct Obj02055ccc {
 
 // USA: func_02055ccc
 extern "C" ARM void func_02055ccc(struct Obj02055ccc* self) {
-    Sub02055ccc* sub = (Sub02055ccc*)GetSubField0xC((struct S02055080*)self->ptr30);
+    Sub02055ccc* sub = (Sub02055ccc*)GetSubField0xC_020550d8((struct S02055080*)self->ptr30);
 
     for (int i = 0; i < 3; i++) {
         if (sub->f10[i] <= 1)

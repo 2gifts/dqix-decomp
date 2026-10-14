@@ -6,7 +6,7 @@ struct State022397bc { void (*handler)(unsigned int, void*, ...); Session022397b
 extern State022397bc data_ov031_02290d18;
 extern char data_ov031_0224c3c4[];
 extern char data_ov031_0224c3a4[];
-void SetField54IfTagNot9Or10(int);
+void SetField54IfTagNot9Or10_ov031_022393e4(int);
 extern "C" void func_ov031_02239368(int);
 int InvokeMaskAndSetField54_022398e8();
 extern "C" int func_020d5d34(void*, int, int, int, int);
@@ -14,7 +14,7 @@ extern "C" int func_020d5d34(void*, int, int, int, int);
 // USA: func_ov031_022397bc
 extern "C" ARM void func_ov031_022397bc(Message022397bc* message) {
     if (message->error) {
-        SetField54IfTagNot9Or10(message->error);
+        SetField54IfTagNot9Or10_ov031_022393e4(message->error);
         func_ov031_02239368(9);
         return;
     }
@@ -32,7 +32,7 @@ extern "C" ARM void func_ov031_022397bc(Message022397bc* message) {
         } else if (data_ov031_02290d18.session->state == 4) {
             int result = func_020d5d34(data_ov031_02290d18.session->request, 13, 7, 68, 1);
             if (result) {
-                SetField54IfTagNot9Or10(result);
+                SetField54IfTagNot9Or10_ov031_022393e4(result);
                 func_ov031_02239368(9);
             } else {
                 func_ov031_02239368(5);

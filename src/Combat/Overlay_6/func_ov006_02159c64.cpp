@@ -41,7 +41,7 @@ struct Obj0205eaa0;
 extern Obj0205eaa0 data_02108760 __attribute__((aligned(4)));
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 void Checkpoint02158cfc(Cont02158cfc*, Node02158cfc*);
-void ClearSublistEntriesFlag4(void*, int);
+void ClearSublistEntriesFlag4_020804fc(void*, int);
 extern "C" void func_ov006_0215f7e8(Cont02158cfc*);
 extern "C" void func_ov006_0215fcf0(Cont02158cfc*);
 
@@ -70,7 +70,7 @@ extern "C" ARM void func_ov006_02159c64(Cont02158cfc* self) {
     self->page = index / 16;
     Checkpoint02158cfc(self, selected);
     self->selection = row + 0x29;
-    ClearSublistEntriesFlag4(self->entries, 9);
+    ClearSublistEntriesFlag4_020804fc(self->entries, 9);
     func_ov006_0215f7e8(self);
     func_ov006_0215fcf0(self);
 }

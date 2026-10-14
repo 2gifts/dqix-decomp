@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct ListElem021cd35c {
@@ -22,7 +22,7 @@ struct Msg021cd35c {
 
 // USA: func_ov017_021cd35c  (semantic: EnqueueEventTag104List_021cd35c)
 extern "C" ARM void func_ov017_021cd35c(unsigned short id, ListElem021cd35c* list, int count, signed char last) {
-    void* p = GetData02100044();
+    void* p = GetData02100044_0202ae24();
     unsigned char buf[0x14];
     buf[0] = 0x68;
     struct Msg021cd35c* m = (struct Msg021cd35c*)(buf + 4);

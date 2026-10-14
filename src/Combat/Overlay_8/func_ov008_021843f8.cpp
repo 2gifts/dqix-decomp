@@ -66,7 +66,7 @@ struct Object3D {
 };
 
 void* GetDataPtr02114e04_020d6c00();
-void OrBitsIntoField0(unsigned int* field, unsigned int bits);
+void OrBitsIntoField0_020466e4(unsigned int* field, unsigned int bits);
 void ResetStruct020dfc40(Struct020dfc40* texts);
 void ClearStruct020a13c4(S020a13c4* guides);
 void ResetList0204af64(List0204af64* background);
@@ -133,7 +133,7 @@ extern "C" void func_ov008_02186cec(BattleRecords* self);
 // USA: func_ov008_021843f8
 extern "C" ARM void func_ov008_021843f8(BattleRecords* self)
 {
-    OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 0xf);
+    OrBitsIntoField0_020466e4((unsigned int*)GetDataPtr02114e04_020d6c00(), 0xf);
     self->allocator_.ResetAllocatorPointer();
     self->backgroundAllocator_.ResetAllocatorPointer();
     self->textAllocator_.ResetAllocatorPointer();

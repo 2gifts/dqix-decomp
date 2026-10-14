@@ -9,7 +9,7 @@
 
 extern "C" unsigned short* func_02012fe4(void);
 extern "C" void* func_0203bd08(void);
-void* GetData02105254(void);
+void* GetData02105254_0203b628(void);
 extern "C" void func_02021428(void* obj, int amount);
 
 struct AxisFloats0203b5a0;
@@ -24,7 +24,7 @@ struct Struct0205a198;
 void Init0205a198(struct Struct0205a198* p);
 void InitStruct0205a444(char* obj);
 
-void* GetGlobalPtr02105244();
+void* GetGlobalPtr02105244_0203bd14();
 extern "C" void* func_0203be4c(void);
 struct Rec020467f0;
 int ProcessRecords0205a498(void* a, struct Rec020467f0* b, int flag, void* d);
@@ -32,7 +32,7 @@ void SetBitfieldStoreBytes0205af38(int a, char* obj, int c, int d);
 int ValidateResourceLookup0205a1f0(void* a, void* b, int c);
 int GetGlobalField0x1c020421a0(void);
 extern "C" void VectorizedInvertedMemcpy(void* dst, void* src, int size);
-void DelayThenSyncBit0(void);
+void DelayThenSyncBit0_020c9820(void);
 void CleanInvalidateCacheRange(const void* addr, unsigned int size);
 extern "C" int LoadToSubObjVRAM(int, int, unsigned int);
 void InitFourEntrySlots02020aa0(void* obj);
@@ -136,7 +136,7 @@ extern "C" ARM void func_02021f88(MapDisplay* self) {
     p6 = func_02012fe4();
     axis = func_ov017_0218b5b0();
     battleCtx = (char*)func_0203bd08();
-    table = (char*)GetData02105254();
+    table = (char*)GetData02105254_0203b628();
     state = self->loadStage;
     alloc = GetAlloc02021f88(axis, 12);
 
@@ -190,11 +190,11 @@ extern "C" ARM void func_02021f88(MapDisplay* self) {
         self->entryList.active = 1;
         self->entryList.records = self->records;
         self->entryList.count = 0x1b;
-        char* g = (char*)GetGlobalPtr02105244();
+        char* g = (char*)GetGlobalPtr02105244_0203bd14();
         *(int*)(g + GlobalBufferOffset) = 0x2000;
         func_0203bd08();
         char* p = (char*)func_0203be4c() + 0x2c0;
-        g = (char*)GetGlobalPtr02105244();
+        g = (char*)GetGlobalPtr02105244_0203bd14();
         *(char**)g = p;
         if (IsValueInRange0201b5d8(*p6)) {
             if (loader->GetTaskStatus(self->namesTask) == 0) return;
@@ -213,7 +213,7 @@ extern "C" ARM void func_02021f88(MapDisplay* self) {
         char* vram = (char*)GetGlobalField0x1c020421a0();
         char* dst = *(char**)(vram + VramDataOffset);
         VectorizedInvertedMemcpy(res->f14, dst, res->f10);
-        DelayThenSyncBit0();
+        DelayThenSyncBit0_020c9820();
         CleanInvalidateCacheRange(dst, res->f10);
         LoadToSubObjVRAM((int)dst, 0x2c20, res->f10);
         BackgroundLoader::GetInstance()->RemoveTask(self->taska14);
@@ -326,7 +326,7 @@ extern "C" ARM void func_02021f88(MapDisplay* self) {
         self->field9c8 = 0;
         self->field9c3 = 0;
         self->loadStage = self->loadStage + 1;
-        DelayThenSyncBit0();
+        DelayThenSyncBit0_020c9820();
         func_0202343c(self);
         MarkActiveCombatantSlots02026b7c((unsigned char*)self);
         func_02026bdc(self, 0);

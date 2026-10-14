@@ -12,7 +12,7 @@ extern unsigned char data_0211e33c[];
 
 // KEEP-NAME
 // USA: func_02074114
-ARM int TryDecodeGlobalBitstreamEntry(BufferedScriptResult* result, int key) {
+ARM int TryDecodeGlobalBitstreamEntry_02074114(BufferedScriptResult* result, int key) {
     unsigned int length;
     BackgroundLoader::AddLockGlobal();
     void* bytecode = LoadFileIntoMemory(data_020f0d40, data_0211e33c, &length);

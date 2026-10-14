@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-GameObject* GetCombatantWithFlag0x400ByID(int unused, int id);
+GameObject* GetCombatantWithFlag0x400ByID_ov000_021536f8(int unused, int id);
 
 struct WeaknessBits_021f6230 {
     signed int w0:3;
@@ -22,7 +22,7 @@ struct Sub_021f6230 { char pad[8]; unsigned short field8; char pad2[0x4e]; struc
 // USA: func_ov024_021f6230  (semantic: CheckWeaknessSlot0_021f6230)
 #pragma optimize_for_size off
 extern "C" ARM int func_ov024_021f6230(int* a0, int a1, int a2, int* a3, short* a4) {
-	GameObject* c = GetCombatantWithFlag0x400ByID(*a0, a1);
+	GameObject* c = GetCombatantWithFlag0x400ByID_ov000_021536f8(*a0, a1);
 	if (!c) return 0;
 	struct Sub_021f6230* s = (struct Sub_021f6230*)c->currentStats_;
 	if (s->field8 >= 0xffff) goto fail;

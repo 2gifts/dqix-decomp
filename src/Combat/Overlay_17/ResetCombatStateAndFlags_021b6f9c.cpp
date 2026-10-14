@@ -11,13 +11,13 @@ enum { RegionOffset4400 = 0x4400, RegionOffsetae = 0xae, RegionOffset6fc = 0x6fc
 
 extern "C" void func_ov000_021604f0(void);
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
-void PopStack0AndTrigger(int flag);
-void PopStack1AndTrigger(int flag);
-void SetByteField0x253(void* obj);
+void PopStack0AndTrigger_020a1e54(int flag);
+void PopStack1AndTrigger_020a1f4c(int flag);
+void SetByteField0x253_020397c0(void* obj);
 struct Obj02053f7c;
 void SetField0x1b2IfMatchOrFlag02053f7c(Obj02053f7c* obj, unsigned short a, int b);
 ARM void EnqueueEventTag127ForParty_021c3f70(unsigned short tag);
-void ClearBitsInWord(unsigned int* obj, unsigned int mask);
+void ClearBitsInWord_0203b4b0(unsigned int* obj, unsigned int mask);
 extern "C" void func_020a0c0c(void);
 struct ListHead02046b60;
 int ListContainsId(ListHead02046b60* list, int id);
@@ -57,12 +57,12 @@ extern "C" ARM void func_ov017_021b6f9c(char* self) {
     }
 
     if (*(unsigned short*)(self + 0x600 + 0xb6) & 0x800) {
-        PopStack0AndTrigger(1);
-        PopStack1AndTrigger(1);
+        PopStack0AndTrigger_020a1e54(1);
+        PopStack1AndTrigger_020a1f4c(1);
     }
 
     GameObject* combatant = GameState::GetInstance()->GetUnknownGameObject();
-    SetByteField0x253(combatant);
+    SetByteField0x253_020397c0(combatant);
     SetField0x1b2IfMatchOrFlag02053f7c((Obj02053f7c*)combatant, 0, 0);
     EnqueueEventTag127ForParty_021c3f70(0);
 
@@ -75,7 +75,7 @@ extern "C" ARM void func_ov017_021b6f9c(char* self) {
     *(unsigned short*)(self + 0x600 + 0xb6) = 0;
     *(int*)(self + 0x6b8) = 0;
 
-    ClearBitsInWord((unsigned int*)ov, 0x800);
+    ClearBitsInWord_0203b4b0((unsigned int*)ov, 0x800);
     func_020a0c0c();
 
     int* p36fc = *(int**)(ov + 0x3000 + RegionOffset6fc);

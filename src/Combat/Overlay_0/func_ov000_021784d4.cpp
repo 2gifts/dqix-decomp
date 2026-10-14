@@ -56,7 +56,7 @@ extern "C" ARM void func_ov000_021784d4(struct Owner_021784d4* obj, struct InStr
     }
     int x = in->x;
     int y = in->y;
-    GetPtrField0x2a04(GameState::GetInstance());
+    GetPtrField0x2a04_02010828(GameState::GetInstance());
     unsigned char memberCount = obj->memberCount;
     func_ov000_0217c638(obj, arg2, arg3);
     struct Panel_021784d4* panel = &obj->panel;

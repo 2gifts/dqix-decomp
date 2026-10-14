@@ -6,7 +6,7 @@ extern "C" void* func_ov011_021849c8(void*);
 extern "C" void* func_ov023_021f6880(void*, int);
 extern "C" unsigned short func_ov023_021f6f10(void*);
 extern "C" void* func_ov023_021fad18(void* obj);
-void SetByte0x7f70(void* obj, unsigned char value);
+void SetByte0x7f70_02012028(void* obj, unsigned char value);
 
 // USA: func_ov004_0216e828  (semantic: SyncFieldPtrsAndResetByte_0216e828)
 extern "C" ARM int func_ov004_0216e828(void* a) {
@@ -28,6 +28,6 @@ extern "C" ARM int func_ov004_0216e828(void* a) {
             *(int*)((char*)g + secondOffset) = tmp;
         }
     }
-    SetByte0x7f70(GameState::GetInstance(), 0);
+    SetByte0x7f70_02012028(GameState::GetInstance(), 0);
     return 0;
 }

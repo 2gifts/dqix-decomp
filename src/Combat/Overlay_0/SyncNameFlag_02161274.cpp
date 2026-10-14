@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 void BuildName020488ec(char* obj);
-GameObject* GetCombatantWithFlag0x400(GameState* battleStruct, int combatantId);
+GameObject* GetCombatantWithFlag0x400_0200fea4(GameState* battleStruct, int combatantId);
 
 // USA: func_ov000_02161274
 ARM void SyncNameFlag_02161274(GameObject* self) {
@@ -17,7 +17,7 @@ ARM void SyncNameFlag_02161274(GameObject* self) {
     GameState* bs = GameState::GetInstance();
     int i = 0;
     while (i < 8) {
-        GameObject* c = GetCombatantWithFlag0x400(bs, i + 0xc0);
+        GameObject* c = GetCombatantWithFlag0x400_0200fea4(bs, i + 0xc0);
         if (c != NULL && c != self) {
             void* cInner = *(void**)((char*)c + 0x144);
             if (cInner != NULL) {

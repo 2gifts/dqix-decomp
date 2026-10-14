@@ -5,7 +5,7 @@
 unsigned short SelectByIndexRange0to3_021da644(int idx, int a, int b);
 struct FlagObj_021da9b0;
 int IsFlagBit8Set_021da9b0(struct FlagObj_021da9b0* obj);
-int CheckFlag0x14Bit0x10Set(unsigned char* stats);
+int CheckFlag0x14Bit0x10Set_020882f8(unsigned char* stats);
 
 struct Ctx_021e9018 { char pad[0x10]; void* field0x10; };
 struct Bits_021e9018 { unsigned short low2 : 2; unsigned short element : 4; unsigned short rest : 10; };
@@ -43,7 +43,7 @@ extern "C" ARM int func_ov024_021e9018(struct Ctx_021e9018* ctx, int id, short k
 #endif
 
         }
-        if (CheckFlag0x14Bit0x10Set((unsigned char*)c->currentStats_) && (unsigned short)(short)(kind - 2) <= 6) {
+        if (CheckFlag0x14Bit0x10Set_020882f8((unsigned char*)c->currentStats_) && (unsigned short)(short)(kind - 2) <= 6) {
 #if defined(jpn)
             return 0x1b;
 #else

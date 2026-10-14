@@ -24,15 +24,15 @@ extern "C" void func_0205a528(void* renderer, void* file, unsigned int size, Saf
 extern "C" void func_020728ac(void* texts, SafeAllocator* allocator, void* file, unsigned int size, int, int, int);
 struct List0208df10;
 void ClearList0208df10(List0208df10* table);
-void* GetCombatantWithFlag0x100(GameState* gameState, int member);
-void* GetFieldAt0x150(unsigned char* member);
+void* GetCombatantWithFlag0x100_0200ff1c(GameState* gameState, int member);
+void* GetFieldAt0x150_02053c6c(unsigned char* member);
 signed char GetTableByte020dd11c(unsigned int vocation, unsigned int index);
 struct Struct0208df20;
 void InitAndRunScript0208df20(Struct0208df20* table, void* allocator, int file, int size, int skills, void* count);
 struct List0204af64;
 void ResetList0204af64(List0204af64* graphics);
 extern "C" void func_0204b5b4(void* graphics, int priority);
-void SetWord0x18ClearByte0x1f(unsigned char* graphics, int value);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char* graphics, int value);
 struct Obj0204b5e8;
 void DispatchViaTable0204b5e8(Obj0204b5e8* graphics, int a, int b);
 struct AllocTarget0204b12c;
@@ -142,7 +142,7 @@ extern "C" ARM bool func_ov013_021870f0(SkillAbilityList021870f0* self) {
     if (self->step_ == 0)
     {
 #if defined(jpn)
-        FontBankLoader* manager = GetGlobal02109400();
+        FontBankLoader* manager = GetGlobal02109400_02094a00();
         BlankFunction02094b3c(manager, 10);
         BlankFunction02094b30(manager, 0x68, 0);
 #else
@@ -176,7 +176,7 @@ extern "C" ARM bool func_ov013_021870f0(SkillAbilityList021870f0* self) {
     else if (self->step_ == 1)
     {
 #if defined(jpn)
-        if (AlwaysTrue02094b4c(GetGlobal02109400())) {
+        if (AlwaysTrue02094b4c(GetGlobal02109400_02094a00())) {
             self->step_++;
         }
 #else
@@ -251,10 +251,10 @@ extern "C" ARM bool func_ov013_021870f0(SkillAbilityList021870f0* self) {
             allocators[2].Reset();
             short* skills = NULL;
             short vocationSkills[5] = {};
-            void* member = GetCombatantWithFlag0x100(GameState::GetInstance(), self->member_);
+            void* member = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), self->member_);
             if (member != NULL)
             {
-                PartyMemberData021870f0* data = (PartyMemberData021870f0*)GetFieldAt0x150((unsigned char*)member);
+                PartyMemberData021870f0* data = (PartyMemberData021870f0*)GetFieldAt0x150_02053c6c((unsigned char*)member);
                 if (data != NULL)
                 {
                     for (unsigned char i = 0; i < 5; i++)
@@ -282,7 +282,7 @@ extern "C" ARM bool func_ov013_021870f0(SkillAbilityList021870f0* self) {
         self->background_.unk_1c_0_ = self->screen_;
         self->background_.unk_1c_4_ = palettes[self->screen_];
         func_0204b5b4(&self->background_, 0);
-        SetWord0x18ClearByte0x1f((unsigned char*)&self->background_, 0);
+        SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)&self->background_, 0);
         DispatchViaTable0204b5e8((Obj0204b5e8*)&self->background_, 0, 0);
         AllocateAndClearBuffer0204b12c((AllocTarget0204b12c*)&self->background_, allocator);
         AllocateArray0204af38((Foo0204af38*)&self->background_, 1, allocator);

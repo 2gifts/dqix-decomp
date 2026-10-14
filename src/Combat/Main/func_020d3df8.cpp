@@ -8,7 +8,7 @@ struct InitData020c7de4;
 
 void InitStruct020c7de4(InitData020c7de4* queue, int messages, int count);
 extern "C" int func_020c7e0c(void* queue, void* message, int flags);
-void ClearBit0At027FFF96();
+void ClearBit0At027FFF96_020d468c();
 extern "C" void func_020d42e0(unsigned int command, unsigned int data, unsigned int error);
 
 typedef void (*WMCallbackFunc)(void* arg);
@@ -78,7 +78,7 @@ extern "C" ARM int func_020d3df8(void* sysBuf, unsigned short dmaNo, unsigned lo
     data_021142e0.wm9buf->status = (unsigned char*)data_021142e0.wm9buf->WM7 + 0x300;
     data_021142e0.wm9buf->fifo9to7 = (unsigned long*)((unsigned char*)data_021142e0.wm9buf->status + 0x800);
     data_021142e0.wm9buf->fifo7to9 = (unsigned long*)((unsigned char*)data_021142e0.wm9buf->fifo9to7 + 0x100);
-    ClearBit0At027FFF96();
+    ClearBit0At027FFF96_020d468c();
     data_021142e0.wm9buf->dmaNo = dmaNo;
     data_021142e0.wm9buf->connectedAidBitmap = 0;
     data_021142e0.wm9buf->myAid = 0;

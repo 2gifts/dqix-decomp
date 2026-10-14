@@ -22,8 +22,8 @@ extern "C" void* func_0202ae18(void);
 void AppendFieldTwice_02159290(void*, int, int);
 extern "C" void func_ov003_02159250(void*, void*);
 struct Struct_0205d81c;
-void SetElementFieldC2(Struct_0205d81c*, int, int);
-int CheckField0NonZero(int*);
+void SetElementFieldC2_0205deb4(Struct_0205d81c*, int, int);
+int CheckField0NonZero_0202b7d8(int*);
 extern "C" int func_0202c540(void*);
 struct Container020e0310;
 void* GetFieldByKey020e0434(Container020e0310*, int);
@@ -32,12 +32,12 @@ extern "C" int func_020457e0(void*);
 extern "C" void* func_0205ec34(void);
 int LookupAndForEachNode020649b0(void*, int, void*);
 extern "C" void func_0206f81c(void*);
-void OrBitsIntoField0(unsigned int*, unsigned int);
+void OrBitsIntoField0_020466e4(unsigned int*, unsigned int);
 extern "C" void func_ov017_021d1118(int, int, int, int);
 extern "C" void func_ov017_021d1014(int, int, int);
 struct Struct0209c830;
 void SetValueAndActivate0209c830(Struct0209c830*, int);
-int CountEntriesType1WithId(int);
+int CountEntriesType1WithId_020bc0a4(int);
 struct Struct020a9ea4;
 void ClearStruct020a9ea4(Struct020a9ea4*);
 extern "C" int func_020aad1c(void*, void*, int, int);
@@ -81,11 +81,11 @@ extern "C" ARM void func_ov003_02159d0c(void* self) {
             *(unsigned char*)(s + 0x580) = 2;
             return;
         }
-        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 0, 1);
-        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 1, 1);
-        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 2, 1);
+        SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 0, 1);
+        SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 1, 1);
+        SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 2, 1);
         int key = 0x3f2;
-        if (CheckField0NonZero((int*)f) && func_0202c540(f)) {
+        if (CheckField0NonZero_0202b7d8((int*)f) && func_0202c540(f)) {
             key += 8;
         }
         func_ov003_02159250(self, GetFieldByKey020e0434((Container020e0310*)(s + 0x64), key));
@@ -104,9 +104,9 @@ extern "C" ARM void func_ov003_02159d0c(void* self) {
         } else if (r == 0) {
             *(unsigned char*)(s + 0x580) = *(unsigned char*)(s + 0x580) + 1;
         }
-        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 0, 1);
-        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 1, 1);
-        SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 2, 1);
+        SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 0, 1);
+        SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 1, 1);
+        SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 2, 1);
     }
 
     if (state == 2) {
@@ -133,9 +133,9 @@ extern "C" ARM void func_ov003_02159d0c(void* self) {
         if (*(unsigned char*)(s + 0x5b4) == 0) {
             func_ov003_02159250(self, GetFieldByKey020e0434((Container020e0310*)(s + 0x64), 0x64));
         }
-        OrBitsIntoField0((unsigned int*)dp, 0x80);
+        OrBitsIntoField0_020466e4((unsigned int*)dp, 0x80);
         *(int*)(s + 0x598) = 0xf;
-        if (CheckField0NonZero((int*)f)) {
+        if (CheckField0NonZero_0202b7d8((int*)f)) {
             func_ov017_021d1118(-1, 1, 1, 2);
             func_ov017_021d1014(-1, 1, 0);
         }
@@ -143,7 +143,7 @@ extern "C" ARM void func_ov003_02159d0c(void* self) {
     }
 
     if (state == 0x64) {
-        if (CheckField0NonZero((int*)f)) {
+        if (CheckField0NonZero_0202b7d8((int*)f)) {
             signed char* p = (signed char*)GameState::GetInstance() + 0x4000 + kRegionValue34C0_3280;
             for (int i = 0; i < 3; i++, p += 10) {
                 if (p[6] >= 4) {
@@ -159,7 +159,7 @@ extern "C" ARM void func_ov003_02159d0c(void* self) {
 
     if (state == 0x65) {
         if (*(int*)(g + kRegionValue9A0_870) != 3) return;
-        if (CountEntriesType1WithId(0x3c) == 0) return;
+        if (CountEntriesType1WithId_020bc0a4(0x3c) == 0) return;
         if (*(int*)(g + kRegionValue9A0_870) == 3) {
             *(unsigned char*)(g + 0x1000 + kRegionValue9AE_7DE) = 0;
         }
@@ -215,17 +215,17 @@ extern "C" ARM void func_ov003_02159d0c(void* self) {
         if (r == -1) return;
         if (r == -2 || r == 1) {
             if (*(unsigned char*)(s + 0x59c) == 0) {
-                SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 0, 1);
-                SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 1, 1);
-                SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 2, 1);
+                SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 0, 1);
+                SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 1, 1);
+                SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 2, 1);
                 func_ov003_02159250(self, GetFieldByKey020e0434((Container020e0310*)(s + 0x64), 0x3f7));
                 *(unsigned char*)(s + 0x580) = *(unsigned char*)(s + 0x580) + 1;
                 return;
             }
-            if (CheckField0NonZero((int*)f)) {
-                SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 0, 1);
-                SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 1, 1);
-                SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 2, 1);
+            if (CheckField0NonZero_0202b7d8((int*)f)) {
+                SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 0, 1);
+                SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 1, 1);
+                SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 2, 1);
                 func_ov003_02159250(self, GetFieldByKey020e0434((Container020e0310*)(s + 0x64), 0x3f9));
                 *(unsigned char*)(s + 0x580) = 6;
                 return;
@@ -248,17 +248,17 @@ extern "C" ARM void func_ov003_02159d0c(void* self) {
         int r = func_ov003_0215bf18(self, 1);
         if (r == -1) return;
         if (r == -2 || r == 1) {
-            SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 0, 1);
-            SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 1, 1);
-            SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 2, 1);
+            SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 0, 1);
+            SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 1, 1);
+            SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 2, 1);
             func_ov003_02159250(self, GetFieldByKey020e0434((Container020e0310*)(s + 0x64), 0x3f8));
             *(unsigned char*)(s + 0x580) = 1;
             return;
         } else if (r == 0) {
-            if (CheckField0NonZero((int*)f)) {
-                SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 0, 1);
-                SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 1, 1);
-                SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 2, 1);
+            if (CheckField0NonZero_0202b7d8((int*)f)) {
+                SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 0, 1);
+                SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 1, 1);
+                SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 2, 1);
                 func_ov003_02159250(self, GetFieldByKey020e0434((Container020e0310*)(s + 0x64), 0x3f9));
                 *(unsigned char*)(s + 0x580) = 6;
                 return;

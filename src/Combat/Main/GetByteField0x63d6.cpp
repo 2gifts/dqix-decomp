@@ -10,6 +10,6 @@ struct FieldBlock63d6_115a8 {
 };
 
 // USA: func_020115a8
-ARM int GetByteField0x63d6(struct FieldBlock63d6_115a8* obj) {
+ARM int GetByteField0x63d6_020115a8(struct FieldBlock63d6_115a8* obj) {
     return obj->field;
 }

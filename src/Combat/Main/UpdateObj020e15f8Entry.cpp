@@ -12,7 +12,7 @@ extern "C" int func_0205b234(void*, short, short, int, unsigned char, unsigned c
 #endif
 
 // USA: func_020e2310
-ARM void UpdateObj020e15f8Entry(char* obj, int idx, int a2, int a3, int a4, unsigned char a5, unsigned char a6)
+ARM void UpdateObj020e15f8Entry_020e2310(char* obj, int idx, int a2, int a3, int a4, unsigned char a5, unsigned char a6)
 {
     if (idx >= 0 && idx < 3) {
         #if defined(jpn)

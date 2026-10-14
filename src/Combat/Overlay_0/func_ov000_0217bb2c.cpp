@@ -6,13 +6,13 @@ struct Obj0205eaa0;
 struct S_10088;
 
 int GetActiveScaledSum0205d794(struct Struct_0205c570* s);
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 struct Obj_0205da38;
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 int CheckFlagsOrField_0217ab48_0217ab48(void* obj);
-int IsFlag10088Set(struct S_10088* obj);
-GameObject* GetCombatantWithFlag0x100(GameState* gameState, int combatantId);
+int IsFlag10088Set_02010088(struct S_10088* obj);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* gameState, int combatantId);
 
 struct MenuEntry_0217bb2c {
     char pad0[4];
@@ -114,18 +114,18 @@ extern "C" ARM int func_ov000_0217bb2c(MenuObj_0217bb2c* obj, int arg1, int arg2
         }
         return result;
     }
-    int t = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
+    int t = TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x601);
     int active = (t | IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)obj->window, 0x14)) != 0;
     if (active) {
-        GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), obj->order[obj->cursor]);
+        GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), obj->order[obj->cursor]);
         if (combatant == NULL) {
             return -1;
         }
-        int ok = !IsFlag10088Set((struct S_10088*)combatant);
+        int ok = !IsFlag10088Set_02010088((struct S_10088*)combatant);
         MenuEntry_0217bb2c* entry = func_ov000_02170cf8(obj, obj->actionId);
         if (entry != NULL) {
             if (entry->kind == 0x12) {
-                ok = IsFlag10088Set((struct S_10088*)combatant);
+                ok = IsFlag10088Set_02010088((struct S_10088*)combatant);
             }
             if (entry->id == 0x26 || entry->id == 0x27 || entry->id == 0x54) {
                 ok = 1;

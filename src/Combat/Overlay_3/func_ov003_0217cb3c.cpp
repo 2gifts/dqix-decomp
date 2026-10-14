@@ -6,7 +6,7 @@
 struct List0204af64;
 void ResetList0204af64(List0204af64* graphics);
 extern "C" void func_0204b5b4(void* graphics, int priority);
-void SetWord0x18ClearByte0x1f(unsigned char* graphics, int value);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char* graphics, int value);
 struct Obj0204b5e8;
 void DispatchViaTable0204b5e8(Obj0204b5e8* graphics, int a, int b);
 struct AllocTarget0204b12c;
@@ -75,7 +75,7 @@ extern "C" ARM void func_ov003_0217cb3c(Screen0217cb3c* self, int mainScreen, in
         fileId = self->fileIds_[0];
     }
 
-    SetWord0x18ClearByte0x1f((unsigned char*)background, 0);
+    SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)background, 0);
     DispatchViaTable0204b5e8((Obj0204b5e8*)background, 0, 0);
     AllocateAndClearBuffer0204b12c((AllocTarget0204b12c*)background, allocator);
     AllocateArray0204af38((Foo0204af38*)background, 1, allocator);

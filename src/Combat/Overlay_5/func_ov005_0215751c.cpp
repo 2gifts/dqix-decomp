@@ -49,7 +49,7 @@ struct EquipmentMenu {
 extern unsigned short data_02114e30;
 extern int data_02108760;
 
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 extern "C" void func_ov005_0215792c(EquipmentMenu* self, unsigned char state);
 MemberScreen* GetField1c_021a193c(int* p);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0* obj, int a, int b);
@@ -64,7 +64,7 @@ extern "C" void func_0205bb04(void* cursor, int index);
 // USA: func_ov005_0215751c
 extern "C" ARM void func_ov005_0215751c(EquipmentMenu* self) {
     int up = 0;
-    if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x40))
+    if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x40))
         up = 1;
     if (up) {
         func_ov005_0215792c(self, 2);
@@ -72,7 +72,7 @@ extern "C" ARM void func_ov005_0215751c(EquipmentMenu* self) {
         return;
     }
     int down = 0;
-    if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x80))
+    if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x80))
         down = 1;
     if (!up) {
         GameState::GetInstance();
@@ -94,7 +94,7 @@ extern "C" ARM void func_ov005_0215751c(EquipmentMenu* self) {
         func_ov005_0215792c(self, 4);
         self->slot_ = 8;
         func_0205bb04(self->cursor_, self->slot_ - 8);
-        if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x80))
+        if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x80))
             DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 2, 0);
         else if (CheckFlag30Or401_02157190(self))
             DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 1, 0);

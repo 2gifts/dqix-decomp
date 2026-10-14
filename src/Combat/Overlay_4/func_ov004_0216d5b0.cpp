@@ -15,9 +15,9 @@ extern "C" void* func_ov023_021fa598(void* p);
 int GetGlobalField0x1c020421a0();
 extern "C" int func_020abb64(void);
 struct TableA68;
-void* FindEntryByKey(struct TableA68* table, int key);
-void SetByte0x4(char* obj, unsigned char value);
-void SetByte0x7f70(void* obj, unsigned char value);
+void* FindEntryByKey_02072a68(struct TableA68* table, int key);
+void SetByte0x4_0200fb94(char* obj, unsigned char value);
+void SetByte0x7f70_02012028(void* obj, unsigned char value);
 extern "C" void func_ov011_021848a0(void* obj, int val);
 
 // USA: func_ov004_0216d5b0
@@ -31,7 +31,7 @@ extern "C" ARM int func_ov004_0216d5b0(void* obj) {
     MessageSystem* message = (MessageSystem*)GetGlobalField0x1c020421a0();
 
     if (func_020abb64() == 0) {
-        void* entry = FindEntryByKey(table, 0x5dd);
+        void* entry = FindEntryByKey_02072a68(table, 0x5dd);
 #if defined(jpn)
         func_0204500c(message, (const char*)entry, 0);
 #else
@@ -39,18 +39,18 @@ extern "C" ARM int func_ov004_0216d5b0(void* obj) {
 #endif
         message->b19ca = 0;
         message->b19af = 0;
-        SetByte0x7f70(battle, 0);
+        SetByte0x7f70_02012028(battle, 0);
         return 0;
     }
 
-    void* entry = FindEntryByKey(table, 0x4b1);
+    void* entry = FindEntryByKey_02072a68(table, 0x4b1);
 #if defined(jpn)
     func_0204500c(message, (const char*)entry, 0);
 #else
     func_0204500c(message, (const char*)entry, 0, (void*)0xe3);
 #endif
-    SetByte0x4((char*)battle, 7);
-    SetByte0x7f70(battle, 0);
+    SetByte0x4_0200fb94((char*)battle, 7);
+    SetByte0x7f70_02012028(battle, 0);
     func_ov011_021848a0(obj, 0x97);
     return 0;
 }

@@ -2,7 +2,7 @@
 
 struct ZeroStruct;
 void ClearHeaderFields020e1354(unsigned char* p);
-void ClearZeroStruct(struct ZeroStruct* s);
+void ClearZeroStruct_020e1568(struct ZeroStruct* s);
 
 // USA: func_020e1588
 ARM void InitStruct020e1588(unsigned char* p) {
@@ -11,7 +11,7 @@ ARM void InitStruct020e1588(unsigned char* p) {
     *(int*)(p + 0x8) = 0;
     ClearHeaderFields020e1354(p + 0xc);
     ClearHeaderFields020e1354(p + 0x18);
-    ClearZeroStruct((struct ZeroStruct*)(p + 0x24));
+    ClearZeroStruct_020e1568((struct ZeroStruct*)(p + 0x24));
     *(int*)(p + 0x30) = 0;
     *(int*)(p + 0x34) = 0;
     p[0x39] = 0;

@@ -3,7 +3,7 @@
 
 extern "C" void* func_ov017_021b8478(void* obj);
 void* GetField6b0_021b8470(void* obj);
-int GetField0x3acValue(GameState* battleStruct);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 
 struct Nibbles021c6534 {
     unsigned char lo : 4;
@@ -63,7 +63,7 @@ extern "C" ARM void func_ov017_021c6534(int unused0, Evt021c6534* evt, GameState
     void* state = GetField6b0_021b8470(table);
     if (!state) return;
 
-    if (fieldObj->field_0x2a == GetField0x3acValue(battleStruct)) return;
+    if (fieldObj->field_0x2a == GetField0x3acValue_020100a8(battleStruct)) return;
     EvtData021c6534* data = &evt->data;
     if (fieldObj->key != data->key) return;
 

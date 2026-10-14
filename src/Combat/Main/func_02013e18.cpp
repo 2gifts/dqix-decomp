@@ -14,18 +14,18 @@ enum { kFinalSubflag = 0x3bc };
 
 extern "C" {
     int _Z33ApplyAndClearPendingEntry02013fb4P11Obj02013fb4(void*);
-    int _ZN6Zone3D13UnpackMapAMDJEv(void*);
+    int _ZN6Zone3D22UnpackMapAMDJ_020146fcEv(void*);
     int _Z29AccumulateHandleStats0201498cPv(void*);
     int func_0201a600(void*);
     void func_02017a94(Zone3D*);
     int _Z17IsInRange0201b5b0i(int);
     int _Z22IsValueInRange0201b5d8i(int);
-    void _Z15Set3DClearColoriiiii(int, int, int, int, int);
-    void _Z15SetBitsInField4Pjj(unsigned int*, unsigned int);
-    void _Z17ClearBitsInField4Pjj(unsigned int*, unsigned int);
+    void _Z24Set3DClearColor_020c5588iiiii(int, int, int, int, int);
+    void _Z24SetBitsInField4_0203b4d8Pjj(unsigned int*, unsigned int);
+    void _Z26ClearBitsInField4_0203b4e8Pjj(unsigned int*, unsigned int);
     void _Z25NotifyActiveSlots02018f30Ph(unsigned char*);
     void _Z28CollectMatchingElems020181fcPv(void*);
-    int _Z15GetFieldIfFlag4Pc(char const*);
+    int _Z24GetFieldIfFlag4_020100f8Pc(char const*);
 }
 
 // USA: func_02013e18
@@ -37,13 +37,13 @@ extern "C" ARM int func_02013e18(Zone3D* zone)
     if (!_Z33ApplyAndClearPendingEntry02013fb4P11Obj02013fb4(zone))
         return 0;
 
-    if (!zone->UnpackMapAMBL())
+    if (!zone->UnpackMapAMBL_02014108())
         return 0;
 
-    if (!zone->UnpackATS_AMBL())
+    if (!zone->UnpackATS_AMBL_02014c04())
         return 0;
 
-    if (!_ZN6Zone3D13UnpackMapAMDJEv(zone))
+    if (!_ZN6Zone3D22UnpackMapAMDJ_020146fcEv(zone))
         return 0;
 
     if (!_Z29AccumulateHandleStats0201498cPv(zone))
@@ -75,18 +75,18 @@ extern "C" ARM int func_02013e18(Zone3D* zone)
     else
         color = zone->lighting_.advanced_.backgroundColor[idx];
 
-    _Z15Set3DClearColoriiiii(color, 0x10, 0x7fff, 0, 0);
+    _Z24Set3DClearColor_020c5588iiiii(color, 0x10, 0x7fff, 0, 0);
 
     unsigned int* res = (unsigned int*)func_ov017_0218b5b0();
     int t = (unsigned int)((unsigned char*)zone->pUnknownStruct_8_)[0xe] << 24 >> 31;
     if (!t)
-        _Z15SetBitsInField4Pjj(res, 0x800);
+        _Z24SetBitsInField4_0203b4d8Pjj(res, 0x800);
     else
-        _Z17ClearBitsInField4Pjj(res, 0x800);
+        _Z26ClearBitsInField4_0203b4e8Pjj(res, 0x800);
 
     _Z25NotifyActiveSlots02018f30Ph((unsigned char*)zone);
     _Z28CollectMatchingElems020181fcPv(zone);
-    (void)_Z15GetFieldIfFlag4Pc((char const*)GameState::GetInstance());
+    (void)_Z24GetFieldIfFlag4_020100f8Pc((char const*)GameState::GetInstance());
 
     zone->unk_830[1] = (char)lm->timeOfDayIndex_;
     zone->unk_830[2] = 0;
@@ -94,7 +94,7 @@ extern "C" ARM int func_02013e18(Zone3D* zone)
 
     unsigned char* sub = (unsigned char*)zone + 0x2000;
     sub[kFinalSubflag] = 1;
-    UpdateEntryFlagsForNodeList(zone);
+    UpdateEntryFlagsForNodeList_02018ab8(zone);
     func_02017a94(zone);
     return 1;
 }

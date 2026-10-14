@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* battleStruct, int combatantId);
 void SetFieldndDispatch_021bdb78_021bdb78(int id);
 void SetupAndDispatchCombatant_02191e5c(int a, int b, short c, unsigned char d, unsigned short e);
 
@@ -17,7 +17,7 @@ ARM void DispatchOrSetupCombatant_02191f4c(int a, int b) {
 	GameState* battleStruct = GameState::GetInstance();
 	GameObject* combatant = battleStruct->GetCombatantByIndex(b);
 	if (!combatant) return;
-	GameObject* c2 = GetCombatantWithFlag0x100(battleStruct, b);
+	GameObject* c2 = GetCombatantWithFlag0x100_0200ff1c(battleStruct, b);
 	if (c2 != NULL && (*(int*)((char*)c2 + regionalOffset0) & 0x40)) {
 		SetFieldndDispatch_021bdb78_021bdb78(b);
 		return;

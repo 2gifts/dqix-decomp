@@ -3,7 +3,7 @@
 extern "C" int func_020ce4e8(int a, int b, int c, void* callback, int* out);
 
 // USA: func_020ce5b0
-ARM int RemapRequestTypeAndRunHandler(int a, void (*callback)(void), int* out) {
+ARM int RemapRequestTypeAndRunHandler_020ce5b0(int a, void (*callback)(void), int* out) {
     int mapped;
     switch (a) {
         case 1: mapped = 1; break;

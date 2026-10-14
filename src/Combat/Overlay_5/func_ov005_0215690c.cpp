@@ -89,15 +89,15 @@ struct Obj021e4e20;
 Body* RunIfPtr_021e4e20(Obj021e4e20*);
 extern "C" int func_ov005_02155670(EquipmentMenu* self, int x, int y);
 int ComputeTwoFromVec3_0202ec84(void* obj, Vec3copy0202ec84* src, int* out1, int* out2);
-GameObject* GetCombatantWithFlag0x100(GameState* gs, int id);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* gs, int id);
 extern "C" double func_0200b454(double x);
 short GetHalfwordEntryFromField150(Field150Holder02052df8* obj, int index);
 extern "C" int func_ov005_02158560(EquipmentMenu* self, unsigned char kind, int silent);
 extern "C" void func_ov005_0215792c(EquipmentMenu* self, unsigned char state);
 extern "C" void func_ov005_021579ec(EquipmentMenu* self, unsigned int state, unsigned char slot);
 extern "C" void func_ov005_021555c0(EquipmentMenu* self);
-void* GetPtrField0x2a04(GameState* gs);
-short* GetPointerFromArray0xbd0(unsigned char* obj, unsigned int index);
+void* GetPtrField0x2a04_02010828(GameState* gs);
+short* GetPointerFromArray0xbd0_0207c5f8(unsigned char* obj, unsigned int index);
 extern "C" void func_0205bb04(void* cursor, int index);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0* obj, int a, int b);
 
@@ -120,7 +120,7 @@ extern "C" ARM void func_ov005_0215690c(EquipmentMenu* self, int x, int y) {
         void* camera;
         int dx;
         int screenY[8];
-        camera = GetField0x3b0Value(gameState);
+        camera = GetField0x3b0Value_020100bc(gameState);
         int count;
         Matrix4x3 matrix;
         Vector3fix positions[8];
@@ -129,7 +129,7 @@ extern "C" ARM void func_ov005_0215690c(EquipmentMenu* self, int x, int y) {
             Mat4x3_ApplyToVector(&data_ov005_0215cc84[i], &matrix, &positions[i]);
             ComputeTwoFromVec3_0202ec84(camera, (Vec3copy0202ec84*)&positions[i], &screenX[i], &screenY[i]);
         }
-        GameObject* partyMember = GetCombatantWithFlag0x100(gameState, member);
+        GameObject* partyMember = GetCombatantWithFlag0x100_0200ff1c(gameState, member);
         count = 0;
         float radii[8];
         int touched[8];
@@ -198,7 +198,7 @@ extern "C" ARM void func_ov005_0215690c(EquipmentMenu* self, int x, int y) {
         func_ov005_02158560(self, kind, 1);
         self->flags_ |= 0x100;
     }
-    short* items = GetPointerFromArray0xbd0((unsigned char*)GetPtrField0x2a04(gameState) + 0x1d4, data_ov005_0215cd50[self->kind_]);
+    short* items = GetPointerFromArray0xbd0_0207c5f8((unsigned char*)GetPtrField0x2a04_02010828(gameState) + 0x1d4, data_ov005_0215cd50[self->kind_]);
     int empty = -1;
     int index = -1;
     for (short i = 0; i < self->itemCounts_[self->kind_]; i++) {

@@ -32,7 +32,7 @@ extern "C" ARM int func_020dc428(void) {
     signed char active = 0;
     GameState* battle = GameState::GetInstance();
     for (int i = 0; i < buf.n; i++) {
-        GameObject* c = GetCombatantWithFlag0x100(battle, buf.ids[i]);
+        GameObject* c = GetCombatantWithFlag0x100_0200ff1c(battle, buf.ids[i]);
         if (c != 0) {
             int flagSet;
             struct Sub020dc428* sub = ((struct Combatant020dc428*)c)->sub;

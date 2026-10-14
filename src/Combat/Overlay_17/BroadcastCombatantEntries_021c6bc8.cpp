@@ -8,8 +8,8 @@ enum { RegionOffset718 = 0x718 };
 #include "GameState/GameState.h"
 
 extern "C" void* func_ov017_021b8478(void* obj);
-int TestBitAt0x34(unsigned char* obj, unsigned int index);
-void* GetData02100044(void);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct FieldsMsg021c6bc8 {
@@ -32,14 +32,14 @@ extern "C" ARM void func_ov017_021c6bc8() {
     GameState* bs = GameState::GetInstance();
     unsigned char* table = *(unsigned char**)((char*)func_ov017_0218b5b0() + 0x3000 + RegionOffset718);
     unsigned char* search = (unsigned char*)func_ov017_021b8478(table);
-    void* data = GetData02100044();
+    void* data = GetData02100044_0202ae24();
 
     struct Whole021c6bc8 msg;
     msg.tag = 0x6e;
     struct FieldsMsg021c6bc8* fp = &msg.fields;
 
     for (int i = 0; i < 4; i++) {
-        if (!TestBitAt0x34(search, (unsigned char)i)) {
+        if (!TestBitAt0x34_020a35e0(search, (unsigned char)i)) {
             continue;
         }
         GameObject* c = bs->GetCombatantByIndex(i);

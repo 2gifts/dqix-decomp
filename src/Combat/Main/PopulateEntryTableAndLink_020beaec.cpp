@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 struct Obj020bda58;
-void* GetOffsetEntry0x20(int index);
+void* GetOffsetEntry0x20_020bd6ac(int index);
 void* AllocateAndLinkEntry020bda58(struct Obj020bda58* obj, unsigned int size, int a2, int a3, int a4);
 extern "C" void func_020bf1a0(void* entry);
 struct Ctx020bf484;
@@ -15,7 +15,7 @@ extern "C" ARM int func_020beaec(struct Obj020bda58* obj) {
     unsigned int size;
     unsigned char* dstEntry = (unsigned char*)&data_02110a4c;
     do {
-        unsigned char* srcEntry = (unsigned char*)GetOffsetEntry0x20(i);
+        unsigned char* srcEntry = (unsigned char*)GetOffsetEntry0x20_020bd6ac(i);
         if (srcEntry != 0) {
             dstEntry[0x124] = srcEntry[0];
             int j = 0;

@@ -2,7 +2,7 @@
 
 int LoadBattleBlock020ac4c0(void* dst);
 extern "C" int func_ov017_021d60f4(void*);
-int CopyInBattleField0x7540(void* src);
+int CopyInBattleField0x7540_020ac494(void* src);
 
 // USA: func_ov023_021e92f0
 ARM int SetBattleBlockBit_021e92f0(void* obj) {
@@ -13,6 +13,6 @@ ARM int SetBattleBlockBit_021e92f0(void* obj) {
     int r = idx % 32;
     unsigned int* bits = (unsigned int*)(buf + 0x4c);
     bits[q] = bits[q] | (1 << r);
-    CopyInBattleField0x7540(buf);
+    CopyInBattleField0x7540_020ac494(buf);
     return 1;
 }

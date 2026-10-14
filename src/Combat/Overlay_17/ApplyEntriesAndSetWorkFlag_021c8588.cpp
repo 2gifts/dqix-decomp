@@ -3,9 +3,9 @@
 
 extern "C" void* func_ov017_021b8468(void* p);
 void* GetField6b0_021b8470(void* obj);
-void SetCombatWorkFlags0x55f4(void* work, int mask);
-GameObject* GetCombatantWithFlag0x100(GameState* bs, int id);
-int GetFieldAt0x150(unsigned char* obj);
+void SetCombatWorkFlags0x55f4_ov000_02160fa8(void* work, int mask);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* bs, int id);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 
 struct Word78Bits_021c8588 {
     unsigned int lo : 30;
@@ -30,9 +30,9 @@ extern "C" ARM void func_ov017_021c8588(int a, signed char* b, GameState* bs, ch
 
     p0 = b + 4;
     for (i = 0; i < 4; i++) {
-        GameObject* combatant = GetCombatantWithFlag0x100(bs, i);
+        GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(bs, i);
         if (combatant == 0) continue;
-        int field150 = GetFieldAt0x150((unsigned char*)combatant);
+        int field150 = GetFieldAt0x150_02053c6c((unsigned char*)combatant);
         if (field150 == 0) continue;
         signed char v0 = p0[i];
         signed char v1 = *(p0 + i + 4);
@@ -42,6 +42,6 @@ extern "C" ARM void func_ov017_021c8588(int a, signed char* b, GameState* bs, ch
     }
 
     if (*((unsigned char*)inner + 3) != 0 && handle != 0) {
-        SetCombatWorkFlags0x55f4(handle, 0x4000000 << a);
+        SetCombatWorkFlags0x55f4_ov000_02160fa8(handle, 0x4000000 << a);
     }
 }

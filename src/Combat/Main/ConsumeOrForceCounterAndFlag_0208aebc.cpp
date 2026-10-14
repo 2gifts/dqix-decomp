@@ -8,7 +8,6 @@ enum { kTargetOffset = 0x6d0 };
 
 #include "GameState/GameState.h"
 
-
 struct Sub130_020482e0 {
     unsigned int flags;
     unsigned short count;
@@ -19,12 +18,12 @@ struct Combatant020482e0 {
 };
 int ConsumeCounter020482e0(struct Combatant020482e0* c, int amount, int force);
 
-void SetBoolFlagAt558(unsigned char* base, int index, int value);
+void SetBoolFlagAt558_02026f08(unsigned char* base, int index, int value);
 void SetArrayEntryFlag02026f20(int a, int index);
 
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c508(void* obj);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 extern "C" void func_ov017_021c9e00(int id, int a, int b, int c);
 
 // USA: func_0208aebc  (semantic: ConsumeOrForceCounterAndFlag_0208aebc)
@@ -50,11 +49,11 @@ extern "C" ARM void func_0208aebc(void* obj, int id) {
 
     unsigned short newCount = c->sub->count;
     if (oldCount != newCount) {
-        SetBoolFlagAt558((unsigned char*)target, id, 1);
+        SetBoolFlagAt558_02026f08((unsigned char*)target, id, 1);
         SetArrayEntryFlag02026f20((int)target, id);
     }
 
-    if (CheckField0NonZero((int*)p)) {
+    if (CheckField0NonZero_0202b7d8((int*)p)) {
         func_ov017_021c9e00(id, 1, 0, 1);
     }
 }

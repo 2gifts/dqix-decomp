@@ -9,30 +9,30 @@
 #include "Grotto/Main/GrottoStruct.h"
 #include "Grotto/Main/DetailedTreasureMapData.h"
 
-void* GetField0x3f8Address(GameState* battleStruct);
+void* GetField0x3f8Address_0200fd0c(GameState* battleStruct);
 extern "C" void* func_02012fe4(void);
 int IsInRange0201b588(int id);
 int IsValueInRange0201b5d8(int x);
 
 struct Obj0208f944 {
     char _pad0[IS_JPN ? 0x280 : 0x260];
-    unsigned char f260;      // 0x260
-    char _pad1;               // 0x261
-    unsigned char f262;      // 0x262
-    char _pad2[5];             // 0x263..0x267
-    unsigned int f268;       // 0x268
-    unsigned int f26c;       // 0x26c
-    unsigned int f270;       // 0x270
-    unsigned short f274;      // 0x274
+    unsigned char f260;
+    char _pad1;
+    unsigned char f262;
+    char _pad2[5];
+    unsigned int f268;
+    unsigned int f26c;
+    unsigned int f270;
+    unsigned short f274;
 };
 
 struct State0208f944 {
-    unsigned short h0;      // 0x0
-    char _pad0[5];           // 0x2..0x6
-    unsigned char b7;        // 0x7
-    char _pad1[2];            // 0x8..0x9
-    unsigned char b0xa;      // 0xa
-    char _pad2[5];             // 0xb..0xf
+    unsigned short h0;
+    char _pad0[5];
+    unsigned char b7;
+    char _pad1[2];
+    unsigned char b0xa;
+    char _pad2[5];
     unsigned int w0x10;
     unsigned int w0x14;
     unsigned int w0x18;
@@ -42,7 +42,7 @@ struct State0208f944 {
 // USA: func_0208f944
 ARM void HandleGrottoTurnTransition0208f944(struct Obj0208f944* obj) {
     GameState* battle = GameState::GetInstance();
-    struct State0208f944* state = (struct State0208f944*)GetField0x3f8Address(battle);
+    struct State0208f944* state = (struct State0208f944*)GetField0x3f8Address_0200fd0c(battle);
     struct GrottoStruct* grotto = battle->GetGrottoStruct();
     void* misc = func_02012fe4();
     int a = state->h0;

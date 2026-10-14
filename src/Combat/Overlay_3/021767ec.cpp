@@ -20,12 +20,11 @@ enum { kRegionValueD_C = 0xd };
 enum { kRegionValue1016_F92 = 0x1016 };
 #endif
 
-
 struct Obj2081;
-void ClearElementFlag0x20(struct Obj2081* obj, int key);
+void ClearElementFlag0x20_02080c20(struct Obj2081* obj, int key);
 void SetEntryLowNibbleAndElement02080c68(void* obj, int id, int value);
-void SetSublistEntriesFlag1(void* obj, int id);
-void SetSublistEntriesFlag2(void* obj, int id);
+void SetSublistEntriesFlag1_02080b54(void* obj, int id);
+void SetSublistEntriesFlag2_02080608(void* obj, int id);
 void SetOrClearEntryFlag0x102081130(void* obj, int id, int flag);
 
 struct Container020dedd0;
@@ -42,7 +41,7 @@ extern "C" void func_ov003_0217818c(char* self, struct Arg1_0217818c* arg1, int 
 #endif
 
 #if !defined(jpn)
-void Forward0207f7acObjPlus4Size0x40(void* obj, int value);
+void Forward0207f7acObjPlus4Size0x40_020805f4(void* obj, int value);
 #endif
 
 struct Container02080f8c;
@@ -60,10 +59,10 @@ extern "C" ARM int func_ov003_021767ec(char* self) {
     short id1 = 13;
     short id2 = 19;
 
-    ClearElementFlag0x20(o, 3);
+    ClearElementFlag0x20_02080c20(o, 3);
     SetEntryLowNibbleAndElement02080c68(o, 3, 0);
-    SetSublistEntriesFlag1(o, 3);
-    SetSublistEntriesFlag2(o, 3);
+    SetSublistEntriesFlag1_02080b54(o, 3);
+    SetSublistEntriesFlag2_02080608(o, 3);
 
     unsigned short flags1046 = *(unsigned short*)(self + kRegionValue1046_FC2);
     SetOrClearEntryFlag0x102081130(o, 3, (flags1046 & 0x400) != 0);
@@ -92,7 +91,7 @@ extern "C" ARM int func_ov003_021767ec(char* self) {
 #endif
             }
 #if !defined(jpn)
-            Forward0207f7acObjPlus4Size0x40(o, id0);
+            Forward0207f7acObjPlus4Size0x40_020805f4(o, id0);
 #endif
             SetEntryFirstField02080f8c((struct Container02080f8c*)o, id0, local1);
             SetEntryFirstField02080fa8((struct Container02080fa8*)o, id1, local2);

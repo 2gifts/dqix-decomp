@@ -5,7 +5,7 @@ extern "C" int func_ov017_021d60f4(void*);
 extern "C" void func_0209e9f4(void*, int, int);
 
 // USA: func_0209cf88
-ARM int TryProcessObjectPair0209e9f4(void* obj) {
+ARM int TryProcessObjectPair0209e9f4_0209cf88(void* obj) {
     void* mgr = GetGlobalManager0209dccc();
     if (mgr == NULL) return 0;
     int a = func_ov017_021d60f4(obj);

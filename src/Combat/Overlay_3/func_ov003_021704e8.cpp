@@ -21,7 +21,7 @@ void ComputeValues_0217063c(unsigned char* obj, unsigned short* out1, unsigned s
 
 #if defined(jpn)
 extern "C" void func_0205b724(Container0205a3d0*, int);
-void SetEntryPosition(Container0205a3d0*, int, short, short);
+void SetEntryPosition_020e27ec(Container0205a3d0*, int, short, short);
 extern "C" void func_0205ae8c(void*);
 #endif
 
@@ -37,7 +37,7 @@ extern "C" ARM void func_ov003_021704e8(char* obj) {
         func_0205b724(cont, 2);
         Elem0205a3d0* e = FindEntryByHalfword0205a3d0(cont, 2);
         if (e != NULL) *(unsigned char*)((char*)e + 0x15) |= 8;
-        SetEntryPosition(cont, 2, a, b);
+        SetEntryPosition_020e27ec(cont, 2, a, b);
         func_0205ae8c(obj + 0x68);
 #else
         SetElemFields0216dee4((struct Obj0216dee4*)(obj + 0x68), 8, a, b, -1, 1, 3);
@@ -56,7 +56,7 @@ extern "C" ARM void func_ov003_021704e8(char* obj) {
         func_0205b724(cont, 3);
         Elem0205a3d0* e = FindEntryByHalfword0205a3d0(cont, 3);
         if (e != NULL) *(unsigned char*)((char*)e + 0x15) |= 8;
-        SetEntryPosition(cont, 3, c, d);
+        SetEntryPosition_020e27ec(cont, 3, c, d);
         func_0205ae8c(obj + 0x68);
 #else
         SetElemFields0216dee4((struct Obj0216dee4*)(obj + 0x68), 8, c, d, -1, 1, 3);

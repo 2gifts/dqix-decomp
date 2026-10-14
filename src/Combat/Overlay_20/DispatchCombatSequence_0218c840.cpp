@@ -10,18 +10,18 @@
 
 int GetGlobalField0x1c020421a0();
 struct ResetBytesAndSetByte0x16Data;
-void ResetBytesAndSetByte0x16(struct ResetBytesAndSetByte0x16Data* p, int val);
-void SetupGlobalObjType1AndInitSelfPointer(unsigned char* obj);
+void ResetBytesAndSetByte0x16_0205c77c(struct ResetBytesAndSetByte0x16Data* p, int val);
+void SetupGlobalObjType1AndInitSelfPointer_0205cd28(unsigned char* obj);
 void SetupAndDispatch0205c904(unsigned char* p, int a1);
 struct Container0205a330;
 void IterateEntries0205a330(struct Container0205a330* c, int arg);
 int CheckGlobalObjState2AndInit0205cde8(unsigned char* p);
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 int GetScaledSumIfActive0205cecc(void* s);
-int CallFunc0205c570AtField0x1c(void* obj);
-unsigned char GetByte0x4(char* obj);
-void SetByte0x4(char* obj, unsigned char value);
-int CheckSaveBufferStatus(int flag);
+int CallFunc0205c570AtField0x1c_0205cb64(void* obj);
+unsigned char GetByte0x4_0200fb9c(char* obj);
+void SetByte0x4_0200fb94(char* obj, unsigned char value);
+int CheckSaveBufferStatus_020ab9c0(int flag);
 extern "C" int func_0205c96c(unsigned char* p, int a1);
 extern unsigned short data_02114e30;
 extern int data_ov020_0218d990[8];
@@ -43,8 +43,8 @@ extern "C" ARM void func_ov020_0218c840(struct DispatchState_0218c840* obj) {
     if (obj->f4 == 0) {
         obj->byte23f = 1;
         obj->byte240 = 1;
-        ResetBytesAndSetByte0x16((struct ResetBytesAndSetByte0x16Data*)((char*)obj + 0x10), 1);
-        SetupGlobalObjType1AndInitSelfPointer((unsigned char*)obj + 0xc);
+        ResetBytesAndSetByte0x16_0205c77c((struct ResetBytesAndSetByte0x16Data*)((char*)obj + 0x10), 1);
+        SetupGlobalObjType1AndInitSelfPointer_0205cd28((unsigned char*)obj + 0xc);
     }
 
     SetupAndDispatch0205c904((unsigned char*)obj + 0xc, 1);
@@ -60,19 +60,19 @@ extern "C" ARM void func_ov020_0218c840(struct DispatchState_0218c840* obj) {
             *ime = (*ime & ~0x1f00) | 0x1300;
         }
 
-        int hasFlag = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x401);
+        int hasFlag = TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x401);
         int active = GetScaledSumIfActive0205cecc((unsigned char*)obj + 0xc) >= 0;
         if ((hasFlag | active) != 0) {
-            int idx = CallFunc0205c570AtField0x1c((unsigned char*)obj + 0xc);
-            if (GetByte0x4((char*)battleStruct) == 6) return;
+            int idx = CallFunc0205c570AtField0x1c_0205cb64((unsigned char*)obj + 0xc);
+            if (GetByte0x4_0200fb9c((char*)battleStruct) == 6) return;
 
-            if (CheckSaveBufferStatus(1) == 4) {
-                SetByte0x4((char*)battleStruct, (unsigned char)data_ov020_0218d990[idx]);
+            if (CheckSaveBufferStatus_020ab9c0(1) == 4) {
+                SetByte0x4_0200fb94((char*)battleStruct, (unsigned char)data_ov020_0218d990[idx]);
                 obj->f0 = -1;
                 obj->f4 = -1;
                 return;
             } else {
-                SetByte0x4((char*)battleStruct, (unsigned char)data_ov020_0218d974[idx]);
+                SetByte0x4_0200fb94((char*)battleStruct, (unsigned char)data_ov020_0218d974[idx]);
                 obj->f0 = -1;
                 obj->f4 = -1;
                 return;

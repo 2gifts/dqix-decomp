@@ -32,10 +32,10 @@ struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0* c, in
 
 void InitObjFromCombatantId020e4bf4(void* obj, int combatantId);
 
-int CallFunc020e0434With02153694(int value);
+int CallFunc020e0434With02153694_020e51cc(int value);
 extern "C" void func_020e4b34(void* obj, int stats1, int stats2, int a, int b, int c, int d, int e, int f, int g, int h, int i);
 
-int CallFunc020e52a0(void* p, int key);
+int CallFunc020e52a0_020e5294(void* p, int key);
 
 struct Field150Holder02052df8;
 int GetHalfwordEntryFromField150(struct Field150Holder02052df8* obj, int index);
@@ -47,7 +47,7 @@ struct Ctx_02159650 { char pad[8]; unsigned int idx4 : 4; unsigned int rest : 28
 struct Field8Bits_02159650 { unsigned int low18 : 18; unsigned int bit18 : 1; unsigned int high13 : 13; };
 
 struct StoreStruct;
-void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
+void StoreInArray0x8b0_020465c0(struct StoreStruct* base, int index, int value);
 
 // USA: func_ov004_02159650  (semantic: PopulateCombatantContextFields_02159650)
 extern "C" ARM int func_ov004_02159650(void* obj) {
@@ -79,7 +79,7 @@ extern "C" ARM int func_ov004_02159650(void* obj) {
 
         void* p150 = *(void**)((char*)combatant + 0x150);
         int statVal = (short)(*(int*)((char*)p150 + 0x950));
-        int fmt = CallFunc020e0434With02153694(statVal);
+        int fmt = CallFunc020e0434With02153694_020e51cc(statVal);
         func_020e4b34(data_ov004_021707d8.ptr + 0xac, fmt, fmt, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         *(void**)((char*)g + 0x28) = data_ov004_021707d8.ptr + 0xac;
 #endif
@@ -91,7 +91,7 @@ extern "C" ARM int func_ov004_02159650(void* obj) {
         func_020e207c(data_ov004_021707d8.ptr + 0x8c, name, elem->field18);
         SetIndexedName02046574((Obj02046574*)g, 1, name);
 #else
-        int val = CallFunc020e52a0(data_ov004_021707d8.ptr + 0x8c, elem->field18);
+        int val = CallFunc020e52a0_020e5294(data_ov004_021707d8.ptr + 0x8c, elem->field18);
         *(int*)((char*)g + 0x18) = val;
 #endif
     }
@@ -109,7 +109,7 @@ extern "C" ARM int func_ov004_02159650(void* obj) {
 #if defined(jpn)
                     SetIndexedName02046574((Obj02046574*)g, 2, *(char**)((char*)elem2 + 4));
 #else
-                    int val2 = CallFunc020e52a0(data_ov004_021707d8.ptr + 0x8c, half);
+                    int val2 = CallFunc020e52a0_020e5294(data_ov004_021707d8.ptr + 0x8c, half);
                     *(int*)((char*)g + 0x18) = val2;
 #endif
                 }
@@ -118,9 +118,9 @@ extern "C" ARM int func_ov004_02159650(void* obj) {
     }
 
     if (entry != 0) {
-        StoreInArray0x8b0((struct StoreStruct*)g, 0, data_ov004_021707d8.ptr[0x11] * (entry->field4 >> 7));
+        StoreInArray0x8b0_020465c0((struct StoreStruct*)g, 0, data_ov004_021707d8.ptr[0x11] * (entry->field4 >> 7));
     }
 
-    StoreInArray0x8b0((struct StoreStruct*)g, 1, data_ov004_021707d8.ptr[0x11]);
+    StoreInArray0x8b0_020465c0((struct StoreStruct*)g, 1, data_ov004_021707d8.ptr[0x11]);
     return 0;
 }

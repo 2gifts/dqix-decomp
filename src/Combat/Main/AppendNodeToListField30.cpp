@@ -11,7 +11,7 @@ struct AppendList {
 };
 
 // USA: func_0206445c
-ARM void AppendNodeToListField30(int unused, struct AppendNode* node, struct AppendList* list) {
+ARM void AppendNodeToListField30_0206445c(int unused, struct AppendNode* node, struct AppendList* list) {
     struct AppendNode* cur;
     node->next = 0;
     cur = list->head;

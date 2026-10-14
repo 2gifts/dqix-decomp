@@ -168,18 +168,18 @@ struct Ctx0209a810 {
     int handle;
 };
 
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
 void ResetAndReturnSelf020dfc2c(void* p);
 void ResetStruct020dfc40(Struct020dfc40* p);
 void ResetAndDetach020dfc6c(Struct020dfc40* p);
 extern "C" void func_020dfec0(Struct020dfc40* table, SafeAllocator* alloc, void* data, unsigned int size);
-void ResetStructFields(ResetFieldsStruct* s);
+void ResetStructFields_02089db4(ResetFieldsStruct* s);
 void ForwardResetStructFields02089ddc(ResetFieldsStruct* s);
 void SetupHeaderAndRunBufferedScript02089de8(void* param0, void* param1, const char* param2);
-void* GetElementStride0x40(unsigned char* obj, int index);
+void* GetElementStride0x40_0208a018(unsigned char* obj, int index);
 extern "C" void func_02086404(CombatSelection* selection);
-void SetFlagBitAndIndex(SetFlagBitStruct* s, int n);
+void SetFlagBitAndIndex_02086598(SetFlagBitStruct* s, int n);
 char* GetFieldByKey020e0434(Container020e0310* c, int key);
 extern "C" void __clear(void* dst, unsigned int size);
 extern "C" int func_020426bc(void* a, void* b, int flag);
@@ -213,7 +213,7 @@ extern const SlotMap0201099c data_020e7618[];
 extern unsigned char data_020e7610[];
 extern const char data_020eeff3[];
 extern "C" int func_020e052c(void*, void*, const char*, void*, short, unsigned char);
-int StringLength(const char*);
+int StringLength_020d2ff0(const char*);
 #endif
 
 static inline const ShortPair0201099c* GetBodySize0201099c(int index) {
@@ -265,7 +265,7 @@ extern "C" ARM void func_0201099c(GameState0201099c* gs) {
     SafeAllocator nameAlloc;
     nameAlloc.ResetAllocatorPointer();
     nameAlloc.ResetAllocatorPointer();
-    nameAlloc.CreateTypeA(AllocateAligned4(&data_02114e20, 0x5000), 0x5000);
+    nameAlloc.CreateTypeA(AllocateAligned4_02012d88(&data_02114e20, 0x5000), 0x5000);
     Struct020dfc40 names;
     ResetAndReturnSelf020dfc2c(&names);
     ResetStruct020dfc40(&names);
@@ -283,17 +283,17 @@ extern "C" ARM void func_0201099c(GameState0201099c* gs) {
     SafeAllocator scriptAlloc;
     scriptAlloc.ResetAllocatorPointer();
 #if defined(jpn)
-    scriptAlloc.CreateTypeA(AllocateAligned4(&data_02114e20, 0x1400), 0x1400);
+    scriptAlloc.CreateTypeA(AllocateAligned4_02012d88(&data_02114e20, 0x1400), 0x1400);
 #else
     scriptAlloc.ResetAllocatorPointer();
-    scriptAlloc.CreateTypeA(AllocateAligned4(&data_02114e20, 0x800), 0x800);
+    scriptAlloc.CreateTypeA(AllocateAligned4_02012d88(&data_02114e20, 0x800), 0x800);
 #endif
-    ResetStructFields(&templates);
+    ResetStructFields_02089db4(&templates);
     SetupHeaderAndRunBufferedScript02089de8(&templates, &scriptAlloc, NULL);
     int templateCount = templates.count;
 
     for (i = 0; i < 3; i++) {
-        t = (RecruitTemplate0201099c*)GetElementStride0x40((unsigned char*)&templates, vocations[i]);
+        t = (RecruitTemplate0201099c*)GetElementStride0x40_0208a018((unsigned char*)&templates, vocations[i]);
         if (t == NULL) {
             break;
         }
@@ -325,7 +325,7 @@ extern "C" ARM void func_0201099c(GameState0201099c* gs) {
         int size = look->gender * 5 + NextRandomMax(rng, 5);
         look->height = GetBodySize0201099c(size)->a;
         look->width = GetBodySize0201099c(size)->b;
-        SetFlagBitAndIndex((SetFlagBitStruct*)m, t->vocation);
+        SetFlagBitAndIndex_02086598((SetFlagBitStruct*)m, t->vocation);
         for (int j = 0; j < 13; j++) {
             m->levels[j] = t->levels[j];
         }
@@ -343,7 +343,7 @@ extern "C" ARM void func_0201099c(GameState0201099c* gs) {
         } else {
             name += NextRandomMax(rng, 5);
         }
-        memcpy(m->name, *name, StringLength(*name));
+        memcpy(m->name, *name, StringLength_020d2ff0(*name));
 #else
         short nameBase = 20000;
         if (look->gender == 1) {
@@ -415,9 +415,9 @@ extern "C" ARM void func_0201099c(GameState0201099c* gs) {
         itemAlloc.ResetAllocatorPointer();
         itemAlloc.ResetAllocatorPointer();
 #if defined(jpn)
-        itemAlloc.CreateTypeA(AllocateAligned4(&data_02114e20, 0x12c00), 0x12c00);
+        itemAlloc.CreateTypeA(AllocateAligned4_02012d88(&data_02114e20, 0x12c00), 0x12c00);
 #else
-        itemAlloc.CreateTypeA(AllocateAligned4(&data_02114e20, 0x13800), 0x13800);
+        itemAlloc.CreateTypeA(AllocateAligned4_02012d88(&data_02114e20, 0x13800), 0x13800);
 #endif
         itemAlloc.Reset();
         Container020dedd0 items;

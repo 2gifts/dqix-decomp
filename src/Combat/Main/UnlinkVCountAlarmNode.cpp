@@ -15,7 +15,7 @@ struct VCountAlarmList {
 extern struct VCountAlarmList data_02111654;
 
 // USA: func_020c9384
-ARM void UnlinkVCountAlarmNode(struct VCountAlarmNode* node) {
+ARM void UnlinkVCountAlarmNode_020c9384(struct VCountAlarmNode* node) {
     struct VCountAlarmNode* prev;
     struct VCountAlarmNode* next;
     if (node == NULL) {

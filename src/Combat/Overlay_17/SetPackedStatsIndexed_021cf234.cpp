@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 extern "C" void func_02083e28(void* a, int arg2);
 
 struct Idx8_cf234 {
@@ -33,9 +33,9 @@ enum { PackedSlotOffset = 0x850 };
 // USA: func_ov017_021cf234  (semantic: SetPackedStatsIndexed_021cf234)
 extern "C" ARM void func_ov017_021cf234(int unused0, struct Src021cf234* src, GameState* battleStruct) {
     unsigned int id = (src->field10 << 21) >> 29;
-    GameObject* c = GetCombatantWithFlag0x100(battleStruct, id);
+    GameObject* c = GetCombatantWithFlag0x100_0200ff1c(battleStruct, id);
     if (!c) return;
-    unsigned char* p = (unsigned char*)GetFieldAt0x150((unsigned char*)c);
+    unsigned char* p = (unsigned char*)GetFieldAt0x150_02053c6c((unsigned char*)c);
     if (!p) return;
 
     unsigned int idxWide = ((struct Idx8_cf234*)&src->field10)->idx;

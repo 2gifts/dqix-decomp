@@ -4,7 +4,7 @@ extern "C" unsigned short func_ov027_021dab38(unsigned short* data, int len);
 extern "C" void func_020ca390(int val, void* dst, unsigned int size);
 extern "C" void func_020ca3b8(int src, void* dst, int size);
 extern "C" void func_ov027_021db124(void);
-int IssueBattleCommandSlot24(int a0, int a1, int a2, int a3, unsigned short a4, unsigned char a5);
+int IssueBattleCommandSlot24_020d69cc(int a0, int a1, int a2, int a3, unsigned short a4, unsigned char a5);
 
 struct Record021db154 { unsigned char data[0x16]; };
 
@@ -110,7 +110,7 @@ extern "C" ARM void func_ov027_021db154(int a0, unsigned short a1, unsigned char
         data_ov027_021dd940.f24 = 1;
     }
 
-    IssueBattleCommandSlot24(0, (int)&data_ov027_021dd980, 0x70, a0, a1, (unsigned char)(a2 | 3));
+    IssueBattleCommandSlot24_020d69cc(0, (int)&data_ov027_021dd980, 0x70, a0, a1, (unsigned char)(a2 | 3));
 
     if (data_ov027_021dd940.f10 != 1) return;
     if (data_ov027_021dd940.f14 == 0) return;

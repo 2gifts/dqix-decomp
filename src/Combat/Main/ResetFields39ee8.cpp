@@ -10,7 +10,7 @@ struct ResetStruct_39ee8 {
 };
 
 // USA: func_02039ee8
-ARM void ResetFields39ee8(struct ResetStruct_39ee8* s) {
+ARM void ResetFields39ee8_02039ee8(struct ResetStruct_39ee8* s) {
     s->f0 = 0;
     s->f5 = 0;
     s->f6 = 0;

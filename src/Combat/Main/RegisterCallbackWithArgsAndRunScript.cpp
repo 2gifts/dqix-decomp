@@ -19,7 +19,7 @@ extern struct CallbackCache02108d04 data_02108d04;
 extern int data_020f0a3c;
 
 // USA: func_0206ee80
-ARM void RegisterCallbackWithArgsAndRunScript(void* p0, void* p1, struct StreamHeader* buffer, int length, void* p4, short p5) {
+ARM void RegisterCallbackWithArgsAndRunScript_0206ee80(void* p0, void* p1, struct StreamHeader* buffer, int length, void* p4, short p5) {
     char local[0x430];
     data_02108d04.fieldC = p0;
     data_02108d04.field8 = p4;

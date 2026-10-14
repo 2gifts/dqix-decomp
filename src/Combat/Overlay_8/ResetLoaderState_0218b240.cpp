@@ -19,7 +19,7 @@ void ResetEntryList0205d6a0(Entry_0205d6a0*, int);
 void* GetDataPtr02114e04_020d6c00();
 struct FlagWord020466f4;
 void ClearFlags020466f4(FlagWord020466f4*, unsigned int);
-void ClearBitsInWord(unsigned int* p, unsigned int mask);
+void ClearBitsInWord_0203b4b0(unsigned int* p, unsigned int mask);
 
 struct Manager0218b240 {
     char pad0[R(0xe95,0xe99)];
@@ -58,7 +58,7 @@ extern "C" ARM void func_ov008_0218b240(Manager0218b240* obj) {
 
     void* ptr = GetDataPtr02114e04_020d6c00();
     ClearFlags020466f4((FlagWord020466f4*)ptr, 0x2f);
-    ClearBitsInWord((unsigned int*)func_ov017_0218b5b0(), 0x10);
+    ClearBitsInWord_0203b4b0((unsigned int*)func_ov017_0218b5b0(), 0x10);
 
     loader->RemoveTask(obj->ea0);
     loader->RemoveTask(obj->eb4);

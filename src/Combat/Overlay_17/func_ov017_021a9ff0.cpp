@@ -11,14 +11,14 @@ struct SafeAllocator;
 struct GameResources;
 struct SetFlagStruct;
 
-int GetWord0x0(int* obj);
+int GetWord0x0_0200fb8c(int* obj);
 void InitObjState_021b2174(unsigned char* obj);
 void SetNameChecked_021b2ba0(S021b2ba0* obj, char* name);
 void SetFields30And34_021b2bd0(void* obj, int handler, int overlayId);
 void PrependNodeToHead(HeadList020469f8* list, HeadNode020469f8* node);
 void AppendNodeToTail(TailList020469b4* list, TailNode020469b4* node);
 void SetBrightness(GameResources* resources, int brightness, int frames);
-void SetFlag0x9c6(SetFlagStruct* obj, int value);
+void SetFlag0x9c6_020213fc(SetFlagStruct* obj, int value);
 void CopyGlobalBlockAndDispatch_02165df4(SafeAllocator* allocator, void* arg);
 extern char data_ov017_021d7831;
 
@@ -29,7 +29,7 @@ extern "C" ARM void func_ov017_021a9ff0(int atFront) {
 #else
  enum {regionalOffset0=0x3b4c, regionalOffset1=0x36fc};
 #endif
-    GameResources* res = (GameResources*)GetWord0x0((int*)GameState::GetInstance());
+    GameResources* res = (GameResources*)GetWord0x0_0200fb8c((int*)GameState::GetInstance());
     SetFlagStruct* flags;
     void* list;
     unsigned char* obj;
@@ -49,5 +49,5 @@ extern "C" ARM void func_ov017_021a9ff0(int atFront) {
         AppendNodeToTail((TailList020469b4*)list, (TailNode020469b4*)obj);
     }
     SetBrightness(res, -16, 0x19);
-    SetFlag0x9c6(flags, 1);
+    SetFlag0x9c6_020213fc(flags, 1);
 }

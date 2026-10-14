@@ -59,9 +59,9 @@ struct CombatEntryList {
     void* field2750;
 };
 
-void* GetPtrField0x144(void* obj);
+void* GetPtrField0x144_0202ed74(void* obj);
 void ClearGlobalFlagBits02016d8c(void* arg);
-int GetBoxTestResult(int* out);
+int GetBoxTestResult_020c56b0(int* out);
 void SubmitGxCommands02047648(unsigned char* obj, int idx, int something);
 void AdvanceStreamRecord0204724c(Obj0204724C* obj);
 void RenderTransformedFlaggedIndexedEntry(StructAt020472e4* obj, int param);
@@ -74,11 +74,11 @@ extern "C" ARM void func_0201730c(CombatEntryList* list) {
     if (list->field2750 == NULL) return;
 
     GameState* game = GameState::GetInstance();
-    void* camera = GetField0x3b0Value(game);
+    void* camera = GetField0x3b0Value_020100bc(game);
     if (camera == NULL) return;
     game->GetTickCount();
     unsigned short lightColor = LightingManager::GetInstance()->maybePotBarrelDiffuseColor_;
-    ClearGlobalFlagBits02016d8c(GetPtrField0x144(camera));
+    ClearGlobalFlagBits02016d8c(GetPtrField0x144_0202ed74(camera));
 
     for (int i = 0; i < list->count; i++) {
         CombatEntry* entry = &list->entries[i];
@@ -116,7 +116,7 @@ extern "C" ARM void func_0201730c(CombatEntryList* list) {
         GXFIFO_TEST_BOX = boxParams.u32s.c;
 
         int visible;
-        while (GetBoxTestResult(&visible) != 0) {}
+        while (GetBoxTestResult_020c56b0(&visible) != 0) {}
         if (visible == 0) continue;
 
         scale = entry->commandRecord.scale;
@@ -137,7 +137,7 @@ extern "C" ARM void func_0201730c(CombatEntryList* list) {
             for (int j = 0; j < 4; j++) {
                 CombatRecord* segment = &entry->segments[j];
                 RenderConfig::SetObjectPosition(&segment->position);
-                Matrix3x3* viewMatrix = (Matrix3x3*)GetPtrField0x144(camera);
+                Matrix3x3* viewMatrix = (Matrix3x3*)GetPtrField0x144_0202ed74(camera);
                 Matrix3x3 rotation;
                 Matrix3x3 transformed;
                 fix32_t angle = data_020e6e64[j];

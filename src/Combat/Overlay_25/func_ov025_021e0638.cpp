@@ -108,20 +108,20 @@ extern "C" void __clear(void* p, int n);
 
 void ResetFields_021e20d8(void* obj);
 void ResetInnerState02048c90(Obj02048c90*);
-int GetSubstructByte0x1c(unsigned char*);
-int GetSubstructByte0x1d(unsigned char*);
-int GetSubstructByte0x34(unsigned char*);
-int GetSubstructByte0x56(unsigned char*);
+int GetSubstructByte0x1c_020493a4(unsigned char*);
+int GetSubstructByte0x1d_020493c8(unsigned char*);
+int GetSubstructByte0x34_02049444(unsigned char*);
+int GetSubstructByte0x56_02049ee8(unsigned char*);
 void CopyBytesAndSetLen_021e2114(unsigned char*, void*, int);
 void StoreDataWithLen02049410(Obj02049410*, void*, int);
 void ApplyFlag0x4IfEligible02049a74(Obj02049a74*);
-void ClearSubstructFlag0x4(unsigned char*);
-void ClearSubstructFlag0x40(unsigned char*);
-void SetSubstructFlag0x40(unsigned char*);
-void ClearGlobalBuffer02107850(void);
-Data021e0638* GetData02107850(void);
-int CheckHighNibble0xc1Not2To5(unsigned char*);
-int CheckSubstructFlag0x200(unsigned char*);
+void ClearSubstructFlag0x4_02049ae4(unsigned char*);
+void ClearSubstructFlag0x40_0204950c(unsigned char*);
+void SetSubstructFlag0x40_020494f8(unsigned char*);
+void ClearGlobalBuffer02107850_02048994(void);
+Data021e0638* GetData02107850_020489b0(void);
+int CheckHighNibble0xc1Not2To5_02049ec0(unsigned char*);
+int CheckSubstructFlag0x200_02048c10(unsigned char*);
 void DispatchTargetByte020494c0(Obj020494c0*);
 unsigned char* GetNodeAtIndex02160094(List02160094*, int);
 unsigned char* GetNodeAtIndex021600f8(List021600f8*, int);
@@ -176,7 +176,7 @@ extern "C" ARM void func_ov025_021e0638(unsigned char* self) {
     }
     for (int i = 0; i < n; i++) {
         ResetInnerState02048c90((Obj02048c90*)ents[i].obj);
-        head.data[i] = GetSubstructByte0x1c(ents[i].obj);
+        head.data[i] = GetSubstructByte0x1c_020493a4(ents[i].obj);
         pool[i].len = 0;
         memset(pool[i].mark, 0, 0x10);
     }
@@ -230,9 +230,9 @@ found:
             if (len != 0) {
                 prev = entry[len - 1];
             } else {
-                prev = GetSubstructByte0x1c(obj);
+                prev = GetSubstructByte0x1c_020493a4(obj);
             }
-            target = GetSubstructByte0x1d(obj);
+            target = GetSubstructByte0x1d_020493c8(obj);
             if (prev == target) {
                 continue;
             }
@@ -365,30 +365,30 @@ found:
     }
     for (int i = 0; i < n; i++) {
         int flag = 0;
-        unsigned char* c = (unsigned char*)(CombatantStruct*)GetCombatantWithFlag0x100((GameState*)gs, *(short*)(ents[i].obj + 4));
+        unsigned char* c = (unsigned char*)(CombatantStruct*)GetCombatantWithFlag0x100_0200ff1c((GameState*)gs, *(short*)(ents[i].obj + 4));
         if (c != 0 && (*(unsigned int*)(c + Field18c) & 1)) {
             flag = 1;
         }
-        if (GetSubstructByte0x56(ents[i].obj) != 0 && flag == 0 && self[Fielde78] != 0) {
+        if (GetSubstructByte0x56_02049ee8(ents[i].obj) != 0 && flag == 0 && self[Fielde78] != 0) {
             ApplyFlag0x4IfEligible02049a74((Obj02049a74*)ents[i].obj);
         } else {
-            ClearSubstructFlag0x4(ents[i].obj);
+            ClearSubstructFlag0x4_02049ae4(ents[i].obj);
         }
-        ClearSubstructFlag0x40(ents[i].obj);
+        ClearSubstructFlag0x40_0204950c(ents[i].obj);
     }
     for (int i = 0; i < nids; i++) {
         unsigned char* c = (unsigned char*)gs->GetCombatantByIndex(ids[i]);
-        if (c != 0 && GetSubstructByte0x34(c) != 0) {
-            ClearSubstructFlag0x4(c);
-            SetSubstructFlag0x40(c);
+        if (c != 0 && GetSubstructByte0x34_02049444(c) != 0) {
+            ClearSubstructFlag0x4_02049ae4(c);
+            SetSubstructFlag0x40_020494f8(c);
         }
     }
     for (int i = 0; i < cur->count8; i++) {
         if (cur->p10 != 0) {
             unsigned char* c = (unsigned char*)gs->GetCombatantByIndex(*(unsigned short*)(cur->p10 + i * 0x34 + 0x20));
             if (c != 0) {
-                ClearSubstructFlag0x4(c);
-                ClearSubstructFlag0x40(c);
+                ClearSubstructFlag0x4_02049ae4(c);
+                ClearSubstructFlag0x40_0204950c(c);
             }
         }
     }
@@ -396,8 +396,8 @@ found:
         if (cur->p14 != 0) {
             unsigned char* c = (unsigned char*)gs->GetCombatantByIndex(*(short*)(cur->p14 + i * 0x24 + 0xe));
             if (c != 0) {
-                ClearSubstructFlag0x4(c);
-                ClearSubstructFlag0x40(c);
+                ClearSubstructFlag0x4_02049ae4(c);
+                ClearSubstructFlag0x40_0204950c(c);
             }
         }
     }
@@ -417,27 +417,27 @@ found:
                         extra += t2;
                     }
                 }
-                func_ov025_021e120c(seen, GetSubstructByte0x1c(c), 1, extra & 0xff, 0);
+                func_ov025_021e120c(seen, GetSubstructByte0x1c_020493a4(c), 1, extra & 0xff, 0);
                 for (int j = 0; j < n; j++) {
-                    int id = GetSubstructByte0x1d(ents[j].obj);
+                    int id = GetSubstructByte0x1d_020493c8(ents[j].obj);
                     if (id < 0x51 && seen[id] == 1) {
-                        ClearSubstructFlag0x4(c);
-                        ClearSubstructFlag0x40(c);
+                        ClearSubstructFlag0x4_02049ae4(c);
+                        ClearSubstructFlag0x40_0204950c(c);
                     }
                 }
             }
         }
     }
-    ClearGlobalBuffer02107850();
+    ClearGlobalBuffer02107850_02048994();
     unsigned char* na = GetNodeAtIndex02160094((List02160094*)cur, 0);
     unsigned char* nb = GetNodeAtIndex021600f8((List021600f8*)cur, 0);
     if (na != 0 && nb != 0) {
         unsigned char* ca = (unsigned char*)gs->GetCombatantByIndex(*(unsigned short*)(na + 0x20));
         unsigned char* cb = (unsigned char*)gs->GetCombatantByIndex(*(short*)(nb + 0xe));
         if (ca != 0 && cb != 0) {
-            unsigned int id = GetSubstructByte0x1d(ca);
+            unsigned int id = GetSubstructByte0x1d_020493c8(ca);
             if (id >= 0x51) {
-                id = GetSubstructByte0x1c(ca);
+                id = GetSubstructByte0x1c_020493a4(ca);
             }
             if (id < 0x51) {
                 posCell = id;
@@ -449,7 +449,7 @@ found:
                 va.z = pp.v[1];
                 Vec3_021e0638 vb = *(Vec3_021e0638*)(cb + 0x44);
                 vb.y = 0;
-                Data021e0638* d = GetData02107850();
+                Data021e0638* d = GetData02107850_020489b0();
                 *(Vector3i*)&d->a = *(Vector3i const*)&va;
                 *(Vector3i*)&d->b = *(Vector3i const*)&vb;
                 d->radius = ((Object3D*)ca)->GetRadius() >> 1;
@@ -459,9 +459,9 @@ found:
     }
     for (int i = 0; i < n; i++) {
         unsigned char* o = ents[i].obj;
-        if (GetSubstructByte0x56(o) != 0 && GetSubstructByte0x34(o) == 0 && CheckHighNibble0xc1Not2To5(o) != 0
+        if (GetSubstructByte0x56_02049ee8(o) != 0 && GetSubstructByte0x34_02049444(o) == 0 && CheckHighNibble0xc1Not2To5_02049ec0(o) != 0
             && (*(unsigned int*)(*(unsigned char**)(o + 0x138) + 0x14) & 1) == 0 && self[Fielde78] != 0
-            && CheckSubstructFlag0x200(o) == 0) {
+            && CheckSubstructFlag0x200_02048c10(o) == 0) {
             DispatchTargetByte020494c0((Obj020494c0*)o);
         }
     }

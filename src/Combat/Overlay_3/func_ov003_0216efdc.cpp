@@ -9,10 +9,10 @@ extern "C" int func_0201248c(void *obj, int mask);
 struct Obj_0216f414;
 struct Entry0216efdc;
 Entry0216efdc *FindEntryByShortId_0216f414(Obj_0216f414 *list, int id);
-int TestBitInByteArray(int a, unsigned char *bits, int index);
-void SetOrClearBitInArray(void *a, unsigned char *bits, int index, int set);
-int TestFlag0SetAndFlag1Clear(unsigned short *obj, int mask);
-int CheckByteSetAndByteClear(unsigned char *p);
+int TestBitInByteArray_0206dfb0(int a, unsigned char *bits, int index);
+void SetOrClearBitInArray_0206df6c(void *a, unsigned char *bits, int index, int set);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short *obj, int mask);
+int CheckByteSetAndByteClear_02012aac(unsigned char *p);
 
 extern unsigned short data_02114e30;
 extern char data_02114e54;
@@ -82,11 +82,11 @@ extern "C" ARM void func_ov003_0216efdc(Menu0216efdc *self) {
             }
         }
         void *save = func_0205ec34();
-        if (TestBitInByteArray((int) save, (unsigned char *) save + 0x8c, 0x783) != 0) {
+        if (TestBitInByteArray_0206dfb0((int) save, (unsigned char *) save + 0x8c, 0x783) != 0) {
             self->state_ = 1;
             return;
         }
-        SetOrClearBitInArray(save, (unsigned char *) save + 0x8c, 0x783, 1);
+        SetOrClearBitInArray_0206df6c(save, (unsigned char *) save + 0x8c, 0x783, 1);
         func_ov003_02170960(self, 0x1f, 0);
         global->unk_998 = 1;
         self->unk_20 |= 1;
@@ -96,7 +96,7 @@ extern "C" ARM void func_ov003_0216efdc(Menu0216efdc *self) {
             self->state_ = 1;
         }
     } else if (state == 1) {
-        if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2) != 0 || self->unk_e == 5) {
+        if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 2) != 0 || self->unk_e == 5) {
             self->unk_1  = 6;
             self->state_ = 0;
             return;
@@ -164,7 +164,7 @@ extern "C" ARM void func_ov003_0216efdc(Menu0216efdc *self) {
                     sel = self->unk_e - 6;
                 }
             }
-            if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x401) != 0 || sel == self->unk_7) {
+            if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x401) != 0 || sel == self->unk_7) {
                 self->unk_8  = 0;
                 self->unk_9  = -1;
                 self->unk_1  = 5;
@@ -177,7 +177,7 @@ extern "C" ARM void func_ov003_0216efdc(Menu0216efdc *self) {
             if (self->unk_c < 6) {
                 return;
             }
-            if (CheckByteSetAndByteClear((unsigned char *) &data_02114e54) == 0) {
+            if (CheckByteSetAndByteClear_02012aac((unsigned char *) &data_02114e54) == 0) {
                 return;
             }
             self->unk_6 = self->unk_c - 6;

@@ -19,14 +19,13 @@ enum { kRegionValue103A_FB6 = 0x103a };
 enum { kRegionValue1034_FB0 = 0x1034 };
 #endif
 
-
 struct KeyedList0207c484;
 struct KeyMap020a0a08;
 struct Slots0208386c;
 
 int DecrementKeyedStackAmount0207c484(struct KeyedList0207c484* obj, int value, int amount, int key);
 short FindMappedMemberId02080468(void* obj, int id);
-struct Slots0208386c* GetFieldAt0x150(unsigned char* obj);
+struct Slots0208386c* GetFieldAt0x150_02053c6c(unsigned char* obj);
 void RemoveSlotShiftDown0208386c(struct Slots0208386c* s, int idx);
 int DecrementKeyValue020a0a08(struct KeyMap020a0a08* map, int key, int amount);
 
@@ -55,7 +54,7 @@ struct Ctx02175df4 {
 // USA: func_ov003_02175df4
 extern "C" ARM int func_ov003_02175df4(Ctx02175df4* self) {
     GameState* bs = GameState::GetInstance();
-    char* bag = (char*)GetPtrField0x2a04(bs);
+    char* bag = (char*)GetPtrField0x2a04_02010828(bs);
     if (self->mode_ == 0x77) {
         return DecrementKeyedStackAmount0207c484((struct KeyedList0207c484*)(bag + 0x1d4), self->key_, self->amount_, self->owner_->category_);
     }
@@ -81,7 +80,7 @@ extern "C" ARM int func_ov003_02175df4(Ctx02175df4* self) {
             return 0;
         }
         short slot = self->slot_ - FindMappedMemberId02080468(self->members_, 0x15);
-        RemoveSlotShiftDown0208386c(GetFieldAt0x150((unsigned char*)member), (signed char)slot);
+        RemoveSlotShiftDown0208386c(GetFieldAt0x150_02053c6c((unsigned char*)member), (signed char)slot);
         return 1;
     }
     DecrementKeyValue020a0a08((struct KeyMap020a0a08*)bag, self->key_, self->amount_);

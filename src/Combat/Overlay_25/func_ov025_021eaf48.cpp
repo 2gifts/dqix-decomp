@@ -20,7 +20,7 @@ struct Effect021eaf48 {
     short value;
 };
 
-void* GetActiveCombatWork(void);
+void* GetActiveCombatWork_ov000_02160130(void);
 void* GetSlotPtr02160f20(void* obj);
 struct ListNode02160094* GetNodeAtIndex02160094(struct List02160094* list, int index);
 extern "C" int func_ov025_021ed380(char* obj, int id, int val2, int type, int val3, short val4, unsigned short val5);
@@ -28,7 +28,7 @@ void AddEntry_021ed5f0(char* obj, int val, int type, int val2);
 
 // USA: func_ov025_021eaf48
 extern "C" ARM void func_ov025_021eaf48(char* self, int index, int mode, struct Effect021eaf48* effect) {
-    struct ListNode02160094* node = GetNodeAtIndex02160094((struct List02160094*)GetSlotPtr02160f20(GetActiveCombatWork()), index);
+    struct ListNode02160094* node = GetNodeAtIndex02160094((struct List02160094*)GetSlotPtr02160f20(GetActiveCombatWork_ov000_02160130()), index);
     if (node == 0) {
         return;
     }

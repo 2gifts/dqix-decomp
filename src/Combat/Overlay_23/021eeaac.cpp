@@ -16,7 +16,7 @@ struct Reset_021eefac;
 extern "C" void func_020a1940(unsigned int id);
 void ResetListHeader020727d8(List020727d8* list);
 extern "C" void func_020728ac(void* a, void* b, int c, int d, int e, int f, int g);
-void CopyShortTriple0x8e4a(void* obj, short* a, short* b, short* c);
+void CopyShortTriple0x8e4a_ov000_0215fa84(void* obj, short* a, short* b, short* c);
 int AreAllListedCombatantsFlagged_021ed92c();
 void ZeroInit020de848(void* obj);
 extern "C" int func_020de9a4(void* list, void* alloc, void* data, unsigned int size, void* entries, unsigned short count);
@@ -25,9 +25,9 @@ void InitStruct0207cbe8(char* obj);
 extern "C" int func_0207d300(void* buf, int a, int b, int c);
 extern "C" int func_0207ccf0(void* buf, int a, int b, int c, int d, int e, int f);
 
-int GetField0x3acValue(GameState* gs);
+int GetField0x3acValue_020100a8(GameState* gs);
 extern "C" SearchStruct* func_0202ae18(void);
-int TestBitBySignedByteIndex(SearchStruct* search, int index);
+int TestBitBySignedByteIndex_0202c1c0(SearchStruct* search, int index);
 void ClearFirstTwoWords0209a338(Pair0209a338* pair);
 void SetupAndRunBufferedScript0209a470(Ctx0209a470* ctx, SafeAllocator* alloc, StreamHeader* data, int length);
 void ClearField00209a804(int* field);
@@ -133,7 +133,7 @@ extern "C" ARM int func_ov023_021eeaac(char* self) {
             src += 3;
         }
         if (*(short*)(*(char**)(self + regionalOffset4) + 0x8e4a) > 0) {
-            CopyShortTriple0x8e4a(*(void**)(self + regionalOffset4), &kind, &b, &c);
+            CopyShortTriple0x8e4a_ov000_0215fa84(*(void**)(self + regionalOffset4), &kind, &b, &c);
             ids[count] = c;
             count++;
             if (kind == 0x18 && AreAllListedCombatantsFlagged_021ed92c()) {
@@ -157,7 +157,7 @@ extern "C" ARM int func_ov023_021eeaac(char* self) {
         entry = (Entry021eeaac*)(self + regionalOffset3);
         present = *(signed char*)(self + regionalOffset6);
         gs = GameState::GetInstance();
-        party = (char*)GetPtrField0x2a04(gs);
+        party = (char*)GetPtrField0x2a04_02010828(gs);
         found = 0;
         for (k = 0; k < *(unsigned char*)(party + 0xf7c); k++) {
             if (present & (1 << *(unsigned char*)(party + k + 0xf78))) {
@@ -166,7 +166,7 @@ extern "C" ARM int func_ov023_021eeaac(char* self) {
             }
         }
         if (found) {
-            current = GetField0x3acValue(gs);
+            current = GetField0x3acValue_020100a8(gs);
             for (j = 0; j < count; j++, entry++) {
                 ((SafeAllocator*)obj)->ResetAllocatorPointer();
                 ZeroInitReturn020de824(obj + 0x14);
@@ -177,7 +177,7 @@ extern "C" ARM int func_ov023_021eeaac(char* self) {
                 if (slot < 0) {
                     result = func_0207d300(obj, entry->id, 1, 1);
                 } else {
-                    if (current != slot && (TestBitBySignedByteIndex(func_0202ae18(), slot) != 0 || current != 0)) {
+                    if (current != slot && (TestBitBySignedByteIndex_0202c1c0(func_0202ae18(), slot) != 0 || current != 0)) {
                         if (present & (1 << current)) {
                             slot = current;
                         }

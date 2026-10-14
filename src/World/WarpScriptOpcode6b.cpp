@@ -2,7 +2,7 @@
 #include <globaldefs.h>
 
 // USA: func_0201d044
-ARM int WarpScript_Opcode_6b(Script::Parameter* params, int numParams)
+ARM int WarpScript_Opcode_6b_0201d044(Script::Parameter* params, int numParams)
 {
     ZoneFeatures::Opcode6aEntry entry;
     entry.Reset();
@@ -112,6 +112,6 @@ ARM int WarpScript_Opcode_6b(Script::Parameter* params, int numParams)
 
     ZoneFeatures* instance = data_020fdc20.warp;
     entry.pNext = NULL;
-    instance->CreateOpcode6aEntry(entry);
+    instance->CreateOpcode6aEntry_0201e710(entry);
     return 1;
 }

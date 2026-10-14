@@ -3,7 +3,7 @@
 #include "System/Matrix.h"
 #include "std_library_functions.h"
 
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 void* GetField6b0_021b8470(void* obj);
 extern "C" int func_ov000_0215e9fc(void* obj, short* buf, int max, int flag);
 extern "C" int func_ov000_0215eb1c(void* obj, short* buf, int max, int flag);
@@ -30,7 +30,7 @@ extern "C" ARM void func_ov017_021c8758(unsigned short id) {
 #endif
     GameState* bs = GameState::GetInstance();
     unsigned char* base = (unsigned char*)func_ov017_0218b5b0();
-    void* data = GetData02100044();
+    void* data = GetData02100044_0202ae24();
     void* field = GetField6b0_021b8470(*(void**)(base + 0x3000 + regionalOffset));
     if (field == NULL) {
         return;

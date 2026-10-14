@@ -117,19 +117,19 @@ extern char data_ov001_02164bc8[];
 extern char data_ov001_02164bcb[];
 
 extern "C" {
-struct Global021539d8* _Z20GetGlobalPtr021075f4v(void);
+struct Global021539d8* _Z29GetGlobalPtr021075f4_0203cf4cv(void);
 
 void* func_0202ae18(void);
 int func_0202c508(void* obj);
-unsigned char _Z19GetField0x397cValueP9GameState(GameState* gs);
-int _Z18GetField0x3acValueP9GameState(GameState* gs);
+unsigned char _Z28GetField0x397cValue_020100b0P9GameState(GameState* gs);
+int _Z27GetField0x3acValue_020100a8P9GameState(GameState* gs);
 void _Z26CopyInternalFields0207df50P11Foo0207df50(struct PairTables021539d8* p);
 void _Z25RestorePairTables0207df90Pc(struct PairTables021539d8* p);
 void _Z24BackupPairTables0207dfacPc(struct PairTables021539d8* p);
 void func_ov001_0215ab54(int kind, int id, int index);
 struct Emitter021539d8* _Z29FindEntryPointerByKey0203df78Pvi(void* list, int key);
 int _Z22FindEntryByKey0203dfdcPvi(void* list, int key);
-void _Z21RegisterCombatantSlotP9GameStateiP10GameObject(GameState* gs, int id, struct Obj021539d8* obj);
+void _Z30RegisterCombatantSlot_0200fd38P9GameStateiP10GameObject(GameState* gs, int id, struct Obj021539d8* obj);
 SafeAllocator* _Z22GetGlobalValue0215aab8v(void);
 void _ZN8Object3D10InitializeEv(struct Obj021539d8* obj);
 void _ZN8Object3D11MakeVisibleEv(struct Obj021539d8* obj);
@@ -147,8 +147,8 @@ void _Z30InitializeRandomMotion0203c794Pv(struct Stream021539d8* stream);
 char* strstr(const char* text, const char* needle);
 void* memcpy(void* dst, const void* src, unsigned int size);
 int sprintf(char* dst, const char* format, ...);
-void _Z11SetField0xcPii(struct Emitter021539d8* emitter, void* record);
-void _Z11SetField0x8Pii(struct Emitter021539d8* emitter, struct Label021539d8* label);
+void _Z20SetField0xc_02040530Pii(struct Emitter021539d8* emitter, void* record);
+void _Z20SetField0x8_02040520Pii(struct Emitter021539d8* emitter, struct Label021539d8* label);
 void _Z27UpdateElementStream0203f02cP11Obj0203f02ciiPcii(struct Stream021539d8* stream, char* name, SafeAllocator* allocator, struct PairTables021539d8* pair, void* data, unsigned int size);
 void func_0203f138(struct Stream021539d8* stream, int enabled);
 void _Z28SetActiveChildShorts020408c8P12Node020408c8sss(struct Emitter021539d8* emitter, int a, int b, int c);
@@ -157,7 +157,7 @@ void _Z21SetSlotIfIndexBelow32P17SlotArray0203dd10ji(void* list, int index, stru
 int _Z26FindFilesInNarcBySubstringPKvPKcPS0_Pjj(void* narc, const char* text, void** outFile, unsigned int* outSize, unsigned int count);
 void* _Z36DecompressLZ77FileIntoAllocatedSpaceR13SafeAllocatorPKvRj(SafeAllocator* allocator, void* file, unsigned int* outSize);
 void NSBXX_Model_SetPolygonID(NSBXXInternalModel* model, int id);
-void _Z15SetBitsInField4Pjj(char* obj, unsigned int bits);
+void _Z24SetBitsInField4_0203b4d8Pjj(char* obj, unsigned int bits);
 void __clear(unsigned char* flags, int count);
 }
 
@@ -180,7 +180,7 @@ static inline void EnableStream021539d8(struct Emitter021539d8* emitter, int ena
 extern "C" ARM void func_ov001_021539d8(struct Self021539d8* self) {
     GameState* gs = GameState::GetInstance();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
-    struct Global021539d8* global = _Z20GetGlobalPtr021075f4v();
+    struct Global021539d8* global = _Z29GetGlobalPtr021075f4_0203cf4cv();
     char* base = (char*)func_ov017_0218b5b0();
     void* search = func_0202ae18();
     struct LoadNode021539d8* node;
@@ -204,7 +204,7 @@ extern "C" ARM void func_ov001_021539d8(struct Self021539d8* self) {
     for (node = self->loads; node != 0; node = node->next) {
         if (node->type == 1) {
             if (func_0202c508(search) == 0 || !(self->mode & 0x10)) {
-                int current = _Z19GetField0x397cValueP9GameState(gs);
+                int current = _Z28GetField0x397cValue_020100b0P9GameState(gs);
                 if (current != 0) {
                     struct LoadNode021539d8* other;
                     for (other = self->loads; other != 0; other = other->next) {
@@ -249,9 +249,9 @@ extern "C" ARM void func_ov001_021539d8(struct Self021539d8* self) {
             if ((self->mode & 0x10) || !(*obj->status & 1)) {
                 func_ov001_0215ab54(4, 0, node->index);
             } else if (func_0202c508(search) != 0) {
-                func_ov001_0215ab54(5, _Z19GetField0x397cValueP9GameState(gs), node->index);
+                func_ov001_0215ab54(5, _Z28GetField0x397cValue_020100b0P9GameState(gs), node->index);
             } else {
-                int current = _Z18GetField0x3acValueP9GameState(gs);
+                int current = _Z27GetField0x3acValue_020100a8P9GameState(gs);
                 int i;
                 for (i = 3; i > 0; i--) {
                     if (current != i) {
@@ -270,7 +270,7 @@ extern "C" ARM void func_ov001_021539d8(struct Self021539d8* self) {
             break;
         }
         case 1:
-            func_ov001_0215ab54(5, _Z19GetField0x397cValueP9GameState(gs), node->index);
+            func_ov001_0215ab54(5, _Z28GetField0x397cValue_020100b0P9GameState(gs), node->index);
             break;
         case 9:
         case 11:
@@ -285,7 +285,7 @@ extern "C" ARM void func_ov001_021539d8(struct Self021539d8* self) {
             struct Emitter021539d8* emitter = _Z29FindEntryPointerByKey0203df78Pvi(global, node->key);
             if (emitter != 0 && emitter->object != 0) {
                 emitter->object->active = 1;
-                _Z21RegisterCombatantSlotP9GameStateiP10GameObject(gs, node->slot, emitter->object);
+                _Z30RegisterCombatantSlot_0200fd38P9GameStateiP10GameObject(gs, node->slot, emitter->object);
                 emitter->flags |= 0x10000;
                 func_ov001_0215ab54(6, _Z22FindEntryByKey0203dfdcPvi(global, node->key), node->index);
             }
@@ -330,7 +330,7 @@ extern "C" ARM void func_ov001_021539d8(struct Self021539d8* self) {
             _Z24BackupPairTables0207dfacPc(pair);
             _ZN8Object3D8SetScaleEiii(obj, 0x10a, 0x10a, 0x10a);
             _ZN8Object3D21MaybeSetBCFGAnimationEii(obj, 0, 0);
-            _Z21RegisterCombatantSlotP9GameStateiP10GameObject(gs, node->slot, obj);
+            _Z30RegisterCombatantSlot_0200fd38P9GameStateiP10GameObject(gs, node->slot, obj);
             if (node->flags & 1) {
                 func_02012fe4();
                 lighting = LightingManager::GetInstance();
@@ -437,8 +437,8 @@ extern "C" ARM void func_ov001_021539d8(struct Self021539d8* self) {
                 sprintf(label->text, data_ov001_02164bc8, node->name);
             }
             emitter->stream = stream;
-            _Z11SetField0xcPii(emitter, record);
-            _Z11SetField0x8Pii(emitter, label);
+            _Z20SetField0xc_02040530Pii(emitter, record);
+            _Z20SetField0x8_02040520Pii(emitter, label);
             owner = EmptyStub0203d004(global);
             if (emitter->stream != 0) {
                 emitter->stream->owner = owner;
@@ -507,7 +507,7 @@ extern "C" ARM void func_ov001_021539d8(struct Self021539d8* self) {
             _Z24BackupPairTables0207dfacPc(pair);
             _ZN8Object3D8SetScaleEiii(obj, 0x10a, 0x10a, 0x10a);
             _ZN8Object3D21MaybeSetBCFGAnimationEii(obj, 0, 0);
-            _Z21RegisterCombatantSlotP9GameStateiP10GameObject(gs, node->slot, obj);
+            _Z30RegisterCombatantSlot_0200fd38P9GameStateiP10GameObject(gs, node->slot, obj);
             func_ov001_0215ab54(1, node->slot, node->index);
             loader->RemoveTask(node->task);
             node->done = 1;
@@ -538,7 +538,7 @@ extern "C" ARM void func_ov001_021539d8(struct Self021539d8* self) {
             _Z24BackupPairTables0207dfacPc(pair);
             _ZN8Object3D8SetScaleEiii(obj, 0x10a, 0x10a, 0x10a);
             _ZN8Object3D21MaybeSetBCFGAnimationEii(obj, 0, 0);
-            _Z21RegisterCombatantSlotP9GameStateiP10GameObject(gs, node->slot, obj);
+            _Z30RegisterCombatantSlot_0200fd38P9GameStateiP10GameObject(gs, node->slot, obj);
             func_ov001_0215ab54(1, node->slot, node->index);
             loader->RemoveTask(node->task);
             node->done = 1;
@@ -574,7 +574,7 @@ extern "C" ARM void func_ov001_021539d8(struct Self021539d8* self) {
             obj->posY = -0xa000;
             obj->posZ = 0x1000;
             _ZN8Object3D21MaybeSetBCFGAnimationEii(obj, 0, 0);
-            _Z21RegisterCombatantSlotP9GameStateiP10GameObject(gs, node->slot, obj);
+            _Z30RegisterCombatantSlot_0200fd38P9GameStateiP10GameObject(gs, node->slot, obj);
             _ZN8Object3D10MakeHiddenEv(obj);
             func_ov001_0215ab54(1, node->slot, node->index);
             loader->RemoveTask(node->task);
@@ -637,10 +637,10 @@ extern "C" ARM void func_ov001_021539d8(struct Self021539d8* self) {
 
     if (self->mode != 0) {
         if (self->mode & 1) {
-            _Z15SetBitsInField4Pjj(base, 8);
+            _Z24SetBitsInField4_0203b4d8Pjj(base, 8);
         }
         if (self->mode & 2) {
-            _Z15SetBitsInField4Pjj(base, 0x10);
+            _Z24SetBitsInField4_0203b4d8Pjj(base, 0x10);
         }
         if (self->mode & 4) {
             unsigned char used[4];
@@ -663,10 +663,10 @@ extern "C" ARM void func_ov001_021539d8(struct Self021539d8* self) {
             }
         }
         if (self->mode & 8) {
-            _Z15SetBitsInField4Pjj(base, 0x400);
+            _Z24SetBitsInField4_0203b4d8Pjj(base, 0x400);
         }
         if (self->mode & 0x20) {
-            _Z20GetGlobalPtr021075f4v()->flags |= 2;
+            _Z29GetGlobalPtr021075f4_0203cf4cv()->flags |= 2;
         }
     }
 }

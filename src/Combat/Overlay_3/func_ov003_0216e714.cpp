@@ -20,7 +20,7 @@ extern "C" int func_020420e8(void *p, int flag);
 extern "C" void func_0204e038(void *canvas, char *str, int a, int b, int c, int d, int e, int f);
 struct List0204af64;
 void ResetList0204af64(struct List0204af64 *obj);
-void SetWord0x18ClearByte0x1f(unsigned char *obj, int value);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char *obj, int value);
 struct Obj0204b5e8;
 int DispatchViaTable0204b5e8(struct Obj0204b5e8 *obj, int a, int b);
 void CleanInvalidateCacheRange(const void *addr, unsigned int size);
@@ -222,7 +222,7 @@ extern "C" ARM void func_ov003_0216e714(Menu0216e714 *self) {
             ResetList0204af64((struct List0204af64 *) &bg);
             bg.lo = 0;
             bg.hi = 3;
-            SetWord0x18ClearByte0x1f((unsigned char *) &bg, 0);
+            SetWord0x18ClearByte0x1f_0204b11c((unsigned char *) &bg, 0);
             DispatchViaTable0204b5e8((struct Obj0204b5e8 *) &bg, 0, 0);
             BG3CNT = (BG3CNT & 0x43) | 0xf00;
             for (int i = 0; i < numFiles; i++) {

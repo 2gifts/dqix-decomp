@@ -82,10 +82,10 @@ void ClearFirstTwoWords0209a338(struct Pair0209a338*);
 void SetupAndRunBufferedScript0209a348(struct Ctx0209a348*, void*);
 int GetIntAt0x4(struct IntField0x4_0209a670*);
 struct ListEntry* GetEntryByIndex0209a654(struct GetList0209a654*, unsigned int);
-void SetBitInArray0x8ec(unsigned char*, int);
-void ClearBitInArray0x8ec(unsigned char*, int);
-int TestBitInArray0x8ec(unsigned char*, int);
-void* GetFieldAt0x150(unsigned char*);
+void SetBitInArray0x8ec_02083acc(unsigned char*, int);
+void ClearBitInArray0x8ec_02083b28(unsigned char*, int);
+int TestBitInArray0x8ec_02083b00(unsigned char*, int);
+void* GetFieldAt0x150_02053c6c(unsigned char*);
 struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0*, int);
 extern "C" void* func_ov004_0215e47c(void*, int);
 extern "C" void func_ov004_0215ee90(void*);
@@ -109,8 +109,8 @@ extern "C" ARM void func_ov004_0215eb40(void* self) {
 
     func_ov004_0215ee90(data_ov004_02170b90);
     gs = GameState::GetInstance();
-    combatant = (unsigned char*)(void*)GetCombatantWithFlag0x100(gs, *(int*)((char*)&data_ov004_021707e8 + 0x1c));
-    field150 = (unsigned char*)GetFieldAt0x150(combatant);
+    combatant = (unsigned char*)(void*)GetCombatantWithFlag0x100_0200ff1c(gs, *(int*)((char*)&data_ov004_021707e8 + 0x1c));
+    field150 = (unsigned char*)GetFieldAt0x150_02053c6c(combatant);
     if (combatant == 0 || field150 == 0) {
         return;
     }
@@ -119,7 +119,7 @@ extern "C" ARM void func_ov004_0215eb40(void* self) {
     char* script = data_0212633c;
     ClearFirstTwoWords0209a338((struct Pair0209a338*)&ctx);
     SetupAndRunBufferedScript0209a348(&ctx, script);
-    GetPtrField0x2a04(gs);
+    GetPtrField0x2a04_02010828(gs);
 
     container = 0;
     {
@@ -154,9 +154,9 @@ extern "C" ARM void func_ov004_0215eb40(void* self) {
             continue;
         }
         if (found) {
-            SetBitInArray0x8ec(field150, elem->v5);
+            SetBitInArray0x8ec_02083acc(field150, elem->v5);
         } else {
-            ClearBitInArray0x8ec(field150, elem->v5);
+            ClearBitInArray0x8ec_02083b28(field150, elem->v5);
         }
     }
 
@@ -172,7 +172,7 @@ afterSlots:
             continue;
         }
         unsigned short save = entry->key;
-        bool ok = TestBitInArray0x8ec(field150, save);
+        bool ok = TestBitInArray0x8ec_02083b00(field150, save);
         if (!ok) {
             continue;
         }

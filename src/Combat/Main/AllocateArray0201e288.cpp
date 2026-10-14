@@ -10,7 +10,7 @@ struct Foo0201e288 {
 };
 
 // USA: func_0201e288
-ARM void ZoneFeatures::AllocateGrottoTileFeaturePlacementEntries(int count, SafeAllocator* alloc) {
+ARM void ZoneFeatures::AllocateGrottoTileFeaturePlacementEntries_0201e288(int count, SafeAllocator* alloc) {
     struct Foo0201e288* obj = (struct Foo0201e288*)this;
     obj->ptr = alloc->Allocate(count * 0x10);
     obj->idx = 0;

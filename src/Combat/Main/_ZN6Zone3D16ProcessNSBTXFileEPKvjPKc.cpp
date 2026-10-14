@@ -8,7 +8,7 @@ void RestorePairTables0207df90(char*);
 void BackupPairTables0207dfac(char*);
 
 // USA: func_0201445c
-ARM bool Zone3D::ProcessNSBTXFile(const void* pFile, unsigned int fileSize, const char* pName)
+ARM bool Zone3D::ProcessNSBTXFile_0201445c(const void* pFile, unsigned int fileSize, const char* pName)
 {
     SafeAllocator* pAlloc = pAllocator_68_;
     char* pGraph = (char*)unknown_ptr_50_;

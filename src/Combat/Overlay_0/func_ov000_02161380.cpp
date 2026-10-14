@@ -16,23 +16,23 @@ struct Param02048850;
 struct SearchStruct0202c1a4;
 
 extern "C" void* func_0202ae18(void);
-GameObject* GetCombatantWithFlag0x400(GameState* battleStruct, int combatantId);
+GameObject* GetCombatantWithFlag0x400_0200fea4(GameState* battleStruct, int combatantId);
 extern "C" void __clear(void* buf, int n);
 unsigned char* SearchWithLow15Comparator02070fd0(Container02070e60* table, int key);
 Param02048850* SearchWithComparator0206f4f0(BinarySearchByComparatorStruct* table, int key);
-int IsFlag10088Set(S_10088* obj);
+int IsFlag10088Set_02010088(S_10088* obj);
 extern "C" int func_ov000_02161bb8(unsigned char* obj);
 void SetRandomizedShort0x18802048934(void* p, FieldStruct02048934* f, Random* r);
 extern "C" void func_020891cc(void* obj);
 extern "C" void func_02089630(void* dst, void* src, int useExactValue);
-void IncrementByteCounterWrapAt0x12(unsigned char* p);
+void IncrementByteCounterWrapAt0x12_ov000_02161bec(unsigned char* p);
 void ResetNameState02048614(unsigned char* obj);
 extern "C" void func_02049c88(void* obj, void* model);
 void SetupFieldsFromParam02048850(Obj02048850* obj, Param02048850* param);
 void BuildName020488ec(char* obj);
-void ClearSubstructByte0x56(unsigned char* obj);
-void RegisterCombatantSlot(GameState* battleStruct, int id, GameObject* combatant);
-int CheckField0NonZero(int* obj);
+void ClearSubstructByte0x56_02049f3c(unsigned char* obj);
+void RegisterCombatantSlot_0200fd38(GameState* battleStruct, int id, GameObject* combatant);
+int CheckField0NonZero_0202b7d8(int* obj);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* obj);
 
 struct Stats02161380 {
@@ -169,7 +169,7 @@ extern "C" ARM int func_ov000_02161380(Scene02161380* scene, int kind, int group
     infos = (BinarySearchByComparatorStruct*)((unsigned char*)scene->roster + 0x678);
     id = -1;
     for (int i = 0; i < 8; i++) {
-        if (GetCombatantWithFlag0x400(game, i + 0xc0) == 0) {
+        if (GetCombatantWithFlag0x400_0200fea4(game, i + 0xc0) == 0) {
             id = (short)(i + 0xc0);
             break;
         }
@@ -257,11 +257,11 @@ extern "C" ARM int func_ov000_02161380(Scene02161380* scene, int kind, int group
 
     for (pass = 0; pass < 2; pass++) {
         for (int j = 0; j < f->groups[group].count; j++) {
-            c = (Combatant02161380*)GetCombatantWithFlag0x400(game, f->groups[group].ids[j] + 0xc0);
+            c = (Combatant02161380*)GetCombatantWithFlag0x400_0200fea4(game, f->groups[group].ids[j] + 0xc0);
             if (!c) continue;
             unsigned char flags[2];
             flags[0] = (c->stats->flags & 0x2000) != 0;
-            flags[1] = IsFlag10088Set((S_10088*)c);
+            flags[1] = IsFlag10088Set_02010088((S_10088*)c);
             if (flags[pass] == 0) continue;
             if (c->active != 0) continue;
 
@@ -284,7 +284,7 @@ extern "C" ARM int func_ov000_02161380(Scene02161380* scene, int kind, int group
             c->slot = slot;
             c->active = 1;
             f->pairs[pair].slots |= 1 << c->slot;
-            IncrementByteCounterWrapAt0x12((unsigned char*)&f->pairs[pair]);
+            IncrementByteCounterWrapAt0x12_ov000_02161bec((unsigned char*)&f->pairs[pair]);
             f->pairs[pair].slots &= ~(1 << oldSlot);
             return (short)(f->groups[group].ids[j] + 0xc0);
         }
@@ -323,16 +323,16 @@ extern "C" ARM int func_ov000_02161380(Scene02161380* scene, int kind, int group
             nc->slot = slot;
             nc->active = 1;
             nc->object.MakeHidden();
-            ClearSubstructByte0x56((unsigned char*)nc);
+            ClearSubstructByte0x56_02049f3c((unsigned char*)nc);
             f->pairs[pair].slots |= 1 << nc->slot;
-            IncrementByteCounterWrapAt0x12(slots);
-            RegisterCombatantSlot(game, id, (GameObject*)nc);
+            IncrementByteCounterWrapAt0x12_ov000_02161bec(slots);
+            RegisterCombatantSlot_0200fd38(game, id, (GameObject*)nc);
             f->groups[group].ids[f->groups[group].count] = index;
             f->groups[group].count++;
             f->groups[group].used++;
             f->total++;
             f->alive++;
-            if (CheckField0NonZero((int*)search)) {
+            if (CheckField0NonZero_0202b7d8((int*)search)) {
                 GetSearchStructCurrentArrEntry((SearchStruct0202c1a4*)search);
             }
             return id;

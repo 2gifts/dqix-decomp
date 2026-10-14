@@ -6,7 +6,7 @@ struct Neg1SearchEntry {
 };
 
 // USA: func_020daa20
-ARM struct Neg1SearchEntry* FindEntryWithField8Neg1(unsigned char* obj) {
+ARM struct Neg1SearchEntry* FindEntryWithField8Neg1_020daa20(unsigned char* obj) {
     struct Neg1SearchEntry* e = (struct Neg1SearchEntry*)(obj + 0x14);
     unsigned char i = 0;
     while (i < 4) {

@@ -4,8 +4,8 @@
 struct TagValueEntry020e38e4 { unsigned int val; unsigned char tag; };
 struct TagValueEntry020e385c { unsigned int val; unsigned char tag; };
 
-void* GetData02153660(void);
-void* GetData02100044(void);
+void* GetData02153660_020e3808(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c508(void* state);
 int FindEntryIndexByTagAndValue(struct TagValueEntry020e38e4* entries, int tag, int val);
@@ -14,8 +14,8 @@ extern "C" void func_0205e330(void* a, void* b, int c);
 
 // USA: func_ov017_021cebcc  (semantic: DispatchAndCopyEntry_021cebcc)
 extern "C" ARM void func_ov017_021cebcc(int kind, int a1, int a2) {
-	struct TagValueEntry020e38e4* entries = (struct TagValueEntry020e38e4*)GetData02153660();
-	void* p = GetData02100044();
+	struct TagValueEntry020e38e4* entries = (struct TagValueEntry020e38e4*)GetData02153660_020e3808();
+	void* p = GetData02100044_0202ae24();
 
 	unsigned char buf[0x14];
 	buf[0] = 0x34;

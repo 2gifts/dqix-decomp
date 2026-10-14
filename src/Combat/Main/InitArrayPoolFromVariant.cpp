@@ -16,7 +16,7 @@ struct ArrayPoolContext02108efc {
 extern ArrayPoolContext02108efc data_02108efc;
 
 // USA: func_02089b64
-ARM int InitArrayPoolFromVariant(struct Variant02030b0c* variant) {
+ARM int InitArrayPoolFromVariant_02089b64(struct Variant02030b0c* variant) {
     AllocateArrayPool02089ea0(data_02108efc.pool, data_02108efc.alloc, (short)((Script::Parameter*)variant)->ToInt());
     return 1;
 }

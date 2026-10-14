@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 extern "C" void __clear(void* buf, int n);
-extern unsigned char CopyOutRegion0x5718(char* obj, void* dst);
+extern unsigned char CopyOutRegion0x5718_02011494(char* obj, void* dst);
 extern "C" void func_ov017_021d6134(void*, int);
 
 #if defined(jpn)
@@ -21,11 +21,11 @@ ARM int CountCombatantsByStatus1_021ea46c(void* obj) {
 	GameState* bs = GameState::GetInstance();
 	unsigned char buf[4];
 	__clear(buf, 4);
-	unsigned char len = CopyOutRegion0x5718((char*)bs, buf);
+	unsigned char len = CopyOutRegion0x5718_02011494((char*)bs, buf);
 	int count = 0;
 	for (int i = 0; i < len; i++) {
 		unsigned char id = buf[i];
-		struct Obj150_021ea46c* c = (struct Obj150_021ea46c*)GetCombatantWithFlag0x100(bs, id);
+		struct Obj150_021ea46c* c = (struct Obj150_021ea46c*)GetCombatantWithFlag0x100_0200ff1c(bs, id);
 		if (c) {
 			int val = *(int*)(c->ptr150 + regionalOffset0);
 			if ((unsigned int)val <= 9) {

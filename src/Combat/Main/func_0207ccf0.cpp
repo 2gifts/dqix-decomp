@@ -11,9 +11,9 @@ struct Obj0207d200;
 
 extern struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0* c, int key);
 extern void* InitAllocatorAndLoadGp2File0207d6dc(SafeAllocator* self, int param1, int param2);
-GameObject* GetCombatantWithFlag0x100(GameState* gs, int flags);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* gs, int flags);
 int CheckField0x56bLowNibble(struct Obj02061bd8* obj);
-unsigned char* GetFieldAt0x150(unsigned char* combatant);
+unsigned char* GetFieldAt0x150_02053c6c(unsigned char* combatant);
 extern "C" int func_0207cf30(void* self, short key, int amount, unsigned char flag);
 extern "C" void func_0207cc18(void* self, struct Element020de650* elem);
 extern "C" int func_0207d134(void* self, short key, int amount);
@@ -51,10 +51,10 @@ extern "C" ARM int func_0207ccf0(struct Obj0207ccf0* self, short key, int amount
     int ret = -1;
     struct Entry0207ccf0* elem = (struct Entry0207ccf0*)FindElementByKey020dedd0(self->container, key);
     if (elem != NULL) {
-        struct Combatant0207ccf0* combatant = (struct Combatant0207ccf0*)GetCombatantWithFlag0x100(GameState::GetInstance(), flags);
+        struct Combatant0207ccf0* combatant = (struct Combatant0207ccf0*)GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), flags);
         if (combatant == NULL) return -1;
         if (CheckField0x56bLowNibble((struct Obj02061bd8*)combatant)) return -1;
-        short* slots = (short*)(GetFieldAt0x150((unsigned char*)combatant) + 0x454);
+        short* slots = (short*)(GetFieldAt0x150_02053c6c((unsigned char*)combatant) + 0x454);
         int count = 0;
         if (a && c && elem->flag25) {
             if (func_0207cf30(self, key, amount, b)) {

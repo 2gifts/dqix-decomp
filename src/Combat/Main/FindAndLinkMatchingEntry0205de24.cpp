@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 struct Obj5d594;
-void GetNibbles(struct Obj5d594* obj, unsigned char* outLow, unsigned char* outHigh);
+void GetNibbles_0205d594(struct Obj5d594* obj, unsigned char* outLow, unsigned char* outHigh);
 
 struct ElemTarget0205de24 {
     char pad0[0x4];
@@ -29,7 +29,7 @@ ARM void FindAndLinkMatchingEntry0205de24(struct Struct0205de24* obj, unsigned c
     unsigned char low, high;
     while (i < obj->fieldB2) {
         entry = obj->field98 + i * 0x20;
-        GetNibbles((struct Obj5d594*)entry, &low, &high);
+        GetNibbles_0205d594((struct Obj5d594*)entry, &low, &high);
         if (low == keyLow && high == keyHigh) {
             target->matched = entry;
             return;

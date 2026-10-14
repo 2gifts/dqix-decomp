@@ -23,7 +23,7 @@ enum { kScenePrefix = 0x228, kSceneExtraPadding = 0x464 - 0x39c, kGlobalPrefix =
 extern "C" void func_ov003_021602bc(void* self);
 extern "C" void func_ov003_021672e4(void* a, int b, int c);
 struct Struct205563c;
-void ClearSevenWords(Struct205563c*);
+void ClearSevenWords_0205563c(Struct205563c*);
 extern "C" void func_02032e58(void* a);
 extern "C" void func_0207f84c(void* a);
 extern "C" void func_0204c684(void* a);
@@ -37,7 +37,7 @@ extern "C" void func_02081224(void* a, int b);
 extern "C" void* func_0205ec34();
 struct List0204af64;
 void ResetList0204af64(List0204af64*);
-void SetWord0x18ClearByte0x1f(unsigned char*, int);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char*, int);
 struct AllocTarget0204b12c;
 void AllocateAndClearBuffer0204b12c(AllocTarget0204b12c*, SafeAllocator*);
 struct Obj0204b5e8;
@@ -53,7 +53,7 @@ void* FindRecordByIndex(Rec020467f0*, int, void**, int*);
 struct Obj0207f914;
 void SetFieldsFromFormattedValue0207f914(Obj0207f914*, int, int, int);
 void* GetGlobalField0x1c020421a0();
-void DispatchEntryOp0x8(void* a, int b);
+void DispatchEntryOp0x8_0208108c(void* a, int b);
 void SetEntryValueAndFlag02081058(void* a, int b, int c);
 void SetSublistEntryField14LowBits_02080798(void* a, int b, int c);
 struct Struct0205a198;
@@ -64,13 +64,13 @@ struct EntryManager020e2490;
 void InitEntryManager020e2490(EntryManager020e2490*, int, int, void*, SafeAllocator*, int, unsigned char);
 struct List0204b0e8;
 void FlushAndDispatchList0204b0e8(List0204b0e8*, void*);
-void WrapAddByteField0x22(int, char*, unsigned int, int);
+void WrapAddByteField0x22_0205aed0(int, char*, unsigned int, int);
 struct Manager0207f7f0;
 struct Node0207f7f0;
 void InitNodeChain0207f7f0(Manager0207f7f0*, Node0207f7f0*, int);
 unsigned char CheckField0AndBattleState_02160b50(void* a);
-int TestBitInByteArray(int, unsigned char*, int);
-void SetOrClearBitInArray(void*, unsigned char*, int, int);
+int TestBitInByteArray_0206dfb0(int, unsigned char*, int);
+void SetOrClearBitInArray_0206df6c(void*, unsigned char*, int, int);
 extern "C" void ColorEffect_ConfigureAlphaBlend(unsigned int* out, unsigned char a, unsigned char b, unsigned char c, int d);
 
 extern char data_ov003_0217fff0[];
@@ -193,7 +193,7 @@ extern "C" ARM void func_ov003_021615bc(Scene021615bc* self) {
         self->p394 = (void**)self->a228.Allocate(0x10);
         func_ov003_021602bc(self);
         func_ov003_021672e4(self->p318, 0, -1);
-        ClearSevenWords((Struct205563c*)self->p31c);
+        ClearSevenWords_0205563c((Struct205563c*)self->p31c);
         func_02032e58(self->p320);
         func_0207f84c(self->p324);
         for (int i = 0; i < 3; i++) {
@@ -233,7 +233,7 @@ extern "C" ARM void func_ov003_021615bc(Scene021615bc* self) {
         self->a264.Reset();
         for (i = 0; i < 3; i++) {
             l = self->p328 + i;
-            SetWord0x18ClearByte0x1f((unsigned char*)l, 0);
+            SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)l, 0);
             k = data_ov003_0217f454[i];
             l->lo = 0;
             l->hi = k;
@@ -330,8 +330,8 @@ extern "C" ARM void func_ov003_021615bc(Scene021615bc* self) {
         Mgr* m = self->p324;
         m->b3b = 0x12;
         m->b3c = 0x10;
-        DispatchEntryOp0x8(m, 0);
-        DispatchEntryOp0x8(m, 1);
+        DispatchEntryOp0x8_0208108c(m, 0);
+        DispatchEntryOp0x8_0208108c(m, 1);
         short* p = data_ov003_0217f46c;
         for (;;) {
             if (*p < 0) {
@@ -378,7 +378,7 @@ extern "C" ARM void func_ov003_021615bc(Scene021615bc* self) {
                 void* rec = FindRecordByIndex((Rec020467f0*)data, i, &out, &idx);
                 func_0205a528(self->x334, rec, idx, &self->a2a0);
             }
-            WrapAddByteField0x22((int)self->x334, (char*)self->p388, 0x19, 0x40);
+            WrapAddByteField0x22_0205aed0((int)self->x334, (char*)self->p388, 0x19, 0x40);
             loader->RemoveTask(self->taskId);
             self->taskId = -1;
             self->step = self->step + 1;
@@ -453,8 +453,8 @@ extern "C" ARM void func_ov003_021615bc(Scene021615bc* self) {
                 flag = 0;
             }
             if (flag != 0 && self->b49e != 2) {
-                if (TestBitInByteArray((int)save, (unsigned char*)(save + 0x8c), 0x77e) == 0) {
-                    SetOrClearBitInArray(save, (unsigned char*)(save + 0x8c), 0x77e, 1);
+                if (TestBitInByteArray_0206dfb0((int)save, (unsigned char*)(save + 0x8c), 0x77e) == 0) {
+                    SetOrClearBitInArray_0206df6c(save, (unsigned char*)(save + 0x8c), 0x77e, 1);
                     self->h484 = 0x4b;
                     self->h486 = x;
                 }

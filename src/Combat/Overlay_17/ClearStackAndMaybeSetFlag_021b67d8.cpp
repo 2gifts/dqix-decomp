@@ -7,7 +7,7 @@ enum {regionalOffset0=0x6fc, regionalOffset1=0x734, regionalOffset2=0xcc};
 #include "Memory/SafeAllocator.h"
 #include "Memory/AllocatorUnion.h"
 
-void PopStack0AndTrigger(int flag);
+void PopStack0AndTrigger_020a1e54(int flag);
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
 extern "C" void func_020a0c0c(void);
 extern "C" void* func_ov017_0218b5b0(void);
@@ -35,7 +35,7 @@ struct Ctx021b67d8 {
 extern "C" ARM void func_ov017_021b67d8(struct Obj021b67d8* self) {
     if (self->field24 != NULL) {
         self->field24 = NULL;
-        PopStack0AndTrigger(1);
+        PopStack0AndTrigger_020a1e54(1);
     }
 
     void* p = self->allocator.GetSignedAllocator();

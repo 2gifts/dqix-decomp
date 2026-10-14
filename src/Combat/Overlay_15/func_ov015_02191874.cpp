@@ -19,7 +19,7 @@ struct S02190c2c
     ViewObject* selected_;
 };
 
-int TestFlagMask(unsigned short* pad, int buttons);
+int TestFlagMask_02012430(unsigned short* pad, int buttons);
 void Vector3fixMultiplyScalar(const Vector3i* in, int scale, Vector3i* out);
 void AccumulateOffsetVec3_0218f44c(Obj0218f44c* object, Vec3 offset);
 extern "C" void func_ov015_0218f5f8(ViewObject* object, int angle);
@@ -34,26 +34,26 @@ extern "C" ARM void func_ov015_02191874(S02190c2c* self)
     GameState::GetInstance();
     Vector3fix move = {0};
     Matrix3x3 view;
-    if (TestFlagMask(&data_02114e30, 0x40))
+    if (TestFlagMask_02012430(&data_02114e30, 0x40))
         move.z = -0x199;
-    if (TestFlagMask(&data_02114e30, 0x80))
+    if (TestFlagMask_02012430(&data_02114e30, 0x80))
         move.z = 0x199;
-    if (TestFlagMask(&data_02114e30, 0x10))
+    if (TestFlagMask_02012430(&data_02114e30, 0x10))
         move.x = 0x199;
-    if (TestFlagMask(&data_02114e30, 0x20))
+    if (TestFlagMask_02012430(&data_02114e30, 0x20))
         move.x = -0x199;
     memcpy(&view, RenderConfig::GetInverseViewMatrix(), sizeof(view));
     Mat3x3_ApplyToVector(&move, &view, &move);
     move.y = 0;
     Vector3fix_Normalize(&move, &move);
     Vector3fixMultiplyScalar(&move, 0x199, &move);
-    if (TestFlagMask(&data_02114e30, 0x400))
+    if (TestFlagMask_02012430(&data_02114e30, 0x400))
         move.y += 0x199;
-    if (TestFlagMask(&data_02114e30, 0x800))
+    if (TestFlagMask_02012430(&data_02114e30, 0x800))
         move.y -= 0x199;
     AccumulateOffsetVec3_0218f44c((Obj0218f44c*)self->selected_, *(Vec3*)&move);
-    if (TestFlagMask(&data_02114e30, 0x200))
+    if (TestFlagMask_02012430(&data_02114e30, 0x200))
         func_ov015_0218f5f8(self->selected_, 0x199);
-    if (TestFlagMask(&data_02114e30, 0x100))
+    if (TestFlagMask_02012430(&data_02114e30, 0x100))
         func_ov015_0218f5f8(self->selected_, -0x199);
 }

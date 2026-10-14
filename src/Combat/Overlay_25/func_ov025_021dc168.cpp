@@ -5,7 +5,7 @@
 extern "C" int func_ov000_0215e9fc(int a, short* buf, int max, int start);
 extern "C" int func_ov000_0215ec1c(int a, short* buf, int max, int start);
 void* GetSlotPtr02160f20(void* obj);
-int CheckSubstructFlag0x10(unsigned char* obj);
+int CheckSubstructFlag0x10_0204936c(unsigned char* obj);
 extern "C" void func_ov025_021dc220(void* obj);
 
 struct ListNode021dc168 {
@@ -35,7 +35,7 @@ struct Obj021dc168 {
 extern "C" ARM void func_ov025_021dc168(struct Obj021dc168* obj) {
     GameState* bs = GameState::GetInstance();
     int field29c = obj->field29c;
-    GetField0x3b0Value(bs);
+    GetField0x3b0Value_020100bc(bs);
     func_ov017_0218b5b0();
 
     short buf[12];
@@ -49,7 +49,7 @@ extern "C" ARM void func_ov025_021dc168(struct Obj021dc168* obj) {
         int ready = 1;
         while (node != NULL) {
             GameObject* combatant = bs->GetCombatantByIndex(node->id);
-            if (combatant != NULL && CheckSubstructFlag0x10((unsigned char*)combatant)) {
+            if (combatant != NULL && CheckSubstructFlag0x10_0204936c((unsigned char*)combatant)) {
                 ready = 0;
                 break;
             }

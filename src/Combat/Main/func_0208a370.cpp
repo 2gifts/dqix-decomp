@@ -4,7 +4,7 @@
 struct SelectionContext0208a370 { Random* random; };
 struct SelectionTable0208a370 { char pad[0x18]; unsigned short values[6]; };
 struct Combatant0208a370 { char pad[0x148]; SelectionTable0208a370* table; };
-GameObject* GetCombatantWithFlag0x400(GameState*, int);
+GameObject* GetCombatantWithFlag0x400_0200fea4(GameState*, int);
 extern "C" int func_0208a03c(SelectionContext0208a370*, unsigned char, int, int*, int);
 extern "C" int func_ov000_02154a04(Random*, int, int, int);
 extern unsigned char data_020e8caa[];
@@ -14,7 +14,7 @@ extern "C" ARM int func_0208a370(SelectionContext0208a370* ctx, int category, in
     int index;
     SelectionTable0208a370* table;
     int previous;
-    table = ((Combatant0208a370*)GetCombatantWithFlag0x400(GameState::GetInstance(), combatant))->table;
+    table = ((Combatant0208a370*)GetCombatantWithFlag0x400_0200fea4(GameState::GetInstance(), combatant))->table;
     weights = data_020e8caa + category * 6;
     int roll = NextRandomMax(ctx->random, 256) + 1;
     for (index = 0; index < 6; index++) {

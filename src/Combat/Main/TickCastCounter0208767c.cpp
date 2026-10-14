@@ -3,7 +3,7 @@
 #include "Util/Random.h"
 
 int CheckField0x14FiveFlagsClear0208810c(unsigned char* obj);
-void ResetAndSetFlag0x1000000(void* obj);
+void ResetAndSetFlag0x1000000_02088150(void* obj);
 
 // USA: func_0208767c  (semantic: TickCastCounter0208767c)
 extern "C" ARM int func_0208767c(unsigned char* obj, struct Random* rng) {
@@ -16,7 +16,7 @@ extern "C" ARM int func_0208767c(unsigned char* obj, struct Random* rng) {
     if (++obj[0x24] >= 4) {
         if (CheckField0x14FiveFlagsClear0208810c(obj)) {
             obj[0x24] = 4;
-            ResetAndSetFlag0x1000000(obj);
+            ResetAndSetFlag0x1000000_02088150(obj);
         }
     }
     return obj[0x24];

@@ -36,7 +36,7 @@ struct Rec021e2f54* SearchBothTables02079e2c(char* p, int key);
 void* GetNodeAtIndex021600f8(struct List021600f8* list, int index);
 extern "C" short func_ov000_0215ffa0(void* node);
 extern "C" void func_ov025_021ecc54(void* queue, struct Event021e2f54* ev);
-int ClassifyField0x81fe(char* base);
+int ClassifyField0x81fe_ov000_0215fc60(char* base);
 
 static inline int IsSpecial021e2f54(void* node) {
     return func_ov000_0215ffa0(node) >= 0xc0 && func_ov000_0215ffa0(node) <= 0xc7;
@@ -45,7 +45,7 @@ static inline int IsSpecial021e2f54(void* node) {
 // USA: func_ov025_021e2f54
 extern "C" ARM void func_ov025_021e2f54(struct Event021e2f54* ev, short* list, char* world) {
     struct Ctx021e2f54* ctx = data_ov025_021ef988.ctx;
-    struct Rec021e2f54* rec = SearchBothTables02079e2c((char*)GetData02108e10(), *list);
+    struct Rec021e2f54* rec = SearchBothTables02079e2c((char*)GetData02108e10_020797dc(), *list);
     void* node = GetNodeAtIndex021600f8((struct List021600f8*)list, 0);
     if (rec != 0 && node != 0) {
         if (IsSpecial021e2f54(node) && rec->kind == 4) {
@@ -59,7 +59,7 @@ extern "C" ARM void func_ov025_021e2f54(struct Event021e2f54* ev, short* list, c
     } else {
         func_ov025_021ecc54(ctx->queue, ev);
     }
-    if (ClassifyField0x81fe(world) != 0) {
+    if (ClassifyField0x81fe_ov000_0215fc60(world) != 0) {
         data_ov025_021ef988.ctx->flags |= 0x10;
     }
 }

@@ -22,7 +22,7 @@ struct ChainRoot {
 };
 
 // USA: func_020479fc
-ARM int GetChainedTableByte(struct ChainRoot* root) {
+ARM int GetChainedTableByte_020479fc(struct ChainRoot* root) {
     struct ChainEntryB* entryB;
     if (!root->flag) {
         return 0;

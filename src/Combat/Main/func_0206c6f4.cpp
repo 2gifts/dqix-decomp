@@ -29,7 +29,7 @@ struct Data0206c6f4 {
 extern Data0206c6f4 data_02108cec;
 // USA: func_0206c6f4
 extern "C" ARM int func_0206c6f4(Script::Parameter* p) {
-    Node0206c6f4* node = (Node0206c6f4*)FindNodeByByteId(data_02108cec.head, p->ToInt());
+    Node0206c6f4* node = (Node0206c6f4*)FindNodeByByteId_0206db20(data_02108cec.head, p->ToInt());
     if (!node) return 0;
     while (node) {
         if (node->id == data_02108cec.id) break;

@@ -28,21 +28,21 @@ struct EventInfo021c7b8c {
     unsigned short eventId;
 };
 extern "C" void* func_ov017_021b8478(void*);
-void* GetData02100044();
-int TestBitAt0x34(unsigned char*, unsigned int);
+void* GetData02100044_0202ae24();
+int TestBitAt0x34_020a35e0(unsigned char*, unsigned int);
 extern "C" void func_0205e330(void*, StatMessage021c7b8c*, int);
 
 // USA: func_ov017_021c7b8c
 extern "C" ARM void func_ov017_021c7b8c() {
     GameState* game = GameState::GetInstance();
     EventInfo021c7b8c* event = (EventInfo021c7b8c*)func_ov017_021b8478(func_ov017_0218b5b0()->unknown_ptr_3718);
-    void* queue = GetData02100044();
+    void* queue = GetData02100044_0202ae24();
     StatPayload021c7b8c* payload;
     StatMessage021c7b8c message;
     payload = &message.payload;
     message.kind = 0x73;
     for (int index = 0; index < 4; ++index) {
-        if (!TestBitAt0x34((unsigned char*)event, index & 255)) continue;
+        if (!TestBitAt0x34_020a35e0((unsigned char*)event, index & 255)) continue;
         GameObject* combatant = game->GetCombatantByIndex(index);
         if (!combatant || !((StatSource021c7b8c*)combatant->currentStats_)->active) continue;
         payload->eventId = event->eventId;

@@ -49,12 +49,12 @@ struct Header0218dfd8 {
 };
 
 extern "C" ActorListManager* func_02012fe4(void);
-ActorEntry* GetActorEntryByIndex(ActorListManager* manager, int index);
-unsigned int IsFlag0x1ceBit0x8Set(unsigned char* obj);
+ActorEntry* GetActorEntryByIndex_0201777c(ActorListManager* manager, int index);
+unsigned int IsFlag0x1ceBit0x8Set_02039dcc(unsigned char* obj);
 struct Vec3;
 short GetAbsAngleDeltaBetween_021a4754(Vec3*, int, Vec3*);
-int IsField0Null(void** obj);
-int CheckSubstructByte0x7cPositive(signed char* obj);
+int IsField0Null_02046b08(void** obj);
+int CheckSubstructByte0x7cPositive_020535c8(signed char* obj);
 void InitObj0219a674(unsigned char* self);
 extern "C" void func_ov017_0219b33c(GameResources* res, Event0218dfd8* event);
 
@@ -67,7 +67,7 @@ extern "C" ARM int func_ov017_0218dfd8(Actor0218dfd8* self) {
     Vector3fix pos = self->obj3D.position_;
     int moved = 0;
     ActorListManager* manager = func_02012fe4();
-    ActorEntry* entry = GetActorEntryByIndex(manager, 0);
+    ActorEntry* entry = GetActorEntryByIndex_0201777c(manager, 0);
     if (entry == NULL) {
         return 0;
     }
@@ -88,7 +88,7 @@ extern "C" ARM int func_ov017_0218dfd8(Actor0218dfd8* self) {
         b.y = 0;
         int dist = Vector3fix_Distance(&a, &b);
         if (dist < pushRadius) {
-            if (!IsFlag0x1ceBit0x8Set((unsigned char*)self)) {
+            if (!IsFlag0x1ceBit0x8Set_02039dcc((unsigned char*)self)) {
                 Vector3fix dir;
                 Vector3fix_Subtract(&a, &b, &dir);
                 Vector3fix_Normalize(&dir, &dir);
@@ -110,8 +110,8 @@ extern "C" ARM int func_ov017_0218dfd8(Actor0218dfd8* self) {
         }
     }
     void** list = (void**)res->unknown_ptr_array_36fc[0];
-    if (best != NULL && IsField0Null(list) != 0 &&
-        CheckSubstructByte0x7cPositive((signed char*)self) == 0 && !(self->flags & 0x40) && bestAngle < 0xc91) {
+    if (best != NULL && IsField0Null_02046b08(list) != 0 &&
+        CheckSubstructByte0x7cPositive_020535c8((signed char*)self) == 0 && !(self->flags & 0x40) && bestAngle < 0xc91) {
         Event0218dfd8 event;
         InitObj0219a674((unsigned char*)&event);
         event.tag = 5;

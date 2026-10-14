@@ -10,7 +10,7 @@ struct BoundedArray {
     unsigned short items[0xc];
     unsigned short count;
 };
-void AppendHalfwordCapped(struct BoundedArray* s, unsigned short value);
+void AppendHalfwordCapped_0209c08c(struct BoundedArray* s, unsigned short value);
 
 struct MessageState0209bed8 {
     struct BoundedArray* text;
@@ -55,10 +55,10 @@ extern "C" ARM bool func_0209bed8(struct Variant02030b0c* args, int argCount) {
             unsigned short high = (unsigned short)(value >> 16);
             unsigned short low = (unsigned short)value;
             if (high != 0) {
-                AppendHalfwordCapped(data_02109bc8->text, high);
+                AppendHalfwordCapped_0209c08c(data_02109bc8->text, high);
             }
             if (low != 0) {
-                AppendHalfwordCapped(data_02109bc8->text, low);
+                AppendHalfwordCapped_0209c08c(data_02109bc8->text, low);
             }
         }
     }

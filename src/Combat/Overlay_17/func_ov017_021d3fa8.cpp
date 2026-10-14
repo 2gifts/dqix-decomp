@@ -23,7 +23,7 @@ struct PartyOrder021d3fa8 { signed char members[4]; };
 extern const PartyOrder021d3fa8 data_ov017_021d6cfc, data_ov017_021d6d08;
 extern const char data_ov017_021d82b1[], data_ov017_021d82bb[], data_ov017_021d82c6[];
 extern "C" void func_020dc548(signed char, PartyOrder021d3fa8*, signed char*);
-void SetFlag0x1ceBit0x4(unsigned char*);
+void SetFlag0x1ceBit0x4_02039d48(unsigned char*);
 void ClearBytesAndZeroBlock02039d24(unsigned char*);
 extern "C" int func_0202c540(void*);
 void CallHelperWithBuf_021907dc(int, int, int, int, int);
@@ -34,7 +34,7 @@ void SetByte0xbeShiftPrev(Bytes02033b88*, int);
 extern "C" ARM void func_ov017_021d3fa8(int unused, AnimationPacket021d3fa8* packet, GameState* game, void* globals, void* search) {
     GameObject* protagonist = game->GetUnknownGameObject();
     GameObject* member = game->GetPartyMemberByIndex(packet->index);
-    SubBlock02038508* state = GetFieldPtrAt0x26c(member);
+    SubBlock02038508* state = GetFieldPtrAt0x26c_020399a8(member);
     unsigned short mode = packet->mode;
     int reset = packet->reset;
     int command = packet->command;
@@ -53,7 +53,7 @@ extern "C" ARM void func_ov017_021d3fa8(int unused, AnimationPacket021d3fa8* pac
             if (!(flags & 2)) {
                 other->obj3D_.position_ = member->obj3D_.position_;
                 other->obj3D_.SetInheritedAlpha(31);
-                SetFlag0x1ceBit0x4((unsigned char*)other);
+                SetFlag0x1ceBit0x4_02039d48((unsigned char*)other);
             }
             ClearBytesAndZeroBlock02039d24((unsigned char*)other);
         }
@@ -77,7 +77,7 @@ extern "C" ARM void func_ov017_021d3fa8(int unused, AnimationPacket021d3fa8* pac
                     other->obj3D_.position_ = member->obj3D_.position_;
                     other->obj3D_.SetInheritedAlpha(31);
                     SetByteIfChanged02033b68((Obj02033b68*)other, 0);
-                    SetFlag0x1ceBit0x4((unsigned char*)other);
+                    SetFlag0x1ceBit0x4_02039d48((unsigned char*)other);
                 }
                 ClearBytesAndZeroBlock02039d24((unsigned char*)other);
             }

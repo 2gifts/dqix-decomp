@@ -1,7 +1,6 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-
 struct Struct021707d8_0215aaf0 { char pad[8]; unsigned char* ptr; };
 extern Struct021707d8_0215aaf0 data_ov004_021707d8;
 
@@ -15,8 +14,8 @@ extern "C" Stat02156ed0_0215aaf0* func_ov004_02156ed0(void* obj, int key);
 
 int HasFlag101_021571d8(int a);
 
-void* GetPointerFromArray0xbd0(unsigned char* obj, unsigned int index);
-void* GetPointerAt0xbf0(void* base, unsigned int index);
+void* GetPointerFromArray0xbd0_0207c5f8(unsigned char* obj, unsigned int index);
+void* GetPointerAt0xbf0_0207c60c(void* base, unsigned int index);
 
 struct Bits2_0215aaf0 { unsigned int low12 : 12; unsigned int field2 : 2; unsigned int rest : 18; };
 struct Element020de650 { char pad[8]; Bits2_0215aaf0 bits; };
@@ -25,8 +24,8 @@ struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0* c, in
 extern "C" void func_ov011_021848a0(void* obj, int val);
 
 extern "C" int func_ov004_02157128(void* obj);
-GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
-int GetFieldAt0x150(unsigned char* obj);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* battleStruct, int combatantId);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 
 int EvalOrDispatch020de194(void* s);
 
@@ -34,7 +33,7 @@ int EvalOrDispatch020de194(void* s);
 extern "C" ARM int func_ov004_0215aaf0(void* obj) {
     GameState* bs = GameState::GetInstance();
     struct Container020dedd0* node = func_ov004_02156fd4(obj, 5);
-    unsigned char* ptr2a04 = (unsigned char*)GetPtrField0x2a04(bs);
+    unsigned char* ptr2a04 = (unsigned char*)GetPtrField0x2a04_02010828(bs);
     if (!ptr2a04) return 0;
 
     int idx = DispatchNodeIfType7_02156e2c(obj, 0x63);
@@ -46,8 +45,8 @@ extern "C" ARM int func_ov004_0215aaf0(void* obj) {
     struct Element020de650* elem;
 
     if (HasFlag101_021571d8((int)obj)) {
-        unsigned char* keyArr = (unsigned char*)GetPointerFromArray0xbd0(ptr2a04 + 0x1d4, *(unsigned int*)(data_ov004_021707d8.ptr + 0x74));
-        unsigned char* byteArr = (unsigned char*)GetPointerAt0xbf0(ptr2a04 + 0x1d4, *(unsigned int*)(data_ov004_021707d8.ptr + 0x74));
+        unsigned char* keyArr = (unsigned char*)GetPointerFromArray0xbd0_0207c5f8(ptr2a04 + 0x1d4, *(unsigned int*)(data_ov004_021707d8.ptr + 0x74));
+        unsigned char* byteArr = (unsigned char*)GetPointerAt0xbf0_0207c60c(ptr2a04 + 0x1d4, *(unsigned int*)(data_ov004_021707d8.ptr + 0x74));
         elem = FindElementByKey020dedd0(node, ((short*)keyArr)[r5]);
         if (elem->bits.field2 == 0) {
             func_ov011_021848a0(obj, 0x3a1);
@@ -67,9 +66,9 @@ extern "C" ARM int func_ov004_0215aaf0(void* obj) {
             unsigned char* p100 = ptr2a04 + r5 + 0x100;
             data_ov004_021707d8.ptr[0x6f] = *(signed char*)(p100 + 0x3c);
         } else {
-            GameObject* combatant = GetCombatantWithFlag0x100(bs, flagVal);
+            GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(bs, flagVal);
             if (!combatant) return 0;
-            int field150 = GetFieldAt0x150((unsigned char*)combatant);
+            int field150 = GetFieldAt0x150_02053c6c((unsigned char*)combatant);
             elem = FindElementByKey020dedd0(node, ((short*)((char*)field150 + 0x400 + 0x54))[idx]);
             if (elem->bits.field2 == 0) {
                 func_ov011_021848a0(obj, 0x3a1);

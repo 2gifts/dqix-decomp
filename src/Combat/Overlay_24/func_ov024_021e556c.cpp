@@ -3,7 +3,7 @@
 #include "GameState/GameState.h"
 
 struct S_10088;
-int IsFlag10088Set(struct S_10088* obj);
+int IsFlag10088Set_02010088(struct S_10088* obj);
 int HasFlaggedSlotBit20Set020854e8(unsigned char* actor);
 short ApplyMPDelta0215a1d4(void* unused, int id, int delta, short* outApplied);
 extern "C" void func_ov000_0215acb8(void* world, int id, int applied, int result);
@@ -62,9 +62,9 @@ extern "C" ARM void func_ov024_021e556c(struct Act_021e556c* obj, int sourceId, 
     }
     if (rec->f18.sub != 2) return;
     if (obj->f75 == 0) return;
-    struct Fighter_021e556c* target = (struct Fighter_021e556c*)GetCombatantWithFlag0x100(gs, targetId);
+    struct Fighter_021e556c* target = (struct Fighter_021e556c*)GetCombatantWithFlag0x100_0200ff1c(gs, targetId);
     if (target == 0) return;
-    if (IsFlag10088Set((struct S_10088*)target)) return;
+    if (IsFlag10088Set_02010088((struct S_10088*)target)) return;
     if (!HasFlaggedSlotBit20Set020854e8(target->f150)) return;
     short applied = 0;
     short result = ApplyMPDelta0215a1d4(obj->world, targetId, rec->f8.cost, &applied);

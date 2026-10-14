@@ -10,7 +10,7 @@ struct NamedRecordHeader {
 };
 
 // USA: func_020467c0
-ARM char* FindEntryAndGetNext(void* records, char* path, unsigned int* outSize) {
+ARM char* FindEntryAndGetNext_020467c0(void* records, char* path, unsigned int* outSize) {
     NamedRecordHeader* record = (NamedRecordHeader*)FindNamedRecord0204673c((char*)records, path);
     if (record == NULL) return NULL;
     if (outSize != NULL) *outSize = record->payloadLength;

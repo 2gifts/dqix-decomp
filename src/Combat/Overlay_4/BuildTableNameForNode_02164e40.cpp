@@ -2,7 +2,7 @@
 #if defined(jpn)
 extern char data_ov004_02170e42;
 extern char data_ov004_02170598;
-void* GetField0x649eForValidIndex(char*, unsigned int);
+void* GetField0x649eForValidIndex_02011aa0(char*, unsigned int);
 #endif
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
@@ -10,7 +10,7 @@ void* GetField0x649eForValidIndex(char*, unsigned int);
 
 int GetGlobalField0x1c020421a0();
 extern "C" void func_02046380(void* obj);
-int GetField0x3acValue(GameState* battleStruct);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 extern "C" void* func_ov011_021849c8(void*);
 extern "C" void* func_ov023_021f6880(void*, int);
 extern "C" int func_ov023_021f6f10(void*);
@@ -27,7 +27,7 @@ struct Obj02046574 {
     struct NameBuf02046574 names[16];
 };
 void SetIndexedName02046574(struct Obj02046574* obj, int index, char* str);
-void CopyStringToIndexedField0x2ec(char* base, int index, char* src);
+void CopyStringToIndexedField0x2ec_020464e8(char* base, int index, char* src);
 
 extern unsigned char* data_ov004_02171010;
 
@@ -37,7 +37,7 @@ extern "C" ARM int func_ov004_02164e40(void* obj) {
     func_02046380(g);
 
     GameState* battle = GameState::GetInstance();
-    GetField0x3acValue(battle);
+    GetField0x3acValue_020100a8(battle);
     GameObject* combatant = battle->GetUnknownGameObject();
 
     void* node = func_ov023_021f6880(func_ov011_021849c8(obj), 0xa);
@@ -89,10 +89,10 @@ extern "C" ARM int func_ov004_02164e40(void* obj) {
     SetIndexedName02046574((Obj02046574*)g, 2, suffix);
     SetIndexedName02046574((Obj02046574*)g, 3, mapKind);
     SetIndexedName02046574((Obj02046574*)g, 4, level);
-    SetIndexedName02046574((Obj02046574*)g, 5, (char*)GetField0x649eForValidIndex((char*)battle, 0));
-    SetIndexedName02046574((Obj02046574*)g, 6, (char*)GetField0x649eForValidIndex((char*)battle, 1));
-    SetIndexedName02046574((Obj02046574*)g, 7, (char*)GetField0x649eForValidIndex((char*)battle, 2));
-    SetIndexedName02046574((Obj02046574*)g, 8, (char*)GetField0x649eForValidIndex((char*)battle, 3));
+    SetIndexedName02046574((Obj02046574*)g, 5, (char*)GetField0x649eForValidIndex_02011aa0((char*)battle, 0));
+    SetIndexedName02046574((Obj02046574*)g, 6, (char*)GetField0x649eForValidIndex_02011aa0((char*)battle, 1));
+    SetIndexedName02046574((Obj02046574*)g, 7, (char*)GetField0x649eForValidIndex_02011aa0((char*)battle, 2));
+    SetIndexedName02046574((Obj02046574*)g, 8, (char*)GetField0x649eForValidIndex_02011aa0((char*)battle, 3));
 #else
     char buf[0x40];
     VectorizedMemset(buf, 0, 0x40);
@@ -116,7 +116,7 @@ extern "C" ARM int func_ov004_02164e40(void* obj) {
         char* name = (char*)combatant->baseStats_;
         SetIndexedName02046574((struct Obj02046574*)g, 0, name);
     }
-    CopyStringToIndexedField0x2ec((char*)g, 0, buf);
+    CopyStringToIndexedField0x2ec_020464e8((char*)g, 0, buf);
 #endif
     return 0;
 }

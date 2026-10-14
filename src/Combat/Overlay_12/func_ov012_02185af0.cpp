@@ -14,7 +14,7 @@
 #include "std_library_functions.h"
 #include "Memory/SafeAllocator.h"
 
-int GetGlobal02109400(void);
+int GetGlobal02109400_02094a00(void);
 struct Obj02094ab0;
 extern "C" void func_02094ab0(struct Obj02094ab0* obj);
 
@@ -34,7 +34,7 @@ extern "C" void LoadToMainBG1CharacterData(int, int, unsigned int);
 
 // USA: func_ov012_02185af0
 extern "C" ARM void func_ov012_02185af0(unsigned char* self) {
-    func_02094ab0((struct Obj02094ab0*)GetGlobal02109400());
+    func_02094ab0((struct Obj02094ab0*)GetGlobal02109400_02094a00());
 
     volatile unsigned int* reg = (volatile unsigned int*)0x4000000;
     *reg = (*reg & ~0x1f00) | 0x100;

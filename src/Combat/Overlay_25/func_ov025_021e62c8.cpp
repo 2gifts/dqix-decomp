@@ -6,7 +6,7 @@ enum { kGlobalHolderInnerOffset = 0x4 };
 enum { kGlobalHolderInnerOffset = 0xc };
 #endif
 
-void* GetActiveCombatWork(void);
+void* GetActiveCombatWork_ov000_02160130(void);
 int CheckCombatantStatusOrTable_02162954(void* self);
 int IsByteFieldZero_021ed0fc(void* obj);
 extern int data_ov025_021ef988;
@@ -15,7 +15,7 @@ extern int data_ov025_021ef988;
 extern "C" ARM int func_ov025_021e62c8(void) {
     void* p = *(void**)((char*)&data_ov025_021ef988 + kGlobalHolderInnerOffset);
     if (!IsByteFieldZero_021ed0fc((char*)p + 0x22c)) return 0;
-    void* w = GetActiveCombatWork();
+    void* w = GetActiveCombatWork_ov000_02160130();
     int v = CheckCombatantStatusOrTable_02162954(w);
     return v == 0;
 }

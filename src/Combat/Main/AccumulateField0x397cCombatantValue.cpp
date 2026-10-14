@@ -6,7 +6,7 @@ static inline BaseCombatStats* GetBaseStats(GameObject* obj) {
 }
 
 // USA: func_02069158
-ARM void AccumulateField0x397cCombatantValue(void* unused, int* accum) {
+ARM void AccumulateField0x397cCombatantValue_02069158(void* unused, int* accum) {
     GameState* battleStruct = GameState::GetInstance();
     GameObject* combatant = battleStruct->GetUnknownGameObject();
     if (combatant == NULL) {

@@ -12,7 +12,7 @@ ARM void RunTwoStepUpdate_0223d0a4(void);
 extern "C" void func_ov031_0223e168(int idx);
 extern "C" void func_ov031_0223d704(void);
 int TryFetchOrDispatch12_0223dfd0(void);
-void DelayThenSyncBit0(void);
+void DelayThenSyncBit0_020c9820(void);
 extern "C" void func_ov031_02227468(void);
 
 extern int data_ov031_0224b608;
@@ -47,7 +47,7 @@ extern "C" ARM int func_ov031_02226fe4(void* arg0, int type, unsigned int flags)
 		func_ov031_0223e168(idx);
 		func_ov031_0223d704();
 		TryFetchOrDispatch12_0223dfd0();
-		DelayThenSyncBit0();
+		DelayThenSyncBit0_020c9820();
 	} while (data_ov031_02250c0c.field1 == 0);
 	func_ov031_02227468();
 	SetData02249b54_022167a8(oldVal);

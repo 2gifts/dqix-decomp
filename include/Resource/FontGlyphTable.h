@@ -19,7 +19,7 @@ struct Table020429e4 {
 
 typedef Table020429e4 FontGlyphTable;
 
-FontGlyphTable* GetFontGlyphTable(int pixelSize);
+FontGlyphTable* GetFontGlyphTable_020429bc(int pixelSize);
 #if defined(jpn)
 extern "C" char* func_02043060(FontGlyphTable* table, const unsigned char* encodedCharacter);
 #define FindEntryByKeyPair020429e4 func_02043060

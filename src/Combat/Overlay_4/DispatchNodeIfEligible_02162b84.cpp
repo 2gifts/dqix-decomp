@@ -3,7 +3,7 @@
 
 extern "C" void func_ov004_0215f0c0(void* self);
 extern "C" void func_ov004_0215e5fc(void* self, void* combatant);
-unsigned char CopyOutRegion0x571d(char* obj, void* dst);
+unsigned char CopyOutRegion0x571d_020114ec(char* obj, void* dst);
 struct Obj02061bd8;
 int CheckField0x56bLowNibble(struct Obj02061bd8* obj);
 extern "C" void* func_ov004_0215e47c(void* a, int key);
@@ -23,11 +23,11 @@ extern "C" ARM int func_ov004_02162b84(void* self) {
 
     GameState* battle = GameState::GetInstance();
     unsigned char buf[4];
-    unsigned char n = CopyOutRegion0x571d((char*)battle, buf);
+    unsigned char n = CopyOutRegion0x571d_020114ec((char*)battle, buf);
 
     int found = 0;
     for (int i = 0; i < 4; i++) {
-        GameObject* c = GetCombatantWithFlag0x100(battle, i);
+        GameObject* c = GetCombatantWithFlag0x100_0200ff1c(battle, i);
         if (c) {
             if (CheckField0x56bLowNibble((struct Obj02061bd8*)c)) found = 1;
         }

@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-ARM void SetBitInArray(void* owner, int floor, int containerSlot) {
+ARM void SetBitInArray_020113a8(void* owner, int floor, int containerSlot) {
     GameState* state = static_cast<GameState*>(owner);
     unsigned int bitIndex = (floor - 1) * 5 + containerSlot;
     unsigned int byteIndex = bitIndex / 8;

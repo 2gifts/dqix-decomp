@@ -4,7 +4,7 @@ extern "C" void func_02094ab0(int a);
 extern "C" void func_ov017_0218b5c0(int a, int b);
 extern "C" void func_ov017_0218b5f8(int a);
 
-int GetGlobal02109400(void);
+int GetGlobal02109400_02094a00(void);
 int GetGlobalField0x1c020421a0(void);
 void ReinitController02043204(char* obj);
 
@@ -28,7 +28,7 @@ struct Obj020d7aa0 {
 
 // USA: func_020d7aa0
 ARM void TeardownAndResetState020d7aa0(struct Obj020d7aa0* obj) {
-    int g = GetGlobal02109400();
+    int g = GetGlobal02109400_02094a00();
     if (obj->flags.bit7) {
         func_02094ab0(g);
     }
@@ -40,4 +40,3 @@ ARM void TeardownAndResetState020d7aa0(struct Obj020d7aa0* obj) {
     func_ov017_0218b5f8(-1);
     ResetAndClearFlags020d7a5c((struct ResetObj020d7a5c*)obj);
 }
-

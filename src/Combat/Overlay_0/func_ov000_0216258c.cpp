@@ -29,7 +29,7 @@ struct BattleUi0216258c {
     char gauges[1];
 };
 
-int TestBitAt0x34(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
 extern "C" HpMpGauge0216258c* func_ov000_02161318(void* obj, int index);
 extern "C" void func_ov000_0217f518(HpMpGauge0216258c* gauge);
 extern "C" void _Z24SetShortField0xC02176134P11Obj02176134s(HpMpGauge0216258c* gauge, unsigned short val);
@@ -39,8 +39,8 @@ extern "C" void _Z24SetShortField0xE02176150P11Obj02176150s(HpMpGauge0216258c* g
 extern "C" ARM void func_ov000_0216258c(BattleUi0216258c* self) {
     GameState* bs = GameState::GetInstance();
     for (int i = 0; i < 4; i++) {
-        if (!TestBitAt0x34(self->activeBits, i & 0xff)) continue;
-        GameObject* c = GetCombatantWithFlag0x100(bs, i);
+        if (!TestBitAt0x34_020a35e0(self->activeBits, i & 0xff)) continue;
+        GameObject* c = GetCombatantWithFlag0x100_0200ff1c(bs, i);
         if (!c) continue;
         HpMpGauge0216258c* gauge = func_ov000_02161318(self->gauges, i);
         if (!gauge) continue;

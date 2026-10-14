@@ -59,7 +59,7 @@ extern "C" GameResources* func_ov017_0218b5b0();
 const char* GetFieldByKey020e0434(Container020e0310*, int);
 void ResetEntryList0205d6a0(Entry_0205d6a0*, int);
 void ResetList0204af64(List0204af64*);
-void SetWord0x18ClearByte0x1f(unsigned char*, int);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char*, int);
 extern "C" void func_0204b5b4(List0204af64*, int);
 void DispatchViaTable0204b5e8(Obj0204b5e8*, int, int);
 void AllocateAndClearBuffer0204b12c(AllocTarget0204b12c*, SafeAllocator*);
@@ -106,7 +106,7 @@ extern "C" ARM int func_ov008_02188a54(BattleRecords* self, int lastClear) {
         if (loader->GetTaskStatus(self->task)) {
             self->backgroundAllocator.Reset();
             ResetList0204af64(&self->background);
-            SetWord0x18ClearByte0x1f((unsigned char*)&self->background, 0);
+            SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)&self->background, 0);
             self->background.format = 1;
             self->background.layer = 0;
             func_0204b5b4(&self->background, 1);
@@ -114,7 +114,7 @@ extern "C" ARM int func_ov008_02188a54(BattleRecords* self, int lastClear) {
             AllocateAndClearBuffer0204b12c((AllocTarget0204b12c*)&self->background, &self->backgroundAllocator);
             AllocateArray0204af38((Foo0204af38*)&self->background, 1, &self->backgroundAllocator);
             ResetList0204af64(&self->textBackground);
-            SetWord0x18ClearByte0x1f((unsigned char*)&self->textBackground, 0);
+            SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)&self->textBackground, 0);
             self->textBackground.format = 1;
             self->textBackground.layer = 1;
             func_0204b5b4(&self->textBackground, 0);

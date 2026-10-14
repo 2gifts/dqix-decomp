@@ -28,7 +28,7 @@ extern char data_ov004_0216fff8;
 
 // USA: func_ov004_02168318  (semantic: DispatchAreaAlertState_02168318)
 extern "C" ARM int func_ov004_02168318(void* self) {
-    short sum = SumCombatantKeyMatches02086aec((struct Obj02086aec*)GetPtrField0x2a04(GameState::GetInstance()), 0x5617);
+    short sum = SumCombatantKeyMatches02086aec((struct Obj02086aec*)GetPtrField0x2a04_02010828(GameState::GetInstance()), 0x5617);
     void* node = func_ov023_021f6880(func_ov011_021849c8(self), 0xe);
     if (!node) return 0;
     if (ScaleStatsIfType12_021f6f10(node) != 7) return 0;

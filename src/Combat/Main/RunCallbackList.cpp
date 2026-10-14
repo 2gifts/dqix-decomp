@@ -7,7 +7,7 @@ struct CallbackNodeCEF0C {
 };
 
 // USA: func_020cef0c
-ARM void RunCallbackList(struct CallbackNodeCEF0C* node) {
+ARM void RunCallbackList_020cef0c(struct CallbackNodeCEF0C* node) {
     if (node == 0) return;
     do {
         node->fn(node->arg);

@@ -34,14 +34,14 @@ struct Obj_021e62cc {
 };
 struct Entry_021e62cc { int id; int total; };
 
-int IsFlag10088Set(struct S_10088* obj);
-int ClassifyField0x81fe(char*);
+int IsFlag10088Set_02010088(struct S_10088* obj);
+int ClassifyField0x81fe_ov000_0215fc60(char*);
 extern "C" int func_ov000_0215ffa0(struct Node_021e62cc* node);
 struct Node_021e62cc* GetNodeAtIndex021600f8(struct List021600f8* list, int index);
 struct Depth_021e62cc* FindNodeAtDepth0215fff4(void* obj, int limit, int idx);
 int IsCombatantFlag2Mask8192_021e6798(GameObject* c);
 int IsCombatantFlag2Mask32_021e67b0(GameObject* c);
-int AnySlotHasBit17At0x2f4(unsigned char* p);
+int AnySlotHasBit17At0x2f4_02085400(unsigned char* p);
 extern "C" int func_ov000_02156068(void* battle, int id, int kind, int mode);
 extern "C" short func_ov000_0215a004(void* world, int id1, int id2, int value, unsigned long long* bits, struct Skill_021e62cc* rec, int a6, int a7);
 extern "C" struct OutStruct0215ccbc* func_ov000_0215e958(void* world);
@@ -59,11 +59,11 @@ static inline short GetCurrentMP(ModifiableCombatStats* s) {
 // USA: func_ov024_021e62cc
 extern "C" ARM void func_ov024_021e62cc(struct Obj_021e62cc* self, int id, struct Skill_021e62cc* skill) {
     GameState* gs = GameState::GetInstance();
-    if (ClassifyField0x81fe((char*)self->ctx) != 0) return;
+    if (ClassifyField0x81fe_ov000_0215fc60((char*)self->ctx) != 0) return;
     if (!(skill->flags & 0x80)) return;
     GameObject* attacker = GetCombatantByID((int)self->ctx, id);
     if (!attacker) return;
-    if (IsFlag10088Set((struct S_10088*)attacker)) return;
+    if (IsFlag10088Set_02010088((struct S_10088*)attacker)) return;
 
     int count = 0;
     struct Entry_021e62cc entries[8];
@@ -100,21 +100,21 @@ extern "C" ARM void func_ov024_021e62cc(struct Obj_021e62cc* self, int id, struc
     for (int k = 0; k < count; k++) {
         GameObject* target = GetCombatantByID((int)self->ctx, (short)entries[k].id);
         if (!target) continue;
-        if (IsFlag10088Set((struct S_10088*)target)) continue;
+        if (IsFlag10088Set_02010088((struct S_10088*)target)) continue;
         if (IsCombatantFlag2Mask8192_021e6798(target)) continue;
         if (entries[k].total <= 0) continue;
         float rate = 0.25f;
         int party = 0;
         if (entries[k].id >= 0 && entries[k].id <= 3) party = 1;
         if (party) {
-            GameObject* ally = GetCombatantWithFlag0x100(gs, entries[k].id);
+            GameObject* ally = GetCombatantWithFlag0x100_0200ff1c(gs, entries[k].id);
             if (!ally) continue;
             struct Random* rnd = (struct Random*)self->ctx;
             int ok = 0;
             if (IsCombatantFlag2Mask32_021e67b0(ally)) {
                 rate = 0.25f;
                 ok = 1;
-            } else if (AnySlotHasBit17At0x2f4(((struct Ally_021e62cc*)ally)->ext)) {
+            } else if (AnySlotHasBit17At0x2f4_02085400(((struct Ally_021e62cc*)ally)->ext)) {
                 if (NextRandomMax(rnd, 100) < 50) {
                     rate = 0.2f;
                     ok = 1;

@@ -3,7 +3,7 @@
 
 extern "C" int func_ov000_0215e9fc(int a, short* buf, int max, int start);
 extern "C" int func_ov000_02156068(int unused0, int id, int a2, int a3);
-GameObject* GetCombatantWithFlag0x400ByID(int unused, int id);
+GameObject* GetCombatantWithFlag0x400ByID_ov000_021536f8(int unused, int id);
 int IsCombatantFlagMask536870912_021edbf0(GameObject* combatant);
 
 struct Obj_021f2e88 { int field0; };
@@ -27,7 +27,7 @@ extern "C" ARM int func_ov024_021f2e88(struct Obj_021f2e88* obj, int id, int unu
 
     if (*outCount <= 0) return 0;
 
-    GameObject* c = GetCombatantWithFlag0x400ByID(obj->field0, id);
+    GameObject* c = GetCombatantWithFlag0x400ByID_ov000_021536f8(obj->field0, id);
     if (!c) return 0;
 
     int flag = IsCombatantFlagMask536870912_021edbf0(c);

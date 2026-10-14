@@ -2,7 +2,7 @@
 
 extern "C" void* func_ov017_021b8478(void* obj);
 extern "C" void* func_ov017_021b8468(void* obj);
-int InvokeIfInputLogBIs3_021dbf04(void* p);
+int InvokeIfInputLogBIs3_021dbf04_ov000_02163d94(void* p);
 
 struct Src021cc080 { unsigned char pad[4]; unsigned short field4; };
 struct Ret021cc080 { unsigned char pad[8]; unsigned short field8; };
@@ -28,5 +28,5 @@ ARM void CallInputLogHandlerIfFieldsMatch_021cc080(int unused0, Src021cc080* src
 	if (!r2) {
 		return;
 	}
-	InvokeIfInputLogBIs3_021dbf04(r2);
+	InvokeIfInputLogBIs3_021dbf04_ov000_02163d94(r2);
 }

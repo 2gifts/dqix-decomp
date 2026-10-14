@@ -9,7 +9,7 @@ enum { FIELD_BYTE_OFFSET = 0xcda };
 #endif
 
 // USA: func_020120d4
-ARM void SetByte0x5cdaAndClearField0xa(unsigned char* obj, unsigned char value) {
+ARM void SetByte0x5cdaAndClearField0xa_020120d4(unsigned char* obj, unsigned char value) {
     unsigned char* p = obj + 0x5000;
     p[FIELD_BYTE_OFFSET] = value;
     unsigned char* r = func_0208e0a8(p);

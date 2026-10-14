@@ -47,16 +47,16 @@ struct FieldArena021a2128 { char field_0[0x2fe0]; int context; };
 #else
 struct FieldArena021a2128 { char field_0[0x31f0]; int context; };
 #endif
-Entry_02028bd0* GetEntryTableBase();
+Entry_02028bd0* GetEntryTableBase_02027ca4();
 AreaEntry021a2128* FindInlineEntryById(Entry_02028bd0*, int);
 MonsterInfo021a2128* SearchWithComparator0206f4f0(BinarySearchByComparatorStruct*, int);
-void* FindNodeBySignedId(void*, int);
+void* FindNodeBySignedId_0206ef18(void*, int);
 int FindCombatantWithNegativeField2_021a20c0(int, int, int);
 extern "C" unsigned short* func_02012fe4();
 extern "C" int* func_0202ae18();
 extern "C" void func_02076a8c(void*);
 PairStruct* FindCombatantByField2_021a2738(void*, int);
-void CopyPairAndStoreField(PairStruct*, PairStruct*);
+void CopyPairAndStoreField_02072adc(PairStruct*, PairStruct*);
 struct Subentry021a2128 { short field_0; short scale; };
 Subentry021a2128* FindSubEntry0209be84(EntryTable0209bd94*, unsigned int, int);
 extern "C" int func_02018fbc(void*, Vector3fix*);
@@ -66,15 +66,15 @@ void CopyBitFields020795e8(Dst020795e8*, Src020795e8*);
 void TrySetMode02076ccc(void*, int);
 void SetField0x16c(S02076cc4*, int);
 extern "C" int func_ov017_021a1944();
-int CheckField0NonZero(int*);
+int CheckField0NonZero_0202b7d8(int*);
 extern "C" void func_ov017_021c8f3c(int, int);
 
 // USA: func_ov017_021a2128
 extern "C" ARM int func_ov017_021a2128(FieldArena021a2128* arena, unsigned short areaId, int monsterId, int variant, const Vector3fix* position, int y, unsigned short entryId, unsigned char flags) {
-    AreaEntry021a2128* area = FindInlineEntryById(GetEntryTableBase(), areaId);
+    AreaEntry021a2128* area = FindInlineEntryById(GetEntryTableBase_02027ca4(), areaId);
     if (!area) return 0;
     MonsterInfo021a2128* info = SearchWithComparator0206f4f0((BinarySearchByComparatorStruct*)area->monsters, (short)monsterId);
-    void* node = FindNodeBySignedId(area->nodes, (short)monsterId);
+    void* node = FindNodeBySignedId_0206ef18(area->nodes, (short)monsterId);
     if (!info) return 0;
     if (!node) return 0;
     GameState* state = GameState::GetInstance();
@@ -86,7 +86,7 @@ extern "C" ARM int func_ov017_021a2128(FieldArena021a2128* arena, unsigned short
     if (!monster) return 0;
     func_02076a8c(monster);
     PairStruct* previous = FindCombatantByField2_021a2738(arena, monsterId);
-    if (areaId == *currentArea && previous) CopyPairAndStoreField(previous, (PairStruct*)monster);
+    if (areaId == *currentArea && previous) CopyPairAndStoreField_02072adc(previous, (PairStruct*)monster);
     int scale = 0x1000;
     Subentry021a2128* entry = FindSubEntry0209be84((EntryTable0209bd94*)area->subentries, monsterId, variant);
     if (entry) scale = entry->scale;
@@ -104,7 +104,7 @@ extern "C" ARM int func_ov017_021a2128(FieldArena021a2128* arena, unsigned short
     SetVecYFromValue02033874((Obj02033874*)monster, y);
     monster->object.SetRadius(info->radius << 2);
     monster->object.SetHeight(info->height);
-    Src020795e8* fields = (Src020795e8*)FindNodeBySignedId(area->nodes, (short)monsterId);
+    Src020795e8* fields = (Src020795e8*)FindNodeBySignedId_0206ef18(area->nodes, (short)monsterId);
     if (fields) CopyBitFields020795e8((Dst020795e8*)monster, fields);
     int scaled = (int)(((long long)scale * 0x10a + 0x800) >> 12);
     monster->object.SetScale(scaled, scaled, scaled);
@@ -114,6 +114,6 @@ extern "C" ARM int func_ov017_021a2128(FieldArena021a2128* arena, unsigned short
     monster->flags |= flags;
     monster->object.MakeVisible();
     ++area->instances;
-    if (CheckField0NonZero(manager)) func_ov017_021c8f3c(slot, -1);
+    if (CheckField0NonZero_0202b7d8(manager)) func_ov017_021c8f3c(slot, -1);
     return slot;
 }

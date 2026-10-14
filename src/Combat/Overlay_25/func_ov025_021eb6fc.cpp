@@ -21,7 +21,7 @@ struct Obj021eb6fc {
     unsigned int flags;
 };
 
-void* GetActiveCombatWork(void);
+void* GetActiveCombatWork_ov000_02160130(void);
 void* GetSlotPtr02160f20(void* obj);
 Entry021eb6fc* SearchBothTables02079e2c(char* p, int key);
 int IsMatchingID02163690(int id);
@@ -34,8 +34,8 @@ extern "C" ARM void func_ov025_021eb6fc(Obj021eb6fc* obj, int force) {
     if ((obj->flags & 8) && force == 0) {
         return;
     }
-    short* slot = (short*)GetSlotPtr02160f20(GetActiveCombatWork());
-    Entry021eb6fc* entry = SearchBothTables02079e2c((char*)GetData02108e10(), *slot);
+    short* slot = (short*)GetSlotPtr02160f20(GetActiveCombatWork_ov000_02160130());
+    Entry021eb6fc* entry = SearchBothTables02079e2c((char*)GetData02108e10_020797dc(), *slot);
     if (IsMatchingID02163690(*(unsigned short*)slot)) {
         force = 1;
     } else if (entry != 0 && entry->kind == 1 && entry->subKind == 1 && entry->mode != 2) {

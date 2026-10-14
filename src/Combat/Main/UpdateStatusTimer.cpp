@@ -10,7 +10,7 @@
 #endif
 
 // USA: func_020658ac
-ARM void UpdateStatusTimer(unsigned char* base, unsigned int amount) {
+ARM void UpdateStatusTimer_020658ac(unsigned char* base, unsigned int amount) {
     unsigned char c;
     if (base[ACTIVE_FLAG] != 0) {
         if (base[TIMER_FLAG] == 0) {
@@ -31,4 +31,3 @@ ARM void UpdateStatusTimer(unsigned char* base, unsigned int amount) {
         base[TIMER_COUNT] = c - amount;
     }
 }
-

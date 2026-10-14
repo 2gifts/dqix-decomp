@@ -28,9 +28,9 @@ struct Obj0208bf28;
 
 short GetScaledFieldValue_02166684(int a);
 extern "C" short func_ov004_021666bc(void* a1, char* outFlag);
-struct GetTableByteOrFFData* GetGlobal02109418(void);
+struct GetTableByteOrFFData* GetGlobal02109418_02094d6c(void);
 extern "C" struct Ctx0205ec34* func_0205ec34(void);
-unsigned char GetTableByteOrFF(GetTableByteOrFFData* s, unsigned char idx);
+unsigned char GetTableByteOrFF_020965ac(GetTableByteOrFFData* s, unsigned char idx);
 extern "C" int func_02095d30(struct GetTableByteOrFFData* list, int value, int mode);
 extern "C" void func_ov004_02166198(void);
 extern "C" void func_ov004_02165f2c(void);
@@ -50,7 +50,7 @@ static inline BattleList02167434* GetBattleList02167434() {
 #endif
 }
 
-static inline unsigned char* GetNibbles(struct Ctx0205ec34* c) { return c->nibbles; }
+static inline unsigned char* GetNibbles_0205d594(struct Ctx0205ec34* c) { return c->nibbles; }
 
 // USA: func_ov004_02167434
 extern "C" ARM int func_ov004_02167434(void* a1) {
@@ -58,13 +58,13 @@ extern "C" ARM int func_ov004_02167434(void* a1) {
     short id;
     char flag;
     short key = func_ov004_021666bc(a1, &flag);
-    struct GetTableByteOrFFData* table = GetGlobal02109418();
+    struct GetTableByteOrFFData* table = GetGlobal02109418_02094d6c();
     struct Ctx0205ec34* ctx = func_0205ec34();
-    unsigned char slot = GetTableByteOrFF(table, (unsigned char)key);
+    unsigned char slot = GetTableByteOrFF_020965ac(table, (unsigned char)key);
     func_02095d30(table, slot, 1);
 
     unsigned char idx = slot >> 1;
-    unsigned char* src = GetNibbles(ctx);
+    unsigned char* src = GetNibbles_0205d594(ctx);
     unsigned char mask = (unsigned char)(slot & 1) == 0 ? 0xf0 : 0xf;
     unsigned char saved = src[idx] & ~mask;
     GetBattleList02167434()->nibbles[idx] &= mask;

@@ -76,22 +76,22 @@ void SyncElementFlags0215b648(unsigned char*);
 extern "C" void func_ov002_02156bc8(BattleActor*);
 extern "C" void func_ov002_02156c7c(BattleActor*);
 extern "C" void func_ov002_021561b0(BattleActor*);
-Elem_0205d81c* FindElementForFieldB0(Struct_0205d81c*);
-int IsField0x9cEqual3(unsigned char*);
-void SetFieldAt0x30(void*, int);
+Elem_0205d81c* FindElementForFieldB0_0205d8c4(Struct_0205d81c*);
+int IsField0x9cEqual3_0204c7cc(unsigned char*);
+void SetFieldAt0x30_0205bc24(void*, int);
 int GetInnerFlagBit0020e28dc(Outer020e28dc*);
 void UpdateEntryStateAndPosition(Ctx020e263c*, int);
 extern "C" int func_0205d0e0(Struct_0205d81c*, int);
 int CheckFlagOrThreshold_02161b48(char*, int);
-int TestFlag0SetAndFlag1Clear(unsigned short*, int);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short*, int);
 extern "C" void* func_0205ec34();
 int LookupAndForEachNode020649b0(void*, int, void*);
 extern "C" void func_0206f81c(void*);
 extern "C" void func_ov023_021dca88(void*);
 void CopyByteField0215aa14(char*);
-int GetField5cb0Value(char*);
+int GetField5cb0Value_0201079c(char*);
 void SetElementFlag0x20ByKey0205def8(Struct_0205def8*, int, int);
-void SetElementFieldC2(Struct_0205d81c*, int, int);
+void SetElementFieldC2_0205deb4(Struct_0205d81c*, int, int);
 extern "C" void func_ov002_0215bba8(BattleActor*);
 extern unsigned short data_02114e30[0x10];
 extern unsigned int data_ov002_0216d3a8;
@@ -120,9 +120,9 @@ extern "C" ARM int func_ov002_02155960(BattleActor* actor, int delta) {
             func_ov002_02156c7c(actor);
         }
         func_ov002_021561b0(actor);
-        Elem_0205d81c* element = FindElementForFieldB0((Struct_0205d81c*)&actor->elements);
-        if (element != 0 && IsField0x9cEqual3((unsigned char*)element) != 0 && (element->flags & 2) == 0)
-            SetFieldAt0x30(GetElements(actor)->entries, -1);
+        Elem_0205d81c* element = FindElementForFieldB0_0205d8c4((Struct_0205d81c*)&actor->elements);
+        if (element != 0 && IsField0x9cEqual3_0204c7cc((unsigned char*)element) != 0 && (element->flags & 2) == 0)
+            SetFieldAt0x30_0205bc24(GetElements(actor)->entries, -1);
         if (actor->connection.owner != 0 && GetInnerFlagBit0020e28dc(actor->connection.owner) != 0) {
             UpdateEntryStateAndPosition(actor->connection.context, actor->delta);
         } else {
@@ -131,7 +131,7 @@ extern "C" ARM int func_ov002_02155960(BattleActor* actor, int delta) {
     }
     if (actor->active != 0) {
         if ((actor->state == 4 && actor->mode == 1 && CheckFlagOrThreshold_02161b48((char*)actor, 1) != 0) ||
-                TestFlag0SetAndFlag1Clear(data_02114e30, 0x800) != 0) {
+                TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x800) != 0) {
             if (manager->blocked == 0)
                 actor->pendingState = 1;
         }
@@ -169,7 +169,7 @@ extern "C" ARM int func_ov002_02155960(BattleActor* actor, int delta) {
     (actor->*data_ov002_0216cd74[actor->state])();
     if (actor->state != 0 && actor->state != 0x1e && actor->state != 0x2a && actor->busy == 0 && actor->mode == 1) {
         manager = (BattleManager*)GetGlobalField0x1c020421a0();
-        if (TestFlag0SetAndFlag1Clear(data_02114e30, 0x800) != 0 && manager->blocked == 0) {
+        if (TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x800) != 0 && manager->blocked == 0) {
             if (actor->state == 0x21)
                 CopyByteField0215aa14((char*)actor);
             if (actor->state == 0xf) {
@@ -182,11 +182,11 @@ extern "C" ARM int func_ov002_02155960(BattleActor* actor, int delta) {
             }
         }
     }
-    if (GetField5cb0Value((char*)GameState::GetInstance()) == 1 || actor->active != 0) {
+    if (GetField5cb0Value_0201079c((char*)GameState::GetInstance()) == 1 || actor->active != 0) {
         SetElementFlag0x20ByKey0205def8((Struct_0205def8*)&actor->elements, 0, 0x29);
     }
-    SetElementFieldC2((Struct_0205d81c*)&actor->elements, 0x29, 0);
-    SetElementFieldC2((Struct_0205d81c*)&actor->elements, 0x28, 0);
+    SetElementFieldC2_0205deb4((Struct_0205d81c*)&actor->elements, 0x29, 0);
+    SetElementFieldC2_0205deb4((Struct_0205d81c*)&actor->elements, 0x28, 0);
     func_ov002_0215bba8(actor);
     return 0;
 }

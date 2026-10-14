@@ -26,7 +26,7 @@ extern const char data_020ef2ab[];
 extern const char data_020ef2b0[];
 extern const char data_020ef2b5[];
 
-void RotateTileGrid3x3(void* obj, unsigned char* buf, int mode);
+void RotateTileGrid3x3_02019f6c(void* obj, unsigned char* buf, int mode);
 
 static inline AdjacencyBits02019728 GetAdjacency02019728(const FloorMap* map, int x, int y) {
     AdjacencyBits02019728 result;
@@ -167,13 +167,13 @@ extern "C" ARM int func_02019728(Zone3D* obj, int unused, ZoneFeatures* listArg,
 
             if (grid == 0) {
                 cell->angle = rotation;
-                RotateTileGrid3x3(obj, cell->info.directionBitmasks, mode);
+                RotateTileGrid3x3_02019f6c(obj, cell->info.directionBitmasks, mode);
                 cell->position.x = (int)(4096.0f * (8.0f * (float)col));
                 cell->position.y = 0;
                 cell->position.z = (int)(4096.0f * (8.0f * (float)row));
                 cell->rotation = matrix;
             } else {
-                RotateTileGrid3x3(obj, (grid + row * 16)[col].directionBitmasks, mode);
+                RotateTileGrid3x3_02019f6c(obj, (grid + row * 16)[col].directionBitmasks, mode);
             }
         }
     }

@@ -20,7 +20,7 @@ struct Sub0217c514 {
 // USA: func_ov000_0217c514  (semantic: SetFlagFromSubField0217c514)
 extern "C" ARM int func_ov000_0217c514(int id, int flags) {
     GameState* bs = GameState::GetInstance();
-    GameObject* c = GetCombatantWithFlag0x100(bs, id);
+    GameObject* c = GetCombatantWithFlag0x100_0200ff1c(bs, id);
     if (!c) return flags;
     struct Sub0217c514* sub = (struct Sub0217c514*)GetActiveSub_02054000((struct Outer_02054000*)c);
     if (!sub) return flags;

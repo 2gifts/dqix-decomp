@@ -20,25 +20,25 @@ void ApplyStatusTickEffect(struct Obj02039df4* obj);
 struct Obj02052ae8;
 void StepValueTowardTarget02052ae8(struct Obj02052ae8* obj);
 
-int CheckSubstructByte0x7cPositive(signed char* obj);
+int CheckSubstructByte0x7cPositive_020535c8(signed char* obj);
 int IsCountAtLeast4_0219a370(unsigned char* base);
-int IsField0Null(void** obj);
-int TestFlagMask(unsigned short* obj, int mask);
+int IsField0Null_02046b08(void** obj);
+int TestFlagMask_02012430(unsigned short* obj, int mask);
 
 struct BitField0203402c;
 int CheckField0xc4Low15BitsNonZero(struct BitField0203402c* p);
 
 int GetGlobalField0x1c020421a0();
 
-unsigned char GetField0x397cValue(GameState* battleStruct);
-int GetFieldIfFlag4(char* obj);
+unsigned char GetField0x397cValue_020100b0(GameState* battleStruct);
+int GetFieldIfFlag4_020100f8(char* obj);
 
 struct S020a2c70;
 int MarkStateIfFlag020a2c70(struct S020a2c70* p);
 
-void SetBitsInField4(unsigned int* obj, unsigned int mask);
-void ClearBitsInField4(unsigned int* obj, unsigned int mask);
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+void SetBitsInField4_0203b4d8(unsigned int* obj, unsigned int mask);
+void ClearBitsInField4_0203b4e8(unsigned int* obj, unsigned int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 
 struct Obj02052e44;
 extern "C" int _Z27InitFieldsIfInRange02052e44P11Obj02052e44aii(struct Obj02052e44* obj, signed char arg1);
@@ -49,14 +49,14 @@ int FilterBytesAndInit02052f44(struct Obj02052f44* obj, signed char* src, int le
 int LoadBattleBlock020ac4c0(void* dst);
 
 struct S_a06b0;
-void AddClamped10BitFieldMidAt0x28(struct S_a06b0* p, unsigned int amount);
+void AddClamped10BitFieldMidAt0x28_020a06b0(struct S_a06b0* p, unsigned int amount);
 
 struct S_a0140;
-void AddClamped10BitFieldAt0x14(struct S_a0140* p, unsigned int amount);
+void AddClamped10BitFieldAt0x14_020a0140(struct S_a0140* p, unsigned int amount);
 
-int CopyInBattleField0x7540(void* src);
+int CopyInBattleField0x7540_020ac494(void* src);
 
-void SetByte0x2c4To2IfByte0x2c5Set(unsigned char* obj);
+void SetByte0x2c4To2IfByte0x2c5Set_020a2c8c(unsigned char* obj);
 
 extern unsigned short data_02114e30;
 
@@ -134,12 +134,12 @@ extern "C" ARM void func_02037d88(struct Obj02037d88* obj) {
 
     {
         void* bsOrig = GameState::GetInstance();
-        void* field3b0 = GetField0x3b0Value((GameState*)bsOrig);
+        void* field3b0 = GetField0x3b0Value_020100bc((GameState*)bsOrig);
         void* ctx = func_02012fe4();
         int* ptr130 = (int*)obj->field130;
 
         if ((*ptr130 & 1) != 0
-            || CheckSubstructByte0x7cPositive((signed char*)obj) != 0
+            || CheckSubstructByte0x7cPositive_020535c8((signed char*)obj) != 0
             || *(int*)((char*)ctx + ContextFlagOffset) != 0
             || field3b0 == 0
             || obj->flagBit0xc2) {
@@ -160,41 +160,41 @@ extern "C" ARM void func_02037d88(struct Obj02037d88* obj) {
 
         if (val80 != 0
             && IsCountAtLeast4_0219a370(r6) != 0
-            && IsField0Null((void**)val6fc) != 0
-            && TestFlagMask(&data_02114e30, 2) != 0
+            && IsField0Null_02046b08((void**)val6fc) != 0
+            && TestFlagMask_02012430(&data_02114e30, 2) != 0
             && CheckField0xc4Low15BitsNonZero((struct BitField0203402c*)obj) == 0
             && ((struct GlobalOuter020421a0*)GetGlobalField0x1c020421a0())->sub.flag == 0) {
 
-            unsigned char* ptr2a04 = (unsigned char*)GetPtrField0x2a04((GameState*)bsOrig);
+            unsigned char* ptr2a04 = (unsigned char*)GetPtrField0x2a04_02010828((GameState*)bsOrig);
 
             void* bsOrig2 = GameState::GetInstance();
             short id3 = obj->combatantId;
-            unsigned char field397c_1 = GetField0x397cValue((GameState*)bsOrig2);
+            unsigned char field397c_1 = GetField0x397cValue_020100b0((GameState*)bsOrig2);
             if (field397c_1 == id3) {
-                int p2 = GetFieldIfFlag4((char*)bsOrig2);
+                int p2 = GetFieldIfFlag4_020100f8((char*)bsOrig2);
                 if (p2 != 0) {
                     if (IsCountAtLeast4_0219a370(r6) != 0) {
                         if (MarkStateIfFlag020a2c70((struct S020a2c70*)p2) != 0) {
-                            SetBitsInField4((unsigned int*)r6, 0x80);
+                            SetBitsInField4_0203b4d8((unsigned int*)r6, 0x80);
                         }
                     }
                 }
             }
 
             int result = 0;
-            if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x40)) {
+            if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x40)) {
                 signed char val = ptr2a04[0x2c8d];
                 result = _Z27InitFieldsIfInRange02052e44P11Obj02052e44aii((struct Obj02052e44*)obj, val);
                 obj->field260 = 0;
-            } else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x10)) {
+            } else if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x10)) {
                 signed char val = ptr2a04[0x2c8f];
                 result = _Z27InitFieldsIfInRange02052e44P11Obj02052e44aii((struct Obj02052e44*)obj, val);
                 obj->field260 = 2;
-            } else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x20)) {
+            } else if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x20)) {
                 signed char val = ptr2a04[0x2c8e];
                 result = _Z27InitFieldsIfInRange02052e44P11Obj02052e44aii((struct Obj02052e44*)obj, val);
                 obj->field260 = 1;
-            } else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x80)) {
+            } else if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x80)) {
                 result = FilterBytesAndInit02052f44((struct Obj02052f44*)obj, (signed char*)(ptr2a04 + 0x2c90), 4);
                 obj->field260 = 3;
             }
@@ -202,27 +202,27 @@ extern "C" ARM void func_02037d88(struct Obj02037d88* obj) {
             if (result != 0) {
                 char buf[0xb0];
                 LoadBattleBlock020ac4c0(buf);
-                AddClamped10BitFieldMidAt0x28((struct S_a06b0*)buf, 1);
-                AddClamped10BitFieldAt0x14((struct S_a0140*)(buf + 0x68), 1);
-                CopyInBattleField0x7540(buf);
+                AddClamped10BitFieldMidAt0x28_020a06b0((struct S_a06b0*)buf, 1);
+                AddClamped10BitFieldAt0x14_020a0140((struct S_a0140*)(buf + 0x68), 1);
+                CopyInBattleField0x7540_020ac494(buf);
                 return;
             }
         } else {
             void* bs3 = GameState::GetInstance();
             short id2 = obj->combatantId;
-            unsigned char field397c_2 = GetField0x397cValue((GameState*)bs3);
+            unsigned char field397c_2 = GetField0x397cValue_020100b0((GameState*)bs3);
             if (field397c_2 == id2) {
-                int p = GetFieldIfFlag4((char*)bs3);
+                int p = GetFieldIfFlag4_020100f8((char*)bs3);
                 if (p != 0) {
                     unsigned char* state = (unsigned char*)p + 0x2c4;
                     if (state != 0) {
                         unsigned char stateByte = state[0];
                         if (stateByte == 1) {
-                            SetByte0x2c4To2IfByte0x2c5Set((unsigned char*)p);
+                            SetByte0x2c4To2IfByte0x2c5Set_020a2c8c((unsigned char*)p);
                         } else if (stateByte == 2) {
                             short v = *(short*)(state + 2);
                             if (v < 0x199) {
-                                ClearBitsInField4((unsigned int*)r6, 0x80);
+                                ClearBitsInField4_0203b4e8((unsigned int*)r6, 0x80);
                             }
                         }
                     }

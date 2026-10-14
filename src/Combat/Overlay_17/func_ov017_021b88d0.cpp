@@ -39,9 +39,9 @@ struct Battle_021b88d0 {
 };
 
 extern "C" void __clear(void* buf, int n);
-int GetField0x3acValue(GameState* gs);
-GameObject* GetCombatantWithFlag0x1000(GameState* gs, int id);
-int GetSignedByte0x2d0(void* obj);
+int GetField0x3acValue_020100a8(GameState* gs);
+GameObject* GetCombatantWithFlag0x1000_0200ff58(GameState* gs, int id);
+int GetSignedByte0x2d0_020546a8(void* obj);
 extern "C" void func_ov000_0215fab0(struct RingBuf0215fab0* ring, unsigned char val);
 extern "C" void func_ov017_021b6f9c(struct Battle_021b88d0* self);
 
@@ -52,7 +52,7 @@ extern "C" ARM void func_ov017_021b88d0(struct Battle_021b88d0* self, int id, in
     }
 
     GameState* gs = GameState::GetInstance();
-    if (id == GetField0x3acValue(gs)) {
+    if (id == GetField0x3acValue_020100a8(gs)) {
         if (self->state == 1) {
             self->field_0x4c = 1;
             self->state = 2;
@@ -67,8 +67,8 @@ extern "C" ARM void func_ov017_021b88d0(struct Battle_021b88d0* self, int id, in
         ids[0] = id;
         int count = 1;
         for (int i = 0; i < 4; i++) {
-            GameObject* c = GetCombatantWithFlag0x1000(gs, i);
-            if (c != 0 && id == GetSignedByte0x2d0(c)) {
+            GameObject* c = GetCombatantWithFlag0x1000_0200ff58(gs, i);
+            if (c != 0 && id == GetSignedByte0x2d0_020546a8(c)) {
                 ids[count++] = i;
             }
         }
@@ -80,7 +80,7 @@ extern "C" ARM void func_ov017_021b88d0(struct Battle_021b88d0* self, int id, in
                 self->localRing.data[self->localRing.count++] = ids[j];
             }
             struct CombatantSnapshot_021b88d0* c =
-                (struct CombatantSnapshot_021b88d0*)GetCombatantWithFlag0x100(gs, ids[j]);
+                (struct CombatantSnapshot_021b88d0*)GetCombatantWithFlag0x100_0200ff1c(gs, ids[j]);
             if (c != 0) {
                 c->savedPosition = c->base.obj3D_.position_;
                 c->savedRotation = c->base.obj3D_.rotation_;

@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_020d1b28
-ARM void GenerateCrc8Table(unsigned char* table, unsigned int poly) {
+ARM void GenerateCrc8Table_020d1b28(unsigned char* table, unsigned int poly) {
     unsigned int crc;
     unsigned int i = 0;
     unsigned int bit;

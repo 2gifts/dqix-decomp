@@ -6,7 +6,7 @@ struct Variant02030b0c;
 extern short data_02109970[8][4];
 
 // USA: func_02099b7c
-ARM int DecodeVariantsInto8x4Table(struct Variant02030b0c* arg) {
+ARM int DecodeVariantsInto8x4Table_02099b7c(struct Variant02030b0c* arg) {
     int i, j;
     for (i = 0; i < 8; i++) {
         for (j = 0; j < 4; j++) {

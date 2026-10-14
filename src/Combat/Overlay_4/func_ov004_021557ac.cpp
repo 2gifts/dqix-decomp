@@ -15,7 +15,7 @@ extern "C" int func_ov023_021f6f10(void*);
 extern "C" Save021557ac* func_0205ec34();
 extern "C" int func_020deb58(Container020dedd0*, int, int, int, int);
 extern "C" Item021557ac* func_020dec30(Container020dedd0*, int, int, int, int, int);
-int TestBitInByteArray(int, unsigned char*, int);
+int TestBitInByteArray_0206dfb0(int, unsigned char*, int);
 void ClearElements_021e1518(void*);
 void RefreshEntryStatusFlags_021e1474(ObjStruct_021e1474*, Container020dedd0*);
 extern Table021557ac* data_ov004_021707c4;
@@ -73,7 +73,7 @@ extern "C" ARM int func_ov004_021557ac(void* self) {
                 Item021557ac* item = func_020dec30(container, i, 0, -1, (signed char)category, -1);
                 if (item) {
                     int id = (unsigned short)((item->flags << 9) >> 21);
-                    if (id > 0 && TestBitInByteArray((int)save, save->bits, id + 0x76 + 0xc00)) matched++;
+                    if (id > 0 && TestBitInByteArray_0206dfb0((int)save, save->bits, id + 0x76 + 0xc00)) matched++;
                 }
             }
         }

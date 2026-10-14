@@ -1,7 +1,7 @@
 #include "World/ZoneWarpScript.h"
 
 // USA: func_0201ce80
-ARM int WarpScript_Opcode_72(Script::Parameter *params, int numParams) {
+ARM int WarpScript_Opcode_72_0201ce80(Script::Parameter *params, int numParams) {
     Script::Parameter *paramsStart = params;
     ZoneFeatures::Opcode68Entry entry;
     entry.Reset();
@@ -30,7 +30,7 @@ ARM int WarpScript_Opcode_72(Script::Parameter *params, int numParams) {
     entry.unk_54               = halfLengthZSquared;
     entry.unk_54               = halfLengthXSquared + halfLengthZSquared;
 
-    if (!ProcessExtraOpcode69Params(params, numParams - (params - paramsStart), entry)) return 0;
-    data_020fdc20.warp->CreateOpcode68Entry(entry);
+    if (!ProcessExtraOpcode69Params_0201cb60(params, numParams - (params - paramsStart), entry)) return 0;
+    data_020fdc20.warp->CreateOpcode68Entry_0201e574(entry);
     return 1;
 }

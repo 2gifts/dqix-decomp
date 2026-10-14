@@ -51,7 +51,7 @@ extern "C" ARM void func_ov002_0215b458(char *base, int flag) {
     signed char *vals;
     struct Node0215b458 *node;
     gs    = GameState::GetInstance();
-    party = (struct Party0215b458 *) GetPtrField0x2a04(gs);
+    party = (struct Party0215b458 *) GetPtrField0x2a04_02010828(gs);
     sel   = GetInventoryItemByID(base, *(short *) (base + 0x1b00 + 0xe8), *(signed char *) (base + 0x1c00 + 0x20));
     keys  = party->keys;
     vals  = party->vals;

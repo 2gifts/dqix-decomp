@@ -17,7 +17,7 @@ ARM int InitEntryListFromSource0206f170(List0206f170* table, Src0206f170* source
         *wasRelocated = 1;
         return 1;
     }
-    InvokeCallbackForEachEntry(table, relocate);
+    InvokeCallbackForEachEntry_0206f110(table, relocate);
     table->table.header.relocated = 1;
     source->header.relocated = 1;
     return 1;

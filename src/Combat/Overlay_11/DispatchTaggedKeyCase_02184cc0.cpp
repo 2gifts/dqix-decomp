@@ -9,7 +9,7 @@
 extern "C" int func_ov017_0218b5b0(void);
 extern "C" void* func_ov017_021b2164(void);
 extern "C" void* func_02012fe4(void);
-extern void* GetGlobalPtr021075f4(void);
+extern void* GetGlobalPtr021075f4_0203cf4c(void);
 
 struct TaggedNumber02184c30;
 extern int GetTaggedValueAsInt_02184c30(struct TaggedNumber02184c30* v);
@@ -26,7 +26,7 @@ struct Struct_0203cfb4;
 void Init0203cfb4(struct Struct_0203cfb4* obj);
 
 extern "C" void func_ov017_021a316c(int obj);
-void SetBitsInField4(unsigned int* obj, unsigned int mask);
+void SetBitsInField4_0203b4d8(unsigned int* obj, unsigned int mask);
 
 extern "C" void func_ov017_0219b938(int obj);
 
@@ -34,7 +34,7 @@ extern "C" void func_ov017_0219b938(int obj);
 extern "C" ARM int func_ov011_02184cc0(struct TaggedNumber02184c30* tagged) {
     int p1 = func_ov017_0218b5b0();
     struct Obj_021849bc* obj2 = (struct Obj_021849bc*)func_ov017_021b2164();
-    void* g = GetGlobalPtr021075f4();
+    void* g = GetGlobalPtr021075f4_0203cf4c();
     void* s = func_02012fe4();
 
     switch (GetTaggedValueAsInt_02184c30(tagged)) {
@@ -50,8 +50,8 @@ extern "C" ARM int func_ov011_02184cc0(struct TaggedNumber02184c30* tagged) {
         ClearSlotsAndProcess_021a27e8((void*)p1);
         Init0203cfb4((struct Struct_0203cfb4*)g);
         func_ov017_021a316c(p1);
-        SetBitsInField4((unsigned int*)p1, 8);
-        SetBitsInField4((unsigned int*)p1, 0x10);
+        SetBitsInField4_0203b4d8((unsigned int*)p1, 8);
+        SetBitsInField4_0203b4d8((unsigned int*)p1, 0x10);
         SetFlags114_021849ac(obj2, 2);
         break;
     case 2:

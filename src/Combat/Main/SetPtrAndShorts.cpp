@@ -7,7 +7,7 @@ struct StructAA8 {
 };
 
 // USA: func_02072aa8
-ARM int SetPtrAndShorts(struct StructAA8* obj, int ptr, int value) {
+ARM int SetPtrAndShorts_02072aa8(struct StructAA8* obj, int ptr, int value) {
     short v = value;
     obj->field0 = ptr;
     obj->field6 = v;

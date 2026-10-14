@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
-extern int StringLength(const char* s);
+extern int StringLength_020d2ff0(const char* s);
 
 extern "C" void func_0206aa28(void* p);
 extern "C" void func_0206b974(void* p, int a1, void* a2, void* a3, void* a4, int a5, int a6, int a7);
@@ -24,7 +24,7 @@ ARM void InitContextString0206a974(struct Ctx0206a974* p, const char* src, void*
     if (src == 0) return;
     {
         void* buf = p->field48;
-        memcpy(buf, (void*)src, (p->field68 = StringLength(src)));
+        memcpy(buf, (void*)src, (p->field68 = StringLength_020d2ff0(src)));
     }
     {
         void* buf2 = p->field48;
@@ -36,7 +36,7 @@ ARM void InitContextString0206a974(struct Ctx0206a974* p, const char* src, void*
     func_0206aa28(p);
     func_0206b974(p, 1, p->field50, p->field60, param2, 0, 1, 1);
     {
-        int len2 = StringLength((const char*)p->field60);
+        int len2 = StringLength_020d2ff0((const char*)p->field60);
         memcpy(p->field50, p->field60, len2);
     }
 }

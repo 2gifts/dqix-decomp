@@ -174,11 +174,11 @@ void Clear12Bytes020e46c4(void* name);
 void InitObjFromCombatant020e4c74(void* name, GameObject* object);
 void ResetListHeader020727d8(List020727d8* list);
 const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
-const char* FindEntryByKey(TableA68* texts, int id);
+const char* FindEntryByKey_02072a68(TableA68* texts, int id);
 void SubmitAndRunScript02072928(void* list, StreamHeader* file, int size, int id, void* output, unsigned char female);
 void SetIndexedName02046574(Obj02046574* messages, int index, char* text);
-char* FindSubstring(char* text, char* search);
-void AppendYTag(char* text, int y);
+char* FindSubstring_020d2f88(char* text, char* search);
+void AppendYTag_02041a5c(char* text, int y);
 void AppendString02042058(char* text, const char* append);
 
 extern "C" {
@@ -276,7 +276,7 @@ extern "C" ARM void func_ov008_02187708(BattleRecords* self, char* text, ClearRe
         {
             if (self->guestTexts_ != NULL)
             {
-                titleText = FindEntryByKey((TableA68*)self->guestTexts_, (short)(title + 20000));
+                titleText = FindEntryByKey_02072a68((TableA68*)self->guestTexts_, (short)(title + 20000));
             }
             else
             {
@@ -302,7 +302,7 @@ extern "C" ARM void func_ov008_02187708(BattleRecords* self, char* text, ClearRe
     }
     func_02046608(messages, 10, GetFieldByKey020e0434((Container020e0310*)&self->texts_, format), output + 0x760, width, 1, 0);
     int color = 7;
-    if (FindSubstring(output + 0x760, data_ov008_0218b4c1) != NULL)
+    if (FindSubstring_020d2f88(output + 0x760, data_ov008_0218b4c1) != NULL)
         color = 2;
     if (records != NULL)
     {
@@ -310,6 +310,6 @@ extern "C" ARM void func_ov008_02187708(BattleRecords* self, char* text, ClearRe
         if (color == 2)
             self->titleX_ = 0xe0000;
     }
-    AppendYTag(text, color);
+    AppendYTag_02041a5c(text, color);
     AppendString02042058(text, output + 0x760);
 }

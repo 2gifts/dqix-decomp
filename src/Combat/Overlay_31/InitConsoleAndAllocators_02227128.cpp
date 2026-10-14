@@ -1,9 +1,9 @@
 #include <globaldefs.h>
 
-void SaveAndClearDisplayMode(void);
+void SaveAndClearDisplayMode_020c3898(void);
 int Is64BitTimerInitialized();
 int IsAlarmListInitialized();
-int SetVBlankIrqEnable(int enable);
+int SetVBlankIrqEnable_020c3864(int enable);
 void BlankFunction020c36ec(void);
 void InitializeROMFilesystem(int dmaChannel);
 extern "C" void func_020c9be0(void);
@@ -28,7 +28,7 @@ extern "C" ARM void func_ov031_02227128(void) {
     unsigned short oldIme = *ime;
     (void)oldIme;
     *ime = 0;
-    SaveAndClearDisplayMode();
+    SaveAndClearDisplayMode_020c3898();
     *(volatile unsigned int*)0x4001000 &= ~0x10000;
     if (!Is64BitTimerInitialized()) {
         func_020c9be0();
@@ -36,12 +36,12 @@ extern "C" ARM void func_ov031_02227128(void) {
     if (!IsAlarmListInitialized()) {
         func_020c9be0();
     }
-    SetVBlankIrqEnable(0);
+    SetVBlankIrqEnable_020c3864(0);
     BlankFunction020c36ec();
     InitializeROMFilesystem(-1);
     func_020cd890();
     InitSlotSystem020cf020();
-    SaveAndClearDisplayMode();
+    SaveAndClearDisplayMode_020c3898();
     *(volatile unsigned int*)0x4001000 &= ~0x10000;
     func_ov031_0223dda8();
     InitMainAllocator_0223ce9c(*(void**)((char*)&data_ov031_02250c0c + 0x4));

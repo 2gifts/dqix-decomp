@@ -16,7 +16,7 @@ int GetFieldB0_02184540(struct Obj_02184540* obj);
 
 struct EntryA68 { short key; void* value; };
 struct TableA68 { struct EntryA68* entries; short count; };
-void* FindEntryByKey(struct TableA68* table, int key);
+void* FindEntryByKey_02072a68(struct TableA68* table, int key);
 
 struct Struct021707d8_0215bb54 { char pad[8]; unsigned char* ptr; };
 extern Struct021707d8_0215bb54 data_ov004_021707d8;
@@ -44,7 +44,7 @@ extern "C" ARM int func_ov004_0215bb54(void* obj) {
         func_ov011_021848a0(obj, 0x3aa);
         void* node = (void*)DispatchAdjustmentIfType4_02157018(obj, 4);
         int g = GetGlobalField0x1c020421a0();
-        void* found = FindEntryByKey((struct TableA68*)node, 0x13);
+        void* found = FindEntryByKey_02072a68((struct TableA68*)node, 0x13);
         func_0204500c((void*)g, (const char*)found, 0, 0xe3);
         *(int*)((char*)g + 0x998) = 1;
     } else if (flag == 1) {

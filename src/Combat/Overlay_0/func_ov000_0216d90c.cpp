@@ -3,8 +3,8 @@
 #include "Util/Random.h"
 
 extern "C" void func_ov000_0216d370(void* obj, int a, int b, int c);
-void SetFields0x10To0x18(unsigned char* obj, int x, int y, int z);
-void ApplyVec3Tail(void* obj, int* vec);
+void SetFields0x10To0x18_0202e5c8(unsigned char* obj, int x, int y, int z);
+void ApplyVec3Tail_0202e694(void* obj, int* vec);
 void SetFlagOrState0216d530(void* obj, int val);
 
 extern int data_ov000_021832a4[8];
@@ -29,7 +29,7 @@ extern "C" ARM void func_ov000_0216d90c(unsigned char* obj, int index) {
         tall = 0;
     }
     func_ov000_0216d370(obj, 1, 1, 1);
-    SetFields0x10To0x18(obj, 0, 0x1000, 0x1000);
+    SetFields0x10To0x18_0202e5c8(obj, 0, 0x1000, 0x1000);
     int r = NextRandomMax(*(struct Random**)(obj + 0x21c), 8);
     if (tall) {
         if (r == 2) {
@@ -46,7 +46,7 @@ extern "C" ARM void func_ov000_0216d90c(unsigned char* obj, int index) {
     vec[0] = data_ov000_021832a4[r];
     vec[1] = 0x3000;
     vec[2] = 0x8000;
-    ApplyVec3Tail(obj, vec);
+    ApplyVec3Tail_0202e694(obj, vec);
     SetFlagOrState0216d530(obj, index);
     *(int*)(obj + 0x23c) = -20;
 }

@@ -43,13 +43,13 @@ void FindAndLinkMatchingEntry0205de24(struct Struct0205de24* obj, unsigned char 
 
 int GetGlobalField0x1c020421a0();
 extern "C" void func_02046380(void* obj);
-int CallFunc020e0434With02153694(int value);
+int CallFunc020e0434With02153694_020e51cc(int value);
 int AppendString02042058(char* dst, const char* src);
 
 struct StoreStruct;
-void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
-void SetByteInRange(unsigned char* base, int index, unsigned char value);
-void SetByteAtIndex(unsigned char* base, int index, unsigned char value);
+void StoreInArray0x8b0_020465c0(struct StoreStruct* base, int index, int value);
+void SetByteInRange_020465f0(unsigned char* base, int index, unsigned char value);
+void SetByteAtIndex_020465d8(unsigned char* base, int index, unsigned char value);
 
 #if !defined(jpn)
 extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g, int h);
@@ -59,7 +59,7 @@ extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int 
 extern "C" ARM void func_ov003_0216982c(unsigned char* self) {
     GameState* battle = GameState::GetInstance();
     int field = GetGlobalField0x1c020421a0();
-    void* ptr = GetPtrField0x2a04(battle);
+    void* ptr = GetPtrField0x2a04_02010828(battle);
 
     FindAndLinkMatchingEntry0205de24((struct Struct0205de24*)(self + kRegione4), 0, 2);
 
@@ -81,16 +81,16 @@ extern "C" ARM void func_ov003_0216982c(unsigned char* self) {
     int msg = GetFieldByKey020e0434((Container020e0310*)(self + 0x64), 0x65);
     AppendString02042058((char*)*(void**)(self + 0x7c), (const char*)msg);
 #else
-    int msg = CallFunc020e0434With02153694(0x3f1);
+    int msg = CallFunc020e0434With02153694_020e51cc(0x3f1);
     AppendString02042058((char*)*(void**)(self + 0x7c), (const char*)msg);
 #endif
 
     func_02046380((void*)field);
 
     int value = *(int*)((char*)ptr + 0xf6c);
-    StoreInArray0x8b0((struct StoreStruct*)field, 0, value);
-    SetByteInRange((unsigned char*)field, 0, 7);
-    SetByteAtIndex((unsigned char*)field, 0, 1);
+    StoreInArray0x8b0_020465c0((struct StoreStruct*)field, 0, value);
+    SetByteInRange_020465f0((unsigned char*)field, 0, 7);
+    SetByteAtIndex_020465d8((unsigned char*)field, 0, 1);
 
 #if defined(jpn)
     func_0205d304(self + kRegione4, *(void**)(self + 0x7c), 0, 0, 0, 1, 0);

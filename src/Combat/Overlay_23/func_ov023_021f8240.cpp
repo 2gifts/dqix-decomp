@@ -172,8 +172,8 @@ MenuObject_021f8240* GetNthNode_021f68b8(Node021f68b8* list, int index);
 extern "C" unsigned short func_ov023_021f6f10(MenuObject_021f8240* object);
 extern "C" MenuObject_021f8240* func_ov023_021f6880(Node021f68b8* list, int id);
 extern "C" TableA68* func_ov023_021fa598(MenuObject_021f8240* texts);
-const char* FindEntryByKey(TableA68* texts, int id);
-int IsValueEqual12(int font);
+const char* FindEntryByKey_02072a68(TableA68* texts, int id);
+int IsValueEqual12_02042190(int font);
 extern "C" void __clear(void* buffer, unsigned long size);
 void CopyTextAndUppercaseIfFlagged0206819c(const char* text, char* output, int font);
 void* GetGlobalField0x1c020421a0();
@@ -194,7 +194,7 @@ extern "C" void func_0204f914(Canvas_021f8240* canvas, unsigned char color, shor
 MenuObject_021f8240* GetField18_021f6f18(void* object);
 
 #if defined(jpn)
-int StringLength(const char*);
+int StringLength_020d2ff0(const char*);
 extern "C" void func_02050678(Canvas_021f8240*, short, short, const char*, int, unsigned char, unsigned short*, unsigned short*);
 #endif
 
@@ -248,7 +248,7 @@ extern "C" ARM void func_ov023_021f8240(MenuCanvas_021f8240* self, void* script)
             {
                 MenuObject_021f8240* texts = func_ov023_021f6880(objects, text->texts_);
                 if (texts != NULL && func_ov023_021f6f10(texts) == 4)
-                    string = FindEntryByKey(func_ov023_021fa598(texts), text->textId_);
+                    string = FindEntryByKey_02072a68(func_ov023_021fa598(texts), text->textId_);
             }
             if (string == NULL)
                 continue;
@@ -261,7 +261,7 @@ extern "C" ARM void func_ov023_021f8240(MenuCanvas_021f8240* self, void* script)
             self->canvas_.unk_b6 = right;
 #if defined(jpn)
             short leftOffset = text->unk_42;
-            int length = StringLength(string);
+            int length = StringLength_020d2ff0(string);
             int width = (length * font) >> 1;
             switch (text->alignment_)
             {
@@ -273,7 +273,7 @@ extern "C" ARM void func_ov023_021f8240(MenuCanvas_021f8240* self, void* script)
             int y = position.y / 4096.0f;
 #else
             formatted = text->formatted_;
-            size = IsValueEqual12(text->font_);
+            size = IsValueEqual12_02042190(text->font_);
             char codes[0x100] = {0};
             char formattedText[0x100] = {0};
             if (formatted)

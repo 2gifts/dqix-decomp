@@ -12,7 +12,7 @@ struct List794c {
 };
 
 // USA: func_020d794c
-ARM int FindValueByHalfwordKey(struct List794c* list, int key) {
+ARM int FindValueByHalfwordKey_020d794c(struct List794c* list, int key) {
     struct Node794c* node = list->head;
     while (node != 0) {
         if (node->key == key) {

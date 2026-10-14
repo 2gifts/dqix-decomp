@@ -10,20 +10,20 @@ char q[20];
 unsigned char* actor;};
 class GameState {public:static GameState* GetInstance();};
 struct Skill {char p[8];unsigned int low8:8,side:2,rest8:22;char q[8];unsigned int low14:28,mode:4;unsigned int low18:5,type:7,rest18:20;unsigned int low1c:14,repeats:5,rest1c:13;};
-Skill* SearchBothTables02079e2c(char*,int);GameObject* GetCombatantWithFlag0x100(GameState*,int);int IsFlag0x14Bit0x20Set(GameObject*);
+Skill* SearchBothTables02079e2c(char*,int);GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState*,int);int IsFlag0x14Bit0x20Set_ov000_021543f4(GameObject*);
 struct Info {unsigned short action;unsigned char target,group;};struct S02053dc0;Info* GetField0x19cOrNull(S02053dc0*);
-int TestBitInArray0x8ec(unsigned char*,int);void MaybeUpdatePacked02153cc0(int,int,int*);
+int TestBitInArray0x8ec_02083b00(unsigned char*,int);void MaybeUpdatePacked02153cc0(int,int,int*);
 struct Random;int PickTableValueWithRandomFill_0215fbe0(Random*,int);int NextRandomMax(Random*,int);
 struct Bits {unsigned int first:1,second:1,rest:30;};struct Ids {short v[8];};
 extern "C" {extern const Ids data_ov000_02182b74;int func_ov000_02153f98(void*,int,int,short*);void func_ov000_02153aa4(void*,int,int*);void func_ov000_02153c24(void*,int*);int func_ov000_02153e78(void*,short*,int,int,int);int func_ov000_0215eb1c(void*,short*,int,int);int func_ov000_0215e9fc(void*,short*,int,int);}
 // USA: func_ov000_021540fc
 extern "C" ARM int func_ov000_021540fc(Random* self,int id,int action,short* output){
- GameState* gs=GameState::GetInstance();Skill* skill=SearchBothTables02079e2c((char*)GetData02108e10(),(short)action);if(!skill)return 0;
- GameObject* unit=GetCombatantWithFlag0x100(gs,id);if(!unit)return 0;
- if(IsFlag0x14Bit0x20Set(unit))return func_ov000_02153f98(self,id,action,output);
+ GameState* gs=GameState::GetInstance();Skill* skill=SearchBothTables02079e2c((char*)GetData02108e10_020797dc(),(short)action);if(!skill)return 0;
+ GameObject* unit=GetCombatantWithFlag0x100_0200ff1c(gs,id);if(!unit)return 0;
+ if(IsFlag0x14Bit0x20Set_ov000_021543f4(unit))return func_ov000_02153f98(self,id,action,output);
  Info* info=GetField0x19cOrNull((S02053dc0*)unit);if(!info)return 0;
  int count=0;int side=skill->side;int mode=skill->mode;
- if(mode==6){if(TestBitInArray0x8ec(unit->actor,0xe6))mode=3;else mode=2;}
+ if(mode==6){if(TestBitInArray0x8ec_02083b00(unit->actor,0xe6))mode=3;else mode=2;}
  if(mode==5){Bits* bits=(Bits*)(unit->actor+0x2f4);if(!bits)return 0;if(bits->second)mode=3;else if(bits->first)mode=4;else mode=2;}
  if(mode==1){output[count++]=id;}
  else if(side==1){

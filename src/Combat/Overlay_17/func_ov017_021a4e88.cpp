@@ -41,13 +41,13 @@ struct Res021a4e88 {
     int busy;
 };
 
-void* GetGlobalPtr021075f4(void);
+void* GetGlobalPtr021075f4_0203cf4c(void);
 extern "C" void __clear(void* p, int n);
 struct EntryList_203dce4;
-Entry021a4e88* GetEntryUnlessFlag0x8000(EntryList_203dce4*, int);
-void ClearFlag0x1(unsigned int*);
-void SetFlag0x1(unsigned int*);
-void ClearActiveChildState(char*);
+Entry021a4e88* GetEntryUnlessFlag0x8000_0203dce4(EntryList_203dce4*, int);
+void ClearFlag0x1_02040648(unsigned int*);
+void SetFlag0x1_02040658(unsigned int*);
+void ClearActiveChildState_02040bcc(char*);
 extern "C" Vec3_021a4e88 _Z29SelectVec3FromSources020406f8P13Vec3_020406f8P12Node020406f8(Entry021a4e88* e);
 struct Vec3_020406f8;
 struct Node020406f8;
@@ -55,10 +55,10 @@ void SelectVec3FromSources020406f8(Vec3_020406f8* out, Node020406f8* n);
 struct S02040538;
 Info021a4e88* GetField0xc02040538(S02040538*);
 Entry021a4e88* FindEntryPointerByKey0203df78(void* list, int key);
-int CheckSubstructByte0x7cPositive(signed char*);
+int CheckSubstructByte0x7cPositive_020535c8(signed char*);
 struct Vec3;
 short GetAngleDeltaBetween_021a4700(Vec3*, int, Vec3*);
-unsigned char* GetField0x8(int*);
+unsigned char* GetField0x8_02040528(int*);
 int fix32abs(int x);
 
 static inline short GetAngleToEntry(Vec3_021a4e88* pos, int base, Entry021a4e88* e) {
@@ -70,7 +70,7 @@ static inline short GetAngleToEntry(Vec3_021a4e88* pos, int base, Entry021a4e88*
 // USA: func_ov017_021a4e88
 extern "C" ARM int func_ov017_021a4e88(int checkKind, unsigned short* outId) {
     GameState* gs = GameState::GetInstance();
-    void* list = GetGlobalPtr021075f4();
+    void* list = GetGlobalPtr021075f4_0203cf4c();
     Res021a4e88* res = (Res021a4e88*)func_ov017_0218b5b0();
     Obj021a4e88* obj = (Obj021a4e88*)gs->GetUnknownGameObject();
     if (obj == NULL) {
@@ -86,11 +86,11 @@ extern "C" ARM int func_ov017_021a4e88(int checkKind, unsigned short* outId) {
     int bestIdx = -1;
     short best = 0x3244;
     for (int i = 0; i < 0x20; i++) {
-        Entry021a4e88* e = GetEntryUnlessFlag0x8000((EntryList_203dce4*)list, i);
+        Entry021a4e88* e = GetEntryUnlessFlag0x8000_0203dce4((EntryList_203dce4*)list, i);
         if (e == NULL) {
             continue;
         }
-        ClearFlag0x1((unsigned int*)e);
+        ClearFlag0x1_02040648((unsigned int*)e);
         int hidden;
         if (e->flags & 0x40000) {
             hidden = 1;
@@ -127,20 +127,20 @@ extern "C" ARM int func_ov017_021a4e88(int checkKind, unsigned short* outId) {
         if (hidden) {
             e->flags |= 0x40000;
         }
-        SetFlag0x1((unsigned int*)e);
-        ClearActiveChildState((char*)e);
+        SetFlag0x1_02040658((unsigned int*)e);
+        ClearActiveChildState_02040bcc((char*)e);
         if (info->linkKey != 0) {
             Entry021a4e88* link = FindEntryPointerByKey0203df78(list, info->linkKey);
             if (link != NULL) {
-                SetFlag0x1((unsigned int*)link);
-                ClearActiveChildState((char*)link);
+                SetFlag0x1_02040658((unsigned int*)link);
+                ClearActiveChildState_02040bcc((char*)link);
                 link->flags |= 0x20000;
             }
         }
         if ((e->flags & 0x200) || res->busy != 0) {
             continue;
         }
-        if (CheckSubstructByte0x7cPositive((signed char*)obj)) {
+        if (CheckSubstructByte0x7cPositive_020535c8((signed char*)obj)) {
             continue;
         }
         int angle = (short)fix32abs(GetAngleToEntry(&pos, (short)rot.y, e));
@@ -153,7 +153,7 @@ extern "C" ARM int func_ov017_021a4e88(int checkKind, unsigned short* outId) {
             best = angle;
             continue;
         }
-        unsigned char* data = GetField0x8((int*)e);
+        unsigned char* data = GetField0x8_02040528((int*)e);
         if (checkKind == 0 || data[2] == 1) {
             continue;
         }

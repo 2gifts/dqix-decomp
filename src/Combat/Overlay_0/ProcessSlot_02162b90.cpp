@@ -10,9 +10,8 @@
 #define REGION_OFFSET_2 0x3000
 #endif
 
-
 extern "C" void* func_ov000_02161318(void* obj, int id);
-int GetClampedArrayField0xd3c(char* base, int index);
+int GetClampedArrayField0xd3c_ov000_021761ec(char* base, int index);
 
 // USA: func_ov000_02162b90
 ARM void ProcessSlot_02162b90(void* self, int unused1, int c, int unused3, int compareVal, signed char idx6, signed char p2) {
@@ -26,7 +25,7 @@ ARM void ProcessSlot_02162b90(void* self, int unused1, int c, int unused3, int c
     int bestIdx = -1;
     int i = 0;
     while (i < 12) {
-        int val = GetClampedArrayField0xd3c((char*)self + REGION_OFFSET_1 + REGION_OFFSET_2, i);
+        int val = GetClampedArrayField0xd3c_ov000_021761ec((char*)self + REGION_OFFSET_1 + REGION_OFFSET_2, i);
         if (compareVal == val) {
             bestIdx = i;
             break;

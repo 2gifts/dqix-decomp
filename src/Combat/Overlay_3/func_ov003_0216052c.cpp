@@ -14,8 +14,8 @@ enum { kRegion464 = 0x464 };
 struct Obj2081;
 
 extern "C" void* func_0202ae18(void);
-int CheckField0NonZero(int* obj);
-int HasElementByByte0xc4(struct Obj2081* obj, int key);
+int CheckField0NonZero_0202b7d8(int* obj);
+int HasElementByByte0xc4_020811d0(struct Obj2081* obj, int key);
 void UpdateOffsetsFromEntry02080a6c(void* param0, int id, short param2, short* param3, short* param4, short* param5, short* param6);
 void SetEntryFields_021604f4(char* obj, int valA, int valB, short index, unsigned char flag);
 
@@ -43,7 +43,7 @@ extern "C" ARM void func_ov003_0216052c(struct Combatant0216052c* obj) {
     if (obj->model == NULL) {
         return;
     }
-    if (CheckField0NonZero((int*)func_0202ae18()) != 0) {
+    if (CheckField0NonZero_0202b7d8((int*)func_0202ae18()) != 0) {
         return;
     }
     struct Obj2081* model = obj->model;
@@ -53,7 +53,7 @@ extern "C" ARM void func_ov003_0216052c(struct Combatant0216052c* obj) {
     struct ElementIds elements = data_ov003_0217f3ec.elements;
     for (int i = 0; i < 3; i++) {
         short id = elements.ids[i];
-        if (HasElementByByte0xc4(model, id)) {
+        if (HasElementByByte0xc4_020811d0(model, id)) {
             unsigned char slot = 1;
             for (unsigned char j = 0; j < 2; j++) {
                 short part = data_ov003_0217f448[i][j];

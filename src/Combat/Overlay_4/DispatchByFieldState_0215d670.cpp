@@ -3,7 +3,7 @@
 
 extern "C" void* func_0202ae18(void);
 struct SearchStruct;
-int TestFlagBitAt0xe(struct SearchStruct* obj, int value);
+int TestFlagBitAt0xe_0202c578(struct SearchStruct* obj, int value);
 extern "C" int func_ov004_0215c0c0(void* obj);
 extern "C" void func_ov011_021848a0(void* obj, int val);
 
@@ -26,7 +26,7 @@ ARM int DispatchByFieldState_0215d670(void* obj) {
         func_ov011_021848a0(obj, 0x2367);
         return 0;
     }
-    if (!TestFlagBitAt0xe((struct SearchStruct*)s, 0)) {
+    if (!TestFlagBitAt0xe_0202c578((struct SearchStruct*)s, 0)) {
         return 1;
     }
     func_ov011_021848a0(obj, 0x2369);

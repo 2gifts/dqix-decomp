@@ -55,25 +55,25 @@ struct Link0219344c {
 extern unsigned short data_02114e30;
 
 extern "C" void* func_02012fe4(void);
-unsigned int GetBitsInField0(unsigned int* obj, unsigned int mask);
-int TestFlagMask(unsigned short* pad, int buttons);
+unsigned int GetBitsInField0_0203b4c4(unsigned int* obj, unsigned int mask);
+int TestFlagMask_02012430(unsigned short* pad, int buttons);
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24** head);
 void ClearFlags0x40And0x80At0xe0(ByteFlags02033f2c* p);
 int NotifyEntriesFlag256_0218df50(void* a, void* b);
 extern "C" int func_ov017_0218dfd8(Actor0219344c* self);
 int GetField0xe4IfFlag0x40(BitFlag02033f44* p);
-int IsFlag0x1ceBit0x8Set(unsigned char* p);
+int IsFlag0x1ceBit0x8Set_02039dcc(unsigned char* p);
 extern "C" int func_ov017_02193290(Probe0219344c* probe, Actor0219344c* self, Vector3i* dest, Vector3i* pos, int* y, int* yLow, int hidden);
 extern "C" int func_02017d90(Zone0219344c* zone, int index, Grid0219344c* grid, Probe0219344c probe, Actor0219344c* self);
 extern "C" int func_ov017_02192b48(Grid0219344c* grid, Probe0219344c* probe, int count, Actor0219344c* self, int arg, Vector3i* dest, Vector3i* pos, int* y, int* yLow, int enable, int* reset, int inCell, int index, int hidden);
-unsigned char GetField0x397cValue(GameState* gs);
-void SetByteField0x253(void* obj);
+unsigned char GetField0x397cValue_020100b0(GameState* gs);
+void SetByteField0x253_020397c0(void* obj);
 int SetByte0xbeShiftPrev(Bytes02033b88* p, int val);
 void CancelPendingAction020397cc(Obj020397cc* obj, int val);
 extern "C" void func_020531f0(GameObject* obj);
-unsigned char* GetElementStride0x24(unsigned char* p, int i);
+unsigned char* GetElementStride0x24_020177a8(unsigned char* p, int i);
 void GetDeltaAndForward_0218daa8(void* res, Vec3* pos, int speed, int a, unsigned char b);
-unsigned char* GetActorEntryByIndex(ActorListManager* list, int i);
+unsigned char* GetActorEntryByIndex_0201777c(ActorListManager* list, int i);
 
 #define SETUP_PROBE()                                          \
     do {                                                       \
@@ -120,7 +120,7 @@ extern "C" ARM int func_ov017_0219344c(Actor0219344c* self, int arg, Vector3i* t
     hidden = self->GetFlags() & 0x4000000;
     self->DisableFlag(0x4000000);
     enable = 1;
-    if (GetBitsInField0((unsigned int*)res, 0x400) != 0 && TestFlagMask(&data_02114e30, 1) != 0) {
+    if (GetBitsInField0_0203b4c4((unsigned int*)res, 0x400) != 0 && TestFlagMask_02012430(&data_02114e30, 1) != 0) {
         enable = 0;
     }
     if ((self->unknown_0_ & 0x100) && (self->field18c & 1)) {
@@ -182,7 +182,7 @@ extern "C" ARM int func_ov017_0219344c(Actor0219344c* self, int arg, Vector3i* t
             saved = self->position_;
             dest = &saved;
             if (outA != NULL && outB != NULL) {
-                if (GetField0xe4IfFlag0x40((BitFlag02033f44*)self) && !IsFlag0x1ceBit0x8Set((unsigned char*)self) && notifyB != 0) {
+                if (GetField0xe4IfFlag0x40((BitFlag02033f44*)self) && !IsFlag0x1ceBit0x8Set_02039dcc((unsigned char*)self) && notifyB != 0) {
                     self->position_ = *target;
                     break;
                 }
@@ -232,7 +232,7 @@ extern "C" ARM int func_ov017_0219344c(Actor0219344c* self, int arg, Vector3i* t
         }
         if (dest != NULL && pathHits != 0) {
             short id = self->unknown_4_;
-            if (id != GetField0x397cValue(gs)) {
+            if (id != GetField0x397cValue_020100b0(gs)) {
                 continue;
             }
             found = func_ov017_02193290(&probe, self, dest, &pos, &y, &yLow, hidden);
@@ -254,7 +254,7 @@ extern "C" ARM int func_ov017_0219344c(Actor0219344c* self, int arg, Vector3i* t
     }
     if (reset != 0) {
         if (oldAC != 0 && player->obj3D_.unknown_4_ == self->unknown_4_) {
-            SetByteField0x253(player);
+            SetByteField0x253_020397c0(player);
         }
         self->fieldAC = 0;
     } else if (oldAC == 0) {
@@ -273,12 +273,12 @@ extern "C" ARM int func_ov017_0219344c(Actor0219344c* self, int arg, Vector3i* t
     Link0219344c* link = (Link0219344c*)res2->interactionSelection;
     if (link != NULL && !(startPos.x == endPos.x && startPos.y == endPos.y && startPos.z == endPos.z)) {
         if (link->kind == 2) {
-            unsigned char* elem = GetElementStride0x24(zone2, link->index);
+            unsigned char* elem = GetElementStride0x24_020177a8(zone2, link->index);
             if (elem != NULL) {
                 GetDeltaAndForward_0218daa8(res2, (Vec3*)elem, 0xccc, 0, 0);
             }
         } else if (hits == 0 && found == 0 && link->kind == 5) {
-            unsigned char* actor = GetActorEntryByIndex((ActorListManager*)zone2, link->index);
+            unsigned char* actor = GetActorEntryByIndex_0201777c((ActorListManager*)zone2, link->index);
             if (actor != NULL) {
                 GetDeltaAndForward_0218daa8(res2, (Vec3*)(actor + 0x24), 0xc51, 0, 0);
             }

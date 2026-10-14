@@ -20,7 +20,7 @@ struct Glyph020425b4 {
     signed char width;
 };
 
-void ClearTwoWordsAndByte(struct S_b20c* obj);
+void ClearTwoWordsAndByte_0205b20c(struct S_b20c* obj);
 void SetField0_0205b220(void* obj, int value);
 void SetFieldsAt0x4And0x8_0205b228(void* obj, int value, unsigned char flag);
 void* GetGlobalField0x1c020421a0(void);
@@ -92,7 +92,7 @@ extern "C" ARM void func_0203bebc(void* entry, void* buf, void* dest)
         break;
     }
     entry->advanceX = characterAdvance;
-    FontGlyphTable* font = GetFontGlyphTable(10);
+    FontGlyphTable* font = GetFontGlyphTable_020429bc(10);
     if (font == NULL) return;
     int height = font->glyphHeight;
     unsigned char raster[256];
@@ -165,7 +165,7 @@ extern "C" ARM void func_0203bebc(void* entry, void* buf, void* dest)
     }
 
     struct S_b20c localObj;
-    ClearTwoWordsAndByte(&localObj);
+    ClearTwoWordsAndByte_0205b20c(&localObj);
     SetField0_0205b220(&localObj, (int)fp);
     SetFieldsAt0x4And0x8_0205b228(&localObj, (int)arr, 4);
 

@@ -16,7 +16,7 @@ struct Struct_0205d81c {
     struct Elem_0205df38* f9c;
 };
 
-void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
+void SelectCoordsByFlag0x24_02012a84(unsigned char* obj, int* out1, int* out2);
 struct Elem_0205df38* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
 
 // USA: func_0205df38
@@ -33,7 +33,7 @@ extern "C" ARM int func_0205df38(struct Struct_0205d81c* s, int key) {
     g = (unsigned char*)&data_02114e54;
     if (g[0x55] == 0) goto zero;
 
-    SelectCoordsByFlag0x24(g, &touchY, &touchX);
+    SelectCoordsByFlag0x24_02012a84(g, &touchY, &touchX);
 
     e = FindElementByC40205d81c(s, key);
     if (e == 0) goto zero;

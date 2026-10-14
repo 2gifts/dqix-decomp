@@ -23,11 +23,11 @@ extern "C" void* func_02012fe4(void);
 void ClearAndFlagEntry0201ba1c(struct Base02019508* base, int key1, int key2);
 void EnqueueEventTag166_021cfe40(unsigned short a, unsigned short b, unsigned short c);
 extern "C" unsigned char* func_0205ec34(void);
-int TestBitInByteArray(int unused, unsigned char* arr, int index);
-int GetField0x3acValue(GameState* battleStruct);
-void MaybeInvoke0204719c(struct Foo02048004* obj);
+int TestBitInByteArray_0206dfb0(int unused, unsigned char* arr, int index);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
+void MaybeInvoke0204719c_02047230(struct Foo02048004* obj);
 StructDE234_020de234* FindElementByKey020dedd0(struct Container020dedd0* c, int key);
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 extern "C" void func_ov017_0218d510(int a, void* b);
 unsigned short GetPreferredPackedField020de234(struct StructDE234_020de234* p, int preferMid);
 
@@ -84,11 +84,11 @@ extern "C" ARM int func_ov017_021bf7ac(struct Obj021bf7ac* obj) {
 
     unsigned short listPos = 0;
     LootableContainerManager::Container* container = mgr->GetContainerByID(info->containerId, &listPos);
-    if (container != 0 && !TestBitInByteArray((int)flags, flags + 0x8c, container->uniqueID + 0x79e)) {
+    if (container != 0 && !TestBitInByteArray_0206dfb0((int)flags, flags + 0x8c, container->uniqueID + 0x79e)) {
         char* base = (char*)func_02012fe4();
         char* sub = base + regionalOffset0;
-        obj->entry = (struct Foo02048004*)(base + regionalOffset1 + GetField0x3acValue(gs) * 0x88);
-        MaybeInvoke0204719c(obj->entry);
+        obj->entry = (struct Foo02048004*)(base + regionalOffset1 + GetField0x3acValue_020100a8(gs) * 0x88);
+        MaybeInvoke0204719c_02047230(obj->entry);
         if (container->lootType == 1) {
             FileName_021bf7ac name = data_ov017_021d6ca4;
             obj->taskId = loader->QueueLoadFile(name.path, 0);
@@ -98,7 +98,7 @@ extern "C" ARM int func_ov017_021bf7ac(struct Obj021bf7ac* obj) {
                 if (elem->g == 0x5617) {
                     obj->field48 = 1;
                     obj->allocator.ResetAllocatorPointer();
-                    obj->allocator.CreateTypeA(AllocateAligned4(&data_02114e20, 0x4000), 0x4000);
+                    obj->allocator.CreateTypeA(AllocateAligned4_02012d88(&data_02114e20, 0x4000), 0x4000);
                     obj->allocator.Reset();
                     func_ov017_0218d510((int)func_ov017_0218b5b0(), &obj->allocator);
                 } else {

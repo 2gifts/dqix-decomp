@@ -12,7 +12,7 @@ extern int data_020fdd30;
 extern int data_020ef6f4;
 
 // USA: func_02028048
-ARM void RunBufferedScript(int handler0, int handler1, struct StreamHeader* buffer, int length) {
+ARM void RunBufferedScript_02028048(int handler0, int handler1, struct StreamHeader* buffer, int length) {
     char local[0x430];
     *(int*)&data_020fdd30 = handler0;
     *(int*)((char*)&data_020fdd30 + 4) = handler1;

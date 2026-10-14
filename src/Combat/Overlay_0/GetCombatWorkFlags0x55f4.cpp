@@ -7,6 +7,6 @@ enum { kFlagsOffset = 0x55f4 };
 #endif
 
 // USA: func_ov000_02160fd4
-ARM int GetCombatWorkFlags0x55f4(void* work, int mask) {
+ARM int GetCombatWorkFlags0x55f4_ov000_02160fd4(void* work, int mask) {
     return *(int*)((char*)work + kFlagsOffset) & mask;
 }

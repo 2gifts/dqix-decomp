@@ -5,7 +5,7 @@ int DecrementKeyEverywhere02086d88(unsigned char* self, int key);
 
 // USA: func_ov004_02167a0c
 ARM int DecrementKeyForCount_02167a0c(void* unused, int count) {
-	unsigned char* p = (unsigned char*)GetPtrField0x2a04(GameState::GetInstance());
+	unsigned char* p = (unsigned char*)GetPtrField0x2a04_02010828(GameState::GetInstance());
 	int i;
 	int v;
 	for (i = 0; i < count; i++) {

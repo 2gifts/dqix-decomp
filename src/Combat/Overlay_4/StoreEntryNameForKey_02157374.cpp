@@ -3,12 +3,12 @@
 
 struct EntryA68 { short key; void* value; };
 struct TableA68 { struct EntryA68* entries; short count; };
-void* FindEntryByKey(struct TableA68* table, int key);
+void* FindEntryByKey_02072a68(struct TableA68* table, int key);
 int DispatchAdjustmentIfType4_02157018(void* a, int key);
 int GetGlobalField0x1c020421a0();
 extern "C" void func_02046380(void* global);
 struct StoreStruct;
-void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
+void StoreInArray0x8b0_020465c0(struct StoreStruct* base, int index, int value);
 
 // USA: func_ov004_02157374  (semantic: StoreEntryNameForKey_02157374)
 extern "C" ARM void func_ov004_02157374(void* obj, int key, int cat, char* dst, unsigned char flag5) {
@@ -29,26 +29,26 @@ extern "C" ARM void func_ov004_02157374(void* obj, int key, int cat, char* dst, 
         (key >= 0xcbec && key <= 0xcbf1) ||
         (key >= 0xcbf5 && key < 0xccb0) ||
         (key >= 0xcf08 && key < 0xd034)) {
-        name = (const char*)FindEntryByKey(table, 0x64);
+        name = (const char*)FindEntryByKey_02072a68(table, 0x64);
     } else if ((key == 0x4e85) || (key >= 0x59d8 && key < 0x5dc0)) {
-        name = (const char*)FindEntryByKey(table, 0x65);
+        name = (const char*)FindEntryByKey_02072a68(table, 0x65);
     } else if (key == 0x4e8c) {
-        name = (const char*)FindEntryByKey(table, 0x66);
+        name = (const char*)FindEntryByKey_02072a68(table, 0x66);
     } else if (key == 0x4e8e) {
-        name = (const char*)FindEntryByKey(table, 0x67);
+        name = (const char*)FindEntryByKey_02072a68(table, 0x67);
     } else if (key >= 0xc800 && key < 0xc864) {
-        name = (const char*)FindEntryByKey(table, 0x68);
+        name = (const char*)FindEntryByKey_02072a68(table, 0x68);
     } else if (key >= 0xc350 && key < 0xc3b4) {
-        name = (const char*)FindEntryByKey(table, 0x69);
+        name = (const char*)FindEntryByKey_02072a68(table, 0x69);
     } else if ((key >= 0xc738 && key <= 0xc79e) ||
                (key >= 0xc7a0 && key < 0xc800) ||
                (key >= 0xc864 && key < 0xc8c8)) {
-        name = (const char*)FindEntryByKey(table, 0x6a);
+        name = (const char*)FindEntryByKey_02072a68(table, 0x6a);
     } else if (key == 0xc79f) {
 #if defined(jpn)
-        name = (const char*)FindEntryByKey(table, 0x6b);
+        name = (const char*)FindEntryByKey_02072a68(table, 0x6b);
 #else
-        name = (const char*)FindEntryByKey(table, 0x6a);
+        name = (const char*)FindEntryByKey_02072a68(table, 0x6a);
 #endif
     } else if ((key >= 0xcb20 && key <= 0xcb23) ||
                (key >= 0xcb2a && key <= 0xcb2c) ||
@@ -62,20 +62,20 @@ extern "C" ARM void func_ov004_02157374(void* obj, int key, int cat, char* dst, 
                (key >= 0xcd1e && key <= 0xcd20) ||
                (key >= 0xcddc && key <= 0xcddf) ||
                (key >= 0xcde6 && key <= 0xcde8)) {
-        name = (const char*)FindEntryByKey(table, 0x6c);
+        name = (const char*)FindEntryByKey_02072a68(table, 0x6c);
     } else {
         usedFallback = 1;
 #if defined(jpn)
         if (cat == 1) {
-            name = (const char*)FindEntryByKey(table, 0x6d);
+            name = (const char*)FindEntryByKey_02072a68(table, 0x6d);
         }
 #endif
         if (cat == 2) {
-            name = (const char*)FindEntryByKey(table, 0x70);
+            name = (const char*)FindEntryByKey_02072a68(table, 0x70);
         } else if (key >= 0x7918 && key < 0x7d00) {
-            name = (const char*)FindEntryByKey(table, 0x6f);
+            name = (const char*)FindEntryByKey_02072a68(table, 0x6f);
         } else {
-            name = (const char*)FindEntryByKey(table, 0x6e);
+            name = (const char*)FindEntryByKey_02072a68(table, 0x6e);
         }
     }
 
@@ -86,6 +86,6 @@ extern "C" ARM void func_ov004_02157374(void* obj, int key, int cat, char* dst, 
 
     void* g = (void*)GetGlobalField0x1c020421a0();
     func_02046380(g);
-    StoreInArray0x8b0((struct StoreStruct*)g, 0, key);
+    StoreInArray0x8b0_020465c0((struct StoreStruct*)g, 0, key);
     memcpy(dst, (void*)name, strlen(name));
 }

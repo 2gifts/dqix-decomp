@@ -14,7 +14,7 @@ ARM void SetFieldForMatchingCombatant_021c98f4(int target, int flag) {
 	GameState* bs = GameState::GetInstance();
 	int i;
 	for (i = 0; i < 4; i++) {
-		GameObject* c = GetCombatantWithFlag0x100(bs, i);
+		GameObject* c = GetCombatantWithFlag0x100_0200ff1c(bs, i);
 		if (!c) {
 			continue;
 		}

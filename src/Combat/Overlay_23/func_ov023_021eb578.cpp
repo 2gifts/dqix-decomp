@@ -20,13 +20,13 @@ struct Obj0204b8d0;
 struct Struct0205a198;
 struct ClearTarget0205a234;
 
-int GetWord0x0(int* obj);
+int GetWord0x0_0200fb8c(int* obj);
 void SetSubBrightness(GameResources* resources, int brightness, int duration);
 void SetMainBrightness(GameResources* resources, int brightness, int duration);
 int IsBrightnessTransitionActive(GameResources* resources);
 void* GetDataPtr02114e04_020d6c00(void);
-void OrBitsIntoField0(unsigned int* p, unsigned int mask);
-void OrGlobalFlag0x40(void);
+void OrBitsIntoField0_020466e4(unsigned int* p, unsigned int mask);
+void OrGlobalFlag0x40_020dc2bc(void);
 extern "C" void func_020dfec0(void* dest, void* allocator, void* fileData, unsigned int size);
 int GetGlobalField0x1c020421a0(void);
 void ConfigureSubBg1Control_021ec368(int screenSize, int colorMode, int screenBase, int charBase, int bit13);
@@ -35,7 +35,7 @@ extern "C" void func_ov023_021ec3c8(int screenSize, int colorMode, int screenBas
 extern "C" void func_ov023_021ec3f4(int screenSize, int colorMode, int screenBase, int charBase);
 void ConfigureBg1Control_021ec420(int screenSize, int colorMode, int screenBase, int charBase, int bit13);
 extern "C" void func_ov023_021ec454(int screenSize, int colorMode, int screenBase, int charBase);
-void SetWord0x18ClearByte0x1f(unsigned char* obj, int value);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char* obj, int value);
 extern "C" void func_0204b5b4(void*, int);
 int DispatchViaTable0204b5e8(struct Obj0204b5e8* obj, int a, int b);
 void AllocateAndClearBuffer0204b12c(struct AllocTarget0204b12c* obj, SafeAllocator* alloc);
@@ -132,8 +132,8 @@ extern "C" ARM void func_ov023_021eb578(Scene021eb578* self) {
     GameResources* res;
     BackgroundLoader* loader;
     unsigned char state;
-    res = (GameResources*)GetWord0x0((int*)GameState::GetInstance());
-    g = GetGlobal02109400();
+    res = (GameResources*)GetWord0x0_0200fb8c((int*)GameState::GetInstance());
+    g = GetGlobal02109400_02094a00();
     loader = BackgroundLoader::GetInstance();
     state = self->state;
 
@@ -156,8 +156,8 @@ extern "C" ARM void func_ov023_021eb578(Scene021eb578* self) {
             return;
         }
         if (self->flags & 0x10) {
-            OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 1);
-            OrGlobalFlag0x40();
+            OrBitsIntoField0_020466e4((unsigned int*)GetDataPtr02114e04_020d6c00(), 1);
+            OrGlobalFlag0x40_020dc2bc();
         }
 #if defined(jpn)
         self->taskId = loader->QueueLoadFile(data_ov023_021fd39c, NULL);
@@ -226,7 +226,7 @@ extern "C" ARM void func_ov023_021eb578(Scene021eb578* self) {
         }
         for (i = 0; i < 2; i++) {
             Layer021eb578* layer = &self->subLayers[i];
-            SetWord0x18ClearByte0x1f((unsigned char*)layer, 0);
+            SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)layer, 0);
             layer->screen = screens[i];
             layer->priority = 3;
             func_0204b5b4(layer, 0);

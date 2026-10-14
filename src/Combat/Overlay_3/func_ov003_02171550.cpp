@@ -14,7 +14,6 @@ enum { kRegionValue724_618 = 0x724 };
 enum { kRegionValue71C_61C = 0x71c };
 #endif
 
-
 struct SearchStruct;
 struct Obj02171550 {
     unsigned char field0;
@@ -25,13 +24,13 @@ struct Obj02171550 {
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202b000(void* ptr);
 extern "C" void func_0202b0f4(void* ptr);
-int SetState2AndCall0202d6c8(void* obj);
+int SetState2AndCall0202d6c8_0202b7ec(void* obj);
 extern "C" void func_0202c360(void* self, int value);
 extern "C" void func_0202b2f0(void* ptr);
-void CopyBattleTailToObjField0x102c(void* obj);
-void SetField0To5AndField0x1008To1(unsigned char* obj);
+void CopyBattleTailToObjField0x102c_0202c410(void* obj);
+void SetField0To5AndField0x1008To1_0202b828(unsigned char* obj);
 void RemoveSearchEntry0202c21c(struct SearchStruct* obj, int value);
-void SetSearchFlagBitAt0xc(struct SearchStruct* obj, int value);
+void SetSearchFlagBitAt0xc_0202c1e8(struct SearchStruct* obj, int value);
 extern "C" void func_0202c288(void* ptr);
 
 // USA: func_ov003_02171550  (semantic: StartSearchIfEligible_02171550)
@@ -53,13 +52,13 @@ extern "C" ARM void func_ov003_02171550(struct Obj02171550* obj) {
         return;
     }
 
-    SetState2AndCall0202d6c8(ptr);
+    SetState2AndCall0202d6c8_0202b7ec(ptr);
     func_0202c360(ptr, *(int*)((char*)c + 0x134));
     func_0202b2f0(ptr);
-    CopyBattleTailToObjField0x102c(ptr);
-    SetField0To5AndField0x1008To1((unsigned char*)ptr);
+    CopyBattleTailToObjField0x102c_0202c410(ptr);
+    SetField0To5AndField0x1008To1_0202b828((unsigned char*)ptr);
     RemoveSearchEntry0202c21c((struct SearchStruct*)ptr, 0xf);
-    SetSearchFlagBitAt0xc((struct SearchStruct*)ptr, 0);
+    SetSearchFlagBitAt0xc_0202c1e8((struct SearchStruct*)ptr, 0);
     func_0202c288(ptr);
 
     *(int*)((char*)obj + 4) = (rand() % 4 + 2) * 500;

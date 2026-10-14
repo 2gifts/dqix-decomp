@@ -41,7 +41,7 @@ struct WorldSettings { char pad0[0x2664]; char grottoState_[4]; };
 struct GrottoZoneStorage { char pad0[0xc]; int zone_; };
 int GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
 extern "C" WorldSettings* func_02012fe4();
-void* GetField0x3f8Address(GameState*);
+void* GetField0x3f8Address_0200fd0c(GameState*);
 int ListContainsId(ListHead02046b60*, int);
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
 extern "C" void func_0208f748(void*, int);
@@ -54,7 +54,7 @@ extern "C" ARM void func_ov017_021cf86c(void*, GrottoPacket* packet, GameState* 
     WorldSettings* settings = func_02012fe4();
     GrottoStruct* grotto;
     ListHead02046b60* list = overlay->list_;
-    GetField0x3f8Address(state);
+    GetField0x3f8Address_0200fd0c(state);
     grotto = state->GetGrottoStruct();
     if (ListContainsId(list, 0x4e)) {
         PendingGrotto* pending = overlay->pending_;

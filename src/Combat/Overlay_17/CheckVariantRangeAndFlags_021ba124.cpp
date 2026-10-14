@@ -8,7 +8,7 @@ struct BattleStruct021ba124;
 
 struct SearchStruct0202c1a4 { char pad[0x1038]; signed char arr[16]; };
 extern "C" int* func_0202ae18(void);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
 
 struct S_020103b4;
@@ -40,7 +40,7 @@ extern "C" ARM int func_ov017_021ba124(struct Variant02030b0c* v, int idx) {
 
     GameState::GetInstance();
     struct SearchStruct0202c1a4* search = (struct SearchStruct0202c1a4*)func_0202ae18();
-    if (!CheckField0NonZero((int*)search)) return 1;
+    if (!CheckField0NonZero_0202b7d8((int*)search)) return 1;
     if (GetSearchStructCurrentArrEntry(search) != 0) return 1;
 
     int a = ((Script::Parameter*)v)->ToInt();

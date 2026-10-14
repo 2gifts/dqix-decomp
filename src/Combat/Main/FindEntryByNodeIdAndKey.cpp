@@ -2,7 +2,7 @@
 #include "World/ZoneChest.h"
 
 // USA: func_02018b34
-ARM BmdjSceneElement* FindEntryByNodeIdAndKey(Zone3D* zone, ZoneFeatures::Opcode6aEntry* parameter) {
+ARM BmdjSceneElement* FindEntryByNodeIdAndKey_02018b34(Zone3D* zone, ZoneFeatures::Opcode6aEntry* parameter) {
     BmdjScriptNode* node;
     BmdjSceneElement* result;
     int count;

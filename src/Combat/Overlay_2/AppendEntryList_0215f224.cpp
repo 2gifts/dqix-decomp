@@ -4,11 +4,11 @@
 struct Container020e0310;
 int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 int AppendFrameTag02041c08(char* dst, int a1, int a2, int a3, int a4, int a5);
-int AppendCursorTag(char* dst, int cursor);
-int AppendNameTag(char* dst, int n, const char* name);
+int AppendCursorTag_02041ea4(char* dst, int cursor);
+int AppendNameTag_02041b70(char* dst, int n, const char* name);
 int AppendString02042058(char* dst, const char* src);
 int AppendFormatted02041fac(char* buf, int a, int b);
-int AppendXYTag(char* dst, int x, int y);
+int AppendXYTag_02041a90(char* dst, int x, int y);
 
 struct UnkStruct0205c508;
 void ComputeProductSums0205c508(struct UnkStruct0205c508* s, int* out1, int* out2);
@@ -38,7 +38,7 @@ ARM void AppendEntryList_0215f224(char* p, char* dst, int flag2) {
     if (flag2) {
         AppendFrameTag02041c08(dst, cursor, 8, 5, 5, 5);
     }
-    AppendCursorTag(dst, cursor);
+    AppendCursorTag_02041ea4(dst, cursor);
 
     char* fld = p + 0x2c8 + 0xc00;
     int out1, out2;
@@ -52,7 +52,7 @@ ARM void AppendEntryList_0215f224(char* p, char* dst, int flag2) {
         struct Entry020a83b0* entry = FindEntryByByteId020a83b0((struct List020a83b0*)(*(int*)(p + 0x2000 + 0x474)), (short)i);
         if (entry != NULL) {
             int rem = i % 6;
-            AppendNameTag(dst, rem, *(const char**)((char*)entry + 4));
+            AppendNameTag_02041b70(dst, rem, *(const char**)((char*)entry + 4));
             if (i != out2 - 1) {
                 AppendString02042058(dst, *(char**)(p + 0x1000 + 0xbdc));
             }
@@ -68,7 +68,7 @@ ARM void AppendEntryList_0215f224(char* p, char* dst, int flag2) {
         int width = func_020420e8(buf, 0);
         int rounded = width + (width & 1);
         int xoff = (0x78 - rounded) >> 1;
-        AppendXYTag(dst, xoff, 0x63);
+        AppendXYTag_02041a90(dst, xoff, 0x63);
         AppendString02042058(dst, buf);
     }
 }

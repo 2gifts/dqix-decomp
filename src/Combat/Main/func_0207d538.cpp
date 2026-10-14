@@ -14,12 +14,12 @@ extern "C" void func_0207d2c4(void*, int);
 extern "C" void func_02046380(StoreStruct*);
 extern "C" void func_02046608(StoreStruct*, int, const char*, char*, int, int, int);
 StoreStruct* GetGlobalField0x1c020421a0();
-unsigned char GetField0x397cValue(GameState*);
+unsigned char GetField0x397cValue_020100b0(GameState*);
 void InitObjFromCombatantId020e4bf4(void*, int);
 void* Clear12Bytes020e46c4(void*);
 void DispatchIfCountPositive020dcf7c(int, void*);
-char* CallFunc020e0434With02153694(int);
-void StoreInArray0x8b0(StoreStruct*, int, int);
+char* CallFunc020e0434With02153694_020e51cc(int);
+void StoreInArray0x8b0_020465c0(StoreStruct*, int, int);
 
 #if defined(jpn)
 extern "C" void func_020de968(int, char*);
@@ -62,7 +62,7 @@ extern "C" ARM int func_0207d538(void* owner, int type, int value, char* output)
             StoreStruct* formatter = GetGlobalField0x1c020421a0();
             func_02046380(formatter);
             CombatantText combatant;
-            InitObjFromCombatantId020e4bf4(&combatant, GetField0x397cValue(GameState::GetInstance()));
+            InitObjFromCombatantId020e4bf4(&combatant, GetField0x397cValue_020100b0(GameState::GetInstance()));
             formatter->combatant = &combatant;
             char first[0x80] = {};
             char second[0x80] = {};
@@ -72,7 +72,7 @@ extern "C" ARM int func_0207d538(void* owner, int type, int value, char* output)
             number.second = second;
             DispatchIfCountPositive020dcf7c(amount, &number);
             formatter->number = &number;
-            char* message = CallFunc020e0434With02153694(0x54);
+            char* message = CallFunc020e0434With02153694_020e51cc(0x54);
             func_02046608(formatter, 12, message, output, 0xe3, 0, 1);
 #endif
             break;
@@ -87,8 +87,8 @@ extern "C" ARM int func_0207d538(void* owner, int type, int value, char* output)
 #else
         StoreStruct* formatter = GetGlobalField0x1c020421a0();
         func_02046380(formatter);
-        StoreInArray0x8b0(formatter, 0, value);
-        char* message = CallFunc020e0434With02153694(0x3f4);
+        StoreInArray0x8b0_020465c0(formatter, 0, value);
+        char* message = CallFunc020e0434With02153694_020e51cc(0x3f4);
         func_02046608(formatter, 12, message, output, 0xe3, 0, 1);
 #endif
         return 1;
@@ -96,7 +96,7 @@ extern "C" ARM int func_0207d538(void* owner, int type, int value, char* output)
 #if defined(jpn)
         sprintf(output, &data_020f1094);
 #else
-        sprintf(output, CallFunc020e0434With02153694(0x2d));
+        sprintf(output, CallFunc020e0434With02153694_020e51cc(0x2d));
 #endif
         return 0;
     }

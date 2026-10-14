@@ -5,12 +5,12 @@ struct Words021e60c4 { struct WordsInner021fccec mid; };
 struct FlagByte021fccec { unsigned char pad[0x864]; unsigned char flag : 1; };
 extern "C" void func_ov023_021e613c(struct Words021e60c4* dst, void* src);
 int fix32ReduceAngle0To2Pi(int angle);
-void SetFogState(int enable, unsigned int fogMode, unsigned int fogShift, unsigned short fogOffset);
+void SetFogState_020c54a4(int enable, unsigned int fogMode, unsigned int fogShift, unsigned short fogOffset);
 void SetFourWordBlocks_021e6088(void* obj, struct Words021e60c4* src);
 
 // USA: func_ov023_021fccec  (semantic: ResetFogAndSelectedEntryAngle_021fccec)
 extern "C" ARM void func_ov023_021fccec(void* obj) {
-    SetFogState(0, 0, 0, 0);
+    SetFogState_020c54a4(0, 0, 0, 0);
     unsigned int flag = ((struct FlagByte021fccec*)((char*)obj + 0x1000))->flag;
     void* entry = (char*)obj + 0x20 + flag * 0xc20;
     struct Words021e60c4 copy;

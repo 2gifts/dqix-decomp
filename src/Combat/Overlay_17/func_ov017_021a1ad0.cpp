@@ -32,12 +32,12 @@ struct CollisionFrame021a1ad0 {
 
     CollisionFrame021a1ad0(const Vector3fix& position) : origin(position) {}
 };
-Entry_02028bd0* GetEntryTableBase();
+Entry_02028bd0* GetEntryTableBase_02027ca4();
 Entry_02028bd0* GetElementStride0x318(Element0x318_02028bac*, int);
 Entry_02028bd0* FindInlineEntryById(Entry_02028bd0*, int);
 void TickActorAndDispatchPhase02076b58(Obj02076b58*);
 int IsValueInRange0201b5d8(int);
-int CheckField0NonZero(int*);
+int CheckField0NonZero_0202b7d8(int*);
 void EnqueueEventTag134_021c9544(int, int, int, int);
 extern "C" int* func_0202ae18();
 extern "C" unsigned short* func_02012fe4();
@@ -49,7 +49,7 @@ extern "C" void func_02076a8c(FieldMonster021a1ad0*);
 // USA: func_ov017_021a1ad0
 extern "C" ARM void func_ov017_021a1ad0() {
     GameState* state = GameState::GetInstance();
-    Entry_02028bd0* table = GetEntryTableBase();
+    Entry_02028bd0* table = GetEntryTableBase_02027ca4();
     int* manager = func_0202ae18();
     unsigned short* currentArea = func_02012fe4();
     if (func_0202c508(manager)) {
@@ -104,7 +104,7 @@ collisionComplete:
                 if (clear && monster->phase != 8 && monster->phase != 9) {
                     func_02076a8c(monster);
                     monster->object.MakeHidden();
-                    if (CheckField0NonZero(manager) && entry) {
+                    if (CheckField0NonZero_0202b7d8(manager) && entry) {
                         EnqueueEventTag134_021c9544(entry->id, slot, monster->object.unknown_2_, tag);
                     }
                 }

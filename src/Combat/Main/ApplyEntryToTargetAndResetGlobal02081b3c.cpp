@@ -10,7 +10,7 @@ struct Flags14_02081b3c {
     unsigned char f14pad : 6;
 };
 
-ARM int IsValueEqual12(int x);
+ARM int IsValueEqual12_02042190(int x);
 ARM int GetGlobalField0x1c020421a0(void);
 ARM void CopyTextAndUppercaseIfFlagged0206819c(const char* src, char* dst, int flag);
 
@@ -34,7 +34,7 @@ ARM void ApplyEntryToTargetAndResetGlobal02081b3c(void* worldRaw, void* targetRa
         hiNibbleOrFive = 5;
     }
 
-    int boolResult = IsValueEqual12(F13(obj)->loNibble);
+    int boolResult = IsValueEqual12_02042190(F13(obj)->loNibble);
 
     char buf[0x100];
     char* textPtr = *(char**)(obj + 0x0);

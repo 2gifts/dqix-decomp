@@ -4,10 +4,10 @@
 struct Variant02030b0c { int tag; int u; };
 
 struct GetRowByIndexRow;
-GetRowByIndexRow* GetRowByIndex(GetRowByIndexRow* base, int i);
+GetRowByIndexRow* GetRowByIndex_0209b9c0(GetRowByIndexRow* base, int i);
 
 struct StoreWordToRowArrayRow;
-void StoreWordToRowArray(StoreWordToRowArrayRow* base, int i, int j, unsigned int* src);
+void StoreWordToRowArray_0209b9a8(StoreWordToRowArrayRow* base, int i, int j, unsigned int* src);
 
 extern void* data_02109bac;
 
@@ -23,12 +23,12 @@ extern "C" ARM int func_0209ae10(struct Variant02030b0c* arg0) {
     unsigned int v = (unsigned int)((Script::Parameter*)arg0)->ToInt();
 
     q = *(char**)((char*)data_02109bac + 0x0);
-    StoreWordToRowArray((StoreWordToRowArrayRow*)q, i, j, &v);
+    StoreWordToRowArray_0209b9a8((StoreWordToRowArrayRow*)q, i, j, &v);
 
     *(int*)(*(char**)(char*)data_02109bac + 0x1d0) = j + 1;
 
     q = *(char**)((char*)data_02109bac + 0x0);
-    struct GetRowByIndexRow* row = GetRowByIndex((GetRowByIndexRow*)q, i);
+    struct GetRowByIndexRow* row = GetRowByIndex_0209b9c0((GetRowByIndexRow*)q, i);
     if (row != 0) {
         unsigned char* cnt = (unsigned char*)row + 3;
         *cnt = *cnt + 1;

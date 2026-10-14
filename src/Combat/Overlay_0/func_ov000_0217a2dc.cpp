@@ -5,15 +5,15 @@ struct Container020e0310;
 
 int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 int AppendString02042058(char* dst, const char* src);
-int IsField0x118Equal2(void* obj);
+int IsField0x118Equal2_ov000_0217542c(void* obj);
 int AppendFrameTag02041c08(char* dst, int a1, int a2, int a3, int a4, int a5);
 
-int AppendPaletteTag(char* dst, int palette);
+int AppendPaletteTag_02041e70(char* dst, int palette);
 const char** SearchBothTables02079e2c(char* table, int key);
-int AppendCursorTag(char* dst, int cursor);
-int AppendNameTag(char* dst, int n, const char* name);
+int AppendCursorTag_02041ea4(char* dst, int cursor);
+int AppendNameTag_02041b70(char* dst, int n, const char* name);
 extern "C" int func_020420e8(const char* text, int large);
-int AppendXYTag(char* dst, int x, int y);
+int AppendXYTag_02041a90(char* dst, int x, int y);
 int AppendLineTag02041cc0(char* dst, int a1);
 #if defined(jpn)
 void* GetGlobalField0x1c020421a0();
@@ -47,26 +47,26 @@ extern "C" ARM void func_ov000_0217a2dc(struct ItemMenu0217a2dc* menu, int unuse
     AppendString02042058(dst, separator);
 
     if (menu->field1D81) {
-        if (IsField0x118Equal2(menu)) {
+        if (IsField0x118Equal2_ov000_0217542c(menu)) {
             AppendFrameTag02041c08(dst, cursor, 8, 5, 5, 5);
         }
-        ActionDataTables* table = GetData02108e10();
+        ActionDataTables* table = GetData02108e10_020797dc();
         if (table == NULL) {
             return;
         }
         for (int i = 0; i < menu->itemCount; i++) {
 #if defined(jpn)
             if (i == cursor) {
-                AppendPaletteTag(dst, 5);
+                AppendPaletteTag_02041e70(dst, 5);
             } else {
-                AppendPaletteTag(dst, 3);
+                AppendPaletteTag_02041e70(dst, 3);
             }
 #else
             int palette = 3;
             if (i == cursor) {
                 palette = 5;
             }
-            AppendPaletteTag(dst, palette);
+            AppendPaletteTag_02041e70(dst, palette);
 #endif
             if (menu->itemIds[i] == 0) {
                 AppendString02042058(dst, emptyName);
@@ -90,17 +90,17 @@ extern "C" ARM void func_ov000_0217a2dc(struct ItemMenu0217a2dc* menu, int unuse
             AppendString02042058(dst, separator);
         }
     } else {
-        if (IsField0x118Equal2(menu)) {
+        if (IsField0x118Equal2_ov000_0217542c(menu)) {
             AppendFrameTag02041c08(dst, cursor, 8, 5, 5, 5);
         }
-        AppendCursorTag(dst, cursor);
-        ActionDataTables* table = GetData02108e10();
+        AppendCursorTag_02041ea4(dst, cursor);
+        ActionDataTables* table = GetData02108e10_020797dc();
         if (table == NULL) {
             return;
         }
         for (int i = 0; i < menu->itemCount; i++) {
             if (menu->itemIds[i] == 0) {
-                AppendNameTag(dst, i, emptyName);
+                AppendNameTag_02041b70(dst, i, emptyName);
             } else {
                 const char** entry = SearchBothTables02079e2c((char*)table, (short)menu->itemIds[i]);
                 if (entry == NULL) {
@@ -110,9 +110,9 @@ extern "C" ARM void func_ov000_0217a2dc(struct ItemMenu0217a2dc* menu, int unuse
                 char name[0x40];
                 __clear(name, sizeof(name));
                 func_02041f50(*entry, name);
-                AppendNameTag(dst, i, name);
+                AppendNameTag_02041b70(dst, i, name);
 #else
-                AppendNameTag(dst, i, *entry);
+                AppendNameTag_02041b70(dst, i, *entry);
 #endif
             }
             if (i == menu->itemCount - 1) {
@@ -122,7 +122,7 @@ extern "C" ARM void func_ov000_0217a2dc(struct ItemMenu0217a2dc* menu, int unuse
         }
     }
 
-    AppendPaletteTag(dst, 0xf);
+    AppendPaletteTag_02041e70(dst, 0xf);
 #if defined(jpn)
     void* formatter = GetGlobalField0x1c020421a0();
     func_02046380(formatter);
@@ -131,7 +131,7 @@ extern "C" ARM void func_ov000_0217a2dc(struct ItemMenu0217a2dc* menu, int unuse
     AppendString02042058(dst, data_ov000_021851af);
 #else
     const char* title = (const char*)GetFieldByKey020e0434(strings, 0x21);
-    AppendXYTag(dst, (0xb0 - func_020420e8(title, 0)) >> 1, 5);
+    AppendXYTag_02041a90(dst, (0xb0 - func_020420e8(title, 0)) >> 1, 5);
     AppendString02042058(dst, title);
     AppendLineTag02041cc0(dst, 0x11);
 #endif

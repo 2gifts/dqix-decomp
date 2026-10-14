@@ -8,15 +8,15 @@ enum { dispatchFieldOffset = 0x950 };
 int MatchesAnyTableEntry020dd19c(unsigned int, int);
 #include "GameState/GameState.h"
 
-void* GetFieldAt0x150(unsigned char*);
+void* GetFieldAt0x150_02053c6c(unsigned char*);
 
 // USA: func_020dd154
-ARM int DispatchByField0x950Byte(int combatantId, int b) {
-    GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), combatantId);
+ARM int DispatchByField0x950Byte_020dd154(int combatantId, int b) {
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), combatantId);
     if (combatant == NULL) {
         return 0;
     }
-    void* p = GetFieldAt0x150((unsigned char*)combatant);
+    void* p = GetFieldAt0x150_02053c6c((unsigned char*)combatant);
     if (p == NULL) {
         return 0;
     }

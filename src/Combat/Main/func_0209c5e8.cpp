@@ -22,7 +22,7 @@ struct Actor0209c5e8 {
 struct Actor0209c678;
 struct Obj0203aba8;
 
-int IsBattleActiveAndCombatantsBit0Set();
+int IsBattleActiveAndCombatantsBit0Set_0209c140();
 void DispatchContextByState0209c678(struct Actor0209c678* actor, int arg);
 void SetContextAndDispatch0203ac10(void* obj, void* a, int b);
 int TryDispatchOrFallback0203aba8(struct Obj0203aba8* obj, void* key, void* target);
@@ -30,7 +30,7 @@ int TryDispatchOrFallback0203aba8(struct Obj0203aba8* obj, void* key, void* targ
 // USA: func_0209c5e8
 extern "C" ARM void func_0209c5e8(struct Actor0209c5e8* actor) {
     if (actor->field_c8.bit2) return;
-    if (IsBattleActiveAndCombatantsBit0Set() != 0) {
+    if (IsBattleActiveAndCombatantsBit0Set_0209c140() != 0) {
         DispatchContextByState0209c678((struct Actor0209c678*)actor, 0);
         return;
     }

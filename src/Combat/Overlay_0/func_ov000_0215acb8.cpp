@@ -3,8 +3,8 @@
 #include "std_library_functions.h"
 
 struct S_10088;
-int IsFlag10088Set(struct S_10088* obj);
-int IsFlag0x18Bit0x2000Set(GameObject* combatant);
+int IsFlag10088Set_02010088(struct S_10088* obj);
+int IsFlag0x18Bit0x2000Set_ov000_02153c0c(GameObject* combatant);
 
 struct ActionNode0215acb8 {
     unsigned short action;
@@ -68,10 +68,10 @@ extern "C" ARM void func_ov000_0215acb8(struct Battle0215acb8* battle, int comba
     if (c == NULL) {
         return;
     }
-    if (IsFlag10088Set((struct S_10088*)c)) {
+    if (IsFlag10088Set_02010088((struct S_10088*)c)) {
         return;
     }
-    if (IsFlag0x18Bit0x2000Set(c)) {
+    if (IsFlag0x18Bit0x2000Set_ov000_02153c0c(c)) {
         return;
     }
     struct ActionNode0215acb8* action = &battle->actions[battle->actionCount];

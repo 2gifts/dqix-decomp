@@ -12,9 +12,9 @@ extern "C" float _fflt(int v);
 extern "C" float _fsub(float a, float b);
 extern "C" int _ffix(float v);
 
-extern void ClearIntAt0x23c(unsigned char* obj);
-extern int GetField0x70(void* obj);
-extern void SetField0x23cTrue(void* obj);
+extern void ClearIntAt0x23c_020a27b8(unsigned char* obj);
+extern int GetField0x70_0202e7f0(void* obj);
+extern void SetField0x23cTrue_020a27ac(void* obj);
 struct Struct0203cedc;
 extern void SetCombatFlags0x5c(struct Struct0203cedc* obj, int b, int c);
 struct Obj0203f1e4;
@@ -40,8 +40,8 @@ extern "C" ARM void func_0203ca24(struct Obj0203ca24* obj, void* p23c) {
     int b;
     signed char v;
 
-    ClearIntAt0x23c((unsigned char*)p23c);
-    a = GetField0x70(p23c);
+    ClearIntAt0x23c_020a27b8((unsigned char*)p23c);
+    a = GetField0x70_0202e7f0(p23c);
     b = _ffix(_fsub(25736.0f, _fflt(1608)));
     memset(buf, 0, 19);
 
@@ -93,7 +93,7 @@ tail:
         if (obj->field94 == 0) {
             SetCombatFlags0x5c((struct Struct0203cedc*)obj, 0, 0);
             obj->field94 = 0xf;
-            SetField0x23cTrue(p23c);
+            SetField0x23cTrue_020a27ac(p23c);
             data_020efc18 = -1;
         }
     }

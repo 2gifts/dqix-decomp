@@ -3,7 +3,7 @@
 
 extern "C" void* func_0205ec34();
 struct GameState;
-void* GetPtrField0x2a04(GameState*);
+void* GetPtrField0x2a04_02010828(GameState*);
 extern "C" int func_0209645c(void* list, int value);
 struct PackedNibbleArray0206e120;
 int GetPackedNibbleField(PackedNibbleArray0206e120*, int);
@@ -36,7 +36,7 @@ extern "C" ARM int func_02095d30(struct List02095d30* list, int value, int mode)
     }
     void* gs = GameState::GetInstance();
     void* nibbles = func_0205ec34();
-    void* obj = GetPtrField0x2a04((GameState*)gs);
+    void* obj = GetPtrField0x2a04_02010828((GameState*)gs);
     struct Node02095d30* cur;
     for (cur = list->head; cur != 0; cur = cur->next) {
         if (cur->id != value) {

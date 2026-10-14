@@ -3,7 +3,7 @@
 #include "GameState/GameState.h"
 
 // USA: func_020ac494
-ARM int CopyInBattleField0x7540(void* src) {
+ARM int CopyInBattleField0x7540_020ac494(void* src) {
 #if defined(jpn)
     int* region = (int*)((char*)GameState::GetInstance() + 0x2c4);
 #else

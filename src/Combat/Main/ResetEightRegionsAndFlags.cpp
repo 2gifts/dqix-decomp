@@ -8,7 +8,7 @@
 void ClearRegion02093980(char* obj);
 
 // USA: func_02093a14
-ARM void ResetEightRegionsAndFlags(char* obj) {
+ARM void ResetEightRegionsAndFlags_02093a14(char* obj) {
     unsigned char i;
     for (i = 0; i < 8; i++) {
         ClearRegion02093980(obj + i * (IS_JPN ? 0x10 : 0x34));

@@ -2,7 +2,7 @@
 #include "Combat/Overlay_0/GetCombatantByID.h"
 #include "GameState/GameState.h"
 
-int CheckField0x14Flags0x9Clear(unsigned char* obj);
+int CheckField0x14Flags0x9Clear_0208830c(unsigned char* obj);
 void ResetStateFields02088338(unsigned char* obj);
 struct Ctx_021e929c;
 int SelectMessageByFlags_021e929c(struct Ctx_021e929c* ctx, int id, int flag);
@@ -47,7 +47,7 @@ extern "C" ARM void* func_ov024_021dbd84(struct Obj_021dbd84* obj, int unused, i
     if (!c) return 0;
     int special = 0;
     union { struct { int lo; int hi; }; unsigned long long v; } local;
-    int clear = CheckField0x14Flags0x9Clear((unsigned char*)c->currentStats_);
+    int clear = CheckField0x14Flags0x9Clear_0208830c((unsigned char*)c->currentStats_);
     if (clear && flagArg) special = 1;
     local.lo = 0;
     local.hi = 0;

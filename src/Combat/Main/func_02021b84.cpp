@@ -17,19 +17,19 @@ extern char data_020ef4b1[], data_020ef4c9[], data_020ef4d0[];
 
 extern "C" void* func_02012fe4(void);
 extern "C" void* func_0203bd08(void);
-void* GetData02105254(void);
+void* GetData02105254_0203b628(void);
 extern "C" void func_02021428(void* obj, int amount);
 
 struct AxisFloats0203b5a0;
 int IsAxisIntWithin16(struct AxisFloats0203b5a0* s, int axis);
 
-void InitSubScreenDisplay(void* context);
+void InitSubScreenDisplay_020209d0(void* context);
 void TailForward0203b66c(char* obj);
 void InitSubObject0203bd78(char* obj);
 void InitBattleContext0203bd24(char* obj);
 void SetArraySlotFlag0203b718(void* objPtr, int mode, int idx, int fillByte);
 extern "C" void func_0203ba74(void* obj);
-void DelayThenSyncBit0(void);
+void DelayThenSyncBit0_020c9820(void);
 #if defined(jpn)
 void FinalizeRecordListDisplay02020cb8(void* self, int handle);
 void RefreshRecordListDisplay02020e58(void* self, int handle);
@@ -45,7 +45,7 @@ void InitStruct0205a444(char* obj);
 struct Rec020467f0;
 int ProcessRecords0205a498(void* a, struct Rec020467f0* b, int flag, void* d);
 void SetBitfieldStoreBytes0205af38(int a, char* obj, int c, int d);
-void* GetGlobalPtr02105244();
+void* GetGlobalPtr02105244_0203bd14();
 int InitAndCopyBuffer020233b8(void* arg0, int flag1);
 extern "C" void* func_0203be4c(void);
 void InitFourEntrySlots02020aa0(void* obj);
@@ -89,7 +89,7 @@ extern "C" ARM void func_02021b84(MapDisplay* self) {
     func_02012fe4();
     axis = func_ov017_0218b5b0();
     battleCtx = (char*)func_0203bd08();
-    table = (char*)GetData02105254();
+    table = (char*)GetData02105254_0203b628();
     alloc = GetAlloc02021b84(axis, 12);
     grotto = game->GetGrottoStruct();
     state = self->loadStage;
@@ -135,7 +135,7 @@ extern "C" ARM void func_02021b84(MapDisplay* self) {
         if (loader->GetTaskStatus(self->task9fc) == 0) return;
         if (loader->GetTaskStatus(self->taska00) == 0) return;
         func_02020720(self);
-        InitSubScreenDisplay(self);
+        InitSubScreenDisplay_020209d0(self);
         alloc->Reset();
         TailForward0203b66c(table);
         InitSubObject0203bd78(battleCtx);
@@ -143,7 +143,7 @@ extern "C" ARM void func_02021b84(MapDisplay* self) {
         SetArraySlotFlag0203b718(table, 1, 0, 0);
         SetArraySlotFlag0203b718(table, 1, 1, 0);
         func_0203ba74(table);
-        DelayThenSyncBit0();
+        DelayThenSyncBit0_020c9820();
 #if defined(jpn)
         FinalizeRecordListDisplay02020cb8(self, self->task9fc);
 #else
@@ -197,7 +197,7 @@ extern "C" ARM void func_02021b84(MapDisplay* self) {
         ProcessRecords0205a498((char*)&self->entryList, (struct Rec020467f0*)fileData, fileLength, alloc);
         SetBitfieldStoreBytes0205af38((int)((char*)&self->entryList), (char*)&self->records[9], 1, 1);
         SetBitfieldStoreBytes0205af38((int)((char*)&self->entryList), (char*)&self->records[11], 1, 1);
-        *(int*)((char*)GetGlobalPtr02105244() +
+        *(int*)((char*)GetGlobalPtr02105244_0203bd14() +
 #if defined(jpn)
                 0x608
 #else
@@ -210,7 +210,7 @@ extern "C" ARM void func_02021b84(MapDisplay* self) {
         char* vram = (char*)0x06600000;
         VectorizedInvertedMemcpy(vram + 0x2bc0, buffer, 0x540);
         func_02023218(self, buffer, 0, 0x540);
-        DelayThenSyncBit0();
+        DelayThenSyncBit0_020c9820();
         CleanInvalidateCacheRange(buffer, 0x540);
         LoadToSubObjVRAM(buffer, 0x2bc0, 0x540);
 #else
@@ -220,7 +220,7 @@ extern "C" ARM void func_02021b84(MapDisplay* self) {
 #endif
         func_0203bd08();
         char* p = (char*)func_0203be4c() + 0x2e8;
-        *(char**)GetGlobalPtr02105244() = p;
+        *(char**)GetGlobalPtr02105244_0203bd14() = p;
         BackgroundLoader::GetInstance()->RemoveTask(self->taska04);
         self->taska04 = -1;
         InitFourEntrySlots02020aa0(self);
@@ -234,7 +234,7 @@ extern "C" ARM void func_02021b84(MapDisplay* self) {
         self->field9c8 = 0;
         self->field9c3 = 0;
         self->loadStage = self->loadStage + 1;
-        DelayThenSyncBit0();
+        DelayThenSyncBit0_020c9820();
         func_0202343c(self);
         MarkActiveCombatantSlots02026b7c((unsigned char*)self);
         func_02026bdc(self, 0);

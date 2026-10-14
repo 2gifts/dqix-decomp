@@ -7,7 +7,7 @@ enum { stateByteOffset = 0x9ca, clearPointerOffset = 0x10, readyFlagIndex = 2 };
 #include "GameState/GameState.h"
 
 int GetGlobalField0x1c020421a0(void);
-void SetByte0x7f70(void* obj, unsigned char value);
+void SetByte0x7f70_02012028(void* obj, unsigned char value);
 
 struct Struct020a9ea4;
 void ClearStruct020a9ea4(struct Struct020a9ea4* p);
@@ -57,7 +57,7 @@ extern unsigned char data_02108760;
 extern "C" ARM int func_ov004_0216e638(void* a) {
     void* self = a;
     *(unsigned char*)((char*)GetGlobalField0x1c020421a0() + 0x1000 + stateByteOffset) = 0;
-    SetByte0x7f70(GameState::GetInstance(), 0);
+    SetByte0x7f70_02012028(GameState::GetInstance(), 0);
 
     ClearStruct020a9ea4(*(struct Struct020a9ea4**)((char*)&data_ov004_02171034 + clearPointerOffset));
     (&data_ov004_02171034)[readyFlagIndex] = 1;

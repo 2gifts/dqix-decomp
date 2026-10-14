@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_0201206c
-ARM void SetWord0x71f8(void* obj, int value) {
+ARM void SetWord0x71f8_0201206c(void* obj, int value) {
 #if defined(jpn)
     *(int*)((unsigned char*)obj + 0x6000 + 0xfb8) = value;
 #else

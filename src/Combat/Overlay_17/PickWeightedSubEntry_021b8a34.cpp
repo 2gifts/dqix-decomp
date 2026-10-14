@@ -6,13 +6,13 @@ struct KeyField021b8a34 { unsigned int keyLow : 12; unsigned int keyHigh : 20; }
 struct WeightField021b8a34 { unsigned short value : 8; unsigned short chance : 8; };
 
 int GetBTRandom(void);
-FindRowByIdRow* FindRowById(FindRowByIdRow* base, int key);
+FindRowByIdRow* FindRowById_0209b9e4(FindRowByIdRow* base, int key);
 extern "C" int func_02032370(int max);
 
 // USA: func_ov017_021b8a34
 ARM int PickWeightedSubEntry_021b8a34(FindRowByIdRow* table, int id, int key12) {
     GetBTRandom();
-    FindRowByIdRow* row = FindRowById(table, id);
+    FindRowByIdRow* row = FindRowById_0209b9e4(table, id);
     if (row != NULL) {
         int i;
         for (i = 0; i < *(unsigned char*)((char*)row + 2); i++) {

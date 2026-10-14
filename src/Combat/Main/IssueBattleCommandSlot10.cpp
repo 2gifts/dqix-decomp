@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 
-void* GetBattleContext(void);
+void* GetBattleContext_020d41d8(void);
 extern "C" int func_020d424c(int a, int b, int c, int d);
-void SetBattleContextArrayEntry(int index, int value);
+void SetBattleContextArrayEntry_020d404c(int index, int value);
 int CommitBattleContextBuffer020d4168(void* a, unsigned int b);
 
 struct BattleCtx020d5254 {
@@ -37,7 +37,7 @@ ARM int IssueBattleCommandSlot10(int a0, struct BattleCtx020d5254* ctx) {
     if (ctx->type < 1 || ctx->type > 0xe) {
         return 6;
     }
-    SetBattleContextArrayEntry(0xa, a0);
+    SetBattleContextArrayEntry_020d404c(0xa, a0);
     struct BattleReqBuf020d5254 buf;
     buf.tag = 0xa;
     buf.type = ctx->type;

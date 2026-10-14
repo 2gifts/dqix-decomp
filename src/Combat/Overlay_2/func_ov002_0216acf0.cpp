@@ -10,9 +10,9 @@ extern "C" unsigned int _ZNK9GameState21GetEffectiveDeltaTimeEv(GameState* gs);
 extern "C" int _ZNK9GameState12GetTickCountEv(GameState* gs);
 char* GetGlobalField0x1c020421a0(void);
 extern "C" SearchStruct* func_0202ae18(void);
-char* GetCombatantWithFlag0x100(GameState* gs, int id);
+char* GetCombatantWithFlag0x100_0200ff1c(GameState* gs, int id);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, const void* src);
-int TestFlagBitAt0xe(SearchStruct* s, int bit);
+int TestFlagBitAt0xe_0202c578(SearchStruct* s, int bit);
 int DecrementOrClearCounterC74_0216c628(unsigned char*, int);
 extern "C" void func_ov002_0215b6c0(char* self);
 extern "C" void func_ov002_0215a7b4(char* self, int a, int b, int c, int d);
@@ -27,7 +27,7 @@ void InitBattleTag02161174(char* self);
 extern "C" void func_ov002_0216bfd4(char* self, int v);
 int CheckFlagOrThreshold_02161b48(char* self, int v);
 void EnqueueEventTag170_021d0198(int a, int b, int c, int d);
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 struct Obj_0205da38;
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 extern "C" void func_ov002_0216c28c(char* self, int v);
@@ -42,7 +42,7 @@ int GetCountByType02157108(void*, int);
 struct Obj0205dee8;
 void SetFieldB0AndUpdate0205dee8(Obj0205dee8*, int);
 struct Struct_0205d81c;
-void SetElementFieldC2(Struct_0205d81c*, int, int);
+void SetElementFieldC2_0205deb4(Struct_0205d81c*, int, int);
 extern "C" void func_ov002_02161cf0(char* self);
 extern "C" void func_ov023_021dca88(char* obj);
 extern "C" void func_0205d7a0(char* obj, int v);
@@ -127,7 +127,7 @@ extern "C" ARM void func_ov002_0216acf0(char* self) {
                 S32(0x2530) = 10000;
             }
         }
-        char* c = GetCombatantWithFlag0x100(gs, S8(0x1c21));
+        char* c = GetCombatantWithFlag0x100_0200ff1c(gs, S8(0x1c21));
         if (c != 0) {
             int pos[3];
             _ZN8Vector3iaSERKS_(pos, c + 0x44);
@@ -150,7 +150,7 @@ extern "C" ARM void func_ov002_0216acf0(char* self) {
         if (U8(0x1c7b) == 0x14) {
             int found = 0;
             for (int i = 0; i < U8(0x1ccb); i++) {
-                if (TestFlagBitAt0xe(search, *(signed char*)(self + i + 0x1ccc))) {
+                if (TestFlagBitAt0xe_0202c578(search, *(signed char*)(self + i + 0x1ccc))) {
                     found = 1;
                     break;
                 }
@@ -268,10 +268,10 @@ extern "C" ARM void func_ov002_0216acf0(char* self) {
             int ticks = _ZNK9GameState12GetTickCountEv(_ZN9GameState11GetInstanceEv());
             if (ticks == 0) ticks = 1;
             int ok = 0;
-            int flag = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
+            int flag = TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x601);
             if (AnySet(flag, IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(self + 0x2c8 + 0xc00), 0x14)) ||
                 CheckFlagOrThreshold_02161b48(self, 1) != 0 ||
-                TestFlag0SetAndFlag1Clear(&data_02114e30, 0xf0) != 0 || data_02114e54[0x55] != 0) {
+                TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0xf0) != 0 || data_02114e54[0x55] != 0) {
                 ok = 1;
             }
             switch (U8(0x1c7b)) {
@@ -305,7 +305,7 @@ extern "C" ARM void func_ov002_0216acf0(char* self) {
             return;
         }
         if (U8(0x2522) != 0 && *(int*)(g + 0x9a0) != 3) {
-            char* c = GetCombatantWithFlag0x100(gs, S8(0x1c21));
+            char* c = GetCombatantWithFlag0x100_0200ff1c(gs, S8(0x1c21));
             if (c != 0) {
                 int pos[3];
                 _ZN8Vector3iaSERKS_(pos, c + 0x44);
@@ -349,7 +349,7 @@ extern "C" ARM void func_ov002_0216acf0(char* self) {
                         S32(0x1bb8) = 4;
                         S32(0x1bc0) = 1;
                         SetFieldB0AndUpdate0205dee8((Obj0205dee8*)(self + 0x2c8 + 0xc00), 4);
-                        SetElementFieldC2((Struct_0205d81c*)(self + 0x2c8 + 0xc00), 4, 0);
+                        SetElementFieldC2_0205deb4((Struct_0205d81c*)(self + 0x2c8 + 0xc00), 4, 0);
                         func_ov002_02161cf0(self);
                         if (S32(0x247c) & 1) {
                             func_ov023_021dca88(self + 0x50);
@@ -417,7 +417,7 @@ extern "C" ARM void func_ov002_0216acf0(char* self) {
             if (U8(0x2521) != 0) {
                 S32(0x1bb8) = S32(0x1bbc);
                 SetFieldB0AndUpdate0205dee8((Obj0205dee8*)(self + 0x2c8 + 0xc00), 4);
-                SetElementFieldC2((Struct_0205d81c*)(self + 0x2c8 + 0xc00), 4, 0);
+                SetElementFieldC2_0205deb4((Struct_0205d81c*)(self + 0x2c8 + 0xc00), 4, 0);
                 func_ov002_02161cf0(self);
                 U8(0x2521) = 0;
             } else if (e != 0) {
@@ -438,7 +438,7 @@ extern "C" ARM void func_ov002_0216acf0(char* self) {
         int cur = S32(0x1bb8);
         if (cur == 0xb) {
             func_ov002_0215b9a4(self, cur & 0xff, 0);
-            SetElementFieldC2((Struct_0205d81c*)(self + 0x2c8 + 0xc00), 0xb, 0);
+            SetElementFieldC2_0205deb4((Struct_0205d81c*)(self + 0x2c8 + 0xc00), 0xb, 0);
             SetFieldB0AndUpdate0205dee8((Obj0205dee8*)(self + 0x2c8 + 0xc00), 0xb);
             func_ov002_02161cf0(self);
         } else if (cur == 3) {
@@ -449,9 +449,9 @@ extern "C" ARM void func_ov002_0216acf0(char* self) {
         } else if (cur == 0x10) {
             func_ov002_0215b9a4(self, cur & 0xff, 0);
             S32(0x247c) |= 4;
-            SetElementFieldC2((Struct_0205d81c*)(self + 0x2c8 + 0xc00), 0x11, 1);
+            SetElementFieldC2_0205deb4((Struct_0205d81c*)(self + 0x2c8 + 0xc00), 0x11, 1);
             SetFieldB0AndUpdate0205dee8((Obj0205dee8*)(self + 0x2c8 + 0xc00), 0x10);
-            SetElementFieldC2((Struct_0205d81c*)(self + 0x2c8 + 0xc00), 0x10, 0);
+            SetElementFieldC2_0205deb4((Struct_0205d81c*)(self + 0x2c8 + 0xc00), 0x10, 0);
             S32(0x1bc0) = 1;
             func_ov002_02161cf0(self);
         } else if (cur == 0x15) {
@@ -463,7 +463,7 @@ extern "C" ARM void func_ov002_0216acf0(char* self) {
             if (FindElementByC40205d81c((Struct_0205d81c*)(self + 0x2c8 + 0xc00), 7) != 0 || S16(0x1bfc) >= 0) {
                 ClearMatchingEntry_02156ff0((unsigned char*)self, 0x13);
                 SetFieldB0AndUpdate0205dee8((Obj0205dee8*)(self + 0x2c8 + 0xc00), 0x11);
-                SetElementFieldC2((Struct_0205d81c*)(self + 0x2c8 + 0xc00), 0x11, 0);
+                SetElementFieldC2_0205deb4((Struct_0205d81c*)(self + 0x2c8 + 0xc00), 0x11, 0);
                 S32(0x1bc0) = 1;
                 S32(0x1bb8) = 0x11;
                 if (S16(0x1bfc) >= 0) {
@@ -476,7 +476,7 @@ extern "C" ARM void func_ov002_0216acf0(char* self) {
             func_ov002_02161cf0(self);
         } else if (cur == 9) {
             func_ov002_02161cf0(self);
-            SetElementFieldC2((Struct_0205d81c*)(self + 0x2c8 + 0xc00), 9, 0);
+            SetElementFieldC2_0205deb4((Struct_0205d81c*)(self + 0x2c8 + 0xc00), 9, 0);
             SetFieldB0AndUpdate0205dee8((Obj0205dee8*)(self + 0x2c8 + 0xc00), 9);
             S32(0x1bc8) = 1;
             S32(0x1bcc) = 1;
@@ -491,7 +491,7 @@ extern "C" ARM void func_ov002_0216acf0(char* self) {
                     S32(0x1bb8) = 4;
                     S32(0x1bc0) = 1;
                     SetFieldB0AndUpdate0205dee8((Obj0205dee8*)(self + 0x2c8 + 0xc00), 4);
-                    SetElementFieldC2((Struct_0205d81c*)(self + 0x2c8 + 0xc00), 4, 0);
+                    SetElementFieldC2_0205deb4((Struct_0205d81c*)(self + 0x2c8 + 0xc00), 4, 0);
                     func_ov002_02161cf0(self);
                     if (S32(0x247c) & 1) {
                         func_ov023_021dca88(self + 0x50);

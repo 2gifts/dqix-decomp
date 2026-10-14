@@ -49,7 +49,7 @@ struct Ctx021eb46c {
     LogNode021eb46c* logHead;
 };
 
-void* GetActiveCombatWork(void);
+void* GetActiveCombatWork_ov000_02160130(void);
 void* GetSlotPtr02160f20(void* obj);
 void FormatEffectStats02072c9c(int id, char* out);
 struct List02160094;
@@ -77,11 +77,11 @@ extern "C" ARM int func_ov025_021eb46c(Ctx021eb46c* ctx) {
         SafeAllocator* alloc = ctx->allocators[ctx->allocatorIndex];
 
         if (ctx->state == 0) {
-            Slot021eb46c* slot = (Slot021eb46c*)GetSlotPtr02160f20(GetActiveCombatWork());
+            Slot021eb46c* slot = (Slot021eb46c*)GetSlotPtr02160f20(GetActiveCombatWork_ov000_02160130());
             ctx->taskID = -1;
             if (slot->kind == 1 && GetNodeAtIndex02160094((List02160094*)slot, 0) != NULL) {
                 int id = GetNodeAtIndex02160094((List02160094*)slot, 0)->combatantId;
-                Combatant021eb46c* c = (Combatant021eb46c*)GetCombatantWithFlag0x100(GameState::GetInstance(), id);
+                Combatant021eb46c* c = (Combatant021eb46c*)GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), id);
                 bool isParty;
                 if (id >= 0 && id <= 3) {
                     isParty = true;
@@ -108,10 +108,10 @@ extern "C" ARM int func_ov025_021eb46c(Ctx021eb46c* ctx) {
         } else if (loader->GetTaskStatus(ctx->taskID) != 0) {
             loader->GetLoadedFileByID(ctx->taskID, &fileData, &fileLength);
             if (fileData != NULL) {
-                void* slot = GetSlotPtr02160f20(GetActiveCombatWork());
+                void* slot = GetSlotPtr02160f20(GetActiveCombatWork_ov000_02160130());
                 if (GetNodeAtIndex02160094((List02160094*)slot, 0) != NULL) {
                     loadedId = GetNodeAtIndex02160094((List02160094*)slot, 0)->combatantId;
-                    GameObject* c = GetCombatantWithFlag0x100(GameState::GetInstance(), loadedId);
+                    GameObject* c = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), loadedId);
                     if (c != NULL) {
                         LogNode021eb46c* node = (LogNode021eb46c*)alloc->Allocate(sizeof(LogNode021eb46c));
                         if (node != NULL) {

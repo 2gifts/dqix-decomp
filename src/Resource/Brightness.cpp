@@ -6,12 +6,9 @@
 #if defined(jpn)
 #endif
 
-// Temporary internal wrappers
 extern "C"
 {
-    // write brightness to master register
-    void _Z25EncodeSignFlaggedHalfwordPsi(volatile unsigned short *reg, int brightness);
-    // get brightness from master register
+    void _Z34EncodeSignFlaggedHalfword_020c39a0Psi(volatile unsigned short *reg, int brightness);
     int _Z22GetSignedField020c39c8PVt(volatile unsigned short *reg);
 
     void *_Z24GetGlobalContext020daf90v();
@@ -20,11 +17,9 @@ extern "C"
 #define REG_MASTER_BRIGHT ((volatile unsigned short *) 0x0400006C)
 #define REG_MASTER_BRIGHT_SUB ((volatile unsigned short *) 0x0400106C)
 
-// helper functions to be inlined, needs to return int to get "? 1 : 0" behaviour
 static inline int IsTransitioningMain(GameResources* res) { return res->mainBrightnessTimeRemaining > 0; }
 static inline int IsTransitioningSub(GameResources* res) { return res->subBrightnessTimeRemaining > 0; }
 
-// usa: func_0203aee0
 void InitializeBrightnessState(GameResources* resources)
 {
     resources->brightnessFlags_0 = 0;
@@ -45,10 +40,8 @@ void InitializeBrightnessState(GameResources* resources)
     resources->subBrightness = (float) _Z22GetSignedField020c39c8PVt(REG_MASTER_BRIGHT_SUB);
 }
 
-// usa: func_0203af44
 void Stub(GameResources*) {}
 
-// usa: func_0203af48
 void UpdateBrightnessTransitions(GameResources* resources)
 {
     int delta = GameState::GetInstance()->GetEffectiveDeltaTime();
@@ -78,7 +71,6 @@ void UpdateBrightnessTransitions(GameResources* resources)
     }
 }
 
-// usa: func_0203b080
 void ApplyBrightness(GameResources* resources)
 {
     if (resources->allowBrightnessApply == 0) return;
@@ -86,24 +78,22 @@ void ApplyBrightness(GameResources* resources)
     resources->allowBrightnessApply = 0;
 
     if (resources->mainBrightnessDirty)
-        _Z25EncodeSignFlaggedHalfwordPsi(REG_MASTER_BRIGHT, (int) resources->mainBrightness);
+        _Z34EncodeSignFlaggedHalfword_020c39a0Psi(REG_MASTER_BRIGHT, (int) resources->mainBrightness);
 
     resources->mainBrightnessDirty = false;
 
     if (resources->subBrightnessDirty)
-        _Z25EncodeSignFlaggedHalfwordPsi(REG_MASTER_BRIGHT_SUB, (int) resources->subBrightness);
+        _Z34EncodeSignFlaggedHalfword_020c39a0Psi(REG_MASTER_BRIGHT_SUB, (int) resources->subBrightness);
 
     resources->subBrightnessDirty = false;
 }
 
-// usa: func_0203b0f8
 void UpdateAndApplyBrightness(GameResources* resources)
 {
     UpdateBrightnessTransitions(resources);
     ApplyBrightness(resources);
 }
 
-// usa: func_0203b110
 void SetMainBrightness(GameResources* resources, int brightness, int duration)
 {
     if (resources->mainBrightnessLocked)
@@ -128,7 +118,6 @@ void SetMainBrightness(GameResources* resources, int brightness, int duration)
     }
 }
 
-// usa: func_0203b19c
 void SetSubBrightness(GameResources* resources, int brightness, int duration)
 {
     if (resources->subBrightnessLocked)
@@ -150,31 +139,27 @@ void SetSubBrightness(GameResources* resources, int brightness, int duration)
     {
         resources->subBrightnessTarget        = brightness;
         resources->subBrightnessTimeRemaining = (int)((float)duration * 16.667f);
-    }    
+    }
 }
 
-// usa: func_0203b228
 void SetBrightness(GameResources* resources, int brightness, int duration)
 {
     SetMainBrightness(resources, brightness, duration);
     SetSubBrightness(resources, brightness, duration);
 }
 
-// usa: func_0203b250
 void SetAndLockMainBrightness(GameResources* resources, int brightness, int duration)
 {
     SetMainBrightness(resources, brightness, duration);
     resources->mainBrightnessLocked = true;
 }
 
-// usa: func_0203b268
 void SetAndLockSubBrightness(GameResources* resources, int brightness, int duration)
 {
     SetSubBrightness(resources, brightness, duration);
     resources->subBrightnessLocked = true;
 }
 
-// usa: func_0203b280
 void SetAndLockBrightness(GameResources* resources, int brightness, int duration)
 {
     SetMainBrightness(resources, brightness, duration);
@@ -184,21 +169,18 @@ void SetAndLockBrightness(GameResources* resources, int brightness, int duration
     resources->subBrightnessLocked = true;
 }
 
-// usa: func_0203b2b8
 void UnlockAndSetMainBrightness(GameResources* resources, int brightness, int duration)
 {
     resources->mainBrightnessLocked = false;
     SetMainBrightness(resources, brightness, duration);
 }
 
-// usa: func_0203b2cc
 void UnlockAndSetSubBrightness(GameResources* resources, int brightness, int duration)
 {
     resources->subBrightnessLocked = false;
     SetSubBrightness(resources, brightness, duration);
 }
 
-// usa: func_0203b2e0
 void UnlockAndSetBrightness(GameResources* resources, int brightness, int duration)
 {
     resources->mainBrightnessLocked = false;
@@ -208,7 +190,6 @@ void UnlockAndSetBrightness(GameResources* resources, int brightness, int durati
     SetSubBrightness(resources, brightness, duration);
 }
 
-// usa: func_0203b318
 void SetMainBrightnessWithDurationMs(GameResources* resources, int brightness, unsigned int durationMs)
 {
     if (resources->mainBrightnessLocked)
@@ -231,28 +212,24 @@ void SetMainBrightnessWithDurationMs(GameResources* resources, int brightness, u
         resources->mainBrightnessTarget        = brightness;
         resources->mainBrightnessTimeRemaining = 0;
         resources->mainBrightnessDirty         = true;
-    }    
+    }
 }
 
-// usa: func_0203b398
 int IsMainBrightnessTransitionActive(GameResources* resources)
 {
     return resources->mainBrightnessTimeRemaining > 0;
 }
 
-// usa: func_0203b3ac
 int IsSubBrightnessTransitionActive(GameResources* resources)
 {
     return resources->subBrightnessTimeRemaining > 0;
 }
 
-// usa: func_0203b3c0
 int IsBrightnessTransitionActive(GameResources* resources)
 {
     return IsTransitioningMain(resources) || IsTransitioningSub(resources);
 }
 
-// usa: func_0203b400
 int GetMainBrightnessTransitionState(GameResources* resources)
 {
     if (!IsTransitioningMain(resources))
@@ -268,7 +245,6 @@ int GetMainBrightnessTransitionState(GameResources* resources)
     return state;
 }
 
-// usa: func_0203b438
 int GetSubBrightnessTransitionState(GameResources* resources)
 {
     if (!IsTransitioningSub(resources))
@@ -284,7 +260,6 @@ int GetSubBrightnessTransitionState(GameResources* resources)
     return state;
 }
 
-// usa: func_0203b470
 unsigned short GetBrightnessTransitionStates(GameResources* resources)
 {
     int mainState = GetMainBrightnessTransitionState(resources);

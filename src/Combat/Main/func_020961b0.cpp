@@ -4,10 +4,10 @@
 struct SearchStruct0202c1a4;
 
 extern "C" void *func_0202ae18(int n);
-int CheckField0NonZero(int *obj);
+int CheckField0NonZero_0202b7d8(int *obj);
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4 *obj);
 extern "C" void func_020962f4(void *g, struct Entry020961b0 e);
-void SetBitInArrayGuarded(int unused, unsigned char *arr, int index);
+void SetBitInArrayGuarded_0209609c(int unused, unsigned char *arr, int index);
 
 struct Entry020961b0 {
     unsigned int a : 9;
@@ -51,13 +51,13 @@ extern "C" ARM int func_020961b0(void *g, int id) {
         e.c = node->f9;
         e.f = node->f13;
         e.d = 1;
-        if (CheckField0NonZero((int *)p) && GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4 *)p)) {
+        if (CheckField0NonZero_0202b7d8((int *)p) && GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4 *)p)) {
             e.b = 1;
         } else {
             e.b = 0;
         }
         func_020962f4(g, e);
-        SetBitInArrayGuarded((int)g, (unsigned char *)g + 0xa8 + 0x400, id);
+        SetBitInArrayGuarded_0209609c((int)g, (unsigned char *)g + 0xa8 + 0x400, id);
         break;
     }
     if (node == 0) {

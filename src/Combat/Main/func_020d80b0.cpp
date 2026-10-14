@@ -26,19 +26,19 @@ extern "C" void func_0202ae18(GameState*);
 extern "C" Zone3D* func_02012fe4();
 extern "C" void* func_0205ec34();
 int GetGlobalField0x1c020421a0();
-int GetFieldIfFlag4(char*);
+int GetFieldIfFlag4_020100f8(char*);
 void ShutdownObject020d8484(Obj020d8484*);
 void CancelPendingAction020397cc(Obj020397cc*, int);
-void ClearIntAt0x23c(unsigned char*);
-void* AllocateAligned4(AllocatorUnion*, unsigned int);
+void ClearIntAt0x23c_020a27b8(unsigned char*);
+void* AllocateAligned4_02012d88(AllocatorUnion*, unsigned int);
 extern "C" void func_020728ac(TableA68*, SafeAllocator*, void*, unsigned int, int, int, int);
 extern "C" void func_02046380(void*);
-int TestBitInByteArray(int, unsigned char*, int);
-void SetOrClearBitInArray(void*, unsigned char*, int, int);
-void* FindEntryByKey(TableA68*, int);
+int TestBitInByteArray_0206dfb0(int, unsigned char*, int);
+void SetOrClearBitInArray_0206df6c(void*, unsigned char*, int, int);
+void* FindEntryByKey_02072a68(TableA68*, int);
 extern "C" void func_0204500c(void*, char*, int, int);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
-void SetByteField0x253(void*);
+void SetByteField0x253_020397c0(void*);
 void SetCombatModeFromCase020dc2d0(int);
 struct Dialog020d80b0 {
     unsigned char field0[0x5c];
@@ -62,15 +62,15 @@ extern "C" ARM void func_020d80b0(Obj020d8484* self) {
     GrottoStruct* grotto = state->GetGrottoStruct();
     object = state->GetUnknownGameObject();
     bits = (Bits020d80b0*)func_0205ec34();
-    unsigned char* field = (unsigned char*)GetFieldIfFlag4((char*)state);
+    unsigned char* field = (unsigned char*)GetFieldIfFlag4_020100f8((char*)state);
     if (grotto->activeMapData.GetDiscoveryState() != 1) {
         self->state = 7;
         ShutdownObject020d8484(self);
     }
     if (self->state == 0) {
         CancelPendingAction020397cc((Obj020397cc*)object, 1);
-        ClearIntAt0x23c(field);
-        self->allocator.CreateTypeA(AllocateAligned4(&data_02114e20, 0x300), 0x300);
+        ClearIntAt0x23c_020a27b8(field);
+        self->allocator.CreateTypeA(AllocateAligned4_02012d88(&data_02114e20, 0x300), 0x300);
         self->task = BackgroundLoader::GetInstance()->QueueLoadFileInGP2(data_020f235c, data_020f2371, 0);
         self->state = 1;
     } else if (self->state == 1) {
@@ -83,20 +83,20 @@ extern "C" ARM void func_020d80b0(Obj020d8484* self) {
             BackgroundLoader::GetInstance()->RemoveTask(self->task);
             self->task = -1;
             func_02046380(dialog);
-            BlankFunction02094b30(GetGlobal02109400(), 0x203, 0);
+            BlankFunction02094b30(GetGlobal02109400_02094a00(), 0x203, 0);
             self->state = 2;
         }
     } else if (self->state == 2) {
-        if (AlwaysTrue02094b4c(GetGlobal02109400())) {
-            if (TestBitInByteArray((int)bits, bits->flags, 0x119e)) self->state = 5;
+        if (AlwaysTrue02094b4c(GetGlobal02109400_02094a00())) {
+            if (TestBitInByteArray_0206dfb0((int)bits, bits->flags, 0x119e)) self->state = 5;
             else {
                 self->state = 3;
-                SetOrClearBitInArray(bits, bits->flags, 0x119e, 1);
+                SetOrClearBitInArray_0206df6c(bits, bits->flags, 0x119e, 1);
             }
         }
     } else if (self->state == 3) {
         char* text = dialog->text;
-        strcpy(text, (char*)FindEntryByKey(&self->table, 2));
+        strcpy(text, (char*)FindEntryByKey_02072a68(&self->table, 2));
         func_0204500c(dialog, text, 0, 0xe3);
         dialog->flag = 0;
         dialog->busy = 1;
@@ -108,7 +108,7 @@ extern "C" ARM void func_020d80b0(Obj020d8484* self) {
         }
     } else if (self->state == 5) {
         char* text = dialog->text;
-        strcpy(text, (char*)FindEntryByKey(&self->table, 1));
+        strcpy(text, (char*)FindEntryByKey_02072a68(&self->table, 1));
         func_0204500c(dialog, text, 0, 0xe3);
         dialog->flag = 0;
         dialog->busy = 1;
@@ -119,8 +119,8 @@ extern "C" ARM void func_020d80b0(Obj020d8484* self) {
             self->state = 7;
         }
     } else if (self->state == 7) {
-        SetByteField0x253(object);
-        FontBankLoader* global = GetGlobal02109400();
+        SetByteField0x253_020397c0(object);
+        FontBankLoader* global = GetGlobal02109400_02094a00();
         BlankFunction02094b38(global, 0x203);
         func_02094ab0(global);
         if (zone && !zone->unknown_c_low_) ShutdownObject020d8484(self);

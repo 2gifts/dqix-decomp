@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-int GetWord0x0(int* obj);
+int GetWord0x0_0200fb8c(int* obj);
 extern "C" void func_ov023_021dc520(void* obj);
 extern "C" void func_ov023_021dd404(void* obj);
 int DispatchByMode77c_021ddbb8(void* obj, int a, int b);
@@ -25,7 +25,7 @@ struct Obj021dda04 {
 
 // USA: func_ov023_021dda04  (semantic: AdvanceCombatStageState_021dda04)
 extern "C" ARM void func_ov023_021dda04(struct Obj021dda04* obj) {
-    GetWord0x0((int*)GameState::GetInstance());
+    GetWord0x0_0200fb8c((int*)GameState::GetInstance());
 
     if (obj->field777 == 0) {
         func_ov023_021dc520(obj);

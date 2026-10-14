@@ -38,7 +38,7 @@ struct Actor_02077500 {
     unsigned short entryId;
 };
 
-extern Entry_02028bd0* GetEntryTableBase();
+extern Entry_02028bd0* GetEntryTableBase_02027ca4();
 extern Entry_02028bd0* FindInlineEntryById(Entry_02028bd0* table, int id);
 extern TableEntry_02077500* FindListEntryById(List_020283c0* list, int id);
 extern "C" void func_0202ae18();
@@ -47,7 +47,7 @@ extern "C" void func_ov017_021c927c(int a, int b, int c, Vec3_02077500 pos, int 
 
 // USA: func_02077500
 extern "C" ARM int func_02077500(Actor_02077500* obj) {
-    Entry_02028bd0* table = GetEntryTableBase();
+    Entry_02028bd0* table = GetEntryTableBase_02027ca4();
     if (table == 0) {
         return 0;
     }

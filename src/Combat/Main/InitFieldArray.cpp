@@ -6,7 +6,7 @@ struct FieldArray {
 };
 
 // USA: func_020b033c
-ARM void InitFieldArray(struct FieldArray* obj) {
+ARM void InitFieldArray_020b033c(struct FieldArray* obj) {
     int i = 0;
     do {
         obj->arr[i] = -1;

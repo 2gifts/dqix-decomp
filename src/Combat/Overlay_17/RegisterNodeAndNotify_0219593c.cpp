@@ -3,9 +3,9 @@
 extern "C" int func_ov017_0218b5b0(void);
 extern "C" void func_ov017_021b8d1c(void*);
 struct N528cList;
-struct N528cNode* FindNodeByHalfwordKey(struct N528cList* list, int key);
-void* GetGlobalPtr021075f4(void);
-void* GetPtrField0x90(void* obj);
+struct N528cNode* FindNodeByHalfwordKey_0206528c(struct N528cList* list, int key);
+void* GetGlobalPtr021075f4_0203cf4c(void);
+void* GetPtrField0x90_0203cff4(void* obj);
 struct TailList020469b4;
 struct TailNode020469b4;
 void AppendNodeToTail(struct TailList020469b4* list, struct TailNode020469b4* node);
@@ -31,9 +31,9 @@ ARM void RegisterNodeAndNotify_0219593c(void) {
 	struct TailNode_0219593c* node = *(struct TailNode_0219593c**)(base + 0x3000 + regionalOffset0);
 	unsigned char* flagObj;
 
-	void* ptr = GetPtrField0x90(GetGlobalPtr021075f4());
+	void* ptr = GetPtrField0x90_0203cff4(GetGlobalPtr021075f4_0203cf4c());
 	func_ov017_021b8d1c(node);
-	node->field114 = FindNodeByHalfwordKey((struct N528cList*)ptr, 0x63);
+	node->field114 = FindNodeByHalfwordKey_0206528c((struct N528cList*)ptr, 0x63);
 	node->field124 = 0xd7;
 	if (node->field114 != 0) {
 		AppendNodeToTail(*(struct TailList020469b4**)(base + 0x3000 + regionalOffset1), (struct TailNode020469b4*)node);

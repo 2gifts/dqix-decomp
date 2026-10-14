@@ -47,7 +47,7 @@ void SetFourWordBlocks_021e6088(void*, Words021e60c4*);
 extern "C" Object3D* func_ov023_021e6194(CharacterModel* character);
 void GetEntryPair02188bf8(unsigned char*, int, short*, short*);
 extern "C" void func_ov023_021e5e68(CharacterModel* character, int width, int height);
-int StringLength(const char* s);
+int StringLength_020d2ff0(const char* s);
 
 // USA: func_ov009_02188454
 extern "C" ARM void func_ov009_02188454(CharacterCreation* editor) {
@@ -70,9 +70,9 @@ extern "C" ARM void func_ov009_02188454(CharacterCreation* editor) {
         int currentNameLength = 0;
         const BCFG::AnimationRecord* currentAnimation = currentObject->activeAnimationRecord_;
         if (nextAnimation != NULL)
-            nextNameLength = StringLength(nextAnimation->name);
+            nextNameLength = StringLength_020d2ff0(nextAnimation->name);
         if (currentAnimation != NULL)
-            currentNameLength = StringLength(currentAnimation->name);
+            currentNameLength = StringLength_020d2ff0(currentAnimation->name);
         if (nextNameLength == currentNameLength && currentAnimation != NULL) {
             nextObject->MaybeSetRegularAnimation(currentAnimation->name, 0);
             nextObject->SetCurrentAnimationTime(currentObject->animationTime_);

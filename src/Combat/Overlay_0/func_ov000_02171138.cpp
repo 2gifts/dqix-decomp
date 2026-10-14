@@ -22,14 +22,14 @@
 
 #include "GameState/GameState.h"
 
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 
 struct Obj0203c108;
 void SwapGlobalEntry0203c108(struct Obj0203c108* obj, char* fmt);
 
 extern "C" void func_ov000_0216fe9c(void* obj);
 
-int GetField0x3acValue(GameState* battleStruct);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 
 // USA: func_ov000_02171138
 extern "C" ARM void func_ov000_02171138(void* objRaw) {
@@ -40,11 +40,11 @@ extern "C" ARM void func_ov000_02171138(void* objRaw) {
     }
     GameState* bs = GameState::GetInstance();
     combatantId = *(int*)(obj + 0x4c);
-    GameObject* c = GetCombatantWithFlag0x100(bs, combatantId);
+    GameObject* c = GetCombatantWithFlag0x100_0200ff1c(bs, combatantId);
     if (!c) {
         return;
     }
-    char* field150 = (char*)(int)GetFieldAt0x150((unsigned char*)c);
+    char* field150 = (char*)(int)GetFieldAt0x150_02053c6c((unsigned char*)c);
     if (!field150) {
         return;
     }
@@ -73,7 +73,7 @@ extern "C" ARM void func_ov000_02171138(void* objRaw) {
     *(unsigned short*)(obj + REGION_OFFSET_5) = 0;
     *(unsigned short*)(obj + REGION_OFFSET_6) = 0;
     *(unsigned char*)(obj + REGION_OFFSET_7) = 0;
-    int fieldVal = GetField0x3acValue(bs);
+    int fieldVal = GetField0x3acValue_020100a8(bs);
     if (*(int*)(obj + 0x4c) == fieldVal) {
         *(unsigned char*)(obj + 0x24) |= 2;
     }

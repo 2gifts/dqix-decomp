@@ -94,10 +94,10 @@ struct Element02157634* FindElementByKey020dedd0(struct Container020dedd0* c, in
 void* SearchBothTables02079e2c(char* p, int key);
 int IsIdInSpecialSet0201b868(void* p, int id);
 void Something_021a6b9c(int a, unsigned char b);
-void SetOrClearBitInArray(void* unused, unsigned char* array, int bit, int value);
-unsigned char GetField0x397cValue(GameState* gs);
-void* GetPtrField0x2a04(GameState* gs);
-unsigned char CopyOutRegion0x571d(char* obj, void* dst);
+void SetOrClearBitInArray_0206df6c(void* unused, unsigned char* array, int bit, int value);
+unsigned char GetField0x397cValue_020100b0(GameState* gs);
+void* GetPtrField0x2a04_02010828(GameState* gs);
+unsigned char CopyOutRegion0x571d_020114ec(char* obj, void* dst);
 void InitStateArray02157ce0(char* p);
 void ClearStruct020a8170(struct Struct020a8170* p);
 extern "C" void* __clear(void* dst, int count);
@@ -171,7 +171,7 @@ extern "C" ARM void func_ov002_02157634(struct BattleMenu* p) {
             p->state = next;
             {
                 unsigned char* bits = func_0205ec34();
-                SetOrClearBitInArray(bits, bits + 0x8c, 0x1141, 1);
+                SetOrClearBitInArray_0206df6c(bits, bits + 0x8c, 0x1141, 1);
             }
             return;
         case 0x5603:
@@ -215,7 +215,7 @@ extern "C" ARM void func_ov002_02157634(struct BattleMenu* p) {
             return;
         }
         {
-            ActionDataTables* tbl = GetData02108e10();
+            ActionDataTables* tbl = GetData02108e10_020797dc();
             int key = e->key;
             if (e->kind == 0x1f) {
                 key = 0xfc;
@@ -232,7 +232,7 @@ extern "C" ARM void func_ov002_02157634(struct BattleMenu* p) {
         if (p->type == 2 || p->type == 7) {
             next = 7;
         } else {
-            p->target = GetField0x397cValue(gs);
+            p->target = GetField0x397cValue_020100b0(gs);
             flag = 1;
         }
     } else if (p->state == 7) {
@@ -249,10 +249,10 @@ extern "C" ARM void func_ov002_02157634(struct BattleMenu* p) {
             ok = 0;
         }
         if (!ok) {
-            actor = GetField0x397cValue(gs);
+            actor = GetField0x397cValue_020100b0(gs);
         }
-        ActionDataTables* tbl = GetData02108e10();
-        GetPtrField0x2a04(gs);
+        ActionDataTables* tbl = GetData02108e10_020797dc();
+        GetPtrField0x2a04_02010828(gs);
         InitStateArray02157ce0((char*)&st);
         InitStateArray02157ce0((char*)&st);
         if (p->flags.on) {
@@ -269,7 +269,7 @@ extern "C" ARM void func_ov002_02157634(struct BattleMenu* p) {
                 func_ov016_0218b5c0(0, -1);
                 if (entry->type == 3) {
                     __clear(buf, 4);
-                    st.count = CopyOutRegion0x571d((char*)gs, buf);
+                    st.count = CopyOutRegion0x571d_020114ec((char*)gs, buf);
                     for (int i = 0; i < st.count; i++) {
                         st.ids[i] = buf[i];
                     }

@@ -6,8 +6,8 @@
 #include <globaldefs.h>
 #include "World/Object3D.h"
 
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
-void ForwardField4To02057334(int* obj);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
+void ForwardField4To02057334_02055774(int* obj);
 
 extern unsigned short data_02114e30;
 
@@ -28,7 +28,7 @@ struct S0218e60c {
 ARM void HandleFlagAndDispatch_0218e60c(struct S0218e60c* obj) {
     int ok = 0;
     if (obj->field0x3a != 0) {
-        if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x100) != 0) {
+        if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x100) != 0) {
             ok = 1;
         }
     } else {
@@ -39,7 +39,7 @@ ARM void HandleFlagAndDispatch_0218e60c(struct S0218e60c* obj) {
     }
     struct SubP_0218e60c* p = obj->field0x28;
     if (p->field0xc != 0) {
-        ForwardField4To02057334((int*)p);
+        ForwardField4To02057334_02055774((int*)p);
     } else {
         ((Object3D*)obj->field0x24)->AdvanceEffects();
     }

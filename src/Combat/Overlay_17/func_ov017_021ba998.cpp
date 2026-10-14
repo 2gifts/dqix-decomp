@@ -11,18 +11,18 @@ struct DialogTask {
     Dialog* dialog_;
     unsigned char mode_; signed char selection_; unsigned char phase_;
 };
-unsigned int* GetWord0x0(int*);
-unsigned char* GetFieldIfFlag4(char*);
-void SetBitsInField4(unsigned int*, unsigned int);
-void ClearBitsInField4(unsigned int*, unsigned int);
+unsigned int* GetWord0x0_0200fb8c(int*);
+unsigned char* GetFieldIfFlag4_020100f8(char*);
+void SetBitsInField4_0203b4d8(unsigned int*, unsigned int);
+void ClearBitsInField4_0203b4e8(unsigned int*, unsigned int);
 void CancelPendingAction020397cc(Obj020397cc*, int);
-void SetFlagsAt0x244(unsigned char*, unsigned char);
-void ClearFlagBits(unsigned char*, int);
+void SetFlagsAt0x244_020a28a0(unsigned char*, unsigned char);
+void ClearFlagBits_020a28b0(unsigned char*, int);
 extern "C" void func_020a0cc4(unsigned int);
-void* AllocateAligned4(AllocatorUnion*, unsigned int);
+void* AllocateAligned4_02012d88(AllocatorUnion*, unsigned int);
 extern "C" void func_020a0c0c();
-void PushInputLogA(int);
-List0206f7f4* GetData02108d18();
+void PushInputLogA_020a1df8(int);
+List0206f7f4* GetData02108d18_0206f504();
 short GetHalfwordChecked(List0206f7f4*, int);
 extern "C" void func_ov003_02158bb8(Dialog*);
 void SetField587_02159174(void*, unsigned char);
@@ -33,7 +33,7 @@ extern "C" int func_ov003_02158e94(Dialog*, int);
 extern "C" void func_ov017_02191108(void*, int, int, int, int);
 extern "C" void func_ov003_02158d4c(Dialog*);
 int GetField94_0215916c(void*);
-void SetByteField0x253(void*);
+void SetByteField0x253_020397c0(void*);
 extern "C" void func_ov017_021ba94c(DialogTask*);
 extern AllocatorUnion data_02114e20;
 #define REG_DISPCNT (*(volatile unsigned int*)0x04000000)
@@ -41,17 +41,17 @@ extern AllocatorUnion data_02114e20;
 // USA: func_ov017_021ba998
 extern "C" ARM void func_ov017_021ba998(DialogTask* self) {
     GameState* state = GameState::GetInstance();
-    unsigned int* flags = GetWord0x0((int*)state);
+    unsigned int* flags = GetWord0x0_0200fb8c((int*)state);
     GameObject* actor = state->GetUnknownGameObject();
-    unsigned char* field = GetFieldIfFlag4((char*)state);
-    SetBitsInField4(flags, 0xc0);
+    unsigned char* field = GetFieldIfFlag4_020100f8((char*)state);
+    SetBitsInField4_0203b4d8(flags, 0xc0);
     CancelPendingAction020397cc((Obj020397cc*)actor, 1);
-    SetFlagsAt0x244(field, 3);
+    SetFlagsAt0x244_020a28a0(field, 3);
     int ticks = state->GetTickCount();
     if (ticks < 0) ticks = 1;
     if (self->phase_ == 0) {
         func_020a0cc4(0x16e00);
-        void* buffer = AllocateAligned4(&data_02114e20, 0x16e00);
+        void* buffer = AllocateAligned4_02012d88(&data_02114e20, 0x16e00);
         if (!buffer) {
             func_020a0c0c(); self->finished_ = 1;
             return;
@@ -63,10 +63,10 @@ extern "C" ARM void func_ov017_021ba998(DialogTask* self) {
             func_020a0c0c(); self->finished_ = 1;
             return;
         }
-        PushInputLogA(3);
+        PushInputLogA_020a1df8(3);
         short selected;
         if (self->mode_) selected = self->selection_ - 1;
-        else selected = GetHalfwordChecked(GetData02108d18(), 0) - 1;
+        else selected = GetHalfwordChecked(GetData02108d18_0206f504(), 0) - 1;
         if (selected < 0) selected = 0;
         self->selection_ = selected;
         func_ov003_02158bb8(self->dialog_);
@@ -84,9 +84,9 @@ extern "C" ARM void func_ov017_021ba998(DialogTask* self) {
     } else if (self->phase_ == 3) {
         int displayMode = GetField94_0215916c(self->dialog_);
         REG_DISPCNT = (REG_DISPCNT & ~0x1f00) | displayMode << 8;
-        ClearBitsInField4(flags, 0xc0);
-        SetByteField0x253(actor);
-        ClearFlagBits(field, 3);
+        ClearBitsInField4_0203b4e8(flags, 0xc0);
+        SetByteField0x253_020397c0(actor);
+        ClearFlagBits_020a28b0(field, 3);
         func_ov017_021ba94c(self);
         func_020a0c0c();
         self->finished_ = 1;

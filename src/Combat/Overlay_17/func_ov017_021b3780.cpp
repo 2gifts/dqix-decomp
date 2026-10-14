@@ -9,10 +9,10 @@ enum { RegionOffset150 = 0x150 };
 #include "GameState/GameState.h"
 #include "std_library_functions.h"
 
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 
 struct List0202fec8;
-void* Clear12Bytes(void* dst);
+void* Clear12Bytes_02099ff0(void* dst);
 
 struct BitField0209a088;
 struct Obj0209a088 {
@@ -27,16 +27,16 @@ extern "C" void func_02083e28(void* a, int arg2);
 extern unsigned char data_ov017_021d6b20;
 
 struct Record_021b3780 {
-    unsigned int words[10]; // 0x00
-    short id;                // 0x28
+    unsigned int words[10];
+    short id;
     char pad2a[2];
 };
 
 struct Ctx_021b3780 {
     char pad0[0x8];
-    short combatantId;   // 0x8
+    short combatantId;
     char pad1[6];
-    int listKey;         // 0x10
+    int listKey;
 };
 
 // USA: func_ov017_021b3780
@@ -46,11 +46,11 @@ extern "C" ARM int func_ov017_021b3780(struct Ctx_021b3780* ctx) {
     if (!((BackgroundLoader*)(loadedList))->GetTaskStatus((int)(ctx->listKey))) {
         return 0;
     }
-    GameObject* combatant = GetCombatantWithFlag0x100(battle, ctx->combatantId);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(battle, ctx->combatantId);
     if (!combatant) {
         return 0;
     }
-    int base150 = GetFieldAt0x150((unsigned char*)combatant);
+    int base150 = GetFieldAt0x150_02053c6c((unsigned char*)combatant);
     if (!base150) {
         return 0;
     }
@@ -61,7 +61,7 @@ extern "C" ARM int func_ov017_021b3780(struct Ctx_021b3780* ctx) {
     ((BackgroundLoader*)((struct List0202fec8*)loadedList))->GetLoadedFileByID((int)(key), (void**)(&val1), (unsigned int*)((int*)&val2));
 
     struct Obj0209a088 obj;
-    Clear12Bytes(&obj);
+    Clear12Bytes_02099ff0(&obj);
     int unused = val2;
     InitObjFromSource0209a088(&obj, (struct BitField0209a088*)val1);
 

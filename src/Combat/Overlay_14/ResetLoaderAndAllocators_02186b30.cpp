@@ -38,7 +38,7 @@ extern "C" ARM void func_ov014_02186b30(struct Obj_02186b30* self) {
     if (self->field168 >= 0) {
         RemoveLoaderTask(self->field168);
     }
-    FontBankLoader* g = GetGlobal02109400();
+    FontBankLoader* g = GetGlobal02109400_02094a00();
     BlankFunction02094b40(g);
     func_02094ab0(g);
     ClearFirstWordThen0xC020972c8(&self->fieldA4);

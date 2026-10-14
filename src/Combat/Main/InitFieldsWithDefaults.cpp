@@ -11,7 +11,7 @@ struct S_a64bc {
 };
 
 // USA: func_020a64bc
-ARM void InitFieldsWithDefaults(struct S_a64bc* p) {
+ARM void InitFieldsWithDefaults_020a64bc(struct S_a64bc* p) {
     p->field0 = 0;
     p->field4 = 0;
     p->field8 = -1;

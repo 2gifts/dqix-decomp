@@ -7,7 +7,7 @@ struct Obj5d594 {
 };
 
 // USA: func_0205d594
-ARM void GetNibbles(struct Obj5d594* obj, unsigned char* outLow, unsigned char* outHigh) {
+ARM void GetNibbles_0205d594(struct Obj5d594* obj, unsigned char* outLow, unsigned char* outHigh) {
     *outLow = obj->lowNibble;
     *outHigh = obj->highNibble;
 }

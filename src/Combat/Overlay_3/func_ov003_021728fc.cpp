@@ -20,14 +20,14 @@ extern "C" int func_ov017_0218b5b0(void);
 int UpdatePlayClocks020ac4f8(int commit);
 struct MainBgControlBackup02074af4;
 extern "C" ARM void func_02074af4(struct MainBgControlBackup02074af4* obj);
-void SetBitsInWord(unsigned int* obj, unsigned int mask);
-void SetBitsInField4(unsigned int* obj, unsigned int mask);
-void Set3DClearColor(int color, int alpha, int depth, int polygonId, int fogEnable);
-int* GetGlobal02109030(void);
+void SetBitsInWord_0203b4a0(unsigned int* obj, unsigned int mask);
+void SetBitsInField4_0203b4d8(unsigned int* obj, unsigned int mask);
+void Set3DClearColor_020c5588(int color, int alpha, int depth, int polygonId, int fogEnable);
+int* GetGlobal02109030_020936f8(void);
 void ReleaseHandleAndClearFlags(struct Obj020941b0* p);
 void ResetAndSetFlag0x3c9Bit0_020939dc(void* obj);
 void* GetDataPtr02114e04_020d6c00(void);
-void OrBitsIntoField0(unsigned int* p, unsigned int mask);
+void OrBitsIntoField0_020466e4(unsigned int* p, unsigned int mask);
 
 struct S021728fc {
     char pad_0[kRegionValueEC_E8];
@@ -62,17 +62,17 @@ extern "C" ARM void func_ov003_021728fc(S021728fc* obj) {
     bg[3] = (bg[3] & ~3) | 3;
     bg[1] = (bg[1] & 0x43) | 0xf00;
 
-    SetBitsInWord(field4, mask);
-    SetBitsInField4(field4, 0x8de);
+    SetBitsInWord_0203b4a0(field4, mask);
+    SetBitsInField4_0203b4d8(field4, 0x8de);
 
-    Set3DClearColor(0, 0, 0x7fff, 0, 0);
+    Set3DClearColor_020c5588(0, 0, 0x7fff, 0, 0);
 
-    int* g = GetGlobal02109030();
+    int* g = GetGlobal02109030_020936f8();
     ReleaseHandleAndClearFlags((struct Obj020941b0*)g);
     ((unsigned char*)g)[kRegionValue3C9_139] = (((unsigned char*)g)[kRegionValue3C9_139] & ~1) | 1;
     ResetAndSetFlag0x3c9Bit0_020939dc(g);
 
-    OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 0x1000);
+    OrBitsIntoField0_020466e4((unsigned int*)GetDataPtr02114e04_020d6c00(), 0x1000);
 
     obj->field_ec = 1;
     obj->field_ee = 0;

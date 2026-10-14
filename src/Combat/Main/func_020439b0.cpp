@@ -40,7 +40,7 @@ void RestorePairTables0207df90(char* obj);
 struct Obj02041754;
 void DisableField16Bit002041754(struct Obj02041754* obj);
 void BackupPairTables0207dfac(char* obj);
-void ClearBitInArray(int unused, unsigned char* arr, int index);
+void ClearBitInArray_02042af4(int unused, unsigned char* arr, int index);
 
 struct Rect020e2d2c;
 void SetRectFromPosAndSize(struct Rect020e2d2c* s, int a, int b, int c, int d);
@@ -271,7 +271,7 @@ extern "C" ARM void func_020439b0(char* self, int flag) {
                             DisableField16Bit002041754((Obj02041754*)entry);
                             BackupPairTables0207dfac((char*)controller->encoder);
                         }
-                        ClearBitInArray((int)self, controller->bitmapAllocationBits, entry->bitmapIndex);
+                        ClearBitInArray_02042af4((int)self, controller->bitmapAllocationBits, entry->bitmapIndex);
                     }
                 }
             }

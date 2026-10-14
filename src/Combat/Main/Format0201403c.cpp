@@ -12,7 +12,7 @@ extern char data_020ef11f;
 extern char data_020ef12f;
 
 // USA: func_0201403c  (semantic: Format0201403c)
-ARM void Zone3D::LoadMapAMBL() {
+ARM void Zone3D::LoadMapAMBL_0201403c() {
     Zone3D* zone = this;
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     char buf[0x14];

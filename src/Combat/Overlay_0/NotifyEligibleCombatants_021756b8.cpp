@@ -3,13 +3,13 @@
 
 extern "C" void* func_ov000_02161318(void* obj, int idx);
 
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 int HasAnyFlags_021719f8_021719f8(int* obj);
 
 // USA: func_ov000_021756b8  (semantic: NotifyEligibleCombatants_021756b8)
 extern "C" ARM void func_ov000_021756b8(void* obj) {
     GameState* bs = GameState::GetInstance();
-    unsigned char* p2a04 = (unsigned char*)GetPtrField0x2a04(bs);
+    unsigned char* p2a04 = (unsigned char*)GetPtrField0x2a04_02010828(bs);
     unsigned char count = p2a04[0xf7c];
     unsigned char i;
     for (i = 0; i < count; i++) {
@@ -18,7 +18,7 @@ extern "C" ARM void func_ov000_021756b8(void* obj) {
         if (c == 0) {
             continue;
         }
-        int ptrVal = GetFieldAt0x150((unsigned char*)c);
+        int ptrVal = GetFieldAt0x150_02053c6c((unsigned char*)c);
 #if defined(jpn)
         enum { statusOffset = 0x8b4 };
 #else

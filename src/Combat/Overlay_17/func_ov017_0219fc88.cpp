@@ -8,7 +8,7 @@ enum { RegionOffset6fc = 0x6fc, RegionOffset734 = 0x734, RegionOffset6d0 = 0x6d0
 #include "GameState/GameState.h"
 
 extern "C" void* func_02012fe4(void);
-void* GetField0x3f8Address(GameState* battleStruct);
+void* GetField0x3f8Address_0200fd0c(GameState* battleStruct);
 
 struct Obj02071488 {
     char pad0[0x46];
@@ -18,12 +18,12 @@ struct Obj02071488 {
 struct Obj02071488* RunScriptByValueRange02071574(unsigned int value, struct Obj02071488* obj);
 
 extern "C" void* func_0205ec34(void);
-int TestBitInByteArray(int unused, unsigned char* arr, int index);
+int TestBitInByteArray_0206dfb0(int unused, unsigned char* arr, int index);
 
 extern "C" void func_ov017_021baedc(void* self, int flag);
 
 struct SetFlagStruct;
-void SetFlag0x9c6(struct SetFlagStruct* p, int value);
+void SetFlag0x9c6_020213fc(struct SetFlagStruct* p, int value);
 
 struct TailList020469b4;
 struct TailNode020469b4;
@@ -58,14 +58,14 @@ extern "C" ARM int func_ov017_0219fc88(void* unusedSelf, int scriptId) {
     int success;
     void* self = func_ov017_0218b5b0();
     struct TailList020469b4* list = *(struct TailList020469b4**)((char*)self + 0x3000 + RegionOffset6fc);
-    ctx = GetField0x3f8Address(battle);
+    ctx = GetField0x3f8Address_0200fd0c(battle);
 
     struct Obj02071488 objBuf;
     success = 0;
 
     if (RunScriptByValueRange02071574((unsigned short)scriptId, &objBuf) != NULL) {
         void* work = func_0205ec34();
-        if (TestBitInByteArray((int)work, (unsigned char*)work + 0x8c, objBuf.f46 + 0x38e) == 0) {
+        if (TestBitInByteArray_0206dfb0((int)work, (unsigned char*)work + 0x8c, objBuf.f46 + 0x38e) == 0) {
             struct Entry021baedc* entry = *(struct Entry021baedc**)((char*)self + 0x3000 + RegionOffset734);
 
             if (entry->f2 != 0) {
@@ -73,7 +73,7 @@ extern "C" ARM int func_ov017_0219fc88(void* unusedSelf, int scriptId) {
             } else if (entry->f3 == 0) {
                 func_ov017_021baedc(entry, 1);
                 entry->f8 = scriptId;
-                SetFlag0x9c6(*(struct SetFlagStruct**)((char*)self + 0x3000 + RegionOffset6d0), 1);
+                SetFlag0x9c6_020213fc(*(struct SetFlagStruct**)((char*)self + 0x3000 + RegionOffset6d0), 1);
                 AppendNodeToTail(list, (struct TailNode020469b4*)entry);
             }
 

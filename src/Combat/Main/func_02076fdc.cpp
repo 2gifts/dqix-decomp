@@ -22,7 +22,7 @@ struct Row02076fdc {
     short z;
 };
 
-extern struct Entry_02028bd0* GetEntryTableBase();
+extern struct Entry_02028bd0* GetEntryTableBase_02027ca4();
 extern struct Entry_02028bd0* FindInlineEntryById(struct Entry_02028bd0* table, int key);
 extern struct Row02076fdc* FindListEntryById(struct List_020283c0* list, int key);
 
@@ -30,7 +30,7 @@ extern "C" int fix32_Atan2(int x, int z);
 void SetVecYByMode02033834(struct Obj02033834* obj, int angle);
 void SetByteIfChanged02033b68(struct Obj02033b68* obj, int value);
 extern "C" void* func_0202ae18(void);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
 extern "C" int _s32_div_f(int a, int b);
 extern "C" void func_ov017_021c9168(int id, int slot, int heading, int type,
@@ -38,7 +38,7 @@ extern "C" void func_ov017_021c9168(int id, int slot, int heading, int type,
 
 // USA: func_02076fdc
 extern "C" ARM int func_02076fdc(FieldMonsterState* self) {
-    struct Entry_02028bd0* table = GetEntryTableBase();
+    struct Entry_02028bd0* table = GetEntryTableBase_02027ca4();
     struct Entry_02028bd0* entry =
         FindInlineEntryById(table, self->actor.base.object.GetField06());
     if (entry == 0) {
@@ -88,7 +88,7 @@ extern "C" ARM int func_02076fdc(FieldMonsterState* self) {
         self->actor.base.object.EnableFlag(0x80);
     }
     void* g = func_0202ae18();
-    if (CheckField0NonZero((int*)g)) {
+    if (CheckField0NonZero_0202b7d8((int*)g)) {
         if (GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)g) == 0) {
             int id = self->actor.base.object.GetField06();
             int wanted = self->actor.base.object.unknown_4_;

@@ -39,11 +39,11 @@ struct AlchemyMenu {
     char table_[0xc];
 };
 
-Party* GetPtrField0x2a04(GameState* gameState);
-void* GetCombatantWithFlag0x100(GameState* gameState, int member);
-short GetShortFromArray0xc10(unsigned char* lists, unsigned int list);
-short* GetPointerFromArray0xbd0(unsigned char* lists, unsigned int list);
-unsigned char* GetPointerAt0xbf0(void* lists, unsigned int list);
+Party* GetPtrField0x2a04_02010828(GameState* gameState);
+void* GetCombatantWithFlag0x100_0200ff1c(GameState* gameState, int member);
+short GetShortFromArray0xc10_0207c620(unsigned char* lists, unsigned int list);
+short* GetPointerFromArray0xbd0_0207c5f8(unsigned char* lists, unsigned int list);
+unsigned char* GetPointerAt0xbf0_0207c60c(void* lists, unsigned int list);
 extern "C" void func_ov006_02158fd8(AlchemyMenu* self, unsigned int category, short item, unsigned char count);
 extern "C" void func_ov006_0215373c(void* ingredients, void* table);
 extern "C" void func_ov006_021537c8(void* ingredients, short** items, unsigned char** counts, unsigned short* sizes);
@@ -63,11 +63,11 @@ extern "C" ARM void func_ov006_02158de0(AlchemyMenu* self) {
         self->sizes_[i] = 0;
     }
     GameState* gameState = GameState::GetInstance();
-    Party* party = GetPtrField0x2a04(gameState);
+    Party* party = GetPtrField0x2a04_02010828(gameState);
     for (unsigned short j = 0; j < 0x98; j++)
         func_ov006_02158fd8(self, 8, *(short*)((char*)party + 0xc + j * 2), *((char*)party + 0x13c + j));
     for (unsigned char k = 0; k < party->count_; k++) {
-        GameObject* member = (GameObject*)GetCombatantWithFlag0x100(gameState, party->members_[k]);
+        GameObject* member = (GameObject*)GetCombatantWithFlag0x100_0200ff1c(gameState, party->members_[k]);
         if (member != 0) {
             unsigned short* items = member->partyData_->unk_454;
             for (unsigned char l = 0; l < 8; l++)
@@ -76,9 +76,9 @@ extern "C" ARM void func_ov006_02158de0(AlchemyMenu* self) {
     }
     for (unsigned char m = 0; m < 8; m++) {
         int list = data_ov006_02160010[m];
-        short count = GetShortFromArray0xc10((unsigned char*)party + 0x1d4, list);
-        short* listItems = GetPointerFromArray0xbd0((unsigned char*)party + 0x1d4, list);
-        unsigned char* listCounts = GetPointerAt0xbf0((char*)party + 0x1d4, list);
+        short count = GetShortFromArray0xc10_0207c620((unsigned char*)party + 0x1d4, list);
+        short* listItems = GetPointerFromArray0xbd0_0207c5f8((unsigned char*)party + 0x1d4, list);
+        unsigned char* listCounts = GetPointerAt0xbf0_0207c60c((char*)party + 0x1d4, list);
         for (short n = 0; n < count; n++)
             func_ov006_02158fd8(self, m, listItems[n], listCounts[n]);
     }

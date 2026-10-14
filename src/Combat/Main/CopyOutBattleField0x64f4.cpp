@@ -3,7 +3,7 @@
 #include "GameState/GameState.h"
 
 // USA: func_020ac78c
-ARM int CopyOutBattleField0x64f4(void* dst) {
+ARM int CopyOutBattleField0x64f4_020ac78c(void* dst) {
 #if defined(jpn)
     VectorizedInvertedMemcpy((char*)GameState::GetInstance() + 0x62b4, dst, 1);
 #else

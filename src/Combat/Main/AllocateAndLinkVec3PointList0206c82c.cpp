@@ -51,7 +51,7 @@ extern "C" ARM int func_0206c82c(void* param0, int param1) {
 
     param0 = (char*)param0 + 8;
     key = ((Script::Parameter*)((struct Variant02030b0c*)orig))->ToInt();
-    node = (Node0206c82c*)FindNodeByByteId(data_02108cec.field0x10, key);
+    node = (Node0206c82c*)FindNodeByByteId_0206db20(data_02108cec.field0x10, key);
     if (node == 0) {
         return 0;
     }

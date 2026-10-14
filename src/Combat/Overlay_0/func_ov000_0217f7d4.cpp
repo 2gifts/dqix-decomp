@@ -4,7 +4,7 @@
 int HasAnyFlags_021719f8_021719f8(int* obj);
 struct Struct02170fd0;
 void CallHandlerIfF38Set02170fd0(struct Struct02170fd0* obj, int b);
-void* GetFieldAt0x150(unsigned char* obj);
+void* GetFieldAt0x150_02053c6c(unsigned char* obj);
 
 struct Entry0217f7d4 {
     char pad0[0x18];
@@ -50,7 +50,7 @@ extern "C" ARM int func_ov000_0217f7d4(char* obj) {
 #else
         enum { statusOffset = 0x94c };
 #endif
-        if (c == NULL || (signed char)*(int*)((char*)GetFieldAt0x150((unsigned char*)c) + statusOffset) == 5) {
+        if (c == NULL || (signed char)*(int*)((char*)GetFieldAt0x150_02053c6c((unsigned char*)c) + statusOffset) == 5) {
             signed char v = *(signed char*)((char*)entry + entry->field18 + 0x10);
             if (v == 0x64) result = entry->field4c;
         }

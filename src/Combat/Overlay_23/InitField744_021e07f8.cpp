@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "Filesystem/BackgroundLoader.h"
 
-void ClearStruct16(void* p);
+void ClearStruct16_020df83c(void* p);
 
 #if defined(jpn)
 extern int data_020f2cb0;
@@ -18,7 +18,7 @@ ARM int InitField744_021e07f8(void* obj) {
  enum {regionalOffset0=0x744};
 #endif
     int listPtr = (int)BackgroundLoader::GetInstance();
-    ClearStruct16((char*)obj + 0x6c);
+    ClearStruct16_020df83c((char*)obj + 0x6c);
 #if defined(jpn)
     *(int*)((char*)obj + regionalOffset0) = ((BackgroundLoader*)(listPtr))->QueueLoadFileInGP2((const char*)(data_020f2cb0), (const char*)(data_020f2b68), (SafeAllocator*)(0));
 #else

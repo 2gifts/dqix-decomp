@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 struct BattleStruct021b9bcc;
-int GetField5cb8Value(char* obj);
+int GetField5cb8Value_02010804(char* obj);
 
 struct Data_ov017_021d8438 {
     unsigned char byte0;
@@ -55,7 +55,7 @@ extern "C" ARM int func_ov017_021b9bcc(int a, void* b) {
             return 0;
         }
     } else if (day == 4) {
-        int v = GetField5cb8Value((char*)battleStruct);
+        int v = GetField5cb8Value_02010804((char*)battleStruct);
         if (pos <= v && pos >= data_ov017_021d8438.fieldC) {
             data_ov017_021d8438.field14 = b;
             data_ov017_021d8438.fieldC = pos;

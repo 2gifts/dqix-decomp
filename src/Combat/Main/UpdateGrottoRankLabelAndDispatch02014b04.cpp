@@ -12,7 +12,7 @@ extern char data_020ef1c7;
 extern char data_020ef116;
 
 // USA: func_02014b04
-extern "C" ARM void _ZN6Zone3D17QueueLoadATS_AMBLEv(void* obj) {
+extern "C" ARM void _ZN6Zone3D26QueueLoadATS_AMBL_02014b04Ev(void* obj) {
     char* o = (char*)obj;
 
     if (*(unsigned char*)(o + 0x23b8) != 0) {
@@ -33,7 +33,7 @@ extern "C" ARM void _ZN6Zone3D17QueueLoadATS_AMBLEv(void* obj) {
     }
 
     if (strlen(o + 0xc) == 0) {
-        ((Zone3D*)obj)->LoadMapAMDJ();
+        ((Zone3D*)obj)->LoadMapAMDJ_020145a8();
         return;
     }
 

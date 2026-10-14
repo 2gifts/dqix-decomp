@@ -6,7 +6,7 @@ void RunFlaggedCallback020db844(struct Actor020db844* a, int b, int c, int d);
 
 void* GetDataPtr02114e04_020d6c00(void);
 
-void OrBitsIntoField0(unsigned int* word, unsigned int mask);
+void OrBitsIntoField0_020466e4(unsigned int* word, unsigned int mask);
 
 extern "C" int func_020937f0(int a);
 
@@ -66,7 +66,7 @@ extern "C" ARM void func_020db3f4(struct Obj020db3f4* obj) {
     RunFlaggedCallback020db844((struct Actor020db844*)obj, obj->field3c, obj->field6a, 0);
     obj->field51 = 1;
 
-    OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 0x8000);
+    OrBitsIntoField0_020466e4((unsigned int*)GetDataPtr02114e04_020d6c00(), 0x8000);
 
     int x = func_020937f0(obj->field3c);
     int off_b80 = x - 0xb80;

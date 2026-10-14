@@ -11,7 +11,7 @@ struct CE28Obj {
 };
 
 // USA: func_0205ce28
-ARM int IsField440Empty(struct CE28Obj* obj) {
+ARM int IsField440Empty_0205ce28(struct CE28Obj* obj) {
     struct CE28Inner* p = obj->field440;
     if (p != 0) {
         return p->field8 == 0;

@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 unsigned long long GetCurrentTimestamp(void);
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c540(void* p);
@@ -18,9 +18,9 @@ struct Src021ce054 {
 extern "C" ARM void func_ov017_021ce054(int checkVal, struct Src021ce054* src, GameState* battleStruct, char* obj) {
     int inRange = (checkVal >= 0) && (checkVal <= 3);
     if (!inRange) return;
-    GameObject* c = GetCombatantWithFlag0x100(battleStruct, src->field8);
+    GameObject* c = GetCombatantWithFlag0x100_0200ff1c(battleStruct, src->field8);
     if (!c) return;
-    unsigned char* p = (unsigned char*)GetFieldAt0x150((unsigned char*)c);
+    unsigned char* p = (unsigned char*)GetFieldAt0x150_02053c6c((unsigned char*)c);
     void* g = func_0202ae18();
     if (src->field4 != 1) return;
     if (src->field6 > 0) {

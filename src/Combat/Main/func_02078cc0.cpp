@@ -13,7 +13,7 @@ struct Foo02033b58;
 void SetByteSavingPrevious(struct Foo02033b58* p, unsigned char v);
 
 struct ShortPair0xba0xbc;
-void SetFields0xbaAnd0xbc(struct ShortPair0xba0xbc* obj, short a, short b);
+void SetFields0xbaAnd0xbc_02032fd0(struct ShortPair0xba0xbc* obj, short a, short b);
 
 struct Entity02078cc0 {
     char pad0[0x44];
@@ -44,7 +44,7 @@ extern "C" ARM int func_02078cc0(struct Entity02078cc0* self) {
     int angle = fix32_Atan2(delta.x, delta.z);
     SetVecYByMode02033834((struct Obj02033834*)self, angle);
     ((Object3D*)((unsigned char*)self))->EnableFlag(0x80);
-    SetFields0xbaAnd0xbc((struct ShortPair0xba0xbc*)self, 0xcc, 0xaf0);
+    SetFields0xbaAnd0xbc_02032fd0((struct ShortPair0xba0xbc*)self, 0xcc, 0xaf0);
     self->f17a = 0;
     return 1;
 }

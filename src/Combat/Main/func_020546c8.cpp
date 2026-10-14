@@ -4,14 +4,14 @@
 
 struct S02055080;
 
-extern void* GetField0x4Field0x0OrNull(struct S02055080* obj);
-extern void* GetField0x4Field0x4OrNull(struct S02055080* obj);
-extern void* GetSubField0x8(struct S02055080* p);
-extern void* GetSubField0xC(struct S02055080* p);
-extern void* GetSubField0x18(struct S02055080* p);
-extern void* GetField0x4Field0x1cOrNull(struct S02055080* obj);
-extern void* GetField0x4Field0x20OrNull(struct S02055080* obj);
-extern int GetField0x4Field0x0Field0x0OrNull(struct S02055080* obj);
+extern void* GetField0x4Field0x0OrNull_02055090(struct S02055080* obj);
+extern void* GetField0x4Field0x4OrNull_020550a8(struct S02055080* obj);
+extern void* GetSubField0x8_020550c0(struct S02055080* p);
+extern void* GetSubField0xC_020550d8(struct S02055080* p);
+extern void* GetSubField0x18_02055120(struct S02055080* p);
+extern void* GetField0x4Field0x1cOrNull_02055138(struct S02055080* obj);
+extern void* GetField0x4Field0x20OrNull_02055150(struct S02055080* obj);
+extern int GetField0x4Field0x0Field0x0OrNull_02055168(struct S02055080* obj);
 
 struct Obj02054f3c;
 extern bool AllocateAndClear12Bytes02054f3c(struct Obj02054f3c** out, SafeAllocator* alloc);
@@ -84,7 +84,7 @@ struct R8_020546c8 {
 
 // USA: func_020546c8
 extern "C" ARM void func_020546c8(struct S02055080* sl) {
-    struct R1_020546c8* r1s = (struct R1_020546c8*)GetField0x4Field0x0OrNull(sl);
+    struct R1_020546c8* r1s = (struct R1_020546c8*)GetField0x4Field0x0OrNull_02055090(sl);
     if (r1s != NULL && r1s->count != 0) {
         struct Obj02054f3c* pA = NULL;
         if (AllocateAndClear12Bytes02054f3c(&pA, sl->alloc)) {
@@ -100,7 +100,7 @@ extern "C" ARM void func_020546c8(struct S02055080* sl) {
         }
     }
 
-    struct R2_020546c8* r2s = (struct R2_020546c8*)GetField0x4Field0x4OrNull(sl);
+    struct R2_020546c8* r2s = (struct R2_020546c8*)GetField0x4Field0x4OrNull_020550a8(sl);
     if (r2s != NULL) {
         for (int sb = 0; sb < 3; sb++) {
             if (r2s->countB[sb] != 0) {
@@ -148,7 +148,7 @@ extern "C" ARM void func_020546c8(struct S02055080* sl) {
         }
     }
 
-    struct R3_020546c8* r3s = (struct R3_020546c8*)GetSubField0x8(sl);
+    struct R3_020546c8* r3s = (struct R3_020546c8*)GetSubField0x8_020550c0(sl);
     if (r3s != NULL && r3s->count != 0) {
         struct Obj02054ef8* pE = NULL;
         if (AllocateAndClear12Bytes02054ef8(&pE, sl->alloc)) {
@@ -164,7 +164,7 @@ extern "C" ARM void func_020546c8(struct S02055080* sl) {
         }
     }
 
-    struct R4_020546c8* r4s = (struct R4_020546c8*)GetSubField0xC(sl);
+    struct R4_020546c8* r4s = (struct R4_020546c8*)GetSubField0xC_020550d8(sl);
     if (r4s != NULL) {
         for (int sb = 0; sb < 3; sb++) {
             if (r4s->count[sb] != 0) {
@@ -198,7 +198,7 @@ extern "C" ARM void func_020546c8(struct S02055080* sl) {
         }
     }
 
-    struct RArrCount2_020546c8* r5s = (struct RArrCount2_020546c8*)GetSubField0x18(sl);
+    struct RArrCount2_020546c8* r5s = (struct RArrCount2_020546c8*)GetSubField0x18_02055120(sl);
     if (r5s != NULL) {
         for (int r8i = 0; r8i < 2; r8i++) {
             if (r5s->count[r8i] != 0) {
@@ -218,7 +218,7 @@ extern "C" ARM void func_020546c8(struct S02055080* sl) {
         }
     }
 
-    struct RArrCount2_020546c8* r6s = (struct RArrCount2_020546c8*)GetField0x4Field0x1cOrNull(sl);
+    struct RArrCount2_020546c8* r6s = (struct RArrCount2_020546c8*)GetField0x4Field0x1cOrNull_02055138(sl);
     if (r6s != NULL) {
         for (int r8i = 0; r8i < 2; r8i++) {
             if (r6s->count[r8i] != 0) {
@@ -238,7 +238,7 @@ extern "C" ARM void func_020546c8(struct S02055080* sl) {
         }
     }
 
-    struct R7_020546c8* r7s = (struct R7_020546c8*)GetField0x4Field0x20OrNull(sl);
+    struct R7_020546c8* r7s = (struct R7_020546c8*)GetField0x4Field0x20OrNull_02055150(sl);
     if (r7s != NULL && r7s->count != 0) {
         struct T02054e70* pJ = NULL;
         if (AllocateAndZero02054e70(&pJ, sl->alloc)) {
@@ -254,7 +254,7 @@ extern "C" ARM void func_020546c8(struct S02055080* sl) {
         }
     }
 
-    struct R8_020546c8* r8s = (struct R8_020546c8*)GetField0x4Field0x0Field0x0OrNull(sl);
+    struct R8_020546c8* r8s = (struct R8_020546c8*)GetField0x4Field0x0Field0x0OrNull_02055168(sl);
     if (r8s != NULL) {
         for (int r8i = 0; r8i < 4; r8i++) {
             if (r8s->count[r8i] != 0) {

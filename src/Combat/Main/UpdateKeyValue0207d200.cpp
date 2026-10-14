@@ -9,7 +9,7 @@ struct Element020de650;
 extern struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0* c, int key);
 
 extern void* InitAllocatorAndLoadGp2File0207d6dc(SafeAllocator* self, int param1, int param2);
-extern void* GetPtrField0x2a04(GameState* battleStruct);
+extern void* GetPtrField0x2a04_02010828(GameState* battleStruct);
 
 struct KeyMap020a095c;
 extern int AddKeyValueClamped020a095c(struct KeyMap020a095c* map, int key, int amount);
@@ -22,8 +22,8 @@ extern AllocatorUnion data_02114e20;
 
 struct Obj0207d200 {
     char pad[0x2c];
-    struct Container020dedd0* container; // 0x2c
-    void* field30;                        // 0x30
+    struct Container020dedd0* container;
+    void* field30;
 };
 
 // USA: func_0207d200
@@ -37,7 +37,7 @@ ARM int UpdateKeyValue0207d200(struct Obj0207d200* self, short key, int amount) 
     struct Element020de650* elem = FindElementByKey020dedd0(self->container, key);
     if (elem != NULL) {
         GameState* battleStruct = GameState::GetInstance();
-        char* p = (char*)GetPtrField0x2a04(battleStruct) + 0xe04;
+        char* p = (char*)GetPtrField0x2a04_02010828(battleStruct) + 0xe04;
         ret = AddKeyValueClamped020a095c((struct KeyMap020a095c*)p, key, amount);
         if (ret) {
             func_0207cc18(self, elem);

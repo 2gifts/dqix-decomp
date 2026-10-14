@@ -27,8 +27,8 @@ struct S_a0434 {
     unsigned char pad1[0xb0 - 0x14];
 };
 int LoadBattleBlock020ac4c0(void*);
-void AddClamped9BitFieldTopAt0x10(S_a0434*, unsigned int);
-int CopyInBattleField0x7540(void*);
+void AddClamped9BitFieldTopAt0x10_020a0434(S_a0434*, unsigned int);
+int CopyInBattleField0x7540_020ac494(void*);
 // USA: func_020ac104
 extern "C" ARM int func_020ac104(int unused, Entry020ac104* input, int count) {
     State020ac104* state = (State020ac104*)GameState::GetInstance();
@@ -60,7 +60,7 @@ extern "C" ARM int func_020ac104(int unused, Entry020ac104* input, int count) {
     }
     S_a0434 block;
     LoadBattleBlock020ac4c0(&block);
-    AddClamped9BitFieldTopAt0x10(&block, added);
-    CopyInBattleField0x7540(&block);
+    AddClamped9BitFieldTopAt0x10_020a0434(&block, added);
+    CopyInBattleField0x7540_020ac494(&block);
     return 1;
 }

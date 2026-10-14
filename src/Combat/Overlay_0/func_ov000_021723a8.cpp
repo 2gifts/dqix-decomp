@@ -17,8 +17,8 @@ extern "C" void func_0204c684(void* obj);
 void InitObj02092aa4(Obj02092aa4* obj, int mode);
 void InitStruct0205a444(char* obj);
 extern "C" void* func_0202ae18(GameState* gs);
-int GetField0x3acValue(GameState* gs);
-void InitFields0x0(struct State0xc0cc* obj);
+int GetField0x3acValue_020100a8(GameState* gs);
+void InitFields0x0_0203c0cc(struct State0xc0cc* obj);
 
 struct Battle021723a8;
 extern "C" void func_ov000_0217228c(struct Battle021723a8* obj);
@@ -212,22 +212,22 @@ extern "C" ARM void func_ov000_021723a8(struct Battle021723a8* self, int arg) {
     self->f1d7a = 0;
     GameState* gs = GameState::GetInstance();
     func_0202ae18(gs);
-    int id = GetField0x3acValue(gs);
+    int id = GetField0x3acValue_020100a8(gs);
     if (id < 0) {
         id = 0;
     }
     self->f17c = id;
     func_ov000_0217228c(self);
-    InitFields0x0(&self->state1b54);
-    InitFields0x0(&self->state1b6c);
+    InitFields0x0_0203c0cc(&self->state1b54);
+    InitFields0x0_0203c0cc(&self->state1b6c);
     for (int i = 0; i < 9; i++) {
-        InitFields0x0(&self->states1b84[i]);
+        InitFields0x0_0203c0cc(&self->states1b84[i]);
     }
     for (int i = 0; i < 3; i++) {
-        InitFields0x0(&self->states1b0c[i]);
+        InitFields0x0_0203c0cc(&self->states1b0c[i]);
     }
     for (int i = 0; i < 8; i++) {
-        InitFields0x0(&self->states1c5c[i]);
+        InitFields0x0_0203c0cc(&self->states1c5c[i]);
     }
     struct Entry021723a8* e;
     for (int i = 0; i < 4; i++) {
@@ -240,7 +240,7 @@ extern "C" ARM void func_ov000_021723a8(struct Battle021723a8* self, int arg) {
         e->f0 = self->listD0;
     }
     func_ov000_0217feb0(self, 0, -1);
-    func_ov000_0217feb0(self, 1, GetField0x3acValue(gs));
+    func_ov000_0217feb0(self, 1, GetField0x3acValue_020100a8(gs));
     func_ov000_02174b14(self);
     self->f1d7c = 0;
     self->f1d78 = 0;

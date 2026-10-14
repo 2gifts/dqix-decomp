@@ -6,9 +6,9 @@
 extern "C" int func_ov000_0215eb1c(int battle, short* table, int count, int flag);
 
 struct Combatant_20885b4;
-int CheckFlag0x2AndKind1(struct Combatant_20885b4* obj);
+int CheckFlag0x2AndKind1_020885b4(struct Combatant_20885b4* obj);
 struct S88514;
-int CheckFlag0x2AndState2(struct S88514* obj);
+int CheckFlag0x2AndState2_02088514(struct S88514* obj);
 int PickRandomTableEntryResetCounter_021ed890(struct Random** rngPtr, int* maxAndFlag, short* table);
 
 struct Buf8_021f4880 { short v[8]; };
@@ -24,8 +24,8 @@ extern "C" ARM int func_ov024_021f4880(int* a0, int a1, int a2, int* outCount, s
     *outCount = 0;
     for (int i = 0; i < count; i++) {
         GameObject* member = GetCombatantByID(*a0, buf.v[i]);
-        if (member && (CheckFlag0x2AndKind1((struct Combatant_20885b4*)member->currentStats_) ||
-                       CheckFlag0x2AndState2((struct S88514*)member->currentStats_))) {
+        if (member && (CheckFlag0x2AndKind1_020885b4((struct Combatant_20885b4*)member->currentStats_) ||
+                       CheckFlag0x2AndState2_02088514((struct S88514*)member->currentStats_))) {
             int idx = *outCount;
             *outCount = idx + 1;
             outArray[idx] = buf.v[i];

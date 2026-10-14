@@ -2,9 +2,9 @@
 #include "GameState/GameState.h"
 
 struct Entry_02028bd0;
-struct Entry_02028bd0* GetEntryTableBase(void);
+struct Entry_02028bd0* GetEntryTableBase_02027ca4(void);
 extern "C" void* func_0202ae18(void);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 struct SearchStruct0202c1a4;
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
 extern "C" void func_02076a8c(void* obj);
@@ -14,7 +14,7 @@ struct EntryArg_0219e014 { unsigned char pad0[2]; unsigned short field2 : 2; uns
 // USA: func_ov017_0219e014
 ARM void ProcessEntryFlagsAndCombatants_0219e014(unsigned char* obj, EntryArg_0219e014* entry) {
 	GameState* battleStruct = GameState::GetInstance();
-	GetEntryTableBase();
+	GetEntryTableBase_02027ca4();
 	void* search = func_0202ae18();
 
 	if (entry) {
@@ -24,7 +24,7 @@ ARM void ProcessEntryFlagsAndCombatants_0219e014(unsigned char* obj, EntryArg_02
 			GameObject* combatant = battleStruct->GetMaybeFieldMonsterByIndex(combatantId);
 
 			if (combatant) {
-				if (CheckField0NonZero((int*)search) && GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)search) != 0) {
+				if (CheckField0NonZero_0202b7d8((int*)search) && GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)search) != 0) {
 					func_02076a8c(combatant);
 					((Object3D*)((unsigned char*)combatant))->MakeHidden();
 				} else {

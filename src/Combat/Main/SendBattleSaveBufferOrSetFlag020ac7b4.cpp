@@ -13,7 +13,7 @@ extern "C" int func_02075910(int a0, void* out, int a1, int a2);
 extern "C" int func_01ff85b8(void* buf, int size);
 extern "C" void func_02075acc(int id, void* buf, int size, int flag);
 struct StateBits5ccc_11544;
-extern void SetFlag0x5cccBit0(StateBits5ccc_11544* state);
+extern void SetFlag0x5cccBit0_02011544(StateBits5ccc_11544* state);
 
 struct Buf020ac7b4 {
     int hdr;
@@ -26,7 +26,7 @@ ARM int SendBattleSaveBufferOrSetFlag020ac7b4(int flag) {
     int local0;
     if (!func_02075910(0, &local0, 1, 0)) {
         *(unsigned char*)((char*)bs + kFlagOffset) = 1;
-        SetFlag0x5cccBit0((StateBits5ccc_11544*)bs);
+        SetFlag0x5cccBit0_02011544((StateBits5ccc_11544*)bs);
         return 0;
     }
 

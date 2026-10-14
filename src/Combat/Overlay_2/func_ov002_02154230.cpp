@@ -3,8 +3,8 @@
 #include <globaldefs.h>
 
 struct ArrayContainsByteStruct;
-int ArrayContainsByte(ArrayContainsByteStruct *arr, int value);
-int CheckField0NonZero(int *p);
+int ArrayContainsByte_02086ef0(ArrayContainsByteStruct *arr, int value);
+int CheckField0NonZero_0202b7d8(int *p);
 int HasPositiveField256Short178_02154b94(void *self, int id);
 int HasPositiveField304Short4_02154a34(void *self, int id);
 extern "C" int *func_0202ae18(void);
@@ -36,7 +36,7 @@ extern "C" ARM int func_ov002_02154230(char *base, struct Act02154230 *act, int 
     if (target == 0) return 0;
     GameState *gs                  = GameState::GetInstance();
     GameResources *res             = func_ov017_0218b5b0();
-    ArrayContainsByteStruct *party = (ArrayContainsByteStruct *) GetPtrField0x2a04(gs);
+    ArrayContainsByteStruct *party = (ArrayContainsByteStruct *) GetPtrField0x2a04_02010828(gs);
     int *ctx                       = func_0202ae18();
     struct Rec02154230 *recs       = (struct Rec02154230 *) ((char *) act + 8);
     unsigned char any              = 0;
@@ -47,7 +47,7 @@ extern "C" ARM int func_ov002_02154230(char *base, struct Act02154230 *act, int 
     for (int i = 0; i < act->count; i++) {
         struct Rec02154230 *rec = &recs[i];
         int id                  = act->ids[i];
-        if (!ArrayContainsByte(party, id)) rec->flag = 1;
+        if (!ArrayContainsByte_02086ef0(party, id)) rec->flag = 1;
         if (!func_ov002_02154a6c(base, id, act->arg)) {
             rec->state = 1;
             continue;
@@ -59,7 +59,7 @@ extern "C" ARM int func_ov002_02154230(char *base, struct Act02154230 *act, int 
         if (HasPositiveField304Short4_02154a34(base, id)) continue;
         int amount       = 0;
         unsigned char ok = 0;
-        GameObject *m    = GetCombatantWithFlag0x100(gs, id);
+        GameObject *m    = GetCombatantWithFlag0x100_0200ff1c(gs, id);
         if (m == NULL) continue;
         if (act->kind == 0x27) {
             ok     = 1;
@@ -86,10 +86,10 @@ extern "C" ARM int func_ov002_02154230(char *base, struct Act02154230 *act, int 
         } else {
             func_02048150(m, amount, 1);
         }
-        if (CheckField0NonZero(ctx) && ArrayContainsByte(party, id)) {
+        if (CheckField0NonZero_0202b7d8(ctx) && ArrayContainsByte_02086ef0(party, id)) {
             func_ov017_021c9e00(id, 1, 0, 1);
         }
-        if (ArrayContainsByte(party, id)) {
+        if (ArrayContainsByte_02086ef0(party, id)) {
             func_ov017_02191108(res, 1, 1, 1, 1);
         }
         any = 1;

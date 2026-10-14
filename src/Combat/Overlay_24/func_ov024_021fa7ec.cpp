@@ -110,23 +110,23 @@ struct Outer_021f736c {
     float scale;
 };
 
-int GetFieldAt0x150(unsigned char*);
+int GetFieldAt0x150_02053c6c(unsigned char*);
 struct Entry_021fa7ec* FindEntryForCombatant02153758(void*, int);
 int DispatchByCategory_021f736c(struct Outer_021f736c* obj);
 struct FlagObj_021da998;
 int IsFlagBit8388608Set_021da998(FlagObj_021da998*);
 struct FlagObj_021dd260;
 int IsFlagBit24Set_021dd260(FlagObj_021dd260*);
-float GetClampedRateMultiplier(int tension, int mode);
-int GetTableValue(void*);
+float GetClampedRateMultiplier_02074738(int tension, int mode);
+int GetTableValue_0202053c(void*);
 float CalculateTensionBonus(int tension, int level);
 extern "C" float func_ov024_021f875c(struct Ctx_021fa7ec* self, struct Cbt_021fa7ec* target, struct Action_021fa7ec* action, int flag);
 extern "C" int func_ov000_02156068(struct Battle_021fa7ec* battle, int id, int kind, int mode);
 extern "C" float func_ov000_02156b38(struct Battle_021fa7ec* battle, int id, int elem);
 struct S886b0;
-int CheckFlag0x80AndKind1(S886b0*);
+int CheckFlag0x80AndKind1_020886b0(S886b0*);
 struct S886f8;
-int CheckFlag0x80AndKind2(S886f8*);
+int CheckFlag0x80AndKind2_020886f8(S886f8*);
 struct Obj02088740;
 int IsFlag0x80SetAndStateEquals3(Obj02088740*);
 struct Obj02088788;
@@ -134,21 +134,21 @@ int IsFlag0x80SetAndStateEquals4(Obj02088788*);
 struct Obj020887d0;
 int IsFlag0x80SetAndStateEquals5(Obj020887d0*);
 struct Combatant_2088660;
-int IsField0x18Flag0x80Set(Combatant_2088660*);
-float GetPackedRateModifierField1(char*);
-float GetScaledBits0To5At0x2fc(unsigned char* p);
-float GetPackedRateModifierField4(char*);
+int IsField0x18Flag0x80Set_02088660(Combatant_2088660*);
+float GetPackedRateModifierField1_02085968(char*);
+float GetScaledBits0To5At0x2fc_02085818(unsigned char* p);
+float GetPackedRateModifierField4_02085a10(char*);
 struct Actor02085a48;
 float GetField0x304ScaleLow(Actor02085a48*);
-float GetPackedRateModifierField3(char*);
-float GetPackedRateModifierField2(char*);
-float GetPackedRateModifierField0(char*);
-float GetScaledBits6To11At0x2fc(unsigned char* p);
-float GetScaledBits24To29At0x2fc(unsigned char* p);
+float GetPackedRateModifierField3_020859d8(char*);
+float GetPackedRateModifierField2_020859a0(char*);
+float GetPackedRateModifierField0_02085930(char*);
+float GetScaledBits6To11At0x2fc_02085850(unsigned char* p);
+float GetScaledBits24To29At0x2fc_020858f8(unsigned char* p);
 struct Actor02085a80;
 float GetField0x304ScaleMid(Actor02085a80*);
-float GetScaledBits18To23At0x2fc(unsigned char* p);
-float GetScaledBits12To17At0x2fc(unsigned char* p);
+float GetScaledBits18To23At0x2fc_020858c0(unsigned char* p);
+float GetScaledBits12To17At0x2fc_02085888(unsigned char* p);
 struct S_flag2b;
 int IsFlagBit2Set_021fb430(S_flag2b*);
 struct S_flag4b;
@@ -158,12 +158,12 @@ int IsFlagBit65536Set_021fb460(S_flag10000*);
 struct S_flag131072;
 int IsFlagBit131072Set_021fb478(S_flag131072*);
 float ComputeQuarterDecayFactor020748d0(int v);
-float ComputeQuarterDecayFactor(int v);
-float LookupTableC0(int v);
+float ComputeQuarterDecayFactor_020748a8(int v);
+float LookupTableC0_02074938(int v);
 struct GameObject;
 int IsCombatantFlag2Mask32_021e67b0(GameObject*);
-int TestBit10At0x2f4(unsigned char* p);
-int TestBit4At0x2f4(unsigned char* p);
+int TestBit10At0x2f4_020851d8(unsigned char* p);
+int TestBit4At0x2f4_02085128(unsigned char* p);
 
 struct Scale4_021fa7ec { float v[4]; };
 extern struct Scale4_021fa7ec data_ov024_021fefa0;
@@ -183,7 +183,7 @@ extern "C" ARM void func_ov024_021fa7ec(struct Ctx_021fa7ec* self, float* outHi,
     float resist;
     struct Cbt_021fa7ec* attacker;
     attacker = self->attacker;
-    GetFieldAt0x150((unsigned char*)attacker);
+    GetFieldAt0x150_02053c6c((unsigned char*)attacker);
     action = self->action;
     float weight = self->weight;
     count = self->count9c;
@@ -216,11 +216,11 @@ extern "C" ARM void func_ov024_021fa7ec(struct Ctx_021fa7ec* self, float* outHi,
     if ((action->flags10 & 0x2000) &&
         (IsFlagBit8388608Set_021da998((FlagObj_021da998*)attacker) ||
          IsFlagBit24Set_021dd260((FlagObj_021dd260*)attacker))) {
-        float mult = GetClampedRateMultiplier(attacker->stats->tension24, 0);
+        float mult = GetClampedRateMultiplier_02074738(attacker->stats->tension24, 0);
         hi = hi * mult;
         lo = lo * mult;
         if (target->entry == 0 || !target->entry->flagBit12) {
-            signed char level = GetTableValue(attacker);
+            signed char level = GetTableValue_0202053c(attacker);
             CalculateTensionBonus(attacker->stats->tension24, level);
             hi = hi + level;
             lo = lo + level;
@@ -249,40 +249,40 @@ extern "C" ARM void func_ov024_021fa7ec(struct Ctx_021fa7ec* self, float* outHi,
 
     if (attacker && (action->flags10 & 0x40000)) {
         if (func_ov000_02156068(self->battle, targetId, 1, 0)) {
-            rate = rate * GetPackedRateModifierField1((char*)attacker->field150);
+            rate = rate * GetPackedRateModifierField1_02085968((char*)attacker->field150);
         }
         if (func_ov000_02156068(self->battle, targetId, 2, 0)) {
-            rate = rate * GetScaledBits0To5At0x2fc(attacker->field150);
+            rate = rate * GetScaledBits0To5At0x2fc_02085818(attacker->field150);
         }
         if (func_ov000_02156068(self->battle, targetId, 3, 0)) {
-            rate = rate * GetPackedRateModifierField4((char*)attacker->field150);
+            rate = rate * GetPackedRateModifierField4_02085a10((char*)attacker->field150);
         }
         if (func_ov000_02156068(self->battle, targetId, 4, 0)) {
             rate = rate * GetField0x304ScaleLow((Actor02085a48*)attacker->field150);
         }
         if (func_ov000_02156068(self->battle, targetId, 5, 0)) {
-            rate = rate * GetPackedRateModifierField3((char*)attacker->field150);
+            rate = rate * GetPackedRateModifierField3_020859d8((char*)attacker->field150);
         }
         if (func_ov000_02156068(self->battle, targetId, 6, 0)) {
-            rate = rate * GetPackedRateModifierField2((char*)attacker->field150);
+            rate = rate * GetPackedRateModifierField2_020859a0((char*)attacker->field150);
         }
         if (func_ov000_02156068(self->battle, targetId, 7, 0)) {
-            rate = rate * GetPackedRateModifierField0((char*)attacker->field150);
+            rate = rate * GetPackedRateModifierField0_02085930((char*)attacker->field150);
         }
         if (func_ov000_02156068(self->battle, targetId, 8, 0)) {
-            rate = rate * GetScaledBits6To11At0x2fc(attacker->field150);
+            rate = rate * GetScaledBits6To11At0x2fc_02085850(attacker->field150);
         }
         if (func_ov000_02156068(self->battle, targetId, 9, 0)) {
-            rate = rate * GetScaledBits24To29At0x2fc(attacker->field150);
+            rate = rate * GetScaledBits24To29At0x2fc_020858f8(attacker->field150);
         }
         if (func_ov000_02156068(self->battle, targetId, 10, 0)) {
             rate = rate * GetField0x304ScaleMid((Actor02085a80*)attacker->field150);
         }
         if (func_ov000_02156068(self->battle, targetId, 11, 0)) {
-            rate = rate * GetScaledBits18To23At0x2fc(attacker->field150);
+            rate = rate * GetScaledBits18To23At0x2fc_020858c0(attacker->field150);
         }
         if (func_ov000_02156068(self->battle, targetId, 12, 0)) {
-            rate = rate * GetScaledBits12To17At0x2fc(attacker->field150);
+            rate = rate * GetScaledBits12To17At0x2fc_02085888(attacker->field150);
         }
     }
 
@@ -301,9 +301,9 @@ extern "C" ARM void func_ov024_021fa7ec(struct Ctx_021fa7ec* self, float* outHi,
     }
 
     if (target && action->elem == 8) {
-        if (CheckFlag0x80AndKind1((S886b0*)attacker->stats)) {
+        if (CheckFlag0x80AndKind1_020886b0((S886b0*)attacker->stats)) {
             resist = 1.1f * (target->stats->resist3e / 100.0f);
-        } else if (CheckFlag0x80AndKind2((S886f8*)attacker->stats)) {
+        } else if (CheckFlag0x80AndKind2_020886f8((S886f8*)attacker->stats)) {
             resist = 1.1f * (target->stats->resist3f / 100.0f);
         } else if (IsFlag0x80SetAndStateEquals3((Obj02088740*)attacker->stats)) {
             struct Stats_021fa7ec* ts = target->stats;
@@ -324,7 +324,7 @@ extern "C" ARM void func_ov024_021fa7ec(struct Ctx_021fa7ec* self, float* outHi,
         } else if (IsFlag0x80SetAndStateEquals5((Obj020887d0*)attacker->stats)) {
             resist = 1.1f * (target->stats->resist44 / 100.0f);
         }
-        if (IsField0x18Flag0x80Set((Combatant_2088660*)attacker->stats)) {
+        if (IsField0x18Flag0x80Set_02088660((Combatant_2088660*)attacker->stats)) {
             useElem = 1;
         }
     }
@@ -349,13 +349,13 @@ extern "C" ARM void func_ov024_021fa7ec(struct Ctx_021fa7ec* self, float* outHi,
         }
     }
     if ((action->flags10 & 4) && IsFlagBit131072Set_021fb478((S_flag131072*)target)) {
-        rate = rate * ComputeQuarterDecayFactor((signed char)target->stats->decayB);
+        rate = rate * ComputeQuarterDecayFactor_020748a8((signed char)target->stats->decayB);
     }
     if (action->flags10 & 0x10) {
         if (target->stats->rank21 <= 3) {
-            rate = rate * LookupTableC0((signed char)target->stats->rank21);
+            rate = rate * LookupTableC0_02074938((signed char)target->stats->rank21);
         } else if (IsCombatantFlag2Mask32_021e67b0((GameObject*)target)) {
-            rate = rate * LookupTableC0(1);
+            rate = rate * LookupTableC0_02074938(1);
         }
     }
     if (IsFlagBit24Set_021dd260((FlagObj_021dd260*)target) && action->sub18 == 1) {
@@ -390,7 +390,7 @@ extern "C" ARM void func_ov024_021fa7ec(struct Ctx_021fa7ec* self, float* outHi,
         }
     }
 
-    if ((action->flags10 & 0x40000) && TestBit10At0x2f4(self->attacker->field150)) {
+    if ((action->flags10 & 0x40000) && TestBit10At0x2f4_020851d8(self->attacker->field150)) {
         hi = 1.0f;
         lo = hi;
     }
@@ -409,17 +409,17 @@ extern "C" ARM void func_ov024_021fa7ec(struct Ctx_021fa7ec* self, float* outHi,
         if (action->id != 0x40 && action->id != 0x7e && action->id != 0x82) {
             hi = 1.0f;
             lo = 0.4f;
-            if ((action->flags10 & 0x40000) && TestBit10At0x2f4(self->attacker->field150)) {
+            if ((action->flags10 & 0x40000) && TestBit10At0x2f4_020851d8(self->attacker->field150)) {
                 lo = 1.0f;
             }
-            if ((action->flags10 & 0x40000) && TestBit4At0x2f4(self->attacker->field150)) {
+            if ((action->flags10 & 0x40000) && TestBit4At0x2f4_02085128(self->attacker->field150)) {
                 hi += 1.0f;
                 lo += 1.0f;
             }
             if ((action->flags10 & 0x2000) &&
                 (IsFlagBit8388608Set_021da998((FlagObj_021da998*)attacker) ||
                  IsFlagBit24Set_021dd260((FlagObj_021dd260*)attacker))) {
-                float mult = GetClampedRateMultiplier(attacker->stats->tension24, 0);
+                float mult = GetClampedRateMultiplier_02074738(attacker->stats->tension24, 0);
                 hi = hi * mult;
                 lo = lo * mult;
             }

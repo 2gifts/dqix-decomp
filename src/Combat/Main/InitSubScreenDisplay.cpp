@@ -2,19 +2,19 @@
 
 extern "C" void DisableSubObjVRAMBanks(void);
 extern "C" int DisableSubBGVRAMBanks(void);
-void SetSubBgMode(unsigned int mode);
+void SetSubBgMode_020c3984(unsigned int mode);
 extern "C" void MapVRAMBanksToSubObj(unsigned short value);
 extern "C" void MapVRAMBanksToSubBG(int);
 void SetSubBg0Control02020968(int screenSize, int colorMode, int screenBase, int charBase, int bit13);
 void SetSubBg1Control0202099c(int screenSize, int colorMode, int screenBase, int charBase, int bit13);
 
 // USA: func_020209d0
-ARM void InitSubScreenDisplay(void* context) {
+ARM void InitSubScreenDisplay_020209d0(void* context) {
     volatile unsigned int* dispcnt = (volatile unsigned int*)0x4001000;
 
     DisableSubObjVRAMBanks();
     DisableSubBGVRAMBanks();
-    SetSubBgMode(0);
+    SetSubBgMode_020c3984(0);
 
     *dispcnt = (*dispcnt & ~0x1f00) | 0x1300;
     MapVRAMBanksToSubObj(0x100);

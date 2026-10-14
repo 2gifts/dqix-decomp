@@ -3,7 +3,7 @@
 #include "Grotto/Main/TreasureMapMetadata.h"
 
 // USA: func_02011a40
-ARM void StoreInvalidTreasureMapMetadata(char* obj) {
+ARM void StoreInvalidTreasureMapMetadata_02011a40(char* obj) {
     TreasureMapMetadata local;
     local.SetMapType(TreasureMapType_Invalid);
 #if defined(jpn)

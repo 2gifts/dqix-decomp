@@ -12,6 +12,6 @@ struct Owner_1e80c {
 };
 
 // USA: func_0201e80c
-ARM struct ThreeWords_1e80c GetThreeWordsAt0x70(struct Owner_1e80c* src) {
+ARM struct ThreeWords_1e80c GetThreeWordsAt0x70_0201e80c(struct Owner_1e80c* src) {
     return src->field70;
 }

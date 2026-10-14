@@ -7,14 +7,14 @@ extern "C" void func_0205bb04(struct SelfBB04*, int);
 extern "C" int func_0205bf58(void*, void*);
 
 extern unsigned char data_02114e54;
-void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
+void SelectCoordsByFlag0x24_02012a84(unsigned char* obj, int* out1, int* out2);
 
 // USA: func_ov008_02186a30
 extern "C" ARM int func_ov008_02186a30(void* self, void* param1) {
     int state = 0;
     int idx = -1;
     int a, b;
-    SelectCoordsByFlag0x24(&data_02114e54, &a, &b);
+    SelectCoordsByFlag0x24_02012a84(&data_02114e54, &a, &b);
 
     if (*(&data_02114e54 + 0x55) != 0) {
         state = 1;

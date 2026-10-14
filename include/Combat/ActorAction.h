@@ -35,6 +35,6 @@ struct SubBlock02038508 {
 };
 
 void InitBlock02038508(SubBlock02038508* block);
-SubBlock02038508* GetFieldPtrAt0x26c(void* object);
-void CopyBlockTo0x26c(GameObject* object, SubBlock02038508* source);
+SubBlock02038508* GetFieldPtrAt0x26c_020399a8(void* object);
+void CopyBlockTo0x26c_020398b4(GameObject* object, SubBlock02038508* source);
 extern "C" void func_ov017_021d3f00(SubBlock02038508* block, unsigned char first, unsigned char second);

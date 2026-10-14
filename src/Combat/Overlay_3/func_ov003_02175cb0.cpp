@@ -23,7 +23,7 @@ struct Element020de650 {
 };
 
 struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0* c, int key);
-void* GetPtrField0x2a04(GameState* battleStruct);
+void* GetPtrField0x2a04_02010828(GameState* battleStruct);
 void ZeroInitReturn020de824(void* obj);
 void InitStruct0207cbe8(char* obj);
 void InitStruct0207cc0c(char* obj);
@@ -39,7 +39,7 @@ extern "C" ARM int func_ov003_02175cb0(char* self, int arg) {
         return 0;
     }
 
-    GetPtrField0x2a04(GameState::GetInstance());
+    GetPtrField0x2a04_02010828(GameState::GetInstance());
 
     char buf[0x38];
     ((SafeAllocator*)buf)->ResetAllocatorPointer();

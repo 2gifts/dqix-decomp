@@ -2,11 +2,11 @@
 
 unsigned int DisableIRQInterrupts(void);
 unsigned int SetIRQInterruptState(int state);
-int GetSharedHalfwordOrBattleDefault(void);
+int GetSharedHalfwordOrBattleDefault_020d4aa8(void);
 int ClearBattleSaveContext020d3fdc(void);
-int SetBattleContextField0xc8IfIdle(void* param);
-int InvokeBattleAction58(int a);
-int InitBattleModeF00(int a, int b);
+int SetBattleContextField0xc8IfIdle_020d472c(void* param);
+int InvokeBattleAction58_020d4e48(int a);
+int InitBattleModeF00_020d3dcc(int a, int b);
 extern "C" void func_ov031_0220da1c(int);
 extern "C" void func_ov031_0220d61c(int, int);
 extern "C" void func_ov031_0220dc40(void);
@@ -38,7 +38,7 @@ extern "C" ARM int func_ov031_0220cae0(int a0, int a1) {
 	}
 
 	int trunc = (unsigned short)(*(int*)((char*)data_ov031_0224e53c + 0x226c));
-	int result = InitBattleModeF00(data_ov031_0224e53c, trunc);
+	int result = InitBattleModeF00_020d3dcc(data_ov031_0224e53c, trunc);
 	switch (result) {
 	case 3:
 		func_ov031_0220da1c(0xb);
@@ -56,7 +56,7 @@ extern "C" ARM int func_ov031_0220cae0(int a0, int a1) {
 		SetIRQInterruptState(state);
 		return 7;
 	case 0: {
-		int shared = GetSharedHalfwordOrBattleDefault();
+		int shared = GetSharedHalfwordOrBattleDefault_020d4aa8();
 		if (shared == 0) {
 			if (ClearBattleSaveContext020d3fdc() != 0) {
 				func_ov031_0220da1c(0xb);
@@ -66,12 +66,12 @@ extern "C" ARM int func_ov031_0220cae0(int a0, int a1) {
 			SetIRQInterruptState(state);
 			return 5;
 		}
-		if (SetBattleContextField0xc8IfIdle((void*)CheckCmdAndDispatch_0220dbc8) != 0) {
+		if (SetBattleContextField0xc8IfIdle_020d472c((void*)CheckCmdAndDispatch_0220dbc8) != 0) {
 			func_ov031_0220da1c(0xb);
 			SetIRQInterruptState(state);
 			return 7;
 		}
-		int act = InvokeBattleAction58((int)func_ov031_0220dc40);
+		int act = InvokeBattleAction58_020d4e48((int)func_ov031_0220dc40);
 		switch (act) {
 		case 2:
 			func_ov031_0220da1c(2);

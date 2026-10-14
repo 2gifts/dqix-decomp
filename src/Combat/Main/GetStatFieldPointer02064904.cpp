@@ -3,11 +3,11 @@
 struct FindEntryById02096134Elem;
 struct FindEntryById02096134Table;
 struct FindEntryById02096134Elem* FindEntryById02096134(struct FindEntryById02096134Table* t, int id);
-int* GetGlobal02109418(void);
+int* GetGlobal02109418_02094d6c(void);
 
 // USA: func_02064904
 ARM void* GetStatFieldPointer02064904(void* unusedA, int id, unsigned int statIndex) {
-    struct FindEntryById02096134Elem* elem = FindEntryById02096134((struct FindEntryById02096134Table*)GetGlobal02109418(), id);
+    struct FindEntryById02096134Elem* elem = FindEntryById02096134((struct FindEntryById02096134Table*)GetGlobal02109418_02094d6c(), id);
     void* result = NULL;
     if (elem != NULL && statIndex <= 9) {
         switch (statIndex) {

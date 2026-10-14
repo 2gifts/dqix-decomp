@@ -18,7 +18,7 @@ extern char* data_ov004_0217101c;
 #define CurrentBase0217101c data_ov004_0217101c
 #endif
 extern "C" void* func_0205ec34(void);
-int* GetGlobal02109418(void);
+int* GetGlobal02109418_02094d6c(void);
 int GetGlobalField0x1c020421a0(void);
 
 struct State02166ac4 {
@@ -42,7 +42,7 @@ extern "C" ARM int func_ov004_02166ac4() {
     state->allocators[0].Destroy();
     char* c = (char*)func_0205ec34();
     memcpy(c + 0x2cc, ((State02166ac4*)CurrentBase0217101c)->savedBytes, 0x66);
-    int* g = GetGlobal02109418();
+    int* g = GetGlobal02109418_02094d6c();
     *(int*)((char*)g + 0xa0) = ((State02166ac4*)CurrentBase0217101c)->savedWord;
     char* f = (char*)GetGlobalField0x1c020421a0();
     *(unsigned char*)(f + 0x1000 + resetFlagOffset) = 0;

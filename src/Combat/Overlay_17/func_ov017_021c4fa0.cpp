@@ -8,7 +8,7 @@ extern "C" unsigned short* func_02012fe4(void);
 extern "C" int func_0202c508(void* search);
 extern "C" void func_0205e330(void* a, void* b, int c);
 extern "C" void* memset(void* dst, int c, unsigned int n);
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 
 struct Entry_02028bd0 {
     unsigned short id;
@@ -16,12 +16,12 @@ struct Entry_02028bd0 {
     unsigned short value : 12;
     unsigned short value2;
 };
-struct Entry_02028bd0* GetEntryTableBase(void);
+struct Entry_02028bd0* GetEntryTableBase_02027ca4(void);
 struct Entry_02028bd0* FindInlineEntryById(struct Entry_02028bd0* base, int key);
 
 struct Obj_021bd3a4;
 int HasFlag3orFlag2And9a_021bd3a4(Obj_021bd3a4* obj);
-int TestBitAt0x34(unsigned char* obj, unsigned int index);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
 void* GetField6b0_021b8470(void* obj);
 int GetField6acThenCall_021b8b94(void* obj);
 
@@ -97,8 +97,8 @@ extern "C" ARM void func_ov017_021c4fa0(int unitIdx, int id) {
     cur = func_02012fe4();
     res = func_ov017_0218b5b0();
     unit = (Unit_021c4fa0*)res->unknown_ptr_array_371c[6];
-    GetEntryTableBase();
-    data = GetData02100044();
+    GetEntryTableBase_02027ca4();
+    data = GetData02100044_0202ae24();
 
     evt.tag = 0x8f;
     p = &evt.payload;
@@ -128,14 +128,14 @@ extern "C" ARM void func_ov017_021c4fa0(int unitIdx, int id) {
                 p->field4 = unit->field52;
             }
         } else if (zone->active != 0 && !(f6b0 != NULL && f6b0[0x8e14] != 0) && slot != NULL &&
-                   !TestBitAt0x34((unsigned char*)slot, unitIdx & 0xff) && !GetField6acThenCall_021b8b94(zone) && slot->index >= 0) {
+                   !TestBitAt0x34_020a35e0((unsigned char*)slot, unitIdx & 0xff) && !GetField6acThenCall_021b8b94(zone) && slot->index >= 0) {
             p->mode = 2;
             p->field2 = slot->index;
             p->field4 = *cur;
         }
 
         p->time = gs->GetDayTimer();
-        entry = FindInlineEntryById(GetEntryTableBase(), id);
+        entry = FindInlineEntryById(GetEntryTableBase_02027ca4(), id);
         if (entry != NULL) {
             p->fieldC = entry->value;
             p->fieldE = entry->value2;

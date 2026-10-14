@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-int GetWord0x0(int* obj);
+int GetWord0x0_0200fb8c(int* obj);
 int IsSubBrightnessTransitionActive(GameResources*);
 
 struct Struct02074bf4;
@@ -10,7 +10,7 @@ void ClearFlag0x11IfSet(struct Struct02074bf4*);
 struct StructAllocGroup0208ba54;
 void DestroyStructAllocGroup0208ba54(struct StructAllocGroup0208ba54*);
 
-void ClearBitsInWord(unsigned int* obj, unsigned int mask);
+void ClearBitsInWord_0203b4b0(unsigned int* obj, unsigned int mask);
 
 struct GameResources;
 void SetSubBrightness(GameResources*, int, int);
@@ -27,7 +27,7 @@ struct Obj0208d340 {
 
 // USA: func_0208d340
 ARM void AdvanceState0208d340(struct Obj0208d340* obj) {
-    int val = GetWord0x0((int*)GameState::GetInstance());
+    int val = GetWord0x0_0200fb8c((int*)GameState::GetInstance());
 
     if (obj->fd5 == 0) {
         if (!(obj->fda & 0x10)) {
@@ -56,5 +56,5 @@ ARM void AdvanceState0208d340(struct Obj0208d340* obj) {
     *(short*)((char*)reg + 0x50) = 0;
     obj->fd5 = obj->fd5 + 1;
     DestroyStructAllocGroup0208ba54((struct StructAllocGroup0208ba54*)obj);
-    ClearBitsInWord((unsigned int*)GetWord0x0((int*)GameState::GetInstance()), 0x6000);
+    ClearBitsInWord_0203b4b0((unsigned int*)GetWord0x0_0200fb8c((int*)GameState::GetInstance()), 0x6000);
 }

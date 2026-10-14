@@ -14,8 +14,8 @@ int TestFlags02046708(struct FlagWord02046708* word, unsigned int mask);
 extern "C" void func_0205308c(void* obj, int val);
 extern "C" void func_ov017_021cc1f8(int a, void* buf, int len, int extra);
 
-unsigned char GetField0x397cValue(GameState* battleStruct);
-int GetFieldIfFlag4(char* obj);
+unsigned char GetField0x397cValue_020100b0(GameState* battleStruct);
+int GetFieldIfFlag4_020100f8(char* obj);
 
 struct S020a2c70;
 int MarkStateIfFlag020a2c70(struct S020a2c70* p);
@@ -81,9 +81,9 @@ ARM int InitFieldsIfInRange02052e44(struct Obj02052e44* obj, signed char arg1, i
         battleStruct = GameState::GetInstance();
         field4 = obj->field4;
         obj = (struct Obj02052e44*)battleStruct;
-        unsigned char cur = GetField0x397cValue((GameState*)obj);
+        unsigned char cur = GetField0x397cValue_020100b0((GameState*)obj);
         if (cur == field4) {
-            int r = GetFieldIfFlag4((char*)obj);
+            int r = GetFieldIfFlag4_020100f8((char*)obj);
             if (r != 0) {
                 MarkStateIfFlag020a2c70((struct S020a2c70*)r);
             }

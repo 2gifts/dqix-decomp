@@ -105,7 +105,7 @@ struct Ids16_021e80e4 {
 
 extern "C" struct Ids16_021e80e4 data_ov024_021fe800;
 
-int ClassifyField0x81fe(char*);
+int ClassifyField0x81fe_ov000_0215fc60(char*);
 struct List02160094;
 struct Chain_021e80e4* GetNodeAtIndex02160094(List02160094*, int);
 struct List021600f8;
@@ -121,7 +121,7 @@ extern "C" unsigned short func_ov024_021e9b24(struct Act_021e80e4* self, int id,
 extern "C" ARM void func_ov024_021e80e4(struct Act_021e80e4* self, struct List_021e80e4* list, struct Rec_021e80e4* rec, int fillExtra, unsigned char forced, struct Rec_021e80e4* altRec) {
     struct Ids16_021e80e4 ids;
 
-    if (ClassifyField0x81fe((char*)self->f10) != 0) {
+    if (ClassifyField0x81fe_ov000_0215fc60((char*)self->f10) != 0) {
         struct Chain_021e80e4* chain = GetNodeAtIndex02160094((List02160094*)list, 0);
         if (chain != 0) {
             if (chain->f20 == 0) {

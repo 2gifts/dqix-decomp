@@ -89,9 +89,9 @@ struct Obj0205eaa0;
 
 unsigned short GetShortField1b0_02184a00(struct Obj_02184a00* obj);
 int GetSignedField020c39c8(volatile unsigned short* p);
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
-int TestFlagMask(unsigned short* obj, int mask);
-void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
+int TestFlagMask_02012430(unsigned short* obj, int mask);
+void SelectCoordsByFlag0x24_02012a84(unsigned char* obj, int* out1, int* out2);
 void* AddOffset20_021f7318(void* p);
 unsigned char GetEntryByteIfFlag0x84(struct Owner02047a5c* owner, int index);
 int GetElementByte1IfEnabled(struct Owner02047a3c* obj, int index);
@@ -160,7 +160,7 @@ extern "C" ARM void func_ov023_021f8e1c(Cursor021f8e1c* self, void* other) {
 
     if (!locked) {
         for (int i = 0; i < 5; i++) {
-            if (TestFlag0SetAndFlag1Clear(&data_02114e30, data_ov023_021fd922[i])) {
+            if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, data_ov023_021fd922[i])) {
                 int played = 0;
                 if (pressSe[i] != 0) {
                     func_ov011_021848a0(other, pressSe[i]);
@@ -179,39 +179,39 @@ extern "C" ARM void func_ov023_021f8e1c(Cursor021f8e1c* self, void* other) {
 
     int cancel = 0;
     if (self->noCancel != 0) {
-        if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x400)) {
+        if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x400)) {
             cancel = 1;
         }
     }
-    if (TestFlag0SetAndFlag1Clear(&data_02114e30, 1) || cancel) {
+    if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 1) || cancel) {
         done = 1;
     }
-    int up = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x40);
-    int down = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x80);
-    int left = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x20);
-    int right = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x10);
+    int up = TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x40);
+    int down = TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x80);
+    int left = TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x20);
+    int right = TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x10);
 
     if (done == 0) {
         unsigned int dt = GameState::GetInstance()->GetEffectiveDeltaTime();
-        if (TestFlagMask(&data_02114e30, 0x40)) {
+        if (TestFlagMask_02012430(&data_02114e30, 0x40)) {
             if (data_ov023_021fff24 < dt) {
                 up = 1;
             } else {
                 data_ov023_021fff24 -= dt;
             }
-        } else if (TestFlagMask(&data_02114e30, 0x80)) {
+        } else if (TestFlagMask_02012430(&data_02114e30, 0x80)) {
             if (data_ov023_021fff24 < dt) {
                 down = 1;
             } else {
                 data_ov023_021fff24 -= dt;
             }
-        } else if (TestFlagMask(&data_02114e30, 0x20)) {
+        } else if (TestFlagMask_02012430(&data_02114e30, 0x20)) {
             if (data_ov023_021fff24 < dt) {
                 left = 1;
             } else {
                 data_ov023_021fff24 -= dt;
             }
-        } else if (TestFlagMask(&data_02114e30, 0x10)) {
+        } else if (TestFlagMask_02012430(&data_02114e30, 0x10)) {
             if (data_ov023_021fff24 < dt) {
                 right = 1;
             } else {
@@ -326,7 +326,7 @@ extern "C" ARM void func_ov023_021f8e1c(Cursor021f8e1c* self, void* other) {
     if (moved == 0 && data_02114e54[0x55] != 0) {
         int touchX;
         int touchY;
-        SelectCoordsByFlag0x24(data_02114e54, &touchX, &touchY);
+        SelectCoordsByFlag0x24_02012a84(data_02114e54, &touchX, &touchY);
         scroll = func_ov023_021f9da8(self, other, touchX, touchY);
         if (scroll == 0) {
             int x;
@@ -439,7 +439,7 @@ extern "C" ARM void func_ov023_021f8e1c(Cursor021f8e1c* self, void* other) {
         }
     }
 
-    if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2)) {
+    if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 2)) {
         if (locked) {
             return;
         }
@@ -451,7 +451,7 @@ extern "C" ARM void func_ov023_021f8e1c(Cursor021f8e1c* self, void* other) {
         }
     }
 
-    if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x400)) {
+    if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x400)) {
         if (self->noCancel == 0 && !locked) {
             col = self->col;
             row = self->row;

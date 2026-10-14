@@ -9,8 +9,8 @@ struct InitStruct;
 struct ResetObject0209af34Struct;
 struct ZeroWordAndByte0206ee60Struct;
 
-ARM void InitializeStruct(struct InitStruct* s);
-ARM void ClearHalfword0x18(void* obj);
+ARM void InitializeStruct_020280b0(struct InitStruct* s);
+ARM void ClearHalfword0x18_0209bffc(void* obj);
 ARM void ClearBuffer0209bc84(void* obj);
 ARM void ResetObject0209af34(struct ResetObject0209af34Struct* obj);
 ARM void* Clear12Bytes0206efc4(void* obj);
@@ -41,12 +41,11 @@ ARM void InitializeSubObjectsAndFields020289c4(struct BigRecord020289c4* obj) {
     obj->flagD = 0;
     obj->field4 = 0;
     obj->fieldD = -1;
-    InitializeStruct((struct InitStruct*)((char*)obj + SUBOBJECT_OFFSET(0x18)));
-    ClearHalfword0x18((char*)obj + SUBOBJECT_OFFSET(0x44));
+    InitializeStruct_020280b0((struct InitStruct*)((char*)obj + SUBOBJECT_OFFSET(0x18)));
+    ClearHalfword0x18_0209bffc((char*)obj + SUBOBJECT_OFFSET(0x44));
     ClearBuffer0209bc84((char*)obj + SUBOBJECT_OFFSET(0x60));
     ResetObject0209af34((struct ResetObject0209af34Struct*)((char*)obj + SUBOBJECT_OFFSET(0x124)));
     Clear12Bytes0206efc4((char*)obj + SUBOBJECT_OFFSET(0x2f8));
     ZeroWordAndByte0206ee60((struct ZeroWordAndByte0206ee60Struct*)((char*)obj + SUBOBJECT_OFFSET(0x304)));
     Clear12Bytes020a8e88((char*)obj + SUBOBJECT_OFFSET(0x30c));
 }
-

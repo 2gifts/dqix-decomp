@@ -5,8 +5,8 @@
 
 struct Struct02030b7c;
 struct Variant02030b0c;
-int StringLength(const char* s);
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+int StringLength_020d2ff0(const char* s);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 
 struct Entry0218b9d4 {
     int a;
@@ -41,16 +41,16 @@ extern "C" ARM int func_ov015_0218b5c8(char* obj) {
     entry.e = 0;
 
     if (n1 != 0) {
-        int len = StringLength(n1);
-        char* buf = (char*)AllocateAligned4(&data_02114e20, len + 1);
+        int len = StringLength_020d2ff0(n1);
+        char* buf = (char*)AllocateAligned4_02012d88(&data_02114e20, len + 1);
         entry.a = (int)buf;
         if (buf != 0) {
             strcpy(buf, n1);
         }
     }
     if (n2 != 0) {
-        int len = StringLength(n2);
-        char* buf = (char*)AllocateAligned4(&data_02114e20, len + 1);
+        int len = StringLength_020d2ff0(n2);
+        char* buf = (char*)AllocateAligned4_02012d88(&data_02114e20, len + 1);
         entry.b = (int)buf;
         if (buf != 0) {
             strcpy(buf, n2);

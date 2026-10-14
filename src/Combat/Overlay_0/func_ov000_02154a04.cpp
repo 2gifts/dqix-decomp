@@ -24,7 +24,7 @@ extern "C" int func_ov000_0215e9fc(Random*, short*, int, int);
 extern "C" short func_ov000_02154f30(Random*, short, int, short*);
 void PickRandomFromTable_02153d10(Random*, short*);
 extern "C" void func_ov000_02153d78(Random*, short, short*);
-GameObject* GetCombatantWithFlag0x400(GameState*, int);
+GameObject* GetCombatantWithFlag0x400_0200fea4(GameState*, int);
 extern "C" int func_ov000_02153e78(Random*, short*, int, int, int);
 extern "C" int func_ov000_0215eb1c(Random*, short*, int, int);
 signed char PickTableValueWithRandomFill_0215fbe0(Random*, int);
@@ -34,7 +34,7 @@ extern short data_ov000_02182af4[8];
 extern "C" ARM int func_ov000_02154a04(Random* random, int combatantId, int actionId, short* targets) {
     int count = 0;
     GameState::GetInstance();
-    TargetDefinition* definition = (TargetDefinition*)SearchBothTables02079e2c((char*)GetData02108e10(), (short)actionId);
+    TargetDefinition* definition = (TargetDefinition*)SearchBothTables02079e2c((char*)GetData02108e10_020797dc(), (short)actionId);
     if (!definition) return 0;
     unsigned int side = definition->side;
     unsigned int selection = definition->selection;
@@ -60,7 +60,7 @@ extern "C" ARM int func_ov000_02154a04(Random* random, int combatantId, int acti
             func_ov000_02153d78(random, (short)combatantId, &chosen);
             targets[count++] = chosen;
         } else if (selection == 4) {
-            GameObject* combatant = GetCombatantWithFlag0x400(GameState::GetInstance(), (short)combatantId);
+            GameObject* combatant = GetCombatantWithFlag0x400_0200fea4(GameState::GetInstance(), (short)combatantId);
             count = func_ov000_02153e78(random, targets, 8, ((CombatantGroup*)combatant)->group, 1);
         } else if (selection == 3) {
             count = func_ov000_0215eb1c(random, targets, 8, 1);

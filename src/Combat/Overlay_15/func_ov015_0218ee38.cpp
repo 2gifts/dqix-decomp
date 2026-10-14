@@ -11,7 +11,7 @@ extern "C" ARM void func_ov015_0218ee38(void* obj) {
     *(unsigned short*)((char*)obj + 0x34) = *(unsigned short*)((char*)obj + 0x36) = 0;
     if (*(int*)((char*)*(void**)((char*)obj + 0x28) + 0xc) != 0) {
         *(volatile unsigned int*)0x04000444 = 0;
-        ForwardField4To0205765c((int*)*(void**)((char*)obj + 0x28));
+        ForwardField4To0205765c_0205578c((int*)*(void**)((char*)obj + 0x28));
         *(volatile unsigned int*)0x04000448 = 1;
         void* inner = *(void**)((char*)*(void**)((char*)obj + 0x28) + 4);
         if (inner == 0) {

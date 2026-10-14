@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-// USA: _Z25GetCombatantWithFlag0x100P9GameStatei
-ARM GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId) {
+// USA: _Z34GetCombatantWithFlag0x100_0200ff1cP9GameStatei
+ARM GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* battleStruct, int combatantId) {
     GameObject* combatant;
     if (combatantId < 0) {
         return 0;

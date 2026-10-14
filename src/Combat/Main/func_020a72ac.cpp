@@ -34,7 +34,7 @@ struct Ctx020a72ac {
 extern "C" void* func_0202ae18();
 extern "C" int func_0202c540(void* base);
 void SetVec3At0x0020a6aa4(Vector3i* obj, int x, int y, int z);
-void* GetPointerAt0x32c(struct PointerField32c_ffc0* p);
+void* GetPointerAt0x32c_0200ffc0(struct PointerField32c_ffc0* p);
 struct Obj0201b600* FindElemByKeys(Obj0201b600* p, int a, unsigned short b);
 void SetFlag0x40AndToggle0x4(struct Struct02013380* p, int a, int b);
 void ApplyElementFlags0201b8c8(struct Obj0201b600* p, int a, int b, int c);
@@ -47,7 +47,7 @@ extern "C" ARM void func_020a72ac(struct Ctx020a72ac* p) {
     func_ov017_0218b5b0();
     void* base = func_0202ae18();
     LightingManager::GetInstance();
-    Object3D* obj = static_cast<Object3D*>(GetPointerAt0x32c((struct PointerField32c_ffc0*)gs));
+    Object3D* obj = static_cast<Object3D*>(GetPointerAt0x32c_0200ffc0((struct PointerField32c_ffc0*)gs));
     GameObject* actor = gs->GetUnknownGameObject();
     gs->GetPartyMemberByIndex(0);
 

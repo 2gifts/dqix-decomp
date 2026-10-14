@@ -39,7 +39,7 @@ extern "C" struct Vec3i_020374f0 _ZNK8Object3D8GetScaleEv(unsigned char* src);
 
 void FindNodeAndProcess02057fb4(void* list, int id, int a3);
 
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 
 struct SearchStruct0202c1a4;
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
@@ -78,7 +78,7 @@ extern "C" ARM int func_0207853c(struct Entity0207853c* obj) {
         FindNodeAndProcess02057fb4(list, obj->f178, (int)&s);
     }
 
-    if (CheckField0NonZero((int*)g) && GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)g) == 0) {
+    if (CheckField0NonZero_0202b7d8((int*)g) && GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)g) == 0) {
         int c1 = ((Object3D*)((struct U16Field0x6_020375f8*)obj))->GetField06();
         int f2val = obj->f2;
         int rem = (obj->f4 - 0x70) % 0xc;

@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 #include "System/Memory.h"
 
-void SetField0x48UnlessState9Or10(int arg);
-int GetSharedHalfwordOrBattleDefault(void);
+void SetField0x48UnlessState9Or10_0202c848(int arg);
+int GetSharedHalfwordOrBattleDefault_020d4aa8(void);
 unsigned short GetOwnerDataFortuneValue020d4be8(void);
 
 struct BattleCtx020d5340 {
@@ -24,13 +24,13 @@ extern "C" void func_0202cefc(void);
 
 // USA: func_0202cddc  (semantic: PickSlotAndSubmitBattleContext_0202cddc)
 extern "C" ARM int func_0202cddc(void) {
-    int avail = GetSharedHalfwordOrBattleDefault();
+    int avail = GetSharedHalfwordOrBattleDefault_020d4aa8();
     if (avail == 0x8000) {
-        SetField0x48UnlessState9Or10(3);
+        SetField0x48UnlessState9Or10_0202c848(3);
         return 0;
     }
     if (avail == 0) {
-        SetField0x48UnlessState9Or10(0x16);
+        SetField0x48UnlessState9Or10_0202c848(0x16);
         return 0;
     }
 
@@ -64,6 +64,6 @@ extern "C" ARM int func_0202cddc(void) {
 
     int r = SubmitBattleContextEntry020d5340((int)func_0202cefc, &data_02101680);
     if (r == 2) return 1;
-    SetField0x48UnlessState9Or10(r);
+    SetField0x48UnlessState9Or10_0202c848(r);
     return 0;
 }

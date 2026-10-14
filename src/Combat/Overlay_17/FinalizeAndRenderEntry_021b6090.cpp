@@ -23,7 +23,7 @@ struct Obj021b6090 {
 // USA: func_ov017_021b6090  (semantic: FinalizeAndRenderEntry_021b6090)
 extern "C" ARM void func_ov017_021b6090(struct Obj021b6090* self) {
     GameState* battle = GameState::GetInstance();
-    void* ptr3b0 = GetField0x3b0Value(battle);
+    void* ptr3b0 = GetField0x3b0Value_020100bc(battle);
     struct Vec3copy0202ec84 vecBuf = self->field2c;
 
     if (self->field38 < 0x191e) {

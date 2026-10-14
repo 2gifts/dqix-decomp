@@ -4,7 +4,7 @@
 #include "std_library_functions.h"
 
 extern "C" int func_ov000_0215e9fc(int a, short* buf, int max, int start);
-int CheckFlag0x14Bit0x10Set(unsigned char* obj);
+int CheckFlag0x14Bit0x10Set_020882f8(unsigned char* obj);
 
 struct Obj_021f0748 { int field0; };
 struct Buf4_021f0748 { short v[4]; };
@@ -18,7 +18,7 @@ extern "C" ARM int func_ov024_021f0748(struct Obj_021f0748* obj, int unused1, in
     int found = 0;
     for (int i = 0; i < count; i++) {
         GameObject* c = GetCombatantByID(obj->field0, buf.v[i]);
-        if (c && !CheckFlag0x14Bit0x10Set((unsigned char*)c->currentStats_)) {
+        if (c && !CheckFlag0x14Bit0x10Set_020882f8((unsigned char*)c->currentStats_)) {
             found = 1;
             break;
         }

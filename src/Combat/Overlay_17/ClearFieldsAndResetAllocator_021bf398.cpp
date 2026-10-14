@@ -2,9 +2,9 @@
 #include "GameState/GameState.h"
 #include "Memory/SafeAllocator.h"
 
-void SetByteField0x253(void* obj);
-int GetFieldIfFlag4(char* obj);
-void SetField0x23cTrue(void* obj);
+void SetByteField0x253_020397c0(void* obj);
+int GetFieldIfFlag4_020100f8(char* obj);
+void SetField0x23cTrue_020a27ac(void* obj);
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
 extern int data_02114e20;
 
@@ -14,10 +14,10 @@ void ResetListHeader020727ec(struct List020727d8* list);
 // USA: func_ov017_021bf398
 ARM void ClearFieldsAndResetAllocator_021bf398(char* self) {
 	GameState* battle = GameState::GetInstance();
-	int flagResult = GetFieldIfFlag4((char*)battle);
+	int flagResult = GetFieldIfFlag4_020100f8((char*)battle);
 	GameObject* combatant = battle->GetUnknownGameObject();
-	SetField0x23cTrue((void*)flagResult);
-	SetByteField0x253(combatant);
+	SetField0x23cTrue_020a27ac((void*)flagResult);
+	SetByteField0x253_020397c0(combatant);
 	SafeAllocator* allocator = (SafeAllocator*)(self + 0x14);
 	void* p = allocator->GetSignedAllocator();
 	if (p) {

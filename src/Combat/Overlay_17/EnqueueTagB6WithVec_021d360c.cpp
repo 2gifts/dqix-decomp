@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct Vec3s02030fc8;
@@ -24,7 +24,7 @@ struct LocalEvt021d360c {
 
 // USA: func_ov017_021d360c  (semantic: EnqueueTagB6WithVec_021d360c)
 extern "C" ARM void func_ov017_021d360c(int a, int b, int c, int d) {
-    void* data = GetData02100044();
+    void* data = GetData02100044_0202ae24();
     struct LocalEvt021d360c buf;
     struct Inner021d360c* p = &buf.fields;
 

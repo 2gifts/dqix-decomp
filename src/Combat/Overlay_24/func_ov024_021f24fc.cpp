@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-GameObject* GetCombatantWithFlag0x400ByID(int unused, int id);
+GameObject* GetCombatantWithFlag0x400ByID_ov000_021536f8(int unused, int id);
 
 struct BuffWord_021f24fc {
 	signed int attackBuff : 3;
@@ -17,7 +17,7 @@ struct BuffWord_021f24fc {
 
 // USA: func_ov024_021f24fc
 extern "C" ARM int func_ov024_021f24fc(int* p0, short id, int unused2, int* outFlag, short* out5) {
-	GameObject* c = GetCombatantWithFlag0x400ByID(*p0, id);
+	GameObject* c = GetCombatantWithFlag0x400ByID_ov000_021536f8(*p0, id);
 	if (!c) return 0;
 	struct BuffWord_021f24fc* bw = (struct BuffWord_021f24fc*)((char*)c->currentStats_ + 0x58);
 	if (bw->unkBuff24 >= 2) {

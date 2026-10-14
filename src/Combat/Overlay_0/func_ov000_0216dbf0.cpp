@@ -8,7 +8,7 @@ extern "C" int _ZNK8Object3D9GetRadiusEv(unsigned char* obj);
 extern "C" int _ZNK8Object3D9GetHeightEv(void* obj);
 extern "C" ARM int Vector3fix_Length(int* v);
 extern "C" void _ZN8Vector3iaSERKS_(int* dst, int* src);
-void ApplyVec3Tail(void* obj, int* vec);
+void ApplyVec3Tail_0202e694(void* obj, int* vec);
 
 struct Vec3_0216dbf0 { int x, y, z; };
 extern Vec3_0216dbf0 data_ov000_02183280;
@@ -79,7 +79,7 @@ extern "C" ARM void func_ov000_0216dbf0(char* self, int* ids, int count, short f
     }
 
     _ZN8Vector3iaSERKS_((int*)(self + 0x10), (int*)&c);
-    ApplyVec3Tail(self, (int*)&v);
+    ApplyVec3Tail_0202e694(self, (int*)&v);
     *(int*)(self + 0x238) = 0x1c;
     *(int*)(self + 0x23c) = 0x14;
 }

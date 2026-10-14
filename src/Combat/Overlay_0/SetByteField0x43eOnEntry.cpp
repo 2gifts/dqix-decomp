@@ -8,11 +8,10 @@
 #define REGION_OFFSET_1 0x43e
 #endif
 
-
 extern "C" void* func_ov000_02161318(void* p0, int p1);
 
 // USA: func_ov000_02162b70
-ARM void SetByteField0x43eOnEntry(void* p, int key, unsigned char val) {
+ARM void SetByteField0x43eOnEntry_ov000_02162b70(void* p, int key, unsigned char val) {
 	void* entry = func_ov000_02161318((char*)p + REGION_OFFSET_0, key);
 	if (entry != 0) {
 		*((unsigned char*)entry + REGION_OFFSET_1) = val;

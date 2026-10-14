@@ -4,7 +4,7 @@
 #include "Memory/SafeAllocator.h"
 #include "Memory/AllocatorUnion.h"
 
-void SetFlag0x2IfByte0xd4Not3(unsigned char* obj);
+void SetFlag0x2IfByte0xd4Not3_0208beb4(unsigned char* obj);
 extern "C" void func_0208bb78(void* obj, int count);
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
 extern AllocatorUnion data_02114e20;
@@ -31,7 +31,7 @@ extern "C" ARM int func_ov001_02154e40(struct Obj02154e40* self) {
     GameState* battle = GameState::GetInstance();
 
     if (!(self->flags0x50 & 0x8) && self->field0x138 != 0 && self->field0x120 != 0) {
-        SetFlag0x2IfByte0xd4Not3((unsigned char*)self->field0x120);
+        SetFlag0x2IfByte0xd4Not3_0208beb4((unsigned char*)self->field0x120);
         unsigned int scaleCount = battle->GetTickCount();
         func_0208bb78(self->field0x120, scaleCount);
 
@@ -48,7 +48,7 @@ extern "C" ARM int func_ov001_02154e40(struct Obj02154e40* self) {
         self->field0x120 = 0;
     }
 
-    FontBankLoader* val = GetGlobal02109400();
+    FontBankLoader* val = GetGlobal02109400_02094a00();
     unsigned char flag = 1;
     if (self->field0x13 != 0) {
         flag = 0;

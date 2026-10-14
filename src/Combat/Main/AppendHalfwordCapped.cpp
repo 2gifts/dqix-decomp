@@ -6,7 +6,7 @@ struct BoundedArray {
 };
 
 // USA: func_0209c08c
-ARM void AppendHalfwordCapped(struct BoundedArray* s, unsigned short value) {
+ARM void AppendHalfwordCapped_0209c08c(struct BoundedArray* s, unsigned short value) {
     unsigned short count = s->count;
     if (count < 0xc) {
         s->count = count + 1;

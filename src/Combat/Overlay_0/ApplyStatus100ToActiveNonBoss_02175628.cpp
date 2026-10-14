@@ -1,14 +1,14 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void* GetPtrField0x2a04(GameState* battleStruct);
-void* GetFieldAt0x150(unsigned char* obj);
+void* GetPtrField0x2a04_02010828(GameState* battleStruct);
+void* GetFieldAt0x150_02053c6c(unsigned char* obj);
 extern "C" void* func_ov000_02161318(void* obj, int id);
 
 // USA: func_ov000_02175628  (semantic: ApplyStatus100ToActiveNonBoss_02175628)
 extern "C" ARM void func_ov000_02175628(void* obj) {
     GameState* battleStruct = GameState::GetInstance();
-    unsigned char* field2a04 = (unsigned char*)GetPtrField0x2a04(battleStruct);
+    unsigned char* field2a04 = (unsigned char*)GetPtrField0x2a04_02010828(battleStruct);
     unsigned char count = field2a04[0xf7c];
     unsigned char i;
     for (i = 0; i < count; i++) {
@@ -17,7 +17,7 @@ extern "C" ARM void func_ov000_02175628(void* obj) {
         if (combatant == 0) {
             continue;
         }
-        void* p = GetFieldAt0x150((unsigned char*)combatant);
+        void* p = GetFieldAt0x150_02053c6c((unsigned char*)combatant);
 #if defined(jpn)
         enum { statusOffset = 0x8b4 };
 #else

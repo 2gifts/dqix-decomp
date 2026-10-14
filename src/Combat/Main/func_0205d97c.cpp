@@ -17,7 +17,7 @@ struct TouchState0205d97c {
 };
 extern TouchState0205d97c data_02114e54;
 Elem_0205d81c* FindElementByC40205d81c(Struct_0205d81c*, int);
-void SelectCoordsByFlag0x24(unsigned char*, int*, int*);
+void SelectCoordsByFlag0x24_02012a84(unsigned char*, int*, int*);
 
 // USA: func_0205d97c
 extern "C" ARM int func_0205d97c(Struct_0205d81c* object) {
@@ -27,7 +27,7 @@ extern "C" ARM int func_0205d97c(Struct_0205d81c* object) {
     int y;
     element = FindElementByC40205d81c(object, object->selected);
     if (element == NULL) return 0;
-    SelectCoordsByFlag0x24((unsigned char*)&data_02114e54, &x, &y);
+    SelectCoordsByFlag0x24_02012a84((unsigned char*)&data_02114e54, &x, &y);
     if (x == 0 || y == 0) return 0;
     int left = element->x;
     int top = element->y;

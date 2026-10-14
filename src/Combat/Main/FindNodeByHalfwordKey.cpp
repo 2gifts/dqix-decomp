@@ -15,7 +15,7 @@ struct N528cList {
 };
 
 // USA: func_0206528c
-ARM struct N528cNode* FindNodeByHalfwordKey(struct N528cList* list, int key) {
+ARM struct N528cNode* FindNodeByHalfwordKey_0206528c(struct N528cList* list, int key) {
     struct N528cNode* node = list->head;
     while (node != 0) {
         if (node->id == key) {

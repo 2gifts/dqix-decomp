@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 extern "C" void __clear(void* buf, int size);
-int CollectCombatantsWithFlag0x1000(GameState* battleStruct, unsigned char* out);
+int CollectCombatantsWithFlag0x1000_02010038(GameState* battleStruct, unsigned char* out);
 struct Obj02053f7c;
 void SetField0x1b2IfMatchOrFlag02053f7c(Obj02053f7c*, unsigned short, int);
 extern "C" void* func_0202ae18(void);
@@ -12,7 +12,7 @@ int CheckByteAtIndex_021c5bf8(int index, int key);
 void MaybeResetEntry_021c5e28(int, int);
 extern "C" void func_ov017_021c5a8c(int a, int key);
 int IsValidCombatantValue_021c5a1c(int val);
-void* GetData02108ea8(void);
+void* GetData02108ea8_0207d78c(void);
 extern "C" int func_0207d7f4(void* entries, unsigned short id, int charId, int flag,
                              signed char field4, unsigned short field2, unsigned char field5);
 extern "C" int func_ov017_021c5c5c(int index, int id, int arg);
@@ -22,7 +22,7 @@ GameObject* FindCombatantByField16a_021a278c(void* base, int val);
 void TrySetMode02076ccc(void* obj, int mode);
 struct Event021c530c;
 extern "C" Event021c530c* func_ov017_021b8478(void* node);
-int IsField0Null(void** list);
+int IsField0Null_02046b08(void** list);
 struct Src021c5f00 { unsigned short w0; unsigned short w2; unsigned char b4; unsigned char b5; unsigned char b6; };
 void EnqueueEventTag63_021c5f00(Src021c5f00* src);
 struct ListHead02046b38;
@@ -168,7 +168,7 @@ extern "C" ARM void func_ov017_021c530c(int index, Cmd021c530c* cmd, GameState* 
     members[0] = index;
     count = 1;
     if (index == 0) {
-        count = CollectCombatantsWithFlag0x1000(gs, members);
+        count = CollectCombatantsWithFlag0x1000_02010038(gs, members);
     }
     for (i = 0; i < count; i++) {
         member = gs->GetPartyMemberByIndex(members[i]);
@@ -191,7 +191,7 @@ extern "C" ARM void func_ov017_021c530c(int index, Cmd021c530c* cmd, GameState* 
                     if (!func_0202c508(func_0202ae18())) {
                         ok = false;
                     } else {
-                        entries = GetData02108ea8();
+                        entries = GetData02108ea8_0207d78c();
                         func_0207d7f4(entries, cmd->id, index, 1, index, cmd->field6, cmd->fieldc);
                         ok = func_ov017_021c5c5c(index, cmd->id, index) != 0;
                         func_0207d7f4(entries, cmd->id, 0, ok, index, cmd->field6, cmd->fieldc);
@@ -240,7 +240,7 @@ extern "C" ARM void func_ov017_021c530c(int index, Cmd021c530c* cmd, GameState* 
                         state = 0;
                     } else if ((int)leader->fieldC3 > 0) {
                         state = 0;
-                    } else if (IsField0Null((void**)list1) == 0) {
+                    } else if (IsField0Null_02046b08((void**)list1) == 0) {
                         state = 2;
                     } else {
                         state = 1;
@@ -359,13 +359,13 @@ extern "C" ARM void func_ov017_021c530c(int index, Cmd021c530c* cmd, GameState* 
             found = 1;
         }
     } else {
-        combatant = GetCombatantWithFlag0x100(gs, cmd->field8);
+        combatant = GetCombatantWithFlag0x100_0200ff1c(gs, cmd->field8);
         zoneInfo = (Zone021c530c*)func_02012fe4();
         if (index != 0) {
             return;
         }
         if (combatant != NULL) {
-            if (IsField0Null((void**)list3) && combatant->obj3D_.GetField06() == GetZoneId(zoneInfo)) {
+            if (IsField0Null_02046b08((void**)list3) && combatant->obj3D_.GetField06() == GetZoneId(zoneInfo)) {
                 func_ov017_021c5b44(cmd->field8, cmd->id, GetField14e_021bb9fc(fieldObj), cmd->fieldc, cmd->field10);
                 found = 1;
             } else if (combatant->obj3D_.GetField06() == GetZoneId(zoneInfo)) {

@@ -42,7 +42,7 @@ struct GrottoEntrance021cfb0c {
 
 extern "C" int func_0202c508(struct SearchStruct0202c1a4* search);
 extern "C" unsigned short* func_02012fe4(void);
-void* GetField0x3f8Address(GameState* battleStruct);
+void* GetField0x3f8Address_0200fd0c(GameState* battleStruct);
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24** list);
 int IsInRange0201b588(int v);
 int ListContainsId(ListHead02046b60* list, int id);
@@ -69,7 +69,7 @@ extern "C" ARM void func_ov017_021cfb0c(int unused0, void* unused1, GameState* b
     grotto = (struct GrottoEntrance021cfb0c*)battleStruct->GetGrottoStruct();
     list = ov->list;
     flag = 0;
-    cur = (unsigned short*)GetField0x3f8Address(battleStruct);
+    cur = (unsigned short*)GetField0x3f8Address_0200fd0c(battleStruct);
     if (GetHeadNodeIdOrMinusOne(list) == 3) {
         if (IsInRange0201b588(*cur)) {
             flag = 1;
@@ -82,7 +82,7 @@ extern "C" ARM void func_ov017_021cfb0c(int unused0, void* unused1, GameState* b
     Vector3i pos = grotto->pos;
     pos.z += 0x2000;
     if (ListContainsId((ListHead02046b60*)list, 3) || ListContainsId((ListHead02046b60*)list, 1)) {
-        unsigned short id = *(unsigned short*)GetField0x3f8Address(battleStruct);
+        unsigned short id = *(unsigned short*)GetField0x3f8Address_0200fd0c(battleStruct);
         if (id == 0xc3b5) {
             return;
         }

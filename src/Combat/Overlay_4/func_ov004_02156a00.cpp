@@ -24,7 +24,7 @@ void DivModField26_021f9bdc(struct Obj021f9bdc*, int);
 struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0*, int, int);
 struct TableA68;
-void* FindEntryByKey(struct TableA68*, int);
+void* FindEntryByKey_02072a68(struct TableA68*, int);
 
 struct Entry02156a00 { unsigned int id : 9; char pad[4]; struct Entry02156a00* next; };
 struct Head02156a00 { char pad0[8]; struct Entry02156a00* head; char pad1[4]; unsigned char kind; };
@@ -104,7 +104,7 @@ extern "C" ARM int func_ov004_02156a00(void* a1) {
     if (func_ov023_021f6f10(node_b) != 8) {
         return 0;
     }
-    ((struct Node66_02156a00*)node_b)->f20 = FindEntryByKey((struct TableA68*)list, (short)(((struct Head02156a00*)data_ov004_021707c8.fc)->kind + 0x3e7));
+    ((struct Node66_02156a00*)node_b)->f20 = FindEntryByKey_02072a68((struct TableA68*)list, (short)(((struct Head02156a00*)data_ov004_021707c8.fc)->kind + 0x3e7));
 
     void* node_c = func_ov023_021f6880(obj, 0x34);
     if (node_c == 0) {

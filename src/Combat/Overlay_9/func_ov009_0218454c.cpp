@@ -39,7 +39,7 @@ struct Object3D {
 };
 
 unsigned int* GetDataPtr02114e04_020d6c00();
-void OrBitsIntoField0(unsigned int* field, unsigned int bits);
+void OrBitsIntoField0_020466e4(unsigned int* field, unsigned int bits);
 void ZeroInit020de848(void* table);
 void ResetStruct020dfc40(Struct020dfc40* table);
 #if defined(jpn)
@@ -152,7 +152,7 @@ extern "C" ARM void func_ov009_0218454c(CharacterCreation* self, int vocation, i
 {
     self->mode_ = mode;
     if (self->mode_ == 1)
-        OrBitsIntoField0(GetDataPtr02114e04_020d6c00(), 0xf);
+        OrBitsIntoField0_020466e4(GetDataPtr02114e04_020d6c00(), 0xf);
     self->allocators_[0].ResetAllocatorPointer();
     self->allocators_[1].ResetAllocatorPointer();
     self->allocators_[2].ResetAllocatorPointer();

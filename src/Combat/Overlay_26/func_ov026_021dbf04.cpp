@@ -65,10 +65,10 @@ struct BattleWork {
 };
 
 SlotWork* FindSlotById_021dae60(Container_021dae60* c, int id);
-int GetCombatWorkFlags0x55f4(void* work, int mask);
-void SetCombatWorkFlags0x55f4(void* work, int mask);
+int GetCombatWorkFlags0x55f4_ov000_02160fd4(void* work, int mask);
+void SetCombatWorkFlags0x55f4_ov000_02160fa8(void* work, int mask);
 void* GetDataPtr02114e04_020d6c00();
-void OrBitsIntoField0(unsigned int* field, unsigned int bits);
+void OrBitsIntoField0_020466e4(unsigned int* field, unsigned int bits);
 void SetFlagAndCall02176038(Obj02176038* obj);
 
 extern "C" {
@@ -94,7 +94,7 @@ extern "C" ARM void func_ov026_021dbf04(BattleWork* self) {
     self->inputOn = 0;
     memset(self->slotDone, 0, sizeof(self->slotDone));
 
-    Roster* roster = (Roster*)GetPtrField0x2a04(GameState::GetInstance());
+    Roster* roster = (Roster*)GetPtrField0x2a04_02010828(GameState::GetInstance());
     for (int i = 0; i < roster->count; i++) {
         int id = roster->ids[i];
         SlotWork* slot = FindSlotById_021dae60(&self->list, id);
@@ -105,11 +105,11 @@ extern "C" ARM void func_ov026_021dbf04(BattleWork* self) {
         }
     }
 
-    int wasSet = GetCombatWorkFlags0x55f4(self, 0x2000000);
+    int wasSet = GetCombatWorkFlags0x55f4_ov000_02160fd4(self, 0x2000000);
     self->workFlags = self->savedWorkFlags;
     if (wasSet) {
-        SetCombatWorkFlags0x55f4(self, 0x2000000);
+        SetCombatWorkFlags0x55f4_ov000_02160fa8(self, 0x2000000);
     }
-    OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), self->savedField);
+    OrBitsIntoField0_020466e4((unsigned int*)GetDataPtr02114e04_020d6c00(), self->savedField);
     SetFlagAndCall02176038((Obj02176038*)&self->list);
 }

@@ -1,12 +1,12 @@
 #include <globaldefs.h>
 
-void PushInterruptDisableState(void);
+void PushInterruptDisableState_020d8654(void);
 void BlankFunction020d84e4(void);
 void BlankFunction020d84e8(void);
 extern "C" void* func_0202ae18(void);
 extern "C" void func_020d8694(void);
 extern "C" void func_020c9be0(void);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 
 struct QNode0205e1e4 {
     char pad[0x18];
@@ -52,10 +52,10 @@ struct SpinBlock_0205e330 {
 extern "C" ARM void func_0205e330(unsigned char* obj, struct Struct0205e3ec* arg1, short arg2) {
     struct QNode0205e1e4* node;
 
-    PushInterruptDisableState();
+    PushInterruptDisableState_020d8654();
     BlankFunction020d84e4();
 
-    if (CheckField0NonZero((int*)func_0202ae18())) {
+    if (CheckField0NonZero_0202b7d8((int*)func_0202ae18())) {
         node = DequeueNode((struct QList0205e1e4*)(obj + 0x1500));
         if (node != NULL) {
             CopyStruct0205e3ec((struct Struct0205e3ec*)node, arg1);

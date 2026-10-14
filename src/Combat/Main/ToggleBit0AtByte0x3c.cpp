@@ -6,7 +6,7 @@ struct ToggleBits3c_891b0 {
 };
 
 // USA: func_020891b0
-ARM void ToggleBit0AtByte0x3c(struct ToggleBits3c_891b0* obj) {
+ARM void ToggleBit0AtByte0x3c_020891b0(struct ToggleBits3c_891b0* obj) {
     if (obj->bit0) {
         obj->bit0 = 0;
     } else {

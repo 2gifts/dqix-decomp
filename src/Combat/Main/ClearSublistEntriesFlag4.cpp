@@ -18,7 +18,7 @@ extern struct SubList020804fc* FindEntryByShortId0207f0ac(struct List0207f0ac* l
 extern struct FlagEntry020804fc* FindEntryByShortId0207f6ac(struct List0207f6ac* list, int id);
 
 // USA: func_020804fc
-ARM void ClearSublistEntriesFlag4(void* obj, int id) {
+ARM void ClearSublistEntriesFlag4_020804fc(void* obj, int id) {
     struct SubList020804fc* sub;
     unsigned char i;
     sub = FindEntryByShortId0207f0ac((struct List0207f0ac*)((char*)obj + 0xc), id);

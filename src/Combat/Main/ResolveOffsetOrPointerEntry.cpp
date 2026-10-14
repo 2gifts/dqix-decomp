@@ -6,7 +6,7 @@ extern "C" void func_020d220c(void);
 struct OffsetTable020d2eec { char pad[0x3c]; int entries[1]; };
 
 // USA: func_020d2eec
-ARM void* ResolveOffsetOrPointerEntry(void* base, int index) {
+ARM void* ResolveOffsetOrPointerEntry_020d2eec(void* base, int index) {
     void* result;
     int val;
     func_020d21f8();

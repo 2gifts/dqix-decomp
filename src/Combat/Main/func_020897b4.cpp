@@ -21,7 +21,7 @@ extern char data_020f1019[];
 extern char data_020f102e[];
 extern unsigned char data_0211e33c[0x30000];
 
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 void* Clear0x54Bytes0208247c(void* obj);
 int InitAndRunScript0208274c(void* spellTable, StreamHeader* script, int size, int arg3);
 extern "C" void func_02083cbc(void* dst, void* src, void* tail);
@@ -65,7 +65,7 @@ extern "C" ARM void func_020897b4(unsigned char combatantId, unsigned char level
     unsigned int size;
     Ctx0209a8b4 spellTable;
 
-    GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), combatantId);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), combatantId);
     if (combatant == 0) {
         return;
     }
@@ -85,7 +85,7 @@ extern "C" ARM void func_020897b4(unsigned char combatantId, unsigned char level
     InitAndRunScript0208274c(&entry, (StreamHeader*)levelScript, levelScriptSize, level);
 
     ResourceScriptEntry* const levelData = &entry;
-    VocationRecord* record = reinterpret_cast<VocationRecord*>(GetFieldAt0x150((unsigned char*)combatant));
+    VocationRecord* record = reinterpret_cast<VocationRecord*>(GetFieldAt0x150_02053c6c((unsigned char*)combatant));
     record->unlockedVocations |= 1 << vocation;
     record->currentVocation = vocation;
     record->levels[vocation] = level;

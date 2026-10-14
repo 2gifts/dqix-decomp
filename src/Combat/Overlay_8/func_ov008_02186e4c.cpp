@@ -86,7 +86,7 @@ struct BattleRecords {
 
 extern unsigned short data_02114e30[];
 
-int TestFlagMask(unsigned short* pad, int buttons);
+int TestFlagMask_02012430(unsigned short* pad, int buttons);
 
 // USA: func_ov008_02186e4c
 extern "C" ARM void func_ov008_02186e4c(BattleRecords* self, unsigned int ticks)
@@ -137,9 +137,9 @@ extern "C" ARM void func_ov008_02186e4c(BattleRecords* self, unsigned int ticks)
     {
         int left = 0;
         int right = 0;
-        if (TestFlagMask(data_02114e30, 0x200))
+        if (TestFlagMask_02012430(data_02114e30, 0x200))
             left = 1;
-        if (TestFlagMask(data_02114e30, 0x100))
+        if (TestFlagMask_02012430(data_02114e30, 0x100))
             right = 1;
         if (left && right)
         {

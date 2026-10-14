@@ -11,7 +11,7 @@ struct EntryList_1f170 {
 };
 
 // USA: func_0201f170
-ARM struct Entry_1f170* FindEntryBySignedId(struct EntryList_1f170* list, int id) {
+ARM struct Entry_1f170* FindEntryBySignedId_0201f170(struct EntryList_1f170* list, int id) {
     int i;
     for (i = 0; i < list->count; i++) {
         if (id == list->entries[i].id) {

@@ -28,7 +28,7 @@ extern const char data_ov031_0224c47c[];
 extern "C" void func_020c9be0(void);
 extern "C" void func_ov031_02239368(int);
 extern "C" int func_ov031_02239404(void);
-unsigned short GetOwnerDataFortuneValue(void);
+unsigned short GetOwnerDataFortuneValue_020d4b58(void);
 
 // USA: func_ov031_0223a0fc
 extern "C" ARM int func_ov031_0223a0fc(int selection, int first, int second) {
@@ -41,7 +41,7 @@ extern "C" ARM int func_ov031_0223a0fc(int selection, int first, int second) {
     func_ov031_02239368(3);
     data_ov031_02290d18.state->field_0xc = first;
     data_ov031_02290d18.state->field_0x32 = second;
-    data_ov031_02290d18.state->fortune = GetOwnerDataFortuneValue();
+    data_ov031_02290d18.state->fortune = GetOwnerDataFortuneValue_020d4b58();
     data_ov031_02290d18.state->width = 0xd0;
     data_ov031_02290d18.state->height = 0x44;
     data_ov031_02290d18.state->field_0x10 = 2;

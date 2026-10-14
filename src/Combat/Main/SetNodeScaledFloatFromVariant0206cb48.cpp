@@ -29,7 +29,7 @@ struct Node0206cb48 {
 extern "C" ARM int func_0206cb48(void* param0) {
     struct Node0206cb48* node;
     int key = ((Script::Parameter*)((struct Variant02030b0c*)param0))->ToInt();
-    node = (Node0206cb48*)FindNodeByByteId(data_02108cec.field0x10, key);
+    node = (Node0206cb48*)FindNodeByByteId_0206db20(data_02108cec.field0x10, key);
     if (node == 0) {
         return 0;
     }

@@ -87,7 +87,7 @@ extern int data_ov025_021eef40[];
 extern "C" void func_ov025_021eb044(void* obj, ...);
 extern "C" int func_ov000_0215fd90(void* entry, unsigned char effect);
 extern "C" void func_ov000_02162c14(void* work, int id, struct Buf021e3178* out);
-void* GetActiveCombatWork(void);
+void* GetActiveCombatWork_ov000_02160130(void);
 struct Rec021e3178* SearchBothTables02079e2c(char*, int);
 struct List02160094;
 struct Node021e3178* GetNodeAtIndex02160094(List02160094*, int);
@@ -95,7 +95,7 @@ struct List021600f8;
 struct Node021e3178* GetNodeAtIndex021600f8(List021600f8*, int);
 struct Node021e3178* GetNodeAtIndex0215feb4(char*, int, int);
 void* FindNodeAtDepth0215fff4(void* node, int index, int depth);
-int TestBit2At0x2f4(unsigned char* flags);
+int TestBit2At0x2f4_020850d0(unsigned char* flags);
 extern "C" void __clear(void* p, int n);
 
 #define NOTIFY() func_ov025_021eb044(*(void**)((char*)&data_ov025_021ef988 + NotificationField), a->slot)
@@ -177,7 +177,7 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
         break;
     }
     case 6: {
-        struct Rec021e3178* rec = SearchBothTables02079e2c((char*)GetData02108e10(), b->id);
+        struct Rec021e3178* rec = SearchBothTables02079e2c((char*)GetData02108e10_020797dc(), b->id);
         if (!rec) return 0;
         unsigned short id = b->id;
         if (id == 0x74) {
@@ -316,7 +316,7 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
         break;
     }
     case 15: {
-        void* w = GetActiveCombatWork();
+        void* w = GetActiveCombatWork_ov000_02160130();
         if (w && *(unsigned char*)((char*)w + WorkFlag)) NOTIFY();
         break;
     }
@@ -340,7 +340,7 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
         struct Ent021e3178* ent = b->ents;
         if (!ent) break;
         int id = ent->id;
-        void* w = GetActiveCombatWork();
+        void* w = GetActiveCombatWork_ov000_02160130();
         if (!w) break;
         struct Buf021e3178 buf;
         func_ov000_02162c14(w, id, &buf);
@@ -356,9 +356,9 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
         int id = ent->id;
         GameState* g = GameState::GetInstance();
         if (!g) break;
-        struct Combatant021e3178* c = (Combatant021e3178*)GetCombatantWithFlag0x100(g, id);
+        struct Combatant021e3178* c = (Combatant021e3178*)GetCombatantWithFlag0x100_0200ff1c(g, id);
         if (!c) break;
-        if (TestBit2At0x2f4(c->flags)) {
+        if (TestBit2At0x2f4_020850d0(c->flags)) {
             NOTIFY();
             return 1;
         }
@@ -396,7 +396,7 @@ extern "C" ARM int func_ov025_021e3178(struct Trig021e3178* a, struct Ev021e3178
         break;
     }
     case 9: {
-        struct Rec021e3178* rec = SearchBothTables02079e2c((char*)GetData02108e10(), b->id);
+        struct Rec021e3178* rec = SearchBothTables02079e2c((char*)GetData02108e10_020797dc(), b->id);
         if (!rec) return 0;
         struct Node021e3178* node = GetNodeAtIndex021600f8((List021600f8*)b, 0);
         if (!node) return 0;

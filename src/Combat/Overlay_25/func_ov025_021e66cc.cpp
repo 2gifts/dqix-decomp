@@ -49,13 +49,13 @@ struct Outer_02054000;
 struct Obj021e8bac;
 struct Struct_203dafc;
 
-GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int id);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* battleStruct, int id);
 ActiveSub021e66cc* GetActiveSub_02054000(struct Outer_02054000* p);
 void ResetStruct_021e3158(struct Reset021e3158* p);
 int SetFlagAndDispatch_021e2628(int a, int b);
 SafeAllocator* GetArrayEntry_021e8a54_021e8a54(char* obj);
 void PushLogNode021e8bac(struct Obj021e8bac* obj, struct Node021e8bac* node);
-void ClearEightWords(struct Struct_203dafc* obj);
+void ClearEightWords_0203dafc(struct Struct_203dafc* obj);
 
 extern struct Global021ef988 data_ov025_021ef988;
 extern struct Reset021e3158 data_ov025_021ef9a8;
@@ -69,7 +69,7 @@ extern "C" ARM int func_ov025_021e66cc(void* unused, struct CombatSlot021e66cc* 
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
 
     if (data_ov025_021ef988.state == 0) {
-        GameObject* c = GetCombatantWithFlag0x100(gs, slot->head->id);
+        GameObject* c = GetCombatantWithFlag0x100_0200ff1c(gs, slot->head->id);
         if (c == NULL) {
             ResetStruct_021e3158(&data_ov025_021ef9a8);
             return 1;
@@ -126,7 +126,7 @@ extern "C" ARM int func_ov025_021e66cc(void* unused, struct CombatSlot021e66cc* 
         PushLogNode021e8bac((struct Obj021e8bac*)data_ov025_021ef988.battle, node);
 
         ObjectArchiveLoadInfo info;
-        ClearEightWords((struct Struct_203dafc*)&info);
+        ClearEightWords_0203dafc((struct Struct_203dafc*)&info);
         info.fileData = fileData;
         info.unk_8 = length;
         info.unk_10 = 1;

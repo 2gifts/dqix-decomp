@@ -9,7 +9,7 @@ struct Bytes02033b88;
 struct Obj020397cc;
 struct Owner020398b4;
 void SetVecYFromValue02033874(Obj02033874*, int);
-void* GetField0x3f8Address(GameState*);
+void* GetField0x3f8Address_0200fd0c(GameState*);
 extern "C" void* func_02012fe4();
 void ClearBytesAndZeroBlock02039d24(unsigned char*);
 int SetByte0xbeShiftPrev(Bytes02033b88*, int);
@@ -53,7 +53,7 @@ extern "C" ARM void func_020399b0(GameObject* self, unsigned short field, const 
     if (((signed char*)self)[0x1c9 - kActorTailDelta] > 0) ((unsigned char*)self)[0x1ce - kActorTailDelta] |= 4;
     ((signed char*)self)[0x1cb - kActorTailDelta] = -1;
     ((unsigned char*)self)[0x1cc - kActorTailDelta] = 0;
-    unsigned char* settings = static_cast<unsigned char*>(GetField0x3f8Address(GameState::GetInstance()));
+    unsigned char* settings = static_cast<unsigned char*>(GetField0x3f8Address_0200fd0c(GameState::GetInstance()));
     Zone3D* zone = static_cast<Zone3D*>(func_02012fe4());
     ClearBytesAndZeroBlock02039d24(reinterpret_cast<unsigned char*>(self));
     if (settings[0x66]) {
@@ -75,7 +75,7 @@ extern "C" ARM void func_020399b0(GameObject* self, unsigned short field, const 
     }
     SubBlock02038508 block;
     InitBlock02038508(&block);
-    ZoneFeatures::Opcode6aEntry* node = FindNodeKind9ById(&zone->substruct_6c_, *reinterpret_cast<short*>(settings + 0x6c));
+    ZoneFeatures::Opcode6aEntry* node = FindNodeKind9ById_0201e6d4(&zone->substruct_6c_, *reinterpret_cast<short*>(settings + 0x6c));
     if (!node) return;
     int cosine = fix32cos(node->unk_20);
     Vector3i direction;
@@ -83,7 +83,7 @@ extern "C" ARM void func_020399b0(GameObject* self, unsigned short field, const 
     direction.y = 0;
     direction.z = cosine;
     Vector3fix_Normalize(&direction, &direction);
-    ZoneFeatures::Opcode6aEntry* linked = FindNodeKind9ById(&zone->substruct_6c_, node->unk_2c.type9.unk_2);
+    ZoneFeatures::Opcode6aEntry* linked = FindNodeKind9ById_0201e6d4(&zone->substruct_6c_, node->unk_2c.type9.unk_2);
     if (!linked) return;
     if (node->unk_2c.type9.unk_5 & 1) {
         SET_ACTION_POINTS(linked, node, 1);
@@ -93,7 +93,7 @@ extern "C" ARM void func_020399b0(GameObject* self, unsigned short field, const 
     block.command = 2;
     block.active = 1;
     block.heading = node->unk_20;
-    CopyBlockTo0x26c(self, &block);
+    CopyBlockTo0x26c_020398b4(self, &block);
     int difference = block.end.vec.y - block.start.vec.y;
     int y = block.start.vec.y + FIX32_MULTIPLY(difference, *reinterpret_cast<short*>(settings + 0x6a));
     Vector3i adjusted;

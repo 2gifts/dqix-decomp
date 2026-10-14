@@ -5,8 +5,8 @@ struct TableA68;
 struct StoreStruct;
 
 extern int GetGlobalField0x1c020421a0();
-void* FindEntryByKey(struct TableA68* table, int key);
-void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
+void* FindEntryByKey_02072a68(struct TableA68* table, int key);
+void StoreInArray0x8b0_020465c0(struct StoreStruct* base, int index, int value);
 
 extern "C" void func_02046380(int g);
 extern "C" void func_02046608(int g, int nibble, void* found, void* buf, int a5, int a6, int a7);
@@ -53,9 +53,9 @@ ARM void ProcessCommandEntry02081a14(struct AObj02081a14* a, struct BObj02081a14
     int g = GetGlobalField0x1c020421a0();
     memset(a->field18, 0, 0x960);
     func_02046380(g);
-    StoreInArray0x8b0((struct StoreStruct*)g, e->field10, e->field0);
+    StoreInArray0x8b0_020465c0((struct StoreStruct*)g, e->field10, e->field0);
 
-    void* found = FindEntryByKey(a->field0, e->fieldE);
+    void* found = FindEntryByKey_02072a68(a->field0, e->fieldE);
     func_02046608(g, e->field13nibble, found, a->field18, 0x100, 0, 0);
 
     int y = 0;

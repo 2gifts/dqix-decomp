@@ -8,8 +8,8 @@ struct Ent021ce658 {
 	unsigned char f6;
 };
 
-GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
-int GetFieldAt0x150(unsigned char* obj);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* battleStruct, int combatantId);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 void InitAndRequeueEntry020e3b8c(char* mgr, int index, int p3, int p4, int p5, int p6, int p7, unsigned char p8);
 
 // USA: func_ov017_021ce658  (semantic: RequeueEntryForCombatant_021ce658)
@@ -20,10 +20,10 @@ extern "C" ARM void func_ov017_021ce658(void* unused0, struct Ent021ce658* entry
  enum {regionalOffset0=0x950};
 #endif
 	signed char f4 = entry->f4;
-	GameObject* c = GetCombatantWithFlag0x100(battle, f4);
+	GameObject* c = GetCombatantWithFlag0x100_0200ff1c(battle, f4);
 	if (c == NULL) return;
 
-	char* field150 = (char*)GetFieldAt0x150((unsigned char*)c);
+	char* field150 = (char*)GetFieldAt0x150_02053c6c((unsigned char*)c);
 	if (field150 == 0) return;
 
 	int field950 = *(int*)(field150 + regionalOffset0);

@@ -8,7 +8,7 @@ extern "C" void func_ov023_021e0f44(void* obj);
 struct List0202fec8;
 extern "C" int func_020e0028(void* p, void* b, int out1, int out2, void* p2, int field84);
 
-int CopyIndexedRegion0x75f0(void* unused, short* indices, int* dest, int count);
+int CopyIndexedRegion0x75f0_020ac020(void* unused, short* indices, int* dest, int count);
 
 struct ListEntry021e0c80 {
     char unused0;
@@ -67,7 +67,7 @@ extern "C" ARM int func_ov023_021e0c80(void* obj) {
     }
 
     if (n > 0) {
-        if (CopyIndexedRegion0x75f0(0, values, idxData, n)) {
+        if (CopyIndexedRegion0x75f0_020ac020(0, values, idxData, n)) {
             int j;
             for (j = 0; j < n; j++) {
                 short v = values[j];

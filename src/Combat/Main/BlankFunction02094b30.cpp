@@ -11,7 +11,7 @@ enum FontBankId {
 
 extern "C" int func_020952f4(char* locationSuffix);
 extern "C" int func_02001aec(const void*, const void*, unsigned int);
-int GetField5cb0Value(char* gameState);
+int GetField5cb0Value_0201079c(char* gameState);
 #endif
 
 // USA: func_02094b30
@@ -28,7 +28,7 @@ ARM void BlankFunction02094b30(FontBankLoader* loader, int fontBankId, int useBa
             }
             break;
         case VariantFontBank: {
-            int fontVariant = GetField5cb0Value((char*)GameState::GetInstance());
+            int fontVariant = GetField5cb0Value_0201079c((char*)GameState::GetInstance());
             fontVariant &= 0xff;
             if (fontVariant != loader->cachedFontVariant) {
                 unchanged = 0;

@@ -14,7 +14,7 @@ extern "C" int func_ov017_021d60f4(void*);
 extern "C" void func_0209ebe4(void*, int, int);
 
 // USA: func_0209d010
-ARM int TryProcessObjectPair0209ebe4(void* argumentData) {
+ARM int TryProcessObjectPair0209ebe4_0209d010(void* argumentData) {
     void* manager = GetGlobalManager0209dccc();
     if (manager == NULL) return 0;
     BattleCommandArgument* arguments = (BattleCommandArgument*)argumentData;

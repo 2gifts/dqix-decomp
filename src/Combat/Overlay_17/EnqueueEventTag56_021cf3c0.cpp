@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct Vec3_021cf3c0 {
@@ -24,7 +24,7 @@ struct LocalEvt021cf3c0 {
 
 // USA: func_ov017_021cf3c0  (semantic: EnqueueEventTag56_021cf3c0)
 extern "C" ARM void func_ov017_021cf3c0(struct Vec3_021cf3c0 v, short a4, unsigned char e5, unsigned char e6, signed char e7) {
-    void* p = GetData02100044();
+    void* p = GetData02100044_0202ae24();
     struct LocalEvt021cf3c0 buf;
     buf.tag = 0x38;
     buf.a1 = v.a1;

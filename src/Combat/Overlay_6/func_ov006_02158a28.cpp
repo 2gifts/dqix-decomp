@@ -30,10 +30,10 @@ extern unsigned char data_02114e54[];
 void func_020813ec(Menu*, int);
 }
 
-int TestFlag0SetAndFlag1Clear(unsigned short*, int);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short*, int);
 int GetInnerFlagBit0020e28dc(Outer020e28dc*);
-int GetField0x15UnlessInactive(signed char*);
-void SelectCoordsByFlag0x24(unsigned char*, int*, int*);
+int GetField0x15UnlessInactive_020e2918(signed char*);
+void SelectCoordsByFlag0x24_02012a84(unsigned char*, int*, int*);
 int RunAndCheckFlagBit02080dd4(void*, int, int, int, unsigned char*, unsigned char);
 
 struct AlchemyMenu {
@@ -135,13 +135,13 @@ struct AlchemyMenu {
 extern "C" ARM unsigned char func_ov006_02158a28(AlchemyMenu* self)
 {
     unsigned char confirmed = 0;
-    if (TestFlag0SetAndFlag1Clear(data_02114e30, 1))
+    if (TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 1))
         confirmed = 1;
-    if ((self->flags_ & 2) && TestFlag0SetAndFlag1Clear(data_02114e30, 0x400))
+    if ((self->flags_ & 2) && TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x400))
         confirmed = 1;
     if (self->choice_ != 0 && GetInnerFlagBit0020e28dc((Outer020e28dc*)self->choice_))
     {
-        int choice = GetField0x15UnlessInactive((signed char*)self->choice_);
+        int choice = GetField0x15UnlessInactive_020e2918((signed char*)self->choice_);
         if (choice >= 0)
         {
             confirmed = 1;
@@ -152,7 +152,7 @@ extern "C" ARM unsigned char func_ov006_02158a28(AlchemyMenu* self)
     {
         int x;
         int y;
-        SelectCoordsByFlag0x24(data_02114e54, &x, &y);
+        SelectCoordsByFlag0x24_02012a84(data_02114e54, &x, &y);
         self->previousCursor_ = *self->cursor_;
         int item = RunAndCheckFlagBit02080dd4(self->menu_, self->group_, (short)x, (short)y, &confirmed, 1);
         if (item < 0)

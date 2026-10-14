@@ -29,8 +29,8 @@ void CopyInternalFields0207df50(Foo0207df50*);
 void RestorePairTables0207df90(char*);
 void BackupPairTables0207dfac(char*);
 int NormalizeField5_0200fb08(Struct0200fb08*);
-void* GetData02109020();
-void InitFourNamedSubStructs(char*, int);
+void* GetData02109020_0208e9e8();
+void InitFourNamedSubStructs_02096604(char*, int);
 extern "C" {
 Zone3D* func_02012fe4();
 void func_02018d28(Zone3D*, SafeAllocator*, void*, unsigned int);
@@ -117,11 +117,11 @@ extern "C" ARM void func_ov017_0219b624(GameResources* self) {
             info.allocator = allocator;
             info.unk_10 = 1;
             object->LoadFromCHRArchive(&info);
-            func_0208f36c(GetData02109020(), object);
+            func_0208f36c(GetData02109020_0208e9e8(), object);
         }
     }
     BackgroundLoader::RemoveLockGlobal();
-    InitFourNamedSubStructs(static_cast<char*>(self->unknown_ptr_4328), (int)allocator);
+    InitFourNamedSubStructs_02096604(static_cast<char*>(self->unknown_ptr_4328), (int)allocator);
     BackupPairTables0207dfac((char*)pairs);
     globals->lootableTemplates_[0] = &self->substruct_array_2b90[5];
     globals->lootableTemplates_[1] = &self->substruct_array_2b90[6];

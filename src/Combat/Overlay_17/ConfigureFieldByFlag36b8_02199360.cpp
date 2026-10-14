@@ -10,9 +10,9 @@ enum { RegionOffset36b8 = 0x36b8, RegionOffset36bc = 0x36bc, RegionOffset2774 = 
 extern "C" void* func_0202ae18(void);
 extern "C" void* func_02012fe4(void);
 extern "C" int func_0202c508(void* state);
-void* GetField0x3f8Address(GameState* battleStruct);
+void* GetField0x3f8Address_0200fd0c(GameState* battleStruct);
 struct PointerField32c_ffc0;
-void* GetPointerAt0x32c(struct PointerField32c_ffc0* obj);
+void* GetPointerAt0x32c_0200ffc0(struct PointerField32c_ffc0* obj);
 struct Vector3i;
 void InitStruct02070378(char* obj);
 extern "C" void func_ov017_021d1a18(int a, int b, int c, int d);
@@ -25,8 +25,8 @@ extern "C" ARM void func_ov017_02199360(void* obj) {
     void* state = func_0202ae18();
     void* base = func_02012fe4();
     void* src = *(void**)((char*)obj + RegionOffset36bc);
-    void* fieldPtr = GetField0x3f8Address(battleStruct);
-    void* ptr32c = GetPointerAt0x32c((struct PointerField32c_ffc0*)battleStruct);
+    void* fieldPtr = GetField0x3f8Address_0200fd0c(battleStruct);
+    void* ptr32c = GetPointerAt0x32c_0200ffc0((struct PointerField32c_ffc0*)battleStruct);
 
     if (func_0202c508(state)) {
         *(Vector3i*)((int*)((char*)base + RegionOffset2774)) = *(Vector3i const*)((int*)((char*)src + 0x40));

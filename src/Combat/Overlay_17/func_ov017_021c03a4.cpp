@@ -8,11 +8,11 @@ struct Obj020979c0;
 
 extern "C" void func_020a0cc4(unsigned int size);
 extern "C" void func_020a0c0c(void);
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 void InitStruct020979c0(Obj020979c0* obj, unsigned char flag);
 extern "C" void func_020a1940(unsigned int id);
-void PushInputLogB(int value);
-void PopStack1AndTrigger(int value);
+void PushInputLogB_020a1ef0(int value);
+void PopStack1AndTrigger_020a1f4c(int value);
 extern "C" void func_ov014_02186a70(void* obj);
 extern "C" void func_ov014_021868b8(void* obj, SafeAllocator* allocator);
 extern "C" int func_ov014_02186bc8(void* obj, unsigned int tick);
@@ -38,7 +38,7 @@ extern "C" ARM void func_ov017_021c03a4(Task021c03a4* task) {
     if (task->step == 0) {
         *(unsigned short*)0x4000304 |= 0x8000;
         func_020a0cc4(0x3f000);
-        void* buffer = AllocateAligned4((AllocatorUnion*)&data_02114e20, 0x3f000);
+        void* buffer = AllocateAligned4_02012d88((AllocatorUnion*)&data_02114e20, 0x3f000);
         if (buffer == NULL) {
             func_020a0c0c();
             task->failed = 1;
@@ -55,7 +55,7 @@ extern "C" ARM void func_ov017_021c03a4(Task021c03a4* task) {
         }
         InitStruct020979c0((Obj020979c0*)task->f1c, 1);
         func_020a1940(OVERLAY_ID(14));
-        PushInputLogB(1);
+        PushInputLogB_020a1ef0(1);
         func_ov014_02186a70(task->f20);
         func_ov014_021868b8(task->f20, &task->allocator);
         task->step++;
@@ -80,6 +80,6 @@ extern "C" ARM void func_ov017_021c03a4(Task021c03a4* task) {
     func_02097b34(task->f1c);
     func_ov017_021c0364(task);
     func_020a0c0c();
-    PopStack1AndTrigger(1);
+    PopStack1AndTrigger_020a1f4c(1);
     task->failed = 1;
 }

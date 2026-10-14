@@ -6,7 +6,7 @@
 struct Elem02072a28 { short a; int b; };
 struct List02072a28;
 void AppendShortWordPair02072a28(List02072a28* list, Elem02072a28* src);
-int StringLength(const char* text);
+int StringLength_020d2ff0(const char* text);
 struct ScriptStringState0207267c {
     unsigned char skipCount;
     unsigned char padding;
@@ -42,7 +42,7 @@ extern "C" ARM int func_0207267c(Script::Parameter* params) {
         return 1;
     }
     length = 0;
-    if (text != NULL) length = StringLength(text);
+    if (text != NULL) length = StringLength_020d2ff0(text);
     entry.b = (int)data_02108db0.allocator->Allocate(length + 1);
     if (entry.b == 0) return 0;
     ((char*)entry.b)[length] = 0;

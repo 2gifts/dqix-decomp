@@ -2,7 +2,7 @@
 
 struct Obj020bc180;
 void CallFunc020c0204OnActiveNode(Obj020bc180*, int, int);
-void SetEntryByte(int, int);
+void SetEntryByte_020bbf34(int, int);
 
 extern float data_020e8ec4[];
 
@@ -28,7 +28,7 @@ extern "C" ARM void func_0209c2e0(TweenScaleFields0209c2e0* obj, int b, int arg2
     CallFunc020c0204OnActiveNode((Obj020bc180*)((char*)obj + 0xbc), v, arg2);
     CallFunc020c0204OnActiveNode((Obj020bc180*)((char*)obj + 0xc0), v, arg2);
     int result = (int)((float)obj->fcd * data_020e8ec4[obj->fcc - 1]);
-    SetEntryByte(5, result);
-    SetEntryByte(7, result);
-    SetEntryByte(6, result);
+    SetEntryByte_020bbf34(5, result);
+    SetEntryByte_020bbf34(7, result);
+    SetEntryByte_020bbf34(6, result);
 }

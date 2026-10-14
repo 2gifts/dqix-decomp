@@ -3,9 +3,9 @@
 #define func_020be2ec func_020bfdb8
 #endif
 
-void* GetOffsetEntry0x14(int index);
+void* GetOffsetEntry0x14_020bd580(int index);
 extern "C" int func_020be2ec(unsigned int index, int b, int flag);
-int PostEvent0x20ForIndex(unsigned int index, int b, int flag);
+int PostEvent0x20ForIndex_020be280(unsigned int index, int b, int flag);
 int GetListEntryWord8020bd8ac(unsigned int index);
 
 struct Word020be010 {
@@ -14,15 +14,15 @@ struct Word020be010 {
 };
 
 // USA: func_020be010
-ARM int DispatchEventEntryForIndex(int index, unsigned int flags, int b, int flag, int* out) {
-    struct Word020be010* w = (struct Word020be010*)GetOffsetEntry0x14(index);
+ARM int DispatchEventEntryForIndex_020be010(int index, unsigned int flags, int b, int flag, int* out) {
+    struct Word020be010* w = (struct Word020be010*)GetOffsetEntry0x14_020bd580(index);
     if (w == NULL) return 5;
     int result;
     if (flags & 4) {
         if (w->typeByte & 1) {
             result = func_020be2ec(w->offset, b, flag);
         } else {
-            result = PostEvent0x20ForIndex(w->offset, b, flag);
+            result = PostEvent0x20ForIndex_020be280(w->offset, b, flag);
         }
         if (result == 0) return 9;
     } else {

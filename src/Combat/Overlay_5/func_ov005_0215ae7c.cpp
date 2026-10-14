@@ -46,7 +46,7 @@ extern "C" void __clear(void* buffer, unsigned long size);
 void CopyTextAndUppercaseIfFlagged0206819c(const char* name, char* output, int flag);
 extern "C" void func_02046608(MessageSystem* messages, int, const char* format, char* output, int size, int, int);
 const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
-int FindSubstring(char* text, char* search);
+int FindSubstring_020d2f88(char* text, char* search);
 extern "C" void func_02045d14(MessageSystem* messages, const char* text, unsigned short* codes, int);
 extern "C" void func_020439b0(MessageSystem* messages, int);
 #if defined(jpn)
@@ -63,7 +63,7 @@ extern "C" ARM void func_ov005_0215ae7c(EquipmentMenu* self)
     MessageSystem* messages = GetGlobalField0x1c020421a0();
     GameState* gameState = GameState::GetInstance();
     Field150Holder02052e14* member =
-        (Field150Holder02052e14*)GetCombatantWithFlag0x100(gameState, GetField1c_021a193c((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3])->member_);
+        (Field150Holder02052e14*)GetCombatantWithFlag0x100_0200ff1c(gameState, GetField1c_021a193c((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3])->member_);
     if (member == NULL)
         return;
     short* equipment = GetField150Ptr0x488(member);
@@ -115,7 +115,7 @@ extern "C" ARM void func_ov005_0215ae7c(EquipmentMenu* self)
         {
             func_02046608(messages, 0, GetFieldByKey020e0434((Container020e0310*)self->texts_, 0x32c7), text, 0x58, 0, 0);
         }
-        if (FindSubstring(text, data_ov005_0215ce08))
+        if (FindSubstring_020d2f88(text, data_ov005_0215ce08))
             self->longNames_[i] = 1;
         func_02045d14(messages, text, self->names_[i], 0);
 #endif

@@ -19,14 +19,14 @@ void* FindRecordByIndex(struct Rec020467f0* rec, int index, void** out, int* out
 struct List0204af64;
 void ResetList0204af64(struct List0204af64* obj);
 
-void SetWord0x18ClearByte0x1f(unsigned char* obj, int value);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char* obj, int value);
 
 extern "C" void func_0204b5b4(void*, int);
 
 struct Obj0204b5e8;
 int DispatchViaTable0204b5e8(struct Obj0204b5e8* obj, int a, int b);
 
-void DelayThenSyncBit0();
+void DelayThenSyncBit0_020c9820();
 
 void DispatchByTag0204b2e0(void* obj, char* str);
 
@@ -82,9 +82,9 @@ extern "C" ARM int func_ov001_021624cc(void* self) {
     s.lo = 0;
     s.hi = 3;
     func_0204b5b4(&s, 0);
-    SetWord0x18ClearByte0x1f((unsigned char*)&s, 0);
+    SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)&s, 0);
     DispatchViaTable0204b5e8((struct Obj0204b5e8*)&s, 0, 0);
-    DelayThenSyncBit0();
+    DelayThenSyncBit0_020c9820();
     for (int i = 0; i < count; i++) {
         char* record = records[i];
         DispatchByTag0204b2e0(&s, record);

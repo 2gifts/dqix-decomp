@@ -35,22 +35,22 @@ struct PartyMenu0215b964 {
 };
 int GetGlobalField0x1c020421a0();
 int GetFieldByKey020e0434(Container020e0310*, int);
-int GetFieldAt0x150(unsigned char*);
+int GetFieldAt0x150_02053c6c(unsigned char*);
 int AppendFormatted02041fac(char*, int, int);
 int AppendFrameTag02041c08(char*, int, int, int, int, int);
-int AppendCursorTag(char*, int);
-int AppendPaletteTag(char*, int);
-int AppendXYTag(char*, int, int);
-int AppendXTag(char*, int);
+int AppendCursorTag_02041ea4(char*, int);
+int AppendPaletteTag_02041e70(char*, int);
+int AppendXYTag_02041a90(char*, int, int);
+int AppendXTag_02041a28(char*, int);
 int AppendString02042058(char*, const char*);
-int AppendNameTag(char*, int, const char*);
+int AppendNameTag_02041b70(char*, int, const char*);
 void InitObjFromCombatantId020e4bf4(void*, int);
 extern "C" void func_02046380(void*);
 extern "C" void func_02046608(void*, int, void*, void*, int, int, int);
-void StoreInArray0x8b0(StoreStruct*, int, int);
-void SetByteInRange(unsigned char*, int, unsigned char);
-void SetByteAtIndex(unsigned char*, int, unsigned char);
-int CallFunc020e0434With02153694(int);
+void StoreInArray0x8b0_020465c0(StoreStruct*, int, int);
+void SetByteInRange_020465f0(unsigned char*, int, unsigned char);
+void SetByteAtIndex_020465d8(unsigned char*, int, unsigned char);
+int CallFunc020e0434With02153694_020e51cc(int);
 
 // USA: func_ov003_0215b964
 extern "C" ARM void func_ov003_0215b964(PartyMenu0215b964* menu, char* output, int showFrame) {
@@ -64,12 +64,12 @@ extern "C" ARM void func_ov003_0215b964(PartyMenu0215b964* menu, char* output, i
     } else {
         AppendFormatted02041fac(output, GetFieldByKey020e0434(&menu->texts, 11), 14);
         if (showFrame) AppendFrameTag02041c08(output, cursor, 8, 5, 5, 5);
-        AppendCursorTag(output, cursor);
+        AppendCursorTag_02041ea4(output, cursor);
     }
     GameState* game = GameState::GetInstance();
     for (int index = 0; index < menu->count; ++index) {
-        Combatant0215b964* combatant = (Combatant0215b964*)GetCombatantWithFlag0x100(game, menu->combatants[index]);
-        Detail0215b964* detail = (Detail0215b964*)GetFieldAt0x150((unsigned char*)combatant);
+        Combatant0215b964* combatant = (Combatant0215b964*)GetCombatantWithFlag0x100_0200ff1c(game, menu->combatants[index]);
+        Detail0215b964* detail = (Detail0215b964*)GetFieldAt0x150_02053c6c((unsigned char*)combatant);
         float ratio;
         int maximumHP;
         Status0215b964* status = combatant->status;
@@ -80,22 +80,22 @@ extern "C" ARM void func_ov003_0215b964(PartyMenu0215b964* menu, char* output, i
             float currentHP = (float)(int)status->currentHP;
             ratio = currentHP / (float)maximumHP;
         }
-        if (flags & 1) AppendPaletteTag(output, 9);
-        else if (ratio <= 0.08f) AppendPaletteTag(output, 11);
-        else if (ratio <= 0.25f) AppendPaletteTag(output, 13);
-        else AppendPaletteTag(output, 15);
-        AppendXYTag(output, 12, index * 14 + 20);
+        if (flags & 1) AppendPaletteTag_02041e70(output, 9);
+        else if (ratio <= 0.08f) AppendPaletteTag_02041e70(output, 11);
+        else if (ratio <= 0.25f) AppendPaletteTag_02041e70(output, 13);
+        else AppendPaletteTag_02041e70(output, 15);
+        AppendXYTag_02041a90(output, 12, index * 14 + 20);
         const char* name;
         if (cursor == -1) {
             name = combatant->baseStats->unk;
             AppendString02042058(output, name);
         } else {
             name = combatant->baseStats->unk;
-            AppendNameTag(output, index, name);
+            AppendNameTag_02041b70(output, index, name);
         }
         memset(buffers->formatted, 0, 0x40);
         memset(buffers->input, 0, 0x40);
-        AppendXTag(buffers->input, 0x40);
+        AppendXTag_02041a28(buffers->input, 0x40);
         if (combatant->status->flags & 1)
             AppendString02042058(buffers->input, (const char*)GetFieldByKey020e0434(&menu->texts, 13));
         else if (flags & 2)
@@ -110,13 +110,13 @@ extern "C" ARM void func_ov003_0215b964(PartyMenu0215b964* menu, char* output, i
         AppendString02042058(output, buffers->formatted);
         if (!(combatant->status->flags & 1) && !(flags & 6)) {
             func_02046380(formatter);
-            StoreInArray0x8b0(formatter, 0, detail->values[detail->selected]);
-            SetByteInRange((unsigned char*)formatter, 0, 2);
-            SetByteAtIndex((unsigned char*)formatter, 0, 1);
+            StoreInArray0x8b0_020465c0(formatter, 0, detail->values[detail->selected]);
+            SetByteInRange_020465f0((unsigned char*)formatter, 0, 2);
+            SetByteAtIndex_020465d8((unsigned char*)formatter, 0, 1);
             memset(buffers->formatted, 0, 0x40);
             memset(buffers->input, 0, 0x40);
-            AppendXTag(buffers->input, 0x40);
-            AppendString02042058(buffers->input, (const char*)CallFunc020e0434With02153694(0x3f3));
+            AppendXTag_02041a28(buffers->input, 0x40);
+            AppendString02042058(buffers->input, (const char*)CallFunc020e0434With02153694_020e51cc(0x3f3));
             AppendString02042058(buffers->input, (const char*)GetFieldByKey020e0434(&menu->texts, 12));
             func_02046608(formatter, 10, buffers->input, buffers->formatted, 0x100, 0, 0);
             AppendString02042058(output, buffers->formatted);

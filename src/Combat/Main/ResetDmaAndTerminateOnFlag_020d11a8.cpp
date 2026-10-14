@@ -3,7 +3,7 @@
 void ResetDMAChannel(int id);
 int TerminateSystem020ce7a4(void);
 extern "C" void func_020c976c(unsigned int id);
-void WaitWhileChannel0xEBusy(int a, int b);
+void WaitWhileChannel0xEBusy_020d1294(int a, int b);
 extern "C" void func_020c9be0(void);
 
 // USA: func_020d11a8  (semantic: ResetDmaAndTerminateOnFlag_020d11a8)
@@ -27,7 +27,7 @@ extern "C" ARM void func_020d11a8(void) {
         if (status == 0) ok = 0;
     }
     if (ok != 0) {
-        WaitWhileChannel0xEBusy(1, 1);
+        WaitWhileChannel0xEBusy_020d1294(1, 1);
     }
     func_020c9be0();
 }

@@ -13,7 +13,7 @@ struct IndexList_0202a9ac {
 };
 
 struct IndexNode_0202a9ac* GetNodeAtIndex(struct IndexList_0202a9ac* list, int index);
-void* GetSubstructAt0x4(void* base);
+void* GetSubstructAt0x4_02029560(void* base);
 extern "C" void* func_ov015_0218f39c(void*, void*);
 
 struct SubField_0219015c {
@@ -36,7 +36,7 @@ ARM void AdjustSubstructField_0219015c_0219015c(struct S0219015c* obj, int delta
     if (node == 0) {
         return;
     }
-    void* sub = GetSubstructAt0x4(node);
+    void* sub = GetSubstructAt0x4_02029560(node);
     struct SubField_0219015c* q = (struct SubField_0219015c*)func_ov015_0218f39c(obj, sub);
     if (q == 0) {
         return;

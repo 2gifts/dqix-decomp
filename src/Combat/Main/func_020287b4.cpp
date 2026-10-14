@@ -4,8 +4,8 @@ struct InitStruct;
 struct ResetObject0209af34Struct;
 struct ZeroWordAndByte0206ee60Struct;
 
-ARM void InitializeStruct(struct InitStruct* s);
-ARM void ClearHalfword0x18(void* obj);
+ARM void InitializeStruct_020280b0(struct InitStruct* s);
+ARM void ClearHalfword0x18_0209bffc(void* obj);
 ARM void ClearBuffer0209bc84(void* obj);
 ARM void ResetObject0209af34(struct ResetObject0209af34Struct* obj);
 void* Clear12Bytes0206efc4(void* obj);
@@ -65,8 +65,8 @@ extern "C" ARM void func_020287b4(struct Elem020287b4* obj) {
         e->flags.f04 = 0;
         e->w04 = 0;
         e->b0d = -1;
-        InitializeStruct((struct InitStruct*)e->sub18);
-        ClearHalfword0x18((void*)&e->w44);
+        InitializeStruct_020280b0((struct InitStruct*)e->sub18);
+        ClearHalfword0x18_0209bffc((void*)&e->w44);
         ClearBuffer0209bc84(e->sub60);
         ResetObject0209af34((struct ResetObject0209af34Struct*)e->sub124);
         Clear12Bytes0206efc4(e->sub2f8);

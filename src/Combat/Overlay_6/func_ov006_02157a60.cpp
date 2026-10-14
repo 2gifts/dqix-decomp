@@ -14,8 +14,8 @@ struct Struct020dfc40;
 struct Obj02157c78;
 
 extern "C" void* func_0205ec34();
-int TestBitInByteArray(int, unsigned char*, int);
-void SetOrClearBitInArray(void*, unsigned char*, int, int);
+int TestBitInByteArray_0206dfb0(int, unsigned char*, int);
+void SetOrClearBitInArray_0206df6c(void*, unsigned char*, int, int);
 void ResetList0204af64(List0204af64*);
 void InitStruct_021536e0(StructInit36e0*);
 void InitWithSub02081ee4(Obj02081ee4*, Sub02081ee4*);
@@ -146,8 +146,8 @@ struct AlchemyMenu {
 extern "C" ARM void func_ov006_02157a60(AlchemyMenu* self)
 {
     char* flags = (char*)func_0205ec34();
-    if (!TestBitInByteArray((int)flags, (unsigned char*)(flags + 0x8c), 0x777))
-        SetOrClearBitInArray(flags, (unsigned char*)(flags + 0x8c), 0x777, 1);
+    if (!TestBitInByteArray_0206dfb0((int)flags, (unsigned char*)(flags + 0x8c), 0x777))
+        SetOrClearBitInArray_0206df6c(flags, (unsigned char*)(flags + 0x8c), 0x777, 1);
 #if !defined(jpn)
     self->textPosition_ = 0;
 #endif

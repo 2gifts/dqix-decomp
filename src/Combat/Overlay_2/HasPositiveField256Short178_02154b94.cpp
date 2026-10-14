@@ -3,7 +3,7 @@
 
 // USA: func_ov002_02154b94
 ARM int HasPositiveField256Short178_02154b94(void* unused, int combatantId) {
-    GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), combatantId);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), combatantId);
     if (!combatant) {
         return 0;
     }

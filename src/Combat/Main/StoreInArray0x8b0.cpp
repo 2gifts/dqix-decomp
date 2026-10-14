@@ -10,7 +10,7 @@ struct StoreStruct {
 };
 
 // USA: func_020465c0
-ARM void StoreInArray0x8b0(struct StoreStruct* base, int index, int value) {
+ARM void StoreInArray0x8b0_020465c0(struct StoreStruct* base, int index, int value) {
     if (index < 0) {
         return;
     }

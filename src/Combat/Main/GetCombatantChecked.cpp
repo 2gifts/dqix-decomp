@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 // USA: func_0200ff94
-ARM GameObject* GetCombatantChecked(GameState* battleStruct, int combatantId) {
+ARM GameObject* GetCombatantChecked_0200ff94(GameState* battleStruct, int combatantId) {
     GameObject* combatant;
     if (combatantId < 0) {
         return 0;

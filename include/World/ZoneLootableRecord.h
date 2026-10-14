@@ -38,7 +38,7 @@ struct ZoneLootableRecord
 };
 
 void CopyFieldsWithFlags02048004(Foo02048004* src, Foo02048004* dst);
-void MaybeInvoke0204719c(Foo02048004* obj);
+void MaybeInvoke0204719c_02047230(Foo02048004* obj);
 void ClearNameTable(NameTable02048080* table);
 extern "C" void func_0204719c(void* obj);
 

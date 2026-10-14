@@ -9,7 +9,7 @@ struct ClearFields0And8And0x20Struct {
 };
 
 // USA: func_020c93bc
-ARM void ClearFields0And8And0x20(struct ClearFields0And8And0x20Struct* p) {
+ARM void ClearFields0And8And0x20_020c93bc(struct ClearFields0And8And0x20Struct* p) {
     p->field0 = 0;
     p->field8 = 0;
     p->field20 = 0;

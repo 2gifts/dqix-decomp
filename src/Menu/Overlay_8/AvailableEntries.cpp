@@ -8,7 +8,7 @@ struct Overlay8EntryView {
 
 extern "C" {
     char* func_0205ec34();
-    bool _Z18TestBitInByteArrayiPhi(void*, void*, int);
+    bool _Z27TestBitInByteArray_0206dfb0iPhi(void*, void*, int);
 
     void func_ov008_02186cec(Overlay8EntryView* menu) {
         menu->count = 0;
@@ -20,13 +20,13 @@ extern "C" {
         menu->entries[menu->count++] = 2;
 
         char* state = func_0205ec34();
-        if (_Z18TestBitInByteArrayiPhi(state, state + 0x8c, 0x1198))
+        if (_Z27TestBitInByteArray_0206dfb0iPhi(state, state + 0x8c, 0x1198))
             menu->entries[menu->count++] = 3;
         if (menu->flags & 0x2000)
             menu->entries[menu->count++] = 4;
-        if (_Z18TestBitInByteArrayiPhi(state, state + 0x8c, 0x119d))
+        if (_Z27TestBitInByteArray_0206dfb0iPhi(state, state + 0x8c, 0x119d))
             menu->entries[menu->count++] = 5;
-        if (_Z18TestBitInByteArrayiPhi(state, state + 0x8c, 0x119b))
+        if (_Z27TestBitInByteArray_0206dfb0iPhi(state, state + 0x8c, 0x119b))
             menu->entries[menu->count++] = 6;
         if (menu->flags & 4)
             menu->entries[menu->count++] = 7;

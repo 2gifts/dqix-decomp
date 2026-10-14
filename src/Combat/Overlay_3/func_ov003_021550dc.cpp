@@ -18,10 +18,10 @@ struct Menu {
 extern unsigned short data_02114e30;
 extern unsigned char data_02114e54;
 
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 int GetInnerFlagBit0020e28dc(struct Outer020e28dc* o);
-int GetField0x15UnlessInactive(signed char* param);
-void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
+int GetField0x15UnlessInactive_020e2918(signed char* param);
+void SelectCoordsByFlag0x24_02012a84(unsigned char* obj, int* out1, int* out2);
 int RunAndCheckFlagBit02080dd4(void* obj, int p1, int unused2, int unused3, unsigned char* outFlag, unsigned char extra);
 extern "C" void func_020813ec(void* obj, int key);
 
@@ -39,11 +39,11 @@ struct Ctx021550dc {
 // USA: func_ov003_021550dc
 extern "C" ARM unsigned char func_ov003_021550dc(Ctx021550dc* self) {
     unsigned char confirmed = 0;
-    if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x401)) {
+    if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x401)) {
         confirmed = 1;
     }
     if (self->choice_ != NULL && GetInnerFlagBit0020e28dc(self->choice_)) {
-        int choice = GetField0x15UnlessInactive((signed char*)self->choice_);
+        int choice = GetField0x15UnlessInactive_020e2918((signed char*)self->choice_);
         if (choice >= 0) {
             confirmed = 1;
             *self->cursor_ = choice + 6;
@@ -51,7 +51,7 @@ extern "C" ARM unsigned char func_ov003_021550dc(Ctx021550dc* self) {
     } else if ((&data_02114e54)[0x55] != 0 && self->cursor_ != NULL) {
         Menu* menu = self->menu_;
         int x, y;
-        SelectCoordsByFlag0x24(&data_02114e54, &x, &y);
+        SelectCoordsByFlag0x24_02012a84(&data_02114e54, &x, &y);
         self->previousCursor_ = *self->cursor_;
         int item = RunAndCheckFlagBit02080dd4(menu, self->group_, (short)x, (short)y, &confirmed, 1);
         if (item < 0) {

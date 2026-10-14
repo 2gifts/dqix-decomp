@@ -11,7 +11,7 @@ unsigned int LoadResourceIntoGlobalBuffer_0215a750(const char* path, void** outP
 extern SafeAllocator* data_ov001_021658b8[8];
 extern char data_ov001_021657df[];
 struct ObjectArchiveLoadInfo;
-void RegisterCombatantSlot(GameState* battleStruct, int id, GameObject* combatant);
+void RegisterCombatantSlot_0200fd38(GameState* battleStruct, int id, GameObject* combatant);
 struct Shorts5c_374e0;
 
 struct LockCtx0216066c {
@@ -61,7 +61,7 @@ extern "C" ARM int func_ov001_0216066c(void* self) {
     ctx.flag = 1;
     ((Object3D*)((int)newObj))->LoadFromCHRArchive((ObjectArchiveLoadInfo*)((int)&ctx));
     BackgroundLoader::RemoveLockGlobal();
-    RegisterCombatantSlot(bs, id, (GameObject*)newObj);
+    RegisterCombatantSlot_0200fd38(bs, id, (GameObject*)newObj);
     ((Object3D*)((struct Shorts5c_374e0*)newObj))->SetScale(0x10a, 0x10a, 0x10a);
     ((Object3D*)newObj)->MaybeSetBCFGAnimation(0, 0);
     return 1;

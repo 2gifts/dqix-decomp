@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 extern "C" int _ZN7Model3D7GetTEX0Ev(void* obj);
-void DelayThenSyncBit0(void);
+void DelayThenSyncBit0_020c9820(void);
 void StageTexFilePaletteData(NSBXXTex volatile*, bool);
 struct NSBXXTex;
 void StageTexFileImageData(NSBXXTex volatile*, bool);
@@ -16,7 +16,7 @@ extern struct SlotIdTable_0218f80c data_ov017_021d61fc;
 extern "C" ARM void func_ov017_0218f80c(void* obj, int idx) {
     volatile unsigned short* dispstat = (volatile unsigned short*)0x4000004;
     if ((*dispstat & 1) == 0) {
-        DelayThenSyncBit0();
+        DelayThenSyncBit0_020c9820();
     }
 
     GameState* battleStruct = GameState::GetInstance();

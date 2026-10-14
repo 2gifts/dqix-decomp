@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 extern "C" void* func_0202ae18(void);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 
 struct Entry020e3054 {
     unsigned char f0;
@@ -33,7 +33,7 @@ void EnqueueEventTag51_021ceae4(unsigned char a, unsigned char b, unsigned char 
 // USA: func_020e33b4  (semantic: ClearEntryAndEnqueue020e33b4)
 extern "C" ARM void func_020e33b4(Entry020e3054* list, int key, int compareVal) {
     void* searchObj = func_0202ae18();
-    if (!CheckField0NonZero((int*)searchObj)) return;
+    if (!CheckField0NonZero_0202b7d8((int*)searchObj)) return;
     Entry020e3054* entry = FindEntryByField1(list, key);
     if (entry == NULL) return;
     if (entry->f0 != compareVal) return;

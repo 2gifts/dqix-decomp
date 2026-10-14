@@ -72,7 +72,7 @@ extern "C" int _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(Grid021f9b30* se
 void SetByteAtOffset60_021f9da0(void* self, unsigned char val);
 void DispatchNode_021f6630(int ctx, int kind, short x, short y);
 int CheckType16ThenTestBit_021552b8(void* ctx);
-extern int TestBitInByteArray(int unused, unsigned char* arr, int index);
+extern int TestBitInByteArray_0206dfb0(int unused, unsigned char* arr, int index);
 
 // USA: func_ov004_0215534c
 extern "C" ARM int func_ov004_0215534c(void* ctx) {
@@ -127,7 +127,7 @@ extern "C" ARM int func_ov004_0215534c(void* ctx) {
                 if (entry) {
                     int bits = (unsigned short)((entry->flags << 9) >> 21);
                     if (bits > 0) {
-                        if (TestBitInByteArray((int)flags, flags + 0x8c, bits + 0x76 + 0xc00)) {
+                        if (TestBitInByteArray_0206dfb0((int)flags, flags + 0x8c, bits + 0x76 + 0xc00)) {
                             slot->value = entry->value;
                         }
                     }

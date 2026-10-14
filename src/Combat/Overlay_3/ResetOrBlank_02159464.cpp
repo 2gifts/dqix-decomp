@@ -1,16 +1,13 @@
 #include <globaldefs.h>
 #include "Resource/FontBankLoader.h"
 
-
-
-
 // USA: func_ov003_02159464  (semantic: ResetOrBlank_02159464)
 extern "C" ARM void func_ov003_02159464(void* obj) {
     unsigned char* o = (unsigned char*)obj;
     FontBankLoader* g;
     unsigned char state;
     if (o[0x59d] == 0) return;
-    g = GetGlobal02109400();
+    g = GetGlobal02109400_02094a00();
     state = o[0x59e];
     if (state == 0) {
         BlankFunction02094b30(g, 0x200, 1);

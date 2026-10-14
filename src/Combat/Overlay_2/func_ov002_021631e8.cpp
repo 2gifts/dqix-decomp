@@ -10,12 +10,12 @@ struct Container020dedd0;
 void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char keyLow,
                                                                         unsigned char keyHigh);
 int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
-int TestFlag0SetAndFlag1Clear(unsigned short *p, int n);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short *p, int n);
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0 *o, int a, int b);
 int CheckFlagOrThreshold_02161b48(char *base, int a);
-void SetElementFieldC2(struct Struct_0205d81c *s, int a, int b);
-unsigned char *GetFieldAt0x150(unsigned char *p);
+void SetElementFieldC2_0205deb4(struct Struct_0205d81c *s, int a, int b);
+unsigned char *GetFieldAt0x150_02053c6c(unsigned char *p);
 void InitBattleTag0215ccc4(char *base);
 int IsFlagAt130Bit0Set_0216364c(void *member);
 char *FindElementByKey020dedd0(struct Container020dedd0 *c, int key);
@@ -43,7 +43,7 @@ extern "C" ARM void func_ov002_021631e8(char *base) {
         if (p == NULL) {
             *(short *) (base + 0x1b00 + 0xea) = 0;
         } else {
-            *(short *) (base + 0x1b00 + 0xea) = *(short *) (GetFieldAt0x150((unsigned char *) p) + 0x900 + 0x5c);
+            *(short *) (base + 0x1b00 + 0xea) = *(short *) (GetFieldAt0x150_02053c6c((unsigned char *) p) + 0x900 + 0x5c);
         }
         FindAndLinkMatchingEntry0205de24((struct Struct0205de24 *) (base + 0x2c8 + 0xc00), 0, 2);
         func_ov002_02161cf0(base);
@@ -55,7 +55,7 @@ extern "C" ARM void func_ov002_021631e8(char *base) {
         *(short *) (base + 0x1b00 + 0xea) =
             GetActiveScaledSum0205d794((struct Struct_0205c570 *) (base + 0x2c8 + 0xc00));
         if (old != *(short *) (base + 0x1b00 + 0xea)) return;
-        int a = TestFlag0SetAndFlag1Clear(data_02114e30, 0x601);
+        int a = TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x601);
         int b = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(base + 0x2c8 + 0xc00), 0x14);
         if ((a | b) ? 1 : 0) {
             func_ov002_0215b814(base);
@@ -64,7 +64,7 @@ extern "C" ARM void func_ov002_021631e8(char *base) {
             GameObject *p = GameState::GetInstance()->GetProtagonist();
             if (p != NULL) {
                 short cur                                                        = *(short *) (base + 0x1b00 + 0xea);
-                *(short *) (GetFieldAt0x150((unsigned char *) p) + 0x900 + 0x5c) = cur;
+                *(short *) (GetFieldAt0x150_02053c6c((unsigned char *) p) + 0x900 + 0x5c) = cur;
             }
             switch (*(short *) (base + 0x1b00 + 0xea)) {
                 case 0:
@@ -134,7 +134,7 @@ extern "C" ARM void func_ov002_021631e8(char *base) {
         } else if (CheckFlagOrThreshold_02161b48(base, 1)) {
             *(short *) (base + 0x1b00 + 0xea) = -1;
             func_ov002_02156e90(base);
-            SetElementFieldC2((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 4, 1);
+            SetElementFieldC2_0205deb4((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 4, 1);
         }
     } else if (state == 2) {
         int r = CheckAndClearEntryStatus_0215b7d0(base);

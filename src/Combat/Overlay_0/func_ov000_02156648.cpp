@@ -9,10 +9,10 @@ char q[20];
 unsigned char* actor;
 };
 class GameState {public:static GameState* GetInstance();GameObject* GetCombatantByIndex(int);};
-GameObject* GetCombatantWithFlag0x100(GameState*,int);
-int IsFlag0x18Bit0x800Set(GameObject*);int IsFlag0x18Bit0x40Set(GameObject*);int IsFlag0x14Bit0x40Set(GameObject*);
-void ClearFlag0x100000(unsigned char*);void ClearFlag0x200000(unsigned char*);
-int TestBit10At0x2f4(unsigned char*);int TestBit11At0x2f4(unsigned char*);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState*,int);
+int IsFlag0x18Bit0x800Set_ov000_02156af0(GameObject*);int IsFlag0x18Bit0x40Set_ov000_02156b08(GameObject*);int IsFlag0x14Bit0x40Set_ov000_02156b20(GameObject*);
+void ClearFlag0x100000_02088aa8(unsigned char*);void ClearFlag0x200000_02088af0(unsigned char*);
+int TestBit10At0x2f4_020851d8(unsigned char*);int TestBit11At0x2f4_02085204(unsigned char*);
 struct Random {char p[0x8e95];unsigned char failure;};int NextRandomMax(Random*,int);float NextRandomFloatBetween(Random*,float,float);
 struct Output {char p[0x1c];unsigned char flags;};
 struct Work {char p[0xa];unsigned char flags;};
@@ -26,24 +26,24 @@ extern "C" ARM int func_ov000_02156648(Random* self,int attacker,int target,Outp
  GameState* gs=GameState::GetInstance();GameObject* unit=GameState::GetInstance()->GetCombatantByIndex(target);
  self->failure=0;
  if(action->id!=0x150){
-  if(unit&&IsFlag0x18Bit0x800Set(unit)&&action->side==1){out->flags|=0x40;return 0;}
-  if(unit&&IsFlag0x18Bit0x40Set(unit)&&action->side==1){out->flags|=0x20;return 0;}
+  if(unit&&IsFlag0x18Bit0x800Set_ov000_02156af0(unit)&&action->side==1){out->flags|=0x40;return 0;}
+  if(unit&&IsFlag0x18Bit0x40Set_ov000_02156b08(unit)&&action->side==1){out->flags|=0x20;return 0;}
  }
  if((action->flags&0x40)&&unit){
-  if(unit->stats->flags&0x100000){work->flags|=8;out->flags|=8;ClearFlag0x100000((unsigned char*)unit->stats);return 0;}
-  if(unit->stats->flags&0x200000){work->flags|=0x10;out->flags|=0x10;ClearFlag0x200000((unsigned char*)unit->stats);return 0;}
+  if(unit->stats->flags&0x100000){work->flags|=8;out->flags|=8;ClearFlag0x100000_02088aa8((unsigned char*)unit->stats);return 0;}
+  if(unit->stats->flags&0x200000){work->flags|=0x10;out->flags|=0x10;ClearFlag0x200000_02088af0((unsigned char*)unit->stats);return 0;}
  }
  if(force)return 1;
  if(func_ov000_02156068(self,target,0,1)&&!(action->flags&0x1000000))return 0;
  float chance=100.0f;int roll=NextRandomMax(self,100);
  if(IsParty(attacker)){
-  GameObject* actor=GetCombatantWithFlag0x100(gs,attacker);if(!actor)return 0;
-  if((action->flags&0x40000)&&TestBit10At0x2f4(actor->actor))return 1;
-  if((action->flags&0x10000)&&TestBit11At0x2f4(actor->actor)){if(NextRandomMax(self,4)==0)return 0;}
+  GameObject* actor=GetCombatantWithFlag0x100_0200ff1c(gs,attacker);if(!actor)return 0;
+  if((action->flags&0x40000)&&TestBit10At0x2f4_020851d8(actor->actor))return 1;
+  if((action->flags&0x10000)&&TestBit11At0x2f4_02085204(actor->actor)){if(NextRandomMax(self,4)==0)return 0;}
  }
  if(action->mode==1){
   if(IsParty(attacker)){
-   GameObject* actor=GetCombatantWithFlag0x100(gs,attacker);if(!actor)return 0;
+   GameObject* actor=GetCombatantWithFlag0x100_0200ff1c(gs,attacker);if(!actor)return 0;
    unsigned int first=(unsigned short)actor->stats->first;unsigned int second=(unsigned short)actor->stats->second;
    unsigned int selected=0;int useStat=0;
    if(action->flags&0x4000){selected=first;useStat=1;}else if(action->flags&0x8000){selected=second;useStat=1;}
@@ -57,6 +57,6 @@ extern "C" ARM int func_ov000_02156648(Random* self,int attacker,int target,Outp
   if(resistance>0.0f){if(work->flags&1)return 1;if(resistance<1.0f)SetFailure(self,1);if(chance<100.0f)SetFailure(self,1);}
   chance=0.5f+chance*resistance;
  }
- if(action->flags&8){GameObject* actor=GameState::GetInstance()->GetCombatantByIndex(attacker);if(IsFlag0x14Bit0x40Set(actor)){if(NextRandomMax(self,8)<5)return 0;}}
+ if(action->flags&8){GameObject* actor=GameState::GetInstance()->GetCombatantByIndex(attacker);if(IsFlag0x14Bit0x40Set_ov000_02156b20(actor)){if(NextRandomMax(self,8)<5)return 0;}}
  return roll<(int)chance;
 }

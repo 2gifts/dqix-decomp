@@ -25,7 +25,7 @@ ARM void HandleSetFlagAt_021cee34_021cee34(void* unused, EventArgs021cee34* args
     int enabled = args->enabled;
     unsigned int mask = args->mask;
     int id = args->combatantId;
-    GameObject* combatant = GetCombatantWithFlag0x100(battleStruct, id);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(battleStruct, id);
     if (combatant == NULL) return;
     CombatantFlagsView* status = (CombatantFlagsView*)combatant;
     if (enabled) {

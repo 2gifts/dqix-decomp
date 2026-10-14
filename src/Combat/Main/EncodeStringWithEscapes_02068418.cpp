@@ -10,8 +10,8 @@ struct Entry02068418 {
 };
 
 struct Entry02068418* FindEntryByKey0204254c(int key, int tableIdx);
-char* FindUnescapedAngleBracket(char* str);
-void ToUpperBounded(signed char* s, int count);
+char* FindUnescapedAngleBracket_020424ac(char* str);
+void ToUpperBounded_02067f5c(signed char* s, int count);
 extern char data_020f08f4[];
 
 // USA: func_02068418  (semantic: EncodeStringWithEscapes_02068418)
@@ -39,11 +39,11 @@ extern "C" ARM void func_02068418(void* unused, char* src, char* dst, int id) {
             continue;
         }
         if (c == 0x3c) {
-            char* gt = FindUnescapedAngleBracket(src);
+            char* gt = FindUnescapedAngleBracket_020424ac(src);
             if (gt != 0) {
                 int len = gt - src;
                 memcpy(dst, src, len + 1);
-                ToUpperBounded((signed char*)dst, len + 1);
+                ToUpperBounded_02067f5c((signed char*)dst, len + 1);
                 src += len + 1;
                 dst += len + 1;
                 continue;

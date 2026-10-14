@@ -9,11 +9,11 @@ struct TargetResult_021f8628 {
 };
 struct TargetResult_021f8628* GetField0x19cOrNull(struct S02053dc0* p);
 
-GameObject* GetCombatantWithFlag0x400ByID(int unused, int id);
+GameObject* GetCombatantWithFlag0x400ByID_ov000_021536f8(int unused, int id);
 
 struct S_10088_inner { char unk[0x14]; int flags; };
 struct S_10088 { char unk[0x138]; struct S_10088_inner* inner; };
-int IsFlag10088Set(struct S_10088* obj);
+int IsFlag10088Set_02010088(struct S_10088* obj);
 
 extern "C" float func_ov024_021db358(GameObject* obj);
 
@@ -39,9 +39,9 @@ extern "C" ARM int func_ov024_021f8628(char** obj, void* p1, struct S02053dc0* p
     struct Group_021f8628* groups = (struct Group_021f8628*)(*obj + 0x81b0);
     for (int i = 0; i < groups->groupCount; i++) {
         for (int j = 0; j < groups[i].memberCount; j++) {
-            GameObject* c = GetCombatantWithFlag0x400ByID((int)*obj, (short)(groups[i].ids[j] + 0xc0));
+            GameObject* c = GetCombatantWithFlag0x400ByID_ov000_021536f8((int)*obj, (short)(groups[i].ids[j] + 0xc0));
             if (c == 0) continue;
-            if (IsFlag10088Set((struct S_10088*)c)) continue;
+            if (IsFlag10088Set_02010088((struct S_10088*)c)) continue;
             if (func_ov024_021db358(c) < best) {
                 best = func_ov024_021db358(c);
                 bestGroup = i;

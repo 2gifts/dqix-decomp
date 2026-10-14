@@ -5,7 +5,7 @@ extern short data_020ed554[];
 
 // USA: func_020c3544
 #pragma optimize_for_size off
-extern "C" ARM int fix32_Atan2_Rescaled(int dx, int dy) {
+extern "C" ARM int fix32_Atan2_Rescaled_020c3544(int dx, int dy) {
     int num, denom, base, add;
 
     if (dx > 0) {

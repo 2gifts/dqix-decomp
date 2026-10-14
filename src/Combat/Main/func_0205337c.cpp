@@ -39,7 +39,7 @@ extern "C" ARM void func_0205337c(struct Obj0205337c* obj) {
     if (TestFlags02046708((struct FlagWord02046708*)GetDataPtr02114e04_020d6c00(), 2)) return;
     if (obj->node == NULL) return;
 
-    void* target = GetField0x3b0Value(GameState::GetInstance());
+    void* target = GetField0x3b0Value_020100bc(GameState::GetInstance());
     *(volatile int*)0x4000444 = 0;
 
     struct Vec3copy0202ec84 pose = obj->pose;

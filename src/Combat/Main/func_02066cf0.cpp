@@ -2,15 +2,15 @@
 
 struct CE28Obj;
 void LoadStateBytePair0206b804(char* obj, int* out1, int* out2);
-int IsField440Empty(struct CE28Obj* obj);
+int IsField440Empty_0205ce28(struct CE28Obj* obj);
 struct Field440Obj0202f6a4;
 void SetupField440Type1(struct Field440Obj0202f6a4* obj);
 void UpdateTimedState0202f380(void* obj, int amount);
 struct Field440XYObj;
-void GetField440XY(struct Field440XYObj* obj, short* outX, short* outY);
+void GetField440XY_02066cc0(struct Field440XYObj* obj, short* outX, short* outY);
 struct Holder02042c24;
 void SetSubstructXY02042c24(struct Holder02042c24* holder, int x, int y);
-void EmitScaledField0x440(void* obj, int a, int b);
+void EmitScaledField0x440_0202f404(void* obj, int a, int b);
 bool IsCommandInRange02067a9c(void* obj, void* src);
 void MeasureTextWidth0206b6b8(unsigned char* obj);
 int GetWordFromTable02042648(int idx);
@@ -19,10 +19,10 @@ int LookupKeyValue020425e4(int a, int b, int tableIdx);
 int GetGlobalField0x1c020421a0();
 struct Holder020416cc;
 int GetField0OfSubstructAt0x18(struct Holder020416cc* holder);
-void UpdateObj020e15f8Entry(char* obj, int idx, int a2, int a3, int a4, unsigned char a5, unsigned char a6);
+void UpdateObj020e15f8Entry_020e2310(char* obj, int idx, int a2, int a3, int a4, unsigned char a5, unsigned char a6);
 struct SetIntIntShortAt0xcStruct;
-void SetIntIntShortAt0xc(struct SetIntIntShortAt0xcStruct* s, int a, int b, short c);
-void CallFunc0205c96cIfMode6AndFlag(char* obj, int flag);
+void SetIntIntShortAt0xc_02066ce0(struct SetIntIntShortAt0xcStruct* s, int a, int b, short c);
+void CallFunc0205c96cIfMode6AndFlag_02044530(char* obj, int flag);
 
 extern "C" void _Z15Forward02044830v(void* obj, int* lineX, int* lineY);
 int AllocateVRAMStagingMemory(unsigned int);
@@ -130,7 +130,7 @@ extern "C" ARM void func_02066cf0(TextBox02066cf0* obj, int flag) {
 
     if ((obj->active && obj->showName) || obj->refreshHolder) {
         if (obj->refreshHolder) {
-            if (IsField440Empty((CE28Obj*)obj->holder)) {
+            if (IsField440Empty_0205ce28((CE28Obj*)obj->holder)) {
                 SetupField440Type1((Field440Obj0202f6a4*)obj->holder);
                 UpdateTimedState0202f380(obj->holder, 1);
             }
@@ -141,14 +141,14 @@ extern "C" ARM void func_02066cf0(TextBox02066cf0* obj, int flag) {
         }
 
         short boxX, boxY;
-        GetField440XY((Field440XYObj*)obj->holder, &boxX, &boxY);
+        GetField440XY_02066cc0((Field440XYObj*)obj->holder, &boxX, &boxY);
         SetSubstructXY02042c24((Holder02042c24*)obj->holder, (short)(boxX + offsetX), (short)(boxY + offsetY));
 
         if (flag == 0) {
             if (obj->target) {
                 func_020e2110(obj->target);
             } else {
-                EmitScaledField0x440(obj->holder, 1, 1);
+                EmitScaledField0x440_0202f404(obj->holder, 1, 1);
             }
         }
 
@@ -166,7 +166,7 @@ extern "C" ARM void func_02066cf0(TextBox02066cf0* obj, int flag) {
     if (!obj->field54 || !obj->field58) return;
     if (!obj->field6c) return;
 
-    CallFunc0205c96cIfMode6AndFlag((char*)obj, flag);
+    CallFunc0205c96cIfMode6AndFlag_02044530((char*)obj, flag);
 
     int lineX[16];
     int lineY[16];
@@ -282,9 +282,9 @@ extern "C" ARM void func_02066cf0(TextBox02066cf0* obj, int flag) {
             }
         } else if (obj->target) {
             int a4 = GetField0OfSubstructAt0x18((Holder020416cc*)glyph);
-            UpdateObj020e15f8Entry((char*)obj->target, 0, x, y - 0x74, a4, 0xf, obj->table);
+            UpdateObj020e15f8Entry_020e2310((char*)obj->target, 0, x, y - 0x74, a4, 0xf, obj->table);
         } else {
-            SetIntIntShortAt0xc((SetIntIntShortAt0xcStruct*)glyph, x, y, 0);
+            SetIntIntShortAt0xc_02066ce0((SetIntIntShortAt0xcStruct*)glyph, x, y, 0);
             func_020417b0(glyph, obj->font, palette, alpha);
         }
 

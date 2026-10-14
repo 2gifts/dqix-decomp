@@ -13,12 +13,12 @@ struct SixCells { unsigned char cells_[6]; };
 struct TimerState { int fields_[3]; int adjacent_; };
 inline int* GetTimer021ef974() { static TimerState s __attribute__((aligned(4))); return &s.adjacent_; }
 void ClearMatchingBytes_021e169c(unsigned char*, int);
-unsigned char GetSubstructByte0x1c(unsigned char*);
-unsigned int GetSubstructByte0x1d(unsigned char*);
-unsigned int GetSubstructByte0x1e(unsigned char*);
-void SetSubstructByte0x1d(unsigned char*, unsigned char);
-void SetSubstructByte0x1e(unsigned char*, unsigned char);
-void SetSubstructByte0x4c(unsigned char*, unsigned char);
+unsigned char GetSubstructByte0x1c_020493a4(unsigned char*);
+unsigned int GetSubstructByte0x1d_020493c8(unsigned char*);
+unsigned int GetSubstructByte0x1e_020493ec(unsigned char*);
+void SetSubstructByte0x1d_020493b8(unsigned char*, unsigned char);
+void SetSubstructByte0x1e_020493dc(unsigned char*, unsigned char);
+void SetSubstructByte0x4c_02049458(unsigned char*, unsigned char);
 extern "C" int func_ov025_021e1540(int);
 extern "C" void func_ov000_0216f82c(SixCells*, const int*);
 extern "C" void func_ov025_021e1ff4(SixCells*, int, unsigned char*, FormationActor*, FormationActor*, void*, void*);
@@ -52,11 +52,11 @@ extern "C" ARM void func_ov025_021e16c8(FormationEntry* self, FormationEntry* ta
     for (SourceNode* node = lists->source_; node; node = node->next_) {
         if (node->actor_ == ActorID(self)) { participating = 1; break; }
     }
-    unsigned int position = GetSubstructByte0x1c((unsigned char*)target->actor_);
+    unsigned int position = GetSubstructByte0x1c_020493a4((unsigned char*)target->actor_);
     if (!participating) {
-        position = GetSubstructByte0x1e((unsigned char*)target->actor_);
-        if (position == 255) position = GetSubstructByte0x1d((unsigned char*)target->actor_);
-        if (position == 255) position = GetSubstructByte0x1c((unsigned char*)target->actor_);
+        position = GetSubstructByte0x1e_020493ec((unsigned char*)target->actor_);
+        if (position == 255) position = GetSubstructByte0x1d_020493c8((unsigned char*)target->actor_);
+        if (position == 255) position = GetSubstructByte0x1c_020493a4((unsigned char*)target->actor_);
     } else {
         int packed = func_ov025_021e1540(target->id_);
         func_ov000_0216f82c(&temporary, &packed);
@@ -88,27 +88,27 @@ extern "C" ARM void func_ov025_021e16c8(FormationEntry* self, FormationEntry* ta
     }
     int reachable = 0;
     if (participating) {
-        int cost = distances[GetSubstructByte0x1c((unsigned char*)self->actor_)];
+        int cost = distances[GetSubstructByte0x1c_020493a4((unsigned char*)self->actor_)];
         if ((action->flags_ << 16) >> 28 == 2) {
             if (distance == cost) reachable = 1;
         } else if (cost > 0 && cost <= distance) {
             reachable = 1;
-            if (distance - 1 == distances[GetSubstructByte0x1c((unsigned char*)self->actor_)]) {
+            if (distance - 1 == distances[GetSubstructByte0x1c_020493a4((unsigned char*)self->actor_)]) {
                 int value = 1;
                 int* adjacent = GetTimer021ef974();
                 *adjacent = value;
             }
         }
-    } else if (distance == distances[GetSubstructByte0x1c((unsigned char*)self->actor_)]) reachable = 1;
+    } else if (distance == distances[GetSubstructByte0x1c_020493a4((unsigned char*)self->actor_)]) reachable = 1;
     if (reachable) {
         func_ov025_021e13e0(cells, self);
         if (participating) {
-            unsigned int alternate = func_ov025_021e161c(GetSubstructByte0x1c((unsigned char*)self->actor_), position, distances, distance);
+            unsigned int alternate = func_ov025_021e161c(GetSubstructByte0x1c_020493a4((unsigned char*)self->actor_), position, distances, distance);
             if (alternate != 255) {
-                SetSubstructByte0x1e((unsigned char*)self->actor_, alternate);
+                SetSubstructByte0x1e_020493dc((unsigned char*)self->actor_, alternate);
                 SetCell(cells, (unsigned char)alternate, self->value_);
             }
-            func_ov025_021e1c20(GetSubstructByte0x1c((unsigned char*)self->actor_), cells, occupied, distance, work, context, self);
+            func_ov025_021e1c20(GetSubstructByte0x1c_020493a4((unsigned char*)self->actor_), cells, occupied, distance, work, context, self);
         }
         return;
     }
@@ -120,28 +120,28 @@ extern "C" ARM void func_ov025_021e16c8(FormationEntry* self, FormationEntry* ta
     }
     unsigned char selected = 255;
     if (fullCount == 1) selected = fullCandidates[0];
-    else if (fullCount > 1) selected = func_ov025_021e1480(GetSubstructByte0x1c((unsigned char*)self->actor_), fullCandidates, fullCount);
+    else if (fullCount > 1) selected = func_ov025_021e1480(GetSubstructByte0x1c_020493a4((unsigned char*)self->actor_), fullCandidates, fullCount);
     else if (nearCount == 1) selected = nearCandidates[0];
-    else if (nearCount > 1) selected = func_ov025_021e1480(GetSubstructByte0x1c((unsigned char*)self->actor_), nearCandidates, nearCount);
+    else if (nearCount > 1) selected = func_ov025_021e1480(GetSubstructByte0x1c_020493a4((unsigned char*)self->actor_), nearCandidates, nearCount);
     if (participating) {
-        ActionRecord* record = SearchBothTables02079e2c((char*)GetData02108e10(), lists->id_);
+        ActionRecord* record = SearchBothTables02079e2c((char*)GetData02108e10_020797dc(), lists->id_);
         if (record && (record->flags_ << 16) >> 28 != 2) {
             memset(nearby, 0, 81);
             func_ov025_021e120c(nearby, position, 1, radius, 0);
-            int current = GetSubstructByte0x1c((unsigned char*)self->actor_);
+            int current = GetSubstructByte0x1c_020493a4((unsigned char*)self->actor_);
             if ((current < 81 && nearby[current] == 1) || position == current) selected = (unsigned char)current;
         }
     }
-    if (selected >= 81) selected = GetSubstructByte0x1c((unsigned char*)self->actor_);
-    SetSubstructByte0x1d((unsigned char*)self->actor_, selected);
+    if (selected >= 81) selected = GetSubstructByte0x1c_020493a4((unsigned char*)self->actor_);
+    SetSubstructByte0x1d_020493b8((unsigned char*)self->actor_, selected);
     if (selected < 81) SetCell(cells, selected, self->value_);
     if (participating) {
         unsigned int alternate = func_ov025_021e161c(selected, position, distances, distance);
         if (alternate != 255) {
-            SetSubstructByte0x1e((unsigned char*)self->actor_, alternate);
+            SetSubstructByte0x1e_020493dc((unsigned char*)self->actor_, alternate);
             SetCell(cells, (unsigned char)alternate, self->value_);
         }
     }
     if (participating) func_ov025_021e1c20(selected, cells, occupied, distance, work, context, self);
-    SetSubstructByte0x4c((unsigned char*)self->actor_, target->id_);
+    SetSubstructByte0x4c_02049458((unsigned char*)self->actor_, target->id_);
 }

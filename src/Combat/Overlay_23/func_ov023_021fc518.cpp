@@ -118,12 +118,12 @@ void SetIntC0C_021e6198(void* model, int value);
 void SetByteC11_021e6150(void* model, unsigned char value);
 void InitWordsQuad_021e60e0(void* model, unsigned int value);
 extern "C" void func_ov023_021fc71c(void* obj, int id, int flagArg);
-char* GetFieldIfFlag4(char* gameState);
+char* GetFieldIfFlag4_020100f8(char* gameState);
 void SetVec3At0x4(Vec3Target0202e5c0* camera, int x, int y, int z);
-void SetFields0x10To0x18(unsigned char* camera, int x, int y, int z);
-int GetField0x58(void* camera);
+void SetFields0x10To0x18_0202e5c8(unsigned char* camera, int x, int y, int z);
+int GetField0x58_0202e9ec(void* camera);
 void SetAngleAndTrigTable0202e9a4(AngleTrig0202e9a4* camera, int angle);
-void SetField0x238False(void* camera);
+void SetField0x238False_020a27a0(void* camera);
 
 // USA: func_ov023_021fc518
 extern "C" ARM int func_ov023_021fc518(MenuCharacter_021fc518* self, void* ctx, int id, int heap, int parentTag, int character) {
@@ -166,11 +166,11 @@ extern "C" ARM int func_ov023_021fc518(MenuCharacter_021fc518* self, void* ctx, 
     if (character >= 0)
         func_ov023_021fc71c(self, character, 0);
 
-    char* camera = GetFieldIfFlag4((char*)GameState::GetInstance());
+    char* camera = GetFieldIfFlag4_020100f8((char*)GameState::GetInstance());
     SetVec3At0x4((Vec3Target0202e5c0*)camera, 0xb666, 0xb800, 0x42ccc);
-    SetFields0x10To0x18((unsigned char*)camera, 0xb666, 0xb800, 0);
-    self->perspective_ = GetField0x58(camera);
+    SetFields0x10To0x18_0202e5c8((unsigned char*)camera, 0xb666, 0xb800, 0);
+    self->perspective_ = GetField0x58_0202e9ec(camera);
     SetAngleAndTrigTable0202e9a4((AngleTrig0202e9a4*)camera, 0xf000);
-    SetField0x238False(camera);
+    SetField0x238False_020a27a0(camera);
     return 1;
 }

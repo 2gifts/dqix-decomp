@@ -23,7 +23,7 @@ struct Holder021e3c80 {
 };
 extern Holder021e3c80 data_ov025_021ef988;
 
-void* GetActiveCombatWork();
+void* GetActiveCombatWork_ov000_02160130();
 extern "C" char* func_ov000_02160f14(void* work);
 ListNode02160094* GetNodeAtIndex02160094(List02160094* list, int index);
 ListNode021600f8* GetNodeAtIndex021600f8(List021600f8* list, int index);
@@ -47,7 +47,7 @@ extern "C" void func_ov000_0216f2b8(char* camera);
 extern "C" ARM int func_ov025_021e3c80(CameraCmd021e3c80* cmd, List02160094* list) {
     int buf[12];
     int ids[8];
-    unsigned char* work = (unsigned char*)GetActiveCombatWork();
+    unsigned char* work = (unsigned char*)GetActiveCombatWork_ov000_02160130();
     char* camera = func_ov000_02160f14(work);
     char* ctx = data_ov025_021ef988.ctx;
     ListNode02160094* actor = GetNodeAtIndex02160094(list, 0);
@@ -115,7 +115,7 @@ extern "C" ARM int func_ov025_021e3c80(CameraCmd021e3c80* cmd, List02160094* lis
     case 12: {
         if (target == 0) return 1;
         short id = func_ov000_0215ffa0(target);
-        void* other = GetActiveCombatWork();
+        void* other = GetActiveCombatWork_ov000_02160130();
         if (other != 0) {
             func_ov000_021626a0(other, 4, 0);
         }

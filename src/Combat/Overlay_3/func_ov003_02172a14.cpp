@@ -21,7 +21,7 @@ extern "C" Zone02172a14 *func_02012fe4(void);
 extern "C" void __clear(void *dst, int count);
 extern "C" void func_0204f41c(void *canvas, int a, int b, char *text, int c, int d, short *outA, short *outB, int e);
 void ResetList0204af64(List0204af64 *obj);
-void SetWord0x18ClearByte0x1f(unsigned char *obj, int a);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char *obj, int a);
 void DispatchViaTable0204b5e8(Obj0204b5e8 *obj, int a, int b);
 void DispatchByTag0204b2e0(void *obj, char *str);
 void DispatchByTagLookup0204b3a0(SelfTag0204b3a0 *self, char *str);
@@ -96,7 +96,7 @@ struct Self02172a14 {
 extern "C" ARM void func_ov003_02172a14(Self02172a14 *self) {
     GameResources *res       = (GameResources *) func_ov017_0218b5b0();
     BackgroundLoader *loader = BackgroundLoader::GetInstance();
-    FontBankLoader* global = GetGlobal02109400();
+    FontBankLoader* global = GetGlobal02109400_02094a00();
     if (self->step_ == 0) {
         self->b180_ = 0;
         self->w170_ = self->w128_;
@@ -154,7 +154,7 @@ extern "C" ARM void func_ov003_02172a14(Self02172a14 *self) {
         ResetList0204af64((List0204af64 *) &list);
         list.lo_ = 0;
         list.hi_ = 1;
-        SetWord0x18ClearByte0x1f((unsigned char *) &list, 0);
+        SetWord0x18ClearByte0x1f_0204b11c((unsigned char *) &list, 0);
         DispatchViaTable0204b5e8((Obj0204b5e8 *) &list, 0, 0);
         for (int i = 0; i < count; i++) {
             DispatchByTag0204b2e0(&list, (char *) datas[i]);

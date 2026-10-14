@@ -3,9 +3,9 @@
 #include "std_library_functions.h"
 
 struct S_10088;
-int GetFieldAt0x150(unsigned char* obj);
-int TestBitAt0x34(unsigned char* obj, unsigned int index);
-int IsFlag10088Set(struct S_10088* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+int IsFlag10088Set_02010088(struct S_10088* obj);
 struct AddEntryList_021f6a1c;
 void AddEntryIfUnderLimit16_021f6a1c(struct AddEntryList_021f6a1c* obj, void* src);
 extern "C" void func_ov024_021f9874(void* obj, void* buf, int slot, int value);
@@ -72,8 +72,8 @@ struct WorkBuffer_021fc068 {
 // USA: func_ov024_021fc068
 extern "C" ARM void func_ov024_021fc068(struct Obj_021fc068* obj) {
 	struct Combatant_021fc068* self = obj->self;
-	GetFieldAt0x150((unsigned char*)self);
-	GetData02108e10();
+	GetFieldAt0x150_02053c6c((unsigned char*)self);
+	GetData02108e10_020797dc();
 	struct Action_021fc068* action = obj->action;
 	if (action->mode == 1) return;
 	GetCombatantByID((int)obj->battle, (short)obj->targetId);
@@ -87,11 +87,11 @@ extern "C" ARM void func_ov024_021fc068(struct Obj_021fc068* obj) {
 	memset(&buf, 0, sizeof(buf));
 	memset(&buf, 0, sizeof(buf));
 	for (int i = 0; i < 4; i++) {
-		if (!TestBitAt0x34(obj->battle->partyWork, (unsigned char)i)) continue;
+		if (!TestBitAt0x34_020a35e0(obj->battle->partyWork, (unsigned char)i)) continue;
 		if (action->targetType == 1 && i != obj->id) continue;
 		struct Combatant_021fc068* c = GetCombatantByID((int)obj->battle, (short)i);
 		if (!c) continue;
-		if (!IsFlag10088Set((struct S_10088*)c)) continue;
+		if (!IsFlag10088Set_02010088((struct S_10088*)c)) continue;
 		if ((action->flags10 & 0x400) && (c->stats->flags14 & 0x200)) continue;
 		struct Entry_021fc068 entry;
 		entry.value = (float)(c->stats->hp / 2);

@@ -11,14 +11,14 @@ extern char data_020ef1d6[];
 
 // KEEP-NAME
 // USA: func_02014c04
-ARM int Zone3D::UnpackATS_AMBL() {
+ARM int Zone3D::UnpackATS_AMBL_02014c04() {
     if (atsAMBLLoadHandle_ < 0) return 1;
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     if (!loader->GetTaskStatus(atsAMBLLoadHandle_)) return 0;
     if (loader->GetDetailedTaskStatus(atsAMBLLoadHandle_) != 2) {
         loader->RemoveTask(atsAMBLLoadHandle_);
         atsAMBLLoadHandle_ = -1;
-        LoadMapAMDJ();
+        LoadMapAMDJ_020145a8();
         return 1;
     }
     void* archive;
@@ -31,12 +31,12 @@ ARM int Zone3D::UnpackATS_AMBL() {
     if (!GetFileInNarc(archive, filename, &script, &scriptSize, 0)) {
         loader->RemoveTask(atsAMBLLoadHandle_);
         atsAMBLLoadHandle_ = -1;
-        LoadMapAMDJ();
+        LoadMapAMDJ_020145a8();
         return 1;
     }
-    ProcessBATSFile(script, scriptSize);
+    ProcessBATSFile_02014414(script, scriptSize);
     loader->RemoveTask(atsAMBLLoadHandle_);
     atsAMBLLoadHandle_ = -1;
-    LoadMapAMDJ();
+    LoadMapAMDJ_020145a8();
     return 1;
 }

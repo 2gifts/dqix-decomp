@@ -3,10 +3,10 @@
 #include "GameState/GameState.h"
 #include "Util/Random.h"
 
-void* GetActiveCombatWork(void);
+void* GetActiveCombatWork_ov000_02160130(void);
 extern "C" int func_ov000_0215e9fc(int battle, short* ids, int max, int flags);
 extern "C" int func_ov000_0215eb1c(int battle, short* ids, int count, int flag);
-unsigned short GetTableValue(void* obj);
+unsigned short GetTableValue_0202053c(void* obj);
 extern "C" void func_ov000_021620f0(void* work, int tier, int flag);
 extern "C" void* func_ov000_0215e958(void* a0);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, int e, int f, int g);
@@ -39,16 +39,16 @@ struct Obj_021e20c0 {
 extern "C" ARM void* func_ov024_021e20c0(struct Obj_021e20c0* obj, int unused, int id) {
     GameObject* c = GetCombatantByID((int)obj->field0x10, id);
     if (!c) return 0;
-    void* work = GetActiveCombatWork();
+    void* work = GetActiveCombatWork_ov000_02160130();
     struct Buf8_021e20c0 buf = data_ov024_021fe728;
     int count = func_ov000_0215e9fc((int)obj->field0x10, buf.v, 4, 0);
     if (count <= 0) return 0;
     GameState* gs = GameState::GetInstance();
     unsigned short total = 0;
     for (int i = 0; i < count; i++) {
-        GameObject* member = GetCombatantWithFlag0x100(gs, buf.v[i]);
+        GameObject* member = GetCombatantWithFlag0x100_0200ff1c(gs, buf.v[i]);
         if (member) {
-            total += GetTableValue(member);
+            total += GetTableValue_0202053c(member);
         }
     }
     int tier = 0;

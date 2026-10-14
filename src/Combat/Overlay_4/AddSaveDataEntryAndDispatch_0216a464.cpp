@@ -21,7 +21,7 @@ extern "C" int func_ov023_021f9bc8(char* obj);
 extern "C" void func_ov004_0216950c(void* obj);
 extern "C" void func_ov004_0216920c(void* obj);
 extern "C" void __clear(void* buf, int n);
-void* FindEntryByKey(struct TableA68* table, int key);
+void* FindEntryByKey_02072a68(struct TableA68* table, int key);
 extern "C" void func_02046380(void* global);
 extern "C" void func_02042764(void* a, void* b, int flag);
 void SetIndexedName02046574(struct Obj02046574* obj, int index, char* str);
@@ -85,7 +85,7 @@ extern "C" ARM int func_ov004_0216a464(void* a) {
     __clear(buf, 0x30);
 #endif
 
-    void* entryD = FindEntryByKey(table3, 0xd);
+    void* entryD = FindEntryByKey_02072a68(table3, 0xd);
     func_02046380((void*)g);
 #if defined(jpn)
     SetIndexedName02046574((struct Obj02046574*)g, 0, (char*)node+0x2e);

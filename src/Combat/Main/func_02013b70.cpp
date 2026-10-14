@@ -4,7 +4,7 @@
 #include "World/LootableContainer.h"
 #include "Graphics/LightingManager.h"
 
-void ResetHeaderAndSubStructs(char* base);
+void ResetHeaderAndSubStructs_020133cc(char* base);
 extern "C" void func_02013d24(Zone3D* zone);
 
 // USA: func_02013b70
@@ -33,7 +33,7 @@ extern "C" ARM void func_02013b70(Zone3D* zone, SafeAllocator* allocator)
 
         ZoneLootableRecord* record = &zone->unknown_478_[(unsigned char)zone->unknown_476_];
 
-        ResetHeaderAndSubStructs(reinterpret_cast<char*>(record));
+        ResetHeaderAndSubStructs_020133cc(reinterpret_cast<char*>(record));
         func_0204719c(&record->primary[0]);
         record->primary[0].field80 = light;
         func_0204719c(&record->primary[1]);

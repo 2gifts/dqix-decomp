@@ -18,12 +18,12 @@ struct Container020dedd0;
 struct Element020de650;
 extern "C" struct Container020dedd0* func_ov004_02156fd4(void* obj, int key);
 struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0* c, int key);
-int CallFunc020e52a0(void* p, int key);
+int CallFunc020e52a0_020e5294(void* p, int key);
 
 extern "C" void func_ov011_021848a0(void* obj, int val);
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c540(void* p);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 
 struct DownloadedRecord02158a60 {
     unsigned char unknown00[0xf8];
@@ -58,7 +58,7 @@ extern "C" ARM int func_ov004_02158a60(void* obj) {
         func_020e207c(data_ov004_021707d8.ptr + 0x8c, name, *(short*)((char*)elem + 0x18));
         SetIndexedName02046574((Obj02046574*)g, 1, name);
 #else
-        int val = CallFunc020e52a0(data_ov004_021707d8.ptr + 0x8c, *(short*)((char*)elem + 0x18));
+        int val = CallFunc020e52a0_020e5294(data_ov004_021707d8.ptr + 0x8c, *(short*)((char*)elem + 0x18));
         *(int*)((char*)g + 0x18) = val;
 #endif
         func_ov011_021848a0(obj, 0x3a3);
@@ -70,7 +70,7 @@ extern "C" ARM int func_ov004_02158a60(void* obj) {
         func_ov011_021848a0(obj, 0x3ae);
         return 0;
     }
-    if (CheckField0NonZero((int*)s) != 0) {
+    if (CheckField0NonZero_0202b7d8((int*)s) != 0) {
         func_ov011_021848a0(obj, 0x24cd);
         return 0;
     }

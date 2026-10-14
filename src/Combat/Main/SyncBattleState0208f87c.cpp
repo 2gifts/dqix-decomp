@@ -6,7 +6,7 @@
 #endif
 
 extern "C" void* func_ov017_0218b5b0(void* p);
-unsigned int GetBitsInField4(unsigned int* obj, unsigned int mask);
+unsigned int GetBitsInField4_0203b4fc(unsigned int* obj, unsigned int mask);
 extern "C" void* _ZN7Model3D23SetMaterialDiffuseColorEj(void* p, int v);
 
 struct Vec3Block020b3850;
@@ -34,7 +34,7 @@ extern "C" int _ZN8Object3D26DrawMeshWithMaterialSimpleEbiii(struct Battler02035
 ARM void SyncBattleState0208f87c(void* self, int b, int c, int d) {
     void* ov = func_ov017_0218b5b0(self);
     void* r4 = *(void**)((char*)ov + (IS_JPN ? 0x34bc : 0x36cc));
-    if (GetBitsInField4((unsigned int*)ov, 0x200400) != 0) {
+    if (GetBitsInField4_0203b4fc((unsigned int*)ov, 0x200400) != 0) {
         return;
     }
     if (*(void**)((char*)r4 + 0x8) == 0) {

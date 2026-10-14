@@ -82,12 +82,12 @@ struct Obj021a7e14 {
 };
 
 StoreStruct* GetGlobalField0x1c020421a0();
-void GetGlobal02109400();
+void GetGlobal02109400_02094a00();
 extern "C" SearchStruct* func_0202ae18();
-int GetField0x3acValue(GameState* gs);
+int GetField0x3acValue_020100a8(GameState* gs);
 void CancelPendingAction020397cc(Obj020397cc* obj, int arg);
 extern "C" void func_020a0cc4(unsigned int size);
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 extern "C" void func_020a0c0c();
 extern "C" void func_ov017_021a7dd8(Obj021a7e14* self);
 void ResetStruct020dfc40(Struct020dfc40* p);
@@ -101,23 +101,23 @@ void DispatchIfCountPositive020dcf7c(int key, void* p);
 Element021a7e14* FindElementByKey020dedd0(Container020dedd0* c, int key);
 void EnqueueEventTag170_021d0198(int a, int b, int c, int d);
 void InitObjFromCombatantId020e4bf4(void* obj, int combatantId);
-char* CallFunc020e0434With02153694(int value);
+char* CallFunc020e0434With02153694_020e51cc(int value);
 extern "C" void func_020e4b34(void* obj, char* name, int a, int b, int c, int d, int e, int f, int g, int h, int i, int j);
 extern "C" void func_02046380(StoreStruct* g);
-void StoreInArray0x8b0(StoreStruct* g, int a, int b);
-void SetByteInRange(unsigned char* p, int a, unsigned char b);
+void StoreInArray0x8b0_020465c0(StoreStruct* g, int a, int b);
+void SetByteInRange_020465f0(unsigned char* p, int a, unsigned char b);
 char* GetFieldByKey020e0434(Container020e0310* c, int key);
 void AppendString02042058(char* dst, const char* src);
 int SumKeyedLookups02086bf4(char* p, int key);
 extern "C" void func_0204500c(StoreStruct* g, char* text, int a, int b);
 extern "C" int func_020457e0(StoreStruct* g);
-int TestFlagBitAt0xe(SearchStruct* s, int id);
+int TestFlagBitAt0xe_0202c578(SearchStruct* s, int id);
 int DecrementField38Clamped_021a85e8(unsigned char* obj, int amount);
 void* ZeroInitReturn020de824(void* p);
 void InitStruct0207cbe8(char* p);
 extern "C" void func_0207cf30(void* ctx, int key, int amount, int arg);
 void ReinitController02043204(char* g);
-void SetByteField0x253(void* obj);
+void SetByteField0x253_020397c0(void* obj);
 
 extern AllocatorUnion data_02114e20;
 extern const char data_ov017_021d77c4[];
@@ -130,18 +130,18 @@ extern "C" ARM void func_ov017_021a7e14(Obj021a7e14* self) {
     GameState* gs = GameState::GetInstance();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     StoreStruct* g = GetGlobalField0x1c020421a0();
-    GetGlobal02109400();
+    GetGlobal02109400_02094a00();
     func_ov017_0218b5b0();
     SearchStruct* search = func_0202ae18();
     Obj020397cc* obj = (Obj020397cc*)gs->GetUnknownGameObject();
-    int val = GetField0x3acValue(gs);
+    int val = GetField0x3acValue_020100a8(gs);
     CancelPendingAction020397cc(obj, 1);
     int done = 0;
     obj->fieldB2 = 0;
 
     if (self->state == 0) {
         func_020a0cc4(0x2000);
-        void* heap = AllocateAligned4(&data_02114e20, 0x2000);
+        void* heap = AllocateAligned4_02012d88(&data_02114e20, 0x2000);
         if (heap == NULL) {
             func_020a0c0c();
             self->finished = 1;
@@ -194,7 +194,7 @@ extern "C" ARM void func_ov017_021a7e14(Obj021a7e14* self) {
         BackgroundLoader::RemoveLockGlobal();
         self->actorText = self->alloc.Allocate(0xc);
         self->listText = self->alloc.Allocate(0xc);
-        Combatant021a7e14* combatant = (Combatant021a7e14*)GetCombatantWithFlag0x100(gs, self->combatantId);
+        Combatant021a7e14* combatant = (Combatant021a7e14*)GetCombatantWithFlag0x100_0200ff1c(gs, self->combatantId);
         if (FindElementByKey020dedd0(self->container, self->key) == NULL || combatant == NULL ||
             self->buffers == NULL || self->firstBuffer == NULL || self->secondBuffer == NULL ||
             self->actorText == NULL || self->listText == NULL) {
@@ -205,11 +205,11 @@ extern "C" ARM void func_ov017_021a7e14(Obj021a7e14* self) {
         Clear12Bytes020e46c4(self->actorText);
         InitObjFromCombatantId020e4bf4(self->actorText, self->combatantId);
         Clear12Bytes020e46c4(self->listText);
-        char* name = CallFunc020e0434With02153694((short)combatant->params->nameId);
+        char* name = CallFunc020e0434With02153694_020e51cc((short)combatant->params->nameId);
         func_020e4b34(self->listText, name, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         func_02046380(g);
-        StoreInArray0x8b0(g, 0, 1);
-        SetByteInRange((unsigned char*)g, 0, 1);
+        StoreInArray0x8b0_020465c0(g, 0, 1);
+        SetByteInRange_020465f0((unsigned char*)g, 0, 1);
         g->nameText = self->actorText;
         g->listText = self->buffers;
         g->actorText = self->listText;
@@ -217,7 +217,7 @@ extern "C" ARM void func_ov017_021a7e14(Obj021a7e14* self) {
         memset(message, 0, 0x960);
         AppendString02042058(message, GetFieldByKey020e0434(self->strings, 0x64));
         AppendString02042058(message, GetFieldByKey020e0434(self->strings, 0x78));
-        if (SumKeyedLookups02086bf4((char*)GetPtrField0x2a04(gs), self->key) == 0x63) {
+        if (SumKeyedLookups02086bf4((char*)GetPtrField0x2a04_02010828(gs), self->key) == 0x63) {
             AppendString02042058(message, GetFieldByKey020e0434(self->strings, 0x70));
             self->flags |= 1;
         } else {
@@ -247,7 +247,7 @@ extern "C" ARM void func_ov017_021a7e14(Obj021a7e14* self) {
         }
     } else if (self->state == 4) {
         g->pending = 0;
-        if (TestFlagBitAt0xe(search, 0) || TestFlagBitAt0xe(search, self->combatantId)) {
+        if (TestFlagBitAt0xe_0202c578(search, 0) || TestFlagBitAt0xe_0202c578(search, self->combatantId)) {
             done = 1;
         }
         int ticks = gs->GetTickCount();
@@ -268,7 +268,7 @@ extern "C" ARM void func_ov017_021a7e14(Obj021a7e14* self) {
             ticks = 1;
         }
         if (DecrementField38Clamped_021a85e8((unsigned char*)self, ticks) == 0 && g->windowState == 3) {
-            if (TestFlagBitAt0xe(search, 0) || TestFlagBitAt0xe(search, self->combatantId)) {
+            if (TestFlagBitAt0xe_0202c578(search, 0) || TestFlagBitAt0xe_0202c578(search, self->combatantId)) {
                 func_0204500c(g, GetFieldByKey020e0434(self->strings, 0x71), 0, 0xe3);
                 self->state = 7;
             } else {
@@ -283,8 +283,8 @@ extern "C" ARM void func_ov017_021a7e14(Obj021a7e14* self) {
                     func_0207cf30(&context, self->key, 1, 0);
                 }
                 func_02046380(g);
-                StoreInArray0x8b0(g, 0, 1);
-                SetByteInRange((unsigned char*)g, 0, 1);
+                StoreInArray0x8b0_020465c0(g, 0, 1);
+                SetByteInRange_020465f0((unsigned char*)g, 0, 1);
                 g->nameText = self->actorText;
                 g->listText = self->buffers;
                 g->actorText = self->listText;
@@ -303,7 +303,7 @@ extern "C" ARM void func_ov017_021a7e14(Obj021a7e14* self) {
         }
         if (done) {
             ReinitController02043204((char*)g);
-            SetByteField0x253(obj);
+            SetByteField0x253_020397c0(obj);
             func_ov017_021a7dd8(self);
             func_020a0c0c();
             self->finished = 1;

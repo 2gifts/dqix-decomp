@@ -91,9 +91,9 @@ MessageSystem_021ec480* GetGlobalField0x1c020421a0();
 int IsBrightnessTransitionActive(GameResources* resources);
 void SetForwardAndStore0205ebc0(void* sound, int a, int b);
 void DispatchIfField0xc4NonNeg_0205ebfc(void* sound, int a, int b);
-void SetElementFieldC2(Struct_0205d81c* window, int item, int value);
+void SetElementFieldC2_0205deb4(Struct_0205d81c* window, int item, int value);
 void SetValueAndActivate0209c830(Struct0209c830* obj, int value);
-int TestBitInByteArray(int a, unsigned char* b, int flag);
+int TestBitInByteArray_0206dfb0(int a, unsigned char* b, int flag);
 int IsAnimationActive0209ca2c(void* obj);
 int DispatchIfFlagsOrByteSet_021ed014(struct GuideWindow_021ec480* window);
 void ResetEntryList0205d6a0(Entry_0205d6a0* window, int value);
@@ -175,7 +175,7 @@ extern "C" ARM void func_ov023_021ec480(GuideWindow_021ec480* self)
         unsigned char items[2];
         *(Bytes2_021ec480*)items = *(Bytes2_021ec480*)&data_ov023_021fd844[0xa];
         for (int i = 0; i < 2; i++)
-            SetElementFieldC2((Struct_0205d81c*)self->window_, items[i], 0);
+            SetElementFieldC2_0205deb4((Struct_0205d81c*)self->window_, items[i], 0);
         SetValueAndActivate0209c830((Struct0209c830*)data_02109bf4, 0x40);
         self->step_++;
     }
@@ -192,7 +192,7 @@ extern "C" ARM void func_ov023_021ec480(GuideWindow_021ec480* self)
         if (self->flags_ & GUIDE_WINDOW_UNK_400)
         {
             void* unknown = func_0205ec34();
-            if (self->page_ == self->count_ - 1 && TestBitInByteArray((int)unknown, (unsigned char*)unknown + 0x8c, 0x119a) &&
+            if (self->page_ == self->count_ - 1 && TestBitInByteArray_0206dfb0((int)unknown, (unsigned char*)unknown + 0x8c, 0x119a) &&
                 IsAnimationActive0209ca2c(data_02109bf4))
                 return;
         }
@@ -228,7 +228,7 @@ extern "C" ARM void func_ov023_021ec480(GuideWindow_021ec480* self)
         if (self->flags_ & GUIDE_WINDOW_UNK_400)
         {
             void* unknown = func_0205ec34();
-            if (TestBitInByteArray((int)unknown, (unsigned char*)unknown + 0x8c, 0x119a))
+            if (TestBitInByteArray_0206dfb0((int)unknown, (unsigned char*)unknown + 0x8c, 0x119a))
             {
                 self->step_++;
                 return;
@@ -265,7 +265,7 @@ extern "C" ARM void func_ov023_021ec480(GuideWindow_021ec480* self)
             unsigned char items2[2];
             *(Bytes2_021ec480*)items2 = *(Bytes2_021ec480*)&data_ov023_021fd844[4];
             for (int i = 0; i < 2; i++)
-                SetElementFieldC2((Struct_0205d81c*)self->window_, items2[i], 0);
+                SetElementFieldC2_0205deb4((Struct_0205d81c*)self->window_, items2[i], 0);
         }
         SetValueAndActivate0209c830((Struct0209c830*)data_02109bf4, 0x40);
         self->step_++;

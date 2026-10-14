@@ -20,7 +20,7 @@ struct Elem0201e3c4 {
     struct Code0201e3c4 code;
 };
 struct List0201e3c4;
-extern "C" extern void _ZN12ZoneFeatures37CreateGrottoTileFeaturePlacementEntryERK24TileFeaturePlacementData(struct List0201e3c4* list, struct Elem0201e3c4* src);
+extern "C" extern void _ZN12ZoneFeatures46CreateGrottoTileFeaturePlacementEntry_0201e3c4ERK24TileFeaturePlacementData(struct List0201e3c4* list, struct Elem0201e3c4* src);
 
 struct GlobalList020fdc20_0201c8d0 {
     int pad0;
@@ -30,7 +30,7 @@ struct GlobalList020fdc20_0201c8d0 {
 extern struct GlobalList020fdc20_0201c8d0 data_020fdc20;
 
 // USA: func_0201c8d0
-extern "C" ARM int _Z20WarpScript_Opcode_7ePN6Script9ParameterEi(unsigned char* src) {
+extern "C" ARM int _Z29WarpScript_Opcode_7e_0201c8d0PN6Script9ParameterEi(unsigned char* src) {
     struct Elem0201e3c4 elem;
     elem.id = ((Script::Parameter*)((struct Variant02030b0c*)src))->ToInt();
     struct Struct02030b7c* strFieldPtr = (struct Struct02030b7c*)(src + 8);
@@ -42,6 +42,6 @@ extern "C" ARM int _Z20WarpScript_Opcode_7ePN6Script9ParameterEi(unsigned char* 
         elem.name.c[i] = (char)((Script::Parameter*)((struct Variant02030b0c*)src))->ToInt();
         src += 8;
     }
-    _ZN12ZoneFeatures37CreateGrottoTileFeaturePlacementEntryERK24TileFeaturePlacementData(data_020fdc20.list, &elem);
+    _ZN12ZoneFeatures46CreateGrottoTileFeaturePlacementEntry_0201e3c4ERK24TileFeaturePlacementData(data_020fdc20.list, &elem);
     return 1;
 }

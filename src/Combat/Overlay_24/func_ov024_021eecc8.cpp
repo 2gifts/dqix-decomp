@@ -3,7 +3,7 @@
 #include "Combat/Overlay_0/GetCombatantByID.h"
 
 extern "C" int func_ov000_02153e78(int battle, short* out, int max, int group, int flag);
-int IsFlag10088Set(struct S_10088* obj);
+int IsFlag10088Set_02010088(struct S_10088* obj);
 
 struct Group_021eecc8 {
 	unsigned char pad0;
@@ -44,7 +44,7 @@ extern "C" ARM int func_ov024_021eecc8(struct Obj_021eecc8* obj, int unused1, in
 			GameObject* c = GetCombatantByID(obj->field0, (short)id);
 			if (!c) continue;
 			if (((struct Stats_021eecc8*)c->currentStats_)->flags18 & 0x2000) continue;
-			if (IsFlag10088Set((struct S_10088*)c)) {
+			if (IsFlag10088Set_02010088((struct S_10088*)c)) {
 				if (spare > 0) {
 					spare--;
 					outArray[(*outCount)++] = id;

@@ -2,7 +2,7 @@
 
 extern "C" int func_ov017_021d60f4(void*);
 
-int* GetGlobal02109418(void);
+int* GetGlobal02109418_02094d6c(void);
 void* GetGlobalManager0209dccc(void);
 
 struct FindEntryById02096134Table;
@@ -15,7 +15,7 @@ ARM int SetEntryFieldAClamped0209d83c(void* obj) {
     int id;
     int val;
 
-    table = (struct FindEntryById02096134Table*)GetGlobal02109418();
+    table = (struct FindEntryById02096134Table*)GetGlobal02109418_02094d6c();
     if (table == NULL) return 0;
 
     if (GetGlobalManager0209dccc() == NULL) return 0;

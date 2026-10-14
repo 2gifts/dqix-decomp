@@ -6,7 +6,7 @@
 extern "C" int func_ov000_0215e9fc(int battle, unsigned short* table, int count, int flag);
 extern "C" int func_ov024_021ede2c(void* obj);
 struct Combatant_20885b4;
-int CheckFlag0x2AndKind1(struct Combatant_20885b4* obj);
+int CheckFlag0x2AndKind1_020885b4(struct Combatant_20885b4* obj);
 
 extern unsigned short data_ov024_021fec3c;
 
@@ -31,7 +31,7 @@ extern "C" ARM int func_ov024_021f43b0(struct Obj_43b0* obj, int a1, int a2, int
 	for (int i = 0; i < count; i++) {
 		GameObject* c = GetCombatantByID(obj->field0, buf[i]);
 		if (!c) continue;
-		if (CheckFlag0x2AndKind1((struct Combatant_20885b4*)c->currentStats_)) continue;
+		if (CheckFlag0x2AndKind1_020885b4((struct Combatant_20885b4*)c->currentStats_)) continue;
 		int n2 = *outCount;
 		*outCount = n2 + 1;
 		outArray[n2] = buf[i];

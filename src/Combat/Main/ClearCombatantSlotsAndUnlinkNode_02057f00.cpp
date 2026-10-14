@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void ClearCombatantSlot(GameState* battleStruct, int id);
+void ClearCombatantSlot_0200fd48(GameState* battleStruct, int id);
 
 struct ListNode02057f00 {
     int value;
@@ -21,7 +21,7 @@ extern "C" ARM void func_02057f00(void* obj, int value) {
     int i;
     for (i = 0; i < 16; i++) {
         if (value == *(int*)((char*)obj + i * 0xd4 + 0xd8)) {
-            ClearCombatantSlot(battleStruct, i + 0xd0);
+            ClearCombatantSlot_0200fd48(battleStruct, i + 0xd0);
         }
     }
     while (node != 0) {

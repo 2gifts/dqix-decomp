@@ -24,9 +24,9 @@ struct Action02156e30 {
     unsigned int flags;
 };
 
-Battler02156e30* GetFieldAt0x150(unsigned char* obj);
-int TestBit5At0x2f4(unsigned char* obj);
-int TestBitInArray0x8ec(unsigned char* obj, int index);
+Battler02156e30* GetFieldAt0x150_02053c6c(unsigned char* obj);
+int TestBit5At0x2f4_02085154(unsigned char* obj);
+int TestBitInArray0x8ec_02083b00(unsigned char* obj, int index);
 extern "C" int func_ov000_02155f9c(struct Random* rand, int combatantId, int checkSubFlag);
 extern "C" float func_ov000_02156118(struct Random* rand, int combatantId);
 
@@ -48,9 +48,9 @@ extern "C" ARM int func_ov000_02156e30(struct Random* rand, int attackerId, int 
         return 0;
     }
     if (IsPartyIndex(attackerId)) {
-        GameObject* attacker = GetCombatantWithFlag0x100(bs, attackerId);
+        GameObject* attacker = GetCombatantWithFlag0x100_0200ff1c(bs, attackerId);
         if (attacker != NULL && (action->flags & 0x80000)) {
-            if (TestBit5At0x2f4(GetStatus(attacker))) {
+            if (TestBit5At0x2f4_02085154(GetStatus(attacker))) {
                 return 0;
             }
         }
@@ -60,10 +60,10 @@ extern "C" ARM int func_ov000_02156e30(struct Random* rand, int attackerId, int 
     }
     float chance = func_ov000_02156118(rand, targetId);
     if (IsPartyIndex(targetId) && (action->id == 0xf4 || action->id == 0xf5)) {
-        GameObject* target = GetCombatantWithFlag0x100(GameState::GetInstance(), targetId);
-        Battler02156e30* battler = GetFieldAt0x150((unsigned char*)target);
+        GameObject* target = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), targetId);
+        Battler02156e30* battler = GetFieldAt0x150_02053c6c((unsigned char*)target);
         if (target != NULL && battler != NULL && battler->hp > 0) {
-            if (TestBitInArray0x8ec(GetStatus(target), 0x28)) {
+            if (TestBitInArray0x8ec_02083b00(GetStatus(target), 0x28)) {
                 chance = 100.0f;
             }
         }

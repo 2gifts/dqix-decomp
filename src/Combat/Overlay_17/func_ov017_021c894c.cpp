@@ -2,12 +2,12 @@
 #include "GameState/GameState.h"
 #include "Resource/GameResources.h"
 
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 void* GetField6b0_021b8470(void* obj);
 extern "C" void* memset(void* dst, int c, unsigned int n);
 extern "C" int func_ov000_0215e9fc(void* obj, short* buf, int max, int flag);
 extern "C" int func_ov000_0215eb1c(void* obj, short* buf, int max, int flag);
-int GetSubstructByte0x1c(unsigned char* obj);
+int GetSubstructByte0x1c_020493a4(unsigned char* obj);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct MsgBody021c894c {
@@ -27,7 +27,7 @@ struct Msg021c894c {
 extern "C" ARM void func_ov017_021c894c(unsigned short value) {
     GameState* battleStruct = GameState::GetInstance();
     GameResources* res = func_ov017_0218b5b0();
-    void* data = GetData02100044();
+    void* data = GetData02100044_0202ae24();
     void* field = GetField6b0_021b8470(res->unknown_ptr_3718);
     if (field == NULL) {
         return;
@@ -53,7 +53,7 @@ extern "C" ARM void func_ov017_021c894c(unsigned short value) {
     for (k = 0; k < count; k++) {
         GameObject* c = battleStruct->GetCombatantByIndex(ids[k]);
         if (c != NULL) {
-            body->partyBytes[ids[k]] = GetSubstructByte0x1c((unsigned char*)c);
+            body->partyBytes[ids[k]] = GetSubstructByte0x1c_020493a4((unsigned char*)c);
         }
     }
 
@@ -63,7 +63,7 @@ extern "C" ARM void func_ov017_021c894c(unsigned short value) {
         GameObject* c = battleStruct->GetCombatantByIndex(ids[m]);
         if (c != NULL) {
             int idx = ids[m] - 0xc0;
-            body->monsterBytes[idx] = GetSubstructByte0x1c((unsigned char*)c);
+            body->monsterBytes[idx] = GetSubstructByte0x1c_020493a4((unsigned char*)c);
         }
     }
 

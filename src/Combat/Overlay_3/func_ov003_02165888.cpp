@@ -9,16 +9,16 @@ struct Container020e0310 { char pad[4]; };
 struct StatusOwner02081198;
 struct StatusOwner02081164;
 
-int SetSublistEntriesFlag1(void* obj, int id);
+int SetSublistEntriesFlag1_02080b54(void* obj, int id);
 int SetEntryFlagById02080b2c(void* obj, int id);
 int SetEntryFlagById02080b40(void* obj, int id);
 void SetEntryHighNibble0x13(struct Container02080cc0* obj, int id, int value);
 extern "C" int func_020dcc98(int combatantId);
-int* GetFieldAt0x150(unsigned char* p);
+int* GetFieldAt0x150_02053c6c(unsigned char* p);
 void SetEntryFirstField02080f8c(Container02080f8c*, int, int);
 void ResolveEntryValueByKey02080fe0(void*, int, int);
 void SetEntryFirstField02080fa8(struct Container02080fa8*, int, int);
-void SetEntryHalfword0xe(void*, int, int);
+void SetEntryHalfword0xe_0208103c(void*, int, int);
 void GetEntryFieldsAt0x602080828(void*, int, short*, short*);
 extern "C" void _Z23GetEntryOutputs020808c8PviPsS0_(void*, short, short*, short*);
 void SetEntryFieldsAt0x602080854(void*, int, int, int);
@@ -75,7 +75,7 @@ extern "C" ARM void func_ov003_02165888(StatusPanel* self) {
     unsigned char i;
     int idB;
 
-    SetSublistEntriesFlag1(elementObj, 0x13);
+    SetSublistEntriesFlag1_02080b54(elementObj, 0x13);
     gs = GameState::GetInstance();
 
     ids = (unsigned char*)self + 0xa9 + 0x400;
@@ -111,7 +111,7 @@ extern "C" ARM void func_ov003_02165888(StatusPanel* self) {
             SetEntryHighNibble0x13(elementObj, idB, color);
 
             v = -1;
-            prof = (struct Profile*)GetFieldAt0x150((unsigned char*)member);
+            prof = (struct Profile*)GetFieldAt0x150_02053c6c((unsigned char*)member);
             ((unsigned char*)self + i)[0x468] = (unsigned char)(prof->unk49c + 1);
             nm = (char*)member->baseStats_;
             SetEntryFirstField02080f8c((struct Container02080f8c*)elementObj, idA, (int)nm);
@@ -127,7 +127,7 @@ extern "C" ARM void func_ov003_02165888(StatusPanel* self) {
                 struct Profile* p3 = *(struct Profile**)((char*)member + 0x150);
                 unsigned char* row = (unsigned char*)p3 + p3->unk950;
                 unsigned char kind = row[0x186];
-                SetEntryHalfword0xe(elementObj, idC, (short)(kind + 0x64));
+                SetEntryHalfword0xe_0208103c(elementObj, idC, (short)(kind + 0x64));
                 if (kind != 0) {
                     color = 5;
                     if (kind == 0xa) {

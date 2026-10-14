@@ -13,7 +13,7 @@ extern "C" ARM int func_02014a24(Zone3D *zone, void *data) {
 
     for (int index = 0; index < count; index++) {
         Src02015134 *source =
-            static_cast<Src02015134 *>(GetElementStride0xc(reinterpret_cast<unsigned char *>(&node->records), index));
+            static_cast<Src02015134 *>(GetElementStride0xc_0201f144(reinterpret_cast<unsigned char *>(&node->records), index));
         Struct02012ff0 *trackers = node->trackers;
         InitTrackerFields02012ff0(trackers + index);
         if (source != NULL) {

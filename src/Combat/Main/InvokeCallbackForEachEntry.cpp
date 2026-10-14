@@ -2,7 +2,7 @@
 #include "Resource/MonsterDefinition.h"
 
 // USA: func_0206f110
-ARM int InvokeCallbackForEachEntry(List0206f170* table, MonsterDefinitionVisitor visit) {
+ARM int InvokeCallbackForEachEntry_0206f110(List0206f170* table, MonsterDefinitionVisitor visit) {
     int count;
     MonsterDefinition* definition = table->table.arr;
     int index;

@@ -129,7 +129,7 @@ extern "C" unsigned char func_ov006_02158b78(AlchemyMenu* self);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0* sound, int, int);
 void FilterAndSortEntries02071ffc(Container02071ffc* table, int category, int kind, int sort, short max, short* count);
 void ComputeField_02158cac_02158cac(void* self);
-void CallFunc0204c804OnMatchingKey(Obj2081* menu, int group);
+void CallFunc0204c804OnMatchingKey_0207fdcc(Obj2081* menu, int group);
 void CallFunc0204c804OverAllElems(Cont0207fe44* menu);
 void ClearFlag40_02157184(ClearFlag40_02157184Struct* pot);
 extern "C" void func_ov006_0215745c(short filter, signed char* category, signed char* kind);
@@ -198,7 +198,7 @@ extern "C" ARM void func_ov006_0215daf0(AlchemyMenu* self) {
             self->recipes_ = recipes;
             self->pageStart_ = recipes;
             ComputeField_02158cac_02158cac(self);
-            CallFunc0204c804OnMatchingKey((Obj2081*)self->menu_, self->group_);
+            CallFunc0204c804OnMatchingKey_0207fdcc((Obj2081*)self->menu_, self->group_);
             return;
         }
         if (func_ov006_02158b78(self))
@@ -255,7 +255,7 @@ extern "C" ARM void func_ov006_0215daf0(AlchemyMenu* self) {
             self->recipes_ = recipes;
             self->pageStart_ = recipes;
             ComputeField_02158cac_02158cac(self);
-            CallFunc0204c804OnMatchingKey((Obj2081*)self->menu_, self->group_);
+            CallFunc0204c804OnMatchingKey_0207fdcc((Obj2081*)self->menu_, self->group_);
             self->state_ = 0xa;
             self->step_ = 0;
             self->flags_ |= 0x80;
@@ -266,7 +266,7 @@ extern "C" ARM void func_ov006_0215daf0(AlchemyMenu* self) {
             ResetWithSub0208203c((Obj0208203c*)self->repeat_);
             self->cursor_ = 0;
             self->filterCursor_ = -1;
-            CallFunc0204c804OnMatchingKey((Obj2081*)self->menu_, self->group_);
+            CallFunc0204c804OnMatchingKey_0207fdcc((Obj2081*)self->menu_, self->group_);
             self->step_ = 0;
         }
         ClearField44IfSet_02158c28((StructC28*)self);

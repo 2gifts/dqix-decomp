@@ -15,7 +15,7 @@ int* GetField0xe4IfFlag0x40(struct BitFlag02033f44* self);
 void TrySetMode02076ccc(void* self, int mode);
 extern "C" void func_020794f8(void* self, int a, int b);
 
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c508(void* obj);
@@ -62,7 +62,7 @@ extern "C" ARM void func_02077be0(FieldMonsterState* self) {
     if (flag != 0) {
         TrySetMode02076ccc(self, 1);
         self->actor.phaseElapsedTime = 0;
-        if (CheckField0NonZero((int*)mgr) == 0) {
+        if (CheckField0NonZero_0202b7d8((int*)mgr) == 0) {
             return;
         }
         func_020794f8(self, 0, 0);
@@ -75,7 +75,7 @@ extern "C" ARM void func_02077be0(FieldMonsterState* self) {
         id = 0;
     }
 
-    if (CheckField0NonZero((int*)mgr) == 0 ||
+    if (CheckField0NonZero_0202b7d8((int*)mgr) == 0 ||
         id == GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)mgr)) {
         Vector3fix posCopy = func_02034104(combatant);
         int radius = combatant->obj3D_.GetRadius();
@@ -87,14 +87,14 @@ extern "C" ARM void func_02077be0(FieldMonsterState* self) {
             TrySetMode02076ccc(self, 1);
             self->actor.phaseElapsedTime = 0;
             self->unknown17b = 1;
-            if (CheckField0NonZero((int*)mgr) != 0) {
+            if (CheckField0NonZero_0202b7d8((int*)mgr) != 0) {
                 func_020794f8(self, 1, 0);
             }
             return;
         }
     }
 
-    if (CheckField0NonZero((int*)mgr) != 0 &&
+    if (CheckField0NonZero_0202b7d8((int*)mgr) != 0 &&
         GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)mgr) != 0) {
         return;
     }
@@ -103,7 +103,7 @@ extern "C" ARM void func_02077be0(FieldMonsterState* self) {
     }
     TrySetMode02076ccc(self, 1);
     self->actor.phaseElapsedTime = 0;
-    if (CheckField0NonZero((int*)mgr) == 0) {
+    if (CheckField0NonZero_0202b7d8((int*)mgr) == 0) {
         return;
     }
     if (func_0202c508(mgr) == 0) {

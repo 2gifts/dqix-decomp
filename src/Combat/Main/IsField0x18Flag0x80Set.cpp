@@ -6,6 +6,6 @@ struct Combatant_2088660 {
 };
 
 // USA: func_02088660
-ARM int IsField0x18Flag0x80Set(struct Combatant_2088660* obj) {
+ARM int IsField0x18Flag0x80Set_02088660(struct Combatant_2088660* obj) {
     return (obj->flags18 & 0x80) != 0;
 }

@@ -9,7 +9,7 @@ void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char 
                                                                         unsigned char keyHigh);
 void SetElementFlag0x20ByKey0205def8(struct Struct_0205def8 *s, int a, int b);
 int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
-int TestFlag0SetAndFlag1Clear(unsigned short *p, int n);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short *p, int n);
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0 *o, int a, int b);
 int CheckFlagOrThreshold_02161b48(char *base, int a);
@@ -23,7 +23,7 @@ extern "C" unsigned short data_02114e30[];
 extern "C" char data_02108760[];
 
 static inline int AnyConfirm021696c0(char *base) {
-    int a = TestFlag0SetAndFlag1Clear(data_02114e30, 0x601);
+    int a = TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x601);
     int b = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(base + 0x2c8 + 0xc00), 0x14);
     return (a | b) ? 1 : 0;
 }

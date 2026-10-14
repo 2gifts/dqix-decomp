@@ -6,11 +6,11 @@
 struct List0202fec8;
 struct Struct020dfc40;
 void ResetAndDetach020dfc6c(struct Struct020dfc40* p);
-void ClearStruct16(void* p);
+void ClearStruct16_020df83c(void* p);
 void ResetIfNonNeg_021db2e4(volatile int* p);
 int InitBufferFromDataField4_021ddc34(void* obj, short a, short b, short c, short d);
 
-int TestBitInByteArray(int unused, unsigned char* arr, int index);
+int TestBitInByteArray_0206dfb0(int unused, unsigned char* arr, int index);
 
 extern "C" {
     void func_020df850(void* a, void* b, int out1, int out2, int fifth);
@@ -68,9 +68,8 @@ extern "C" ARM int func_ov023_021e0840(void* obj_) {
     }
 #endif
 
-
     ResetAndDetach020dfc6c((struct Struct020dfc40*)(obj + 0x8c));
-    ClearStruct16(obj + 0x7c);
+    ClearStruct16_020df83c(obj + 0x7c);
     ResetAndDetach020dfc6c((struct Struct020dfc40*)(obj + 0xa4));
     ((class SafeAllocator*)(obj + 0x28))->Reset();
 
@@ -92,7 +91,7 @@ extern "C" ARM int func_ov023_021e0840(void* obj_) {
             if (strlen(str) < 5) continue;
             int parsed = func_02005a94((signed char*)(str + 5));
             int index = parsed + 0x12 + 0xc00;
-            if (!TestBitInByteArray((int)base, (unsigned char*)base + 0x8c, index)) {
+            if (!TestBitInByteArray_0206dfb0((int)base, (unsigned char*)base + 0x8c, index)) {
                 entry->flag1 = 0;
             }
         }

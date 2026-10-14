@@ -6,8 +6,8 @@
 
 struct Flags02033fdc;
 void ClearFlag0x4At0xe0(struct Flags02033fdc* p);
-void ClearCombatantSlot(GameState* battleStruct, int id);
-void* GetActiveCombatWork(void);
+void ClearCombatantSlot_0200fd48(GameState* battleStruct, int id);
+void* GetActiveCombatWork_ov000_02160130(void);
 void ForwardField0xc0_0205ebec(void* obj);
 extern "C" void* func_02057924(void);
 extern "C" void func_02057f00(void* obj, int index);
@@ -54,7 +54,7 @@ extern char data_02108760[];
 // USA: func_ov025_021e9558
 extern "C" ARM void func_ov025_021e9558(struct Obj021e9558* obj) {
     GameState* gs = GameState::GetInstance();
-    CombatWork021e9558* work = (CombatWork021e9558*)GetActiveCombatWork();
+    CombatWork021e9558* work = (CombatWork021e9558*)GetActiveCombatWork_ov000_02160130();
     CombatSlot021e9558* slot = GetSlotPtr02160f20(work);
     void* list = func_02057924();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
@@ -102,7 +102,7 @@ extern "C" ARM void func_ov025_021e9558(struct Obj021e9558* obj) {
             target->obj3D_.MakeVisible();
         }
         holder->obj3D_.Detach();
-        ClearCombatantSlot(gs, 200);
+        ClearCombatantSlot_0200fd48(gs, 200);
     }
 
 #if defined(jpn)

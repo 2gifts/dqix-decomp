@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_0201a108
-ARM void RotateLowNibbleBits(void* obj, unsigned char* p, int mode) {
+ARM void RotateLowNibbleBits_0201a108(void* obj, unsigned char* p, int mode) {
     unsigned char b0 = *p & 1;
     unsigned char b1 = (*p & 2) >> 1;
     unsigned char b2 = (*p & 4) >> 2;

@@ -25,8 +25,8 @@ struct Words021e60c4;
 extern "C" Vector3fix func_ov023_021e613c(void* character);
 int fix32ReduceAngle0To2Pi(int angle);
 void InitWordsQuad_021e60e0(void* character, unsigned int angle);
-void SelectCoordsByFlag0x24(unsigned char* touch, int* x, int* y);
-int TestFlagMask(unsigned short* pad, int buttons);
+void SelectCoordsByFlag0x24_02012a84(unsigned char* touch, int* x, int* y);
+int TestFlagMask_02012430(unsigned short* pad, int buttons);
 void SetFourWordBlocks_021e6088(void* character, Words021e60c4* rotation);
 
 extern TouchState data_02114e54;
@@ -88,7 +88,7 @@ extern "C" ARM void func_ov009_02188604(CharacterCreation* self, unsigned int ti
         int touched = 0;
         int x;
         int y;
-        SelectCoordsByFlag0x24((unsigned char*)&data_02114e54, &x, &y);
+        SelectCoordsByFlag0x24_02012a84((unsigned char*)&data_02114e54, &x, &y);
         if (data_02114e54.touching_ != 0 || (data_02114e54.unk_5f != 0 && data_02114e54.unk_24 != 0) ||
             data_02114e54.unk_54 != 0)
         {
@@ -103,9 +103,9 @@ extern "C" ARM void func_ov009_02188604(CharacterCreation* self, unsigned int ti
         }
         if (touched == 0)
         {
-            if (TestFlagMask((unsigned short*)data_02114e30, 0x200))
+            if (TestFlagMask_02012430((unsigned short*)data_02114e30, 0x200))
                 left = 1;
-            if (TestFlagMask((unsigned short*)data_02114e30, 0x100))
+            if (TestFlagMask_02012430((unsigned short*)data_02114e30, 0x100))
                 right = 1;
         }
         if (left != 0 && right != 0)

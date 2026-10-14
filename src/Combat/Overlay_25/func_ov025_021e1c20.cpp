@@ -13,9 +13,9 @@ struct Ent021e1c20 {
 };
 
 extern "C" void func_ov000_0216f82c(B6_021e1c20* out, const int* cell);
-int GetSubstructByte0x1c(unsigned char*);
-int GetSubstructByte0x1e(unsigned char*);
-void SetSubstructByte0x1e(unsigned char*, unsigned char);
+int GetSubstructByte0x1c_020493a4(unsigned char*);
+int GetSubstructByte0x1e_020493ec(unsigned char*);
+void SetSubstructByte0x1e_020493dc(unsigned char*, unsigned char);
 
 // USA: func_ov025_021e1c20
 extern "C" ARM void func_ov025_021e1c20(int cell, unsigned char* map, unsigned char* dist, int level, Ent021e1c20* ents, int n, unsigned char* self) {
@@ -47,13 +47,13 @@ extern "C" ARM void func_ov025_021e1c20(int cell, unsigned char* map, unsigned c
         }
         for (j = 0; j < n; j++) {
             if (*self != ents[j].id) {
-                pos = GetSubstructByte0x1e(ents[j].obj);
+                pos = GetSubstructByte0x1e_020493ec(ents[j].obj);
                 if (pos >= 0x51) {
-                    pos = GetSubstructByte0x1c(ents[j].obj);
+                    pos = GetSubstructByte0x1c_020493a4(ents[j].obj);
                 }
                 if (pos == c) {
                     ents[j].moved = 1;
-                    SetSubstructByte0x1e(ents[j].obj, 0xff);
+                    SetSubstructByte0x1e_020493dc(ents[j].obj, 0xff);
                 }
             }
         }

@@ -17,7 +17,7 @@ struct CombatantStruct {
     struct ModifiableCombatStats* currentStats;
 };
 struct GameState;
-void* GetPtrField0x2a04(GameState*);
+void* GetPtrField0x2a04_02010828(GameState*);
 extern "C" struct BattleStruct* _ZN9GameState11GetInstanceEv();
 
 int FindMappedMemberId02080468(void* obj, int id);
@@ -34,7 +34,7 @@ void SetFlag_02158a50_02158a50(unsigned char*);
 struct Struct0209c830;
 void SetValueAndActivate0209c830(Struct0209c830*, int);
 int IsAnimationActive0209ca2c(void* obj);
-void SetOrClearBitInArray(void* a, unsigned char* b, int c, int d);
+void SetOrClearBitInArray_0206df6c(void* a, unsigned char* b, int c, int d);
 void* ZeroInitReturn020de824(void* obj);
 void InitStruct0207cbe8(char* obj);
 void InitStruct0207cc0c(char* obj);
@@ -52,8 +52,8 @@ struct Obj02158140;
 void AppendFormattedNumber_02158140(Obj02158140*, int);
 
 extern "C" struct CombatantStruct* _ZN9GameState21GetPartyMemberByIndexEi(struct BattleStruct* battleStruct, int combatantId);
-int GetField0x3acValue(GameState*);
-int TestBitInByteArray(int, unsigned char*, int);
+int GetField0x3acValue_020100a8(GameState*);
+int TestBitInByteArray_0206dfb0(int, unsigned char*, int);
 void ZeroInit020de848(void* obj);
 ARM int BuildDescriptorFlag1_020de980(void* a, void* b, void* c, int d, int e);
 int GetGlobalField0x1c020421a0(void);
@@ -103,7 +103,7 @@ struct Bit0x49c { unsigned char bit0 : 1; };
 extern "C" ARM void func_ov003_021575dc(void* self) {
     char* s = (char*)self;
     struct BattleStruct* bs = _ZN9GameState11GetInstanceEv();
-    void* p2a04 = GetPtrField0x2a04((GameState*)bs);
+    void* p2a04 = GetPtrField0x2a04_02010828((GameState*)bs);
     unsigned char state = *(unsigned char*)(s + 0x1f9);
     void* root;
     short* evt = (short*)(s + 0x1ec);
@@ -262,8 +262,8 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
         }
         if (field950 > 0) {
             void* base = func_0205ec34();
-            if (TestBitInByteArray((int)base, (unsigned char*)base + 0x8c, field950 + 0x8b + 0x1100) == 0) {
-                SetOrClearBitInArray(base, (unsigned char*)base + 0x8c, field950 + 0x8b + 0x1100, 1);
+            if (TestBitInByteArray_0206dfb0((int)base, (unsigned char*)base + 0x8c, field950 + 0x8b + 0x1100) == 0) {
+                SetOrClearBitInArray_0206df6c(base, (unsigned char*)base + 0x8c, field950 + 0x8b + 0x1100, 1);
                 evt[0] = 0x16;
                 evt[1] = 0x17;
                 *(unsigned char*)(s + 0x1f9) = *(unsigned char*)(s + 0x1f9) + 1;
@@ -288,8 +288,8 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
         short tagBuffer[12];
         __clear(tagBuffer, 0x18);
         unsigned short sbCount = 0;
-        int fieldVal = GetField0x3acValue((GameState*)bs);
-        struct CombatantStruct* combatant = (CombatantStruct*)GetCombatantWithFlag0x100((GameState*)bs, fieldVal);
+        int fieldVal = GetField0x3acValue_020100a8((GameState*)bs);
+        struct CombatantStruct* combatant = (CombatantStruct*)GetCombatantWithFlag0x100_0200ff1c((GameState*)bs, fieldVal);
         for (int i = 1; i < 13; i++) {
             void* p150 = *(void**)((char*)combatant + 0x150);
             if (*(unsigned char*)((char*)p150 + (unsigned char)i + 0x186) >= 0xa) {
@@ -398,12 +398,12 @@ extern "C" ARM void func_ov003_021575dc(void* self) {
             }
         }
     } else if (state == 0x66) {
-        FontBankLoader* g = GetGlobal02109400();
+        FontBankLoader* g = GetGlobal02109400_02094a00();
         BlankFunction02094b40(g);
         BlankFunction02094b34(g, 0x66, 501, 0, 0);
         *(unsigned char*)(s + 0x1f9) = *(unsigned char*)(s + 0x1f9) + 1;
     } else if (state == 0x67) {
-        if (AlwaysTrue02094b4c(GetGlobal02109400()) != 0) {
+        if (AlwaysTrue02094b4c(GetGlobal02109400_02094a00()) != 0) {
             SetCombatModeFromCase020dc2d0(0);
             *(unsigned char*)(s + 0x1f9) = *(unsigned char*)(s + 0x1f9) + 1;
         }

@@ -14,10 +14,10 @@ extern "C" void func_ov017_021a0c0c(char* obj);
 extern "C" void func_ov017_021a0dd0(char* obj);
 extern "C" void func_ov017_021a0fa4(char* obj);
 
-void ResetInputLogA();
-void ResetInputLogB();
-void PushInputLogA(int id);
-void PushInputLogB(int id);
+void ResetInputLogA_020a1de4();
+void ResetInputLogB_020a1edc();
+void PushInputLogA_020a1df8(int id);
+void PushInputLogB_020a1ef0(int id);
 
 struct NibbleFieldStruct0219de70 {
 	char pad[0xc];
@@ -70,8 +70,8 @@ extern "C" ARM void func_ov017_0219de70(char* obj, void* unused, NibbleFieldStru
 	case 5: func_ov017_021a0c0c(obj); break;
 	}
 
-	ResetInputLogA();
-	ResetInputLogB();
+	ResetInputLogA_020a1de4();
+	ResetInputLogB_020a1edc();
 
 #if defined(jpn)
 	int s = *(int*)(obj + 0x2000 + 0x8f8);
@@ -79,10 +79,10 @@ extern "C" ARM void func_ov017_0219de70(char* obj, void* unused, NibbleFieldStru
 	int s = *(int*)(obj + 0x2000 + 0xb08);
 #endif
 	if (s == 0 || s == 2 || s == 5) {
-		PushInputLogA(3);
-		PushInputLogB(1);
+		PushInputLogA_020a1df8(3);
+		PushInputLogB_020a1ef0(1);
 	} else if (s == 1) {
-		PushInputLogA(0);
-		PushInputLogB(1);
+		PushInputLogA_020a1df8(0);
+		PushInputLogB_020a1ef0(1);
 	}
 }

@@ -16,7 +16,7 @@ struct ElementArray0202bad4;
 extern "C" void* func_0202ae18(void);
 extern "C" void func_0202b0f4(void* ptr);
 extern "C" int func_ov003_02171d78(void* list, unsigned char* key);
-int GetField0xc(void* obj);
+int GetField0xc_0202bae4(void* obj);
 struct Element0202bad4* GetElementAt0x10Stride0xc0(struct ElementArray0202bad4* base, int index);
 int StartBattleTransition0202b840(int* state, int id);
 
@@ -80,7 +80,7 @@ extern "C" ARM void func_ov003_0217193c(struct Obj0217193c* obj) {
 
     if (dt < obj->timer && obj->attempts > 0) {
         obj->timer -= dt;
-        count = GetField0xc(search);
+        count = GetField0xc_0202bae4(search);
         if (count == 0) return;
         found = 0;
         for (i = 0; i < count; i++) {

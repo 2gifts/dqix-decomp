@@ -70,22 +70,22 @@ extern "C" void func_020531f0(void* p);
 extern "C" void func_ov017_021cff8c(int a, int b);
 extern "C" void func_ov017_021d0b30(int a, int b, int c);
 
-int TestBitBySignedByteIndex(SearchStruct* obj, int index);
+int TestBitBySignedByteIndex_0202c1c0(SearchStruct* obj, int index);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* obj);
 int GetAxisIntValue(AxisFloats0203b57c* obj, int index);
 int IsChannelValueZero0203b5e0(void* obj, int index);
-unsigned short GetFieldAt0x7e(S_e830* obj);
-void Set3DClearColor(int a, int b, int c, int d, int e);
-unsigned int GetField4(unsigned int* obj);
-void ClearBitsInField4(unsigned int* obj, unsigned int mask);
-void SetBitsInField4(unsigned int* obj, unsigned int mask);
-int CheckSubstructByte0x7cPositive(signed char* obj);
+unsigned short GetFieldAt0x7e_0201e830(S_e830* obj);
+void Set3DClearColor_020c5588(int a, int b, int c, int d, int e);
+unsigned int GetField4_0203b4d0(unsigned int* obj);
+void ClearBitsInField4_0203b4e8(unsigned int* obj, unsigned int mask);
+void SetBitsInField4_0203b4d8(unsigned int* obj, unsigned int mask);
+int CheckSubstructByte0x7cPositive_020535c8(signed char* obj);
 int GetField1c_021a193c(int* obj);
-int GetField0x3acValue(GameState* gs);
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
-void* GetField0x74deForValidIndex(char* gs, unsigned int idx);
-unsigned int GetWord0x71f8(void* gs);
-void ClearAllTreasureMapUnknownBits(void* gs);
+int GetField0x3acValue_020100a8(GameState* gs);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
+void* GetField0x74deForValidIndex_020120a0(char* gs, unsigned int idx);
+unsigned int GetWord0x71f8_02012078(void* gs);
+void ClearAllTreasureMapUnknownBits_020116c8(void* gs);
 void SetCombatModeFromCase020dc2d0(int v);
 
 extern AllocatorUnion data_02114e20;
@@ -95,13 +95,13 @@ extern "C" ARM int func_ov017_021afe00(Step021afe00* self) {
     GameState* gs = GameState::GetInstance();
     SearchStruct* search = (SearchStruct*)func_0202ae18();
     for (int i = 0; i < 4; i++) {
-        if (TestBitBySignedByteIndex(search, i) == 0) {
+        if (TestBitBySignedByteIndex_0202c1c0(search, i) == 0) {
             continue;
         }
         if (i == GetSearchStructCurrentArrEntry((SearchStruct0202c1a4*)search)) {
             continue;
         }
-        SearchEntry0202c178* e = GetEntryBySignedByteIndex(search, i);
+        SearchEntry0202c178* e = GetEntryBySignedByteIndex_0202c178(search, i);
         if (e == 0) {
             continue;
         }
@@ -125,23 +125,23 @@ extern "C" ARM int func_ov017_021afe00(Step021afe00* self) {
             if (info != 0) {
                 S_e830* color = (S_e830*)(info + 0x6c);
                 if (color != 0) {
-                    self->clearColor = GetFieldAt0x7e(color);
+                    self->clearColor = GetFieldAt0x7e_0201e830(color);
                 }
             }
             int clear = 0;
             if (self->axis == 0x10) {
                 clear = 0x7fff;
             }
-            Set3DClearColor(clear, 0x1f, 0x7fff, 0, 0);
-            self->field4Bits = GetField4((unsigned int*)res);
-            ClearBitsInField4((unsigned int*)res, 0xffffffff);
-            SetBitsInField4((unsigned int*)res, 0x8de);
+            Set3DClearColor_020c5588(clear, 0x1f, 0x7fff, 0, 0);
+            self->field4Bits = GetField4_0203b4d0((unsigned int*)res);
+            ClearBitsInField4_0203b4e8((unsigned int*)res, 0xffffffff);
+            SetBitsInField4_0203b4d8((unsigned int*)res, 0x8de);
             SetMainBrightness(res, 0, 2);
         }
         for (int i = 0; i < 4; i++) {
             GameObject* m = gs->GetPartyMemberByIndex(i);
             if (m != 0) {
-                if (CheckSubstructByte0x7cPositive((signed char*)m) != 0) {
+                if (CheckSubstructByte0x7cPositive_020535c8((signed char*)m) != 0) {
                     func_020531f0(m);
                 }
             }
@@ -159,10 +159,10 @@ extern "C" ARM int func_ov017_021afe00(Step021afe00* self) {
         }
     }
     if (self->state == 1) {
-        func_ov017_021cff8c(GetField0x3acValue(gs), 0);
+        func_ov017_021cff8c(GetField0x3acValue_020100a8(gs), 0);
     }
     if (self->state == 2 || self->state == 0) {
-        self->alloc = (Alloc021afe00*)AllocateAligned4(&data_02114e20, 0x2e0);
+        self->alloc = (Alloc021afe00*)AllocateAligned4_02012d88(&data_02114e20, 0x2e0);
     }
     if (self->state == 0) {
         Alloc021afe00* a = self->alloc;
@@ -170,8 +170,8 @@ extern "C" ARM int func_ov017_021afe00(Step021afe00* self) {
             a->b0 = *(unsigned char*)((char*)gs + 0x5cda);
             memcpy(a->a4, (char*)gs + 0x5cdc, 0x190);
             memcpy(a->a194, (char*)gs + 0x5e6c, 0x110);
-            memcpy(a->a2a4, GetField0x74deForValidIndex((char*)gs, 0), 0x20);
-            a->w2c4 = GetWord0x71f8(gs);
+            memcpy(a->a2a4, GetField0x74deForValidIndex_020120a0((char*)gs, 0), 0x20);
+            a->w2c4 = GetWord0x71f8_02012078(gs);
             a->w2c8 = sub->w34;
             a->h2d0 = sub->w38;
             a->h2d2 = sub->w3c;
@@ -208,7 +208,7 @@ extern "C" ARM int func_ov017_021afe00(Step021afe00* self) {
     }
     GrottoHead021afe00* grotto = (GrottoHead021afe00*)gs->GetGrottoStruct();
     if (grotto->flag != 0 && self->state == 2) {
-        ClearAllTreasureMapUnknownBits(gs);
+        ClearAllTreasureMapUnknownBits_020116c8(gs);
         SetCombatModeFromCase020dc2d0(0);
     }
     func_ov017_021d0b30(1, 0, 0);

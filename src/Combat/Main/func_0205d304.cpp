@@ -13,7 +13,7 @@ struct ScaledElementList0204aa28;
 
 void* FindElementByC40205d81c(struct Struct_0205d81c*, int);
 void CopyOrClearField0204c770(char*, void*);
-void GetNibbles(struct Obj5d594*, unsigned char*, unsigned char*);
+void GetNibbles_0205d594(struct Obj5d594*, unsigned char*, unsigned char*);
 #if defined(jpn)
 extern "C" void func_0204d790(void* self, const char* text, unsigned int destination, int mode, unsigned char border, unsigned char fullWidth);
 #else
@@ -100,10 +100,10 @@ extern "C" ARM void func_0205d304(struct Ctx0205d304* renderer, const char* text
 
     if (renderer->windowCount != 0) {
         matched = 0;
-        GetNibbles((struct Obj5d594*)elem->style, &lowA, &highA);
+        GetNibbles_0205d594((struct Obj5d594*)elem->style, &lowA, &highA);
         for (j = renderer->windowCount - 1; j >= 0; j--) {
             e = &renderer->windows[j];
-            GetNibbles((struct Obj5d594*)e->style, &lowB, &highB);
+            GetNibbles_0205d594((struct Obj5d594*)e->style, &lowB, &highB);
             if (lowA == lowB && highA == highB) {
                 e = &renderer->windows[j];
                 value = e->destination + e->pixelBytes;

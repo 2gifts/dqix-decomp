@@ -1,9 +1,9 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-int CheckFlag0x1ClearAndFlag0x1000000Clear(unsigned char* obj);
+int CheckFlag0x1ClearAndFlag0x1000000Clear_02088540(unsigned char* obj);
 struct S88514;
-int CheckFlag0x2AndState2(struct S88514* obj);
+int CheckFlag0x2AndState2_02088514(struct S88514* obj);
 extern "C" void func_ov024_021fd088(void* obj, float pct, int a2);
 struct IndexedObj_021fe6b4;
 void SetFieldFromIndexed_021fe6b4(struct IndexedObj_021fe6b4* obj, int val);
@@ -21,8 +21,8 @@ struct Obj_021fd358 {
 // USA: func_ov024_021fd358  (semantic: ApplyBuffScaledPercent2_021fd358)
 extern "C" ARM void func_ov024_021fd358(struct Obj_021fd358* obj) {
 	GameObject* c = obj->ptr668;
-	if (!CheckFlag0x1ClearAndFlag0x1000000Clear((unsigned char*)c->currentStats_)) return;
-	if (CheckFlag0x2AndState2((struct S88514*)c->currentStats_)) return;
+	if (!CheckFlag0x1ClearAndFlag0x1000000Clear_02088540((unsigned char*)c->currentStats_)) return;
+	if (CheckFlag0x2AndState2_02088514((struct S88514*)c->currentStats_)) return;
 	float valF = (float)obj->state64c->bits.val;
 	unsigned char pctBase = *(unsigned char*)((char*)c->currentStats_ + 0x4d);
 	float scaled = valF * ((float)pctBase / 100.0f);

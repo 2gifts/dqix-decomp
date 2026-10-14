@@ -148,7 +148,7 @@ struct Container020e0310;
 struct Foo0207df50;
 
 struct GameResources;
-GameResources* GetWord0x0(int* gameState);
+GameResources* GetWord0x0_0200fb8c(int* gameState);
 char* GetGlobalField0x1c020421a0();
 void ZeroInit020de848(void* obj);
 extern "C" void func_020de9a4(void* list, SafeAllocator* alloc, void* data, unsigned int size, const void* entries, int count);
@@ -165,17 +165,17 @@ void BackupPairTables0207dfac(char* p);
 void InitCombatController020a2010(void* camera);
 struct Vec3Target0202e5c0;
 void SetVec3At0x4(Vec3Target0202e5c0* camera, int x, int y, int z);
-void SetFields0x10To0x18(unsigned char* camera, int a, int b, int c);
+void SetFields0x10To0x18_0202e5c8(unsigned char* camera, int a, int b, int c);
 extern "C" void func_0202e0a4(void* camera);
-void SetField0x238False(void* camera);
-void SetField0x3b0Value(GameState* gs, int camera);
+void SetField0x238False_020a27a0(void* camera);
+void SetField0x3b0Value_020100c4(GameState* gs, int camera);
 void GetEntryPair02188bf8(unsigned char* base, int idx, short* out0, short* out1);
 extern "C" int func_ov009_02188b14(void* self, int type, int idx);
 extern "C" void* memcpy(void* dst, const void* src, unsigned int n);
 extern "C" void func_ov023_021e5e68(void* model, short a, short b);
 void SetByteC11_021e6150(void* model, unsigned char value);
 void ResetList0204af64(List0204af64* background);
-void SetWord0x18ClearByte0x1f(unsigned char* background, int value);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char* background, int value);
 extern "C" void func_0204b5b4(BackgroundGraphics* background, int screen);
 void DispatchViaTable0204b5e8(Obj0204b5e8* background, int a, int b);
 void AllocateAndClearBuffer0204b12c(AllocTarget0204b12c* background, SafeAllocator* allocator);
@@ -204,7 +204,7 @@ extern "C" void func_ov023_021e5974(void* model, Hero* hero, short a, int b, int
 extern "C" void func_ov023_021d99a4(void* self);
 void SetupTag021d9c7c(void* self);
 void SetupTag021d9da4(void* self);
-void SetElementFieldC2(Struct_0205d81c* s, int key, int value);
+void SetElementFieldC2_0205deb4(Struct_0205d81c* s, int key, int value);
 void SetStatValue021855dc(unsigned char* self, int val);
 
 extern const char data_ov009_0218acb0[];
@@ -234,7 +234,7 @@ extern "C" ARM void func_ov009_02185634(CharacterCreation* self)
 {
     unsigned int offset;
     GameState* gs = GameState::GetInstance();
-    GetWord0x0((int*)gs);
+    GetWord0x0_0200fb8c((int*)gs);
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     unsigned char step = self->step_;
     if (step == 0)
@@ -306,10 +306,10 @@ extern "C" ARM void func_ov009_02185634(CharacterCreation* self)
         Scene* scene = (Scene*)((char*)self + 0x124);
         InitCombatController020a2010(scene->camera_);
         SetVec3At0x4((Vec3Target0202e5c0*)scene->camera_, 0xd000, 0xf800, 0x42ccc);
-        SetFields0x10To0x18((unsigned char*)scene->camera_, 0xd000, 0xf800, 0);
+        SetFields0x10To0x18_0202e5c8((unsigned char*)scene->camera_, 0xd000, 0xf800, 0);
         func_0202e0a4(scene->camera_);
-        SetField0x238False(scene->camera_);
-        SetField0x3b0Value(gs, (int)scene->camera_);
+        SetField0x238False_020a27a0(scene->camera_);
+        SetField0x3b0Value_020100c4(gs, (int)scene->camera_);
 
         self->sex_ = 0;
         self->unk_da4[0] = 2;
@@ -439,7 +439,7 @@ extern "C" ARM void func_ov009_02185634(CharacterCreation* self)
             if (i == 3)
                 allocator = &self->allocators_[2];
             ResetList0204af64((List0204af64*)background);
-            SetWord0x18ClearByte0x1f((unsigned char*)background, 0);
+            SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)background, 0);
             unsigned char lo = data_ov009_0218a96c[i];
             background->unk_1c_0_ = lo;
             background->unk_1c_4_ = data_ov009_0218a994[i];
@@ -626,8 +626,8 @@ extern "C" ARM void func_ov009_02185634(CharacterCreation* self)
         func_ov023_021d99a4(self);
         SetupTag021d9c7c(self);
         SetupTag021d9da4(self);
-        SetElementFieldC2((Struct_0205d81c*)&self->canvasListB_, 2, 0);
-        SetElementFieldC2((Struct_0205d81c*)&self->canvasListB_, 3, 0);
+        SetElementFieldC2_0205deb4((Struct_0205d81c*)&self->canvasListB_, 2, 0);
+        SetElementFieldC2_0205deb4((Struct_0205d81c*)&self->canvasListB_, 3, 0);
         SetStatValue021855dc((unsigned char*)self, 1);
     }
 }

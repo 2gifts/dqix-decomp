@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void* GetActiveCombatWork(void);
+void* GetActiveCombatWork_ov000_02160130(void);
 void* GetOffsetPtr02160f08(void* obj);
 void* FindByKeyIndexed_021f69b4(char* base, int key);
 void* GetPointerField_02171b9c_02171b9c(void* obj, int idx);
@@ -31,7 +31,7 @@ extern "C" ARM int func_ov024_021f691c(struct Obj_021f691c* obj, unsigned short*
 	if (obj->field4 > 0.0f) {
 		unsigned short field0 = obj->field0;
 		if (obj->field2 >= 0) {
-			void* work = GetActiveCombatWork();
+			void* work = GetActiveCombatWork_ov000_02160130();
 			void* base = GetOffsetPtr02160f08(work);
 			struct Found_021f691c* found = (struct Found_021f691c*)FindByKeyIndexed_021f69b4((char*)base, key);
 			if (found) {

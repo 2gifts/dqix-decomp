@@ -21,12 +21,12 @@ struct Ctx_021e67c8 {
 
 signed char GetFieldOrFallback02159e60(void* obj, int mode);
 struct Cbt_021e67c8* GetCombatantByID(int, int);
-float LookupTableC0(int v);
+float LookupTableC0_02074938(int v);
 struct GameObject;
 int IsCombatantFlag2Mask32_021e67b0(GameObject*);
-void* GetPtrField0x2a04(void* gs);
+void* GetPtrField0x2a04_02010828(void* gs);
 struct ArrayContainsByteStruct;
-int ArrayContainsByte(ArrayContainsByteStruct*, int);
+int ArrayContainsByte_02086ef0(ArrayContainsByteStruct*, int);
 void IncrementByteCounterCapped0x63_0215a8d4(unsigned char*, int);
 extern "C" int func_ov000_02156068(void* battle, int id, int kind, int mode);
 struct FlagObj_021dd260;
@@ -46,12 +46,12 @@ extern "C" ARM int func_ov024_021e67c8(struct Ctx_021e67c8* ctx, int mode, int t
     }
     if (target) {
         if (target->stats->rank21 <= 3) {
-            rate = rate * LookupTableC0((signed char)target->stats->rank21);
+            rate = rate * LookupTableC0_02074938((signed char)target->stats->rank21);
         }
         if (IsCombatantFlag2Mask32_021e67b0((GameObject*)target)) {
-            rate = rate * LookupTableC0(1);
+            rate = rate * LookupTableC0_02074938(1);
         }
-        if (ArrayContainsByte((ArrayContainsByteStruct*)(GetPtrField0x2a04(GameState::GetInstance())), targetId) &&
+        if (ArrayContainsByte_02086ef0((ArrayContainsByteStruct*)(GetPtrField0x2a04_02010828(GameState::GetInstance())), targetId) &&
             target && target->stats->rank21 == 1) {
             IncrementByteCounterCapped0x63_0215a8d4((unsigned char*)ctx->battle, 0);
         }

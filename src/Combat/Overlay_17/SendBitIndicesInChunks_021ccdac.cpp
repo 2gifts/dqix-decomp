@@ -1,10 +1,10 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 struct BitArray020839dc;
 int CollectSetBitIndices020839dc(struct BitArray020839dc* s, unsigned char* out, int max);
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct Buf021ccdac {
@@ -19,9 +19,9 @@ struct Buf021ccdac {
 // USA: func_ov017_021ccdac  (semantic: SendBitIndicesInChunks_021ccdac)
 extern "C" ARM void func_ov017_021ccdac(int combatantId) {
     GameState* bs = GameState::GetInstance();
-    GameObject* c = GetCombatantWithFlag0x100(bs, combatantId);
+    GameObject* c = GetCombatantWithFlag0x100_0200ff1c(bs, combatantId);
     if (!c) return;
-    int field150 = GetFieldAt0x150((unsigned char*)c);
+    int field150 = GetFieldAt0x150_02053c6c((unsigned char*)c);
     if (!field150) return;
 
     unsigned char indices[0x44];
@@ -33,7 +33,7 @@ extern "C" ARM void func_ov017_021ccdac(int combatantId) {
     total = CollectSetBitIndices020839dc((struct BitArray020839dc*)field150, indices, 0x42);
     total = total & 0xff;
 
-    p = GetData02100044();
+    p = GetData02100044_0202ae24();
     struct Buf021ccdac buf;
     buf.tag = 0xf;
     buf.idBits = combatantId;

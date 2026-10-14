@@ -16,18 +16,18 @@
 
 extern "C"
 {
-    void* _Z16GetPtrField0x468Pv(GameState*);
+    void* _Z25GetPtrField0x468_02011584Pv(GameState*);
 
-    void* _Z15GetFieldAt0x150Ph(void*);
+    void* _Z24GetFieldAt0x150_02053c6cPh(void*);
     void _Z25RunBufferedStream0205e104iiP12StreamHeaderi(const char*, SafeAllocator*, const void*, unsigned int);
 
     void* _Z26CopyInternalFields0207df50P11Foo0207df50(void*);
     void _Z25RestorePairTables0207df90Pc(void*);
     void _Z24BackupPairTables0207dfacPc(void*);
 
-    void* _Z15GetData02108f0cv();
+    void* _Z24GetData02108f0c_0208a9b4v();
     void _Z23ClearThreeWords02094d00P29ClearThreeWords02094d00Struct(void*);
-    Zone3D_StructPtr_8* _Z22FindEntryByHalfwordKeyP11SearchTablei(void*, unsigned short id);
+    Zone3D_StructPtr_8* _Z31FindEntryByHalfwordKey_02099950P11SearchTablei(void*, unsigned short id);
 
     void func_020c9be0();
     void _Z16ZeroInit020de848Pv(void*);
@@ -73,12 +73,12 @@ extern char data_020ef20b[];
 extern char data_020ef222[];
 extern char data_020ef22c[];
 
-void Zone3D::SwitchZone(unsigned short newID, int)
+void Zone3D::SwitchZone_0201383c(unsigned short newID, int)
 {
     GameState* gameState = GameState::GetInstance();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
 
-    void* uVar3 = _Z16GetPtrField0x468Pv(gameState);
+    void* uVar3 = _Z25GetPtrField0x468_02011584Pv(gameState);
     (void)func_ov017_0218b5b0();
     GameObject* iVar4 = gameState->GetUnknownGameObject();
 
@@ -130,20 +130,20 @@ void Zone3D::SwitchZone(unsigned short newID, int)
     lighting_.Reset();
     _Z16ZeroInit020de848Pv(&unknown_struct_2754_[0]);
 
-    pUnknownStruct_8_ = _Z22FindEntryByHalfwordKeyP11SearchTablei(uVar3, newID);
+    pUnknownStruct_8_ = _Z31FindEntryByHalfwordKey_02099950P11SearchTablei(uVar3, newID);
     unknown_4_ = pUnknownStruct_8_->unknown_2_;
     if (pUnknownStruct_8_->unknown_c_low_ == 0)
     {
         GameObject* iVar5 = gameState->GetProtagonist();
         if (iVar5 != NULL)
         {
-            void* iVar6 = _Z15GetFieldAt0x150Ph(iVar5);
+            void* iVar6 = _Z24GetFieldAt0x150_02053c6cPh(iVar5);
             if (iVar6 != NULL)
                 *(unsigned short*)((int)iVar6 + 0x566) = pUnknownStruct_8_->unknown_0_;
         }
     }
 
-    *(bool*)((int)_Z15GetData02108f0cv() + 0x9c) = pUnknownStruct_8_->unknown_c_high_ != 0;
+    *(bool*)((int)_Z24GetData02108f0c_0208a9b4v() + 0x9c) = pUnknownStruct_8_->unknown_c_high_ != 0;
     _Z23ClearThreeWords02094d00P29ClearThreeWords02094d00Struct(&unknown_struct_2724_[0]);
 
     grottoTileMapData_420_ = NULL;

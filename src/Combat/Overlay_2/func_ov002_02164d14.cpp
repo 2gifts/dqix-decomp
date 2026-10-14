@@ -14,13 +14,13 @@ void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char 
 int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
 void SetElementFlag0x20ByKey0205def8(struct Struct_0205def8 *s, int a, int b);
 void FilterSlotsWithFlag0x800020dc4d0(signed char *out, signed char *outCount);
-GameObject *GetCombatantWithFlag0x100(GameState *gameState, int combatantId);
+GameObject *GetCombatantWithFlag0x100_0200ff1c(GameState *gameState, int combatantId);
 int CheckField0x56bLowNibble(struct Obj02061bd8 *obj);
-int TestFlag0SetAndFlag1Clear(unsigned short *p, int n);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short *p, int n);
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0 *o, int a, int b);
 int GetDataPtr02114e04_020d6c00(void);
-void OrBitsIntoField0(unsigned int *p, unsigned int bits);
+void OrBitsIntoField0_020466e4(unsigned int *p, unsigned int bits);
 int CheckFlagOrThreshold_02161b48(char *base, int a);
 extern "C" void func_ov002_0215b814(char *base);
 extern "C" void func_ov002_02161cf0(char *base);
@@ -66,7 +66,7 @@ extern "C" ARM void func_ov002_02164d14(char *base) {
         FilterSlotsWithFlag0x800020dc4d0(ids, &count);
         int dead = bad;
         for (int i = 0; i < count; i++) {
-            GameObject *c = GetCombatantWithFlag0x100(gs, ids[i]);
+            GameObject *c = GetCombatantWithFlag0x100_0200ff1c(gs, ids[i]);
             if (c != NULL && CheckField0x56bLowNibble((struct Obj02061bd8 *) c)) dead++;
         }
         count -= dead;
@@ -81,7 +81,7 @@ extern "C" ARM void func_ov002_02164d14(char *base) {
             return;
         }
         if (old != *(short *) (base + 0x1b00 + 0xf6)) return;
-        int a = TestFlag0SetAndFlag1Clear(data_02114e30, 0x601);
+        int a = TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x601);
         int b = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(base + 0x2c8 + 0xc00), 0x14);
         if ((a | b) ? 1 : 0) {
             if (*(unsigned int *) (base + 0x2000 + 0x47c) & 2) return;
@@ -99,15 +99,15 @@ extern "C" ARM void func_ov002_02164d14(char *base) {
                 return;
             }
             if (ids[*(short *) (base + 0x1b00 + 0xf6)] < 0) return;
-            OrBitsIntoField0((unsigned int *) GetDataPtr02114e04_020d6c00(), 1);
+            OrBitsIntoField0_020466e4((unsigned int *) GetDataPtr02114e04_020d6c00(), 1);
             if (CheckField0x56bLowNibble(
-                    (struct Obj02061bd8 *) GetCombatantWithFlag0x100(gs, ids[*(short *) (base + 0x1b00 + 0xf6)])))
+                    (struct Obj02061bd8 *) GetCombatantWithFlag0x100_0200ff1c(gs, ids[*(short *) (base + 0x1b00 + 0xf6)])))
             {
                 for (int j = 0; j < 4; j++) {
                     short *cur = (short *) (base + 0xf6 + 0x1b00);
                     (*cur)++;
                     *cur          = *cur % 4;
-                    GameObject *c = GetCombatantWithFlag0x100(gs, ids[*(short *) (base + 0x1b00 + 0xf6)]);
+                    GameObject *c = GetCombatantWithFlag0x100_0200ff1c(gs, ids[*(short *) (base + 0x1b00 + 0xf6)]);
                     if (c != NULL && !CheckField0x56bLowNibble((struct Obj02061bd8 *) c)) break;
                 }
             }

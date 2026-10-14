@@ -7,7 +7,7 @@ struct Reloc02b02d0 {
 };
 
 // USA: func_020b02d0
-ARM void RelocateOffsetArray(struct Reloc02b02d0 *h) {
+ARM void RelocateOffsetArray_020b02d0(struct Reloc02b02d0 *h) {
     unsigned short i = 0;
     h->arr = (unsigned int *)((unsigned int)h->arr + (unsigned int)h);
     if (h->count > i) {

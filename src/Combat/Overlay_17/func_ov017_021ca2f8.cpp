@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void* func_ov017_021b8478(void* obj);
 extern "C" void func_0205e330(void* data, void* buf, int flags);
 
@@ -13,7 +13,7 @@ extern "C" ARM void func_ov017_021ca2f8(unsigned char param0) {
  enum {regionalOffset0=0x718};
 #endif
 	char buf[0x14];
-	void* data = GetData02100044();
+	void* data = GetData02100044_0202ae24();
 	GameState::GetInstance();
 	void* table = *(void**)((char*)((unsigned int)func_ov017_0218b5b0()) + 0x3000 + regionalOffset0);
 	void* a = func_ov017_021b8478(table);

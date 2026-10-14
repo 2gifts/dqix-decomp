@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct Buf021d0ef8 {
@@ -20,7 +20,7 @@ struct Msg021d0ef8 {
 
 // USA: func_ov017_021d0ef8
 extern "C" ARM void func_ov017_021d0ef8(int a1, unsigned char* a2, int a3, int a4, int* outLen) {
-    void* data = GetData02100044();
+    void* data = GetData02100044_0202ae24();
 
     Msg021d0ef8 msg;
     Buf021d0ef8* buf = &msg.buf;

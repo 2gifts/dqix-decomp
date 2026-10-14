@@ -18,15 +18,15 @@ struct CamState0202e6c0 {
     int mode;
 };
 
-int TestFlagMask(unsigned short* obj, int mask);
+int TestFlagMask_02012430(unsigned short* obj, int mask);
 void AddWrappedField0x70_0202e784(struct GlobalObj0202e6a8* obj, int val);
-int GetField0x78(void* obj);
-int GetField0x74(void* obj);
+int GetField0x78_0202e800(void* obj);
+int GetField0x74_0202e7f8(void* obj);
 void ClampField74BySign(struct CamState0202e6c0* obj, int value);
 void SubtractVec3Fields0202e9f4(void* obj, struct Vec3* v);
 void ComputeAngleHeightDistance0202ea4c(struct Obj0202ea4c* obj);
 int AddAndClampMin0202e858(void* obj, int n);
-void CopyVec3ToField0x10AndCall0202e5d8(char* obj, int* src);
+void CopyVec3ToField0x10AndCall0202e5d8_0202ec5c(char* obj, int* src);
 
 extern unsigned short data_02114e30;
 
@@ -63,17 +63,17 @@ extern "C" ARM void func_020a2d14(struct CamState0202e6c0* cam) {
     }
 
     Vector3fix pos = cam->position;
-    pressA = TestFlagMask(&data_02114e30, 1);
-    pressB = TestFlagMask(&data_02114e30, 2);
-    pressX = TestFlagMask(&data_02114e30, 0x400);
-    pressY = TestFlagMask(&data_02114e30, 0x800);
-    pressL = TestFlagMask(&data_02114e30, 0x200);
-    pressR = TestFlagMask(&data_02114e30, 0x100);
-    pressUp = TestFlagMask(&data_02114e30, 0x40);
-    pressDown = TestFlagMask(&data_02114e30, 0x80);
-    pressLeft = TestFlagMask(&data_02114e30, 0x20);
-    pressRight = TestFlagMask(&data_02114e30, 0x10);
-    slow = TestFlagMask(&data_02114e30, 8);
+    pressA = TestFlagMask_02012430(&data_02114e30, 1);
+    pressB = TestFlagMask_02012430(&data_02114e30, 2);
+    pressX = TestFlagMask_02012430(&data_02114e30, 0x400);
+    pressY = TestFlagMask_02012430(&data_02114e30, 0x800);
+    pressL = TestFlagMask_02012430(&data_02114e30, 0x200);
+    pressR = TestFlagMask_02012430(&data_02114e30, 0x100);
+    pressUp = TestFlagMask_02012430(&data_02114e30, 0x40);
+    pressDown = TestFlagMask_02012430(&data_02114e30, 0x80);
+    pressLeft = TestFlagMask_02012430(&data_02114e30, 0x20);
+    pressRight = TestFlagMask_02012430(&data_02114e30, 0x10);
+    slow = TestFlagMask_02012430(&data_02114e30, 8);
     speed = 1.0f;
     if (slow) {
         speed = 0.1f;
@@ -91,8 +91,8 @@ extern "C" ARM void func_020a2d14(struct CamState0202e6c0* cam) {
             AddWrappedField0x70_0202e784((struct GlobalObj0202e6a8*)cam, (int)(4096.0f * (0.05f * speed)));
         }
         if (pressUp) {
-            fix32_t dist = GetField0x78(cam);
-            fix32_t height = GetField0x74(cam);
+            fix32_t dist = GetField0x78_0202e800(cam);
+            fix32_t height = GetField0x74_0202e7f8(cam);
             fix32_t heightSq = FxMul(height, height);
             fix32_t distSq = FxMul(dist, dist);
             fix32_t horiz = fix32_Sqrt(distSq - heightSq);
@@ -102,8 +102,8 @@ extern "C" ARM void func_020a2d14(struct CamState0202e6c0* cam) {
             ClampField74BySign(cam, v.y);
         }
         if (pressDown) {
-            fix32_t dist = GetField0x78(cam);
-            fix32_t height = GetField0x74(cam);
+            fix32_t dist = GetField0x78_0202e800(cam);
+            fix32_t height = GetField0x74_0202e7f8(cam);
             fix32_t heightSq = FxMul(height, height);
             fix32_t distSq = FxMul(dist, dist);
             fix32_t horiz = fix32_Sqrt(distSq - heightSq);
@@ -114,7 +114,7 @@ extern "C" ARM void func_020a2d14(struct CamState0202e6c0* cam) {
         }
     }
 
-    scale = (float)GetField0x78(cam) / 10.0f / 4096.0f;
+    scale = (float)GetField0x78_0202e800(cam) / 10.0f / 4096.0f;
     moved = 0;
 
     if ((cam->mode == 1 && pressR) || (cam->mode == 2 && pressY)) {
@@ -246,5 +246,5 @@ extern "C" ARM void func_020a2d14(struct CamState0202e6c0* cam) {
         }
     }
 
-    CopyVec3ToField0x10AndCall0202e5d8((char*)cam, (int*)&pos);
+    CopyVec3ToField0x10AndCall0202e5d8_0202ec5c((char*)cam, (int*)&pos);
 }

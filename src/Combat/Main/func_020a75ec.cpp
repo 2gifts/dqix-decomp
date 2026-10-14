@@ -37,13 +37,13 @@ extern "C" Zone3D* func_02012fe4();
 extern "C" void func_020332ac(WrappedActor020a75ec*);
 extern "C" void func_020a78dc(WrappedActor020a75ec*);
 int ListContainsId(ListHead02046b60*, int);
-void* GetPtrField0x2a04(GameState*);
-void* GetField0x3b0Value(GameState*);
+void* GetPtrField0x2a04_02010828(GameState*);
+void* GetField0x3b0Value_020100bc(GameState*);
 int ComputeTwoFromVec3_0202ec84(void*, Vec3copy0202ec84*, int*, int*);
 extern "C" void* func_0205ec34();
-int TestFlag0SetAndFlag1Clear(unsigned short*, int);
-int IsField0Null(void**);
-int TestBitInByteArray(int, unsigned char*, int);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short*, int);
+int IsField0Null_02046b08(void**);
+int TestBitInByteArray_0206dfb0(int, unsigned char*, int);
 int SetByte0xbeShiftPrev(Bytes02033b88*, int);
 extern "C" void func_ov017_021a93f0(GameResources*, int, int);
 
@@ -93,7 +93,7 @@ extern "C" ARM void func_020a75ec(WrappedActor020a75ec* actor) {
     GameResources* scene = func_ov017_0218b5b0();
     void* head = scene->unknown_ptr_array_36fc[0];
     if (!ListContainsId((ListHead02046b60*)head, 3) && !ListContainsId((ListHead02046b60*)head, 1)) {
-        unsigned char* party = (unsigned char*)GetPtrField0x2a04(state);
+        unsigned char* party = (unsigned char*)GetPtrField0x2a04_02010828(state);
         for (int i = 0; i < party[0xf7c]; i++) {
             PartyActor020a75ec* member = (PartyActor020a75ec*)state->GetPartyMemberByIndex(*(party + 0xf78 + i));
             if (member) {
@@ -106,7 +106,7 @@ extern "C" ARM void func_020a75ec(WrappedActor020a75ec* actor) {
     }
     int screenX;
     int screenY;
-    void* view = GetField0x3b0Value(state);
+    void* view = GetField0x3b0Value_020100bc(state);
     int hit = 0;
     if (ComputeTwoFromVec3_0202ec84(view, (Vec3copy0202ec84*)&actor->object.position_, &screenX, &screenY) == 0) {
         int inputX;
@@ -120,10 +120,10 @@ extern "C" ARM void func_020a75ec(WrappedActor020a75ec* actor) {
 #if !defined(jpn)
     unsigned char* flags = (unsigned char*)func_0205ec34();
 #endif
-    if (TestFlag0SetAndFlag1Clear(data_02114e30, 2) || hit) {
-        if (IsField0Null((void**)head)
+    if (TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 2) || hit) {
+        if (IsField0Null_02046b08((void**)head)
 #if !defined(jpn)
-            && TestBitInByteArray((int)flags, flags + 0x8c, 43)
+            && TestBitInByteArray_0206dfb0((int)flags, flags + 0x8c, 43)
 #endif
         ) {
             actor->field_15a = 0;

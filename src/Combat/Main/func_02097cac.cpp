@@ -17,7 +17,7 @@ extern "C" void* func_0202ae18();
 extern "C" ZoneState* func_02012fe4();
 extern "C" int func_0202c508(void* obj);
 extern "C" int func_0202c540(void* obj);
-void* GetField0x3f8Address(GameState* battleStruct);
+void* GetField0x3f8Address_0200fd0c(GameState* battleStruct);
 int IsIdInRange020981e4(int a, int id);
 int IsIdInRange02098240(int a, int id);
 int IsIdInSet02098210(int a, int id);
@@ -30,7 +30,7 @@ void EnqueueEventTag186_021d3e3c(unsigned char tag);
 extern "C" ARM void func_02097cac(Base020989cc* state) {
     void* search = func_0202ae18();
     GameState* gameState = GameState::GetInstance();
-    ZoneState02097cac* zoneState = (ZoneState02097cac*)GetField0x3f8Address(gameState);
+    ZoneState02097cac* zoneState = (ZoneState02097cac*)GetField0x3f8Address_0200fd0c(gameState);
     ZoneState* currentZone = func_02012fe4();
     int zoneId = zoneState->zoneId;
     GameObject* protagonist;
@@ -56,7 +56,7 @@ extern "C" ARM void func_02097cac(Base020989cc* state) {
             case 5: zoneState->zoneId = 0xc47d; break;
             case 6: zoneState->zoneId = 0xc4e1; break;
         }
-        CallFunc0200fbb4AtField0x3f8(gameState, zoneState);
+        CallFunc0200fbb4AtField0x3f8_0200fcfc(gameState, zoneState);
     } else {
         if (func_0202c540(search) == 0 || zoneState->flag65 == 0) return;
         int progress = state->progress;

@@ -2,9 +2,9 @@
 
 struct Obj2081;
 struct Elem2081;
-void SelectCoordsByFlag0x24(unsigned char* p, int* a, int* b);
-struct Elem2081* FindElementByByte0xc4(struct Obj2081* obj, int id);
-int IsField0x9cEqual3(unsigned char* p);
+void SelectCoordsByFlag0x24_02012a84(unsigned char* p, int* a, int* b);
+struct Elem2081* FindElementByByte0xc4_02081da8(struct Obj2081* obj, int id);
+int IsField0x9cEqual3_0204c7cc(unsigned char* p);
 void FindTableEntryPayload_02173f08(char* a, char* b, char* c, char* d);
 
 extern unsigned char data_02114e54[];
@@ -15,7 +15,7 @@ extern "C" ARM int func_ov003_021782a0(struct Obj2081* obj) {
         return 0;
 
     int coordA, coordB;
-    SelectCoordsByFlag0x24(data_02114e54, &coordA, &coordB);
+    SelectCoordsByFlag0x24_02012a84(data_02114e54, &coordA, &coordB);
     if (coordB < 0x5d || coordB > 0x6e)
         return 0;
 
@@ -27,10 +27,10 @@ extern "C" ARM int func_ov003_021782a0(struct Obj2081* obj) {
     return 0;
 #else
     struct Obj2081* target = *(struct Obj2081**)((char*)obj + 0x89c);
-    struct Elem2081* elem = FindElementByByte0xc4(target, 10);
+    struct Elem2081* elem = FindElementByByte0xc4_02081da8(target, 10);
     if (!elem)
         return 0;
-    if (!IsField0x9cEqual3((unsigned char*)elem))
+    if (!IsField0x9cEqual3_0204c7cc((unsigned char*)elem))
         return 0;
 
     char c0, c1, c2, c3;

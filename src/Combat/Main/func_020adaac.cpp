@@ -36,15 +36,15 @@ struct SteeringControl {
     int counter;
 };
 
-void* GetField0x3b0Value(GameState*);
+void* GetField0x3b0Value_020100bc(GameState*);
 extern "C" void func_02012fe4();
 void SetFields0x44(Fields020407b4*, int, int, int);
-int IsFlag0x40Set(unsigned short*);
-int IsFlag0x20Set(unsigned short*);
-int IsFlag0x10Set(unsigned short*);
-int IsFlag0x80Set(unsigned short*);
+int IsFlag0x40Set_020123b8(unsigned short*);
+int IsFlag0x20Set_02012390(unsigned short*);
+int IsFlag0x10Set_020123a4(unsigned short*);
+int IsFlag0x80Set_020123cc(unsigned short*);
 void* GetField4328_0218d268(void*);
-int GetField0x70(void*);
+int GetField0x70_0202e7f0(void*);
 int GetShortAt0x22e(ShortField0x22e_020968c4*);
 int fix32ReduceAngle0To2Pi(int);
 int fix32SignedAngleDistance(int, int);
@@ -56,7 +56,7 @@ extern const int data_020e9118[8];
 
 // USA: func_020adaac
 extern "C" ARM void func_020adaac(SteeringObject* self) {
-    void* camera = GetField0x3b0Value(GameState::GetInstance());
+    void* camera = GetField0x3b0Value_020100bc(GameState::GetInstance());
     void* manager = func_ov017_0218b5b0();
     int targetHeading;
     func_02012fe4();
@@ -68,28 +68,28 @@ extern "C" ARM void func_020adaac(SteeringObject* self) {
     second.y = 0xa000;
     self->vector174 = second;
     self->mode = 0;
-    if (IsFlag0x40Set(&data_02114e30) && IsFlag0x20Set(&data_02114e30)) {
+    if (IsFlag0x40Set_020123b8(&data_02114e30) && IsFlag0x20Set_02012390(&data_02114e30)) {
         self->mode = 1;
         self->direction = 12;
-    } else if (IsFlag0x40Set(&data_02114e30) && IsFlag0x10Set(&data_02114e30)) {
+    } else if (IsFlag0x40Set_020123b8(&data_02114e30) && IsFlag0x10Set_020123a4(&data_02114e30)) {
         self->mode = 1;
         self->direction = 13;
-    } else if (IsFlag0x80Set(&data_02114e30) && IsFlag0x20Set(&data_02114e30)) {
+    } else if (IsFlag0x80Set_020123cc(&data_02114e30) && IsFlag0x20Set_02012390(&data_02114e30)) {
         self->mode = 1;
         self->direction = 14;
-    } else if (IsFlag0x80Set(&data_02114e30) && IsFlag0x10Set(&data_02114e30)) {
+    } else if (IsFlag0x80Set_020123cc(&data_02114e30) && IsFlag0x10Set_020123a4(&data_02114e30)) {
         self->mode = 1;
         self->direction = 15;
-    } else if (IsFlag0x40Set(&data_02114e30)) {
+    } else if (IsFlag0x40Set_020123b8(&data_02114e30)) {
         self->mode = 1;
         self->direction = 8;
-    } else if (IsFlag0x80Set(&data_02114e30)) {
+    } else if (IsFlag0x80Set_020123cc(&data_02114e30)) {
         self->mode = 1;
         self->direction = 9;
-    } else if (IsFlag0x20Set(&data_02114e30)) {
+    } else if (IsFlag0x20Set_02012390(&data_02114e30)) {
         self->mode = 1;
         self->direction = 10;
-    } else if (IsFlag0x10Set(&data_02114e30)) {
+    } else if (IsFlag0x10Set_020123a4(&data_02114e30)) {
         self->mode = 1;
         self->direction = 11;
     }
@@ -102,7 +102,7 @@ extern "C" ARM void func_020adaac(SteeringObject* self) {
         Obj020968d0* target = (Obj020968d0*)GetField4328_0218d268(manager);
         if (self->mode == 1) {
             int offset = data_020e9118[self->direction - 8];
-            targetHeading = offset + GetField0x70(camera);
+            targetHeading = offset + GetField0x70_0202e7f0(camera);
         } else if (target->active) {
             targetHeading = GetShortAt0x22e((ShortField0x22e_020968c4*)target);
         }

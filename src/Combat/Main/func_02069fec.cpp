@@ -4,10 +4,10 @@
 extern "C" void* func_0206a3c0(void* ctx, int msgId);
 extern "C" int func_02005a94(char* str);
 
-char* FindUnescapedAngleBracket(char* str);
+char* FindUnescapedAngleBracket_020424ac(char* str);
 int IsPrefixMatch020d857c(signed char* a, signed char* b);
 int StringStartsWithCI020d85dc(const char* str, const char* prefix);
-int StringLength(const char* s);
+int StringLength_020d2ff0(const char* s);
 
 struct TagEntry02069fec {
     const char* name;
@@ -70,14 +70,14 @@ extern "C" ARM void func_02069fec(struct Ctx02069fec* ctx, int msgId, char* outA
             continue;
         }
         if (c == '<') {
-            char* close = FindUnescapedAngleBracket(src);
+            char* close = FindUnescapedAngleBracket_020424ac(src);
             if (close != 0) {
                 char* arg = src + 1;
                 int matched = 0;
                 struct TagEntry02069fec* e = data_020e7f84;
                 while (e->name != 0 && e->fn != 0) {
                     if (StringStartsWithCI020d85dc(arg, e->name)) {
-                        int len = StringLength(e->name);
+                        int len = StringLength_020d2ff0(e->name);
                         int n = e->fn(&out, arg + len);
                         out += n;
                         src = close + 1;

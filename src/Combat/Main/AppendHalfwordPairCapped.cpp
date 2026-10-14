@@ -14,7 +14,7 @@ struct BoundedHalfwordPairList {
 };
 
 // USA: func_02028378
-ARM void AppendHalfwordPairCapped(struct BoundedHalfwordPairList* list, struct HalfwordPair* src) {
+ARM void AppendHalfwordPairCapped_02028378(struct BoundedHalfwordPairList* list, struct HalfwordPair* src) {
     struct HalfwordPair* entries = list->entries;
     struct HalfwordPair* dst;
     if (entries == 0) {

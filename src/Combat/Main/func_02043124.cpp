@@ -9,7 +9,7 @@
 #include <Graphics/VRAMStaging.h>
 #include <System/BGBases.h>
 struct FlagOwner;
-void ClearFlag0x1SetFlag0x2(FlagOwner*);
+void ClearFlag0x1SetFlag0x2_020e1cb8(FlagOwner*);
 #if defined(jpn)
 struct StorageView { char pad[0x30]; void* pointer; };
 extern StorageView data_02107800;
@@ -46,7 +46,7 @@ extern "C" ARM void func_02043124(Object02043124* object) {
         REG_DISPCNT = (REG_DISPCNT & ~0x1f00) | 0x1300;
     }
     if (object->owner) {
-        ClearFlag0x1SetFlag0x2(object->owner);
+        ClearFlag0x1SetFlag0x2_020e1cb8(object->owner);
     }
     object->owner = 0;
 }

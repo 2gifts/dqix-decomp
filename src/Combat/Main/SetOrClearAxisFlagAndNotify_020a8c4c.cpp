@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void* GetPtrField0x2a04(GameState* battleStruct);
+void* GetPtrField0x2a04_02010828(GameState* battleStruct);
 struct AxisFloats0203b5a0;
 int IsAxisIntWithin16(struct AxisFloats0203b5a0* s, int axis);
 struct Obj020397cc;
@@ -24,7 +24,7 @@ extern "C" ARM void func_020a8c4c(struct Obj020a8c4c* obj, unsigned char axis) {
     void* ov = func_ov017_0218b5b0();
     GameObject* c397c = battle->GetUnknownGameObject();
     GameObject* c800 = battle->GetPartyMemberByIndex(axis);
-    GetPtrField0x2a04(battle);
+    GetPtrField0x2a04_02010828(battle);
     if (IsAxisIntWithin16((struct AxisFloats0203b5a0*)ov, 0) == 0) {
         CancelPendingAction020397cc((struct Obj020397cc*)c800, 1);
         *(short*)((char*)c800 + 0xac) = 0;

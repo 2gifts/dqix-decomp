@@ -69,14 +69,14 @@ struct Events021552a8 {
     unsigned char bits[0x20];
 };
 
-char* GetFieldIfFlag4(char* obj);
+char* GetFieldIfFlag4_020100f8(char* obj);
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
 extern "C" void func_0209c2e0(void* obj, int a, int b);
 extern "C" void func_ov017_021bb27c(void* obj);
 extern "C" void func_0208b9a0(void* obj, unsigned char flag);
 char* GetGlobalField0x1c020421a0(void);
 void InitAllocatorsAndBuffers0208b8c4(Obj0208b8c4* obj, SafeAllocator* alloc);
-void* GetGlobalPtr021075f4(void);
+void* GetGlobalPtr021075f4_0203cf4c(void);
 void* EmptyStub0203d004(void* p);
 void InitPool020401fc(Pool020401fc* pool, unsigned int count, SafeAllocator* alloc);
 void Init0205a198(Struct0205a198* p);
@@ -95,15 +95,15 @@ void CopyInternalFields0207df50(Foo0207df50* p);
 int StoreArgIfMatched_02153948(unsigned short arg);
 extern "C" Events021552a8* func_0205ec34(void);
 extern "C" void* func_02012fe4(void);
-void SetOrClearBitInArray(void* unused, unsigned char* array, int bit, int value);
+void SetOrClearBitInArray_0206df6c(void* unused, unsigned char* array, int bit, int value);
 extern "C" void* func_0202ae18(void);
-void* GetPtrField0x2a04(GameState* gs);
+void* GetPtrField0x2a04_02010828(GameState* gs);
 void* GetDataPtr02114e04_020d6c00(void);
 void ProcessBattlerEffects02019568(void* area, int arg);
 Object3D* GetField4334_021bdbc0(unsigned char* base);
-void SetField0x238False(void* obj);
-void ClearIntAt0x23c(unsigned char* obj);
-void SetFlag0x9c6(SetFlagStruct* p, int value);
+void SetField0x238False_020a27a0(void* obj);
+void ClearIntAt0x23c_020a27b8(unsigned char* obj);
+void SetFlag0x9c6_020213fc(SetFlagStruct* p, int value);
 
 extern AllocatorUnion data_02114e20;
 extern char data_02109bf4;
@@ -119,7 +119,7 @@ extern "C" ARM int func_ov001_021552a8(Self021552a8* self) {
     GameState* gs = GameState::GetInstance();
     GameResources* res = func_ov017_0218b5b0();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
-    char* hud = GetFieldIfFlag4((char*)gs);
+    char* hud = GetFieldIfFlag4_020100f8((char*)gs);
     GameObject* leader = gs->GetUnknownGameObject();
     sub = res->unknown_2cc;
 
@@ -164,7 +164,7 @@ extern "C" ARM int func_ov001_021552a8(Self021552a8* self) {
         *(void**)(msg + 0x8c) = self->timer;
     }
     if ((self->params.flags & 1) || (self->params.flags & 4)) {
-        InitPool020401fc((Pool020401fc*)EmptyStub0203d004(GetGlobalPtr021075f4()), 0xc, &self->allocator);
+        InitPool020401fc((Pool020401fc*)EmptyStub0203d004(GetGlobalPtr021075f4_0203cf4c()), 0xc, &self->allocator);
     }
     if (self->params.flags & 0x200) {
         self->allocator.GetMaxPossibleAllocation();
@@ -235,7 +235,7 @@ extern "C" ARM int func_ov001_021552a8(Self021552a8* self) {
         for (i = 0; i < total; i++) {
             BmdjSceneElement* e = &node->elements[i];
             if (e != NULL && !(e->flags & 4)) {
-                SetOrClearBitInArray(events, events->bits, (unsigned char)i, 1);
+                SetOrClearBitInArray_0206df6c(events, events->bits, (unsigned char)i, 1);
             }
         }
     }
@@ -246,7 +246,7 @@ extern "C" ARM int func_ov001_021552a8(Self021552a8* self) {
     GameResources* resources = func_ov017_0218b5b0();
     void* area = (Zone3D*)func_02012fe4();
     func_0202ae18();
-    GetPtrField0x2a04(state);
+    GetPtrField0x2a04_02010828(state);
     GetDataPtr02114e04_020d6c00();
     if (!(params.flags & 0x400)) {
         ProcessBattlerEffects02019568(area, arg);
@@ -259,9 +259,9 @@ extern "C" ARM int func_ov001_021552a8(Self021552a8* self) {
         }
     }
 
-    SetField0x238False(hud);
-    ClearIntAt0x23c((unsigned char*)hud);
+    SetField0x238False_020a27a0(hud);
+    ClearIntAt0x23c_020a27b8((unsigned char*)hud);
     *(short*)((char*)leader + 0xb2) = 0;
-    SetFlag0x9c6((SetFlagStruct*)res->unknown_ptr_36d0, 0);
+    SetFlag0x9c6_020213fc((SetFlagStruct*)res->unknown_ptr_36d0, 0);
     return 3;
 }

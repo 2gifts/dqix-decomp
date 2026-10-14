@@ -18,13 +18,13 @@
 #include "GameState/GameState.h"
 
 void* SearchBothTables02079e2c(char* p, int key);
-void* GetPtrField0x2a04(GameState* battleStruct);
+void* GetPtrField0x2a04_02010828(GameState* battleStruct);
 extern "C" void* func_ov000_02161318(void* obj, int id);
 extern "C" int func_ov000_02171210(void* a, void* b);
 
 // USA: func_ov000_02175b54  (semantic: RegisterCombatEvent_02175b54)
 extern "C" ARM void func_ov000_02175b54(void* obj) {
-    ActionDataTables* data = GetData02108e10();
+    ActionDataTables* data = GetData02108e10_020797dc();
     if (data == 0) {
         return;
     }
@@ -35,7 +35,7 @@ extern "C" ARM void func_ov000_02175b54(void* obj) {
         return;
     }
     GameState* battleStruct = GameState::GetInstance();
-    unsigned char* field2a04 = (unsigned char*)GetPtrField0x2a04(battleStruct);
+    unsigned char* field2a04 = (unsigned char*)GetPtrField0x2a04_02010828(battleStruct);
     signed char combIdx = *(signed char*)(field2a04 + 0xf00 + 0x78);
     char* entry = (char*)func_ov000_02161318(obj, combIdx);
     if (entry == 0) {

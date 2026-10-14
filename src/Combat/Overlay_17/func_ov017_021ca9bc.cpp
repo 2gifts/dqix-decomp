@@ -9,7 +9,7 @@ enum { RegionOffset718 = 0x718 };
 #endif
 
 extern "C" void* func_ov017_021b8478(void* obj);
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct Entry021ca9bc {
@@ -95,7 +95,7 @@ extern "C" ARM void func_ov017_021ca9bc(struct Container021ca9bc* sl) {
     GameState::GetInstance();
     unsigned char* table = *(unsigned char**)((char*)func_ov017_0218b5b0() + 0x3000 + RegionOffset718);
     struct Obj021ca9bc* obj = (struct Obj021ca9bc*)func_ov017_021b8478(table);
-    void* data = GetData02100044();
+    void* data = GetData02100044_0202ae24();
 
     for (int i = 0; i < sl->outerCount; i++) {
         struct Entry021ca9bc* entry = &sl->entries[i];

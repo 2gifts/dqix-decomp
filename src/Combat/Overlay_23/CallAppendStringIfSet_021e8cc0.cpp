@@ -8,8 +8,8 @@ struct Container021e8cc0 { char pad1[0x5d8]; char* field5d8; char pad2[0x5fc - 0
 #include "std_library_functions.h"
 extern "C" void func_020420e8(char*, int);
 struct TableA68;
-char* FindEntryByKey(TableA68*, int);
-int AppendXYTag(char*, int, int);
+char* FindEntryByKey_02072a68(TableA68*, int);
+int AppendXYTag_02041a90(char*, int, int);
 #endif
 
 // USA: func_ov023_021e8cc0
@@ -22,13 +22,13 @@ ARM void CallAppendStringIfSet_021e8cc0(struct Container021e8cc0* obj) {
     func_020420e8(dst, 8);
     dst += strlen(dst);
     for (int row = 1; row <= 2; ++row) {
-        char* found = strstr(src, FindEntryByKey(*(TableA68**)((char*)obj + 0x5f4), 0));
+        char* found = strstr(src, FindEntryByKey_02072a68(*(TableA68**)((char*)obj + 0x5f4), 0));
         if (!found) continue;
         int length = found - src;
         memcpy(dst, src, length);
         dst += length;
         src += length + 2;
-        AppendXYTag(dst, 1, row * 0x13 + 8);
+        AppendXYTag_02041a90(dst, 1, row * 0x13 + 8);
         dst += strlen(dst);
     }
     memcpy(dst, src, strlen(src));

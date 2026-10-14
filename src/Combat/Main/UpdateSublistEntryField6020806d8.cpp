@@ -32,11 +32,11 @@ struct ObjSublist020806d8 {
 
 void* FindEntryByShortId0207f6ac(List0207f6ac*, int);
 Entry0207f0ac020806d8* FindEntryByShortId0207f0ac(List0207f0ac*, int);
-void* FindEntryByKey(TableA68*, int);
+void* FindEntryByKey_02072a68(TableA68*, int);
 #if defined(jpn)
-int StringLength(const char*);
+int StringLength_020d2ff0(const char*);
 #else
-int IsValueEqual12(int);
+int IsValueEqual12_02042190(int);
 extern "C" int func_020420e8(char* text, int fontIndex);
 #endif
 
@@ -49,13 +49,13 @@ extern "C" ARM void func_020806d8(ObjSublist020806d8* menu, int groupId, int ite
         return;
     }
     if (item->kind != 0) return;
-    char* text = (char*)FindEntryByKey(menu->textTable, item->textId);
+    char* text = (char*)FindEntryByKey_02072a68(menu->textTable, item->textId);
     if (text == NULL) return;
 #if defined(jpn)
-    int glyphCount = StringLength(text) >> 1;
+    int glyphCount = StringLength_020d2ff0(text) >> 1;
     int textWidth = glyphCount * item->fontSize;
 #else
-    int fontIndex = IsValueEqual12(item->fontSize);
+    int fontIndex = IsValueEqual12_02042190(item->fontSize);
     int textWidth = func_020420e8(text, fontIndex);
 #endif
     Entry0207f0ac020806d8* group = FindEntryByShortId0207f0ac(&menu->groups, groupId);

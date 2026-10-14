@@ -23,7 +23,7 @@ struct S02040538;
 Info0218dd18* GetField0xc02040538(S02040538*);
 struct Node02040774;
 void SetActiveChildFields02040774(Node02040774*, int, int, int);
-unsigned int IsFlag0x1ceBit0x8Set(unsigned char* obj);
+unsigned int IsFlag0x1ceBit0x8Set_02039dcc(unsigned char* obj);
 
 // USA: func_ov017_0218dd18
 extern "C" ARM int func_ov017_0218dd18(Object3D* self, Node0218dd18* node, int pushNode) {
@@ -60,7 +60,7 @@ extern "C" ARM int func_ov017_0218dd18(Object3D* self, Node0218dd18* node, int p
     if (node->flags & 0x40000) {
         return 0;
     }
-    if (!IsFlag0x1ceBit0x8Set((unsigned char*)self)) {
+    if (!IsFlag0x1ceBit0x8Set_02039dcc((unsigned char*)self)) {
         if (pushNode) {
             reach -= (int)(0.2f * (self->GetRadius() * 0.5f));
             if (reach < dist) {

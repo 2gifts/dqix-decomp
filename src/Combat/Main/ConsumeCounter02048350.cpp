@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-int GetFieldAt0x150(unsigned char* obj);
-int TestBitInArray0x8ec(unsigned char* obj, int index);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
+int TestBitInArray0x8ec_02083b00(unsigned char* obj, int index);
 
 struct Sub130_02048350 {
     char pad[0x6];
@@ -21,10 +21,10 @@ ARM int ConsumeCounter02048350(struct Obj02048350* obj, int amount) {
     struct Sub130_02048350* sub = obj->sub;
     unsigned short count = sub->count;
     GameState* bs = GameState::GetInstance();
-    GameObject* combatant = GetCombatantWithFlag0x100(bs, obj->combatantId);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(bs, obj->combatantId);
     if (combatant != NULL && amount > 0) {
-        unsigned char* ptr = (unsigned char*)GetFieldAt0x150((unsigned char*)combatant);
-        if (ptr != NULL && TestBitInArray0x8ec(ptr, 0x106)) {
+        unsigned char* ptr = (unsigned char*)GetFieldAt0x150_02053c6c((unsigned char*)combatant);
+        if (ptr != NULL && TestBitInArray0x8ec_02083b00(ptr, 0x106)) {
             amount = (int)(0.75f + 0.75f * (float)amount);
             if (amount <= 0) {
                 amount = 0;

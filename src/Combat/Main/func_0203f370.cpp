@@ -10,7 +10,7 @@ struct StrideEntry0203f370 {
     char pad0[0x10];
     unsigned int* field10;
 };
-void* GetElementStride0x14(unsigned char* obj, unsigned int index);
+void* GetElementStride0x14_0203f1c8(unsigned char* obj, unsigned int index);
 
 struct List_0203f354;
 struct Entry0203f370 {
@@ -48,7 +48,7 @@ extern "C" ARM void func_0203f370(struct Obj0203f370* self) {
     struct Element0203f370* element = GetValidElement02040468(self->list, self->field28);
     if (element == 0) return;
 
-    struct StrideEntry0203f370* stride = (struct StrideEntry0203f370*)GetElementStride0x14((unsigned char*)element + 0x10, self->field30);
+    struct StrideEntry0203f370* stride = (struct StrideEntry0203f370*)GetElementStride0x14_0203f1c8((unsigned char*)element + 0x10, self->field30);
     if (stride == 0) return;
 
     unsigned int idx2 = stride->field10[self->field34];

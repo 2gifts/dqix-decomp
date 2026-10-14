@@ -9,7 +9,7 @@ extern "C" void* func_ov023_021f6880(void*, int);
 extern "C" int func_ov023_021f6f10(void*);
 extern "C" void func_ov023_021fa598(void*);
 extern "C" void* _Z26GetGlobalField0x1c020421a0v();
-extern "C" void _Z13SetByte0x7f70Pvh(void*, unsigned char);
+extern "C" void _Z22SetByte0x7f70_02012028Pvh(void*, unsigned char);
 extern "C" void* func_ov011_021845f8(void*, int);
 extern "C" int _Z23VariadicForward020c7170iiiz(char*, int, const char*, ...);
 extern const char data_ov004_02170fac[];
@@ -24,7 +24,7 @@ extern "C" ARM int func_ov004_0216d718(void* self)
         func_ov023_021fa598(entry);
     _Z26GetGlobalField0x1c020421a0v();
     GameState* state = GameState::GetInstance();
-    _Z13SetByte0x7f70Pvh(state, 0);
+    _Z22SetByte0x7f70_02012028Pvh(state, 0);
     SafeAllocator* allocator = (SafeAllocator*)((char*)func_ov011_021845f8(self, 5) + 4);
     char* buffer = (char*)allocator->Allocate(0x400);
     memset(buffer, 0, 0x400);

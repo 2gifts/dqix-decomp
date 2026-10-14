@@ -9,7 +9,7 @@ struct Struct02153628 {
 extern struct Struct02153628 data_02153628;
 
 // USA: func_020e11e4
-ARM int IsElapsedTicksBelowThreshold(void) {
+ARM int IsElapsedTicksBelowThreshold_020e11e4(void) {
     unsigned long long now = GetCurrentTimestamp();
     unsigned long long epoch = *(unsigned long long*)((char*)&data_02153628 + 4);
     unsigned long long diff = now - epoch;

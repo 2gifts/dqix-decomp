@@ -13,7 +13,7 @@ struct TableEntry020bb740 {
 extern struct TableEntry020bb740 data_020f1f14[];
 
 // USA: func_020bb740
-ARM void RestorePairTableFromBuffer(int* out) {
+ARM void RestorePairTableFromBuffer_020bb740(int* out) {
     int i = 0;
     int j = 0;
     struct TableEntry020bb740* dst = data_020f1f14;

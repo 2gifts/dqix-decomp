@@ -12,13 +12,13 @@ struct Elem2081 {
     unsigned char flags;
 };
 
-struct Elem2081* FindElementByByte0xc4(struct Obj2081* obj, int key);
+struct Elem2081* FindElementByByte0xc4_02081da8(struct Obj2081* obj, int key);
 extern "C" void func_020813ec(void* obj, int key);
 
 // USA: func_ov003_02166f80
 ARM void SetOrClearFlag40_02166f80(void* self, int key, int set) {
     struct Obj2081* obj = *(struct Obj2081**)((char*)self + kRegion324);
-    struct Elem2081* elem = FindElementByByte0xc4(obj, key);
+    struct Elem2081* elem = FindElementByByte0xc4_02081da8(obj, key);
     if (elem == NULL) {
         return;
     }

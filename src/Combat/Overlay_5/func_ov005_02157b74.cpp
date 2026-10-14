@@ -86,14 +86,14 @@ struct Menu02157b74 {
 extern "C" GameState* _ZN9GameState11GetInstanceEv();
 extern "C" char* func_ov017_0218b5b0();
 Context02157b74* GetField1c_021a193c(int*);
-Combatant02157b74* GetCombatantWithFlag0x100(GameState* gs, int idx);
-char* GetPtrField0x2a04(GameState* gs);
+Combatant02157b74* GetCombatantWithFlag0x100_0200ff1c(GameState* gs, int idx);
+char* GetPtrField0x2a04_02010828(GameState* gs);
 struct Field150Holder02052df8;
 short GetHalfwordEntryFromField150(Field150Holder02052df8*, int);
 struct Container020dedd0;
 Item02157b74* FindElementByKey020dedd0(Container020dedd0*, int);
 extern "C" void func_02052d7c(Combatant02157b74* c, int slot, short id);
-void* GetFieldAt0x150(unsigned char*);
+void* GetFieldAt0x150_02053c6c(unsigned char*);
 extern "C" void func_0208358c(void* model, Item02157b74* item, int arg);
 extern "C" void func_02083738(void* model, int type);
 struct Holder021583fc;
@@ -112,7 +112,7 @@ void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 extern "C" int func_020dd4c4(signed char id, Item02157b74* item);
 struct Fields020deda4;
 Linked02157b74* Forward10BitFields020deda4(int, int, Fields020deda4*);
-void TrySetFlags0x130(unsigned char*, unsigned short);
+void TrySetFlags0x130_020483f0(unsigned char*, unsigned short);
 extern "C" int func_0207c7a0(char* list, short key, int category);
 extern "C" int _Z33FindEntryIndexInKeyedList0207caa4P17KeyedList0207caa4ii(char* list, short key, int category);
 extern "C" void _Z33DecrementKeyedStackAmount0207c484P17KeyedList0207c484iii(char* list, short key, int amount, int category);
@@ -134,10 +134,10 @@ extern "C" ARM void func_ov005_02157b74(Menu02157b74* self, int key, int keepSto
     Context02157b74* ctx = GetField1c_021a193c((int*)(*(int*)(func_ov017_0218b5b0() + LOW_REGION(0x34f8, 0x3708))));
     int bareArg;
     int actor = ctx->actor;
-    Combatant02157b74* who = GetCombatantWithFlag0x100(gs, actor);
+    Combatant02157b74* who = GetCombatantWithFlag0x100_0200ff1c(gs, actor);
     if (who == 0) return;
 
-    bag = GetPtrField0x2a04(gs);
+    bag = GetPtrField0x2a04_02010828(gs);
 
     if (key == 0xffff) {
         int slot = data_ov005_0215cd40[self->tab];
@@ -158,7 +158,7 @@ extern "C" ARM void func_ov005_02157b74(Menu02157b74* self, int key, int keepSto
             bareKey = 0x3e8;
         }
         func_02052d7c(who, slot, -1);
-        void* model = GetFieldAt0x150((unsigned char*)who);
+        void* model = GetFieldAt0x150_02053c6c((unsigned char*)who);
         Item02157b74* bare = FindElementByKey020dedd0((Container020dedd0*)self->items, (short)bareKey);
         if (bare != 0) {
             func_0208358c(model, bare, bareArg);
@@ -273,7 +273,7 @@ extern "C" ARM void func_ov005_02157b74(Menu02157b74* self, int key, int keepSto
             }
         }
         func_02052d7c(who, slot, (unsigned short)key);
-        void* model = GetFieldAt0x150((unsigned char*)who);
+        void* model = GetFieldAt0x150_02053c6c((unsigned char*)who);
         func_0208358c(model, item, -1);
         func_02083e28(model, 0);
         func_ov017_021c9e00(who->id, 0, 0, 1);
@@ -296,7 +296,7 @@ extern "C" ARM void func_ov005_02157b74(Menu02157b74* self, int key, int keepSto
         }
         self->message = 0xd;
         self->dirty |= 0x8000;
-        TrySetFlags0x130((unsigned char*)who, 4);
+        TrySetFlags0x130_020483f0((unsigned char*)who, 4);
         func_ov017_021c9e00(actor, 0, 0, 1);
     }
 

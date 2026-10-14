@@ -6,7 +6,7 @@ extern "C" void __clear(void* buf, int len);
 struct StructDE234_020de234;
 unsigned short GetPreferredPackedField020de234(struct StructDE234_020de234* p, int preferMid);
 struct InitStruct2075;
-void ClearStructFields(struct InitStruct2075* p);
+void ClearStructFields_02075d64(struct InitStruct2075* p);
 
 extern char data_ov023_021fdc23[];
 extern char data_ov023_021fdc36[];
@@ -49,6 +49,6 @@ ARM int FormatAndApplyPreferredField_021e0244(void* obj) {
     if (ok != 0) return 4;
 
     *(unsigned short*)((char*)obj + regionalOffset0) |= 8;
-    ClearStructFields(*(struct InitStruct2075**)((char*)obj + 0xc8));
+    ClearStructFields_02075d64(*(struct InitStruct2075**)((char*)obj + 0xc8));
     return 6;
 }

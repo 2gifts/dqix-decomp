@@ -2,7 +2,7 @@
 #include "World/Object3D.h"
 
 struct Entry_02028bd0;
-struct Entry_02028bd0* GetEntryTableBase(void);
+struct Entry_02028bd0* GetEntryTableBase_02027ca4(void);
 struct Entry_02028bd0* FindInlineEntryById(struct Entry_02028bd0* base, int key);
 
 struct U16Field0x6_020375f8;
@@ -69,7 +69,7 @@ extern "C" ARM unsigned short func_02078e60(void* obj, char* out) {
     int idx;
 
     *out = 0;
-    table = GetEntryTableBase();
+    table = GetEntryTableBase_02027ca4();
     entry = FindInlineEntryById(table, ((Object3D*)((struct U16Field0x6_020375f8*)o))->GetField06());
     if (entry == NULL) {
         return 0;

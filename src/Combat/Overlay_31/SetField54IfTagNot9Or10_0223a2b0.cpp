@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 extern "C" int func_020d5fd0(int, int, int);
-ARM void SetField54IfTagNot9Or10(int v);
+ARM void SetField54IfTagNot9Or10_ov031_022393e4(int v);
 
 typedef void (*Callback_0223a2b0)(int, void*);
 struct DataOv02290d18_0223a2b0 { Callback_0223a2b0 unk0; unsigned char* inner; };
@@ -26,12 +26,12 @@ extern "C" ARM int func_ov031_0223a2b0(int arg) {
         if (cb != NULL) {
             cb(0x8000000, &data_ov031_0224c4c8);
         }
-        SetField54IfTagNot9Or10(tag);
+        SetField54IfTagNot9Or10_ov031_022393e4(tag);
         return 0;
     }
     if (tag == 0) {
         return 1;
     }
-    SetField54IfTagNot9Or10(tag);
+    SetField54IfTagNot9Or10_ov031_022393e4(tag);
     return 0;
 }

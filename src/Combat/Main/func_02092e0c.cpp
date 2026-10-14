@@ -46,7 +46,7 @@ struct Obj02046574 {
 struct CombatantInfo02092e0c { int fields[3]; };
 Obj02046574* GetGlobalField0x1c020421a0();
 extern "C" void func_02046380(void*);
-int GetField0x3acValue(GameState*);
+int GetField0x3acValue_020100a8(GameState*);
 void SetIndexedName02046574(Obj02046574*, int, char*);
 void InitObjFromCombatantId020e4bf4(void*, int);
 int GetFieldByKey020e0434(Container020e0310*, int);
@@ -64,7 +64,7 @@ extern "C" ARM void func_02092e0c(MessageController* messages) {
         Obj02046574* display = GetGlobalField0x1c020421a0();
         func_02046380(display);
         GameState* state = GameState::GetInstance();
-        GameObject* member = state->GetPartyMemberByIndex(GetField0x3acValue(state));
+        GameObject* member = state->GetPartyMemberByIndex(GetField0x3acValue_020100a8(state));
         if (member) SetIndexedName02046574(display, 0, member->baseStats_->unk);
 #if defined(jpn)
         member = state->GetPartyMemberByIndex(messages->namedPartySlot);

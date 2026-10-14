@@ -28,8 +28,8 @@ int IsBrightnessTransitionActive(GameResources*);
 struct AxisFloats0203b57c;
 int GetAxisIntValue(AxisFloats0203b57c*, int);
 void SetMainBrightness(GameResources*, int, int);
-int GetField0x397cValue(GameState*);
-GameObject* GetCombatantWithFlag0x100(GameState*, int);
+int GetField0x397cValue_020100b0(GameState*);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState*, int);
 extern "C" void func_02046380(BattleGlobals*);
 struct Obj02046574;
 void SetIndexedName02046574(Obj02046574*, int, char*);
@@ -59,7 +59,7 @@ extern "C" ARM void func_ov003_0215af9c(BattleMessageScene* self) {
 
         if (self->actorSlot == 1) {
             GameState* gs = GameState::GetInstance();
-            GameObject* obj = GetCombatantWithFlag0x100(gs, GetField0x397cValue(gs));
+            GameObject* obj = GetCombatantWithFlag0x100_0200ff1c(gs, GetField0x397cValue_020100b0(gs));
             func_02046380(g);
             SetIndexedName02046574((Obj02046574*)g, 0, (char*)obj->baseStats_);
         }

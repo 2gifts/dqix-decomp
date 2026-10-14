@@ -50,7 +50,7 @@ public:
 extern "C" ARM int func_ov004_0215951c(void* obj) {
     signed char flag = func_ov004_02157128(obj);
     GameState* battle = GameState::GetInstance();
-    GameObject* c = GetCombatantWithFlag0x100(battle, flag);
+    GameObject* c = GetCombatantWithFlag0x100_0200ff1c(battle, flag);
     if (!c) return 0;
 
     unsigned char* fieldPtr = data_ov004_021707d8.ptr;

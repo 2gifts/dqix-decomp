@@ -8,9 +8,8 @@
 #define REGION_OFFSET_1 0x55f4
 #endif
 
-
 // USA: func_ov000_02163404
-ARM void SetByteField0x5901AndFlag0x8000(void* work, unsigned char val) {
+ARM void SetByteField0x5901AndFlag0x8000_ov000_02163404(void* work, unsigned char val) {
     *(unsigned char*)((char*)work + REGION_OFFSET_0) = val;
     *(int*)((char*)work + REGION_OFFSET_1) |= 0x8000;
 }

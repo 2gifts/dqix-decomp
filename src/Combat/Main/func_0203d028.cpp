@@ -27,7 +27,7 @@ struct BattleStruct {
 
 struct Struct_020652b4 { int field0; };
 int IsListEmpty_020652b4(struct Struct_020652b4* p);
-int IsField0Zero(int* p);
+int IsField0Zero_0206dda4(int* p);
 
 struct Pool020401fc {
     unsigned int count;
@@ -77,10 +77,10 @@ struct NodeInfo0203d028 {
     int field54;
     int field58;
 };
-struct NodeInfo0203d028* FindNodeByByteId(void* base, int key);
+struct NodeInfo0203d028* FindNodeByByteId_0206db20(void* base, int key);
 
-void SetField0x8(int* obj, int value);
-void SetField0xc(int* obj, int value);
+void SetField0x8_02040520(int* obj, int value);
+void SetField0xc_02040530(int* obj, int value);
 
 struct State02041244 {
     char pad_00[0xac];
@@ -108,7 +108,7 @@ struct Struct_203dafc {
     int field18;
     int field1c;
 };
-void ClearEightWords(struct Struct_203dafc* obj);
+void ClearEightWords_0203dafc(struct Struct_203dafc* obj);
 
 void RestorePairTables0207df90(char* obj);
 void BackupPairTables0207dfac(char* obj);
@@ -118,13 +118,13 @@ struct Entry0209854c;
 struct Entry0209854c* FindEntryByFieldC0209854c(struct Entry0209854c* list, int target);
 
 void* GetGlobalContext020daf90(void);
-int GetField0x50(void* obj);
+int GetField0x50_020db2d4(void* obj);
 void DispatchWithGlobalContext020daf9c(int a, int b, int c, int d);
 
 void SetMainBrightness(GameResources*, int, int);
-void OrBitsIntoField0(unsigned int* p, unsigned int mask);
-int IsPowcntBit0Set(void);
-int DispatchIfEquals1(int a);
+void OrBitsIntoField0_020466e4(unsigned int* p, unsigned int mask);
+int IsPowcntBit0Set_020cede0(void);
+int DispatchIfEquals1_020cedc0(int a);
 
 extern "C" void func_ov017_0218f064(void* mgr, int a, int b, int c, int d);
 
@@ -142,7 +142,7 @@ struct HeadNode02046b24 { signed char id; };
 int GetHeadNodeIdOrMinusOne(struct HeadNode02046b24** obj);
 
 void InitializeRandomMotion0203c794(void* obj);
-void StoreValueViaField0x14(unsigned char* obj, int val);
+void StoreValueViaField0x14_0203db24(unsigned char* obj, int val);
 
 struct Obj0203f02c;
 void UpdateElementStream0203f02c(struct Obj0203f02c* obj, int param1, int param2, char* param3, int param5, int param6);
@@ -155,7 +155,7 @@ struct Foo0207df50;
 void CopyInternalFields0207df50(struct Foo0207df50* p);
 
 struct GameState;
-void ClearCombatantSlot(GameState*, int);
+void ClearCombatantSlot_0200fd48(GameState*, int);
 
 struct FlagWord020466f4 { unsigned int flags; };
 void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int mask);
@@ -213,7 +213,7 @@ struct Obj02041598 {
 };
 int SetByteC4AndDispatch02041598(struct Obj02041598* obj, int value, int z);
 
-void StoreVec3AtField0x50(unsigned char* obj, int a, int b, int c);
+void StoreVec3AtField0x50_0203db34(unsigned char* obj, int a, int b, int c);
 
 struct Obj020415b0 {
     char pad_00[0xcc];
@@ -305,7 +305,7 @@ static inline void SetX90_0203d028(void* motion, int v)
 extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, SafeAllocator* sb, char* fp)
 {
     if (IsListEmpty_020652b4((struct Struct_020652b4*)&self->listHead) ||
-        IsField0Zero((int*)&self->nodeTableBase))
+        IsField0Zero_0206dda4((int*)&self->nodeTableBase))
     {
         InitPool020401fc(&self->pool, 0xc, sb);
         return;
@@ -336,9 +336,9 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
         struct Node0203d028* node = (struct Node0203d028*)sb->Allocate(0x20);
         if (node == 0) goto abort_unlock;
         Init020404c0((int*)node);
-        struct NodeInfo0203d028* info = FindNodeByByteId(&self->nodeTableBase, entry->id);
-        SetField0x8((int*)node, (int)entry);
-        SetField0xc((int*)node, (int)info);
+        struct NodeInfo0203d028* info = FindNodeByByteId_0206db20(&self->nodeTableBase, entry->id);
+        SetField0x8_02040520((int*)node, (int)entry);
+        SetField0xc_02040530((int*)node, (int)info);
 
         if (battleStruct->GetSub7e78()->field6 != 0xff && info != 0 && info->field1f != 0) {
             node->flags |= 0x40000;
@@ -366,7 +366,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
             void* loadedPtr = LoadFileIntoNewAllocation(pathBuf, *sb, &outLen);
             if (loadedPtr == 0) goto abort_unlock;
             struct Struct_203dafc params;
-            ClearEightWords(&params);
+            ClearEightWords_0203dafc(&params);
             RestorePairTables0207df90(fp);
             params.fieldc = (int)sb;
             params.field4 = (int)loadedPtr;
@@ -380,13 +380,13 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
             struct Entry0209854c* found = FindEntryByFieldC0209854c((struct Entry0209854c*)((char*)globalStruct + 0x840), entry->id);
             if (found != 0) {
                 {
-                    if (GetField0x50(GetGlobalContext020daf90()) == 0) {
+                    if (GetField0x50_020db2d4(GetGlobalContext020daf90()) == 0) {
                         DispatchWithGlobalContext020daf9c(1, 0, 1, 0);
                         SetMainBrightness((GameResources*)mgr, ~0xf, 0);
                     }
-                    OrBitsIntoField0(dataFlags, 0x400000);
-                    if (!IsPowcntBit0Set()) {
-                        while (DispatchIfEquals1(1) == 0) {
+                    OrBitsIntoField0_020466e4(dataFlags, 0x400000);
+                    if (!IsPowcntBit0Set_020cede0()) {
+                        while (DispatchIfEquals1_020cedc0(1) == 0) {
                         }
                         SleepCurrentContext(1);
                     }
@@ -418,7 +418,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
                     node->stateB = sb->Allocate(0x9c);
                     if (node->stateB == 0) goto abort_unlock;
                     InitializeRandomMotion0203c794(node->stateB);
-                    StoreValueViaField0x14((unsigned char*)node, (int)self);
+                    StoreValueViaField0x14_0203db24((unsigned char*)node, (int)self);
 
                     const char* motName = &data_020efdda;
                     if (node->stateB != 0) {
@@ -429,7 +429,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
                     }
                     Set2e0203d028(node->stateB, 0x3d);
                     Set95_0203d028(node->stateB, 1);
-                    StoreValueViaField0x14((unsigned char*)node, (int)self);
+                    StoreValueViaField0x14_0203db24((unsigned char*)node, (int)self);
 
                     SafeAllocator* savedAlloc = &GetResourceAllocator(mgr, 8);
                     savedAlloc->Reset();
@@ -441,7 +441,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
                     entry->type = 0;
                     alloc3->Reset();
                     CopyInternalFields0207df50((struct Foo0207df50*)buf930);
-                    ClearCombatantSlot((GameState*)battleStruct, 5);
+                    ClearCombatantSlot_0200fd48((GameState*)battleStruct, 5);
                     ClearFlags020466f4((struct FlagWord020466f4*)dataFlags, 0x400000);
                 }
             }
@@ -487,7 +487,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
             decompressed = DecompressLZ77FileIntoAllocatedSpace(*sb, filePtr, decompSize);
 
             struct Struct_203dafc params;
-            ClearEightWords(&params);
+            ClearEightWords_0203dafc(&params);
             RestorePairTables0207df90(fp);
             params.fieldc = (int)sb;
             params.field4 = (int)decompressed;
@@ -504,7 +504,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
             node->stateB = sb->Allocate(0x9c);
             if (node->stateB == 0) goto abort_unlock;
             InitializeRandomMotion0203c794(node->stateB);
-            StoreValueViaField0x14((unsigned char*)node, (int)self);
+            StoreValueViaField0x14_0203db24((unsigned char*)node, (int)self);
 
             if (entry->name[0] != 0 && entry->type == 0) {
                 int successFlag = 0;
@@ -576,7 +576,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
                     mdlPtr = LoadFileIntoNewAllocation(&data_020efe38, *sb, &mdlOutLen);
                     if (mdlPtr != 0) {
                         struct Struct_203dafc mdlParams;
-                        ClearEightWords(&mdlParams);
+                        ClearEightWords_0203dafc(&mdlParams);
                         RestorePairTables0207df90(fp);
                         mdlParams.field4 = (int)mdlPtr;
                         mdlParams.field8 = (int)mdlOutLen;
@@ -609,7 +609,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
                 if (node->flags & 0x800) {
                     ((Object3D*)((unsigned char*)node->state))->SetFlag16();
                     ((Object3D*)((unsigned char*)node->state))->EnableFlag(0x2000000);
-                    StoreVec3AtField0x50((unsigned char*)node->state, 0x4b5c, info->field1c, 0);
+                    StoreVec3AtField0x50_0203db34((unsigned char*)node->state, 0x4b5c, info->field1c, 0);
                 }
                 if (info->field58 != 0) {
                     _Z28SetWordCCAndDispatch020415b0P11Obj020415b0i((struct Obj020415b0*)node->state, info->field58, 0);
@@ -623,7 +623,7 @@ extern "C" ARM void func_0203d028(struct SelfObj0203d028* self, void* unused1, S
                 SetByte0x2e8AndDispatch02041628(node->combatant, info->field1e, 0);
                 if (node->flags & 0x800) {
                     ((Object3D*)((unsigned char*)node->combatant))->SetFlag16();
-                    StoreVec3AtField0x50((unsigned char*)node->combatant, 0x4b5c, info->field1c, 0);
+                    StoreVec3AtField0x50_0203db34((unsigned char*)node->combatant, 0x4b5c, info->field1c, 0);
                 }
                 if (info->field58 != 0) {
                     SetWord0x2f4AndDispatch02041640(node->combatant, info->field58, 0);

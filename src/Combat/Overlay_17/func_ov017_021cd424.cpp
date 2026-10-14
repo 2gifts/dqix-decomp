@@ -11,8 +11,8 @@ struct Entry021633b8 {
     signed char f5;
 };
 void PushEntry021633b8(char* obj, Entry021633b8* src);
-void SetByteField0x5901AndFlag0x8000(void* work, unsigned char val);
-void SetCombatWorkFlags0x55f4(void* work, int mask);
+void SetByteField0x5901AndFlag0x8000_ov000_02163404(void* work, unsigned char val);
+void SetCombatWorkFlags0x55f4_ov000_02160fa8(void* work, int mask);
 typedef void (*SetByteField0x5901Fn)(void*, int);
 
 struct Ret021cd424 {
@@ -49,7 +49,7 @@ extern "C" ARM void func_ov017_021cd424(int unused0, Src021cd424* src, int unuse
     e.f5 = src->fieldc;
     PushEntry021633b8((char*)work, &e);
     if (src->fielda >= 0) {
-        ((SetByteField0x5901Fn)SetByteField0x5901AndFlag0x8000)(work, src->fielda);
+        ((SetByteField0x5901Fn)SetByteField0x5901AndFlag0x8000_ov000_02163404)(work, src->fielda);
     }
-    SetCombatWorkFlags0x55f4(work, 0x8000);
+    SetCombatWorkFlags0x55f4_ov000_02160fa8(work, 0x8000);
 }

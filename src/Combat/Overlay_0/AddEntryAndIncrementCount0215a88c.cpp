@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void* GetTableEntry0x8e03Bound0xfc(void* p);
+void* GetTableEntry0x8e03Bound0xfc_ov000_0215e9b8(void* p);
 
 struct Obj0215fe00;
 struct Node0215fe00;
@@ -10,7 +10,7 @@ struct Entry0215a88c { short a; int b; };
 
 // USA: func_ov000_0215a88c
 ARM void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c) {
-    void* entryRaw = GetTableEntry0x8e03Bound0xfc(objRaw);
+    void* entryRaw = GetTableEntry0x8e03Bound0xfc_ov000_0215e9b8(objRaw);
     struct Entry0215a88c* entry = (struct Entry0215a88c*)entryRaw;
     if (entry == 0) {
         return;

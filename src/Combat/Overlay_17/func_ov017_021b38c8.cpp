@@ -22,7 +22,7 @@ struct Reload021b38c8 {
     unsigned char flags;
     char pad_c[4]; int tasks[11]; int animationTask; int field_40; int extraTask;
 };
-Container02083554* GetFieldAt0x150(unsigned char*);
+Container02083554* GetFieldAt0x150_02053c6c(unsigned char*);
 Scale021b38c8* GetField150Ptr0x488_02052e2c(Field150Holder02052e2c*);
 void InitSlotEntries020543ec(char*, char*);
 extern "C" void func_02072afc(int, int*, short*);
@@ -39,11 +39,11 @@ extern "C" ARM int func_ov017_021b38c8(Reload021b38c8* self) {
     Entry02083554* entries;
     GameState* game = GameState::GetInstance();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
-    GameObject* combatant = GetCombatantWithFlag0x100(game, self->combatant);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(game, self->combatant);
     if (!combatant) return 0;
     BattleAssets021b38c8* assets = ((Combatant021b38c8*)combatant)->GetAssets();
     if (!assets) return 0;
-    Container02083554* data = GetFieldAt0x150((unsigned char*)combatant);
+    Container02083554* data = GetFieldAt0x150_02053c6c((unsigned char*)combatant);
     if (!data) return 0;
     Scale021b38c8* scale = GetField150Ptr0x488_02052e2c((Field150Holder02052e2c*)combatant);
     if (!scale) return 0;

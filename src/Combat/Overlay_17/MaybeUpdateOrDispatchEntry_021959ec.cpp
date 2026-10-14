@@ -9,7 +9,7 @@ extern "C" void func_0202e0a4(int val);
 // USA: func_ov017_021959ec
 ARM void MaybeUpdateOrDispatchEntry_021959ec(void*) {
 	GameState* bs = GameState::GetInstance();
-	void* val = GetField0x3b0Value(bs);
+	void* val = GetField0x3b0Value_020100bc(bs);
 	if (val == 0) return;
 	if (GetFlags((int)val) & 8) {
 		UpdateEntry0216d50c(val);

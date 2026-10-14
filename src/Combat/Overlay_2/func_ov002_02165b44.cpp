@@ -24,23 +24,23 @@ struct TailList020469b4;
 struct TailNode020469b4;
 void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char keyLow, unsigned char keyHigh);
 int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
-int TestFlag0SetAndFlag1Clear(unsigned short *p, int n);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short *p, int n);
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0 *o, int a, int b);
 int CheckFlagOrThreshold_02161b48(char *base, int a);
-void SetElementFieldC2(struct Struct_0205d81c *s, int a, int b);
+void SetElementFieldC2_0205deb4(struct Struct_0205d81c *s, int a, int b);
 void SetFieldB0AndUpdate0205dee8(struct Obj0205dee8 *o, int v);
 void ClearMatchingEntry_02156ff0(unsigned char *self, int v);
-int GetField0x397cValue(GameState *gs);
-GameObject *GetCombatantChecked(GameState *gs, int id);
-int TestBitInByteArray(int unused, unsigned char *arr, int index);
+int GetField0x397cValue_020100b0(GameState *gs);
+GameObject *GetCombatantChecked_0200ff94(GameState *gs, int id);
+int TestBitInByteArray_0206dfb0(int unused, unsigned char *arr, int index);
 char *FindEntryByByteId020a83b0(struct List020a83b0 *l, int id);
 char *SearchBothTables02079e2c(char *t, int id);
 void ConsumeCounter02048350(struct Obj02048350 *o, int n);
-int CheckField0NonZero(int *p);
-void *GetField0x3f8Address(GameState *state);
+int CheckField0NonZero_0202b7d8(int *p);
+void *GetField0x3f8Address_0200fd0c(GameState *state);
 extern "C" void VectorizedMemset(void *dst, int value, unsigned int length);
-void *CallFunc0200fbb4AtField0x3f8(void *obj, const void *src);
+void *CallFunc0200fbb4AtField0x3f8_0200fcfc(void *obj, const void *src);
 void InitAndInsertNode_021acd30(char *g, unsigned char a, unsigned char b, unsigned char c);
 void InitAndResetHeader_0219e310(unsigned char *p, int v);
 void AppendNodeToTail(struct TailList020469b4 *l, struct TailNode020469b4 *n);
@@ -72,13 +72,13 @@ extern "C" ARM void func_ov002_02165b44(char *base) {
         *(unsigned int *) (base + 0x2000 + 0x47c) |= 4;
         func_ov002_02161b98(base);
         *(short *) (base + 0x1b00 + 0xfc) = GetActiveScaledSum0205d794((struct Struct_0205c570 *) (base + 0x2c8 + 0xc00));
-        int ta                            = TestFlag0SetAndFlag1Clear(data_02114e30, 0x601);
+        int ta                            = TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x601);
         int tb = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(base + 0x2c8 + 0xc00), 0x14);
         if ((ta | tb) ? 1 : 0) {
             GameState *gs = GameState::GetInstance();
             int id        = *(signed char *) (base + 0x1c00 + 0x20);
-            if (id == 4) id = GetField0x397cValue(gs);
-            GameObject *m = GetCombatantChecked(gs, id);
+            if (id == 4) id = GetField0x397cValue_020100b0(gs);
+            GameObject *m = GetCombatantChecked_0200ff94(gs, id);
             if (m == NULL) return;
             *(unsigned char *) (base + 0xf80) = *(int *) (base + 0x1000 + 0xbb8);
             *(unsigned int *) (base + 0x2000 + 0x47c) &= ~4;
@@ -93,7 +93,7 @@ extern "C" ARM void func_ov002_02165b44(char *base) {
             int save    = (int) func_0205ec34();
             char *world = func_02012fe4();
             int kind    = 0;
-            if (!TestBitInByteArray(save, (unsigned char *) ((char *) save + 0x8c), 0x113a)) {
+            if (!TestBitInByteArray_0206dfb0(save, (unsigned char *) ((char *) save + 0x8c), 0x113a)) {
                 char *p = *(char **) (world + 8);
                 if (p != NULL) kind = (unsigned int) (*(unsigned char *) (p + 0xe) << 30) >> 30;
             }
@@ -116,13 +116,13 @@ extern "C" ARM void func_ov002_02165b44(char *base) {
                                             *(short *) (base + 0x1b00 + 0xe8), 0);
                     } else {
                         DispatchWithShortB4_0205eaa0((struct Obj0205eaa0 *) data_02108760, 0x64, 0);
-                        char *t = SearchBothTables02079e2c((char*)GetData02108e10(), 0xca);
+                        char *t = SearchBothTables02079e2c((char*)GetData02108e10_020797dc(), 0xca);
                         ConsumeCounter02048350(
-                            (struct Obj02048350 *) GetCombatantChecked(gs, *(signed char *) (base + 0x1c00 + 0x20)),
+                            (struct Obj02048350 *) GetCombatantChecked_0200ff94(gs, *(signed char *) (base + 0x1c00 + 0x20)),
                             ((struct TE5b44 *) t)->lo8);
-                        if (CheckField0NonZero(rec)) func_ov017_021c9e00(*(signed char *) (base + 0x1c00 + 0x20), 0, 0, 1);
+                        if (CheckField0NonZero_0202b7d8(rec)) func_ov017_021c9e00(*(signed char *) (base + 0x1c00 + 0x20), 0, 0, 1);
                     }
-                    unsigned char *q = (unsigned char *) GetField0x3f8Address(gs);
+                    unsigned char *q = (unsigned char *) GetField0x3f8Address_0200fd0c(gs);
                     VectorizedMemset(q, 0, 0x70);
                     q[4]                       = 1;
                     q[8]                       = 1;
@@ -143,8 +143,8 @@ extern "C" ARM void func_ov002_02165b44(char *base) {
                     *(short *) (q + 0x1c)      = *(short *) (e + 0xa);
                     q[7]                       = 1;
                     q[0x63]                    = 0;
-                    CallFunc0200fbb4AtField0x3f8(gs, q);
-                    if (func_0202c508(rec) && TestBitInByteArray(save, (unsigned char *) ((char *) save + 0x8c), 0x2b)) {
+                    CallFunc0200fbb4AtField0x3f8_0200fcfc(gs, q);
+                    if (func_0202c508(rec) && TestBitInByteArray_0206dfb0(save, (unsigned char *) ((char *) save + 0x8c), 0x2b)) {
                         *(unsigned short *) (world + 0x2700 + 0x86) = *(unsigned short *) (e + 0x1a);
                         *(unsigned short *) (world + 0x2700 + 0x84) = *(unsigned short *) (e + 0x1c);
                         Vector3i *pos                               = (Vector3i *) (world + 0x374 + 0x2400);
@@ -207,7 +207,7 @@ extern "C" ARM void func_ov002_02165b44(char *base) {
                 ClearMatchingEntry_02156ff0((unsigned char *) base, 0x13);
                 *(int *) (base + 0x1000 + 0xbb8) = 0x11;
                 SetFieldB0AndUpdate0205dee8((struct Obj0205dee8 *) (base + 0x2c8 + 0xc00), 0x11);
-                SetElementFieldC2((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 0x11, 0);
+                SetElementFieldC2_0205deb4((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 0x11, 0);
                 func_ov002_02161cf0(base);
                 func_ov002_0215b9a4(base, *(int *) (base + 0x1000 + 0xbb8) & 0xff, 0);
                 *(int *) (base + 0x1000 + 0xbc0) = 1;

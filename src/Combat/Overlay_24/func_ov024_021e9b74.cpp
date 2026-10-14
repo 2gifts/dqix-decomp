@@ -46,7 +46,7 @@ extern const struct IdList_021e9b74 data_ov024_021fe6f8;
 extern const struct CandList_021e9b74 data_ov024_021fe7e0;
 
 struct Cbt_021e9b74* GetCombatantByID(int unused, int id);
-int IsFlag10088Set(struct S_10088* obj);
+int IsFlag10088Set_02010088(struct S_10088* obj);
 int IsCombatantFlag2Mask8192_021e6798(GameObject* combatant);
 extern "C" int func_ov000_0215e9fc(int battle, short* table, int count, int flag);
 extern "C" int func_ov000_0215eb1c(int battle, short* table, int count, int flag);
@@ -54,8 +54,8 @@ extern "C" int func_ov000_02155f9c(int battle, int id, int v);
 int NextRandomMax(struct Random* random, int maximum);
 void PushEntry0215ff20(void* obj, short val1, unsigned char val2);
 extern "C" float func_ov024_021db358(struct Cbt_021e9b74* obj);
-void* GetPtrField0x2a04(GameState* gameState);
-int ArrayContainsByte(struct ArrayContainsByteStruct* s, int val);
+void* GetPtrField0x2a04_02010828(GameState* gameState);
+int ArrayContainsByte_02086ef0(struct ArrayContainsByteStruct* s, int val);
 void IncrementByteCounterCapped0x63_0215a8d4(unsigned char* obj, int idx);
 
 static inline short GetOwner_021e9b74(struct Cbt_021e9b74* c) { SDK_NULL_ASSERT(c); return c->stats->owner2a; }
@@ -78,7 +78,7 @@ extern "C" ARM int func_ov024_021e9b74(struct Ctx_021e9b74* ctx, int unused, str
     if (!self) {
         return 0;
     }
-    if (IsFlag10088Set((struct S_10088*)self) || IsCombatantFlag2Mask8192_021e6798((GameObject*)self)) {
+    if (IsFlag10088Set_02010088((struct S_10088*)self) || IsCombatantFlag2Mask8192_021e6798((GameObject*)self)) {
         return 0;
     }
     GameState::GetInstance();
@@ -138,7 +138,7 @@ extern "C" ARM int func_ov024_021e9b74(struct Ctx_021e9b74* ctx, int unused, str
             cmd->targetId = cands.v[NextRandomMax(rnd, n)];
             PushEntry0215ff20(queue, cmd->targetId, 8);
             ctx->redirected = 1;
-            if (ArrayContainsByte((struct ArrayContainsByteStruct*)GetPtrField0x2a04(GameState::GetInstance()),
+            if (ArrayContainsByte_02086ef0((struct ArrayContainsByteStruct*)GetPtrField0x2a04_02010828(GameState::GetInstance()),
                                   cmd->targetId)) {
                 IncrementByteCounterCapped0x63_0215a8d4((unsigned char*)ctx->battle, 4);
             }

@@ -7,7 +7,7 @@
 #endif
 #include <globaldefs.h>
 
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 extern unsigned short data_02114e30;
 
 struct StructC28 {
@@ -20,7 +20,7 @@ struct StructC28 {
 
 // USA: func_ov006_02158c28
 ARM void ClearField44IfSet_02158c28(struct StructC28* obj) {
-    if (!TestFlag0SetAndFlag1Clear(&data_02114e30, 0x800)) {
+    if (!TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x800)) {
         return;
     }
     if (obj->field44 != 0) {

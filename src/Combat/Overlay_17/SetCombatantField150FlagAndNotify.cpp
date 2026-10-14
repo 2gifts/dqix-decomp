@@ -8,7 +8,7 @@ struct TagInfo_021d26a4 {
     unsigned char flag1 : 1;
 };
 
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 void SetFlagBit_0218d4b8(unsigned char* base, int bit);
 void ClearFlagBit_0218d4d0(void* obj, int bit);
 extern "C" void func_ov017_02191aac(void* obj, int mode, int idx, unsigned char mask);
@@ -20,7 +20,7 @@ extern "C" ARM void func_ov017_021d26a4(void* unused, TagInfo_021d26a4* info, Ga
     if (combatant == 0) {
         return;
     }
-    unsigned char* field150 = (unsigned char*)GetFieldAt0x150((unsigned char*)combatant);
+    unsigned char* field150 = (unsigned char*)GetFieldAt0x150_02053c6c((unsigned char*)combatant);
     if (field150 == 0) {
         return;
     }

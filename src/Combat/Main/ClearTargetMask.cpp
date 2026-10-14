@@ -9,7 +9,7 @@ struct BattleTarget9a8 {
 };
 
 // USA: func_020bc9a8
-ARM void ClearTargetMask(struct BattleTarget9a8* obj) {
+ARM void ClearTargetMask_020bc9a8(struct BattleTarget9a8* obj) {
     if (obj->mask != 0) {
         ReleaseFlagBits020bbe64(obj->mask);
         obj->mask = 0;

@@ -21,8 +21,8 @@ struct Struct_0205d81c;
 struct Container0205a3d0;
 struct Container0205a330;
 
-Canvas_021e67f4* FindElementForFieldB0(struct Struct_0205d81c* s);
-int CheckField0x9cSetWhenField0xd4Present(unsigned char* obj);
+Canvas_021e67f4* FindElementForFieldB0_0205d8c4(struct Struct_0205d81c* s);
+int CheckField0x9cSetWhenField0xd4Present_0204c7e0(unsigned char* obj);
 void SetEntryFlag2ByKey0205a370(struct Container0205a3d0* c, int key);
 Animation_021e67f4* FindEntryByHalfword0205a3d0(struct Container0205a3d0* c, int key);
 void IterateEntries0205a330(struct Container0205a330* c, int arg);
@@ -58,10 +58,10 @@ extern "C" ARM void func_ov023_021e67f4(ProfileEditor_021e67f4* self)
 {
     if (self->unk_13a0 == 0)
         return;
-    Canvas_021e67f4* canvas = FindElementForFieldB0((Struct_0205d81c*)self->window_);
+    Canvas_021e67f4* canvas = FindElementForFieldB0_0205d8c4((Struct_0205d81c*)self->window_);
     if (canvas == NULL)
         return;
-    if (!CheckField0x9cSetWhenField0xd4Present((unsigned char*)canvas))
+    if (!CheckField0x9cSetWhenField0xd4Present_0204c7e0((unsigned char*)canvas))
         return;
     short x = canvas->x_ * 8;
     short y = canvas->y_ * 8;

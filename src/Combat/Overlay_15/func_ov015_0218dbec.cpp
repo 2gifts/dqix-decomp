@@ -14,7 +14,7 @@ struct Struct_203dafc;
 
 void* SearchWithComparator0206f4f0(BinarySearchByComparatorStruct*, int);
 void* SearchWithLow15Comparator02070fd0(Container02070e60*, int);
-void ClearEightWords(struct Struct_203dafc*);
+void ClearEightWords_0203dafc(struct Struct_203dafc*);
 
 extern "C" void* __clear(void* dst, int count);
 void CopyInternalFields0207df50(Foo0207df50*);
@@ -112,7 +112,7 @@ extern "C" ARM int func_ov015_0218dbec(Obj0218dbec* self, Entry0218dbec* entry) 
             }
             ObjectArchiveLoadInfo loadInfo;
             if (fileA != 0) {
-                ClearEightWords((Struct_203dafc*)&loadInfo);
+                ClearEightWords_0203dafc((Struct_203dafc*)&loadInfo);
                 loadInfo.allocator = self->allocator;
                 loadInfo.unk_8 = sizeA;
                 loadInfo.fileData = fileA;
@@ -120,7 +120,7 @@ extern "C" ARM int func_ov015_0218dbec(Obj0218dbec* self, Entry0218dbec* entry) 
                 self->object->LoadFromCCHROrCMOTArchive(&loadInfo, 0);
             }
             if (fileB != 0) {
-                ClearEightWords((Struct_203dafc*)&loadInfo);
+                ClearEightWords_0203dafc((Struct_203dafc*)&loadInfo);
                 loadInfo.allocator = self->allocator;
                 loadInfo.unk_8 = sizeB;
                 loadInfo.fileData = fileB;

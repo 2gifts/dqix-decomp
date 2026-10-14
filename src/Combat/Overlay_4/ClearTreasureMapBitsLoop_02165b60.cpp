@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 #include "Grotto/Main/TreasureMapMetadata.h"
 
-void ClearAllTreasureMapUnknownBits(void* obj);
+void ClearAllTreasureMapUnknownBits_020116c8(void* obj);
 extern "C" void func_ov011_021848a0(void* obj, int val);
 extern char* data_ov004_02171010;
 
@@ -13,7 +13,7 @@ ARM int ClearTreasureMapBitsLoop_02165b60(void* a) {
 #else
     enum { fieldOffset = 0x8f4 };
 #endif
-    ClearAllTreasureMapUnknownBits(GameState::GetInstance());
+    ClearAllTreasureMapUnknownBits_020116c8(GameState::GetInstance());
     for (int i = 0; i < *(unsigned char*)(data_ov004_02171010 + 0x1000 + fieldOffset); i++) {
         ((TreasureMapMetadata*)(data_ov004_02171010 + i * 0x1c))->ClearInitialByteUnknownBit();
     }

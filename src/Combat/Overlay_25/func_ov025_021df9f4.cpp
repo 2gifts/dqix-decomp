@@ -12,9 +12,9 @@ struct Combatant021df9f4 {
     unsigned int flags;
 };
 
-int CheckHighNibble0xc1Not2To5(unsigned char*);
-int CheckSubstructFlag0x200(unsigned char*);
-int CheckSubstructFlag0x100(unsigned char*);
+int CheckHighNibble0xc1Not2To5_02049ec0(unsigned char*);
+int CheckSubstructFlag0x200_02048c10(unsigned char*);
+int CheckSubstructFlag0x100_02048c68(unsigned char*);
 
 // USA: func_ov025_021df9f4
 extern "C" ARM int func_ov025_021df9f4(GameObject* obj) {
@@ -22,9 +22,9 @@ extern "C" ARM int func_ov025_021df9f4(GameObject* obj) {
         return 0;
     }
     int result = 0;
-    if (obj->obj3D_.IsVisible() && CheckHighNibble0xc1Not2To5((unsigned char*)obj) &&
-        !CheckSubstructFlag0x200((unsigned char*)obj)) {
-        if (!CheckSubstructFlag0x100((unsigned char*)obj)) {
+    if (obj->obj3D_.IsVisible() && CheckHighNibble0xc1Not2To5_02049ec0((unsigned char*)obj) &&
+        !CheckSubstructFlag0x200_02048c10((unsigned char*)obj)) {
+        if (!CheckSubstructFlag0x100_02048c68((unsigned char*)obj)) {
             result = 1;
         }
     }
@@ -34,7 +34,7 @@ extern "C" ARM int func_ov025_021df9f4(GameObject* obj) {
     }
     if (isParty) {
         GameState* gs = GameState::GetInstance();
-        Combatant021df9f4* c = (Combatant021df9f4*)GetCombatantWithFlag0x100(gs, obj->obj3D_.unknown_4_);
+        Combatant021df9f4* c = (Combatant021df9f4*)GetCombatantWithFlag0x100_0200ff1c(gs, obj->obj3D_.unknown_4_);
         if (c != 0 && ((c->flags & 1) || c->state == 8)) {
             result = 0;
         }

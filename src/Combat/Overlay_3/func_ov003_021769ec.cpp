@@ -10,12 +10,12 @@ enum { kRegion1000 = 0x1000 };
 #endif
 #include "GameState/GameState.h"
 
-void* GetPtrField0x2a04(GameState* gameState);
+void* GetPtrField0x2a04_02010828(GameState* gameState);
 struct Obj2081;
-void ClearElementFlag0x20(Obj2081*, int);
-extern "C" void _Z18SetElementFlag0x20P7Obj2081i(struct Obj2081* obj, short key);
+void ClearElementFlag0x20_02080c20(Obj2081*, int);
+extern "C" void _Z27SetElementFlag0x20_02080c04P7Obj2081i(struct Obj2081* obj, short key);
 void SetEntryLowNibbleAndElement02080c68(void*, int, int);
-void SetSublistEntriesFlag1(void*, int);
+void SetSublistEntriesFlag1_02080b54(void*, int);
 struct Container020dedd0 {
     char pad;
 };
@@ -26,7 +26,7 @@ void SetEntryFirstField02080f8c(struct Container02080f8c* obj, int id, int value
 struct Container02080cc0;
 void SetEntryHighNibble0x13(struct Container02080cc0* obj, int id, int value);
 int SetEntryFlagById02080b40(void* obj, int id);
-void SetEntryHalfword0xe(void* obj, int id, int value);
+void SetEntryHalfword0xe_0208103c(void* obj, int id, int value);
 struct Field150Holder02052df8;
 short GetHalfwordEntryFromField150(Field150Holder02052df8* obj, int index);
 struct Container02080fa8;
@@ -84,7 +84,7 @@ extern "C" ARM void func_ov003_021769ec(Menu021769ec* self) {
     short id7 = 0x146;
     struct Obj2081* elemObj = self->elemObj;
     GameState* battle = GameState::GetInstance();
-    GetPtrField0x2a04(battle);
+    GetPtrField0x2a04_02010828(battle);
     unsigned char count = self->party.memberCount;
 
     switch (count) {
@@ -123,9 +123,9 @@ extern "C" ARM void func_ov003_021769ec(Menu021769ec* self) {
         break;
     }
 
-    ClearElementFlag0x20(elemObj, group);
+    ClearElementFlag0x20_02080c20(elemObj, group);
     SetEntryLowNibbleAndElement02080c68(elemObj, group, 0);
-    SetSublistEntriesFlag1(elemObj, group);
+    SetSublistEntriesFlag1_02080b54(elemObj, group);
 
     Node021769ec* node = FindElementByKey020dedd0(&self->list, self->party.key);
     bool valid = false;
@@ -147,7 +147,7 @@ extern "C" ARM void func_ov003_021769ec(Menu021769ec* self) {
 
             if (ready != 0) {
                 SetEntryHighNibble0x13((struct Container02080cc0*)elemObj, id4, 3);
-                SetEntryHalfword0xe(elemObj, id4, 0xb);
+                SetEntryHalfword0xe_0208103c(elemObj, id4, 0xb);
                 SetEntryFlagById02080b40(elemObj, id4);
             } else {
                 SetEntryHighNibble0x13((struct Container02080cc0*)elemObj, id4, 0xf);
@@ -157,7 +157,7 @@ extern "C" ARM void func_ov003_021769ec(Menu021769ec* self) {
                 }
                 short have = GetHalfwordEntryFromField150((Field150Holder02052df8*)member, index);
                 if (have == node->count) {
-                    SetEntryHalfword0xe(elemObj, id4, 0x22);
+                    SetEntryHalfword0xe_0208103c(elemObj, id4, 0x22);
                     SetEntryFlagById02080b40(elemObj, id4);
                 } else {
                     unsigned short cur;
@@ -207,10 +207,10 @@ extern "C" ARM void func_ov003_021769ec(Menu021769ec* self) {
 
         if (node->tier != 0) {
             SetEntryFlagById02080b40(elemObj, id5);
-            SetEntryHalfword0xe(elemObj, id5, (short)(node->tier + 0x2f));
+            SetEntryHalfword0xe_0208103c(elemObj, id5, (short)(node->tier + 0x2f));
         }
     } else {
-        _Z18SetElementFlag0x20P7Obj2081i(elemObj, group);
+        _Z27SetElementFlag0x20_02080c04P7Obj2081i(elemObj, group);
     }
 
     func_020813ec(elemObj, group);

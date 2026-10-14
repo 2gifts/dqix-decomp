@@ -64,9 +64,9 @@ extern "C" void* _ZN9GameState14GetProtagonistEv(void* gs);
 struct Obj020397cc;
 void CancelPendingAction020397cc(Obj020397cc*, int);
 extern "C" char* func_ov017_0218b5b0(void);
-void SetBitsInField4(unsigned int*, unsigned int);
+void SetBitsInField4_0203b4d8(unsigned int*, unsigned int);
 extern "C" void ColorEffect_ConfigureAlphaBlend(void* reg, int plane1, int plane2, int ev1, int ev2);
-void* GetGlobalPtr021075f4(void);
+void* GetGlobalPtr021075f4_0203cf4c(void);
 void* FindEntryPointerByKey0203df78(void* p, int key);
 extern "C" char* _ZN9GameState20GetUnknownGameObjectEv(void* gs);
 extern "C" Vec3_021a86d0 _Z29SelectVec3FromSources020406f8P13Vec3_020406f8P12Node020406f8(void* node);
@@ -76,7 +76,7 @@ extern "C" int fix32_Atan2(int y, int x);
 #include "Combat/EntryGetterTypes.h"
 #include "Filesystem/BackgroundLoader.h"
 struct AllocatorUnion;
-void* AllocateAligned4(AllocatorUnion*, unsigned int);
+void* AllocateAligned4_02012d88(AllocatorUnion*, unsigned int);
 extern "C" void func_020dfec0(void* cont, void* alloc, void* data, unsigned int length);
 struct Obj02046574;
 void SetIndexedName02046574(Obj02046574*, int, char*);
@@ -96,19 +96,19 @@ struct Struct_0205bcdc;
 void SetIndexIfValid0205bcdc(Struct_0205bcdc*, int);
 extern "C" void func_0205bb04(void* obj, int value);
 struct ResetBytesAndSetByte0x16Data;
-void ResetBytesAndSetByte0x16(ResetBytesAndSetByte0x16Data*, int);
-void SetupGlobalObjType1AndInitSelfPointer(unsigned char* obj);
+void ResetBytesAndSetByte0x16_0205c77c(ResetBytesAndSetByte0x16Data*, int);
+void SetupGlobalObjType1AndInitSelfPointer_0205cd28(unsigned char* obj);
 struct Container0205a330;
 void IterateEntries0205a330(Container0205a330*, int);
 int GetScaledSumIfActive0205cecc(void* obj);
-int TestFlag0SetAndFlag1Clear(unsigned short* flags, int mask);
-int CallFunc0205c570AtField0x1c(void* obj);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* flags, int mask);
+int CallFunc0205c570AtField0x1c_0205cb64(void* obj);
 void ReinitController02043204(char* obj);
-void SetupGlobalObjType3AndInitSelfPointer(unsigned char* obj);
+void SetupGlobalObjType3AndInitSelfPointer_0205ce50(unsigned char* obj);
 extern "C" int func_020457e0(char* obj);
 extern "C" unsigned char* func_0205ec34(void);
 struct GameState;
-unsigned char* GetField0x3f8Address(GameState*);
+unsigned char* GetField0x3f8Address_0200fd0c(GameState*);
 extern "C" void VectorizedMemset(void* dst, int value, unsigned int size);
 void InitContext020e1154(void* p);
 void SetHalfFieldsAndEnqueueIfActive_021d1c2c(unsigned short, unsigned short);
@@ -119,13 +119,13 @@ struct TailNode020469b4;
 void AppendNodeToTail(TailList020469b4*, TailNode020469b4*);
 void InitAndAppendState61_021a65c4(void* obj, unsigned char mode, int arg);
 extern "C" void func_ov017_021baedc(unsigned char* node, int arg);
-int GetField5cb0Value(char*);
-int GetField5cb4Value(char*);
-int GetField5cb8Value(char*);
-int TestBitInByteArray(int, unsigned char*, int);
+int GetField5cb0Value_0201079c(char*);
+int GetField5cb4Value_020107d0(char*);
+int GetField5cb8Value_02010804(char*);
+int TestBitInByteArray_0206dfb0(int, unsigned char*, int);
 int ReturnZero_021a01b4(char* res, int value);
 void SetField11c_021bbbf8(void*, unsigned short);
-void SetByteField0x253(void* obj);
+void SetByteField0x253_020397c0(void* obj);
 extern "C" void func_ov017_021a92a0(Self021a86d0* self);
 
 extern char data_ov017_021d77f0[];
@@ -155,9 +155,9 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
         self->planes = GX_GetVisiblePlane();
         GX_SetVisiblePlane(0x11);
         CancelPendingAction020397cc((Obj020397cc*)_ZN9GameState14GetProtagonistEv(gs), 1);
-        SetBitsInField4((unsigned int*)func_ov017_0218b5b0(), 0x40);
+        SetBitsInField4_0203b4d8((unsigned int*)func_ov017_0218b5b0(), 0x40);
         ColorEffect_ConfigureAlphaBlend((void*)0x4000050, 0x10, 1, 0x1f, 0);
-        void* tbl = GetGlobalPtr021075f4();
+        void* tbl = GetGlobalPtr021075f4_0203cf4c();
         void* node = NULL;
         if (self->mode == 0) {
             node = FindEntryPointerByKey0203df78(tbl, 2);
@@ -176,7 +176,7 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
             }
             SetValueOnActiveChild02040af0((Entry_203dce4*)node, angle);
         }
-        FontBankLoader* snd = GetGlobal02109400();
+        FontBankLoader* snd = GetGlobal02109400_02094a00();
         BlankFunction02094b30(snd, 0x205, 0);
         if (AlwaysTrue02094b4c(snd)) {
 #if defined(jpn)
@@ -184,7 +184,7 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
 #else
             self->task = BackgroundLoader::GetInstance()->QueueLoadFileInGP2(data_ov017_021d77f0, data_ov017_021d780a, NULL);
 #endif
-            ((SafeAllocator*)self->allocator)->CreateTypeA(AllocateAligned4((AllocatorUnion*)data_02114e20, WorkBuffer), WorkBuffer);
+            ((SafeAllocator*)self->allocator)->CreateTypeA(AllocateAligned4_02012d88((AllocatorUnion*)data_02114e20, WorkBuffer), WorkBuffer);
             self->state = 1;
         }
     } else if (self->state == 1) {
@@ -257,11 +257,11 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
             SetIndexIfValid0205bcdc((Struct_0205bcdc*)sub->table4c, 0);
             func_0205bb04(sub->table9c, 0);
             sub->b260 = 1;
-            ResetBytesAndSetByte0x16((ResetBytesAndSetByte0x16Data*)sub->resetData, 1);
+            ResetBytesAndSetByte0x16_0205c77c((ResetBytesAndSetByte0x16Data*)sub->resetData, 1);
             sub->b25f = 1;
             sub->b260 = 1;
-            ResetBytesAndSetByte0x16((ResetBytesAndSetByte0x16Data*)sub->resetData, 1);
-            SetupGlobalObjType1AndInitSelfPointer(self->sub);
+            ResetBytesAndSetByte0x16_0205c77c((ResetBytesAndSetByte0x16Data*)sub->resetData, 1);
+            SetupGlobalObjType1AndInitSelfPointer_0205cd28(self->sub);
             self->state = 3;
         }
     } else if (self->state == 3) {
@@ -269,10 +269,10 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
         IterateEntries0205a330((Container0205a330*)cont, _ZNK9GameState12GetTickCountEv(gs));
         g[MessageDone] = 0;
         int sel = GetScaledSumIfActive0205cecc(self->sub);
-        if (TestFlag0SetAndFlag1Clear(&data_02114e30, 1)) {
+        if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 1)) {
             DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);
-            sel = CallFunc0205c570AtField0x1c(self->sub);
-        } else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2)) {
+            sel = CallFunc0205c570AtField0x1c_0205cb64(self->sub);
+        } else if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 2)) {
             sel = -2;
         }
         if (self->count > sel && sel >= 0) {
@@ -289,7 +289,7 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
         if (self->choice == self->result) {
             *(int*)(g + MessageState) = 1;
             func_ov017_021a933c(self, 0x65);
-            SetupGlobalObjType3AndInitSelfPointer(self->sub);
+            SetupGlobalObjType3AndInitSelfPointer_0205ce50(self->sub);
             self->state = 6;
         } else {
             self->state = 99;
@@ -318,7 +318,7 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
         unsigned char* bits = func_0205ec34();
         char* res = func_ov017_0218b5b0();
         void* tail = *(void**)(res + ResourceTail);
-        unsigned char* ctx = GetField0x3f8Address((GameState*)gs);
+        unsigned char* ctx = GetField0x3f8Address_0200fd0c((GameState*)gs);
         VectorizedMemset(ctx, 0, 0x70);
         ctx[4] = 1;
         ctx[8] = 1;
@@ -380,7 +380,7 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
             int buf[3];
             SetHalfFieldsAndEnqueueIfActive_021d1c2c((unsigned char)self->choice, 0);
             EnqueueEventTagB5_021d1dc0(self->choice, 0, buf, 0, 0);
-            CallFunc0200fbb4AtField0x3f8(gs, ctx);
+            CallFunc0200fbb4AtField0x3f8_0200fcfc(gs, ctx);
             unsigned char* header = *(unsigned char**)(res + ResourceNode);
             InitAndResetHeader_0219e310(header, 0);
             AppendNodeToTail((TailList020469b4*)tail, (TailNode020469b4*)header);
@@ -441,22 +441,22 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
                 msgB = 0x7349;
                 break;
             }
-            chapter = GetField5cb0Value((char*)gs);
-            part = GetField5cb4Value((char*)gs);
-            int step = GetField5cb8Value((char*)gs);
+            chapter = GetField5cb0Value_0201079c((char*)gs);
+            part = GetField5cb4Value_020107d0((char*)gs);
+            int step = GetField5cb8Value_02010804((char*)gs);
             if (chapter == 10 && part == 8 && step == 1) {
                 if (self->mode == 0 && self->choice == 1 &&
-                    TestBitInByteArray((int)bits, bits + 0x8c, 4) &&
-                    TestBitInByteArray((int)bits, bits + 0x8c, 5) &&
-                    TestBitInByteArray((int)bits, bits + 0x8c, 6) &&
-                    TestBitInByteArray((int)bits, bits + 0x8c, 7) &&
-                    TestBitInByteArray((int)bits, bits + 0x8c, 8) &&
-                    TestBitInByteArray((int)bits, bits + 0x8c, 9) &&
-                    TestBitInByteArray((int)bits, bits + 0x8c, 10)) {
+                    TestBitInByteArray_0206dfb0((int)bits, bits + 0x8c, 4) &&
+                    TestBitInByteArray_0206dfb0((int)bits, bits + 0x8c, 5) &&
+                    TestBitInByteArray_0206dfb0((int)bits, bits + 0x8c, 6) &&
+                    TestBitInByteArray_0206dfb0((int)bits, bits + 0x8c, 7) &&
+                    TestBitInByteArray_0206dfb0((int)bits, bits + 0x8c, 8) &&
+                    TestBitInByteArray_0206dfb0((int)bits, bits + 0x8c, 9) &&
+                    TestBitInByteArray_0206dfb0((int)bits, bits + 0x8c, 10)) {
                     msgB = 0x7080;
                 }
             } else if (chapter == 0x11 && part == 1 && step == 1 && self->mode == 1 && self->choice == 3) {
-                if (TestBitInByteArray((int)bits, bits + 0x8c, 0x15)) {
+                if (TestBitInByteArray_0206dfb0((int)bits, bits + 0x8c, 0x15)) {
                     msgB = 0x721a;
                 }
             }
@@ -478,8 +478,8 @@ extern "C" ARM void func_ov017_021a86d0(Self021a86d0* self, void* list) {
         ReinitController02043204(g);
     } else if (self->state == 100 && *(int*)(g + MessageResult) == 0) {
         ReinitController02043204(g);
-        SetupGlobalObjType3AndInitSelfPointer(self->sub);
-        SetByteField0x253(_ZN9GameState14GetProtagonistEv(gs));
+        SetupGlobalObjType3AndInitSelfPointer_0205ce50(self->sub);
+        SetByteField0x253_020397c0(_ZN9GameState14GetProtagonistEv(gs));
         func_ov017_021a92a0(self);
         self->done = 1;
     }

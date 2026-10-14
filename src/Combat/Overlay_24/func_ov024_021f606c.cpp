@@ -4,7 +4,7 @@
 #include "Util/Random.h"
 
 extern "C" int func_ov000_0215e9fc(int battle, unsigned short* table, int count, int flag);
-int CheckFlag0x14Bit0x10Set(unsigned char* obj);
+int CheckFlag0x14Bit0x10Set_020882f8(unsigned char* obj);
 int PickRandomTableEntryResetCounter_021ed890(struct Random** rngPtr, int* maxAndFlag, short* table);
 
 extern unsigned short data_ov024_021feb8c;
@@ -27,7 +27,7 @@ extern "C" ARM int func_ov024_021f606c(int* a0, int a1, int a2, int* outCount, s
 	for (int i = 0; i < count; i++) {
 		GameObject* member = GetCombatantByID(*a0, *(short*)&buf[i]);
 		if (!member) continue;
-		if (CheckFlag0x14Bit0x10Set((unsigned char*)member->currentStats_)) continue;
+		if (CheckFlag0x14Bit0x10Set_020882f8((unsigned char*)member->currentStats_)) continue;
 		int idx = *outCount;
 		*outCount = idx + 1;
 		outArray[idx] = *((short*)buf + i);

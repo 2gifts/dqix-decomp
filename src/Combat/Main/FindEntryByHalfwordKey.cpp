@@ -11,7 +11,7 @@ struct SearchTable {
 };
 
 // USA: func_02099950
-ARM struct SearchEntry* FindEntryByHalfwordKey(struct SearchTable* table, int key) {
+ARM struct SearchEntry* FindEntryByHalfwordKey_02099950(struct SearchTable* table, int key) {
     int i;
     for (i = 0; i < table->count; i++) {
         if (key == table->entries[i].key) {

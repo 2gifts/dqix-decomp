@@ -6,8 +6,8 @@ struct EntryList_203dce4;
 struct Node020406f8;
 struct Obj0205eaa0;
 struct Vec3_020406f8 { int v[3]; };
-EntryList_203dce4* GetGlobalPtr021075f4();
-Entry_203dce4* GetEntryUnlessFlag0x8000(EntryList_203dce4*, int);
+EntryList_203dce4* GetGlobalPtr021075f4_0203cf4c();
+Entry_203dce4* GetEntryUnlessFlag0x8000_0203dce4(EntryList_203dce4*, int);
 void SelectVec3FromSources020406f8(Vec3_020406f8*, Node020406f8*);
 int IsPrefixMatch020d857c(signed char*, signed char*);
 int StringStartsWithCI020d85dc(const char*, const char*);
@@ -58,7 +58,7 @@ extern "C" ARM const char* func_0206a3c0(TextOwner0206a3c0* self, const char* te
     unsigned char scanning = 1;
     self->state.active = (unsigned char)scanning;
     GameObject* object = GameState::GetInstance()->GetUnknownGameObject();
-    Entry_203dce4* entry = GetEntryUnlessFlag0x8000(GetGlobalPtr021075f4(), self->state.entryId);
+    Entry_203dce4* entry = GetEntryUnlessFlag0x8000_0203dce4(GetGlobalPtr021075f4_0203cf4c(), self->state.entryId);
     if (object != NULL && entry != NULL)
     {
         Vec3_020406f8 original;

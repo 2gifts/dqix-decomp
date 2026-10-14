@@ -66,7 +66,7 @@ struct Obj0204c7a8;
 struct Struct_0205cf78;
 struct Elem_0205cf78;
 
-void SetWord0x18ClearByte0x1f(unsigned char *background, int a);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char *background, int a);
 int CountActiveEntries(ActiveEntry02046900 *archive);
 void *FindRecordByIndex(Rec020467f0 *archive, int index, void **name, int *size);
 extern "C" void func_0204b5b4(Background0216e2a4 *background, int a);
@@ -100,7 +100,7 @@ extern "C" ARM void func_ov003_0216e2a4(Menu0216e2a4 *self) {
     if (self->step_ == 0) {
         Background0216e2a4 *background = self->backgrounds_;
         for (int i = 0; i < 2; i++) {
-            SetWord0x18ClearByte0x1f((unsigned char *) background, 0);
+            SetWord0x18ClearByte0x1f_0204b11c((unsigned char *) background, 0);
             background->unk_1c_0_ = 0;
             background->unk_1c_4_ = data_ov003_0217f5ba[i];
             func_0204b5b4(background, data_ov003_0217f5b8[i]);

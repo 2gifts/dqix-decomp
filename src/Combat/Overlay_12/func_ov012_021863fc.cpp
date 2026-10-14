@@ -112,13 +112,13 @@ struct ProfileEditor021863fc
 
 struct TableA68;
 
-int GetWord0x0(int* gameState);
-int IsField0Null(void** p);
-void SetBitsInWord(unsigned int* word, unsigned int bits);
+int GetWord0x0_0200fb8c(int* gameState);
+int IsField0Null_02046b08(void** p);
+void SetBitsInWord_0203b4a0(unsigned int* word, unsigned int bits);
 void* GetDataPtr02114e04_020d6c00();
-void OrBitsIntoField0(unsigned int* word, unsigned int bits);
+void OrBitsIntoField0_020466e4(unsigned int* word, unsigned int bits);
 Messages021863fc* GetGlobalField0x1c020421a0();
-void OrGlobalFlag0x40();
+void OrGlobalFlag0x40_020dc2bc();
 extern "C" void func_ov012_02185e18(ProfileEditor021863fc* self);
 void ClearAndCopyEntry_02185ea8(char* self);
 void ResetAndRebuildEntry_02185f04(char* self);
@@ -131,12 +131,12 @@ int IsSubBrightnessTransitionActive(GameResources* resources);
 extern "C" void func_ov023_021e7220(void* card, int mode);
 void CreateThreeAllocators_021e71b4(void* card, SafeAllocator* allocator);
 extern "C" int func_ov023_021e76c4(void* card);
-int GetField0x3acValue(GameState* gameState);
+int GetField0x3acValue_020100a8(GameState* gameState);
 extern "C" void func_ov023_021e7b34(void* card, int design);
 extern "C" void func_ov012_0218adac(ProfileEditor021863fc* self, int animate, int design, int keepPage);
 extern "C" void* func_0205ec34();
-int TestBitInByteArray(int a, unsigned char* bits, int index);
-const char* FindEntryByKey(TableA68* table, int key);
+int TestBitInByteArray_0206dfb0(int a, unsigned char* bits, int index);
+const char* FindEntryByKey_02072a68(TableA68* table, int key);
 extern "C" void func_0204500c(Messages021863fc* messages, const char* text, int a, int b);
 
 extern "C" const char data_ov012_0218b224[];
@@ -159,15 +159,15 @@ static inline Profile021863fc* GetProfile021863fc(GameState* gameState)
 extern "C" ARM void func_ov012_021863fc(ProfileEditor021863fc* self)
 {
     GameState* gameState = GameState::GetInstance();
-    GameResources* resources = (GameResources*)GetWord0x0((int*)gameState);
+    GameResources* resources = (GameResources*)GetWord0x0_0200fb8c((int*)gameState);
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
-    GetGlobal02109400();
+    GetGlobal02109400_02094a00();
     if (self->step_ == 0)
     {
-        if (IsField0Null(*(void***)((char*)resources + 0x3700)))
+        if (IsField0Null_02046b08(*(void***)((char*)resources + 0x3700)))
         {
-            SetBitsInWord((unsigned int*)resources, 0x10);
-            OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 0xf);
+            SetBitsInWord_0203b4a0((unsigned int*)resources, 0x10);
+            OrBitsIntoField0_020466e4((unsigned int*)GetDataPtr02114e04_020d6c00(), 0xf);
             self->text_ = (char*)GetGlobalField0x1c020421a0()->unk_5c;
             unsigned int female = 0;
             Member021863fc* protagonist = (Member021863fc*)gameState->GetProtagonist();
@@ -183,7 +183,7 @@ extern "C" ARM void func_ov012_021863fc(ProfileEditor021863fc* self)
             self->tasks_[3] = loader->QueueLoadFile(data_ov012_0218b29a, 0);
             self->tasks_[4] = loader->QueueLoadFileInGP2(data_ov012_0218b2ad, data_ov012_0218b2c2, 0);
             self->tasks_[5] = loader->QueueLoadFile(data_ov012_0218b2d3, 0);
-            OrGlobalFlag0x40();
+            OrGlobalFlag0x40_020dc2bc();
             self->step_++;
         }
         return;
@@ -236,7 +236,7 @@ extern "C" ARM void func_ov012_021863fc(ProfileEditor021863fc* self)
         BG2CNT = (BG2CNT & ~3) | 1;
         BG3CNT = (BG3CNT & ~3) | 0;
         DISPCNT = (DISPCNT & ~0x1f00) | 0x1f00;
-        FontBankLoader* music = GetGlobal02109400();
+        FontBankLoader* music = GetGlobal02109400_02094a00();
         func_02094ab0(music);
         BlankFunction02094b34(music, 0x6e, 0x1ff, 0, 0);
         SetSubBrightness(resources, -16, 15);
@@ -245,9 +245,9 @@ extern "C" ARM void func_ov012_021863fc(ProfileEditor021863fc* self)
     }
     else if (self->step_ == 3)
     {
-        if (AlwaysTrue02094b4c(GetGlobal02109400()) && !IsSubBrightnessTransitionActive(resources))
+        if (AlwaysTrue02094b4c(GetGlobal02109400_02094a00()) && !IsSubBrightnessTransitionActive(resources))
         {
-            OrGlobalFlag0x40();
+            OrGlobalFlag0x40_020dc2bc();
             self->allocators_[2].Reset();
             func_ov023_021e7220(&self->card_, 2);
             CreateThreeAllocators_021e71b4(&self->card_, &self->allocators_[2]);
@@ -264,13 +264,13 @@ extern "C" ARM void func_ov012_021863fc(ProfileEditor021863fc* self)
     {
         if (func_ov023_021e76c4(&self->card_))
         {
-            func_ov023_021e7b34(&self->card_, GetField0x3acValue(gameState));
+            func_ov023_021e7b34(&self->card_, GetField0x3acValue_020100a8(gameState));
             func_ov012_0218adac(self, 1, -1, 0);
             SetSubBrightness(resources, 0, 15);
             void* unk = func_0205ec34();
             for (int i = 0; i < 0x12; i++)
             {
-                if (TestBitInByteArray((int)unk, (unsigned char*)unk + 0x8c, i + 0x200))
+                if (TestBitInByteArray_0206dfb0((int)unk, (unsigned char*)unk + 0x8c, i + 0x200))
                 {
                     self->unk_13c0[self->unk_13c4_0] = i;
                     self->unk_13c4_0++;
@@ -312,7 +312,7 @@ extern "C" ARM void func_ov012_021863fc(ProfileEditor021863fc* self)
     else if (self->step_ == 5)
     {
         Messages021863fc* messages = GetGlobalField0x1c020421a0();
-        func_0204500c(messages, FindEntryByKey((TableA68*)self->strings_, 500), 0, 0xe3);
+        func_0204500c(messages, FindEntryByKey_02072a68((TableA68*)self->strings_, 500), 0, 0xe3);
         messages->busy_ = 1;
         self->step_++;
         return;

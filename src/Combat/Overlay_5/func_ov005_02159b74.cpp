@@ -37,7 +37,7 @@ void SetHalfwordAtIndex020e16dc(unsigned char* panel, int idx, short val);
 struct Obj020e1674;
 void TransferObjPaletteEntry020e1674(Obj020e1674*, int, int);
 struct Wf11Outer;
-void ComputeElementPositions(Wf11Outer*, unsigned short*, unsigned short*, int);
+void ComputeElementPositions_020e1e24(Wf11Outer*, unsigned short*, unsigned short*, int);
 struct WinObj020e28f0;
 void SetEntryPositionFromObject(WinObj020e28f0*, short, short);
 struct Ctx020e263c;
@@ -59,7 +59,7 @@ extern "C" ARM void func_ov005_02159b74(EquipmentMenu* self) {
     unsigned char* panel = self->yesNo_->panel_;
     SetHalfwordAtIndex020e16dc(panel, 0, 0x18c6);
     TransferObjPaletteEntry020e1674((Obj020e1674*)panel, 1, 0);
-    ComputeElementPositions((Wf11Outer*)panel, (unsigned short*)&x, (unsigned short*)&y, 0);
+    ComputeElementPositions_020e1e24((Wf11Outer*)panel, (unsigned short*)&x, (unsigned short*)&y, 0);
     SetEntryPositionFromObject((WinObj020e28f0*)self->yesNo_, x, y + 4);
     int tick = GameState::GetInstance()->GetTickCount();
     if (tick == 0)

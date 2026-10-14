@@ -31,7 +31,7 @@ struct Combatant0218f064 {
     unsigned char sequence;
 };
 struct Components0218f064 { Object3D objects[11]; };
-Ticket0218f064* GetField0x3f8Address(GameState*);
+Ticket0218f064* GetField0x3f8Address_0200fd0c(GameState*);
 extern "C" Zone3D* func_02012fe4();
 extern "C" void func_0202ae18();
 void CopyInternalFields0207df50(Foo0207df50*);
@@ -46,8 +46,8 @@ void ResetSelectionState02054664(Obj02054664*);
 int GetMaxFieldPlus1_02192548_02192548();
 void ResetState020415d8(State020415d8*);
 extern "C" void func_020c9be0();
-void RegisterCombatantSlot(GameState*, int, GameObject*);
-void StoreVec3AtField0x50(unsigned char*, int, int, int);
+void RegisterCombatantSlot_0200fd38(GameState*, int, GameObject*);
+void StoreVec3AtField0x50_0203db34(unsigned char*, int, int, int);
 void SetByte0xbeShiftPrev(Bytes02033b88*, int);
 void SetPointerFields02053c4c(char*, char*);
 void RegisterOrAllocateCombatant02053c74(char*, int);
@@ -61,7 +61,7 @@ static inline InternalBlock0218f064* InternalBlocks0218f064(GameResources* resou
 extern "C" ARM void func_ov017_0218f064(GameResources* resources, int id, int kind, int registerEffect, int mode) {
     GameState* game = GameState::GetInstance();
     Zone3D* zone;
-    Ticket0218f064* ticket = GetField0x3f8Address(game);
+    Ticket0218f064* ticket = GetField0x3f8Address_0200fd0c(game);
     zone = func_02012fe4();
     func_0202ae18();
     int initialize = 1;
@@ -125,7 +125,7 @@ extern "C" ARM void func_ov017_0218f064(GameResources* resources, int id, int ki
     combatant->object.unknown_4_ = (short)id;
     combatant->entry = entry;
     entry->id = (short)id;
-    RegisterCombatantSlot(game, id, (GameObject*)combatant);
+    RegisterCombatantSlot_0200fd38(game, id, (GameObject*)combatant);
     if (initialize) {
         Components0218f064* components = (Components0218f064*)allocator->Allocate(0x764);
         if (!components) func_020c9be0();
@@ -145,17 +145,17 @@ extern "C" ARM void func_ov017_0218f064(GameResources* resources, int id, int ki
         Object3D* tenth = &components->objects[10];
         tenth->Initialize();
         int base = id * 12;
-        RegisterCombatantSlot(game, base + 0x13, (GameObject*)&components->objects[0]);
-        RegisterCombatantSlot(game, base + 0x14, (GameObject*)&components->objects[1]);
-        RegisterCombatantSlot(game, base + 0x15, (GameObject*)&components->objects[2]);
-        RegisterCombatantSlot(game, base + 0x16, (GameObject*)&components->objects[3]);
-        RegisterCombatantSlot(game, base + 0x17, (GameObject*)&components->objects[5]);
-        RegisterCombatantSlot(game, base + 0x18, (GameObject*)sixth);
-        RegisterCombatantSlot(game, base + 0x19, (GameObject*)seventh);
-        RegisterCombatantSlot(game, base + 0x1a, (GameObject*)&components->objects[8]);
-        RegisterCombatantSlot(game, base + 0x1b, (GameObject*)&components->objects[4]);
-        RegisterCombatantSlot(game, base + 0x1c, (GameObject*)ninth);
-        RegisterCombatantSlot(game, base + 0x1d, (GameObject*)tenth);
+        RegisterCombatantSlot_0200fd38(game, base + 0x13, (GameObject*)&components->objects[0]);
+        RegisterCombatantSlot_0200fd38(game, base + 0x14, (GameObject*)&components->objects[1]);
+        RegisterCombatantSlot_0200fd38(game, base + 0x15, (GameObject*)&components->objects[2]);
+        RegisterCombatantSlot_0200fd38(game, base + 0x16, (GameObject*)&components->objects[3]);
+        RegisterCombatantSlot_0200fd38(game, base + 0x17, (GameObject*)&components->objects[5]);
+        RegisterCombatantSlot_0200fd38(game, base + 0x18, (GameObject*)sixth);
+        RegisterCombatantSlot_0200fd38(game, base + 0x19, (GameObject*)seventh);
+        RegisterCombatantSlot_0200fd38(game, base + 0x1a, (GameObject*)&components->objects[8]);
+        RegisterCombatantSlot_0200fd38(game, base + 0x1b, (GameObject*)&components->objects[4]);
+        RegisterCombatantSlot_0200fd38(game, base + 0x1c, (GameObject*)ninth);
+        RegisterCombatantSlot_0200fd38(game, base + 0x1d, (GameObject*)tenth);
     }
     combatant->field_b0 = 0x324;
     combatant->field_b4 = 0x189;
@@ -163,7 +163,7 @@ extern "C" ARM void func_ov017_0218f064(GameResources* resources, int id, int ki
     combatant->object.SetRadius(0x1000);
     combatant->object.MaybeSetRegularAnimation(data_ov017_021d73a4, 0);
     combatant->object.position_ = ticket->position;
-    StoreVec3AtField0x50((unsigned char*)combatant, combatant->object.rotation_.x, ticket->rotation, combatant->object.rotation_.z);
+    StoreVec3AtField0x50_0203db34((unsigned char*)combatant, combatant->object.rotation_.x, ticket->rotation, combatant->object.rotation_.z);
     SetByte0xbeShiftPrev((Bytes02033b88*)combatant, 0);
     if (kind == 0x4000) {
         char* companion = ZoneSpecials0218f064(zone)->companion;

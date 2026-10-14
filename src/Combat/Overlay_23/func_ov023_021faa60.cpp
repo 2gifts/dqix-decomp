@@ -5,7 +5,7 @@
 
 extern "C" int func_ov011_021849d8(void* p);
 
-char* FindEntryAndGetNext(void* a, char* b, unsigned int* outSize);
+char* FindEntryAndGetNext_020467c0(void* a, char* b, unsigned int* outSize);
 
 extern "C" void func_ov023_021fab48(void* obj, void* keyObj, const void* fileData, int fileLength);
 
@@ -42,7 +42,7 @@ extern "C" ARM void func_ov023_021faa60(struct Obj021faa60* obj, void* keyObj) {
         return;
     }
 
-    entry = FindEntryAndGetNext(fileData, obj->entryName, &entryLength);
+    entry = FindEntryAndGetNext_020467c0(fileData, obj->entryName, &entryLength);
     if (entry == NULL) {
         return;
     }

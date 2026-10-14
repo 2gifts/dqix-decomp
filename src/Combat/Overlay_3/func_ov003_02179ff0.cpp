@@ -14,7 +14,7 @@ enum { kRegion103a = 0x103a };
 #endif
 #include "GameState/GameState.h"
 
-void* GetPtrField0x2a04(GameState* battleStruct);
+void* GetPtrField0x2a04_02010828(GameState* battleStruct);
 short FindMappedMemberId02080468(void* obj, int id);
 unsigned char GetTableByte0207ca94(int index);
 short CountPositiveEntries0207c638(void* base, unsigned int index);
@@ -38,7 +38,7 @@ struct ListMenu_02179ff0 {
 // USA: func_ov003_02179ff0
 extern "C" ARM void func_ov003_02179ff0(ListMenu_02179ff0* menu) {
     void* memberMap = menu->memberMap;
-    unsigned char* list = (unsigned char*)GetPtrField0x2a04(GameState::GetInstance());
+    unsigned char* list = (unsigned char*)GetPtrField0x2a04_02010828(GameState::GetInstance());
     if (menu->mode == 0x77) {
         short tableIndex = menu->tableCursor - FindMappedMemberId02080468(memberMap, 0x1d);
         unsigned int table =GetTableByte0207ca94(tableIndex);

@@ -4,7 +4,7 @@ struct Entry0207d9bc;
 struct Entry0207da94;
 struct Struct0216377c;
 
-void* GetData02108ea8(void);
+void* GetData02108ea8_0207d78c(void);
 extern "C" int func_0202c508(void* state);
 void ProcessEntries0207da94(struct Entry0207da94* list, int idx);
 int AssignEntrySlot0207db58(struct Entry0207d9bc* arr, unsigned short key, char val);
@@ -21,7 +21,7 @@ extern "C" ARM void func_ov017_021c9bc8(char a0, struct Arg021c9bc8* a1, int a2,
 #else
  enum {regionalOffset0=0x3718};
 #endif
-	void* table = GetData02108ea8();
+	void* table = GetData02108ea8_0207d78c();
 	unsigned int f4 = a1->f4;
 	unsigned short f6 = a1->f6;
 	if (func_0202c508(a4)) {

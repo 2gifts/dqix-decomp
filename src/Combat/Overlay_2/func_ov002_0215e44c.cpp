@@ -6,7 +6,7 @@ struct Slots_0216c9fb {
 };
 
 extern "C" void *memset(void *dst, int value, unsigned int length);
-void *GetPtrField0x2a04(GameState *gameState);
+void *GetPtrField0x2a04_02010828(GameState *gameState);
 void FilterSlotsWithFlag0x800020dc4d0(signed char *out, signed char *outCount);
 extern "C" void func_ov002_0215be00(void *obj, int val, int a2, int a3);
 extern "C" void func_ov002_0215e644(unsigned char *obj, void *buf, int a);
@@ -15,17 +15,17 @@ struct StructA0205d5d0;
 void TryApplyElemFields0205d5d0(StructA0205d5d0*, int, int, int, unsigned char);
 struct Struct_0205d81c;
 unsigned char * FindElementByC40205d81c(Struct_0205d81c*, int);
-void SetField0xa0AndByte0xc4IfFlag0x1Clear(unsigned char* obj, int value, int b);
+void SetField0xa0AndByte0xc4IfFlag0x1Clear_0204f160(unsigned char* obj, int value, int b);
 extern "C" void func_0204ecb4(unsigned char *wnd, int a, int b, int w, int h, signed char *margins);
 struct Obj0204fbf8;
 void InvokeHandlerAfterCacheFlush0204fbf8(Obj0204fbf8*);
-void SetElementFieldC2(Struct_0205d81c*, int, int);
+void SetElementFieldC2_0205deb4(Struct_0205d81c*, int, int);
 
 extern Slots_0216c9fb data_ov002_0216c9fb;
 
 // USA: func_ov002_0215e44c
 extern "C" ARM void func_ov002_0215e44c(unsigned char *self) {
-    GetPtrField0x2a04(GameState::GetInstance());
+    GetPtrField0x2a04_02010828(GameState::GetInstance());
     signed char count    = 0;
     Slots_0216c9fb slots = data_ov002_0216c9fb;
     FilterSlotsWithFlag0x800020dc4d0(slots.v, &count);
@@ -46,7 +46,7 @@ extern "C" ARM void func_ov002_0215e44c(unsigned char *self) {
                 short ey = *(short *) (elem + 0xae);
                 short ew = *(short *) (elem + 0xa8);
                 short eh = *(short *) (elem + 0xaa);
-                SetField0xa0AndByte0xc4IfFlag0x1Clear(elem, *(int *) (elem + 0xa0), key);
+                SetField0xa0AndByte0xc4IfFlag0x1Clear_0204f160(elem, *(int *) (elem + 0xa0), key);
                 func_0204ecb4(elem, ex, ey, ew, eh, 0);
                 InvokeHandlerAfterCacheFlush0204fbf8((Obj0204fbf8*)elem);
             }
@@ -55,7 +55,7 @@ extern "C" ARM void func_ov002_0215e44c(unsigned char *self) {
     }
     for (int j = 0; j < count; j++) {
         *(signed char *) (self + 0x1c20) = slots.v[j];
-        SetElementFieldC2((Struct_0205d81c*)(self + 0x2c8 + 0xc00), (unsigned char) (*(signed char *) (self + 0x1c20) + 0x2c), (unsigned short) (*(signed char *) (self + 0x1c20) + 6));
+        SetElementFieldC2_0205deb4((Struct_0205d81c*)(self + 0x2c8 + 0xc00), (unsigned char) (*(signed char *) (self + 0x1c20) + 0x2c), (unsigned short) (*(signed char *) (self + 0x1c20) + 6));
     }
     *(signed char *) (self + 0x1c20) = -1;
 }

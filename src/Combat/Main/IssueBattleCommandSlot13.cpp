@@ -3,8 +3,8 @@
 
 extern "C" int func_020d424c(int, int, int, int, int, int);
 extern "C" int func_020d40bc(int, int, int);
-void SetBattleContextArrayEntry(int index, int value);
-void* GetBattleContext(void);
+void SetBattleContextArrayEntry_020d404c(int index, int value);
+void* GetBattleContext_020d41d8(void);
 
 struct BattleHeader020d559c {
     unsigned short field0;
@@ -20,8 +20,8 @@ struct BattleCtx020d559c {
 #pragma optimize_for_size off
 
 // USA: func_020d559c
-ARM int IssueBattleCommandSlot13(int a0, unsigned int a1) {
-    BattleCtx020d559c* ctx = (BattleCtx020d559c*)GetBattleContext();
+ARM int IssueBattleCommandSlot13_020d559c(int a0, unsigned int a1) {
+    BattleCtx020d559c* ctx = (BattleCtx020d559c*)GetBattleContext_020d41d8();
     int r = func_020d424c(5, 7, 9, 8, 0xa, 0xb);
     if (r != 0) {
         return r;
@@ -40,7 +40,7 @@ ARM int IssueBattleCommandSlot13(int a0, unsigned int a1) {
             return 6;
         }
     }
-    SetBattleContextArrayEntry(0xd, a0);
+    SetBattleContextArrayEntry_020d404c(0xd, a0);
     r = func_020d40bc(0xd, 1, 1 << a1);
     if (r == 0) {
         r = 2;

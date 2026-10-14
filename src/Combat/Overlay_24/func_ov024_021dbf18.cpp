@@ -16,8 +16,8 @@ struct Range_021dbf18 { char pad[0x20]; struct PackedPair_021dbf18 f20; struct P
 struct Stats_021dbf18 { char pad[0x3b]; unsigned char bit0 : 1; unsigned char rest : 7; };
 
 extern "C" unsigned long long func_ov024_021e4b14(struct Obj_021dbf18* obj, int a1, int id, struct Range_021dbf18* range, int mode);
-int CheckFlag0x14Bit0x10Set(unsigned char* obj);
-void ClearBattleFlag0x14Bit4(void* obj);
+int CheckFlag0x14Bit0x10Set_020882f8(unsigned char* obj);
+void ClearBattleFlag0x14Bit4_02088390(void* obj);
 extern "C" void func_ov000_02159eac(void* a0, void* buf, int a2);
 extern "C" int func_ov000_02159f18(void* a0, unsigned long long mask, int kind);
 unsigned short SelectByIndexRange0to3_021da644(int idx, int a, int b);
@@ -34,9 +34,9 @@ extern "C" ARM void* func_ov024_021dbf18(struct Obj_021dbf18* obj, int a1, int i
 	unsigned long long mask = 0;
 	if (flagArg) {
 		mask = func_ov024_021e4b14(obj, a1, id, range, 1);
-		if (CheckFlag0x14Bit0x10Set((unsigned char*)c->currentStats_)) {
+		if (CheckFlag0x14Bit0x10Set_020882f8((unsigned char*)c->currentStats_)) {
 			msg = 0x40;
-			ClearBattleFlag0x14Bit4(c->currentStats_);
+			ClearBattleFlag0x14Bit4_02088390(c->currentStats_);
 			if (mask == 0) {
 				func_ov000_02159eac(obj->field0x10, &mask, 0x10);
 			}

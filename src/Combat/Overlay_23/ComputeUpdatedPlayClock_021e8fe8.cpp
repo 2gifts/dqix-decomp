@@ -13,7 +13,7 @@ struct TimeStamp020104cc;
 void ComputeElapsedPlayTimeHMS020104cc(struct TimeStamp020104cc* obj, unsigned short* outHours, unsigned char* outMinutes, unsigned char* outSeconds);
 
 extern "C" void* func_0202ae18(void);
-int GetFieldAt0x0(int* obj);
+int GetFieldAt0x0_0202ba00(int* obj);
 
 extern "C" int _s32_div_f(int a, int b);
 
@@ -36,7 +36,7 @@ extern "C" ARM struct BattleRecordPlayClock func_ov023_021e8fe8(struct BattleRec
         ComputeElapsedPlayTimeHMS020103f0((struct TimeStamp020103f0*)battle, &tHours, &tMinutes, &tSeconds);
     } else {
         void* ptr = func_0202ae18();
-        int val = GetFieldAt0x0((int*)ptr);
+        int val = GetFieldAt0x0_0202ba00((int*)ptr);
         int byteVal = *((unsigned char*)ptr + 0x100d);
         if ((val == 5 && byteVal > 1) || val == 6) {
             ComputeElapsedPlayTimeHMS020104cc((struct TimeStamp020104cc*)battle, &tHours, &tMinutes, &tSeconds);

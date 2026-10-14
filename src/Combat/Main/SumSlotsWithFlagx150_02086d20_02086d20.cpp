@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 
 struct Slots02083960;
 int CountPositiveSlots02083960(struct Slots02083960* s);
@@ -14,9 +14,9 @@ ARM int SumSlotsWithFlag0x1000x150_02086d20(unsigned char* self) {
     int i = 0;
     while (i < self[0xf7c]) {
         unsigned char* p = self + i;
-        GameObject* c = GetCombatantWithFlag0x100(battleStruct, p[0xf78]);
+        GameObject* c = GetCombatantWithFlag0x100_0200ff1c(battleStruct, p[0xf78]);
         if (c != 0) {
-            int field = GetFieldAt0x150((unsigned char*)c);
+            int field = GetFieldAt0x150_02053c6c((unsigned char*)c);
             if (field != 0) {
                 total = total + CountPositiveSlots02083960((struct Slots02083960*)field);
             }

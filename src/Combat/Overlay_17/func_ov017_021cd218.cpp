@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct Evt021cd218 {
@@ -18,7 +18,7 @@ struct Evt021cd218 {
 
 // USA: func_ov017_021cd218
 extern "C" ARM void func_ov017_021cd218(unsigned short a, unsigned short b, unsigned short c, unsigned short d, unsigned short e, unsigned short f) {
-    void* data = GetData02100044();
+    void* data = GetData02100044_0202ae24();
 
     struct Evt021cd218 evt;
     evt.tag = 0x66;

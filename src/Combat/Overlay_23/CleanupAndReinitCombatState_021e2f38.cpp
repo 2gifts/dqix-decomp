@@ -34,7 +34,7 @@ ARM void CleanupAndReinitCombatState_021e2f38(void* obj) {
         *(int*)(o + regionalOffset0) = -1;
     }
 
-    FontBankLoader* g = GetGlobal02109400();
+    FontBankLoader* g = GetGlobal02109400_02094a00();
     BlankFunction02094b40(g);
     func_02094ab0(g);
 

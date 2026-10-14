@@ -18,7 +18,7 @@ extern "C" void func_ov023_021dfb4c(void* obj);
 extern "C" void func_ov023_021ddae4(void* obj);
 extern "C" void func_ov023_021dc520(void* obj);
 extern "C" void func_ov023_021dd404(void* obj);
-int GetWord0x0(int* obj);
+int GetWord0x0_0200fb8c(int* obj);
 int DispatchByMode77c_021ddbb8(void* obj, int a, int b);
 
 // USA: func_ov023_021dd974
@@ -36,7 +36,7 @@ ARM void RefreshAndDispatch32_021dd974(void* obj) {
 
     if (!(view->flags & 0x40)) return;
 
-    GetWord0x0((int*)GameState::GetInstance());
+    GetWord0x0_0200fb8c((int*)GameState::GetInstance());
 
     if (!(view->flags & 0x20)) return;
 

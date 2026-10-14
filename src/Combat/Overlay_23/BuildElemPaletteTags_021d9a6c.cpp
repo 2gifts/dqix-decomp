@@ -5,11 +5,11 @@
 #include "Combat/TryApplyElemFields.h"
 
 int GetFieldByKey020e0434(Container020e0310*, int);
-int AppendPaletteTag(char*, int);
+int AppendPaletteTag_02041e70(char*, int);
 extern "C" int func_02042158(char*, int);
 int AppendString02042058(char*, const char*);
-int StringLength(const char*);
-int CompareStrings(const char*, const char*);
+int StringLength_020d2ff0(const char*);
+int CompareStrings_020d3018(const char*, const char*);
 extern "C" int func_02001aec(const void*, const void*, unsigned int);
 extern "C" const char data_ov023_021fcd20[];
 
@@ -36,16 +36,16 @@ extern "C" ARM void func_ov023_021d9a6c(char* storage) {
 
     for (int i = 0; i < editor->furthestState[editor->sex]; i++) {
         if (i == editor->state - 1)
-            AppendPaletteTag(editor->textBuffer, 14);
+            AppendPaletteTag_02041e70(editor->textBuffer, 14);
         else
-            AppendPaletteTag(editor->textBuffer, 15);
+            AppendPaletteTag_02041e70(editor->textBuffer, 15);
         if (i < 7) {
             short key = keys[i];
-            func_02042158(editor->textBuffer, (10 - StringLength((const char*)GetFieldByKey020e0434(&editor->texts, key))) * 5);
+            func_02042158(editor->textBuffer, (10 - StringLength_020d2ff0((const char*)GetFieldByKey020e0434(&editor->texts, key))) * 5);
             AppendString02042058(editor->textBuffer, (const char*)GetFieldByKey020e0434(&editor->texts, key));
             AppendString02042058(editor->textBuffer, (const char*)GetFieldByKey020e0434(&editor->texts, 0x4273));
         } else if (i == 7) {
-            if (CompareStrings(editor->names[editor->sex], (const char*)GetFieldByKey020e0434(&editor->texts, 0x4272)) == 0) {
+            if (CompareStrings_020d3018(editor->names[editor->sex], (const char*)GetFieldByKey020e0434(&editor->texts, 0x4272)) == 0) {
                 AppendString02042058(editor->textBuffer, (const char*)GetFieldByKey020e0434(&editor->texts, 0x4274));
             } else {
                 char name[11] = {};
@@ -58,7 +58,7 @@ extern "C" ARM void func_ov023_021d9a6c(char* storage) {
                         break;
                     }
                 }
-                func_02042158(editor->textBuffer, (10 - StringLength(name)) * 5);
+                func_02042158(editor->textBuffer, (10 - StringLength_020d2ff0(name)) * 5);
                 AppendString02042058(editor->textBuffer, name);
             }
         }
@@ -72,8 +72,8 @@ extern "C" ARM void func_ov023_021d9a6c(char* storage) {
 
 struct Container020e0310;
 extern int GetFieldByKey020e0434(Container020e0310*, int);
-extern int AppendPaletteTag(char*, int);
-extern int AppendXTag(char*, int);
+extern int AppendPaletteTag_02041e70(char*, int);
+extern int AppendXTag_02041a28(char*, int);
 extern int AppendString02042058(char*, const char*);
 extern "C" int func_020420e8(void*, int);
 
@@ -111,17 +111,17 @@ extern "C" ARM void func_ov023_021d9a6c(char* obj) {
         signed char val = *(signed char*)(obj + 0xc58);
         int tag = 15;
         if (i == val - 1) tag = 14;
-        AppendPaletteTag(buf, tag);
+        AppendPaletteTag_02041e70(buf, tag);
 
         if (i < 7) {
             short v = arr[i];
-            AppendXTag(buf, 0x32 - func_020420e8((void*)GetFieldByKey020e0434((Container020e0310*)(obj + 0xe0), v), 0));
+            AppendXTag_02041a28(buf, 0x32 - func_020420e8((void*)GetFieldByKey020e0434((Container020e0310*)(obj + 0xe0), v), 0));
             AppendString02042058(buf, (const char*)GetFieldByKey020e0434((Container020e0310*)(obj + 0xe0), v));
             AppendString02042058(buf, (const char*)GetFieldByKey020e0434((Container020e0310*)(obj + 0xe0), 0x4273));
         } else if (i == 7) {
             char* entry = (*(char***)(obj + 0xdb0))[*(unsigned char*)(obj + 0xda3)];
             if (*(signed char*)entry != 0) {
-                AppendXTag(buf, 0x32 - func_020420e8(entry, 0));
+                AppendXTag_02041a28(buf, 0x32 - func_020420e8(entry, 0));
                 AppendString02042058(buf, entry);
             } else {
                 AppendString02042058(buf, (const char*)GetFieldByKey020e0434((Container020e0310*)(obj + 0xe0), 0x4274));

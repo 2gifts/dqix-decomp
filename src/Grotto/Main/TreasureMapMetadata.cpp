@@ -10,10 +10,9 @@
 extern "C"
 {
 
-unsigned int _Z18GetField0x3acValueP9GameState(GameState*);
-char* _Z25GetCombatantWithFlag0x100P9GameStatei(GameState*, unsigned int);
+unsigned int _Z27GetField0x3acValue_020100a8P9GameState(GameState*);
+char* _Z34GetCombatantWithFlag0x100_0200ff1cP9GameStatei(GameState*, unsigned int);
 
-// returns the overland zone instance
 void* func_02012fe4();
 }
 
@@ -22,8 +21,7 @@ void* func_02012fe4();
 unsigned short GenerateNewMapQuality()
 {
     GameState* gameState = GameState::GetInstance();
-    char* maybeMainCharDataPtr = _Z25GetCombatantWithFlag0x100P9GameStatei(gameState, _Z18GetField0x3acValueP9GameState(gameState));
-    // Another pointless function call
+    char* maybeMainCharDataPtr = _Z34GetCombatantWithFlag0x100_0200ff1cP9GameStatei(gameState, _Z27GetField0x3acValue_020100a8P9GameState(gameState));
     (void)func_02012fe4();
     GrottoStruct* grotto = gameState->GetGrottoStruct();
 
@@ -37,24 +35,8 @@ unsigned short GenerateNewMapQuality()
     unsigned short maxNumRevocs = 0;
     for (int i = 0; i < 13; i++)
     {
-        // WARNING: This is a minefield!
-        // Even the slightest adjustments to this, while functionally irrelevant,
-        // cause the compiler to assign different registers. As it stands, the
-        // counter i is assigned to lr (weird choice).
-        //
-        // Also, decomp.me had this fully functional without declaring j as a
-        // separate variable (just using a manual cast in the definitions of
-        // level and revocCount) but on my machine my compiler didn't like that
-        // and proceeded to put i into a different register.
-        //
-        // That said, if we define structs along the lines of
-        // struct Inner { char unknown[0x16c]; unsigned short levels[13]; unsigned char revocs[13]; };
-        // struct Outer { char unknown[0x150]; Inner* inner; };
-        // and make maybeMainCharDataPtr of type Outer*, then we can use
-        // inner->levels[j] and inner->revocs[j] and it still works. 
         unsigned char j = i;
-        // beware pointer trickery, this is really offset 0x16c + 2*j
-        unsigned short level = *(*(unsigned short**)(maybeMainCharDataPtr + MAIN_CHAR_DATA_PTR_OFFSET) + 0xb6 + j);  
+        unsigned short level = *(*(unsigned short**)(maybeMainCharDataPtr + MAIN_CHAR_DATA_PTR_OFFSET) + 0xb6 + j);
         unsigned short revocCount = *(*(unsigned char**)(maybeMainCharDataPtr + MAIN_CHAR_DATA_PTR_OFFSET) + 0x186 + j);
         if (level > maxCharLevel)
             maxCharLevel = level;
@@ -69,7 +51,6 @@ unsigned short GenerateNewMapQuality()
         maxNumRevocs = 10;
 
     unsigned short quality;
-    // Probably checking if regular map or legacy boss map?
     if (grotto->unknown_9 == 2)
     {
         quality = maxCharLevel + maxNumRevocs * 5 + grotto->activeMapLevel;
@@ -157,7 +138,7 @@ void TreasureMapMetadata::InitialiseAsLegacyBossMap(unsigned int bossID, unsigne
         LegacyBossLevel = (unsigned char)level;
     }
     SeedOrMinTurns = 0;
-    
+
     int finalQuality = GenerateNewMapQuality();
     Location = (unsigned char)GenerateMapLocation(finalQuality);
 }

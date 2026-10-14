@@ -3,7 +3,7 @@
 
 struct SearchStruct0202c1a4;
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
-int IsField0Null(void** obj);
+int IsField0Null_02046b08(void** obj);
 struct U16Field0x6_020375f8;
 struct Vec3s32_020c3030 { int x; int y; int z; };
 void Something_021a6b9c(int unused0, unsigned char byteVal);
@@ -17,7 +17,7 @@ extern "C" ARM void func_ov017_021d1d00(int unused0, int unused1, GameState* bat
 #endif
     if (!GetSearchStructCurrentArrEntry(search)) return;
     void** list = *(void***)(ov + 0x3000 + regionalOffset0);
-    if (!IsField0Null(list)) return;
+    if (!IsField0Null_02046b08(list)) return;
 
     GameObject* c1 = battleStruct->GetPartyMemberByIndex(0);
     GameObject* c2 = battleStruct->GetUnknownGameObject();

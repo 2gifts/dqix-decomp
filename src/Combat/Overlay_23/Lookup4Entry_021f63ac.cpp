@@ -7,7 +7,7 @@ extern "C" void* func_ov023_021fa598(void* obj);
 
 struct EntryA68 { short key; void* value; };
 struct TableA68 { struct EntryA68* entries; short count; };
-void* FindEntryByKey(struct TableA68* table, int key);
+void* FindEntryByKey_02072a68(struct TableA68* table, int key);
 
 // USA: func_ov023_021f63ac
 ARM void* Lookup4Entry_021f63ac(void* a, int b, int c) {
@@ -16,5 +16,5 @@ ARM void* Lookup4Entry_021f63ac(void* a, int b, int c) {
     if (node == NULL) return NULL;
     if (func_ov023_021f6f10(node) != 4) return NULL;
     struct TableA68* table = (struct TableA68*)func_ov023_021fa598(node);
-    return FindEntryByKey(table, (short)c);
+    return FindEntryByKey_02072a68(table, (short)c);
 }

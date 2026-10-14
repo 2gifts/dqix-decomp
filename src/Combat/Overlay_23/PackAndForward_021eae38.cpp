@@ -3,7 +3,7 @@
 
 extern "C" int func_ov017_021d60f4(void*);
 extern "C" void func_ov017_021d6134(void*, int);
-int CopyIndexedRegion0x75f0(void* unused, short* indices, int* dest, int count);
+int CopyIndexedRegion0x75f0_020ac020(void* unused, short* indices, int* dest, int count);
 
 struct PackedBits_021eae38 {
 	unsigned int f0 : 10;
@@ -27,7 +27,7 @@ ARM int PackAndForward_021eae38(void *obj) {
 	dest.bits.f2 = 0;
 	dest.bits.f3 = 0;
 	indices[0] = (short)func_ov017_021d60f4(obj);
-	CopyIndexedRegion0x75f0(0, indices, &dest.raw, 1);
+	CopyIndexedRegion0x75f0_020ac020(0, indices, &dest.raw, 1);
 	func_ov017_021d6134((char*)obj + 8, (int)dest.bits.f0);
 	return 1;
 }

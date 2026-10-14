@@ -3,8 +3,8 @@
 #include "GameState/GameState.h"
 
 struct ArrayContainsByteStruct;
-int ArrayContainsByte(ArrayContainsByteStruct* s, int val);
-void* GetPtrField0x2a04(GameState* gameState);
+int ArrayContainsByte_02086ef0(ArrayContainsByteStruct* s, int val);
+void* GetPtrField0x2a04_02010828(GameState* gameState);
 unsigned short SelectByIndexRange0to3_021da644(int idx, int a, int b);
 void IncrementByteCounterCapped0x63_0215a8d4(unsigned char* battle, int idx);
 extern "C" void* func_ov000_0215e958(void* a0);
@@ -48,8 +48,8 @@ extern "C" ARM void* func_ov024_021dc0b8(struct Obj_021dc0b8* obj, int target, i
 		ef = func_ov024_021e4b14(obj, target, id, params, 1);
 		if (ef != 0) {
 			sel = SelectByIndexRange0to3_021da644(id, params->f20.c, params->f24.a);
-			void* list = GetPtrField0x2a04(GameState::GetInstance());
-			if (flag && ArrayContainsByte((ArrayContainsByteStruct*)list, target) && params->actionId == 0xa9) {
+			void* list = GetPtrField0x2a04_02010828(GameState::GetInstance());
+			if (flag && ArrayContainsByte_02086ef0((ArrayContainsByteStruct*)list, target) && params->actionId == 0xa9) {
 				IncrementByteCounterCapped0x63_0215a8d4((unsigned char*)obj->field0x10, 5);
 			}
 			obj->field0x14++;

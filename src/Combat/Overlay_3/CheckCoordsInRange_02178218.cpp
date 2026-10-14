@@ -2,7 +2,7 @@
 
 extern unsigned char data_02114e54;
 
-void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
+void SelectCoordsByFlag0x24_02012a84(unsigned char* obj, int* out1, int* out2);
 
 // USA: func_ov003_02178218  (semantic: CheckCoordsInRange_02178218)
 extern "C" ARM int func_ov003_02178218(void) {
@@ -11,7 +11,7 @@ extern "C" ARM int func_ov003_02178218(void) {
         return 0;
     }
     int x, y;
-    SelectCoordsByFlag0x24(d, &x, &y);
+    SelectCoordsByFlag0x24_02012a84(d, &x, &y);
     if (x < 0x94 || x > 0xa7) {
         return 0;
     }

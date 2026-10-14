@@ -15,7 +15,7 @@ extern "C" ARM int func_ov024_021ea500(void* unused, struct Obj4Bits_021ea500* o
 	if (obj->kind == 1) {
 		int inRange = (id >= 0 && id <= 3);
 		if (inRange) {
-			GameObject* combatant = GetCombatantWithFlag0x100(bs, id);
+			GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(bs, id);
 			char* p = (char*)(*(int**)((char*)combatant + regionalOffset0)) + 0x2f4;
 			if (p) {
 				struct Bits2f4_021ea500* flags = (struct Bits2f4_021ea500*)p;

@@ -6,9 +6,8 @@ extern "C" int func_ov023_021f6f10(void*);
 extern "C" void* func_0205ec34(void);
 extern "C" int func_020deb58(void*, int, int, int, int);
 extern "C" void* func_020dec30(void*, int, int, int, int, int);
-extern int TestBitInByteArray(int unused, unsigned char* arr, int index);
+extern int TestBitInByteArray_0206dfb0(int unused, unsigned char* arr, int index);
 
-// Real virtual call: index 0xe8/4=58 (Method58).
 class VObj02153b6c {
 public:
 	virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
@@ -53,7 +52,7 @@ extern "C" ARM void func_ov004_02153b6c(void* obj, int arg1, int arg2, int arg3,
                     int extracted = (entry->fieldC << 9) >> 21;
                     extracted = (unsigned short)extracted;
                     if (extracted > 0) {
-                        if (TestBitInByteArray((int)ptr, (unsigned char*)ptr + 0x8c, extracted + 0x76 + 0xc00)) {
+                        if (TestBitInByteArray_0206dfb0((int)ptr, (unsigned char*)ptr + 0x8c, extracted + 0x76 + 0xc00)) {
                             matchCount++;
                         }
                     }

@@ -18,7 +18,7 @@ struct List0204af64 {
     unsigned char b1f;
 };
 void ResetList0204af64(struct List0204af64* obj);
-void SetWord0x18ClearByte0x1f(unsigned char* obj, int value);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char* obj, int value);
 extern "C" void func_0204b5b4(void*, int);
 
 struct Obj0204b5e8;
@@ -54,7 +54,7 @@ extern "C" ARM int func_ov023_021f745c(char* obj, void* arg1, int arg2, int arg3
     *(int*)(obj + 0x10) = p6;
     *(int*)(obj + regionalOffset1) = 0;
     ResetList0204af64((struct List0204af64*)(obj + regionalOffset0));
-    SetWord0x18ClearByte0x1f((unsigned char*)(obj + regionalOffset0), 0);
+    SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)(obj + regionalOffset0), 0);
 
     struct List0204af64* list = (struct List0204af64*)(obj + regionalOffset0);
     list->b1c_lo = (unsigned char)p7;

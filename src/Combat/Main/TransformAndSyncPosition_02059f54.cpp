@@ -52,7 +52,7 @@ extern "C" ARM void func_02059f54(unsigned char* p, int combatantId) {
     if (*(int*)(p + 0xac) == 0) {
         _ZN8Object3D4DrawEb(p, flags->bit2);
     } else {
-        ForwardField4To0205765c((int*)p);
+        ForwardField4To0205765c_0205578c((int*)p);
     }
 
     if (flags->bit3) {

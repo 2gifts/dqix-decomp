@@ -70,20 +70,20 @@ extern "C" unsigned char* func_02012fe4(void);
 void* GetGlobalResetObj020d7a50(void);
 extern "C" void func_ov017_021ae760(Chest021adcb0* self);
 void CallIfField498_0218d5ac(void* res);
-void* GetFieldIfFlag4(char* gs);
-void SetField0x238False(void* obj);
-void SetField0x238True(void* obj);
-void SetBitsInField4(unsigned int* obj, unsigned int mask);
-void ClearBitsInField4(unsigned int* obj, unsigned int mask);
+void* GetFieldIfFlag4_020100f8(char* gs);
+void SetField0x238False_020a27a0(void* obj);
+void SetField0x238True_020a2794(void* obj);
+void SetBitsInField4_0203b4d8(unsigned int* obj, unsigned int mask);
+void ClearBitsInField4_0203b4e8(unsigned int* obj, unsigned int mask);
 void SetVecYByMode02033834(Obj02033834* obj, int arg);
 extern "C" int* func_0202ae18(void);
-unsigned char* GetElementStride0x24(unsigned char* p, int i);
+unsigned char* GetElementStride0x24_020177a8(unsigned char* p, int i);
 Container* GetElement02094d5c(GetElement02094d5cList* list, int id);
-void* GetPtrField0x2a04(GameState* gs);
-int CheckField0NonZero(int* p);
+void* GetPtrField0x2a04_02010828(GameState* gs);
+int CheckField0NonZero_0202b7d8(int* p);
 extern "C" int func_0202c540(void* p);
 void InitObjFromCombatantId020e4bf4(void* obj, int combatantId);
-int CallFunc020e0434With02153694(int key);
+int CallFunc020e0434With02153694_020e51cc(int key);
 extern "C" void func_02046608(void* g, int mode, int fmt, char* out, int size, int a, int b);
 extern "C" void func_020d7e10(void* receiver, void* input, int style, int flag, int a, int b);
 void CancelPendingAction020397cc(Obj020397cc* obj, int arg);
@@ -91,13 +91,13 @@ int GetByte0x150Bit6(BitFlags020d805c* obj);
 void TeardownAndResetState020d7aa0(Obj020d7aa0* obj);
 short SumCombatantKeyMatches02086aec(Obj02086aec* obj, int key);
 extern "C" int sprintf(char* dst, const char* fmt, ...);
-void SetBitInArray(void* arr, int bit, int value);
+void SetBitInArray_020113a8(void* arr, int bit, int value);
 void SetByteIfChanged02033b68(Obj02033b68* obj, int v);
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 extern "C" void func_ov017_0218d510(GameResources* res, SafeAllocator* alloc);
-void SetByteField0x253(void* obj);
+void SetByteField0x253_020397c0(void* obj);
 struct UpdateStateStruct;
-void UpdateActivationState(UpdateStateStruct*, int, int, int);
+void UpdateActivationState_02015a98(UpdateStateStruct*, int, int, int);
 void EnqueueEventTag164_021cfd5c(unsigned char a, unsigned short b, unsigned short c);
 int IsField10Eq2_0218d618(Struct0218d618* obj);
 extern "C" void* memset(void* dst, int c, unsigned int n);
@@ -113,7 +113,7 @@ void ForwardField0xc0_0205eb80(void* obj);
 void SetForwardAndStore0205eb54(void* obj, int arg1, int arg2);
 void DispatchIfField0xc4NonNeg_0205eb90(void* obj, int a, int b);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0* obj, int a, int b);
-void SetOrClearBitInArray(void* unused, unsigned char* array, int bit, int value);
+void SetOrClearBitInArray_0206df6c(void* unused, unsigned char* array, int bit, int value);
 extern "C" void func_ov017_021cdb00(int, int, int, int);
 int HasNonZeroByteAtOfField498_0218d75c_0218d75c(void* obj);
 void SetIndexedName02046574(Obj02046574* obj, int index, char* str);
@@ -149,17 +149,17 @@ extern "C" ARM void func_ov017_021adcb0(Chest021adcb0* self) {
 
     if (self->state == 0) {
         GameState* gs2 = GameState::GetInstance();
-        void* camera = GetFieldIfFlag4((char*)gs2);
+        void* camera = GetFieldIfFlag4_020100f8((char*)gs2);
         if (camera) {
-            SetField0x238False(camera);
+            SetField0x238False_020a27a0(camera);
         }
         if (res) {
-            SetBitsInField4((unsigned int*)res, 0x80);
+            SetBitsInField4_0203b4d8((unsigned int*)res, 0x80);
         }
         *(unsigned short*)((char*)member + 0xb2) = 0;
         SetVecYByMode02033834((Obj02033834*)member, self->mode);
         int* search = func_0202ae18();
-        Element021adcb0* elem = (Element021adcb0*)GetElementStride0x24(save, self->slot);
+        Element021adcb0* elem = (Element021adcb0*)GetElementStride0x24_020177a8(save, self->slot);
         Container* container = NULL;
         if (elem) {
             if (self->useList) {
@@ -168,13 +168,13 @@ extern "C" ARM void func_ov017_021adcb0(Chest021adcb0* self) {
                 container = mgr->GetContainerByID(elem->containerId, NULL);
             }
         }
-        Obj02086aec* party = (Obj02086aec*)GetPtrField0x2a04(gs2);
-        if (CheckField0NonZero(search) && func_0202c540(search) && container && container->containerType == 0) {
+        Obj02086aec* party = (Obj02086aec*)GetPtrField0x2a04_02010828(gs2);
+        if (CheckField0NonZero_0202b7d8(search) && func_0202c540(search) && container && container->containerType == 0) {
             char who[0xc];
             char text[0x50];
             InitObjFromCombatantId020e4bf4(who, self->member);
             *(char**)g = who;
-            func_02046608(g, 0xc, CallFunc020e0434With02153694(0x28), text, 0xe3, 0, 1);
+            func_02046608(g, 0xc, CallFunc020e0434With02153694_020e51cc(0x28), text, 0xe3, 0, 1);
             func_020d7e10(GetGlobalResetObj020d7a50(), text, 0, 0, 1, 1);
             func_ov017_021ae760(self);
         } else if (container && container->unk_4_0 != 0) {
@@ -198,8 +198,8 @@ extern "C" ARM void func_ov017_021adcb0(Chest021adcb0* self) {
                 char text[0x100];
                 char who[0xc];
                 char fmt[0x100];
-                int name = CallFunc020e0434With02153694(0x29);
-                sprintf(fmt, data_ov017_021d799c, name, CallFunc020e0434With02153694(0x2b));
+                int name = CallFunc020e0434With02153694_020e51cc(0x29);
+                sprintf(fmt, data_ov017_021d799c, name, CallFunc020e0434With02153694_020e51cc(0x2b));
                 InitObjFromCombatantId020e4bf4(who, self->member);
                 *(char**)g = who;
                 func_02046608(g, 0xc, (int)fmt, text, 0xe3, 0, 1);
@@ -209,10 +209,10 @@ extern "C" ARM void func_ov017_021adcb0(Chest021adcb0* self) {
             } else {
                 char text[0x100];
                 if (keyB > 0 || keyC > 0) {
-                    int name = CallFunc020e0434With02153694(0x29);
-                    sprintf(text, data_ov017_021d799c, name, CallFunc020e0434With02153694(0x2c));
+                    int name = CallFunc020e0434With02153694_020e51cc(0x29);
+                    sprintf(text, data_ov017_021d799c, name, CallFunc020e0434With02153694_020e51cc(0x2c));
                 } else {
-                    sprintf(text, data_ov017_021d79a2, CallFunc020e0434With02153694(0x29));
+                    sprintf(text, data_ov017_021d79a2, CallFunc020e0434With02153694_020e51cc(0x29));
                 }
                 func_020d7e10(GetGlobalResetObj020d7a50(), text, 0, 0, 1, 1);
                 self->timer = 0;
@@ -221,7 +221,7 @@ extern "C" ARM void func_ov017_021adcb0(Chest021adcb0* self) {
         } else {
             CancelPendingAction020397cc((Obj020397cc*)member, 1);
             if (self->useList) {
-                SetBitInArray(gs2, *(unsigned short*)save % 20, self->slot);
+                SetBitInArray_020113a8(gs2, *(unsigned short*)save % 20, self->slot);
             }
             SetByteIfChanged02033b68((Obj02033b68*)member, 7);
             self->state = 1;
@@ -229,7 +229,7 @@ extern "C" ARM void func_ov017_021adcb0(Chest021adcb0* self) {
         if ((self->state == 1 || self->state == 9) && container && container->itemIDOrRank == 0x5617) {
             self->special = 1;
             self->allocator.ResetAllocatorPointer();
-            self->allocator.CreateTypeA(AllocateAligned4(&data_02114e20, 0x4000), 0x4000);
+            self->allocator.CreateTypeA(AllocateAligned4_02012d88(&data_02114e20, 0x4000), 0x4000);
             self->allocator.Reset();
             func_ov017_0218d510(func_ov017_0218b5b0(), &self->allocator);
         }
@@ -238,7 +238,7 @@ extern "C" ARM void func_ov017_021adcb0(Chest021adcb0* self) {
         if (self->timer > 0x2ee) {
             GameObject* leader = gs->GetUnknownGameObject();
             if (leader) {
-                SetByteField0x253(leader);
+                SetByteField0x253_020397c0(leader);
             }
             func_ov017_021ae760(self);
         }
@@ -250,12 +250,12 @@ extern "C" ARM void func_ov017_021adcb0(Chest021adcb0* self) {
         }
     } else if (self->state == 1) {
         if (*(int*)((char*)member + 0x24) >= 0x666) {
-            Element021adcb0* elem = (Element021adcb0*)GetElementStride0x24(save, self->slot);
+            Element021adcb0* elem = (Element021adcb0*)GetElementStride0x24_020177a8(save, self->slot);
             if (elem) {
                 if (elem->kind == 2 || elem->kind == 1) {
-                    UpdateActivationState((UpdateStateStruct*)elem, *(short*)((char*)member + 4), 1, 1);
+                    UpdateActivationState_02015a98((UpdateStateStruct*)elem, *(short*)((char*)member + 4), 1, 1);
                 } else {
-                    UpdateActivationState((UpdateStateStruct*)elem, *(short*)((char*)member + 4), 1, 0);
+                    UpdateActivationState_02015a98((UpdateStateStruct*)elem, *(short*)((char*)member + 4), 1, 0);
                 }
             }
             EnqueueEventTag164_021cfd5c(*(short*)((char*)member + 4), *(unsigned short*)save, self->slot);
@@ -269,21 +269,21 @@ extern "C" ARM void func_ov017_021adcb0(Chest021adcb0* self) {
             if (!self->ambush && !self->special) {
                 GameObject* leader = gs->GetUnknownGameObject();
                 if (leader) {
-                    SetByteField0x253(leader);
+                    SetByteField0x253_020397c0(leader);
                 }
-                void* camera = GetFieldIfFlag4((char*)GameState::GetInstance());
+                void* camera = GetFieldIfFlag4_020100f8((char*)GameState::GetInstance());
                 if (camera) {
-                    SetField0x238True(camera);
+                    SetField0x238True_020a2794(camera);
                 }
                 if (res) {
-                    ClearBitsInField4((unsigned int*)res, 0x80);
+                    ClearBitsInField4_0203b4e8((unsigned int*)res, 0x80);
                 }
             }
             self->state = 4;
         }
     } else if (self->state == 4) {
         save = func_02012fe4();
-        Element021adcb0* elem = (Element021adcb0*)GetElementStride0x24(save, self->slot);
+        Element021adcb0* elem = (Element021adcb0*)GetElementStride0x24_020177a8(save, self->slot);
         if (elem) {
             char* text = *(char**)((char*)g + 0x60);
             memset(text, 0, 0x960);
@@ -324,10 +324,10 @@ extern "C" ARM void func_ov017_021adcb0(Chest021adcb0* self) {
                 }
             }
             if (!done) {
-                sprintf(text, (char*)CallFunc020e0434With02153694(0x2d));
+                sprintf(text, (char*)CallFunc020e0434With02153694_020e51cc(0x2d));
             }
         }
-        Element021adcb0* elem2 = (Element021adcb0*)GetElementStride0x24(save, self->slot);
+        Element021adcb0* elem2 = (Element021adcb0*)GetElementStride0x24_020177a8(save, self->slot);
         if (elem2) {
             LootableContainerManager* mgr2 = LootableContainerManager::GetMainInstance();
             unsigned short pos2 = 0;
@@ -356,10 +356,10 @@ extern "C" ARM void func_ov017_021adcb0(Chest021adcb0* self) {
                 int id = chest->uniqueID;
                 unsigned char* flags = (unsigned char*)func_0205ec34();
                 if (chest->containerType == 0) {
-                    SetOrClearBitInArray(flags, flags + 0x8c, id + 0x212, 1);
+                    SetOrClearBitInArray_0206df6c(flags, flags + 0x8c, id + 0x212, 1);
                     func_ov017_021cdb00(1, id, 1, -1);
                 } else if (!self->useList) {
-                    SetOrClearBitInArray(flags, flags + 0x8c, id + 0x79e, 1);
+                    SetOrClearBitInArray_0206df6c(flags, flags + 0x8c, id + 0x79e, 1);
                 }
                 chest->unk_4_0 = 0;
                 chest->lootType = 0;
@@ -371,7 +371,7 @@ extern "C" ARM void func_ov017_021adcb0(Chest021adcb0* self) {
             if (!HasNonZeroByteAtOfField498_0218d75c_0218d75c(func_ov017_0218b5b0())) {
                 GameObject* leader = gs->GetUnknownGameObject();
                 if (leader) {
-                    SetByteField0x253(leader);
+                    SetByteField0x253_020397c0(leader);
                 }
                 func_ov017_021ae760(self);
             }
@@ -383,7 +383,7 @@ extern "C" ARM void func_ov017_021adcb0(Chest021adcb0* self) {
     } else if (self->state == 6) {
         Notice021adcb0* notice = (Notice021adcb0*)res->unknown_ptr_array_3afc[0x2c];
         if (notice->busy == 0) {
-            Element021adcb0* elem = (Element021adcb0*)GetElementStride0x24(save, self->slot);
+            Element021adcb0* elem = (Element021adcb0*)GetElementStride0x24_020177a8(save, self->slot);
             if (elem) {
                 elem->active = 0;
             }
@@ -394,8 +394,8 @@ extern "C" ARM void func_ov017_021adcb0(Chest021adcb0* self) {
             for (int i = 0; i < 3; i++) {
                 unsigned char id = ids[i];
                 if (id == self->itemId) {
-                    SetIndexedName02046574((Obj02046574*)g, 0, (char*)CallFunc020e0434With02153694(msgs[i]));
-                    func_02046608(g, 0xc, CallFunc020e0434With02153694(0x2a), text, 0xe3, 0, 1);
+                    SetIndexedName02046574((Obj02046574*)g, 0, (char*)CallFunc020e0434With02153694_020e51cc(msgs[i]));
+                    func_02046608(g, 0xc, CallFunc020e0434With02153694_020e51cc(0x2a), text, 0xe3, 0, 1);
                 }
             }
             func_020d7e10(GetGlobalResetObj020d7a50(), text, 0, 0, 1, 1);

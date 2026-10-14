@@ -1,12 +1,12 @@
 #include <globaldefs.h>
 
-void FlushGXFifoAndWaitGeometryIdle(void);
+void FlushGXFifoAndWaitGeometryIdle_020c5354(void);
 void ResetMatrixStacks020c537c(void);
 void ClearTwoRegionsAndFifo020c55b0(void);
 
 // USA: func_020c51dc  (semantic: ResetGXAndDisplay020c51dc)
 extern "C" ARM void func_020c51dc(void) {
-    FlushGXFifoAndWaitGeometryIdle();
+    FlushGXFifoAndWaitGeometryIdle_020c5354();
 
     *(volatile unsigned int*)0x4000504 = 0;
     while (*(volatile unsigned int*)0x4000600 & 0x8000000) {}

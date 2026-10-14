@@ -3,8 +3,8 @@
 
 extern char data_020feffc[];
 
-int GetGlobalField0x10(void);
-int AdvanceStateIfState2(void);
+int GetGlobalField0x10_0202d6a8(void);
+int AdvanceStateIfState2_0202d0b4(void);
 void SleepCurrentContext(unsigned int);
 int Init0202dc40(int mode, void* src);
 unsigned long long GetCurrentTimestamp(void);
@@ -22,8 +22,8 @@ extern "C" ARM int func_0202b900(int* obj, unsigned char* key) {
     unsigned long long ts;
 
     i = 0;
-    while (GetGlobalField0x10() == 2) {
-        AdvanceStateIfState2();
+    while (GetGlobalField0x10_0202d6a8() == 2) {
+        AdvanceStateIfState2_0202d0b4();
         i++;
         if (i > 0x1388) {
             return -1;
@@ -32,7 +32,7 @@ extern "C" ARM int func_0202b900(int* obj, unsigned char* key) {
     }
 
     i = 0;
-    while (GetGlobalField0x10() != 1) {
+    while (GetGlobalField0x10_0202d6a8() != 1) {
         i++;
         if (i > 0x1388) {
             return -1;

@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 extern "C" void func_ov025_021ebb24(void* entry);
-void* GetActiveCombatWork(void);
+void* GetActiveCombatWork_ov000_02160130(void);
 void ResetBlockFields_021dcd5c(void* obj);
 void ResetFields021dcd98(char* obj);
 
@@ -15,7 +15,7 @@ ARM void InitContainer_021ebab4(char* obj) {
     *(unsigned short*)(obj + 0x304) = 0;
     obj[0x301] = 0;
     obj[0x306] = 0;
-    void* work = GetActiveCombatWork();
+    void* work = GetActiveCombatWork_ov000_02160130();
     ResetBlockFields_021dcd5c(work);
     ResetFields021dcd98((char*)work);
     *(int*)(obj + 0x308) = 0;

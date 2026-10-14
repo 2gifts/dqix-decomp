@@ -25,7 +25,7 @@ struct InitStruct2075 {
 };
 
 // USA: func_02075d64
-ARM void ClearStructFields(struct InitStruct2075* p) {
+ARM void ClearStructFields_02075d64(struct InitStruct2075* p) {
     p->field0 = 0;
     p->field4 = 0;
     p->fieldc = 0;

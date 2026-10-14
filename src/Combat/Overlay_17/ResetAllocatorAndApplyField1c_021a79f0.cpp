@@ -20,7 +20,7 @@ struct Obj021a79f0 {
 
 // USA: func_ov017_021a79f0  (semantic: ResetAllocatorAndApplyField1c_021a79f0)
 extern "C" ARM void func_ov017_021a79f0(struct Obj021a79f0* self) {
-    FontBankLoader* g = GetGlobal02109400();
+    FontBankLoader* g = GetGlobal02109400_02094a00();
     BlankFunction02094b38(g, 0x205);
     func_02094ab0(g);
 

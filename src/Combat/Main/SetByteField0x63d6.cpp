@@ -10,6 +10,6 @@ struct FieldBlock63d6_115b4 {
 };
 
 // USA: func_020115b4
-ARM void SetByteField0x63d6(struct FieldBlock63d6_115b4* obj, unsigned char value) {
+ARM void SetByteField0x63d6_020115b4(struct FieldBlock63d6_115b4* obj, unsigned char value) {
     obj->field = value;
 }

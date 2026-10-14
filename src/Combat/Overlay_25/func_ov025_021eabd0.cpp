@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void* GetActiveCombatWork();
+void* GetActiveCombatWork_ov000_02160130();
 void* GetSlotPtr02160f20(void* work);
 struct List021600f8;
 void* GetNodeAtIndex021600f8(List021600f8*, int);
@@ -29,7 +29,7 @@ static inline int IsPartyIndex(short idx) {
 
 // USA: func_ov025_021eabd0
 extern "C" ARM void func_ov025_021eabd0(char* self, int party) {
-    Slot021eabd0* slot = (Slot021eabd0*)GetSlotPtr02160f20(GetActiveCombatWork());
+    Slot021eabd0* slot = (Slot021eabd0*)GetSlotPtr02160f20(GetActiveCombatWork_ov000_02160130());
     int found = -1;
     for (int i = 0; i < slot->count; i++) {
         void* node = GetNodeAtIndex021600f8((List021600f8*)slot, i);

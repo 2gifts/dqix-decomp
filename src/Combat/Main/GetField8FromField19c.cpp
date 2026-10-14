@@ -15,7 +15,7 @@ struct Obj53dfc {
 };
 
 // USA: func_02053dfc
-ARM int GetField8FromField19c(struct Obj53dfc* obj) {
+ARM int GetField8FromField19c_02053dfc(struct Obj53dfc* obj) {
     struct Obj53dfcInner* p = obj->field19c;
     if (p != 0) {
         return p->field8;

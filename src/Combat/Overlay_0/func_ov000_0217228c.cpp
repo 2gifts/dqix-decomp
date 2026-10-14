@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-unsigned char CopyOutRegion0x571d(char* obj, void* dst);
-unsigned char CopyOutRegion0x5718(char* obj, void* dst);
+unsigned char CopyOutRegion0x571d_020114ec(char* obj, void* dst);
+unsigned char CopyOutRegion0x5718_02011494(char* obj, void* dst);
 extern "C" void __clear(void* dst, int count);
 extern "C" void* func_ov000_02161318(void* obj, int index);
 extern "C" int func_ov000_0217f5dc(void* entry);
@@ -19,7 +19,7 @@ struct Party0217228c {
 extern "C" ARM void func_ov000_0217228c(struct Party0217228c* self) {
     GameState* state = GameState::GetInstance();
     unsigned char orderBuf[4];
-    int count = CopyOutRegion0x571d((char*)state, orderBuf);
+    int count = CopyOutRegion0x571d_020114ec((char*)state, orderBuf);
     unsigned char used[4];
     __clear(used, 4);
     for (int i = 0; i < count; i++) {
@@ -41,7 +41,7 @@ extern "C" ARM void func_ov000_0217228c(struct Party0217228c* self) {
     unsigned char memberBuf[4];
 #endif
     unsigned char active = 0;
-    int numMembers = CopyOutRegion0x5718((char*)state, memberBuf);
+    int numMembers = CopyOutRegion0x5718_02011494((char*)state, memberBuf);
     for (int k = 0; k < 4; k++) {
 #if defined(jpn)
         if (k < numMembers) {

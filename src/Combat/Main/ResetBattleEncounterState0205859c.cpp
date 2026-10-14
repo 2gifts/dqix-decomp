@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void ClearCombatantSlot(GameState* battleStruct, int id);
+void ClearCombatantSlot_0200fd48(GameState* battleStruct, int id);
 void InitStruct02059cc8(unsigned char* obj);
 
 struct MainBlock0205859c {
@@ -18,7 +18,7 @@ ARM void ResetBattleEncounterState0205859c(struct MainBlock0205859c* self) {
     GameState* bs = GameState::GetInstance();
     int i, j;
     for (i = 0; i < 0x10; i++) {
-        ClearCombatantSlot(bs, i + 0xd0);
+        ClearCombatantSlot_0200fd48(bs, i + 0xd0);
     }
     for (j = 0; j < 0x10; j++) {
         InitStruct02059cc8(self->slots + j * 0xd4);

@@ -7,7 +7,7 @@ enum { kRegionec = 0xec };
 enum { kRegionee = 0xee };
 #endif
 
-int* GetGlobal02109030(void);
+int* GetGlobal02109030_020936f8(void);
 void UpdateChannelStateIfEligible02093f68(char* obj);
 extern "C" void func_ov003_02173b4c(void* obj);
 extern "C" void func_ov003_02173bd8(void* obj);
@@ -15,7 +15,7 @@ extern "C" void func_ov003_02173bd8(void* obj);
 // USA: func_ov003_02173ea8
 ARM void ProcessCombatState_02173ea8(unsigned char* obj) {
 	unsigned char f;
-	UpdateChannelStateIfEligible02093f68((char*)GetGlobal02109030());
+	UpdateChannelStateIfEligible02093f68((char*)GetGlobal02109030_020936f8());
 	f = obj[kRegionec];
 	if (f == 0) return;
 	if (f == 1) {

@@ -57,7 +57,7 @@ extern "C" ARM void func_ov003_02158334(PartyStatusPanel* self) {
 
     EntryList* entries = self->entries;
     for (unsigned char i = 0; i < self->memberCount; i++) {
-        Combatant* member = (Combatant*)GetCombatantWithFlag0x100(gs, self->memberIds[i]);
+        Combatant* member = (Combatant*)GetCombatantWithFlag0x100_0200ff1c(gs, self->memberIds[i]);
         if (member != NULL) {
             int color = 0xf;
             SetEntryFirstField02080f8c((Container02080f8c*)entries, id, (int)member->profile->name);

@@ -13,7 +13,7 @@ struct Obj0205dee8 {
 void SetFieldB0AndUpdate0205dee8(struct Obj0205dee8* obj, int val);
 
 struct Struct_0205d81c;
-void SetElementFieldC2(struct Struct_0205d81c* s, int key, int value);
+void SetElementFieldC2_0205deb4(struct Struct_0205d81c* s, int key, int value);
 
 // USA: func_ov002_0215d654
 extern "C" ARM void func_ov002_0215d654(unsigned char* obj) {
@@ -31,5 +31,5 @@ extern "C" ARM void func_ov002_0215d654(unsigned char* obj) {
 
     SetFieldB0AndUpdate0205dee8((struct Obj0205dee8*)(obj + 0x2c8 + 0xc00), (*(int*)(obj + 0x1000 + 0xbb8)) & 0xff);
 
-    SetElementFieldC2((struct Struct_0205d81c*)(obj + 0x2c8 + 0xc00), (*(int*)(obj + 0x1000 + 0xbb8)) & 0xff, 0);
+    SetElementFieldC2_0205deb4((struct Struct_0205d81c*)(obj + 0x2c8 + 0xc00), (*(int*)(obj + 0x1000 + 0xbb8)) & 0xff, 0);
 }

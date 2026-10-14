@@ -21,20 +21,20 @@ struct FieldBlock63d6_115a8;
 struct SearchStruct0202c1a4;
 extern "C" int* func_0202ae18();
 extern "C" int func_ov017_021925e0();
-PartyExtension* GetFieldAt0x150(unsigned char*);
+PartyExtension* GetFieldAt0x150_02053c6c(unsigned char*);
 extern "C" void func_02082828(PartyExtension*);
 void SetFlagAndSyncVec3_021bd3d4(void*, int);
 extern "C" PartySlot* func_ov017_021a4658(GameResources*, int);
 extern "C" void func_02046a8c(void*, PartySlot*);
 void ResetEntriesAndNotify_021b33d8(void*);
-int CheckField0NonZero(int*);
-void* GetField0x74deForValidIndex(char*, unsigned int);
-int CheckSubstructByte0x7cPositive(signed char*);
+int CheckField0NonZero_0202b7d8(int*);
+void* GetField0x74deForValidIndex_020120a0(char*, unsigned int);
+int CheckSubstructByte0x7cPositive_020535c8(signed char*);
 extern "C" void func_020531f0(GameObject*);
-void InvalidateField0(short*);
-int GetByteField0x63d6(FieldBlock63d6_115a8*);
-void ClearCombatantSlot(GameState*, int);
-GameObject* GetCombatantWithFlag0x1000(GameState*, int);
+void InvalidateField0_020545ac(short*);
+int GetByteField0x63d6_020115a8(FieldBlock63d6_115a8*);
+void ClearCombatantSlot_0200fd48(GameState*, int);
+GameObject* GetCombatantWithFlag0x1000_0200ff58(GameState*, int);
 extern "C" void func_ov017_02191108(GameResources*, int, int, int, int);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
 extern "C" void func_ov017_02190884(int, PartyOutput*, int*, int, int, int);
@@ -55,7 +55,7 @@ extern "C" ARM void func_ov017_02190264(GameResources* resources, int index) {
     if (func_ov017_021925e0()) {
         GameObject* member = game->GetPartyMemberByIndex(index);
         if (member && (member->obj3D_.unknown_0_ & 0x1000)) {
-            PartyExtension* extension = GetFieldAt0x150((unsigned char*)member);
+            PartyExtension* extension = GetFieldAt0x150_02053c6c((unsigned char*)member);
             if (extension) {
                 short preserved = extension->preserved;
                 func_02082828(extension);
@@ -70,18 +70,18 @@ extern "C" ARM void func_ov017_02190264(GameResources* resources, int index) {
         func_02046a8c(resources->unknown_ptr_array_36fc[1], slot);
         ResetEntriesAndNotify_021b33d8(slot);
     }
-    GameObject* combatant = GetCombatantWithFlag0x100(game, index);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(game, index);
     if (combatant) {
-        if (CheckField0NonZero(search) && (combatant->obj3D_.unknown_0_ & 0x200)) {
-            short* field = (short*)GetField0x74deForValidIndex((char*)game, index);
+        if (CheckField0NonZero_0202b7d8(search) && (combatant->obj3D_.unknown_0_ & 0x200)) {
+            short* field = (short*)GetField0x74deForValidIndex_020120a0((char*)game, index);
             if (field) *field = 0;
         }
-        if (CheckSubstructByte0x7cPositive((signed char*)combatant)) func_020531f0(combatant);
+        if (CheckSubstructByte0x7cPositive_020535c8((signed char*)combatant)) func_020531f0(combatant);
         strcpy(resources->partyNames[index], (char*)combatant->baseStats_);
         short* reset = ((PartyObject*)combatant)->modelOwner;
-        if (reset) InvalidateField0(reset);
-        if (!GetByteField0x63d6((FieldBlock63d6_115a8*)game)) {
-            PartyExtension* extension = GetFieldAt0x150((unsigned char*)combatant);
+        if (reset) InvalidateField0_020545ac(reset);
+        if (!GetByteField0x63d6_020115a8((FieldBlock63d6_115a8*)game)) {
+            PartyExtension* extension = GetFieldAt0x150_02053c6c((unsigned char*)combatant);
             if (extension) func_02082828(extension);
         }
     }
@@ -98,19 +98,19 @@ extern "C" ARM void func_ov017_02190264(GameResources* resources, int index) {
     indices.slots[9] = index * 12 + 0x1b;
     indices.slots[10] = index * 12 + 0x1c;
     indices.slots[11] = index * 12 + 0x1d;
-    for (int i = 0; indices.slots[i] >= 0; i++) ClearCombatantSlot(game, indices.slots[i]);
+    for (int i = 0; indices.slots[i] >= 0; i++) ClearCombatantSlot_0200fd48(game, indices.slots[i]);
     int memberIndex;
     GameState* updatedGame = GameState::GetInstance();
     PartyObject* members[4] = {};
     for (memberIndex = 1; memberIndex < 4; memberIndex++) {
-        PartyObject* member = (PartyObject*)GetCombatantWithFlag0x1000(updatedGame, memberIndex);
+        PartyObject* member = (PartyObject*)GetCombatantWithFlag0x1000_0200ff58(updatedGame, memberIndex);
         if (member) members[member->order] = member;
     }
     int scan;
     PartyObject** current = members;
     int order = 1;
     for (scan = 0; scan < 4; scan++) { PartyObject* member = *current; if (member) member->order = order++; current++; }
-    if (!CheckField0NonZero(search)) {
+    if (!CheckField0NonZero_0202b7d8(search)) {
         func_ov017_02191108(resources, 1, 1, 1, 1);
         return;
     }

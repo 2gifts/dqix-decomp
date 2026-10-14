@@ -8,7 +8,7 @@ struct ListNode {
 };
 
 // USA: func_020130b0
-ARM void AppendToNodeList(struct ListNode* a, struct ListNode* b) {
+ARM void AppendToNodeList_020130b0(struct ListNode* a, struct ListNode* b) {
     struct ListNode* node;
     b->field28 = a;
     node = a->field2c;

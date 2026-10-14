@@ -3,7 +3,7 @@
 ARM unsigned int DisableIRQInterrupts();
 ARM unsigned int SetIRQInterruptState(int mask);
 struct VCountAlarmNode;
-ARM void UnlinkVCountAlarmNode(struct VCountAlarmNode* node);
+ARM void UnlinkVCountAlarmNode_020c9384(struct VCountAlarmNode* node);
 
 struct AlarmCtx020c949c {
     unsigned int linked;
@@ -19,7 +19,7 @@ ARM void DisarmVCountAlarm(struct AlarmCtx020c949c* node) {
         SetIRQInterruptState(oldIntr);
         return;
     }
-    UnlinkVCountAlarmNode((struct VCountAlarmNode*)node);
+    UnlinkVCountAlarmNode_020c9384((struct VCountAlarmNode*)node);
     node->linked = 0;
     SetIRQInterruptState(oldIntr);
 }

@@ -36,7 +36,7 @@ extern char data_ov004_021705a5[];
 extern char data_ov004_021705c0[];
 extern char data_ov004_021705d2[];
 #endif
-int* GetGlobal02109418();
+int* GetGlobal02109418_02094d6c();
 int RunBufferedScript020957f4(void*, StreamHeader*, int);
 int InitObjWithAllocator02095e90(Obj02095e90*, SafeAllocator*);
 int RunOrPollScript02095ee0(Ctx02095ee0*);
@@ -51,7 +51,7 @@ void SetFieldD2IfChanged0208becc(Obj0208becc*, int, unsigned char);
 extern "C" ARM int func_ov004_02167068(void* self) {
     State02167068* state = (State02167068*)data_ov004_0217101c[MainIndex];
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
-    int* global = GetGlobal02109418();
+    int* global = GetGlobal02109418_02094d6c();
     int result = 1;
     if (state->step == 0) {
 #if defined(jpn)

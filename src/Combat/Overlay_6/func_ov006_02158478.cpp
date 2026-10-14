@@ -59,7 +59,7 @@ struct Canvas {
 extern "C" void* GetSubBG0ScreenBase();
 extern "C" void* memset(void*, int, unsigned int);
 int CheckElementFlag_02158080_02158080(Obj2081*, int);
-Canvas* FindElementByByte0xc4(Obj2081*, int);
+Canvas* FindElementByByte0xc4_02081da8(Obj2081*, int);
 void ResetList0204af64(List0204af64*);
 int DispatchViaTable0204b5e8(Obj0204b5e8*, int, int);
 void CallFunc0204b620IfField0x14_0204b938(void*, void*, int, int, unsigned short);
@@ -171,7 +171,7 @@ extern "C" ARM void func_ov006_02158478(AlchemyMenu* self)
     memset(screen, 0, 0x800);
     if (CheckElementFlag_02158080_02158080((Obj2081*)R(*(void**)((char*)self+0xc),self->menu_), 1))
     {
-        Canvas* canvas = FindElementByByte0xc4((Obj2081*)R(*(void**)((char*)self+0xc),self->menu_), 1);
+        Canvas* canvas = FindElementByByte0xc4_02081da8((Obj2081*)R(*(void**)((char*)self+0xc),self->menu_), 1);
         if (canvas == 0)
             return;
         short x;

@@ -7,7 +7,7 @@ struct HandleStruct {
 };
 
 // USA: func_020da22c
-ARM void ResetHandleFields(struct HandleStruct* s) {
+ARM void ResetHandleFields_020da22c(struct HandleStruct* s) {
     s->field8 = -1;
     s->field0 = -1;
     s->field4 = 0;

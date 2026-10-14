@@ -7,26 +7,26 @@ struct S88514;
 struct FlagObj_021df6ec;
 struct FlagObj_021dd010;
 struct FlagObj_021df704;
-int CheckFlag0x2AndKind1(Combatant_20885b4*);
-void ClearFlag0x2AndKind(Combatant_2088644*);
-int CheckFlag0x2AndState2(S88514*);
-void ClearFlag0x2AndBits0x3(unsigned char*);
+int CheckFlag0x2AndKind1_020885b4(Combatant_20885b4*);
+void ClearFlag0x2AndKind_02088644(Combatant_2088644*);
+int CheckFlag0x2AndState2_02088514(S88514*);
+void ClearFlag0x2AndBits0x3_02088598(unsigned char*);
 int IsFlagBit6Set_021df6ec(FlagObj_021df6ec*);
 int IsFlagBit8Set_021dd010(FlagObj_021dd010*);
 int IsFlagBit4Field18Set_021df704(FlagObj_021df704*);
 void ClearFlag0x40AndBytes02088874(unsigned char*);
-void ClearFlag0x100AndBytes(unsigned char*);
-void ClearFlag0x10AndBytes(unsigned char*);
+void ClearFlag0x100AndBytes_020888c4(unsigned char*);
+void ClearFlag0x10AndBytes_02088d4c(unsigned char*);
 void ClearBattleFlags0x14And0x5802087838(void*);
 void ClearBattleFlags0x14And0x580208792c(void*);
 void ClearBattleFlags0x14And0x5802087a20(void*);
 void ClearBattleFlags0x14And0x5802087b14(void*);
 void ClearBattleFlags0x14And0x5802087c08(void*);
-void ClearBattleFlags0x14And0x58(void*);
-void ClearFlagsAndBytes(void*);
-void ClearFlags0x14And0x58AndBytes(unsigned char*);
-void ClearFlags0x14And0x58(void*);
-void ClearBattleFlags0x18And0x58(void*);
+void ClearBattleFlags0x14And0x58_02087cfc(void*);
+void ClearFlagsAndBytes_02087df0(void*);
+void ClearFlags0x14And0x58AndBytes_02087efc(unsigned char*);
+void ClearFlags0x14And0x58_02087ff0(void*);
+void ClearBattleFlags0x18And0x58_020880e4(void*);
 int SelectByIndexRange0to3_021da644(int, int, int);
 void ApplyCombatantBuffs(int, int);
 void AddEntryAndIncrementCount0215a88c(void*, void*, int);
@@ -67,12 +67,12 @@ extern "C" ARM void* func_ov024_021df454(BattleAction021df454* action, int unuse
     GameObject* target = GetCombatantByID((int)action->battle, id);
     if (!target) return 0;
     int count = 0;
-    if (CheckFlag0x2AndKind1((Combatant_20885b4*)target->currentStats_)) {
-        ClearFlag0x2AndKind((Combatant_2088644*)target->currentStats_);
+    if (CheckFlag0x2AndKind1_020885b4((Combatant_20885b4*)target->currentStats_)) {
+        ClearFlag0x2AndKind_02088644((Combatant_2088644*)target->currentStats_);
         ++count;
     }
-    if (CheckFlag0x2AndState2((S88514*)target->currentStats_)) {
-        ClearFlag0x2AndBits0x3((unsigned char*)target->currentStats_);
+    if (CheckFlag0x2AndState2_02088514((S88514*)target->currentStats_)) {
+        ClearFlag0x2AndBits0x3_02088598((unsigned char*)target->currentStats_);
         ++count;
     }
     if (IsFlagBit6Set_021df6ec((FlagObj_021df6ec*)target)) {
@@ -80,11 +80,11 @@ extern "C" ARM void* func_ov024_021df454(BattleAction021df454* action, int unuse
         ++count;
     }
     if (IsFlagBit8Set_021dd010((FlagObj_021dd010*)target)) {
-        ClearFlag0x100AndBytes((unsigned char*)target->currentStats_);
+        ClearFlag0x100AndBytes_020888c4((unsigned char*)target->currentStats_);
         ++count;
     }
     if (IsFlagBit4Field18Set_021df704((FlagObj_021df704*)target)) {
-        ClearFlag0x10AndBytes((unsigned char*)target->currentStats_);
+        ClearFlag0x10AndBytes_02088d4c((unsigned char*)target->currentStats_);
         ++count;
     }
     if (target->currentStats_->attackBuff < 0) {
@@ -108,23 +108,23 @@ extern "C" ARM void* func_ov024_021df454(BattleAction021df454* action, int unuse
         ++count;
     }
     if (target->currentStats_->magicalMendingBuff < 0) {
-        ClearBattleFlags0x14And0x58(target->currentStats_);
+        ClearBattleFlags0x14And0x58_02087cfc(target->currentStats_);
         ++count;
     }
     if (target->currentStats_->unkBuff18 < 0) {
-        ClearFlagsAndBytes(target->currentStats_);
+        ClearFlagsAndBytes_02087df0(target->currentStats_);
         ++count;
     }
     if (((ExtendedStats021df454*)target->currentStats_)->field_21 < 0) {
-        ClearFlags0x14And0x58AndBytes((unsigned char*)target->currentStats_);
+        ClearFlags0x14And0x58AndBytes_02087efc((unsigned char*)target->currentStats_);
         ++count;
     }
     if (((ExtendedStats021df454*)target->currentStats_)->field_27 < 0) {
-        ClearFlags0x14And0x58(target->currentStats_);
+        ClearFlags0x14And0x58_02087ff0(target->currentStats_);
         ++count;
     }
     if (((ExtendedStats021df454*)target->currentStats_)->field_24 < 0) {
-        ClearBattleFlags0x18And0x58(target->currentStats_);
+        ClearBattleFlags0x18And0x58_020880e4(target->currentStats_);
         ++count;
     }
     int code;

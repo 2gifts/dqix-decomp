@@ -26,7 +26,7 @@ extern "C" ARM int func_ov024_021da47c(int* a0, unsigned short category, int unu
 
 	int count = func_ov000_0215e9fc(*a0, buf, 4, 1);
 	for (int i = 0; i < count; i++) {
-		GameObject* c = GetCombatantWithFlag0x100(battle, *(short*)&buf[i]);
+		GameObject* c = GetCombatantWithFlag0x100_0200ff1c(battle, *(short*)&buf[i]);
 		if (c) {
 			sum += c->currentStats_->primaryStats.attack;
 		}

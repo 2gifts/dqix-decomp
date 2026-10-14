@@ -11,7 +11,7 @@ struct FlagOwner {
 };
 
 // USA: func_020e1cb8
-ARM void ClearFlag0x1SetFlag0x2(struct FlagOwner* obj) {
+ARM void ClearFlag0x1SetFlag0x2_020e1cb8(struct FlagOwner* obj) {
     obj->sub->flags &= ~1;
     obj->sub->flags |= 2;
 }

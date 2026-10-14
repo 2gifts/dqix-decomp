@@ -99,9 +99,9 @@ struct SkillIds_021f9030 {
 };
 
 extern "C" void __clear(void* dst, int size);
-void* GetFieldAt0x150(unsigned char* obj);
-GameObject* GetCombatantWithFlag0x100(GameState* gameState, int combatantId);
-int TestBitAt0x34(unsigned char* obj, unsigned int index);
+void* GetFieldAt0x150_02053c6c(unsigned char* obj);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* gameState, int combatantId);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
 int IsCombatantFlag2Mask8192_021e6798(GameObject* combatant);
 Command_021f9030* GetField0x19cOrNull(S02053dc0* p);
 Skill_021f9030* SearchBothTables02079e2c(char* table, int id);
@@ -118,9 +118,9 @@ extern SkillIds_021f9030 data_ov024_021fefc2;
 // USA: func_ov024_021f9030
 extern "C" ARM void func_ov024_021f9030(Planner_021f9030* obj, Battle_021f9030* owner, int id, unsigned short* state) {
     GameState* gameState = GameState::GetInstance();
-    GameObject* combatant = GetCombatantWithFlag0x100(gameState, id);
-    Field_021f9030* field = (Field_021f9030*)GetFieldAt0x150((unsigned char*)combatant);
-    ActionDataTables* database = GetData02108e10();
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(gameState, id);
+    Field_021f9030* field = (Field_021f9030*)GetFieldAt0x150_02053c6c((unsigned char*)combatant);
+    ActionDataTables* database = GetData02108e10_020797dc();
     unsigned char mode = (signed char)field->mode;
     if (mode >= 5) {
         return;
@@ -158,9 +158,9 @@ extern "C" ARM void func_ov024_021f9030(Planner_021f9030* obj, Battle_021f9030* 
     reviving = 0;
     buffing = 0;
     for (i = 0; i < 4; i++) {
-        GameObject* ally = GetCombatantWithFlag0x100(gameState, i);
+        GameObject* ally = GetCombatantWithFlag0x100_0200ff1c(gameState, i);
         if (ally == 0) continue;
-        if (!TestBitAt0x34(obj->owner->party, (unsigned char)i)) continue;
+        if (!TestBitAt0x34_020a35e0(obj->owner->party, (unsigned char)i)) continue;
         if (IsCombatantFlag2Mask8192_021e6798(ally)) continue;
         if (*ally->status & 1) continue;
         if (ally->stats->flags18 & 0x800) {

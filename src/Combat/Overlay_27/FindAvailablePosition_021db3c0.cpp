@@ -5,7 +5,7 @@
 #endif
 #include <globaldefs.h>
 
-int GetSharedHalfwordOrBattleDefault(void);
+int GetSharedHalfwordOrBattleDefault_020d4aa8(void);
 
 struct Obj021db3c0 {
     unsigned char pad0[4];
@@ -14,7 +14,7 @@ struct Obj021db3c0 {
 
 // USA: func_ov027_021db3c0  (semantic: FindAvailablePosition_021db3c0)
 extern "C" ARM int func_ov027_021db3c0(Obj021db3c0* obj) {
-    unsigned int mask = GetSharedHalfwordOrBattleDefault();
+    unsigned int mask = GetSharedHalfwordOrBattleDefault_020d4aa8();
     if (mask == 0) return 0;
     unsigned short i = 0;
     unsigned short start = obj->field4;

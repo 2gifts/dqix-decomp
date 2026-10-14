@@ -4,13 +4,13 @@
 #include "std_library_functions.h"
 #include "Filesystem/BackgroundLoader.h"
 
-void EncodeSignFlaggedHalfword(short* out, int value);
+void EncodeSignFlaggedHalfword_020c39a0(short* out, int value);
 
 extern "C" void MapVRAMBanksToMainBG(int);
 extern "C" void func_ov020_0218c7bc(int, int, int, int, int);
 struct List0204af64;
 void ResetList0204af64(List0204af64*);
-void SetWord0x18ClearByte0x1f(unsigned char*, int);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char*, int);
 extern "C" void func_0204b5b4(void*, int);
 struct AllocTarget0204b12c;
 void AllocateAndClearBuffer0204b12c(AllocTarget0204b12c*, SafeAllocator*);
@@ -20,7 +20,7 @@ struct Obj0204b5e8;
 void DispatchViaTable0204b5e8(Obj0204b5e8*, int, int);
 extern "C" int DisableSubObjVRAMBanks();
 extern "C" int DisableSubBGVRAMBanks();
-void SetSubBgMode(unsigned int);
+void SetSubBgMode_020c3984(unsigned int);
 extern "C" void MapVRAMBanksToSubObj(unsigned short value);
 extern "C" void MapVRAMBanksToSubBG(int);
 extern "C" void func_ov020_0218cd64(int, int, int, int, int);
@@ -74,13 +74,13 @@ extern "C" ARM void func_ov020_0218d32c(struct SetupContext0218d32c* self, int m
     unsigned char list3[0x20];
 
     self->allocator.Reset();
-    EncodeSignFlaggedHalfword((short*)0x400006c, -16);
-    EncodeSignFlaggedHalfword((short*)0x400106c, -16);
+    EncodeSignFlaggedHalfword_020c39a0((short*)0x400006c, -16);
+    EncodeSignFlaggedHalfword_020c39a0((short*)0x400106c, -16);
     MapVRAMBanksToMainBG(8);
     func_ov020_0218c7bc(0, 1, 1, 1, 0);
 
     ResetList0204af64((List0204af64*)(base + regionalOffset0 + 0x400));
-    SetWord0x18ClearByte0x1f((unsigned char*)(base + regionalOffset0 + 0x400), 0);
+    SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)(base + regionalOffset0 + 0x400), 0);
     struct List0218d32c* list = (struct List0218d32c*)(base + regionalOffset0 + 0x400);
     list->lowNibble = 0;
     list->highNibble = 1;
@@ -91,7 +91,7 @@ extern "C" ARM void func_ov020_0218d32c(struct SetupContext0218d32c* self, int m
 
     DisableSubObjVRAMBanks();
     DisableSubBGVRAMBanks();
-    SetSubBgMode(0);
+    SetSubBgMode_020c3984(0);
 
     volatile unsigned int* reg1000 = (volatile unsigned int*)0x4001000;
     *reg1000 = (*reg1000 & ~0x1f00) | 0x100;
@@ -127,7 +127,7 @@ extern "C" ARM void func_ov020_0218d32c(struct SetupContext0218d32c* self, int m
     list3[0x1c] = (list3[0x1c] & ~0xf) | 1;
     list3[0x1c] = list3[0x1c] & ~0xf0;
     func_0204b5b4(list3, 3);
-    SetWord0x18ClearByte0x1f((unsigned char*)list3, 0);
+    SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)list3, 0);
     DispatchViaTable0204b5e8((Obj0204b5e8*)list3, 0, 0);
 
     for (int j = 0; j < 3; j++) {
@@ -146,6 +146,6 @@ extern "C" ARM void func_ov020_0218d32c(struct SetupContext0218d32c* self, int m
     volatile unsigned int* reg0 = (volatile unsigned int*)0x4000000;
     *reg0 = (*reg0 & ~0x1f00) | 0x1300;
 
-    EncodeSignFlaggedHalfword((short*)0x400006c, -16);
-    EncodeSignFlaggedHalfword((short*)0x400106c, -16);
+    EncodeSignFlaggedHalfword_020c39a0((short*)0x400006c, -16);
+    EncodeSignFlaggedHalfword_020c39a0((short*)0x400106c, -16);
 }

@@ -54,7 +54,7 @@ const char* GetFieldByKey020e0434(Container020e0310* container, int key);
 extern "C" int func_02005a94(const char* string);
 extern "C" void func_ov003_02159250(void* self, void* text);
 extern "C" void func_ov003_02159464(void* self);
-void SetWord0x18ClearByte0x1f(unsigned char* background, int value);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char* background, int value);
 extern "C" void func_0204b5b4(BackgroundGraphics* background, int screen);
 void AllocateAndClearBuffer0204b12c(AllocTarget0204b12c* background, SafeAllocator* allocator);
 void DispatchViaTable0204b5e8(Obj0204b5e8* background, int a, int b);
@@ -66,9 +66,9 @@ void FlushAndDispatchList0204b0e8(List0204b0e8* background, void* a);
 void AllocateBuffer0204c7a8(Obj0204c7a8* obj, SafeAllocator* alloc, int val, unsigned int len);
 void LinkArrayPrevPointers0205cf78(Struct_0205cf78* s, Elem_0205cf78* arr, unsigned char count);
 extern "C" void func_0205a528(void* table, void* file, int size, SafeAllocator* alloc);
-int CompareStrings(const char* a, const char* b);
+int CompareStrings_020d3018(const char* a, const char* b);
 void AppendFlagEvents_0215917c(QueueStruct0215917c* obj, int flags);
-unsigned char CopyOutRegion0x5718(char* obj, void* dst);
+unsigned char CopyOutRegion0x5718_02011494(char* obj, void* dst);
 
 extern char data_ov003_0217fe2d[];
 extern char data_ov003_0217fe48[];
@@ -179,7 +179,7 @@ extern "C" ARM void func_ov003_021594c4(BattleMessageScene* self) {
         BackgroundGraphics* background;
         for (int i = 0; i < 2; i++) {
             background = &self->backgrounds_[i];
-            SetWord0x18ClearByte0x1f((unsigned char*)background, 0);
+            SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)background, 0);
             background->unk_1c_0_ = 0;
             background->unk_1c_4_ = priority.v[i];
             func_0204b5b4(background, screen.v[i]);
@@ -275,12 +275,12 @@ extern "C" ARM void func_ov003_021594c4(BattleMessageScene* self) {
         unsigned char flags = 0x3f;
         for (int i = 0; i < 6; i++) {
             const char* str = GetFieldByKey020e0434((Container020e0310*)self->strings_, (short)i);
-            if (CompareStrings(data_ov003_0217fe7e, str) == 0) {
+            if (CompareStrings_020d3018(data_ov003_0217fe7e, str) == 0) {
                 flags &= ~(1 << i);
             }
         }
         AppendFlagEvents_0215917c((QueueStruct0215917c*)self, flags);
-        self->memberCount_ = CopyOutRegion0x5718((char*)GameState::GetInstance(), self->members_);
+        self->memberCount_ = CopyOutRegion0x5718_02011494((char*)GameState::GetInstance(), self->members_);
         self->next_ = 1;
         self->state_ = 1;
     }

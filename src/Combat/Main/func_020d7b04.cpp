@@ -67,7 +67,7 @@ struct MessageWindowState {
 extern "C" ARM void func_020d7b04(TextMessageQueue* queue) {
     char formattedText[0xc8];
     GameState* game = GameState::GetInstance();
-    FontBankLoader* fonts = GetGlobal02109400();
+    FontBankLoader* fonts = GetGlobal02109400_02094a00();
     MessageWindowState* window = static_cast<MessageWindowState*>(GetGlobalField0x1c020421a0());
     if (queue->fontRequested && !AlwaysTrue02094b4c(fonts)) return;
 

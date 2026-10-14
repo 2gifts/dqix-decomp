@@ -9,7 +9,7 @@ enum { slotFieldOffset = 0x36fc };
 
 extern "C" void* func_02012fe4(GameState* battleStruct);
 struct PointerField330_ffd0;
-void* GetPointerAt0x330(struct PointerField330_ffd0* obj);
+void* GetPointerAt0x330_0200ffd0(struct PointerField330_ffd0* obj);
 struct HeadNode02046b24;
 int GetHeadNodeIdOrMinusOne(struct HeadNode02046b24** obj);
 struct S02046b1c;
@@ -28,7 +28,7 @@ extern "C" ARM void func_020ac9ac(struct Struct020ac9ac* a0) {
     int headId;
     void* field = a0->fieldslotFieldOffset;
     func_02012fe4(battle);
-    p = GetPointerAt0x330((struct PointerField330_ffd0*)battle);
+    p = GetPointerAt0x330_0200ffd0((struct PointerField330_ffd0*)battle);
     headId = GetHeadNodeIdOrMinusOne((struct HeadNode02046b24**)field);
     int f0 = GetField0x0List02046b1c((struct S02046b1c*)field);
     if (p == NULL) return;

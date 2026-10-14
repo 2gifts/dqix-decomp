@@ -7,6 +7,6 @@ enum { FIELD_OFFSET = 0x1ce };
 #endif
 
 // USA: func_02039dd8
-ARM void SetFlag0x1ceBit0x10(unsigned char* obj) {
+ARM void SetFlag0x1ceBit0x10_02039dd8(unsigned char* obj) {
     obj[FIELD_OFFSET] |= 0x10;
 }

@@ -13,7 +13,7 @@ extern "C" int func_0202c540(void* obj);
 extern "C" void* func_0205ec34(void);
 extern "C" void func_0208f048(unsigned char* p0);
 extern "C" int rand(void);
-int TestBitInByteArray(int unused, unsigned char* arr, int index);
+int TestBitInByteArray_0206dfb0(int unused, unsigned char* arr, int index);
 
 struct Node0208ec78 {
     char pad[0x10];
@@ -82,9 +82,9 @@ extern "C" ARM void func_0208ec78(struct Param0208ec78* p0) {
     unsigned int kind = e->fields.kind;
     if (kind != 1) {
         void* ctx = func_0205ec34();
-        if (e->fields.kind == 2 && TestBitInByteArray((int)ctx, (unsigned char*)ctx + 0x8c, 1944) == 0) {
+        if (e->fields.kind == 2 && TestBitInByteArray_0206dfb0((int)ctx, (unsigned char*)ctx + 0x8c, 1944) == 0) {
             avail = 1;
-        } else if (e->fields.kind == 3 && TestBitInByteArray((int)ctx, (unsigned char*)ctx + 0x8c, 1942) == 0) {
+        } else if (e->fields.kind == 3 && TestBitInByteArray_0206dfb0((int)ctx, (unsigned char*)ctx + 0x8c, 1942) == 0) {
             avail = 1;
         }
     }

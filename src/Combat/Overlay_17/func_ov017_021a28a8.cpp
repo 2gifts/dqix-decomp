@@ -22,14 +22,14 @@ ResourceEntry021a28a8* FindEntryByCurrentId02027cb0();
 int GetCount0209c0ec(char*);
 void RestorePairTables0207df90(char*);
 void BackupPairTables0207dfac(char*);
-int GetCheckedHalfword(void*, int);
+int GetCheckedHalfword_0209c0a8(void*, int);
 ResourceInfo021a28a8* SearchWithComparator0206f4f0(BinarySearchByComparatorStruct*, int);
-void* FindNodeBySignedId(void*, int);
+void* FindNodeBySignedId_0206ef18(void*, int);
 bool FindFilesInNarcBySubstring(const void*, const char*, const void**, unsigned int*, unsigned int);
 void* DecompressLZ77FileIntoAllocatedSpace(SafeAllocator&, const void*, unsigned int&);
-void InsertShortIntoTable021098f4(unsigned short);
-void ResetFieldAc(void*);
-void RegisterCombatantSlot(GameState*, int, GameObject*);
+void InsertShortIntoTable021098f4_0209953c(unsigned short);
+void ResetFieldAc_02072ac4(void*);
+void RegisterCombatantSlot_0200fd38(GameState*, int, GameObject*);
 extern "C" void func_ov017_021a2b1c(void*);
 extern char data_ov017_021d7668[];
 extern char data_0211e33c[] __attribute__((aligned(4)));
@@ -58,9 +58,9 @@ extern "C" ARM void func_ov017_021a28a8(ResourceArena021a28a8* arena) {
         unsigned int start = headerLength;
         unsigned int available = 0x30000 - start;
         for (int i = 0; i < GetCount0209c0ec(area->ids); ++i) {
-            int id = GetCheckedHalfword(area->ids, i);
+            int id = GetCheckedHalfword_0209c0a8(area->ids, i);
             ResourceInfo021a28a8* info = SearchWithComparator0206f4f0((BinarySearchByComparatorStruct*)area->monsters, (short)id);
-            void* node = FindNodeBySignedId(area->nodes, (short)id);
+            void* node = FindNodeBySignedId_0206ef18(area->nodes, (short)id);
             if (info && node) {
                 char filename[16];
                 sprintf(filename, data_ov017_021d7680, info->filename);
@@ -72,9 +72,9 @@ extern "C" ARM void func_ov017_021a28a8(ResourceArena021a28a8* arena) {
                         unsigned int length;
                         void* decompressed = DecompressLZ77FileIntoAllocatedSpace(*allocator, file, length);
                         if (!decompressed) {
-                            InsertShortIntoTable021098f4(3);
+                            InsertShortIntoTable021098f4_0209953c(3);
                         } else {
-                            ResetFieldAc(&objects[i]);
+                            ResetFieldAc_02072ac4(&objects[i]);
                             objects[i].object.unknown_2_ = id;
                             ObjectArchiveLoadInfo load;
                             load.fileData = decompressed;
@@ -86,8 +86,8 @@ extern "C" ARM void func_ov017_021a28a8(ResourceArena021a28a8* arena) {
                             load.packageID = 0;
                             load.allocator = allocator;
                             if (objects[i].object.LoadFromCCHROrCMOTArchive(&load, 0)) {
-                                RegisterCombatantSlot(state, i + 7, (GameObject*)&objects[i]);
-                            } else InsertShortIntoTable021098f4(3);
+                                RegisterCombatantSlot_0200fd38(state, i + 7, (GameObject*)&objects[i]);
+                            } else InsertShortIntoTable021098f4_0209953c(3);
                         }
                     }
                 }

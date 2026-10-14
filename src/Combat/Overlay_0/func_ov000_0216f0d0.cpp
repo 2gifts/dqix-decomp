@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "Graphics/Vector.h"
 
-void ApplyVec3Tail(void* obj, int* vec);
+void ApplyVec3Tail_0202e694(void* obj, int* vec);
 
 struct Obj0216f0d0 {
     char pad0[0x70];
@@ -32,5 +32,5 @@ extern "C" ARM void func_ov000_0216f0d0(Obj0216f0d0* obj) {
         dz = FIX32_MULTIPLY(dz, f);
         rot.z += dz;
     }
-    ApplyVec3Tail(obj, (int*)&rot);
+    ApplyVec3Tail_0202e694(obj, (int*)&rot);
 }

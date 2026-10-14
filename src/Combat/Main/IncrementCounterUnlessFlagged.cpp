@@ -18,7 +18,7 @@ struct IncObj {
 };
 
 // USA: func_02053dd0
-ARM void IncrementCounterUnlessFlagged(struct IncObj* obj) {
+ARM void IncrementCounterUnlessFlagged_02053dd0(struct IncObj* obj) {
     struct Counter* counter = obj->counter;
     if (counter == 0 || (obj->flagObj->flags & 1) != 0) {
         return;

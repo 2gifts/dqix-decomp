@@ -18,7 +18,7 @@ void RestorePairTables0207df90(char* obj);
 void BackupPairTables0207dfac(char* obj);
 
 struct Struct_203dafc;
-void ClearEightWords(struct Struct_203dafc* obj);
+void ClearEightWords_0203dafc(struct Struct_203dafc* obj);
 
 struct Obj02055718;
 int InitAllocatedObject02055718(struct Obj02055718* p, int a, int b);
@@ -110,7 +110,7 @@ extern "C" ARM int func_ov015_0218e02c(void* self, int* desc) {
         narc.Destroy();
 
         Params02036804 info;
-        ClearEightWords((struct Struct_203dafc*)&info);
+        ClearEightWords_0203dafc((struct Struct_203dafc*)&info);
         void* allocPtr = *(void**)((char*)self + 8);
         void* dataPtr = &data_0211e33c;
         unsigned int sz = length;

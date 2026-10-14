@@ -20,7 +20,6 @@ enum { kRegionValue38C_274 = 0x38c };
 enum { kRegionValue460_288 = 0x460 };
 #endif
 
-
 struct Obj0207fcb8;
 void ClearAllBuffers0207fcb8(struct Obj0207fcb8* obj);
 struct Obj0207fd00;
@@ -42,7 +41,7 @@ void SetEntryFlag2ByKey0205a370(struct Container0205a3d0* c, int key);
 struct Elem0205a3d0* FindEntryByHalfword0205a3d0(struct Container0205a3d0* c, int key);
 struct Container0205a330;
 void IterateEntries0205a330(struct Container0205a330* c, int arg);
-void SetEntryPosition(struct Container0205a3d0* c, int key, short a, short b);
+void SetEntryPosition_020e27ec(struct Container0205a3d0* c, int key, short a, short b);
 extern "C" void func_0205ae8c(void*);
 
 // USA: func_ov003_02160134  (semantic: RefreshCombatantState_02160134)
@@ -89,7 +88,7 @@ extern "C" ARM void func_ov003_02160134(char* obj) {
     IterateEntries0205a330((struct Container0205a330*)cont, arg);
 
     cont = *(struct Container0205a3d0**)(obj + kRegionValue38C_274);
-    SetEntryPosition(cont, 1, 0xd7, 0x96);
+    SetEntryPosition_020e27ec(cont, 1, 0xd7, 0x96);
 
     func_0205ae8c(obj + kRegionValue334_21C);
 }

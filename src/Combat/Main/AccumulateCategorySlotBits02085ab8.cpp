@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-int TestBitInArray0x8ec(unsigned char* obj, int index);
+int TestBitInArray0x8ec_02083b00(unsigned char* obj, int index);
 int GetSlotBits0201137c(char* base, int id);
 
 struct Param2085ab8 {
@@ -22,7 +22,6 @@ struct SlotEntry020e8c00 {
     int val;
 };
 extern struct SlotEntry020e8c00 data_020e8c00[];
-
 
 #if defined(jpn)
 enum { CategoryFlagOffset = 0x860 };
@@ -58,7 +57,7 @@ ARM int AccumulateCategorySlotBits02085ab8(unsigned char* actor, struct Param208
 
     int total = 0;
     if (matched != -1) {
-        if (TestBitInArray0x8ec(actor, matched)) {
+        if (TestBitInArray0x8ec_02083b00(actor, matched)) {
             total += GetSlotBits0201137c((char*)bs, matched);
         }
     }

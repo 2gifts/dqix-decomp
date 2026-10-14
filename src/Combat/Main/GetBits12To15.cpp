@@ -11,7 +11,7 @@ struct B190Outer {
 };
 
 // USA: func_0205b190
-ARM int GetBits12To15(int unused, struct B190Outer* obj) {
+ARM int GetBits12To15_0205b190(int unused, struct B190Outer* obj) {
     if (obj == 0) {
         return 0;
     }

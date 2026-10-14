@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
-int StringLength(const char* s);
+int StringLength_020d2ff0(const char* s);
 #if defined(jpn)
 extern "C" void __clear(void* buf, int n);
 extern char data_ov000_021846f7[];
@@ -15,7 +15,7 @@ ARM void TrimTrailingLetterCode_0217aa08(char* src, char* dst) {
     if (src[0] == 0) return;
 #endif
     sprintf(dst, src);
-    int len = StringLength(dst);
+    int len = StringLength_020d2ff0(dst);
 #if defined(jpn)
     if (len <= 2) return;
     int index = len - 2;

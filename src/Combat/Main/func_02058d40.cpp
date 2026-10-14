@@ -6,11 +6,11 @@
 extern "C" int rand(void);
 
 struct S02055080;
-void* GetSubField0x14(struct S02055080* p);
-void* GetSubField0x18(struct S02055080* p);
-void* GetSubField0xC(struct S02055080* p);
-void* GetField0x4Field0x1cOrNull(struct S02055080* obj);
-void* GetField0x4Field0x20OrNull(struct S02055080* obj);
+void* GetSubField0x14_02055108(struct S02055080* p);
+void* GetSubField0x18_02055120(struct S02055080* p);
+void* GetSubField0xC_020550d8(struct S02055080* p);
+void* GetField0x4Field0x1cOrNull_02055138(struct S02055080* obj);
+void* GetField0x4Field0x20OrNull_02055150(struct S02055080* obj);
 
 struct S02055080 {
     SafeAllocator* alloc;
@@ -128,7 +128,7 @@ extern "C" ARM void func_02058d40(struct Obj02058d40* self, struct S02055080* we
     templateObj->ShallowCloneTo(&self->object);
     self->object.SetFlag16();
 
-    struct WeatherFlags14* flags = (struct WeatherFlags14*)GetSubField0x14(self->weatherList);
+    struct WeatherFlags14* flags = (struct WeatherFlags14*)GetSubField0x14_02055108(self->weatherList);
     if (flags->field_0x3 != 0) {
         self->field_0xc = 1;
     } else {
@@ -143,7 +143,7 @@ extern "C" ARM void func_02058d40(struct Obj02058d40* self, struct S02055080* we
         self->field_0x30 = (float)(unsigned int)self->field_0x8 / (float)flags->field_0x0;
     }
 
-    struct RArrCount2_02058d40* pairCurveSettings = (struct RArrCount2_02058d40*)GetSubField0x18(self->weatherList);
+    struct RArrCount2_02058d40* pairCurveSettings = (struct RArrCount2_02058d40*)GetSubField0x18_02055120(self->weatherList);
     struct NodePair0xb0_02058d40* colorCurveFirstNode = (struct NodePair0xb0_02058d40*)self->weatherList->listH[0].ElementAfter(NULL);
     self->field_0x12c = (float)(colorCurveFirstNode->p->b & 0x1f);
     self->field_0x130 = (float)((colorCurveFirstNode->p->b & 0x3e0) >> 5);
@@ -179,7 +179,7 @@ extern "C" ARM void func_02058d40(struct Obj02058d40* self, struct S02055080* we
         }
     }
 
-    struct RArrCount2_02058d40* twoChannelCurveSettings = (struct RArrCount2_02058d40*)GetField0x4Field0x1cOrNull(self->weatherList);
+    struct RArrCount2_02058d40* twoChannelCurveSettings = (struct RArrCount2_02058d40*)GetField0x4Field0x1cOrNull_02055138(self->weatherList);
     struct NodeRGA_02058d40* curveC8CurrentNode = (struct NodeRGA_02058d40*)self->weatherList->listI[0].ElementAfter(NULL);
     struct NodeRGA_02058d40* curveC8PreviousNode = NULL;
     if (curveC8CurrentNode != NULL) {
@@ -289,7 +289,7 @@ extern "C" ARM void func_02058d40(struct Obj02058d40* self, struct S02055080* we
         }
     }
 
-    struct Cfg0x20_02058d40* hueCfg = (struct Cfg0x20_02058d40*)GetField0x4Field0x20OrNull(self->weatherList);
+    struct Cfg0x20_02058d40* hueCfg = (struct Cfg0x20_02058d40*)GetField0x4Field0x20OrNull_02055150(self->weatherList);
     struct SignedAllocatorHeader* hueCurveFirstHeader = self->weatherList->listJ.ElementAfter(NULL);
     {
         int jr = (rand() & (hueCfg->jitterRange << 1)) - hueCfg->jitterRange;
@@ -322,7 +322,7 @@ extern "C" ARM void func_02058d40(struct Obj02058d40* self, struct S02055080* we
         }
     }
 
-    struct WeatherFlags14* flags2 = (struct WeatherFlags14*)GetSubField0x14(self->weatherList);
+    struct WeatherFlags14* flags2 = (struct WeatherFlags14*)GetSubField0x14_02055108(self->weatherList);
     if (flags2->field_0x4 != 0) {
         self->object.MaybeSetBCFGAnimation(0, 0);
     } else {
@@ -335,7 +335,7 @@ extern "C" ARM void func_02058d40(struct Obj02058d40* self, struct S02055080* we
         }
     }
 
-    struct Cfg0xC_02058d40* cCfg = (struct Cfg0xC_02058d40*)GetSubField0xC(self->weatherList);
+    struct Cfg0xC_02058d40* cCfg = (struct Cfg0xC_02058d40*)GetSubField0xC_020550d8(self->weatherList);
     unsigned char scaleRandomRange = cCfg->field_0x17;
     int rem2 = rand() % scaleRandomRange;
     float scale = (float)(100 - rem2) * 0.01f;

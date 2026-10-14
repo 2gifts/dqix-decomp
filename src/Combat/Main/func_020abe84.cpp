@@ -22,8 +22,8 @@ struct GameProgressRecords {
 static inline unsigned int FieldA(const Entry020abe84* e) { return e->fieldA; }
 
 int LoadBattleBlock020ac4c0(void*);
-void AddClamped9BitField(BattleRecordSnapshot*, unsigned int);
-int CopyInBattleField0x7540(void*);
+void AddClamped9BitField_020a0460(BattleRecordSnapshot*, unsigned int);
+int CopyInBattleField0x7540_020ac494(void*);
 
 // USA: func_020abe84
 extern "C" ARM int func_020abe84(void* unused, short* indices, Entry020abe84* values, int count) {
@@ -42,7 +42,7 @@ extern "C" ARM int func_020abe84(void* unused, short* indices, Entry020abe84* va
         memcpy(&table[idx], src, sizeof(*src));
     }
     LoadBattleBlock020ac4c0(&block);
-    AddClamped9BitField(&block, added);
-    CopyInBattleField0x7540(&block);
+    AddClamped9BitField_020a0460(&block, added);
+    CopyInBattleField0x7540_020ac494(&block);
     return 1;
 }

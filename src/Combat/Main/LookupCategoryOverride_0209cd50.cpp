@@ -9,11 +9,11 @@ enum { kFlagOffset = 0x2788, kIdOffset = 0x2786 };
 #include "GameState/GameState.h"
 
 extern "C" void* func_02012fe4(void);
-void* GetPtrField0x468(void* obj);
+void* GetPtrField0x468_02011584(void* obj);
 extern "C" int _s32_div_f(int a, int b);
 struct SearchTable;
 struct SearchEntry;
-struct SearchEntry* FindEntryByHalfwordKey(struct SearchTable* table, int key);
+struct SearchEntry* FindEntryByHalfwordKey_02099950(struct SearchTable* table, int key);
 int GetElementOverride0209caf0(int id);
 extern "C" int func_0209cc3c(void* obj, int id);
 
@@ -29,7 +29,7 @@ struct Entry0209cd50Layout {
 extern "C" ARM int func_0209cd50(int value) {
     int result = 0;
     GameState* battle = GameState::GetInstance();
-    struct SearchTable* table = (struct SearchTable*)GetPtrField0x468(battle);
+    struct SearchTable* table = (struct SearchTable*)GetPtrField0x468_02011584(battle);
     void* base = func_02012fe4();
     if ((_s32_div_f(value, 100) * 100) == 0x170c) {
         if (*(unsigned char*)((char*)base + kFlagOffset) == 0) {
@@ -38,7 +38,7 @@ extern "C" ARM int func_0209cd50(int value) {
             }
         }
     }
-    struct SearchEntry* entry = FindEntryByHalfwordKey(table, value);
+    struct SearchEntry* entry = FindEntryByHalfwordKey_02099950(table, value);
     if (entry != 0) {
         unsigned int idx = ((struct Entry0209cd50Layout*)entry)->idx7;
         result = GetElementOverride0209caf0(idx);

@@ -5,7 +5,7 @@ enum {regionalOffset0=0x35b, regionalOffset1=0x4356, regionalOffset2=0x4357, reg
 #endif
 #include <globaldefs.h>
 
-void* GetData02153637(void);
+void* GetData02153637_020e2ff8(void);
 struct Container020e34bc;
 int GetEntryStatusForKey020e34bc(struct Container020e34bc* obj, int key);
 void Dispatch020e3428(void* a, int b);
@@ -19,7 +19,7 @@ extern "C" void func_ov017_0218d2f0(int a, int b, int c, int d);
 // USA: func_ov017_0218d818
 ARM void ProcessEntry56_0218d818(unsigned char* obj) {
 	if (obj[0x4000 + regionalOffset0] != 1) return;
-	void* ctx = GetData02153637();
+	void* ctx = GetData02153637_020e2ff8();
 	int status = GetEntryStatusForKey020e34bc((struct Container020e34bc*)ctx, 1);
 	if (status == 1) {
 		func_ov017_0218d2f0(obj[regionalOffset1], obj[regionalOffset2], *(unsigned short*)(obj + regionalOffset3), obj[regionalOffset4]);

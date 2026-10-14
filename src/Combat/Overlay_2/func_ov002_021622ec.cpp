@@ -9,14 +9,14 @@ struct Obj0205eaa0;
 void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char keyLow,
                                                                         unsigned char keyHigh);
 int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
-int TestFlag0SetAndFlag1Clear(unsigned short *p, int n);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short *p, int n);
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0 *o, int a, int b);
 int CheckFlagOrThreshold_02161b48(char *base, int a);
 void InitBattleTag0215bf34(char *base);
-int GetWord0x0(int *p);
-int GetField0x3acValue(GameState *gs);
-int TestBitInByteArray(int unused, unsigned char *arr, int index);
+int GetWord0x0_0200fb8c(int *p);
+int GetField0x3acValue_020100a8(GameState *gs);
+int TestBitInByteArray_0206dfb0(int unused, unsigned char *arr, int index);
 extern "C" char *func_0205ec34(void);
 extern "C" void func_ov002_02161cf0(void *base);
 extern "C" void func_ov002_0215c0f8(void *base);
@@ -29,7 +29,7 @@ extern "C" unsigned short data_02114e30[];
 extern "C" char data_02108760[];
 
 static inline int AnyConfirm021622ec(char *base) {
-    int a = TestFlag0SetAndFlag1Clear(data_02114e30, 0x601);
+    int a = TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x601);
     int b = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(base + 0x2c8 + 0xc00), 0x14);
     return (a | b) ? 1 : 0;
 }
@@ -53,7 +53,7 @@ extern "C" ARM void func_ov002_021622ec(char *base) {
         if (old != *(short *) (base + 0x1b00 + 0xe0)) return;
         if (AnyConfirm021622ec(base) || *(unsigned char *) (base + 0x1000 + 0xc2f) == 1) {
             GameState *gs                              = GameState::GetInstance();
-            int w                                      = GetWord0x0((int *) gs);
+            int w                                      = GetWord0x0_0200fb8c((int *) gs);
             *(unsigned char *) (base + 0x1000 + 0xc2f) = 0;
             switch (*(short *) (base + 0x1b00 + 0xe0)) {
                 case 0:
@@ -65,7 +65,7 @@ extern "C" ARM void func_ov002_021622ec(char *base) {
                         *(int *) (base + 0x1000 + 0xbb8) = 2;
                         *(int *) (base + 0x1000 + 0xbc0) = 0;
                     } else {
-                        SetNodeFieldsAndInsert_021a120c((GameResources*)w, 3, GetField0x3acValue(gs));
+                        SetNodeFieldsAndInsert_021a120c((GameResources*)w, 3, GetField0x3acValue_020100a8(gs));
                         *(int *) (base + 0x1000 + 0xbb8) = 0x2b;
                         *(int *) (base + 0x1000 + 0xbc0) = 0;
                         func_02012fe4();
@@ -84,7 +84,7 @@ extern "C" ARM void func_ov002_021622ec(char *base) {
                     break;
                 case 4: {
                     char *save = func_0205ec34();
-                    if (!TestBitInByteArray((int) save, (unsigned char *) save + 0x8c, 0x119a)) return;
+                    if (!TestBitInByteArray_0206dfb0((int) save, (unsigned char *) save + 0x8c, 0x119a)) return;
                     func_ov017_021c05f4(w, 1, 0, 0);
                     *(int *) (base + 0x1000 + 0xbb8) = 0x2b;
                     *(int *) (base + 0x1000 + 0xbc0) = 0;

@@ -7,7 +7,7 @@ struct State0xcda8 {
 };
 
 // USA: func_0203cda8
-ARM void StoreAlignedValue0x60(struct State0xcda8* obj, int value) {
+ARM void StoreAlignedValue0x60_0203cda8(struct State0xcda8* obj, int value) {
     obj->unk60 = value;
     if ((unsigned int)(value & 0xff) >= (unsigned int)-128) {
         obj->unk60 = (value & ~0xff) + 0x100;

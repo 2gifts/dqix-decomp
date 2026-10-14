@@ -18,7 +18,7 @@ struct Buf020ac864 {
 };
 
 // USA: func_020ac864
-ARM int VerifyAndApplySaveBuffer(int flag) {
+ARM int VerifyAndApplySaveBuffer_020ac864(int flag) {
     GameState* bs = GameState::GetInstance();
     unsigned char* flagAddr = (unsigned char*)bs + 0x5000;
     flagAddr[kFlagOffset] = 0;

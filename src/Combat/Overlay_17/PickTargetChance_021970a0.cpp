@@ -2,9 +2,9 @@
 #include "GameState/GameState.h"
 #include "Util/Random.h"
 
-void* GetPtrField0x2a04(GameState* battleStruct);
-GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
-void* GetFieldAt0x150(unsigned char* obj);
+void* GetPtrField0x2a04_02010828(GameState* battleStruct);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* battleStruct, int combatantId);
+void* GetFieldAt0x150_02053c6c(unsigned char* obj);
 extern "C" int func_02032370(int max);
 
 struct RandomTargetTable021970a0 {
@@ -22,15 +22,15 @@ struct Field150LowBits021970a0 {
 extern "C" ARM int func_ov017_021970a0(int mode) {
     GameState* battleStruct = GameState::GetInstance();
     GetBTRandom();
-    struct RandomTargetTable021970a0* table = (struct RandomTargetTable021970a0*)GetPtrField0x2a04(battleStruct);
+    struct RandomTargetTable021970a0* table = (struct RandomTargetTable021970a0*)GetPtrField0x2a04_02010828(battleStruct);
 
     int maxVal = 0;
     for (int i = 0; i < table->count; i++) {
-        GameObject* c = GetCombatantWithFlag0x100(battleStruct, table->ids[i]);
+        GameObject* c = GetCombatantWithFlag0x100_0200ff1c(battleStruct, table->ids[i]);
         if (c == NULL) continue;
         int* p130 = *(int**)((char*)c + 0x130);
         if (*p130 & 1) continue;
-        void* fp = GetFieldAt0x150((unsigned char*)c);
+        void* fp = GetFieldAt0x150_02053c6c((unsigned char*)c);
         if (fp == NULL) continue;
         unsigned int v = ((struct Field150LowBits021970a0*)((char*)fp + 4))->lowBits;
         if (maxVal < v) maxVal = v;

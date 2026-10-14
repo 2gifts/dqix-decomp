@@ -13,8 +13,8 @@ void InitAndDispatchCombatant_021c2ea4(unsigned char* self);
 int CountValidCombatants02058618(void* unused);
 unsigned long long GetCurrentTimestamp(void);
 extern "C" unsigned long long _ll_udiv(unsigned long long dividend, unsigned int divisor, unsigned int flag);
-int CheckField0NonZero(int* obj);
-void SetByteField0x253(void* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
+void SetByteField0x253_020397c0(void* obj);
 extern "C" void func_ov017_021c310c(void* self);
 extern "C" void func_020a0c0c(void);
 
@@ -41,7 +41,7 @@ extern "C" ARM void func_ov017_021c2f3c(unsigned char* self) {
 
         if (self[0x94] == 0) { self[0x8c] = 1; return; }
         if (self[0x94] != 1) return;
-        if (CheckField0NonZero((int*)r5) != 0) {
+        if (CheckField0NonZero_0202b7d8((int*)r5) != 0) {
             self[0x8c] = 2;
             return;
         }
@@ -75,5 +75,5 @@ extern "C" ARM void func_ov017_021c2f3c(unsigned char* self) {
     self[0x1] = 1;
     func_ov017_021c310c(self);
     if (self[0x96] != 0) func_020a0c0c();
-    if (combatant != 0) SetByteField0x253(combatant);
+    if (combatant != 0) SetByteField0x253_020397c0(combatant);
 }

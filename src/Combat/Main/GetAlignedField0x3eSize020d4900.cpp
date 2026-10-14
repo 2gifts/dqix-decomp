@@ -2,7 +2,7 @@
 
 #include "System/Cache.h"
 
-void* GetBattleContext(void);
+void* GetBattleContext_020d41d8(void);
 extern "C" int func_020d424c(int a, int b, int c);
 
 struct BattleCtx020d4900 {
@@ -12,7 +12,7 @@ struct BattleCtx020d4900 {
 
 // USA: func_020d4900
 ARM int GetAlignedField0x3eSize020d4900(void) {
-    struct BattleCtx020d4900* ctx = (struct BattleCtx020d4900*)GetBattleContext();
+    struct BattleCtx020d4900* ctx = (struct BattleCtx020d4900*)GetBattleContext_020d41d8();
     if (func_020d424c(2, 7, 8) != 0) return 0;
     InvalidateDataCacheRange((const void*)((char*)ctx->sub + 0xc), 4);
     if (*(int*)((char*)ctx->sub + 0xc) == 1) return 0;

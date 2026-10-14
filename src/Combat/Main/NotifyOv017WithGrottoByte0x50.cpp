@@ -14,7 +14,7 @@ struct ActiveGrottoClass {
 };
 
 // USA: func_0209dbac
-ARM int NotifyOv017WithGrottoByte0x50(void* arg) {
+ARM int NotifyOv017WithGrottoByte0x50_0209dbac(void* arg) {
     ActiveGrottoClass* g = (ActiveGrottoClass*)((char*)func_02012fe4() + activeGrottoOffset);
     if (g == NULL) return 0;
     ActiveGrottoClass* r = g->GetDetailedData();

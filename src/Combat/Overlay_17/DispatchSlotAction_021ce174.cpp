@@ -3,12 +3,12 @@
 struct SearchStruct0202c1a4;
 int GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4*);
 extern "C" void* func_0205ec34(void);
-void SetField5cb0AndRecordByte0(char* obj, int v);
-void SetField5cb4AndRecordByte1(char* obj, int v);
+void SetField5cb0AndRecordByte0_02010774(char* obj, int v);
+void SetField5cb4AndRecordByte1_020107a8(char* obj, int v);
 void SetSlotByte020107dc(char* base, int val);
 void ClearRegions0206e080(char* base, int index);
 void ClearIndexedEntryFields0206e0d0(char* base, int index);
-void SetOrClearBitInArray(void* unused, unsigned char* array, int bit, int value);
+void SetOrClearBitInArray_0206df6c(void* unused, unsigned char* array, int bit, int value);
 
 struct Obj021ce174 {
     char pad0[4];
@@ -30,13 +30,13 @@ extern "C" ARM void func_ov017_021ce174(void* unused, struct Obj021ce174* obj, c
 
     switch (obj->caseSel) {
     case 0:
-        SetField5cb0AndRecordByte0(target, obj->val6);
-        SetField5cb4AndRecordByte1(target, 1);
+        SetField5cb0AndRecordByte0_02010774(target, obj->val6);
+        SetField5cb4AndRecordByte1_020107a8(target, 1);
         SetSlotByte020107dc(target, 1);
         ClearRegions0206e080((char*)base, base[0x332]);
         break;
     case 1:
-        SetField5cb4AndRecordByte1(target, obj->val6);
+        SetField5cb4AndRecordByte1_020107a8(target, obj->val6);
         SetSlotByte020107dc(target, 1);
         ClearIndexedEntryFields0206e0d0((char*)base, base[0x332]);
         break;
@@ -44,13 +44,13 @@ extern "C" ARM void func_ov017_021ce174(void* unused, struct Obj021ce174* obj, c
         SetSlotByte020107dc(target, obj->val6);
         break;
     case 3:
-        SetOrClearBitInArray(base, base + 0x8c, obj->bit8, obj->val6);
+        SetOrClearBitInArray_0206df6c(base, base + 0x8c, obj->bit8, obj->val6);
         break;
     case 4:
-        SetOrClearBitInArray(base, base + base[0x332] * 0x1c + 0x3, obj->bit8, obj->val6);
+        SetOrClearBitInArray_0206df6c(base, base + base[0x332] * 0x1c + 0x3, obj->bit8, obj->val6);
         break;
     case 5:
-        SetOrClearBitInArray(base, base + base[0x332] * 0x1c + 0x10, obj->bit8, obj->val6);
+        SetOrClearBitInArray_0206df6c(base, base + base[0x332] * 0x1c + 0x10, obj->bit8, obj->val6);
         break;
     default:
         break;

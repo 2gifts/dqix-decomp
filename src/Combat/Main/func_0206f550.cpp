@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-int StringLength(const char* s);
+int StringLength_020d2ff0(const char* s);
 extern "C" int func_02001aec(void* a, void* b, int n);
 extern "C" int func_02005a94(void* p);
 
@@ -33,7 +33,7 @@ extern "C" ARM int func_0206f550(struct Tags0206f550* s, char* in, char* out) {
                 tab = data_020f0afc;
                 while (i < 13) {
                     tag = tab[i];
-                    len = StringLength(tag);
+                    len = StringLength_020d2ff0(tag);
                     if (func_02001aec(p, tag, len) == 0) {
                         if (i == 4 || (unsigned char)(i + 0xff) <= 1) {
                             p += len;

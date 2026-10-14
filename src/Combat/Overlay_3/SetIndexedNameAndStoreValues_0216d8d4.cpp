@@ -13,7 +13,7 @@ int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 struct Obj02046574;
 void SetIndexedName02046574(struct Obj02046574* obj, int index, char* str);
 struct StoreStruct;
-void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
+void StoreInArray0x8b0_020465c0(struct StoreStruct* base, int index, int value);
 
 // USA: func_ov003_0216d8d4  (semantic: SetIndexedNameAndStoreValues_0216d8d4)
 #if defined(jpn)
@@ -31,10 +31,10 @@ extern "C" ARM void func_ov003_0216d8d4(char* obj, int keyA, int p3, int p4, int
         SetIndexedName02046574((struct Obj02046574*)window, 5, (char*)name);
     }
     if (p4 >= 0) {
-        StoreInArray0x8b0((struct StoreStruct*)window, 1, p4);
+        StoreInArray0x8b0_020465c0((struct StoreStruct*)window, 1, p4);
     }
     if (p5 >= 0) {
-        StoreInArray0x8b0((struct StoreStruct*)window, 0, p5);
+        StoreInArray0x8b0_020465c0((struct StoreStruct*)window, 0, p5);
     }
 
 #endif

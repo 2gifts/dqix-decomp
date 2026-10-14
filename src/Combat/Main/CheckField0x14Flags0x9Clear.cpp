@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_0208830c
-ARM int CheckField0x14Flags0x9Clear(unsigned char* obj) {
+ARM int CheckField0x14Flags0x9Clear_0208830c(unsigned char* obj) {
     int x = *(int*)(obj + 0x14);
     if (x & 1) {
         return 0;

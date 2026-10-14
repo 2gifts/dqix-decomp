@@ -11,7 +11,7 @@ enum { RegionOffset280 = 0x280, RegionOffset284 = 0x284, RegionOffset288 = 0x288
 struct ByteHeader0204693c;
 void ResetByteHeader(struct ByteHeader0204693c* p);
 void InitBigStruct0205c790(char* obj);
-unsigned char GetByteField0x252(void* obj);
+unsigned char GetByteField0x252_02039820(void* obj);
 
 // USA: func_ov017_021af59c  (semantic: InitStruct_021af59c)
 extern "C" ARM void func_ov017_021af59c(char* obj) {
@@ -39,7 +39,7 @@ extern "C" ARM void func_ov017_021af59c(char* obj) {
     *(int*)(obj + RegionOffset280) = (*(unsigned int*)0x4000000 & 0x1f00) >> 8;
     GameObject* combatant = GameState::GetInstance()->GetUnknownGameObject();
     if (combatant != 0) {
-        obj[RegionOffset284] = GetByteField0x252(combatant) != 0 ? 1 : 0;
+        obj[RegionOffset284] = GetByteField0x252_02039820(combatant) != 0 ? 1 : 0;
     } else {
         obj[RegionOffset284] = 1;
     }

@@ -3,7 +3,7 @@
 #include "Graphics/Vector.h"
 #include "World/Object3D.h"
 
-void StoreVec3AtField0x50(unsigned char *object, int x, int y, int z);
+void StoreVec3AtField0x50_0203db34(unsigned char *object, int x, int y, int z);
 
 struct FacingControllerPrefix {
     Object3D object;
@@ -56,5 +56,5 @@ extern "C" ARM void func_02041378(void *object) {
     if (!turning) {
         controller->movementFlags &= ~2;
     }
-    StoreVec3AtField0x50((unsigned char *) object, controller->object.rotation_.x, distance, controller->object.rotation_.z);
+    StoreVec3AtField0x50_0203db34((unsigned char *) object, controller->object.rotation_.x, distance, controller->object.rotation_.z);
 }

@@ -14,13 +14,13 @@ extern "C" void _Z20ClearRegions0206e080Pci(void* obj, int slot);
 #define _Z20ClearRegions0206e080Pci _Z20ClearRegions0206e080Pci
 extern "C" void _Z31ClearIndexedEntryFields0206e0d0Pci(void* obj, int slot);
 #define _Z31ClearIndexedEntryFields0206e0d0Pci _Z31ClearIndexedEntryFields0206e0d0Pci
-void SetOrClearBitInArray(void* obj, unsigned char* arr, int idx, int flag);
-#define SetOrClearBitInArray SetOrClearBitInArray
+void SetOrClearBitInArray_0206df6c(void* obj, unsigned char* arr, int idx, int flag);
+#define SetOrClearBitInArray_0206df6c SetOrClearBitInArray_0206df6c
 
-void SetField5cb0AndRecordByte0(char* obj, int v);
-#define SetField5cb0AndRecordByte0 SetField5cb0AndRecordByte0
-void SetField5cb4AndRecordByte1(char* obj, int v);
-#define SetField5cb4AndRecordByte1 SetField5cb4AndRecordByte1
+void SetField5cb0AndRecordByte0_02010774(char* obj, int v);
+#define SetField5cb0AndRecordByte0_02010774 SetField5cb0AndRecordByte0_02010774
+void SetField5cb4AndRecordByte1_020107a8(char* obj, int v);
+#define SetField5cb4AndRecordByte1_020107a8 SetField5cb4AndRecordByte1_020107a8
 void SetSlotByte020107dc(char* base, int val);
 #define SetSlotByte020107dc SetSlotByte020107dc
 
@@ -63,8 +63,8 @@ extern "C" ARM int func_020716a4(struct Variant02030b0c* args, int count) {
     }
 
     bs = GameState::GetInstance();
-    SetField5cb0AndRecordByte0((char*)bs, a);
-    SetField5cb4AndRecordByte1((char*)bs, b);
+    SetField5cb0AndRecordByte0_02010774((char*)bs, a);
+    SetField5cb4AndRecordByte1_020107a8((char*)bs, b);
     SetSlotByte020107dc((char*)bs, c);
 
     entry = func_0205ec34();
@@ -78,13 +78,13 @@ extern "C" ARM int func_020716a4(struct Variant02030b0c* args, int count) {
         args = args + 1;
         switch (v >> 16) {
         case 2:
-            SetOrClearBitInArray(entry, (unsigned char*)entry + *(unsigned char*)((char*)entry + 0x332) * 0x1c + 3, (unsigned short)v, 1);
+            SetOrClearBitInArray_0206df6c(entry, (unsigned char*)entry + *(unsigned char*)((char*)entry + 0x332) * 0x1c + 3, (unsigned short)v, 1);
             break;
         case 1:
-            SetOrClearBitInArray(entry, (unsigned char*)entry + *(unsigned char*)((char*)entry + 0x332) * 0x1c + 0x10, (unsigned short)v, 1);
+            SetOrClearBitInArray_0206df6c(entry, (unsigned char*)entry + *(unsigned char*)((char*)entry + 0x332) * 0x1c + 0x10, (unsigned short)v, 1);
             break;
         case 0:
-            SetOrClearBitInArray(entry, (unsigned char*)entry + 0x8c, (unsigned short)v, 1);
+            SetOrClearBitInArray_0206df6c(entry, (unsigned char*)entry + 0x8c, (unsigned short)v, 1);
             break;
         }
     }

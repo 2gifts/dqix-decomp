@@ -6,7 +6,7 @@ short SumKeyedLookups02086bf4(char* obj, int key);
 // USA: func_ov003_02179da8  (semantic: CheckGoldCapTier_02179da8)
 extern "C" ARM int func_ov003_02179da8(void* obj, int flag) {
     GameState* bs = GameState::GetInstance();
-    void* p = GetPtrField0x2a04(bs);
+    void* p = GetPtrField0x2a04_02010828(bs);
     int keyResult = 1;
     if (flag != 0) {
         short key = *(short*)((char*)obj + 0x18);

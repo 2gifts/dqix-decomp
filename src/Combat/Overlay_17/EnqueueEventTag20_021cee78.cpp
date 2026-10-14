@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 struct Vector3i;
 
@@ -20,7 +20,7 @@ ARM void EnqueueEventTag20_021cee78(int id, unsigned char b) {
 	if (c == NULL) {
 		return;
 	}
-	void* p = GetData02100044();
+	void* p = GetData02100044_0202ae24();
 	LocalEvt021cee78 buf;
 	buf.tag = 0x14;
 	buf.field12 = id;

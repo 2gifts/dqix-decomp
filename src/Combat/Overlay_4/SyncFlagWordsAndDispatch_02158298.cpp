@@ -7,17 +7,17 @@ enum { stateOffset = 0x8c, battleOffset = 0xc, pointerOffset = 0x3500 };
 enum { stateOffset = 0x6c, battleOffset = 0x26c, pointerOffset = 0x3710 };
 #endif
 
-void ClearBitsInWord(unsigned int* obj, unsigned int mask);
-void ClearBitsInField4(unsigned int* obj, unsigned int mask);
-void ClearBitsInField8(unsigned int* obj, unsigned int mask);
-void SetBitsInWord(unsigned int* obj, unsigned int mask);
-void SetBitsInField4(unsigned int* obj, unsigned int mask);
-void SetBitsInField8(unsigned int* obj, unsigned int mask);
+void ClearBitsInWord_0203b4b0(unsigned int* obj, unsigned int mask);
+void ClearBitsInField4_0203b4e8(unsigned int* obj, unsigned int mask);
+void ClearBitsInField8_0203b520(unsigned int* obj, unsigned int mask);
+void SetBitsInWord_0203b4a0(unsigned int* obj, unsigned int mask);
+void SetBitsInField4_0203b4d8(unsigned int* obj, unsigned int mask);
+void SetBitsInField8_0203b510(unsigned int* obj, unsigned int mask);
 
 struct S_e828;
-void SetFieldAt0x7e(S_e828*, unsigned short);
+void SetFieldAt0x7e_0201e828(S_e828*, unsigned short);
 
-void SetByteField0x253(void* obj);
+void SetByteField0x253_020397c0(void* obj);
 
 extern "C" void* func_02012fe4(void);
 
@@ -37,20 +37,20 @@ struct Outer26c_02158298 { char pad[0x5d00]; struct BitField5d00c_02158298 area;
 extern "C" ARM int func_ov004_02158298(void) {
     GameState* battle = GameState::GetInstance();
     unsigned int* word = (unsigned int*)((int)func_ov017_0218b5b0());
-    ClearBitsInWord(word, ~0);
-    ClearBitsInField4(word, ~0);
-    ClearBitsInField8(word, ~0);
-    SetBitsInWord(word, data_ov004_021707d8.ptr->m0);
-    SetBitsInField4(word, data_ov004_021707d8.ptr->m4);
-    SetBitsInField8(word, data_ov004_021707d8.ptr->m8);
+    ClearBitsInWord_0203b4b0(word, ~0);
+    ClearBitsInField4_0203b4e8(word, ~0);
+    ClearBitsInField8_0203b520(word, ~0);
+    SetBitsInWord_0203b4a0(word, data_ov004_021707d8.ptr->m0);
+    SetBitsInField4_0203b4d8(word, data_ov004_021707d8.ptr->m4);
+    SetBitsInField8_0203b510(word, data_ov004_021707d8.ptr->m8);
 
     void* p = func_02012fe4();
     if (!p) return 0;
     p = (char*)p + stateOffset;
     if (!p) return 0;
-    SetFieldAt0x7e((struct S_e828*)p, data_ov004_021707d8.ptr->mc);
+    SetFieldAt0x7e_0201e828((struct S_e828*)p, data_ov004_021707d8.ptr->mc);
 
-    SetByteField0x253(battle->GetUnknownGameObject());
+    SetByteField0x253_020397c0(battle->GetUnknownGameObject());
 
     struct Outer26c_02158298* outer = (struct Outer26c_02158298*)((char*)battle + battleOffset);
     outer->area.lo13 &= ~0x20;

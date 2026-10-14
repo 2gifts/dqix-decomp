@@ -5,7 +5,7 @@ void ResetBytes020e25cc(signed char* p);
 struct Struct02020520;
 void ClearStruct02020520(struct Struct02020520* s);
 struct ZeroStruct;
-void ClearZeroStruct(struct ZeroStruct* s);
+void ClearZeroStruct_020e1568(struct ZeroStruct* s);
 void InitStruct020e1588(unsigned char* p);
 void InitObj020e15f8(char* obj, int arg1, int arg2);
 struct ClearTarget0205a234;
@@ -48,7 +48,7 @@ ARM void InitEntryManager020e2490(struct EntryManager020e2490* obj, int arg1, in
     int i;
     for (i = 0; i < count; i++) {
         ClearStruct02020520((struct Struct02020520*)((char*)obj->field0 + i * 0xc));
-        ClearZeroStruct((struct ZeroStruct*)((char*)obj->field8 + i * 0xc));
+        ClearZeroStruct_020e1568((struct ZeroStruct*)((char*)obj->field8 + i * 0xc));
     }
 
     InitStruct020e1588(obj->fieldC);

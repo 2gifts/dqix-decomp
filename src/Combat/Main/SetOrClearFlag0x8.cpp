@@ -6,7 +6,7 @@ struct Struct_203cec4 {
 };
 
 // USA: func_0203cec4
-ARM void SetOrClearFlag0x8(struct Struct_203cec4* obj, int enable) {
+ARM void SetOrClearFlag0x8_0203cec4(struct Struct_203cec4* obj, int enable) {
     if (enable) {
         obj->flags |= 0x8;
     } else {

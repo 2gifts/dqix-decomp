@@ -71,7 +71,7 @@ struct BattleOverlay0219dc90 {
 };
 
 extern "C" void* func_0202ae18(void);
-InlineEntry* GetEntryTableBase(void);
+InlineEntry* GetEntryTableBase_02027ca4(void);
 extern "C" void* func_02012fe4(void);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* obj);
 extern "C" void func_020288e0(InlineEntry* table);
@@ -94,9 +94,9 @@ extern "C" void func_02046a8c(TailList020469b4* list, GrottoSlot* node);
 extern "C" ARM void func_ov017_0219dc90(BattleOverlay0219dc90* self, int combatantIdx, int id, unsigned char kind, unsigned short value) {
     GameState* gs = GameState::GetInstance();
     void* search = func_0202ae18();
-    InlineEntry* table = GetEntryTableBase();
+    InlineEntry* table = GetEntryTableBase_02027ca4();
     func_02012fe4();
-    Combatant0219dc90* combatant = (Combatant0219dc90*)GetCombatantWithFlag0x100(gs, combatantIdx);
+    Combatant0219dc90* combatant = (Combatant0219dc90*)GetCombatantWithFlag0x100_0200ff1c(gs, combatantIdx);
     if (GetSearchStructCurrentArrEntry((SearchStruct0202c1a4*)search) != 0) return;
     func_020288e0(table);
     SetFlagsForFlaggedCombatants_0219e0ec(self);

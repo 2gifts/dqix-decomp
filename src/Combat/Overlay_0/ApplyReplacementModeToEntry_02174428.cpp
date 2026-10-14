@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 extern "C" void* func_ov000_02161318(void* obj, int id);
-int GetField0x3acValue(GameState* battleStruct);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 extern int data_02108760;
@@ -16,7 +16,7 @@ extern "C" ARM void func_ov000_02174428(void* obj, int id, int val100, int param
     void* r4 = func_ov000_02161318(obj, id);
     if (!r4) return;
     GameState* bs = GameState::GetInstance();
-    int f3ac = GetField0x3acValue(bs);
+    int f3ac = GetField0x3acValue_020100a8(bs);
     if (id != f3ac && val100 == 0x64) {
         signed char off = *(signed char*)((char*)r4 + 0x18);
         signed char pval = *(signed char*)((char*)r4 + off + 0x10);

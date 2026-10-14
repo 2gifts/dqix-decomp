@@ -10,7 +10,7 @@ enum { kTailOffset = 0x74fe };
 #include "GameState/GameState.h"
 
 // USA: func_0202c410
-ARM void CopyBattleTailToObjField0x102c(void* obj) {
+ARM void CopyBattleTailToObjField0x102c_0202c410(void* obj) {
     *((unsigned char*)obj + 0x1029) |= kMask;
     GameState* battleStruct = GameState::GetInstance();
     unsigned char buf[6];

@@ -46,7 +46,7 @@ struct BattleScreen {
 
 extern "C" BattleResources* func_ov017_0218b5b0(void);
 extern "C" char* func_0203bd08(void);
-int* GetGlobalPtr02105244();
+int* GetGlobalPtr02105244_0203bd14();
 extern "C" void MapVRAMBanksToTextureImage(int handle);
 void ConfigurePairMode020bb48c(unsigned int mode, int installHandlers);
 extern "C" void MapVRAMBanksToSubObj(int value);
@@ -63,7 +63,7 @@ void BackupPairTables0207dfac(char* obj);
 extern "C" ARM void func_ov000_02164280(BattleScreen* screen) {
     BattleResources* res = func_ov017_0218b5b0();
     char* context = func_0203bd08();
-    int* global = GetGlobalPtr02105244();
+    int* global = GetGlobalPtr02105244_0203bd14();
     LockStagedTextureVRAMCopying();
     MapVRAMBanksToTextureImage(7);
     ConfigurePairMode020bb48c(3, 1);

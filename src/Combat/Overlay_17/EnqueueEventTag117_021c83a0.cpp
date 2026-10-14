@@ -4,7 +4,7 @@
 extern "C" GameResources* func_ov017_0218b5b0(void);
 extern "C" void* func_ov017_021b8478(void* obj);
 void* GetField6b0_021b8470(void* obj);
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct Ret021c83a0 {
@@ -39,7 +39,7 @@ extern "C" ARM void func_ov017_021c83a0(void) {
     void* h = *(void**)((char*)ov + 0x3000 + regionalOffset0);
     Ret021c83a0* r = (Ret021c83a0*)func_ov017_021b8478(h);
     void* work = GetField6b0_021b8470(h);
-    void* p = GetData02100044();
+    void* p = GetData02100044_0202ae24();
 
     LocalEvt021c83a0 buf;
     buf.tag = 0x75;

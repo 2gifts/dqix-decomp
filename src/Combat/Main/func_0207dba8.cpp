@@ -6,7 +6,7 @@ struct SearchStruct;
 
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c508(void);
-int TestFlagBitAt0xe(struct SearchStruct* obj, int value);
+int TestFlagBitAt0xe_0202c578(struct SearchStruct* obj, int value);
 extern "C" void func_0207dcf0(int a);
 extern "C" int func_02001aec(void* a, void* b, int c);
 extern "C" void func_ov017_021c9c64(int a, int b);
@@ -52,7 +52,7 @@ extern "C" ARM void func_0207dba8(struct Init0207d7c0* list) {
     if (func_0202c508() == 0) return;
     int j;
     for (j = trueVal; j < 4; j++) {
-        if (!TestFlagBitAt0xe(search, j)) continue;
+        if (!TestFlagBitAt0xe_0202c578(search, j)) continue;
         struct Init0207d7c0* p = list;
         int k;
         for (k = resetVal; k < 4; p++, k++) {

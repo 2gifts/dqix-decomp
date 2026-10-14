@@ -7,7 +7,7 @@ struct SlotPair02085474 {
 extern struct SlotPair02085474 data_020e8b90[];
 
 // USA: func_02085474
-ARM int AnySlotHasBit18At0x2f4(unsigned char* obj) {
+ARM int AnySlotHasBit18At0x2f4_02085474(unsigned char* obj) {
     int i;
     signed char slotIdx;
     for (i = 0; (slotIdx = data_020e8b90[i].sentinelIdx) != -1; i++) {

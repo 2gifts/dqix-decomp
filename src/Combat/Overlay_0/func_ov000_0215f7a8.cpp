@@ -9,7 +9,7 @@ char q[20];
 #endif
 Actor* actor;};
 class GameState {public:static GameState* GetInstance();GameObject* GetCombatantByIndex(int);};
-GameObject* GetCombatantWithFlag0x100(GameState*,int);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState*,int);
 struct Random;Random* GetBTRandom();int NextRandomMax(Random*,int);
 struct Info {char p[0xc];int state;};
 struct Battle {char p[0x8e18];Info* info;int attempts;int mode;char q[0x25];unsigned char flag;};
@@ -31,7 +31,7 @@ extern "C" ARM int func_ov000_0215f7a8(Battle* self,short* selected,int count){
  for(i=0;i<n;i++,ptr++){GameObject* unit=GetUnit(*ptr);if(unit)partyTotal+=StatTotal(unit->base);}
  partyTotal/=n;if(enemyTotal*3<=partyTotal)return 1;
  GameState* gs=GameState::GetInstance();const int* thresholds=data_ov000_02182c04;int chance=0;
- for(int j=0;j<count;j++,selected++){GameObject* unit=GetCombatantWithFlag0x100(gs,*selected);if(unit){int value=10+(int)(0.05f*(float)(unsigned short)unit->actor->value);if(chance<value)chance=value;}}
+ for(int j=0;j<count;j++,selected++){GameObject* unit=GetCombatantWithFlag0x100_0200ff1c(gs,*selected);if(unit){int value=10+(int)(0.05f*(float)(unsigned short)unit->actor->value);if(chance<value)chance=value;}}
  if(chance<thresholds[self->attempts])chance=thresholds[self->attempts];
  self->attempts++;return NextRandomMax(random,100)<chance;
 }

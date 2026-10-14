@@ -8,7 +8,7 @@ enum { NodeListOffset = 0x41c };
 #endif
 
 extern "C" void* func_0205ec34(void);
-void* GetField0x3f8Address(GameState* battleStruct);
+void* GetField0x3f8Address_0200fd0c(GameState* battleStruct);
 void CallLoop0206eb20(void* a, void* b, int c, int limit);
 extern "C" void func_0206ea8c(void* obj, unsigned char a, short b, int flag);
 
@@ -34,7 +34,7 @@ extern "C" ARM void func_02017c58(void* obj) {
     if (gs == NULL) {
         return;
     }
-    char* f3f8 = (char*)GetField0x3f8Address(gs);
+    char* f3f8 = (char*)GetField0x3f8Address_0200fd0c(gs);
     if (f3f8 == NULL) {
         return;
     }

@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void* GetActiveCombatWork(void);
+void* GetActiveCombatWork_ov000_02160130(void);
 extern "C" void func_ov000_021639b4(void);
 
 struct Obj021eb00c {
@@ -14,7 +14,7 @@ struct Obj021eb00c {
 ARM void SetFlagField_021eb00c_021eb00c(struct Obj021eb00c* obj) {
     if (obj->fieldC == 0) return;
     if (obj->flags & 0x4) return;
-    GetActiveCombatWork();
+    GetActiveCombatWork_ov000_02160130();
     func_ov000_021639b4();
     obj->flags |= 0x4;
 }

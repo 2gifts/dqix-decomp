@@ -11,14 +11,14 @@ void CancelPendingAction020397cc(struct Obj020397cc* obj, int arg1);
 extern "C" void func_ov017_021afb8c(char* self, char* name);
 extern "C" void* __clear(void* dst, int count);
 extern "C" void func_02042764(char* name, void* buf, int flag);
-void SetBitsInField4(unsigned int* obj, unsigned int mask);
+void SetBitsInField4_0203b4d8(unsigned int* obj, unsigned int mask);
 extern "C" void func_ov017_0218b5c0(int set, int bit);
 void DispatchWithGlobalContext020daf9c(int a, int b, int c, int d);
 void ClearFlag658_0219aa5c(unsigned char* obj);
 int GetField4328_0218d268(void* obj);
 struct ThreeByteStruct;
-void ClearThreeBytes(struct ThreeByteStruct* s);
-void OrBitsIntoField0(unsigned int* p, unsigned int mask);
+void ClearThreeBytes_020966cc(struct ThreeByteStruct* s);
+void OrBitsIntoField0_020466e4(unsigned int* p, unsigned int mask);
 
 // USA: func_ov017_021afcec  (semantic: InitCombatEntryAndDispatch_021afcec)
 extern "C" ARM int func_ov017_021afcec(unsigned char* obj) {
@@ -55,7 +55,7 @@ extern "C" ARM int func_ov017_021afcec(unsigned char* obj) {
 
 #endif
     }
-    SetBitsInField4((unsigned int*)ov, 0x40);
+    SetBitsInField4_0203b4d8((unsigned int*)ov, 0x40);
     func_ov017_0218b5c0(0, -1);
     DispatchWithGlobalContext020daf9c(1, 1, 0, 1);
 #if defined(jpn)
@@ -65,7 +65,7 @@ extern "C" ARM int func_ov017_021afcec(unsigned char* obj) {
 #endif
 
     ClearFlag658_0219aa5c((unsigned char*)ov);
-    ClearThreeBytes((struct ThreeByteStruct*)GetField4328_0218d268(ov));
-    OrBitsIntoField0(dataPtr, 0x40000);
+    ClearThreeBytes_020966cc((struct ThreeByteStruct*)GetField4328_0218d268(ov));
+    OrBitsIntoField0_020466e4(dataPtr, 0x40000);
     return 1;
 }

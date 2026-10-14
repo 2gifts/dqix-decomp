@@ -3,11 +3,11 @@
 #include "GameState/GameState.h"
 
 struct Combatant_20885b4;
-int CheckFlag0x2AndKind1(struct Combatant_20885b4* obj);
+int CheckFlag0x2AndKind1_020885b4(struct Combatant_20885b4* obj);
 struct S88514;
-int CheckFlag0x2AndState2(struct S88514* obj);
+int CheckFlag0x2AndState2_02088514(struct S88514* obj);
 struct Combatant_2088644;
-void ClearFlag0x2AndKind(struct Combatant_2088644* obj);
+void ClearFlag0x2AndKind_02088644(struct Combatant_2088644* obj);
 extern "C" void func_ov000_02159eac(void* a0, void* buf, int a2);
 unsigned short SelectByIndexRange0to3_021da644(int idx, int a, int b);
 extern "C" void* func_ov000_0215e958(void* a0);
@@ -41,9 +41,9 @@ extern "C" ARM void* func_ov024_021dbc64(struct Obj_021dbc64* obj, int unused, i
 	local.lo = 0;
 	local.hi = 0;
 	int sel;
-	if ((CheckFlag0x2AndKind1((struct Combatant_20885b4*)c->currentStats_) || CheckFlag0x2AndState2((struct S88514*)c->currentStats_)) && flagArg != 0) {
+	if ((CheckFlag0x2AndKind1_020885b4((struct Combatant_20885b4*)c->currentStats_) || CheckFlag0x2AndState2_02088514((struct S88514*)c->currentStats_)) && flagArg != 0) {
 		sel = 0x54;
-		ClearFlag0x2AndKind((struct Combatant_2088644*)c->currentStats_);
+		ClearFlag0x2AndKind_02088644((struct Combatant_2088644*)c->currentStats_);
 		func_ov000_02159eac(obj->field0x10, &local, 0x11);
 		obj->count0x14++;
 	} else {

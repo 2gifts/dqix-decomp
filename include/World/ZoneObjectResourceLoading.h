@@ -21,7 +21,7 @@ struct ZoneLoadState {
     int unknown20;
 };
 
-void *GetField0x3f8Address(GameState *state);
+void *GetField0x3f8Address_0200fd0c(GameState *state);
 void FormatFilenameAndSetExtension02014d18(int id, char *extension, char *buffer);
 void RestorePairTables0207df90(char *tables);
 void BackupPairTables0207dfac(char *tables);

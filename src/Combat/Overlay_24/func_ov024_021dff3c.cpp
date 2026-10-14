@@ -2,7 +2,7 @@
 #include "Combat/Overlay_0/GetCombatantByID.h"
 #include "GameState/GameState.h"
 
-int CheckFlag0x14Bit0Clear(unsigned char* obj);
+int CheckFlag0x14Bit0Clear_0208869c(unsigned char* obj);
 struct StateWrapObj020886dc;
 struct StateWrapObj02088724;
 struct StateWrapObj0208876c;
@@ -11,7 +11,7 @@ void SetCombatantState1(struct StateWrapObj020886dc* obj);
 void SetCombatantState2(struct StateWrapObj02088724* obj);
 void SetCombatantState3(struct StateWrapObj0208876c* obj);
 void SetCombatantState4(struct StateWrapObj020887b4* obj);
-void SetFlag0x80AndState5(unsigned char* obj);
+void SetFlag0x80AndState5_020887fc(unsigned char* obj);
 unsigned short SelectByIndexRange0to3_021da644(int idx, int a, int b);
 extern "C" void* func_ov000_0215e958(void* a0);
 void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
@@ -40,7 +40,7 @@ extern "C" ARM void* func_ov024_021dff3c(struct Obj_021dff3c* obj, int unused, i
     if (!c) return 0;
     unsigned short sel;
     if (range->state > 0) {
-        if (CheckFlag0x14Bit0Clear((unsigned char*)c->currentStats_) && flagArg != 0) {
+        if (CheckFlag0x14Bit0Clear_0208869c((unsigned char*)c->currentStats_) && flagArg != 0) {
             sel = SelectByIndexRange0to3_021da644(id, range->f20.c, range->f24.a);
             switch (range->state) {
                 case 1:
@@ -56,7 +56,7 @@ extern "C" ARM void* func_ov024_021dff3c(struct Obj_021dff3c* obj, int unused, i
                     SetCombatantState4((struct StateWrapObj020887b4*)c->currentStats_);
                     break;
                 case 5:
-                    SetFlag0x80AndState5((unsigned char*)c->currentStats_);
+                    SetFlag0x80AndState5_020887fc((unsigned char*)c->currentStats_);
                     break;
             }
         } else {

@@ -4,7 +4,7 @@
 extern "C" int func_ov017_021d60f4(int id);
 
 struct Struct_203cec4;
-void SetOrClearFlag0x8(struct Struct_203cec4* obj, int enable);
+void SetOrClearFlag0x8_0203cec4(struct Struct_203cec4* obj, int enable);
 struct Struct_0203fc5c;
 int SetField40IfPositive(struct Struct_0203fc5c* obj, float value);
 
@@ -39,7 +39,7 @@ extern "C" ARM int func_ov001_0216013c(int id) {
             return 0;
         }
         if (((struct EntryWithField14*)obj)->field14 != 0) {
-            SetOrClearFlag0x8((struct Struct_203cec4*)((struct EntryWithField14*)obj)->field14, 0);
+            SetOrClearFlag0x8_0203cec4((struct Struct_203cec4*)((struct EntryWithField14*)obj)->field14, 0);
         }
         if (((struct EntryWithField14*)obj)->field14 != 0) {
             SetField40IfPositive((struct Struct_0203fc5c*)((struct EntryWithField14*)obj)->field14, 1.0f);

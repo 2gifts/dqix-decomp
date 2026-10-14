@@ -9,11 +9,11 @@ enum { globalOffset = 0x8c };
 #endif
 
 char* GetGlobalField0x1c020421a0(void);
-void SetFlag0x2IfByte0xd4Not3(unsigned char* obj);
+void SetFlag0x2IfByte0xd4Not3_0208beb4(unsigned char* obj);
 extern "C" void func_0208bb78(void* obj, int count);
 struct StructAllocGroup0208ba54;
 void DestroyStructAllocGroup0208ba54(struct StructAllocGroup0208ba54*);
-unsigned int GetBitsInField0(unsigned int* obj, unsigned int mask);
+unsigned int GetBitsInField0_0203b4c4(unsigned int* obj, unsigned int mask);
 int StoreArgIfMatched_02153948(unsigned short arg);
 
 struct Obj02156108 {
@@ -42,7 +42,7 @@ extern "C" ARM int func_ov001_02156108(struct Obj02156108* self) {
         void* ptr = self->field0x120;
         if (ptr) {
             if (*(short*)((char*)ptr + 0xd2) >= 0) {
-                SetFlag0x2IfByte0xd4Not3((unsigned char*)ptr);
+                SetFlag0x2IfByte0xd4Not3_0208beb4((unsigned char*)ptr);
                 unsigned int scaleCount = battle->GetTickCount();
                 func_0208bb78(self->field0x120, scaleCount);
                 return self->field0xa;
@@ -53,8 +53,8 @@ extern "C" ARM int func_ov001_02156108(struct Obj02156108* self) {
         self->field0x120 = 0;
     }
 
-    if (GetBitsInField0(obj17, 0x1000) == 0) {
-        FontBankLoader* val = GetGlobal02109400();
+    if (GetBitsInField0_0203b4c4(obj17, 0x1000) == 0) {
+        FontBankLoader* val = GetGlobal02109400_02094a00();
         BlankFunction02094b40(val);
         func_02094ab0(val);
         BlankFunction02094b34(val, 0x6f, 0x1388, 1, 1);

@@ -7,7 +7,7 @@
 extern "C" void *func_02012fe4(void);
 struct S02053f4c;
 void SetFields1a8And1ac(S02053f4c *, int, int);
-void SetField0x1b0(void *, unsigned char);
+void SetField0x1b0_02053f6c(void *, unsigned char);
 int IsValueInRange0201b5d8(int);
 
 struct Node02021f88 {
@@ -57,7 +57,7 @@ extern "C" ARM void func_02026bdc(void *object, int flag) {
             continue;
         }
         func_ov017_0218b5b0();
-        GameObject *combatant = GetCombatantWithFlag0x100(gameState, i);
+        GameObject *combatant = GetCombatantWithFlag0x100_0200ff1c(gameState, i);
         if (combatant == 0) {
             continue;
         }
@@ -96,7 +96,7 @@ extern "C" ARM void func_02026bdc(void *object, int flag) {
                         } else {
                             combatantState->flags |= 0x10;
                             SetFields1a8And1ac(reinterpret_cast<S02053f4c *>(combatant), node->x, node->y);
-                            SetField0x1b0(combatant, node->id);
+                            SetField0x1b0_02053f6c(combatant, node->id);
                         }
                         found = 1;
                     }
@@ -123,7 +123,7 @@ extern "C" ARM void func_02026bdc(void *object, int flag) {
                         } else {
                             combatantState->flags |= 0x10;
                             SetFields1a8And1ac(reinterpret_cast<S02053f4c *>(combatant), node->x, node->y);
-                            SetField0x1b0(combatant, node->id);
+                            SetField0x1b0_02053f6c(combatant, node->id);
                         }
                         found = 1;
                     }

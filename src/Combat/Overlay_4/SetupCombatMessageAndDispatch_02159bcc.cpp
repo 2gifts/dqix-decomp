@@ -25,7 +25,7 @@ struct KeyedStackContext {
 struct Element020de650;
 extern "C" struct Container020dedd0* func_ov004_02156fd4(void* obj, int key);
 struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0* c, int key);
-int CallFunc020e52a0(void* p, int key);
+int CallFunc020e52a0_020e5294(void* p, int key);
 int GetGlobalField0x1c020421a0(void);
 void* ZeroInitReturn020de824(void* obj);
 void InitStruct0207cbe8(char* obj);
@@ -40,7 +40,7 @@ extern "C" ARM int func_ov004_02159bcc(void* obj) {
     if (node == NULL) return 0;
     struct Element020de650* elem = FindElementByKey020dedd0(node, *(short*)(data_ov004_021707d8.ptr + 0xe));
     if (elem == NULL) return 0;
-    int val = CallFunc020e52a0(data_ov004_021707d8.ptr + 0x8c, *(short*)((char*)elem + 0x18));
+    int val = CallFunc020e52a0_020e5294(data_ov004_021707d8.ptr + 0x8c, *(short*)((char*)elem + 0x18));
     *(int*)((char*)(int)GetGlobalField0x1c020421a0() + 0x18) = val;
     data_ov004_021707d8.ptr[0x12] = (char)0xff;
 #endif

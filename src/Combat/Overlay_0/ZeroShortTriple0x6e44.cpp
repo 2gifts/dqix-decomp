@@ -10,9 +10,8 @@
 #define REGION_OFFSET_2 0x6e48
 #endif
 
-
 // USA: func_ov000_02163454
-ARM void ZeroShortTriple0x6e44(void* obj) {
+ARM void ZeroShortTriple0x6e44_ov000_02163454(void* obj) {
     *(unsigned short*)((char*)obj + REGION_OFFSET_0) = 0;
     *(unsigned short*)((char*)obj + REGION_OFFSET_1) = 0;
     *(unsigned short*)((char*)obj + REGION_OFFSET_2) = 0;

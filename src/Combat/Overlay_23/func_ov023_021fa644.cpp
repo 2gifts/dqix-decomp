@@ -14,13 +14,12 @@ struct Source020e03f0;
 struct StructAA8;
 int ApplyPtrAndShorts(struct Source020e03f0* self, struct StructAA8* obj);
 
-
 struct Sub0x150_021fa644 {
     char pad[0x49c];
     unsigned char bit0 : 1;
 };
 
-int GetField0x3acValue(GameState* battleStruct);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 
 struct List020727d8;
 void ResetListHeader020727d8(struct List020727d8* list);
@@ -70,7 +69,7 @@ extern "C" ARM void func_ov023_021fa644(Obj021fa644* obj, void* ctx, EncodedSize
     int flag5 = 0;
     if (kind == 1) {
         GameState* bs = GameState::GetInstance();
-        int val = GetField0x3acValue(bs);
+        int val = GetField0x3acValue_020100a8(bs);
         GameObject* combatant = bs->GetPartyMemberByIndex(val);
         if (combatant != 0) {
             Sub0x150_021fa644* sub = *(Sub0x150_021fa644**)((char*)combatant + regionalOffset0);

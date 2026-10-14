@@ -59,8 +59,8 @@ extern "C" void* func_02057924(void);
 extern "C" int func_ov000_0215e9fc(void* party, short* buf, int max, int start);
 extern "C" int func_ov000_0215ec1c(void* party, short* buf, int max, int start);
 int CountValidCombatants02058618(void* mgr);
-unsigned char* GetData02104b6c(void);
-int CheckFields6d0And6d4Equal(unsigned char* data);
+unsigned char* GetData02104b6c_02039e70(void);
+int CheckFields6d0And6d4Equal_0203a5d0(unsigned char* data);
 int Check021ed2f4(void* obj);
 int IsByteFieldZero_021ed0fc(void* obj);
 int IsAnimationActive0209ca2c(void* obj);
@@ -75,7 +75,7 @@ void* GetGlobalField0x1c020421a0(void);
 extern "C" void func_02043124(void* obj);
 void StopAndReset0209c7fc(void* obj);
 void DispatchActorState0209c73c(Actor0209c73c* actor);
-void ClearGlobalBuffer02107850(void);
+void ClearGlobalBuffer02107850_02048994(void);
 
 extern int data_02109bf4;
 
@@ -122,7 +122,7 @@ extern "C" ARM int func_ov025_021dc940(Obj_021dc940* obj) {
     if (CountValidCombatants02058618(mgr) > 0) {
         return 0;
     }
-    if (CheckFields6d0And6d4Equal(GetData02104b6c()) == 0) {
+    if (CheckFields6d0And6d4Equal_0203a5d0(GetData02104b6c_02039e70()) == 0) {
         return 0;
     }
     if (Check021ed2f4(obj->msg890) == 0) {
@@ -186,6 +186,6 @@ extern "C" ARM int func_ov025_021dc940(Obj_021dc940* obj) {
     } else {
         DispatchActorState0209c73c((Actor0209c73c*)&data_02109bf4);
     }
-    ClearGlobalBuffer02107850();
+    ClearGlobalBuffer02107850_02048994();
     return 1;
 }

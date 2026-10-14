@@ -8,7 +8,7 @@
 extern "C" void* func_ov001_02158dcc(int type);
 
 // USA: func_ov001_0215905c
-ARM void* SetType7AndField1c(int type, int val) {
+ARM void* SetType7AndField1c_ov001_0215905c(int type, int val) {
 	int* p = (int*)func_ov001_02158dcc(type);
 	if (p) {
 		p[0] = 7;

@@ -30,16 +30,16 @@ struct StatsPayload {
     unsigned int partyIndex : 3;
 };
 struct StatsMessage { unsigned char type; unsigned char pad1[3]; unsigned int payload[4]; };
-void* GetData02100044();
-PartyStats* GetFieldAt0x150(unsigned char*);
+void* GetData02100044_0202ae24();
+PartyStats* GetFieldAt0x150_02053c6c(unsigned char*);
 extern "C" void func_0205e330(void*, void*, int);
 
 // USA: func_ov017_021ce704
 extern "C" ARM void func_ov017_021ce704(int index) {
-    void* context = GetData02100044();
-    GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), index);
+    void* context = GetData02100044_0202ae24();
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), index);
     if (!combatant) return;
-    PartyStats* stats = GetFieldAt0x150((unsigned char*)combatant);
+    PartyStats* stats = GetFieldAt0x150_02053c6c((unsigned char*)combatant);
     if (!stats) return;
     StatsMessage message;
     message.type = 0x12;

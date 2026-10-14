@@ -33,7 +33,7 @@ struct EquipmentMenu {
 extern unsigned short data_02114e30;
 extern int data_02108760;
 
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 extern "C" void func_ov005_0215792c(EquipmentMenu* self, unsigned char state);
 MemberScreen* GetField1c_021a193c(int* p);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0* obj, int a, int b);
@@ -45,14 +45,14 @@ extern "C" void func_ov005_0215771c(EquipmentMenu* self);
 
 // USA: func_ov005_0215730c
 extern "C" ARM void func_ov005_0215730c(EquipmentMenu* self) {
-    if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2)) {
+    if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 2)) {
         func_ov005_0215792c(self, 1);
         MemberScreen* screen = GetField1c_021a193c((int*)func_ov017_0218b5b0()->unknown_ptr_array_36fc[3]);
         screen->flags_ |= 0x800;
         DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 0x1b, 0);
         return;
     }
-    if (TestFlag0SetAndFlag1Clear(&data_02114e30, 4)) {
+    if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 4)) {
         if (self->state_ == 2 || self->state_ == 3 || self->state_ == 4) {
             func_ov005_0215792c(self, 7);
             self->flags_ |= 0x80000;

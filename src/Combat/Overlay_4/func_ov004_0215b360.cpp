@@ -93,10 +93,10 @@ extern "C" Container020dedd0* func_ov004_02156fd4(void*, int);
 TableA68* DispatchAdjustmentIfType4_02157018(void*, int);
 int DispatchNodeIfType7_02156e2c(void*, int);
 extern "C" ItemNode0215b360* func_ov004_02156f04(void*, int);
-void* FindEntryByKey(TableA68*, int);
+void* FindEntryByKey_02072a68(TableA68*, int);
 void ClearNodeMaskById_021f6600(void*, int, int);
-short* GetPointerFromArray0xbd0(unsigned char*, unsigned int);
-signed char* GetPointerAt0xbf0(void*, unsigned int);
+short* GetPointerFromArray0xbd0_0207c5f8(unsigned char*, unsigned int);
+signed char* GetPointerAt0xbf0_0207c60c(void*, unsigned int);
 int CountPositiveEntries0207c638(void*, unsigned int);
 extern "C" void func_ov023_021f65d4(void*, int, int);
 extern "C" Grid021f9b30* func_ov004_02156ed0(void*, int);
@@ -119,15 +119,15 @@ extern "C" ARM int func_ov004_0215b360(void* object) {
     TableA68* table = DispatchAdjustmentIfType4_02157018(object, 3);
     int selected = DispatchNodeIfType7_02156e2c(object, 0x65);
     if (selected < 0) return 0;
-    PartyState0215b360* party = (PartyState0215b360*)GetPtrField0x2a04(GameState::GetInstance());
+    PartyState0215b360* party = (PartyState0215b360*)GetPtrField0x2a04_02010828(GameState::GetInstance());
     if (!party) return 0;
     for (int i = 0; i < 8; i++) {
         if (i == selected) {
             ItemNode0215b360* node = func_ov004_02156f04(object, 0x454);
-            if (node) node->value = FindEntryByKey(table, (short)(i + 0x1b));
+            if (node) node->value = FindEntryByKey_02072a68(table, (short)(i + 0x1b));
             ClearNodeMaskById_021f6600(object, i + 0x38c, 8);
-            items = GetPointerFromArray0xbd0(party->inventory, data_ov004_021707d8.state->listIds[selected]);
-            amounts = GetPointerAt0xbf0(party->inventory, data_ov004_021707d8.state->listIds[selected]);
+            items = GetPointerFromArray0xbd0_0207c5f8(party->inventory, data_ov004_021707d8.state->listIds[selected]);
+            amounts = GetPointerAt0xbf0_0207c60c(party->inventory, data_ov004_021707d8.state->listIds[selected]);
             count = CountPositiveEntries0207c638(party->inventory, data_ov004_021707d8.state->listIds[selected]);
         } else {
             func_ov023_021f65d4(object, i + 0x38c, 8);

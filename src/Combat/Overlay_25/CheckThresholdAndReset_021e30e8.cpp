@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void* GetActiveCombatWork(void);
+void* GetActiveCombatWork_ov000_02160130(void);
 
 struct Reset021e3158 { int a; int b; int c; int d; int e; int f; };
 void ResetStruct_021e3158(struct Reset021e3158* p);
@@ -21,7 +21,7 @@ extern "C" ARM int func_ov025_021e30e8(struct S021e30e8* obj) {
     GameState* battle = GameState::GetInstance();
     if (obj->field8 <= *(unsigned int*)((char*)&data_ov025_021ef988 + 0x34)) {
         if (obj->field0xc != 0) {
-            void* work = GetActiveCombatWork();
+            void* work = GetActiveCombatWork_ov000_02160130();
             *(int*)((char*)work + regionalOffset0) = obj->field8;
         }
         ResetStruct_021e3158(&data_ov025_021ef9a8);

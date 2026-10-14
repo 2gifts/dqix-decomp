@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 struct HandleStruct;
-void ResetHandleFields(struct HandleStruct* s);
+void ResetHandleFields_020da22c(struct HandleStruct* s);
 
 extern "C" void* func_02057924(void*);
 extern "C" void func_02057f00(void*, int);
@@ -17,7 +17,7 @@ ARM void ResetContainerAndHandleFields020da1ac(void* p0) {
     char* h = (char*)p0 + 0x14;
     unsigned char i = 0;
     while (i < 4) {
-        ResetHandleFields((struct HandleStruct*)h);
+        ResetHandleFields_020da22c((struct HandleStruct*)h);
         i++;
         h += 0xc;
     }

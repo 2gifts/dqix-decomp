@@ -4,7 +4,7 @@
 #include "Memory/AllocatorUnion.h"
 #include "Filesystem/FileIO.h"
 
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 void ZeroInit020de848(void* obj);
 
 extern "C" void* func_020de9a4(void* a, void* b, void* c, unsigned int d, int e, unsigned int f);
@@ -19,7 +19,7 @@ extern char* data_020f2a30;
 // USA: func_0207d6dc
 ARM void* InitAllocatorAndLoadGp2File0207d6dc(SafeAllocator* self, int param1, int param2) {
     unsigned int allocSize = (unsigned int)param2 << 8;
-    void* mem = AllocateAligned4(&data_02114e20, allocSize);
+    void* mem = AllocateAligned4_02012d88(&data_02114e20, allocSize);
     self->CreateTypeA(mem, allocSize);
     self->Reset();
     ZeroInit020de848((char*)self + 0x14);

@@ -11,12 +11,11 @@ enum { kRegionValue78_74 = 0x78 };
 enum { kRegionValue3C_38 = 0x3c };
 #endif
 
-
 struct Struct_0205d81c;
 struct Elem_0205d81c;
-Elem_0205d81c* FindElementForFieldB0(Struct_0205d81c*);
+Elem_0205d81c* FindElementForFieldB0_0205d8c4(Struct_0205d81c*);
 
-int CheckField0x9cSetWhenField0xd4Present(unsigned char*);
+int CheckField0x9cSetWhenField0xd4Present_0204c7e0(unsigned char*);
 
 struct Struct_0205c570;
 int GetActiveScaledSum0205d794(Struct_0205c570*);
@@ -29,16 +28,15 @@ Elem0205a3d0* FindEntryByHalfword0205a3d0(Container0205a3d0*, int);
 struct Container0205a330;
 void IterateEntries0205a330(Container0205a330*, int);
 
-
 extern "C" void func_0205ae8c(void*);
 
 // USA: func_ov003_0217e100
 ARM void ProcessScaleEntry0217e100(void* obj) {
     GameState* battleStruct = GameState::GetInstance();
     void* sub = *(void**)((char*)obj + kRegionValue90_8C);
-    Elem_0205d81c* elem = FindElementForFieldB0((Struct_0205d81c*)sub);
+    Elem_0205d81c* elem = FindElementForFieldB0_0205d8c4((Struct_0205d81c*)sub);
     if (elem == NULL) return;
-    if (!CheckField0x9cSetWhenField0xd4Present((unsigned char*)elem)) return;
+    if (!CheckField0x9cSetWhenField0xd4Present_0204c7e0((unsigned char*)elem)) return;
 
     sub = *(void**)((char*)obj + kRegionValue90_8C);
     short a = *(short*)((char*)elem + 0xae);

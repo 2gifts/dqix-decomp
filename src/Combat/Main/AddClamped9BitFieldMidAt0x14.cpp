@@ -8,7 +8,7 @@ struct S_a0494 {
 };
 
 // USA: func_020a0494
-ARM void AddClamped9BitFieldMidAt0x14(struct S_a0494* p, unsigned int amount) {
+ARM void AddClamped9BitFieldMidAt0x14_020a0494(struct S_a0494* p, unsigned int amount) {
     unsigned int v = p->val + amount;
     if (v > 0x1f4) {
         v = 0x1f4;

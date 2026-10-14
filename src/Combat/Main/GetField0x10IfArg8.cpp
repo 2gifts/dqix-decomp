@@ -18,7 +18,7 @@ struct FontTableGlobals {
 extern FontTableGlobals data_02107800;
 
 // USA: func_020429bc
-ARM FontGlyphTable* GetFontGlyphTable(int pixelSize) {
+ARM FontGlyphTable* GetFontGlyphTable_020429bc(int pixelSize) {
     FontGlyphTable* table = NULL;
 #if defined(jpn)
     switch (pixelSize) {

@@ -2,8 +2,8 @@
 #include "Memory/SafeAllocator.h"
 #include "GameState/GameState.h"
 
-unsigned int GetSharedWordDa0(int i);
-unsigned int GetSharedWordDc4(int i);
+unsigned int GetSharedWordDa0_020c8534(int i);
+unsigned int GetSharedWordDc4_020c8520(int i);
 unsigned int GetConst25980_0218fc78(void);
 unsigned int GetConst9600_0218fc84(void);
 void SetData_0218fc8c(void*, unsigned int);
@@ -26,13 +26,13 @@ int CheckStateEqualsOne_0218e768(void* p, void* buf);
 extern "C" void func_ov016_0218bce8(void* p, unsigned int n);
 extern "C" void func_ov016_0218bec4(void* p, int n);
 extern "C" void func_020d1f0c(int a, int b, int c, int d);
-void EnqueueEvent0x1B(int a, int b);
+void EnqueueEvent0x1B_020d1fd0(int a, int b);
 extern "C" void func_020d24c4(int a);
 extern "C" void func_020c9778(int a, int b);
 extern "C" void func_020bbd9c(void);
 extern "C" int func_020ce89c(int a, int b, int c);
 unsigned short XorMaskKeyInput_0218ca70(void);
-int SetData020f2284(void);
+int SetData020f2284_020c7dcc(void);
 extern "C" void* memset(void* p, int c, unsigned int n);
 void CleanDataCache(void);
 void CleanCacheRange(const void* p, unsigned int n);
@@ -49,7 +49,7 @@ void UpdateScaleOrApplyRecord0203ae4c(void* a, int b, void* c);
 void ScaleAndNotify0203ad88(void* a, void* b, int c);
 void SetContextAndDispatch0203ac10(void* a, void* b, int c);
 extern "C" void func_02012538(void* p);
-void SelectCoordsByFlag0x24(unsigned char* p, int* x, int* y);
+void SelectCoordsByFlag0x24_02012a84(unsigned char* p, int* x, int* y);
 struct Struct0200fb08;
 int NormalizeField5_0200fb08(Struct0200fb08*);
 void SetFlagAndMaybeIncrement_0218c024(void);
@@ -121,18 +121,18 @@ extern "C" ARM void func_ov016_0218c04c(const char* path, int arg1) {
 	state = 0;
 	prevKeys = 0;
 	quit = false;
-	base3 = GetSharedWordDa0(3);
-	sz3 = GetSharedWordDc4(3) - base3;
+	base3 = GetSharedWordDa0_020c8534(3);
+	sz3 = GetSharedWordDc4_020c8520(3) - base3;
 	if (sz3 >= GetConst25980_0218fc78()) {
 		sz3 = GetConst25980_0218fc78();
 	}
-	base4 = GetSharedWordDa0(4);
-	sz4 = GetSharedWordDc4(4) - base4;
+	base4 = GetSharedWordDa0_020c8534(4);
+	sz4 = GetSharedWordDc4_020c8520(4) - base4;
 	if (sz4 >= GetConst9600_0218fc84()) {
 		sz4 = GetConst9600_0218fc84();
 	}
-	SetData_0218fc8c((void*)GetSharedWordDa0(3), sz3);
-	SetupHandle_0218fcac((void*)GetSharedWordDa0(4), sz4);
+	SetData_0218fc8c((void*)GetSharedWordDa0_020c8534(3), sz3);
+	SetupHandle_0218fcac((void*)GetSharedWordDa0_020c8534(4), sz4);
 	NitroVM_Initialize((NitroVM*)vm);
 
 	if (NitroVM_PrepareReadFileByPath((NitroVM*)vm, path)) {
@@ -202,7 +202,7 @@ extern "C" ARM void func_ov016_0218c04c(const char* path, int arg1) {
 			CallIfNonNullBool_0218e6e4(node);
 			frame++;
 
-			if ((SetData020f2284() & 0x40000000) || (SetData020f2284() & 0x80000000)) {
+			if ((SetData020f2284_020c7dcc() & 0x40000000) || (SetData020f2284_020c7dcc() & 0x80000000)) {
 				if (func_ov016_0218e660(node) != 0) {
 					unsigned long long total = func_ov016_0218e750(node);
 					int j = 0;
@@ -256,7 +256,7 @@ extern "C" ARM void func_ov016_0218c04c(const char* path, int arg1) {
 					} else if (keys & 8) {
 						if (state == 1) {
 							func_020d1f0c(3, 0, 1, 0);
-							EnqueueEvent0x1B(3, 0);
+							EnqueueEvent0x1B_020d1fd0(3, 0);
 							func_020d24c4(1);
 						}
 						while (XorMaskKeyInput_0218ca70() != 0) {
@@ -288,7 +288,7 @@ extern "C" ARM void func_ov016_0218c04c(const char* path, int arg1) {
 				int lo0, hi0, lo1, hi1;
 				int touched;
 				func_02012538(&data_02114e54);
-				SelectCoordsByFlag0x24((unsigned char*)&data_02114e54, &sx, &sy);
+				SelectCoordsByFlag0x24_02012a84((unsigned char*)&data_02114e54, &sx, &sy);
 				touched = (data_02114e54.b5f != 0 && data_02114e54.h24 != 0) ? 1 : 0;
 				switch (NormalizeField5_0200fb08((Struct0200fb08*)GameState::GetInstance())) {
 				case 1:
@@ -335,10 +335,10 @@ extern "C" ARM void func_ov016_0218c04c(const char* path, int arg1) {
 		}
 		while (data_ov016_0219d0c0.ready == 0) {
 		}
-		if ((SetData020f2284() & 0x40000000) || (SetData020f2284() & 0x80000000)) {
+		if ((SetData020f2284_020c7dcc() & 0x40000000) || (SetData020f2284_020c7dcc() & 0x80000000)) {
 			if (state == 1) {
 				func_020d1f0c(3, 0, 1, 0);
-				EnqueueEvent0x1B(3, 0);
+				EnqueueEvent0x1B_020d1fd0(3, 0);
 				func_020d24c4(1);
 			}
 		}

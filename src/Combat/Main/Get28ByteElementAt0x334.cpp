@@ -10,6 +10,6 @@ struct Get28ByteElementAt0x334Struct {
 };
 
 // USA: func_0206ea7c
-ARM struct Get28ByteElementAt0x334Elem* Get28ByteElementAt0x334(struct Get28ByteElementAt0x334Struct* s, int i) {
+ARM struct Get28ByteElementAt0x334Elem* Get28ByteElementAt0x334_0206ea7c(struct Get28ByteElementAt0x334Struct* s, int i) {
     return &s->arr[i];
 }

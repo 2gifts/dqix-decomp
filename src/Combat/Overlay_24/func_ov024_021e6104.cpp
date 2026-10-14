@@ -6,7 +6,7 @@ struct List021600f8;
 struct ListNode021600f8;
 struct EffectWords_021e6104 { int lo; int hi; };
 
-int TestBit3At0x2f4(unsigned char* obj);
+int TestBit3At0x2f4_020850fc(unsigned char* obj);
 struct ListNode021600f8* GetNodeAtIndex021600f8(struct List021600f8* list, int index);
 void* FindNodeAtDepth0215fff4(void* obj, int limit, int idx);
 short ApplyHPDelta0215a16c(void* unused, int id, int delta, short* outApplied);
@@ -49,9 +49,9 @@ static inline int IsPartySlot(int id) {
 
 // USA: func_ov024_021e6104
 extern "C" ARM int func_ov024_021e6104(struct Obj_021e6104* obj, int id, struct Skill_021e6104* skill) {
-    GameObject* c = GetCombatantWithFlag0x100(GameState::GetInstance(), id);
+    GameObject* c = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), id);
     if (!c) return 0;
-    if ((skill->flags & 0x400000) && IsPartySlot(id) && TestBit3At0x2f4(((struct Combatant_021e6104*)c)->ext)) {
+    if ((skill->flags & 0x400000) && IsPartySlot(id) && TestBit3At0x2f4_020850fc(((struct Combatant_021e6104*)c)->ext)) {
         int total = 0;
         for (int i = 0; i < obj->list->count; i++) {
             struct ListNode021600f8* node = GetNodeAtIndex021600f8(obj->list, i);

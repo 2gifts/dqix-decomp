@@ -12,7 +12,7 @@ struct EntryList_1e690 {
 };
 
 // USA: func_0201e690
-ARM struct Entry_1e690* FindEntryById(struct EntryList_1e690* list, int id) {
+ARM struct Entry_1e690* FindEntryById_0201e690(struct EntryList_1e690* list, int id) {
     struct Entry_1e690* entry;
     int i;
     if (id < 0) {

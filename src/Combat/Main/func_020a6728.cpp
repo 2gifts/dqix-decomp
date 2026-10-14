@@ -30,9 +30,9 @@ struct PointerField32c_ffc0;
 struct Obj02033874;
 struct Flags02033fdc;
 struct ActorAllocation020a6728 { SafeAllocator* allocator; char* tables; };
-SearchTable* GetPtrField0x468(void*);
-SearchEntry020a6728* FindEntryByHalfwordKey(SearchTable*, int);
-void* GetPointerAt0x32c(PointerField32c_ffc0*);
+SearchTable* GetPtrField0x468_02011584(void*);
+SearchEntry020a6728* FindEntryByHalfwordKey_02099950(SearchTable*, int);
+void* GetPointerAt0x32c_0200ffc0(PointerField32c_ffc0*);
 void* LoadFileIntoNewAllocation(const char*, SafeAllocator&, unsigned int*);
 void InitActor020a75a0(char*);
 void RestorePairTables0207df90(char*);
@@ -40,7 +40,7 @@ void BackupPairTables0207dfac(char*);
 extern "C" Zone3D* func_02012fe4();
 void SetVecYFromValue02033874(Obj02033874*, int);
 void ClearFlag0x4At0xe0(Flags02033fdc*);
-void RegisterCombatantSlot(GameState*, int, GameObject*);
+void RegisterCombatantSlot_0200fd38(GameState*, int, GameObject*);
 void ResetContainerAndHandleFields020da1ac(void*);
 extern "C" void func_020a72ac(Zone3D*, int);
 extern char data_020f1b50[];
@@ -52,7 +52,7 @@ extern ActorAllocation020a6728 data_ov017_021d82fc;
 // KEEP-NAME
 extern "C" ARM void func_020a6728(GameResources* self, int id) {
     GameState* state = GameState::GetInstance();
-    SearchEntry020a6728* entry = FindEntryByHalfwordKey(GetPtrField0x468(state), id);
+    SearchEntry020a6728* entry = FindEntryByHalfwordKey_02099950(GetPtrField0x468_02011584(state), id);
     const char* name = 0;
     if (entry != 0) name = (const char*)entry + 5;
     if (id != 10000 && id != 10100) {
@@ -62,7 +62,7 @@ extern "C" ARM void func_020a6728(GameResources* self, int id) {
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     SafeAllocator* allocator = &self->allocator_array_38[7];
     char* tables = (char*)&self->unknown_2cc + 0x310;
-    GetPointerAt0x32c((PointerField32c_ffc0*)state);
+    GetPointerAt0x32c_0200ffc0((PointerField32c_ffc0*)state);
     if (loader->GetNumQueuedTasks() > 0) return;
     unsigned int length;
     void* file = LoadFileIntoNewAllocation(data_020f1b52, *allocator, &length);
@@ -101,7 +101,7 @@ extern "C" ARM void func_020a6728(GameResources* self, int id) {
     actor->flags &= ~1;
     actor->object.DisableFlag(0x180);
     actor->object.EnableFlag(0x400000);
-    RegisterCombatantSlot(state, 0xc9, (GameObject*)actor);
+    RegisterCombatantSlot_0200fd38(state, 0xc9, (GameObject*)actor);
     if (id == 10000) {
         SafeAllocator* extraAllocator = (SafeAllocator*)allocator->Allocate(0x14);
         extraAllocator->ResetAllocatorPointer();

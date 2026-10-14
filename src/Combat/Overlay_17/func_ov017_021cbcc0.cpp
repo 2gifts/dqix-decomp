@@ -10,9 +10,9 @@ enum { RegionOffset718 = 0x718 };
 extern "C" void* func_ov017_021b8478(void* obj);
 extern "C" void* func_ov017_021b8468(void* obj);
 void* GetField6b0_021b8470(void* obj);
-void SetCombatWorkFlags0x55f4(void* work, int mask);
-int GetField0x3acValue(GameState* battleStruct);
-void SetByteFields0x77d3And0x77d4(void* obj, int a, int b);
+void SetCombatWorkFlags0x55f4_ov000_02160fa8(void* work, int mask);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
+void SetByteFields0x77d3And0x77d4_ov000_0216872c(void* obj, int a, int b);
 extern "C" void __clear(void* buf, int len);
 extern "C" void func_ov017_021b848c(void* h, void* buf, int a, int b, int c, int d, int e, int f);
 
@@ -60,12 +60,12 @@ extern "C" ARM void func_ov017_021cbcc0(int unused0, Evt021cbcc0* evt, GameState
     fF = evt->field0xf;
     if (f4 != hf8) return;
 
-    SetCombatWorkFlags0x55f4(field6ac, 0x80000000);
-    int idx = GetField0x3acValue(battleStruct);
+    SetCombatWorkFlags0x55f4_ov000_02160fa8(field6ac, 0x80000000);
+    int idx = GetField0x3acValue_020100a8(battleStruct);
     if (!(evt->field0xc & (1 << idx))) return;
 
     *(unsigned char*)((char*)field6b0 + 0x8e48) = (unsigned char)f8word;
-    SetByteFields0x77d3And0x77d4(field6ac, fE, fF);
+    SetByteFields0x77d3And0x77d4_ov000_0216872c(field6ac, fE, fF);
 
     unsigned char buf[4];
     __clear(buf, 4);

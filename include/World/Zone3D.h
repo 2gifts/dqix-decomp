@@ -177,25 +177,25 @@ public:
     char unknown_2820_;
     char unk_2821[3];
 public:
-    // usa: _ZN6Zone3D10SwitchZoneEti
-    void SwitchZone(unsigned short newID, int);
+    // usa: _ZN6Zone3D19SwitchZone_0201383cEti
+    void SwitchZone_0201383c(unsigned short newID, int);
 
     inline ActiveGrottoClass* GetActiveGrotto() { return &grotto_; }
 
     inline ZoneSavedActorState* GetSavedActorState() { return &savedActor_; }
 
-    // usa: _ZN6Zone3D13UnpackMapAMDJEv
-    int UnpackMapAMDJ();
+    // usa: _ZN6Zone3D22UnpackMapAMDJ_020146fcEv
+    int UnpackMapAMDJ_020146fc();
 
-    int UnpackMapAMBL();
-    int UnpackATS_AMBL();
-    int ProcessBMBLFile(const void* source, unsigned int sourceLength);
-    int ProcessBPOSFile(const void* source, unsigned int sourceLength);
-    int ProcessBATSFile(const void* source, unsigned int sourceLength);
-    bool ProcessNSBTXFile(const void* source, unsigned int sourceLength, const char* name);
+    int UnpackMapAMBL_02014108();
+    int UnpackATS_AMBL_02014c04();
+    int ProcessBMBLFile_02014390(const void* source, unsigned int sourceLength);
+    int ProcessBPOSFile_020143d8(const void* source, unsigned int sourceLength);
+    int ProcessBATSFile_02014414(const void* source, unsigned int sourceLength);
+    bool ProcessNSBTXFile_0201445c(const void* source, unsigned int sourceLength, const char* name);
 
-    void LoadMapAMDJ();
-    void LoadMapAMBL();
+    void LoadMapAMDJ_020145a8();
+    void LoadMapAMBL_0201403c();
 };
 
 #if defined(jpn)

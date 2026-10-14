@@ -10,6 +10,6 @@ struct FieldBlock63d6_11590 {
 };
 
 // USA: func_02011590
-ARM int IsByte0x63d6Set(struct FieldBlock63d6_11590* obj) {
+ARM int IsByte0x63d6Set_02011590(struct FieldBlock63d6_11590* obj) {
     return obj->field != 0;
 }

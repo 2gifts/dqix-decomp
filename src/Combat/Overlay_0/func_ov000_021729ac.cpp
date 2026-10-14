@@ -6,7 +6,7 @@
 extern "C" void* func_0203bd08(void);
 extern "C" unsigned short GetSubBGVRAMBanks(void);
 extern "C" void MapVRAMBanksToSubBG(int banks);
-char* GetGlobalPtr02105244();
+char* GetGlobalPtr02105244_0203bd14();
 struct Struct020dfc40;
 void ResetStruct020dfc40(Struct020dfc40*);
 extern "C" void func_020dfec0(void* dest, void* allocator, void* fileData, unsigned int size);
@@ -32,22 +32,22 @@ int CountActiveEntries(ActiveEntry02046900*);
 struct Rec020467f0;
 void* FindRecordByIndex(Rec020467f0*, int, void**, int*);
 extern "C" void func_0205a528(void* a, void* ptr, int val, void* d);
-void WrapAddByteField0x22(int, char*, unsigned int, int);
+void WrapAddByteField0x22_0205aed0(int, char*, unsigned int, int);
 void SetBitfieldStoreBytes0205af38(int, char*, int, int);
-int* GetData02105254();
-void SetupBankModeAndTransfer(int* obj, int a, int b);
+int* GetData02105254_0203b628();
+void SetupBankModeAndTransfer_0203b678(int* obj, int a, int b);
 void TailForward0203b66c(char*);
 void ClearThreeRegions0203b634(char*);
 void ConfigureSubBg0Control_02172944(int screenSize, int colorMode, int screenBase, int charBase, int bit13);
 void ConfigureSubBg1Control_02172978(int screenSize, int colorMode, int screenBase, int charBase, int bit13);
-void SetWord0x18ClearByte0x1f(unsigned char*, int);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char*, int);
 extern "C" void func_0204b5b4(void* obj, int value);
 struct AllocTarget0204b12c;
 void AllocateAndClearBuffer0204b12c(AllocTarget0204b12c*, SafeAllocator*);
 struct Foo0204af38;
 void AllocateArray0204af38(Foo0204af38*, int, SafeAllocator*);
 extern "C" void func_0204c684(void* obj);
-char* CallFunc020e0434With02153694(int key);
+char* CallFunc020e0434With02153694_020e51cc(int key);
 extern "C" void func_0204f914(void* obj, int a, short x0, short y0, short x1, short y1);
 extern "C" void func_0204f41c(void* obj, short x, short y, void* str, int d, int e, short* outA, short* outB, int zero);
 extern "C" void func_0204b174(void* obj, void* data, SafeAllocator* alloc, int size);
@@ -232,9 +232,9 @@ extern "C" ARM int func_ov000_021729ac(Menu021729ac* self) {
         *(int*)func_0203bd08() = 0;
 
 #if defined(jpn)
-        *(int*)(GetGlobalPtr02105244() + 0x608) = 0x1d000;
+        *(int*)(GetGlobalPtr02105244_0203bd14() + 0x608) = 0x1d000;
 #else
-        *(int*)(GetGlobalPtr02105244() + 0x508) = 0x18000;
+        *(int*)(GetGlobalPtr02105244_0203bd14() + 0x508) = 0x18000;
 #endif
 
 #if defined(jpn)
@@ -364,9 +364,9 @@ extern "C" ARM int func_ov000_021729ac(Menu021729ac* self) {
             }
 
 #if defined(jpn)
-            WrapAddByteField0x22((int)self->records, self->f170, (unsigned short)count, 0x40);
+            WrapAddByteField0x22_0205aed0((int)self->records, self->f170, (unsigned short)count, 0x40);
 #else
-            WrapAddByteField0x22((int)self->records, self->f170, (unsigned short)count, 0x44);
+            WrapAddByteField0x22_0205aed0((int)self->records, self->f170, (unsigned short)count, 0x44);
 #endif
 
             SetBitfieldStoreBytes0205af38((int)self->records, self->f170 + 0x2a8, 1, 1);
@@ -376,9 +376,9 @@ extern "C" ARM int func_ov000_021729ac(Menu021729ac* self) {
             self->state++;
         }
     } else if (self->state == 5) {
-        int* bank = GetData02105254();
-        SetupBankModeAndTransfer(bank, 1, 0);
-        SetupBankModeAndTransfer(bank, 1, 1);
+        int* bank = GetData02105254_0203b628();
+        SetupBankModeAndTransfer_0203b678(bank, 1, 0);
+        SetupBankModeAndTransfer_0203b678(bank, 1, 1);
         TailForward0203b66c((char*)bank);
         ClearThreeRegions0203b634((char*)bank);
         ConfigureSubBg0Control_02172944(0, self->bg0.colorMode, 5, self->bg0.charBase, self->bg1.bit13);
@@ -387,14 +387,14 @@ extern "C" ARM int func_ov000_021729ac(Menu021729ac* self) {
         self->allocs[3].Reset();
 
         List021729ac* list = &self->lists[0];
-        SetWord0x18ClearByte0x1f((unsigned char*)list, 0);
+        SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)list, 0);
         list->lo = 1;
         list->hi = 0;
         func_0204b5b4(list, 2);
         AllocateAndClearBuffer0204b12c((AllocTarget0204b12c*)list, &self->allocs[3]);
 
         list = &self->lists[1];
-        SetWord0x18ClearByte0x1f((unsigned char*)list, 0);
+        SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)list, 0);
         list->lo = 1;
         list->hi = 1;
         func_0204b5b4(list, 3);
@@ -407,7 +407,7 @@ extern "C" ARM int func_ov000_021729ac(Menu021729ac* self) {
 #endif
 
         list = &self->lists[2];
-        SetWord0x18ClearByte0x1f((unsigned char*)list, 0);
+        SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)list, 0);
         list->lo = 1;
         list->hi = 2;
         func_0204b5b4(list, 0);
@@ -429,8 +429,8 @@ extern "C" ARM int func_ov000_021729ac(Menu021729ac* self) {
                         canvas.height = 0x20;
                         canvas.text = (char*)rec + 0x10;
                         char* label1;
-                        char* label0 = CallFunc020e0434With02153694(0xc9);
-                        label1 = CallFunc020e0434With02153694(0xca);
+                        char* label0 = CallFunc020e0434With02153694_020e51cc(0xc9);
+                        label1 = CallFunc020e0434With02153694_020e51cc(0xca);
                         short x;
                         short y0;
                         short y1;

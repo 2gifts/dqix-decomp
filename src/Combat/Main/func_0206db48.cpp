@@ -5,7 +5,7 @@
 
 // USA: func_0206db48
 extern "C" ARM void func_0206db48(void *receiver, Rec0206bf2c *record) {
-    Rec0206bf2c *node = (Rec0206bf2c *) FindNodeByByteId(receiver, record->field0);
+    Rec0206bf2c *node = (Rec0206bf2c *) FindNodeByByteId_0206db20(receiver, record->field0);
     int category;
     if (record->flagsA_b1) {
         category = 0;

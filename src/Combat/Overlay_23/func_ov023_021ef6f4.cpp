@@ -36,22 +36,22 @@ extern "C" Reset_021eefac* _ZZ17GetGlobal021ffefcvE1s;
 extern char data_02109bf4[] __attribute__((aligned(4)));
 extern char data_ov023_021fe258[];
 StoreStruct* GetGlobalField0x1c020421a0();
-int CheckField0NonZero(int*);
+int CheckField0NonZero_0202b7d8(int*);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
-void ZeroFieldAndShortTriple0x6e2e(void*);
+void ZeroFieldAndShortTriple0x6e2e_ov000_02163b60(void*);
 void ResetFields_021eefac(Reset_021eefac*);
-BattleActor* GetCombatantWithFlag0x400(GameState*, int);
-const char* FindEntryByKey(TableA68*, int);
-void StoreInArray0x8b0(StoreStruct*, int, int);
+BattleActor* GetCombatantWithFlag0x400_0200fea4(GameState*, int);
+const char* FindEntryByKey_02072a68(TableA68*, int);
+void StoreInArray0x8b0_020465c0(StoreStruct*, int, int);
 int IsAnimationActive0209ca2c(void*);
 void SetThreeInts_021f00f4(int*, int, int, int);
 Vector3fix GetSubTriple02049b54(Obj02049b54*);
-void SetSubstructByte0x56(unsigned char*);
+void SetSubstructByte0x56_02049f28(unsigned char*);
 void ComputeAngleHeightDistance0202ea4c(Obj0202ea4c*);
 void UpdateEntry0216d50c(void*);
-int GetField0x3acValue(GameState*);
+int GetField0x3acValue_020100a8(GameState*);
 void ResetAndDispatchActorContext0209c6d8(void*, short);
-void DispatchAndSetTreasureMapUnknownBit(char*, int);
+void DispatchAndSetTreasureMapUnknownBit_020117cc(char*, int);
 void ScaleOrResetCombatants_021ed988(char*, int);
 MoveName* SearchBothTables02079e2c(char*, int);
 void SetIndexedName02046574(Obj02046574*, int, char*);
@@ -79,28 +79,28 @@ extern "C" ARM int func_ov023_021ef6f4(BattleBossScene* self) {
     __clear(message, sizeof(message));
     int actorContext[3];
     if (state->phase_ == 0) {
-        if (!CheckField0NonZero((int*)search) || self->info_->leader_ == GetSearchStructCurrentArrEntry((SearchStruct0202c1a4*)search)) {
-            ZeroFieldAndShortTriple0x6e2e(self);
+        if (!CheckField0NonZero_0202b7d8((int*)search) || self->info_->leader_ == GetSearchStructCurrentArrEntry((SearchStruct0202c1a4*)search)) {
+            ZeroFieldAndShortTriple0x6e2e_ov000_02163b60(self);
             state->phase_ = 1;
         } else { ResetFields_021eefac(state); return 5; }
     } else if (state->phase_ == 1) {
         int count = 1;
         if (map->legacy_.bossID_ == 9) count = 3;
         for (int i = 0; i < count; ++i) {
-            BattleActor* actor = GetCombatantWithFlag0x400(game, i + 0xc0);
+            BattleActor* actor = GetCombatantWithFlag0x400_0200fea4(game, i + 0xc0);
             if (actor && actor->active_) {
                 self->actors_[self->actorCount_] = actor->unknown_4_;
                 ++self->actorCount_;
             }
         }
         if ((!map->legacy_.minTurns_ || self->turns_ < map->legacy_.minTurns_) && self->turns_ < 1000) {
-            BattleActor* actor = GetCombatantWithFlag0x400(game, self->actors_[0]);
-            if (map->legacy_.bossID_ == 9) actor = GetCombatantWithFlag0x400(game, self->actors_[1]);
+            BattleActor* actor = GetCombatantWithFlag0x400_0200fea4(game, self->actors_[0]);
+            if (map->legacy_.bossID_ == 9) actor = GetCombatantWithFlag0x400_0200fea4(game, self->actors_[1]);
             func_020e4ce8(actorContext, actor, 1);
-            sprintf(message, FindEntryByKey(&self->text_, 0x23));
+            sprintf(message, FindEntryByKey_02072a68(&self->text_, 0x23));
             messages->actorContext_ = actorContext;
-            StoreInArray0x8b0(messages, 0, self->turns_);
-            StoreInArray0x8b0(messages, 1, map->legacy_.level_);
+            StoreInArray0x8b0_020465c0(messages, 0, self->turns_);
+            StoreInArray0x8b0_020465c0(messages, 1, map->legacy_.level_);
             func_0204500c(messages, message, 1, 0xe3);
             messages->flag19b2_ = 0;
             messages->pending_ = 1;
@@ -117,7 +117,7 @@ extern "C" ARM int func_ov023_021ef6f4(BattleBossScene* self) {
         Vector3fix average;
         SetThreeInts_021f00f4(&average.x, 0, 0, 0);
         for (int i = 0; i < self->actorCount_; ++i) {
-            BattleActor* actor = GetCombatantWithFlag0x400(game, self->actors_[i]);
+            BattleActor* actor = GetCombatantWithFlag0x400_0200fea4(game, self->actors_[i]);
             actor->position_ = GetSubTriple02049b54((Obj02049b54*)actor);
             actor->rotation_.x = 0;
             actor->rotation_.y = 0;
@@ -128,7 +128,7 @@ extern "C" ARM int func_ov023_021ef6f4(BattleBossScene* self) {
             actor->MaybeSetRegularAnimation(data_ov023_021fe258, 8);
             actor->TransitionInheritedAlpha(31, 200);
             actor->MakeVisible();
-            SetSubstructByte0x56((unsigned char*)actor);
+            SetSubstructByte0x56_02049f28((unsigned char*)actor);
         }
         average.x = fix32_Divide(average.x, self->actorCount_ << 12);
         average.y = fix32_Divide(average.y, self->actorCount_ << 12);
@@ -144,9 +144,9 @@ extern "C" ARM int func_ov023_021ef6f4(BattleBossScene* self) {
         self->camera_.position_ = position;
         ComputeAngleHeightDistance0202ea4c(&self->camera_);
         UpdateEntry0216d50c(&self->camera_);
-        sprintf(message, FindEntryByKey(&self->text_, 0x1b));
-        BattleActor* actor = GetCombatantWithFlag0x400(game, self->actors_[0]);
-        if (map->legacy_.bossID_ == 9) actor = GetCombatantWithFlag0x400(game, self->actors_[1]);
+        sprintf(message, FindEntryByKey_02072a68(&self->text_, 0x1b));
+        BattleActor* actor = GetCombatantWithFlag0x400_0200fea4(game, self->actors_[0]);
+        if (map->legacy_.bossID_ == 9) actor = GetCombatantWithFlag0x400_0200fea4(game, self->actors_[1]);
         func_020e4ce8(actorContext, actor, 1);
         messages->actorContext_ = actorContext;
         func_0204500c(messages, message, 1, 0xe3);
@@ -156,9 +156,9 @@ extern "C" ARM int func_ov023_021ef6f4(BattleBossScene* self) {
     } else if (state->phase_ == 4) {
         if (func_ov023_021f4fc8()) {
             if (map->legacy_.level_ >= 99) {
-                sprintf(message, FindEntryByKey(&self->text_, 0x1d));
-                BattleActor* actor = GetCombatantWithFlag0x400(game, self->actors_[0]);
-                if (map->legacy_.bossID_ == 9) actor = GetCombatantWithFlag0x400(game, self->actors_[1]);
+                sprintf(message, FindEntryByKey_02072a68(&self->text_, 0x1d));
+                BattleActor* actor = GetCombatantWithFlag0x400_0200fea4(game, self->actors_[0]);
+                if (map->legacy_.bossID_ == 9) actor = GetCombatantWithFlag0x400_0200fea4(game, self->actors_[1]);
                 func_020e4ce8(actorContext, actor, 1);
                 messages->actorContext_ = actorContext;
                 func_0204500c(messages, message, 1, 0xe3);
@@ -166,9 +166,9 @@ extern "C" ARM int func_ov023_021ef6f4(BattleBossScene* self) {
                 messages->pending_ = 1;
                 state->phase_ = 8;
             } else {
-                sprintf(message, FindEntryByKey(&self->text_, 0x1c), map->legacy_.bossName_);
-                BattleActor* actor = GetCombatantWithFlag0x400(game, self->actors_[0]);
-                if (map->legacy_.bossID_ == 9) actor = GetCombatantWithFlag0x400(game, self->actors_[1]);
+                sprintf(message, FindEntryByKey_02072a68(&self->text_, 0x1c), map->legacy_.bossName_);
+                BattleActor* actor = GetCombatantWithFlag0x400_0200fea4(game, self->actors_[0]);
+                if (map->legacy_.bossID_ == 9) actor = GetCombatantWithFlag0x400_0200fea4(game, self->actors_[1]);
                 func_020e4ce8(actorContext, actor, 1);
                 messages->actorContext_ = actorContext;
                 func_0204500c(messages, message, 1, 0xe3);
@@ -179,13 +179,13 @@ extern "C" ARM int func_ov023_021ef6f4(BattleBossScene* self) {
         }
     } else if (state->phase_ == 5) {
         if (func_ov023_021f4fc8()) {
-            GetCombatantWithFlag0x100(game, GetField0x3acValue(game));
-            sprintf(message, FindEntryByKey(&self->text_, 0x1e));
-            BattleActor* actor = GetCombatantWithFlag0x400(game, self->actors_[0]);
-            if (map->legacy_.bossID_ == 9) actor = GetCombatantWithFlag0x400(game, self->actors_[1]);
+            GetCombatantWithFlag0x100_0200ff1c(game, GetField0x3acValue_020100a8(game));
+            sprintf(message, FindEntryByKey_02072a68(&self->text_, 0x1e));
+            BattleActor* actor = GetCombatantWithFlag0x400_0200fea4(game, self->actors_[0]);
+            if (map->legacy_.bossID_ == 9) actor = GetCombatantWithFlag0x400_0200fea4(game, self->actors_[1]);
             func_020e4ce8(actorContext, actor, 1);
             messages->actorContext_ = actorContext;
-            StoreInArray0x8b0(messages, 0, self->experience_);
+            StoreInArray0x8b0_020465c0(messages, 0, self->experience_);
             func_0204500c(messages, message, 1, 0xe3);
             messages->flag19b2_ = 0;
             messages->pending_ = 1;
@@ -198,18 +198,18 @@ extern "C" ARM int func_ov023_021ef6f4(BattleBossScene* self) {
     } else if (state->phase_ == 7) {
         if (func_ov023_021f4fc8()) {
             self->levelledUp_ = 1;
-            sprintf(message, FindEntryByKey(&self->text_, 0x1f));
-            BattleActor* actor = GetCombatantWithFlag0x400(game, self->actors_[0]);
-            if (map->legacy_.bossID_ == 9) actor = GetCombatantWithFlag0x400(game, self->actors_[1]);
+            sprintf(message, FindEntryByKey_02072a68(&self->text_, 0x1f));
+            BattleActor* actor = GetCombatantWithFlag0x400_0200fea4(game, self->actors_[0]);
+            if (map->legacy_.bossID_ == 9) actor = GetCombatantWithFlag0x400_0200fea4(game, self->actors_[1]);
             func_020e4ce8(actorContext, actor, 1);
             messages->actorContext_ = actorContext;
-            StoreInArray0x8b0(messages, 0, map->legacy_.level_ + 1);
+            StoreInArray0x8b0_020465c0(messages, 0, map->legacy_.level_ + 1);
             func_0204500c(messages, message, 1, 0xe3);
             messages->flag19b2_ = 0;
             messages->pending_ = 1;
             ResetAndDispatchActorContext0209c6d8(data_02109bf4, 0x35);
             map->UpdateFollowingCompletion(true, 0);
-            DispatchAndSetTreasureMapUnknownBit((char*)game, (int)map);
+            DispatchAndSetTreasureMapUnknownBit_020117cc((char*)game, (int)map);
             func_02011744(game);
             if (map->legacy_.GetLearnedMove(map->legacy_.level_, -1)) state->phase_ = 9;
             else state->phase_ = 11;
@@ -217,17 +217,17 @@ extern "C" ARM int func_ov023_021ef6f4(BattleBossScene* self) {
     } else if (state->phase_ == 8) {
         ScaleOrResetCombatants_021ed988((char*)self, 1500);
         map->UpdateFollowingCompletion(false, self->turns_);
-        DispatchAndSetTreasureMapUnknownBit((char*)game, (int)map);
+        DispatchAndSetTreasureMapUnknownBit_020117cc((char*)game, (int)map);
         func_02011744(game);
         state->phase_ = 10;
     } else if (state->phase_ == 9) {
         if (func_ov023_021f4fc8()) {
             int move = map->legacy_.GetLearnedMove(map->legacy_.level_, 1);
             if (move) {
-                MoveName* name = SearchBothTables02079e2c((char*)GetData02108e10(), (short)move);
-                sprintf(message, FindEntryByKey(&self->text_, 0x20));
-                BattleActor* actor = GetCombatantWithFlag0x400(game, self->actors_[0]);
-                if (map->legacy_.bossID_ == 9) actor = GetCombatantWithFlag0x400(game, self->actors_[1]);
+                MoveName* name = SearchBothTables02079e2c((char*)GetData02108e10_020797dc(), (short)move);
+                sprintf(message, FindEntryByKey_02072a68(&self->text_, 0x20));
+                BattleActor* actor = GetCombatantWithFlag0x400_0200fea4(game, self->actors_[0]);
+                if (map->legacy_.bossID_ == 9) actor = GetCombatantWithFlag0x400_0200fea4(game, self->actors_[1]);
                 func_020e4ce8(actorContext, actor, 1);
                 messages->actorContext_ = actorContext;
                 SetIndexedName02046574((Obj02046574*)messages, 1, name->name_);
@@ -238,7 +238,7 @@ extern "C" ARM int func_ov023_021ef6f4(BattleBossScene* self) {
             state->phase_ = 11;
         }
     } else if (state->phase_ == 10) {
-        if (!GetCombatantWithFlag0x400(game, self->actors_[0])->GetInheritedAlpha() || !self->actorCount_) state->phase_ = 11;
+        if (!GetCombatantWithFlag0x400_0200fea4(game, self->actors_[0])->GetInheritedAlpha() || !self->actorCount_) state->phase_ = 11;
     } else if (state->phase_ == 11) {
         if (func_ov023_021f4fc8()) { ResetFields_021eefac(state); return 5; }
     }

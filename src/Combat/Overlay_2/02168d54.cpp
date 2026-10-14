@@ -31,13 +31,13 @@ struct List020727d8;
 struct FlagWord020466f4;
 struct Struct0205de24;
 
-int GetWord0x0(int* obj);
+int GetWord0x0_0200fb8c(int* obj);
 extern "C" void func_020a1940(unsigned int id);
 extern "C" void func_ov002_021682c0(char* self);
 void SetSubBrightness(GameResources* resources, int brightness, int duration);
 void* GetDataPtr02114e04_020d6c00(void);
-void OrBitsIntoField0(unsigned int* p, unsigned int mask);
-void OrGlobalFlag0x40(void);
+void OrBitsIntoField0_020466e4(unsigned int* p, unsigned int mask);
+void OrGlobalFlag0x40_020dc2bc(void);
 void ClearFirstTwoWords0209a338(Pair0209a338* p);
 void SetupAndRunBufferedScript0209a470(Ctx0209a470* ctx, SafeAllocator* alloc, StreamHeader* data, int length);
 int IsSubBrightnessTransitionActive(GameResources* resources);
@@ -45,7 +45,7 @@ extern "C" int func_ov013_021870f0(char* obj);
 extern "C" void func_ov013_02184360(char* obj, int v);
 extern "C" void func_ov013_02184cf0(char* obj, SafeAllocator* alloc);
 int GetField110ArrayValue021574d4(void* self, int index);
-GameObject* GetCombatantWithFlag0x100(GameState* gameState, int combatantId);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* gameState, int combatantId);
 extern "C" void func_ov013_02184b4c(char* obj, GameObject* combatant);
 extern "C" void func_ov002_02168354(char* self);
 extern "C" void func_ov013_0218782c(char* obj, int a, int b);
@@ -53,11 +53,11 @@ void HandleFieldFlagsAndState021870c0(void* obj);
 extern "C" void func_ov002_021685bc(char* self);
 extern "C" void _Z31UpdateBattleTagCounter_0216885cPc(char* self);
 int GetGlobalField0x1c020421a0(void);
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
-int CheckByteSetAndByteClear(unsigned char* obj);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
+int CheckByteSetAndByteClear_02012aac(unsigned char* obj);
 void ReinitController02043204(char* obj);
 extern "C" void func_02043124(void* self);
-void PushInputLogB(int id);
+void PushInputLogB_020a1ef0(int id);
 void Reset0209fe9c(char* obj);
 void InitManagerAndAllocateBuffers0209fee4(Obj0209fee4* obj, SafeAllocator* alloc, int data, int length);
 void SetIntAt0x60(IntField0x60_0209ff64* obj, int v);
@@ -73,7 +73,7 @@ extern "C" void func_ov023_021eb564(char* obj, int a, int b);
 extern "C" void func_ov023_021eb26c(void* obj);
 extern "C" void ColorEffect_ConfigureAlphaBlend(int control, unsigned int pixel1Source, unsigned int pixel2Source, unsigned int pixel1Alpha, unsigned int pixel2Alpha);
 void ClearFlags020466f4(FlagWord020466f4* word, unsigned int mask);
-void PopStack1AndTrigger(int flag);
+void PopStack1AndTrigger_020a1f4c(int flag);
 void SetCombatModeFromCase020dc2d0(int mode);
 extern "C" void func_ov002_0215a938(char* self);
 extern "C" void func_ov002_02161cf0(char* base);
@@ -92,7 +92,7 @@ extern "C" ARM void func_ov002_021695d8(char* self) {
 extern "C" ARM void func_ov002_02168d54(char* self) {
 #endif
     GameState* gs = GameState::GetInstance();
-    GameResources* res = (GameResources*)GetWord0x0((int*)gs);
+    GameResources* res = (GameResources*)GetWord0x0_0200fb8c((int*)gs);
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
 
     if (*(int*)(self + REGION_VALUE(0x1a88, 0x1bc0)) == 0) {
@@ -102,8 +102,8 @@ extern "C" ARM void func_ov002_02168d54(char* self) {
         SetSubBrightness(res, -0x10, 0xf);
         *(int*)(self + REGION_VALUE(0x228c, 0x2458)) = loader->QueueLoadFile(&data_ov002_0216d350, NULL);
 #if !defined(jpn)
-        OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 1);
-        OrGlobalFlag0x40();
+        OrBitsIntoField0_020466e4((unsigned int*)GetDataPtr02114e04_020d6c00(), 1);
+        OrGlobalFlag0x40_020dc2bc();
 #endif
     } else if (*(int*)(self + REGION_VALUE(0x1a88, 0x1bc0)) == 1) {
         if (*(int*)(self + REGION_VALUE(0x228c, 0x2458)) >= 0) {
@@ -118,8 +118,8 @@ extern "C" ARM void func_ov002_02168d54(char* self) {
             }
         } else if (!IsSubBrightnessTransitionActive(res)) {
 #if defined(jpn)
-            OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 1);
-            OrGlobalFlag0x40();
+            OrBitsIntoField0_020466e4((unsigned int*)GetDataPtr02114e04_020d6c00(), 1);
+            OrGlobalFlag0x40_020dc2bc();
 #endif
             (*(int*)(self + REGION_VALUE(0x1a88, 0x1bc0)))++;
         }
@@ -137,7 +137,7 @@ extern "C" ARM void func_ov002_02168d54(char* self) {
             func_ov013_02184cf0(self + REGION_VALUE(0x1c20, 0x1d70), (SafeAllocator*)(self + REGION_VALUE(0x78c, 0x828)));
             *(int*)(self + REGION_VALUE(0x1c38, 0x1d88)) = *(int*)(self + REGION_VALUE(0x19c0, 0x1a68));
             *(short*)(self + REGION_VALUE(0x1c3c, 0x1d8c)) = 0;
-            GameObject* combatant = GetCombatantWithFlag0x100(gs, GetField110ArrayValue021574d4(self, *(short*)(self + REGION_VALUE(0x1ad0, 0x1c08))));
+            GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(gs, GetField110ArrayValue021574d4(self, *(short*)(self + REGION_VALUE(0x1ad0, 0x1c08))));
             if (combatant) {
                 func_ov013_02184b4c(self + REGION_VALUE(0x1c20, 0x1d70), combatant);
             }
@@ -171,13 +171,13 @@ extern "C" ARM void func_ov002_02168d54(char* self) {
             if (*(int*)(controller + REGION_VALUE(0x870, 0x9a0)) != 3) {
                 return;
             }
-            if (!TestFlag0SetAndFlag1Clear(&data_02114e30, 0x203) && !CheckByteSetAndByteClear(&data_02114e54)) {
+            if (!TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x203) && !CheckByteSetAndByteClear_02012aac(&data_02114e54)) {
                 return;
             }
         }
         ReinitController02043204(controller);
         func_02043124(controller);
-        FontBankLoader* global = GetGlobal02109400();
+        FontBankLoader* global = GetGlobal02109400_02094a00();
         BlankFunction02094b3c(global, 0xc);
         func_02094ab0(global);
         self[REGION_VALUE(0x2288, 0x2454)] = 0;
@@ -185,7 +185,7 @@ extern "C" ARM void func_ov002_02168d54(char* self) {
         (*(int*)(self + REGION_VALUE(0x1a88, 0x1bc0)))++;
         SetSubBrightness(res, -0x10, 0xf);
         self[REGION_VALUE(0x228a, 0x2456)] = 0;
-        PushInputLogB(1);
+        PushInputLogB_020a1ef0(1);
         self[REGION_VALUE(0x22a2, 0x2472)] = 1;
         self[REGION_VALUE(0x1afb, 0x1c33)] = 1;
         self[REGION_VALUE(0x22bf, 0x248f)] = 1;
@@ -259,18 +259,18 @@ extern "C" ARM void func_ov002_02168d54(char* self) {
         self[REGION_VALUE(0x22a1, 0x2471)] = 0;
         (*(int*)(self + REGION_VALUE(0x1a88, 0x1bc0)))++;
     } else if (*(int*)(self + REGION_VALUE(0x1a88, 0x1bc0)) == 0xf) {
-        FontBankLoader* global = GetGlobal02109400();
+        FontBankLoader* global = GetGlobal02109400_02094a00();
         BlankFunction02094b40(global);
         BlankFunction02094b30(global, 100, 0);
         (*(int*)(self + REGION_VALUE(0x1a88, 0x1bc0)))++;
     } else if (*(int*)(self + REGION_VALUE(0x1a88, 0x1bc0)) == 0x10) {
-        if (AlwaysTrue02094b4c(GetGlobal02109400())) {
+        if (AlwaysTrue02094b4c(GetGlobal02109400_02094a00())) {
             *(int*)(self + REGION_VALUE(0x1a88, 0x1bc0)) = 100;
             ColorEffect_ConfigureAlphaBlend(0x04000050, 2, 1, 10, 6);
         }
     } else if (*(int*)(self + REGION_VALUE(0x1a88, 0x1bc0)) == 100) {
         ClearFlags020466f4((FlagWord020466f4*)GetDataPtr02114e04_020d6c00(), 1);
-        PopStack1AndTrigger(1);
+        PopStack1AndTrigger_020a1f4c(1);
         self[REGION_VALUE(0x1afb, 0x1c33)] = 0;
         self[REGION_VALUE(0x22bf, 0x248f)] = 0;
         SetCombatModeFromCase020dc2d0(0);

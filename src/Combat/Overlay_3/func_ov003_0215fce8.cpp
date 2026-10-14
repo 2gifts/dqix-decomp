@@ -21,19 +21,19 @@ extern struct Entry0215fce8 data_ov003_0217ff68[];
 
 extern "C" int func_ov017_021959b4();
 void *GetDataPtr02114e04_020d6c00(void);
-int *GetGlobal02109030(void);
-void OrBitsIntoField0(unsigned int *word, unsigned int bits);
+int *GetGlobal02109030_020936f8(void);
+void OrBitsIntoField0_020466e4(unsigned int *word, unsigned int bits);
 extern "C" unsigned char *func_ov017_0218b5b0();
 extern "C" void *func_0202ae18();
-void *GetData02100044(void);
-void SetBitsInWord(unsigned int *word, unsigned int bits);
+void *GetData02100044_0202ae24(void);
+void SetBitsInWord_0203b4a0(unsigned int *word, unsigned int bits);
 extern "C" void func_0202b0f4(void *obj);
 void ClearTwoBytesAtField_02195748(unsigned char *base);
 void SetFlag1ForFlagombatants_02192594_02192594(unsigned char* base);
-void ClearFlag0x3c9Bit0AndCleanup(unsigned char *obj);
+void ClearFlag0x3c9Bit0AndCleanup_020939fc(unsigned char *obj);
 struct BitArrayObj0205e854;
 void *FillBitArray0x1524WithFF(BitArrayObj0205e854 *obj);
-void ClearBitsInWord(unsigned int *obj, unsigned int mask);
+void ClearBitsInWord_0203b4b0(unsigned int *obj, unsigned int mask);
 struct Controller020421a0;
 Controller020421a0 *GetGlobalField0x1c020421a0(void);
 void ReinitController02043204(char *obj);
@@ -56,7 +56,7 @@ extern "C" void func_ov003_02160f4c(void *self);
 extern "C" void func_ov003_02160794(void *self);
 extern "C" int func_02081f20(void *obj, int scaleCount);
 extern "C" int func_020800fc(void *menu, short *cursor, short prevCursor, unsigned short buttons, unsigned char a, bool b);
-void ClearSublistEntriesFlag4(void *menu, int group);
+void ClearSublistEntriesFlag4_020804fc(void *menu, int group);
 extern "C" void func_020813ec(void *obj, int key);
 
 // USA: func_ov003_0215fce8
@@ -65,18 +65,18 @@ extern "C" ARM int func_ov003_0215fce8(unsigned char *self, int arg) {
         unsigned char a3 = self[0x4a3];
         if ((a3 == 0xb && self[0x4a4] == 0x11) || (a3 == 6 && self[0x4a4] == 0)) {
             void *p = GetDataPtr02114e04_020d6c00();
-            int *g  = GetGlobal02109030();
-            OrBitsIntoField0((unsigned int *) p, 0x20);
+            int *g  = GetGlobal02109030_020936f8();
+            OrBitsIntoField0_020466e4((unsigned int *) p, 0x20);
             unsigned char *r8 = func_ov017_0218b5b0();
             void *r7          = func_0202ae18();
-            void *d           = GetData02100044();
-            SetBitsInWord((unsigned int *) r8, 2);
+            void *d           = GetData02100044_0202ae24();
+            SetBitsInWord_0203b4a0((unsigned int *) r8, 2);
             func_0202b0f4(r7);
             ClearTwoBytesAtField_02195748(r8);
             SetFlag1ForFlagombatants_02192594_02192594(r8);
-            ClearFlag0x3c9Bit0AndCleanup((unsigned char *) g);
+            ClearFlag0x3c9Bit0AndCleanup_020939fc((unsigned char *) g);
             FillBitArray0x1524WithFF((BitArrayObj0205e854 *) d);
-            ClearBitsInWord((unsigned int *) r8, 0x40);
+            ClearBitsInWord_0203b4b0((unsigned int *) r8, 0x40);
             r8[0x4000 + 0x2e3]               = 0;
             r8[0x4000 + 0x2e2]               = 0;
             *(short *) (self + 0x400 + 0x84) = 0x37;
@@ -144,7 +144,7 @@ extern "C" ARM int func_ov003_0215fce8(unsigned char *self, int arg) {
                           *(unsigned short *) (self + 0x300 + 0x14), self[0x316], (*(unsigned int *) (self + 0x464) & 1) != 0);
         *(short *) (m + 0x36) = **(short **) (self + 0x470);
         if (*(int *) (self + 0x45c) != 0) {
-            ClearSublistEntriesFlag4(m, *(short *) (self + 0x400 + 0x88));
+            ClearSublistEntriesFlag4_020804fc(m, *(short *) (self + 0x400 + 0x88));
         }
         if (*(short *) (self + 0x400 + 0x74) != **(short **) (self + 0x470)) {
             func_020813ec(m, *(short *) (self + 0x400 + 0x88));

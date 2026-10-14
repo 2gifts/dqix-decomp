@@ -27,8 +27,8 @@ extern "C" ARM void func_0206f01c(List0206f170* table, SafeAllocator* allocator,
                (GetEntryArrayByteSize(&table->table.header) + sizeof(Header0206f0f8)), stringBytes);
     }
 
-    if (reinterpret_cast<void*>(RelocateThreeFields) != NULL) {
-        InvokeCallbackForEachEntry(table, RelocateThreeFields);
+    if (reinterpret_cast<void*>(RelocateThreeFields_0206ef48) != NULL) {
+        InvokeCallbackForEachEntry_0206f110(table, RelocateThreeFields_0206ef48);
     }
     table->table.header.relocated = 1;
 }

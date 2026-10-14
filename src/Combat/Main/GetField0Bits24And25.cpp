@@ -11,7 +11,7 @@ struct B8894Obj {
 };
 
 // USA: func_02068894
-ARM int GetField0Bits24And25(int unused, struct B8894Obj* obj) {
+ARM int GetField0Bits24And25_02068894(int unused, struct B8894Obj* obj) {
     struct B8894Inner* p = obj->field0;
     if (p != 0) {
         return p->field;

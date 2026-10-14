@@ -34,8 +34,8 @@ extern "C" int func_ov023_021e6448(void*);
 extern "C" int func_ov023_021e7148(void*);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 extern "C" void func_0202ae18();
-int GetField5cb0Value(char*);
-const char* FindEntryByKey(TableA68*, int);
+int GetField5cb0Value_0201079c(char*);
+const char* FindEntryByKey_02072a68(TableA68*, int);
 extern "C" void func_ov012_0218bba0(void*, int, int);
 extern "C" void func_ov012_02189be8(void*, int);
 int TestFlagsAndActiveElement2_021e6e20(Obj021e6e20*);
@@ -76,13 +76,13 @@ extern "C" ARM void func_ov012_02188640(char* editor) {
                 int vocation = *(int*)(character + 0x8b8);
                 profile->vocationAccolade = 1;
                 profile->accolade = vocation + 700;
-                if (GetField5cb0Value((char*)state) == 1)
+                if (GetField5cb0Value_0201079c((char*)state) == 1)
                     profile->accolade = 713;
             } else {
                 profile->accolade = *(int*)(editor + 0x1444) + 799;
                 profile->vocationAccolade = 0;
             }
-            const char* name = FindEntryByKey((TableA68*)(editor + 0x1314), (short)(profile->accolade + 20000));
+            const char* name = FindEntryByKey_02072a68((TableA68*)(editor + 0x1314), (short)(profile->accolade + 20000));
             memset(editor + 0x1458, 0, 0x40);
             memcpy(editor + 0x1458, name, strlen(name));
             profile->accoladeChosen = 1;
@@ -173,8 +173,8 @@ extern "C" int func_ov023_021e6448(ProfileEditor02188640* self);
 extern "C" int func_ov023_021e6de4(ProfileEditor02188640* self);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0* sound, int effect, int a);
 extern "C" void func_0202ae18();
-int GetField5cb0Value(char* gameState);
-const char* FindEntryByKey(TableA68* table, int key);
+int GetField5cb0Value_0201079c(char* gameState);
+const char* FindEntryByKey_02072a68(TableA68* table, int key);
 extern "C" void func_ov012_0218adac(ProfileEditor02188640* self, int animate, int design, int keepPage);
 extern "C" void func_ov012_0218930c(ProfileEditor02188640* self, int cancel);
 int TestFlagsAndActiveElement2_021e6e20(Obj021e6e20* self);
@@ -239,7 +239,7 @@ extern "C" ARM void func_ov012_02188640(ProfileEditor02188640* self)
                 int vocation = data->vocation_;
                 profile->vocationAccolade_ = 1;
                 profile->accolade_ = accolade + vocation - 0x4e20;
-                if (GetField5cb0Value((char*)gameState) == 1)
+                if (GetField5cb0Value_0201079c((char*)gameState) == 1)
                     profile->accolade_ = accolade + 13 - 0x4e20;
             }
             else
@@ -250,7 +250,7 @@ extern "C" ARM void func_ov012_02188640(ProfileEditor02188640* self)
                 profile->accolade_ = accolade + self->selections_[5] - 0x4e21;
                 profile->vocationAccolade_ = 0;
             }
-            const char* text = FindEntryByKey((TableA68*)self->strings_, (short)(profile->accolade_ + 20000));
+            const char* text = FindEntryByKey_02072a68((TableA68*)self->strings_, (short)(profile->accolade_ + 20000));
             memset(self->accoladeText_, 0, sizeof(self->accoladeText_));
             memcpy(self->accoladeText_, text, strlen(text));
             profile->accoladeChosen_ = 1;

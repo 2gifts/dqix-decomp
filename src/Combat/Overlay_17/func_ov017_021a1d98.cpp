@@ -33,10 +33,10 @@ struct DistanceSlot {
     DistanceSlot() : distance(0x0270f000), selected(0) {}
 };
 
-Entry_02028bd0* GetEntryTableBase();
+Entry_02028bd0* GetEntryTableBase_02027ca4();
 Entry_02028bd0* FindInlineEntryById(Entry_02028bd0*, int);
 extern "C" SpawnParams* func_02012fe4();
-unsigned int GetBitsInField4(unsigned int*, unsigned int);
+unsigned int GetBitsInField4_0203b4fc(unsigned int*, unsigned int);
 int TickActorFlagStateAndDispatch02076bec(unsigned char*, void*);
 struct BitField0203402c;
 int CheckField0xc4Low15BitsNonZero(BitField0203402c*);
@@ -45,13 +45,13 @@ extern "C" void _Z23SyncBattleState0208f87cPviii(const Vector3fix*, int, int, in
 // USA: func_ov017_021a1d98
 extern "C" ARM void func_ov017_021a1d98(unsigned int* flags, int id) {
     GameState* state = GameState::GetInstance();
-    Entry_02028bd0* entry = FindInlineEntryById(GetEntryTableBase(), id);
+    Entry_02028bd0* entry = FindInlineEntryById(GetEntryTableBase_02027ca4(), id);
     if (!entry) return;
     SpawnParams* params = func_02012fe4();
     unsigned short field38 = params->field_38;
     unsigned int field3c = params->field_3c;
     int arg = 1;
-    if (GetBitsInField4(flags, 0x1000)) arg = 0;
+    if (GetBitsInField4_0203b4fc(flags, 0x1000)) arg = 0;
     int partyCount = 0;
     for (int i = 0; i < 4; i++) {
         GameObject* member = state->GetPartyMemberByIndex(i);

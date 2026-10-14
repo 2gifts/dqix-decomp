@@ -15,18 +15,18 @@ struct KeyMap020a095c;
 struct Slots02083994;
 struct Container020dedd0;
 int BuildFlaggedCombatantSlotList_02154f4c(unsigned char *obj);
-void *GetFieldAt0x150(unsigned char *obj);
+void *GetFieldAt0x150_02053c6c(unsigned char *obj);
 void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char keyLow,
                                                                         unsigned char keyHigh);
 int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
 int CountFlag0x800MatchesEqualsTarget020dcc20(int targetCount, int flag);
-void *GetPtrField0x2a04(GameState *gs);
-int ArrayContainsByte(struct ArrayContainsByteStruct *s, int val);
+void *GetPtrField0x2a04_02010828(GameState *gs);
+int ArrayContainsByte_02086ef0(struct ArrayContainsByteStruct *s, int val);
 void SetElementFlag0x20ByKey0205def8(struct Struct_0205def8 *s, int clear, int key);
 extern "C" int func_0205df38(void *list, int key);
 int CheckAnyByteMatches020dcbbc(unsigned char *arr, int count, int b, int c, int d);
-void SetElementFieldC2(struct Struct_0205d81c *s, int a, int b);
-int TestFlag0SetAndFlag1Clear(unsigned short *p, int n);
+void SetElementFieldC2_0205deb4(struct Struct_0205d81c *s, int a, int b);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short *p, int n);
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0 *o, int a, int b);
 int LookupValueByKey020a0b3c(struct KeyMap020a0b3c *map, int key);
@@ -35,9 +35,9 @@ extern "C" int _Z26AddKeyValueClamped020a095cP14KeyMap020a095cii(struct KeyMap02
 int CountMatchingUntilNegative02083994(struct Slots02083994 *s, int value);
 extern "C" int func_020dc920(int a, int b, int c, int d);
 extern "C" int *func_0202ae18(void);
-int CheckField0NonZero(int *p);
+int CheckField0NonZero_0202b7d8(int *p);
 char *FindElementByKey020dedd0(struct Container020dedd0 *c, int key);
-int GetField0x3acValue(GameState *gs);
+int GetField0x3acValue_020100a8(GameState *gs);
 void SetFieldB0AndUpdate0205dee8(struct Obj0205dee8 *o, int v);
 int CheckFlagOrThreshold_02161b48(char *base, int a);
 extern "C" void func_ov002_0215b814(char *base);
@@ -73,7 +73,7 @@ extern "C" ARM void func_ov002_02163bd0(char *base) {
                     (*(unsigned char *) (base + 0x6d + 0x1c00))--;
                 }
             }
-            int x = *(short *) ((char *) GetFieldAt0x150((unsigned char *) gs->GetProtagonist()) + 0x900 + 0x5e);
+            int x = *(short *) ((char *) GetFieldAt0x150_02053c6c((unsigned char *) gs->GetProtagonist()) + 0x900 + 0x5e);
             int j;
             for (j = 0; j <= *(unsigned char *) (base + 0x1000 + 0xc6d); j++) {
                 if (x == *(unsigned char *) (base + j + 0x1000 + 0xc68)) {
@@ -108,7 +108,7 @@ extern "C" ARM void func_ov002_02163bd0(char *base) {
             return;
         }
         int flag = 0;
-        if (!ArrayContainsByte((struct ArrayContainsByteStruct *) GetPtrField0x2a04(gs),
+        if (!ArrayContainsByte_02086ef0((struct ArrayContainsByteStruct *) GetPtrField0x2a04_02010828(gs),
                                *(signed char *) (base + 0x1c00 + 0x21)) &&
             *(signed char *) (base + 0x1c00 + 0x21) != 4)
         {
@@ -124,21 +124,21 @@ extern "C" ARM void func_ov002_02163bd0(char *base) {
             *(int *) (base + 0x1000 + 0xbcc) = 1;
             func_ov002_0215b9a4(base, *(int *) (base + 0x1000 + 0xbb8), 0);
         }
-        SetElementFieldC2((struct Struct_0205d81c *) L(base), 0xd, 1);
+        SetElementFieldC2_0205deb4((struct Struct_0205d81c *) L(base), 0xd, 1);
         if (old != *(short *) (base + 0x1b00 + 0xee)) return;
-        int ta = TestFlag0SetAndFlag1Clear(data_02114e30, 0x601);
+        int ta = TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x601);
         int tb = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(L(base)), 0x14);
         if (((ta | tb) ? 1 : 0) || flag) {
             GameObject *pr = gs->GetProtagonist();
             if (pr != NULL) {
                 int v = *(signed char *) (base + 0x1c00 + 0x21);
-                *(short *) ((char *) GetFieldAt0x150((unsigned char *) pr) + 0x900 + 0x5e) = v;
+                *(short *) ((char *) GetFieldAt0x150_02053c6c((unsigned char *) pr) + 0x900 + 0x5e) = v;
             }
             if (*(signed char *) (base + 0x1c00 + 0x21) == 4) {
                 DispatchWithShortB4_0205eaa0((struct Obj0205eaa0 *) data_02108760, 1, 0);
                 *(unsigned int *) (base + 0x2000 + 0x47c) &= ~4;
                 if (*(signed char *) (base + 0x1c00 + 0x20) == 4) {
-                    void *map = GetPtrField0x2a04(GameState::GetInstance());
+                    void *map = GetPtrField0x2a04_02010828(GameState::GetInstance());
                     int v     = LookupValueByKey020a0b3c((struct KeyMap020a0b3c *) map,
                                                                                *(short *) (base + 0x1c00 + 0x22));
                     DecrementKeyValue020a0a08((struct KeyMap020a0a08 *) map, *(short *) (base + 0x1c00 + 0x22), (signed char)v);
@@ -147,8 +147,8 @@ extern "C" ARM void func_ov002_02163bd0(char *base) {
                     *(short *) (base + 0x1c00 + 0x28) = 0x236e;
                 } else {
                     GameState *g2 = GameState::GetInstance();
-                    void *map     = GetPtrField0x2a04(g2);
-                    char *m       = (char *)GetCombatantWithFlag0x100(g2, *(signed char *) (base + 0x1c00 + 0x20));
+                    void *map     = GetPtrField0x2a04_02010828(g2);
+                    char *m       = (char *)GetCombatantWithFlag0x100_0200ff1c(g2, *(signed char *) (base + 0x1c00 + 0x20));
                     if (m != NULL) {
                         func_ov002_0215a7b4(base, *(signed char *) (base + 0x1c00 + 0x20), *(short *) (base + 0x1c00 + 0x22),
                                             *(short *) (base + 0x1b00 + 0xe8), 0);
@@ -162,7 +162,7 @@ extern "C" ARM void func_ov002_02163bd0(char *base) {
                         }
                         if (*(short *) (base + 0x1c00 + 0x22) == 0x570a &&
                             CountMatchingUntilNegative02083994(
-                                (struct Slots02083994 *) GetFieldAt0x150((unsigned char *) m), 0x570a) == 0)
+                                (struct Slots02083994 *) GetFieldAt0x150_02053c6c((unsigned char *) m), 0x570a) == 0)
                         {
                             *(unsigned char *) (*(char **) (m + 0x130) + 8) = 0;
                             func_ov017_021c9e00(*(short *) (m + 4), 0, 0, 1);
@@ -182,7 +182,7 @@ extern "C" ARM void func_ov002_02163bd0(char *base) {
                 DispatchWithShortB4_0205eaa0((struct Obj0205eaa0 *) data_02108760, 1, 0);
                 *(unsigned int *) (base + 0x2000 + 0x47c) &= ~4;
                 func_ov002_0215b9a4(base, *(int *) (base + 0x1000 + 0xbb8), 1);
-                if (CheckField0NonZero(func_0202ae18())) {
+                if (CheckField0NonZero_0202b7d8(func_0202ae18())) {
                     int ok = 1;
                     int i  = 0;
                     for (; i < *(int *) (base + 0x1000 + 0xc38); i++) {
@@ -202,7 +202,7 @@ extern "C" ARM void func_ov002_02163bd0(char *base) {
                             return;
                         }
                         if (*(signed char *) (base + 0x1c00 + 0x20) == 4) {
-                            *(signed char *) (base + 0x1000 + 0xc20)   = GetField0x3acValue(GameState::GetInstance());
+                            *(signed char *) (base + 0x1000 + 0xc20)   = GetField0x3acValue_020100a8(GameState::GetInstance());
                             *(unsigned char *) (base + 0x1000 + 0xc78) = 1;
                         }
                         func_ov002_0216bfd4(base, 0);

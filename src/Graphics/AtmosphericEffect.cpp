@@ -12,21 +12,10 @@
 #include "GameState/GameState.h"
 #include "Graphics/LightingManager.h"
 
-// This keeps showing up in multiple translation units: in every case, we have
-// four floats in data and then generate five floats in bss in some weird order.
-// Note that bss entries are sorted by size, and so this has to be a single array
-// in this translation unit at least (because of the size 0xc struct we already
-// have coming first). This is truly bizarre: none of these are ever used outside
-// of initialization, but they're still here. My best guess is this is created
-// by a macro, but we need to see more instances before committing to one form
-//
-// update: these are the lengths of the various times of day. See LightingManager.cpp
-// for an instance where this is actually used. Not sure why it leaks into so many
-// files though, maybe it was declared in a header and included in multiple places
 #define DECLARE_SUM_ARRAY(a, b, c, d) static float s_sums[5] = { (s_sums[4] = a + (b + (d + c)), \
     (s_sums[2] = s_sums[3] + d), \
     (s_sums[1] = s_sums[2] + c), \
-    /* s_sums[0] = */ s_sums[1] + b) }
+     s_sums[1] + b) }
 
 static float s_dataFloatA = 30.0f;
 static float s_dataFloatB = 180.0f;
@@ -43,8 +32,8 @@ struct EffectScriptData
 
 extern "C"
 {
-    void* _Z16GetPtrField0x114Pv(void*);
-    bool _Z19CheckBits5To9Equal2Pt(void*);
+    void* _Z25GetPtrField0x114_02033fa0Pv(void*);
+    bool _Z28CheckBits5To9Equal2_0204be20Pt(void*);
 
     void _Z25RestorePairTables0207df90Pc(void*);
     void _Z24BackupPairTables0207dfacPc(void*);
@@ -72,8 +61,8 @@ void AtmosphericEffect::Initialize()
     alpha_ = 31;
 }
 
-static int EffectScript_SetScrollSpeed(Script::Parameter* params, int numParams) 
-{ 
+static int EffectScript_SetScrollSpeed(Script::Parameter* params, int numParams)
+{
     if (effectScriptData.effect == NULL)
         return 0;
     if (effectScriptData.currentObjectName == NULL)
@@ -95,7 +84,7 @@ static int EffectScript_SetScrollSpeed(Script::Parameter* params, int numParams)
     }
 }
 
-static int EffectScript_SetScrollFlags(Script::Parameter* params, int numParams) 
+static int EffectScript_SetScrollFlags(Script::Parameter* params, int numParams)
 {
     if (effectScriptData.effect == NULL)
         return 0;
@@ -104,7 +93,7 @@ static int EffectScript_SetScrollFlags(Script::Parameter* params, int numParams)
     AtmosphericEffect* obj = effectScriptData.effect->GetEffectByName(effectScriptData.currentObjectName);
     if (obj == NULL)
         return 0;
-    
+
     int extraFlags = params[0].ToInt();
     if (extraFlags <= 8)
         obj->flags_ |= extraFlags;
@@ -122,7 +111,7 @@ static int EffectScript_SetScrollFlags(Script::Parameter* params, int numParams)
     return 1;
 }
 
-static int EffectScript_SelectEffect(Script::Parameter* params, int numParams) 
+static int EffectScript_SelectEffect(Script::Parameter* params, int numParams)
 {
     if (effectScriptData.effect == NULL)
         return 0;
@@ -130,7 +119,7 @@ static int EffectScript_SelectEffect(Script::Parameter* params, int numParams)
     return 1;
 }
 
-static int EffectScript_SetOriginFlags(Script::Parameter* params, int numParams) 
+static int EffectScript_SetOriginFlags(Script::Parameter* params, int numParams)
 {
     if (effectScriptData.effect == NULL)
         return 0;
@@ -155,7 +144,7 @@ static int EffectScript_SetOriginFlags(Script::Parameter* params, int numParams)
         return 1;
 }
 
-static int EffectScript_SetScrollOrigin(Script::Parameter* params, int numParams) 
+static int EffectScript_SetScrollOrigin(Script::Parameter* params, int numParams)
 {
     if (effectScriptData.effect == NULL)
         return 0;
@@ -178,7 +167,7 @@ static int EffectScript_SetScrollOrigin(Script::Parameter* params, int numParams
     }
 }
 
-static int EffectScript_Duplicate(Script::Parameter* params, int numParams) 
+static int EffectScript_Duplicate(Script::Parameter* params, int numParams)
 {
     if (effectScriptData.effect == NULL)
         return 0;
@@ -199,11 +188,11 @@ static int EffectScript_Duplicate(Script::Parameter* params, int numParams)
     newObj->object_.SetInheritedAlpha(31);
     memcpy(newObj->name_, newObjName, sizeof(newObj->name_));
     effectScriptData.effect->AddEffectObject(newObj);
-    
+
     return 1;
 }
 
-static int EffectScript_SetScale(Script::Parameter* params, int numParams) 
+static int EffectScript_SetScale(Script::Parameter* params, int numParams)
 {
     if (effectScriptData.effect == NULL)
         return 0;
@@ -212,14 +201,14 @@ static int EffectScript_SetScale(Script::Parameter* params, int numParams)
     AtmosphericEffect* obj = effectScriptData.effect->GetEffectByName(effectScriptData.currentObjectName);
     if (obj == NULL)
         return 0;
-    
+
     obj->scaleFactor_ = 4096.0f * params[0].ToFloat();
 
     return 1;
 }
 
-static int EffectScript_SetAlpha(Script::Parameter* params, int numParams) 
-{ 
+static int EffectScript_SetAlpha(Script::Parameter* params, int numParams)
+{
     if (effectScriptData.effect == NULL)
         return 0;
     if (effectScriptData.currentObjectName == NULL)
@@ -227,7 +216,7 @@ static int EffectScript_SetAlpha(Script::Parameter* params, int numParams)
     AtmosphericEffect* obj = effectScriptData.effect->GetEffectByName(effectScriptData.currentObjectName);
     if (obj == NULL)
         return 0;
-    
+
     int alpha = params[0].ToInt();
     obj->alpha_ = alpha;
     obj->object_.SetInheritedAlpha(alpha);
@@ -235,8 +224,8 @@ static int EffectScript_SetAlpha(Script::Parameter* params, int numParams)
     return 1;
 }
 
-static int EffectScript_SetTileDimensions(Script::Parameter* params, int numParams) 
-{ 
+static int EffectScript_SetTileDimensions(Script::Parameter* params, int numParams)
+{
     if (effectScriptData.effect == NULL)
         return 0;
     if (effectScriptData.currentObjectName == NULL)
@@ -254,8 +243,8 @@ static int EffectScript_SetTileDimensions(Script::Parameter* params, int numPara
     return 1;
 }
 
-static int EffectScript_SetHiddenTimesOfDay(Script::Parameter* params, int numParams) 
-{ 
+static int EffectScript_SetHiddenTimesOfDay(Script::Parameter* params, int numParams)
+{
     unsigned char mask = 0;
     for (int i = 0; i < numParams; i++)
     {
@@ -342,7 +331,7 @@ void AtmosphericEffectSet::ProcessArchive(AtmosphericEffectSet *target, SafeAllo
         return;
 
     AtmosphericEffect* lastObject = NULL;
-    
+
     const void* bmedFileData = NULL;
     unsigned int bmedFileLength = 0;
     bool bmedFound = false;
@@ -350,7 +339,7 @@ void AtmosphericEffectSet::ProcessArchive(AtmosphericEffectSet *target, SafeAllo
 
     AtmosphericEffect* loopObject;
     unsigned int fileID;
-    
+
     effectScriptData.allocator = allocator;
     effectScriptData.effect = target;
 
@@ -389,7 +378,7 @@ void AtmosphericEffectSet::ProcessArchive(AtmosphericEffectSet *target, SafeAllo
                     lastObject = lastObject->pNext_ = newObj;
                     lastObject->archiveFileSize_ = innerFileLength;
                     lastObject->archiveFileData_ = innerFile;
-                    
+
                 }
             }
             else if (strcmp(".bmed", extension) == 0)
@@ -397,7 +386,7 @@ void AtmosphericEffectSet::ProcessArchive(AtmosphericEffectSet *target, SafeAllo
                 bmedFound = true;
                 bmedFileData = innerFile;
                 bmedFileLength = innerFileLength;
-                
+
             }
             fileID++;
         }
@@ -471,7 +460,6 @@ void AtmosphericEffectSet::ProcessArchive(AtmosphericEffectSet *target, SafeAllo
                 loopObject = loopObject->pNext_;
                 continue;
             }
-            // treat the scale factor as shrinking the screen instead of enlarging the tiles
             fix32_t effectiveScreenWidth = fix32_Divide(256 << 12, loopObject->scaleFactor_);
             fix32_t effectiveScreenHeight = fix32_Divide(192 << 12, loopObject->scaleFactor_);
             if (!(loopObject->flags_ & (1 << 6)))
@@ -543,7 +531,7 @@ bool AtmosphericEffectSet::Draw()
     target.y = 0;
     target.z = 0;
 
-    int polygonID = 55; // max is 63
+    int polygonID = 55;
     for (AtmosphericEffect* loopObject = firstThing_; loopObject != NULL;)
     {
         if (loopObject->scaleFactor_ <= 0)
@@ -552,7 +540,6 @@ bool AtmosphericEffectSet::Draw()
             continue;
         }
 
-        // treat the scale factor as shrinking the screen instead of enlarging the tiles
         fix32_t effectiveScreenWidth = fix32_Divide(256 << 12, loopObject->scaleFactor_);
         fix32_t effectiveScreenHeight = fix32_Divide(192 << 12, loopObject->scaleFactor_);
 
@@ -566,12 +553,12 @@ bool AtmosphericEffectSet::Draw()
         data_0210a010.upVector = up;
         data_0210a010.targetVector = target;
         Mat4x3_WriteViewMatrix(&eye, &up, &target, &data_0210a010.viewMatrix);
-        
+
         data_0210a010.flags &= ~(
             (1 << RENDER_CONFIG_FLAG_INVERSE_VIEW_CACHE_VALID) |
             (1 << RENDER_CONFIG_FLAG_WORLDVIEW_CACHE_VALID) |
             (1 << RENDER_CONFIG_FLAG_5) | (1 << RENDER_CONFIG_FLAG_6));
-        
+
         int bVar2 = false;
         int bVar3 = false;
 
@@ -610,19 +597,15 @@ bool AtmosphericEffectSet::Draw()
             {
                 fix32_t zfoo = loopObject->originZ_ + (loopZ * loopObject->tileHeight_ - centeringOffsetZ);
                 fix32_t xfoo = loopObject->originX_ + (loopX * loopObject->tileWidth_ - centeringOffsetX);
-             
-                // this might look like xflip = 1 means things move left, but it doesn't,
-                // this is because the view matrix has (0, 0, 1) as up and so world
-                // coordinates (x, y, z) transform proportional to (-x, z, y) on screen
+
                 fix32_t finalZ = zflip * (zfoo - loopObject->currentZOffset_);
                 fix32_t finalX = xflip * (xfoo - loopObject->currentXOffset_);
-                
+
                 loopObject->object_.position_.x = finalX;
                 loopObject->object_.position_.y = -45 << 12;
                 loopObject->object_.position_.z = finalZ;
                 RenderConfig::SubmitToFifo();
                 SendQueuedDataToGeometryFifo();
-                // clear the polygon ID from the POLYGON_ATTR bitmask
                 NSBXX_Model_AdjustPolygonAttrMask(loopObject->object_.pModel_->rawInternalModel_, false, 0x3f000000);
                 RenderConfig::SetPolygonAttributes(0, 0, 2 | 1, polygonID, 31, 0);
                 loopObject->object_.Draw(true);
@@ -685,7 +668,7 @@ void AtmosphericEffectSet::AdvanceAlphaFade()
     if (effectFlags_ & 2)
     {
         alpha_ = 31 * ((90 - fadeTimeRemaining_) / 90.0f);
-    }   
+    }
     else if (effectFlags_ & 4)
     {
         alpha_ = 31 * (fadeTimeRemaining_ / 90.0f);
@@ -744,7 +727,7 @@ void AtmosphericEffectSet::DetermineVisibilityFromTimeOfDay()
 
 void AtmosphericEffectSet::DetermineVisibilityFromUnknown()
 {
-    bool inputShouldHide = _Z19CheckBits5To9Equal2Pt(_Z16GetPtrField0x114Pv(GameState::GetInstance()->GetUnknownGameObject()));
+    bool inputShouldHide = _Z28CheckBits5To9Equal2_0204be20Pt(_Z25GetPtrField0x114_02033fa0Pv(GameState::GetInstance()->GetUnknownGameObject()));
 
     if (inputShouldHide != unknown_14_bit_2_ || visibilityDirty_)
     {

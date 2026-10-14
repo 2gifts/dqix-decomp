@@ -4,7 +4,7 @@ extern unsigned short data_020f226c;
 extern unsigned short data_02111220;
 
 // USA: func_020c3898
-ARM void SaveAndClearDisplayMode(void) {
+ARM void SaveAndClearDisplayMode_020c3898(void) {
     volatile unsigned int* dispcnt = (volatile unsigned int*)0x4000000;
     unsigned int v = *dispcnt;
     data_020f226c = 0;

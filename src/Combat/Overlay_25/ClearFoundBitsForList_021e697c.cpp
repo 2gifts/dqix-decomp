@@ -2,8 +2,8 @@
 #include "GameState/GameState.h"
 
 int DispatchByIndex021820bc(void* obj, int unused, int index, int arg);
-void ClearSubstructByte0x56(unsigned char* obj);
-void* GetActiveCombatWork(void);
+void ClearSubstructByte0x56_02049f3c(unsigned char* obj);
+void* GetActiveCombatWork_ov000_02160130(void);
 void ClearBitIfValueFound02167434(unsigned char* obj, int value);
 
 struct Obj021e697c {
@@ -20,9 +20,9 @@ ARM int ClearFoundBitsForList_021e697c(struct Obj021e697c* obj, int p1, int unus
     for (i = 0; i < count; i++) {
         GameObject* c = bs->GetCombatantByIndex(local[i]);
         if (c != NULL) {
-            ClearSubstructByte0x56((unsigned char*)c);
+            ClearSubstructByte0x56_02049f3c((unsigned char*)c);
             {
-                void* work = GetActiveCombatWork();
+                void* work = GetActiveCombatWork_ov000_02160130();
                 int val = ((Object3D*)((unsigned char*)c))->GetTexturePaletteOffset();
                 ClearBitIfValueFound02167434((unsigned char*)work, val);
             }

@@ -13,8 +13,8 @@ struct Elem_0205d81c {
     short fbc;
     short fbe;
 };
-Elem_0205d81c* FindElementForFieldB0(Struct_0205d81c*);
-int CheckField0x9cSetWhenField0xd4Present(unsigned char*);
+Elem_0205d81c* FindElementForFieldB0_0205d8c4(Struct_0205d81c*);
+int CheckField0x9cSetWhenField0xd4Present_0204c7e0(unsigned char*);
 
 struct Container0205a3d0;
 void SetEntryFlag2ByKey0205a370(Container0205a3d0*, int);
@@ -43,9 +43,9 @@ extern "C" ARM void func_ov013_02186cac(void* obj) {
     if (*(void**)(o + 0x18) == 0) return;
     if (!(o[0x6bc] & 1)) return;
 
-    elem = FindElementForFieldB0((Struct_0205d81c*)(o + 0x38));
+    elem = FindElementForFieldB0_0205d8c4((Struct_0205d81c*)(o + 0x38));
     if (elem == 0) return;
-    if (!CheckField0x9cSetWhenField0xd4Present((unsigned char*)elem)) return;
+    if (!CheckField0x9cSetWhenField0xd4Present_0204c7e0((unsigned char*)elem)) return;
 
     x = elem->fac * 8;
     y = elem->fae * 8;

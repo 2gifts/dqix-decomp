@@ -10,7 +10,7 @@ struct IntState020d8654 {
 extern IntState020d8654 data_0214e4a0;
 
 // USA: func_020d8654
-ARM void PushInterruptDisableState(void) {
+ARM void PushInterruptDisableState_020d8654(void) {
     data_0214e4a0.field_4 <<= 1;
     unsigned int old = DisableSpecificInterrupts(4);
     data_0214e4a0.field_4 |= (old & 4) ? 1 : 0;

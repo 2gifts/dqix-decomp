@@ -2,7 +2,7 @@
 #include "Graphics/SpriteAffineTransform.h"
 
 // USA: func_0205b174
-ARM int GetBits10And11(int unused, struct B174Outer* obj) {
+ARM int GetBits10And11_0205b174(int unused, struct B174Outer* obj) {
     if (obj == 0) {
         return 0;
     }

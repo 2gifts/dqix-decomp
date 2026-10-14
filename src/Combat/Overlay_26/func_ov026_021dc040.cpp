@@ -26,15 +26,15 @@ struct FormationStats {
     unsigned short GetGroup() { return group; }
 };
 Object3D* GetField0x21c(S0204a438*);
-int ClassifyField0x81fe(char*);
-int TestBitAt0x34(unsigned char*, unsigned int);
+int ClassifyField0x81fe_ov000_0215fc60(char*);
+int TestBitAt0x34_020a35e0(unsigned char*, unsigned int);
 void SetVecYFromValue02033874(Obj02033874*, int);
 void SetByte0xbeShiftPrev(Bytes02033b88*, int);
-void SetField0x3b0Value(GameState*, int);
+void SetField0x3b0Value_020100c4(GameState*, int);
 void InitCombatantPosition_0216118c(void*, int);
 void RunFlaglearAndSetMode02167e6c_02167e6c(unsigned char*);
-void ClearCombatantSlot(GameState*, int);
-void ClearByte0x63d5(FieldBlock63d5_12050*);
+void ClearCombatantSlot_0200fd48(GameState*, int);
+void ClearByte0x63d5_02012050(FieldBlock63d5_12050*);
 extern "C" {
 int func_ov000_0215e9fc(BattleState*, short*, int, int);
 int func_ov000_02160f14(BattleWork*);
@@ -49,7 +49,7 @@ extern const char data_ov026_021dee57[];
 // USA: func_ov026_021dc040
 extern "C" ARM int func_ov026_021dc040(SafeAllocator* allocator, BattleWork* self, BattleState* battle, PartyState* party) {
     GameState* game = GameState::GetInstance();
-    S0204a438* camera = (S0204a438*)GetField0x3b0Value(game);
+    S0204a438* camera = (S0204a438*)GetField0x3b0Value_020100bc(game);
     if (!camera) return 1;
     Object3D* animation = GetField0x21c(camera);
     if (!animation) return 1;
@@ -60,13 +60,13 @@ extern "C" ARM int func_ov026_021dc040(SafeAllocator* allocator, BattleWork* sel
     if (model) {
         short members[4];
         int count = func_ov000_0215e9fc(battle, members, 4, 0);
-        if (ClassifyField0x81fe((char*)battle)) count = 1;
+        if (ClassifyField0x81fe_ov000_0215fc60((char*)battle)) count = 1;
         if (count > 0) {
             Vector3fix center = {};
             int groupCounts[2] = {};
             for (int index = 0; index < count; ++index) {
-                if (TestBitAt0x34((unsigned char*)party, (unsigned char)members[index])) {
-                    GameObject* member = GetCombatantWithFlag0x100(game, members[index]);
+                if (TestBitAt0x34_020a35e0((unsigned char*)party, (unsigned char)members[index])) {
+                    GameObject* member = GetCombatantWithFlag0x100_0200ff1c(game, members[index]);
                     if (member && member->obj3D_.pModel_) {
                         FormationStats* stats = (FormationStats*)member->baseStats_;
                         ++groupCounts[stats->GetGroup()];
@@ -91,8 +91,8 @@ extern "C" ARM int func_ov026_021dc040(SafeAllocator* allocator, BattleWork* sel
             Vector3fixMultiplyScalar(&center, (int)(4096.0f * (1.0f / (float)count)), &center);
             int offset = -center.x;
             for (int index = 0; index < count; ++index) {
-                if (TestBitAt0x34((unsigned char*)party, (unsigned char)members[index])) {
-                    GameObject* member = GetCombatantWithFlag0x100(game, members[index]);
+                if (TestBitAt0x34_020a35e0((unsigned char*)party, (unsigned char)members[index])) {
+                    GameObject* member = GetCombatantWithFlag0x100_0200ff1c(game, members[index]);
                     if (member) {
                         Vector3fix position = member->obj3D_.position_;
                         position.x += offset;
@@ -106,8 +106,8 @@ extern "C" ARM int func_ov026_021dc040(SafeAllocator* allocator, BattleWork* sel
     if (self->animationState == 0 && !animation->HasAnimationStopped()) return 0;
     if (self->animationState != 6) {
         for (int index = 0; index < 4; ++index) {
-            if (TestBitAt0x34((unsigned char*)party, (unsigned char)index)) {
-                GameObject* member = GetCombatantWithFlag0x100(game, index);
+            if (TestBitAt0x34_020a35e0((unsigned char*)party, (unsigned char)index)) {
+                GameObject* member = GetCombatantWithFlag0x100_0200ff1c(game, index);
                 if (member) {
                     member->obj3D_.RemoveAnimationPackageByID(3);
                     SetByte0xbeShiftPrev((Bytes02033b88*)member, 0);
@@ -115,15 +115,15 @@ extern "C" ARM int func_ov026_021dc040(SafeAllocator* allocator, BattleWork* sel
                 }
             }
         }
-        SetField0x3b0Value(game, func_ov000_02160f14(self));
+        SetField0x3b0Value_020100c4(game, func_ov000_02160f14(self));
         InitCombatantPosition_0216118c(self, 1);
         RunFlaglearAndSetMode02167e6c_02167e6c((unsigned char*)self);
         func_ov026_021daec8(battle, (BattleView*)func_ov000_02160f14(self), 1);
         func_ov000_021626a0(self, 0x26, 0);
         func_ov000_021626a0(self, 0x27, 1);
         allocator->Reset();
-        ClearCombatantSlot(game, 0xcf);
-        ClearByte0x63d5((FieldBlock63d5_12050*)game);
+        ClearCombatantSlot_0200fd48(game, 0xcf);
+        ClearByte0x63d5_02012050((FieldBlock63d5_12050*)game);
     }
     return 1;
 }

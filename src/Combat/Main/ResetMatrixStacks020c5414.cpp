@@ -1,15 +1,15 @@
 #include <globaldefs.h>
 
-int GetPositionVectorMtxStackLevel(int* out);
-int GetProjectionMtxStackLevel(int* out);
+int GetPositionVectorMtxStackLevel_020c5650(int* out);
+int GetProjectionMtxStackLevel_020c5680(int* out);
 
 // USA: func_020c5414  (semantic: ResetMatrixStacks020c5414)
 extern "C" ARM void func_020c5414(void) {
     int posLevel;
     int projLevel;
     *(volatile unsigned int*)0x4000600 |= 0x8000;
-    while (GetPositionVectorMtxStackLevel(&posLevel) != 0) {}
-    while (GetProjectionMtxStackLevel(&projLevel) != 0) {}
+    while (GetPositionVectorMtxStackLevel_020c5650(&posLevel) != 0) {}
+    while (GetProjectionMtxStackLevel_020c5680(&projLevel) != 0) {}
     *(volatile unsigned int*)0x4000440 = 3;
     *(volatile unsigned int*)0x4000454 = 0;
     *(volatile unsigned int*)0x4000440 = 0;

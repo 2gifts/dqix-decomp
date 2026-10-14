@@ -3,7 +3,7 @@
 #include "std_library_functions.h"
 
 extern "C" void* func_0202ae18(void);
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 
 struct SearchStruct0202c1a4;
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
@@ -24,7 +24,7 @@ struct LocalEvt021cc0cc {
 ARM void EnqueueEventTag43_021cc0cc(void) {
 	GameState* bs = GameState::GetInstance();
 	void* search = func_0202ae18();
-	void* p = GetData02100044();
+	void* p = GetData02100044_0202ae24();
 	GameObject* c = bs->GetProtagonist();
 	if (!c) return;
 

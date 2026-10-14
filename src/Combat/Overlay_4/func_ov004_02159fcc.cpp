@@ -26,7 +26,7 @@ extern "C" void func_ov011_021848a0(void*, int);
 int GetHalfwordEntryFromField150(Field150Holder02052df8*, int);
 extern "C" void func_ov004_02159650(void*);
 GlobalController* GetGlobalField0x1c020421a0();
-void* CallFunc020e52a0(void*, int);
+void* CallFunc020e52a0_020e5294(void*, int);
 extern "C" Obj021fbdf4* func_ov004_02157054(void*, int);
 void SetFieldThenTailCallOffset20_021fbdf4(Obj021fbdf4*, unsigned char);
 typedef void (*ActionSetter)(Obj021fbdf4*, int);
@@ -39,7 +39,7 @@ extern "C" ARM int func_ov004_02159fcc(void* obj) {
     int flag = func_ov004_02157128(obj);
     data_ov004_021707d8.battle->combatant = flag;
     func_0202ae18();
-    GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), flag);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), flag);
     if (!combatant) return 0;
     Container020dedd0* container = func_ov004_02156fd4(obj, 5);
     if (!container) return 0;
@@ -57,7 +57,7 @@ extern "C" ARM int func_ov004_02159fcc(void* obj) {
         if (selected && selected->marked) {
             func_ov004_02159650(obj);
             GlobalController* controller = GetGlobalField0x1c020421a0();
-            controller->selected = CallFunc020e52a0(data_ov004_021707d8.battle->controller, selected->value);
+            controller->selected = CallFunc020e52a0_020e5294(data_ov004_021707d8.battle->controller, selected->value);
             func_ov011_021848a0(obj, 0x23b6);
             return 0;
         }

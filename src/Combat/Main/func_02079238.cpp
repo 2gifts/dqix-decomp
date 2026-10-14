@@ -20,9 +20,9 @@ struct CandidateState02079238 { char unknown0[0x56c]; unsigned char inactive; };
 
 struct Position02079238 { int x, y, z; };
 
-int GetSignedByte0x1c8(void*);
+int GetSignedByte0x1c8_02039860(void*);
 extern "C" int func_020342ac(GameObject*);
-CandidateState02079238* GetFieldAt0x150(unsigned char*);
+CandidateState02079238* GetFieldAt0x150_02053c6c(unsigned char*);
 int HasHighBit14SetForField4Entry02034340(void*);
 extern "C" Position02079238 func_02034104(GameObject*);
 extern "C" void __clear(void* dst, int size);
@@ -38,13 +38,13 @@ extern "C" ARM short func_02079238(Object3D* reference, int maximumDistance) {
             if (i == 0) return -1;
             continue;
         }
-        if (GetSignedByte0x1c8(candidate) != -1) continue;
+        if (GetSignedByte0x1c8_02039860(candidate) != -1) continue;
         if (reference->GetField06() != candidate->obj3D_.GetField06()) continue;
         CombatantView02079238* view = (CombatantView02079238*)candidate;
         if (!func_020342ac(candidate)) continue;
         if (view->kind == 6) continue;
         if (candidate->obj3D_.GetField06() != reference->GetField06()) continue;
-        if (GetFieldAt0x150((unsigned char*)candidate)->inactive != 0) continue;
+        if (GetFieldAt0x150_02053c6c((unsigned char*)candidate)->inactive != 0) continue;
         if (view->flags->flags & 1) continue;
         if ((int)view->state > 0) continue;
         if (HasHighBit14SetForField4Entry02034340(candidate)) continue;

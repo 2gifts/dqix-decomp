@@ -15,7 +15,7 @@ struct Container020dedd0;
 struct Element020de650;
 struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0* c, int key);
 
-GameObject* GetCombatantChecked(GameState* battleStruct, int combatantId);
+GameObject* GetCombatantChecked_0200ff94(GameState* battleStruct, int combatantId);
 
 extern "C" int func_020dd4c4(void* id, void* node);
 extern "C" void func_020dd7ac(void* buf);
@@ -35,7 +35,7 @@ struct NodeBits020dedd0 {
 extern "C" ARM int func_ov003_021753a0(char* obj, int id, int arg2, int arg3) {
     int result = 1;
     GameState* battle = GameState::GetInstance();
-    GameObject* combatant = GetCombatantChecked(battle, id);
+    GameObject* combatant = GetCombatantChecked_0200ff94(battle, id);
     if (combatant == 0) return result;
 
     int key = *(short*)(obj + kRegion1000 + kRegion3a);

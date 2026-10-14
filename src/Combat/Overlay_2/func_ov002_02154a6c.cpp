@@ -2,14 +2,14 @@
 #include "World/Object3D.h"
 #include <globaldefs.h>
 
-GameObject *GetCombatantWithFlag0x100(GameState *gameState, int combatantId);
+GameObject *GetCombatantWithFlag0x100_0200ff1c(GameState *gameState, int combatantId);
 
 // USA: func_ov002_02154a6c
 extern "C" ARM int func_ov002_02154a6c(void *self, int idA, int idB) {
     GameState *gs = GameState::GetInstance();
-    GameObject *a = GetCombatantWithFlag0x100(gs, idA);
+    GameObject *a = GetCombatantWithFlag0x100_0200ff1c(gs, idA);
     if (a == NULL) return 0;
-    GameObject *b = GetCombatantWithFlag0x100(gs, idB);
+    GameObject *b = GetCombatantWithFlag0x100_0200ff1c(gs, idB);
     if (b == NULL) return 0;
 
     if (a->obj3D_.GetField06() == b->obj3D_.GetField06()) return 1;

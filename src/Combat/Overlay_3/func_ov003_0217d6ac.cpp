@@ -13,7 +13,7 @@ int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
 struct Obj_0205da38;
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 extern unsigned short data_02114e30;
-int TestFlag0SetAndFlag1Clear(unsigned short *obj, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short *obj, int mask);
 extern "C" int func_0205d97c(void *p);
 struct Entry_0205d6a0;
 void ResetEntryList0205d6a0(struct Entry_0205d6a0 *a, int flag);
@@ -26,7 +26,7 @@ struct TailList020469b4;
 struct TailNode020469b4;
 void AppendNodeToTail(struct TailList020469b4 *list, struct TailNode020469b4 *node);
 void InitAndResetHeader_0219e310(unsigned char *obj, int arg);
-void *GetField0x3f8Address(GameState *state);
+void *GetField0x3f8Address_0200fd0c(GameState *state);
 void InitStruct02070378(char *obj);
 
 struct State_0217d6ac;
@@ -111,9 +111,9 @@ extern "C" ARM void func_ov003_0217d6ac(State_0217d6ac *self) {
     sel = -1;
     if (IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)self->list, 0x14) == 1) {
         sel = GetActiveScaledSum0205d794((struct Struct_0205c570 *) self->list);
-    } else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601) != 0) {
+    } else if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x601) != 0) {
         sel = GetActiveScaledSum0205d794((struct Struct_0205c570 *) self->list);
-    } else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2) != 0) {
+    } else if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 2) != 0) {
         sel = -2;
     } else if (func_0205d97c(self->list) == 2) {
         sel = -2;
@@ -151,7 +151,7 @@ extern "C" ARM void func_ov003_0217d6ac(State_0217d6ac *self) {
     if (sel != 0) {
         unsigned char *header = *(unsigned char **) (res + 0x370c);
         InitAndResetHeader_0219e310(header, 0);
-        EventRecord_0217d6ac *record = (EventRecord_0217d6ac *) GetField0x3f8Address(gs);
+        EventRecord_0217d6ac *record = (EventRecord_0217d6ac *) GetField0x3f8Address_0200fd0c(gs);
         InitStruct02070378((char *) record);
         record->id         = self->ids[sel] + 0xc544;
         record->field_0x7  = 1;
@@ -162,7 +162,7 @@ extern "C" ARM void func_ov003_0217d6ac(State_0217d6ac *self) {
     } else {
         unsigned char *header = *(unsigned char **) (res + 0x370c);
         InitAndResetHeader_0219e310(header, 0);
-        EventRecord_0217d6ac *record = (EventRecord_0217d6ac *) GetField0x3f8Address(gs);
+        EventRecord_0217d6ac *record = (EventRecord_0217d6ac *) GetField0x3f8Address_0200fd0c(gs);
         InitStruct02070378((char *) record);
         record->id         = 0xc3bc;
         record->field_0x7  = 1;

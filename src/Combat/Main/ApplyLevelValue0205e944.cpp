@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void SetEntryByte(int index, int value);
+void SetEntryByte_020bbf34(int index, int value);
 extern float data_020e7dd4[];
 
 struct Struct0205e944 {
@@ -17,14 +17,14 @@ extern "C" ARM void func_0205e944(Struct0205e944* obj, int level) {
     f = (float)level;
     f = f * data_020e7dd4[obj->fcc - 1];
     value = (int)f;
-    SetEntryByte(0xa, value);
-    SetEntryByte(0xb, value);
-    SetEntryByte(0xc, value);
-    SetEntryByte(0xd, value);
-    SetEntryByte(0xe, value);
-    SetEntryByte(0xf, value);
-    SetEntryByte(0xa, value);
-    SetEntryByte(0xc, value);
-    SetEntryByte(0xd, value);
-    SetEntryByte(0x10, value);
+    SetEntryByte_020bbf34(0xa, value);
+    SetEntryByte_020bbf34(0xb, value);
+    SetEntryByte_020bbf34(0xc, value);
+    SetEntryByte_020bbf34(0xd, value);
+    SetEntryByte_020bbf34(0xe, value);
+    SetEntryByte_020bbf34(0xf, value);
+    SetEntryByte_020bbf34(0xa, value);
+    SetEntryByte_020bbf34(0xc, value);
+    SetEntryByte_020bbf34(0xd, value);
+    SetEntryByte_020bbf34(0x10, value);
 }

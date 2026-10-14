@@ -14,20 +14,20 @@ void CopyVec3ToField0x44(struct Target02059f38* dst, struct Vec3_02059f38* src);
 struct BitFlags02037170;
 
 void InitStruct02059cc8(unsigned char* obj);
-void ClearCombatantSlot(GameState* battleStruct, int id);
+void ClearCombatantSlot_0200fd48(GameState* battleStruct, int id);
 
 struct ListNode02057854;
 int CheckListStableAndField8LtField402057854(struct ListNode02057854* node);
 
-int ForwardField4To02057334(int* obj);
+int ForwardField4To02057334_02055774(int* obj);
 
 struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 
 struct PointerField32c_ffc0;
-unsigned char* GetPointerAt0x32c(PointerField32c_ffc0*);
+unsigned char* GetPointerAt0x32c_0200ffc0(PointerField32c_ffc0*);
 struct PointerField330_ffd0;
-unsigned char* GetPointerAt0x330(PointerField330_ffd0*);
+unsigned char* GetPointerAt0x330_0200ffd0(PointerField330_ffd0*);
 
 extern int data_02108760;
 
@@ -93,12 +93,12 @@ extern "C" ARM void func_02059cfc(unsigned char* p, int dt, int id) {
 
         int r5 = 0;
         if (c->flags.bit4) {
-            unsigned char* q = GetPointerAt0x32c((PointerField32c_ffc0*)bs);
+            unsigned char* q = GetPointerAt0x32c_0200ffc0((PointerField32c_ffc0*)bs);
             if (q != 0) {
                 r5 = *(int*)(q + 0x130);
             }
         } else if (c->flags.bit5) {
-            unsigned char* q = GetPointerAt0x330((PointerField330_ffd0*)bs);
+            unsigned char* q = GetPointerAt0x330_0200ffd0((PointerField330_ffd0*)bs);
             if (q != 0) {
                 r5 = *(int*)(q + 0x130);
             }
@@ -126,7 +126,7 @@ extern "C" ARM void func_02059cfc(unsigned char* p, int dt, int id) {
 
         if (c->field19 & 1) {
             if (((Object3D*)((struct BitFlags02037170*)c))->HasAnimationStopped()) {
-                ClearCombatantSlot(bs, id);
+                ClearCombatantSlot_0200fd48(bs, id);
                 InitStruct02059cc8(p);
             }
         }
@@ -134,7 +134,7 @@ extern "C" ARM void func_02059cfc(unsigned char* p, int dt, int id) {
         if (c->timerB6 > 0) {
             c->timerB6 -= dt;
             if (c->timerB6 <= 0) {
-                ClearCombatantSlot(bs, id);
+                ClearCombatantSlot_0200fd48(bs, id);
                 InitStruct02059cc8(p);
             }
         }
@@ -143,10 +143,10 @@ extern "C" ARM void func_02059cfc(unsigned char* p, int dt, int id) {
             return;
         }
         if (CheckListStableAndField8LtField402057854(c->listNode) == 1) {
-            ClearCombatantSlot(bs, id);
+            ClearCombatantSlot_0200fd48(bs, id);
             InitStruct02059cc8(p);
         } else {
-            ForwardField4To02057334((int*)p);
+            ForwardField4To02057334_02055774((int*)p);
         }
     }
 }

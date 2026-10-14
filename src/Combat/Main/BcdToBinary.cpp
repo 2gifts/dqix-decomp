@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_020cf7e4
-ARM int BcdToBinary(unsigned int packed) {
+ARM int BcdToBinary_020cf7e4(unsigned int packed) {
     int result = 0;
     int i;
     int shift;

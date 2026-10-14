@@ -12,9 +12,9 @@ struct Ent021e110c {
     unsigned char* obj;
 };
 
-int GetSubstructByte0x1c(unsigned char*);
-int GetSubstructByte0x1d(unsigned char*);
-int GetSubstructByte0x1e(unsigned char*);
+int GetSubstructByte0x1c_020493a4(unsigned char*);
+int GetSubstructByte0x1d_020493c8(unsigned char*);
+int GetSubstructByte0x1e_020493ec(unsigned char*);
 extern "C" void func_ov025_021e12f8(unsigned char* map, int id, int val, int extra, int a, int b);
 
 static inline void SetCell_021e110c(unsigned char* map, unsigned int id, unsigned char val) {
@@ -31,9 +31,9 @@ extern "C" ARM void func_ov025_021e110c(unsigned char* map, Ent021e110c* ents, i
         }
     }
     for (int j = 0; j < n; j++) {
-        unsigned int id = GetSubstructByte0x1d(ents[j].obj);
+        unsigned int id = GetSubstructByte0x1d_020493c8(ents[j].obj);
         if (id >= 0x51) {
-            id = GetSubstructByte0x1c(ents[j].obj);
+            id = GetSubstructByte0x1c_020493a4(ents[j].obj);
         }
         if (id < 0x51) {
             SetCell_021e110c(map, id, ents[j].val);
@@ -46,7 +46,7 @@ extern "C" ARM void func_ov025_021e110c(unsigned char* map, Ent021e110c* ents, i
                 func_ov025_021e12f8(map, id, ents[j].val, extra & 0xff, 0, 0);
             }
         }
-        unsigned int id2 = GetSubstructByte0x1e(ents[j].obj);
+        unsigned int id2 = GetSubstructByte0x1e_020493ec(ents[j].obj);
         if (id2 < 0x51) {
             SetCell_021e110c(map, id2, ents[j].val);
         }

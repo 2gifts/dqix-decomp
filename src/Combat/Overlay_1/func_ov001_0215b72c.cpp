@@ -9,7 +9,7 @@ extern "C" int func_ov017_021d60f4(ScriptArgument*);
 int AbsPlus159IfNegative0215ad2c(int);
 extern "C" int func_ov001_0215ad3c(const char*, char*, char*);
 unsigned int LoadResourceIntoGlobalBuffer_0215a750(const char*, void**);
-void RegisterCombatantSlot(GameState*, int, GameObject*);
+void RegisterCombatantSlot_0200fd38(GameState*, int, GameObject*);
 extern SafeAllocator* data_ov001_021658b8[];
 extern const char data_ov001_02165745[];
 extern const char data_ov001_0216574d[];
@@ -79,7 +79,7 @@ extern "C" ARM int func_ov001_0215b72c(ScriptArgument* arguments, int count) {
         return 0;
     }
     if (locked) BackgroundLoader::RemoveLockGlobal();
-    RegisterCombatantSlot(game, slot, (GameObject*)object);
+    RegisterCombatantSlot_0200fd38(game, slot, (GameObject*)object);
     object->SetScale(266, 266, 266);
     return 1;
 }

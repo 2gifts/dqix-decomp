@@ -12,7 +12,7 @@ struct Wf11Outer {
 };
 
 // USA: func_020e1e24
-ARM void ComputeElementPositions(struct Wf11Outer* obj, unsigned short* outX, unsigned short* outY, int index) {
+ARM void ComputeElementPositions_020e1e24(struct Wf11Outer* obj, unsigned short* outX, unsigned short* outY, int index) {
     *outX = obj->sub->fieldX + 0xc;
     *outY = obj->sub->fieldY + 8 + (index << 4);
 }

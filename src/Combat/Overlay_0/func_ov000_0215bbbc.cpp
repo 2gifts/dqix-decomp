@@ -11,8 +11,8 @@ struct Out { char p[0x20]; int tail; };
 Node* GetNodeAtIndex02160094(List02160094*,int);
 void* GetWorkArrayEntry0215e9d8(void*);
 void InitStruct02160030(void*);
-void* GetTableEntry0x8e00Bound0x48(void*);
-void* GetTableEntry0x8e01Bound0x88(void*);
+void* GetTableEntry0x8e00Bound0x48_ov000_0215e918(void*);
+void* GetTableEntry0x8e01Bound0x88_ov000_0215e938(void*);
 void ResetStruct02157cdc(void*);
 void AppendToChainAndIncCount0215ffc4(void*,void*,int);
 void AddEntryAndIncrementCount0215a88c(void*,void*,int);
@@ -37,9 +37,9 @@ extern "C" ARM void func_ov000_0215bbbc(unsigned char* self,List02160094* list) 
 #define ALLOCATE() \
         work=(Work*)GetWorkArrayEntry0215e9d8(self); \
         if(!work) continue; InitStruct02160030(work); \
-        copy=(Node*)GetTableEntry0x8e00Bound0x48(self); \
+        copy=(Node*)GetTableEntry0x8e00Bound0x48_ov000_0215e918(self); \
         if(!copy) continue; memset(copy,0,0x30); copy->sentinel=-1; copy->tail=0; \
-        state=(State*)GetTableEntry0x8e01Bound0x88(self); \
+        state=(State*)GetTableEntry0x8e01Bound0x88_ov000_0215e938(self); \
         if(!state) continue; ResetStruct02157cdc(state); \
         out=func_ov000_0215e958(self); \
         if(!out) continue; memset(out,0,0x20); out->tail=0;

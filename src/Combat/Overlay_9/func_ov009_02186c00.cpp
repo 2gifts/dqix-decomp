@@ -16,8 +16,8 @@ extern "C" void func_ov009_021867bc(unsigned char*, int);
 #else
 void SetStatValue021855dc(unsigned char* self, int state);
 #endif
-void CallFunc020a0db8AtField0x16c(char* camera, int position, int duration);
-void CallFunc020a0db8AtField0x194AndClearFlag2(char* camera, int target, int duration);
+void CallFunc020a0db8AtField0x16c_0202ee38(char* camera, int position, int duration);
+void CallFunc020a0db8AtField0x194AndClearFlag2_0202ee58(char* camera, int target, int duration);
 
 #if defined(jpn)
 #define data_ov009_0218a9f8 data_ov009_0218b9d4
@@ -46,8 +46,8 @@ extern "C" ARM void func_ov009_02186c00(CharacterCreationUI* self)
         func_ov009_02188e70(self, self->skinColor[self->sex]);
         Vector3fix position = data_ov009_0218a9f8;
         Vector3fix target = data_ov009_0218aa04;
-        CallFunc020a0db8AtField0x16c((char*)self->camera, (int)&position, 0x1e000);
-        CallFunc020a0db8AtField0x194AndClearFlag2((char*)self->camera, (int)&target, 0x1e000);
+        CallFunc020a0db8AtField0x16c_0202ee38((char*)self->camera, (int)&position, 0x1e000);
+        CallFunc020a0db8AtField0x194AndClearFlag2_0202ee58((char*)self->camera, (int)&target, 0x1e000);
         self->targetAngle = 0x1eb;
         self->flags = (self->flags | 8) & ~1;
         self->step++;
@@ -88,8 +88,8 @@ extern "C" ARM void func_ov009_02186c00(CharacterCreationUI* self)
         {
             Vector3fix position = data_ov009_0218aa10;
             Vector3fix target = data_ov009_0218aa1c;
-            CallFunc020a0db8AtField0x16c((char*)self->camera, (int)&position, 0x1e000);
-            CallFunc020a0db8AtField0x194AndClearFlag2((char*)self->camera, (int)&target, 0x1e000);
+            CallFunc020a0db8AtField0x16c_0202ee38((char*)self->camera, (int)&position, 0x1e000);
+            CallFunc020a0db8AtField0x194AndClearFlag2_0202ee58((char*)self->camera, (int)&target, 0x1e000);
         }
     }
 }

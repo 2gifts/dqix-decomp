@@ -17,9 +17,8 @@ enum { kRegion89c = 0x89c };
 enum { kRegion36 = 0x36 };
 #endif
 
-
 struct Obj2081;
-void SetElementFlag0x20(struct Obj2081* obj, int key);
+void SetElementFlag0x20_02080c04(struct Obj2081* obj, int key);
 extern "C" void func_020813ec(void* obj, int key);
 
 struct Obj0208203c;
@@ -44,6 +43,6 @@ extern "C" ARM void func_ov003_02176468(unsigned char* self) {
     if (*(void**)self == 0) {
         return;
     }
-    SetElementFlag0x20(*(struct Obj2081**)(self + kRegion89c), *(short*)(self + kRegionffe));
+    SetElementFlag0x20_02080c04(*(struct Obj2081**)(self + kRegion89c), *(short*)(self + kRegionffe));
     ResetAndReposition020e280c((struct Obj020e280c*)(*(void**)self), (void*)-1);
 }

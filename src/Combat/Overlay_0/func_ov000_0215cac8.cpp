@@ -43,8 +43,8 @@ struct Battle {
 };
 
 ActionNode* GetWorkArrayEntry0215e9d8(void* self);
-ActionEntry* GetTableEntry0x8e00Bound0x48(void* self);
-TargetNode* GetTableEntry0x8e01Bound0x88(void* self);
+ActionEntry* GetTableEntry0x8e00Bound0x48_ov000_0215e918(void* self);
+TargetNode* GetTableEntry0x8e01Bound0x88_ov000_0215e938(void* self);
 void InitStruct02160030(void* obj);
 void ResetStruct02157cdc(void* obj);
 extern "C" void* memset(void* dst, int c, unsigned int n);
@@ -73,7 +73,7 @@ static inline short CurrMP(GameObject* c) { SDK_NULL_ASSERT(c); return c->curren
 extern "C" ARM void func_ov000_0215cac8(Battle* self, short* ids, int count, short action,
                                         unsigned short* values, unsigned char* valueCounts) {
     ActionNode* work = GetWorkArrayEntry0215e9d8(self);
-    ActionEntry* entry = GetTableEntry0x8e00Bound0x48(self);
+    ActionEntry* entry = GetTableEntry0x8e00Bound0x48_ov000_0215e918(self);
     if (work == 0 || entry == 0) {
         return;
     }
@@ -82,7 +82,7 @@ extern "C" ARM void func_ov000_0215cac8(Battle* self, short* ids, int count, sho
     entry->f1c = -1;
     entry->f30 = 0;
     work->action = action;
-    SkillData* sk = SearchBothTables02079e2c((char*)GetData02108e10(), (short)work->action);
+    SkillData* sk = SearchBothTables02079e2c((char*)GetData02108e10_020797dc(), (short)work->action);
     if (sk != 0) {
         work->category = sk->category;
     }
@@ -95,7 +95,7 @@ extern "C" ARM void func_ov000_0215cac8(Battle* self, short* ids, int count, sho
     AppendNode02160068((Obj02160068*)work, (Node02160068*)entry);
 
     for (int i = 0; i < count; i++) {
-        TargetNode* tn = GetTableEntry0x8e01Bound0x88(self);
+        TargetNode* tn = GetTableEntry0x8e01Bound0x88_ov000_0215e938(self);
         if (tn == 0) {
             continue;
         }

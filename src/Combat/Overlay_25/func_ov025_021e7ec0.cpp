@@ -12,9 +12,9 @@ struct Param021e7ec0 {
 };
 
 int DispatchByIndex021820bc(void* obj, int unused, int index, int arg);
-void* GetActiveCombatWork(void);
+void* GetActiveCombatWork_ov000_02160130(void);
 extern "C" GameObject* _Z26FindNodeByShortKey02162d88Pvs(void* obj, unsigned short key);
-GameObject* GetCombatantWithFlag0x400(GameState* battleStruct, int combatantId);
+GameObject* GetCombatantWithFlag0x400_0200fea4(GameState* battleStruct, int combatantId);
 void CopyObjectFields02048588(unsigned char* self, unsigned char* dst);
 extern "C" void func_ov000_021677fc(void* work);
 
@@ -23,14 +23,14 @@ extern "C" ARM int func_ov025_021e7ec0(struct Param021e7ec0* p, int unused, int 
     GameState* gs = GameState::GetInstance();
     int ids[8];
     int count = DispatchByIndex021820bc(obj, unused, p->index, (int)&ids[0]);
-    void* work = GetActiveCombatWork();
+    void* work = GetActiveCombatWork_ov000_02160130();
     GameObject* source = _Z26FindNodeByShortKey02162d88Pvs(work, p->key);
     if (source == NULL) return 1;
     if (source->obj3D_.pModel_ == NULL) return 1;
     NSBXXTex* tex = source->obj3D_.pModel_->GetTEX0();
     if (tex == NULL) return 1;
     for (int i = 0; i < count; i++) {
-        GameObject* c = GetCombatantWithFlag0x400(gs, ids[i]);
+        GameObject* c = GetCombatantWithFlag0x400_0200fea4(gs, ids[i]);
         if (c) {
             CopyObjectFields02048588((unsigned char*)source, (unsigned char*)c);
             unsigned int offset = c->obj3D_.GetTexturePaletteOffset();

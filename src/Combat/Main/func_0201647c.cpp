@@ -23,9 +23,9 @@ extern "C" void* func_0205ec34();
 extern "C" int* func_0202ae18();
 extern "C" void* func_0208e0a8();
 int IsMatchingName0208e824(void*, char*);
-int TestBitInByteArray(int, unsigned char*, int);
-int CheckField0NonZero(int*);
-ListNode* FindNodeById(void*, int, int);
+int TestBitInByteArray_0206dfb0(int, unsigned char*, int);
+int CheckField0NonZero_0202b7d8(int*);
+ListNode* FindNodeById_0201e844(void*, int, int);
 void ZeroInit020de848(void*);
 extern "C" int func_020de9a4(void*, SafeAllocator*, void*, unsigned int, short*, unsigned short);
 extern "C" void func_02013b70(Zone3D*, SafeAllocator*);
@@ -66,9 +66,9 @@ extern "C" ARM void func_0201647c(Zone3D* zone) {
             entry->secondPass = 0;
             if (container->containerType == 4) entry->secondPass = 1;
             if ((container->containerType == 0 &&
-                 TestBitInByteArray((int)save, save + 0x8c, container->uniqueID + 0x212)) ||
+                 TestBitInByteArray_0206dfb0((int)save, save + 0x8c, container->uniqueID + 0x212)) ||
                 (container->containerType == 4 &&
-                 TestBitInByteArray((int)save, save + 0x8c, container->uniqueID + 0x79e))) {
+                 TestBitInByteArray_0206dfb0((int)save, save + 0x8c, container->uniqueID + 0x79e))) {
                 entry->active = 8;
                 entry->angleX = 0x4000;
                 container->lootType = 0;
@@ -76,11 +76,11 @@ extern "C" ARM void func_0201647c(Zone3D* zone) {
                 entry->active = 1;
                 entry->angleX = 0x647a;
             }
-            if (CheckField0NonZero(flags) && container->containerType == 4)
+            if (CheckField0NonZero_0202b7d8(flags) && container->containerType == 4)
                 entry->special = 1;
             zone->numChests_++;
         } else if (container->containerType == 3) {
-            ListNode* node = FindNodeById(&zone->substruct_6c_, 5, (unsigned short)container->unk_6);
+            ListNode* node = FindNodeById_0201e844(&zone->substruct_6c_, 5, (unsigned short)container->unk_6);
             if (node) *(unsigned short*)((char*)node + 0x30) = container->uniqueID;
         }
     }

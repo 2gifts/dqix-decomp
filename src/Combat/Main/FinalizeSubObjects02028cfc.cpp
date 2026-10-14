@@ -4,7 +4,7 @@ struct InitStruct;
 struct ResetObject0209af34Struct;
 struct ZeroWordAndByte0206ee70Struct;
 
-ARM void InitializeStruct(struct InitStruct* s);
+ARM void InitializeStruct_020280b0(struct InitStruct* s);
 ARM void ClearBuffer0209bc84(void* obj);
 ARM void ResetObject0209af34(struct ResetObject0209af34Struct* obj);
 ARM void ZeroWordAndByte0206ee70(struct ZeroWordAndByte0206ee70Struct* s);
@@ -27,9 +27,9 @@ ARM void* FinalizeSubObjects02028cfc(void* obj) {
     ClearBuffer0209bc84((char*)obj + 0x60);
 #endif
 #if defined(jpn)
-    InitializeStruct((struct InitStruct*)((char*)obj + 0x14));
+    InitializeStruct_020280b0((struct InitStruct*)((char*)obj + 0x14));
 #else
-    InitializeStruct((struct InitStruct*)((char*)obj + 0x18));
+    InitializeStruct_020280b0((struct InitStruct*)((char*)obj + 0x18));
 #endif
     return obj;
 }

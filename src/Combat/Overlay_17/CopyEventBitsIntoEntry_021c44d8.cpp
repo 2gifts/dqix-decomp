@@ -3,7 +3,7 @@
 
 struct SearchStruct0202c1a4;
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
-GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* battleStruct, int combatantId);
 struct Field150Holder02052e2c;
 short* GetField150Ptr0x488_02052e2c(struct Field150Holder02052e2c* obj);
 
@@ -43,7 +43,7 @@ extern "C" ARM void func_ov017_021c44d8(int unused0, struct LocalEvt021c44d8* ev
     signed char cur2 = GetSearchStructCurrentArrEntry(search);
     if (key == cur2) return;
 
-    GameObject* c = GetCombatantWithFlag0x100(battleStruct, key);
+    GameObject* c = GetCombatantWithFlag0x100_0200ff1c(battleStruct, key);
     if (!c) return;
 
     struct Entry150_021c44d8* entry = (struct Entry150_021c44d8*)GetField150Ptr0x488_02052e2c((struct Field150Holder02052e2c*)c);

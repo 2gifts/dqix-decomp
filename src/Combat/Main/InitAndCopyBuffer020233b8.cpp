@@ -4,7 +4,7 @@
 #include "System/Cache.h"
 
 int GetGlobalField0x1c020421a0(void);
-void DelayThenSyncBit0(void);
+void DelayThenSyncBit0_020c9820(void);
 extern "C" void func_02023218(void* arg0, void* buf, int flag);
 extern "C" int LoadToSubObjVRAM(void* buf, int a1, int a2);
 
@@ -26,7 +26,7 @@ ARM int InitAndCopyBuffer020233b8(void* arg0, int flag1)
     func_02023218(arg0, buf, 0);
     if (flag1 != 0)
     {
-        DelayThenSyncBit0();
+        DelayThenSyncBit0_020c9820();
     }
 
     CleanInvalidateCacheRange(buf, 0x4c0);

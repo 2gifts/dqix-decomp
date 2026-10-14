@@ -14,7 +14,7 @@ enum { kRegion7b0 = 0x7b0 };
 #include "Memory/SafeAllocator.h"
 
 void* GetDataPtr02114e04_020d6c00(void);
-void OrBitsIntoField0(unsigned int* p, unsigned int mask);
+void OrBitsIntoField0_020466e4(unsigned int* p, unsigned int mask);
 
 extern "C" void func_ov023_021dc9e8(void* a, void* b, int key, void* c, int flags);
 extern "C" void func_ov023_021dc134(void* a, int key, int flag);
@@ -22,7 +22,7 @@ extern "C" void func_ov023_021dbfd0(void* a, void* b);
 
 // USA: func_ov003_021748c4  (semantic: InitAllocatorAndDispatch_021748c4)
 extern "C" ARM void func_ov003_021748c4(unsigned char* self) {
-    OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 1);
+    OrBitsIntoField0_020466e4((unsigned int*)GetDataPtr02114e04_020d6c00(), 1);
     unsigned char* field4 = *(unsigned char**)(self + 0x4);
     unsigned short flags = *(unsigned short*)(self + kRegion1046);
     if (flags & 0x800) {

@@ -39,18 +39,18 @@ struct Triple021f2e6c { int w[3]; };
 struct Bufs021f2e6c { char* a; char* b; int c; };
 struct Blk021f2e6c { int w[0x15]; };
 
-Table021f2e6c* GetGlobal02109418(void);
+Table021f2e6c* GetGlobal02109418_02094d6c(void);
 unsigned char* GetGlobalField0x1c020421a0(void);
 void InitCombatEntry_021d8b6c(void* p);
 extern "C" void func_ov023_021d8af8(void* p);
-void CopyShortTriple0x8e4a(void* obj, short* a, short* b, short* c);
+void CopyShortTriple0x8e4a_ov000_0215fa84(void* obj, short* a, short* b, short* c);
 struct FindEntryById02096134Table;
 void* FindEntryById02096134(FindEntryById02096134Table*, int);
 extern "C" void func_02046380(unsigned char* st);
 struct TableA68;
-char* FindEntryByKey(TableA68*, int);
+char* FindEntryByKey_02072a68(TableA68*, int);
 void Clear12Bytes020e46c4(void* p);
-unsigned char* GetCombatantWithFlag0x400(GameState* gs, int id);
+unsigned char* GetCombatantWithFlag0x400_0200fea4(GameState* gs, int id);
 extern "C" Triple021f2e6c func_ov023_021ed804(Triple021f2e6c t, void* p);
 extern "C" void _Z26SetWords_021edf38_021edf38PvP13Words021edf38(Triple021f2e6c* dst, const Triple021f2e6c& src);
 extern "C" void __clear(void* dst, int n);
@@ -59,7 +59,7 @@ void ResetAndDispatchActorContext0209c6d8(void* actor, short arg);
 #if !defined(jpn)
 extern "C" void func_0204500c(void* obj, char* buffer, int a, int b);
 #endif
-void SetShortFields0x8e4aTo0x8e4e(void* obj, int a, int b, int c);
+void SetShortFields0x8e4aTo0x8e4e_ov000_0215fa70(void* obj, int a, int b, int c);
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c540(void* p);
 int AreAllListedCombatantsFlagged_021ed92c(void);
@@ -69,7 +69,7 @@ struct Buffer020d784c;
 void InitStruct020d784c(Buffer020d784c*);
 extern "C" int func_ov023_021f4fc8(void);
 struct StreamHeader;
-void RegisterCallbackObjectAndRunScript(void*, void*, StreamHeader*, int, unsigned char);
+void RegisterCallbackObjectAndRunScript_020d7870(void*, void*, StreamHeader*, int, unsigned char);
 struct Pair020deb08;
 short GetMaxOfHalfwords0And4(Pair020deb08*);
 void ZeroInit020de868(void* p);
@@ -85,11 +85,11 @@ void SetIntAt0x64_0209fe10(IntField0x64_0209fe10*, int);
 struct TaskState0209fe18;
 void PollOv017Task0209fe18(TaskState0209fe18*);
 struct List794c;
-char* FindValueByHalfwordKey(List794c*, int);
+char* FindValueByHalfwordKey_020d794c(List794c*, int);
 struct Fields64_021f3a8c;
 int AreFields64And68AllOnes_021f3a8c(Fields64_021f3a8c*);
 struct StoreStruct;
-void StoreInArray0x8b0(StoreStruct*, int, int);
+void StoreInArray0x8b0_020465c0(StoreStruct*, int, int);
 extern "C" unsigned char* _Z26FindNodeByShortKey02162d88Pvs(void* self, unsigned short key);
 void ResetNameState02048614(unsigned char* obj);
 extern "C" void func_02049c88(unsigned char* obj, int v);
@@ -99,15 +99,15 @@ void SetupFieldsFromParam02048850(Obj02048850*, Param02048850*);
 void CopyObjectFields02048588(unsigned char* src, unsigned char* dst);
 struct Bytes02033b88;
 int SetByte0xbeShiftPrev(Bytes02033b88*, int);
-void SetSubstructByte0x56(unsigned char* obj);
+void SetSubstructByte0x56_02049f28(unsigned char* obj);
 extern "C" void* func_ov000_02160f14(void* self);
 extern "C" void func_ov000_0216d370(void* cam, int a, int b, int c);
 void SetFlagOrState0216d530(void* cam, int v);
-void SetFields0x10To0x18(unsigned char*, int, int, int);
+void SetFields0x10To0x18_0202e5c8(unsigned char*, int, int, int);
 extern "C" void func_0202e5d8(void* cam, int a, int b, int c);
 extern "C" void func_ov000_02163b90(void* self, int v);
-void ClearSubstructByte0x56(unsigned char* obj);
-Blk021f2e6c* GetPtrField0x4(void* cam);
+void ClearSubstructByte0x56_02049f3c(unsigned char* obj);
+Blk021f2e6c* GetPtrField0x4_0202ed64(void* cam);
 extern "C" void func_ov000_0216d2d0(void* cam);
 struct Dst0202ed0c;
 struct Src0202ed0c;
@@ -144,7 +144,7 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
     unsigned char* st;
     int* g = _ZZ17GetGlobal021ffefcvE1s;
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
-    Table021f2e6c* tbl = GetGlobal02109418();
+    Table021f2e6c* tbl = GetGlobal02109418_02094d6c();
     st = GetGlobalField0x1c020421a0();
     Entry021f2e6c* found_entries;
     int state = g[0];
@@ -163,7 +163,7 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
             short kind = 0;
             short count = 0;
             short target = 0;
-            CopyShortTriple0x8e4a(*(void**)(self + regionalOffset5), &kind, &target, &count);
+            CopyShortTriple0x8e4a_ov000_0215fa84(*(void**)(self + regionalOffset5), &kind, &target, &count);
             void* entry = FindEntryById02096134((FindEntryById02096134Table*)tbl, *(short*)(*(char**)(self + regionalOffset5) + 0x8e4a));
             if (count != 0 && entry != 0) {
                 func_02046380(st);
@@ -181,12 +181,12 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
                 if (kind == 0x12) {
                     key = 0x2a;
                 }
-                char* msg = FindEntryByKey((TableA68*)(self + 0x5904), key);
+                char* msg = FindEntryByKey_02072a68((TableA68*)(self + 0x5904), key);
                 Triple021f2e6c words;
                 Clear12Bytes020e46c4(&words);
                 GameState* gs = GameState::GetInstance();
                 for (int i = 0xc0; i <= 0xc7; i++) {
-                    unsigned char* c = GetCombatantWithFlag0x400(gs, i);
+                    unsigned char* c = GetCombatantWithFlag0x400_0200fea4(gs, i);
                     if (c != 0) {
                         void* p = *(void**)(c + 0x144);
                         if (target == *(short*)((char*)p + 8)) {
@@ -217,7 +217,7 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
 
                 st[regionalOffset6] = 0;
                 *(int*)(st + regionalOffset7) = 1;
-                SetShortFields0x8e4aTo0x8e4e(*(void**)(self + regionalOffset5), kind, 0, 0);
+                SetShortFields0x8e4aTo0x8e4e_ov000_0215fa70(*(void**)(self + regionalOffset5), kind, 0, 0);
                 g[0] = 10;
                 return *(int*)(self + regionalOffset8);
             }
@@ -246,7 +246,7 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
         InitStruct020d784c((Buffer020d784c*)(*(IdList021f2e6c**)(self + regionalOffset2)));
         *(SafeAllocator**)(self + regionalOffset9) = (SafeAllocator*)((SafeAllocator*)(self + 0x30))->Allocate(0x14);
         (*(SafeAllocator**)(self + regionalOffset9))->CreateTypeA(((SafeAllocator*)(self + 0x30))->Allocate(0xf000), 0xf000);
-        FontBankLoader* h = GetGlobal02109400();
+        FontBankLoader* h = GetGlobal02109400_02094a00();
         BlankFunction02094b40(h);
         BlankFunction02094b30(h, 0x210, 1);
         g[0] = 1;
@@ -279,14 +279,14 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
                     list->ids[list->count++] = id;
                 }
             }
-            RegisterCallbackObjectAndRunScript(*(void**)(self + regionalOffset2), self + 0x30, (StreamHeader*)data, length, 0);
+            RegisterCallbackObjectAndRunScript_020d7870(*(void**)(self + regionalOffset2), self + 0x30, (StreamHeader*)data, length, 0);
             loader->RemoveTask(g[2]);
             g[2] = -1;
             g[0] = 4;
             *(short*)(self + regionalOffset3) = 1;
         }
     } else if (state == 1) {
-        if (AlwaysTrue02094b4c(GetGlobal02109400()) != 0) {
+        if (AlwaysTrue02094b4c(GetGlobal02109400_02094a00()) != 0) {
             char* heap;
 #if defined(jpn)
             char* sub = self + 0x3ec;
@@ -380,7 +380,7 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
         int key = (*(Mgr021f2e6c**)(self + regionalOffset1))->key6c;
         if (key > 0) {
             if (*(short*)(self + regionalOffset3) == 2) {
-                msg = FindValueByHalfwordKey((List794c*)(*(IdList021f2e6c**)(self + regionalOffset2)), (short)key);
+                msg = FindValueByHalfwordKey_020d794c((List794c*)(*(IdList021f2e6c**)(self + regionalOffset2)), (short)key);
             } else {
                 g[0] = 11;
                 return *(int*)(self + regionalOffset8);
@@ -396,12 +396,12 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
             if (msg != 0) {
                 func_02046380(st);
                 for (int i = 0; i < 4; i++) {
-                    StoreInArray0x8b0((StoreStruct*)st, i, (*(Mgr021f2e6c**)(self + regionalOffset1))->arr70[i]);
+                    StoreInArray0x8b0_020465c0((StoreStruct*)st, i, (*(Mgr021f2e6c**)(self + regionalOffset1))->arr70[i]);
                 }
 #if defined(jpn)
-                func_0204500c(st, FindValueByHalfwordKey((List794c*)(*(IdList021f2e6c**)(self + regionalOffset2)), (short)(*(Mgr021f2e6c**)(self + regionalOffset1))->key6c), 1);
+                func_0204500c(st, FindValueByHalfwordKey_020d794c((List794c*)(*(IdList021f2e6c**)(self + regionalOffset2)), (short)(*(Mgr021f2e6c**)(self + regionalOffset1))->key6c), 1);
 #else
-                func_0204500c(st, FindValueByHalfwordKey((List794c*)(*(IdList021f2e6c**)(self + regionalOffset2)), (short)(*(Mgr021f2e6c**)(self + regionalOffset1))->key6c), 1, 0xe3);
+                func_0204500c(st, FindValueByHalfwordKey_020d794c((List794c*)(*(IdList021f2e6c**)(self + regionalOffset2)), (short)(*(Mgr021f2e6c**)(self + regionalOffset1))->key6c), 1, 0xe3);
 #endif
 
                 st[regionalOffset6] = 0;
@@ -413,13 +413,13 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
                         GameState* gs = GameState::GetInstance();
                         int idx = 0xc0;
                         for (int i = 0xc0; i <= 0xc7; i++) {
-                            unsigned char* c = GetCombatantWithFlag0x400(gs, i);
+                            unsigned char* c = GetCombatantWithFlag0x400_0200fea4(gs, i);
                             if (c != 0 && *(int*)(c + 0x138) != 0) {
                                 idx = i;
                                 break;
                             }
                         }
-                        unsigned char* obj = GetCombatantWithFlag0x400(gs, idx);
+                        unsigned char* obj = GetCombatantWithFlag0x400_0200fea4(gs, idx);
                         int saved = *(int*)(obj + 0x138);
                         if (obj != 0 && saved != 0) {
                             int p13c = *(int*)(obj + 0x13c);
@@ -435,7 +435,7 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
                             obj[0xc2] |= 0x20;
                             ((Object3D*)obj)->SetInheritedAlpha(0x1f);
                             ((Object3D*)obj)->MakeVisible();
-                            SetSubstructByte0x56(obj);
+                            SetSubstructByte0x56_02049f28(obj);
                             void* cam = func_ov000_02160f14(self);
                             func_ov000_0216d370(cam, 1, 1, 1);
                             SetFlagOrState0216d530(cam, idx);
@@ -444,7 +444,7 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
                             if (y < 0) {
                                 y = 0;
                             }
-                            SetFields0x10To0x18((unsigned char*)cam, 0, y, 0);
+                            SetFields0x10To0x18_0202e5c8((unsigned char*)cam, 0, y, 0);
                             int z = (int)(((long long)height * 0x2333 + 0x800) >> 12);
                             int y2 = y + 0x800;
                             if (y2 < 0) {
@@ -477,10 +477,10 @@ extern "C" ARM int func_ov023_021f2e6c(char* self) {
                         }
                         if (alpha <= 0) {
                             ((Object3D*)obj)->MakeHidden();
-                            ClearSubstructByte0x56(obj);
+                            ClearSubstructByte0x56_02049f3c(obj);
                             *(unsigned char*)(self + regionalOffset13) = 0;
                             void* cam = func_ov000_02160f14(self);
-                            Blk021f2e6c blk = *GetPtrField0x4(cam);
+                            Blk021f2e6c blk = *GetPtrField0x4_0202ed64(cam);
                             func_ov000_0216d2d0(cam);
                             CopyGroupedBlocks0202ed0c((Dst0202ed0c*)cam, (Src0202ed0c*)&blk);
                             ResetNameState02048614(obj);

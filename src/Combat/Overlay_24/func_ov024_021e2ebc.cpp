@@ -4,7 +4,7 @@
 #include "Util/Random.h"
 
 struct StatStageStruct020877c0;
-int CanAdjustField0x58(void* obj, int dir);
+int CanAdjustField0x58_0208776c(void* obj, int dir);
 extern "C" int func_020877c0(struct StatStageStruct020877c0* p, int delta);
 void UpdateCombatantAttack(int a, int id);
 struct Obj_021e8ca0;
@@ -40,7 +40,7 @@ extern "C" ARM unsigned long long func_ov024_021e2ebc(struct Obj_021e2ebc* obj, 
     }
     int changed = 0;
     int result = 0;
-    if (CanAdjustField0x58(c->currentStats_, (unsigned char)decrease)) {
+    if (CanAdjustField0x58_0208776c(c->currentStats_, (unsigned char)decrease)) {
         result = func_020877c0((struct StatStageStruct020877c0*)c->currentStats_, (signed char)delta);
         UpdateCombatantAttack((int)obj->field0x10, id);
         changed = 1;

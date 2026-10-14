@@ -26,15 +26,15 @@ struct TransitionNode : TailNode020469b4 {
 };
 struct SearchStruct0202c1a4;
 int GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
-int IsField0Null(void**);
+int IsField0Null_02046b08(void**);
 extern "C" TransitionZone* func_02012fe4();
 extern "C" void func_ov017_021baedc(TransitionNode*, int);
 void SetField11c_021bbbf8(void*, unsigned short);
-int GetField5cb0Value(char*);
+int GetField5cb0Value_0201079c(char*);
 void AppendNodeToTail(TailList020469b4*, TailNode020469b4*);
-void* GetField0x3f8Address(GameState*);
+void* GetField0x3f8Address_0200fd0c(GameState*);
 void InitStruct02070378(char*);
-void CallFunc0200fbb4AtField0x3f8(void*, const void*);
+void CallFunc0200fbb4AtField0x3f8_0200fcfc(void*, const void*);
 void InitAndResetHeader_0219e310(unsigned char*, int);
 void InitAndAppendState61_021a65c4(void*, unsigned char, int);
 
@@ -48,7 +48,7 @@ extern "C" ARM void func_ov017_021d1e50(int unused, TransitionEvent* event, Game
     TransitionNode* node;
     if (!GetSearchStructCurrentArrEntry(search)) return;
     list = (TailList020469b4*)resources->unknown_ptr_array_36fc[0];
-    if (!IsField0Null((void**)list)) return;
+    if (!IsField0Null_02046b08((void**)list)) return;
     TransitionZone* zone = func_02012fe4();
     id = zone->id;
     if (id != 0x1901 && id != 0x1902 && id != 0x1903 && id != 0x1904) return;
@@ -60,10 +60,10 @@ extern "C" ARM void func_ov017_021d1e50(int unused, TransitionEvent* event, Game
         if (!first) { first = second; second = 0; }
         node->first = first;
         SetField11c_021bbbf8(node, second);
-        if (GetField5cb0Value((char*)game) >= 0x13 && first == 0x7345 && (unsigned int)(id - 0x1901) <= 3) node->special = 1;
+        if (GetField5cb0Value_0201079c((char*)game) >= 0x13 && first == 0x7345 && (unsigned int)(id - 0x1901) <= 3) node->special = 1;
         AppendNodeToTail(list, node);
     } else {
-        header = (TransitionHeader*)GetField0x3f8Address(game);
+        header = (TransitionHeader*)GetField0x3f8Address_0200fd0c(game);
         InitStruct02070378((char*)header);
         follow = 1;
         header->active = 1;
@@ -108,7 +108,7 @@ extern "C" ARM void func_ov017_021d1e50(int unused, TransitionEvent* event, Game
                 header->position.z = 0x1000;
                 break;
             }
-            CallFunc0200fbb4AtField0x3f8(game, header);
+            CallFunc0200fbb4AtField0x3f8_0200fcfc(game, header);
             unsigned char* node = (unsigned char*)resources->unknown_ptr_array_36fc[4];
             InitAndResetHeader_0219e310(node, 0);
             AppendNodeToTail(list, (TailNode020469b4*)node);
@@ -125,7 +125,7 @@ extern "C" ARM void func_ov017_021d1e50(int unused, TransitionEvent* event, Game
             position.y = event->y << 7;
             position.z = event->z << 7;
             zone->position = position;
-            CallFunc0200fbb4AtField0x3f8(game, header);
+            CallFunc0200fbb4AtField0x3f8_0200fcfc(game, header);
             unsigned char* node = (unsigned char*)resources->unknown_ptr_array_36fc[4];
             InitAndResetHeader_0219e310(node, 0);
             AppendNodeToTail(list, (TailNode020469b4*)node);

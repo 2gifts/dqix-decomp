@@ -9,7 +9,7 @@ void* LockMutex(Mutex*);
 extern "C" void func_020bf79c(void* p);
 
 ARM SignedAllocatorHeader* PopFirstAndDecOwnerRef020bf3c8(SignedAllocatorList* list);
-void InsertAllocatorHeaderLocked(SignedAllocatorHeader* header);
+void InsertAllocatorHeaderLocked_020bf458(SignedAllocatorHeader* header);
 
 struct RefNode020c80f8;
 void UnlockMutex(Mutex*);
@@ -27,7 +27,7 @@ extern "C" ARM void func_020c015c(void *obj) {
                 UnlockMutex((Mutex*)(base + 0x4c8));
             } else {
                 func_020bf79c(e);
-                InsertAllocatorHeaderLocked(e);
+                InsertAllocatorHeaderLocked_020bf458(e);
                 UnlockMutex((Mutex*)(base + 0x4c8));
                 goto retry;
             }

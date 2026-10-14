@@ -45,10 +45,10 @@ struct S021700bc;
 struct ActiveEntry02046900;
 struct Rec020467f0;
 
-int CheckField0NonZero(int *p);
+int CheckField0NonZero_0202b7d8(int *p);
 int CountActiveEntries(ActiveEntry02046900 *archive);
 void *FindRecordByIndex(Rec020467f0 *archive, int index, void **name, int *size);
-void *AllocateAligned4(AllocatorUnion *alloc, unsigned int size);
+void *AllocateAligned4_02012d88(AllocatorUnion *alloc, unsigned int size);
 void TailForward02012da4(AllocatorUnion *alloc, void *p);
 void EmptyDestructor0205a494(void *p);
 void InitField170_021700bc(S021700bc *p);
@@ -74,7 +74,7 @@ extern "C" ARM void func_ov003_0216bcfc(Menu0216bcfc *self) {
 
     if (self->step_ == 0) {
         func_0202c288();
-        if (CheckField0NonZero((int *) obj) != 0 && (int) *((unsigned char *) obj + 0x100d) > 1) {
+        if (CheckField0NonZero_0202b7d8((int *) obj) != 0 && (int) *((unsigned char *) obj + 0x100d) > 1) {
             func_ov003_0216d8d4(self, 0x5d, -1, -1, -1);
             self->step_  = 0;
             self->state_ = 2;
@@ -83,7 +83,7 @@ extern "C" ARM void func_ov003_0216bcfc(Menu0216bcfc *self) {
         }
         Global0216bcfc *global2 = (Global0216bcfc *) GetGlobalField0x1c020421a0();
         memset(global2->text_, 0, 0x960);
-        void *buffer = AllocateAligned4((AllocatorUnion *) &data_02114e20, 0x8000);
+        void *buffer = AllocateAligned4_02012d88((AllocatorUnion *) &data_02114e20, 0x8000);
         VectorizedMemset(buffer, 0, 0x8000);
         self->allocator_.CreateTypeA(buffer, 0x8000);
         self->allocator_.Reset();

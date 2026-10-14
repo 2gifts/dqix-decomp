@@ -5,8 +5,8 @@ int DispatchIfFlagsOrByteSet_021ed014(struct GuideWindow_021ec480* window);
 struct Elem_0205d81c;
 struct Struct_0205d81c;
 ARM struct Elem_0205d81c* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
-ARM int CheckField0x9cSetWhenField0xd4Present(unsigned char* obj);
-ARM void SetElementFieldC2(struct Struct_0205d81c* s, int key, int value);
+ARM int CheckField0x9cSetWhenField0xd4Present_0204c7e0(unsigned char* obj);
+ARM void SetElementFieldC2_0205deb4(struct Struct_0205d81c* s, int key, int value);
 
 extern "C" void func_ov023_021ed194(char* obj);
 extern "C" void func_ov023_021ed354(char* obj);
@@ -31,7 +31,7 @@ extern "C" ARM int func_ov023_021ed064(void* obj) {
     *(unsigned short*)((char*)obj + 0x438) |= 0x2;
 
     struct Elem_0205d81c* elem = FindElementByC40205d81c((struct Struct_0205d81c*)((char*)obj + 0xc4), 0);
-    if (elem != 0 && CheckField0x9cSetWhenField0xd4Present((unsigned char*)elem) != 0) {
+    if (elem != 0 && CheckField0x9cSetWhenField0xd4Present_0204c7e0((unsigned char*)elem) != 0) {
         *(unsigned short*)((char*)obj + 0x438) |= 0x1;
     } else {
         func_ov023_021ed194((char*)obj);
@@ -48,7 +48,7 @@ extern "C" ARM int func_ov023_021ed064(void* obj) {
     buf[0] = data_ov023_021fd844[2];
     buf[1] = data_ov023_021fd844[3];
     for (int i = 0; i < 2; i++) {
-        SetElementFieldC2((struct Struct_0205d81c*)((char*)obj + 0xc4), buf[i], 0);
+        SetElementFieldC2_0205deb4((struct Struct_0205d81c*)((char*)obj + 0xc4), buf[i], 0);
     }
 
     *(unsigned short*)((char*)obj + 0x438) |= 0x100;

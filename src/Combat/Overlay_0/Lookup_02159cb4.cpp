@@ -16,7 +16,7 @@ extern short data_ov000_02182d56[];
 // USA: func_ov000_02159cb4  (semantic: Lookup_02159cb4)
 extern "C" ARM int func_ov000_02159cb4(void* unusedThis, int combatantId) {
     GameState* battle = GameState::GetInstance();
-    GameObject* c = GetCombatantWithFlag0x100(battle, combatantId);
+    GameObject* c = GetCombatantWithFlag0x100_0200ff1c(battle, combatantId);
     if (!c) return 0;
 
     int i = 0;

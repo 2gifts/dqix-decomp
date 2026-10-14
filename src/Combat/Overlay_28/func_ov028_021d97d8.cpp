@@ -10,7 +10,7 @@ void AppendEntry_021d999c(EntryListStruct_021d999c* obj, Entry_021d999c* item);
 extern "C" void func_ov028_021d987c(void*);
 struct Variant02030b0c;
 struct Struct02030b7c;
-int StringLength(const char* s);
+int StringLength_020d2ff0(const char* s);
 
 struct Ctx9bc4_97d8 {
     void* field0;
@@ -27,7 +27,7 @@ extern "C" ARM int func_ov028_021d97d8(void* obj) {
     local.b = (short)((Script::Parameter*)((struct Variant02030b0c*)((char*)obj + 0x10)))->ToInt();
     const char* text = (const char*)(void*)((Script::Parameter*)((struct Struct02030b7c*)((char*)obj + 0x18)))->ToString();
     if (text != 0) {
-        int len = StringLength(text);
+        int len = StringLength_020d2ff0(text);
         char* buf = (char*)data_ov028_021d9bc4.field4->Allocate(len + 1);
         if (buf != 0) {
             memset(buf, 0, len);

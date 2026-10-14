@@ -57,14 +57,14 @@ struct BattleMenu02168b50 {
 };
 
 struct MessageWork02168b50* GetGlobalField0x1c020421a0();
-struct DataEntry02108d18* GetData02108d18();
+struct DataEntry02108d18* GetData02108d18_0206f504();
 int AppendFormatted02041fe8(char* buf, int a);
 int GetFieldByKey020e0434(struct Container020e0310* c, int key);
 int AppendString02042058(char* dst, const char* src);
 extern "C" void func_02046380(void* obj);
 void SetIndexedName02046574(struct Obj02046574* obj, int index, char* str);
-void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
-void SetByteInRange(unsigned char* base, int index, unsigned char value);
+void StoreInArray0x8b0_020465c0(struct StoreStruct* base, int index, int value);
+void SetByteInRange_020465f0(unsigned char* base, int index, unsigned char value);
 
 #if defined(jpn)
 extern "C" void func_0204500c(void*, char*, int);
@@ -74,7 +74,7 @@ extern "C" void func_0204500c(void* obj, char* buffer, int a, int b);
 #endif
 extern "C" void func_ov003_0216982c(struct BattleMenu02168b50* self);
 extern "C" void func_ov003_0216997c(struct BattleMenu02168b50* self);
-void SetElementFieldC2(struct Struct_0205d81c* s, int key, int value);
+void SetElementFieldC2_0205deb4(struct Struct_0205d81c* s, int key, int value);
 
 // USA: func_ov003_02168b50
 extern "C" ARM void func_ov003_02168b50(struct BattleMenu02168b50* self) {
@@ -82,18 +82,18 @@ extern "C" ARM void func_ov003_02168b50(struct BattleMenu02168b50* self) {
     struct Container020e0310* messages = (struct Container020e0310*)self->messages;
     if (self->step == 0) {
         memset(self->text, 0, kRegion960);
-        struct DataEntry02108d18* data = GetData02108d18();
+        struct DataEntry02108d18* data = GetData02108d18_0206f504();
         if (data->title[0] != 0) {
             AppendFormatted02041fe8(self->text, (int)data->title);
         }
         AppendString02042058(self->text, (const char*)GetFieldByKey020e0434(messages, 0x3e8));
         GameState* game = GameState::GetInstance();
-        struct BattleData02168b50* battle = (struct BattleData02168b50*)GetPtrField0x2a04(game);
+        struct BattleData02168b50* battle = (struct BattleData02168b50*)GetPtrField0x2a04_02010828(game);
         func_02046380(work);
         SetIndexedName02046574((struct Obj02046574*)work, 0, (char*)game->GetProtagonist()->baseStats_);
         if (battle->field_0xf68 != 0) {
-            StoreInArray0x8b0((struct StoreStruct*)work, 0, battle->field_0xf68);
-            SetByteInRange((unsigned char*)work, 0, 0);
+            StoreInArray0x8b0_020465c0((struct StoreStruct*)work, 0, battle->field_0xf68);
+            SetByteInRange_020465f0((unsigned char*)work, 0, 0);
             AppendString02042058(self->text, (const char*)GetFieldByKey020e0434(messages, 0x3ea));
         } else {
             AppendString02042058(self->text, (const char*)GetFieldByKey020e0434(messages, 0x3e9));
@@ -109,7 +109,7 @@ extern "C" ARM void func_ov003_02168b50(struct BattleMenu02168b50* self) {
     } else if (self->step == 1 && self->busy == 0 && work->state == 3) {
         func_ov003_0216982c(self);
         func_ov003_0216997c(self);
-        SetElementFieldC2((struct Struct_0205d81c*)self->menu, 0, 0);
+        SetElementFieldC2_0205deb4((struct Struct_0205d81c*)self->menu, 0, 0);
         self->mode = 2;
         self->step = 0;
     }

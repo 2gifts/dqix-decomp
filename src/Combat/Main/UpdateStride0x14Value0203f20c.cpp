@@ -3,7 +3,7 @@
 struct List02040468;
 struct Element02040468;
 extern struct Element02040468* GetValidElement02040468(struct List02040468*, int);
-extern void* GetElementStride0x14(unsigned char*, unsigned int);
+extern void* GetElementStride0x14_0203f1c8(unsigned char*, unsigned int);
 
 extern int data_02114e50;
 
@@ -41,7 +41,7 @@ ARM void UpdateStride0x14Value(struct State0203f20c* obj) {
     if (elem == 0) {
         return;
     }
-    stride = (struct StrideEntry0203f20c*)GetElementStride0x14((unsigned char*)elem + 0x10, obj->field30);
+    stride = (struct StrideEntry0203f20c*)GetElementStride0x14_0203f1c8((unsigned char*)elem + 0x10, obj->field30);
     if (stride == 0) {
         return;
     }

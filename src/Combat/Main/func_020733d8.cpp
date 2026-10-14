@@ -4,16 +4,16 @@
 #include "Graphics/Vector.h"
 
 extern "C" void* func_0205ec34(void);
-int TestBitInByteArray(int unused, unsigned char* arr, int index);
+int TestBitInByteArray_0206dfb0(int unused, unsigned char* arr, int index);
 int FindCombatantWithNegativeField2_021a20c0(int unused, int mult, int limit);
 extern "C" void* __clear(void* dst, int count);
 extern "C" void* func_0202ae18(void);
 extern "C" void VectorizedInvertedMemcpy(const void* src, void* dst, unsigned int length);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 
 struct SearchStruct;
-int TestBitBySignedByteIndex(struct SearchStruct* obj, int value);
-int GetSignedByte0x1ca(void* obj);
+int TestBitBySignedByteIndex_0202c1c0(struct SearchStruct* obj, int value);
+int GetSignedByte0x1ca_02039888(void* obj);
 
 extern "C" void func_02034104(void* out, GameObject* obj);
 
@@ -89,7 +89,7 @@ extern "C" ARM void func_020733d8(unsigned char* self, int unused) {
     }
 
     void* dataBase = func_0205ec34();
-    if (TestBitInByteArray((int)dataBase, (unsigned char*)dataBase + 0x8c, 0x79a) != 0 &&
+    if (TestBitInByteArray_0206dfb0((int)dataBase, (unsigned char*)dataBase + 0x8c, 0x79a) != 0 &&
         *(unsigned short*)self >= 0x190 && *(unsigned short*)self <= 0x199) {
         return;
     }
@@ -164,7 +164,7 @@ extern "C" ARM void func_020733d8(unsigned char* self, int unused) {
             VectorizedInvertedMemcpy(weights.v, localWeights, 0x10);
 
             candCount = 0;
-            if (CheckField0NonZero(counter) == 0) {
+            if (CheckField0NonZero_0202b7d8(counter) == 0) {
                 unknown = gs->GetUnknownGameObject();
                 if (unknown != 0 && localWeights[0] == -1) {
                     candIds[0] = *(short*)((char*)unknown + 4);
@@ -172,7 +172,7 @@ extern "C" ARM void func_020733d8(unsigned char* self, int unused) {
                 }
             } else {
                 for (j = 0; j < 4; j++) {
-                    if (!TestBitBySignedByteIndex((struct SearchStruct*)counter, j)) {
+                    if (!TestBitBySignedByteIndex_0202c1c0((struct SearchStruct*)counter, j)) {
                         continue;
                     }
                     member = gs->GetPartyMemberByIndex(j);
@@ -183,10 +183,10 @@ extern "C" ARM void func_020733d8(unsigned char* self, int unused) {
                         continue;
                     }
 
-                    if (GetSignedByte0x1ca(member) < 0) {
+                    if (GetSignedByte0x1ca_02039888(member) < 0) {
                         slot = j;
                     } else {
-                        slot = GetSignedByte0x1ca(member);
+                        slot = GetSignedByte0x1ca_02039888(member);
                     }
 
                     found = 0;
@@ -296,7 +296,7 @@ extern "C" ARM void func_020733d8(unsigned char* self, int unused) {
             struct ZoneNode020733d8* zone;
             GameObject* slotObj;
 
-            slotObj = GetCombatantWithFlag0x100(GameState::GetInstance(), bestIdx);
+            slotObj = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), bestIdx);
             if (slotObj == 0) {
                 status = -1;
                 break;
@@ -492,7 +492,7 @@ extern "C" ARM void func_020733d8(unsigned char* self, int unused) {
         return;
     }
 
-    combatant = GetCombatantWithFlag0x100(gameState, bestIdx);
+    combatant = GetCombatantWithFlag0x100_0200ff1c(gameState, bestIdx);
     angle = 0;
     if (combatant != 0) {
         func_02034104(&slotPosTmp, combatant);

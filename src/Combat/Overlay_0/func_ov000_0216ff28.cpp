@@ -25,7 +25,7 @@ struct State0xc0cc {
 #endif
 };
 
-void InitFields0x0(struct State0xc0cc* obj);
+void InitFields0x0_0203c0cc(struct State0xc0cc* obj);
 
 struct CombatantStatus {
     char unk0[0x1c];
@@ -106,8 +106,8 @@ extern "C" ARM void func_ov000_0216ff28(struct Combatant* obj) {
     obj->unk443 = 5;
     obj->unk444 = 0;
     obj->unk445 = 1;
-    InitFields0x0(&obj->unk68);
-    InitFields0x0(&obj->unk50);
+    InitFields0x0_0203c0cc(&obj->unk68);
+    InitFields0x0_0203c0cc(&obj->unk50);
     memset(obj->unk88, 0, sizeof(obj->unk88));
     for (i = 0; i < 0x42; i++) {
         obj->unk9c[i] = 0;

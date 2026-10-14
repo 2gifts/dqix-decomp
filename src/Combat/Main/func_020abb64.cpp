@@ -14,7 +14,7 @@ struct State020abb64 { char pad[IS_JPN ? 0x543c : 0x569c]; Config020abb64 config
 char* GetSlotEntry020108d8(char*, int);
 extern "C" void func_02082828(char*);
 int SendShortBufferOrReturnZero020aba5c(int);
-int SendBufferOrReturnZero(int);
+int SendBufferOrReturnZero_020abae8(int);
 void InitBigManagerStruct0208660c(char*);
 // USA: func_020abb64
 extern "C" ARM int func_020abb64() {
@@ -22,8 +22,8 @@ extern "C" ARM int func_020abb64() {
     for (int i = 0;i < 4;i++) { char* entry = GetSlotEntry020108d8((char*)state, i); if (entry) func_02082828(entry); }
     if (!SendShortBufferOrReturnZero020aba5c(0)) return 0;
     if (!SendShortBufferOrReturnZero020aba5c(1)) return 0;
-    if (!SendBufferOrReturnZero(0)) return 0;
-    if (!SendBufferOrReturnZero(1)) return 0;
+    if (!SendBufferOrReturnZero_020abae8(0)) return 0;
+    if (!SendBufferOrReturnZero_020abae8(1)) return 0;
     State020abb64* storage = (State020abb64*)state;
     storage->config.flags.value = 2000;
     storage->config.flags.mode = 1;
@@ -42,7 +42,7 @@ extern "C" ARM int func_020abb64() {
     config->fields.middle = 300;
     config->fields.high = 706;
     config->statusByte = 0;
-    InitBigManagerStruct0208660c((char*)GetPtrField0x2a04(state));
+    InitBigManagerStruct0208660c((char*)GetPtrField0x2a04_02010828(state));
     VectorizedMemset(storage->buffer, 0, 0x54);
     return 1;
 }

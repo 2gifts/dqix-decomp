@@ -18,8 +18,8 @@ struct S02055080 {
     unsigned char padding_0x0[0x11c];
     SignedAllocatorList keyframes;
 };
-void* GetField0x4Field0x0OrNull(S02055080*);
-void* GetSubField0x8(S02055080*);
+void* GetField0x4Field0x0OrNull_02055090(S02055080*);
+void* GetSubField0x8_020550c0(S02055080*);
 void InitStruct02058c88(Struct02058c88*);
 
 #define ToBamAngle(degF) ((int)(4096.0f * (3.14159274f * ((degF) / 180.0f))))
@@ -93,7 +93,7 @@ struct Spawner02055f5c {
 
 // USA: func_02055f5c
 extern "C" ARM void func_02055f5c(struct Spawner02055f5c* self, int elapsedFrames, int waveCount) {
-    struct CountHolder0xc* keyframeCount = (struct CountHolder0xc*)GetField0x4Field0x0OrNull(self->ptr30);
+    struct CountHolder0xc* keyframeCount = (struct CountHolder0xc*)GetField0x4Field0x0OrNull_02055090(self->ptr30);
 
     if (keyframeCount->count != 0) {
         if (self->field3c >= keyframeCount->count) return;
@@ -145,7 +145,7 @@ extern "C" ARM void func_02055f5c(struct Spawner02055f5c* self, int elapsedFrame
         return;
     }
 
-    ParticleSpawnConfig02055f5c* spawnConfig = (ParticleSpawnConfig02055f5c*)GetSubField0x8(self->ptr30);
+    ParticleSpawnConfig02055f5c* spawnConfig = (ParticleSpawnConfig02055f5c*)GetSubField0x8_020550c0(self->ptr30);
     int countVariationPercent = spawnConfig->countVariationPercent;
     int sampledCountDelta = rand() % (countVariationPercent * 2);
     float countVariation = (float)(sampledCountDelta - countVariationPercent) / 100.0f;

@@ -124,13 +124,13 @@ struct Obj02192700 {
 
 extern "C" void __clear(void* buf, int n);
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 struct Callback_0202a91c;
 void SetState0x6cAndInvoke(Callback_0202a91c*);
 extern "C" void func_02029568(struct MenuList02192700* menu);
 extern "C" void func_020294cc(void* self, const char* src);
 void Init0202949c(char*);
-const char* CallFunc020e0434With02153694(int id);
+const char* CallFunc020e0434With02153694_020e51cc(int id);
 struct ListHead0202a944;
 struct ListNode0202a944;
 void AppendNodeToList0202a944(ListHead0202a944*, ListNode0202a944*);
@@ -354,16 +354,16 @@ extern "C" ARM void func_ov015_02192700(struct Obj02192700* obj, int a1) {
                 count++;
             }
             if (count == 0) {
-                obj->items = (struct MenuItem02192700*)AllocateAligned4(&data_02114e20, sizeof(struct MenuItem02192700));
+                obj->items = (struct MenuItem02192700*)AllocateAligned4_02012d88(&data_02114e20, sizeof(struct MenuItem02192700));
             } else {
-                obj->items = (struct MenuItem02192700*)AllocateAligned4(&data_02114e20, count * sizeof(struct MenuItem02192700));
+                obj->items = (struct MenuItem02192700*)AllocateAligned4_02012d88(&data_02114e20, count * sizeof(struct MenuItem02192700));
             }
             if (count == 0) {
                 Init0202949c((char*)obj->items);
 #if defined(jpn)
                 func_020294cc(obj->items, data_ov015_021950f0);
 #else
-                func_020294cc(obj->items, CallFunc020e0434With02153694(1000));
+                func_020294cc(obj->items, CallFunc020e0434With02153694_020e51cc(1000));
 #endif
                 AppendNodeToList0202a944((ListHead0202a944*)&obj->menu, (ListNode0202a944*)obj->items);
                 count = 1;
@@ -377,7 +377,7 @@ extern "C" ARM void func_ov015_02192700(struct Obj02192700* obj, int a1) {
                 }
             }
         } else if (obj->state == 40) {
-            obj->items = (struct MenuItem02192700*)AllocateAligned4(&data_02114e20, obj->entries.count * sizeof(struct MenuItem02192700));
+            obj->items = (struct MenuItem02192700*)AllocateAligned4_02012d88(&data_02114e20, obj->entries.count * sizeof(struct MenuItem02192700));
             for (; count < obj->entries.count; count++) {
                 struct Entry8_0218bb14* entry = GetEntry8_0218bb14(&obj->entries, count);
                 Init0202949c((char*)&obj->items[count]);
@@ -394,7 +394,7 @@ extern "C" ARM void func_ov015_02192700(struct Obj02192700* obj, int a1) {
                 count++;
                 entry = func_ov015_02193160(obj, obj->state, &idx);
             }
-            obj->items = (struct MenuItem02192700*)AllocateAligned4(&data_02114e20, count * sizeof(struct MenuItem02192700));
+            obj->items = (struct MenuItem02192700*)AllocateAligned4_02012d88(&data_02114e20, count * sizeof(struct MenuItem02192700));
             count = 0;
             idx = 0;
             entry = func_ov015_02193160(obj, obj->state, &idx);
@@ -476,7 +476,7 @@ extern "C" ARM void func_ov015_02192700(struct Obj02192700* obj, int a1) {
                 count += bcfg->GetNumAnimations();
             }
         }
-        obj->items = (struct MenuItem02192700*)AllocateAligned4(&data_02114e20, count * sizeof(struct MenuItem02192700));
+        obj->items = (struct MenuItem02192700*)AllocateAligned4_02012d88(&data_02114e20, count * sizeof(struct MenuItem02192700));
         holder = func_ov015_0218f344(obj->field30);
         idx = 0;
         for (; holder != 0; holder = holder->next) {

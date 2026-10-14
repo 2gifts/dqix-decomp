@@ -20,7 +20,7 @@ extern "C" Container020dedd0* func_ov004_02167908(void* a1, int b);
 extern "C" int func_ov004_02167908(void* a1, int b);
 #endif
 struct StoreStruct;
-void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
+void StoreInArray0x8b0_020465c0(struct StoreStruct* base, int index, int value);
 void* Clear12Bytes020e46c4(void* p);
 void DispatchIfCountPositive020dcf7c(int count, void* buf);
 
@@ -72,10 +72,10 @@ extern "C" ARM int func_ov004_02167b78(void* a1, struct A2Struct02167b78* a2) {
     int haveX = func_ov004_02167908(a1, 5);
 #endif
 
-    StoreInArray0x8b0((struct StoreStruct*)g, 0, local.current);
-    StoreInArray0x8b0((struct StoreStruct*)g, 1, local.matches);
-    StoreInArray0x8b0((struct StoreStruct*)g, 2, local.threshold);
-    StoreInArray0x8b0((struct StoreStruct*)g, 3, sum);
+    StoreInArray0x8b0_020465c0((struct StoreStruct*)g, 0, local.current);
+    StoreInArray0x8b0_020465c0((struct StoreStruct*)g, 1, local.matches);
+    StoreInArray0x8b0_020465c0((struct StoreStruct*)g, 2, local.threshold);
+    StoreInArray0x8b0_020465c0((struct StoreStruct*)g, 3, sum);
 
     if (haveX != 0) {
         if (a2 == 0) {
@@ -101,7 +101,7 @@ extern "C" ARM int func_ov004_02167b78(void* a1, struct A2Struct02167b78* a2) {
             DispatchIfCountPositive020dcf7c(a2->f2, data_ov004_02171024.sub);
             *(void**)((char*)g + 0x18) = data_ov004_02171024.sub;
 #endif
-            StoreInArray0x8b0((struct StoreStruct*)g, 2, a2->f0);
+            StoreInArray0x8b0_020465c0((struct StoreStruct*)g, 2, a2->f0);
         }
     }
     return 0;

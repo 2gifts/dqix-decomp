@@ -12,8 +12,8 @@ struct Struct020865b0;
 struct S0215f56c;
 struct Outer02166164;
 
-int SetSublistEntriesFlag1(void* obj, int id);
-void* GetPtrField0x2a04(GameState*);
+int SetSublistEntriesFlag1_02080b54(void* obj, int id);
+void* GetPtrField0x2a04_02010828(GameState*);
 void SetOrClearFlags464_02166164(Outer02166164*, int, int);
 extern "C" void func_02042764(void* src, void* dst, int flag);
 int GetFieldAt0x50(Struct020865b0*);
@@ -25,7 +25,7 @@ extern "C" void _Z22SetEntryHighNibble0x13P17Container02080cc0ii(struct Containe
 void SetEntryFirstField02080f8c(Container02080f8c*, int, int);
 void ResolveEntryValueByKey02080fe0(void*, int, int);
 void SetEntryFirstField02080fa8(struct Container02080fa8*, int, int);
-void SetEntryHalfword0xe(void*, int, int);
+void SetEntryHalfword0xe_0208103c(void*, int, int);
 void GetEntryFieldsAt0x602080828(void*, int, short*, short*);
 extern "C" void _Z23GetEntryOutputs020808c8PviPsS0_(void*, short, short*, short*);
 void SetEntryFieldsAt0x602080854(void*, int, int, int);
@@ -109,8 +109,8 @@ extern "C" ARM void func_ov003_02166220(StatusPanel02166220* self) {
     short outHigh, outLow;
     ShortPair02166220 ids;
 
-    SetSublistEntriesFlag1(elementObj, 6);
-    party = (Party02166220*)GetPtrField0x2a04(GameState::GetInstance());
+    SetSublistEntriesFlag1_02080b54(elementObj, 6);
+    party = (Party02166220*)GetPtrField0x2a04_02010828(GameState::GetInstance());
     count = party->count;
     idA = 0x15;
     idB = 100;
@@ -147,7 +147,7 @@ extern "C" ARM void func_ov003_02166220(StatusPanel02166220* self) {
             SetEntryFlagById02080b40(elementObj, idB);
             self->counters[i] = entry->bit0 + 1;
             kind = entry->unkF[GetFieldAt0x50((Struct020865b0*)entry)];
-            SetEntryHalfword0xe(elementObj, idC, (short)(kind + 100));
+            SetEntryHalfword0xe_0208103c(elementObj, idC, (short)(kind + 100));
             if (kind != 0) {
                 color = 5;
                 if (kind == 0xa) {
@@ -173,7 +173,7 @@ extern "C" ARM void func_ov003_02166220(StatusPanel02166220* self) {
 
     func_ov003_0215f5e8(elementObj, self->page, count);
     func_ov003_02160c58(self, &outHigh, &outLow);
-    party = (Party02166220*)GetPtrField0x2a04(GameState::GetInstance());
+    party = (Party02166220*)GetPtrField0x2a04_02010828(GameState::GetInstance());
     outLow = outLow - (party->countF7c - 1);
     SetEntryFirstField02080fa8((struct Container02080fa8*)elementObj, 0x23, outLow);
     SetEntryFirstField02080fa8((struct Container02080fa8*)elementObj, 0x24, outHigh);

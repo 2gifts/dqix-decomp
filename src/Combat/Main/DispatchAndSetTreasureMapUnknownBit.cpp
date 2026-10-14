@@ -2,7 +2,7 @@
 #include "Grotto/Main/GrottoStruct.h"
 
 // USA: func_020117cc
-ARM void DispatchAndSetTreasureMapUnknownBit(char* obj, int arg) {
+ARM void DispatchAndSetTreasureMapUnknownBit_020117cc(char* obj, int arg) {
 #if defined(jpn)
     ((GrottoStruct*)(obj + 0x6184))->LoadActiveMetadataFromDetailed((DetailedTreasureMapData*)arg);
 #else

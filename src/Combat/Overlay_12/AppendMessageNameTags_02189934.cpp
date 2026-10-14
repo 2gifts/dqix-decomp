@@ -7,12 +7,12 @@ extern const char data_ov012_0218bfd7[];
 #include <globaldefs.h>
 
 struct TableA68;
-void* FindEntryByKey(struct TableA68* table, int key);
+void* FindEntryByKey_02072a68(struct TableA68* table, int key);
 int AppendFrameTag02041c08(char* dst, int a1, int a2, int a3, int a4, int a5);
-int AppendCursorTag(char* dst, int cursor);
-int AppendNameTag(char* dst, int n, const char* name);
+int AppendCursorTag_02041ea4(char* dst, int cursor);
+int AppendNameTag_02041b70(char* dst, int n, const char* name);
 int AppendString02042058(char* dst, const char* src);
-int AppendPaletteTag(char* dst, int palette);
+int AppendPaletteTag_02041e70(char* dst, int palette);
 
 struct PaletteFlags02189934 {
     unsigned short field : 5;
@@ -26,28 +26,28 @@ extern "C" ARM void func_ov012_02189934(char* base, char* dst, int flag) {
     if (flag != 0) {
         AppendFrameTag02041c08(dst, cursor, 8, 5, 5, 5);
     }
-    AppendCursorTag(dst, cursor);
+    AppendCursorTag_02041ea4(dst, cursor);
 
-    AppendNameTag(dst, 0, (const char*)FindEntryByKey((struct TableA68*)(base + R(0x1314, 0x133c)), 7));
+    AppendNameTag_02041b70(dst, 0, (const char*)FindEntryByKey_02072a68((struct TableA68*)(base + R(0x1314, 0x133c)), 7));
     AppendString02042058(dst, *(char**)(base + R(0x1348, 0x1378)));
 
-    AppendNameTag(dst, 1, (const char*)FindEntryByKey((struct TableA68*)(base + R(0x1314, 0x133c)), 8));
+    AppendNameTag_02041b70(dst, 1, (const char*)FindEntryByKey_02072a68((struct TableA68*)(base + R(0x1314, 0x133c)), 8));
     AppendString02042058(dst, *(char**)(base + R(0x1348, 0x1378)));
 
     if (((struct PaletteFlags02189934*)(base + R(0x141c, 0x13c4)))->field == 0) {
-        AppendPaletteTag(dst, 3);
+        AppendPaletteTag_02041e70(dst, 3);
     }
 
-    AppendNameTag(dst, 2, (const char*)FindEntryByKey((struct TableA68*)(base + R(0x1314, 0x133c)), 9));
+    AppendNameTag_02041b70(dst, 2, (const char*)FindEntryByKey_02072a68((struct TableA68*)(base + R(0x1314, 0x133c)), 9));
     AppendString02042058(dst, *(char**)(base + R(0x1348, 0x1378)));
 
     if (((struct PaletteFlags02189934*)(base + R(0x141c, 0x13c4)))->field == 0) {
 #if defined(jpn)
         AppendString02042058(dst, data_ov012_0218bfd7);
 #else
-        AppendPaletteTag(dst, 0xf);
+        AppendPaletteTag_02041e70(dst, 0xf);
 #endif
     }
 
-    AppendNameTag(dst, 3, (const char*)FindEntryByKey((struct TableA68*)(base + R(0x1314, 0x133c)), 0x6d));
+    AppendNameTag_02041b70(dst, 3, (const char*)FindEntryByKey_02072a68((struct TableA68*)(base + R(0x1314, 0x133c)), 0x6d));
 }

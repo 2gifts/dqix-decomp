@@ -4,7 +4,7 @@
 struct ThreeWords0x50_02040a20 { unsigned int v[3]; };
 
 // USA: func_02040a20
-ARM int GetOffset0x54FromFallbackChain(Entry_203dce4* obj) {
+ARM int GetOffset0x54FromFallbackChain_02040a20(Entry_203dce4* obj) {
     void* p;
 
     p = obj->child14;

@@ -12,7 +12,7 @@ struct Manager_1f2cc {
 };
 
 // USA: func_0201f2cc
-ARM struct Element_1f2cc* FindElementByHalfwordKey(struct Manager_1f2cc* manager, int key) {
+ARM struct Element_1f2cc* FindElementByHalfwordKey_0201f2cc(struct Manager_1f2cc* manager, int key) {
     int i;
     for (i = 0; i < manager->count; i++) {
         if (key == manager->elements[i].key) {

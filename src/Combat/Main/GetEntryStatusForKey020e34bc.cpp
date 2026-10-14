@@ -2,7 +2,7 @@
 
 extern "C" void* func_0202ae18(void);
 
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 
 struct Entry020e3054 {
     unsigned char f0;
@@ -33,7 +33,7 @@ ARM int GetEntryStatusForKey020e34bc(struct Container020e34bc* obj, int key) {
     signed char val;
 
     cur = func_0202ae18();
-    if (!CheckField0NonZero((int*)cur)) return 1;
+    if (!CheckField0NonZero_0202b7d8((int*)cur)) return 1;
 
     i = 0;
     for (p = obj->flags; i < 8; p++) {

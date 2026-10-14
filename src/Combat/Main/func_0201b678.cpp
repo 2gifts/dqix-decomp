@@ -10,13 +10,13 @@ struct ProximityNode0201b678 {
     char unknown40[0x30];
     ProximityNode0201b678* next;
 };
-void* GetPointerFromArray0x3c(unsigned char*, unsigned int);
+void* GetPointerFromArray0x3c_0201e838(unsigned char*, unsigned int);
 int Vector3fix_Distance(const Vector3fix*, const Vector3fix*);
 
 // USA: func_0201b678
 extern "C" ARM ProximityNode0201b678* func_0201b678(Zone3D* zone, const Vector3fix* input) {
     ProximityNode0201b678* preferred = 0;
-    ProximityNode0201b678* node = (ProximityNode0201b678*)GetPointerFromArray0x3c((unsigned char*)&zone->substruct_6c_, 10);
+    ProximityNode0201b678* node = (ProximityNode0201b678*)GetPointerFromArray0x3c_0201e838((unsigned char*)&zone->substruct_6c_, 10);
     Vector3fix position;
     position.x = input->x * 6;
     position.y = input->y * 6;

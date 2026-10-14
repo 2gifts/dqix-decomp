@@ -7,7 +7,7 @@
 #pragma optimize_for_size off
 unsigned int DisableIRQInterrupts(void);
 void SetIRQInterruptState(int state);
-unsigned int CountLeadingZeros(unsigned int value);
+unsigned int CountLeadingZeros_020c9a4c(unsigned int value);
 
 extern int data_0211166c;
 extern unsigned short data_02111670[9];
@@ -18,7 +18,7 @@ extern "C" ARM void func_020c9a88(int flags, int id) {
     unsigned int state = DisableIRQInterrupts();
     mask = flags & data_0211166c & 0x1ff;
     for (;;) {
-        int pos = 0x1f - CountLeadingZeros(mask);
+        int pos = 0x1f - CountLeadingZeros_020c9a4c(mask);
         if (pos < 0) break;
         unsigned int bit = 1 << pos;
         unsigned short entry = data_02111670[pos];

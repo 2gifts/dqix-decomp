@@ -3,7 +3,7 @@
 
 extern "C" void* func_02012fe4(void);
 struct Entry_02028bd0;
-struct Entry_02028bd0* GetEntryTableBase(void);
+struct Entry_02028bd0* GetEntryTableBase_02027ca4(void);
 struct Entry_02028bd0* FindInlineEntryById(struct Entry_02028bd0* base, int key);
 
 struct Obj02028c64;
@@ -25,7 +25,7 @@ ARM void HandleType2OrEntry_021d19b0(int unused, struct Rec021d19b0* rec) {
             return;
         func_02018300(zone, e, rec->field8, 0, 0);
     } else {
-        struct Entry_02028bd0* table = GetEntryTableBase();
+        struct Entry_02028bd0* table = GetEntryTableBase_02027ca4();
         struct Entry_02028bd0* entry = FindInlineEntryById(table, rec->field4);
         if (entry == NULL)
             return;

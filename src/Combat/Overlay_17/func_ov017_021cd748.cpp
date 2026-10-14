@@ -67,11 +67,11 @@ extern "C" Get28ByteElementAt0x334Struct* func_0205ec34();
 extern "C" AreaState* func_02012fe4();
 extern "C" int func_0202c540(SearchStruct0202c1a4*);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
-void* GetField0x3f8Address(GameState*);
-int IsField0Null(void**);
+void* GetField0x3f8Address_0200fd0c(GameState*);
+int IsField0Null_02046b08(void**);
 extern "C" void func_ov017_021baedc(void*, int);
 void AppendNodeToTail(TailList020469b4*, TailNode020469b4*);
-Get28ByteElementAt0x334Elem* Get28ByteElementAt0x334(Get28ByteElementAt0x334Struct*, int);
+Get28ByteElementAt0x334Elem* Get28ByteElementAt0x334_0206ea7c(Get28ByteElementAt0x334Struct*, int);
 int HasFlag3orFlag2And9a_021bd3a4(Obj_021bd3a4*);
 extern "C" int func_0202c508(SearchStruct0202c1a4*);
 extern "C" void func_ov017_021bc6e0(TransitionState*, int, int);
@@ -95,7 +95,7 @@ extern "C" ARM void func_ov017_021cd748(int sender, TransitionEvent* event, Game
         if (area == event->firstArea) matches = 1;
         if (area == event->secondArea) matches = 1;
         if (!matches && ((AlternateMode*)resources->unknown_ptr_array_36fc[4])->enabled) {
-            unsigned short alternate = ((AlternateArea*)GetField0x3f8Address(game))->area;
+            unsigned short alternate = ((AlternateArea*)GetField0x3f8Address_0200fd0c(game))->area;
             if (alternate == event->firstArea) matches = 1;
             if (alternate == event->secondArea) matches = 1;
         }
@@ -103,7 +103,7 @@ extern "C" ARM void func_ov017_021cd748(int sender, TransitionEvent* event, Game
         unsigned short destination = event->destination;
         if (!destination) destination = event->fallbackDestination;
         if (!destination) return;
-        if (IsField0Null((void**)list) || event->enabled) {
+        if (IsField0Null_02046b08((void**)list) || event->enabled) {
             int changed = 0;
             if (!state->active) {
                 if (state->queued) {
@@ -122,7 +122,7 @@ extern "C" ARM void func_ov017_021cd748(int sender, TransitionEvent* event, Game
             }
             if (changed && func_0202c540(search)) {
                 Get28ByteElementAt0x334Struct* party = func_0205ec34();
-                Get28ByteElementAt0x334Elem* entry = Get28ByteElementAt0x334(party, party->index);
+                Get28ByteElementAt0x334Elem* entry = Get28ByteElementAt0x334_0206ea7c(party, party->index);
                 state->valid = 0;
                 state->flags = 0;
                 state->field_179 = 0;

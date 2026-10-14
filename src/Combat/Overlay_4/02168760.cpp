@@ -4,15 +4,15 @@
 #include "System/Memory.h"
 
 struct FieldFlagBlock;
-void ResetAndEnableFieldFlag(struct FieldFlagBlock* block);
-GameObject* GetCombatantWithFlag0x1000(GameState* battleStruct, int combatantId);
+void ResetAndEnableFieldFlag_02011b24(struct FieldFlagBlock* block);
+GameObject* GetCombatantWithFlag0x1000_0200ff58(GameState* battleStruct, int combatantId);
 void EnqueueEventTag58_021cf594(unsigned short, int, int);
 extern "C" void* func_02012fe4(void);
 
 // USA: func_ov004_02168760
 extern "C" ARM int func_ov004_02168760(void) {
     GameState* bs = GameState::GetInstance();
-    ResetAndEnableFieldFlag((struct FieldFlagBlock*)bs);
+    ResetAndEnableFieldFlag_02011b24((struct FieldFlagBlock*)bs);
 
     char buf[0x70];
     VectorizedMemset(buf, 0, 0x70);
@@ -47,7 +47,7 @@ extern "C" ARM int func_ov004_02168760(void) {
     for (signed char i = 1; i < 4; i++) {
         GameObject* member = bs->GetPartyMemberByIndex(i);
         if (!member) continue;
-        if (GetCombatantWithFlag0x1000(bs, i)) continue;
+        if (GetCombatantWithFlag0x1000_0200ff58(bs, i)) continue;
         if (member->obj3D_.GetField06() != zone) continue;
         EnqueueEventTag58_021cf594(0x1130, i, 1);
     }

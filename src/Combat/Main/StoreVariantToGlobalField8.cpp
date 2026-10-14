@@ -11,7 +11,7 @@ struct Obj020899bc {
 extern struct Obj020899bc* data_02108efc;
 
 // USA: func_020899bc
-ARM int StoreVariantToGlobalField8(struct Variant02030b0c* p) {
+ARM int StoreVariantToGlobalField8_020899bc(struct Variant02030b0c* p) {
     data_02108efc->field8 = (short)((Script::Parameter*)p)->ToInt();
     return 1;
 }

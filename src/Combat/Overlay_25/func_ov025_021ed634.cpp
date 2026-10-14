@@ -100,31 +100,31 @@ extern "C" short func_ov000_0215ffa0(void* obj);
 void* GetField6b0_021b8470(void* obj);
 int CheckAnyBitOrFlag_02159f7c(void* obj, Bits64_02159f7c* bits);
 extern "C" int func_ov000_0215fd90(void* obj, int flag);
-void StoreInArray0x8b0(StoreStruct* base, int index, int value);
+void StoreInArray0x8b0_020465c0(StoreStruct* base, int index, int value);
 void InitObjFromCombatantId020e4bf4(void* obj, int id);
 class GameObject;
-GameObject* GetCombatantWithFlag0x400(GameState* gs, int id);
-GameObject* GetCombatantWithFlag0x100(GameState* gs, int id);
+GameObject* GetCombatantWithFlag0x400_0200fea4(GameState* gs, int id);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* gs, int id);
 extern "C" void func_020e4ce8(void* dst, void* src, int flag);
-void CopyStringToField0x3ac(char* g, char* s);
-void SetByte0x1880(void*, signed char);
-void CopyStringToField042c(void* g, char* s);
+void CopyStringToField0x3ac_02046504(char* g, char* s);
+void SetByte0x1880_020464dc(void*, signed char);
+void CopyStringToField042c_0204653c(void* g, char* s);
 extern "C" int _Z22CheckKeyMatch_0215fb9cis(int obj, unsigned short id);
 void BuildName020488ec(char* s);
-void CopyStringToField046c(void* g, char* s);
+void CopyStringToField046c_02046558(void* g, char* s);
 Row02079e2c* SearchBothTables02079e2c(char* table, int key);
 void InitObjFromPackedFields020e4e38(void* obj, Src020e4e38* src);
-void CopyStringToField0x3ec(char* g, char* s);
-void* GetActiveCombatWork(void);
+void CopyStringToField0x3ec_02046520(char* g, char* s);
+void* GetActiveCombatWork_ov000_02160130(void);
 char* GetOffsetPtr02160f08(void* w);
 void* FindEntryById_021dafd0(char* obj, int id);
 Sub18* GetActiveSub_02054000(Outer_02054000* o);
 void Clear12Bytes020e46c4(void* p);
 void DispatchIfCountPositive020dcf7c(int count, void* buf);
-unsigned char CopyOutRegion0x571d(char*, void*);
+unsigned char CopyOutRegion0x571d_020114ec(char*, void*);
 extern "C" void* func_ov017_021b8478(void* obj);
-int TestBitAt0x34(unsigned char* obj, unsigned int index);
-char* GetFieldByKeyFromWork0x88(void* work, int key);
+int TestBitAt0x34_020a35e0(unsigned char* obj, unsigned int index);
+char* GetFieldByKeyFromWork0x88_ov000_0216fcfc(void* work, int key);
 extern "C" unsigned int strlen(const char* s);
 extern "C" int sprintf(char* buf, const char* fmt, ...);
 #if !defined(jpn)
@@ -149,10 +149,10 @@ extern char data_ov025_021efbfc[];
 #endif
 
 #if defined(jpn)
-#define COPY_FIELD CopyStringToField0x3ec
+#define COPY_FIELD CopyStringToField0x3ec_02046520
 #define STATE_OFFSET 0x870
 #else
-#define COPY_FIELD CopyStringToField042c
+#define COPY_FIELD CopyStringToField042c_0204653c
 #define STATE_OFFSET 0x9a0
 #endif
 
@@ -311,7 +311,7 @@ extern "C" ARM void func_ov025_021ed634(Self021ed634* self) {
             #if defined(jpn)
 func_02047410(g, displayValue);
 #else
-StoreInArray0x8b0((StoreStruct*)g, 0, displayValue);
+StoreInArray0x8b0_020465c0((StoreStruct*)g, 0, displayValue);
 #endif
         } else if (cnt[0] != 0) {
             int displayValue = fp / cnt[0];
@@ -320,13 +320,13 @@ StoreInArray0x8b0((StoreStruct*)g, 0, displayValue);
             #if defined(jpn)
 func_02047410(g, displayValue);
 #else
-StoreInArray0x8b0((StoreStruct*)g, 0, displayValue);
+StoreInArray0x8b0_020465c0((StoreStruct*)g, 0, displayValue);
 #endif
         } else {
             #if defined(jpn)
 func_02047410(g, fp);
 #else
-StoreInArray0x8b0((StoreStruct*)g, 0, fp);
+StoreInArray0x8b0_020465c0((StoreStruct*)g, 0, fp);
 #endif
         }
         if (type == 5) {
@@ -345,7 +345,7 @@ StoreInArray0x8b0((StoreStruct*)g, 0, fp);
             if (IsValidId(v20)) {
                 InitObjFromCombatantId020e4bf4(objA, v20);
             } else {
-                GameObject* c = GetCombatantWithFlag0x400(gs, v20);
+                GameObject* c = GetCombatantWithFlag0x400_0200fea4(gs, v20);
                 if (c != 0) {
                     func_020e4ce8(objA, c, 1);
                     ((Cur*)g)->f20 = (int)objA;
@@ -358,7 +358,7 @@ StoreInArray0x8b0((StoreStruct*)g, 0, fp);
 #if defined(jpn)
         func_020473a0(g, name);
 #else
-        CopyStringToField0x3ac((char*)g, name);
+        CopyStringToField0x3ac_02046504((char*)g, name);
 #endif
 #if defined(jpn)
         if (v40 < 0) {
@@ -366,7 +366,7 @@ StoreInArray0x8b0((StoreStruct*)g, 0, fp);
         }
         if (v40 >= 0) {
             if (func_ov025_021ed5a4(v40, nameB)) func_020473a0(g, nameB);
-            SetByte0x1880(g, (signed char)v40);
+            SetByte0x1880_020464dc(g, (signed char)v40);
         }
 
 #else
@@ -377,7 +377,7 @@ StoreInArray0x8b0((StoreStruct*)g, 0, fp);
                 InitObjFromCombatantId020e4bf4(objB, v40);
                 ((Cur*)g)->f0 = (int)objB;
             } else {
-                GameObject* c = GetCombatantWithFlag0x400(gs, v40);
+                GameObject* c = GetCombatantWithFlag0x400_0200fea4(gs, v40);
                 if (c != 0) {
                     func_020e4ce8(objB, c, 1);
                     ((Cur*)g)->f0 = (int)objB;
@@ -385,13 +385,13 @@ StoreInArray0x8b0((StoreStruct*)g, 0, fp);
             }
         }
         if (v40 >= 0) {
-            SetByte0x1880(g, (signed char)v40);
+            SetByte0x1880_020464dc(g, (signed char)v40);
             int b = IsValidId(v40) ? 1 : 0;
             if (b != 0) {
                 InitObjFromCombatantId020e4bf4(objB, v40);
                 ((Cur*)g)->f0 = (int)objB;
             } else {
-                GameObject* c = GetCombatantWithFlag0x400(gs, v40);
+                GameObject* c = GetCombatantWithFlag0x400_0200fea4(gs, v40);
                 if (c != 0) {
                     func_020e4ce8(objB, c, 1);
                     ((Cur*)g)->f0 = (int)objB;
@@ -406,7 +406,7 @@ StoreInArray0x8b0((StoreStruct*)g, 0, fp);
         }
         COPY_FIELD(g, name);
         if (_Z22CheckKeyMatch_0215fb9cis((int)GetField6b0_021b8470(func_ov017_0218b5b0()->unknown_ptr_3718), self->list->id) != 0) {
-            Comb* c = (Comb*)GetCombatantWithFlag0x400(gs, v20);
+            Comb* c = (Comb*)GetCombatantWithFlag0x400_0200fea4(gs, v20);
             if (c != 0) {
                 c->p138[0x25] = c->b18d;
                 BuildName020488ec((char*)c);
@@ -420,14 +420,14 @@ StoreInArray0x8b0((StoreStruct*)g, 0, fp);
 #endif
         } else {
 #if defined(jpn)
-            if (func_ov025_021ed5a4(v20, nameA)) CopyStringToField0x3ec(g, nameA);
+            if (func_ov025_021ed5a4(v20, nameA)) CopyStringToField0x3ec_02046520(g, nameA);
         }
 
 #else
             if (IsValidId(v20)) {
                 InitObjFromCombatantId020e4bf4(objA, v20);
             } else {
-                GameObject* c = GetCombatantWithFlag0x400(gs, v20);
+                GameObject* c = GetCombatantWithFlag0x400_0200fea4(gs, v20);
                 func_020e4ce8(objA, c, 1);
             }
             if (v40 == v20) ((Cur*)g)->f10 = (int)objB;
@@ -436,15 +436,15 @@ StoreInArray0x8b0((StoreStruct*)g, 0, fp);
 
 #endif
         if (id == 0xf2 || id == 0x207) {
-            Comb* c = (Comb*)GetCombatantWithFlag0x400(gs, v20);
+            Comb* c = (Comb*)GetCombatantWithFlag0x400_0200fea4(gs, v20);
             if (c != 0 && c->p148 != 0) COPY_FIELD(g, c->p148 + 0x2c);
         }
 #if defined(jpn)
-        CopyStringToField042c(g, name);
+        CopyStringToField042c_0204653c(g, name);
 #else
-        CopyStringToField046c(g, name);
+        CopyStringToField046c_02046558(g, name);
 #endif
-        ActionDataTables* data = GetData02108e10();
+        ActionDataTables* data = GetData02108e10_020797dc();
         List021600f8* l = self->list;
         Row02079e2c* row;
         if (l->id == 0x1f8 || l->id == 0x3a9 || l->id == 0x3a7 || l->id == 0x3ac || l->id == 0x3ad || l->id == 0x392) {
@@ -454,7 +454,7 @@ StoreInArray0x8b0((StoreStruct*)g, 0, fp);
         }
         if (row != 0) {
 #if defined(jpn)
-            CopyStringToField042c(g, *(char**)row);
+            CopyStringToField042c_0204653c(g, *(char**)row);
 #else
             InitObjFromPackedFields020e4e38(objC, (Src020e4e38*)row);
             ((Cur*)g)->f8 = (int)objC;
@@ -462,13 +462,13 @@ StoreInArray0x8b0((StoreStruct*)g, 0, fp);
 #endif
         }
 #if defined(jpn)
-        CopyStringToField0x3ac(g, name);
+        CopyStringToField0x3ac_02046504(g, name);
 #else
-        CopyStringToField0x3ec(g, name);
+        CopyStringToField0x3ec_02046520(g, name);
 #endif
 #if defined(jpn)
         if (node != 0) {
-            char* w = GetOffsetPtr02160f08(GetActiveCombatWork());
+            char* w = GetOffsetPtr02160f08(GetActiveCombatWork_ov000_02160130());
             int index = node->s20;
             char* entry;
             if (IsValidId(index)) {
@@ -485,23 +485,23 @@ found_entry:
                 void* a = GetBoundedField156_02171674(entry, *(signed char*)(entry + 0x20));
                 void* b = GetBoundedField420_0217199c(entry, *(short*)(entry + 0x1e));
                 if (*(signed char*)self->pad16c != 0) {
-                    CopyStringToField0x3ac(g, self->pad16c);
+                    CopyStringToField0x3ac_02046504(g, self->pad16c);
                     if (*(short*)((char*)self->list + 4) != 0)
                         SetIndexedName02046574((Obj02046574*)g, 0, self->pad16c);
-                } else if (a != 0) CopyStringToField0x3ac(g, *(char**)a);
-                else if (b != 0) CopyStringToField0x3ac(g, *(char**)b);
+                } else if (a != 0) CopyStringToField0x3ac_02046504(g, *(char**)a);
+                else if (b != 0) CopyStringToField0x3ac_02046504(g, *(char**)b);
             }
         }
 
 #else
         if (node != 0) {
-            char* w = GetOffsetPtr02160f08(GetActiveCombatWork());
+            char* w = GetOffsetPtr02160f08(GetActiveCombatWork_ov000_02160130());
             Entry2c* e = (Entry2c*)FindEntryById_021dafd0(w, node->s20);
             if (IsValidIdU(node->s20)) {
                 int cnt = e->v;
                 if (self->s1ac != 0) cnt = (short)self->s1ac;
                 if (id == 0x257 || id == 0xc) {
-                    GameObject* c = GetCombatantWithFlag0x100(gs, node->s20);
+                    GameObject* c = GetCombatantWithFlag0x100_0200ff1c(gs, node->s20);
                     if (c != 0) {
                         Sub18* s = GetActiveSub_02054000((Outer_02054000*)c);
                         if (s != 0) cnt = s->v;
@@ -525,7 +525,7 @@ found_entry:
             || (row != 0 && row->kind == 1 && id == 0x1b && sb >= 2)) {
             strcpy(plural, nameA);
             strcat(plural, data_ov025_021efbfc);
-            CopyStringToField0x3ec(g, plural);
+            CopyStringToField0x3ec_02046520(g, plural);
         }
 
 #else
@@ -536,14 +536,14 @@ found_entry:
             || (row != 0 && row->kind == 1 && id == 0x26d && sb >= count30)) {
             *(g + 0x1000 + 0x9d7) = 1;
         }
-        int n5 = CopyOutRegion0x571d((char*)gs, out);
+        int n5 = CopyOutRegion0x571d_020114ec((char*)gs, out);
         unsigned char positiveFlaggedEntries = 0;
         unsigned char flaggedEntries = 0;
         unsigned char* tb = (unsigned char*)func_ov017_021b8478(func_ov017_0218b5b0()->unknown_ptr_3718);
-        char* ew = GetOffsetPtr02160f08(GetActiveCombatWork());
+        char* ew = GetOffsetPtr02160f08(GetActiveCombatWork_ov000_02160130());
         for (int q = 0; q < n5; q++) {
             Entry021dafd0* e = (Entry021dafd0*)FindEntryById_021dafd0(ew, (unsigned char)out[q]);
-            if (e != 0 && TestBitAt0x34(tb, (unsigned char)out[q]) != 0) {
+            if (e != 0 && TestBitAt0x34_020a35e0(tb, (unsigned char)out[q]) != 0) {
                 ++flaggedEntries;
                 if (e->v > 0) ++positiveFlaggedEntries;
             }
@@ -552,7 +552,7 @@ found_entry:
         ((MessageEntryCounts*)g)->positiveFlaggedEntries = positiveFlaggedEntries;
 
 #endif
-        char* fmt = GetFieldByKeyFromWork0x88(self->f168, (short)id);
+        char* fmt = GetFieldByKeyFromWork0x88_ov000_0216fcfc(self->f168, (short)id);
         if (fmt == 0) return;
         if (strlen(fmt) == 0) return;
 #if defined(jpn)
@@ -568,7 +568,7 @@ found_entry:
                 sprintf(buf, fmt, (double)*(float*)((char*)obj + 0x8e3c));
             }
             if (id == 0x1bf || id == 0x224 || id == 0x1c0 || id == 0x225 || (unsigned int)(id - 0x264) <= 7) {
-                Comb* c = (Comb*)GetCombatantWithFlag0x400(gs, self->list->s6);
+                Comb* c = (Comb*)GetCombatantWithFlag0x400_0200fea4(gs, self->list->s6);
                 if (c != 0 && c->p148 != 0) COPY_FIELD(g, c->p148 + 0x2c);
             }
 #if defined(jpn)

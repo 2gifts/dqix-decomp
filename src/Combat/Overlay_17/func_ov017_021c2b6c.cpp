@@ -17,7 +17,7 @@ extern "C" void* func_02057924(void);
 extern "C" void func_020a0cc4(unsigned int);
 extern "C" int func_02057e6c(void* list, int p1, SafeAllocator* alloc, int p2, int p3, State0207dfc8* p4);
 unsigned int GetMaxAlloc02012dd0(Struct02012dd0*);
-void* AllocateAligned4(AllocatorUnion*, unsigned int);
+void* AllocateAligned4_02012d88(AllocatorUnion*, unsigned int);
 void CopyState0207dfc8(State0207dfc8*, State0207dfc8*);
 void FindNodeAndProcess02057fb4(void*, int, int);
 void EnqueueEventTag30_021d24a8(int);
@@ -71,7 +71,7 @@ extern "C" ARM void func_ov017_021c2b6c(Obj021c2b6c* self) {
             func_020a0cc4(0x8000);
             self->needsPool = 1;
         }
-        void* buf = AllocateAligned4(&data_02114e20, 0x8000);
+        void* buf = AllocateAligned4_02012d88(&data_02114e20, 0x8000);
         self->alloc.CreateTypeA(buf, 0x8000);
         self->alloc.Reset();
         char* pool = res->unknown_2cc;

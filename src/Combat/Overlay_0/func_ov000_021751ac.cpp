@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-int GetAdjustedByteField0x1d6b(void* obj);
+int GetAdjustedByteField0x1d6b_ov000_021815c8(void* obj);
 
 struct Entry021751ac {
     char pad0[0x18];
@@ -20,7 +20,7 @@ struct Entry021751ac {
 
 // USA: func_ov000_021751ac
 extern "C" ARM void func_ov000_021751ac(char* obj) {
-    int adjusted = GetAdjustedByteField0x1d6b(obj);
+    int adjusted = GetAdjustedByteField0x1d6b_ov000_021815c8(obj);
     struct Entry021751ac* entry;
     for (signed char i = 0; i < 4; i++) {
         entry = (struct Entry021751ac*)(obj + 0x958) + *(signed char*)(obj + i + 0x6c);

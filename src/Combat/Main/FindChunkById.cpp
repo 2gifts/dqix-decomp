@@ -11,7 +11,7 @@ struct Hdr02b0288 {
 };
 
 // USA: func_020b0288
-ARM struct Entry02b0288 *FindChunkById(struct Hdr02b0288 *h, unsigned int key) {
+ARM struct Entry02b0288 *FindChunkById_020b0288(struct Hdr02b0288 *h, unsigned int key) {
     unsigned char *p = (unsigned char *)h + h->dataOffset;
     unsigned short count = h->count;
     unsigned short i = 0;

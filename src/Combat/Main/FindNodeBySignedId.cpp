@@ -7,7 +7,7 @@ struct NodeEF18 {
 };
 
 // USA: func_0206ef18
-ARM struct NodeEF18* FindNodeBySignedId(void* base, int key) {
+ARM struct NodeEF18* FindNodeBySignedId_0206ef18(void* base, int key) {
     struct NodeEF18* node = *(struct NodeEF18**)base;
     while (node != 0) {
         if (node->id == key) {

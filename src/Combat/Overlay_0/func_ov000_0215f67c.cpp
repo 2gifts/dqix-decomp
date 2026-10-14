@@ -9,7 +9,7 @@ struct BattleCtx_0215f67c {
 
 extern unsigned short data_ov000_02182bb4[8];
 
-int IsField0xcNonNegative(int* obj);
+int IsField0xcNonNegative_020a3694(int* obj);
 extern "C" int func_ov000_0215e9fc(struct BattleCtx_0215f67c* ctx, unsigned short* buf, int max, int start);
 extern "C" int func_ov000_0215eb1c(struct BattleCtx_0215f67c* ctx, unsigned short* buf, int max, int start);
 
@@ -47,7 +47,7 @@ extern "C" ARM unsigned short func_ov000_0215f67c(struct BattleCtx_0215f67c* ctx
         list[2] = 0xde;
         list[3] = 0x394;
         count = 4;
-        if (!IsField0xcNonNegative(ctx->field_0x8e18)) {
+        if (!IsField0xcNonNegative_020a3694(ctx->field_0x8e18)) {
             list[4] = 0x395;
             count = 5;
         }

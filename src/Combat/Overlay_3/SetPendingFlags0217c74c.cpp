@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 
 extern unsigned short data_02114e30;
 
@@ -20,7 +20,7 @@ struct Obj0217c74c {
 
 // USA: func_ov003_0217c74c
 ARM void SetPendingFlags0217c74c(struct Obj0217c74c* obj) {
-    if (!TestFlag0SetAndFlag1Clear(&data_02114e30, 0xc0f)) {
+    if (!TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0xc0f)) {
         if (data_02114e54.byte5f == 0) return;
         if (data_02114e54.half24 == 0) return;
     }

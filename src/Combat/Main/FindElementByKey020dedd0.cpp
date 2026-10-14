@@ -12,15 +12,15 @@ struct Container020de650 {
 
 typedef int (*KeyFunc020de650)(struct Element020de650*);
 
-int GetField0x18Short(void*);
+int GetField0x18Short_020de56c(void*);
 struct Element020de650* BinarySearchByComparator020de650(struct Container020de650* c, int key, KeyFunc020de650 fn);
 
 struct Container020dedd0 {
-    unsigned short count;          // 0x0
-    unsigned char pad[10];         // 0x2
-    struct Element020de650* base;  // 0xc
-    unsigned char pad2[4];         // 0x10
-    unsigned char useBinarySearch; // 0x14
+    unsigned short count;
+    unsigned char pad[10];
+    struct Element020de650* base;
+    unsigned char pad2[4];
+    unsigned char useBinarySearch;
 };
 
 // USA: func_020dedd0
@@ -32,10 +32,10 @@ ARM struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0* c
         return NULL;
     }
     if (c->useBinarySearch != 0) {
-        return BinarySearchByComparator020de650((struct Container020de650*)c, key, (KeyFunc020de650)GetField0x18Short);
+        return BinarySearchByComparator020de650((struct Container020de650*)c, key, (KeyFunc020de650)GetField0x18Short_020de56c);
     }
     elem = c->base;
-    if (elem == NULL || (KeyFunc020de650)GetField0x18Short == NULL) {
+    if (elem == NULL || (KeyFunc020de650)GetField0x18Short_020de56c == NULL) {
         elem = NULL;
         goto done;
     }
@@ -45,7 +45,7 @@ ARM struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0* c
         goto done;
     }
     for (i = 0; i < count; i++, elem++) {
-        if (key == GetField0x18Short(elem)) {
+        if (key == GetField0x18Short_020de56c(elem)) {
             goto done;
         }
     }

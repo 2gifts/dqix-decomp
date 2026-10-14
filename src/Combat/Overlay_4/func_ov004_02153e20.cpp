@@ -69,7 +69,7 @@ extern "C" void* func_ov023_021f6880(void* list, int id);
 extern "C" int func_ov023_021f6f10(void* obj);
 extern "C" unsigned char* func_0205ec34(void);
 extern "C" int _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(struct Grid021f9b30* self, unsigned short val, unsigned int x, unsigned int y);
-int TestBitInByteArray(int unused, unsigned char* arr, int index);
+int TestBitInByteArray_0206dfb0(int unused, unsigned char* arr, int index);
 extern "C" void func_ov023_021f9d14(void* grid, void* ctx);
 extern "C" void func_ov023_021f809c(void* obj, void* ctx);
 int CheckType16ThenTestBit_02153d8c(void* ctx);
@@ -115,7 +115,7 @@ extern "C" ARM int func_ov004_02153e20(void* ctx) {
                 if (entry) {
                     int bits = (unsigned short)((entry->flags << 9) >> 21);
                     if (bits > 0) {
-                        if (TestBitInByteArray((int)flags, flags + 0x8c, bits + 0x76 + 0xc00)) {
+                        if (TestBitInByteArray_0206dfb0((int)flags, flags + 0x8c, bits + 0x76 + 0xc00)) {
                             slot->value = entry->value;
                         }
                     }

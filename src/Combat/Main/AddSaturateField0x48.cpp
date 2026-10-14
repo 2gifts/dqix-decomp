@@ -6,7 +6,7 @@ struct S_a0858 {
 };
 
 // USA: func_020a0858
-ARM void AddSaturateField0x48(struct S_a0858* p, unsigned int amount) {
+ARM void AddSaturateField0x48_020a0858(struct S_a0858* p, unsigned int amount) {
     unsigned int old = p->value;
     unsigned int sum = amount + old;
     if (sum < old) {

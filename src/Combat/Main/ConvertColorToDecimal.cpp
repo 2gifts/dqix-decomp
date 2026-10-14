@@ -6,7 +6,7 @@ struct ColorHolder {
 };
 
 // USA: func_0204be3c
-ARM unsigned short ConvertColorToDecimal(struct ColorHolder* obj) {
+ARM unsigned short ConvertColorToDecimal_0204be3c(struct ColorHolder* obj) {
     unsigned short color = obj->color;
     unsigned short red = color & 0x1f;
     unsigned short green = (color & 0x3e0) >> 5;

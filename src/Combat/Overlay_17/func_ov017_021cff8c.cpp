@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void* GetData02100044(void);
-int GetFieldAt0x150(unsigned char* obj);
+void* GetData02100044_0202ae24(void);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct SubBuf021cff8c {
@@ -20,9 +20,9 @@ struct EventBuf021cff8c {
 
 // USA: func_ov017_021cff8c
 extern "C" ARM void func_ov017_021cff8c(int id, int skipCheck) {
-    void* mgr = GetData02100044();
+    void* mgr = GetData02100044_0202ae24();
     GameState* battle = GameState::GetInstance();
-    unsigned char* list = (unsigned char*)GetPtrField0x2a04(battle);
+    unsigned char* list = (unsigned char*)GetPtrField0x2a04_02010828(battle);
 
     int found = 0;
     if (skipCheck) {
@@ -36,10 +36,10 @@ extern "C" ARM void func_ov017_021cff8c(int id, int skipCheck) {
     }
     if (!found) return;
 
-    GameObject* c = GetCombatantWithFlag0x100(battle, id);
+    GameObject* c = GetCombatantWithFlag0x100_0200ff1c(battle, id);
     if (!c) return;
 
-    int field150 = GetFieldAt0x150((unsigned char*)c);
+    int field150 = GetFieldAt0x150_02053c6c((unsigned char*)c);
     if (!field150) return;
 
     short* src = (short*)(field150 + 0x454);

@@ -4,7 +4,7 @@ extern "C" int func_020d424c(int a, int b, int c);
 extern "C" int func_020d40bc(int a, int b, const void* buf, unsigned int size,
                              unsigned short e0, unsigned short e1, unsigned short e2,
                              int f, int g);
-void* GetBattleContext(void);
+void* GetBattleContext_020d41d8(void);
 void InvalidateDataCacheRange(const void* addr, unsigned int size);
 void CleanCacheRange(const void* addr, unsigned int size);
 
@@ -29,7 +29,7 @@ struct BattleContext020d59bc {
 extern "C" ARM int func_020d59bc(int a, int b, const void* buf, unsigned int size,
                                  unsigned short e0, unsigned short e1, unsigned short e2) {
     int count = 1;
-    struct Comm020d59bc* comm = ((struct BattleContext020d59bc*)GetBattleContext())->field4;
+    struct Comm020d59bc* comm = ((struct BattleContext020d59bc*)GetBattleContext_020d41d8())->field4;
     int r = func_020d424c(2, 9, 0xa);
     if (r != 0) {
         return r;

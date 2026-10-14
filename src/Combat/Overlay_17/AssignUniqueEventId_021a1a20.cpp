@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
-void* GetData02108ea8(void);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* battleStruct, int combatantId);
+void* GetData02108ea8_0207d78c(void);
 struct Entry0207d9bc;
 struct Entry0207d9bc* FindEntryByHalfword(struct Entry0207d9bc* arr, unsigned short key);
 
@@ -16,14 +16,14 @@ extern "C" ARM unsigned short func_ov017_021a1a20(void) {
  enum {regionalOffset0=0x1b2};
 #endif
     GameState* bs = GameState::GetInstance();
-    void* table = GetData02108ea8();
+    void* table = GetData02108ea8_0207d78c();
     int i;
 retry:
     if (*(unsigned short*)(data_ov017_021d7654 + 2) > 0x7fff) {
         *(unsigned short*)(data_ov017_021d7654 + 2) = 0x7ff8;
     }
     for (i = 0; i < 4; i++) {
-        GameObject* c = GetCombatantWithFlag0x100(bs, i);
+        GameObject* c = GetCombatantWithFlag0x100_0200ff1c(bs, i);
         if (c != NULL) {
             unsigned short field = *(unsigned short*)((char*)c + regionalOffset0);
             if (*(unsigned short*)(data_ov017_021d7654 + 2) == field) {

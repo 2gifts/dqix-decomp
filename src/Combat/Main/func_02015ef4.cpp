@@ -57,7 +57,7 @@ struct ChestDisplayState {
     Foo02048004* object;
 };
 
-void MaybeInvoke0204719c(Foo02048004*);
+void MaybeInvoke0204719c_02047230(Foo02048004*);
 extern "C" int func_02015ae4(ChestDisplayState*);
 extern "C" int func_02015cd0(ChestDisplayState*);
 void* GetElement02094d5c(GetElement02094d5cList*, int);
@@ -71,7 +71,7 @@ void CopyState0207dfc8(State0207dfc8*, State0207dfc8*);
 void RestorePairTables0207df90(char*);
 void Forward02047b30(void*, int, int, int);
 void BackupPairTables0207dfac(char*);
-void* GetField0x3b0Value(GameState*);
+void* GetField0x3b0Value_020100bc(GameState*);
 void ComputeTwoFromVec3_0202ec84(void*, Vec3copy0202ec84*, int*, int*);
 void RenderFlaggedIndexedEntry(StructAt020473c8*, int);
 
@@ -93,7 +93,7 @@ extern "C" ARM int func_02015ef4(Zone3D* self, int index) {
     self->unk_23bc[1] = 0;
     if (entry->state == 0 || entry->state == 8) {
         if (entry->object) {
-            MaybeInvoke0204719c((Foo02048004*)entry->object);
+            MaybeInvoke0204719c_02047230((Foo02048004*)entry->object);
             entry->object = 0;
         }
         return -1;
@@ -184,7 +184,7 @@ extern "C" ARM int func_02015ef4(Zone3D* self, int index) {
                 entry->angleX = 0x647a;
                 entry->state = 1;
                 if (entry->object) {
-                    MaybeInvoke0204719c((Foo02048004*)entry->object);
+                    MaybeInvoke0204719c_02047230((Foo02048004*)entry->object);
                     entry->object = 0;
                 }
             }
@@ -192,7 +192,7 @@ extern "C" ARM int func_02015ef4(Zone3D* self, int index) {
             entry->angleX = 0x4000;
             entry->state = 8;
             if (entry->object) {
-                MaybeInvoke0204719c((Foo02048004*)entry->object);
+                MaybeInvoke0204719c_02047230((Foo02048004*)entry->object);
                 entry->object = 0;
             }
         }
@@ -202,7 +202,7 @@ extern "C" ARM int func_02015ef4(Zone3D* self, int index) {
         self->unk_23bc[1] = 1;
         int x = 0;
         int y = 0;
-        void* camera = GetField0x3b0Value(gs);
+        void* camera = GetField0x3b0Value_020100bc(gs);
         if (camera) ComputeTwoFromVec3_0202ec84(camera, (Vec3copy0202ec84*)entry, &x, &y);
         x -= 12;
         y -= 0x28;

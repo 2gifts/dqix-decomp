@@ -15,26 +15,26 @@ extern "C" void* func_0202ae18(void);
 extern "C" void* func_02012fe4(void);
 extern "C" GameResources* func_ov017_0218b5b0();
 extern "C" void func_0202c288(void*);
-void SetByte0x1ca(unsigned char*, int);
-int TestBitBySignedByteIndex(SearchStruct* obj, int value);
+void SetByte0x1ca_02039880(unsigned char*, int);
+int TestBitBySignedByteIndex_0202c1c0(SearchStruct* obj, int value);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* obj);
 extern "C" void func_ov017_02191108(GameResources*, int, int, int, int);
 void CallHelperWithBuf_021907dc(int, int, int, int, int);
-signed char GetSignedByte0x1ca(void*);
+signed char GetSignedByte0x1ca_02039888(void*);
 void SetVecYFromValue02033874(Obj02033874*, int);
-void ClearBitsInWord(unsigned int*, unsigned int);
-void SetByte0x5cdaAndClearField0xa(unsigned char*, unsigned char);
-void* GetField0x74deForValidIndex(char* p, unsigned int index);
-void SetWord0x71f8(void*, int);
+void ClearBitsInWord_0203b4b0(unsigned int*, unsigned int);
+void SetByte0x5cdaAndClearField0xa_020120d4(unsigned char*, unsigned char);
+void* GetField0x74deForValidIndex_020120a0(char* p, unsigned int index);
+void SetWord0x71f8_0201206c(void*, int);
 void SetField0x1b2IfMatchOrFlag02053f7c(Obj02053f7c*, unsigned short, int);
 extern "C" void* func_0205ec34(void);
 extern "C" void func_0206dfe8(void*, int, int);
 void CopyRegionsAndClearField0206e70c(char*);
-void ApplySlotBytesToBattleStruct(unsigned char*);
-float GetActiveBitIndex(GameState*);
+void ApplySlotBytesToBattleStruct_0206df14(unsigned char*);
+float GetActiveBitIndex_020103e8(GameState*);
 void InitFieldsFromCombatant_0219bcac(unsigned char);
-unsigned char* GetField0x3f8Address(GameState*);
-void* GetGlobal02109418();
+unsigned char* GetField0x3f8Address_0200fd0c(GameState*);
+void* GetGlobal02109418_02094d6c();
 void* CallFunc0205ec34_020965f8();
 void* ZeroInitReturn020de824(void*);
 void ZeroInit020de848(void*);
@@ -43,11 +43,11 @@ extern "C" void* ExtractFileFromGP2(const char* gp2Path, const char* innerFilePa
 int InitAndDispatch020def44(int, int, int, short);
 void InitStruct0207cbe8(char*);
 extern "C" void func_0207cc18(void*, void*);
-void* GetPtrField0x2a04(GameState*);
+void* GetPtrField0x2a04_02010828(GameState*);
 struct KeyMap020a095c;
 void AddKeyValueClamped020a095c(KeyMap020a095c*, int, int);
 void InitAndAppendEntry020dbc5c(char*, int);
-int GetField0x397cValue(GameState*);
+int GetField0x397cValue_020100b0(GameState*);
 void EnqueueEventTag20_021cee78(int, unsigned char);
 extern "C" void func_ov017_02191234(GameResources*);
 
@@ -142,7 +142,7 @@ extern "C" ARM void func_ov017_021b0bc0(Self021b0bc0* self) {
     }
     GameObject* leader = gs->GetPartyMemberByIndex(self->leader);
     if (leader != NULL) {
-        SetByte0x1ca((unsigned char*)leader, *(short*)((char*)leader + 4));
+        SetByte0x1ca_02039880((unsigned char*)leader, *(short*)((char*)leader + 4));
     }
     short* y = ys;
     for (int i = 0; i < 4; i++, y++) {
@@ -153,7 +153,7 @@ extern "C" ARM void func_ov017_021b0bc0(Self021b0bc0* self) {
     }
 
     for (int i = 0; i < 4; i++) {
-        if (TestBitBySignedByteIndex(search, i) == 0) {
+        if (TestBitBySignedByteIndex_0202c1c0(search, i) == 0) {
             continue;
         }
         if (i == GetSearchStructCurrentArrEntry((SearchStruct0202c1a4*)search)) {
@@ -173,7 +173,7 @@ extern "C" ARM void func_ov017_021b0bc0(Self021b0bc0* self) {
             if (member == NULL) {
                 continue;
             }
-            if (i == GetSignedByte0x1ca(member)) {
+            if (i == GetSignedByte0x1ca_02039888(member)) {
                 continue;
             }
             if (i != 0 && !(*(unsigned short*)member & 0x1000)) {
@@ -181,14 +181,14 @@ extern "C" ARM void func_ov017_021b0bc0(Self021b0bc0* self) {
             }
             SetVecYFromValue02033874((Obj02033874*)member, *y);
         }
-        ClearBitsInWord((unsigned int*)res, 0x40);
+        ClearBitsInWord_0203b4b0((unsigned int*)res, 0x40);
 
         Snapshot021b0bc0* snap = self->snapshot;
-        SetByte0x5cdaAndClearField0xa((unsigned char*)gs, snap->f0);
+        SetByte0x5cdaAndClearField0xa_020120d4((unsigned char*)gs, snap->f0);
         memcpy((char*)gs + 0x5cdc, snap->block4, sizeof(snap->block4));
         memcpy((char*)gs + 0x5e6c, snap->block194, sizeof(snap->block194));
-        memcpy(GetField0x74deForValidIndex((char*)gs, 0), snap->block2a4, sizeof(snap->block2a4));
-        SetWord0x71f8(gs, snap->f2c4);
+        memcpy(GetField0x74deForValidIndex_020120a0((char*)gs, 0), snap->block2a4, sizeof(snap->block2a4));
+        SetWord0x71f8_0201206c(gs, snap->f2c4);
         SetF1b34(GetZoneState(zone), snap->f2c8);
         SetF1b48(GetZoneState(zone), snap->f2cc);
         SetF1b38(GetZoneState(zone), snap->f2d0);
@@ -207,14 +207,14 @@ extern "C" ARM void func_ov017_021b0bc0(Self021b0bc0* self) {
         func_0206dfe8(save, 0x38e, 0x3e8);
         func_0206dfe8(save, 0x79e, 0x2bc);
         CopyRegionsAndClearField0206e70c((char*)save);
-        ApplySlotBytesToBattleStruct((unsigned char*)save);
-        gs->SetDayTimer(GetActiveBitIndex(gs));
+        ApplySlotBytesToBattleStruct_0206df14((unsigned char*)save);
+        gs->SetDayTimer(GetActiveBitIndex_020103e8(gs));
         LightingManager* lighting = LightingManager::GetInstance();
         lighting->dayNightTimer_ = gs->GetDayTimer();
         lighting->timeOfDayIndex_ = gs->GetTimeOfDay();
         InitFieldsFromCombatant_0219bcac(1);
-        GetField0x3f8Address(gs)[0xa] = 0;
-        GetGlobal02109418();
+        GetField0x3f8Address_0200fd0c(gs)[0xa] = 0;
+        GetGlobal02109418_02094d6c();
         CallFunc0205ec34_020965f8();
 
         ZeroInitReturn020de824(list);
@@ -231,13 +231,13 @@ extern "C" ARM void func_ov017_021b0bc0(Self021b0bc0* self) {
         InitStruct0207cbe8((char*)&context);
         InitStruct0207cbe8((char*)&context);
         func_0207cc18(&context, &entry);
-        AddKeyValueClamped020a095c((KeyMap020a095c*)GetPtrField0x2a04(gs), 0x5612, 1);
+        AddKeyValueClamped020a095c((KeyMap020a095c*)GetPtrField0x2a04_02010828(gs), 0x5612, 1);
     } else if (self->mode == 0) {
         InitAndAppendEntry020dbc5c((char*)res, self->leader);
-        unsigned char* slots = (unsigned char*)GetPtrField0x2a04(gs) + 0xf78;
+        unsigned char* slots = (unsigned char*)GetPtrField0x2a04_02010828(gs) + 0xf78;
         for (int i = 0; i < 4; i++, slots++) {
             unsigned char id = *slots;
-            if (id != GetField0x397cValue(gs)) {
+            if (id != GetField0x397cValue_020100b0(gs)) {
                 EnqueueEventTag20_021cee78(id, 0);
             }
         }

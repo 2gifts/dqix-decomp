@@ -28,9 +28,9 @@ extern "C" void func_0205cc50(void* obj, int a, int b);
 #endif
 
 struct ResetBytesAndSetByte0x16Data;
-void ResetBytesAndSetByte0x16(struct ResetBytesAndSetByte0x16Data* p, int val);
+void ResetBytesAndSetByte0x16_0205c77c(struct ResetBytesAndSetByte0x16Data* p, int val);
 
-void SetupGlobalObjType1AndInitSelfPointer(unsigned char* obj);
+void SetupGlobalObjType1AndInitSelfPointer_0205cd28(unsigned char* obj);
 void InitGlobalObjAndSelfPointer0205cd94(unsigned char* p);
 
 struct Obj0205eaa0;
@@ -70,13 +70,13 @@ extern "C" ARM void func_ov013_02185990(unsigned char* obj) {
 #endif
 
     *(unsigned char*)(tag + LOW_REGION(0x594, 0x234)) = 1;
-    ResetBytesAndSetByte0x16((struct ResetBytesAndSetByte0x16Data*)(tag + LOW_REGION(0x3d4, 0x4)), 1);
+    ResetBytesAndSetByte0x16_0205c77c((struct ResetBytesAndSetByte0x16Data*)(tag + LOW_REGION(0x3d4, 0x4)), 1);
 
     *(unsigned char*)(tag + LOW_REGION(0x593, 0x233)) = 1;
     *(unsigned char*)(tag + LOW_REGION(0x594, 0x234)) = 1;
-    ResetBytesAndSetByte0x16((struct ResetBytesAndSetByte0x16Data*)(tag + LOW_REGION(0x3d4, 0x4)), 1);
+    ResetBytesAndSetByte0x16_0205c77c((struct ResetBytesAndSetByte0x16Data*)(tag + LOW_REGION(0x3d4, 0x4)), 1);
 
-    SetupGlobalObjType1AndInitSelfPointer(tag + LOW_REGION(0x3d0, 0));
+    SetupGlobalObjType1AndInitSelfPointer_0205cd28(tag + LOW_REGION(0x3d0, 0));
     InitGlobalObjAndSelfPointer0205cd94(tag + LOW_REGION(0x3d0, 0));
 
     DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 5, 0);

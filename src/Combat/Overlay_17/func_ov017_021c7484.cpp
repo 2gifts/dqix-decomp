@@ -34,20 +34,20 @@ struct LevelMessage_021c7484 {
 struct LevelSelection_021c7484 { char pad0[8]; unsigned short event; };
 
 extern "C" void* func_ov017_021b8478(void*);
-void* GetData02100044();
-int TestBitAt0x34(unsigned char*, unsigned int);
+void* GetData02100044_0202ae24();
+int TestBitAt0x34_020a35e0(unsigned char*, unsigned int);
 extern "C" void func_0205e330(void*, void*, int);
 
 // USA: func_ov017_021c7484
 extern "C" ARM void func_ov017_021c7484() {
     GameState* game = GameState::GetInstance();
     LevelSelection_021c7484* selection = (LevelSelection_021c7484*)func_ov017_021b8478(func_ov017_0218b5b0()->unknown_ptr_3718);
-    void* context = GetData02100044();
+    void* context = GetData02100044_0202ae24();
     LevelMessage_021c7484 message;
     message.type = 0x72;
     LevelPayload_021c7484* payload = &message.payload;
     for (int i = 0; i < 4; ++i) {
-        if (!TestBitAt0x34((unsigned char*)selection, (unsigned char)i)) continue;
+        if (!TestBitAt0x34_020a35e0((unsigned char*)selection, (unsigned char)i)) continue;
         GameObject* combatant = game->GetCombatantByIndex(i);
         if (!((LevelStats_021c7484*)combatant->currentStats_)->active) continue;
         payload->event = selection->event;

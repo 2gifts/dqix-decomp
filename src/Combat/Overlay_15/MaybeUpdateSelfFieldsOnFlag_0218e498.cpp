@@ -11,7 +11,7 @@ struct Struct0218e498 {
 };
 
 extern "C" void func_ov015_0218cc24(struct Struct0218e498* obj);
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 
 extern unsigned short data_02114e30;
 
@@ -25,7 +25,7 @@ extern "C" ARM void func_ov015_0218e498(struct Struct0218e498* obj) {
     unsigned char* p = obj->field24;
     int flag = 0;
     if (cond != 0) {
-        if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x100) != 0) {
+        if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x100) != 0) {
             flag = 1;
         }
     } else {

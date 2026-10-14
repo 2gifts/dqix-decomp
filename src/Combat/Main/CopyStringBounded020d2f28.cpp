@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-int StringLength(const char* s);
+int StringLength_020d2ff0(const char* s);
 
 // USA: func_020d2f28
 ARM int CopyStringBounded020d2f28(char* dst, const char* src, int n) {
@@ -17,5 +17,5 @@ ARM int CopyStringBounded020d2f28(char* dst, const char* src, int n) {
     if (i >= n - 1) {
         if (n != 0) dst[i] = 0;
     }
-    return StringLength(src);
+    return StringLength_020d2ff0(src);
 }

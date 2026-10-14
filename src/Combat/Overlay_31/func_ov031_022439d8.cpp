@@ -23,7 +23,7 @@ struct Struct022439d8 {
 
 extern SafeAllocator data_ov031_02291e3c;
 extern "C" void func_ov023_021f5b9c(void* a, void* b, int c, void* d);
-void SetByteField0x253(void* p);
+void SetByteField0x253_020397c0(void* p);
 FlagWord020466f4* GetDataPtr02114e04_020d6c00(void);
 void ClearFlags020466f4(FlagWord020466f4* p, unsigned int flags);
 
@@ -33,7 +33,7 @@ extern "C" ARM int func_ov031_022439d8(Struct022439d8* ctx) {
 	BackgroundLoader* loader = BackgroundLoader::GetInstance();
 	GameObject* obj = GameState::GetInstance()->GetUnknownGameObject();
 	if (obj != 0) {
-		SetByteField0x253(obj);
+		SetByteField0x253_020397c0(obj);
 	}
 #if defined(jpn)
 	*(int*)((char*)base + 0x41e4) = 0;

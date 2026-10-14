@@ -16,8 +16,8 @@ extern "C" ARM void func_0205b0d8(SpriteContext0205ac40* context, Matrix2x2* tra
     Matrix2x2 rotation;
     if (sprite != NULL && transform != NULL && affine != NULL) {
         func_020c111c(&rotation, SineSample(sprite->angle >> 4), CosineSample(sprite->angle >> 4));
-        ScalePairsByTwoFactors(&rotation, transform, sprite->scaleX, sprite->scaleY);
-        ScalePairsByTwoFactors(&rotation, affine,
+        ScalePairsByTwoFactors_020c1128(&rotation, transform, sprite->scaleX, sprite->scaleY);
+        ScalePairsByTwoFactors_020c1128(&rotation, affine,
                               fix32_Divide(0x1000, sprite->scaleX),
                               fix32_Divide(0x1000, sprite->scaleY));
     }

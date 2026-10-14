@@ -38,17 +38,17 @@ struct ContainerEvent_021b5aec {
 
 extern "C" ActorListManager* func_02012fe4(void);
 extern "C" unsigned char* func_0205ec34(void);
-ActorEntry* GetActorEntryByIndex(ActorListManager* manager, int index);
-void SetByteField0x253(void* obj);
+ActorEntry* GetActorEntryByIndex_0201777c(ActorListManager* manager, int index);
+void SetByteField0x253_020397c0(void* obj);
 extern "C" void func_ov017_021b5a30(ContainerEvent_021b5aec* obj);
-int TestBitInByteArray(int unused, unsigned char* arr, int index);
+int TestBitInByteArray_0206dfb0(int unused, unsigned char* arr, int index);
 void* ZeroInitReturn020de824(void* obj);
 void InitStruct0207cbe8(char* obj);
 extern "C" void func_0207d538(LootBag_021b5aec* bag, int lootType, int itemID, int arg, int flag);
 extern "C" void func_ov017_021b6174(int id, int index, int bit);
 void EnqueueEventTag165_021cfde0(unsigned short a, unsigned short b, unsigned short c);
 extern "C" unsigned int* func_ov017_0218b5b0(void);
-void SetBitsInField4(unsigned int* obj, unsigned int mask);
+void SetBitsInField4_0203b4d8(unsigned int* obj, unsigned int mask);
 
 // USA: func_ov017_021b5aec
 extern "C" ARM int func_ov017_021b5aec(ContainerEvent_021b5aec* obj) {
@@ -60,9 +60,9 @@ extern "C" ARM int func_ov017_021b5aec(ContainerEvent_021b5aec* obj) {
     ActorListManager* actors = func_02012fe4();
     unsigned char* flags = func_0205ec34();
     LootableContainerManager* containers = LootableContainerManager::GetMainInstance();
-    ActorEntry* actor = GetActorEntryByIndex(actors, obj->actorIndex);
+    ActorEntry* actor = GetActorEntryByIndex_0201777c(actors, obj->actorIndex);
     if (containers == 0 || flags == 0 || actor == 0) {
-        SetByteField0x253(obj->leader);
+        SetByteField0x253_020397c0(obj->leader);
         func_ov017_021b5a30(obj);
         obj->done = 1;
         return 6;
@@ -78,7 +78,7 @@ extern "C" ARM int func_ov017_021b5aec(ContainerEvent_021b5aec* obj) {
     LootableContainerManager::Container* container = containers->GetContainerByID(actor->id, &listPos);
     if (container != 0) {
         containerID = container->uniqueID;
-        alreadyOpened = TestBitInByteArray((int)flags, flags + 0x8c, containerID + 0x79e);
+        alreadyOpened = TestBitInByteArray_0206dfb0((int)flags, flags + 0x8c, containerID + 0x79e);
         if (!alreadyOpened) {
             obj->container = container;
             if (container->lootType) {
@@ -97,10 +97,10 @@ extern "C" ARM int func_ov017_021b5aec(ContainerEvent_021b5aec* obj) {
     func_ov017_021b6174(actors->id, obj->actorIndex, containerID);
     EnqueueEventTag165_021cfde0(actors->id, obj->actorIndex, containerID);
     if (!alreadyOpened && hasLoot) {
-        SetBitsInField4(func_ov017_0218b5b0(), 0x40);
+        SetBitsInField4_0203b4d8(func_ov017_0218b5b0(), 0x40);
         return 1;
     }
-    SetByteField0x253(obj->leader);
+    SetByteField0x253_020397c0(obj->leader);
     func_ov017_021b5a30(obj);
     obj->done = 1;
     return 6;

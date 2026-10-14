@@ -64,7 +64,7 @@ void InitObjFromCombatantId020e4bf4(void *, int);
 Element021760cc *FindElementByKey020dedd0(Container020dedd0 *, int);
 int ComputeRatio_02175898(char *, void *);
 struct StoreStruct;
-void StoreInArray0x8b0(StoreStruct *, int, int);
+void StoreInArray0x8b0_020465c0(StoreStruct *, int, int);
 const char *GetFieldByKey020e0434(Container020e0310 *, int);
 extern "C" void func_0204500c(Messages021760cc *, const char *, int, int);
 extern "C" void func_ov003_021749c0(char *);
@@ -117,8 +117,8 @@ extern "C" ARM void func_ov003_021760cc(Menu021760cc *menu) {
             if (element) {
                 int value = (menu->mode == 4 ? ComputeRatio_02175898((char *) menu, element) : element->value);
                 value *= menu->count;
-                StoreInArray0x8b0((StoreStruct *) msgs, 0, value);
-                StoreInArray0x8b0((StoreStruct *) msgs, 1, menu->count);
+                StoreInArray0x8b0_020465c0((StoreStruct *) msgs, 0, value);
+                StoreInArray0x8b0_020465c0((StoreStruct *) msgs, 1, menu->count);
             }
             msgs->loaded = &loaded;
             if (menu->flags & 0x200) {

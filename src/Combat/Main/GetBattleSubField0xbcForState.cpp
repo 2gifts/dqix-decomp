@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
-void* GetBattleContext(void);
-int GetBattleStateCode(void);
+void* GetBattleContext_020d41d8(void);
+int GetBattleStateCode_020d41e8(void);
 void InvalidateDataCacheRange(const void* addr, unsigned int size);
 
 struct BattleCtx020d4ac8 {
@@ -11,9 +11,9 @@ struct BattleCtx020d4ac8 {
 
 // USA: func_020d4ac8
 #pragma optimize_for_size off
-ARM int GetBattleSubField0xbcForState(void) {
-    struct BattleCtx020d4ac8* ctx = (struct BattleCtx020d4ac8*)GetBattleContext();
-    if (GetBattleStateCode() != 0) return 0;
+ARM int GetBattleSubField0xbcForState_020d4ac8(void) {
+    struct BattleCtx020d4ac8* ctx = (struct BattleCtx020d4ac8*)GetBattleContext_020d41d8();
+    if (GetBattleStateCode_020d41e8() != 0) return 0;
 
     InvalidateDataCacheRange((const void*)ctx->sub, 2);
     unsigned short code = *(unsigned short*)ctx->sub;

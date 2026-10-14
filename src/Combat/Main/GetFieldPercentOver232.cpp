@@ -2,7 +2,7 @@
 #include <globaldefs.h>
 
 // USA: func_020a08a4
-ARM int GetFieldPercentOver232(BattleRecordSnapshot* record) {
+ARM int GetFieldPercentOver232_020a08a4(BattleRecordSnapshot* record) {
     unsigned int v = record->unknown14_9;
     unsigned int pct = v * 100 / 232;
     if (pct != 0) {

@@ -9,9 +9,8 @@ enum { kRegionValue45C_284 = 0x45c };
 enum { kRegionValue49F_2C7 = 0x49f };
 #endif
 
-
 extern "C" void func_ov003_02160c58(unsigned char* self, short* outHigh, short* outLow);
-void* GetPtrField0x2a04(GameState*);
+void* GetPtrField0x2a04_02010828(GameState*);
 
 extern "C" void func_ov003_02165c9c(unsigned char* self);
 
@@ -20,10 +19,10 @@ extern "C" ARM void func_ov003_02165bd8(unsigned char* self) {
     short outHigh, outLow;
     func_ov003_02160c58(self, &outHigh, &outLow);
 
-    unsigned char byteF7C = *((unsigned char*)GetPtrField0x2a04(GameState::GetInstance()) + 0xf7c);
+    unsigned char byteF7C = *((unsigned char*)GetPtrField0x2a04_02010828(GameState::GetInstance()) + 0xf7c);
     outLow = outLow - (byteF7C - 1);
 
-    unsigned char* base = (unsigned char*)GetPtrField0x2a04(GameState::GetInstance()) + 0x2000;
+    unsigned char* base = (unsigned char*)GetPtrField0x2a04_02010828(GameState::GetInstance()) + 0x2000;
     int byteC8C = base[0xc8c];
     if (outLow != 0) {
         byteC8C += 1;

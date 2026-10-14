@@ -7,12 +7,12 @@ void func_020813ec(void*, int);
 void _Z20ResetWithSub0208203cP11Obj0208203c(void*);
 int func_ov003_021550dc(void*);
 void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(void*, int, int);
-int _Z18GetField0x3acValueP9GameState(void*);
+int _Z27GetField0x3acValue_020100a8P9GameState(void*);
 int _Z39IsCombatantFlagit2Set_02155f88_02155f88Pvi(void*, int);
 void _Z28CallFunc0204c804OverAllElemsP12Cont0207fe44(void*);
-void* _Z17GetPtrField0x2a04P9GameState(void*);
+void* _Z26GetPtrField0x2a04_02010828P9GameState(void*);
 void* _ZN9GameState21GetPartyMemberByIndexEi(void*, int);
-int _Z13GetTableValuePv(void*);
+int _Z22GetTableValue_0202053cPv(void*);
 int func_ov003_02155208(void*);
 }
 
@@ -95,7 +95,7 @@ extern "C" ARM void func_ov003_02156ad4(struct Ctrl02156ad4* self) {
         switch (self->f1e0) {
         case 8:
             if (self->f1fb == 0) {
-                self->f1f7 = _Z18GetField0x3acValueP9GameState(gs);
+                self->f1f7 = _Z27GetField0x3acValue_020100a8P9GameState(gs);
                 self->state = 0;
                 if (_Z39IsCombatantFlagit2Set_02155f88_02155f88Pvi(self, self->f1f7)) {
                     modeArgs->cmd = 8;
@@ -117,7 +117,7 @@ extern "C" ARM void func_ov003_02156ad4(struct Ctrl02156ad4* self) {
         case 9: {
             unsigned char st;
             if (self->f1fb == 0) {
-                self->f1f7 = _Z18GetField0x3acValueP9GameState(gs);
+                self->f1f7 = _Z27GetField0x3acValue_020100a8P9GameState(gs);
                 modeArgs->cmd = 0xe;
                 self->mode = 4;
                 st = 2;
@@ -131,12 +131,12 @@ extern "C" ARM void func_ov003_02156ad4(struct Ctrl02156ad4* self) {
             unsigned char count;
             struct Q02156ad4* q;
             void* gs2 = _ZN9GameState11GetInstanceEv();
-            q = (struct Q02156ad4*)_Z17GetPtrField0x2a04P9GameState(gs2);
+            q = (struct Q02156ad4*)_Z26GetPtrField0x2a04_02010828P9GameState(gs2);
             count = q->f7c;
             int found;
             for (i = 0; i < count; i++) {
                 void* m = _ZN9GameState21GetPartyMemberByIndexEi(gs2, q->f78[i]);
-                if (m != 0 && _Z13GetTableValuePv(m) == 0x63) {
+                if (m != 0 && _Z22GetTableValue_0202053cPv(m) == 0x63) {
                     found = 1;
                     goto found_done;
                 }

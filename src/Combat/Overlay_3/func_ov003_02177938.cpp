@@ -43,10 +43,10 @@ enum {
 extern "C" void *memset(void *dst, int value, unsigned int length);
 extern "C" int func_ov003_02179e44(void *obj);
 struct Obj2081;
-void ClearElementFlag0x20(struct Obj2081 *obj, int key);
+void ClearElementFlag0x20_02080c20(struct Obj2081 *obj, int key);
 void SetEntryLowNibbleAndElement02080c68(void *obj, int id, int value);
-void SetSublistEntriesFlag1(void *obj, int id);
-void SetSublistEntriesFlag2(void *obj, int id);
+void SetSublistEntriesFlag1_02080b54(void *obj, int id);
+void SetSublistEntriesFlag2_02080608(void *obj, int id);
 unsigned char GetTableByte0207ca94(int index);
 int CountPositiveEntries0207c638(void *base, unsigned int index);
 int FindNthPositiveShort0207c6b8(unsigned char *obj, unsigned int index, int target);
@@ -56,7 +56,7 @@ struct Container02080f8c;
 void SetEntryFirstField02080f8c(struct Container02080f8c *obj, int id, int value);
 struct Container02080cc0;
 void SetEntryHighNibble0x13(struct Container02080cc0 *obj, int id, int value);
-unsigned char *GetFieldAt0x150(unsigned char *obj);
+unsigned char *GetFieldAt0x150_02053c6c(unsigned char *obj);
 struct Slots02083960;
 int CountPositiveSlots02083960(struct Slots02083960 *slots);
 extern "C" int func_020dcc98(int combatantId);
@@ -72,11 +72,11 @@ struct Element020de650 {
     unsigned short count;
 };
 struct Element020de650 *FindElementByKey020dedd0(struct Container020dedd0 *c, int key);
-void Forward0207f7acObjPlus4Size0x40(void *obj, int value);
+void Forward0207f7acObjPlus4Size0x40_020805f4(void *obj, int value);
 void ClearSublistEntryFlag2_020806c4(void *obj, int id);
 extern "C" void func_ov003_0217818c(void *self, struct Element020de650 *elem, int id, int value);
-void SetEntryHalfword0xe(void *obj, int id, int value);
-void DispatchEntryOp0x8(void *obj, int id);
+void SetEntryHalfword0xe_0208103c(void *obj, int id, int value);
+void DispatchEntryOp0x8_0208108c(void *obj, int id);
 extern "C" void func_020813ec(void *obj, int key);
 
 struct ListMenu_02177938 {
@@ -97,7 +97,7 @@ struct ListMenu_02177938 {
 extern "C" ARM void func_ov003_02177938(ListMenu_02177938 *self) {
     func_ov003_02179e44(self);
     GameState *battle       = GameState::GetInstance();
-    unsigned char *list     = (unsigned char *) GetPtrField0x2a04(battle);
+    unsigned char *list     = (unsigned char *) GetPtrField0x2a04_02010828(battle);
     struct Obj2081 *elemObj = self->elemObj;
     int hasAny              = 1;
     short idA               = 0x8b;
@@ -107,10 +107,10 @@ extern "C" ARM void func_ov003_02177938(ListMenu_02177938 *self) {
     int showPages;
     short ids[8];
 
-    ClearElementFlag0x20(elemObj, 0x15);
+    ClearElementFlag0x20_02080c20(elemObj, 0x15);
     SetEntryLowNibbleAndElement02080c68(elemObj, 0x15, 0);
-    SetSublistEntriesFlag1(elemObj, 0x15);
-    SetSublistEntriesFlag2(elemObj, 0x15);
+    SetSublistEntriesFlag1_02080b54(elemObj, 0x15);
+    SetSublistEntriesFlag2_02080608(elemObj, 0x15);
     showPages = 0;
     memset(ids, 0xff, sizeof(ids));
 
@@ -143,7 +143,7 @@ extern "C" ARM void func_ov003_02177938(ListMenu_02177938 *self) {
         if (inParty) {
             GameObject *member = battle->GetPartyMemberByIndex(self->combatantId);
             if (member != NULL) {
-                unsigned char *learned = GetFieldAt0x150((unsigned char *) member);
+                unsigned char *learned = GetFieldAt0x150_02053c6c((unsigned char *) member);
                 int count              = CountPositiveSlots02083960((struct Slots02083960 *) learned);
                 for (int i = 0; i < count; i++) {
                     ids[i] = ((short *) (learned + 0x454))[i];
@@ -153,7 +153,7 @@ extern "C" ARM void func_ov003_02177938(ListMenu_02177938 *self) {
                 SetEntryHighNibble0x13((struct Container02080cc0 *) elemObj, 0x8a, func_020dcc98(self->combatantId));
                 hasAny = count != 0;
             } else {
-                SetSublistEntriesFlag1(elemObj, 0x15);
+                SetSublistEntriesFlag1_02080b54(elemObj, 0x15);
             }
         } else {
             int count = CountNonZeroValues020a0b8c((struct S_a0b8c *) list);
@@ -189,7 +189,7 @@ extern "C" ARM void func_ov003_02177938(ListMenu_02177938 *self) {
                 count = elem->count;
                 value = elem->value;
             }
-            Forward0207f7acObjPlus4Size0x40(elemObj, idA);
+            Forward0207f7acObjPlus4Size0x40_020805f4(elemObj, idA);
             ClearSublistEntryFlag2_020806c4(elemObj, idA);
             SetEntryFirstField02080f8c((struct Container02080f8c *) elemObj, idA, value);
             SetEntryFirstField02080fa8((struct Container02080fa8 *) elemObj, idB, count);
@@ -204,11 +204,11 @@ extern "C" ARM void func_ov003_02177938(ListMenu_02177938 *self) {
     }
 
     if (hasAny == 0) {
-        SetEntryHalfword0xe(elemObj, 0x143, msg);
+        SetEntryHalfword0xe_0208103c(elemObj, 0x143, msg);
         SetEntryFlagById02080b40(elemObj, 0x143);
         SetEntryFlagById02080b40(elemObj, 0x144);
-        DispatchEntryOp0x8(elemObj, 0x143);
-        DispatchEntryOp0x8(elemObj, 0x144);
+        DispatchEntryOp0x8_0208108c(elemObj, 0x143);
+        DispatchEntryOp0x8_0208108c(elemObj, 0x144);
     }
     func_020813ec(elemObj, 0x15);
 }

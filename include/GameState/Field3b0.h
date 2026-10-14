@@ -3,6 +3,6 @@
 
 class GameState;
 
-void* GetField0x3b0Value(GameState* state);
+void* GetField0x3b0Value_020100bc(GameState* state);
 
 #endif

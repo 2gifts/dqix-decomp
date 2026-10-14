@@ -11,13 +11,13 @@ struct Container020dedd0;
 void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char keyLow,
                                                                         unsigned char keyHigh);
 int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
-int TestFlag0SetAndFlag1Clear(unsigned short *p, int n);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short *p, int n);
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0 *o, int a, int b);
 int CheckFlagOrThreshold_02161b48(char *base, int a);
-void SetElementFieldC2(struct Struct_0205d81c *s, int a, int b);
+void SetElementFieldC2_0205deb4(struct Struct_0205d81c *s, int a, int b);
 void SetFieldB0AndUpdate0205dee8(struct Obj0205dee8 *o, int v);
-unsigned char *GetFieldAt0x150(unsigned char *p);
+unsigned char *GetFieldAt0x150_02053c6c(unsigned char *p);
 int BuildFlaggedCombatantSlotList_02154f4c(unsigned char *obj);
 int CountFlag0x800MatchesEqualsTarget020dcc20(int targetCount, int flag);
 int CheckAnyByteMatches020dcbbc(unsigned char *arr, int count, int b, int c, int d);
@@ -50,7 +50,7 @@ extern "C" ARM void func_ov002_02163664(char *base) {
         GameObject *p = GameState::GetInstance()->GetProtagonist();
         if (p != NULL) {
             int found = 0;
-            short v   = *(short *) (GetFieldAt0x150((unsigned char *) p) + 0x900 + 0x5e);
+            short v   = *(short *) (GetFieldAt0x150_02053c6c((unsigned char *) p) + 0x900 + 0x5e);
             for (int i = 0; i < n; i++) {
                 if (v == lst[i]) {
                     *(short *) (base + 0x1b00 + 0xec) = i;
@@ -91,7 +91,7 @@ extern "C" ARM void func_ov002_02163664(char *base) {
             func_ov002_0215b9a4(base, *(int *) (base + 0x1000 + 0xbb8) & 0xff, 0);
         }
         if (old != *(short *) (base + 0x1b00 + 0xec)) return;
-        int a = TestFlag0SetAndFlag1Clear(data_02114e30, 0x601);
+        int a = TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x601);
         int b = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(base + 0x2c8 + 0xc00), 0x14);
         if ((a | b) ? 1 : 0) {
             if (!func_020dc920(lst[*(short *) (base + 0x1b00 + 0xec)], 1, 1, special)) return;
@@ -101,10 +101,10 @@ extern "C" ARM void func_ov002_02163664(char *base) {
             DispatchWithShortB4_0205eaa0((struct Obj0205eaa0 *) data_02108760, 1, 0);
             *(unsigned int *) (base + 0x2000 + 0x47c) &= ~4;
             func_ov002_0215b9a4(base, 0x10, 1);
-            SetElementFieldC2((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 0x10, 1);
-            SetElementFieldC2((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 0x13, 1);
-            SetElementFieldC2((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 7, 1);
-            SetElementFieldC2((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 8, 1);
+            SetElementFieldC2_0205deb4((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 0x10, 1);
+            SetElementFieldC2_0205deb4((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 0x13, 1);
+            SetElementFieldC2_0205deb4((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 7, 1);
+            SetElementFieldC2_0205deb4((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 8, 1);
             if (*(short *) (base + 0x1c00 + 0x26) != -1) {
                 if (func_ov002_0215b720(base, *(short *) (base + 0x1c00 + 0x26))) {
                     *(int *) (base + 0x1000 + 0xbc0) = 2;
@@ -122,7 +122,7 @@ extern "C" ARM void func_ov002_02163664(char *base) {
             GameObject *p = GameState::GetInstance()->GetProtagonist();
             if (p != NULL) {
                 short sel                                                        = *(signed char *) (base + 0x1c00 + 0x21);
-                *(short *) (GetFieldAt0x150((unsigned char *) p) + 0x900 + 0x5e) = sel;
+                *(short *) (GetFieldAt0x150_02053c6c((unsigned char *) p) + 0x900 + 0x5e) = sel;
             }
             func_ov002_02157634(base);
         } else if (CheckFlagOrThreshold_02161b48(base, 1)) {
@@ -130,7 +130,7 @@ extern "C" ARM void func_ov002_02163664(char *base) {
                 *(int *) (base + 0x1000 + 0xbb8) = 0x11;
                 ClearMatchingEntry_02156ff0((unsigned char *) base, 0x13);
                 SetFieldB0AndUpdate0205dee8((struct Obj0205dee8 *) (base + 0x2c8 + 0xc00), 0x11);
-                SetElementFieldC2((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 0x11, 0);
+                SetElementFieldC2_0205deb4((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 0x11, 0);
                 *(int *) (base + 0x1000 + 0xbc0) = 1;
                 *(int *) (base + 0x1000 + 0xbb8) = 0x11;
                 func_ov002_02161cf0(base);
@@ -150,7 +150,7 @@ extern "C" ARM void func_ov002_02163664(char *base) {
             GameObject *p = GameState::GetInstance()->GetProtagonist();
             if (p != NULL) {
                 short sel                                                        = *(signed char *) (base + 0x1c00 + 0x21);
-                *(short *) (GetFieldAt0x150((unsigned char *) p) + 0x900 + 0x5e) = sel;
+                *(short *) (GetFieldAt0x150_02053c6c((unsigned char *) p) + 0x900 + 0x5e) = sel;
             }
             func_ov002_02157634(base);
         } else if (r < 0) {

@@ -9,7 +9,7 @@
 #endif
 
 // USA: func_02011518
-ARM int GetCheckedSignedByte(void* obj, unsigned int idx) {
+ARM int GetCheckedSignedByte_02011518(void* obj, unsigned int idx) {
     if (idx < ((unsigned char*)obj)[BYTE_LOOKUP_COUNT]) {
         return ((signed char*)obj + idx)[BYTE_LOOKUP_VALUES];
     }

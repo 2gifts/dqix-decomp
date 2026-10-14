@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "Combat/Overlay_1/EventArgs.h"
 
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct LocalEvt021c9400 {
@@ -19,7 +19,7 @@ struct LocalEvt021c9400 {
 
 // USA: func_ov017_021c9400
 extern "C" ARM void func_ov017_021c9400(int id, int nibble, int unused, EventVec3 pos, EventVec3 rot, int mode) {
-    void* p = GetData02100044();
+    void* p = GetData02100044_0202ae24();
     LocalEvt021c9400 evt;
     evt.tag = 0x85;
     evt.field4 = id;

@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "Resource/GameResources.h"
 
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 extern unsigned short data_02114e30;
 
 struct FlagPair_021b2698 { int a; int b; };
@@ -10,7 +10,7 @@ extern "C" int func_ov011_02184694(int a);
 extern "C" int func_0202ae18(void);
 extern "C" int func_0202c540(void);
 extern "C" int func_ov017_0219bddc(unsigned char* p);
-int* GetGlobal02109030(void);
+int* GetGlobal02109030_020936f8(void);
 extern "C" void func_02094030(int*, int, int, int);
 
 struct SelfState_021b2698 {
@@ -24,7 +24,7 @@ struct SelfState_021b2698 {
 
 // USA: func_ov017_021b2698  (semantic: CheckStateAndDispatchGlobal_021b2698)
 extern "C" ARM int func_ov017_021b2698(SelfState_021b2698* self) {
-    if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x2000) != 0) {
+    if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x2000) != 0) {
         return 3;
     }
     if (func_ov011_02184694(data_ov017_021d83f0.b) != 0) {
@@ -49,7 +49,7 @@ extern "C" ARM int func_ov017_021b2698(SelfState_021b2698* self) {
     }
     self->field0x38 = (self->field0x38 & ~1) | 1;
     self->field0x48 = 1;
-    int* g = GetGlobal02109030();
+    int* g = GetGlobal02109030_020936f8();
     func_02094030(g, 0x4e23, -1, 0);
 fail:
     return 3;

@@ -30,7 +30,7 @@ struct Record0215f698 {
 };
 
 extern "C" void* func_0202ae18(void);
-int GetField0xc(void* obj);
+int GetField0xc_0202bae4(void* obj);
 struct Element0202bad4* GetElementAt0x10Stride0xc0(struct ElementArray0202bad4* base, int index);
 extern "C" int func_02001aec(void* a, void* b, int n);
 extern "C" void __clear(void* buf, int size);
@@ -41,7 +41,7 @@ extern "C" void* memcpy(void* dst, const void* src, int size);
 // USA: func_ov003_0215f698
 extern "C" ARM void func_ov003_0215f698(struct Record0215f698* records, short* count) {
     void* ctx = func_0202ae18();
-    int n = GetField0xc(ctx);
+    int n = GetField0xc_0202bae4(ctx);
 
     struct Record0215f698* rec = records;
     for (short i = 0; i < 10; i++) {

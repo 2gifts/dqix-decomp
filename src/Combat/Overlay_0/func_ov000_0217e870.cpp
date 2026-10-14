@@ -34,7 +34,7 @@ struct PartyState {
 };
 extern Obj0205eaa0 data_02108760;
 extern int data_ov000_02184294[2];
-int GetField0x3acValue(GameState*);
+int GetField0x3acValue_020100a8(GameState*);
 int GetActiveScaledSum0205d794(Struct_0205c570*);
 extern "C" BattleCommand* func_ov000_02161318(BattleMenuState*, int);
 extern "C" int func_ov000_0217c594(BattleMenuState*, int);
@@ -51,8 +51,8 @@ extern "C" ARM void func_ov000_0217e870(BattleMenuState* state, int first, int s
     state->flags |= 0x100;
     state->current = GetActiveScaledSum0205d794((Struct_0205c570*)state->entries);
     GameState* game = GameState::GetInstance();
-    PartyState* party = (PartyState*)GetPtrField0x2a04(game);
-    BattleCommand* command = func_ov000_02161318(state, GetField0x3acValue(game));
+    PartyState* party = (PartyState*)GetPtrField0x2a04_02010828(game);
+    BattleCommand* command = func_ov000_02161318(state, GetField0x3acValue_020100a8(game));
     if (func_ov000_0217c594(state, 0)) {
         DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
         if (!command) return;
@@ -79,8 +79,8 @@ extern "C" ARM void func_ov000_0217e870(BattleMenuState* state, int first, int s
         state->current = -1;
         func_ov000_0217c638(state, first, second);
         GameState* game = GameState::GetInstance();
-        PartyState* party = (PartyState*)GetPtrField0x2a04(game);
-        BattleCommand* current = func_ov000_02161318(state, GetField0x3acValue(game));
+        PartyState* party = (PartyState*)GetPtrField0x2a04_02010828(game);
+        BattleCommand* current = func_ov000_02161318(state, GetField0x3acValue_020100a8(game));
         if (!current) return;
         current->commands[current->selected] = 0x17;
         unsigned char count = party->count;

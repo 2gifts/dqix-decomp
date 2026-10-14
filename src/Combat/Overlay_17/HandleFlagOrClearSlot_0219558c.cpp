@@ -7,7 +7,7 @@ extern "C" void func_ov017_02191234(int);
 extern "C" void func_ov017_021905b8(int, int, int);
 
 void SetFlagAndCleanup_02195618(unsigned char* obj);
-int GetField0x3acValue(GameState* battleStruct);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 
 struct SearchStruct;
 void SetSearchFlagBit0202c660(struct SearchStruct* obj, int value);
@@ -29,7 +29,7 @@ extern "C" ARM void func_ov017_0219558c(unsigned char* obj, int value) {
 		SetFlagAndCleanup_02195618(obj);
 		return;
 	}
-	if (value == GetField0x3acValue(battleStruct)) return;
+	if (value == GetField0x3acValue_020100a8(battleStruct)) return;
 	func_ov017_02195398(x, value);
 	SetSearchFlagBit0202c660(search, value);
 	func_ov017_02191234(x);

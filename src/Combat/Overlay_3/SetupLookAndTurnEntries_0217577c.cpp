@@ -10,11 +10,10 @@ enum { kOffset104c = 0x104c };
 enum { kOffset89c = 0x89c };
 #endif
 
-
 struct Obj2081;
 struct Elem2081;
-struct Elem2081* FindElementByByte0xc4(struct Obj2081* obj, int key);
-int IsField0x9cEqual3(unsigned char* obj);
+struct Elem2081* FindElementByByte0xc4_02081da8(struct Obj2081* obj, int key);
+int IsField0x9cEqual3_0204c7cc(unsigned char* obj);
 void GetLookAndTurnOffsets020809c4(void* obj, int id, int id2, short* out1, short* out2);
 void InitEntryAtIndex_0217585c(void* obj, int a, int b, int idx, unsigned char c);
 
@@ -27,9 +26,9 @@ struct Ctx0217577c {
 extern "C" ARM void func_ov003_0217577c(void* objRaw) {
     Ctx0217577c* obj = (Ctx0217577c*)objRaw;
     struct Obj2081* target = obj->field89c;
-    struct Elem2081* e = FindElementByByte0xc4(target, 9);
+    struct Elem2081* e = FindElementByByte0xc4_02081da8(target, 9);
     if (e == 0) return;
-    if (!IsField0x9cEqual3((unsigned char*)e)) return;
+    if (!IsField0x9cEqual3_0204c7cc((unsigned char*)e)) return;
 
     short out1, out2;
     int flag1 = 0;

@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void* GetActiveCombatWork(void);
+void* GetActiveCombatWork_ov000_02160130(void);
 extern "C" void func_ov000_021626a0(void* self, int a, int b);
 struct Obj021eb00c;
 void SetFlagField_021eb00c_021eb00c(struct Obj021eb00c* obj);
@@ -19,7 +19,7 @@ extern "C" ARM int func_ov025_021e4450(struct Obj021e4450* self) {
 #else
  enum {regionalOffset0=0xc};
 #endif
-    void* work = GetActiveCombatWork();
+    void* work = GetActiveCombatWork_ov000_02160130();
     unsigned char state = self->field8;
     if (state == 5) {
         int flag = (self->field9 == 0) ? 1 : 0;

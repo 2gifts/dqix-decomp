@@ -2,12 +2,12 @@
 #include "GameState/GameState.h"
 #include "Util/Random.h"
 
-int GetWord0x0(int* obj);
+int GetWord0x0_0200fb8c(int* obj);
 extern "C" int func_ov000_0215eb1c(struct Random* rand, short* buf, int count, int flag);
-int GetSubstructByte0x1c(unsigned char* obj);
-void SetSubstructByte0x1c(unsigned char* obj, unsigned char value);
-void SetSubstructFields0x10And0x18ClearFlag0x1(unsigned char* obj, int* src);
-void SetSubstructField0x14ClearFlag0x1(unsigned char* obj, int* src);
+int GetSubstructByte0x1c_020493a4(unsigned char* obj);
+void SetSubstructByte0x1c_02049390(unsigned char* obj, unsigned char value);
+void SetSubstructFields0x10And0x18ClearFlag0x1_02049bd4(unsigned char* obj, int* src);
+void SetSubstructField0x14ClearFlag0x1_02049c60(unsigned char* obj, int* src);
 extern "C" void __clear(void* dst, int count);
 
 struct Vec2_0216f74c { int x; int y; };
@@ -20,7 +20,7 @@ extern struct Words3_02167cd4 data_ov000_021830cc;
 // USA: func_ov000_02167cd4  (semantic: AssignFormationPositions_02167cd4)
 extern "C" ARM void func_ov000_02167cd4(unsigned char* obj) {
     GameState* battle = GameState::GetInstance();
-    GetWord0x0((int*)battle);
+    GetWord0x0_0200fb8c((int*)battle);
 #if defined(jpn)
     struct Random* rand = *(struct Random**)(obj + 0x218);
 #else
@@ -33,8 +33,8 @@ extern "C" ARM void func_ov000_02167cd4(unsigned char* obj) {
         GameObject* c = battle->GetCombatantByIndex(ids[i]);
         if (c != 0) {
             int tmp = data_ov000_02183118[count - 1][i];
-            if (GetSubstructByte0x1c((unsigned char*)c) != 0xff) {
-                tmp = GetSubstructByte0x1c((unsigned char*)c);
+            if (GetSubstructByte0x1c_020493a4((unsigned char*)c) != 0xff) {
+                tmp = GetSubstructByte0x1c_020493a4((unsigned char*)c);
             }
             struct Vec2_0216f74c pos = func_ov000_0216f74c(&tmp);
             struct Words3_02167cd4 fields = data_ov000_021830cc;
@@ -42,9 +42,9 @@ extern "C" ARM void func_ov000_02167cd4(unsigned char* obj) {
             fields.v[2] = pos.y;
             int zeroBuf[3];
             __clear(zeroBuf, 0xc);
-            SetSubstructByte0x1c((unsigned char*)c, (unsigned char)(tmp & 0xff));
-            SetSubstructFields0x10And0x18ClearFlag0x1((unsigned char*)c, (int*)&fields);
-            SetSubstructField0x14ClearFlag0x1((unsigned char*)c, zeroBuf);
+            SetSubstructByte0x1c_02049390((unsigned char*)c, (unsigned char)(tmp & 0xff));
+            SetSubstructFields0x10And0x18ClearFlag0x1_02049bd4((unsigned char*)c, (int*)&fields);
+            SetSubstructField0x14ClearFlag0x1_02049c60((unsigned char*)c, zeroBuf);
         }
         i++;
     }

@@ -3,9 +3,9 @@
 #include "GameState/GameState.h"
 struct Obj021db3a4;
 struct Params021db3a4;
-void* GetPtrField0x2a04(GameState*);
+void* GetPtrField0x2a04_02010828(GameState*);
 struct ArrayContainsByteStruct;
-int ArrayContainsByte(ArrayContainsByteStruct*, int);
+int ArrayContainsByte_02086ef0(ArrayContainsByteStruct*, int);
 extern "C" float func_ov024_021db358(GameObject*);
 void IncrementByteCounterCapped0x63_0215a8d4(unsigned char*, int);
 short ApplyHPDelta0215a16c(void*, int, int, short*);
@@ -25,8 +25,8 @@ extern "C" ARM void* func_ov024_021db3a4(Obj021db3a4* obj, short arg, int id, Pa
     if (!c) return 0;
     unsigned short code = params->field4.code;
     if (code == 0x21 || code == 0x310) amount = c->currentStats_->primaryStats.maxHP;
-    void* list = GetPtrField0x2a04(GameState::GetInstance());
-    if (params->field4.code == 0x20 && ArrayContainsByte((ArrayContainsByteStruct*)list, arg) && func_ov024_021db358(c) <= 0.08f && enabled && amount > 0)
+    void* list = GetPtrField0x2a04_02010828(GameState::GetInstance());
+    if (params->field4.code == 0x20 && ArrayContainsByte_02086ef0((ArrayContainsByteStruct*)list, arg) && func_ov024_021db358(c) <= 0.08f && enabled && amount > 0)
         IncrementByteCounterCapped0x63_0215a8d4((unsigned char*)obj->context, 7);
     short applied = 0;
     short hp = ApplyHPDelta0215a16c(obj->context, id, amount, &applied);

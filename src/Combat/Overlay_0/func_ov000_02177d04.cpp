@@ -9,17 +9,17 @@ struct ActiveSub_02054000 {
     const char* name;
 };
 
-void* GetPtrField0x2a04(GameState* battleStruct);
+void* GetPtrField0x2a04_02010828(GameState* battleStruct);
 int GetFieldByKey020e0434(struct Container020e0310* c, int key);
-int IsField0x118Equal2(void* obj);
+int IsField0x118Equal2_ov000_0217542c(void* obj);
 int AppendFrameTag02041c08(char* dst, int a1, int a2, int a3, int a4, int a5);
-int AppendCursorTag(char* dst, int cursor);
+int AppendCursorTag_02041ea4(char* dst, int cursor);
 extern "C" void* func_ov000_02161318(void* obj, int index);
-GameObject* GetCombatantWithFlag0x100(GameState* gameState, int combatantId);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* gameState, int combatantId);
 extern "C" int func_ov000_02170c7c(void* obj);
 int FormatCombatLogSuffix02041dd0(char* dst, int code);
-int AppendNameTag(char* dst, int n, const char* name);
-int AppendXTag(char* dst, int x);
+int AppendNameTag_02041b70(char* dst, int n, const char* name);
+int AppendXTag_02041a28(char* dst, int x);
 ActiveSub_02054000* GetActiveSub_02054000(struct Outer_02054000* p);
 extern "C" void* __clear(void* dst, int count);
 void CopyTextAndUppercaseIfFlagged0206819c(const char* src, char* dst, int flag);
@@ -28,7 +28,7 @@ int AppendString02042058(char* dst, const char* src);
 // USA: func_ov000_02177d04
 extern "C" ARM void func_ov000_02177d04(char* base, char* dst) {
     GameState* gs = GameState::GetInstance();
-    unsigned char count = *((unsigned char*)GetPtrField0x2a04(gs) + 0xf7c);
+    unsigned char count = *((unsigned char*)GetPtrField0x2a04_02010828(gs) + 0xf7c);
     const char* sep = (const char*)GetFieldByKey020e0434((struct Container020e0310*)(base + 0xb8), 0);
 #if defined(jpn)
     signed char cursor = *(signed char*)(base + 0x1f00 + 0xa3);
@@ -36,10 +36,10 @@ extern "C" ARM void func_ov000_02177d04(char* base, char* dst) {
     signed char cursor = *(signed char*)(base + 0x1d00 + 0x6b);
 #endif
 
-    if (IsField0x118Equal2(base)) {
+    if (IsField0x118Equal2_ov000_0217542c(base)) {
         AppendFrameTag02041c08(dst, cursor, 8, 5, 5, 5);
     }
-    AppendCursorTag(dst, cursor);
+    AppendCursorTag_02041ea4(dst, cursor);
 
     for (unsigned char i = 0; i < count; i++) {
         signed char id = *(signed char*)(base + 0x70 + i);
@@ -47,13 +47,13 @@ extern "C" ARM void func_ov000_02177d04(char* base, char* dst) {
         if (entry == 0) {
             continue;
         }
-        GameObject* combatant = GetCombatantWithFlag0x100(gs, id);
+        GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(gs, id);
         if (combatant == 0) {
             continue;
         }
         FormatCombatLogSuffix02041dd0(dst, func_ov000_02170c7c(entry));
-        AppendNameTag(dst, i, combatant->baseStats_->unk);
-        AppendXTag(dst, 0x46);
+        AppendNameTag_02041b70(dst, i, combatant->baseStats_->unk);
+        AppendXTag_02041a28(dst, 0x46);
         FormatCombatLogSuffix02041dd0(dst, 0);
         ActiveSub_02054000* sub = GetActiveSub_02054000((struct Outer_02054000*)combatant);
         if (sub != 0) {

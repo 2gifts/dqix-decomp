@@ -7,7 +7,7 @@
 
 extern "C" void func_02000b9c(unsigned int);
 extern "C" int func_020d0fc4(CardReadManager* manager, int command, int arg);
-int GetBattleSysInnerField1c();
+int GetBattleSysInnerField1c_020d06e8();
 
 extern CardReadManager data_021118e0;
 
@@ -26,7 +26,7 @@ extern "C" ARM void func_020d03fc(CardReadManager* manager) {
     func_02000b9c(0x2000bc4);
 
     if (command == 0xb) {
-        chunkSizeLimit = GetBattleSysInnerField1c();
+        chunkSizeLimit = GetBattleSysInnerField1c_020d06e8();
     } else if (command == 0xf) {
         chunkSizeLimit = data_021118e0.pSharedData->unknown_4[7];
     }

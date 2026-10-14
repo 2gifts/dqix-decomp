@@ -26,14 +26,14 @@ struct Struct_0205c570;struct Obj0205eaa0;struct Struct0217f8c0;struct TableEntr
 struct Struct_0205d81c;struct Entry_0205d6a0;struct Obj02092aa4;
 int GetActiveScaledSum0205d794(Struct_0205c570*);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*,int,int);
-void* GetPtrField0x2a04(GameState*);
-GameObject* GetCombatantWithFlag0x100(GameState*,int);
+void* GetPtrField0x2a04_02010828(GameState*);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState*,int);
 TableEntry0217f8c0* FindMatchingTableEntry0217f8c0(Struct0217f8c0*);
-int GetField0x3acValue(GameState*);
-int CountSetBitsLow12_0x68(void*);
+int GetField0x3acValue_020100a8(GameState*);
+int CountSetBitsLow12_0x68_ov000_0218155c(void*);
 void SetElementStateIfLess0217a9d0(int,int,int,Struct_0205d81c*);
 void InitObj02092aa4(Obj02092aa4*, int);
-void CreateTypeAFromAllocator(SafeAllocator*,SafeAllocator*);
+void CreateTypeAFromAllocator_02092a74(SafeAllocator*,SafeAllocator*);
 int CheckFlagsOrField_0217c5f4_0217c5f4(void*);
 void ResetEntryList0205d6a0(Entry_0205d6a0*,int);
 extern Obj0205eaa0 data_02108760;
@@ -59,12 +59,12 @@ extern "C" ARM void func_ov000_0217ce24(Root* self,int a,int b)
         self->flag956=0;
         DispatchWithShortB4_0205eaa0(&data_02108760,1,0);
         GameState* game=GameState::GetInstance();
-        Party* party=(Party*)GetPtrField0x2a04(game);
+        Party* party=(Party*)GetPtrField0x2a04_02010828(game);
         signed char count=0;bool active=false;
         unsigned char i=0;unsigned char total=party->count;
         for(;i<total;i++){
             int member=party->members[i];
-            UnitView* unit=(UnitView*)GetCombatantWithFlag0x100(game,member);
+            UnitView* unit=(UnitView*)GetCombatantWithFlag0x100_0200ff1c(game,member);
             if(unit){
                 bool stateActive=unit->state?unit->state->low!=0:false;
                 if(stateActive)active=true;
@@ -88,7 +88,7 @@ extern "C" ARM void func_ov000_0217ce24(Root* self,int a,int b)
             func_ov000_02177038(self,0,self->commands[self->index],a,b);
             self->special=0;self->count=0;self->index++;self->commands[self->index]=5;
             if(party->count==1||active||count==1){
-                int member=(signed char)GetField0x3acValue(game);
+                int member=(signed char)GetField0x3acValue_020100a8(game);
                 self->mask=func_020dd3cc(member);
                 self->mask=func_ov000_0217c514(member,self->mask);
                 self->commands[self->index]=6;
@@ -100,7 +100,7 @@ extern "C" ARM void func_ov000_0217ce24(Root* self,int a,int b)
             }
             {TableEntry0217f8c0* entry=FindMatchingTableEntry0217f8c0((Struct0217f8c0*)self);
             func_ov000_02176634(self,entry,self->commands[self->index],a,b);}
-            SetElementStateIfLess0217a9d0(6,CountSetBitsLow12_0x68(self),4,(Struct_0205d81c*)self->updateState);
+            SetElementStateIfLess0217a9d0(6,CountSetBitsLow12_0x68_ov000_0218155c(self),4,(Struct_0205d81c*)self->updateState);
             break;
         case 2:
             self->limit=count;
@@ -113,7 +113,7 @@ extern "C" ARM void func_ov000_0217ce24(Root* self,int a,int b)
             self->index++;self->commands[self->index]=9;
             self->allocator.Reset();
             InitObj02092aa4((Obj02092aa4*)&self->firstAllocator, (signed char)self->member);
-            CreateTypeAFromAllocator(&self->firstAllocator,&self->allocator);
+            CreateTypeAFromAllocator_02092a74(&self->firstAllocator,&self->allocator);
             self->flagB3|=8;
             break;
         }

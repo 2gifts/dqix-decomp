@@ -10,7 +10,7 @@
 
 struct List0202fec8;
 
-void* GetGlobalPtr02105244();
+void* GetGlobalPtr02105244_0203bd14();
 extern "C" void* func_0203bd08(void);
 extern "C" void* func_0203be4c(void);
 
@@ -30,12 +30,12 @@ extern "C" ARM void func_02020aec(MapDisplay* self, MapDisplayTaskHandle handle,
     loader->GetLoadedFileByID(*handle, &fileData, &fileLength);
 #endif
 
-    char* g = (char*)GetGlobalPtr02105244();
+    char* g = (char*)GetGlobalPtr02105244_0203bd14();
     *(int*)(g + (IS_JPN ? 0x608 : 0x508)) = 0x2000;
     func_0203bd08();
 
     char* p = (char*)func_0203be4c() + 0x2c0;
-    g = (char*)GetGlobalPtr02105244();
+    g = (char*)GetGlobalPtr02105244_0203bd14();
     *(char**)g = p;
 
     ProcessRecords0205a498(&self->entryList, (Rec020467f0*)fileData, fileLength, allocator);

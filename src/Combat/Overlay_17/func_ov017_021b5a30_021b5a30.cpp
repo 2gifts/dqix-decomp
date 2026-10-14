@@ -5,10 +5,10 @@
 
 void ResetFieldWithLog_0218d5c8(unsigned char* obj);
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
-void SetByteField0x253(void* obj);
-int GetFieldIfFlag4(char* obj);
-void SetField0x238True(void* obj);
-void ClearBitsInField4(unsigned int* obj, unsigned int mask);
+void SetByteField0x253_020397c0(void* obj);
+int GetFieldIfFlag4_020100f8(char* obj);
+void SetField0x238True_020a2794(void* obj);
+void ClearBitsInField4_0203b4e8(unsigned int* obj, unsigned int mask);
 
 extern int data_02114e20;
 
@@ -43,15 +43,15 @@ extern "C" ARM void func_ov017_021b5a30(struct Obj021b5a30* self) {
 	GameState* battle = GameState::GetInstance();
 	GameObject* c = battle->GetUnknownGameObject();
 	if (c != NULL) {
-		SetByteField0x253(c);
+		SetByteField0x253_020397c0(c);
 	}
 
-	int flagField = GetFieldIfFlag4((char*)battle);
+	int flagField = GetFieldIfFlag4_020100f8((char*)battle);
 	if (flagField != 0) {
-		SetField0x238True((void*)flagField);
+		SetField0x238True_020a2794((void*)flagField);
 	}
 
 	if (base != 0) {
-		ClearBitsInField4((unsigned int*)base, 0x80);
+		ClearBitsInField4_0203b4e8((unsigned int*)base, 0x80);
 	}
 }

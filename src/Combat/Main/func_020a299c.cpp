@@ -38,8 +38,8 @@ int fix32ReduceAngle0To2Pi(int a);
 extern "C" void Vector3fix_Add(const struct Vec3* a, const struct Vec3* b, struct Vec3* out);
 struct Vector3i;
 void Vector3fixMultiplyScalar(Vector3i const*, int, Vector3i*);
-void CopyVec3ToField0x10AndCall0202e5d8(char*, int*);
-void ApplyVec3Tail(void* obj, int* vec);
+void CopyVec3ToField0x10AndCall0202e5d8_0202ec5c(char*, int*);
+void ApplyVec3Tail_0202e694(void* obj, int* vec);
 
 static inline int FxMul(int a, int b) {
     return (int)(((long long)a * b + 0x800) >> 12);
@@ -80,8 +80,8 @@ extern "C" ARM int func_020a299c(struct Obj020a299c* obj, const struct Vec3* v, 
         Vector3fixMultiplyScalar((Vector3i const*)v, (int)(0x1000u - (unsigned int)t), (Vector3i*)&sv);
         Vector3fixMultiplyScalar((Vector3i const*)&tmp, t, (Vector3i*)&st);
         Vector3fix_Add(&sv, &st, &res);
-        CopyVec3ToField0x10AndCall0202e5d8((char*)obj, (int*)&res);
-        ApplyVec3Tail(obj, (int*)&out);
+        CopyVec3ToField0x10AndCall0202e5d8_0202ec5c((char*)obj, (int*)&res);
+        ApplyVec3Tail_0202e694(obj, (int*)&out);
         return 1;
     }
     return 0;

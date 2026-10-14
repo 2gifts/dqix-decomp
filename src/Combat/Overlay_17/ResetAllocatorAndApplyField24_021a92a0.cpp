@@ -4,7 +4,7 @@
 #include "Memory/AllocatorUnion.h"
 
 extern "C" int func_ov017_0218b5b0(void);
-void ClearBitsInField4(unsigned int* obj, unsigned int mask);
+void ClearBitsInField4_0203b4e8(unsigned int* obj, unsigned int mask);
 void TailForward02012da4(AllocatorUnion*, void*);
 extern AllocatorUnion data_02114e20;
 
@@ -21,7 +21,7 @@ struct Obj021a92a0 {
 
 // USA: func_ov017_021a92a0  (semantic: ResetAllocatorAndApplyField24_021a92a0)
 extern "C" ARM void func_ov017_021a92a0(struct Obj021a92a0* self) {
-    FontBankLoader* g = GetGlobal02109400();
+    FontBankLoader* g = GetGlobal02109400_02094a00();
     BlankFunction02094b38(g, 0x205);
     func_02094ab0(g);
 
@@ -31,6 +31,6 @@ extern "C" ARM void func_ov017_021a92a0(struct Obj021a92a0* self) {
         TailForward02012da4(&data_02114e20, handle);
     }
 
-    ClearBitsInField4((unsigned int*)func_ov017_0218b5b0(), 0x40);
+    ClearBitsInField4_0203b4e8((unsigned int*)func_ov017_0218b5b0(), 0x40);
     *(volatile unsigned int*)0x4000000 = (*(volatile unsigned int*)0x4000000 & ~0x1f00) | (self->field24 << 8);
 }

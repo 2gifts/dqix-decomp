@@ -3,7 +3,7 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 
-int GetWord0x0(int*);
+int GetWord0x0_0200fb8c(int*);
 extern "C" void func_ov005_02155424(void* self);
 extern "C" void func_ov005_02155544(void* self);
 extern "C" void func_ov005_021555c0(void* self);
@@ -11,13 +11,13 @@ extern "C" void func_ov005_021571d0(void* self);
 extern "C" void* ExtractFileFromGP2(const char* gp2Path, const char* innerFilePath, unsigned int* outSize);
 extern "C" void func_020dfec0(void* dest, void* allocator, void* fileData, unsigned int size);
 char* GetGlobalField0x1c020421a0();
-void Set3DClearColor(int color, int alpha, int depth, int polygonId, int fog);
-void SetBitsInField4(unsigned int* obj, unsigned int bits);
-int* GetData02105254();
-void SetupBankModeAndTransfer(int* obj, int a, int b);
+void Set3DClearColor_020c5588(int color, int alpha, int depth, int polygonId, int fog);
+void SetBitsInField4_0203b4d8(unsigned int* obj, unsigned int bits);
+int* GetData02105254_0203b628();
+void SetupBankModeAndTransfer_0203b678(int* obj, int a, int b);
 void TailForward0203b66c(char*);
 void ClearThreeRegions0203b634(char*);
-void SetWord0x18ClearByte0x1f(unsigned char*, int);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char*, int);
 extern "C" void func_0204b5b4(void* obj, int value);
 struct Obj0204b5e8;
 void DispatchViaTable0204b5e8(Obj0204b5e8*, int, int);
@@ -157,7 +157,7 @@ extern "C" ARM int func_ov005_0215436c(Scene0215436c* self) {
     }
 
     GameState* gs = GameState::GetInstance();
-    int word = GetWord0x0((int*)gs);
+    int word = GetWord0x0_0200fb8c((int*)gs);
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
 
     if (self->state == 0) {
@@ -181,14 +181,14 @@ extern "C" ARM int func_ov005_0215436c(Scene0215436c* self) {
         func_020dfec0(self->container, &self->fileAlloc, data, size);
         BackgroundLoader::RemoveLockGlobal();
         self->fe10 = *(int*)(GetGlobalField0x1c020421a0() + 0x5c);
-        Set3DClearColor(0, 0, 0x7fff, 0, 0);
-        SetBitsInField4((unsigned int*)word, 0x800);
-        int* bank = GetData02105254();
-        SetupBankModeAndTransfer(bank, 0, 1);
+        Set3DClearColor_020c5588(0, 0, 0x7fff, 0, 0);
+        SetBitsInField4_0203b4d8((unsigned int*)word, 0x800);
+        int* bank = GetData02105254_0203b628();
+        SetupBankModeAndTransfer_0203b678(bank, 0, 1);
         TailForward0203b66c((char*)bank);
         ClearThreeRegions0203b634((char*)bank);
 
-        SetWord0x18ClearByte0x1f((unsigned char*)&self->lists[0], 0);
+        SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)&self->lists[0], 0);
         self->lists[0].lo = 0;
         self->lists[0].hi = 1;
         func_0204b5b4(&self->lists[0], 3);
@@ -196,7 +196,7 @@ extern "C" ARM int func_ov005_0215436c(Scene0215436c* self) {
         AllocateAndClearBuffer0204b12c((AllocTarget0204b12c*)&self->lists[0], &self->alloc);
         AllocateArray0204af38((Foo0204af38*)&self->lists[0], 6, &self->alloc);
 
-        SetWord0x18ClearByte0x1f((unsigned char*)&self->lists[1], 0);
+        SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)&self->lists[1], 0);
         self->lists[1].lo = 0;
         self->lists[1].hi = 2;
         func_0204b5b4(&self->lists[1], 2);
@@ -204,7 +204,7 @@ extern "C" ARM int func_ov005_0215436c(Scene0215436c* self) {
         AllocateAndClearBuffer0204b12c((AllocTarget0204b12c*)&self->lists[1], &self->alloc);
         AllocateArray0204af38((Foo0204af38*)&self->lists[1], 9, &self->alloc);
 
-        SetWord0x18ClearByte0x1f((unsigned char*)&self->lists[2], 0);
+        SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)&self->lists[2], 0);
         self->lists[2].lo = 0;
         self->lists[2].hi = 3;
         func_0204b5b4(&self->lists[2], 0);

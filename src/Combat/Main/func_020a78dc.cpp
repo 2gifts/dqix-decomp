@@ -51,15 +51,15 @@ struct AngleTable { int v[8]; };
 
 extern "C" char* func_02012fe4();
 struct Field4328* GetField4328_0218d268(void*);
-int IsFlag0x40Set(unsigned short*);
-int IsFlag0x20Set(unsigned short*);
-int IsFlag0x10Set(unsigned short*);
-int IsFlag0x80Set(unsigned short*);
-int IsField0Null(void** p);
+int IsFlag0x40Set_020123b8(unsigned short*);
+int IsFlag0x20Set_02012390(unsigned short*);
+int IsFlag0x10Set_020123a4(unsigned short*);
+int IsFlag0x80Set_020123cc(unsigned short*);
+int IsField0Null_02046b08(void** p);
 void SetByte0xbeShiftPrev(struct Bytes02033b88*, int);
 void SetByteIfChanged02033b68(struct Obj02033b68*, int);
 void SetByteSavingPrevious(struct Foo02033b58*, unsigned char);
-int GetField0x70(void*);
+int GetField0x70_0202e7f0(void*);
 int fix32ReduceAngle0To2Pi(int);
 struct Box0201e8fc* FindBoxContainingPoint0201e8fc(struct Container0201e8fc*, struct Vec3*);
 int fix32SignedAngleDistance(int, int);
@@ -79,7 +79,7 @@ extern "C" ARM void func_020a78dc(struct Actor020a78dc* self) {
     struct Field4328* f;
     void** list;
 
-    camera = GetField0x3b0Value(GameState::GetInstance());
+    camera = GetField0x3b0Value_020100bc(GameState::GetInstance());
     ov = (char*)func_ov017_0218b5b0();
     list = *(void***)(ov + 0x36fc);
     world = func_02012fe4();
@@ -87,28 +87,28 @@ extern "C" ARM void func_020a78dc(struct Actor020a78dc* self) {
     struct AngleTable table = data_020e90a8;
 
     self->mode = 0;
-    if (IsFlag0x40Set(&data_02114e30) && IsFlag0x20Set(&data_02114e30)) {
+    if (IsFlag0x40Set_020123b8(&data_02114e30) && IsFlag0x20Set_02012390(&data_02114e30)) {
         self->mode = 1;
         self->dir = 0xc;
-    } else if (IsFlag0x40Set(&data_02114e30) && IsFlag0x10Set(&data_02114e30)) {
+    } else if (IsFlag0x40Set_020123b8(&data_02114e30) && IsFlag0x10Set_020123a4(&data_02114e30)) {
         self->mode = 1;
         self->dir = 0xd;
-    } else if (IsFlag0x80Set(&data_02114e30) && IsFlag0x20Set(&data_02114e30)) {
+    } else if (IsFlag0x80Set_020123cc(&data_02114e30) && IsFlag0x20Set_02012390(&data_02114e30)) {
         self->mode = 1;
         self->dir = 0xe;
-    } else if (IsFlag0x80Set(&data_02114e30) && IsFlag0x10Set(&data_02114e30)) {
+    } else if (IsFlag0x80Set_020123cc(&data_02114e30) && IsFlag0x10Set_020123a4(&data_02114e30)) {
         self->mode = 1;
         self->dir = 0xf;
-    } else if (IsFlag0x40Set(&data_02114e30)) {
+    } else if (IsFlag0x40Set_020123b8(&data_02114e30)) {
         self->mode = 1;
         self->dir = 8;
-    } else if (IsFlag0x80Set(&data_02114e30)) {
+    } else if (IsFlag0x80Set_020123cc(&data_02114e30)) {
         self->mode = 1;
         self->dir = 9;
-    } else if (IsFlag0x20Set(&data_02114e30)) {
+    } else if (IsFlag0x20Set_02012390(&data_02114e30)) {
         self->mode = 1;
         self->dir = 0xa;
-    } else if (IsFlag0x10Set(&data_02114e30)) {
+    } else if (IsFlag0x10Set_020123a4(&data_02114e30)) {
         self->mode = 1;
         self->dir = 0xb;
     }
@@ -134,7 +134,7 @@ extern "C" ARM void func_020a78dc(struct Actor020a78dc* self) {
         }
     }
 
-    if (self->f154 == 0 || IsField0Null(list) == 0) {
+    if (self->f154 == 0 || IsField0Null_02046b08(list) == 0) {
         self->mode = 0;
     }
 
@@ -153,7 +153,7 @@ extern "C" ARM void func_020a78dc(struct Actor020a78dc* self) {
             SetByteSavingPrevious((struct Foo02033b58*)self, 1);
         }
         int base = table.v[self->dir - 8];
-        int angle = fix32ReduceAngle0To2Pi(base + GetField0x70(camera));
+        int angle = fix32ReduceAngle0To2Pi(base + GetField0x70_0202e7f0(camera));
         if (self->lockedDir == self->dir) {
             angle = self->lockedAngle;
         } else {

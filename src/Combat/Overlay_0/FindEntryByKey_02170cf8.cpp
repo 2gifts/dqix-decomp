@@ -22,7 +22,7 @@ extern "C" ARM void* func_ov000_02170cf8(char* obj, int val) {
     if (val == 0) {
         return 0;
     }
-    ActionDataTables* data = GetData02108e10();
+    ActionDataTables* data = GetData02108e10_020797dc();
     if (data == 0) {
         return 0;
     }

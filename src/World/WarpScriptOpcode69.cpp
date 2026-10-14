@@ -5,9 +5,9 @@
 #include <globaldefs.h>
 
 // USA: func_0201cb60
-ARM bool ProcessExtraOpcode69Params(Script::Parameter *param, int numParams, ZoneFeatures::Opcode68Entry &entry) {
+ARM bool ProcessExtraOpcode69Params_0201cb60(Script::Parameter *param, int numParams, ZoneFeatures::Opcode68Entry &entry) {
     Script::Parameter *paramStart = param;
-    List0209998c *worldData       = static_cast<List0209998c *>(GetPtrField0x468(GameState::GetInstance()));
+    List0209998c *worldData       = static_cast<List0209998c *>(GetPtrField0x468_02011584(GameState::GetInstance()));
 
     entry.unk_0 = (param++)->ToInt();
     if (paramStart[1].type == 0) {
@@ -40,7 +40,7 @@ ARM bool ProcessExtraOpcode69Params(Script::Parameter *param, int numParams, Zon
 }
 
 // USA: func_0201ccc8
-ARM int WarpScript_Opcode_69(Script::Parameter *params, int numParams) {
+ARM int WarpScript_Opcode_69_0201ccc8(Script::Parameter *params, int numParams) {
     ZoneFeatures::Opcode68Entry entry;
     entry.Reset();
     Script::Parameter *p = params;
@@ -68,7 +68,7 @@ ARM int WarpScript_Opcode_69(Script::Parameter *params, int numParams) {
     entry.unk_4[4]  = yMin;
     entry.unk_4[5]  = zMin;
 
-    if (!ProcessExtraOpcode69Params(p, numParams - (p - params), entry)) return 0;
-    data_020fdc20.warp->CreateOpcode68Entry(entry);
+    if (!ProcessExtraOpcode69Params_0201cb60(p, numParams - (p - params), entry)) return 0;
+    data_020fdc20.warp->CreateOpcode68Entry_0201e574(entry);
     return 1;
 }

@@ -12,7 +12,7 @@ struct B885cObj {
 };
 
 // USA: func_0206885c
-ARM int GetField8Bits24And25(int unused, struct B885cObj* obj) {
+ARM int GetField8Bits24And25_0206885c(int unused, struct B885cObj* obj) {
     struct B885cInner* p = obj->field8;
     if (p != 0) {
         return p->field;

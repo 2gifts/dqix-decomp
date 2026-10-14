@@ -15,7 +15,7 @@ extern CombatantEffectIds02072afc data_020e8878;
 
 // USA: func_02072afc
 extern "C" ARM void func_02072afc(int combatantId, int* outIds, short* outValues) {
-    GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), combatantId);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), combatantId);
     if (combatant == NULL) return;
     short* fallback = GetField150Ptr0x488_02052e2c((Field150Holder02052e2c*)combatant);
     if (fallback == NULL) return;

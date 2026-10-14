@@ -30,10 +30,10 @@ struct EquipmentMenu {
 };
 
 void AppendFrameTag02041c08(char* text, int a, int b, int c, int d, int e);
-void AppendCursorTag(char* text, int a);
+void AppendCursorTag_02041ea4(char* text, int a);
 const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
 extern "C" int func_020420e8(const char* text, int large);
-void AppendNameTag(char* text, int item, const char* itemText);
+void AppendNameTag_02041b70(char* text, int item, const char* itemText);
 void AppendString02042058(char* text, const char* append);
 
 // USA: func_ov005_02159a30
@@ -43,7 +43,7 @@ extern "C" ARM void func_ov005_02159a30(EquipmentMenu* self, char* text, int fra
     int choice = self->menuChoice_;
     if (framed)
         AppendFrameTag02041c08(text, choice, 8, 5, 5, 5);
-    AppendCursorTag(text, choice);
+    AppendCursorTag_02041ea4(text, choice);
     int count = 4;
     int shifted = 0;
     if (self->slot_ >= 0 && self->slot_ < 8) {
@@ -54,11 +54,11 @@ extern "C" ARM void func_ov005_02159a30(EquipmentMenu* self, char* text, int fra
     for (int i = 0; i < count; i++) {
         if (shifted) {
             if (i == 0)
-                AppendNameTag(text, i, GetFieldByKey020e0434(&self->messages, 4));
+                AppendNameTag_02041b70(text, i, GetFieldByKey020e0434(&self->messages, 4));
             else
-                AppendNameTag(text, i, GetFieldByKey020e0434(&self->messages, (short)(i + 1)));
+                AppendNameTag_02041b70(text, i, GetFieldByKey020e0434(&self->messages, (short)(i + 1)));
         } else {
-            AppendNameTag(text, i, GetFieldByKey020e0434(&self->messages, (short)i));
+            AppendNameTag_02041b70(text, i, GetFieldByKey020e0434(&self->messages, (short)i));
         }
         if (i != count - 1)
             AppendString02042058(text, GetFieldByKey020e0434(&self->messages, 0x64));
@@ -78,7 +78,7 @@ extern "C" ARM void func_ov005_02159a30(EquipmentMenu* self, char* text, int fra
         int width = func_020420e8(name, 0);
         if (maxWidth < width)
             maxWidth = width;
-        AppendNameTag(text, i, name);
+        AppendNameTag_02041b70(text, i, name);
         if (i != count - 1)
             AppendString02042058(text, separator);
     }

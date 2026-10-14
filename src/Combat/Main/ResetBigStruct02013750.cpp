@@ -11,7 +11,7 @@
 
 void ZeroInit020de848(void* obj);
 struct Struct0207a5b8;
-void ResetFourSubStructs(char* base);
+void ResetFourSubStructs_02012fa4(char* base);
 
 struct AllocAt0x54_02013750 {
     char pad[(IS_JPN ? 0x74 : 0x54)];
@@ -51,7 +51,7 @@ ARM void ResetBigStruct02013750(void* obj, int flag) {
     ((ZoneFeatures*)((char*)obj + (IS_JPN ? 0x8c : 0x6c)))->Reset();
     ZeroInit020de848((char*)obj + (IS_JPN ? 0x394 : 0x354) + 0x2400);
     ((AtmosphericEffectSet*)((struct Struct0207a5b8*)((char*)obj + (IS_JPN ? 0x114 : 0xf4))))->Reset();
-    ResetFourSubStructs((char*)obj + (IS_JPN ? 0x620 : 0x600));
+    ResetFourSubStructs_02012fa4((char*)obj + (IS_JPN ? 0x620 : 0x600));
     if (!flag) {
         return;
     }

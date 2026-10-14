@@ -1,15 +1,15 @@
 #include <globaldefs.h>
 
 void* CopyStaticData02174da4(int unused, void* dest);
-int IsField0x118Equal2(void* obj);
+int IsField0x118Equal2_ov000_0217542c(void* obj);
 int AppendFrameTag02041c08(char* dst, int a1, int a2, int a3, int a4, int a5);
-int AppendCursorTag(char* dst, int cursor);
+int AppendCursorTag_02041ea4(char* dst, int cursor);
 int AppendString02042058(char* dst, const char* src);
-int AppendNameTag(char* dst, int n, const char* name);
+int AppendNameTag_02041b70(char* dst, int n, const char* name);
 
 struct Container020e0310;
 int GetFieldByKey020e0434(struct Container020e0310* c, int key);
-int CallFunc020e0434With02153694(int value);
+int CallFunc020e0434With02153694_020e51cc(int value);
 
 extern short data_ov000_021834c4[4];
 
@@ -36,10 +36,10 @@ extern "C" ARM void func_ov000_0217737c(void* objRaw, char* dst) {
 #if !defined(jpn)
     int nameIdx = 0;
 #endif
-    if (IsField0x118Equal2(obj)) {
+    if (IsField0x118Equal2_ov000_0217542c(obj)) {
         AppendFrameTag02041c08(dst, cursorId, 8, 5, 5, 5);
     }
-    AppendCursorTag(dst, cursorId);
+    AppendCursorTag_02041ea4(dst, cursorId);
     int keyArg = 0;
     for (int i = 0; i < 4; i++) {
         int v = localArr[i];
@@ -53,9 +53,9 @@ extern "C" ARM void func_ov000_0217737c(void* objRaw, char* dst) {
 #if defined(jpn)
         char* r = labels.names[v];
 #else
-        int r = CallFunc020e0434With02153694(data_ov000_021834c4[v]);
+        int r = CallFunc020e0434With02153694_020e51cc(data_ov000_021834c4[v]);
 #endif
-        AppendNameTag(dst, nameIdx, (const char*)r);
+        AppendNameTag_02041b70(dst, nameIdx, (const char*)r);
         nameIdx++;
     }
 }

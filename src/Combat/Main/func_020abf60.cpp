@@ -8,8 +8,8 @@ enum { BattleTableOffset = 0x75f0 };
 #include "GameState/GameState.h"
 
 extern "C" void* func_0205ec34(void);
-int TestBitInByteArray(int unused, unsigned char* arr, int index);
-void SetOrClearBitInArray(void* unused, unsigned char* array, int bit, int value);
+int TestBitInByteArray_0206dfb0(int unused, unsigned char* arr, int index);
+void SetOrClearBitInArray_0206df6c(void* unused, unsigned char* array, int bit, int value);
 struct Container_02097430;
 struct Node_02097430 {
     unsigned char unknown0[0x1a];
@@ -37,11 +37,11 @@ extern "C" ARM int func_020abf60(void* entriesData) {
         return 0;
     }
     EventFlagState* events = static_cast<EventFlagState*>(func_0205ec34());
-    if (TestBitInByteArray((int)events, events->bits, 0x796) == 0 ||
-        TestBitInByteArray((int)events, events->bits, 0x1143) != 0) {
+    if (TestBitInByteArray_0206dfb0((int)events, events->bits, 0x796) == 0 ||
+        TestBitInByteArray_0206dfb0((int)events, events->bits, 0x1143) != 0) {
         return 0;
     }
-    SetOrClearBitInArray(events, events->bits, 0x1143, 1);
+    SetOrClearBitInArray_0206df6c(events, events->bits, 0x1143, 1);
     unsigned int* table = reinterpret_cast<GameProgressRecords*>(GameState::GetInstance())->records;
     short* keys = data_020e90d4;
     int i;

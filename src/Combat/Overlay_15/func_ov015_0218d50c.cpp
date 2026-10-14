@@ -34,7 +34,7 @@ struct Obj0218d50c {
 };
 
 struct Vector3i;
-void DelayThenSyncBit0();
+void DelayThenSyncBit0_020c9820();
 void ResetObjectState02079a3c(void*);
 struct Foo0207df50;
 void CopyInternalFields0207df50(Foo0207df50*);
@@ -45,7 +45,7 @@ void* FindElementByKey020dedd0(Container020dedd0*, int);
 extern "C" int func_ov015_0218c03c(void* self, char* buf, int i, int one);
 extern "C" void func_ov015_0218c3a4(void* self, int v);
 extern "C" void func_ov015_0218c920(void* self, int zero);
-void* GetVariantShortTable02109928();
+void* GetVariantShortTable02109928_02099cac();
 void LockStagedTextureVRAMCopying();
 void UnlockStagedTextureVRAMCopying();
 extern "C" void MemoryMapTexturePalette();
@@ -75,7 +75,7 @@ extern "C" ARM int func_ov015_0218d50c(Obj0218d50c* self) {
 
     BackgroundLoader::AddLockGlobal();
     BackgroundLoader::FreeAllocationsGlobal();
-    DelayThenSyncBit0();
+    DelayThenSyncBit0_020c9820();
     id = self->GetEnt(7)->unknown_2_;
     if (self->ids[7] != id) {
         self->GetEnt(3)->unknown_2_ = -1;
@@ -171,14 +171,14 @@ extern "C" ARM int func_ov015_0218d50c(Obj0218d50c* self) {
         }
         pair.Reset();
     }
-    char* tbl = (char*)GetVariantShortTable02109928();
+    char* tbl = (char*)GetVariantShortTable02109928_02099cac();
     unsigned int n = ((Pal0218d50c*)*self->pairsRoot)->count;
     unsigned int cnt = (n << 16) >> 13;
     if (cnt != 0) {
         CleanInvalidateCacheRange(tbl + self->c3c * 4, 4);
         CleanInvalidateCacheRange(tbl + 0x108 + self->c3d * 4, 4);
         CleanInvalidateCacheRange(tbl + 0x88 + self->c3e * 16, 0x10);
-        DelayThenSyncBit0();
+        DelayThenSyncBit0_020c9820();
         LockStagedTextureVRAMCopying();
         MemoryMapTexturePalette();
         LoadToTexturePalette(tbl + self->c3c * 4, (char*)cnt + 0x24, 4);

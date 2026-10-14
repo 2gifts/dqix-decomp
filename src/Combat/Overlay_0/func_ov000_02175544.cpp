@@ -11,8 +11,8 @@ struct Elem_0205d81c {
     unsigned char padc0[0xc4 - 0xc0];
     unsigned char type_;
 };
-Elem_0205d81c* FindElementForFieldB0(Struct_0205d81c*);
-int CheckField0x9cSetWhenField0xd4Present(unsigned char*);
+Elem_0205d81c* FindElementForFieldB0_0205d8c4(Struct_0205d81c*);
+int CheckField0x9cSetWhenField0xd4Present_0204c7e0(unsigned char*);
 
 struct Elem0205a3d0 {
     char pad0[4];
@@ -43,10 +43,10 @@ extern "C" ARM void func_ov000_02175544(unsigned char* obj) {
 #endif
     if (!(*(unsigned short*)(obj + flagOffset) & 0x100)) return;
 
-    Elem_0205d81c* elem = FindElementForFieldB0((Struct_0205d81c*)(obj + 0x188));
+    Elem_0205d81c* elem = FindElementForFieldB0_0205d8c4((Struct_0205d81c*)(obj + 0x188));
     if (elem == NULL) return;
     if (elem->type_ >= 0x1a) return;
-    if (!CheckField0x9cSetWhenField0xd4Present((unsigned char*)elem)) return;
+    if (!CheckField0x9cSetWhenField0xd4Present_0204c7e0((unsigned char*)elem)) return;
 
     short x = elem->x_ * 8;
     short y = elem->y_ * 8;

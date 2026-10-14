@@ -7,7 +7,7 @@ struct RootStruct021dcd5c {
 
 extern RootStruct021dcd5c data_ov027_021e33e0;
 
-int IssueBattleCommandSlot13(int a0, unsigned int a1);
+int IssueBattleCommandSlot13_020d559c(int a0, unsigned int a1);
 extern "C" void func_ov027_021db524(void);
 extern "C" void VectorizedMemset(void *dst, int val, int size);
 void ClearEntrySlot_021dd5f4(int index);
@@ -16,7 +16,7 @@ void ClearEntrySlot_021dd5f4(int index);
 extern "C" ARM void func_ov027_021dcd5c(int index) {
 	int idx;
 
-	IssueBattleCommandSlot13((int)func_ov027_021db524, index);
+	IssueBattleCommandSlot13_020d559c((int)func_ov027_021db524, index);
 	if (index == 0 || (unsigned int)index >= 0x10) {
 		return;
 	}

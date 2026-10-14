@@ -50,7 +50,7 @@ struct Glyph_021f7eb8 {
 
 struct Obj0204fbf8;
 
-void SetField0xa0AndByte0xc4IfFlag0x1Clear(unsigned char*, int, int);
+void SetField0xa0AndByte0xc4IfFlag0x1Clear_0204f160(unsigned char*, int, int);
 extern "C" void func_0204f174(Canvas_021f7eb8* canvas, short x, short y, short width, short height,
                               unsigned char frame, unsigned char a, unsigned char b, int);
 extern "C" void func_0204fae8(Canvas_021f7eb8* canvas);
@@ -72,7 +72,7 @@ extern "C" void func_02050678(Canvas_021f7eb8*, short, short, const char*, unsig
 extern "C" ARM void func_ov023_021f7eb8(MenuCanvas_021f7eb8* self, void* script, int value, short x, short y,
                                         short width, short height, unsigned char frame, unsigned char a,
                                         unsigned char b) {
-    SetField0xa0AndByte0xc4IfFlag0x1Clear((unsigned char*)&self->canvas_, value, self->id_);
+    SetField0xa0AndByte0xc4IfFlag0x1Clear_0204f160((unsigned char*)&self->canvas_, value, self->id_);
     func_0204f174(&self->canvas_, x, y, width, height, frame, a, b, 0);
     if (self->flags_ & 4) {
         if (self->pages_ > 1)

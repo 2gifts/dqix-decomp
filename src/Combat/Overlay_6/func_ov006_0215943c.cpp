@@ -38,18 +38,18 @@ struct AlchemyMenu {
     unsigned short flags_;
 };
 
-void ClearElementFlag0x20(Obj2081* menu, int flag);
+void ClearElementFlag0x20_02080c20(Obj2081* menu, int flag);
 void ClearFlagsForIds_021573c8(void* layout);
 unsigned short LookupByOffset_021591ec_021591ec(LookupByOffset0x362_021591ecStruct* self);
 short FindMappedMemberId02080468(void* menu, int group);
 extern "C" void func_ov006_0215f4dc(AlchemyMenu* self);
 extern "C" void func_ov006_0215f740(AlchemyMenu* self);
 void ResetWithSub0208203c(Obj0208203c* repeat);
-void SetElementFlag0x40(Obj2081* menu, int group, int flag);
+void SetElementFlag0x40_02081ea4(Obj2081* menu, int group, int flag);
 
 // USA: func_ov006_0215943c
 extern "C" ARM void func_ov006_0215943c(AlchemyMenu* self) {
-    ClearElementFlag0x20(self->menu_, 0);
+    ClearElementFlag0x20_02080c20(self->menu_, 0);
     self->flags_ |= 0x10;
     self->item_ = -1;
     self->count_ = 0;
@@ -67,5 +67,5 @@ extern "C" ARM void func_ov006_0215943c(AlchemyMenu* self) {
     func_ov006_0215f740(self);
     ResetWithSub0208203c((Obj0208203c*)self->repeat_);
     self->cursor_ = 0;
-    SetElementFlag0x40(self->menu_, self->group_, 0);
+    SetElementFlag0x40_02081ea4(self->menu_, self->group_, 0);
 }

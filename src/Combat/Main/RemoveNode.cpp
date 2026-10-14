@@ -6,7 +6,7 @@ struct RemoveNodeEntry {
 };
 
 // USA: func_020c8784
-ARM struct RemoveNodeEntry* RemoveNode(struct RemoveNodeEntry* head, struct RemoveNodeEntry* node) {
+ARM struct RemoveNodeEntry* RemoveNode_020c8784(struct RemoveNodeEntry* head, struct RemoveNodeEntry* node) {
     if (node->next != 0) {
         node->next->prev = node->prev;
     }

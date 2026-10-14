@@ -9,7 +9,7 @@ Elem_0205d81c* FindElementByC40205d81c(Struct_0205d81c*, int);
 struct ShortArrays0204c610;
 void GetFourShortsAtIndex(struct ShortArrays0204c610* base, int index, short* out0, short* out1, short* out2, short* out3);
 
-int IsWithinRect(unsigned char* obj, int x, int y, int width, int height);
+int IsWithinRect_02012734(unsigned char* obj, int x, int y, int width, int height);
 
 // USA: func_ov013_021842a0  (semantic: GetElemRectHit021842a0)
 extern "C" ARM int func_ov013_021842a0(void* obj, int index) {
@@ -25,7 +25,7 @@ extern "C" ARM int func_ov013_021842a0(void* obj, int index) {
     short out0, out1, out2, out3;
     GetFourShortsAtIndex((struct ShortArrays0204c610*)elem, (short)index, &out0, &out1, &out2, &out3);
 
-    return IsWithinRect((unsigned char*)&data_02114e54, out0 + (short)(elemAc << 3), out1 + (short)(elemAe << 3), out2, out3);
+    return IsWithinRect_02012734((unsigned char*)&data_02114e54, out0 + (short)(elemAc << 3), out1 + (short)(elemAe << 3), out2, out3);
     }
 
 fail:

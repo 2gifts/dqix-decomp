@@ -44,7 +44,7 @@ struct Roster0203de84 {
 // USA: func_0203de84
 extern "C" ARM void func_0203de84(void* self) {
     struct Roster0203de84* roster = (struct Roster0203de84*)self;
-    void* v = GetField0x3b0Value(GameState::GetInstance());
+    void* v = GetField0x3b0Value_020100bc(GameState::GetInstance());
     func_ov017_0218b5b0();
     struct Ctx02012fe4* ctx = (struct Ctx02012fe4*)func_02012fe4();
     unsigned short a = ctx->f38;

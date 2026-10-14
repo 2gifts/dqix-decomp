@@ -28,9 +28,9 @@ struct Owner020675fc {
     unsigned char padding_0x195d[kEnabledGap];
     unsigned char enabled;
 };
-EntryList_203dce4* GetGlobalPtr021075f4();
-Entry_203dce4* GetEntryUnlessFlag0x8000(EntryList_203dce4*, int);
-void* GetField0x3b0Value(GameState*);
+EntryList_203dce4* GetGlobalPtr021075f4_0203cf4c();
+Entry_203dce4* GetEntryUnlessFlag0x8000_0203dce4(EntryList_203dce4*, int);
+void* GetField0x3b0Value_020100bc(GameState*);
 void SelectVec3FromSources020406f8(Vec3_020406f8*, Node020406f8*);
 int ComputeTwoFromVec3_0202ec84(void*, Vec3copy0202ec84*, int*, int*);
 void RenderFlaggedIndexedEntry(StructAt020473c8*, int);
@@ -39,10 +39,10 @@ extern unsigned char data_020e7e08[];
 // USA: func_020675fc
 extern "C" ARM void func_020675fc(Owner020675fc* owner) {
     if (!owner->active) return;
-    Entry_203dce4* entry = GetEntryUnlessFlag0x8000(GetGlobalPtr021075f4(), owner->entryId);
+    Entry_203dce4* entry = GetEntryUnlessFlag0x8000_0203dce4(GetGlobalPtr021075f4_0203cf4c(), owner->entryId);
     if (entry && owner->enabled) {
         GameResources* resources = func_ov017_0218b5b0();
-        void* view = GetField0x3b0Value(GameState::GetInstance());
+        void* view = GetField0x3b0Value_020100bc(GameState::GetInstance());
         int x;
         int y;
         Vec3copy0202ec84 copied;

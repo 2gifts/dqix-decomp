@@ -8,7 +8,7 @@ extern "C" int _ll_mod(unsigned int lo, unsigned int hi, unsigned int divLo, uns
 extern "C" int _ll_sdiv(unsigned int lo, unsigned int hi, unsigned int divLo, unsigned int divHi);
 
 // USA: func_020cfb74
-ARM void SplitTimestampIntoDateAndTime(void* datePtr, struct TimeOfDay020cfaf4* timePtr, long long timestamp) {
+ARM void SplitTimestampIntoDateAndTime_020cfb74(void* datePtr, struct TimeOfDay020cfaf4* timePtr, long long timestamp) {
     if (timestamp < 0) {
         timestamp = 0;
     } else if (timestamp > 0xbc19137fLL) {

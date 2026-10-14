@@ -21,8 +21,8 @@ struct BattleRoster {
     };
 };
 struct S_10088;
-int IsFlag0x18Bit0x2000Set(GameObject*);
-int IsFlag10088Set(S_10088*);
+int IsFlag0x18Bit0x2000Set_ov000_02153c0c(GameObject*);
+int IsFlag10088Set_02010088(S_10088*);
 
 // USA: func_ov000_0215eb1c
 extern "C" ARM int func_ov000_0215eb1c(BattleRoster* roster, short* output, int capacity, int flags) {
@@ -32,8 +32,8 @@ extern "C" ARM int func_ov000_0215eb1c(BattleRoster* roster, short* output, int 
             short id = roster->groups[group].members[member] + 0xc0;
             GameObject* combatant = GameState::GetInstance()->GetCombatantByIndex(id);
             if (!combatant) continue;
-            if (!(flags & 0x10) && IsFlag0x18Bit0x2000Set(combatant)) continue;
-            if ((flags & 1) && IsFlag10088Set((S_10088*)combatant)) continue;
+            if (!(flags & 0x10) && IsFlag0x18Bit0x2000Set_ov000_02153c0c(combatant)) continue;
+            if ((flags & 1) && IsFlag10088Set_02010088((S_10088*)combatant)) continue;
             output[count++] = id;
             if (count == capacity) return count;
         }

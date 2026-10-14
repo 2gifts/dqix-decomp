@@ -2,8 +2,8 @@
 #include "GameState/GameState.h"
 #include "Combat/Overlay_0/GetCombatantByID.h"
 
-int CheckFlag0x2AndKind1(struct Combatant_20885b4* obj);
-int CheckFlag0x2AndState2(struct S88514* obj);
+int CheckFlag0x2AndKind1_020885b4(struct Combatant_20885b4* obj);
+int CheckFlag0x2AndState2_02088514(struct S88514* obj);
 unsigned short SelectByIndexRange0to3_021da644(int idx, int a, int b);
 
 struct Ctx_021e939c {
@@ -17,8 +17,8 @@ ARM int SelectMessageByFlags2_021e939c(struct Ctx_021e939c* ctx, int id, int fla
     if (combatant == NULL) {
         return 0;
     }
-    int state2 = CheckFlag0x2AndState2((struct S88514*)combatant->currentStats_);
-    int kind1 = CheckFlag0x2AndKind1((struct Combatant_20885b4*)combatant->currentStats_);
+    int state2 = CheckFlag0x2AndState2_02088514((struct S88514*)combatant->currentStats_);
+    int kind1 = CheckFlag0x2AndKind1_020885b4((struct Combatant_20885b4*)combatant->currentStats_);
     if (flag1 != 0) {
         if (flag2 != 0) {
             return state2 != 0 ? 0x10c : 0x10a;

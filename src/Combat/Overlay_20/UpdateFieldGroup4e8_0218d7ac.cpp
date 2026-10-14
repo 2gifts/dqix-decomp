@@ -6,7 +6,7 @@ enum { kFirstFadeOffset = 0x478 };
 enum { kFirstFadeOffset = 0x4e8 };
 #endif
 
-void EncodeSignFlaggedHalfword(short* out, int value);
+void EncodeSignFlaggedHalfword_020c39a0(short* out, int value);
 int GetSignedField020c39c8(volatile unsigned short* p);
 
 struct MasterBrightnessFade {
@@ -23,7 +23,7 @@ struct FieldGroup4e8_0218d7ac {
 // USA: func_ov020_0218d7ac
 ARM void UpdateFieldGroup4e8_0218d7ac(struct FieldGroup4e8_0218d7ac* display, int targetBrightness, int durationMilliseconds) {
     if (durationMilliseconds == 0) {
-        EncodeSignFlaggedHalfword((short*)0x400006c, targetBrightness);
+        EncodeSignFlaggedHalfword_020c39a0((short*)0x400006c, targetBrightness);
         display->mainFade.currentBrightness = (float)targetBrightness;
         display->mainFade.targetBrightness = targetBrightness;
         display->mainFade.remainingMilliseconds = 0;

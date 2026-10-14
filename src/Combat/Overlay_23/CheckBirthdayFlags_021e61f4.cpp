@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-int CalculateAge(int birthYear, int birthMonth, int birthDay);
+int CalculateAge_02098f20(int birthYear, int birthMonth, int birthDay);
 
 struct DaysTable021e61f4 { int v[12]; };
 extern struct DaysTable021e61f4 data_ov023_021fd72c;
@@ -19,16 +19,16 @@ extern "C" ARM void func_ov023_021e61f4(void* obj) {
 
     GameState::GetInstance();
 
-    int age = CalculateAge(*(unsigned short*)(base + regionalOffset1), *(unsigned char*)(base + regionalOffset2), *(unsigned char*)(base + regionalOffset3));
+    int age = CalculateAge_02098f20(*(unsigned short*)(base + regionalOffset1), *(unsigned char*)(base + regionalOffset2), *(unsigned char*)(base + regionalOffset3));
     if (age < 0x82) *(unsigned char*)(base + regionalOffset0) |= 0x2;
     if (age > 0) *(unsigned char*)(base + regionalOffset0) |= 0x1;
 
     if (*(unsigned char*)(base + regionalOffset2) < 12) {
-        int age2 = CalculateAge(*(unsigned short*)(base + regionalOffset1), *(unsigned char*)(base + regionalOffset2) + 1, *(unsigned char*)(base + regionalOffset3));
+        int age2 = CalculateAge_02098f20(*(unsigned short*)(base + regionalOffset1), *(unsigned char*)(base + regionalOffset2) + 1, *(unsigned char*)(base + regionalOffset3));
         if (age2 >= 0) *(unsigned char*)(base + regionalOffset0) |= 0x4;
     }
     if (*(unsigned char*)(base + regionalOffset2) > 1) {
-        int age3 = CalculateAge(*(unsigned short*)(base + regionalOffset1), *(unsigned char*)(base + regionalOffset2) - 1, *(unsigned char*)(base + regionalOffset3));
+        int age3 = CalculateAge_02098f20(*(unsigned short*)(base + regionalOffset1), *(unsigned char*)(base + regionalOffset2) - 1, *(unsigned char*)(base + regionalOffset3));
         if (age3 <= 0x82) *(unsigned char*)(base + regionalOffset0) |= 0x8;
     }
 
@@ -36,12 +36,12 @@ extern "C" ARM void func_ov023_021e61f4(void* obj) {
     unsigned char month = *(unsigned char*)(base + regionalOffset2);
     unsigned char day = *(unsigned char*)(base + regionalOffset3);
     if (day < daysInMonth.v[month - 1]) {
-        int age4 = CalculateAge(*(unsigned short*)(base + regionalOffset1), month, day + 1);
+        int age4 = CalculateAge_02098f20(*(unsigned short*)(base + regionalOffset1), month, day + 1);
         if (age4 >= 0) *(unsigned char*)(base + regionalOffset0) |= 0x10;
     }
 
     if (*(unsigned char*)(base + regionalOffset3) > 1) {
-        int age5 = CalculateAge(*(unsigned short*)(base + regionalOffset1), *(unsigned char*)(base + regionalOffset2), *(unsigned char*)(base + regionalOffset3) - 1);
+        int age5 = CalculateAge_02098f20(*(unsigned short*)(base + regionalOffset1), *(unsigned char*)(base + regionalOffset2), *(unsigned char*)(base + regionalOffset3) - 1);
         if (age5 <= 0x82) *(unsigned char*)(base + regionalOffset0) |= 0x20;
     }
 }

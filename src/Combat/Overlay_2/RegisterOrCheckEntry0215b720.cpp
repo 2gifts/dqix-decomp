@@ -2,8 +2,8 @@
 #include <globaldefs.h>
 
 void* SearchBothTables02079e2c(char* p, int key);
-void* GetData02153637(void);
-void StoreInFirstEmptySlot(unsigned char* base, unsigned char val);
+void* GetData02153637_020e2ff8(void);
+void StoreInFirstEmptySlot_020e3368(unsigned char* base, unsigned char val);
 
 struct Field18_0215b720 {
     unsigned int field0 : 5;
@@ -20,7 +20,7 @@ extern "C" ARM int func_ov002_0215b720(unsigned char* obj, int key) {
             result = 1;
         }
     } else {
-        ActionDataTables* table = GetData02108e10();
+        ActionDataTables* table = GetData02108e10_020797dc();
         void* entry = SearchBothTables02079e2c((char*)table, key);
         if (entry != 0) {
             struct Field18_0215b720* f = (struct Field18_0215b720*)((char*)entry + 0x18);
@@ -34,8 +34,8 @@ extern "C" ARM int func_ov002_0215b720(unsigned char* obj, int key) {
     }
 
     if (result != 0) {
-        void* ctx = GetData02153637();
-        StoreInFirstEmptySlot((unsigned char*)ctx, 1);
+        void* ctx = GetData02153637_020e2ff8();
+        StoreInFirstEmptySlot_020e3368((unsigned char*)ctx, 1);
     }
 
     return result;

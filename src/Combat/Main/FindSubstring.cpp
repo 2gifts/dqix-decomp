@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_020d2f88
-ARM char* FindSubstring(char* haystack, char* needle) {
+ARM char* FindSubstring_020d2f88(char* haystack, char* needle) {
     int matchLen;
     char* cursor;
     char needleChar;

@@ -42,18 +42,18 @@ extern "C" void func_02015438(void*);
 extern "C" void func_ov023_021eb43c(void*);
 int GetGlobalField0x1c020421a0();
 extern "C" void func_ov000_021735d0(void*, unsigned int);
-Obj02039fec* GetData02104b6c();
+Obj02039fec* GetData02104b6c_02039e70();
 void ProcessSlotDamping02039fec(Obj02039fec*);
 void DecrementFieldsAndMaybeReset021824d8(void*);
-int PeekInputLogB();
+int PeekInputLogB_020a1fa8();
 extern "C" void func_ov025_021df794(void*);
 extern "C" int func_0202c540(SearchStruct*);
-int TestFlagBitAt0xe(SearchStruct*, int);
+int TestFlagBitAt0xe_0202c578(SearchStruct*, int);
 FlagWord020466f4* GetDataPtr02114e04_020d6c00();
 void ClearFlags020466f4(FlagWord020466f4*, unsigned int);
-void* GetGlobal02109030();
+void* GetGlobal02109030_020936f8();
 void ResetAndSetFlag0x3c9Bit0_020939dc(void*);
-void ResetEightRegionsAndFlags(char*);
+void ResetEightRegionsAndFlags_02093a14(char*);
 extern "C" void func_02094030(void*, int, int, int);
 extern "C" void func_ov000_0215fb04(void*, int);
 int CheckThreeFlags_02195550(unsigned char*);
@@ -72,8 +72,8 @@ void HandleField_02160de4(void*);
 void HandleField_02160e94(void*);
 void ProcessFlaggedombatants02160fe4_02160fe4(void*);
 extern "C" void func_ov025_021e9558(void*);
-void ResetInputLogB();
-void PushInputLogB(int);
+void ResetInputLogB_020a1edc();
+void PushInputLogB_020a1ef0(int);
 void ForwardField0xc0_0205eb80(void*);
 extern int data_ov000_02184220;
 extern unsigned char data_02108760[0xd0];
@@ -90,24 +90,24 @@ extern "C" ARM void func_ov000_02160620(BattleFrame* frame) {
         if (frame->mode == 0 && (frame->flags & 0x40000) == 0 && (frame->flags & 0x80000) != 0 &&
                 ((BattleManager*)GetGlobalField0x1c020421a0())->blocked == 0)
             func_ov000_021735d0(frame->turnTimer, game->GetTickCount());
-        ProcessSlotDamping02039fec(GetData02104b6c());
+        ProcessSlotDamping02039fec(GetData02104b6c_02039e70());
         DecrementFieldsAndMaybeReset021824d8(frame->damping);
-        if (frame->state == 8 && PeekInputLogB() == 4)
+        if (frame->state == 8 && PeekInputLogB_020a1fa8() == 4)
             func_ov025_021df794(frame->effect);
         GameObject* object = game->GetGameObjectByIndex(0xc8);
         if (object)
             object->obj3D_.AdvanceEffects();
-        if (func_0202c540(search) && TestFlagBitAt0xe(search, 0) && frame->resetDone == 0) {
+        if (func_0202c540(search) && TestFlagBitAt0xe_0202c578(search, 0) && frame->resetDone == 0) {
             ClearFlags020466f4(GetDataPtr02114e04_020d6c00(), 0x8020);
-            void* state = GetGlobal02109030();
+            void* state = GetGlobal02109030_020936f8();
             ResetAndSetFlag0x3c9Bit0_020939dc(state);
-            ResetEightRegionsAndFlags((char*)state);
+            ResetEightRegionsAndFlags_02093a14((char*)state);
             func_02094030(state, 4, -1, 0);
             frame->resetDone = 1;
         }
     }
     for (int i = 1; i < 4; ++i) {
-        if (TestFlagBitAt0xe(search, i))
+        if (TestFlagBitAt0xe_0202c578(search, i))
             func_ov000_0215fb04(frame->random, i);
     }
     if (CheckThreeFlags_02195550(context) == 0)
@@ -118,23 +118,23 @@ extern "C" ARM void func_ov000_02160620(BattleFrame* frame) {
     case 4: func_ov000_0216873c(frame); break;
     case 6: func_ov000_021688dc(frame); break;
     case 7:
-        if (PeekInputLogB() == 3)
+        if (PeekInputLogB_020a1fa8() == 3)
             func_ov026_021d8ba0(frame);
         break;
     case 17: RunCombatTurnCycle02169770((unsigned char*)frame); break;
     case 8: func_ov025_021db038(frame); break;
     case 9:
-        if (PeekInputLogB() == 1) {
+        if (PeekInputLogB_020a1fa8() == 1) {
             func_ov023_021ed9f8(frame);
             break;
         }
     case 10:
-        if (PeekInputLogB() == 1) {
+        if (PeekInputLogB_020a1fa8() == 1) {
             func_ov023_021f4c04(frame);
             break;
         }
     case 11:
-        if (PeekInputLogB() == 3)
+        if (PeekInputLogB_020a1fa8() == 3)
             func_ov026_021db090(frame);
         break;
     case 18: HandleField_02160de4(frame); break;
@@ -153,11 +153,11 @@ extern "C" ARM void func_ov000_02160620(BattleFrame* frame) {
     }
     if (data_ov000_02184220) {
         if (frame->state == 7 || frame->state == 11) {
-            ResetInputLogB();
-            PushInputLogB(3);
+            ResetInputLogB_020a1edc();
+            PushInputLogB_020a1ef0(3);
         } else if (frame->state == 9 || frame->state == 10) {
-            ResetInputLogB();
-            PushInputLogB(1);
+            ResetInputLogB_020a1edc();
+            PushInputLogB_020a1ef0(1);
         }
         data_ov000_02184220 = 0;
     }

@@ -23,7 +23,7 @@ void ResetBigStruct02013750(void* p, int n);
 void ClearThreeWords02094d00(ClearThreeWords02094d00Struct* p);
 void InitState0208f7ec(InitState0208f7ecStruct* p);
 void BlankFunction020984ac(void* p);
-void NotifyThenResetNameTable(void* p);
+void NotifyThenResetNameTable_0201c108(void* p);
 extern "C" void _ZN7Model3DD1Ev(void* p);
 
 extern "C" void func_0200ef44(void* p, int count, int size, void* fn);
@@ -36,7 +36,7 @@ extern "C" ARM void* func_0201c124(void* self) {
     ((ActiveGrottoClass*)((char*)self + grottoOffset))->BlankFunction2();
     ((FloorMap*)((char*)self + floorMapOffset))->Clear2();
     BlankFunction020984ac((char*)self + blankTargetOffset);
-    func_0200ef44((char*)self + nameTablesOffset, 4, 0x88, (void*)NotifyThenResetNameTable);
+    func_0200ef44((char*)self + nameTablesOffset, 4, 0x88, (void*)NotifyThenResetNameTable_0201c108);
     func_0200ef44((char*)self + modelsOffset, 2, 0xac, (void*)_ZN7Model3DD1Ev);
     ((LightingInfo*)((char*)self + lightingOffset))->Initialize();
     ((ZoneFeatures*)((char*)self + featuresOffset))->Reset();

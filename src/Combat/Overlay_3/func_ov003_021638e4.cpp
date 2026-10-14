@@ -37,8 +37,8 @@ extern "C" Holder *func_02012fe4();
 void DispatchWithGlobalContext020daf9c(int, int, int, int);
 void SetAndLockBrightness(GameResources*, int, int);
 int IsBrightnessTransitionActive(GameResources*);
-GameObject *GetCombatantWithFlag0x100(GameState *, int);
-int GetField0x3acValue(GameState *);
+GameObject *GetCombatantWithFlag0x100_0200ff1c(GameState *, int);
+int GetField0x3acValue_020100a8(GameState *);
 struct Obj02033874;
 void SetVecYFromValue02033874(Obj02033874*, int);
 extern "C" void func_ov017_021af59c(Node *);
@@ -48,14 +48,14 @@ void PrependNodeToHead(HeadList020469f8*, HeadNode020469f8*);
 struct Struct021b11b0;
 void InitState39_021b11b0(Struct021b11b0*);
 extern "C" int *func_0202ae18();
-int CheckField0NonZero(int *);
+int CheckField0NonZero_0202b7d8(int *);
 void EnqueueEventTag173_021d1810(int, int, signed char);
-void *GetGlobal02109030();
+void *GetGlobal02109030_020936f8();
 extern "C" void func_02094030(void *, int, int, int);
 unsigned int *GetDataPtr02114e04_020d6c00();
 struct FlagWord020466f4;
 void ClearFlags020466f4(FlagWord020466f4*, unsigned int);
-int GetField0x397cValue(GameState *);
+int GetField0x397cValue_020100b0(GameState *);
 struct Field150Holder02052e2c;
 Field150 * GetField150Ptr0x488_02052e2c(Field150Holder02052e2c*);
 extern "C" void func_ov017_021bbae4(Node *, int, int);
@@ -67,11 +67,11 @@ int ListContainsId(ListHead02046b60*, int);
 struct GameResources;
 void SetBrightness(GameResources*, int, int);
 extern "C" void func_ov017_0219bd1c(int, int, int, int);
-int *GetField0x3f8Address(GameState *);
+int *GetField0x3f8Address_0200fd0c(GameState *);
 char *GetGlobalField0x1c020421a0();
 void ReinitController02043204(char *);
 extern "C" void func_02043124(char *);
-unsigned char *GetFieldAt0x150(unsigned char *);
+unsigned char *GetFieldAt0x150_02053c6c(unsigned char *);
 void ResetShortFields02086380(unsigned char *);
 struct S021b6b8c;
 void CallIfField24ThenSetFlag_021b6b8c(S021b6b8c*);
@@ -88,7 +88,7 @@ extern "C" ARM void func_ov003_021638e4(Scene *self) {
     list   = *(void **) (res + 0x3000 + 0x6fc);
     gs     = GameState::GetInstance();
     loader = BackgroundLoader::GetInstance();
-    gp     = (unsigned char *)GetPtrField0x2a04(gs);
+    gp     = (unsigned char *)GetPtrField0x2a04_02010828(gs);
     func_02012fe4();
     unsigned char state = self->state;
 
@@ -101,7 +101,7 @@ extern "C" ARM void func_ov003_021638e4(Scene *self) {
     } else if (state == 1) {
         if (IsBrightnessTransitionActive((GameResources*)res) == 0) {
             for (int i = 0; i < gp[0xf7c]; i++) {
-                GameObject *c = GetCombatantWithFlag0x100(gs, (gp + i)[0xf78]);
+                GameObject *c = GetCombatantWithFlag0x100_0200ff1c(gs, (gp + i)[0xf78]);
                 if (c != 0) {
                     c->obj3D_.MakeHidden();
                 }
@@ -111,7 +111,7 @@ extern "C" ARM void func_ov003_021638e4(Scene *self) {
     } else if (state == 2) {
         if (IsBrightnessTransitionActive((GameResources*)res) == 0 && loader->GetNumQueuedTasks() <= 0) {
             if (self->flags & 0x40) {
-                GameObject *c = GetCombatantWithFlag0x100(gs, GetField0x3acValue(gs));
+                GameObject *c = GetCombatantWithFlag0x100_0200ff1c(gs, GetField0x3acValue_020100a8(gs));
                 if (c != 0) {
                     Vector3i *v = (Vector3i *) ((char *) c + 0x44);
                     v->x        = 0x5800;
@@ -134,15 +134,15 @@ extern "C" ARM void func_ov003_021638e4(Scene *self) {
         if (self->flags & 0x40) {
             Vector3i saved[4];
             for (int i = 0; i < 4; i++) {
-                GameObject *c = GetCombatantWithFlag0x100(gs, (gp + i)[0xf78]);
+                GameObject *c = GetCombatantWithFlag0x100_0200ff1c(gs, (gp + i)[0xf78]);
                 if (c != 0) {
                     saved[i] = *(Vector3i *) ((char *) c + 0x44);
                     c->obj3D_.MakeVisible();
                 }
             }
-            if (CheckField0NonZero(func_0202ae18()) != 0) {
-                EnqueueEventTag173_021d1810(0, -1, (signed char) GetField0x3acValue(gs));
-                func_02094030(GetGlobal02109030(), 1, -1, 0);
+            if (CheckField0NonZero_0202b7d8(func_0202ae18()) != 0) {
+                EnqueueEventTag173_021d1810(0, -1, (signed char) GetField0x3acValue_020100a8(gs));
+                func_02094030(GetGlobal02109030_020936f8(), 1, -1, 0);
             }
         } else {
             if (BackgroundLoader::GetInstance()->GetNumQueuedTasks() > 0) {
@@ -155,7 +155,7 @@ extern "C" ARM void func_ov003_021638e4(Scene *self) {
                 tmp = *(Vector3i *) ((char *) p + 0x44);
             }
             for (int i = 0; i < 4; i++) {
-                GameObject *c = GetCombatantWithFlag0x100(gs, i);
+                GameObject *c = GetCombatantWithFlag0x100_0200ff1c(gs, i);
                 if (c != 0) {
                     c->obj3D_.MakeVisible();
                     *(Vector3i *) ((char *) c + 0x44) = tmp;
@@ -168,13 +168,13 @@ extern "C" ARM void func_ov003_021638e4(Scene *self) {
             ClearFlags020466f4((FlagWord020466f4*)GetDataPtr02114e04_020d6c00(), 0x80000);
             Holder *h   = func_02012fe4();
             Node *n     = *(Node **) (res + 0x3000 + 0x734);
-            Field150 *f = GetField150Ptr0x488_02052e2c((Field150Holder02052e2c*)(gs->GetGameObjectByIndex(GetField0x397cValue(gs))));
+            Field150 *f = GetField150Ptr0x488_02052e2c((Field150Holder02052e2c*)(gs->GetGameObjectByIndex(GetField0x397cValue_020100b0(gs))));
             func_ov017_021bbae4(n, h->f8, 2);
-            n->bcd = GetField0x397cValue(gs);
+            n->bcd = GetField0x397cValue_020100b0(gs);
             n->bce = f->b14;
             if (self->flags & 0x40) {
                 self->flags &= ~0x40;
-                if (CheckField0NonZero(func_0202ae18()) != 0) {
+                if (CheckField0NonZero_0202b7d8(func_0202ae18()) != 0) {
                     n->bcf = 2;
                     AppendNodeToTail((TailList020469b4*)list, (TailNode020469b4*)n);
                 }
@@ -185,7 +185,7 @@ extern "C" ARM void func_ov003_021638e4(Scene *self) {
                 n->bcf = 3;
                 PrependNodeToHead((HeadList020469f8*)list, (HeadNode020469f8*)n);
                 func_ov017_0219bd1c(1, 0, 0, 1);
-                int *p                         = GetField0x3f8Address(gs);
+                int *p                         = GetField0x3f8Address_0200fd0c(gs);
                 p[4]                           = 0x48cc;
                 p[5]                           = 0x199;
                 p[6]                           = -0x733;
@@ -201,7 +201,7 @@ extern "C" ARM void func_ov003_021638e4(Scene *self) {
             for (signed char i = 0; i < 4; i++) {
                 GameObject *m = gs->GetPartyMemberByIndex(i);
                 if (m != 0) {
-                    unsigned char *fld = GetFieldAt0x150((unsigned char *) m);
+                    unsigned char *fld = GetFieldAt0x150_02053c6c((unsigned char *) m);
                     if (fld != 0) {
                         ResetShortFields02086380(fld);
                     }

@@ -14,16 +14,16 @@ enum { kRegionValue2AE_28A = 0x2ae };
 #endif
 
 extern "C" void* func_0202ae18(void);
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 
 struct SearchStruct;
-extern int TestFlagBitAt0xe(struct SearchStruct* obj, int value);
+extern int TestFlagBitAt0xe_0202c578(struct SearchStruct* obj, int value);
 
 struct CheckField0AndGlobalHalfStruct0202c508;
 extern "C" int func_0202c508(struct CheckField0AndGlobalHalfStruct0202c508* obj);
 
 void EnqueueEventTag173_021d1810(int, int, signed char);
-extern int* GetGlobal02109030(void);
+extern int* GetGlobal02109030_020936f8(void);
 extern "C" void func_02094030(int* a, unsigned short b, short c, unsigned char d);
 extern void RemoveSearchEntry0202c21c(struct SearchStruct* obj, int value);
 
@@ -35,12 +35,12 @@ extern int CheckSlotsAllFree0205e488(void* obj);
 extern "C" ARM void func_ov003_02171764(char* self) {
     GameState* battle = GameState::GetInstance();
     struct SearchStruct* search = (struct SearchStruct*)func_0202ae18();
-    void* dataPtr = GetData02100044();
+    void* dataPtr = GetData02100044_0202ae24();
 
-    if (TestFlagBitAt0xe(search, *(unsigned char*)(self + 0x199)) != 0) {
+    if (TestFlagBitAt0xe_0202c578(search, *(unsigned char*)(self + 0x199)) != 0) {
         if (func_0202c508((struct CheckField0AndGlobalHalfStruct0202c508*)search) != 0) {
             EnqueueEventTag173_021d1810(4, -1, 0);
-            int* g = GetGlobal02109030();
+            int* g = GetGlobal02109030_020936f8();
             func_02094030(g, 4, -1, 0);
         }
         RemoveSearchEntry0202c21c(search, *(unsigned char*)(self + 0x199));

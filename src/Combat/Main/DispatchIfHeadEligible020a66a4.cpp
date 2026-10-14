@@ -8,7 +8,7 @@ enum { slotFieldOffset = 0x36fc, otherFieldOffset = 0x718 };
 #include "GameState/GameState.h"
 
 struct PointerField32c_ffc0;
-void* GetPointerAt0x32c(struct PointerField32c_ffc0* obj);
+void* GetPointerAt0x32c_0200ffc0(struct PointerField32c_ffc0* obj);
 struct HeadNode02046b24;
 int GetHeadNodeIdOrMinusOne(struct HeadNode02046b24** obj);
 struct S02046b1c;
@@ -38,7 +38,7 @@ extern "C" ARM void func_020a66a4(struct Struct020a66a4* a0) {
     void* other;
     GameState* battle = GameState::GetInstance();
     field = a0->fieldslotFieldOffset;
-    p = GetPointerAt0x32c((struct PointerField32c_ffc0*)battle);
+    p = GetPointerAt0x32c_0200ffc0((struct PointerField32c_ffc0*)battle);
     headId = GetHeadNodeIdOrMinusOne((struct HeadNode02046b24**)field);
     GetField0x0List02046b1c((struct S02046b1c*)field);
     struct Sub3000_020a66a4* sub = (struct Sub3000_020a66a4*)((char*)a0 + 0x3000);

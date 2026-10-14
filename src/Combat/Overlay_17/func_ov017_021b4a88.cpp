@@ -15,7 +15,7 @@ extern "C" Zone3D* func_02012fe4(void);
 extern "C" void func_020a0cc4(unsigned int size);
 extern "C" void func_020a0c0c(void);
 int IsInRange0201b5b0(int id);
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
 
 extern AllocatorUnion data_02114e20;
@@ -52,7 +52,7 @@ extern "C" ARM void func_ov017_021b4a88(Request021b4a88* request) {
 
             SafeAllocator scriptAllocator;
             scriptAllocator.ResetAllocatorPointer();
-            scriptAllocator.CreateTypeA(AllocateAligned4(&data_02114e20, 0x800), 0x800);
+            scriptAllocator.CreateTypeA(AllocateAligned4_02012d88(&data_02114e20, 0x800), 0x800);
             scriptAllocator.Reset();
 
             NarcHandle archive;
@@ -87,7 +87,7 @@ extern "C" ARM void func_ov017_021b4a88(Request021b4a88* request) {
             int floor = id % 20;
             SafeAllocator floorAllocator;
             floorAllocator.ResetAllocatorPointer();
-            floorAllocator.CreateTypeA(AllocateAligned4(&data_02114e20, 0x600), 0x600);
+            floorAllocator.CreateTypeA(AllocateAligned4_02012d88(&data_02114e20, 0x600), 0x600);
             floorAllocator.Reset();
             if (IsInRange0201b5b0(id)) {
                 int width = grotto->CalculateAndStoreFloorWidth(floor);
@@ -99,7 +99,7 @@ extern "C" ARM void func_ov017_021b4a88(Request021b4a88* request) {
                 map.Clear();
                 map.Clear();
                 map.AllocateBuffers(&floorAllocator);
-                TileFeaturePlacementData* buffer = (TileFeaturePlacementData*)AllocateAligned4(&data_02114e20, sizeof(TileFeaturePlacementData) * 256);
+                TileFeaturePlacementData* buffer = (TileFeaturePlacementData*)AllocateAligned4_02012d88(&data_02114e20, sizeof(TileFeaturePlacementData) * 256);
                 current->CalculateFloorMap(floor, width, height, &map);
                 func_02019728(zone, floor, &features, buffer, &map);
                 func_0201a300(zone, floor, request->target, buffer, &map);

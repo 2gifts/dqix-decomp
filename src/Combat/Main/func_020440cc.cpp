@@ -15,12 +15,12 @@ struct Obj0205eaa0;
 extern unsigned short data_02114e30;
 extern Input020440cc data_02114e54;
 extern Obj0205eaa0 data_02108760;
-int TestFlag0SetAndFlag1Clear(unsigned short*, int);
-void* GetGlobalPtr021075f4();
-Entry_203dce4* GetEntryUnlessFlag0x8000(EntryList_203dce4*, int);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short*, int);
+void* GetGlobalPtr021075f4_0203cf4c();
+Entry_203dce4* GetEntryUnlessFlag0x8000_0203dce4(EntryList_203dce4*, int);
 extern "C" void func_0206b104(MessageSystem*);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
-void SetFlag0x2IfByte0xd4Not3(unsigned char*);
+void SetFlag0x2IfByte0xd4Not3_0208beb4(unsigned char*);
 extern "C" void func_02043124(MessageSystem*);
 
 #if defined(jpn)
@@ -43,10 +43,10 @@ extern "C" ARM int func_020440cc(MessageSystem* self) {
 #else
     if (self->b19cf) mask |= 0x100;
 #endif
-    if (TestFlag0SetAndFlag1Clear(&data_02114e30, mask)) triggered = 1;
-    if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0xf0)) triggered = 1;
+    if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, mask)) triggered = 1;
+    if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0xf0)) triggered = 1;
     if (data_02114e54.active && data_02114e54.ticks < 20) triggered = 1;
-    if (GetIndexedHalfword(self) == 0xff0c) {
+    if (GetIndexedHalfword_020656d0(self) == 0xff0c) {
         unsigned int ticks = GameState::GetInstance()->GetTickCount();
         if (self->inputDelay) {
             if (self->inputDelay <= ticks) {
@@ -59,8 +59,8 @@ extern "C" ARM int func_020440cc(MessageSystem* self) {
     switch (self->mode) {
     case 0:
         if (self->b19be) return 0;
-        if (GetIndexedHalfword(self) == 0xff02) {
-            Entry_203dce4* entry = GetEntryUnlessFlag0x8000((EntryList_203dce4*)GetGlobalPtr021075f4(), self->selectedEntry);
+        if (GetIndexedHalfword_020656d0(self) == 0xff02) {
+            Entry_203dce4* entry = GetEntryUnlessFlag0x8000_0203dce4((EntryList_203dce4*)GetGlobalPtr021075f4_0203cf4c(), self->selectedEntry);
             if (entry) SetValueOnActiveChild02040af0(entry, self->selectedValue);
         }
         return 1;
@@ -86,7 +86,7 @@ extern "C" ARM int func_020440cc(MessageSystem* self) {
         self->b19bd = 0;
         break;
     case 2: {
-        unsigned short command = GetIndexedHalfword(self);
+        unsigned short command = GetIndexedHalfword_020656d0(self);
 #if defined(jpn)
         if (command == 0xff21) {
 #else
@@ -120,7 +120,7 @@ extern "C" ARM int func_020440cc(MessageSystem* self) {
                         self->pendingValueActive = 1;
                         CheckAndClearFlag020656e4(self, 1);
                     } else if (token == childFlag && self->child) {
-                        SetFlag0x2IfByte0xd4Not3(self->child);
+                        SetFlag0x2IfByte0xd4Not3_0208beb4(self->child);
                     }
                 }
                 ++self->tokenIndex;

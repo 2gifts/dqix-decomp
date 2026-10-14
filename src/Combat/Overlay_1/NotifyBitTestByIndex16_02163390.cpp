@@ -3,14 +3,14 @@
 extern "C" void* func_0205ec34(void);
 extern "C" int func_ov017_021d60f4(void* a);
 extern "C" void func_ov017_021d6134(void* param, int val);
-int TestBitInByteArray(int, unsigned char*, int);
+int TestBitInByteArray_0206dfb0(int, unsigned char*, int);
 
 // USA: func_ov001_02163390
 ARM int NotifyBitTestByIndex16_02163390(void* param) {
 	unsigned char* base = (unsigned char*)func_0205ec34();
 	int id = func_ov017_021d60f4(param);
 	int idx = base[0x332];
-	int bit = TestBitInByteArray((int)base, base + idx * 0x1c + 0x10, id);
+	int bit = TestBitInByteArray_0206dfb0((int)base, base + idx * 0x1c + 0x10, id);
 	if (bit != 0) {
 		func_ov017_021d6134((char*)param + 8, 1);
 	} else {

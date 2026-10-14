@@ -24,11 +24,11 @@ struct ActionResource { char pad[8]; short id; };
 struct CombatantEventState { char pad0[0x144]; ActionResource* resource; char pad1[0x39]; unsigned char active; unsigned char pending; };
 struct S_10088;
 struct ArrayContainsByteStruct;
-GameObject* GetCombatantWithFlag0x400(GameState*, int);
-int IsFlag0x18Bit0x1000Set(GameObject*);
-int IsFlag10088Set(S_10088*);
-int IsFlag0x18Bit0x2000Set(GameObject*);
-void ClearFlag0x1000AndBytes7eA1(unsigned char*);
+GameObject* GetCombatantWithFlag0x400_0200fea4(GameState*, int);
+int IsFlag0x18Bit0x1000Set_ov000_02155154(GameObject*);
+int IsFlag10088Set_02010088(S_10088*);
+int IsFlag0x18Bit0x2000Set_ov000_02153c0c(GameObject*);
+void ClearFlag0x1000AndBytes7eA1_02088e64(unsigned char*);
 void InitStruct02160030(void*);
 void ResetStruct02157cdc(void*);
 void PopulateEntry_0215ccbc(int, OutStruct0215ccbc*, GameObject*, short, short, short, int, int, unsigned char);
@@ -36,7 +36,7 @@ void AddEntryAndIncrementCount0215a88c(void*, void*, int);
 void AppendToChainAndIncCount0215ffc4(void*, void*, int);
 void AppendNode02160068(Obj02160068*, Node02160068*);
 void AppendNode021600cc(Obj021600cc*, Node021600cc*);
-int ArrayContainsByte(ArrayContainsByteStruct*, int);
+int ArrayContainsByte_02086ef0(ArrayContainsByteStruct*, int);
 void IncrementByteCounterCapped0x63_0215a8d4(unsigned char*, int);
 static inline short GetSource(GameObject* combatant) { return ((CombatSource*)combatant->currentStats_)->id; }
 static inline short GetHP(GameObject* combatant) { SDK_NULL_ASSERT(combatant); return combatant->currentStats_->primaryStats.currHP; }
@@ -48,12 +48,12 @@ extern "C" ARM void func_ov000_0215a908(BattleEvents* events, int id) {
     if (events->actionCount >= 20 || events->summaryCount >= 20 || events->targetCount >= 20 || events->entryCount >= 20) return;
     Node02160068* summary;
     Node021600cc* target;
-    GameObject* combatant = GetCombatantWithFlag0x400(GameState::GetInstance(), id);
-    if (!combatant || !IsFlag0x18Bit0x1000Set(combatant)) return;
+    GameObject* combatant = GetCombatantWithFlag0x400_0200fea4(GameState::GetInstance(), id);
+    if (!combatant || !IsFlag0x18Bit0x1000Set_ov000_02155154(combatant)) return;
     short source = GetSource(combatant);
     GameObject* other = GameState::GetInstance()->GetCombatantByIndex(source);
-    if (!other || IsFlag10088Set((S_10088*)other) || IsFlag0x18Bit0x2000Set(other)) {
-        ClearFlag0x1000AndBytes7eA1((unsigned char*)combatant->currentStats_);
+    if (!other || IsFlag10088Set_02010088((S_10088*)other) || IsFlag0x18Bit0x2000Set_ov000_02153c0c(other)) {
+        ClearFlag0x1000AndBytes7eA1_02088e64((unsigned char*)combatant->currentStats_);
         ((CombatantEventState*)combatant)->pending = 0;
         return;
     }
@@ -83,7 +83,7 @@ extern "C" ARM void func_ov000_0215a908(BattleEvents* events, int id) {
     AppendNode02160068(action, summary);
     AppendNode021600cc(AsTargetAction(action), target);
     ActionResource* resource = ((CombatantEventState*)combatant)->resource;
-    if (ArrayContainsByte((ArrayContainsByteStruct*)GetPtrField0x2a04(GameState::GetInstance()), target->source) && resource && resource->id == 0x143) IncrementByteCounterCapped0x63_0215a8d4((unsigned char*)events, 9);
+    if (ArrayContainsByte_02086ef0((ArrayContainsByteStruct*)GetPtrField0x2a04_02010828(GameState::GetInstance()), target->source) && resource && resource->id == 0x143) IncrementByteCounterCapped0x63_0215a8d4((unsigned char*)events, 9);
     events->actionCount++;
     events->summaryCount++;
     events->targetCount++;

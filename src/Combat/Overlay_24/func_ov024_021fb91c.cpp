@@ -67,12 +67,12 @@ struct StatsView_021fb91c {
 struct FlagObj_021da998;
 struct FlagObj_021dd260;
 struct S_10088;
-int GetFieldAt0x150(unsigned char*);
-int TestBitAt0x34(unsigned char*, unsigned int);
-int IsFlag10088Set(S_10088*);
+int GetFieldAt0x150_02053c6c(unsigned char*);
+int TestBitAt0x34_020a35e0(unsigned char*, unsigned int);
+int IsFlag10088Set_02010088(S_10088*);
 int IsFlagBit8388608Set_021da998(FlagObj_021da998*);
 int IsFlagBit24Set_021dd260(FlagObj_021dd260*);
-float GetClampedRateMultiplier(int, int);
+float GetClampedRateMultiplier_02074738(int, int);
 void AddEntryIfUnderLimit16_021f6a1c(AddEntryList_021f6a1c*, void*);
 extern "C" void func_ov024_021f8938(void*, float*, float*, int, void*, GameObject*);
 extern "C" void func_ov024_021f6a4c(void*, void*);
@@ -90,8 +90,8 @@ extern "C" ARM void func_ov024_021fb91c(Context_021fb91c* context) {
     if (context->ratings[context->activeIndex] >= threshold) eligible = 0;
     if (!eligible && action->kind == 0) return;
     GameObject* actor = context->actor;
-    GetFieldAt0x150((unsigned char*)actor);
-    GetData02108e10();
+    GetFieldAt0x150_02053c6c((unsigned char*)actor);
+    GetData02108e10_020797dc();
     int scaling = context->work.scaling;
     float value = 0;
     float spread = 0;
@@ -103,19 +103,19 @@ extern "C" ARM void func_ov024_021fb91c(Context_021fb91c* context) {
     if ((action->flags & 0x2000) &&
         (IsFlagBit8388608Set_021da998((FlagObj_021da998*)actor) ||
         IsFlagBit24Set_021dd260((FlagObj_021dd260*)actor))) {
-        float multiplier = GetClampedRateMultiplier(((StatsView_021fb91c*)actor->currentStats_)->rate, 0);
+        float multiplier = GetClampedRateMultiplier_02074738(((StatsView_021fb91c*)actor->currentStats_)->rate, 0);
         value *= multiplier;
         spread *= multiplier;
     }
     AddEntryList_021f6a1c list;
     memset(&list, 0, sizeof(list));
     for (int index = 0; index < 4; ++index) {
-        if (!TestBitAt0x34(context->battle->partyWork, (unsigned char)index)) continue;
+        if (!TestBitAt0x34_020a35e0(context->battle->partyWork, (unsigned char)index)) continue;
         if (action->targetKind == 1 && index != context->id) continue;
         if (action->targetKind == 8 && index == context->id) continue;
         GameObject* target = GetCombatantByID((int)context->battle, (short)index);
         if (!target) continue;
-        if (IsFlag10088Set((S_10088*)target)) continue;
+        if (IsFlag10088Set_02010088((S_10088*)target)) continue;
         context->work.eligible = 1;
         if (context->ratings[index] >= threshold) context->work.eligible = 0;
         if (!context->work.eligible && action->kind == 0) continue;

@@ -38,7 +38,7 @@ ARM void InitObj02092aa4(Obj02092aa4* obj, int param) {
     obj->field3a = 0;
     obj->field3b = 0;
 
-    unsigned char* base = (unsigned char*)GetPtrField0x2a04(GameState::GetInstance());
+    unsigned char* base = (unsigned char*)GetPtrField0x2a04_02010828(GameState::GetInstance());
     unsigned char i;
     for (i = 0; i < base[0xf7c]; i++) {
         unsigned char* entry = base + i;

@@ -83,7 +83,7 @@ extern "C" ARM void func_ov017_021a2fa0(unsigned char* obj) {
     ((SafeAllocator*)(obj + regionalOffset5))->CreateTypeA(buf, size);
     CopyState0207dfc8((struct State0207dfc8*)(obj + regionalOffset4), (struct State0207dfc8*)(obj + regionalOffset6));
 
-    PartyInfo_021a2fa0* party = (PartyInfo_021a2fa0*)GetPtrField0x2a04(gs);
+    PartyInfo_021a2fa0* party = (PartyInfo_021a2fa0*)GetPtrField0x2a04_02010828(gs);
     if (party->pendingCount != 0) {
         func_ov017_021913d0(obj, party->pendingCount);
     } else {

@@ -17,7 +17,6 @@ struct Vector3i {
     Vector3i& operator=(const Vector3i& other);
 };
 
-// A stair's placement inside the floor map: rotation matrix, world position, angle.
 struct Struct0201ae8c {
     int matrix[9];
     Vector3i pos;
@@ -54,7 +53,6 @@ struct GrottoStruct0201a600 {
     char activeMapData[1];
 };
 
-// Warp trigger box, ZoneFeatures::Opcode68Entry.
 struct Opcode68Entry0201a600 {
     int unk_0;
     int bounds[6];
@@ -92,7 +90,6 @@ struct Resources0201a600 {
     void* unknown_36d0;
 };
 
-// The player's pending spawn request.
 struct Field3f8_0201a600 {
     char pad_0[7];
     unsigned char active;
@@ -112,8 +109,8 @@ Resources0201a600* func_ov017_0218b5b0();
 GrottoStruct0201a600* _ZN9GameState15GetGrottoStructEv(GameState* gs);
 int _ZNK19TreasureMapMetadata10GetMapTypeEv(void* metadata);
 void* _ZN9GameState20GetUnknownGameObjectEv(GameState* gs);
-void _ZN12ZoneFeatures23AllocateOpcode68EntriesEiP13SafeAllocator(void* features, int count, SafeAllocator* alloc);
-void _ZN12ZoneFeatures19CreateOpcode68EntryERKNS_13Opcode68EntryE(void* features, const Opcode68Entry0201a600* entry);
+void _ZN12ZoneFeatures32AllocateOpcode68Entries_0201e518EiP13SafeAllocator(void* features, int count, SafeAllocator* alloc);
+void _ZN12ZoneFeatures28CreateOpcode68Entry_0201e574ERKNS_13Opcode68EntryE(void* features, const Opcode68Entry0201a600* entry);
 int _Z22IsValueInRange0201b5d8i(int zoneId);
 int _Z17IsInRange0201b588i(int zoneId);
 unsigned short _ZNK17ActiveGrottoClass19GetActiveGrottoSeedEv(const ActiveGrotto0201a600* grotto);
@@ -126,13 +123,12 @@ int _ZNK8FloorMap16GetAdjacencyBitsEii(const FloorMap0201a600* map, int x, int y
 void Mat3x3_WriteRotationY(int* out, int sine, int cosine);
 void Mat3x3_WriteIdentity(int* out);
 Struct0201ae8c* _Z18CopyStruct0201ae8cP14Struct0201ae8cS0_(Struct0201ae8c* dst, Struct0201ae8c* src);
-Field3f8_0201a600* _Z20GetField0x3f8AddressP9GameState(GameState* gs);
+Field3f8_0201a600* _Z29GetField0x3f8Address_0200fd0cP9GameState(GameState* gs);
 int func_02018fbc(Zone0201a600* zone, Vector3i* pos);
 void __clear(void* buf, int size);
 void func_02024d94(void* obj, unsigned short zoneId, Vector3i* pos);
 }
 
-// adjacency patterns that raise the stairs in environment 2
 extern const unsigned char data_020e6e44[15];
 
 struct AdjacencyBits0201a600 {
@@ -181,7 +177,7 @@ extern "C" ARM int func_0201a600(Zone0201a600* self) {
     unsigned char key;
     int found;
 
-    _ZN12ZoneFeatures23AllocateOpcode68EntriesEiP13SafeAllocator(self->features, 2, alloc);
+    _ZN12ZoneFeatures32AllocateOpcode68Entries_0201e518EiP13SafeAllocator(self->features, 2, alloc);
 
     entry.unk_0 = 0;
     entry.targetZone = -1;
@@ -302,7 +298,7 @@ extern "C" ARM int func_0201a600(Zone0201a600* self) {
     }
 
     {
-        Field3f8_0201a600* request = _Z20GetField0x3f8AddressP9GameState(gs);
+        Field3f8_0201a600* request = _Z29GetField0x3f8Address_0200fd0cP9GameState(gs);
 
         if ((zoneId > self->previousZoneID || !_Z17IsInRange0201b588i(self->previousZoneID))
             && request->unk_62 == 0 && request->unk_63 == 0
@@ -341,7 +337,7 @@ extern "C" ARM int func_0201a600(Zone0201a600* self) {
             }
         }
     }
-    _ZN12ZoneFeatures19CreateOpcode68EntryERKNS_13Opcode68EntryE(self->features, &entry);
+    _ZN12ZoneFeatures28CreateOpcode68Entry_0201e574ERKNS_13Opcode68EntryE(self->features, &entry);
 
     if (!_Z22IsValueInRange0201b5d8i(zoneId)) {
         Struct0201ae8c placement;
@@ -411,7 +407,7 @@ extern "C" ARM int func_0201a600(Zone0201a600* self) {
             entry.targetZone = zoneId + 1;
         }
 
-        request = _Z20GetField0x3f8AddressP9GameState(gs);
+        request = _Z29GetField0x3f8Address_0200fd0cP9GameState(gs);
         if (zoneId < self->previousZoneID && request->unk_62 == 0 && request->unk_63 == 0
             && self->previousZoneID != 0 && request->unk_68 == 0) {
             Vector3i pos;
@@ -439,7 +435,7 @@ extern "C" ARM int func_0201a600(Zone0201a600* self) {
             request->pos = pos;
             request->active = 1;
         }
-        _ZN12ZoneFeatures19CreateOpcode68EntryERKNS_13Opcode68EntryE(self->features, &entry);
+        _ZN12ZoneFeatures28CreateOpcode68Entry_0201e574ERKNS_13Opcode68EntryE(self->features, &entry);
     }
     return 1;
 }

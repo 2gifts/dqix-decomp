@@ -2,12 +2,12 @@
 #include "Combat/Overlay_0/GetCombatantByID.h"
 #include "GameState/GameState.h"
 
-int CheckField0x14FlagsClear(unsigned char* obj);
+int CheckField0x14FlagsClear_020883ac(unsigned char* obj);
 struct Ctx_021e9320;
 int SelectResultCode_021e9320(struct Ctx_021e9320* ctx, int id, int mode);
 int IsFlagAllowedMask_021eb4b0(int a0, int flags, int mask);
 extern "C" void func_ov000_02159eac(void* a0, void* buf, int a2);
-void ResetStateFields0x18(unsigned char* obj);
+void ResetStateFields0x18_020883cc(unsigned char* obj);
 extern "C" void* func_ov000_0215e958(void* a0);
 extern "C" void func_ov024_021e8bf0(void* work, void* fieldC, unsigned short* sel);
 void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
@@ -22,7 +22,7 @@ extern "C" ARM void* func_ov024_021dd828(struct Obj_021dd828* obj, int unused, i
 	GameObject* c = GetCombatantByID((int)obj->field0x10, id);
 	if (!c) return 0;
 	int active = 0;
-	if (CheckField0x14FlagsClear((unsigned char*)c->currentStats_) && flagArg) {
+	if (CheckField0x14FlagsClear_020883ac((unsigned char*)c->currentStats_) && flagArg) {
 		active = 1;
 	} else {
 		obj->field0x75 = 0;
@@ -35,7 +35,7 @@ extern "C" ARM void* func_ov024_021dd828(struct Obj_021dd828* obj, int unused, i
 		if (IsFlagAllowedMask_021eb4b0((int)obj, ((struct Stats_021dd828*)c->currentStats_)->flags, 0x20)) {
 			func_ov000_02159eac(obj->field0x10, &local, 0x2b);
 		}
-		ResetStateFields0x18((unsigned char*)c->currentStats_);
+		ResetStateFields0x18_020883cc((unsigned char*)c->currentStats_);
 		func_ov000_02159eac(obj->field0x10, &local, 0x17);
 		obj->field0x14++;
 	}

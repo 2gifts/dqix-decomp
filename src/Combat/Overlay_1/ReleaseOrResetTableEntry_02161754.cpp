@@ -6,9 +6,9 @@ extern "C" int func_ov017_021d60f4(void*);
 #include "Combat/EntryGetterTypes.h"
 #include "World/Object3D.h"
 struct EntryList_203dce4 { char pad[0xc]; struct Entry_203dce4* entries[0x20]; };
-extern void* GetGlobalPtr021075f4(void);
-extern struct Entry_203dce4* GetEntryUnlessFlag0x8000(struct EntryList_203dce4* list, int id);
-int GetField0x8(int* obj);
+extern void* GetGlobalPtr021075f4_0203cf4c(void);
+extern struct Entry_203dce4* GetEntryUnlessFlag0x8000_0203dce4(struct EntryList_203dce4* list, int id);
+int GetField0x8_02040528(int* obj);
 void* EmptyStub0203d004(void*);
 extern const char data_ov001_021657d4[];
 
@@ -38,15 +38,15 @@ extern "C" ARM int func_ov001_02161754(void* self) {
         return 0;
     }
 
-    void* ctxRaw = GetGlobalPtr021075f4();
+    void* ctxRaw = GetGlobalPtr021075f4_0203cf4c();
     struct EntryList_203dce4* list = (struct EntryList_203dce4*)ctxRaw;
-    struct Entry_203dce4* entry = GetEntryUnlessFlag0x8000(list, data_ov001_02165880.table[id].field4);
+    struct Entry_203dce4* entry = GetEntryUnlessFlag0x8000_0203dce4(list, data_ov001_02165880.table[id].field4);
     if (entry == NULL) {
         return 0;
     }
 
     if (*(int*)((char*)entry + 0x14) != 0) {
-        int field = GetField0x8((int*)entry);
+        int field = GetField0x8_02040528((int*)entry);
         struct Container02040404* c = (struct Container02040404*)EmptyStub0203d004(ctxRaw);
         char buf[0x10];
 #if defined(jpn)

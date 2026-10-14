@@ -166,7 +166,7 @@ bool LoadAndDecompressGPCHeaderAndInnerFileInfo(GPCFile **ppGPC, ExtendedNitroVM
 
     if (rightAlignOutput)
         outputBuffer = (void*)((((int)outputBuffer + outputCapacity) & ~3) - longerLength);
-    CopyRegionAndFlushCache(outputBuffer, &header, sizeof(GPCFile::Header));
+    CopyRegionAndFlushCache_020d8524(outputBuffer, &header, sizeof(GPCFile::Header));
     ((GPCFile::Header*)outputBuffer)->headerLength = 0;
     ((GPCFile::Header*)outputBuffer)->fileInfoLength = 0;
     unsigned int decompressProcOutputLength = 0;

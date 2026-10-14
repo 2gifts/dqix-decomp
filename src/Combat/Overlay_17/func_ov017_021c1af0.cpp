@@ -33,26 +33,26 @@ extern "C" Zone3D* func_02012fe4();
 extern "C" int* func_0202ae18();
 Obj02046574* GetGlobalField0x1c020421a0();
 void CancelPendingAction020397cc(Obj020397cc*, int);
-int CheckField0NonZero(int*);
+int CheckField0NonZero_0202b7d8(int*);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4*);
 extern "C" int func_ov017_0219ff58(GameResources*, int, int, int);
-Action021c1af0* GetField0x3f8Address(GameState*);
+Action021c1af0* GetField0x3f8Address_0200fd0c(GameState*);
 void InitStruct02070378(char*);
 extern "C" void func_ov017_021baedc(TailNode020469b4*, int);
 void AppendNodeToTail(TailList020469b4*, TailNode020469b4*);
 void SetHalfFieldsAndEnqueueIfActive_021d1c2c(unsigned short, unsigned short);
 void EnqueueEventTagB5_021d1dc0(unsigned short, int, int*, int, int);
-const char* CallFunc020e0434With02153694(int);
+const char* CallFunc020e0434With02153694_020e51cc(int);
 void SetIndexedName02046574(Obj02046574*, int, char*);
 extern "C" void func_0204500c(void*, const char*, int
 #if !defined(jpn)
     , int
 #endif
 );
-int CheckBitsInField0x63dc(void*, int);
+int CheckBitsInField0x63dc_02011b50(void*, int);
 extern "C" void func_ov017_0219c520();
 void ReinitController02043204(char*);
-void SetByteField0x253(void*);
+void SetByteField0x253_020397c0(void*);
 
 // USA: func_ov017_021c1af0
 extern "C" ARM void func_ov017_021c1af0(State021c1af0* state) {
@@ -60,13 +60,13 @@ extern "C" ARM void func_ov017_021c1af0(State021c1af0* state) {
     Zone3D* context = func_02012fe4();
     if (state->step == 0) {
         CancelPendingAction020397cc((Obj020397cc*)game->GetProtagonist(), 1);
-        FontBankLoader* global = GetGlobal02109400();
+        FontBankLoader* global = GetGlobal02109400_02094a00();
         BlankFunction02094b30(global, 0x204, 0);
         if (AlwaysTrue02094b4c(global)) state->step = 1;
     } else if (state->step == 1) {
         Obj02046574* controller = GetGlobalField0x1c020421a0();
         int* search = func_0202ae18();
-        if (!CheckField0NonZero(search) || (CheckField0NonZero(search) && GetSearchStructCurrentArrEntry((SearchStruct0202c1a4*)search) == 0)) {
+        if (!CheckField0NonZero_0202b7d8(search) || (CheckField0NonZero_0202b7d8(search) && GetSearchStructCurrentArrEntry((SearchStruct0202c1a4*)search) == 0)) {
             GameResources* resources = func_ov017_0218b5b0();
             TailList020469b4* list = static_cast<TailList020469b4*>(resources->unknown_ptr_array_36fc[0]);
             TailNode020469b4* node = static_cast<TailNode020469b4*>(resources->unknown_ptr_array_371c[6]);
@@ -75,7 +75,7 @@ extern "C" ARM void func_ov017_021c1af0(State021c1af0* state) {
                 return;
             }
             game->GetProtagonist();
-            Action021c1af0* action = GetField0x3f8Address(game);
+            Action021c1af0* action = GetField0x3f8Address_0200fd0c(game);
             if (state->alternate == 0) {
                 InitStruct02070378((char*)action);
                 action->field_2 = 1;
@@ -107,8 +107,8 @@ extern "C" ARM void func_ov017_021c1af0(State021c1af0* state) {
             else sprintf(buffer, data_ov017_021d876c, game->GetUnknownGameObject()->baseStats_->unk);
             func_0204500c(controller, buffer, 0);
 #else
-            if (state->alternate == 0) sprintf(buffer, CallFunc020e0434With02153694(0x3c));
-            else sprintf(buffer, CallFunc020e0434With02153694(0x3d));
+            if (state->alternate == 0) sprintf(buffer, CallFunc020e0434With02153694_020e51cc(0x3c));
+            else sprintf(buffer, CallFunc020e0434With02153694_020e51cc(0x3d));
             SetIndexedName02046574(controller, 0, (char*)game->GetUnknownGameObject()->baseStats_);
             func_0204500c(controller, buffer, 0, 0xe3);
 #endif
@@ -117,10 +117,10 @@ extern "C" ARM void func_ov017_021c1af0(State021c1af0* state) {
             state->step = 3;
         }
     } else if (state->step == 2) {
-        if (CheckBitsInField0x63dc(game, 1)) {
+        if (CheckBitsInField0x63dc_02011b50(game, 1)) {
             func_ov017_0219c520();
         }
-        FontBankLoader* global = GetGlobal02109400();
+        FontBankLoader* global = GetGlobal02109400_02094a00();
         BlankFunction02094b38(global, 0x1f9);
         func_02094ab0(global);
         state->done = 1;
@@ -129,8 +129,8 @@ extern "C" ARM void func_ov017_021c1af0(State021c1af0* state) {
         (*reinterpret_cast<unsigned char*>(reinterpret_cast<char*>(controller) + MessageFlagOffset)) = 0;
         if (!(*reinterpret_cast<int*>(reinterpret_cast<char*>(controller) + BusyOffset))) {
             ReinitController02043204((char*)controller);
-            SetByteField0x253(game->GetProtagonist());
-            FontBankLoader* global = GetGlobal02109400();
+            SetByteField0x253_020397c0(game->GetProtagonist());
+            FontBankLoader* global = GetGlobal02109400_02094a00();
             BlankFunction02094b38(global, 0x204);
             func_02094ab0(global);
             state->done = 1;

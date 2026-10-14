@@ -4,7 +4,7 @@
 #include "Util/Random.h"
 
 extern "C" int func_ov000_0215eb1c(int battle, short* table, int count, int flag);
-int CheckFlag0x14Bit0x10Set(unsigned char* obj);
+int CheckFlag0x14Bit0x10Set_020882f8(unsigned char* obj);
 struct FlagObj_021da9b0;
 int IsFlagBit8Set_021da9b0(struct FlagObj_021da9b0* obj);
 struct FlagObj_021de25c;
@@ -30,7 +30,7 @@ extern "C" ARM int func_ov024_021f36cc(int* a0, int selfId, int a2, int* outCoun
 		if (selfId == buf.v[i]) continue;
 		GameObject* member = GetCombatantByID(*a0, buf.v[i]);
 		if (!member) continue;
-		if (CheckFlag0x14Bit0x10Set((unsigned char*)member->currentStats_)) continue;
+		if (CheckFlag0x14Bit0x10Set_020882f8((unsigned char*)member->currentStats_)) continue;
 		if (IsFlagBit8Set_021da9b0((struct FlagObj_021da9b0*)member)) continue;
 		if (IsFlagBit5Set_021de25c((struct FlagObj_021de25c*)member)) continue;
 		if (IsFlagBit19Set_021da9c8((struct FlagObj_021da9c8*)member)) continue;

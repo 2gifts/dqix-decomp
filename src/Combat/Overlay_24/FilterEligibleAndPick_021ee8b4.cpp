@@ -6,9 +6,9 @@
 extern "C" int func_ov000_0215eb1c(int a0, short* buf, int count, int flag);
 int IsCombatantFlagMask512_021eda60(GameObject* combatant);
 struct Combatant_20885b4;
-int CheckFlag0x2AndKind1(struct Combatant_20885b4* obj);
+int CheckFlag0x2AndKind1_020885b4(struct Combatant_20885b4* obj);
 struct S88514;
-int CheckFlag0x2AndState2(struct S88514* obj);
+int CheckFlag0x2AndState2_02088514(struct S88514* obj);
 int PickRandomTableEntryResetCounter_021ed890(struct Random** rngPtr, int* maxAndFlag, short* table);
 
 struct Obj_021ee8b4 { int field0; };
@@ -25,8 +25,8 @@ extern "C" ARM int func_ov024_021ee8b4(struct Obj_021ee8b4* obj, int unused1, in
         GameObject* c = GetCombatantByID(obj->field0, buf.v[i]);
         if (!c) continue;
         if (IsCombatantFlagMask512_021eda60(c)) continue;
-        if (!CheckFlag0x2AndKind1((struct Combatant_20885b4*)c->currentStats_) &&
-            !CheckFlag0x2AndState2((struct S88514*)c->currentStats_)) continue;
+        if (!CheckFlag0x2AndKind1_020885b4((struct Combatant_20885b4*)c->currentStats_) &&
+            !CheckFlag0x2AndState2_02088514((struct S88514*)c->currentStats_)) continue;
         int idx = *outCount;
         *outCount = idx + 1;
         outArray[idx] = buf.v[i];

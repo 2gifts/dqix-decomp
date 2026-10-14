@@ -36,7 +36,7 @@ struct Obj0218cc24 {
 };
 
 struct Vector3i;
-void DelayThenSyncBit0();
+void DelayThenSyncBit0_020c9820();
 void ResetObjectState02079a3c(void*);
 struct Foo0207df50;
 void CopyInternalFields0207df50(Foo0207df50*);
@@ -69,7 +69,7 @@ extern "C" ARM int func_ov015_0218cc24(Obj0218cc24* self) {
     SafeAllocator* alloc;
     short id;
 
-    DelayThenSyncBit0();
+    DelayThenSyncBit0_020c9820();
     id = self->GetEnt(7)->unknown_2_;
     if (self->ids[7] != id) {
         self->GetEnt(3)->unknown_2_ = -1;

@@ -12,7 +12,7 @@ struct ModeObj_0215f968 { int mode; };
 // USA: func_ov001_0215f968
 ARM int ApplyModeScaledAngle_0215f968(ModeObj_0215f968* self) {
 	GameState* battle = GameState::GetInstance();
-	struct AngleTrig0202e9a4* field = (struct AngleTrig0202e9a4*)GetField0x3b0Value(battle);
+	struct AngleTrig0202e9a4* field = (struct AngleTrig0202e9a4*)GetField0x3b0Value_020100bc(battle);
 	if (self->mode == 0) {
 		int a = func_ov017_021d60f4(self);
 		SetAngleAndTrigTable0202e9a4(field, a << 0xc);

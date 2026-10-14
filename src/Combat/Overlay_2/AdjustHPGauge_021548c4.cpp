@@ -8,7 +8,7 @@ struct GaugeState0130 {
 
 // USA: func_ov002_021548c4  (semantic: AdjustHPGauge_021548c4)
 extern "C" ARM short func_ov002_021548c4(void* obj, int combatantId, int delta, unsigned char* status) {
-    GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), combatantId);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), combatantId);
     if (combatant == 0) {
         return 0;
     }

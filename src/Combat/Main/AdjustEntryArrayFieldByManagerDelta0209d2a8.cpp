@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void* GetGlobal02109418(void);
+void* GetGlobal02109418_02094d6c(void);
 void* GetGlobalManager0209dccc(void);
 
 extern "C" int func_ov017_021d60f4(void*);
@@ -13,7 +13,7 @@ struct Manager0209d2a8 { char pad[0x98]; int field98; };
 
 // USA: func_0209d2a8  (semantic: AdjustEntryArrayFieldByManagerDelta0209d2a8)
 extern "C" ARM int func_0209d2a8(void* arg) {
-    void* table = GetGlobal02109418();
+    void* table = GetGlobal02109418_02094d6c();
     if (table == NULL) return 0;
     struct Manager0209d2a8* mgr = (struct Manager0209d2a8*)GetGlobalManager0209dccc();
     if (mgr == NULL) return 0;

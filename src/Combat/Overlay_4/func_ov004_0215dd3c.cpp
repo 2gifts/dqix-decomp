@@ -3,7 +3,7 @@
 
 extern "C" int func_ov004_02157128(void* a);
 extern "C" int func_ov004_02157a28(void* a, int flag);
-void* GetPtrField0x2a04(GameState* battleStruct);
+void* GetPtrField0x2a04_02010828(GameState* battleStruct);
 extern "C" void func_02052d7c(void* combatant, int arg1, int arg2);
 extern "C" void func_0207c378(void* a, int b, int c, int d);
 struct Bytes8 { unsigned char b[8]; };
@@ -16,7 +16,7 @@ struct Node { unsigned int w0; Bits f; };
 struct FlagByte { unsigned char bit0 : 1; unsigned char _rest : 7; };
 #if defined(jpn)
 
-extern "C" GameObject* GetCombatantWithFlag0x100(GameState*, int);
+extern "C" GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState*, int);
 #else
 #endif
 
@@ -24,9 +24,9 @@ extern "C" GameObject* GetCombatantWithFlag0x100(GameState*, int);
 extern "C" ARM int func_ov004_0215dd3c(void* a) {
     int prev = func_ov004_02157128(a);
     GameState* bs = GameState::GetInstance();
-    GameObject* combatant = GetCombatantWithFlag0x100(bs, prev);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(bs, prev);
     if (!combatant) return 0;
-    void* ptr = GetPtrField0x2a04(bs);
+    void* ptr = GetPtrField0x2a04_02010828(bs);
     Bytes8 buf;
     buf = data_ov004_0216fb20;
     unsigned char flags[2];

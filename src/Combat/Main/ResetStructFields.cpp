@@ -14,7 +14,7 @@ struct ResetFieldsStruct {
 };
 
 // USA: func_02089db4
-ARM void ResetStructFields(struct ResetFieldsStruct* s) {
+ARM void ResetStructFields_02089db4(struct ResetFieldsStruct* s) {
     s->f0 = 0;
     s->f4 = 0;
     s->f6 = 0;

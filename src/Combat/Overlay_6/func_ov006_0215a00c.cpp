@@ -54,13 +54,13 @@ struct Obj0215a00c {
     int field3b0;
 };
 
-void ClearElementFlag0x20(struct Obj2081*, int);
+void ClearElementFlag0x20_02080c20(struct Obj2081*, int);
 extern "C" void func_020813ec(void*, int);
 int GetFieldByKey020e0434(struct Container020e0310*, int);
 struct StoreStruct* GetGlobalField0x1c020421a0();
 extern "C" void func_02046380(struct StoreStruct*);
-void* CallFunc020e52a0(void*, int);
-void StoreInArray0x8b0(struct StoreStruct*, int, int);
+void* CallFunc020e52a0_020e5294(void*, int);
+void StoreInArray0x8b0_020465c0(struct StoreStruct*, int, int);
 void InitObjFromCombatantId020e4bf4(void*, int);
 extern "C" void func_02046608(struct StoreStruct*, int, const char*, char*, int, int, int);
 char* FindEntryByKey0204254c(int, int);
@@ -79,7 +79,7 @@ extern "C" ARM void func_ov006_0215a00c(struct Obj0215a00c* self) {
     unsigned char state = self->sub.field392;
     if (state == 0) {
         if (self->sub.field94 & 0x20) {
-            ClearElementFlag0x20((struct Obj2081*)self->field14, 0);
+            ClearElementFlag0x20_02080c20((struct Obj2081*)self->field14, 0);
             func_020813ec(self->field14, 0);
         }
         self->sub.field94 &= ~0x20;
@@ -99,14 +99,14 @@ extern "C" ARM void func_ov006_0215a00c(struct Obj0215a00c* self) {
 
         unsigned short rem = 0;
         if (self->field34 != 0) {
-            void* res = CallFunc020e52a0(&self->field170, self->field1ec);
+            void* res = CallFunc020e52a0_020e5294(&self->field170, self->field1ec);
             if (res != 0) {
                 fmt->field18 = res;
             }
             rem = (unsigned short)((self->sub.field82 / 10) * 10);
         }
-        StoreInArray0x8b0(fmt, 0, self->sub.field387);
-        StoreInArray0x8b0(fmt, 1, rem);
+        StoreInArray0x8b0_020465c0(fmt, 0, self->sub.field387);
+        StoreInArray0x8b0_020465c0(fmt, 1, rem);
 
         struct CombatantObj* gobj = (struct CombatantObj*)((GameState*)((struct GameStateStub*)GameState::GetInstance()))->GetUnknownGameObject();
         if (gobj != 0) {
@@ -119,7 +119,7 @@ extern "C" ARM void func_ov006_0215a00c(struct Obj0215a00c* self) {
             short cur = *tp;
             if (cur < 0) break;
             if (cur == self->sub.field7e) {
-                void* res = CallFunc020e52a0(&self->field170, self->sub.arr78[i]);
+                void* res = CallFunc020e52a0_020e5294(&self->field170, self->sub.arr78[i]);
                 if (res != 0) {
                     fmt->field18 = res;
                 }
@@ -168,7 +168,7 @@ extern "C" ARM void func_ov006_0215a00c(struct Obj0215a00c* self) {
         memcpy(buf, base, pos);
         SetEntryFirstField02080f8c((struct Container02080f8c*)self->field14, 1, (int)buf);
         func_020813ec(self->field14, 1);
-        ClearElementFlag0x20((struct Obj2081*)self->field14, 1);
+        ClearElementFlag0x20_02080c20((struct Obj2081*)self->field14, 1);
         self->field3b0 = 1;
 
         short* tp2 = (short*)data_ov006_0215ffea;

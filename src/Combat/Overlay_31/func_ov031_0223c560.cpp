@@ -28,7 +28,7 @@ extern Dimension0223c560 data_ov031_022493b2[];
 extern Dimension0223c560 data_ov031_022493b0[];
 extern const unsigned short data_ov031_022493ac[];
 extern "C" int func_ov031_0223cf4c(unsigned int, int);
-void InitFieldsWithData(Fields020b1d48*, int, int, int, int);
+void InitFieldsWithData_020b1e94(Fields020b1d48*, int, int, int, int);
 extern "C" void* GetSubBG0ScreenBase();
 extern "C" void* GetMainBG0ScreenBase();
 extern "C" void func_020b1f48(void*, int, int, int, int, int, int, int);
@@ -51,7 +51,7 @@ extern "C" ARM Fields020b1d48* func_ov031_0223c560(int screen, int layer) {
         REG_MAIN_BG0CNT &= ~0x40;
         REG_MAIN_BG0CNT = (REG_MAIN_BG0CNT & 0x43) | 0xc00;
     }
-    InitFieldsWithData(background, background->buffer, width, height, 4);
+    InitFieldsWithData_020b1e94(background, background->buffer, width, height, 4);
     void* layerData = &data_ov031_02290d38->layers[layer];
     background->self = background;
     background->layer = layerData;

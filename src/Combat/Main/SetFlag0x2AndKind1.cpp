@@ -9,7 +9,7 @@ struct Combatant_2088624 {
 };
 
 // USA: func_02088624
-ARM void SetFlag0x2AndKind1(struct Combatant_2088624* obj) {
+ARM void SetFlag0x2AndKind1_02088624(struct Combatant_2088624* obj) {
     obj->flags14 |= 0x2;
     obj->kind = 1;
 }

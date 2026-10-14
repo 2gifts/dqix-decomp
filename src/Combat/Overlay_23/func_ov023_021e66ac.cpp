@@ -2,11 +2,11 @@
 #include "std_library_functions.h"
 #include "GameState/GameState.h"
 
-int GetField5cb0Value(char* game);
+int GetField5cb0Value_0201079c(char* game);
 extern "C" void* func_0202ae18(void);
 
 struct TableA68 { struct EntryA68* entries; short count; };
-void* FindEntryByKey(TableA68* table, int key);
+void* FindEntryByKey_02072a68(TableA68* table, int key);
 
 struct ProfileTextFields {
     unsigned int unknown0 : 29;
@@ -69,13 +69,13 @@ extern "C" ARM void func_ov023_021e66ac(void* editor) {
 
     if (!profile->accoladeChosen) {
         memset(self->accoladeText, 0, sizeof(self->accoladeText));
-        void* entry = FindEntryByKey(&self->strings, 0x6d);
+        void* entry = FindEntryByKey_02072a68(&self->strings, 0x6d);
         memcpy(self->accoladeText, entry, 7);
     } else if (profile->vocationAccolade) {
         func_0202ae18();
         ProfileProtagonist* protagonist = (ProfileProtagonist*)game->GetProtagonist();
         int vocation = protagonist->partyData->vocation;
-        if (GetField5cb0Value((char*)game) == 1) {
+        if (GetField5cb0Value_0201079c((char*)game) == 1) {
             vocation = 13;
         }
         int base = 0x50dc;
@@ -85,7 +85,7 @@ extern "C" ARM void func_ov023_021e66ac(void* editor) {
         }
 #endif
         short key = (short)(base + vocation);
-        char* entry = (char*)FindEntryByKey(&self->strings, key);
+        char* entry = (char*)FindEntryByKey_02072a68(&self->strings, key);
         memset(self->accoladeText, 0, sizeof(self->accoladeText));
         unsigned int length = strlen(entry);
         memcpy(self->accoladeText, entry, length);
@@ -96,7 +96,7 @@ extern "C" ARM void func_ov023_021e66ac(void* editor) {
     }
 
     memset(self->titleText, 0, sizeof(self->titleText));
-    char* entry = (char*)FindEntryByKey(&self->strings, 0x6d);
+    char* entry = (char*)FindEntryByKey_02072a68(&self->strings, 0x6d);
     unsigned int length = strlen(entry);
     memcpy(self->titleText, entry, length);
 }

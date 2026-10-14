@@ -23,7 +23,7 @@ struct Obj24_021b1fe8;
 unsigned char GetSubByteField44_021b1fe8(Obj24_021b1fe8* obj);
 struct EntryA68 { short key; void* value; };
 struct TableA68 { struct EntryA68* entries; short count; };
-void* FindEntryByKey(struct TableA68* table, int key);
+void* FindEntryByKey_02072a68(struct TableA68* table, int key);
 struct Obj24_021b1ffc;
 int GetSubWordField394_021b1ffc(Obj24_021b1ffc* obj);
 struct Obj24_021b2010;
@@ -67,12 +67,12 @@ extern "C" ARM int func_ov004_0215bc9c(void* obj) {
 
         if (GetSubByteField44_021b1fe8((Obj24_021b1fe8*)five) & 4) {
             data_ov004_021707d8.ptr[0x15] = 1;
-            const char* name = (const char*)FindEntryByKey((struct TableA68*)table, 0x26);
+            const char* name = (const char*)FindEntryByKey_02072a68((struct TableA68*)table, 0x26);
             memcpy(buf, name, strlen(name));
             func_ov011_021848a0(obj, 0x3af);
         } else {
             data_ov004_021707d8.ptr[0x15] = 0;
-            const char* name = (const char*)FindEntryByKey((struct TableA68*)table, 0x15);
+            const char* name = (const char*)FindEntryByKey_02072a68((struct TableA68*)table, 0x15);
             int len = strlen(name);
             memcpy(buf, name, len);
 

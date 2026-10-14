@@ -3,7 +3,7 @@
 #include "Grotto/Main/TreasureMapMetadata.h"
 
 extern char* data_ov004_02171010;
-unsigned char CopyToRegion0x6482IfDst(char* obj, void* dst);
+unsigned char CopyToRegion0x6482IfDst_020119f8(char* obj, void* dst);
 
 // USA: func_ov004_021635d0
 ARM int FindTreasureMapIndexAndDivide_021635d0(int* outQuotient, int* outRemainder) {
@@ -15,7 +15,7 @@ ARM int FindTreasureMapIndexAndDivide_021635d0(int* outQuotient, int* outRemaind
     if (outQuotient == NULL) return 0;
     if (outRemainder == NULL) return 0;
     int foundIndex = -1;
-    unsigned char result = CopyToRegion0x6482IfDst((char*)GameState::GetInstance(), NULL);
+    unsigned char result = CopyToRegion0x6482IfDst_020119f8((char*)GameState::GetInstance(), NULL);
     int i;
     if (result != 0) {
         for (i = 0; i < *(unsigned char*)(data_ov004_02171010 + 0x1000 + countOffset); i++) {

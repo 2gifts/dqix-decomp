@@ -3,7 +3,7 @@
 #include "GameState/GameState.h"
 
 int CheckField0x14Bit0Clear02088b00(unsigned char* obj);
-void SetFlag0x400000AndBytes(unsigned char* obj);
+void SetFlag0x400000AndBytes_02088b14(unsigned char* obj);
 unsigned short SelectByIndexRange0to3_021da644(int idx, int a, int b);
 extern "C" void* func_ov000_0215e958(void* a0);
 void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
@@ -27,7 +27,7 @@ ARM void* AddBuffEntryToTable_021deff8(struct Obj_021deff8* obj, int unused, int
 	int active = CheckField0x14Bit0Clear02088b00((unsigned char*)c->currentStats_);
 	unsigned short sel;
 	if (active != 0 && flagArg != 0) {
-		SetFlag0x400000AndBytes((unsigned char*)c->currentStats_);
+		SetFlag0x400000AndBytes_02088b14((unsigned char*)c->currentStats_);
 		sel = SelectByIndexRange0to3_021da644(id, range->f20.c, range->f24.a);
 	} else {
 		sel = SelectByIndexRange0to3_021da644(id, range->f24.b, range->f24.c);

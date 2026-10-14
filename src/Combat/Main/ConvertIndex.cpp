@@ -3,7 +3,7 @@
 extern signed char data_020e6ddc;
 
 // USA: func_02012f68
-ARM int ConvertIndex(int x) {
+ARM int ConvertIndex_02012f68(int x) {
     x += -20000;
     if (x < 0) return -1;
     if (x >= 0x3c && x <= 0x3f) {

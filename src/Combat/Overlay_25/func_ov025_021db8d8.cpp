@@ -59,11 +59,11 @@ struct Work021db8d8 {
 
 struct Slot021db8d8* GetSlotPtr02160f20(void*);
 void* GetSlotPtr02160f60(void*);
-unsigned int GetSubstructByte0x34(unsigned char*);
-int GetSubstructByte0x1e(unsigned char*);
-int GetSubstructByte0x1d(unsigned char*);
-void SetSubstructByte0x1e(unsigned char*, unsigned char);
-void SetSubstructByte0x1c(unsigned char*, unsigned char);
+unsigned int GetSubstructByte0x34_02049444(unsigned char*);
+int GetSubstructByte0x1e_020493ec(unsigned char*);
+int GetSubstructByte0x1d_020493c8(unsigned char*);
+void SetSubstructByte0x1e_020493dc(unsigned char*, unsigned char);
+void SetSubstructByte0x1c_02049390(unsigned char*, unsigned char);
 struct Node02169b04* FindNodeByKey02169b04(struct List02169b04*, int);
 struct Node02169b04* FindNode02169b54(struct Node02169b54*, int);
 struct Actor021db8d8* GetNodeAtIndex02160094(struct List02160094*, int);
@@ -109,7 +109,7 @@ extern "C" ARM void func_ov025_021db8d8(struct Work021db8d8* self) {
         targetId = slot->target->id;
     }
     int retreat = 0;
-    if (actor && GetSubstructByte0x34((unsigned char*)actor)) {
+    if (actor && GetSubstructByte0x34_02049444((unsigned char*)actor)) {
         retreat = 1;
     }
     int skip = 0;
@@ -142,7 +142,7 @@ extern "C" ARM void func_ov025_021db8d8(struct Work021db8d8* self) {
         func_ov000_021626a0(self, 4, 1);
         near = 0;
         GameObject* target = game->GetCombatantByIndex(targetId);
-        if (target && GetSubstructByte0x1e((unsigned char*)target) != 0xff) {
+        if (target && GetSubstructByte0x1e_020493ec((unsigned char*)target) != 0xff) {
             void* list = GetSlotPtr02160f60(self);
             if (list) {
                 struct Actor021db8d8* first = GetNodeAtIndex02160094((struct List02160094*)list, 0);
@@ -166,7 +166,7 @@ extern "C" ARM void func_ov025_021db8d8(struct Work021db8d8* self) {
             int any;
             for (int i = 0; i < count; i++) {
                 GameObject* c = game1->GetCombatantByIndex(ids[i]);
-                if (c && GetSubstructByte0x34((unsigned char*)c) >= 5) {
+                if (c && GetSubstructByte0x34_02049444((unsigned char*)c) >= 5) {
                     any = 1;
                     goto checked;
                 }
@@ -191,8 +191,8 @@ extern "C" ARM void func_ov025_021db8d8(struct Work021db8d8* self) {
             }
             row = pos = 0xff;
             if (obj) {
-                pos = GetSubstructByte0x1e((unsigned char*)obj);
-                row = GetSubstructByte0x1d((unsigned char*)obj);
+                pos = GetSubstructByte0x1e_020493ec((unsigned char*)obj);
+                row = GetSubstructByte0x1d_020493c8((unsigned char*)obj);
             }
             short ids[12];
             count2 = func_ov000_02153e40(battle, ids, 12, 0);
@@ -203,9 +203,9 @@ extern "C" ARM void func_ov025_021db8d8(struct Work021db8d8* self) {
                 }
             }
             if (obj) {
-                SetSubstructByte0x1e((unsigned char*)obj, pos);
+                SetSubstructByte0x1e_020493dc((unsigned char*)obj, pos);
                 if (pos != 0xff && row != 0xff) {
-                    SetSubstructByte0x1c((unsigned char*)obj, row);
+                    SetSubstructByte0x1c_02049390((unsigned char*)obj, row);
                 }
             }
             RunFlagPassAndSetMode02167dd8_02167dd8((unsigned char*)self);

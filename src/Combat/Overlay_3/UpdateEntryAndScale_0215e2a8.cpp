@@ -19,11 +19,10 @@ enum { kRegionValue394_3AC = 0x394 };
 enum { kRegionValue358_370 = 0x358 };
 #endif
 
-
 struct Struct_0205d81c;
 struct Elem_0205d81c;
-Elem_0205d81c* FindElementForFieldB0(Struct_0205d81c*);
-int CheckField0x9cSetWhenField0xd4Present(unsigned char*);
+Elem_0205d81c* FindElementForFieldB0_0205d8c4(Struct_0205d81c*);
+int CheckField0x9cSetWhenField0xd4Present_0204c7e0(unsigned char*);
 int GetGlobalField0x1c020421a0(void);
 
 struct Container0205a3d0;
@@ -41,10 +40,10 @@ extern "C" void func_0205ae8c(void*);
 ARM void UpdateEntryAndScale_0215e2a8(char* base) {
     if (*(unsigned char*)(base + kRegionValue3C2_3DA) == 0) return;
 
-    Elem_0205d81c* elem = FindElementForFieldB0((Struct_0205d81c*)(base + kRegionValue98_B0));
+    Elem_0205d81c* elem = FindElementForFieldB0_0205d8c4((Struct_0205d81c*)(base + kRegionValue98_B0));
     if (elem == NULL) return;
     if (*(unsigned char*)((char*)elem + 0xc4) != 1) return;
-    if (!CheckField0x9cSetWhenField0xd4Present((unsigned char*)elem)) return;
+    if (!CheckField0x9cSetWhenField0xd4Present_0204c7e0((unsigned char*)elem)) return;
     if (*(unsigned char*)((char*)elem + 0xc5) & 0x20) return;
 
     short a = *(short*)((char*)elem + 0xac);

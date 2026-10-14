@@ -18,7 +18,7 @@ void InitStruct02059cc8(unsigned char* obj);
 struct ListNode02057854;
 int CheckListStableAndField8LtField402057854(struct ListNode02057854* node);
 
-int ForwardField4To02057334(int* obj);
+int ForwardField4To02057334_02055774(int* obj);
 
 struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
@@ -74,7 +74,7 @@ ARM void AdvanceActorCooldownsAndPosition0205a020(unsigned char* p, int dt) {
         if (CheckListStableAndField8LtField402057854(*(struct ListNode02057854**)(p + 0x4)) == 1) {
             InitStruct02059cc8(p);
         } else {
-            ForwardField4To02057334((int*)p);
+            ForwardField4To02057334_02055774((int*)p);
         }
     }
 }

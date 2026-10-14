@@ -14,8 +14,8 @@ struct Container0201cb38 {
 extern Container0201cb38 data_020fdc20;
 
 // USA: func_0201cb38
-ARM int WarpScript_Opcode_68(Script::Parameter* arg0, int) {
+ARM int WarpScript_Opcode_68_0201cb38(Script::Parameter* arg0, int) {
     Variant02030b0c* p = (Variant02030b0c*)arg0;
-    ((ZoneFeatures*)data_020fdc20.array)->AllocateOpcode68Entries(((Script::Parameter*)p)->ToInt(), data_020fdc20.alloc);
+    ((ZoneFeatures*)data_020fdc20.array)->AllocateOpcode68Entries_0201e518(((Script::Parameter*)p)->ToInt(), data_020fdc20.alloc);
     return 1;
 }

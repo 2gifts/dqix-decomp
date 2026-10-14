@@ -64,14 +64,14 @@ extern "C" GameResources0215c058* func_ov017_0218b5b0();
 Member0215c058* GetField1c_021a193c(int*);
 void DispatchByIdxAndCond021551fc(char*, int, int);
 extern "C" GameState* _ZN9GameState11GetInstanceEv();
-void SelectCoordsByFlag0x24(unsigned char* obj, int* out1, int* out2);
+void SelectCoordsByFlag0x24_02012a84(unsigned char* obj, int* out1, int* out2);
 extern "C" void func_ov005_02156658(Menu0215c058* self, int x, int y);
 extern "C" int func_ov005_02155670(Menu0215c058* self, int x, int y);
 extern "C" void func_0205bb04(void* obj, int v);
 extern "C" void func_ov005_021579ec(Menu0215c058* self, unsigned int state, unsigned char slot);
 extern "C" unsigned int _ZNK9GameState12GetTickCountEv(GameState* gs);
 extern "C" int func_0205bf58(void* obj, int v);
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 extern "C" int func_ov005_021585fc(Menu0215c058* self, int direction);
 extern "C" void func_ov005_021555c0(Menu0215c058* self);
 extern "C" void func_ov005_021536e0(CursorFrame0215c058* frame);
@@ -85,9 +85,9 @@ struct Struct_0205bb84;
 int ComputeScaledSum0205bb84(Struct_0205bb84*);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 int CheckFlag30Or401_02157190(void* self);
-unsigned char* GetPtrField0x2a04(GameState*);
-short* GetPointerFromArray0xbd0(unsigned char*, unsigned int);
-signed char* GetPointerAt0xbf0(void*, unsigned int);
+unsigned char* GetPtrField0x2a04_02010828(GameState*);
+short* GetPointerFromArray0xbd0_0207c5f8(unsigned char*, unsigned int);
+signed char* GetPointerAt0xbf0_0207c60c(void*, unsigned int);
 extern "C" void func_ov005_0215792c(Menu0215c058* self, int mode);
 
 extern "C" TouchState data_02114e54;
@@ -116,7 +116,7 @@ extern "C" ARM void func_ov005_0215c058(Menu0215c058* self)
             int x;
             int y;
             touched = 1;
-            SelectCoordsByFlag0x24((unsigned char*)&data_02114e54, &x, &y);
+            SelectCoordsByFlag0x24_02012a84((unsigned char*)&data_02114e54, &x, &y);
             self->dirty.f2 = 0;
             self->dirty.f3 = 1;
             func_ov005_02156658(self, x, y);
@@ -148,12 +148,12 @@ extern "C" ARM void func_ov005_0215c058(Menu0215c058* self)
             int col = (self->selected - 8) % 4;
             if (col == 0)
             {
-                if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x20))
+                if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x20))
                     changed = func_ov005_021585fc(self, -1);
             }
             else if (col == 3)
             {
-                if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x10))
+                if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x10))
                     changed = func_ov005_021585fc(self, 1);
             }
             if (changed)
@@ -197,9 +197,9 @@ extern "C" ARM void func_ov005_0215c058(Menu0215c058* self)
         if (CheckFlag30Or401_02157190(self) != 0 || moved)
         {
             short index = self->selected - 8 + self->page * 16;
-            unsigned char* bag = GetPtrField0x2a04(gs);
-            short* ids = GetPointerFromArray0xbd0(bag + 0x1d4, data_ov005_0215cd10[self->tab]);
-            signed char* amounts = GetPointerAt0xbf0(bag + 0x1d4, data_ov005_0215cd10[self->tab]);
+            unsigned char* bag = GetPtrField0x2a04_02010828(gs);
+            short* ids = GetPointerFromArray0xbd0_0207c5f8(bag + 0x1d4, data_ov005_0215cd10[self->tab]);
+            signed char* amounts = GetPointerAt0xbf0_0207c60c(bag + 0x1d4, data_ov005_0215cd10[self->tab]);
             short id = ids[self->held];
             signed char amount = amounts[self->held];
             ids[self->held] = ids[index];
@@ -217,7 +217,7 @@ extern "C" ARM void func_ov005_0215c058(Menu0215c058* self)
             self->dirty.f2 = 1;
             self->dirty.f3 = 1;
         }
-        else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2))
+        else if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 2))
         {
             self->held = -1;
             func_ov005_0215792c(self, 4);

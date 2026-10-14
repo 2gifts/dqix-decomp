@@ -12,7 +12,7 @@ void Init020e2bd8(struct Struct_020e2bd8* obj, int arg1, int arg2);
 struct Foo02042fcc;
 void ResetFoo02042fcc(struct Foo02042fcc* p);
 
-void InitEightSubStructs(char* obj);
+void InitEightSubStructs_0202f1a4(char* obj);
 
 struct Holder02042c24;
 void SetSubstructXY02042c24(struct Holder02042c24* holder, int x, int y);
@@ -82,7 +82,7 @@ extern "C" ARM void func_02042c68(char* self) {
 
     ResetFoo02042fcc((struct Foo02042fcc*)(self + REGION_OFFSET(0x7e4, 0x914)));
     ResetFoo02042fcc((struct Foo02042fcc*)(self + REGION_OFFSET(0x800, 0x930)));
-    InitEightSubStructs(self + REGION_OFFSET(0x1804, 0x19e0));
+    InitEightSubStructs_0202f1a4(self + REGION_OFFSET(0x1804, 0x19e0));
 
     *(void**)(self + REGION_OFFSET(0x1c44, 0x1e20)) = (void*)(self + REGION_OFFSET(0x7e4, 0x914));
     SetSubstructXY02042c24((struct Holder02042c24*)(self + REGION_OFFSET(0x1804, 0x19e0)), 0, 0x80);

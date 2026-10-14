@@ -5,9 +5,9 @@
 int GetGlobalField0x1c020421a0(void);
 
 struct StoreStruct;
-void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
-void SetByteAtIndex(unsigned char* base, int index, unsigned char value);
-void SetByteInRange(unsigned char* base, int index, unsigned char value);
+void StoreInArray0x8b0_020465c0(struct StoreStruct* base, int index, int value);
+void SetByteAtIndex_020465d8(unsigned char* base, int index, unsigned char value);
+void SetByteInRange_020465f0(unsigned char* base, int index, unsigned char value);
 
 struct Container020e0310;
 int GetFieldByKey020e0434(struct Container020e0310* c, int key);
@@ -39,9 +39,9 @@ extern "C" ARM void func_ov023_021e83c8(void* obj) {
     p_arr1 = arr1;
     i = 0;
     for (; i < 2; i++) {
-        StoreInArray0x8b0((struct StoreStruct*)field, i, arr2[i]);
-        SetByteAtIndex((unsigned char*)field, i, 1);
-        SetByteInRange((unsigned char*)field, i, p_arr1[i] & 0xff);
+        StoreInArray0x8b0_020465c0((struct StoreStruct*)field, i, arr2[i]);
+        SetByteAtIndex_020465d8((unsigned char*)field, i, 1);
+        SetByteInRange_020465f0((unsigned char*)field, i, p_arr1[i] & 0xff);
     }
 
     int key = GetFieldByKey020e0434((struct Container020e0310*)((char*)obj + 0x4c), 0);

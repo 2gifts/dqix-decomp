@@ -7,8 +7,7 @@ struct EntryList_203dce4 {
     struct Entry_203dce4* entries[0x20];
 };
 
-extern struct Entry_203dce4* GetEntryUnlessFlag0x8000(struct EntryList_203dce4* list, int id);
-
+extern struct Entry_203dce4* GetEntryUnlessFlag0x8000_0203dce4(struct EntryList_203dce4* list, int id);
 
 extern void* GetField0xc02040538(struct S02040538* p);
 
@@ -51,7 +50,7 @@ ARM int FindNearestEntryDistance0203e524(struct EntryList_203dce4* list, struct 
     int result = -1;
     int id;
     for (id = 0; id < 0x20; id++) {
-        struct Entry_203dce4* entry = GetEntryUnlessFlag0x8000(list, id);
+        struct Entry_203dce4* entry = GetEntryUnlessFlag0x8000_0203dce4(list, id);
         if (entry == 0) continue;
         if (entry->flags & 0x8000) continue;
         void* field = GetField0xc02040538((struct S02040538*)entry);

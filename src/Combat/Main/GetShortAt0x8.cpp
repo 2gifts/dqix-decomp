@@ -2,6 +2,6 @@
 #include "Resource/MonsterDefinition.h"
 
 // USA: func_0206ef40
-ARM int GetShortAt0x8(void* entry) {
+ARM int GetShortAt0x8_0206ef40(void* entry) {
     return static_cast<MonsterDefinition*>(entry)->monsterId;
 }

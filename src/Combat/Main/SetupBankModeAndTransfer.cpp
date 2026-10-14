@@ -7,7 +7,7 @@ extern int data_021065d8;
 extern int data_02105fd8;
 
 // USA: func_0203b678
-ARM void SetupBankModeAndTransfer(int* arr, int index, int mode) {
+ARM void SetupBankModeAndTransfer_0203b678(int* arr, int index, int mode) {
     char buf[0x20];
     arr[index] = 0x20;
     *(int*)((char*)&arr[index] + 0x20) = 1;

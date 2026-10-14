@@ -2,10 +2,8 @@
 #include "Memory/SafeAllocator.h"
 #include "Memory/AllocatorUnion.h"
 
-
-
 extern "C" void func_ov003_0216d77c(void* arg);
-void PopStack0AndTrigger(int flag);
+void PopStack0AndTrigger_020a1e54(int flag);
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
 struct Struct02074bd0;
 void ClearFlag0x10IfSet(struct Struct02074bd0* obj);
@@ -19,7 +17,7 @@ extern "C" ARM void func_ov003_0217f118(char* self) {
     if (*(void**)(self + 0xc) != 0) {
         func_ov003_0216d77c(*(void**)(self + 0xc));
         *(void**)(self + 0xc) = 0;
-        PopStack0AndTrigger(1);
+        PopStack0AndTrigger_020a1e54(1);
     }
     SafeAllocator* alloc14 = (SafeAllocator*)(self + 0x14);
     void* p = alloc14->GetSignedAllocator();

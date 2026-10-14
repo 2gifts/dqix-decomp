@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void SetField54IfTagNot9Or10(int v);
+void SetField54IfTagNot9Or10_ov031_022393e4(int v);
 extern "C" ARM void func_ov031_02239368(int val);
 extern "C" ARM void func_ov031_02239518(void* info);
 int SubmitBattleAction020d68dc(int cb, unsigned int v, void* ctx);
@@ -24,7 +24,7 @@ extern "C" ARM int func_ov031_022394b4(void) {
     if (res == 2) {
         return 1;
     }
-    SetField54IfTagNot9Or10(res);
+    SetField54IfTagNot9Or10_ov031_022393e4(res);
     func_ov031_02239368(9);
     return 0;
 }

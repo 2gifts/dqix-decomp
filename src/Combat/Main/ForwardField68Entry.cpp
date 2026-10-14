@@ -5,7 +5,7 @@
 void* DecompressLZ77FileIntoScratchSpace(SafeAllocator& allocator, const void* source, unsigned int& size);
 
 // USA: func_020143d8
-ARM int Zone3D::ProcessBPOSFile(const void* source, unsigned int sourceLength) {
+ARM int Zone3D::ProcessBPOSFile_020143d8(const void* source, unsigned int sourceLength) {
     SafeAllocator* allocator = pAllocator_68_;
     unsigned int size;
     void* script = DecompressLZ77FileIntoScratchSpace(*allocator, source, size);

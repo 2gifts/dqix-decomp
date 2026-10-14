@@ -9,8 +9,8 @@ int FindMatchingElementIndex02018bc4(Zone3D* zone, ZoneFeatures::Opcode6aEntry* 
 void UpdateFlaggedType2Entries02018c74(Zone3D* zone, unsigned int flags);
 extern "C" void func_0201647c(Zone3D* zone);
 extern "C" int func_0201afd0(Zone3D* zone, const void* treasureArchive, unsigned int sourceSize, int unused);
-BmdjSceneElement* FindEntryByNodeIdAndKey(Zone3D* zone, ZoneFeatures::Opcode6aEntry* parameter);
-void UpdateEntryFlagsForNodeList(Zone3D* zone);
+BmdjSceneElement* FindEntryByNodeIdAndKey_02018b34(Zone3D* zone, ZoneFeatures::Opcode6aEntry* parameter);
+void UpdateEntryFlagsForNodeList_02018ab8(Zone3D* zone);
 extern "C" void func_02018300(Zone3D*, ZoneFeatures::Opcode6aEntry*, int, int, int);
 extern "C" void func_0201874c(Zone3D*, ZoneFeatures::Opcode6aEntry*);
 extern "C" void func_02018918(Zone3D*, ZoneFeatures::Opcode6aEntry*);

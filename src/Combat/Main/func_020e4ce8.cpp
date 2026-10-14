@@ -9,7 +9,7 @@ struct Detail020e4ce8 { char pad[0x14]; void* stats; Packed020e4ce8 bits; };
 struct Source020e4ce8 { char pad[0x144]; Detail020e4ce8* detail; char pad148[4]; char name[1]; };
 struct Struct0200fb08;
 unsigned char NormalizeField5_0200fb08(Struct0200fb08*);
-int StringLength(const char*);
+int StringLength_020d2ff0(const char*);
 extern "C" void func_020e4b34(void*, const char*, void*, unsigned int, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char);
 // USA: func_020e4ce8
 extern "C" ARM void func_020e4ce8(Description020e4ce8* dest, Source020e4ce8* src, int flag) {
@@ -21,7 +21,7 @@ extern "C" ARM void func_020e4ce8(Description020e4ce8* dest, Source020e4ce8* src
             detail->bits.field_0x0_6, detail->bits.field_0x0_12, detail->bits.field_0x0_18,
             detail->bits.field_0x0_24, detail->bits.field_0x0_26, detail->bits.field_0x0_27,
             detail->bits.field_0x0_28, 0);
-        int count = StringLength(name);
+        int count = StringLength_020d2ff0(name);
         int suffix;
         if (count && name[count - 1] >= 'A' && name[count - 1] <= 'Z') suffix = name[count - 1];
         else suffix = 0;

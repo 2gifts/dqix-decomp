@@ -2,8 +2,8 @@
 
 struct EntryList_203dce4;
 struct Entry_203dce4;
-void* GetGlobalPtr021075f4(void);
-Entry_203dce4* GetEntryUnlessFlag0x8000(EntryList_203dce4* list, int id);
+void* GetGlobalPtr021075f4_0203cf4c(void);
+Entry_203dce4* GetEntryUnlessFlag0x8000_0203dce4(EntryList_203dce4* list, int id);
 
 struct Struct02065758 {
     #if defined(jpn)
@@ -32,7 +32,7 @@ ARM int UpdateCounterAndFlag02065758(Struct02065758* a, int b) {
     int result;
     unsigned char amt;
 
-    entry = GetEntryUnlessFlag0x8000((EntryList_203dce4*)GetGlobalPtr021075f4(), a->id);
+    entry = GetEntryUnlessFlag0x8000_0203dce4((EntryList_203dce4*)GetGlobalPtr021075f4_0203cf4c(), a->id);
     if (entry == NULL) {
         return 0;
     }
@@ -52,4 +52,3 @@ ARM int UpdateCounterAndFlag02065758(Struct02065758* a, int b) {
     }
     return result;
 }
-

@@ -25,14 +25,14 @@ struct SlotState_021b0288 {
 
 extern "C" SearchStruct0202c1a4* func_0202ae18(void);
 unsigned char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
-GameObject* GetCombatantWithFlag0x1000(GameState* battleStruct, int combatantId);
-void SetField0x2d0(void* obj, int value);
+GameObject* GetCombatantWithFlag0x1000_0200ff58(GameState* battleStruct, int combatantId);
+void SetField0x2d0_020546a0(void* obj, int value);
 extern "C" void func_ov017_021c32b0(SlotPair_021b0288* pairs, int count);
-void SetField0x3acValue(GameState* gs, int value);
+void SetField0x3acValue_020100a0(GameState* gs, int value);
 extern "C" void func_ov017_02191108(void* unused, int c, int d, int e, int flag);
 extern "C" void func_ov017_021b0a7c(SlotState_021b0288* obj);
 extern "C" void func_ov017_021d0b30(int a, int b, int c);
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 void* FillBitArray0x1524WithFF(struct BitArrayObj0205e854* obj);
 
 // USA: func_ov017_021b0288
@@ -57,13 +57,13 @@ extern "C" ARM int func_ov017_021b0288(SlotState_021b0288* obj) {
             count++;
             memcpy(slots, obj->slots, 4);
             for (i = 3; i >= 1; i--) {
-                combatant = GetCombatantWithFlag0x1000(battle, i);
+                combatant = GetCombatantWithFlag0x1000_0200ff58(battle, i);
                 if (combatant == 0) continue;
                 for (j = 3; j >= 1; j--) {
                     if (slots[j] == 3) {
                         pairs[count].combatant = i;
                         pairs[count].slot = j;
-                        SetField0x2d0(combatant, GetSearchStructCurrentArrEntry(search));
+                        SetField0x2d0_020546a0(combatant, GetSearchStructCurrentArrEntry(search));
                         slots[j] = 0;
                         count++;
                         break;
@@ -75,7 +75,7 @@ extern "C" ARM int func_ov017_021b0288(SlotState_021b0288* obj) {
             for (int k = 0; k < count; k++) {
                 obj->order[k] = pairs[k].slot;
             }
-            SetField0x3acValue(battle, GetSearchStructCurrentArrEntry(search));
+            SetField0x3acValue_020100a0(battle, GetSearchStructCurrentArrEntry(search));
             int flag = 1;
             if (obj->command != 0 && *obj->command == 10) flag = 0;
             func_ov017_02191108(resources, 1, flag, 1, 1);
@@ -83,7 +83,7 @@ extern "C" ARM int func_ov017_021b0288(SlotState_021b0288* obj) {
         func_ov017_021b0a7c(obj);
         func_ov017_021d0b30(2, 0, 0);
         if (obj->mode != 2) return 0xb;
-        FillBitArray0x1524WithFF((BitArrayObj0205e854*)GetData02100044());
+        FillBitArray0x1524WithFF((BitArrayObj0205e854*)GetData02100044_0202ae24());
         return 6;
     }
     return obj->result;

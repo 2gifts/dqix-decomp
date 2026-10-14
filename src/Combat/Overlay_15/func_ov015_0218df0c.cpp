@@ -27,7 +27,7 @@ void BackupPairTables0207dfac(char* obj);
 struct Vector3i;
 
 struct Struct_203dafc;
-void ClearEightWords(struct Struct_203dafc* obj);
+void ClearEightWords_0203dafc(struct Struct_203dafc* obj);
 
 struct Params02036804 {
     int flag;
@@ -73,7 +73,7 @@ extern "C" ARM int func_ov015_0218df0c(void* self, int* desc) {
         ok = 0;
     } else {
         struct Params02036804 params;
-        ClearEightWords((struct Struct_203dafc*)&params);
+        ClearEightWords_0203dafc((struct Struct_203dafc*)&params);
         void* allocPtr = *(void**)((char*)self + 8);
         unsigned int sz = length;
         void* dataPtr = &data_0211e33c;

@@ -10,6 +10,6 @@ struct FieldBlock63d5_12050 {
 };
 
 // USA: func_02012050
-ARM void ClearByte0x63d5(struct FieldBlock63d5_12050* obj) {
+ARM void ClearByte0x63d5_02012050(struct FieldBlock63d5_12050* obj) {
     obj->field = 0;
 }

@@ -51,7 +51,7 @@ struct Container020e0310;
 int GetFieldByKey020e0434(Container020e0310*, int);
 
 int AppendString02042058(char*, const char*);
-int AppendXTag(char*, int);
+int AppendXTag_02041a28(char*, int);
 
 extern "C" void __clear(void*, int);
 extern "C" int func_020426bc(void*, void*, int);
@@ -77,7 +77,7 @@ ARM void BuildFieldTag_021d9e60(char* obj) {
 		for (; i < 8; i++) nameBuf[i] = *(unsigned char*)(obj + 0xdb4);
 		func_02042764(nameBuf, outBuf, 0);
 		int len = func_020420e8(outBuf, 0);
-		AppendXTag(buf, (0x50 - len) >> 1);
+		AppendXTag_02041a28(buf, (0x50 - len) >> 1);
 		AppendString02042058(buf, outBuf);
 	} else {
 		int val = GetFieldByKey020e0434((Container020e0310*)(obj + 0xe0), 0x4274);

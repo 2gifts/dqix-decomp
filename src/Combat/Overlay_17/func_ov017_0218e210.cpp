@@ -7,13 +7,13 @@ struct BitFlag02033f44;
 struct CollisionNode0218e210 { char pad[0x24]; Vector3fix direction; };
 struct Facing0218e210 { char pad[0xae]; short yaw; };
 extern "C" void func_02037d88(GameObject*);
-int GetField0x397cValue(GameState*);
+int GetField0x397cValue_020100b0(GameState*);
 int NotifyEntriesFlag256_0218df50(void*, void*);
 extern "C" int func_ov017_0218dfd8(GameObject*);
 extern "C" void func_ov017_0219344c(GameObject*, int, const Vector3fix*, int, int*, int*);
 CollisionNode0218e210* GetField0xe4IfFlag0x40(BitFlag02033f44*);
-int IsFlag0x1ceBit0x8Set(unsigned char*);
-void ClearFlag0x1ceBit0x8(unsigned char*);
+int IsFlag0x1ceBit0x8Set_02039dcc(unsigned char*);
+void ClearFlag0x1ceBit0x8_02039dbc(unsigned char*);
 void SetVecYByMode02033834(Obj02033834*, int);
 
 // USA: func_ov017_0218e210
@@ -28,10 +28,10 @@ extern "C" ARM void func_ov017_0218e210(int index, int enabled) {
     int distance = Vector3fix_Distance(&original, &current);
     int id = object->obj3D_.unknown_4_;
     int mode = 1;
-    if (id == GetField0x397cValue(game) && !(object->obj3D_.unknown_0_ & 0x8000) && distance > 0x333) mode = 2;
+    if (id == GetField0x397cValue_020100b0(game) && !(object->obj3D_.unknown_0_ & 0x8000) && distance > 0x333) mode = 2;
     int notified = 0;
     int combined = 0;
-    if (mode == 1 && index == GetField0x397cValue(game)) {
+    if (mode == 1 && index == GetField0x397cValue_020100b0(game)) {
         notified |= NotifyEntriesFlag256_0218df50(object, 0);
         combined |= notified;
         combined |= func_ov017_0218dfd8(object);
@@ -41,7 +41,7 @@ extern "C" ARM void func_ov017_0218e210(int index, int enabled) {
     int restored = 0;
     int secondNotification = 0;
     if (combined && node) {
-        if (!IsFlag0x1ceBit0x8Set((unsigned char*)object)) {
+        if (!IsFlag0x1ceBit0x8Set_02039dcc((unsigned char*)object)) {
             int handled = 0;
             secondNotification |= NotifyEntriesFlag256_0218df50(object, 0);
             handled |= secondNotification;
@@ -58,8 +58,8 @@ extern "C" ARM void func_ov017_0218e210(int index, int enabled) {
             }
         }
     } else {
-        if (!node) ClearFlag0x1ceBit0x8((unsigned char*)object);
-        if (node && !IsFlag0x1ceBit0x8Set((unsigned char*)object)) {
+        if (!node) ClearFlag0x1ceBit0x8_02039dbc((unsigned char*)object);
+        if (node && !IsFlag0x1ceBit0x8Set_02039dcc((unsigned char*)object)) {
             int handled = 0;
             secondNotification |= NotifyEntriesFlag256_0218df50(object, 0);
             handled |= secondNotification;

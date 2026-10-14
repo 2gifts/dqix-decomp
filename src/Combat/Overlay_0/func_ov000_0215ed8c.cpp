@@ -37,7 +37,7 @@ struct Battle {
     BattleData* data_;
 };
 Element02070e60* SearchWithLow15Comparator02070fd0(Container02070e60*, int);
-int IsField0xcNonNegative(int*);
+int IsField0xcNonNegative_020a3694(int*);
 extern "C" void func_02089630(Unit*, UnitTemplate*, int);
 
 // USA: func_ov000_0215ed8c
@@ -68,7 +68,7 @@ extern "C" ARM void func_ov000_0215ed8c(Battle* self) {
             unit = &self->data_->units_[unitIndex];
             entry = SearchWithLow15Comparator02070fd0(table, key);
             if (entry) {
-                func_02089630(unit, &entry->unit_, IsField0xcNonNegative((int*)self->data_) != 0);
+                func_02089630(unit, &entry->unit_, IsField0xcNonNegative_020a3694((int*)self->data_) != 0);
                 for (;;) {
                     if (!(species[speciesIndex].suffixMask_ & (1 << species[speciesIndex].nextSuffix_))) break;
                     ++species[speciesIndex].nextSuffix_;

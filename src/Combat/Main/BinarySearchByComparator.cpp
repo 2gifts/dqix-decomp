@@ -2,7 +2,7 @@
 #include "Resource/MonsterDefinition.h"
 
 // USA: func_0206f470
-ARM void* BinarySearchByComparator(struct BinarySearchByComparatorStruct* base, int key, BinarySearchByComparatorFn comp) {
+ARM void* BinarySearchByComparator_0206f470(struct BinarySearchByComparatorStruct* base, int key, BinarySearchByComparatorFn comp) {
     MonsterDefinition* arr;
     int count;
     int low;

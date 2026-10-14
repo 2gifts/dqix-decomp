@@ -15,7 +15,7 @@ extern "C"
 }
 
 struct AllocatorUnion;
-void* AllocateAligned4(struct AllocatorUnion* a, unsigned int n);
+void* AllocateAligned4_02012d88(struct AllocatorUnion* a, unsigned int n);
 extern AllocatorUnion data_02114e20;
 
 extern "C" void _ZN16BackgroundLoader4TaskaSERKS0_(BackgroundLoader::Task* dst,
@@ -283,7 +283,7 @@ int Ov34BackgroundLoader::Process()
             int z = b ^ ((b >> 6) ^ (b >> 4) ^ (b >> 2));
             if ((unsigned char)(z & 3) == 0)
 #endif
-                AllocateAligned4(&data_02114e20, 8);
+                AllocateAligned4_02012d88(&data_02114e20, 8);
         }
 
         LockResourceMutex();

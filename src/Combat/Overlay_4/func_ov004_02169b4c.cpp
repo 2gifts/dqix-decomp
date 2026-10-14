@@ -9,23 +9,23 @@ struct Obj02046574;
 extern "C" void* func_ov023_021f6524(void* ctx, int value);
 extern "C" struct TableA68* func_ov004_02168b08(void* a, int key);
 int GetGlobalField0x1c020421a0(void);
-void* GetFieldAt0x150(unsigned char* obj);
+void* GetFieldAt0x150_02053c6c(unsigned char* obj);
 extern "C" void* func_0205ec34(void* obj);
 extern "C" int func_ov023_021f9bc8(char* obj);
 unsigned int GetTableEntry_021f9b6c(struct Obj9b6c* obj, unsigned int a, unsigned int b);
 extern "C" void __clear(void* buf, int len);
 extern "C" void func_02042764(const char* name, char* dest, int flag);
 void* GetNodeIfType8_02168a6c(void* a, int id);
-char* FindEntryByKey(struct TableA68* table, int key);
+char* FindEntryByKey_02072a68(struct TableA68* table, int key);
 extern "C" void func_02046380(void* global);
 void SetIndexedName02046574(struct Obj02046574* obj, int index, char* str);
 extern "C" void func_02046608(void* a, int b, char* c, char* d, int e, int f, int g);
-char* FindSubstring(char* haystack, char* needle);
+char* FindSubstring_020d2f88(char* haystack, char* needle);
 int LoadBattleBlock020ac4c0(void* dst);
-void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
-int TestBitInByteArray(int unused, unsigned char* arr, int index);
-void SetByteInRange(unsigned char* base, int index, unsigned char value);
-void SetByteAtIndex(unsigned char* base, int index, unsigned char value);
+void StoreInArray0x8b0_020465c0(struct StoreStruct* base, int index, int value);
+int TestBitInByteArray_0206dfb0(int unused, unsigned char* arr, int index);
+void SetByteInRange_020465f0(unsigned char* base, int index, unsigned char value);
+void SetByteAtIndex_020465d8(unsigned char* base, int index, unsigned char value);
 int DispatchNodeIfState6_021f6680(void* obj, int id);
 
 struct Packed02169b4c {
@@ -117,7 +117,7 @@ extern "C" ARM int func_ov004_02169b4c(void* a) {
     struct Grid02169b4c* grid = (struct Grid02169b4c*)func_ov023_021f6524(a, 0x64);
     struct TableA68* tblA = func_ov004_02168b08(a, 3);
     void* g = (void*)GetGlobalField0x1c020421a0();
-    unsigned char* prot = (unsigned char*)GetFieldAt0x150((unsigned char*)GameState::GetInstance()->GetProtagonist());
+    unsigned char* prot = (unsigned char*)GetFieldAt0x150_02053c6c((unsigned char*)GameState::GetInstance()->GetProtagonist());
     unsigned char* flags = (unsigned char*)func_0205ec34(prot);
     struct TableA68* tbl9 = func_ov004_02168b08(a, 9);
     struct TableA68* tbl6 = func_ov004_02168b08(a, 6);
@@ -147,46 +147,46 @@ extern "C" ARM int func_ov004_02169b4c(void* a) {
 
     node = (Node02169b4c*)GetNodeIfType8_02168a6c(a, 0x190);
     node->mode = 2;
-    sprintf(out, FindEntryByKey(tblA, 0x23), rec->w0A);
+    sprintf(out, FindEntryByKey_02072a68(tblA, 0x23), rec->w0A);
     node->text = out;
     out += strlen(out) + 1;
 
     node = (Node02169b4c*)GetNodeIfType8_02168a6c(a, 0x1c2);
     node->mode = 2;
-    sprintf(out, FindEntryByKey(tblA, 0x23), rec->w8A);
+    sprintf(out, FindEntryByKey_02072a68(tblA, 0x23), rec->w8A);
     node->text = out;
     out += strlen(out) + 1;
 
     node = (Node02169b4c*)GetNodeIfType8_02168a6c(a, 0x191);
     node->mode = 2;
-    sprintf(out, FindEntryByKey(tblA, 0x23), rec->w4A);
+    sprintf(out, FindEntryByKey_02072a68(tblA, 0x23), rec->w4A);
     node->text = out;
     out += strlen(out) + 1;
 
     node = (Node02169b4c*)GetNodeIfType8_02168a6c(a, 0x1c3);
     node->mode = 2;
-    sprintf(out, FindEntryByKey(tblA, 0x23), rec->w8B);
+    sprintf(out, FindEntryByKey_02072a68(tblA, 0x23), rec->w8B);
     node->text = out;
     out += strlen(out) + 1;
 
     func_02046380(g);
     char* title;
     if (rec->f14 >= 700) {
-        title = FindEntryByKey(tbl9, (short)(rec->f14 + 20000));
+        title = FindEntryByKey_02072a68(tbl9, (short)(rec->f14 + 20000));
     } else if (rec->f16) {
-        title = FindEntryByKey(tbl7, rec->f14);
+        title = FindEntryByKey_02072a68(tbl7, rec->f14);
     } else {
-        title = FindEntryByKey(tbl6, rec->f14);
+        title = FindEntryByKey_02072a68(tbl6, rec->f14);
     }
     SetIndexedName02046574((struct Obj02046574*)g, 0, title);
     SetIndexedName02046574((struct Obj02046574*)g, 1, name);
-    func_02046608(g, 0xa, FindEntryByKey(tblA, 0x22), out, 0xf0, 1, 0);
+    func_02046608(g, 0xa, FindEntryByKey_02072a68(tblA, 0x22), out, 0xf0, 1, 0);
 
     node = (Node02169b4c*)GetNodeIfType8_02168a6c(a, 0x192);
     node->text = out;
     struct Triple02169b4c t = node->Get();
     t.b = 0x7000;
-    if (FindSubstring(out, data_ov004_02170704)) t.b = 0x2000;
+    if (FindSubstring_020d2f88(out, data_ov004_02170704)) t.b = 0x2000;
     node->Apply(&t);
     out += strlen(out) + 1;
 
@@ -196,39 +196,39 @@ extern "C" ARM int func_ov004_02169b4c(void* a) {
     struct Blk02169b4c blk;
     LoadBattleBlock020ac4c0(&blk);
     mask |= 1;
-    StoreInArray0x8b0((struct StoreStruct*)g, count++, rec->w4B);
-    if (TestBitInByteArray((int)flags, flags + 0x8c, 0x1198)) {
+    StoreInArray0x8b0_020465c0((struct StoreStruct*)g, count++, rec->w4B);
+    if (TestBitInByteArray_0206dfb0((int)flags, flags + 0x8c, 0x1198)) {
         mask |= 2;
-        StoreInArray0x8b0((struct StoreStruct*)g, count++, rec->w0B);
+        StoreInArray0x8b0_020465c0((struct StoreStruct*)g, count++, rec->w0B);
     }
     mask |= 4;
-    StoreInArray0x8b0((struct StoreStruct*)g, count++, rec->wcA);
+    StoreInArray0x8b0_020465c0((struct StoreStruct*)g, count++, rec->wcA);
     if (blk.f08hi) {
         mask |= 8;
-        StoreInArray0x8b0((struct StoreStruct*)g, count++, rec->w10A);
+        StoreInArray0x8b0_020465c0((struct StoreStruct*)g, count++, rec->w10A);
     }
     if (blk.f0cB) {
         mask |= 0x10;
-        StoreInArray0x8b0((struct StoreStruct*)g, count++, rec->wcB);
+        StoreInArray0x8b0_020465c0((struct StoreStruct*)g, count++, rec->wcB);
     }
-    if (TestBitInByteArray((int)flags, flags + 0x8c, 0x1199)) {
+    if (TestBitInByteArray_0206dfb0((int)flags, flags + 0x8c, 0x1199)) {
         mask |= 0x20;
-        StoreInArray0x8b0((struct StoreStruct*)g, count++, rec->w10B);
+        StoreInArray0x8b0_020465c0((struct StoreStruct*)g, count++, rec->w10B);
     }
 
     unsigned char k = 0;
     int i;
     for (i = 0; i < 6; i++) {
         if (mask & (1 << i)) {
-            SetByteInRange((unsigned char*)g, k, 5);
-            SetByteAtIndex((unsigned char*)g, k, 1);
-            strcpy(out, FindEntryByKey(tblA, (short)(i + 0x28)));
+            SetByteInRange_020465f0((unsigned char*)g, k, 5);
+            SetByteAtIndex_020465d8((unsigned char*)g, k, 1);
+            strcpy(out, FindEntryByKey_02072a68(tblA, (short)(i + 0x28)));
             int base = k * 3;
             node = (Node02169b4c*)GetNodeIfType8_02168a6c(a, base + 0x1f4);
             if (!node) continue;
             node->text = out;
             out += strlen(out) + 1;
-            func_02046608(g, 8, FindEntryByKey(tblA, (short)(k + 0x14)), out, 0x100, 0, 0);
+            func_02046608(g, 8, FindEntryByKey_02072a68(tblA, (short)(k + 0x14)), out, 0x100, 0, 0);
             node = (Node02169b4c*)GetNodeIfType8_02168a6c(a, base + 0x1f5);
             if (!node) continue;
             node->text = out;
@@ -241,7 +241,7 @@ extern "C" ARM int func_ov004_02169b4c(void* a) {
             } else {
                 key = 0x2e;
             }
-            strcpy(out, FindEntryByKey(tblA, key));
+            strcpy(out, FindEntryByKey_02072a68(tblA, key));
             node = (Node02169b4c*)GetNodeIfType8_02168a6c(a, base + 0x1f6);
             if (!node) continue;
             node->text = out;
@@ -257,22 +257,22 @@ extern "C" ARM int func_ov004_02169b4c(void* a) {
     }
 
     func_02046380(g);
-    StoreInArray0x8b0((struct StoreStruct*)g, 0, rec->w8C);
-    SetByteInRange((unsigned char*)g, 0, 3);
-    SetByteAtIndex((unsigned char*)g, 0, 1);
-    StoreInArray0x8b0((struct StoreStruct*)g, 1, rec->wcC);
-    SetByteInRange((unsigned char*)g, 1, 3);
-    SetByteAtIndex((unsigned char*)g, 1, 1);
-    StoreInArray0x8b0((struct StoreStruct*)g, 2, rec->w8D);
-    SetByteInRange((unsigned char*)g, 2, 3);
-    SetByteAtIndex((unsigned char*)g, 2, 1);
-    StoreInArray0x8b0((struct StoreStruct*)g, 3, rec->w10C);
-    SetByteInRange((unsigned char*)g, 3, 3);
-    SetByteAtIndex((unsigned char*)g, 3, 1);
+    StoreInArray0x8b0_020465c0((struct StoreStruct*)g, 0, rec->w8C);
+    SetByteInRange_020465f0((unsigned char*)g, 0, 3);
+    SetByteAtIndex_020465d8((unsigned char*)g, 0, 1);
+    StoreInArray0x8b0_020465c0((struct StoreStruct*)g, 1, rec->wcC);
+    SetByteInRange_020465f0((unsigned char*)g, 1, 3);
+    SetByteAtIndex_020465d8((unsigned char*)g, 1, 1);
+    StoreInArray0x8b0_020465c0((struct StoreStruct*)g, 2, rec->w8D);
+    SetByteInRange_020465f0((unsigned char*)g, 2, 3);
+    SetByteAtIndex_020465d8((unsigned char*)g, 2, 1);
+    StoreInArray0x8b0_020465c0((struct StoreStruct*)g, 3, rec->w10C);
+    SetByteInRange_020465f0((unsigned char*)g, 3, 3);
+    SetByteAtIndex_020465d8((unsigned char*)g, 3, 1);
 
     int rows = (mask & 2) ? 4 : 3;
     for (int r = 0; r < rows; r++) {
-        func_02046608(g, 8, FindEntryByKey(tblA, (short)(r + 0x1e)), out, 0x100, 0, 0);
+        func_02046608(g, 8, FindEntryByKey_02072a68(tblA, (short)(r + 0x1e)), out, 0x100, 0, 0);
         ((Node02169b4c*)GetNodeIfType8_02168a6c(a, r * 2 + 6 + 0x200))->text = out;
         out += strlen(out) + 1;
     }

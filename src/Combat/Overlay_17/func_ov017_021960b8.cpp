@@ -46,21 +46,21 @@ extern "C" void* func_020704fc(void);
 extern "C" void __clear(void* ptr, int size);
 void ResetGxEngineState020c52e8();
 extern "C" void func_020c5414();
-void SubmitGeometryJob(int, int, int, int, void*);
+void SubmitGeometryJob_020c57d4(int, int, int, int, void*);
 void ComputeAndLoadMatrix020c5770(int, int, int, int, int, int, int, int, void*);
 void ForwardObjAndField0_021a3b30(int);
 void UpdateInterpTimer020707c8(Timer020707c8*);
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
-unsigned int GetBitsInField4(unsigned int*, unsigned int);
+unsigned int GetBitsInField4_0203b4fc(unsigned int*, unsigned int);
 void ReleaseField0x38IfValid020444e0(Obj020444e0*);
 extern "C" void func_ov017_0219ad84(Battle021960b8*);
-GameObject* GetCombatantWithFlag0x100(GameState*, int);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState*, int);
 extern "C" void func_0205337c(GameObject*);
-unsigned char GetByteField0x252(void*);
-int GetByte0x26c(char*);
-void SelectCoordsByFlag0x24(unsigned char*, int*, int*);
+unsigned char GetByteField0x252_02039820(void*);
+int GetByte0x26c_02039d7c(char*);
+void SelectCoordsByFlag0x24_02012a84(unsigned char*, int*, int*);
 void MaybeDispatchPendingAction02096824(unsigned char*);
-int* GetGlobal02109030();
+int* GetGlobal02109030_020936f8();
 void UpdateChannelStateIfEligible02093f68(char*);
 extern "C" void* func_02012fe4(void);
 void MaybeUpdateOrDispatchEntry_021959ec(void*);
@@ -91,7 +91,7 @@ extern "C" ARM void func_ov017_021960b8(Battle021960b8* self) {
     ResetGxEngineState020c52e8();
     func_020c5414();
     *(volatile unsigned int*)0x04000440 = 0;
-    SubmitGeometryJob((int)&eye, (int)&up, (int)&target, 1, NULL);
+    SubmitGeometryJob_020c57d4((int)&eye, (int)&up, (int)&target, 1, NULL);
     ComputeAndLoadMatrix020c5770(0, 0xc0000, 0, 0x100000, -0x400000, 0x400000, 0x400000, 1, NULL);
     *(volatile unsigned int*)0x04000440 = 2;
     ForwardObjAndField0_021a3b30((int)self->nodeList);
@@ -104,13 +104,13 @@ extern "C" ARM void func_ov017_021960b8(Battle021960b8* self) {
         GetHeadNodeIdOrMinusOne(self->nodeList) != 3 &&
         GetHeadNodeIdOrMinusOne(self->nodeList) != 10) {
         if ((global->field998 != 0 || global->field19cb != 0) &&
-            GetBitsInField4(self->flags, 0x8000) == 0) {
+            GetBitsInField4_0203b4fc(self->flags, 0x8000) == 0) {
             ReleaseField0x38IfValid020444e0((Obj020444e0*)global);
         }
         func_ov017_0219ad84(self);
-        if (GetBitsInField4(self->flags, 4) == 0) {
+        if (GetBitsInField4_0203b4fc(self->flags, 4) == 0) {
             for (int i = 0; i < 4; i++) {
-                GameObject* combatant = GetCombatantWithFlag0x100(game, i);
+                GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(game, i);
                 if (combatant != NULL && combatant->obj3D_.GetFlag(1) == 0) {
                     func_0205337c(combatant);
                 }
@@ -118,19 +118,19 @@ extern "C" ARM void func_ov017_021960b8(Battle021960b8* self) {
         }
     }
 
-    if (GetBitsInField4(self->flags, 0x800) == 0) {
+    if (GetBitsInField4_0203b4fc(self->flags, 0x800) == 0) {
         LightingManager::GetInstance()->DrawBackgroundGradient();
     }
 
-    if (GetBitsInField4(self->flags, 0x80) == 0 && self->field3658 == 0 && leader != NULL &&
-        (GetByteField0x252(leader) != 0 || GetByte0x26c((char*)leader) != 0)) {
+    if (GetBitsInField4_0203b4fc(self->flags, 0x80) == 0 && self->field3658 == 0 && leader != NULL &&
+        (GetByteField0x252_02039820(leader) != 0 || GetByte0x26c_02039d7c((char*)leader) != 0)) {
         if (data_02114e54.field5f != 0 && data_02114e54.field24 != 0) {
             if (data_ov017_021d8340 == 0) {
                 data_ov017_021d8340 = 1;
-                SelectCoordsByFlag0x24((unsigned char*)&data_02114e54, &data_ov017_021d8344,
+                SelectCoordsByFlag0x24_02012a84((unsigned char*)&data_02114e54, &data_ov017_021d8344,
                                        &data_ov017_021d834c);
             }
-            SelectCoordsByFlag0x24((unsigned char*)&data_02114e54, &data_ov017_021d8348,
+            SelectCoordsByFlag0x24_02012a84((unsigned char*)&data_02114e54, &data_ov017_021d8348,
                                    &data_ov017_021d8350);
         } else {
             data_ov017_021d8340 = 0;
@@ -138,7 +138,7 @@ extern "C" ARM void func_ov017_021960b8(Battle021960b8* self) {
         MaybeDispatchPendingAction02096824(self->pendingAction);
     }
 
-    UpdateChannelStateIfEligible02093f68((char*)GetGlobal02109030());
+    UpdateChannelStateIfEligible02093f68((char*)GetGlobal02109030_020936f8());
     if (((AtmosphericEffectSet*)((char*)func_02012fe4() + kAtmosphericOffset))->Draw()) {
         MaybeUpdateOrDispatchEntry_021959ec(self);
     }

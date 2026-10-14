@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 void* GetField6b0_021b8470(void* obj);
-int GetField0x3acValue(GameState* battleStruct);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 
 struct Bits11_021cac7c {
     unsigned char bit0 : 1;
@@ -51,7 +51,7 @@ extern "C" ARM void func_ov017_021cac7c(int unused0, struct SrcEntry_021cac7c* s
     if (header == NULL) {
         return;
     }
-    if (*(signed char*)(header + 0x2a) == GetField0x3acValue(battleStruct)) {
+    if (*(signed char*)(header + 0x2a) == GetField0x3acValue_020100a8(battleStruct)) {
         return;
     }
     if (*(unsigned short*)(header + 8) != src->field4) {

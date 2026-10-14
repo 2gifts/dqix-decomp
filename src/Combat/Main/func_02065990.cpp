@@ -59,13 +59,13 @@ struct Struct02065758;
 int UpdateCounterAndFlag02065758(Struct02065758*, int);
 void UpdateTimedState0202f380(void* obj, int step);
 struct CE28Obj;
-int IsField440Empty(CE28Obj*);
+int IsField440Empty_0205ce28(CE28Obj*);
 struct Field440Obj0202f6a4;
 void SetupField440Type1(Field440Obj0202f6a4*);
 struct Ctx0206b61c;
 void ProcessTextTokens0206b61c(Ctx0206b61c*);
 extern "C" int func_020657c8(void* obj, int step);
-void UpdateStatusTimer(unsigned char*, unsigned int);
+void UpdateStatusTimer_020658ac(unsigned char*, unsigned int);
 int IsAnimationActive0209ca2c(void* p);
 struct Battle020456d0;
 void StepCounter020456d0(Battle020456d0*);
@@ -84,29 +84,29 @@ extern "C" void func_ov017_0218b5f8(signed char a);
 struct ListHead02046b60;
 int ListContainsId(ListHead02046b60*, int);
 void CallHelperIfFlag_021a5ab0(void* p);
-int TestFlag0SetAndFlag1Clear(unsigned short*, int);
-void* GetGlobalPtr021075f4();
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short*, int);
+void* GetGlobalPtr021075f4_0203cf4c();
 struct EntryList_203dce4;
-void* GetEntryUnlessFlag0x8000(EntryList_203dce4*, int);
+void* GetEntryUnlessFlag0x8000_0203dce4(EntryList_203dce4*, int);
 struct Node020406f8;
 void SelectVec3FromSources020406f8(Vec3_020406f8*, Node020406f8*);
 extern "C" int fix32_Atan2(int x, int z);
 int fix32ReduceAngle0To2Pi(int angle);
 extern "C" void func_02065418(int a);
-int CallFunc020e0434With02153694(int a);
+int CallFunc020e0434With02153694_020e51cc(int a);
 void InitCombatPairState020652d0(char* obj, int a, int b, int c);
-unsigned char* GetWord0x0(int*);
+unsigned char* GetWord0x0_0200fb8c(int*);
 struct Obj0208bf28;
 void SetFieldD20208bf28(Obj0208bf28*, int, unsigned char);
-unsigned char* GetGlobal02109418();
+unsigned char* GetGlobal02109418_02094d6c();
 struct GetTableByteOrFFData;
-int GetTableByteOrFF(GetTableByteOrFFData*, unsigned char);
+int GetTableByteOrFF_020965ac(GetTableByteOrFFData*, unsigned char);
 void RegisterSlotA020cf0fc(int);
 void RegisterSlotB020cf1a8(int);
 struct Struct0209c830;
 void SetValueAndActivate0209c830(Struct0209c830*, int);
-void ClearField0xd0AndSetFlag0x1IfByte0xd4Not2(unsigned char*);
-void SetFlag0x2IfByte0xd4Not3(unsigned char*);
+void ClearField0xd0AndSetFlag0x1IfByte0xd4Not2_0208be94(unsigned char*);
+void SetFlag0x2IfByte0xd4Not3_0208beb4(unsigned char*);
 extern "C" void func_0205e944(void* p, int v);
 
 extern unsigned char data_02109bf4;
@@ -150,7 +150,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
 
     if ((self + 0x1000)[REGION_VALUE(0x7e1, 0x9b1)] != 0) {
         UpdateTimedState0202f380(self + REGION_VALUE(0x1804, 0x19e0), step);
-        if (IsField440Empty((CE28Obj*)(self + REGION_VALUE(0x1804, 0x19e0))) != 0) {
+        if (IsField440Empty_0205ce28((CE28Obj*)(self + REGION_VALUE(0x1804, 0x19e0))) != 0) {
             SetupField440Type1((Field440Obj0202f6a4*)(self + REGION_VALUE(0x1804, 0x19e0)));
         }
         unsigned char* w = *(unsigned char**)(self + REGION_VALUE(0x1c44, 0x1e20));
@@ -177,7 +177,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
     }
 
     if (func_020657c8(self, step) != 0) return;
-    UpdateStatusTimer((unsigned char*)self, step);
+    UpdateStatusTimer_020658ac((unsigned char*)self, step);
 
     if (((self + 0x1000)[REGION_VALUE(0x789, 0x95b)] & 1) != 0) {
         if (IsAnimationActive0209ca2c(&data_02109bf4) == 0) {
@@ -367,7 +367,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                 ((int*)(self + REGION_VALUE(0x173c, 0x186c)))[*(signed char*)(self + REGION_VALUE(0x17dc, 0x19ac))] =
                     ((int*)(self + REGION_VALUE(0x173c, 0x186c)))[*(signed char*)(self + REGION_VALUE(0x17dc, 0x19ac))] - 1;
                 if (((int*)(self + REGION_VALUE(0x173c, 0x186c)))[*(signed char*)(self + REGION_VALUE(0x17dc, 0x19ac))] > 0) {
-                    if (TestFlag0SetAndFlag1Clear((unsigned short*)&data_02114e30, 0xfe3) == 0 &&
+                    if (TestFlag0SetAndFlag1Clear_02012444((unsigned short*)&data_02114e30, 0xfe3) == 0 &&
                         (&data_02114e54)[0x55] == 0) {
                         return;
                     }
@@ -407,7 +407,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                 return;
             } else if (tok == REGION_VALUE(0xff2f, 0xff2d)) {
                 unsigned char* who = (unsigned char*)GameState::GetInstance()->GetUnknownGameObject();
-                void* node = GetEntryUnlessFlag0x8000((EntryList_203dce4*)GetGlobalPtr021075f4(), *(int*)(self + REGION_VALUE(0x1708, 0x1838)));
+                void* node = GetEntryUnlessFlag0x8000_0203dce4((EntryList_203dce4*)GetGlobalPtr021075f4_0203cf4c(), *(int*)(self + REGION_VALUE(0x1708, 0x1838)));
                 if (who != 0 && node != 0) {
                     here = *(struct Vec3_020406f8*)(who + 0x44);
                     SelectVec3FromSources020406f8(&src, (Node020406f8*)node);
@@ -444,8 +444,8 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
 #if defined(jpn)
                 func_020665bc((char*)(self + REGION_VALUE(0x50, 0x90)), first, data_020f07b4, data_020f07b9);
 #else
-                int a = CallFunc020e0434With02153694(0x1b);
-                int b = CallFunc020e0434With02153694(0x1c);
+                int a = CallFunc020e0434With02153694_020e51cc(0x1b);
+                int b = CallFunc020e0434With02153694_020e51cc(0x1c);
                 InitCombatPairState020652d0((char*)(self + REGION_VALUE(0x50, 0x90)), first, a, b);
 #endif
                 *(int*)(self + REGION_VALUE(0x824, 0x954)) = first;
@@ -456,7 +456,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                 DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 5, 0);
                 int alive = 1;
                 unsigned char* bs = (unsigned char*)GameState::GetInstance();
-                unsigned char* w = GetWord0x0((int*)bs);
+                unsigned char* w = GetWord0x0_0200fb8c((int*)bs);
                 if ((bs + 0x5000)[REGION_VALUE(0xa68, 0xcc8)] == 2) alive = 0;
                 if (w != 0 && alive != 0) (w + 0x4000)[REGION_VALUE(0x134, 0x354)] = 0xa;
                 return;
@@ -469,8 +469,8 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
 #if defined(jpn)
                 func_020665bc((char*)(self + REGION_VALUE(0x50, 0x90)), 0, data_020f07c0, data_020f07c7);
 #else
-                int a = CallFunc020e0434With02153694(0x1d);
-                int b = CallFunc020e0434With02153694(0x1e);
+                int a = CallFunc020e0434With02153694_020e51cc(0x1d);
+                int b = CallFunc020e0434With02153694_020e51cc(0x1e);
                 InitCombatPairState020652d0((char*)(self + REGION_VALUE(0x50, 0x90)), 0, a, b);
 #endif
                 *(int*)(self + REGION_VALUE(0x824, 0x954)) = 0;
@@ -479,7 +479,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                 *(int*)(self + REGION_VALUE(0x870, 0x9a0)) = 6;
                 ProcessPendingFlag02045688(message);
                 DispatchWithShortB4_0205eaa0((Obj0205eaa0*)&data_02108760, 5, 0);
-                unsigned char* w = GetWord0x0((int*)GameState::GetInstance());
+                unsigned char* w = GetWord0x0_0200fb8c((int*)GameState::GetInstance());
                 if (w != 0) (w + 0x4000)[REGION_VALUE(0x134, 0x354)] = 0xa;
                 return;
             } else if (tok == 0xff0f) {
@@ -492,8 +492,8 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                     *(unsigned short*)(ent + 0xda) = *(unsigned short*)(ent + 0xda) | 0x40;
                     SetFieldD20208bf28((Obj0208bf28*)(*(void**)(self + REGION_VALUE(0x4c, 0x8c))), *(short*)(self + REGION_VALUE(0x1776, 0x1948)), 0);
                     *(self + REGION_VALUE(0x1789, 0x195b)) |= 1;
-                    unsigned char* g = GetGlobal02109418();
-                    int idx = GetTableByteOrFF((GetTableByteOrFFData*)g, (unsigned char)*(short*)(self + REGION_VALUE(0x1776, 0x1948)));
+                    unsigned char* g = GetGlobal02109418_02094d6c();
+                    int idx = GetTableByteOrFF_020965ac((GetTableByteOrFFData*)g, (unsigned char)*(short*)(self + REGION_VALUE(0x1776, 0x1948)));
                     RegisterSlotA020cf0fc((int)&sa);
                     RegisterSlotB020cf1a8((int)&sb);
                     packed.b.a = sa.f0;
@@ -522,7 +522,7 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                 unsigned char* ent = *(unsigned char**)(self + REGION_VALUE(0x4c, 0x8c));
                 if (ent != 0) {
                     *(unsigned short*)(ent + 0xda) = *(unsigned short*)(ent + 0xda) | 0x200;
-                    ClearField0xd0AndSetFlag0x1IfByte0xd4Not2((unsigned char*)(*(void**)(self + REGION_VALUE(0x4c, 0x8c))));
+                    ClearField0xd0AndSetFlag0x1IfByte0xd4Not2_0208be94((unsigned char*)(*(void**)(self + REGION_VALUE(0x4c, 0x8c))));
                     *(self + REGION_VALUE(0x1789, 0x195b)) |= 1;
                     SetValueAndActivate0209c830((Struct0209c830*)&data_02109bf4, 0x33);
                 }
@@ -530,13 +530,13 @@ extern "C" ARM void func_02065990(MessageSystem* message, int amount) {
                 unsigned char* ent = *(unsigned char**)(self + REGION_VALUE(0x4c, 0x8c));
                 if (ent != 0) {
                     *(unsigned short*)(ent + 0xda) = *(unsigned short*)(ent + 0xda) | 0x300;
-                    ClearField0xd0AndSetFlag0x1IfByte0xd4Not2((unsigned char*)(*(void**)(self + REGION_VALUE(0x4c, 0x8c))));
+                    ClearField0xd0AndSetFlag0x1IfByte0xd4Not2_0208be94((unsigned char*)(*(void**)(self + REGION_VALUE(0x4c, 0x8c))));
                     *(self + REGION_VALUE(0x1789, 0x195b)) |= 1;
                     SetValueAndActivate0209c830((Struct0209c830*)&data_02109bf4, 0x44);
                 }
             } else if (tok == 0xff12) {
                 if (*(void**)(self + REGION_VALUE(0x4c, 0x8c)) != 0) {
-                    SetFlag0x2IfByte0xd4Not3((unsigned char*)(*(void**)(self + REGION_VALUE(0x4c, 0x8c))));
+                    SetFlag0x2IfByte0xd4Not3_0208beb4((unsigned char*)(*(void**)(self + REGION_VALUE(0x4c, 0x8c))));
                 }
 #if defined(jpn)
             } else if (tok == 0xff37) {

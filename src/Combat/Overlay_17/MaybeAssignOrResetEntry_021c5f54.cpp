@@ -7,12 +7,12 @@ struct SearchStruct0202c1a4 {
 };
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* obj);
 
-void* GetData02108ea8(void);
+void* GetData02108ea8_0207d78c(void);
 
 struct Entry0207d9bc { unsigned short id; unsigned short pad; unsigned int a; unsigned int b; };
 Entry0207d9bc* FindEntryByHalfword(Entry0207d9bc* arr, unsigned short key);
 int CheckEntryBytes0207d978(Entry0207d9bc* arr, unsigned short key);
-int HasActiveEntryForId(unsigned char* arr, int id, int offset);
+int HasActiveEntryForId_0207da30(unsigned char* arr, int id, int offset);
 
 GameObject* FindCombatantByField16a_021a278c(void* unused, int val);
 
@@ -35,7 +35,7 @@ extern "C" ARM void func_ov017_021c5f54(int a, Info021c5f54* info, int unused, v
     Entry0207d9bc* arr;
     if (GetSearchStructCurrentArrEntry(search) != 0)
         return;
-    arr = (Entry0207d9bc*)GetData02108ea8();
+    arr = (Entry0207d9bc*)GetData02108ea8_0207d78c();
     if (info->field9 == 0 && info->fieldA == 0
         && FindCombatantByField16a_021a278c(combatant, info->field4) == NULL
         && FindEntryByHalfword(arr, info->field4) == NULL) {
@@ -44,7 +44,7 @@ extern "C" ARM void func_ov017_021c5f54(int a, Info021c5f54* info, int unused, v
     }
     if (CheckEntryBytes0207d978(arr, info->field4))
         return;
-    if (HasActiveEntryForId((unsigned char*)arr, info->field4, a))
+    if (HasActiveEntryForId_0207da30((unsigned char*)arr, info->field4, a))
         return;
     func_0207d7f4(arr, info->field4, a, info->field8, -1, info->field6, 0);
     func_0207dcf0(info->field4);

@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-int CheckField0x9cSetWhenField0xd4Present(unsigned char* obj);
+int CheckField0x9cSetWhenField0xd4Present_0204c7e0(unsigned char* obj);
 extern "C" void func_ov023_021f7eb8(void* obj, void* param2, int zero, int shortCC,
     int shortCE, int shortC8, int shortCA, unsigned char byteE2, int flagBit2, int flagBit4);
 
@@ -18,7 +18,7 @@ struct Obj021f809c {
 
 // USA: func_ov023_021f809c  (semantic: DispatchIfFieldPresent_021f809c)
 extern "C" ARM void func_ov023_021f809c(struct Obj021f809c* obj, void* param2) {
-    if (CheckField0x9cSetWhenField0xd4Present((unsigned char*)obj + 0x20)) {
+    if (CheckField0x9cSetWhenField0xd4Present_0204c7e0((unsigned char*)obj + 0x20)) {
         unsigned char e5 = obj->f_e5;
         unsigned short e2 = obj->f_e2;
         int flagBit2 = (e5 & 4) ? 1 : 0;

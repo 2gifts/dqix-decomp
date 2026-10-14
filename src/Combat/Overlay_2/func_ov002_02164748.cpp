@@ -13,16 +13,16 @@ struct KeyMap020a095c;
 void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char keyLow,
                                                                         unsigned char keyHigh);
 int GetActiveScaledSum0205d794(struct Struct_0205c570 *s);
-int TestFlag0SetAndFlag1Clear(unsigned short *p, int n);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short *p, int n);
 int IsActiveElementFlag2Set0205da38(struct Obj_0205da38* obj, int key);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0 *o, int a, int b);
 int CheckFlagOrThreshold_02161b48(char *base, int a);
-void SetElementFieldC2(struct Struct_0205d81c *s, int a, int b);
+void SetElementFieldC2_0205deb4(struct Struct_0205d81c *s, int a, int b);
 void SetFieldB0AndUpdate0205dee8(struct Obj0205dee8 *o, int v);
-unsigned char *GetFieldAt0x150(unsigned char *p);
+unsigned char *GetFieldAt0x150_02053c6c(unsigned char *p);
 int GetCountByType02157108(void *base, int id);
-GameObject *GetCombatantWithFlag0x100(GameState *gameState, int combatantId);
-void *GetPtrField0x2a04(GameState *gameState);
+GameObject *GetCombatantWithFlag0x100_0200ff1c(GameState *gameState, int combatantId);
+void *GetPtrField0x2a04_02010828(GameState *gameState);
 void InsertIntoEmptySlot02083834(struct Slots02083834 *s, int v);
 int CountMatchingUntilNegative02083994(struct Slots02083994 *s, int v);
 void AddKeyValueClamped020a095c(struct KeyMap020a095c *m, int key, int val);
@@ -43,8 +43,8 @@ extern "C" ARM void func_ov002_02164748(char *base) {
     if (state == 0) {
         *(short *) (base + 0x1b00 + 0xf4) = GetCountByType02157108(base, *(signed char *) (base + 0x1c00 + 0x21)) & 7;
         FindAndLinkMatchingEntry0205de24((struct Struct0205de24 *) (base + 0x2c8 + 0xc00), 0, 3);
-        SetElementFieldC2((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 9, 1);
-        SetElementFieldC2((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 0xd, 0);
+        SetElementFieldC2_0205deb4((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 9, 1);
+        SetElementFieldC2_0205deb4((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 0xd, 0);
         func_ov002_02161cf0(base);
         *(int *) (base + 0x1000 + 0xbc8) = 1;
         func_ov002_0215bba8(base);
@@ -55,15 +55,15 @@ extern "C" ARM void func_ov002_02164748(char *base) {
         *(short *) (base + 0x1b00 + 0xf4) =
             GetActiveScaledSum0205d794((struct Struct_0205c570 *) (base + 0x2c8 + 0xc00));
         if (old != *(short *) (base + 0x1b00 + 0xf4)) return;
-        int ta = TestFlag0SetAndFlag1Clear(data_02114e30, 0x601);
+        int ta = TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x601);
         int tb = IsActiveElementFlag2Set0205da38((struct Obj_0205da38*)(base + 0x2c8 + 0xc00), 0x14);
         if ((ta | tb) ? 1 : 0) {
             DispatchWithShortB4_0205eaa0((struct Obj0205eaa0 *) data_02108760, 1, 0);
             GameState *gs = GameState::GetInstance();
-            GameObject *a = GetCombatantWithFlag0x100(gs, *(signed char *) (base + 0x1c00 + 0x21));
+            GameObject *a = GetCombatantWithFlag0x100_0200ff1c(gs, *(signed char *) (base + 0x1c00 + 0x21));
             if (a == NULL) return;
-            unsigned char *fa = GetFieldAt0x150((unsigned char *) a);
-            GameObject *b     = GetCombatantWithFlag0x100(gs, *(signed char *) (base + 0x1c00 + 0x20));
+            unsigned char *fa = GetFieldAt0x150_02053c6c((unsigned char *) a);
+            GameObject *b     = GetCombatantWithFlag0x100_0200ff1c(gs, *(signed char *) (base + 0x1c00 + 0x20));
             if (b == NULL && *(signed char *) (base + 0x1c00 + 0x20) != 4) return;
             int done                          = 0;
             short v                           = SLOT(fa, *(short *) (base + 0x1b00 + 0xf4));
@@ -98,7 +98,7 @@ extern "C" ARM void func_ov002_02164748(char *base) {
             } else if (v > 0) {
                 done = 1;
                 if (*(signed char *) (base + 0x1c00 + 0x20) == 4) {
-                    void *party = GetPtrField0x2a04(gs);
+                    void *party = GetPtrField0x2a04_02010828(gs);
                     func_ov002_0215a7b4(base, *(signed char *) (base + 0x1c00 + 0x20), *(short *) (base + 0x1c00 + 0x22),
                                         *(short *) (base + 0x1b00 + 0xe8), 0);
                     AddKeyValueClamped020a095c((struct KeyMap020a095c *) party,
@@ -109,9 +109,9 @@ extern "C" ARM void func_ov002_02164748(char *base) {
                     else
                         *(short *) (base + 0x1c00 + 0x28) = 0x236c;
                 } else {
-                    GameObject *b2 = GetCombatantWithFlag0x100(gs, *(signed char *) (base + 0x1c00 + 0x20));
+                    GameObject *b2 = GetCombatantWithFlag0x100_0200ff1c(gs, *(signed char *) (base + 0x1c00 + 0x20));
                     if (b2 == NULL) return;
-                    unsigned char *fb                           = GetFieldAt0x150((unsigned char *) b2);
+                    unsigned char *fb                           = GetFieldAt0x150_02053c6c((unsigned char *) b2);
                     SLOT(fb, *(short *) (base + 0x1b00 + 0xe8)) = *(short *) (base + 0x1c00 + 0x24);
                     SLOT(fa, *(short *) (base + 0x1b00 + 0xf4)) = *(short *) (base + 0x1c00 + 0x22);
                     if (*(signed char *) (base + 0x1c00 + 0x20) == *(signed char *) (base + 0x1c00 + 0x21)) {
@@ -134,7 +134,7 @@ extern "C" ARM void func_ov002_02164748(char *base) {
                     same = 1;
                 if (*(short *) (base + 0x1c00 + 0x22) == 0x570a && t20 != 4) {
                     short cnt = CountMatchingUntilNegative02083994(
-                        (struct Slots02083994 *) GetFieldAt0x150((unsigned char *) b), 0x570a);
+                        (struct Slots02083994 *) GetFieldAt0x150_02053c6c((unsigned char *) b), 0x570a);
                     if (cnt == 0 || (cnt == 1 && same)) {
                         *(unsigned char *) (*(char **) ((char *) b + 0x130) + 8) = 0;
                         func_ov017_021c9e00(*(short *) ((char *) b + 4), 0, 0, 1);
@@ -159,7 +159,7 @@ extern "C" ARM void func_ov002_02164748(char *base) {
             *(short *) (base + 0x1b00 + 0xf4) = -1;
             *(int *) (base + 0x1000 + 0xbb8)  = 9;
             func_ov002_02161cf0(base);
-            SetElementFieldC2((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 9, 0);
+            SetElementFieldC2_0205deb4((struct Struct_0205d81c *) (base + 0x2c8 + 0xc00), 9, 0);
             SetFieldB0AndUpdate0205dee8((struct Obj0205dee8 *) (base + 0x2c8 + 0xc00), 9);
             *(int *) (base + 0x1000 + 0xbc8) = 1;
             *(int *) (base + 0x1000 + 0xbcc) = 1;

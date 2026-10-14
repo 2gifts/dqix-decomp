@@ -36,11 +36,11 @@ extern "C" void func_ov017_021d1014(int a, int b, int c);
 extern "C" void func_ov017_021d0b30(int a, int b, int c);
 void EnqueueEventTag173_021d1810(int, int, signed char);
 int SetSearchFlagBit0202c660(SearchStruct* obj, int value);
-int TestBitBySignedByteIndex(SearchStruct* obj, int index);
-int TestMaskBitBySignedByteIndex(SearchStruct* obj, int index);
-int IsFieldMinusOne(int* obj);
+int TestBitBySignedByteIndex_0202c1c0(SearchStruct* obj, int index);
+int TestMaskBitBySignedByteIndex_0202bd34(SearchStruct* obj, int index);
+int IsFieldMinusOne_0202c648(int* obj);
 signed char GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* obj);
-int GetField0x3acValue(GameState* battleStruct);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 extern "C" int func_ov017_02195658(GameResources* res);
 
 // USA: func_ov017_021b11d8
@@ -55,12 +55,12 @@ extern "C" ARM void func_ov017_021b11d8(void* obj, void* node) {
         self->flags = 0;
         for (int i = 0; i < 4; i++) {
             if (i != self->count) {
-                if (TestBitBySignedByteIndex(search, i) != 0) {
+                if (TestBitBySignedByteIndex_0202c1c0(search, i) != 0) {
                     self->flags |= (1 << i);
                 }
             }
         }
-        EnqueueEventTag173_021d1810(2, -1, (signed char)GetField0x3acValue(gs));
+        EnqueueEventTag173_021d1810(2, -1, (signed char)GetField0x3acValue_020100a8(gs));
         func_ov017_021d1118(-1, 1, 1, 2);
         func_ov017_021d1014(-1, 1, 0);
         self->mode++;
@@ -95,7 +95,7 @@ extern "C" ARM void func_ov017_021b11d8(void* obj, void* node) {
     if (mode != 3) {
         return;
     }
-    if (IsFieldMinusOne((int*)search) != 0) {
+    if (IsFieldMinusOne_0202c648((int*)search) != 0) {
         goto done;
     }
     {
@@ -107,7 +107,7 @@ extern "C" ARM void func_ov017_021b11d8(void* obj, void* node) {
     if (search->busy == 0) {
         for (int i = 1; i < 4; i++) {
             if ((self->flags & (1 << i)) != 0) {
-                if (TestMaskBitBySignedByteIndex(search, i) == 0) {
+                if (TestMaskBitBySignedByteIndex_0202bd34(search, i) == 0) {
                     self->flags &= ~(1 << i);
                 }
             }
@@ -115,7 +115,7 @@ extern "C" ARM void func_ov017_021b11d8(void* obj, void* node) {
     }
     for (int i = 0; i < 4; i++) {
         if ((self->flags & (1 << i)) != 0) {
-            SearchEntry0202c178* e = GetEntryBySignedByteIndex(search, i);
+            SearchEntry0202c178* e = GetEntryBySignedByteIndex_0202c178(search, i);
             if (e == 0) {
                 continue;
             }

@@ -1,16 +1,16 @@
 #include <globaldefs.h>
 #if defined(jpn)
-extern "C" int _Z12StringLengthPKc(const char*);
+extern "C" int _Z21StringLength_020d2ff0PKc(const char*);
 #endif
 
 struct Container02080f8c;
 struct Container02080fa8;
 struct Container02080cc0;
 
-int CallFunc020e0434With02153694(int value);
+int CallFunc020e0434With02153694_020e51cc(int value);
 void SetEntryFirstField02080f8c(struct Container02080f8c* obj, int id, int value);
 void SetSublistEntryField14LowBits_02080798(void* obj, int id, int value);
-void SetEntryHalfword0xe(void* obj, int id, int value);
+void SetEntryHalfword0xe_0208103c(void* obj, int id, int value);
 void SetEntryFirstField02080fa8(struct Container02080fa8* obj, int id, int value);
 char* LookupValueByEntryKey02081010(void* obj, int id);
 extern "C" int func_020420e8(const char* text, int large);
@@ -30,19 +30,19 @@ extern "C" ARM void func_ov003_02167e28(struct Window02167e28* self, char* name,
                                         unsigned char badge, int valueA, int valueB) {
     void* obj = self->layout;
 #if !defined(jpn)
-    SetEntryFirstField02080f8c((struct Container02080f8c*)obj, 3, CallFunc020e0434With02153694(0x3f3));
+    SetEntryFirstField02080f8c((struct Container02080f8c*)obj, 3, CallFunc020e0434With02153694_020e51cc(0x3f3));
     SetSublistEntryField14LowBits_02080798(obj, 3, 1);
 #endif
     SetEntryFirstField02080f8c((struct Container02080f8c*)obj, 0, (int)name);
 #if !defined(jpn)
     SetSublistEntryField14LowBits_02080798(obj, 0, 1);
 #endif
-    SetEntryHalfword0xe(obj, 1, (short)flag);
+    SetEntryHalfword0xe_0208103c(obj, 1, (short)flag);
     SetEntryFirstField02080fa8((struct Container02080fa8*)obj, 5, valueA);
     SetEntryFirstField02080fa8((struct Container02080fa8*)obj, 6, valueB);
-    SetEntryHalfword0xe(obj, 2, (short)(index + 2));
+    SetEntryHalfword0xe_0208103c(obj, 2, (short)(index + 2));
 #if defined(jpn)
-    int width = (_Z12StringLengthPKc(LookupValueByEntryKey02081010(obj, 2)) >> 1) * 10;
+    int width = (_Z21StringLength_020d2ff0PKc(LookupValueByEntryKey02081010(obj, 2)) >> 1) * 10;
 #else
     int width = func_020420e8(LookupValueByEntryKey02081010(obj, 2), 0);
 #endif
@@ -62,7 +62,7 @@ extern "C" ARM void func_ov003_02167e28(struct Window02167e28* self, char* name,
 #else
     SetEntryFieldsAt0x602080854(obj, 0x2c, (short)(x + width + 1), y);
 #endif
-    SetEntryHalfword0xe(obj, 0x2c, (short)(badge + 0x1c));
+    SetEntryHalfword0xe_0208103c(obj, 0x2c, (short)(badge + 0x1c));
     int nibble = 5;
     if (badge == 10) {
         nibble = 0xd;

@@ -24,7 +24,7 @@ extern "C" ARM int func_ov000_0217c2a0(void* objRaw) {
     int result = 0;
     GameState* battleStruct = GameState::GetInstance();
     int combId = *(int*)(obj + 0x4c);
-    GameObject* combatant = GetCombatantWithFlag0x100(battleStruct, combId);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(battleStruct, combId);
     if (combatant != 0) {
         void* sub = GetActiveSub_02054000((struct Outer_02054000*)combatant);
         if (sub != 0) {

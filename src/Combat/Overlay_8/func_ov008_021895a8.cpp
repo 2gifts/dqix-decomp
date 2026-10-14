@@ -125,14 +125,14 @@ extern "C" void ColorEffect_ConfigureAlphaBlend(void* reg, int a, int b, int c, 
 extern "C" void func_ov008_0218b240(void* self);
 extern "C" void func_ov008_0218aa24(void* self);
 
-char* GetWord0x0(int* gameState);
-int IsField0Null(void** field);
-void SetBitsInWord(unsigned int* word, unsigned int bits);
+char* GetWord0x0_0200fb8c(int* gameState);
+int IsField0Null_02046b08(void** field);
+void SetBitsInWord_0203b4a0(unsigned int* word, unsigned int bits);
 unsigned int* GetDataPtr02114e04_020d6c00();
-void OrBitsIntoField0(unsigned int* field, unsigned int bits);
+void OrBitsIntoField0_020466e4(unsigned int* field, unsigned int bits);
 MessageSystem* GetGlobalField0x1c020421a0();
-PartyMemberData* GetFieldAt0x150(unsigned char* member);
-void SetWord0x18ClearByte0x1f(unsigned char* background, int);
+PartyMemberData* GetFieldAt0x150_02053c6c(unsigned char* member);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char* background, int);
 void AllocateAndClearBuffer0204b12c(AllocTarget0204b12c* background, SafeAllocator* allocator);
 void DispatchViaTable0204b5e8(Obj0204b5e8* background, int, int);
 void FlushAndDispatchList0204b0e8(List0204b0e8* background, void*);
@@ -217,21 +217,21 @@ struct VisitorTalk
 extern "C" ARM void func_ov008_021895a8(VisitorTalk* self)
 {
     GameState* gameState = GameState::GetInstance();
-    char* resources = GetWord0x0((int*)gameState);
+    char* resources = GetWord0x0_0200fb8c((int*)gameState);
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
-    GetGlobal02109400();
+    GetGlobal02109400_02094a00();
     signed char step = self->step_;
     if (step == 0)
     {
-        if (!IsField0Null(*(void***)(resources
+        if (!IsField0Null_02046b08(*(void***)(resources
 #if defined(jpn)
             + 0x34f0)))
 #else
             + 0x3700)))
 #endif
             return;
-        SetBitsInWord((unsigned int*)func_ov017_0218b5b0(), 0x10);
-        OrBitsIntoField0(GetDataPtr02114e04_020d6c00(), 0xd);
+        SetBitsInWord_0203b4a0((unsigned int*)func_ov017_0218b5b0(), 0x10);
+        OrBitsIntoField0_020466e4(GetDataPtr02114e04_020d6c00(), 0xd);
         unsigned int female;
         self->text_ = (char*)GetGlobalField0x1c020421a0()->unk_5c;
         female = 0;
@@ -244,7 +244,7 @@ extern "C" ARM void func_ov008_021895a8(VisitorTalk* self)
                 func_ov008_0218b240(self);
                 return;
             }
-            PartyMemberData* data = GetFieldAt0x150((unsigned char*)member);
+            PartyMemberData* data = GetFieldAt0x150_02053c6c((unsigned char*)member);
             if (data != NULL)
                 female = data->female_;
         }
@@ -304,7 +304,7 @@ extern "C" ARM void func_ov008_021895a8(VisitorTalk* self)
             for (int i = 0; i < 2; i++)
             {
                 background = &self->backgrounds_[i];
-                SetWord0x18ClearByte0x1f((unsigned char*)background, 0);
+                SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)background, 0);
                 background->unk_1c_0_ = 0;
                 background->unk_1c_4_ = layers[i];
                 func_0204b5b4(background, priorities[i]);
@@ -385,13 +385,13 @@ extern "C" ARM void func_ov008_021895a8(VisitorTalk* self)
             REG_BG2CNT = REG_BG2CNT & ~3;
             REG_BG3CNT = (REG_BG3CNT & ~3) | 3;
             REG_DISPCNT = (REG_DISPCNT & ~0x1f00) | 0x1700;
-            BlankFunction02094b34(GetGlobal02109400(), 0x6b, 0x206, 0, 0);
+            BlankFunction02094b34(GetGlobal02109400_02094a00(), 0x6b, 0x206, 0, 0);
             self->step_++;
         }
     }
     else if (step == 5)
     {
-        if (AlwaysTrue02094b4c(GetGlobal02109400()))
+        if (AlwaysTrue02094b4c(GetGlobal02109400_02094a00()))
         {
             func_ov008_0218aa24(self);
 #if defined(jpn)

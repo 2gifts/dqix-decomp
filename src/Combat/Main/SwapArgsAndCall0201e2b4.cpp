@@ -3,5 +3,5 @@
 
 // USA: func_0201e2b4
 ARM void ZoneFeatures::LoadFromScript(SafeAllocator* allocator, const void* script, unsigned int length) {
-    ExecuteZoneWarpScript(script, length, this, allocator);
+    ExecuteZoneWarpScript_0201e1d0(script, length, this, allocator);
 }

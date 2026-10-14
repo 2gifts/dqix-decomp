@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void* GetPointerFromArray0xbd0(unsigned char* obj, unsigned int index);
+void* GetPointerFromArray0xbd0_0207c5f8(unsigned char* obj, unsigned int index);
 
 struct Outer_02054000;
 void* GetActiveSub_02054000(struct Outer_02054000* p);
@@ -10,7 +10,7 @@ extern short data_020e8a34[];
 
 // USA: func_0207c984  (semantic: CollectValuesRoundedTo100_0207c984)
 extern "C" ARM int func_0207c984(unsigned char* obj, int combatantId, int categoryId, short* outArr, short* outCount) {
-    GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), combatantId);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), combatantId);
     if (combatant == 0) {
         return 1;
     }
@@ -33,7 +33,7 @@ extern "C" ARM int func_0207c984(unsigned char* obj, int combatantId, int catego
         }
     }
 
-    short* arr = (short*)GetPointerFromArray0xbd0(obj, 0);
+    short* arr = (short*)GetPointerFromArray0xbd0_0207c5f8(obj, 0);
     short i;
     for (i = 0; i < 0x110; i++) {
         short v = arr[i];

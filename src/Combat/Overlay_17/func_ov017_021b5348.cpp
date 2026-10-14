@@ -16,11 +16,11 @@ struct HalfwordArray {
     unsigned short arr[12];
     unsigned short count;
 };
-ARM unsigned short CopyHalfwordArrayByCount(struct HalfwordArray* src, struct HalfwordArray* dst);
+ARM unsigned short CopyHalfwordArrayByCount_0209c0c0(struct HalfwordArray* src, struct HalfwordArray* dst);
 struct ZeroWordAndByte0206ee60Struct;
 void ZeroWordAndByte0206ee60(struct ZeroWordAndByte0206ee60Struct* obj);
 struct StreamHeader;
-void RegisterCallbackWithArgsAndRunScript(void* a, void* b, struct StreamHeader* c, int d, void* e, short f);
+void RegisterCallbackWithArgsAndRunScript_0206ee80(void* a, void* b, struct StreamHeader* c, int d, void* e, short f);
 extern "C" void func_ov017_021b5648(void* obj);
 
 extern char data_ov017_021d7bdc;
@@ -55,10 +55,10 @@ extern "C" ARM void func_ov017_021b5348(struct Obj021b5348* obj) {
             char* sub = (char*)obj->sub;
             unsigned short buf[12];
             __clear(buf, 0x18);
-            short signedCount = (short)CopyHalfwordArrayByCount((struct HalfwordArray*)(sub + RegionOffset44), (struct HalfwordArray*)buf);
+            short signedCount = (short)CopyHalfwordArrayByCount_0209c0c0((struct HalfwordArray*)(sub + RegionOffset44), (struct HalfwordArray*)buf);
             ZeroWordAndByte0206ee60((struct ZeroWordAndByte0206ee60Struct*)((char*)subEarly + RegionOffset304));
             void* ptrB = *(void**)((char*)obj->sub + 0x10);
-            RegisterCallbackWithArgsAndRunScript((char*)subEarly + RegionOffset304, ptrB, (struct StreamHeader*)out1, (short)out2, buf, signedCount);
+            RegisterCallbackWithArgsAndRunScript_0206ee80((char*)subEarly + RegionOffset304, ptrB, (struct StreamHeader*)out1, (short)out2, buf, signedCount);
         }
     }
 

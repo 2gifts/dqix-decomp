@@ -2,7 +2,7 @@
 #include "Memory/AllocatorUnion.h"
 
 extern AllocatorUnion data_02114e20;
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 extern void TailForward02012da4(AllocatorUnion* alloc, void* data);
 
 struct ResetStruct0218eef0;
@@ -25,13 +25,13 @@ struct Obj021919e4 {
 
 // USA: func_ov015_021919e4
 extern "C" ARM void* func_ov015_021919e4(struct Obj021919e4* obj, void* p1) {
-    struct ListNode021919e4* node = (struct ListNode021919e4*)AllocateAligned4(&data_02114e20, 8);
+    struct ListNode021919e4* node = (struct ListNode021919e4*)AllocateAligned4_02012d88(&data_02114e20, 8);
     if (node == 0) {
         return 0;
     }
     node->payload = 0;
     node->next = 0;
-    node->payload = AllocateAligned4(&data_02114e20, 0x5c);
+    node->payload = AllocateAligned4_02012d88(&data_02114e20, 0x5c);
     if (node->payload == 0) {
         TailForward02012da4(&data_02114e20, node);
         return 0;

@@ -7,7 +7,7 @@ struct B88fcObj {
 };
 
 // USA: func_020688fc
-ARM int CheckFields0And10SetAndDiffer(int unused, struct B88fcObj* obj) {
+ARM int CheckFields0And10SetAndDiffer_020688fc(int unused, struct B88fcObj* obj) {
     int a = obj->field0;
     int b = obj->field10;
     if (a != 0 && b != 0) {

@@ -11,7 +11,7 @@ struct Table_1f1b0 {
 };
 
 // USA: func_0201f1b0
-ARM int FindRecordIndexByHalfwordKey(struct Table_1f1b0* table, int key) {
+ARM int FindRecordIndexByHalfwordKey_0201f1b0(struct Table_1f1b0* table, int key) {
     int i;
     for (i = 0; i < table->count; i++) {
         if (key == table->records[i].key) {

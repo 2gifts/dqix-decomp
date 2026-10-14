@@ -82,8 +82,8 @@ struct MonsterListScreen {
 struct Container02080fa8;
 struct StatusOwner02081164;
 
-void ClearSublistEntriesFlag1(void* obj, int id);
-void SetEntryHalfword0xe(void* obj, int id, int value);
+void ClearSublistEntriesFlag1_02080bac(void* obj, int id);
+void SetEntryHalfword0xe_0208103c(void* obj, int id, int value);
 void SetEntryFirstField02080fa8(Container02080fa8* obj, int id, int value);
 int SetEntryFlagById02080b2c(void* obj, int id);
 void SetEntryFlag0x2ByShortId(StatusOwner02081164* owner, int id, int enable);
@@ -108,9 +108,9 @@ extern "C" ARM void func_ov014_02188330(MonsterListScreen* self)
 #if !defined(jpn)
     func_020806d8(self->menu_, 0, 2, 1, 4);
 #endif
-    ClearSublistEntriesFlag1(self->menu_, 0);
+    ClearSublistEntriesFlag1_02080bac(self->menu_, 0);
     if (self->family_ >= 0)
-        SetEntryHalfword0xe(self->menu_, 0x2f, (short)(self->family_ + 0x1e));
+        SetEntryHalfword0xe_0208103c(self->menu_, 0x2f, (short)(self->family_ + 0x1e));
 
     short numKnown = 0;
     MonsterListEntry* entry = self->entries_;

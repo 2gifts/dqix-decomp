@@ -73,8 +73,8 @@ extern "C" Probe_02012fe4* func_02012fe4(void);
 extern "C" int func_02018fbc(Probe_02012fe4* p, Vec3_020771fc* d);
 extern "C" void func_ov017_021c9400(int id, int slot, int heading, Vec3_020771fc pos, Vec3_020771fc vec, int last);
 int GetSearchStructCurrentArrEntry(SearchStruct0202c1a4* s);
-int CheckField0NonZero(int* g);
-Entry_02028bd0* GetEntryTableBase(void);
+int CheckField0NonZero_0202b7d8(int* g);
+Entry_02028bd0* GetEntryTableBase_02027ca4(void);
 Entry_02028bd0* FindInlineEntryById(Entry_02028bd0* base, int key);
 TableEntry_020771fc* FindListEntryById(List_020283c0* list, int key);
 void SetByteIfChanged02033b68(Obj02033b68* obj, int value);
@@ -122,7 +122,7 @@ extern "C" ARM void func_020771fc(Actor_020771fc* obj) {
         TrySetMode02076ccc(obj, 1);
         obj->f154 = 0;
         obj->f17c = 1;
-        if (CheckField0NonZero((int*)g) != 0) {
+        if (CheckField0NonZero_0202b7d8((int*)g) != 0) {
             func_020794f8(obj, 0, 1);
         }
         return;
@@ -140,7 +140,7 @@ extern "C" ARM void func_020771fc(Actor_020771fc* obj) {
     if (dist < 0x1000) {
         Vec3_020771fc d = obj->pos44;
         if (func_0202c508(g) != 0) {
-            Entry_02028bd0* table = GetEntryTableBase();
+            Entry_02028bd0* table = GetEntryTableBase_02027ca4();
             int id = _ZNK8Object3D10GetField06Ev((U16Field0x6_020375f8*)obj);
             Entry_02028bd0* entry = FindInlineEntryById(table, id);
             if (entry != 0) {
@@ -166,7 +166,7 @@ extern "C" ARM void func_020771fc(Actor_020771fc* obj) {
     if (moved == 0) {
         return;
     }
-    if (CheckField0NonZero((int*)g) == 0) {
+    if (CheckField0NonZero_0202b7d8((int*)g) == 0) {
         return;
     }
     if (GetSearchStructCurrentArrEntry((SearchStruct0202c1a4*)g) != 0) {

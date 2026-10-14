@@ -14,9 +14,9 @@ struct CombatStatus { char pad0[0x14]; unsigned int flags; };
 ListNode02160094* GetNodeAtIndex02160094(List02160094*, int);
 ListNode021600f8* GetNodeAtIndex021600f8(List021600f8*, int);
 void ResetStruct_021e3158(Reset021e3158*);
-void ClearSubstructFlag0x4(unsigned char*);
-int CheckSubstructFlag0x200(unsigned char*);
-int CheckFlag0x14Bit0x10Set(unsigned char*);
+void ClearSubstructFlag0x4_02049ae4(unsigned char*);
+int CheckSubstructFlag0x200_02048c10(unsigned char*);
+int CheckFlag0x14Bit0x10Set_020882f8(unsigned char*);
 extern "C" void func_02033920(GameObject*, int, int);
 int SetByte0xbeShiftPrev(Bytes02033b88*, int);
 void ResetInnerState02048c90(Obj02048c90*);
@@ -34,9 +34,9 @@ extern "C" ARM int func_ov025_021e6a08(ApproachCommand* command, List02160094* l
     if (!actor || !target) { ResetStruct_021e3158(&data_ov025_021ef9a8); return 1; }
     int started = 0;
     if (data_ov025_021ef988.state == 0) {
-        ClearSubstructFlag0x4((unsigned char*)actor);
+        ClearSubstructFlag0x4_02049ae4((unsigned char*)actor);
         started = 1;
-        if (!CheckSubstructFlag0x200((unsigned char*)target) && !(((CombatStatus*)target->currentStats_)->flags & 8) && !CheckFlag0x14Bit0x10Set((unsigned char*)target->currentStats_)) {
+        if (!CheckSubstructFlag0x200_02048c10((unsigned char*)target) && !(((CombatStatus*)target->currentStats_)->flags & 8) && !CheckFlag0x14Bit0x10Set_020882f8((unsigned char*)target->currentStats_)) {
             func_02033920(target, actorNode->id, started);
         }
         data_ov025_021ef988.state = 1;

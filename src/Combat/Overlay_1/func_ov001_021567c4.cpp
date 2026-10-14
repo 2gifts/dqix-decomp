@@ -3,9 +3,9 @@
 #include "Resource/GameResources.h"
 #include "Resource/Brightness.h"
 
-char* GetFieldIfFlag4(char* gameState);
-void SetField0x238True(void* obj);
-void ApplyVecFromField0x246(char* actor);
+char* GetFieldIfFlag4_020100f8(char* gameState);
+void SetField0x238True_020a2794(void* obj);
+void ApplyVecFromField0x246_020a2718(char* actor);
 extern "C" void func_0209c2e0(void* obj, int a, int b);
 extern "C" void func_ov001_02154da0(void);
 void ClearMultipleFieldBits_02156b20(void* obj);
@@ -33,12 +33,12 @@ extern "C" ARM unsigned short func_ov001_021567c4(State_021567c4* self) {
 	GameState* gameState = GameState::GetInstance();
 	GameResources* resources = func_ov017_0218b5b0();
 	gameState->GetUnknownGameObject();
-	char* camera = GetFieldIfFlag4((char*)gameState);
+	char* camera = GetFieldIfFlag4_020100f8((char*)gameState);
 	GetPtr3718(resources)[1] = 1;
 	func_ov001_02154da0();
 	SetBrightness(resources, 0, 0x1e);
-	SetField0x238True(camera);
-	ApplyVecFromField0x246(camera);
+	SetField0x238True_020a2794(camera);
+	ApplyVecFromField0x246_020a2718(camera);
 	func_0209c2e0(&data_02109bf4, self->field_0x94, 0);
 	ClearMultipleFieldBits_02156b20(self);
 	func_ov017_021bb27c(self);

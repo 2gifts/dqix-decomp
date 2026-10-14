@@ -2,9 +2,9 @@
 #include "GameState/GameState.h"
 
 extern "C" int func_ov000_0217538c(void* list);
-int TestBitInArray0x8ec(unsigned char* obj, int index);
+int TestBitInArray0x8ec_02083b00(unsigned char* obj, int index);
 int CountNodesFieldBitClear02175f80(void* obj);
-int CountNodesWithFlag0217f5dc(void* obj);
+int CountNodesWithFlag0217f5dc_ov000_0217608c(void* obj);
 
 struct Data02184288 {
     int field0;
@@ -68,17 +68,17 @@ extern "C" ARM int func_ov000_02171210(struct Action02171210* action, struct Tar
         target->field21 = 0;
         int kind = action->kind;
         if (kind == 6) {
-            GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), target->combatantId);
+            GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), target->combatantId);
             if (combatant != NULL) {
 #if defined(jpn)
-                if (TestBitInArray0x8ec(*(unsigned char**)((char*)combatant + 0x144), 0xe6)) {
+                if (TestBitInArray0x8ec_02083b00(*(unsigned char**)((char*)combatant + 0x144), 0xe6)) {
                     kind = 3;
                 } else {
                     kind = 2;
                 }
 #else
                 kind = 2;
-                if (TestBitInArray0x8ec(*(unsigned char**)((char*)combatant + 0x150), 0xe6)) {
+                if (TestBitInArray0x8ec_02083b00(*(unsigned char**)((char*)combatant + 0x150), 0xe6)) {
                     kind = 3;
                 }
 #endif
@@ -88,7 +88,7 @@ extern "C" ARM int func_ov000_02171210(struct Action02171210* action, struct Tar
         int countB = 1;
         if (data_ov000_02184288.list != NULL) {
             countA = CountNodesFieldBitClear02175f80(data_ov000_02184288.list);
-            countB = CountNodesWithFlag0217f5dc(data_ov000_02184288.list);
+            countB = CountNodesWithFlag0217f5dc_ov000_0217608c(data_ov000_02184288.list);
         }
         switch (kind) {
         case 3:

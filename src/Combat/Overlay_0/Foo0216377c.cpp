@@ -8,10 +8,9 @@
 #define REGION_OFFSET_1 0x55f4
 #endif
 
-
 struct Combatant020A36A8;
 int MatchesActiveIndex020a36a8(struct Combatant020A36A8*);
-int PeekInputLogB(void);
+int PeekInputLogB_020a1fa8(void);
 extern "C" void func_ov026_021dbf04(void*);
 
 struct Struct0216377c { char pad[REGION_OFFSET_0]; unsigned char* ptr2a0; };
@@ -24,7 +23,7 @@ ARM void Foo0216377c(struct Struct0216377c* obj, unsigned char val) {
     if (MatchesActiveIndex020a36a8((struct Combatant020A36A8*)obj->ptr2a0)) {
         *(int*)((char*)obj + REGION_OFFSET_1) |= 0x40000000;
     }
-    if (PeekInputLogB() == 3) {
+    if (PeekInputLogB_020a1fa8() == 3) {
         func_ov026_021dbf04(obj);
     }
 }

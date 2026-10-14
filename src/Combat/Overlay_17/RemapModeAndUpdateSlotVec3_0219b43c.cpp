@@ -21,7 +21,7 @@ struct Slot0219b43c { unsigned char pad[0x88]; };
 
 // USA: func_ov017_0219b43c  (semantic: RemapModeAndUpdateSlotVec3_0219b43c)
 extern "C" ARM void func_ov017_0219b43c(char* obj, int mode, struct Vec3copy0202ec84* vec3, int extra, int arg5) {
-    void* fieldVal = GetField0x3b0Value(GameState::GetInstance());
+    void* fieldVal = GetField0x3b0Value_020100bc(GameState::GetInstance());
     switch (mode) {
     case 2:
         mode = 2;

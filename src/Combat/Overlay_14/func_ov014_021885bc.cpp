@@ -10,8 +10,8 @@
 #define LOW_REGION(j, u) (u)
 #endif
 
-void ClearSublistEntriesFlag1(void* obj, int id);
-void ClearSublistEntriesFlag2(void* obj, int id);
+void ClearSublistEntriesFlag1_02080bac(void* obj, int id);
+void ClearSublistEntriesFlag2_0208065c(void* obj, int id);
 struct Container02080f8c;
 void SetEntryFirstField02080f8c(struct Container02080f8c* obj, int id, int value);
 struct Container02080fa8;
@@ -41,8 +41,8 @@ extern "C" ARM void func_ov014_021885bc(void* self) {
     void* list = *(void**)((char*)self + 0xc0);
     short val = *(short*)((char*)self + 0x176);
     *(short*)((char*)list + LOW_REGION(0x2a, 0x36)) = val;
-    ClearSublistEntriesFlag1(list, 5);
-    ClearSublistEntriesFlag2(list, 5);
+    ClearSublistEntriesFlag1_02080bac(list, 5);
+    ClearSublistEntriesFlag2_0208065c(list, 5);
 
     struct SubEntry021885bc* node = *(struct SubEntry021885bc**)((char*)self + 0xbc);
     short id = 0x1b;

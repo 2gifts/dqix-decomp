@@ -48,10 +48,10 @@ extern int data_02109bf4;
 extern int data_02108760;
 
 extern "C" int *func_0202ae18();
-void * GetWord0x0(int*);
+void * GetWord0x0_0200fb8c(int*);
 Ctl *GetGlobalField0x1c020421a0();
-void *GetGlobalPtr021075f4();
-unsigned char *GetData02153637();
+void *GetGlobalPtr021075f4_0203cf4c();
+unsigned char *GetData02153637_020e2ff8();
 extern "C" int func_0202c508(int *);
 void ReinitController02043204(char*);
 struct Container020e0310;
@@ -69,10 +69,10 @@ int IsBrightnessTransitionActive(GameResources*);
 struct Actor0209c20c;
 void InitActorContext0209c20c(Actor0209c20c*);
 void ResetAndDispatchActorContext0209c6d8(void *, short);
-void StoreInFirstEmptySlot(unsigned char *, unsigned char);
+void StoreInFirstEmptySlot_020e3368(unsigned char *, unsigned char);
 struct Container020e34bc;
 int GetEntryStatusForKey020e34bc(Container020e34bc*, int);
-char *GetCombatantChecked(GameState *, int);
+char *GetCombatantChecked_0200ff94(GameState *, int);
 extern "C" void func_ov017_021c9e00(int, int, int, int);
 void Dispatch020e3428(void *, int);
 struct Entry020e3054;
@@ -91,12 +91,12 @@ void SetIndexedName02046574(Obj02046574*, int, char*);
 // USA: func_ov003_0215d4fc
 extern "C" ARM void func_ov003_0215d4fc(Scene *self) {
     GameState *gs    = GameState::GetInstance();
-    void *res        = GetWord0x0((int*)gs);
+    void *res        = GetWord0x0_0200fb8c((int*)gs);
     Ctl *ctl         = GetGlobalField0x1c020421a0();
     int *a           = func_0202ae18();
-    void *b          = GetGlobalPtr021075f4();
+    void *b          = GetGlobalPtr021075f4_0203cf4c();
     GameObject *c    = gs->GetUnknownGameObject();
-    unsigned char *d = GetData02153637();
+    unsigned char *d = GetData02153637_020e2ff8();
     unsigned char state;
     int i;
     int sb;
@@ -115,7 +115,7 @@ extern "C" ARM void func_ov003_0215d4fc(Scene *self) {
             return;
         }
         int key = 0x3f2;
-        if (self->w3cc > *(unsigned int *) ((unsigned char *)GetPtrField0x2a04(gs) + 0xf6c)) {
+        if (self->w3cc > *(unsigned int *) ((unsigned char *)GetPtrField0x2a04_02010828(gs) + 0xf6c)) {
             key = 0x3fc;
             if (self->b3f0 != 0) {
                 if (sb != 0) {
@@ -136,7 +136,7 @@ extern "C" ARM void func_ov003_0215d4fc(Scene *self) {
         self->b3bb = 2;
         void *e = FindEntryPointerByKey0203df78(b, (*(Ent **) ((char *) func_ov017_0218b5b0() + 0x3000 + 0x710))->key);
         if (e != 0) {
-            self->w3f8 = GetOffset0x54FromFallbackChain((Entry_203dce4*)e);
+            self->w3f8 = GetOffset0x54FromFallbackChain_02040a20((Entry_203dce4*)e);
         }
         self->state = self->state + 1;
     }
@@ -161,17 +161,17 @@ extern "C" ARM void func_ov003_0215d4fc(Scene *self) {
         self->state = self->state + 1;
     }
     if (state == 3) {
-        StoreInFirstEmptySlot(d, 1);
+        StoreInFirstEmptySlot_020e3368(d, 1);
         self->state = self->state + 1;
     }
     if (state == 4) {
         int status = GetEntryStatusForKey020e34bc((Container020e34bc*)d, 1);
         if (status == 1 || self->b3f4 != 0) {
-            unsigned char *p              = (unsigned char *)GetPtrField0x2a04(gs);
+            unsigned char *p              = (unsigned char *)GetPtrField0x2a04_02010828(gs);
             *(unsigned int *) (p + 0xf6c) = *(unsigned int *) (p + 0xf6c) - self->w3cc;
             for (i = 0; i < 4; i++) {
                 if (self->ids[i] != 0xff) {
-                    char *m                                          = GetCombatantChecked(gs, self->ids[i]);
+                    char *m                                          = GetCombatantChecked_0200ff94(gs, self->ids[i]);
                     *(unsigned short *) (*(char **) (m + 0x130) + 4) = *(unsigned short *) (*(char **) (m + 0x134) + 0x30);
                     *(unsigned short *) (*(char **) (m + 0x130) + 6) = *(unsigned short *) (*(char **) (m + 0x134) + 0x32);
                     func_ov017_021c9e00(self->ids[i], 0, 0, 1);

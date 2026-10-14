@@ -15,7 +15,7 @@ struct FieldFlagBlock {
 };
 
 // USA: func_02011b24
-ARM void ResetAndEnableFieldFlag(struct FieldFlagBlock* block) {
+ARM void ResetAndEnableFieldFlag_02011b24(struct FieldFlagBlock* block) {
     block->flags.raw = 0;
     block->flags.bits.active = 1;
 }

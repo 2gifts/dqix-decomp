@@ -7,7 +7,7 @@ extern "C" Vector3fix func_02034104(void* combatant);
 
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c508(void* obj);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 
 struct Obj02033834;
 void SetVecYByMode02033834(struct Obj02033834* obj, int arg);
@@ -52,7 +52,7 @@ extern "C" ARM int func_02077a34(FieldMonsterState* self) {
     }
     self->rising = 0;
 
-    if (CheckField0NonZero((int*)g)) {
+    if (CheckField0NonZero_0202b7d8((int*)g)) {
         if (func_0202c508(g)) {
             int c1 = self->actor.base.object.GetField06();
             int f2val = self->actor.base.object.unknown_2_;

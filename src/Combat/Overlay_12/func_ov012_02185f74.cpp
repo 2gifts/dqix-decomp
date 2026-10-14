@@ -100,7 +100,7 @@ struct Obj0204c7a8;
 struct Struct_0205cf78;
 struct Elem_0205cf78;
 
-void SetWord0x18ClearByte0x1f(unsigned char* background, int a);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char* background, int a);
 extern "C" void func_0204b5b4(Background02185f74* background, int a);
 void AllocateAndClearBuffer0204b12c(AllocTarget0204b12c* background, SafeAllocator* allocator);
 void DispatchViaTable0204b5e8(Obj0204b5e8* background, int a, int b);
@@ -131,7 +131,7 @@ extern "C" ARM void func_ov012_02185f74(ProfileEditor02185f74* self)
     for (int i = 0; i < 3; i++)
     {
         background = &self->backgrounds[i];
-        SetWord0x18ClearByte0x1f((unsigned char*)background, 0);
+        SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)background, 0);
         background->unk_1c_0_ = 0;
         background->unk_1c_4_ = data_ov012_0218af75[i];
         func_0204b5b4(background, data_ov012_0218af78[i]);

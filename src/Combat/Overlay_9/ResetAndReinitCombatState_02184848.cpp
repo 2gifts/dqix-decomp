@@ -16,7 +16,7 @@ void InitCombatSlots02045cac(struct CombatSlots02045cac* obj);
 void ReinitController02043204(char* obj);
 extern "C" void func_02043124(char* obj);
 void EmptyDestructor0205a494(void* obj);
-void* GetGlobalPtr02105244();
+void* GetGlobalPtr02105244_0203bd14();
 void ResetBattleObject0203c4c4(char* obj);
 struct Obj0204b010;
 void ClearBuffer0204b010(Obj0204b010* obj, void* p);
@@ -48,7 +48,7 @@ extern "C" ARM void func_ov009_02184848(char* obj) {
     if (*(void**)(obj + R(0x7a8,0x7e4)) != 0) {
         EmptyDestructor0205a494(*(void**)(obj + R(0x7a8,0x7e4)));
     }
-    ResetBattleObject0203c4c4((char*)GetGlobalPtr02105244());
+    ResetBattleObject0203c4c4((char*)GetGlobalPtr02105244_0203bd14());
 
     {
         void* arr[6];

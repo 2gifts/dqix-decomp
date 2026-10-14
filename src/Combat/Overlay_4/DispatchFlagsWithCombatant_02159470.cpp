@@ -32,7 +32,7 @@ public:
 // USA: func_ov004_02159470  (semantic: DispatchFlagsWithCombatant_02159470)
 extern "C" ARM int func_ov004_02159470(void* self) {
     GameState* battle = GameState::GetInstance();
-    GetPtrField0x2a04(battle);
+    GetPtrField0x2a04_02010828(battle);
     char* ptr = data_ov004_021707d8.ptr;
     unsigned char count = (unsigned char)(*(short*)(ptr + 0x3a));
     int key = 0x322;

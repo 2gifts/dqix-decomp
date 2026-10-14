@@ -7,8 +7,8 @@ extern "C" void func_020474a8(void*, int, int, char*);
 void* GetGlobalField0x1c020421a0();
 extern "C" void func_02046380(void* global);
 struct StoreStruct;
-void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
-void SetByteInRange(unsigned char* base, int index, unsigned char value);
+void StoreInArray0x8b0_020465c0(struct StoreStruct* base, int index, int value);
+void SetByteInRange_020465f0(unsigned char* base, int index, unsigned char value);
 struct Obj02046574;
 void SetIndexedName02046574(struct Obj02046574* obj, int index, char* name);
 struct Container020e0310;
@@ -44,12 +44,12 @@ extern "C" ARM void func_ov003_0216abd8(struct Obj0216abd8* self, char* out) {
     }
     GameState* gameState = GameState::GetInstance();
     void* global = GetGlobalField0x1c020421a0();
-    struct PartyData0216abd8* party = (struct PartyData0216abd8*)GetPtrField0x2a04(gameState);
+    struct PartyData0216abd8* party = (struct PartyData0216abd8*)GetPtrField0x2a04_02010828(gameState);
     struct TextBuf0216abd8* buf = self_v->buf;
     func_02046380(global);
     if (party->amount != 0) {
-        StoreInArray0x8b0((struct StoreStruct*)global, 0, party->amount);
-        SetByteInRange((unsigned char*)global, 0, 0);
+        StoreInArray0x8b0_020465c0((struct StoreStruct*)global, 0, party->amount);
+        SetByteInRange_020465f0((unsigned char*)global, 0, 0);
         int fmt = GetFieldByKey020e0434((struct Container020e0310*)self_v->messages, 0x443);
 #if defined(jpn)
         func_020474a8(global, 0xc, fmt, buf->text);

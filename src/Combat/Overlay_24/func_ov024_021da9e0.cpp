@@ -70,7 +70,7 @@ struct Act_021da9e0 {
 };
 
 extern "C" float func_ov024_021db358(GameObject* c);
-int ClassifyField0x81fe(char*);
+int ClassifyField0x81fe_ov000_0215fc60(char*);
 extern "C" int func_ov000_0215ffa0(void* node);
 void* FindNodeAtDepth0215fff4(void* node, int index, int slot);
 extern "C" struct Entry_021da9e0* func_ov000_0215e958(void* world);
@@ -109,15 +109,15 @@ extern "C" ARM struct Entry_021da9e0* func_ov024_021da9e0(struct Act_021da9e0* o
     float ratio = func_ov024_021db358(c);
     unsigned short code = rec->f4.id;
     if (code == 0x150) dmg = 0;
-    if (ClassifyField0x81fe((char*)obj->world) != 0 && code == 1 && id == 0) {
-        GameObject* g = GetCombatantWithFlag0x100(GameState::GetInstance(), 0);
+    if (ClassifyField0x81fe_ov000_0215fc60((char*)obj->world) != 0 && code == 1 && id == 0) {
+        GameObject* g = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), 0);
         if (g) {
-            if (ClassifyField0x81fe((char*)obj->world) == 1) {
+            if (ClassifyField0x81fe_ov000_0215fc60((char*)obj->world) == 1) {
                 unsigned short hp = c->currentStats_->primaryStats.currHP;
                 dmg = (int)(0.9f * (float)hp);
                 if (hp <= dmg) dmg = hp - 1;
                 if (dmg <= 0) dmg = 1;
-            } else if (ClassifyField0x81fe((char*)obj->world) == 2) {
+            } else if (ClassifyField0x81fe_ov000_0215fc60((char*)obj->world) == 2) {
                 dmg = g->currentStats_->primaryStats.currHP;
             }
         }
@@ -189,7 +189,7 @@ extern "C" ARM struct Entry_021da9e0* func_ov024_021da9e0(struct Act_021da9e0* o
                 if (first->f20 != a) r = 0;
                 unsigned int k = rec->f4.id;
                 if (k == 1 || k == 2 || k == 0xdb || k == 0xdf || k == 0xe0 || obj->fc->f1d.b0)
-                    r = SearchBothTables02079e2c((char*)GetData02108e10(), 1);
+                    r = SearchBothTables02079e2c((char*)GetData02108e10_020797dc(), 1);
             }
         }
         hp = func_ov000_0215a004(obj->world, a, id, dmg, &effects, r, obj->fc->f1c.b7 != 0, 0);

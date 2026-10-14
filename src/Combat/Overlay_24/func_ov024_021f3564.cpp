@@ -1,11 +1,11 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-GameObject* GetCombatantWithFlag0x400ByID(int unused, int id);
+GameObject* GetCombatantWithFlag0x400ByID_ov000_021536f8(int unused, int id);
 struct Combatant_20885b4;
-int CheckFlag0x2AndKind1(struct Combatant_20885b4* obj);
+int CheckFlag0x2AndKind1_020885b4(struct Combatant_20885b4* obj);
 struct S88514;
-int CheckFlag0x2AndState2(struct S88514* obj);
+int CheckFlag0x2AndState2_02088514(struct S88514* obj);
 struct FlagObj_021df6ec;
 int IsFlagBit6Set_021df6ec(struct FlagObj_021df6ec* obj);
 struct FlagObj_021dd010;
@@ -28,11 +28,11 @@ struct Wrapper_021f3564 { int field0; };
 
 // USA: func_ov024_021f3564
 extern "C" ARM int func_ov024_021f3564(struct Wrapper_021f3564* a, int id, int unused2, int* outFlag, short* outId) {
-	GameObject* c = GetCombatantWithFlag0x400ByID(a->field0, id);
+	GameObject* c = GetCombatantWithFlag0x400ByID_ov000_021536f8(a->field0, id);
 	if (!c) return 0;
 	int n = 0;
-	if (CheckFlag0x2AndKind1((struct Combatant_20885b4*)c->currentStats_)) n++;
-	if (CheckFlag0x2AndState2((struct S88514*)c->currentStats_)) n++;
+	if (CheckFlag0x2AndKind1_020885b4((struct Combatant_20885b4*)c->currentStats_)) n++;
+	if (CheckFlag0x2AndState2_02088514((struct S88514*)c->currentStats_)) n++;
 	if (IsFlagBit6Set_021df6ec((struct FlagObj_021df6ec*)c)) n++;
 	if (IsFlagBit8Set_021dd010((struct FlagObj_021dd010*)c)) n++;
 	struct BuffWord_021f3564* bw = (struct BuffWord_021f3564*)((char*)c->currentStats_ + 0x58);

@@ -3,7 +3,7 @@
 
 int LoadBattleBlock020ac4c0(void* dst);
 
-int GetFieldPercentOver448(BattleRecordSnapshot* p);
+int GetFieldPercentOver448_020a090c(BattleRecordSnapshot* p);
 
 extern "C" void func_ov017_021d6134(void*, unsigned int);
 
@@ -11,7 +11,7 @@ extern "C" void func_ov017_021d6134(void*, unsigned int);
 ARM int SetFieldFromPercentOver448_021e99dc(void* obj) {
 	BattleRecordSnapshot record;
 	LoadBattleBlock020ac4c0(&record);
-	int pct = GetFieldPercentOver448(&record);
+	int pct = GetFieldPercentOver448_020a090c(&record);
 	func_ov017_021d6134(obj, pct);
 	return 1;
 }

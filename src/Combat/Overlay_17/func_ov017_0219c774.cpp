@@ -8,12 +8,12 @@ struct TimeEntry0219c774 {
     unsigned char kind : 4;
     unsigned char flags : 4;
 };
-float GetActiveBitIndex(GameState*);
+float GetActiveBitIndex_020103e8(GameState*);
 extern "C" void func_020103c8(GameState*, float);
 // USA: func_ov017_0219c774
 extern "C" ARM int func_ov017_0219c774(TimeEntry0219c774* entry, int apply) {
     GameState* game = GameState::GetInstance();
-    float time = GetActiveBitIndex(game);
+    float time = GetActiveBitIndex_020103e8(game);
     float reference = time;
     if (apply && entry != 0 && entry->kind == 0) {
         game->SetDayTimer(time);

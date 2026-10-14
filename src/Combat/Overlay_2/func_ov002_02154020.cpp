@@ -3,13 +3,13 @@
 
 struct ArrayContainsByteStruct;
 
-void *GetPtrField0x2a04(GameState *gameState);
+void *GetPtrField0x2a04_02010828(GameState *gameState);
 extern "C" int *func_0202ae18();
-int ArrayContainsByte(ArrayContainsByteStruct *arr, int value);
+int ArrayContainsByte_02086ef0(ArrayContainsByteStruct *arr, int value);
 int HasPositiveField256Short178_02154b94(void *self, int id);
 int HasPositiveField304Short4_02154a34(void *self, int id);
 void *LookupElementByKey02079ee0(void *table, int key);
-int CheckField0NonZero(int *p);
+int CheckField0NonZero_0202b7d8(int *p);
 extern "C" void func_ov002_02153e90(char *entry);
 extern "C" int func_ov002_02154a6c(char *self, int id, int arg);
 extern "C" int func_ov002_021538e4(char *self, char *q, void *elem, int arg);
@@ -21,7 +21,7 @@ extern "C" void func_ov017_021c9e00(int id, int a, int b, int c);
 extern "C" ARM int func_ov002_02154020(char *self, char *p, char *q) {
     if (p == 0) return 0;
     if (q == 0) return 0;
-    ArrayContainsByteStruct *arr = (ArrayContainsByteStruct *) GetPtrField0x2a04(GameState::GetInstance());
+    ArrayContainsByteStruct *arr = (ArrayContainsByteStruct *) GetPtrField0x2a04_02010828(GameState::GetInstance());
     int *x                       = func_0202ae18();
     int result                   = 0;
     char *first                  = p + 8;
@@ -34,7 +34,7 @@ extern "C" ARM int func_ov002_02154020(char *self, char *p, char *q) {
         unsigned char *e = (unsigned char *) (first + j * 6);
         unsigned char *f = (unsigned char *) (second + j * 6);
         int id           = *(signed char *) (p + 4 + j);
-        if (!ArrayContainsByte(arr, id)) {
+        if (!ArrayContainsByte_02086ef0(arr, id)) {
             e[4] = 1;
             f[4] = 1;
         }
@@ -63,7 +63,7 @@ extern "C" ARM int func_ov002_02154020(char *self, char *p, char *q) {
             *(short *) (f + 2) = func_ov002_021549c8(self, id, 2, f);
         }
         if (e[0] == 0 && f[0] == 0) continue;
-        if (CheckField0NonZero(x) && ArrayContainsByte(arr, id)) {
+        if (CheckField0NonZero_0202b7d8(x) && ArrayContainsByte_02086ef0(arr, id)) {
             func_ov017_021c9e00(id, 0, 0, 1);
         }
         result = 1;

@@ -21,17 +21,17 @@ struct ProfileWindowNavigation {
 };
 
 void AppendFrameTag02041c08(char*, int, int, int, int, int);
-int AppendCursorTag(char*, int);
+int AppendCursorTag_02041ea4(char*, int);
 void* GetGlobalField0x1c020421a0();
 void ComputeProductSums0205c508(UnkStruct0205c508*, int*, int*);
 int AppendString02042058(char*, const char*);
-const char* FindEntryByKey(TableA68*, int);
-int AppendNameTag(char*, int, const char*);
-int AppendXTag(char*, int);
+const char* FindEntryByKey_02072a68(TableA68*, int);
+int AppendNameTag_02041b70(char*, int, const char*);
+int AppendXTag_02041a28(char*, int);
 extern "C" void func_02046380(void*);
-void StoreInArray0x8b0(StoreStruct*, int, int);
-void SetByteInRange(unsigned char*, int, unsigned char);
-void SetByteAtIndex(unsigned char*, int, unsigned char);
+void StoreInArray0x8b0_020465c0(StoreStruct*, int, int);
+void SetByteInRange_020465f0(unsigned char*, int, unsigned char);
+void SetByteAtIndex_020465d8(unsigned char*, int, unsigned char);
 extern "C" void func_02042428(char*, int);
 extern "C" void func_0202ae18();
 
@@ -40,7 +40,7 @@ extern "C" ARM void func_ov012_0218a5f0(char* editor, char* text, int hidden) {
     int selection = *(int*)(editor + 0x1444) % 10;
     if (hidden)
         AppendFrameTag02041c08(text, selection, 8, 5, 5, 5);
-    AppendCursorTag(text, selection);
+    AppendCursorTag_02041ea4(text, selection);
     void* messages = GetGlobalField0x1c020421a0();
     int i;
     ProfileNavigation* navigation = ((ProfileWindowNavigation*)(editor + 0x90))->GetNavigation();
@@ -54,22 +54,22 @@ extern "C" ARM void func_ov012_0218a5f0(char* editor, char* text, int hidden) {
         if (i != first)
             AppendString02042058(text, *(const char**)(editor + 0x1348));
         if (i == 0) {
-            const char* name = FindEntryByKey((TableA68*)(editor + 0x1314), 0x50dc);
-            AppendNameTag(text, i % 10, name);
+            const char* name = FindEntryByKey_02072a68((TableA68*)(editor + 0x1314), 0x50dc);
+            AppendNameTag_02041b70(text, i % 10, name);
         } else {
-            const char* name = FindEntryByKey((TableA68*)(editor + 0x1314), (short)(0x5140 + i - 1));
-            AppendNameTag(text, i % 10, name);
+            const char* name = FindEntryByKey_02072a68((TableA68*)(editor + 0x1314), (short)(0x5140 + i - 1));
+            AppendNameTag_02041b70(text, i % 10, name);
         }
     }
     func_02046380(messages);
-    StoreInArray0x8b0((StoreStruct*)messages, 0, page + 1);
-    StoreInArray0x8b0((StoreStruct*)messages, 1, pages);
-    SetByteInRange((unsigned char*)messages, 0, 2);
-    SetByteInRange((unsigned char*)messages, 1, 2);
-    SetByteAtIndex((unsigned char*)messages, 0, 1);
-    SetByteAtIndex((unsigned char*)messages, 1, 0);
+    StoreInArray0x8b0_020465c0((StoreStruct*)messages, 0, page + 1);
+    StoreInArray0x8b0_020465c0((StoreStruct*)messages, 1, pages);
+    SetByteInRange_020465f0((unsigned char*)messages, 0, 2);
+    SetByteInRange_020465f0((unsigned char*)messages, 1, 2);
+    SetByteAtIndex_020465d8((unsigned char*)messages, 0, 1);
+    SetByteAtIndex_020465d8((unsigned char*)messages, 1, 0);
     func_02042428(text, 8);
-    AppendString02042058(text, FindEntryByKey((TableA68*)(editor + 0x1314), 0x6b));
+    AppendString02042058(text, FindEntryByKey_02072a68((TableA68*)(editor + 0x1314), 0x6b));
 }
 
 #else
@@ -120,13 +120,13 @@ struct ProfileEditor0218a5f0
 };
 
 void AppendFrameTag02041c08(char* text, int a, int b, int c, int d, int e);
-void AppendCursorTag(char* text, int a);
+void AppendCursorTag_02041ea4(char* text, int a);
 void* GetGlobalField0x1c020421a0();
 void ComputeProductSums0205c508(UnkStruct0205c508* cursor, int* first, int* last);
 extern "C" void func_0202ae18();
 void AppendString02042058(char* text, const char* append);
-const char* FindEntryByKey(TableA68* texts, int id);
-void AppendNameTag(char* text, int item, const char* itemText);
+const char* FindEntryByKey_02072a68(TableA68* texts, int id);
+void AppendNameTag_02041b70(char* text, int item, const char* itemText);
 extern "C" void __clear(void* buffer, unsigned long size);
 void CopyTextAndUppercaseIfFlagged0206819c(const char* text, char* output, int a);
 extern "C" void func_ov012_021842a0(ProfileEditor0218a5f0* self, int canvas, int color, int shadow);
@@ -140,7 +140,7 @@ extern "C" ARM void func_ov012_0218a5f0(ProfileEditor0218a5f0* self, char* text,
     int selection = self->selections_[5] % 10;
     if (hidden)
         AppendFrameTag02041c08(text, selection, 8, 5, 5, 5);
-    AppendCursorTag(text, selection);
+    AppendCursorTag_02041ea4(text, selection);
     GetGlobalField0x1c020421a0();
     Protagonist0218a5f0* protagonist;
     int i;
@@ -162,19 +162,19 @@ extern "C" ARM void func_ov012_0218a5f0(ProfileEditor0218a5f0* self, char* text,
             int id = base;
             if (protagonist->partyData_->female_ == 1)
                 id = 0x510e;
-            const char* name = FindEntryByKey((TableA68*)self->strings_, (short)id);
-            AppendNameTag(text, i % 10, name);
+            const char* name = FindEntryByKey_02072a68((TableA68*)self->strings_, (short)id);
+            AppendNameTag_02041b70(text, i % 10, name);
         }
         else
         {
             int id = 0x5140;
             if (protagonist->partyData_->female_ == 1)
                 id = 0x51a4;
-            const char* name = FindEntryByKey((TableA68*)self->strings_, (short)(id + i - 1));
+            const char* name = FindEntryByKey_02072a68((TableA68*)self->strings_, (short)(id + i - 1));
             char converted[0x80];
             __clear(converted, sizeof(converted));
             CopyTextAndUppercaseIfFlagged0206819c(name, converted, 0);
-            AppendNameTag(text, i % 10, converted);
+            AppendNameTag_02041b70(text, i % 10, converted);
         }
     }
     func_ov012_021842a0(self, 11, shadow, color);

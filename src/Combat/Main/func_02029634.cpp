@@ -12,8 +12,8 @@ struct Callback_0202a91c {
 struct IndexList_0202a9ac;
 struct IndexNode_0202a9ac { int kind; char padding4[0x34]; int busy; };
 extern unsigned short data_02114e30;
-int TestFlagInSecondWord(unsigned short*, unsigned int);
-int TestFlag0SetAndFlag1Clear(unsigned short*, int);
+int TestFlagInSecondWord_02012468(unsigned short*, unsigned int);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short*, int);
 extern "C" int func_0202a9f4(Callback_0202a91c*);
 extern "C" int func_0202aa94(Callback_0202a91c*);
 extern "C" int func_0201248c(unsigned short*, unsigned int);
@@ -25,12 +25,12 @@ void Deactivate0202a8cc(char*, int);
 extern "C" ARM void func_02029634(Callback_0202a91c* menu, int ticks) {
     if (menu->state != 0) return;
     if (!(menu->flags & 1) && menu->minimum >= 0 && menu->minimum <= menu->maximum) {
-        if (TestFlagInSecondWord(&data_02114e30, 0x40)) {
+        if (TestFlagInSecondWord_02012468(&data_02114e30, 0x40)) {
             menu->repeating = 0;
             menu->repeatDelay = 0;
             menu->repeatTicks = 0;
         }
-        if (TestFlagInSecondWord(&data_02114e30, 0x80)) {
+        if (TestFlagInSecondWord_02012468(&data_02114e30, 0x80)) {
             menu->repeating = 0;
             menu->repeatDelay = 0;
             menu->repeatTicks = 0;
@@ -79,7 +79,7 @@ extern "C" ARM void func_02029634(Callback_0202a91c* menu, int ticks) {
     }
     IndexNode_0202a9ac* node = GetNodeAtIndex(reinterpret_cast<IndexList_0202a9ac*>(menu), menu->selected);
     if (menu->flags & 1) return;
-    if (TestFlag0SetAndFlag1Clear(&data_02114e30, 1)) {
+    if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 1)) {
         int disabled = menu->flags & 2;
         if (!disabled && !node) {
             SetState0x6cAndInvoke(menu);
@@ -98,12 +98,12 @@ extern "C" ARM void func_02029634(Callback_0202a91c* menu, int ticks) {
         menu->state = 4;
         return;
     }
-    if (!(menu->flags & 4) && TestFlag0SetAndFlag1Clear(&data_02114e30, 2)) {
+    if (!(menu->flags & 4) && TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 2)) {
         menu->activated = 0;
         SetState0x6cAndInvoke(menu);
         return;
     }
-    if (TestFlag0SetAndFlag1Clear(&data_02114e30, 4)) {
+    if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 4)) {
         menu->activated = 0;
         SetState0x6cAndInvoke(menu);
     }

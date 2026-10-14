@@ -4,7 +4,7 @@
 
 extern "C" int func_ov000_02155f9c(struct Random* rand, int combatantId, int zero);
 extern "C" float func_ov000_02156270(struct Random* rand, int combatantId);
-int IsFlag0x18Bit0x400Set(GameObject* combatant);
+int IsFlag0x18Bit0x400Set_ov000_02156404(GameObject* combatant);
 
 struct FlagsObj02156f98 {
     char pad[0x10];
@@ -25,7 +25,7 @@ extern "C" ARM int func_ov000_02156f98(struct Random* rand, int combatantId, str
     if (combatant == 0) {
         return 0;
     }
-    if (IsFlag0x18Bit0x400Set(combatant)) {
+    if (IsFlag0x18Bit0x400Set_ov000_02156404(combatant)) {
         short val = *(short*)((char*)rand + 0x8e00 + 0x6e);
         return val < 0x32;
     }

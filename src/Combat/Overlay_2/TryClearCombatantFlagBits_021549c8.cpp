@@ -3,7 +3,7 @@
 
 // USA: func_ov002_021549c8  (semantic: TryClearCombatantFlagBits_021549c8)
 extern "C" ARM int func_ov002_021549c8(void* unused, int combatantId, int flagMask, unsigned char* outByte) {
-    GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), combatantId);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), combatantId);
     if (!combatant) {
         return 0;
     }

@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_020d3044
-ARM int CompareBytes(const unsigned char* a, const unsigned char* b, int n) {
+ARM int CompareBytes_020d3044(const unsigned char* a, const unsigned char* b, int n) {
     int i;
     if (n != 0) {
         i = 0;

@@ -2,8 +2,8 @@
 #include "Memory/SafeAllocator.h"
 #include "Memory/AllocatorUnion.h"
 
-void PopStack0AndTrigger(int flag);
-void PopStack1AndTrigger(int flag);
+void PopStack0AndTrigger_020a1e54(int flag);
+void PopStack1AndTrigger_020a1f4c(int flag);
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
 
 extern int data_02114e20;
@@ -23,10 +23,10 @@ extern "C" ARM void func_ov017_021c1a24(struct Obj021c1a24* self) {
 		self->f20 = 0;
 		#if !defined(jpn)
 		if (self->b1d != 0) {
-			PopStack0AndTrigger(1);
+			PopStack0AndTrigger_020a1e54(1);
 		}
 		#endif
-		PopStack1AndTrigger(1);
+		PopStack1AndTrigger_020a1f4c(1);
 	}
 
 	void* p = self->allocator.GetSignedAllocator();

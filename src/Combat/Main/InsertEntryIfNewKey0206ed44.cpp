@@ -5,11 +5,11 @@
 struct Variant02030b0c;
 struct TaggedValue02030b44;
 
-void InsertShortIntoTable021098f4(unsigned short);
+void InsertShortIntoTable021098f4_0209953c(unsigned short);
 
 struct ListEeec;
 struct NodeEeec;
-void PushNodeToList(struct ListEeec* list, struct NodeEeec* node);
+void PushNodeToList_0206eeec(struct ListEeec* list, struct NodeEeec* node);
 
 struct CallbackCache02108d04 {
     short field0;
@@ -48,7 +48,7 @@ extern "C" ARM int func_0206ed44(void* param0) {
     }
     node = (struct Entry0206ed44*)((SafeAllocator*)data_02108d04.field4)->Allocate(0x14);
     if (node == 0) {
-        InsertShortIntoTable021098f4(2);
+        InsertShortIntoTable021098f4_0209953c(2);
         return 0;
     }
     node->key = (short)key;
@@ -61,6 +61,6 @@ extern "C" ARM int func_0206ed44(void* param0) {
     if (((unsigned int)node->f4 << 26 >> 29) == 0) {
         node->f4 &= ~7;
     }
-    PushNodeToList((struct ListEeec*)data_02108d04.fieldC, (struct NodeEeec*)node);
+    PushNodeToList_0206eeec((struct ListEeec*)data_02108d04.fieldC, (struct NodeEeec*)node);
     return 1;
 }

@@ -4,7 +4,7 @@
 #include "Resource/Script.h"
 
 struct Struct0x10;
-void ZeroStruct0x10(Struct0x10* obj);
+void ZeroStruct0x10_020a810c(Struct0x10* obj);
 void InitStruct020a8128(unsigned char* obj);
 
 struct Variant02030b0c { int tag; union { int i; float f; } u; };
@@ -13,7 +13,7 @@ struct Struct02030b7c { int field0; void* field4; };
 
 struct TaggedValue02030b44 { int type; union { int i; float f; } value; };
 
-int StringLength(const char* s);
+int StringLength_020d2ff0(const char* s);
 
 struct Block020a825c { unsigned int v[4]; };
 struct Elem020a825c {
@@ -31,9 +31,9 @@ extern BssHolder020a7f88 data_02109fe0;
 extern const char data_020f1b94;
 
 // USA: func_020a7f88
-ARM int PopulateElementFromVariantsAndAppend(unsigned char* src) {
+ARM int PopulateElementFromVariantsAndAppend_020a7f88(unsigned char* src) {
     Elem020a825c elem;
-    ZeroStruct0x10((Struct0x10*)&elem.block);
+    ZeroStruct0x10_020a810c((Struct0x10*)&elem.block);
     InitStruct020a8128((unsigned char*)&elem);
     InitStruct020a8128((unsigned char*)&elem);
 
@@ -55,7 +55,7 @@ ARM int PopulateElementFromVariantsAndAppend(unsigned char* src) {
     elem.w20 = (unsigned int)(int)(((Script::Parameter*)((TaggedValue02030b44*)(src + 0x58)))->ToFloat() * 4096.0f);
     elem.w24 = (unsigned int)(int)(((Script::Parameter*)((TaggedValue02030b44*)(src + 0x60)))->ToFloat() * 4096.0f);
 
-    int len = StringLength(name);
+    int len = StringLength_020d2ff0(name);
     elem.w4 = (unsigned int)data_02109fe0.allocator->Allocate(len + 1);
     sprintf((char*)elem.w4, &data_020f1b94, name);
     ((char*)elem.w4)[len] = 0;

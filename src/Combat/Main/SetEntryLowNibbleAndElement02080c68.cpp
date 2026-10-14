@@ -19,7 +19,7 @@ struct Elem02080c68 {
 };
 
 extern struct Entry02080c68* FindEntryByShortId0207f0ac(struct List0207f0ac* list, int id);
-extern struct Elem02080c68* FindElementByByte0xc4(struct Obj2081* obj, int key);
+extern struct Elem02080c68* FindElementByByte0xc4_02081da8(struct Obj2081* obj, int key);
 
 // USA: func_02080c68
 ARM void SetEntryLowNibbleAndElement02080c68(void* obj, int id, int value) {
@@ -29,7 +29,7 @@ ARM void SetEntryLowNibbleAndElement02080c68(void* obj, int id, int value) {
         return;
     }
     e->state.raw = (e->state.raw & ~0xf) | (value & 0xf);
-    elem = FindElementByByte0xc4((struct Obj2081*)obj, e->elemKey);
+    elem = FindElementByByte0xc4_02081da8((struct Obj2081*)obj, e->elemKey);
     if (elem != NULL) {
         elem->field0xc2 = e->state.nib.lo & 0xf;
     }

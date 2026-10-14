@@ -10,7 +10,7 @@ enum { kAllocatorOffset = 0x470 };
 #include "GameState/GameState.h"
 
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
-unsigned char GetByte0x4(char* obj);
+unsigned char GetByte0x4_0200fb9c(char* obj);
 
 struct Actor0209c678;
 void DispatchContextByState0209c678(struct Actor0209c678* actor, int arg);
@@ -36,7 +36,7 @@ ARM void ResetAllocatorAndDispatchState_0218d8d8(struct AllocGroup0218d8d8* obj)
     SignedAllocatorHeader* header = obj->allocator.GetSignedAllocator();
     obj->allocator.Destroy();
     TailForward02012da4(&data_02114e20, header);
-    if (GetByte0x4((char*)battleStruct) == 2) {
+    if (GetByte0x4_0200fb9c((char*)battleStruct) == 2) {
         return;
     }
     DispatchContextByState0209c678((struct Actor0209c678*)&data_02109bf4, 0);

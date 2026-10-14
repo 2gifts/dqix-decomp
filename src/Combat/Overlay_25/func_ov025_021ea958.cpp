@@ -30,7 +30,7 @@ struct ActionDisplay {
     char pad5d2[0x5e8-0x5d2];
     unsigned char command[1];
 };
-void* GetActiveCombatWork();
+void* GetActiveCombatWork_ov000_02160130();
 List021600f8* GetSlotPtr02160f20(void*);
 ListNode021600f8* GetNodeAtIndex021600f8(List021600f8*, int);
 extern "C" short func_ov000_0215ffa0(ListNode021600f8*);
@@ -44,7 +44,7 @@ inline int IsPartyActor(int id) { return id >= 0 && id <= 3; }
 extern "C" ARM void func_ov025_021ea958(ActionDisplay* display, int party, int update, int actorId) {
     if (party && (data_ov025_021ef9a4 & 0x800)) return;
     if (!party && (data_ov025_021ef9a4 & 0x4000)) return;
-    List021600f8* list = GetSlotPtr02160f20(GetActiveCombatWork());
+    List021600f8* list = GetSlotPtr02160f20(GetActiveCombatWork_ov000_02160130());
     if (display->blocked && !display->enabled) return;
     if (party && (list->flag0 || list->flag1)) actorId = -2;
     else if (!party && (list->flag3 || list->flag4)) actorId = -2;

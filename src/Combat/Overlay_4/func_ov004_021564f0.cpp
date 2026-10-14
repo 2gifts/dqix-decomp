@@ -16,9 +16,9 @@ struct Elem020a15bc* FindElementByField020a15bc(struct Array020a15bc* arr, int i
 
 struct EntryA68 { short key; void* value; };
 struct TableA68 { struct EntryA68* entries; short count; };
-void* FindEntryByKey(struct TableA68* table, int key);
+void* FindEntryByKey_02072a68(struct TableA68* table, int key);
 
-int AppendXYTag(char* dst, int x, int y);
+int AppendXYTag_02041a90(char* dst, int x, int y);
 int AppendString02042058(char* dst, const char* src);
 
 extern "C" int func_020420e8(void* entry, int flag);
@@ -75,13 +75,13 @@ extern "C" ARM int func_ov004_021564f0(void* obj) {
     *(void**)((char*)node3 + 0x20) = 0;
     if (key > 0) {
         memset(buf, 0, 0x960);
-        void* entry = FindEntryByKey(table, key);
+        void* entry = FindEntryByKey_02072a68(table, key);
         int diff = 0xa0 - func_020420e8(entry, 1);
         int half = diff / 2;
         if (half < 0) {
             half = 0;
         }
-        AppendXYTag(buf, half, 6);
+        AppendXYTag_02041a90(buf, half, 6);
         if (entry) {
             AppendString02042058(buf, (const char*)entry);
         }

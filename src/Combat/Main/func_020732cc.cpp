@@ -2,12 +2,12 @@
 
 #include "GameState/GameState.h"
 
-extern void* GetPtrField0x2a04(GameState* battleStruct);
-GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
+extern void* GetPtrField0x2a04_02010828(GameState* battleStruct);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* battleStruct, int combatantId);
 
 struct Field150Holder02052e2c;
 short* GetField150Ptr0x488_02052e2c(struct Field150Holder02052e2c* obj);
-void TryClearFlags0x130(unsigned char*, unsigned short);
+void TryClearFlags0x130_02048418(unsigned char*, unsigned short);
 
 struct KeyedList0207c378;
 extern "C" int func_0207c378(struct KeyedList0207c378* obj, int value, int amount, int key);
@@ -32,8 +32,8 @@ enum { CombatantSlotOffset = 0x150 };
 extern "C" ARM void func_020732cc(int arg0) {
     GameState* gs = GameState::GetInstance();
     void* res = func_ov017_0218b5b0();
-    void* p2a04 = GetPtrField0x2a04(gs);
-    GameObject* combatant = GetCombatantWithFlag0x100(gs, arg0);
+    void* p2a04 = GetPtrField0x2a04_02010828(gs);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(gs, arg0);
     if (combatant != NULL) {
         int i;
         short* list;
@@ -46,7 +46,7 @@ extern "C" ARM void func_020732cc(int arg0) {
                 (struct Field150Holder02052e2c*)combatant);
             if (list != NULL && slot != NULL) {
                 if (list[idx] > 0) {
-                    TryClearFlags0x130((unsigned char*)combatant, 4);
+                    TryClearFlags0x130_02048418((unsigned char*)combatant, 4);
                     func_0207c378((struct KeyedList0207c378*)((char*)p2a04 + 0x1d4),
                                   list[idx], 1, slot->keyBits);
                 }

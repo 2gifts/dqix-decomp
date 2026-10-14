@@ -26,7 +26,7 @@ struct Word0x0_0215e5b0 {
     void* record;
 };
 
-struct Word0x0_0215e5b0* GetWord0x0(int* obj);
+struct Word0x0_0215e5b0* GetWord0x0_0200fb8c(int* obj);
 void SetSubBg0Control_0215e758(int screenSize, int colorMode, int screenBase, int charBase, int bit13);
 void SetSubBg1Control_0215e78c(int screenSize, int colorMode, int screenBase, int charBase, int bit13);
 void ResetList0204af64(struct List0204af64* obj);
@@ -38,7 +38,7 @@ extern char data_0211e33c[] __attribute__((aligned(4)));
 extern "C" ARM int func_ov001_0215e5b0(void) {
     BackgroundLoader::AddLockGlobal();
     BackgroundLoader::FreeAllocationsGlobal();
-    struct Word0x0_0215e5b0* word = GetWord0x0((int*)GameState::GetInstance());
+    struct Word0x0_0215e5b0* word = GetWord0x0_0200fb8c((int*)GameState::GetInstance());
 
     char* buf = data_0211e33c;
     volatile unsigned int* dispcnt = (volatile unsigned int*)0x4001000;

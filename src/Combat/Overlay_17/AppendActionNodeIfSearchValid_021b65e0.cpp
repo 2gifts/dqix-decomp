@@ -8,10 +8,10 @@ enum { RegionOffsetb00 = 0xb00, RegionOffset6fc = 0x6fc };
 #include "GameState/GameState.h"
 
 extern "C" void* func_0202ae18(void);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 extern "C" int func_0202c508(void* state);
 struct SearchStruct;
-int TestMaskBitBySignedByteIndex(struct SearchStruct* obj, int value);
+int TestMaskBitBySignedByteIndex_0202bd34(struct SearchStruct* obj, int value);
 
 struct Obj021b6790;
 extern "C" void func_ov017_021b6790(Obj021b6790* self);
@@ -25,9 +25,9 @@ extern "C" ARM void func_ov017_021b65e0(unsigned char* obj, int arg1) {
 	GameState* bs = GameState::GetInstance();
 	void* search = func_0202ae18();
 	bool ok = true;
-	if (arg1 == 0 && CheckField0NonZero((int*)search) && func_0202c508(search) != 0) {
+	if (arg1 == 0 && CheckField0NonZero_0202b7d8((int*)search) && func_0202c508(search) != 0) {
 		for (int i = 0; i < 4; i++) {
-			if (TestMaskBitBySignedByteIndex((struct SearchStruct*)search, i)) {
+			if (TestMaskBitBySignedByteIndex_0202bd34((struct SearchStruct*)search, i)) {
 				if (bs->GetGameObjectByIndex(i) == NULL) {
 					ok = false;
 				}

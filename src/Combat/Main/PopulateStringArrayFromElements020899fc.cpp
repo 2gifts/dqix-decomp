@@ -8,7 +8,7 @@ struct Struct02030b7c {
     void* field4;
 };
 
-int StringLength(const char* s);
+int StringLength_020d2ff0(const char* s);
 
 struct Target020899fc {
     char pad0[0xc];
@@ -35,7 +35,7 @@ extern "C" ARM int func_020899fc(struct Struct02030b7c* elements) {
         char* str = (char*)(void*)((Script::Parameter*)elements)->ToString();
         elements++;
 
-        int len = StringLength(str);
+        int len = StringLength_020d2ff0(str);
         char* buf = (char*)data_02108efc.allocator->Allocate(len + 1);
         arr[i] = buf;
         memset(arr[i], 0, len + 1);

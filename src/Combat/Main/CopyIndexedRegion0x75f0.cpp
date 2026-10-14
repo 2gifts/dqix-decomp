@@ -9,7 +9,7 @@ enum { kTableOffset = 0x75f0 };
 #include "GameState/GameState.h"
 
 // USA: func_020ac020
-ARM int CopyIndexedRegion0x75f0(void* unused, short* indices, int* dest, int count) {
+ARM int CopyIndexedRegion0x75f0_020ac020(void* unused, short* indices, int* dest, int count) {
     int* table = (int*)((char*)GameState::GetInstance() + kTableOffset);
     int i;
     for (i = 0; i < count; i++) {

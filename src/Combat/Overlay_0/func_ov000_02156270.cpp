@@ -1,15 +1,15 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-int ClassifyField0x81fe(char* base);
-int GetFieldAt0x150(unsigned char* obj);
+int ClassifyField0x81fe_ov000_0215fc60(char* base);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 float AccumulateMagicalMight02084f58(void* actor);
 int AccumulateSlotBits02085c08(unsigned char* actor);
-int TestBitInArray0x8ec(unsigned char* obj, int index);
+int TestBitInArray0x8ec_02083b00(unsigned char* obj, int index);
 extern "C" float func_ov000_02155a04(GameObject* combatant);
-GameObject* GetCombatantChecked(GameState* battleStruct, int combatantId);
-int IsFlag0x14Bit0x2000000Set(GameObject* combatant);
-int IsFlag0x18Bit0x400Set(GameObject* combatant);
+GameObject* GetCombatantChecked_0200ff94(GameState* battleStruct, int combatantId);
+int IsFlag0x14Bit0x2000000Set_ov000_021563ec(GameObject* combatant);
+int IsFlag0x18Bit0x400Set_ov000_02156404(GameObject* combatant);
 
 struct Element02070e60 {
     char pad0[0x10];
@@ -28,7 +28,7 @@ struct Battle02156270 {
 // USA: func_ov000_02156270
 extern "C" ARM float func_ov000_02156270(struct Battle02156270* battle, int combatantId) {
     float rate;
-    if (ClassifyField0x81fe((char*)battle) != 0) {
+    if (ClassifyField0x81fe_ov000_0215fc60((char*)battle) != 0) {
         return 0.0f;
     }
     GameState* bs = GameState::GetInstance();
@@ -38,11 +38,11 @@ extern "C" ARM float func_ov000_02156270(struct Battle02156270* battle, int comb
     }
     int isParty = (combatantId >= 0 && combatantId <= 3) ? 1 : 0;
     if (isParty) {
-        GameObject* member = GetCombatantWithFlag0x100(bs, combatantId);
+        GameObject* member = GetCombatantWithFlag0x100_0200ff1c(bs, combatantId);
         if (member == NULL) {
             return 0.0f;
         }
-        unsigned char* actor = (unsigned char*)GetFieldAt0x150((unsigned char*)member);
+        unsigned char* actor = (unsigned char*)GetFieldAt0x150_02053c6c((unsigned char*)member);
         if (actor == NULL) {
             return 0.0f;
         }
@@ -50,11 +50,11 @@ extern "C" ARM float func_ov000_02156270(struct Battle02156270* battle, int comb
         float might = AccumulateMagicalMight02084f58(actor);
         float slots = AccumulateSlotBits02085c08(actor);
         rate = slots + (scale + might);
-        if (TestBitInArray0x8ec(actor, 0xa6) && func_ov000_02155a04(combatant) < 0.08f) {
+        if (TestBitInArray0x8ec_02083b00(actor, 0xa6) && func_ov000_02155a04(combatant) < 0.08f) {
             rate = rate * scale;
         }
     } else {
-        GameObject* monster = GetCombatantChecked(bs, combatantId);
+        GameObject* monster = GetCombatantChecked_0200ff94(bs, combatantId);
         if (monster == NULL) {
             return 0.0f;
         }
@@ -62,10 +62,10 @@ extern "C" ARM float func_ov000_02156270(struct Battle02156270* battle, int comb
             (struct Container02070e60*)(battle->field8e18 + 0x684), monster->obj3D_.unknown_2_);
         rate = GetTableEntryOrZero02074988((signed char)e->rank);
     }
-    if (IsFlag0x14Bit0x2000000Set(combatant)) {
+    if (IsFlag0x14Bit0x2000000Set_ov000_021563ec(combatant)) {
         rate = 2.0f * rate;
     }
-    if (IsFlag0x18Bit0x400Set(combatant)) {
+    if (IsFlag0x18Bit0x400Set_ov000_02156404(combatant)) {
         return 50.0f;
     }
     return rate;

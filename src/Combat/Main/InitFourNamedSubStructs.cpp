@@ -8,7 +8,7 @@ extern "C" void func_02047a78(struct Foo02048004* obj, char* name, int flag);
 extern char data_020f14d0[];
 
 // USA: func_02096604
-ARM void InitFourNamedSubStructs(char* base, int flag) {
+ARM void InitFourNamedSubStructs_02096604(char* base, int flag) {
     int i;
     char buf[0x40];
     for (i = 0; i < 4; i++) {

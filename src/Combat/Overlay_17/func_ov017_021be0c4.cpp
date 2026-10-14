@@ -32,18 +32,18 @@ extern "C" void __clear(void*, unsigned int);
 extern "C" void func_020426bc(BaseCombatStats*, char*, int);
 extern "C" void VectorizedInvertedMemcpy(const void*, void*, unsigned int);
 extern "C" void func_02011744(GameState*);
-const char* CallFunc020e0434With02153694(int);
+const char* CallFunc020e0434With02153694_020e51cc(int);
 void SetIndexedName02046574(Obj02046574*, int, char*);
 extern "C" void func_0204500c(void*, const char*, int, int);
-int CheckField0NonZero(int*);
+int CheckField0NonZero_0202b7d8(int*);
 extern "C" int func_0202c508(int*);
 extern "C" void func_ov017_021cf730(int, int);
-int GetField0x3acValue(GameState*);
+int GetField0x3acValue_020100a8(GameState*);
 void EnqueueEventTag173_021d1810(int, int, signed char);
-void ClearBitArray(void*);
+void ClearBitArray_02011408(void*);
 void EnqueueEventTag167_021d3ec8();
 void ReinitController02043204(char*);
-void SetByteField0x253(void*);
+void SetByteField0x253_020397c0(void*);
 
 // USA: func_ov017_021be0c4
 extern "C" ARM void func_ov017_021be0c4(State021be0c4* state) {
@@ -55,7 +55,7 @@ extern "C" ARM void func_ov017_021be0c4(State021be0c4* state) {
     GrottoStruct* grotto = game->GetGrottoStruct();
     if (state->step == 0) {
         CancelPendingAction020397cc((Obj020397cc*)game->GetUnknownGameObject(), 1);
-        FontBankLoader* global = GetGlobal02109400();
+        FontBankLoader* global = GetGlobal02109400_02094a00();
         BlankFunction02094b30(global, 0x203, 0);
         if (AlwaysTrue02094b4c(global)) state->step = 1;
     } else if (state->step == 1) {
@@ -85,17 +85,17 @@ extern "C" ARM void func_ov017_021be0c4(State021be0c4* state) {
         state->elapsed += game->GetTickCount();
         if (!IsMainBrightnessTransitionActive(resources) && state->elapsed > 30) {
             char* buffer = controller->buffer;
-            sprintf(buffer, CallFunc020e0434With02153694(0x3f));
+            sprintf(buffer, CallFunc020e0434With02153694_020e51cc(0x3f));
             SetIndexedName02046574(controller, 0, (char*)game->GetUnknownGameObject()->baseStats_);
             func_0204500c(controller, buffer, 0, 0xe3);
             controller->field_19b2 = 0;
             controller->active = 1;
             int* field = func_0202ae18();
-            if (CheckField0NonZero(field) && func_0202c508(field)) {
+            if (CheckField0NonZero_0202b7d8(field) && func_0202c508(field)) {
                 func_ov017_021cf730(-1, 0);
-                EnqueueEventTag173_021d1810(0x2713, -1, GetField0x3acValue(game));
+                EnqueueEventTag173_021d1810(0x2713, -1, GetField0x3acValue_020100a8(game));
             }
-            ClearBitArray(game);
+            ClearBitArray_02011408(game);
             EnqueueEventTag167_021d3ec8();
             state->step = 5;
         }
@@ -103,8 +103,8 @@ extern "C" ARM void func_ov017_021be0c4(State021be0c4* state) {
         controller->field_19ae = 0;
         if (!controller->busy) {
             ReinitController02043204((char*)controller);
-            SetByteField0x253(game->GetUnknownGameObject());
-            FontBankLoader* global = GetGlobal02109400();
+            SetByteField0x253_020397c0(game->GetUnknownGameObject());
+            FontBankLoader* global = GetGlobal02109400_02094a00();
             BlankFunction02094b38(global, 0x203);
             func_02094ab0(global);
             ForwardField0xc0_0205ebec(data_02108760);

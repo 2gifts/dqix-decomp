@@ -14,7 +14,7 @@ struct CharacterModel {
     unsigned char loading_;
 };
 
-int GetWord0x0(int* gameState);
+int GetWord0x0_0200fb8c(int* gameState);
 int GetAxisIntValue(AxisFloats0203b57c* resources, int screen);
 extern "C" void func_ov009_02188c2c(CharacterCreationUI* self);
 extern "C" void func_ov009_02188d9c(CharacterCreationUI* self);
@@ -28,7 +28,7 @@ extern "C" void _Z20SetStatValue021855dcPhi(unsigned char* self, int state);
 extern "C" ARM void func_ov009_021863d0(CharacterCreationUI* self)
 {
     GameState* gameState = GameState::GetInstance();
-    GameResources* resources = (GameResources*)GetWord0x0((int*)gameState);
+    GameResources* resources = (GameResources*)GetWord0x0_0200fb8c((int*)gameState);
     if (self->step == 0)
     {
         if (GetAxisIntValue((AxisFloats0203b57c*)resources, 0) == -16 &&

@@ -41,27 +41,27 @@ struct LookupRecord02154f24
     unsigned int index;
     char pad_0xc[0x34 - 0xc];
 };
-void* GetGlobalPtr021075f4();
+void* GetGlobalPtr021075f4_0203cf4c();
 extern "C" LoadArguments02154f24* func_02012fe4();
 extern "C" void* func_0202ae18();
-unsigned int GetBitsInField0(unsigned int*, unsigned int);
+unsigned int GetBitsInField0_0203b4c4(unsigned int*, unsigned int);
 void EmptyStub02012de4(AllocatorUnion*);
 extern "C" void func_020a0cc4(int);
 extern "C" void func_0203e0a0(void*, int);
 extern "C" void func_ov017_021a316c(GameResources*);
 void InitWithExtendedRegion0203cf58(Struct_0203cf58*);
 void TailForward02012da4(AllocatorUnion*, void*);
-void* AllocateAligned4(AllocatorUnion*, unsigned int);
+void* AllocateAligned4_02012d88(AllocatorUnion*, unsigned int);
 extern "C" void __clear(void*, unsigned int);
 extern "C" void* func_0205ec34();
 int LookupAndForEachNode020649b0(void*, int, void*);
 extern "C" void func_0206f81c(void*);
-TagValueEntry020e385c* GetData02153660();
+TagValueEntry020e385c* GetData02153660_020e3808();
 void* FindEntryByTagAndValue(TagValueEntry020e385c*, int, int);
 extern "C" int func_0202c508(void*);
 void ResetTaggedEntryAndNotifyOverlay020e3994(TagValueEntry020e385c*, int, int);
 void RegisterTaggedEntryAndNotifyOverlay020e392c(TagValueEntry020e385c*, int, int);
-int GetField0x3acValue(GameState*);
+int GetField0x3acValue_020100a8(GameState*);
 void SetEntryBitUnlessMatching020e39d4(TagValueEntry020e385c*, int, int, int);
 extern AllocatorUnion data_02114e20;
 extern const char data_ov001_02164bef[];
@@ -83,12 +83,12 @@ extern "C" ARM int func_ov001_02154f24(LoadState02154f24* self)
     GameState* game = GameState::GetInstance();
     GameResources* resources = func_ov017_0218b5b0();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
-    void* list = GetGlobalPtr021075f4();
+    void* list = GetGlobalPtr021075f4_0203cf4c();
     LoadArguments02154f24* arguments = func_02012fe4();
     void* other = func_0202ae18();
-    if (!GetBitsInField0((unsigned int*)resources, 0x1000))
+    if (!GetBitsInField0_0203b4c4((unsigned int*)resources, 0x1000))
     {
-        if (!AlwaysTrue02094b4c(GetGlobal02109400()))
+        if (!AlwaysTrue02094b4c(GetGlobal02109400_02094a00()))
         {
             return self->state;
         }
@@ -100,11 +100,11 @@ extern "C" ARM int func_ov001_02154f24(LoadState02154f24* self)
     EmptyStub02012de4(&data_02114e20);
     func_020a0cc4(0x40400);
     EmptyStub02012de4(&data_02114e20);
-    if ((self->flags & 1) && !GetBitsInField0((unsigned int*)resources, 0x1000))
+    if ((self->flags & 1) && !GetBitsInField0_0203b4c4((unsigned int*)resources, 0x1000))
     {
         func_0203e0a0(list, arguments->slot);
         func_ov017_021a316c(resources);
-        InitWithExtendedRegion0203cf58((Struct_0203cf58*)GetGlobalPtr021075f4());
+        InitWithExtendedRegion0203cf58((Struct_0203cf58*)GetGlobalPtr021075f4_0203cf4c());
         SafeAllocator* previousAllocator = GetAllocator02154f24(resources, 7);
         self->savedSize = previousAllocator->GetSize();
         void* oldAllocator = previousAllocator->GetSignedAllocator();
@@ -115,7 +115,7 @@ extern "C" ARM int func_ov001_02154f24(LoadState02154f24* self)
     {
         func_0203e0a0(list, arguments->slot);
         func_ov017_021a316c(resources);
-        InitWithExtendedRegion0203cf58((Struct_0203cf58*)GetGlobalPtr021075f4());
+        InitWithExtendedRegion0203cf58((Struct_0203cf58*)GetGlobalPtr021075f4_0203cf4c());
         resources->allocator_array_38[7].Reset();
     }
     unsigned int size = 0x40400;
@@ -127,9 +127,9 @@ extern "C" ARM int func_ov001_02154f24(LoadState02154f24* self)
     {
         size += self->savedSize;
     }
-    if (!GetBitsInField0((unsigned int*)resources, 0x1000))
+    if (!GetBitsInField0_0203b4c4((unsigned int*)resources, 0x1000))
     {
-        void* memory = AllocateAligned4(&data_02114e20, size);
+        void* memory = AllocateAligned4_02012d88(&data_02114e20, size);
         self->allocator.CreateTypeA(memory, size);
         self->allocator.Reset();
     }
@@ -174,13 +174,13 @@ extern "C" ARM int func_ov001_02154f24(LoadState02154f24* self)
     {
         func_0206f81c(&record);
     }
-    TagValueEntry020e385c* table = GetData02153660();
+    TagValueEntry020e385c* table = GetData02153660_020e3808();
     void* found = FindEntryByTagAndValue(table, 1, 0x71e8);
     if (func_0202c508(other) && !found && !FindEntryByTagAndValue(table, 1, self->tag))
     {
         ResetTaggedEntryAndNotifyOverlay020e3994(table, 1, -1);
         RegisterTaggedEntryAndNotifyOverlay020e392c(table, 1, self->tag);
     }
-    SetEntryBitUnlessMatching020e39d4(table, GetField0x3acValue(game), 1, self->tag);
+    SetEntryBitUnlessMatching020e39d4(table, GetField0x3acValue_020100a8(game), 1, self->tag);
     return 2;
 }

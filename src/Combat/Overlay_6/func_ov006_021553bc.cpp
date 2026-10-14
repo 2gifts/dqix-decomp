@@ -7,7 +7,7 @@ struct Container020e0310;
 #if defined(jpn)
 int GetFieldByKey020e0434(Container020e0310*, int);
 #else
-const char** CallFunc020e52a0(void* names, int item);
+const char** CallFunc020e52a0_020e5294(void* names, int item);
 extern "C" void func_020e4864(const char*, char*, int, int, int, int);
 #endif
 void SetFields_021dceac(char*, int, int, unsigned char, unsigned char, unsigned char);
@@ -22,7 +22,7 @@ extern "C" ARM void func_ov006_021553bc(AlchemyPot* self, short* items, unsigned
 #if defined(jpn)
             names[i] = (const char*)GetFieldByKey020e0434((Container020e0310*)self->itemNames_, items[i]);
 #else
-            const char** name = CallFunc020e52a0(self->itemNames_, items[i]);
+            const char** name = CallFunc020e52a0_020e5294(self->itemNames_, items[i]);
             if (name != 0) {
                 func_020e4864(*name, self->names_[i], 1, 0, 0, 0);
                 names[i] = self->names_[i];

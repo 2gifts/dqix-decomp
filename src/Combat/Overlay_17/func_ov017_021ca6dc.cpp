@@ -8,7 +8,7 @@ enum { kRegionalFieldOffset = 0x3718 };
 #include "GameState/GameState.h"
 
 extern "C" void* func_ov017_021b8478(void* obj);
-int GetField0x3acValue(GameState* battleStruct);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 
 struct SlotBits_021ca6dc {
     unsigned short field0 : 2;
@@ -53,7 +53,7 @@ extern "C" ARM void func_ov017_021ca6dc(void* unused0, struct EventSrc_021ca6dc*
     if (!p1c) {
         return;
     }
-    int val = GetField0x3acValue(battleStruct);
+    int val = GetField0x3acValue_020100a8(battleStruct);
     if (*(signed char*)((char*)p1c + 0x2a) == val) {
         return;
     }

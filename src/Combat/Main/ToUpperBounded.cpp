@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_02067f5c
-ARM void ToUpperBounded(signed char* s, int count) {
+ARM void ToUpperBounded_02067f5c(signed char* s, int count) {
     if (s == NULL) {
         return;
     }

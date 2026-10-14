@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-GameObject* GetCombatantWithFlag0x400ByID(int unused, int id);
+GameObject* GetCombatantWithFlag0x400ByID_ov000_021536f8(int unused, int id);
 extern "C" void* func_ov000_0215e958(void* a0);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, int e, int f, int g);
 
@@ -10,7 +10,7 @@ struct Flag_021dfe9c { unsigned char pad : 7; unsigned char flag : 1; };
 
 // USA: func_ov024_021dfe9c  (semantic: AddBuffEntryToTable_021dfe9c)
 extern "C" ARM void* func_ov024_021dfe9c(struct Obj_021dfe9c* obj, int unused, int id) {
-	GameObject* c = GetCombatantWithFlag0x400ByID((int)obj->field0x10, id);
+	GameObject* c = GetCombatantWithFlag0x400ByID_ov000_021536f8((int)obj->field0x10, id);
 	if (!c) return 0;
 	void* extra = *(void**)((char*)c + 0x148);
 	if (!extra) return 0;

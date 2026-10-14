@@ -2,11 +2,11 @@
 #include "GameState/GameState.h"
 
 extern "C" void* func_0205ec34(void);
-void* GetData02105254(void);
+void* GetData02105254_0203b628(void);
 extern "C" void* func_02012fe4(void);
 
 struct Bcb8Params;
-void ForwardParamsToB8bc(struct Bcb8Params* s, int arg1, int arg2);
+void ForwardParamsToB8bc_0203bcb8(struct Bcb8Params* s, int arg1, int arg2);
 
 struct Obj_0201bb78 { unsigned short field0; };
 int LookupBitFromValueRange0201bb78(struct Obj_0201bb78* obj, unsigned int val);
@@ -14,7 +14,7 @@ int LookupBitFromValueRange0201bb78(struct Obj_0201bb78* obj, unsigned int val);
 void _Z24SetElementFields0202756cPviiihhthii(void* obj, int p1, int p2, int idx,
         unsigned char p5, unsigned char p6, unsigned short p7, unsigned char p8, int p9, int p10);
 
-int TestBitInByteArray(int unused, unsigned char* arr, int index);
+int TestBitInByteArray_0206dfb0(int unused, unsigned char* arr, int index);
 void ClampPositionToBounds0202630c(void* obj, int* pos, int margin);
 
 extern "C" int _u32_div_f(int a, int b);
@@ -44,7 +44,7 @@ struct G8Obj {
 extern "C" ARM void func_02025f28(unsigned char* obj) {
     GameState* battle = GameState::GetInstance();
     unsigned char* ctx = (unsigned char*)func_0205ec34();
-    GetData02105254();
+    GetData02105254_0203b628();
     void* g = func_02012fe4();
     unsigned short g0 = *(unsigned short*)g;
     void* g8 = *(void**)((char*)g + 8);
@@ -54,7 +54,7 @@ extern "C" ARM void func_02025f28(unsigned char* obj) {
 
     if (*(unsigned char*)(obj + 0x55c) != 0) {
         *(unsigned char*)(obj + 0x55c) = 0;
-        ForwardParamsToB8bc((struct Bcb8Params*)(*(char**)(obj + 0x20) + 8), 0, 0);
+        ForwardParamsToB8bc_0203bcb8((struct Bcb8Params*)(*(char**)(obj + 0x20) + 8), 0, 0);
     }
 
     int p6a = 1;
@@ -72,7 +72,7 @@ extern "C" ARM void func_02025f28(unsigned char* obj) {
         }
     }
 
-    int flag2 = (g0 != 10000) && (TestBitInByteArray((int)ctx, ctx + 0x8c, 0x2b) != 0);
+    int flag2 = (g0 != 10000) && (TestBitInByteArray_0206dfb0((int)ctx, ctx + 0x8c, 0x2b) != 0);
     int posVec[3];
     int ok = 1;
     if (g0 == 10000 || g0 == 10100) {

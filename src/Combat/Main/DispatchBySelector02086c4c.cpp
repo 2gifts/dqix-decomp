@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 struct Slots02083994;
 int CountMatchingUntilNegative02083994(struct Slots02083994* s, int value);
 struct KeyMap020a0b3c;
@@ -24,11 +24,11 @@ zero:
     take = 0;
 after:
     if (take) {
-        GameObject* c = GetCombatantWithFlag0x100(bs, selector);
+        GameObject* c = GetCombatantWithFlag0x100_0200ff1c(bs, selector);
         if (c == NULL) {
             return 0;
         }
-        void* x = (void*)GetFieldAt0x150((unsigned char*)c);
+        void* x = (void*)GetFieldAt0x150_02053c6c((unsigned char*)c);
         if (x == NULL) {
             return 0;
         }

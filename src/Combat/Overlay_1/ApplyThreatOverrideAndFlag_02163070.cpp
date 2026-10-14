@@ -6,7 +6,7 @@
 #include <globaldefs.h>
 
 void* GetDataPtr02114e04_020d6c00(void);
-void OrBitsIntoField0(unsigned int* p, unsigned int mask);
+void OrBitsIntoField0_020466e4(unsigned int* p, unsigned int mask);
 extern "C" int func_020aad1c(int a, int b, int c, int d);
 extern "C" void func_ov017_021d6134(void* obj, int flag);
 struct FlagWord020466f4;
@@ -21,7 +21,7 @@ extern "C" ARM int func_ov001_02163070(void* obj) {
         return 0;
     }
     unsigned int* p = (unsigned int*)GetDataPtr02114e04_020d6c00();
-    OrBitsIntoField0(p, 0x80);
+    OrBitsIntoField0_020466e4(p, 0x80);
     int r = func_020aad1c(data_ov001_021658b8.field4B4, data_ov001_021658b8.field4B8, 0xa, 0);
     int cond = (r != 0);
     func_ov017_021d6134(obj, cond == 0);

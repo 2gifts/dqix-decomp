@@ -11,8 +11,8 @@ struct InputLog {
 extern InputLog data_02109da4;
 extern signed char data_020f1962[];
 
-// USA: _Z13PushInputLogAi
-ARM void PushInputLogA(int id) {
+// USA: _Z22PushInputLogA_020a1df8i
+ARM void PushInputLogA_020a1df8(int id) {
     if (data_02109da4.countA >= 8) func_020c9be0();
     if ((unsigned int)id >= 7) return;
     func_020a1940(data_020f1962[id]);

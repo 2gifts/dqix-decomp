@@ -3,7 +3,7 @@
 extern "C" void* func_ov017_021b8478(void* obj);
 extern "C" int func_ov017_021b8468(void* obj);
 void* GetField6b0_021b8470(void* obj);
-void SetCombatWorkFlags0x55f4(void* work, int mask);
+void SetCombatWorkFlags0x55f4_ov000_02160fa8(void* work, int mask);
 
 struct LocalEvt021cf694 {
 	unsigned char pad0[4];
@@ -39,5 +39,5 @@ ARM void ApplyEventTag22Fields_021cf694(int unused0, LocalEvt021cf694* evt, int 
 	unsigned char* buf = (unsigned char*)b + regionalOffset1;
 	*(int*)(buf + regionalOffset2) = v1;
 	*(int*)(buf + regionalOffset3) = v2;
-	SetCombatWorkFlags0x55f4((void*)b, 0x20000);
+	SetCombatWorkFlags0x55f4_ov000_02160fa8((void*)b, 0x20000);
 }

@@ -3,7 +3,7 @@
 
 extern "C" void *func_02012fe4(void);
 int IsInRange0201b588(int zoneId);
-int StringLength(const char *text);
+int StringLength_020d2ff0(const char *text);
 void SetElementFields0202756c(void *receiver, int x, int y, int elementIndex, unsigned char image, unsigned char palette,
                               unsigned short tile, unsigned char flags, int scaleX, int scaleY);
 
@@ -22,7 +22,7 @@ extern "C" ARM void func_0202427c(void *receiver) {
 
     int x = 256;
 #if defined(jpn)
-    int textWidth = 10 * (StringLength(zone->substruct_c_.jpbuffer) / 2);
+    int textWidth = 10 * (StringLength_020d2ff0(zone->substruct_c_.jpbuffer) / 2);
     int objectCount = textWidth / 8 + 1;
     *reinterpret_cast<unsigned short *>(frame + 0x4d0) = objectCount;
     int width = objectCount * 8;

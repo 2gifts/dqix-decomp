@@ -21,17 +21,17 @@ struct ProfileWindowNavigation {
 };
 
 void AppendFrameTag02041c08(char*, int, int, int, int, int);
-int AppendCursorTag(char*, int);
+int AppendCursorTag_02041ea4(char*, int);
 void* GetGlobalField0x1c020421a0();
 void ComputeProductSums0205c508(UnkStruct0205c508*, int*, int*);
 int AppendString02042058(char*, const char*);
-const char* FindEntryByKey(TableA68*, int);
-int AppendNameTag(char*, int, const char*);
-int AppendXTag(char*, int);
+const char* FindEntryByKey_02072a68(TableA68*, int);
+int AppendNameTag_02041b70(char*, int, const char*);
+int AppendXTag_02041a28(char*, int);
 extern "C" void func_02046380(void*);
-void StoreInArray0x8b0(StoreStruct*, int, int);
-void SetByteInRange(unsigned char*, int, unsigned char);
-void SetByteAtIndex(unsigned char*, int, unsigned char);
+void StoreInArray0x8b0_020465c0(StoreStruct*, int, int);
+void SetByteInRange_020465f0(unsigned char*, int, unsigned char);
+void SetByteAtIndex_020465d8(unsigned char*, int, unsigned char);
 extern "C" void func_02042428(char*, int);
 extern "C" void func_0202ae18();
 
@@ -45,7 +45,7 @@ extern "C" ARM void func_ov012_02189dfc(char* editor, char* text, int hidden) {
     int selection = *(int*)(editor + 0x143c) % 9;
     if (hidden)
         AppendFrameTag02041c08(text, selection, 8, 5, 5, 5);
-    AppendCursorTag(text, selection);
+    AppendCursorTag_02041ea4(text, selection);
     void* messages = GetGlobalField0x1c020421a0();
     int i;
     ProfileNavigation* navigation = ((ProfileWindowNavigation*)(editor + 0x90))->GetNavigation();
@@ -56,19 +56,19 @@ extern "C" ARM void func_ov012_02189dfc(char* editor, char* text, int hidden) {
     for (i = first; i < last; ++i) {
         if (i != first)
             AppendString02042058(text, *(const char**)(editor + 0x1348));
-        const char* name = FindEntryByKey((TableA68*)(editor + 0x1314), (short)((*(signed char**)(editor + 0x1418))[i] + 10000));
-        AppendNameTag(text, i % 9, name);
+        const char* name = FindEntryByKey_02072a68((TableA68*)(editor + 0x1314), (short)((*(signed char**)(editor + 0x1418))[i] + 10000));
+        AppendNameTag_02041b70(text, i % 9, name);
     }
     if (((ProfileListCounts*)(editor + 0x141c))->available > 9) {
         func_02046380(messages);
-        StoreInArray0x8b0((StoreStruct*)messages, 0, page + 1);
-        StoreInArray0x8b0((StoreStruct*)messages, 1, pages);
-        SetByteInRange((unsigned char*)messages, 0, 2);
-        SetByteInRange((unsigned char*)messages, 1, 2);
-        SetByteAtIndex((unsigned char*)messages, 0, 1);
-        SetByteAtIndex((unsigned char*)messages, 1, 0);
+        StoreInArray0x8b0_020465c0((StoreStruct*)messages, 0, page + 1);
+        StoreInArray0x8b0_020465c0((StoreStruct*)messages, 1, pages);
+        SetByteInRange_020465f0((unsigned char*)messages, 0, 2);
+        SetByteInRange_020465f0((unsigned char*)messages, 1, 2);
+        SetByteAtIndex_020465d8((unsigned char*)messages, 0, 1);
+        SetByteAtIndex_020465d8((unsigned char*)messages, 1, 0);
         func_02042428(text, 8);
-        AppendString02042058(text, FindEntryByKey((TableA68*)(editor + 0x1314), 0x6b));
+        AppendString02042058(text, FindEntryByKey_02072a68((TableA68*)(editor + 0x1314), 0x6b));
     }
 }
 
@@ -111,13 +111,13 @@ struct ProfileEditor02189dfc
 };
 
 void AppendFrameTag02041c08(char* text, int a, int b, int c, int d, int e);
-void AppendCursorTag(char* text, int a);
+void AppendCursorTag_02041ea4(char* text, int a);
 void* GetGlobalField0x1c020421a0();
 void ComputeProductSums0205c508(UnkStruct0205c508* cursor, int* first, int* last);
 void AppendString02042058(char* text, const char* append);
-const char* FindEntryByKey(TableA68* texts, int id);
-void AppendNameTag(char* text, int item, const char* itemText);
-void AppendXYTag(char* text, int x, int y);
+const char* FindEntryByKey_02072a68(TableA68* texts, int id);
+void AppendNameTag_02041b70(char* text, int item, const char* itemText);
+void AppendXYTag_02041a90(char* text, int x, int y);
 extern "C" void func_ov012_021842a0(ProfileEditor02189dfc* self, int canvas, int color, int shadow);
 
 extern "C" const char data_ov012_0218b310[];
@@ -131,7 +131,7 @@ extern "C" ARM void func_ov012_02189dfc(ProfileEditor02189dfc* self, char* text,
     int selection = self->selections_[3] % 9;
     if (hidden)
         AppendFrameTag02041c08(text, selection, 8, 5, 5, 5);
-    AppendCursorTag(text, selection);
+    AppendCursorTag_02041ea4(text, selection);
     GetGlobalField0x1c020421a0();
     int i;
     Cursor02189dfc* cursor = self->GetWindow()->GetCursor();
@@ -144,12 +144,12 @@ extern "C" ARM void func_ov012_02189dfc(ProfileEditor02189dfc* self, char* text,
     {
         if (i != first)
             AppendString02042058(text, self->unk_1378);
-        AppendNameTag(text, i % 9, FindEntryByKey((TableA68*)self->strings_, (short)(self->unk_13c0[i] + 10000)));
+        AppendNameTag_02041b70(text, i % 9, FindEntryByKey_02072a68((TableA68*)self->strings_, (short)(self->unk_13c0[i] + 10000)));
     }
     if (self->unk_13c4_0 > 9)
     {
         func_ov012_021842a0(self, 5, shadow, color);
-        AppendXYTag(text, 0x2a, 0x94);
+        AppendXYTag_02041a90(text, 0x2a, 0x94);
         AppendString02042058(text, data_ov012_0218b310);
     }
 }

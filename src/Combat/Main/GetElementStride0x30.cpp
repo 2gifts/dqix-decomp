@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_0207f700
-ARM void* GetElementStride0x30(unsigned char* obj, short index) {
+ARM void* GetElementStride0x30_0207f700(unsigned char* obj, short index) {
     if (index < 0) {
         return NULL;
     }

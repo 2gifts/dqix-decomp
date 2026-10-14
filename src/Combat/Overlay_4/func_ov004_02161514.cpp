@@ -9,7 +9,7 @@ enum { field6=6,field7=7,field8=8,fieldB=0xb };
 
 extern "C" void* func_ov011_021849c8(void* p);
 struct GameState;
-extern int GetFieldAt0x150(unsigned char* obj);
+extern int GetFieldAt0x150_02053c6c(unsigned char* obj);
 void ClearField00209a804(int* field);
 struct Ctx0209a810 { void* field0; };
 void SetupAndRunBufferedScript0209a810(Ctx0209a810* ctx, void* value);
@@ -91,9 +91,9 @@ extern "C" ARM int func_ov004_02161514(void* a) {
 
     t = D1[D0[field8]];
     if (t != 1 && t != 4 && t != 7) {
-        unsigned char* combatant = (unsigned char*)GetCombatantWithFlag0x100((GameState*)(void*)GameState::GetInstance(), *(int*)(D0 + 0x1c));
+        unsigned char* combatant = (unsigned char*)GetCombatantWithFlag0x100_0200ff1c((GameState*)(void*)GameState::GetInstance(), *(int*)(D0 + 0x1c));
         if (!combatant) return 0;
-        field = (unsigned char*)GetFieldAt0x150(combatant);
+        field = (unsigned char*)GetFieldAt0x150_02053c6c(combatant);
         if (!field) return 0;
         limit = *(unsigned short*)(field + D1[D0[field8]] * 2 + 0x16c);
         ClearField00209a804((int*)&ctx);

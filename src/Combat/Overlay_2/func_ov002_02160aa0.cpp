@@ -3,9 +3,9 @@
 struct Container020e0310;
 int GetFieldByKey020e0434(struct Container020e0310 *c, int key);
 int AppendFrameTag02041c08(char *dst, int a1, int a2, int a3, int a4, int a5);
-int AppendCursorTag(char *dst, int cursor);
-int AppendPaletteTag(char *dst, int palette);
-int AppendNameTag(char *dst, int n, const char *name);
+int AppendCursorTag_02041ea4(char *dst, int cursor);
+int AppendPaletteTag_02041e70(char *dst, int palette);
+int AppendNameTag_02041b70(char *dst, int n, const char *name);
 int AppendString02042058(char *dst, const char *src);
 int NextIndexOrZero_0215a9b4(void *base, short i);
 int GetShortFromTable0206e3d4(int a, int b);
@@ -23,7 +23,7 @@ extern "C" ARM void func_ov002_02160aa0(unsigned char *base, char *dst, int flag
     if (flag) {
         AppendFrameTag02041c08(dst, cursor, 8, 5, 5, 5);
     }
-    AppendCursorTag(dst, cursor);
+    AppendCursorTag_02041ea4(dst, cursor);
 
     short n = 0;
     unsigned char end;
@@ -33,18 +33,18 @@ extern "C" ARM void func_ov002_02160aa0(unsigned char *base, char *dst, int flag
     for (; i < end; i++) {
         cursor = GetShortFromTable0206e3d4((int) save, NextIndexOrZero_0215a9b4(base, i));
         if (cursor == 0) {
-            AppendPaletteTag(dst, 0xf);
-            AppendNameTag(dst, n,
+            AppendPaletteTag_02041e70(dst, 0xf);
+            AppendNameTag_02041b70(dst, n,
                           (const char *) GetFieldByKey020e0434(
                               (struct Container020e0310 *) (base + 0x20), 0x119c + 1));
         } else if (*(unsigned int *) (base + 0x2000 + 0x480) & (1 << (cursor - 1))) {
-            AppendPaletteTag(dst, 0xf);
-            AppendNameTag(dst, n,
+            AppendPaletteTag_02041e70(dst, 0xf);
+            AppendNameTag_02041b70(dst, n,
                           (const char *) GetFieldByKey020e0434(
                               (struct Container020e0310 *) (base + 0x20), (short) (cursor + 0x119d)));
         } else {
-            AppendPaletteTag(dst, 0xf);
-            AppendNameTag(dst, n,
+            AppendPaletteTag_02041e70(dst, 0xf);
+            AppendNameTag_02041b70(dst, n,
                           (const char *) GetFieldByKey020e0434(
                               (struct Container020e0310 *) (base + 0x20), 0x119c));
         }
@@ -55,6 +55,6 @@ extern "C" ARM void func_ov002_02160aa0(unsigned char *base, char *dst, int flag
             AppendString02042058(dst, data_ov002_0216d2b4);
         }
     }
-    AppendPaletteTag(dst, 0xf);
+    AppendPaletteTag_02041e70(dst, 0xf);
     SetElementStateOrCreate0215b918(base, 0x22, *(unsigned char *) (base + 0x2000 + 0x484), 2);
 }

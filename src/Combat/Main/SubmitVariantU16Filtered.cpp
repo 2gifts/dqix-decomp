@@ -17,7 +17,7 @@ struct Data02108db0 {
 extern struct Data02108db0 data_02108db0;
 
 // USA: func_02072628
-ARM int SubmitVariantU16Filtered(struct Variant02030b0c* p) {
+ARM int SubmitVariantU16Filtered_02072628(struct Variant02030b0c* p) {
     unsigned short v = (unsigned short)((Script::Parameter*)p)->ToInt();
     if (data_02108db0.f4 != 0) return 1;
     if (data_02108db0.f8 != 0 && data_02108db0.f2 != 0) v = data_02108db0.f2;

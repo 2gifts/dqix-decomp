@@ -59,12 +59,12 @@ struct ZoneTransitionSettings {
 
 ZoneTransitionMessageController* GetGlobalField0x1c020421a0(void);
 extern "C" void* func_02012fe4(void);
-int GetFieldIfFlag4(char* obj);
+int GetFieldIfFlag4_020100f8(char* obj);
 struct ResetObj020d7a5c* GetGlobalResetObj020d7a50(void);
 void TeardownAndResetState020d7aa0(struct Obj020d7aa0* obj);
-void* GetPointerAt0x32c(struct PointerField32c_ffc0* obj);
-void ClearByteFlagAt0x154(unsigned char* obj);
-int CallFunc020e0434With02153694(int value);
+void* GetPointerAt0x32c_0200ffc0(struct PointerField32c_ffc0* obj);
+void ClearByteFlagAt0x154_020a7f40(unsigned char* obj);
+int CallFunc020e0434With02153694_020e51cc(int value);
 extern "C" int sprintf(char* dst, const char* fmt, ...);
 #if defined(jpn)
 extern "C" void func_0204500c(void*, const char*, int);
@@ -73,27 +73,27 @@ extern char data_ov017_021d7c49;
 #else
 extern "C" void func_0204500c(void*, const char*, int, int);
 #endif
-void SetFlagsAt0x244(unsigned char* obj, unsigned char mask);
-void ClearFlagBits(unsigned char* obj, int mask);
+void SetFlagsAt0x244_020a28a0(unsigned char* obj, unsigned char mask);
+void ClearFlagBits_020a28b0(unsigned char* obj, int mask);
 extern "C" int func_020457e0(void* obj);
-void* GetField0x3f8Address(GameState* battleStruct);
+void* GetField0x3f8Address_0200fd0c(GameState* battleStruct);
 extern "C" void VectorizedMemset(void*, int, int);
 void ReinitController02043204(char* obj);
-void SetByteFlagAt0x154(unsigned char* obj);
+void SetByteFlagAt0x154_020a7f34(unsigned char* obj);
 
 // USA: func_ov017_021a9454  (semantic: HandleFieldStatusTransition_021a9454)
 extern "C" ARM void func_ov017_021a9454(ZoneTransitionRequest* request) {
     GameState* battleStruct = GameState::GetInstance();
     ZoneTransitionMessageController* controller = GetGlobalField0x1c020421a0();
     func_02012fe4();
-    int field = GetFieldIfFlag4((char*)battleStruct);
+    int field = GetFieldIfFlag4_020100f8((char*)battleStruct);
     int status = request->state;
 
     if (status == 0) {
         struct ResetObj020d7a5c* reset = GetGlobalResetObj020d7a50();
         TeardownAndResetState020d7aa0((struct Obj020d7aa0*)reset);
-        void* p = GetPointerAt0x32c((struct PointerField32c_ffc0*)battleStruct);
-        ClearByteFlagAt0x154((unsigned char*)p);
+        void* p = GetPointerAt0x32c_0200ffc0((struct PointerField32c_ffc0*)battleStruct);
+        ClearByteFlagAt0x154_020a7f40((unsigned char*)p);
 
         int flag10 = request->alternateDestination;
         char* buf = controller->textBuffer;
@@ -101,13 +101,13 @@ extern "C" ARM void func_ov017_021a9454(ZoneTransitionRequest* request) {
 #if defined(jpn)
             sprintf(buf, &data_ov017_021d7c28);
 #else
-            sprintf(buf, (const char*)CallFunc020e0434With02153694(0x3a));
+            sprintf(buf, (const char*)CallFunc020e0434With02153694_020e51cc(0x3a));
 #endif
         } else {
 #if defined(jpn)
             sprintf(buf, &data_ov017_021d7c49);
 #else
-            sprintf(buf, (const char*)CallFunc020e0434With02153694(0x3b));
+            sprintf(buf, (const char*)CallFunc020e0434With02153694_020e51cc(0x3b));
 #endif
             request->zoneId = 0x170c;
         }
@@ -118,17 +118,17 @@ extern "C" ARM void func_ov017_021a9454(ZoneTransitionRequest* request) {
 #endif
         controller->messageFlag = 0;
         controller->status = 1;
-        SetFlagsAt0x244((unsigned char*)field, 2);
+        SetFlagsAt0x244_020a28a0((unsigned char*)field, 2);
         request->state = 1;
         return;
     }
 
     if (status != 1 || controller->pendingMessage != 0) return;
 
-    ClearFlagBits((unsigned char*)field, 2);
+    ClearFlagBits_020a28b0((unsigned char*)field, 2);
     if (func_020457e0(controller) == 0) {
-        GetPointerAt0x32c((struct PointerField32c_ffc0*)battleStruct);
-        ZoneTransitionSettings* settings = (ZoneTransitionSettings*)GetField0x3f8Address(battleStruct);
+        GetPointerAt0x32c_0200ffc0((struct PointerField32c_ffc0*)battleStruct);
+        ZoneTransitionSettings* settings = (ZoneTransitionSettings*)GetField0x3f8Address_0200fd0c(battleStruct);
         VectorizedMemset(settings, 0, sizeof(*settings));
         settings->unknown4 = 1;
         settings->unknown8 = 1;
@@ -162,7 +162,7 @@ extern "C" ARM void func_ov017_021a9454(ZoneTransitionRequest* request) {
     }
 
     ReinitController02043204((char*)controller);
-    void* p = GetPointerAt0x32c((struct PointerField32c_ffc0*)battleStruct);
-    SetByteFlagAt0x154((unsigned char*)p);
+    void* p = GetPointerAt0x32c_0200ffc0((struct PointerField32c_ffc0*)battleStruct);
+    SetByteFlagAt0x154_020a7f34((unsigned char*)p);
     request->done = 1;
 }

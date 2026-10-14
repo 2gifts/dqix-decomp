@@ -5,11 +5,11 @@
 
 struct Obj020979c0;
 void InitStructWithZeroId020979f4(struct Obj020979c0* p);
-void PopStack0AndTrigger(int flag);
-void PopStack1AndTrigger(int flag);
+void PopStack0AndTrigger_020a1e54(int flag);
+void PopStack1AndTrigger_020a1f4c(int flag);
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
-int GetFieldIfFlag4(char* obj);
-void SetField0x23cTrue(void* obj);
+int GetFieldIfFlag4_020100f8(char* obj);
+void SetField0x23cTrue_020a27ac(void* obj);
 
 extern int data_02114e20;
 extern int data_ov017_021d83ec;
@@ -31,8 +31,8 @@ extern "C" ARM void func_ov017_021b14ec(struct Obj021b14ec* self) {
         TailForward02012da4((AllocatorUnion*)&data_02114e20, p);
     }
 
-    PopStack0AndTrigger(1);
-    PopStack1AndTrigger(1);
-    int field = GetFieldIfFlag4((char*)GameState::GetInstance());
-    if (field != 0) SetField0x23cTrue((void*)field);
+    PopStack0AndTrigger_020a1e54(1);
+    PopStack1AndTrigger_020a1f4c(1);
+    int field = GetFieldIfFlag4_020100f8((char*)GameState::GetInstance());
+    if (field != 0) SetField0x23cTrue_020a27ac((void*)field);
 }

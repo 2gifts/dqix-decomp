@@ -1,7 +1,5 @@
 #include "Graphics/NSBXX/RenderCommands_Common.h"
 
-// not a match, 64-bit arithmetic is ruining everything.
-// notably there is no hook/callback stuff in this command.
 extern "C" void RenderCommand_9(RenderCommandHandler* handler, int modifier)
 {
     NSBXXInternalModel* model = handler->modelContext_->internalModel_;
@@ -9,19 +7,19 @@ extern "C" void RenderCommand_9(RenderCommandHandler* handler, int modifier)
     fix32_t weight = 0;
     NSBXXInvBindMatrix* invBindMatrices = (NSBXXInvBindMatrix*)((intptr_t)model + model->inverseBindsOffset_);
     NSBXXInvBindMatrix localCopy;
-    
+
     uint8_t* instructionPtr = handler->instructionPointer_ + 3;
-    
+
     func_020ca458(0, &localCopy, sizeof(NSBXXInvBindMatrix));
     SendQueuedDataToGeometryFifo();
 
-    GXFIFO_MATRIX_MODE = 0; // projection
+    GXFIFO_MATRIX_MODE = 0;
     GXFIFO_MATRIX_STORE = 1;
     GXFIFO_MATRIX_IDENTITY = 0;
-    GXFIFO_MATRIX_MODE = 2; // position+vector
+    GXFIFO_MATRIX_MODE = 2;
 
     fix32_t* mat3x3_unaffr8;
-    
+
     unsigned int termCounter = 0;
     if (numTerms > UNSIGNED_ZERO())
     {
@@ -36,10 +34,9 @@ extern "C" void RenderCommand_9(RenderCommandHandler* handler, int modifier)
             if (!inBitfield)
             {
                 handler->invBindBitfield_[inverseBindIndex >> 5] |= (1 << (inverseBindIndex & 0x1f));
-                // retrieve the local-to-world matrix from the stack
                 GXFIFO_MATRIX_GET = instructionPtr[0];
-                GXFIFO_MATRIX_MODE = 1; // position
-                _Z16IssueCommand0x19i(invBindMatrices[inverseBindIndex].mat4x3.entries);
+                GXFIFO_MATRIX_MODE = 1;
+                _Z25IssueCommand0x19_020c51a4i(invBindMatrices[inverseBindIndex].mat4x3.entries);
             }
             if (termCounter != 0)
             {
@@ -56,11 +53,11 @@ extern "C" void RenderCommand_9(RenderCommandHandler* handler, int modifier)
             }
             if (!inBitfield)
             {
-                while (_Z24SubmitBlock0x40IfNotBusyi(&ptr_r7->mat4x4) != 0) {}
-                GXFIFO_MATRIX_MODE = 2; // position+vector
-                _Z16IssueCommand0x1Ai(invBindMatrices[inverseBindIndex].mat3x3.entries);
+                while (_Z33SubmitBlock0x40IfNotBusy_020c54fci(&ptr_r7->mat4x4) != 0) {}
+                GXFIFO_MATRIX_MODE = 2;
+                _Z25IssueCommand0x1A_020c51c0i(invBindMatrices[inverseBindIndex].mat3x3.entries);
             }
-            weight = instructionPtr[5] << 4; // as int -> fixed point this is division by 256
+            weight = instructionPtr[5] << 4;
             localCopy.mat4x3.entries[0] +=  (weight * (int64_t)ptr_r7->mat4x4.entries[ 0]) >> 12;
             localCopy.mat4x3.entries[1] +=  (weight * (int64_t)ptr_r7->mat4x4.entries[ 1]) >> 12;
             localCopy.mat4x3.entries[2] +=  (weight * (int64_t)ptr_r7->mat4x4.entries[ 2]) >> 12;
@@ -75,15 +72,13 @@ extern "C" void RenderCommand_9(RenderCommandHandler* handler, int modifier)
             localCopy.mat4x3.entries[11] += (weight * (int64_t)ptr_r7->mat4x4.entries[14]) >> 12;
 
             instructionPtr += 3;
-            // very stupid but this was the only way to avoid optimizing out
-            // the data_0210b678+0x40 reference
             mat3x3_unaffr8 = (fix32_t*)((intptr_t)&data_0210b678[0].mat3x3.entries[0] + offset);
             if (!inBitfield)
             {
-                while (_Z24SubmitBlock0x80IfNotBusyi(mat3x3_unaffr8) != 0) {}
+                while (_Z33SubmitBlock0x80IfNotBusy_020c552ci(mat3x3_unaffr8) != 0) {}
             }
             termCounter++;
-            
+
         } while (termCounter < numTerms);
     }
 
@@ -98,9 +93,9 @@ extern "C" void RenderCommand_9(RenderCommandHandler* handler, int modifier)
     localCopy.mat3x3.entries[7] += (uWeight * (int64_t)mat3x3_unaffr8[7]) >> 12;
     localCopy.mat3x3.entries[8] += (uWeight * (int64_t)mat3x3_unaffr8[8]) >> 12;
 
-    _Z16IssueCommand0x17i(localCopy.mat3x3.entries); // isn't this supposed to take a 3x4 matrix?
+    _Z25IssueCommand0x17_020c5188i(localCopy.mat3x3.entries);
     GXFIFO_MATRIX_MODE = 1;
-    _Z16IssueCommand0x17i(localCopy.mat4x3.entries);
+    _Z25IssueCommand0x17_020c5188i(localCopy.mat4x3.entries);
     GXFIFO_MATRIX_MODE = 0;
     GXFIFO_MATRIX_GET = 1;
     GXFIFO_MATRIX_MODE = 2;

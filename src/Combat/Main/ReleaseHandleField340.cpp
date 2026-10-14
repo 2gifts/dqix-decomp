@@ -4,7 +4,7 @@
 extern "C" void func_020938f0(void* obj);
 
 // USA: func_020939ac
-ARM void ReleaseHandleField340(void* obj) {
+ARM void ReleaseHandleField340_020939ac(void* obj) {
     int token = (int)BackgroundLoader::GetInstance();
 #if defined(jpn)
     if (*(int*)((char*)obj + 0x100) >= 0) {

@@ -23,20 +23,20 @@ struct TargetMenu {
 int CountMatchingValues02175348(void*, int);
 StoreStruct* GetGlobalField0x1c020421a0();
 int GetFieldByKey020e0434(Container020e0310*, int);
-int IsField0x118Equal2(void*);
+int IsField0x118Equal2_ov000_0217542c(void*);
 int AppendFrameTag02041c08(char*, int, int, int, int, int);
-int AppendCursorTag(char*, int);
+int AppendCursorTag_02041ea4(char*, int);
 int AppendString02042058(char*, const char*);
 extern "C" void* __clear(void*, int);
 extern "C" void func_02046380(StoreStruct*);
 void* Clear12Bytes020e46c4(void*);
-GameObject* GetCombatantWithFlag0x400(GameState*, int);
+GameObject* GetCombatantWithFlag0x400_0200fea4(GameState*, int);
 extern "C" void func_020e4ce8(NameDescriptor*, GameObject*, int);
 void TrimTrailingLetterCode_0217aa08(char*, char*);
 extern "C" void func_020e4f18(NameDescriptor*, NameDescriptor*, int);
-void StoreInArray0x8b0(StoreStruct*, int, int);
+void StoreInArray0x8b0_020465c0(StoreStruct*, int, int);
 extern "C" void func_02046608(StoreStruct*, int, const char*, char*, int, int, int);
-int AppendNameTag(char*, int, const char*);
+int AppendNameTag_02041b70(char*, int, const char*);
 extern char data_ov000_02184060[];
 
 #if defined(jpn)
@@ -77,13 +77,13 @@ extern "C" ARM void func_ov000_0217a688(TargetMenu* self, void* unused, int coun
 #endif
     previous = -1;
 #if defined(jpn)
-    int showCursor = IsField0x118Equal2(self);
+    int showCursor = IsField0x118Equal2_ov000_0217542c(self);
     if (showCursor)
 #else
-    if (IsField0x118Equal2(self))
+    if (IsField0x118Equal2_ov000_0217542c(self))
 #endif
         AppendFrameTag02041c08(output, cursor, 8, 5, 5, 5);
-    AppendCursorTag(output, cursor);
+    AppendCursorTag_02041ea4(output, cursor);
     for (int i = 0; i < count; ++i) {
         int group = self->groupIDs_[i];
         if (previous == group) continue;
@@ -117,13 +117,13 @@ extern "C" ARM void func_ov000_0217a688(TargetMenu* self, void* unused, int coun
         }
         func_02046380(store);
         _Z22SetIndexedName02046574P11Obj02046574iPc(store, 0, nameText);
-        StoreInArray0x8b0(store, 0, members);
+        StoreInArray0x8b0_020465c0(store, 0, members);
         func_020474a8(store, 10, (const char*)GetFieldByKey020e0434(&self->strings_, 0x754f), text);
 #else
         func_02046380(store);
         NameDescriptor names;
         Clear12Bytes020e46c4(&names);
-        GameObject* target = GetCombatantWithFlag0x400(game, self->combatantIDs_[index]);
+        GameObject* target = GetCombatantWithFlag0x400_0200fea4(game, self->combatantIDs_[index]);
         char singular[0x80];
         __clear(singular, sizeof(singular));
         char plural[0x80];
@@ -140,10 +140,10 @@ extern "C" ARM void func_ov000_0217a688(TargetMenu* self, void* unused, int coun
             names.flags_ &= ~0x80000000;
         }
         store->names_ = &names;
-        StoreInArray0x8b0(store, 0, members);
+        StoreInArray0x8b0_020465c0(store, 0, members);
         func_02046608(store, 10, format, text, 0x100, 0, 0);
 #endif
-        AppendNameTag(output, i, text);
+        AppendNameTag_02041b70(output, i, text);
         separated = 1;
     }
 #if !defined(jpn)

@@ -5,7 +5,7 @@ extern struct FlagPool020bbeb0 data_0210f3c0;
 
 // USA: func_020bbeb0
 #pragma optimize_for_size off
-ARM int AllocateFlagBit(void) {
+ARM int AllocateFlagBit_020bbeb0(void) {
     int i;
     int mask = 1;
     unsigned int val = data_0210f3c0.flags;

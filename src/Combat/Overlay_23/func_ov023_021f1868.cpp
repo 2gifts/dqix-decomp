@@ -136,25 +136,25 @@ extern const char data_ov023_021fe2b7[];
 extern unsigned char data_0211e33c[0x30000] __attribute__((aligned(4)));
 
 MessageSystem_021f1868* GetGlobalField0x1c020421a0();
-ArrayContainsByteStruct* GetPtrField0x2a04(GameState* gameState);
-int ArrayContainsByte(ArrayContainsByteStruct* array, int id);
+ArrayContainsByteStruct* GetPtrField0x2a04_02010828(GameState* gameState);
+int ArrayContainsByte_02086ef0(ArrayContainsByteStruct* array, int id);
 void* LoadFileIntoMemory(const char* path, void* buffer, unsigned int* outLength);
 void ClearFirstTwoWords0209a338(Pair0209a338* p);
 void SetupAndRunBufferedScript0209a470(Ctx0209a470* ctx, SafeAllocator* allocator, StreamHeader* file, int size);
-char* FindEntryByKey(TableA68* table, int key);
+char* FindEntryByKey_02072a68(TableA68* table, int key);
 void ResetListHeader020727d8(List020727d8* list);
-void Zero4Bytes(void* p);
+void Zero4Bytes_020e526c(void* p);
 void Reset0209fe9c(char* titles);
 void InitManagerAndAllocateBuffers0209fee4(Obj0209fee4* titles, SafeAllocator* allocator, int file, int size);
 void SetIntAt0x60(IntField0x60_0209ff64* titles, int value);
 void PollOv017Task0209ff6c(TaskState0209ff6c* titles);
 int AreFields60And64AllOnes_021f21f4(Fields60_021f21f4* titles);
-Member_021f1868* GetCombatantWithFlag0x100(GameState* gameState, int id);
+Member_021f1868* GetCombatantWithFlag0x100_0200ff1c(GameState* gameState, int id);
 int AppendString02042058(char* dst, const char* src);
 void SetIndexedName02046574(Obj02046574* obj, int index, char* str);
 void InitObjFromCombatantId020e4bf4(void* obj, int id);
-void** CallFunc020e52a0(void* p, int key);
-void StoreInArray0x8b0(StoreStruct* base, int index, int value);
+void** CallFunc020e52a0_020e5294(void* p, int key);
+void StoreInArray0x8b0_020465c0(StoreStruct* base, int index, int value);
 void ReinitController02043204(char* messages);
 void ClearStruct020a13c4(S020a13c4* table);
 void SetupGlobalAndRunScript020a13e4(void* table, void* allocator, int ids, unsigned short count, unsigned char mode);
@@ -165,7 +165,7 @@ const char* GetFieldByKey020e0434(Container020e0310* texts, int id);
 void InitObj_021f222c(Obj_021f222c* page);
 void FormatLabelIntoBufC_021f2304(void* page, char* title);
 void SetOrClearBit10At400_38_021f2348(void* guide, int value);
-GameResources* GetWord0x0(int* gameState);
+GameResources* GetWord0x0_0200fb8c(int* gameState);
 void SetMainBrightness(GameResources* resources, int brightness, int duration);
 int IsBrightnessTransitionActive(GameResources* resources);
 void ResetFields_021eefac(Reset_021eefac* end);
@@ -199,7 +199,7 @@ extern "C" ARM int func_ov023_021f1868(BattleScene_021f1868* self)
     MessageSystem_021f1868* messages = GetGlobalField0x1c020421a0();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
     int id = end->current_;
-    int inParty = ArrayContainsByte(GetPtrField0x2a04(gameState), id);
+    int inParty = ArrayContainsByte_02086ef0(GetPtrField0x2a04_02010828(gameState), id);
     if (end->step_ == 0)
     {
         self->busy_ = 1;
@@ -211,14 +211,14 @@ extern "C" ARM int func_ov023_021f1868(BattleScene_021f1868* self)
         ClearFirstTwoWords0209a338((Pair0209a338*)self->script_);
         if (file != NULL)
             SetupAndRunBufferedScript0209a470((Ctx0209a470*)self->script_, &self->allocator_, (StreamHeader*)file, size);
-        file = ExtractFileFromGP2(FindEntryByKey(&self->texts_, 0x2b), FindEntryByKey(&self->texts_, 0x21), &size);
+        file = ExtractFileFromGP2(FindEntryByKey_02072a68(&self->texts_, 0x2b), FindEntryByKey_02072a68(&self->texts_, 0x21), &size);
         self->skillTable_ = (TableA68*)self->allocator_.Allocate(8);
         ResetListHeader020727d8((List020727d8*)self->skillTable_);
         if (file != NULL)
             func_020728ac(self->skillTable_, &self->allocator_, file, size, 0, 0, 0);
         file = ExtractFileFromGP2(data_ov023_021fe25e, data_ov023_021fe273, &size);
         self->items_ = self->allocator_.Allocate(0xc);
-        Zero4Bytes(self->items_);
+        Zero4Bytes_020e526c(self->items_);
         if (file != NULL)
             func_020e5604(self->items_, &self->allocator_, file, size);
         BackgroundLoader::RemoveLockGlobal();
@@ -253,10 +253,10 @@ extern "C" ARM int func_ov023_021f1868(BattleScene_021f1868* self)
             Skill_021f1868* skill = func_0209a594(self->script_, end->newSkills_[end->newSkill_]);
             char* name = NULL;
             if (skill != NULL)
-                name = FindEntryByKey(self->skillTable_, skill->type_);
+                name = FindEntryByKey_02072a68(self->skillTable_, skill->type_);
             if (name != NULL)
             {
-                Member_021f1868* member = GetCombatantWithFlag0x100(GameState::GetInstance(), id);
+                Member_021f1868* member = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), id);
                 if (member != NULL)
                 {
                     char text[0x200];
@@ -264,14 +264,14 @@ extern "C" ARM int func_ov023_021f1868(BattleScene_021f1868* self)
                     char item[0x80];
                     __clear(text, sizeof(text));
                     AppendString02042058(text, name);
-                    AppendString02042058(text, FindEntryByKey(&self->texts_, 0x22));
+                    AppendString02042058(text, FindEntryByKey_02072a68(&self->texts_, 0x22));
                     func_02046380(messages);
                     SetIndexedName02046574((Obj02046574*)messages, 0, member->name_);
                     InitObjFromCombatantId020e4bf4(actorName, id);
                     messages->actor_ = actorName;
                     if (skill->type_ == 1)
                     {
-                        void** entry = CallFunc020e52a0(self->items_, skill->item_);
+                        void** entry = CallFunc020e52a0_020e5294(self->items_, skill->item_);
                         messages->item_ = entry;
                         __clear(item, sizeof(item));
                         func_020e4864(*entry, item, 1, 0, 0, 0);
@@ -279,13 +279,13 @@ extern "C" ARM int func_ov023_021f1868(BattleScene_021f1868* self)
                     }
                     else
                     {
-                        SetIndexedName02046574((Obj02046574*)messages, 1, FindEntryByKey(self->skillTable_, (short)(skill->prefix_ + 100)));
+                        SetIndexedName02046574((Obj02046574*)messages, 1, FindEntryByKey_02072a68(self->skillTable_, (short)(skill->prefix_ + 100)));
                     }
                     int slot = 2;
                     if (skill->type_ == 4 || skill->type_ == 0x10)
                         slot = 1;
-                    SetIndexedName02046574((Obj02046574*)messages, slot, FindEntryByKey(self->skillTable_, (short)(skill->suffix_ + 200)));
-                    StoreInArray0x8b0((StoreStruct*)messages, 0, skill->value_);
+                    SetIndexedName02046574((Obj02046574*)messages, slot, FindEntryByKey_02072a68(self->skillTable_, (short)(skill->suffix_ + 200)));
+                    StoreInArray0x8b0_020465c0((StoreStruct*)messages, 0, skill->value_);
                     if (inParty)
                     {
                         func_0204500c(messages, text, 1, 0xe3);
@@ -378,7 +378,7 @@ extern "C" ARM int func_ov023_021f1868(BattleScene_021f1868* self)
             self->items_ = NULL;
             self->titles_ = NULL;
             self->busy_ = 0;
-            FontBankLoader* music = GetGlobal02109400();
+            FontBankLoader* music = GetGlobal02109400_02094a00();
             BlankFunction02094b40(music);
             BlankFunction02094b34(music, 0x65, 500, 0, 0);
             end->step_ = 8;
@@ -408,20 +408,20 @@ extern "C" ARM int func_ov023_021f1868(BattleScene_021f1868* self)
         self->pageCount_ = 0;
         self->firstGuide_ = 0;
         self->busy_ = 0;
-        SetMainBrightness(GetWord0x0((int*)gameState), 0, 0xf);
-        FontBankLoader* music = GetGlobal02109400();
+        SetMainBrightness(GetWord0x0_0200fb8c((int*)gameState), 0, 0xf);
+        FontBankLoader* music = GetGlobal02109400_02094a00();
         BlankFunction02094b40(music);
         BlankFunction02094b34(music, 0x65, 500, 0, 0);
         end->step_++;
     }
     else if (end->step_ == 8)
     {
-        if (AlwaysTrue02094b4c(GetGlobal02109400()))
+        if (AlwaysTrue02094b4c(GetGlobal02109400_02094a00()))
             end->step_++;
     }
     else if (end->step_ == 9)
     {
-        if (!IsBrightnessTransitionActive(GetWord0x0((int*)gameState)))
+        if (!IsBrightnessTransitionActive(GetWord0x0_0200fb8c((int*)gameState)))
         {
             ResetFields_021eefac((Reset_021eefac*)end);
             return 7;

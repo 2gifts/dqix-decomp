@@ -6,6 +6,6 @@ struct Struct_02026f08 {
 };
 
 // USA: func_02026f08
-ARM void SetBoolFlagAt558(unsigned char* base, int index, int value) {
+ARM void SetBoolFlagAt558_02026f08(unsigned char* base, int index, int value) {
     ((struct Struct_02026f08*)(base + index))->flag = value != 0;
 }

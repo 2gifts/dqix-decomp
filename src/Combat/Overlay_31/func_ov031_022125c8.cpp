@@ -2,7 +2,7 @@
 #include "System/Memory.h"
 
 void* CallWithConst32_02211b54(void* context, void* size);
-void SetGlobal0224e5a4IfNotNine(int state, int result);
+void SetGlobal0224e5a4IfNotNine_ov031_02211b08(int state, int result);
 extern "C" void func_020c9be0(void* allocation);
 extern "C" void* func_ov031_02211b98(void* context, void* allocation, int size);
 extern "C" int func_ov031_022167c8(void* request, void* context);
@@ -23,7 +23,7 @@ extern "C" ARM int func_ov031_022125c8() {
     if (data_ov031_0224e5bc != NULL) func_020c9be0(data_ov031_0224e5bc);
     data_ov031_0224e5bc = (Context022125c8*)CallWithConst32_02211b54((void*)4, (void*)0x1e20);
     if (data_ov031_0224e5bc == NULL) {
-        SetGlobal0224e5a4IfNotNine(9, 0xffffb17c);
+        SetGlobal0224e5a4IfNotNine_ov031_02211b08(9, 0xffffb17c);
         return 0;
     }
     VectorizedMemset(data_ov031_0224e5bc, 0, 0x1e20);

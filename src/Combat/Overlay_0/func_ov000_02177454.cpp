@@ -11,8 +11,8 @@ extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int 
 extern "C" void func_0205d304(void* a, void* b, int c, int d, int e, int f, int g, int h);
 #endif
 extern "C" void* func_0202ae18(void);
-int CheckField0NonZero(int* obj);
-int GetField0x3acValue(GameState* battleStruct);
+int CheckField0NonZero_0202b7d8(int* obj);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 
 struct InStruct_02177454 {
     char pad[0x44];
@@ -38,8 +38,8 @@ extern "C" ARM void func_ov000_02177454(void* objRaw, struct InStruct_02177454* 
     *(short*)(s + 0xaa) = 7;
     *(short*)(s + 0xac) = 0xa;
     *(short*)(s + 0xae) = 0xd;
-    if (CheckField0NonZero((int*)func_0202ae18())) {
-        if (GetField0x3acValue(GameState::GetInstance()) == 0) {
+    if (CheckField0NonZero_0202b7d8((int*)func_0202ae18())) {
+        if (GetField0x3acValue_020100a8(GameState::GetInstance()) == 0) {
             *(short*)(s + 0xa8) = 0xc;
             *(short*)(s + 0xaa) = 4;
             *(short*)(s + 0xac) = 0xa;

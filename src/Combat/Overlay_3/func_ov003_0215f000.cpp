@@ -38,9 +38,9 @@ struct TouchState0215f000 {
     unsigned char touched;
 };
 
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
-int TestFlagMask(unsigned short* obj, int mask);
-void SelectCoordsByFlag0x24(unsigned char* obj, int* x, int* y);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
+int TestFlagMask_02012430(unsigned short* obj, int mask);
+void SelectCoordsByFlag0x24_02012a84(unsigned char* obj, int* x, int* y);
 struct LookupTable0215e930* FindEntryByMask_0215e8f4(struct Self0215e8f4* self);
 extern "C" int func_ov003_0215e930(struct LookupTable0215e930* table, short id, signed char* col, signed char* row);
 extern "C" void func_ov003_0215e9ec(struct Self0215e8f4* self, int dx, int dy);
@@ -65,19 +65,19 @@ extern "C" ARM int func_ov003_0215f000(struct Self0215e8f4* self, int elapsed) {
         self->repeatTimer = 0;
         self->repeatDir = 0;
     } else {
-        if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x40)) {
+        if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x40)) {
             func_ov003_0215e9ec(self, 0, -1);
             self->repeatTimer = 0x14;
             self->repeatDir = 0x40;
-        } else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x80)) {
+        } else if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x80)) {
             func_ov003_0215e9ec(self, 0, 1);
             self->repeatTimer = 0x14;
             self->repeatDir = 0x80;
-        } else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x20)) {
+        } else if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x20)) {
             func_ov003_0215e9ec(self, -1, 0);
             self->repeatTimer = 0x14;
             self->repeatDir = 0x20;
-        } else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x10)) {
+        } else if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x10)) {
             func_ov003_0215e9ec(self, 1, 0);
             self->repeatTimer = 0x14;
             self->repeatDir = 0x10;
@@ -85,7 +85,7 @@ extern "C" ARM int func_ov003_0215f000(struct Self0215e8f4* self, int elapsed) {
 
         if (self->wrap) {
             unsigned short dir = self->repeatDir;
-            if (dir != 0 && TestFlagMask(&data_02114e30, 0xf0)) {
+            if (dir != 0 && TestFlagMask_02012430(&data_02114e30, 0xf0)) {
                 int timer = self->repeatTimer - elapsed;
                 if (timer <= 0) {
                     timer = 10;
@@ -145,10 +145,10 @@ extern "C" ARM int func_ov003_0215f000(struct Self0215e8f4* self, int elapsed) {
     if (result == 0) {
         unsigned char allowAlt = self->allowAlt;
         unsigned char allowCancel = self->allowCancel;
-        if (TestFlag0SetAndFlag1Clear(&data_02114e30, 1)
-            || (allowAlt && TestFlag0SetAndFlag1Clear(&data_02114e30, 0x200))) {
+        if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 1)
+            || (allowAlt && TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x200))) {
             result = func_ov003_0215ef54(self);
-        } else if (allowCancel && TestFlag0SetAndFlag1Clear(&data_02114e30, 2)) {
+        } else if (allowCancel && TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 2)) {
             result = func_ov003_0215eeb8(self);
         } else {
             result = 0;
@@ -159,7 +159,7 @@ extern "C" ARM int func_ov003_0215f000(struct Self0215e8f4* self, int elapsed) {
             if (data_02114e54.touched) {
                 int ty;
                 int tx;
-                SelectCoordsByFlag0x24((unsigned char*)&data_02114e54, &tx, &ty);
+                SelectCoordsByFlag0x24_02012a84((unsigned char*)&data_02114e54, &tx, &ty);
                 struct CellList0215f000* list = self->list;
                 hit = list->cells;
                 count = list->count;

@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_02011634
-ARM void ClearHalfword0x63da(void* obj) {
+ARM void ClearHalfword0x63da_02011634(void* obj) {
     unsigned char* base = (unsigned char*)obj;
 #if defined(jpn)
     *(unsigned short*)(base + 0x617a) = 0;

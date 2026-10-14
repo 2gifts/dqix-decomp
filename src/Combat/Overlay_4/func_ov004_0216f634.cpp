@@ -4,7 +4,6 @@
 #include "Memory/SafeAllocator.h"
 #include "System/OverlayId.h"
 
-
 struct Actor0209c174;
 struct Obj_0205e88c;
 
@@ -17,7 +16,7 @@ void FreeAndReinit0203a950(void* obj);
 int ProcessAndClassify_02212cbc(void* data);
 int CompareField10PairOrZero_02211608(void* data);
 void ResetActor0209c174(Actor0209c174* actor);
-void Dispatch0203a974With0x57000(void* obj);
+void Dispatch0203a974With0x57000_0209c290(void* obj);
 void InitDisplayState0205e88c(Obj_0205e88c* obj);
 void SetupContextForMode0205ea20(void* obj, int mode);
 extern char data_02108760;
@@ -68,7 +67,7 @@ extern "C" ARM int func_ov004_0216f634(void* self) {
         data_ov004_02171048.flags->b33 = CompareField10PairOrZero_02211608(buf) != 0;
         func_020a1940(OVERLAY_ID(32));
         ResetActor0209c174((Actor0209c174*)&data_02109bf4);
-        Dispatch0203a974With0x57000(&data_02109bf4);
+        Dispatch0203a974With0x57000_0209c290(&data_02109bf4);
         InitDisplayState0205e88c((Obj_0205e88c*)&data_02108760);
         SetupContextForMode0205ea20(&data_02108760, 100);
         if (data_ov004_02171048.flags->b34 == 3) {

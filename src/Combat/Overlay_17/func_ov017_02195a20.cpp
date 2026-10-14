@@ -13,7 +13,7 @@ int TestFlags02046708(struct FlagWord02046708* word, unsigned int mask);
 extern "C" void* func_0202ae18(void);
 void ResetGxEngineState020c52e8();
 extern "C" void func_020c5414();
-unsigned int GetBitsInField4(unsigned int* obj, unsigned int mask);
+unsigned int GetBitsInField4_0203b4fc(unsigned int* obj, unsigned int mask);
 extern "C" void func_ov017_02195ecc(unsigned char* obj, int mode);
 void MaybeUpdateOrDispatchEntry_021959ec(void* obj);
 void SetActiveDmaChannel020c3a0c(int ch);
@@ -39,7 +39,7 @@ extern "C" ARM void func_ov017_02195a20(unsigned char* obj) {
     RenderConfig::Reset();
     DISP3DCNT = (DISP3DCNT & ~0x3000) | 8;
     DISP3DCNT = (DISP3DCNT & ~0x3000) | 0x10;
-    if (GetBitsInField4((unsigned int*)obj, 0x2000)) {
+    if (GetBitsInField4_0203b4fc((unsigned int*)obj, 0x2000)) {
         DISP3DCNT &= 0xcfdf;
     } else {
         DISP3DCNT = (DISP3DCNT & ~0x3000) | 0x20;

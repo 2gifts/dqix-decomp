@@ -1,12 +1,12 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void SetField5cb0AndRecordByte0(char* obj, int v);
-void SetField5cb4AndRecordByte1(char* obj, int v);
+void SetField5cb0AndRecordByte0_02010774(char* obj, int v);
+void SetField5cb4AndRecordByte1_020107a8(char* obj, int v);
 void SetSlotByte020107dc(char* base, int val);
 
 // USA: func_02064b98
-ARM void ClassifyPriceCategoryAndNotifyBattle(unsigned char* table, int price) {
+ARM void ClassifyPriceCategoryAndNotifyBattle_02064b98(unsigned char* table, int price) {
     unsigned char* entry;
     if ((price >= 0x1068 && price <= 0x106a) || (price >= 0x2328 && price <= 0x2330)) {
         table[0x332] = 1;
@@ -30,7 +30,7 @@ ARM void ClassifyPriceCategoryAndNotifyBattle(unsigned char* table, int price) {
         entry = table;
     }
     GameState* bs = GameState::GetInstance();
-    SetField5cb0AndRecordByte0((char*)bs, entry[0]);
-    SetField5cb4AndRecordByte1((char*)bs, entry[1]);
+    SetField5cb0AndRecordByte0_02010774((char*)bs, entry[0]);
+    SetField5cb4AndRecordByte1_020107a8((char*)bs, entry[1]);
     SetSlotByte020107dc((char*)bs, entry[2]);
 }

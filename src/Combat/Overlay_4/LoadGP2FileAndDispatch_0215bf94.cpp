@@ -54,9 +54,9 @@ extern "C" void* func_02012fe4(void);
 struct Actor0209c3b4;
 void SetStateAndDispatch0209c3b4(struct Actor0209c3b4* actor, int val);
 void SetModeClamped0209ca70(void* obj, int val);
-void OrGlobalFlag0x40(void);
+void OrGlobalFlag0x40_020dc2bc(void);
 extern "C" void* ExtractFileFromGP2(const char* gp2Path, const char* innerFilePath, unsigned int* outSize);
-int TryInvoke020e53bc(void* a0, int a1, int a2);
+int TryInvoke020e53bc_020e56fc(void* a0, int a1, int a2);
 
 #if defined(jpn)
 // USA: func_ov004_0215bf94
@@ -84,7 +84,7 @@ ARM int LoadGP2FileAndDispatch_0215bf94() {
     unsigned char v = owner->current->state;
     SetStateAndDispatch0209c3b4((struct Actor0209c3b4*)&data_02109bf4, v);
     SetModeClamped0209ca70(&data_02109bf4, data_ov004_021707d8.ptr->mode);
-    OrGlobalFlag0x40();
+    OrGlobalFlag0x40_020dc2bc();
 #if defined(jpn)
     unsigned int size;
     LoadFileIntoMemory(&data_ov004_02170cbc, data_ov004_021707d8.ptr->fileBuffer, &size);
@@ -95,7 +95,7 @@ ARM int LoadGP2FileAndDispatch_0215bf94() {
     void* buf = ExtractFileFromGP2(&data_ov004_021703d7, &data_ov004_021703ed, &size);
     if (size <= 0x10800) {
         memcpy(data_ov004_021707d8.ptr->fileBuffer, buf, size);
-        TryInvoke020e53bc(&data_ov004_021707d8.ptr->names, (int)data_ov004_021707d8.ptr->fileBuffer, (int)size);
+        TryInvoke020e53bc_020e56fc(&data_ov004_021707d8.ptr->names, (int)data_ov004_021707d8.ptr->fileBuffer, (int)size);
     }
     BackgroundLoader::RemoveLockGlobal();
 #endif

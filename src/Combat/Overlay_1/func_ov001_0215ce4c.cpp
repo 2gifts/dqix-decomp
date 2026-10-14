@@ -8,7 +8,7 @@
 extern "C" int func_ov017_021d60f4(void* a);
 int AbsPlus159IfNegative0215ad2c(int x);
 unsigned int LoadResourceIntoGlobalBuffer_0215a750(const char* path, void** outPtr);
-void RegisterCombatantSlot(GameState* battleStruct, int id, GameObject* combatant);
+void RegisterCombatantSlot_0200fd38(GameState* battleStruct, int id, GameObject* combatant);
 extern "C" void NSBXX_Model_SetPolygonID(NSBXXInternalModel* model, int id);
 
 extern SafeAllocator* data_ov001_021658b8[8];
@@ -65,6 +65,6 @@ extern "C" ARM int func_ov001_0215ce4c(char* self, int argCount) {
     obj->position_.z = 0x1000;
     obj->MaybeSetBCFGAnimation(0, 0);
     obj->MakeHidden();
-    RegisterCombatantSlot(bs, id, (GameObject*)obj);
+    RegisterCombatantSlot_0200fd38(bs, id, (GameObject*)obj);
     return 1;
 }

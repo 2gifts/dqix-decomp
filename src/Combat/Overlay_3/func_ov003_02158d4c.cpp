@@ -3,7 +3,7 @@
 #include "System/Cache.h"
 #include "std_library_functions.h"
 
-int GetGlobal02109400(void);
+int GetGlobal02109400_02094a00(void);
 extern "C" void func_02094ab0(void);
 struct Outer020e28dc;
 int GetInnerFlagBit0020e28dc(struct Outer020e28dc* o);
@@ -41,7 +41,7 @@ struct Screen02158d4c {
 
 // USA: func_ov003_02158d4c
 extern "C" ARM void func_ov003_02158d4c(Screen02158d4c* self) {
-    GetGlobal02109400();
+    GetGlobal02109400_02094a00();
     func_02094ab0();
 
     if (self->selection != NULL && GetInnerFlagBit0020e28dc((struct Outer020e28dc*)self->selection)) {

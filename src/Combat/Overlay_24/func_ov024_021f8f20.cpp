@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 #include "Combat/Main/BattleList.h"
 
-void* GetFieldAt0x150(unsigned char* obj);
+void* GetFieldAt0x150_02053c6c(unsigned char* obj);
 
 struct AiPlanner_021f8f20;
 typedef void (AiPlanner_021f8f20::*PlanFn_021f8f20)(unsigned short id, GameObject* combatant, unsigned short* state);
@@ -24,8 +24,8 @@ extern PlanFn_021f8f20 data_020e6d5c;
 
 // USA: func_ov024_021f8f20
 extern "C" ARM void func_ov024_021f8f20(AiPlanner_021f8f20* obj, int owner, int id, unsigned short* state) {
-    GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), id);
-    void* field = GetFieldAt0x150((unsigned char*)combatant);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), id);
+    void* field = GetFieldAt0x150_02053c6c((unsigned char*)combatant);
     if (*state != 1) {
         return;
     }

@@ -9,7 +9,7 @@ float NextRandomFloat01(Random*);
 int fix32ReduceAngle0To2Pi(int);
 void Vector3fixMultiplyScalar(const Vector3i*, int, Vector3i*);
 int IsValueInRange0216f728(unsigned short*);
-void ApplyVec3Tail(void*, int*);
+void ApplyVec3Tail_0202e694(void*, int*);
 extern "C" {
 void Vector3fix_Subtract(const Vector3i*, const Vector3i*, Vector3i*);
 int Vector3fix_Length(const Vector3i*);
@@ -81,7 +81,7 @@ extern "C" ARM void func_ov000_0216e678(Root0216e678* obj, int first, int second
             if (!inRange) data_ov000_02184270.valueC = (int)(4096.0f * (1.0995574f - 0.7f * (3.1415927f * NextRandomFloat01(rng))));
             if (selected.z < 0x8000) selected.z = 0x8000;
         }
-        ApplyVec3Tail(obj, &selected.x);
+        ApplyVec3Tail_0202e694(obj, &selected.x);
         obj->count = 0;
         data_ov000_02184270.kind = 5;
         int out;

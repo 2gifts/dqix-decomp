@@ -62,11 +62,11 @@ struct Action021e7890 {
 };
 
 extern "C" Res021e7890* func_ov017_021b8478(void* node);
-void* GetActiveCombatWork(void);
+void* GetActiveCombatWork_ov000_02160130(void);
 Node02160094* GetNodeAtIndex02160094(List02160094* list, int index);
 int GetElementCount02070fe4(Struct02070fe4* p);
 Element02070f98* GetElementIfInBounds(List02070f98* list, int index);
-void ClearCombatantSlot(GameState* battleStruct, int id);
+void ClearCombatantSlot_0200fd48(GameState* battleStruct, int id);
 extern "C" void __clear(void* buf, int n);
 extern "C" int func_ov025_021e771c(short* ids, int count, int a, int b);
 extern "C" void func_ov000_02161c0c(void* work, int id);
@@ -93,7 +93,7 @@ extern "C" ARM int func_ov025_021e7890(int self, Action021e7890* action) {
     res = (GameRes021e7890*)func_ov017_0218b5b0();
     state = GameState::GetInstance();
     r = func_ov017_021b8478(res->sub.ptr);
-    work = GetActiveCombatWork();
+    work = GetActiveCombatWork_ov000_02160130();
     node = GetNodeAtIndex02160094((List02160094*)action, 0);
     if (node == 0) return 1;
     GameObj021e7890* unit = (GameObj021e7890*)state->GetCombatantByIndex(node->id);
@@ -137,7 +137,7 @@ extern "C" ARM int func_ov025_021e7890(int self, Action021e7890* action) {
     func_ov000_02161c0c(work, node->id);
     for (i2 = 0; i2 < 8; i2++) {
         short id = (short)(i2 + 0xc0);
-        if (node->id != id) ClearCombatantSlot(state, id);
+        if (node->id != id) ClearCombatantSlot_0200fd48(state, id);
     }
     func_ov000_021677fc(work);
     RunFlaglearAndSetMode02167e6c_02167e6c((unsigned char*)work);

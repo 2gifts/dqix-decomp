@@ -31,11 +31,11 @@ int fix32ReduceAngle0To2Pi(int);
 int fix32cos(int);
 int fix32sin(int);
 void Vector3fixMultiplyScalar(const Vector3i*, int, Vector3i*);
-void* GetPointerFromArray0x3c(unsigned char*, unsigned int);
+void* GetPointerFromArray0x3c_0201e838(unsigned char*, unsigned int);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 void CancelPendingAction020397cc(Obj020397cc*, int);
 void EnqueueEventTag175_021d196c(unsigned short, unsigned short, int);
-Entry_02028bd0* GetEntryTableBase();
+Entry_02028bd0* GetEntryTableBase_02027ca4();
 Obj02028c64* FindInlineEntryById(Entry_02028bd0*, int);
 void SetFlagBit02028c64(Obj02028c64*, int);
 extern const SoundTable data_020e6e74;
@@ -43,7 +43,7 @@ extern Obj0205eaa0 data_02108760;
 
 // USA: func_02018300
 extern "C" ARM void func_02018300(Zone3D* self, ZoneFeatures::Opcode6aEntry* param, int sound, int forced, int notify) {
-    BmdjSceneElement* entry = FindEntryByNodeIdAndKey(self, param);
+    BmdjSceneElement* entry = FindEntryByNodeIdAndKey_02018b34(self, param);
     if (!entry) return;
     if (!forced && (param->unk_2c.type2.unk_2_high & 8)) return;
     if (!forced && (param->unk_2c.type2.unk_2_high & 4)) return;
@@ -110,7 +110,7 @@ extern "C" ARM void func_02018300(Zone3D* self, ZoneFeatures::Opcode6aEntry* par
             break;
         }
     }
-    ZoneFeatures::Opcode6aEntry* current = (ZoneFeatures::Opcode6aEntry*)GetPointerFromArray0x3c((unsigned char*)&self->substruct_6c_, 2);
+    ZoneFeatures::Opcode6aEntry* current = (ZoneFeatures::Opcode6aEntry*)GetPointerFromArray0x3c_0201e838((unsigned char*)&self->substruct_6c_, 2);
     while (current) {
         if (current->unk_2c.type2.unk_0 == param->unk_2c.type2.unk_0 && current->unk_2c.type2.unk_1 == param->unk_2c.type2.unk_1)
             current->unk_2c.type2.unk_2_high = (unsigned short)(current->unk_2c.type2.unk_2_high | 1);
@@ -129,6 +129,6 @@ extern "C" ARM void func_02018300(Zone3D* self, ZoneFeatures::Opcode6aEntry* par
     }
     int index = FindMatchingElementIndex02018bc4(self, param);
     if (forced && notify) EnqueueEventTag175_021d196c(self->currentZoneID_, (unsigned short)index, sound);
-    Obj02028c64* flags = FindInlineEntryById(GetEntryTableBase(), self->currentZoneID_);
+    Obj02028c64* flags = FindInlineEntryById(GetEntryTableBase_02027ca4(), self->currentZoneID_);
     if (flags && !(param->unk_2c.type2.unk_2_high & 512)) SetFlagBit02028c64(flags, index);
 }

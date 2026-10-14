@@ -3,7 +3,7 @@
 
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c508(void* obj);
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void* func_0205ec34(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
@@ -24,7 +24,7 @@ struct BufSend021d2184 {
 extern "C" ARM void func_ov017_021d2184(unsigned short id) {
     if (func_0202c508(func_0202ae18())) {
         struct BufSend021d2184 buf;
-        void* p = GetData02100044();
+        void* p = GetData02100044_0202ae24();
         struct Tail021d2184* t = &buf.tail;
         buf.tag = 0x9c;
         t->id = id;

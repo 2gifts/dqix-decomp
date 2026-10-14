@@ -16,8 +16,8 @@
 
 struct Struct0205d888;
 void* GetLastEntry0205d888(struct Struct0205d888* p);
-int IsField0x9cEqual3(unsigned char* obj);
-void SetFieldAt0x30(void* obj, int value);
+int IsField0x9cEqual3_0204c7cc(unsigned char* obj);
+void SetFieldAt0x30_0205bc24(void* obj, int value);
 int GetGlobalField0x1c020421a0(void);
 void SetupAndDispatch0205c904(unsigned char* p, int val);
 
@@ -37,7 +37,7 @@ struct Struct_0205bcdc;
 void SetIndexIfValid0205bcdc(struct Struct_0205bcdc* s, int index);
 
 struct Struct_0205d81c;
-void SetElementFieldC2(struct Struct_0205d81c* s, int key, int value);
+void SetElementFieldC2_0205deb4(struct Struct_0205d81c* s, int key, int value);
 
 extern "C" void func_0205bb04(void* s, int n);
 extern "C" int func_0205d0e0(void* p, int val);
@@ -63,9 +63,9 @@ extern "C" ARM unsigned char func_ov013_021847c4(void* obj, int param1) {
 
     last = GetLastEntry0205d888((struct Struct0205d888*)(o + R(0x34,0x38)));
     if (last != 0) {
-        if (IsField0x9cEqual3((unsigned char*)last) != 0) {
+        if (IsField0x9cEqual3_0204c7cc((unsigned char*)last) != 0) {
             if ((((unsigned char*)last)[0xc5] & 2) == 0) {
-                SetFieldAt0x30(o + R(0x38,0x3c), -1);
+                SetFieldAt0x30_0205bc24(o + R(0x38,0x3c), -1);
             }
         }
     }
@@ -138,7 +138,7 @@ extern "C" ARM unsigned char func_ov013_021847c4(void* obj, int param1) {
         unsigned char* p = o + i;
         unsigned char v = p[R(0x5c4,0x638)];
         struct Struct_0205d81c* s = (struct Struct_0205d81c*)(o + R(0x34,0x38));
-        SetElementFieldC2(s, (unsigned char)i, v);
+        SetElementFieldC2_0205deb4(s, (unsigned char)i, v);
     }
 
     o[R(0x5cb,0x63f)] = (o[R(0x5c8,0x63c)] != o[R(0x5c9,0x63d)]) ? 1 : 0;

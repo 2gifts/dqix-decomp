@@ -61,7 +61,7 @@ struct MenuB {
 };
 
 extern "C" int *func_0202ae18();
-int CheckField0NonZero(int *);
+int CheckField0NonZero_0202b7d8(int *);
 short *GetField150Ptr0x488_02052e2c(Field150Holder02052e2c *);
 EquipEntry *FindElementByKey020dedd0(Container020dedd0 *, int);
 void *ZeroInitReturn020de824(void *);
@@ -71,7 +71,7 @@ void InitStruct0207cc0c(char *);
 extern "C" int func_020dd4c4(int, void *);
 int GetHalfwordEntryFromField150(Field150Holder02052df8 *, int);
 extern "C" void func_02052d7c(Combatant0217599c *, int, short);
-void *GetFieldAt0x150(unsigned char *);
+void *GetFieldAt0x150_02053c6c(unsigned char *);
 extern "C" void func_0208358c(void *, EquipEntry *, int);
 extern "C" void func_0207c378(char *, int, int, int);
 static inline int IsType0217599c(unsigned int type) {
@@ -89,7 +89,7 @@ extern EquipOrder data_ov003_0217faac;
 extern "C" ARM int func_ov003_0217599c(MenuB *menu) {
     GameState *gs        = GameState::GetInstance();
     int *search          = func_0202ae18();
-    Combatant0217599c *c = (Combatant0217599c *) GetCombatantWithFlag0x100(gs, menu->character);
+    Combatant0217599c *c = (Combatant0217599c *) GetCombatantWithFlag0x100_0200ff1c(gs, menu->character);
     if (!c) return 0;
     if (!GetField150Ptr0x488_02052e2c((Field150Holder02052e2c *) c)) return 0;
     EquipEntry *elem =
@@ -108,12 +108,12 @@ extern "C" ARM int func_ov003_0217599c(MenuB *menu) {
     if (func_020dd4c4(menu->character, elem)) return 0;
     int slotId = data_ov003_0217faf4[category];
     if (slotId < 0) return 1;
-    char *bag      = (char *) GetPtrField0x2a04(gs);
+    char *bag      = (char *) GetPtrField0x2a04_02010828(gs);
     int equippedId = GetHalfwordEntryFromField150((Field150Holder02052df8 *) c, slotId);
     int same       = menu->selected == equippedId;
     if (!same) {
         func_02052d7c(c, slotId, menu->selected);
-        func_0208358c(GetFieldAt0x150((unsigned char *) c), elem, -1);
+        func_0208358c(GetFieldAt0x150_02053c6c((unsigned char *) c), elem, -1);
     }
     if (FindElementByKey020dedd0((Container020dedd0 *) (menu->container + 0x800), equippedId)) {
         func_0207c378(bag + 0x1d4, equippedId, 1, category);
@@ -138,7 +138,7 @@ extern "C" ARM int func_ov003_0217599c(MenuB *menu) {
             func_0207c378(bag + 0x1d4, entry->itemId, 1, entry->category);
         }
     }
-    if (CheckField0NonZero(search)) {
+    if (CheckField0NonZero_0202b7d8(search)) {
         func_ov017_021c3fb4(menu->character, 1);
         func_ov017_021c4418(menu->character, -1);
     }

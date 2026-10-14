@@ -8,8 +8,8 @@ enum { activeFlagOffset = 0x63e4, entryOffset = 0x450 };
 #include "Grotto/Main/TreasureMapMetadata.h"
 #include "System/Memory.h"
 
-int CopyOutBattleRegion0x64f4(void* dst);
-int CopyToBattleRegion0x64f4(void* arg);
+int CopyOutBattleRegion0x64f4_020ac760(void* dst);
+int CopyToBattleRegion0x64f4_020ac734(void* arg);
 
 // USA: func_02011744
 extern "C" ARM void func_02011744(void* obj) {
@@ -18,12 +18,12 @@ extern "C" ARM void func_02011744(void* obj) {
     }
 
     unsigned char localBuf[0xad8];
-    CopyOutBattleRegion0x64f4(localBuf);
+    CopyOutBattleRegion0x64f4_020ac760(localBuf);
 
     for (int i = 0; i < localBuf[0]; i++) {
         if (((TreasureMapMetadata*)(localBuf + 2 + i * 0x1c))->GetInitialByteUnknownBit()) {
             VectorizedInvertedMemcpy((char*)obj + entryOffset + 0x6000, localBuf + 2 + i * 0x1c, 0x1c);
-            CopyToBattleRegion0x64f4(localBuf);
+            CopyToBattleRegion0x64f4_020ac734(localBuf);
             return;
         }
     }

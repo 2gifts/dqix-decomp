@@ -23,7 +23,7 @@ struct Elem_0205d81c *FindElementByC40205d81c(struct Struct_0205d81c *s, int key
 struct Struct0205de24;
 void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char keyLow,
                                                                         unsigned char keyHigh);
-void SetElementFieldC2(struct Struct_0205d81c *s, int a, int b);
+void SetElementFieldC2_0205deb4(struct Struct_0205d81c *s, int a, int b);
 void SetElementFlag0x20ByKey0205def8(struct Struct_0205def8 *s, int a, int b);
 
 struct BufOv02160274 {
@@ -50,7 +50,7 @@ extern "C" ARM void func_ov002_02160274(char *base) {
     func_ov002_02157480(base, ids);
     int n = 0;
     for (int i = 0; i < 4; i++) {
-        if (InRange02160274(ids[i]) && GetCombatantWithFlag0x100(gs, ids[i]) != NULL) {
+        if (InRange02160274(ids[i]) && GetCombatantWithFlag0x100_0200ff1c(gs, ids[i]) != NULL) {
             n++;
         }
     }
@@ -67,7 +67,7 @@ extern "C" ARM void func_ov002_02160274(char *base) {
     func_ov002_0216049c(base, ((struct BufOv02160274 *) (base + 0x1000))->buf, 0);
     func_0205d304(base + 0xec8, ((struct BufOv02160274 *) (base + 0x1000))->buf, 0, 1, 0, 1, 0, 0);
 
-    SetElementFieldC2((struct Struct_0205d81c *) (base + 0xec8), 0x20, 0);
+    SetElementFieldC2_0205deb4((struct Struct_0205d81c *) (base + 0xec8), 0x20, 0);
     SetElementFlag0x20ByKey0205def8((struct Struct_0205def8 *) (base + 0xec8), 0, 0x29);
     struct Elem_0205d81c *elem =
         FindElementByC40205d81c((struct Struct_0205d81c *) (base + 0xec8), 0x15);

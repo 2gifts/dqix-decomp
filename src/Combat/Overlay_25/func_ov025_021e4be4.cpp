@@ -9,8 +9,8 @@ SafeAllocator* GetArrayEntry_021e8a54_021e8a54(char* obj);
 struct RemoveList021eb084;
 void RemoveMatchingShort_021eb084(struct RemoveList021eb084* obj, int val);
 struct Struct_203dafc;
-void ClearEightWords(struct Struct_203dafc* obj);
-void SetField0x3b0Value(GameState* battleStruct, int value);
+void ClearEightWords_0203dafc(struct Struct_203dafc* obj);
+void SetField0x3b0Value_020100c4(GameState* battleStruct, int value);
 
 struct Obj0204a120;
 void InitState0204a120(struct Obj0204a120* obj);
@@ -18,7 +18,7 @@ struct Owner0204a3f0;
 struct Holder0204a3f0;
 void SetHolderAndMarkNode0204a3f0(struct Owner0204a3f0* owner, struct Holder0204a3f0* h);
 void SetName0204a440(char* obj, const char* src);
-void SetStringField0234(char* obj, const char* src);
+void SetStringField0234_0204a464(char* obj, const char* src);
 
 struct Node021e8bac {
     unsigned char type;
@@ -94,7 +94,7 @@ extern "C" ARM int func_ov025_021e4be4(struct Param021e4be4* p) {
 
     model->Initialize();
     ObjectArchiveLoadInfo info;
-    ClearEightWords((struct Struct_203dafc*)&info);
+    ClearEightWords_0203dafc((struct Struct_203dafc*)&info);
     info.fileData = fileData;
     info.unk_8 = length;
     info.allocator = allocator;
@@ -117,8 +117,8 @@ extern "C" ARM int func_ov025_021e4be4(struct Param021e4be4* p) {
     InitState0204a120((struct Obj0204a120*)state);
     SetHolderAndMarkNode0204a3f0((struct Owner0204a3f0*)state, (struct Holder0204a3f0*)model);
     SetName0204a440(state, data_ov025_021ef7f7);
-    SetStringField0234(state, data_ov025_021ef7fb);
-    SetField0x3b0Value(gs, (int)state);
+    SetStringField0234_0204a464(state, data_ov025_021ef7fb);
+    SetField0x3b0Value_020100c4(gs, (int)state);
     node->type = 3;
     PushLogNode021e8bac((struct Obj021e8bac*)data_ov025_021ef988.battle, node);
     return 1;

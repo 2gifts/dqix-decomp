@@ -2,8 +2,6 @@
 
 #include "GameState/GameState.h"
 
-
-
 extern int data_02108760;
 
 struct Outer020e28dc;
@@ -11,7 +9,6 @@ int GetInnerFlagBit0020e28dc(struct Outer020e28dc* o);
 
 struct Ctx020e263c;
 void UpdateEntryStateAndPosition(struct Ctx020e263c* obj, int value);
-
 
 struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
@@ -22,7 +19,7 @@ void ClampFieldTo2At0x16(struct Clamp020e29a8* p, int v);
 struct Obj020e280c;
 void ResetAndReposition020e280c(struct Obj020e280c* self, void* b);
 
-int GetField0x15UnlessInactive(signed char* param);
+int GetField0x15UnlessInactive_020e2918(signed char* param);
 
 int IsFlag0x2Active020e2984(struct Outer020e28dc* window);
 
@@ -46,7 +43,7 @@ extern "C" ARM int func_ov003_0215bf18(void* p, int arg1) {
     }
     if (state == 1) {
         *(unsigned char*)(obj + 0x59f) |= 1;
-        int result = GetField0x15UnlessInactive((signed char*)*(void**)(obj + 0x570));
+        int result = GetField0x15UnlessInactive_020e2918((signed char*)*(void**)(obj + 0x570));
         if (result >= 0) {
             *(unsigned char*)(obj + 0x581) = 0;
             *(unsigned char*)(obj + 0x59f) &= ~1;

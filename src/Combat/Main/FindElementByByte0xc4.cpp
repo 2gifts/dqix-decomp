@@ -18,7 +18,7 @@ struct Obj2081 {
 };
 
 // USA: func_02081da8
-ARM struct Elem2081* FindElementByByte0xc4(struct Obj2081* obj, int key) {
+ARM struct Elem2081* FindElementByByte0xc4_02081da8(struct Obj2081* obj, int key) {
     unsigned char count = obj->count;
     struct Elem2081* p = obj->elems;
     unsigned char i;

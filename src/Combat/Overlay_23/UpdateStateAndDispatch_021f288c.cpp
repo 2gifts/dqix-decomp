@@ -11,16 +11,16 @@ extern "C" void func_0204500c(void* obj, char* buffer, int a, int b);
 extern "C" int func_ov023_021f4438(void* obj);
 extern "C" int func_ov023_021f4fc8(void);
 int CheckThresholdOverAny_021f5228(int id);
-int TestBitInByteArray(int unused, unsigned char* arr, int index);
+int TestBitInByteArray_0206dfb0(int unused, unsigned char* arr, int index);
 
 struct ArrayContainsByteStruct;
-int ArrayContainsByte(struct ArrayContainsByteStruct* s, int val);
+int ArrayContainsByte_02086ef0(struct ArrayContainsByteStruct* s, int val);
 
 struct TableA68;
-void* FindEntryByKey(struct TableA68* table, int key);
+void* FindEntryByKey_02072a68(struct TableA68* table, int key);
 
 struct StoreStruct;
-void StoreInArray0x8b0(struct StoreStruct* base, int index, int value);
+void StoreInArray0x8b0_020465c0(struct StoreStruct* base, int index, int value);
 
 struct Reset_021eefac;
 void ResetFields_021eefac(struct Reset_021eefac* s);
@@ -60,21 +60,21 @@ extern "C" ARM int func_ov023_021f288c(unsigned char* obj) {
 
     int flag8;
     if (g->counter == 0) {
-        char* e1 = (char*)FindEntryByKey((struct TableA68*)(obj + regionalOffset0), 0xd);
+        char* e1 = (char*)FindEntryByKey_02072a68((struct TableA68*)(obj + regionalOffset0), 0xd);
 #if defined(jpn)
         sprintf(msgBuf, e1, ((struct PctBits021f288c*)(obj + id * 0x54 + 0x5900 + 0x8c))->pct);
 #else
         sprintf(msgBuf, e1);
 #endif
 
-        char* e2 = (char*)FindEntryByKey((struct TableA68*)(obj + regionalOffset0), 0x22);
+        char* e2 = (char*)FindEntryByKey_02072a68((struct TableA68*)(obj + regionalOffset0), 0x22);
         strcat(msgBuf, e2);
 #if defined(jpn)
 
 #else
         struct PctBits021f288c* pb = (struct PctBits021f288c*)(obj + id * 0x54 + 0x5700 + 0x9c);
         int percent = pb->pct;
-        StoreInArray0x8b0((struct StoreStruct*)stateObj, 0, percent);
+        StoreInArray0x8b0_020465c0((struct StoreStruct*)stateObj, 0, percent);
 #endif
 
 #if defined(jpn)
@@ -87,13 +87,13 @@ extern "C" ARM int func_ov023_021f288c(unsigned char* obj) {
         *(int*)(stateObj + regionalOffset2) = 1;
         g->counter = g->counter + 1;
     } else if (g->counter == 1) {
-        void* p2a04 = GetPtrField0x2a04(battleStruct);
+        void* p2a04 = GetPtrField0x2a04_02010828(battleStruct);
         flag8 = 0;
-        if (ArrayContainsByte((struct ArrayContainsByteStruct*)p2a04, id)) {
+        if (ArrayContainsByte_02086ef0((struct ArrayContainsByteStruct*)p2a04, id)) {
             if (CheckThresholdOverAny_021f5228(id)) {
                 flag8 = 1;
                 void* base = func_0205ec34();
-                if (TestBitInByteArray((int)base, (unsigned char*)base + 0x8c, 0x119c)) {
+                if (TestBitInByteArray_0206dfb0((int)base, (unsigned char*)base + 0x8c, 0x119c)) {
                     stateObj[regionalOffset3] = 0;
                 }
             }

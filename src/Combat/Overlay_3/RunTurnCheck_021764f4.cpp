@@ -14,17 +14,16 @@ enum { kRegionValue88C_808 = 0x88c };
 enum { kRegionValueFF8_F74 = 0xff8 };
 #endif
 
-
 extern "C" int func_ov003_021765b4(void* self);
 extern "C" int func_ov003_021766e8(void* self);
 
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 
 struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 
 struct Obj2081;
-void CallFunc0204c804OnMatchingKey(struct Obj2081* obj, int key);
+void CallFunc0204c804OnMatchingKey_0207fdcc(struct Obj2081* obj, int key);
 
 struct Obj0208203c;
 void ResetWithSub0208203c(struct Obj0208203c* obj);
@@ -46,7 +45,7 @@ extern "C" ARM int func_ov003_021764f4(unsigned char* self) {
     if (func_ov003_021765b4(self) != 0) {
         goto dispatch;
     }
-    if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x200) == 0) {
+    if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x200) == 0) {
         goto alt;
     }
 dispatch:
@@ -63,7 +62,7 @@ alt:
 merge:
     if (result != 0) {
         short key = *(short*)(self + kRegionValueFFE_F7A);
-        CallFunc0204c804OnMatchingKey(*(struct Obj2081**)(self + kRegionValue89C_818), key);
+        CallFunc0204c804OnMatchingKey_0207fdcc(*(struct Obj2081**)(self + kRegionValue89C_818), key);
         ResetWithSub0208203c((struct Obj0208203c*)(self + kRegionValue88C_808));
         *(void**)(self + kRegionValueFF8_F74) = 0;
     }

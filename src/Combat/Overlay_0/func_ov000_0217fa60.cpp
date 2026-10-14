@@ -52,7 +52,7 @@ extern "C" ARM void func_ov000_0217fa60(struct Owner_0217fa60* obj) {
     for (unsigned char i = 0; i < 4; i++) {
         GetSlot(obj, obj->order[i])->active = 0;
     }
-    struct Party_0217fa60* party = (struct Party_0217fa60*)GetPtrField0x2a04(GameState::GetInstance());
+    struct Party_0217fa60* party = (struct Party_0217fa60*)GetPtrField0x2a04_02010828(GameState::GetInstance());
     for (unsigned char i = 0; i < party->count; i++) {
         GetSlot(obj, party->ids[i])->active = 1;
     }

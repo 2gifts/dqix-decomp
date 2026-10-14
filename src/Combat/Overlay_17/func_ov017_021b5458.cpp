@@ -25,7 +25,7 @@ struct GetRowByIndexRow {
     struct RowEntryB_021b5458 entriesB[6];
 };
 
-struct GetRowByIndexRow* GetRowByIndex(struct GetRowByIndexRow* base, int i);
+struct GetRowByIndexRow* GetRowByIndex_0209b9c0(struct GetRowByIndexRow* base, int i);
 
 struct Sub021b5458 {
     char pad0[0x10];
@@ -67,7 +67,7 @@ extern "C" ARM void func_ov017_021b5458(struct Obj021b5458* obj) {
             short count = 0;
             sub = obj->sub;
             for (int i = 0; i < 6; i++) {
-                struct GetRowByIndexRow* row = GetRowByIndex(sub->rows, i);
+                struct GetRowByIndexRow* row = GetRowByIndex_0209b9c0(sub->rows, i);
                 if (row == 0) {
                     continue;
                 }

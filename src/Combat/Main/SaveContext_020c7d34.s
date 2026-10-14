@@ -10,7 +10,7 @@
 	.arm
 
 	.global SaveContext
-	.extern _Z16SaveDivSqrtStatePv
+	.extern _Z25SaveDivSqrtState_020cd594Pv
 
 SaveContext:
 	stmdb sp!, {r0, lr}
@@ -32,4 +32,4 @@ SaveContext:
 	mov r0, #0
 	bx lr
 _P48:
-	.word _Z16SaveDivSqrtStatePv
+	.word _Z25SaveDivSqrtState_020cd594Pv

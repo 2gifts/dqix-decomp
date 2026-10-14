@@ -2,11 +2,11 @@
 #include "GameState/GameState.h"
 
 struct Obj02088f68;
-GameObject* GetCombatantWithFlag0x400ByID(int unused, int id);
-void* GetActiveCombatWork(void);
+GameObject* GetCombatantWithFlag0x400ByID_ov000_021536f8(int unused, int id);
+void* GetActiveCombatWork_ov000_02160130(void);
 extern "C" void func_ov000_02161e30(void* work, int id, int msg, int a3);
 extern "C" void* func_ov000_0215e958(void* a0);
-void ZeroWorkBlock0x20(void* obj);
+void ZeroWorkBlock0x20_ov000_0215fd7c(void* obj);
 void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
 void InitObj02088f68(struct Obj02088f68* obj);
 extern "C" void func_ov000_0215cd44(void* a, void* b, void* c, int d, int e, int f, int g);
@@ -41,16 +41,16 @@ struct Entry_021e0d00 {
 
 // USA: func_ov024_021e0d00
 extern "C" ARM void* func_ov024_021e0d00(struct Obj_021e0d00* obj, int userId, int id, struct Action_021e0d00* action) {
-	struct Combatant_021e0d00* c = (struct Combatant_021e0d00*)GetCombatantWithFlag0x400ByID((int)obj->field0x10, id);
+	struct Combatant_021e0d00* c = (struct Combatant_021e0d00*)GetCombatantWithFlag0x400ByID_ov000_021536f8((int)obj->field0x10, id);
 	if (!c) return 0;
 	if (userId == id) {
 		int msg = -1;
 		if (action->skillId == 0x153) msg = 0xb3;
 		if (action->skillId == 0x31a) msg = 0x4b;
-		func_ov000_02161e30(GetActiveCombatWork(), id, msg, 1);
+		func_ov000_02161e30(GetActiveCombatWork_ov000_02160130(), id, msg, 1);
 		struct Entry_021e0d00* entry = (struct Entry_021e0d00*)func_ov000_0215e958(obj->field0x10);
 		if (!entry) return 0;
-		ZeroWorkBlock0x20(entry);
+		ZeroWorkBlock0x20_ov000_0215fd7c(entry);
 		entry->field0x20 = 0;
 		entry->field0xe = c->field0x188;
 		entry->field0x10 = c->field0x18a;

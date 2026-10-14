@@ -4,7 +4,7 @@
 extern "C" void func_0202eab8(void* obj);
 extern "C" void func_0202e5d8(void* obj, int a, int b, int c);
 extern "C" void Mat3x3_WriteIdentity(void* obj);
-void Clear0x28Bytes(void* p);
+void Clear0x28Bytes_020a0d58(void* p);
 
 struct AngleTrig0202e9a4;
 void SetAngleAndTrigTable0202e9a4(struct AngleTrig0202e9a4* obj, int angle);
@@ -38,9 +38,9 @@ extern "C" ARM void func_0202df68(void* obj) {
     *(int*)((char*)obj + 0x168) = 0;
 
     Mat3x3_WriteIdentity((char*)obj + 0x144);
-    Clear0x28Bytes((char*)obj + 0x16c);
-    Clear0x28Bytes((char*)obj + 0x194);
-    Clear0x28Bytes((char*)obj + 0x1bc);
+    Clear0x28Bytes_020a0d58((char*)obj + 0x16c);
+    Clear0x28Bytes_020a0d58((char*)obj + 0x194);
+    Clear0x28Bytes_020a0d58((char*)obj + 0x1bc);
 
     *(int*)((char*)obj + 0x1f0) = *(int*)((char*)obj + 0x58);
     *(int*)((char*)obj + 0x1f4) = 0;

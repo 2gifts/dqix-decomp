@@ -32,8 +32,8 @@ struct SearchStruct0202c1a4;
 extern "C" int func_0202c540(struct SearchStruct0202c1a4* search);
 extern "C" int func_0202c508(struct SearchStruct0202c1a4* search);
 extern "C" void func_020103c8(GameState* battleStruct, int arg);
-GameObject* GetCombatantWithFlag0x1000(GameState* battleStruct, int combatantId);
-signed char GetSignedByte0x2d0(void* obj);
+GameObject* GetCombatantWithFlag0x1000_0200ff58(GameState* battleStruct, int combatantId);
+signed char GetSignedByte0x2d0_020546a8(void* obj);
 extern "C" void func_ov017_0219dac4(struct Ov021c46ec* ov, int idx, int id);
 extern "C" void func_ov017_021c4fa0(int idx, int id);
 
@@ -57,8 +57,8 @@ extern "C" ARM void func_ov017_021c46ec(int idx, struct Evt021c46ec* evt, GameSt
         int count = 0;
         objs[count++] = leader;
         for (i = 0; i < 4; i++) {
-            GameObject* c = GetCombatantWithFlag0x1000(battleStruct, i);
-            if (c != NULL && idx == GetSignedByte0x2d0(c)) {
+            GameObject* c = GetCombatantWithFlag0x1000_0200ff58(battleStruct, i);
+            if (c != NULL && idx == GetSignedByte0x2d0_020546a8(c)) {
                 objs[count++] = c;
             }
         }

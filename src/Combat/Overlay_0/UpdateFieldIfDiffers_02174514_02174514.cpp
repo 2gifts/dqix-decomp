@@ -9,7 +9,7 @@ ARM void UpdateFieldIfDiffers_02174514_02174514(void* obj) {
     GameState* bs = GameState::GetInstance();
     int i;
     for (i = 0; i < 4; i++) {
-        GameObject* c = GetCombatantWithFlag0x100(bs, i);
+        GameObject* c = GetCombatantWithFlag0x100_0200ff1c(bs, i);
         if (c == NULL) continue;
         void* p = func_ov000_02161318(obj, i);
         if (p != NULL) {

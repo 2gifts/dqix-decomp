@@ -8,7 +8,7 @@ struct Entry02080fe0 {
 };
 
 extern struct Entry02080fe0* FindEntryByShortId0207f6ac(struct List0207f6ac* list, int id);
-extern void* FindEntryByKey(struct TableA68* table, int key);
+extern void* FindEntryByKey_02072a68(struct TableA68* table, int key);
 
 // USA: func_02080fe0
 ARM void ResolveEntryValueByKey02080fe0(void* obj, int id, int key) {
@@ -16,5 +16,5 @@ ARM void ResolveEntryValueByKey02080fe0(void* obj, int id, int key) {
     if (e == NULL) {
         return;
     }
-    e->result = FindEntryByKey(*(struct TableA68**)obj, key);
+    e->result = FindEntryByKey_02072a68(*(struct TableA68**)obj, key);
 }

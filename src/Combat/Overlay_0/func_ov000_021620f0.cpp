@@ -100,7 +100,7 @@ struct Scene021620f0 {
 };
 
 extern "C" void* func_0202ae18(void);
-GameObject* GetCombatantWithFlag0x400(GameState* gameState, int combatantId);
+GameObject* GetCombatantWithFlag0x400_0200fea4(GameState* gameState, int combatantId);
 struct ZeroableStruct021620d8;
 void ZeroStruct021620d8(ZeroableStruct021620d8*);
 FieldStruct02048934* SearchWithLow15Comparator02070fd0(Container02070e60* table, int key);
@@ -110,14 +110,14 @@ extern "C" int func_ov000_02161bb8(unsigned char* obj);
 extern "C" void func_020891cc(void* obj);
 extern "C" void func_02089630(void* dst, void* src, int useExactValue);
 extern "C" void func_02049c88(void* obj, void* model);
-void RegisterCombatantSlot(GameState* gameState, int id, GameObject* combatant);
+void RegisterCombatantSlot_0200fd38(GameState* gameState, int id, GameObject* combatant);
 void SyncNameFlag_02161274(GameObject* obj);
 void SetRandomizedShort0x18802048934(void* p, FieldStruct02048934* f, Random* r);
-void IncrementByteCounterWrapAt0x12(unsigned char* p);
+void IncrementByteCounterWrapAt0x12_ov000_02161bec(unsigned char* p);
 void ResetNameState02048614(unsigned char* obj);
 void SetupFieldsFromParam02048850(Obj02048850* obj, Param02048850* param);
 void BuildName020488ec(char* obj);
-void ClearSubstructByte0x56(unsigned char* obj);
+void ClearSubstructByte0x56_02049f3c(unsigned char* obj);
 
 extern const short data_ov000_02182ff8[][3];
 extern const signed char data_ov000_02182fd4[][3];
@@ -158,7 +158,7 @@ extern "C" ARM void func_ov000_021620f0(Scene021620f0* scene, int formation) {
         f->groupCount++;
         f->pairCount++;
         for (int j = 0; j < counts[g]; j++, id++) {
-            c = (Combatant021620f0*)GetCombatantWithFlag0x400(game, id + 0xc0);
+            c = (Combatant021620f0*)GetCombatantWithFlag0x400_0200fea4(game, id + 0xc0);
             Stats021620f0* stats = &scene->roster->stats[id];
             func_020891cc(stats);
             if (!c) {
@@ -173,8 +173,8 @@ extern "C" ARM void func_ov000_021620f0(Scene021620f0* scene, int formation) {
                 c->entry = entry;
                 SetupFieldsFromParam02048850((Obj02048850*)c, info);
                 c->object.MakeHidden();
-                ClearSubstructByte0x56((unsigned char*)c);
-                RegisterCombatantSlot(game, id + 0xc0, (GameObject*)c);
+                ClearSubstructByte0x56_02049f3c((unsigned char*)c);
+                RegisterCombatantSlot_0200fd38(game, id + 0xc0, (GameObject*)c);
             }
             SetRandomizedShort0x18802048934(c, entry, scene->data->GetRandom());
             unsigned short v0 = c->field_188;
@@ -199,7 +199,7 @@ extern "C" ARM void func_ov000_021620f0(Scene021620f0* scene, int formation) {
             c->active = 1;
             int bit = c->stats->GetSlot();
             f->pairs[g].slots |= 1 << bit;
-            IncrementByteCounterWrapAt0x12((unsigned char*)&f->pairs[g]);
+            IncrementByteCounterWrapAt0x12_ov000_02161bec((unsigned char*)&f->pairs[g]);
             f->groups[g].ids[j] = id;
             f->groups[g].count++;
             f->groups[g].used++;

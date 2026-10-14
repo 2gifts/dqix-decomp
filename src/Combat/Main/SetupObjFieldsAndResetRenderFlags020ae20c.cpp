@@ -9,8 +9,8 @@ struct Fields020407b4 {
 };
 
 void SetFields0x44(struct Fields020407b4* dst, int a, int b, int c);
-void StoreVec3AtField0x50(unsigned char* obj, int a, int b, int c);
-void* GetPtrField0x114(void* obj);
+void StoreVec3AtField0x50_0203db34(unsigned char* obj, int a, int b, int c);
+void* GetPtrField0x114_02033fa0(void* obj);
 int CheckBits5To9NonZero0204bedc(unsigned short* obj);
 extern "C" void NSBXX_Model_AdjustPolygonAttrMask(unsigned char* obj, int set, int mask);
 extern "C" void _ZN8Object3D4DrawEb(struct Fields020407b4*, int);
@@ -20,10 +20,10 @@ ARM void SetupObjFieldsAndResetRenderFlags020ae20c(void* obj, struct Fields02040
     if (b == NULL) return;
 
     SetFields0x44(b, v[0], 0xffffd009, v[2]);
-    StoreVec3AtField0x50((unsigned char*)b, 0, c, 0);
+    StoreVec3AtField0x50_0203db34((unsigned char*)b, 0, c, 0);
 
     int flag = 0xc;
-    void* p = GetPtrField0x114(obj);
+    void* p = GetPtrField0x114_02033fa0(obj);
     if (p != NULL) {
         if (CheckBits5To9NonZero0204bedc((unsigned short*)p))
             flag = 0x14;

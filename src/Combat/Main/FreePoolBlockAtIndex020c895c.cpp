@@ -2,7 +2,7 @@
 #include "System/Interrupts.h"
 
 struct RemoveNodeEntry;
-RemoveNodeEntry* RemoveNode(RemoveNodeEntry* head, RemoveNodeEntry* node);
+RemoveNodeEntry* RemoveNode_020c8784(RemoveNodeEntry* head, RemoveNodeEntry* node);
 
 struct FreeBlock020c87ac;
 FreeBlock020c87ac* InsertFreeBlock020c87ac(FreeBlock020c87ac* head, FreeBlock020c87ac* blk);
@@ -33,7 +33,7 @@ extern "C" ARM void func_020c895c(int tableIdx, int count, char* addr) {
     }
     entry = &table->entries[count];
     blk = addr - 0x20;
-    entry->usedList = RemoveNode(entry->usedList, (struct RemoveNodeEntry*)blk);
+    entry->usedList = RemoveNode_020c8784(entry->usedList, (struct RemoveNodeEntry*)blk);
     entry->freeList = InsertFreeBlock020c87ac(entry->freeList, (struct FreeBlock020c87ac*)blk);
     SetIRQInterruptState(state);
 }

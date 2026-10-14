@@ -5,25 +5,25 @@
 #define IS_JPN 0
 #endif
 
-int TestFlag0SetAndFlag1Clear(unsigned short* obj, int mask);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* obj, int mask);
 extern unsigned short data_02114e30;
 
 struct Repeat02045740 {
     char pad0[IS_JPN ? 0x824 : 0x954];
-    int counter954;      // 0x954
+    int counter954;
     char pad1[0x958 - 0x954 - 4];
-    int poll958;         // 0x958
+    int poll958;
     char pad2[0x994 - 0x958 - 4];
-    int out994;          // 0x994
+    int out994;
     char pad3[0x9a4 - 0x994 - 4];
-    int threshold9a4;    // 0x9a4
+    int threshold9a4;
 };
 
 // USA: func_02045740
 ARM void HandleRepeatInput02045740(struct Repeat02045740* self) {
     int poll = self->poll958;
     self->poll958 = (poll + 1) & 0x1f;
-    if (TestFlag0SetAndFlag1Clear(&data_02114e30, 0x40)) {
+    if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x40)) {
         int c = self->counter954 - 1;
         self->counter954 = c;
         if (c < 0) {
@@ -33,7 +33,7 @@ ARM void HandleRepeatInput02045740(struct Repeat02045740* self) {
         self->poll958 = 0;
         return;
     }
-    if (!TestFlag0SetAndFlag1Clear(&data_02114e30, 0x80)) {
+    if (!TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x80)) {
         return;
     }
     self->counter954 = self->counter954 + 1;

@@ -10,8 +10,8 @@ enum { Field734 = 0x734, Field150 = 0x150, Field18c = 0x18c, Field700 = 0x700 };
 extern "C" void func_0202ae18(void);
 extern "C" int func_ov017_021925e0(void* p);
 void ClearFlagAndZeroVec3Field_021bd440(void* obj, int arg);
-GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
-int GetFieldAt0x150(unsigned char* obj);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* battleStruct, int combatantId);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 struct Obj02061bd8;
 int CheckField0x56bLowNibble(struct Obj02061bd8* obj);
 extern "C" void func_02072afc(int id, int* arr, short* arr2);
@@ -37,9 +37,9 @@ extern "C" ARM int func_ov017_0218f5a4(char* self, int combatantId, int flag2, i
         }
     }
 
-    GameObject* c2 = GetCombatantWithFlag0x100(bs, combatantId);
+    GameObject* c2 = GetCombatantWithFlag0x100_0200ff1c(bs, combatantId);
     if (c2 == 0) return 0;
-    if (GetFieldAt0x150((unsigned char*)c2) == 0) return 0;
+    if (GetFieldAt0x150_02053c6c((unsigned char*)c2) == 0) return 0;
 
     if (flag4 == 0) {
         unsigned char* ptr = *(unsigned char**)((char*)c2 + Field150);

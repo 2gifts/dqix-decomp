@@ -2,8 +2,8 @@
 #include "GameState/GameState.h"
 
 extern "C" void* func_0202ae18(void);
-int CheckField0NonZero(int* obj);
-unsigned char GetField0x397cValue(GameState* battleStruct);
+int CheckField0NonZero_0202b7d8(int* obj);
+unsigned char GetField0x397cValue_020100b0(GameState* battleStruct);
 void EnqueueEventTag150_021d035c(unsigned char a, unsigned char b, unsigned char c);
 extern "C" int func_ov001_02154c64(void* a);
 extern "C" void func_ov001_021539d8(void* a);
@@ -22,9 +22,9 @@ struct Self02154de4 {
 
 // USA: func_ov001_02154de4
 ARM int ProcessAndDispatchState_02154de4(struct Self02154de4* self) {
-	if (CheckField0NonZero((int*)func_0202ae18()) != 0) {
+	if (CheckField0NonZero_0202b7d8((int*)func_0202ae18()) != 0) {
 		GameState* bs = GameState::GetInstance();
-		unsigned char v = GetField0x397cValue(bs);
+		unsigned char v = GetField0x397cValue_020100b0(bs);
 		EnqueueEventTag150_021d035c(1, v & 0xff, self->f108);
 	}
 	if (func_ov001_02154c64(self) != 0) {

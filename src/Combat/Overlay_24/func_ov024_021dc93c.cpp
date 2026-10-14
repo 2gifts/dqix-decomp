@@ -1,15 +1,15 @@
 #include <globaldefs.h>
 #include "Combat/Overlay_0/GetCombatantByID.h"
 #include "GameState/GameState.h"
-void* GetPtrField0x2a04(GameState*);
+void* GetPtrField0x2a04_02010828(GameState*);
 struct ArrayContainsByteStruct;
-int ArrayContainsByte(ArrayContainsByteStruct*, int);
+int ArrayContainsByte_02086ef0(ArrayContainsByteStruct*, int);
 void IncrementByteCounterCapped0x63_0215a8d4(unsigned char*, int);
 int CheckField0x14FiveFlagsClear020881c4(unsigned char*);
 int CheckField0x14FiveFlagsClear0208810c(unsigned char*);
-void SetFlag0x800000AndByte0x24(void*, int);
+void SetFlag0x800000AndByte0x24_02088220(void*, int);
 int SetFlag0x800000AndCall02088208(void*, int);
-void ResetAndSetFlag0x1000000(void*);
+void ResetAndSetFlag0x1000000_02088150(void*);
 int GetCodeForCategory_021e8c48(void*, int);
 unsigned short SelectByIndexRange0to3_021da644(int,int,int);
 extern "C" void* func_ov000_0215e958(void*);
@@ -71,7 +71,7 @@ extern "C" ARM void* func_ov024_021dc93c(Obj021dc93c* obj,short sourceID,int id,
      if(count>=4){
       entry=func_ov000_0215e958(obj->context);
       if(!entry)return 0;
-      ResetAndSetFlag0x1000000(target->currentStats_);
+      ResetAndSetFlag0x1000000_02088150(target->currentStats_);
       AddEntryAndIncrementCount0215a88c(obj->context,entry,0x34);
       func_ov000_02159eac(obj->context,&effects,7);
       func_ov000_0215cd44(obj->context,entry,target,stage,effects,obj->action->flag!=0);
@@ -81,7 +81,7 @@ extern "C" ARM void* func_ov024_021dc93c(Obj021dc93c* obj,short sourceID,int id,
       AddEntryAndIncrementCount0215a88c(obj->context,entry,message);
       func_ov000_0215af54(obj->context,id,0);
      }else{
-      SetFlag0x800000AndByte0x24(target->currentStats_, count);
+      SetFlag0x800000AndByte0x24_02088220(target->currentStats_, count);
      }
     }
    }
@@ -100,8 +100,8 @@ extern "C" ARM void* func_ov024_021dc93c(Obj021dc93c* obj,short sourceID,int id,
      if(result==4){
       func_ov000_02159eac(obj->context,&effects,7);
       func_ov000_0215af54(obj->context,id,0);
-      void* list=GetPtrField0x2a04(GameState::GetInstance());
-      if(ArrayContainsByte((ArrayContainsByteStruct*)list, sourceID) && code==0xa8)
+      void* list=GetPtrField0x2a04_02010828(GameState::GetInstance());
+      if(ArrayContainsByte_02086ef0((ArrayContainsByteStruct*)list, sourceID) && code==0xa8)
        IncrementByteCounterCapped0x63_0215a8d4((unsigned char*)obj->context, 3);
      }
     }else{

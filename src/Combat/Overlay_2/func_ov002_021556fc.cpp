@@ -49,10 +49,10 @@ struct Obj0205d048;
 
 char *GetGlobalField0x1c020421a0();
 void SetField0x38(S020466c8 *s, int v);
-void *GetPtrField0x2a04(GameState *gameState);
+void *GetPtrField0x2a04_02010828(GameState *gameState);
 extern "C" void func_ov017_021cff8c(int id, int a);
 extern "C" void func_ov016_0218b5c0(int a, int b);
-void *GetGlobal02109400();
+void *GetGlobal02109400_02094a00();
 extern "C" void func_02094ab0(void *p);
 void ClearFlag0x10IfSet(Struct02074bd0 *s);
 void ReinitController02043204(char *p);
@@ -64,13 +64,13 @@ extern "C" void *memset(void *dst, int value, unsigned int length);
 void CleanInvalidateCacheRange(const void *p, unsigned int len);
 extern "C" void LoadToMainBG1CharacterData(const void *data, unsigned int offset, unsigned int length);
 void ResetAllocatorsAndClearFields0215b428(unsigned char *self);
-void PopStack1AndTrigger(int v);
+void PopStack1AndTrigger_020a1f4c(int v);
 extern "C" void func_ov023_021eb26c(void *guide);
 
 // USA: func_ov002_021556fc
 extern "C" ARM void func_ov002_021556fc(char *self) {
     SetField0x38((S020466c8 *) GetGlobalField0x1c020421a0(), 0);
-    unsigned char *p = (unsigned char *) GetPtrField0x2a04(GameState::GetInstance());
+    unsigned char *p = (unsigned char *) GetPtrField0x2a04_02010828(GameState::GetInstance());
     for (int i = 0; i < p[0xf7c]; i++) {
         func_ov017_021cff8c((p + i)[0xf78], 0);
     }
@@ -90,7 +90,7 @@ extern "C" ARM void func_ov002_021556fc(char *self) {
         loader->RemoveTask(*(int *) (self + FIELD_1bc4));
         *(int *) (self + FIELD_1bc4) = -1;
     }
-    func_02094ab0(GetGlobal02109400());
+    func_02094ab0(GetGlobal02109400_02094a00());
     *(volatile unsigned int *) 0x4000000   = (*(volatile unsigned int *) 0x4000000 & ~0x1f00) | 0x100;
     *(volatile unsigned short *) 0x4000050 = 0;
     ClearFlag0x10IfSet((Struct02074bd0 *) (self + FIELD_38));
@@ -109,7 +109,7 @@ extern "C" ARM void func_ov002_021556fc(char *self) {
 #if !defined(jpn)
     ResetAllocatorsAndClearFields0215b428((unsigned char *) self);
 #endif
-    PopStack1AndTrigger(1);
+    PopStack1AndTrigger_020a1f4c(1);
     if (*(void **) (self + FIELD_2468) != 0) {
         func_ov023_021eb26c(*(void **) (self + FIELD_2468));
     }

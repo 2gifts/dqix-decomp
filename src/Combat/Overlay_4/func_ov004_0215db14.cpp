@@ -24,7 +24,7 @@ struct Combatant0215db14 { char pad[0x130]; unsigned int* flags; };
 struct Slots02083960;
 int DispatchNodeIfType7_02156e2c(void*, int);
 extern "C" int func_ov004_0215da0c(void*);
-Slots02083960* GetFieldAt0x150(unsigned char*);
+Slots02083960* GetFieldAt0x150_02053c6c(unsigned char*);
 int CountPositiveSlots02083960(Slots02083960*);
 short SumKeyedLookups02086bf4(char*, int);
 extern "C" int func_ov004_02156fd4(void*, int);
@@ -60,13 +60,13 @@ extern "C" ARM int func_ov004_0215db14(void* obj) {
     }
     selected = list.entries[index];
     menu->combatant = selected;
-    combatant = GetCombatantWithFlag0x100(state, data_ov004_021707d8.menu->combatant);
+    combatant = GetCombatantWithFlag0x100_0200ff1c(state, data_ov004_021707d8.menu->combatant);
     freeSlots = 0;
     if (combatant) {
-        Slots02083960* slots = GetFieldAt0x150((unsigned char*)combatant);
+        Slots02083960* slots = GetFieldAt0x150_02053c6c((unsigned char*)combatant);
         if (slots) freeSlots = 8 - CountPositiveSlots02083960(slots);
     }
-    int total = SumKeyedLookups02086bf4((char*)GetPtrField0x2a04(state), data_ov004_021707d8.menu->key);
+    int total = SumKeyedLookups02086bf4((char*)GetPtrField0x2a04_02010828(state), data_ov004_021707d8.menu->key);
     int container = func_ov004_02156fd4(obj, 5);
     if (container) {
         ItemTransferContext0215db14 work;

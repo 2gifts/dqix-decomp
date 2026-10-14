@@ -28,8 +28,8 @@ struct Param2085ab8 {
     unsigned int hi14 : 4;
 };
 
-unsigned char* GetFieldAt0x150(unsigned char* obj);
-int TestBitInArray0x8ec(unsigned char* obj, int index);
+unsigned char* GetFieldAt0x150_02053c6c(unsigned char* obj);
+int TestBitInArray0x8ec_02083b00(unsigned char* obj, int index);
 float AccumulateMagicalMending02084e78(void* param0);
 int AccumulateCategorySlotBits02085ab8(unsigned char* actor, Param2085ab8* action);
 float CalculateCritRate(int deftness, float accessoryBonus, float bookBonus, float skillBonus, unsigned char hitCount);
@@ -52,13 +52,13 @@ extern "C" ARM int func_ov000_02156cc4(struct Random* rand, int attackerId, Para
     GameState* bs = GameState::GetInstance();
     float rate;
     if (IsPartyIndex(attackerId)) {
-        GameObject* attacker = GetCombatantWithFlag0x100(bs, attackerId);
-        unsigned char* battler = GetFieldAt0x150((unsigned char*)attacker);
+        GameObject* attacker = GetCombatantWithFlag0x100_0200ff1c(bs, attackerId);
+        unsigned char* battler = GetFieldAt0x150_02053c6c((unsigned char*)attacker);
         int deftness = ((Battler02156cc4*)battler)->deftness;
         float mending = AccumulateMagicalMending02084e78(battler);
         float bonus = AccumulateCategorySlotBits02085ab8(battler, action);
         rate = CalculateCritRate(deftness, mending, bonus, action->critChance / 100.0f, (unsigned char)hitCount);
-        if (TestBitInArray0x8ec(GetStatus(attacker), 0x11d)) {
+        if (TestBitInArray0x8ec_02083b00(GetStatus(attacker), 0x11d)) {
             if (func_ov000_02155a04(attacker) < 0.25f) {
                 rate *= 2.0f;
             }

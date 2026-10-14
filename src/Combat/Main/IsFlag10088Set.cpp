@@ -11,6 +11,6 @@ struct S_10088 {
 };
 
 // USA: func_02010088
-ARM int IsFlag10088Set(struct S_10088* obj) {
+ARM int IsFlag10088Set_02010088(struct S_10088* obj) {
     return (obj->inner->flags & 1) != 0;
 }

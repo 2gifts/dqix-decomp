@@ -22,16 +22,16 @@
 extern "C" void func_0202ae18(void);
 void InitStruct02013718(char* obj, int a, int b);
 extern "C" void func_02012fe4(void);
-int IsField0xcNonNegative(int* obj);
-void* GetPtrField0x468(void* obj);
+int IsField0xcNonNegative_020a3694(int* obj);
+void* GetPtrField0x468_02011584(void* obj);
 struct SearchEntry;
 struct SearchTable;
-struct SearchEntry* FindEntryByHalfwordKey(struct SearchTable* table, int key);
+struct SearchEntry* FindEntryByHalfwordKey_02099950(struct SearchTable* table, int key);
 extern "C" void func_02012de8(void);
 struct Obj0202fa00;
 extern "C" void func_02015438(void* p);
 void BlankFunction020d84f4(void);
-void SetCombatWorkFlags0x55f4(void* work, int mask);
+void SetCombatWorkFlags0x55f4_ov000_02160fa8(void* work, int mask);
 
 // USA: func_ov000_02166880
 ARM void InitAndProcessCombat02166880(unsigned char* obj) {
@@ -43,18 +43,18 @@ ARM void InitAndProcessCombat02166880(unsigned char* obj) {
     InitStruct02013718((char*)(obj + REGION_OFFSET_0 + 0xc00), (int)(obj + 8), (int)(obj + REGION_OFFSET_1 + REGION_OFFSET_2));
     func_02012fe4();
 
-    if (IsField0xcNonNegative(*(int**)(obj + REGION_OFFSET_3))) {
+    if (IsField0xcNonNegative_020a3694(*(int**)(obj + REGION_OFFSET_3))) {
         unsigned short v = *(unsigned short*)((char*)*(int**)(obj + REGION_OFFSET_3) + 0x20);
         if (v != 0) *(unsigned short*)((char*)*(int**)(obj + REGION_OFFSET_3) + 2) = v;
     }
 
-    void* table = GetPtrField0x468(battle);
-    struct SearchEntry* entry = FindEntryByHalfwordKey((struct SearchTable*)table,
+    void* table = GetPtrField0x468_02011584(battle);
+    struct SearchEntry* entry = FindEntryByHalfwordKey_02099950((struct SearchTable*)table,
         *(unsigned short*)((char*)*(int**)(obj + REGION_OFFSET_3) + 2));
     if (entry == NULL || *(unsigned short*)((char*)*(int**)(obj + REGION_OFFSET_3) + 2) == 30000) {
         *(unsigned short*)((char*)*(int**)(obj + REGION_OFFSET_3) + 2) = 0x75a4;
     }
-    ((Zone3D*)(obj + REGION_OFFSET_0 + 0xc00))->SwitchZone(*(unsigned short*)((char*)*(int**)(obj + REGION_OFFSET_3) + 2), 0);
+    ((Zone3D*)(obj + REGION_OFFSET_0 + 0xc00))->SwitchZone_0201383c(*(unsigned short*)((char*)*(int**)(obj + REGION_OFFSET_3) + 2), 0);
 
     GetCurrentTimestamp();
     for (;;) {
@@ -64,5 +64,5 @@ ARM void InitAndProcessCombat02166880(unsigned char* obj) {
         if (*(int*)(obj + 0x1000 + REGION_OFFSET_4) == 0) break;
         BlankFunction020d84f4();
     }
-    SetCombatWorkFlags0x55f4(obj, 0x10);
+    SetCombatWorkFlags0x55f4_ov000_02160fa8(obj, 0x10);
 }

@@ -12,11 +12,11 @@ struct State0xbb1c;
 struct Obj0203bb3c;
 struct Bcb8Params;
 
-void ClearFields0x8(struct State0xbb1c* obj);
+void ClearFields0x8_0203bb1c(struct State0xbb1c* obj);
 void SetupAndDispatchCharTransfer0203bb3c(struct Obj0203bb3c* obj, char* src, SafeAllocator* allocator, int category, unsigned short arg5);
-void ForwardParamsToB8bc(struct Bcb8Params* s, int arg1, int arg2);
+void ForwardParamsToB8bc_0203bcb8(struct Bcb8Params* s, int arg1, int arg2);
 int DispatchCharTransfer0203b784(int* arr1, int idx, int category, int addr, unsigned int len, unsigned int len2);
-void* GetData02105254(void);
+void* GetData02105254_0203b628(void);
 
 struct CharTileTask_02020fc4 {
     char pad0[0x14];
@@ -37,7 +37,7 @@ typedef int* TaskHandle02020fc4;
 // USA: func_02020fc4
 extern "C" ARM void func_02020fc4(struct CharTileTask_02020fc4* task, TaskHandle02020fc4 taskID, SafeAllocator* allocator) {
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
-    int* charTable = (int*)GetData02105254();
+    int* charTable = (int*)GetData02105254_0203b628();
 
     if (task->state == 3) {
         task->totalSize = 0;
@@ -45,14 +45,14 @@ extern "C" ARM void func_02020fc4(struct CharTileTask_02020fc4* task, TaskHandle
         void* fileData = 0;
         unsigned int fileLength = 0;
         loader->GetLoadedFileByID((IS_JPN ? (int)taskID : *(int*)taskID), &fileData, &fileLength);
-        ClearFields0x8((struct State0xbb1c*)((char*)task + 0x78));
+        ClearFields0x8_0203bb1c((struct State0xbb1c*)((char*)task + 0x78));
         SetupAndDispatchCharTransfer0203bb3c((struct Obj0203bb3c*)((char*)task + 0x78), (char*)fileData, allocator, 1, 1);
 
         int row;
         for (row = 0; row < 0x20 / task->tileHeight; row++) {
             int col;
             for (col = 0; col < 0x20 / task->tileWidth; col++) {
-                ForwardParamsToB8bc((struct Bcb8Params*)((char*)task + 0x78),
+                ForwardParamsToB8bc_0203bcb8((struct Bcb8Params*)((char*)task + 0x78),
                                     col * task->tileWidth, row * task->tileHeight);
             }
         }

@@ -35,7 +35,7 @@ struct Self021b71d8 {
 
 extern "C" Holder021b71d8* func_02012fe4(void);
 extern "C" void func_020a0cc4(unsigned int size);
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 extern AllocatorUnion data_02114e20;
 extern "C" void func_ov000_0215ce80(Context021b71d8* context);
 extern "C" void func_ov000_0215fab0(Context021b71d8* context, unsigned char value);
@@ -46,7 +46,7 @@ extern "C" ARM void func_ov017_021b71d8(Self021b71d8* self) {
     Holder021b71d8* holder = func_02012fe4();
     EmptyStub02012de4(&data_02114e20);
     func_020a0cc4(regionalOffset0);
-    self->allocator.CreateTypeA(AllocateAligned4(&data_02114e20, regionalOffset0), regionalOffset0);
+    self->allocator.CreateTypeA(AllocateAligned4_02012d88(&data_02114e20, regionalOffset0), regionalOffset0);
     self->id = holder->id;
     self->context = (Context021b71d8*)self->allocator.Allocate(sizeof(Context021b71d8));
     func_ov000_0215ce80(self->context);

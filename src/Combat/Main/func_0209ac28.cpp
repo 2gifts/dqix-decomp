@@ -23,13 +23,13 @@ struct Field150_0209ac28 {
     int slot;
 };
 
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 
 // USA: func_0209ac28
 extern "C" ARM int func_0209ac28(struct Holder0209ac28* h, unsigned char* path, int key) {
     if (&h->base->slots[0].pairs[0] == NULL) return 0;
     if (&h->base->counts[0] == NULL) return 0;
-    struct Field150_0209ac28* f = (struct Field150_0209ac28*)GetFieldAt0x150(path);
+    struct Field150_0209ac28* f = (struct Field150_0209ac28*)GetFieldAt0x150_02053c6c(path);
     if (f == 0) return 0;
     int slot = f->slot & 0xff;
     int lim = *(unsigned short*)((unsigned char*)f + slot * 2 + 0x100 + 0x6c) & 0xff;

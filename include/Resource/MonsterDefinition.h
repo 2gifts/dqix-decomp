@@ -54,18 +54,18 @@ typedef int (*BinarySearchByComparatorFn)(void*);
 
 #if defined(jpn)
 #define GetEntryArrayByteSize func_02070248
-#define InvokeCallbackForEachEntry func_02070260
+#define InvokeCallbackForEachEntry_0206f110 func_02070260
 #define InitEntryListFromSource0206f170 func_020702c0
-#define BinarySearchByComparator func_02070530
-#define RelocateThreeFields func_020700ac
+#define BinarySearchByComparator_0206f470 func_02070530
+#define RelocateThreeFields_0206ef48 func_020700ac
 #define func_0206ef94 func_020700e4
 extern "C" {
 #endif
 int GetEntryArrayByteSize(Header0206f0f8*);
-int InvokeCallbackForEachEntry(List0206f170*, MonsterDefinitionVisitor);
+int InvokeCallbackForEachEntry_0206f110(List0206f170*, MonsterDefinitionVisitor);
 int InitEntryListFromSource0206f170(List0206f170*, Src0206f170*, unsigned char*, MonsterDefinitionVisitor);
-void* BinarySearchByComparator(BinarySearchByComparatorStruct*, int, BinarySearchByComparatorFn);
-int RelocateThreeFields(List0206f170*, MonsterDefinition*);
+void* BinarySearchByComparator_0206f470(BinarySearchByComparatorStruct*, int, BinarySearchByComparatorFn);
+int RelocateThreeFields_0206ef48(List0206f170*, MonsterDefinition*);
 #if defined(jpn)
 }
 #endif
@@ -75,4 +75,4 @@ int RelocateThreeFields(List0206f170*, MonsterDefinition*);
 
 extern "C" char* func_0206ef94(List0206f170*, char*, char*);
 extern "C" void func_0206f01c(List0206f170*, SafeAllocator*, Src0206f170*, unsigned int);
-int GetShortAt0x8(void*);
+int GetShortAt0x8_0206ef40(void*);

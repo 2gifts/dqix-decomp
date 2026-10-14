@@ -2,7 +2,7 @@
 
 int SetEntryFlagById02080b40(void* obj, int id);
 int SetEntryFlagById02080b2c(void* obj, int id);
-void SetEntryHalfword0xe(void* obj, int id, int value);
+void SetEntryHalfword0xe_0208103c(void* obj, int id, int value);
 void SetSublistEntryField14LowBits_02080798(void* obj, int id, int value);
 struct Container02080cc0;
 void SetEntryHighNibble0x13(struct Container02080cc0* obj, int id, int value);
@@ -28,7 +28,7 @@ extern "C" ARM void func_ov003_02167fa4(void* arg0, int flag, unsigned char* tab
             int nibble = 0xf;
             if (byteVal == 0x64) nibble = 0xd;
             SetEntryHighNibble0x13((struct Container02080cc0*)obj, idB, nibble);
-            SetEntryHalfword0xe(obj, idA, adj);
+            SetEntryHalfword0xe_0208103c(obj, idA, adj);
 #if !defined(jpn)
             SetSublistEntryField14LowBits_02080798(obj, idA, 1);
 #endif

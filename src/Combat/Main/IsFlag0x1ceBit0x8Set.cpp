@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_02039dcc
-ARM unsigned int IsFlag0x1ceBit0x8Set(unsigned char* obj) {
+ARM unsigned int IsFlag0x1ceBit0x8Set_02039dcc(unsigned char* obj) {
 #if defined(jpn)
     return obj[0x1c2] & 0x8;
 #else

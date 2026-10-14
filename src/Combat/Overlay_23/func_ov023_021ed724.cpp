@@ -5,14 +5,14 @@
 int LoadBattleBlock020ac460(void* dst);
 int LoadBattleBlock020ac4c0(void* dst);
 int SetBattleFlagBits020ac3c8(unsigned int* dst, short* indices, int count);
-int CopyInBattleField0x7540(void* src);
+int CopyInBattleField0x7540_020ac494(void* src);
 
 struct S_a03c4 {
     char pad[0x10];
     unsigned int val : 9;
     unsigned int hi : 23;
 };
-void AddClamped9BitFieldAt0x10(struct S_a03c4* p, unsigned int amount);
+void AddClamped9BitFieldAt0x10_020a03c4(struct S_a03c4* p, unsigned int amount);
 
 // USA: func_ov023_021ed724
 extern "C" ARM int func_ov023_021ed724(void* obj, short* src, int count) {
@@ -35,7 +35,7 @@ extern "C" ARM int func_ov023_021ed724(void* obj, short* src, int count) {
     if (((struct S_a03c4*)block)->val == 0) {
         flag |= 1;
     }
-    AddClamped9BitFieldAt0x10((struct S_a03c4*)block, count);
-    CopyInBattleField0x7540(block);
+    AddClamped9BitFieldAt0x10_020a03c4((struct S_a03c4*)block, count);
+    CopyInBattleField0x7540_020ac494(block);
     return flag;
 }

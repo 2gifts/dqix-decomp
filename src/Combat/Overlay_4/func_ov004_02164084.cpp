@@ -107,7 +107,7 @@ extern "C" MapAllocatorNode* func_ov011_021845f8(void*, int);
 void SetField3aIfFound_021634b8(void*, int, int);
 extern "C" void _Z26SetCellIfInBounds_021f9b30P12Grid021f9b30sjj(Grid021f9b30*, unsigned short, unsigned int, unsigned int);
 void ClearNodeMaskById_021f6600(void*, int, int);
-int CopyToRegion0x6482IfDst(char*, void*);
+int CopyToRegion0x6482IfDst_020119f8(char*, void*);
 struct Info02011930;
 int GetAndConsumeNameEntries02011930(void*, Info02011930*, void*, void*);
 
@@ -175,7 +175,7 @@ extern "C" ARM int func_ov004_02164084(void* obj) {
         } else if (det->discoveryState_ == 3) {
             ClearNodeMaskById_021f6600(obj, i + 0x23a, 8);
         }
-        if (CopyToRegion0x6482IfDst((char*)gs, 0)) {
+        if (CopyToRegion0x6482IfDst_020119f8((char*)gs, 0)) {
             if (det->discoveryState_ == 1) {
                 left->Notify(4);
                 right->Notify(4);

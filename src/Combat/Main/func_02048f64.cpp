@@ -28,7 +28,7 @@ struct FormationPathActor {
     FormationPathState* path;
 };
 
-int GetSubstructByte0x56(unsigned char*);
+int GetSubstructByte0x56_02049ee8(unsigned char*);
 struct Obj020494c0;
 void DispatchTargetByte020494c0(Obj020494c0*);
 struct Foo02033b58;
@@ -41,7 +41,7 @@ struct Obj02049a74;
 void ApplyFlag0x4IfEligible02049a74(Obj02049a74*);
 struct Obj02048c90;
 void ResetInnerState02048c90(Obj02048c90*);
-void SetSubstructByte0x1c(unsigned char*, unsigned char);
+void SetSubstructByte0x1c_02049390(unsigned char*, unsigned char);
 struct Bytes02033b88;
 void SetByte0xbeShiftPrev(Bytes02033b88*, int);
 struct Obj02033834;
@@ -117,14 +117,14 @@ extern "C" ARM void func_02048f64(FormationPathActor* actor) {
     fix32_t remaining = FIX32_MULTIPLY((lastIndex << 12) - progress, 0x333);
     if (remaining < advance) {
         advance = remaining;
-        if (GetSubstructByte0x56((unsigned char*)actor)) {
+        if (GetSubstructByte0x56_02049ee8((unsigned char*)actor)) {
             if (actor->unknownBe != 0) {
                 DispatchTargetByte020494c0((Obj020494c0*)actor);
             }
             SetByteSavingPrevious((Foo02033b58*)actor, 0);
             keepFacing = 0;
         }
-    } else if (GetSubstructByte0x56((unsigned char*)actor)) {
+    } else if (GetSubstructByte0x56_02049ee8((unsigned char*)actor)) {
         SetByteIfChanged02033b68((Obj02033b68*)actor, 1);
     }
 
@@ -142,14 +142,14 @@ extern "C" ARM void func_02048f64(FormationPathActor* actor) {
         target = func_ov025_021ee488(points, n, progress + advance);
     } else {
         target = points[lastIndex];
-        if (GetSubstructByte0x56((unsigned char*)actor) && (actor->path->flags & 0x40)) {
+        if (GetSubstructByte0x56_02049ee8((unsigned char*)actor) && (actor->path->flags & 0x40)) {
             ClearSubFieldsAndFlag02049520((Obj02049520*)actor);
             ApplyFlag0x4IfEligible02049a74((Obj02049a74*)actor);
         }
         ResetInnerState02048c90((Obj02048c90*)actor);
         ((Object3D*)actor)->SetAnimationPlaybackSpeed(0x1000, 500);
-        SetSubstructByte0x1c((unsigned char*)actor, path->cell1d);
-        if (GetSubstructByte0x56((unsigned char*)actor) && actor->unknownBe == 1) {
+        SetSubstructByte0x1c_02049390((unsigned char*)actor, path->cell1d);
+        if (GetSubstructByte0x56_02049ee8((unsigned char*)actor) && actor->unknownBe == 1) {
             SetByte0xbeShiftPrev((Bytes02033b88*)actor, 0);
         }
         DispatchTargetByte020494c0((Obj020494c0*)actor);

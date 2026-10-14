@@ -2,7 +2,7 @@
 #include "System/Memory.h"
 
 // USA: func_020119f8
-ARM unsigned char CopyToRegion0x6482IfDst(char* obj, void* dst) {
+ARM unsigned char CopyToRegion0x6482IfDst_020119f8(char* obj, void* dst) {
     if (dst != NULL) {
 #if defined(jpn)
         VectorizedInvertedMemcpy(obj + 0x6202, dst, 0x1c);

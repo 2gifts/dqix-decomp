@@ -4,9 +4,9 @@
 enum { kMenuPrefix=0x10 };
 extern "C" void func_02046380(void*);
 struct StoreStruct;
-void StoreInArray0x8b0(StoreStruct*,int,int);
-void SetByteInRange(unsigned char*,int,unsigned char);
-void SetByteAtIndex(unsigned char*,int,unsigned char);
+void StoreInArray0x8b0_020465c0(StoreStruct*,int,int);
+void SetByteInRange_020465f0(unsigned char*,int,unsigned char);
+void SetByteAtIndex_020465d8(unsigned char*,int,unsigned char);
 extern "C" void func_02042428(char*, int);
 #else
 enum { kMenuPrefix=0x14 };
@@ -41,12 +41,12 @@ extern "C" void __clear(void* buf, int n);
 int GetActiveScaledSum0205d794(struct Struct_0205c570* s);
 int AppendFrameTag02041c08(char* dst, int a1, int a2, int a3, int a4, int a5);
 int GetFieldByKey020e0434(struct Container020e0310* c, int key);
-int AppendNameTag(char* dst, int n, const char* name);
+int AppendNameTag_02041b70(char* dst, int n, const char* name);
 int AppendString02042058(char* dst, const char* src);
 unsigned char* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
-void SetField0xd8State(unsigned char* elem, int state);
-void SetByte0xd9AndFlag0x2(unsigned char* elem, unsigned char value);
-void SetByte0xdaAndFlag0x2(unsigned char* elem, int value);
+void SetField0xd8State_02050400(unsigned char* elem, int state);
+void SetByte0xd9AndFlag0x2_0205042c(unsigned char* elem, unsigned char value);
+void SetByte0xdaAndFlag0x2_02050440(unsigned char* elem, int value);
 extern const char data_ov003_02180c7f[];
 
 // USA: func_ov003_0217dfb4
@@ -71,7 +71,7 @@ extern "C" ARM void func_ov003_0217dfb4(struct ListMenu0217dfb4* menu) {
     }
     for (i = page * 6; i < end; i++) {
         const char* name = (const char*)GetFieldByKey020e0434((struct Container020e0310*)menu->names, (short)(menu->items[i] + 100));
-        AppendNameTag(buf, i % 6, name);
+        AppendNameTag_02041b70(buf, i % 6, name);
         if (i != end - 1) {
             AppendString02042058(buf, data_ov003_02180c7f);
         }
@@ -79,20 +79,20 @@ extern "C" ARM void func_ov003_0217dfb4(struct ListMenu0217dfb4* menu) {
     if (menu->field32 > 1) {
 #if defined(jpn)
         func_02046380((void*)global);
-        StoreInArray0x8b0((StoreStruct*)global, 0, page + 1);
-        StoreInArray0x8b0((StoreStruct*)global, 1, menu->field32);
-        SetByteInRange((unsigned char*)global, 0, 2);
-        SetByteInRange((unsigned char*)global, 1, 2);
-        SetByteAtIndex((unsigned char*)global, 0, 1);
-        SetByteAtIndex((unsigned char*)global, 1, 0);
+        StoreInArray0x8b0_020465c0((StoreStruct*)global, 0, page + 1);
+        StoreInArray0x8b0_020465c0((StoreStruct*)global, 1, menu->field32);
+        SetByteInRange_020465f0((unsigned char*)global, 0, 2);
+        SetByteInRange_020465f0((unsigned char*)global, 1, 2);
+        SetByteAtIndex_020465d8((unsigned char*)global, 0, 1);
+        SetByteAtIndex_020465d8((unsigned char*)global, 1, 0);
         func_02042428(buf, 8);
         AppendString02042058(buf, (const char*)GetFieldByKey020e0434((Container020e0310*)menu->names, 0xc8));
 #else
         unsigned char* elem = FindElementByC40205d81c((struct Struct_0205d81c*)menu->window, 0);
         if (elem != NULL) {
-            SetField0xd8State(elem, 1);
-            SetByte0xd9AndFlag0x2(elem, page);
-            SetByte0xdaAndFlag0x2(elem, menu->field32);
+            SetField0xd8State_02050400(elem, 1);
+            SetByte0xd9AndFlag0x2_0205042c(elem, page);
+            SetByte0xdaAndFlag0x2_02050440(elem, menu->field32);
         }
 #endif
     }

@@ -3,7 +3,7 @@
 #include "std_library_functions.h"
 
 // USA: func_020ac0dc
-ARM int ClearBattleRegion0x7ac4() {
+ARM int ClearBattleRegion0x7ac4_020ac0dc() {
     GameState* bs = GameState::GetInstance();
 #if defined(jpn)
     memset((char*)bs + 0x7884, 0, 0x3ae);

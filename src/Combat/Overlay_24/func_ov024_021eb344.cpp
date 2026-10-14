@@ -20,7 +20,7 @@ static inline unsigned short GetMaxHP(GameObject* obj) {
 
 // USA: func_ov024_021eb344
 extern "C" ARM int func_ov024_021eb344(void* self, int id, int damage) {
-    GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), id);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), id);
     if (combatant == 0) return 0;
     if (damage <= 0) return 0;
     unsigned short maxHP = GetMaxHP(combatant);

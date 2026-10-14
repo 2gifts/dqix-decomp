@@ -4,7 +4,7 @@ extern "C" void func_02042428(char*, int);
 #endif
 
 struct TableA68;
-extern void* FindEntryByKey(struct TableA68* table, int key);
+extern void* FindEntryByKey_02072a68(struct TableA68* table, int key);
 int AppendString02042058(char* dst, const char* src);
 
 // USA: func_ov023_021e8ef8
@@ -16,6 +16,6 @@ ARM void AppendEntryByKey_021e8ef8_021e8ef8(void* obj) {
     func_02042428(dst, 12);
     t = *(struct TableA68**)((char*)obj + 0x5f4);
 #endif
-    void* entry = FindEntryByKey(t, 0x77);
+    void* entry = FindEntryByKey_02072a68(t, 0x77);
     AppendString02042058(dst, (const char*)entry);
 }

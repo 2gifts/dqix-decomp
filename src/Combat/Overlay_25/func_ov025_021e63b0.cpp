@@ -50,8 +50,8 @@ char* GetArrayEntry_021e8a64_021e8a64(char*);
 void PushLogNode021e8bac(Obj021e8bac*, Node021e8bac*);
 void RestorePairTables0207df90(char*);
 void BackupPairTables0207dfac(char*);
-void RegisterCombatantSlot(GameState*, int, GameObject*);
-CloneWork* GetActiveCombatWork();
+void RegisterCombatantSlot_0200fd38(GameState*, int, GameObject*);
+CloneWork* GetActiveCombatWork_ov000_02160130();
 extern "C" void func_ov017_02191aac(GameResources*, int, int, int);
 
 // USA: func_ov025_021e63b0
@@ -61,7 +61,7 @@ extern "C" ARM int func_ov025_021e63b0(void* unused, CloneTargets* targets) {
     if (data_ov025_021ef988.state == 0) {
         if (!targets->head) return 1;
         int id = targets->head->id;
-        GameObject* source = GetCombatantWithFlag0x100(game, id);
+        GameObject* source = GetCombatantWithFlag0x100_0200ff1c(game, id);
         if (!source) {
             ResetStruct_021e3158(&data_ov025_021ef9a8);
             return 1;
@@ -113,12 +113,12 @@ extern "C" ARM int func_ov025_021e63b0(void* unused, CloneTargets* targets) {
         RestorePairTables0207df90(tables);
         clone->SetModelFromFileCopy(allocator, file, size, Model3D::TextureStagingMode_Normal);
         BackupPairTables0207dfac(tables);
-        RegisterCombatantSlot(game, 0xc8, (GameObject*)clone);
+        RegisterCombatantSlot_0200fd38(game, 0xc8, (GameObject*)clone);
         clone->MakeHidden();
         int sourceId = targets->head->id;
-        CloneWork* work = GetActiveCombatWork();
+        CloneWork* work = GetActiveCombatWork_ov000_02160130();
         if (work) work->source = sourceId;
-        GameObject* source = GetCombatantWithFlag0x100(game, sourceId);
+        GameObject* source = GetCombatantWithFlag0x100_0200ff1c(game, sourceId);
         if (source) {
             clone->position_ = source->obj3D_.position_;
             clone->rotation_ = source->obj3D_.rotation_;

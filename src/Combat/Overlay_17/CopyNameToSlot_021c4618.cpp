@@ -23,7 +23,7 @@ struct CombatantNameView {
 ARM void CopyNameToSlot_021c4618(int unused0, char* source, GameState* game, GameResources* resources) {
     PartyNameEvent* event = (PartyNameEvent*)source;
     unsigned char partyIndex = event->combatantId;
-    GameObject* combatant = GetCombatantWithFlag0x100(game, partyIndex);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(game, partyIndex);
     if (combatant == NULL) return;
 #if defined(jpn)
     sprintf(((CombatantNameView*)combatant)->displayName, &data_020ef078, event->name);

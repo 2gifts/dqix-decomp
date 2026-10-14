@@ -31,14 +31,14 @@ StoreStruct* GetGlobalField0x1c020421a0();
 extern "C" PersistentLootState* func_02012fe4();
 extern "C" unsigned char* func_0205ec34();
 int IsField10Eq2_0218d618(Struct0218d618*);
-void* AllocateAligned4(AllocatorUnion*, unsigned int);
-void MaybeInvoke0204719c(Foo02048004*);
+void* AllocateAligned4_02012d88(AllocatorUnion*, unsigned int);
+void MaybeInvoke0204719c_02047230(Foo02048004*);
 void CopyState0207dfc8(State0207dfc8*, State0207dfc8*);
 void RestorePairTables0207df90(char*);
 void BackupPairTables0207dfac(char*);
 void Forward02047b30(void*, int, int, int);
-int TestBitInByteArray(int, unsigned char*, int);
-void SetOrClearBitInArray(void*, unsigned char*, int, int);
+int TestBitInByteArray_0206dfb0(int, unsigned char*, int);
+void SetOrClearBitInArray_0206df6c(void*, unsigned char*, int, int);
 extern "C" void func_ov017_021cdb00(int, int, int, int);
 extern "C" void __clear(void*, int);
 void* ZeroInitReturn020de824(void*);
@@ -73,10 +73,10 @@ extern "C" ARM int func_ov017_021bf9a0(LootEvent* self) {
             void* file = 0;
             unsigned int length = 0;
             loader->GetLoadedFileByID(self->taskId, &file, &length);
-            void* buffer = AllocateAligned4(&data_02114e20, 256);
+            void* buffer = AllocateAligned4_02012d88(&data_02114e20, 256);
             if (file && buffer) {
                 self->allocator.CreateTypeA(buffer, 256);
-                MaybeInvoke0204719c(self->display);
+                MaybeInvoke0204719c_02047230(self->display);
                 func_0204719c(self->display);
                 State0207dfc8 saved;
                 CopyState0207dfc8((State0207dfc8*)&GetResourceStateBuffer(func_ov017_0218b5b0(), 0x230), &saved);
@@ -94,8 +94,8 @@ extern "C" ARM int func_ov017_021bf9a0(LootEvent* self) {
     if (container) {
         int id = container->uniqueID;
         int flagIndex = id + 0x79e;
-        if (!TestBitInByteArray((int)flags, flags + 0x8c, flagIndex)) {
-            SetOrClearBitInArray(flags, flags + 0x8c, flagIndex, 1);
+        if (!TestBitInByteArray_0206dfb0((int)flags, flags + 0x8c, flagIndex)) {
+            SetOrClearBitInArray_0206df6c(flags, flags + 0x8c, flagIndex, 1);
             func_ov017_021cdb00(8, id, 1, -1);
             char text[128] = {};
             PersistentLootState* state = func_02012fe4();

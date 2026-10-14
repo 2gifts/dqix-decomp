@@ -3,7 +3,7 @@
 #include "GameState/GameState.h"
 
 extern "C" int func_020ab7a8(void* obj, int flag);
-void SetByte0x4(char* obj, unsigned char value);
+void SetByte0x4_0200fb94(char* obj, unsigned char value);
 void* GetDataPtr02114e04_020d6c00(void);
 struct FlagWord020466f4;
 void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int mask);
@@ -42,7 +42,7 @@ extern "C" ARM int func_ov004_0216e258(void* a) {
     int state = func_020ab7a8((void*)data_ov004_02171034.ptr10, 0);
     int ret = 1;
     if (state == 5) {
-        SetByte0x4((char*)battle, 5);
+        SetByte0x4_0200fb94((char*)battle, 5);
         ClearFlags020466f4((struct FlagWord020466f4*)GetDataPtr02114e04_020d6c00(), 0x80);
         data_ov004_02171034.flag2 = 0;
         data_ov004_02171034.ptr10[1] = 0;

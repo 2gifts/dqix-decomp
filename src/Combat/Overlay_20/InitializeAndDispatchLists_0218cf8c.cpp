@@ -2,13 +2,13 @@
 #include "Memory/SafeAllocator.h"
 #include "Filesystem/BackgroundLoader.h"
 
-void EncodeSignFlaggedHalfword(short* out, int value);
+void EncodeSignFlaggedHalfword_020c39a0(short* out, int value);
 
 extern "C" void MapVRAMBanksToMainBG(int);
 extern "C" void func_ov020_0218c7bc(int, int, int, int, int);
 struct List0204af64;
 void ResetList0204af64(List0204af64*);
-void SetWord0x18ClearByte0x1f(unsigned char*, int);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char*, int);
 extern "C" void func_0204b5b4(void*, int);
 struct AllocTarget0204b12c;
 void AllocateAndClearBuffer0204b12c(AllocTarget0204b12c*, SafeAllocator*);
@@ -58,7 +58,7 @@ extern "C" ARM void func_ov020_0218cf8c(struct SetupContext0218cf8c* self) {
     func_ov020_0218c7bc(0, 0, 0x1f, 2, 0);
 
     ResetList0204af64((List0204af64*)(base + regionalOffset0 + 0x400));
-    SetWord0x18ClearByte0x1f((unsigned char*)(base + regionalOffset0 + 0x400), 0);
+    SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)(base + regionalOffset0 + 0x400), 0);
     base[regionalOffset1] = base[regionalOffset1] & ~0xf;
     base[regionalOffset1] = (base[regionalOffset1] & ~0xf0) | 0x10;
     func_0204b5b4(base + regionalOffset0 + 0x400, 0);
@@ -70,7 +70,7 @@ extern "C" ARM void func_ov020_0218cf8c(struct SetupContext0218cf8c* self) {
     func_ov020_0218cd64(0, 0, 1, 1, 0);
 
     ResetList0204af64((List0204af64*)(base + regionalOffset3 + 0x400));
-    SetWord0x18ClearByte0x1f((unsigned char*)(base + regionalOffset3 + 0x400), 0);
+    SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)(base + regionalOffset3 + 0x400), 0);
     base[regionalOffset2] = (base[regionalOffset2] & ~0xf) | 1;
     base[regionalOffset2] = base[regionalOffset2] & ~0xf0;
     func_0204b5b4(base + regionalOffset3 + 0x400, 0);
@@ -134,6 +134,6 @@ extern "C" ARM void func_ov020_0218cf8c(struct SetupContext0218cf8c* self) {
     volatile unsigned int* reg1000 = (volatile unsigned int*)0x4001000;
     *reg1000 = (*reg1000 & ~0x1f00) | 0x100;
 
-    EncodeSignFlaggedHalfword((short*)0x400006c, -16);
-    EncodeSignFlaggedHalfword((short*)0x400106c, -16);
+    EncodeSignFlaggedHalfword_020c39a0((short*)0x400006c, -16);
+    EncodeSignFlaggedHalfword_020c39a0((short*)0x400106c, -16);
 }

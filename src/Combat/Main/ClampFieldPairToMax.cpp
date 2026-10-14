@@ -10,7 +10,7 @@ struct ClampFieldPairStruct {
 };
 
 // USA: func_020863e0
-ARM void ClampFieldPairToMax(struct ClampFieldPairStruct* s) {
+ARM void ClampFieldPairToMax_020863e0(struct ClampFieldPairStruct* s) {
     if (s->f6c < s->f1c) s->f1c = s->f6c;
     if (s->f6e < s->f1e) s->f1e = s->f6e;
 }

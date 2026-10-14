@@ -14,7 +14,7 @@ struct SkillRecord_021f87dc {
 };
 
 int IsCombatantFlag2Mask512_021eadfc(GameObject* combatant);
-unsigned int AdjustValueByFieldFlag(void* obj, unsigned int val);
+unsigned int AdjustValueByFieldFlag_020dd290(void* obj, unsigned int val);
 
 // USA: func_ov024_021f87dc
 extern "C" ARM int func_ov024_021f87dc(GameObject* combatant, SkillRecord_021f87dc* skill, int* cost) {
@@ -28,7 +28,7 @@ extern "C" ARM int func_ov024_021f87dc(GameObject* combatant, SkillRecord_021f87
                 *cost = combatant->currentStats_->primaryStats.currMP;
             }
         } else {
-            *cost = AdjustValueByFieldFlag(combatant, *cost);
+            *cost = AdjustValueByFieldFlag_020dd290(combatant, *cost);
         }
     }
     return *cost;

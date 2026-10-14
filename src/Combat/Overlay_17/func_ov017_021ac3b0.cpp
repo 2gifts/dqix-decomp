@@ -51,8 +51,8 @@ void CancelPendingAction020397cc(Obj020397cc*, int);
 extern "C" int func_ov017_021959b4();
 void ReinitController02043204(char*);
 extern "C" void func_ov017_021ac32c(Event021ac3b0*);
-int GetFieldIfFlag4(char*);
-void SetFlagsAt0x244(unsigned char*, unsigned char);
+int GetFieldIfFlag4_020100f8(char*);
+void SetFlagsAt0x244_020a28a0(unsigned char*, unsigned char);
 void DispatchWithShortB4_0205eaa0(Obj0205eaa0*, int, int);
 void* GetGlobalResetObj020d7a50();
 int GetByte0x150Bit6(BitFlags020d805c*);
@@ -65,19 +65,19 @@ extern "C" void func_0204500c(void*, const char*, int, int);
 extern "C" void func_020a0cc4(unsigned int);
 void SetVecYByMode02033834(Obj02033834*, int);
 extern "C" void func_020a0c0c();
-void* AllocateAligned4(AllocatorUnion*, unsigned int);
+void* AllocateAligned4_02012d88(AllocatorUnion*, unsigned int);
 void InitAndRunScript_021acc8c(void*, StreamHeader*, int, int);
 extern "C" Flags021ac3b0* func_0205ec34();
-int TestBitInByteArray(int, unsigned char*, int);
+int TestBitInByteArray_0206dfb0(int, unsigned char*, int);
 void AppendString02042058(char*, const char*);
-const char* CallFunc020e0434With02153694(int);
-char* GetData02108d18();
+const char* CallFunc020e0434With02153694_020e51cc(int);
+char* GetData02108d18_0206f504();
 void Init0206f510(char*);
 extern "C" void func_0206f550(char*, char*, char*);
 extern "C" int func_020ac2d4(int, void*, Item021ac3b0*, int);
 extern "C" void func_020ac104(int, Item021ac3b0*, int);
-void SetOrClearBitInArray(void*, unsigned char*, int, int);
-void SetByteField0x253(void*);
+void SetOrClearBitInArray_0206df6c(void*, unsigned char*, int, int);
+void SetByteField0x253_020397c0(void*);
 int LookupAndForEachNode020649b0(void*, int, void*);
 extern "C" void func_0206f81c(Lookup021ac3b0*);
 extern Obj0205eaa0 data_02108760;
@@ -97,15 +97,15 @@ extern "C" ARM void func_ov017_021ac3b0(Event021ac3b0* self) {
     Zone021ac3b0* zone = func_02012fe4();
     Controller021ac3b0* controller = GetGlobalField0x1c020421a0();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
-    FontBankLoader* global = GetGlobal02109400();
+    FontBankLoader* global = GetGlobal02109400_02094a00();
     CancelPendingAction020397cc((Obj020397cc*)leader, 1);
     if (!self->cancelled && func_ov017_021959b4()) {
         self->cancelled = 1; ReinitController02043204((char*)controller);
         func_ov017_021ac32c(self); self->done = 1; return;
     }
     if (self->stage == 0) {
-        int actor = GetFieldIfFlag4((char*)game);
-        if (actor) SetFlagsAt0x244((unsigned char*)actor, 3);
+        int actor = GetFieldIfFlag4_020100f8((char*)game);
+        if (actor) SetFlagsAt0x244_020a28a0((unsigned char*)actor, 3);
         DispatchWithShortB4_0205eaa0(&data_02108760, 1, 0);
         void* reset = GetGlobalResetObj020d7a50();
         if (GetByte0x150Bit6((BitFlags020d805c*)reset)) TeardownAndResetState020d7aa0((Obj020d7aa0*)reset);
@@ -144,7 +144,7 @@ extern "C" ARM void func_ov017_021ac3b0(Event021ac3b0* self) {
         }
         void* file; unsigned int length;
         loader->GetLoadedFileByID(self->task, &file, &length);
-        self->allocator.CreateTypeA(AllocateAligned4(&data_02114e20, 0x2800), 0x2800);
+        self->allocator.CreateTypeA(AllocateAligned4_02012d88(&data_02114e20, 0x2800), 0x2800);
         self->allocator.Reset();
         Zone021ac3b0* state = func_02012fe4();
         ScriptInfo021ac3b0* info = (ScriptInfo021ac3b0*)self->allocator.Allocate(0x18);
@@ -163,9 +163,9 @@ extern "C" ARM void func_ov017_021ac3b0(Event021ac3b0* self) {
             const char* message = self->info->text;
             if (self->info->kind == 1) {
                 Flags021ac3b0* flags = func_0205ec34();
-                if (TestBitInByteArray((int)flags, flags->bits, 0x777)) {
+                if (TestBitInByteArray_0206dfb0((int)flags, flags->bits, 0x777)) {
                     message = self->info->alternateText;
-                    if (TestBitInByteArray((int)flags, flags->bits, self->info->index + 0x114c) && self->info->completedText)
+                    if (TestBitInByteArray_0206dfb0((int)flags, flags->bits, self->info->index + 0x114c) && self->info->completedText)
                         message = self->info->completedText;
                 }
             }
@@ -174,11 +174,11 @@ extern "C" ARM void func_ov017_021ac3b0(Event021ac3b0* self) {
             else AppendString02042058(text, data_ov017_021d7eb0);
         } else AppendString02042058(text, data_ov017_021d7ed2);
 #else
-            else AppendString02042058(text, CallFunc020e0434With02153694(0x3f2));
-        } else AppendString02042058(text, CallFunc020e0434With02153694(0x53));
+            else AppendString02042058(text, CallFunc020e0434With02153694_020e51cc(0x3f2));
+        } else AppendString02042058(text, CallFunc020e0434With02153694_020e51cc(0x53));
 #endif
         if (strlen(text) >= kTextBufferCapacity) text[kTextBufferCapacity - 1] = 0;
-        char* data = GetData02108d18();
+        char* data = GetData02108d18_0206f504();
         Init0206f510(data); func_0206f550(data, text, formatted);
 #if defined(jpn)
         func_0204500c(controller, formatted, 0);
@@ -189,8 +189,8 @@ extern "C" ARM void func_ov017_021ac3b0(Event021ac3b0* self) {
     } else if (self->stage == 5) {
         if (controller->active) return;
         Flags021ac3b0* flags = func_0205ec34();
-        if (TestBitInByteArray((int)flags, flags->bits, 0x777) && self->info->kind == 1 &&
-            !TestBitInByteArray((int)flags, flags->bits, self->info->index + 0x114c)) {
+        if (TestBitInByteArray_0206dfb0((int)flags, flags->bits, 0x777) && self->info->kind == 1 &&
+            !TestBitInByteArray_0206dfb0((int)flags, flags->bits, self->info->index + 0x114c)) {
             unsigned char count = self->info->count;
             if (count) {
                 Item021ac3b0* items = (Item021ac3b0*)self->allocator.Allocate(count * 4);
@@ -202,14 +202,14 @@ extern "C" ARM void func_ov017_021ac3b0(Event021ac3b0* self) {
                     func_020ac104(0, items, count);
                 }
             }
-            SetOrClearBitInArray(flags, flags->bits, self->info->index + 0x114c, 1);
+            SetOrClearBitInArray_0206df6c(flags, flags->bits, self->info->index + 0x114c, 1);
         }
-        FontBankLoader* state = GetGlobal02109400(); func_02094ab0(state);
+        FontBankLoader* state = GetGlobal02109400_02094a00(); func_02094ab0(state);
         BlankFunction02094b34(state, 0x6f, 0x1388, 1, 1);
         self->stage = 6;
     } else if (self->stage == 6) {
-        if (!AlwaysTrue02094b4c(GetGlobal02109400())) return;
-        func_ov017_021ac32c(self); SetByteField0x253(leader); self->done = 1;
+        if (!AlwaysTrue02094b4c(GetGlobal02109400_02094a00())) return;
+        func_ov017_021ac32c(self); SetByteField0x253_020397c0(leader); self->done = 1;
         Flags021ac3b0* flags = func_0205ec34();
         Lookup021ac3b0 lookup;
         lookup.zone = zone->id; lookup.key = self->source->id;

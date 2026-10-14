@@ -28,8 +28,8 @@ struct Unknown_02075cdc {
 
 struct Canvas;
 
-Canvas* FindElementByByte0xc4(Obj2081*, int);
-int CheckField0x9cSetWhenField0xd4Present(unsigned char*);
+Canvas* FindElementByByte0xc4_02081da8(Obj2081*, int);
+int CheckField0x9cSetWhenField0xd4Present_0204c7e0(unsigned char*);
 int GetInnerFlagBit0020e28dc(Outer020e28dc*);
 void GetLookAndTurnOffsets020809c4(void*, int, int, short*, short*);
 void UpdateEntryStateAndPosition(Ctx020e263c*, int);
@@ -138,10 +138,10 @@ extern "C" ARM void func_ov006_021585c4(AlchemyMenu* self)
         return;
     if (self->group_ < 0)
         return;
-    Canvas* canvas = FindElementByByte0xc4((Obj2081*)self->menu_, self->group_);
+    Canvas* canvas = FindElementByByte0xc4_02081da8((Obj2081*)self->menu_, self->group_);
     if (canvas == 0)
         return;
-    if (!CheckField0x9cSetWhenField0xd4Present((unsigned char*)canvas) || self->choice_ == 0)
+    if (!CheckField0x9cSetWhenField0xd4Present_0204c7e0((unsigned char*)canvas) || self->choice_ == 0)
         return;
     if (GetInnerFlagBit0020e28dc((Outer020e28dc*)self->choice_))
         return;

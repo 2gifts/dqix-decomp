@@ -8,7 +8,7 @@ struct Bits14_89074 {
 };
 
 // USA: func_02089074
-ARM void ResetStateFields(unsigned char* obj) {
+ARM void ResetStateFields_02089074(unsigned char* obj) {
     struct Bits14_89074* b;
     obj[0x7a] = 3;
     obj[0x9d] = 0;

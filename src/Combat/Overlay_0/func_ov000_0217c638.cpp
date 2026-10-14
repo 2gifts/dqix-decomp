@@ -6,14 +6,14 @@ struct Node0205bacc;
 struct Struct_0205bcdc;
 struct Struct0205cf1c;
 
-void* GetPtrField0x2a04(GameState*);
+void* GetPtrField0x2a04_02010828(GameState*);
 void CopyStaticData02174da4(int, void*);
 extern "C" void* func_0202ae18();
-int CheckField0NonZero(int*);
-int GetField0x3acValue(GameState*);
-int CountSetBitsLow12_0x68(void*);
+int CheckField0NonZero_0202b7d8(int*);
+int GetField0x3acValue_020100a8(GameState*);
+int CountSetBitsLow12_0x68_ov000_0218155c(void*);
 extern "C" void* func_ov000_02161318(void*, int);
-void* GetFieldAt0x150(unsigned char*);
+void* GetFieldAt0x150_02053c6c(unsigned char*);
 void ClearChannelAFlag0205cf10(void*);
 void ClearFlagByte0205cf1c(Struct0205cf1c*);
 void SetChannelAFlag0205cef8(void*);
@@ -89,7 +89,7 @@ extern "C" ARM void func_ov000_0217c638(Battle0217c638* battle, int a, int b) {
     data_ov000_02184294[0] = b;
 #endif
     GameState* gs = GameState::GetInstance();
-    Party* party = (Party*)GetPtrField0x2a04(gs);
+    Party* party = (Party*)GetPtrField0x2a04_02010828(gs);
     switch (battle->commands[battle->index]) {
     case 1: {
         int buf[4];
@@ -105,8 +105,8 @@ extern "C" ARM void func_ov000_0217c638(Battle0217c638* battle, int a, int b) {
     case 2: {
         void* state = func_0202ae18();
         rows = 3;
-        if (CheckField0NonZero((int*)state)) {
-            if (GetField0x3acValue(gs) == 0) rows = 4;
+        if (CheckField0NonZero_0202b7d8((int*)state)) {
+            if (GetField0x3acValue_020100a8(gs) == 0) rows = 4;
         }
         total = rows;
         selected = battle->sel[1];
@@ -124,7 +124,7 @@ extern "C" ARM void func_ov000_0217c638(Battle0217c638* battle, int a, int b) {
         break;
     case 6: {
         rows = 4;
-        int n = CountSetBitsLow12_0x68(battle);
+        int n = CountSetBitsLow12_0x68_ov000_0218155c(battle);
         total = n;
         selected = battle->sel[5];
         if (n < 4) rows = n;
@@ -149,7 +149,7 @@ extern "C" ARM void func_ov000_0217c638(Battle0217c638* battle, int a, int b) {
         if (ok && func_ov000_02161318(battle, slot)) {
             GameObject* member = gs->GetPartyMemberByIndex(slot);
             if (member) {
-                sl = (signed char)((Member*)GetFieldAt0x150((unsigned char*)member))->value;
+                sl = (signed char)((Member*)GetFieldAt0x150_02053c6c((unsigned char*)member))->value;
             }
         }
         battle->sel[3] = sl;

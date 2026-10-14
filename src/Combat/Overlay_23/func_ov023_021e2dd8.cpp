@@ -4,7 +4,7 @@
 #include "GameState/GameState.h"
 
 void* GetDataPtr02114e04_020d6c00(void);
-void OrBitsIntoField0(unsigned int* p, unsigned int mask);
+void OrBitsIntoField0_020466e4(unsigned int* p, unsigned int mask);
 void ZeroInit020de848(void* obj);
 void ClearFields_021e20c0(void* p);
 void FilterSlotsWithFlag0x800020dc4d0(signed char* out, signed char* outCount);
@@ -24,7 +24,7 @@ extern "C" ARM void func_ov023_021e2dd8(unsigned char* obj) {
     int j;
 
     p = GetDataPtr02114e04_020d6c00();
-    OrBitsIntoField0((unsigned int*)p, 0xf);
+    OrBitsIntoField0_020466e4((unsigned int*)p, 0xf);
 
     *(unsigned int*)(obj + 0x0) = 0;
     *(unsigned int*)(obj + 0x4) = 0;
@@ -67,7 +67,7 @@ extern "C" ARM void func_ov023_021e2dd8(unsigned char* obj) {
     for (j = 0; j < 4; j++) {
         signed char v = buf[j];
         *(int*)((char*)obj + j * 4 + regionalOffset8) = v;
-        GetCombatantWithFlag0x100(battle, v);
+        GetCombatantWithFlag0x100_0200ff1c(battle, v);
     }
 
     *(int*)(obj + regionalOffset7) = outCount;

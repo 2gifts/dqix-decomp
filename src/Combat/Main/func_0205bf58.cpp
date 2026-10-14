@@ -30,9 +30,9 @@ struct Struct_0205bf3c : Struct_0205c4a8 {
 struct NavigationSteps { int values[4]; };
 struct NavigationKeys { unsigned short values[5]; };
 struct NavigationRepeatDirections { unsigned char values[4]; };
-int TestFlag0SetAndFlag1Clear(unsigned short*, int);
-int TestFlagMask(unsigned short*, int);
-int TestFlagInSecondWord(unsigned short*, unsigned int);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short*, int);
+int TestFlagMask_02012430(unsigned short*, int);
+int TestFlagInSecondWord_02012468(unsigned short*, unsigned int);
 void ResetState0205bf3c(Struct_0205bf3c*);
 int ComputeScaledSum0205bb84(Struct_0205bb84*);
 void AdvanceWrappedAccumulator0205c4a8(Struct_0205c4a8*, int);
@@ -53,7 +53,7 @@ extern "C" ARM int func_0205bf58(Struct_0205bf3c* navigation, unsigned int ticks
     int index = 0;
     while (keys.values[index] != 0xffff && navigation->key == 0) {
         unsigned short key = keys.values[index];
-        if (TestFlag0SetAndFlag1Clear(&data_02114e30, key)) {
+        if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, key)) {
             if (navigation->rowRepeat | navigation->columnRepeat) {
                 ResetState0205bf3c(navigation);
                 break;
@@ -125,7 +125,7 @@ extern "C" ARM int func_0205bf58(Struct_0205bf3c* navigation, unsigned int ticks
         ++index;
     }
     if (navigation->rowRepeat) {
-        if (TestFlagMask(&data_02114e30, 0xf0)) {
+        if (TestFlagMask_02012430(&data_02114e30, 0xf0)) {
             unsigned char elapsed = ticks;
             if (elapsed < navigation->countdown) navigation->countdown -= elapsed;
             else {
@@ -148,10 +148,10 @@ extern "C" ARM int func_0205bf58(Struct_0205bf3c* navigation, unsigned int ticks
                 }
             }
         }
-        if (TestFlagInSecondWord(&data_02114e30, 0xf0)) ResetState0205bf3c(navigation);
+        if (TestFlagInSecondWord_02012468(&data_02114e30, 0xf0)) ResetState0205bf3c(navigation);
         return 1;
     } else if (navigation->columnRepeat) {
-        if (TestFlagMask(&data_02114e30, 0xf0)) {
+        if (TestFlagMask_02012430(&data_02114e30, 0xf0)) {
             unsigned char elapsed = ticks;
             if (elapsed < navigation->countdown) navigation->countdown -= elapsed;
             else {
@@ -175,7 +175,7 @@ extern "C" ARM int func_0205bf58(Struct_0205bf3c* navigation, unsigned int ticks
                 }
             }
         }
-        if (TestFlagInSecondWord(&data_02114e30, 0xf0)) ResetState0205bf3c(navigation);
+        if (TestFlagInSecondWord_02012468(&data_02114e30, 0xf0)) ResetState0205bf3c(navigation);
         return 1;
     }
     return 0;

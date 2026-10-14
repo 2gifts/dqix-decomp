@@ -9,8 +9,8 @@ enum { RegionOffset6c = 0x6c };
 #include "GameState/GameState.h"
 
 extern "C" void* func_02012fe4(void);
-void* GetPointerFromArray0x3c(unsigned char* obj, unsigned int index);
-int CheckSubstructByte0x7cPositive(signed char* obj);
+void* GetPointerFromArray0x3c_0201e838(unsigned char* obj, unsigned int index);
+int CheckSubstructByte0x7cPositive_020535c8(signed char* obj);
 extern "C" int func_02094b9c(void* a, void* b);
 int fix32ReduceAngle0To2Pi(int angle);
 int fix32SignedAngleDistance(int a, int b);
@@ -49,13 +49,13 @@ extern "C" ARM void func_ov017_021984f4(void* obj) {
     if (c == NULL) {
         return;
     }
-    if (CheckSubstructByte0x7cPositive((signed char*)c) != 0) {
+    if (CheckSubstructByte0x7cPositive_020535c8((signed char*)c) != 0) {
         return;
     }
 
     void* cache = func_02012fe4();
-    GetField0x3b0Value(bs);
-    struct TargetNode021984f4* node = (struct TargetNode021984f4*)GetPointerFromArray0x3c((unsigned char*)cache + RegionOffset6c, 8);
+    GetField0x3b0Value_020100bc(bs);
+    struct TargetNode021984f4* node = (struct TargetNode021984f4*)GetPointerFromArray0x3c_0201e838((unsigned char*)cache + RegionOffset6c, 8);
 
     struct FilterData021984f4 filter = *(struct FilterData021984f4*)((char*)c + 0x44);
     int best = 0x270f000;

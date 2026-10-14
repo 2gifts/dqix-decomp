@@ -8,10 +8,9 @@ struct DLNode0206dd68 {
     struct DLNode0206dd68* next;
 };
 
-
 // USA: func_0206dd68
 ARM void UnlinkNodeByByteId0206dd68(void* base, int key) {
-    struct DLNode0206dd68* node = (DLNode0206dd68*)FindNodeByByteId(base, key);
+    struct DLNode0206dd68* node = (DLNode0206dd68*)FindNodeByByteId_0206db20(base, key);
     if (node == NULL) {
         return;
     }

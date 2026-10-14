@@ -7,7 +7,7 @@ struct SelfObj792c;
 struct Struct020478bc;
 struct Obj0205eaa0;
 
-struct Entry02017098* GetActorEntryByIndex(struct ActorListManager* manager, int index);
+struct Entry02017098* GetActorEntryByIndex_0201777c(struct ActorListManager* manager, int index);
 extern "C" void func_0204792c(struct SelfObj792c* self, char* name);
 void RecomputeField0x7c(struct Struct020478bc* o, int newIndex);
 extern "C" float _fflt(int value);
@@ -37,7 +37,7 @@ struct Entry02017098 {
 
 // USA: func_02017098
 extern "C" ARM void func_02017098(struct ActorListManager* manager, int index) {
-    struct Entry02017098* e = GetActorEntryByIndex(manager, index);
+    struct Entry02017098* e = GetActorEntryByIndex_0201777c(manager, index);
     if (e == NULL) return;
 
     e->field2 = 3;

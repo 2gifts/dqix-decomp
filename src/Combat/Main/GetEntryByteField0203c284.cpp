@@ -44,7 +44,7 @@ struct Struct0203c1c8 {
 #endif
 };
 extern CachedTextTable* data_02105244;
-int StringLength(const char* text);
+int StringLength_020d2ff0(const char* text);
 
 ARM int GetEntryByteField0203c284(const Struct0203c1c8* text) {
     CachedTextTable* cache = data_02105244;
@@ -55,7 +55,7 @@ ARM int GetEntryByteField0203c284(const Struct0203c1c8* text) {
     for (int slot = 0; slot < 10; ++slot) {
         short index = text->textSlots[slot];
         if (index >= 0) ++cells;
-        int length = StringLength(entries[index].text);
+        int length = StringLength_020d2ff0(entries[index].text);
         switch (length) {
             case 2: ++slot; break;
             case 4: ++slot; ++cells; break;

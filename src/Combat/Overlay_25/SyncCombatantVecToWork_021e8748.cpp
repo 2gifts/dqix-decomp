@@ -12,7 +12,7 @@ struct CombatVectorWork {
     Vector3i vector;
     unsigned char vectorUpdated;
 };
-CombatVectorWork* GetActiveCombatWork(void);
+CombatVectorWork* GetActiveCombatWork_ov000_02160130(void);
 
 struct Obj021e8748 {
     char pad[8];
@@ -21,7 +21,7 @@ struct Obj021e8748 {
 
 // USA: func_ov025_021e8748  (semantic: SyncCombatantVecToWork_021e8748)
 extern "C" ARM int func_ov025_021e8748(struct Obj021e8748* obj) {
-    CombatVectorWork* w = GetActiveCombatWork();
+    CombatVectorWork* w = GetActiveCombatWork_ov000_02160130();
     if (w) {
         Vector3i local = obj->mid;
         w->vector = local;

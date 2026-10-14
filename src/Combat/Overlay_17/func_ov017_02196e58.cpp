@@ -3,8 +3,8 @@
 #include "Graphics/LightingManager.h"
 #include "World/Zone3D.h"
 
-void PushInputLogA(int value);
-int GetField0x3acValue(GameState* battleStruct);
+void PushInputLogA_020a1df8(int value);
+int GetField0x3acValue_020100a8(GameState* battleStruct);
 extern "C" Zone3D* func_02012fe4(void);
 extern "C" void func_ov004_0216fa08(void* node);
 extern "C" void func_ov004_0216fa74(void* node, unsigned char value);
@@ -61,7 +61,7 @@ extern "C" ARM void func_ov017_02196e58(struct Work02196e58* work) {
     if (monster == NULL) {
         return;
     }
-    PushInputLogA(4);
+    PushInputLogA_020a1df8(4);
     func_ov004_0216fa08(work->inputNode);
     *(unsigned short*)((unsigned char*)work->inputNode + 8) = work->monsterIndex;
     func_ov004_0216fa74(work->inputNode, 1);
@@ -71,7 +71,7 @@ extern "C" ARM void func_ov017_02196e58(struct Work02196e58* work) {
     struct NodeMsg msg;
     InitStruct_02196c08((unsigned char*)&msg);
     msg.kind = 1;
-    msg.actor = GetField0x3acValue(bs);
+    msg.actor = GetField0x3acValue_020100a8(bs);
     msg.value = *(unsigned short*)((unsigned char*)monster + 0x16a);
     msg.id = work->monsterIndex;
     msg.f12 = lighting->timeOfDayIndex_;

@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 extern "C" void* func_02057924(void);
-void* GetInlineRecordByBattleId(void* obj, int id);
+void* GetInlineRecordByBattleId_02058658(void* obj, int id);
 void* GetSlotPtr_021e8cf0_021e8cf0(char* base, int idx);
 int DispatchByIndex021820bc(void* obj, int unused, int index, int arg);
 extern int data_ov025_021ef988;
@@ -21,7 +21,7 @@ ARM int SetRecordFieldFromDispatch_021e5014(struct Param021e5014* p, int b, int 
     }
     int id = *(int*)slot;
     void* obj = func_02057924();
-    void* record = GetInlineRecordByBattleId(obj, id);
+    void* record = GetInlineRecordByBattleId_02058658(obj, id);
     if (!record) {
         return 1;
     }

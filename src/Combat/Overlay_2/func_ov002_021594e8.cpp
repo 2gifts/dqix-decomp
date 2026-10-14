@@ -5,12 +5,12 @@
 struct Obj0205eaa0;
 struct Obj02048350;
 void *SearchBothTables02079e2c(char *p, int key);
-GameObject *GetCombatantChecked(GameState *gs, int id);
+GameObject *GetCombatantChecked_0200ff94(GameState *gs, int id);
 extern "C" int *func_0202ae18(void);
 extern "C" void *__clear(void *dst, int count);
-int CopyOutRegion0x571d(char *dst, void *src);
+int CopyOutRegion0x571d_020114ec(char *dst, void *src);
 void ConsumeCounter02048350(struct Obj02048350 *p, int a);
-int CheckField0NonZero(int *p);
+int CheckField0NonZero_0202b7d8(int *p);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0 *p, int a, int b);
 void InitStateArray02157ce0(char *p);
 extern "C" void func_ov002_021536e0(void *p);
@@ -61,9 +61,9 @@ extern "C" ARM void func_ov002_021594e8(struct Menu021594e8 *p, short cmd, signe
 
     p->command                        = cmd;
     GameState *gs                     = GameState::GetInstance();
-    ActionDataTables* tbl                         = GetData02108e10();
+    ActionDataTables* tbl                         = GetData02108e10_020797dc();
     struct TableEntry021594e8 *entryA = (struct TableEntry021594e8 *) SearchBothTables02079e2c((char*)tbl, p->command);
-    GameObject *comb                  = GetCombatantChecked(gs, actor);
+    GameObject *comb                  = GetCombatantChecked_0200ff94(gs, actor);
     int *checkPtr                     = func_0202ae18();
     int flagA                         = 0;
     if (p->state == 0x17) {
@@ -76,7 +76,7 @@ extern "C" ARM void func_ov002_021594e8(struct Menu021594e8 *p, short cmd, signe
             struct TableEntry021594e8 *entry = (struct TableEntry021594e8 *) SearchBothTables02079e2c((char*)tbl, p->command);
             if (entry != NULL) {
                 __clear(buf, 4);
-                int n = CopyOutRegion0x571d((char *) gs, buf);
+                int n = CopyOutRegion0x571d_020114ec((char *) gs, buf);
                 if (entry->b10 & 1) {
                     st.id    = p->command;
                     st.actor = actor;
@@ -122,7 +122,7 @@ extern "C" ARM void func_ov002_021594e8(struct Menu021594e8 *p, short cmd, signe
     }
     if (flagA != 0) {
         ConsumeCounter02048350((struct Obj02048350 *) comb, entryA->lo8);
-        if (CheckField0NonZero(checkPtr) != 0) {
+        if (CheckField0NonZero_0202b7d8(checkPtr) != 0) {
             func_ov017_021c9e00(actor, 0, 0, 1);
         }
     }

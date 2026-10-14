@@ -29,7 +29,7 @@ struct Record021e509c {
 };
 
 extern "C" void* func_02057924(void);
-Record021e509c* GetInlineRecordByBattleId(void* obj, int id);
+Record021e509c* GetInlineRecordByBattleId_02058658(void* obj, int id);
 int* GetSlotPtr_021e8cf0_021e8cf0(char* base, int idx);
 extern Holder021e509c data_ov025_021ef988;
 
@@ -42,8 +42,8 @@ extern "C" ARM int func_ov025_021e509c(Param021e509c* p) {
         return 1;
     }
     int idB = *slotB;
-    Record021e509c* recA = GetInlineRecordByBattleId(obj, *slotA);
-    Record021e509c* recB = GetInlineRecordByBattleId(obj, idB);
+    Record021e509c* recA = GetInlineRecordByBattleId_02058658(obj, *slotA);
+    Record021e509c* recB = GetInlineRecordByBattleId_02058658(obj, idB);
     if (recA == 0 || recB == 0) {
         return 1;
     }

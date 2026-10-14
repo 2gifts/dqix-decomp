@@ -18,7 +18,7 @@ struct SoundCommandState020d22f4 {
 extern SoundCommandState020d22f4 data_02112780;
 extern SoundCommand020d22f4* const data_021127a4[9];
 
-unsigned long ReadUncachedField0();
+unsigned long ReadUncachedField0_020d2a20();
 extern "C" void func_020c976c(unsigned long cycles);
 
 // USA: func_020d22f4
@@ -27,14 +27,14 @@ extern "C" ARM void* func_020d22f4(unsigned long flags) {
     SoundCommand020d22f4* list;
     SoundCommand020d22f4* end;
     if (flags & 1) {
-        if (data_02112780.finishedTag == ReadUncachedField0()) {
+        if (data_02112780.finishedTag == ReadUncachedField0_020d2a20()) {
             do {
                 SetIRQInterruptState(lastState);
                 func_020c976c(100);
                 lastState = DisableIRQInterrupts();
-            } while (data_02112780.finishedTag == ReadUncachedField0());
+            } while (data_02112780.finishedTag == ReadUncachedField0_020d2a20());
         }
-    } else if (data_02112780.finishedTag == ReadUncachedField0()) {
+    } else if (data_02112780.finishedTag == ReadUncachedField0_020d2a20()) {
         SetIRQInterruptState(lastState);
         return NULL;
     }

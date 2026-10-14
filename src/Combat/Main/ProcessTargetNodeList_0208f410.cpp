@@ -13,7 +13,7 @@ extern "C" void* func_0208e0a8(void);
 
 struct HeadNode02046b24;
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24** obj);
-unsigned int GetBitsInField4(unsigned int* obj, unsigned int mask);
+unsigned int GetBitsInField4_0203b4fc(unsigned int* obj, unsigned int mask);
 int IsMatchingName0208e824(void* unused, char* str);
 struct S1a0;
 struct Vector3i;
@@ -38,7 +38,7 @@ extern "C" ARM void func_0208f410(Obj0208f410* obj) {
     int ov = func_ov017_0218b5b0();
     HeadNode02046b24** headList = *(HeadNode02046b24***)(ov + 0x3000 + kListOffset);
     if (GetHeadNodeIdOrMinusOne(headList) == 0xa) return;
-    if (GetBitsInField4((unsigned int*)ov, 2) != 0) return;
+    if (GetBitsInField4_0203b4fc((unsigned int*)ov, 2) != 0) return;
 
     void* g = func_02012fe4();
     char* s = *(char**)((char*)g + 8);

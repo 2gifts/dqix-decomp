@@ -2,8 +2,8 @@
 
 struct Obj2081;
 struct Elem2081;
-extern struct Elem2081* FindElementByByte0xc4(struct Obj2081*, int);
-extern int CheckField0x9cSetWhenField0xd4Present(unsigned char*);
+extern struct Elem2081* FindElementByByte0xc4_02081da8(struct Obj2081*, int);
+extern int CheckField0x9cSetWhenField0xd4Present_0204c7e0(unsigned char*);
 extern void GetLookAndTurnOffsets020809c4(void*, int, int, short*, short*);
 
 struct Container0205a3d0;
@@ -45,9 +45,9 @@ extern "C" ARM void func_ov014_02186e2c(struct Obj02186e2c* self) {
 
     if (self->field0xd0 == NULL) return;
     if (self->field0x170 < 0) return;
-    elem = FindElementByByte0xc4((struct Obj2081*)self->field0xc0, self->field0x170);
+    elem = FindElementByByte0xc4_02081da8((struct Obj2081*)self->field0xc0, self->field0x170);
     if (elem == NULL) return;
-    if (CheckField0x9cSetWhenField0xd4Present((unsigned char*)elem) == 0) return;
+    if (CheckField0x9cSetWhenField0xd4Present_0204c7e0((unsigned char*)elem) == 0) return;
 
     GetLookAndTurnOffsets020809c4(self->field0xc0, self->field0x170, *self->field0xd0, &outB, &outA);
     outB -= 0x10;

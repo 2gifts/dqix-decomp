@@ -23,15 +23,15 @@ struct Field150_0209aa54 {
     int slot;
 };
 
-int GetFieldAt0x150(unsigned char* obj);
-void SetBitInArray0x910(unsigned char* obj, int index);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
+void SetBitInArray0x910_02083b60(unsigned char* obj, int index);
 
 // USA: func_0209aa54
 extern "C" ARM int func_0209aa54(struct Holder0209aa54* h, unsigned char* path, unsigned char* out,
                                 int threshold) {
     if (&h->base->slots[0].pairs[0] == NULL) return 0;
     if (&h->base->counts[0] == NULL) return 0;
-    struct Field150_0209aa54* f = (struct Field150_0209aa54*)GetFieldAt0x150(path);
+    struct Field150_0209aa54* f = (struct Field150_0209aa54*)GetFieldAt0x150_02053c6c(path);
     if (f == 0) return 0;
     int slot = f->slot;
     int idx;
@@ -42,7 +42,7 @@ extern "C" ARM int func_0209aa54(struct Holder0209aa54* h, unsigned char* path, 
         int lim = *(unsigned short*)((unsigned char*)f + f->slot * 2 + 0x100 + 0x6c);
         a = h->base->slots[slot].pairs[idx].a;
         if (lim >= b && b > threshold) {
-            SetBitInArray0x910((unsigned char*)f, a);
+            SetBitInArray0x910_02083b60((unsigned char*)f, a);
             out[count] = (unsigned char)a;
             count++;
         }

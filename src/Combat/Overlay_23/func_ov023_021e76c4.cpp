@@ -80,7 +80,7 @@ struct Struct_0205cf78;
 struct Elem_0205cf78;
 
 MessageSystem_021e76c4* GetGlobalField0x1c020421a0();
-void SetWord0x18ClearByte0x1f(unsigned char* obj, int value);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char* obj, int value);
 void AllocateAndClearBuffer0204b12c(AllocTarget0204b12c* obj, SafeAllocator* alloc);
 int DispatchViaTable0204b5e8(Obj0204b5e8* obj, int a, int b);
 void AllocateArray0204af38(Foo0204af38* obj, int count, SafeAllocator* alloc);
@@ -162,7 +162,7 @@ extern "C" ARM int func_ov023_021e76c4(ProfileCard_021e76c4* self)
         for (i = 0; i < 2; i++)
         {
             background = &self->backgrounds_[i];
-            SetWord0x18ClearByte0x1f((unsigned char*)background, screens[i]);
+            SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)background, screens[i]);
             background->unk_1c_0_ = 1;
             background->unk_1c_4_ = i;
             func_0204b5b4(background, i);

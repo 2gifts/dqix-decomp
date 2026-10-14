@@ -1,8 +1,8 @@
 #include <globaldefs.h>
 
-int GetSubstructByte0x1e(unsigned char* obj);
-int GetSubstructByte0x1c(unsigned char* obj);
-void SetSubstructByte0x1e(unsigned char* obj, unsigned char value);
+int GetSubstructByte0x1e_020493ec(unsigned char* obj);
+int GetSubstructByte0x1c_020493a4(unsigned char* obj);
+void SetSubstructByte0x1e_020493dc(unsigned char* obj, unsigned char value);
 
 struct Actor_021e1ff4 {
     char pad0[4];
@@ -35,13 +35,13 @@ extern "C" ARM void func_ov025_021e1ff4(unsigned char* ids, int idCount, unsigne
             if (id == a->id || id == b->id) {
                 continue;
             }
-            int v = GetSubstructByte0x1e(obj);
+            int v = GetSubstructByte0x1e_020493ec(obj);
             if (v >= 0x51) {
-                v = GetSubstructByte0x1c(obj);
+                v = GetSubstructByte0x1c_020493a4(obj);
             }
             if (v == ids[i]) {
                 entries[j].matched = 1;
-                SetSubstructByte0x1e(obj, 0xff);
+                SetSubstructByte0x1e_020493dc(obj, 0xff);
             }
         }
     }

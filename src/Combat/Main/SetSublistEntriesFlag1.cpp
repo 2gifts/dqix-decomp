@@ -13,7 +13,7 @@ extern struct SubList02080b54* FindEntryByShortId0207f0ac(struct List0207f0ac* l
 extern void SetEntryFlagBits0207f7ac(struct List0207f6ac* list, int id, int mask);
 
 // USA: func_02080b54
-ARM void SetSublistEntriesFlag1(void* obj, int id) {
+ARM void SetSublistEntriesFlag1_02080b54(void* obj, int id) {
     struct SubList02080b54* sub;
     short i;
     sub = FindEntryByShortId0207f0ac((struct List0207f0ac*)((char*)obj + 0xc), id);

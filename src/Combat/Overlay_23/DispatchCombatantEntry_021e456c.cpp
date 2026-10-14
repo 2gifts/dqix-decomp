@@ -10,7 +10,7 @@ extern "C" int func_ov023_021e6194(int arg);
 
 struct S1a0;
 
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 
 extern "C" int func_ov023_021e5974(int a, int b, int c, int d, int e);
 
@@ -19,7 +19,7 @@ extern "C" ARM void func_ov023_021e456c(void* objRaw) {
     char* obj = (char*)objRaw;
     if (!(*(unsigned short*)(obj + regionalOffset0) & 4)) return;
     GameState* bs = GameState::GetInstance();
-    GameObject* combatant = GetCombatantWithFlag0x100(bs, *(int*)(obj + regionalOffset1));
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(bs, *(int*)(obj + regionalOffset1));
     if (!combatant) return;
     int flag = 0;
     if (*(unsigned short*)(obj + regionalOffset0) & 0x10) flag = 1;
@@ -27,7 +27,7 @@ extern "C" ARM void func_ov023_021e456c(void* objRaw) {
     char* five = (char*)func_ov023_021e6194(*(int*)(obj + regionalOffset3));
     ((Object3D*)five)->MaybeSetRegularAnimation((char const*)(*(int*)(six4 + 0x14)), 0);
     ((Object3D*)((struct S1a0*)five))->SetCurrentAnimationTime(*(unsigned int*)(six4 + 0x1c));
-    int fieldVal = GetFieldAt0x150((unsigned char*)combatant);
+    int fieldVal = GetFieldAt0x150_02053c6c((unsigned char*)combatant);
     func_ov023_021e5974(*(int*)(obj + regionalOffset3), fieldVal, *(int*)(obj + regionalOffset1), flag, 1);
     *(unsigned short*)(obj + regionalOffset0) &= ~4;
     *(unsigned short*)(obj + regionalOffset0) &= ~0x10;

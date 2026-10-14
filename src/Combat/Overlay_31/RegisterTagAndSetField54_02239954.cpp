@@ -3,7 +3,7 @@
 extern "C" int func_ov031_02239368(int);
 extern "C" void func_ov031_02239984(void);
 int TrySetBattleContextField020d5aec(int a);
-void SetField54IfTagNot9Or10(int v);
+void SetField54IfTagNot9Or10_ov031_022393e4(int v);
 
 // USA: func_ov031_02239954
 ARM int RegisterTagAndSetField54_02239954(void) {
@@ -12,6 +12,6 @@ ARM int RegisterTagAndSetField54_02239954(void) {
 	if (r == 2) {
 		return 1;
 	}
-	SetField54IfTagNot9Or10(r);
+	SetField54IfTagNot9Or10_ov031_022393e4(r);
 	return 0;
 }

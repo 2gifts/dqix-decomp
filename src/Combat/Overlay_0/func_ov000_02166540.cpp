@@ -83,11 +83,11 @@ void CopyObjectFields02048588(unsigned char*, unsigned char*);
 void BuildName020488ec(char*);
 char* SearchWithLow15Comparator02070fd0(Container02070e60*, int);
 void ReplaceEntryAndFormat0204887c(Obj0204887c*, char*);
-void SetSubstructFlag0x80(unsigned char*);
-void SetSubstructFlag0x200(unsigned char*);
+void SetSubstructFlag0x80_02048bb8(unsigned char*);
+void SetSubstructFlag0x200_02048bf8(unsigned char*);
 CombatantScaleEntry* SearchWithComparator0206f4f0(BinarySearchByComparatorStruct*, int);
 int SetByte0xbeShiftPrev(Bytes02033b88*, int);
-void RegisterCombatantSlot(GameState*, int, GameObject*);
+void RegisterCombatantSlot_0200fd38(GameState*, int, GameObject*);
 void AllocateSlotAndConfigureField02166784(Struct5e00*, unsigned char*, unsigned char*);
 int FindOrAssignSlot02167c28(unsigned char*, int);
 extern "C" void func_ov017_02191aac(void*, int, int, int);
@@ -127,8 +127,8 @@ extern "C" ARM void func_ov000_02166540(Struct5e00* state, int slot, int id, uns
     combatant->object.EnableFlag(8);
     SourceTraits* traits = source->traits;
     if (traits) {
-        if (!traits->flag28) SetSubstructFlag0x80((unsigned char*)combatant);
-        if (!traits->flag15) SetSubstructFlag0x200((unsigned char*)combatant);
+        if (!traits->flag28) SetSubstructFlag0x80_02048bb8((unsigned char*)combatant);
+        if (!traits->flag15) SetSubstructFlag0x200_02048bf8((unsigned char*)combatant);
     }
     CombatantScaleEntry* entry = SearchWithComparator0206f4f0((BinarySearchByComparatorStruct*)roster->search, (short)id);
     if (entry) {
@@ -140,7 +140,7 @@ extern "C" ARM void func_ov000_02166540(Struct5e00* state, int slot, int id, uns
         combatant->scale = scale;
     }
     SetByte0xbeShiftPrev((Bytes02033b88*)combatant, 0);
-    RegisterCombatantSlot(game, slot, (GameObject*)combatant);
+    RegisterCombatantSlot_0200fd38(game, slot, (GameObject*)combatant);
     AllocateSlotAndConfigureField02166784(state, (unsigned char*)source, (unsigned char*)combatant);
     FindOrAssignSlot02167c28((unsigned char*)state, slot);
     GameObject* registered = game->GetCombatantByIndex(slot);

@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-void* SetGlobalContext02110370(void*);
+void* SetGlobalContext02110370_020bd42c(void*);
 int TryApplyRecordAndSetFlag020bec30(void* a, int key, int arg2);
 extern "C" void func_020bbd9c(void);
 
@@ -9,7 +9,7 @@ ARM int SetKeyAndApplyRecord0203ad14(void* obj, int key, void* target, int arg3)
     char* p = (char*)obj;
     int result;
     if (*(void**)p == NULL) return 0;
-    SetGlobalContext02110370(p + 0x4);
+    SetGlobalContext02110370_020bd42c(p + 0x4);
     *(unsigned short*)(p + 0xa4) = key;
     *(int*)(p + 0xa8) = 0;
     if (target != NULL) {

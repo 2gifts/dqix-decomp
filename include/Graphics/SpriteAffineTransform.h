@@ -40,8 +40,8 @@ typedef char VerifySpriteAngleOffset[offsetof(B174Outer, angle) == 0x1c ? 1 : -1
 typedef char VerifySpriteMatrixIndexOffset[offsetof(B174Outer, matrixIndex) == 0x20 ? 1 : -1];
 
 extern "C" void func_020c111c(Matrix2x2* rotation, fix32_t sine, fix32_t cosine);
-void ScalePairsByTwoFactors(const Matrix2x2* source, Matrix2x2* destination,
+void ScalePairsByTwoFactors_020c1128(const Matrix2x2* source, Matrix2x2* destination,
                            fix32_t scaleX, fix32_t scaleY);
 extern "C" void func_0205b0d8(SpriteContext0205ac40* context, Matrix2x2* transform,
                              Matrix2x2* affine, B174Outer* sprite);
-int GetBits10And11(int unused, B174Outer* sprite);
+int GetBits10And11_0205b174(int unused, B174Outer* sprite);

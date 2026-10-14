@@ -45,13 +45,13 @@ extern unsigned short data_02114e30[];
 void SetupAndDispatch0205c904(unsigned char*, int);
 int CheckGlobalObjState2AndInit0205cde8(unsigned char*);
 void InitGlobalObjAndSelfPointer0205cd94(unsigned char*);
-int TestFlag0SetAndFlag1Clear(unsigned short*, int);
-int GetFieldIfFlag4(char*);
-int GetWord0x0(int*);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short*, int);
+int GetFieldIfFlag4_020100f8(char*);
+int GetWord0x0_0200fb8c(int*);
 int GetIntAt0x23c(IntField0x23c_020a27c4*);
 int IsFieldNotPositive_021a4e70(unsigned char*);
 int GetScaledSumIfActive0205cecc(void*);
-int CallFunc0205c570AtField0x1c(void*);
+int CallFunc0205c570AtField0x1c_0205cb64(void*);
 
 // USA: func_020676e0
 extern "C" ARM void func_020676e0(ControlState* state, int elapsed) {
@@ -63,20 +63,20 @@ extern "C" ARM void func_020676e0(ControlState* state, int elapsed) {
         return;
     }
     int enabled = 1;
-    bool pressed = TestFlag0SetAndFlag1Clear(data_02114e30, 0x401) != 0;
-    bool cancelled = TestFlag0SetAndFlag1Clear(data_02114e30, 2) != 0;
+    bool pressed = TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x401) != 0;
+    bool cancelled = TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 2) != 0;
     GameState* game;
     unsigned char* resource;
     int mode = state->mode;
     game = GameState::GetInstance();
-    IntField0x23c_020a27c4* field = (IntField0x23c_020a27c4*)GetFieldIfFlag4((char*)game);
-    resource = (unsigned char*)GetWord0x0((int*)game);
+    IntField0x23c_020a27c4* field = (IntField0x23c_020a27c4*)GetFieldIfFlag4_020100f8((char*)game);
+    resource = (unsigned char*)GetWord0x0_0200fb8c((int*)game);
     if (mode != 1 && state->alternateInput) {
         if (field) {
             if ((field->flags & 2) || !GetIntAt0x23c(field))
-                pressed |= TestFlag0SetAndFlag1Clear(data_02114e30, 0x200);
+                pressed |= TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x200);
         } else {
-            pressed |= TestFlag0SetAndFlag1Clear(data_02114e30, 0x200);
+            pressed |= TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x200);
         }
     }
     int specialMode = 0;
@@ -93,7 +93,7 @@ extern "C" ARM void func_020676e0(ControlState* state, int elapsed) {
     }
     int value = -1;
     if (enabled) value = GetScaledSumIfActive0205cecc(state->controls);
-    if (pressed) value = CallFunc0205c570AtField0x1c(state->controls);
+    if (pressed) value = CallFunc0205c570AtField0x1c_0205cb64(state->controls);
     else if (cancelled) value = -2;
     state->value = value;
     (state->*data_020f08b8[mode])(value);

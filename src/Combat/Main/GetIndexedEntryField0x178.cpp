@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_02053604
-ARM int GetIndexedEntryField0x178(signed char* obj) {
+ARM int GetIndexedEntryField0x178_02053604(signed char* obj) {
 #if defined(jpn)
     signed char a = obj[0x170];
 #else

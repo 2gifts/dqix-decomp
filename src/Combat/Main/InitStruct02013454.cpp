@@ -7,7 +7,7 @@ ARM void InitStruct02013454(BmdjScriptNode* node) {
     node->unknown40 = 0;
     node->elements = NULL;
     node->next = NULL;
-    ResetTrackerState(&node->scriptState);
+    ResetTrackerState_0201f01c(&node->scriptState);
     node->position.x = 0;
     node->position.y = 0;
     node->position.z = 0;

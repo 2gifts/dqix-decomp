@@ -13,7 +13,7 @@ struct Field150Holder02052df8;
 struct Container020dedd0;
 struct Element020de650;
 
-GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* battleStruct, int combatantId);
 int GetHalfwordEntryFromField150(struct Field150Holder02052df8* obj, int index);
 struct Element020de650* FindElementByKey020dedd0(struct Container020dedd0* c, int key);
 
@@ -28,7 +28,7 @@ struct Ctx02179cfc {
 
 // USA: func_ov003_02179cfc  (semantic: SelectAndApplyEntry_02179cfc)
 extern "C" ARM void* func_ov003_02179cfc(char* base, int combatantId, struct Ctx02179cfc* fallback) {
-    GameObject* combatant = GetCombatantWithFlag0x100(GameState::GetInstance(), combatantId);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), combatantId);
     if (combatant == NULL) return fallback;
 
     struct Table9x0217fb68 table = data_ov003_0217fb68;

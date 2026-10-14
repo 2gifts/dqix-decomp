@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_020b291c
-ARM void PatchFontResourceBlocks(void* base) {
+ARM void PatchFontResourceBlocks_020b291c(void* base) {
     char* entry = (char*)base + *(unsigned short*)((char*)base + 0xc);
     unsigned short count = *(unsigned short*)((char*)base + 0xe);
     int i = 0;
@@ -12,7 +12,7 @@ ARM void PatchFontResourceBlocks(void* base) {
     do {
         unsigned int magic = *(unsigned int*)entry;
         switch (magic) {
-        case 0x46494e46: { // FINF
+        case 0x46494e46: {
             int* p10 = (int*)(entry + 0x10);
             *p10 = *p10 + (int)base;
             int* p14 = (int*)(entry + 0x14);
@@ -23,19 +23,19 @@ ARM void PatchFontResourceBlocks(void* base) {
                 *p18 = *p18 + (int)base;
             break;
         }
-        case 0x43574448: { // CWDH
+        case 0x43574448: {
             int* p = (int*)(entry + 0xc);
             if (*p != 0)
                 *p = *p + (int)base;
             break;
         }
-        case 0x434d4150: { // CMAP
+        case 0x434d4150: {
             int* p = (int*)(entry + 0x10);
             if (*p != 0)
                 *p = *p + (int)base;
             break;
         }
-        case 0x43474c50: // CGLP
+        case 0x43474c50:
             break;
         }
 

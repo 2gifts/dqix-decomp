@@ -51,11 +51,11 @@ extern Actor0209c73c data_02109bf4;
 extern unsigned short data_02114e30;
 int IsAnimationActive0209ca2c(void*);
 void DispatchActorState0209c73c(Actor0209c73c*);
-int TestFlag0SetAndFlag1Clear(unsigned short*, int);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short*, int);
 extern "C" int func_0205d97c(void*);
-int GetAdjustedByteField0x1d6b(void*);
+int GetAdjustedByteField0x1d6b_ov000_021815c8(void*);
 extern "C" int* func_0202ae18();
-int CheckField0NonZero(int*);
+int CheckField0NonZero_0202b7d8(int*);
 extern "C" void func_ov017_021c3fb4(int, int);
 extern "C" void func_ov017_0218f5a4(GameResources*, int, int, int, int);
 extern "C" BattleCommand* func_ov000_02161318(BattleMenuState*, int);
@@ -72,8 +72,8 @@ extern "C" ARM void func_ov000_0217eb28(BattleMenuState* state, int first, int s
         if (IsAnimationActive0209ca2c(&data_02109bf4)) return;
         DispatchActorState0209c73c(&data_02109bf4);
     }
-    int triggered = TestFlag0SetAndFlag1Clear(&data_02114e30, 0x601);
-    triggered |= TestFlag0SetAndFlag1Clear(&data_02114e30, 0x802);
+    int triggered = TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x601);
+    triggered |= TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 0x802);
     triggered |= func_0205d97c(state->entries) == 2;
     if (!triggered) return;
     if (state->commands[state->selected] == 0x20) {
@@ -82,8 +82,8 @@ extern "C" ARM void func_ov000_0217eb28(BattleMenuState* state, int first, int s
             state->commands[state->selected] = 0;
             state->selected--;
         }
-        int character = GetAdjustedByteField0x1d6b(state);
-        if (CheckField0NonZero(func_0202ae18()))
+        int character = GetAdjustedByteField0x1d6b_ov000_021815c8(state);
+        if (CheckField0NonZero_0202b7d8(func_0202ae18()))
             func_ov017_021c3fb4(character, 1);
         GameResources* resources = func_ov017_0218b5b0();
         BackgroundLoader::GetInstance();
@@ -101,7 +101,7 @@ extern "C" ARM void func_ov000_0217eb28(BattleMenuState* state, int first, int s
             ResetEntryList0205d6a0((Entry_0205d6a0*)state->entries, 0);
             entry = GetLastEntry0205d888((Struct0205d888*)state->entries);
         }
-        unsigned char count = ((PartyState*)GetPtrField0x2a04(GameState::GetInstance()))->count;
+        unsigned char count = ((PartyState*)GetPtrField0x2a04_02010828(GameState::GetInstance()))->count;
         for (unsigned char i = 0; i < count; i++) {
             int id = state->party[i];
             BattleCommand* candidate = func_ov000_02161318(state, id);

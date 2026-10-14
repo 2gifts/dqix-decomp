@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 extern "C" int func_ov017_0218b5b0(void);
-void ClearBitsInField4(unsigned int* obj, unsigned int mask);
+void ClearBitsInField4_0203b4e8(unsigned int* obj, unsigned int mask);
 extern "C" void ColorEffect_ConfigureAlphaBlend(unsigned int* out, unsigned char a, unsigned char b, unsigned char c, int d);
 
 struct S0216fba0 {
@@ -15,7 +15,7 @@ struct S0216fba0 {
 
 // USA: func_ov003_0216fba0  (semantic: DecrementCounterAndConfigureBg_0216fba0)
 extern "C" ARM void func_ov003_0216fba0(S0216fba0* obj) {
-    ClearBitsInField4((unsigned int*)func_ov017_0218b5b0(), 0xc8e);
+    ClearBitsInField4_0203b4e8((unsigned int*)func_ov017_0218b5b0(), 0xc8e);
 
     volatile unsigned short* bgcnt = (volatile unsigned short*)0x4000008;
     unsigned int* packOut = (unsigned int*)((char*)bgcnt + 0x48);

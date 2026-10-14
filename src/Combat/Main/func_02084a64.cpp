@@ -9,7 +9,7 @@ int AccumulateFlaggedSlotBits020861d0(unsigned char* actor);
 int AccumulateFlaggedSlotBits0208623c(unsigned char* actor);
 int AccumulateSlotBitsFromTable020862a8(unsigned char* obj);
 int AccumulateSlotBitsFromTable02086314(unsigned char* obj);
-unsigned int ClampLengthToMax(unsigned int a, unsigned int start, unsigned int length, unsigned int max);
+unsigned int ClampLengthToMax_02084e4c(unsigned int a, unsigned int start, unsigned int length, unsigned int max);
 
 struct BitTriple10 {
     unsigned int f0 : 10;
@@ -41,7 +41,7 @@ extern "C" ARM int func_02084a64(unsigned char* obj, int id) {
     case 421: {
         int delta = AccumulateFlaggedSlotBits02085fb4(obj);
         int sum = delta + ((struct BitTriple10*)(obj + 0x91c - SlotDataRegionOffset))->f0 + row->w0.f0;
-        unsigned int clamped = ClampLengthToMax((unsigned int)obj, sum, 2, 999);
+        unsigned int clamped = ClampLengthToMax_02084e4c((unsigned int)obj, sum, 2, 999);
         row->w0.f0 += clamped;
         result = clamped;
         break;
@@ -49,7 +49,7 @@ extern "C" ARM int func_02084a64(unsigned char* obj, int id) {
     case 423: {
         int delta = AccumulateFlaggedSlotBits02086020(obj);
         int sum = delta + ((struct BitTriple10*)(obj + 0x91c - SlotDataRegionOffset))->f1 + row->w0.f1;
-        unsigned int clamped = ClampLengthToMax((unsigned int)obj, sum, 2, 999);
+        unsigned int clamped = ClampLengthToMax_02084e4c((unsigned int)obj, sum, 2, 999);
         row->w0.f1 += clamped;
         result = clamped;
         break;
@@ -57,7 +57,7 @@ extern "C" ARM int func_02084a64(unsigned char* obj, int id) {
     case 424: {
         int delta = AccumulateFlaggedSlotBits0208608c(obj);
         int sum = delta + ((struct BitTriple10*)(obj + 0x91c - SlotDataRegionOffset))->f2 + row->w0.f2;
-        unsigned int clamped = ClampLengthToMax((unsigned int)obj, sum, 2, 999);
+        unsigned int clamped = ClampLengthToMax_02084e4c((unsigned int)obj, sum, 2, 999);
         row->w0.f2 += clamped;
         result = clamped;
         break;
@@ -65,7 +65,7 @@ extern "C" ARM int func_02084a64(unsigned char* obj, int id) {
     case 422: {
         int delta = AccumulateFlaggedSlotBits020860f8(obj);
         int sum = delta + ((struct BitTriple10*)(obj + 0x920 - SlotDataRegionOffset))->f0 + row->w1.f0;
-        unsigned int clamped = ClampLengthToMax((unsigned int)obj, sum, 2, 999);
+        unsigned int clamped = ClampLengthToMax_02084e4c((unsigned int)obj, sum, 2, 999);
         row->w1.f0 += clamped;
         result = clamped;
         break;
@@ -73,7 +73,7 @@ extern "C" ARM int func_02084a64(unsigned char* obj, int id) {
     case 428: {
         int delta = AccumulateFlaggedSlotBits02086164(obj);
         int sum = delta + ((struct BitTriple10*)(obj + 0x920 - SlotDataRegionOffset))->f1 + row->w1.f1;
-        unsigned int clamped = ClampLengthToMax((unsigned int)obj, sum, 2, 999);
+        unsigned int clamped = ClampLengthToMax_02084e4c((unsigned int)obj, sum, 2, 999);
         row->w1.f1 += clamped;
         result = clamped;
         break;
@@ -81,7 +81,7 @@ extern "C" ARM int func_02084a64(unsigned char* obj, int id) {
     case 426: {
         int delta = AccumulateFlaggedSlotBits020861d0(obj);
         int sum = delta + ((struct BitTriple10*)(obj + 0x920 - SlotDataRegionOffset))->f2 + row->w1.f2;
-        unsigned int clamped = ClampLengthToMax((unsigned int)obj, sum, 2, 999);
+        unsigned int clamped = ClampLengthToMax_02084e4c((unsigned int)obj, sum, 2, 999);
         row->w1.f2 += clamped;
         result = clamped;
         break;
@@ -89,7 +89,7 @@ extern "C" ARM int func_02084a64(unsigned char* obj, int id) {
     case 425: {
         int delta = AccumulateFlaggedSlotBits0208623c(obj);
         int sum = delta + ((struct BitTriple10*)(obj + 0x924 - SlotDataRegionOffset))->f0 + row->w2.f0;
-        unsigned int clamped = ClampLengthToMax((unsigned int)obj, sum, 2, 999);
+        unsigned int clamped = ClampLengthToMax_02084e4c((unsigned int)obj, sum, 2, 999);
         row->w2.f0 += clamped;
         result = clamped;
         break;
@@ -97,7 +97,7 @@ extern "C" ARM int func_02084a64(unsigned char* obj, int id) {
     case 262: {
         int delta = AccumulateSlotBitsFromTable020862a8(obj);
         int sum = delta + ((struct BitTriple10*)(obj + 0x924 - SlotDataRegionOffset))->f1 + row->w2.f1;
-        unsigned int clamped = ClampLengthToMax((unsigned int)obj, sum, 3, 999);
+        unsigned int clamped = ClampLengthToMax_02084e4c((unsigned int)obj, sum, 3, 999);
         row->w2.f1 += clamped;
         result = clamped;
         break;
@@ -105,14 +105,14 @@ extern "C" ARM int func_02084a64(unsigned char* obj, int id) {
     case 263: {
         int delta = AccumulateSlotBitsFromTable02086314(obj);
         int sum = delta + ((struct BitTriple10*)(obj + 0x924 - SlotDataRegionOffset))->f2 + row->w2.f2;
-        unsigned int clamped = ClampLengthToMax((unsigned int)obj, sum, 3, 999);
+        unsigned int clamped = ClampLengthToMax_02084e4c((unsigned int)obj, sum, 3, 999);
         row->w2.f2 += clamped;
         result = clamped;
         break;
     }
     case 427: {
         unsigned short cur = *(unsigned short*)(obj + 0x564);
-        unsigned int clamped = ClampLengthToMax((unsigned int)obj, cur, 2, 2600);
+        unsigned int clamped = ClampLengthToMax_02084e4c((unsigned int)obj, cur, 2, 2600);
         unsigned short delta16 = (unsigned short)clamped;
         *(unsigned short*)(obj + 0x564) = *(unsigned short*)(obj + 0x564) + delta16;
         result = clamped;

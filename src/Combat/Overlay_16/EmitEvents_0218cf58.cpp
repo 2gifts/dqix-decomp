@@ -2,10 +2,10 @@
 
 extern "C" unsigned int _u32_div_f(unsigned int a, unsigned int b);
 void CleanCacheRange(const void* addr, unsigned int size);
-int EnqueueEvent0x1A(int a, int b);
-void PostEvent0x0E(int p0, int p1, int p2, int p3, int p4, int p5, int p6, int p7, int p8, int p9);
-int EnqueueEvent0x12(int a, int b, int c, int d, int e);
-int EnqueueEvent0x0C(int a, int b, int c, int d);
+int EnqueueEvent0x1A_020d1fb0(int a, int b);
+void PostEvent0x0E_020d2038(int p0, int p1, int p2, int p3, int p4, int p5, int p6, int p7, int p8, int p9);
+int EnqueueEvent0x12_020d1f70(int a, int b, int c, int d, int e);
+int EnqueueEvent0x0C_020d1ee4(int a, int b, int c, int d);
 extern "C" void func_020d24c4(int);
 void IncCounter_0218cf34(void);
 
@@ -30,12 +30,12 @@ extern "C" ARM void func_ov016_0218cf58(unsigned int id, unsigned int count) {
     unsigned int scaled = (count >> 6) * (divResult << 1);
 
     CleanCacheRange(g->f2c, prodShifted);
-    EnqueueEvent0x1A(1, 0);
+    EnqueueEvent0x1A_020d1fb0(1, 0);
 
-    PostEvent0x0E(0, 1, (int)g->f2c, 1,
+    PostEvent0x0E_020d2038(0, 1, (int)g->f2c, 1,
         0, (g->f24 * count) >> 1, 0x7f, 0, divResult, 0x40);
 
-    EnqueueEvent0x12(0, scaled, scaled, (int)IncCounter_0218cf34, 0);
-    EnqueueEvent0x0C(1, 0, 1, 0);
+    EnqueueEvent0x12_020d1f70(0, scaled, scaled, (int)IncCounter_0218cf34, 0);
+    EnqueueEvent0x0C_020d1ee4(1, 0, 1, 0);
     func_020d24c4(1);
 }

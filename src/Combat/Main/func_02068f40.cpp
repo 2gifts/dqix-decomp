@@ -3,7 +3,7 @@
 #include "GameState/GameState.h"
 
 extern "C" void __clear(void*, int);
-char* FindUnescapedAngleBracket(char* str);
+char* FindUnescapedAngleBracket_020424ac(char* str);
 int StringStartsWithCI020d85dc(const char* str, const char* prefix);
 char* JoinDelimitedParts02068e1c(char* dst, char* first, char* second, char* third);
 ARM void BuildStatusListString02068ea0(signed char* ids, char* dest);
@@ -32,7 +32,7 @@ extern "C" ARM int func_02068f40(void* obj, char* p, char* out, int flag) {
             break;
         }
         if (c == '<' && StringStartsWithCI020d85dc(p, data_020f08ff) != 0
-            && FindUnescapedAngleBracket(p) != 0) {
+            && FindUnescapedAngleBracket_020424ac(p) != 0) {
             char* start = p;
             Entry02068f40* e = (Entry02068f40*)data_020e833c;
             while (e->fn != 0) {

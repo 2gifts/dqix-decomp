@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_020851d8
-ARM int TestBit10At0x2f4(unsigned char* obj) {
+ARM int TestBit10At0x2f4_020851d8(unsigned char* obj) {
     if (*(short*)(obj + 0x2ac) <= 0) {
         return 0;
     }

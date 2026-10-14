@@ -7,9 +7,9 @@ enum { RegionOffset950 = 0x950 };
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 
 struct LocalEvt021cc730 {
     unsigned char tag;
@@ -29,12 +29,12 @@ struct LocalEvt021cc730 {
 // USA: func_ov017_021cc730  (semantic: EnqueueEventTag10_021cc730)
 extern "C" ARM void func_ov017_021cc730(int id, unsigned char arg1, unsigned char arg2, unsigned char arg3) {
     GameState* bs = GameState::GetInstance();
-    GameObject* combatant = GetCombatantWithFlag0x100(bs, id);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(bs, id);
     if (combatant == 0) return;
-    int field150 = GetFieldAt0x150((unsigned char*)combatant);
+    int field150 = GetFieldAt0x150_02053c6c((unsigned char*)combatant);
     if (field150 == 0) return;
 
-    void* p = GetData02100044();
+    void* p = GetData02100044_0202ae24();
     LocalEvt021cc730 buf;
     int idx = *(int*)((char*)field150 + RegionOffset950);
 

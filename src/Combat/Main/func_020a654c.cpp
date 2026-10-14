@@ -23,7 +23,7 @@ struct Out020a654c {
 extern "C" void* func_02012fe4();
 extern "C" void func_0202ae18();
 struct PointerField32c_ffc0;
-void* GetPointerAt0x32c(PointerField32c_ffc0*);
+void* GetPointerAt0x32c_0200ffc0(PointerField32c_ffc0*);
 struct HeadNode02046b24;
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
 struct S02046b1c;
@@ -31,11 +31,11 @@ void* GetField0x0List02046b1c(S02046b1c*);
 struct GameResources;
 int IsBrightnessTransitionActive(GameResources*);
 extern "C" void func_020a75ec(void* p);
-int GetBitsInField0(unsigned int*, unsigned int);
+int GetBitsInField0_0203b4c4(unsigned int*, unsigned int);
 void DispatchWithZeroExtras_02193428(void*, void*);
 extern "C" void func_020a7ce0(void* p);
 extern "C" int func_020a7d74(void* p, int* out1, int* out2);
-int IsField0Null(void**);
+int IsField0Null_02046b08(void**);
 extern "C" int func_ov017_021a93f0(void* res, int a, int b);
 
 // USA: func_020a654c
@@ -45,7 +45,7 @@ extern "C" ARM void func_020a654c(struct Res020a654c* self) {
     void* nodeList = self->nodeList;
     p = (unsigned short*)func_02012fe4();
     func_0202ae18();
-    void* obj = GetPointerAt0x32c((PointerField32c_ffc0*)gs);
+    void* obj = GetPointerAt0x32c_0200ffc0((PointerField32c_ffc0*)gs);
     ((GameState*)gs)->GetUnknownGameObject();
     int id = GetHeadNodeIdOrMinusOne((HeadNode02046b24**)nodeList);
     void* lst = GetField0x0List02046b1c((S02046b1c*)nodeList);
@@ -61,13 +61,13 @@ extern "C" ARM void func_020a654c(struct Res020a654c* self) {
         }
     }
     func_020a75ec(obj);
-    if (GetBitsInField0((unsigned int*)self, 0x2020) == 0) {
+    if (GetBitsInField0_0203b4c4((unsigned int*)self, 0x2020) == 0) {
         DispatchWithZeroExtras_02193428(obj, (void*)1);
     }
     if (*p == 0x2710) {
         func_020a7ce0(obj);
     }
-    if (GetBitsInField0((unsigned int*)self, 0x2020) != 0) {
+    if (GetBitsInField0_0203b4c4((unsigned int*)self, 0x2020) != 0) {
         return;
     }
     struct Out020a654c out;
@@ -82,7 +82,7 @@ extern "C" ARM void func_020a654c(struct Res020a654c* self) {
     if (out.f4 == 0) {
         return;
     }
-    if (IsField0Null((void**)self->nodeList) == 0) {
+    if (IsField0Null_02046b08((void**)self->nodeList) == 0) {
         return;
     }
     func_ov017_021a93f0(self, out.f4, 0);

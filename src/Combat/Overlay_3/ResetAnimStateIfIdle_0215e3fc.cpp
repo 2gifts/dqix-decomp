@@ -7,9 +7,8 @@ enum { kRegionValue3B4_3CC = 0x3cc };
 enum { kRegionValue3B4_3CC = 0x3b4 };
 #endif
 
-
 int IsAnimationActive0209ca2c(void* obj);
-void* GetData02153637(void);
+void* GetData02153637_020e2ff8(void);
 
 extern "C" void func_0205e944(void* data, int flag);
 extern "C" void func_ov003_0215c800(void* self);
@@ -37,7 +36,7 @@ ARM void ResetAnimStateIfIdle_0215e3fc(struct Self0215e3fc* self) {
     }
 
     func_0205e944(&data_02108760, 0x7f);
-    GetData02153637();
+    GetData02153637_020e2ff8();
 
     if (self->f3b4 != NULL) {
         int x = (int)BackgroundLoader::GetInstance();

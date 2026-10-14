@@ -3,7 +3,7 @@
 int CheckField0NonZero020a10a8(int*);
 
 // USA: func_0202eeb4
-ARM int AnySubObjectField0NonZero(char* obj) {
+ARM int AnySubObjectField0NonZero_0202eeb4(char* obj) {
     int result = 1;
     int inner = 1;
     if (CheckField0NonZero020a10a8((int*)(obj + 0x16c)) == 0) {

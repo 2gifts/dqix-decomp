@@ -83,11 +83,11 @@ struct Elem_0205cf78;
 
 void CancelPendingAction020397cc(Obj020397cc *obj, int a);
 int AppendString02042058(char *dst, const char *src);
-const char *CallFunc020e0434With02153694(int id);
-void SetWord0x18ClearByte0x1f(unsigned char *background, int a);
+const char *CallFunc020e0434With02153694_020e51cc(int id);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char *background, int a);
 int CountActiveEntries(ActiveEntry02046900 *archive);
 void *FindRecordByIndex(Rec020467f0 *archive, int index, void **name, int *size);
-int CheckField0NonZero(int *p);
+int CheckField0NonZero_0202b7d8(int *p);
 extern "C" void *func_0202ae18();
 extern "C" int func_0202c508();
 extern "C" int func_0202c540(void *p);
@@ -134,7 +134,7 @@ extern "C" ARM void func_ov003_0216b07c(Menu0216b07c *self) {
             if (self->mode_ == 3) {
                 global->unk_998 = 1;
                 char *text      = global->text_;
-                AppendString02042058(text, CallFunc020e0434With02153694(0x44));
+                AppendString02042058(text, CallFunc020e0434With02153694_020e51cc(0x44));
                 func_02046380(global);
                 func_0204500c(global, global->text_, 0, 0xe3);
                 global->unk_19b2 = 1;
@@ -196,7 +196,7 @@ extern "C" ARM void func_ov003_0216b07c(Menu0216b07c *self) {
     }
     if (self->step_ == 3) {
         Background0216b07c *background = self->backgrounds_;
-        SetWord0x18ClearByte0x1f((unsigned char *) background, 0);
+        SetWord0x18ClearByte0x1f_0204b11c((unsigned char *) background, 0);
         background->unk_1c_0_ = 0;
         background->unk_1c_4_ = 1;
         func_0204b5b4(background, 0);
@@ -205,7 +205,7 @@ extern "C" ARM void func_ov003_0216b07c(Menu0216b07c *self) {
         DispatchViaTable0204b5e8((Obj0204b5e8 *) background, 0, 0);
         BG1CNT                     = (BG1CNT & 0x43) | 0xd08;
         Background0216b07c *second = self->backgrounds_;
-        SetWord0x18ClearByte0x1f((unsigned char *) &second[1], 0);
+        SetWord0x18ClearByte0x1f_0204b11c((unsigned char *) &second[1], 0);
         second[1].unk_1c_0_ = 0;
         second[1].unk_1c_4_ = 2;
         func_0204b5b4(&second[1], 1);
@@ -275,7 +275,7 @@ extern "C" ARM void func_ov003_0216b07c(Menu0216b07c *self) {
         DISPCNT = (DISPCNT & ~0x1f00) | 0x1700;
         self->flags_13ec |= 1;
         void *obj = func_0202ae18();
-        if ((CheckField0NonZero((int *) obj) != 0 && func_0202c540(obj) != 0) ||
+        if ((CheckField0NonZero_0202b7d8((int *) obj) != 0 && func_0202c540(obj) != 0) ||
             *(short *) ((char *) state->GetUnknownGameObject() + 4) != 0)
         {
             self->state_ = 3;

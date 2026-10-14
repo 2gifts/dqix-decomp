@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_020177a8
-ARM void* GetElementStride0x24(unsigned char* obj, int index) {
+ARM void* GetElementStride0x24_020177a8(unsigned char* obj, int index) {
 #if defined(jpn)
     if (index < 0 || obj[0x497] <= index) {
 #else

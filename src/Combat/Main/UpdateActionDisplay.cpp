@@ -44,11 +44,11 @@ struct Bcb8Params;
 struct BattleTimer0202441c;
 struct Actor02024d48;
 
-void *GetData02105254();
+void *GetData02105254_0203b628();
 extern "C" void *func_02012fe4();
 void SetArraySlotFlag0203b718(void *owner, int mode, int index, int value);
 Entry_02027878 *GetEntryFromList(List_02027878 *list, int index);
-void ForwardParamsToB8bc(Bcb8Params *params, int a, int b);
+void ForwardParamsToB8bc_0203bcb8(Bcb8Params *params, int a, int b);
 void AccumulateBattleTimer0202441c(BattleTimer0202441c *receiver);
 int CheckCombatantReadyForAction020243b8(void *receiver, int combatantId);
 int CheckActionAllowed(Actor02024d48 *entry, int state);
@@ -59,7 +59,7 @@ void SetElementFields0202756c(void *receiver, int x, int y, int index, unsigned 
 extern "C" ARM void func_02024e78(void *receiver) {
     CombatActionReceiverView *obj = static_cast<CombatActionReceiverView *>(receiver);
     GameObject *actor             = GameState::GetInstance()->GetUnknownGameObject();
-    void *resourceData            = GetData02105254();
+    void *resourceData            = GetData02105254_0203b628();
     func_02012fe4();
     Vector3i position = actor->obj3D_.position_;
     CombatActionPosition entries[17];
@@ -78,7 +78,7 @@ extern "C" ARM void func_02024e78(void *receiver) {
         for (int i = 0; i < obj->forwardingCount; i++) {
             Entry_02027878 *entry = GetEntryFromList(static_cast<List_02027878 *>(receiver), obj->forwardingEntries[i].index);
             if (entry) {
-                ForwardParamsToB8bc(reinterpret_cast<Bcb8Params *>((char *) entry + 8), obj->forwardingEntries[i].parameter1,
+                ForwardParamsToB8bc_0203bcb8(reinterpret_cast<Bcb8Params *>((char *) entry + 8), obj->forwardingEntries[i].parameter1,
                                     obj->forwardingEntries[i].parameter2);
             }
         }
@@ -140,7 +140,7 @@ struct CombatProjectionReceiverView {
 extern "C" ARM void func_020251bc(void *receiver) {
     CombatProjectionReceiverView *state = static_cast<CombatProjectionReceiverView *>(receiver);
     GameObject *object                  = GameState::GetInstance()->GetUnknownGameObject();
-    void *displayState                  = GetData02105254();
+    void *displayState                  = GetData02105254_0203b628();
     func_02012fe4();
     Vector3fix position = object->obj3D_.position_;
     CombatActionPosition records[17];
@@ -166,7 +166,7 @@ extern "C" ARM void func_020251bc(void *receiver) {
             Entry_02027878 *entry =
                 GetEntryFromList(reinterpret_cast<List_02027878 *>(receiver), state->forwarding[i].entryIndex);
             if (entry) {
-                ForwardParamsToB8bc(reinterpret_cast<Bcb8Params *>(reinterpret_cast<unsigned char *>(entry) + 8),
+                ForwardParamsToB8bc_0203bcb8(reinterpret_cast<Bcb8Params *>(reinterpret_cast<unsigned char *>(entry) + 8),
                                     state->forwarding[i].x, state->forwardingOrigin + state->forwarding[i].z - tileZ + 16);
             }
         }

@@ -24,8 +24,8 @@ struct GlobalObj0202e6a8;
 extern "C" void func_ov000_0216d370(BattleCamera*, int, int, int);
 extern "C" int func_ov000_0215e9fc(Random*, short*, int, int);
 extern "C" void func_0202e5d8(BattleCamera*, int, int, int);
-CameraCombatant* GetCombatantWithFlag0x400(GameState*, int);
-void SetFields0x10To0x18(unsigned char*, int, int, int);
+CameraCombatant* GetCombatantWithFlag0x400_0200fea4(GameState*, int);
+void SetFields0x10To0x18_0202e5c8(unsigned char*, int, int, int);
 void StoreVec3Words0216d368(Vec3Ints0216d368*, int, int, int);
 void ApplyField0x70Tail(GlobalObj0202e6a8*, int);
 
@@ -67,7 +67,7 @@ extern "C" ARM void func_ov000_0216e3c4(BattleCamera* camera) {
         if (object) angle = object->obj3D_.rotation_.y;
     }
     angle = fix32ReduceAngle0To2Pi(angle - 0x648);
-    SetFields0x10To0x18((unsigned char*)camera, center.x, 0x800, center.z);
+    SetFields0x10To0x18_0202e5c8((unsigned char*)camera, center.x, 0x800, center.z);
     func_0202e5d8(camera, angle, 0x1000, distance);
     int combatants = 0;
     camera->mode = 14;
@@ -75,7 +75,7 @@ extern "C" ARM void func_ov000_0216e3c4(BattleCamera* camera) {
     Vec3Ints0216d368 sum;
     StoreVec3Words0216d368(&sum, 0, 0, 0);
     for (int i = 0; i < 8; i++) {
-        CameraCombatant* object = GetCombatantWithFlag0x400(game, i + 0xc0);
+        CameraCombatant* object = GetCombatantWithFlag0x400_0200fea4(game, i + 0xc0);
         if (object && object->included) {
             Vector3i position;
             position = object->object.position_;
@@ -88,7 +88,7 @@ extern "C" ARM void func_ov000_0216e3c4(BattleCamera* camera) {
         Vector3fixMultiplyScalar((Vector3i*)&sum, scale, (Vector3i*)&sum);
         Vector3i current;
         current = camera->target;
-        int facing = fix32_Atan2_Rescaled(sum.z - current.z, sum.x - current.x);
+        int facing = fix32_Atan2_Rescaled_020c3544(sum.z - current.z, sum.x - current.x);
         ApplyField0x70Tail((GlobalObj0202e6a8*)camera, -0x999 + ((facing / 0xffff) << 12));
     }
 }

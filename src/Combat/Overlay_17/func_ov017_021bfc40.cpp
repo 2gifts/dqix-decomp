@@ -4,11 +4,11 @@
 #include "Resource/GameResources.h"
 
 int HasNonZeroByteAtOfField498_0218d75c_0218d75c(void* obj);
-int GetByteField0x252(void* obj);
-void SetByteField0x253(void* obj);
-int GetFieldIfFlag4(char* obj);
-void SetField0x23cTrue(void* obj);
-void ClearBitsInField4(unsigned int* obj, unsigned int mask);
+int GetByteField0x252_02039820(void* obj);
+void SetByteField0x253_020397c0(void* obj);
+int GetFieldIfFlag4_020100f8(char* obj);
+void SetField0x23cTrue_020a27ac(void* obj);
+void ClearBitsInField4_0203b4e8(unsigned int* obj, unsigned int mask);
 int GetGlobalField0x1c020421a0(void);
 
 struct Vec3copy0202ec84 { unsigned int v[3]; };
@@ -45,15 +45,15 @@ extern "C" ARM int func_ov017_021bfc40(struct Obj021bfc40* self) {
             return 4;
         }
         GameObject* combatant = battle->GetUnknownGameObject();
-        if (combatant != NULL && GetByteField0x252(combatant) == 0) {
-            SetByteField0x253(combatant);
+        if (combatant != NULL && GetByteField0x252_02039820(combatant) == 0) {
+            SetByteField0x253_020397c0(combatant);
         }
-        int flag = GetFieldIfFlag4((char*)battle);
+        int flag = GetFieldIfFlag4_020100f8((char*)battle);
         if (flag != 0) {
-            SetField0x23cTrue((void*)flag);
+            SetField0x23cTrue_020a27ac((void*)flag);
         }
         if (res2 != NULL) {
-            ClearBitsInField4((unsigned int*)res2, 0x80);
+            ClearBitsInField4_0203b4e8((unsigned int*)res2, 0x80);
         }
         self->countdown = 0;
         self->timer = 0;
@@ -61,7 +61,7 @@ extern "C" ARM int func_ov017_021bfc40(struct Obj021bfc40* self) {
     }
 
     GameState* state = GameState::GetInstance();
-    void* ptr3b0 = GetField0x3b0Value(state);
+    void* ptr3b0 = GetField0x3b0Value_020100bc(state);
     struct Vec3copy0202ec84 vecBuf = self->pos;
 
     if (self->angle < 0x191e) {
@@ -99,15 +99,15 @@ extern "C" ARM int func_ov017_021bfc40(struct Obj021bfc40* self) {
 
     if (self->timer == 0) {
         GameObject* combatant = battle->GetUnknownGameObject();
-        if (combatant != NULL && GetByteField0x252(combatant) == 0) {
-            SetByteField0x253(combatant);
+        if (combatant != NULL && GetByteField0x252_02039820(combatant) == 0) {
+            SetByteField0x253_020397c0(combatant);
         }
-        int flag = GetFieldIfFlag4((char*)battle);
+        int flag = GetFieldIfFlag4_020100f8((char*)battle);
         if (flag != 0) {
-            SetField0x23cTrue((void*)flag);
+            SetField0x23cTrue_020a27ac((void*)flag);
         }
         if (res != NULL) {
-            ClearBitsInField4((unsigned int*)res, 0x80);
+            ClearBitsInField4_0203b4e8((unsigned int*)res, 0x80);
         }
     }
 

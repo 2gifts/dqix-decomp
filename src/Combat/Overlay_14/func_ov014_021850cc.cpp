@@ -139,9 +139,9 @@ void Clear0x10Bytes02096fb0(void* table);
 extern "C" void func_02097054(MonsterInfoTable* table, SafeAllocator* allocator, void* file, unsigned int size, short monsterID);
 MonsterRecordCount* GetHandleField8(HandleField8_02097238* table);
 MonsterInfo* BinarySearchByField4_02097224(BinarySearch020971a8Container* table, int monsterID);
-void Zero4Bytes(void* reader);
-void TryInvoke020e53bc(void* reader, int file, int size);
-const char** CallFunc020e52a0(void* reader, int id);
+void Zero4Bytes_020e526c(void* reader);
+void TryInvoke020e53bc_020e56fc(void* reader, int file, int size);
+const char** CallFunc020e52a0_020e5294(void* reader, int id);
 extern "C" void func_020e4864(const char* input, char* output, int, int, int, int);
 void* ResetAndReturnSelf020dfc2c(void* text);
 void ResetStruct020dfc40(Struct020dfc40* text);
@@ -150,7 +150,7 @@ extern "C" GameResources* func_ov017_0218b5b0();
 void CopyInternalFields0207df50(Foo0207df50* p);
 void RestorePairTables0207df90(char* p);
 void BackupPairTables0207dfac(char* p);
-void ClearEightWords(Struct_203dafc* info);
+void ClearEightWords_0203dafc(Struct_203dafc* info);
 void ComputeAndStoreVecs02184c08(unsigned char* screen);
 
 #if defined(jpn)
@@ -249,14 +249,14 @@ extern "C" ARM void func_ov014_021850cc(MonsterInfoScreen* self) {
                 func_020e207c(reader, self->dropNames_[1], info->dropItemIDs_[1]);
 #else
                 char reader[0xc];
-                Zero4Bytes(reader);
-                TryInvoke020e53bc(reader, (int)file, size);
-                const char** name = CallFunc020e52a0(reader, info->dropItemIDs_[0]);
+                Zero4Bytes_020e526c(reader);
+                TryInvoke020e53bc_020e56fc(reader, (int)file, size);
+                const char** name = CallFunc020e52a0_020e5294(reader, info->dropItemIDs_[0]);
                 if (name != NULL) {
                     memset(self->dropNames_[0], 0, 0x48);
                     func_020e4864(*name, self->dropNames_[0], 1, 0, 0, 0);
                 }
-                name = CallFunc020e52a0(reader, info->dropItemIDs_[1]);
+                name = CallFunc020e52a0_020e5294(reader, info->dropItemIDs_[1]);
                 if (name != NULL) {
                     memset(self->dropNames_[1], 0, 0x48);
                     func_020e4864(*name, self->dropNames_[1], 1, 0, 0, 0);
@@ -327,13 +327,13 @@ extern "C" ARM void func_ov014_021850cc(MonsterInfoScreen* self) {
                             CopyInternalFields0207df50((Foo0207df50*)resources->unknown_2cc);
                             RestorePairTables0207df90(resources->unknown_2cc);
                             ObjectArchiveLoadInfo loadInfo;
-                            ClearEightWords((Struct_203dafc*)&loadInfo);
+                            ClearEightWords_0203dafc((Struct_203dafc*)&loadInfo);
                             loadInfo.fileData = character;
                             loadInfo.allocator = allocator;
                             loadInfo.unk_8 = characterSize;
                             self->model_->LoadFromCCHROrCMOTArchive(&loadInfo, NULL);
                             BackupPairTables0207dfac(resources->unknown_2cc);
-                            ClearEightWords((Struct_203dafc*)&loadInfo);
+                            ClearEightWords_0203dafc((Struct_203dafc*)&loadInfo);
                             loadInfo.allocator = allocator;
                             loadInfo.fileData = motion;
                             loadInfo.unk_8 = motionSize;

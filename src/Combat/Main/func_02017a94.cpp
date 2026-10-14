@@ -4,9 +4,9 @@
 #include <GameState/GameState.h>
 
 extern "C" void* func_0205ec34(void);
-void* GetField0x3f8Address(GameState* battleStruct);
-int GetBitmapPixel(unsigned char* base, int row, int col);
-void* GetPointerFromArray0x3c(unsigned char* obj, unsigned int index);
+void* GetField0x3f8Address_0200fd0c(GameState* battleStruct);
+int GetBitmapPixel_0206eaec(unsigned char* base, int row, int col);
+void* GetPointerFromArray0x3c_0201e838(unsigned char* obj, unsigned int index);
 int LookupAndForEachNodeIfMatch02064b24(void* a, int mode, unsigned short id, void* c);
 
 struct Obj0201b600;
@@ -41,7 +41,7 @@ extern "C" ARM void func_02017a94(Zone3D* zone) {
     if (gs == NULL) {
         return;
     }
-    if (GetField0x3f8Address(gs) == NULL) {
+    if (GetField0x3f8Address_0200fd0c(gs) == NULL) {
         return;
     }
 #if defined(jpn)
@@ -56,7 +56,7 @@ extern "C" ARM void func_02017a94(Zone3D* zone) {
     if (bmp != NULL && *(unsigned char*)((char*)zone + BitmapFlagOffset) != 0) {
         for (row = 0; row < 2; row++) {
             for (colLow = 0; colLow < 0x7f; colLow++) {
-                if (GetBitmapPixel(bmp, (unsigned char)row, (short)colLow)) {
+                if (GetBitmapPixel_0206eaec(bmp, (unsigned char)row, (short)colLow)) {
                     struct FeatureElem02017a94* e =
                         FindElemByKeys((struct Obj0201b600*)zone, row, colLow);
                     if (e != NULL) {
@@ -65,7 +65,7 @@ extern "C" ARM void func_02017a94(Zone3D* zone) {
                 }
             }
             for (colHigh = 0x80; colHigh < 0xff; colHigh++) {
-                if (GetBitmapPixel(bmp, (unsigned char)row, (short)colHigh)) {
+                if (GetBitmapPixel_0206eaec(bmp, (unsigned char)row, (short)colHigh)) {
                     struct FeatureElem02017a94* e =
                         FindElemByKeys((struct Obj0201b600*)zone, row, colHigh - 0x80);
                     struct FeatureNode02017a94* n;
@@ -76,7 +76,7 @@ extern "C" ARM void func_02017a94(Zone3D* zone) {
                             unsigned short mask;
                             e->flags |= 1;
                             n = (struct FeatureNode02017a94*)
-                                GetPointerFromArray0x3c((unsigned char*)&zone->substruct_6c_, 2);
+                                GetPointerFromArray0x3c_0201e838((unsigned char*)&zone->substruct_6c_, 2);
                             while (n != NULL) {
                                 if (n->id2d == e->key) {
                                     cur = n->field2e;

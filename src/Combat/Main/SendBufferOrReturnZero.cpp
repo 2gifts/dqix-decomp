@@ -11,7 +11,7 @@ struct Buf020abae8 {
 };
 
 // USA: func_020abae8
-ARM int SendBufferOrReturnZero(int flag) {
+ARM int SendBufferOrReturnZero_020abae8(int flag) {
     int local0;
     if (!func_02075910(0, &local0, 1, 0)) return 0;
 

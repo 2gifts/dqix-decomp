@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_020424ac
-ARM char* FindUnescapedAngleBracket(char* str) {
+ARM char* FindUnescapedAngleBracket_020424ac(char* str) {
     if (str != 0) {
         while (*str != 0) {
             if (*str == '>' && str[1] != '>') {

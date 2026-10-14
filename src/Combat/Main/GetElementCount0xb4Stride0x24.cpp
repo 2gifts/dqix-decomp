@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_020d3d78
-ARM void* GetElementCount0xb4Stride0x24(unsigned char* obj, int index) {
+ARM void* GetElementCount0xb4Stride0x24_020d3d78(unsigned char* obj, int index) {
 #if defined(jpn)
     if (index < *(int*)(obj + 0xa0)) {
 #else

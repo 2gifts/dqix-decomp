@@ -14,14 +14,14 @@ extern "C" ARM void func_020177d4(Zone3D *zone, void *resourceNode, SafeAllocato
     if (tree->nodes == NULL) return;
 
     for (int i = 0; i < count; i++) {
-        ZoneResourceTreeRecord *source = reinterpret_cast<ZoneResourceTreeRecord *>(GetElementByIndexStride0x20(manager, i));
+        ZoneResourceTreeRecord *source = reinterpret_cast<ZoneResourceTreeRecord *>(GetElementByIndexStride0x20_0201f2a4(manager, i));
         ZoneResourceRuntimeNode *node  = &tree->nodes[i];
         Init02013018(reinterpret_cast<InitTarget02013018 *>(node));
         node->key = source->key;
     }
 
     for (int i = 0; i < count; i++) {
-        ZoneResourceTreeRecord *source = reinterpret_cast<ZoneResourceTreeRecord *>(GetElementByIndexStride0x20(manager, i));
+        ZoneResourceTreeRecord *source = reinterpret_cast<ZoneResourceTreeRecord *>(GetElementByIndexStride0x20_0201f2a4(manager, i));
         ZoneResourceRuntimeNode *node  = &tree->nodes[i];
         int parentKey                  = source->parentKey;
         if (parentKey > -1) {
@@ -29,7 +29,7 @@ extern "C" ARM void func_020177d4(Zone3D *zone, void *resourceNode, SafeAllocato
                 ZoneResourceRuntimeNode *parent = &tree->nodes[j];
                 if (source->parentKey == parent->key) {
                     node->parent = parent;
-                    AppendToNodeList(reinterpret_cast<ListNode *>(parent), reinterpret_cast<ListNode *>(node));
+                    AppendToNodeList_020130b0(reinterpret_cast<ListNode *>(parent), reinterpret_cast<ListNode *>(node));
                     break;
                 }
             }
@@ -46,7 +46,7 @@ extern "C" ARM void func_020177d4(Zone3D *zone, void *resourceNode, SafeAllocato
     }
 
     for (int i = 0; i < count; i++) {
-        ZoneResourceTreeRecord *source = reinterpret_cast<ZoneResourceTreeRecord *>(GetElementByIndexStride0x20(manager, i));
+        ZoneResourceTreeRecord *source = reinterpret_cast<ZoneResourceTreeRecord *>(GetElementByIndexStride0x20_0201f2a4(manager, i));
         ZoneResourceRuntimeNode *node  = &tree->nodes[i];
         node->source                   = source;
         node->unknown3a                = 0;
@@ -64,7 +64,7 @@ extern "C" ARM void func_020177d4(Zone3D *zone, void *resourceNode, SafeAllocato
             node->tracker = &tree->resources.trackers[source->key];
         } else {
             int index =
-                FindRecordIndexByHalfwordKey(reinterpret_cast<Table_1f1b0 *>(&tree->resources.records), source->trackerKey);
+                FindRecordIndexByHalfwordKey_0201f1b0(reinterpret_cast<Table_1f1b0 *>(&tree->resources.records), source->trackerKey);
             if (index >= 0) node->tracker = &tree->resources.trackers[index];
         }
 

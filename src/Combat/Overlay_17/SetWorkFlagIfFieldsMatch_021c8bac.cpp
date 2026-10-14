@@ -8,7 +8,7 @@ enum { kResourceWorkOffset = 0x3718 };
 
 extern "C" void* func_ov017_021b8478(void* obj);
 extern "C" void* func_ov017_021b8468(void* obj);
-void SetCombatWorkFlags0x55f4(void* work, int mask);
+void SetCombatWorkFlags0x55f4_ov000_02160fa8(void* work, int mask);
 
 struct Ret021c8bac {
 	unsigned char pad0[8];
@@ -29,5 +29,5 @@ ARM void SetWorkFlagIfFieldsMatch_021c8bac(int unused0, Src021c8bac* src, int un
 	if (r->field8 != src->field4) return;
 	void* work = func_ov017_021b8468(h);
 	if (!work) return;
-	SetCombatWorkFlags0x55f4(work, 0x2000000);
+	SetCombatWorkFlags0x55f4_ov000_02160fa8(work, 0x2000000);
 }

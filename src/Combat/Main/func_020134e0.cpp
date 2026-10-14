@@ -13,12 +13,12 @@ enum { MiddleFieldDelta = 0, TailFieldDelta = 0 };
 
 struct ClearThreeWords02094d00Struct;
 void ClearThreeWords02094d00(ClearThreeWords02094d00Struct*);
-void ResetFourSubStructs(char* obj);
+void ResetFourSubStructs_02012fa4(char* obj);
 extern "C" void func_020982b4(void* obj);
-unsigned char GetByte0x4(char* gs);
-int GetWord0x7f6c(void* gs);
+unsigned char GetByte0x4_0200fb9c(char* gs);
+int GetWord0x7f6c_0201201c(void* gs);
 struct FieldBlock63d6_115a8;
-unsigned char GetByteField0x63d6(FieldBlock63d6_115a8*);
+unsigned char GetByteField0x63d6_020115a8(FieldBlock63d6_115a8*);
 
 // USA: func_020134e0
 extern "C" ARM void func_020134e0(char* obj) {
@@ -73,7 +73,7 @@ extern "C" ARM void func_020134e0(char* obj) {
     *(int*)(obj + 0x27bc + TailFieldDelta) = 0xa000;
     *(int*)(obj + 0x27c0 + TailFieldDelta) = 0;
     *(int*)(obj + 0x820 + MiddleFieldDelta) = 0;
-    ResetFourSubStructs(obj + 0x600 + MiddleFieldDelta);
+    ResetFourSubStructs_02012fa4(obj + 0x600 + MiddleFieldDelta);
     memset(obj + 0x27dc + TailFieldDelta, 0, 0x40);
 
     *(char*)(obj + 0x281c + TailFieldDelta) = 0;
@@ -84,18 +84,18 @@ extern "C" ARM void func_020134e0(char* obj) {
     *(int*)(obj + 0x274c + TailFieldDelta) = 1;
     *(int*)(obj + 0x2750 + TailFieldDelta) = 1;
 
-    if (GetByte0x4((char*)gs) != 5) {
+    if (GetByte0x4_0200fb9c((char*)gs) != 5) {
         *(short*)(obj + 0x27d8 + TailFieldDelta) = 0;
         *(short*)(obj + 0x27da + TailFieldDelta) = 0;
     }
     *(char*)(obj + 0x281d + TailFieldDelta) = 0;
     *(char*)(obj + 0x281e + TailFieldDelta) = 0;
-    if (GetByteField0x63d6((FieldBlock63d6_115a8*)gs) != 0) {
+    if (GetByteField0x63d6_020115a8((FieldBlock63d6_115a8*)gs) != 0) {
         return;
     }
 
-    if (GetWord0x7f6c(gs) == 5 || GetByte0x4((char*)gs) == 4 ||
-        GetByte0x4((char*)gs) == 2) {
+    if (GetWord0x7f6c_0201201c(gs) == 5 || GetByte0x4_0200fb9c((char*)gs) == 4 ||
+        GetByte0x4_0200fb9c((char*)gs) == 2) {
         func_020982b4(obj + 0x840 + MiddleFieldDelta);
         *(short*)(obj + 0x27b4 + TailFieldDelta) = 2;
         *(short*)(obj + 0x27b6 + TailFieldDelta) = 0;

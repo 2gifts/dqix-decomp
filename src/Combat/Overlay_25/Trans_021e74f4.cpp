@@ -14,11 +14,11 @@ struct CombatLightingWork {
 #endif
     unsigned char lightingFadeStarted;
 };
-CombatLightingWork* GetActiveCombatWork();
+CombatLightingWork* GetActiveCombatWork_ov000_02160130();
 
 // USA: func_ov025_021e74f4
 extern "C" ARM int func_ov025_021e74f4(LightingFadeCommand* command) {
     LightingManager::GetInstance()->BeginFade(command->targetBrightness, command->duration);
-    GetActiveCombatWork()->lightingFadeStarted = 1;
+    GetActiveCombatWork_ov000_02160130()->lightingFadeStarted = 1;
     return 1;
 }

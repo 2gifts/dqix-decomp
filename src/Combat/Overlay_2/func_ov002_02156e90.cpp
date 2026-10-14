@@ -10,7 +10,7 @@ struct Elem0205d888 {
 struct Elem0205d888 *GetLastEntry0205d888(struct Struct0205d888 *s);
 void *FindElementByC40205d81c(struct Struct_0205d81c *s, int key);
 void ResetEntryList0205d6a0(struct Entry_0205d6a0 *e, int a);
-void SetElementFieldC2(struct Struct_0205d81c *s, int a, int b);
+void SetElementFieldC2_0205deb4(struct Struct_0205d81c *s, int a, int b);
 extern "C" void func_ov002_02161cf0(void *base);
 extern "C" void func_ov002_0215b9a4(void *base, int a, int b);
 extern "C" const unsigned char data_ov002_0216c99d[];
@@ -51,7 +51,7 @@ extern "C" ARM void func_ov002_02156e90(char *base) {
         if (t == e->key) {
             unsigned char k = data_ov002_0216c99e[i * 2];
             FindElementByC40205d81c((struct Struct_0205d81c *) (base + 0xec8), k);
-            SetElementFieldC2((struct Struct_0205d81c *) (base + 0xec8), k, 0);
+            SetElementFieldC2_0205deb4((struct Struct_0205d81c *) (base + 0xec8), k, 0);
             break;
         }
     }

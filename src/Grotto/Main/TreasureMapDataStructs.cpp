@@ -12,9 +12,8 @@
 
 extern "C"
 {
-    // some relation to loading overlays
-    extern "C" void _Z13PushInputLogAi(unsigned int);
-    extern "C" void _Z19PopStack0AndTriggeri(int);
+    extern "C" void _Z22PushInputLogA_020a1df8i(unsigned int);
+    extern "C" void _Z28PopStack0AndTrigger_020a1e54i(int);
 }
 
 #define TMAPLANGDATA_READ(offset, into, len) \
@@ -54,10 +53,10 @@ bool ExportDetailedTreasureMapData(const TreasureMapMetadata* from,
         return false;
 
     int readOffset = resources->pTMapLanguageOffsets->mapLocations;
-    
+
     unsigned short numEntries;
     TMAPLANGDATA_READ(readOffset, &numEntries, sizeof(numEntries));
-    
+
     for (int i = 1; i <= numEntries; i++)
     {
         unsigned short unused8;
@@ -88,10 +87,10 @@ bool ExportDetailedTreasureMapData(const TreasureMapMetadata* from,
         to->legacy_.Populate(from->QualityOrLegacyBossID, from->LegacyBossLevel, from->SeedOrMinTurns);
     }
 
-    _Z13PushInputLogAi(4);
+    _Z22PushInputLogA_020a1df8i(4);
     to->LoadLegacyBossStats(computeLegacyStats, legacyStatsData);
     to->LoadTreasures();
-    _Z19PopStack0AndTriggeri(1);
+    _Z28PopStack0AndTrigger_020a1e54i(1);
 
     for (int i = 0; i < 3; i++)
         to->discoveredTreasures_[i] = false;
@@ -108,7 +107,7 @@ bool ExportDetailedTreasureMapData(const TreasureMapMetadata* from,
         if (to->treasureDropRates_[i] == 100 && to->discoveryState_ != DiscoveryState_Undiscovered)
             to->discoveredTreasures_[i] = true;
     }
-    
+
     return true;
 }
 

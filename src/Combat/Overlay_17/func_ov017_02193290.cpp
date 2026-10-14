@@ -4,7 +4,7 @@
 #include "std_library_functions.h"
 
 extern "C" void* func_02012fe4(void* self);
-unsigned char* GetElementStride0x24(unsigned char* p, int i);
+unsigned char* GetElementStride0x24_020177a8(unsigned char* p, int i);
 
 struct Header02193290 {
     unsigned char data[0xc0];
@@ -48,7 +48,7 @@ extern "C" ARM int func_ov017_02193290(int a, int b, int c, Vector3i* pos, int d
     Owner02193290* owner = (Owner02193290*)func_02012fe4(GameState::GetInstance());
     int total = 0;
     for (int i = 0; i < owner->count; i++) {
-        Element02193290* elem = (Element02193290*)GetElementStride0x24((unsigned char*)owner, i);
+        Element02193290* elem = (Element02193290*)GetElementStride0x24_020177a8((unsigned char*)owner, i);
         if (elem == NULL) {
             continue;
         }

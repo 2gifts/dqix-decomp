@@ -9,7 +9,7 @@ struct SetFieldsStruct {
 };
 
 // USA: func_0201e878
-ARM void ZoneFeatures::SetOpcode7bAllocation(ZoneFeatures::Opcode7bEntry* arg0, unsigned short arg1) {
+ARM void ZoneFeatures::SetOpcode7bAllocation_0201e878(ZoneFeatures::Opcode7bEntry* arg0, unsigned short arg1) {
     struct SetFieldsStruct* p = (struct SetFieldsStruct*)this;
     int value = (int)arg0;
     short id = (short)arg1;

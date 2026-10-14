@@ -4,7 +4,7 @@
 
 extern "C" int func_ov017_0218b5b0(void);
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
-void ClearBitsInField4(unsigned int* obj, unsigned int mask);
+void ClearBitsInField4_0203b4e8(unsigned int* obj, unsigned int mask);
 
 extern int data_02114e20;
 
@@ -21,5 +21,5 @@ extern "C" ARM void func_ov017_021bef84(struct Obj021bef84* self) {
         self->allocator.Destroy();
         TailForward02012da4((AllocatorUnion*)&data_02114e20, p);
     }
-    ClearBitsInField4((unsigned int*)h, 0xc0);
+    ClearBitsInField4_0203b4e8((unsigned int*)h, 0xc0);
 }

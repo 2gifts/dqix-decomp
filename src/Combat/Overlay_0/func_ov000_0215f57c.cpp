@@ -25,8 +25,8 @@ struct ByteTable8_0215f57c {
     signed char v[8];
 };
 
-GameObject* GetCombatantWithFlag0x400(GameState* battleStruct, int combatantId);
-void ToggleBit0AtByte0x3c(struct ToggleBits3c_891b0* obj);
+GameObject* GetCombatantWithFlag0x400_0200fea4(GameState* battleStruct, int combatantId);
+void ToggleBit0AtByte0x3c_020891b0(struct ToggleBits3c_891b0* obj);
 
 extern struct ByteTable8_0215f57c data_ov000_02182a6c;
 
@@ -37,7 +37,7 @@ extern "C" ARM int func_ov000_0215f57c(struct Random* rng, int id) {
     if (InRange(id)) {
         return 0;
     }
-    struct Combatant0215f57c* c = (struct Combatant0215f57c*)GetCombatantWithFlag0x400(GameState::GetInstance(), id);
+    struct Combatant0215f57c* c = (struct Combatant0215f57c*)GetCombatantWithFlag0x400_0200fea4(GameState::GetInstance(), id);
     struct Inner0215f57c* inner = c->field148;
     int flag = c->field138->bit0 ? 1 : 0;
     int r = NextRandomMax(rng, 2);
@@ -48,6 +48,6 @@ extern "C" ARM int func_ov000_0215f57c(struct Random* rng, int id) {
     t.v[6] = flag != 0 ? 0 : 1;
     t.v[7] = flag == 0 ? 2 : 0;
     int result = t.v[inner->slot];
-    ToggleBit0AtByte0x3c(c->field138);
+    ToggleBit0AtByte0x3c_020891b0(c->field138);
     return result;
 }

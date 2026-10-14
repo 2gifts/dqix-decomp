@@ -10,7 +10,7 @@ enum { RegionOffset150 = 0x150 };
 
 struct Obj150_021b354c;
 unsigned char GetSubByteField56e_021b354c(Obj150_021b354c* obj);
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 
 extern int data_ov017_021d7ab6;
 extern short data_ov017_021d6b56;
@@ -27,11 +27,11 @@ struct Obj_021b3678 {
 extern "C" ARM int func_ov017_021b3678(struct Obj_021b3678* obj) {
     GameState* bs = GameState::GetInstance();
     int field4 = (int)BackgroundLoader::GetInstance();
-    GameObject* combatant = GetCombatantWithFlag0x100(bs, obj->id);
+    GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(bs, obj->id);
     if (!combatant) {
         return 0;
     }
-    if (!GetFieldAt0x150((unsigned char*)combatant)) {
+    if (!GetFieldAt0x150_02053c6c((unsigned char*)combatant)) {
         return 0;
     }
 

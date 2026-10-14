@@ -8,7 +8,7 @@ struct EntryList_203dce4 {
 };
 
 // USA: func_0203dce4
-ARM struct Entry_203dce4* GetEntryUnlessFlag0x8000(struct EntryList_203dce4* list, int id) {
+ARM struct Entry_203dce4* GetEntryUnlessFlag0x8000_0203dce4(struct EntryList_203dce4* list, int id) {
     struct Entry_203dce4* entry;
     if ((unsigned int)id >= 0x20) {
         return 0;

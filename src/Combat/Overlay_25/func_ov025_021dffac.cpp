@@ -21,17 +21,17 @@ int IsMatchingID02163690(int);
 void* SearchBothTables02079e2c(char*, int);
 int CheckSlotEntryKind021627fc(void*);
 extern "C" int func_ov025_021e1048(Battle021dffac*, Entry021dffac*);
-unsigned char GetSubstructByte0x1c(unsigned char*);
-unsigned char GetSubstructByte0x1d(unsigned char*);
-unsigned char GetSubstructByte0x1e(unsigned char*);
-void SetSubstructByte0x1c(unsigned char*, unsigned char);
-void SetSubstructByte0x1d(unsigned char*, unsigned char);
-void SetSubstructByte0x1e(unsigned char*, unsigned char);
-void SetSubstructByte0x1f(unsigned char*, unsigned char);
+unsigned char GetSubstructByte0x1c_020493a4(unsigned char*);
+unsigned char GetSubstructByte0x1d_020493c8(unsigned char*);
+unsigned char GetSubstructByte0x1e_020493ec(unsigned char*);
+void SetSubstructByte0x1c_02049390(unsigned char*, unsigned char);
+void SetSubstructByte0x1d_020493b8(unsigned char*, unsigned char);
+void SetSubstructByte0x1e_020493dc(unsigned char*, unsigned char);
+void SetSubstructByte0x1f_02049400(unsigned char*, unsigned char);
 extern "C" int func_ov025_021e1540(int);
 Entry021dffac* FindByteMatch_021e1010(unsigned char*, int, int);
 extern "C" void func_ov025_021e110c(unsigned char*, Entry021dffac*, int);
-int CheckSubstructFlag0x80(unsigned char*);
+int CheckSubstructFlag0x80_02048bd0(unsigned char*);
 extern "C" Cell021dffac func_ov000_0216f74c(int*);
 extern "C" void __clear(void*, int);
 extern "C" int func_02031468(const Vector3fix*, const Vector3fix*, const Vector3fix*, Vector3fix*);
@@ -60,7 +60,7 @@ extern "C" ARM int func_ov025_021dffac(Context021dffac* context) {
     Action021dffac* selected = SelectAction021dffac(battle, context->actionIndex);
     int id = selected->id;
     if (IsMatchingID02163690(id)) id = 1;
-    void* actionData = SearchBothTables02079e2c((char*)GetData02108e10(), (short)id);
+    void* actionData = SearchBothTables02079e2c((char*)GetData02108e10_020797dc(), (short)id);
     if (!actionData) return 0;
     if (!CheckSlotEntryKind021627fc(context)) return 0;
     Entry021dffac entries[12];
@@ -69,14 +69,14 @@ extern "C" ARM int func_ov025_021dffac(Context021dffac* context) {
     int actionCount = battle->count;
     int selectedIndex = context->actionIndex;
     for (int i = 0; i < count; ++i) {
-        SetSubstructByte0x1d((unsigned char*)entries[i].actor, GetSubstructByte0x1c((unsigned char*)entries[i].actor));
-        SetSubstructByte0x1f((unsigned char*)entries[i].actor, 0xff);
+        SetSubstructByte0x1d_020493b8((unsigned char*)entries[i].actor, GetSubstructByte0x1c_020493a4((unsigned char*)entries[i].actor));
+        SetSubstructByte0x1f_02049400((unsigned char*)entries[i].actor, 0xff);
     }
     for (int i = 0; i < count; ++i) {
         GameObject* actor = entries[i].actor;
-        int current = GetSubstructByte0x1c((unsigned char*)actor);
-        if (current == GetSubstructByte0x1e((unsigned char*)actor))
-            SetSubstructByte0x1c((unsigned char*)actor, (unsigned char)func_ov025_021e1540(actor->obj3D_.unknown_4_));
+        int current = GetSubstructByte0x1c_020493a4((unsigned char*)actor);
+        if (current == GetSubstructByte0x1e_020493ec((unsigned char*)actor))
+            SetSubstructByte0x1c_02049390((unsigned char*)actor, (unsigned char)func_ov025_021e1540(actor->obj3D_.unknown_4_));
     }
     sourceIndex = 0;
     if (selected->source) sourceIndex = selected->source->actorIndex;
@@ -119,7 +119,7 @@ extern "C" ARM int func_ov025_021dffac(Context021dffac* context) {
         if (selectedIndex == i) {
             GameObject* target = game->GetCombatantByIndex(targetIndex);
             unsigned short actionID = action->id;
-            if (actor && target && CheckSubstructFlag0x80((unsigned char*)actor) && (unsigned int)(actionID - 9) <= 2) {
+            if (actor && target && CheckSubstructFlag0x80_02048bd0((unsigned char*)actor) && (unsigned int)(actionID - 9) <= 2) {
                 COPY_ARRAY(sourcePosition.coordinates, ((const Position021dffac*)&actor->obj3D_.position_)->coordinates);
                 COPY_ARRAY(targetPosition.coordinates, ((const Position021dffac*)&target->obj3D_.position_)->coordinates);
                 int candidateCount = 0;
@@ -138,16 +138,16 @@ extern "C" ARM int func_ov025_021dffac(Context021dffac* context) {
         if (!func_ov025_021e1f40(actor, targetIndex)) continue;
         if (selectedIndex == i) {
             func_ov025_021e16c8(sourceEntry, targetEntry, occupied, &actions[selectedIndex], actionData, entries, count);
-            SetSubstructByte0x1f((unsigned char*)sourceEntry->actor, GetSubstructByte0x1d((unsigned char*)targetEntry->actor));
+            SetSubstructByte0x1f_02049400((unsigned char*)sourceEntry->actor, GetSubstructByte0x1d_020493c8((unsigned char*)targetEntry->actor));
         } else {
             Entry021dffac* entry = FindByteMatch_021e1010((unsigned char*)entries, count, source->actorIndex);
             if (entry && entry->flag) func_ov025_021e1d54(entry, occupied);
-            else if (entry && GetSubstructByte0x1c((unsigned char*)entry->actor) != 0xff) {
+            else if (entry && GetSubstructByte0x1c_020493a4((unsigned char*)entry->actor) != 0xff) {
                 int fallback = GetSubByteOrFallback_021e1f08((unsigned char*)entry->actor, (unsigned char*)action);
                 Entry021dffac* other = FindByteMatch_021e1010((unsigned char*)entries, count, fallback);
                 if (!other) continue;
                 func_ov025_021e16c8(entry, other, occupied, &actions[selectedIndex], actionData, entries, count);
-                SetSubstructByte0x1f((unsigned char*)entry->actor, GetSubstructByte0x1d((unsigned char*)other->actor));
+                SetSubstructByte0x1f_02049400((unsigned char*)entry->actor, GetSubstructByte0x1d_020493c8((unsigned char*)other->actor));
             }
         }
     }
@@ -167,14 +167,14 @@ extern "C" ARM int func_ov025_021dffac(Context021dffac* context) {
             previousEntry = FindByteMatch_021e1010((unsigned char*)entries, count, actorIndex);
             GameObject* actor = game->GetCombatantByIndex(actorIndex);
             if (!actor || !previousEntry || !func_ov025_021e1f40(actor, targetIndex)) continue;
-            unsigned char cell = GetSubstructByte0x1e((unsigned char*)actor);
+            unsigned char cell = GetSubstructByte0x1e_020493ec((unsigned char*)actor);
             if (cell < 81 && (!IsOccupied021dffac(occupied[cell]) || occupied[cell] == AdjustIndex_021dfbd4(actor->obj3D_.unknown_4_)))
-                SetSubstructByte0x1d((unsigned char*)actor, cell);
+                SetSubstructByte0x1d_020493b8((unsigned char*)actor, cell);
             else func_ov025_021e1d54(previousEntry, occupied);
-            SetSubstructByte0x1e((unsigned char*)actor, 0xff);
+            SetSubstructByte0x1e_020493dc((unsigned char*)actor, 0xff);
             int fallback = GetSubByteOrFallback_021e1f08((unsigned char*)actor, (unsigned char*)previousAction);
             GameObject* other = game->GetCombatantByIndex(fallback);
-            if (other) SetSubstructByte0x1f((unsigned char*)actor, GetSubstructByte0x1d((unsigned char*)other));
+            if (other) SetSubstructByte0x1f_02049400((unsigned char*)actor, GetSubstructByte0x1d_020493c8((unsigned char*)other));
         }
     }
     return 1;

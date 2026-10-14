@@ -26,7 +26,6 @@ enum { kRegionValue49C_2C4 = 0x49c };
 enum { kRegionValue48A_2B2 = 0x48a };
 #endif
 
-
 struct Obj2081 {
     char pad[kRegionValue36_2A];
     unsigned short field36;
@@ -39,7 +38,7 @@ struct Obj0205eaa0;
 extern "C" int func_020813ec(void *obj, int id);
 void ResetWithSub0208203c(struct Obj0208203c *obj);
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
-void SetElementFlag0x20(struct Obj2081* obj, int key);
+void SetElementFlag0x20_02080c04(struct Obj2081* obj, int key);
 void ResetAndReposition020e280c(struct Obj020e280c* self, void* b);
 
 extern struct Obj0205eaa0 data_02108760;
@@ -71,6 +70,6 @@ extern "C" ARM void func_ov003_021612c0(struct Ctx021612c0* self) {
     if (self->field390 == NULL) {
         return;
     }
-    SetElementFlag0x20(self->field324, self->field488);
+    SetElementFlag0x20_02080c04(self->field324, self->field488);
     ResetAndReposition020e280c(self->field390, (void*)-1);
 }

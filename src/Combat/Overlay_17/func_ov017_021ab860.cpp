@@ -16,19 +16,19 @@ enum { kResourceHeaderOffset = 0x70c, kResourceTailOffset = 0x6fc,
        kTargetIdOffset = 0x44ae, kTargetArgOffset = 0x44b0 };
 #endif
 
-int GetWord0x0(int* p);
+int GetWord0x0_0200fb8c(int* p);
 extern "C" void* func_02012fe4(void);
 extern "C" void* memset(void* dst, int val, unsigned int size);
 extern "C" unsigned char* func_0205ec34(void);
-int TestBitInByteArray(int obj, unsigned char* bits, int index);
-int IsGlobalU16InRange(GameState* gameState);
+int TestBitInByteArray_0206dfb0(int obj, unsigned char* bits, int index);
+int IsGlobalU16InRange_020117f0(GameState* gameState);
 struct Obj021abb68;
 void InitState28_021abb68(struct Obj021abb68* obj, unsigned char arg);
 struct List02046a3c;
 struct Node02046a3c;
 void InsertNodeAfterHead(struct List02046a3c* list, struct Node02046a3c* node);
 extern "C" int func_ov017_0219ff58(GameResources* res, int a, int b, int c);
-void* GetField0x3f8Address(GameState* battleStruct);
+void* GetField0x3f8Address_0200fd0c(GameState* battleStruct);
 extern "C" void VectorizedMemset(void* dst, int val, int size);
 void InitAndResetHeader_0219e310(unsigned char* obj, int flag);
 struct TailList020469b4;
@@ -87,7 +87,7 @@ struct Entry3f8_021ab860 {
 // USA: func_ov017_021ab860
 extern "C" ARM int func_ov017_021ab860(int arg0, unsigned char arg1) {
     GameState* gs = GameState::GetInstance();
-    GetWord0x0((int*)gs);
+    GetWord0x0_0200fb8c((int*)gs);
     data_ov017_021d83b0.header = ((Active021ab860*)func_02012fe4())->header;
     data_ov017_021d83b0.key = 0;
     data_ov017_021d83b0.group = 0;
@@ -95,10 +95,10 @@ extern "C" ARM int func_ov017_021ab860(int arg0, unsigned char arg1) {
     memset(&data_ov017_021d83bc, 0, sizeof(Vector3i));
     data_ov017_021d83b0.field_0x18 = 0;
     unsigned char* save = func_0205ec34();
-    if (TestBitInByteArray((int)save, save + 0x8c, 0x113a) != 0) {
+    if (TestBitInByteArray_0206dfb0((int)save, save + 0x8c, 0x113a) != 0) {
         return 1;
     }
-    if (IsGlobalU16InRange(gs) != 0) {
+    if (IsGlobalU16InRange_020117f0(gs) != 0) {
         int status;
         GameState* state = GameState::GetInstance();
         Active021ab860* active = (Active021ab860*)func_02012fe4();
@@ -159,7 +159,7 @@ extern "C" ARM int func_ov017_021ab860(int arg0, unsigned char arg1) {
             return 3;
         }
         if (busy == 0) {
-            Entry3f8_021ab860* e = (Entry3f8_021ab860*)GetField0x3f8Address(gs);
+            Entry3f8_021ab860* e = (Entry3f8_021ab860*)GetField0x3f8Address_0200fd0c(gs);
             VectorizedMemset(e, 0, sizeof(Entry3f8_021ab860));
             e->b4 = 1;
             e->b8 = 1;
@@ -176,7 +176,7 @@ extern "C" ARM int func_ov017_021ab860(int arg0, unsigned char arg1) {
             e->vec = data_ov017_021d83bc;
             e->h1c = data_ov017_021d83b0.field_0x18;
             e->b7 = 1;
-            CallFunc0200fbb4AtField0x3f8(gs, e);
+            CallFunc0200fbb4AtField0x3f8_0200fcfc(gs, e);
         }
         struct TailList020469b4* tail;
         unsigned char* header = (unsigned char*)res->unknown_ptr_array_36fc[4];

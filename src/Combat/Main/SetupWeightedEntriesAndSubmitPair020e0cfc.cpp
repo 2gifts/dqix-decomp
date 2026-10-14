@@ -15,7 +15,7 @@ struct S_b20c {
 };
 
 void InitWeightedEntries02023064(struct Struct02020520* arr, unsigned int count, short* a, short* b, short* c, short* d);
-void ClearTwoWordsAndByte(struct S_b20c* obj);
+void ClearTwoWordsAndByte_0205b20c(struct S_b20c* obj);
 void SetField0_0205b220(void* obj, int value);
 void SetFieldsAt0x4And0x8_0205b228(void* obj, int value, unsigned char flag);
 extern "C" int func_020420e8(char*, int);
@@ -35,7 +35,7 @@ ARM void SetupWeightedEntriesAndSubmitPair020e0cfc(void* obj, int b, int c) {
     int len2 = func_020420e8((char*)obj + 0x324 + 0x400, 0);
 
     struct S_b20c localObj;
-    ClearTwoWordsAndByte(&localObj);
+    ClearTwoWordsAndByte_0205b20c(&localObj);
     SetField0_0205b220(&localObj, b + c);
     SetFieldsAt0x4And0x8_0205b228(&localObj, (int)arr, 4);
 

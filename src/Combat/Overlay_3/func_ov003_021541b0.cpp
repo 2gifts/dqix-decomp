@@ -4,11 +4,11 @@
 #include "System/Graphics.h"
 #include "Resource/Brightness.h"
 
-int GetWord0x0(int* obj);
+int GetWord0x0_0200fb8c(int* obj);
 void* GetDataPtr02114e04_020d6c00(void);
-void OrBitsIntoField0(unsigned int* field, unsigned int bits);
-void OrGlobalFlag0x40(void);
-void SetWord0x18ClearByte0x1f(unsigned char* obj, int value);
+void OrBitsIntoField0_020466e4(unsigned int* field, unsigned int bits);
+void OrGlobalFlag0x40_020dc2bc(void);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char* obj, int value);
 extern "C" void func_0204b5b4(void* obj, int value);
 struct Obj0204b5e8;
 void DispatchViaTable0204b5e8(struct Obj0204b5e8* obj, int a, int b);
@@ -52,7 +52,7 @@ struct SubScreenBackground {
 
 // USA: func_ov003_021541b0
 extern "C" ARM void func_ov003_021541b0(struct SubScreenBackground* self) {
-    GameResources* resources = (GameResources*)GetWord0x0((int*)GameState::GetInstance());
+    GameResources* resources = (GameResources*)GetWord0x0_0200fb8c((int*)GameState::GetInstance());
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
 
     if (self->loadState == 0) {
@@ -63,8 +63,8 @@ extern "C" ARM void func_ov003_021541b0(struct SubScreenBackground* self) {
         }
     } else if (self->loadState == 1) {
         if (IsSubBrightnessTransitionActive(resources) == 0) {
-            OrBitsIntoField0((unsigned int*)GetDataPtr02114e04_020d6c00(), 1);
-            OrGlobalFlag0x40();
+            OrBitsIntoField0_020466e4((unsigned int*)GetDataPtr02114e04_020d6c00(), 1);
+            OrGlobalFlag0x40_020dc2bc();
             self->loadState++;
         }
     } else if (self->loadState == 2) {
@@ -79,7 +79,7 @@ extern "C" ARM void func_ov003_021541b0(struct SubScreenBackground* self) {
         alloc->Reset();
         self->bits34Lo = 1;
         self->bits34Hi = 0;
-        SetWord0x18ClearByte0x1f((unsigned char*)self->backgrounds, 0);
+        SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)self->backgrounds, 0);
         func_0204b5b4(self->backgrounds, 0);
         DispatchViaTable0204b5e8((struct Obj0204b5e8*)self->backgrounds, 0, 0);
         AllocateArray0204af38((struct Foo0204af38*)self->backgrounds, 14, alloc);

@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "Combat/LootPointEvent.h"
 
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 struct LootPointEventPayload {
@@ -25,7 +25,7 @@ struct LootPointEvent {
 ARM void EnqueueEventTag183_021d38f8(unsigned char mode, signed char partySlot,
                                    unsigned char mask, unsigned char pointId,
                                    const LootPointState* packedState) {
-    void* dispatcher = GetData02100044();
+    void* dispatcher = GetData02100044_0202ae24();
     LootPointEvent event;
     event.tag = 0xb7;
     LootPointEventPayload* payload = event.GetPayload();

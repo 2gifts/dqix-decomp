@@ -16,13 +16,13 @@ struct ActionNode {unsigned short action;char p[7];unsigned char targetCount;cha
 struct Battle {char p[0x8e00];unsigned char tableCount;char q[0x17];char* field8e18;char r[0x58];TargetNode* targets;char s[8];unsigned char entryCount,targetCount;char t[0x14];unsigned char mode;};
 struct SkillData {char p[0x18];unsigned int low:5,type:7,high:20;char q[0x14];short linked;};
 struct Ids {short v[8];};struct Party {short v[4];};struct Big {char buf[0x678];};
-GameObject* GetCombatantWithFlag0x100(GameState*,int);GameObject* GetCombatantWithFlag0x400(GameState*,int);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState*,int);GameObject* GetCombatantWithFlag0x400_0200fea4(GameState*,int);
 int IsSpecialStateValue_02159c58(void*,int);int HasFlaggedSlotBit21Set0208555c(unsigned char*);struct Random;int NextRandomMax(Random*,int);
-struct TargetObj02088418;int IsValidTargetCombatant(TargetObj02088418*,int,int);int IsFlag0x14Bit0x800000Set(GameObject*);void ResetTargetFlags02088474(void*,int,int);
-int GetCombatantField0x148Bits3To4(int,int);void ClearInt0208a910(int*);struct Container02070e60;void* SearchWithLow15Comparator02070fd0(Container02070e60*,int);
+struct TargetObj02088418;int IsValidTargetCombatant(TargetObj02088418*,int,int);int IsFlag0x14Bit0x800000Set_ov000_02157cc4(GameObject*);void ResetTargetFlags02088474(void*,int,int);
+int GetCombatantField0x148Bits3To4_ov000_02159d94(int,int);void ClearInt0208a910(int*);struct Container02070e60;void* SearchWithLow15Comparator02070fd0(Container02070e60*,int);
 struct Obj0204887c;void ReplaceEntryAndFormat0204887c(Obj0204887c*,char*);SkillData* SearchBothTables02079e2c(char*,int);
-void ResetStruct02157cdc(void*);void* GetTableEntry0x8e00Bound0x48(void*);void ClearFlags0x3bAnd0x3cAndByte0x3a(unsigned char*);
-int IsFlag0x14Bit0x80000Set(GameObject*);int IsFlag0x14Bit0x20Set(GameObject*);
+void ResetStruct02157cdc(void*);void* GetTableEntry0x8e00Bound0x48_ov000_0215e918(void*);void ClearFlags0x3bAnd0x3cAndByte0x3a_02089758(unsigned char*);
+int IsFlag0x14Bit0x80000Set_ov000_02156050(GameObject*);int IsFlag0x14Bit0x20Set_ov000_021543f4(GameObject*);
 struct Obj021600cc;struct Node021600cc;void AppendNode021600cc(Obj021600cc*,Node021600cc*);
 struct Obj02160068;struct Node02160068;void AppendNode02160068(Obj02160068*,Node02160068*);
 extern "C" {
@@ -35,7 +35,7 @@ int func_ov000_0215833c(void*,int,ActionNode*);int func_ov000_0215f67c(void*,int
 inline int IsParty(int id){return (id>=0&&id<=3)?1:0;}
 // USA: func_ov000_0215767c
 extern "C" ARM void func_ov000_0215767c(Battle* self,ActionNode* src,ActionNode* dst){
- GameState* gs=GameState::GetInstance();ActionDataTables* data = GetData02108e10();int id=(short)src->entry->id;GameObject* unit=GameState::GetInstance()->GetCombatantByIndex(id);if(!unit)return;
+ GameState* gs=GameState::GetInstance();ActionDataTables* data = GetData02108e10_020797dc();int id=(short)src->entry->id;GameObject* unit=GameState::GetInstance()->GetCombatantByIndex(id);if(!unit)return;
  Ids ids(data_ov000_02182c54);signed char count=0;bool special=false;bool multiple=false;self->mode=0;
  if(IsParty(id)){
   if(IsSpecialStateValue_02159c58(self,src->action)){
@@ -43,14 +43,14 @@ extern "C" ARM void func_ov000_0215767c(Battle* self,ActionNode* src,ActionNode*
    if(total!=4)src->action=func_ov000_02159cb4(self,id);
    else {multiple=true;for(int i=0;i<total;i++){int next=party.v[i];if(ids.v[0]!=next)ids.v[count++]=next;}}
   }else{
-   ids.v[count++]=id;GameObject* member=GetCombatantWithFlag0x100(gs,id);int handled=0;
+   ids.v[count++]=id;GameObject* member=GetCombatantWithFlag0x100_0200ff1c(gs,id);int handled=0;
    if(member&&HasFlaggedSlotBit21Set0208555c(member->actor)&&!func_ov000_02155f9c(self,id,0)&&!NextRandomMax((Random*)self,4)&&IsValidTargetCombatant((TargetObj02088418*)member->stats,9,0)){
-    self->mode=IsFlag0x14Bit0x800000Set(member);ResetTargetFlags02088474(member->stats,9,0);handled=1;
+    self->mode=IsFlag0x14Bit0x800000Set_ov000_02157cc4(member);ResetTargetFlags02088474(member->stats,9,0);handled=1;
    }
    if(!handled&&src->action!=0x1f6){Big big;func_ov024_021f73b8(&big);func_ov024_021f8f20(&big,self,id,src);}
   }
  }else{
-  ids.v[count++]=id;GameObject* enemy=GetCombatantWithFlag0x400(GameState::GetInstance(),id);int kind=GetCombatantField0x148Bits3To4((int)self,id);int skip=1;
+  ids.v[count++]=id;GameObject* enemy=GetCombatantWithFlag0x400_0200fea4(GameState::GetInstance(),id);int kind=GetCombatantField0x148Bits3To4_ov000_02159d94((int)self,id);int skip=1;
   if(func_ov000_0215704c(self,id))special=true;
   else if(src->action==0x1f7&&!func_ov000_02155f9c(self,id,1))skip=0;
   else if(kind==2)skip=0;
@@ -64,13 +64,13 @@ extern "C" ARM void func_ov000_0215767c(Battle* self,ActionNode* src,ActionNode*
   }
  }
  for(signed char i=0;i<count;i++){
-  ActionEntry* entry=(ActionEntry*)GetTableEntry0x8e00Bound0x48(self);if(!entry)break;memset(entry,0,0x30);entry->sentinel=-1;entry->tail=0;int current=ids.v[i];int handled=0;entry->id=current;
+  ActionEntry* entry=(ActionEntry*)GetTableEntry0x8e00Bound0x48_ov000_0215e918(self);if(!entry)break;memset(entry,0,0x30);entry->sentinel=-1;entry->tail=0;int current=ids.v[i];int handled=0;entry->id=current;
   if(!multiple)handled=func_ov000_0215833c(self,current,src);
-  GameObject* other=GameState::GetInstance()->GetCombatantByIndex(current);if(other)ClearFlags0x3bAnd0x3cAndByte0x3a((unsigned char*)other->stats);
+  GameObject* other=GameState::GetInstance()->GetCombatantByIndex(current);if(other)ClearFlags0x3bAnd0x3cAndByte0x3a_02089758((unsigned char*)other->stats);
   if(!handled){
-   if(func_ov000_02155f9c(self,current,0)){src->action=0x1f7;src->targetCount=0;if(IsFlag0x14Bit0x80000Set(unit))unit->stats->flags|=2;}
-   else if(special){src->action=0x1f7;src->targetCount=0;if((unsigned char)unit->stats->mode==1){self->mode=IsFlag0x14Bit0x800000Set(unit);ResetTargetFlags02088474(unit->stats,10,0);unit->stats->flags|=2;}}
-   else if(IsFlag0x14Bit0x20Set(unit)){src->action=func_ov000_0215f67c(self,current);src->targetCount=0;}
+   if(func_ov000_02155f9c(self,current,0)){src->action=0x1f7;src->targetCount=0;if(IsFlag0x14Bit0x80000Set_ov000_02156050(unit))unit->stats->flags|=2;}
+   else if(special){src->action=0x1f7;src->targetCount=0;if((unsigned char)unit->stats->mode==1){self->mode=IsFlag0x14Bit0x800000Set_ov000_02157cc4(unit);ResetTargetFlags02088474(unit->stats,10,0);unit->stats->flags|=2;}}
+   else if(IsFlag0x14Bit0x20Set_ov000_021543f4(unit)){src->action=func_ov000_0215f67c(self,current);src->targetCount=0;}
   }
   AppendNode02160068((Obj02160068*)dst,(Node02160068*)entry);self->tableCount++;
  }

@@ -8,7 +8,7 @@ extern "C" void func_0204c684(void* buf);
 int InitBufferFromDataField4_021ddc34(void* obj, short a, short b, short c, short d);
 extern "C" void* memcpy(void* dst, const void* src, unsigned int length);
 extern "C" void* func_0205ec34();
-int TestBitInByteArray(int flags, unsigned char* flags2, int id);
+int TestBitInByteArray_0206dfb0(int flags, unsigned char* flags2, int id);
 int MatchesAnyTableEntry020dd19c(unsigned int a, int b);
 void SetByteField_021e29b8(void* a, int b, unsigned char v);
 extern "C" void* func_ov023_021e2550(void* obj, int unused, int index);
@@ -105,7 +105,7 @@ extern "C" ARM void func_ov023_021df218(Obj021df218* self)
                 void* f = func_0205ec34();
                 for (j = 7; j < 0xd; j++)
                 {
-                    if (TestBitInByteArray((int)f, (unsigned char*)f + 0x8c, 0x113f + j))
+                    if (TestBitInByteArray_0206dfb0((int)f, (unsigned char*)f + 0x8c, 0x113f + j))
                         flags[j] = 1;
                 }
             }

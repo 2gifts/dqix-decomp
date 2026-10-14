@@ -4,8 +4,8 @@
 extern "C" void func_ov000_0216733c(struct BattleScene021663a0* scene);
 extern "C" void func_ov000_02166540(struct BattleScene021663a0* scene, int id, int kind, int group);
 extern "C" void func_0203232c(int* ids, int count);
-GameObject* GetCombatantWithFlag0x400(GameState* battleStruct, int combatantId);
-int CheckSubstructFlag0x80(unsigned char* obj);
+GameObject* GetCombatantWithFlag0x400_0200fea4(GameState* battleStruct, int combatantId);
+int CheckSubstructFlag0x80_02048bd0(unsigned char* obj);
 
 struct EnemyGroup021663a0 {
     unsigned short kind;
@@ -79,8 +79,8 @@ extern "C" ARM void func_ov000_021663a0(struct BattleScene021663a0* scene) {
     }
     func_0203232c(ids, count);
     for (int i = 0; i < count; i++) {
-        GameObject* c = GetCombatantWithFlag0x400(gs, ids[i]);
-        if (c != 0 && scene->config->field_0x2c == 0 && !CheckSubstructFlag0x80((unsigned char*)c)) {
+        GameObject* c = GetCombatantWithFlag0x400_0200fea4(gs, ids[i]);
+        if (c != 0 && scene->config->field_0x2c == 0 && !CheckSubstructFlag0x80_02048bd0((unsigned char*)c)) {
             c->obj3D_.SetInheritedAlpha(0);
             ((unsigned char*)c)[0x183] = 0x10 / count * i + 5;
         }

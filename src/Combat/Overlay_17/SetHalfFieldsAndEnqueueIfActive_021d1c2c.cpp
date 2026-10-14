@@ -3,7 +3,7 @@
 extern "C" void func_0202ae18(void);
 extern "C" int func_0202c508(void);
 extern "C" void* func_02012fe4(void);
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 
 // USA: func_ov017_021d1c2c
@@ -18,7 +18,7 @@ ARM void SetHalfFieldsAndEnqueueIfActive_021d1c2c(unsigned short a0, unsigned sh
 	*(unsigned short*)(base + 0x27b4) = a0;
 	*(unsigned short*)(base + 0x27b6) = a1;
 #endif
-	void* d = GetData02100044();
+	void* d = GetData02100044_0202ae24();
 	unsigned char buf[0x14];
 	buf[0] = 0xb3;
 	buf[4] = (unsigned char)a0;

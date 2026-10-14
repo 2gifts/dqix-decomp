@@ -12,15 +12,15 @@ struct EventList020bdce8 {
     EventEntry020bdce8 entries[1];
 };
 
-EventList020bdce8* GetOffsetEntry0x1c(int id);
+EventList020bdce8* GetOffsetEntry0x1c_020bd710(int id);
 extern "C" int func_020bddec(int val, int key, int argB, int flag, int* out);
 int ResolveEntryValue020bde70(int val, int key, int argB, int flag, int* out);
 extern "C" int func_020bded0(int val, int key, int argB, int flag, int* out);
-int DispatchEventEntryForIndex(int, unsigned int, int, int, int*);
+int DispatchEventEntryForIndex_020be010(int, unsigned int, int, int, int*);
 
 // USA: func_020bdce8  (semantic: DispatchEventListByType_020bdce8)
 extern "C" ARM int func_020bdce8(int id, int argB) {
-    EventList020bdce8* list = GetOffsetEntry0x1c(id);
+    EventList020bdce8* list = GetOffsetEntry0x1c_020bd710(id);
     if (list == 0) {
         return 1;
     }
@@ -50,7 +50,7 @@ extern "C" ARM int func_020bdce8(int id, int argB) {
                 if (ret != 0) return ret;
                 break;
             case 2:
-                ret = DispatchEventEntryForIndex(entry->val, entry->key, argB, 1, d);
+                ret = DispatchEventEntryForIndex_020be010(entry->val, entry->key, argB, 1, d);
                 if (ret != 0) return ret;
                 break;
             }

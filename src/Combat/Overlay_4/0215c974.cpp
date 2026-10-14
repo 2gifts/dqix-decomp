@@ -6,7 +6,7 @@
 
 void ClearNodeMaskById_021f6600(void* obj, int id, int mask);
 void* GetDataPtr02114e04_020d6c00(void);
-void OrBitsIntoField0(unsigned int* p, unsigned int mask);
+void OrBitsIntoField0_020466e4(unsigned int* p, unsigned int mask);
 void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int mask);
 extern "C" void func_ov023_021f65d4(void* obj, int a, int b);
 int GetGlobalField0x1c020421a0(void);
@@ -25,7 +25,7 @@ extern "C" void func_0204500c(void* field, void* buf, int p2, int p3);
 
 struct EntryA68 { short key; void* value; };
 struct TableA68 { struct EntryA68* entries; short count; };
-void* FindEntryByKey(struct TableA68* table, int key);
+void* FindEntryByKey_02072a68(struct TableA68* table, int key);
 
 struct Struct021707d8_0215c974 { char pad[8]; unsigned char* ptr; };
 extern Struct021707d8_0215c974 data_ov004_021707d8;
@@ -52,7 +52,7 @@ extern "C" ARM int func_ov004_0215c974(void* obj) {
     ClearNodeMaskById_021f6600(obj, 0x36, 8);
 
     data = GetDataPtr02114e04_020d6c00();
-    OrBitsIntoField0((unsigned int*)data, 0x80);
+    OrBitsIntoField0_020466e4((unsigned int*)data, 0x80);
 
     BackgroundLoader::AddLockGlobal();
     BackgroundLoader::FreeAllocationsGlobal();
@@ -71,7 +71,7 @@ extern "C" ARM int func_ov004_0215c974(void* obj) {
     gs = (char*)GameState::GetInstance() + 0x26c;
     table = (struct TableA68*)DispatchAdjustmentIfType4_02157018(obj, 4);
 
-    head = (const char*)FindEntryByKey(table, 0x21);
+    head = (const char*)FindEntryByKey_02072a68(table, 0x21);
     len = strlen(head);
     memcpy(cur, head, len);
     cur += len;
@@ -107,7 +107,7 @@ extern "C" ARM int func_ov004_0215c974(void* obj) {
         flags = flags << 0x13;
         flags = (unsigned)flags >> 0x13;
         if (flags & 0x40) {
-            const char* s = (const char*)FindEntryByKey(table, 0x1c);
+            const char* s = (const char*)FindEntryByKey_02072a68(table, 0x1c);
             int l = strlen(s);
             memcpy(cur, s, l);
             cur += l;
@@ -116,7 +116,7 @@ extern "C" ARM int func_ov004_0215c974(void* obj) {
         flags = flags << 0x13;
         flags = (unsigned)flags >> 0x13;
         if (flags & 0x200) {
-            const char* s = (const char*)FindEntryByKey(table, 0x1f);
+            const char* s = (const char*)FindEntryByKey_02072a68(table, 0x1f);
             memcpy(cur, s, strlen(s));
         }
     }

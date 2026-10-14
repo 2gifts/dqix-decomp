@@ -12,7 +12,7 @@ struct Variant02030b0c {
 extern unsigned short data_02109950[8][2];
 
 // USA: func_02099b20
-ARM int FillVariantShortTable02109950(Variant02030b0c* p) {
+ARM int FillVariantShortTable02109950_02099b20(Variant02030b0c* p) {
     int i, j;
     for (i = 0; i < 8; i++) {
         for (j = 0; j < 2; j++) {

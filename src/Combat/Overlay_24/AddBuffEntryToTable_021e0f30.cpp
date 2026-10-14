@@ -2,8 +2,8 @@
 #include "Combat/Overlay_0/GetCombatantByID.h"
 #include "GameState/GameState.h"
 
-int CheckFlag0x1ClearAndFlag0x20000Clear(unsigned char* obj);
-void SetFlag0x4ClearFlag0x2(unsigned char* obj);
+int CheckFlag0x1ClearAndFlag0x20000Clear_02088c54(unsigned char* obj);
+void SetFlag0x4ClearFlag0x2_02088c74(unsigned char* obj);
 unsigned short SelectByIndexRange0to3_021da644(int idx, int a, int b);
 extern "C" void* func_ov000_0215e958(void* a0);
 void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
@@ -24,10 +24,10 @@ struct Range_021e0f30 { char pad[0x20]; struct PackedPair_021e0f30 f20; struct P
 ARM void* AddBuffEntryToTable_021e0f30(struct Obj_021e0f30* obj, int unused, int id, struct Range_021e0f30* range, int unused2, int unused3, unsigned char flagArg) {
 	GameObject* c = GetCombatantByID((int)obj->field0x10, id);
 	if (!c) return 0;
-	int active = CheckFlag0x1ClearAndFlag0x20000Clear((unsigned char*)c->currentStats_);
+	int active = CheckFlag0x1ClearAndFlag0x20000Clear_02088c54((unsigned char*)c->currentStats_);
 	unsigned short sel;
 	if (active != 0 && flagArg != 0) {
-		SetFlag0x4ClearFlag0x2((unsigned char*)c->currentStats_);
+		SetFlag0x4ClearFlag0x2_02088c74((unsigned char*)c->currentStats_);
 		sel = SelectByIndexRange0to3_021da644(id, range->f20.c, range->f24.a);
 	} else {
 		sel = SelectByIndexRange0to3_021da644(id, range->f24.b, range->f24.c);

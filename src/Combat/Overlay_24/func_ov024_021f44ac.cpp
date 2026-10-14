@@ -7,7 +7,7 @@ extern "C" int func_ov000_0215e9fc(int battle, unsigned short* table, int count,
 extern "C" int func_ov024_021ede2c(int* a0);
 
 struct Combatant_20885b4;
-int CheckFlag0x2AndKind1(struct Combatant_20885b4* obj);
+int CheckFlag0x2AndKind1_020885b4(struct Combatant_20885b4* obj);
 
 struct Stats_021f44ac { char pad[0x4d]; unsigned char field0x4d; };
 
@@ -32,7 +32,7 @@ extern "C" ARM int func_ov024_021f44ac(int* a0, int a1, int a2, int* a3, short* 
 	for (int i = 0; i < count; i++) {
 		GameObject* c = GetCombatantByID(*a0, buf[i]);
 		if (!c) continue;
-		if (CheckFlag0x2AndKind1((struct Combatant_20885b4*)c->currentStats_)) continue;
+		if (CheckFlag0x2AndKind1_020885b4((struct Combatant_20885b4*)c->currentStats_)) continue;
 		short level = ((struct Stats_021f44ac*)c->currentStats_)->field0x4d;
 		if (level <= 0) continue;
 		int idx = *a3;

@@ -10,8 +10,8 @@ struct BattleRule0215f1ac { char pad_0[0x10]; unsigned int flags; char pad_14[0x
 struct List02160094;
 
 BattleRule0215f1ac* SearchBothTables02079e2c(char*, int);
-int TestBit6At0x2f4(unsigned char*);
-int ClassifyField0x81fe(char*);
+int TestBit6At0x2f4_02085180(unsigned char*);
+int ClassifyField0x81fe_ov000_0215fc60(char*);
 BattleNode0215f1ac* GetNodeAtIndex02160094(List02160094*, int);
 extern "C" void func_ov000_0215f500(BattleRecord0215f1ac*, BattleRecord0215f1ac*);
 extern const int data_ov000_02182aac[3];
@@ -21,7 +21,7 @@ struct CombatantView0215f1ac { char pad_0[0x150]; unsigned char* status; };
 // USA: func_ov000_0215f1ac
 extern "C" ARM void func_ov000_0215f1ac(BattleEvents0215f1ac* events) {
     GameState* state = GameState::GetInstance();
-    ActionDataTables* data = GetData02108e10();
+    ActionDataTables* data = GetData02108e10_020797dc();
     int moved = 0;
     for (int i = events->count - 1; i >= moved; i--) {
         BattleRecord0215f1ac* record = &events->records[i];
@@ -30,8 +30,8 @@ extern "C" ARM void func_ov000_0215f1ac(BattleEvents0215f1ac* events) {
         unsigned short id = record->head->combatant;
         unsigned char partyMember = id <= 3;
         if (!partyMember) continue;
-        GameObject* combatant = GetCombatantWithFlag0x100(state, id);
-        if (!combatant || !TestBit6At0x2f4(((CombatantView0215f1ac*)combatant)->status)) continue;
+        GameObject* combatant = GetCombatantWithFlag0x100_0200ff1c(state, id);
+        if (!combatant || !TestBit6At0x2f4_02085180(((CombatantView0215f1ac*)combatant)->status)) continue;
         BattleRecord0215f1ac saved;
         memcpy(&saved, record, 0x28);
         memmove(events->records + 1, events->records, i * 0x28);
@@ -74,7 +74,7 @@ extern "C" ARM void func_ov000_0215f1ac(BattleEvents0215f1ac* events) {
             memcpy(&events->records[events->count - 1], &saved, 0x28);
         }
     }
-    if (ClassifyField0x81fe((char*)events)) {
+    if (ClassifyField0x81fe_ov000_0215fc60((char*)events)) {
         BattleRecord0215f1ac* first = events->records;
         BattleRecord0215f1ac* second = first + 1;
         BattleNode0215f1ac* node = GetNodeAtIndex02160094((List02160094*)first, 0);

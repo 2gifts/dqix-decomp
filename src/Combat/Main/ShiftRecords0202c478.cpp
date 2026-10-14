@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "Combat/SearchEntry.h"
 
-ARM void PushInterruptDisableState(void);
+ARM void PushInterruptDisableState_020d8654(void);
 extern "C" void func_020d8694(void);
 
 struct Record0202ba08;
@@ -9,7 +9,7 @@ ARM struct Record0202ba08* CopyRecord0202ba08(struct Record0202ba08* dst, struct
 
 // USA: func_0202c478
 ARM void ShiftRecords0202c478(SearchStruct* obj) {
-    PushInterruptDisableState();
+    PushInterruptDisableState_020d8654();
     char* base = (char*)obj;
     int i;
     for (i = 0; i < *(int*)(base + 0xc); i++) {

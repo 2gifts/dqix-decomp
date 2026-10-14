@@ -21,8 +21,7 @@ enum { kRegionValue80_A8 = 0x80 };
 enum { kRegionValue464_28C = 0x464 };
 #endif
 
-
-int GetFieldAt0x150(unsigned char* obj);
+int GetFieldAt0x150_02053c6c(unsigned char* obj);
 void AddPositiveField150EntriesToMap_021b6bb8(int combatantId);
 extern "C" int func_ov017_021b6d60(int a, void* buf);
 extern "C" void func_02086778(void* map, void* buf, int c, int d);
@@ -33,14 +32,14 @@ extern "C" ARM void func_ov003_02163e4c(char* obj) {
     if (step == 0) {
         char buf[0x23c];
         GameState* bs = GameState::GetInstance();
-        void* map = GetPtrField0x2a04(bs);
+        void* map = GetPtrField0x2a04_02010828(bs);
         short id = *(short*)(obj + kRegionValue400_200 + kRegionValue82_AA);
         GameObject* c = bs->GetPartyMemberByIndex(id);
         if (c == NULL) {
             obj[kRegionValue4A3_2CB] = 0x10;
             return;
         }
-        unsigned char* field150 = (unsigned char*)GetFieldAt0x150((unsigned char*)c);
+        unsigned char* field150 = (unsigned char*)GetFieldAt0x150_02053c6c((unsigned char*)c);
         if (field150 == NULL) {
             obj[kRegionValue4A3_2CB] = 0x10;
             return;

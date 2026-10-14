@@ -13,7 +13,7 @@ extern "C" void func_020a1940(unsigned int id);
 extern "C" void func_ov008_021843f8(void* obj);
 extern "C" void func_ov008_021842a0(void* obj, void* arg);
 void SetByteB10AndClearB11_02184a3c(char* obj, unsigned char value);
-void OrGlobalFlag0x40();
+void OrGlobalFlag0x40_020dc2bc();
 
 struct Manager0218af80 {
     char pad0[0x228];
@@ -63,7 +63,7 @@ extern "C" ARM void func_ov008_0218af80(Manager0218af80* self) {
         return;
     }
     if (self->e9c == 1 && self->bit1 && self->bit2) {
-        OrGlobalFlag0x40();
+        OrGlobalFlag0x40_020dc2bc();
         SetSubBrightness(res, -16, 15);
         self->e9b = 1;
         self->e9c = 0;

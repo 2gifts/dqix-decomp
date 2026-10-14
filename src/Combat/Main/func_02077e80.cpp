@@ -5,7 +5,7 @@
 
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c508(void*);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 
 struct SearchStruct0202c1a4;
 signed char GetSearchStructCurrentArrEntry(struct SearchStruct0202c1a4* obj);
@@ -56,7 +56,7 @@ extern "C" ARM int func_02077e80(FieldMonsterState* self) {
     }
     self->rising = 0;
 
-    if (CheckField0NonZero((int*)g)) {
+    if (CheckField0NonZero_0202b7d8((int*)g)) {
         if (GetSearchStructCurrentArrEntry((struct SearchStruct0202c1a4*)g) == 0) {
             int cid = self->actor.base.object.GetField06();
             int f2val = self->actor.base.object.unknown_2_;

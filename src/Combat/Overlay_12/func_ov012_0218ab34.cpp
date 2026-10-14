@@ -55,9 +55,9 @@ struct KeyboardScreen {
 };
 
 KeyboardCanvas* FindElementByC40205d81c(struct Struct_0205d81c* s, int key);
-const char* FindEntryByKey(struct TableA68* table, int key);
+const char* FindEntryByKey_02072a68(struct TableA68* table, int key);
 extern "C" int func_020420e8(const char* text, int large);
-void SetField0xa0AndByte0xc4IfFlag0x1Clear(unsigned char* obj, int value, int key);
+void SetField0xa0AndByte0xc4IfFlag0x1Clear_0204f160(unsigned char* obj, int value, int key);
 extern "C" void func_0204ecb4(KeyboardCanvas* wnd, int a, int b, int w, int h, signed char* margins);
 extern "C" void func_0204f41c(KeyboardCanvas* ctx, short x, short y, const char* str, int size,
                               unsigned char palette, short* outA, short* outB, int flag);
@@ -79,7 +79,7 @@ extern "C" ARM void func_ov012_0218ab34(KeyboardScreen* self, int skip)
 
     short originX = canvas->originX_ * 8;
     short originY = canvas->originY_ * 8;
-    const char* title = FindEntryByKey((struct TableA68*)self->texts_, 0xe);
+    const char* title = FindEntryByKey_02072a68((struct TableA68*)self->texts_, 0xe);
     int titleX = (0xf0 - func_020420e8(title, 1)) >> 1;
 
     Keyboard* keyboard = self->keyboard_;
@@ -103,7 +103,7 @@ extern "C" ARM void func_ov012_0218ab34(KeyboardScreen* self, int skip)
 
     if (canvas->pixels_ != NULL)
         memset(canvas->pixels_, 0, 0x7800);
-    SetField0xa0AndByte0xc4IfFlag0x1Clear((unsigned char*)canvas, canvas->unk_a0, 0xe);
+    SetField0xa0AndByte0xc4IfFlag0x1Clear_0204f160((unsigned char*)canvas, canvas->unk_a0, 0xe);
     func_0204ecb4(canvas, 0, 0, 0x1e, 0x12, 0);
     func_0204f41c(canvas, titleX, 6, title, 0xc, 0xf, &outA, &outB, palette);
     func_0204f3bc(canvas, 0x18);

@@ -37,7 +37,7 @@ struct Obj_021dd534 {
 };
 
 int CheckField0x14Bit0Clear02088840(unsigned char* obj);
-void SetFlag0x40AndBytes(unsigned char* obj);
+void SetFlag0x40AndBytes_02088854(unsigned char* obj);
 extern "C" int func_ov024_021e9198(struct Obj_021dd534* ctx, int id, short code, int mode);
 unsigned short SelectByIndexRange0to3_021da644(int idx, int a, int b);
 int IsFlagAllowedMask_021eb4b0(int a0, int flags, int mask);
@@ -62,7 +62,7 @@ extern "C" ARM void* func_ov024_021dd534(struct Obj_021dd534* obj, int unused, i
         if (IsFlagAllowedMask_021eb4b0((int)obj, ((struct Stats_021dd534*)c->currentStats_)->flags, 0x40)) {
             func_ov000_02159eac(obj->f10, &bits, 0x2b);
         }
-        SetFlag0x40AndBytes((unsigned char*)c->currentStats_);
+        SetFlag0x40AndBytes_02088854((unsigned char*)c->currentStats_);
         ((struct Stats_021dd534*)c->currentStats_)->f22.code = (unsigned char)code;
     } else {
         sel = func_ov024_021e9198(obj, id, code, 0);

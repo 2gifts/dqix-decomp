@@ -10,7 +10,7 @@
 
 extern "C" {
     void func_020c9be0();
-    void _ZN6Zone3D17QueueLoadATS_AMBLEv(void* obj);
+    void _ZN6Zone3D26QueueLoadATS_AMBL_02014b04Ev(void* obj);
 }
 
 void RunBufferedStream0205e104(char*, SafeAllocator*, const void*, unsigned int);
@@ -30,7 +30,7 @@ extern char data_020ef150;
 
 // KEEP-NAME
 // USA: func_02014108
-ARM int Zone3D::UnpackMapAMBL() {
+ARM int Zone3D::UnpackMapAMBL_02014108() {
     if (mapAMBLLoadHandle_ < 0) {
         return 1;
     }
@@ -70,18 +70,18 @@ ARM int Zone3D::UnpackMapAMBL() {
                 const void* src = narc.GetFileByIndex(idx);
                 if (pass == 0) {
                     if (strcmp(&data_020ef13e, dot) == 0) {
-                        ProcessNSBTXFile(src, size, name);
+                        ProcessNSBTXFile_0201445c(src, size, name);
                     }
                 } else if (pass == 1) {
                     if (strcmp(&data_020ef145, dot) == 0) {
-                        ProcessBMBLFile(src, size);
+                        ProcessBMBLFile_02014390(src, size);
                     } else if (strcmp(&data_020ef14b, dot) == 0) {
                         SafeAllocator* alloc = pAllocator_68_;
                         unsigned int decompSize;
                         void* data = DecompressLZ77FileIntoScratchSpace(*alloc, src, decompSize);
                         RunBufferedStream0205e104(reinterpret_cast<char*>(&substruct_c_), alloc, data, decompSize);
                     } else if (strcmp(&data_020ef150, dot) == 0) {
-                        ProcessBPOSFile(src, size);
+                        ProcessBPOSFile_020143d8(src, size);
                     }
                 }
                 idx++;
@@ -107,7 +107,7 @@ ARM int Zone3D::UnpackMapAMBL() {
 #if defined(jpn)
     func_020148d0(this);
 #else
-    _ZN6Zone3D17QueueLoadATS_AMBLEv(this);
+    _ZN6Zone3D26QueueLoadATS_AMBL_02014b04Ev(this);
 #endif
     return 1;
 }

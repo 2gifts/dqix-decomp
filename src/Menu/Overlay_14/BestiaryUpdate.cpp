@@ -26,8 +26,8 @@ typedef void (BestiaryUpdateState::*BestiaryUpdateHandler)();
 extern "C" {
 void func_ov014_02185c48(void*);
 void* _Z29BinarySearchByField4_02097224P29BinarySearch020971a8Containeri(void*, short);
-int _Z12TestFlagMaskPti(void*, int);
-int _Z20TestFlagInSecondWordPtj(void*, int);
+int _Z21TestFlagMask_02012430Pti(void*, int);
+int _Z29TestFlagInSecondWord_02012468Ptj(void*, int);
 extern char data_02114e30[];
 extern void* data_ov014_02189800[4];
 extern BestiaryUpdateHandler data_020e6d5c;
@@ -59,17 +59,17 @@ extern "C" ARM void func_ov014_02184700(BestiaryUpdateState* state) {
             state->rotateRight = 0;
             nextReturning = returning;
             speed = 0;
-            if (_Z12TestFlagMaskPti(data_02114e30, 0x200) && _Z12TestFlagMaskPti(data_02114e30, 0x100)) {
+            if (_Z21TestFlagMask_02012430Pti(data_02114e30, 0x200) && _Z21TestFlagMask_02012430Pti(data_02114e30, 0x100)) {
                 if (!returning) {
                     nextReturning = 1;
                     state->rotateLeft = 1;
                     state->rotateRight = 1;
                 }
-            } else if (_Z12TestFlagMaskPti(data_02114e30, 0x200) && !_Z20TestFlagInSecondWordPtj(data_02114e30, 0x100)) {
+            } else if (_Z21TestFlagMask_02012430Pti(data_02114e30, 0x200) && !_Z29TestFlagInSecondWord_02012468Ptj(data_02114e30, 0x100)) {
                 manual = 1;
                 state->rotateLeft = 1;
                 speed = 0xcc;
-            } else if (_Z12TestFlagMaskPti(data_02114e30, 0x100) && !_Z20TestFlagInSecondWordPtj(data_02114e30, 0x200)) {
+            } else if (_Z21TestFlagMask_02012430Pti(data_02114e30, 0x100) && !_Z29TestFlagInSecondWord_02012468Ptj(data_02114e30, 0x200)) {
                 manual = 1;
                 state->rotateRight = 1;
                 speed = -0xcc;
@@ -79,7 +79,7 @@ extern "C" ARM void func_ov014_02184700(BestiaryUpdateState* state) {
                 int difference = target - oldRotation.y;
                 if (oldRotation.y >= target + 0x3243) difference = target + 0x6487 - oldRotation.y;
                 speed = difference / 5;
-                if (!_Z12TestFlagMaskPti(data_02114e30, 0x100) && !_Z12TestFlagMaskPti(data_02114e30, 0x200) && oldRotation.y == target) nextReturning = 0;
+                if (!_Z21TestFlagMask_02012430Pti(data_02114e30, 0x100) && !_Z21TestFlagMask_02012430Pti(data_02114e30, 0x200) && oldRotation.y == target) nextReturning = 0;
             }
             if (manual || returning) {
                 speed *= GameState::GetInstance()->GetTickCount();

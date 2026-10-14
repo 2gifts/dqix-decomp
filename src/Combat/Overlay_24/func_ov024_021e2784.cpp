@@ -7,13 +7,13 @@ struct EffectWords_021e2784 { int lo; int hi; };
 
 struct FlagObj_021da9b0;
 int IsFlagBit8Set_021da9b0(struct FlagObj_021da9b0* obj);
-void ClearFlag0x14Bit0x8AndBytes(void* obj);
+void ClearFlag0x14Bit0x8AndBytes_020882dc(void* obj);
 struct Combatant_20885b4;
-int CheckFlag0x2AndKind1(struct Combatant_20885b4* obj);
+int CheckFlag0x2AndKind1_020885b4(struct Combatant_20885b4* obj);
 struct S88514;
-int CheckFlag0x2AndState2(struct S88514* obj);
+int CheckFlag0x2AndState2_02088514(struct S88514* obj);
 struct Combatant_2088644;
-void ClearFlag0x2AndKind(struct Combatant_2088644* obj);
+void ClearFlag0x2AndKind_02088644(struct Combatant_2088644* obj);
 short ApplyHPDelta0215a16c(void* unused, int id, int delta, short* outApplied);
 extern "C" struct OutStruct0215ccbc* func_ov000_0215e958(void* ctx);
 void AddEntryAndIncrementCount0215a88c(void* objRaw, void* listRaw, int c);
@@ -52,14 +52,14 @@ extern "C" ARM struct OutStruct0215ccbc* func_ov024_021e2784(struct Obj_021e2784
         obj->count++;
     }
     if (IsFlagBit8Set_021da9b0((struct FlagObj_021da9b0*)c)) {
-        ClearFlag0x14Bit0x8AndBytes(c->currentStats_);
+        ClearFlag0x14Bit0x8AndBytes_020882dc(c->currentStats_);
         ((struct Bit3b_021e2784*)((char*)c->currentStats_ + 0x3b))->bit0 = 1;
         func_ov000_02159eac(obj->ctx, &words, 0x1a);
         AddEntryAndIncrementCount0215a88c(obj->ctx, entry, 0x1f9);
         obj->count++;
     }
-    if (CheckFlag0x2AndKind1((struct Combatant_20885b4*)c->currentStats_) || CheckFlag0x2AndState2((struct S88514*)c->currentStats_)) {
-        ClearFlag0x2AndKind((struct Combatant_2088644*)c->currentStats_);
+    if (CheckFlag0x2AndKind1_020885b4((struct Combatant_20885b4*)c->currentStats_) || CheckFlag0x2AndState2_02088514((struct S88514*)c->currentStats_)) {
+        ClearFlag0x2AndKind_02088644((struct Combatant_2088644*)c->currentStats_);
         func_ov000_02159eac(obj->ctx, &words, 0x11);
         AddEntryAndIncrementCount0215a88c(obj->ctx, entry, 0x54);
         obj->count++;

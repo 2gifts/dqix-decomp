@@ -48,12 +48,12 @@ union Box_0203f53c {
     unsigned int words[3];
 };
 Element_0203f53c* GetValidElement02040468(List02040468*, int);
-void* GetElementStride0x14(unsigned char*, unsigned int);
+void* GetElementStride0x14_0203f1c8(unsigned char*, unsigned int);
 Entry_0203f53c* GetListElementByIndex(List_0203f354*, unsigned int);
-void* GetPtrField0x144(void*);
-int GetBoxTestResult(int*);
-int GetField0x70(void*);
-void IssueCommand0x1A(int);
+void* GetPtrField0x144_0202ed74(void*);
+int GetBoxTestResult_020c56b0(int*);
+int GetField0x70_0202e7f0(void*);
+void IssueCommand0x1A_020c51c0(int);
 extern "C" void func_020ca528(const void*, void*);
 extern "C" void func_02031278(void*);
 extern "C" void func_02031234(int);
@@ -71,12 +71,12 @@ extern "C" ARM int func_0203f53c(Object_0203f53c* object, void* camera, int scal
     if (object->elementIndex < 0) return 0;
     Element_0203f53c* element = GetValidElement02040468(object->list, object->elementIndex);
     if (!element) return 0;
-    Stride_0203f53c* stride = (Stride_0203f53c*)GetElementStride0x14((unsigned char*)&element->list, object->row);
+    Stride_0203f53c* stride = (Stride_0203f53c*)GetElementStride0x14_0203f1c8((unsigned char*)&element->list, object->row);
     if (!stride) return 0;
     Entry_0203f53c* entry = GetListElementByIndex(&element->list, stride->indices[object->column]);
     if (!entry) return 0;
     if (!entry->records) return 0;
-    Matrix3x3* view = (Matrix3x3*)GetPtrField0x144(camera);
+    Matrix3x3* view = (Matrix3x3*)GetPtrField0x144_0202ed74(camera);
     int scaleX = MultiplyFix32_0203f53c(object->scale.x, scale);
     int scaleY = MultiplyFix32_0203f53c(object->scale.y, scale);
     int scaleZ = MultiplyFix32_0203f53c(object->scale.z, scale);
@@ -99,7 +99,7 @@ extern "C" ARM int func_0203f53c(Object_0203f53c* object, void* camera, int scal
     REG_BOX_0203f53c = box.words[1];
     REG_BOX_0203f53c = box.words[2];
     int visible;
-    while (GetBoxTestResult(&visible) != 0) {}
+    while (GetBoxTestResult_020c56b0(&visible) != 0) {}
     if (!visible) return 0;
     REG_MATRIX_MODE_0203f53c = 0;
     if (object->flags & 8) {
@@ -122,7 +122,7 @@ extern "C" ARM int func_0203f53c(Object_0203f53c* object, void* camera, int scal
         REG_TRANSLATE_0203f53c = 0;
         REG_TRANSLATE_0203f53c = -translation;
         REG_TRANSLATE_0203f53c = 0;
-        IssueCommand0x1A((int)&transformed);
+        IssueCommand0x1A_020c51c0((int)&transformed);
         func_02031278((void*)angle);
         REG_TRANSLATE_0203f53c = 0;
         REG_TRANSLATE_0203f53c = translation;
@@ -132,8 +132,8 @@ extern "C" ARM int func_0203f53c(Object_0203f53c* object, void* camera, int scal
         REG_TRANSLATE_0203f53c = 0;
         REG_TRANSLATE_0203f53c = -translation;
         REG_TRANSLATE_0203f53c = 0;
-        if (!(object->flags & 0x10)) IssueCommand0x1A((int)view);
-        else func_02031234(GetField0x70(camera));
+        if (!(object->flags & 0x10)) IssueCommand0x1A_020c51c0((int)view);
+        else func_02031234(GetField0x70_0202e7f0(camera));
         REG_TRANSLATE_0203f53c = 0;
         REG_TRANSLATE_0203f53c = translation;
         REG_TRANSLATE_0203f53c = 0;

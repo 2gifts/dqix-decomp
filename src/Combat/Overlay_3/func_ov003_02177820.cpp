@@ -12,23 +12,23 @@ enum { kRegion89c = 0x89c };
 #include "GameState/GameState.h"
 
 struct Obj2081;
-void ClearElementFlag0x20(struct Obj2081* obj, int key);
+void ClearElementFlag0x20_02080c20(struct Obj2081* obj, int key);
 void SetEntryLowNibbleAndElement02080c68(void* obj, int id, int value);
-void ClearSublistEntriesFlag1(void* obj, int id);
+void ClearSublistEntriesFlag1_02080bac(void* obj, int id);
 struct Container02080f8c;
 void SetEntryFirstField02080f8c(struct Container02080f8c* obj, int id, int value);
 struct Container02080cc0;
 void SetEntryHighNibble0x13(struct Container02080cc0* obj, int id, int value);
 extern "C" int func_020dcc98(int combatantId);
 extern "C" void func_020813ec(void* obj, int key);
-void* GetPtrField0x2a04(GameState* battleStruct);
+void* GetPtrField0x2a04_02010828(GameState* battleStruct);
 
 // USA: func_ov003_02177820  (semantic: RecomputeElementTierAndDispatchAll_02177820)
 #pragma opt_common_subs off
 extern "C" ARM void func_ov003_02177820(char* self) {
     struct Obj2081* elemObj = *(struct Obj2081**)(self + kRegion89c);
     GameState* battle = GameState::GetInstance();
-    GetPtrField0x2a04(battle);
+    GetPtrField0x2a04_02010828(battle);
 
     int field = *(int*)(self + kRegion1030);
     int a = 0x11, b = 0x79;
@@ -38,9 +38,9 @@ extern "C" ARM void func_ov003_02177820(char* self) {
     case 4: a = 0x14; b = 0x85; break;
     }
 
-    ClearElementFlag0x20(elemObj, a);
+    ClearElementFlag0x20_02080c20(elemObj, a);
     SetEntryLowNibbleAndElement02080c68(elemObj, a, 0);
-    ClearSublistEntriesFlag1(elemObj, a);
+    ClearSublistEntriesFlag1_02080bac(elemObj, a);
 
     int hp;
     unsigned char i;

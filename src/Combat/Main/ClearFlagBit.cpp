@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 
 // USA: func_020d76d8
-ARM void ClearFlagBit(unsigned char* base, int bit) {
+ARM void ClearFlagBit_020d76d8(unsigned char* base, int bit) {
     base += 0xa00;
     if (bit >= 0xc0) {
         bit -= 0xbc;

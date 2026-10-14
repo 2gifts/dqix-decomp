@@ -2,7 +2,7 @@
 #include "System/DMA.h"
 #include "System/Interrupts.h"
 
-void RunAndClearCallback(void);
+void RunAndClearCallback_020ca364(void);
 
 struct DmaAsyncState020ca2ac {
     int flag;
@@ -32,6 +32,6 @@ extern "C" ARM void func_020ca2ac(int channel, unsigned int src, unsigned int le
     VerifyDMATimingChangePermitted_020c9fd0(channel, 0x38000000);
     VerifyDMASource(channel, src, len, 0);
     AwaitDMACompletion(channel);
-    SetDMACompletionCallback(channel, (DMACompletionCallback)RunAndClearCallback, 0);
+    SetDMACompletionCallback(channel, (DMACompletionCallback)RunAndClearCallback_020ca364, 0);
     ConfigureDMATransferAtomic(channel, src, 0x4000400, 0xfc400000 | (len >> 2));
 }

@@ -31,7 +31,7 @@ struct BattleGlobals {
 };
 
 BattleGlobals* GetGlobalField0x1c020421a0(void);
-GameResources* GetWord0x0(int*);
+GameResources* GetWord0x0_0200fb8c(int*);
 struct Actor0209c678;
 void DispatchContextByState0209c678(Actor0209c678*, int);
 void SetBrightness(GameResources*, int, int);
@@ -45,7 +45,7 @@ struct Container020e0310;
 void* GetFieldByKey020e0434(Container020e0310*, int);
 extern "C" void func_ov003_02159250(BattleMessageScene*, void*);
 extern "C" int* func_0202ae18(void);
-int CheckField0NonZero(int*);
+int CheckField0NonZero_0202b7d8(int*);
 extern "C" void func_ov017_021c37a4(void);
 
 extern unsigned char data_02109bf4;
@@ -53,7 +53,7 @@ extern unsigned char data_02109bf4;
 // USA: func_ov003_0215b1dc
 extern "C" ARM void func_ov003_0215b1dc(BattleMessageScene* self) {
     BattleGlobals* g = GetGlobalField0x1c020421a0();
-    GameResources* res = GetWord0x0((int*)GameState::GetInstance());
+    GameResources* res = GetWord0x0_0200fb8c((int*)GameState::GetInstance());
 
     if (g->linkState == 3) {
         g->linkPending = 0;
@@ -82,7 +82,7 @@ extern "C" ARM void func_ov003_0215b1dc(BattleMessageScene* self) {
         if (BackgroundLoader::GetInstance()->GetNumQueuedTasks() > 0) return;
         g->messageActive = 1;
         func_ov003_02159250(self, GetFieldByKey020e0434((Container020e0310*)self->messages, 0x6e));
-        if (CheckField0NonZero(func_0202ae18())) {
+        if (CheckField0NonZero_0202b7d8(func_0202ae18())) {
             func_ov017_021c37a4();
         }
         self->step++;

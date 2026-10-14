@@ -4,18 +4,18 @@ struct UnkStruct0205c508;
 void ComputeProductSums0205c508(struct UnkStruct0205c508* s, int* out1, int* out2);
 struct Container020e0310;
 char* GetFieldByKey020e0434(struct Container020e0310* c, int key);
-int IsField0x118Equal2(void* obj);
+int IsField0x118Equal2_ov000_0217542c(void* obj);
 int AppendFrameTag02041c08(char* dst, int a1, int a2, int a3, int a4, int a5);
-int AppendCursorTag(char* dst, int cursor);
+int AppendCursorTag_02041ea4(char* dst, int cursor);
 void* GetPointerField_02171b9c_02171b9c(void* obj, int idx);
-int AppendNameTag(char* dst, int n, const char* name);
+int AppendNameTag_02041b70(char* dst, int n, const char* name);
 extern "C" void __clear(void* buf, int n);
 int AppendString02042058(char* dst, const char* src);
 #if defined(jpn)
 extern "C" int func_02042158(char* dst, int w);
-#define AppendWidthTag func_02042158
+#define AppendWidthTag_02041acc func_02042158
 #else
-int AppendWidthTag(char* dst, int w);
+int AppendWidthTag_02041acc(char* dst, int w);
 #endif
 void CopyTextAndUppercaseIfFlagged0206819c(const char* src, char* dst, int flag);
 
@@ -50,14 +50,14 @@ extern "C" ARM void func_ov000_0217979c(char* obj, struct ItemList0217979c* list
     char* prefix = GetFieldByKey020e0434((struct Container020e0310*)(obj + 0xb8), 0x13);
     char* separator = GetFieldByKey020e0434((struct Container020e0310*)(obj + 0xb8), 0);
 #endif
-    if (IsField0x118Equal2(obj)) {
+    if (IsField0x118Equal2_ov000_0217542c(obj)) {
         AppendFrameTag02041c08(dst, cursor - start, 8, 5, 5, 5);
     }
-    AppendCursorTag(dst, cursor - start);
+    AppendCursorTag_02041ea4(dst, cursor - start);
     for (signed char i = start; i < end; i++) {
         struct ListItem0217979c* item = (struct ListItem0217979c*)GetPointerField_02171b9c_02171b9c(list, i);
         if (item == NULL) {
-            AppendNameTag(dst, i - start, data_ov000_02184069);
+            AppendNameTag_02041b70(dst, i - start, data_ov000_02184069);
             continue;
         }
         char text[0x80];
@@ -68,10 +68,10 @@ extern "C" ARM void func_ov000_0217979c(char* obj, struct ItemList0217979c* list
             AppendString02042058(text, GetFieldByKey020e0434((struct Container020e0310*)(obj + 0xb8), 0x13));
 #else
             AppendString02042058(text, prefix);
-            AppendWidthTag(text, 3);
+            AppendWidthTag_02041acc(text, 3);
 #endif
         } else {
-            AppendWidthTag(text, 8);
+            AppendWidthTag_02041acc(text, 8);
         }
 #if defined(jpn)
         AppendString02042058(text, item->name);
@@ -81,7 +81,7 @@ extern "C" ARM void func_ov000_0217979c(char* obj, struct ItemList0217979c* list
         CopyTextAndUppercaseIfFlagged0206819c(item->name, name, 0);
         AppendString02042058(text, name);
 #endif
-        AppendNameTag(dst, i - start, text);
+        AppendNameTag_02041b70(dst, i - start, text);
         if (i != end - 1) {
 #if defined(jpn)
             AppendString02042058(dst, GetFieldByKey020e0434((struct Container020e0310*)(obj + 0xb8), 0));

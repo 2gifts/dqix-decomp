@@ -11,7 +11,7 @@ struct State0xbb1c {
 };
 
 // USA: func_0203bb1c
-ARM void ClearFields0x8(struct State0xbb1c* obj) {
+ARM void ClearFields0x8_0203bb1c(struct State0xbb1c* obj) {
     obj->unk8 = 0;
     obj->unkC = 0;
     obj->unk10 = 0;

@@ -10,4 +10,4 @@ struct Manager_1f2a4 {
     int count;
 };
 
-Element_1f2a4 *GetElementByIndexStride0x20(Manager_1f2a4 *manager, int index);
+Element_1f2a4 *GetElementByIndexStride0x20_0201f2a4(Manager_1f2a4 *manager, int index);

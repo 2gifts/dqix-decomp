@@ -18,8 +18,8 @@ struct Ent021e13e0 {
     Combatant021e13e0* obj;
 };
 
-unsigned int GetSubstructByte0x1c(unsigned char*);
-unsigned int GetSubstructByte0x1e(unsigned char*);
+unsigned int GetSubstructByte0x1c_020493a4(unsigned char*);
+unsigned int GetSubstructByte0x1e_020493ec(unsigned char*);
 extern "C" void func_ov025_021e12f8(unsigned char* seen, int pos, int val, unsigned char kind, int a, int b);
 
 static inline void SetCell021e13e0(unsigned char* seen, unsigned int pos, unsigned char val) {
@@ -33,11 +33,11 @@ extern "C" ARM void func_ov025_021e13e0(unsigned char* seen, Ent021e13e0* ent) {
     if (ent == 0 || ent->obj == 0) {
         return;
     }
-    unsigned int pos = GetSubstructByte0x1c((unsigned char*)ent->obj);
+    unsigned int pos = GetSubstructByte0x1c_020493a4((unsigned char*)ent->obj);
     if (pos < 0x51) {
         SetCell021e13e0(seen, pos, ent->val);
     }
-    pos = GetSubstructByte0x1e((unsigned char*)ent->obj);
+    pos = GetSubstructByte0x1e_020493ec((unsigned char*)ent->obj);
     if (pos < 0x51) {
         SetCell021e13e0(seen, pos, ent->val);
     }

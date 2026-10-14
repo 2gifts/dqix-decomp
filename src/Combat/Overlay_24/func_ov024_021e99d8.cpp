@@ -55,7 +55,7 @@ struct Combatant_021e99d8 {
 
 void* SearchBothTables02079e2c(char* p, int key);
 unsigned short SelectByIndexRange0to3_021da644(int idx, int a, int b);
-int TestBit2At0x2f4(unsigned char* p);
+int TestBit2At0x2f4_020850d0(unsigned char* p);
 
 static inline int IsPartyMember(int id) {
     return id >= 0 && id <= 3;
@@ -73,7 +73,7 @@ extern "C" ARM int func_ov024_021e99d8(struct Ctx_021e99d8* ctx, struct Command_
     }
     if (action->id == 0x1f8) {
         struct TableEntry_021e99d8* entry =
-            (struct TableEntry_021e99d8*)SearchBothTables02079e2c((char*)GetData02108e10(), cmd->command);
+            (struct TableEntry_021e99d8*)SearchBothTables02079e2c((char*)GetData02108e10_020797dc(), cmd->command);
         if (!entry) {
             return 0;
         }
@@ -85,9 +85,9 @@ extern "C" ARM int func_ov024_021e99d8(struct Ctx_021e99d8* ctx, struct Command_
     int result = SelectByIndexRange0to3_021da644(id, action->range.lo, action->range.hi);
     if (result == 1 && IsPartyMember(id)) {
         struct Combatant_021e99d8* c =
-            (struct Combatant_021e99d8*)GetCombatantWithFlag0x100(GameState::GetInstance(), id);
+            (struct Combatant_021e99d8*)GetCombatantWithFlag0x100_0200ff1c(GameState::GetInstance(), id);
         if (c && (action->flags10 & 0x100000)) {
-            if (TestBit2At0x2f4(c->field150)) {
+            if (TestBit2At0x2f4_020850d0(c->field150)) {
                 return 0x10;
             }
         }

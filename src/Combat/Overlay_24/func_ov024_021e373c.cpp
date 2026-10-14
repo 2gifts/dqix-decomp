@@ -6,7 +6,7 @@ struct FlagObj_021da998;
 int IsFlagBit8388608Set_021da998(struct FlagObj_021da998* obj);
 struct FlagObj_021dd260;
 int IsFlagBit24Set_021dd260(struct FlagObj_021dd260* obj);
-void DecrementCounter0x24UpdateFlag0x14(void* obj);
+void DecrementCounter0x24UpdateFlag0x14_02087704(void* obj);
 extern "C" void func_ov000_02159eac(void* a0, void* buf, int a2);
 struct Obj_021e8ca0;
 void* AddEntryToListAndIncCount_021e8ca0(struct Obj_021e8ca0* obj, int id);
@@ -20,7 +20,7 @@ extern "C" ARM unsigned long long func_ov024_021e373c(struct Obj_021e373c* obj, 
 	GameObject* c = GetCombatantByID((int)obj->field0x10, id);
 	if (!c) return 0;
 	if (!IsFlagBit8388608Set_021da998((struct FlagObj_021da998*)c) && !IsFlagBit24Set_021dd260((struct FlagObj_021dd260*)c)) return 0;
-	DecrementCounter0x24UpdateFlag0x14(c->currentStats_);
+	DecrementCounter0x24UpdateFlag0x14_02087704(c->currentStats_);
 	int msg = 0;
 	int counter = ((unsigned char*)c->currentStats_)[0x24];
 	switch (counter) {

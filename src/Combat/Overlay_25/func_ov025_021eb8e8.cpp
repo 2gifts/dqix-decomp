@@ -22,27 +22,27 @@ struct Owner_021eb8e8 {
     int field_c;
 };
 
-void* GetActiveCombatWork(void);
+void* GetActiveCombatWork_ov000_02160130(void);
 char* GetOffsetPtr02160f08(void* obj);
 extern "C" int func_ov000_0215e9fc(int a, short* buf, int max, int start);
 extern "C" int func_ov000_0215ec1c(int a, short* buf, int max, int start);
-HitEntry_021eb8e8* GetSubstructField0x68(unsigned char* obj);
+HitEntry_021eb8e8* GetSubstructField0x68_0204a01c(unsigned char* obj);
 extern "C" void func_ov000_02162dc4(void* work, GameObject* lead, GameObject* actor, unsigned int flags,
                                     int b1d, int b1e, unsigned long long mask, int flag);
 HudEntry_021eb8e8* FindEntryById_021dafd0(char* obj, int id);
 extern "C" void func_ov000_0217616c(HudEntry_021eb8e8* p);
 void SetByteField37_0216ff20(char*, unsigned char);
-void SetSubstructWord0x68(unsigned char* obj, int value);
-int CheckSubstructFlag0x400(unsigned char* obj);
-void ClearSubstructFlag0x400(unsigned char* obj);
-int GetSubstructByte0x6c(unsigned char* obj);
-void SetSubstructByte0x6c(unsigned char* obj, int value);
+void SetSubstructWord0x68_0204a00c(unsigned char* obj, int value);
+int CheckSubstructFlag0x400_0204a0f8(unsigned char* obj);
+void ClearSubstructFlag0x400_0204a0e0(unsigned char* obj);
+int GetSubstructByte0x6c_0204a040(unsigned char* obj);
+void SetSubstructByte0x6c_0204a030(unsigned char* obj, int value);
 extern "C" void func_02033920(GameObject* obj, int id, int flag);
 
 // USA: func_ov025_021eb8e8
 extern "C" ARM void func_ov025_021eb8e8(Owner_021eb8e8* obj) {
     GameState* gs = GameState::GetInstance();
-    void* work = GetActiveCombatWork();
+    void* work = GetActiveCombatWork_ov000_02160130();
     char* hudList = GetOffsetPtr02160f08(work);
     short buf[16];
     int n = 0;
@@ -54,7 +54,7 @@ extern "C" ARM void func_ov025_021eb8e8(Owner_021eb8e8* obj) {
         if (c == 0) {
             continue;
         }
-        HitEntry_021eb8e8* hit = GetSubstructField0x68((unsigned char*)c);
+        HitEntry_021eb8e8* hit = GetSubstructField0x68_0204a01c((unsigned char*)c);
         if (hit != 0) {
             unsigned int flags = hit->flags18 & ~0x80000;
             func_ov000_02162dc4(work, 0, c, flags, hit->b1d, hit->b1e, hit->mask, 1);
@@ -65,15 +65,15 @@ extern "C" ARM void func_ov025_021eb8e8(Owner_021eb8e8* obj) {
                 SetByteField37_0216ff20((char*)hud, hit->b1d);
                 hud->b2f = hit->b1e;
             }
-            SetSubstructWord0x68((unsigned char*)c, 0);
+            SetSubstructWord0x68_0204a00c((unsigned char*)c, 0);
         }
-        if (CheckSubstructFlag0x400((unsigned char*)c)) {
+        if (CheckSubstructFlag0x400_0204a0f8((unsigned char*)c)) {
             c->obj3D_.SetInheritedAlpha(0x1f);
-            ClearSubstructFlag0x400((unsigned char*)c);
+            ClearSubstructFlag0x400_0204a0e0((unsigned char*)c);
         }
-        if (GetSubstructByte0x6c((unsigned char*)c) != 0xff) {
-            func_02033920(c, GetSubstructByte0x6c((unsigned char*)c), 1);
-            SetSubstructByte0x6c((unsigned char*)c, 0xff);
+        if (GetSubstructByte0x6c_0204a040((unsigned char*)c) != 0xff) {
+            func_02033920(c, GetSubstructByte0x6c_0204a040((unsigned char*)c), 1);
+            SetSubstructByte0x6c_0204a030((unsigned char*)c, 0xff);
         }
     }
 }

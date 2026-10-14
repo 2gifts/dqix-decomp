@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "std_library_functions.h"
 
-int StringLength(const char* s);
+int StringLength_020d2ff0(const char* s);
 extern "C" int func_02001aec(void* a, void* b, int n);
 
 extern char data_020f2dc8;
@@ -15,7 +15,7 @@ extern "C" ARM char* func_020e462c(char* dst, char* str, char* fmt) {
         int flag;
         if (str == 0) goto setFlag1;
         {
-            int len = StringLength(str);
+            int len = StringLength_020d2ff0(str);
             if (len <= 3) goto setFlag1;
             flag = func_02001aec(str + (len - 3), &data_020f2dcb, 3);
             goto flagDone;

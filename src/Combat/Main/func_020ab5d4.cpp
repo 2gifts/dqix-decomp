@@ -16,11 +16,11 @@ struct Struct020865b0;
 int GetFieldAt0x50(struct Struct020865b0* p);
 
 void* GetDataPtr02114e04_020d6c00();
-void OrBitsIntoField0(unsigned int* word, unsigned int bits);
+void OrBitsIntoField0_020466e4(unsigned int* word, unsigned int bits);
 struct FlagWord020466f4;
 void ClearFlags020466f4(struct FlagWord020466f4* word, unsigned int bits);
-int TestBitInByteArray(int unused, unsigned char* arr, int index);
-int VerifyAndApplySaveBuffer(int flag);
+int TestBitInByteArray_0206dfb0(int unused, unsigned char* arr, int index);
+int VerifyAndApplySaveBuffer_020ac864(int flag);
 
 struct Elem020ab5d4 {
     char data[0x30];
@@ -50,7 +50,7 @@ extern "C" ARM int func_020ab5d4(void* param0, int param1, int param2, void* par
     BackgroundLoader::AddLockGlobal();
     BackgroundLoader::FreeAllocationsGlobal();
     unsigned int* flags = (unsigned int*)GetDataPtr02114e04_020d6c00();
-    OrBitsIntoField0(flags, 0x2000000);
+    OrBitsIntoField0_020466e4(flags, 0x2000000);
     unsigned char* base = (unsigned char*)&data_0211e33c[0] + 0x28000;
     GameState* gs = GameState::GetInstance();
     unsigned char* arr = base + 4;
@@ -77,12 +77,12 @@ extern "C" ARM int func_020ab5d4(void* param0, int param1, int param2, void* par
     unsigned char* caddr = base + 0x2cac;
     void* ctx = func_0205ec34();
     func_020a9a50(caddr, (char*)ctx, 0);
-    loc.f109 = TestBitInByteArray((int)ctx, (unsigned char*)ctx + 0x8c, 0x796);
+    loc.f109 = TestBitInByteArray_0206dfb0((int)ctx, (unsigned char*)ctx + 0x8c, 0x796);
     loc.f10a = *(int*)caddr;
-    loc.f10b = TestBitInByteArray((int)ctx, (unsigned char*)ctx + 0x8c, 0x1142) != 0;
+    loc.f10b = TestBitInByteArray_0206dfb0((int)ctx, (unsigned char*)ctx + 0x8c, 0x1142) != 0;
     memcpy((char*)gs + 0x7e80, &loc, 0xd8);
     memcpy(param3, (char*)(((struct Sz3c00_020ab5d4*)(base + 0x1d8)) + 1) + 0x3c, 4);
-    if (VerifyAndApplySaveBuffer(0) == 0) {
+    if (VerifyAndApplySaveBuffer_020ac864(0) == 0) {
         BackgroundLoader::RemoveLockGlobal();
         ClearFlags020466f4((struct FlagWord020466f4*)flags, 0x2000000);
         return 0;

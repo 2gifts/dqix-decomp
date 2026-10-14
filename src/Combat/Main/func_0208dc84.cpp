@@ -3,7 +3,7 @@
 #include "Resource/Script.h"
 
 struct Variant02030b0c;
-int StringLength(char const*);
+int StringLength_020d2ff0(char const*);
 extern "C" char* strcpy(char* dst, const char* src);
 
 struct List0208df94;
@@ -83,7 +83,7 @@ extern "C" ARM int func_0208dc84(char* p
         for (i = 0; i < *data_02108fd4.field0; i++) {
             if (data_02108fd4.field4[i] == c.field2.b9) {
                 if (s != 0) {
-                    dst = ((SafeAllocator*)data_02108fd4.fieldC)->Allocate((unsigned int)(StringLength(s) + 1));
+                    dst = ((SafeAllocator*)data_02108fd4.fieldC)->Allocate((unsigned int)(StringLength_020d2ff0(s) + 1));
                     c.field4 = (int)dst;
                     if (dst != 0) {
                         strcpy((char*)dst, s);
@@ -91,7 +91,7 @@ extern "C" ARM int func_0208dc84(char* p
                 }
 #if defined(jpn)
                 if (extra != 0) {
-                    dst = ((SafeAllocator*)data_02108fd4.fieldC)->Allocate((unsigned int)(StringLength(extra) + 1));
+                    dst = ((SafeAllocator*)data_02108fd4.fieldC)->Allocate((unsigned int)(StringLength_020d2ff0(extra) + 1));
                     c.field8 = (int)dst;
                     if (dst != 0) {
                         strcpy((char*)dst, extra);
@@ -108,7 +108,7 @@ extern "C" ARM int func_0208dc84(char* p
         c.field0 = (short)((Script::Parameter*)((struct Variant02030b0c*)p))->ToInt();
         s = (char*)(void*)((Script::Parameter*)((struct Variant02030b0c*)(p + 8)))->ToString();
         if (s != 0) {
-            dst = ((SafeAllocator*)data_02108fd4.fieldC)->Allocate((unsigned int)(StringLength(s) + 1));
+            dst = ((SafeAllocator*)data_02108fd4.fieldC)->Allocate((unsigned int)(StringLength_020d2ff0(s) + 1));
             c.field4 = (int)dst;
             if (dst != 0) {
                 strcpy((char*)dst, s);
@@ -127,7 +127,7 @@ extern "C" ARM int func_0208dc84(char* p
 #endif
 #if defined(jpn)
         if (extra != 0) {
-            dst = ((SafeAllocator*)data_02108fd4.fieldC)->Allocate((unsigned int)(StringLength(extra) + 1));
+            dst = ((SafeAllocator*)data_02108fd4.fieldC)->Allocate((unsigned int)(StringLength_020d2ff0(extra) + 1));
             c.field8 = (int)dst;
             if (dst != 0) {
                 strcpy((char*)dst, extra);

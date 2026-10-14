@@ -30,13 +30,13 @@ public:
 extern "C" int func_02001aec(const void* lhs, const void* rhs, unsigned int length);
 int FindEntryIndexByKey020424e4(int, int);
 
-char* FindUnescapedAngleBracket(char*);
+char* FindUnescapedAngleBracket_020424ac(char*);
 FontIndexFile::Glyph* GetBoundedEntry020425b4(int glyph, int fontType);
 int LookupKeyValue020425e4(int leftGlyph, int rightGlyph, int fontType);
 int GetWordFromTable02042648(int fontType);
 int Dispatch02044420(void*, void*);
 bool IsHighByteFF02044494(void*, void*);
-int StringLength(const char*);
+int StringLength_020d2ff0(const char*);
 bool StringStartsWithCI020d85dc(const char* str, const char* initial);
 
 struct Struct_020e7e04
@@ -179,7 +179,7 @@ extern "C" ARM void func_0206b974(TextManager* self, bool arg2, char *input, cha
             nextGlyphIndex = -1;
         if (nextChar == '<' && nextGlyphIndex < 0)
         {
-            char* tagEnd = FindUnescapedAngleBracket(input);
+            char* tagEnd = FindUnescapedAngleBracket_020424ac(input);
             if (tagEnd != NULL)
             {
                 char* tagInner = input + 1;
@@ -189,7 +189,7 @@ extern "C" ARM void func_0206b974(TextManager* self, bool arg2, char *input, cha
                     if (!StringStartsWithCI020d85dc(tagInner, candidate->tag))
                         continue;
 
-                    int procRet = candidate->proc(tagInner + StringLength(candidate->tag), &local_2c, fontType, margin);
+                    int procRet = candidate->proc(tagInner + StringLength_020d2ff0(candidate->tag), &local_2c, fontType, margin);
                     if (procRet != 1)
                     {
                         if (procRet == 2)

@@ -16,8 +16,8 @@ ARM void SetupHeaderAndRunBufferedScript0209562c(struct HeaderStruct0209562c* he
     struct StreamHeader* buffer, int length, unsigned short param4, int param5, int param6);
 
 extern "C" void* func_02012fe4();
-int GetField5cb0Value(char* obj);
-int GetField5cb4Value(char* obj);
+int GetField5cb0Value_0201079c(char* obj);
+int GetField5cb4Value_020107d0(char* obj);
 extern int data_020f1474;
 extern char data_02109418[] __attribute__((aligned(4)));
 
@@ -48,8 +48,8 @@ extern "C" ARM int func_02095578(void) {
     (int)BackgroundLoader::GetInstance();
     type = ((Holder02095578*)res)->GetAt(1);
     id = *(unsigned short*)move;
-    cb0 = GetField5cb0Value((char*)bs);
-    cb4 = GetField5cb4Value((char*)bs);
+    cb0 = GetField5cb0Value_0201079c((char*)bs);
+    cb4 = GetField5cb4Value_020107d0((char*)bs);
     BackgroundLoader::AddLockGlobal();
     sprintf(path, (const char*)&data_020f1474);
     file = LoadFileIntoMemory(path, data_0211e33c, &len);

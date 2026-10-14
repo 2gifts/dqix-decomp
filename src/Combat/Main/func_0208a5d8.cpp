@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 #include "Util/Random.h"
 
-GameObject* GetCombatantWithFlag0x400(GameState* battleStruct, int combatantId);
+GameObject* GetCombatantWithFlag0x400_0200fea4(GameState* battleStruct, int combatantId);
 extern "C" int func_0208a03c(void* p0, int oldVal, int id, int* outPtr, int p3);
 extern "C" int func_ov000_02154a04(int field0, int id, int flag, int p3);
 
@@ -22,7 +22,7 @@ extern "C" ARM int func_0208a5d8(int* p0, int id, int* outPtr, int p3) {
     unsigned char slotB;
 
     bs = GameState::GetInstance();
-    combatant = GetCombatantWithFlag0x400(bs, id);
+    combatant = GetCombatantWithFlag0x400_0200fea4(bs, id);
     arr148 = *(char**)((char*)combatant + 0x148);
     stats = combatant->currentStats_;
     p38 = (unsigned char*)((char*)stats + 0x38);

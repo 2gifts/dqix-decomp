@@ -3,8 +3,8 @@
 #include "std_library_functions.h"
 
 struct S_10088;
-int IsFlag10088Set(struct S_10088* obj);
-int IsFlag0x18Bit0x2000Set(GameObject* combatant);
+int IsFlag10088Set_02010088(struct S_10088* obj);
+int IsFlag0x18Bit0x2000Set_ov000_02153c0c(GameObject* combatant);
 
 struct ActionEntry0215ae80 {
     char pad0[0x20];
@@ -48,8 +48,8 @@ extern "C" ARM void func_ov000_0215ae80(Battle0215ae80* self) {
             GameState* gs = GameState::GetInstance();
             GameObject* c = gs->GetCombatantByIndex(id);
             if (c == NULL) return;
-            if (IsFlag10088Set((struct S_10088*)c)) return;
-            if (IsFlag0x18Bit0x2000Set(c)) return;
+            if (IsFlag10088Set_02010088((struct S_10088*)c)) return;
+            if (IsFlag0x18Bit0x2000Set_ov000_02153c0c(c)) return;
             memcpy(work, node, sizeof(ActionNode0215ae80));
             self->workCount++;
         }

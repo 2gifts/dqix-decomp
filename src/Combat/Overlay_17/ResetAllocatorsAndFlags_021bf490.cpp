@@ -5,9 +5,9 @@
 
 void ResetFieldWithLog_0218d5c8(unsigned char* obj);
 void TailForward02012da4(AllocatorUnion* alloc, void* data);
-int GetFieldIfFlag4(char* obj);
-void SetField0x23cTrue(void* obj);
-void ClearBitsInField4(unsigned int* obj, unsigned int mask);
+int GetFieldIfFlag4_020100f8(char* obj);
+void SetField0x23cTrue_020a27ac(void* obj);
+void ClearBitsInField4_0203b4e8(unsigned int* obj, unsigned int mask);
 extern AllocatorUnion data_02114e20;
 
 // USA: func_ov017_021bf490  (semantic: ResetAllocatorsAndFlags_021bf490)
@@ -35,11 +35,11 @@ extern "C" ARM void func_ov017_021bf490(void* objRaw) {
         TailForward02012da4(&data_02114e20, h2);
     }
 
-    int flagResult = GetFieldIfFlag4((char*)GameState::GetInstance());
+    int flagResult = GetFieldIfFlag4_020100f8((char*)GameState::GetInstance());
     if (flagResult != 0) {
-        SetField0x23cTrue((void*)flagResult);
+        SetField0x23cTrue_020a27ac((void*)flagResult);
     }
 
     if (ov == NULL) return;
-    ClearBitsInField4((unsigned int*)ov, 0x80);
+    ClearBitsInField4_0203b4e8((unsigned int*)ov, 0x80);
 }

@@ -26,7 +26,7 @@ struct Struct_203dafc {
     int field18;
     int field1c;
 };
-void ClearEightWords(struct Struct_203dafc* obj);
+void ClearEightWords_0203dafc(struct Struct_203dafc* obj);
 
 struct Obj021e8bac;
 struct Node021e8bac {
@@ -56,7 +56,7 @@ extern "C" ARM void func_ov025_021e267c(int combatantId, int arg1, int arg2, int
     }
     void* ptr = (void*)((Object3D*)((struct PtrField0x1c_020371b0*)combatant))->GetCurrentAnimationTime();
     struct Struct_203dafc s;
-    ClearEightWords(&s);
+    ClearEightWords_0203dafc(&s);
     void* byteObj = *(void**)((char*)&data_ov025_021ef988 + RegionOffsetc);
     s.fieldc = (int)entry;
     s.field4 = arg1;

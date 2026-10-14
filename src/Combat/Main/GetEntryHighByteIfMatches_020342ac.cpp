@@ -3,7 +3,7 @@
 
 extern "C" void* func_0202ae18(void* obj);
 extern "C" void* func_ov017_0218b5b0(void);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 extern "C" int func_0202c508(void* obj);
 struct SearchStruct;
 struct SearchStruct0202c1a4;
@@ -17,14 +17,14 @@ struct FlagsByte0xc1_020342ac {
 extern "C" ARM int func_020342ac(void* obj) {
     void* thing = func_0202ae18(obj);
     func_ov017_0218b5b0();
-    if (!CheckField0NonZero((int*)thing)) {
+    if (!CheckField0NonZero_0202b7d8((int*)thing)) {
         goto fallback;
     }
     if (!func_0202c508(thing)) {
         goto fallback;
     }
     short field4 = *(short*)((char*)obj + 4);
-    if (!GetEntryBySignedByteIndex((struct SearchStruct*)thing, field4)) {
+    if (!GetEntryBySignedByteIndex_0202c178((struct SearchStruct*)thing, field4)) {
         goto fallback;
     }
     field4 = *(short*)((char*)obj + 4);
@@ -37,7 +37,7 @@ extern "C" ARM int func_020342ac(void* obj) {
         goto fallback;
     }
     field4 = *(short*)((char*)obj + 4);
-    SearchEntry0202c178* entry = GetEntryBySignedByteIndex((struct SearchStruct*)thing, field4);
+    SearchEntry0202c178* entry = GetEntryBySignedByteIndex_0202c178((struct SearchStruct*)thing, field4);
     return entry->flags.kind;
 fallback:
     return *(unsigned char*)((char*)obj + 0xbe);

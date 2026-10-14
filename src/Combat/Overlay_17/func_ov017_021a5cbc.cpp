@@ -61,7 +61,7 @@ extern const char data_ov017_021d7b3b[];
 #else
 enum { WindowAllocationSize = 0x500 };
 #endif
-void SetWord0x18ClearByte0x1f(unsigned char*, int);
+void SetWord0x18ClearByte0x1f_0204b11c(unsigned char*, int);
 extern "C" void func_0204b5b4(Node0x20_021a5ad0*, unsigned char);
 void DispatchViaTable0204b5e8(Obj0204b5e8*, int, int);
 extern "C" void ColorEffect_ConfigureAlphaBlend(void*, int, int, int, int);
@@ -105,7 +105,7 @@ extern "C" ARM void func_ov017_021a5cbc(GameResources* self) {
         Pair021a5cbc styles = *(const Pair021a5cbc*)data_ov017_021d6a8c;
         for (int i = 0; i < 2; ++i) {
             Node0x20_021a5ad0* node = &reinterpret_cast<Node0x20_021a5ad0*>(self->unknown_4094)[i];
-            SetWord0x18ClearByte0x1f((unsigned char*)node, 0);
+            SetWord0x18ClearByte0x1f_0204b11c((unsigned char*)node, 0);
             node->low = 0;
             node->high = priorities.values[i];
             func_0204b5b4(node, styles.values[i]);

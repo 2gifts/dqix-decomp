@@ -20,7 +20,7 @@ struct Scene68654 {
 };
 extern "C" {
 void func_020dfec0(void*,SafeAllocator*,void*,unsigned int);
-void _Z24SetWord0x18ClearByte0x1fPhi(void*,int);
+void _Z33SetWord0x18ClearByte0x1f_0204b11cPhi(void*,int);
 void func_0204b5b4(void*,int);
 void _Z30AllocateAndClearBuffer0204b12cP19AllocTarget0204b12cP13SafeAllocator(void*,SafeAllocator*);
 void _Z24DispatchViaTable0204b5e8P11Obj0204b5e8ii(void*,int,int);
@@ -73,7 +73,7 @@ extern "C" ARM void func_ov003_02168654(Scene68654* self) {
             List68654* list;
             for (int i=0;i<2;i++) {
                 list=self->lists+i;
-                _Z24SetWord0x18ClearByte0x1fPhi(list,0);
+                _Z33SetWord0x18ClearByte0x1f_0204b11cPhi(list,0);
                 int h=hi.v[i]; int m=mode.v[i];
                 list->lo=0;
                 list->hi=h;

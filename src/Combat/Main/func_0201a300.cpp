@@ -13,15 +13,15 @@ struct List_020283c0;
 struct AppendPairList;
 struct TimeStamp020105a8;
 void InitializeStruct020280f8(InitStruct*);
-void InitializeStruct(InitStruct*);
+void InitializeStruct_020280b0(InitStruct*);
 void AllocateAndClearHeaderArray020286fc(Array020286fc*, SafeAllocator*, int);
 void AllocateClearArray02028754(Array02028754*, SafeAllocator*, int);
 void AllocateArray0202834c(Array0202834c*, SafeAllocator*, int);
-void AppendHalfwordPairCapped(BoundedHalfwordPairList*, HalfwordPair*);
+void AppendHalfwordPairCapped_02028378(BoundedHalfwordPairList*, HalfwordPair*);
 int GenerateGrottoObjectPositionOrientation(void*, int, int, int*, int*, const TileFeaturePlacementData*, bool);
 void AppendCappedElement02028170(Container02028170*, Elem02028170*);
 Elem02028170* FindListEntryById(List_020283c0*, int);
-void AppendPairToBoundedList(AppendPairList*, AppendEntry*);
+void AppendPairToBoundedList_020281d8(AppendPairList*, AppendEntry*);
 extern "C" void func_02028214(GrottoTileLists0201a300*, SafeAllocator*);
 void ComputeElapsedTime020105a8(TimeStamp020105a8*, int*);
 
@@ -59,14 +59,14 @@ extern "C" ARM int func_0201a300(Zone3D* zone, int floor, GrottoTileOwner0201a30
     int remaining = 0x1020 - ((count << 4) + (neighbors << 3));
     if (remaining < 0) neighbors -= abs(remaining / 8) + 1;
     InitializeStruct020280f8((InitStruct*)&owner->lists);
-    InitializeStruct((InitStruct*)&owner->lists);
+    InitializeStruct_020280b0((InitStruct*)&owner->lists);
     AllocateAndClearHeaderArray020286fc((Array020286fc*)&owner->lists, owner->allocator, count);
     AllocateClearArray02028754((Array02028754*)&owner->lists, owner->allocator, neighbors);
     AllocateArray0202834c((Array0202834c*)&owner->lists, owner->allocator, 1);
     HalfwordPair origin;
     origin.first = 0;
     origin.second = 0;
-    AppendHalfwordPairCapped((BoundedHalfwordPairList*)&owner->lists, &origin);
+    AppendHalfwordPairCapped_02028378((BoundedHalfwordPairList*)&owner->lists, &origin);
     for (int y = 1; y < 15; y++) {
         int previousY;
         int x = 1;
@@ -100,14 +100,14 @@ extern "C" ARM int func_0201a300(Zone3D* zone, int floor, GrottoTileOwner0201a30
                 pair.first = 0;
                 pair.first = FindListEntryById((List_020283c0*)&owner->lists, GrottoTileId0201a300(x, y));
                 pair.second = FindListEntryById((List_020283c0*)&owner->lists, leftId);
-                AppendPairToBoundedList((AppendPairList*)&owner->lists, &pair);
+                AppendPairToBoundedList_020281d8((AppendPairList*)&owner->lists, &pair);
             }
             if (above != 1 && above != 3) {
                 pair.second = 0;
                 pair.first = 0;
                 pair.first = FindListEntryById((List_020283c0*)&owner->lists, id);
                 pair.second = FindListEntryById((List_020283c0*)&owner->lists, aboveId);
-                AppendPairToBoundedList((AppendPairList*)&owner->lists, &pair);
+                AppendPairToBoundedList_020281d8((AppendPairList*)&owner->lists, &pair);
             }
         }
     }

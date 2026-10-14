@@ -4,14 +4,14 @@
 #include "Filesystem/BackgroundLoader.h"
 #include "GameState/GameState.h"
 
-void* GetActiveCombatWork();
+void* GetActiveCombatWork_ov000_02160130();
 void* GetSlotPtr02160f20(void* work);
 struct List02160094;
 void* GetNodeAtIndex02160094(List02160094*, int);
 struct List021600f8;
 void* GetNodeAtIndex021600f8(List021600f8*, int);
 struct GameState;
-void* GetCombatantWithFlag0x400(GameState*, int);
+void* GetCombatantWithFlag0x400_0200fea4(GameState*, int);
 void SetForwardAndStore0205ebc0(void* obj, int a, int b);
 void ForwardToTargetOrDefault0205eabc(void* obj, void* target, int arg);
 void* SearchBothTables02079e2c(char*, int);
@@ -112,8 +112,8 @@ extern "C" ARM void func_ov025_021e8d20(char* self, char* arg) {
     int in;
     int kb;
     void* gs = GameState::GetInstance();
-    ActionDataTables* data = GetData02108e10();
-    void* work = GetActiveCombatWork();
+    ActionDataTables* data = GetData02108e10_020797dc();
+    void* work = GetActiveCombatWork_ov000_02160130();
     Slot* slot = (Slot*)GetSlotPtr02160f20(work);
     *(char**)self = arg;
     *(int*)(self + 4) = *(int*)(arg + 8);
@@ -175,7 +175,7 @@ extern "C" ARM void func_ov025_021e8d20(char* self, char* arg) {
                 unsigned short prev = *(unsigned short*)(node + (j - 1) * 2 + 0xe);
                 int small = prev <= 3 ? 1 : 0;
                 if (small == 0) {
-                    Combatant* c = (Combatant*)GetCombatantWithFlag0x400((GameState*)gs, prev);
+                    Combatant* c = (Combatant*)GetCombatantWithFlag0x400_0200fea4((GameState*)gs, prev);
                     if (c != 0 && c->id == 0xf4) {
                         SetSlotEntry_021eb148(self, 0x1a, 0xcfe5, 1);
                     }
@@ -266,7 +266,7 @@ extern "C" ARM void func_ov025_021e8d20(char* self, char* arg) {
         }
     }
     if (slot->type == 1 && first != 0) {
-        Combatant* c = (Combatant*)(void*)GetCombatantWithFlag0x100((GameState*)gs, first->id);
+        Combatant* c = (Combatant*)(void*)GetCombatantWithFlag0x100_0200ff1c((GameState*)gs, first->id);
         if (c != 0) {
             char* p = c->extra + 0x294;
             if (p != 0) {

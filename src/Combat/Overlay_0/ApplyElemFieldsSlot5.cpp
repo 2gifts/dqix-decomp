@@ -16,7 +16,7 @@ extern "C" void func_ov000_02177d04(void* obj, void* buf);
 
 struct StructA0205d5d0;
 // USA: func_ov000_02177cb8
-ARM int ApplyElemFieldsSlot5(void* obj) {
+ARM int ApplyElemFieldsSlot5_ov000_02177cb8(void* obj) {
 	void* buf = *(void**)(GetGlobalField0x1c020421a0() + REGION_OFFSET_0);
 	memset(buf, 0, REGION_OFFSET_1);
 	func_ov000_02177d04(obj, buf);

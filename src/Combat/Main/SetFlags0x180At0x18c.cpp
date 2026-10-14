@@ -7,7 +7,7 @@ enum { FLAGS_OFFSET = 0x18c };
 #endif
 
 // USA: func_02054224
-ARM void SetFlags0x180At0x18c(void* obj) {
+ARM void SetFlags0x180At0x18c_02054224(void* obj) {
     unsigned int* flags = (unsigned int*)((char*)obj + FLAGS_OFFSET);
     *flags |= 0x180;
 }

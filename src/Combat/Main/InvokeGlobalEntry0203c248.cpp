@@ -25,7 +25,7 @@ struct CachedTextTable {
 #endif
 
 extern CachedTextTable* data_02105244;
-int StringLength(const char* text);
+int StringLength_020d2ff0(const char* text);
 extern "C" void func_02042764(const unsigned char* glyphIndices, char* output, int fontIndex);
 
 #if defined(jpn)
@@ -41,7 +41,7 @@ extern "C" ARM void func_0203bdf4(const short* textSlots, char* output) {
         short index = textSlots[slot];
         if (index >= 0) {
             CachedTextEntry* entry = &entries[index];
-            int length = StringLength(entry->text);
+            int length = StringLength_020d2ff0(entry->text);
             memcpy(output + used, entry->text, length);
             used += length;
             ++slot;

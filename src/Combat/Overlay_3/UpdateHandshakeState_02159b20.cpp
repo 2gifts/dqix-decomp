@@ -14,7 +14,7 @@ struct Container020e0310;
 void* GetFieldByKey020e0434(Container020e0310*, int);
 void AppendString02042058(char*, const char*);
 struct Struct_0205d81c;
-void SetElementFieldC2(Struct_0205d81c*, int, int);
+void SetElementFieldC2_0205deb4(Struct_0205d81c*, int, int);
 extern "C" void func_ov003_02159250(void*, void*);
 extern "C" void func_ov003_0215b478(void*);
 extern "C" void func_ov003_0215b8a0(void*);
@@ -47,9 +47,9 @@ ARM void UpdateHandshakeState_02159b20(void* self) {
     func_ov003_0215b8a0(self);
     func_ov003_0215b5c4(self);
 
-    SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 0, 0);
-    SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 1, 0);
-    SetElementFieldC2((Struct_0205d81c*)(s + 0xf4), 2, 0);
+    SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 0, 0);
+    SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 1, 0);
+    SetElementFieldC2_0205deb4((Struct_0205d81c*)(s + 0xf4), 2, 0);
 
     *(unsigned char*)(s + 0x588) = 2;
     *(unsigned char*)(s + 0x580) = 0;

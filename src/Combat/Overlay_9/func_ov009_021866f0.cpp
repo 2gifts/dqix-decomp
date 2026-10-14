@@ -12,8 +12,8 @@ extern "C" void func_ov009_02188944(CharacterCreationUI* self, int val);
 extern "C" int func_ov009_02188ee8(CharacterCreationUI* self);
 extern "C" ARM void _Z20SetStatValue021855dcPhi(unsigned char* self, int val);
 
-int CallFunc020a0db8AtField0x16c(char* obj, int a, int b);
-void CallFunc020a0db8AtField0x194AndClearFlag2(char* obj, int a, int b);
+int CallFunc020a0db8AtField0x16c_0202ee38(char* obj, int a, int b);
+void CallFunc020a0db8AtField0x194AndClearFlag2_0202ee58(char* obj, int a, int b);
 
 #if defined(jpn)
 #define data_ov009_0218a9c8 data_ov009_0218b9a4
@@ -44,8 +44,8 @@ extern "C" ARM void func_ov009_021866f0(CharacterCreationUI* self) {
 
         Vector3fix position = data_ov009_0218a9c8;
         Vector3fix target = data_ov009_0218a9d4;
-        CallFunc020a0db8AtField0x16c((char*)self->camera, (int)&position, 0x1e000);
-        CallFunc020a0db8AtField0x194AndClearFlag2((char*)self->camera, (int)&target, 0x1e000);
+        CallFunc020a0db8AtField0x16c_0202ee38((char*)self->camera, (int)&position, 0x1e000);
+        CallFunc020a0db8AtField0x194AndClearFlag2_0202ee58((char*)self->camera, (int)&target, 0x1e000);
 
         self->flags |= 1;
         self->step = self->step + 1;
@@ -89,7 +89,7 @@ extern "C" ARM void func_ov009_021866f0(CharacterCreationUI* self) {
     if (flag != 0) {
         Vector3fix position = data_ov009_0218a9e0;
         Vector3fix target = data_ov009_0218a9ec;
-        CallFunc020a0db8AtField0x16c((char*)self->camera, (int)&position, 0x1e000);
-        CallFunc020a0db8AtField0x194AndClearFlag2((char*)self->camera, (int)&target, 0x1e000);
+        CallFunc020a0db8AtField0x16c_0202ee38((char*)self->camera, (int)&position, 0x1e000);
+        CallFunc020a0db8AtField0x194AndClearFlag2_0202ee58((char*)self->camera, (int)&target, 0x1e000);
     }
 }

@@ -129,7 +129,7 @@ extern "C" int func_02085cd0(unsigned char*, int);
 int AccumulateModeSlotBits02085f1c(unsigned char*, int);
 int AccumulateSlotBits02085b88(unsigned char*);
 struct ClampFieldPairStruct;
-void ClampFieldPairToMax(ClampFieldPairStruct*);
+void ClampFieldPairToMax_020863e0(ClampFieldPairStruct*);
 void CopyStruct020836e4(struct Record020836e4*, struct Record020836e4*);
 
 static inline void StoreResistances(unsigned char* dst, struct ResistanceSet set) {
@@ -295,7 +295,7 @@ extern "C" ARM void func_02083e28(struct BattleUnit* unit, struct StatOutputs* o
         SetDerivedMid(unit, d1);
         unit->maxHp = maxHp;
         unit->maxMp = maxMp;
-        ClampFieldPairToMax((ClampFieldPairStruct*)unit);
+        ClampFieldPairToMax_020863e0((ClampFieldPairStruct*)unit);
 
         short totals[0x16] = {0};
         for (int i = 0; i < 0x16; i++) {

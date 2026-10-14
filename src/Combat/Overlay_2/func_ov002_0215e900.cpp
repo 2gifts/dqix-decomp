@@ -7,7 +7,7 @@ extern "C" void func_0205d304(void* ptr, int val, int a2, int a3, int s0, int s1
 extern "C" void func_ov002_0215eadc(void* obj, int val);
 
 struct Struct_0205d81c;
-void SetElementFieldC2(struct Struct_0205d81c* s, int key, int value);
+void SetElementFieldC2_0205deb4(struct Struct_0205d81c* s, int key, int value);
 
 struct Obj0205dee8 {
     char pad0[0xb0];
@@ -27,9 +27,9 @@ extern "C" ARM void func_ov002_0215e900(unsigned char* obj) {
 
     func_ov002_0215eadc(obj, 1);
 
-    SetElementFieldC2((struct Struct_0205d81c*)(obj + 0x2c8 + 0xc00), 0x11, 1);
+    SetElementFieldC2_0205deb4((struct Struct_0205d81c*)(obj + 0x2c8 + 0xc00), 0x11, 1);
 
     SetFieldB0AndUpdate0205dee8((struct Obj0205dee8*)(obj + 0x2c8 + 0xc00), 0x10);
 
-    SetElementFieldC2((struct Struct_0205d81c*)(obj + 0x2c8 + 0xc00), 0x10, 0);
+    SetElementFieldC2_0205deb4((struct Struct_0205d81c*)(obj + 0x2c8 + 0xc00), 0x10, 0);
 }

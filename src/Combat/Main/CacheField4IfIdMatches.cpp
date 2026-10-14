@@ -18,7 +18,7 @@ struct Global020fdc4c_f950 {
 extern struct Global020fdc4c_f950 data_020fdc4c;
 
 // USA: func_0201f950
-ARM int CacheField4IfIdMatches(struct Variant02030b0c* v) {
+ARM int CacheField4IfIdMatches_0201f950(struct Variant02030b0c* v) {
     int val;
     if (data_020fdc4c.field4 != 0) return 1;
     val = ((Script::Parameter*)v)->ToInt();

@@ -14,7 +14,7 @@ ARM int DecodeEntry_021b8abc(int id, Out021b8abc* out) {
     if (id <= -1) {
         goto fail;
     }
-    if (!TryDecodeGlobalBitstreamEntry(&buf, id)) {
+    if (!TryDecodeGlobalBitstreamEntry_02074114(&buf, id)) {
         goto fail;
     }
     for (int i = 0; i < 3; i++) {

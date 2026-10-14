@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-GameObject* GetCombatantWithFlag0x100(GameState* battleStruct, int combatantId);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState* battleStruct, int combatantId);
 int ClassifyFlag0x800RatioTier02027bd0(int id);
 void CleanInvalidateCacheRange(const void* addr, unsigned int size);
 extern "C" int LoadToSubObjStandardPalette(int arg0, int arg1, unsigned int arg2);
@@ -29,7 +29,7 @@ extern "C" ARM void func_020276dc(unsigned char* self) {
 
         int k;
 
-        if (GetCombatantWithFlag0x100(gs, i) == 0) continue;
+        if (GetCombatantWithFlag0x100_0200ff1c(gs, i) == 0) continue;
         want = data_020e703e[ClassifyFlag0x800RatioTier02027bd0(i)];
         cur = self[0];
         sh = i << 1;

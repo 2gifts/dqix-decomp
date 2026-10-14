@@ -8,10 +8,10 @@
 
 extern "C" unsigned short* func_02012fe4(void);
 extern "C" char* func_0203bd08(void);
-ARM void* GetData02105254(void);
+ARM void* GetData02105254_0203b628(void);
 
 extern "C" void func_02021428(void* unused0, int amount);
-void InitSubScreenDisplay(void* context);
+void InitSubScreenDisplay_020209d0(void* context);
 void TailForward0203b66c(char* obj);
 void InitSubObject0203bd78(char* obj);
 void InitBattleContext0203bd24(char* obj);
@@ -29,13 +29,13 @@ void InitStruct0205a444(char* obj);
 void InitFourEntrySlots02020aa0(void* obj);
 
 struct State0xbb1c;
-void ClearFields0x8(struct State0xbb1c* obj);
+void ClearFields0x8_0203bb1c(struct State0xbb1c* obj);
 
 struct Obj0203bb3c;
 void SetupAndDispatchCharTransfer0203bb3c(struct Obj0203bb3c* obj, char* src, SafeAllocator* allocator, int category, unsigned short arg5);
 
 struct Bcb8Params;
-void ForwardParamsToB8bc(struct Bcb8Params* s, int arg1, int arg2);
+void ForwardParamsToB8bc_0203bcb8(struct Bcb8Params* s, int arg1, int arg2);
 
 struct ResetStruct {
     int w0;
@@ -60,7 +60,7 @@ struct Struct02030774;
 
 extern "C" void func_0202445c(void* obj);
 extern "C" void func_ov017_02191234(void* obj);
-void DelayThenSyncBit0(void);
+void DelayThenSyncBit0_020c9820(void);
 extern "C" void func_0202343c(void* obj);
 void MarkActiveCombatantSlots02026b7c(unsigned char* obj);
 extern "C" void func_02026bdc(void* obj, int flag);
@@ -93,7 +93,7 @@ extern "C" ARM void func_020227dc(MapDisplay* ctx) {
     unsigned short* p6 = func_02012fe4();
     char* axisObj = ((char*)func_ov017_0218b5b0());
     char* p8 = func_0203bd08();
-    void* dataPtr = GetData02105254();
+    void* dataPtr = GetData02105254_0203b628();
     int i;
     SafeAllocator* sb = (SafeAllocator*)(axisObj + 0x128);
 
@@ -117,7 +117,7 @@ extern "C" ARM void func_020227dc(MapDisplay* ctx) {
     if (IsAxisIntWithin16((struct AxisFloats0203b5a0*)axisObj, 1) != 0) return;
 
     func_02020720(ctx);
-    InitSubScreenDisplay(ctx);
+    InitSubScreenDisplay_020209d0(ctx);
     TailForward0203b66c((char*)dataPtr);
     sb->Reset();
     InitSubObject0203bd78(p8);
@@ -154,10 +154,10 @@ extern "C" ARM void func_020227dc(MapDisplay* ctx) {
     loader->GetLoadedFileByID(ctx->taska20, &fileData, &fileSize);
 
     ctx->names = (Entry02021578*)sb->Allocate(sizeof(Entry02021578));
-    ClearFields0x8((struct State0xbb1c*)((char*)ctx->names + 8));
+    ClearFields0x8_0203bb1c((struct State0xbb1c*)((char*)ctx->names + 8));
 
     SetupAndDispatchCharTransfer0203bb3c((struct Obj0203bb3c*)((char*)ctx->names + 8), (char*)fileData, sb, 1, 0);
-    ForwardParamsToB8bc((struct Bcb8Params*)((char*)ctx->names + 8), 0, 0);
+    ForwardParamsToB8bc_0203bcb8((struct Bcb8Params*)((char*)ctx->names + 8), 0, 0);
 
     BackgroundLoader::GetInstance()->RemoveTask(ctx->taska20);
     ctx->taska20 = -1;
@@ -189,7 +189,7 @@ extern "C" ARM void func_020227dc(MapDisplay* ctx) {
     ctx->field9c8 = 0;
     ctx->field9c3 = 0;
     ctx->loadStage = ctx->loadStage + 1;
-    DelayThenSyncBit0();
+    DelayThenSyncBit0_020c9820();
     func_0202343c(ctx);
     MarkActiveCombatantSlots02026b7c((unsigned char*)ctx);
     func_02026bdc(ctx, 0);

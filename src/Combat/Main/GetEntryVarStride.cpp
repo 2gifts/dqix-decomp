@@ -7,7 +7,7 @@ struct Hdr02b00e0 {
 };
 
 // USA: func_020b00e0
-ARM unsigned char *GetEntryVarStride(struct Hdr02b00e0 *h, unsigned int i) {
+ARM unsigned char *GetEntryVarStride_020b00e0(struct Hdr02b00e0 *h, unsigned int i) {
     if (i >= h->count) {
         return NULL;
     }

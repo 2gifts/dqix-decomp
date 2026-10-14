@@ -49,7 +49,7 @@ extern const Slots0215d738 data_ov004_0216fb80;
 // USA: func_ov004_0215d738
 extern "C" ARM int func_ov004_0215d738(void* a) {
     GameState* bs = GameState::GetInstance();
-    unsigned char* p = (unsigned char*)GetPtrField0x2a04(bs);
+    unsigned char* p = (unsigned char*)GetPtrField0x2a04_02010828(bs);
     int idx = DispatchNodeIfType7_02156e2c(a, 0x5b);
     if (idx < 0) return 0;
     short* entry = (short*)GetEntryFor_021570a4(a, idx & 0xff);

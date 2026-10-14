@@ -47,8 +47,8 @@ struct Battle {
 struct List02160094;
 ActionEntry* GetNodeAtIndex02160094(List02160094*, int);
 ActionNode* GetWorkArrayEntry0215e9d8(void* self);
-ActionEntry* GetTableEntry0x8e00Bound0x48(void* self);
-TargetNode* GetTableEntry0x8e01Bound0x88(void* self);
+ActionEntry* GetTableEntry0x8e00Bound0x48_ov000_0215e918(void* self);
+TargetNode* GetTableEntry0x8e01Bound0x88_ov000_0215e938(void* self);
 void InitStruct02160030(void* obj);
 void ResetStruct02157cdc(void* obj);
 extern "C" void* memset(void* dst, int c, unsigned int n);
@@ -92,14 +92,14 @@ extern "C" ARM void func_ov000_0215c2d0(Battle* self, ActionNode* src) {
             continue;
         }
         InitStruct02160030(work);
-        ActionEntry* entry = GetTableEntry0x8e00Bound0x48(self);
+        ActionEntry* entry = GetTableEntry0x8e00Bound0x48_ov000_0215e918(self);
         if (entry == 0) {
             continue;
         }
         memset(entry, 0, 0x30);
         entry->f1c = -1;
         entry->f30 = 0;
-        TargetNode* tn = GetTableEntry0x8e01Bound0x88(self);
+        TargetNode* tn = GetTableEntry0x8e01Bound0x88_ov000_0215e938(self);
         if (tn == 0) {
             continue;
         }

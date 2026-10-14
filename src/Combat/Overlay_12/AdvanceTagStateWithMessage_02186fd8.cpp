@@ -52,7 +52,7 @@ extern "C" int func_ov023_021e6de4(char* obj);
 struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
 struct TableA68;
-void* FindEntryByKey(struct TableA68* table, int key);
+void* FindEntryByKey_02072a68(struct TableA68* table, int key);
 #if defined(jpn)
 extern "C" void func_ov012_0218adac(void*, int, int);
 #else
@@ -92,7 +92,7 @@ extern "C" ARM void func_ov012_02186fd8(char* base) {
 
         GameState* bs = GameState::GetInstance();
         int key = (short)(*(int*)(base + kChoiceCOffset) + 0x27d8);
-        void* name = FindEntryByKey((struct TableA68*)(base + kStringsOffset), key);
+        void* name = FindEntryByKey_02072a68((struct TableA68*)(base + kStringsOffset), key);
         ProfileNameSelection* profile = GetProfileNameSelection(bs);
 
         memset(base + kTitleTextOffset, 0, 0x40);

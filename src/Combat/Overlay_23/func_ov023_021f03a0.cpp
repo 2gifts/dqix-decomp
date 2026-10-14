@@ -88,36 +88,36 @@ struct ActorFlags { char pad0[0xc1]; unsigned char fieldc1; unsigned char low : 
 extern "C" Reset_021eefac* _ZZ17GetGlobal021ffefcvE1s;
 MessageController* GetGlobalField0x1c020421a0();
 extern "C" void* func_0202ae18();
-int ArrayContainsByte(ArrayContainsByteStruct*, int);
+int ArrayContainsByte_02086ef0(ArrayContainsByteStruct*, int);
 void ScaleOrResetCombatants_021ed988(char*, int);
 extern "C" void func_ov000_02163b90(BattleWork*, int);
 extern "C" void func_ov000_021626a0(BattleWork*, int, int);
 void ApplyField41ToGatheredCombatants02163a7c(GatherObj02163a7c*);
 extern "C" void func_ov000_021639b4(BattleWork*);
-void ClearBitsInField4(unsigned int*, unsigned int);
+void ClearBitsInField4_0203b4e8(unsigned int*, unsigned int);
 void RunFlagPassAndSetMode02167dd8_02167dd8(unsigned char*);
 extern "C" int func_ov000_02153e40(void*, short*, int, int);
 extern "C" void func_02048cf0(GameObject*, int);
 extern "C" void func_ov000_0216e3c4(void*);
 unsigned char* GetField02163524(void*);
-int TestBitAt0x34(unsigned char*, unsigned int);
+int TestBitAt0x34_020a35e0(unsigned char*, unsigned int);
 void ResetCombatantSlot020d7334(unsigned char*, int);
-int IsFlag10088Set(S_10088*);
+int IsFlag10088Set_02010088(S_10088*);
 void SetByte0xbeShiftPrev(Bytes02033b88*, int);
 void ClearStateFlags0203400c(unsigned char*);
-GameObject* GetCombatantWithFlag0x400(GameState*, int);
-GameObject* GetCombatantWithFlag0x100(GameState*, int);
-GameObject* GetCombatantWithFlag0x1000(GameState*, int);
+GameObject* GetCombatantWithFlag0x400_0200fea4(GameState*, int);
+GameObject* GetCombatantWithFlag0x100_0200ff1c(GameState*, int);
+GameObject* GetCombatantWithFlag0x1000_0200ff58(GameState*, int);
 void ResetEntryList0205d6a0(Entry_0205d6a0*, int);
-void SetCombatWorkFlags0x55f4(void*, int);
+void SetCombatWorkFlags0x55f4_ov000_02160fa8(void*, int);
 extern "C" void func_ov023_021d8a40(BattleEntry*);
 void CopyEntryFields_021d8cb4(void*, void*);
 void CopyAndStoreLen_021d9988(Obj021d9988*, void*, unsigned int);
 extern "C" void func_02046380(MessageController*);
 extern "C" void func_ov023_021d8ddc(BattleEntry*, int*);
-int GetCheckedSignedByte(void*, unsigned int);
+int GetCheckedSignedByte_02011518(void*, unsigned int);
 void InitObjFromCombatantId020e4bf4(void*, int);
-char* FindEntryByKey(TableA68*, int);
+char* FindEntryByKey_02072a68(TableA68*, int);
 #if !defined(jpn)
 extern "C" void func_0204500c(MessageController*, char*, int, int);
 #endif
@@ -148,14 +148,14 @@ extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
     func_0202ae18();
     GameResources* resources = func_ov017_0218b5b0();
     BackgroundLoader* loader = BackgroundLoader::GetInstance();
-    ArrayContainsByte((ArrayContainsByteStruct*)GetPtrField0x2a04(game), state->actorId);
+    ArrayContainsByte_02086ef0((ArrayContainsByteStruct*)GetPtrField0x2a04_02010828(game), state->actorId);
     if (state->state == 0) {
         if (work->levelUp) ScaleOrResetCombatants_021ed988((char*)work, 0);
         func_ov000_02163b90(work, 1);
         func_ov000_021626a0(work, 4, 0);
         ApplyField41ToGatheredCombatants02163a7c((GatherObj02163a7c*)work);
         func_ov000_021639b4(work);
-        ClearBitsInField4((unsigned int*)resources, 0x400);
+        ClearBitsInField4_0203b4e8((unsigned int*)resources, 0x400);
         RunFlagPassAndSetMode02167dd8_02167dd8((unsigned char*)work);
         void* battle = work->battle;
         int count;
@@ -169,10 +169,10 @@ extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
         unsigned char* field = GetField02163524(work);
         GameState* partyGame = GameState::GetInstance();
         for (int i = 0; i < 4; i++) {
-            if (TestBitAt0x34((unsigned char*)work->info, (unsigned char)i)) {
+            if (TestBitAt0x34_020a35e0((unsigned char*)work->info, (unsigned char)i)) {
                 if (field) ResetCombatantSlot020d7334(field, i);
                 GameObject* actor = partyGame->GetCombatantByIndex(i);
-                if (actor && !IsFlag10088Set((S_10088*)actor)) {
+                if (actor && !IsFlag10088Set_02010088((S_10088*)actor)) {
                     ((ActorFlags*)actor)->fieldc1 &= ~0xf0;
                     SetByte0xbeShiftPrev((Bytes02033b88*)actor, 0);
                     actor->obj3D_.SkipAnimationTransition();
@@ -182,11 +182,11 @@ extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
             }
         }
         for (int i = 0; i < 8; i++) {
-            GameObject* actor = GetCombatantWithFlag0x400(partyGame, i + 0xc0);
+            GameObject* actor = GetCombatantWithFlag0x400_0200fea4(partyGame, i + 0xc0);
             if (actor && ((ActorFlags*)actor)->visible) actor->obj3D_.MakeVisible();
         }
         ResetEntryList0205d6a0(&work->entries, 1);
-        SetCombatWorkFlags0x55f4(work, 0x40000);
+        SetCombatWorkFlags0x55f4_ov000_02160fa8(work, 0x40000);
         work->allocator.Reset();
         work->result = (BattleEntry*)work->allocator.Allocate(0x12c);
         func_ov023_021d8a40(work->result);
@@ -210,9 +210,9 @@ extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
         BaseCombatStats* stats = 0;
         if (work->info->legacyBoss) {
             for (int i = 0; i < 4 && !stats; i++) {
-                int id = GetCheckedSignedByte(game, (unsigned char)i);
+                int id = GetCheckedSignedByte_02011518(game, (unsigned char)i);
                 if (work->experience[id]) {
-                    GameObject* actor = GetCombatantWithFlag0x100(game, id);
+                    GameObject* actor = GetCombatantWithFlag0x100_0200ff1c(game, id);
 #if defined(jpn)
 
 #else
@@ -229,9 +229,9 @@ extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
             }
         } else {
             for (int i = 0; i < 4; i++) {
-                int id = GetCheckedSignedByte(game, (unsigned char)i);
-                GameObject* actor = GetCombatantWithFlag0x100(game, id);
-                if (actor && TestBitAt0x34((unsigned char*)work->info, (unsigned char)id) && !IsFlag10088Set((S_10088*)actor)) {
+                int id = GetCheckedSignedByte_02011518(game, (unsigned char)i);
+                GameObject* actor = GetCombatantWithFlag0x100_0200ff1c(game, id);
+                if (actor && TestBitAt0x34_020a35e0((unsigned char*)work->info, (unsigned char)id) && !IsFlag10088Set_02010088((S_10088*)actor)) {
 #if defined(jpn)
 
 #else
@@ -253,27 +253,27 @@ extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
         if (!stats) {
             for (int i = 0; i < 4; i++) {
 #if defined(jpn)
-                GameObject* actor = GetCombatantWithFlag0x100(game, i);
-                if (actor && TestBitAt0x34((unsigned char*)work->info, (unsigned char)i) && !GetCombatantWithFlag0x1000(game, i))
+                GameObject* actor = GetCombatantWithFlag0x100_0200ff1c(game, i);
+                if (actor && TestBitAt0x34_020a35e0((unsigned char*)work->info, (unsigned char)i) && !GetCombatantWithFlag0x1000_0200ff58(game, i))
                     stats = actor->baseStats_;
 #else
-                if (GetCombatantWithFlag0x100(game, i) && TestBitAt0x34((unsigned char*)work->info, (unsigned char)i) && !GetCombatantWithFlag0x1000(game, i))
+                if (GetCombatantWithFlag0x100_0200ff1c(game, i) && TestBitAt0x34_020a35e0((unsigned char*)work->info, (unsigned char)i) && !GetCombatantWithFlag0x1000_0200ff58(game, i))
                     InitObjFromCombatantId020e4bf4(actorName, i);
 #endif
 
             }
         }
 #if defined(jpn)
-        if (count > 1) sprintf(text, FindEntryByKey(&work->strings, 0x1a), stats);
-        else sprintf(text, FindEntryByKey(&work->strings, 0x19), stats);
+        if (count > 1) sprintf(text, FindEntryByKey_02072a68(&work->strings, 0x1a), stats);
+        else sprintf(text, FindEntryByKey_02072a68(&work->strings, 0x19), stats);
 #else
         messages->actor = actorName;
         int messageId = 0x19;
         if (count > 1) messageId = 0x1a;
-        sprintf(text, FindEntryByKey(&work->strings, messageId));
+        sprintf(text, FindEntryByKey_02072a68(&work->strings, messageId));
 #endif
 
-        strcat(text, FindEntryByKey(&work->strings, 0x22));
+        strcat(text, FindEntryByKey_02072a68(&work->strings, 0x22));
 #if defined(jpn)
         func_0204500c(messages, text, 1);
 #else
@@ -290,7 +290,7 @@ extern "C" ARM int func_ov023_021f03a0(BattleWork* work) {
             if (state->member >= 4) state->state = 4;
             return work->state;
         }
-        sprintf(filename, FindEntryByKey(&work->strings, 0), entry->fileId);
+        sprintf(filename, FindEntryByKey_02072a68(&work->strings, 0), entry->fileId);
         state->task = loader->QueueLoadFile(filename, 0);
         state->state++;
     } else if (state->state == 3) {

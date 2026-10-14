@@ -7,8 +7,7 @@ enum { kRegionValue200_118 = 0x118 };
 enum { kRegionValue200_118 = 0x200 };
 #endif
 
-
-int StringLength(const char* s);
+int StringLength_020d2ff0(const char* s);
 extern char data_ov003_0217fce0;
 
 struct Obj021580d8 {
@@ -40,5 +39,5 @@ extern "C" ARM void func_ov003_021580d8(struct Obj021580d8* dst, struct Src02158
         return;
     }
     memset(dst->blockB, 0, kRegionValue200_118);
-    sprintf(dst->blockB + StringLength(dst->blockB), &data_ov003_0217fce0, text);
+    sprintf(dst->blockB + StringLength_020d2ff0(dst->blockB), &data_ov003_0217fce0, text);
 }

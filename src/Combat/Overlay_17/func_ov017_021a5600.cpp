@@ -42,22 +42,22 @@ extern "C" void func_ov017_021a55b0(BattleState021a5600*);
 extern "C" void func_ov017_02191108(GameResources*, int, int, int, int);
 FlagWord02046708* GetDataPtr02114e04_020d6c00();
 void CancelPendingAction020397cc(Obj020397cc*, int);
-void SetBitsInField4(unsigned int*, unsigned int);
-void ClearBitsInField4(unsigned int*, unsigned int);
-unsigned char* GetFieldIfFlag4(char*);
-void SetFlagsAt0x244(unsigned char*, unsigned char);
-void ClearFlagBits(unsigned char*, int);
-void ResetOrFindStopwatch(unsigned char*, int);
-void* AllocateAligned4(AllocatorUnion*, unsigned int);
-void PushInputLogA(int);
-void PushInputLogB(int);
+void SetBitsInField4_0203b4d8(unsigned int*, unsigned int);
+void ClearBitsInField4_0203b4e8(unsigned int*, unsigned int);
+unsigned char* GetFieldIfFlag4_020100f8(char*);
+void SetFlagsAt0x244_020a28a0(unsigned char*, unsigned char);
+void ClearFlagBits_020a28b0(unsigned char*, int);
+void ResetOrFindStopwatch_02027288(unsigned char*, int);
+void* AllocateAligned4_02012d88(AllocatorUnion*, unsigned int);
+void PushInputLogA_020a1df8(int);
+void PushInputLogB_020a1ef0(int);
 extern "C" void _Z26SetBytes485And486_021556ecPvii(void*, int, int);
 int ListContainsId(ListHead02046b60*, int);
-void SetByteField0x253(void*);
+void SetByteField0x253_020397c0(void*);
 void InitPaletteTables0202ac74();
 int TestFlags02046708(FlagWord02046708*, unsigned int);
 void SetByteIfDataAndCheckClear_021a01bc(unsigned char*);
-void CopyByteField0x253To0x252(void*);
+void CopyByteField0x253To0x252_02039830(void*);
 void CheckStackAndFinalize_021a5974(char*);
 extern AllocatorUnion data_02114e20;
 extern char* data_ov017_021d83ac;
@@ -69,25 +69,25 @@ extern "C" ARM void func_ov017_021a5600(BattleState021a5600* self) {
     FlagWord02046708* flags = GetDataPtr02114e04_020d6c00();
     CancelPendingAction020397cc(actor, 1);
     actor->field_b2 = 0;
-    SetBitsInField4(&resources->brightnessFlags_0, 0xc0);
-    unsigned char* action = GetFieldIfFlag4((char*)game);
-    SetFlagsAt0x244(action, 3);
+    SetBitsInField4_0203b4d8(&resources->brightnessFlags_0, 0xc0);
+    unsigned char* action = GetFieldIfFlag4_020100f8((char*)game);
+    SetFlagsAt0x244_020a28a0(action, 3);
     int ticks = game->GetTickCount();
     if (ticks < 0) ticks = 1;
     if (self->state == 0) {
         unsigned char* stopwatch = (unsigned char*)resources->unknown_ptr_36d0;
-        ResetOrFindStopwatch(stopwatch, -1);
+        ResetOrFindStopwatch_02027288(stopwatch, -1);
         func_0202738c(stopwatch, 1, 2, -1);
         func_020a0cc4(SceneReservationSize);
-        void* memory = AllocateAligned4(&data_02114e20, SceneHeapSize);
+        void* memory = AllocateAligned4_02012d88(&data_02114e20, SceneHeapSize);
         if (!memory) {
             func_020a0c0c();
             self->complete = 1;
         } else {
             self->allocator.CreateTypeA(memory, SceneHeapSize);
             self->allocator.Reset();
-            PushInputLogA(2);
-            PushInputLogB(1);
+            PushInputLogA_020a1df8(2);
+            PushInputLogB_020a1ef0(1);
             data_ov017_021d83ac = (char*)self->allocator.Allocate(SceneSize);
             func_ov002_0215505c(data_ov017_021d83ac);
             _Z26SetBytes485And486_021556ecPvii(data_ov017_021d83ac, self->option20, self->option21);
@@ -103,7 +103,7 @@ extern "C" ARM void func_ov017_021a5600(BattleState021a5600* self) {
         if (func_ov002_02155960(data_ov017_021d83ac, ticks)) ++self->state;
     } else if (self->state == 2) {
         func_ov002_021556fc(data_ov017_021d83ac);
-        FontBankLoader* music = GetGlobal02109400();
+        FontBankLoader* music = GetGlobal02109400_02094a00();
         BlankFunction02094b40(music);
         func_02094ab0(music);
         BlankFunction02094b34(music, 5000, 0x6f, 1, 1);
@@ -117,9 +117,9 @@ extern "C" ARM void func_ov017_021a5600(BattleState021a5600* self) {
         ListHead02046b60* list = (ListHead02046b60*)resources->unknown_ptr_array_36fc[0];
         if (list && (ListContainsId(list, 2) || ListContainsId(list, 47))) clear = 0;
         if (clear) {
-            ClearFlagBits(action, 3);
-            ClearBitsInField4(&resources->brightnessFlags_0, 0xc0);
-            SetByteField0x253(actor);
+            ClearFlagBits_020a28b0(action, 3);
+            ClearBitsInField4_0203b4e8(&resources->brightnessFlags_0, 0xc0);
+            SetByteField0x253_020397c0(actor);
         }
         func_ov017_02191108(resources, 1, 1, 0, 1);
         InitPaletteTables0202ac74();
@@ -130,8 +130,8 @@ extern "C" ARM void func_ov017_021a5600(BattleState021a5600* self) {
             func_02027304(stopwatch, -1);
         }
         SetByteIfDataAndCheckClear_021a01bc((unsigned char*)resources);
-        SetByteField0x253(actor);
-        CopyByteField0x253To0x252(actor);
+        SetByteField0x253_020397c0(actor);
+        CopyByteField0x253To0x252_02039830(actor);
         self->complete = 1;
         CheckStackAndFinalize_021a5974((char*)self);
     }

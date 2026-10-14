@@ -28,7 +28,7 @@ struct Struct021931b4 : Owner_021931cc {
 struct MenuEntry { char pad[0xb]; unsigned char state; };
 extern "C" int func_ov015_021925a8(Struct021931b4*);
 extern "C" void func_ov015_02191874(Struct021931b4*);
-int TestFlag0SetAndFlag1Clear(unsigned short*, int);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short*, int);
 extern unsigned short data_02114e30;
 extern "C" int func_ov015_02191284(int*);
 extern "C" void func_ov015_02191ea4(Struct021931b4*, int);
@@ -43,7 +43,7 @@ extern "C" void func_ov015_02192700(Struct021931b4*, int);
 extern "C" ARM void func_ov015_02191668(Struct021931b4* self) {
     if (func_ov015_021925a8(self)) return;
     if (self->state == 0x27) func_ov015_02191874(self);
-    if (TestFlag0SetAndFlag1Clear(&data_02114e30, 1)) {
+    if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 1)) {
         int index = func_ov015_02191284(&self->cursor);
         self->indices[self->state] = index;
         switch (self->state) {
@@ -63,7 +63,7 @@ extern "C" ARM void func_ov015_02191668(Struct021931b4* self) {
             }
             break;
         }
-    } else if (TestFlag0SetAndFlag1Clear(&data_02114e30, 2)) {
+    } else if (TestFlag0SetAndFlag1Clear_02012444(&data_02114e30, 2)) {
         if (self->state > 0x23) {
             self->indices[self->state] = func_ov015_02191284(&self->cursor);
             self->state = Pop021931cc(self);

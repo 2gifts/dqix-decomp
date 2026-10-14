@@ -30,10 +30,10 @@ void CopyInternalFields0207df50(Foo0207df50*);
 void RestorePairTables0207df90(char*);
 void BackupPairTables0207dfac(char*);
 struct Struct_203dafc;
-void ClearEightWords(Struct_203dafc*);
+void ClearEightWords_0203dafc(Struct_203dafc*);
 struct Struct020A2CF0;
 struct S020a3568;
-Struct020A2CF0* GetFieldIfFlag2(char*);
+Struct020A2CF0* GetFieldIfFlag2_020100cc(char*);
 void ResetState020a2cf0(Struct020A2CF0*);
 void SetField0x218(S020a3568*, int);
 ModelRenderContext* GetModel3DContext(Model3D*);
@@ -82,7 +82,7 @@ extern "C" ARM int func_ov015_0218e2a4(BattleModelLoader* self, ModelDescription
     if (!LoadFileIntoMemory(path, data_0211e33c, &length)) loaded = 0;
     else {
         ObjectArchiveLoadInfo info;
-        ClearEightWords((Struct_203dafc*)&info);
+        ClearEightWords_0203dafc((Struct_203dafc*)&info);
         SafeAllocator* allocator = self->allocator;
         unsigned int archiveLength = length;
         const void* data = data_0211e33c;
@@ -108,7 +108,7 @@ extern "C" ARM int func_ov015_0218e2a4(BattleModelLoader* self, ModelDescription
     if (!loaded) return 0;
     GameState* game = GameState::GetInstance();
     if (!game) return 0;
-    Struct020A2CF0* camera = GetFieldIfFlag2((char*)game);
+    Struct020A2CF0* camera = GetFieldIfFlag2_020100cc((char*)game);
     if (!camera) return 0;
     ResetState020a2cf0(camera);
     SetField0x218((S020a3568*)camera, 0);

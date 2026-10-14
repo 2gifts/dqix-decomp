@@ -8,7 +8,6 @@ enum { kRegionValue480_2A8 = 0x2a8 };
 enum { kRegionValue480_2A8 = 0x480 };
 #endif
 
-
 extern "C" void* func_ov003_02160bf8(void* obj, int key);
 
 struct KeyedList0207c378;
@@ -25,7 +24,7 @@ extern "C" ARM void func_ov003_021668fc(char* self) {
     if (*(short*)(self + kRegionValue480_2A8) < 0) return;
 
     GameState* bs = GameState::GetInstance();
-    void* p2a04 = GetPtrField0x2a04(bs);
+    void* p2a04 = GetPtrField0x2a04_02010828(bs);
     void* found = func_ov003_02160bf8(self, *(short*)(self + kRegionValue480_2A8));
     if (found == 0) return;
 

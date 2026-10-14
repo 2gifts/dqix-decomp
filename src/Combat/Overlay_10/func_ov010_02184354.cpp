@@ -21,7 +21,7 @@ void ResetStateAndCleanup021842d8(struct Struct021842d8* obj);
 
 struct Obj020397cc;
 void CancelPendingAction020397cc(struct Obj020397cc* obj, int arg1);
-void* AllocateAligned4(AllocatorUnion* alloc, unsigned int size);
+void* AllocateAligned4_02012d88(AllocatorUnion* alloc, unsigned int size);
 
 struct List020727d8 {
     void* entries;
@@ -32,7 +32,7 @@ void ResetListHeader020727d8(struct List020727d8* list);
 extern "C" void func_020728ac(void* list, void* alloc, void* buffer, int length, int a4, int a5, int a6);
 
 struct TableA68;
-void* FindEntryByKey(struct TableA68* table, int key);
+void* FindEntryByKey_02072a68(struct TableA68* table, int key);
 
 struct Obj0205eaa0;
 void DispatchWithShortB4_0205eaa0(struct Obj0205eaa0* obj, int a, int b);
@@ -52,13 +52,13 @@ struct SearchEntry {
     unsigned char padf;
 };
 struct SearchTable;
-struct SearchEntry* FindEntryByHalfwordKey(struct SearchTable* table, int key);
+struct SearchEntry* FindEntryByHalfwordKey_02099950(struct SearchTable* table, int key);
 
-void* GetPtrField0x114(void* obj);
-void* GetPtrField0x468(void* obj);
-int GetField0x3acValue(GameState* b);
-void* GetField0x74deForValidIndex(char* base, unsigned int index);
-unsigned char GetField0x397cValue(GameState* battleStruct);
+void* GetPtrField0x114_02033fa0(void* obj);
+void* GetPtrField0x468_02011584(void* obj);
+int GetField0x3acValue_020100a8(GameState* b);
+void* GetField0x74deForValidIndex_020120a0(char* base, unsigned int index);
+unsigned char GetField0x397cValue_020100b0(GameState* battleStruct);
 
 struct Flags020340b4;
 void SetFlag0x80At0xc2(struct Flags020340b4* p);
@@ -168,7 +168,7 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
     struct Actor02184354* actorInfo = *(Actor02184354**)((char*)func_ov017_0218b5b0() + 0x3ba8);
 #endif
     caster = bs->GetPartyMemberByIndex(actorInfo->combatantId);
-    GameObject* active = bs->GetPartyMemberByIndex(GetField0x397cValue(bs));
+    GameObject* active = bs->GetPartyMemberByIndex(GetField0x397cValue_020100b0(bs));
     void* scene = func_0202ae18();
     void* ov17 = func_ov017_0218b5b0();
     move = (struct MoveRecord02184354*)func_02012fe4();
@@ -184,7 +184,7 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
     unsigned char state = obj->state;
     if (state == 0) {
         CancelPendingAction020397cc((struct Obj020397cc*)active, 1);
-        void* buffer = AllocateAligned4(&data_02114e20, 0x7800);
+        void* buffer = AllocateAligned4_02012d88(&data_02114e20, 0x7800);
         if (buffer == NULL) {
             ResetStateAndCleanup021842d8((struct Struct021842d8*)obj);
             return 1;
@@ -209,7 +209,7 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
         func_020728ac(&obj->list, &obj->alloc, filePtr, fileLen, 0, 0, 0);
         loader->RemoveTask(obj->taskId);
 
-        unsigned short* slot = (unsigned short*)GetField0x74deForValidIndex((char*)bs, GetField0x3acValue(bs));
+        unsigned short* slot = (unsigned short*)GetField0x74deForValidIndex_020120a0((char*)bs, GetField0x3acValue_020100a8(bs));
         if (slot == NULL) {
             ResetStateAndCleanup021842d8((struct Struct021842d8*)obj);
             return 1;
@@ -223,10 +223,10 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
         unsigned char visible = 1;
         obj->visible = visible;
         if (info->category == 0) {
-            void* colour = GetPtrField0x114(caster);
+            void* colour = GetPtrField0x114_02033fa0(caster);
             if (colour != NULL) {
-                struct SearchTable* table = (struct SearchTable*)GetPtrField0x468(bs);
-                struct SearchEntry* entry = FindEntryByHalfwordKey(table,
+                struct SearchTable* table = (struct SearchTable*)GetPtrField0x468_02011584(bs);
+                struct SearchEntry* entry = FindEntryByHalfwordKey_02099950(table,
                     ConvertColorToDecimalOffset30000((struct ColorHolder0204bd7c*)colour));
                 if (entry != NULL) {
                     if (entry->kind != 0) obj->visible = 0;
@@ -253,7 +253,7 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
             DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 0x64, key);
         }
 
-        void* entry = FindEntryByKey((struct TableA68*)&obj->list, (short)key);
+        void* entry = FindEntryByKey_02072a68((struct TableA68*)&obj->list, (short)key);
 #if defined(jpn)
         sprintf(message, (const char*)entry, *(char**)((char*)caster + 0x134));
         func_0204500c(presenter, message, 0);
@@ -273,7 +273,7 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
         if (*(int*)((char*)presenter + 0x998) != 0) return 0;
 #endif
         if (func_020457e0(presenter) == 0) {
-            void* entry = FindEntryByKey((struct TableA68*)&obj->list, 0);
+            void* entry = FindEntryByKey_02072a68((struct TableA68*)&obj->list, 0);
 #if defined(jpn)
             sprintf(message, (const char*)entry, *(char**)((char*)caster + 0x134));
             func_0204500c(presenter, message, 0);
@@ -287,7 +287,7 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
             *(int*)((char*)presenter + 0x998) = 1;
 #endif
             DispatchWithShortB4_0205eaa0((struct Obj0205eaa0*)&data_02108760, 0x64, 0);
-            unsigned short* slot = (unsigned short*)GetField0x74deForValidIndex((char*)bs, GetField0x3acValue(bs));
+            unsigned short* slot = (unsigned short*)GetField0x74deForValidIndex_020120a0((char*)bs, GetField0x3acValue_020100a8(bs));
             if (slot != NULL) *slot = 0;
             obj->state = 4;
         } else {
@@ -373,7 +373,7 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
         anchor.z = (short)(pos.z >> 4);
 
         if (func_0202c508(scene) != 0) {
-            unsigned short* slot = (unsigned short*)GetField0x74deForValidIndex((char*)bs, GetField0x3acValue(bs));
+            unsigned short* slot = (unsigned short*)GetField0x74deForValidIndex_020120a0((char*)bs, GetField0x3acValue_020100a8(bs));
             if (slot != NULL) {
                 slot[0] = move->id;
                 slot[1] = anchor.x;
@@ -383,7 +383,7 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
         }
 
         struct TableEntry02184354* row =
-            (struct TableEntry02184354*)SearchBothTables02079e2c((char*)GetData02108e10(), 0xd2);
+            (struct TableEntry02184354*)SearchBothTables02079e2c((char*)GetData02108e10_020797dc(), 0xd2);
         if (row != NULL) {
             ConsumeCounter02048350((struct Obj02048350*)caster, row->amount);
         }
@@ -391,7 +391,7 @@ extern "C" ARM int func_ov010_02184354(struct Ctx02184354* obj) {
         if (target != NULL) {
             SetFlag0x80At0xc2((struct Flags020340b4*)target);
         }
-        func_ov017_021d360c(0, GetField0x3acValue(bs), move->id, anchor);
+        func_ov017_021d360c(0, GetField0x3acValue_020100a8(bs), move->id, anchor);
         obj->state = 3;
     } else if (state == 3) {
         GameState* now = GameState::GetInstance();

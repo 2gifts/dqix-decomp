@@ -7,7 +7,7 @@ struct Elem_0205d81c *FindElementByC40205d81c(struct Struct_0205d81c *s, int key
 struct Struct0205de24;
 void FindAndLinkMatchingEntry0205de24(struct Struct0205de24 *obj, unsigned char keyLow,
                                                                         unsigned char keyHigh);
-void SetElementFieldC2(struct Struct_0205d81c *s, int key, int value);
+void SetElementFieldC2_0205deb4(struct Struct_0205d81c *s, int key, int value);
 void InitBattleTag0215ee04(char *base);
 
 extern "C" void func_ov002_0215ef60(void *base);
@@ -52,7 +52,7 @@ extern "C" ARM void func_ov002_0215eadc(char *base, int refresh) {
         func_0205d304(base + 0xec8, ((struct BufOv0215eadc *) (base + 0x1000))->buf, 0, 0, many, 1, 0, 0);
     }
     if (refresh == 0) {
-        SetElementFieldC2((struct Struct_0205d81c *) (base + 0xec8), 0x12, 0);
-        SetElementFieldC2((struct Struct_0205d81c *) (base + 0xec8), 0x13, 0);
+        SetElementFieldC2_0205deb4((struct Struct_0205d81c *) (base + 0xec8), 0x12, 0);
+        SetElementFieldC2_0205deb4((struct Struct_0205d81c *) (base + 0xec8), 0x13, 0);
     }
 }

@@ -8,7 +8,7 @@ extern int data_02108760;
 extern "C" void func_ov017_0218d644(GameResources* ov, void* a, int b);
 void* GetGlobalResetObj020d7a50(void);
 extern "C" void func_ov017_021b6090(void* self);
-void SetByteField0x253(void* obj);
+void SetByteField0x253_020397c0(void* obj);
 extern "C" void func_ov017_021b5a30(void* self);
 
 struct SelfState_021b5f00 {
@@ -36,7 +36,7 @@ extern "C" ARM int func_ov017_021b5f00(SelfState_021b5f00* self) {
         return 5;
     }
     func_ov017_021b6090(self);
-    SetByteField0x253(self->field1c);
+    SetByteField0x253_020397c0(self->field1c);
     if (*self->field3c != 0) {
         void* reset = GetGlobalResetObj020d7a50();
 #if defined(jpn)

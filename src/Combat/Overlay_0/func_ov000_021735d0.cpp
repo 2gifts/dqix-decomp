@@ -27,8 +27,8 @@ void UpdateLastEntryField02175440(void*);
 void UpdateFieldromTable_02174fc0_02174fc0(void*);
 void NotifyEachViaLookup021754fc(Struct021754fc*,int);
 void TickCounter02180b50(S02180b50*);
-int GetField0x3acValue(GameState*);
-int CheckField0NonZero(int*);
+int GetField0x3acValue_020100a8(GameState*);
+int CheckField0NonZero_0202b7d8(int*);
 extern "C" {
 int* func_0202ae18(); void func_020dc7e8(int,int); int func_0205d0e0(void*,int);
 void func_ov000_02175fc8(void*);void func_ov000_02174d08(void*);void func_ov000_02175024(void*,int);
@@ -66,12 +66,12 @@ extern "C" ARM void func_ov000_021735d0(Root* self,int delta)
     func_ov000_02175fc8(self);func_ov000_02174d08(self);UpdateFieldromTable_02174fc0_02174fc0(self);
     func_ov000_02175024(self,delta);NotifyEachViaLookup021754fc((Struct021754fc*)self,delta);
     if(self->flags&0x200){
-        void* unit=func_ov000_02161318(self,(signed char)GetField0x3acValue(GameState::GetInstance()));
+        void* unit=func_ov000_02161318(self,(signed char)GetField0x3acValue_020100a8(GameState::GetInstance()));
         func_ov000_0217f304(self,data_ov000_02183ff0,data_ov000_02184288[1],unit);
         func_ov000_0217c908(self,data_ov000_02183ff0,data_ov000_02184288[1]);
         TickCounter02180b50((S02180b50*)self);
         int special=self->commands[self->commandIndex]==100;
-        if(special & CheckField0NonZero(func_0202ae18())){
+        if(special & CheckField0NonZero_0202b7d8(func_0202ae18())){
             if(self->phase==1){
                 for(int i=0;i<2;i++)func_ov000_02176e3c(self,unit,23,data_ov000_02183ff0,data_ov000_02184288[1],0);
                 self->phase=2;

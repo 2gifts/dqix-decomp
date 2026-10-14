@@ -59,13 +59,13 @@ extern "C" void func_02042b98(PopupController021bec00*, int, int, int, int);
 extern "C" void func_ov017_021bef84(PopupState021bec00*);
 PopupController021bec00* GetGlobalField0x1c020421a0();
 void CancelPendingAction020397cc(Obj020397cc*, int);
-void SetBitsInField4(unsigned int*, unsigned int);
-void* AllocateAligned4(AllocatorUnion*, unsigned int);
-GrottoTransitionData* GetField0x3f8Address(GameState*);
+void SetBitsInField4_0203b4d8(unsigned int*, unsigned int);
+void* AllocateAligned4_02012d88(AllocatorUnion*, unsigned int);
+GrottoTransitionData* GetField0x3f8Address_0200fd0c(GameState*);
 void InitAndResetHeader_0219e310(unsigned char*, int);
 void AppendNodeToTail(TailList020469b4*, TailNode020469b4*);
 void ReinitController02043204(char*);
-void SetByteField0x253(void*);
+void SetByteField0x253_020397c0(void*);
 extern AllocatorUnion data_02114e20;
 extern char data_ov017_021d7e98[], data_ov017_021d7eb2[];
 // USA: func_ov017_021bec00
@@ -81,12 +81,12 @@ extern "C" ARM void func_ov017_021bec00(PopupState021bec00* self) {
     controller->flag19ae = 0;
     if (self->state == 0) {
         CancelPendingAction020397cc((Obj020397cc*)game->GetUnknownGameObject(), 1);
-        SetBitsInField4(&resources->brightnessFlags_0, 0xc0);
-        FontBankLoader* music = GetGlobal02109400();
+        SetBitsInField4_0203b4d8(&resources->brightnessFlags_0, 0xc0);
+        FontBankLoader* music = GetGlobal02109400_02094a00();
         BlankFunction02094b30(music, 0x203, 0);
         if (AlwaysTrue02094b4c(music)) {
             self->state = 1;
-            self->allocator.CreateTypeA(AllocateAligned4(&data_02114e20, 0xc00), 0xc00);
+            self->allocator.CreateTypeA(AllocateAligned4_02012d88(&data_02114e20, 0xc00), 0xc00);
             self->task = loader->QueueLoadFile(data_ov017_021d7e98, 0);
         }
     } else if (self->state == 1) {
@@ -103,7 +103,7 @@ extern "C" ARM void func_ov017_021bec00(PopupState021bec00* self) {
     } else if (self->state == 2) {
         if (!IsBrightnessTransitionActive(resources)) {
             if ((unsigned char&)grotto->unknown_260_[2]) {
-                GrottoTransitionData* transition = GetField0x3f8Address(game);
+                GrottoTransitionData* transition = GetField0x3f8Address_0200fd0c(game);
                 VectorizedMemset(transition, 0, 0x70);
                 transition->flag4 = 1;
                 transition->flag8 = 1;
@@ -149,8 +149,8 @@ extern "C" ARM void func_ov017_021bec00(PopupState021bec00* self) {
         }
     } else if (self->state == 3 && controller->field9a0 == 0) {
         ReinitController02043204((char*)controller);
-        SetByteField0x253(game->GetUnknownGameObject());
-        FontBankLoader* music = GetGlobal02109400();
+        SetByteField0x253_020397c0(game->GetUnknownGameObject());
+        FontBankLoader* music = GetGlobal02109400_02094a00();
         BlankFunction02094b38(music, 0x1f9);
         func_02094ab0(music);
         func_ov017_021bef84(self);

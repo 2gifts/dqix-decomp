@@ -2,8 +2,8 @@
 #include "Combat/SearchEntry.h"
 
 struct SearchStruct;
-int TestBitBySignedByteIndex(struct SearchStruct* obj, int value);
-unsigned short GetGlobalHalf0x0(void);
+int TestBitBySignedByteIndex_0202c1c0(struct SearchStruct* obj, int value);
+unsigned short GetGlobalHalf0x0_0202df58(void);
 
 // USA: func_0202bd68  (semantic: CheckBitFlagsAcrossEntries_0202bd68)
 extern "C" ARM int func_0202bd68(struct SearchStruct* self, int bitIndex) {
@@ -15,13 +15,13 @@ extern "C" ARM int func_0202bd68(struct SearchStruct* self, int bitIndex) {
             signed char v = *(signed char*)((char*)self + i + 0x1038);
             if (v == 0) continue;
         }
-        if (!TestBitBySignedByteIndex(self, arr[i])) continue;
+        if (!TestBitBySignedByteIndex_0202c1c0(self, arr[i])) continue;
 
         void* entry;
-        if (i == GetGlobalHalf0x0()) {
+        if (i == GetGlobalHalf0x0_0202df58()) {
             entry = (char*)self + 0x7c0;
         } else {
-            entry = GetEntryBySignedByteIndex(self, arr[i]);
+            entry = GetEntryBySignedByteIndex_0202c178(self, arr[i]);
         }
         if (entry == 0) continue;
 

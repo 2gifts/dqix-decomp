@@ -40,9 +40,9 @@ struct AlchemyMenu {
 };
 
 extern "C" short func_ov023_021e29d0(void* layout);
-int TestFlag0SetAndFlag1Clear(unsigned short* pad, int buttons);
+int TestFlag0SetAndFlag1Clear_02012444(unsigned short* pad, int buttons);
 extern "C" void func_ov006_0215f4dc(AlchemyMenu* self);
-void SetElementFlag0x40(Obj2081* menu, int group, int flag);
+void SetElementFlag0x40_02081ea4(Obj2081* menu, int group, int flag);
 extern "C" void func_ov006_021570fc(AlchemyPot* pot, int show);
 unsigned char DispatchWithShortB4_0205eaa0(Obj0205eaa0* sound, int effect, int unk);
 
@@ -55,13 +55,13 @@ extern "C" ARM int func_ov006_021595b4(AlchemyMenu* self) {
     int names = element == 0x78 ? 1 : 0;
     int window = element == 0x25 ? 1 : 0;
     if (self->chosenCounts_[0] > 1 || self->chosenCounts_[1] >= 1) {
-        names = (names | TestFlag0SetAndFlag1Clear(data_02114e30, 0x400)) ? 1 : 0;
+        names = (names | TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x400)) ? 1 : 0;
         if (names) {
             self->cursor_ = 0;
             self->state_ = 7;
             self->step_ = 6;
             func_ov006_0215f4dc(self);
-            SetElementFlag0x40(self->menu_, 0x10, 1);
+            SetElementFlag0x40_02081ea4(self->menu_, 0x10, 1);
             self->flags_ &= ~0x10;
             self->flags_ |= 0x20;
             self->message_ = 0xa;
@@ -72,7 +72,7 @@ extern "C" ARM int func_ov006_021595b4(AlchemyMenu* self) {
     if (names)
         return 1;
     if (self->flags_ & 0x10) {
-        if (TestFlag0SetAndFlag1Clear(data_02114e30, 0x300) || window) {
+        if (TestFlag0SetAndFlag1Clear_02012444(data_02114e30, 0x300) || window) {
             AlchemyPot* pot = self->pot_;
             func_ov006_021570fc(pot, (pot->windowFlags_ & 0x800) ? 0 : 1);
             DispatchWithShortB4_0205eaa0((Obj0205eaa0*)data_02108760, 1, 0);

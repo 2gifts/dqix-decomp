@@ -1,7 +1,7 @@
 #include <globaldefs.h>
 #include "GameState/GameState.h"
 
-void* GetData02100044(void);
+void* GetData02100044_0202ae24(void);
 extern "C" void func_0205e330(void* a, void* b, int c);
 extern "C" void* func_0202ae18(void);
 extern "C" int func_0202c508(void* p);
@@ -21,7 +21,7 @@ ARM void EnqueueEventTag40IfNotBusy_021ce494(void) {
 		return;
 	}
 	LocalEvt021ce494 buf;
-	void* p = GetData02100044();
+	void* p = GetData02100044_0202ae24();
 	buf.tag = 0x28;
 	func_0205e330(p, &buf, 0);
 }

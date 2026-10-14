@@ -50,8 +50,8 @@ void* GetFieldIfOtherFieldZero_022112e4();
 int ResetIfInactive_0221126c();
 extern "C" int func_ov031_02212184();
 int IsFieldit0Set_02211644_02211644(void*);
-void SelectBattleContextMode2(int);
-int DispatchCartridgeReadToArm7(void*);
+void SelectBattleContextMode2_020d0040(int);
+int DispatchCartridgeReadToArm7_020d06fc(void*);
 void PrepareAndCommit020d0050(int);
 void ClearFlag1AndUpdateChecksum_02211658(S02211658*);
 void SetField34AndClear35_37_02245528(Struct_02245528*, int);
@@ -149,8 +149,8 @@ extern "C" ARM void func_ov031_02244660(Struct_02245528* session) {
                     success = 0;
                 } else {
                     (*(unsigned short*)(data_ov031_02291e04 + 0xa)) = owner;
-                    SelectBattleContextMode2((*(unsigned short*)(data_ov031_02291e04 + 0xa)));
-                    success = DispatchCartridgeReadToArm7((void*)0x1001);
+                    SelectBattleContextMode2_020d0040((*(unsigned short*)(data_ov031_02291e04 + 0xa)));
+                    success = DispatchCartridgeReadToArm7_020d06fc((void*)0x1001);
                     PrepareAndCommit020d0050((*(unsigned short*)(data_ov031_02291e04 + 0xa)));
                 }
                 if (success) {

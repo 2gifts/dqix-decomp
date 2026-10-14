@@ -2,7 +2,7 @@
 #include "GameState/GameState.h"
 
 struct S02037418;
-void SetFlag0x1ceBit0x4(unsigned char* obj);
+void SetFlag0x1ceBit0x4_02039d48(unsigned char* obj);
 
 struct Src021d2c78 {
 	unsigned char pad0[4];
@@ -21,5 +21,5 @@ ARM void NotifyFlag2048AndMaybeSet_021d2c78(void* unused, Src021d2c78* src) {
 	if (src->field5 != 0) return;
 	if (src->field6 == 0) return;
 
-	SetFlag0x1ceBit0x4((unsigned char*)c);
+	SetFlag0x1ceBit0x4_02039d48((unsigned char*)c);
 }

@@ -9,14 +9,13 @@
 #define func_020947f0 func_020950d8
 #endif
 
-
 extern "C" int func_ov017_0218b5b0(void);
 extern "C" void* func_0202ae18(void);
 extern "C" void func_02094654(void* obj);
 extern "C" void func_020947f0(void* obj);
 
 int IsChannelValueZero0203b5e0(void* obj, int sel);
-int CheckField0NonZero(int* obj);
+int CheckField0NonZero_0202b7d8(int* obj);
 
 struct ListHead02046b60;
 int ListContainsId(struct ListHead02046b60* list, int id);
@@ -41,7 +40,7 @@ ARM void UpdateChannelStateIfEligible02093f68(char* obj) {
 
     int base2 = func_ov017_0218b5b0();
 
-    if (CheckField0NonZero((int*)func_0202ae18())
+    if (CheckField0NonZero_0202b7d8((int*)func_0202ae18())
         || *(int*)(base2 + (IS_JPN ? 0x41e4 : 0x4494))
         || ListContainsId((struct ListHead02046b60*)chVal, 0x26)) {
         func_02094654(obj);

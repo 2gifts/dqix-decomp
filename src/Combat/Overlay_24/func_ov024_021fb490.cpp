@@ -81,10 +81,10 @@ struct Bits2f4_021fb490 { unsigned int bit0 : 1; unsigned int bit1 : 1; };
 struct FlagObj_021da998;
 struct FlagObj_021dd260;
 
-int GetFieldAt0x150(unsigned char*);
-void* GetData02108e10();
+int GetFieldAt0x150_02053c6c(unsigned char*);
+void* GetData02108e10_020797dc();
 void* LookupElementByKey02079ee0(void*, int);
-float LookupTableD0Clamped(int);
+float LookupTableD0Clamped_02074948(int);
 extern "C" float _fmul(float, float);
 extern "C" int _fgeq(float, float);
 int IsFlagBit8388608Set_021da998(FlagObj_021da998*);
@@ -121,8 +121,8 @@ extern "C" ARM void func_ov024_021fb490(Context_021fb490* context) {
     unsigned char* actor;
     Unit_021fb490** units;
     actor = context->actor;
-    GetFieldAt0x150(context->actor);
-    data = GetData02108e10();
+    GetFieldAt0x150_02053c6c(context->actor);
+    data = GetData02108e10_020797dc();
     action = context->work.action;
     int scaling = context->work.scaling;
     if (action->mode == 2) return;
@@ -193,7 +193,7 @@ extern "C" ARM void func_ov024_021fb490(Context_021fb490* context) {
             if (unit->stats[0x14 / 4] & 0x200) flag = 1;
         }
         if (kind != 2 && (context->work.action->flags & 0x20000)) {
-            avg[i] = _fmul(avg[i], LookupTableD0Clamped((signed char)lookups));
+            avg[i] = _fmul(avg[i], LookupTableD0Clamped_02074948((signed char)lookups));
             lookups++;
         }
         Entry_021fb490 entry;

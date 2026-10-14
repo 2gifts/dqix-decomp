@@ -1,6 +1,6 @@
 #include <globaldefs.h>
 
-int StringLength(const char* s);
+int StringLength_020d2ff0(const char* s);
 extern "C" void* memset(void* dst, int val, int n);
 extern "C" int sprintf(char* dst, const char* fmt, ...);
 extern char data_ov023_021fe144;
@@ -33,5 +33,5 @@ extern "C" ARM void func_ov023_021f229c(Obj021f229c* obj, Src021f229c* src) {
 #else
     memset(obj->buffer, 0, 0x200);
 #endif
-    sprintf(obj->buffer + StringLength(obj->buffer), &data_ov023_021fe144, label);
+    sprintf(obj->buffer + StringLength_020d2ff0(obj->buffer), &data_ov023_021fe144, label);
 }

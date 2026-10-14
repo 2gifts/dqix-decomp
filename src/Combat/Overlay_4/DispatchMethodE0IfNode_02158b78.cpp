@@ -25,14 +25,11 @@ public:
     virtual void MethodE0(int a);
 };
 
-// Virtual dispatch (method at vtable index 0xe0/4 = 56). Modelling the object as
-// a C++ polymorphic class -- rather than a manual function-pointer struct -- is
-// what makes mwcc emit the ROM's mov/ldr order and single-scratch pointer chase.
 // USA: func_ov004_02158b78
 ARM int Dispatch02158b78(void* self) {
     VObj02158b78* node = (VObj02158b78*)func_ov004_02156f38(self, 0xc9);
     if (node) {
-        struct Field2a04_02158b78* fld = (struct Field2a04_02158b78*)GetPtrField0x2a04(GameState::GetInstance());
+        struct Field2a04_02158b78* fld = (struct Field2a04_02158b78*)GetPtrField0x2a04_02010828(GameState::GetInstance());
         node->MethodE0(fld->f0xf6c);
         void* x = func_ov004_02156f6c(self, 0x16);
         if (x) func_ov023_021f809c(x, self);

@@ -35,12 +35,12 @@ int AnimateSubBG0Shake0208ca00(ShakeState0208ca00*, int);
 extern "C" void func_0208bf78(ShakeState0208ca00*);
 extern "C" void func_0208b788(int, float, SrcStruct0208baec*, int);
 int SetupDstFromSrcAndScale0208baec(int, DstStruct0208baec*, SrcStruct0208baec*, int, float, int, unsigned char);
-int GetWord0x0(int*);
+int GetWord0x0_0200fb8c(int*);
 unsigned char NormalizeField5_0200fb08(Struct0200fb08*);
 int GetHeadNodeIdOrMinusOne(HeadNode02046b24**);
-int* GetGlobal02109418();
-unsigned char GetTableByteOrFF(GetTableByteOrFFData*, unsigned char);
-int TestBitInByteArrayAt0x84(void*, int);
+int* GetGlobal02109418_02094d6c();
+unsigned char GetTableByteOrFF_020965ac(GetTableByteOrFFData*, unsigned char);
+int TestBitInByteArrayAt0x84_02096088(void*, int);
 
 // USA: func_0208bb78
 extern "C" ARM int func_0208bb78(ShakeState0208ca00* self, int delta) {
@@ -63,7 +63,7 @@ extern "C" ARM int func_0208bb78(ShakeState0208ca00* self, int delta) {
         (self->*actions.actions[self->action])();
     }
     GameState* state = GameState::GetInstance();
-    GameResources* resources = (GameResources*)GetWord0x0((int*)state);
+    GameResources* resources = (GameResources*)GetWord0x0_0200fb8c((int*)state);
     float scale;
     unsigned char slot;
     HeadNode02046b24** head = (HeadNode02046b24**)resources->unknown_ptr_array_36fc[0];
@@ -101,9 +101,9 @@ extern "C" ARM int func_0208bb78(ShakeState0208ca00* self, int delta) {
         }
     }
     if (self->id != 9999 && self->id >= 0 && self->action != 0 && self->action != 3 && GetHeadNodeIdOrMinusOne(head) != 0x2d) {
-        int* global = GetGlobal02109418();
-        int value = GetTableByteOrFF((GetTableByteOrFFData*)global, (unsigned char)self->id);
-        if (TestBitInByteArrayAt0x84(global, value)) {
+        int* global = GetGlobal02109418_02094d6c();
+        int value = GetTableByteOrFF_020965ac((GetTableByteOrFFData*)global, (unsigned char)self->id);
+        if (TestBitInByteArrayAt0x84_02096088(global, value)) {
             SrcStruct0208baec values;
             func_0208b788(1, 1.0f, &values, 0);
             SetupDstFromSrcAndScale0208baec((int)&self->destination, &self->entries[1], &values, 0x20, values.scale, pivot, 2);
