@@ -10,7 +10,7 @@ extern "C" void func_ov009_02188c2c(CharacterCreationUI*);
 extern "C" void func_ov009_02188d9c(void*);
 extern "C" void func_ov009_02188e70(CharacterCreationUI*, int);
 extern "C" int func_ov009_02185c58(void*);
-extern "C" int func_ov009_02189e04(void*);
+extern "C" int func_ov009_02188ee8(CharacterCreationUI*);
 extern "C" void func_ov009_0218ad0c(void*);
 extern "C" void func_ov009_021867bc(unsigned char*, int);
 extern "C" void _Z28DispatchWithShortB4_0205eaa0P11Obj0205eaa0ii(Obj0205eaa0*, int, int);
@@ -46,7 +46,7 @@ extern "C" ARM void func_ov009_02186e00(CharacterCreationUI* self)
             return;
         if (!func_ov009_02185c58(self->unknownBeforeTileMaps))
             return;
-        int result = func_ov009_02189e04(self);
+        int result = func_ov009_02188ee8(self);
         if (result == -2) {
             func_ov009_0218ad0c(self);
         } else if (result == -3) {

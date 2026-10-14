@@ -126,7 +126,7 @@ struct CharacterCreationUI {
     unsigned char selection;
     unsigned char unknownAfterSelection[3];
     void* characterData;
-    unsigned int unknownD8c;
+    int touchedChoice;
     int resourceTask;
     unsigned char resourceStep;
     unsigned char mode;
