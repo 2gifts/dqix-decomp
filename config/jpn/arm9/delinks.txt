@@ -18417,3 +18417,11 @@ src/Combat/Main/NormalizeGlyphKey02042ea4.cpp:
     complete
     .text start:0x02042ea4 end:0x02042f9c
 
+
+src/Combat/Main/FindGlyphKeyIndex02042f9c.cpp:
+    complete
+    .text start:0x02042f9c end:0x02043014
+
+src/Combat/Main/FindGlyphIndexWithFallback02043014.cpp:
+    complete
+    .text start:0x02043014 end:0x02043060
