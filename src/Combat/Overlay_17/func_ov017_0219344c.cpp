@@ -17,13 +17,21 @@ public:
     unsigned char lowC1 : 3;
     unsigned char flagC1 : 1;
     unsigned char highC1 : 4;
+#if defined(jpn)
+    unsigned char pad_c2[0x180 - 0xc2];
+#else
     unsigned char pad_c2[0x18c - 0xc2];
+#endif
     unsigned int field18c;
 };
 
 struct Zone0219344c {
     unsigned short id;
+#if defined(jpn)
+    unsigned char pad_2[0x84c - 0x2];
+#else
     unsigned char pad_2[0x82c - 0x2];
+#endif
     int count82c;
     unsigned char pad_830[0x23b8 - 0x830];
     unsigned char useCell;
@@ -42,11 +50,6 @@ struct Link0219344c {
     unsigned char kind;
     unsigned char pad_1;
     unsigned short index;
-};
-
-struct LinkHolder0219344c {
-    unsigned char pad[0x3400];
-    Link0219344c link;
 };
 
 extern unsigned short data_02114e30;
@@ -267,7 +270,7 @@ extern "C" ARM int func_ov017_0219344c(Actor0219344c* self, int arg, Vector3i* t
     GameResources* res2 = func_ov017_0218b5b0();
     unsigned char* zone2 = (unsigned char*)func_02012fe4();
     Vector3i endPos = self->position_;
-    Link0219344c* link = &((LinkHolder0219344c*)((char*)res2 + 0x2b4))->link;
+    Link0219344c* link = (Link0219344c*)res2->interactionSelection;
     if (link != NULL && !(startPos.x == endPos.x && startPos.y == endPos.y && startPos.z == endPos.z)) {
         if (link->kind == 2) {
             unsigned char* elem = GetElementStride0x24(zone2, link->index);

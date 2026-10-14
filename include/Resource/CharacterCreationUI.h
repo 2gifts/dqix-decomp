@@ -1,6 +1,7 @@
 #pragma once
 
 #include "World/Object3D.h"
+#include "Memory/SafeAllocator.h"
 
 struct SpriteContext0205ac40;
 struct B174Outer;
@@ -76,9 +77,16 @@ struct CreationChoiceGrid {
 
 struct CharacterCreationUI {
 #if defined(jpn)
-    unsigned char unknownBeforeTexts[0xc0];
+    SafeAllocator allocators[8];
 #else
-    unsigned char unknownBeforeTexts[0xe0];
+    SafeAllocator allocators[9];
+#endif
+    SafeAllocator* modelAllocator;
+    SafeAllocator* previewAllocators;
+#if defined(jpn)
+    unsigned char unknownBeforeTexts[0xc0 - 0xa8];
+#else
+    unsigned char unknownBeforeTexts[0xe0 - 0xbc];
 #endif
     Container020e0310 texts;
     unsigned char unknownBeforeTextBuffer[0x10];
@@ -93,7 +101,7 @@ struct CharacterCreationUI {
     CreationWindow windows[2];
     unsigned char unknownBeforeSprites[0x7d8 - 0x370];
     SpriteContext0205ac40* firstSpriteContext;
-    unsigned char unknownFirstSprites[4];
+    B174Outer* firstSprites;
     Container0205a3d0* firstSpriteEntries;
     SpriteContext0205ac40* spriteContext;
     B174Outer* sprites;
